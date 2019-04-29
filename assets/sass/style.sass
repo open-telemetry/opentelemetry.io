@@ -1,0 +1,29 @@
+{{ $fonts    := site.Params.fonts }}
+{{ $fontSlice := (slice) }}
+{{ range $fonts }}
+{{ $fontSlice = $fontSlice | append (printf "%s:%s" (replace .name " " "+") (delimit .sizes ",")) }}
+{{ end }}
+{{ $fontsUrl := printf "https://fonts.googleapis.com/css?family=%s" (delimit $fontSlice "|") }}
+{{ $sansSerifFont := (index (where $fonts "type" "sans_serif") 0).name }}
+{{ $monospaceFont := (index (where $fonts "type" "monospace") 0).name }}
+{{ $fontAwesomeVersion := site.Params.font_awesome_version }}
+{{ $fontAwesomeUrl     := printf "https://use.fontawesome.com/releases/v%s/css/all.css" $fontAwesomeVersion }}
+
+@charset "utf-8"
+@import url({{ $fontsUrl }})
+@import url({{ $fontAwesomeUrl }})
+
+@import "variables"
+@import "bulma/sass/utilities/initial-variables"
+@import "bulma/sass/utilities/functions"
+
+// Bulma variable overwrites
+$primary: $opentelemetry-blue
+$family-sans-serif: "{{ $sansSerifFont }}", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif
+$family-code: "{{ $monospaceFont }}", monospace
+
+@import "bulma/sass/utilities/derived-variables"
+@import "bulma/bulma"
+
+@import "helpers"
+@import "page"
