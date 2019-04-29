@@ -1,3 +1,4 @@
+{{ $favicon      := "favicon.png" | relURL }}
 {{ $inServerMode := site.IsServer }}
 {{ $includePaths := (slice "node_modules") }}
 {{ $sass         := "sass/style.sass" }}
@@ -12,3 +13,4 @@
 {{ $prodCss      := $css | fingerprint }}
 <link rel="stylesheet" href="{{ $prodCss.RelPermalink }}" integrity="{{ $prodCss.Data.Integrity }}">
 {{ end }}
+<link rel="shortcut icon" type="image/png" href="{{ $favicon }}">
