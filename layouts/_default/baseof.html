@@ -3,12 +3,14 @@
   <head>
     {{ partial "css.html" . }}
   </head>
-  <body>
+  <body class="page">
     <main class="main">
       <!-- {{ partial "navbar.html" . }} -->
 
       {{ block "main" . }}
       {{ end }}
     </main>
+
+    {{ partial "footer.html" . }}
   </body>
 </html>
