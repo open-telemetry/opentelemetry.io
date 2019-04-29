@@ -6,6 +6,12 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
 tagline = "A merger between the [OpenTracing](https://opentracing.io) and [OpenCensus](https://opencensus.io) projects"
 font_awesome_version = "5.8.1"
 
+[params.opencensus]
+description = "Easily collect telemetry like metrics and distributed traces from your services"
+
+[params.opentracing]
+description = "Vendor-neutral APIs and instrumentation for distributed tracing"
+
 [[params.fonts]]
 name = "Roboto"
 sizes = [300,400,600,700]
