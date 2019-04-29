@@ -24,6 +24,9 @@ $family-sans-serif: "{{ $sansSerifFont }}", BlinkMacSystemFont, -apple-system, "
 $family-code: "{{ $monospaceFont }}", monospace
 
 @import "bulma/sass/utilities/derived-variables"
+
+$colors: mergeColorMaps(("twitter": ($twitter-blue, $white)), $colors)
+
 @import "bulma/bulma"
 
 @import "helpers"

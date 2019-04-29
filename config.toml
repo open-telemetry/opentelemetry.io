@@ -12,6 +12,16 @@ description = "Easily collect telemetry like metrics and distributed traces from
 [params.opentracing]
 description = "Vendor-neutral APIs and instrumentation for distributed tracing"
 
+[[menu.social]]
+url = "https://github.com/open-telemetry/open-telemetry"
+name = "GitHub"
+identifier = "github"
+
+[[menu.social]]
+url = "https://twitter.com/OpenTelemetry"
+name = "Twitter"
+identifier = "twitter"
+
 [[params.fonts]]
 name = "Roboto"
 sizes = [300,400,600,700]

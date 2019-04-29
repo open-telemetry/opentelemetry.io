@@ -1,3 +1,25 @@
-<nav class="navbar is-primary is-fixed-top">
-
+{{ $social := site.Menus.social }}
+<nav class="navbar is-white is-fixed-top">
+  <div class="container">
+    <div class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            {{ range $social }}
+            {{ $isGitHub := eq .Identifier "github" }}
+            {{ $color := cond $isGitHub "black" .Identifier }}
+            <a class="button is-{{ $color }} is-radiusless is-shadowless" href="{{ .URL }}" target="_blank">
+              <span class="icon">
+                <i class="fab fa-{{ .Identifier }}"></i>
+              </span>
+              <span class="has-text-weight-bold">
+                {{ .Name }}
+              </span>
+            </a>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </nav>
