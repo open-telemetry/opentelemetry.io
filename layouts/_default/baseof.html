@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-
+    {{ partial "css.html" . }}
   </head>
-  <body>
-    {{ block "main" . }}
-    {{ end }}
+  <body class="page has-navbar-fixed-top">
+    <main class="main">
+      {{ partial "navbar.html" . }}
+
+      {{ block "main" . }}
+      {{ end }}
+    </main>
   </body>
 </html>
