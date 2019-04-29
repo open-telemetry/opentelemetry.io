@@ -1,9 +1,14 @@
-{{ $title := .Title }}
+{{ $title   := .Title }}
+{{ $tagline := site.Params.tagline | markdownify }}
 <section class="hero is-primary">
   <div class="hero-body">
     <div class="container">
-      <p class="title is-size-1 is-size-2-mobile has-text-weight-light">
+      <p class="title is-size-1 is-size-2-mobile is-spaced has-text-weight-light">
         {{ $title }}
+      </p>
+
+      <p class="subtitle is-size-3 is-size-4-mobile has-text-weight-light">
+        {{ $tagline }}
       </p>
     </div>
   </div>

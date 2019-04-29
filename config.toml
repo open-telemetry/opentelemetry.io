@@ -3,6 +3,7 @@ baseURL = "https://opentelemetry.io"
 disableKinds = ["taxonomy", "taxonomyTerm"]
 
 [params]
+tagline = "A merger between the [OpenTracing](https://opentracing.io) and [OpenCensus](https://opencensus.io) projects"
 font_awesome_version = "5.8.1"
 
 [[params.fonts]]
