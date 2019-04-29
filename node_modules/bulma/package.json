@@ -1,0 +1,52 @@
+{
+  "name": "bulma",
+  "version": "0.7.4",
+  "homepage": "https://bulma.io",
+  "author": {
+    "name": "Jeremy Thomas",
+    "email": "bbxdesign@gmail.com",
+    "url": "https://jgthms.com"
+  },
+  "description": "Modern CSS framework based on Flexbox",
+  "main": "bulma.sass",
+  "unpkg": "css/bulma.css",
+  "style": "bulma/css/bulma.min.css",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jgthms/bulma.git"
+  },
+  "license": "MIT",
+  "keywords": [
+    "css",
+    "sass",
+    "flexbox",
+    "responsive",
+    "framework"
+  ],
+  "bugs": {
+    "url": "https://github.com/jgthms/bulma/issues"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.4.7",
+    "clean-css-cli": "^4.2.1",
+    "node-sass": "^4.11.0",
+    "postcss-cli": "^6.1.1",
+    "rimraf": "^2.6.3"
+  },
+  "scripts": {
+    "build": "npm run build-clean && npm run build-sass && npm run build-autoprefix && npm run build-cleancss",
+    "build-autoprefix": "postcss --use autoprefixer --map false --output css/bulma.css css/bulma.css",
+    "build-cleancss": "cleancss -o css/bulma.min.css css/bulma.css",
+    "build-clean": "rimraf css",
+    "build-sass": "node-sass --output-style expanded --source-map true bulma.sass css/bulma.css",
+    "deploy": "npm run build",
+    "start": "npm run build-sass -- --watch"
+  },
+  "files": [
+    "css",
+    "sass",
+    "bulma.sass",
+    "LICENSE",
+    "README.md"
+  ]
+}

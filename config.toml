@@ -1,0 +1,3 @@
+title = "OpenTelemetry"
+baseURL = "https://opentelemetry.io"
+disableKinds = ["taxonomy", "taxonomyTerm"]
