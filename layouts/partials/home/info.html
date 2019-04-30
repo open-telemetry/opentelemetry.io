@@ -1,8 +1,27 @@
 <section class="section">
   <div class="container">
-    <div class="columns">
-      {{ partial "project-card.html" (dict "project" "OpenTracing") }}
-      {{ partial "project-card.html" (dict "project" "OpenCensus") }}
+    <div class="columns is-vcentered">
+      <div class="column">
+        <p class="title is-size-2 is-size-3-mobile has-text-weight-light">
+          OpenTelemetry
+        </p>
+
+        <div class="content">
+          <p>
+            Initially, OpenTracing and OpenCensus were separate projects with related but independent goals. In 2019, it was decided that...
+          </p>
+        </div>
+      </div>
+
+      <div class="column has-text-centered">
+        {{ partial "project-card.html" (dict "project" "OpenTracing") }}
+
+        <p class="is-size-1 is-size-2-mobile has-text-grey">
+          +
+        </p>
+
+        {{ partial "project-card.html" (dict "project" "OpenCensus") }}
+      </div>
     </div>
   </div>
 </section>
