@@ -1,9 +1,13 @@
-{{ $title := .Title }}
-<section class="hero is-primary">
-  <div class="hero-body">
+{{ $title   := .Title }}
+{{ $tagline := site.Params.tagline | markdownify }}
+{{ $logo    := "/img/logos/opentracing-horizontal-white.png" | relURL }}
+<section class="hero is-primary is-medium">
+  <div class="hero-body has-text-centered">
     <div class="container">
-      <p class="title is-size-1 is-size-2-mobile has-text-weight-light">
-        {{ $title }}
+      <img class="main-hero-logo" src="{{ $logo }}">
+
+      <p class="subtitle is-size-3 is-size-5-mobile has-text-weight-light">
+        {{ $tagline }}
       </p>
     </div>
   </div>

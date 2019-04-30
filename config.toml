@@ -3,7 +3,27 @@ baseURL = "https://opentelemetry.io"
 disableKinds = ["taxonomy", "taxonomyTerm"]
 
 [params]
+tagline = "A merger between the [OpenTracing](https://opentracing.io) and [OpenCensus](https://opencensus.io) projects"
 font_awesome_version = "5.8.1"
+
+[params.logos]
+navbar = "opentelemetry-horizontal-color.png"
+
+[params.opencensus]
+description = "Easily collect telemetry like metrics and distributed traces from your services"
+
+[params.opentracing]
+description = "Vendor-neutral APIs and instrumentation for distributed tracing"
+
+[[menu.social]]
+url = "https://github.com/open-telemetry/open-telemetry"
+name = "GitHub"
+identifier = "github"
+
+[[menu.social]]
+url = "https://twitter.com/OpenTelemetry"
+name = "Twitter"
+identifier = "twitter"
 
 [[params.fonts]]
 name = "Roboto"
