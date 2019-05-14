@@ -16,7 +16,7 @@ description = "Easily collect telemetry like metrics and distributed traces from
 description = "Vendor-neutral APIs and instrumentation for distributed tracing"
 
 [[menu.social]]
-url = "https://github.com/open-telemetry/open-telemetry"
+url = "https://github.com/open-telemetry/"
 name = "GitHub"
 identifier = "github"
 
