@@ -1,0 +1,12 @@
+- q: What is OpenTelemetry?
+  a: |
+    OpenTelemetry is an integrated set of APIs and libraries that generate, collect, and describe telemetry about distributed systems. This data includes basic context propagation, distributed traces, metrics, and other signals in the future. OpenTelemetry is designed to make it easy to get critical telemetry data out of your services: for each supported language it offers a single set of APIs, libraries, and data specifications, and developers can take advantage of whichever components they see fit.
+- q: What about OpenTracing and OpenCensus?
+  a: |
+    OpenTelemetry is the next major version of [OpenTracing](https://opentracing.io) and [OpenCensus](https://opencensus.io). The leadership of OpenCensus and OpenTracing have come together to create OpenTelemetry, and it will supersede both projects. You can read more in [this post about the OpenTelemetry roadmap](https://medium.com/opentracing/a-roadmap-to-convergence-b074e5815289).
+- q: I want to start instrumenting production code today. What should I use?
+  a: |
+    We are still working on the first production-ready release of OpenTelemetry. For those who want to start instrumenting production code immediately, use either OpenCensus or OpenTracing. OpenTelemetry will provide compatibility bridges and there is no need to wait for production-ready OpenTelemetry APIs in your language.
+- q: I want to help influence the future direction of cloud-native telemetry. What should I do?
+  a: |
+    You should join us in the OpenTelemetry community! You can find more details in the [OpenTelemetry community repo](https://github.com/open-telemetry/community) on GitHub: all are welcome and there’s lots to do.
