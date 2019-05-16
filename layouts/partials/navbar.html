@@ -1,13 +1,8 @@
 {{ $home   := site.BaseURL }}
-{{ $logo   := printf "/img/logos/%s" site.Params.logos.navbar | relURL }}
 {{ $social := site.Menus.social }}
-<nav class="navbar is-white is-fixed-top">
+<nav class="navbar is-primary is-fixed-top">
   <div class="container">
     <div class="navbar-brand">
-      <a class="navbar-item" href="{{ $home }}">
-        <img src="{{ $logo }}" alt="OpenTelemetry project logo">
-      </a>
-
       <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
