@@ -1,0 +1,32 @@
+{{ $faq := site.Data.faq }}
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-3">
+
+      </div>
+
+      <div class="column">
+          <p class="title is-size-2 is-size-3-mobile has-text-weight-light">
+            FAQ
+          </p>
+      
+          {{ range $faq }}
+          {{ $question := .q | markdownify }}
+          {{ $answer   := .a | markdownify }}
+          <div class="faq">
+            <p class="title is-size-4 is-size-5-mobile is-spaced">
+              {{ $question }}
+            </p>
+          
+            <p class="subtitle is-size-5 is-size-6-mobile">
+              {{ $answer }}
+            </p>
+          </div>
+          {{ end }}
+      </div>
+    </div>
+
+    
+  </div>
+</section>

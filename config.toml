@@ -3,7 +3,7 @@ baseURL = "https://opentelemetry.io"
 disableKinds = ["taxonomy", "taxonomyTerm"]
 
 [params]
-tagline = "Effective observability requires high-quality telemetry."
+tagline = "Effective observability requires high-quality telemetry"
 sub_tagline = "**OpenTelemetry** makes robust, portable telemetry a built-in feature of cloud-native software."
 font_awesome_version = "5.8.1"
 
