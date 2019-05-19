@@ -1,10 +1,10 @@
 {{ $faq := site.Data.faq }}
 <section class="section">
   <div class="container">
-    <div class="columns">
+    <div class="columns is-variable is-8">
       <div class="column is-3">
         <p class="title is-size-3 is-size-4-mobile has-text-weight-bold">
-          OpenTelemetry FAQ
+          FAQ
         </p>
 
         <hr class="highlight" />
@@ -15,7 +15,7 @@
         {{ $question := .q | markdownify }}
         {{ $answer   := .a | markdownify }}
         <div class="faq">
-          <p class="title is-size-4 is-size-5-mobile is-spaced has-text-weight-light">
+          <p class="title is-size-4 is-size-5-mobile is-spaced has-text-weight-light is-spaced">
             {{ $question }}
           </p>
         

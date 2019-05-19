@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="42.96px"
+	 height="39.712px" viewBox="0 0 42.96 39.712" enable-background="new 0 0 42.96 39.712" xml:space="preserve">
+<pattern  x="-78.946" y="-69.783" width="100" height="100" patternUnits="userSpaceOnUse" id="New_Pattern_Swatch_4" viewBox="0 -100 100 100" overflow="visible">
+	<g>
+		<polygon fill="none" points="0,0 100,0 100,-100 0,-100 		"/>
+		<polygon fill="#4D4D4D" points="100,0 0,0 0,-100 100,-100 		"/>
+	</g>
+</pattern>
+<pattern  x="-78.946" y="-69.783" width="100" height="99.999" patternUnits="userSpaceOnUse" id="New_Pattern_Swatch_5" viewBox="0 -99.999 100 99.999" overflow="visible">
+	<g>
+		<polygon fill="none" points="0,0 100,0 100,-99.999 0,-99.999 		"/>
+		<polygon fill="#C1272D" points="100,0 0,0 0,-99.999 100,-99.999 		"/>
+	</g>
+</pattern>
+<pattern  x="-78.946" y="-69.783" width="100" height="100" patternUnits="userSpaceOnUse" id="New_Pattern_Swatch_6" viewBox="0 -100 100 100" overflow="visible">
+	<g>
+		<polygon fill="none" points="0,0 100,0 100,-100 0,-100 		"/>
+		<polygon fill="#E6E6E6" points="100,0 0,0 0,-100 100,-100 		"/>
+	</g>
+</pattern>
+<g id="Layer_1">
+	<rect x="-166.657" y="-125.455" fill="#4D4D4D" width="100" height="100"/>
+	<rect x="-166.657" y="-16.901" fill="#C1272D" width="100" height="99.999"/>
+	<rect x="-166.657" y="91.652" fill="#E6E6E6" width="100" height="100"/>
+</g>
+<g id="Text">
+	<path fill="url(#New_Pattern_Swatch_6)" d="M28.566,12.106c4.279,4.28,4.279,11.218,0,15.5l0,0l5.493,5.493
+		c7.312-7.309,7.312-19.16,0-26.469c0,0,0,0,0-0.002"/>
+	<path fill="url(#New_Pattern_Swatch_5)" d="M34.051,6.62C26.74-0.69,14.889-0.688,7.581,6.621c-7.311,7.31-7.309,19.162,0,26.471
+		c7.309,7.309,19.161,7.309,26.471,0l-5.493-5.496c-4.283,4.283-11.222,4.283-15.501,0c-4.278-4.279-4.278-11.218,0-15.498
+		c4.282-4.281,11.218-4.281,15.501,0l0,0l5.493-5.494"/>
+	<path fill="url(#New_Pattern_Swatch_4)" d="M39.146,4.02c0,0-10.168,15.121-14.708,19.095c-0.251,0.219-0.294,0.25-0.392,0.328
+		c-2.109,1.742-5.226,1.481-7.012-0.589l-0.1-0.12c-1.765-2.083-1.467-5.221,0.589-7.022c0.092-0.082,0.111-0.102,0.358-0.305
+		c4.661-3.829,21.264-11.379,21.264-11.379l0,0V4.02z"/>
+</g>
+</svg>

@@ -1,0 +1,37 @@
+{{ $otIcon := "img/logos/opentracing-icon-color.png" | relURL }}
+{{ $ocIcon := "img/logos/opencensus-icon-color.png" | relURL }}
+<section class="section has-text-centered">
+  <div class="container">
+    <p class="title is-size-3 is-size-4-mobile has-text-weight-light">
+      OpenTelemetry is the next major version of the <a href="https://opentracing.io" target="_blank">OpenTracing</a> and <a href="https://opencensus.io" target="_blank">OpenCensus</a> projects
+    </p>
+
+    <br />
+
+    <div class="columns is-vcentered">
+      <div class="column">
+        <a href="https://opentracing.io" target="_blank">
+          <img class="project-logo" src="{{ $otIcon }}">
+        </a>
+      </div>
+
+      <div class="column is-2">
+        <p class="is-size-1 is-size-2-mobile has-text-weight-bold">
+          +
+        </p>
+      </div>
+
+      <div class="column">
+        <a href="https://opencensus.io" target="_blank">
+          <img class="project-logo" src="{{ $ocIcon }}">
+        </a>
+      </div>
+    </div>
+
+    <br />
+
+    <p class="is-size-4 is-size-5-mobile has-text-weight-light">
+      The leadership of OpenCensus and OpenTracing have come together to create OpenTelemetry, and it will supersede both projects. You can read more in <a href="https://medium.com/opentracing/a-roadmap-to-convergence-b074e5815289">this post about the OpenTelemetry roadmap</a>.
+    </p>
+  </div>
+</section>
