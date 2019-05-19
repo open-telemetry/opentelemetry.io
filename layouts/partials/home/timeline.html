@@ -13,7 +13,7 @@
           <thead>
             <tr>
               <th>
-                Event
+                Milestone
               </th>
               <th>
                 Date
@@ -24,7 +24,7 @@
             {{ range $timeline }}
             <tr>
               <td>
-                {{ .event }}{{ if .asterisk }}<strong>*</strong>{{ end }}
+                {{ .milestone }}{{ if .asterisk }}<strong>*</strong>{{ end }}
               </td>
               <td>
                 {{ .date }}

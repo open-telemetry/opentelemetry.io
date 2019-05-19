@@ -1,14 +1,14 @@
-- event: Project launch
+- milestone: Project launch
   date: May 2019
-- event: Reference candidate released (Java)
+- milestone: Reference candidate released (Java)
   date: June 2019
   asterisk: true
-- event: Language libraries released (Golang, Python, NodeJS, C#)
+- milestone: Language libraries released (Golang, Python, NodeJS, C#)
   date: September 2019
   asterisk: true
-- event: Opencensus and OpenTracing libraries Sunset
+- milestone: Opencensus and OpenTracing libraries Sunset
   date: November 2019
   asterisk: true
-- event: OpenTelemetry at Kubecon San Diego
+- milestone: OpenTelemetry at Kubecon San Diego
   date: November 2019
   asterisk: true

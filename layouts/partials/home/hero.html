@@ -2,10 +2,10 @@
 {{ $tagline    := site.Params.tagline | markdownify }}
 {{ $subtagline := site.Params.sub_tagline | markdownify }}
 {{ $logo       := printf "/img/logos/%s" site.Params.logos.hero | relURL }}
-<section class="hero">
+<section class="hero is-medium">
   <div class="hero-body">
     <div class="container">
-      <div class="columns is-vcentered">
+      <div class="columns is-vcentered is-variable is-8">
         <div class="column has-text-centered">
           <img class="main-hero-logo" src="{{ $logo }}">
         </div>
