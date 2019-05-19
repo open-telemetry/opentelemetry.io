@@ -12,12 +12,6 @@ navbar = "opentelemetry-horizontal-white.png"
 hero = "opentelemetry-horizontal-color.png"
 cncf = "cncf.png"
 
-[params.opencensus]
-description = "Easily collect telemetry like metrics and distributed traces from your services"
-
-[params.opentracing]
-description = "Vendor-neutral APIs and instrumentation for distributed tracing"
-
 [[menu.social]]
 url = "https://github.com/open-telemetry/"
 name = "GitHub"

@@ -1,2 +1,28 @@
+{{ $description := site.Params.tagline }}
+{{ $favicon     := "favicon.png" | absURL }}
 <meta charset="utf-8">
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+<meta name="description" content="{{ $description }}" />
+
+<!-- OpenGraph metadata-->
+<meta property="og:title" content="{{ site.Title }}">
+<meta property="og:type" content="documentation">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="{{ site.Title }}">
+
+<meta property="og:description" content="{{ $description }}">
+<meta name="og:type" content="website">
+<meta name="og:image" content="">
+<meta name="og:image:alt" content="containerd project logo">
+<meta name="og:image:type" content="image/png">
+
+
+<!-- Twitter Card metadata -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@OpenTelemetry">
+<meta name="twitter:creator" content="@OpenTelemetry">
+
+<link rel="canonical" content="{{ .Permalink }}">
+<link rel="shortcut icon" href="{{ $favicon }}" type="image/png">
+{{ hugo.Generator }}
