@@ -1,0 +1,24 @@
+{{ $learnMore := site.Data.learn }}
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-3">
+        <p class="title is-size-3 is-size-4-mobile has-text-weight-bold">
+          Learn more
+        </p>
+      </div>
+
+      <div class="column">
+        <ul>
+          {{ range $learnMore }}
+          <li>
+            <a class="is-size-5 is-size-6-mobile" href="{{ .url }}" target="_blank">
+              {{ .title }}
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
