@@ -6,10 +6,8 @@
     </title>
     {{ partial "css.html" . }}
   </head>
-  <body class="page has-navbar-fixed-top">
+  <body class="page">
     <main class="main">
-      {{ partial "navbar.html" . }}
-
       {{ block "main" . }}
       {{ end }}
     </main>
