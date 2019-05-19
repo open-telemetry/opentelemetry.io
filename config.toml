@@ -10,6 +10,7 @@ font_awesome_version = "5.8.1"
 [params.logos]
 navbar = "opentelemetry-horizontal-white.png"
 hero = "opentelemetry-horizontal-color.png"
+cncf = "cncf.png"
 
 [params.opencensus]
 description = "Easily collect telemetry like metrics and distributed traces from your services"
@@ -26,6 +27,11 @@ identifier = "github"
 url = "https://twitter.com/OpenTelemetry"
 name = "Twitter"
 identifier = "twitter"
+
+[[menu.social]]
+url = "https://gitter.im/open-telemetry/community"
+name = "Gitter"
+identifier = "gitter"
 
 [[params.fonts]]
 name = "Roboto"
