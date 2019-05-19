@@ -2,31 +2,27 @@
 <section class="section">
   <div class="container">
     <div class="columns">
-      <div class="column is-3">
-
+      <div class="column is-2">
+        <p class="title is-size-2 is-size-3-mobile has-text-weight-bold">
+          FAQ
+        </p>
       </div>
 
       <div class="column">
-          <p class="title is-size-2 is-size-3-mobile has-text-weight-light">
-            FAQ
+        {{ range $faq }}
+        {{ $question := .q | markdownify }}
+        {{ $answer   := .a | markdownify }}
+        <div class="faq">
+          <p class="title is-size-3 is-size-4-mobile is-spaced has-text-weight-light">
+            {{ $question }}
           </p>
-      
-          {{ range $faq }}
-          {{ $question := .q | markdownify }}
-          {{ $answer   := .a | markdownify }}
-          <div class="faq">
-            <p class="title is-size-4 is-size-5-mobile is-spaced">
-              {{ $question }}
-            </p>
-          
-            <p class="subtitle is-size-5 is-size-6-mobile">
-              {{ $answer }}
-            </p>
-          </div>
-          {{ end }}
+        
+          <p class="subtitle is-size-5 is-size-6-mobile has-text-weight-light">
+            {{ $answer }}
+          </p>
+        </div>
+        {{ end }}
       </div>
     </div>
-
-    
   </div>
 </section>

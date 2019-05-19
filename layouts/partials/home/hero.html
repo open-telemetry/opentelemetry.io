@@ -2,18 +2,24 @@
 {{ $tagline    := site.Params.tagline | markdownify }}
 {{ $subtagline := site.Params.sub_tagline | markdownify }}
 {{ $logo       := printf "/img/logos/%s" site.Params.logos.hero | relURL }}
-<section class="hero is-medium">
-  <div class="hero-body has-text-centered">
+<section class="hero">
+  <div class="hero-body">
     <div class="container">
-      <img class="main-hero-logo" src="{{ $logo }}">
+      <div class="columns is-vcentered">
+        <div class="column has-text-centered">
+          <img class="main-hero-logo" src="{{ $logo }}">
+        </div>
 
-      <p class="subtitle is-size-3 is-size-5-mobile has-text-weight-light">
-        {{ $tagline }}
-      </p>
-
-      <p class="is-size-4 has-text-weight-light">
-        {{ $subtagline }}
-      </p>
+        <div class="column">
+          <p class="subtitle is-size-3 is-size-4-mobile has-text-weight-light">
+            {{ $tagline }}
+          </p>
+    
+          <p class="is-size-4 is-size-5-mobile has-text-weight-light">
+            {{ $subtagline }}
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
