@@ -1,0 +1,43 @@
+{{ $timeline := site.Data.timeline }}
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-3">
+        <p class="title is-size-3 is-size-4-mobile has-text-weight-bold">
+          OpenTelemetry timeline
+        </p>
+      </div>
+
+      <div class="column">
+        <table class="table is-fullwidth">
+          <thead>
+            <tr>
+              <th>
+                Event
+              </th>
+              <th>
+                Date
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {{ range $timeline }}
+            <tr>
+              <td>
+                {{ .event }}{{ if .asterisk }}<strong>*</strong>{{ end }}
+              </td>
+              <td>
+                {{ .date }}
+              </td>
+            </tr>
+            {{ end }}
+          </tbody>
+        </table>
+
+        <p class="is-size-5 is-size-6-mobile has-text-weight-light">
+          <strong>*</strong> Dates are subject to change based on community participation and other factors
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

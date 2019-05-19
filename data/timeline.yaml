@@ -1,0 +1,14 @@
+- event: Project launch
+  date: May 2019
+- event: Reference candidate released (Java)
+  date: June 2019
+  asterisk: true
+- event: Language libraries released (Golang, Python, NodeJS, C#)
+  date: September 2019
+  asterisk: true
+- event: Opencensus and OpenTracing libraries Sunset
+  date: November 2019
+  asterisk: true
+- event: OpenTelemetry at Kubecon San Diego
+  date: November 2019
+  asterisk: true
