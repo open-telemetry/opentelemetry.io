@@ -1,5 +1,6 @@
 {{ $description := site.Params.tagline }}
 {{ $favicon     := "favicon.png" | absURL }}
+{{ $image       := "img/logos/opentelemetry-horizontal-color.png" | absURL }}
 <meta charset="utf-8">
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 <meta name="description" content="{{ $description }}" />
@@ -13,7 +14,7 @@
 
 <meta property="og:description" content="{{ $description }}">
 <meta name="og:type" content="website">
-<meta name="og:image" content="">
+<meta name="og:image" content="{{ $image }}">
 <meta name="og:image:alt" content="OpenTelemetry project logo">
 <meta name="og:image:type" content="image/png">
 
