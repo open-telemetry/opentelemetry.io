@@ -7,7 +7,7 @@
           FAQ
         </p>
 
-        <hr class="highlight" />
+        <hr class="highlight is-secondary" />
       </div>
 
       <div class="column">
@@ -15,11 +15,11 @@
         {{ $question := .q | markdownify }}
         {{ $answer   := .a | markdownify }}
         <div class="faq">
-          <p class="title is-size-4 is-size-5-mobile is-spaced has-text-weight-light is-spaced">
+          <p class="title is-size-4 is-size-5-mobile is-spaced">
             {{ $question }}
           </p>
         
-          <p class="subtitle is-size-5 is-size-6-mobile has-text-weight-light">
+          <p class="subtitle is-size-5 is-size-6-mobile">
             {{ $answer }}
           </p>
         </div>

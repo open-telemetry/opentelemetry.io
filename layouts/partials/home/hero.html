@@ -18,12 +18,14 @@
           <p class="is-size-3 is-size-4-mobile has-text-weight-light">
             {{ $subtagline }}
           </p>
+
+          <hr class="highlight" />
+
+          <br />
+
+          {{ partial "social-buttons.html" (dict "centered" false) }}
         </div>
       </div>
-
-      <br />
-
-      {{ partial "social-buttons.html" (dict "centered" true) }}
     </div>
   </div>
 </section>

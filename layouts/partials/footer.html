@@ -1,8 +1,12 @@
 {{ $year := now.Year }}
-<footer class="footer has-background-dark">
+<footer class="footer">
   <div class="container">
-    <p class="has-text-weight-light has-text-light">
-      Copyright &copy; OpenTelemetry Authors {{ $year }}
-    </p>
+    <section class="has-text-centered">
+      {{ partial "social-buttons.html" (dict "centered" true) }}
+
+      <p class="is-size-5 is-size-6-mobile has-text-weight-light">
+        Copyright &copy; OpenTelemetry Authors {{ $year }}
+      </p>
+    </section>
   </div>
 </footer>

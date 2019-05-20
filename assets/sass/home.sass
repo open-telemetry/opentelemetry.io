@@ -23,9 +23,17 @@
     width: 70%
 
 hr.highlight
-  width: 2rem
-  background-color: $secondary
-  height: 4px
+  width: 3rem
+  background-color: $primary
+  height: 5px
+
+  &.is-secondary
+    background-color: $secondary
 
 .project-logo
-  width: 25%
+  +desktop
+    width: 50%
+  +tablet
+    width: 40%
+  +mobile
+    width: 17.5%

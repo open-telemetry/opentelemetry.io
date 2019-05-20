@@ -7,10 +7,10 @@
           OpenTelemetry timeline
         </p>
 
-        <hr class="highlight" />
+        <hr class="highlight is-secondary" />
       </div>
 
-      <div class="column">
+      <div class="column content is-medium">
         <table class="table is-fullwidth">
           <thead>
             <tr>
@@ -26,7 +26,7 @@
             {{ range $timeline }}
             <tr>
               <td>
-                {{ .milestone }}{{ if .asterisk }}<strong>*</strong>{{ end }}
+                {{ .milestone }}{{ if .asterisk }}<sup><strong>*</strong></sup>{{ end }}
               </td>
               <td>
                 {{ .date }}
@@ -36,8 +36,10 @@
           </tbody>
         </table>
 
+        <br />
+
         <p class="is-size-5 is-size-6-mobile has-text-weight-light">
-          <strong>*</strong> Dates are subject to change based on community participation and other factors
+          <sup><strong>*</strong></sup> Dates are subject to change based on community participation and other factors
         </p>
       </div>
     </div>

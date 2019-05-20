@@ -7,19 +7,17 @@
           Learn more
         </p>
 
-        <hr class="highlight" />
+        <hr class="highlight is-secondary" />
       </div>
 
       <div class="column">
-        <ul>
+        <div class="list is-hoverable is-radiusless is-borderless">
           {{ range $learnMore }}
-          <li>
-            <a class="is-size-5 is-size-6-mobile" href="{{ .url }}" target="_blank">
-              {{ .title }}
-            </a>
-          </li>
+          <a class="list-item is-size-5 is-size-6-mobile has-background-white" href="{{ .url }}" target="_blank">
+            {{ .title }}
+          </a>
           {{ end }}
-        </ul>
+        </div>
       </div>
     </div>
   </div>
