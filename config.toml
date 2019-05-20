@@ -8,7 +8,6 @@ sub_tagline = "**OpenTelemetry** makes robust, portable telemetry a built-in fea
 font_awesome_version = "5.8.1"
 
 [params.logos]
-navbar = "opentelemetry-horizontal-white.png"
 hero = "opentelemetry-horizontal-color.png"
 cncf = "cncf.png"
 

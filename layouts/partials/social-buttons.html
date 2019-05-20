@@ -3,7 +3,7 @@
   {{ range $social }}
   {{ $isGithub := eq .Identifier "github" }}
   {{ $color := cond $isGithub "black" .Identifier }}
-  <a class="button is-{{ $color }}" href="{{ .URL }}" target="_blank">
+  <a class="button is-{{ $color }} is-radiusless" href="{{ .URL }}" target="_blank">
     <span class="icon">
       <i class="fab fa-{{ .Identifier }}"></i>
     </span>

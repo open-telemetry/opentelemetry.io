@@ -1,5 +1,4 @@
-{{ $home   := site.BaseURL }}
-{{ $social := site.Menus.social }}
+{{ $home := site.BaseURL }}
 <nav class="navbar is-primary is-fixed-top">
   <div class="container">
     <div class="navbar-brand">
@@ -13,20 +12,7 @@
     <div class="navbar-menu" id="navbar-menu">
       <div class="navbar-end">
         <div class="navbar-item">
-          <div class="buttons">
-            {{ range $social }}
-            {{ $isGitHub := eq .Identifier "github" }}
-            {{ $color := cond $isGitHub "black" .Identifier }}
-            <a class="button is-{{ $color }} is-radiusless is-shadowless" href="{{ .URL }}" target="_blank">
-              <span class="icon">
-                <i class="fab fa-{{ .Identifier }}"></i>
-              </span>
-              <span class="has-text-weight-bold">
-                {{ .Name }}
-              </span>
-            </a>
-            {{ end }}
-          </div>
+          {{ partial "social-buttons.html" (dict "centered" false) }}
         </div>
       </div>
     </div>
