@@ -16,10 +16,10 @@ url = "https://github.com/open-telemetry/"
 name = "GitHub"
 identifier = "github"
 
-#[[menu.social]]
-#url = "https://twitter.com/OpenTelemetry"
-#name = "Twitter"
-#identifier = "twitter"
+[[menu.social]]
+url = "https://twitter.com/opentelemetry"
+name = "Twitter"
+identifier = "twitter"
 
 [[menu.social]]
 url = "https://gitter.im/open-telemetry/community"
