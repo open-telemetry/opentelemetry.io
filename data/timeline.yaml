@@ -6,9 +6,9 @@
 - milestone: Language libraries released (Golang, Python, NodeJS, C#)
   date: September 2019
   asterisk: true
-- milestone: Opencensus and OpenTracing libraries Sunset
+- milestone: Sunsetting of the Opencensus and OpenTracing libraries
   date: November 2019
   asterisk: true
-- milestone: OpenTelemetry at Kubecon San Diego
+- milestone: OpenTelemetry at KubeCon San Diego
   date: November 2019
   asterisk: true
