@@ -6,6 +6,19 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
 tagline = "Effective observability requires high-quality telemetry"
 sub_tagline = "**OpenTelemetry** makes robust, portable telemetry a built-in feature of cloud-native software."
 font_awesome_version = "5.8.1"
+observability = """
+The term [**observability**](https://en.wikipedia.org/wiki/Observability) stems from the discipline of [control theory](https://en.wikipedia.org/wiki/Control_theory) and refers to how well a system can be understood on the basis of the **telemetry** that it produces.
+
+In software, observability typically refers to telemetry produced by **services** and is divided into three major verticals:
+
+* [**Tracing**](https://opentracing.io/docs/overview/what-is-tracing) 
+* [**Metrics**](https://opencensus.io/stats)
+* **Logging**
+
+OpenTelemetry is an effort to combine all three verticals into a *single system*. It replaces the [OpenTracing](https://opentracing.io) project, which focused exclusively on tracing, and the [OpenCensus](https://opencensus.io) project, which focused on tracing and metrics.
+
+Intially, OpenTelemetry will not support logging
+"""
 
 [params.logos]
 hero = "opentelemetry-horizontal-color.png"
