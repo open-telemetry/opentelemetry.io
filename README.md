@@ -1,2 +1,13 @@
 # opentelemetry.io
-The OpenTelemetry website and documentation
+
+This repo houses the source code for the [OpenTelemetry](https://opentelemetry.io) website and documentation.
+
+## Publishing the site
+
+The OpenTelemetry website is published automatically by [Netlify](https://netlify.com). When changes are pushed to the `master` branch, Netlify re-builds and re-deploys the site and stages a deploy preview for those changes.
+
+> Site adminstrators can access the admin interface [here](https://app.netlify.com/sites/opentelemetry/overview).
+
+### Deploy previews
+
+Whenever you submit a pull request to this repo, Netlify creates a [deploy preview](https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/) for the changes in that specific PR. You can view the deploy preview in the Netlify panel that appears under the PR description.
