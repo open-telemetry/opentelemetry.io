@@ -11,13 +11,13 @@ The term [**observability**](https://en.wikipedia.org/wiki/Observability) stems 
 
 In software, observability typically refers to telemetry produced by **services** and is divided into three major verticals:
 
-* [**Tracing**](https://opentracing.io/docs/overview/what-is-tracing) 
-* [**Metrics**](https://opencensus.io/stats)
-* **Logging**
+* [**Tracing**](https://opentracing.io/docs/overview/what-is-tracing), aka **distrbuted tracing**, provides insight into the full lifecycles, aka *traces*, of requests to the system, allowing you to pinpoint failures and performance issues.  
+* [**Metrics**](https://opencensus.io/stats) provide quantitative information about processes running inside the system, including counters, gauges, and histograms. This domain also encompasses querying that data and configuring automated responses to quantitatively specified abormal states.
+* [**Logging**](https://en.wikipedia.org/wiki/Log_file) provides insight into application-specific messages emitted by processes.
 
-OpenTelemetry is an effort to combine all three verticals into a *single system*. It replaces the [OpenTracing](https://opentracing.io) project, which focused exclusively on tracing, and the [OpenCensus](https://opencensus.io) project, which focused on tracing and metrics.
+OpenTelemetry is an effort to combine all three verticals into a single set of system components and language-specific telemetry libraries. It is meant to replace both the [OpenTracing](https://opentracing.io) project, which focused exclusively on tracing, and the [OpenCensus](https://opencensus.io) project, which focused on tracing and metrics.
 
-Intially, OpenTelemetry will not support logging
+Intially, OpenTelemetry will not support logging. This vertical will be incorporated over time.
 """
 
 [params.logos]
