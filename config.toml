@@ -11,11 +11,11 @@ The term [**observability**](https://en.wikipedia.org/wiki/Observability) stems 
 
 In software, observability typically refers to telemetry produced by **services** and is divided into three major verticals:
 
-* [**Tracing**](https://opentracing.io/docs/overview/what-is-tracing), aka **distrbuted tracing**, provides insight into the full lifecycles, aka *traces*, of requests to the system, allowing you to pinpoint failures and performance issues.  
+* [**Tracing**](https://opentracing.io/docs/overview/what-is-tracing), aka **distributed tracing**, provides insight into the full lifecycles, aka *traces*, of requests to the system, allowing you to pinpoint failures and performance issues.  
 * [**Metrics**](https://opencensus.io/stats) provide quantitative information about processes running inside the system, including counters, gauges, and histograms.
 * [**Logging**](https://en.wikipedia.org/wiki/Log_file) provides insight into application-specific messages emitted by processes.
 
-These verticals are tightly interconnected. **Metrics** can be used to pinpoint, for example, a subset of misbehaving **traces**. **Logs** associated with those traces could help to find the root cause of this behavior. And then new **metrics** can be configured, based on this discovery, to catch this issue earler next time.
+These verticals are tightly interconnected. **Metrics** can be used to pinpoint, for example, a subset of misbehaving **traces**. **Logs** associated with those traces could help to find the root cause of this behavior. And then new **metrics** can be configured, based on this discovery, to catch this issue earlier next time.
 
 OpenTelemetry is an effort to combine all three verticals into a single set of system components and language-specific telemetry libraries. It is meant to replace both the [OpenTracing](https://opentracing.io) project, which focused exclusively on tracing, and the [OpenCensus](https://opencensus.io) project, which focused on tracing and metrics.
 
