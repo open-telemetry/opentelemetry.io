@@ -1,9 +1,25 @@
 - title: "Merging OpenTracing and OpenCensus: Goals and Non-Goals"
   url: https://medium.com/opentracing/merging-opentracing-and-opencensus-f0fe9c7ca6f0
-  date: 03-28-2019
+  source:
+    title: The OpenTracing blog
+    url: https://medium.com/opentracing
 - title: "Merging OpenTracing and OpenCensus: A Roadmap to Convergence"
   url: https://medium.com/opentracing/a-roadmap-to-convergence-b074e5815289
-  date: 04-19-2019
+  source:
+    title: The OpenTracing blog
+    url: https://medium.com/opentracing
 - title: OpenTelemetry presentation to the CNCF Technical Oversight Committee (video)
   url: https://www.youtube.com/watch?v=Igl6xRAsN7k&feature=youtu.be&t=2505
-  date: 05-07-2019
+  source:
+    title: CNCF Technical Oversight Committee meeting
+    url: https://github.com/cncf/toc/
+- title: A Brief History of OpenTelemetry (So Far)
+  url: https://www.cncf.io/blog/2019/05/21/a-brief-history-of-opentelemetry-so-far/
+  source:
+    title: The CNCF blog
+    url: https://blog.cncf.io
+- title: Jaeger and OpenTelemetry
+  url: https://medium.com/jaegertracing/jaeger-and-opentelemetry-1846f701d9f2
+  source:
+    title: The Jaeger blog
+    url: https://medium.com/jaegertracing

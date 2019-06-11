@@ -11,13 +11,34 @@
       </div>
 
       <div class="column">
-        <div class="list is-hoverable is-radiusless">
-          {{ range $learnMore }}
-          <a class="list-item is-size-5 is-size-6-mobile has-background-white" href="{{ .url }}" target="_blank">
-            {{ .title }}
-          </a>
-          {{ end }}
-        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>
+                Article or video
+              </th>
+              <th>
+                Source
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {{ range $learnMore }}
+            <tr>
+              <td>
+                <a href="{{ .url }}" target="_blank">
+                  {{ .title }}
+                </a>
+              </td>
+              <td>
+                <a href="{{ .source.url }}" target="_blank">
+                  {{ .source.title }}
+                </a>
+              </td>
+            </tr>
+            {{ end }}
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
