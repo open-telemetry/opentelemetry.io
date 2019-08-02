@@ -6,7 +6,7 @@
     We are still working on the first production-ready release of OpenTelemetry. For those who want to start instrumenting production code immediately, use either [OpenCensus](https://opencensus.io) or [OpenTracing](https://opentracing.io). OpenTelemetry will provide compatibility bridges and there is no need to wait for production-ready OpenTelemetry APIs in your language.
 - q: I want to help influence the future direction of cloud-native telemetry. What should I do?
   a: |
-    Excellent! The [OpenTelemetry community repo](https://github.com/open-telemetry/community) has the full details, but here a re a few good starting points:
+    Excellent! The [OpenTelemetry community repo](https://github.com/open-telemetry/community) has the full details, but here are a few good starting points:
     - Join our [community mailing list](https://lists.cncf.io/g/cncf-opentelemetry-community)
     - Keep up to date with the [OpenTelemetry blog](https://medium.com/opentelemetry)
     - We also have a very active chatroom on [Gitter](https://gitter.im/open-telemetry/community)
