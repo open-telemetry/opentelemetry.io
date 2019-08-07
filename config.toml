@@ -2,6 +2,9 @@ title = "OpenTelemetry"
 baseURL = "https://opentelemetry.io"
 disableKinds = ["taxonomy", "taxonomyTerm"]
 
+[blackfriday]
+hrefTargetBlank = true
+
 [params]
 tagline = "Effective observability requires high-quality telemetry"
 sub_tagline = "**OpenTelemetry** makes robust, portable telemetry a built-in feature of cloud-native software."
