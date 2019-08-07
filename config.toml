@@ -41,6 +41,16 @@ url = "https://gitter.im/open-telemetry/community"
 name = "Gitter"
 identifier = "gitter"
 
+[[menu.social]]
+url = "https://medium.com/opentelemetry"
+name = "medium"
+identifier = "medium"
+
+[[menu.social]]
+url = "https://lists.cncf.io/g/cncf-opentelemetry-community"
+name = "mail"
+identifier = "mail"
+
 [[params.fonts]]
 name = "Noto Sans"
 sizes = [300,400,600,700]
