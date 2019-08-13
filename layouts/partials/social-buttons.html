@@ -1,14 +1,14 @@
-{{ $social := site.Menus.social }}
+{{ $social := site.Params.social }}
 <div class="buttons{{ if .centered }} is-centered{{ end }}">
   {{ range $social }}
   {{ $isGithub := eq .Identifier "github" }}
-  {{ $color := cond $isGithub "black" .Identifier }}
-  <a class="button is-{{ $color }} is-radiusless" href="{{ .URL }}" target="_blank">
+  {{ $color := .color | default "white" }}
+  <a class="button is-{{ .color }} is-radiusless" href="{{ .url }}" target="_blank">
     <span class="icon">
-      <i class="fab fa-{{ .Identifier }}"></i>
+      <i class="{{ .icon }}"></i>
     </span>
     <span class="has-text-weight-bold">
-      {{ .Name }}
+      {{ .name }}
     </span>
   </a>
   {{ end }}
