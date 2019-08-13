@@ -29,30 +29,35 @@ OpenTelemetry will not initially support logging, though we aim to incorporate t
 hero = "opentelemetry-horizontal-color.png"
 cncf = "cncf.png"
 
-[[menu.social]]
+[[params.social]]
 url = "https://github.com/open-telemetry/"
 name = "GitHub"
-identifier = "github"
+color = "black"
+icon = "fab fa-github"
 
-[[menu.social]]
+[[params.social]]
 url = "https://twitter.com/opentelemetry"
 name = "Twitter"
-identifier = "twitter"
+color = "twitter"
+icon = "fab fa-twitter"
 
-[[menu.social]]
+[[params.social]]
 url = "https://gitter.im/open-telemetry/community"
 name = "Gitter"
-identifier = "gitter"
+color = "gitter"
+icon = "fab fa-gitter"
 
-[[menu.social]]
+[[params.social]]
 url = "https://medium.com/opentelemetry"
-name = "medium"
-identifier = "medium"
+name = "Medium"
+color = "light"
+icon = "fab fa-medium"
 
-[[menu.social]]
+[[params.social]]
 url = "https://lists.cncf.io/g/cncf-opentelemetry-community"
-name = "mail"
-identifier = "mail"
+name = "Mailing list"
+color = "info"
+icon = "fas fa-envelope"
 
 [[params.fonts]]
 name = "Noto Sans"
