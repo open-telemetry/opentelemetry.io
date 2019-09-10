@@ -6,12 +6,12 @@
   contextDate: 9/15/19
   contextStatus: incomplete
   otCompatDate: 9/1/19
-  otCompatStatus: incomplete
+  otCompatStatus: complete
   ocCompatDate: 9/1/19
-  ocCompatStatus: incomplete
+  ocCompatStatus: complete
 - sig: .NET
   tracingDate: 9/30/19
-  tracingStatus: complete
+  tracingStatus: incomplete
   metricsDate: 9/30/19
   metricsStatus: incomplete
   contextDate: 9/30/19
