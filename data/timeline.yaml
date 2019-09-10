@@ -1,10 +1,12 @@
 - milestone: Project launch
   date: May 2019
-- milestone: Reference candidate released (Java)
-  date: June 2019
-  asterisk: true
-- milestone: Language libraries released (Golang, Python, NodeJS, C#)
+- milestone: Specification released - Tracing, Metrics, Context
   date: September 2019
+- milestone: Language libraries released - Golang, Python, NodeJS, Java
+  date: September 2019
+  asterisk: true
+- milestone: Language library released - C#
+  date: October 2019
   asterisk: true
 - milestone: Sunsetting of the OpenCensus and OpenTracing libraries
   date: November 2019
