@@ -1,14 +1,3 @@
-- sig: Spec
-  tracingDate: 9/1/19
-  tracingStatus: complete
-  metricsDate: 9/15/19
-  metricsStatus: incomplete
-  contextDate: 9/15/19
-  contextStatus: incomplete
-  otCompatDate: 9/1/19
-  otCompatStatus: complete
-  ocCompatDate: 9/1/19
-  ocCompatStatus: complete
 - sig: .NET
   tracingDate: 9/30/19
   tracingStatus: incomplete
