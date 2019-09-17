@@ -1,69 +1,16 @@
-{{ $status := site.Data.bigboard }}
 <section class="section">
   <div class="container">
     <div class="columns">
       <div class="column is-3">
         <p class="title is-size-3 is-size-4-mobile has-text-weight-bold">
-          Status - Alpha Release
+          Status
         </p>
 
         <hr class="highlight is-secondary" />
       </div>
 
       <div class="column content is-medium">
-        <table class="table is-fullwidth">
-          <thead>
-            <tr>
-              <th>
-                SIG
-              </th>
-              <th>
-                Tracing
-              </th>
-              <th>
-                Metrics
-              </th>
-              <th>
-                Context
-              </th>
-              <th>
-                OpenTracing Bridge
-              </th>
-              <th>
-                OpenCensus Bridge
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {{ range $status }}
-            <tr>
-              <td>
-                {{ .sig }}
-              </td>
-              <td class="{{.tracingStatus}}">
-                {{ .tracingDate }}
-              </td>
-              <td class="{{.metricsStatus}}">
-                {{ .metricsDate }}
-              </td>
-              <td class="{{.contextStatus}}">
-                {{ .contextDate }}
-              </td>
-              <td class="{{.otCompatStatus}}">
-                {{ .otCompatDate }}
-              </td>
-              <td class="{{.ocCompatStatus}}">
-                {{ .ocCompatDate }}
-              </td>
-            </tr>
-            {{ end }}
-          </tbody>
-        </table>
-        <br />
-
-        <sup>
-          A green cell indicates that the specified component has been released.
-        </sup>
+        <img src="/img/timeline.png" />
       </div>
     </div>
   </div>
