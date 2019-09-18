@@ -5,6 +5,7 @@
     <title>
       {{ block "title" . }}{{ site.Title }} | {{ site.Params.tagline }}{{ end }}
     </title>
+    {{ partial "header.html" . }}
     {{ partial "css.html" . }}
   </head>
   <body class="page">

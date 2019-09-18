@@ -1,0 +1,37 @@
+{{ $links := site.Params.links }}
+<nav class="navbar" role="navigation" aria-label="main-navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+      <img src="/img/logos/opentelemetry-icon-color.png">
+    </a>
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarItems">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+  </div>
+  <div id="navbarItems" class="navbar-menu">
+    <div class="navbar-start">
+      {{- range $links }}
+      {{- if.url }}
+      <a class="navbar-item" href="{{ .url }}">{{ .name }}</a>
+      {{- else }}
+      <a class="navbar-item" href="{{ .localUrl }}">{{ .name }}</a>
+      {{- end }}
+      {{- end }}
+    </div>
+  </div>
+  <!-- we could add a button or whatever here? 
+  <div class="navbar-end">
+    <div class="navbar-item">
+      <div class="buttons">
+        <a class="button is-primary">
+          <strong>Get Updates</strong>
+        </a>
+      </div>
+    </div>
+  </div>
+  -->
+
+
+</nav>

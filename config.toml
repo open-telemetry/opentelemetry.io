@@ -63,3 +63,11 @@ icon = "far fa-envelope"
 name = "Noto Sans"
 sizes = [300,400,600,700]
 type = "sans_serif"
+
+[[params.links]]
+name = "About"
+localUrl = "/about"
+
+[[params.links]]
+name = "Get Started"
+localUrl = "/get-started"
