@@ -1,0 +1,38 @@
+{{ $projects := site.Data.progress }}
+{{ $yOffset := 140 }}
+
+<svg class="progressChart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1000">
+<title>Progress Chart</title>
+<g id="chartTop">
+  <text class="yLabel" x="400" y="75">Alpha</text>
+  <text class="yLabel" x="700" y="75">Beta</text>
+  <text class="yLabel" x="1000" y="75">RC</text>
+  <text class="yLabel" x="1300" y="75">v1.0</text>
+
+  <line class="stroke" x1="150" y1="100" x2="1500" y2="100" />
+  
+  <line class="stroke" x1="400" y1="100" x2="400" y2="900" />
+  <line class="stroke" x1="700" y1="100" x2="700" y2="900" />
+  <line class="stroke" x1="1000" y1="100" x2="1000" y2="900" />
+  <line class="stroke" x1="1300" y1="100" x2="1300" y2="900" />
+
+  <line class="dashStroke" x1="225" y1="100" x2="225" y2="900" />
+  <line class="dashStroke" x1="550" y1="100" x2="550" y2="900" />
+  <line class="dashStroke" x1="850" y1="100" x2="850" y2="900" />
+  <line class="dashStroke" x1="1150" y1="100" x2="1150" y2="900" />
+  <line class="dashStroke" x1="1450" y1="100" x2="1450" y2="900" />
+</g>
+{{- range $projects }}
+<g id="chartItem">
+  <text class="xLabel" x="0" y="{{ add $yOffset 30}}" dominantBaseline="middle">{{ .project }}</text>
+  <a href={{ .url | default "/" }}>
+    <rect class="languageBarBase" x="200" y="{{ $yOffset }}" width="100%" height="35"></rect>
+    <rect class="languageBarCurrent" x="200" y="{{ $yOffset }}" width="{{ .progress}}" height="35"></rect>
+</a>
+</g>
+{{ $yOffset = add $yOffset 65}}
+{{ end }}
+<g id="chartBottom">
+  <line class="stroke" x1="150" y1="900" x2="1500" y2="900" />
+</g>
+</svg>

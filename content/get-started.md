@@ -2,7 +2,11 @@
 Title: "Getting Started"
 ---
 
-So you want to know how to contribute to OpenTelemetry! 
+So you want to know how to *contribute* to OpenTelemetry! 
+
+```
+var foo = bar;
+```
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet est placerat in. Orci phasellus egestas tellus rutrum tellus pellentesque eu tincidunt tortor. Cursus risus at ultrices mi tempus. Vitae purus faucibus ornare suspendisse sed nisi lacus. Morbi quis commodo odio aenean. Sed velit dignissim sodales ut eu sem integer vitae justo. Consectetur libero id faucibus nisl tincidunt eget nullam non. Velit aliquet sagittis id consectetur purus ut faucibus pulvinar. Nam libero justo laoreet sit amet cursus sit. Rhoncus mattis rhoncus urna neque viverra. Enim lobortis scelerisque fermentum dui faucibus in ornare. Non diam phasellus vestibulum lorem. Nisl suscipit adipiscing bibendum est ultricies integer quis auctor. Quam viverra orci sagittis eu. Ipsum dolor sit amet consectetur.
 

@@ -1,0 +1,33 @@
+$strokeColor: #b3b3b3
+$yLabelFill: #999
+$xLabelFill: #000000
+$labelFont: "Noto Sans"
+
+$languageBaseColor: lightgreen
+$languageCurrentColor: darkgreen
+
+.progressChart
+  .stroke, .dashStroke
+    stroke: $strokeColor
+    stroke-miterlimit: 10;
+    stroke-width: 2px;
+  
+  .dashStroke
+    stroke-dasharray: 12 12;
+  
+  .yLabel
+    font-size: 34px;
+    fill: $yLabelFill
+    font-family: $labelFont
+  
+  .xLabel
+    font-size: 34px;
+    fill: $xLabelFill
+    font-family: $labelFont
+    font-weight: bold
+
+  .languageBarBase
+    fill: $languageBaseColor
+  
+  .languageBarCurrent
+    fill: $languageCurrentColor
