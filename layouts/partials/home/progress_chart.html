@@ -1,9 +1,16 @@
 {{ $projects := site.Data.progress }}
 {{ $yOffset := 140 }}
+{{ $valueMap := newScratch }}
+{{ $valueMap.Set "init" "30" }}
+{{ $valueMap.Set "alpha" "200" }}
+{{ $valueMap.Set "beta" "500" }}
+{{ $valueMap.Set "rc" "800" }}
+{{ $valueMap.Set "v1" "1100" }}
 
 <svg class="progressChart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1000">
 <title>Progress Chart</title>
 <g id="chartTop">
+  <text class="yLabel" x="0" y="75">Project</text>
   <text class="yLabel" x="400" y="75">Alpha</text>
   <text class="yLabel" x="700" y="75">Beta</text>
   <text class="yLabel" x="1000" y="75">RC</text>
@@ -27,7 +34,7 @@
   <text class="xLabel" x="0" y="{{ add $yOffset 30}}" dominantBaseline="middle">{{ .project }}</text>
   <a href={{ .url | default "/" }}>
     <rect class="languageBarBase" x="200" y="{{ $yOffset }}" width="100%" height="35"></rect>
-    <rect class="languageBarCurrent" x="200" y="{{ $yOffset }}" width="{{ .progress}}" height="35"></rect>
+    <rect class="languageBarCurrent" x="200" y="{{ $yOffset }}" width="{{ $valueMap.Get .progress }}" height="35"></rect>
 </a>
 </g>
 {{ $yOffset = add $yOffset 65}}
