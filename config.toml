@@ -9,21 +9,6 @@ hrefTargetBlank = true
 tagline = "Effective observability requires high-quality telemetry"
 sub_tagline = "**OpenTelemetry** makes robust, portable telemetry a built-in feature of cloud-native software."
 font_awesome_version = "5.8.1"
-observability = """
-The term [**observability**](https://en.wikipedia.org/wiki/Observability) stems from the discipline of [control theory](https://en.wikipedia.org/wiki/Control_theory) and refers to how well a system can be understood on the basis of the **telemetry** that it produces.
-
-In software, observability typically refers to telemetry produced by **services** and is divided into three major verticals:
-
-* [**Tracing**](https://opentracing.io/docs/overview/what-is-tracing), aka **distributed tracing**, provides insight into the full lifecycles, aka *traces*, of requests to the system, allowing you to pinpoint failures and performance issues.  
-* [**Metrics**](https://opencensus.io/stats) provide quantitative information about processes running inside the system, including counters, gauges, and histograms.
-* [**Logging**](https://en.wikipedia.org/wiki/Log_file) provides insight into application-specific messages emitted by processes.
-
-These verticals are tightly interconnected. **Metrics** can be used to pinpoint, for example, a subset of misbehaving **traces**. **Logs** associated with those traces could help to find the root cause of this behavior. And then new **metrics** can be configured, based on this discovery, to catch this issue earlier next time.
-
-OpenTelemetry is an effort to combine all three verticals into a single set of system components and language-specific telemetry libraries. It is meant to replace both the [OpenTracing](https://opentracing.io) project, which focused exclusively on tracing, and the [OpenCensus](https://opencensus.io) project, which focused on tracing and metrics.
-
-OpenTelemetry will not initially support logging, though we aim to incorporate this over time.
-"""
 
 [params.logos]
 hero = "opentelemetry-horizontal-color.png"
