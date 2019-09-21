@@ -1,7 +1,20 @@
 $strokeColor: #b3b3b3
-$yLabelFill: #999
+$yLabelFill: #999999
 $xLabelFill: #000000
 $labelFont: "Noto Sans"
+
+$netColor: #178600
+$golangColor: #00ADD8
+$jsColor: #f1e05a
+$javaColor: #b07219
+$pyColor: #3572A5
+$rbColor: #701516
+$phpColor: #4F5D95
+$erlangColor: #B83998
+$cppColor: #f34b7d
+$collectorColor: #FF7F50
+
+$baseLightenPercentage: 20%
 
 $languageBaseColor: rgb(169,240,214)
 $languageCurrentColor: rgb(53,220,160)
@@ -25,9 +38,48 @@ $languageCurrentColor: rgb(53,220,160)
     fill: $xLabelFill
     font-family: $labelFont
     font-weight: bold
-
-  .languageBarBase
-    fill: $languageBaseColor
   
-  .languageBarCurrent
-    fill: $languageCurrentColor
+  .netColor
+    fill: $netColor
+    
+    &.isBase
+      fill: lighten($netColor, $baseLightenPercentage)
+  
+  .golangColor
+    fill: $golangColor
+
+    &.isBase
+      fill: lighten($golangColor, $baseLightenPercentage)
+  
+  .jsColor
+    fill: $jsColor
+    &.isBase
+      fill: lighten($jsColor, $baseLightenPercentage)
+  .javaColor
+    fill: $javaColor
+    &.isBase
+      fill: lighten($javaColor, $baseLightenPercentage)
+  .pyColor
+    fill: $pyColor
+    &.isBase
+      fill: lighten($pyColor, $baseLightenPercentage)
+  .rbColor
+    fill: $rbColor
+    &.isBase
+      fill: lighten($rbColor, $baseLightenPercentage)
+  .phpColor
+    fill: $phpColor
+    &.isBase
+      fill: lighten($phpColor, $baseLightenPercentage)
+  .erlangColor
+    fill: $erlangColor
+    &.isBase
+      fill: lighten($erlangColor, $baseLightenPercentage)
+  .cppColor
+    fill: $cppColor
+    &.isBase
+      fill: lighten($cppColor, $baseLightenPercentage)
+  .collectorColor
+    fill: $collectorColor
+    &.isBase
+      fill: lighten($collectorColor, $baseLightenPercentage)

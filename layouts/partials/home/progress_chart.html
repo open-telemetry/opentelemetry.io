@@ -7,6 +7,19 @@
 {{ $valueMap.Set "rc" "800" }}
 {{ $valueMap.Set "v1" "1100" }}
 
+{{ $colorMap := newScratch }}
+{{ $colorMap.Set ".NET" "netColor" }}
+{{ $colorMap.Set "Go" "golangColor" }}
+{{ $colorMap.Set "Node.JS" "jsColor" }}
+{{ $colorMap.Set "Browser" "jsColor" }}
+{{ $colorMap.Set "Java" "javaColor" }}
+{{ $colorMap.Set "Python" "pyColor" }}
+{{ $colorMap.Set "Ruby" "rbColor" }}
+{{ $colorMap.Set "PHP" "phpColor" }}
+{{ $colorMap.Set "Erlang" "erlangColor" }}
+{{ $colorMap.Set "C++" "cppColor" }}
+{{ $colorMap.Set "Collector" "collectorColor" }}
+
 <svg class="progressChart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1000">
 <title>Progress Chart</title>
 <g id="chartTop">
@@ -33,8 +46,8 @@
 <g id="chartItem">
   <text class="xLabel" x="0" y="{{ add $yOffset 30}}" dominantBaseline="middle">{{ .project }}</text>
   <a href={{ .url | default "/" }}>
-    <rect class="languageBarBase" x="200" y="{{ $yOffset }}" width="100%" height="35"></rect>
-    <rect class="languageBarCurrent" x="200" y="{{ $yOffset }}" width="{{ $valueMap.Get .progress }}" height="35"></rect>
+    <rect class="{{ $colorMap.Get .project }} isBase" x="200" y="{{ $yOffset }}" width="100%" height="35"></rect>
+    <rect class="{{ $colorMap.Get .project }}" x="200" y="{{ $yOffset }}" width="{{ $valueMap.Get .progress }}" height="35"></rect>
 </a>
 </g>
 {{ $yOffset = add $yOffset 65}}
