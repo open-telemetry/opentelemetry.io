@@ -1,0 +1,14 @@
+- name: About
+  url: "/about"
+- name: Specification
+  url: "https://github.com/open-telemetry/opentelemetry-specification"
+- name: "Get Started"
+  url: "/get-started"
+- headerName: "More"
+  headerValues:
+    - name: "Project Status"
+      url: "/project-status"
+    - name: "Get Involved"
+      url: "/get-involved"
+
+    

@@ -1,4 +1,4 @@
-{{ $links := site.Params.links }}
+{{ $links := site.Data.nav }}
 <nav class="navbar" role="navigation" aria-label="main-navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="/">
@@ -13,25 +13,39 @@
   <div id="navbarItems" class="navbar-menu">
     <div class="navbar-start">
       {{- range $links }}
-      {{- if.url }}
-      <a class="navbar-item" href="{{ .url }}">{{ .name }}</a>
-      {{- else }}
-      <a class="navbar-item" href="{{ .localUrl }}">{{ .name }}</a>
-      {{- end }}
+        {{- if .url }}
+          <a class="navbar-item" href="{{ .url }}">{{ .name }}</a>
+        {{- else }}
+          <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">{{ .headerName }}</a>
+            <div class="navbar-dropdown">
+              {{- range .headerValues }}
+              <a class="navbar-item" href="{{.url}}">{{.name}}</a>
+              {{- end}}
+            </div>
+          </div>
+        {{- end }}
       {{- end }}
     </div>
   </div>
-  <!-- we could add a button or whatever here? 
+  
   <div class="navbar-end">
     <div class="navbar-item">
       <div class="buttons">
-        <a class="button is-primary">
-          <strong>Get Updates</strong>
+        <a class="button is-black is-radiusless" href="https://github.com/open-telemetry" target="_blank">
+          <span class="icon">
+            <i class="fab fa-github"></i>
+          </span>
+          <span class="has-text-weight-bold">GitHub</span>
         </a>
+      <a class="button is-gitter is-radiusless" href="https://gitter.im/open-telemetry/community" target="_blank">
+        <span class="icon">
+          <i class="fab fa-gitter"></i>
+        </span>
+        <span class="has-text-weight-bold">Gitter</span>
+      </a>
       </div>
     </div>
   </div>
-  -->
-
-
 </nav>
+
