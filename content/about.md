@@ -31,3 +31,14 @@ You can see our current status at the [release calendar](/release-calendar).
 
 ### I want to help influence the future direction of cloud-native telemetry. What should I do?
 Excellent! The OpenTelemetry community repo has the full details, but here are a few good starting points: - Join our community mailing list - Keep up to date with the OpenTelemetry blog - We also have a very active chatroom on Gitter - All project meetings are shared on the public calendar (web, gCal, iCal), and we recommend attending the monthly community meeting - If your contributions will be focused on a particular language or feature area, join the special interest group leading its development
+
+## Learn More
+
+| Article | Source |
+|---------|--------|
+| [OpenTelemetry July Community Update](https://medium.com/opentelemetry/opentelemetry-monthly-update-july-2019-de11bac4b607) | [OpenTelemetry Blog](https://medium.com/opentelemetry)           |
+| [Merging OpenTracing and OpenCensus: Goals and Non-Goals](https://medium.com/opentracing/merging-opentracing-and-opencensus-f0fe9c7ca6f0) | [OpenTracing Blog](https://medium.com/opentracing) |
+| [Merging OpenTracing and OpenCensus: A Roadmap to Convergence](https://medium.com/opentracing/a-roadmap-to-convergence-b074e5815289)      | [OpenTracing Blog](https://medium.com/opentracing) |
+| [OpenTelemetry presentation to the CNCF Technical Oversight Committee (video)](https://www.youtube.com/watch?v=Igl6xRAsN7k&feature=youtu.be&t=2505) | [CNCF Technical Oversight Committee meeting](https://github.com/cncf/toc/) |
+| [A Brief History of OpenTelemetry (So Far)](https://www.cncf.io/blog/2019/05/21/a-brief-history-of-opentelemetry-so-far/)       | [CNCF Blog](https://www.cncf.io/newsroom/blog/)       |
+| [Jaeger and OpenTelemetry](https://medium.com/jaegertracing/jaeger-and-opentelemetry-1846f701d9f2)       | [Jaeger Blog](https://medium.com/jaegertracing)       |
