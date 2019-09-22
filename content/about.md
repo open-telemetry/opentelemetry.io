@@ -1,6 +1,7 @@
 ---
 Title: "About"
 ---
+{{< project >}}
 
 OpenTelemetry is an open source observability framework. It is a [CNCF Sandbox](https://www.cncf.io/sandbox-projects/) member, formed through a merger of the [OpenTracing](https://www.opentracing.io) and [OpenCensus](https://www.opencensus.io) projects. The goal of OpenTelemetry is to provide a general-purpose API, SDK, and related tools required for the instrumentation of cloud-native software, frameworks, and libraries. 
 
