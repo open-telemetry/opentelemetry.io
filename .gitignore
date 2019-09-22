@@ -4,3 +4,6 @@ resources/
 
 # npm assets
 node_modules/
+
+# ignore themes
+themes/
