@@ -46,7 +46,7 @@
 <g id="chartItem">
   <text class="xLabel" x="0" y="{{ add $yOffset 30}}" dominantBaseline="middle">{{ .project }}</text>
   <a href={{ .url | default "/" }}>
-    <rect class="{{ $colorMap.Get .project }} isBase" x="200" y="{{ $yOffset }}" width="100%" height="35"></rect>
+    <rect class="{{ $colorMap.Get .project }} isBase" x="200" y="{{ $yOffset }}" width="1500" height="35"></rect>
     <rect class="{{ $colorMap.Get .project }}" x="200" y="{{ $yOffset }}" width="{{ $valueMap.Get .progress }}" height="35"></rect>
 </a>
 </g>
