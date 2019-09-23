@@ -20,10 +20,13 @@
           <p class="is-size-3-desktop is-size-4-tablet is-size-5-mobile has-text-weight-light">
             {{ $subtagline }}
           </p>
+        
+          <br/><br/>
+          <p class="is-size-4-desktop is-size-5-tablet is-size-6-mobile has-text-weight-bold">
+            The latest from our blog - 
+          </p>
 
-          <br /><br />
-
-          {{ partial "social-buttons.html" (dict "centered" false) }}
+          {{ partial "home/blog.html" (dict "centered" false) }}
         </div>
       </div>
     </div>
