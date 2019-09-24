@@ -14,10 +14,7 @@ $erlangColor: #B83998
 $cppColor: #f34b7d
 $collectorColor: #FF7F50
 
-$baseLightenPercentage: 20%
-
-$languageBaseColor: rgb(169,240,214)
-$languageCurrentColor: rgb(53,220,160)
+$baseLightenPercentage: 80%
 
 .progressChart
   .stroke, .dashStroke
@@ -43,43 +40,43 @@ $languageCurrentColor: rgb(53,220,160)
     fill: $netColor
     
     &.isBase
-      fill: lighten($netColor, $baseLightenPercentage)
+      fill: scale-color($netColor, $lightness: $baseLightenPercentage)
   
   .golangColor
     fill: $golangColor
 
     &.isBase
-      fill: lighten($golangColor, $baseLightenPercentage)
+      fill: scale-color($golangColor, $lightness: $baseLightenPercentage)
   
   .jsColor
     fill: $jsColor
     &.isBase
-      fill: lighten($jsColor, $baseLightenPercentage)
+      fill: scale-color($jsColor, $lightness: $baseLightenPercentage)
   .javaColor
     fill: $javaColor
     &.isBase
-      fill: lighten($javaColor, $baseLightenPercentage)
+      fill: scale-color($javaColor, $lightness: $baseLightenPercentage)
   .pyColor
     fill: $pyColor
     &.isBase
-      fill: lighten($pyColor, $baseLightenPercentage)
+      fill: scale-color($pyColor, $lightness: $baseLightenPercentage)
   .rbColor
     fill: $rbColor
     &.isBase
-      fill: lighten($rbColor, $baseLightenPercentage)
+      fill: scale-color($rbColor, $lightness: $baseLightenPercentage)
   .phpColor
     fill: $phpColor
     &.isBase
-      fill: lighten($phpColor, $baseLightenPercentage)
+      fill: scale-color($phpColor, $lightness: $baseLightenPercentage)
   .erlangColor
     fill: $erlangColor
     &.isBase
-      fill: lighten($erlangColor, $baseLightenPercentage)
+      fill: scale-color($erlangColor, $lightness: $baseLightenPercentage)
   .cppColor
     fill: $cppColor
     &.isBase
-      fill: lighten($cppColor, $baseLightenPercentage)
+      fill: scale-color($cppColor, $lightness: $baseLightenPercentage)
   .collectorColor
     fill: $collectorColor
     &.isBase
-      fill: lighten($collectorColor, $baseLightenPercentage)
+      fill: scale-color($collectorColor, $lightness: $baseLightenPercentage)
