@@ -1,41 +1,23 @@
+{{ $blogData := getJSON "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2Fopentelemetry" }}
+
+{{ range first 1 $blogData.items }}
 <div class="card">
+  {{ if in .thumbnail ".png" }}
   <div class="card-image">
     <figure class="image">
-      <img src="" id="blog-image" />
+      <img src="{{ .thumbnail }}" id="blog-image" />
     </figure>
   </div>
+  {{ end }}
   <div class="card-content">
-    <p class="title is-4" id="blog-title"></p>
-    <p class="subtitle is-6" id="blog-author"></p>
+    <p class="title is-4" id="blog-title">{{ .title }}</p>
+    <p class="subtitle is-6" id="blog-author">{{ .author }}</p>
   </div>
   <footer class="card-footer">
-    <p class="card-footer-item">Posted on&nbsp;<span id="blog-date"></span></p>
+    <p class="card-footer-item">Posted on&nbsp;<span id="blog-date">{{ dateFormat "January 2, 2006" .pubDate }}</span></p>
     <p class="card-footer-item">
-      <span>Read more on <a href="#" id="blog-link">Medium</a></span>
+      <span>Read more on <a href="{{ .link }}" id="blog-link">Medium</a></span>
     </p>
   </footer>
 </div>
-
-<script type="text/javascript">
-  fetch(
-    "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2Fopentelemetry"
-  )
-    .then(function(res) {
-      res.json().then(function(data) {
-        let item = data.items[0];
-        let dateString = new Date(item.pubDate).toDateString();
-
-        document.getElementById("blog-title").innerHTML = item.title;
-        document.getElementById("blog-author").innerHTML = item.author;
-        document.getElementById("blog-link").href = item.link;
-        document.getElementById("blog-date").innerHTML = dateString;
-        if (item.thumbnail.endsWith("png")) {
-          document.getElementById("blog-image").src = item.thumbnail;
-        }
-      });
-    })
-    .catch(function() {
-      document.getElementById("blog-title").innerHTML =
-        "Could not fetch stories.";
-    });
-</script>
+{{ end }}
