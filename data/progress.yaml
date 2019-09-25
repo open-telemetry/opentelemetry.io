@@ -4,7 +4,7 @@
 - project: Go
   progress: alpha
   url: https://github.com/open-telemetry/opentelemetry-go
-- project: Node.JS
+- project: JavaScript
   progress: alpha
   url: https://github.com/open-telemetry/opentelemetry-javascript
 - project: Java
@@ -18,8 +18,6 @@
 - project: PHP
   progress: init
 - project: Erlang
-  progress: init
-- project: Browser
   progress: init
 - project: C++
   progress: init

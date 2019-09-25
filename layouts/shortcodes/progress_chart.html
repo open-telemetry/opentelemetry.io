@@ -10,8 +10,7 @@
 {{ $colorMap := newScratch }}
 {{ $colorMap.Set ".NET" "netColor" }}
 {{ $colorMap.Set "Go" "golangColor" }}
-{{ $colorMap.Set "Node.JS" "jsColor" }}
-{{ $colorMap.Set "Browser" "jsColor" }}
+{{ $colorMap.Set "JavaScript" "jsColor" }}
 {{ $colorMap.Set "Java" "javaColor" }}
 {{ $colorMap.Set "Python" "pyColor" }}
 {{ $colorMap.Set "Ruby" "rbColor" }}
@@ -20,7 +19,7 @@
 {{ $colorMap.Set "C++" "cppColor" }}
 {{ $colorMap.Set "Collector" "collectorColor" }}
 
-<svg class="progressChart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1000">
+<svg class="progressChart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 800">
 <title>Progress Chart</title>
 <g id="chartTop">
   <text class="yLabel" x="0" y="75">Project</text>
@@ -53,6 +52,6 @@
 {{ $yOffset = add $yOffset 65}}
 {{ end }}
 <g id="chartBottom">
-  <line class="stroke" x1="150" y1="900" x2="1500" y2="900" />
+  <line class="stroke" x1="150" y1="800" x2="1500" y2="800" />
 </g>
 </svg>
