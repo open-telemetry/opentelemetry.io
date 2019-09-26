@@ -11,3 +11,7 @@ preview-build:
 production-build:
 	hugo \
 		--minify
+
+get-milestones:
+	npm install
+	node -r esm ./scripts/fetchMilestones.js

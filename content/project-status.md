@@ -7,7 +7,6 @@ support for OpenTelemetry features in each language by clicking on its progress 
 Generally, we anticipate to release a **beta** by the end of 2019, and **v1** in the first quarter of 2020.
 
 # Current SIG Progress
-
 {{< progress_chart >}}
 
 # Status Definitions

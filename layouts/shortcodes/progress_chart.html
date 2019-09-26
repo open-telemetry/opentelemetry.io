@@ -1,57 +1,54 @@
-{{ $projects := site.Data.progress }}
-{{ $yOffset := 140 }}
-{{ $valueMap := newScratch }}
-{{ $valueMap.Set "init" "30" }}
-{{ $valueMap.Set "alpha" "200" }}
-{{ $valueMap.Set "beta" "500" }}
-{{ $valueMap.Set "rc" "800" }}
-{{ $valueMap.Set "v1" "1100" }}
+{{ $chart := site.Data.progress_generated }}
+{{ $data := $chart.data }}
 
-{{ $colorMap := newScratch }}
-{{ $colorMap.Set ".NET" "netColor" }}
-{{ $colorMap.Set "Go" "golangColor" }}
-{{ $colorMap.Set "JavaScript" "jsColor" }}
-{{ $colorMap.Set "Java" "javaColor" }}
-{{ $colorMap.Set "Python" "pyColor" }}
-{{ $colorMap.Set "Ruby" "rbColor" }}
-{{ $colorMap.Set "PHP" "phpColor" }}
-{{ $colorMap.Set "Erlang" "erlangColor" }}
-{{ $colorMap.Set "C++" "cppColor" }}
-{{ $colorMap.Set "Collector" "collectorColor" }}
+{{ $width := $chart.width }}
+{{ $height := add 140 (mul (len $data) 65) }}
 
-<svg class="progressChart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 800">
-<title>Progress Chart</title>
-<g id="chartTop">
-  <text class="yLabel" x="0" y="75">Project</text>
-  <text class="yLabel" x="400" y="75">Alpha</text>
-  <text class="yLabel" x="700" y="75">Beta</text>
-  <text class="yLabel" x="1000" y="75">RC</text>
-  <text class="yLabel" x="1300" y="75">v1.0</text>
+{{ $labelIndex := newScratch }}
 
-  <line class="stroke" x1="150" y1="100" x2="1500" y2="100" />
-  
-  <line class="stroke" x1="400" y1="100" x2="400" y2="900" />
-  <line class="stroke" x1="700" y1="100" x2="700" y2="900" />
-  <line class="stroke" x1="1000" y1="100" x2="1000" y2="900" />
-  <line class="stroke" x1="1300" y1="100" x2="1300" y2="900" />
-
-  <line class="dashStroke" x1="225" y1="100" x2="225" y2="900" />
-  <line class="dashStroke" x1="550" y1="100" x2="550" y2="900" />
-  <line class="dashStroke" x1="850" y1="100" x2="850" y2="900" />
-  <line class="dashStroke" x1="1150" y1="100" x2="1150" y2="900" />
-  <line class="dashStroke" x1="1450" y1="100" x2="1450" y2="900" />
+<svg class="progressChart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {{ $width }} {{ add 5 $height }}">
+<title>{{ $chart.title }}</title>
+<g id="chartBounds">
+  <line class="stroke" x1="0" y1="100" x2="{{ $width }}" y2="100" />
+  <line class="stroke" x1="0" y1="{{ $height }}" x2="{{ $width }}" y2="{{ $height }}" />
 </g>
-{{- range $projects }}
-<g id="chartItem">
-  <text class="xLabel" x="0" y="{{ add $yOffset 30}}" dominantBaseline="middle">{{ .project }}</text>
-  <a href={{ .url | default "/" }}>
-    <rect class="{{ $colorMap.Get .project }} isBase" x="200" y="{{ $yOffset }}" width="1500" height="35"></rect>
-    <rect class="{{ $colorMap.Get .project }}" x="200" y="{{ $yOffset }}" width="{{ $valueMap.Get .progress }}" height="35"></rect>
-</a>
+<g id="chartColumns">
+  {{ $xPos := 200 }}
+  {{ $yPos := 75 }}
+  {{ $interval := div (sub $width 200) (len $chart.columns) }}
+  {{ $dashInterval := div $interval 2 }}
+  <text class="yLabel" x="0" y="{{ $yPos }}">Project</text>
+  <line class="dashStroke" x1="{{ add $xPos $dashInterval }}" y1="100" x2="{{ add $xPos $dashInterval }}" y2="{{ $height }}" />
+  <line class="stroke" x1="{{ add $xPos $interval }}" y1="100" x2="{{ add $xPos $interval }}" y2="{{ $height }}" />
+  {{ $xPos = add $xPos $interval }}
+  {{- range $chart.columns }}
+    {{ $labelIndex.Set .label $xPos }}
+    <text class="yLabel" x="{{ $xPos }}" y="{{ $yPos }}">{{ .label }}</text>
+    <line class="dashStroke" x1="{{ add $xPos $dashInterval }}" y1="100" x2="{{ add $xPos $dashInterval }}" y2="{{ $height }}" />
+    <line class="stroke" x1="{{ add $xPos $interval }}" y1="100" x2="{{ add $xPos $interval }}" y2="{{ $height }}" />
+    {{ $xPos = add $xPos $interval }}
+  {{ end }}
 </g>
-{{ $yOffset = add $yOffset 65}}
-{{ end }}
-<g id="chartBottom">
-  <line class="stroke" x1="150" y1="800" x2="1500" y2="800" />
+<g id="chartRows">
+  {{ $yOffset := 140 }}
+  {{ $xOffset := 200 }}
+  {{- range $data }}
+    {{ $progressDiffValuePx := 0 }}
+    {{ $msMaxProgress := $labelIndex.Get .msLabel }}
+    {{ $msMinProgress := sub $msMaxProgress $interval }}
+    {{ if ne .openIssues 0 }}
+      {{ $progressDiffPct := div .closedIssues (float .openIssues ) }}
+      {{ $progressDiffValuePx = mul $progressDiffPct $interval }}
+    {{ else }}
+      {{ $progressDiffValuePx = 10 }}
+    {{ end }}
+    {{ $progressPx := sub (add $msMinProgress $progressDiffValuePx) $xOffset }}
+    <text class="xLabel" x="0" y="{{ add $yOffset 30}}" dominantBaseline="middle">{{ .label }}</text>
+    <a href="{{ .sourceUrl }}">
+      <rect class='color__{{ trim .label ".+" }} isBase' x="{{ $xOffset }}" y="{{ $yOffset }}" width="{{ $width }}" height="35"></rect>
+      <rect class='color__{{ trim .label ".+" }}' x="{{ $xOffset }}" y="{{ $yOffset }}" width="{{ $progressPx }}" height="35"></rect>
+    </a>
+    {{ $yOffset = add $yOffset 65 }}
+  {{ end }}
 </g>
 </svg>
