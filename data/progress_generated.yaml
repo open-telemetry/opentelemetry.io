@@ -12,30 +12,36 @@ data:
   - label: .NET
     sourceUrl: https://github.com/open-telemetry/opentelemetry-dotnet
     msLabel: v0.1
-    openIssues: 0
-    closedIssues: 0
+    openIssues: 8
+    closedIssues: 20
+    totalIssues: "28.0"
   - label: Go
     sourceUrl: https://github.com/open-telemetry/opentelemetry-go
     msLabel: v0.1
     openIssues: 0
     closedIssues: 0
+    totalIssues: 0
   - label: JavaScript
     sourceUrl: https://github.com/open-telemetry/opentelemetry-javascript
     msLabel: v0.1
     openIssues: 0
     closedIssues: 0
+    totalIssues: 0
   - label: Java
     sourceUrl: https://github.com/open-telemetry/opentelemetry-java
     msLabel: v0.1
     openIssues: 0
     closedIssues: 0
+    totalIssues: 0
   - label: Python
     sourceUrl: https://github.com/open-telemetry/opentelemetry-python
     msLabel: v0.1
     openIssues: 0
     closedIssues: 0
+    totalIssues: 0
   - label: Collector
     sourceUrl: https://github.com/open-telemetry/opentelemetry-service
     msLabel: v0.1
     openIssues: 0
     closedIssues: 0
+    totalIssues: 0

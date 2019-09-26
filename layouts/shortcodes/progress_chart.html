@@ -36,8 +36,8 @@
     {{ $progressDiffValuePx := 0 }}
     {{ $msMaxProgress := $labelIndex.Get .msLabel }}
     {{ $msMinProgress := sub $msMaxProgress $interval }}
-    {{ if ne .openIssues 0 }}
-      {{ $progressDiffPct := div .closedIssues (float .openIssues ) }}
+    {{ if ne .totalIssues 0 }}
+      {{ $progressDiffPct := div .closedIssues (float .totalIssues ) }}
       {{ $progressDiffValuePx = mul $progressDiffPct $interval }}
     {{ else }}
       {{ $progressDiffValuePx = 10 }}

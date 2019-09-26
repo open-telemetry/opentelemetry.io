@@ -35,8 +35,9 @@ async function getAllMilestones() {
       }
       if (matches.length > 0) {
         x.msLabel = matches[0].msLabel
-        x.openIssues = matches[0].open_issues.toFixed(1)
+        x.openIssues = matches[0].open_issues
         x.closedIssues = matches[0].closed_issues
+        x.totalIssues = (matches[0].open_issues + matches[0].closed_issues).toFixed(1)
       }
     }).catch(err => console.error(err))
   }
@@ -50,7 +51,7 @@ async function main() {
   }
   await getAllMilestones()
   const finalYaml = YAML.stringify(data)
-  fs.writeFileSync('../data/progress_generated.yaml', finalYaml)
+  fs.writeFileSync('./data/progress_generated.yaml', finalYaml)
 }
 
 main();
