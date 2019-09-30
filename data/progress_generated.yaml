@@ -12,8 +12,8 @@ data:
   - label: .NET
     sourceUrl: https://github.com/open-telemetry/opentelemetry-dotnet
     msLabel: v0.1
-    openIssues: 8
-    closedIssues: 20
+    openIssues: 7
+    closedIssues: 21
     totalIssues: "28.0"
   - label: Go
     sourceUrl: https://github.com/open-telemetry/opentelemetry-go

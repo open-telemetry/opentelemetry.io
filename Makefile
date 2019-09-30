@@ -3,12 +3,12 @@ serve:
 		--buildDrafts \
 		--buildFuture
 
-preview-build:
+preview-build: get-milestones
 	hugo \
 		--baseURL $(DEPLOY_PRIME_URL) \
 		--minify
 
-production-build:
+production-build: get-milestones
 	hugo \
 		--minify
 
