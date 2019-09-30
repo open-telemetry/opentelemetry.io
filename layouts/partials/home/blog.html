@@ -1,6 +1,13 @@
 {{ $blogData := getJSON "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2Fopentelemetry" }}
 
-{{ range first 1 $blogData.items }}
+
+<div class="columns is-centered">
+  <div class="column is-one-third">
+      <p class="is-size-4-desktop is-size-5-tablet is-size-6-mobile has-text-weight-bold">
+          The latest from our blog - 
+      </p>
+
+      {{ range first 1 $blogData.items }}
 <div class="card">
   {{ if in .thumbnail ".png" }}
   <div class="card-image">
@@ -21,3 +28,8 @@
   </footer>
 </div>
 {{ end }}
+  </div>
+  </div>
+</div>
+
+

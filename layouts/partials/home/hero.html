@@ -1,6 +1,7 @@
 {{ $title      := .Title }}
 {{ $tagline    := site.Params.tagline | markdownify }}
 {{ $subtagline := site.Params.sub_tagline | markdownify }}
+{{ $description := site.Params.sub_description | markdownify }}
 {{ $logo       := printf "/img/logos/%s" site.Params.logos.hero | relURL }}
 <section class="hero is-medium">
   <div class="hero-body">
@@ -20,13 +21,15 @@
           <p class="is-size-3-desktop is-size-4-tablet is-size-5-mobile has-text-weight-light">
             {{ $subtagline }}
           </p>
-        
-          <br/><br/>
-          <p class="is-size-4-desktop is-size-5-tablet is-size-6-mobile has-text-weight-bold">
-            The latest from our blog - 
-          </p>
 
-          {{ partial "home/blog.html" (dict "centered" false) }}
+          <hr class="highlight" />
+
+          <p class="is-size-5-desktop is-size-6-tablet is-size-6-mobile has-text-weight-light">
+              {{ $description }}
+            </p>
+          
+          <br/><br/>
+
         </div>
       </div>
     </div>
