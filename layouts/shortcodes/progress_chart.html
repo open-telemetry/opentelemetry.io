@@ -1,4 +1,10 @@
-{{ $chart := site.Data.progress_generated }}
+
+{{ $chart := "" }}
+{{ if site.Data.progress_generated }}
+  {{ $chart = site.Data.progress_generated }}
+{{ else }}
+  {{ $chart = site.Data.progress_source }}
+{{ end }}
 {{ $data := $chart.data }}
 
 {{ $width := $chart.width }}
