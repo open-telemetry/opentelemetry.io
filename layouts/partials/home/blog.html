@@ -9,7 +9,7 @@
 
       {{ range first 1 $blogData.items }}
 <div class="card">
-  {{ if in .thumbnail ".png" }}
+  {{ if or (in .thumbnail ".png") (in .thumbnail ".jpeg") ( in .thumbnail ".jpg") }}
   <div class="card-image">
     <figure class="image">
       <img src="{{ .thumbnail }}" id="blog-image" />
