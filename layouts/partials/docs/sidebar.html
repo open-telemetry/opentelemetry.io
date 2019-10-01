@@ -1,0 +1,19 @@
+{{ if .Pages }}
+  {{ if eq .Title "Documentation" }}
+    <!-- hide docs stub -->
+  {{ else }}
+  <p class="menu-label">{{ .Title }}</p>
+  {{ end }}
+  <ul class="menu-list">
+  {{ if .Sections }}
+    {{ range .Sections.ByWeight }}
+      {{ partial "docs/sidebar.html" . }}
+    {{ end }}
+    {{ end }}
+    {{ range .Pages.ByWeight }}
+      <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+    {{ end }}
+  </ul>
+{{ else }}
+<li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+{{ end }}

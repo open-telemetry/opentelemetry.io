@@ -2,10 +2,11 @@
 <html>
   <head>
     {{ partial "meta.html" . }}
+    {{ partial "css.html" . }}
     <title>
       {{ block "title" . }}{{ site.Title }} | {{ site.Params.tagline }}{{ end }}
     </title>
-    {{ partial "css.html" . }}
+    {{ partial "header.html" . }}
   </head>
   <body class="page">
     <main class="main">

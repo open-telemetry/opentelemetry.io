@@ -1,6 +1,9 @@
 {
   "private": true,
   "devDependencies": {
-    "bulma": "^0.7.4"
+    "bulma": "^0.7.4",
+    "esm": "^3.2.25",
+    "node-fetch": "^2.6.0",
+    "yaml": "^1.7.0"
   }
 }

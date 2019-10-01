@@ -1,0 +1,60 @@
+
+{{ $chart := "" }}
+{{ if site.Data.progress_generated }}
+  {{ $chart = site.Data.progress_generated }}
+{{ else }}
+  {{ $chart = site.Data.progress_source }}
+{{ end }}
+{{ $data := $chart.data }}
+
+{{ $width := $chart.width }}
+{{ $height := add 140 (mul (len $data) 65) }}
+
+{{ $labelIndex := newScratch }}
+
+<svg class="progressChart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {{ add $width 100 }} {{ add 5 $height }}">
+<title>{{ $chart.title }}</title>
+<g id="chartBounds">
+  <line class="stroke" x1="0" y1="100" x2="{{ add $width 100 }}" y2="100" />
+  <line class="stroke" x1="0" y1="{{ $height }}" x2="{{ add $width 100 }}" y2="{{ $height }}" />
+</g>
+<g id="chartColumns">
+  {{ $xPos := 200 }}
+  {{ $yPos := 75 }}
+  {{ $interval := div (sub $width 200) (len $chart.columns) }}
+  {{ $dashInterval := div $interval 2 }}
+  <text class="yLabel" x="0" y="{{ $yPos }}">Project</text>
+  <line class="dashStroke" x1="{{ add $xPos $dashInterval }}" y1="100" x2="{{ add $xPos $dashInterval }}" y2="{{ $height }}" />
+  <line class="stroke" x1="{{ add $xPos $interval }}" y1="100" x2="{{ add $xPos $interval }}" y2="{{ $height }}" />
+  {{ $xPos = add $xPos $interval }}
+  {{- range $chart.columns }}
+    {{ $labelIndex.Set .label $xPos }}
+    <text class="yLabel" x="{{ $xPos }}" y="{{ $yPos }}">{{ .label }}</text>
+    <line class="dashStroke" x1="{{ add $xPos $dashInterval }}" y1="100" x2="{{ add $xPos $dashInterval }}" y2="{{ $height }}" />
+    <line class="stroke" x1="{{ add $xPos $interval }}" y1="100" x2="{{ add $xPos $interval }}" y2="{{ $height }}" />
+    {{ $xPos = add $xPos $interval }}
+  {{ end }}
+</g>
+<g id="chartRows">
+  {{ $yOffset := 140 }}
+  {{ $xOffset := 200 }}
+  {{- range $data }}
+    {{ $progressDiffValuePx := 0 }}
+    {{ $msMaxProgress := $labelIndex.Get .msLabel }}
+    {{ $msMinProgress := sub $msMaxProgress $interval }}
+    {{ if ne .totalIssues 0 }}
+      {{ $progressDiffPct := div .closedIssues (float .totalIssues ) }}
+      {{ $progressDiffValuePx = mul $progressDiffPct $interval }}
+    {{ else }}
+      {{ $progressDiffValuePx = 10 }}
+    {{ end }}
+    {{ $progressPx := sub (add $msMinProgress $progressDiffValuePx) $xOffset }}
+    <text class="xLabel" x="0" y="{{ add $yOffset 30}}" dominantBaseline="middle">{{ .label }}</text>
+    <a href="{{ .sourceUrl }}">
+      <rect class='color__{{ trim .label ".+" }} isBase' x="{{ $xOffset }}" y="{{ $yOffset }}" width="{{ $width }}" height="35"></rect>
+      <rect class='color__{{ trim .label ".+" }}' x="{{ $xOffset }}" y="{{ $yOffset }}" width="{{ $progressPx }}" height="35"></rect>
+    </a>
+    {{ $yOffset = add $yOffset 65 }}
+  {{ end }}
+</g>
+</svg>

@@ -4,3 +4,9 @@ resources/
 
 # npm assets
 node_modules/
+
+# ignore themes
+themes/
+
+# ignore generated data
+data/progress_generated.yaml
