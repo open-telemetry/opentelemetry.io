@@ -12,11 +12,11 @@
 
 {{ $labelIndex := newScratch }}
 
-<svg class="progressChart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {{ $width }} {{ add 5 $height }}">
+<svg class="progressChart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {{ add $width 100 }} {{ add 5 $height }}">
 <title>{{ $chart.title }}</title>
 <g id="chartBounds">
-  <line class="stroke" x1="0" y1="100" x2="{{ $width }}" y2="100" />
-  <line class="stroke" x1="0" y1="{{ $height }}" x2="{{ $width }}" y2="{{ $height }}" />
+  <line class="stroke" x1="0" y1="100" x2="{{ add $width 100 }}" y2="100" />
+  <line class="stroke" x1="0" y1="{{ $height }}" x2="{{ add $width 100 }}" y2="{{ $height }}" />
 </g>
 <g id="chartColumns">
   {{ $xPos := 200 }}

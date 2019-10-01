@@ -1,7 +1,7 @@
 # this is the source file for the chart
 # to add a new label, copy one of the existing data values below and set sane defaults
 title: "Progress Chart"
-width: 1500
+width: 2000
 columns:
   - label: "v0.1"
   - label: "v0.2"
