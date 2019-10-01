@@ -4,7 +4,7 @@
   url: "https://github.com/open-telemetry/opentelemetry-specification"
 - name: "Documentation"
   url: "/docs"
-- headerName: "More"
+- headerName: "Project"
   headerValues:
     - name: "Project Status"
       url: "/project-status"
