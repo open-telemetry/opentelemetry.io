@@ -37,6 +37,10 @@ Excellent! The OpenTelemetry community repo has the full details, but here are a
 
 | Article | Source |
 |---------|--------|
+| [OpenTelemetry Governance Committee: Call for Nominations](https://medium.com/opentelemetry/opentelemetry-governance-call-for-nominations-cbdccdc9b999) | [OpenTelemetry Blog](https://medium.com/opentelemetry)           |
+| [OpenTelemetry September Community Update](https://medium.com/opentelemetry/opentelemetry-monthly-update-september-2019-6b70c82a5a2d) | [OpenTelemetry Blog](https://medium.com/opentelemetry)           |
+| [Kicking Off OpenTelemetry's Governance Committee Election](https://medium.com/opentelemetry/kicking-off-opentelemetrys-governance-committee-election-3eb53aeeba43) | [OpenTelemetry Blog](https://medium.com/opentelemetry)           |
+| [OpenTelemetry August Community Update](https://medium.com/opentelemetry/opentelemetry-monthly-update-august-2019-1c8c4e58a65) | [OpenTelemetry Blog](https://medium.com/opentelemetry)           |
 | [OpenTelemetry July Community Update](https://medium.com/opentelemetry/opentelemetry-monthly-update-july-2019-de11bac4b607) | [OpenTelemetry Blog](https://medium.com/opentelemetry)           |
 | [Merging OpenTracing and OpenCensus: Goals and Non-Goals](https://medium.com/opentracing/merging-opentracing-and-opencensus-f0fe9c7ca6f0) | [OpenTracing Blog](https://medium.com/opentracing) |
 | [Merging OpenTracing and OpenCensus: A Roadmap to Convergence](https://medium.com/opentracing/a-roadmap-to-convergence-b074e5815289)      | [OpenTracing Blog](https://medium.com/opentracing) |
