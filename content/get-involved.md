@@ -33,5 +33,5 @@ We organize the community into Special Interest Groups (SIGs) in order to improv
 # Community 
 Interested in getting involved but not sure where to start? Check out our [community repo] (https://github.com/open-telemetry/community) to find out more.
 
-# OpenTelemtry.io
+# OpenTelemetry.io
 Even if you want to help us out with our website check us out  [here] (https://github.com/open-telemetry/opentelemetry.io)
