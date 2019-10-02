@@ -37,7 +37,11 @@ async function getAllMilestones() {
         x.msLabel = matches[0].msLabel
         x.openIssues = matches[0].open_issues
         x.closedIssues = matches[0].closed_issues
-        x.totalIssues = (matches[0].open_issues + matches[0].closed_issues).toFixed(1)
+        if (x.openIssues + x.closedIssues === 0) {
+          x.totalIssues = 0
+        } else {
+          x.totalIssues = (matches[0].open_issues + matches[0].closed_issues).toFixed(1)
+        }
       }
     }).catch(err => console.error(err))
   }
