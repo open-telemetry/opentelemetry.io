@@ -6,6 +6,7 @@ Are you interested in participating in the OpenTelemetry community? Read on to l
 about how to get involved.
 
 # Special Interest Groups
+We organize the community into Special Interest Groups (SIGs) in order to improve our workflow and more easily manage a community project.
 
 [Cross-language Specification] (https://github.com/open-telemetry/community#cross-language-specification)
 
@@ -28,3 +29,9 @@ about how to get involved.
 [Ruby SDK] (https://github.com/open-telemetry/community#ruby-sig)
 
 [Erlang/Elixir SDK] (https://github.com/open-telemetry/community#erlangelixir-sdk)
+
+# Community 
+Interested in getting involved but not sure where to start? Check out our [community repo] (https://github.com/open-telemetry/community) to find out more.
+
+# OpenTelemtry.io
+Even if you want to help us out with our website check us out  [here] (https://github.com/open-telemetry/opentelemetry.io)
