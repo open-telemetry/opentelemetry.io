@@ -24,7 +24,7 @@ data:
     closedIssues: 0
     totalIssues: 0
   - label: JavaScript
-    sourceUrl: https://github.com/open-telemetry/opentelemetry-javascript
+    sourceUrl: https://github.com/open-telemetry/opentelemetry-js
     msLabel: v0.1
     openIssues: 0
     closedIssues: 0
