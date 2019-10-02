@@ -24,7 +24,7 @@ data:
     closedIssues: 0
     totalIssues: 0
   - label: JavaScript
-    sourceUrl: https://github.com/open-telemetry/opentelemetry-javascript
+    sourceUrl: https://github.com/open-telemetry/opentelemetry-js
     msLabel: v0.1
     openIssues: 0
     closedIssues: 0
@@ -37,6 +37,12 @@ data:
     totalIssues: 0
   - label: Python
     sourceUrl: https://github.com/open-telemetry/opentelemetry-python
+    msLabel: v0.1
+    openIssues: 0
+    closedIssues: 0
+    totalIssues: 0
+  - label: Ruby
+    sourceUrl: https://github.com/open-telemetry/opentelemetry-ruby
     msLabel: v0.1
     openIssues: 0
     closedIssues: 0
