@@ -8,38 +8,38 @@ about how to get involved.
 # Special Interest Groups
 We organize the community into Special Interest Groups (SIGs) in order to improve our workflow and more easily manage a community project.
 
-[Cross-language Specification] (https://github.com/open-telemetry/community#cross-language-specification)
+[Cross-language Specification](https://github.com/open-telemetry/community#cross-language-specification)
 
-[Agent/Collector] (https://github.com/open-telemetry/community#agentcollector)
+[Agent/Collector](https://github.com/open-telemetry/community#agentcollector)
 
-[.NET SDK] (https://github.com/open-telemetry/community#net-sdk)
+[.NET SDK](https://github.com/open-telemetry/community#net-sdk)
 
-[C/C++ SDK] (https://github.com/open-telemetry/community#cc-sdk)
+[C/C++ SDK](https://github.com/open-telemetry/community#cc-sdk)
 
-[GoLang SDK] (https://github.com/open-telemetry/community#golang-sdk)
+[GoLang SDK](https://github.com/open-telemetry/community#golang-sdk)
 
-[Java SDK] (https://github.com/open-telemetry/community#java-sdk)
+[Java SDK](https://github.com/open-telemetry/community#java-sdk)
 
-[Java Auto-Instrumentation] (https://github.com/open-telemetry/community#java-auto-instrumentation)
+[Java Auto-Instrumentation](https://github.com/open-telemetry/community#java-auto-instrumentation)
 
-[JavaScript SDK] (https://github.com/open-telemetry/community#javascript-sdk)
+[JavaScript SDK](https://github.com/open-telemetry/community#javascript-sdk)
 
-[Python SDK] (https://github.com/open-telemetry/community#python-sdk)
+[Python SDK](https://github.com/open-telemetry/community#python-sdk)
 
-[Ruby SDK] (https://github.com/open-telemetry/community#ruby-sig)
+[Ruby SDK](https://github.com/open-telemetry/community#ruby-sig)
 
-[Erlang/Elixir SDK] (https://github.com/open-telemetry/community#erlangelixir-sdk)
+[Erlang/Elixir SDK](https://github.com/open-telemetry/community#erlangelixir-sdk)
 
 # Community 
-Interested in getting involved but not sure where to start? Check out our [community repo] (https://github.com/open-telemetry/community) to find out more.
+Interested in getting involved but not sure where to start? Check out our [community repo](https://github.com/open-telemetry/community) to find out more.
 
 # OpenTelemetry.io
-If you want to help us out with our website check us out [here] (https://github.com/open-telemetry/opentelemetry.io).
+If you want to help us out with our website check us out [here](https://github.com/open-telemetry/opentelemetry.io).
 
 # Community Meetings
 We host monthly community video conferences, alternating between times that work for Europe and Asia. These meetings are open to all contributors!
 
-Meeting invites can be accessed from our public Calendar ([web] (https://calendar.google.com/calendar/embed?src=google.com_b79e3e90j7bbsa2n2p5an5lf60%40group.calendar.google.com), [gCal] (https://calendar.google.com/calendar?cid=Z29vZ2xlLmNvbV9iNzllM2U5MGo3YmJzYTJuMnA1YW41bGY2MEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t), [iCal] (https://calendar.google.com/calendar/ical/google.com_b79e3e90j7bbsa2n2p5an5lf60%40group.calendar.google.com/public/basic.ics)), and we keep public notes in the agenda document available [here] (https://docs.google.com/document/d/1uvua6R-VnOpMmAjM3b7j3jQDFz6KHDzbEX4ZaZ9BFso/edit).
+Meeting invites can be accessed from our public Calendar ([web](https://calendar.google.com/calendar/embed?src=google.com_b79e3e90j7bbsa2n2p5an5lf60%40group.calendar.google.com), [gCal](https://calendar.google.com/calendar?cid=Z29vZ2xlLmNvbV9iNzllM2U5MGo3YmJzYTJuMnA1YW41bGY2MEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t), [iCal](https://calendar.google.com/calendar/ical/google.com_b79e3e90j7bbsa2n2p5an5lf60%40group.calendar.google.com/public/basic.ics)), and we keep public notes in the agenda document available [here](https://docs.google.com/document/d/1uvua6R-VnOpMmAjM3b7j3jQDFz6KHDzbEX4ZaZ9BFso/edit).
 
 # Code of Conduct
-OpenTelemetry follows the [CNCF Code of Conduct] (https://github.com/cncf/foundation/blob/master/code-of-conduct.md).
+OpenTelemetry follows the [CNCF Code of Conduct](https://github.com/cncf/foundation/blob/master/code-of-conduct.md).
