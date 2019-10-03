@@ -6,7 +6,7 @@ Are you interested in participating in the OpenTelemetry community? Read on to l
 about how to get involved.
 
 # Special Interest Groups
-We organize the community into Special Interest Groups (SIGs) in order to improve our workflow and more easily manage a community project.
+We organize the community into Special Interest Groups (SIGs) in order to improve our workflow and more easily manage a community project.  
 
 [Cross-language Specification](https://github.com/open-telemetry/community#cross-language-specification)
 
