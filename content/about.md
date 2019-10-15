@@ -28,7 +28,7 @@ OpenTelemetry is made up of an integrated set of APIs and libraries as well as a
 The spec is available in the [open-telemetry/specification](https://github.com/open-telemetry/specification) repo on GitHub.
 
 ### What's the current status of the OpenTelemetry Project?
-You can see our current status at the [release calendar](/release-calendar).
+You can see our current status at the [project-status](/project-status).
 
 ### I want to help influence the future direction of cloud-native telemetry. What should I do?
 Excellent! The OpenTelemetry community repo has the full details, but here are a few good starting points: - Join our community mailing list - Keep up to date with the OpenTelemetry blog - We also have a very active chatroom on Gitter - All project meetings are shared on the public calendar (web, gCal, iCal), and we recommend attending the monthly community meeting - If your contributions will be focused on a particular language or feature area, join the special interest group leading its development
