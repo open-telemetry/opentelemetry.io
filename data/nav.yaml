@@ -1,7 +1,7 @@
 - name: About
   url: "/about"
 - name: Specification
-  url: "https://github.com/open-telemetry/opentelemetry-specification"
+  url: "https://github.com/open-telemetry/opentelemetry-specification/blob/master/README.md"
 - name: "Documentation"
   url: "/docs"
 - headerName: "Project"
