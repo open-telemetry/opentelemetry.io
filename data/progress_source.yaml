@@ -41,6 +41,12 @@ data:
     openIssues: 0
     closedIssues: 0
     totalIssues: 0
+  - label: PHP
+    sourceUrl: https://github.com/open-telemetry/opentelemetry-php
+    msLabel: v0.1
+    openIssues: 0
+    closedIssues: 0
+    totalIssues: 0
   - label: Ruby
     sourceUrl: https://github.com/open-telemetry/opentelemetry-ruby
     msLabel: v0.1
