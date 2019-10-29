@@ -17,45 +17,69 @@ data:
     openIssues: 0
     closedIssues: 0
     totalIssues: 0
+    releaseName: "n/a"
+    releaseDescription: "n/a"
+    releaseUrl: ""
   - label: Go
     sourceUrl: https://github.com/open-telemetry/opentelemetry-go
     msLabel: v0.1
     openIssues: 0
     closedIssues: 0
     totalIssues: 0
+    releaseName: "n/a"
+    releaseDescription: "n/a"
+    releaseUrl: ""
   - label: JavaScript
     sourceUrl: https://github.com/open-telemetry/opentelemetry-js
     msLabel: v0.1
     openIssues: 0
     closedIssues: 0
     totalIssues: 0
+    releaseName: "n/a"
+    releaseDescription: "n/a"
+    releaseUrl: ""
   - label: Java
     sourceUrl: https://github.com/open-telemetry/opentelemetry-java
     msLabel: v0.1
     openIssues: 0
     closedIssues: 0
     totalIssues: 0
+    releaseName: "n/a"
+    releaseDescription: "n/a"
+    releaseUrl: ""
   - label: Python
     sourceUrl: https://github.com/open-telemetry/opentelemetry-python
     msLabel: v0.1
     openIssues: 0
     closedIssues: 0
     totalIssues: 0
+    releaseName: "n/a"
+    releaseDescription: "n/a"
+    releaseUrl: ""
   - label: PHP
     sourceUrl: https://github.com/open-telemetry/opentelemetry-php
     msLabel: v0.1
     openIssues: 0
     closedIssues: 0
     totalIssues: 0
+    releaseName: "n/a"
+    releaseDescription: "n/a"
+    releaseUrl: ""
   - label: Ruby
     sourceUrl: https://github.com/open-telemetry/opentelemetry-ruby
     msLabel: v0.1
     openIssues: 0
     closedIssues: 0
     totalIssues: 0
+    releaseName: "n/a"
+    releaseDescription: "n/a"
+    releaseUrl: ""
   - label: Collector
     sourceUrl: https://github.com/open-telemetry/opentelemetry-service
     msLabel: v0.1
     openIssues: 0
     closedIssues: 0
     totalIssues: 0
+    releaseName: "n/a"
+    releaseDescription: "n/a"
+    releaseUrl: ""
