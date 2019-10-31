@@ -10,5 +10,5 @@
       url: "/project-status"
     - name: "Get Involved"
       url: "/get-involved"
-
-    
+- name: "Blog"
+  url: "https://medium.com/opentelemetry"
