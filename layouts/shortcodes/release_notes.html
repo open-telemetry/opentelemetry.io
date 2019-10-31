@@ -1,0 +1,19 @@
+{{ $data := "" }}
+{{ if site.Data.progress_generated }}
+  {{ $data = site.Data.progress_generated }}
+{{ else }}
+  {{ $data = site.Data.progress_source }}
+{{ end }}
+{{ $progressData := $data.data }}
+
+<section class="releaseNotes">
+  {{- range $progressData }}
+    <h1 class="title is-3">{{ .label }}</h1>
+    {{ if ne .releaseName "n/a" }}
+      <h2 class="subtitle is-5"><a href="{{ .releaseUrl }}">{{ .releaseName }}</a></h2>
+      <pre>{{ .releaseDescription }}</pre>
+    {{ else }}
+      <p>No release information available from GitHub.</p>
+    {{ end }}
+  {{ end }}
+</section>

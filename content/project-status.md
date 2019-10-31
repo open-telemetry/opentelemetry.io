@@ -7,6 +7,9 @@ OpenTelemetry implementations are currently in **pre-release** status. This page
 # Current SIG Progress
 {{< progress_chart >}}
 
+# Current SIG Release
+{{< release_notes >}}
+
 # Status Definitions
 
 When we refer to an alpha, beta, or release, what do we mean? This section defines these terms.

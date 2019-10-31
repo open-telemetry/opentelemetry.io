@@ -35,6 +35,15 @@ async function fetchMilestoneDataForData(data) {
   return resJson
 }
 
+async function fetchReleaseDataForData(data) {
+  const baseUrl = data.sourceUrl.substring(19)
+  const releaseUrl = `https://api.github.com/repos/${baseUrl}/releases`
+  const response = await fetch(releaseUrl, { headers: { 'Authorization': `token ${token}` }})
+  const resJson = await response.json()
+  const sortedResponse = resJson.sort((a, b) => b.published_at - a.published_at)
+  return sortedResponse[0]
+}
+
 function findMilestone(data, milestones) {
   for (const version of versions) {
     let found = false
@@ -51,6 +60,14 @@ function findMilestone(data, milestones) {
   }
 }
 
+function updateReleaseData(data, release) {
+  if (release) {
+    data.releaseName = release.name
+    data.releaseDescription = release.body
+    data.releaseUrl = release.html_url
+  }
+}
+
 async function main() {
   if (token === undefined || token.length === 0)
   {
@@ -62,6 +79,11 @@ async function main() {
     await fetchMilestoneDataForData(datum)
       .then(msData => findMilestone(datum, msData))
   } 
+
+  for (const datum of labelData) {
+    await fetchReleaseDataForData(datum)
+      .then(rData => updateReleaseData(datum, rData))
+  }
 
   const finalYaml = YAML.stringify(sourceFileData)
   fs.writeFileSync('./data/progress_generated.yaml', finalYaml)
