@@ -6,6 +6,7 @@ OpenTelemetry implementations are currently in **pre-release** status. This page
 
 # Current SIG Progress
 {{< progress_chart >}}
+<sub>Click a progress bar in the above chart to go to that SIGs repository.</sub>
 
 # Current SIG Release
 {{< release_notes >}}
