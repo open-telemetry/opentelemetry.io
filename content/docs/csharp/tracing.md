@@ -34,4 +34,4 @@ See the [README](https://github.com/open-telemetry/opentelemetry-dotnet/blob/mas
 
 # API Reference
 
-Please see the [GitHub Repository]((https://github.com/open-telemetry/opentelemetry-dotnet)) for more information on the API.
+Please see the [GitHub Repository](https://github.com/open-telemetry/opentelemetry-dotnet) for more information on the API.
