@@ -11,11 +11,9 @@ This page contains documentation for OpenTelemetry .NET.
 1. Install OpenTelemetry via [NuGet](https://www.nuget.org/packages/OpenTelemetry) along with an exporter such as [Zipkin](https://www.nuget.org/packages/OpenTelemetry.Exporter.Zipkin) or [Jaeger](https://www.nuget.org/packages/OpenTelemetry.Exporter.Jaeger).
 2. Create a `Tracer` through the `TracerFactory`, as shown:
 ```csharp
-using (var tracerFactory = TracerFactory.Create(builder => builder
-                .AddProcessorPipeline(c => c.SetExporter(new JaegerTraceExporter(jaegerOptions)))))
-{
-  // work happens here
-}
+var tracerFactory = TracerFactory.Create(
+                                  builder => builder.AddProcessorPipeline(
+                                  c => c.SetExporter(new JaegerTraceExporter(jaegerOptions))));
 ```
 3. Get a reference to your `Tracer` from the `TracerFactory` using the `GetTracer()` method.
 4. Start a span, then add attributes or events to it as desired, as seen here:
