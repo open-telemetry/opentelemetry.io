@@ -1,9 +1,28 @@
+<style>
+    .blur {
+        filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='3');
+        -webkit-filter: url(#blur-filter);
+        filter: url(#blur-filter);
+        -webkit-filter: blur(3px);
+        filter: blur(3px);
+    }
+    .blur-svg {
+        display: none;
+    }
+</style>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="blur-svg">
+  <defs>
+      <filter id="blur-filter">
+          <feGaussianBlur stdDeviation="3"></feGaussianBlur>
+      </filter>
+  </defs>
+</svg>
 <section class="section has-text-centered has-background-white-bis">
   <div class="container">
     <p class="title is-size-3 is-size-4-mobile has-text-weight-bold">
-      Get Started
+      Get Started (Coming Soon!)
     </p>
-    <div class="columns is-vcentered">
+    <div class="columns is-vcentered blur">
       <div class="column">
         <div class="card">
           <header class="card-header">

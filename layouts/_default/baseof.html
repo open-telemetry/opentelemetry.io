@@ -8,7 +8,9 @@
     </title>
     {{ partial "header.html" . }}
   </head>
+  {{ partial "ghbadge.html" . }}
   <body class="page">
+    
     <main class="main">
       {{ block "main" . }}
       {{ end }}
