@@ -74,6 +74,15 @@ data:
     releaseName: "n/a"
     releaseDescription: "n/a"
     releaseUrl: ""
+  - label: Erlang
+    sourceUrl: https://www.github.com/open-telemetry/opentelemetry-erlang-api
+    msLabel: v0.1
+    openIssues: 0
+    closedIssues: 0
+    totalIssues: 0
+    releaseName: "n/a"
+    releaseDescription: "n/a"
+    releaseUrl: ""
   - label: Collector
     sourceUrl: https://github.com/open-telemetry/opentelemetry-service
     msLabel: v0.1
