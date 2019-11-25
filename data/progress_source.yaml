@@ -75,7 +75,7 @@ data:
     releaseDescription: "n/a"
     releaseUrl: ""
   - label: Erlang
-    sourceUrl: https://www.github.com/open-telemetry/opentelemetry-erlang-api
+    sourceUrl: https://github.com/open-telemetry/opentelemetry-erlang-api
     msLabel: v0.1
     openIssues: 0
     closedIssues: 0

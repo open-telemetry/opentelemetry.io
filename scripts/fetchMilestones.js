@@ -28,20 +28,25 @@ function updateDataWithMilestoneInfo(data, milestoneLabel, milestone) {
 }
 
 async function fetchMilestoneDataForData(data) {
-  const baseUrl = data.sourceUrl.substring(19)
-  const apiUrl = `https://api.github.com/repos/${baseUrl}/milestones`
+  const baseUrl = parseBaseUrl(data.sourceUrl)
+  const apiUrl = `https://api.github.com/repos/open-telemetry/${baseUrl}/milestones`
   const response = await fetch(apiUrl, { headers: { 'Authorization': `token ${token}` }})
   const resJson = await response.json()
   return resJson
 }
 
 async function fetchReleaseDataForData(data) {
-  const baseUrl = data.sourceUrl.substring(19)
-  const releaseUrl = `https://api.github.com/repos/${baseUrl}/releases`
+  const baseUrl = parseBaseUrl(data.sourceUrl)
+  const releaseUrl = `https://api.github.com/repos/open-telemetry/${baseUrl}/releases`
   const response = await fetch(releaseUrl, { headers: { 'Authorization': `token ${token}` }})
   const resJson = await response.json()
   const sortedResponse = resJson.sort((a, b) => b.published_at - a.published_at)
   return sortedResponse[0]
+}
+
+function parseBaseUrl(url) {
+  const urlTokens = url.split('/')
+  return urlTokens.pop()
 }
 
 function findMilestone(data, milestones) {
