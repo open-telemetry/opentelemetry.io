@@ -78,11 +78,13 @@ async function main() {
   for (const datum of labelData) {
     await fetchMilestoneDataForData(datum)
       .then(msData => findMilestone(datum, msData))
+      .catch(err => console.error(`failed to fetch milestone for ${datum.label}`, err))
   } 
 
   for (const datum of labelData) {
     await fetchReleaseDataForData(datum)
       .then(rData => updateReleaseData(datum, rData))
+      .catch(err => console.error(`failed to fetch release for ${datum.label}`, err))
   }
 
   const finalYaml = YAML.stringify(sourceFileData)
