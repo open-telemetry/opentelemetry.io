@@ -29,8 +29,8 @@ const exporter = new JaegerExporter({
 
 const tracer = new BasicTracer();
 
-tracer.AddSpanProcessor(new SimpleSpanProcessor(exporter))
-opentelemetry.initGlobalTracer(tracer)
+tracer.addSpanProcessor(new SimpleSpanProcessor(exporter));
+opentelemetry.initGlobalTracer(tracer);
 ```
 
 Now, you're ready to create spans!
@@ -68,4 +68,3 @@ See [this GitHub repository](https://github.com/open-telemetry/opentelemetry-js/
 Looking for an example of how to use OpenTelemetry in the browser? [Check out this GitHub repository](https://github.com/open-telemetry/opentelemetry-js/tree/master/examples).
 
 # API Reference
-
