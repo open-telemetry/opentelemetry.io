@@ -23,8 +23,8 @@ import (
 	"context"
 	"log"
 
+	"go.opentelemetry.io/otel/api/global"
 	"go.opentelemetry.io/otel/exporter/trace/stdout"
-	"go.opentelemetry.io/otel/global"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 )
 
@@ -46,7 +46,7 @@ func initTracer() {
 
 func main() {
 	initTracer()
-	tracer := global.TraceProvider().GetTracer("ex.com/basic")
+	tracer := global.TraceProvider().Tracer("ex.com/basic")
 
 	ctx := context.Background()
 
