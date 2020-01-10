@@ -1,0 +1,38 @@
+{{ define "main" }}
+<div class="registry container">
+    <div class="row justify-content-left">
+        <div class="col text-left">
+            <a href="/registry">Go Back</a>
+        </div>
+    </div>
+    <div class="row justify-content-center" style="margin-top: 1rem;">
+        <div class="col-lg-12 ">
+            <h1>{{ .Params.title }}</h1>
+            <h4><a href={{ .Params.repo }} class="badge badge-info">View Repository</a></h4>
+        </div>
+        <div class="col">
+            <h5>{{ .Params.authors }} | {{ .Params.license }}</h5>
+            <div class="align-self-end" style="margin-top: auto;">
+                <span class="badge badge-{{ .Params.registryType }}" >{{ .Params.registryType }}</span>
+                <span class="badge badge-version">{{ .Params.otVersion }}</span>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <p>{{ .Params.description }}</p> 
+        </div>
+        <div class="col">
+            <figure>
+                <figcaption>Tags</figcaption>
+                <ul>
+                    {{ range .Params.tags }}
+                    <li>{{ . }}</li>
+                    {{ end }}
+                </ul>
+            </figure>
+        </div>
+    </div>
+    <div class="row">
+        {{ .Content }}
+    </div>
+</div>
+{{ end }}

@@ -12,4 +12,6 @@
       url: "/get-involved"
 - name: "Blog"
   url: "https://medium.com/opentelemetry"
+- name: "Registry"
+  url: "/registry"
     
