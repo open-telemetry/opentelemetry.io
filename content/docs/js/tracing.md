@@ -68,3 +68,5 @@ See [this GitHub repository](https://github.com/open-telemetry/opentelemetry-js/
 Looking for an example of how to use OpenTelemetry in the browser? [Check out this GitHub repository](https://github.com/open-telemetry/opentelemetry-js/tree/master/examples).
 
 # API Reference
+
+See the [API documentation](https://open-telemetry.github.io/opentelemetry-js/interfaces/tracer.html) for more detail, and the [opentelemetry-basic-app](https://github.com/open-telemetry/opentelemetry-js/tree/master/examples/basic-tracer-node) for a complete example.
