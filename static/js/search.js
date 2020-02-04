@@ -96,10 +96,6 @@ function populateResults(result) {
       otVersion: value.item.otVersion
     });
     $("#search-results").append(output);
-
-    $.each(snippetHighlights, function(snipkey, snipvalue) {
-      $("#summary-" + key).mark(snipvalue);
-    });
   });
 }
 
