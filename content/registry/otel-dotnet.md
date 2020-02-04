@@ -1,6 +1,7 @@
 ---
-title: OpenTelemetry for .NET
-registryType: sdk
+title: .NET
+registryType: api
+isThirdParty: false
 tags:
   - c#
   - .net

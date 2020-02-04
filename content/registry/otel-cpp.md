@@ -1,9 +1,9 @@
 ---
-title: OpenTelemetry for C++
+title: C++
 registryType: api
+isThirdParty: false
 tags:
-  - erlang
-  - elixir
+  - cpp
 repo: https://github.com/open-telemetry/opentelemetry-cpp
 license: Apache 2.0
 description: The OpenTelemetry API and SDK for C++.

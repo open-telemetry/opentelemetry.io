@@ -1,6 +1,7 @@
 ---
-title: OpenTelemetry for JavaScript
-registryType: sdk
+title: JavaScript
+registryType: api
+isThirdParty: false
 tags:
   - javascript
   - node

@@ -1,6 +1,7 @@
 ---
-title: OpenTelemetry for Java
+title: Java
 registryType: sdk
+isThirdParty: false
 tags:
   - java
 repo: https://github.com/open-telemetry/opentelemetry-java

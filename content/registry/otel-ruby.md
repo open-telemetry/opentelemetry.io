@@ -1,6 +1,7 @@
 ---
-title: OpenTelemetry for Ruby
-registryType: sdk
+title: Ruby
+registryType: api
+isThirdParty: false
 tags:
   - ruby
 repo: https://github.com/open-telemetry/opentelemetry-ruby

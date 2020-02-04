@@ -1,6 +1,7 @@
 ---
-title: OpenTelemetry for Go
-registryType: sdk
+title: Go
+registryType: api
+isThirdParty: false
 tags:
   - go
 repo: https://github.com/open-telemetry/opentelemetry-go

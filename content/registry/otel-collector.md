@@ -1,6 +1,7 @@
 ---
-title: OpenTelemetry Collector
+title: Collector
 registryType: collector
+isThirdParty: false
 tags:
   - collector
   - agent

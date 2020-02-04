@@ -1,6 +1,7 @@
 ---
-title: OpenTelemetry for Python
-registryType: sdk
+title: Python
+registryType: api
+isThirdParty: false
 tags:
   - python
 repo: https://github.com/open-telemetry/opentelemetry-python
