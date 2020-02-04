@@ -1,38 +1,51 @@
 {{ define "main" }}
-<div class="registry container">
-    <div class="row justify-content-left">
-        <div class="col text-left">
+<div class="container">
+    <div class="section">
+        <div class="columns is-left">
+          <div class="column">
             <a href="/registry">Go Back</a>
+          </div>
         </div>
     </div>
-    <div class="row justify-content-center" style="margin-top: 1rem;">
-        <div class="col-lg-12 ">
-            <h1>{{ .Params.title }}</h1>
-            <h4><a href={{ .Params.repo }} class="badge badge-info">View Repository</a></h4>
-        </div>
-        <div class="col">
-            <h5>{{ .Params.authors }} | {{ .Params.license }}</h5>
-            <div class="align-self-end" style="margin-top: auto;">
-                <span class="badge badge-{{ .Params.registryType }}" >{{ .Params.registryType }}</span>
-                <span class="badge badge-version">{{ .Params.otVersion }}</span>
+    <div class="section">
+      <div class="tile is-ancestor is-center">
+        <div class="tile is-4 is-parent is-vertical is-info">
+          <div class="level">
+            <div class="level-left">
+              <p class="title">{{ .Params.title }}</p>
             </div>
+            <div class="level-right">
+              <span class="icon has-text-info">
+                {{ if not (.Params.isThirdParty) }}
+                  <i class="fas fa-check-circle"></i>
+                {{ end }}
+              </span>
+            </div>
+          </div>      
+          <div class="tile is-child notification is-warning">
+            <p class="subtitle"><a href={{ .Params.repo }} class="badge badge-info">View Repository</a></p>
+          </div>
+          <div class="tile is-child notification is-success">
+            <p class="subtitle">By {{ .Params.authors }}</p>
+            <p class="is-small">Licensed under {{ .Params.license }}</p>
+          </div>
+          <span class="tag">{{ .Params.registryType }}</span>
         </div>
-        <div class="col-lg-12">
-            <p>{{ .Params.description }}</p> 
+        <div class="tile is-8 notification is-parent is-vertical">
+          <div class="content">
+            <p>{{ .Params.description }}</p>
+          </div>
+          <div class="tile is-child">
+            <p class="subtitle">Tagged as: </p>
+            <div class="tags">
+              {{ range .Params.tags }}
+              <span class="tag is-medium is-primary is-light">{{ . }}</span>
+              {{ end }}
+            </div>
+            
+          </div>
         </div>
-        <div class="col">
-            <figure>
-                <figcaption>Tags</figcaption>
-                <ul>
-                    {{ range .Params.tags }}
-                    <li>{{ . }}</li>
-                    {{ end }}
-                </ul>
-            </figure>
-        </div>
-    </div>
-    <div class="row">
-        {{ .Content }}
+      </div>
     </div>
 </div>
 {{ end }}
