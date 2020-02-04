@@ -43,3 +43,6 @@ Meeting invites can be accessed from our public Calendar ([web](https://calendar
 
 # Code of Conduct  
 OpenTelemetry follows the [CNCF Code of Conduct](https://github.com/cncf/foundation/blob/master/code-of-conduct.md).
+
+# Registry
+Add your project to the OpenTelemetry Registry! Simply make a pull request to https://github.com/open-telemetry/opentelemetry.io that includes a data file for your project (see `/content/registry` for the format), and we'll review it for inclusion.
