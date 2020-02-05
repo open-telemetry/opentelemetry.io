@@ -1,7 +1,7 @@
 ---
 title: Lightstep Exporter
 registryType: exporter
-isThirdParty: false
+isThirdParty: true
 tags:
   - python
   - exporter
