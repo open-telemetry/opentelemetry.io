@@ -15,7 +15,8 @@ Whenever you submit a pull request to this repo, Netlify creates a [deploy previ
 ### Dev Setup
 
 #### Instructions
+
 * Fork and clone the repository
-* Install [Hugo](https://gohugo.io/getting-started/installing/#quick-install)
+* Install [Hugo](https://gohugo.io/getting-started/installing/#quick-install) and [npm](https://npmjs.com)
 * Run `make serve`
 * Open `http://localhost:1313` to check the site
