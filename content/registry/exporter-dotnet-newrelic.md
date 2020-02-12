@@ -1,9 +1,11 @@
 ---
-title: New Relic .Net Exporter
+title: New Relic .NET Exporter
 registryType: exporter
 isThirdParty: true
 tags:
   - dotnet
+  - c#
+  - .net
   - exporter
 repo: https://github.com/newrelic/newrelic-telemetry-sdk-dotnet
 license: Apache 2.0
