@@ -1,4 +1,7 @@
-serve: get-milestones
+setup:
+	npm install
+
+serve: setup
 	hugo server \
 		--buildDrafts \
 		--buildFuture
@@ -12,6 +15,5 @@ production-build: get-milestones
 	hugo \
 		--minify
 
-get-milestones:
-	npm install
+get-milestones: setup
 	node -r esm ./scripts/fetchMilestones.js
