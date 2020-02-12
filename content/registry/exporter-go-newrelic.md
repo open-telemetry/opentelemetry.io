@@ -3,7 +3,7 @@ title: New Relic Go Exporter
 registryType: exporter
 isThirdParty: true
 tags:
-  - java
+  - go
   - exporter
 repo: https://github.com/newrelic/opentelemetry-exporter-go
 license: Apache 2.0
