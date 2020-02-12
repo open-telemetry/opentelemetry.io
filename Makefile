@@ -1,4 +1,4 @@
-serve:
+serve: get-milestones
 	hugo server \
 		--buildDrafts \
 		--buildFuture
