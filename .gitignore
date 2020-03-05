@@ -10,3 +10,7 @@ themes/
 
 # ignore generated data
 data/progress_generated.yaml
+
+# Link checker
+bin/
+tmp/
