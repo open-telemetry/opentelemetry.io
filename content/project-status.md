@@ -25,7 +25,7 @@ We’ve set the following requirements for components to reach beta:
 
 
 ### 0.4 & 0.5
-These releases are expected to contain further improvements to the tracing and metrics API and SDK in response to feedback gathered during the prior alpha releases. Additionally, we expect that the OpenTelemetry protocol will be fully implemented and languages will include an exporter to the OpenTelemetry Collector. At this phase, we anticipate all APIs will be unlikely to change.
+These releases are expected to contain further improvements to the tracing and metrics API and SDK in response to feedback gathered during the prior alpha and beta releases. Additionally, we expect that the OpenTelemetry protocol will be fully implemented and languages will include an exporter to the OpenTelemetry Collector. At this phase, we anticipate all APIs will be unlikely to change.
 
 ### RC and GA
 We anticipate that once the alpha phase is complete, we'll enter into a period of final stabilization work around the API, SDK, and other components. This includes benchmarking, profiling, interoperability testing suites, and other work to ensure that the final release is performant and of a high quality. This work is anticipated to complete by the second half of 2020.
