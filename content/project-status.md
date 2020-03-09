@@ -10,7 +10,7 @@ Our current goal is to provide a generally available, production quality release
 ### 0.2
 This release included a functional tracing implementation. While the API may change, you should be able to use these releases to begin exploring and understanding the API and the SDK, and the changes that have been made from OpenTracing/OpenCensus. This release also included support for distributed context using the W3C TraceContext specification.
 
-### 0.3 & beta
+### 0.3 (first beta release)
 v0.3 is expected to contain a functional metrics implementation. Again, you may see changes to the API and the SDK after this point, but it's anticipated that these releases will allow you to explore and understand the changes that have been made from OpenCensus. In addition, this release is anticipated to include improvements to OpenTelemetry Context, various semantic conventions around trace and metric metadata, and a finalized OpenTelemetry protocol.
 
 We are planning to take a wave of OpenTelemetry components to beta on or after March 16th 2020. These components include the **Java**, **JavaScript**, **Python**, **Go**, and **.Net** APIs and SDKs, along with the OpenTelemetry Collector, though more will be added if they’re able to meet their milestones in time.
