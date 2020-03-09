@@ -24,7 +24,7 @@ We’ve set the following requirements for components to reach beta:
 * APIs must include at least one HTTP and gRPC integration, though these are packaged separately. APIs should include at least one SQL integration, and can include a web framework integration (this is a stretch goal)
 
 
-### 0.4 & 0.5
+### 0.4 (additional beta release)
 These releases are expected to contain further improvements to the tracing and metrics API and SDK in response to feedback gathered during the prior alpha and beta releases. Additionally, we expect that the OpenTelemetry protocol will be fully implemented and languages will include an exporter to the OpenTelemetry Collector. At this phase, we anticipate all APIs will be unlikely to change.
 
 ### RC and GA
