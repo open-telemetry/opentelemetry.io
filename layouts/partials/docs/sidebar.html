@@ -4,7 +4,8 @@
 <aside class="menu">
   {{ range $docsSections }}
   {{ range .Sections }}
-  <a class="menu-label" href="{{ .RelPermalink }}">
+  {{ $isHere := eq .RelPermalink $here }}
+  <a class="menu-label{{ if $isHere }} is-active{{ end }}" href="{{ .RelPermalink }}">
     {{ .Title }}
   </a>
 
