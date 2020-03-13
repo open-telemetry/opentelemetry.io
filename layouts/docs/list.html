@@ -1,21 +1,5 @@
 {{ define "title" }}OpenTelemetry {{ .Section }} &ndash; {{ .Title }}{{ end }}
 
 {{ define "main" }}
-{{- $sections := where .Site.Sections "Section" "=" "docs" }}
-<section class="section">
-  <div class="container">
-    <div class="columns is-variable is-8">
-      <div class="column is-2">
-        {{ partial "docs/sidebar_base.html" $sections }}
-      </div>
-      <div class="column">
-        <h1 class="title">{{ .Title }}</h1>
-        <div class="content">
-          {{ .Content }}
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
+{{ partial "docs/layout.html" . }}
 {{ end }}

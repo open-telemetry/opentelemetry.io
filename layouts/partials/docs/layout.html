@@ -1,0 +1,17 @@
+<section class="section">
+  <div class="container">
+    <div class="columns is-variable is-8">
+      <div class="column is-2">
+        {{ partial "docs/sidebar.html" . }}
+      </div>
+      <div class="column">
+        <h1 class="title">
+          {{ .Title }}
+        </h1>
+        <div class="content">
+          {{ .Content }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
