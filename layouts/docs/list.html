@@ -4,8 +4,8 @@
 {{- $sections := where .Site.Sections "Section" "=" "docs" }}
 <section class="section">
   <div class="container">
-    <div class="columns">
-      <div class="column is-1">
+    <div class="columns is-variable is-8">
+      <div class="column is-2">
         {{ partial "docs/sidebar_base.html" $sections }}
       </div>
       <div class="column">
