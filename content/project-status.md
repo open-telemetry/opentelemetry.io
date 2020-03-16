@@ -37,7 +37,7 @@ We anticipate that once the alpha phase is complete, we'll enter into a period o
 <sub>Click a progress bar in the above chart to go to that SIGs repository.</sub>
 
 ## Want to Contribute?
-For detailed information on contributing, [Austin Parker](https://twitter.com/austinlparker) wrote a great article called, [How to Start Contributing to OpenTelemetry] (https://medium.com/opentelemetry/how-to-start-contributing-to-opentelemetry-b23991ad91f4).
+For detailed information on contributing, [Austin Parker](https://twitter.com/austinlparker) wrote a great article called, [How to Start Contributing to OpenTelemetry](https://medium.com/opentelemetry/how-to-start-contributing-to-opentelemetry-b23991ad91f4).
 
 Want to get started right away? Check out the [OpenTelemetry GitHub repos](https://github.com/open-telemetry), find an issue, and hack away!
 
