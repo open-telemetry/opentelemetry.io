@@ -9,8 +9,8 @@
 {{ $fontAwesomeUrl     := printf "https://use.fontawesome.com/releases/v%s/css/all.css" $fontAwesomeVersion }}
 
 @charset "utf-8"
-@import url({{ $fontsUrl }})
-@import url({{ $fontAwesomeUrl }})
+@import url("{{ $fontsUrl }}")
+@import url("{{ $fontAwesomeUrl }}")
 
 @import "variables"
 @import "bulma/sass/utilities/initial-variables"

@@ -23,7 +23,6 @@ We’ve set the following requirements for components to reach beta:
 * Components must support the OpenTelemetry-native exporter. Components should support exporters for Jaeger, Prometheus, and Zipkin, though some of these might be added soon after the component enters beta. The Collector must also include receivers for these formats
 * APIs must include at least one HTTP and gRPC integration, though these are packaged separately. APIs should include at least one SQL integration, and can include a web framework integration (this is a stretch goal)
 
-
 ### 0.4 (additional beta release)
 These releases are expected to contain further improvements to the tracing and metrics API and SDK in response to feedback gathered during the prior alpha and beta releases. Additionally, we expect that the OpenTelemetry protocol will be fully implemented and languages will include an exporter to the OpenTelemetry Collector. At this phase, we anticipate all APIs will be unlikely to change.
 
@@ -35,6 +34,7 @@ We anticipate that once the beta phase is complete, we'll enter into a period of
 <sub>Click a progress bar in the above chart to go to that SIGs repository.</sub>
 
 ## Want to Contribute?
+
 For detailed information on contributing, [Austin Parker](https://twitter.com/austinlparker) wrote a great article called, [How to Start Contributing to OpenTelemetry](https://medium.com/opentelemetry/how-to-start-contributing-to-opentelemetry-b23991ad91f4).
 
 Want to get started right away? Check out the [OpenTelemetry GitHub repos](https://github.com/open-telemetry), find an issue, and hack away!

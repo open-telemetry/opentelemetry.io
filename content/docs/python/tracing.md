@@ -19,29 +19,28 @@ From there, you should be able to use opentelemetry as per the following:
 
 ```python
 from opentelemetry import trace
-from opentelemetry.context import Context
-from opentelemetry.sdk.trace import Tracer
+from opentelemetry.sdk.trace import TracerSource
 from opentelemetry.sdk.trace.export import ConsoleSpanExporter
 from opentelemetry.sdk.trace.export import SimpleExportSpanProcessor
 
-trace.set_preferred_tracer_implementation(lambda T: Tracer())
-tracer = trace.tracer()
-tracer.add_span_processor(
+trace.set_preferred_tracer_source_implementation(lambda T: TracerSource())
+trace.tracer_source().add_span_processor(
     SimpleExportSpanProcessor(ConsoleSpanExporter())
 )
-with tracer.start_as_current_span('foo'):
-    with tracer.start_as_current_span('bar'):
-        with tracer.start_as_current_span('baz'):
-            print(Context)
+tracer = trace.get_tracer(__name__)
+with tracer.start_as_current_span("foo"):
+    with tracer.start_as_current_span("bar"):
+        with tracer.start_as_current_span("baz"):
+            print("Hello world from OpenTelemetry Python!")
 ```
 
 Running the code will output trace information to the console:
 
 ```bash
-AsyncRuntimeContext({'current_span': Span(name="baz", context=SpanContext(trace_id=0x6d9024f9b34a06d9e3051f9cd6a517f3, span_id=0x16d0105b895b3047, trace_state={}))})
-Span(name="baz", context=SpanContext(trace_id=0x6d9024f9b34a06d9e3051f9cd6a517f3, span_id=0x16d0105b895b3047, trace_state={}), kind=SpanKind.INTERNAL, parent=Span(name="bar", context=SpanContext(trace_id=0x6d9024f9b34a06d9e3051f9cd6a517f3, span_id=0xbe35652b6fd923dd, trace_state={})), start_time=2019-11-04T22:18:45.777339Z, end_time=2019-11-04T22:18:45.777447Z)
-Span(name="bar", context=SpanContext(trace_id=0x6d9024f9b34a06d9e3051f9cd6a517f3, span_id=0xbe35652b6fd923dd, trace_state={}), kind=SpanKind.INTERNAL, parent=Span(name="foo", context=SpanContext(trace_id=0x6d9024f9b34a06d9e3051f9cd6a517f3, span_id=0x771d1d72567a2c05, trace_state={})), start_time=2019-11-04T22:18:45.777303Z, end_time=2019-11-04T22:18:45.777598Z)
-Span(name="foo", context=SpanContext(trace_id=0x6d9024f9b34a06d9e3051f9cd6a517f3, span_id=0x771d1d72567a2c05, trace_state={}), kind=SpanKind.INTERNAL, parent=None, start_time=2019-11-04T22:18:45.777260Z, end_time=2019-11-04T22:18:45.777780Z)
+Hello world from OpenTelemetry Python!
+Span(name="baz", context=SpanContext(trace_id=0xa1d5d85f3751e579d3fb1d6ba369fa9e, span_id=0x90b06c276c8baf02, trace_state={}), kind=SpanKind.INTERNAL, parent=Span(name="bar", context=SpanContext(trace_id=0xa1d5d85f3751e579d3fb1d6ba369fa9e, span_id=0x0724307563ed8af8, trace_state={})), start_time=2020-03-05T20:12:50.579048Z, end_time=2020-03-05T20:12:50.579073Z)
+Span(name="bar", context=SpanContext(trace_id=0xa1d5d85f3751e579d3fb1d6ba369fa9e, span_id=0x0724307563ed8af8, trace_state={}), kind=SpanKind.INTERNAL, parent=Span(name="foo", context=SpanContext(trace_id=0xa1d5d85f3751e579d3fb1d6ba369fa9e, span_id=0xddadf519247d5d05, trace_state={})), start_time=2020-03-05T20:12:50.579032Z, end_time=2020-03-05T20:12:50.579142Z)
+Span(name="foo", context=SpanContext(trace_id=0xa1d5d85f3751e579d3fb1d6ba369fa9e, span_id=0xddadf519247d5d05, trace_state={}), kind=SpanKind.INTERNAL, parent=None, start_time=2020-03-05T20:12:50.579000Z, end_time=2020-03-05T20:12:50.579195Z)
 ```
 
 # API Reference
