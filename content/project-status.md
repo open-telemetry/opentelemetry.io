@@ -10,12 +10,10 @@ Our current goal is to provide a generally available, production quality release
 ### 0.2
 This release included a functional tracing implementation. While the API may change, you should be able to use these releases to begin exploring and understanding the API and the SDK, and the changes that have been made from OpenTracing/OpenCensus. This release also included support for distributed context using the W3C TraceContext specification.
 
-### 0.3
-This release is expected to contain a functional metrics implementation. Again, you may see changes to the API and the SDK after this point, but it's anticipated that these releases will allow you to explore and understand the changes that have been made from OpenCensus. In addition, this release is anticipated to include improvements to OpenTelemetry Context, various semantic conventions around trace and metric metadata, and a finalized OpenTelemetry protocol.
+### 0.3 (first beta release)
+v0.3 is expected to contain a functional metrics implementation. Again, you may see changes to the API and the SDK after this point, but it's anticipated that these releases will allow you to explore and understand the changes that have been made from OpenCensus. In addition, this release is anticipated to include improvements to OpenTelemetry Context, various semantic conventions around trace and metric metadata, and a finalized OpenTelemetry protocol.
 
-### Beta
-
-We are planning to take a wave of OpenTelemetry components to beta in on or after March 16th 2020. These components include the **Java**, **JavaScript**, **Python**, **Go**, and **.Net** APIs and SDKs, along with the OpenTelemetry Collector, though more will be added if they’re able to meet their milestones in time.
+We are planning to take a wave of OpenTelemetry components to beta on or after March 16th 2020. These components include the **Java**, **JavaScript**, **Python**, **Go**, and **.Net** APIs and SDKs, along with the OpenTelemetry Collector, though more will be added if they’re able to meet their milestones in time.
 
 We’ve set the following requirements for components to reach beta:
 
@@ -25,19 +23,19 @@ We’ve set the following requirements for components to reach beta:
 * Components must support the OpenTelemetry-native exporter. Components should support exporters for Jaeger, Prometheus, and Zipkin, though some of these might be added soon after the component enters beta. The Collector must also include receivers for these formats
 * APIs must include at least one HTTP and gRPC integration, though these are packaged separately. APIs should include at least one SQL integration, and can include a web framework integration (this is a stretch goal)
 
-
-### 0.4 & 0.5
-These releases are expected to contain further improvements to the tracing and metrics API and SDK in response to feedback gathered during the prior alpha releases. Additionally, we expect that the OpenTelemetry protocol will be fully implemented and languages will include an exporter to the OpenTelemetry Collector. At this phase, we anticipate all APIs will be unlikely to change.
+### 0.4 (additional beta release)
+These releases are expected to contain further improvements to the tracing and metrics API and SDK in response to feedback gathered during the prior alpha and beta releases. Additionally, we expect that the OpenTelemetry protocol will be fully implemented and languages will include an exporter to the OpenTelemetry Collector. At this phase, we anticipate all APIs will be unlikely to change.
 
 ### RC and GA
-We anticipate that once the alpha phase is complete, we'll enter into a period of final stabilization work around the API, SDK, and other components. This includes benchmarking, profiling, interoperability testing suites, and other work to ensure that the final release is performant and of a high quality. This work is anticipated to complete by the second half of 2020.
+We anticipate that once the beta phase is complete, we'll enter into a period of final stabilization work around the API, SDK, and other components. This includes benchmarking, profiling, interoperability testing suites, and other work to ensure that the final release is performant and of a high quality. This work is anticipated to complete by the second half of 2020.
 
 ## Current SIG Progress
 {{< progress_chart >}}
 <sub>Click a progress bar in the above chart to go to that SIGs repository.</sub>
 
 ## Want to Contribute?
-For detailed information on contributing, [Austin Parker](https://twitter.com/austinlparker) wrote a great article called, [How to Start Contributing to OpenTelemetry] (https://medium.com/opentelemetry/how-to-start-contributing-to-opentelemetry-b23991ad91f4).
+
+For detailed information on contributing, [Austin Parker](https://twitter.com/austinlparker) wrote a great article called, [How to Start Contributing to OpenTelemetry](https://medium.com/opentelemetry/how-to-start-contributing-to-opentelemetry-b23991ad91f4).
 
 Want to get started right away? Check out the [OpenTelemetry GitHub repos](https://github.com/open-telemetry), find an issue, and hack away!
 
