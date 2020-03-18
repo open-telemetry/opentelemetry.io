@@ -30,7 +30,7 @@ const exporter = new JaegerExporter({
 const provider = new BasicTracerProvider();
 
 provider.addSpanProcessor(new SimpleSpanProcessor(exporter));
-opentelemetry.trace.initGlobalTracerProvider(provider);
+opentelemetry.trace.setGlobalTracerProvider(provider);
 ```
 
 Now, you're ready to create spans!
