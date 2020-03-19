@@ -1,7 +1,5 @@
 - name: About
   url: "/about"
-- name: Specification
-  url: "https://github.com/open-telemetry/opentelemetry-specification/blob/master/README.md"
 - name: "Project"
   url: "/project-status"
 - name: "Registry"
@@ -29,4 +27,6 @@
       url: "https://github.com/open-telemetry/opentelemetry-erlang/blob/master/README.md"
     - name: "Collector"
       url: "https://github.com/open-telemetry/opentelemetry-collector/blob/master/README.md"
+    - name: "Specification"
+      url: "https://github.com/open-telemetry/opentelemetry-specification/blob/master/README.md"
     
