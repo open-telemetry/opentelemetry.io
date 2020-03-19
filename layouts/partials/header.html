@@ -17,10 +17,10 @@
           <a class="navbar-item" href="{{ .url }}">{{ .name }}</a>
         {{- else }}
           <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">{{ .headerName }}</a>
+          <a class="navbar-link" href="{{ .headerUrl }}">{{ .headerName }}</a>
             <div class="navbar-dropdown">
               {{- range .headerValues }}
-              <a class="navbar-item" href="{{.url}}">{{.name}}</a>
+              <a class="navbar-item" href="{{.url}}" target="_blank">{{.name}}</a>
               {{- end}}
             </div>
           </div>
