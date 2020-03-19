@@ -6,10 +6,10 @@
     <title>
       {{ block "title" . }}{{ site.Title }} | {{ site.Params.tagline }}{{ end }}
     </title>
-    {{ partial "header.html" . }}
   </head>
-  {{ partial "ghbadge.html" . }}
-  <body class="page">
+  <body class="page has-navbar-fixed-top">
+    {{ partial "header.html" . }}
+    {{ partial "ghbadge.html" . }}
     
     <main class="main">
       {{ block "main" . }}

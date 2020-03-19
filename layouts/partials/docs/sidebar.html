@@ -1,19 +1,26 @@
-{{ if .Pages }}
-  {{ if eq .Title "Documentation" }}
-    <!-- hide docs stub -->
-  {{ else }}
-  <p class="menu-label">{{ .Title }}</p>
-  {{ end }}
+{{ $here         := .RelPermalink }}
+{{ $docsSections := where site.Sections "Section" "docs" }}
+
+<aside class="menu">
+  {{ range $docsSections }}
+  {{ range .Sections }}
+  {{ $isHere := eq .RelPermalink $here }}
+  <a class="menu-label{{ if $isHere }} is-active{{ end }}" href="{{ .RelPermalink }}">
+    {{ .Title }}
+  </a>
+
+  {{ with .RegularPages }}
   <ul class="menu-list">
-  {{ if .Sections }}
-    {{ range .Sections.ByWeight }}
-      {{ partial "docs/sidebar.html" . }}
-    {{ end }}
-    {{ end }}
-    {{ range .Pages.ByWeight }}
-      <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+    {{ range . }}
+    {{ $isHere := eq .RelPermalink $here }}
+    <li>
+      <a{{ if $isHere }} class="is-active"{{ end }} href="{{ .RelPermalink }}">
+        {{ .Title }}
+      </a>
+    </li>
     {{ end }}
   </ul>
-{{ else }}
-<li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
-{{ end }}
+  {{ end }}
+  {{ end }}
+  {{ end }}
+</aside>

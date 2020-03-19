@@ -1,4 +1,7 @@
-# Exporter configuration guide for Jaeger
+---
+title: Exporter configuration guide for Jaeger
+draft: true
+---
 
 ### Installing Jaeger locally 
 
