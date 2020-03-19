@@ -45,4 +45,24 @@ Meeting invites can be accessed from our public Calendar ([web](https://calendar
 OpenTelemetry follows the [CNCF Code of Conduct](https://github.com/cncf/foundation/blob/master/code-of-conduct.md).
 
 # Registry
-Add your project to the OpenTelemetry Registry! Simply make a pull request to https://github.com/open-telemetry/opentelemetry.io that includes a data file for your project (see `/content/registry` for the format), and we'll review it for inclusion.
+Do you maintain or contribute to an integration for OpenTelemetry? We'd love to feature your project in the [registry](/registry)!
+
+To add your project, please make a pull request to the [opentelemetry.io repository on GitHub](https://github.com/open-telemetry/opentelemetry.io). You'll need to create a data file in `/content/registry` for your project in the following format:
+
+```
+---
+title: My OpenTelemetry Integration // the name of your project
+registryType: <exporter/api/collector/plugin> // the type of integration; is this an exporter, plugin, API package, or something else?
+isThirdParty: <false/true> // this is only true if the project is maintained by the OpenTelemetry project
+tags:
+  - <language>
+  - <other useful search terms>
+repo: https://github.com/your-organization/your-repo // projects don't have to be hosted on github, but this should link to the git or other source control repository for your project
+license: Apache 2.0 // or whatever your OSS license is
+description: A friendly description of your integration/plugin
+authors: <The author or authors of your integration. An email is a great thing to include!>
+otVersion: <The OpenTelemetry version your plugin targets.> 
+---
+```
+
+Once you've created this data file, make a pull request and we'll add your project to the registry!
