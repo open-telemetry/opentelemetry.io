@@ -53,8 +53,8 @@ Prometheus back-ends. More information can be found on the demo
 [README.md](https://github.com/open-telemetry/opentelemetry-collector/tree/master/examples/demo)
 
 ```bash
-$ svn export https://github.com/open-telemetry/opentelemetry-collector/trunk/examples/demo; \
-    cd demo; \
+$ git clone git@github.com:open-telemetry/opentelemetry-collector.git; \
+    cd examples/demo; \
     docker-compose up -d
 ```
 
@@ -67,9 +67,11 @@ receivers locally to a file. Data is sent to the container and the container
 scrapes its own Prometheus metrics.
 
 ```bash
-$ svn export https://github.com/open-telemetry/opentelemetry-collector/trunk/examples/Dockerfile; \
-    docker build .; \
-    docker run --rm -p 55678:55678 -p 55679:55679 --name otelcol -d otelcol; \
+$ git clone git@github.com:open-telemetry/opentelemetry-collector.git; \
+    cd examples; \
+    docker run --rm -p 55678:55678 -p 55679:55679 \
+        --name otelcol omnition/opentelemetry-collector-contrib \
+        --config otel-local-config.yaml; \
     go run "../../examples/main.go"; docker stop otelcol
 ```
 
