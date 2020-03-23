@@ -105,4 +105,4 @@ The OpenTelemetry collector can be extended or embedded into other applications.
 The list of applications extending the collector:
 
 * [opentelemetry-collector-contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib)
-* [jaeger-opentelemetry-collector](https://github.com/jaegertracing/jaeger-opentemenetry-collector)
+* [jaeger-opentelemetry-collector](https://github.com/jaegertracing/jaeger-opentelemetry-collector)
