@@ -1,26 +1,22 @@
-{{ $here         := .RelPermalink }}
-{{ $docsSections := where site.Sections "Section" "docs" }}
-
 <aside class="menu">
-  {{ range $docsSections }}
-  {{ range .Sections }}
-  {{ $isHere := eq .RelPermalink $here }}
-  <a class="menu-label{{ if $isHere }} is-active{{ end }}" href="{{ .RelPermalink }}">
-    {{ .Title }}
-  </a>
-
-  {{ with .RegularPages }}
+  {{ $currentPage := . }}
+  <p class="menu-label">Project</p>
   <ul class="menu-list">
-    {{ range . }}
-    {{ $isHere := eq .RelPermalink $here }}
-    <li>
-      <a{{ if $isHere }} class="is-active"{{ end }} href="{{ .RelPermalink }}">
-        {{ .Title }}
-      </a>
-    </li>
-    {{ end }}
-  </ul>
+  {{ range .Site.Menus.docs }}
+    {{ if .HasChildren }}
+      <li class="menu-label{{ if $currentPage.HasMenuCurrent "main" .}}active{{ end }}">
+        <a href="#"><span>{{ .Name }}</span></a>
+      </li>
+      <ul class="menu-list">
+        {{ range .Children }}
+        <li class="menu-label{{ if $currentPage.HasMenuCurrent "main" .}}active{{ end }}">
+          <a href="{{ .URL }}"><span>{{ .Name }}</span></a>
+        </li>
+        {{ end }}
+      </ul>
+    {{ else }}
+      <li><a href="{{ .URL }}">{{ .Name }}</a></li>
   {{ end }}
   {{ end }}
-  {{ end }}
+</ul>
 </aside>
