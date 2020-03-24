@@ -21,6 +21,8 @@ Whenever you submit a pull request to this repo, Netlify creates a [deploy previ
 * Run `make serve`
 * Open `http://localhost:1313` to check the site
 
+> Please note that you need to install the "extended" version of Hugo (with built-in support) to run the site locally.
+
 ### Adding a project to the OpenTelemetry Registry
 Do you maintain or contribute to an integration for OpenTelemetry? We'd love to feature your project in the registry!
 
