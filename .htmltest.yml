@@ -2,3 +2,4 @@ DirectoryPath: public
 IgnoreDirectoryMissingTrailingSlash: true
 CheckExternal: false
 IgnoreAltMissing: true
+IgnoreInternalEmptyHash: true
