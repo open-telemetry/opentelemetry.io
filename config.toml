@@ -82,7 +82,7 @@ localUrl = "/get-started"
 
 [[ menu.docs ]]
     name = "Collector"
-    url = "https://github.com/open-telemetry/opentelemetry-collector/blob/master/README.md"
+    url = "/docs/collector"
 
 [[ menu.docs ]]
     name = "C++"
