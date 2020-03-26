@@ -6,6 +6,24 @@
     width: 90%
     margin-bottom: 1rem
 
+.hero
+  background-size: cover
+  background-position: center
+  background-repeat: no-repeat
+  background-image: url("/img/main/hero_bg.jpg")
+
+  +desktop
+    background-position: 0 -150px
+  +touch
+    background-position: 0 0
+
+  .box
+    opacity: 0.90
+
+.hero-body
+  backdrop-filter: blur(1px)
+  -webkit-backdrop-filter: blur(1px)
+
 .media-content
   .subtitle
     color: $grey
