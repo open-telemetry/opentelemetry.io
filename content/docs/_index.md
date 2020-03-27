@@ -93,7 +93,7 @@ Once you've configured the API and SDK, you'll then be free to create traces and
 
 ## Exporting Data
 
-Once you've creataed telemetry data, you'll want to send it somewhere. OpenTelemetry supports two primary methods of exporting data from your process to an analysis backend, either directly from a process or by proxying it through the OpenTelemetry Collector.
+Once you've created telemetry data, you'll want to send it somewhere. OpenTelemetry supports two primary methods of exporting data from your process to an analysis backend, either directly from a process or by proxying it through the OpenTelemetry Collector.
 
 In-process export requires you to import and take a dependency on one or more _exporters_, libraries that translate OpenTelemetry's in-memory span and metric objects into the appropriate format for telemetry analysis tools like Jaeger or Prometheus. In addition, OpenTelemetry supports a wire protocol known as _OTLP_, which is supported by all OpenTelemetry SDKs. This protocol can be used to send data to the OpenTelemetry Collector, a standalone binary process that can be run as a proxy or sidecar to your service instances or run on a separate host. The collector can then be configured to forward and export this data to your choice of analysis tools.
 
