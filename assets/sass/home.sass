@@ -8,21 +8,17 @@
 
 .hero
   background-size: cover
-  background-position: center
+  background-position: bottom left
   background-repeat: no-repeat
   background-image: url("/img/main/hero_bg.jpg")
 
-  +desktop
-    background-position: 0 -150px
-  +touch
-    background-position: 0 0
-
   .box
-    opacity: 0.90
+    padding: 2em 2em 2em 2em
+    background-color: rgba(255,255,255,0.98)
 
 .hero-body
-  backdrop-filter: blur(1px)
-  -webkit-backdrop-filter: blur(1px)
+  backdrop-filter: blur(0px)
+  -webkit-backdrop-filter: blur(0px)
 
 .media-content
   .subtitle
