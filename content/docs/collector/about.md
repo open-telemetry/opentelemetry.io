@@ -61,7 +61,7 @@ $ git clone git@github.com:open-telemetry/opentelemetry-collector.git; \
 ### Docker
 
 Starts a Docker container of the
-[contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib)
+[core](https://github.com/open-telemetry/opentelemetry-collector)
 version of the Collector with all receivers enabled and exports all the data it
 receivers locally to a file. Data is sent to the container and the container
 scrapes its own Prometheus metrics.
@@ -70,7 +70,7 @@ scrapes its own Prometheus metrics.
 $ git clone git@github.com:open-telemetry/opentelemetry-collector.git; \
     cd examples; \
     docker run --rm -p 55678:55678 -p 55679:55679 \
-        --name otelcol omnition/opentelemetry-collector-contrib \
+        --name otelcol otel/opentelemetry-collector \
         --config otel-local-config.yaml; \
     go run "../../examples/main.go"; docker stop otelcol
 ```
