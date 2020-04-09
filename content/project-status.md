@@ -29,10 +29,6 @@ These releases are expected to contain further improvements to the tracing and m
 ### RC and GA
 We anticipate that once the beta phase is complete, we'll enter into a period of final stabilization work around the API, SDK, and other components. This includes benchmarking, profiling, interoperability testing suites, and other work to ensure that the final release is performant and of a high quality. This work is anticipated to complete by the second half of 2020.
 
-## Current SIG Progress
-{{< progress_chart >}}
-<sub>Click a progress bar in the above chart to go to that SIGs repository.</sub>
-
 ## Want to Contribute?
 
 For detailed information on contributing, [Austin Parker](https://twitter.com/austinlparker) wrote a great article called, [How to Start Contributing to OpenTelemetry](https://medium.com/opentelemetry/how-to-start-contributing-to-opentelemetry-b23991ad91f4).
