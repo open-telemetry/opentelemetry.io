@@ -29,4 +29,6 @@
       url: "/docs/collector/about"
     - name: "Specification"
       url: "https://github.com/open-telemetry/opentelemetry-specification/blob/master/README.md"
+    - name: "Workshop Resources"
+      url: "/docs/workshop/resources"
     
