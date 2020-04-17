@@ -4,7 +4,7 @@ registryType: api
 isThirdParty: false
 tags:
   - javascript
-  - node
+  - node.js
   - browser
 repo: https://github.com/open-telemetry/opentelemetry-js
 license: Apache 2.0
