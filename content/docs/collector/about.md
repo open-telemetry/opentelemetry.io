@@ -63,7 +63,7 @@ $ git clone git@github.com:open-telemetry/opentelemetry-collector.git; \
 Starts a Docker container of the
 [core](https://github.com/open-telemetry/opentelemetry-collector)
 version of the Collector with all receivers enabled and exports all the data it
-receivers locally to a file. Data is sent to the container and the container
+receives locally to a file. Data is sent to the container and the container
 scrapes its own Prometheus metrics.
 
 ```bash
