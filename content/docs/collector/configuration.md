@@ -24,7 +24,7 @@ must be configured. By default, no receivers are configured.
 
 A basic example of all available receivers is provided below. For detailed
 receiver configuration, please see the [receiver
-README.md](https://github.com/open-telemetry/opentelemetry-collector/receiver/README.md).
+README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/master/receiver/README.md).
 
 ```yaml
 receivers:
@@ -58,7 +58,7 @@ Processors are optional though some are recommended.
 
 A basic example of all available processors is provided below. For
 detailed processor configuration, please see the [processor
-README.md](https://github.com/open-telemetry/opentelemetry-collector/processor/README.md).
+README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/master/processor/README.md).
 
 ```yaml
 processors:
@@ -91,7 +91,7 @@ more exporters must be configured. By default, no exporters are configured.
 
 A basic example of all available exporters is provided below. For detailed
 exporter configuration, please see the [exporter
-README.md](https://github.com/open-telemetry/opentelemetry-collector/exporter/README.md).
+README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/master/exporter/README.md).
 
 ```yaml
 exporters:
@@ -155,7 +155,7 @@ instance of a receiver/exporter is used for all pipelines.
 
 The following is an example pipeline configuration. For more information, refer
 to [pipeline
-documentation](https://github.com/open-telemetry/opentelemetry-collector/docs/pipelines.md).
+documentation](https://github.com/open-telemetry/opentelemetry-collector/blob/master/docs/pipelines.md).
 
 ```yaml
 service:
@@ -176,7 +176,7 @@ Collector. Extensions are optional. By default, no extensions are configured.
 
 A basic example of all available extensions is provided below. For detailed
 extension configuration, please see the [extension
-README.md](https://github.com/open-telemetry/opentelemetry-collector/extension/README.md).
+README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/master/extension/README.md).
 
 ```yaml
 extensions:
