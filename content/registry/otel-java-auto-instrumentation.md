@@ -2,6 +2,7 @@
 title: Java Auto-Instrumentation
 registryType: auto-instrumentation
 isThirdParty: false
+language: java
 tags:
   - java
   - auto-instrumentation

@@ -2,6 +2,7 @@
 title: Zipkin Exporter
 registryType: exporter
 isThirdParty: false
+language: python
 tags:
   - python
   - exporter

@@ -92,6 +92,7 @@ function populateResults(result) {
       description: value.item.description,
       repo: value.item.repo,
       registryType: value.item.registryType,
+      language: value.item.language,
       snippet: snippet,
       otVersion: value.item.otVersion
     });
@@ -130,4 +131,39 @@ function render(templateString, data) {
     templateString = templateString.replace(re, data[key]);
   }
   return templateString;
+}
+
+// listeners, etc
+let selectedLanguage = "all";
+let selectedComponent = "all";
+
+document.addEventListener('input', function(event) {
+  if (event.target.id === 'componentFilter') {
+    selectedComponent = event.target.value
+  } 
+  if (event.target.id === 'languageFilter') {
+    selectedLanguage = event.target.value
+  }
+  updateFilters();
+});
+
+function updateFilters() {
+  let allItems = [...document.getElementsByClassName("component")];
+  if (selectedComponent === "all" && selectedLanguage === "all" ){
+    allItems.forEach(element => element.classList.remove("is-hidden"))
+  } else {
+    allItems.forEach(element => {
+      const dc = element.dataset.registrytype;
+      const dl = element.dataset.registrylanguage;
+      if ((dc === selectedComponent || selectedComponent === "all") && (dl === selectedLanguage || selectedLanguage === "all")){
+        element.classList.remove("is-hidden")
+      } else if (dc === selectedComponent && dl !== selectedLanguage) {
+        element.classList.add("is-hidden")
+      } else if (dl === selectedLanguage && dc !== selectedComponent) {
+        element.classList.add("is-hidden")
+      } else {
+        element.classList.add("is-hidden")
+      }
+    });
+  }
 }

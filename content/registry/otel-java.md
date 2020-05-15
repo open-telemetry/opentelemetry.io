@@ -2,6 +2,7 @@
 title: Java
 registryType: sdk
 isThirdParty: false
+language: java
 tags:
   - java
 repo: https://github.com/open-telemetry/opentelemetry-java

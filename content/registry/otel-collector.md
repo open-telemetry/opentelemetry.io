@@ -2,6 +2,7 @@
 title: Collector
 registryType: collector
 isThirdParty: false
+language: collector
 tags:
   - collector
   - agent

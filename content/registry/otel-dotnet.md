@@ -2,6 +2,7 @@
 title: .NET
 registryType: api
 isThirdParty: false
+language: dotnet
 tags:
   - c#
   - .net

@@ -2,6 +2,7 @@
 title: Lightstep Exporter
 registryType: exporter
 isThirdParty: true
+language: go
 tags:
   - go
   - exporter

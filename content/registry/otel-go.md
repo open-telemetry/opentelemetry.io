@@ -2,6 +2,7 @@
 title: Go
 registryType: api
 isThirdParty: false
+language: go
 tags:
   - go
 repo: https://github.com/open-telemetry/opentelemetry-go

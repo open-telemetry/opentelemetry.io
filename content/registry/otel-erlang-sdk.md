@@ -2,6 +2,7 @@
 title: Erlang/Elixir
 registryType: sdk
 isThirdParty: false
+language: erlang
 tags:
   - erlang
   - elixir

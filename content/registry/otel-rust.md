@@ -2,6 +2,7 @@
 title: Rust
 registryType: api
 isThirdParty: false
+language: rust
 tags:
   - rust
 repo: https://github.com/open-telemetry/opentelemetry-rust

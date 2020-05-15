@@ -2,6 +2,7 @@
 title: Honeycomb.io Exporter
 registryType: exporter
 isThirdParty: true
+language: python
 tags:
   - python
   - exporter

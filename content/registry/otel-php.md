@@ -2,6 +2,7 @@
 title: PHP
 registryType: api
 isThirdParty: false
+language: php
 tags:
   - php
 repo: https://github.com/open-telemetry/opentelemetry-php

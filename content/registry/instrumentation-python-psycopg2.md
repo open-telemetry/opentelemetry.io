@@ -2,6 +2,7 @@
 title: Psycopg Instrumentation
 registryType: instrumentation
 isThirdParty: false
+language: python
 tags:
   - python
   - instrumentation

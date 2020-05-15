@@ -2,6 +2,7 @@
 title: Ruby
 registryType: api
 isThirdParty: false
+language: ruby
 tags:
   - ruby
 repo: https://github.com/open-telemetry/opentelemetry-ruby

@@ -2,6 +2,7 @@
 title: JavaScript
 registryType: api
 isThirdParty: false
+language: js
 tags:
   - javascript
   - node.js

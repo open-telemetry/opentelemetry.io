@@ -2,6 +2,7 @@
 title: OpenTelemetry Mongoose Plugin
 registryType: plugin
 isThirdParty: false
+language: js
 tags:
   - Node.js
   - plugin

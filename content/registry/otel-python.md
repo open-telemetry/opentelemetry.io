@@ -2,6 +2,7 @@
 title: Python
 registryType: api
 isThirdParty: false
+language: python
 tags:
   - python
 repo: https://github.com/open-telemetry/opentelemetry-python
