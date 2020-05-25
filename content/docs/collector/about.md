@@ -54,7 +54,7 @@ Prometheus back-ends. More information can be found on the demo
 
 ```bash
 $ git clone git@github.com:open-telemetry/opentelemetry-collector.git; \
-    cd examples/demo; \
+    cd opentelemetry-collector/examples/demo; \
     docker-compose up -d
 ```
 
@@ -68,7 +68,7 @@ scrapes its own Prometheus metrics.
 
 ```bash
 $ git clone git@github.com:open-telemetry/opentelemetry-collector.git; \
-    cd examples; \
+    cd opentelemetry-collector/examples; \
     docker run --rm -p 55678:55678 -p 55679:55679 \
         --name otelcol otel/opentelemetry-collector \
         --config otel-local-config.yaml; \
