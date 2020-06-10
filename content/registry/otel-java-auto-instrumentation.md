@@ -1,6 +1,6 @@
 ---
 title: Java Auto-Instrumentation
-registryType: auto-instrumentation
+registryType: instrumentation
 isThirdParty: false
 language: java
 tags:

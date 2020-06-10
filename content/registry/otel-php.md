@@ -1,6 +1,6 @@
 ---
 title: PHP
-registryType: api
+registryType: core
 isThirdParty: false
 language: php
 tags:

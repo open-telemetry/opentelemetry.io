@@ -1,6 +1,6 @@
 ---
 title: Python
-registryType: api
+registryType: core
 isThirdParty: false
 language: python
 tags:

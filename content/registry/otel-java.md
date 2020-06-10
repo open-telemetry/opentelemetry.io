@@ -1,6 +1,6 @@
 ---
 title: Java
-registryType: sdk
+registryType: core
 isThirdParty: false
 language: java
 tags:

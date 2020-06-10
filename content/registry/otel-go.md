@@ -1,6 +1,6 @@
 ---
 title: Go
-registryType: api
+registryType: core
 isThirdParty: false
 language: go
 tags:

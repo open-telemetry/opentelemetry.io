@@ -1,6 +1,6 @@
 ---
 title: Ruby
-registryType: api
+registryType: core
 isThirdParty: false
 language: ruby
 tags:

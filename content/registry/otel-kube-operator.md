@@ -1,6 +1,6 @@
 ---
 title: Kubernetes Operator
-registryType: collector
+registryType: core
 isThirdParty: false
 language: collector
 tags:

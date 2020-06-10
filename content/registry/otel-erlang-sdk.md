@@ -1,6 +1,6 @@
 ---
 title: Erlang/Elixir
-registryType: sdk
+registryType: core
 isThirdParty: false
 language: erlang
 tags:

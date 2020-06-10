@@ -2,6 +2,10 @@ $registry-vertical-margin: 1rem;
 $green: #26c53e;
 $dark-blue: #39a9da;
 
+$core: #2C3ED3
+$instrumentation: #D32C3E
+$exporter: #3ED32C
+
 $dotnet: #178600
 $cpp: #f34b7d
 $erlang: #B83998
@@ -12,6 +16,7 @@ $php: #4F5D95
 $python: #3572A5
 $ruby: #701516
 $rust: #dea584
+$collector: #070002
 
 .registry
   display: block;
@@ -24,6 +29,18 @@ $rust: #dea584
     margin: $registry-vertical-margin 0;
   &__header
     background-color: $green;
+
+.tag.badge-core
+  color: white
+  background-color: $core
+
+.tag.badge-instrumentation
+  color: white
+  background-color: $instrumentation
+
+.tag.badge-exporter
+  color: white
+  background-color: $exporter
 
 .badge-tracer
   color: white
@@ -73,4 +90,6 @@ $rust: #dea584
   color: white
   background-color: $rust
 
-
+.tag.badge-collector
+  color: white
+  background-color: $collector

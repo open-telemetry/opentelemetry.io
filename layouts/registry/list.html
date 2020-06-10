@@ -35,9 +35,9 @@
           <div class="field">
           <div class="select">
             <select id="componentFilter">
-              <option value="all">All Types</option>
+              <option value="all">ALL</option>
               {{ range $registryItems.GroupByParam "registryType" }}
-                <option value={{.Key}}>{{ humanize .Key }}</option>
+                <option value={{.Key}}>{{ upper .Key }}</option>
               {{ end }}
             </select>
           </div>
@@ -46,9 +46,9 @@
         <div class="field">
           <div class="select">
             <select id="languageFilter">
-              <option value="all">Any Language</option>
+              <option value="all">ALL</option>
               {{ range $registryItems.GroupByParam "language" }}
-                <option value={{.Key}}>{{ humanize .Key }}</option>
+                <option value={{.Key}}>{{ upper .Key }}</option>
               {{ end }}
             </select>
           </div>
@@ -77,7 +77,7 @@
               <div class="media-right">
                 <div class="tags has-addons">
                   <span class="tag">Type</span>
-                  <span class="tag is-primary is-uppercase">{{ .Params.registryType }}</span>
+                  <span class="tag badge-{{.Params.registryType}} is-uppercase">{{ .Params.registryType }}</span>
                 </div>
                 <div class="tags has-addons">
                   <span class="tag">Language</span>
@@ -108,7 +108,7 @@
         <div class="media-right">
           <div class="tags has-addons">
             <span class="tag">Type</span>
-            <span class="tag is-primary is-uppercase">${registryType}</span>
+            <span class="tag badge-${registryType} is-uppercase">${registryType}</span>
           </div>
           <div class="tags has-addons">
             <span class="tag">Language</span>

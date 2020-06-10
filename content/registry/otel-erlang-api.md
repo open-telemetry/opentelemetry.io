@@ -1,6 +1,6 @@
 ---
 title: Erlang/Elixir
-registryType: api
+registryType: core
 isThirdParty: false
 language: erlang
 tags:
