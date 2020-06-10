@@ -1,7 +1,8 @@
 ---
 title: Go
-registryType: api
+registryType: core
 isThirdParty: false
+language: go
 tags:
   - go
 repo: https://github.com/open-telemetry/opentelemetry-go

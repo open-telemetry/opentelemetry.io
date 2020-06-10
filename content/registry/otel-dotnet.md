@@ -1,7 +1,8 @@
 ---
 title: .NET
-registryType: api
+registryType: core
 isThirdParty: false
+language: dotnet
 tags:
   - c#
   - .net

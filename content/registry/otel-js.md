@@ -1,10 +1,11 @@
 ---
 title: JavaScript
-registryType: api
+registryType: core
 isThirdParty: false
+language: js
 tags:
   - javascript
-  - node
+  - node.js
   - browser
 repo: https://github.com/open-telemetry/opentelemetry-js
 license: Apache 2.0

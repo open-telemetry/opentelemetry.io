@@ -1,7 +1,8 @@
 ---
 title: C++
-registryType: api
+registryType: core
 isThirdParty: false
+language: cpp
 tags:
   - cpp
 repo: https://github.com/open-telemetry/opentelemetry-cpp

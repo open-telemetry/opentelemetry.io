@@ -1,7 +1,8 @@
 ---
 title: Python
-registryType: api
+registryType: core
 isThirdParty: false
+language: python
 tags:
   - python
 repo: https://github.com/open-telemetry/opentelemetry-python

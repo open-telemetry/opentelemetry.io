@@ -1,7 +1,8 @@
 ---
 title: Kubernetes Operator
-registryType: collector
+registryType: core
 isThirdParty: false
+language: collector
 tags:
   - kubernetes
 repo: https://github.com/open-telemetry/opentelemetry-operator

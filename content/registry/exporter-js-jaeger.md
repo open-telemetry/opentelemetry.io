@@ -2,6 +2,7 @@
 title: Jaeger Exporter
 registryType: exporter
 isThirdParty: false
+language: js
 tags:
   - Node.js
   - exporter

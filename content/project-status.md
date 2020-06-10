@@ -2,7 +2,7 @@
 Title: "Project Status"
 ---
 
-OpenTelemetry implementations are currently in **pre-release** status. This page tracks the overall release milestones as we move towards full releases for each language SIG. You can find more details about the milestones at [this link](https://github.com/open-telemetry/opentelemetry-specification/blob/master/milestones.md).
+OpenTelemetry implementations are currently in **beta** status. This page tracks the overall release milestones as we move towards full releases for each language SIG. You can find more details about the milestones at [this link](https://github.com/open-telemetry/opentelemetry-specification/blob/master/milestones.md).
 
 ## Summary
 Our current goal is to provide a generally available, production quality release by the second half of 2020. Currently, we are in the _alpha_ stage. What follows is a brief explanation of what we expect to be available, when.
@@ -28,10 +28,6 @@ These releases are expected to contain further improvements to the tracing and m
 
 ### RC and GA
 We anticipate that once the beta phase is complete, we'll enter into a period of final stabilization work around the API, SDK, and other components. This includes benchmarking, profiling, interoperability testing suites, and other work to ensure that the final release is performant and of a high quality. This work is anticipated to complete by the second half of 2020.
-
-## Current SIG Progress
-{{< progress_chart >}}
-<sub>Click a progress bar in the above chart to go to that SIGs repository.</sub>
 
 ## Want to Contribute?
 

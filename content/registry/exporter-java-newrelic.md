@@ -2,6 +2,7 @@
 title: New Relic Java Exporter
 registryType: exporter
 isThirdParty: true
+language: go
 tags:
   - java
   - exporter
