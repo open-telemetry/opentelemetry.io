@@ -184,3 +184,17 @@ extensions:
   pprof: {}
   zpages: {}
 ```
+
+## Using Environment Variables
+
+The use of environment variables is also supported in the collector configuration. The support for environment variables makes it more explicit 
+of what is coming just by looking at the configuration file, instead of replying on the internal automatic services. 
+This support also makes congigurations more dyamic in the environment.
+
+```yaml
+processors:
+  attributes/example:
+    actions:
+      - key: "$DB_KEY"
+        action: "$OPERATION"
+```
