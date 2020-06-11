@@ -2,6 +2,7 @@
 title: Java Instrumentation
 registryType: instrumentation
 isThirdParty: false
+language: java
 tags:
   - java
   - instrumentation

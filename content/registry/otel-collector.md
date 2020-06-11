@@ -1,7 +1,8 @@
 ---
 title: Collector
-registryType: collector
+registryType: core
 isThirdParty: false
+language: collector
 tags:
   - collector
   - agent

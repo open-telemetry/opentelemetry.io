@@ -1,7 +1,8 @@
 ---
 title: Ruby
-registryType: api
+registryType: core
 isThirdParty: false
+language: ruby
 tags:
   - ruby
 repo: https://github.com/open-telemetry/opentelemetry-ruby

@@ -1,7 +1,8 @@
 ---
 title: JavaScript
-registryType: api
+registryType: core
 isThirdParty: false
+language: js
 tags:
   - javascript
   - node.js

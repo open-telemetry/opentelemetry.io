@@ -2,6 +2,7 @@
 title: Azure Monitor JavaScript Exporter
 registryType: exporter
 isThirdParty: true
+language: js
 tags:
   - Node.js
   - javascript

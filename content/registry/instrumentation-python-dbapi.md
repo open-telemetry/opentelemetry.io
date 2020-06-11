@@ -2,6 +2,7 @@
 title: Database API integration
 registryType: instrumentation
 isThirdParty: false
+language: python
 tags:
   - python
   - instrumentation
