@@ -76,8 +76,8 @@ function updateReleaseData(data, release) {
 async function main() {
   if (token === undefined || token.length === 0)
   {
-    console.error("please set GH_TOKEN, exiting")
-    process.exit(1)
+    console.log("please set GH_TOKEN to get live data; using fallback")
+    process.exit(0)
   }
 
   for (const datum of labelData) {
