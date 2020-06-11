@@ -2,6 +2,7 @@
 title: Google Cloud Trace Exporter
 registryType: exporter
 isThirdParty: true
+language: go
 tags:
   - go
   - exporter
