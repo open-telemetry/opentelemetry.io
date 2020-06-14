@@ -1,7 +1,8 @@
 ---
 title: OpenTelemetry kafkajs Plugin
-registryType: plugin
+registryType: instrumentation
 isThirdParty: false
+language: js
 tags:
   - Node.js
   - plugin
