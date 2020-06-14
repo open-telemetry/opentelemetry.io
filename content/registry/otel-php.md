@@ -1,7 +1,8 @@
 ---
 title: PHP
-registryType: api
+registryType: core
 isThirdParty: false
+language: php
 tags:
   - php
 repo: https://github.com/open-telemetry/opentelemetry-php

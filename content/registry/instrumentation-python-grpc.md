@@ -2,6 +2,7 @@
 title: gRPC Instrumentation
 registryType: instrumentation
 isThirdParty: false
+language: python
 tags:
   - python
   - instrumentation

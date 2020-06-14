@@ -2,6 +2,7 @@
 title: New Relic .NET Exporter
 registryType: exporter
 isThirdParty: true
+language: dotnet
 tags:
   - dotnet
   - c#
