@@ -3,7 +3,9 @@
 {{ $subtagline := site.Params.sub_tagline | markdownify }}
 {{ $description := site.Params.sub_description | markdownify }}
 {{ $logo       := printf "/img/logos/%s" site.Params.logos.hero | relURL }}
-<section class="hero is-medium">
+{{ $bg := resources.Get "img/hero_bg.jpg" }}
+{{ $fittedBg := $bg.Fit "1920x1080" }}
+<section class="hero is-medium" style="background-size: cover; background-position: bottom left; background-repeat: no-repeat; background-image: url({{$fittedBg.RelPermalink}})">
   <div class="hero-body" style="padding-top: 2.5em;">
     <div class="container" style="padding-bottom: 2em;">
       <div class="columns is-centered">
