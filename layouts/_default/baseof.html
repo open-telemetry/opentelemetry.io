@@ -3,6 +3,7 @@
   <head>
     {{ partial "meta.html" . }}
     {{ partial "css.html" . }}
+    {{ partial "javascript.html" . }}
     <title>
       {{ block "title" . }}{{ site.Title }} | {{ site.Params.tagline }}{{ end }}
     </title>
@@ -16,6 +17,5 @@
     </main>
 
     {{ partial "footer.html" . }}
-    {{ partial "javascript.html" . }}
   </body>
 </html>
