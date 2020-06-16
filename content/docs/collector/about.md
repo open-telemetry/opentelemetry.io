@@ -69,10 +69,12 @@ scrapes its own Prometheus metrics.
 ```bash
 $ git clone git@github.com:open-telemetry/opentelemetry-collector.git; \
     cd opentelemetry-collector/examples; \
+    go build main.go; ./main & pid1="$!";
     docker run --rm -p 55678:55678 -p 55679:55679 \
+        -v "${PWD}/otel-local-config.yaml":/otel-local-config.yaml \
         --name otelcol otel/opentelemetry-collector \
         --config otel-local-config.yaml; \
-    go run "../../examples/main.go"; docker stop otelcol
+    kill $pid1; docker stop otelcol
 ```
 
 ### Kubernetes
@@ -93,9 +95,8 @@ Prometheus metrics.
 ```bash
 $ git clone git@github.com:open-telemetry/opentelemetry-collector.git; \
     cd opentelemetry-collector; make otelcol; \
-    export OTEL_AGENT_ENDPOINT=0.0.0.0:55678; \
-    ./bin/$($GOOS)/otelcol --config ./examples/otel-local-config.yaml & pid1="$!"; \
-    go run "examples/main.go"; kill $pid1; unset OTEL_AGENT_ENDPOINT
+    go build examples/main.go; ./examples/main.go & pid1="$!"; \
+    ./bin/$($GOOS)/otelcol --config ./examples/otel-local-config.yaml; kill $pid1
 ```
 
 ## Other
