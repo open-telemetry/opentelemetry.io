@@ -1,10 +1,11 @@
 {{ $blogData := getJSON "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2Fopentelemetry" }}
-
+{{ $img := resources.Get "img/blog_card.jpg" }}
+{{ $fittedImage := $img.Fit "400x400" }}
 {{ range first 1 $blogData.items }}
 <div class="card">
   <div class="card-image">
     <figure class="image is-square">
-      <img src="/img/main/blog_card.jpg" id="blog-image" />
+      <img src="{{$fittedImage.RelPermalink}}" id="blog-image" width="{{$fittedImage.Width}}" height="{{$fittedImage.Height}}"/>
     </figure>
   </div>
   <div class="card-content">
