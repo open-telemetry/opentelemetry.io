@@ -5,7 +5,7 @@ import { CollectorExporter } from '@opentelemetry/exporter-collector';
 
 const exporter = new CollectorExporter({
   serviceName: 'opentelemetry.io',
-  url: 'http://34.66.14.199/v1/trace'
+  url: 'https://otelwebtelemetry.com/v1/trace'
 })
 
 const locale = {

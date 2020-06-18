@@ -13489,7 +13489,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const exporter = new _opentelemetry_exporter_collector__WEBPACK_IMPORTED_MODULE_3__["CollectorExporter"]({
   serviceName: 'opentelemetry.io',
-  url: 'http://34.66.14.199/v1/trace'
+  url: 'https://otelwebtelemetry.com/v1/trace'
 })
 
 const locale = {
