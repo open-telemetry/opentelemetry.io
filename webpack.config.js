@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const dir = path.resolve(__dirname);
 
 module.exports = {
@@ -15,7 +16,7 @@ module.exports = {
     modules: [
       path.resolve(dir), 'node_modules',
     ],
-    extensions: ['.ts', '.js', '.tsx', '.jsx']
+    extensions: ['.ts', '.js']
   },
-  devtool: 'eval-source-map'
+  devtool: 'none'
 }
