@@ -82,7 +82,7 @@ $ git clone git@github.com:open-telemetry/opentelemetry-collector.git; \
 Deploys an agent as a daemonset and a single instance of the collector.
 
 ```bash
-$ kubectl apply -f https://github.com/open-telemetry/opentelemetry-collector/blob/master/examples/k8s.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/open-telemetry/opentelemetry-collector/master/examples/k8s.yaml
 ```
 
 ### Local
