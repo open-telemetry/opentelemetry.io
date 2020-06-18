@@ -1,9 +1,23 @@
 {
+  "scripts": {
+    "start": "webpack --mode=development --watch",
+    "build": "webpack --mode=production"
+  },
   "private": true,
   "devDependencies": {
     "bulma": "^0.8.0",
     "esm": "^3.2.25",
     "node-fetch": "^2.6.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
     "yaml": "^1.7.2"
+  },
+  "dependencies": {
+    "@opentelemetry/core": "^0.8.3",
+    "@opentelemetry/exporter-collector": "^0.8.3",
+    "@opentelemetry/plugin-document-load": "^0.6.1",
+    "@opentelemetry/plugin-user-interaction": "^0.6.1",
+    "@opentelemetry/tracing": "^0.8.3",
+    "@opentelemetry/web": "^0.8.3"
   }
 }

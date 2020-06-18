@@ -1,5 +1,6 @@
 {{ define "main" }}
 {{ $registryItems := where .Data.Pages "Params.layout" "!=" "search" }}
+{{ $search := resources.Get "js/search.js" | fingerprint }}
 <div class="container">
   <section class="section">
     <div class="columns">
@@ -121,6 +122,6 @@
   </script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script>
-  <script src="{{ "/js/search.js" | absURL }}"></script>
+  <script src="{{ $search.RelPermalink }}" integrity="{{ $search.Data.Integrity }}" type="application/javascript"></script>
 </div>
 {{ end }}
