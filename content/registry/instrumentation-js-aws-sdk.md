@@ -11,6 +11,6 @@ tags:
 repo: https://github.com/aspecto-io/opentelemetry-ext-js/tree/master/packages/plugin-aws-sdk
 license: Apache 2.0
 description: aws-sdk plugin for Node.js.
-authors: Amir Blum (amir@aspecto.io)
+authors: Aspecto Authors (amir@aspecto.io)
 otVersion: ^0.8.3
 ---
