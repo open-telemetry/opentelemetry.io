@@ -7,7 +7,7 @@ tags:
   - go
   - instrumentation
   - http
-repo: https://github.com/open-telemetry/opentelemetry-go-contrib/tree/master/plugins/gorilla/mux
+repo: https://github.com/open-telemetry/opentelemetry-go-contrib/tree/master/instrumentation/gorilla/mux
 license: Apache 2.0
 description: Golang contrib plugin for the gorilla/mux package.
 authors: OpenTelemetry Authors
