@@ -2,6 +2,7 @@
 title: MongoDB database plugin for Go
 registryType: instrumentation
 isThirdParty: false
+language: go
 tags:
   - go
   - instrumentation
