@@ -2,10 +2,12 @@
 title: Gorilla Mux plugin for Golang
 registryType: instrumentation
 isThirdParty: false
+language: go
 tags:
   - go
   - instrumentation
-repo: https://github.com/open-telemetry/opentelemetry-go-contrib/tree/master/plugins/gorilla/mux
+  - http
+repo: https://github.com/open-telemetry/opentelemetry-go-contrib/tree/master/instrumentation/github.com/gorilla/mux
 license: Apache 2.0
 description: Golang contrib plugin for the gorilla/mux package.
 authors: OpenTelemetry Authors
