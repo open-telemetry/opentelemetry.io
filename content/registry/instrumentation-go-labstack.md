@@ -1,5 +1,5 @@
 ---
-title: Labstack Echo HTTP framework plugin for Go
+title: Labstack Echo instrumentation
 registryType: instrumentation
 isThirdParty: false
 language: go

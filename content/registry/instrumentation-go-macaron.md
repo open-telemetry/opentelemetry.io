@@ -1,5 +1,5 @@
 ---
-title: Macaron HTTP framework plugin for Go
+title: Macaron Instrumentation
 registryType: instrumentation
 isThirdParty: false
 language: go
