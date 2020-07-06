@@ -1,5 +1,5 @@
 ---
-title: MongoDB database plugin for Go
+title: MongoDB database instrumentation
 registryType: instrumentation
 isThirdParty: false
 language: go
