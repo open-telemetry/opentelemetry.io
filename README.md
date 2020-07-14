@@ -31,10 +31,10 @@ To add your project, please make a pull request. You'll need to create a data fi
 ```
 ---
 title: My OpenTelemetry Integration // the name of your project
-registryType: <exporter/api/collector/plugin> // the type of integration; is this an exporter, plugin, API package, or something else?
+registryType: <exporter/core/instrumentation> // the type of integration; is this an exporter, plugin, API package, or something else?
 isThirdParty: <false/true> // this is only true if the project is maintained by the OpenTelemetry project
+language: <js/go/dotnet/etc. or collector for collector plugins>
 tags:
-  - <language>
   - <other useful search terms>
 repo: https://github.com/your-organization/your-repo // projects don't have to be hosted on github, but this should link to the git or other source control repository for your project
 license: Apache 2.0 // or whatever your OSS license is

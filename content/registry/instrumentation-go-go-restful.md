@@ -1,0 +1,15 @@
+---
+title: Go-restful Instrumentation
+registryType: instrumentation
+isThirdParty: false
+language: go
+tags:
+  - go
+  - instrumentation
+  - http
+repo: https://github.com/open-telemetry/opentelemetry-go-contrib/tree/master/instrumentation/github.com/emicklei/go-restful
+license: Apache 2.0
+description: Go contrib plugin for the emicklei/go-restful package.
+authors: OpenTelemetry Authors
+otVersion: latest
+---

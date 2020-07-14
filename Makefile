@@ -3,11 +3,10 @@ clean:
 
 setup:
 	npm install
+	npm run-script build
 
 serve: setup
-	hugo server \
-		--buildDrafts \
-		--buildFuture
+	hugo server -p 30000 --buildDrafts --buildFuture && npm start
 
 preview-build: get-milestones
 	hugo \
