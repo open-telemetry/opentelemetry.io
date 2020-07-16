@@ -1,5 +1,5 @@
 summaryInclude = 60;
-var fuseOptions = {
+let fuseOptions = {
   shouldSort: true,
   includeMatches: true,
   threshold: 0.1,
@@ -12,65 +12,70 @@ var fuseOptions = {
     { name: "title", weight: 0.8 },
     { name: "description", weight: 0.5 },
     { name: "tags", weight: 0.3 },
-    { name: "categories", weight: 0.3 }
-  ]
+    { name: "categories", weight: 0.3 },
+  ],
 };
 
-var searchQuery = param("s");
+// Get searchQuery for queryParams
+let urlParams = new URLSearchParams(window.location.search);
+let searchQuery = urlParams.get("s");
+
+// Run search or display default body
 if (searchQuery) {
-  $("#search-query").val(searchQuery);
-  $("#default-body").hide();
+  document.querySelector("#search-query").value = searchQuery;
+  document.querySelector("#default-body").style.display = "none";
   executeSearch(searchQuery);
 } else {
-  if ($("#default-body").is(":hidden")) {
-    $("#default-body").show();
+  let defaultBody = document.querySelector("#default-body");
+  if (defaultBody.style.display === "none") {
+    defaultBody.style.display = "block";
   }
 }
 
-function toggleResultsVisibility() {
-  $("#default-body").toggle();
-}
-
+// Runs search through Fuse for fuzzy search
 function executeSearch(searchQuery) {
-  $.getJSON("/registry/index.json", function(data) {
-    var pages = data;
-    var fuse = new Fuse(pages, fuseOptions);
-    var result = fuse.search(searchQuery);
-    console.log({ matches: result });
-    if (result.length > 0) {
-      populateResults(result);
-    } else {
-      $("#search-results").append("<p>No matches found</p>");
-    }
-  });
+  fetch("/registry/index.json")
+    .then((res) => res.json())
+    .then((json) => {
+      let fuse = new Fuse(json, fuseOptions);
+      let results = fuse.search(searchQuery);
+
+      if (results.length > 0) {
+        populateResults(results);
+      } else {
+        document.querySelector("#search-results").innerHTML +=
+          "<p>No matches found</p>";
+      }
+    });
 }
 
-function populateResults(result) {
-  $.each(result, function(key, value) {
-    var contents = value.item.description;
-    var snippet = "";
-    var snippetHighlights = [];
-    var tags = [];
+// Populate the search results and render to the page
+function populateResults(results) {
+  results.forEach((result, key) => {
+    let contents = result.item.description;
+    let snippet = "";
+    let snippetHighlights = [];
+
     if (fuseOptions.tokenize) {
       snippetHighlights.push(searchQuery);
     } else {
-      $.each(value.matches, function(matchKey, mvalue) {
-        if (mvalue.key == "tags" || mvalue.key == "categories") {
-          snippetHighlights.push(mvalue.value);
-        } else if (mvalue.key == "description") {
+      result.matches.forEach((match) => {
+        if (match.key === "tags" || match.key === "categories") {
+          snippetHighlights.push(match.value);
+        } else if (match.key === "description") {
           start =
-            mvalue.indices[0][0] - summaryInclude > 0
-              ? mvalue.indices[0][0] - summaryInclude
+            match.indices[0][0] - summaryInclude > 0
+              ? match.indices[0][0] - summaryInclude
               : 0;
           end =
-            mvalue.indices[0][1] + summaryInclude < contents.length
-              ? mvalue.indices[0][1] + summaryInclude
+            match.indices[0][1] + summaryInclude < contents.length
+              ? match.indices[0][1] + summaryInclude
               : contents.length;
           snippet += contents.substring(start, end);
           snippetHighlights.push(
-            mvalue.value.substring(
-              mvalue.indices[0][0],
-              mvalue.indices[0][1] - mvalue.indices[0][0] + 1
+            match.value.substring(
+              match.indices[0][0],
+              match.indices[0][1] - mvalue.indices[0][0] + 1
             )
           );
         }
@@ -80,34 +85,32 @@ function populateResults(result) {
     if (snippet.length < 1 && contents.length > 0) {
       snippet += contents.substring(0, summaryInclude * 2);
     }
-    //pull template from hugo template definition
-    var templateDefinition = $("#search-result-template").html();
-    //replace values
-    var output = render(templateDefinition, {
+
+    // Pull template from hugo template definition
+    let templateDefinition = document.querySelector("#search-result-template")
+      .innerHTML;
+
+    // Replace values from template with search results
+    let output = render(templateDefinition, {
       key: key,
-      title: value.item.title,
-      link: value.item.permalink,
-      tags: value.item.tags,
-      categories: value.item.categories,
-      description: value.item.description,
-      repo: value.item.repo,
-      registryType: value.item.registryType,
-      language: value.item.language,
+      title: result.item.title,
+      link: result.item.permalink,
+      tags: result.item.tags,
+      categories: result.item.categories,
+      description: result.item.description,
+      repo: result.item.repo,
+      registryType: result.item.registryType,
+      language: result.item.language,
       snippet: snippet,
-      otVersion: value.item.otVersion
+      otVersion: result.item.otVersion,
     });
-    $("#search-results").append(output);
+    document.querySelector("#search-results").innerHTML += output;
   });
 }
 
-function param(name) {
-  return decodeURIComponent(
-    (location.search.split(name + "=")[1] || "").split("&")[0]
-  ).replace(/\+/g, " ");
-}
-
+// Helper function to generate HTML for a search result
 function render(templateString, data) {
-  var conditionalMatches, conditionalPattern, copy;
+  let conditionalMatches, conditionalPattern, copy;
   conditionalPattern = /\$\{\s*isset ([a-zA-Z]*) \s*\}(.*)\$\{\s*end\s*}/g;
   //since loop below depends on re.lastInxdex, we use a copy to capture any manipulations whilst inside the loop
   copy = templateString;
@@ -123,8 +126,9 @@ function render(templateString, data) {
     }
   }
   templateString = copy;
+
   //now any conditionals removed we can do simple substitution
-  var key, find, re;
+  let key, find, re;
   for (key in data) {
     find = "\\$\\{\\s*" + key + "\\s*\\}";
     re = new RegExp(find, "g");
@@ -137,32 +141,36 @@ function render(templateString, data) {
 let selectedLanguage = "all";
 let selectedComponent = "all";
 
-document.addEventListener('input', function(event) {
-  if (event.target.id === 'componentFilter') {
-    selectedComponent = event.target.value
-  } 
-  if (event.target.id === 'languageFilter') {
-    selectedLanguage = event.target.value
+document.addEventListener("input", function (event) {
+  if (event.target.id === "componentFilter") {
+    selectedComponent = event.target.value;
+  }
+  if (event.target.id === "languageFilter") {
+    selectedLanguage = event.target.value;
   }
   updateFilters();
 });
 
+// Filters items based on language and component filters
 function updateFilters() {
   let allItems = [...document.getElementsByClassName("component")];
-  if (selectedComponent === "all" && selectedLanguage === "all" ){
-    allItems.forEach(element => element.classList.remove("is-hidden"))
+  if (selectedComponent === "all" && selectedLanguage === "all") {
+    allItems.forEach((element) => element.classList.remove("is-hidden"));
   } else {
-    allItems.forEach(element => {
+    allItems.forEach((element) => {
       const dc = element.dataset.registrytype;
       const dl = element.dataset.registrylanguage;
-      if ((dc === selectedComponent || selectedComponent === "all") && (dl === selectedLanguage || selectedLanguage === "all")){
-        element.classList.remove("is-hidden")
+      if (
+        (dc === selectedComponent || selectedComponent === "all") &&
+        (dl === selectedLanguage || selectedLanguage === "all")
+      ) {
+        element.classList.remove("is-hidden");
       } else if (dc === selectedComponent && dl !== selectedLanguage) {
-        element.classList.add("is-hidden")
+        element.classList.add("is-hidden");
       } else if (dl === selectedLanguage && dc !== selectedComponent) {
-        element.classList.add("is-hidden")
+        element.classList.add("is-hidden");
       } else {
-        element.classList.add("is-hidden")
+        element.classList.add("is-hidden");
       }
     });
   }
