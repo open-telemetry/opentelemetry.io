@@ -40,7 +40,7 @@ To create and manage these spans, the OpenTelemetry API provides the _tracer_ in
 
 Generally, the lifecycle of a span resembles the following:
 * A request is received by a service. The span context is _extracted_ from the request headers, if it exists.
-* A new span is created as a child of the extracted span context; If none exists, a new root span is created.
+* A new span is created as a child of the extracted span context; if none exists, a new root span is created.
 * The service handles the request. Additional attributes and events are added to the span that are useful for understanding the context of the request, such as the hostname of the machine handling the request, or customer identifiers.
 * New spans may be created to represent work being done by sub-components of the service.
 * When the service makes a remote call to another service, the current span context is serialized and forwarded to the next service by _injecting_ the span context into the headers or message envelope.
@@ -50,7 +50,7 @@ Generally, the lifecycle of a span resembles the following:
 
 A _metric_ is some raw measurement about a service, captured at runtime. Logically, the moment of capturing one of these measurements is known as a _metric event_ which consists not only of the measurement itself, but the time that it was captured. These raw measurements are then used by monitoring and alerting systems to provide statistical data about the performance of a service or system.
 
-OpenTelemetry defines three _metric instruments_ that are intended for different purposes. These instruments are the _counter_, _measure_, and _observer_. A counter is a value that is summed over time -- you can think of this like an odometer on a car; It only ever goes up. A measure is a value that is aggregated over time. This is more akin to the trip odometer on a car, it represents a value over some defined range. An observer captures a current set of values at a particular point in time, like a fuel gauge in a vehicle. 
+OpenTelemetry defines three _metric instruments_ that are intended for different purposes. These instruments are the _counter_, _measure_, and _observer_. A counter is a value that is summed over time -- you can think of this like an odometer on a car; it only ever goes up. A measure is a value that is aggregated over time. This is more akin to the trip odometer on a car, it represents a value over some defined range. An observer captures a current set of values at a particular point in time, like a fuel gauge in a vehicle.
 
 In addition to the three metric instruments, the concept of _aggregations_ is an important one to understand. An aggregation is a technique whereby a large number of measurements are combined into either exact or estimated statistics about metric events that took place during a time window. The API itself does not allow you to specify these aggregations, but provides some default ones -- please see the specification and SDK documentation for more detail here. In general, the OpenTelemetry SDK provides for common aggregations (such as sum, count, last value, and histograms) that are supported by visualizers and telemetry backends.
 
@@ -81,7 +81,7 @@ You'll first need to import OpenTelemetry to your service code. If you're develo
 
 ### Configure the OpenTelemetry API
 
-In order to create traces or metrics, you'll need to first create a tracer and/or meter provider. In general, we reccomend that the SDK should provide a single default provider for these objects. You'll then get a tracer or meter instance from that provider, and give it a name and version. The name you choose here should identify what exactly is being instrumented -- if you're writing a library, for example, then you should name it after your library (i.e., `com.legitimatebusiness.myLibrary` or some other unique identifier) as this name will namespace all spans or metric events produced. It is also reccomended that you supply a version string (i.e., `semver:1.0.0`) that corresponds to the current version of your library or service.
+In order to create traces or metrics, you'll need to first create a tracer and/or meter provider. In general, we recommend that the SDK should provide a single default provider for these objects. You'll then get a tracer or meter instance from that provider, and give it a name and version. The name you choose here should identify what exactly is being instrumented -- if you're writing a library, for example, then you should name it after your library (i.e., `com.legitimatebusiness.myLibrary` or some other unique identifier) as this name will namespace all spans or metric events produced. It is also recommended that you supply a version string (i.e., `semver:1.0.0`) that corresponds to the current version of your library or service.
 
 ### Configure the OpenTelemetry SDK
 
