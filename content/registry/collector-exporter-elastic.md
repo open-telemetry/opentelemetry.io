@@ -2,6 +2,7 @@
 title: Elastic Exporter
 registryType: exporter
 isThirdParty: true
+language: collector
 tags:
   - go
   - exporter
