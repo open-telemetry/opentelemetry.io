@@ -54,6 +54,7 @@ To add your project, please make a pull request to the [opentelemetry.io reposit
 title: My OpenTelemetry Integration // the name of your project
 registryType: <exporter/api/collector/plugin> // the type of integration; is this an exporter, plugin, API package, or something else?
 isThirdParty: <false/true> // this is only true if the project is maintained by the OpenTelemetry project
+language: <collector/cpp/dotnet/erlang/go/java/js/php/python/etc> // language of your integration
 tags:
   - <language>
   - <other useful search terms>

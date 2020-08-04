@@ -23,8 +23,8 @@ We’ve set the following requirements for components to reach beta:
 * Components must support the OpenTelemetry-native exporter. Components should support exporters for Jaeger, Prometheus, and Zipkin, though some of these might be added soon after the component enters beta. The Collector must also include receivers for these formats
 * APIs must include at least one HTTP and gRPC integration, though these are packaged separately. APIs should include at least one SQL integration, and can include a web framework integration (this is a stretch goal)
 
-### 0.4 (additional beta release)
-These releases are expected to contain further improvements to the tracing and metrics API and SDK in response to feedback gathered during the prior alpha and beta releases. Additionally, we expect that the OpenTelemetry protocol will be fully implemented and languages will include an exporter to the OpenTelemetry Collector. At this phase, we anticipate all APIs will be unlikely to change.
+### <1.0 (additional beta releases)
+These releases are expected to contain further improvements to the tracing and metrics API and SDK in response to feedback gathered during the prior alpha and beta releases. Additionally, we expect that the OpenTelemetry protocol will be fully implemented and languages will include an exporter to the OpenTelemetry Collector. At the end of these beta releases, we anticipate all APIs will be unlikely to change.
 
 ### RC and GA
 We anticipate that once the beta phase is complete, we'll enter into a period of final stabilization work around the API, SDK, and other components. This includes benchmarking, profiling, interoperability testing suites, and other work to ensure that the final release is performant and of a high quality. This work is anticipated to complete by the second half of 2020.
