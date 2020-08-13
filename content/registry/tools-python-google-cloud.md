@@ -1,12 +1,12 @@
 ---
 title: Google Cloud Tools
-registryType: tools
+registryType: utilities
 isThirdParty: true
 language: python
 tags:
   - python
   - google
-  - tools
+  - utilities
   - propagator
   - resource detector
 repo: https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/tree/master/opentelemetry-tools-google-cloud
