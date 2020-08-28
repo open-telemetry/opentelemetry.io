@@ -111,10 +111,10 @@ exporters:
   jaeger_thrift_http:
     headers: {"X-test-header": "test-header"}
     timeout: 5
-    url: "http://localhost:14268/api/traces"
+    endpoint: "http://localhost:14268/api/traces"
 
   zipkin:
-    url: "http://localhost:9411/api/v2/spans"
+    endpoint: "http://localhost:9411/api/v2/spans"
 
   prometheus:
     endpoint: "localhost:8889"
