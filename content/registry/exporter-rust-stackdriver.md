@@ -1,0 +1,14 @@
+---
+title: Google StackDrive Exporter
+registryType: exporter
+isThirdParty: true
+language: rust
+tags:
+  - rust
+  - exporter
+repo: https://github.com/vivint-smarthome/opentelemetry-stackdriver
+license: Apache 2.0 OR MIT
+description: A Rust OpenTelemetry exporter for Google StackDriver
+authors: jacobkiesel
+otVersion: 0.5.0
+---

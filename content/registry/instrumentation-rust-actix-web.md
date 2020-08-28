@@ -1,0 +1,14 @@
+---
+title: Actix Web Instrumentation
+registryType: instrumentation
+isThirdParty: true
+language: rust
+tags:
+  - rust
+  - instrumentation
+repo: https://github.com/OutThereLabs/actix-web-opentelemetry
+license: MIT
+description: OpenTelemetry integration for Actix Web.
+authors: Julian Tescher
+otVersion: latest
+---

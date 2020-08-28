@@ -1,0 +1,14 @@
+---
+title: Azure Application Insights Exporter
+registryType: exporter
+isThirdParty: true
+language: rust
+tags:
+  - rust
+  - exporter
+repo: https://github.com/frigus02/opentelemetry-application-insights
+license: MIT
+description: OpenTelemetry exporter for Azure Application Insights
+authors: Jan Kuehle
+otVersion: latest
+---
