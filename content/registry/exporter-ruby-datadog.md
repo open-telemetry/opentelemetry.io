@@ -10,6 +10,6 @@ tags:
 repo: https://github.com/DataDog/dd-opentelemetry-exporter-ruby
 license: Apache 2.0
 description: The OpenTelemetry Datadog Exporter for Ruby.
-authors: Eric Mustin (eric.mustin@datadoghq.com)
+authors: Datadog, Inc.
 otVersion: latest
 ---
