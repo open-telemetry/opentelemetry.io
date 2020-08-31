@@ -2,7 +2,7 @@
 title: Datadog Exporter JS
 registryType: exporter
 isThirdParty: true
-language: ruby
+language: js
 tags:
   - Node.js
   - exporter
