@@ -6,7 +6,7 @@ language: python
 tags:
   - python
   - instrumentation
-repo: https://github.com/open-telemetry/opentelemetry-python/tree/master/ext/opentelemetry-ext-mysql
+repo: https://github.com/open-telemetry/opentelemetry-python/tree/master/instrumentation/opentelemetry-instrumentation-mysql
 license: Apache 2.0
 description: Instrumentation with MySQL that supports the mysql-connector library.
 authors: OpenTelemetry Authors
