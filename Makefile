@@ -13,7 +13,7 @@ preview-build: get-milestones
 	hugo \
 		--baseURL $(DEPLOY_PRIME_URL) \
 		--minify
-	make ci-link-check
+	#make ci-link-check
 
 production-build: get-milestones
 	hugo \
