@@ -1,5 +1,8 @@
 ---
 Title: "Get Involved"
+menu:
+  main:
+    weight: 30
 ---
 
 Are you interested in participating in the OpenTelemetry community? Read on to learn more

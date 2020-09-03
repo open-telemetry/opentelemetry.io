@@ -1,8 +1,11 @@
 ---
-title: "Registry Index"
+title: "Registry"
 outputs:
   - html
   - json
+menu:
+  main:
+    weight: 20
 ---
 
 The OpenTelemetry Registry allows you to search for instrumentation libraries, tracer implementations, utilities, and other useful projects in the OpenTelemetry ecosystem.

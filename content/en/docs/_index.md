@@ -19,7 +19,9 @@ aliases:
   - /ruby/
   - /ruby/metrics/
   - /ruby/tracing/
-weight: 1
+menu:
+  main:
+    weight: 10
 ---
 
 _Note: For documentation and guides on specific languages, please follow the link in the navigation bar for the language SDK or project you're interested in. This page contains general information about how OpenTelemetry works._
