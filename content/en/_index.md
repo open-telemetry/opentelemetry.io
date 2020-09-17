@@ -2,17 +2,40 @@
 title: "OpenTelemetry"
 ---
 
-{{< blocks/cover title="Telemetry for Cloud-Native Software" image_anchor="center" height="min" color="dark">}}
+{{< blocks/cover title="" image_anchor="center" height="min" color="dark" >}}
 <div class="mx-auto">
-  <a class="btn btn-lg btn-primary mr-3 mb-4" href="{{< relref "/docs" >}}">
-    Get Started <i class="fas fa-arrow-alt-circle-right ml-2"></i>
-  </a>
-  <a class="btn btn-lg btn-secondary mr-3 mb-4" href="https://github.com/open-telemetry">
-    Find Projects <i class="fab fa-github ml-2"></i>
-  </a>
-  <a class="btn btn-lg btn-info mr-3 mb-4" href="{{< relref "/registry" >}}">
-    Discover Integrations <i class="fas fa-tools ml-2"></i>
-  </a>
+    <div class="col-sm-5 offset-sm-7 card bg-transparent border-0">
+      <img class="card-img-top" src="/img/logos/opentelemetry-stacked-color.png">
+      <div class="card-body">
+        <h3 class="card-title">Robust and portable metrics, logs, and traces for cloud-native software.</h3>
+        <p class="card-text">OpenTelemetry provides a single set of APIs, libraries, agents, and collector services to capture distributed traces and metrics from your application. You can analyze them using Prometheus, Jaeger, and other observability tools.</p>
+      </div>
+    </div>
+  <br/>
+  <div class="card-group">
+    <div class="card bg-primary">
+      <div class="card-body">
+        <h4 class="card-title">Broad Language Support</h4>
+        <p>Java | C# | Go | JavaScript | Python | Rust | C++</p>
+      </div>
+      <div class="card-footer bg-transparent">
+        <a class="btn btn-lg btn-primary" href="{{< relref "/docs" >}}">
+          Get Started <i class="fas fa-arrow-alt-circle-right ml-2"></i>
+        </a>
+      </div>
+    </div>
+    <div class="card bg-secondary">
+      <div class="card-body">
+        <h4 class="card-title">Integrates With Popular Frameworks and Libraries</h4>
+        <p>MySQL | Redis | Django | Kafka | Jetty | Akka | RabbitMQ | Spring | Flask | net/http | gorilla/mux | WSGI | JDBC | PostgreSQL</p>
+      </div>
+      <div class="card-footer bg-transparent">
+        <a class="btn btn-lg btn-secondary" href="https://github.com/open-telemetry">
+          Find Projects <i class="fab fa-github ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </div>
   <div class="mx-auto mt-5">
     {{< blocks/link-down color="primary" >}}
   </div>
