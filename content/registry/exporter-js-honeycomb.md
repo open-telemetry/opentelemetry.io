@@ -2,7 +2,7 @@
 title: Honeycomb.io JavaScript Exporter
 registryType: exporter
 isThirdParty: true
-language: dotnet
+language: js
 tags:
   - Node.js
   - exporter
