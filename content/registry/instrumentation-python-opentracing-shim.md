@@ -1,6 +1,6 @@
 ---
 title: OpenTracing Shim Instrumentation
-registryType: Instrumentation
+registryType: instrumentation
 isThirdParty: true
 language: python
 tags:
