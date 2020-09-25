@@ -5,7 +5,7 @@ Title: "Project Status"
 OpenTelemetry implementations are currently in **beta** status. This page tracks the overall release milestones as we move towards full releases for each language SIG. You can find more details about the milestones at [this link](https://github.com/open-telemetry/opentelemetry-specification/milestones).
 
 ## Summary
-Our current goal is to provide a generally available, production quality release by the second half of 2020. Currently, we are in the _alpha_ stage. What follows is a brief explanation of what we expect to be available, when.
+Our current goal is to provide a generally available, production quality release by the second half of 2020. Currently, we are in the **beta** stage. What follows is a brief explanation of what we expect to be available, when.
 
 ### 0.2
 This release included a functional tracing implementation. While the API may change, you should be able to use these releases to begin exploring and understanding the API and the SDK, and the changes that have been made from OpenTracing/OpenCensus. This release also included support for distributed context using the W3C TraceContext specification.
