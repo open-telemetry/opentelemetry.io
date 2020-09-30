@@ -1,4 +1,4 @@
-# opentelemetry.io
+# opentelemetry.io   GREAT PROJECT
 
 This repo houses the source code for the [OpenTelemetry](https://opentelemetry.io) website and documentation.
 
