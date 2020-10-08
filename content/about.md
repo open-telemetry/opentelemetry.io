@@ -18,8 +18,8 @@ Most OpenTelemetry components are already in [beta](/project-status) and are pro
 ### What is Observability?
 In software, observability typically refers to telemetry produced by **services** and is often divided into three major verticals:
 
-* [**Tracing**](https://opentracing.io/docs/overview/what-is-tracing), aka **distributed tracing**, provides insight into the full lifecycles, aka *traces*, of requests to the system, allowing you to pinpoint failures and performance issues.  
-* [**Metrics**](https://opencensus.io/stats) provide quantitative information about processes running inside the system, including counters, gauges, and histograms.
+* [**Tracing**](/docs/#tracing), aka **distributed tracing**, provides insight into the full lifecycles, aka *traces*, of requests to the system, allowing you to pinpoint failures and performance issues.  
+* [**Metrics**](/docs/#metrics) provide quantitative information about processes running inside the system, including counters, gauges, and histograms.
 * [**Logging**](https://en.wikipedia.org/wiki/Log_file) provides insight into application-specific messages emitted by processes.
 
 These verticals are tightly interconnected. **Metrics** can be used to pinpoint, for example, a subset of misbehaving **traces**. **Logs** associated with those traces could help to find the root cause of this behavior. And then new **metrics** can be configured, based on this discovery, to catch this issue earlier next time. Other verticals exist (continuous profiling, production debugging, etc.), however traces, metrics, and logs are the three most well adopted across the industry.
