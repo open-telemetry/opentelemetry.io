@@ -5,10 +5,10 @@ title: "OpenTelemetry"
 {{< blocks/cover title="" image_anchor="center" height="min" color="dark" >}}
 <div class="mx-auto">
     <div class="col-sm-5 offset-sm-7 card bg-transparent border-0">
-      <img class="card-img-top" src="/img/logos/opentelemetry-stacked-color.png">
+      <img class="card-img-top mx-auto" src="/img/logos/opentelemetry-stacked-color.png">
       <div class="card-body">
-        <h3 class="card-title">Robust and portable metrics, logs, and traces for cloud-native software.</h3>
-        <p class="card-text">OpenTelemetry provides a single set of APIs, libraries, agents, and collector services to capture distributed traces and metrics from your application. You can analyze them using Prometheus, Jaeger, and other observability tools.</p>
+        <h3 class="card-title text-left">Robust and portable metrics, logs, and traces for cloud-native software.</h3>
+        <p class="card-text text-left"><small>OpenTelemetry provides a single set of APIs, libraries, agents, and collector services to capture distributed traces and metrics from your application. You can analyze them using Prometheus, Jaeger, and other observability tools.</small></p>
       </div>
     </div>
   <br/>
