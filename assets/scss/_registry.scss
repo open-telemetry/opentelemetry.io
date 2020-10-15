@@ -1,0 +1,102 @@
+.registry {
+  display: block;
+
+  &__main {
+    min-width: 100%;
+    margin: $registry-vertical-margin 0;
+  }
+    
+  &__search {
+    min-width: 100%;
+    margin: $registry-vertical-margin 0;
+  }
+    
+  &__header {
+    background-color: $green;
+  }
+}
+
+.tag.badge-core {
+  color: white;
+  background-color: $core;
+}
+
+.tag.badge-instrumentation {
+  color: white;
+  background-color: $instrumentation;
+}
+
+.tag.badge-exporter {
+  color: white;
+  background-color: $exporter;
+}
+
+.tag.badge-utilities {
+  color: white;
+  background-color: $utilities;
+} 
+
+.badge-tracer {
+  color: white;
+  background-color: $dark-blue;
+}
+
+.badge-instrumentation {
+  color: white;
+  background-color: $green;
+}
+
+.tag.badge-dotnet {
+  color: white;
+  background-color: $dotnet;
+}
+
+.tag.badge-cpp {
+  color: white;
+  background-color: $cpp;
+}
+
+.tag.badge-erlang {
+  color: white;
+  background-color: $erlang;
+}
+
+.tag.badge-go {
+  color: white;
+  background-color: $go;
+}
+
+.tag.badge-java {
+  color: white;
+  background-color: $java;
+}
+
+.tag.badge-js {
+  color: white;
+  background-color: $javascript;
+}
+
+.tag.badge-php {
+  color: white;
+  background-color: $php;
+}
+
+.tag.badge-python {
+  color: white;
+  background-color: $python;
+}
+
+.tag.badge-ruby {
+  color: white;
+  background-color: $ruby;
+}
+
+.tag.badge-rust {
+  color: white;
+  background-color: $rust;
+}
+
+.tag.badge-collector {
+  color: white;
+  background-color: $collector;
+}

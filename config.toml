@@ -44,10 +44,6 @@ description = "The OpenTelemetry Project Site"
 languageName ="English"
 # Weight used for sorting.
 weight = 1
-[languages.cn]
-title = "开放遥测"
-languageName = "Chinese"
-contentDir="content/cn"
 
 [markup]
   [markup.goldmark]

@@ -7,8 +7,8 @@ title: "OpenTelemetry"
     <div class="col-sm-5 offset-sm-7 card bg-transparent border-0">
       <img class="card-img-top mx-auto" src="/img/logos/opentelemetry-stacked-color.png">
       <div class="card-body">
-        <h3 class="card-title text-left">Robust and portable metrics, logs, and traces for cloud-native software.</h3>
-        <p class="card-text text-left"><small>OpenTelemetry provides a single set of APIs, libraries, agents, and collector services to capture distributed traces and metrics from your application. You can analyze them using Prometheus, Jaeger, and other observability tools.</small></p>
+        <h3 class="card-title text-left">An observability framework for cloud-native software.</h3>
+        <p class="card-text text-left"><small>OpenTelemetry is a collection of tools, APIs, and SDKs. You use it to instrument, generate, collect, and export telemetry data (metrics, logs, and traces) for analysis in order to understand your software's performance and behavior.</small></p>
       </div>
     </div>
   <br/>
@@ -43,9 +43,7 @@ title: "OpenTelemetry"
 {{< /blocks/cover >}}
 
 {{% blocks/lead color="primary" %}}
-OpenTelemetry is a set of APIs, libraries, agents, and collectors to capture distributed traces, metrics, and logs.
-
-You can analyze this data with Prometheus, Jaeger, Zipkin, and other analysis tools.
+OpenTelemetry is in **beta** across several languages and is suitable for use. We anticipate general availability soon.
 {{% /blocks/lead %}}
 
 {{% blocks/section color="dark" %}}
@@ -65,5 +63,10 @@ OpenTelemetry integrates with popular libraries and frameworks such as [Spring](
 {{% /blocks/section %}}
 
 {{% blocks/section color="secondary" type="section" %}}
-<h1 class="display-2">OpenTelemetry is a Cloud Native Computing Foundation project.</h1>
+<div class="row">
+  <div class="col">
+    <h1 class="display-3 text-center">OpenTelemetry is a Cloud Native Computing Foundation project.</h1>
+    <img src="/img/logos/cncf-icon-white.svg" width="75" class="mx-auto d-block"></img>
+  </div>
+</div>
 {{% /blocks/section %}}
