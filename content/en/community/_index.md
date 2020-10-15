@@ -1,12 +1,9 @@
 ---
-Title: "Get Involved"
+title: Community
 menu:
   main:
-    weight: 30
+    weight: 40
 ---
-
-Are you interested in participating in the OpenTelemetry community? Read on to learn more
-about how to get involved.
 
 # Special Interest Groups
 We organize the community into Special Interest Groups (SIGs) in order to improve our workflow and more easily manage a community project.  

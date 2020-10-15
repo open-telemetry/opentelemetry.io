@@ -1,7 +1,22 @@
 ---
 Title: "About"
+linkTitle: About
+menu:
+  main:
+    weight: 10
+layout: docs
 ---
-OpenTelemetry provides the libraries, agents, and other components that you need to capture telemetry from your services so that you can better observe, manage, and debug them. Specifically, OpenTelemetry captures metrics, distributed traces, resource metadata, and logs (logging support is incubating now) from your backend and client applications and then sends this data to backends like Prometheus, Jaeger, Zipkin, [and others](https://opentelemetry.io/registry/?s=exporter) for processing. OpenTelemetry is composed of the following:
+
+{{% blocks/cover title="About OpenTelemetry" height="auto" %}}
+
+OpenTelemetry is an observability framework - software and tools that assist in generating and capturing telemetry data from cloud-native software.
+
+{{% /blocks/cover %}}
+
+{{% blocks/section type="section" color="primary" %}}
+## What is an Observability Framework?
+OpenTelemetry provides the libraries, agents, and other components that you need to capture telemetry from your services so that you can better observe, manage, and debug them. 
+Specifically, OpenTelemetry captures metrics, distributed traces, resource metadata, and logs (logging support is incubating now) from your backend and client applications and then sends this data to backends like Prometheus, Jaeger, Zipkin, [and others](https://opentelemetry.io/registry/?s=exporter) for processing. OpenTelemetry is composed of the following:
 
 - One API and SDK per language, which include the interfaces and implementations that  define and create distributed traces and metrics, manage sampling and context propagation, etc.
 - Language-specific integrations for popular web frameworks, storage clients, RPC libraries, etc. that (when enabled) automatically capture relevant traces and metrics and handle context propagation
@@ -10,6 +25,10 @@ OpenTelemetry provides the libraries, agents, and other components that you need
 - The OpenTelemetry Collector, which can collect data from OpenTelemetry SDKs and other sources, and then export this telemetry to any supported backend
 
 OpenTelemetry is a [CNCF Sandbox](https://www.cncf.io/sandbox-projects/) member, formed through a merger of the [OpenTracing](https://www.opentracing.io) and [OpenCensus](https://www.opencensus.io) projects.
+
+{{% /blocks/section %}}
+
+{{% blocks/section type="section" color="white" %}}
 
 ## Status
 Most OpenTelemetry components are already in [beta](/project-status) and are proceeding to GA release candidates.
@@ -31,3 +50,5 @@ The spec is available in the [open-telemetry/specification](https://github.com/o
 
 ### I want to help influence the future direction of cloud-native telemetry. What should I do?
 Excellent! We list the best ways to get involved on our [community GitHub page](https://github.com/open-telemetry/community#get-involved), including mailing lists, our Gitter channels, the community calendar, and the monthly community meeting.
+
+{{% /blocks/section %}}
