@@ -76,7 +76,7 @@
       {{ range $registryItems }}
         <li class="media" data-registrytype="{{ .Params.registryType }}" data-registrylanguage="{{ .Params.language }}">
           <div class="media-body">
-            <h5 class="mt-0 mb-1">{{ .Params.title }}</h5>
+            <a href="{{ .Params.repo }}"><h5 class="mt-0 mb-1">{{ .Params.title }}</h5></a>
             {{ .Params.description }}
             <span class="badge badge-{{.Params.registryType}} float-right">{{ .Params.registryType }}</span>
             <span class="badge badge-{{.Params.language}} float-right mr-2">{{ .Params.language }}</span>
@@ -90,7 +90,7 @@
   <script id="search-result-template" type="text/x-js-template">
     <li class="media" data-registrytype="${registryType}" data-registrylanguage="${language}">
       <div class="media-body">
-        <h5 class="mt-0 mb-1">${title}</h5>
+        <a href=${repo}><h5 class="mt-0 mb-1">${title}</h5></a>
         ${description}
         <span class="badge badge-${registryType} float-right">${registryType}</span>
         <span class="badge badge-${language} float-right mr-2">${language}</span>
