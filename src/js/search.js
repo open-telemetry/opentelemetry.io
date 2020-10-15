@@ -1,4 +1,4 @@
-summaryInclude = 60;
+let summaryInclude = 60;
 let fuseOptions = {
   shouldSort: true,
   includeMatches: true,
@@ -141,21 +141,28 @@ function render(templateString, data) {
 let selectedLanguage = "all";
 let selectedComponent = "all";
 
-document.addEventListener("input", function (event) {
-  if (event.target.id === "componentFilter") {
-    selectedComponent = event.target.value;
-  }
-  if (event.target.id === "languageFilter") {
-    selectedLanguage = event.target.value;
-  }
-  updateFilters();
-});
+document.addEventListener('DOMContentLoaded', (event) => {
+  let languageList = document.getElementById('languageFilter').querySelectorAll('.dropdown-item')
+  let typeList = document.getElementById('componentFilter').querySelectorAll('.dropdown-item')
+  languageList.forEach((element) => element.addEventListener('click', function(evt) {
+    let val = evt.target.getAttribute('value')
+    selectedLanguage = val;
+    document.getElementById('languageDropdown').textContent = evt.target.textContent;
+    updateFilters();
+  }))
+  typeList.forEach((element) => element.addEventListener('click', function(evt) {
+    let val = evt.target.getAttribute('value')
+    selectedComponent = val;
+    document.getElementById('componentDropdown').textContent = evt.target.textContent;
+    updateFilters();
+  }))
+})
 
 // Filters items based on language and component filters
 function updateFilters() {
-  let allItems = [...document.getElementsByClassName("component")];
+  let allItems = [...document.getElementsByClassName("media")];
   if (selectedComponent === "all" && selectedLanguage === "all") {
-    allItems.forEach((element) => element.classList.remove("is-hidden"));
+    allItems.forEach((element) => element.classList.remove("d-none"));
   } else {
     allItems.forEach((element) => {
       const dc = element.dataset.registrytype;
@@ -164,13 +171,13 @@ function updateFilters() {
         (dc === selectedComponent || selectedComponent === "all") &&
         (dl === selectedLanguage || selectedLanguage === "all")
       ) {
-        element.classList.remove("is-hidden");
+        element.classList.remove("d-none");
       } else if (dc === selectedComponent && dl !== selectedLanguage) {
-        element.classList.add("is-hidden");
+        element.classList.add("d-none");
       } else if (dl === selectedLanguage && dc !== selectedComponent) {
-        element.classList.add("is-hidden");
+        element.classList.add("d-none");
       } else {
-        element.classList.add("is-hidden");
+        element.classList.add("d-none");
       }
     });
   }

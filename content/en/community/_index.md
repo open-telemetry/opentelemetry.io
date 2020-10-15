@@ -4,6 +4,7 @@ menu:
   main:
     weight: 40
 ---
+{{% blocks/section type="section" color="white" %}}
 
 # Special Interest Groups
 We organize the community into Special Interest Groups (SIGs) in order to improve our workflow and more easily manage a community project.  
@@ -67,3 +68,5 @@ otVersion: <The OpenTelemetry version your plugin targets.>
 ```
 
 Once you've created this data file, make a pull request and we'll add your project to the registry!
+
+{{% /blocks/section %}}

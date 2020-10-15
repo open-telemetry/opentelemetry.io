@@ -34,7 +34,7 @@
 
 <div class="td-content">
   <section class="row pb-5">
-    <div class="col">
+    <div class="col align-self-center">
       <form action="{{ "/registry" | absURL }}" id="searchForm">
         <div class="input-group">
           <div class="input-group-prepend">
@@ -47,7 +47,7 @@
             <div>
               <button class="btn btn-outline-secondary dropdown-toggle" id="languageDropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
               <div class="dropdown-menu" id="languageFilter">
-                <a value="all" class="dropdown-item" href="#">All</a>
+                <a value="all" class="dropdown-item" href="#">Any Language</a>
                 {{ range $registryItems.GroupByParam "language" }}
                 <a value={{.Key}} class="dropdown-item" href="#">{{ $languages.Get .Key }}</a>
                 {{ end }}
@@ -56,9 +56,9 @@
             <div>
               <button class="btn btn-outline-secondary dropdown-toggle" id="componentDropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Type</button>
               <div class="dropdown-menu" id="componentFilter">
-                <a value="all" class="dropdown-item" href="#">ALL</a>
+                <a value="all" class="dropdown-item" href="#">Any Component</a>
                 {{ range $registryItems.GroupByParam "registryType" }}
-                <a value={{.Key}} class="dropdown-item" href="#">{{ $types.Get .Key }}</a>
+                <a value={{.Key}} class="dropdown-item" href="#">{{ $types.Get (lower .Key) }}</a>
                 {{ end }}
               </div>
             </div>
