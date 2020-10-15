@@ -1,124 +1,101 @@
 {{ define "main" }}
 {{ $registryItems := where .Data.Pages "Params.layout" "!=" "search" }}
 {{ $search := resources.Get "js/search.js" | fingerprint }}
-<div class="container">
-  <section class="section">
-    <div class="columns">
-      <div class="column is-full">
-          <h1 class="title">OpenTelemetry Registry</h1>
-      </div>
-    </div>
-    <div class="columns is-centered">
-      <div class="column">
-        <div class="content">
-          {{ .Content }}
-        </div>
-      </div>
-    </div>
-    <div class="columns is-centered">
-      <div class="column is-full">
-        <form action="{{ "/registry" | absURL }}" id="searchForm">
-          <div class="field has-addons is-horizontal">
-            <div class="field-label is-normal">
-              <label class="label">Search</label>
+
+{{ $languages := newScratch }}
+{{ $languages.Set "collector" "Collector" }}
+{{ $languages.Set "cpp" "C++" }}
+{{ $languages.Set "dotnet" ".NET" }}
+{{ $languages.Set "erlang" "Erlang" }}
+{{ $languages.Set "go" "Go" }}
+{{ $languages.Set "java" "Java" }}
+{{ $languages.Set "js" "JavaScript" }}
+{{ $languages.Set "php" "PHP" }}
+{{ $languages.Set "python" "Python" }}
+{{ $languages.Set "ruby" "Ruby" }}
+{{ $languages.Set "rust" "Rust" }}
+
+{{ $types := newScratch }}
+{{ $types.Set "core" "Core" }}
+{{ $types.Set "instrumentation" "Instrumentation" }}
+{{ $types.Set "exporter" "Exporter" }}
+{{ $types.Set "utilities" "Utilities" }}
+
+<a class="td-offset-anchor"></a>
+<section class="row td-box td-box--1 position-relative td-box--gradient td-box--height-auto">
+	<div class="container text-center td-arrow-down">
+		<span class="h4 mb-0">
+<h1>OpenTelemetry Registry</h1>
+
+<p>Find libraries, plugins, integrations, and other useful tools for extending OpenTelemetry.
+</span>
+	</div>
+</section>
+
+<div class="td-content">
+  <section class="row pb-5">
+    <div class="col">
+      <form action="{{ "/registry" | absURL }}" id="searchForm">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Search</span>
+          </div>
+          <input type="text" name="s" class="form-control" id="search-query" aria-label="Registry Search Input Field">
+          <div class="input-group-append">
+            <button type="button" class="btn btn-outline-success" onclick="document.getElementById('searchForm').submit();">Submit</button>
+            <button type="button" class="btn btn-outline-danger"  onclick="document.getElementById('search-query').value = ''; document.getElementById('searchForm').submit();">Reset</button>
+            <div>
+              <button class="btn btn-outline-secondary dropdown-toggle" id="languageDropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
+              <div class="dropdown-menu" id="languageFilter">
+                <a value="all" class="dropdown-item" href="#">All</a>
+                {{ range $registryItems.GroupByParam "language" }}
+                <a value={{.Key}} class="dropdown-item" href="#">{{ $languages.Get .Key }}</a>
+                {{ end }}
+              </div>
             </div>
-            <input id="search-query" class="input" name="s" placeholder="Try a language or technology, like 'golang' or 'JDBC' and press enter to search."/>
-            <div class="control">
-              <button type="button" class="button is-info" onclick="document.getElementById('search-query').value = ''; document.getElementById('searchForm').submit();">Reset</button>
+            <div>
+              <button class="btn btn-outline-secondary dropdown-toggle" id="componentDropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Type</button>
+              <div class="dropdown-menu" id="componentFilter">
+                <a value="all" class="dropdown-item" href="#">ALL</a>
+                {{ range $registryItems.GroupByParam "registryType" }}
+                <a value={{.Key}} class="dropdown-item" href="#">{{ $types.Get .Key }}</a>
+                {{ end }}
+              </div>
             </div>
           </div>
-        </form>
-        <br />
-        <div class="field is-grouped is-horizontal">
-          <div class="field-label is-normal">
-            <label class="label">Filter</label>
-          </div>
-          <div class="field">
-          <div class="select">
-            <select id="componentFilter">
-              <option value="all">ALL</option>
-              {{ range $registryItems.GroupByParam "registryType" }}
-                <option value={{.Key}}>{{ upper .Key }}</option>
-              {{ end }}
-            </select>
-          </div>
         </div>
-        &nbsp;
-        <div class="field">
-          <div class="select">
-            <select id="languageFilter">
-              <option value="all">ALL</option>
-              {{ range $registryItems.GroupByParam "language" }}
-                <option value={{.Key}}>{{ upper .Key }}</option>
-              {{ end }}
-            </select>
-          </div>
-        </div>
-      </div>
+      </form>
     </div>
-  </div>
   </section>
-  <section class="section">
-    <div class="columns is-multiline" style="display:block;">
+
+  <section class="row ml-2 pt-0">
+    <div class="mx-auto">
+      <ul class="list-unstyled">
       <div id="search-results"></div>
       <div id="default-body">
       {{ range $registryItems }}
-        <div class="column is-full component" data-registrytype="{{ .Params.registryType }}" data-registrylanguage="{{ .Params.language }}">
-          <div class="box">
-            <article class="media">
-              <div class="media-content">
-                <div class="content">
-                  <p>
-                    <a href={{ .Permalink }}><strong>{{ .Params.title }}</strong></a>
-                  <br>
-                    {{ .Params.description }}
-                  </p>
-                </div>
-              </div>
-              <div class="media-right">
-                <div class="tags has-addons">
-                  <span class="tag">Type</span>
-                  <span class="tag badge-{{.Params.registryType}} is-uppercase">{{ .Params.registryType }}</span>
-                </div>
-                <div class="tags has-addons">
-                  <span class="tag">Language</span>
-                  <span class="tag badge-{{.Params.language}} is-uppercase">{{ .Params.language }}</span>
-                </div>
-              </div>
-            </article>
+        <li class="media" data-registrytype="{{ .Params.registryType }}" data-registrylanguage="{{ .Params.language }}">
+          <div class="media-body">
+            <h5 class="mt-0 mb-1">{{ .Params.title }}</h5>
+            {{ .Params.description }}
+            <span class="badge badge-{{.Params.registryType}} float-right">{{ .Params.registryType }}</span>
+            <span class="badge badge-{{.Params.language}} float-right mr-2">{{ .Params.language }}</span>
           </div>
-        </div>
+        </li>
       {{ end }}
-    </div>
+      </div>
+      </ul>
     </div>
   </section>
-  <!-- this template is sucked in by search.js and appended to the search-results div above. So editing here will adjust style -->
   <script id="search-result-template" type="text/x-js-template">
-    <div class="column is-full component" data-registrytype="${registryType}" data-registrylanguage="${language}">
-      <div class="box">
-        <article class="media">
-          <div class="media-content">
-            <div class="content">
-              <p>
-                <a href="${link}"><strong>${title}</strong></a>
-              <br>
-                ${description}
-              </p>
-            </div>
-          </div>
-        <div class="media-right">
-          <div class="tags has-addons">
-            <span class="tag">Type</span>
-            <span class="tag badge-${registryType} is-uppercase">${registryType}</span>
-          </div>
-          <div class="tags has-addons">
-            <span class="tag">Language</span>
-            <span class="tag badge-${language} is-uppercase">${language}</span>
-          </div>
-        </div>
-      </article>
-    </div>
-  </div>
+    <li class="media" data-registrytype="${registryType}" data-registrylanguage="${language}">
+      <div class="media-body">
+        <h5 class="mt-0 mb-1">${title}</h5>
+        ${description}
+        <span class="badge badge-${registryType} float-right">${registryType}</span>
+        <span class="badge badge-${language} float-right mr-2">${language}</span>
+      </div>
+    </li>
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script>
   <script src="{{ $search.RelPermalink }}" integrity="{{ $search.Data.Integrity }}" type="application/javascript"></script>
