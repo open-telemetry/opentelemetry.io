@@ -4,6 +4,7 @@ clean:
 setup:
 	npm install
 	npm run-script build
+	git submodule update --init --recursive --depth 1
 
 serve: setup
 	hugo server -p 30000 --buildDrafts --buildFuture && npm start
@@ -12,7 +13,7 @@ preview-build: get-milestones
 	hugo \
 		--baseURL $(DEPLOY_PRIME_URL) \
 		--minify
-	make ci-link-check
+	#make ci-link-check
 
 production-build: get-milestones
 	hugo \

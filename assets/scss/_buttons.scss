@@ -1,0 +1,12 @@
+.btn {
+  border-radius: 0;
+  box-shadow: none;
+
+  &-primary {
+    background: $primary;
+  }
+
+  &-secondary {
+    background: $secondary;
+  }
+}
