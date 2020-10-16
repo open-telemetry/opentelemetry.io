@@ -82,8 +82,15 @@ $ git clone git@github.com:open-telemetry/opentelemetry-collector.git; \
 Deploys an agent as a daemonset and a single instance of the collector.
 
 ```bash
-$ kubectl apply -f https://raw.githubusercontent.com/open-telemetry/opentelemetry-collector/master/examples/k8s.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/open-telemetry/opentelemetry-collector/master/examples/k8s/otel-config.yaml
 ```
+
+The example above is meant to serve as a starting point, to be extended and customized before actual production usage.
+
+The [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator) 
+can also be used to provision and maintain an OpenTelemetry Collector instance, with
+features such as automatic upgrade handling, `Service` configuration based on the OpenTelemetry
+configuration, automatic sidecar injection into deployments, among others.
 
 ### Local
 
@@ -107,3 +114,9 @@ The list of applications extending the collector:
 
 * [opentelemetry-collector-contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib)
 * [jaeger-opentelemetry-collector](https://github.com/jaegertracing/jaeger-opentelemetry-collector)
+
+A guide on how to create your own distribution is available in this blog post: 
+["Building your own OpenTelemetry Collector distribution"](https://medium.com/p/42337e994b63)
+
+If you are building your own distribution, the [OpenTelemetry Collector Builder](https://github.com/observatorium/opentelemetry-collector-builder) 
+might be a good starting point.
