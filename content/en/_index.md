@@ -16,7 +16,7 @@ title: "OpenTelemetry"
     <div class="card bg-primary">
       <div class="card-body">
         <h4 class="card-title">Broad Language Support</h4>
-        <p>Java | C# | Go | JavaScript | Python | Rust | C++</p>
+        <p>Java | C# | Go | JavaScript | Python | Rust | C++ | Erlang/Elixir</p>
       </div>
       <div class="card-footer bg-transparent">
         <a class="btn btn-lg btn-primary" href="{{< relref "/docs" >}}">
