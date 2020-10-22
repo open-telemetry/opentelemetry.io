@@ -153,6 +153,11 @@ enable = false
 	icon = "fab fa-gitter"
         desc = "Chat with other project developers"
 
+[[menu.main]]
+    name = "Blog"
+    weight = 50
+    url = "https://medium.com/opentelemetry"
+
 
 [params.logos]
 hero = "opentelemetry-horizontal-color.png"
