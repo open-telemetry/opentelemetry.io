@@ -102,8 +102,8 @@ Prometheus metrics.
 ```bash
 $ git clone git@github.com:open-telemetry/opentelemetry-collector.git; \
     cd opentelemetry-collector; make otelcol; \
-    go build examples/main.go; ./main & pid1="$!"; \
-    ./bin/$($GOOS)/otelcol --config ./examples/otel-local-config.yaml; kill $pid1
+    go build examples/demo/app/main.go; ./main & pid1="$!"; \
+    ./bin/$($GOOS)/otelcol --config ./examples/local/otel-config.yaml; kill $pid1
 ```
 
 ## Other
