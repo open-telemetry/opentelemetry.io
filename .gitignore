@@ -16,3 +16,6 @@ bin/
 tmp/
 
 scripts/collector.yaml
+
+# ignore generated js
+assets/js/*
