@@ -49,12 +49,12 @@ retry, encryption, compression and more.
 
 ### Gateway
 
-Optionally, a Gateway can be deployed in every cluster, datacenter, or region.
+Additionally, a Gateway can be deployed in every cluster, datacenter, or region.
 The Gateway runs as a standalone service and can offer advanced capabilities
 over the Agent including tail-based sampling. In addition, the Gateway can
 limit the number of egress points required to send data as well as consolidate
-API token management. Note that each Collector instance operates independently
-so it is easy to scale the architecture based on performance needs.
+API token management. Each Collector instance operates independently so it is
+easy to scale the architecture based on performance needs.
 
 ## Getting Started
 
