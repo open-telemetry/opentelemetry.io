@@ -1,7 +1,7 @@
 ---
 title: OpenTelemetry Sequelize Plugin
 registryType: instrumentation
-isThirdParty: false
+isThirdParty: true
 language: js
 tags:
   - Node.js
