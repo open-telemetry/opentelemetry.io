@@ -16,3 +16,4 @@ bin/
 tmp/
 
 scripts/collector.yaml
+assets/js/*
