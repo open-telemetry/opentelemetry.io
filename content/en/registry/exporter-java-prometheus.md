@@ -1,0 +1,14 @@
+---
+title: Prometheus Exporter
+registryType: exporter
+isThirdParty: true
+language: java
+tags:
+  - java
+  - exporter
+repo: https://github.com/open-telemetry/opentelemetry-java/tree/master/exporters/prometheus
+license: Apache 2.0
+description: This library allows to export Prometheus data allowing Prometheus to query metric data.
+authors: OpenTelemetry Authors
+otVersion: latest
+---
