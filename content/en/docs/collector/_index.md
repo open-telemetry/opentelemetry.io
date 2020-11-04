@@ -1,6 +1,6 @@
 ---
 title: "Collector"
-weight: 1
+weight: 10
 ---
 
 This page contains documentation for the OpenTelemetry Collector.

@@ -19,7 +19,7 @@ Whenever you submit a pull request to this repo, Netlify creates a [deploy previ
 * Fork and clone the repository
 * Install [Hugo](https://gohugo.io/getting-started/installing/#quick-install) and [npm](https://npmjs.com)
 * Run `make serve`
-* Open `http://localhost:1313` to check the site
+* Open `http://localhost:30000` to check the site
 
 > Please note that you need to install the "extended" version of Hugo (with built-in support) to run the site locally.
 
