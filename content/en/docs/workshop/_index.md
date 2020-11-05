@@ -1,6 +1,6 @@
 ---
 title: "Workshop"
-weight: 1
+weight: 10
 ---
 
-This section contains resources for the OpenTelemetry Workshop
+This section contains resources for the OpenTelemetry Workshop.

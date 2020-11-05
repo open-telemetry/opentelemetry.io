@@ -6,7 +6,7 @@ weight: 1
 ## Introduction
 
 The OpenTelemetry Collector offers a vendor-agnostic implementation on how to
-receive, process, and export telemetry data. In removes the need to run,
+receive, process, and export telemetry data. It removes the need to run,
 operate, and maintain multiple agents/collectors in order to support
 open-source observability data formats (e.g. Jaeger, Prometheus, etc.) sending
 to one or more open-source or commercial back-ends.
@@ -34,7 +34,7 @@ Projects:
 The OpenTelemetry Collector consists of a single binary and two deployment methods:
 
 1. An agent running with the application or on the same host as the application
-(e.g. binary, sidecar, or daemonset)
+(e.g. binary, sidecar, or daemonset).
 2. A gateway running as a standalone service (e.g. container or deployment)
 typically per cluster, datacenter or region.
 
