@@ -152,6 +152,11 @@ enable = false
 	url = "https://gitter.im/open-telemetry"
 	icon = "fab fa-gitter"
         desc = "Chat with other project developers"
+[[params.links.developer]]
+	name = "CNCF DevStats"
+	url = "https://opentelemetry.devstats.cncf.io/d/8/dashboards?orgId=1&refresh=15m"
+	icon = "fas fa-chart-area"
+        desc = "See our activity on CNCF DevStats"
 
 [[menu.main]]
     name = "Blog"
