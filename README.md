@@ -31,7 +31,7 @@ otVersion: <The OpenTelemetry version your plugin targets.>
 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
 
-Maintainers ([@open-telemetry/docs-approvers](https://github.com/orgs/open-telemetry/teams/docs-approvers)
+Maintainers ([@open-telemetry/docs-approvers](https://github.com/orgs/open-telemetry/teams/docs-approvers))
 
 - [Steve Flanders](https://github.com/flands), Splunk
 - [Morgan McLean](https://github.com/mtwo), Google
