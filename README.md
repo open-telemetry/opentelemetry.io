@@ -1,38 +1,9 @@
-# opentelemetry.io
+# <img src="https://opentelemetry.io/img/logos/opentelemetry-logo-nav.png" alt="OpenTelemetry Icon" width="45" height=""> OpenTelemetry.io
 
 This repo houses the source code for the
-[OpenTelemetry](https://opentelemetry.io) website and documentation.
+[OpenTelemetry](https://opentelemetry.io) website and project documentation.
 
-## Publishing the site
-
-The OpenTelemetry website is published automatically by
-[Netlify](https://netlify.com). When changes are pushed to the `master` branch,
-Netlify re-builds and re-deploys the site and stages a deploy preview for those
-changes.
-
-> Site adminstrators can access the admin interface
-> [here](https://app.netlify.com/sites/opentelemetry/overview).
-
-### Deploy previews
-
-Whenever you submit a pull request to this repo, Netlify creates a [deploy
-preview](https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/)
-for the changes in that specific PR. You can view the deploy preview in the
-Netlify panel that appears under the PR description.
-
-### Dev Setup
-
-#### Instructions
-
-* Fork and clone the repository
-* Install [Hugo](https://gohugo.io/getting-started/installing/#quick-install) and [npm](https://npmjs.com)
-* Run `make serve`
-* Open `http://localhost:30000` to check the site
-
-> Please note that you need to install the "extended" version of Hugo (with
-> built-in support) to run the site locally.
-
-### Adding a project to the OpenTelemetry Registry
+## Adding a project to the OpenTelemetry Registry
 
 Do you maintain or contribute to an integration for OpenTelemetry? We'd love to
 feature your project in the registry!
@@ -55,3 +26,21 @@ authors: <The author or authors of your integration. An email is a great thing t
 otVersion: <The OpenTelemetry version your plugin targets.>
 ---
 ```
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+Maintainers ([@open-telemetry/docs-approvers](https://github.com/orgs/open-telemetry/teams/docs-approvers)
+
+- [Steve Flanders](https://github.com/flands), Splunk
+- [Morgan McLean](https://github.com/mtwo), Google
+- [Austin Parker](https://github.com/austinlparker), LightStep
+
+Learn more about roles in the [community repository](https://github.com/open-telemetry/community/blob/master/community-membership.md).
+
+Thanks to all the people who already contributed!
+
+<a href="https://github.com/open-telemetry/opentelemetry.io/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=open-telemetry/opentelemetry.io" />
+</a>
