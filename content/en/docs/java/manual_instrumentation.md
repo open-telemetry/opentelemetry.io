@@ -296,7 +296,7 @@ tracerProvider.addSpanProcessor(batchSpansProcessor);
 
 #### MultiSpanProcessor
 
-A MultiSpanProcessor accepts a list of Span Processors.
+A MultiSpanProcessor accepts a list of span processors.
 
 Example:
 
