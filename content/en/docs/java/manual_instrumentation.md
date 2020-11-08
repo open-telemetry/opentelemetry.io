@@ -167,7 +167,7 @@ Span child = tracer.spanBuilder("childWithLink")
     .startSpan();
 ```
 
-For more details how to read context from remote processes, see [Context
+For more information about how to read context from remote processes, see [Context
 Propagation](#context-propagation).
 
 ### Context Propagation
