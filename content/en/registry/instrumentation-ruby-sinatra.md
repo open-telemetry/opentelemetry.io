@@ -1,0 +1,14 @@
+---
+title: Sinatra Instrumentation
+registryType: instrumentation
+isThirdParty: false
+language: ruby
+tags:
+  - ruby
+  - instrumentation
+repo: https://github.com/open-telemetry/opentelemetry-ruby/tree/master/instrumentation/sintra
+license: Apache 2.0
+description: Sinatra instrumentation for Ruby.
+authors: OpenTelemetry Authors
+otVersion: latest
+---
