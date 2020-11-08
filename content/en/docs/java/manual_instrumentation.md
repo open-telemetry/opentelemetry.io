@@ -127,7 +127,7 @@ span.setAttribute("http.url", url.toString());
 ```
 
 Some of these operations represent calls that use well-known protocols like
-HTTP or database calls. For these, OpenTelemetry requires specific attributes
+HTTP or database calls. For these operations, OpenTelemetry requires specific attributes
 to be set. The full attribute list is available in the Semantic Conventions in
 the cross-language specification.
 
