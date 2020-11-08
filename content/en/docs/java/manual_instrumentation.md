@@ -258,7 +258,7 @@ The following processors are available today:
 
 #### SimpleSpanProcessor
 
-This span processor exports span immediately after they are ended.
+This span processor exports spans immediately after they end.
 
 Example:
 
