@@ -58,7 +58,7 @@ try (Scope scope = TracingContextUtils.currentContextWith(span)) {
 
 Most of the time, we want to correlate spans for nested operations.
 OpenTelemetry supports tracing within processes and across remote processes.
-For more details how to share context between remote processes, see [Context
+For more information about how to share context between remote processes, see [Context
 Propagation](#context-propagation).
 
 For a method `a` calling a method `b`, the spans could be manually linked in the
