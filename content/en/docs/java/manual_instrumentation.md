@@ -317,10 +317,10 @@ tracerProvider.addSpanProcessor(multiSpanProcessor);
 ## Metrics
 
 OpenTelemetry provides support for metrics, a time series of numbers that might
-express things such as CPU utilization, request count for an HTTP server or a
+express things such as CPU utilization, request count for an HTTP server, or a
 business metric such as transactions.
 
-All metrics can be annotated with labels: additional qualifiers that help
+All metrics can be annotated with labels. Labels are additional qualifiers that help
 describe what subdivision of the measurements the metric represents.
 
 The following is an example of counter usage:
