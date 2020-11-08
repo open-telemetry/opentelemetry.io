@@ -153,9 +153,9 @@ span.addEvent("End Computation", eventAttributes);
 
 #### Links
 
-A Span may be linked to zero or more other Spans that are causally related.
-Links can be used to represent batched operations where a Span was initiated by
-multiple initiating Spans, each representing a single incoming item being
+You can link a span to zero or more other spans that are causally related.
+Use links to represent batched operations where a span was initiated by
+multiple initiating spans, each representing a single incoming item being
 processed in the batch.
 
 ```java
