@@ -1,6 +1,6 @@
 ---
 title: "Components"
-weight: 2
+weight: 20
 ---
 
 The OpenTelemetry project consists of multiple components. These components are

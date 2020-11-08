@@ -1,6 +1,6 @@
 ---
 title: "Data Collection"
-weight: 5
+weight: 50
 ---
 
 The OpenTelemetry project facilitates the collection of telemetry data via the

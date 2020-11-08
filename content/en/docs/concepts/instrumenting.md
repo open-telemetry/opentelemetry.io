@@ -1,6 +1,6 @@
 ---
 title: "Instrumenting"
-weight: 4
+weight: 40
 ---
 
 The OpenTelemetry project facilitates the instrumenting of applications. The

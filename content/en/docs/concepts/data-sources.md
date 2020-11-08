@@ -1,6 +1,6 @@
 ---
 title: "Data Sources"
-weight: 3
+weight: 30
 ---
 
 OpenTelemetry supports multiple data sources as defined below. More data

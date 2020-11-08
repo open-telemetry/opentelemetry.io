@@ -1,6 +1,6 @@
 ---
 title: "What is OpenTelemetry?"
-weight: 1
+weight: 10
 ---
 
 OpenTelemetry is a set of APIs, SDKs, tooling and integrations that are
