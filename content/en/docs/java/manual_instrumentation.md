@@ -279,7 +279,7 @@ BatchSpanProcessor batchSpansProcessor =
 tracerProvider.addSpanProcessor(batchSpansProcessor);
 ```
 
-A varitey of configuration parameters can also be specified:
+You can also specify a variety of configuration parameters:
 
 ```java
 BatchSpanProcessor batchSpansProcessor =
