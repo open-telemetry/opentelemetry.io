@@ -98,13 +98,13 @@ context over the HTTP request. On the server side, the example shows how to
 extract the context and create a child span with an attached span event.
 All generated data is logged locally.
 
-To get started:
+To get started, perform the following steps::
 
-- Clone the respository
-- Change into the example directory
-- Compile the code
-- Start the server
-- Start the client
+1. Clone the repository
+2. Change into the example directory
+3. Compile the code
+4. Start the server
+5. Start the client
 
 ```bash
 git clone git@github.com:open-telemetry/opentelemetry-java.git
