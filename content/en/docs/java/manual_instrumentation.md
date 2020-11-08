@@ -1,6 +1,6 @@
 ---
 Title: "Manual Instrumentation"
-weight: 3
+Weight: 3
 ---
 
 ## Traces
