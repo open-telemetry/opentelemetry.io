@@ -176,8 +176,8 @@ OpenTelemetry provides a text-based approach to propagate context to remote
 services. By default, the [W3C Trace Context](https://www.w3.org/TR/trace-context/)
 format is used.
 
-The following presents an example of an outgoing HTTP request using
-`HttpURLConnection`.
+The following example shows an outgoing HTTP request using
+`HttpURLConnection`:
 
 ```java
 // Tell OpenTelemetry to inject the context in the HTTP headers
