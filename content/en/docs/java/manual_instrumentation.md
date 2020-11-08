@@ -207,10 +207,10 @@ try (Scope scope = TracingContextUtils.currentContextWith(outGoing)) {
 ...
 ```
 
-Similarly, the text-based approach can be used to read the W3C Trace Context
-from incoming requests. The following presents an example of processing an
+Similarly, you can use the text-based approach to read the W3C Trace Context
+from incoming requests. The following example demonstrates processing an
 incoming HTTP request using
-[HttpExchange](https://docs.oracle.com/javase/8/docs/jre/api/net/httpserver/spec/com/sun/net/httpserver/HttpExchange.html).
+[HttpExchange](https://docs.oracle.com/javase/8/docs/jre/api/net/httpserver/spec/com/sun/net/httpserver/HttpExchange.html):
 
 ```java
 TextMapPropagator.Getter<HttpExchange> getter =
