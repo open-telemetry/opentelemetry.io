@@ -115,8 +115,8 @@ Span childRemoteParent = tracer.spanBuilder("Child").setParent(remoteContext).st
 
 #### Attributes
 
-In OpenTelemetry spans can be created freely and it's up to the implementor to
-annotate them with attributes specific to the represented operation. Attributes
+In OpenTelemetry, you can create spans freely. It's up to the implementor to
+annotate spans with attributes specific to the represented operation. Attributes
 provide additional context on a span about the specific operation it tracks,
 such as results or operation properties.
 
