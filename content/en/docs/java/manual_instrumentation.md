@@ -80,7 +80,7 @@ void b(Span parentSpan) {
 }
 ```
 
-The OpenTelemetry API offers also an automated way to propagate the parentSpan:
+The OpenTelemetry API also offers an automated way to propagate the parentSpan:
 
 ```java
 void a() {
