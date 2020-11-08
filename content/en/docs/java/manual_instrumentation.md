@@ -1,5 +1,5 @@
 ---
-title: "Manual Instrumentation"
+Title: "Manual Instrumentation"
 weight: 3
 ---
 
