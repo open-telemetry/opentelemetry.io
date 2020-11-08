@@ -20,11 +20,11 @@ TracerSdkManagement tracerProvider =
 
 ### Instantiate `Tracer`
 
-In order to instrument, a `Tracer` must be acquired, which is responsible for
-creating spans and interacting with the [`Context`](#context-propagation). A
-`Tracer` is acquired by using the [OpenTelemetry Tracing
+In order to instrument, you must acquire a `Tracer`. A `Tracer` is responsible for
+creating spans and interacting with the [`Context`](#context-propagation). To acquire a
+`Tracer` use the [OpenTelemetry Tracing
 API](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/trace/api.md)
-specifying the name and version of the [library
+and specify the name and version of the [library
 instrumenting](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/glossary.md#instrumentation-library)
 the [instrumented
 library](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/glossary.md#instrumented-library)
