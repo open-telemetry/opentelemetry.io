@@ -78,13 +78,15 @@ dependencies {
 | ------ | ------- | ------------ |
 | Beta   | Alpha   | Experimental |
 
-## Releases
+### Releases
 
-NOTE: Published releases are *NOT* available on maven central, but will be by
-GA.
+> Published releases are *NOT* available on maven central, but will be by GA.
 
   - [releases](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases)
   - [bintray](https://bintray.com/open-telemetry/maven/opentelemetry-java-instrumentation)
+
+> Snapshots are also available as documented
+> [here](https://github.com/open-telemetry/opentelemetry-java/blob/master/CONTRIBUTING.md#snapshots).
 
 ### Additional Information
 
