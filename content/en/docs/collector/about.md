@@ -1,23 +1,23 @@
 ---
-title: "Getting Started"
-weight: 1
+Title: "Getting Started"
+Weight: 1
 ---
 
 ## Introduction
 
-The OpenTelemetry Collector offers a vendor-agnostic implementation on how to
+The OpenTelemetry Collector offers a vendor-agnostic way to
 receive, process, and export telemetry data. It removes the need to run,
-operate, and maintain multiple agents/collectors in order to support
+operate, and maintain multiple agents or collectors in order to support
 open-source observability data formats (e.g. Jaeger, Prometheus, etc.) sending
-to one or more open-source or commercial back-ends.
+to one or more open source or commercial backends.
 
 Objectives:
 
-- Usable: Reasonable default configuration, supports popular protocols, runs and collects out of the box.
-- Performant: Highly stable and performant under varying loads and configurations.
-- Observable: An exemplar of an observable service.
-- Extensible: Customizable without touching the core code.
-- Unified: Single codebase, deployable as an agent or collector with support for traces, metrics, and logs (future).
+- **Usable**: Reasonable default configuration. Supports popular protocols, runs and collects out-of-the-box.
+- **Performant**: Highly stable and performant under varying loads and configurations.
+- **Observable**: An exemplar of an observable service.
+- **Extensible**: Customizable without touching the core code.
+- **Unified**: Single codebase. Deployable as an agent or collector with support for traces, metrics, and logs (future).
 
 Projects:
 
@@ -31,37 +31,37 @@ Projects:
 
 ## Deployment
 
-The OpenTelemetry Collector consists of a single binary and two deployment methods:
+The OpenTelemetry Collector consists of a single binary and the following deployment methods:
 
 1. An agent running with the application or on the same host as the application
 (e.g. binary, sidecar, or daemonset).
 2. A gateway running as a standalone service (e.g. container or deployment)
-typically per cluster, datacenter or region.
+typically per cluster, datacenter, or region.
 
 ### Agent
 
-It is recommended to deploy the Agent on every host within an environment. In
-doing so, the Agent is capable of receiving telemetry data (push and pull
-based) as well as enhancing telemetry data with metadata such as custom tags or
+It's recommended that you deploy the Agent on every host within an environment. In
+doing so, the Agent is capable of receiving telemetry data (push and pull-based)
+as well as enhancing telemetry data with metadata such as custom tags or
 infrastructure information. In addition, the Agent can offload responsibilities
 that client instrumentation would otherwise need to handle including batching,
-retry, encryption, compression and more.
+retry, encryption, compression, and more.
 
 ### Gateway
 
-Additionally, a Gateway can be deployed in every cluster, datacenter, or region.
-The Gateway runs as a standalone service and can offer advanced capabilities
-over the Agent including tail-based sampling. In addition, the Gateway can
+You can deploy a Gateway in every cluster, datacenter, or region.
+The Gateway runs as a standalone service and offers advanced capabilities
+over the Agent including tail-based sampling. The Gateway can also
 limit the number of egress points required to send data as well as consolidate
-API token management. Each Collector instance operates independently so it is
+API token management. Each Collector instance operates independently so it's
 easy to scale the architecture based on performance needs.
 
 ## Getting Started
 
 ### Demo
 
-Deploys a load generator, agent and gateway as well as Jaeger, Zipkin and
-Prometheus back-ends. More information can be found on the demo
+Deploys a load generator, agent, and gateway as well as Jaeger, Zipkin, and
+Prometheus backends. For more information, see the demo
 [README.md](https://github.com/open-telemetry/opentelemetry-collector/tree/master/examples/demo)
 
 ```bash
@@ -102,12 +102,12 @@ $ kubectl apply -f https://raw.githubusercontent.com/open-telemetry/opentelemetr
 The example above is meant to serve as a starting point, to be extended and
 customized before actual production usage.
 
-The [OpenTelemetry
-Operator](https://github.com/open-telemetry/opentelemetry-operator) can also be
-used to provision and maintain an OpenTelemetry Collector instance, with
+You can also use the [OpenTelemetry
+Operator](https://github.com/open-telemetry/opentelemetry-operator) to provision and maintain
+an OpenTelemetry Collector instance. The Operator includes
 features such as automatic upgrade handling, `Service` configuration based on
 the OpenTelemetry configuration, automatic sidecar injection into deployments,
-among others.
+and more.
 
 ### Local
 
@@ -125,16 +125,16 @@ $ git clone git@github.com:open-telemetry/opentelemetry-collector.git; \
 
 ## Other
 
-The OpenTelemetry collector can be extended or embedded into other applications.
+You can extend the OpenTelemetry collector or embedded it into other applications.
 
-The list of applications extending the collector:
+The following applications extend the collector:
 
 - [opentelemetry-collector-contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib)
 - [jaeger](https://github.com/jaegertracing/jaeger/tree/master/cmd/opentelemetry)
 
-A guide on how to create your own distribution is available in this blog post:
+For a guide on how to create your own distribution, see the following blog post:
 ["Building your own OpenTelemetry Collector distribution"](https://medium.com/p/42337e994b63)
 
-If you are building your own distribution, the [OpenTelemetry Collector
+If you're building your own distribution, the [OpenTelemetry Collector
 Builder](https://github.com/observatorium/opentelemetry-collector-builder)
 might be a good starting point.
