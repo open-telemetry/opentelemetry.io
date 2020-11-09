@@ -134,7 +134,7 @@ the cross-language specification.
 #### Events
 
 Spans can be annotated with named events that can carry zero or more [Span
-Attributes](#span-attributes), each of which is itself a name/value map paired
+Attributes](#attributes), each of which is itself a name/value map paired
 automatically with a timestamp.
 
 ```java
