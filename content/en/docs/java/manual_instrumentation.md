@@ -11,7 +11,7 @@ In the [OpenTelemetry Tracing
 API](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/trace/api.md),
 the `TracerProvider` is the entry point and is expected to be the stateful
 object that holds any configuration. The `TracerProvider` also provides access
-to the [`Tracer`](#instantiate-a-tracer).
+to the [`Tracer`](#instantiate-tracer).
 
 ```java
 TracerSdkManagement tracerProvider =
