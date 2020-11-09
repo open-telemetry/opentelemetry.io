@@ -9,20 +9,19 @@ Weight: 3
 
 In the [OpenTelemetry Tracing
 API](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/trace/api.md),
-the `TracerProvider` is the entry point and is expected to be the stateful
-object that holds any configuration. The `TracerProvider` also provides access
+the `TracerProvider` is the main entry point and is expected to be the stateful
+object that holds any configuration. The `TracerProvider` provides access
 to the [`Tracer`](#instantiate-tracer).
 
 ```java
-TracerSdkManagement tracerProvider =
-    OpenTelemetrySdk.getGlobalTracerManagement();
+TracerProvider tracerProvider =
+    OpenTelemetry.getGlobalTracerProvider();
 ```
 
 ### Instantiate `Tracer`
 
 In order to instrument, you must acquire a `Tracer`. A `Tracer` is responsible for
-creating spans and interacting with the [`Context`](#context-propagation). To acquire a
-`Tracer` use the [OpenTelemetry Tracing
+creating spans. To acquire a `Tracer` use the [OpenTelemetry Tracing
 API](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/trace/api.md)
 and specify the name and version of the [library
 instrumenting](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/glossary.md#instrumentation-library)
@@ -32,7 +31,7 @@ or application to be monitored.
 
 ```java
 Tracer tracer =
-    OpenTelemetry.getTracer("instrumentation-library-name","semver:1.0.0");
+    tracerProvider.getTracer("instrumentation-library-name","1.0.0");
 ```
 
 ### Create Spans
@@ -44,11 +43,11 @@ start and end time of the span is automatically set by the OpenTelemetry SDK.
 
 ```java
 Span span = tracer.spanBuilder("my span").startSpan();
-try (Scope scope = TracingContextUtils.currentContextWith(span)) {
+try (Scope scope = span.makeCurrent()) {
 	// your use case
 	...
 } catch (Throwable t) {
-    span.setStatus(StatusCanonicalCode.ERROR, "Change it to your error message");
+    span.setStatus(StatusCode.ERROR, "Change it to your error message");
 } finally {
     span.end(); // closing the scope does not end the span, this has to be done manually
 }
@@ -73,7 +72,7 @@ void a() {
 }
 void b(Span parentSpan) {
   Span childSpan = tracer.spanBuilder("b")
-        .setParent(parentSpan)
+        .setParent(Context.current().with(parentSpan))
         .startSpan();
   // do stuff
   childSpan.end();
@@ -85,7 +84,7 @@ The OpenTelemetry API also offers an automated way to propagate the parentSpan:
 ```java
 void a() {
   Span parentSpan = tracer.spanBuilder("a").startSpan();
-  try(Scope scope = TracingContextUtils.currentContextWith(parentSpan)) {
+  try(Scope scope = parentSpan.makeCurrent()) {
     b();
   } finally {
     parentSpan.end();
@@ -93,10 +92,10 @@ void a() {
 }
 void b() {
   Span childSpan = tracer.spanBuilder("b")
-    // NOTE: setParent(parentSpan) is not required; 
-    // `TracingContextUtils.getCurrentSpan()` is automatically added as parent
+    // NOTE: setting the parent Context explicitly is not required; 
+    // The span in the Context on the current thread is automatically added as parent
     .startSpan();
-  try(Scope scope = TracingContextUtils.currentContextWith(childSpan)) {
+  try(Scope scope = childSpan.makeCurrent()) {
     // do stuff
   } finally {
     childSpan.end();
@@ -129,7 +128,8 @@ span.setAttribute("http.url", url.toString());
 Some of these operations represent calls that use well-known protocols like
 HTTP or database calls. For these operations, OpenTelemetry requires specific attributes
 to be set. The full attribute list is available in the Semantic Conventions in
-the cross-language specification.
+the cross-language specification. And, the standard attribute keys are available in the 
+`io.opentelemetry.api.trace.attributes.SemanticAttributes` class as constants.
 
 #### Events
 
@@ -160,9 +160,9 @@ processed in the batch.
 
 ```java
 Span child = tracer.spanBuilder("childWithLink")
-        .addLink(parentSpan1.getContext())
-        .addLink(parentSpan2.getContext())
-        .addLink(parentSpan3.getContext())
+        .addLink(parentSpan1.getSpanContext())
+        .addLink(parentSpan2.getSpanContext())
+        .addLink(parentSpan3.getSpanContext())
         .addLink(remoteContext)
     .startSpan();
 ```
@@ -192,11 +192,11 @@ TextMapPropagator.Setter<HttpURLConnection> setter =
 
 URL url = new URL("http://127.0.0.1:8080/resource");
 Span outGoing = tracer.spanBuilder("/resource").setSpanKind(Span.Kind.CLIENT).startSpan();
-try (Scope scope = TracingContextUtils.currentContextWith(outGoing)) {
+try (Scope scope = outGoing.makeCurrent()) {
   // Semantic Convention.
-  // (Observe that to set these, Span does not *need* to be the current instance.)
-  outGoing.setAttribute("http.method", "GET");
-  outGoing.setAttribute("http.url", url.toString());
+  // (Observe that to set these, the Span does not *need* to be the current instance in Context or Scope.)
+  outGoing.setAttribute(SemanticAttributes.HTTP_METHOD, "GET");
+  outGoing.setAttribute(SemanticAttributes.HTTP_URL, url.toString());
   HttpURLConnection transportLayer = (HttpURLConnection) url.openConnection();
   // Inject the request with the *current*  Context, which contains our current Span.
   OpenTelemetry.getPropagators().getTextMapPropagator().inject(Context.current(), transportLayer, setter);
@@ -222,6 +222,11 @@ TextMapPropagator.Getter<HttpExchange> getter =
       }
       return null;
     }
+
+    @Override
+    public Iterable<String> keys(HttpExchange carrier) {
+      return carrier.getRequestHeaders().keySet();
+    } 
 };
 ...
 public void handle(HttpExchange httpExchange) {
@@ -229,28 +234,37 @@ public void handle(HttpExchange httpExchange) {
   Context extractedContext = OpenTelemetry.getPropagators().getTextMapPropagator()
         .extract(Context.current(), httpExchange, getter);
   Span serverSpan = null;
-  try (Scope scope = ContextUtils.withScopedContext(extractedContext)) {
+  try (Scope scope = extractedContext.makeCurrent()) {
     // Automatically use the extracted SpanContext as parent.
-    serverSpan = tracer.spanBuilder("/resource").setSpanKind(Span.Kind.SERVER)
+    serverSpan = tracer.spanBuilder("GET /resource").setSpanKind(Span.Kind.SERVER)
         .startSpan();
-    // Add the attributes defined in the Semantic Conventions
-    serverSpan.setAttribute("http.method", "GET");
-    serverSpan.setAttribute("http.scheme", "http");
-    serverSpan.setAttribute("http.host", "localhost:8080");
-    serverSpan.setAttribute("http.target", "/resource");
-    // Serve the request
-    ...
-  } finally {
-    if (serverSpan != null) {
+    try {
+      // Add the attributes defined in the Semantic Conventions
+      serverSpan.setAttribute(SemanticAttributes.HTTP_METHOD, "GET");
+      serverSpan.setAttribute(SemanticAttributes.HTTP_SCHEME, "http");
+      serverSpan.setAttribute(SemanticAttributes.HTTP_HOST, "localhost:8080");
+      serverSpan.setAttribute(SemanticAttributes.HTTP_TARGET, "/resource");
+      // Serve the request
+      ...
+    } finally {
       serverSpan.end();
     }
-  }
+  } 
 }
 ```
 
 Other propagators are available as extensions, most notably
 [Zipkin
 B3](https://github.com/open-telemetry/opentelemetry-java/tree/master/extensions/trace-propagators/src/main/java/io/opentelemetry/extension/trace/propagation).
+
+### Configuring the default OpenTelemetry SDK
+
+In order to configure the default OpenTelemetry SDK, you need to get a handle to a 
+`TracerManagement` instance from the SDK:
+
+```java
+TracerSdkManagement tracerManagement = OpenTelemetrySdk.getGlobalTracerManagement();
+```
 
 ### Processors
 
@@ -264,7 +278,7 @@ Example:
 
 ```java
 SimpleSpanProcessor simpleSpansProcessor = SimpleSpanProcessor.builder(exporter).build();
-tracerProvider.addSpanProcessor(simpleSpansProcessor);
+tracerManagement.addSpanProcessor(simpleSpansProcessor);
 ```
 
 #### BatchSpanProcessor
@@ -276,7 +290,7 @@ Example:
 ```java
 BatchSpanProcessor batchSpansProcessor =
     BatchSpanProcessor.builder(exporter).build();
-tracerProvider.addSpanProcessor(batchSpansProcessor);
+tracerManagement.addSpanProcessor(batchSpansProcessor);
 ```
 
 You can also specify a variety of configuration parameters:
@@ -291,7 +305,7 @@ BatchSpanProcessor batchSpansProcessor =
             30_000) // max amount of time an export can run before getting interrupted
         .setScheduleDelayMillis(5000) // set time between two different exports
         .build();
-tracerProvider.addSpanProcessor(batchSpansProcessor);
+tracerManagement.addSpanProcessor(batchSpansProcessor);
 ```
 
 #### MultiSpanProcessor
@@ -303,7 +317,7 @@ Example:
 ```java
 SpanProcessor multiSpanProcessor =
     MultiSpanProcessor.create(Arrays.asList(simpleSpansProcessor, batchSpansProcessor));
-tracerProvider.addSpanProcessor(multiSpanProcessor);
+tracerManagement.addSpanProcessor(multiSpanProcessor);
 ```
 
 ### Exporters
@@ -327,7 +341,7 @@ The following is an example of counter usage:
 
 ```java
 // Gets or creates a named meter instance
-Meter meter = OpenTelemetry.getMeter("instrumentation-library-name","semver:1.0.0");
+Meter meter = OpenTelemetry.getGlobalMeter("instrumentation-library-name","semver:1.0.0");
 
 // Build counter e.g. LongCounter
 LongCounter counter = meter
