@@ -376,7 +376,7 @@ and you want to suppress some of them without modifying the code.
 
 ### Configure the OpenTelemetry getTracer
 
-See the [Manual Instrumentation documentation](/docs/java/manual-instrumentation/#spans)
+See the [Manual Instrumentation documentation](/docs/java/manual_instrumentation/#instantiate-tracer)
 for configuration information and examples.
 
 ## Troubleshooting
