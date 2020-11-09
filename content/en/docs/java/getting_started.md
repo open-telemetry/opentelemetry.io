@@ -150,7 +150,7 @@ public class DoWork {
 }
 ```
 
-For more detailed information, see the [Manual Instrumentation documentation](/docs/java/manual-instrumentation/#metrics).
+For more detailed information, see the [Manual Instrumentation documentation](/docs/java/manual_instrumentation/#metrics).
 
 #### Example
 
