@@ -84,7 +84,7 @@ public class DoWork {
 }
 ```
 
-For more detailed information, see the [Manual Instrumentation documentation](/docs/java/manual-instrumentation/#traces).
+For more detailed information, see the [Manual Instrumentation documentation](/docs/java/manual_instrumentation/#traces).
 
 #### Example
 
