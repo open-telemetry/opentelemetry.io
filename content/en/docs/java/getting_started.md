@@ -41,7 +41,7 @@ java -javaagent:path/to/opentelemetry-javaagent-all.jar \
      -jar myapp.jar
 ```
 
-For additional information, see the [Automatic Instrumentation documentation](/docs/java/automatic-instrumentation/#traces).
+For additional information, see the [Automatic Instrumentation documentation](/docs/java/automatic_instrumentation).
 
 ## Manual Instrumentation
 
