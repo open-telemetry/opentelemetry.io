@@ -37,7 +37,7 @@ Most OpenTelemetry components are already in [beta](/project-status) and are pro
 ### What is Observability?
 In software, observability typically refers to telemetry produced by **services** and is often divided into three major verticals:
 
-* [**Tracing**](/docs/concepts/data-sources/#tracing), aka **distributed tracing**, provides insight into the full lifecycles, aka *traces*, of requests to the system, allowing you to pinpoint failures and performance issues.  
+* [**Tracing**](/docs/concepts/data-sources/#traces), aka **distributed tracing**, provides insight into the full lifecycles, aka *traces*, of requests to the system, allowing you to pinpoint failures and performance issues.  
 * [**Metrics**](/docs/concepts/data-sources/#metrics) provide quantitative information about processes running inside the system, including counters, gauges, and histograms.
 * [**Logging**](https://en.wikipedia.org/wiki/Log_file) provides insight into application-specific messages emitted by processes.
 
