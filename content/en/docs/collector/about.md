@@ -125,7 +125,7 @@ $ git clone git@github.com:open-telemetry/opentelemetry-collector.git; \
 
 ## Other
 
-You can extend the OpenTelemetry collector or embedded it into other applications.
+You can extend the OpenTelemetry Collector or embed it into other applications.
 
 The following applications extend the collector:
 
