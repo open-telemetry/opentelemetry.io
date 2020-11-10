@@ -7,7 +7,7 @@ Weight: 1
 
 The OpenTelemetry Collector offers a vendor-agnostic way to
 receive, process, and export telemetry data. It removes the need to run,
-operate, and maintain multiple agents or collectors in order to support
+operate, and maintain multiple agents or gateways in order to support
 open-source observability data formats (e.g. Jaeger, Prometheus, etc.) sending
 to one or more open source or commercial backends.
 
