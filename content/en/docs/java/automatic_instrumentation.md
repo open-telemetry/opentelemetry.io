@@ -311,7 +311,7 @@ Both options require a dependency on the `opentelemetry-api` library to get star
     <dependency>
       <groupId>io.opentelemetry</groupId>
       <artifactId>opentelemetry-api</artifactId>
-      <version>0.7.0</version>
+      <version>0.10.0</version>
     </dependency>
   </dependencies>
 ```
@@ -320,7 +320,7 @@ Both options require a dependency on the `opentelemetry-api` library to get star
 
 ```groovy
 dependencies {
-    compile('io.opentelemetry:opentelemetry-api:0.7.0')
+    compile('io.opentelemetry:opentelemetry-api:0.10.0')
 }
 ```
 
@@ -352,7 +352,7 @@ An additional dependency is required for this annotation:
     <dependency>
       <groupId>io.opentelemetry</groupId>
       <artifactId>opentelemetry-extension-auto-annotations</artifactId>
-      <version>0.7.0</version>
+      <version>0.10.0</version>
     </dependency>
   </dependencies>
 ```
@@ -361,7 +361,7 @@ An additional dependency is required for this annotation:
 
 ```groovy
 dependencies {
-    compile('io.opentelemetry:opentelemetry-extension-auto-annotations:0.7.0')
+    compile('io.opentelemetry:opentelemetry-extension-auto-annotations:0.10.0')
 }
 ```
 
