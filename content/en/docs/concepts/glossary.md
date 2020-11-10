@@ -1,6 +1,6 @@
 ---
 title: "Glossary"
-weight: 10
+weight: 100
 ---
 
 The OpenTelemetry project uses terminology you may or may not be familiar with.
