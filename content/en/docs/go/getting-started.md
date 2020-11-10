@@ -86,11 +86,11 @@ Setting up global options uses the `global` package - add these options to your 
 	global.SetTextMapPropagator(propagators.Baggage{})
 ```
 
-It's important to note that if you do not set a propagator, the default is to use the NoOp option, which means that context will not be shared between multiple services.
+It's important to note that if you do not set a propagator, the default is to use the `NoOp` option, which means that context will not be shared between multiple services.
 
 # Quick Start
 
-Let's put the concepts we've just covered together, and create a trace in a single process. In our main function, after the initialization code, add the following -
+Let's put the concepts we've just covered together, and create a trace in a single process. In our main function, after the initialization code, add the following:
 
 ```
 tracer := global.Tracer("ex.com/basic")
@@ -124,4 +124,3 @@ if err != nil {
 In this snippet, we're doing a few things. First, we're asking the global trace provider for an instance of a tracer, which is the object that manages spans for our service. We provide a name (`"ex.com/basic"`) which acts as a way to namespace our spans and make them distinct from other spans in this process, or another. Finally, we get an instance of the Go `context`, which is used by OpenTelemetry to hold references to a span in order to propagate it between function calls inside a service.
 
 Inside our function, we're creating a new span by calling `tracer.Start` with the context we just created, and a name. Passing the context will set our span as 'active' in it, which is used in our inner function to make a new child span. The name is important - every span needs a name, and these names are the primary method of indicating what a span represents.  Calling `defer span.End()` ensures that our span will complete once this function has finished its work. Spans can have attributes and events, which are metadata and log statements that help you interpret traces after-the-fact. Finally, in this code snippet we can see an example of creating a new function and propagating the span to it inside our code. When you run this program, you'll see that the 'Sub operation...' span has been created as a child of the 'operation' span.
-

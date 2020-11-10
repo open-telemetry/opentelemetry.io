@@ -3,7 +3,7 @@ title: "Processing and Exporting Data"
 weight: 4
 ---
 
-Once you've instrumented your code, you need to get the data out in order to do much useful with it. This page will cover the basics of the process and export pipeline.
+Once you've instrumented your code, you need to get the data out in order to do anything useful with it. This page will cover the basics of the process and export pipeline.
 
 # Sampling
 
