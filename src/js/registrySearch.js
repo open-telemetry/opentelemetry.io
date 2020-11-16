@@ -17,18 +17,20 @@ let fuseOptions = {
 };
 
 // Get searchQuery for queryParams
+let pathName = window.location.pathname;
 let urlParams = new URLSearchParams(window.location.search);
 let searchQuery = urlParams.get("s");
-
-// Run search or display default body
-if (searchQuery) {
-  document.querySelector("#search-query").value = searchQuery;
-  document.querySelector("#default-body").style.display = "none";
-  executeSearch(searchQuery);
-} else {
-  let defaultBody = document.querySelector("#default-body");
-  if (defaultBody.style.display === "none") {
-    defaultBody.style.display = "block";
+if (pathName.includes("registry")) {
+  // Run search or display default body
+  if (searchQuery) {
+    document.querySelector("#search-query").value = searchQuery;
+    document.querySelector("#default-body").style.display = "none";
+    executeSearch(searchQuery);
+  } else {
+    let defaultBody = document.querySelector("#default-body");
+    if (defaultBody.style.display === "none") {
+      defaultBody.style.display = "block";
+    }
   }
 }
 
@@ -137,27 +139,26 @@ function render(templateString, data) {
   return templateString;
 }
 
-// listeners, etc
 let selectedLanguage = "all";
 let selectedComponent = "all";
-
-document.addEventListener('DOMContentLoaded', (event) => {
-  let languageList = document.getElementById('languageFilter').querySelectorAll('.dropdown-item')
-  let typeList = document.getElementById('componentFilter').querySelectorAll('.dropdown-item')
-  languageList.forEach((element) => element.addEventListener('click', function(evt) {
-    let val = evt.target.getAttribute('value')
-    selectedLanguage = val;
-    document.getElementById('languageDropdown').textContent = evt.target.textContent;
-    updateFilters();
-  }))
-  typeList.forEach((element) => element.addEventListener('click', function(evt) {
-    let val = evt.target.getAttribute('value')
-    selectedComponent = val;
-    document.getElementById('componentDropdown').textContent = evt.target.textContent;
-    updateFilters();
-  }))
-})
-
+if (pathName.includes("registry")) {
+  document.addEventListener('DOMContentLoaded', (event) => {
+    let languageList = document.getElementById('languageFilter').querySelectorAll('.dropdown-item')
+    let typeList = document.getElementById('componentFilter').querySelectorAll('.dropdown-item')
+    languageList.forEach((element) => element.addEventListener('click', function(evt) {
+      let val = evt.target.getAttribute('value')
+      selectedLanguage = val;
+      document.getElementById('languageDropdown').textContent = evt.target.textContent;
+      updateFilters();
+    }))
+    typeList.forEach((element) => element.addEventListener('click', function(evt) {
+      let val = evt.target.getAttribute('value')
+      selectedComponent = val;
+      document.getElementById('componentDropdown').textContent = evt.target.textContent;
+      updateFilters();
+    }))
+  })
+}
 // Filters items based on language and component filters
 function updateFilters() {
   let allItems = [...document.getElementsByClassName("media")];

@@ -87,7 +87,7 @@ github_repo = "https://github.com/open-telemetry/opentelemetry.io"
 github_project_repo = "https://github.com/open-telemetry"
 
 # Google Custom Search Engine ID. Remove or comment out to disable search.
-# gcs_engine_id = "011737558837375720776:fsdu1nryfng"
+gcs_engine_id = "bde3d634eca9cd335"
 
 # Enable Algolia DocSearch
 algolia_docsearch = false

@@ -5,7 +5,7 @@ const dir = path.resolve(__dirname);
 module.exports = {
   entry: {
     base: path.resolve('src', 'js', 'base.js'),
-    search: path.resolve('src', 'js', 'search.js')
+    registrySearch: path.resolve('src', 'js', 'registrySearch.js')
   },
   output: {
     path: path.resolve('assets', 'js'),
