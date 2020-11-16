@@ -27,3 +27,9 @@ Thanks to all the people who already contributed!
 <a href="https://github.com/open-telemetry/opentelemetry.io/graphs/contributors">
   <img src="https://contributors-img.web.app/image?repo=open-telemetry/opentelemetry.io" />
 </a>
+
+## Documentation License
+
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+
+Please note the Creative Commons Attribution 4.0 license applies to the creative work of this site (documentation, visual assets, etc.) and not to the underlying code and does not supersede any licenses of the source code, its dependencies, etc.

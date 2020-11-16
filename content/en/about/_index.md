@@ -51,4 +51,9 @@ The spec is available in the [open-telemetry/specification](https://github.com/o
 ### I want to help influence the future direction of cloud-native telemetry. What should I do?
 Excellent! We list the best ways to get involved on our [community GitHub page](https://github.com/open-telemetry/community#get-involved), including mailing lists, our Gitter channels, the community calendar, and the monthly community meeting.
 
+### Can I reuse the content on this site for training or educational purposes?
+
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+
 {{% /blocks/section %}}
+
