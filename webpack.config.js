@@ -4,7 +4,7 @@ const dir = path.resolve(__dirname);
 
 module.exports = {
   entry: {
-    app: path.resolve('src', 'js', 'app.js'),
+    base: path.resolve('src', 'js', 'base.js'),
     search: path.resolve('src', 'js', 'search.js')
   },
   output: {

@@ -69,4 +69,8 @@ otVersion: <The OpenTelemetry version your plugin targets.>
 
 Once you've created this data file, make a pull request and we'll add your project to the registry!
 
+# Vendor Support
+
+Please see the [vendors](/vendors) page for information on companies that distribute or natively support OpenTelemetry.
+
 {{% /blocks/section %}}

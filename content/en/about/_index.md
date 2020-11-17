@@ -37,8 +37,8 @@ Most OpenTelemetry components are already in [beta](/project-status) and are pro
 ### What is Observability?
 In software, observability typically refers to telemetry produced by **services** and is often divided into three major verticals:
 
-* [**Tracing**](/docs/#tracing), aka **distributed tracing**, provides insight into the full lifecycles, aka *traces*, of requests to the system, allowing you to pinpoint failures and performance issues.  
-* [**Metrics**](/docs/#metrics) provide quantitative information about processes running inside the system, including counters, gauges, and histograms.
+* [**Tracing**](/docs/concepts/data-sources/#traces), aka **distributed tracing**, provides insight into the full lifecycles, aka *traces*, of requests to the system, allowing you to pinpoint failures and performance issues.  
+* [**Metrics**](/docs/concepts/data-sources/#metrics) provide quantitative information about processes running inside the system, including counters, gauges, and histograms.
 * [**Logging**](https://en.wikipedia.org/wiki/Log_file) provides insight into application-specific messages emitted by processes.
 
 These verticals are tightly interconnected. **Metrics** can be used to pinpoint, for example, a subset of misbehaving **traces**. **Logs** associated with those traces could help to find the root cause of this behavior. And then new **metrics** can be configured, based on this discovery, to catch this issue earlier next time. Other verticals exist (continuous profiling, production debugging, etc.), however traces, metrics, and logs are the three most well adopted across the industry.
@@ -51,4 +51,9 @@ The spec is available in the [open-telemetry/specification](https://github.com/o
 ### I want to help influence the future direction of cloud-native telemetry. What should I do?
 Excellent! We list the best ways to get involved on our [community GitHub page](https://github.com/open-telemetry/community#get-involved), including mailing lists, our Gitter channels, the community calendar, and the monthly community meeting.
 
+### Can I reuse the content on this site for training or educational purposes?
+
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+
 {{% /blocks/section %}}
+
