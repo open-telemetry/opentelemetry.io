@@ -13,10 +13,11 @@ You will find the JavaScript version of OpenTelemetry at [open-telemetry/opentel
 | ------- | ------- |
 | Beta    | Alpha   |
 
-[Releases](https://github.com/open-telemetry/opentelemetry-js/releases)
+You can find release information [here](https://github.com/open-telemetry/opentelemetry-js/releases)
 
 # Further Reading
 
-- [Getting Started](https://github.com/getting-started/README.md)
-- [API Documentation](https://open-telemetry.github.io/opentelemetry-js)
-- [Getting In Touch (Gitter)](https://gitter.im/open-telemetry/opentelemetry-node)
+* [OpenTelemetry Javascript on GitHub](https://github.com/open-telemetry/opentelemetry-js)
+* [Getting Started](https://github.com/getting-started/README.md)
+* [API Documentation](https://open-telemetry.github.io/opentelemetry-js)
+* [Getting In Touch (Gitter)](https://gitter.im/open-telemetry/opentelemetry-node)

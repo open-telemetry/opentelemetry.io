@@ -3,7 +3,9 @@ title: "Instrumentation"
 weight: 3
 ---
 
-This guide will cover creating and annotating spans, creating and annotating metrics, how to pass context, and a guide to automatic instrumentation for JavaScript. In the following this guide will use the following sample app:
+This guide will cover creating and annotating spans, creating and annotating metrics, how to pass context, and a guide to automatic instrumentation for JavaScript. This simple example works in the browser as well as with Node.JS
+
+In the following this guide will use the following sample app:
 
 ```javascript
 'use strict';
@@ -148,20 +150,3 @@ function doWork(parent) {
   span.end();
 }
 ```
-
-## Events
-
-# Creating Metrics
-
-As the metrics API remains unstable, metrics documentation can be deferred
-
-# Propagators and Context
-
-# Automatic Instrumentation
-
-If this is available, then this section should cover:
-
-- Configuring automatic instrumentation for the language
-- Examples of creating new child spans from AI parents
-- List of libraries supported for automatic instrumentation
-- How to create new automatic instrumentation, possibly?
