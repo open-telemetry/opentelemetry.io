@@ -1,7 +1,7 @@
 ---
 title: "Workshop"
 linkTitle: "Workshop"
-weight: 10
+weight: 30
 description: >
   Resources to aid in running an OpenTelemetry workshop
 ---

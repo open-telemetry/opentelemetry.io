@@ -1,6 +1,6 @@
 ---
 title: ".NET"
-weight: 1
+weight: 10
 ---
 
 Welcome to the OpenTelemetry for .NET documentation! This is intended to be an overview of OpenTelemetry in this language, and a brief guide to its options and features.
