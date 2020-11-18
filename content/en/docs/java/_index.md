@@ -1,6 +1,6 @@
 ---
 title: "Java"
-weight: 1
+weight: 10
 ---
 
 OpenTelemetry Java consists of the following repositories:
