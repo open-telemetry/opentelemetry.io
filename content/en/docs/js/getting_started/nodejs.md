@@ -1,9 +1,9 @@
 ---
-title: "Getting Started in Node.JS"
+title: "Node.JS"
 weight: 2
 ---
 
-This guide uses the example application in Node.JS provided below, but the steps to instrument your own application should be broadly the same. Here is an overview of what we will be doing.
+This guide uses the example application in node.js provided below, but the steps to instrument your own application should be broadly the same. Here is an overview of what we will be doing.
 
 - Install the required OpenTelemetry libraries
 - Initialize a global [tracer](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/trace/api.md#tracer)
@@ -34,7 +34,7 @@ Run `npm install express` to have all dependencies available.
 
 # Installation
 
-To create traces in Node.JS, you will need `@opentelemetry/node`, `@opentelemetry/core`, and any plugins required by your application such as gRPC, or HTTP. If you are using the example application, you will need to install `@opentelemetry/plugin-http`, `@opentelemetry/plugin-https` and `@opentelemetry/plugin-express`.
+To create traces on NodeJS, you will need `@opentelemetry/node`, `@opentelemetry/core`, and any plugins required by your application such as gRPC, or HTTP. If you are using the example application, you will need to install `@opentelemetry/plugin-http`, `@opentelemetry/plugin-https` and `@opentelemetry/plugin-express`.
 
 ```sh
 $ npm install \
