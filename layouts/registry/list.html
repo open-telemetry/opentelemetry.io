@@ -1,6 +1,6 @@
 {{ define "main" }}
 {{ $registryItems := where .Data.Pages "Params.layout" "!=" "search" }}
-{{ $search := resources.Get "js/search.js" | fingerprint }}
+{{ $search := resources.Get "js/registrySearch.js" | fingerprint }}
 
 {{ $languages := newScratch }}
 {{ $languages.Set "collector" "Collector" }}
