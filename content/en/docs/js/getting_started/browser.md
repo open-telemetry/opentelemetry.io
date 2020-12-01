@@ -1,5 +1,5 @@
 ---
-title: "Getting Started in the Browser"
+title: "Browser"
 weight: 2
 ---
 
