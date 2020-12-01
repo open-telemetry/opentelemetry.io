@@ -1,6 +1,6 @@
 ---
 title: "Go"
-weight: 1
+weight: 10
 ---
 
 This is the OpenTelemetry for Go documentation. OpenTelemetry is an observability framework -- an API, SDK, and tools that are designed to aid in the generation and collection of application telemetry data such as metrics, logs, and traces. This documentation is designed to help you understand how to get started using OpenTelemetry for Go.

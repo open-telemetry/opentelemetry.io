@@ -53,7 +53,7 @@ Create and collect telemetry data from your services and software, then forward 
 {{% /blocks/feature %}}
 
 {{% blocks/feature icon="fas fa-magic" title="Drop-In Instrumentation"%}}
-OpenTelemetry integrates with popular libraries and frameworks such as [Spring](https://spring.io/), [ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core), [Express](https://expressjs.com/), and more! Installation and integration can be as simple as a few lines of code.
+OpenTelemetry integrates with popular libraries and frameworks such as [Spring](https://spring.io/), [ASP.NET Core](https://docs.microsoft.com/aspnet/core), [Express](https://expressjs.com/), and more! Installation and integration can be as simple as a few lines of code.
 {{% /blocks/feature %}}
 
 {{% blocks/feature icon="fab fa-github" title="Open Source, Vendor Neutral" url="https://github.com/open-telemetry"%}}
