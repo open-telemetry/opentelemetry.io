@@ -47,13 +47,6 @@ The Collector provides a single binary and two deployment methods:
 - A gateway running as a standalone service (e.g. container or deployment)
   typically per cluster, datacenter or region.
 
-The Collector comes in two flavors and releases, the first is vanilla build 
-where releases are found at 
-https://github.com/open-telemetry/opentelemetry-collector/releases 
-along with a second build including contributions that support many more 
-export targets (tools). The contrib build may be found at
-https://github.com/open-telemetry/opentelemetry-collector-contrib/releases
-
 For more information, see the [Data
 Collection](https://opentelemetry.io/docs/concepts/data-collection/) section.
 
