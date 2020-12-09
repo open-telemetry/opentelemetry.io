@@ -66,7 +66,7 @@ Tracing semantic conventions can be found [in this document](https://github.com/
 
 ## Events
 
-An event is a human-readable message on a span that represents "something happening" during it's lifetime. For example, imagine a function that requires exclusive access to a resource that is under a mutex. An event could be created at two points - once, when we try to gain access to the resource, and another when we acquire the mutex. 
+An event is a human-readable message on a span that represents "something happening" during it's lifetime. For example, imagine a function that requires exclusive access to a resource that is under a mutex. An event could be created at two points - once, when we try to gain access to the resource, and another when we acquire the mutex.
 
 ```
 span.AddEvent(ctx, "Acquiring lock")
@@ -104,7 +104,7 @@ import (
 global.SetTextMapPropagator(propagators.TraceContext{})
 ```
 
-> OpenTelemetry also supports the B3 header format, for compatibility with existing tracing systems (`go.opentelemetry.io/contrib/propagators/b3`) that do not support the W3C TraceContext standard. 
+> OpenTelemetry also supports the B3 header format, for compatibility with existing tracing systems (`go.opentelemetry.io/contrib/propagators/b3`) that do not support the W3C TraceContext standard.
 
 After configuring context propagation, you'll most likely want to use automatic instrumentation to handle the behind-the-scenes work of actually managing serializing the context.
 

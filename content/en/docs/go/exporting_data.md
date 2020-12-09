@@ -45,7 +45,7 @@ provider := trace.NewTracerProvider(
 
 # OTLP Exporter
 
-OpenTelemetry Protocol (OTLP) is available in the `go.opentelemetry.io/otel/exporters/otlp` package. 
+OpenTelemetry Protocol (OTLP) is available in the `go.opentelemetry.io/otel/exporters/otlp` package.
 
 Please find more documentation on [GitHub](https://github.com/open-telemetry/opentelemetry-go/tree/master/exporters/otlp)
 
