@@ -11,7 +11,7 @@ sources may be added in the future.
 Traces track the progression of a single request, called a `trace`, as it is
 handled by services that make up an application. The request may be initiated
 by a user or an application. Distributed tracing is a form of tracing that
-transverses process, network and security boundaries. Each unit of work in a
+traverses process, network and security boundaries. Each unit of work in a
 `trace` is called a `span`; a `trace` is a tree of `spans`. Spans are objects
 that represent the work being done by individual services or components
 involved in a request as it flows through a system. A `span` contains a _span
