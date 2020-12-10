@@ -22,5 +22,5 @@ The OpenTelemetry website is published automatically by
 Netlify re-builds and re-deploys the site and stages a deploy preview for those
 changes.
 
-> Site adminstrators can access the admin interface
+> Site administrators can access the admin interface
 > [here](https://app.netlify.com/sites/opentelemetry/overview).
