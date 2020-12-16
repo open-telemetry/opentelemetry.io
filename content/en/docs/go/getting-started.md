@@ -27,12 +27,12 @@ import (
 	"log"
 
 	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/api/global"
-	"go.opentelemetry.io/otel/api/trace"
+	"go.opentelemetry.io/otel/baggage"
 	"go.opentelemetry.io/otel/exporters/stdout"
 	"go.opentelemetry.io/otel/label"
-	"go.opentelemetry.io/otel/propagators"
+	"go.opentelemetry.io/otel/propagation"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
+	"go.opentelemetry.io/otel/trace"
 )
 ```
 
@@ -46,6 +46,7 @@ To initialize the console exporter, add the following code to the file your `mai
 
 ```
 exporter, err := stdout.NewExporter([]stdout.Option{
+		stdout.WithQuantiles([]float64{0.5, 0.9, 0.99}),
 		stdout.WithPrettyPrint(),
 	}...)
 	if err != nil {
@@ -65,7 +66,7 @@ To create a trace provider, add the following code to your `main.go` file -
 
 ```
 bsp := sdktrace.NewBatchSpanProcessor(exporter)
-defer bsp.Shutdown()
+defer bsp.Shutdown(context.Background())
 tp := sdktrace.NewTracerProvider(sdktrace.WithSpanProcessor(bsp))
 ```
 
@@ -79,11 +80,11 @@ Metrics documentation is not yet available for this language.
 
 When using OpenTelemetry, it's a good practice to set a global tracer provider. Doing so will make it easier for libraries and other dependencies that use the OpenTelemetry API will be able to easily discover the SDK, and emit telemetry data. In addition, you'll want to configure context propagation options. Context propagation allows for OpenTelemetry to share values across multiple services - this includes trace identifiers, which ensure that all spans for a single request are part of the same trace, as well as baggage, which are arbitrary key/value pairs that you can use to pass observability data between services (for example, sharing a customer ID from one service to the next).
 
-Setting up global options uses the `global` package - add these options to your `main.go` file as shown -
+Setting up global options uses the `otel` package - add these options to your `main.go` file as shown -
 
 ```
-	global.SetTracerProvider(tp)
-	global.SetTextMapPropagator(propagators.Baggage{})
+	otel.SetTracerProvider(tp)
+	otel.SetTextMapPropagator(propagation.Baggage{})
 ```
 
 It's important to note that if you do not set a propagator, the default is to use the `NoOp` option, which means that context will not be shared between multiple services.
@@ -102,7 +103,7 @@ err = func(ctx context.Context) error {
   ctx, span = tracer.Start(ctx, "operation")
   defer span.End()
 
-  span.AddEvent(ctx, "Nice operation!", label.Int("bogons", 100))
+  span.AddEvent("Nice operation!", trace.WithAttributes(label.Int("bogons", 100)))
   span.SetAttributes(anotherKey.String("yes"))
 
   return func(ctx context.Context) error {
@@ -111,7 +112,7 @@ err = func(ctx context.Context) error {
     defer span.End()
 
     span.SetAttributes(lemonsKey.String("five"))
-    span.AddEvent(ctx, "Sub span event")
+    span.AddEvent("Sub span event")
 
     return nil
   }(ctx)
