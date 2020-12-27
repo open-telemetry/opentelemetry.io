@@ -18,8 +18,12 @@ let fuseOptions = {
 
 // Get searchQuery for queryParams
 let pathName = window.location.pathname;
-let urlParams = new URLSearchParams(window.location.search);
-let searchQuery = urlParams.get("s");
+let searchQuery = "";
+let selectedLanguage = "all";
+let selectedComponent = "all";
+
+parseUrlParams();
+
 if (pathName.includes("registry")) {
   // Run search or display default body
   if (searchQuery) {
@@ -31,6 +35,16 @@ if (pathName.includes("registry")) {
     if (defaultBody.style.display === "none") {
       defaultBody.style.display = "block";
     }
+  }
+
+  if (selectedLanguage!=="all" || selectedComponent!== "all"){
+    if (selectedLanguage!=="all"){
+      document.getElementById('languageDropdown').textContent = document.getElementById(`language-item-${selectedLanguage}`).textContent;
+    }
+    if (selectedComponent!=="all"){
+      document.getElementById('componentDropdown').textContent = document.getElementById(`component-item-${selectedComponent}`).textContent;
+    }
+    updateFilters();
   }
 }
 
@@ -139,8 +153,6 @@ function render(templateString, data) {
   return templateString;
 }
 
-let selectedLanguage = "all";
-let selectedComponent = "all";
 if (pathName.includes("registry")) {
   document.addEventListener('DOMContentLoaded', (event) => {
     let languageList = document.getElementById('languageFilter').querySelectorAll('.dropdown-item')
@@ -149,16 +161,27 @@ if (pathName.includes("registry")) {
       let val = evt.target.getAttribute('value')
       selectedLanguage = val;
       document.getElementById('languageDropdown').textContent = evt.target.textContent;
+      setInput("language", val);
       updateFilters();
     }))
     typeList.forEach((element) => element.addEventListener('click', function(evt) {
       let val = evt.target.getAttribute('value')
       selectedComponent = val;
       document.getElementById('componentDropdown').textContent = evt.target.textContent;
+      setInput("component", val);
       updateFilters();
     }))
   })
 }
+
+
+function setInput(key, value){
+  document.getElementById(`input-${key}`).value = value;
+  var queryParams = new URLSearchParams(window.location.search);
+  queryParams.set(key, value);
+  history.replaceState(null, null, "?"+queryParams.toString());
+}
+
 // Filters items based on language and component filters
 function updateFilters() {
   let allItems = [...document.getElementsByClassName("media")];
@@ -182,4 +205,11 @@ function updateFilters() {
       }
     });
   }
+}
+
+function parseUrlParams(){
+  let urlParams = new URLSearchParams(window.location.search);
+  searchQuery = urlParams.get("s");
+  selectedLanguage = urlParams.get("language") || "all";
+  selectedComponent = urlParams.get("component") || "all";
 }
