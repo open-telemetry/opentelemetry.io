@@ -11,6 +11,8 @@
       url: "https://open-telemetry.github.io/opentelemetry-js/"
     - name: "Go"
       url: "https://github.com/open-telemetry/opentelemetry-go/blob/master/README.md"
+    - name: "PHP"
+      url: "https://github.com/open-telemetry/opentelemetry-php/"
     - name: "Python"
       url: "https://opentelemetry-python.readthedocs.io/"
     - name: "Java"
