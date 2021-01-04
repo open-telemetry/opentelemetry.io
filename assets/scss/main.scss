@@ -50,13 +50,10 @@ footer {
         visibility: hidden;
     }
 
-    h2[id]:before, h3[id]:before, h4[id]:before, h5[id]:before {
-        display: block;
-        content: " ";
-        margin-top: -5rem;
-        height: 5rem;
-        visibility: hidden;
+    h2[id], h3[id], h4[id], h5[id] {
+        scroll-margin-top: 5rem;
     }
+
 }
 
 @import "styles_project";
