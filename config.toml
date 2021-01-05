@@ -158,7 +158,7 @@ enable = false
 	icon = "fas fa-chart-area"
         desc = "See our activity on CNCF DevStats"
 
-[[menu.main]]
+[[languages.en.menu.main]]
     name = "Blog"
     weight = 50
     url = "https://medium.com/opentelemetry"
