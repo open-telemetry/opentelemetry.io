@@ -53,7 +53,11 @@ footer {
     h2[id], h3[id], h4[id], h5[id] {
         scroll-margin-top: 5rem;
     }
+}
 
+// Adjust the spacing of page-mata and page-TOC
+.td-toc #TableOfContents {
+    padding-top: 1rem;
 }
 
 @import "styles_project";
