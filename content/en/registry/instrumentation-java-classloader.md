@@ -6,7 +6,7 @@ language: java
 tags:
   - java
   - instrumentation
-repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/master/instrumentation/java-classloader
+repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/master/instrumentation/classloaders
 license: Apache 2.0
 description: This library provides a classloader instrumentation to track requests through OpenTelemetry.
 authors: OpenTelemetry Authors
