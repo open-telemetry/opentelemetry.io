@@ -9,7 +9,7 @@ Instrumentation is the process of adding observability code to your application.
 
 Spans are created by tracers, which can be acquired from a Tracer Provider.
 
-```
+```go
 ctx := context.Background()
 tracer := provider.Tracer("example/main")
 var span trace.Span
@@ -19,7 +19,7 @@ defer span.End()
 
 In Go, the `context` package is used to store the active span. When you start a span, you'll get a handle on not only the span that's created, but the modified context that contains it. When starting a new span using this context, a parent-child relationship will automatically be created between the two spans, as seen here:
 
-```
+```go
 func parentFunction() {
   ctx := context.Background()
   var parentSpan trace.Span
@@ -44,7 +44,7 @@ Once a span has completed, it is immutable and can no longer be modified.
 
 Attributes are keys and values that are applied as metadata to your spans and are useful for aggregating, filtering, and grouping traces. Attributes can be added at span creation, or at any other time during the lifecycle of a span before it has completed.
 
-```
+```go
 // setting attributes at creation...
 ctx, span = tracer.Start(ctx, "attributesAtCreation", trace.WithAttributes(label.String("hello", "world")))
 // ... and after creation
@@ -53,7 +53,7 @@ span.SetAttributes(label.Bool("isTrue", true), label.String("stringAttr", "hi!")
 
 Attribute keys can be precomputed, as well -
 
-```
+```go
 var myKey = label.Key("myCoolAttribute")
 span.SetAttributes(myKey.String("a value"))
 ```
@@ -68,7 +68,7 @@ Tracing semantic conventions can be found [in this document](https://github.com/
 
 An event is a human-readable message on a span that represents "something happening" during it's lifetime. For example, imagine a function that requires exclusive access to a resource that is under a mutex. An event could be created at two points - once, when we try to gain access to the resource, and another when we acquire the mutex.
 
-```
+```go
 span.AddEvent("Acquiring lock")
 mutex.Lock()
 span.AddEvent("Got lock, doing work...")
@@ -81,7 +81,7 @@ A useful characteristic of events is that their timestamps are displayed as offs
 
 Events can also have attributes of their own -
 
-```
+```go
 span.AddEvent("Cancelled wait due to external signal", trace.WithAttributes(label.Int("pid", 4328), label.String("signal", "SIGHUP")))
 ```
 
@@ -95,7 +95,7 @@ Traces can extend beyond a single process. This requires _context propagation_, 
 
 In order to propagate trace context over the wire, a propagator must be registered with the OpenTelemetry SDK.
 
-```
+```go
 import (
   "go.opentelemetry.io/otel"
   "go.opentelemetry.io/otel/propagation"
