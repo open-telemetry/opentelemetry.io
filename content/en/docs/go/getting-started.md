@@ -19,7 +19,7 @@ To install the necessary prerequisites for OpenTelemetry, you'll want to run the
 
 In your `main.go` file, you'll need to import several packages:
 
-```
+```go
 package main
 
 import (
@@ -48,7 +48,7 @@ The SDK requires an exporter to be created. Exporters are packages that allow te
 
 To initialize the console exporter, add the following code to the file your `main.go` file -
 
-```
+```go
 func main() {
 	exporter, err := stdout.NewExporter(
 		stdout.WithQuantiles([]float64{0.5, 0.9, 0.99}),
@@ -69,7 +69,7 @@ OpenTelemetry requires a trace provider to be initialized in order to generate t
 
 To create a trace provider, add the following code to your `main.go` file -
 
-```
+```go
 	ctx := context.Background()
 	bsp := sdktrace.NewBatchSpanProcessor(exporter)
 	tp := sdktrace.NewTracerProvider(sdktrace.WithSpanProcessor(bsp))
@@ -86,7 +86,7 @@ OpenTelemetry requires a meter provider to be initialized in order to create ins
 
 To create a meter provider, add the following code to your `main.go` file -
 
-```
+```go
 	pusher := push.New(
 		basic.New(
 			simple.NewWithExactDistribution(),
@@ -106,7 +106,7 @@ When using OpenTelemetry, it's a good practice to set a global tracer provider a
 
 Setting up global options uses the `otel` package - add these options to your `main.go` file as shown -
 
-```
+```go
 	otel.SetTracerProvider(tp)
 	otel.SetMeterProvider(pusher.MeterProvider())
 	propagator := propagation.NewCompositeTextMapPropagator(propagation.Baggage{}, propagation.TraceContext{})
@@ -123,7 +123,7 @@ Each measurement can be associated with labels that can later be used by visuali
 
 To set up some metric instruments, add the following code to your `main.go` file -
 
-```
+```go
 	fooKey := label.Key("ex.com/foo")
 	barKey := label.Key("ex.com/bar")
 	lemonsKey := label.Key("ex.com/lemons")
@@ -152,7 +152,7 @@ In this block we first create some keys and labels that we will later use when c
 
 Let's put the concepts we've just covered together, and create a trace and some measurements in a single process. In our main function, after the initialization code, add the following:
 
-```
+```go
 	tracer := otel.Tracer("ex.com/basic")
 	ctx = baggage.ContextWithValues(ctx,
 		fooKey.String("foo1"),
@@ -175,7 +175,7 @@ Let's put the concepts we've just covered together, and create a trace and some 
 			valueRecorder.Measurement(2.0),
 		)
 
-		func(ctx context.Context) {
+		return func(ctx context.Context) {
 			var span trace.Span
 			ctx, span = tracer.Start(ctx, "Sub operation...")
 			defer span.End()
