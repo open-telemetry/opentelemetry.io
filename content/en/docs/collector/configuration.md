@@ -292,7 +292,7 @@ exporters:
 
 ## Extensions
 
-Extensions are available for for tasks that do not involve processing telemetry
+Extensions are available for tasks that do not involve processing telemetry
 data. Examples of extensions include health monitors. Extensions are optional.
 By default, no extensions are configured. A basic example of all available
 extensions is provided below. For detailed extension configuration, please see
