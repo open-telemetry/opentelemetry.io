@@ -15,7 +15,7 @@ To get started with this guide, create a new directory and add a new file named 
 
 To install the necessary prerequisites for OpenTelemetry, you'll want to run the following command in the directory with your `go.mod`:
 
-`go get go.opentelemetry.io/otel@v0.15.0 go.opentelemetry.io/otel/sdk@v0.15.0 go.opentelemetry.io/otel/exporters/stdout@v0.15.0`
+`go get go.opentelemetry.io/otel@v0.16.0 go.opentelemetry.io/otel/sdk@v0.16.0 go.opentelemetry.io/otel/exporters/stdout@v0.16.0`
 
 In your `main.go` file, you'll need to import several packages:
 
@@ -25,6 +25,7 @@ package main
 import (
 	"context"
 	"log"
+	"time"
 
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/baggage"
@@ -32,8 +33,8 @@ import (
 	"go.opentelemetry.io/otel/label"
 	"go.opentelemetry.io/otel/metric"
 	"go.opentelemetry.io/otel/propagation"
-	"go.opentelemetry.io/otel/sdk/metric/controller/push"
-	"go.opentelemetry.io/otel/sdk/metric/processor/basic"
+	controller "go.opentelemetry.io/otel/sdk/metric/controller/basic"
+	processor "go.opentelemetry.io/otel/sdk/metric/processor/basic"
 	"go.opentelemetry.io/otel/sdk/metric/selector/simple"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 	"go.opentelemetry.io/otel/trace"
@@ -51,7 +52,6 @@ To initialize the console exporter, add the following code to the file your `mai
 ```go
 func main() {
 	exporter, err := stdout.NewExporter(
-		stdout.WithQuantiles([]float64{0.5, 0.9, 0.99}),
 		stdout.WithPrettyPrint(),
 	)
 	if err != nil {
@@ -59,7 +59,7 @@ func main() {
 	}
 ```
 
-This creates a new console exporter with a few options - `WithQuantiles` sets the quantile (a quantile represents a division in the range of a distribution of probabilities) values to write to the console, and `WithPrettyPrint` formats the text nicely when its printed, so that it's easier for humans to read.
+This creates a new console exporter with basic options - `WithPrettyPrint` formats the text nicely when its printed, so that it's easier for humans to read.
 
 ## Creating a Tracer Provider
 
@@ -73,10 +73,12 @@ To create a trace provider, add the following code to your `main.go` file -
 	ctx := context.Background()
 	bsp := sdktrace.NewBatchSpanProcessor(exporter)
 	tp := sdktrace.NewTracerProvider(sdktrace.WithSpanProcessor(bsp))
+
+	// Handle this error in a sensible manner where possible
 	defer func() { _ = tp.Shutdown(ctx) }()
 ```
 
-This block of code will create a new batch span processor, a type of span processor that batches up multiple spans over a period of time, that writes to the exporter we created in the previous step. You can see examples of other uses for span processors in [this file](https://github.com/open-telemetry/opentelemetry-go/blob/v0.15.0/sdk/trace/span_processor_example_test.go). We also created an instance of Go context. It will be used later to store some important data.
+This block of code will create a new batch span processor, a type of span processor that batches up multiple spans over a period of time, that writes to the exporter we created in the previous step. You can see examples of other uses for span processors in [this file](https://github.com/open-telemetry/opentelemetry-go/blob/v0.16.0/sdk/trace/span_processor_example_test.go). We also created an instance of a Go context. It will be used later to store some important data.
 
 ## Creating a Meter Provider
 
@@ -87,18 +89,25 @@ OpenTelemetry requires a meter provider to be initialized in order to create ins
 To create a meter provider, add the following code to your `main.go` file -
 
 ```go
-	pusher := push.New(
-		basic.New(
+	pusher := controller.New(
+		processor.New(
 			simple.NewWithExactDistribution(),
 			exporter,
 		),
-		exporter,
+		controller.WithPusher(exporter),
+		controller.WithCollectPeriod(5*time.Second),
 	)
-	pusher.Start()
-	defer pusher.Stop()
+
+	err = pusher.Start(ctx)
+	if err != nil {
+		log.Fatalf("failed to initialize metric controller: %v", err)
+	}
+
+	// Handle this error in a sensible manner where possible
+	defer func() { _ = pusher.Stop(ctx) }()
 ```
 
-This creates a push controller that uses a basic processor to aggregate and process metrics that are then sent to the exporter. The basic processor here uses a simple aggregator selector that decides what kind of an aggregator to use to aggregate measurements from a specific instrument. The processor also uses the exporter to learn how to prepare the aggregated measurements for the exporter to consume.
+This creates a controller that uses a basic processor to aggregate and process metrics that are then sent to the exporter. The basic processor here uses a simple aggregator selector that decides what kind of an aggregator to use to aggregate measurements from a specific instrument. The processor also uses the exporter to learn how to prepare the aggregated measurements for the exporter to consume. The controller will periodically push aggregated measurements to the exporter.
 
 ## Setting Global Options
 
@@ -175,7 +184,7 @@ Let's put the concepts we've just covered together, and create a trace and some 
 			valueRecorder.Measurement(2.0),
 		)
 
-		return func(ctx context.Context) {
+		func(ctx context.Context) {
 			var span trace.Span
 			ctx, span = tracer.Start(ctx, "Sub operation...")
 			defer span.End()
