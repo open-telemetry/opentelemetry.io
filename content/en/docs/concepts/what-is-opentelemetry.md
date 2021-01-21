@@ -42,6 +42,6 @@ OpenTelemetry provides you with:
 ## What OpenTelemetry is not
 
 OpenTelemetry is not an observability back-end like Jaeger or Prometheus.
-Instead, it supports exporting data to a variety of open-source and commerical
+Instead, it supports exporting data to a variety of open-source and commercial
 back-ends. It provides a pluggable architecture so additional technology
 protocols and formats can be easily added.
