@@ -17,7 +17,7 @@ that represent the work being done by individual services or components
 involved in a request as it flows through a system. A `span` contains a _span
 context_, which is a set of globally unique identifiers that represent the
 unique request that each `span` is a part of. A `span` provides Request, Error
-and Duration (RED) metrics that can be extracted used to debug availability as
+and Duration (RED) metrics that can be used to debug availability as
 well as performance issues.
 
 A `trace` contains a single _root span_ which encapsulates the end-to-end latency
