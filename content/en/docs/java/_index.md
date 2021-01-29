@@ -70,7 +70,7 @@ dependencies {
 ### Additional Information
 
 - [Javadoc](https://www.javadoc.io/doc/io.opentelemetry)
-- [Example code](https://github.com/open-telemetry/opentelemetry-java/tree/master/examples)
+- [Example code](https://github.com/open-telemetry/opentelemetry-java/tree/main/examples)
 
 ## opentelemetry-java-instrumentation
 
@@ -86,12 +86,12 @@ dependencies {
   - [bintray](https://bintray.com/open-telemetry/maven/opentelemetry-java-instrumentation)
 
 > Snapshots are also available as documented
-> [here](https://github.com/open-telemetry/opentelemetry-java/blob/master/CONTRIBUTING.md#snapshots).
+> [here](https://github.com/open-telemetry/opentelemetry-java/blob/main/CONTRIBUTING.md#snapshots).
 
 ### Additional Information
 
 - [Javadoc](https://www.javadoc.io/doc/io.opentelemetry)
-- [Example code](https://github.com/open-telemetry/opentelemetry-java/tree/master/examples)
+- [Example code](https://github.com/open-telemetry/opentelemetry-java/tree/main/examples)
 
 ## opentelemetry-java-contrib
 

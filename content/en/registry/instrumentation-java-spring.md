@@ -6,7 +6,7 @@ language: java
 tags:
   - java
   - instrumentation
-repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/master/instrumentation/spring
+repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring
 license: Apache 2.0
 description: This library provides a Spring instrumentation to track requests through OpenTelemetry.
 authors: OpenTelemetry Authors

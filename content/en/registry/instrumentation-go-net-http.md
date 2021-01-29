@@ -8,7 +8,7 @@ tags:
   - instrumentation
   - http
   - trace
-repo: https://github.com/open-telemetry/opentelemetry-go-contrib/tree/master/instrumentation/net/http
+repo: https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/instrumentation/net/http
 license: Apache 2.0
 description: Go contrib plugin for trace instrumentation of net/http handlers, http transports and http trace events
 authors: OpenTelemetry Authors

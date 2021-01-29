@@ -7,7 +7,7 @@ tags:
   - go
   - exporter
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/master/exporter/logzioexporter
+repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/logzioexporter
 license: Apache 2.0
 description: The OpenTelemetry Collector Exporter for Logz.io
 authors: Logz.io

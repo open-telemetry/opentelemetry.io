@@ -113,7 +113,7 @@ A receiver, which can be push or pull based, is how data gets into the
 Collector. One or more receivers must be configured. By default, no receivers
 are configured. A basic example of all available receivers is provided below.
 For detailed receiver configuration, please see the [receiver
-README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/master/receiver/README.md).
+README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md).
 
 ```yaml
 receivers:
@@ -174,7 +174,7 @@ Processors are run on data between being received and being exported.
 Processors are optional though some are recommended. A basic example of all
 available processors is provided below. For detailed processor configuration,
 please see the [processor
-README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/master/processor/README.md).
+README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md).
 
 ```yaml
 processors:
@@ -242,7 +242,7 @@ more backends/destinations. One or more exporters must be configured. By
 default, no exporters are configured. A basic example of all available
 exporters is provided below. For detailed exporter configuration, please see
 the [exporter
-README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/master/exporter/README.md).
+README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md).
 
 ```yaml
 exporters:
@@ -297,7 +297,7 @@ data. Examples of extensions include health monitors. Extensions are optional.
 By default, no extensions are configured. A basic example of all available
 extensions is provided below. For detailed extension configuration, please see
 the [extension
-README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/master/extension/README.md).
+README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/extension/README.md).
 
 ```yaml
 extensions:

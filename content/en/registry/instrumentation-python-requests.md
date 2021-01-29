@@ -6,7 +6,7 @@ language: python
 tags:
   - python
   - instrumentation
-repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/master/instrumentation/opentelemetry-instrumentation-requests
+repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-requests
 license: Apache 2.0
 description: This library allows tracing HTTP requests made by the requests library.
 authors: OpenTelemetry Authors

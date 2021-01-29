@@ -13,7 +13,7 @@ You can find OpenTelemetry packages on [NuGet](https://www.nuget.org/profiles/Op
 
 OpenTelemetry should be configured as part of your services initialization. In ASP.NET Core, you'll want to add it to the `IServiceCollection` that is created in `public void ConfigureServices(IServiceCollection services)`, in `Startup.cs`. For ASP.NET, configuration occurs in `Global.asax.cs`.
 
-You can find a variety of code samples demonstrating how to initialize and configure OpenTelemetry for .NET [here](https://github.com/open-telemetry/opentelemetry-dotnet/tree/master/examples)
+You can find a variety of code samples demonstrating how to initialize and configure OpenTelemetry for .NET [here](https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/examples)
 
 ## Creating a Tracer Provider
 
@@ -53,7 +53,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## Creating a Console Exporter
 
-The console exporter doesn't require any special configuration, however, you can pass a `ConsoleExporterOptions` object to it in order to set the destination (either stdout or debug console). See [the exporter page in GitHub](https://github.com/open-telemetry/opentelemetry-dotnet/tree/master/src/OpenTelemetry.Exporter.Console) for details.
+The console exporter doesn't require any special configuration, however, you can pass a `ConsoleExporterOptions` object to it in order to set the destination (either stdout or debug console). See [the exporter page in GitHub](https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/src/OpenTelemetry.Exporter.Console) for details.
 
 # Quick Start
 
@@ -87,4 +87,4 @@ public class Program
 }
 ```
 
-You can find a quick start example of an ASP.NET Core application [here](https://github.com/open-telemetry/opentelemetry-dotnet/tree/master/examples/AspNetCore)
+You can find a quick start example of an ASP.NET Core application [here](https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/examples/AspNetCore)

@@ -8,7 +8,7 @@ tags:
   - instrumentation
   - kafka
   - sarama
-repo: https://github.com/open-telemetry/opentelemetry-go-contrib/tree/master/instrumentation/github.com/Shopify/sarama
+repo: https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/instrumentation/github.com/Shopify/sarama
 license: Apache 2.0
 description: Go contrib plugin for the github.com/Shopify/sarama package.
 authors: OpenTelemetry Authors

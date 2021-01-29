@@ -19,9 +19,9 @@ java -javaagent:path/to/opentelemetry-javaagent-all.jar \
 ```
 
 By default OpenTelemetry Java agent uses the [OTLP
-exporter](https://github.com/open-telemetry/opentelemetry-java/tree/master/exporters/otlp)
+exporter](https://github.com/open-telemetry/opentelemetry-java/tree/main/exporters/otlp)
 configured to send data to a local [OpenTelemetry
-Collector](https://github.com/open-telemetry/opentelemetry-collector/blob/master/receiver/otlpreceiver/README.md)
+Collector](https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/otlpreceiver/README.md)
 at `localhost:55680`.
 
 Configuration parameters are passed as Java system properties (`-D` flags) or as
@@ -89,9 +89,9 @@ For more detailed information, see the [Manual Instrumentation documentation](/d
 #### Example
 
 Several
-[examples](https://github.com/open-telemetry/opentelemetry-java/tree/master/examples)
+[examples](https://github.com/open-telemetry/opentelemetry-java/tree/main/examples)
 are provided to get started. The [HTTP
-example](https://github.com/open-telemetry/opentelemetry-java/tree/master/examples/http)
+example](https://github.com/open-telemetry/opentelemetry-java/tree/main/examples/http)
 demonstrates how to manually instrument a simple HTTP based Client/Server
 application. The example creates a root span on the client and sends the
 context over the HTTP request. On the server side, the example shows how to
@@ -155,7 +155,7 @@ For more detailed information, see the [Manual Instrumentation documentation](/d
 #### Example
 
 Several
-[examples](https://github.com/open-telemetry/opentelemetry-java/tree/master/examples)
+[examples](https://github.com/open-telemetry/opentelemetry-java/tree/main/examples)
 are provided to get started. The [metrics
-examples](https://github.com/open-telemetry/opentelemetry-java/tree/master/examples/metrics)
+examples](https://github.com/open-telemetry/opentelemetry-java/tree/main/examples/metrics)
 demonstrates how to generate other types of metrics.

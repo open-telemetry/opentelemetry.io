@@ -6,10 +6,10 @@ weight: 2
 This guide uses the example application in HTML & javascript provided below, but the steps to instrument your own application should be broadly the same. Here is an overview of what we will be doing.
 
 - Install the required OpenTelemetry libraries
-- Initialize a global [tracer](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/trace/api.md#tracer)
-- Initialize and register a [span exporter](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/trace/sdk.md#span-exporter)
+- Initialize a global [tracer](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#tracer)
+- Initialize and register a [span exporter](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/sdk.md#span-exporter)
 
-This is a very simple guide, if you'd like to see more complex examples go to [examples/tracer-web](https://github.com/open-telemetry/opentelemetry-js/tree/master/examples/tracer-web)
+This is a very simple guide, if you'd like to see more complex examples go to [examples/tracer-web](https://github.com/open-telemetry/opentelemetry-js/tree/main/examples/tracer-web)
 
 Copy the following file into an empty directory and call it `index.html`.
 

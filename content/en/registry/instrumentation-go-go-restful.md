@@ -7,7 +7,7 @@ tags:
   - go
   - instrumentation
   - http
-repo: https://github.com/open-telemetry/opentelemetry-go-contrib/tree/master/instrumentation/github.com/emicklei/go-restful
+repo: https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/instrumentation/github.com/emicklei/go-restful
 license: Apache 2.0
 description: Go contrib plugin for the emicklei/go-restful package.
 authors: OpenTelemetry Authors

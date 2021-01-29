@@ -8,7 +8,7 @@ Weight: 3
 ### Instantiate `TracerProvider`
 
 In the [OpenTelemetry Tracing
-API](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/trace/api.md),
+API](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md),
 the `TracerProvider` is the main entry point and is expected to be the stateful
 object that holds any configuration. The `TracerProvider` provides access
 to the [`Tracer`](#instantiate-tracer).
@@ -22,11 +22,11 @@ TracerProvider tracerProvider =
 
 In order to instrument, you must acquire a `Tracer`. A `Tracer` is responsible for
 creating spans. To acquire a `Tracer` use the [OpenTelemetry Tracing
-API](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/trace/api.md)
+API](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md)
 and specify the name and version of the [library
-instrumenting](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/glossary.md#instrumentation-library)
+instrumenting](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/glossary.md#instrumentation-library)
 the [instrumented
-library](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/glossary.md#instrumented-library)
+library](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/glossary.md#instrumented-library)
 or application to be monitored.
 
 ```java
@@ -255,7 +255,7 @@ public void handle(HttpExchange httpExchange) {
 
 Other propagators are available as extensions, most notably
 [Zipkin
-B3](https://github.com/open-telemetry/opentelemetry-java/tree/master/extensions/trace-propagators/src/main/java/io/opentelemetry/extension/trace/propagation).
+B3](https://github.com/open-telemetry/opentelemetry-java/tree/main/extensions/trace-propagators/src/main/java/io/opentelemetry/extension/trace/propagation).
 
 ### Configuring the default OpenTelemetry SDK
 

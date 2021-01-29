@@ -46,7 +46,7 @@ easy to scale the architecture based on performance needs.
 
 Deploys a load generator, agent and gateway as well as Jaeger, Zipkin and
 Prometheus back-ends. More information can be found on the demo
-[README.md](https://github.com/open-telemetry/opentelemetry-collector/tree/master/examples/demo)
+[README.md](https://github.com/open-telemetry/opentelemetry-collector/tree/main/examples/demo)
 
 ```bash
 $ git clone git@github.com:open-telemetry/opentelemetry-collector.git; \

@@ -17,7 +17,7 @@ others. This page captures terminology used in the project and what it means.
 - **Application:** One or more `Services` designed for end users or other applications.
 - **APM:** Application Performance Monitoring. Typically a back-end of the
   `Tracing` `Data Source`.
-- **[Attributes](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/common/common.md#attributes):**
+- **[Attributes](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/common/common.md#attributes):**
   Used by the `Tracing` `Data Source` to attach name/value pairs to a `Span`.
 - **[Baggage](https://opentelemetry.io/docs/concepts/overview/#baggage):** A
   mechanism for propagating name/value pairs to help establish a causal
@@ -45,40 +45,40 @@ others. This page captures terminology used in the project and what it means.
   process, network and security boundaries.
 - **Event:** Something that happened where representation depends on the `Data
   Source`. For example,
-  [`Spans`](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/trace/api.md#add-events).
+  [`Spans`](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#add-events).
 - **Exporter:** Provides functionality to emit telemetry to consumers. Used by
   [Instrumentation
-  Libraries](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/glossary.md#exporter-library)
+  Libraries](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/glossary.md#exporter-library)
   and the
   [Collector](https://opentelemetry.io/docs/collector/configuration/#exporters).
   Exporters can be push or pull based.
-- **[Field](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/logs/data-model.md#field-kinds):**
+- **[Field](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#field-kinds):**
   name/value pairs added to `Log Records` (similar to `Attributes` for `Spans` and
   `Labels` for `Metrics`).
 - **[gRPC](https://grpc.io):** A high-performance, open source universal `RPC` framework.
 - **[HTTP](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol):** Hypertext Transfer Protocol.
 - **[Instrumented
-  Library](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/glossary.md#instrumented-library):**
+  Library](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/glossary.md#instrumented-library):**
   Denotes the `Library` for which the telemetry signals (`Traces`, `Metrics`, `Logs`)
   are gathered.
 - **[Instrumentation
-  Library](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/glossary.md#instrumentation-library):**
+  Library](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/glossary.md#instrumentation-library):**
   Denotes the `Library` that provides the instrumentation for a given
   `Instrumented Library`. `Instrumented Library` and `Instrumentation Library` may be
   the same `Library` if it has built-in OpenTelemetry instrumentation.
 - **[JSON](https://en.wikipedia.org/wiki/JSON):** JavaScript Object Notation.
-- **[Label](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/metrics/api.md#labels):**
+- **[Label](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/api.md#labels):**
   name/value pairs added to `Metric` data oints (similar to `Attributes` for `Spans`
   and `Fields` for `Log Records`).
 - **Language:** Programming Language.
 - **Library:** A language-specific collection of behavior invoked by an interface.
-- **[Log](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/glossary.md#log):**
+- **[Log](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/glossary.md#log):**
   Sometimes used to refer to a collection of `Log Records`. May be ambiguous,
   since people also sometimes use `Log` to refer to a single `Log Record`, thus
   this term should be used carefully and in the context where ambiguity is
   possible additional qualifiers should be used (e.g. `Log Record`).
 - **[Log
-  Record](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/glossary.md#log-record):**
+  Record](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/glossary.md#log-record):**
   A recording of an `Event`. Typically the record includes a timestamp indicating
   when the `Event` happened as well as other data that describes what happened,
   where it happened, etc.
@@ -98,7 +98,7 @@ others. This page captures terminology used in the project and what it means.
 - **OTLP:** OpenTelemetry Protocol.
 - **Processor:** Operation performed on data between being received and being
   exported. For example, batching. Used by [Instrumentation
-  Libraries](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/trace/sdk.md#span-processor)
+  Libraries](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/sdk.md#span-processor)
   and the
   [Collector](https://opentelemetry.io/docs/collector/configuration/#processors).
 - **[Propagators](https://opentelemetry.io/docs/concepts/overview/):** Used to
@@ -117,7 +117,7 @@ others. This page captures terminology used in the project and what it means.
   included in the `Resource` and applied to any data source.
 - **[REST](https://en.wikipedia.org/wiki/Representational_state_transfer):** Representation State Transfer.
 - **[RPC](https://en.wikipedia.org/wiki/Remote_procedure_call):** Remote Procedure Call.
-- **[Sampling](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/trace/sdk.md#sampling):**
+- **[Sampling](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/sdk.md#sampling):**
   A mechanism to control the amount of data exported. Most commonly used with
   the `Tracing` `Data Source`.
 - **SDK:** Software Development Kit. Refers to a telemetry SDK that denotes a
@@ -127,22 +127,22 @@ others. This page captures terminology used in the project and what it means.
 - **Service:** A component of an `Application`. Multiple instances of a
   `Service` are typically deployed for high availability and scalability. A
   `Service` may be deployed in multiple locations.
-- **[Span](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/trace/api.md#span):**
+- **[Span](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#span):**
   Represents a single operation within a `Trace`.
 - **[Specification](https://opentelemetry.io/docs/concepts/overview/#specification):**
   Describes the cross-language requirements and expectations for all
   implementations.
-- **[Status](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/trace/api.md#set-status):**
+- **[Status](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#set-status):**
   The result of the operation. Typically used to indicate whether an error
   occurred.
 - **Tag:** See `Metadata`.
-- **[Trace](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/overview.md#trace):**
+- **[Trace](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/overview.md#trace):**
   A `DAG` of `Spans`, where the edges between `Spans` are defined as
   parent/child relationship.
-- **[Tracer](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/trace/api.md#tracer):**
+- **[Tracer](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#tracer):**
   Responsible for creating `Spans`.
 - **Transaction:** See `Distributed Tracing`.
-- **[zPages](https://github.com/open-telemetry/opentelemetry-specification/blob/master/experimental/trace/zpages.md):**
+- **[zPages](https://github.com/open-telemetry/opentelemetry-specification/blob/main/experimental/trace/zpages.md):**
   An in-process alternative to external exporters. When included, they collect
   and aggregate tracing and metrics information in the background; this data is
   served on web pages when requested.
@@ -151,22 +151,22 @@ others. This page captures terminology used in the project and what it means.
 
 ### Traces
 
-- **[Trace API Terminology](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/trace/api.md)**
-- **[Trace SDK Terminology](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/trace/sdk.md)**
+- **[Trace API Terminology](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md)**
+- **[Trace SDK Terminology](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/sdk.md)**
 
 ### Metrics
 
-- **[Metric API Terminology](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/metrics/api.md#overview)**
-- **[Metric SDK Terminology](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/metrics/sdk.md#sdk-terminology)**
+- **[Metric API Terminology](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/api.md#overview)**
+- **[Metric SDK Terminology](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#sdk-terminology)**
 
 ### Logs
 
-- **[Trace Context Fields](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/logs/data-model.md#trace-context-fields)**
-- **[Severity Fields](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/logs/data-model.md#severity-fields)**
-- **[Log Record Fields](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/logs/data-model.md#log-and-event-record-definition)**
+- **[Trace Context Fields](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#trace-context-fields)**
+- **[Severity Fields](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#severity-fields)**
+- **[Log Record Fields](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#log-and-event-record-definition)**
 
 ### Semantic Conventions
 
-- **[Resource Conventions](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/resource/semantic_conventions/README.md)**
-- **[Span Conventions](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/trace/semantic_conventions/README.md)**
-- **[Metric Conventions](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/metrics/semantic_conventions/README.md)**
+- **[Resource Conventions](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/README.md)**
+- **[Span Conventions](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/README.md)**
+- **[Metric Conventions](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/semantic_conventions/README.md)**

@@ -9,7 +9,7 @@ tags:
   - cassandra
   - gocql
   - database
-repo: https://github.com/open-telemetry/opentelemetry-go-contrib/tree/master/instrumentation/github.com/gocql/gocql
+repo: https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/instrumentation/github.com/gocql/gocql
 license: Apache 2.0
 description: Go contrib plugin for the github.com/gocql/gocql package.
 authors: OpenTelemetry Authors

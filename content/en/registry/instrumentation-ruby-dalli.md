@@ -6,7 +6,7 @@ language: ruby
 tags:
   - ruby
   - instrumentation
-repo: https://github.com/open-telemetry/opentelemetry-ruby/tree/master/instrumentation/dalli
+repo: https://github.com/open-telemetry/opentelemetry-ruby/tree/main/instrumentation/dalli
 license: Apache 2.0
 description: Dalli instrumentation for Ruby.
 authors: OpenTelemetry Authors
