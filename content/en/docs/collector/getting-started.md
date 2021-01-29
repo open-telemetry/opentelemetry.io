@@ -80,7 +80,7 @@ $ git clone git@github.com:open-telemetry/opentelemetry-collector.git; \
 Deploys an agent as a daemonset and a single gateway instance.
 
 ```bash
-$ kubectl apply -f https://raw.githubusercontent.com/open-telemetry/opentelemetry-collector/master/examples/k8s/otel-config.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/open-telemetry/opentelemetry-collector/main/examples/k8s/otel-config.yaml
 ```
 
 The example above is meant to serve as a starting point, to be extended and
