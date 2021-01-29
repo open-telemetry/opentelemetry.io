@@ -6,8 +6,8 @@ weight: 2
 This guide uses the example application in node.js provided below, but the steps to instrument your own application should be broadly the same. Here is an overview of what we will be doing.
 
 - Install the required OpenTelemetry libraries
-- Initialize a global [tracer](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/trace/api.md#tracer)
-- Initialize and register a [span exporter](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/trace/sdk.md#span-exporter)
+- Initialize a global [tracer](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#tracer)
+- Initialize and register a [span exporter](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/sdk.md#span-exporter)
 
 Copy the following file into an empty directory and call it `app.js`.
 
@@ -213,7 +213,7 @@ Now, restart your application and add some load, you will see traces & metrics p
 value: 1
 ```
 
-If you'd like to write those traces and spanes to Zipkin or Prometheus follow the [complete guide](https://github.com/open-telemetry/opentelemetry-js/blob/master/getting-started/README.md).
+If you'd like to write those traces and spanes to Zipkin or Prometheus follow the [complete guide](https://github.com/open-telemetry/opentelemetry-js/blob/main/getting-started/README.md).
 
 
 # Quick Start

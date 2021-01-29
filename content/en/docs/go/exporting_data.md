@@ -47,16 +47,16 @@ provider := sdktrace.NewTracerProvider(
 
 OpenTelemetry Protocol (OTLP) is available in the `go.opentelemetry.io/otel/exporters/otlp` package.
 
-Please find more documentation on [GitHub](https://github.com/open-telemetry/opentelemetry-go/tree/master/exporters/otlp)
+Please find more documentation on [GitHub](https://github.com/open-telemetry/opentelemetry-go/tree/main/exporters/otlp)
 
 # Jaeger Exporter
 
 Jaeger export is available in the `go.opentelemetry.io/otel/exporters/trace/jaeger` package.
 
-Please find more documentation on [GitHub](https://github.com/open-telemetry/opentelemetry-go/tree/master/exporters/trace/jaeger)
+Please find more documentation on [GitHub](https://github.com/open-telemetry/opentelemetry-go/tree/main/exporters/trace/jaeger)
 
 # Prometheus Exporter
 
 Prometheus export is available in the `go.opentelemetry.io/otel/exporters/metric/prometheus` package.
 
-Please find more documentation on [GitHub](https://github.com/open-telemetry/opentelemetry-go/tree/master/exporters/metric/prometheus)
+Please find more documentation on [GitHub](https://github.com/open-telemetry/opentelemetry-go/tree/main/exporters/metric/prometheus)

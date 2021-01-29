@@ -7,7 +7,7 @@ tags:
   - go
   - instrumentation
   - grpc
-repo: https://github.com/open-telemetry/opentelemetry-go-contrib/tree/master/instrumentation/google.golang.org/grpc
+repo: https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/instrumentation/google.golang.org/grpc
 license: Apache 2.0
 description: Go contrib plugin for Google's grpc package.
 authors: OpenTelemetry Authors

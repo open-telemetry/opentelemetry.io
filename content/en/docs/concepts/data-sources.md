@@ -58,7 +58,7 @@ Generally, the lifecycle of a span resembles the following:
   status is appropriately set, and the span is marked finished.
 
 For more information, see the [distributed tracing
-specification](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/overview.md#distributed-tracing),
+specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/overview.md#distributed-tracing),
 which covers concepts including: trace, span, parent/child relationship, span
 context, attributes, events and links.
 
@@ -90,7 +90,7 @@ number of measurements are combined into either exact or estimated statistics
 about metric events that took place during a time window. The OpenTelemetry API
 itself does not allow you to specify these aggregations, but provides some
 default ones. Please see the
-[specification](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/metrics/api.md#aggregations)
+[specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/api.md#aggregations)
 for more details. In general, the OpenTelemetry SDK provides for common
 aggregations (such as sum, count, last value, and histograms) that are
 supported by visualizers and telemetry backends.
@@ -109,7 +109,7 @@ metrics include:
 - Reporting current active requests being handled.
 
 For more information, see the [metrics
-specification](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/overview.md#metrics),
+specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/overview.md#metrics),
 which covers topics including: measure, measurement, metric, data, data point
 and labels.
 
@@ -123,6 +123,6 @@ to determine the root cause of an issue and typically contain information about
 who changed what as well as the result of the change.
 
 For more information, see the [logs
-specification](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/overview.md#logs),
+specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/overview.md#logs),
 which covers topics including: log, defined fields, trace context fields and
 severity fields.

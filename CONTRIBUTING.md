@@ -18,7 +18,7 @@ Netlify panel that appears under the PR description.
 ## Publishing the site
 
 The OpenTelemetry website is published automatically by
-[Netlify](https://netlify.com). When changes are pushed to the `master` branch,
+[Netlify](https://netlify.com). When changes are pushed to the `main` branch,
 Netlify re-builds and re-deploys the site and stages a deploy preview for those
 changes.
 

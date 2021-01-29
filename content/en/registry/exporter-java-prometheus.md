@@ -6,7 +6,7 @@ language: java
 tags:
   - java
   - exporter
-repo: https://github.com/open-telemetry/opentelemetry-java/tree/master/exporters/prometheus
+repo: https://github.com/open-telemetry/opentelemetry-java/tree/main/exporters/prometheus
 license: Apache 2.0
 description: This library allows to export Prometheus data allowing Prometheus to query metric data.
 authors: OpenTelemetry Authors

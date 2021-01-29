@@ -7,7 +7,7 @@ tags:
   - go
   - instrumentation
   - http
-repo: https://github.com/open-telemetry/opentelemetry-go-contrib/tree/master/instrumentation/gopkg.in/macaron.v1
+repo: https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/instrumentation/gopkg.in/macaron.v1
 license: Apache 2.0
 description: Go contrib plugin for the gopkg.in/macaron.v1 package.
 authors: OpenTelemetry Authors

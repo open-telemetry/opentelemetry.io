@@ -18,5 +18,5 @@ The current release can be found [here](https://github.com/open-telemetry/opente
 # Further Reading
 
 - [Read the Docs](https://opentelemetry-python.readthedocs.io/en/stable/)
-- [Examples](https://github.com/open-telemetry/opentelemetry-python/tree/master/docs/examples)
+- [Examples](https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples)
 - [Contrib Repository](https://github.com/open-telemetry/opentelemetry-python-contrib)

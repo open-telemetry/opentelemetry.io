@@ -215,7 +215,7 @@ propagator formats.
 ### OpenTelemetry Resource
 
 The [OpenTelemetry
-Resource](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/resource/sdk.md)
+Resource](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/sdk.md)
 is a representation of the entity producing telemetry.
 
 | System property          | Environment variable     | Purpose                                                                      |
@@ -225,10 +225,10 @@ is a representation of the entity producing telemetry.
 ### Peer service name
 
 The [peer service
-name](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/trace/semantic_conventions/span-general.md#general-remote-service-attributes)
+name](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/span-general.md#general-remote-service-attributes)
 is the name of a remote service that is being connected to. It corresponds to
 `service.name` in the
-[Resource](https://github.com/open-telemetry/opentelemetry-specification/tree/master/specification/resource/semantic_conventions#service)
+[Resource](https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/resource/semantic_conventions#service)
 for the local service.
 
 | System property                     | Environment variable              | Purpose                                                                      |
@@ -268,7 +268,7 @@ for the local service.
 change drastically or be removed completely. Use with caution
 
 The OpenTelemetry API exposes SPI
-[hooks](https://github.com/open-telemetry/opentelemetry-java/blob/master/api/src/main/java/io/opentelemetry/trace/spi/TracerProviderFactory.java)
+[hooks](https://github.com/open-telemetry/opentelemetry-java/blob/main/api/src/main/java/io/opentelemetry/trace/spi/TracerProviderFactory.java)
 for customizing its behavior, such as the `Resource` attached to spans or the
 `Sampler`.
 

@@ -18,5 +18,5 @@ The current release can be found [here](https://github.com/open-telemetry/opente
 # Further Reading
 
 - [godoc](https://pkg.go.dev/go.opentelemetry.io/otel)
-- [Examples](https://github.com/open-telemetry/opentelemetry-go/tree/master/example)
+- [Examples](https://github.com/open-telemetry/opentelemetry-go/tree/main/example)
 - [Contrib Repository](https://github.com/open-telemetry/opentelemetry-go-contrib)

@@ -6,7 +6,7 @@ language: python
 tags:
   - python
   - instrumentation
-repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/master/instrumentation/opentelemetry-instrumentation-tornado
+repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-tornado
 license: Apache 2.0
 description: This library provides Tornado middleware to track requests timing through OpenTelemetry.
 authors: OpenTelemetry Authors
