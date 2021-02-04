@@ -2,7 +2,7 @@
 {{- $guid := printf "tabs-%d" .Ordinal -}}
 <!-- Scratchpad register to specially handle the first element in the list -->
 {{- .Scratch.Set "first" true -}}
-<div>
+<div class="tabs">
 <ul class="nav nav-tabs" id="{{- $guid -}}" role="tablist">
 {{- range .Params -}}
 <li class="nav-item">
