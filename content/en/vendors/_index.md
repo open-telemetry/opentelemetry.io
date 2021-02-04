@@ -20,6 +20,7 @@ This page exists to collect distributions and vendors who natively support OpenT
 | Lightstep | Yes        | Yes         | https://github.com/lightstep?q=launcher |
 | New Relic | Yes        | No          | https://newrelic.com/solutions/opentelemetry |
 | Splunk | Yes           | Yes         | https://www.splunk.com/en_us/blog/conf-splunklive/announcing-native-opentelemetry-support-in-splunk-apm.html |
+| Sumo Logic | Yes       | No          | https://help.sumologic.com/Traces/Getting_Started_with_Transaction_Tracing |
 
 _Vendors are listed alphabetically_
 
