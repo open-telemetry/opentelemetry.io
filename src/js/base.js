@@ -47,6 +47,11 @@ const tracer = require('./tracing');
             $('.js-navbar-scroll').addClass('navbar-bg-onscroll');
         }
 
+        var announcementThreshold = Math.ceil($('section#announcement').outerHeight()) || -1;
+        if (announcementThreshold > 0){
+            $('.js-navbar-scroll').addClass('navbar-position-absolute').css("top", `${announcementThreshold}px`);
+        }
+
 
         $(window).on('scroll', function() {
             var navtop = $('.js-navbar-scroll').offset().top - $(window).scrollTop();
@@ -57,6 +62,13 @@ const tracer = require('./tracing');
             } else {
                 $('.js-navbar-scroll').removeClass('navbar-bg-onscroll');
                 $('.js-navbar-scroll').addClass('navbar-bg-onscroll--fade');
+            }
+
+            var pageOffset = window.pageYOffset || document.documentElement.scrollTop;
+            if (pageOffset < announcementThreshold) {
+                $('.js-navbar-scroll').addClass('navbar-position-absolute').css("top", `${announcementThreshold}px`);
+            } else {
+                $('.js-navbar-scroll').removeClass('navbar-position-absolute').css("top", "0");
             }
         });
     });

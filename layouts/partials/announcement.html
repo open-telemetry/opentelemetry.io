@@ -1,0 +1,5 @@
+{{ if .Param "announcement"}}
+<section id="announcement" >
+    {{ .Param "announcement_message" | markdownify }}
+</section>
+{{ end }}

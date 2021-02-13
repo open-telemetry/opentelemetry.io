@@ -57,6 +57,7 @@ weight = 1
 
 
 [params]
+
 copyright = "The OpenTelemetry Authors"
 tagline = "Effective observability requires high-quality telemetry"
 sub_tagline = "**OpenTelemetry** makes robust, portable telemetry a built-in feature of cloud-native software."
@@ -94,6 +95,11 @@ algolia_docsearch = false
 
 # Enable Lunr.js offline search
 offlineSearch = false
+
+# param for displaying an announcement block on homepage; see PR #377
+announcement = true
+# announcement_message is only displayed when announcement = true; update with your specific message
+announcement_message = "<span style='padding-right:12px'>🎉🎉 </span> Opentelemetry now is 1.0 ready! <a href='https://medium.com/opentelemetry'>detail!</a>"
 
 # User interface configuration
 [params.ui]
