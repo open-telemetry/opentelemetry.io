@@ -56,19 +56,26 @@ $ git clone git@github.com:open-telemetry/opentelemetry-collector.git; \
 
 ### Docker
 
-Starts a Docker container of the
-[core](https://github.com/open-telemetry/opentelemetry-collector)
-version of the Collector with all receivers enabled and exports all the data it
-receives locally to a file. Data is sent to the container and the container
-scrapes its own Prometheus metrics.
+Every release of the Collector is published to Docker Hub and comes with a
+default configuration file.
+
+```bash
+$ docker run otel/opentelemetry-collector
+```
+
+In addition, you can use the local example provided. This example starts a
+Docker container of the
+[core](https://github.com/open-telemetry/opentelemetry-collector) version of
+the Collector with all receivers enabled and exports all the data it receives
+locally to a file. Data is sent to the container and the container scrapes its
+own Prometheus metrics.
 
 ```bash
 $ git clone git@github.com:open-telemetry/opentelemetry-collector.git; \
     cd opentelemetry-collector/examples; \
     go build main.go; ./main & pid1="$!";
     docker run --rm -p 13133:13133 -p 14250:14250 -p 14268:14268 \
-      -p 55678-55680:55678-55680 -p 6060:6060 -p 7276:7276 -p 8888:8888 \
-      -p 9411:9411 -p 9943:9943 \
+      -p 55678-55680:55678-55680 -p 8888:8888 -p 9411:9411 \
       -v "${PWD}/otel-local-config.yaml":/otel-local-config.yaml \
       --name otelcol otel/opentelemetry-collector \
       --config otel-local-config.yaml; \
