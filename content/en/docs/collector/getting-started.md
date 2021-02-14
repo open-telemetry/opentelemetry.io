@@ -100,6 +100,47 @@ features such as automatic upgrade handling, `Service` configuration based on
 the OpenTelemetry configuration, automatic sidecar injection into deployments,
 among others.
 
+### Linux Packaging
+
+Every Collector release includes DEB and RPM packaging for Linux amd64/arm64
+systems. The packaging includes a default configuration that can be found at
+`/etc/otel-collector/config.yaml` post-installation.
+
+> Please note that systemd is require for automatic service configuration
+
+To get started on Debian systems run the following replacing `v0.20.0` with the
+version of the Collector you wish to run and `amd64` with the appropriate
+architecture.
+
+```bash
+$ sudo apt-get update
+$ sudo apt-get -y install wget systemctl
+$ wget https://github.com/open-telemetry/opentelemetry-collector/releases/download/v0.20.0/otel-collector_0.20.0_amd64.deb
+$ dpkg -i otel-collector_0.20.0_amd64.deb
+```
+
+To get started on Red Hat systems run the following replacing `v0.20.0` with the
+version of the Collector you wish to run and `x86_64` with the appropriate
+architecture.
+
+```bash
+$ sudo yum update
+$ sudo yum -y install wget systemctl
+$ wget https://github.com/open-telemetry/opentelemetry-collector/releases/download/v0.20.0/otel-collector_0.20.0-1_x86_64.rpm
+$ rpm -ivh otel-collector_0.20.0-1_x86_64.rpm
+```
+
+### Windows Packaging
+
+Every Collector release includes EXE and MSI packaging for Linux amd64 systems.
+The MSI packaging includes a default configuration that can be found at
+`\Program Files\OpenTelemetry Collector\config.yaml`.
+
+> Please note the Collector service is not automatically started
+
+The easiest way to get started is to double-click the MSI package and follow
+the wizard. Silent installation is also available.
+
 ### Local
 
 Builds the latest version of the collector based on the local operating system,
