@@ -23,7 +23,7 @@ serve: setup
 
 test: build ci-link-check
 
-preview-build: get-milestones build-preview ci-link-check
+preview-build: get-milestones ci-build-preview ci-link-check
 
 production-build: get-milestones build ci-link-check
 
