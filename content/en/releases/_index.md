@@ -5,18 +5,21 @@ menu:
     weight: 30
 ---
 
-{{% blocks/cover title="OpenTelemetry Tracing Specification now 1.0!" height="auto" %}}
+<a class="td-offset-anchor"></a>
+<section class="row td-box td-box--1 position-relative td-box--gradient td-box--height-auto">
+  <div class="container text-center td-arrow-down">
+    <h1>OpenTelemetry Tracing Specification now 1.0!</h1>
+    <span class="h4 mb-0">
+      <p>Our goal is to provide a generally available, production quality
+      release for the tracing data source across most OpenTelemetry components
+      in the first half of 2021. Several components have already reached this
+      milestone! We expect metrics to reach the same status in the second half
+      of 2021 and are targeting logs in 2022.</p>
+    </span>
+  </div>
+</section>
 
-Our goal is to provide a generally available, production quality release for
-the tracing data source across most OpenTelemetry components in the first half
-of 2021. Several components have already reached this milestone!
-
-We expect metrics to reach the same status in the second half of 2021 and are
-targeting logs in 2022.
-
-{{% /blocks/cover %}}
-
-{{% blocks/section type="section" color="primary" %}}
+{{% blocks/section type="section" color="dark" %}}
 ## Project Status
 The OpenTelemetry project consists of multiple
 [components](../docs/concepts/components/) that support multiple [data
