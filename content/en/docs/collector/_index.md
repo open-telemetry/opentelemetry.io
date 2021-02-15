@@ -1,7 +1,7 @@
 ---
 title: "Collector"
 linkTitle: "Collector"
-weight: 20
+weight: 10
 description: >
   Vendor-agnostic way to receive, process and export telemetry data
 ---
