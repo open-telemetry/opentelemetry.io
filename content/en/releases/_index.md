@@ -42,9 +42,14 @@ guarantees.
   schema](https://github.com/open-telemetry/opentelemetry-specification/blob/9047c91412d3d4b7f28b0f7346d8c5034b509849/specification/versioning-and-stability.md#version-numbers).
 - The OpenTelemetry Collector also adheres to the OpenTelemetry specification and
 versioning schema.
+
 {{% /blocks/section %}}
 
-{{% blocks/section type="section" color="white" %}}
-## Latest Releases
-{{< release_notes >}}
-{{% /blocks/section %}}
+<section class="row td-box">
+  <div class="col">
+    <div class="row section">
+      <h2>Latest Releases</h2>
+      {{< release_notes >}}
+    </div>
+  </div>
+</section>

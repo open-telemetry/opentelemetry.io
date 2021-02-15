@@ -1,7 +1,7 @@
 ---
 title: "Collector"
 linkTitle: "Collector"
-weight: 20
+weight: 10
 description: >
   Vendor-agnostic way to receive, process and export telemetry data
 ---
@@ -11,7 +11,7 @@ receive, process and export telemetry data. It removes the need to run,
 operate, and maintain multiple agents/collectors in order to support
 open-source observability data formats (e.g. Jaeger, Prometheus, etc.) sending
 to one or more open-source or commercial back-ends. The Collector is the
-default location instrumentation libraries export telemetry data.
+default location instrumentation libraries export their telemetry data.
 
 Objectives:
 

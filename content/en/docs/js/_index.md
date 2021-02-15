@@ -1,8 +1,8 @@
 ---
 title: "Javascript"
-weight: 1
+weight: 20
 description: >
-  An language-specific introduction to OpenTelemetry in JavaScript (for Node.JS & the browser).
+  A language-specific implementation of OpenTelemetry in JavaScript (for Node.JS & the browser).
 ---
 
 This page contains an introduction to OpenTelemetry in JavaScript. This guide will walk you through installation and instrumentation and show you how to export data.

@@ -1,6 +1,8 @@
 ---
 title: "Erlang/Elixir"
-weight: 10
+weight: 14
+description: >
+  A language-specific implementation of OpenTelemetry in Erlang/Elixir.
 ---
 
 This is the OpenTelemetry for Erlang/Elixir documentation. OpenTelemetry is an
