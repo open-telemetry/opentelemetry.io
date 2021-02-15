@@ -42,5 +42,11 @@ versioning schema.
 
 {{% /blocks/section %}}
 
-## Latest Releases
-{{< release_notes >}}
+<section class="row td-box">
+  <div class="col">
+    <div class="row section">
+      <h2>Latest Releases</h2>
+      {{< release_notes >}}
+    </div>
+  </div>
+</section>
