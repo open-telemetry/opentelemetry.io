@@ -10,17 +10,17 @@ removes the need to run, operate, and maintain multiple agents/collectors in
 order to support open-source observability data formats (e.g. Jaeger,
 Prometheus, etc.) sending to one or more open-source or commercial back-ends.
 In addition, the Collector gives end-users control of their data. The Collector
-is the default location for instrumentation libraries to send their telemetry
+is the default location instrumentation libraries export their telemetry
 data.
 
 ## Deployment
 
 The OpenTelemetry Collector provides a single binary and two deployment methods:
 
-- An agent running with the application or on the same host as the application
-  (e.g. binary, sidecar, or daemonset).
-- A gateway running as a standalone service (e.g. container or deployment)
-  typically per cluster, datacenter or region.
+- **Agent:** A Collector instance running with the application or on the same
+  host as the application (e.g. binary, sidecar, or daemonset).
+- **Gateway:** One or more Collector instances running as a standalone service
+  (e.g. container or deployment) typically per cluster, datacenter or region.
 
 For information on how to use the Collector see the [getting started
 documentation](/docs/collector/getting-started).
@@ -38,3 +38,16 @@ components as well as pipelines can be defined via YAML configuration.
 
 For more information about these components see the [configuration
 documentation](/docs/collector/configuration).
+
+## Repositories
+
+The OpenTelemetry project provides two versions of the Collector:
+
+- **[Core](https://github.com/open-telemetry/opentelemetry-collector/releases):**
+  Foundational components such as configuration and generally applicable
+  receivers, processors, exporters, and extensions. Offers support for popular
+  open-source projects including Jaeger, Prometheus, and Fluent Bit.
+- **[Contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/releases):**
+  All the components of core plus optional or possibly experimental components.
+  Also contains more specialized or vendor-specific receivers, processors,
+  exporters, and extensions.

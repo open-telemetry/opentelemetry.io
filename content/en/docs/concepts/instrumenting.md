@@ -3,9 +3,32 @@ title: "Instrumenting"
 weight: 40
 ---
 
-The OpenTelemetry project facilitates the instrumenting of applications. The
-exact installation mechanism for OpenTelemetry varies based on the language
-you're developing in, but there are some similarities covered below.
+The OpenTelemetry project facilitates the instrumenting of applications.
+Instrumentation libraries offer a core repository per language. They may or may
+not offer additional repositories for automatic instrumentation or non-core
+components. For example, Java instrumentation libraries provide the following
+repositories:
+
+- **[Core](https://github.com/open-telemetry/opentelemetry-java):** Provides an
+  implementation of the OpenTelemetry API and SDK and can be used to manually
+  instrument an application.
+- **[Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation):**
+  All the core functionality plus automatic instrumentation for a variety of
+  libraries and frameworks.
+- **[Contrib](https://github.com/open-telemetry/opentelemetry-java-contrib):**
+  Optional components such as JMX metric gathers.
+
+Some instrumentation libraries, for example Ruby, offer a [single
+repository](https://github.com/open-telemetry/opentelemetry-ruby) that supports
+both manual and automatic instrumentation. Other languages, for example JS,
+support both manual and automatic instrumentation, but separate
+[core](https://github.com/open-telemetry/opentelemetry-js) components from
+[contrib](https://github.com/open-telemetry/opentelemetry-js-contrib)
+components in separate repositories.
+
+The exact installation mechanism for OpenTelemetry varies based on the language
+you're developing in, but there are some similarities covered in the sections
+below.
 
 ## Automatic Instrumentation
 
