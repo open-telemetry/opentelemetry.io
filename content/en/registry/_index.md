@@ -26,9 +26,9 @@ tracer implementations, utilities, and other useful projects in the
 OpenTelemetry ecosystem.
 
 - Not able to find an exporter for your language? Remember, the [OpenTelemetry
-Collector](/docs/collector/about) supports exporting to a variety of systems
+Collector](../collector/about) supports exporting to a variety of systems
 and works with all OpenTelemetry Core Components!
 - Are you a project maintainer? [Find out how to add your project to the registry
-here](/get-involved/#registry)!
+here](https://github.com/open-telemetry/opentelemetry.io#adding-a-project-to-the-opentelemetry-registry)!
 - Check back regularly, the community and registry is growing!
 {{% /blocks/section %}}
