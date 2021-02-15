@@ -117,7 +117,7 @@ service:
       exporters: [otlp]
 ```
 
-## <img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Receivers.svg"></img> Receivers
+## <a name="receivers"></a><img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Receivers.svg"></img> Receivers
 
 A receiver, which can be push or pull based, is how data gets into the
 Collector. Receivers may support one or more [data
@@ -192,7 +192,7 @@ receivers:
   zipkin:
 ```
 
-## <img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Processors.svg"></img> Processors
+## <a name="processors"></a><img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Processors.svg"></img> Processors
 
 Processors are run on data between being received and being exported.
 Processors are optional though [some are
@@ -270,7 +270,7 @@ processors:
       separator: "::"
 ```
 
-## <img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Exporters.svg"></img> Exporters
+## <a name="exporters"></a><img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Exporters.svg"></img> Exporters
 
 An exporter, which can be push or pull based, is how you send data to one or
 more backends/destinations. Exporters may support one or more [data
