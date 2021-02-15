@@ -6,12 +6,14 @@
 {{ end }}
 {{ $progressData := $data.data }}
 
-{{- range $progressData }}
-  <h3 class="title is-3">{{ .label }}</h3>
-  {{ if ne .releaseName "n/a" }}
-    <h4 class="subtitle is-5"><a href="{{ .releaseUrl }}">{{ .releaseName }}</a></h4>
-    <pre>{{ .releaseDescription }}</pre>
-  {{ else }}
-    <p>No release information available from GitHub.</p>
+<section class="releaseNotes">
+  {{- range $progressData }}
+    <h3 class="title is-3">{{ .label }}</h3>
+    {{ if ne .releaseName "n/a" }}
+      <h4 class="subtitle is-5"><a href="{{ .releaseUrl }}">{{ .releaseName }}</a></h4>
+      <pre>{{ .releaseDescription }}</pre>
+    {{ else }}
+      <p>No release information available from GitHub.</p>
+    {{ end }}
   {{ end }}
-{{ end }}
+</section>
