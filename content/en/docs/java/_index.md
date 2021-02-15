@@ -1,6 +1,8 @@
 ---
 title: "Java"
-weight: 10
+weight: 18
+description: >
+  A language-specific implementation of OpenTelemetry in Java.
 ---
 
 OpenTelemetry Java consists of the following repositories:
