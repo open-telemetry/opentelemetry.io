@@ -42,7 +42,5 @@ versioning schema.
 
 {{% /blocks/section %}}
 
-{{% blocks/section type="section" color="white" %}}
 ## Latest Releases
 {{< release_notes >}}
-{{% /blocks/section %}}
