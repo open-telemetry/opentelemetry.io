@@ -51,6 +51,17 @@ distribution if they wish to use components in the
 [Registry](../../../registry) that are not upstreamed to the OpenTelemetry
 project.
 
+## Creating your own distribution
+
+### Collector
+
+A guide on how to create your own distribution is available in this blog post:
+["Building your own OpenTelemetry Collector distribution"](https://medium.com/p/42337e994b63)
+
+If you are building your own distribution, the [OpenTelemetry Collector
+Builder](https://github.com/open-telemetry/opentelemetry-collector-builder)
+might be a good starting point.
+
 ## What you should know about distributions
 
 The OpenTelemetry project does not certify distributions at this time. In the
