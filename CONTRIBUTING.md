@@ -3,10 +3,15 @@
 * Fork and clone the repository
 * Install [Hugo](https://gohugo.io/getting-started/installing/#quick-install) and [npm](https://npmjs.com)
 * Run `make serve`
-* Open `http://localhost:30000` to check the site
+* Open `http://localhost:3000` to check the site
 
 > Please note that you need to install the "extended" version of Hugo (with
 > built-in support) to run the site locally.
+
+A few notes to be aware of:
+
+* Before submitting a PR be sure to run `make test` and address any issues uncovered
+* Any make target that requires `get-milestones` requires that a GH_TOKEN environment variable be set
 
 ## Deploy previews
 
