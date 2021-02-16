@@ -13,6 +13,8 @@ In addition, the Collector gives end-users control of their data. The Collector
 is the default location instrumentation libraries export their telemetry
 data.
 
+> The Collector may be offered as a distribution, see [here](../distributions) for more information.
+
 ## Deployment
 
 The OpenTelemetry Collector provides a single binary and two deployment methods:

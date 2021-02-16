@@ -30,6 +30,8 @@ The exact installation mechanism for OpenTelemetry varies based on the language
 you're developing in, but there are some similarities covered in the sections
 below.
 
+> Instrumentation libraries may be offered as a distribution, see [here](../distributions) for more information.
+
 ## Automatic Instrumentation
 
 ### Add dependencies
