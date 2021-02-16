@@ -58,6 +58,7 @@ weight = 1
 
 [params]
 copyright = "The OpenTelemetry Authors | Documentation Distributed under CC BY 4.0"
+
 tagline = "Effective observability requires high-quality telemetry"
 sub_tagline = "**OpenTelemetry** makes robust, portable telemetry a built-in feature of cloud-native software."
 sub_description = "**OpenTelemetry** provides a single set of APIs, libraries, agents, and collector services to capture distributed traces and metrics from your application. You can analyze them using Prometheus, Jaeger, and other observability tools."
@@ -94,6 +95,11 @@ algolia_docsearch = false
 
 # Enable Lunr.js offline search
 offlineSearch = false
+
+# param for displaying an announcement block on homepage; see PR #377
+announcement = true
+# announcement_message is only displayed when announcement = true; update with your specific message
+announcement_message = "<span style='padding-right:12px'>🎉 </span> The OpenTelemetry Specfication is now 1.0!&nbsp;&nbsp;<a href='https://medium.com/opentelemetry/opentelemetry-specification-v1-0-0-tracing-edition-72dd08936978'>Learn more today!</a>"
 
 # User interface configuration
 [params.ui]

@@ -61,4 +61,11 @@ footer {
     padding-top: 1rem;
 }
 
+
 @import "styles_project";
+
+section#announcement {
+    display: flex;
+    justify-content: center;
+    padding: 6px;
+}

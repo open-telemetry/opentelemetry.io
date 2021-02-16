@@ -24,6 +24,10 @@
     opacity: inherit;
 }
 
+.navbar-announcement-onscroll {
+    position: absolute !important;
+}
+
 .td-navbar {
     background: $primary;
     min-height: 4rem;
