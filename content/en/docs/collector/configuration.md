@@ -3,21 +3,31 @@ title: "Configuration"
 weight: 20
 ---
 
+Please be sure to review the following documentation:
+
+- [Data Collection concepts](../../concepts/data-collection) in order to
+  understand the repositories applicable to the OpenTelemetry Collector.
+- [Security
+  guidance](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security.md)
+
 ## Basics
 
 The Collector consists of three components that access telemetry data:
 
-- [Receivers](#receivers)
-- [Processors](#processors)
-- [Exporters](#exporters)
+- <img width="32" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Receivers.svg"></img>
+[Receivers](#receivers)
+- <img width="32" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Processors.svg"></img>
+[Processors](#processors)
+- <img width="32" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Exporters.svg"></img>
+[Exporters](#exporters)
 
 These components once configured must be enabled via pipelines within the
 [service](#service) section.
 
-Secondarily, there are extensions, which provide capabilities that can be added
-to the Collector, but which do not require direct access to telemetry data and
-are not part of pipelines. They are also enabled within the [service](#service)
-section.
+Secondarily, there are [extensions](#extensions), which provide capabilities
+that can be added to the Collector, but which do not require direct access to
+telemetry data and are not part of pipelines. They are also enabled within the
+[service](#service) section.
 
 An example configuration would look like:
 
@@ -107,12 +117,26 @@ service:
       exporters: [otlp]
 ```
 
-## Receivers
+## <a name="receivers"></a><img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Receivers.svg"></img> Receivers
 
 A receiver, which can be push or pull based, is how data gets into the
-Collector. One or more receivers must be configured. By default, no receivers
+Collector. Receivers may support one or more [data
+sources](../../concepts/data-sources).
+
+The `receivers:` section is how receivers are configured. Many receivers come
+with default settings so simply specifying the name of the receiver is enough
+to configure it (for example, `zipkin:`). If configuration is required or a
+user wants to change the default configuration then such configuration must be
+defined in this section. Configuration parameters specified for which the
+receiver provides a default configuration are overridden.
+
+> Configuring a receiver does not enable it. Receivers are enabled via
+> pipelines within the [service](#service) section.
+
+One or more receivers must be configured. By default, no receivers
 are configured. A basic example of all available receivers is provided below.
-For detailed receiver configuration, please see the [receiver
+
+> For detailed receiver configuration, please see the [receiver
 README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md).
 
 ```yaml
@@ -168,12 +192,23 @@ receivers:
   zipkin:
 ```
 
-## Processors
+## <a name="processors"></a><img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Processors.svg"></img> Processors
 
 Processors are run on data between being received and being exported.
-Processors are optional though some are recommended. A basic example of all
-available processors is provided below. For detailed processor configuration,
-please see the [processor
+Processors are optional though [some are
+recommended](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor#recommended-processors).
+
+The `processors:` section is how processors are configured. Processors may come
+with default settings, but many require configuration. Any configuration for a
+processor must be done in this section. Configuration parameters specified for
+which the processor provides a default configuration are overridden.
+
+> Configuring a processor does not enable it. Processors are enabled via
+> pipelines within the [service](#service) section.
+
+A basic example of all available processors is provided below.
+
+> For detailed processor configuration, please see the [processor
 README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md).
 
 ```yaml
@@ -235,13 +270,25 @@ processors:
       separator: "::"
 ```
 
-## Exporters
+## <a name="exporters"></a><img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Exporters.svg"></img> Exporters
 
 An exporter, which can be push or pull based, is how you send data to one or
-more backends/destinations. One or more exporters must be configured. By
-default, no exporters are configured. A basic example of all available
-exporters is provided below. For detailed exporter configuration, please see
-the [exporter
+more backends/destinations. Exporters may support one or more [data
+sources](../../concepts/data-sources).
+
+The `exporters:` section is how exporters are configured. Exporters may come
+with default settings, but many require configuration to specify at least the
+destination and security settings. Any configuration for an exporter must be
+done in this section. Configuration parameters specified for which the exporter
+provides a default configuration are overridden.
+
+> Configuring an exporter does not enable it. Exporters are enabled via
+> pipelines within the [service](#service) section.
+
+One or more exporters must be configured. By default, no exporters
+are configured. A basic example of all available exporters is provided below.
+
+> For detailed exporter configuration, please see the [exporter
 README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md).
 
 ```yaml
@@ -292,11 +339,25 @@ exporters:
 
 ## Extensions
 
-Extensions are available for tasks that do not involve processing telemetry
-data. Examples of extensions include health monitors. Extensions are optional.
+Extensions are available primarily for tasks that do not involve processing telemetry
+data. Examples of extensions include health monitoring, service discovery, and
+data forwarding. Extensions are optional.
+
+The `extensions:` section is how extensions are configured. Many extensions
+come with default settings so simply specifying the name of the extension is
+enough to configure it (for example, `health_check:`). If configuration is
+required or a user wants to change the default configuration then such
+configuration must be defined in this section. Configuration parameters
+specified for which the extension provides a default configuration are
+overridden.
+
+> Configuring an extension does not enable it. Extensions are enabled within
+> the [service](#service) section.
+
 By default, no extensions are configured. A basic example of all available
-extensions is provided below. For detailed extension configuration, please see
-the [extension
+extensions is provided below.
+
+> For detailed extension configuration, please see the [extension
 README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/extension/README.md).
 
 ```yaml
@@ -309,10 +370,10 @@ extensions:
 ## Service
 
 The service section is used to configure what components are enabled in the
-Collector based on the configuration found in the receivers,
-processors, exporters, and extensions sections. If a component is configured,
-but not defined within the service section then it is not enabled. The service
-section consists of two sub-sections:
+Collector based on the configuration found in the receivers, processors,
+exporters, and extensions sections. If a component is configured, but not
+defined within the service section then it is not enabled. The service section
+consists of two sub-sections:
 
 - extensions
 - pipelines
@@ -326,9 +387,9 @@ Extensions consist of a list of all extensions to enable. For example:
 
 Pipelines can be of the following types:
 
-- traces (stable): collects and processes trace data.
-- metrics (alpha): collects and processes metric data.
-- logs (alpha): collects and processes log data.
+- traces: collects and processes trace data.
+- metrics: collects and processes metric data.
+- logs: collects and processes log data.
 
 A pipeline consists of a set of receivers, processors and exporters. Each
 receiver/processor/exporter must be defined in the configuration outside of the
@@ -359,8 +420,8 @@ service:
 
 ### Configuration Environment Variables
 
-The use of environment variables is supported in the Collector configuration.
-For example:
+The use and expansion of environment variables is supported in the Collector
+configuration. For example:
 
 ```yaml
 processors:

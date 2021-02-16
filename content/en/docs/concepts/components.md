@@ -38,21 +38,7 @@ receive, process, and export telemetry data. It removes the need to run,
 operate, and maintain multiple agents/collectors in order to support
 open-source observability data formats (e.g. Jaeger, Prometheus, etc.) sending
 to one or more open-source or commercial back-ends. The Collector is the
-default location instrumentation libraries export telemetry data.
-
-The Collector provides a single binary and two deployment methods:
-
-- An agent running with the application or on the same host as the application
-  (e.g. binary, sidecar, or daemonset).
-- A gateway running as a standalone service (e.g. container or deployment)
-  typically per cluster, datacenter or region.
-
-The Collector comes in two flavors and releases, the first is vanilla build 
-where releases are found at 
-https://github.com/open-telemetry/opentelemetry-collector/releases 
-along with a second build including contributions that support many more 
-export targets (tools). The contrib build may be found at
-https://github.com/open-telemetry/opentelemetry-collector-contrib/releases
+default location instrumentation libraries export their telemetry data.
 
 For more information, see the [Data
 Collection](https://opentelemetry.io/docs/concepts/data-collection/) section.

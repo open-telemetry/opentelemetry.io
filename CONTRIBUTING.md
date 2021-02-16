@@ -8,6 +8,11 @@
 > Please note that you need to install the "extended" version of Hugo (with
 > built-in support) to run the site locally.
 
+A few notes to be aware of:
+
+* Before submitting a PR be sure to run `make test` and address any issues uncovered
+* Any make target that requires `get-milestones` requires that a GH_TOKEN environment variable be set
+
 ## Deploy previews
 
 Whenever you submit a pull request to this repo, Netlify creates a [deploy

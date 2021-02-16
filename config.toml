@@ -57,8 +57,8 @@ weight = 1
 
 
 [params]
+copyright = "The OpenTelemetry Authors | Documentation Distributed under CC BY 4.0"
 
-copyright = "The OpenTelemetry Authors"
 tagline = "Effective observability requires high-quality telemetry"
 sub_tagline = "**OpenTelemetry** makes robust, portable telemetry a built-in feature of cloud-native software."
 sub_description = "**OpenTelemetry** provides a single set of APIs, libraries, agents, and collector services to capture distributed traces and metrics from your application. You can analyze them using Prometheus, Jaeger, and other observability tools."

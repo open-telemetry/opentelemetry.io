@@ -5,7 +5,10 @@ weight: 10
 
 OpenTelemetry is a set of APIs, SDKs, tooling and integrations that are
 designed for the creation and management of _telemetry data_ such as traces,
-metrics, and logs.
+metrics, and logs. The project provides a vendor-agnostic implementation that
+can be configured to sent telemetry data to the backend(s) of your choice.
+It supports a variety of popular open-source projects including Jaeger and
+Prometheus.
 
 ## Why you need OpenTelemetry and what it can do
 
@@ -27,6 +30,8 @@ OpenTelemetry provides you with:
 
 - A single, vendor-agnostic instrumentation library per language with support
   for both automatic and manual instrumentation.
+- A single collector binary that can be deployed in a variety of ways including
+  as an agent or gateway.
 - An end-to-end implementation to generate, emit, collect, process and export
   telemetry data.
 - Full control of your data with the ability to send data to multiple
