@@ -31,9 +31,12 @@ documentation](/docs/collector/getting-started).
 
 The Collector is made up of the following components:
 
-- `receivers`: How to get data into the Collector; these can be push or pull based
-- `processors`: What to do with received data
-- `exporters`: Where to send received data; these can be push or pull based
+- <img width="32" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Receivers.svg"></img>
+`receivers`: How to get data into the Collector; these can be push or pull based
+- <img width="32" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Processors.svg"></img>
+`processors`: What to do with received data
+- <img width="32" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Exporters.svg"></img>
+`exporters`: Where to send received data; these can be push or pull based
 
 These components are enabled through `pipelines`. Multiple instances of
 components as well as pipelines can be defined via YAML configuration.

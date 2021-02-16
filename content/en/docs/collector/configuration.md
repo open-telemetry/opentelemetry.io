@@ -14,9 +14,12 @@ Please be sure to review the following documentation:
 
 The Collector consists of three components that access telemetry data:
 
-- [Receivers](#receivers)
-- [Processors](#processors)
-- [Exporters](#exporters)
+- <img width="32" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Receivers.svg"></img>
+[Receivers](#receivers)
+- <img width="32" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Processors.svg"></img>
+[Processors](#processors)
+- <img width="32" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Exporters.svg"></img>
+[Exporters](#exporters)
 
 These components once configured must be enabled via pipelines within the
 [service](#service) section.
@@ -114,7 +117,7 @@ service:
       exporters: [otlp]
 ```
 
-## Receivers
+## <a name="receivers"></a><img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Receivers.svg"></img> Receivers
 
 A receiver, which can be push or pull based, is how data gets into the
 Collector. Receivers may support one or more [data
@@ -189,7 +192,7 @@ receivers:
   zipkin:
 ```
 
-## Processors
+## <a name="processors"></a><img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Processors.svg"></img> Processors
 
 Processors are run on data between being received and being exported.
 Processors are optional though [some are
@@ -267,7 +270,7 @@ processors:
       separator: "::"
 ```
 
-## Exporters
+## <a name="exporters"></a><img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Exporters.svg"></img> Exporters
 
 An exporter, which can be push or pull based, is how you send data to one or
 more backends/destinations. Exporters may support one or more [data
