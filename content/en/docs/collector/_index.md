@@ -3,6 +3,7 @@ title: "Collector"
 linkTitle: "Collector"
 weight: 10
 description: >
+  <img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Collector.svg"></img>
   Vendor-agnostic way to receive, process and export telemetry data
 ---
 
