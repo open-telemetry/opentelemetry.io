@@ -11,7 +11,7 @@ menu:
 We organize the community into Special Interest Groups (SIGs) in order to improve our workflow and more easily manage a community project.
 {{% /blocks/feature %}}
 
-{{% blocks/feature icon="fab fa-github" title="Open Source Collaboration" url="https://github.com/open-telemetry/community#related-groups"%}}
+{{% blocks/feature icon="fab fa-github" title="Open Source Collaboration" url="/integrations"%}}
 OpenTelemetry collaborates and integrates with other open-source projects including Fluent Bit, Jaeger, Kubernetes, Prometheus, OpenMetrics, and W3C.
 {{% /blocks/feature %}}
 
