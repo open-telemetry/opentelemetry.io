@@ -69,3 +69,14 @@ section#announcement {
     justify-content: center;
     padding: 6px;
 }
+
+
+.td-box--dark p > a {
+    color: #3176d9;
+}
+
+.td-box--dark p > a:hover,
+a:hover {
+    color: #3176d9;
+    text-decoration: underline;
+}
