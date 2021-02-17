@@ -3,11 +3,15 @@ title: "Vendor Support"
 weight: 50
 ---
 
-{{% blocks/cover title="Vendors supporting OpenTelemetry" height="auto" %}}
-
-This page exists to collect distributions and vendors who natively support OpenTelemetry in their commercial products.
-
-{{% /blocks/cover %}}
+<a class="td-offset-anchor"></a>
+<section class="row td-box td-box--1 position-relative td-box--gradient td-box--height-auto">
+  <div class="container text-center td-arrow-down">
+    <h1>Vendors Supporting OpenTelemetry</h1>
+    <span class="h4 mb-0">
+      <p>Distributions and vendors who natively support OpenTelemetry in their commercial products.</p>
+    </span>
+  </div>
+</section>
 
 {{% blocks/section type="section" color="white" %}}
 
