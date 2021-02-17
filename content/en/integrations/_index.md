@@ -28,6 +28,7 @@ OpenTelemetry provides integration with the following open source projects.
 | [Graphite](https://graphiteapp.org/)                      | Collector                                                |
 | [Jaeger](https://www.jaegertracing.io/)                   | Collector, DotNet, Go, Java, JS, PHP, Python, Ruby, Rust |
 | [OpenCensus](https://opencensus.io/)                      | Collector, Python                                        |
+| [OpenTracing](https://opentracing.io/)                    | DotNet, Go, Java, JS, Python, Ruby
 | [OpenMetrics](https://openmetrics.io/)\*                  | Collector                                                |
 | [Prometheus](https://prometheus.io/)\*                    | Collector, C++, Go, Java, JS, Rust                       |
 | [Zipkin](https://zipkin.io/)                              | Collector, DotNet, Go, Java, JS, PHP, Python, Rust       |
