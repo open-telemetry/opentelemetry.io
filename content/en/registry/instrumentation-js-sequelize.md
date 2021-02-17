@@ -1,14 +1,14 @@
 ---
-title: OpenTelemetry Sequelize Plugin
+title: OpenTelemetry Sequelize Instrumentation
 registryType: instrumentation
 isThirdParty: true
 language: js
 tags:
   - Node.js
-  - plugin
+  - instrumentation
   - sequelize
-repo: https://github.com/aspecto-io/opentelemetry-ext-js/tree/master/packages/instrumentation-sequelize
+repo: https://github.com/aspecto-io/opentelemetry-ext-js/tree/master/packages/instrumentation-mongoose
 license: Apache 2.0
-description: Sequelize plugin for Node.js.
+description: Sequelize instrumentation for Node.js.
 authors: Aspecto Authors (nir@aspecto.io)
 ---

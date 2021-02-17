@@ -1,14 +1,14 @@
 ---
-title: OpenTelemetry TypeORM Plugin
+title: OpenTelemetry TypeORM Instrumentation
 registryType: instrumentation
 isThirdParty: false
 language: js
 tags:
   - Node.js
-  - plugin
+  - instrumentation
   - typeorm
 repo: https://github.com/aspecto-io/opentelemetry-ext-js/tree/master/packages/instrumentation-typeorm
 license: Apache 2.0
-description: TypeORM plugin for Node.js.
+description: TypeORM instrumentation for Node.js.
 authors: Aspecto Authors (nir@aspecto.io)
 ---
