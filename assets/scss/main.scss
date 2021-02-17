@@ -31,41 +31,58 @@
 @import "tabs";
 
 @if $td-enable-google-fonts {
-    @import url($web-font-path);
+  @import url($web-font-path);
 }
 
 footer {
-    min-height: 150px;
+  min-height: 150px;
 
-    @include media-breakpoint-down(md) {
-         min-height: 200px;
-    }
+  @include media-breakpoint-down(md) {
+    min-height: 200px;
+  }
 }
 
 // Adjust anchors vs the fixed menu.
 @include media-breakpoint-up(md) {
-    .td-offset-anchor:target {
-        display: block;
-        position: relative;
-        top: -4rem;
-        visibility: hidden;
-    }
+  .td-offset-anchor:target {
+    display: block;
+    position: relative;
+    top: -4rem;
+    visibility: hidden;
+  }
 
-    h2[id], h3[id], h4[id], h5[id] {
-        scroll-margin-top: 5rem;
-    }
+  h2[id], h3[id], h4[id], h5[id] {
+    scroll-margin-top: 5rem;
+  }
 }
 
 // Adjust the spacing of page-mata and page-TOC
 .td-toc #TableOfContents {
-    padding-top: 1rem;
+  padding-top: 1rem;
 }
 
 
 @import "styles_project";
 
 section#announcement {
-    display: flex;
-    justify-content: center;
-    padding: 6px;
+  display: flex;
+  justify-content: center;
+  padding: 6px;
+}
+
+section#cncf {
+  padding: 0;
+  background: url(/img/logos/cncf-sandbox-horizontal-white.svg);
+  background-position: center bottom;
+  background-size: 240px;
+  background-repeat: no-repeat;
+
+  center {
+    padding-bottom: 60px;
+
+    p {
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
 }
