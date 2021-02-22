@@ -245,16 +245,15 @@
     "@opentelemetry/semantic-conventions" "^0.15.0"
     "@opentelemetry/tracing" "^0.15.0"
 
-"@opentelemetry/web@^0.16.0":
-  version "0.16.0"
-  resolved "https://registry.yarnpkg.com/@opentelemetry/web/-/web-0.16.0.tgz#cf82f0050f4ac9df5cf9d73382e9a44562b20a74"
+"@opentelemetry/web@^0.17.0":
+  version "0.17.0"
+  resolved "https://registry.yarnpkg.com/@opentelemetry/web/-/web-0.17.0.tgz#92a2130a920a12906f48ace16a01b035a4057ad6"
   dependencies:
-    "@opentelemetry/api" "^0.16.0"
-    "@opentelemetry/context-base" "^0.16.0"
-    "@opentelemetry/core" "^0.16.0"
-    "@opentelemetry/instrumentation" "^0.16.0"
-    "@opentelemetry/semantic-conventions" "^0.16.0"
-    "@opentelemetry/tracing" "^0.16.0"
+    "@opentelemetry/api" "^0.17.0"
+    "@opentelemetry/context-base" "^0.17.0"
+    "@opentelemetry/core" "^0.17.0"
+    "@opentelemetry/semantic-conventions" "^0.17.0"
+    "@opentelemetry/tracing" "^0.17.0"
 
 "@types/color-name@^1.1.1":
   version "1.1.1"
