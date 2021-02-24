@@ -1,8 +1,10 @@
 import { SimpleSpanProcessor } from '@opentelemetry/tracing';
 import { WebTracerProvider } from '@opentelemetry/web';
 import { DocumentLoad } from '@opentelemetry/plugin-document-load';
+import { UserInteractionPlugin } from '@opentelemetry/plugin-user-interaction';
 import { registerInstrumentations } from '@opentelemetry/instrumentation';
 import { CollectorTraceExporter } from '@opentelemetry/exporter-collector';
+import { Resource } from '@opentelemetry/resources';
 
 const exporter = new CollectorTraceExporter({
   serviceName: 'opentelemetry.io',
@@ -10,10 +12,11 @@ const exporter = new CollectorTraceExporter({
 })
 
 
-const locale = {
-  "browser.language": navigator.language,
-  "browser.path": location.pathname
-}
+const locale = new Resource({
+    "browser.language": navigator.language, 
+    "browser.path": location.pathname
+})
+
 
 const provider = new WebTracerProvider({
   resource: locale
@@ -21,7 +24,8 @@ const provider = new WebTracerProvider({
 
 registerInstrumentations({
   instrumentations: [
-    new DocumentLoad()
+    new DocumentLoad(),
+    new UserInteractionPlugin(),
   ],
   tracerProvider: provider
 })
