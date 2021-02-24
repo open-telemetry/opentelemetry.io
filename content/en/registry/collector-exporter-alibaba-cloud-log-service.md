@@ -1,0 +1,15 @@
+---
+title: Alibaba Cloud Log Service Collector Exporter
+registryType: exporter
+isThirdParty: true
+language: collector
+tags:
+  - go
+  - exporter
+  - collector
+repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/alibabacloudlogserviceexporter
+license: Apache 2.0
+description: The Alibaba Cloud Log Service Exporter for the OpenTelemetry Collector.
+authors: Alibaba Cloud
+otVersion: latest
+---
