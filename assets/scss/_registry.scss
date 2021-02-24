@@ -31,6 +31,11 @@
   background-color: $exporter;
 }
 
+.badge.badge-receiver {
+  color: white;
+  background-color: $receiver;
+}
+
 .badge.badge-utilities {
   color: white;
   background-color: $utilities;
