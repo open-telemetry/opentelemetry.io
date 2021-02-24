@@ -1,0 +1,15 @@
+---
+title: Span Metrics Processor
+registryType: processor
+isThirdParty: false
+language: collector
+tags:
+  - go
+  - processor
+  - collector
+repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/spanmetricsprocessor
+license: Apache 2.0
+description: The Span Metrics Processor for the OpenTelemetry Collector aggregates Request, Error and Duration (R.E.D) metrics from span data.
+authors: OpenTelemetry Authors
+otVersion: latest
+---
