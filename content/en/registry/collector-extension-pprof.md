@@ -1,5 +1,5 @@
 ---
-title: Performance Profiler Extension
+title: Performance Profiler Collector Extension
 registryType: extension
 isThirdParty: false
 language: collector
@@ -9,7 +9,7 @@ tags:
   - collector
 repo: https://github.com/open-telemetry/opentelemetry-collector/tree/main/extension/pprofextension
 license: Apache 2.0
-description: The Performance Profiler Extension for the OpenTelemetry Collector can be used to collect performance profiles and investigate issues with the service.
+description: The Performance Profiler Collector Extension for the OpenTelemetry Collector can be used to collect performance profiles and investigate issues with the service.
 authors: OpenTelemetry Authors
 otVersion: latest
 ---

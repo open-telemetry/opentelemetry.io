@@ -1,5 +1,5 @@
 ---
-title: zPages Collector Extension
+title: zPages Collector Collector Extension
 registryType: extension
 isThirdParty: false
 language: collector
