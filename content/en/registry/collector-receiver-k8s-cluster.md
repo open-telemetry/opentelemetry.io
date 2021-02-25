@@ -1,0 +1,15 @@
+---
+title: Kubernetes Cluster Collector Receiver
+registryType: receiver
+isThirdParty: true
+language: collector
+tags:
+  - go
+  - receiver
+  - collector
+repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8sclusterreceiver
+license: Apache 2.0
+description: The Kubernetes Cluster Receiver for the OpenTelemetry Collector collects cluster-level metrics from the Kubernetes API server. It uses the K8s API to listen for updates. A single instance of this receiver can be used to monitor a cluster.
+authors: OpenTelemetry Authors
+otVersion: latest
+---
