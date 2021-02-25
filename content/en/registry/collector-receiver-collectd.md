@@ -1,0 +1,15 @@
+---
+title: CollectD Collector Receiver
+registryType: receiver
+isThirdParty: true
+language: collector
+tags:
+  - go
+  - receiver
+  - collector
+repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/collectdreceiver
+license: Apache 2.0
+description: The CollectD Receiver for the OpenTelemetry Collector can receive data exported by the CollectD's write_http plugin.
+authors: OpenTelemetry Authors
+otVersion: latest
+---
