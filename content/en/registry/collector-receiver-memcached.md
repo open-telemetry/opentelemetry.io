@@ -1,0 +1,15 @@
+---
+title: Memcached Collector Receiver
+registryType: receiver
+isThirdParty: true
+language: collector
+tags:
+  - go
+  - receiver
+  - collector
+repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/memcachedreceiver
+license: Apache 2.0
+description: The Memcached Receiver for the OpenTelemetry Collector can fetch stats from a Memcached instance using the stats command.
+authors: OpenTelemetry Authors
+otVersion: latest
+---
