@@ -1,0 +1,15 @@
+---
+title: Carbon Collector Receiver
+registryType: receiver
+isThirdParty: true
+language: collector
+tags:
+  - go
+  - receiver
+  - collector
+repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/carbonreceiver
+license: Apache 2.0
+description: The Carbon Receiver for the OpenTelemetry Collector supports Carbon's plaintext protocol.
+authors: OpenTelemetry Authors
+otVersion: latest
+---
