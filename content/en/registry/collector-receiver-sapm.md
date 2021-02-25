@@ -1,0 +1,15 @@
+---
+title: SAPM Collector Receiver
+registryType: receiver
+isThirdParty: true
+language: collector
+tags:
+  - go
+  - receiver
+  - collector
+repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/sapmreceiver
+license: Apache 2.0
+description: The SAPM Receiver for the OpenTelemetry Collector receive traces from other collectors or the SignalFx Smart Agent.
+authors: Splunk
+otVersion: latest
+---
