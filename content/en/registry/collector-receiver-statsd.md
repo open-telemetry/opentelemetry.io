@@ -1,0 +1,15 @@
+---
+title: StatsD Collector Receiver
+registryType: receiver
+isThirdParty: true
+language: collector
+tags:
+  - go
+  - receiver
+  - collector
+repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/statsdreceiver
+license: Apache 2.0
+description: The StatsD Receiver for the OpenTelemetry Collector ingests StatsD messages.
+authors: OpenTelemetry Authors
+otVersion: latest
+---

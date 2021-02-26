@@ -1,0 +1,15 @@
+---
+title: AWS X-Ray Collector Receiver
+registryType: receiver
+isThirdParty: true
+language: collector
+tags:
+  - go
+  - receiver
+  - collector
+repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/awsxrayreceiver
+license: Apache 2.0
+description: The AWS X-Ray Receiver for the OpenTelemetry Collector accepts segments (i.e. spans) in the X-Ray Segment format. This enables the collector to receive spans emitted by the existing X-Ray SDK.
+authors: Amazon Web Services
+otVersion: latest
+---

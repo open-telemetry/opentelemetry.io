@@ -1,0 +1,15 @@
+---
+title: Docker Stats Collector Receiver
+registryType: receiver
+isThirdParty: true
+language: collector
+tags:
+  - go
+  - receiver
+  - collector
+repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/dockerstatsreceiver
+license: Apache 2.0
+description: The Docker Stats Receiver queries the local Docker daemon's container stats API for all desired running containers on a configured interval.
+authors: OpenTelemetry Authors
+otVersion: latest
+---
