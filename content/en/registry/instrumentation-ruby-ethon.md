@@ -4,8 +4,8 @@ registryType: instrumentation
 isThirdParty: false
 language: ruby
 tags:
-  - ruby
-  - instrumentation
+- ruby
+- instrumentation
 repo: https://github.com/open-telemetry/opentelemetry-ruby/tree/main/instrumentation/ethon
 license: Apache 2.0
 description: Ethon instrumentation for Ruby.
