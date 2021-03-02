@@ -1,5 +1,5 @@
 ---
-title: NET HTTP Instrumentation
+title: Net::HTTP Instrumentation
 registryType: instrumentation
 isThirdParty: false
 language: ruby
@@ -8,7 +8,7 @@ tags:
   - instrumentation
 repo: https://github.com/open-telemetry/opentelemetry-ruby/tree/main/instrumentation/net_http
 license: Apache 2.0
-description: NET HTTP instrumentation for Ruby.
+description: Net::HTTP instrumentation for Ruby.
 authors: OpenTelemetry Authors
 otVersion: latest
 ---
