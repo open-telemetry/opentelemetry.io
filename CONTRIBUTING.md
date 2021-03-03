@@ -1,12 +1,12 @@
 ## Dev Setup
 
 * Fork and clone the repository
-* Install [Hugo](https://gohugo.io/getting-started/installing/#quick-install) and [npm](https://npmjs.com)
+* Install [Hugo](https://gohugo.io/getting-started/installing/#quick-install)
+  * Please note that you need to install the "extended" version of Hugo (with built-in support) to run the site locally.
+* Install [npm](https://npmjs.com)
 * Run `make serve`
+  * If you are on OS X and see an error like `too many open files` or `pipe failed`, you may need to increase the file descriptor limit. See [this Hugo GitHub issue](https://github.com/gohugoio/hugo/issues/6109).
 * Open `http://localhost:30000` to check the site
-
-> Please note that you need to install the "extended" version of Hugo (with
-> built-in support) to run the site locally.
 
 A few notes to be aware of:
 
@@ -29,3 +29,4 @@ changes.
 
 > Site administrators can access the admin interface
 > [here](https://app.netlify.com/sites/opentelemetry/overview).
+
