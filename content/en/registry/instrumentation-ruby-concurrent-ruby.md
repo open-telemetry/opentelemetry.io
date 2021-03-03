@@ -1,5 +1,5 @@
 ---
-title: Concurrent Instrumentation
+title: ConcurrentRuby Instrumentation
 registryType: instrumentation
 isThirdParty: false
 language: ruby
@@ -8,7 +8,7 @@ tags:
   - instrumentation
 repo: https://github.com/open-telemetry/opentelemetry-ruby/tree/main/instrumentation/concurrent_ruby
 license: Apache 2.0
-description: Concurrent instrumentation for Ruby.
+description: ConcurrentRuby instrumentation for Ruby.
 authors: OpenTelemetry Authors
 otVersion: latest
 ---
