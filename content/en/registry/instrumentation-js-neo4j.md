@@ -1,0 +1,15 @@
+---
+title: OpenTelemetry Neo4j Instrumentation
+registryType: instrumentation
+isThirdParty: true
+language: js
+tags:
+  - Node.js
+  - instrumentation
+  - neo4j
+  - neo4j-driver
+repo: https://github.com/aspecto-io/opentelemetry-ext-js/tree/master/packages/instrumentation-neo4j
+license: Apache 2.0
+description: Neo4j instrumentation for Node.js.
+authors: Aspecto Authors (nir@aspecto.io)
+---
