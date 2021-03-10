@@ -5,7 +5,7 @@ Weight: 3
 
 ## Traces
 
-### Instantiate `TracerProvider`
+### Instantiate `TracerProvider` and SDK
 
 In the [OpenTelemetry Tracing
 API](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md),
@@ -14,8 +14,14 @@ object that holds any configuration. The `TracerProvider` provides access
 to the [`Tracer`](#instantiate-tracer).
 
 ```java
-TracerProvider tracerProvider =
-    OpenTelemetry.getGlobalTracerProvider();
+    SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder()
+        .addSpanProcessor(BatchSpanProcessor.builder(OtlpGrpcSpanExporter.builder().build()).build())
+        .build();
+
+    OpenTelemetry openTelemetry = OpenTelemetrySdk.builder()
+        .setTracerProvider(sdkTracerProvider)
+        .setPropagators(ContextPropagators.create(W3CTraceContextPropagator.getInstance()))
+        .buildAndRegisterGlobal();
 ```
 
 ### Instantiate `Tracer`
@@ -31,7 +37,7 @@ or application to be monitored.
 
 ```java
 Tracer tracer =
-    tracerProvider.getTracer("instrumentation-library-name","1.0.0");
+    openTelemetry.getTracer("instrumentation-library-name","1.0.0");
 ```
 
 ### Create Spans
@@ -43,6 +49,7 @@ start and end time of the span is automatically set by the OpenTelemetry SDK.
 
 ```java
 Span span = tracer.spanBuilder("my span").startSpan();
+// put the span into the current Context
 try (Scope scope = span.makeCurrent()) {
 	// your use case
 	...
@@ -60,18 +67,21 @@ OpenTelemetry supports tracing within processes and across remote processes.
 For more information about how to share context between remote processes, see [Context
 Propagation](#context-propagation).
 
-For a method `a` calling a method `b`, the spans could be manually linked in the
+For a method `parentOne` calling a method `childOne`, the spans could be manually linked in the
 following way:
 
 ```java
-void a() {
-  Span parentSpan = tracer.spanBuilder("a")
-        .startSpan();
-  b(parentSpan);
-  parentSpan.end();
+void parentOne() {
+  Span parentSpan = tracer.spanBuilder("parent").startSpan();
+  try {
+    childOne(parentSpan);
+  } finally {
+    parentSpan.end();
+  }
 }
-void b(Span parentSpan) {
-  Span childSpan = tracer.spanBuilder("b")
+
+void childOne(Span parentSpan) {
+  Span childSpan = tracer.spanBuilder("child")
         .setParent(Context.current().with(parentSpan))
         .startSpan();
   // do stuff
@@ -82,18 +92,18 @@ void b(Span parentSpan) {
 The OpenTelemetry API also offers an automated way to propagate the parentSpan:
 
 ```java
-void a() {
-  Span parentSpan = tracer.spanBuilder("a").startSpan();
+void parentTwo() {
+  Span parentSpan = tracer.spanBuilder("parent").startSpan();
   try(Scope scope = parentSpan.makeCurrent()) {
-    b();
+    childTwo();
   } finally {
     parentSpan.end();
   }
 }
-void b() {
-  Span childSpan = tracer.spanBuilder("b")
-    // NOTE: setting the parent Context explicitly is not required; 
-    // The span in the Context on the current thread is automatically added as parent
+void childTwo() {
+  Span childSpan = tracer.spanBuilder("child")
+    // NOTE: setParent(...) is not required; 
+    // `Span.current()` is automatically added as the parent
     .startSpan();
   try(Scope scope = childSpan.makeCurrent()) {
     // do stuff
@@ -120,7 +130,7 @@ provide additional context on a span about the specific operation it tracks,
 such as results or operation properties.
 
 ```java
-Span span = tracer.spanBuilder("/resource/path").setSpanKind(Span.Kind.CLIENT).startSpan();
+Span span = tracer.spanBuilder("/resource/path").setSpanKind(SpanKind.CLIENT).startSpan();
 span.setAttribute("http.method", "GET");
 span.setAttribute("http.url", url.toString());
 ```
@@ -163,7 +173,7 @@ Span child = tracer.spanBuilder("childWithLink")
         .addLink(parentSpan1.getSpanContext())
         .addLink(parentSpan2.getSpanContext())
         .addLink(parentSpan3.getSpanContext())
-        .addLink(remoteContext)
+        .addLink(remoteSpanContext)
     .startSpan();
 ```
 
@@ -181,25 +191,25 @@ The following example shows an outgoing HTTP request using
 
 ```java
 // Tell OpenTelemetry to inject the context in the HTTP headers
-TextMapPropagator.Setter<HttpURLConnection> setter =
-  new TextMapPropagator.Setter<HttpURLConnection>() {
+TextMapSetter<HttpURLConnection> setter =
+  new TextMapSetter<HttpURLConnection>() {
     @Override
-    public void put(HttpURLConnection carrier, String key, String value) {
+    public void set(HttpURLConnection carrier, String key, String value) {
         // Insert the context as Header
         carrier.setRequestProperty(key, value);
     }
 };
 
 URL url = new URL("http://127.0.0.1:8080/resource");
-Span outGoing = tracer.spanBuilder("/resource").setSpanKind(Span.Kind.CLIENT).startSpan();
+Span outGoing = tracer.spanBuilder("/resource").setSpanKind(SpanKind.CLIENT).startSpan();
 try (Scope scope = outGoing.makeCurrent()) {
   // Semantic Convention.
-  // (Observe that to set these, the Span does not *need* to be the current instance in Context or Scope.)
+  // (Note that to set these, Span does not *need* to be the current instance in Context or Scope.)
   outGoing.setAttribute(SemanticAttributes.HTTP_METHOD, "GET");
   outGoing.setAttribute(SemanticAttributes.HTTP_URL, url.toString());
   HttpURLConnection transportLayer = (HttpURLConnection) url.openConnection();
   // Inject the request with the *current*  Context, which contains our current Span.
-  OpenTelemetry.getPropagators().getTextMapPropagator().inject(Context.current(), transportLayer, setter);
+  openTelemetry.getPropagators().getTextMapPropagator().inject(Context.current(), transportLayer, setter);
   // Make outgoing call
 } finally {
   outGoing.end();
@@ -213,8 +223,8 @@ incoming HTTP request using
 [HttpExchange](https://docs.oracle.com/javase/8/docs/jre/api/net/httpserver/spec/com/sun/net/httpserver/HttpExchange.html):
 
 ```java
-TextMapPropagator.Getter<HttpExchange> getter =
-  new TextMapPropagator.Getter<HttpExchange>() {
+TextMapGetter<HttpExchange> getter =
+  new TextMapGetter<>() {
     @Override
     public String get(HttpExchange carrier, String key) {
       if (carrier.getRequestHeaders().containsKey(key)) {
@@ -223,20 +233,20 @@ TextMapPropagator.Getter<HttpExchange> getter =
       return null;
     }
 
-    @Override
-    public Iterable<String> keys(HttpExchange carrier) {
-      return carrier.getRequestHeaders().keySet();
-    } 
+   @Override
+   public Iterable<String> keys(HttpExchange carrier) {
+     return carrier.getRequestHeaders().keySet();
+   } 
 };
 ...
 public void handle(HttpExchange httpExchange) {
   // Extract the SpanContext and other elements from the request.
-  Context extractedContext = OpenTelemetry.getPropagators().getTextMapPropagator()
+  Context extractedContext = openTelemetry.getPropagators().getTextMapPropagator()
         .extract(Context.current(), httpExchange, getter);
-  Span serverSpan = null;
   try (Scope scope = extractedContext.makeCurrent()) {
     // Automatically use the extracted SpanContext as parent.
-    serverSpan = tracer.spanBuilder("GET /resource").setSpanKind(Span.Kind.SERVER)
+    Span serverSpan = tracer.spanBuilder("GET /resource")
+        .setSpanKind(SpanKind.SERVER)
         .startSpan();
     try {
       // Add the attributes defined in the Semantic Conventions
@@ -249,7 +259,7 @@ public void handle(HttpExchange httpExchange) {
     } finally {
       serverSpan.end();
     }
-  } 
+  }
 }
 ```
 
@@ -259,11 +269,12 @@ B3](https://github.com/open-telemetry/opentelemetry-java/tree/main/extensions/tr
 
 ### Configuring the default OpenTelemetry SDK
 
-In order to configure the default OpenTelemetry SDK, you need to get a handle to a 
-`TracerManagement` instance from the SDK:
+In order to configure the SDK, options can be passed to the builder method of `SdkTracerProvider`. The following demonstrates a SDK that writes traces through a logger.
 
 ```java
-TracerSdkManagement tracerManagement = OpenTelemetrySdk.getGlobalTracerManagement();
+    SdkTracerProvider tracerProvider = SdkTracerProvider.builder()
+      .addSpanProcessor(BatchSpanProcessor.builder(new LoggingSpanExporter()).build())
+      .build();
 ```
 
 ### Processors
@@ -341,16 +352,16 @@ The following is an example of counter usage:
 
 ```java
 // Gets or creates a named meter instance
-Meter meter = OpenTelemetry.getGlobalMeter("instrumentation-library-name","semver:1.0.0");
+Meter meter = meterProvider.get("instrumentation-library-name", "1.0.0");
 
-// Build counter e.g. LongCounter
+// Build counter e.g. LongCounter 
 LongCounter counter = meter
         .longCounterBuilder("processed_jobs")
         .setDescription("Processed jobs")
         .setUnit("1")
         .build();
 
-// It is recommended that the API user keep a reference to a Bound Counter for the entire time or
+// It is recommended that the API user keep a reference to a Bound Counter for the entire time or 
 // call unbind when no-longer needed.
 BoundLongCounter someWorkCounter = counter.bind(Labels.of("Key", "SomeWork"));
 
@@ -368,19 +379,13 @@ collecting metric data on demand, once per collection interval.
 The following is an example of observer usage:
 
 ```java
-// Build observer e.g. LongObserver
-LongObserver observer = meter
-        .observerLongBuilder("cpu_usage")
+// Build observer e.g. LongSumObserver
+    LongSumObserver observer = meter
+        .longSumObserverBuilder("cpu_usage")
         .setDescription("CPU Usage")
         .setUnit("ms")
+        .setUpdater(result -> {
+        result.observe(getCpuUsage(), Labels.of("Key", "SomeWork"));
+        })
         .build();
-
-observer.setCallback(
-        new LongObserver.Callback<LongObserver.ResultLongObserver>() {
-          @Override
-          public void update(ResultLongObserver result) {
-            // long getCpuUsage()
-            result.observe(getCpuUsage(), Labels.of("Key", "SomeWork"));
-          }
-        });
 ```
