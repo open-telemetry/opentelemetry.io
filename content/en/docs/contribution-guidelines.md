@@ -25,4 +25,4 @@ information on using pull requests.
 
 ### Getting Started
 
-See README.md for current information.
+See [README.md](../../../README.md) for current information.
