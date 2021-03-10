@@ -154,10 +154,10 @@ enable = false
 	icon = "fab fa-github"
         desc = "Find us on GitHub."
 [[params.links.developer]]
-	name = "Gitter"
-	url = "https://gitter.im/open-telemetry"
-	icon = "fab fa-gitter"
-        desc = "Chat with other project developers"
+	name = "Slack"
+	url = "https://cloud-native.slack.com/archives/CJFCJHG4Q"
+	icon = "fab fa-slack"
+        desc = "Chat with other project developers."
 [[params.links.developer]]
 	name = "CNCF DevStats"
 	url = "https://opentelemetry.devstats.cncf.io/d/8/dashboards?orgId=1&refresh=15m"
@@ -187,10 +187,10 @@ color = "twitter"
 icon = "fab fa-twitter"
 
 [[params.social]]
-name = "Gitter"
-url = "https://gitter.im/open-telemetry/community"
-color = "gitter"
-icon = "fab fa-gitter"
+name = "Slack"
+url = "https://cloud-native.slack.com/archives/CJFCJHG4Q"
+color = "slack"
+icon = "fab fa-slack"
 
 [[params.social]]
 name = "Medium"

@@ -25,4 +25,4 @@ information on using pull requests.
 
 ### Getting Started
 
-See README.md for current information.
+See [README.md](https://github.com/open-telemetry/opentelemetry.io#readme) for current information.

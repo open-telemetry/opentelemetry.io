@@ -17,3 +17,5 @@ tmp/
 
 scripts/collector.yaml
 assets/js/*
+#intellij 
+*.iml
