@@ -17,7 +17,7 @@
   "dependencies": {
     "@opentelemetry/core": "^0.8.3",
     "@opentelemetry/exporter-collector": "^0.16.0",
-    "@opentelemetry/instrumentation": "^0.16.0",
+    "@opentelemetry/instrumentation": "^0.18.0",
     "@opentelemetry/plugin-document-load": "^0.13.1",
     "@opentelemetry/plugin-user-interaction": "^0.13.0",
     "@opentelemetry/tracing": "^0.17.0",
