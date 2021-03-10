@@ -154,10 +154,10 @@ enable = false
 	icon = "fab fa-github"
         desc = "Find us on GitHub."
 [[params.links.developer]]
-	name = "Slack"
+	name = "Slack #opentelemetry"
 	url = "https://cloud-native.slack.com/archives/CJFCJHG4Q"
 	icon = "fab fa-slack"
-        desc = "Chat with other project developers."
+        desc = "Chat with other project developers. Sign up via https://slack.cncf.io. Other channels start with with #otel- prefix"
 [[params.links.developer]]
 	name = "CNCF DevStats"
 	url = "https://opentelemetry.devstats.cncf.io/d/8/dashboards?orgId=1&refresh=15m"
