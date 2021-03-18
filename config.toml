@@ -86,6 +86,8 @@ url_latest_version = "https://opentelemetry.io"
 github_repo = "https://github.com/open-telemetry/opentelemetry.io"
 # An optional link to a related project repo. For example, the sibling repository where your product code lives.
 # github_project_repo = "https://github.com/open-telemetry"
+# Change from theme default "master"
+github_branch = "main"
 
 # Google Custom Search Engine ID. Remove or comment out to disable search.
 gcs_engine_id = "bde3d634eca9cd335"
