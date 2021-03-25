@@ -94,7 +94,7 @@ To create a meter provider, add the following code to your `main.go` file -
 			simple.NewWithExactDistribution(),
 			exporter,
 		),
-		controller.WithPusher(exporter),
+		controller.WithExporter(exporter),
 		controller.WithCollectPeriod(5*time.Second),
 	)
 
