@@ -123,7 +123,7 @@ by specifying them in the pattern/format.
 Example for Spring Boot configuration (which uses logback):
 
 ```properties
-logging.pattern.console = %d{yyyy-MM-dd HH:mm:ss} - %logger{36} - %msg t:%X{traceId} s:%X{spanId} %n
+logging.pattern.console = %d{yyyy-MM-dd HH:mm:ss} - %logger{36} - %msg trace_id=%X{trace_id} span_id=%X{span_id} trace_flags=%X{trace_flags} %n
 ```
 
 #### Supported logging libraries
