@@ -4,21 +4,33 @@ weight: 20
 ---
 
 Welcome to the OpenTelemetry for Erlang/Elixir getting started guide! This guide
-will walk you the basic steps in installing, configuring, and exporting data
+will walk you through the basic steps in installing, configuring, and exporting data
 from OpenTelemetry.
 
 # Installation
 
 OpenTelemetry packages for Erlang/Elixir are available on
-[hex.pm](https://hex.pm). When working on an Application with instrumentation
-you'll want to add the dependency `opentelemetry_api`. And in the case of Erlang
-add it to `applications` list in your `.app.src` file as well. This package
-contains only the API  of OpenTelemetry, it will start no processes and any
-operation, like starting a span, done when only the API is available will be a
-no-op that creates no data. The implementation of the API is in the package
-`opentelemetry`, this Application will boot a Supervision tree handling the
-necessary components for recording and exporting traces. You'll want to only
-depend on the `opentelemetry` package in a project that will be deployed.
+[hex.pm](https://hex.pm). There are two packages you might want to install,
+depending on what you are trying to accomplish.
+
+## `opentelemetry_api`
+
+If you are developing a library or OTP Application that someone else would include
+into their deployed code and you want to provide OpenTelemetry instrumentation
+for them, you'll want to add the dependency `opentelemetry_api`. This package contains
+only the API of OpenTelemetry. It will not start any processes and all API calls
+(such as starting a span) will be a no-op that creates no data, unless the
+`opentelemetry` SDK package is also installed.
+
+## `opentelemetry`
+
+If you are developing an Application that will actually be deployed and export
+OpenTelemetry data, whether from instrumented dependencies or your code itself,
+you'll want to add the `opentelemetry` package. This is the implementation of the
+API and will start a Supervision tree, handling the necessary components for recording
+and exporting OpenTelemetry signals. This is the package where you would configure
+the destination(s) for your OpenTelemetry data, whether it be to an OpenTelemetry
+Collector instance, or directly to a vendor's data ingestion API.
 
 To get started with this guide, create a new project with `rebar3` or `mix`:
 
@@ -29,13 +41,13 @@ $ rebar3 new release otel_getting_started
 {{< /tab >}}
 
 {{< tab >}}
-$ mix new otel_getting_started
+$ mix new --sup otel_getting_started
 {{< /tab >}}
 
 {{< /tabs >}}
 
 
-Then, in the project you just created add both `opentelemetry_api` and
+Then, in the project you just created, add both `opentelemetry_api` and
 `opentelemetry` as dependencies. We add both because this is a project we will
 run as a Release and export spans from.
 
@@ -57,8 +69,8 @@ end
 
 {{< /tabs >}}
 
-In the case of Erlang the Applications will also need to be added to
-`src/otel_getting_started.app.src`, while in an Elixir project a `releases`
+In the case of Erlang, the Applications will also need to be added to
+`src/otel_getting_started.app.src`. In an Elixir project, a `releases`
 section needs to be added to `mix.exs`: 
 
 {{< tabs Erlang Elixir >}}
@@ -99,7 +111,7 @@ the [Exporter](https://hexdocs.pm/opentelemetry/otel_exporter.html).
 Exporters are packages that allow telemetry data to be emitted somewhere -
 either to the console (which is what we're doing here), or to a remote system or
 collector for further analysis and/or enrichment. OpenTelemetry supports a
-variety of exporters through its ecosystem including popular open source tools
+variety of exporters through its ecosystem, including popular open-source tools
 like Jaeger and Zipkin.
 
 To configure OpenTelemetry to use a particular exporter, in this case
@@ -132,7 +144,7 @@ config :opentelemetry, :processors,
 
 # Working with Spans
 
-Now that the dependencies and configuration is setup we can create a module with
+Now that the dependencies and configuration are set up, we can create a module with
 a function `hello/0` that starts some spans:
 
 {{< tabs Erlang Elixir >}}
@@ -168,13 +180,13 @@ defmodule OtelGettingStarted do
 
   def hello do
     Tracer.with_span "operation" do
-		Tracer.add_event("Nice operation!", [{"bogons", 100}])
-		Tracer.set_attributes([{:another_key, "yes"}])
+      Tracer.add_event("Nice operation!", [{"bogons", 100}])
+      Tracer.set_attributes([{:another_key, "yes"}])
 
-        Tracer.with_span "Sub operation..." do
-          Tracer.set_attributes([{:lemons_key, "five"}])
-		  Tracer.add_event("Sub span event!", [])
-        end
+      Tracer.with_span "Sub operation..." do
+        Tracer.set_attributes([{:lemons_key, "five"}])
+        Tracer.add_event("Sub span event!", [])
+      end
     end
   end
 end
@@ -182,26 +194,26 @@ end
 
 {{< /tabs >}}
 
-In the snippets, we're using macros which utilizes the process dictionary for
+In this example, we're using macros that use the process dictionary for
 context propagation and for getting the tracer.
 
 Inside our function, we're creating a new span named `operation` with the
-`with_span` macro. with the context we just created, and a name. The macro sets
-the new span as `active` in the current context -- stored in the process
-dictionary since we aren't passing a context as a variable. 
+`with_span` macro. The macro sets the new span as `active` in the current
+context -- stored in the process dictionary, since we aren't passing a
+context as a variable. 
 
 Spans can have attributes and events, which are metadata and log statements that
 help you interpret traces after-the-fact. The first span has an event `Nice
-operation!` with attributes on the event, as well as an attribute set on the
+operation!`, with attributes on the event, as well as an attribute set on the
 span itself. 
 
-Finally, in this code snippet we can see an example of creating a child span of
-the currently active span. When `with_span` macro starts a new span it uses the
-active span of the current context for the parent. So when you run this program,
+Finally, in this code snippet, we can see an example of creating a child span of
+the currently-active span. When the `with_span` macro starts a new span, it uses
+the active span of the current context as the parent. So when you run this program,
 you'll see that the `Sub operation...` span has been created as a child of the
 `operation` span.
 
-To test out this project and see the spans created you can run with `rebar3
+To test out this project and see the spans created, you can run with `rebar3
 shell` or `iex -S mix`, each will pick up the corresponding configuration for
 the release, resulting in the tracer and exporter to started.
 
