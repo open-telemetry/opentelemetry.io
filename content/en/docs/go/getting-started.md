@@ -15,7 +15,15 @@ To get started with this guide, create a new directory and add a new file named 
 
 To install the necessary prerequisites for OpenTelemetry, you'll want to run the following command in the directory with your `go.mod`:
 
-`go get go.opentelemetry.io/otel@v0.16.0 go.opentelemetry.io/otel/sdk@v0.16.0 go.opentelemetry.io/otel/exporters/stdout@v0.16.0`
+```
+go get \
+  go.opentelemetry.io/otel@v0.19.0 \
+  go.opentelemetry.io/otel/exporters/stdout@v0.19.0 \
+  go.opentelemetry.io/otel/metric@v0.19.0 \
+  go.opentelemetry.io/otel/sdk@v0.19.0 \
+  go.opentelemetry.io/otel/sdk/metric@v0.19.0 \
+  go.opentelemetry.io/otel/trace@v0.19.0
+```
 
 In your `main.go` file, you'll need to import several packages:
 
@@ -28,10 +36,11 @@ import (
 	"time"
 
 	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/baggage"
 	"go.opentelemetry.io/otel/exporters/stdout"
-	"go.opentelemetry.io/otel/label"
 	"go.opentelemetry.io/otel/metric"
+	"go.opentelemetry.io/otel/metric/global"
 	"go.opentelemetry.io/otel/propagation"
 	controller "go.opentelemetry.io/otel/sdk/metric/controller/basic"
 	processor "go.opentelemetry.io/otel/sdk/metric/processor/basic"
@@ -113,11 +122,11 @@ This creates a controller that uses a basic processor to aggregate and process m
 
 When using OpenTelemetry, it's a good practice to set a global tracer provider and a global meter provider. Doing so will make it easier for libraries and other dependencies that use the OpenTelemetry API to easily discover the SDK, and emit telemetry data. In addition, you'll want to configure context propagation options. Context propagation allows for OpenTelemetry to share values across multiple services - this includes trace identifiers, which ensure that all spans for a single request are part of the same trace, as well as baggage, which are arbitrary key/value pairs that you can use to pass observability data between services (for example, sharing a customer ID from one service to the next).
 
-Setting up global options uses the `otel` package - add these options to your `main.go` file as shown -
+Setting up global options uses the `otel` and `metric/global` packages - add these options to your `main.go` file as shown -
 
 ```go
 	otel.SetTracerProvider(tp)
-	otel.SetMeterProvider(pusher.MeterProvider())
+	global.SetMeterProvider(pusher.MeterProvider())
 	propagator := propagation.NewCompositeTextMapPropagator(propagation.Baggage{}, propagation.TraceContext{})
 	otel.SetTextMapPropagator(propagator)
 ```
@@ -133,17 +142,22 @@ Each measurement can be associated with labels that can later be used by visuali
 To set up some metric instruments, add the following code to your `main.go` file -
 
 ```go
-	fooKey := label.Key("ex.com/foo")
-	barKey := label.Key("ex.com/bar")
-	lemonsKey := label.Key("ex.com/lemons")
-	anotherKey := label.Key("ex.com/another")
+	fooKey := attribute.Key("ex.com/foo")
+	barKey := attribute.Key("ex.com/bar")
+	lemonsKey := attribute.Key("ex.com/lemons")
+	anotherKey := attribute.Key("ex.com/another")
 
-	commonLabels := []label.KeyValue{lemonsKey.Int(10), label.String("A", "1"), label.String("B", "2"), label.String("C", "3")}
+	commonAttributes := []attribute.KeyValue{
+		lemonsKey.Int(10),
+		attribute.String("A", "1"),
+		attribute.String("B", "2"),
+		attribute.String("C", "3"),
+	}
 
-	meter := otel.Meter("ex.com/basic")
+	meter := global.Meter("ex.com/basic")
 
 	observerCallback := func(_ context.Context, result metric.Float64ObserverResult) {
-		result.Observe(1, commonLabels...)
+		result.Observe(1, commonAttributes...)
 	}
 	_ = metric.Must(meter).NewFloat64ValueObserver("ex.com.one", observerCallback,
 		metric.WithDescription("A ValueObserver set to 1.0"),
@@ -151,7 +165,7 @@ To set up some metric instruments, add the following code to your `main.go` file
 
 	valueRecorder := metric.Must(meter).NewFloat64ValueRecorder("ex.com.two")
 
-	boundRecorder := valueRecorder.Bind(commonLabels...)
+	boundRecorder := valueRecorder.Bind(commonAttributes...)
 	defer boundRecorder.Unbind()
 ```
 
@@ -173,13 +187,13 @@ Let's put the concepts we've just covered together, and create a trace and some 
 		ctx, span = tracer.Start(ctx, "operation")
 		defer span.End()
 
-		span.AddEvent("Nice operation!", trace.WithAttributes(label.Int("bogons", 100)))
+		span.AddEvent("Nice operation!", trace.WithAttributes(attribute.Int("bogons", 100)))
 		span.SetAttributes(anotherKey.String("yes"))
 
 		meter.RecordBatch(
 			// Note: call-site variables added as context Entries:
 			baggage.ContextWithValues(ctx, anotherKey.String("xyz")),
-			commonLabels,
+			commonAttributes,
 
 			valueRecorder.Measurement(2.0),
 		)
