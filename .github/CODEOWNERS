@@ -12,4 +12,8 @@
 #  https://help.github.com/en/articles/about-code-owners
 #
 
+# Global owners, will be the owners for everything in the repo.
 *  @austinlparker @mtwo @flands @jparsana @tedsuo
+
+# C++ content owners
+content/en/docs/cpp/     @open-telemetry/cpp-maintainers
