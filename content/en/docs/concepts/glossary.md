@@ -30,7 +30,7 @@ others. This page captures terminology used in the project and what it means.
   of core capabilities as well as a dedicated contrib repository for non-core
   capabilities including vendor `Exporters`.
 - **[Context
-  Propagation](https://opentelemetry.io/docs/concepts/overview/#context-propagation):**
+  Propagation](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/overview.md#context-propagation):**
   Allows all `Data Sources` to share an underlying context mechanism for storing
   state and accessing data across the lifespan of a `Transaction`.
 - **[DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph):** Directed Acyclic Graph.
