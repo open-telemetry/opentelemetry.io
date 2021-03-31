@@ -19,7 +19,7 @@ others. This page captures terminology used in the project and what it means.
   `Tracing` `Data Source`.
 - **[Attributes](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/common/common.md#attributes):**
   Used by the `Tracing` `Data Source` to attach name/value pairs to a `Span`.
-- **[Baggage](https://opentelemetry.io/docs/concepts/overview/#baggage):** A
+- **[Baggage](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/overview.md#baggage-signal):** A
   mechanism for propagating name/value pairs to help establish a causal
   relationship between events and services.
 - **Client Library:** See `Instrumented Library`.
