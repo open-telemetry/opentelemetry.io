@@ -35,7 +35,7 @@ others. This page captures terminology used in the project and what it means.
   state and accessing data across the lifespan of a `Transaction`.
 - **[DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph):** Directed Acyclic Graph.
 - **[Data
-  Source](https://opentelemetry.io/docs/concepts/overview/#data-sources):** One
+  Source](https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/docs/concepts/data-sources.md):** One
   of `Traces`, `Metrics` or `Logs`.
 - **Dimension:** See `Label`.
 - **[Distributed
