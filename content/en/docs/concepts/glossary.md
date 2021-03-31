@@ -23,7 +23,7 @@ others. This page captures terminology used in the project and what it means.
   mechanism for propagating name/value pairs to help establish a causal
   relationship between events and services.
 - **Client Library:** See `Instrumented Library`.
-- **[Collector](https://opentelemetry.io/docs/concepts/overview/#collector):**
+- **[Collector](https://opentelemetry.io/docs/collector/):**
   A vendor-agnostic implementation on how to receive, process, and export
   telemetry data. A single binary that can be deployed as an agent or gateway.
 - **Contrib:** Several `Instrumentation Libraries` and the `Collector` offer a set
@@ -50,7 +50,7 @@ others. This page captures terminology used in the project and what it means.
   [Instrumentation
   Libraries](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/glossary.md#exporter-library)
   and the
-  [Collector](https://opentelemetry.io/docs/collector/configuration/#exporters).
+  [Collector](https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/docs/collector/configuration.md#basics).
   Exporters can be push or pull based.
 - **[Field](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#field-kinds):**
   name/value pairs added to `Log Records` (similar to `Attributes` for `Spans` and
