@@ -8,7 +8,7 @@ title: "OpenTelemetry"
       <img class="card-img-top mx-auto" src="/img/logos/opentelemetry-stacked-color.png">
       <div class="card-body">
         <h3 class="card-title text-left">An observability framework for cloud-native software.</h3>
-        <p class="card-text text-left"><small>OpenTelemetry is a collection of tools, APIs, and SDKs. You use it to instrument, generate, collect, and export telemetry data (metrics, logs, and traces) for analysis in order to understand your software's performance and behavior.</small></p>
+        <p class="card-text text-left"><small>OpenTelemetry is a collection of tools, APIs, and SDKs. You can use it to instrument, generate, collect, and export telemetry data (metrics, logs, and traces) for analysis in order to understand your software's performance and behavior.</small></p>
       </div>
     </div>
   <br/>
