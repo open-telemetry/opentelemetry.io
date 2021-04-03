@@ -19,7 +19,7 @@ OpenTelemetry collaborates and integrates with other open-source projects includ
 
 {{% blocks/feature icon="far fa-building" title="Vendor Supported" url="/vendors"%}}
 Several cloud providers and observability vendors distribute or natively support OpenTelemetry.
-
+{{% /blocks/feature %}}
 
 {{% /blocks/section %}}
 
