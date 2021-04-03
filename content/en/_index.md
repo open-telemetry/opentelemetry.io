@@ -69,4 +69,9 @@ OpenTelemetry integrates with popular libraries and frameworks such as [Spring](
     Formed through a merger of the OpenTracing and OpenCensus projects.</p>
   </center>
 </section>
+  <center>
+    <p>CNCF closesly works with the Linux Foundation.<br/>
+      <a href="https://www.linuxfoundation.org/en/privacy/#:~:text=The%20Linux%20Foundation%27s%20core%20purpose,%2C%20a%20%E2%80%9CProject%E2%80%9D).&text=The%20Privacy%20Policy%20does%20not,employees%20or%20other%20TLF%20personnel." target="_blank" style="color:#419FF5">Privacy Policy</a>
+   </p>
+  </center>
 {{% /blocks/section %}}
