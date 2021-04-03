@@ -1,5 +1,6 @@
 ---
 title: "Documentation"
+
 aliases:
   - /csharp/
   - /csharp/metrics/
@@ -19,9 +20,11 @@ aliases:
   - /ruby/
   - /ruby/metrics/
   - /ruby/tracing/
+
 menu:
   main:
     weight: 10
+    pre: <i class='fas fa-book'></i>
 ---
 
 OpenTelemetry is a set of APIs, SDKs, tooling and integrations that are
@@ -30,7 +33,7 @@ metrics, and logs. The OpenTelemetry documentation is intended to broadly cover
 key terms, concepts, and instructions on how to use OpenTelemetry in your
 software.
 
-<img src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/Reference_Architecture.svg"></img>
+<img src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/Reference_Architecture.svg" alt="Implementation of the OpenTelemetry Reference Architecture "></img>
 
 OpenTelemetry provides an implementation of all of its components as well as a
 reference architecture. The project is flexible and extensible to support a
