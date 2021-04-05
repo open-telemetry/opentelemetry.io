@@ -7,7 +7,7 @@ tags:
   - Node.js
   - instrumentation
   - sequelize
-repo: https://github.com/aspecto-io/opentelemetry-ext-js/tree/master/packages/instrumentation-mongoose
+repo: https://github.com/aspecto-io/opentelemetry-ext-js/tree/master/packages/instrumentation-sequelize
 license: Apache 2.0
 description: Sequelize instrumentation for Node.js.
 authors: Aspecto Authors (nir@aspecto.io)
