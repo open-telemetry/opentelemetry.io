@@ -247,14 +247,15 @@ for the local service.
 
 ### Trace config
 
-| System property                 | Environment variable            | Purpose                                              |
-|---------------------------------|---------------------------------|------------------------------------------------------|
-| otel.config.sampler.probability | OTEL_CONFIG_SAMPLER_PROBABILITY | Sampling probability between 0 and 1 (default: 1)    |
-| otel.config.max.attrs           | OTEL_CONFIG_MAX_ATTRS           | Maximum number of attributes per span (default: 32)  |
-| otel.config.max.events          | OTEL_CONFIG_MAX_EVENTS          | Maximum number of events per span (default: 128)     |
-| otel.config.max.links           | OTEL_CONFIG_MAX_LINKS           | Maximum number of links per span (default: 32)       |
-| otel.config.max.event.attrs     | OTEL_CONFIG_MAX_EVENT_ATTRS     | Maximum number of attributes per event (default: 32) |
-| otel.config.max.link.attrs      | OTEL_CONFIG_MAX_LINK_ATTRS      | Maximum number of attributes per link (default: 32)  |
+| System property                 | Environment variable            | Purpose                                                                 |
+|---------------------------------|---------------------------------|-------------------------------------------------------------------------|
+| otel.traces.sampler             | OTEL_TRACES_SAMPLER             | The sampler to use for tracing. (default: parentbased_always_on)        |
+| otel.traces.sampler.arg         | OTEL_TRACES_SAMPLER_ARG         | An argument to the configured tracer if supported, for example a ratio. |
+| otel.config.max.attrs           | OTEL_CONFIG_MAX_ATTRS           | Maximum number of attributes per span (default: 32)                     |
+| otel.config.max.events          | OTEL_CONFIG_MAX_EVENTS          | Maximum number of events per span (default: 128)                        |
+| otel.config.max.links           | OTEL_CONFIG_MAX_LINKS           | Maximum number of links per span (default: 32)                          |
+| otel.config.max.event.attrs     | OTEL_CONFIG_MAX_EVENT_ATTRS     | Maximum number of attributes per event (default: 32)                    |
+| otel.config.max.link.attrs      | OTEL_CONFIG_MAX_LINK_ATTRS      | Maximum number of attributes per link (default: 32)                     |
 
 ### Interval metric reader
 
