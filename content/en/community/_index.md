@@ -1,8 +1,10 @@
 ---
-title: Community
+title: "Community"
+linkTitle: "Community"
 menu:
   main:
     weight: 40
+    pre: <i class="fas fa-users"></i>
 ---
 
 {{% blocks/section color="dark" %}}

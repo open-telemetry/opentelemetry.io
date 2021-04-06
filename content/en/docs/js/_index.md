@@ -2,7 +2,7 @@
 title: "Javascript"
 weight: 20
 description: >
-  <img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/JS_SDK.svg"></img>
+  <img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/JS_SDK.svg" alt="JavaScript logo"></img>
   A language-specific implementation of OpenTelemetry in JavaScript (for Node.JS & the browser).
 ---
 

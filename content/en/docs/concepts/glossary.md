@@ -19,23 +19,23 @@ others. This page captures terminology used in the project and what it means.
   `Tracing` `Data Source`.
 - **[Attributes](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/common/common.md#attributes):**
   Used by the `Tracing` `Data Source` to attach name/value pairs to a `Span`.
-- **[Baggage](https://opentelemetry.io/docs/concepts/overview/#baggage):** A
+- **[Baggage](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/overview.md#baggage-signal):** A
   mechanism for propagating name/value pairs to help establish a causal
   relationship between events and services.
 - **Client Library:** See `Instrumented Library`.
-- **[Collector](https://opentelemetry.io/docs/concepts/overview/#collector):**
+- **[Collector](https://opentelemetry.io/docs/collector/):**
   A vendor-agnostic implementation on how to receive, process, and export
   telemetry data. A single binary that can be deployed as an agent or gateway.
 - **Contrib:** Several `Instrumentation Libraries` and the `Collector` offer a set
   of core capabilities as well as a dedicated contrib repository for non-core
   capabilities including vendor `Exporters`.
 - **[Context
-  Propagation](https://opentelemetry.io/docs/concepts/overview/#context-propagation):**
+  Propagation](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/overview.md#context-propagation):**
   Allows all `Data Sources` to share an underlying context mechanism for storing
   state and accessing data across the lifespan of a `Transaction`.
 - **[DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph):** Directed Acyclic Graph.
 - **[Data
-  Source](https://opentelemetry.io/docs/concepts/overview/#data-sources):** One
+  Source](https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/docs/concepts/data-sources.md):** One
   of `Traces`, `Metrics` or `Logs`.
 - **Dimension:** See `Label`.
 - **[Distributed
@@ -50,7 +50,7 @@ others. This page captures terminology used in the project and what it means.
   [Instrumentation
   Libraries](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/glossary.md#exporter-library)
   and the
-  [Collector](https://opentelemetry.io/docs/collector/configuration/#exporters).
+  [Collector](https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/docs/collector/configuration.md#basics).
   Exporters can be push or pull based.
 - **[Field](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#field-kinds):**
   name/value pairs added to `Log Records` (similar to `Attributes` for `Spans` and
