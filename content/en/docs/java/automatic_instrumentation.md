@@ -331,7 +331,7 @@ application invokes the annotated method, it creates a span that denotes its
 duration and provides any thrown exceptions.
 
 ```java
-import io.opentelemetry.extensions.auto.annotations.WithSpan;
+import io.opentelemetry.extension.annotations.WithSpan;
 
 public class MyClass {
   @WithSpan
@@ -351,8 +351,8 @@ An additional dependency is required for this annotation:
   <dependencies>
     <dependency>
       <groupId>io.opentelemetry</groupId>
-      <artifactId>opentelemetry-extension-auto-annotations</artifactId>
-      <version>0.10.0</version>
+      <artifactId>opentelemetry-extension-annotations</artifactId>
+      <version>1.0.0</version>
     </dependency>
   </dependencies>
 ```
@@ -361,7 +361,7 @@ An additional dependency is required for this annotation:
 
 ```groovy
 dependencies {
-    compile('io.opentelemetry:opentelemetry-extension-auto-annotations:0.10.0')
+    compile('io.opentelemetry:opentelemetry-extension-annotations:1.0.0')
 }
 ```
 
