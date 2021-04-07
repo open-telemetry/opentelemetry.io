@@ -57,7 +57,7 @@ weight = 1
 
 
 [params]
-copyright = "The OpenTelemetry Authors | Documentation Distributed under CC BY 4.0"
+copyright = "The OpenTelemetry Authors | Documentation Distributed under CC BY 4.0 | "
 
 tagline = "Effective observability requires high-quality telemetry"
 sub_tagline = "**OpenTelemetry** makes robust, portable telemetry a built-in feature of cloud-native software."
@@ -102,6 +102,7 @@ offlineSearch = false
 announcement = true
 # announcement_message is only displayed when announcement = true; update with your specific message
 announcement_message = "<span style='padding-right:12px'>🎉 </span> The OpenTelemetry tracing specification is now 1.0!&nbsp;&nbsp;<a href='https://medium.com/opentelemetry/opentelemetry-specification-v1-0-0-tracing-edition-72dd08936978'>Learn more today!</a>"
+
 
 # User interface configuration
 [params.ui]
@@ -149,6 +150,7 @@ enable = false
 	url = "https://stackoverflow.com/questions/tagged/open-telemetry"
 	icon = "fab fa-stack-overflow"
         desc = "Practical questions and curated answers"
+   
 # Developer relevant links. These will show up on right side of footer and in the community page if you have one.
 [[params.links.developer]]
 	name = "GitHub"
@@ -165,6 +167,11 @@ enable = false
 	url = "https://opentelemetry.devstats.cncf.io/d/8/dashboards?orgId=1&refresh=15m"
 	icon = "fas fa-chart-area"
         desc = "See our activity on CNCF DevStats"
+[[params.links.developer]]
+name ="Privacy Policy"
+url ="https://www.linuxfoundation.org/en/privacy/#:~:text=The%20Linux%20Foundation%27s%20core%20purpose,%2C%20a%20%E2%80%9CProject%E2%80%9D).&text=The%20Privacy%20Policy%20does%20not,employees%20or%20other%20TLF%20personnel." 
+icon =" fa fa-book"
+desc ="CNCF works in close association with Linux Foundation. Read the privacy policy here"
 
 [[languages.en.menu.main]]
     name = "Blog"
