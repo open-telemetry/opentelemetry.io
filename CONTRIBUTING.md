@@ -13,6 +13,10 @@ A few notes to be aware of:
 * Before submitting a PR be sure to run `make test` and address any issues uncovered
 * Any make target that requires `get-milestones` requires that a GH_TOKEN environment variable be set
 
+## Mirrored Documentation
+
+The per-language 'getting started' guides are mirrored to each language's repository. Once a release occurs for a SIG, an issue or PR should be created in this repository to update the content in `/content/en/docs/<language>` with the changes.
+
 ## Deploy previews
 
 Whenever you submit a pull request to this repo, Netlify creates a [deploy
