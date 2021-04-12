@@ -109,7 +109,7 @@ metrics include:
 - Reporting current active requests being handled.
 
 For more information, see the [metrics
-specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/overview.md#metrics),
+specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/overview.md#metric-signal),
 which covers topics including: measure, measurement, metric, data, data point
 and labels.
 
