@@ -1,12 +1,12 @@
 ---
-title: gRPC Plugin
+title: gRPC Instrumentation
 registryType: instrumentation
 language: js
 tags:
   - js
   - instrumentation
-repo: https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-plugin-grpc
+repo: https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-instrumentation-grpc
 license: Apache 2.0
-description: gRPC plugin for Node.js.
+description: gRPC and gRPC.js  instrumentation for Node.js.
 authors: OpenTelemetry Authors
 ---

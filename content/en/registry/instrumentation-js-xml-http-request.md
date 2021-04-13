@@ -1,12 +1,12 @@
 ---
-title: Fetch Plugin
+title: XMLHttpRequest Instrumentation
 registryType: instrumentation
 language: js
 tags:
   - js
   - instrumentation
-repo: https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-plugin-fetch
+repo: https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-instrumentation-xml-http-request
 license: Apache 2.0
-description: Fetch plugin for Node.js.
+description: XMLHttpRequest instrumentation for browsers.
 authors: OpenTelemetry Authors
 ---

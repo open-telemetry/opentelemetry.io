@@ -1,12 +1,12 @@
 ---
-title: MongoDB Plugin
+title: MongoDB Instrumentation
 registryType: instrumentation
 language: js
 tags:
   - js
   - instrumentation
-repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-plugin-mongodb
+repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-mongodb
 license: Apache 2.0
-description: MongoDB plugin for Node.js.
+description: MongoDB instrumentation for Node.js.
 authors: OpenTelemetry Authors
 ---
