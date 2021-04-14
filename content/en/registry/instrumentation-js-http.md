@@ -1,12 +1,12 @@
 ---
-title: HTTP Plugin
+title: HTTP Instrumentation
 registryType: instrumentation
 language: js
 tags:
   - js
   - instrumentation
-repo: https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-plugin-http
+repo: https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-instrumentation-http
 license: Apache 2.0
-description: HTTP plugin for Node.js.
+description: HTTP and HTTPS instrumentation for Node.js.
 authors: OpenTelemetry Authors
 ---

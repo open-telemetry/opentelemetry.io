@@ -1,12 +1,12 @@
 ---
-title: Koa Plugin
+title: Koa Instrumentation
 registryType: instrumentation
 language: js
 tags:
   - js
   - instrumentation
-repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-koa-instrumentation
+repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-koa
 license: Apache 2.0
-description: Koa plugin for Node.js.
+description: Koa instrumentation for Node.js.
 authors: OpenTelemetry Authors
 ---

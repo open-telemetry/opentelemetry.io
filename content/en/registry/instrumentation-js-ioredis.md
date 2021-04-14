@@ -1,12 +1,12 @@
 ---
-title: ioRedis Plugin
+title: ioRedis Instrumentation
 registryType: instrumentation
 language: js
 tags:
   - js
   - instrumentation
-repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-plugin-ioredis
+repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-ioredis
 license: Apache 2.0
-description: ioRedis plugin for Node.js.
+description: ioRedis instrumentation for Node.js.
 authors: OpenTelemetry Authors
 ---
