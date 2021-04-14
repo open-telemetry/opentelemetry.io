@@ -14,7 +14,11 @@ To add your project, please make a pull request. You'll need to create a data fi
 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
 
-Maintainers ([@open-telemetry/docs-approvers](https://github.com/orgs/open-telemetry/teams/docs-approvers))
+Approvers ([@open-telemetry/docs-approvers](https://github.com/orgs/open-telemetry/teams/docs-approvers))
+
+- [Shelby Spees](https://github.com/shelbyspees), Honeycomb
+
+Maintainers ([@open-telemetry/docs-maintainers](https://github.com/orgs/open-telemetry/teams/docs-maintainers))
 
 - [Steve Flanders](https://github.com/flands), Splunk
 - [Morgan McLean](https://github.com/mtwo), Google
