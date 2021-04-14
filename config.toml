@@ -58,13 +58,11 @@ weight = 1
 
 [params]
 copyright = "The OpenTelemetry Authors | Documentation Distributed under CC BY 4.0 | "
-<<<<<<< HEAD
-=======
+
 
 [params.footer]
 text ="Privacy Policy"
 url ="https://www.linuxfoundation.org/en/privacy/#:~:text=The%20Linux%20Foundation%27s%20core%20purpose,%2C%20a%20%E2%80%9CProject%E2%80%9D).&text=The%20Privacy%20Policy%20does%20not,employees%20or%20other%20TLF%20personnel."
->>>>>>> fbec367... added privacy policy in footer
 
 
 tagline = "Effective observability requires high-quality telemetry"
