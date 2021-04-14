@@ -123,6 +123,6 @@ to determine the root cause of an issue and typically contain information about
 who changed what as well as the result of the change.
 
 For more information, see the [logs
-specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/overview.md#logs),
+specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/overview.md#log-signal),
 which covers topics including: log, defined fields, trace context fields and
 severity fields.
