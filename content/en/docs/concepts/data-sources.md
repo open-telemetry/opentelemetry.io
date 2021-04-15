@@ -57,8 +57,8 @@ Generally, the lifecycle of a span resembles the following:
 - The work being done by the service completes, successfully or not. The span
   status is appropriately set, and the span is marked finished.
 
-For more information, see the [distributed tracing
-specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/overview.md#distributed-tracing),
+For more information, see the [traces
+specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/overview.md#tracing-signal),
 which covers concepts including: trace, span, parent/child relationship, span
 context, attributes, events and links.
 
