@@ -150,7 +150,19 @@ enable = false
 	url = "https://stackoverflow.com/questions/tagged/open-telemetry"
 	icon = "fab fa-stack-overflow"
         desc = "Practical questions and curated answers"
-   
+
+[[params.links.user]]
+	name = "Iconography"
+	url = "https://github.com/open-telemetry/opentelemetry.io/blob/main/iconography/Otel_iconography.zip"
+	icon = "fa fa-file-archive"
+        desc = "The OpenTelemetry logos and iconography can be found here." 
+
+[[params.links.user]]
+	name = "CNCF branding"
+	url = "https://cncf-branding.netlify.app/projects/opentelemetry/"
+	icon = "fas fa-image"
+    desc = "Check out the CNCF logo page for OpenTelemetry" 
+	
 # Developer relevant links. These will show up on right side of footer and in the community page if you have one.
 [[params.links.developer]]
 	name = "GitHub"
