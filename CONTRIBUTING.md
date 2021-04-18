@@ -1,3 +1,5 @@
+# Contributing to OpenTelemetry.io
+
 ## Dev Setup
 
 * Fork and clone the repository
@@ -15,7 +17,24 @@ A few notes to be aware of:
 
 ## Mirrored Documentation
 
-The per-language 'getting started' guides are mirrored to each language's repository. Once a release occurs for a SIG, an issue or PR should be created in this repository to update the content in `/content/en/docs/<language>` with the changes.
+### Language-specific documentation (under `/content/en/docs/<language>`)
+
+The per-language API, SDK, and "Getting Started" documentation is hosted in each language's repository under the `website_docs` directory.
+The content of those docs is mirrored to each language's directory in this repository (open-telemetry/opentelemetry.io): [`/content/en/docs/<language>`](./content/en/docs/).
+
+Content updates for those pages should take place in your language's repository.
+That includes changes to:
+
+* the "Status and Releases" section in `_index.md`
+* the "Getting Started" page, if it exists
+* any language-specific instrumentation pages
+* any other pages that live under that language's section on [the docs site](https://opentelemetry.io/docs/)
+
+Once a release occurs for a SIG or any content gets updated in those docs, an issue or PR should be created in this repository to pull the latest into `/content/en/docs/<language>`.
+
+### Anything else under `content/`
+
+All other content, including entries in the [Registry](https://opentelemetry.io/registry/), is hosted in this repository and can be updated here.
 
 ## Deploy previews
 
@@ -33,4 +52,3 @@ changes.
 
 > Site administrators can access the admin interface
 > [here](https://app.netlify.com/sites/opentelemetry/overview).
-
