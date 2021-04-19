@@ -157,7 +157,7 @@ others. This page captures terminology used in the project and what it means.
 ### Metrics
 
 - **[Metric API Terminology](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/api.md#overview)**
-- **[Metric SDK Terminology](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#sdk-terminology)**
+- **[Metric SDK Terminology](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics#specifications)**
 
 ### Logs
 
