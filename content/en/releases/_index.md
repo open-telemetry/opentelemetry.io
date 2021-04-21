@@ -3,6 +3,7 @@ Title: "Releases"
 menu:
   main:
     weight: 30
+    pre : <i class="fas fa-laptop-code"></i>
 ---
 
 <a class="td-offset-anchor"></a>
