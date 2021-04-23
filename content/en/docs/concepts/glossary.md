@@ -68,7 +68,7 @@ others. This page captures terminology used in the project and what it means.
   the same `Library` if it has built-in OpenTelemetry instrumentation.
 - **[JSON](https://en.wikipedia.org/wiki/JSON):** JavaScript Object Notation.
 - **[Label](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/api.md#labels):**
-  name/value pairs added to `Metric` data oints (similar to `Attributes` for `Spans`
+  name/value pairs added to `Metric` data points (similar to `Attributes` for `Spans`
   and `Fields` for `Log Records`).
 - **Language:** Programming Language.
 - **Library:** A language-specific collection of behavior invoked by an interface.
