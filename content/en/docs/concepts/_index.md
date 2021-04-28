@@ -7,5 +7,5 @@ description: >
 ---
 
 The Concepts section help you learn more about the data sources and components
-of the OpenTelemetry project in order to obtain a deeper understand of how
+of the OpenTelemetry project in order to obtain a deeper understanding of how
 OpenTelemetry works.
