@@ -126,8 +126,8 @@ architecture.
 ```bash
 $ sudo yum update
 $ sudo yum -y install wget systemctl
-$ wget https://github.com/open-telemetry/opentelemetry-collector/releases/download/v0.20.0/otel-collector_0.20.0-1_x86_64.rpm
-$ rpm -ivh otel-collector_0.20.0-1_x86_64.rpm
+$ wget https://github.com/open-telemetry/opentelemetry-collector/releases/download/v0.20.0/otel-collector-0.20.0-1.x86_64.rpm
+$ rpm -ivh otel-collector-0.20.0-1_x86_64.rpm
 ```
 
 By default, the `otel-collector` systemd service will be started with the
