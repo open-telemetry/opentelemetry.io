@@ -185,7 +185,6 @@ You can then visit the Jaeger UI, see your service under “services”, and fin
 
 
 
-![image](images/jaeger_trace.png)
 
 ## Instrumentation example with Flask
 
