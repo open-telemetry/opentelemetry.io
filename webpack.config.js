@@ -17,6 +17,5 @@ module.exports = {
       path.resolve(dir), 'node_modules',
     ],
     extensions: ['.ts', '.js']
-  },
-  devtool: 'none'
+  }
 }
