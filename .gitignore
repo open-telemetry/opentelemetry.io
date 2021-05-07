@@ -1,14 +1,11 @@
 # Hugo-generated assets
-public/
+/public
 resources/
 
 # npm assets
 node_modules/
 
-# ignore themes
-themes/
-
-# ignore generated data
+# Generated data
 data/progress_generated.yaml
 
 # Link checker
@@ -17,5 +14,6 @@ tmp/
 
 scripts/collector.yaml
 assets/js/*
-#intellij 
+
+# IntelliJ
 *.iml
