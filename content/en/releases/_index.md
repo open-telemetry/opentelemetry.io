@@ -20,29 +20,90 @@ menu:
   </div>
 </section>
 
-{{% blocks/section type="section" color="dark" %}}
-## Project Status
-The OpenTelemetry project consists of multiple
-[components](../docs/concepts/components/) that support multiple [data
-sources](../docs/concepts/data-sources/). Each component defines its own
-versioning and stability guarantees. These guarantees may be data source
-specific.
+{{% blocks/section type="section" color="white" %}}
 
-- The OpenTelemetry project provides [language independent interface
-types](https://github.com/open-telemetry/opentelemetry-proto). [Maturity
-levels](https://github.com/open-telemetry/opentelemetry-proto#maturity-level)
-are defined and specified for the available encodings.
-- The OpenTelemetry
-[specification](https://github.com/open-telemetry/opentelemetry-specification)
-defines [versioning and
-stability](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/versioning-and-stability.md)
-guarantees.
-- Instrumentation libraries are language-specific implementations that each
-  release at their own cadence while adhering to the OpenTelemetry
-  specification and [versioning
-  schema](https://github.com/open-telemetry/opentelemetry-specification/blob/9047c91412d3d4b7f28b0f7346d8c5034b509849/specification/versioning-and-stability.md#version-numbers).
-- The OpenTelemetry Collector also adheres to the OpenTelemetry specification and
-versioning schema.
+## Project Overview
+
+OpenTelemetry is developed on a signal by signal basis. Tracing, metrics, baggage, and logging are examples of signals.
+Signals are built on top of context propagation, a shared mechanism for correlating data across distributed systems.
+
+Each signal consists of four core components: APIs, SDKs, the OTLP protocol, and the Collector. Signals also have contrib components, an ecosystem of plugins and instrumentation.
+All instrumentation shares the same semantic conventions, to ensure that they produce the same data when observing common operations, such as HTTP requests.
+
+A detailed overview of signals and components can be found [here](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/overview.md).
+
+### Component Lifecycle
+
+Components follow a development lifecycle: Draft, Experimental, Stable, Deprecated, Removed.  
+
+**Draft** components are under design, and have not been added to the specification.  
+**Experimental** components are released and available for beta testing.  
+**Stable** components are backwards compatible and covered under long term support.  
+**Deprecated** components are stable, but may eventually be removed.
+
+The complete definitions for lifecycles and long term support can be found [here](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/versioning-and-stability.md).
+
+### Current Status
+
+The following is a high level status report for currently available signals. Note that while the OpenTelemetry clients conform to a shared specification, they are developed independently.
+
+Checking the current status for each client in the README of its [github repo](https://github.com/open-telemetry) is recommended. Client support for specific features can be found in the [specification compliance tables](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md).
+
+#### Tracing
+
+**API:** stable  
+**SDK:** stable  
+**Protocol:** stable  
+**Collector:** stable  
+
+* OpenTelemetry Tracing is now completely stable, and covered by long term support.
+* OpenTelemetry clients are versioned to v1.0 once their tracing implementation is complete.
+* The tracing specification is still extensible, but only in a backwards compatible manner.
+
+#### Metrics
+
+**API:** draft  
+**SDK:** draft  
+**Protocol:** stable  
+**Collector:** experimental  
+
+* OpenTelemetry Metrics is currently under active development.
+* The data model is stable and released as part of the OTLP protocol.
+* Experimental support for metric pipelines are available in the Collector.
+* Collector support for Prometheus is under developemnet, in collaboration with the Prometheus community.
+* The metric API and SDK specification is currently being protoypted in Java, .NET, and Python.
+
+#### Baggage
+
+**API:** stable  
+**SDK:** stable  
+**Protocol:** N/A  
+**Collector:** N/A  
+
+* OpenTelemetry Baggage is now completely stable.
+* Baggage is not an observability tool, it is a system for attaching arbitratry keys and values to a transaction, so that downstream services may access them. As such, there is no OTLP or Collector component to baggage.
+
+#### Logging
+
+**API:** draft  
+**SDK:** draft  
+**Protocol:** experimental  
+**Collector:** experimental
+
+* OpenTelemetry Logging is currently under active development.
+* The data model is experimental and released as part of the OTLP protocol.
+* Log processing for many data formats has been added to the Collector, thanks to the donation of Stanza to the the OpenTelemetry project.
+* Log appenders are currently under develop in many languages. Log appenders allow OpenTelemetry tracing data, such as trace and span IDs, to be appended to existing logging systems.
+* An OpenTelemetry logging SDK is currently under development. This allows OpenTelemetry clients to injest logging data from existing logging systems, outputting logs as part of OTLP along with tracing and metrics.
+* An OpTelemetry logging API is not currently under development. We are focusing first on integration with existing logging systems. When metrics is complete, focus will shift to development of an OpenTelemetry logging API.
+
+#### Instrumentation
+
+An effort to expand the availability and quality of OpenTelemetry instrumentation is scheduled for this summer.
+
+* Stabilize and define long term support for instrumentation
+* Provide instrumentation for a wider variety of important libraries
+* Provide testing and CICD tools for writing and verifying instrumentation quality.
 
 {{% /blocks/section %}}
 
