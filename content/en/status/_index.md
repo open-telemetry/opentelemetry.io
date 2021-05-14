@@ -1,5 +1,5 @@
 ---
-Title: "Releases"
+Title: "Status"
 menu:
   main:
     weight: 30
