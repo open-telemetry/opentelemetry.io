@@ -18,7 +18,7 @@ weight: 50
 | Company | Distribution | Native OTLP | Reference |
 | ------- | ------------ | ----------- | --------- |
 | AWS     | Yes          | No          | https://aws-otel.github.io/ |
-| Dynatrace | No         | No          | https://www.dynatrace.com/integrations/opentelemetry/ |
+| Dynatrace | No         | Yes          | https://www.dynatrace.com/support/help/how-to-use-dynatrace/transactions-and-services/service-monitoring-settings/opentelemetry/ |
 | Elastic | Yes          | No          | https://www.elastic.co/guide/en/apm/get-started/current/open-telemetry-elastic.html |
 | F5      | No           | Yes         | https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/f5cloudexporter |
 | Honeycomb | No         | Yes         | https://docs.honeycomb.io/getting-data-in/otel-collector/ |
