@@ -43,7 +43,7 @@ processors:
 
 exporters:
   otlp:
-    endpoint: otelcol:55680
+    endpoint: otelcol:4317
 
 extensions:
   health_check:
@@ -87,9 +87,9 @@ processors:
 
 exporters:
   otlp:
-    endpoint: otelcol:55680
+    endpoint: otelcol:4317
   otlp/2:
-    endpoint: otelcol2:55680
+    endpoint: otelcol2:4317
 
 extensions:
   health_check:
@@ -322,7 +322,7 @@ exporters:
 
   # Data sources: traces, metrics, logs
   otlp:
-    endpoint: otelcol2:55680
+    endpoint: otelcol2:4317
     insecure: true
 
   # Data sources: traces, metrics

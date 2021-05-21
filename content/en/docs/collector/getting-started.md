@@ -73,10 +73,10 @@ own Prometheus metrics.
 ```bash
 $ git clone git@github.com:open-telemetry/opentelemetry-collector.git; \
     cd opentelemetry-collector/examples; \
-    go build main.go; ./main & pid1="$!";
+    go build main.go; ./main & pid1=$!; \
     docker run --rm -p 13133:13133 -p 14250:14250 -p 14268:14268 \
-      -p 55678-55680:55678-55680 -p 8888:8888 -p 9411:9411 \
-      -v "${PWD}/otel-local-config.yaml":/otel-local-config.yaml \
+      -p 55678-55679:55678-55679 -p 4317:4317 -p 8888:8888 -p 9411:9411 \
+      -v "${PWD}/local/otel-config.yaml":/otel-local-config.yaml \
       --name otelcol otel/opentelemetry-collector \
       --config otel-local-config.yaml; \
     kill $pid1; docker stop otelcol
