@@ -58,12 +58,9 @@ Create a file named `tracing.js` and add the following code to create a tracer p
 ```javascript
 'use strict';
 
-const { LogLevel } = require("@opentelemetry/core");
 const { NodeTracerProvider } = require("@opentelemetry/node");
 
-const provider = new NodeTracerProvider({
-  logLevel: LogLevel.ERROR
-});
+const provider = new NodeTracerProvider();
 
 provider.register();
 ```
@@ -134,13 +131,10 @@ To export traces, modify `tracing.js` so that it matches the following code snip
 ```javascript
 'use strict';
 
-const { LogLevel } = require("@opentelemetry/core");
 const { NodeTracerProvider } = require("@opentelemetry/node");
 const { SimpleSpanProcessor, ConsoleSpanExporter } = require("@opentelemetry/tracing");
 
-const provider = new NodeTracerProvider({
-  logLevel: LogLevel.ERROR
-});
+const provider = new NodeTracerProvider();
 
 provider.register();
 
@@ -248,10 +242,9 @@ app.listen(parseInt(PORT, 10), () => { console.log(`Listening for requests on ht
 - tracing.js
 ```javascript
 'use strict';
-const { LogLevel } = require("@opentelemetry/core");
 const { NodeTracerProvider } = require("@opentelemetry/node");
 const { SimpleSpanProcessor, ConsoleSpanExporter } = require("@opentelemetry/tracing");
-const provider = new NodeTracerProvider({ logLevel: LogLevel.ERROR });
+const provider = new NodeTracerProvider();
 provider.register();
 provider.addSpanProcessor(new SimpleSpanProcessor(new ConsoleSpanExporter()));
 console.log("tracing initialized");
