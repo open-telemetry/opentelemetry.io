@@ -69,5 +69,5 @@ future, OpenTelemetry may certify distributions and partners similarly to the
 Kubernetes project. When evaluating a distribution, ensure using the
 distribution does not result in vendor lock-in.
 
-> Any support for a distribution from come from the distribution authors and
+> Any support for a distribution comes from the distribution authors and
 > not the OpenTelemetry authors.
