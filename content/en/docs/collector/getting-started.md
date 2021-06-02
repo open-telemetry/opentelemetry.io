@@ -2,12 +2,12 @@
 title: "Getting Started"
 weight: 1
 ---
-
+<!-- markdown-link-check-disable -->
 Please be sure to review the [Data Collection
 documentation](../../concepts/data-collection) in order to understand the
 deployment models, components, and repositories applicable to the OpenTelemetry
 Collector.
-
+<!-- markdown-link-check-enable -->
 ## Deployment
 
 The OpenTelemetry Collector consists of a single binary and two primary deployment methods:
@@ -75,7 +75,7 @@ $ git clone git@github.com:open-telemetry/opentelemetry-collector.git; \
     cd opentelemetry-collector/examples; \
     go build main.go; ./main & pid1="$!";
     docker run --rm -p 13133:13133 -p 14250:14250 -p 14268:14268 \
-      -p 55678-55680:55678-55680 -p 8888:8888 -p 9411:9411 \
+      -p 55678-55679:55678-55679 -p 4317:4317 -p 8888:8888 -p 9411:9411 \
       -v "${PWD}/otel-local-config.yaml":/otel-local-config.yaml \
       --name otelcol otel/opentelemetry-collector \
       --config otel-local-config.yaml; \
@@ -106,7 +106,7 @@ Every Collector release includes DEB and RPM packaging for Linux amd64/arm64
 systems. The packaging includes a default configuration that can be found at
 `/etc/otel-collector/config.yaml` post-installation.
 
-> Please note that systemd is required for automatic service configuration
+> Please note that systemd is require for automatic service configuration
 
 To get started on Debian systems run the following replacing `v0.20.0` with the
 version of the Collector you wish to run and `amd64` with the appropriate
@@ -126,8 +126,8 @@ architecture.
 ```bash
 $ sudo yum update
 $ sudo yum -y install wget systemctl
-$ wget https://github.com/open-telemetry/opentelemetry-collector/releases/download/v0.20.0/otel-collector-0.20.0-1.x86_64.rpm
-$ rpm -ivh otel-collector-0.20.0-1_x86_64.rpm
+$ wget https://github.com/open-telemetry/opentelemetry-collector/releases/download/v0.20.0/otel-collector_0.20.0-1_x86_64.rpm
+$ rpm -ivh otel-collector_0.20.0-1_x86_64.rpm
 ```
 
 By default, the `otel-collector` systemd service will be started with the
@@ -154,7 +154,7 @@ $ sudo journalctl -u otel-collector
 
 ### Windows Packaging
 
-Every Collector release includes EXE and MSI packaging for Windows amd64 systems.
+Every Collector release includes EXE and MSI packaging for Linux amd64 systems.
 The MSI packaging includes a default configuration that can be found at
 `\Program Files\OpenTelemetry Collector\config.yaml`.
 
