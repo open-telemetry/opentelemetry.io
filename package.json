@@ -19,7 +19,7 @@
     "@opentelemetry/exporter-collector": "^0.18.2",
     "@opentelemetry/instrumentation": "^0.18.2",
     "@opentelemetry/instrumentation-document-load": "^0.20.0",
-    "@opentelemetry/instrumentation-user-interaction": "^0.16.0",
+    "@opentelemetry/instrumentation-user-interaction": "^0.20.0",
     "@opentelemetry/tracing": "^0.18.2",
     "@opentelemetry/web": "^0.18.2"
   }
