@@ -213,7 +213,7 @@ Now, restart your application and add some load, you will see traces & metrics p
 value: 1
 ```
 
-If you'd like to write those traces and spanes to Zipkin or Prometheus follow the [complete guide](https://github.com/open-telemetry/opentelemetry-js/blob/main/getting-started/README.md).
+If you'd like to write those traces and spans to Zipkin or Prometheus follow the [complete guide](https://github.com/open-telemetry/opentelemetry-js/blob/main/getting-started/README.md).
 
 
 # Quick Start
