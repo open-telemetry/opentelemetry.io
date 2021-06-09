@@ -4,12 +4,12 @@ weight: 20
 ---
 
 Please be sure to review the following documentation:
-
+<!-- markdown-link-check-disable -->
 - [Data Collection concepts](../../concepts/data-collection) in order to
   understand the repositories applicable to the OpenTelemetry Collector.
 - [Security
   guidance](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security.md)
-
+<!-- markdown-link-check-enable -->
 ## Basics
 
 The Collector consists of three components that access telemetry data:
@@ -43,7 +43,7 @@ processors:
 
 exporters:
   otlp:
-    endpoint: otelcol:55680
+    endpoint: otelcol:4317
 
 extensions:
   health_check:
@@ -87,9 +87,9 @@ processors:
 
 exporters:
   otlp:
-    endpoint: otelcol:55680
+    endpoint: otelcol:4317
   otlp/2:
-    endpoint: otelcol2:55680
+    endpoint: otelcol2:4317
 
 extensions:
   health_check:
@@ -121,9 +121,11 @@ service:
 
 <img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Receivers.svg"></img>
 
+<!-- markdown-link-check-disable -->
 A receiver, which can be push or pull based, is how data gets into the
 Collector. Receivers may support one or more [data
 sources](../../concepts/data-sources).
+<!-- markdown-link-check-enable -->
 
 The `receivers:` section is how receivers are configured. Many receivers come
 with default settings so simply specifying the name of the receiver is enough
@@ -277,10 +279,11 @@ processors:
 ## Exporters
 
 <img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Exporters.svg"></img>
-
+<!-- markdown-link-check-disable -->
 An exporter, which can be push or pull based, is how you send data to one or
 more backends/destinations. Exporters may support one or more [data
 sources](../../concepts/data-sources).
+<!-- markdown-link-check-enable -->
 
 The `exporters:` section is how exporters are configured. Exporters may come
 with default settings, but many require configuration to specify at least the
@@ -322,7 +325,7 @@ exporters:
 
   # Data sources: traces, metrics, logs
   otlp:
-    endpoint: otelcol2:55680
+    endpoint: otelcol2:4317
     insecure: true
 
   # Data sources: traces, metrics
