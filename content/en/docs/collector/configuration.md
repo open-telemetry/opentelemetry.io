@@ -467,9 +467,9 @@ known authenticators, use the [Registry](/registry/?s=authenticator&component=ex
 
 To add a server authenticator to a receiver in your collector, make sure to:
 
-1. add the authenticator extension under the `extensions` section
-1. add the extension to the `services` node
-1. add a reference to the authenticator under the `auth` node for your receiver
+1. add the authenticator extension and its configuration under `.extensions`
+1. add a reference to the authenticator to `.services.extensions`, so that it's loaded by the collector
+1. add a reference to the authenticator under `.receivers.<your-receiver>.<http-or-grpc-config>.auth`
 
 Here's an example that uses the OIDC authenticator on the receiver side, making this suitable for
 a remote collector that receives data from an OpenTelemetry Collector acting as agent:
