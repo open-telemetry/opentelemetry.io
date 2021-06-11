@@ -19,7 +19,7 @@ Authenticators are regular extensions that also satisfy one or more interfaces r
 - [go.opentelemetry.io/collector/config/configauth/GRPCClientAuthenticator](https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#GRPCClientAuthenticator)
 - [go.opentelemetry.io/collector/config/configauth/HTTPClientAuthenticator](https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#HTTPClientAuthenticator)
 
-Server authenticators are used with receivers, and are able to intercept HTTP and gRPC requests, while client authenticators are used with exporteres, able to add authentication data to HTTP and gRPC requests. It is possible for authenticators to implement both interfaces at the same time, allowing a single instance of the extension to be used both for the incoming and outgoing requests. Note that users might still want to have different authenticators for the incoming and outgoing requests, so, don't make your authenticator required to be used at both ends.
+Server authenticators are used with receivers, and are able to intercept HTTP and gRPC requests, while client authenticators are used with exporters, able to add authentication data to HTTP and gRPC requests. It is possible for authenticators to implement both interfaces at the same time, allowing a single instance of the extension to be used both for the incoming and outgoing requests. Note that users might still want to have different authenticators for the incoming and outgoing requests, so, don't make your authenticator required to be used at both ends.
 
 Once an authenticator extension is available in the collector distribution, it can be referenced in the configuration file as a regular extension:
 
@@ -68,7 +68,7 @@ service:
       exporters:  []
 ```
 
-When multiple instances of a given authenticator is needed, they can have different names:
+When multiple instances of a given authenticator are needed, they can have different names:
 
 ```yaml
 extensions:
