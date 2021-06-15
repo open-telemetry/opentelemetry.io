@@ -156,9 +156,9 @@ receivers:
       load:
       memory:
       network:
+      paging:
       process:
       processes:
-      swap:
 
   # Data sources: traces
   jaeger:
