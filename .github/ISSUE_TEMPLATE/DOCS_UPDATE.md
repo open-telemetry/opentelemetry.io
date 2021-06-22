@@ -11,7 +11,7 @@ assignees: ''
 The authoritative copy of the documentation for each language is contained in the respective language repository at `/website_docs`.
 Please report any issues in the appropriate SIG repository.
 
-**What needs changed?**
+**What needs to be changed?**
 Describe the update that is required.
 
 **What is the name + path of the page that needs changed?**
