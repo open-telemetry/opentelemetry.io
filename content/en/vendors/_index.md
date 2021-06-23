@@ -21,7 +21,7 @@ weight: 50
 | Dynatrace | Yes        | Yes         | https://www.dynatrace.com/support/help/how-to-use-dynatrace/transactions-and-services/service-monitoring-settings/opentelemetry/ |
 | Elastic | Yes          | No          | https://www.elastic.co/guide/en/apm/get-started/current/open-telemetry-elastic.html |
 | F5      | No           | Yes         | https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/f5cloudexporter |
-| Honeycomb | No         | Yes         | https://docs.honeycomb.io/getting-data-in/otel-collector/ |
+| Honeycomb | Yes        | Yes         | https://docs.honeycomb.io/getting-data-in/ |
 | Lightstep | Yes        | Yes         | https://github.com/lightstep?q=launcher |
 | New Relic | Yes        | No          | https://newrelic.com/solutions/opentelemetry |
 | Splunk | Yes           | Yes         | https://www.splunk.com/en_us/blog/conf-splunklive/announcing-native-opentelemetry-support-in-splunk-apm.html |
