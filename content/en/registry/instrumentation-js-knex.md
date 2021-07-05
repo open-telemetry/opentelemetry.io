@@ -1,0 +1,16 @@
+---
+title: OpenTelemetry Instrumentation for knex
+registryType: instrumentation
+isThirdParty: false
+language: js
+tags:
+  - Node.js
+  - knex
+  - orm
+  - database
+repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-knex
+license: Apache 2.0
+description: Instrumentation library for Knex.
+authors: OpenTelemetry Authors
+otVersion: latest
+---
