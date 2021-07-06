@@ -1,0 +1,16 @@
+---
+title: OpenTelemetry pillarjs/Router Instrumentation for Node.js
+registryType: instrumentation
+isThirdParty: false
+language: js
+tags:
+  - Node.js
+  - pillarjs
+  - pillarjs-router
+  - router
+repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-restify
+license: Apache 2.0
+description: This module provides automatic instrumentation for pillarjs/router and allows the user to automatically collect trace data and export them to their backend of choice.
+authors: OpenTelemetry Authors
+otVersion: latest
+---
