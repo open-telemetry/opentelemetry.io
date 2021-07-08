@@ -512,10 +512,11 @@ them to every RPC made to a remote collector:
 
 ```yaml
 extensions:
-  oauth2clientcredentials:
+  oauth2client:
     client_id: agent
     client_secret: some-secret
     token_url: http://localhost:8080/auth/realms/opentelemetry/protocol/openid-connect/token
+    scopes: ["api.metrics.write"]
 
 receivers:
   otlp:
@@ -533,7 +534,7 @@ exporters:
 
 service:
   extensions:
-    - oauth2clientcredentials
+    - oauth2client
   pipelines:
     traces:
       receivers:
