@@ -27,7 +27,7 @@ title: "OpenTelemetry"
     <div class="card bg-secondary">
       <div class="card-body">
         <h4 class="card-title">Integrates With Popular Frameworks and Libraries</h4>
-        <p>MySQL | Redis | Django | Kafka | Jetty | Akka | RabbitMQ | Spring | Flask | net/http | gorilla/mux | WSGI | JDBC | PostgreSQL</p>
+        <p>MySQL | Redis | Django | Kafka | Jetty | Akka | RabbitMQ | Spring | Quarkus | Flask | net/http | gorilla/mux | WSGI | JDBC | PostgreSQL</p>
       </div>
       <div class="card-footer bg-transparent">
         <a class="btn btn-lg btn-secondary" href="https://github.com/open-telemetry">
@@ -53,7 +53,7 @@ Create and collect telemetry data from your services and software, then forward 
 {{% /blocks/feature %}}
 
 {{% blocks/feature icon="fas fa-magic" title="Drop-In Instrumentation"%}}
-OpenTelemetry integrates with popular libraries and frameworks such as [Spring](https://spring.io/), [ASP.NET Core](https://docs.microsoft.com/aspnet/core), [Express](https://expressjs.com/), and more! Installation and integration can be as simple as a few lines of code.
+OpenTelemetry integrates with popular libraries and frameworks such as [Spring](https://spring.io/), [ASP.NET Core](https://docs.microsoft.com/aspnet/core), [Express](https://expressjs.com/), [Quarkus](https://quarkus.io/), and more! Installation and integration can be as simple as a few lines of code.
 {{% /blocks/feature %}}
 
 {{% blocks/feature icon="fab fa-github" title="Open Source, Vendor Neutral" url="https://github.com/open-telemetry"%}}
