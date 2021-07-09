@@ -41,6 +41,7 @@ import (
 
 	// For experimental metrics support, also include:
 	"go.opentelemetry.io/otel/metric"
+  "go.opentelemetry.io/otel/metric/global"
 	"go.opentelemetry.io/otel/exporters/stdout/stdoutmetric"
 	controller "go.opentelemetry.io/otel/sdk/metric/controller/basic"
 	processor "go.opentelemetry.io/otel/sdk/metric/processor/basic"
@@ -131,7 +132,7 @@ Setting up global options uses the `otel` package - add these options to your `m
 
 ```go
 	otel.SetTracerProvider(tp)
-	otel.SetMeterProvider(pusher.MeterProvider())
+  global.SetMeterProvider(pusher.MeterProvider())
 	propagator := propagation.NewCompositeTextMapPropagator(propagation.Baggage{}, propagation.TraceContext{})
 	otel.SetTextMapPropagator(propagator)
 ```
