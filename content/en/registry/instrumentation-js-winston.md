@@ -9,7 +9,7 @@ tags:
   - logging
 repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-winston
 license: Apache 2.0
-description: Instrumentation library for Bunyan.
+description: Instrumentation library for Winston.
 authors: OpenTelemetry Authors
 otVersion: latest
 ---
