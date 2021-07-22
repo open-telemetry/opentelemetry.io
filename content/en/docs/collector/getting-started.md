@@ -60,7 +60,7 @@ Every release of the Collector is published to Docker Hub and comes with a
 default configuration file.
 
 ```bash
-$ docker run otel/opentelemetry-collector
+$ docker run  -p 55678:55678  -p 55679:55679 -p  55680:55680 -p 8888:8888 -p 4317:4317  otel/opentelemetry-collector
 ```
 
 In addition, you can use the local example provided. This example starts a
