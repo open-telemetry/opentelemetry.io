@@ -193,8 +193,8 @@ Let's put the concepts we've just covered together, and create a trace and some 
 		span.SetAttributes(anotherKey.String("yes"))
 
 		meter.RecordBatch(
+			ctx,
 			commonAttributes,
-
 			valueRecorder.Measurement(2.0),
 		)
 
