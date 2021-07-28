@@ -62,7 +62,7 @@ Checking the current status for each client in the README of its [github repo](h
 
 #### Metrics
 
-**API:** draft  
+**API:** feature-freaze  
 **SDK:** draft  
 **Protocol:** stable  
 **Collector:** experimental  
