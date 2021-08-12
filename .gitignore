@@ -4,6 +4,7 @@ resources/
 
 # npm assets
 node_modules/
+package-lock.json
 
 # Generated data
 data/progress_generated.yaml
