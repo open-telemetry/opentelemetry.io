@@ -95,7 +95,7 @@ Checking the current status for each client in the README of its [github repo](h
 * Log processing for many data formats has been added to the Collector, thanks to the donation of Stanza to the the OpenTelemetry project.
 * Log appenders are currently under develop in many languages. Log appenders allow OpenTelemetry tracing data, such as trace and span IDs, to be appended to existing logging systems.
 * An OpenTelemetry logging SDK is currently under development. This allows OpenTelemetry clients to injest logging data from existing logging systems, outputting logs as part of OTLP along with tracing and metrics.
-* An OpTelemetry logging API is not currently under development. We are focusing first on integration with existing logging systems. When metrics is complete, focus will shift to development of an OpenTelemetry logging API.
+* An OpenTelemetry logging API is not currently under development. We are focusing first on integration with existing logging systems. When metrics is complete, focus will shift to development of an OpenTelemetry logging API.
 
 #### Instrumentation
 
