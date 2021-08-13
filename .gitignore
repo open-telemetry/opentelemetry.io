@@ -10,7 +10,6 @@ package-lock.json
 data/progress_generated.yaml
 
 # Link checker
-bin/
 tmp/
 
 scripts/collector.yaml
