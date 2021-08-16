@@ -22,6 +22,6 @@
     "@opentelemetry/instrumentation-document-load": "^0.20.0",
     "@opentelemetry/instrumentation-user-interaction": "^0.20.0",
     "@opentelemetry/tracing": "^0.18.2",
-    "@opentelemetry/web": "^0.18.2"
+    "@opentelemetry/web": "^0.24.0"
   }
 }
