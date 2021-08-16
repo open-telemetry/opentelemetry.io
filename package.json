@@ -15,7 +15,7 @@
     "yaml": "^1.10.2"
   },
   "dependencies": {
-    "@opentelemetry/core": "^0.18.2",
+    "@opentelemetry/core": "^0.24.0",
     "@opentelemetry/exporter-collector": "^0.18.2",
     "@opentelemetry/instrumentation": "^0.18.2",
     "@opentelemetry/instrumentation-document-load": "^0.20.0",
