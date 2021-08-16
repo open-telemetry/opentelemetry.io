@@ -5,7 +5,7 @@
   },
   "private": true,
   "devDependencies": {
-    "autoprefixer": "^9.8.6",
+    "autoprefixer": "^10.3.1",
     "bulma": "^0.9.3",
     "esm": "^3.2.25",
     "node-fetch": "^2.6.1",
