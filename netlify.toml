@@ -1,6 +1,6 @@
 [build]
 publish = "public"
-command = "make production-build"
+command = "npm run build:production"
 
 [build.environment]
 HUGO_VERSION = "0.87.0"
@@ -9,7 +9,7 @@ HUGO_VERSION = "0.87.0"
 HUGO_ENV = "production"
 
 [context.deploy-preview]
-command = "make preview-build"
+command = "npm run build:preview"
 
 [context.branch-deploy]
-command = "make preview-build"
+command = "npm run build:preview"
