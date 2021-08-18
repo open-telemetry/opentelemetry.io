@@ -1,7 +1,10 @@
 {
   "scripts": {
     "start": "webpack --mode=development --watch",
-    "build": "webpack --mode=production"
+    "build": "webpack --mode=production",
+    "submodule:get": "git submodule update --init --recursive --depth 1",
+    "submodule:update": "git submodule update --remote --recursive --depth 1",
+    "preinstall": "npm run submodule:get"
   },
   "private": true,
   "devDependencies": {
