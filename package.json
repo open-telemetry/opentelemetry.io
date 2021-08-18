@@ -1,10 +1,23 @@
 {
   "scripts": {
-    "start": "webpack --mode=development --watch",
-    "build": "webpack --mode=production",
+    "_check-links": "make check-internal-links",
+    "build:preview": "hugo --cleanDestinationDir -DFE --minify --baseURL \"${DEPLOY_PRIME_URL:-/}\"",
+    "build:production": "hugo --cleanDestinationDir --minify",
+    "build": "hugo --cleanDestinationDir -e dev -DFE",
+    "check-links": "npm run _check-links",
+    "clean": "make clean",
+    "postbuild:preview": "npm run _check-links",
+    "postbuild:production": "npm run _check-links",
+    "prebuild:preview": "make get-milestones && npm run webpack",
+    "prebuild:production": "make get-milestones && npm run webpack",
+    "precheck-links": "npm run build",
+    "preinstall": "npm run submodule:get",
+    "serve": "hugo serve -p 30000 -DFE && npm run webpack:watch",
     "submodule:get": "git submodule update --init --recursive --depth 1",
     "submodule:update": "git submodule update --remote --recursive --depth 1",
-    "preinstall": "npm run submodule:get"
+    "test": "npm run check-links",
+    "webpack:watch": "webpack --mode=development --watch",
+    "webpack": "webpack --mode=production"
   },
   "private": true,
   "devDependencies": {
