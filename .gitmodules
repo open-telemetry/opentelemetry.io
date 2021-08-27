@@ -4,3 +4,6 @@
 [submodule "content-modules/opentelemetry-go"]
 	path = content-modules/opentelemetry-go
 	url = https://github.com/open-telemetry/opentelemetry-go
+[submodule "content-modules/opentelemetry-js"]
+	path = content-modules/opentelemetry-js
+	url = https://github.com/open-telemetry/opentelemetry-js
