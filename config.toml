@@ -184,6 +184,11 @@ name ="Privacy Policy"
 url ="https://www.linuxfoundation.org/en/privacy/#:~:text=The%20Linux%20Foundation%27s%20core%20purpose,%2C%20a%20%E2%80%9CProject%E2%80%9D).&text=The%20Privacy%20Policy%20does%20not,employees%20or%20other%20TLF%20personnel." 
 icon =" fa fa-book"
 desc ="CNCF works in close association with Linux Foundation. Read the privacy policy here"
+[[params.links.developer]]
+name="Marketing Guidelines"
+url="https://github.com/open-telemetry/community/blob/main/marketing-guidelines.md"
+icon="fas fa-bullhorn"
+desc="Important information on how to represent your personal or corporate contributions or participation in the OpenTelemetry project."
 
 [[languages.en.menu.main]]
     name = "Blog"
