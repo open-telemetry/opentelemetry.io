@@ -39,7 +39,7 @@ others. This page captures terminology used in the project and what it means.
   of `Traces`, `Metrics` or `Logs`.
 - **Dimension:** See `Label`.
 - **[Distributed
-  Tracing](https://opentelemetry.io/docs/concepts/overview/#distributed-tracing):**
+  Tracing](https://opentelemetry.io/docs/concepts/data-sources/#traces):**
   Tracks the progression of a single `Request`, called a `Trace`, as it is handled
   by `Services` that make up an `Application`. A `Distributed Trace` transverses
   process, network and security boundaries.
@@ -84,7 +84,7 @@ others. This page captures terminology used in the project and what it means.
   where it happened, etc.
 - **Metadata:** name/value pair added to telemetry data. OpenTelemetry calls
   this `Attributes` on `Spans`, `Labels` on `Metrics` and `Fields` on `Logs`.
-- **[Metric](https://opentelemetry.io/docs/concepts/overview/#metrics):**
+- **[Metric](https://opentelemetry.io/docs/concepts/data-sources/#metrics):**
   Records a data point, either raw measurements or predefined aggregation, as
   timeseries with `Metadata`.
 - **OC:** `OpenCensus`.
@@ -101,15 +101,15 @@ others. This page captures terminology used in the project and what it means.
   Libraries](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/sdk.md#span-processor)
   and the
   [Collector](https://opentelemetry.io/docs/collector/configuration/#processors).
-- **[Propagators](https://opentelemetry.io/docs/concepts/overview/):** Used to
+- **[Propagators](https://opentelemetry.io/docs/go/instrumentation/#propagators-and-context):** Used to
   serialize and deserialize specific parts of telemetry data such as span
   context and `Baggage` in `Spans`.
-- **[Proto](https://opentelemetry.io/docs/concepts/overview/#proto):** Language independent interface types.
+- **[Proto](https://opentelemetry.io/docs/concepts/components/#proto):** Language independent interface types.
 - **[Receiver](https://opentelemetry.io/docs/collector/configuration/#receivers):**
   Term used by the `Collector` to define how telemetry data is received.
   Receivers can be push or pull based.
 - **Request:** See `Distributed Tracing`.
-- **[Resource](https://opentelemetry.io/docs/concepts/overview/#resource):**
+- **Resource:**
   Captures information about the entity for which telemetry is recorded. For
   example, a process producing telemetry that is running in a container on
   Kubernetes has a pod name, it is in a namespace and possibly is part of a
@@ -129,7 +129,7 @@ others. This page captures terminology used in the project and what it means.
   `Service` may be deployed in multiple locations.
 - **[Span](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#span):**
   Represents a single operation within a `Trace`.
-- **[Specification](https://opentelemetry.io/docs/concepts/overview/#specification):**
+- **[Specification](https://opentelemetry.io/docs/concepts/components/#specification):**
   Describes the cross-language requirements and expectations for all
   implementations.
 - **[Status](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#set-status):**
