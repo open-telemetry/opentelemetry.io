@@ -236,3 +236,10 @@ name = "Noto Sans"
 sizes = [300,400,600,700]
 type = "sans_serif"
 
+[module]
+[[module.mounts]]
+  source = 'static'
+  target = 'static'
+[[module.mounts]]
+  source = 'content-modules/opentelemetry-specification/schemas'
+  target = 'static/schemas'
