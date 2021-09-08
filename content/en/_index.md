@@ -62,11 +62,17 @@ OpenTelemetry integrates with popular libraries and frameworks such as [Spring](
 
 {{% /blocks/section %}}
 
-{{% blocks/section color="secondary" type="section" %}}
-<section id="cncf">
-  <center>
-    <p>OpenTelemetry is a proud member of the CNCF.<br/>
-    Formed through a merger of the OpenTracing and OpenCensus projects.</p>
-  </center>
-</section>
+{{% blocks/section color="secondary" %}}
+<div id="cncf">
+
+**OpenTelemetry is a [CNCF][] [incubating][] project**.
+
+Formed through a merger of the OpenTracing and OpenCensus projects.
+
+[![CNCF logo][]][CNCF]
+
+[CNCF]: https://cncf.io/
+[CNCF logo]: /img/logos/cncf-white.svg
+[incubating]: https://www.cncf.io/projects/
+</div>
 {{% /blocks/section %}}

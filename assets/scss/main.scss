@@ -70,20 +70,19 @@ section#announcement {
   padding: 6px;
 }
 
-section#cncf {
-  padding: 0;
-  background: url(/img/logos/cncf-sandbox-horizontal-white.svg);
-  background-position: center bottom;
-  background-size: 240px;
-  background-repeat: no-repeat;
+#cncf {
+  width: 100%;
+  text-align: center;
 
-  center {
-    padding-bottom: 60px;
-
-    p {
-      font-size: 18px;
-      font-weight: bold;
-    }
+  a { color: $primary; }
+  p {
+    font-size: 18px;
+    margin-bottom: 0;
+  }
+  img {
+    margin-top: 1rem;
+    width: 20rem;
+    max-width: 80%;
   }
 }
 
