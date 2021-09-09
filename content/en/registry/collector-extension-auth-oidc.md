@@ -7,7 +7,7 @@ tags:
   - go
   - extension
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector/tree/main/extension/oidcauthextension
+repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/oidcauthextension
 license: Apache 2.0
 description: The OIDC authenticator extension allows gRPC and HTTP-based receivers to require authentication from remote clients.
 authors: OpenTelemetry Authors
