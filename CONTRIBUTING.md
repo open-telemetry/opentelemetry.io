@@ -7,6 +7,7 @@
   * Please note that you need to install the "extended" version of Hugo (with built-in support) to run the site locally.
 * Install [npm](https://npmjs.com)
 * Run `npm install`
+* Run `npm run webpack`
 * Run `npm run serve`
   * If you are on OS X and see an error like `too many open files` or `pipe failed`, you may need to increase the file descriptor limit. See [this Hugo GitHub issue](https://github.com/gohugoio/hugo/issues/6109).
 * Open `http://localhost:30000` to check the site
