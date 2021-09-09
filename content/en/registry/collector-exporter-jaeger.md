@@ -7,7 +7,7 @@ tags:
   - go
   - exporter
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/jaegerexporter
+repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/jaegerexporter
 license: Apache 2.0
 description: The Jaeger Exporter for the OpenTelemetry Collector.
 authors: OpenTelemetry Authors

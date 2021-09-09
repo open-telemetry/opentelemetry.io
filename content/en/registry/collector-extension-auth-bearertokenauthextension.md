@@ -7,7 +7,7 @@ tags:
   - go
   - extension
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector/tree/main/extension/bearertokenauthextension
+repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/bearertokenauthextension
 license: Apache 2.0
 description: The Bearer token authenticator extension allows gRPC and HTTP-based exporters to add authentication data to outgoing calls based on a static token.
 authors: OpenTelemetry Authors
