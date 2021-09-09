@@ -106,7 +106,7 @@ There will be no output of traces yet, for this we need to add an exporter
 In the following example, we will use the `ConsoleSpanExporter` which prints all spans to the console.
 
 In order to visualize and analyze your traces, you will need to export them to a tracing backend.
-Follow [these instructions](../exporters.md) for setting up a backend and exporter.
+Follow [these instructions](../../exporters) for setting up a backend and exporter.
 
 You may also want to use the `BatchSpanProcessor` to export spans in batches in order to more efficiently use resources.
 

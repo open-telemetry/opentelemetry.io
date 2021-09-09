@@ -81,7 +81,7 @@ npm install @opentelemetry/sdk-node @opentelemetry/api
 In the following example, we will use the `ConsoleSpanExporter` which prints all spans to the console.
 
 In order to visualize and analyze your traces, you will need to export them to a tracing backend.
-Follow [these instructions](../exporters.md) for setting up a backend and exporter.
+Follow [these instructions](../../exporters) for setting up a backend and exporter.
 
 You may also want to use the `BatchSpanProcessor` to export spans in batches in order to more efficiently use resources.
 
@@ -228,7 +228,7 @@ These dependencies are required to configure the tracing SDK and create spans.
 In the following example, we will use the `ConsoleMetricExporter` which prints all spans to the console.
 
 In order to visualize and analyze your metrics, you will need to export them to a metrics backend.
-Follow [these instructions](../exporters.md) for setting up a backend and exporter.
+Follow [these instructions](../../exporters) for setting up a backend and exporter.
 
 ### Setup
 
