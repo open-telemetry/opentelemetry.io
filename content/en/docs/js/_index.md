@@ -1,9 +1,14 @@
 ---
-title: "Javascript"
+title: Javascript
 weight: 20
-description: >
-  <img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/JS_SDK.svg" alt="JavaScript logo"></img>
+description: >-
+  <img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/JS_SDK.svg"></img>
   A language-specific implementation of OpenTelemetry in JavaScript (for Node.JS & the browser).
+cascade:
+  github_repo: &repo https://github.com/open-telemetry/opentelemetry-js
+  github_subdir: website_docs
+  path_base_for_github_subdir: content/en/docs/js/
+  github_project_repo: *repo
 ---
 
 This page contains an introduction to OpenTelemetry in JavaScript. This guide
@@ -23,6 +28,5 @@ You can find release information [here](https://github.com/open-telemetry/opente
 ## Further Reading
 
 - [OpenTelemetry for JavaScript on GitHub](https://github.com/open-telemetry/opentelemetry-js)
-- [Getting Started](getting_started)
 - [API Reference](https://open-telemetry.github.io/opentelemetry-js-api)
 - [SDK Reference](https://open-telemetry.github.io/opentelemetry-js)
