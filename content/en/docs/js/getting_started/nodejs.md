@@ -243,7 +243,7 @@ Create a file named `monitoring.js` and add the following code:
 const { MeterProvider, ConsoleMetricExporter } = require('@opentelemetry/metrics');
 
 const meter = new MeterProvider({
-  new ConsoleMetricExporter(),
+  exporter: new ConsoleMetricExporter(),
   interval: 1000,
 }).getMeter('your-meter-name');
 ```
@@ -259,7 +259,7 @@ Let's create and export from your `monitoring.js` file a middleware function tha
 const { MeterProvider, ConsoleMetricExporter } = require('@opentelemetry/metrics');
 
 const meter = new MeterProvider({
-  new ConsoleMetricExporter(),
+  exporter: new ConsoleMetricExporter(),
   interval: 1000,
 }).getMeter('your-meter-name');
 
