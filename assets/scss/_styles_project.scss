@@ -1,4 +1,5 @@
 /* docsy-delta full file override: we're not tracking changes to the docsy file of the same name. */
+// cSpell:ignore cncf docsy
 
 @import "registry";
 @import "tabs";
@@ -40,7 +41,7 @@
   }  
 }
 
-// Adjust the spacing of page-mata and page-TOC (https://github.com/open-telemetry/opentelemetry.io/pull/354)
+// Adjust the spacing of page-meta and page-TOC (https://github.com/open-telemetry/opentelemetry.io/pull/354)
 .td-toc #TableOfContents {
   padding-top: 1rem;
 }
@@ -80,7 +81,7 @@ a:hover {
     text-decoration: underline;
 }
 
-// Adjust anchors scroll snape (https://github.com/open-telemetry/opentelemetry.io/pull/348)
+// Adjust anchors scroll snap (https://github.com/open-telemetry/opentelemetry.io/pull/348)
 @include media-breakpoint-up(md) {
   h2[id], h3[id], h4[id], h5[id] {
     scroll-margin-top: 5rem;
