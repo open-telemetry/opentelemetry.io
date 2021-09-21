@@ -1,5 +1,8 @@
 /* docsy-delta full file override: we're not tracking changes to the docsy file of the same name. */
 
+@import "registry";
+@import "tabs";
+
 .navbar-position-absolute {
   position: absolute !important;
 }
@@ -35,4 +38,51 @@
           padding-right: 0.5em;
       }
   }  
+}
+
+// Adjust the spacing of page-mata and page-TOC (https://github.com/open-telemetry/opentelemetry.io/pull/354)
+.td-toc #TableOfContents {
+  padding-top: 1rem;
+}
+
+// https://github.com/open-telemetry/opentelemetry.io/pull/377/files
+section#announcement {
+  display: flex;
+  justify-content: center;
+  padding: 6px;
+}
+
+// Homepage
+#cncf {
+  width: 100%;
+  text-align: center;
+
+  a { color: $primary; }
+  p {
+    font-size: 18px;
+    margin-bottom: 0;
+  }
+  img {
+    margin-top: 1rem;
+    width: 20rem;
+    max-width: 80%;
+  }
+}
+
+// https://github.com/open-telemetry/opentelemetry.io/pull/414
+.td-box--dark p > a {
+    color: #3176d9;
+}
+
+.td-box--dark p > a:hover,
+a:hover {
+    color: #3176d9;
+    text-decoration: underline;
+}
+
+// Adjust anchors scroll snape (https://github.com/open-telemetry/opentelemetry.io/pull/348)
+@include media-breakpoint-up(md) {
+  h2[id], h3[id], h4[id], h5[id] {
+    scroll-margin-top: 5rem;
+  }
 }
