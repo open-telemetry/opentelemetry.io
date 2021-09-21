@@ -1,6 +1,7 @@
 [submodule "themes/docsy"]
 	path = themes/docsy
-	url = https://github.com/google/docsy.git
+	url = https://github.com/cncf/docsy.git
+	branch = opentelemetry.io
 [submodule "content-modules/opentelemetry-go"]
 	path = content-modules/opentelemetry-go
 	url = https://github.com/open-telemetry/opentelemetry-go
