@@ -23,7 +23,7 @@ weight: 50
 | F5      | No           | Yes         | https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/f5cloudexporter |
 | Honeycomb | Yes        | Yes         | https://docs.honeycomb.io/getting-data-in/ |
 | Lightstep | Yes        | Yes         | https://github.com/lightstep?q=launcher |
-| New Relic | Yes        | No          | https://newrelic.com/solutions/opentelemetry |
+| New Relic | Yes        | Yes         | https://newrelic.com/solutions/opentelemetry |
 | Splunk | Yes           | Yes         | https://www.splunk.com/en_us/blog/conf-splunklive/announcing-native-opentelemetry-support-in-splunk-apm.html |
 | Sumo Logic | Yes       | Yes         | https://help.sumologic.com/Traces/Getting_Started_with_Transaction_Tracing |
 
