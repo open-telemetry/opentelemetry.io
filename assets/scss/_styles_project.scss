@@ -4,8 +4,8 @@
 @import "registry";
 @import "tabs";
 
-.navbar-position-absolute {
-  position: absolute !important;
+.td-navbar {
+  background: $primary !important;
 }
 
 // Icons
@@ -83,7 +83,6 @@ a:hover {
   }
 }
 
-// Object
 .o-banner {
   @include media-breakpoint-up(md) {
     width: 100%;
