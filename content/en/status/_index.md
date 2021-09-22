@@ -63,7 +63,7 @@ Checking the current status for each client in the README of its [github repo](h
 #### Metrics
 
 **API:** [feature-freeze](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/document-status.md#feature-freeze)  
-**SDK:** experimental
+**SDK:** experimental  
 **Protocol:** stable  
 **Collector:** experimental  
 
