@@ -1,5 +1,5 @@
 ---
-title: "Integrations"
+title: Integrations
 weight: 50
 ---
 

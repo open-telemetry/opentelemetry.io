@@ -188,7 +188,6 @@ desc="Important information on how to represent your personal or corporate contr
     name = "Blog"
     weight = 50
     url = "https://medium.com/opentelemetry"
-    pre = "<i class='fab fa-medium'></i>"
 
 
 [params.logos]

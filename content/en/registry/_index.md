@@ -1,12 +1,11 @@
 ---
-title: "Registry"
+title: Registry
 outputs:
   - html
   - json
 menu:
   main:
     weight: 20
-    pre: <i class="fas fa-registered"></i>
 ---
 
 <a class="td-offset-anchor"></a>

@@ -1,5 +1,5 @@
 ---
-title: "Vendor Support"
+title: Vendor support
 weight: 50
 ---
 
