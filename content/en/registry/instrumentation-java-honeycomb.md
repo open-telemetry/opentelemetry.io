@@ -1,0 +1,13 @@
+---
+title: Honeycomb.io OpenTelemetry Distro for Java
+registryType: instrumentation
+isThirdParty: true
+language: java
+tags:
+  - java
+  - instrumentation
+repo: https://github.com/honeycombio/honeycomb-opentelemetry-java
+license: Apache 2.0
+description: Honeycomb's distribution of OpenTelemetry for Java
+authors: Hound Technology Inc
+---
