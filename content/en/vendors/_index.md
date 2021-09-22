@@ -1,6 +1,5 @@
 ---
 title: Vendor support
-weight: 50
 ---
 
 <a class="td-offset-anchor"></a>

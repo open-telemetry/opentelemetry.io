@@ -1,6 +1,5 @@
 ---
 title: Integrations
-weight: 50
 ---
 
 <a class="td-offset-anchor"></a>
