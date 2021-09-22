@@ -46,13 +46,6 @@
   padding-top: 1rem;
 }
 
-// https://github.com/open-telemetry/opentelemetry.io/pull/377/files
-section#announcement {
-  display: flex;
-  justify-content: center;
-  padding: 6px;
-}
-
 // Homepage
 #cncf {
   width: 100%;
@@ -87,5 +80,24 @@ a:hover {
   h2[id]:before, h3[id]:before, h4[id]:before, h5[id]:before {
     margin-top: 0;
     height: 0;
+  }
+}
+
+// Object
+.o-banner {
+  @include media-breakpoint-up(md) {
+    width: 100%;
+    position: fixed;
+    margin-left: -15px;
+    z-index: 32;
+    top: 4rem;
+  }
+
+  background: $gray-100;
+  text-align: center;
+
+  & p {
+    padding: 0.5rem;
+    margin-bottom: initial;
   }
 }

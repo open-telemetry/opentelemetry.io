@@ -98,12 +98,6 @@ algolia_docsearch = false
 # Enable Lunr.js offline search
 offlineSearch = false
 
-# param for displaying an announcement block on homepage; see PR #377
-announcement = true
-# announcement_message is only displayed when announcement = true; update with your specific message
-announcement_message = "<span style='padding-right:12px'>🎉 </span> The OpenTelemetry tracing specification is now 1.0!&nbsp;&nbsp;<a href='https://medium.com/opentelemetry/opentelemetry-specification-v1-0-0-tracing-edition-72dd08936978'>Learn more today!</a>"
-
-
 # User interface configuration
 [params.ui]
 # Enable to show the side bar menu in its compact state.

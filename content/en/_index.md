@@ -1,5 +1,6 @@
 ---
-title: "OpenTelemetry"
+title: OpenTelemetry
+show_banner: true
 ---
 
 {{< blocks/cover title="" image_anchor="center" height="min" color="dark" >}}
