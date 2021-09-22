@@ -10,7 +10,11 @@
       {{ partial "navbar.html" . }}
     </header>
     <div class="container-fluid td-default td-outer">
-      {{ partial "banner.html" . }}
+      {{- /*
+        I'd like to use .RenderString so that render-* hooks work, but it results in a nil pointer error.
+        Track this via https://github.com/gohugoio/hugo/issues/7280.
+      */ -}}
+      {{ partial "banner.md" . | markdownify }}
       <main role="main" class="td-main">
         {{ block "main" . }}{{ end }}
       </main>
