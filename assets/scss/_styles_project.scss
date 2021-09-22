@@ -83,7 +83,9 @@ a:hover {
 
 // Adjust anchors scroll snap (https://github.com/open-telemetry/opentelemetry.io/pull/348)
 @include media-breakpoint-up(md) {
-  h2[id], h3[id], h4[id], h5[id] {
-    scroll-margin-top: 5rem;
+  h2[id], h3[id], h4[id], h5[id] { scroll-margin-top: 5rem; }
+  h2[id]:before, h3[id]:before, h4[id]:before, h5[id]:before {
+    margin-top: 0;
+    height: 0;
   }
 }
