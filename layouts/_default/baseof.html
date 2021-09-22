@@ -1,18 +1,20 @@
+{{/* docsy-delta */ -}}
+
 <!doctype html>
 <html lang="{{ .Site.Language.Lang }}" class="no-js">
   <head>
     {{ partial "head.html" . }}
   </head>
   <body class="td-{{ .Kind }}">
-    {{ block "announcement" . }}
-      {{ if .IsHome }}
-        {{ partial "announcement.html" . }}
-      {{ end }}
-    {{ end }}
     <header>
       {{ partial "navbar.html" . }}
     </header>
     <div class="container-fluid td-default td-outer">
+      {{- /*
+        I'd like to use .RenderString so that render-* hooks work, but it results in a nil pointer error.
+        Track this via https://github.com/gohugoio/hugo/issues/7280.
+      */ -}}
+      {{ partial "banner.md" . | markdownify }}
       <main role="main" class="td-main">
         {{ block "main" . }}{{ end }}
       </main>
