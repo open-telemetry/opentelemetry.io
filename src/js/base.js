@@ -23,30 +23,24 @@ const tracer = require('./tracing');
     if (!promo.length) {
       return
     }
+    var promoOffset = bottomPos(promo);
+    var navbarOffset = $('.js-navbar-scroll').offset().top;
+    var threshold = Math.ceil($('.js-navbar-scroll').outerHeight());
+    if ((promoOffset - navbarOffset) < threshold) {
+      $('.js-navbar-scroll').addClass('navbar-bg-onscroll');
+    }
 
-    const announcementThreshold = Math.ceil($('section#announcement').outerHeight()) || -1;
-    // announcement_size + td-cover-block-0.padding-top/128px + img.padding-top/16 - nav.height/64px
-    const threshold = announcementThreshold + 128 + 16 - 64;
-    const onScroll = () => {
+
+    $(window).on('scroll', function () {
+      var navtop = $('.js-navbar-scroll').offset().top - $(window).scrollTop();
+      var promoOffset = bottomPos($('.js-td-cover'));
       var navbarOffset = $('.js-navbar-scroll').offset().top;
-      if (navbarOffset > threshold) {
+      if ((promoOffset - navbarOffset) < threshold) {
         $('.js-navbar-scroll').addClass('navbar-bg-onscroll');
       } else {
         $('.js-navbar-scroll').removeClass('navbar-bg-onscroll');
         $('.js-navbar-scroll').addClass('navbar-bg-onscroll--fade');
       }
-
-      var pageOffset = window.pageYOffset || document.documentElement.scrollTop;
-      if (pageOffset < announcementThreshold) {
-        $('.js-navbar-scroll').addClass('navbar-position-absolute').css("top", `${announcementThreshold}px`);
-      } else {
-        $('.js-navbar-scroll').removeClass('navbar-position-absolute').css("top", "0");
-      }
-    }
-
-    onScroll()
-    $(window).on('scroll', function () {
-      onScroll()
     });
   });
 
