@@ -1,6 +1,6 @@
 ---
-title: "Documentation"
-
+title: Documentation
+linkTitle: Docs
 aliases:
   - /csharp/
   - /csharp/metrics/
@@ -20,11 +20,9 @@ aliases:
   - /ruby/
   - /ruby/metrics/
   - /ruby/tracing/
-
 menu:
   main:
     weight: 10
-    pre: <i class='fas fa-book'></i>
 ---
 
 OpenTelemetry is a set of APIs, SDKs, tooling and integrations that are
