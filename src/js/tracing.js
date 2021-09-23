@@ -1,4 +1,4 @@
-import { SimpleSpanProcessor } from '@opentelemetry/tracing';
+import { ConsoleSpanExporter, SimpleSpanProcessor } from '@opentelemetry/tracing';
 import { WebTracerProvider } from '@opentelemetry/web';
 import { DocumentLoadInstrumentation } from '@opentelemetry/instrumentation-document-load';
 import { UserInteractionInstrumentation } from '@opentelemetry/instrumentation-user-interaction';
@@ -31,6 +31,7 @@ registerInstrumentations({
 })
 
 provider.addSpanProcessor(new SimpleSpanProcessor(exporter));
+// provider.addSpanProcessor(new SimpleSpanProcessor(new ConsoleSpanExporter()));
 provider.register();
 
 module.export = provider.getTracer('otel-web');
