@@ -1,6 +1,5 @@
 {{ define "main" }}
 {{ $registryItems := where .Data.Pages "Params.layout" "!=" "search" }}
-{{ $search := resources.Get "js/registrySearch.js" | fingerprint }}
 
 {{ $languages := newScratch }}
 {{ $languages.Set "collector" "Collector" }}
@@ -95,6 +94,12 @@
     </li>
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script>
-  <script src="{{ $search.RelPermalink }}" integrity="{{ $search.Data.Integrity }}" type="application/javascript"></script>
+  {{ $js := resources.Get "js/registrySearch.js" -}}
+  {{ if hugo.IsProduction -}}
+    {{ $js = $js | minify | fingerprint -}}
+    <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
+  {{ else -}}
+    <script src="{{ $js.RelPermalink }}"></script>
+  {{- end }}
 </div>
-{{ end }}
+{{ end -}}
