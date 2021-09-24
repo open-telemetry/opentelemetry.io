@@ -130,7 +130,7 @@ severity fields.
 ## Baggage
 
 In addition to trace propagation, OpenTelemetry provides a simple mechanism 
-forpropagating name/value pairs, called __baggage__. Baggage is intended 
+for propagating name/value pairs, called __baggage__. Baggage is intended 
 for indexing observability events in one service with attributes provided 
 by a prior service in the same transaction. This helps to establish a 
 causal relationship between these events.
