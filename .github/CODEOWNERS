@@ -13,7 +13,7 @@
 #
 
 # Global owners, will be the owners for everything in the repo.
-*  @austinlparker @mtwo @flands @jparsana @tedsuo @open-telemetry/docs-approvers
+* @open-telemetry/docs-approvers
 
 # C++ content owners
 content/en/docs/cpp/     @open-telemetry/cpp-maintainers
