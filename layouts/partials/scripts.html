@@ -15,7 +15,7 @@
 {{ $jsSearch = resources.Get "js/offline-search.js" }}
 {{ end }}
 {{ $js := (slice $jsBase $jsAnchor $jsSearch $jsMermaid) | resources.Concat "js/main.js" }}
-{{ if ne (getenv "HUGO_ENV") "production" }}
+{{ if not hugo.IsProduction }}
 <script src="{{ $js.RelPermalink }}"></script>
 {{ else }}
 {{ $js := $js | minify | fingerprint }}

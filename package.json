@@ -11,20 +11,15 @@
     "clean": "make clean",
     "postbuild:preview": "npm run _check-links",
     "postbuild:production": "npm run _check-links",
-    "prebuild:preview": "make get-milestones && npm run webpack:production",
-    "prebuild:production": "make get-milestones && npm run webpack:production",
-    "prebuild": "npm run webpack",
+    "prebuild:preview": "make get-milestones",
+    "prebuild:production": "make get-milestones",
     "precheck-links": "npm run build",
     "preinstall": "npm run submodule:get",
-    "preserve": "npm run webpack",
     "schemas:update": "npm run submodule:update content-modules/opentelemetry-specification",
     "serve": "npm run _serve",
     "submodule:get": "git submodule update --init --recursive --depth 1",
     "submodule:update": "git submodule update --remote --recursive --depth 1",
-    "test": "npm run check-links",
-    "webpack:production": "webpack --mode=production",
-    "webpack:watch": "webpack --mode=development --watch",
-    "webpack": "webpack --mode=development"
+    "test": "npm run check-links"
   },
   "private": true,
   "devDependencies": {
@@ -33,8 +28,6 @@
     "node-fetch": "^2.6.1",
     "postcss": "^8.3.6",
     "postcss-cli": "^8.3.1",
-    "webpack": "^5.50.0",
-    "webpack-cli": "^4.8.0",
     "yaml": "^1.10.2"
   },
   "dependencies": {

@@ -35,5 +35,3 @@ provider.addSpanProcessor(new SimpleSpanProcessor(new ConsoleSpanExporter()));
 provider.register();
 
 module.export = provider.getTracer('otel-web');
-
-
