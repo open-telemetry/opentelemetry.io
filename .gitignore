@@ -13,7 +13,7 @@ data/progress_generated.yaml
 tmp/
 
 scripts/collector.yaml
-assets/js/*
+assets/jsconfig.json
 
 # IntelliJ
 *.iml

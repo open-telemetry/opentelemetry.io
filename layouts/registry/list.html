@@ -94,12 +94,6 @@
     </li>
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script>
-  {{ $js := resources.Get "js/registrySearch.js" -}}
-  {{ if hugo.IsProduction -}}
-    {{ $js = $js | minify | fingerprint -}}
-    <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
-  {{ else -}}
-    <script src="{{ $js.RelPermalink }}"></script>
-  {{- end }}
+  {{ partial "script.html" (dict "src" "js/registrySearch.js") -}}
 </div>
 {{ end -}}

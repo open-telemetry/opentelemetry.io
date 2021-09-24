@@ -1,0 +1,7 @@
+{{ $js := resources.Get .src | js.Build -}}
+{{ if hugo.IsProduction -}}
+  {{ $js = $js | minify | fingerprint -}}
+  <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
+{{- else -}}
+  <script src="{{ $js.RelPermalink }}"></script>
+{{- end -}}
