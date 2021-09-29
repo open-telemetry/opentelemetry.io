@@ -19,8 +19,8 @@ Learn more
 
 - [Collector]({{< relref "/docs/collector/getting-started" >}})
 - [Go]({{< relref "/docs/go/getting-started" >}})
-- [.Net]({{< relref "/docs/net/getting-started" >}})
-- [Javascript]({{< relref "/docs/js" >}})
+- [.NET]({{< relref "/docs/net/getting-started" >}})
+- [JavaScript]({{< relref "/docs/js" >}})
 - [<i class="fas fa-ellipsis-h"></i>]({{< relref "docs" >}})
 </div>
 {{< /blocks/cover >}}
