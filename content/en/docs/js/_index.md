@@ -1,5 +1,5 @@
 ---
-title: Javascript
+title: JavaScript
 weight: 20
 description: >-
   <img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/JS_SDK.svg" alt="JS logo"></img>
