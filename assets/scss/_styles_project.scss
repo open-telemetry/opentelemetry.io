@@ -4,6 +4,50 @@
 @import "registry";
 @import "tabs";
 
+.td-home {
+  .otel-logo {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    max-height: 12rem;
+    // max-width: 85%;
+  }
+
+  .td-box--white .container blockquote {
+    font-size: smaller;
+  }
+}
+
+.l-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+
+  > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    > li {
+      display: inline;
+      > a {
+        @extend .btn;
+        margin: 0.25rem;
+      }
+    }
+  }
+}
+
+.l-get-started-buttons {
+  @extend .l-buttons;
+
+  > ul > li > a /*, > p > a*/ {
+    @extend .btn-lg;
+    @extend .btn-secondary;
+  }
+}
+
 .td-navbar {
   background: $primary !important;
 }
