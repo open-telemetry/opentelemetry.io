@@ -3,7 +3,7 @@ title: "Instrumenting libraries"
 weight: 40
 ---
 
-OpenTelemetry already provides [auto-instrumentations](./instrumenting.md#automatic-instrumentation)
+OpenTelemetry already provides [automatic instrumentation](/docs/concepts/instrumenting#automatic-instrumentation)
 for many libraries, which is typically done through library hooks or monkey-patching library code.
 
 Native library instrumentation with OpenTelemetry provides better observability and developer experience for users, removing the need for libraries to expose and document hooks:
@@ -12,14 +12,12 @@ Native library instrumentation with OpenTelemetry provides better observability 
 - telemetry (traces, logs, metrics in future) from library and application code are correlated and coherent
 - common conventions allow users to get similar and consistent telemetry within same technology and across languages
 
-TODO/Open question: infra instrumentation
-
 ## Semantic Conventions
 
 Check out available [semantic conventions](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/README.md) that cover web-frameworks, RPC clients, databases, messaging clients, infra pieces and more!
 
-If your library is one of those things - follow the conventions, they are the main source of truth and tell which information should be include on spans.
-They make instrumentations consistent: users who work with telemetry don't have to learn library-specifics and observability vendors can build experiences that work for wide variety of technologies (e.g. databases or messaging systems).
+If your library is one of those things - follow the conventions, they are the main source of truth and tell which information should be included on spans.
+Conventions make instrumentations consistent: users who work with telemetry don't have to learn library-specifics and observability vendors can build experiences that work for wide variety of technologies (e.g. databases or messaging systems).
 
 If you have any feedback or want to add a new conventions - please come and contribute! [Instrumentation Slack](https://cloud-native.slack.com/archives/C01QZFGMLQ7) or [Specification repo](https://github.com/open-telemetry/opentelemetry-specification) are a good place to start!
 
