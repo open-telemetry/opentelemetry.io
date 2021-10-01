@@ -1,5 +1,5 @@
 ---
-title: "Getting Started"
+title: Getting Started
 weight: 20
 ---
 
@@ -7,13 +7,13 @@ Welcome to the OpenTelemetry for Erlang/Elixir getting started guide! This guide
 will walk you through the basic steps in installing, configuring, and exporting data
 from OpenTelemetry.
 
-# Installation
+## Installation
 
 OpenTelemetry packages for Erlang/Elixir are available on
 [hex.pm](https://hex.pm). There are two packages you might want to install,
 depending on what you are trying to accomplish.
 
-## `opentelemetry_api`
+### `opentelemetry_api`
 
 If you are developing a library or OTP Application that someone else would include
 into their deployed code and you want to provide OpenTelemetry instrumentation
@@ -22,7 +22,7 @@ only the API of OpenTelemetry. It will not start any processes and all API calls
 (such as starting a span) will be a no-op that creates no data, unless the
 `opentelemetry` SDK package is also installed.
 
-## `opentelemetry`
+### `opentelemetry`
 
 If you are developing an Application that will actually be deployed and export
 OpenTelemetry data, whether from instrumented dependencies or your code itself,
@@ -95,7 +95,7 @@ releases: [
 
 {{< /tabs >}}
 
-# Initialization and Configuration
+## Initialization and Configuration
 
 Configuration is done through the [Application
 environment](https://erlang.org/doc/design_principles/applications.html#configuring-an-application)
@@ -106,7 +106,7 @@ Provider](https://hexdocs.pm/opentelemetry_api/otel_tracer_provider.html), its
 [Span Processors](https://hexdocs.pm/opentelemetry/otel_span_processor.html) and
 the [Exporter](https://hexdocs.pm/opentelemetry/otel_exporter.html).
 
-## Using the Console Exporter
+### Using the Console Exporter
 
 Exporters are packages that allow telemetry data to be emitted somewhere -
 either to the console (which is what we're doing here), or to a remote system or
@@ -133,7 +133,7 @@ of span processor that batches up multiple spans over a period of time:
 {{< /tab >}}
 
 {{< tab >}}
-# config/runtime.exs
+## config/runtime.exs
 config :opentelemetry, :processors,
   otel_batch_processor: %{
     exporter: {:otel_exporter_stdout, []}
@@ -142,7 +142,7 @@ config :opentelemetry, :processors,
 
 {{< /tabs >}}
 
-# Working with Spans
+## Working with Spans
 
 Now that the dependencies and configuration are set up, we can create a module with
 a function `hello/0` that starts some spans:
@@ -174,7 +174,7 @@ nice_operation(_SpanCtx) ->
 {{< /tab >}}
 
 {{< tab >}}
-# lib/otel_getting_started.ex
+## lib/otel_getting_started.ex
 defmodule OtelGettingStarted do
   require OpenTelemetry.Tracer, as: Tracer
 

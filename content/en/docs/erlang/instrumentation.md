@@ -1,5 +1,5 @@
 ---
-title: "Instrumentation"
+title: Instrumentation
 weight: 30
 ---
 
@@ -8,7 +8,7 @@ application. This can be done with direct calls to the OpenTelemetry API within
 your code or including a dependency which calls the API and hooks into your
 project, like a middleware for an HTTP server.
 
-# TracerProvider and Tracers
+## TracerProvider and Tracers
 
 In OpenTelemetry each service being traced has at least one `TracerProvider`
 that is used to hold configuration about the name/version of the service, what
@@ -78,7 +78,7 @@ In most cases you will not need to manually register or look up a
 section, and the `Tracer` for the Application the macro is used in will be used
 automatically.
 
-# Starting Spans
+## Starting Spans
 
 A trace is a tree of spans, starting with a root span that has no parent. To
 represent this tree, each span after the root has a parent span associated with
@@ -135,7 +135,7 @@ end
 
 {{< /tabs >}}
 
-## Cross Process Propagation
+### Cross Process Propagation
 
 The examples in the previous section were spans with a child-parent relationship
 within the same process where the parent is available in the process dictionary
@@ -143,7 +143,7 @@ when creating a child span. Using the process dictionary this way isn't possible
 when crossing processes, either by spawning a new process or sending a message
 to an existing process. Instead, the context must be manually passed as a variable.
 
-### Creating Spans for New Processes
+#### Creating Spans for New Processes
 
 To pass spans across processes we need to start a span that isn't connected to
 particular process. This can be done with the macro `start_span`. Unlike
@@ -189,7 +189,7 @@ OpenTelemetry.Tracer.end_span(span_ctx)
 
 {{< /tabs >}}
 
-### Linking the New Span
+#### Linking the New Span
 
 If the work being done by the other process is better represented as a `link` --
 see [the `link` definition in the
@@ -225,7 +225,7 @@ task = Task.async(fn ->
 
 {{< /tabs >}}
 
-## Attributes
+### Attributes
 
 Attributes are key-value pairs that are applied as metadata to your spans and
 are useful for aggregating, filtering, and grouping traces. Attributes can be
@@ -260,7 +260,7 @@ end
 
 {{< /tabs >}}
 
-### Semantic Attributes
+#### Semantic Attributes
 
 Semantic Attributes are attributes that are defined by the OpenTelemetry
 Specification in order to provide a shared set of attribute keys across multiple
@@ -270,7 +270,7 @@ available in the header `opentelemetry_api/include/otel_resource.hrl`.
 
 Tracing semantic conventions can be found [in this document](https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/trace/semantic_conventions)
 
-## Events
+### Events
 
 An event is a human-readable message on a span that represents "something
 happening" during it's lifetime. For example, imagine a function that requires
@@ -322,7 +322,7 @@ Span.add_event("Process exited with reason", pid: pid, reason: Reason)
 
 {{< /tabs >}}
 
-# Cross Service Propagators
+## Cross Service Propagators
 
 Distributed traces extend beyond a single service, meaning some context must be
 propagated across services to create the parent-child relationship between
@@ -345,7 +345,7 @@ registered with OpenTelemetry. This can be done through configuration of the
 {{< /tab >}}
 
 {{< tab >}}
-# runtime.exs
+## runtime.exs
 ...
 text_map_propagators: [:baggage, :tracer_context],
 ...
@@ -358,7 +358,7 @@ specification](https://github.com/openzipkin/b3-propagation), originally from
 the [Zipkin project](https://zipkin.io/), then replace `trace_context` and
 `:trace_context` with `b3` and `:b3` for Erlang or Elixir respectively.
 
-# Library Instrumentation
+## Library Instrumentation
 
 Library instrumentations, broadly speaking, refers to instrumentation code that
 you didn't write but instead include through another library. OpenTelemetry for
@@ -367,7 +367,7 @@ many popular frameworks and libraries. You can find in the
 [opentelemetry-erlang-contrib
 repo](https://github.com/open-telemetry/opentelemetry-erlang-contrib/) and the [registry](/registry).
 
-# Creating Metrics
+## Creating Metrics
 
 The metrics API, found in `apps/opentelemetry-experimental-api` of the
 `opentelemetry-erlang` repository, is currently unstable, documentation TBA.
