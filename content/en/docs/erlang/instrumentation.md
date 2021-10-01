@@ -339,17 +339,15 @@ registered with OpenTelemetry. This can be done through configuration of the
 {{< tab >}}
 %% sys.config
 ...
-{text_map_propagators, [fun otel_baggage:get_text_map_propagators/0,
-                        fun otel_tracer_default:w3c_propagators/0]},
+{text_map_propagators, [baggage,
+                        trace_context]},
 ...                        
 {{< /tab >}}
 
 {{< tab >}}
 # runtime.exs
 ...
-text_map_propagators:
-  [&:otel_baggage.get_text_map_propagators/0,
-   &:otel_tracer_default.w3c_propagators/0],
+text_map_propagators: [:baggage, :tracer_context],
 ...
 {{< /tab >}}
 
@@ -357,11 +355,8 @@ text_map_propagators:
 
 If you instead need to use the [B3
 specification](https://github.com/openzipkin/b3-propagation), originally from
-the [Zipkin project](https://zipkin.io/), then replace
-`otel_tracer_default:w3c_propagators/0` and
-`&:otel_tracer_default.w3c_propagators/0` with `fun
-otel_tracer_default:b3_propagators/0` and
-`&:otel_tracer_default.b3_propagators/0` for Erlang or Elixir respectively.
+the [Zipkin project](https://zipkin.io/), then replace `trace_context` and
+`:trace_context` with `b3` and `:b3` for Erlang or Elixir respectively.
 
 # Library Instrumentation
 
