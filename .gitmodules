@@ -14,3 +14,6 @@
 [submodule "content-modules/opentelemetry-ruby"]
 	path = content-modules/opentelemetry-ruby
 	url = https://github.com/open-telemetry/opentelemetry-ruby
+[submodule "content-modules/opentelemetry-php"]
+	path = content-modules/opentelemetry-php
+	url = https://github.com/open-telemetry/opentelemetry-php
