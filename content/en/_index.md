@@ -20,7 +20,7 @@ Learn more
 - [Collector]({{< relref "/docs/collector/getting-started" >}})
 - [Go]({{< relref "/docs/go/getting-started" >}})
 - [.NET]({{< relref "/docs/net/getting-started" >}})
-- [JavaScript]({{< relref "/docs/js" >}})
+- [JavaScript]({{< relref "/docs/js/getting_started" >}})
 - [<i class="fas fa-ellipsis-h"></i>]({{< relref "docs" >}})
 </div>
 {{< /blocks/cover >}}
