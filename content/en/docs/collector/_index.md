@@ -8,12 +8,12 @@ description: >-
 
 <img src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/Otel_Collector.svg" alt="Otel-Collector diagram with Jaeger, OTLP and Prometheus integration"></img>
 
-The OpenTelemetry Collector offers a vendor-agnostic implementation on how to
+The OpenTelemetry Collector offers a vendor-agnostic implementation of how to
 receive, process and export telemetry data. It removes the need to run,
 operate, and maintain multiple agents/collectors. This works with improved scalability and supports
 open-source observability data formats (e.g. Jaeger, Prometheus, Fluent Bit,
-etc.) sending to one or more open-source or commercial back-ends. The Collector
-is the default location instrumentation libraries export their telemetry data.
+etc.) sending to one or more open-source or commercial back-ends. The local Collector agent
+is the default location to which instrumentation libraries export their telemetry data.
 
 Objectives:
 
