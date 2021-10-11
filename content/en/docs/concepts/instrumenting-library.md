@@ -52,7 +52,7 @@ You may be rightfully concerned about adding new dependencies, here are some con
 - OpenTelemetry Trace API reached stability in early 2021, it follows [Semantic Versioning 2.0](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/versioning-and-stability.md) and we take API stability seriously.
 - When taking dependency, use the earliest stable OpenTelemetry API (1.0.*) and avoid updating it unless you have to use new features.
 - While your instrumentation stabilizes consider shipping it as a separate package: it would never break anyone who don't use it. You can keep it in your repo or [contribute to OpenTelemetry](https://github.com/open-telemetry/oteps/blob/main/text/0155-external-modules.md#contrib-components) so it will ship with other instrumentation packages.
-- Semantic Conventions are [not stable yet](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/versioning-and-stability.md#not-defined-semantic-conventions-stability), It does not cause any functional issues, but you may need to update your instrumentation once in a while. Having it in a prebiew plugin or in OpenTelemetry contrib repo may help keeping conventions up-to-date without breaking users.
+- Semantic Conventions are [not stable yet](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/versioning-and-stability.md#not-defined-semantic-conventions-stability), It does not cause any functional issues, but you may need to update your instrumentation once in a while. Having it in a preview plugin or in OpenTelemetry contrib repo may help keeping conventions up-to-date without breaking users.
 
 ### Getting a tracer
 
