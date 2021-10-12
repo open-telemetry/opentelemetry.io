@@ -28,7 +28,7 @@ Some libraries are a thin clients wrapping network calls. Chances are that OpenT
 
 Don't instrument if:
 
-- you library is a thin proxy on top of documented or self-explanatory APIs
+- your library is a thin proxy on top of documented or self-explanatory APIs
 - *and* OpenTelemetry has instrumentation for underlying network calls
 - *and* there are no conventions your library should follow to enrich telemetry
 
@@ -137,9 +137,9 @@ WARNING: Generic solution to avoid duplication is under construction 🚧.
 
 Traces is one of the signals you may emit. Events (or logs) and traces complement, not duplicate, each other. Whenever you have something that should have a verbosity, logs are a better choice than traces.
 
-Chances are you library uses logs or some similar mechanism already. Check out [OpenTelemetry registry](https://opentelemetry.io/registry/) to see if OpenTelemetry has integration with it. Integrations usually stamps active trace context on all logs, so users can correlate them.
+Chances are your library uses logs or some similar mechanism already. Check out [OpenTelemetry registry](https://opentelemetry.io/registry/) to see if OpenTelemetry has integration with it. Integrations usually stamps active trace context on all logs, so users can correlate them.
 
-If you language and ecosystem don't have common logging libraries, use span events for additional details you want to share with users. [Events](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#add-events) maybe more convenient when you want to add attributes as well.
+If your language and ecosystem don't have common logging libraries, use span events for additional details you want to share with users. [Events](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#add-events) maybe more convenient when you want to add attributes as well.
 
 As a rule of thumb, use events or logs for verbose data instead of spans. Always attach events to the instance of span, your instrumentation created, avoid using active span if you can, as you don't control what it refers to.
 
