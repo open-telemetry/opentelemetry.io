@@ -240,7 +240,6 @@ processors:
 
   # Data sources: traces, metrics, logs
   memory_limiter:
-    ballast_size_mib: 2000
     check_interval: 5s
     limit_mib: 4000
     spike_limit_mib: 500
@@ -368,6 +367,8 @@ extensions:
   health_check:
   pprof:
   zpages:
+  memory_ballast:
+    size_mib: 512
 ```
 
 ## Service
