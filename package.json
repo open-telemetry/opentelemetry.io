@@ -24,10 +24,13 @@
     "test": "npm run check-links"
   },
   "private": true,
+  "hugo-bin": {
+    "buildTags": "extended"
+  },
   "devDependencies": {
     "autoprefixer": "^10.3.1",
     "esm": "^3.2.25",
-    "hugo-extended": "0.88.1",
+    "hugo-bin": "^0.76.1",
     "node-fetch": "^2.6.1",
     "postcss": "^8.3.6",
     "postcss-cli": "^9.0.0",
