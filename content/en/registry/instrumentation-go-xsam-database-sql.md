@@ -1,0 +1,16 @@
+---
+title: otelsql -- Instrumentation for database/sql
+registryType: instrumentation
+isThirdParty: true
+language: go
+tags:
+  - go
+  - instrumentation
+  - database
+  - sql
+repo: https://github.com/XSAM/otelsql
+license: Apache 2.0
+description: Instrumentation for the Golang `database/sql` package.
+authors: [Sam Xie (XSAM)](https://github.com/XSAM)
+otVersion: v1.0.0
+---
