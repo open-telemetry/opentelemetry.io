@@ -1,5 +1,5 @@
 ---
-title: otelsql - Instrumentation for database/sql
+title: otelsql -- Instrumentation for database/sql
 registryType: instrumentation
 isThirdParty: true
 language: go
