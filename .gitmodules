@@ -17,3 +17,6 @@
 [submodule "content-modules/opentelemetry-php"]
 	path = content-modules/opentelemetry-php
 	url = https://github.com/open-telemetry/opentelemetry-php
+[submodule "content-modules/opentelemetry-python"]
+	path = content-modules/opentelemetry-python
+	url = https://github.com/open-telemetry/opentelemetry-python
