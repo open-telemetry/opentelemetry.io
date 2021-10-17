@@ -1,7 +1,7 @@
 baseURL: https://opentelemetry.io
 disableKinds: [taxonomy, taxonomyTerm]
 theme: [docsy]
-
+disableAliases: true # We do redirects via Netlify's _redirects file
 enableGitInfo: true
 
 # Language settings
@@ -33,6 +33,19 @@ markup:
   highlight:
     style: tango
 
+# Netlify _redirects file
+mediaTypes:
+  text/netlify: {}
+
+outputFormats:
+  REDIRECTS:
+    mediaType: text/netlify
+    baseName: _redirects
+    notAlternative: true
+
+outputs:
+  home: [HTML, REDIRECTS, RSS]
+
 permalinks:
   blog: /:section/:year/:month/:day/:slug/
 
@@ -51,11 +64,13 @@ params:
   github_repo: https://github.com/open-telemetry/opentelemetry.io
   github_branch: main
   gcs_engine_id: bde3d634eca9cd335
+
   ui:
     navbar_logo: true
     navbar_translucent_over_cover_disable: true
     sidebar_search_disable: true
     footer_about_disable: true
+
   links:
     user:
       - name: Mailing Lists
