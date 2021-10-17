@@ -1,0 +1,145 @@
+baseURL: https://opentelemetry.io
+disableKinds: [taxonomy, taxonomyTerm]
+theme: [docsy]
+
+enableGitInfo: true
+
+# Language settings
+contentDir: content/en
+defaultContentLanguage: en
+defaultContentLanguageInSubdir: false
+enableMissingTranslationPlaceholders: true
+languages:
+  en:
+    title: OpenTelemetry
+    description: The OpenTelemetry Project Site
+    languageName: English
+    weight: 1
+    menu:
+      main:
+        - name: Blog
+          weight: 50
+          url: https://medium.com/opentelemetry
+
+imaging:
+  resampleFilter: CatmullRom
+  quality: 75
+  anchor: smart
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    style: tango
+
+permalinks:
+  blog: /:section/:year/:month/:day/:slug/
+
+params:
+  copyright: 'The OpenTelemetry Authors | Documentation Distributed under CC BY 4.0 | '
+  tagline: Effective observability requires high-quality telemetry
+  sub_tagline: >-
+    **OpenTelemetry** makes robust, portable telemetry a built-in feature of
+    cloud-native software.
+  sub_description: >-
+    **OpenTelemetry** provides a single set of APIs, libraries, agents, and
+    collector services to capture distributed traces and metrics from your
+    application. You can analyze them using Prometheus, Jaeger, and other
+    observability tools.
+  font_awesome_version: 5.8.1
+  github_repo: https://github.com/open-telemetry/opentelemetry.io
+  github_branch: main
+  gcs_engine_id: bde3d634eca9cd335
+  ui:
+    navbar_logo: true
+    navbar_translucent_over_cover_disable: true
+    sidebar_search_disable: true
+    footer_about_disable: true
+  links:
+    user:
+      - name: Mailing Lists
+        url: https://github.com/open-telemetry/community#mailing-lists
+        icon: fa fa-envelope
+        desc: List of mailing lists that the project uses.
+      - name: Twitter
+        url: https://twitter.com/opentelemetry
+        icon: fab fa-twitter
+        desc: Follow us on Twitter to get the latest news!
+      - name: Stack Overflow
+        url: https://stackoverflow.com/questions/tagged/open-telemetry
+        icon: fab fa-stack-overflow
+        desc: Practical questions and curated answers
+      - name: Iconography
+        url: https://github.com/open-telemetry/opentelemetry.io/blob/main/iconography/Otel_iconography.zip
+        icon: fa fa-file-archive
+        desc: The OpenTelemetry logos and iconography can be found here.
+      - name: CNCF branding
+        url: https://cncf-branding.netlify.app/projects/opentelemetry/
+        icon: fas fa-image
+        desc: Check out the CNCF logo page for OpenTelemetry
+    developer:
+      - name: GitHub
+        url: https://github.com/open-telemetry
+        icon: fab fa-github
+        desc: Find us on GitHub.
+      - name: 'Slack #opentelemetry'
+        url: https://cloud-native.slack.com/archives/CJFCJHG4Q
+        icon: fab fa-slack
+        desc: >-
+          Chat with other project developers. Sign up via https://slack.cncf.io.
+          Other channels start with with #otel- prefix
+      - name: CNCF DevStats
+        url: https://opentelemetry.devstats.cncf.io/d/8/dashboards?orgId=1&refresh=15m
+        icon: fas fa-chart-area
+        desc: See our activity on CNCF DevStats
+      - name: Privacy Policy
+        url: https://www.linuxfoundation.org/en/privacy/#:~:text=The%20Linux%20Foundation%27s%20core%20purpose,%2C%20a%20%E2%80%9CProject%E2%80%9D).&text=The%20Privacy%20Policy%20does%20not,employees%20or%20other%20TLF%20personnel.
+        icon: fa fa-book
+        desc: >-
+          CNCF works in close association with Linux Foundation. Read the
+          privacy policy here
+      - name: Marketing Guidelines
+        url: https://github.com/open-telemetry/community/blob/main/marketing-guidelines.md
+        icon: fas fa-bullhorn
+        desc: >-
+          Important information on how to represent your personal or corporate
+          contributions or participation in the OpenTelemetry project.
+
+  logos:
+    hero: opentelemetry-horizontal-color.png
+    cncf: cncf.png
+
+  social:
+    - name: GitHub
+      url: https://github.com/open-telemetry/
+      color: black
+      icon: fab fa-github
+    - name: Twitter
+      url: https://twitter.com/opentelemetry
+      color: twitter
+      icon: fab fa-twitter
+    - name: Slack
+      url: https://cloud-native.slack.com/archives/CJFCJHG4Q
+      color: slack
+      icon: fab fa-slack
+    - name: Medium
+      url: https://medium.com/opentelemetry
+      color: light
+      icon: fab fa-medium
+    - name: Mailing list
+      url: https://lists.cncf.io/g/cncf-opentelemetry-community
+      color: info
+      icon: far fa-envelope
+
+  fonts:
+    - name: Noto Sans
+      sizes: [300,400,600,700]
+      type: sans_serif
+
+module:
+  mounts:
+    - source: static
+      target: static
+    - source: content-modules/opentelemetry-specification/schemas
+      target: static/schemas
