@@ -1,12 +1,12 @@
 ---
-title: "Tracing"
+title: Tracing
 description: OpenTelemetry JavaScript Tracing API Documentation
 weight: 2
 ---
 
 The following is an in-depth explanation of using the API to trace an application with OpenTelemetry JavaScript.
 This guide will assume an OpenTelemetry SDK is registered and will walk through only tracing concepts.
-To learn how to set up the OpenTelemetry JavaScript SDK, see [Getting Started](../../getting_started) or the [API Reference](https://open-telemetry.github.io/opentelemetry-js-api).
+To learn how to set up the OpenTelemetry JavaScript SDK, see [Getting Started][] or the [API Reference](https://open-telemetry.github.io/opentelemetry-js-api).
 
 _Trace API Specification: <https://github.com/open-telemetry/opentelemetry-specification/blob/v1.6.0/specification/trace/api.md>_
 
@@ -214,3 +214,5 @@ Consumer spans represent the processing of a job created by a producer and may s
 One problem with span names and attributes is recognizing, categorizing, and analyzing them in your tracing backend. Between different applications, libraries, and tracing backends there might be different names and expected values for various attributes. For example, your application may use `http.status` to describe the HTTP status code, but a library you use may use `http.status_code`. In order to solve this problem, OpenTelemetry uses a library of semantic conventions which describe the name and attributes which should be used for specific types of spans. The use of semantic conventions is always recommended where applicable, but they are merely conventions. For example, you may find that some name other than the name suggested by the semantic conventions more accurately describes your span, you may decide not to include a span attribute which is suggested by semantic conventions for privacy reasons, or you may wish to add a custom attribute which isn't covered by semantic conventions. All of these cases are fine, but please keep in mind that if you stray from the semantic conventions, the categorization of spans in your tracing backend may be affected.
 
 _See the current trace semantic conventions in the OpenTelemetry Specification repository: <https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/trace/semantic_conventions>_
+
+[Getting Started]: {{< relref "../getting-started" >}}

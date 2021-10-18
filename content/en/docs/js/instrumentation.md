@@ -1,5 +1,5 @@
 ---
-title: "Instrumentation"
+title: Instrumentation
 weight: 3
 ---
 
@@ -32,7 +32,9 @@ function doWork() {
 
 ## Creating Spans
 
-As you have learned in the previous [Getting Started](../getting_started/) guide you need a TracerProvider and an Exporter. Install the dependencies and add them to head of your application code to get started:
+As you have learned in the previous [Getting Started][] guide you need a
+TracerProvider and an Exporter. Install the dependencies and add them to head of
+your application code to get started:
 
 ```shell
 npm install @opentelemetry/sdk-trace-base
@@ -195,3 +197,5 @@ function doWork(parent) {
   span.end();
 }
 ```
+
+[Getting Started]: {{< relref "getting-started" >}}

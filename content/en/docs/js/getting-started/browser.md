@@ -1,6 +1,6 @@
 ---
-title: "Browser"
-weight: 2
+title: Browser
+aliases: [/docs/js/getting_started/browser]
 ---
 
 This guide uses the example application in HTML & javascript provided below, but the steps to instrument your own application should be broadly the same.
