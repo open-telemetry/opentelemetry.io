@@ -2,9 +2,6 @@
 title: Documentation
 linkTitle: Docs
 aliases:
-  - /golang/
-  - /golang/metrics/
-  - /golang/tracing/
   - /java/
   - /java/metrics/
   - /java/tracing/
