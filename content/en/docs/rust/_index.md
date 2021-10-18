@@ -1,8 +1,8 @@
 ---
-title: "Rust"
-weight: 26
+title: Rust
 description: >
   A language-specific implementation of OpenTelemetry in Rust.
+weight: 26
 ---
 
 This is the OpenTelemetry for Rust documentation. OpenTelemetry is an
@@ -11,7 +11,7 @@ the generation and collection of application telemetry data such as metrics,
 logs, and traces. This documentation is designed to help you understand how to
 get started using OpenTelemetry for Rust.
 
-# Status and Releases
+## Status and Releases
 
 The current status of the major functional components for OpenTelemetry Rust is
 as follows:
@@ -22,7 +22,7 @@ as follows:
 
 The current release can be found [here](https://github.com/open-telemetry/opentelemetry-rust/releases)
 
-# Further Reading
+## Further Reading
 
 - [docs.rs](https://docs.rs/opentelemetry)
 - [Examples](https://github.com/open-telemetry/opentelemetry-rust/tree/main/examples)
