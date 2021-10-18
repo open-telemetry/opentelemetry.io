@@ -7,7 +7,7 @@
 * Run `npm install`
 * Run `npm run serve`
   * If you are on OS X and see an error like `too many open files` or `pipe failed`, you may need to increase the file descriptor limit. See [this Hugo GitHub issue](https://github.com/gohugoio/hugo/issues/6109).
-* To view the locally generated site, visit [localhost:30000][localhost].
+* To view the locally generated site, visit [localhost:8888][localhost].
 
 A few notes to be aware of:
 
@@ -52,4 +52,4 @@ changes.
 > Site administrators can access the admin interface
 > [here](https://app.netlify.com/sites/opentelemetry/overview).
 
-[localhost]: http://localhost:30000
+[localhost]: http://localhost:8888
