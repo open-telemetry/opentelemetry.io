@@ -1,0 +1,13 @@
+---
+title: Practical OpenTelemetry (for Cats)
+registryType: example 
+isThirdParty: true
+language: go
+tags:
+  - docker
+  - git 
+  - cats
+repo: https://github.com/austinlparker/practical-opentelemetry-for-cats 
+description: This is intended to be an interactive example of how you'd integrate OpenTelemetry Tracing 1.0 into a client/server application.
+authors: Austin Parker
+---
