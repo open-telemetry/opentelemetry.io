@@ -2,18 +2,12 @@
 title: Documentation
 linkTitle: Docs
 aliases:
-  - /csharp/
-  - /csharp/metrics/
-  - /csharp/tracing/
   - /golang/
   - /golang/metrics/
   - /golang/tracing/
   - /java/
   - /java/metrics/
   - /java/tracing/
-  - /js/
-  - /js/metrics/
-  - /js/tracing/
   - /python/
   - /python/metrics/
   - /python/tracing/
