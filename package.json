@@ -2,7 +2,8 @@
   "scripts": {
     "_build": "hugo --cleanDestinationDir -e dev -DFE",
     "_check-links": "make check-links",
-    "_serve": "hugo serve -p 30000 -DFE",
+    "_serve": "netlify dev -c \"hugo serve -DFE --minify\"",
+    "_serve:hugo": "hugo serve -DFE --minify",
     "build:preview": "hugo --cleanDestinationDir -DFE --minify --baseURL \"${DEPLOY_PRIME_URL:-/}\"",
     "build:production": "hugo --cleanDestinationDir --minify",
     "build": "npm run _build",
@@ -17,8 +18,10 @@
     "precheck-links": "npm run build",
     "preinstall": "npm run submodule:get",
     "preserve": "npm run submodule:get",
+    "preserve:hugo": "npm run submodule:get",
     "schemas:update": "npm run submodule:update content-modules/opentelemetry-specification",
     "serve": "npm run _serve",
+    "serve:hugo": "npm run _serve:hugo",
     "submodule:get": "git submodule update --init --recursive --depth 1",
     "submodule:update": "git submodule update --remote --recursive --depth 1",
     "test": "npm run check-links"
@@ -28,6 +31,7 @@
     "autoprefixer": "^10.3.1",
     "esm": "^3.2.25",
     "hugo-extended": "0.88.1-patch1",
+    "netlify-cli": "^6.13.2",
     "node-fetch": "^2.6.1",
     "postcss": "^8.3.6",
     "postcss-cli": "^9.0.0",
