@@ -1,0 +1,16 @@
+---
+title: otelchi --- Instrumentation for go-chi/chi
+registryType: instrumentation
+isThirdParty: true
+language: go
+tags:
+  - go
+  - instrumentation
+  - go-chi
+  - chi
+repo: https://github.com/riandyrn/otelchi
+license: Apache 2.0
+description: Instrumentation for the Golang `go-chi/chi` package.
+authors: Riandy R.N (riandyrn@gmail.com)
+otVersion: v1.0.1
+---
