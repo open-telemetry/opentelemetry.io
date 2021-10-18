@@ -3,7 +3,7 @@ title: .NET
 description: >
   <img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/.NET.svg" alt="NET logo"></img>
   A language-specific implementation of OpenTelemetry in .NET.
-aliases: [/csharp/, /csharp/metrics/, /csharp/tracing/]
+aliases: [/csharp, /csharp/metrics, /csharp/tracing]
 weight: 12
 ---
 
