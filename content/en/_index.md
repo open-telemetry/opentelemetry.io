@@ -5,18 +5,18 @@ show_banner: true
 
 {{< blocks/cover image_anchor="top" height="max" color="primary" >}}
 <img src="/img/logos/opentelemetry-horizontal-color.svg" class="otel-logo" />
-<h2>An observability framework for cloud-native software</h2>
+<h1>High-quality, ubiquitous, and portable telemetry to enable effective observability</h1>
 <a
 	class="btn btn-lg btn-primary font-weight-bold mt-5 my-4"
-	href="/docs/concepts/"
+	href="https://github.com/open-telemetry/community/blob/main/mission-vision-values.md#readme"
 >
-Learn more
+Our Mission and Vision
 </a>
-
 <div class="h3 mt-2">Get started!</div>
 
 <div class="l-get-started-buttons">
 
+- [Key Concepts]({{< relref "/docs/concepts" >}})
 - [Collector]({{< relref "/docs/collector/getting-started" >}})
 - [Go]({{< relref "/docs/go/getting-started" >}})
 - [.NET]({{< relref "/docs/net/getting-started" >}})
