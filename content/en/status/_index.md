@@ -1,8 +1,9 @@
 ---
-Title: Status
+title: Status
 menu:
   main:
     weight: 30
+aliases: [/project-status]
 ---
 
 <a class="td-offset-anchor"></a>
