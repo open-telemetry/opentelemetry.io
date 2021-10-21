@@ -33,7 +33,7 @@ function doWork() {
 ## Creating Spans
 
 As you have learned in the previous [Getting Started][] guide you need a
-TracerProvider and an Exporter. Install the dependencies and add them to head of
+TracerProvider and an Exporter. Install the dependencies and add them to the head of
 your application code to get started:
 
 ```shell
