@@ -5,9 +5,6 @@ aliases:
   - /java/
   - /java/metrics/
   - /java/tracing/
-  - /python/
-  - /python/metrics/
-  - /python/tracing/
   - /ruby/
   - /ruby/metrics/
   - /ruby/tracing/
