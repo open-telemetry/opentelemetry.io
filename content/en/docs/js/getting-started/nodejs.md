@@ -1,6 +1,6 @@
 ---
-title: "Node.JS"
-weight: 2
+title: Node.JS
+aliases: [/docs/js/getting_started/nodejs]
 ---
 
 This guide will show you how to get started with tracing in Node.js.

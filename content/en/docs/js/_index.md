@@ -3,7 +3,7 @@ title: JavaScript
 description: >-
   <img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/JS_SDK.svg" alt="JS logo"></img>
   A language-specific implementation of OpenTelemetry in JavaScript (for Node.JS & the browser).
-aliases: [/js/, /js/metrics/, /js/tracing/]
+aliases: [/js, /js/metrics, /js/tracing]
 weight: 20
 ---
 
@@ -24,6 +24,6 @@ You can find release information [here](https://github.com/open-telemetry/opente
 ## Further Reading
 
 - [OpenTelemetry for JavaScript on GitHub](https://github.com/open-telemetry/opentelemetry-js)
-- [Getting Started](getting_started)
+- [Getting Started]({{< relref "getting-started" >}})
 - [API Reference](https://open-telemetry.github.io/opentelemetry-js-api)
 - [SDK Reference](https://open-telemetry.github.io/opentelemetry-js)

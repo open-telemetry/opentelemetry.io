@@ -1,5 +1,5 @@
 ---
-title: "Context"
+title: Context
 description: OpenTelemetry JavaScript Context API Documentation
 weight: 2
 ---
