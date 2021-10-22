@@ -3,7 +3,7 @@ title: Status
 menu:
   main:
     weight: 30
-aliases: [/project-status]
+aliases: [/project-status, /releases]
 ---
 
 <a class="td-offset-anchor"></a>
