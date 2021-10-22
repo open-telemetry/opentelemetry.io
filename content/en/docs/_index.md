@@ -1,10 +1,6 @@
 ---
 title: Documentation
 linkTitle: Docs
-aliases:
-  - /java/
-  - /java/metrics/
-  - /java/tracing/
 menu:
   main:
     weight: 10
