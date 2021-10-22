@@ -48,6 +48,14 @@
   }
 }
 
+.l-primary-buttons {
+  @extend .l-buttons;
+
+  > ul > li > a {
+    @extend .btn-lg;
+    @extend .btn-primary;
+  }
+}
 .td-navbar {
   background: $primary !important;
 }
