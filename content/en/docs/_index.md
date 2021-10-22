@@ -5,9 +5,6 @@ aliases:
   - /java/
   - /java/metrics/
   - /java/tracing/
-  - /ruby/
-  - /ruby/metrics/
-  - /ruby/tracing/
 menu:
   main:
     weight: 10
