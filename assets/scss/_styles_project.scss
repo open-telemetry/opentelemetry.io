@@ -48,6 +48,15 @@
   }
 }
 
+.l-primary-buttons {
+  @extend .l-buttons;
+
+  > ul > li > a {
+    @extend .btn-lg;
+    @extend .btn-primary;
+  }
+}
+
 // Adjust the spacing of page-meta and page-TOC (https://github.com/open-telemetry/opentelemetry.io/pull/354)
 .td-toc #TableOfContents {
   padding-top: 1rem;
