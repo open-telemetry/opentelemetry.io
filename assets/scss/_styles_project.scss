@@ -69,14 +69,8 @@
 
 .td-navbar {
   .navbar-brand {
-    padding: 0;
-    svg {
-      float: left;
-      height: 75px;
-      @include media-breakpoint-up(md) {
-        margin-top: -25px;
-      }
-    }
+    @include media-breakpoint-up(md) { padding: 0; }
+    svg { height: 48px; }
     span:last-child { display: none; }
   }
 }
