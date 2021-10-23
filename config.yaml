@@ -66,10 +66,11 @@ params:
   gcs_engine_id: bde3d634eca9cd335
 
   ui:
+    footer_about_disable: true
     navbar_logo: true
     navbar_translucent_over_cover_disable: true
+    sidebar_menu_compact: true
     sidebar_search_disable: true
-    footer_about_disable: true
 
   links:
     user:
