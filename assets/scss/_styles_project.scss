@@ -17,6 +17,16 @@
   }
 }
 
+.td-sidebar-nav-active-item {
+  color: $opentelemetry-purple;
+  &::before {
+    content: "\2022";
+    margin-left: -0.75rem;
+    padding-right: 0.25rem;
+    width: 0.5rem;
+  }
+}
+
 .l-buttons {
   display: flex;
   flex-wrap: wrap;
