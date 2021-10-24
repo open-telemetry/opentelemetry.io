@@ -54,15 +54,15 @@ run as a Release and export spans from.
 {{< tabs Erlang Elixir >}}
 
 {{< tab >}}
-{deps, [{opentelemetry_api, "~> 1.0.0-rc.1"}, 
-        {opentelemetry, "~> 1.0.0-rc.1"}]}.
+{deps, [{opentelemetry_api, "~> 1.0.0-rc.3"}, 
+        {opentelemetry, "~> 1.0.0-rc.3"}]}.
 {{< /tab >}}
 
 {{< tab >}}
 def deps do
   [
-    {:opentelemetry_api, "~> 1.0.0-rc.1"},
-    {:opentelemetry, "~> 1.0.0-rc.1"}
+    {:opentelemetry_api, "~> 1.0.0-rc.3"},
+    {:opentelemetry, "~> 1.0.0-rc.3"}
   ]
 end
 {{< /tab >}}
