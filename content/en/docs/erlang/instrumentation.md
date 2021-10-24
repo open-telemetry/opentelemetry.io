@@ -23,19 +23,16 @@ Each OTP Application has a `Tracer` registered for it when the `opentelemetry`
 Application boots. This can be disabled by setting the Application environment
 variable `register_loaded_applications` to `false`. If you want a more specific
 named `Tracer` or disable the automatic registration you can register a `Tracer`
-either with a name and version or with an Application name and
-`opentelemetry` will get the version from the loaded Application. Examples:
+with a name and version. Examples:
 
 {{< tabs Erlang Elixir >}}
 
 {{< tab >}}
 opentelemetry:register_tracer(test_tracer, <<"0.1.0">>),
-opentelemetry:register_application_tracer(myapp),
 {{< /tab >}}
 
 {{< tab >}}
 OpenTelemetry.register_tracer(:test_tracer, "0.1.0")
-OpenTelemetry.register_application_tracer(:myapp)
 {{< /tab >}}
 
 {{< /tabs >}}
