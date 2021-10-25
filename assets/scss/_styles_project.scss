@@ -67,6 +67,14 @@
   }
 }
 
+.td-navbar {
+  .navbar-brand {
+    @include media-breakpoint-up(md) { padding: 0; }
+    svg { height: 48px; }
+    span:last-child { display: none; }
+  }
+}
+
 // Adjust the spacing of page-meta and page-TOC (https://github.com/open-telemetry/opentelemetry.io/pull/354)
 .td-toc #TableOfContents {
   padding-top: 1rem;
