@@ -302,7 +302,8 @@ exporters:
   # Data sources: traces
   jaeger:
     endpoint: "http://jaeger-all-in-one:14250"
-    insecure: true
+    tls:
+      insecure: true
 
   # Data sources: traces
   kafka:
