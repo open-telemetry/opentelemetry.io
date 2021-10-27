@@ -159,3 +159,5 @@ module:
       target: static
     - source: content-modules/opentelemetry-specification/schemas
       target: static/schemas
+    - source: content-modules/opentelemetry-specification/internal/img
+      target: static/img
