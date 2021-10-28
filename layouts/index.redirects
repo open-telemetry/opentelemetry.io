@@ -4,3 +4,7 @@
 {{ . | printf "%-35s" }} {{ $p.RelPermalink }}
 {{ end -}}
 {{ end -}}
+
+# https://github.com/open-telemetry/opentelemetry.io/issues/635#issuecomment-953920483
+/docs/java/automatic_instrumentation  https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/README.md
+/docs/java/getting_started  https://opentelemetry.io/docs/java/manual_instrumentation/
