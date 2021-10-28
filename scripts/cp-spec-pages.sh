@@ -4,11 +4,8 @@ BASE_DIR=$(dirname $0)
 SPEC=content-modules/opentelemetry-specification/specification
 DEST=content/en/docs/specification
 
-# set -x
-
 rm -Rf $DEST/[^_]*
 
-# cp $SPEC/overview.md $DEST
 cp -R $SPEC/* $DEST/
 
 find $DEST/ -name "README.md" -exec sh -c 'f="{}"; mv -- "$f" "${f%README.md}_index.md"' \;
@@ -16,4 +13,4 @@ find $DEST/ -name "README.md" -exec sh -c 'f="{}"; mv -- "$f" "${f%README.md}_in
 FILES=`find $DEST -name "*.md" | grep -ve 'specification/_index.md$'`
 $BASE_DIR/adjust-spec-pages.pl $FILES
 
-echo "Specification pages copied."
+echo "Specification pages copied and processed."

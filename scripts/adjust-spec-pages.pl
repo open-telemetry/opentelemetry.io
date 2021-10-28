@@ -1,4 +1,4 @@
-#!/usr/bin/perl -w -i 
+#!/usr/bin/perl -w -i
 
 $^W = 1;
 
@@ -13,12 +13,10 @@ my $gD = 0;
 my $semConvRef = 'https://github.com/open-telemetry/opentelemetry-specification/blob/main/semantic_conventions/README.md';
 
 sub printTitle() {
-
   print "---\n";
   print "title: $title\n";
   print "weight: 1\n" if $title eq "Overview";
   ($linkTitle) = $title =~ /^OpenTelemetry (.*)/;
-  # ($linkTitle) = $linkTitle =~ /^Metrics (.*)/;
   $linkTitle = 'FaaS' if $ARGV =~ /faas-metrics.md$/;
   $linkTitle = 'HTTP' if $ARGV =~ /http-metrics.md$/;
   print "linkTitle: $linkTitle\n" if $linkTitle;
@@ -26,9 +24,7 @@ sub printTitle() {
 }
 
 sub skipDetailsOrToc() {
-  while(<>) {
-    last if /<\/details>|<!-- tocstop/;
-  }
+  while(<>) { last if /<\/details>|<!-- tocstop/; }
 }
 
 # main
@@ -55,7 +51,7 @@ while(<>) {
 
   # Bug fix from original source
   s/#(#(instrument|set-status))/$1/;
-  
+
   # Images
   s|(\.\./)?internal(/img/[-\w]+\.png)|$2|g;
   s|(\]\()(img/.*?\))|$1../$2|g;
@@ -65,14 +61,12 @@ while(<>) {
   s|(/semantic_conventions/faas.md)#function-as-a-service|$1|g;
   s/#log-data-model/./;
 
-  # s|(\w+)\.md\b|/$1|g;
-  # next if /^\s*<!--/;
   s|\bREADME.md\b|_index.md|g;
 
   # Rewrite inline links
   s|\]\(([^:\)]*?\.md(#.*?)?)\)|]({{< relref "$1" >}})|g;
-  
-  # Rewrite link defs (TODO: enforce at least one space after colon)
+
+  # Rewrite link defs
   s|^(\[[^\]]+\]:\s*)([^:\s]*)(\s*(\(.*\))?)$|$1\{{< relref "$2" >}}$3|g;
 
   print;
