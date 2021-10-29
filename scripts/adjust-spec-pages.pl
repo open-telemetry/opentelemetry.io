@@ -20,6 +20,11 @@ sub printTitle() {
   $linkTitle = 'FaaS' if $ARGV =~ /faas-metrics.md$/;
   $linkTitle = 'HTTP' if $ARGV =~ /http-metrics.md$/;
   print "linkTitle: $linkTitle\n" if $linkTitle;
+  if ($ARGV =~ /_index.md$/) {
+    print "path_base_for_github_subdir:\n";
+    print "  from: content/en/docs/specification/(.*?)/_index.md\n";
+    print "  to: \$1/README.md\n";
+  }
   print "---\n";
 }
 
