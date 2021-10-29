@@ -14,8 +14,6 @@ github_project_repo: *repo
 weight: 2
 ---
 
-![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/open-telemetry/specification.svg)
-
 The OpenTelemetry specification describes the cross-language requirements and expectations for all OpenTelemetry implementations. Substantive changes to the specification must be proposed using the [OpenTelemetry Enhancement Proposal](https://github.com/open-telemetry/oteps) process. Small changes, such as clarifications, wording changes, spelling/grammar corrections, etc. can be made directly via pull requests.
 
 Questions that needs additional attention can be brought to the regular
