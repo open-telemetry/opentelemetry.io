@@ -4,7 +4,7 @@ no_list: true
 cascade:
   github_repo: &repo https://github.com/open-telemetry/opentelemetry-specification
   github_subdir: specification
-  path_base_for_github_subdir: content/en/docs/specification/
+  path_base_for_github_subdir: content/en/docs/reference/specification/
   github_project_repo: *repo
 # Keep global values for this page. TODO: eliminate these overrides by moving the page into the spec repo.
 github_repo: &repo https://github.com/open-telemetry/opentelemetry.io

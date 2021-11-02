@@ -2,7 +2,7 @@
 
 BASE_DIR=$(dirname $0)
 SPEC=content-modules/opentelemetry-specification/specification
-DEST=content/en/docs/specification
+DEST=content/en/docs/reference/specification
 
 rm -Rf $DEST/[^_]*
 

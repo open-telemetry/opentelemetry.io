@@ -19,6 +19,6 @@ assets/jsconfig.json
 *.iml
 
 # Generated content
-/content/en/docs/specification/**/*.md
-/content/en/docs/specification/**/*.png
-!/content/en/docs/specification/_index.md
+/content/en/docs/reference/specification/**/*.md
+/content/en/docs/reference/specification/**/*.png
+!/content/en/docs/reference/specification/_index.md
