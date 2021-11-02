@@ -19,6 +19,3 @@ clean:
 get-link-checker:
 	rm -Rf $(HTMLTEST_DIR)/bin
 	curl https://htmltest.wjdp.uk | bash -s -- -b $(HTMLTEST_DIR)/bin
-
-get-milestones:
-	node -r esm ./scripts/fetchMilestones.js
