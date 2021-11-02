@@ -54,7 +54,7 @@ other configuration options are available and may include:
 - Data source specific configuration
 - Exporter configuration
 - Propagator configuration
-- Resource configuraton
+- Resource configuration
 
 ## Manual Instrumentation
 
