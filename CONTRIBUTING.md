@@ -12,7 +12,7 @@
 A few notes to be aware of:
 
 * Before submitting a PR be sure to run `npm run test` and address any issues uncovered
-* Any make target that requires `get-milestones` requires that a GH_TOKEN environment variable be set
+* Any script that runs `get:milestones` requires that the `GH_TOKEN` environment variable be set
 
 ## Mirrored Documentation
 
