@@ -162,7 +162,7 @@ Every Collector release includes EXE and MSI packaging for Windows amd64 systems
 The MSI packaging includes a default configuration that can be found at
 `\Program Files\OpenTelemetry Collector\config.yaml`.
 
-> Please note the Collector service is not automatically started
+> Please note the Collector service is automatically started
 
 The easiest way to get started is to double-click the MSI package and follow
 the wizard. Silent installation is also available.
