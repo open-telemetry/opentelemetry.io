@@ -2,3 +2,10 @@ DirectoryPath: public
 IgnoreDirectoryMissingTrailingSlash: true
 IgnoreAltMissing: true
 IgnoreInternalEmptyHash: true
+IgnoreInternalURLs:
+  # TODO: fix the source of these inlined TOC links
+  - HAHAHUGOSHORTCODE-s0-HBHB
+  - HAHAHUGOSHORTCODE-s1-HBHB
+  - HAHAHUGOSHORTCODE-s2-HBHB
+  - HAHAHUGOSHORTCODE-s5-HBHB
+  - HAHAHUGOSHORTCODE-s7-HBHB

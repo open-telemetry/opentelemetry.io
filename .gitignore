@@ -17,3 +17,8 @@ assets/jsconfig.json
 
 # IntelliJ
 *.iml
+
+# Generated content
+/content/en/docs/reference/specification/**/*.md
+/content/en/docs/reference/specification/**/*.png
+!/content/en/docs/reference/specification/_index.md
