@@ -70,7 +70,7 @@ Checking the current status for each client in the README of its [github repo](h
 * OpenTelemetry Metrics is currently under active development.
 * The data model is stable and released as part of the OTLP protocol.
 * Experimental support for metric pipelines are available in the Collector.
-* Collector support for Prometheus is under developemnet, in collaboration with the Prometheus community.
+* Collector support for Prometheus is under development, in collaboration with the Prometheus community.
 * The metric API and SDK specification is currently being prototyped in Java, .NET, and Python.
 
 #### Baggage
