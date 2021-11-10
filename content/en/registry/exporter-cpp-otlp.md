@@ -1,7 +1,7 @@
 ---
 title: OTLP Exporter
 registryType: exporter
-isThirdParty: true
+isThirdParty: false
 language: c++
 tags:
   - c++
