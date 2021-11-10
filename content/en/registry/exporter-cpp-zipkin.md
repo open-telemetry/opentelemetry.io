@@ -1,7 +1,7 @@
 ---
 title: Zipkin Exporter
 registryType: exporter
-isThirdParty: true
+isThirdParty: false
 language: c++
 tags:
   - c++
