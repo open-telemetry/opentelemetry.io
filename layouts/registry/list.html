@@ -1,29 +1,29 @@
 {{ define "main" }}
-{{ $registryItems := where .Data.Pages "Params.layout" "!=" "search" }}
+{{ $registryItems := where .Data.Pages "Params.layout" "!=" "search" -}}
 
-{{ $languages := newScratch }}
-{{ $languages.Set "collector" "Collector" }}
-{{ $languages.Set "cpp" "C++" }}
-{{ $languages.Set "dotnet" ".NET" }}
-{{ $languages.Set "erlang" "Erlang" }}
-{{ $languages.Set "go" "Go" }}
-{{ $languages.Set "java" "Java" }}
-{{ $languages.Set "js" "JavaScript" }}
-{{ $languages.Set "php" "PHP" }}
-{{ $languages.Set "python" "Python" }}
-{{ $languages.Set "ruby" "Ruby" }}
-{{ $languages.Set "rust" "Rust" }}
+{{ $languages := newScratch -}}
+{{ $languages.Set "collector" "Collector" -}}
+{{ $languages.Set "cpp" "C++" -}}
+{{ $languages.Set "dotnet" ".NET" -}}
+{{ $languages.Set "erlang" "Erlang" -}}
+{{ $languages.Set "go" "Go" -}}
+{{ $languages.Set "java" "Java" -}}
+{{ $languages.Set "js" "JavaScript" -}}
+{{ $languages.Set "php" "PHP" -}}
+{{ $languages.Set "python" "Python" -}}
+{{ $languages.Set "ruby" "Ruby" -}}
+{{ $languages.Set "rust" "Rust" -}}
 
-{{ $types := newScratch }}
-{{ $types.Set "core" "Core" }}
-{{ $types.Set "instrumentation" "Instrumentation" }}
-{{ $types.Set "exporter" "Exporter" }}
-{{ $types.Set "extension" "Extension" }}
-{{ $types.Set "processor" "Processor" }}
-{{ $types.Set "receiver" "Receiver" }}
-{{ $types.Set "utilities" "Utilities" }}
+{{ $types := newScratch -}}
+{{ $types.Set "core" "Core" -}}
+{{ $types.Set "instrumentation" "Instrumentation" -}}
+{{ $types.Set "exporter" "Exporter" -}}
+{{ $types.Set "extension" "Extension" -}}
+{{ $types.Set "processor" "Processor" -}}
+{{ $types.Set "receiver" "Receiver" -}}
+{{ $types.Set "utilities" "Utilities" -}}
 
-{{ .Content }}
+{{ .Content -}}
 
 <div class="td-content">
   <section class="row pb-5">
@@ -43,19 +43,19 @@
             <div>
               <button class="btn btn-outline-secondary dropdown-toggle" id="languageDropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
               <div class="dropdown-menu" id="languageFilter">
-                <a value="all" class="dropdown-item" href="#">Any Language</a>
-                {{ range $registryItems.GroupByParam "language" }}
-                <a value={{.Key}} id="language-item-{{.Key}}" class="dropdown-item" href="#">{{ $languages.Get .Key }}</a>
-                {{ end }}
+                <a value="all" class="dropdown-item">Any Language</a>
+                {{ range $registryItems.GroupByParam "language" -}}
+                <a value={{.Key}} id="language-item-{{.Key}}" class="dropdown-item">{{ $languages.Get .Key }}</a>
+                {{ end -}}
               </div>
             </div>
             <div>
               <button class="btn btn-outline-secondary dropdown-toggle" id="componentDropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Type</button>
               <div class="dropdown-menu" id="componentFilter">
-                <a value="all" class="dropdown-item" href="#">Any Component</a>
-                {{ range $registryItems.GroupByParam "registryType" }}
-                <a value={{.Key}} id="component-item-{{.Key}}" class="dropdown-item" href="#">{{ $types.Get (lower .Key) }}</a>
-                {{ end }}
+                <a value="all" class="dropdown-item">Any Component</a>
+                {{ range $registryItems.GroupByParam "registryType" -}}
+                <a value={{.Key}} id="component-item-{{.Key}}" class="dropdown-item">{{ $types.Get (lower .Key) }}</a>
+                {{ end -}}
               </div>
             </div>
           </div>
@@ -69,16 +69,16 @@
       <ul class="list-unstyled">
       <div id="search-results"></div>
       <div id="default-body">
-      {{ range $registryItems }}
+      {{ range $registryItems -}}
         <li class="media" data-registrytype="{{ .Params.registryType }}" data-registrylanguage="{{ .Params.language }}">
           <div class="media-body">
-            <a href="{{ .Params.repo }}"><h5 class="mt-0 mb-1">{{ .Params.title }}</h5></a>
+            <a href="{{ .Params.repo }}" target="_blank" rel="noopener"><h5 class="mt-0 mb-1">{{ .Params.title }}</h5></a>
             {{ .Params.description }}
             <span class="badge badge-{{.Params.registryType}} float-right">{{ .Params.registryType }}</span>
             <span class="badge badge-{{.Params.language}} float-right mr-2">{{ .Params.language }}</span>
           </div>
         </li>
-      {{ end }}
+      {{ end -}}
       </div>
       </ul>
     </div>
