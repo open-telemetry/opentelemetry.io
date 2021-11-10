@@ -1,7 +1,6 @@
 DirectoryPath: public
 IgnoreDirectoryMissingTrailingSlash: true
 IgnoreAltMissing: true
-IgnoreInternalEmptyHash: true
 IgnoreInternalURLs:
   # TODO: fix the source of these inlined TOC links
   - HAHAHUGOSHORTCODE-s0-HBHB
