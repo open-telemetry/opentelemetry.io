@@ -1,22 +1,20 @@
 ---
 title: Status
 menu:
-  main:
-    weight: 30
+  main: {weight: 30}
 aliases: [/project-status, /releases]
 ---
 
-<a class="td-offset-anchor"></a>
 <section class="row td-box td-box--1 position-relative td-box--gradient td-box--height-auto">
   <div class="container text-center td-arrow-down">
     <h1>OpenTelemetry Tracing Specification now 1.0!</h1>
-    <span class="h4 mb-0">
-      <p>Our goal is to provide a generally available, production quality
+    <p class="h4 mb-0">
+      Our goal is to provide a generally available, production quality
       release for the tracing data source across most OpenTelemetry components
       in the first half of 2021. Several components have already reached this
       milestone! We expect metrics to reach the same status in the second half
-      of 2021 and are targeting logs in 2022.</p>
-    </span>
+      of 2021 and are targeting logs in 2022.
+    </p>
   </div>
 </section>
 
@@ -107,11 +105,13 @@ An effort to expand the availability and quality of OpenTelemetry instrumentatio
 
 {{% /blocks/section %}}
 
-<section class="row td-box">
-  <div class="col">
-    <div class="row section">
-      <h2>Latest Releases</h2>
-      {{< release_notes >}}
-    </div>
-  </div>
+<section class="row td-box pt-0">
+<div class="col">
+<div class="row section">
+
+## Latest Releases
+{{% release_notes %}}
+
+</div>
+</div>
 </section>

@@ -1,18 +1,17 @@
-{{ $data := "" }}
-{{ if site.Data.progress_generated }}
-  {{ $data = site.Data.progress_generated }}
-{{ else }}
-  {{ $data = site.Data.progress_source }}
-{{ end }}
-{{ $progressData := $data.data }}
+{{ $data := "" -}}
+{{ if site.Data.progress_generated -}}
+  {{ $data = site.Data.progress_generated -}}
+{{ else -}}
+  {{ $data = site.Data.progress_source -}}
+{{ end -}}
+{{ $progressData := $data.data -}}
 
-<br/>
-{{- range $progressData }}
-  <h3 class="title is-3">{{ .label }}</h3>
-  {{ if ne .releaseName "n/a" }}
-    <h4 class="subtitle is-5"><a href="{{ .releaseUrl }}">{{ .releaseName }}</a></h4>
-    <pre style="white-space: pre-wrap; max-width: 100%">{{ .releaseDescription }}</pre>
-  {{ else }}
-    <p>No release information available from GitHub.</p>
-  {{ end }}
-{{ end }}
+{{ range $progressData -}}
+
+- **{{ .label }}**:
+  {{ if ne .releaseName "n/a" -}}
+    <a href="{{ .releaseUrl }}" target="_blank" rel="noopener">{{ .releaseName }}</a>
+  {{- else -}}
+    No release information available from GitHub.
+  {{- end }}
+{{ end -}}
