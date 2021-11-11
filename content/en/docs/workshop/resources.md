@@ -1,6 +1,5 @@
 ---
-title: "Workshop Resources"
-weight: 1
+title: Workshop resources
 ---
 
 OpenTelemetry provides the following resources free of charge and available under the Apache 2.0 license. These resources are intended to aid you in running an OpenTelemetry workshop for your local user group, online community, corporation, or other association. You are free to make a copy of this material for your personal use as long as you attribute it to the OpenTelemetry authors and include a link to this page.
