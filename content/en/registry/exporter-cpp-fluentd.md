@@ -2,7 +2,7 @@
 title: Fluentd Exporter
 registryType: exporter
 isThirdParty: true
-language: c++
+language: cpp
 tags:
   - c++
   - exporter
