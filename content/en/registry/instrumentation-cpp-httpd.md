@@ -1,5 +1,5 @@
 ---
-title: httpd(Apache) Instrumentation
+title: httpd (Apache) Instrumentation
 registryType: instrumentation
 isThirdParty: true
 language: cpp
