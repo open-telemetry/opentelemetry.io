@@ -1,0 +1,14 @@
+---
+title: httpd (Apache) Instrumentation
+registryType: instrumentation
+isThirdParty: true
+language: cpp
+tags:
+  - c++
+  - instrumentation
+repo: https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/httpd
+license: Apache 2.0
+description: httpd (Apache) OpenTelemetry module to add OpenTelemetry distributed tracing support to httpd.
+authors: OpenTelemetry Authors
+otVersion: latest
+---
