@@ -2,7 +2,7 @@
 title: httpd(Apache) Instrumentation
 registryType: instrumentation
 isThirdParty: true
-language: c++
+language: cpp
 tags:
   - c++
   - instrumentation
