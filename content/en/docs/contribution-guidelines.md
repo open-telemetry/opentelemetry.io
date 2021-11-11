@@ -1,9 +1,7 @@
 ---
-title: "Contribution Guidelines"
-linkTitle: "Contribution Guidelines"
-weight: 10000
-description: >
-  How to contribute to the OpenTelemetry documentation
+title: Contribution guidelines
+description: How to contribute to the OpenTelemetry
+toc_hide: true
 ---
 
 OpenTelemetry is an open source project, and we gladly accept new contributions and contributors. Please see the CONTRIBUTING.md file in each SIG repository for information on getting started.
