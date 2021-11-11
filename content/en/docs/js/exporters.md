@@ -40,7 +40,7 @@ Update your opentelemetry configuration to use the exporter and to send data to 
 
 ```javascript
 const { JaegerExporter } = require("@opentelemetry/exporter-jaeger");
-const { BatchSpanProcessor } = require("@opentelemetry/tracing");
+const { BatchSpanProcessor } = require("@opentelemetry/sdk-trace-base");
 
 provider.addSpanProcessor(new BatchSpanProcessor(new JaegerExporter()))
 ```
@@ -63,7 +63,7 @@ Update your opentelemetry configuration to use the exporter and to send data to 
 
 ```javascript
 const { ZipkinExporter } = require("@opentelemetry/exporter-zipkin");
-const { BatchSpanProcessor } = require("@opentelemetry/tracing");
+const { BatchSpanProcessor } = require("@opentelemetry/sdk-trace-base");
 
 provider.addSpanProcessor(new BatchSpanProcessor(new ZipkinExporter()))
 ```
