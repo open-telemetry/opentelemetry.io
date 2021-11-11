@@ -320,7 +320,8 @@ exporters:
   # Data sources: traces, metrics, logs
   otlp:
     endpoint: otelcol2:4317
-    insecure: true
+    tls:
+      insecure: true
 
   # Data sources: traces, metrics
   otlphttp:
