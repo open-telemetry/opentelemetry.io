@@ -8,22 +8,10 @@ The following is an in-depth explanation of using the API to trace an applicatio
 This guide will assume an OpenTelemetry SDK is registered and will walk through only tracing concepts.
 To learn how to set up the OpenTelemetry JavaScript SDK, see [Getting Started][] or the [API Reference](https://open-telemetry.github.io/opentelemetry-js-api).
 
-_Trace API Specification: <https://github.com/open-telemetry/opentelemetry-specification/blob/v1.6.0/specification/trace/api.md>_
+More information:
 
-_Trace API Reference: <https://open-telemetry.github.io/opentelemetry-js-api/classes/traceapi.html>_
-
-- [Acquiring a Tracer](#acquiring-a-tracer)
-- [Starting and Ending a Span](#starting-and-ending-a-span)
-- [Describing a Span](#describing-a-span)
-  - [Span Relationships](#span-relationships)
-  - [Span Attributes](#span-attributes)
-  - [Span Kind](#span-kind)
-    - [Client](#client)
-    - [Server](#server)
-    - [Internal](#internal)
-    - [Producer](#producer)
-    - [Consumer](#consumer)
-  - [Semantic Conventions](#semantic-conventions)
+- [Trace API specification]({{< relref "/docs/reference/specification/trace/api" >}})
+- [Trace API reference](https://open-telemetry.github.io/opentelemetry-js-api/classes/traceapi.html)
 
 ## Acquiring a Tracer
 
@@ -80,7 +68,7 @@ server.on("GET", "/user/:id", onGet);
 
 ## Describing a Span
 
-Using span relationships, attributes, kind, and the related [semantic conventions](https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/trace/semantic_conventions), we can more accurately describe the span in a way our tracing backend will more easily understand. The following example uses these mechanisms, which are described below.
+Using span relationships, attributes, kind, and the related [semantic conventions]({{< relref "/docs/reference/specification/trace/semantic_conventions" >}}), we can more accurately describe the span in a way our tracing backend will more easily understand. The following example uses these mechanisms, which are described below.
 
 ```typescript
 import { NetTransportValues SemanticAttributes } from '@opentelemetry/semantic-conventions';
@@ -91,8 +79,8 @@ async function onGet(request, response) {
   const span = tracer.startSpan(`GET /user/:id`, {
     // attributes can be added when the span is started
     attributes: {
-      // Attributes from the HTTP tracce semantic conventions
-      // https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/http.md
+      // Attributes from the HTTP trace semantic conventions
+      // https://opentelemetry.io/docs/reference/specification/trace/semantic_conventions/http
       [SemanticAttributes.HTTP_METHOD]: "GET",
       [SemanticAttributes.HTTP_FLAVOR]: "1.1",
       [SemanticAttributes.HTTP_URL]: request.url,
@@ -146,7 +134,7 @@ async function getUser(userId) {
   const span = tracer.startSpan("SELECT ShopDb.Users", {
     attributes: {
       // Attributes from the database trace semantic conventions
-      // https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/database.md
+      // https://opentelemetry.io/docs/reference/specification/trace/semantic_conventions/database
       [SemanticAttributes.DB_SYSTEM]: "mysql",
       [SemanticAttributes.DB_CONNECTION_STRING]: "Server=shopdb.example.com;Database=ShopDb;Uid=billing_user;TableCache=true;UseCompression=True;MinimumPoolSize=10;MaximumPoolSize=50;",
       [SemanticAttributes.DB_USER]: "app_user",
@@ -187,7 +175,7 @@ While name, start time, end time, and status are the minimum information require
 
 When a span is created, it is one of `Client`, `Server`, `Internal`, `Producer`, or `Consumer`. This span kind provides a hint to the tracing backend as to how the trace should be assembled. According to the OpenTelemetry specification, the parent of a server span is always a client span, and the child of a client span is always a server span. Similarly, the parent of a consumer span is always a producer and the child of a producer span is always a consumer. If not provided, the span kind is assumed to be internal.
 
-For more information regarding SpanKind, see <https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#spankind>.
+For more information regarding SpanKind, see [SpanKind]({{< relref "/docs/reference/specification/trace/api#spankind" >}}).
 
 #### Client
 
@@ -213,6 +201,6 @@ Consumer spans represent the processing of a job created by a producer and may s
 
 One problem with span names and attributes is recognizing, categorizing, and analyzing them in your tracing backend. Between different applications, libraries, and tracing backends there might be different names and expected values for various attributes. For example, your application may use `http.status` to describe the HTTP status code, but a library you use may use `http.status_code`. In order to solve this problem, OpenTelemetry uses a library of semantic conventions which describe the name and attributes which should be used for specific types of spans. The use of semantic conventions is always recommended where applicable, but they are merely conventions. For example, you may find that some name other than the name suggested by the semantic conventions more accurately describes your span, you may decide not to include a span attribute which is suggested by semantic conventions for privacy reasons, or you may wish to add a custom attribute which isn't covered by semantic conventions. All of these cases are fine, but please keep in mind that if you stray from the semantic conventions, the categorization of spans in your tracing backend may be affected.
 
-_See the current trace semantic conventions in the OpenTelemetry Specification repository: <https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/trace/semantic_conventions>_
+For details, see [Trace semantic conventions]({{< relref "/docs/reference/specification/trace/semantic_conventions" >}}).
 
 [Getting Started]: {{< relref "../getting-started" >}}

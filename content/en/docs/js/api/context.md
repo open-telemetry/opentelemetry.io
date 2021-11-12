@@ -9,21 +9,10 @@ For example, when a request is received and a span is started it must be availab
 To solve this problem, OpenTelemetry stores the span in the Context.
 This document describes the OpenTelemetry context API for JavaScript and how it is used.
 
-_Context Specification: <https://github.com/open-telemetry/opentelemetry-specification/blob/v1.6.0/specification/context/context.md>_
+More information:
 
-_Context API Reference: <https://open-telemetry.github.io/opentelemetry-js-api/classes/contextapi.html>_
-
-- [Context Manager](#context-manager)
-- [Root Context](#root-context)
-- [Context Keys](#context-keys)
-- [Basic Operations](#basic-operations)
-  - [Get Entry](#get-entry)
-  - [Set Entry](#set-entry)
-  - [Delete Entry](#delete-entry)
-- [Active Context](#active-context)
-  - [Get Active Context](#get-active-context)
-  - [Set Active Context](#set-active-context)
-  - [Example](#example)
+- [Context specification]({{< relref "/docs/reference/specification/context/context" >}})
+- [Context API reference](https://open-telemetry.github.io/opentelemetry-js-api/classes/contextapi.html)
 
 ## Context Manager
 

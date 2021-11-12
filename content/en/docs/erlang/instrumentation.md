@@ -44,7 +44,7 @@ out to be generating too many or in some way problematic spans and it is desired
 to disable their generation.
 
 Additionally, the name and version of the `Tracer` are exported as the
-[`InstrumentationLibrary`](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/glossary.md#instrumentation-library)
+[`InstrumentationLibrary`]({{< relref "/docs/reference/specification/glossary#instrumentation-library" >}})
 component of spans. This allows users to group and search spans by the
 Application they came from.
 
@@ -150,7 +150,7 @@ active span in the context of the process dictionary.
 Connecting a span as a parent to a child in a new process can be done by attaching
 the context and setting the new span as currently active in the process. The
 whole context should be attached in order to not lose other telemetry data like
-[baggage](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/baggage/api.md).
+[baggage]({{< relref "/docs/reference/specification/baggage/api" >}}).
 
 {{< tabs Erlang Elixir >}}
 
@@ -190,7 +190,7 @@ OpenTelemetry.Tracer.end_span(span_ctx)
 
 If the work being done by the other process is better represented as a `link` --
 see [the `link` definition in the
-specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/overview.md#links-between-spans)
+specification]({{< relref "/docs/reference/specification/overview#links-between-spans" >}})
 for more on when that is appropriate
 -- then the `SpanCtx` returned by `start_span` is passed to `link/1` to create
 a `link` that can be passed to `with_span` or `start_span`:
@@ -259,13 +259,13 @@ end
 
 #### Semantic Attributes
 
-Semantic Attributes are attributes that are defined by the OpenTelemetry
-Specification in order to provide a shared set of attribute keys across multiple
+Semantic Attributes are attributes that are defined by the [OpenTelemetry
+Specification][] in order to provide a shared set of attribute keys across multiple
 languages, frameworks, and runtimes for common concepts like HTTP methods,
 status codes, user agents, and more. These attribute keys and values are
 available in the header `opentelemetry_api/include/otel_resource.hrl`.
 
-Tracing semantic conventions can be found [in this document](https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/trace/semantic_conventions)
+For details, see [Trace semantic conventions][].
 
 ### Events
 
@@ -324,7 +324,7 @@ Span.add_event("Process exited with reason", pid: pid, reason: Reason)
 Distributed traces extend beyond a single service, meaning some context must be
 propagated across services to create the parent-child relationship between
 spans. This requires cross service [_context
-propagation_](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/overview.md#context-propagation),
+propagation_]({{< relref "/docs/reference/specification/overview#context-propagation" >}}),
 a mechanism where identifiers for a trace are sent to remote processes.
 
 In order to propagate trace context over the wire, a propagator must be
@@ -368,3 +368,6 @@ repo](https://github.com/open-telemetry/opentelemetry-erlang-contrib/) and the [
 
 The metrics API, found in `apps/opentelemetry-experimental-api` of the
 `opentelemetry-erlang` repository, is currently unstable, documentation TBA.
+
+[OpenTelemetry Specification]: {{< relref "/docs/reference/specification" >}}
+[Trace semantic conventions]: {{< relref "/docs/reference/specification/trace/semantic_conventions" >}}

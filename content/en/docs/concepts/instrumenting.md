@@ -41,8 +41,7 @@ be added. How dependencies are added are language specific. At a minimum, these
 dependencies will add OpenTelemetry API and SDK capabilities. Some languages
 also require per instrumentation dependencies. Exporter dependencies may also
 be required. For more information about the OpenTelemetry API and SDK, see the
-[specification
-repository](https://github.com/open-telemetry/opentelemetry-specification).
+[specification](/docs/reference/specification/).
 
 ### Configure OpenTelemetry Instrumentation
 
@@ -65,8 +64,7 @@ developing a library or some other component that is intended to be consumed by
 a runnable binary, then you would only take a dependency on the API. If your
 artifact is a standalone process or service, then you would take a dependency
 on the API and the SDK. For more information about the OpenTelemetry API and
-SDK, see the [specification
-repository](https://github.com/open-telemetry/opentelemetry-specification).
+SDK, see the [specification](/docs/reference/specification/).
 
 ### Configure the OpenTelemetry API
 

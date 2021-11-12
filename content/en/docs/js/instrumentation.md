@@ -143,7 +143,7 @@ function doWork(parent) {
 
 ### Semantic Attributes
 
-There are semantic conventions for spans representing operations in well-known protocols like HTTP or database calls. Semantic conventions for these spans are defined in the specification at [Trace Semantic Conventions](https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/trace/semantic_conventions). In the simple example of this guide the source code attributes can be used.
+There are semantic conventions for spans representing operations in well-known protocols like HTTP or database calls. Semantic conventions for these spans are defined in the specification at [Trace Semantic Conventions]({{< relref "/docs/reference/specification/trace/semantic_conventions" >}}). In the simple example of this guide the source code attributes can be used.
 
 First add the semantic conventions as a dependency to your application:
 

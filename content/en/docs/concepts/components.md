@@ -1,5 +1,5 @@
 ---
-title: "Components"
+title: Components
 weight: 20
 ---
 
@@ -28,8 +28,7 @@ following:
 - **Data:** Defines semantic conventions to provide vendor-agnostic
   implementations as well as the OpenTelemetry protocol (OTLP).
 
-For more information, see the [specification
-repository](https://github.com/open-telemetry/opentelemetry-specification).
+For more information, see the [Specification](/docs/reference/specification/).
 
 ## Collector
 
@@ -40,8 +39,7 @@ open-source observability data formats (e.g. Jaeger, Prometheus, etc.) sending
 to one or more open-source or commercial back-ends. The Collector is the
 default location instrumentation libraries export their telemetry data.
 
-For more information, see the [Data
-Collection](https://opentelemetry.io/docs/concepts/data-collection/) section.
+For more information, see [Data Collection](/docs/concepts/data-collection/).
 
 ## Instrumentation Libraries
 
@@ -54,4 +52,4 @@ provides an instrumentation library for multiple languages. All instrumentation
 libraries support manual (code modified) instrumentation and several support
 automatic (byte-code) instrumentation.
 
-For more information, see [Instrumenting](/docs/concepts/instrumenting) section.
+For more information, see [Instrumenting](/docs/concepts/instrumenting).
