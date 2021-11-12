@@ -143,7 +143,7 @@ for metrics, or additional context for logs and traces. Some examples:
 
 For more information, see the [baggage specification][].
 
-[baggage specification]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/overview.md#baggage-signal
-[logs specification]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/overview.md#log-signal
-[metrics specification]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/overview.md#metric-signal
-[traces specification]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/overview.md#tracing-signal
+[baggage specification]: {{< relref "/docs/reference/specification/overview#baggage-signal" >}}
+[logs specification]: {{< relref "/docs/reference/specification/overview#log-signal" >}}
+[metrics specification]: {{< relref "/docs/reference/specification/overview#metric-signal" >}}
+[traces specification]: {{< relref "/docs/reference/specification/overview#tracing-signal" >}}

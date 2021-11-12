@@ -28,7 +28,7 @@ Signals are built on top of context propagation, a shared mechanism for correlat
 Each signal consists of four core components: APIs, SDKs, the OTLP protocol, and the Collector. Signals also have contrib components, an ecosystem of plugins and instrumentation.
 All instrumentation shares the same semantic conventions, to ensure that they produce the same data when observing common operations, such as HTTP requests.
 
-A detailed overview of signals and components can be found [here](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/overview.md).
+To learn more about signals and components, see the specification [Overview]({{< relref "/docs/reference/specification/overview" >}}).
 
 ### Component Lifecycle
 
@@ -39,7 +39,7 @@ Components follow a development lifecycle: Draft, Experimental, Stable, Deprecat
 **Stable** components are backwards compatible and covered under long term support.  
 **Deprecated** components are stable, but may eventually be removed.
 
-The complete definitions for lifecycles and long term support can be found [here](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/versioning-and-stability.md).
+For complete definitions of lifecycles and long term support, see [Versioning and stability]({{< relref "/docs/reference/specification/versioning-and-stability" >}}).
 
 ### Current Status
 
@@ -60,7 +60,7 @@ Checking the current status for each client in the README of its [github repo](h
 
 #### Metrics
 
-**API:** [feature-freeze](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/document-status.md#feature-freeze)  
+**API:** [feature-freeze]({{< relref "/docs/reference/specification/document-status#feature-freeze" >}})  
 **SDK:** experimental  
 **Protocol:** stable  
 **Collector:** experimental  
