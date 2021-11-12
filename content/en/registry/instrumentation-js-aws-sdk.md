@@ -8,7 +8,7 @@ tags:
   - instrumentation
   - aws-sdk
   - aws
-repo: https://github.com/aspecto-io/opentelemetry-ext-js/tree/master/packages/instrumentation-aws-sdk
+repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-aws-sdk
 license: Apache 2.0
 description: aws-sdk instrumentation for Node.js.
 authors: Aspecto Authors (amir@aspecto.io)
