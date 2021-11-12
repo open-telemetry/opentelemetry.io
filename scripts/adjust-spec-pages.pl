@@ -52,7 +52,8 @@ while(<>) {
     next;
   }
 
-  s|../semantic_conventions/README.md|$semConvRef| if $ARGV =~ /overview/;
+  s|\(https://github.com/open-telemetry/opentelemetry-specification\)|(/docs/reference/specification/)|;
+  s|\.\./semantic_conventions/README.md|$semConvRef| if $ARGV =~ /overview/;
 
   # Bug fix from original source
   s/#(#(instrument|set-status))/$1/;
