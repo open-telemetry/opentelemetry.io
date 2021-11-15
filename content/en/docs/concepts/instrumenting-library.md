@@ -24,7 +24,7 @@ If you have any feedback or want to add a new convention - please come and contr
 
 ## When **not** to instrument
 
-Some libraries are thin clients wrapping network calls. Chances are that OpenTelemetry has auto-instrumentation for the underlying RPC client (check out the [registry](https://opentelemetry.io/registry/)). In this case, library instrumentation may not be necessary.
+Some libraries are thin clients wrapping network calls. Chances are that OpenTelemetry has auto-instrumentation for the underlying RPC client (check out the [registry](/registry/)). In this case, library instrumentation may not be necessary.
 
 Don't instrument if:
 
@@ -137,7 +137,7 @@ WARNING: Generic solution to avoid duplication is under construction 🚧.
 
 Traces is one of the signals you may emit. Events (or logs) and traces complement, not duplicate, each other. Whenever you have something that should have a verbosity, logs are a better choice than traces.
 
-Chances are your library uses logs or some similar mechanism already. Check out [OpenTelemetry registry](https://opentelemetry.io/registry/) to see if OpenTelemetry has integration with it. Integrations usually stamps active trace context on all logs, so users can correlate them.
+Chances are your library uses logs or some similar mechanism already. Check out [OpenTelemetry registry](/registry/) to see if OpenTelemetry has integration with it. Integrations usually stamps active trace context on all logs, so users can correlate them.
 
 If your language and ecosystem don't have common logging libraries, use span events for additional details you want to share with users. [Events]({{< relref "/docs/reference/specification/trace/api#add-events" >}}) maybe more convenient when you want to add attributes as well.
 
@@ -171,9 +171,9 @@ try (Scope unused = span.makeCurrent()) {
 }
 ```
 
-Here're the full [examples of context extraction in Java](https://opentelemetry.io/docs/java/manual_instrumentation/#context-propagation), check out OpenTelemetry documentation in your language.
+Here're the full [examples of context extraction in Java](/docs/java/manual_instrumentation/#context-propagation), check out OpenTelemetry documentation in your language.
 
-In the case of a messaging system, you may receive more than one message at once. Received messages become [*links*](https://opentelemetry.io/docs/java/manual_instrumentation/#create-spans-with-links) on the span you create.
+In the case of a messaging system, you may receive more than one message at once. Received messages become [*links*](/docs/java/manual_instrumentation/#create-spans-with-links) on the span you create.
 Refer to [messaging conventions]({{< relref "/docs/reference/specification/trace/semantic_conventions/messaging" >}}) for details (WARNING: messaging conventions are [under constructions](https://github.com/open-telemetry/oteps/pull/173) 🚧).
 
 ### Injecting context
@@ -200,7 +200,7 @@ try (Scope unused = span.makeCurrent()) {
 }
 ```
 
-Here's the full [example of context injection in Java](https://opentelemetry.io/docs/java/manual_instrumentation/#context-propagation).
+Here's the full [example of context injection in Java](/docs/java/manual_instrumentation/#context-propagation).
 
 There might be some exceptions:
 
@@ -229,7 +229,7 @@ There might be some exceptions:
 
 ### Instrumentation registry
 
-Please add your instrumentation library to the [OpenTelemetry registry](https://opentelemetry.io/registry/), so users can find it.
+Please add your instrumentation library to the [OpenTelemetry registry](/registry/), so users can find it.
 
 ### Performance
 

@@ -108,4 +108,4 @@ const meter = new MeterProvider({
 ## OpenTelemetry Collector
 
 If you are looking for a vendor-agnostic way to receive, process and export your
-telemetry data follow the instructions to setup a [OpenTelemetry collector](https://opentelemetry.io/docs/collector/)
+telemetry data follow the instructions to setup a [collector](/docs/collector/)
