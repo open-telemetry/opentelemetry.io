@@ -1,5 +1,5 @@
 ---
-title: "Glossary"
+title: Glossary
 weight: 100
 ---
 
@@ -17,8 +17,8 @@ others. This page captures terminology used in the project and what it means.
 - **Application:** One or more `Services` designed for end users or other applications.
 - **APM:** Application Performance Monitoring. Typically a back-end of the
   `Tracing` `Data Source`.
-- **[Attributes]({{< relref "/docs/reference/specification/common/common#attributes" >}}):**
-  Used by the `Tracing` `Data Source` to attach name/value pairs to a `Span`.
+- <a id="attribute"></a>
+  **[Attribute][]:** A key-value pair. Used by the `Tracing` `Data Source` to attach data to a `Span`.
 - **[Baggage]({{< relref "/docs/reference/specification/overview#baggage-signal" >}}):** A
   mechanism for propagating name/value pairs to help establish a causal
   relationship between events and services.
@@ -67,9 +67,7 @@ others. This page captures terminology used in the project and what it means.
   `Instrumented Library`. `Instrumented Library` and `Instrumentation Library` may be
   the same `Library` if it has built-in OpenTelemetry instrumentation.
 - **[JSON](https://en.wikipedia.org/wiki/JSON):** JavaScript Object Notation.
-- **[Label]({{< relref "/docs/reference/specification/metrics/api" >}}):**
-  name/value pairs added to `Metric` data points (similar to `Attributes` for `Spans`
-  and `Fields` for `Log Records`).
+- **Label:** see [Attribute](#attribute).
 - **Language:** Programming Language.
 - **Library:** A language-specific collection of behavior invoked by an interface.
 - **[Log]({{< relref "/docs/reference/specification/glossary#log" >}}):**
@@ -170,3 +168,5 @@ others. This page captures terminology used in the project and what it means.
 - **[Resource Conventions]({{< relref "/docs/reference/specification/resource/semantic_conventions" >}})**
 - **[Span Conventions]({{< relref "/docs/reference/specification/trace/semantic_conventions" >}})**
 - **[Metric Conventions]({{< relref "/docs/reference/specification/metrics/semantic_conventions" >}})**
+
+[Attribute]: {{< relref "/docs/reference/specification/common/common#attributes" >}}
