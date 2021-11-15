@@ -112,26 +112,26 @@ systems. The packaging includes a default configuration that can be found at
 
 > Please note that systemd is require for automatic service configuration
 
-To get started on Debian systems run the following replacing `v0.20.0` with the
+To get started on Debian systems run the following replacing `v0.38.0` with the
 version of the Collector you wish to run and `amd64` with the appropriate
 architecture.
 
 ```bash
 $ sudo apt-get update
 $ sudo apt-get -y install wget systemctl
-$ wget https://github.com/open-telemetry/opentelemetry-collector/releases/download/v0.20.0/otel-collector_0.20.0_amd64.deb
-$ dpkg -i otel-collector_0.20.0_amd64.deb
+$ wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.38.0/otelcol_0.38.0_linux_amd64.deb
+$ dpkg -i otelcol_0.38.0_linux_amd64.deb
 ```
 
-To get started on Red Hat systems run the following replacing `v0.20.0` with the
+To get started on Red Hat systems run the following replacing `v0.38.0` with the
 version of the Collector you wish to run and `x86_64` with the appropriate
 architecture.
 
 ```bash
 $ sudo yum update
 $ sudo yum -y install wget systemctl
-$ wget https://github.com/open-telemetry/opentelemetry-collector/releases/download/v0.20.0/otel-collector_0.20.0-1_x86_64.rpm
-$ rpm -ivh otel-collector_0.20.0-1_x86_64.rpm
+$ wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.38.0/otelcol_0.38.0_linux_amd64.rpm
+$ rpm -ivh otelcol_0.38.0_linux_amd64.rpm
 ```
 
 By default, the `otel-collector` systemd service will be started with the
