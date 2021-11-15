@@ -70,6 +70,7 @@ others. This page captures terminology used in the project and what it means.
 - **Label:** see [Attribute](#attribute).
 - **Language:** Programming Language.
 - **Library:** A language-specific collection of behavior invoked by an interface.
+- **Link:** A connection between two [Spans]({{< relref "/docs/reference/specification/trace/api#span" >}}). The spans can be within the same Trace or across different Traces. See [Specifying Links]({{< relref "/docs/reference/specification/trace/api#specifying-links" >}}) for more information.
 - **[Log]({{< relref "/docs/reference/specification/glossary#log" >}}):**
   Sometimes used to refer to a collection of `Log Records`. May be ambiguous,
   since people also sometimes use `Log` to refer to a single `Log Record`, thus
