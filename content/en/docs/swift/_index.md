@@ -1,8 +1,7 @@
 ---
-title: "Swift"
+title: Swift
 weight: 28
-description: >
-  A language-specific implementation of OpenTelemetry in Swift.
+description: A language-specific implementation of OpenTelemetry in Swift.
 ---
 
 This is the OpenTelemetry for Swift documentation. OpenTelemetry is an
@@ -20,7 +19,7 @@ as follows:
 | ------- | ------- | -------             |
 | Beta    | Alpha   | Not Yet Implemented |
 
-The current release can be found [here](https://github.com/open-telemetry/opentelemetry-swift/releases)
+{{% latest_release "swift" /%}}
 
 ## Further Reading
 

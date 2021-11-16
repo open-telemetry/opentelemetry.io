@@ -20,7 +20,8 @@ The current status of the major functional components for OpenTelemetry Erlang/E
 | ------- | ------- | ------- |
 | Beta    | Alpha   | Not Yet Implemented |
 
-The current release can be found
-[here](https://github.com/open-telemetry/opentelemetry-erlang/releases) and in
-[hex.pm](https://hex.pm) packages [opentelemetry_api](https://hex.pm/packages/opentelemetry_api)
-and [opentelemetry](https://hex.pm/packages/opentelemetry), which is the SDK.
+{{% latest_release "erlang" %}}
+  For SDK packages from [hex.pm](https://hex.pm), see
+  [opentelemetry_api](https://hex.pm/packages/opentelemetry_api) and
+  [opentelemetry](https://hex.pm/packages/opentelemetry).
+{{% /latest_release %}}
