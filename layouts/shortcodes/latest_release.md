@@ -5,5 +5,3 @@ For releases, including the [latest release][], see [Releases][].
 
 [latest release]: {{ $relUrl }}/releases/latest
 [Releases]: {{ $relUrl }}
-
-{{/* */ -}}
