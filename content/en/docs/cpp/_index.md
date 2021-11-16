@@ -1,8 +1,7 @@
 ---
-title: "C++"
+title: C++
 weight: 11
-description: >
-  A language-specific implementation of OpenTelemetry in C++.
+description: A language-specific implementation of OpenTelemetry in C++.
 ---
 
 This is the OpenTelemetry for C++ documentation. OpenTelemetry is an
@@ -20,7 +19,7 @@ as follows:
 | --------  | -------      | -------      |
 | Stable    | Experimental | Experimental |
 
-The current release can be found [here](https://github.com/open-telemetry/opentelemetry-cpp/releases)
+{{% latest_release "cpp" /%}}
 
 ## Further Reading
 
