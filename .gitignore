@@ -7,19 +7,21 @@ resources/
 node_modules/
 package-lock.json
 
-# Generated data
-data/progress_generated.yaml
-
 # Link checker
 tmp/
 
+# Misc
 scripts/collector.yaml
 assets/jsconfig.json
-
-# IntelliJ
-*.iml
 
 # Generated content
 /content/en/docs/reference/specification/**/*.md
 /content/en/docs/reference/specification/**/*.png
 !/content/en/docs/reference/specification/_index.md
+
+# IntelliJ
+*.iml
+
+# VS Code
+/.vscode/**
+!/.vscode/cspell.json

@@ -24,7 +24,7 @@ This is the current release status for OpenTelemetry components in this language
 | ------- | ------- | ------- |
 | 1.0    | Alpha   | Beta    |
 
-You can find release information [here](https://github.com/open-telemetry/opentelemetry-dotnet/releases)
+{{% latest_release "dotnet" /%}}
 
 # Further Reading
 

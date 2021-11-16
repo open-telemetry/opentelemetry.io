@@ -4,6 +4,7 @@ description: >-
   <img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/JS_SDK.svg" alt="JS logo"></img>
   A language-specific implementation of OpenTelemetry in JavaScript (for Node.JS & the browser).
 aliases: [/js, /js/metrics, /js/tracing]
+spelling: cSpell:ignore Roadmap
 weight: 20
 ---
 
@@ -19,7 +20,7 @@ export data.
 | Metrics | Development | Development       |
 | Logs    | Roadmap     | Roadmap           |
 
-You can find release information [here](https://github.com/open-telemetry/opentelemetry-js/releases)
+{{% latest_release "js" /%}}
 
 ## Further Reading
 

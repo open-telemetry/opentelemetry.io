@@ -1,7 +1,6 @@
 ---
 title: Rust
-description: >
-  A language-specific implementation of OpenTelemetry in Rust.
+description: A language-specific implementation of OpenTelemetry in Rust.
 weight: 26
 ---
 
@@ -20,7 +19,7 @@ as follows:
 | ------- | ------- | ------- |
 | Beta    | Alpha   | Not Yet Implemented |
 
-The current release can be found [here](https://github.com/open-telemetry/opentelemetry-rust/releases)
+{{% latest_release "rust" /%}}
 
 ## Further Reading
 

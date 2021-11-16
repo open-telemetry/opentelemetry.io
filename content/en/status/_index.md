@@ -102,16 +102,3 @@ An effort to expand the availability and quality of OpenTelemetry instrumentatio
 * Stabilize and define long term support for instrumentation
 * Provide instrumentation for a wider variety of important libraries
 * Provide testing and CICD tools for writing and verifying instrumentation quality.
-
-{{% /blocks/section %}}
-
-<section class="row td-box pt-0">
-<div class="col">
-<div class="row section">
-
-## Latest Releases
-{{% release_notes %}}
-
-</div>
-</div>
-</section>
