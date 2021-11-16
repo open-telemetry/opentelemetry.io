@@ -7,9 +7,6 @@ resources/
 node_modules/
 package-lock.json
 
-# Generated data
-data/progress_generated.yaml
-
 # Link checker
 tmp/
 

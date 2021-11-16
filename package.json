@@ -10,11 +10,10 @@
     "check-links:all": "HTMLTEST_ARGS= npm run _check-links",
     "check-links": "npm run _check-links",
     "clean": "make clean",
-    "get:milestones": "node -r esm ./scripts/fetchMilestones.js",
     "postbuild:preview": "npm run _check-links",
     "postbuild:production": "npm run _check-links",
-    "prebuild:preview": "npm run submodule:get && npm run get:milestones && ./scripts/cp-spec-pages.sh",
-    "prebuild:production": "npm run submodule:get && npm run get:milestones && ./scripts/cp-spec-pages.sh",
+    "prebuild:preview": "npm run submodule:get && ./scripts/cp-spec-pages.sh",
+    "prebuild:production": "npm run submodule:get && ./scripts/cp-spec-pages.sh",
     "prebuild": "npm run submodule:get && ./scripts/cp-spec-pages.sh",
     "precheck-links": "npm run build",
     "preinstall": "npm run submodule:get",
@@ -30,13 +29,10 @@
   "private": true,
   "devDependencies": {
     "autoprefixer": "^10.4.0",
-    "esm": "^3.2.25",
     "hugo-extended": "^0.89.2",
-    "netlify-cli": "^6.14.19",
-    "node-fetch": "^2.6.1",
+    "netlify-cli": "^6.14.25",
     "postcss": "^8.3.11",
-    "postcss-cli": "^9.0.2",
-    "yaml": "^1.10.2"
+    "postcss-cli": "^9.0.2"
   },
   "dependencies": {
     "@opentelemetry/api": "^1.0.1",
