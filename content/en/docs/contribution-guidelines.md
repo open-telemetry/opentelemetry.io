@@ -8,7 +8,7 @@ OpenTelemetry is an open source project, and we gladly accept new contributions 
 
 ## Contributing to the OpenTelemetry Documentation
 
-Individual SIGs may maintain documentation above and beyond what is offered here, but we strive for accurate general guidance on using the project from our main website, located at <https://github.com/open-telemetry/opentelemetry.io>.
+Individual SIGs may maintain documentation above and beyond what is offered here, but we strive for accurate general guidance on using the project from our main website.
 
 The per-language API, SDK, and "Getting Started" documentation is hosted in each language's GitHub repository.
 For more information, [see the Mirrored Documentation section](https://github.com/open-telemetry/opentelemetry.io/blob/main/CONTRIBUTING.md#mirrored-documentation) of the website repository's CONTRIBUTING.md file.

@@ -23,7 +23,7 @@ others. This page captures terminology used in the project and what it means.
   mechanism for propagating name/value pairs to help establish a causal
   relationship between events and services.
 - **Client Library:** See `Instrumented Library`.
-- **[Collector](https://opentelemetry.io/docs/collector/):**
+- **[Collector](/docs/collector/):**
   A vendor-agnostic implementation on how to receive, process, and export
   telemetry data. A single binary that can be deployed as an agent or gateway.
 - **Contrib:** Several `Instrumentation Libraries` and the `Collector` offer a set
@@ -34,12 +34,9 @@ others. This page captures terminology used in the project and what it means.
   Allows all `Data Sources` to share an underlying context mechanism for storing
   state and accessing data across the lifespan of a `Transaction`.
 - **[DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph):** Directed Acyclic Graph.
-- **[Data
-  Source](https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/docs/concepts/data-sources.md):** One
-  of `Traces`, `Metrics` or `Logs`.
+- **[Data Source](/docs/concepts/data-sources):** One of `Traces`, `Metrics` or `Logs`.
 - **Dimension:** See `Label`.
-- **[Distributed
-  Tracing](https://opentelemetry.io/docs/concepts/data-sources/#traces):**
+- **[Distributed Tracing](/docs/concepts/data-sources/#traces):**
   Tracks the progression of a single `Request`, called a `Trace`, as it is handled
   by `Services` that make up an `Application`. A `Distributed Trace` transverses
   process, network and security boundaries.
@@ -47,22 +44,18 @@ others. This page captures terminology used in the project and what it means.
   Source`. For example,
   [`Spans`]({{< relref "/docs/reference/specification/trace/api#add-events" >}}).
 - **Exporter:** Provides functionality to emit telemetry to consumers. Used by
-  [Instrumentation
-  Libraries]({{< relref "/docs/reference/specification/glossary#exporter-library" >}})
-  and the
-  [Collector](https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/docs/collector/configuration.md#basics).
+  [Instrumentation Libraries][spec-exporter-lib] and the
+  [Collector](/docs/collector/configuration#basics).
   Exporters can be push or pull based.
 - **[Field]({{< relref "/docs/reference/specification/logs/data-model#field-kinds" >}}):**
   name/value pairs added to `Log Records` (similar to `Attributes` for `Spans` and
   `Labels` for `Metrics`).
 - **[gRPC](https://grpc.io):** A high-performance, open source universal `RPC` framework.
 - **[HTTP](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol):** Hypertext Transfer Protocol.
-- **[Instrumented
-  Library]({{< relref "/docs/reference/specification/glossary#instrumented-library" >}}):**
+- **[Instrumented Library][spec-instrumented-lib]:**
   Denotes the `Library` for which the telemetry signals (`Traces`, `Metrics`, `Logs`)
   are gathered.
-- **[Instrumentation
-  Library]({{< relref "/docs/reference/specification/glossary#instrumentation-library" >}}):**
+- **[Instrumentation Library][spec-instrumentation-lib]:**
   Denotes the `Library` that provides the instrumentation for a given
   `Instrumented Library`. `Instrumented Library` and `Instrumentation Library` may be
   the same `Library` if it has built-in OpenTelemetry instrumentation.
@@ -82,7 +75,7 @@ others. This page captures terminology used in the project and what it means.
   where it happened, etc.
 - **Metadata:** name/value pair added to telemetry data. OpenTelemetry calls
   this `Attributes` on `Spans`, `Labels` on `Metrics` and `Fields` on `Logs`.
-- **[Metric](https://opentelemetry.io/docs/concepts/data-sources/#metrics):**
+- **[Metric](/docs/concepts/data-sources/#metrics):**
   Records a data point, either raw measurements or predefined aggregation, as
   timeseries with `Metadata`.
 - **OC:** `OpenCensus`.
@@ -98,12 +91,12 @@ others. This page captures terminology used in the project and what it means.
   exported. For example, batching. Used by [Instrumentation
   Libraries]({{< relref "/docs/reference/specification/trace/sdk#span-processor" >}})
   and the
-  [Collector](https://opentelemetry.io/docs/collector/configuration/#processors).
-- **[Propagators](https://opentelemetry.io/docs/go/instrumentation/#propagators-and-context):** Used to
+  [Collector](/docs/collector/configuration/#processors).
+- **[Propagators](/docs/go/instrumentation/#propagators-and-context):** Used to
   serialize and deserialize specific parts of telemetry data such as span
   context and `Baggage` in `Spans`.
-- **[Proto](https://opentelemetry.io/docs/concepts/components/#proto):** Language independent interface types.
-- **[Receiver](https://opentelemetry.io/docs/collector/configuration/#receivers):**
+- **[Proto](/docs/concepts/components/#proto):** Language independent interface types.
+- **[Receiver](/docs/collector/configuration/#receivers):**
   Term used by the `Collector` to define how telemetry data is received.
   Receivers can be push or pull based.
 - **Request:** See `Distributed Tracing`.
@@ -127,20 +120,20 @@ others. This page captures terminology used in the project and what it means.
   `Service` may be deployed in multiple locations.
 - **[Span]({{< relref "/docs/reference/specification/trace/api#span" >}}):**
   Represents a single operation within a `Trace`.
-- **[Specification](https://opentelemetry.io/docs/concepts/components/#specification):**
+- **[Specification](/docs/concepts/components/#specification):**
   Describes the cross-language requirements and expectations for all
   implementations.
 - **[Status]({{< relref "/docs/reference/specification/trace/api#set-status" >}}):**
   The result of the operation. Typically used to indicate whether an error
   occurred.
-- **Tag:** See `Metadata`.
+- **Tag:** see `Metadata`.
 - **[Trace]({{< relref "/docs/reference/specification/overview#traces" >}}):**
   A `DAG` of `Spans`, where the edges between `Spans` are defined as
   parent/child relationship.
 - **[Tracer]({{< relref "/docs/reference/specification/trace/api#tracer" >}}):**
   Responsible for creating `Spans`.
 - **Transaction:** See `Distributed Tracing`.
-- **[zPages](https://github.com/open-telemetry/opentelemetry-specification/blob/main/experimental/trace/zpages.md):**
+- **[zPages][]:**
   An in-process alternative to external exporters. When included, they collect
   and aggregate tracing and metrics information in the background; this data is
   served on web pages when requested.
@@ -170,3 +163,7 @@ others. This page captures terminology used in the project and what it means.
 - **[Metric Conventions]({{< relref "/docs/reference/specification/metrics/semantic_conventions" >}})**
 
 [Attribute]: {{< relref "/docs/reference/specification/common/common#attributes" >}}
+[spec-exporter-lib]: {{< relref "/docs/reference/specification/glossary#exporter-library" >}}
+[spec-instrumentation-lib]: {{< relref "/docs/reference/specification/glossary#instrumentation-library" >}}
+[spec-instrumented-lib]: {{< relref "/docs/reference/specification/glossary#instrumented-library" >}}
+[zPages]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/experimental/trace/zpages.md
