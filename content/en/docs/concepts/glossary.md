@@ -120,6 +120,7 @@ others. This page captures terminology used in the project and what it means.
   `Service` may be deployed in multiple locations.
 - **[Span]({{< relref "/docs/reference/specification/trace/api#span" >}}):**
   Represents a single operation within a `Trace`.
+- **Span Link:** A span link is a link between causally-related spans. For details see [Links between spans]({{< relref "/docs/reference/specification/overview#links-between-spans" >}}) and [Specifying Links]({{< relref "/docs/reference/specification/trace/api#specifying-links" >}}).
 - **[Specification](/docs/concepts/components/#specification):**
   Describes the cross-language requirements and expectations for all
   implementations.
