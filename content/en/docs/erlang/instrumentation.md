@@ -173,15 +173,15 @@ span_ctx = OpenTelemetry.Tracer.start_span(<<"child">>)
 ctx = OpenTelemetry.Ctx.get_current()
 
 task = Task.async(fn ->
-                      OpenTelemetry.Ctx.attach(ctx),
+                      OpenTelemetry.Ctx.attach(ctx)
                       OpenTelemetry.Tracer.set_current_span(span_ctx)
                       # do work here
                       
-                      # end span here or after `await` returns
+                      # end span here
+                      OpenTelemetry.Tracer.end_span(span_ctx)
                   end)
                   
 _ = Task.await(task)
-OpenTelemetry.Tracer.end_span(span_ctx)
 {{< /tab >}}
 
 {{< /tabs >}}
