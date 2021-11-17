@@ -6,7 +6,7 @@ language: python
 tags:
   - python
   - exporter
-repo: https://github.com/microsoft/opentelemetry-azure-monitor-python
+repo: https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/monitor/azure-monitor-opentelemetry-exporter
 license: Apache 2.0
 description: The OpenTelemetry Azure Monitor Exporter for Python.
 authors: Microsoft Authors
