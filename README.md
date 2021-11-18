@@ -17,7 +17,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Roles: 
 - Approvers: [@open-telemetry/docs-approvers](https://github.com/orgs/open-telemetry/teams/docs-approvers)
-- Maintainers: [@open-telemetry/docs-maintainers](https://github.com/orgs/open-telemetry/teams/docs-maintainers))
+- Maintainers: [@open-telemetry/docs-maintainers](https://github.com/orgs/open-telemetry/teams/docs-maintainers)
 - Learn more about roles in the [community
   repository](https://github.com/open-telemetry/community/blob/main/community-membership.md).
 
