@@ -17,7 +17,7 @@ title: Vendor support
 
 | Company         | Distribution | Native OTLP | Reference                                                                                                                        |
 | --------------- | ------------ | ----------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| Aspecto         | Yes          | No          | https://www.aspecto.io/                                                                                                          |
+| Aspecto         | Yes          | Yes         | https://www.aspecto.io/                                                                                                          |
 | AWS             | Yes          | No          | https://aws-otel.github.io/                                                                                                      |
 | Azure           | Yes          | No          | https://docs.microsoft.com/azure/azure-monitor/app/opentelemetry-overview                                                        |
 | Dynatrace       | Yes          | Yes         | https://www.dynatrace.com/support/help/how-to-use-dynatrace/transactions-and-services/service-monitoring-settings/opentelemetry/ |
