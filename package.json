@@ -10,6 +10,7 @@
     "_check-links": "make check-links",
     "_get:no": "echo SKIPPING get operation",
     "_get:submodule": "set -x && git submodule update --init --recursive ${DEPTH:- --depth 1}",
+    "_get:submodule:non-lang": "npm run _get:submodule -- content-modules/opentelemetry-specification themes/docsy",
     "_prebuild": "run-s get:submodule cp:spec",
     "_serve:hugo": "hugo serve -DFE --minify",
     "_serve": "netlify dev -c \"npm run _serve:hugo\"",
@@ -36,7 +37,8 @@
     "serve:hugo": "npm run _serve:hugo",
     "serve": "npm run _serve",
     "test": "npm run check-links",
-    "update:submodule": "set -x && git submodule update --remote --recursive ${DEPTH:- --depth 1}"
+    "update:submodule": "set -x && git submodule update --remote --recursive ${DEPTH:- --depth 1}",
+    "update:submodule:lang": "run-s update:submodule _get:submodule:non-lang"
   },
   "private": true,
   "devDependencies": {
