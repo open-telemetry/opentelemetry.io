@@ -36,7 +36,7 @@
     "serve:hugo": "npm run _serve:hugo",
     "serve": "npm run _serve",
     "test": "npm run check-links",
-    "update:submodule": "git submodule update --remote --recursive ${DEPTH:- --depth 1}"
+    "update:submodule": "set -x && git submodule update --remote --recursive ${DEPTH:- --depth 1}"
   },
   "private": true,
   "devDependencies": {
