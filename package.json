@@ -14,7 +14,7 @@
     "_serve:hugo": "hugo serve -DFE --minify",
     "_serve": "netlify dev -c \"npm run _serve:hugo\"",
     "all": "npm-run-all",
-    "build:preview": "hugo --cleanDestinationDir -e dev -DFE --minify --baseURL \"${DEPLOY_PRIME_URL:-/}\"",
+    "build:preview": "set -x && hugo --cleanDestinationDir -e dev -DFE --minify --baseURL \"${DEPLOY_PRIME_URL:-/}\"",
     "build:production": "hugo --cleanDestinationDir --minify",
     "build": "npm run _build",
     "check-links:all": "HTMLTEST_ARGS= npm run _check-links",
