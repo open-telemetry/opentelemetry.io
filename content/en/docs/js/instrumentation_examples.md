@@ -1,9 +1,9 @@
 ---
-title: "Instrumentation Examples"
+title: Instrumentation Examples
 weight: 4
 ---
 
-Here are Some of the resources for Opentelemetry Instrumentation Examples
+Here are some of the resources for Opentelemetry instrumentation examples.
 
 ## Core Examples
 
@@ -23,6 +23,6 @@ Project demonstrating Complete Observability Stack utilizing [Prometheus](https:
 
 Checkout [nodejs-opentelemetry-tempo](https://github.com/mnadeem/nodejs-opentelemetry-tempo) and get started
 
-```bash
-docker-compose up --build
+```console
+$ docker-compose up --build
 ```
