@@ -1,0 +1,31 @@
+{{ $err := "spec_status shortcode error" -}}
+{{ $pageRef := .Get 0 -}}
+{{ $page := .Site.GetPage $pageRef -}}
+{{ if not $page -}}
+  {{ errorf "spec_status: Can't find page at '%s'." $pageRef -}}
+{{ end -}}
+
+{{ $_match := .Get 1 | default "Status" -}}
+{{ $matchThis := printf ".*%s.*" $_match -}}
+
+{{ $statusLine := "" -}}
+{{ with findRE $matchThis $page.Content -}}
+  {{ $statusLine = index . 0 -}}
+{{ else -}}
+  {{ errorf "%s: page '%s' does not contain a line matching '%s'." $err $pageRef $_match -}}
+{{ end -}}
+
+{{ $status := "" -}}
+{{/* Valid statuses, as taken from:
+  - https://opentelemetry.io/docs/reference/specification/document-status/
+  - https://github.com/open-telemetry/opentelemetry-proto#maturity-level
+*/ -}}
+{{ $statusValueRE := "(?i:experimental|stable|deprecated|removed|mixed|feature.freeze|alpha|beta)" -}}
+{{ $statusRE := printf "%s(,\\s*%s)*" $statusValueRE $statusValueRE -}}
+{{ with findRE $statusRE $statusLine -}}
+  {{ $status = index . 0 -}}
+{{ else -}}
+  {{ errorf "%s: '%s' value did not match one of '%s' in file '%s': matched line is '%s'" $err $_match $statusValueRE $pageRef $statusLine -}}
+{{ end -}}
+
+{{ lower $status -}}
