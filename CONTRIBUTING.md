@@ -5,8 +5,7 @@
 Follow these steps for local or [cloud-IDE][] (via [Gitpod.io][]) development:
 
 - Fork and clone this repository (only for local development only).
-- Install the latest [LTS release][] of **Node**, for example, using
-  **[nvm][]**:
+- Install the latest [LTS release][] of **Node**, using **[nvm][]** for example:
   ```console
   $ nvm install --lts
   ```
