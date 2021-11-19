@@ -32,12 +32,12 @@ To learn more about signals and components, see the specification [Overview]({{<
 
 ### Component Lifecycle
 
-Components follow a development lifecycle: Draft, Experimental, Stable, Deprecated, Removed.  
+Components follow a development lifecycle: Draft, Experimental, Stable, Deprecated, Removed.
 
-**Draft** components are under design, and have not been added to the specification.  
-**Experimental** components are released and available for beta testing.  
-**Stable** components are backwards compatible and covered under long term support.  
-**Deprecated** components are stable, but may eventually be removed.
+- **Draft** components are under design, and have not been added to the specification.
+- **Experimental** components are released and available for beta testing.
+- **Stable** components are backwards compatible and covered under long term support.
+- **Deprecated** components are stable, but may eventually be removed.
 
 For complete definitions of lifecycles and long term support, see [Versioning and stability]({{< relref "/docs/reference/specification/versioning-and-stability" >}}).
 
@@ -49,51 +49,53 @@ Checking the current status for each client in the README of its [github repo](h
 
 #### Tracing
 
-**API:** stable  
-**SDK:** stable  
-**Protocol:** stable  
-**Collector:** experimental  
+- **API:** stable
+- **SDK:** stable
+- **Protocol:** stable
+- **Collector:** experimental
+- Notes:
+  - The tracing specification is now completely stable, and covered by long term support.
+  - The tracing specification is still extensible, but only in a backwards compatible manner.
+  - OpenTelemetry clients are versioned to v1.0 once their tracing implementation is complete.
 
-* The tracing specification is now completely stable, and covered by long term support.
-* The tracing specification is still extensible, but only in a backwards compatible manner.
-* OpenTelemetry clients are versioned to v1.0 once their tracing implementation is complete.
+#### [Metrics][]
 
-#### Metrics
+- **API:** feature-freeze
+- **SDK:** experimental
+- **Protocol:** stable
+- **Collector:** experimental
+- Notes:
+  - OpenTelemetry Metrics is currently under active development.
+  - The data model is stable and released as part of the OTLP protocol.
+  - Experimental support for metric pipelines are available in the Collector.
+  - Collector support for Prometheus is under development, in collaboration with the Prometheus community.
+  - The metric API and SDK specification is currently being prototyped in Java, .NET, and Python.
 
-**API:** [feature-freeze]({{< relref "/docs/reference/specification/document-status#feature-freeze" >}})  
-**SDK:** experimental  
-**Protocol:** stable  
-**Collector:** experimental  
-
-* OpenTelemetry Metrics is currently under active development.
-* The data model is stable and released as part of the OTLP protocol.
-* Experimental support for metric pipelines are available in the Collector.
-* Collector support for Prometheus is under development, in collaboration with the Prometheus community.
-* The metric API and SDK specification is currently being prototyped in Java, .NET, and Python.
+[metrics]: {{< relref "/docs/reference/specification/metrics/" >}}
 
 #### Baggage
 
-**API:** stable  
-**SDK:** stable  
-**Protocol:** N/A  
-**Collector:** N/A  
-
-* OpenTelemetry Baggage is now completely stable.
-* Baggage is not an observability tool, it is a system for attaching arbitratry keys and values to a transaction, so that downstream services may access them. As such, there is no OTLP or Collector component to baggage.
+- **API:** stable
+- **SDK:** stable
+- **Protocol:** N/A
+- **Collector:** N/A
+- Notes:
+  - OpenTelemetry Baggage is now completely stable.
+  - Baggage is not an observability tool, it is a system for attaching arbitrary keys and values to a transaction, so that downstream services may access them. As such, there is no OTLP or Collector component to baggage.
 
 #### Logging
 
-**API:** draft  
-**SDK:** draft  
-**Protocol:** experimental  
-**Collector:** experimental
-
-* OpenTelemetry Logging is currently under active development.
-* The data model is experimental and released as part of the OTLP protocol.
-* Log processing for many data formats has been added to the Collector, thanks to the donation of Stanza to the the OpenTelemetry project.
-* Log appenders are currently under develop in many languages. Log appenders allow OpenTelemetry tracing data, such as trace and span IDs, to be appended to existing logging systems.
-* An OpenTelemetry logging SDK is currently under development. This allows OpenTelemetry clients to injest logging data from existing logging systems, outputting logs as part of OTLP along with tracing and metrics.
-* An OpenTelemetry logging API is not currently under development. We are focusing first on integration with existing logging systems. When metrics is complete, focus will shift to development of an OpenTelemetry logging API.
+- **API:** draft
+- **SDK:** draft
+- **Protocol:** experimental
+- **Collector:** experimental
+- Notes:
+  - OpenTelemetry Logging is currently under active development.
+  - The data model is experimental and released as part of the OTLP protocol.
+  - Log processing for many data formats has been added to the Collector, thanks to the donation of Stanza to the the OpenTelemetry project.
+  - Log appenders are currently under develop in many languages. Log appenders allow OpenTelemetry tracing data, such as trace and span IDs, to be appended to existing logging systems.
+  - An OpenTelemetry logging SDK is currently under development. This allows OpenTelemetry clients to ingest logging data from existing logging systems, outputting logs as part of OTLP along with tracing and metrics.
+  - An OpenTelemetry logging API is not currently under development. We are focusing first on integration with existing logging systems. When metrics is complete, focus will shift to development of an OpenTelemetry logging API.
 
 #### Instrumentation
 
@@ -101,4 +103,4 @@ An effort to expand the availability and quality of OpenTelemetry instrumentatio
 
 * Stabilize and define long term support for instrumentation
 * Provide instrumentation for a wider variety of important libraries
-* Provide testing and CICD tools for writing and verifying instrumentation quality.
+* Provide testing and CI/CD tools for writing and verifying instrumentation quality.
