@@ -1,5 +1,6 @@
 ---
-title: "Getting Started"
+title: Getting Started
+spelling: cSpell:ignore dpkg GOARCH journalctl kubectl
 weight: 1
 ---
 Please be sure to review the [Data Collection
@@ -13,7 +14,7 @@ The OpenTelemetry Collector consists of a single binary and two primary deployme
 - **Agent:** A Collector instance running with the application or on the same
   host as the application (e.g. binary, sidecar, or daemonset).
 - **Gateway:** One or more Collector instances running as a standalone service
-  (e.g. container or deployment) typically per cluster, datacenter or region.
+  (e.g. container or deployment) typically per cluster, data center or region.
 
 ### Agent
 
@@ -28,7 +29,7 @@ available.
 
 ### Gateway
 
-Additionally, a Gateway cluster can be deployed in every cluster, datacenter,
+Additionally, a Gateway cluster can be deployed in every cluster, data center,
 or region. A Gateway cluster runs as a standalone service and can offer
 advanced capabilities over the Agent including tail-based sampling. In
 addition, a Gateway cluster can limit the number of egress points required to
@@ -46,7 +47,7 @@ Deploys a load generator, agent and gateway as well as Jaeger, Zipkin and
 Prometheus back-ends. More information can be found on the demo
 [README.md](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/examples/demo)
 
-```bash
+```console
 $ git clone git@github.com:open-telemetry/opentelemetry-collector-contrib.git; \
     cd opentelemetry-collector-contrib/examples/demo; \
     docker-compose up -d
@@ -57,7 +58,7 @@ $ git clone git@github.com:open-telemetry/opentelemetry-collector-contrib.git; \
 Every release of the Collector is published to Docker Hub and comes with a
 default configuration file.
 
-```bash
+```console
 $ docker run otel/opentelemetry-collector
 ```
 
@@ -68,7 +69,7 @@ the Collector with all receivers enabled and exports all the data it receives
 locally to a file. Data is sent to the container and the container scrapes its
 own Prometheus metrics.
 
-```bash
+```console
 $ git clone git@github.com:open-telemetry/opentelemetry-collector.git; \
     cd opentelemetry-collector/examples; \
     go build main.go; ./main & pid1="$!";
@@ -84,7 +85,7 @@ $ git clone git@github.com:open-telemetry/opentelemetry-collector.git; \
 
 Deploys an agent as a daemonset and a single gateway instance.
 
-```bash
+```console
 $ kubectl apply -f https://raw.githubusercontent.com/open-telemetry/opentelemetry-collector/main/examples/k8s/otel-config.yaml
 ```
 
@@ -116,7 +117,7 @@ To get started on Debian systems run the following replacing `v0.38.0` with the
 version of the Collector you wish to run and `amd64` with the appropriate
 architecture.
 
-```bash
+```console
 $ sudo apt-get update
 $ sudo apt-get -y install wget systemctl
 $ wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.38.0/otelcol_0.38.0_linux_amd64.deb
@@ -127,7 +128,7 @@ To get started on Red Hat systems run the following replacing `v0.38.0` with the
 version of the Collector you wish to run and `x86_64` with the appropriate
 architecture.
 
-```bash
+```console
 $ sudo yum update
 $ sudo yum -y install wget systemctl
 $ wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.38.0/otelcol_0.38.0_linux_amd64.rpm
@@ -146,13 +147,13 @@ If either the Collector configuration file or
 `/etc/otel-collector/otel-collector.conf` are modified, restart the
 `otel-collector` service to apply the changes by running:
 
-```bash
+```console
 $ sudo systemctl restart otel-collector
 ```
 
 To check the output from the `otel-collector` service, run:
 
-```bash
+```console
 $ sudo journalctl -u otel-collector
 ```
 
@@ -174,7 +175,7 @@ runs the binary with all receivers enabled and exports all the data it receives
 locally to a file. Data is sent to the container and the container scrapes its own
 Prometheus metrics.
 
-```bash
+```console
 $ git clone git@github.com:open-telemetry/opentelemetry-collector-contrib.git; \
     cd opentelemetry-collector-contrib/examples/demo; \
     go build client/main.go; ./client/main & pid1="$!"; \
