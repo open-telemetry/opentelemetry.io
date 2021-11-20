@@ -113,14 +113,14 @@ systems. The packaging includes a default configuration that can be found at
 
 > Please note that systemd is require for automatic service configuration
 
-To get started on Debian systems run the following replacing `v0.38.0` with the
+To get started on Debian systems run the following replacing `v0.39.0` with the
 version of the Collector you wish to run and `amd64` with the appropriate
 architecture.
 
 ```console
 $ sudo apt-get update
 $ sudo apt-get -y install wget systemctl
-$ wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.38.0/otelcol_0.38.0_linux_amd64.deb
+$ wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.39.0/otelcol_0.39.0_linux_amd64.deb
 $ dpkg -i otelcol_0.38.0_linux_amd64.deb
 ```
 
@@ -131,7 +131,7 @@ architecture.
 ```console
 $ sudo yum update
 $ sudo yum -y install wget systemctl
-$ wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.38.0/otelcol_0.38.0_linux_amd64.rpm
+$ wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.39.0/otelcol_0.39.0_linux_amd64.rpm
 $ rpm -ivh otelcol_0.38.0_linux_amd64.rpm
 ```
 
@@ -159,14 +159,9 @@ $ sudo journalctl -u otel-collector
 
 ### Windows Packaging
 
-Every Collector release includes EXE and MSI packaging for Windows amd64 systems.
-The MSI packaging includes a default configuration that can be found at
-`\Program Files\OpenTelemetry Collector\config.yaml`.
+Windows releases are packaged as gzipped tarballs (`.tar.gz`) and will need to be unpacked with a tool that supports this compression format.
 
-> Please note the Collector service is automatically started
-
-The easiest way to get started is to double-click the MSI package and follow
-the wizard. Silent installation is also available.
+Every Collector release includes an `otelcol.exe` executable that you can run after unpacking.
 
 ### Local
 
