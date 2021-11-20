@@ -95,7 +95,7 @@ others. This page captures terminology used in the project and what it means.
 - **[Propagators](/docs/go/instrumentation/#propagators-and-context):** Used to
   serialize and deserialize specific parts of telemetry data such as span
   context and `Baggage` in `Spans`.
-- **[Proto](/docs/concepts/components/#proto):** Language independent interface types.
+- **[Proto](/https://github.com/open-telemetry/opentelemetry-proto):** Language independent interface types.
 - **[Receiver](/docs/collector/configuration/#receivers):**
   Term used by the `Collector` to define how telemetry data is received.
   Receivers can be push or pull based.
