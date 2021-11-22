@@ -1,5 +1,6 @@
 {{ $err := "spec_status shortcode error" -}}
-{{ $pageRef := .Get 0 -}}
+{{ $label := .Get 0 -}}
+{{ $pageRef := .Get 1 -}}
 {{ if not (hasPrefix $pageRef "/") -}}
   {{ $pageRef = printf "/docs/reference/specification/%s" $pageRef -}}
 {{ end -}}
@@ -8,11 +9,12 @@
   {{ errorf "spec_status: Can't find page at '%s'." $pageRef -}}
 {{ end -}}
 
-{{ $_match := .Get 1 | default "Status" -}}
+{{ $_match := .Get 2 | default "Status" -}}
 {{ $matchThis := printf ".*%s.*" $_match -}}
 
 {{ $statusLine := "" -}}
 {{ with findRE $matchThis $page.Content -}}
+  {{/* Note that content is in HTML. */ -}}
   {{ $statusLine = index . 0 -}}
 {{ else -}}
   {{ errorf "%s: page '%s' does not contain a line matching '%s'." $err $pageRef $_match -}}
@@ -31,4 +33,4 @@
   {{ errorf "%s: '%s' value did not match one of '%s' in file '%s': matched line is '%s'" $err $_match $statusValueRE $pageRef $statusLine -}}
 {{ end -}}
 
-{{ lower $status -}}
+**[{{ $label }}]({{ $page.RelPermalink }}):** {{ lower $status -}}
