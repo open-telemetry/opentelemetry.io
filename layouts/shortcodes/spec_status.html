@@ -1,5 +1,8 @@
 {{ $err := "spec_status shortcode error" -}}
 {{ $pageRef := .Get 0 -}}
+{{ if not (hasPrefix $pageRef "/") -}}
+  {{ $pageRef = printf "/docs/reference/specification/%s" $pageRef -}}
+{{ end -}}
 {{ $page := .Site.GetPage $pageRef -}}
 {{ if not $page -}}
   {{ errorf "spec_status: Can't find page at '%s'." $pageRef -}}

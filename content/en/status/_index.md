@@ -49,9 +49,9 @@ Checking the current status for each client in the README of its [github repo](h
 
 #### Tracing
 
-- **API:** {{< spec_status "/docs/reference/specification/trace/api" "Status" >}} 
-- **SDK:** {{< spec_status "/docs/reference/specification/trace/sdk" "Status" >}}
-- **Protocol:** {{< spec_status "/docs/reference/specification/protocol/otlp" "Tracing" >}}
+- **API:** {{% spec_status "trace/api" "Status" %}}
+- **SDK:** {{% spec_status "trace/sdk" "Status" %}}
+- **Protocol:** {{% spec_status "protocol/otlp" "Tracing" %}}
 - **Collector:** experimental
 - Notes:
   - The tracing specification is now completely stable, and covered by long term support.
@@ -60,9 +60,9 @@ Checking the current status for each client in the README of its [github repo](h
 
 #### [Metrics][]
 
-- **API:** {{< spec_status "/docs/reference/specification/metrics/api" "Status" >}}
-- **SDK:** {{< spec_status "/docs/reference/specification/metrics/sdk" "Status" >}}
-- **Protocol:** {{< spec_status "/docs/reference/specification/protocol/otlp" "Metrics" >}}
+- **API:** {{% spec_status "metrics/api" "Status" %}}
+- **SDK:** {{% spec_status "metrics/sdk" "Status" %}}
+- **Protocol:** {{% spec_status "protocol/otlp" "Metrics" %}}
 - **Collector:** experimental
 - Notes:
   - OpenTelemetry Metrics is currently under active development.
@@ -75,7 +75,7 @@ Checking the current status for each client in the README of its [github repo](h
 
 #### Baggage
 
-- **API:** {{< spec_status "/docs/reference/specification/baggage/api" "Status" >}}
+- **API:** {{% spec_status "baggage/api" "Status" %}}
 - **SDK:** stable
 - **Protocol:** N/A
 - **Collector:** N/A
@@ -87,7 +87,7 @@ Checking the current status for each client in the README of its [github repo](h
 
 - **API:** draft
 - **SDK:** draft
-- **Protocol:** {{< spec_status "/docs/reference/specification/protocol/otlp" "Logs" >}}
+- **Protocol:** {{% spec_status "protocol/otlp" "Logs" %}}
 - **Collector:** experimental
 - Notes:
   - OpenTelemetry Logging is currently under active development.
