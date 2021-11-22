@@ -98,14 +98,16 @@
 }
 
 // https://github.com/open-telemetry/opentelemetry.io/pull/414
-.td-box--dark p > a {
-    color: #3176d9;
+.td-box--dark p > a,
+.td-box--secondary p > a {
+  color: #3176d9;
 }
 
 .td-box--dark p > a:hover,
+.td-box--secondary p > a:hover,
 a:hover {
-    color: #3176d9;
-    text-decoration: underline;
+  color: #3176d9;
+  text-decoration: underline;
 }
 
 // Adjust anchors scroll snap (https://github.com/open-telemetry/opentelemetry.io/pull/348)
@@ -138,4 +140,16 @@ a:hover {
 .td-page-meta--child { display: none !important; }
 .otel-docs-spec {
   .td-page-meta--edit { display: none !important; }
+}
+
+// Contribution section in community page
+.community-contribution {
+  text-align: center;
+  
+  & > p {
+    font-size: $h3-font-size;
+    font-weight: $headings-font-weight;
+    line-height: $headings-line-height;
+    margin-bottom: $headings-margin-bottom;
+  }
 }
