@@ -22,8 +22,13 @@ Several cloud providers and observability vendors distribute or natively support
 {{% /blocks/section %}}
 
 {{% blocks/section color="secondary" type="section" %}}
-{{% center %}}
-### Interested in getting involved but not sure where to start? Check out our [community repo](https://github.com/open-telemetry/community) to find out more!
-### OpenTelemetry follows the [CNCF Code of Conduct](https://github.com/cncf/foundation/blob/master/code-of-conduct.md).
-{{% /center %}}
+
+<div class="community-contribution">
+
+Interested in getting involved but not sure where to start? Check out our [community repo](https://github.com/open-telemetry/community) to find out more!
+
+OpenTelemetry follows the [CNCF Code of Conduct](https://github.com/cncf/foundation/blob/master/code-of-conduct.md).
+
+</div>
+
 {{% /blocks/section %}}
