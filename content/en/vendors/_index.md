@@ -24,6 +24,7 @@ title: Vendor support
 | Dynatrace       | Yes          | Yes         | https://www.dynatrace.com/support/help/how-to-use-dynatrace/transactions-and-services/service-monitoring-settings/opentelemetry/ |
 | Elastic         | Yes          | Yes         | https://www.elastic.co/guide/en/apm/get-started/current/open-telemetry-elastic.html                                              |
 | F5              | No           | Yes         | https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/f5cloudexporter                             |
+| Grafana Labs    | No           | Yes         | https://grafana.com/oss/opentelemetry/                                                                                           |
 | Honeycomb       | Yes          | Yes         | https://docs.honeycomb.io/getting-data-in/                                                                                       |
 | Lightstep       | Yes          | Yes         | https://github.com/lightstep?q=launcher                                                                                          |
 | New Relic       | Yes          | Yes         | https://newrelic.com/solutions/opentelemetry                                                                                     |
