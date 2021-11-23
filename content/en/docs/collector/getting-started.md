@@ -121,10 +121,10 @@ architecture.
 $ sudo apt-get update
 $ sudo apt-get -y install wget systemctl
 $ wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.39.0/otelcol_0.39.0_linux_amd64.deb
-$ dpkg -i otelcol_0.38.0_linux_amd64.deb
+$ dpkg -i otelcol_0.39.0_linux_amd64.deb
 ```
 
-To get started on Red Hat systems run the following replacing `v0.38.0` with the
+To get started on Red Hat systems run the following replacing `v0.39.0` with the
 version of the Collector you wish to run and `x86_64` with the appropriate
 architecture.
 
@@ -132,7 +132,7 @@ architecture.
 $ sudo yum update
 $ sudo yum -y install wget systemctl
 $ wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.39.0/otelcol_0.39.0_linux_amd64.rpm
-$ rpm -ivh otelcol_0.38.0_linux_amd64.rpm
+$ rpm -ivh otelcol_0.39.0_linux_amd64.rpm
 ```
 
 By default, the `otel-collector` systemd service will be started with the
@@ -159,7 +159,7 @@ $ sudo journalctl -u otel-collector
 
 ### Windows Packaging
 
-Windows releases are packaged as gzipped tarballs (`.tar.gz`) and will need to be unpacked with a tool that supports this compression format.
+Windows [releases](https://github.com/open-telemetry/opentelemetry-collector-releases/releases) are packaged as gzipped tarballs (`.tar.gz`) and will need to be unpacked with a tool that supports this compression format.
 
 Every Collector release includes an `otelcol.exe` executable that you can run after unpacking.
 
