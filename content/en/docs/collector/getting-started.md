@@ -177,6 +177,6 @@ $ git clone git@github.com:open-telemetry/opentelemetry-collector-contrib.git; \
     go build server/main.go; ./server/main & pid2="$!"; \
 
 $ git clone git@github.com:open-telemetry/opentelemetry-collector.git; \
-    cd opentelemetry-collector; make install-tools; make otelcol; \
-    ./bin/otelcol_$(go env GOOS)_$(go env GOARCH) --config ./examples/local/otel-config.yaml; kill $pid1; kill $pid2
+    cd opentelemetry-collector; make install-tools; make build-binary-cmd-otelcol; \
+    ./bin/cmd-otelcol --config ./examples/local/otel-config.yaml; kill $pid1; kill $pid2
 ```
