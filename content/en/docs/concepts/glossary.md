@@ -23,6 +23,7 @@ others. This page captures terminology used in the project and what it means.
   mechanism for propagating name/value pairs to help establish a causal
   relationship between events and services.
 - **Client Library:** See `Instrumented Library`.
+- **Client-side App:** A component of an `Application` that is not running inside a private infrastructure and is typically used directly by end-users. Examples of client-side apps are browser apps, mobile apps, and apps running on IoT devices.
 - **[Collector](/docs/collector/):**
   A vendor-agnostic implementation on how to receive, process, and export
   telemetry data. A single binary that can be deployed as an agent or gateway.
