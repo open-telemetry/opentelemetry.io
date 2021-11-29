@@ -6,12 +6,12 @@ weight: 20
 OpenTelemetry is currently made up of several main components:
 
 * Cross-language specification
-* OpenTelemetry Collector
+* Tools to collect, transform, and export telemetry data
 * Per-language SDKs
 * Automatic instrumentation and contrib packages
 
 OpenTelemetry lets you replace the need for vendor-specific SDKs and tools for generating
-telemetry data.
+and exporting telemetry data.
 
 ## Specification
 
@@ -34,10 +34,11 @@ can be found in the [proto repository](https://github.com/open-telemetry/opentel
 ## Collector
 
 The OpenTelemetry Collector is a vendor-adgnostic proxy that can receive, process,
-and export telemetry data. It supports other receiving different observability data
-formats (e.g., Jaeger, Prometheus, etc.) and sending data to one or more backends. It
-also supports processing and filtering telemetry data before it gets exported.
-Collector contrib packages bring support for more data formats and vendor backends.
+and export telemetry data. It supports receiving telemetry data in multiple formats
+(e.g., OTLP, Jaeger, Prometheus, as well as many commercial/proprietary tools)
+and sending data to one or more backends. It also supports processing and filtering
+telemetry data before it gets exported. Collector contrib packages bring support for
+more data formats and vendor backends.
 
 For more information, see [Data Collection](/docs/concepts/data-collection/).
 
