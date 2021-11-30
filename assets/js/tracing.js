@@ -1,37 +1,37 @@
-import { ConsoleSpanExporter, SimpleSpanProcessor } from '@opentelemetry/tracing';
-import { WebTracerProvider } from '@opentelemetry/web';
-import { DocumentLoadInstrumentation } from '@opentelemetry/instrumentation-document-load';
-import { UserInteractionInstrumentation } from '@opentelemetry/instrumentation-user-interaction';
+import { ConsoleSpanExporter, SimpleSpanProcessor } from '@opentelemetry/sdk-trace-base';
+import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
+import { getWebAutoInstrumentations } from '@opentelemetry/auto-instrumentations-web';
 import { registerInstrumentations } from '@opentelemetry/instrumentation';
-import { CollectorTraceExporter } from '@opentelemetry/exporter-collector';
+import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
 import { Resource } from '@opentelemetry/resources';
+import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions';
+import { ZoneContextManager } from '@opentelemetry/context-zone-peer-dep';
 
-const exporter = new CollectorTraceExporter({
-  serviceName: 'opentelemetry.io',
-  url: 'https://otelwebtelemetry.com/v1/trace'
-})
+const collectorOptions = {
+  url: 'https://otelwebtelemetry.com/v1/traces',
+}
+const exporter = new OTLPTraceExporter(collectorOptions);
 
-
-const locale = new Resource({
-    "browser.language": navigator.language, 
-    "browser.path": location.pathname
-})
-
+const resources = new Resource({
+  [SemanticResourceAttributes.SERVICE_NAME]: 'opentelemetry.io',
+  "browser.language": navigator.language,
+});
 
 const provider = new WebTracerProvider({
-  resource: locale
+  resource: resources,
 });
 
 registerInstrumentations({
   instrumentations: [
-    new DocumentLoadInstrumentation(),
-    new UserInteractionInstrumentation(),
+    getWebAutoInstrumentations({})
   ],
   tracerProvider: provider
 })
 
 provider.addSpanProcessor(new SimpleSpanProcessor(exporter));
 provider.addSpanProcessor(new SimpleSpanProcessor(new ConsoleSpanExporter()));
-provider.register();
+provider.register({
+  contextManger: new ZoneContextManager(),
+});
 
 module.export = provider.getTracer('otel-web');
