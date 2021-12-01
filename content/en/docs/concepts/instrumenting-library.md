@@ -171,9 +171,9 @@ try (Scope unused = span.makeCurrent()) {
 }
 ```
 
-Here're the full [examples of context extraction in Java](/docs/java/manual_instrumentation/#context-propagation), check out OpenTelemetry documentation in your language.
+Here're the full [examples of context extraction in Java](/docs/instrumentation/java/manual_instrumentation/#context-propagation), check out OpenTelemetry documentation in your language.
 
-In the case of a messaging system, you may receive more than one message at once. Received messages become [*links*](/docs/java/manual_instrumentation/#create-spans-with-links) on the span you create.
+In the case of a messaging system, you may receive more than one message at once. Received messages become [*links*](/docs/instrumentation/java/manual_instrumentation/#create-spans-with-links) on the span you create.
 Refer to [messaging conventions]({{< relref "/docs/reference/specification/trace/semantic_conventions/messaging" >}}) for details (WARNING: messaging conventions are [under constructions](https://github.com/open-telemetry/oteps/pull/173) 🚧).
 
 ### Injecting context
@@ -200,7 +200,7 @@ try (Scope unused = span.makeCurrent()) {
 }
 ```
 
-Here's the full [example of context injection in Java](/docs/java/manual_instrumentation/#context-propagation).
+Here's the full [example of context injection in Java](/docs/instrumentation/java/manual_instrumentation/#context-propagation).
 
 There might be some exceptions:
 
