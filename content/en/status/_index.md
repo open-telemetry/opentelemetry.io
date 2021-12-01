@@ -47,12 +47,13 @@ The following is a high level status report for currently available signals. Not
 
 Checking the current status for each client in the README of its [github repo](https://github.com/open-telemetry) is recommended. Client support for specific features can be found in the [specification compliance tables](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md).
 
+Note that, for each of the following sections, the **Collector** status is the same as the **Protocol** status.
+
 #### Tracing
 
 - {{% spec_status "API" "trace/api" "Status" %}}
 - {{% spec_status "SDK" "trace/sdk" "Status" %}}
 - {{% spec_status "Protocol" "protocol/otlp" "Tracing" %}}
-- **Collector:** experimental
 - Notes:
   - The tracing specification is now completely stable, and covered by long term support.
   - The tracing specification is still extensible, but only in a backwards compatible manner.
@@ -63,7 +64,6 @@ Checking the current status for each client in the README of its [github repo](h
 - {{% spec_status "API" "metrics/api" "Status" %}}
 - {{% spec_status "SDK" "metrics/sdk" "Status" %}}
 - {{% spec_status "Protocol" "protocol/otlp" "Metrics" %}}
-- **Collector:** experimental
 - Notes:
   - OpenTelemetry Metrics is currently under active development.
   - The data model is stable and released as part of the OTLP protocol.
@@ -78,7 +78,6 @@ Checking the current status for each client in the README of its [github repo](h
 - {{% spec_status "API" "baggage/api" "Status" %}}
 - **SDK:** stable
 - **Protocol:** N/A
-- **Collector:** N/A
 - Notes:
   - OpenTelemetry Baggage is now completely stable.
   - Baggage is not an observability tool, it is a system for attaching arbitrary keys and values to a transaction, so that downstream services may access them. As such, there is no OTLP or Collector component to baggage.
@@ -88,7 +87,6 @@ Checking the current status for each client in the README of its [github repo](h
 - **API:** draft
 - **SDK:** draft
 - {{% spec_status "Protocol" "protocol/otlp" "Logs" %}}
-- **Collector:** experimental
 - Notes:
   - OpenTelemetry Logging is currently under active development.
   - The data model is experimental and released as part of the OTLP protocol.
