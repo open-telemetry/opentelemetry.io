@@ -17,16 +17,6 @@
   }
 }
 
-.td-sidebar-nav-active-item {
-  color: $opentelemetry-purple;
-  &::before {
-    content: "\2022";
-    margin-left: -0.75rem;
-    padding-right: 0.25rem;
-    width: 0.5rem;
-  }
-}
-
 .l-buttons {
   display: flex;
   flex-wrap: wrap;
@@ -74,6 +64,8 @@
     span:last-child { display: none; }
   }
 }
+
+.foldable-nav { padding-top: 0.5rem; } // TODO: propagate this fix to Docsy. Also class name should be prefixed with td
 
 // Adjust the spacing of page-meta and page-TOC (https://github.com/open-telemetry/opentelemetry.io/pull/354)
 .td-toc #TableOfContents {
@@ -145,7 +137,7 @@ a:hover {
 // Contribution section in community page
 .community-contribution {
   text-align: center;
-  
+
   & > p {
     font-size: $h3-font-size;
     font-weight: $headings-font-weight;
