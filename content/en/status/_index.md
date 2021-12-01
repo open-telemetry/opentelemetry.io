@@ -49,9 +49,9 @@ Checking the current status for each client in the README of its [github repo](h
 
 #### Tracing
 
-- **API:** stable
-- **SDK:** stable
-- **Protocol:** stable
+- {{% spec_status "API" "trace/api" "Status" %}}
+- {{% spec_status "SDK" "trace/sdk" "Status" %}}
+- {{% spec_status "Protocol" "protocol/otlp" "Tracing" %}}
 - **Collector:** experimental
 - Notes:
   - The tracing specification is now completely stable, and covered by long term support.
@@ -60,9 +60,9 @@ Checking the current status for each client in the README of its [github repo](h
 
 #### [Metrics][]
 
-- **API:** feature-freeze
-- **SDK:** experimental
-- **Protocol:** stable
+- {{% spec_status "API" "metrics/api" "Status" %}}
+- {{% spec_status "SDK" "metrics/sdk" "Status" %}}
+- {{% spec_status "Protocol" "protocol/otlp" "Metrics" %}}
 - **Collector:** experimental
 - Notes:
   - OpenTelemetry Metrics is currently under active development.
@@ -75,7 +75,7 @@ Checking the current status for each client in the README of its [github repo](h
 
 #### Baggage
 
-- **API:** stable
+- {{% spec_status "API" "baggage/api" "Status" %}}
 - **SDK:** stable
 - **Protocol:** N/A
 - **Collector:** N/A
@@ -87,7 +87,7 @@ Checking the current status for each client in the README of its [github repo](h
 
 - **API:** draft
 - **SDK:** draft
-- **Protocol:** experimental
+- {{% spec_status "Protocol" "protocol/otlp" "Logs" %}}
 - **Collector:** experimental
 - Notes:
   - OpenTelemetry Logging is currently under active development.
