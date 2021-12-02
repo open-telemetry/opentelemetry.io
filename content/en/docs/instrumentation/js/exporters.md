@@ -107,5 +107,22 @@ const meter = new MeterProvider({
 
 ## OpenTelemetry Collector
 
-If you are looking for a vendor-agnostic way to receive, process and export your
-telemetry data follow the instructions to setup a [collector](/docs/collector/)
+To send trace data to a Collector you'll want to use the `exporter-collector` package:
+
+```shell
+npm install --save @opentelemetry/exporter-collector
+```
+
+And configure the exporter to point at your Collector endpoint:
+
+```javascript
+import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
+
+const exporter = new OTLPTraceExporter({
+  url: '<your-collector-endpoint>/v1/traces', // url is optional and can be omitted - default is http://localhost:55681/v1/traces
+  headers: {}, // an optional object containing custom headers to be sent with each request
+  concurrencyLimit: 10, // an optional limit on pending requests
+});
+```
+
+To set up a Collector, see [Getting Started with the Collector](/docs/collector/getting-started/).
