@@ -10,7 +10,7 @@
 	url = https://github.com/open-telemetry/opentelemetry-specification.git
 [submodule "content-modules/opentelemetry-java"]
 	path = content-modules/opentelemetry-java
-	url = https://github.com/open-telemetry/opentelemetry-java
+	url = https://github.com/open-telemetry/opentelemetry-java-docs
 [submodule "content-modules/opentelemetry-ruby"]
 	path = content-modules/opentelemetry-ruby
 	url = https://github.com/open-telemetry/opentelemetry-ruby
