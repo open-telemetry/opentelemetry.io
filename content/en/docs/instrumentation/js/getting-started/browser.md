@@ -135,7 +135,7 @@ registerInstrumentations({
 });
 ```
 
-Now, rebuild your application and open the browser again. In the console of the developer toolbar you should see some traces being exporterd:
+Now, rebuild your application and open the browser again. In the console of the developer toolbar you should see some traces being exported:
 
 ```json
 {
