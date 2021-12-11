@@ -133,9 +133,6 @@ Sometimes it's helpful to do something with the current/active span at a particu
 const span = opentelemetry.trace.getSpan(opentelemetry.context.active())
 
 // do something with the current span
-
-// Don't forget to end the span!
-span.end()
 ```
 
 ## Attributes
