@@ -125,6 +125,19 @@ parentSpan.end();
 
 Invoking your application once again will give you a list of traces being exported.
 
+## Get the current span
+
+Sometimes it's helpful to do something with the current/active span at a particular point in program execution.
+
+```js
+const span = opentelemetry.trace.getSpan(opentelemetry.context.active())
+
+// do something with the current span
+
+// Don't forget to endend the span!
+span.end()
+```
+
 ## Attributes
 
 Attributes can be used to describe your spans. Attributes can be added to a span at any time before the span is finished:
