@@ -32,6 +32,7 @@ title: Vendor support
 | Splunk          | Yes          | Yes         | https://www.splunk.com/en_us/blog/conf-splunklive/announcing-native-opentelemetry-support-in-splunk-apm.html                     |
 | Sumo Logic      | Yes          | Yes         | https://help.sumologic.com/Traces/Getting_Started_with_Transaction_Tracing                                                       |
 | Uptrace         | Yes          | Yes         | https://uptrace.dev/                                                                                                             |
+| SigNoz          | Yes          | Yes         | https://signoz.io/                                                                                                               |
 
 _Vendors are listed alphabetically_
 
