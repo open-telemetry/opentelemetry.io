@@ -8,8 +8,8 @@
 [submodule "content-modules/opentelemetry-specification"]
 	path = content-modules/opentelemetry-specification
 	url = https://github.com/open-telemetry/opentelemetry-specification.git
-[submodule "content-modules/opentelemetry-java"]
-	path = content-modules/opentelemetry-java
+[submodule "content-modules/opentelemetry-java-docs"]
+	path = content-modules/opentelemetry-java-docs
 	url = https://github.com/open-telemetry/opentelemetry-java-docs
 [submodule "content-modules/opentelemetry-ruby"]
 	path = content-modules/opentelemetry-ruby
