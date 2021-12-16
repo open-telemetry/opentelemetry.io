@@ -16,7 +16,7 @@ Below you will find some introductions on how to setup backends and the matching
 
 To send trace data to a Collector you'll want to use an exporter package, such as `@opentelemetry/exporter-trace-otlp-http`:
 
-```shell
+```console
 $ npm install --save @opentelemetry/exporter-trace-otlp-http
 ```
 
