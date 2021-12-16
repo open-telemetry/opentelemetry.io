@@ -7,10 +7,34 @@ In order to visualize and analyze your traces and metrics, you will need to expo
 
 Below you will find some introductions on how to setup backends and the matching exporters.
 
+- [OpenTelemetry Collector](#opentelemetry-collector)
 - [Jaeger](#jaeger)
 - [Zipkin](#zipkin)
 - [Prometheus](#prometheus)
-- [OpenTelemetry Collector](#opentelemetry-collector)
+
+## OTLP endpoint
+
+To send trace data to a Collector you'll want to use an exporter package (e.g., `@opentelemetry/exporter-trace-otlp-http`):
+
+```shell
+npm install --save @opentelemetry/exporter-trace-otlp-http
+```
+
+And configure the exporter to point at and endpoint.
+
+For example, here's how to point at an instance of an [OpenTelemetry Collector](/docs/collector/getting-started/):
+
+```js
+const { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
+const { SimpleSpanProcessor } = require('@opentelemetry/tracing');
+
+const exporter = new OTLPTraceExporter({
+  url: '<your-collector-endpoint>/v1/traces', // optional - url default value is http://localhost:55681/v1/traces
+  headers: {}, // optional - collection of custom headers to be sent with each request
+});
+```
+
+It's recommended to use environment variables to set values like headers and an endpoint URL.
 
 ## Jaeger
 
@@ -104,25 +128,3 @@ const meter = new MeterProvider({
   interval: 1000,
 }).getMeter('prometheus');
 ```
-
-## OpenTelemetry Collector
-
-To send trace data to a Collector you'll want to use the `exporter-collector` package:
-
-```shell
-npm install --save @opentelemetry/exporter-collector
-```
-
-And configure the exporter to point at your Collector endpoint:
-
-```javascript
-import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
-
-const exporter = new OTLPTraceExporter({
-  url: '<your-collector-endpoint>/v1/traces', // url is optional and can be omitted - default is http://localhost:55681/v1/traces
-  headers: {}, // an optional object containing custom headers to be sent with each request
-  concurrencyLimit: 10, // an optional limit on pending requests
-});
-```
-
-To set up a Collector, see [Getting Started with the Collector](/docs/collector/getting-started/).
