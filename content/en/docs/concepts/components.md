@@ -33,7 +33,7 @@ can be found in the [proto repository](https://github.com/open-telemetry/opentel
 
 ## Collector
 
-The OpenTelemetry Collector is a vendor-adgnostic proxy that can receive, process,
+The OpenTelemetry Collector is a vendor-agnostic proxy that can receive, process,
 and export telemetry data. It supports receiving telemetry data in multiple formats
 (e.g., OTLP, Jaeger, Prometheus, as well as many commercial/proprietary tools)
 and sending data to one or more backends. It also supports processing and filtering
