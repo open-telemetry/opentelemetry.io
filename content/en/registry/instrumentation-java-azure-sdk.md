@@ -1,0 +1,16 @@
+---
+title: Azure SDK Instrumentation
+registryType: instrumentation
+isThirdParty: true
+language: java
+tags:
+  - java
+  - instrumentation
+  - azure-sdk
+  - azure
+repo: https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/core/azure-core-tracing-opentelemetry
+license: MIT License
+description: Instrumentation for Azure SDK for Java (Track 2 libraries).
+authors: Microsoft Authors
+otVersion: 1.0.0
+---
