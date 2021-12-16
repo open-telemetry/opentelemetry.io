@@ -14,13 +14,13 @@ Below you will find some introductions on how to setup backends and the matching
 
 ## OTLP endpoint or Collector
 
-To send trace data to a Collector you'll want to use an exporter package (e.g., `@opentelemetry/exporter-trace-otlp-http`):
+To send trace data to a Collector you'll want to use an exporter package, such as `@opentelemetry/exporter-trace-otlp-http`:
 
 ```shell
-npm install --save @opentelemetry/exporter-trace-otlp-http
+$ npm install --save @opentelemetry/exporter-trace-otlp-http
 ```
 
-And configure the exporter to point at and endpoint.
+Next, configure the exporter to point at and endpoint.
 
 For example, here's how to point at an instance of an [OpenTelemetry Collector](/docs/collector/getting-started/):
 
@@ -29,12 +29,15 @@ const { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
 const { SimpleSpanProcessor } = require('@opentelemetry/tracing');
 
 const exporter = new OTLPTraceExporter({
-  url: '<your-collector-endpoint>/v1/traces', // optional - url default value is http://localhost:55681/v1/traces
-  headers: {}, // optional - collection of custom headers to be sent with each request
+  // optional - url default value is http://localhost:55681/v1/traces
+  url: '<your-collector-endpoint>/v1/traces',
+
+  // optional - collection of custom headers to be sent with each request, empty by default
+  headers: {}, 
 });
 ```
 
-It's recommended to use environment variables to set values like headers and an endpoint URL.
+Use environment variables to set values like headers and an endpoint URL for production.
 
 ## Jaeger
 
