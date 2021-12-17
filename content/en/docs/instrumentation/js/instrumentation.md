@@ -6,7 +6,9 @@ weight: 3
 This guide will cover creating and annotating spans, creating and annotating metrics, how to pass context, and a guide to automatic instrumentation for JavaScript. This simple example works in the browser as well as with Node.JS
 
 - [Example Application](#example-application)
-- [Creating Spans](#creating-spans)
+- [Initializing a Tracer](#initializing-a-tracer)
+- [Create Spans](#create-spans)
+- [Create Nested Spans](#create-nested-spans)
 - [Attributes](#attributes)
   - [Semantic Attributes](#semantic-attributes)
 - [Span Status](#span-status)
@@ -30,42 +32,37 @@ function doWork() {
 }
 ```
 
-## Creating Spans
-
+## Initializing a Tracer
 As you have learned in the previous [Getting Started][] guide you need a
 TracerProvider and an Exporter. Install the dependencies and add them to the head of
 your application code to get started:
 
 ```shell
-npm install @opentelemetry/sdk-trace-base
+npm install @opentelemetry/api
+npm install @opentelemetry/sdk-trace-base
 ```
+
+Next, initialize a tracer, preferably in a separate file (e.g., `instrumentation-setup.js`):
 
 ```javascript
 const { BasicTracerProvider, ConsoleSpanExporter, SimpleSpanProcessor } = require('@opentelemetry/sdk-trace-base');
+const opentelemetry = require('@opentelemetry/api');
 
 const provider = new BasicTracerProvider();
 
 // Configure span processor to send spans to the exporter
 provider.addSpanProcessor(new SimpleSpanProcessor(new ConsoleSpanExporter()));
-
 provider.register();
+
+// This is what we'll access in all instrumentation code
+export const tracer = opentelemetry.trace.getTracer('example-basic-tracer-node');
 ```
 
-Next, initialize the OpenTelemetry APIs to use the BasicTracerProvider bindings.
-This registers the tracer provider with the OpenTelemetry API as the global tracer provider.
-This means when you call API methods like `opentelemetry.trace.getTracer`, they will use this tracer provider.
-If you do not register a global tracer provider, instrumentation which calls these methods will receive no-op implementations
+This registers a tracer provider with the OpenTelemetry API as the global tracer provider, and exports a tracer instance that you can use to create spans.
 
-Install the required package and modify your code:
+If you do not register a global tracer provider, any instrumentation calls will be a no-op, so this is important to do!
 
-```shell
-npm install @opentelemetry/api
-```
-
-```javascript
-const opentelemetry = require('@opentelemetry/api');
-const tracer = opentelemetry.trace.getTracer('example-basic-tracer-node');
-```
+## Create spans
 
 Add a first span to the sample application. Modify your code like the following:
 
@@ -96,7 +93,9 @@ Run your application and you will see traces being exported to the console:
 }
 ```
 
-Add further spans into the `doWork` method:
+## Create nested spans
+
+Nested spans let you track work that's nested in nature. For example, the `doWork` function below represents a nested operation. The following sample creates a nested span that tracks the `doWork` function:
 
 ```javascript
 // Create a span. A span must be closed.
@@ -117,13 +116,17 @@ function doWork(parent) {
   for (let i = 0; i <= Math.floor(Math.random() * 40000000); i += 1) {
     // empty
   }
+
+  // Make sure to end this child span! If you don't,
+  // it will continue to track work beyond 'doWork'!
   span.end();
 }
-// Be sure to end the span.
+
+// Be sure to end the parent span.
 parentSpan.end();
 ```
 
-Invoking your application once again will give you a list of traces being exported.
+If you run the application again, you'll see the parent span and then a span for each call to `doWork`, each listing `parentSpan`'s ID as its `parentId`.
 
 ## Get the current span
 
@@ -132,7 +135,7 @@ Sometimes it's helpful to do something with the current/active span at a particu
 ```js
 const span = opentelemetry.trace.getSpan(opentelemetry.context.active())
 
-// do something with the current span
+// do something with the current span, optionally ending it if that is appropriate for your use case.
 ```
 
 ## Attributes
@@ -142,11 +145,19 @@ Attributes can be used to describe your spans. Attributes can be added to a span
 ```javascript
 function doWork(parent) {
   const ctx = opentelemetry.trace.setSpan(opentelemetry.context.active(), parent);
+
+  // Add an attribute to a span at the time of creation
   const span = tracer.startSpan('doWork', { attributes: { attribute1 : 'value1' } }, ctx);
+
   for (let i = 0; i <= Math.floor(Math.random() * 40000000); i += 1) {
     // empty
   }
+
+  // Add an attribute to the same span later on
   span.setAttribute('attribute2', 'value2');
+
+  
+  // Be sure to end the span!
   span.end();
 }
 ```
