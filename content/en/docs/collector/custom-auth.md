@@ -114,4 +114,4 @@ Similar to server authenticators, they are essentially extensions with extra fun
 
 ## Adding your custom authenticator to a distribution
 
-Custom authenticators have to be part of the same binary as the main collector. When building your own authenticator, you'll likely have to build a custom distribution as well, or provide means for your users to consume your extension as part of their own distributions. Fortunately, building a custom distribution can be done using the [OpenTelemetry Collector Builder](https://github.com/open-telemetry/opentelemetry-collector-builder) utility.
+Custom authenticators have to be part of the same binary as the main collector. When building your own authenticator, you'll likely have to build a custom distribution as well, or provide means for your users to consume your extension as part of their own distributions. Fortunately, building a custom distribution can be done using the [OpenTelemetry Collector Builder](https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder) utility.
