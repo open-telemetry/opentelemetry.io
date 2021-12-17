@@ -1,0 +1,18 @@
+---
+title: Azure SDK Instrumentation
+registryType: instrumentation
+isThirdParty: true
+language: js
+tags:
+  - javascript
+  - typescript
+  - Node.js
+  - instrumentation
+  - azure-sdk
+  - azure 
+repo: https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/core#open-telemetry
+license: MIT License
+description: Instrumentation for Azure SDK for JavaScript (Track 2 libraries).
+authors: Microsoft Authors
+otVersion: 1.0.0
+---
