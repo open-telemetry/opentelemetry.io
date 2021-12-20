@@ -7,11 +7,6 @@ In order to visualize and analyze your traces and metrics, you will need to expo
 
 Below you will find some introductions on how to setup backends and the matching exporters.
 
-- [OTLP endpoint or Collector](#otlp-endpoint-or-collector)
-- [Jaeger](#jaeger)
-- [Zipkin](#zipkin)
-- [Prometheus](#prometheus)
-
 ## OTLP endpoint or Collector
 
 To send trace data to a Collector you'll want to use an exporter package, such as `@opentelemetry/exporter-trace-otlp-http`:
