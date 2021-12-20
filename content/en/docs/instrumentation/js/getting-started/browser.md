@@ -5,15 +5,6 @@ aliases: [/docs/js/getting_started/browser]
 
 This guide uses the example application in HTML & javascript provided below, but the steps to instrument your own application should be broadly the same.
 
-- [Example Application](#example-application)
-  - [Installation](#installation)
-  - [Initialization and Configuration](#initialization-and-configuration)
-  - [Creating a Tracer Provider](#creating-a-tracer-provider)
-  - [Creating an Exporter](#creating-an-exporter)
-  - [Add Instrumentations](#add-instrumentations)
-- [Meta Packages for Web](#meta-packages-for-web)
-- [Instrumentation with Browser Extension](#instrumentation-with-browser-extension)
-
 ## Example Application
 
 This is a very simple guide, if you'd like to see more complex examples go to [examples/tracer-web](https://github.com/open-telemetry/opentelemetry-js/tree/main/examples/tracer-web)

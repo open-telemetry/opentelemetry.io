@@ -5,23 +5,6 @@ aliases: [/docs/js/getting_started/nodejs]
 
 This guide will show you how to get started with tracing in Node.js.
 
-- [Example Application](#example-application)
-  - [Dependencies](#dependencies)
-  - [Code](#code)
-- [Tracing](#tracing)
-  - [Dependencies](#dependencies-1)
-    - [Core Dependencies](#core-dependencies)
-    - [Exporter](#exporter)
-    - [Instrumentation Modules](#instrumentation-modules)
-  - [Setup](#setup)
-  - [Run Application](#run-application)
-- [Metrics](#metrics)
-  - [Dependencies](#dependencies-2)
-    - [Core Dependencies](#core-dependencies-1)
-    - [Exporter](#exporter-1)
-  - [Setup](#setup-1)
-  - [Run Application](#run-application-1)
-
 ## Example Application
 
 This is a small example application we will monitor in this guide.
