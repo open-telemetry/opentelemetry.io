@@ -5,9 +5,9 @@ isThirdParty: true
 language: collector
 tags:
   - collector
-repo: https://github.com/observatorium/opentelemetry-collector-builder
+repo: https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder
 license: Apache 2.0
 description: A CLI tool that generates OpenTelemetry Collector binaries based on a manifest.
-authors: Red Hat
+authors: OpenTelemetry Authors
 otVersion: latest
 ---

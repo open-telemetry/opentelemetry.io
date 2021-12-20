@@ -25,4 +25,4 @@ Objectives:
 - *Extensibility*: Customizable without touching the core code.
 - *Unification*: Single codebase, deployable as an agent or collector with support for traces, metrics, and logs (future).
 
-{{% latest_release "collector" /%}}
+{{% latest_release "collector-releases" /%}}
