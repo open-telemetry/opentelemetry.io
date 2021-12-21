@@ -15,15 +15,15 @@ For example, using the .NET CLI:
 dotnet add package OpenTelemetry
 ```
 
-## Console application quickstart
+## Console application
 
 The following sample demonstrates manual tracing via a console app.
 
 First, install requried packages:
 
 ```console
-dotnet add package OpenTelemetry
-dotnet add package OpenTelemetry.Exporter.Console
+$ dotnet add package OpenTelemetry
+$ dotnet add package OpenTelemetry.Exporter.Console
 ```
 
 Next, paste the following code into your `Program.cs` file:
@@ -76,19 +76,19 @@ Resource associated with Activity:
 
 This output matches the span created in the preceding code sample.
 
-## ASP.NET Core quickstart
+## ASP.NET Core
 
 The following sample demonstrates automatic and manual tracing with ASP.NET Core.
 
 First, install requried packages:
 
 ```console
-dotnet add package OpenTelemetry --prerelease
-dotnet add package OpenTelemetry.Extensions.Hosting --prerelease
-dotnet add package OpenTelemetry.Exporter.Console --prerelease
-dotnet add package OpenTelemetry.Instrumentation.AspNetCore --prerelease
-dotnet add package OpenTelemetry.Instrumentation.Http --prerelease
-dotnet add package OpenTelemetry.Instrumentation.SqlClient --prerelease
+$ dotnet add package OpenTelemetry --prerelease
+$ dotnet add package OpenTelemetry.Extensions.Hosting --prerelease
+$ dotnet add package OpenTelemetry.Exporter.Console --prerelease
+$ dotnet add package OpenTelemetry.Instrumentation.AspNetCore --prerelease
+$ dotnet add package OpenTelemetry.Instrumentation.Http --prerelease
+$ dotnet add package OpenTelemetry.Instrumentation.SqlClient --prerelease
 ```
 
 Next, paste the following code into your `Program.cs` file:
@@ -135,7 +135,7 @@ app.MapGet("/hello", () =>
 app.Run();
 ```
 
-Now when you run the app and navigate to the `/hello` route, you'll output similar to the following:
+When you run the app and navigate to the `/hello` route, you'll see output similar to the following:
 
 ```
 Activity.Id:          00-d72f7e51dd06b57211f415489df89b1c-c8a394817946316d-01
