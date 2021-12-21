@@ -15,5 +15,6 @@
 # Global owners, will be the owners for everything in the repo.
 * @open-telemetry/docs-approvers
 
-# C++ content owners
-content/en/docs/cpp/     @open-telemetry/cpp-maintainers
+# content owners
+content/en/docs/instrumentation/cpp/     @open-telemetry/cpp-maintainers
+content/en/docs/instrumentation/java/    @open-telemetry/java-maintainers @open-telemetry/java-instrumentation-maintainers
