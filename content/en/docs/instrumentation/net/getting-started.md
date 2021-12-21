@@ -5,86 +5,172 @@ weight: 2
 
 OpenTelemetry for .NET is unique among OpenTelemetry implementations, as it is integrated with the .NET `System.Diagnostics` library. At a high level, you can think of OpenTelemetry for .NET as a bridge between the telemetry available through `System.Diagnostics` and the greater OpenTelemetry ecosystem, such as OpenTelemetry Protocol (OTLP) and the OpenTelemetry Collector. 
 
-# Installation
+## Installation
 
-You can find OpenTelemetry packages on [NuGet](https://www.nuget.org/profiles/OpenTelemetry). Install them to your project file using the `dotnet` command line utility or through `PackageReference` statements in your `csproj` file.
+OpenTelemetry is available as a [NuGet package](https://www.nuget.org/packages/OpenTelemetry/). Install it with your preferred package manager client.
 
-# Initialization and Configuration
+For example, using the .NET CLI:
 
-OpenTelemetry should be configured as part of your services initialization. In ASP.NET Core, you'll want to add it to the `IServiceCollection` that is created in `public void ConfigureServices(IServiceCollection services)`, in `Startup.cs`. For ASP.NET, configuration occurs in `Global.asax.cs`.
-
-You can find a variety of code samples demonstrating how to initialize and configure OpenTelemetry for .NET [here](https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/examples)
-
-## Creating a Tracer Provider
-
-In order to create and process traces, a tracer provider must be created. We'll look at two ways to do this - one for a console application, and one for ASP.NET Core. The biggest difference you should note here is that if you're using ASP.NET, then the OpenTelemetry libraries will automatically register with the `ActivitySource` provided by the framework, meaning you don't need to create and manage activity sources yourself.
-
-### Console
-
-First, you'll need to declare an `ActivitySource` for the tracer provider to read from.
-
-```
-private static readonly ActivitySource MyActivitySource = new ActivitySource("MySource");
+```console
+dotnet add package OpenTelemetry
 ```
 
-Then, inside your main function, initialize a provider:
+## Console application quickstart
 
-```
-var tracerProvider = Sdk.CreateTracerProviderBuilder()
-  .SetSampler(new AlwaysOnSampler())
-  .AddSource("MySource")
-  .AddConsoleExporter()
-  .Build();
-```
+The following sample demonstrates manual tracing via a console app.
 
-### ASP.NET Core
+First, install requried packages:
 
-In `Startup.cs`, add a new service to your `IServiceCollection`:
-
-```
-public void ConfigureServices(IServiceCollection services)
-{
-  // other configuration here...
-  services.AddOpenTelemetryTracing((builder) => builder
-    .AddAspNetCoreInstrumentation()
-    .AddConsoleExporter());
-}
+```console
+dotnet add package OpenTelemetry
+dotnet add package OpenTelemetry.Exporter.Console
 ```
 
-## Creating a Console Exporter
+Next, paste the following code into your `Program.cs` file:
 
-The console exporter doesn't require any special configuration, however, you can pass a `ConsoleExporterOptions` object to it in order to set the destination (either stdout or debug console). See [the exporter page in GitHub](https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/src/OpenTelemetry.Exporter.Console) for details.
-
-# Quick Start
-
-Putting it together, a simple example of creating traces in a console application is as follows:
-
-```
+```csharp
 using System.Diagnostics;
+
 using OpenTelemetry;
 using OpenTelemetry.Trace;
+using OpenTelemetry.Resources;
 
-public class Program
-{
-    private static readonly ActivitySource MyActivitySource = new ActivitySource(
-        "MyCompany.MyProduct.MyLibrary");
+// Define some important constants and the activity source
+var serviceName = "MyCompany.MyProduct.MyService";
+var serviceVersion = "1.0.0";
+var MyActivitySource = new ActivitySource(serviceName);
 
-    public static void Main()
-    {
-        using var tracerProvider = Sdk.CreateTracerProviderBuilder()
-            .SetSampler(new AlwaysOnSampler())
-            .AddSource("MyCompany.MyProduct.MyLibrary")
-            .AddConsoleExporter()
-            .Build();
+// Configure important OpenTelemetry settings and the console exporter
+using var tracerProvider = Sdk.CreateTracerProviderBuilder()
+    .AddSource(serviceName)
+    .SetResourceBuilder(
+        ResourceBuilder.CreateDefault()
+            .AddService(serviceName: serviceName, serviceVersion: serviceVersion))
+    .AddConsoleExporter()
+    .Build();
 
-        using (var activity = MyActivitySource.StartActivity("SayHello"))
-        {
-            activity?.SetTag("foo", 1);
-            activity?.SetTag("bar", "Hello, World!");
-            activity?.SetTag("baz", new int[] { 1, 2, 3 });
-        }
-    }
-}
+using var activity = MyActivitySource.StartActivity("SayHello");
+activity?.SetTag("foo", 1);
+activity?.SetTag("bar", "Hello, World!");
+activity?.SetTag("baz", new int[] { 1, 2, 3 });
 ```
 
-You can find a quick start example of an ASP.NET Core application [here](https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/examples/AspNetCore)
+The code will generate a single span like this:
+
+```
+Activity.Id:          00-cf0e89a41682d0cc7a132277da6a45d6-c714dd3b15e21378-01
+Activity.ActivitySourceName: MyCompany.MyProduct.myService
+Activity.DisplayName: SayHello
+Activity.Kind:        Internal
+Activity.StartTime:   2021-12-20T23:48:02.0467598Z
+Activity.Duration:    00:00:00.0008508
+Activity.TagObjects:
+    foo: 1
+    bar: Hello, World!
+    baz: [1, 2, 3]
+Resource associated with Activity:
+    service.name: MyCompany.MyProduct.myService
+    service.version: 1.0.0
+    service.instance.id: 20c891c2-94b4-4203-a960-93a22e837a32
+```
+
+This output matches the span created in the preceding code sample.
+
+## ASP.NET Core quickstart
+
+The following sample demonstrates automatic and manual tracing with ASP.NET Core.
+
+First, install requried packages:
+
+```console
+dotnet add package OpenTelemetry --prerelease
+dotnet add package OpenTelemetry.Extensions.Hosting --prerelease
+dotnet add package OpenTelemetry.Exporter.Console --prerelease
+dotnet add package OpenTelemetry.Instrumentation.AspNetCore --prerelease
+dotnet add package OpenTelemetry.Instrumentation.Http --prerelease
+dotnet add package OpenTelemetry.Instrumentation.SqlClient --prerelease
+```
+
+Next, paste the following code into your `Program.cs` file:
+
+```csharp
+using System.Diagnostics;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
+
+// Define some important constants and the activity source
+var serviceName = "MyCompany.MyProduct.MyService";
+var serviceVersion = "1.0.0";
+var MyActivitySource = new ActivitySource(serviceName);
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Configure important OpenTelemetry settings, the console exporter, and automatic instrumentation
+builder.Services.AddOpenTelemetryTracing(b =>
+{
+    b
+    .AddConsoleExporter()
+    .AddSource(serviceName)
+    .SetResourceBuilder(
+        ResourceBuilder.CreateDefault()
+            .AddService(serviceName: serviceName, serviceVersion: serviceVersion))
+    .AddHttpClientInstrumentation()
+    .AddAspNetCoreInstrumentation()
+    .AddSqlClientInstrumentation();
+});
+
+var app = builder.Build();
+
+app.MapGet("/hello", () =>
+{
+    // Track work inside of the request
+    using var activity = MyActivitySource.StartActivity("SayHello");
+    activity?.SetTag("foo", 1);
+    activity?.SetTag("bar", "Hello, World!");
+    activity?.SetTag("baz", new int[] { 1, 2, 3 });
+
+    return "Hello, World!";
+});
+
+app.Run();
+```
+
+Now when you run the app and navigate to the `/hello` route, you'll see the following output:
+
+```
+Activity.Id:          00-d72f7e51dd06b57211f415489df89b1c-c8a394817946316d-01
+Activity.ParentId:    00-d72f7e51dd06b57211f415489df89b1c-e1c9fde6c8f415ad-01
+Activity.ActivitySourceName: MyCompany.MyProduct.MyServiceActivity.DisplayName: SayHello
+Activity.Kind:        Internal
+Activity.StartTime:   2021-12-21T01:15:27.5712866Z
+Activity.Duration:    00:00:00.0000487
+Activity.TagObjects:
+    foo: 1
+    bar: Hello, World!
+    baz: [1, 2, 3]
+Resource associated with Activity:
+    service.name: MyCompany.MyProduct.MyService
+    service.version: 1.0.0
+    service.instance.id: 45aacfb0-e117-40cb-9d4d-9bcca661f6dd
+
+Activity.Id:          00-d72f7e51dd06b57211f415489df89b1c-e1c9fde6c8f415ad-01
+Activity.ActivitySourceName: OpenTelemetry.Instrumentation.AspNetCore
+Activity.DisplayName: /hello
+Activity.Kind:        Server
+Activity.StartTime:   2021-12-21T01:15:27.5384997Z
+Activity.Duration:    00:00:00.0429197
+Activity.TagObjects:
+    http.host: localhost:7207
+    http.method: GET
+    http.target: /hello
+    http.url: https://localhost:7207/hello
+    http.user_agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36
+    http.status_code: 200
+    otel.status_code: UNSET
+Resource associated with Activity:
+    service.name: MyCompany.MyProduct.MyService
+    service.version: 1.0.0
+    service.instance.id: 45aacfb0-e117-40cb-9d4d-9bcca661f6dd
+```
+
+This output has both the span created to track work in the route, and an automatically-created span that tracks the inbound ASP.NET Core request itself.
