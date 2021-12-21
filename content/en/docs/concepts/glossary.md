@@ -93,7 +93,7 @@ others. This page captures terminology used in the project and what it means.
   Libraries]({{< relref "/docs/reference/specification/trace/sdk#span-processor" >}})
   and the
   [Collector](/docs/collector/configuration/#processors).
-- **[Propagators](/docs/instrumentation/go/instrumentation/#propagators-and-context):** Used to
+- **[Propagators](/docs/instrumentation/go/manual_instrumentation/#propagators-and-context):** Used to
   serialize and deserialize specific parts of telemetry data such as span
   context and `Baggage` in `Spans`.
 - **[Proto](https://github.com/open-telemetry/opentelemetry-proto):** Language independent interface types.
