@@ -135,7 +135,7 @@ app.MapGet("/hello", () =>
 app.Run();
 ```
 
-Now when you run the app and navigate to the `/hello` route, you'll see the following output:
+Now when you run the app and navigate to the `/hello` route, you'll output similar to the following:
 
 ```
 Activity.Id:          00-d72f7e51dd06b57211f415489df89b1c-c8a394817946316d-01
