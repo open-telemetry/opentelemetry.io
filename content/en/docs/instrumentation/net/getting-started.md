@@ -1,5 +1,5 @@
 ---
-title: "Getting Started"
+title: Getting Started
 weight: 2
 ---
 
@@ -38,7 +38,6 @@ using OpenTelemetry.Resources;
 // Define some important constants and the activity source
 var serviceName = "MyCompany.MyProduct.MyService";
 var serviceVersion = "1.0.0";
-var MyActivitySource = new ActivitySource(serviceName);
 
 // Configure important OpenTelemetry settings and the console exporter
 using var tracerProvider = Sdk.CreateTracerProviderBuilder()
@@ -48,6 +47,8 @@ using var tracerProvider = Sdk.CreateTracerProviderBuilder()
             .AddService(serviceName: serviceName, serviceVersion: serviceVersion))
     .AddConsoleExporter()
     .Build();
+
+var MyActivitySource = new ActivitySource(serviceName);
 
 using var activity = MyActivitySource.StartActivity("SayHello");
 activity?.SetTag("foo", 1);
@@ -101,7 +102,6 @@ using OpenTelemetry.Trace;
 // Define some important constants and the activity source
 var serviceName = "MyCompany.MyProduct.MyService";
 var serviceVersion = "1.0.0";
-var MyActivitySource = new ActivitySource(serviceName);
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -120,6 +120,8 @@ builder.Services.AddOpenTelemetryTracing(b =>
 });
 
 var app = builder.Build();
+
+var MyActivitySource = new ActivitySource(serviceName);
 
 app.MapGet("/hello", () =>
 {
