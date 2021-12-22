@@ -344,7 +344,7 @@ registered with OpenTelemetry. This can be done through configuration of the
 {{< tab >}}
 ## runtime.exs
 ...
-text_map_propagators: [:baggage, :tracer_context],
+text_map_propagators: [:baggage, :trace_context],
 ...
 {{< /tab >}}
 
