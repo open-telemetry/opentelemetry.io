@@ -76,7 +76,7 @@ dotnet add package OpenTelemetry.Exporter.Console --prerelease
 And then configure it in your ASP.NET Core startup routine where you have access to an `IServiceCollection`.
 
 ```csharp
-using System.Diagnostics;
+using OpenTelemetry;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
@@ -103,4 +103,151 @@ This is also where you can configure instrumentation libraries.
 Note that this sample uses the Console Exporter. If you are exporting to another endpoint,
 you'll have to use a different exporter.
 
-## Seting up an ActivitySource
+## Setting up an ActivitySource
+
+Once tracing is initialized, you can configure an `ActivitySource`, which will be how
+you trace operations with `Activity`s.
+
+Typically, an `ActivitySource` is instantiated once per app/service that is being instrumented,
+so it's a good idea to instantiate it once in a shared location. It is also typically named
+the same as the Service Name.
+
+```csharp
+using System.Diagnostics;
+
+public static class Telemetry
+{
+    //...
+
+    // 'TelemetryConstants.ServiceName' comes from somewhere in your code
+    public static readonly ActivitySource MyActivitySource = new(TelemetryConstants.ServiceName)
+
+    //...
+}
+```
+
+You can instantiate several `ActivitySource`s if that suits your scenario.
+
+## Creating Activities
+
+To create an activity, give it a name and create it from your `ActivitySource`.
+
+```csharp
+using var myActivity = MyActivitySource.StartActivity("SayHello")
+
+// do work that 'myActivity' will now track
+```
+
+## Creating nested Activities
+
+If you have a distinct sub-operation you'd like to track as a part of another one,
+you can create activities to represent the relationship.
+
+```csharp
+public static void ParentOperation()
+{
+    using var parentOperation = MyActivitySource.StartActivity("Parent")
+
+    // Do some work in ParentOperation
+
+    ChildOperation();
+
+    // Finish up some work in ParentOperation
+}
+
+public static void ChildOperation()
+{
+    using var childOperation = MyActivitySource.StartActivity("Child")
+
+    // Do the child operation
+}
+```
+
+When you view spans in a trace visualization tool, `Child` will be tracked as a nested
+operation under `Parent`.
+
+## Get the current Activity
+
+Sometimes it's helpful to access whatever the current `Activity` is at a point in time so you can enrich
+it with more information.
+
+```csharp
+var activity = Activity.Current;
+// may be null if there is none
+```
+
+Note that `using` is not used in the following example. Doing so will end current `Activity`,
+which is not likely to be desired.
+
+## Add tags to an Activity
+
+Tags let you attach key/value pairs to an `Activity` so it carries more information about the current operation
+that it's tracking.
+
+```csharp
+using var myActivity = MyActivitySource.StartActivity("SayHello")
+
+activity?.SetTag("operation.value", 1);
+activity?.SetTag("operation.name", "Saying hello!");
+activity?.SetTag("operation.other-stuff", new int[] { 1, 2, 3 });
+```
+
+## Adding events
+
+An event is a human-readable message on an `Activity` that represents "something happening" during its lifetime.
+You can think of it like a primitive log.
+
+```csharp
+using var myActivity = MyActivitySource.StartActivity("SayHello")
+
+// ...
+
+myActivity?.AddEvent(new("Gonna try it!"));
+
+// ...
+
+myActivity?.AddEvent(new("Did it!"));
+```
+
+Events can also be created with a timestamp and a collection of Tags.
+
+```csharp
+using var myActivity = MyActivitySource.StartActivity("SayHello")
+
+// ...
+
+myActivity?.AddEvent(new("Gonna try it!", DateTimeOffset.Now));
+
+// ...
+
+var eventTags = new Dictionary<string, object?>
+{
+    { "foo", 1 },
+    { "bar", "Hello, World!" },
+    { "baz", new int[] { 1, 2, 3 } }
+};
+
+myActivity?.AddEvent(new("Gonna try it!", DateTimeOffset.Now, new(eventTags)));
+```
+
+## Adding links
+
+An `Activity` can be created with zero or more `ActivityLink`s that are causally related.
+
+```csharp
+// Get a context from somewhere, perhaps it's passed in as a parameter
+var activityContext = Activity.Current!.Context;
+
+var links = new List<ActivityLink>
+{
+    new ActivityLink(activityContext)
+};
+
+using var anotherActivity =
+    MyActivitySource.StartActivity(
+        ActivityKind.Internal,
+        name: "anotherActivity",
+        links: links);
+
+// do some work
+```
