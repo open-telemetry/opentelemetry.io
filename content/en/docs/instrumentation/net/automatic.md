@@ -87,3 +87,7 @@ When you run this code and access the `/hello` endpoint, it will:
 * Automatically generate a span representing the request made to the endpoint
 * Automatically generate a child span representing the HTTP GET made to `https://example.com/`
 
+## Next steps
+
+After you have observability generated automatically with instrumentation libraries, you may want to add
+[manual instrumentation]({{< relref "manual" >}}) to collect custom telemetry data.
