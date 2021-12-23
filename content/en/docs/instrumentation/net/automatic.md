@@ -1,8 +1,8 @@
---
+---
 title: Using instrumentation libraries
 weight: 3
 linkTitle: Libraries
---
+---
 
 .NET does not support truly automatic instrumentation like other languages today. Instead, you'll need to depend on
 [instrumentation libraries](https://opentelemetry.io/docs/reference/specification/glossary/#instrumentation-library)
@@ -86,6 +86,15 @@ When you run this code and access the `/hello` endpoint, it will:
 * Start a new trace
 * Automatically generate a span representing the request made to the endpoint
 * Automatically generate a child span representing the HTTP GET made to `https://example.com/`
+
+If you add more instrumentation libraries, then you can generate more data automatically.
+
+## Available instrumentation libraries
+
+A full list of instrumentation libraries produced by OpenTelemetry is available in the
+[opentelemetry-dotnet](https://github.com/open-telemetry/opentelemetry-dotnet) repository.
+
+You can also find more instrumentations available in the [opentelemetry registry](https://opentelemetry.io/registry/?language=dotnet&component=instrumentation).
 
 ## Next steps
 
