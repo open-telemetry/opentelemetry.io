@@ -24,14 +24,14 @@ using the `OpenTelemetrySdk.builder()` method.
 For example:
 
 ```java
-    SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder()
-        .addSpanProcessor(BatchSpanProcessor.builder(OtlpGrpcSpanExporter.builder().build()).build())
-        .build();
+SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder()
+    .addSpanProcessor(BatchSpanProcessor.builder(OtlpGrpcSpanExporter.builder().build()).build())
+    .build();
 
-    OpenTelemetry openTelemetry = OpenTelemetrySdk.builder()
-        .setTracerProvider(sdkTracerProvider)
-        .setPropagators(ContextPropagators.create(W3CTraceContextPropagator.getInstance()))
-        .buildAndRegisterGlobal();
+OpenTelemetry openTelemetry = OpenTelemetrySdk.builder()
+    .setTracerProvider(sdkTracerProvider)
+    .setPropagators(ContextPropagators.create(W3CTraceContextPropagator.getInstance()))
+    .buildAndRegisterGlobal();
 ```
 
 As an aside, if you are writing library instrumentation, it is strongly
@@ -324,28 +324,28 @@ The following is an example of counter usage:
 
 ```java
 // Gets or creates a named meter instance
-  Meter meter = meterProvider.meterBuilder("instrumentation-library-name")
-          .setInstrumentationVersion("1.0.0")
-          .build();
+Meter meter = meterProvider.meterBuilder("instrumentation-library-name")
+        .setInstrumentationVersion("1.0.0")
+        .build();
 
 // Build counter e.g. LongCounter
-  LongCounter counter = meter
-        .counterBuilder("processed_jobs")
-        .setDescription("Processed jobs")
-        .setUnit("1")
-        .build();
+LongCounter counter = meter
+      .counterBuilder("processed_jobs")
+      .setDescription("Processed jobs")
+      .setUnit("1")
+      .build();
 
 // It is recommended that the API user keep a reference to a Bound Counter for the entire time or
 // call unbind when no-longer needed.
-  BoundLongCounter someWorkCounter = counter.bind(Attributes.of(stringKey("Key"), "SomeWork"));
+BoundLongCounter someWorkCounter = counter.bind(Attributes.of(stringKey("Key"), "SomeWork"));
 
 
 // Record data
-  someWorkCounter.add(123);
+someWorkCounter.add(123);
 
 // Alternatively, the user can use the unbounded counter and explicitly
 // specify the labels set at call-time:
-  counter.add(123, Attributes.of(stringKey("Key"), "SomeWork"));
+counter.add(123, Attributes.of(stringKey("Key"), "SomeWork"));
 ```
 
 An `Observer` is an additional type of instrument supporting an asynchronous API
@@ -355,13 +355,13 @@ The following is an example of usage of an observer:
 
 ```java
 // Build an "observer" instrument, e.g. Gauge
-    meter
-      .gaugeBuilder("cpu_usage")
-      .setDescription("CPU Usage")
-      .setUnit("ms")
-      .buildWithCallback(result -> {
-          result.observe(getCpuUsage(), Attributes.of(stringKey("Key"), "SomeWork"));
-      });
+meter
+  .gaugeBuilder("cpu_usage")
+  .setDescription("CPU Usage")
+  .setUnit("ms")
+  .buildWithCallback(result -> {
+      result.observe(getCpuUsage(), Attributes.of(stringKey("Key"), "SomeWork"));
+  });
 ```
 
 ## Tracing SDK Configuration
@@ -377,9 +377,9 @@ For example, a basic configuration instantiates the SDK tracer provider and sets
 to export the traces to a logging stream.
 
 ```java
-    SdkTracerProvider tracerProvider = SdkTracerProvider.builder()
-      .addSpanProcessor(BatchSpanProcessor.builder(new LoggingSpanExporter()).build())
-      .build();
+SdkTracerProvider tracerProvider = SdkTracerProvider.builder()
+  .addSpanProcessor(BatchSpanProcessor.builder(new LoggingSpanExporter()).build())
+  .build();
 ```
 
 ### Sampler
@@ -400,13 +400,13 @@ Additional samplers can be provided by implementing the
 `io.opentelemetry.sdk.trace.Sampler` interface.
 
 ```java
-    SdkTracerProvider tracerProvider = SdkTracerProvider.builder()
-      .setSampler(Sampler.alwaysOn())
-      //or
-      .setSampler(Sampler.alwaysOff())
-      //or
-      .setSampler(Sampler.traceIdRatioBased(0.5))
-      .build();
+SdkTracerProvider tracerProvider = SdkTracerProvider.builder()
+  .setSampler(Sampler.alwaysOn())
+  //or
+  .setSampler(Sampler.alwaysOff())
+  //or
+  .setSampler(Sampler.traceIdRatioBased(0.5))
+  .build();
 ```
 
 ### Span Processor
@@ -418,10 +418,10 @@ processors can be configured to be active at the same time using the
 `MultiSpanProcessor`.
 
 ```java
-    SdkTracerProvider tracerProvider = SdkTracerProvider.builder()
-      .addSpanProcessor(SimpleSpanProcessor.create(new LoggingSpanExporter()))
-      .addSpanProcessor(BatchSpanProcessor.builder(new LoggingSpanExporter()).build())
-      .build();
+SdkTracerProvider tracerProvider = SdkTracerProvider.builder()
+  .addSpanProcessor(SimpleSpanProcessor.create(new LoggingSpanExporter()))
+  .addSpanProcessor(BatchSpanProcessor.builder(new LoggingSpanExporter()).build())
+  .build();
 ```
 
 ### Exporter
@@ -441,18 +441,18 @@ exporters out of the box:
 Other exporters can be found in the [OpenTelemetry Registry].
 
 ```java
-    ManagedChannel jaegerChannel = ManagedChannelBuilder.forAddress("localhost", 3336)
-      .usePlaintext()
-      .build();
+ManagedChannel jaegerChannel = ManagedChannelBuilder.forAddress("localhost", 3336)
+  .usePlaintext()
+  .build();
 
-    JaegerGrpcSpanExporter jaegerExporter = JaegerGrpcSpanExporter.builder()
-      .setEndpoint("localhost:3336")
-      .setTimeout(30, TimeUnit.SECONDS)
-      .build();
+JaegerGrpcSpanExporter jaegerExporter = JaegerGrpcSpanExporter.builder()
+  .setEndpoint("localhost:3336")
+  .setTimeout(30, TimeUnit.SECONDS)
+  .build();
 
-    SdkTracerProvider tracerProvider = SdkTracerProvider.builder()
-      .addSpanProcessor(BatchSpanProcessor.builder(jaegerExporter).build())
-      .build();
+SdkTracerProvider tracerProvider = SdkTracerProvider.builder()
+  .addSpanProcessor(BatchSpanProcessor.builder(jaegerExporter).build())
+  .build();
 ```
 
 ### Auto Configuration
@@ -462,7 +462,7 @@ variables and system properties, you can use the
 `opentelemetry-sdk-extension-autoconfigure` module.
 
 ```java
-  OpenTelemetrySdk sdk = OpenTelemetrySdkAutoConfiguration.initialize();
+OpenTelemetrySdk sdk = OpenTelemetrySdkAutoConfiguration.initialize();
 ```
 
 See the supported configuration options in the module's
