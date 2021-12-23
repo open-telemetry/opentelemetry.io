@@ -80,7 +80,8 @@ using OpenTelemetry;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
-// Define some important constants and the activity source
+// Define some important constants and the activity source.
+// These can come from a config file, constants file, etc.
 var serviceName = "MyCompany.MyProduct.MyService";
 var serviceVersion = "1.0.0";
 
@@ -119,7 +120,8 @@ public static class Telemetry
 {
     //...
 
-    // 'TelemetryConstants.ServiceName' comes from somewhere in your code
+    // Name it after the service name for your app.
+    // It can come from a config file, constants file, etc.
     public static readonly ActivitySource MyActivitySource = new(TelemetryConstants.ServiceName)
 
     //...
@@ -146,25 +148,49 @@ you can create activities to represent the relationship.
 ```csharp
 public static void ParentOperation()
 {
-    using var parentOperation = MyActivitySource.StartActivity("Parent")
+    using var parentActivity = MyActivitySource.StartActivity("ParentActivity")
 
-    // Do some work in ParentOperation
+    // Do some work tracked by parentActivity
 
     ChildOperation();
 
-    // Finish up some work in ParentOperation
+    // Finish up work tracked by parentActivity again
 }
 
 public static void ChildOperation()
 {
-    using var childOperation = MyActivitySource.StartActivity("Child")
+    using var childActivity = MyActivitySource.StartActivity("ChildActivity")
 
-    // Do the child operation
+    // Track work in ChildOperation with childActivity
 }
 ```
 
-When you view spans in a trace visualization tool, `Child` will be tracked as a nested
-operation under `Parent`.
+When you view spans in a trace visualization tool, `ChildActivity` will be tracked as a nested
+operation under `ParentActivity`.
+
+### Nested Activities in the same scope
+
+You may wish to create a parent-child relationsip in the same scope. Although possible, this is generally not
+recommended because you need to be careful to end any nested `Activity` when you expect it to end.
+
+```csharp
+public static void DoWork()
+{
+    using var parentActivity = MyActivitySource.StartActivity("ParentActivity")
+
+    // Do some work tracked by parentActivity
+
+    using (var childActivity = MyActivitySource.StartActivity("ChildActivity"))
+    {
+        // Do some "child" work in the same function
+    }
+
+    // Finish up work tracked by parentActivity again
+}
+```
+
+In the preceding example, `childOperation` is ended because the scope of the `using` block is explicitly defined,
+rather than scoped to `DoWork` itself like `parentOperation`.
 
 ## Get the current Activity
 
@@ -176,7 +202,7 @@ var activity = Activity.Current;
 // may be null if there is none
 ```
 
-Note that `using` is not used in the following example. Doing so will end current `Activity`,
+Note that `using` is not used in the prior example. Doing so will end current `Activity`,
 which is not likely to be desired.
 
 ## Add tags to an Activity
