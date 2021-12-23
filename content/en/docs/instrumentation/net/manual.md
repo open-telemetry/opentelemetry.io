@@ -207,8 +207,8 @@ which is not likely to be desired.
 
 ## Add tags to an Activity
 
-Tags let you attach key/value pairs to an `Activity` so it carries more information about the current operation
-that it's tracking.
+Tags (the equivalent of Attributes in OpenTelemetry) let you attach key/value pairs to an `Activity`
+so it carries more information about the current operation that it's tracking.
 
 ```csharp
 using var myActivity = MyActivitySource.StartActivity("SayHello")
