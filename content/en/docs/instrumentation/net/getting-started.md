@@ -176,3 +176,11 @@ Resource associated with Activity:
 ```
 
 This output has both the span created to track work in the route, and an automatically-created span that tracks the inbound ASP.NET Core request itself.
+
+## Next steps
+
+To ensure you're getting the most data as easily as possible, install some [instrumentation libraries]({{< relref "automatic" >}}) to automatically
+generate observability data.
+
+Additionally, enriching your instrumentation generated automatically with [manual instrumentation]({{< relref "manual" >}}) of your own codebase
+gets you customized observability data.
