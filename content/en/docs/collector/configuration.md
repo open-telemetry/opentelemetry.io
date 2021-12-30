@@ -301,7 +301,7 @@ exporters:
 
   # Data sources: traces
   jaeger:
-    endpoint: "http://jaeger-all-in-one:14250"
+    endpoint: "jaeger-all-in-one:14250"
     tls:
       insecure: true
 
