@@ -20,8 +20,8 @@ Next, configure the exporter to point at and endpoint.
 For example, here's how to point at an instance of an [OpenTelemetry Collector](/docs/collector/getting-started/):
 
 ```js
-const { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
-const { SimpleSpanProcessor } = require('@opentelemetry/tracing');
+import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
+import { SimpleSpanProcessor } from '@opentelemetry/tracing';
 
 const exporter = new OTLPTraceExporter({
   // optional - url default value is http://localhost:55681/v1/traces
