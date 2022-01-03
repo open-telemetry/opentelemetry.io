@@ -45,7 +45,7 @@ to configure an OTLP exporter that sends to your endpoint.
 dotnet add package OpenTelemetry.Exporter.OpenTelemetryProtocol
 ```
 
-If you're using ASP.NET Core, configure the exporter iny our ASP.NET Core services:
+If you're using ASP.NET Core, configure the exporter in your ASP.NET Core services:
 
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
@@ -121,7 +121,7 @@ Next, install the Jaeger exporter package:
 dotnet add package OpenTelemetry.Exporter.Jaeger
 ```
 
-If you're using ASP.NET Core, configure the exporter iny our ASP.NET Core services:
+If you're using ASP.NET Core, configure the exporter in your ASP.NET Core services:
 
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
@@ -168,7 +168,7 @@ Next, install the Zipkin exporter package:
 dotnet add package OpenTelemetry.Exporter.Zipkin
 ```
 
-If you're using ASP.NET Core, configure the exporter iny our ASP.NET Core services:
+If you're using ASP.NET Core, configure the exporter in your ASP.NET Core services:
 
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
@@ -270,4 +270,8 @@ using var tracerProvider = Sdk.CreateMeterProviderBuilder()
 
 ## Next steps
 
-To ensure you're getting the most data as easily as possible, install 
+To ensure you're getting the most data as easily as possible, install [automatic instrumentation libraries]({{ relref "automatic"}})
+to automatically generate observability data.
+
+Additionally, enriching your instrumentation generated automatically with [manual instrumentation]({{ relref "manual"}})
+of your own codebase gets you customized observability data.
