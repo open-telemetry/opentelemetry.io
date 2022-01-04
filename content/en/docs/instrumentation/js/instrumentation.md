@@ -99,7 +99,7 @@ for (let i = 0; i < 10; i += 1) {
 /* ... */
 
 function doWork(parent) {
-  // Start another span. In this example, the main method already started a
+  // Start another span. In this example, the main function already started a
   // span, so that'll be the parent span, and this will be a child span.
   const ctx = opentelemetry.trace.setSpan(opentelemetry.context.active(), parent);
   const span = tracer.startSpan('doWork', undefined, ctx);
@@ -204,6 +204,28 @@ span.addEvent('some log', {
   'log.message': 'Data not found',
   'request.id': requestId,
 });
+```
+
+## Span links
+
+Spans can be created with casaul links to other spans.
+
+```js
+function someFunction(spanToLinkFrom) {
+  const options = {
+    links: [
+      {
+         context: spanToLinkFrom.spanContext()
+      }
+    ]
+  };
+
+  const span = tracer.startSpan('someWork', options: options);
+
+  // do more work
+
+  span.end();
+}
 ```
 
 ## Span Status
