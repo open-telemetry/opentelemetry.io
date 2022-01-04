@@ -1,6 +1,6 @@
 ---
 title: "Exporters"
-weight: 3
+weight: 4
 ---
 
 In order to visualize and analyze your traces and metrics, you will need to export them to a backend.
