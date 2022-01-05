@@ -99,7 +99,7 @@ for (let i = 0; i < 10; i += 1) {
 /* ... */
 
 function doWork(parent) {
-  // Start another span. In this example, the main method already started a
+  // Start another span. In this example, the main function already started a
   // span, so that'll be the parent span, and this will be a child span.
   const ctx = opentelemetry.trace.setSpan(opentelemetry.context.active(), parent);
   const span = tracer.startSpan('doWork', undefined, ctx);
@@ -184,6 +184,50 @@ function doWork(parent) {
 }
 ```
 
+## Span events
+
+An event is a human-readable message attached to a span that represents "something happening" during its lifetyime. You can think of it like a primitive log.
+
+```js
+span.addEvent('Doing something');
+
+const result = doWork()
+
+span.addEvent('Did something');
+```
+
+You can also add an object with more data to go along with the message:
+
+```js
+span.addEvent('some log', {
+  'log.severity': 'error',
+  'log.message': 'Data not found',
+  'request.id': requestId,
+});
+```
+
+## Span links
+
+Spans can be created with casaul links to other spans.
+
+```js
+function someFunction(spanToLinkFrom) {
+  const options = {
+    links: [
+      {
+         context: spanToLinkFrom.spanContext()
+      }
+    ]
+  };
+
+  const span = tracer.startSpan('someWork', options: options);
+
+  // do more work
+
+  span.end();
+}
+```
+
 ## Span Status
 
 A status can be set on a span, to indicate if the traced operation has completed successfully (`Ok`) or with an `Error`. The default status is `Unset`.
@@ -199,6 +243,7 @@ function doWork(parent) {
     code: opentelemetry.SpanStatusCode.OK,
     message: 'Ok.'
   })
+
   for (let i = 0; i <= Math.floor(Math.random() * 40000000); i += 1) {
     if(i > 10000) {
       span.setStatus({
@@ -207,7 +252,21 @@ function doWork(parent) {
       })
     }
   }
+
   span.end();
+}
+```
+
+## Recording exceptions
+
+It can be a good idea to record exceptions when they happen. It's recommended to do this in conjunction with setting [span status](#span-status).
+
+```js
+try {
+  doWork();
+} catch (eexrr) {
+  span.recordException(ex),
+  span.setStatus({ code: otel.SpanStatusCode.ERROR })
 }
 ```
 
