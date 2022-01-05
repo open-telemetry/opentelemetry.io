@@ -18,10 +18,12 @@ The current status of the major functional components for OpenTelemetry Erlang/E
 
 | Tracing | Metrics | Logging |
 | ------- | ------- | ------- |
-| Beta    | Alpha   | Not Yet Implemented |
+| Stable  | Alpha   | Not Yet Implemented |
 
 {{% latest_release "erlang" %}}
-  For SDK packages from [hex.pm](https://hex.pm), see
-  [opentelemetry_api](https://hex.pm/packages/opentelemetry_api) and
-  [opentelemetry](https://hex.pm/packages/opentelemetry).
+  Packages of the API, SDK and OTLP exporter are published to
+  [hex.pm](https://hex.pm) as 
+  [opentelemetry_api](https://hex.pm/packages/opentelemetry_api),
+  [opentelemetry](https://hex.pm/packages/opentelemetry) and
+  [opentelemetry_exporter](https://hex.pm/packages/opentelemetry_exporter).
 {{% /latest_release %}}

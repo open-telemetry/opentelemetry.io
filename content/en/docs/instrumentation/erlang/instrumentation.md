@@ -19,23 +19,33 @@ OTP Application the module using the `Tracer` is in. If the call to use a
 `Tracer` is not in a module, for example when using the interactive shell, the
 default `Tracer` is used.
 
-Each OTP Application has a `Tracer` registered for it when the `opentelemetry`
+Each OTP Application has a `Tracer` created for it when the `opentelemetry`
 Application boots. This can be disabled by setting the Application environment
-variable `register_loaded_applications` to `false`. If you want a more specific
-named `Tracer` or disable the automatic registration you can register a `Tracer`
-with a name and version. Examples:
+variable `create_application_tracers` to `false`. If you want a more specific
+name for a `Tracer` you can create a `Tracer` with a name and version and pass
+it manually to `otel_tracer` or `OpenTelemetry.Tracer`. Examples:
 
 {{< tabs Erlang Elixir >}}
 
 {{< tab >}}
-opentelemetry:register_tracer(test_tracer, <<"0.1.0">>),
+Tracer = opentelemetry:get_tracer(test_tracer),
+SpanCtx = otel_tracer:start_span(Tracer, <<"hello-world">>, #{}),
+...
+otel_tracer:end_span(SpanCtx).
 {{< /tab >}}
 
 {{< tab >}}
-OpenTelemetry.register_tracer(:test_tracer, "0.1.0")
+tracer = OpenTelemetry.get_tracer(:test_tracer)
+span_ctx = OpenTelemetry.Tracer.start_span(tracer, "hello-world", %{})
+...
+OpenTelemetry.Tracer.end_span(span_ctx)
 {{< /tab >}}
 
 {{< /tabs >}}
+
+In most cases you will not need to manually create a `Tracer`. Simply use the
+macros provided, which are covered in the following section, and the `Tracer`
+for the Application the macro is used in will be used automatically.
 
 Giving names to each `Tracer`, and in the case of Erlang/Elixir having that name
 be the name of the Application, allows for the ability to blacklist traces from
@@ -47,33 +57,6 @@ Additionally, the name and version of the `Tracer` are exported as the
 [`InstrumentationLibrary`]({{< relref "/docs/reference/specification/glossary#instrumentation-library" >}})
 component of spans. This allows users to group and search spans by the
 Application they came from.
-
-You can lookup a `Tracer` by name with `get_tracer/1` and use that `Tracer`
-variable to call the tracing API through `otel_tracer` in Erlang or
-`OpenTelemetry.Tracer` in Elixir:
-
-{{< tabs Erlang Elixir >}}
-
-{{< tab >}}
-Tracer = opentelemetry:get_tracer(my_app),
-SpanCtx = otel_tracer:start_span(Tracer, <<"hello-world">>, #{}),
-...
-otel_tracer:end_span(SpanCtx).
-{{< /tab >}}
-
-{{< tab >}}
-tracer = OpenTelemetry.get_tracer(:my_app)
-span_ctx = OpenTelemetry.Tracer.start_span(tracer, "hello-world", %{})
-...
-OpenTelemetry.Tracer.end_span(span_ctx)
-{{< /tab >}}
-
-{{< /tabs >}}
-
-In most cases you will not need to manually register or look up a
-`Tracer`. Simply use the macros provided, which are covered in the following
-section, and the `Tracer` for the Application the macro is used in will be used
-automatically.
 
 ## Starting Spans
 
@@ -360,9 +343,11 @@ the [Zipkin project](https://zipkin.io/), then replace `trace_context` and
 Library instrumentations, broadly speaking, refers to instrumentation code that
 you didn't write but instead include through another library. OpenTelemetry for
 Erlang/Elixir supports this process through wrappers and helper functions around
-many popular frameworks and libraries. You can find in the 
+many popular frameworks and libraries. You can find in the
 [opentelemetry-erlang-contrib
-repo](https://github.com/open-telemetry/opentelemetry-erlang-contrib/) and the [registry](/registry).
+repo](https://github.com/open-telemetry/opentelemetry-erlang-contrib/),
+published to [hex.pm](https://hex.pm) under the [OpenTelemetry
+Organization](https://hex.pm/orgs/opentelemetry) and the [registry](/registry).
 
 ## Creating Metrics
 
