@@ -11,6 +11,7 @@ The console exporter is useful for development and debugging tasks, and is the s
 
 ```
 dotnet add package OpenTelemetry.Exporter.Console
+dotnet add package OpenTelemetry.Extensions.Hosting --prerelease
 ```
 
 If you're using ASP.NET Core, configure the exporter in your ASP.NET Core services:
@@ -43,6 +44,7 @@ to configure an OTLP exporter that sends to your endpoint.
 
 ```
 dotnet add package OpenTelemetry.Exporter.OpenTelemetryProtocol
+dotnet add package OpenTelemetry.Extensions.Hosting --prerelease
 ```
 
 If you're using ASP.NET Core, configure the exporter in your ASP.NET Core services:
@@ -91,7 +93,7 @@ If you're not using ASP.NET Core gRPC and you are running on .NET Core 3.x, you'
 the following at application startup
 
 ```csharp
-AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true)
+AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
 ```
 
 If you are using .NET 5 or higher, the previous code sample is not required.
@@ -119,6 +121,7 @@ Next, install the Jaeger exporter package:
 
 ```
 dotnet add package OpenTelemetry.Exporter.Jaeger
+dotnet add package OpenTelemetry.Extensions.Hosting --prerelease
 ```
 
 If you're using ASP.NET Core, configure the exporter in your ASP.NET Core services:
@@ -166,6 +169,7 @@ Next, install the Zipkin exporter package:
 
 ```shell
 dotnet add package OpenTelemetry.Exporter.Zipkin
+dotnet add package OpenTelemetry.Extensions.Hosting --prerelease
 ```
 
 If you're using ASP.NET Core, configure the exporter in your ASP.NET Core services:
@@ -230,6 +234,7 @@ Next, install the Prometheus exporter:
 
 ```
 dotnet add package OpenTelemetry.Exporter.Prometheus
+dotnet add package OpenTelemetry.Extensions.Hosting --prerelease
 ```
 
 If you're using ASP.NET Core, configure the exporter in your ASP.NET Core services:
