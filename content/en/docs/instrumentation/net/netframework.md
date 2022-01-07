@@ -1,5 +1,5 @@
 ---
-title: ".NET Framework"
+title: ".NET Framework instrumentation configuration"
 weight: 5
 ---
 
