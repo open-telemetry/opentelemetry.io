@@ -1,6 +1,6 @@
 ---
 title: OpenTelemetry Tracing Shim
-linkTitle: Manual
+linkTitle: OpenTelemetry API Shim
 weight: 5
 ---
 
