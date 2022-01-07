@@ -1,20 +1,18 @@
 ---
-title: Manual Instrumentation
+title: OpenTelemetry Tracing Shim
 linkTitle: Manual
-weight: 3
+weight: 5
 ---
 
-Manual instrumentation is the process of adding observability code to your application.
-
-## A note on terminology
-
-.NET is different from other languages/runtimes that support OpenTelemetry.
+NET is different from other languages/runtimes that support OpenTelemetry.
 Tracing is implemented by the [System.Diagnostics](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics)
 API, repurposing older constructs like `ActivitySource` and `Activity` to
 be OpenTelemetry-compliant under the covers.
 
-However, there are parts of the OpenTelemetry API and terminology that .NET
-developers must still know to be able to instrument their applications.
+OpenTelemetry for .NET also provides an API shim on top of the [System.Diagnostics](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics)-
+based implementation. This shim is helpful if you're working with other
+languages and OpenTelemetry in the same codebase, or if you prefer to use
+terminology consistent with the OpenTelemetry spec.
 
 ## Initializing tracing
 
@@ -130,17 +128,17 @@ public static class Telemetry
 
 You can instantiate several `ActivitySource`s if that suits your scenario.
 
-## Creating Activities
+## Creating Spans
 
-To create an activity, give it a name and create it from your `ActivitySource`.
+To create an activity, give it a name and create it from your `Tracer`.
 
 ```csharp
-using var myActivity = MyActivitySource.StartActivity("SayHello");
+using var span = MyTracer.StartActiveSpan("SayHello");
 
-// do work that 'myActivity' will now track
+// do work that 'span' will now track
 ```
 
-## Creating nested Activities
+## Creating nested Spans
 
 If you have a distinct sub-operation you'd like to track as a part of another one,
 you can create activities to represent the relationship.
@@ -148,83 +146,83 @@ you can create activities to represent the relationship.
 ```csharp
 public static void ParentOperation()
 {
-    using var parentActivity = MyActivitySource.StartActivity("ParentActivity");
+    using var parentSpan = MyTracer.StartActiveSpan("parent-span");
 
-    // Do some work tracked by parentActivity
+    // Do some work tracked by parentSpan
 
     ChildOperation();
 
-    // Finish up work tracked by parentActivity again
+    // Finish up work tracked by parentSpan again
 }
 
 public static void ChildOperation()
 {
-    using var childActivity = MyActivitySource.StartActivity("ChildActivity");
+    using var childSpan = MyTracer.StartActiveSpan("child-span");
 
-    // Track work in ChildOperation with childActivity
+    // Track work in ChildOperation with childSpan
 }
 ```
 
-When you view spans in a trace visualization tool, `ChildActivity` will be tracked as a nested
-operation under `ParentActivity`.
+When you view spans in a trace visualization tool, `child-span` will be tracked as a nested
+operation under `parent-span"`.
 
-### Nested Activities in the same scope
+### Nested Spans in the same scope
 
 You may wish to create a parent-child relationsip in the same scope. Although possible, this is generally not
-recommended because you need to be careful to end any nested `Activity` when you expect it to end.
+recommended because you need to be careful to end any nested `TelemetrySpan` when you expect it to end.
 
 ```csharp
 public static void DoWork()
 {
-    using var parentActivity = MyActivitySource.StartActivity("ParentActivity");
+    using var parentSpan = MyTracer.StartActiveSpan("parent-span");
 
-    // Do some work tracked by parentActivity
+    // Do some work tracked by parentSpan
 
-    using (var childActivity = MyActivitySource.StartActivity("ChildActivity"))
+    using (var childSpan = MyTracer.StartActiveSpan("child-span"))
     {
         // Do some "child" work in the same function
     }
 
-    // Finish up work tracked by parentActivity again
+    // Finish up work tracked by parentSpan again
 }
 ```
 
-In the preceding example, `childOperation` is ended because the scope of the `using` block is explicitly defined,
-rather than scoped to `DoWork` itself like `parentOperation`.
+In the preceding example, `childSpan` is ended because the scope of the `using` block is explicitly defined,
+rather than scoped to `DoWork` itself like `parentSpan`.
 
-## Get the current Activity
+## Get the current Span
 
 Sometimes it's helpful to access whatever the current `Activity` is at a point in time so you can enrich
 it with more information.
 
 ```csharp
-var activity = Activity.Current;
-// may be null if there is none
+var span = Tracer.CurrentSpan;
+// do cool stuff!
 ```
 
-Note that `using` is not used in the prior example. Doing so will end current `Activity`,
-which is not likely to be desired.
+Note that `using` is not used in the prior example. Doing so will end current `TelemetrySpan`
+when it goes out of scope, which is unlikely to be desired behavior.
 
-## Add tags to an Activity
+## Add Attributes to a Span
 
-Tags (the equivalent of Attributes in OpenTelemetry) let you attach key/value pairs to an `Activity`
+Attributes let you attach key/value pairs to a `TelemetrySpan`
 so it carries more information about the current operation that it's tracking.
 
 ```csharp
-using var myActivity = MyActivitySource.StartActivity("SayHello");
+using var span = MyTracer.StartActiveSpan("SayHello");
 
-activity?.SetTag("operation.value", 1);
-activity?.SetTag("operation.name", "Saying hello!");
-activity?.SetTag("operation.other-stuff", new int[] { 1, 2, 3 });
+span.SetAttribute("operation.value", 1);
+span.SetAttribute("operation.name", "Saying hello!");
+span.SetAttribute("operation.other-stuff", new int[] { 1, 2, 3 });
 ```
 
 ## Adding events
 
-An event is a human-readable message on an `Activity` that represents "something happening" during its lifetime.
+An event is a human-readable message on an `TelemetrySpan` that represents "something happening" during its lifetime.
 You can think of it like a primitive log.
 
 ```csharp
-using var myActivity = MyActivitySource.StartActivity("SayHello");
+using var span = MyTracer.StartActiveSpan("SayHello");
 
 // ...
 
@@ -238,42 +236,39 @@ myActivity?.AddEvent(new("Did it!"));
 Events can also be created with a timestamp and a collection of Tags.
 
 ```csharp
-using var myActivity = MyActivitySource.StartActivity("SayHello");
+using var span = MyTracer.StartActiveSpan("SayHello");
 
 // ...
 
-myActivity?.AddEvent(new("Gonna try it!", DateTimeOffset.Now));
+span.AddEvent("event-message");
+span.AddEvent("event-message2", DateTimeOffset.Now);
 
 // ...
 
-var eventTags = new Dictionary<string, object?>
+var attributeData = new Dictionary<string, object>
 {
-    { "foo", 1 },
+    {"foo", 1 },
     { "bar", "Hello, World!" },
     { "baz", new int[] { 1, 2, 3 } }
 };
 
-myActivity?.AddEvent(new("Gonna try it!", DateTimeOffset.Now, new(eventTags)));
+span.AddEvent("asdf", DateTimeOffset.Now, new(attributeData));
 ```
 
 ## Adding links
 
-An `Activity` can be created with zero or more `ActivityLink`s that are causally related.
+A `TelemetrySpan` can be created with zero or more `Link`s that are causally related.
 
 ```csharp
 // Get a context from somewhere, perhaps it's passed in as a parameter
-var activityContext = Activity.Current!.Context;
+var ctx = span.Context;
 
-var links = new List<ActivityLink>
+var links = new List<Link>
 {
-    new ActivityLink(activityContext)
+    new(ctx)
 };
 
-using var anotherActivity =
-    MyActivitySource.StartActivity(
-        ActivityKind.Internal,
-        name: "anotherActivity",
-        links: links);
+using var span = MyTracer.StartActiveSpan("another-span", links: links);
 
 // do some work
 ```
