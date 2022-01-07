@@ -126,7 +126,7 @@ this.tracerProvider = Sdk.CreateTracerProviderBuilder()
     .Build();
 ```
 
-See [Add tags to an Activity]({{< relref "manual#add-tags-to-an Activity" >}}) for annotating
+See [Add tags to an Activity]({{< relref "manual#add-tags-to-an-activity" >}}) for annotating
 trace data more generally.
 
 ### RecordException
