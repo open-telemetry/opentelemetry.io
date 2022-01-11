@@ -132,6 +132,19 @@ var builder = WebApplication.CreateBuilder(args);
 // ...
 
 builder.Services.AddSingleton(TracerProvider.Default.GetTracer(serviceName)));
+
+// ...
+
+var app = builder.Build();
+
+// ...
+
+app.MapGet("/hello", (Tracer tracer) =>
+{
+    using var span = tracer.StartActiveSpan("hello-span");
+
+    // do stuff
+});
 ```
 
 ### Acquiring a tracer from a TracerProvider
@@ -143,6 +156,10 @@ create one from your instantialized `TracerProvider`:
 // ...
 
 var tracer = tracerProvider.GetTracer(serviceName);
+
+// Assign it somewhere globally
+ 
+//...
 ```
 
 You'll likely want to assign this `Tracer` instance to a variable in a central location
@@ -167,20 +184,20 @@ If you have a distinct sub-operation you'd like to track as a part of another on
 you can create activities to represent the relationship.
 
 ```csharp
-public static void ParentOperation()
+public static void ParentOperation(Tracer tracer)
 {
-    using var parentSpan = MyTracer.StartActiveSpan("parent-span");
+    using var parentSpan = tracer.StartActiveSpan("parent-span");
 
     // Do some work tracked by parentSpan
 
-    ChildOperation();
+    ChildOperation(tracer);
 
     // Finish up work tracked by parentSpan again
 }
 
-public static void ChildOperation()
+public static void ChildOperation(Tracer tracer)
 {
-    using var childSpan = MyTracer.StartActiveSpan("child-span");
+    using var childSpan = tracer.StartActiveSpan("child-span");
 
     // Track work in ChildOperation with childSpan
 }
@@ -195,13 +212,13 @@ You may wish to create a parent-child relationsip in the same scope. Although po
 recommended because you need to be careful to end any nested `TelemetrySpan` when you expect it to end.
 
 ```csharp
-public static void DoWork()
+public static void DoWork(Tracer tracer)
 {
-    using var parentSpan = MyTracer.StartActiveSpan("parent-span");
+    using var parentSpan = tracer.StartActiveSpan("parent-span");
 
     // Do some work tracked by parentSpan
 
-    using (var childSpan = MyTracer.StartActiveSpan("child-span"))
+    using (var childSpan = tracer.StartActiveSpan("child-span"))
     {
         // Do some "child" work in the same function
     }
@@ -232,7 +249,7 @@ Attributes let you attach key/value pairs to a `TelemetrySpan`
 so it carries more information about the current operation that it's tracking.
 
 ```csharp
-using var span = MyTracer.StartActiveSpan("SayHello");
+using var span = tracer.StartActiveSpan("SayHello");
 
 span.SetAttribute("operation.value", 1);
 span.SetAttribute("operation.name", "Saying hello!");
@@ -245,7 +262,7 @@ An event is a human-readable message on an `TelemetrySpan` that represents "some
 You can think of it like a primitive log.
 
 ```csharp
-using var span = MyTracer.StartActiveSpan("SayHello");
+using var span = tracer.StartActiveSpan("SayHello");
 
 // ...
 
@@ -259,7 +276,7 @@ myActivity?.AddEvent(new("Did it!"));
 Events can also be created with a timestamp and a collection of Tags.
 
 ```csharp
-using var span = MyTracer.StartActiveSpan("SayHello");
+using var span = tracer.StartActiveSpan("SayHello");
 
 // ...
 
@@ -291,7 +308,7 @@ var links = new List<Link>
     new(ctx)
 };
 
-using var span = MyTracer.StartActiveSpan("another-span", links: links);
+using var span = tracer.StartActiveSpan("another-span", links: links);
 
 // do some work
 ```
