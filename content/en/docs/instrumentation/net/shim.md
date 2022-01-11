@@ -87,46 +87,69 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Configure important OpenTelemetry settings, the console exporter, and automatic instrumentation
 builder.Services.AddOpenTelemetryTracing(b =>
-{
-    b
-    .AddConsoleExporter()
-    .AddSource(serviceName)
-    .SetResourceBuilder(
-        ResourceBuilder.CreateDefault()
-            .AddService(serviceName: serviceName, serviceVersion: serviceVersion))
-});
+    {
+        b
+        .AddConsoleExporter()
+        .AddSource(serviceName)
+        .SetResourceBuilder(
+            ResourceBuilder.CreateDefault()
+                .AddService(serviceName: serviceName, serviceVersion: serviceVersion))
+    }
+
+// Optionally inject the service-level tracer
+.AddSingleton(TracerProvider.Default.GetTracer(serviceName)));
 ```
+
+In the preceding example, a `Tracer` corresponding to the service is injected during setup.
+This lets you get access to an instance in your endpoint mapping (or controllers if you're
+using an older version of .NET).
+
+It's not required to inject a service-level tracer, nor does it improve performance either.
+You will need to decide where you'll want your tracer instance to live, though.
 
 This is also where you can configure instrumentation libraries.
 
 Note that this sample uses the Console Exporter. If you are exporting to another endpoint,
 you'll have to use a different exporter.
 
-## Setting up an ActivitySource
+## Setting up a tracer
 
-Once tracing is initialized, you can configure an `ActivitySource`, which will be how
-you trace operations with `Activity`s.
+Once tracing is initialized, you can configure a `Tracer`, which will be how
+you trace operations with `Span`s.
 
-Typically, an `ActivitySource` is instantiated once per app/service that is being instrumented,
+Typically, a `Tracer` is instantiated once per app/service that is being instrumented,
 so it's a good idea to instantiate it once in a shared location. It is also typically named
 the same as the Service Name.
 
+### Injecting a tracer with ASP.NET Core
+
+ASP.NET Core generally encourages injecting instances of long-lived objects like `Tracer`s
+during setup.
+
 ```csharp
-using System.Diagnostics;
+var builder = WebApplication.CreateBuilder(args);
 
-public static class Telemetry
-{
-    //...
+// ...
 
-    // Name it after the service name for your app.
-    // It can come from a config file, constants file, etc.
-    public static readonly ActivitySource MyActivitySource = new(TelemetryConstants.ServiceName);
-
-    //...
-}
+builder.Services.AddSingleton(TracerProvider.Default.GetTracer(serviceName)));
 ```
 
-You can instantiate several `ActivitySource`s if that suits your scenario.
+### Acquiring a tracer from a TracerProvider
+
+If you're not using ASP.NET Core or would rather not inject an instance of a `Tracer`,
+create one from your instantialized `TracerProvider`:
+
+```csharp
+// ...
+
+var tracer = tracerProvider.GetTracer(serviceName);
+```
+
+You'll likely want to assign this `Tracer` instance to a variable in a central location
+so that you have access to it throughout your service.
+
+You can instantiate as many `Tracer`s as you'd like per service, although it's generally
+sufficient to just have one defined per service.
 
 ## Creating Spans
 
