@@ -122,20 +122,21 @@ public static class Telemetry
 
     // Name it after the service name for your app.
     // It can come from a config file, constants file, etc.
-    public static readonly ActivitySource MyActivitySource = new(TelemetryConstants.ServiceName)
+    public static readonly ActivitySource MyActivitySource = new(TelemetryConstants.ServiceName);
 
     //...
 }
 ```
 
-You can instantiate several `ActivitySource`s if that suits your scenario.
+You can instantiate several `ActivitySource`s if that suits your scenario, although it is generally
+sufficient to just have one defined per serivce.
 
 ## Creating Activities
 
 To create an activity, give it a name and create it from your `ActivitySource`.
 
 ```csharp
-using var myActivity = MyActivitySource.StartActivity("SayHello")
+using var myActivity = MyActivitySource.StartActivity("SayHello");
 
 // do work that 'myActivity' will now track
 ```
@@ -148,7 +149,7 @@ you can create activities to represent the relationship.
 ```csharp
 public static void ParentOperation()
 {
-    using var parentActivity = MyActivitySource.StartActivity("ParentActivity")
+    using var parentActivity = MyActivitySource.StartActivity("ParentActivity");
 
     // Do some work tracked by parentActivity
 
@@ -159,7 +160,7 @@ public static void ParentOperation()
 
 public static void ChildOperation()
 {
-    using var childActivity = MyActivitySource.StartActivity("ChildActivity")
+    using var childActivity = MyActivitySource.StartActivity("ChildActivity");
 
     // Track work in ChildOperation with childActivity
 }
@@ -176,7 +177,7 @@ recommended because you need to be careful to end any nested `Activity` when you
 ```csharp
 public static void DoWork()
 {
-    using var parentActivity = MyActivitySource.StartActivity("ParentActivity")
+    using var parentActivity = MyActivitySource.StartActivity("ParentActivity");
 
     // Do some work tracked by parentActivity
 
@@ -211,7 +212,7 @@ Tags (the equivalent of Attributes in OpenTelemetry) let you attach key/value pa
 so it carries more information about the current operation that it's tracking.
 
 ```csharp
-using var myActivity = MyActivitySource.StartActivity("SayHello")
+using var myActivity = MyActivitySource.StartActivity("SayHello");
 
 activity?.SetTag("operation.value", 1);
 activity?.SetTag("operation.name", "Saying hello!");
@@ -224,7 +225,7 @@ An event is a human-readable message on an `Activity` that represents "something
 You can think of it like a primitive log.
 
 ```csharp
-using var myActivity = MyActivitySource.StartActivity("SayHello")
+using var myActivity = MyActivitySource.StartActivity("SayHello");
 
 // ...
 
@@ -238,7 +239,7 @@ myActivity?.AddEvent(new("Did it!"));
 Events can also be created with a timestamp and a collection of Tags.
 
 ```csharp
-using var myActivity = MyActivitySource.StartActivity("SayHello")
+using var myActivity = MyActivitySource.StartActivity("SayHello");
 
 // ...
 
