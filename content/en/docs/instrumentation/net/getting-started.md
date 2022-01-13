@@ -185,5 +185,5 @@ generate observability data.
 Additionally, enriching your instrumentation generated automatically with [manual instrumentation]({{< relref "manual" >}}) of your own codebase
 gets you customized observability data.
 
-You'll also want to configure an appropriate exporter to [export your telemetry data]({{< "exporters" >}})
+You'll also want to configure an appropriate exporter to [export your telemetry data]({{< relref "exporters" >}})
 to one or more telemetry backends.

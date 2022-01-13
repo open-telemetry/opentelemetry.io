@@ -18,7 +18,7 @@ developers must still know to be able to instrument their applications, wich
 are covered here as well as the `System.Diagnostics` API.
 
 If you prefer to use OpenTelemetry APIs instead of `System.Diagnostics` APIs,
-you can refer to the [OpenTelemetry API Shim docs for tracing]({{< "shim" >}}).
+you can refer to the [OpenTelemetry API Shim docs for tracing]({{< relref "shim" >}}).
 
 ## Initializing tracing
 
@@ -285,9 +285,9 @@ using var anotherActivity =
 
 ## Next steps
 
-If you're not utilizing [instrumentation libraries]({{< "automatic" >}}), it's highly recommended that you do so.
+If you're not utilizing [instrumentation libraries]({{< relref "automatic" >}}), it's highly recommended that you do so.
 Instrumentation libraries will automatically instrument relevant libraries you're using and generate
 data for things like inbound and outbound HTTP requests and more.
 
-You'll also want to configure an appropriate exporter to [export your telemetry data]({{< "exporters" >}})
+You'll also want to configure an appropriate exporter to [export your telemetry data]({{< relref "exporters" >}})
 to one or more telemetry backends.

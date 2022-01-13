@@ -315,9 +315,9 @@ using var span = tracer.StartActiveSpan("another-span", links: links);
 
 ## Next steps
 
-If you're not utilizing [instrumentation libraries]({{< "automatic" >}}), it's highly recommended that you do so.
+If you're not utilizing [instrumentation libraries]({{< relref "automatic" >}}), it's highly recommended that you do so.
 Instrumentation libraries will automatically instrument relevant libraries you're using and generate
 data for things like inbound and outbound HTTP requests and more.
 
-You'll also want to configure an appropriate exporter to [export your telemetry data]({{< "exporters" >}})
+You'll also want to configure an appropriate exporter to [export your telemetry data]({{< relref "exporters" >}})
 to one or more telemetry backends.

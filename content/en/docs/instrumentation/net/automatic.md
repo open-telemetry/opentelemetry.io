@@ -101,8 +101,8 @@ You can also find more instrumentations available in the [opentelemetry registry
 After you have observability generated automatically with instrumentation libraries, you may want to add
 [manual instrumentation]({{< relref "manual" >}}) to collect custom telemetry data.
 
-If you are using .NET Framework 4.x instead of modern .NET, refer to the [.NET Framework docs]({{< "netframework" >}})
+If you are using .NET Framework 4.x instead of modern .NET, refer to the [.NET Framework docs]({{< relref "netframework" >}})
 to configure OpenTelemetry and instrumentation libraries on .NET Framework.
 
-You'll also want to configure an appropriate exporter to [export your telemetry data]({{< "exporters" >}})
+You'll also want to configure an appropriate exporter to [export your telemetry data]({{< relref "exporters" >}})
 to one or more telemetry backends.
