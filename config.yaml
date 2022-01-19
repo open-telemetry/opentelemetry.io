@@ -15,11 +15,6 @@ languages:
     description: The OpenTelemetry Project Site
     languageName: English
     weight: 1
-    menu:
-      main:
-        - name: Blog
-          weight: 50
-          url: https://medium.com/opentelemetry
 
 imaging:
   resampleFilter: CatmullRom
@@ -46,9 +41,6 @@ outputFormats:
 
 outputs:
   home: [HTML, REDIRECTS, RSS]
-
-permalinks:
-  blog: /:section/:year/:month/:day/:slug/
 
 params:
   copyright: 'The OpenTelemetry Authors | Documentation Distributed under CC BY 4.0 | '
