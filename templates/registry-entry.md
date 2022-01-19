@@ -9,5 +9,5 @@ repo: https://github.com/your-organization/your-repo // projects don't have to b
 license: Apache 2.0 // or whatever your OSS license is
 description: A friendly description of your integration/plugin
 authors: <The author or authors of your integration. An email is a great thing to include!>
-otVersion: <The OpenTelemetry version your plugin targets.> 
+otVersion: <The OpenTelemetry version your plugin targets.>
 ---

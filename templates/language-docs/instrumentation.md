@@ -1,27 +1,29 @@
 ---
-title: "Instrumentation"
+title: Instrumentation
 weight: 3
 ---
 
 This page should be a human readable guide to instrumentation in the language.
 
-The main topics to cover will be creating and annotating spans, creating and annotating metrics, how to pass context, and (if available) a guide to automatic instrumentation in the language.
+The main topics to cover will be creating and annotating spans, creating and
+annotating metrics, how to pass context, and (if available) a guide to automatic
+instrumentation in the language.
 
-# Creating Spans
+## Creating Spans
 
-## Attributes
+### Attributes
 
-### Semantic Attributes
+#### Semantic Attributes
 
-## Events
+### Events
 
-# Creating Metrics
+## Creating Metrics
 
 As the metrics API remains unstable, metrics documentation can be deferred
 
-# Propagators and Context
+## Propagators and Context
 
-# Automatic Instrumentation
+## Automatic Instrumentation
 
 If this is available, then this section should cover:
 
