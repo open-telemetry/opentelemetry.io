@@ -24,7 +24,7 @@
     "clean": "make clean",
     "cp:spec": "./scripts/cp-spec-pages.sh",
     "docsy-workaround:ls": "ls themes",
-    "docsy-workaround:mkdir": "mkdir -p themes/github.com/{twbs/bootstrap,FortAwesome/Font-Awesome}",
+    "docsy-workaround:mkdir": "mkdir -p themes/github.com/twbs/bootstrap themes/github.com/FortAwesome/Font-Awesome",
     "docsy-workaround:rmdir": "git clean -xdf themes/github.com && ls themes",
     "get:submodule": "npm run _get:${GET:-submodule}",
     "post_build": "npm run _postbuild",
