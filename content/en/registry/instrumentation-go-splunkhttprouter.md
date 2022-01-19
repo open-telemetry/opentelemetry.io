@@ -1,0 +1,15 @@
+---
+title: splunkhttprouter -- Instrumentation for github.com/julienschmidt/httprouter
+registryType: instrumentation
+isThirdParty: true
+language: go
+tags:
+  - go
+  - instrumentation
+  - http
+repo: https://github.com/signalfx/splunk-otel-go/tree/main/instrumentation/github.com/julienschmidt/httprouter/splunkhttprouter
+license: Apache 2.0
+description: Instrumentation for the `github.com/julienschmidt/httprouter` package.
+authors: Splunk Inc.
+otVersion: v1.3.0
+---
