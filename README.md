@@ -15,16 +15,17 @@ file in `/content/en/registry` for your project. You can find a template in
 
 ## Adding a blog post
 
-Follow the [setup instructions][CONTRIBUTING.md]. To create a skeletal blog
+Follow the [setup instructions][CONTRIBUTING.md] then, to create a skeletal blog
 post, run the following command from the repo root:
 
 ```console
 $ hugo new content/en/blog/2022/file-name-for-your-blog-post.md
 ```
 
-Start editing the file at the path your provided in the previous command. The
-file is initialized from the blog-post starter under [archetypes](archetypes).
-Once your post is ready, submit it through a [pull request][PR].
+Start editing the markdown file at the path you provided in the previous
+command. The file is initialized from the blog-post starter under
+[archetypes](archetypes). Once your post is ready, submit it through a [pull
+request][PR].
 
 ## Contributing
 
