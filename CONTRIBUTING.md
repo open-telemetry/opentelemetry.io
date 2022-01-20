@@ -9,6 +9,10 @@ Follow these steps for local or [cloud-IDE][] (via [Gitpod.io][]) development:
   ```console
   $ nvm install lts
   ```
+- Use the latest LTS release
+  ```console
+  $ nvm use lts
+  ```
 - Get npm packages and other prerequisites:
   ```console
   $ npm install
