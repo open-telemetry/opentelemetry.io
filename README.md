@@ -34,6 +34,7 @@ See [CONTRIBUTING.md][].
 Roles:
 - Approvers: [@open-telemetry/docs-approvers][]
 - Maintainers: [@open-telemetry/docs-maintainers][]
+- Blog approvers: [@open-telemetry/blog-approvers][]
 
 Learn more about roles in the [community repository][]. Thanks to [all who have
 already contributed][contributors]!
@@ -52,6 +53,7 @@ and does not supersede any licenses of the source code, its dependencies, etc.
   <img alt="Creative Commons License" src="https://i.creativecommons.org/l/by/4.0/88x31.png" />
 </a>
 
+[@open-telemetry/blog-approvers]: https://github.com/orgs/open-telemetry/teams/blog-approvers
 [@open-telemetry/docs-approvers]: https://github.com/orgs/open-telemetry/teams/docs-approvers
 [@open-telemetry/docs-maintainers]: https://github.com/orgs/open-telemetry/teams/docs-maintainers
 [community repository]: https://github.com/open-telemetry/community/blob/main/community-membership.md
