@@ -1,0 +1,16 @@
+---
+title: splunkmysql -- Instrumentation for github.com/go-sql-driver/mysql
+registryType: instrumentation
+isThirdParty: true
+language: go
+tags:
+  - go
+  - instrumentation
+  - database
+  - mysql
+repo: https://github.com/signalfx/splunk-otel-go/tree/main/instrumentation/github.com/go-sql-driver/mysql/splunkmysql
+license: Apache 2.0
+description: Instrumentation for the `github.com/go-sql-driver/mysql` package.
+authors: Splunk Inc.
+otVersion: v1.3.0
+---
