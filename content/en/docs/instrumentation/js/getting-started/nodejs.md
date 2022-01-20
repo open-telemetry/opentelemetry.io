@@ -204,7 +204,7 @@ The following dependencies are required to collect metrics in your Node.js appli
 
 These dependencies are required to configure the tracing SDK and create spans.
 
-- `@opentelemetry/metrics`
+- `@opentelemetry/sdk-metrics-base`
 
 #### Exporter
 
@@ -223,7 +223,7 @@ Create a file named `monitoring.js` and add the following code:
 /* monitoring.js */
 'use strict';
 
-const { MeterProvider, ConsoleMetricExporter } = require('@opentelemetry/metrics');
+const { MeterProvider, ConsoleMetricExporter } = require('@opentelemetry/sdk-metrics-base');
 
 const meter = new MeterProvider({
   exporter: new ConsoleMetricExporter(),
@@ -239,7 +239,7 @@ Let's create and export from your `monitoring.js` file a middleware function tha
 /* monitoring.js */
 'use strict';
 
-const { MeterProvider, ConsoleMetricExporter } = require('@opentelemetry/metrics');
+const { MeterProvider, ConsoleMetricExporter } = require('@opentelemetry/sdk-metrics-base');
 
 const meter = new MeterProvider({
   exporter: new ConsoleMetricExporter(),
@@ -286,7 +286,7 @@ Now when you make requests to your service, your meter will count all requests.
 First, install the dependencies as described above. Here you need to add the following:
 
 ```shell
-npm install --save @opentelemetry/metrics
+npm install --save @opentelemetry/sdk-metrics-base
 ```
 
 Now you can run your application:
