@@ -116,6 +116,12 @@ docker run \
     prom/prometheus
 ```
 
+Install the exporter package as a dependency for your application:
+
+```shell
+npm install --save @opentelemetry/exporter-prometheus
+```
+
 Update your opentelemetry configuration to use the exporter and to send data to your prometheus backend:
 
 ```javascript
