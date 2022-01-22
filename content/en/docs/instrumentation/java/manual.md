@@ -1,6 +1,10 @@
 ---
 title: Manual Instrumentation
 linkTitle: Manual
+aliases:
+  - docs/java/getting_started
+  - docs/java/manual_instrumentation
+  - docs/instrumentation/java/manual_instrumentation
 weight: 3
 ---
 
