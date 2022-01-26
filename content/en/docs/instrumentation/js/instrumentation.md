@@ -230,7 +230,10 @@ function someFunction(spanToLinkFrom) {
 
 ## Span Status
 
-A status can be set on a span, to indicate if the traced operation has completed successfully (`Ok`) or with an `Error`. The default status is `Unset`.
+A status can be set on a span, typically to indicate that it did not complete
+successuflly - `SpanStatusCode.ERROR`. In rare situations, you may wish to
+override this with `SpanStatusCode.OK`. But don't set the status to `OK`
+each time a span successfully completes.
 
 The status can be set at any time before the span is finished:
 
@@ -238,11 +241,6 @@ The status can be set at any time before the span is finished:
 function doWork(parent) {
   const ctx = opentelemetry.trace.setSpan(opentelemetry.context.active(), parent);
   const span = tracer.startSpan('doWork', undefined, ctx);
-
-  span.setStatus({
-    code: opentelemetry.SpanStatusCode.OK,
-    message: 'Ok.'
-  })
 
   for (let i = 0; i <= Math.floor(Math.random() * 40000000); i += 1) {
     if(i > 10000) {
