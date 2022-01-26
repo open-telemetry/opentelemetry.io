@@ -221,9 +221,10 @@ Propagation](#context-propagation).
 
 ### Set span status
 
-A status can be set on a span, to indicate if the traced operation has
-completed successfully (`OK`) or with an `Error`.
-The default status is `Unset`.
+A status can be set on a span, typically used to specify that a span
+has not completed successfully - `SpanStatus.Error`.
+In rare scenarios, you could override the `Error` status with `OK`,
+but don't set `OK` on successfully-completed spans.
 
 The status can be set at any time before the span is finished:
 
@@ -232,7 +233,6 @@ Span span = tracer.spanBuilder("my span").startSpan();
 // put the span into the current Context
 try (Scope scope = span.makeCurrent()) {
 	// do something
-  span.setStatus(StatusCode.OK)
 } catch (Throwable t) {
   span.setStatus(StatusCode.ERROR, "Something bad happened!");
 } finally {
