@@ -14,7 +14,7 @@ included in the [distributions][] can be found by in the `manifest.yaml` of each
 
 ## Custom Distributions
 
-For various reasons the existing distributions provided by the OpenTelemetry project may no meet your needs.
+For various reasons the existing distributions provided by the OpenTelemetry project may not meet your needs.
 Whether you want a smaller version, or have the need to implement custom functionality like [custom authenticators](../custom-auth),
 receivers, processors, or exporters. The tool used to build distributions [ocb][] (OpenTelemetry Collector Builder)
 is available to build your own distributions.
