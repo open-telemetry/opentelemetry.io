@@ -75,13 +75,10 @@ and end time of the span is automatically set by the OpenTelemetry SDK.
 ```java
 Span span = tracer.spanBuilder("my span").startSpan();
 // put the span into the current Context
-try (Scope scope = span.makeCurrent()) {
-	// your use case
-	...
-} catch (Throwable t) {
-    span.setStatus(StatusCode.ERROR, "Change it to your error message");
+try {
+  // do something...
 } finally {
-    span.end(); // closing the scope does not end the span, this has to be done manually
+    span.end();
 }
 ```
 
@@ -221,6 +218,48 @@ Span child = tracer.spanBuilder("childWithLink")
 
 For more details how to read context from remote processes, see [Context
 Propagation](#context-propagation).
+
+### Set span status
+
+A status can be set on a span, to indicate if the traced operation has
+completed successfully (`OK`) or with an `Error`.
+The default status is `Unset`.
+
+The status can be set at any time before the span is finished:
+
+```java
+Span span = tracer.spanBuilder("my span").startSpan();
+// put the span into the current Context
+try (Scope scope = span.makeCurrent()) {
+	// do something
+  span.setStatus(StatusCode.OK)
+} catch (Throwable t) {
+  span.setStatus(StatusCode.ERROR, "Something bad happened!");
+} finally {
+  span.end(); // Cannot set a span after this call
+}
+```
+
+### Record exceptions in spans
+
+It can be a good idea to record exceptions when they happen.
+It's recommended to do this in conjunction with setting
+[span status](#set-span-status).
+
+```java
+Span span = tracer.spanBuilder("my span").startSpan();
+// put the span into the current Context
+try (Scope scope = span.makeCurrent()) {
+	// do something
+} catch (Throwable throwable) {
+  span.setStatus(StatusCode.ERROR, "Something bad happened!");
+  span.recordException(throwable)
+} finally {
+  span.end(); // Cannot set a span after this call
+}
+```
+
+This will capture things like the current stack trace in the span.
 
 ### Context Propagation
 
