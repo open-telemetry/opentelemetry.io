@@ -137,3 +137,11 @@ exception is thrown.
 
 You can also set the `RecordException` property to `true`, which will store an exception on the
 `Activity` itself as an `ActivityEvent`.
+
+## Next steps
+
+After you have observability generated automatically with instrumentation libraries, you may want to add
+[manual instrumentation]({{< relref "manual" >}}) to collect custom telemetry data.
+
+You'll also want to configure an appropriate exporter to [export your telemetry data]({{< relref "exporters" >}})
+to one or more telemetry backends.
