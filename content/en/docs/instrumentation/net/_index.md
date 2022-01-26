@@ -8,8 +8,8 @@ weight: 12
 ---
 
 Welcome to the OpenTelemetry for .NET documentation! This is intended to be an
-overview of OpenTelemetry in this language, and a brief guide to its options
-and features.
+overview of OpenTelemetry in this language, and a brief guide to its options and
+features.
 
 OpenTelemetry for .NET supports all officially supported versions of [.NET
 Core](https://dotnet.microsoft.com/download/dotnet-core) and [.NET
@@ -18,7 +18,8 @@ Framework](https://dotnet.microsoft.com/download/dotnet-framework) except for
 
 # Status and Releases
 
-This is the current release status for OpenTelemetry components in this language:
+This is the current release status for OpenTelemetry components in this
+language:
 
 | Tracing | Metrics | Logging |
 | ------- | ------- | ------- |
@@ -28,7 +29,11 @@ This is the current release status for OpenTelemetry components in this language
 
 # Further Reading
 
-- [OpenTelemetry .NET on GitHub](https://github.com/open-telemetry/opentelemetry-dotnet)
-- [Getting Started](https://github.com/open-telemetry/opentelemetry-dotnet#getting-started)
-- [OpenTelemetry .NET Contrib](https://github.com/open-telemetry/opentelemetry-dotnet-contrib)
-- [OpenTelemetry .NET Automatic Instrumentation on GitHub](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation)
+- [OpenTelemetry .NET on
+  GitHub](https://github.com/open-telemetry/opentelemetry-dotnet)
+- [Getting
+  Started](https://github.com/open-telemetry/opentelemetry-dotnet#getting-started)
+- [OpenTelemetry .NET
+  Contrib](https://github.com/open-telemetry/opentelemetry-dotnet-contrib)
+- [OpenTelemetry .NET Automatic Instrumentation on
+  GitHub](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation)

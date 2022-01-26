@@ -193,9 +193,8 @@ To ensure you're getting the most data as easily as possible, install some
 generate observability data.
 
 Additionally, enriching your instrumentation generated automatically with
-[manual instrumentation]({{< relref "manual" >}}) of your own codebase
-gets you customized observability data.
+[manual instrumentation]({{< relref "manual" >}}) of your own codebase gets you
+customized observability data.
 
-You'll also want to configure an appropriate exporter to
-[export your telemetry data]({{< relref "exporters" >}})
-to one or more telemetry backends.
+You'll also want to configure an appropriate exporter to [export your telemetry
+data]({{< relref "exporters" >}}) to one or more telemetry backends.
