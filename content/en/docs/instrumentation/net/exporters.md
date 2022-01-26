@@ -3,18 +3,21 @@ title: "Exporters"
 weight: 4
 ---
 
-In order to visualize and analyze your traces and metrics, you will need to export them to a backend.
+In order to visualize and analyze your traces and metrics, you will need to
+export them to a backend.
 
 ## Console exporter
 
-The console exporter is useful for development and debugging tasks, and is the simplest to set up.
+The console exporter is useful for development and debugging tasks, and is the
+simplest to set up.
 
 ```
 dotnet add package OpenTelemetry.Exporter.Console
 dotnet add package OpenTelemetry.Extensions.Hosting --prerelease
 ```
 
-If you're using ASP.NET Core, configure the exporter in your ASP.NET Core services:
+If you're using ASP.NET Core, configure the exporter in your ASP.NET Core
+services:
 
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
@@ -39,15 +42,17 @@ using var tracerProvider = Sdk.CreateTracerProviderBuilder()
 
 ## OTLP endpoint or Collector
 
-To send data to an OTLP endpoint or the [OpenTelemetry Collector](/docs/collector/getting-started/), you'll want
-to configure an OTLP exporter that sends to your endpoint.
+To send data to an OTLP endpoint or the [OpenTelemetry
+Collector](/docs/collector/getting-started/), you'll want to configure an OTLP
+exporter that sends to your endpoint.
 
 ```
 dotnet add package OpenTelemetry.Exporter.OpenTelemetryProtocol
 dotnet add package OpenTelemetry.Extensions.Hosting --prerelease
 ```
 
-If you're using ASP.NET Core, configure the exporter in your ASP.NET Core services:
+If you're using ASP.NET Core, configure the exporter in your ASP.NET Core
+services:
 
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
@@ -79,7 +84,8 @@ using var tracerProvider = Sdk.CreateTracerProviderBuilder()
     .Build();
 ```
 
-Use environment variables to set values like headers and an endpoint URL for production.
+Use environment variables to set values like headers and an endpoint URL for
+production.
 
 ### Using gRPC
 
@@ -89,8 +95,8 @@ You can also use gRPC to send your OTLP data. To do that, use the following:
 OtlpExportProtocol.Grpc
 ```
 
-If you're not using ASP.NET Core gRPC and you are running on .NET Core 3.x, you'll need to add
-the following at application startup
+If you're not using ASP.NET Core gRPC and you are running on .NET Core 3.x,
+you'll need to add the following at application startup
 
 ```csharp
 AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
@@ -100,8 +106,9 @@ If you are using .NET 5 or higher, the previous code sample is not required.
 
 ## Jaeger
 
-If you are using [Jaeger](https://www.jaegertracing.io/) to visualize trace data,
-you'll need to set it up first. This is how to run it in a docker container:
+If you are using [Jaeger](https://www.jaegertracing.io/) to visualize trace
+data, you'll need to set it up first. This is how to run it in a docker
+container:
 
 ```shell
 $ docker run -d --name jaeger \
@@ -124,7 +131,8 @@ dotnet add package OpenTelemetry.Exporter.Jaeger
 dotnet add package OpenTelemetry.Extensions.Hosting --prerelease
 ```
 
-If you're using ASP.NET Core, configure the exporter in your ASP.NET Core services:
+If you're using ASP.NET Core, configure the exporter in your ASP.NET Core
+services:
 
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
@@ -158,8 +166,9 @@ using var tracerProvider = Sdk.CreateTracerProviderBuilder()
 
 ## Zipkin
 
-If you are using [Zipkin](https://zipkin.io/) to visualize traces to visualize trace data,
-you'll need to set it up first. This is how to run it in a docker container:
+If you are using [Zipkin](https://zipkin.io/) to visualize traces to visualize
+trace data, you'll need to set it up first. This is how to run it in a docker
+container:
 
 ```shell
 docker run --rm -d -p 9411:9411 --name zipkin openzipkin/zipkin
@@ -172,7 +181,8 @@ dotnet add package OpenTelemetry.Exporter.Zipkin
 dotnet add package OpenTelemetry.Extensions.Hosting --prerelease
 ```
 
-If you're using ASP.NET Core, configure the exporter in your ASP.NET Core services:
+If you're using ASP.NET Core, configure the exporter in your ASP.NET Core
+services:
 
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
@@ -204,11 +214,11 @@ using var tracerProvider = Sdk.CreateTracerProviderBuilder()
 
 ## Prometheus
 
-If you're using Prometheus to visualize metrics data, you'll need to set it up first.
-Here's how to do it using a docker container:
+If you're using Prometheus to visualize metrics data, you'll need to set it up
+first. Here's how to do it using a docker container:
 
-First, you'll need a `prometheus.yml` file to configure your Prometheus backend, such
-as the following:
+First, you'll need a `prometheus.yml` file to configure your Prometheus backend,
+such as the following:
 
 ```yml
 global:
@@ -237,7 +247,8 @@ dotnet add package OpenTelemetry.Exporter.Prometheus
 dotnet add package OpenTelemetry.Extensions.Hosting --prerelease
 ```
 
-If you're using ASP.NET Core, configure the exporter in your ASP.NET Core services:
+If you're using ASP.NET Core, configure the exporter in your ASP.NET Core
+services:
 
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
@@ -275,8 +286,10 @@ using var tracerProvider = Sdk.CreateMeterProviderBuilder()
 
 ## Next steps
 
-To ensure you're getting the most data as easily as possible, install [automatic instrumentation libraries]({{< relref "automatic" >}})
-to automatically generate observability data.
+To ensure you're getting the most data as easily as possible, install [automatic
+instrumentation libraries]({{< relref "automatic" >}}) to automatically generate
+observability data.
 
-Additionally, enriching your instrumentation generated automatically with [manual instrumentation]({{< relref "manual" >}})
-of your own codebase gets you customized observability data.
+Additionally, enriching your instrumentation generated automatically with
+[manual instrumentation]({{< relref "manual" >}}) of your own codebase gets you
+customized observability data.

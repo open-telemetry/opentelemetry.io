@@ -4,26 +4,29 @@ linkTitle: Manual
 weight: 3
 ---
 
-Manual instrumentation is the process of adding observability code to your application.
+Manual instrumentation is the process of adding observability code to your
+application.
 
 ## A note on terminology
 
 .NET is different from other languages/runtimes that support OpenTelemetry.
-Tracing is implemented by the [System.Diagnostics](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics)
-API, repurposing existing constructs like `ActivitySource` and `Activity` to
-be OpenTelemetry-compliant under the covers.
+Tracing is implemented by the
+[System.Diagnostics](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics)
+API, repurposing existing constructs like `ActivitySource` and `Activity` to be
+OpenTelemetry-compliant under the covers.
 
 However, there are parts of the OpenTelemetry API and terminology that .NET
-developers must still know to be able to instrument their applications, wich
-are covered here as well as the `System.Diagnostics` API.
+developers must still know to be able to instrument their applications, wich are
+covered here as well as the `System.Diagnostics` API.
 
 If you prefer to use OpenTelemetry APIs instead of `System.Diagnostics` APIs,
-you can refer to the [OpenTelemetry API Shim docs for tracing]({{< relref "shim" >}}).
+you can refer to the [OpenTelemetry API Shim docs for tracing]({{< relref "shim"
+>}}).
 
 ## Initializing tracing
 
-There are two main ways to initialize tracing, depending on if you're using
-a console app or something that's ASP.NET Core-based.
+There are two main ways to initialize tracing, depending on if you're using a
+console app or something that's ASP.NET Core-based.
 
 ### Console app
 
@@ -36,8 +39,8 @@ dotnet add package OpenTelemetry
 dotnet add package OpenTelemetry.Exporter.Console
 ```
 
-And then use code like this at the beginning of your program, during any important
-startup operations.
+And then use code like this at the beginning of your program, during any
+important startup operations.
 
 ```csharp
 using OpenTelemetry;
@@ -62,12 +65,13 @@ using var tracerProvider = Sdk.CreateTracerProviderBuilder()
 
 This is also where you can configure instrumentation libraries.
 
-Note that this sample uses the Console Exporter. If you are exporting to another endpoint,
-you'll have to use a different exporter.
+Note that this sample uses the Console Exporter. If you are exporting to another
+endpoint, you'll have to use a different exporter.
 
 ### ASP.NET Core
 
-To start tracing in an ASP.NET Core-based app, use the OpenTelemetry extensions for ASP.NET Core setup.
+To start tracing in an ASP.NET Core-based app, use the OpenTelemetry extensions
+for ASP.NET Core setup.
 
 First, ensure that you have the right packages:
 
@@ -77,7 +81,8 @@ dotnet add package OpenTelemetry.Extensions.Hosting --prerelease
 dotnet add package OpenTelemetry.Exporter.Console --prerelease
 ```
 
-And then configure it in your ASP.NET Core startup routine where you have access to an `IServiceCollection`.
+And then configure it in your ASP.NET Core startup routine where you have access
+to an `IServiceCollection`.
 
 ```csharp
 using OpenTelemetry;
@@ -105,17 +110,17 @@ builder.Services.AddOpenTelemetryTracing(b =>
 
 This is also where you can configure instrumentation libraries.
 
-Note that this sample uses the Console Exporter. If you are exporting to another endpoint,
-you'll have to use a different exporter.
+Note that this sample uses the Console Exporter. If you are exporting to another
+endpoint, you'll have to use a different exporter.
 
 ## Setting up an ActivitySource
 
-Once tracing is initialized, you can configure an `ActivitySource`, which will be how
-you trace operations with `Activity`s.
+Once tracing is initialized, you can configure an `ActivitySource`, which will
+be how you trace operations with `Activity`s.
 
-Typically, an `ActivitySource` is instantiated once per app/service that is being instrumented,
-so it's a good idea to instantiate it once in a shared location. It is also typically named
-the same as the Service Name.
+Typically, an `ActivitySource` is instantiated once per app/service that is
+being instrumented, so it's a good idea to instantiate it once in a shared
+location. It is also typically named the same as the Service Name.
 
 ```csharp
 using System.Diagnostics;
@@ -132,8 +137,8 @@ public static class Telemetry
 }
 ```
 
-You can instantiate several `ActivitySource`s if that suits your scenario, although it is generally
-sufficient to just have one defined per serivce.
+You can instantiate several `ActivitySource`s if that suits your scenario,
+although it is generally sufficient to just have one defined per serivce.
 
 ## Creating Activities
 
@@ -147,8 +152,8 @@ using var myActivity = MyActivitySource.StartActivity("SayHello");
 
 ## Creating nested Activities
 
-If you have a distinct sub-operation you'd like to track as a part of another one,
-you can create activities to represent the relationship.
+If you have a distinct sub-operation you'd like to track as a part of another
+one, you can create activities to represent the relationship.
 
 ```csharp
 public static void ParentOperation()
@@ -170,13 +175,14 @@ public static void ChildOperation()
 }
 ```
 
-When you view spans in a trace visualization tool, `ChildActivity` will be tracked as a nested
-operation under `ParentActivity`.
+When you view spans in a trace visualization tool, `ChildActivity` will be
+tracked as a nested operation under `ParentActivity`.
 
 ### Nested Activities in the same scope
 
-You may wish to create a parent-child relationsip in the same scope. Although possible, this is generally not
-recommended because you need to be careful to end any nested `Activity` when you expect it to end.
+You may wish to create a parent-child relationsip in the same scope. Although
+possible, this is generally not recommended because you need to be careful to
+end any nested `Activity` when you expect it to end.
 
 ```csharp
 public static void DoWork()
@@ -194,26 +200,28 @@ public static void DoWork()
 }
 ```
 
-In the preceding example, `childOperation` is ended because the scope of the `using` block is explicitly defined,
-rather than scoped to `DoWork` itself like `parentOperation`.
+In the preceding example, `childOperation` is ended because the scope of the
+`using` block is explicitly defined, rather than scoped to `DoWork` itself like
+`parentOperation`.
 
 ## Get the current Activity
 
-Sometimes it's helpful to access whatever the current `Activity` is at a point in time so you can enrich
-it with more information.
+Sometimes it's helpful to access whatever the current `Activity` is at a point
+in time so you can enrich it with more information.
 
 ```csharp
 var activity = Activity.Current;
 // may be null if there is none
 ```
 
-Note that `using` is not used in the prior example. Doing so will end current `Activity`,
-which is not likely to be desired.
+Note that `using` is not used in the prior example. Doing so will end current
+`Activity`, which is not likely to be desired.
 
 ## Add tags to an Activity
 
-Tags (the equivalent of Attributes in OpenTelemetry) let you attach key/value pairs to an `Activity`
-so it carries more information about the current operation that it's tracking.
+Tags (the equivalent of Attributes in OpenTelemetry) let you attach key/value
+pairs to an `Activity` so it carries more information about the current
+operation that it's tracking.
 
 ```csharp
 using var myActivity = MyActivitySource.StartActivity("SayHello");
@@ -225,8 +233,8 @@ activity?.SetTag("operation.other-stuff", new int[] { 1, 2, 3 });
 
 ## Adding events
 
-An event is a human-readable message on an `Activity` that represents "something happening" during its lifetime.
-You can think of it like a primitive log.
+An event is a human-readable message on an `Activity` that represents "something
+happening" during its lifetime. You can think of it like a primitive log.
 
 ```csharp
 using var myActivity = MyActivitySource.StartActivity("SayHello");
@@ -263,7 +271,8 @@ myActivity?.AddEvent(new("Gonna try it!", DateTimeOffset.Now, new(eventTags)));
 
 ## Adding links
 
-An `Activity` can be created with zero or more `ActivityLink`s that are causally related.
+An `Activity` can be created with zero or more `ActivityLink`s that are causally
+related.
 
 ```csharp
 // Get a context from somewhere, perhaps it's passed in as a parameter
@@ -285,9 +294,10 @@ using var anotherActivity =
 
 ## Next steps
 
-If you're not using [instrumentation libraries]({{< relref "automatic" >}}), we highly recommend that you do.
-Instrumentation libraries will automatically instrument relevant libraries you're using and generate
-data for things like inbound and outbound HTTP requests and more.
+If you're not using [instrumentation libraries]({{< relref "automatic" >}}), we
+highly recommend that you do. Instrumentation libraries will automatically
+instrument relevant libraries you're using and generate data for things like
+inbound and outbound HTTP requests and more.
 
-You'll also want to configure an appropriate exporter to [export your telemetry data]({{< relref "exporters" >}})
-to one or more telemetry backends.
+You'll also want to configure an appropriate exporter to [export your telemetry
+data]({{< relref "exporters" >}}) to one or more telemetry backends.
