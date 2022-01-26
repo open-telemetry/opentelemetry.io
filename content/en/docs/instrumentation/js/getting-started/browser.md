@@ -50,7 +50,7 @@ npm install --save @opentelemetry/api @opentelemetry/sdk-trace-web @opentelemetr
 Create a empty file called `document-load.js` and add the following code to your html right before the body end tag:
 
 ```html
-<script type="text/javascript" src="document-load.js"></script>
+<script type="module" src="document-load.js"></script>
 ```
 
 We will add some code that will trace the document load timings and output those as OpenTelemetry Spans.
