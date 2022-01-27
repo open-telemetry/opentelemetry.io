@@ -294,10 +294,10 @@ using var anotherActivity =
 
 ## Next steps
 
-If you're not using [instrumentation libraries]({{< relref "automatic" >}}), we
-highly recommend that you do. Instrumentation libraries will automatically
-instrument relevant libraries you're using and generate data for things like
-inbound and outbound HTTP requests and more.
+After you've setup automatic instrumentation, you may want to use
+[instrumentation libraries]({{< relref "automatic" >}}).Instrumentation
+libraries will automatically instrument relevant libraries you're using and
+generate data for things like inbound and outbound HTTP requests and more.
 
 You'll also want to configure an appropriate exporter to [export your telemetry
 data]({{< relref "exporters" >}}) to one or more telemetry backends.
