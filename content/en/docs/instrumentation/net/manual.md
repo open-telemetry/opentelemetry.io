@@ -292,6 +292,28 @@ using var anotherActivity =
 // do some work
 ```
 
+## Set Activity status
+
+A status can be set on an activity, typically used to specify that an activity
+has not completed successfully - `ActivityStatusCode.Error`. In rare scenarios,
+you could override the `Error` status with `Ok`, but don't set `Ok` on
+successfully-completed spans.
+
+The status can be set at any time before the span is finished:
+
+```csharp
+using var myActivity = MyActivitySource.StartActivity("SayHello");
+
+try
+{
+	// do something
+}
+catch (Exception ex)
+{
+    myActivity.SetStatus(ActivityStatusCode.Error, "Something bad happened!");
+}
+```
+
 ## Next steps
 
 After you've setup automatic instrumentation, you may want to use

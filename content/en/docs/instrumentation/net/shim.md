@@ -323,6 +323,49 @@ using var span = tracer.StartActiveSpan("another-span", links: links);
 // do some work
 ```
 
+## Set span status
+
+A status can be set on a span, typically used to specify that a span has not
+completed successfully - `Status.Error`. In rare scenarios, you could override
+the `Error` status with `Ok`, but don't set `Ok` on successfully-completed
+spans.
+
+The status can be set at any time before the span is finished:
+
+```csharp
+using var span = tracer.StartActiveSpan("SayHello");
+
+try
+{
+	// do something
+}
+catch (Exception ex)
+{
+    span.SetStatus(Status.Error, "Something bad happened!");
+}
+```
+
+## Record exceptions in spans
+
+It can be a good idea to record exceptions when they happen. It's recommended to
+do this in conjunction with setting [span status](#set-span-status).
+
+```csharp
+using var span = tracer.StartActiveSpan("SayHello");
+
+try
+{
+	// do something
+}
+catch (Exception ex)
+{
+    span.SetStatus(Status.Error, "Something bad happened!");
+    span.RecordException(ex)
+}
+```
+
+This will capture things like the current stack trace as attributes in the span.
+
 ## Next steps
 
 After you've setup automatic instrumentation, you may want to use
