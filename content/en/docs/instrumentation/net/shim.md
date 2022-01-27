@@ -345,7 +345,7 @@ catch (Exception ex)
 }
 ```
 
-### Record exceptions in spans
+## Record exceptions in spans
 
 It can be a good idea to record exceptions when they happen. It's recommended to
 do this in conjunction with setting [span status](#set-span-status).
