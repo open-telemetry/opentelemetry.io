@@ -1,11 +1,10 @@
 ---
-title: Using instrumentation libraries
+title: Automatic Instrumentation
 weight: 3
-linkTitle: Libraries
+linkTitle: Automatic
 ---
 
-.NET does not support truly automatic instrumentation like other languages
-today. Instead, you'll need to depend on [instrumentation
+.NET does not supports automatic instrumentation with [instrumentation
 libraries](https://opentelemetry.io/docs/reference/specification/glossary/#instrumentation-library)
 that generate telemetry data for a particular instrumented library.
 
