@@ -13,7 +13,7 @@ To add your project, submit a [pull request][PR]. You'll need to create a data
 file in `/content/en/registry` for your project. You can find a template in
 `./templates/registry-entry.md`
 
-## Adding a blog post
+## Submitting a blog post
 
 Follow the [setup instructions][CONTRIBUTING.md] then, to create a skeletal blog
 post, run the following command from the repo root:
