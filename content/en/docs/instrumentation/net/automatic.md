@@ -4,7 +4,7 @@ weight: 3
 linkTitle: Automatic
 ---
 
-.NET does supports automatic instrumentation with [instrumentation
+.NET supports automatic instrumentation with [instrumentation
 libraries](https://opentelemetry.io/docs/reference/specification/glossary/#instrumentation-library)
 that generate telemetry data for a particular instrumented library.
 
