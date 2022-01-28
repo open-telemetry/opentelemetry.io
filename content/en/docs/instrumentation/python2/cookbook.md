@@ -1,7 +1,7 @@
 ---
 title: Exporters
 weight: 4
-linkTitle: Exporters
+linkTitle: Cookbook
 ---
 
 Various things pulled from here: https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples
