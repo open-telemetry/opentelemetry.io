@@ -344,7 +344,7 @@ public void handle(HttpExchange httpExchange) {
 }
 ```
 
-## Metrics (alpha only!)
+## Metrics
 
 Spans are a great way to get detailed information about what your application is
 doing, but what about a more aggregated perspective? OpenTelemetry provides
@@ -352,22 +352,23 @@ supports for metrics, a time series of numbers that might express things such as
 CPU utilization, request count for an HTTP server, or a business metric such as
 transactions.
 
-In order to access the alpha metrics library, you will need to explicitly depend
-on the `opentelemetry-api-metrics` and `opentelemetry-sdk-metrics` modules,
-which are not included in the opentelemetry-bom until they are stable and ready
-for long-term-support.
+*Note* The stability of Metrics in `opentelemetry-java` is mixed. The first
+stable metrics API was release in version `1.10.0`; however, the metrics SDK is
+alpha and still subject to change. The metrics API is included in
+the `opentelemetry-api` module. In order to access the alpha metrics SDK
+library, you will need to explicitly depend on the `opentelemetry-sdk-metrics`
+module.
 
-All metrics can be annotated with labels: additional qualifiers that help
+All metrics can be annotated with attributes: additional qualifiers that help
 describe what subdivision of the measurements the metric represents.
-
-First, you'll need to get access to a `MeterProvider`. Note the APIs for this
-are in flux, so no example code is provided here for that.
 
 The following is an example of counter usage:
 
 ```java
+OpenTelemetry openTelemetry = // obtain instance of OpenTelemetry
+
 // Gets or creates a named meter instance
-Meter meter = meterProvider.meterBuilder("instrumentation-library-name")
+Meter meter = openTelemetry.meterBuilder("instrumentation-library-name")
         .setInstrumentationVersion("1.0.0")
         .build();
 
@@ -378,32 +379,25 @@ LongCounter counter = meter
       .setUnit("1")
       .build();
 
-// It is recommended that the API user keep a reference to a Bound Counter for the entire time or
-// call unbind when no-longer needed.
-BoundLongCounter someWorkCounter = counter.bind(Attributes.of(stringKey("Key"), "SomeWork"));
-
+// It is recommended that the API user keep a reference to Attributes they will record against
+Attributes attributes = Attributes.of(stringKey("Key"), "SomeWork");
 
 // Record data
-someWorkCounter.add(123);
-
-// Alternatively, the user can use the unbounded counter and explicitly
-// specify the labels set at call-time:
-counter.add(123, Attributes.of(stringKey("Key"), "SomeWork"));
+counter.add(123, attributes);
 ```
 
-An `Observer` is an additional type of instrument supporting an asynchronous API
-and collecting metric data on demand, once per collection interval.
+Asynchronous instruments support collecting metrics on demand, once per collection interval.
 
-The following is an example of usage of an observer:
+The following is an example of usage of an asynchronous instrument:
 
 ```java
-// Build an "observer" instrument, e.g. Gauge
+// Build an asynchronous instrument, e.g. Gauge
 meter
   .gaugeBuilder("cpu_usage")
   .setDescription("CPU Usage")
   .setUnit("ms")
-  .buildWithCallback(result -> {
-      result.observe(getCpuUsage(), Attributes.of(stringKey("Key"), "SomeWork"));
+  .buildWithCallback(measurement -> {
+    measurement.record(getCpuUsage(), Attributes.of(stringKey("Key"), "SomeWork"));
   });
 ```
 
