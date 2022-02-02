@@ -8,3 +8,5 @@ IgnoreInternalURLs:
   - HAHAHUGOSHORTCODE-s2-HBHB
   - HAHAHUGOSHORTCODE-s5-HBHB
   - HAHAHUGOSHORTCODE-s7-HBHB
+  # Blog entry redirects
+  - /blog/2022/v1.0-trio-redirect/
