@@ -14,7 +14,8 @@ my $semConvRef = 'https://github.com/open-telemetry/opentelemetry-specification/
 
 sub printTitle() {
   print "---\n";
-  print "title: $title\n";
+  my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
+  print "title: $titleMaybeQuoted\n";
   print "weight: 1\n" if $title eq "Overview";
   ($linkTitle) = $title =~ /^OpenTelemetry (.*)/;
   $linkTitle = 'FaaS' if $ARGV =~ /faas-metrics.md$/;
