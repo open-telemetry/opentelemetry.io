@@ -12,9 +12,26 @@ This allows OpenTracing instrumentation to be recorded using OpenTelemetry SDKs.
 
 To accomplish this, each OpenTelemetry SDK provides an **[OpenTracing
 shim][OT_spec]**, which acts as a bridge between the OpenTracing API and the
-OpenTelemetry SDK. Note that the OpenTracing shim is disabled by default.
+OpenTelemetry SDK. Note that OpenTracing shims are disabled by default.
 
-## Overview
+## Language version support
+
+Before using an OpenTracing shim, check your project's language and runtime
+component versions, and update if necessary. The minimum **language** versions
+of the OpenTracing and OpenTelemetry APIs are listed in the table below.
+
+| Language       | OpenTracing API  | OpenTelemetry API |
+| -------------- | ---------------- | ----------------- |
+| [Go][]         | 1.13             | 1.16              |
+| [Java][]       | 7                | 8                 |
+| [Python][]     | 2.7              | 3.6               |
+| [Javascript][] | 6                | 8.5               |
+| [.NET][]       | 1.3              | 1.4               |
+
+Note that the OpenTelemetry API and SDKs generally have higher language version
+requirements than their OpenTracing counterparts.
+
+## Migration overview
 
 Many codebases are currently instrumented with OpenTracing. These codebases use
 the OpenTracing API to instrument their application code and/or install
@@ -103,22 +120,8 @@ For existing instrumentation, it is recommended that
 
 ## Limits on compatibility
 
-### Language version support
-
-Before using the shim layer, users need check their language and runtime
-component versions, and update if necessary. The minimum **language** versions
-of the OpenTracing and OpenTelemetry APIs are listed in the table below.
-
-| Language       | OpenTracing API  | OpenTelemetry API |
-| -------------- | ---------------- | ----------------- |
-| [Go][]         | 1.13             | 1.16              |
-| [Java][]       | 7                | 8                 |
-| [Python][]     | 2.7              | 3.6               |
-| [Javascript][] | 6                | 8.5               |
-| [.NET][]       | 1.3              | 1.4               |
-
-Note that the OpenTelemetry API and SDKs generally have higher language version
-requirements than their OpenTracing counterparts.
+In this section we describe limits on compatibility other than the [language
+version constraints](#language-version-support) mentioned earlier.
 
 ### Semantic conventions
 
