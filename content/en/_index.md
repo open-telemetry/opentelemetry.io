@@ -21,7 +21,7 @@ mission_url: https://github.com/open-telemetry/community/blob/main/mission-visio
 - [Go]({{< relref "/docs/instrumentation/go/getting-started" >}})
 - [.NET]({{< relref "/docs/instrumentation/net/getting-started" >}})
 - [JavaScript]({{< relref "/docs/instrumentation/js/getting-started" >}})
-- [<i class="fas fa-ellipsis-h"></i>]({{< relref "docs" >}})
+- [<i class="fas fa-ellipsis-h"></i>]({{< relref "/docs/instrumentation" >}})
 </div>
 {{< /blocks/cover >}}
 
