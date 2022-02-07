@@ -10,9 +10,9 @@ OpenTelemetry project from the start. To ease migration, OpenTelemetry supports
 the use of both the OpenTelemetry _and_ OpenTracing APIs in the same codebase.
 This allows OpenTracing instrumentation to be recorded using OpenTelemetry SDKs.
 
-To accomplish this, each OpenTelemetry SDK provides an **[OpenTracing
-shim][OT_spec]**, which acts as a bridge between the OpenTracing API and the
-OpenTelemetry SDK. Note that OpenTracing shims are disabled by default.
+To accomplish this, each OpenTelemetry SDK provides an **OpenTracing shim**,
+which acts as a bridge between the OpenTracing API and the OpenTelemetry SDK.
+Note that OpenTracing shims are disabled by default.
 
 ## Language version support
 
