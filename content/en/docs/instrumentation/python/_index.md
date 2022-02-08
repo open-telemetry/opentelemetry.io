@@ -4,11 +4,6 @@ description: >-
   <img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Python_SDK.svg"></img>
   A language-specific implementation of OpenTelemetry in Python.
 aliases: [/python, /python/metrics, /python/tracing]
-cascade:
-  github_repo: &repo https://github.com/open-telemetry/opentelemetry-python
-  github_subdir: website_docs
-  path_base_for_github_subdir: content/en/docs/python/
-  github_project_repo: *repo
 weight: 22
 ---
 

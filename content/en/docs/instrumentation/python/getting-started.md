@@ -1,9 +1,6 @@
 ---
-date: '2021-10-05T20:20:20.000Z'
-docname: getting-started
-images: {}
-path: /getting-started
 title: Getting Started
+weight: 1
 ---
 
 This guide walks you through instrumenting a Python application with `opentelemetry-python`.
@@ -14,7 +11,7 @@ For more elaborate examples, see [examples](https://github.com/open-telemetry/op
 
 To get started, install both the opentelemetry API and SDK:
 
-```
+```sh
 pip install opentelemetry-api
 pip install opentelemetry-sdk
 ```
@@ -32,7 +29,7 @@ how long the action took. You can also add arbitrary attributes to the span that
 
 The following example script emits a trace containing three named spans: “foo”, “bar”, and “baz”:
 
-```
+```python
 # tracing.py
 from opentelemetry import trace
 from opentelemetry.sdk.trace import TracerProvider
@@ -57,7 +54,7 @@ with tracer.start_as_current_span("foo"):
 
 When you run the script you can see the traces printed to your console:
 
-```
+```sh
 $ python tracing_example.py
 {
     "name": "baz",
@@ -132,7 +129,7 @@ This concept of aggregating span and trace information is known as distributed t
 
 Run the following command to start Jaeger:
 
-```
+```sh
 docker run -p 16686:16686 -p 6831:6831/udp jaegertracing/all-in-one
 ```
 
@@ -141,13 +138,13 @@ This command starts Jaeger locally on port 16686 and exposes the Jaeger thrift a
 After you spin up the backend, your application needs to export traces to this system. Although `opentelemetry-sdk` doesn’t provide an exporter
 for Jaeger, you can install it as a separate package with the following command:
 
-```
+```sh
 pip install opentelemetry-exporter-jaeger
 ```
 
 After you install the exporter, update your code to import the Jaeger exporter and use that instead:
 
-```
+```python
 # jaeger_example.py
 from opentelemetry import trace
 from opentelemetry.exporter.jaeger.thrift import JaegerExporter
@@ -180,7 +177,7 @@ with tracer.start_as_current_span("foo"):
 
 Finally, run the Python script:
 
-```
+```python
 python jaeger_example.py
 ```
 
@@ -204,14 +201,14 @@ with a specific framework or library, such as Flask and psycopg2. You can find a
 
 Instrument a basic Flask application that uses the requests library to send HTTP requests. First, install the instrumentation packages themselves:
 
-```
+```sh
 pip install opentelemetry-instrumentation-flask
 pip install opentelemetry-instrumentation-requests
 ```
 
 The following small Flask application sends an HTTP request and also activates each instrumentation during its initialization:
 
-```
+```python
 # flask_example.py
 import flask
 import requests
@@ -244,12 +241,12 @@ def hello():
     return "hello"
 
 
-app.run(debug=True, port=5000)
+app.run(port=5000)
 ```
 
 Now run the script, hit the root URL ([http://localhost:5000/](http://localhost:5000/)) a few times, and watch your spans be emitted!
 
-```
+```sh
 python flask_example.py
 ```
 
@@ -266,13 +263,13 @@ By default, `opentelemetry-python` is configured to use the [W3C Trace Context](
 and [W3C Baggage](https://www.w3.org/TR/baggage/) HTTP headers for HTTP requests, but you can configure it to leverage different propagators. Here’s
 an example using Zipkin’s [b3 propagation](https://github.com/openzipkin/b3-propagation):
 
-```
+```sh
 pip install opentelemetry-propagator-b3
 ```
 
 Following the installation of the package containing the b3 propagator, configure the propagator as follows:
 
-```
+```python
 from opentelemetry.propagate import set_global_textmap
 from opentelemetry.propagators.b3 import B3Format
 
@@ -294,7 +291,7 @@ The Collector is a flexible application that can consume trace data and export t
 
 Start the Collector locally to see how the Collector works in practice. Write the following file:
 
-```
+```yaml
 # /tmp/otel-collector-config.yaml
 receivers:
     otlp:
@@ -316,7 +313,7 @@ service:
 
 Then start the Docker container:
 
-```
+```sh
 docker run -p 4317:4317 \
     -v /tmp/otel-collector-config.yaml:/etc/otel-collector-config.yaml \
     otel/opentelemetry-collector:latest \
@@ -325,13 +322,13 @@ docker run -p 4317:4317 \
 
 Install the OpenTelemetry Collector exporter:
 
-```
+```sh
 pip install opentelemetry-exporter-otlp
 ```
 
 Finally, execute the following script:
 
-```
+```python
 # otcollector.py
 
 from opentelemetry import trace
