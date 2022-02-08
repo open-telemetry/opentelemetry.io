@@ -1,6 +1,7 @@
 ---
 title: Getting Started
 weight: 1
+code_block_from__path_base: content-modules/opentelemetry-python/docs/getting_started
 ---
 
 This guide walks you through instrumenting a Python application with `opentelemetry-python`.
@@ -29,28 +30,7 @@ how long the action took. You can also add arbitrary attributes to the span that
 
 The following example script emits a trace containing three named spans: “foo”, “bar”, and “baz”:
 
-```python
-# tracing.py
-from opentelemetry import trace
-from opentelemetry.sdk.trace import TracerProvider
-from opentelemetry.sdk.trace.export import (
-    BatchSpanProcessor,
-    ConsoleSpanExporter,
-)
-
-provider = TracerProvider()
-processor = BatchSpanProcessor(ConsoleSpanExporter())
-provider.add_span_processor(processor)
-trace.set_tracer_provider(provider)
-
-
-tracer = trace.get_tracer(__name__)
-
-with tracer.start_as_current_span("foo"):
-    with tracer.start_as_current_span("bar"):
-        with tracer.start_as_current_span("baz"):
-            print("Hello world from OpenTelemetry Python!")
-```
+{{% code_block_from file="tracing_example.py" from="15" %}}
 
 When you run the script you can see the traces printed to your console:
 
@@ -144,36 +124,7 @@ pip install opentelemetry-exporter-jaeger
 
 After you install the exporter, update your code to import the Jaeger exporter and use that instead:
 
-```python
-# jaeger_example.py
-from opentelemetry import trace
-from opentelemetry.exporter.jaeger.thrift import JaegerExporter
-from opentelemetry.sdk.resources import SERVICE_NAME, Resource
-from opentelemetry.sdk.trace import TracerProvider
-from opentelemetry.sdk.trace.export import BatchSpanProcessor
-
-trace.set_tracer_provider(
-    TracerProvider(
-        resource=Resource.create({SERVICE_NAME: "my-helloworld-service"})
-    )
-)
-
-jaeger_exporter = JaegerExporter(
-    agent_host_name="localhost",
-    agent_port=6831,
-)
-
-trace.get_tracer_provider().add_span_processor(
-    BatchSpanProcessor(jaeger_exporter)
-)
-
-tracer = trace.get_tracer(__name__)
-
-with tracer.start_as_current_span("foo"):
-    with tracer.start_as_current_span("bar"):
-        with tracer.start_as_current_span("baz"):
-            print("Hello world from OpenTelemetry Python!")
-```
+{{% code_block_from file="jaeger_example.py" from="15" %}}
 
 Finally, run the Python script:
 
@@ -208,41 +159,7 @@ pip install opentelemetry-instrumentation-requests
 
 The following small Flask application sends an HTTP request and also activates each instrumentation during its initialization:
 
-```python
-# flask_example.py
-import flask
-import requests
-
-from opentelemetry import trace
-from opentelemetry.instrumentation.flask import FlaskInstrumentor
-from opentelemetry.instrumentation.requests import RequestsInstrumentor
-from opentelemetry.sdk.trace import TracerProvider
-from opentelemetry.sdk.trace.export import (
-    BatchSpanProcessor,
-    ConsoleSpanExporter,
-)
-
-trace.set_tracer_provider(TracerProvider())
-trace.get_tracer_provider().add_span_processor(
-    BatchSpanProcessor(ConsoleSpanExporter())
-)
-
-app = flask.Flask(__name__)
-FlaskInstrumentor().instrument_app(app)
-RequestsInstrumentor().instrument()
-
-tracer = trace.get_tracer(__name__)
-
-
-@app.route("/")
-def hello():
-    with tracer.start_as_current_span("example-request"):
-        requests.get("http://www.example.com")
-    return "hello"
-
-
-app.run(port=5000)
-```
+{{% code_block_from file="flask_example.py" from="15" %}}
 
 Now run the script, hit the root URL ([http://localhost:5000/](http://localhost:5000/)) a few times, and watch your spans be emitted!
 
@@ -328,30 +245,4 @@ pip install opentelemetry-exporter-otlp
 
 Finally, execute the following script:
 
-```python
-# otcollector.py
-
-from opentelemetry import trace
-from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import (
-    OTLPSpanExporter,
-)
-from opentelemetry.sdk.trace import TracerProvider
-from opentelemetry.sdk.trace.export import BatchSpanProcessor
-
-span_exporter = OTLPSpanExporter(
-    # optional
-    # endpoint="myCollectorURL:4317",
-    # credentials=ChannelCredentials(credentials),
-    # headers=(("metadata", "metadata")),
-)
-tracer_provider = TracerProvider()
-trace.set_tracer_provider(tracer_provider)
-span_processor = BatchSpanProcessor(span_exporter)
-tracer_provider.add_span_processor(span_processor)
-
-# Configure the tracer to use the collector exporter
-tracer = trace.get_tracer_provider().get_tracer(__name__)
-
-with tracer.start_as_current_span("foo"):
-    print("Hello world!")
-```
+{{% code_block_from file="otlpcollector_example.py" from="15" %}}
