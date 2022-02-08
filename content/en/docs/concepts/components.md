@@ -49,7 +49,7 @@ telemetry data with your language of choice and export that data to a preferred 
 These SDKs also let you incorporate automatic instrumentation for common libraries and
 frameworks that you can use to connect to manual instrumentation in your application.
 Vendors often make distributions of language SDKs to make exporting to their backends
-simplier.
+simpler.
 
 For more information, see [Instrumenting](/docs/concepts/instrumenting).
 
