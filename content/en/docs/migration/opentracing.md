@@ -1,25 +1,24 @@
 ---
 title: Migrating from OpenTracing
-weight: 20
+linkTitle: OpenTracing
 draft: true
 spelling: cSpell:ignore codebases
 ---
 
-The OpenTelemetry project aims to provide backwards compatibility with the
-[OpenTracing][] project, in order to ease migration to
-OpenTelemetry. The intention is to allow OpenTracing instrumentation to be
-recorded using the OpenTelemetry SDK, and to allow both the OpenTelemetry
-and the OpenTracing APIs to be used together in the same codebase.
+Backwards compatibility with [OpenTracing][] has been a priority for the
+OpenTelemetry project from the start. To ease migration, OpenTelemetry supports
+the use of both the OpenTelemetry _and_ OpenTracing APIs in the same codebase.
+This allows OpenTracing instrumentation to be recorded using OpenTelemetry SDKs.
 
-To accomplish this, each OpenTelemetry SDK provides an **OpenTracing Shim**,
-which can be installed in order to connect the SDK to the OpenTracing API.
-Please note that the OpenTracing Shim is not enabled by default.
+To accomplish this, each OpenTelemetry SDK provides an **OpenTracing shim**,
+which acts as a bridge between the OpenTracing API and the OpenTelemetry SDK.
+Note that OpenTracing shims are disabled by default.
 
 ## Language version support
 
-For reference see the following table, listing the OpenTracing
-and OpenTelemetry APIs minimum **language** version, as of
-January 2022:
+Before using an OpenTracing shim, check your project's language and runtime
+component versions, and update if necessary. The minimum **language** versions
+of the OpenTracing and OpenTelemetry APIs are listed in the table below.
 
 | Language       | OpenTracing API  | OpenTelemetry API |
 | -------------- | ---------------- | ----------------- |
@@ -29,45 +28,37 @@ January 2022:
 | [Javascript][] | 6                | 8.5               |
 | [.NET][]       | 1.3              | 1.4               |
 
-[.NET]: https://opentelemetry.io/docs/instrumentation/net/shim/
-[Go]: https://pkg.go.dev/go.opentelemetry.io/otel/bridge/opentracing
-[Java]: https://github.com/open-telemetry/opentelemetry-java/tree/main/opentracing-shim
-[Javascript]: https://www.npmjs.com/package/@opentelemetry/shim-opentracing
-[Python]: https://opentelemetry-python.readthedocs.io/en/stable/shim/opentracing_shim/opentracing_shim.html
-
-Users are also encouraged to check and update their language and runtime
-components before using the Shim layer, as the OpenTelemetry APIs and SDKs
-may have higher version requirements than their OpenTracing counterparts.
-e.g. OpenTracing Python supports Python 2.6 and higher, whereas the
-OpenTelemetry Python API supports Python 3.5 and higher.
+Note that the OpenTelemetry API and SDKs generally have higher language version
+requirements than their OpenTracing counterparts.
 
 ## Migration overview
 
-Currently, there are many codebases which are instrumented with OpenTracing.
-These codebases may use the OpenTracing API to instrument their application
-code, and they may install OpenTracing plugins to instrument the libraries and
-frameworks.
+Many codebases are currently instrumented with OpenTracing. These codebases use
+the OpenTracing API to instrument their application code and/or install
+OpenTracing plugins to instrument their libraries and frameworks.
 
-For a simple approach to migrating to OpenTelemetry, you can do the following.
+A general approach to migrating to OpenTelemetry can be summarized as follows:
 
- 1. Install the OpenTelemetry SDK, and remove the current OpenTracing
-    implementation (e.g. the Jaeger client).
+ 1. Install OpenTelemetry SDK(s), and remove the current OpenTracing
+    implementation -- for example, a Jaeger client.
  2. Install the OpenTelemetry instrumentation libraries, and remove the
     OpenTracing equivalents.
- 3. Update your dashboards, alerts, etc, to consume the new OpenTelemetry data.
+ 3. Update your dashboards, alerts, etc., to consume the new OpenTelemetry data.
  4. When writing new application code, write all new instrumentation using the
     OpenTelemetry API.
- 5. Re-instrument your existing application code using the OpenTelemetry API when
-    it is convenient. There is no hard requirement to remove existing OpenTracing
-    API calls from your application, they will continue to work.
+ 5. Progressively re-instrument your application using the OpenTelemetry API.
+    There is no hard requirement to remove existing OpenTracing API calls from
+    your application, they will continue to work.
 
-The above approach works. However, replacing all existing OpenTracing
-instrumentation libraries at once could be burdensome.  To avoid any break in
-observability, we recommend that OpenTracing users progressively migrate their
-applications. The steps below present a careful, incremental approach to
-transitioning to OpenTelemetry.
+While migrating a sizable application can require significant effort, as
+suggested above, we recommend that OpenTracing users progressively migrate their
+application code. This will ease the burden of migration and help avoid breaks
+in observability.
 
-### Step 1: install the OpenTelemetry SDK
+The steps below present a careful, incremental approach to transitioning to
+OpenTelemetry.
+
+### Step 1: Install the OpenTelemetry SDK
 
 Before changing any instrumentation, ensure that you can switch to the
 OpenTelemetry SDK without causing any break in the telemetry the application
@@ -92,7 +83,7 @@ application and still receive the same OpenTracing-based telemetry. In other
 words, confirm that your dashboards, alerts, and other tracing-based analysis
 tools are still working.
 
-### Step 2: progressively replace instrumentation
+### Step 2: Progressively replace instrumentation
 
 Once the OpenTelemetry SDK is installed, all new instrumentation can now be
 written using the OpenTelemetry API. With few exceptions, OpenTelemetry and
@@ -129,8 +120,8 @@ For existing instrumentation, it is recommended that
 
 ## Limits on compatibility
 
-When migrating to OpenTelemetry, there are several notable edge cases to be
-aware of.
+In this section we describe limits on compatibility other than the [language
+version constraints](#language-version-support) mentioned earlier.
 
 ### Semantic conventions
 
@@ -179,16 +170,20 @@ context manager. Using both methods within the same trace may create broken or
 mismatched spans, and is not recommended.
 
 Instead of mixing the two APIs in the same trace, we recommend that you migrate
-complete codepaths from OpenTracing to OpenTelemetry as a single unit, so that
+complete code paths from OpenTracing to OpenTelemetry as a single unit, so that
 only one API is used at a time.
 
 
 ## Specification and implementation details
 
-For details on how each individual OpenTracing shim works, please see the
-appropriate language-specific documentation. For details on the design of the
-OpenTracing shim, please see the
-[specification].
+For details on how each individual OpenTracing shim works, see the appropriate
+language-specific documentation. For details on the design of the OpenTracing
+shim, see [OpenTracing Compatibility][OT_spec].
 
+[.NET]: https://opentelemetry.io/docs/instrumentation/net/shim/
+[Go]: https://pkg.go.dev/go.opentelemetry.io/otel/bridge/opentracing
+[Java]: https://github.com/open-telemetry/opentelemetry-java/tree/main/opentracing-shim
+[Javascript]: https://www.npmjs.com/package/@opentelemetry/shim-opentracing
 [OpenTracing]: https://opentracing.io
-[specification]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/compatibility/opentracing.md
+[OT_spec]: {{< relref "/docs/reference/specification/compatibility/opentracing" >}}
+[Python]: https://opentelemetry-python.readthedocs.io/en/stable/shim/opentracing_shim/opentracing_shim.html
