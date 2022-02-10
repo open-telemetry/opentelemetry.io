@@ -3,19 +3,26 @@ title: Getting Started
 weight: 2
 ---
 
-OpenTelemetry .NET is unique among OpenTelemetry implementations, as it is integrated with the .NET `System.Diagnostics` library. At a high level, you can think of OpenTelemetry for .NET as a bridge between the telemetry available through `System.Diagnostics` and the greater OpenTelemetry ecosystem, such as OpenTelemetry Protocol (OTLP) and the OpenTelemetry Collector. 
+OpenTelemetry .NET is unique among OpenTelemetry implementations, as it is
+integrated with the .NET `System.Diagnostics` library. At a high level, you can
+think of OpenTelemetry for .NET as a bridge between the telemetry available
+through `System.Diagnostics` and the greater OpenTelemetry ecosystem, such as
+OpenTelemetry Protocol (OTLP) and the OpenTelemetry Collector.
 
 ## Installation
 
-OpenTelemetry is available as a [NuGet package][1]. Install it with your preferred package manager client.
+OpenTelemetry is available as a [NuGet package][1]. Install it with your
+preferred package manager client.
 
 ## .NET Core
 
-If using .NET Core, you can follow the pages in this section to manually instrument Logs, Traces, and Metrics.
+If using .NET Core, you can follow the pages in this section to manually
+instrument Logs, Traces, and Metrics.
 
 ## ASP.NET Core
 
-The following sample demonstrates automatic and manual tracing with ASP.NET Core.
+The following sample demonstrates automatic and manual tracing with ASP.NET
+Core.
 
 1. Install the required packages
 
@@ -72,7 +79,8 @@ app.MapGet("/hello", () =>
 app.Run();
 {{< /highlight >}}
 
-1. Run the application and navigate to the `/hello` route. You should see output similar to the following
+1. Run the application and navigate to the `/hello` route. You should see
+output similar to the following
 
     ```text
     Activity.Id:          00-d72f7e51dd06b57211f415489df89b1c-c8a394817946316d-01
@@ -112,17 +120,22 @@ app.Run();
 
 ### What this program does
 
-This output has both the child span created to track work in the route, and an automatically-created span that tracks the inbound ASP.NET Core request itself.
+This output has both the child span created to track work in the route, and an
+automatically-created span that tracks the inbound ASP.NET Core request itself.
 <!-- TODO improve this explanation -->
 
 ## Next Steps
 
-To ensure you're getting the most data as easily as possible, install some [instrumentation libraries]({{< relref "../automatic" >}}) to automatically
+To ensure you're getting the most data as easily as possible, install some
+[instrumentation libraries]({{< relref "../automatic" >}}) to automatically
 generate observability data.
 
-Additionally, enriching your instrumentation generated automatically with [manual instrumentation]({{< relref "../manual" >}}) of your own codebase
+Additionally, enriching your instrumentation generated automatically with
+[manual instrumentation]({{< relref "../manual" >}}) of your own codebase
 gets you customized observability data.
 
-You’ll also want to configure an appropriate exporter to [export your telemetry data]({{< relref "../exporters" >}}) to one or more telemetry backends.
+You’ll also want to configure an appropriate exporter to
+[export your telemetry data]({{< relref "../exporters" >}}) to one or more
+telemetry backends.
 
 [1]: <https://www.nuget.org/packages/OpenTelemetry>
