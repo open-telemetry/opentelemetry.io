@@ -63,12 +63,11 @@ and [Contrib repo exporter](https://github.com/open-telemetry/opentelemetry-pyth
 To find related projects like exporters, instrumentation libraries, tracer
 implementations, etc., visit the [Registry](/registry/?s=python).
 
-### Installing Cutting Edge Packages
+### Installing Cutting-edge Packages
 
-While the project is pre-1.0, there may be significant functionality that
-has not yet been released to PyPI. In that situation, you may want to
-install the packages directly from the repo. This can be done by cloning the
-repository and doing an [editable
+There is some functionality that has not yet been released to PyPI. In that
+situation, you may want to install the packages directly from the repo. This can
+be done by cloning the repository and doing an [editable
 install](https://pip.pypa.io/en/stable/reference/pip_install/#editable-installs):
 
 ```console
