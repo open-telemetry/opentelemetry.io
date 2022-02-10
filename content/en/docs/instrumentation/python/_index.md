@@ -28,7 +28,7 @@ is as follows:
 
 [api/m]: https://opentelemetry-python.readthedocs.io/en/stable/api/metrics.html
 [api/t]: https://opentelemetry-python.readthedocs.io/en/stable/api/trace.html
-[Experimental]: /docs/reference/specification/versioning-and-stability/#stable
+[Experimental]: /docs/reference/specification/versioning-and-stability/#experimental
 [Logging]: https://opentelemetry-python.readthedocs.io/en/stable/sdk/logs.html
 [sdk/m]: https://opentelemetry-python.readthedocs.io/en/stable/sdk/metrics.html
 [sdk/t]: https://opentelemetry-python.readthedocs.io/en/stable/sdk/trace.html
