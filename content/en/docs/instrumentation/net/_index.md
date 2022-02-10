@@ -14,7 +14,7 @@ features.
 OpenTelemetry for .NET supports all officially supported versions of [.NET
 Core](https://dotnet.microsoft.com/download/dotnet-core) and [.NET
 Framework](https://dotnet.microsoft.com/download/dotnet-framework) except for
-.NET Framework 3.5 SP1.
+versions lower than .NET Framework 4.6.1
 
 # Status and Releases
 
@@ -23,17 +23,21 @@ language:
 
 | Tracing | Metrics | Logging |
 | ------- | ------- | ------- |
-| 1.0    | Alpha   | Beta    |
+| Stable  | Beta    | Alpha   |
 
 {{% latest_release "dotnet" /%}}
 
+# Getting Help
+
+- Ask questions about OpenTelemetry .NET not covered by existing documentation in
+  - [Github Discussions](https://github.com/open-telemetry/opentelemetry-dotnet/discussions)
+  - [Slack Channel](https://cloud-native.slack.com/archives/C01N3BC2W7Q)
+- For bugs and feature requests, write a
+  [GitHub issue](https://github.com/open-telemetry/opentelemetry-dotnet/issues/new/choose).
+
 # Further Reading
 
-- [OpenTelemetry .NET on
-  GitHub](https://github.com/open-telemetry/opentelemetry-dotnet)
-- [Getting
-  Started](https://github.com/open-telemetry/opentelemetry-dotnet#getting-started)
-- [OpenTelemetry .NET
-  Contrib](https://github.com/open-telemetry/opentelemetry-dotnet-contrib)
-- [OpenTelemetry .NET Automatic Instrumentation on
-  GitHub](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation)
+- GitHub Repositories
+  - [OpenTelemetry .NET](https://github.com/open-telemetry/opentelemetry-dotnet)
+  - [OpenTelemetry .NET Contrib](https://github.com/open-telemetry/opentelemetry-dotnet-contrib)
+  - [OpenTelemetry .NET Auto-Instrumentation](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation)
