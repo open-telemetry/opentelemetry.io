@@ -22,14 +22,14 @@ OpenTelemetry-Python supports Python 3.6 and higher.
 The current status of the major functional components for OpenTelemetry Python
 is as follows:
 
-- **Tracing** ([API][api/t], [SDK][sdk/t]): [Stable][]
+- **Traces** ([API][api/t], [SDK][sdk/t]): [Stable][]
 - **Metrics** ([API][api/m], [SDK][sdk/m]): [Alpha][Experimental]
-- **[Logging][]**: [Experimental][]
+- **Logs** ([SDK][sdk/l]): [Experimental][]
 
 [api/m]: https://opentelemetry-python.readthedocs.io/en/stable/api/metrics.html
 [api/t]: https://opentelemetry-python.readthedocs.io/en/stable/api/trace.html
 [Experimental]: /docs/reference/specification/versioning-and-stability/#experimental
-[Logging]: https://opentelemetry-python.readthedocs.io/en/stable/sdk/logs.html
+[sdk/l]: https://opentelemetry-python.readthedocs.io/en/stable/sdk/logs.html
 [sdk/m]: https://opentelemetry-python.readthedocs.io/en/stable/sdk/metrics.html
 [sdk/t]: https://opentelemetry-python.readthedocs.io/en/stable/sdk/trace.html
 [Stable]: /docs/reference/specification/versioning-and-stability/#stable
