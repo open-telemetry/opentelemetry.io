@@ -19,4 +19,4 @@ Whether you want a smaller version, or have the need to implement custom functio
 receivers, processors, or exporters. The tool used to build distributions [ocb][] (OpenTelemetry Collector Builder)
 is available to build your own distributions.
 
-[ocb]: https://github.com/open-telemetry/opentelemetry-collector/releases
+[ocb]: https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder
