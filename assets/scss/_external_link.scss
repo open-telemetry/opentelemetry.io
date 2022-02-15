@@ -1,0 +1,32 @@
+// External-link icon after an external link
+//
+// (+) To ensure that the external-link icon word-wraps along with the preceding
+// word, rather than by itself, we (1) start content with $nbsp, and (2) ensure
+// display is not 'inline-block'.
+//
+// For a discussion concerning this topic, see
+// https://stackoverflow.com/questions/16100956/prevent-after-element-from-wrapping-to-next-line.
+
+
+$nbsp: \00A0;
+
+@mixin external-link-icon() {
+  @extend .fas;
+  display: inherit; // (+) override .fas's setting of 'inline-block'
+  @include font-size(60%);
+  opacity: 0.8;
+  vertical-align: text-top;
+  content: fa-content($nbsp + $fa-var-external-link-alt);
+}
+
+a.external-link:after {
+  @include external-link-icon();
+}
+
+// Can't quite use this yet since (1) breadcrumbs currently use external links,
+// (2) we can't currently easily turn this off for footer icons.
+//
+// a[href^="http://"]:not(.btn):not(.external-link):after,
+// a[href^="https://"]:not(.btn):not(.external-link):after {
+//   @include external-link-icon();
+// }

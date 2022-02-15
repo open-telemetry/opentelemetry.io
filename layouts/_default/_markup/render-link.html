@@ -1,0 +1,12 @@
+{{ $isExternal := hasPrefix .Destination "http" -}}
+{{/* Until Hugo supports hook params (https://github.com/gohugoio/hugo/issues/6670), we'll inspect .Text. */ -}}
+{{ $noExternalIcon := in .Text "hk-no-external-icon" -}}
+<a href="{{ .Destination | safeURL }}"
+  {{- with .Title}} title="{{ . }}"{{ end -}}
+  {{- if $isExternal }} target="_blank" rel="noopener"
+    {{- if not $noExternalIcon }} class="external-link"{{ end -}}
+  {{ end -}}
+>
+  {{- .Text | safeHTML -}}
+</a>
+{{- /* This comment ensures that all trailing whitespace is trimmed. */ -}}
