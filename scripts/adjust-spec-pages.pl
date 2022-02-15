@@ -29,10 +29,6 @@ sub printTitle() {
   print "---\n";
 }
 
-sub skipDetailsOrToc() {
-  while(<>) { last if /<\/details>|<!-- tocstop/; }
-}
-
 # main
 
 while(<>) {
@@ -48,8 +44,12 @@ while(<>) {
     next;
   }
 
-  if(/<details>|<!-- toc/) {
-    skipDetailsOrToc();
+  if (/<details>/) {
+    while(<>) { last if /<\/details>/; }
+    next;
+  }
+  if(/<!-- toc -->/) {
+    while(<>) { last if/<!-- tocstop -->/; }
     next;
   }
 
