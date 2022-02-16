@@ -1,11 +1,9 @@
 ---
 title: {{ replaceRE "[-_]" " " .Name | title }}
-# Uncomment the next line if you'd like your post to have a short title:
-# linkTitle: SHORT TITLE GOES HERE
+linkTitle: ADD A SHORT TITLE HERE # TODO: add short title or remove this line
 date: {{ dateFormat "2006-01-02" .Date }}
-author: AUTHOR NAME(S) GO HERE
-# Remove the following draft status (and this comment) once your post is ready to be published:
-draft: true
+author: ADD AUTHOR NAME(S) HERE # TODO
+draft: true # TODO: remove this line once your post is ready to be published
 ---
 
 ## Top-level heading
