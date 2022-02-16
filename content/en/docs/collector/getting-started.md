@@ -109,52 +109,52 @@ full demo can be found at
 
 Every Collector release includes DEB and RPM packaging for Linux amd64/arm64
 systems. The packaging includes a default configuration that can be found at
-`/etc/otel-collector/config.yaml` post-installation.
+`/etc/otelcol/config.yaml` post-installation.
 
 > Please note that systemd is require for automatic service configuration
 
-To get started on Debian systems run the following replacing `v0.39.0` with the
+To get started on Debian systems run the following replacing `v0.44.0` with the
 version of the Collector you wish to run and `amd64` with the appropriate
 architecture.
 
 ```console
 $ sudo apt-get update
 $ sudo apt-get -y install wget systemctl
-$ wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.39.0/otelcol_0.39.0_linux_amd64.deb
-$ dpkg -i otelcol_0.39.0_linux_amd64.deb
+$ wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.44.0/otelcol_0.44.0_linux_amd64.deb
+$ dpkg -i otelcol_0.44.0_linux_amd64.deb
 ```
 
-To get started on Red Hat systems run the following replacing `v0.39.0` with the
+To get started on Red Hat systems run the following replacing `v0.44.0` with the
 version of the Collector you wish to run and `x86_64` with the appropriate
 architecture.
 
 ```console
 $ sudo yum update
 $ sudo yum -y install wget systemctl
-$ wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.39.0/otelcol_0.39.0_linux_amd64.rpm
-$ rpm -ivh otelcol_0.39.0_linux_amd64.rpm
+$ wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.44.0/otelcol_0.44.0_linux_amd64.rpm
+$ rpm -ivh otelcol_0.44.0_linux_amd64.rpm
 ```
 
-By default, the `otel-collector` systemd service will be started with the
-`--config=/etc/otel-collector/config.yaml` option after installation.  To
+By default, the `otelcol` systemd service will be started with the
+`--config=/etc/otelcol/config.yaml` option after installation.  To
 customize these options, modify the `OTELCOL_OPTIONS` variable in the
-`/etc/otel-collector/otel-collector.conf` systemd environment file with the
+`/etc/otelcol/otelcol.conf` systemd environment file with the
 appropriate command-line options (run `/usr/bin/otelcol --help` to see all
 available options).  Additional environment variables can also be passed to the
-`otel-collector` service by adding them to this file.
+`otelcol` service by adding them to this file.
 
 If either the Collector configuration file or
-`/etc/otel-collector/otel-collector.conf` are modified, restart the
-`otel-collector` service to apply the changes by running:
+`/etc/otelcol/otelcol.conf` are modified, restart the
+`otelcol` service to apply the changes by running:
 
 ```console
-$ sudo systemctl restart otel-collector
+$ sudo systemctl restart otelcol
 ```
 
-To check the output from the `otel-collector` service, run:
+To check the output from the `otelcol` service, run:
 
 ```console
-$ sudo journalctl -u otel-collector
+$ sudo journalctl -u otelcol
 ```
 
 ### Windows Packaging
