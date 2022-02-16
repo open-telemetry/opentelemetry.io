@@ -26,6 +26,7 @@ You should see output similar to the following
 
 {{% code_block_from file="ProgramTraces.cs" lang="text" from="1" to="13" %}}
 
+
 ## What this program does
 
 The program creates an `ActivitySource` which represents an
@@ -33,6 +34,7 @@ The program creates an `ActivitySource` which represents an
 `Activity` which represents an [OpenTelemetry Span][2]. An OpenTelemetry
 [TracerProvider][3] is configured to subscribe to the `Activity`s from the
 source `MyCompany.MyProduct.MyLibrary`, and export it to `ConsoleExporter`.
+
 
 [1]: <https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#tracer>
 [2]: <https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#span>

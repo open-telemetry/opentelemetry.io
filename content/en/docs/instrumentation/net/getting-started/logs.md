@@ -26,11 +26,19 @@ You should see output similar to the following
 
 {{% code_block_from file="ProgramLogs.cs" lang="text" from="1" to="10" %}}
 
+
 ## What this program does
 
 The program uses the [`ILogger`][1] API to log a formatted string with a
 [severity level][2] of `Information`. OpenTelemetry captures this and sends it
 to `ConsoleExporter`.
+
+## Implementation Special Note
+
+OpenTelemetry .NET does not introduce its own API for logging. Instead it
+provides an integration with the well known [Microsoft.Extensions.Logging
+API](https://docs.microsoft.com/dotnet/core/extensions/logging).
+
 
 [1]: <https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger>
 [2]: <https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loglevel>
