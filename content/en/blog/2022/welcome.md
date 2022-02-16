@@ -1,7 +1,7 @@
 ---
 title: Welcome to the OpenTelemetry blog
 linkTitle: Welcome
-date: 2022-01-19
+date: 2022-02-02
 author: OpenTelemetry Communications team
 ---
 
