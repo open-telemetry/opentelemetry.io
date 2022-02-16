@@ -143,7 +143,7 @@ README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/r
 receivers:
   # Data sources: logs
   fluentforward:
-    listenAddress: 0.0.0.0:8006
+    endpoint: 0.0.0.0:8006
 
   # Data sources: metrics
   hostmetrics:
