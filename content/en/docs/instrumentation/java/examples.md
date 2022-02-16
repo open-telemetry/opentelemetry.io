@@ -1,7 +1,9 @@
 ---
 title: Instrumentation Examples
 linkTitle: Examples
-aliases: [docs/java/instrumentation_examples]
+aliases:
+  - /docs/java/instrumentation_examples
+  - /docs/instrumentation/java/instrumentation_examples
 weight: 4
 ---
 

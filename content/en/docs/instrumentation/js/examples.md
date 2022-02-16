@@ -1,6 +1,7 @@
 ---
 title: Instrumentation Examples
 title: Examples
+aliases: [/docs/instrumentation/js/instrumentation_examples]
 weight: 4
 ---
 
