@@ -2,49 +2,29 @@
 title: Logs
 description: Getting Started with OpenTelemetry .NET Logging
 weight: 2
+code_block_from__path_base: content-modules/opentelemetry-dotnet/examples/
 ---
 
-1. Install the required packages
+Install the required packages
 
-    ```console
-    dotnet add package Microsoft.Extensions.Logging
-    dotnet add package --prerelease OpenTelemetry.Exporter.Console
-    ```
+```console
+dotnet add package Microsoft.Extensions.Logging
+dotnet add package --prerelease OpenTelemetry.Exporter.Console
+```
 
-1. Update `Program.cs` with the following
+Update `Program.cs` with the following
 
-    {{< highlight csharp "linenos=true" >}}
-using Microsoft.Extensions.Logging;
-using OpenTelemetry.Logs;
+{{% code_block_from file="ProgramLogs.cs" from="12" %}}
 
-using var loggerFactory = LoggerFactory.Create(builder =>
-{
-    builder.AddOpenTelemetry(options => options
-        .AddConsoleExporter());
-});
+Run the application
 
-var logger = loggerFactory.CreateLogger<Program>();
-logger.LogInformation("Hello from {name} {price}.", "tomato", 2.99);
-{{< /highlight >}}
+```console
+dotnet run
+```
 
-1. Run the application
+You should see output similar to the following
 
-    ```console
-    dotnet run
-    ```
-
-1. You should see output similar to the following
-
-    ```text
-    LogRecord.TraceId:            00000000000000000000000000000000
-    LogRecord.SpanId:             0000000000000000
-    LogRecord.Timestamp:          2020-11-13T23:50:33.5764463Z
-    LogRecord.EventId:            0
-    LogRecord.CategoryName:       Program
-    LogRecord.LogLevel:           Information
-    LogRecord.TraceFlags:         None
-    LogRecord.State:              Hello from tomato 2.99.
-    ```
+{{% code_block_from file="ProgramLogs.cs" lang="text" from="1" to="10" %}}
 
 ## What this program does
 

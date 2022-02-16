@@ -2,52 +2,29 @@
 title: Metrics
 description: Getting Started with OpenTelemetry .NET Metrics
 weight: 4
+code_block_from__path_base: content-modules/opentelemetry-dotnet/examples/
 ---
 
-1. Install the required packages
+Install the required packages
 
-    ```console
-    dotnet add package --prerelease OpenTelemetry
-    dotnet add package --prerelease OpenTelemetry.Exporter.Console
-    ```
+```console
+dotnet add package --prerelease OpenTelemetry
+dotnet add package --prerelease OpenTelemetry.Exporter.Console
+```
 
-1. Update `Program.cs` with the following
+Update `Program.cs` with the following
 
-    {{< highlight csharp "linenos=true" >}}
-using System.Diagnostics.Metrics;
-using OpenTelemetry;
-using OpenTelemetry.Metrics;
+{{% code_block_from file="ProgramMetrics.cs" from="8" %}}
 
-private static readonly Meter MyMeter = new("MyCompany.MyProduct.MyLibrary", "1.0");
-private static readonly Counter<long> MyCounter = MyMeter.CreateCounter<long>("MyCounter");
+Run the application
 
-using var meterProvider = Sdk.CreateMeterProviderBuilder()
-    .AddMeter(MyMeter.Name)
-    .AddConsoleExporter()
-    .Build();
+```console
+dotnet run
+```
 
-MyCounter.Add(1, new("name", "apple"), new("color", "red"));
-MyCounter.Add(2, new("name", "lemon"), new("color", "yellow"));
-MyCounter.Add(1, new("name", "lemon"), new("color", "yellow"));
-MyCounter.Add(2, new("name", "apple"), new("color", "green"));
-MyCounter.Add(5, new("name", "apple"), new("color", "red"));
-MyCounter.Add(4, new("name", "lemon"), new("color", "yellow"));
-{{< /highlight >}}
+You should see output similar to the following
 
-1. Run the application
-
-    ```console
-    dotnet run
-    ```
-
-1. You should see output similar to the following
-
-    ```text
-    Export MyCounter, Meter: MyCompany.MyProduct.MyLibrary/1.0
-    (2021-09-23T22:00:08.4399776Z, 2021-09-23T22:00:08.4510115Z] color:red name:apple LongSum Value: 6
-    (2021-09-23T22:00:08.4399776Z, 2021-09-23T22:00:08.4510115Z] color:yellow name:lemon LongSum Value: 7
-    (2021-09-23T22:00:08.4399776Z, 2021-09-23T22:00:08.4510115Z] color:green name:apple LongSum Value: 2
-    ```
+{{% code_block_from file="ProgramMetrics.cs" lang="text" from="1" to="6" %}}
 
 ## What this program does
 

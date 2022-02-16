@@ -2,57 +2,29 @@
 title: Traces
 description: Getting Started with OpenTelemetry .NET Tracing
 weight: 3
+code_block_from__path_base: content-modules/opentelemetry-dotnet/examples/
 ---
 
-1. Install the required packages
+Install the required packages
 
-    ```console
-    dotnet add package --prerelease OpenTelemetry
-    dotnet add package --prerelease OpenTelemetry.Exporter.Console
-    ```
+```console
+dotnet add package --prerelease OpenTelemetry
+dotnet add package --prerelease OpenTelemetry.Exporter.Console
+```
 
-1. Update `Program.cs` with the following
+Update `Program.cs` with the following
 
-    {{< highlight csharp "linenos=true" >}}
-using System.Diagnostics;
-using OpenTelemetry;
-using OpenTelemetry.Trace;
+{{% code_block_from file="ProgramTraces.cs" from="15" %}}
 
-private static readonly ActivitySource MyActivitySource = new("MyCompany.MyProduct.MyLibrary");
+Run the application
 
-using var tracerProvider = Sdk.CreateTracerProviderBuilder()
-    .SetSampler(new AlwaysOnSampler())
-    .AddSource(MyActivitySource.Name)
-    .AddConsoleExporter()
-    .Build();
+```console
+dotnet run
+```
 
-using var activity = MyActivitySource.StartActivity("SayHello")
-activity?.SetTag("foo", 1);
-activity?.SetTag("bar", "Hello, World!");
-activity?.SetTag("baz", new int[] { 1, 2, 3 });
-{{< /highlight >}}
+You should see output similar to the following
 
-1. Run the application
-
-    ```console
-    dotnet run
-    ```
-
-1. You should see output similar to the following
-
-    ```text
-    Activity.Id:          00-8389584945550f40820b96ce1ceb9299-745239d26e408342-01
-    Activity.DisplayName: SayHello
-    Activity.Kind:        Internal
-    Activity.StartTime:   2020-08-12T15:59:10.4461835Z
-    Activity.Duration:    00:00:00.0066039
-    Activity.TagObjects:
-        foo: 1
-        bar: Hello, World!
-        baz: [1, 2, 3]
-    Resource associated with Activity:
-        service.name: unknown_service:getting-started
-    ```
+{{% code_block_from file="ProgramTraces.cs" lang="text" from="1" to="13" %}}
 
 ## What this program does
 
