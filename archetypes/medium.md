@@ -1,5 +1,5 @@
 ---
-title: {{ replaceRE "[-_]" " " .Name | title }}
+title: {{ replaceRE "[-_]" " " .Name | title }} (Medium)
 linkTitle: ADD A SHORT TITLE HERE # TODO
 date: 2021-01-01 # TODO ADJUST THE DATE
 canonical_url: https://medium.com/opentelemetry/ADD-REST-OF-PATH-HERE # TODO
