@@ -146,6 +146,8 @@ params:
 
 module:
   mounts:
+    - source: tmp/specification
+      target: content/docs/reference/specification
     - source: content/en
       target: content
     - source: static

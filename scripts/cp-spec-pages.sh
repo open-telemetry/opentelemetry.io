@@ -2,10 +2,10 @@
 
 BASE_DIR=$(dirname $0)
 SPEC=content-modules/opentelemetry-specification/specification
-DEST=content/en/docs/reference/specification
+DEST=tmp/specification
 
-git clean -xdf $DEST > /dev/null
-
+rm -Rf $DEST
+mkdir -p $DEST
 cp -R $SPEC/* $DEST/
 
 find $DEST/ -name "README.md" -exec sh -c 'f="{}"; mv -- "$f" "${f%README.md}_index.md"' \;
