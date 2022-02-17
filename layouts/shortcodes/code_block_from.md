@@ -2,7 +2,7 @@
 {{ $lang := .Get "lang" | default "" -}}
 {{ $from := .Get "from" | default 0 -}}
 {{ $to := .Get "to" | default 99999 -}}
-{{ $showFileName := .Get "show-file" | default "true" -}}
+{{ $showFileName := .Get "show-file" | default true -}}
 {{ $commentStart := "//" -}}
 
 {{ if not $lang -}}
