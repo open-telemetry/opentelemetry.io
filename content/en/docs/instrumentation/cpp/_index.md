@@ -1,7 +1,9 @@
 ---
 title: C++
 weight: 11
-description: A language-specific implementation of OpenTelemetry in C++.
+description: >
+  <img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/C++_SDK.svg" alt="C++ logo"></img>
+  A language-specific implementation of OpenTelemetry in C++.
 ---
 
 This is the OpenTelemetry for C++ documentation. OpenTelemetry is an
