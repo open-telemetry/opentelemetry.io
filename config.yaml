@@ -5,9 +5,6 @@ disableAliases: true # We do redirects via Netlify's _redirects file
 enableGitInfo: true
 
 # Language settings
-contentDir: content/en
-defaultContentLanguage: en
-defaultContentLanguageInSubdir: false
 enableMissingTranslationPlaceholders: true
 languages:
   en:
@@ -149,6 +146,8 @@ params:
 
 module:
   mounts:
+    - source: content/en
+      target: content
     - source: static
       target: static
     - source: content-modules/opentelemetry-specification/schemas
