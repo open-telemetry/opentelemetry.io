@@ -68,6 +68,7 @@ while(<>) {
   s|(/semantic_conventions/faas.md)#function-as-a-service|$1|g;
   s/#log-data-model/./;
 
+  s|\.\.\/README.md\b|..| if $ARGV =~ /specification.library-guidelines.md/;
   s|\bREADME.md\b|_index.md|g;
 
   # Rewrite inline links
