@@ -14,7 +14,7 @@ dotnet add package --prerelease OpenTelemetry.Exporter.Console
 
 Update `Program.cs` with the following
 
-{{% code_block_from file="ProgramLogs.cs" from="12" %}}
+{{% code_block_from file="ProgramLogs.cs" from="12" show-file=false %}}
 
 Run the application
 
@@ -24,7 +24,7 @@ dotnet run
 
 You should see output similar to the following
 
-{{% code_block_from file="ProgramLogs.cs" lang="text" from="1" to="10" %}}
+{{% code_block_from file="ProgramLogs.cs" lang="text" from="1" to="10" show-file=false %}}
 
 
 ## What this program does

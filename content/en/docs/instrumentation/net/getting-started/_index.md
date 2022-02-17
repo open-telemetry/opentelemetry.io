@@ -50,12 +50,12 @@ dotnet add package --prerelease OpenTelemetry.Instrumentation.SqlClient
 
 Update `Program.cs` with the following
 
-{{% code_block_from file="ProgramAspNetTraces.cs" from="37" %}}
+{{% code_block_from file="ProgramAspNetTraces.cs" from="37" show-file=false %}}
 
 Run the application and navigate to the `/hello` route. You should see
 output similar to the following
 
-{{% code_block_from file="ProgramAspNetTraces.cs" lang="text" from="1" to="35" %}}
+{{% code_block_from file="ProgramAspNetTraces.cs" lang="text" from="1" to="35" show-file=false %}}
 
 
 ### What this program does
