@@ -1,6 +1,7 @@
 ---
 title: OpenTelemetry Generic Pool Instrumentation for Node.js
 registryType: instrumentation
+isThirdyParty: false
 language: js
 tags:
   - js
