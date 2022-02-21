@@ -82,7 +82,7 @@ dependencies {
 ### API reference and examples
 
 - [Javadoc](https://www.javadoc.io/doc/io.opentelemetry)
-- [Example code](https://github.com/open-telemetry/opentelemetry-java/tree/main/examples)
+- [Example code](https://github.com/open-telemetry/opentelemetry-java-docs)
 
 [maven central]: https://mvnrepository.com/artifact/io.opentelemetry
 [releases]: https://github.com/open-telemetry/opentelemetry-java/releases
