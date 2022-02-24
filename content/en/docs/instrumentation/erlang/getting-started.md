@@ -267,22 +267,21 @@ iex(2)>
 
 ## Exporting to the OpenTelemetry Collector
 
-The [Collector](/docs/collector/) provides a vendor
-agnostic way to receive, process and export telemetry data. The package
+The [Collector](/docs/collector/) provides a vendor agnostic way to receive,
+process and export telemetry data. The package
 [opentelemetry_exporter](https://hex.pm/packages/opentelemetry_exporter)
-provides support for both exporting over both HTTP (the default) and GRPC to the
+provides support for both exporting over both HTTP (the default) and gRPC to the
 collector which can then export Spans to a self-hosted service like Zipkin or
-Jaeger, as well as commercial services. See the [OpenTelemetry Collector's
-contrib
-repo](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter)
-for a full list of available exporters in the Collector.
+Jaeger, as well as commercial services. For a full list of available exporters,
+see [the exporters in the OpenTelemetry
+Registry](https://opentelemetry.io/registry/?component=exporter).
 
 For testing purposes the `opentelemetry-erlang` repo has a Collector
 configuration,
 [config/otel-collector-config.yaml](https://github.com/open-telemetry/opentelemetry-erlang/blob/main/config/otel-collector-config.yaml)
 that can be used as a starting point. This configuration is used in
 [docker-compose.yml](https://github.com/open-telemetry/opentelemetry-erlang/blob/main/docker-compose.yml)
-to start the Collector with receivers for both HTTP and GRPC that then export to
+to start the Collector with receivers for both HTTP and gRPC that then export to
 Zipkin also run by [docker-compose](https://docs.docker.com/compose/).
 
 To export to the running Collector the `opentelemetry_exporter` package must be
@@ -345,7 +344,7 @@ end
 {{< /tabs >}}
 
 Finally, the runtime configuration of the `opentelemetry` and
-`opentelemetry_exporter` Application's are set to export to the Collector. The
+`opentelemetry_exporter` Applications are set to export to the Collector. The
 configurations below show the defaults that are used if none are set, which are
 the HTTP protocol with endpoint of `localhost` on port `4318`. If using `grpc`
 for the `otlp_protocol` the endpoint should be changed to `http://localhost:4317`.
