@@ -2,16 +2,12 @@
 title: Vendor support
 ---
 
-<a class="td-offset-anchor"></a>
+{{% blocks/lead color="primary" %}}
+# {{% param title %}}
 
-<section class="row td-box td-box--1 position-relative td-box--gradient td-box--height-auto">
-  <div class="container text-center td-arrow-down">
-    <h1>Vendors Supporting OpenTelemetry</h1>
-    <span class="h4 mb-0">
-      <p>Distributions and vendors who natively support OpenTelemetry in their commercial products.</p>
-    </span>
-  </div>
-</section>
+Distributions and vendors who natively support OpenTelemetry in their commercial
+products.
+{{% /blocks/lead %}}
 
 {{% blocks/section type="section" color="white" %}}
 
