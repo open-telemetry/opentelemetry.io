@@ -267,7 +267,7 @@ iex(2)>
 
 ## Exporting to the OpenTelemetry Collector
 
-[The Collector](https://opentelemetry.io/docs/collector/) provides a vendor
+The [Collector](/docs/collector/) provides a vendor
 agnostic way to receive, process and export telemetry data. The package
 [opentelemetry_exporter](https://hex.pm/packages/opentelemetry_exporter)
 provides support for both exporting over both HTTP (the default) and GRPC to the
