@@ -130,7 +130,7 @@ of span processor that batches up multiple spans over a period of time:
 {{< /tab >}}
 
 {{< tab >}}
-## config/runtime.exs
+# config/runtime.exs
 config :opentelemetry, 
   span_processor: :batch,
   exporter: {:otel_exporter_stdout, []}
@@ -170,7 +170,7 @@ nice_operation(_SpanCtx) ->
 {{< /tab >}}
 
 {{< tab >}}
-## lib/otel_getting_started.ex
+# lib/otel_getting_started.ex
 defmodule OtelGettingStarted do
   require OpenTelemetry.Tracer, as: Tracer
 
@@ -365,7 +365,7 @@ for the `otlp_protocol` the endpoint should be changed to `http://localhost:4317
 {{< /tab >}}
 
 {{< tab >}}
-## config/runtime.exs
+# config/runtime.exs
 config :opentelemetry, 
   span_processor: :batch,
   exporter: :otlp

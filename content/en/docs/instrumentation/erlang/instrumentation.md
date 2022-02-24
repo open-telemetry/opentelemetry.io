@@ -105,8 +105,8 @@ def parent_function() do
 end
 
 def child_function() do
-    ## this is the same process, so the span <<"parent">> set as the active
-    ## span in the with_span call above will be the active span in this function    
+    # this is the same process, so the span <<"parent">> set as the active
+    # span in the with_span call above will be the active span in this function    
     OpenTelemetry.Tracer.with_span "child" do
         ## do work here. when this function returns, <<"child">> will complete.
     end
@@ -274,9 +274,9 @@ the pool, and another when it is checked in.
 {{< tab >}}
 Tracer.with_span "my-span" do
   Span.add_event("checking out connection")
-  ## acquire connection from connection pool
+  # acquire connection from connection pool
   Span.add_event("got connection, doing work")
-  ## do some work with the connection and then return it to the pool
+  # do some work with the connection and then return it to the pool
   Span.add_event("checking in connection")
 end
 {{< /tab >}}
