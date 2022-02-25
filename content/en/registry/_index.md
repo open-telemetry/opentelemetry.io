@@ -1,11 +1,8 @@
 ---
 title: Registry
-outputs:
-  - html
-  - json
+outputs: [html, json]
 menu:
-  main:
-    weight: 20
+  main: {weight: 20}
 ---
 
 <a class="td-offset-anchor"></a>
