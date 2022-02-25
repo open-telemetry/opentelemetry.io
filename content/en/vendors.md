@@ -16,8 +16,8 @@ products.
 | Company         | Distri&shy;bution | Native OTLP | Learn more
 | --------------- | ------------ | ----------- | --------------------------------------------------------------------------------------------------------------------------------
 | AppDynamics     | Yes          | Yes         | <https://docs.appdynamics.com/latest/en/application-monitoring/appdynamics-for-opentelemetry>
-| Aspecto         | Yes          | Yes         | <https://www.aspecto.io>
-| AWS             | Yes          | No          | <https://aws-otel.github.io>
+| Aspecto         | Yes          | Yes         | [<i class="fas fa-external-link hk-no-external-icon"></i>](https://www.aspecto.io)
+| AWS             | Yes          | No          | [<i class="fas fa-external-link"></i>](https://aws-otel.github.io)
 | Azure           | Yes          | No          | <https://docs.microsoft.com/azure/azure-monitor/app/opentelemetry-overview>
 | Datadog         | Yes          | Yes         | <https://docs.datadoghq.com/tracing/setup_overview/open_standards>
 | Dynatrace       | Yes          | Yes         | <https://www.dynatrace.com/support/help/how-to-use-dynatrace/transactions-and-services/service-monitoring-settings/opentelemetry/>
