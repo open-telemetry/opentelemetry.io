@@ -1,5 +1,6 @@
 ---
 title: Vendor support
+spelling: cSpell:ignore bution distri Uptrace
 ---
 
 {{% blocks/lead color="primary" %}}
