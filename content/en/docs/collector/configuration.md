@@ -304,6 +304,8 @@ exporters:
     endpoint: "jaeger-all-in-one:14250"
     tls:
       insecure: false
+      cert_file: file.crt
+      key_file: file.key
 
   # Data sources: traces
   kafka:
@@ -322,6 +324,8 @@ exporters:
     endpoint: otelcol2:4317
     tls:
       insecure: false
+      cert_file: file.crt
+      key_file: file.key
 
   # Data sources: traces, metrics
   otlphttp:
