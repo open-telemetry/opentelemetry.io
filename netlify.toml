@@ -8,4 +8,4 @@ command = "npm run build:production"
 [[redirects]]
 from = "https://docs.opentelemetry.io/*"
 to = "https://opentelemetry.io/docs/:splat"
-status = 200
+force = true
