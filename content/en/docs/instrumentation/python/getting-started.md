@@ -4,9 +4,11 @@ weight: 1
 code_block_from__path_base: content-modules/opentelemetry-python/docs/getting_started
 ---
 
-This guide walks you through instrumenting a Python application with `opentelemetry-python`.
+This guide walks you through instrumenting a Python application with
+`opentelemetry-python`.
 
-For more elaborate examples, see [examples](https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/).
+For more elaborate examples, see
+[examples](https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/).
 
 ## Hello world: emit a trace to your console
 
@@ -17,18 +19,21 @@ pip install opentelemetry-api
 pip install opentelemetry-sdk
 ```
 
-The API package provides the interfaces required by the application owner, as well
-as some helper logic to load implementations.
+The API package provides the interfaces required by the application owner, as
+well as some helper logic to load implementations.
 
-The SDK provides an implementation of those interfaces. The implementation is designed to be generic and extensible enough
-that in many situations, the SDK is sufficient.
+The SDK provides an implementation of those interfaces. The implementation is
+designed to be generic and extensible enough that in many situations, the SDK is
+sufficient.
 
-Once installed, you can use the packages to emit spans from your application. A span
-represents an action within your application that you want to instrument, such as an HTTP request
-or a database call. Once instrumented, you can extract helpful information such as
-how long the action took. You can also add arbitrary attributes to the span that provide more insight for debugging.
+Once installed, you can use the packages to emit spans from your application. A
+span represents an action within your application that you want to instrument,
+such as an HTTP request or a database call. Once instrumented, you can extract
+helpful information such as how long the action took. You can also add arbitrary
+attributes to the span that provide more insight for debugging.
 
-The following example script emits a trace containing three named spans: “foo”, “bar”, and “baz”:
+The following example script emits a trace containing three named spans: “foo”,
+“bar”, and “baz”:
 
 {{% code_block_from file="tracing_example.py" from="15" %}}
 
@@ -92,20 +97,28 @@ $ python tracing_example.py
 }
 ```
 
-Each span typically represents a single operation or unit of work.
-Spans can be nested, and have a parent-child relationship with other spans.
-While a given span is active, newly-created spans inherit the active span’s trace ID, options, and other attributes of its context.
-A span without a parent is called the root span, and a trace is comprised of one root span and its descendants.
+Each span typically represents a single operation or unit of work. Spans can be
+nested, and have a parent-child relationship with other spans. While a given
+span is active, newly-created spans inherit the active span’s trace ID, options,
+and other attributes of its context. A span without a parent is called the root
+span, and a trace is comprised of one root span and its descendants.
 
-In this example, the OpenTelemetry Python library creates one trace containing three spans and prints it to STDOUT.
+In this example, the OpenTelemetry Python library creates one trace containing
+three spans and prints it to STDOUT.
 
 ## Configure exporters to emit spans elsewhere
 
-The previous example does emit information about all spans, but the output is a bit hard to read.
-In most cases, you can instead *export* this data to an application performance monitoring backend to be visualized and queried.
-It’s also common to aggregate span and trace information from multiple services into a single database, so that actions requiring multiple services can still all be visualized together.
+The previous example does emit information about all spans, but the output is a
+bit hard to read. In most cases, you can instead *export* this data to an
+application performance monitoring backend to be visualized and queried. It’s
+also common to aggregate span and trace information from multiple services into
+a single database, so that actions requiring multiple services can still all be
+visualized together.
 
-This concept of aggregating span and trace information is known as distributed tracing. One such distributed tracing backend is known as Jaeger. The Jaeger project provides an all-in-one Docker container with a UI, database, and consumer.
+This concept of aggregating span and trace information is known as distributed
+tracing. One such distributed tracing backend is known as Jaeger. The Jaeger
+project provides an all-in-one Docker container with a UI, database, and
+consumer.
 
 Run the following command to start Jaeger:
 
@@ -113,16 +126,20 @@ Run the following command to start Jaeger:
 docker run -p 16686:16686 -p 6831:6831/udp jaegertracing/all-in-one
 ```
 
-This command starts Jaeger locally on port 16686 and exposes the Jaeger thrift agent on port 6831. You can visit Jaeger at [http://localhost:16686](http://localhost:16686).
+This command starts Jaeger locally on port 16686 and exposes the Jaeger thrift
+agent on port 6831. You can visit Jaeger at
+[http://localhost:16686](http://localhost:16686).
 
-After you spin up the backend, your application needs to export traces to this system. Although `opentelemetry-sdk` doesn’t provide an exporter
-for Jaeger, you can install it as a separate package with the following command:
+After you spin up the backend, your application needs to export traces to this
+system. Although `opentelemetry-sdk` doesn’t provide an exporter for Jaeger, you
+can install it as a separate package with the following command:
 
 ```sh
 pip install opentelemetry-exporter-jaeger
 ```
 
-After you install the exporter, update your code to import the Jaeger exporter and use that instead:
+After you install the exporter, update your code to import the Jaeger exporter
+and use that instead:
 
 {{% code_block_from file="jaeger_example.py" from="15" %}}
 
@@ -132,11 +149,14 @@ Finally, run the Python script:
 python jaeger_example.py
 ```
 
-You can then visit the Jaeger UI, see your service under “services”, and find your traces!
+You can then visit the Jaeger UI, see your service under “services”, and find
+your traces!
 
 ## Instrumentation example with Flask
 
-While the example in the previous section is great, it’s very manual. The following are common actions you might want to track and include as part of your distributed tracing.
+While the example in the previous section is great, it’s very manual. The
+following are common actions you might want to track and include as part of your
+distributed tracing.
 
 
 * HTTP responses from web services
@@ -147,21 +167,28 @@ While the example in the previous section is great, it’s very manual. The foll
 
 * Database calls
 
-To track these common actions, OpenTelemetry has the concept of instrumentations. Instrumentations are packages designed to interface
-with a specific framework or library, such as Flask and psycopg2. You can find a list of the currently curated extension packages in the [Contrib repository](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation).
+To track these common actions, OpenTelemetry has the concept of
+instrumentations. Instrumentations are packages designed to interface with a
+specific framework or library, such as Flask and psycopg2. You can find a list
+of the currently curated extension packages in the [Contrib
+repository](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation).
 
-Instrument a basic Flask application that uses the requests library to send HTTP requests. First, install the instrumentation packages themselves:
+Instrument a basic Flask application that uses the requests library to send HTTP
+requests. First, install the instrumentation packages themselves:
 
 ```sh
 pip install opentelemetry-instrumentation-flask
 pip install opentelemetry-instrumentation-requests
 ```
 
-The following small Flask application sends an HTTP request and also activates each instrumentation during its initialization:
+The following small Flask application sends an HTTP request and also activates
+each instrumentation during its initialization:
 
 {{% code_block_from file="flask_example.py" from="15" %}}
 
-Now run the script, hit the root URL ([http://localhost:5000/](http://localhost:5000/)) a few times, and watch your spans be emitted!
+Now run the script, hit the root URL
+([http://localhost:5000/](http://localhost:5000/)) a few times, and watch your
+spans be emitted!
 
 ```sh
 python flask_example.py
@@ -169,22 +196,27 @@ python flask_example.py
 
 ## Configure Your HTTP propagator (b3, Baggage)
 
-A major feature of distributed tracing is the ability to correlate a trace across
-multiple services. However, those services need to propagate information about a
-trace from one service to the other.
+A major feature of distributed tracing is the ability to correlate a trace
+across multiple services. However, those services need to propagate information
+about a trace from one service to the other.
 
-To enable this propagation, OpenTelemetry has the concept of [propagators]({{< relref "/docs/reference/specification/context/api-propagators" >}}),
-which provide a common method to encode and decode span information from a request and response, respectively.
+To enable this propagation, OpenTelemetry has the concept of [propagators]({{<
+relref "/docs/reference/specification/context/api-propagators" >}}), which
+provide a common method to encode and decode span information from a request and
+response, respectively.
 
-By default, `opentelemetry-python` is configured to use the [W3C Trace Context](https://www.w3.org/TR/trace-context/)
-and [W3C Baggage](https://www.w3.org/TR/baggage/) HTTP headers for HTTP requests, but you can configure it to leverage different propagators. Here’s
-an example using Zipkin’s [b3 propagation](https://github.com/openzipkin/b3-propagation):
+By default, `opentelemetry-python` is configured to use the [W3C Trace
+Context](https://www.w3.org/TR/trace-context/) and [W3C
+Baggage](https://www.w3.org/TR/baggage/) HTTP headers for HTTP requests, but you
+can configure it to leverage different propagators. Here’s an example using
+Zipkin’s [b3 propagation](https://github.com/openzipkin/b3-propagation):
 
 ```sh
 pip install opentelemetry-propagator-b3
 ```
 
-Following the installation of the package containing the b3 propagator, configure the propagator as follows:
+Following the installation of the package containing the b3 propagator,
+configure the propagator as follows:
 
 ```python
 from opentelemetry.propagate import set_global_textmap
@@ -195,18 +227,23 @@ set_global_textmap(B3Format())
 
 ## Use the OpenTelemetry Collector for traces
 
-Although it’s possible to directly export your telemetry data to specific backends, you might have more complex use cases such as the following:
+Although it’s possible to directly export your telemetry data to specific
+backends, you might have more complex use cases such as the following:
 
 
-* A single telemetry sink shared by multiple services, to reduce overhead of switching exporters.
+* A single telemetry sink shared by multiple services, to reduce overhead of
+  switching exporters.
 
 
 * Aggregating traces across multiple services, running on multiple hosts.
 
-To enable a broad range of aggregation strategies, OpenTelemetry provides the [opentelemetry-collector](https://github.com/open-telemetry/opentelemetry-collector).
-The Collector is a flexible application that can consume trace data and export to multiple other backends, including to another instance of the Collector.
+To enable a broad range of aggregation strategies, OpenTelemetry provides the
+[opentelemetry-collector](https://github.com/open-telemetry/opentelemetry-collector).
+The Collector is a flexible application that can consume trace data and export
+to multiple other backends, including to another instance of the Collector.
 
-Start the Collector locally to see how the Collector works in practice. Write the following file:
+Start the Collector locally to see how the Collector works in practice. Write
+the following file:
 
 ```yaml
 # /tmp/otel-collector-config.yaml
