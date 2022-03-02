@@ -208,8 +208,8 @@ example:
 }
 ```
 
-You can see that both outputs are the same because automatic instrumentation does
-exactly what manual instrumentation does.
+You can see that both outputs are the same because automatic instrumentation
+does exactly what manual instrumentation does.
 
 ### Instrumentation while debugging
 
@@ -229,6 +229,9 @@ if __name__ == "__main__":
     app.run(port=8082, debug=True, use_reloader=False)
 ```
 
-[distro]: https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/distro
-[OpenTracing example]: https://github.com/yurishkuro/opentracing-tutorial/tree/master/python
-[source files]: https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/auto-instrumentation
+[distro]:
+    https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/distro
+[OpenTracing example]:
+    https://github.com/yurishkuro/opentracing-tutorial/tree/master/python
+[source files]:
+    https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/auto-instrumentation
