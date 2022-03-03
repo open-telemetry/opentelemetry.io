@@ -6,10 +6,9 @@ language: js
 tags:
   - Node.js
   - fastify
-  - fastify-plugin
-repo: https://github.com/autotelic/fastify-opentelemetry
-license: MIT
-description: Fastify OpenTelemetry API integration, using the Fastify plugin spec.
-authors: Holden Whitehead (holden@autotelic.com)
+repo: https://github.com/open-telemetry/opentelemetry-js-contrib/blob/main/plugins/node/opentelemetry-instrumentation-fastify
+license: Apache 2.0
+description: OpenTelemetry fastify automatic instrumentation package
+authors: OpenTelemetry Authors
 otVersion: latest
 ---
