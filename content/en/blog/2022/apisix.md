@@ -289,9 +289,9 @@ Of course, you can also deploy Apache APISIX through docekr-compose.yaml. For de
 
 After the redeployment is completed, you can access the Jaeger UI or Zipkin UI to see that the Span of APISIX is included in the Trace, as shown below:
 
-![Jaeger UI](/apisix/jaeger-ui-3.png)
+![Jaeger UI](/img/apisix/jaeger-ui-3.png)
 
-![Zipkin UI](/apisix/zipkin-ui-2.png)
+![Zipkin UI](/img/apisix/zipkin-ui-2.png)
 
 ## Disable the Plugin
 
