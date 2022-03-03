@@ -122,10 +122,20 @@ current_span.add_event("Did it!")
 ## Adding links
 
 A span can be created with zero or more span links that causally link it to
-another span.
+another span. A link needs a span context to be created.
 
 ```python
-# todo, lol, why are links so hard to create all the time
+from opentelemetry import trace
+
+ctx = trace.get_current_span().abstractget_span_context()
+
+link_from_current = Link(ctx)
+
+with tracer.start_as_current_span("new-span", links=[link_from_current]) as new_span:
+    # do something that 'new_span' tracks
+
+    # The link in 'new_span' casually associated it with the previous one,
+    # but it is not a child span.
 ```
 
 ## Set span status
@@ -146,7 +156,6 @@ try:
     # something that might fail
 except:
     current_span.set_status(StatusCode.ERROR)
-
 ```
 
 ## Record exceptions in spans
