@@ -1,17 +1,16 @@
 ---
-title: Using API and Annotations
-description: OpenTelemetry documentaion for using API and annotations with Java agent.
+title: Use instrumentation annotations
+description: OpenTelemetry documentaion for using instrumentation annotations with Java agent.
 weight: 2
 ---
 
 For most users, the out-of-the-box instrumentation is completely sufficient and nothing more has to
-be done.  Sometimes, however, users wish to add attributes to the otherwise automatic spans,
-or they might want to manually create spans for their own custom code.
+be done.  Sometimes, however, users wish to create spans for their own custom code without doing too much code change.
 
 # Dependencies
 
-You'll need to add a dependency on the `opentelemetry-api` library to get started; if you intend to
-use the `@WithSpan` annotation, also include the `opentelemetry-extension-annotations` dependency.
+You'll need to add a dependency on the `opentelemetry-extension-annotations` library to 
+use the `@WithSpan` annotation.
 
 ## Maven
 
@@ -19,13 +18,8 @@ use the `@WithSpan` annotation, also include the `opentelemetry-extension-annota
   <dependencies>
     <dependency>
       <groupId>io.opentelemetry</groupId>
-      <artifactId>opentelemetry-api</artifactId>
-      <version>1.7.0</version>
-    </dependency>
-    <dependency>
-      <groupId>io.opentelemetry</groupId>
       <artifactId>opentelemetry-extension-annotations</artifactId>
-      <version>1.7.0</version>
+      <version>1.11.0</version>
     </dependency>
   </dependencies>
 ```
@@ -34,25 +28,8 @@ use the `@WithSpan` annotation, also include the `opentelemetry-extension-annota
 
 ```groovy
 dependencies {
-    implementation('io.opentelemetry:opentelemetry-api:1.7.0')
-    implementation('io.opentelemetry:opentelemetry-extension-annotations:1.7.0')
+    implementation('io.opentelemetry:opentelemetry-extension-annotations:1.11.0')
 }
-```
-
-# Adding attributes to the current span
-
-A common need when instrumenting an application is to capture additional application-specific or
-business-specific information as additional attributes to an existing span from the automatic
-instrumentation. Grab the current span with `Span.current()` and use the `setAttribute()`
-methods:
-
-```java
-import io.opentelemetry.api.trace.Span;
-
-// ...
-
-Span span = Span.current();
-span.setAttribute(..., ...);
 ```
 
 # Creating spans around methods with `@WithSpan`
@@ -107,7 +84,7 @@ and you want to suppress some of them without modifying the code.
 | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
 | `otel.instrumentation.opentelemetry-annotations.exclude-methods` | `OTEL_INSTRUMENTATION_OPENTELEMETRY_ANNOTATIONS_EXCLUDE_METHODS` | Suppress `@WithSpan` instrumentation for specific methods. Format is `my.package.MyClass1[method1,method2];my.package.MyClass2[method3]`
 
-## Creating spans around methods with otel.instrumentation.methods.include
+## Creating spans around methods with `otel.instrumentation.methods.include`
 
 In cases where you are unable to modify the code, you can still configure the javaagent to capture
 spans around specific methods.
