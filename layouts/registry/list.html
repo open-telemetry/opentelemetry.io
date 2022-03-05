@@ -31,15 +31,15 @@
       <form action="{{ "/registry" | absURL }}" id="searchForm">
         <div class="input-group">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">{{ T "Search" }}</span>
+            <span class="input-group-text" id="basic-addon1">Search</span>
           </div>
           <input type="text" name="s" class="form-control" id="search-query" aria-label="Registry Search Input Field">
           <input type="hidden" name="component" id="input-component" value="" />
           <input type="hidden" name="language" id="input-language" value="" />
 
           <div class="input-group-append">
-            <button type="button" class="btn btn-outline-success" onclick="document.getElementById('searchForm').submit();">{{ T "Submit" }}</button>
-            <button type="button" class="btn btn-outline-danger"  onclick="document.getElementById('search-query').value = ''; document.getElementById('input-language').value = 'all';document.getElementById('input-component').value = 'all';document.getElementById('searchForm').submit();">{{ T "Reset" }}</button>
+            <button type="button" class="btn btn-outline-success" onclick="document.getElementById('searchForm').submit();">Submit</button>
+            <button type="button" class="btn btn-outline-danger"  onclick="document.getElementById('search-query').value = ''; document.getElementById('input-language').value = 'all';document.getElementById('input-component').value = 'all';document.getElementById('searchForm').submit();">Reset</button>
             <div>
               <button class="btn btn-outline-secondary dropdown-toggle" id="languageDropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
               <div class="dropdown-menu" id="languageFilter">
