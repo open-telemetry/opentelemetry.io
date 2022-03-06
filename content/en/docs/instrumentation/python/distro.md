@@ -28,7 +28,8 @@ collector, installing the package will setup all the required entry points.
 $ pip install opentelemetry-distro[otlp] opentelemetry-instrumentation
 ```
 
-Start the Collector locally to see data being exported. Write the following file:
+Start the Collector locally to see data being exported. Write the following
+file:
 
 ```yaml
 # /tmp/otel-collector-config.yaml

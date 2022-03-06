@@ -2,15 +2,11 @@
 title: Integrations
 ---
 
-<a class="td-offset-anchor"></a>
-<section class="row td-box td-box--1 position-relative td-box--gradient td-box--height-auto">
-  <div class="container text-center td-arrow-down">
-    <h1>Open Source Project Integrations</h1>
-    <span class="h4 mb-0">
-      <p>OpenTelemetry integrates with or is integrated into various open source projects.</p>
-    </span>
-  </div>
-</section>
+{{% blocks/lead color="primary" %}}
+# {{% param title %}}
+
+OpenTelemetry integrates with or is integrated into various open source projects.
+{{% /blocks/lead %}}
 
 {{< row >}}
 {{< column >}}
@@ -52,6 +48,6 @@ The following open source projects use OpenTelemetry components.
 \* Projects offering experimental or beta support. GA support coming soon!
 
 _Projects are listed alphabetically_
+{{% /blocks/section %}}
 {{< /column >}}
 {{< /row >}}
-{{% /blocks/section %}}

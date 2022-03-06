@@ -1,6 +1,7 @@
 ---
 title: Koa Instrumentation
 registryType: instrumentation
+isThirdParty: false
 language: js
 tags:
   - js

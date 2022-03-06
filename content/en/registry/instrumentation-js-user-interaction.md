@@ -1,6 +1,7 @@
 ---
 title: User Interaction Instrumentation
 registryType: instrumentation
+isThirdParty: false
 language: js
 tags:
   - js

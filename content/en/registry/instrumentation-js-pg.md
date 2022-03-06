@@ -1,6 +1,7 @@
 ---
 title: Postgres Instrumentation
 registryType: instrumentation
+isThirdParty: false
 language: js
 tags:
   - js

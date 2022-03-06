@@ -64,6 +64,10 @@ might be a good starting point.
 
 ## What you should know about distributions
 
+When using OpenTelemetry project collateral such as logo and name for your
+distribution, make sure that you are in line with the [OpenTelemetry Marketing
+Guidelines for Contributing Organizations][guidelines].
+
 The OpenTelemetry project does not certify distributions at this time. In the
 future, OpenTelemetry may certify distributions and partners similarly to the
 Kubernetes project. When evaluating a distribution, ensure using the
@@ -71,3 +75,5 @@ distribution does not result in vendor lock-in.
 
 > Any support for a distribution comes from the distribution authors and
 > not the OpenTelemetry authors.
+
+[guidelines]: https://github.com/open-telemetry/community/blob/main/marketing-guidelines.md
