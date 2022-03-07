@@ -35,7 +35,7 @@ dependencies {
 
 ## Creating spans around methods with `@WithSpan`
 
-To create a span corresponding to one of your method,annotate the method
+To create a span corresponding to one of your method, annotate the method
 with `@WithSpan`.
 
 ```java
@@ -65,10 +65,11 @@ import io.opentelemetry.extension.annotations.SpanAttribute;
 import io.opentelemetry.extension.annotations.WithSpan;
 
 public class MyClass {
-  @WithSpan
-  public void myMethod(@SpanAttribute("parameter1") String parameter1,
+
+    @WithSpan
+    public void myMethod(@SpanAttribute("parameter1") String parameter1,
         @SpanAttribute("parameter2") long parameter2) {
-    <...>     
+        <...>
     }
 }
 ```
