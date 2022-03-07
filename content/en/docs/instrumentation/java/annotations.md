@@ -20,7 +20,7 @@ library to use the `@WithSpan` annotation.
   <dependency>
     <groupId>io.opentelemetry</groupId>
     <artifactId>opentelemetry-extension-annotations</artifactId>
-    <version>1.11.0</version>
+    <version>1.12.0</version>
   </dependency>
 </dependencies>
 ```
