@@ -74,8 +74,8 @@ using our BOM to keep the versions of the various components in sync.
 
 ```kotlin
 dependencies {
-  implementation(platform("io.opentelemetry:opentelemetry-bom:1.10.1"))
-  implementation("io.opentelemetry:opentelemetry-api")
+  implementation(platform("io.opentelemetry:opentelemetry-bom:1.12.0"))
+  implementation("io.opentelemetry:opentelemetry-api:1.12.0")
 }
 ```
 
