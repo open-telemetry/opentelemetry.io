@@ -85,6 +85,6 @@ debug logs. Note that these are quite verbose.
 
 ## Next steps
 
-After you have automatic instrumentation configured for your app or service, you
-may want to add [Manual Instrumentation](../manual) to collect
+After you have automatic instrumentation configured for your app or service,
+you might want to [annotate](../annotations) selected methods or add [manual instrumentation](../manual) to collect
 custom telemetry data.

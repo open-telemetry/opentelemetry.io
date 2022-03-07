@@ -4,7 +4,7 @@ linkTitle: Examples
 aliases:
   - /docs/java/instrumentation_examples
   - /docs/instrumentation/java/instrumentation_examples
-weight: 4
+weight: 6
 ---
 
 Here are some of the resources for Opentelemetry instrumentation examples.
