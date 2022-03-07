@@ -4,7 +4,7 @@ linkTitle: Automatic
 aliases:
   - docs/java/automatic_instrumentation
   - docs/instrumentation/java/automatic_instrumentation
-weight: 1
+weight: 3
 ---
 
 Automatic instrumentation with Java uses a Java agent JAR that can be attached
@@ -83,3 +83,8 @@ for the full list.
 You can pass the `-Dotel.javaagent.debug=true` parameter to the agent to see
 debug logs. Note that these are quite verbose.
 
+## Next steps
+
+After you have automatic instrumentation configured for your app or service,
+you might want to [annotate](../annotations) selected methods or add [manual instrumentation](../manual) to collect
+custom telemetry data.
