@@ -1,11 +1,11 @@
 ---
 title: flow - tracing flow metrics
-registryType: span-processor
+registryType: processor
 isThirdParty: true
 language: go
 tags:
   - go
-  - span-processor
+  - processor
   - prometheus
 repo: https://github.com/MrAlias/flow
 license: Apache 2.0
