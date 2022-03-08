@@ -1,6 +1,6 @@
 ---
-title: Checklist for TroubleShooting OpenTelemetry NodeJS Tracing Issues
-linkTitle: TroubleShooting NodeJS Tracing Issues
+title: Checklist for TroubleShooting OpenTelemetry Node.JS Tracing Issues
+linkTitle: TroubleShooting Node.JS Tracing Issues
 date: 2022-02-22
 canonical_url: https://www.aspecto.io/blog/checklist-for-troubleshooting-opentelemetry-nodejs-tracing-issues
 ---
