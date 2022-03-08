@@ -25,10 +25,10 @@ Checkout
 [boot-opentelemetry-tempo](https://github.com/mnadeem/boot-opentelemetry-tempo)
 and get started
 
-````console
+```console
 $ mvn clean package docker:build
-````
+```
 
-````console
+```console
 $ docker-compose up
-````
+```

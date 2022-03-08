@@ -16,27 +16,23 @@ app or service, use [Manual Instrumentation](../manual)
 
 ## Setup
 
-Download the [latest
-version](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/).
-
-The JAR file (`opentelemetry-javaagent.jar`) contains the agent and all
-automatic instrumentation packages.
-
-Place the JAR in your preferred directory and launch it with your app:
-
-```
-java -javaagent:path/to/opentelemetry-javaagent.jar \
-     -jar myapp.jar
-```
+ 1. Download the [latest release](../#releases). The JAR file
+    (`opentelemetry-javaagent.jar`) contains the agent and all automatic
+    instrumentation packages.
+ 2. Place the JAR in your preferred directory and launch it with your app:
+    ```sh
+    java -javaagent:path/to/opentelemetry-javaagent.jar \
+        -jar myapp.jar
+    ```
 
 ## Configuring the agent
 
 The agent is highly configurable.
 
-One option is to pass configuration properties via the `D` flag. In this example
-a service name and zipkin exporter for traces are configured:
+One option is to pass configuration properties via the `-D` flag. In this
+example, a service name and zipkin exporter for traces are configured:
 
-```
+```sh
 java -javaagent:path/to/opentelemetry-javaagent.jar \
      -Dotel.service.name=your-service-name \
      -Dotel.traces.exporter=zipkin \
@@ -45,7 +41,7 @@ java -javaagent:path/to/opentelemetry-javaagent.jar \
 
 You can also use environment variables to configure the agent:
 
-```
+```sh
 OTEL_SERVICE_NAME=your-service-name \
 OTEL_TRACES_EXPORTER=zipkin \
 java -javaagent:path/to/opentelemetry-javaagent.jar \
@@ -54,7 +50,7 @@ java -javaagent:path/to/opentelemetry-javaagent.jar \
 
 You can also supply a Java properties file and load configuration values from there:
 
-```
+```sh
 java -javaagent:path/to/opentelemetry-javaagent.jar \
      -Dotel.javaagent.configuration-file=path/to/properties/file.properties \
      -jar myapp.jar
@@ -62,21 +58,18 @@ java -javaagent:path/to/opentelemetry-javaagent.jar \
 
 or
 
-```
+```sh
 OTEL_JAVAAGENT_CONFIGURATION_FILE=path/to/properties/file.properties \
 java -javaagent:path/to/opentelemetry-javaagent.jar \
      -jar myapp.jar
 ```
 
-To see the full range of configuration options, see [Agent
-Configuration](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/agent-config.md)
+To see the full range of configuration options, see [Agent Configuration][].
 
 ## Supported libraries, frameworks, application services, and JVMs
 
-Many popular components support automatic instrumentation. See [Supported
-libraries, frameworks, application services, and
-JVMs](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md)
-for the full list.
+Many popular components support automatic instrumentation. For the full list,
+see [Supported libraries, frameworks, application services, and JVMs][support].
 
 ## Troubleshooting
 
@@ -85,6 +78,9 @@ debug logs. Note that these are quite verbose.
 
 ## Next steps
 
-After you have automatic instrumentation configured for your app or service,
-you might want to [annotate](../annotations) selected methods or add [manual instrumentation](../manual) to collect
-custom telemetry data.
+After you have automatic instrumentation configured for your app or service, you
+might want to [annotate](../annotations) selected methods or add [manual
+instrumentation](../manual) to collect custom telemetry data.
+
+[Agent Configuration]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/agent-config.md
+[support]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md

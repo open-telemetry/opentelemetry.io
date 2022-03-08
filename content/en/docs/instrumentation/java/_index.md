@@ -55,7 +55,7 @@ using our BOM to keep the versions of the various components in sync.
       <dependency>
         <groupId>io.opentelemetry</groupId>
         <artifactId>opentelemetry-bom</artifactId>
-        <version>1.10.1</version>
+        <version>1.12.0</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -74,7 +74,7 @@ using our BOM to keep the versions of the various components in sync.
 
 ```kotlin
 dependencies {
-  implementation(platform("io.opentelemetry:opentelemetry-bom:1.10.1"))
+  implementation(platform("io.opentelemetry:opentelemetry-bom:1.12.0"))
   implementation("io.opentelemetry:opentelemetry-api")
 }
 ```
