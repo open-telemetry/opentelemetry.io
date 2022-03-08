@@ -5,7 +5,7 @@ aliases:
   - docs/java/getting_started
   - docs/java/manual_instrumentation
   - docs/instrumentation/java/manual_instrumentation
-weight: 3
+weight: 5
 ---
 
 **Libraries** that want to export telemetry data using OpenTelemetry MUST only
@@ -300,8 +300,7 @@ try (Scope scope = outGoing.makeCurrent()) {
 
 Similarly, the text-based approach can be used to read the W3C Trace Context
 from incoming requests. The following presents an example of processing an
-incoming HTTP request using
-[HttpExchange](https://docs.oracle.com/javase/8/docs/jre/api/net/httpserver/spec/com/sun/net/httpserver/HttpExchange.html).
+incoming HTTP request using [HttpExchange][].
 
 ```java
 TextMapGetter<HttpExchange> getter =
@@ -563,6 +562,7 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
 
 [AlwaysOffSampler]: https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/AlwaysOffSampler.java
 [AlwaysOnSampler]: https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/AlwaysOnSampler.java
+[HttpExchange]: https://docs.oracle.com/javase/8/docs/jre/api/net/httpserver/spec/com/sun/net/httpserver/HttpExchange.html
 [Instrumentation Library]: {{< relref "/docs/reference/specification/glossary#instrumentation-library" >}}
 [instrumented library]: {{< relref "/docs/reference/specification/glossary#instrumented-library" >}}
 [Library Guidelines]: {{< relref "/docs/reference/specification/library-guidelines" >}}

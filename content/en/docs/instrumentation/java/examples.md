@@ -4,7 +4,7 @@ linkTitle: Examples
 aliases:
   - /docs/java/instrumentation_examples
   - /docs/instrumentation/java/instrumentation_examples
-weight: 4
+weight: 6
 ---
 
 Here are some of the resources for Opentelemetry instrumentation examples.
@@ -25,10 +25,10 @@ Checkout
 [boot-opentelemetry-tempo](https://github.com/mnadeem/boot-opentelemetry-tempo)
 and get started
 
-````console
+```console
 $ mvn clean package docker:build
-````
+```
 
-````console
+```console
 $ docker-compose up
-````
+```
