@@ -54,7 +54,7 @@ run as a Release and export spans from.
 {{< tabs Erlang Elixir >}}
 
 {{< tab >}}
-{deps, [{opentelemetry_api, "~> 1.0"}, 
+{deps, [{opentelemetry_api, "~> 1.0"},
         {opentelemetry, "~> 1.0"}]}.
 {{< /tab >}}
 
@@ -71,7 +71,7 @@ end
 
 In the case of Erlang, the Applications will also need to be added to
 `src/otel_getting_started.app.src`. In an Elixir project, a `releases`
-section needs to be added to `mix.exs`: 
+section needs to be added to `mix.exs`:
 
 {{< tabs Erlang Elixir >}}
 
@@ -131,7 +131,7 @@ of span processor that batches up multiple spans over a period of time:
 
 {{< tab >}}
 # config/runtime.exs
-config :opentelemetry, 
+config :opentelemetry,
   span_processor: :batch,
   exporter: {:otel_exporter_stdout, []}
 {{< /tab >}}
@@ -196,12 +196,12 @@ context propagation and for getting the tracer.
 Inside our function, we're creating a new span named `operation` with the
 `with_span` macro. The macro sets the new span as `active` in the current
 context -- stored in the process dictionary, since we aren't passing a
-context as a variable. 
+context as a variable.
 
 Spans can have attributes and events, which are metadata and log statements that
 help you interpret traces after-the-fact. The first span has an event `Nice
 operation!`, with attributes on the event, as well as an attribute set on the
-span itself. 
+span itself.
 
 Finally, in this code snippet, we can see an example of creating a child span of
 the currently-active span. When the `with_span` macro starts a new span, it uses
@@ -247,7 +247,7 @@ Compiling 1 file (.ex)
 Interactive Elixir (1.11.0) - press Ctrl+C to exit (type h() ENTER for help)
 iex(1)> OtelGettingStarted.hello()
 true
-iex(2)> 
+iex(2)>
 *SPANS FOR DEBUG*
 {span,180094370450826032544967824850795294459,5969980227405956772,undefined,
       14276444653144535440,<<"Sub operation...">>,'INTERNAL',
@@ -271,10 +271,9 @@ The [Collector](/docs/collector/) provides a vendor agnostic way to receive,
 process and export telemetry data. The package
 [opentelemetry_exporter](https://hex.pm/packages/opentelemetry_exporter)
 provides support for both exporting over both HTTP (the default) and gRPC to the
-collector which can then export Spans to a self-hosted service like Zipkin or
+collector, which can then export Spans to a self-hosted service like Zipkin or
 Jaeger, as well as commercial services. For a full list of available exporters,
-see [the exporters in the OpenTelemetry
-Registry](https://opentelemetry.io/registry/?component=exporter).
+see the [registry](/registry/?component=exporter).
 
 For testing purposes the `opentelemetry-erlang` repo has a Collector
 configuration,
@@ -290,7 +289,7 @@ added to the project's dependencies:
 {{< tabs Erlang Elixir >}}
 
 {{< tab >}}
-{deps, [{opentelemetry_api, "~> 1.0"}, 
+{deps, [{opentelemetry_api, "~> 1.0"},
         {opentelemetry, "~> 1.0"},
         {opentelemetry_exporter, "~> 1.0"}]}.
 {{< /tab >}}
@@ -358,7 +357,7 @@ for the `otlp_protocol` the endpoint should be changed to `http://localhost:4317
   [{span_processor, batch},
    {exporter, otlp}]},
 
- {opentelemetry_exporter, 
+ {opentelemetry_exporter,
   [{otlp_protocol, http_protobuf},
    {otlp_endpoint, "http://localhost:4318"}]}]}
 ].
@@ -366,7 +365,7 @@ for the `otlp_protocol` the endpoint should be changed to `http://localhost:4317
 
 {{< tab >}}
 # config/runtime.exs
-config :opentelemetry, 
+config :opentelemetry,
   span_processor: :batch,
   exporter: :otlp
 
