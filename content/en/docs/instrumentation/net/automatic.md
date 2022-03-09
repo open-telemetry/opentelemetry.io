@@ -5,7 +5,7 @@ linkTitle: Automatic
 ---
 
 .NET supports automatic instrumentation with [instrumentation
-libraries](https://opentelemetry.io/docs/reference/specification/glossary/#instrumentation-library)
+libraries](/docs/reference/specification/glossary/#instrumentation-library)
 that generate telemetry data for a particular instrumented library.
 
 For example, the instrumentation library for ASP.NET Core will automatically
@@ -98,12 +98,10 @@ automatically.
 ## Available instrumentation libraries
 
 A full list of instrumentation libraries produced by OpenTelemetry is available
-in the
-[opentelemetry-dotnet](https://github.com/open-telemetry/opentelemetry-dotnet)
-repository.
+from the [opentelemetry-dotnet][] repository.
 
-You can also find more instrumentations available in the [opentelemetry
-registry](https://opentelemetry.io/registry/?language=dotnet&component=instrumentation).
+You can also find more instrumentations available in the
+[registry](/registry/?language=dotnet&component=instrumentation).
 
 ## Next steps
 
@@ -116,3 +114,5 @@ instrumentation libraries on .NET Framework.
 
 You'll also want to configure an appropriate exporter to [export your telemetry
 data]({{< relref "exporters" >}}) to one or more telemetry backends.
+
+[opentelemetry-dotnet]: https://github.com/open-telemetry/opentelemetry-dotnet

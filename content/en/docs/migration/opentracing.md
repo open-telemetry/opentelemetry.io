@@ -180,7 +180,7 @@ For details on how each individual OpenTracing shim works, see the appropriate
 language-specific documentation. For details on the design of the OpenTracing
 shim, see [OpenTracing Compatibility][OT_spec].
 
-[.NET]: https://opentelemetry.io/docs/instrumentation/net/shim/
+[.NET]: /docs/instrumentation/net/shim/
 [Go]: https://pkg.go.dev/go.opentelemetry.io/otel/bridge/opentracing
 [Java]: https://github.com/open-telemetry/opentelemetry-java/tree/main/opentracing-shim
 [Javascript]: https://www.npmjs.com/package/@opentelemetry/shim-opentracing
