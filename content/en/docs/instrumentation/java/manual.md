@@ -16,6 +16,8 @@ any other implementation of the OpenTelemetry API. This way, libraries will
 obtain a real implementation only if the user application is configured for it.
 For more details, check out the [Library Guidelines].
 
+Fully-functional examples of manual instrumentation are available in [Opentelemetry Java Docs].
+
 ## Set up
 
 The first step is to get a handle to an instance of the `OpenTelemetry`
@@ -565,6 +567,7 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
 [HttpExchange]: https://docs.oracle.com/javase/8/docs/jre/api/net/httpserver/spec/com/sun/net/httpserver/HttpExchange.html
 [Instrumentation Library]: {{< relref "/docs/reference/specification/glossary#instrumentation-library" >}}
 [instrumented library]: {{< relref "/docs/reference/specification/glossary#instrumented-library" >}}
+[Opentelemetry Java Docs]: https://github.com/open-telemetry/opentelemetry-java-docs
 [Library Guidelines]: {{< relref "/docs/reference/specification/library-guidelines" >}}
 [Obtaining a Tracer]: {{< relref "/docs/reference/specification/trace/api#get-a-tracer" >}}
 [OpenTelemetry Collector]: https://github.com/open-telemetry/opentelemetry-collector
