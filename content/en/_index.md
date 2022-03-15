@@ -18,6 +18,7 @@ mission_url: https://github.com/open-telemetry/community/blob/main/mission-visio
 <div class="l-get-started-buttons">
 
 - [Collector]({{< relref "/docs/collector/getting-started" >}})
+- [Java]({{< relref "/docs/instrumentation/java/" >}})
 - [Go]({{< relref "/docs/instrumentation/go/getting-started" >}})
 - [.NET]({{< relref "/docs/instrumentation/net/getting-started" >}})
 - [JavaScript]({{< relref "/docs/instrumentation/js/getting-started" >}})
