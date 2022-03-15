@@ -135,13 +135,22 @@ WARNING: Generic solution to avoid duplication is under construction 🚧.
 
 ### Events
 
-Traces is one of the signals you may emit. Events (or logs) and traces complement, not duplicate, each other. Whenever you have something that should have a verbosity, logs are a better choice than traces.
+Traces are one kind of signal that your apps can emit. Events (or logs) and
+traces complement, not duplicate, each other. Whenever you have something that
+should have a verbosity, logs are a better choice than traces.
 
-Chances are your library uses logs or some similar mechanism already. Check out [OpenTelemetry registry](/registry/) to see if OpenTelemetry has integration with it. Integrations usually stamps active trace context on all logs, so users can correlate them.
+Chances are that your app uses logging or some similar module already. Your
+module might already have OpenTelemetry integration -- to find out, see the
+[registry](/registry/). Integrations usually stamp active trace context on all
+logs, so users can correlate them.
 
-If your language and ecosystem don't have common logging libraries, use span events for additional details you want to share with users. [Events]({{< relref "/docs/reference/specification/trace/api#add-events" >}}) maybe more convenient when you want to add attributes as well.
+If your language and ecosystem don't have common logging support, use [span
+events][] to share additional app details. Events maybe more convenient if you
+want to add attributes as well.
 
-As a rule of thumb, use events or logs for verbose data instead of spans. Always attach events to the instance of span, your instrumentation created, avoid using active span if you can, as you don't control what it refers to.
+As a rule of thumb, use events or logs for verbose data instead of spans. Always
+attach events to the span instance that your instrumentation created. Avoid
+using the active span if you can, since you don't control what it refers to.
 
 ## Context propagation
 
@@ -287,3 +296,5 @@ class TestExporter implements SpanExporter {
   ...
 }
 ```
+
+[span events]: {{< relref "/docs/reference/specification/trace/api#add-events" >}}
