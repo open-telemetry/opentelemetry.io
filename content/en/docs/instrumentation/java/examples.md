@@ -1,6 +1,5 @@
 ---
-title: Instrumentation Examples
-linkTitle: Examples
+title: Examples
 aliases:
   - /docs/java/instrumentation_examples
   - /docs/instrumentation/java/instrumentation_examples
