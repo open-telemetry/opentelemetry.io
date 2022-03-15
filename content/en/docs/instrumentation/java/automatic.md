@@ -16,9 +16,8 @@ service or app code, see [Manual instrumentation](../manual).
 
 ## Setup
 
- 1. Download the [latest release](../#releases). The JAR file
-    (`opentelemetry-javaagent.jar`) contains the agent and all automatic
-    instrumentation packages.
+ 1. Download [opentelemetry-javaagent.jar][], which
+    contains the agent and all automatic instrumentation packages.
  2. Place the JAR in your preferred directory and launch it with your app:
     ```sh
     java -javaagent:path/to/opentelemetry-javaagent.jar \
@@ -82,5 +81,9 @@ After you have automatic instrumentation configured for your app or service, you
 might want to [annotate](../annotations) selected methods or add [manual
 instrumentation](../manual) to collect custom telemetry data.
 
-[Agent Configuration]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/agent-config.md
-[support]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md
+[Agent Configuration]:
+    https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/agent-config.md
+[opentelemetry-javaagent.jar]:
+     https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/download/v1.12.0/opentelemetry-javaagent.jar
+[support]:
+    https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md
