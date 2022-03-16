@@ -16,8 +16,6 @@ any other implementation of the OpenTelemetry API. This way, libraries will
 obtain a real implementation only if the user application is configured for it.
 For more details, check out the [Library Guidelines].
 
-Fully-functional examples of manual instrumentation are available in [Opentelemetry Java Docs].
-
 ## Set up
 
 The first step is to get a handle to an instance of the `OpenTelemetry`
