@@ -1,13 +1,16 @@
 ---
 title: Examples
+description: Java instrumentation examples
 aliases:
   - /docs/java/instrumentation_examples
   - /docs/instrumentation/java/instrumentation_examples
 weight: 6
 ---
 
-Here are some of the resources for Opentelemetry instrumentation examples.
-Fully-functional examples of manual instrumentation are available in [Opentelemetry Java Docs].
+## Manual instrumentation
+
+For fully-functional examples of manual instrumentation, see [Java OpenTelemetry
+Examples][].
 
 ## Community Resources
 
@@ -27,10 +30,7 @@ and get started
 
 ```console
 $ mvn clean package docker:build
-```
-
-```console
 $ docker-compose up
 ```
 
-[Opentelemetry Java Docs]: https://github.com/open-telemetry/opentelemetry-java-docs
+[Java OpenTelemetry Examples]: https://github.com/open-telemetry/opentelemetry-java-docs#java-opentelemetry-examples

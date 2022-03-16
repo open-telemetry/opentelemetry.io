@@ -11,7 +11,8 @@ OpenTelemetry Java consists of the following repositories:
 
 - [opentelemetry-java](https://github.com/open-telemetry/opentelemetry-java):
   Components for manual instrumentation including API and SDK as well as
-  extensions, the OpenTracing shim and examples.
+  extensions, the OpenTracing shim.
+- [opentelemetry-java-docs][]: Manual instrumentation examples.
 - [opentelemetry-java-instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation):
   Built on top of opentelemetry-java and provides a Java agent JAR that can be
   attached to any Java 8+ application and dynamically injects bytecode to
@@ -79,10 +80,10 @@ dependencies {
 }
 ```
 
-### API reference and examples
+### API reference
 
 - [Javadoc](https://www.javadoc.io/doc/io.opentelemetry)
-- [Example code](https://github.com/open-telemetry/opentelemetry-java-docs)
 
 [maven central]: https://mvnrepository.com/artifact/io.opentelemetry
+[opentelemetry-java-docs]: https://github.com/open-telemetry/opentelemetry-java-docs#java-opentelemetry-examples
 [releases]: https://github.com/open-telemetry/opentelemetry-java/releases
