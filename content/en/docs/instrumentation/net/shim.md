@@ -82,7 +82,6 @@ using OpenTelemetry;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
-// Define some important constants and the activity source.
 // These can come from a config file, constants file, etc.
 var serviceName = "MyCompany.MyProduct.MyService";
 var serviceVersion = "1.0.0";
@@ -175,7 +174,7 @@ generally sufficient to just have one defined per service.
 
 ## Creating Spans
 
-To create an activity, give it a name and create it from your `Tracer`.
+To create a span, give it a name and create it from your `Tracer`.
 
 ```csharp
 using var span = MyTracer.StartActiveSpan("SayHello");
@@ -239,7 +238,7 @@ block is explicitly defined, rather than scoped to `DoWork` itself like
 
 ## Get the current Span
 
-Sometimes it's helpful to access whatever the current `Activity` is at a point
+Sometimes it's helpful to access whatever the current `TelemetrySpan` is at a point
 in time so you can enrich it with more information.
 
 ```csharp
@@ -275,11 +274,11 @@ using var span = tracer.StartActiveSpan("SayHello");
 
 // ...
 
-myActivity?.AddEvent(new("Gonna try it!"));
+span.AddEvent("Doing something...");
 
 // ...
 
-myActivity?.AddEvent(new("Did it!"));
+span.AddEvent("Dit it!");
 ```
 
 Events can also be created with a timestamp and a collection of Tags.
