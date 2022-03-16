@@ -39,19 +39,10 @@ Roles:
 Learn more about roles in the [community repository][]. Thanks to [all who have
 already contributed][contributors]!
 
-## Documentation license
+##  Licenses
 
-This work is licensed under a <a rel="license"
-href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution
-4.0 International License</a>.
-
-The Creative Commons Attribution 4.0 license applies to the creative work of
-this site (documentation, visual assets, etc.) and not to the underlying code
-and does not supersede any licenses of the source code, its dependencies, etc.
-
-<a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
-  <img alt="Creative Commons License" src="https://i.creativecommons.org/l/by/4.0/88x31.png" />
-</a>
+- Documentation: [CC-BY-4.0](LICENSE)
+- Code: [Apache-2.0](LICENSE-CODE)
 
 [@open-telemetry/blog-approvers]: https://github.com/orgs/open-telemetry/teams/blog-approvers
 [@open-telemetry/docs-approvers]: https://github.com/orgs/open-telemetry/teams/docs-approvers
