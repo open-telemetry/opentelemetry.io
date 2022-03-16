@@ -171,12 +171,12 @@ locally to a file. Data is sent to the container and the container scrapes its o
 Prometheus metrics.
 
 ```console
-$ git clone git@github.com:open-telemetry/opentelemetry-collector-contrib.git; \
+$ git clone https://github.com/open-telemetry/opentelemetry-collector-contrib.git; \
     cd opentelemetry-collector-contrib/examples/demo; \
-    go build client/main.go; ./client/main & pid1="$!"; \
-    go build server/main.go; ./server/main & pid2="$!"; \
+    go build -o client/main client/main.go; ./client/main & pid1="$\!"; \
+    go build -o server/main server/main.go; ./server/main & pid2="$\!"; \
 
-$ git clone git@github.com:open-telemetry/opentelemetry-collector.git; \
+$ git clone https://github.com/open-telemetry/opentelemetry-collector.git \
     cd opentelemetry-collector; make install-tools; make otelcorecol; \
     ./bin/cmd-otelcol --config ./examples/local/otel-config.yaml; kill $pid1; kill $pid2
 ```
