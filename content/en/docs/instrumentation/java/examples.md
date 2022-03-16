@@ -7,6 +7,7 @@ weight: 6
 ---
 
 Here are some of the resources for Opentelemetry instrumentation examples.
+Fully-functional examples of manual instrumentation are available in [Opentelemetry Java Docs].
 
 ## Community Resources
 
@@ -31,3 +32,5 @@ $ mvn clean package docker:build
 ```console
 $ docker-compose up
 ```
+
+[Opentelemetry Java Docs]: https://github.com/open-telemetry/opentelemetry-java-docs
