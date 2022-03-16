@@ -33,3 +33,5 @@ $ mvn clean package docker:build
 ```console
 $ docker-compose up
 ```
+
+[Opentelemetry Java Docs]: https://github.com/open-telemetry/opentelemetry-java-docs
