@@ -1,11 +1,13 @@
 ---
-title: Integrating Apache APISIX and OpenTelemetry to Enhance Observability Capabilities
+title: Apache APISIX Integrates with OpenTelementry to Collect Tracing Data
 linkTitle: Apache APISIX-Opentelemetry Integration
-date: 2022-03-03
+date: 2022-03-13
 author: Haochao Zhuang, Fei Han
 ---
 
-This article introduces you to the Apache APISIX `opentelemetry` plugin concept and how to enable and deploy the plugin.
+
+
+This article introduces the Apache APISIX's `opentelemetry` plugin concept and how to enable and deploy the plugin.
 
 ## Background Information
 
@@ -19,15 +21,15 @@ The `opentelemetry` plugin of Apache APISIX implements Tracing data collection b
 
 Since the Agent/SDK of OpenTelemetry has nothing to do with the back-end implementation, when the application integrates the Agent/SDK of OpenTelemetry, the user can easily and freely change the observability backend service without any perception on the application side, such as switching from Zipkin into Jaeger.
 
-The `opentelemetry` plug-in integrates the OpenTelemetry Agent/SDK in Apache APISIX, which can collect traced requests, generate `trace` and forward them to the OpenTelemetry Collector.
+One of OpenTelemetry's special features is that the Agent/SDK of OpenTelemetry is not locked with back-end implementation, which gives users flexibilities on choosing their own back-end services. In other words, users can choose the backend services they want, such as Zipkin and Jaeger, without affectting the application side.
 
-The opentelemetry plugin is located on the Agent side in the above figure, but currently only supports the `trace` part, and does not support the `logs` and `metrics` protocols of OpenTelemetry.
+The `opentelemetry` plug-in is located on the Agent side. It integrates the OpenTelemetry Agent/SDK and adopts its features in Apache APISIX. It can collect traced requests, generate `trace` and forward them to the OpenTelemetry Collector. It supports the `trace` protocol, and it will support the `logs` and `metrics` protocols of OpenTelemetry in the next version.
 
 ## Enable the Plugin
 
 You need to enable `opentelemetry` plugin and modify collector configuration in `conf/config.yaml` configuration file.
 
-We assume that you have already deployed the OpenTelemetry Collector and enabled the [OTLP HTTP Receiver](https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/otlpreceiver/README.md).
+We assume that you have already deployed the OpenTelemetry Collector on the same node as the APISIX and enabled the [OTLP HTTP Receiver](https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/otlpreceiver/README.md).
 
 > If you have not completed the deployment, you can refer to the Scenario Example section in the next section to complete the deployment of OpenTelemetry Collector.
 
@@ -213,7 +215,7 @@ You need to make sure you have enabled the `opentelemetry` plugin and reload Apa
 
   You need to modify the configuration file, change the interface address of Client calling Server to the address of Apache APISIX, and map the ports of OTLP HTTP Receiver and Server services to local.
 
-  The following example is the complete docker-compose.yaml after the configuration is modified:
+  The following example is the complete `docker-compose.yaml` after the configuration is modified:
 
   ```yaml
   version: "2"
@@ -295,9 +297,11 @@ After the redeployment is completed, you can access the Jaeger UI or Zipkin UI t
 
 ## Disable the Plugin
 
-If you do not need trace collection of a route temporarily, you only need to modify the route configuration and delete the related configuration of `opentelemetry` under `plugins` in the configuration.
+If you do not need trace collection of a route temporarily, you only need to modify the route configuration and delete the part of `opentelemetry` under `plugins` in the configuration.
 
-You can only remove the configuration of the `opentelemetry` global plugin if you enabled it globally by binding Global Rules.
+If you enabled `opentelemetry` globally by binding Global Rules, you can remove the configuration of the `opentelemetry` global plugin.
+
+Please note that disabling the `opentelemetry` plugin only results in disconnecting the APISIX span, the client and server spans will remain connected.
 
 ## Summary
 
