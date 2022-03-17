@@ -19,8 +19,6 @@ OpenTelemetry is an open source telemetry data acquisition and processing system
 
 The `opentelemetry` plugin of Apache APISIX implements Tracing data collection based on OpenTelemetry native standard (OTLP/HTTP), and sends it to OpenTelemetry Collector through HTTP protocol. This feature will be supported online in Apache APISIX 2.13.0.
 
-Since the Agent/SDK of OpenTelemetry has nothing to do with the back-end implementation, when the application integrates the Agent/SDK of OpenTelemetry, the user can easily and freely change the observability backend service without any perception on the application side, such as switching from Zipkin into Jaeger.
-
 One of OpenTelemetry's special features is that the Agent/SDK of OpenTelemetry is not locked with back-end implementation, which gives users flexibilities on choosing their own back-end services. In other words, users can choose the backend services they want, such as Zipkin and Jaeger, without affectting the application side.
 
 The `opentelemetry` plug-in is located on the Agent side. It integrates the OpenTelemetry Agent/SDK and adopts its features in Apache APISIX. It can collect traced requests, generate `trace` and forward them to the OpenTelemetry Collector. It supports the `trace` protocol, and it will support the `logs` and `metrics` protocols of OpenTelemetry in the next version.
