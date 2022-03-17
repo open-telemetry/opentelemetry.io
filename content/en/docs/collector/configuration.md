@@ -551,7 +551,7 @@ service:
 
 ### Setting up certificates
 
-Certain exporters require that x.509 certificates are used for mTLS security.
+For a production setup, we strongly recommend using TLS certificates, either for secure communication or mTLS for mutual authentication.
 See the below steps to generate the certificates used in this example.
 
 Install [cfssl](https://github.com/cloudflare/cfssl), and create the following
