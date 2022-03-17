@@ -172,9 +172,10 @@ Prometheus metrics.
 
 ```console
 $ git clone https://github.com/open-telemetry/opentelemetry-collector-contrib.git; \
-    cd opentelemetry-collector-contrib/examples/demo; \
-    go build -o client/main client/main.go; ./client/main & pid1="$!"; \
-    go build -o server/main server/main.go; ./server/main & pid2="$!"; \
+    cd opentelemetry-collector-contrib/examples/demo/client; \
+    go build -o main main.go; ./main & pid1="$!"; \
+    cd ../server; \
+    go build -o main main.go; ./main & pid2="$!"; \
 
 $ git clone https://github.com/open-telemetry/opentelemetry-collector.git \
     cd opentelemetry-collector; make install-tools; make otelcorecol; \
