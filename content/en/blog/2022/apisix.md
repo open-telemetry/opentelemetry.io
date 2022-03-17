@@ -285,7 +285,7 @@ You need to make sure you have enabled the `opentelemetry` plugin and reload Apa
 
 It should be noted that demo-client.environment.DEMO_SERVER_ENDPOINT needs to be changed to your Apache APISIX address, and ensure that it can be accessed normally in the container.
 
-Of course, you can also deploy Apache APISIX through docekr-compose.yaml. For details, please refer to the Apache APISIX official documentation.
+Of course, you can also deploy Apache APISIX through `docekr-compose.yaml`. For details, please refer to the Apache APISIX official documentation.
 
 ### Step 3: Verify the Outputs
 
