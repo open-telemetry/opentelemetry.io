@@ -552,7 +552,7 @@ service:
 ### Setting up certificates
 
 For a production setup, we strongly recommend using TLS certificates, either for secure communication or mTLS for mutual authentication.
-See the below steps to generate the certificates used in this example.
+See the below steps to generate self-signed certificates used in this example. You might want to use your current cert provisioning procedures to procure a certificate for production usage.
 
 Install [cfssl](https://github.com/cloudflare/cfssl), and create the following
 `csr.json` file:
