@@ -178,7 +178,7 @@ $ git clone https://github.com/open-telemetry/opentelemetry-collector-contrib.gi
     go build -o main main.go; ./main & pid2="$!"; \
     cd ../../../..
 
-$ git clone https://github.com/open-telemetry/opentelemetry-collector.git \
+$ git clone https://github.com/open-telemetry/opentelemetry-collector.git; \
     cd opentelemetry-collector; make install-tools; make otelcorecol; \
     ./bin/otelcorecol_* --config ./examples/local/otel-config.yaml; kill $pid1; kill $pid2
 ```
