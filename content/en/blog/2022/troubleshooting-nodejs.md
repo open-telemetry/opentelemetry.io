@@ -1,12 +1,12 @@
 ---
-title: Checklist for TroublesShooting OpenTelemetry Node.JS Tracing Issues
-linkTitle: TroublesShooting Node.JS Tracing Issues
+title: Checklist for TroublesShooting OpenTelemetry Node.js Tracing Issues
+linkTitle: TroublesShooting Node.js Tracing Issues
 date: 2022-02-22
 canonical_url: https://www.aspecto.io/blog/checklist-for-troubleshooting-opentelemetry-nodejs-tracing-issues
 ---
 
 I’ll try to make this one short and to the point. You are probably here because
-you installed OpenTelemetry in your NodeJS application and did not see any
+you installed OpenTelemetry in your Node.js application and did not see any
 traces or some expected spans were missing.
 
 There can be many reasons for that, but some are more common than others. In
@@ -16,7 +16,7 @@ methods and tips.
 ## Requirements
 
 I assume that you already have basic knowledge of what OpenTelemetry is and how
-it works and that you tried to set it up in your NodeJS application.
+it works and that you tried to set it up in your Node.js application.
 
 ### Enable Logging
 

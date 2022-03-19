@@ -158,7 +158,7 @@ into production.
 ### Context management in Javascript
 
 In Javascript, the OpenTelemetry API makes use of commonly available context
-managers, such as `async_hooks` for NodeJS and `Zones.js` for the browser. These
+managers, such as `async_hooks` for Node.js and `Zones.js` for the browser. These
 context managers make tracing instrumentation a much less invasive and onerous
 task, compared to adding a span as a parameter to every method which needs to
 be traced.

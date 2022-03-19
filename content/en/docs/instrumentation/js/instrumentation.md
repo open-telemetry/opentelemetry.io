@@ -3,7 +3,7 @@ title: Instrumentation
 weight: 3
 ---
 
-This guide will cover creating and annotating spans, creating and annotating metrics, how to pass context, and a guide to automatic instrumentation for JavaScript. This simple example works in the browser as well as with Node.JS
+This guide will cover creating and annotating spans, creating and annotating metrics, how to pass context, and a guide to automatic instrumentation for JavaScript. This simple example works in the browser as well as with Node.js
 
 ## Example Application
 
@@ -148,7 +148,7 @@ function doWork(parent) {
   // Add an attribute to the same span later on
   span.setAttribute('attribute2', 'value2');
 
-  
+
   // Be sure to end the span!
   span.end();
 }
