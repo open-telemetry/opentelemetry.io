@@ -307,7 +307,6 @@ exporters:
   jaeger:
     endpoint: "jaeger-all-in-one:14250"
     tls:
-      insecure: false
       cert_file: cert.pem
       key_file: cert-key.pem
 
@@ -327,7 +326,6 @@ exporters:
   otlp:
     endpoint: otelcol2:4317
     tls:
-      insecure: false
       cert_file: cert.pem
       key_file: cert-key.pem
 
