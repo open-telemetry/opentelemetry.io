@@ -4,7 +4,7 @@ aliases: [/docs/js/getting_started]
 weight: 1
 ---
 
-These two guides for Node.JS and the browser use simple examples in javascript
+These two guides for Node.js and the browser use simple examples in javascript
 to get you started with OpenTelemetry. Both will show you the following steps:
 
 - Install the required OpenTelemetry libraries
