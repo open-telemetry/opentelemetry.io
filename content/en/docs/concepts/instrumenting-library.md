@@ -68,7 +68,7 @@ When obtaining the tracer, provide your library (or tracing plugin) name and ver
 
 ## What to instrument
 
-<img src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/Instrumenting_Library_nested_spans.svg" alt="Nested database and HTTP spans"></img>
+![Nested database and HTTP spans in Jaeger UI](https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/Instrumenting_Library_nested_spans.svg)
 
 ### Public APIs
 
