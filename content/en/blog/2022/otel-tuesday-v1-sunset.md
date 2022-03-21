@@ -15,7 +15,7 @@ associated rate of change and lack of discoverability that drove the stream as a
 concept has lessened. OpenTelemetry updates and news can be found in various
 [newsletters](https://o11y.news), [Twitter
 feeds](https://twitter.com/hashtag/opentelemetry),
-and a thriving community on [Slack](https://slack.cncf.io/)].
+and a thriving community on [Slack](https://slack.cncf.io/).
 
 With this in mind, we'll be winding down the OpenTelemetry Tuesday stream going
 forward. That doesn't mean it's gone forever, or that we wouldn't be willing to
