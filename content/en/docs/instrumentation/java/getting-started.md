@@ -101,7 +101,7 @@ For more:
 [annotations]: ../annotations
 [configure the Java agent]: https://opentelemetry.io/docs/instrumentation/java/automatic/#configuring-the-agent
 [console trace exporter,]: https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md#logging-exporter
-[exporter]: /docs/instrumentation/java/manual/#exporter
+[exporter]: https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md#exporters
 [Get the example code.]: https://grpc.io/docs/languages/java/quickstart/#get-the-example-code
 [Java Quick start example]: https://grpc.io/docs/languages/java/quickstart/
 [manual instrumentation]: ../manual
