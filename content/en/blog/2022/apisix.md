@@ -293,6 +293,14 @@ After the redeployment is completed, you can access the Jaeger UI or Zipkin UI t
 
 ![Zipkin UI](/img/apisix/zipkin-ui-2.png)
 
+When demo-server is not instrumented, you can still getting visibility of the demo-server behavior by enabling this plugin. Although this is not a typical case, it is a poor-man substitute of a real instrumentation of demo-server and provides a lot of value.
+
+![upstream-not-instrumented](/img/apisix/upstream-not-instrumented.png)
+
+When the request does not reach the demo-server, the output would not include the span of demo-server.
+
+![demo-server disconneted](/img/apisix/demo-server-disconnected.png)
+
 ## Disable the Plugin
 
 If you do not need trace collection of a route temporarily, you only need to modify the route configuration and delete the part of `opentelemetry` under `plugins` in the configuration.
