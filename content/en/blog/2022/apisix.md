@@ -5,8 +5,6 @@ date: 2022-03-13
 author: Haochao Zhuang, Fei Han
 ---
 
-
-
 This article introduces the Apache APISIX's `opentelemetry` plugin concept and how to enable and deploy the plugin.
 
 ## Background Information
