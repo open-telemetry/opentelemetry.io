@@ -31,8 +31,7 @@ OpenTelemetry is a collection of tools, APIs, and SDKs. Use it to instrument,
 generate, collect, and export telemetry data (metrics, logs, and traces) to
 help you analyze your software's performance and behavior.
 
-> OpenTelemetry is in **beta** across several languages and is suitable for use.
-We anticipate general availability soon.
+> OpenTelemetry is **generally available** across [several languages]({{< relref "/docs/instrumentation" >}}) and is suitable for use.
 {{% /blocks/lead %}}
 
 {{% blocks/section color="dark" %}}
