@@ -185,7 +185,7 @@ You need to make sure you have enabled the `opentelemetry` plugin and reload Apa
       "plugins": {
           "opentelemetry": {
               "sampler": {
-                  "name": "always_on",
+                  "name": "always_on"
               }
           }
       },
