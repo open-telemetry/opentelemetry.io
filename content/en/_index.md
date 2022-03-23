@@ -5,7 +5,7 @@ mission_url: https://github.com/open-telemetry/community/blob/main/mission-visio
 ---
 
 {{< blocks/cover image_anchor="top" height="max" color="primary" >}}
-<img src="/img/logos/opentelemetry-horizontal-color.svg" class="otel-logo" />
+<img src="/img/logos/opentelemetry-horizontal-color.svg" class="otel-logo" alt="OpenTelemetry"/>
 <h1>High-quality, ubiquitous, and portable telemetry to enable effective observability</h1>
 
 <div class="l-primary-buttons mt-5">

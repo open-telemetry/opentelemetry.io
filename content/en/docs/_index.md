@@ -12,7 +12,7 @@ metrics, and logs. The OpenTelemetry documentation is intended to broadly cover
 key terms, concepts, and instructions on how to use OpenTelemetry in your
 software.
 
-<img src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/Reference_Architecture.svg" alt="Implementation of the OpenTelemetry Reference Architecture "></img>
+![Implementation of the OpenTelemetry Reference Architecture](https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/Reference_Architecture.svg)
 
 OpenTelemetry provides an implementation of all of its components as well as a
 reference architecture. The project is flexible and extensible to support a

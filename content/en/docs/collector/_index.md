@@ -8,7 +8,7 @@ spelling: cSpell:ignore Otel
 aliases: [/docs/collector/about]
 ---
 
-<img src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/Otel_Collector.svg" alt="Otel-Collector diagram with Jaeger, OTLP and Prometheus integration"></img>
+![OpenTelemetry Collector diagram with Jaeger, OTLP and Prometheus integration](https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/Otel_Collector.svg)
 
 The OpenTelemetry Collector offers a vendor-agnostic implementation of how to
 receive, process and export telemetry data. It removes the need to run,
