@@ -5,7 +5,7 @@ date: 2022-03-13
 author: Haochao Zhuang, Fei Han
 ---
 
-This article introduces the Apache APISIX's `opentelemetry` plugin conceptand
+This article introduces the Apache APISIX's `opentelemetry` plugin concept and
 how to enable and deploy the plugin.
 
 ## Background Information
@@ -13,20 +13,17 @@ how to enable and deploy the plugin.
 OpenTelemetry is an open source telemetry data acquisition and processing
 system. It not only provides various SDKs for application side telemetry data
 collection and reporting, but also provides data collection side for data
-receiving, processing and exporting. Export to any or more OpenTelemetry
+receiving, processing, and exporting. Export to any or more OpenTelemetry
 backends, such as Jaeger, Zipkin, and OpenCensus. You can view the list of
-plugins that have adapted the OpenTelemetry Collector in the
-[opentelemetry collector contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib)
-library.
+plugins that have adapted the OpenTelemetry Collector in the [OpenTelemetry Registry](https://opentelemetry.io/registry/?s=collector&component=&language=).
 
 ![Architecture-Present](/img/apisix/architecture-present.png)
 
 ## Plugin Introduction
 
 The `opentelemetry` plugin of Apache APISIX implements Tracing data collection
-based on OpenTelemetry native standard (OTLP/HTTP), and sends it to
-OpenTelemetry Collector through HTTP protocol. Apache APISIX starts to support
-this feature in v2.13.0.
+and sends it to OpenTelemetry Collector through HTTP protocol. Apache APISIX
+starts to support this feature in v2.13.0.
 
 One of OpenTelemetry's special features is that the Agent/SDK of OpenTelemetry
 is not locked with back-end implementation, which gives users flexibilities on
@@ -110,7 +107,7 @@ the route, otherwise it will not be possible to test.
 
 ```shell
 curl 'http://127.0.0.1:9080/apisix/admin/global_rules/1' \
--H 'X-API-KEY:  edd1c9f034335f136f87ad84b625c8f1' \
+-H 'X-API-KEY: edd1c9f034335f136f87ad84b625c8f1' \
 -X PUT -d '{
     "plugins": {
         "opentelemetry": {
@@ -125,7 +122,7 @@ curl 'http://127.0.0.1:9080/apisix/admin/global_rules/1' \
 ### Method 3: Customize Labels for Span through additional_attributes
 
 For the configuration of `sampler` and `additional_attributes`, you can refer to
-the [Apache APISIX officialdocumentation](https://apisix.apache.org/docs/apisix/next/plugins/opentelemetry/#attributes),
+the [Apache APISIX official documentation](https://apisix.apache.org/docs/apisix/next/plugins/opentelemetry/#attributes),
 where `additional_attributes` is a series of `Key:Value` pairs, you can use it
 to customize the label for Span, and can follow Span to display on the Web UI.
 Add `route_id` and `http_x-custom-ot-key` to the span of a route through
