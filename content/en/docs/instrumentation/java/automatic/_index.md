@@ -82,7 +82,7 @@ After you have automatic instrumentation configured for your app or service, you
 might want to [annotate](annotations) selected methods or add [manual
 instrumentation](../manual) to collect custom telemetry data.
 
-[Agent Configuration]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/agent-config.md
+[Agent Configuration]: agent-config
 [opentelemetry-javaagent.jar]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/download/v1.12.0/opentelemetry-javaagent.jar
 [releases]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases
 [support]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md
