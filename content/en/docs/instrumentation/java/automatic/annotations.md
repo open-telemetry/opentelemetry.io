@@ -1,6 +1,7 @@
 ---
 title: Annotations
 description: Using instrumentation annotations with a Java agent.
+aliases: [/docs/instrumentation/java/annotations]
 weight: 4
 ---
 
@@ -100,5 +101,5 @@ javaagent to capture spans around specific methods.
 ## Next steps
 
 Beyond the use of annotations, the OpenTelemetry API allows you to obtain
-a tracer that can be used for [Manual Instrumentation](../manual)
+a tracer that can be used for [Manual Instrumentation](../../manual)
 and execute code within the scope of that span.

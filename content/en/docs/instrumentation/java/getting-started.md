@@ -98,7 +98,7 @@ For more:
 - For light-weight customized telemetry, try [annotations][].
 - Learn about [manual instrumentation][] and try out more [examples](../examples).
 
-[annotations]: ../annotations
+[annotations]: ../automatic/annotations
 [configure the Java agent]: https://opentelemetry.io/docs/instrumentation/java/automatic/#configuring-the-agent
 [console trace exporter,]: https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md#logging-exporter
 [exporter]: https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md#exporters
