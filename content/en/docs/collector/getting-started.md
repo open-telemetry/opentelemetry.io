@@ -168,15 +168,29 @@ Every Collector release includes an `otelcol.exe` executable that you can run af
 Builds the latest version of the collector based on the local operating system,
 runs the binary with all receivers enabled and exports all the data it receives
 locally to a file. Data is sent to the container and the container scrapes its own
-Prometheus metrics.
+Prometheus metrics. The following example uses two terminal windows to better illustrate
+the collector.   In the first terminal window run the following:
 
 ```console
-$ git clone git@github.com:open-telemetry/opentelemetry-collector-contrib.git; \
-    cd opentelemetry-collector-contrib/examples/demo; \
-    go build client/main.go; ./client/main & pid1="$!"; \
-    go build server/main.go; ./server/main & pid2="$!"; \
-
-$ git clone git@github.com:open-telemetry/opentelemetry-collector.git; \
-    cd opentelemetry-collector; make install-tools; make otelcorecol; \
-    ./bin/cmd-otelcol --config ./examples/local/otel-config.yaml; kill $pid1; kill $pid2
+$ git clone https://github.com/open-telemetry/opentelemetry-collector.git
+$ cd opentelemetry-collector
+$ make install-tools 
+$ make otelcorecol
+$ ./bin/otelcorecol_* --config ./examples/local/otel-config.yaml
 ```
+In a second terminal window, you can test the newly built collector
+by doing the following:
+
+```console
+$ git clone https://github.com/open-telemetry/opentelemetry-collector-contrib.git
+$ cd opentelemetry-collector-contrib/examples/demo/server 
+$ go build -o main main.go; ./main & pid1="$!"
+$ cd ../client
+$ go build -o main main.go; ./main
+```
+
+To stop the client, use the Ctrl-c command.  To stop the server, use the `kill $pid1` command.
+To stop the collector, you can use Ctrl-c command in its terminal window as well.
+
+ **Note:**  The above commands demonstrate the process in a bash shell. These commands may vary slightly
+ for other shells.
