@@ -10,6 +10,9 @@ package-lock.json
 # Link checker
 tmp/
 
+# macOS
+.DS_Store
+
 # Misc
 scripts/collector.yaml
 assets/jsconfig.json
