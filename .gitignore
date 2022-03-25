@@ -20,7 +20,3 @@ assets/jsconfig.json
 # VS Code
 /.vscode/**
 !/.vscode/cspell.json
-
-# .DS_Store 
-.DS_Store 
-*/.DS_Store 
