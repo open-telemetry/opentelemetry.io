@@ -194,6 +194,7 @@ set `OTEL_INSTRUMENTATION_AKKA_ACTOR_ENABLED` to `false`.
 You can suppress all auto instrumentations but have support for manual
 instrumentation with `@WithSpan` and normal API interactions by using
 `-Dotel.instrumentation.common.default-enabled=false
+-Dotel.instrumentation.opentelemetry-api.enabled=true
 -Dotel.instrumentation.opentelemetry-annotations.enabled=true`
 
 ### Enable instrumentation suppression by type
