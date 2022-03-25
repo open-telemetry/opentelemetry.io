@@ -45,6 +45,7 @@ Technical committee holds regular meetings, notes are held
   - [Metrics](metrics/api)
 - SDK Specification
   - [Tracing](trace/sdk)
+  - [Metrics](metrics/sdk)
   - [Resource](resource/sdk)
   - [Configuration](sdk-configuration)
 - Data Specification
