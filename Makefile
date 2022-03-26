@@ -11,6 +11,10 @@ GET_LINK_CHECKER_IF_NEEDED=get-link-checker
 endif
 endif
 
+default:
+	@echo "Make what? Target list:\n"
+	@make -rpn | grep '^[a-z]\S*:' | sed 's/://' | sort
+
 check-links: $(GET_LINK_CHECKER_IF_NEEDED)
 	$(HTMLTEST) $(HTMLTEST_ARGS)
 
