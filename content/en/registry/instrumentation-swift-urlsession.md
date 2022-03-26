@@ -9,7 +9,7 @@ tags:
   - ios
   - macOS
   - tvOS
-repo: https://github.com/open-telemetry/opentelemetry-swift/Sources/Instrumentation/URLSession
+repo: https://github.com/open-telemetry/opentelemetry-swift/tree/main/Sources/Instrumentation/URLSession
 license: Apache 2.0
 description: This library provides a URLSession instrumentation to track requests through OpenTelemetry.
 authors: OpenTelemetry Authors

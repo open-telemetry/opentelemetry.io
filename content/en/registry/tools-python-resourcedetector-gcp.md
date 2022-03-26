@@ -1,0 +1,18 @@
+---
+title: Google Cloud Tools
+registryType: utilities
+isThirdParty: true
+language: python
+tags:
+  - python
+  - google
+  - utilities
+  - propagator
+  - resource detector
+repo: https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/tree/main/opentelemetry-resourcedetector-gcp
+license: Apache 2.0
+description: >
+    This library provides support for detecting GCP resources like GCE, GKE, etc.
+authors: Google
+otVersion: latest
+---
