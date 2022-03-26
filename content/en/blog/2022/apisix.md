@@ -1,7 +1,7 @@
 ---
 title: Apache APISIX Integrates with OpenTelementry to Collect Tracing Data
 linkTitle: Apache APISIX-Opentelemetry Integration
-date: 2022-03-25
+date: 2022-03-26
 author: Haochao Zhuang, Fei Han
 ---
 
@@ -15,7 +15,8 @@ system. It not only provides various SDKs for application side telemetry data
 collection and reporting, but also provides data collection side for data
 receiving, processing, and exporting. Export to any or more OpenTelemetry
 backends, such as Jaeger, Zipkin, and OpenCensus. You can view the list of
-plugins that have adapted the OpenTelemetry Collector in the [OpenTelemetry Registry](/registry/?s=collector&component=&language=).
+plugins that have adapted the OpenTelemetry Collector in the
+[registry](/registry/?s=collector).
 
 ![Architecture-Present](/img/apisix/architecture-present.png)
 
@@ -180,14 +181,14 @@ not be displayed.
 ## Example
 
 This scenario example deploys Collector, Jaeger, and Zipkin as backend services
-by simply modifying the official example of OpenTelemetry Collector, and starts
+by simply modifying the OpenTelemetry Collector example, and starts
 two sample applications (Client and Server), where Server provides an HTTP
 service, and Client will cyclically call the server provided by the server. HTTP
 interface, resulting in a call chain consisting of two spans.
 
 ### Step 1: Deploy OpenTelemetry
 
-The following uses docker-compose as an example. For other deployments, please
+The following uses docker-compose as an example. For other deployments,
 see [Getting Started](https://opentelemetry.io/docs/collector/getting-started/).
 
 You can see the following command to deploy:
@@ -254,11 +255,11 @@ Modify the `./examples/demo/otel-collector-config.yaml` file to add the OTLP
 HTTP Receiver.  
 
 ```yaml
-  receivers:
-  otlp:
-    protocols:
-      grpc:
-      http: ${ip:port}   # add OTLP HTTP Receiver，default port is 4318
+receivers:
+otlp:
+  protocols:
+    grpc:
+    http: ${ip:port}   # add OTLP HTTP Receiver，default port is 4318
 ```
 
 Modify `docker-compose.yaml` file.
@@ -384,5 +385,6 @@ Trace systems on the market. Apache APISIX is also actively cooperating with
 communities to create a more powerful ecosystem.
 
 Apache APISIX is also currently working on additional plugins to support
-integration with more services, if you're interested, feel free to [start a discussion](https://github.com/apache/apisix/discussions)
+integration with more services, if you're interested, feel free to 
+[start a discussion](https://github.com/apache/apisix/discussions)
 on GitHub, or communicate via the [mailing list](https://apisix.apache.org/docs/general/subscribe-guide).
