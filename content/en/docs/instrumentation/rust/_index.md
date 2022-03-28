@@ -29,7 +29,7 @@ Opentelemetry for Rust contains the following crates:
 - [opentelemetry-contrib](https://crates.io/crates/opentelemetry-contrib)
 - [opentelemetry-datadog](https://crates.io/crates/opentelemetry-datadog)
 - [opentelemetry-dynatrace](https://crates.io/crates/opentelemetry-dynatrace)
-- [opentelemetry-http](https://crates.io/crates/opentelemetry-dynatrace)
+- [opentelemetry-http](https://crates.io/crates/opentelemetry-http)
 - [opentelemetry-jaeger](https://crates.io/crates/opentelemetry-jaeger)
 - [opentelemetry-otlp](https://crates.io/crates/opentelemetry-otlp)
 - [opentelemetry-prometheus](https://crates.io/crates/opentelemetry-prometheus)
