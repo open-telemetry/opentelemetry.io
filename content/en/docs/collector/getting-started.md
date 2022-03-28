@@ -7,6 +7,7 @@ Please be sure to review the [Data Collection
 documentation](../../concepts/data-collection) in order to understand the
 deployment models, components, and repositories applicable to the OpenTelemetry
 Collector.
+
 ## Deployment
 
 The OpenTelemetry Collector consists of a single binary and two primary deployment methods:
@@ -90,7 +91,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/open-telemetry/opentelemetr
 ```
 
 The example above is meant to serve as a starting point, to be extended and
-customized before actual production usage.
+customized before actual production usage. Use the [OpenTelemetry Helm Charts](https://github.com/open-telemetry/opentelemetry-helm-charts) for production-ready customization and installation.
 
 The [OpenTelemetry
 Operator](https://github.com/open-telemetry/opentelemetry-operator) can also be
