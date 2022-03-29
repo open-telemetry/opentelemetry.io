@@ -55,21 +55,22 @@ denotes its duration and provides any thrown exceptions. By default, the span
 name will be `<className>.<methodName>`, unless a name is provided as an
 argument to the annotation.
 
-If the return type of the method annotated by `@WithSpan` is one of the below "future promise" types,
-then the span will not be ended until the "future promise" completes.
+If the return type of the method annotated by `@WithSpan` is one of the
+[Future](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Future.html)-like
+types listed below, then the span will not be ended until the future completes.
 
-* java.util.concurrent.CompletableFuture
-* java.util.concurrent.CompletionStage
-* com.google.common.util.concurrent.ListenableFuture
-* org.reactivestreams.Publisher
-* reactor.core.publisher.Mono
-* reactor.core.publisher.Flux
-* io.reactivex.Completable
-* io.reactivex.Maybe
-* io.reactivex.Single
-* io.reactivex.Observable
-* io.reactivex.Flowable
-* io.reactivex.parallel.ParallelFlowable
+* [java.util.concurrent.CompletableFuture](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html)
+* [java.util.concurrent.CompletionStage](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletionStage.html)
+* [com.google.common.util.concurrent.ListenableFuture](https://guava.dev/releases/10.0/api/docs/com/google/common/util/concurrent/ListenableFuture.html)
+* [org.reactivestreams.Publisher](https://www.reactive-streams.org/reactive-streams-1.0.1-javadoc/org/reactivestreams/Publisher.html)
+* [reactor.core.publisher.Mono](https://projectreactor.io/docs/core/3.1.0.RELEASE/api/reactor/core/publisher/Mono.html)
+* [reactor.core.publisher.Flux](https://projectreactor.io/docs/core/3.1.0.RELEASE/api/reactor/core/publisher/Flux.html)
+* [io.reactivex.Completable](http://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Completable.html)
+* [io.reactivex.Maybe](http://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Maybe.html)
+* [io.reactivex.Single](http://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Single.html)
+* [io.reactivex.Observable](http://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Observable.html)
+* [io.reactivex.Flowable](http://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Flowable.html)
+* [io.reactivex.parallel.ParallelFlowable](http://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/parallel/ParallelFlowable.html)
 
 ## Adding attributes to the span with `@SpanAttribute`
 
