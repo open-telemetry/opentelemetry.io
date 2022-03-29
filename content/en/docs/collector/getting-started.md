@@ -91,7 +91,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/open-telemetry/opentelemetr
 ```
 
 The example above is meant to serve as a starting point, to be extended and
-customized before actual production usage. Use the [OpenTelemetry Helm Charts](https://github.com/open-telemetry/opentelemetry-helm-charts) for production-ready customization and installation.
+customized before actual production usage. For production-ready customization and installation, see [OpenTelemetry Helm Charts](https://github.com/open-telemetry/opentelemetry-helm-charts).
 
 The [OpenTelemetry
 Operator](https://github.com/open-telemetry/opentelemetry-operator) can also be
