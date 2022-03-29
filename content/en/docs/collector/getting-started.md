@@ -3,10 +3,10 @@ title: Getting Started
 spelling: cSpell:ignore dpkg GOARCH journalctl kubectl
 weight: 1
 ---
-Please be sure to review the [Data Collection
-documentation](../../concepts/data-collection) in order to understand the
-deployment models, components, and repositories applicable to the OpenTelemetry
-Collector.
+
+If you aren't familiar with the deployment models, components, and repositories
+applicable to the OpenTelemetry Collector, first review the [Data Collection
+documentation](../../concepts/data-collection).
 
 ## Deployment
 
@@ -52,34 +52,6 @@ Prometheus back-ends. More information can be found on the demo
 $ git clone git@github.com:open-telemetry/opentelemetry-collector-contrib.git; \
     cd opentelemetry-collector-contrib/examples/demo; \
     docker-compose up -d
-```
-
-### Docker
-
-Every release of the Collector is published to Docker Hub and comes with a
-default configuration file.
-
-```console
-$ docker run otel/opentelemetry-collector
-```
-
-In addition, you can use the local example provided. This example starts a
-Docker container of the
-[core](https://github.com/open-telemetry/opentelemetry-collector) version of
-the Collector with all receivers enabled and exports all the data it receives
-locally to a file. Data is sent to the container and the container scrapes its
-own Prometheus metrics.
-
-```console
-$ git clone git@github.com:open-telemetry/opentelemetry-collector.git; \
-    cd opentelemetry-collector/examples; \
-    go build main.go; ./main & pid1="$!";
-    docker run --rm -p 13133:13133 -p 14250:14250 -p 14268:14268 \
-      -p 55678-55679:55678-55679 -p 4317:4317 -p 8888:8888 -p 9411:9411 \
-      -v "${PWD}/local/otel-config.yaml":/otel-local-config.yaml \
-      --name otelcol otel/opentelemetry-collector \
-      --config otel-local-config.yaml; \
-    kill $pid1; docker stop otelcol
 ```
 
 ### Kubernetes
@@ -175,7 +147,7 @@ the collector.   In the first terminal window run the following:
 ```console
 $ git clone https://github.com/open-telemetry/opentelemetry-collector.git
 $ cd opentelemetry-collector
-$ make install-tools 
+$ make install-tools
 $ make otelcorecol
 $ ./bin/otelcorecol_* --config ./examples/local/otel-config.yaml
 ```
@@ -184,7 +156,7 @@ by doing the following:
 
 ```console
 $ git clone https://github.com/open-telemetry/opentelemetry-collector-contrib.git
-$ cd opentelemetry-collector-contrib/examples/demo/server 
+$ cd opentelemetry-collector-contrib/examples/demo/server
 $ go build -o main main.go; ./main & pid1="$!"
 $ cd ../client
 $ go build -o main main.go; ./main
