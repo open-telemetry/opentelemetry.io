@@ -23,7 +23,7 @@ as follows:
 
 ## Crates
 
-Opentelemetry for Rust published the following crates:
+Opentelemetry for Rust publishes the following crates:
 - [opentelemetry](https://crates.io/crates/opentelemetry)
 - [opentelemetry-aws](https://crates.io/crates/opentelemetry-aws)
 - [opentelemetry-contrib](https://crates.io/crates/opentelemetry-contrib)
