@@ -55,6 +55,22 @@ denotes its duration and provides any thrown exceptions. By default, the span
 name will be `<className>.<methodName>`, unless a name is provided as an
 argument to the annotation.
 
+If the return type of the method annotated by `@WithSpan` is one of the below "future promise" types,
+then the span will not be ended until the "future promise" completes.
+
+* java.util.concurrent.CompletableFuture
+* java.util.concurrent.CompletionStage
+* com.google.common.util.concurrent.ListenableFuture
+* org.reactivestreams.Publisher
+* reactor.core.publisher.Mono
+* reactor.core.publisher.Flux
+* io.reactivex.Completable
+* io.reactivex.Maybe
+* io.reactivex.Single
+* io.reactivex.Observable
+* io.reactivex.Flowable
+* io.reactivex.parallel.ParallelFlowable
+
 ## Adding attributes to the span with `@SpanAttribute`
 
 When a span is created for an annotated method the values of the arguments to
