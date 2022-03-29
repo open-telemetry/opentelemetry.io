@@ -56,7 +56,7 @@ name will be `<className>.<methodName>`, unless a name is provided as an
 argument to the annotation.
 
 If the return type of the method annotated by `@WithSpan` is one of the
-[Future](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Future.html)-like
+[future- or promise-like](https://en.wikipedia.org/wiki/Futures_and_promises)
 types listed below, then the span will not be ended until the future completes.
 
 * [java.util.concurrent.CompletableFuture](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html)
