@@ -37,7 +37,7 @@ $ docker-compose up
 
 This [cookbook](https://github.com/Aternity/Tech-Community/blob/main/106-opentelemetry-autoinstrumentation-java-app) shows a simple Java application that is built in a Docker container and then runs with OpenTelemetry automatic instrumentation. The OpenTelemetry instrumentation is configured with multiple telemetry exporters using environment variable. In parallel the app will be logging telemetry on the console, exporting to a local [jaeger-all-in-one container](https://hub.docker.com/r/jaegertracing/all-in-one), and also exporting to the Aternity APM SaaS backend with the [Aternity APM OpenTelemetry collector container](https://hub.docker.com/r/aternity/apm-collector).
 
-If the collectors are already running and exposed locally you can run your app (myapp.jar) with OpenTelemetry automatic instrumentation and multiple exporters like this:
+If the collectors are already running and exposed locally you can run your app (myapp.jar) with OpenTelemetry automatic instrumentation and multiple exporters like this in Bash:
 
 ```bash
 # Configure OpenTelemetry instrumentation (OTEL_TRACES_EXPORTER default is "OTLP")
