@@ -265,6 +265,21 @@ environment variable `OTEL_INSTRUMENTATION_[NAME]_ENABLED`) where `name`
 underscores (`_`). For example, to suppress traces from `akka-actor` library,
 set `OTEL_INSTRUMENTATION_AKKA_ACTOR_ENABLED` to `false`.
 
+### Suppressing controller and/or view spans
+
+Some instrumentations (e.g. Spring Web MVC instrumentation) produce
+[SpanKind.Internal](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#spankind)
+spans to capture the controller and/or view execution.
+These spans can be suppressed using the configuration settings below, without suppressing the entire
+instrumentation which would also disable the instrumentation's capturing of `http.route` and associated span name on the parent
+[SpanKind.Server](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#spankind)
+span.
+
+| System property / Environment variable | Description |
+| -------------------------------------- | ----------- |
+| `otel.instrumentation.common.experimental.suppress-controller-spans` / `OTEL_INSTRUMENTATION_COMMON_EXPERIMENTAL_SUPPRESS_CONTROLLER_SPANS` | Suppress controller spans from being captured. |
+| `otel.instrumentation.common.experimental.suppress-view-spans` / `OTEL_INSTRUMENTATION_COMMON_EXPERIMENTAL_SUPPRESS_CONTROLLER_SPANS` | Suppress view spans from being captured. |
+
 ### Enable manual instrumentation only
 
 You can suppress all auto instrumentations but have support for manual
