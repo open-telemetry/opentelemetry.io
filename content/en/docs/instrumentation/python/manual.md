@@ -112,7 +112,7 @@ from opentelemetry import trace
 
 current_span = trace.get_current_span()
 
-currrent_span.add_event("Gonna try it!")
+current_span.add_event("Gonna try it!")
 
 # Do the thing
 
