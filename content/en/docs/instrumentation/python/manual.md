@@ -127,9 +127,9 @@ another span. A link needs a span context to be created.
 ```python
 from opentelemetry import trace
 
-ctx = trace.get_current_span().abstractget_span_context()
+ctx = trace.get_current_span().get_span_context()
 
-link_from_current = Link(ctx)
+link_from_current = trace.Link(ctx)
 
 with tracer.start_as_current_span("new-span", links=[link_from_current]) as new_span:
     # do something that 'new_span' tracks
