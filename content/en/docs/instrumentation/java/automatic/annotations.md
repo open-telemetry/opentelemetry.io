@@ -55,6 +55,23 @@ denotes its duration and provides any thrown exceptions. By default, the span
 name will be `<className>.<methodName>`, unless a name is provided as an
 argument to the annotation.
 
+If the return type of the method annotated by `@WithSpan` is one of the
+[future- or promise-like](https://en.wikipedia.org/wiki/Futures_and_promises)
+types listed below, then the span will not be ended until the future completes.
+
+* [java.util.concurrent.CompletableFuture](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html)
+* [java.util.concurrent.CompletionStage](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletionStage.html)
+* [com.google.common.util.concurrent.ListenableFuture](https://guava.dev/releases/10.0/api/docs/com/google/common/util/concurrent/ListenableFuture.html)
+* [org.reactivestreams.Publisher](https://www.reactive-streams.org/reactive-streams-1.0.1-javadoc/org/reactivestreams/Publisher.html)
+* [reactor.core.publisher.Mono](https://projectreactor.io/docs/core/3.1.0.RELEASE/api/reactor/core/publisher/Mono.html)
+* [reactor.core.publisher.Flux](https://projectreactor.io/docs/core/3.1.0.RELEASE/api/reactor/core/publisher/Flux.html)
+* [io.reactivex.Completable](http://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Completable.html)
+* [io.reactivex.Maybe](http://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Maybe.html)
+* [io.reactivex.Single](http://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Single.html)
+* [io.reactivex.Observable](http://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Observable.html)
+* [io.reactivex.Flowable](http://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Flowable.html)
+* [io.reactivex.parallel.ParallelFlowable](http://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/parallel/ParallelFlowable.html)
+
 ## Adding attributes to the span with `@SpanAttribute`
 
 When a span is created for an annotated method the values of the arguments to
