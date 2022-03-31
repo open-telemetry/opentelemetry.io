@@ -14,6 +14,7 @@ products.
 
 | Company         | Distri&shy;bution | Native OTLP | Learn more
 | --------------- | ------------ | ----------- | --------------------------------------------------------------------------------------------------------------------------------
+| AppDynamics     | Yes          | Yes         | https://docs.appdynamics.com/22.3/en/application-monitoring/appdynamics-for-opentelemetry
 | Aspecto         | Yes          | Yes         | https://www.aspecto.io
 | AWS             | Yes          | No          | https://aws-otel.github.io
 | Azure           | Yes          | No          | https://docs.microsoft.com/azure/azure-monitor/app/opentelemetry-overview
