@@ -160,6 +160,7 @@ a:hover {
 
     summary {
       display: block;
+      &::-webkit-details-marker { display: none; }
 
       &::after {
         color: $secondary;
