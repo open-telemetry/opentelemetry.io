@@ -1,8 +1,9 @@
 ---
-title: Apache APISIX Integrates with OpenTelementry to Collect Tracing Data
+title: Apache APISIX Integrates with OpenTelemetry to Collect Tracing Data
 linkTitle: Apache APISIX-Opentelemetry Integration
 date: 2022-03-26
 author: Haochao Zhuang, Fei Han
+canonical_url: https://apisix.apache.org/blog/2022/02/28/apisix-integration-opentelemetry-plugin/
 ---
 
 This article introduces the Apache APISIX's `opentelemetry` plugin concept and
@@ -29,7 +30,7 @@ starts to support this feature in v2.13.0.
 One of OpenTelemetry's special features is that the Agent/SDK of OpenTelemetry
 is not locked with back-end implementation, which gives users flexibilities on
 choosing their own back-end services. In other words, users can choose the
-backend services they want, such as Zipkin and Jaeger, without affectting the
+backend services they want, such as Zipkin and Jaeger, without affecting the
 application side.
 
 The `opentelemetry` plugin is located on the Agent side. It integrates the
@@ -218,7 +219,7 @@ application is shown in the following figure.
 
 The Trace data reporting process is as follows. Among them, since Apache APISIX
 is deployed separately and not in the network of docker-compose, Apache APISIX
-accesses the OTLP HTTP Receiver of OpenTelemetery Collector through the locally
+accesses the OTLP HTTP Receiver of OpenTelemetry Collector through the locally
 mapped port (`127.0.0.1:4138`).
 
 ![Trace data reporting process](/img/apisix/trace-data-flow.png)
@@ -341,8 +342,8 @@ It should be noted that `demo-client.environment.DEMO_SERVER_ENDPOINT` needs to
 be changed to your Apache APISIX address, and ensure that it can be accessed
 normally in the container.
 
-Of course, you can also deploy Apache APISIX through `docekr-compose.yaml`. For
-details, see the [Installation via Docker](https://apisix.apache.org/docs/apisix/how-to-build/#installation-via-docker).
+Of course, you can also deploy Apache APISIX through `docker-compose.yaml`. For
+details, see [Installation via Docker](https://apisix.apache.org/docs/apisix/how-to-build/#installation-via-docker).
 
 ### Step 3: Verify the Outputs
 
@@ -380,7 +381,7 @@ connected.
 
 ## Summary
 
-After Apache APISIX integrates OpenTelemetery, it can easily connect with many
+After Apache APISIX integrates OpenTelemetry, it can easily connect with many
 Trace systems on the market. Apache APISIX is also actively cooperating with
 communities to create a more powerful ecosystem.
 
