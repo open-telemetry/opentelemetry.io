@@ -76,7 +76,7 @@ is the name of a remote service to which a connection is made. It corresponds to
 the [Resource](https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/resource/semantic_conventions#service)
 for the local service.
 
-{{< config_option name="otel.instrumentation.common.peer-service-mapping" >}}
+{{% config_option name="otel.instrumentation.common.peer-service-mapping" %}}
   Used to specify a mapping from host names or IP addresses to peer services, as a
   comma-separated list of `<host_or_ip>=<user_assigned_name>` pairs. The peer
   service is added as an attribute to a span whose host or IP address match the
@@ -89,7 +89,7 @@ for the local service.
   Then, requests to `1.2.3.4` will have a `peer.service` attribute of
   `cats-service` and requests to `dogs-abcdef123.serverlessapis.com` will have
   an attribute of `dogs-api`.
-{{< /config_option >}}
+{{% /config_option %}}
 
 ### DB statement sanitization
 

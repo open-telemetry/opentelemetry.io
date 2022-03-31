@@ -107,10 +107,6 @@ code.
   Format is `my.package.MyClass1[method1,method2];my.package.MyClass2[method3]`.
 {{% /config_option %}}
 
-| System property                                                  | Environment variable                                             | Purpose |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
-| `otel.instrumentation.opentelemetry-annotations.exclude-methods` | `OTEL_INSTRUMENTATION_OPENTELEMETRY_ANNOTATIONS_EXCLUDE_METHODS` | Suppress `@WithSpan` instrumentation for specific methods. Format is `my.package.MyClass1[method1,method2];my.package.MyClass2[method3]`
-
 ## Creating spans around methods with `otel.instrumentation.methods.include`
 
 In cases where you are unable to modify the code, you can still configure the
@@ -120,10 +116,6 @@ javaagent to capture spans around specific methods.
   Add instrumentation for specific methods in lieu of `@WithSpan`.
   Format is `my.package.MyClass1[method1,method2];my.package.MyClass2[method3]`.
 {{% /config_option %}}
-
-| System property                        | Environment variable                   | Purpose |
-| -------------------------------------- | -------------------------------------- | ------- |
-| `otel.instrumentation.methods.include` | `OTEL_INSTRUMENTATION_METHODS_INCLUDE` | Add instrumentation for specific methods in lieu of `@WithSpan`. Format is `my.package.MyClass1[method1,method2];my.package.MyClass2[method3]`
 
 ## Next steps
 
