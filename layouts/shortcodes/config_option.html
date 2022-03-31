@@ -12,6 +12,11 @@
     <code>{{ $envVar }}</code>
 </details>
 
-<span class="label">Description</span>:
-{{- .Inner }}
+<p>
+  {{ if isset .Params "default" -}}
+    <span class="label">Default</span>: {{ .Get "default" }}<br>
+  {{ end -}}
+  <span class="label">Description</span>:
+  {{ .Inner | markdownify }}
+</p>
 </div>
