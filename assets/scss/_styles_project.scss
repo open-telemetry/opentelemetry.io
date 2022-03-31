@@ -164,13 +164,13 @@ a:hover {
       &::after {
         color: $secondary;
         @extend .fas;
-        content: fa-content($nbsp + $fa-var-chevron-circle-down);
+        content: fa-content($nbsp + $fa-var-plus-circle);
       }
     }
 
     &[open] summary::after {
       @extend .fas;
-      content: fa-content($nbsp + $fa-var-chevron-circle-up);
+      content: fa-content($nbsp + $fa-var-minus-circle);
     }
   }
 }
