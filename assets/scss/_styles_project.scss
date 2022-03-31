@@ -148,3 +148,29 @@ a:hover {
 }
 
 .td-breadcrumbs__single { display: none !important; }
+
+.config-option {
+  padding-inline-start: 2em;
+
+  .label { font-weight: bold; }
+
+  details {
+    background-color: $gray-100;
+    margin-bottom: .5em;
+
+    summary {
+      display: block;
+
+      &::after {
+        color: $secondary;
+        @extend .fas;
+        content: fa-content($nbsp + $fa-var-chevron-circle-down);
+      }
+    }
+
+    &[open] summary::after {
+      @extend .fas;
+      content: fa-content($nbsp + $fa-var-chevron-circle-up);
+    }
+  }
+}
