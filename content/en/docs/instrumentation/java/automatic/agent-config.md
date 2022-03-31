@@ -49,19 +49,21 @@ The agent can consume configuration from one or more of the following sources (o
 
 ### Configuration file
 
-You can provide a path to agent configuration file by setting the corresponding property.
+You can provide a path to agent configuration file by setting the following property:
 
-| System property                      | Environment variable                 | Description                                                                      |
-|--------------------------------------|--------------------------------------|----------------------------------------------------------------------------------|
-| `otel.javaagent.configuration-file` | `OTEL_JAVAAGENT_CONFIGURATION_FILE` | Path to valid Java properties file which contains the javaagent configuration.|
+{{% config_option name="otel.javaagent.configuration-file" %}}
+  Path to valid Java properties file which contains the agent configuration.
+{{% /config_option %}}
 
 ### Extensions
 
-You can enable [extensions][] by setting the corresponding property.
+You can enable [extensions][] by setting the following property:
 
-| System property                      | Environment variable                 | Description                                                                      |
-|--------------------------------------|--------------------------------------|----------------------------------------------------------------------------------|
-| `otel.javaagent.extensions` | `OTEL_JAVAAGENT_EXTENSIONS` | Path to a an extension jar file or folder, containing jar files. If pointing to a folder, every jar file in that folder will be treated as separate, independent extension|
+{{% config_option name="otel.javaagent.extensions" %}}
+  Path to a an extension jar file or folder, containing jar files. If pointing
+  to a folder, every jar file in that folder will be treated as separate,
+  independent extension.
+{{% /config_option %}}
 
 ## Common instrumentation configuration
 
@@ -102,6 +104,15 @@ to disable it:
 You can configure the agent to capture predefined HTTP headers as span attributes, according to the
 [semantic convention](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/http.md#http-request-and-response-headers).
 Use the following properties to define which HTTP headers you want to capture:
+
+{{% config_option name="otel.instrumentation.http.capture-headers.client.request" %}}
+  A comma-separated list of HTTP header names. HTTP client instrumentations will
+  capture HTTP request header values for all configured header names.
+{{% /config_option %}}
+{{% config_option name="otel.instrumentation.http.capture-headers.client.response" %}}
+  A comma-separated list of HTTP header names. HTTP client instrumentations will
+  capture HTTP response header values for all configured header names.
+{{% /config_option %}}
 
 | System property / Environment variable | Description |
 | -------------------------------------- | ----------- |

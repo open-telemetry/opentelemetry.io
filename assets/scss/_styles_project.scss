@@ -148,3 +148,30 @@ a:hover {
 }
 
 .td-breadcrumbs__single { display: none !important; }
+
+.config-option {
+  padding-inline-start: 1.5em;
+
+  .label { font-weight: bold; }
+
+  details {
+    background-color: $gray-100;
+    margin-bottom: .5em;
+
+    summary {
+      display: block;
+      &::-webkit-details-marker { display: none; }
+
+      &::after {
+        color: $secondary;
+        @extend .fas;
+        content: fa-content($nbsp + $fa-var-plus-circle);
+      }
+    }
+
+    &[open] summary::after {
+      @extend .fas;
+      content: fa-content($nbsp + $fa-var-minus-circle);
+    }
+  }
+}

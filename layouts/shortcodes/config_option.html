@@ -1,0 +1,17 @@
+{{ $name := .Get "name" -}}
+{{ $_envVar := $name | upper | replaceRE "[.-]" "_" -}}
+{{ $envVar := .Get "envVar" | default $_envVar -}}
+
+<div class="config-option">
+<details>
+  <summary title="Expand to view environment variable">
+    <span class="label">System property</span>:
+      <code>{{ $name }}</code>
+  </summary>
+  <span class="label">Environment variable</span>:
+    <code>{{ $envVar }}</code>
+</details>
+
+<span class="label">Description</span>:
+{{- .Inner }}
+</div>
