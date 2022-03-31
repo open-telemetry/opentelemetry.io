@@ -3,6 +3,7 @@ title: Apache APISIX Integrates with OpenTelemetry to Collect Tracing Data
 linkTitle: Apache APISIX-Opentelemetry Integration
 date: 2022-03-26
 author: Haochao Zhuang, Fei Han
+canonical_url: https://apisix.apache.org/blog/2022/02/28/apisix-integration-opentelemetry-plugin/
 ---
 
 This article introduces the Apache APISIX's `opentelemetry` plugin concept and
