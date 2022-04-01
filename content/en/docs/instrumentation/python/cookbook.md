@@ -114,9 +114,13 @@ with tracer.start_as_current_span('child', context=ctx) as span:
     span.set_attribute('primes', [2, 3, 5, 7])
 
 # Or you can make it the current context, and then the next span will pick it up.
-context.attach(ctx)
-with tracer.start_as_current_span('child') as span:
-    span.set_attribute('evens', [2, 4, 6, 8])
+# The returned token lets you restore the previous context.
+token = context.attach(ctx)
+try:
+    with tracer.start_as_current_span('child') as span:
+        span.set_attribute('evens', [2, 4, 6, 8])
+finally:
+    context.detach(token)
 ```
 
 ## Using multiple tracer providers with different Resource
