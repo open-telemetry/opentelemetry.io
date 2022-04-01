@@ -3,8 +3,7 @@ title: Exporters
 weight: 4
 ---
 
-In order to visualize and analyze your telemetry you will need to
-export them to a backend.
+In order to visualize and analyze your telemetry you will need to use an exporter.
 
 ## Console exporter
 
@@ -17,9 +16,11 @@ from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor, ConsoleSpanExporter
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 
-# Service name is required for most backends
+# Service name is required for most backends,
+# and although it's not necessary for console export,
+# it's good to set service name anyways.
 resource = Resource(attributes={
-    "service.name": "your-service-name"
+    SERVICE_NAME: "your-service-name"
 })
 
 provider = TracerProvider(resource=resource)
@@ -38,7 +39,7 @@ exporter that sends to your endpoint.
 
 First, install an OTLP exporter:
 
-```shell
+```console
 $ pip install opentelemetry-exporter-otlp-proto-http
 ```
 
@@ -68,7 +69,7 @@ trace.set_tracer_provider(provider)
 
 If you'd prefer to use gRPC, you can install the package:
 
-```shell
+```console
 $ pip install opentelemetry-exporter-otlp-proto-grpc
 ```
 
@@ -84,7 +85,7 @@ If you are using [Jaeger](https://www.jaegertracing.io/) to visualize trace
 data, you'll need to set it up first. This is how to run it in a docker
 container:
 
-```shell
+```console
 $ docker run -d --name jaeger \
   -e COLLECTOR_ZIPKIN_HOST_PORT=:9411 \
   -p 5775:5775/udp \
@@ -100,7 +101,7 @@ $ docker run -d --name jaeger \
 
 Next, install the Jaeger exporter package:
 
-```shell
+```console
 $ pip install opentelemetry-exporter-jaeger
 ```
 
@@ -134,7 +135,7 @@ trace.set_tracer_provider(provider)
 
 If you'd prefer to use Thrift as the protocol, you can install the package:
 
-```shell
+```console
 $ pip install opentelemetry-exporter-jaeger-thrift
 ```
 
@@ -149,13 +150,13 @@ from opentelemetry.exporter.jaeger.thrift import JaegerExporter
 If you are using [Zipkin](https://zipkin.io/) to visualize trace data, you'll
 need to set it up first. This is how to run it in a docker container:
 
-```shell
+```console
 $ docker run --rm -d -p 9411:9411 --name zipkin openzipkin/zipkin
 ```
 
 Next, install the Zipkin exporter package:
 
-```shell
+```console
 $ pip install opentelemetry-exporter-zipkin-proto-http
 ```
 
@@ -186,7 +187,7 @@ trace.set_tracer_provider(provider)
 
 If you'd prefer to use Thrift as the protocol, you can install the package:
 
-```shell
+```console
 $ pip install opentelemetry-exporter-zipkin-json
 ```
 
