@@ -81,20 +81,20 @@ trace.get_tracer_provider().add_span_processor(BatchSpanProcessor(ConsoleSpanExp
 
 tracer = trace.get_tracer(__name__)
 
-# A TextMapPropagator can use a regular Python dict as its Carrier.
-carrier = {}
+# A TextMapPropagator works with any dict-like object as its Carrier by default. You can also implement custom getters and setters.
 with tracer.start_as_current_span('first-trace'):
+    carrier = {}
     # Write the current context into the carrier.
-    TraceContextTextMapPropagator().extract(carrier)
+    TraceContextTextMapPropagator().inject(carrier)
 
 # The below might be in a different thread, on a different machine, etc.
 # As a typical example, it would be on a different microservice and the carrier would
 # have been forwarded via HTTP headers.
 
 # Extract the trace context from the carrier.
-# Here's what a typical carrier might look like, as it would have been extracted above.
+# Here's what a typical carrier might look like, as it would have been injected above.
 carrier = {'traceparent': '00-a9c3b99a95cc045e573e163c3ac80a77-d99d251a8caecd06-01'}
-# Then we use a propagator to get a trace context from it.
+# Then we use a propagator to get a context from it.
 ctx = TraceContextTextMapPropagator().extract(carrier=carrier)
 
 # Instead of extracting the trace context from the carrier, if you have a SpanContext
