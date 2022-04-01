@@ -1,5 +1,5 @@
 ---
-title: "Exporters"
+title: Exporters
 weight: 4
 ---
 
@@ -32,13 +32,14 @@ trace.set_tracer_provider(provider)
 
 ## OTLP endpoint or Collector
 
-To send data to an OTLP endpoint or the OpenTelemetry Collector, you'll want to
-configure an OTLP exporter that sends to your endpoint.
+To send data to an OTLP endpoint or the [OpenTelemetry
+Collector](/docs/collector/getting-started/), you'll want to configure an OTLP
+exporter that sends to your endpoint.
 
 First, install an OTLP exporter:
 
-```
-pip install opentelemetry-exporter-otlp-proto-http
+```shell
+$ pip install opentelemetry-exporter-otlp-proto-http
 ```
 
 Then you can use it when you initialize tracing:
@@ -60,7 +61,6 @@ processor = BatchSpanProcessor(OTLPSpanExporter(endpoint="your-endpoint-here"))
 provider.add_span_processor(processor)
 trace.set_tracer_provider(provider)
 
-
 # Merrily go about tracing!
 ```
 
@@ -68,8 +68,8 @@ trace.set_tracer_provider(provider)
 
 If you'd prefer to use gRPC, you can install the package:
 
-```
-pip install opentelemetry-exporter-otlp-proto-grpc
+```shell
+$ pip install opentelemetry-exporter-otlp-proto-grpc
 ```
 
 And replace the `OTLPSpanExporter` import declaration with the following:
@@ -100,8 +100,8 @@ $ docker run -d --name jaeger \
 
 Next, install the Jaeger exporter package:
 
-```
-pip install opentelemetry-exporter-jaeger
+```shell
+$ pip install opentelemetry-exporter-jaeger
 ```
 
 Then you can configure the exporter when initializing tracing:
@@ -134,8 +134,8 @@ trace.set_tracer_provider(provider)
 
 If you'd prefer to use Thrift as the protocol, you can install the package:
 
-```
-pip install opentelemetry-exporter-jaeger-thrift
+```shell
+$ pip install opentelemetry-exporter-jaeger-thrift
 ```
 
 And replace the `JaegerExporter` import declaration with the following:
@@ -150,13 +150,13 @@ If you are using [Zipkin](https://zipkin.io/) to visualize trace data, you'll
 need to set it up first. This is how to run it in a docker container:
 
 ```shell
-docker run --rm -d -p 9411:9411 --name zipkin openzipkin/zipkin
+$ docker run --rm -d -p 9411:9411 --name zipkin openzipkin/zipkin
 ```
 
 Next, install the Zipkin exporter package:
 
 ```shell
-pip install opentelemetry-exporter-zipkin-proto-http
+$ pip install opentelemetry-exporter-zipkin-proto-http
 ```
 
 Then you can configure the exporter when initializing tracing:
@@ -186,8 +186,8 @@ trace.set_tracer_provider(provider)
 
 If you'd prefer to use Thrift as the protocol, you can install the package:
 
-```
-pip install opentelemetry-exporter-zipkin-json
+```shell
+$ pip install opentelemetry-exporter-zipkin-json
 ```
 
 And replace the `ZipkinExporter` import declaration with the following:
