@@ -12,6 +12,9 @@
     <code>{{ $envVar }}</code>
 </details>
 
+{{ if isset .Params "default" -}}
+  <span class="label">Default</span>: {{ .Get "default" }}<br>
+{{ end -}}
 <span class="label">Description</span>:
 {{- .Inner }}
 </div>

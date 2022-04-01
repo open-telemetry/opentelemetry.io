@@ -76,9 +76,20 @@ is the name of a remote service to which a connection is made. It corresponds to
 the [Resource](https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/resource/semantic_conventions#service)
 for the local service.
 
-| System property / Environment variable | Description |
-| -------------------------------------- | ----------- |
-| `otel.instrumentation.common.peer-service-mapping` / `OTEL_INSTRUMENTATION_COMMON_PEER_SERVICE_MAPPING` | Used to specify a mapping from host names or IP addresses to peer services, as a comma-separated list of `<host_or_ip>=<user_assigned_name>` pairs. The peer service is added as an attribute to a span whose host or IP address match the mapping. For example, if set to `1.2.3.4=cats-service,dogs-abcdef123.serverlessapis.com=dogs-api`, requests to `1.2.3.4` will have a `peer.service` attribute of `cats-service` and requests to `dogs-abcdef123.serverlessapis.com` will have an attribute of `dogs-api`.
+{{% config_option name="otel.instrumentation.common.peer-service-mapping" %}}
+  Used to specify a mapping from host names or IP addresses to peer services, as a
+  comma-separated list of `<host_or_ip>=<user_assigned_name>` pairs. The peer
+  service is added as an attribute to a span whose host or IP address match the
+  mapping.
+
+  For example, if set to the following:
+
+    1.2.3.4=cats-service,dogs-abcdef123.serverlessapis.com=dogs-api
+
+  Then, requests to `1.2.3.4` will have a `peer.service` attribute of
+  `cats-service` and requests to `dogs-abcdef123.serverlessapis.com` will have
+  an attribute of `dogs-api`.
+{{% /config_option %}}
 
 ### DB statement sanitization
 
@@ -95,9 +106,12 @@ Examples:
 This behavior is turned on by default for all database instrumentations. Use the following property
 to disable it:
 
-| System property / Environment variable | Description |
-| -------------------------------------- | ----------- |
-| `otel.instrumentation.common.db-statement-sanitizer.enabled` / `OTEL_INSTRUMENTATION_COMMON_DB_STATEMENT_SANITIZER_ENABLED` | Enables the DB statement sanitization. The default value is `true`.
+{{% config_option
+  name="otel.instrumentation.common.db-statement-sanitizer.enabled"
+  default=true
+%}}
+  Enables the DB statement sanitization.
+{{% /config_option %}}
 
 ### Capturing HTTP request and response headers
 
@@ -113,13 +127,14 @@ Use the following properties to define which HTTP headers you want to capture:
   A comma-separated list of HTTP header names. HTTP client instrumentations will
   capture HTTP response header values for all configured header names.
 {{% /config_option %}}
-
-| System property / Environment variable | Description |
-| -------------------------------------- | ----------- |
-| `otel.instrumentation.http.capture-headers.client.request` / `OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_CLIENT_REQUEST`  | A comma-separated list of HTTP header names. HTTP client instrumentations will capture HTTP request header values for all configured header names.
-| `otel.instrumentation.http.capture-headers.client.response` / `OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_CLIENT_RESPONSE` | A comma-separated list of HTTP header names. HTTP client instrumentations will capture HTTP response header values for all configured header names.
-| `otel.instrumentation.http.capture-headers.server.request` / `OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_REQUEST`  | A comma-separated list of HTTP header names. HTTP server instrumentations will capture HTTP request header values for all configured header names.
-| `otel.instrumentation.http.capture-headers.server.response` / `OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_RESPONSE` | A comma-separated list of HTTP header names. HTTP server instrumentations will capture HTTP response header values for all configured header names.
+{{% config_option name="otel.instrumentation.http.capture-headers.server.request" %}}
+  A comma-separated list of HTTP header names. HTTP server instrumentations will
+  capture HTTP request header values for all configured header names.
+{{% /config_option %}}
+{{% config_option name="otel.instrumentation.http.capture-headers.server.response" %}}
+  A comma-separated list of HTTP header names. HTTP server instrumentations will
+  capture HTTP response header values for all configured header names.
+{{% /config_option %}}
 
 These configuration options are supported by all HTTP client and server instrumentations.
 
@@ -132,9 +147,9 @@ You can configure the agent to capture predefined HTTP request parameter as span
 requests that are handled by Servlet API. Use the following property to define which servlet request
 parameters you want to capture:
 
-| System property                                                        | Environment variable                                                   | Description |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ----------- |
-| `otel.instrumentation.servlet.experimental.capture-request-parameters` | `OTEL_INSTRUMENTATION_SERVLET_EXPERIMENTAL_CAPTURE_REQUEST_PARAMETERS` | A comma-separated list of request parameter names.
+{{% config_option name="otel.instrumentation.servlet.experimental.capture-request-parameters" %}}
+  A comma-separated list of request parameter names.
+{{% /config_option %}}
 
 > **Note**: The property/environment variable names listed in the table are still experimental,
 > and thus are subject to change.
@@ -144,9 +159,12 @@ parameters you want to capture:
 You can configure the agent to capture the consumer message receive telemetry in messaging
 instrumentation. Use the following property to enable it:
 
-| System property                                                         | Environment variable                                                    | Description |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------- |
-| `otel.instrumentation.messaging.experimental.receive-telemetry.enabled` | `OTEL_INSTRUMENTATION_MESSAGING_EXPERIMENTAL_RECEIVE_TELEMETRY_ENABLED` | Enables the consumer message receive telemetry. The default value is `false`.
+{{% config_option
+  name="otel.instrumentation.messaging.experimental.receive-telemetry.enabled"
+  default=false
+%}}
+  Enables the consumer message receive telemetry.
+{{% /config_option %}}
 
 Note that this will cause the consumer side to start a new trace, with only a span link connecting
 it to the producer trace.
@@ -286,10 +304,12 @@ instrumentation which would also disable the instrumentation's capturing of `htt
 [SpanKind.Server](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#spankind)
 span.
 
-| System property / Environment variable | Description |
-| -------------------------------------- | ----------- |
-| `otel.instrumentation.common.experimental.suppress-controller-spans` / `OTEL_INSTRUMENTATION_COMMON_EXPERIMENTAL_SUPPRESS_CONTROLLER_SPANS` | Suppress controller spans from being captured. |
-| `otel.instrumentation.common.experimental.suppress-view-spans` / `OTEL_INSTRUMENTATION_COMMON_EXPERIMENTAL_SUPPRESS_CONTROLLER_SPANS` | Suppress view spans from being captured. |
+{{% config_option name="otel.instrumentation.common.experimental.suppress-controller-spans" %}}
+  Suppress controller spans from being captured.
+{{% /config_option %}}
+{{% config_option name="otel.instrumentation.common.experimental.suppress-view-spans" %}}
+  Suppress view spans from being captured.
+{{% /config_option %}}
 
 ### Enable manual instrumentation only
 
