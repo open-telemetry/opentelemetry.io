@@ -18,4 +18,5 @@
 # content owners
 content/en/docs/instrumentation/cpp/     @open-telemetry/cpp-maintainers
 content/en/docs/instrumentation/java/    @open-telemetry/java-maintainers @open-telemetry/java-instrumentation-maintainers
+content/en/docs/instrumentation/python/    @open-telemetry/python-maintainers @open-telemetry/python-approvers
 content/en/blog/  @open-telemetry/blog-approvers
