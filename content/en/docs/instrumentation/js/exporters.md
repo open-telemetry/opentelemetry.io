@@ -126,7 +126,7 @@ Update your opentelemetry configuration to use the exporter and to send data to 
 
 ```javascript
 const { PrometheusExporter } = require('@opentelemetry/exporter-prometheus');
-const { MeterProvider }  = require('@opentelemetry/metrics');
+const { MeterProvider }  = require('@opentelemetry/sdk-metrics-base');
 const meter = new MeterProvider({
   exporter: new PrometheusExporter({port: 9090}),
   interval: 1000,

@@ -5,7 +5,7 @@ weight: 2
 ---
 
 The following is an in-depth explanation of using the API to trace an application with OpenTelemetry JavaScript.
-This guide will assume an OpenTelemetry SDK is registered and will walk through only tracing concepts.
+This guide will assume an OpenTelemetry SDK is registered and will only walk through the tracing concepts.
 To learn how to set up the OpenTelemetry JavaScript SDK, see [Getting Started][] or the [API Reference](https://open-telemetry.github.io/opentelemetry-js-api).
 
 More information:
@@ -15,7 +15,7 @@ More information:
 
 ## Acquiring a Tracer
 
-In OpenTelemetry, tracing operations are performed using methods on a _tracer_. You can get a tracer by calling [`getTracer`](https://open-telemetry.github.io/opentelemetry-js-api/classes/traceapi.html#gettracer) on the global tracer provider. `getTracer` takes the name and version of the application or library acquiring the tracer, and provides a tracer which can be used to trace operations.
+In OpenTelemetry, tracing operations are performed using methods on a _tracer_. You can get a tracer by calling [`getTracer`](https://open-telemetry.github.io/opentelemetry-js-api/classes/traceapi.html#gettracer) on the global tracer provider. `getTracer` takes the name and version of the application or library acquiring the tracer, and provides a tracer that can be used to trace operations.
 
 ```typescript
 import { trace } from '@opentelemetry/api';
@@ -25,7 +25,7 @@ const tracer = trace.getTracer("my-application", "0.1.0");
 
 ## Starting and Ending a Span
 
-In OpenTelemetry, all _traces_ are composed of [`Spans`](https://open-telemetry.github.io/opentelemetry-js-api/interfaces/span.html). A span describes a single operation with a start time and and end time like a database request, outgoing remote request, or a function invocation. These spans are linked together by parent-child relationships to form a tree. The resultant tree is your trace, and the root of the tree is commonly called the _root span_.
+In OpenTelemetry, all _traces_ are composed of [`Spans`](https://open-telemetry.github.io/opentelemetry-js-api/interfaces/span.html). A span describes a single operation with a start time and end time like a database request, outgoing remote request, or a function invocation. These spans are linked together by parent-child relationships to form a tree. The resultant tree is your trace, and the root of the tree is commonly called the _root span_.
 
 You can create a span by calling [`Tracer#startSpan`](https://open-telemetry.github.io/opentelemetry-js-api/interfaces/tracer.html#startspan). The only required argument to `startSpan` is the _span name_, which should describe the operation being performed with low cardinality.
 
@@ -39,7 +39,7 @@ const span = tracer.startSpan("my-span-name");
 span.end();
 ```
 
-Most of the time, spans will be used as part of a function which responds to some event like a web request. The following example shows what it might look like to manually trace a function which responds to a get request using an imaginary http server framework.
+  Most of the time, spans will be used as part of a function which responds to some event like a web request. The following example shows what it might look like to manually trace a function which responds to a get request using an imaginary HTTP server framework.
 
 ```typescript
 async function onGet(request, response) {
@@ -169,7 +169,7 @@ Context is a very important part of the OpenTelemetry API which cannot be adequa
 
 ### Span Attributes
 
-While name, start time, end time, and status are the minimum information required to trace an operation, most of the time they will not be enough information on their own to effectively observe an application. To solve this, OpenTelemetry uses _Span Attributes_. Span attributes are an object with string keys and string, number, or boolean values which describe the span. For example, we can use the span attributes to add route and http response code information to the example above.
+While name, start time, end time, and status are the minimum information required to trace an operation, most of the time they will not be enough information on their own to effectively observe an application. To solve this, OpenTelemetry uses _Span Attributes_. Span attributes are an object with string keys and string, number, or boolean values which describe the span. For example, we can use the span attributes to add route and HTTP response code information to the example above.
 
 ### Span Kind
 

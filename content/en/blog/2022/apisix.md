@@ -389,3 +389,7 @@ Apache APISIX is also currently working on additional plugins to support
 integration with more services, if you're interested, feel free to 
 [start a discussion](https://github.com/apache/apisix/discussions)
 on GitHub, or communicate via the [mailing list](https://apisix.apache.org/docs/general/subscribe-guide).
+
+_A version of this article was [originally posted][] on the Apache APISIX blog._
+
+[originally posted]: {{% param canonical_url %}}

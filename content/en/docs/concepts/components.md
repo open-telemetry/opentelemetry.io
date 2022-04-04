@@ -23,7 +23,7 @@ following:
   tracing, metrics, and logging data.
 - **SDK:** Defines requirements for a language-specific implementation of the API.
   Configuration, data processing, and exporting concepts are also defined here.
-- **Data:** Defines the OpenTelemetry Line Protocol (OTLP) and vendor-agnostic
+- **Data:** Defines the OpenTelemetry Protocol (OTLP) and vendor-agnostic
   semantic conventions that a telemetry backend can provide support for.
 
 For more information, see the [Specification](/docs/reference/specification/).
