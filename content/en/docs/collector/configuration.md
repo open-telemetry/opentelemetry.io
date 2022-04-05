@@ -484,7 +484,7 @@ authentication data to the outgoing requests.
 
 The authentication mechanism in the collector uses the extensions mechanism, allowing for
 custom authenticators to be plugged into collector distributions. If you are interested
-in developing a custom authenticator, check out the ["Building a custom authenticator"](../custom-auth) document.
+in developing a custom authenticator, check out the ["Building a custom authenticator"](custom-auth.md) document.
 
 Each authentication extension has two possible usages: as client authenticator for exporters,
 adding auth data to outgoing requests, and as server authenticator for receivers, authenticating
