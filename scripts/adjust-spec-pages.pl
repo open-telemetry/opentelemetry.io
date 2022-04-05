@@ -86,10 +86,10 @@ while(<>) {
   s|\bREADME.md\b|_index.md|g;
 
   # Rewrite inline links
-  s|\]\(([^:\)]*?\.md(#.*?)?)\)|]({{< relref "$1" >}})|g;
+  s|\]\(([^:\)]*?\.md(#.*?)?)\)|]({{% relref "$1" %}})|g;
 
   # Rewrite link defs
-  s|^(\[[^\]]+\]:\s*)([^:\s]*)(\s*(\(.*\))?)$|$1\{{< relref "$2" >}}$3|g;
+  s|^(\[[^\]]+\]:\s*)([^:\s]*)(\s*(\(.*\))?)$|$1\{{% relref "$2" %}}$3|g;
 
   print;
 }
