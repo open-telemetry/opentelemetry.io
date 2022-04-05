@@ -166,9 +166,8 @@ using var tracerProvider = Sdk.CreateTracerProviderBuilder()
 
 ## Zipkin
 
-If you are using [Zipkin](https://zipkin.io/) to visualize traces to visualize
-trace data, you'll need to set it up first. This is how to run it in a docker
-container:
+If you are using [Zipkin](https://zipkin.io/) to visualize trace data, you'll
+need to set it up first. This is how to run it in a docker container:
 
 ```shell
 docker run --rm -d -p 9411:9411 --name zipkin openzipkin/zipkin
