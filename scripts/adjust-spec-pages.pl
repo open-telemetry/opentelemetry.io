@@ -91,5 +91,8 @@ while(<>) {
   # Rewrite link defs
   s|^(\[[^\]]+\]:\s*)([^:\s]*)(\s*(\(.*\))?)$|$1\{{% relref "$2" %}}$3|g;
 
+  # Make website-local page references local:
+  s|https://opentelemetry.io/|/|g;
+
   print;
 }

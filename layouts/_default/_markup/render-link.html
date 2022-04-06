@@ -1,4 +1,8 @@
 {{ $isExternal := hasPrefix .Destination "http" -}}
+{{ if and $isExternal (findRE "^https://opentelemetry.io/\\w" .Destination) -}}
+  {{ errorf "%s: use a local path, not an external URL, for the following reference to a local page: %s"
+      .Page.File.Path .Destination -}}
+{{ end -}}
 {{/* Until Hugo supports hook params (https://github.com/gohugoio/hugo/issues/6670), we'll inspect .Text. */ -}}
 {{ $noExternalIcon := in .Text "hk-no-external-icon" -}}
 <a href="{{ .Destination | safeURL }}"

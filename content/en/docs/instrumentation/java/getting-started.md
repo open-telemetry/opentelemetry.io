@@ -99,7 +99,7 @@ For more:
 - Learn about [manual instrumentation][] and try out more [examples](../examples).
 
 [annotations]: ../automatic/annotations
-[configure the Java agent]: https://opentelemetry.io/docs/instrumentation/java/automatic/#configuring-the-agent
+[configure the Java agent]: ../automatic/#configuring-the-agent
 [console trace exporter,]: https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md#logging-exporter
 [exporter]: https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md#exporters
 [Get the example code.]: https://grpc.io/docs/languages/java/quickstart/#get-the-example-code
