@@ -288,7 +288,8 @@ It can be a good idea to record exceptions when they happen. It's recommended to
 try {
   doWork();
 } catch (ex) {
-  span.recordException(ex), span.setStatus({ code: otel.SpanStatusCode.ERROR });
+  span.recordException(ex);
+  span.setStatus({ code: otel.SpanStatusCode.ERROR });
 }
 ```
 
