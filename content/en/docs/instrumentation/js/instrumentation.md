@@ -10,14 +10,14 @@ This guide will cover creating and annotating spans, creating and annotating met
 In the following this guide will use the following sample app:
 
 ```javascript
-"use strict";
+'use strict';
 
 for (let i = 0; i < 10; i += 1) {
   doWork();
 }
 
 function doWork() {
-  console.log("work...");
+  console.log('work...');
   // simulate some random work.
   for (let i = 0; i <= Math.floor(Math.random() * 40000000); i += 1) {}
 }
@@ -41,8 +41,8 @@ const {
   BasicTracerProvider,
   ConsoleSpanExporter,
   SimpleSpanProcessor,
-} = require("@opentelemetry/sdk-trace-base");
-const opentelemetry = require("@opentelemetry/api");
+} = require('@opentelemetry/sdk-trace-base');
+const opentelemetry = require('@opentelemetry/api');
 
 const provider = new BasicTracerProvider();
 
@@ -52,7 +52,7 @@ provider.register();
 
 // This is what we'll access in all instrumentation code
 export const tracer = opentelemetry.trace.getTracer(
-  "example-basic-tracer-node"
+  'example-basic-tracer-node'
 );
 ```
 
@@ -66,7 +66,7 @@ Add a first span to the sample application. Modify your code like the following:
 
 ```javascript
 // Create a span. A span must be closed.
-const parentSpan = tracer.startSpan("main");
+const parentSpan = tracer.startSpan('main');
 for (let i = 0; i < 10; i += 1) {
   doWork(parentSpan);
 }
@@ -97,7 +97,7 @@ Nested spans let you track work that's nested in nature. For example, the `doWor
 
 ```javascript
 // Create a span. A span must be closed.
-const parentSpan = tracer.startSpan("main");
+const parentSpan = tracer.startSpan('main');
 for (let i = 0; i < 10; i += 1) {
   doWork(parentSpan);
 }
@@ -111,7 +111,7 @@ function doWork(parent) {
     opentelemetry.context.active(),
     parent
   );
-  const span = tracer.startSpan("doWork", undefined, ctx);
+  const span = tracer.startSpan('doWork', undefined, ctx);
 
   // simulate some random work.
   for (let i = 0; i <= Math.floor(Math.random() * 40000000); i += 1) {
@@ -152,8 +152,8 @@ function doWork(parent) {
 
   // Add an attribute to a span at the time of creation
   const span = tracer.startSpan(
-    "doWork",
-    { attributes: { attribute1: "value1" } },
+    'doWork',
+    { attributes: { attribute1: 'value1' } },
     ctx
   );
 
@@ -162,7 +162,7 @@ function doWork(parent) {
   }
 
   // Add an attribute to the same span later on
-  span.setAttribute("attribute2", "value2");
+  span.setAttribute('attribute2', 'value2');
 
   // Be sure to end the span!
   span.end();
@@ -182,7 +182,7 @@ npm install --save @opentelemetry/semantic-conventions
 Add the following to the top of your application file:
 
 ```javascript
-const { SemanticAttributes } = require("@opentelemetry/semantic-conventions");
+const { SemanticAttributes } = require('@opentelemetry/semantic-conventions');
 ```
 
 Finally, you can update your file to include semantic attributes:
@@ -194,8 +194,8 @@ function doWork(parent) {
     parent
   );
   const span = tracer.startSpan(
-    "doWork",
-    { attributes: { [SemanticAttributes.CODE_FUNCTION]: "doWork" } },
+    'doWork',
+    { attributes: { [SemanticAttributes.CODE_FUNCTION]: 'doWork' } },
     ctx
   );
   for (let i = 0; i <= Math.floor(Math.random() * 40000000); i += 1) {
@@ -211,20 +211,20 @@ function doWork(parent) {
 An event is a human-readable message attached to a span that represents "something happening" during its lifetime. You can think of it like a primitive log.
 
 ```js
-span.addEvent("Doing something");
+span.addEvent('Doing something');
 
 const result = doWork();
 
-span.addEvent("Did something");
+span.addEvent('Did something');
 ```
 
 You can also add an object with more data to go along with the message:
 
 ```js
-span.addEvent("some log", {
-  "log.severity": "error",
-  "log.message": "Data not found",
-  "request.id": requestId,
+span.addEvent('some log', {
+  'log.severity': 'error',
+  'log.message': 'Data not found',
+  'request.id': requestId,
 });
 ```
 
@@ -265,13 +265,13 @@ function doWork(parent) {
     opentelemetry.context.active(),
     parent
   );
-  const span = tracer.startSpan("doWork", undefined, ctx);
+  const span = tracer.startSpan('doWork', undefined, ctx);
 
   for (let i = 0; i <= Math.floor(Math.random() * 40000000); i += 1) {
     if (i > 10000) {
       span.setStatus({
         code: opentelemetry.SpanStatusCode.ERROR,
-        message: "Error.",
+        message: 'Error',
       });
     }
   }
