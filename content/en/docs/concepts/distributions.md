@@ -78,7 +78,7 @@ might be a good starting point.
 
 There are language specific extensibility mechanisms to customize the instrumentation libraries:
 
-- [Java](../../instrumentation/java/extensibility)
+- [Java Agent](../../instrumentation/java/extensibility)
 
 ## What you should know about distributions
 
