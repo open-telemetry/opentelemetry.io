@@ -271,7 +271,7 @@ function doWork(parent) {
     if (i > 10000) {
       span.setStatus({
         code: opentelemetry.SpanStatusCode.ERROR,
-        message: 'Error',
+        message: 'Error'
       });
     }
   }
