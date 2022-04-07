@@ -52,8 +52,6 @@ with tracer.start_as_current_span("span-name") as span:
 You can also use `start_span` to create a span without making it the current
 span. This is usually done to track concurrent or asynchronous operations.
 
-You can also
-
 ## Creating nested spans
 
 If you have a distinct sub-operation you'd like to track as a part of another
