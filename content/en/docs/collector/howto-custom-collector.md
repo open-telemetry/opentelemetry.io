@@ -12,7 +12,7 @@ As part of the process the `builder` will generate the collector's source code, 
 
 ## Step 1 - Install the builder
 
-You can easily install the builder through the go install command. 
+You can install the builder through the `go install` command. 
 
 Open your terminal and type:
 
