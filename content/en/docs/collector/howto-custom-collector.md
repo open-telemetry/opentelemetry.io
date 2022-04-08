@@ -6,7 +6,7 @@ The other really cool aspect of approaching the component development this way i
 
 In order to make it easy for developers to create their own custom builds of the Collector, the OpenTelemetry Community has developed a tool called `OpenTelemetry Collector Builder`.
 
-The `builder` is meant to help developers to quickly assemble and build their own collector's distributions, based on a given configuration file.
+The `builder` is meant to help developers quickly assemble and build their own collector's distributions, based on a given configuration file.
 
 As part of the process the `builder` will generate the collector's source code, which you can borrow and steal as your own to help build and debug your own components, so let's get started.
 
