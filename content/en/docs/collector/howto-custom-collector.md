@@ -4,7 +4,7 @@ If you are planning to build and debug your components, you are going to need yo
 
 The other really cool aspect of approaching the component development this way is that you can use all the cool debugging features from your IDE (stack traces are great teachers!) to understand how the Collector itself interacts with your component code.
 
-In order to me it easy for developers to create their own custom builds of the Collector, the OpenTelemetry Community has developed a tool called `OpenTelemetry Collector Builder`.
+In order to make it easy for developers to create their own custom builds of the Collector, the OpenTelemetry Community has developed a tool called `OpenTelemetry Collector Builder`.
 
 The `builder` is meant to help developers to quickly assemble and build their own collector's distributions, based on a given configuration file.
 
