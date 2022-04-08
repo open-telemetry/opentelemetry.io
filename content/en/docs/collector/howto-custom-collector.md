@@ -82,7 +82,7 @@ processors:
     gomod: go.opentelemetry.io/collector v0.41.0
 ```
 
-For more information on how to create your builder config file, checkout [OpenTelemetry Collector builder](https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder) folder inside the Collector's project in GitHub.
+For more information on how to create your builder config file, check out the [OpenTelemetry Collector builder](https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder) folder inside the Collector's project in GitHub.
 
 ## Step 3 - Generating the Code and Building your Collector's distribution.
 
