@@ -8,7 +8,7 @@ In order to make it easy for developers to create their own custom builds of the
 
 The `builder` is meant to help developers quickly assemble and build their own collector's distributions, based on a given configuration file.
 
-As part of the process the `builder` will generate the collector's source code, which you can borrow and steal as your own to help build and debug your own components, so let's get started.
+As part of the process the `builder` will generate the collector's source code, which you can modify to help build and debug your own components, so let's get started.
 
 ## Step 1 - Install the builder
 
