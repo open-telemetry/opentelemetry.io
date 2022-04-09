@@ -1,16 +1,13 @@
 ---
 title: Documentation
 linkTitle: Docs
-menu:
-  main:
-    weight: 10
+menu: { main: { weight: 10 } }
 ---
 
-OpenTelemetry is a set of APIs, SDKs, tooling and integrations that are
-designed for the creation and management of _telemetry data_ such as traces,
-metrics, and logs. The OpenTelemetry documentation is intended to broadly cover
-key terms, concepts, and instructions on how to use OpenTelemetry in your
-software.
+OpenTelemetry is a set of APIs, SDKs, tooling and integrations that are designed
+for the creation and management of _telemetry data_ such as traces, metrics, and
+logs. The OpenTelemetry documentation is intended to broadly cover key terms,
+concepts, and instructions on how to use OpenTelemetry in your software.
 
 ![Implementation of the OpenTelemetry Reference Architecture](https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/Reference_Architecture.svg)
 
