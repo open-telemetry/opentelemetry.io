@@ -424,7 +424,7 @@ func createDefaultConfig() config.Receiver {
 
 // NewFactory creates a factory for tracemock receiver.
 func NewFactory() component.ReceiverFactory {
-
+  return nil
 }
 ```
 
