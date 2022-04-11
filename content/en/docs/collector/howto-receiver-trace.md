@@ -118,7 +118,7 @@ dev-otelcol % ./dev-otelcol --config config.yaml
 
   
 
-Make sure you see the last line, that will confirm that the jaeger exporter has successfully established a connection to your local jaeger instance. Now that we have our environment ready, let's start writing your receiver's code.
+Make sure you see the last line, that will confirm that the Jaeger exporter has successfully established a connection to your local Jaeger instance. Now that we have our environment ready, let's start writing your receiver's code.
 
 First create a folder called `tracemock` under the dev-otelcol so it will host all of our receivers code
 
