@@ -36,7 +36,7 @@ dist:
 
 As an outcome you should now have a [dev-otelcol](dev-otelcol) folder with your collectors development instance ready to go.
 
-In order to properly test your trace receiver, you will need a distributed tracing backend so the collector can send the telemetry to it. We will be using [JAEGER](https://www.jaegertracing.io/docs/1.30/getting-started), if you don't have a `JAEGER` instance running, you can easily stand one using docker with the following command:
+In order to properly test your trace receiver, you will need a distributed tracing backend so the collector can send the telemetry to it. We will be using [Jaeger](https://www.jaegertracing.io/docs/latest/getting-started/), if you don't have a `Jaeger` instance running, you can easily start one using Docker with the following command:
 
 ```cmd
 docker run -d --name jaeger \
