@@ -1,12 +1,12 @@
 # Building a Traces Receiver
 
- If you are reading this tutorial, you probably already have an idea of what are the concepts behind traces and/or distribute traces, but if you don't you can quickly read through it here: [OpenTelemetry - Data Sources - Traces](https://opentelemetry.io/docs/concepts/data-sources/#traces).
+ If you are reading this tutorial, you probably already have an idea of the OpenTelemetry concepts behind traces and/or distribute traces, but if you don't you can quickly read through it here: [OpenTelemetry - Data Sources - Traces](https://opentelemetry.io/docs/concepts/data-sources/#traces).
 
  Here is the definition of those concepts according to OpenTelemetry:
 
 >Traces track the progression of a single request, called a trace, as it is handled by services that make up an application. The request may be initiated by a user or an application. Distributed tracing is a form of tracing that traverses process, network and security boundaries.
 
-Although the definition seems very application centric, you can leverage OpenTelemetry traces as a way to represent a request and quickly understand it's duration and the details about every step involved in completing it.
+Although the definition seems very application centric, you can leverage OpenTelemetry traces model as a way to represent a request and quickly understand it's duration and the details about every step involved in completing it.
 
 The trace receiver's role is to convert the request telemetry from it's original format into the Otel trace format, so the information can be properly processed through the collector's pipelines.
 
@@ -32,7 +32,6 @@ dist:
     output_path: ./dev-otelcol # the path to write the output (sources and binary). Optional.
 ```
 
-&nbsp;
 
 As an outcome you should now have a [dev-otelcol](dev-otelcol) folder with your collectors development instance ready to go.
 
@@ -40,28 +39,21 @@ In order to properly test your trace receiver, you will need a distributed traci
 
 ```cmd
 docker run -d --name jaeger \
-  -e COLLECTOR_ZIPKIN_HOST_PORT=:9411 \
-  -p 5775:5775/udp \
-  -p 6831:6831/udp \
-  -p 6832:6832/udp \
-  -p 5778:5778 \
   -p 16686:16686 \
   -p 14268:14268 \
-  -p 14250:14250 \
-  -p 9411:9411 \
   jaegertracing/all-in-one:1.29
 ```
 
-&nbsp;
 
-Now, create a config.yaml file so you can setup your collector's components. 
+
+Now, create a `config.yaml` file so you can setup your collector's components. 
 
 ```cmd
 cd dev-otelcol
 touch config.yaml
 ```
 
-&nbsp;
+  
 
 For now, you just need a basic traces pipeline with the `otlp` receiver, the `jaeger` and `logging` exporters, here is what your `config.yaml` file should look like:
 
@@ -91,7 +83,7 @@ service:
       exporters: [jaeger, logging]
 ```
 
-&nbsp;
+  
 
 
 In order to verify that your initial pipeline is properly setup, you should have the following output after running your `dev-otelcol` command: 
@@ -124,7 +116,7 @@ dev-otelcol % ./dev-otelcol --config config.yaml
 2022-02-01T09:29:37.208-0600    info    jaegerexporter@v0.41.0/exporter.go:186  State of the connection with the Jaeger Collector backend     {"kind": "exporter", "name": "jaeger", "state": "READY"}
 ```
 
-&nbsp;
+  
 
 Make sure you see the last line, that will confirm that the jaeger exporter has successfully established a connection to your local jaeger instance. Now that we have our environment ready, let's start writing your receiver's code.
 
@@ -135,7 +127,7 @@ cd dev-otelcol
 mkdir tracemock
 ```
 
-&nbsp;
+  
 
 
 ## Reading and Validating your Receiver Settings
@@ -156,18 +148,18 @@ receivers:
     number_of_traces: 1
 ```
 
-&nbsp;
+  
 
 Under the `tracemock` folder, create a file named `config.go` where you will write all the code to support your receiver settings.
 
-&nbsp;
+  
 
 ```cmd
 cd tracemock
 touch config.go
 ```
 
-&nbsp;
+  
 
 To implement the configuration aspects of a receiver you need create a `Config` struct, so go ahead the add the following code to your `config.go` file:
 
@@ -180,7 +172,7 @@ type Config struct{
 }
 ```
 
-&nbsp;
+  
 
 In order to be able to give your receiver access to it's settings the `Config` struct must:
 
@@ -214,7 +206,7 @@ type Config struct {
 >- I embedded the `config.ReceiverSettings` as required by the spec.
 >- I added the `Interval` and the `NumberOfTraces` fields so I can properly have access to their values from the config.yaml.
 
-&nbsp;
+  
 
 Now that you have access to the settings, you can provide any kind of validation needed for those values by implementing the `Validate` method according to the [validatable](https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/config.go#L154) interface.
 
@@ -256,12 +248,12 @@ func (cfg *Config) Validate() error {
 >- I imported the `fmt` package, so I can properly format print my error messages.
 >- I added the `Validate` method to my Config struct where I am checking if the `interval` setting value is at least 1 minute (1m) and if the `number_of_traces` setting value is greater or equal to 1. If that is not true the Collector will generate an error during it's startup process and display the message accordingly.
 
-&nbsp;
+  
 
 
 If you want to take a closer look at the structs and interfaces involved in the configuration aspects of a receiver component, take a look at the [config/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/receiver.go) file inside the Collector's GitHub project.
 
-&nbsp;
+  
 
 ## Enabling the Collector to instantiate your receiver.
 
@@ -318,12 +310,12 @@ Notice that `factories.Receivers` is the field holding a map to all the receiver
 
 The `tracemock` receiver has to provide a `ReceiverFactory` implementation, and although you will find a `ReceiverFactory` interface (you can find it's definition in the [component/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/main/component/receiver.go#L105) file within the Collector's project ), the right way to provide the implementation is by using the functions available within the `go.opentelemetry.io/collector/receiver/receiverhelper` package.
 
-&nbsp;
+  
 
-&nbsp;
+  
 
 ### Implementing your ReceiverFactory
-&nbsp;
+  
 
 Start by creating a file named factory.go within the [tracemock](dev-otelcol/tracemock) folder
 
@@ -332,7 +324,7 @@ cd tracemock
 touch factory.go
 ```
 
-&nbsp;
+  
 
 Now let's follow the convention and add a function named `NewFactory()` that will be responsible to instantiate the `tracemock` factory. Go ahead the add the following code to your `factory.go` file:
 
@@ -349,7 +341,7 @@ func NewFactory() component.ReceiverFactory {
 }
 ```
 
-&nbsp;
+  
 
 In order to instantiate your `tracemock` receiver factory, you will use the  following function from the `receiverhelper` package:
 
@@ -357,7 +349,7 @@ In order to instantiate your `tracemock` receiver factory, you will use the  fol
 func NewFactory(cfgType config.Type, createDefaultConfig CreateDefaultConfig, options ...FactoryOption) component.ReceiverFactory
 ```
 
-&nbsp;
+  
 
 The `receiverhelper.NewFactory()` instantiate and returns a `component.ReceiverFactory` and it requires the following parameters:
 
@@ -369,12 +361,12 @@ The `receiverhelper.NewFactory()` instantiate and returns a `component.ReceiverF
 
 Let's now implement the code to support all the parameters required by `receiverhelper.NewFactory()`
 
-&nbsp;
+  
 
-&nbsp;
+  
 
 ### Identifying and Providing default settings for the receiver
-&nbsp;
+  
 
 If you take a look at the definition of [config.Type](https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/config.go#L151), you will see that it's just a string. So all we need to do is to provide a string constant representing the unique identifier for our receiver.
 
@@ -389,7 +381,7 @@ const (
 )
 ```
 
-&nbsp;
+  
 
 As for default settings, you just need to add a function that returns a config.Receiver holding the default configurations for the `tracemock` receiver.
 
@@ -404,7 +396,7 @@ func createDefaultConfig() config.Receiver {
 }
 ```
 
-&nbsp;
+  
 
 After these two changes you will notice a few imports are missing, so here is what your `factory.go` file should look like with the proper imports:
 
@@ -447,18 +439,18 @@ func NewFactory() component.ReceiverFactory {
 >   - To provide the proper `config.ComponentID`, we used the function `config.NewComponentID` which returns a `config.ComponentID` for the given `config.Type` which in our case is represented by the variable `typeStr`
 >- The `tracemock.Config.Interval` field was initialized with the `defaultInterval` constant.
 
-&nbsp;
+  
 
 If you want to take a closer look at `ReceiverSettings` struct and `NewReceiverSettings` function within the [config/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/receiver.go) file inside the Collector's GitHub project.
 
 If you want to take a closer look at `ComponentID` struct and `NewComponentID` function within the [config/identifiable.go](https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/identifiable.go) file inside the Collector's GitHub project.
 
-&nbsp;
+  
 
-&nbsp;
+  
 
 ### Enabling the factory to describe the receiver as capable of processing traces
-&nbsp;
+  
 
 The same receiver component can process traces, metrics and logs, and the receiver's factory is responsible to describe those capabilities. 
 
@@ -469,12 +461,12 @@ func WithTraces(createTracesReceiver CreateTracesReceiver) FactoryOption
 type CreateTracesReceiver func(context.Context, component.ReceiverCreateSettings, config.Receiver, consumer.Traces) (component.TracesReceiver, error)
 ```
 
-&nbsp;
+  
 
 The `receiverhelper.WithTraces()` instantiate and returns a `receiverhelper.FactoryOption` and it requires the following parameters:
 - `CreateTracesReceiver`: A reference to a function that matches the `receiverhelper.CreateTracesReceiver` type 
 
-&nbsp;
+  
 
 The `receiverhelper.CreateTracesReceiver` type is a pointer to a function that is responsible to instantiate and return a `component.TraceReceiver` instance and it requires the following parameters:
 - `context.Context`: the reference to the collector's `context.Context` so your trace receiver can properly manage it's execution context.
@@ -482,7 +474,7 @@ The `receiverhelper.CreateTracesReceiver` type is a pointer to a function that i
 - `config.Receiver`: the reference for the receiver config settings passed by the collector to the factory so it can properly read it's settings from the collector config.
 - `consumer.Traces`: the reference to the `consumer.Traces` responsible to pass the traces generated by your receiver to the next consumer/step (most likely a processor or exporter) configured in the traces pipeline.
 
-&nbsp;
+  
 
 Start by adding the bootstrap code to properly implement the `receiverhelper.CreateTracesReceiver` function pointer. Go ahead and add the following code to your `factory.go` file:
 
@@ -491,7 +483,7 @@ func createTracesReceiver(_ context.Context, params component.ReceiverCreateSett
   return nil,nil
 }
 ```
-&nbsp;
+  
 
 You now have all the necessary components to successfully instantiate your receiver factory using the `receiverhelper.NewFactory` function. Go ahead and and update your `NewFactory()` function in your `factory.go` file as follow:
 
@@ -504,7 +496,7 @@ func NewFactory() component.ReceiverFactory {
 		receiverhelper.WithTraces(createTracesReceiver))
 }
 ```
-&nbsp;
+  
 
 After these two changes you will notice a few imports are missing, so here is what your `factory.go` file should look like with the proper imports:
 
@@ -553,16 +545,16 @@ func NewFactory() component.ReceiverFactory {
 >- Importing the `go.opentelemetry.io/collector/receiver/receiverhelper` package which is where the `NewFactory()` and the `WithTrace()` functions are declared.
 >- Updated the `NewFactory()` function so it returns the `component.ReceiverFactory` generated by the `receiverhelper.NewFactory()` call with the required parameters. The generated receiver factory will be capable of processing traces through the call to `receiverhelper.WithTraces(createTracesReceiver)`
 
-&nbsp;
+  
 
 At this point, you have the `tracemock` factory and config code needed for the Collector to validate the `tracemock` receiver settings if they are defined within the `config.yaml`. You just need to add it to the Collector's initialization process.
 
-&nbsp;
+  
 
-&nbsp;
+  
 
 ### Adding the receiver factory to the Collector's initialization
-&nbsp;
+  
 
 As explained before, all the Collector components are instantiated by the `components()` function within the `components.go` file.
 
@@ -627,7 +619,7 @@ func components() (component.Factories, error) {
 >- Importing the `dev-otelcol\tracemock` package which is where the receiver types and function are.
 >- Added a call to `tracemock.NewFactory()` as a parameter of the `component.MakeReceiverFactoryMap()` call so your `tracemock` receiver factory is properly added to the `factories` map.
 
-&nbsp;
+  
 
 We added the `tracemock` receiver settings to the `config.yaml` previously, so here is what the beginning of the output for running your collector with `dev-otelcol` command should look like after building it with the current codebase: 
 
@@ -643,7 +635,7 @@ dev-otelcol % ./dev-otelcol --config config.yaml
 2022-02-24T12:17:41.454-0600    info    service/service.go:91   Starting exporters...
 ```
 
-&nbsp;
+  
 
 Look for the log line for "builder/receivers_builder.go:111" (it's the 4th line from the bottom at the snippet showed here), you can see that the Collector found the settings for the `tracemock` receiver, validated them (the current settings are all correct), but ignores the receiver given that it's not used in any pipeline.
 
@@ -657,16 +649,16 @@ Error: invalid configuration: receiver "tracemock" has invalid configuration: nu
 2022/02/24 13:00:20 collector server run finished with error: invalid configuration: receiver "tracemock" has invalid configuration: number_of_traces must be at least 1
 ```
 
-&nbsp;
+  
 
 The `tracemock` receiver factory and config requirements are done and the Collector is properly loading your component. You can now move to the core of your receiver, the implementation of the component itself.
 
-&nbsp;
+  
 
-&nbsp;
+  
 
 ## Implementing the trace receiver component
-&nbsp;
+  
 
 In the previous section, I mentioned the fact that a receiver can process any of the OTel supported datasources (traces, metrics or log), and the Collector's API is designed to help you accomplish that.
 
@@ -730,7 +722,7 @@ func (tracemockRcvr *tracemockReceiver) Shutdown(context.Context) error {
 >- Added a bootstrap implementation of the `Start(ctx context.Context, host component.Host)` method to comply with the `component.TraceReceiver` interface. 
 >- Added a bootstrap implementation of the `Shutdown(ctx context.Context)` method to comply with the `component.TraceReceiver` interface. 
 
-&nbsp;
+  
 
 The `Start()` method is passing 2 references (`context.Context` and `component.Host`) that your receiver might need to keep so they can be used as part of it's processing operations. 
 
@@ -747,7 +739,7 @@ type tracemockReceiver struct {
 }
 ```
 
-&nbsp;
+  
 
 Now you need to update the `Start()` methods so the receiver can properly initialize it's own processing context and have the cancellation function kept in the `cancel` field and also initialize it's `host` field value. You will also update the `Stop()` method in order to finalize the context by calling the `cancel` function.
 
@@ -785,12 +777,12 @@ func (tracemokRcvr *tracemockReceiver) Shutdown(ctx context.Context) error {
 >- Updated the `Start()` method by adding the initialization to the `host` field with the `component.Host` reference passed by the collector and the `cancel` function field with the cancellation based on a new context created with `context.Background()` (according the Collector's API documentation suggestions).  
 >- Updated the `Stop()` method by adding a call to the `cancel()` context cancellation function.
 
-&nbsp;
+  
 
-&nbsp;
+  
 
 ### Keeping information passed by the receiver's factory
-&nbsp;
+  
 
 Now that you have implemented the `component.TraceReceiver` interface methods, your `tracemock` receiver component is ready to be instantiated and returned by it's factory.
 
@@ -860,7 +852,7 @@ func (tracemokRcvr *tracemockReceiver) Shutdown(ctx context.Context) error {
 >- Added a `go func()` to implement the `ticker` mechanism so our receiver can generate traces every time the `ticker` reaches the amount of time specified by the `interval` variable and used the `tracemokRcvr.logger` field to generate a info message every time the receiver supposed to be generating traces.
 
 
-&nbsp;
+  
 
 The `tracemockReceiver` type is now ready to be instantiated and keep all  meaningful information passed by it's factory.
 
@@ -935,7 +927,7 @@ func NewFactory() component.ReceiverFactory {
 >- Added a variable called `traceRcvr` and initialized it with the `tracemockReceiver` instance using the factory information stored within the variables.
 >- Updated the return statement to now include the `traceRcvr` instance.
 
-&nbsp;
+  
 
 With the factory fully implemented and instantiating the trace receiver component you are ready to test the receiver as part of a pipeline. Go ahead and add the `tracemock` receiver to your `traces` pipeline in the `config.yaml` as follow:
 
@@ -948,7 +940,7 @@ service:
       exporters: [jaeger, logging]
 ```
 
-&nbsp;
+  
 
 Here is what the output for running your collector with `dev-otelcol` command should look like after you updated the `traces` pipeline: 
 
@@ -984,7 +976,7 @@ dev-otelcol % ./dev-otelcol --config config.yaml
 2022-03-03T11:20:51.783-0600    info    tracemock/trace-receiver.go:23  I should start processing traces now!   {"kind": "receiver", "name": "tracemock"}
 ```
 
-&nbsp;
+  
 
 Look for the log line for "builder/receivers_builder.go:68 Receiver is starting... {"kind": "receiver", "name": "tracemock"}", you can see that the Collector found the settings for the `tracemock` receiver within the `traces` pipeline and is now instantiating it and starting it given that 1 minute after the collector has started, you can see the info line we added to the `ticker` function within the `Start()` method.
 
@@ -1002,7 +994,7 @@ Now, go ahead and press `ctrl+c` in your collector's terminal so you want watch 
 2022-03-03T11:20:14.653-0600    info    service/service.go:136  Stopping extensions...
 2022-03-03T11:20:14.653-0600    info    service/collector.go:273        Shutdown complete.
 ```
-&nbsp;
+  
 
 As you can see there is an info log line for the `tracemock` receiver which means the component is responding correctly to the `Shutdown()` event.
 In the next section you will learn more about the OTel Trace data model so the `tracemock` receiver can finally generate traces!
@@ -1041,7 +1033,7 @@ cd dev-otelcol/tracemock
 touch model.go
 ```
 
-&nbsp;
+  
 
 Now, within the `model.go` file, add the definition for the `Atm` and the `BackendSytem` types as follow:
 
@@ -1172,7 +1164,7 @@ func getRandomNumber(min int, max int) int {
 >- Added the `generateBackendSystem` function that instantiates a `BackendSystem`type and randomly assign service endpoint values for the `Endpoint` field
 >- Added the `generateRandomNumber` function to help generating random numbers between a desired range.
 
-&nbsp;
+  
 
 Now that you have the functions to generate object instances representing the entities generating telemetry, you are ready to represent those entities in the OTel collector world.
 
@@ -1192,7 +1184,7 @@ func generateTraces() pdata.Traces{
 	return traces
 }
 ```
-&nbsp;
+  
 
 By now you have heard and read enough about how traces are made up of Spans. You have probably also written some instrumentation code using the SDK's functions and types available to create them, but what you probably didn't know, is that within the collector's API, that there are a other types of "spans" involved in creating a trace.
 
@@ -1228,7 +1220,7 @@ func generateTraces() pdata.Traces{
 >- Added the `resourceSpan` variable and initialized it with the `ResourceSpan` reference returned by the `traces.ResourceSpans().AppendEmpty()` call
 >- Added the `atmResource` variable and initialized it with the `Resource` reference returned by the `resourceSpan.Resource()` call
 
-&nbsp;
+  
 
 ### Describing Resources through attributes
 
@@ -1260,7 +1252,7 @@ func fillResourceWithAtm(resource *pdata.Resource, atm Atm){
 >- Declared a variable called `atmAttrs` and initialized it with the `pdata.AttributeMap` reference returned by the `resource.Attributes()` call
 >- Used the `InsertInt()` and `InsertString()` methods from `pdata.AttributetMap` to add int and string attributes based on the equivalent `Atm` field types. Notice that because those attributes are very specific and only represent the `Atm` entity, they are all grouped within the "atm." prefix.
 
-&nbsp;
+  
 
 The resource semantic conventions also have prescriptive attribute names and well-known values to represent telemetry generation entities that are common and applicable across different domains like [compute unit](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/README.md#compute-unit), [environment](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/README.md#environment) and others.
 
@@ -1301,7 +1293,7 @@ func fillResourceWithBackendSystem(resource *pdata.Resource, backend BackendSyst
 	backendAttrs.InsertString(conventions.AttributeOSVersion, backend.OSVersion)
  }
 ```
-&nbsp;
+  
 
 Notice that I didn't add an attribute named "atm.name" or "backendsystem.name" to the `Resource` representing the `Atm` and `BackendSystem` entity names, that's because most (not to say all) distributed tracing backend systems that are compatible with the OTel trace specification, interpret the `Resource` described in a trace as a `Service`, therefore they expect the `Resource` to carry a required attribute named `service.name` as prescribed by the resource semantic convention. 
 
@@ -1626,9 +1618,9 @@ func appendTraceSpans(backend *BackendSystem, backendInstrLbrSpans *pdata.Instru
 >- Setting the `Kind` of the span as `pdata.SpanKindServer`. Take a look at [SpanKind section](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#spankind) within the trace specification to understand how to properly define SpanKind.
 >- Used all the methods mentioned before to fill the `pdata.Span` with the proper values to represent the `BakendSytem` operation
 
-&nbsp;
+  
 
-&nbsp;
+  
 
 
 You probably noticed that there are 2 references to `pdata.InstrumentationLibrarySpans` as parameters in the `appendTraceSpans()` function, but we only used one of them. Don't worry about it for now, we will get back to it later.
@@ -1660,7 +1652,7 @@ func generateTraces() pdata.Traces{
 }
 ```
 
-&nbsp;
+  
 
 
 You now have the `BackendSystem` entity and it's operations represented in spans within a proper trace context! All you need to do is to push the generated trace through the pipeline so the next consumer (either a processor or an exporter) can receive and process it.
@@ -1697,9 +1689,9 @@ func (tracemokRcvr *tracemockReceiver) Start(ctx context.Context, host component
 >
 >- Added a line under the `case <=ticker.C` condition calling the `tracemockRcvr.nextConsumer.ConsumeTraces()` method passing the new context created within the `Start()` method (`ctx`) and a call to the `generateTraces()` function so the generated traces can be pushed to the next consumer in the pipeline
 
-&nbsp;
+  
 
-&nbsp;
+  
 
 
 If you run your `dev-otelcol` here is what the output should look like after 2 minutes running:
@@ -1806,14 +1798,14 @@ Span #0
     Status code    : STATUS_CODE_OK
     Status message :
 ```
-&nbsp;
+  
 
 Here is what the generated trace looks like in Jaeger:
 ![Jaeger trace](images/Jaeger-BackendSystem-Trace.png)
 
-&nbsp;
+  
 
-&nbsp;
+  
 
 What you currently see in Jaeger is the representation of a service that is receiving a request from an external entity that isn't instrumented by an OTel SDK, therefore it can't be identified as the origin/start of the trace.
 In order for a `pdata.Span` to understand it is representing an operation that was execute as a result of another operation originated either within or outside (nested/child) of the `Resource` within the same trace context you will need to:
@@ -1876,9 +1868,9 @@ func appendTraceSpans(backend *BackendSystem, backendInstrLbrSpans *pdata.Instru
 Go ahead and run your `dev-otelcol` again and after 2 minutes running, you should start seeing traces in Jaeger like the following:
 ![Jaeger trace](images/Jaeger-Fullsystem-Trace%20list.png)
 
-&nbsp;
+  
 
-&nbsp;
+  
 
 We now have services representing both the `Atm` and the `BackendSystem` telemetry generation entities in our system and can fully understand how both entities are been used and contributing to the performance of an operation executed by an user.
 
