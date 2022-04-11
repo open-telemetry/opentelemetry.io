@@ -259,7 +259,7 @@ If you want to take a closer look at the structs and interfaces involved in the 
 
 At the beginning of this tutorial, you created your `dev-otelcol` instance, which is bootstrapped with the following components:
 
-* Receivers: Otlp Receiver
+* Receivers: OTLP Receiver
 * Processors: Batch Processor
 * Exporters: Logging and Jaeger Exporters
 
