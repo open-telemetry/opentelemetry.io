@@ -16,7 +16,7 @@ In order to implement a traces receiver you will need the following:
 
 - A `ReceiverFactory` implementation so the Collector can properly instantiate the trace receiver component
 
-- A `TracesReceiver` implementation that is responsible to collect the telemetry, convert it to the internal Otel Trace format, and hand the information to the next consumer in the pipeline.
+- A `TracesReceiver` implementation that is responsible to collect the telemetry, convert it to the internal trace representation, and hand the information to the next consumer in the pipeline.
 
 In this tutorial we will create a sample trace receiver called `tracemock` that simulates a pull operation and generates traces as an outcome of that operation. The next sections will guide you through the process of implementing the steps above in order to create the receiver, so let's get started. 
 
