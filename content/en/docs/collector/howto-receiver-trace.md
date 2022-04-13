@@ -6,9 +6,11 @@
 
 >Traces track the progression of a single request, called a trace, as it is handled by services that make up an application. The request may be initiated by a user or an application. Distributed tracing is a form of tracing that traverses process, network and security boundaries.
 
-Although the definition seems very application centric, you can leverage OpenTelemetry traces model as a way to represent a request and quickly understand it's duration and the details about every step involved in completing it.
+Although the definition seems very application centric, you can leverage the OpenTelemetry traces model as a way to represent a request and quickly understand it's duration and the details about every step involved in completing it.
 
-The trace receiver's role is to convert the request telemetry from it's original format into the Otel trace format, so the information can be properly processed through the collector's pipelines.
+Assuming you already have a system generating some kind of tracing telemetry, [the OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) is the doorway to help you make it available into the OTel world.
+
+Within the collector, a trace receiver has the role to receive and convert your request telemetry from it's original format into the OTel trace model, so the information can be properly processed through the collector's pipelines.
 
 In order to implement a traces receiver you will need the following:
 
