@@ -6,13 +6,13 @@ author: Pavol Loffay
 
 In this article, you will learn how distributed tracing works in Knative and we will explore how the OpenTelemetry project can make tracing support in this environment easier. We will explore Knative under the hood to understand what distributed tracing capabilities it provides out-of-the-box and which parts of the system need additional instrumentation.
 
-In this article we will not cover Knative fundamentals, please refer to the [Knative documentation](https://knative.dev/docs/) to get familiar with the project.
-
 ## About Knative
 
 Knative is a serverless platform built on top of Kubernetes as a set of `CustomResourceDefinitions` (CRDs). The project is split into two logical parts: 
  * serving - facilitates the creation, deployment and scaling of workload/services
  * eventing - facilitates event-driven communication between workloads to enable loosely coupled architectures
+
+In this article we will not cover Knative fundamentals, please refer to the [Knative documentation](https://knative.dev/docs/) to get familiar with the project.
 
 ### Knative data flow
 
