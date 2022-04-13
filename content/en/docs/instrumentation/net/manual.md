@@ -138,7 +138,7 @@ public static class Telemetry
 ```
 
 You can instantiate several `ActivitySource`s if that suits your scenario,
-although it is generally sufficient to just have one defined per serivce.
+although it is generally sufficient to just have one defined per service.
 
 ## Creating Activities
 
