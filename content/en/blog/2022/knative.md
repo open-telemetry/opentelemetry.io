@@ -10,13 +10,15 @@ In this article we will not cover Knative fundamentals, please refer to the [Kna
 
 ## About Knative
 
-Knative is a serverless platform built on top of Kubernetes as a set of `CustomResourceDefinitions` (CRDs). The project is split into two logical parts: serving and eventing. Serving facilitates the creation, deployment and scaling of workload/services, and eventing facilitates event-driven communication between workloads to enable loosely coupled architectures.
+Knative is a serverless platform built on top of Kubernetes as a set of `CustomResourceDefinitions` (CRDs). The project is split into two logical parts: 
+ * serving - facilitates the creation, deployment and scaling of workload/services
+ * eventing - facilitates event-driven communication between workloads to enable loosely coupled architectures
 
 ### Knative data flow
 
 Before we deep dive into tracing let's take a look at a data flow example. It will help us to understand Knative architecture and which parts of the system need to be instrumented in order to understand the timing characteristics of the request or transaction. On the diagram below there are two user workloads (first and second) and an incoming request marked as (1. HTTP) that goes to use workload first and then to the workload second as a cloud event message.
 
-![Knative data flow](/img/blog-knative/knative-data-flow.jpg)
+![Knative data flow: incoming HTTP request goes throguh Knative service and queue-proxy sidecar container before if reaches a workload](/img/blog-knative/knative-data-flow.jpg)
 
 There are two important facts about this diagram:
 1. all the traffic goes through queue-proxy sidecar
@@ -32,7 +34,7 @@ Internally at the moment, Knative uses OpenCensus instrumentation libraries that
 
 Now let's take a look at an example trace with two workloads (first and second). The workflow is similar to the diagram from the previous section: the first service receives an HTTP call and sends a cloud event to the second service. The full demo source code can be found in [pavolloffay/knative-tracing](https://github.com/pavolloffay/knative-tracing).
 
-![Jaeger Knative trace](/img/blog-knative/jaeger-knative-trace.jpg)
+![A screenshot from Jaeger that shows Knative trace](/img/blog-knative/jaeger-knative-trace.jpg)
 
 The trace shows the following services interacting: activator, first workload, broker-ingress, imc-dispatcher, broker-filter, activator, and second workload. There are many services, right? A simple interaction of two workloads resulted in a trace that shows many Knative internal components. From the observability perspective, this is great because it can show issues in the infrastructure and additionally show cost associated with Knative request processing.
 
@@ -91,7 +93,7 @@ In the previous section, it was mentioned that the Knative serving and eventing 
 
 Another recently merged change is the addition of [Cloudevents semantic attributes into the OpenTelemetry specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/cloudevents.md). The document standardizes attributes related to CloudEvents. The screenshot below is from the demo application that is still not using the standardized attribute names:
 
-![Jaeger Knative attributes](/img/blog-knative/jaeger-knative-attributes.jpg)
+![A screenshot from Jaeger that shows Knative attributes](/img/blog-knative/jaeger-knative-attributes.jpg)
 
 ### Configuration
 
