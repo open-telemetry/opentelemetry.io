@@ -57,7 +57,7 @@ Use "builder [command] --help" for more information about a command.
 
 ## Step 2 - Create a builder config file
 
-The builder config file is a `yaml` where you basically pass information about the code generation and compile process combined with the components that you would like to add to your Collector's distribution.
+The builder's manifest is a `yaml` where you basically pass information about the code generation and compile process combined with the components that you would like to add to your Collector's distribution.
 
 Go ahead and create a `builder-config.yaml` with the following content:
 
