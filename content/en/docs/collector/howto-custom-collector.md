@@ -1,14 +1,17 @@
-# HOW-TO: Build your own Collector instance
+---
+title: "Building your own Collector instance"
+weight: 30
+---
 
-If you are planning to build and debug your components, you are going to need your own Collector instance. That will allow you to launch and debug your Collector components directly within your favorite Golang IDE.
+If you are planning to build and debug your components, you are going to need your own Collector instance. That will allow you to launch and debug your OpenTelemetry Collector components directly within your favorite Golang IDE.
 
-The other really cool aspect of approaching the component development this way is that you can use all the cool debugging features from your IDE (stack traces are great teachers!) to understand how the Collector itself interacts with your component code.
+The other interesting aspect of approaching the component development this way is that you can use all the debugging features from your IDE (stack traces are great teachers!) to understand how the Collector itself interacts with your component code.
 
-In order to me it easy for developers to create their own custom builds of the Collector, the OpenTelemetry Community has developed a tool called `OpenTelemetry Collector Builder`.
+In order to make it easy for developers to create their own custom builds of the Collector, the OpenTelemetry Community has developed a tool called [OpenTelemetry Collector builder](https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder).
 
-The `builder` is meant to help developers to quickly assemble and build their own collector's distributions, based on a given configuration file.
+The `builder` is meant to help developers to quickly assemble and build their own Collector's distributions, based on a given configuration file.
 
-As part of the process the `builder` will generate the collector's source code, which you can borrow and steal as your own to help build and debug your own components, so let's get started.
+As part of the process the `builder` will generate the Collector's source code, which you can borrow and steal as your own to help build and debug your own components, so let's get started.
 
 ## Step 1 - Install the builder
 
@@ -54,7 +57,7 @@ Use "builder [command] --help" for more information about a command.
 
 ## Step 2 - Create a builder config file
 
-The builder config file is a `yaml` where you basically pass information about the code generation and compile process combined with the components that you would like to add to your collector's distribution.
+The builder config file is a `yaml` where you basically pass information about the code generation and compile process combined with the components that you would like to add to your Collector's distribution.
 
 Go ahead and create a `builder-config.yaml` with the following content:
 
@@ -107,6 +110,6 @@ If everything went well, here is what the output of the command should look like
 
 ```
 
-As defined in the `dist` section of your config file, you now have a folder named `otelcol-mybuild` containing all the source code and the binary for your collector's distribution.
+As defined in the `dist` section of your config file, you now have a folder named `otelcol-mybuild` containing all the source code and the binary for your Collector's distribution.
 
-You can now use the generated code to bootstrap your component development projects and easily build and distribute your own collector distribution with your components.
+You can now use the generated code to bootstrap your component development projects and easily build and distribute your own Collector distribution with your components.
