@@ -1868,7 +1868,7 @@ func appendTraceSpans(backend *BackendSystem, backendInstrLbrSpans *pdata.Instru
 ```
 
 Go ahead and run your `dev-otelcol` again and after 2 minutes running, you should start seeing traces in Jaeger like the following:
-![Jaeger trace](images/Jaeger-Fullsystem-Trace%20list.png)
+![Jaeger trace](images/Jaeger-Fullsystem-Trace-List.png)
 
   
 
@@ -1877,6 +1877,6 @@ Go ahead and run your `dev-otelcol` again and after 2 minutes running, you shoul
 We now have services representing both the `Atm` and the `BackendSystem` telemetry generation entities in our system and can fully understand how both entities are been used and contributing to the performance of an operation executed by an user.
 
 Here is the detailed view of one of those traces in Jaeger:
-![Jaeger trace](images/Jaeger-FullSystem-Trace%20Details.png)
+![Jaeger trace](images/Jaeger-FullSystem-Trace-Details.png)
 
 That's it! You have now reached the end of this tutorial and successfully implemented a trace receiver, congratulations!
