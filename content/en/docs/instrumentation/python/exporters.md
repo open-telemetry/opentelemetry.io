@@ -76,7 +76,7 @@ $ pip install opentelemetry-exporter-otlp-proto-grpc
 And replace the `OTLPSpanExporter` import declaration with the following:
 
 ```python
-from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
+from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
 ```
 
 ## Jaeger
