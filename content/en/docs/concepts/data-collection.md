@@ -50,9 +50,9 @@ The OpenTelemetry project provides two versions of the Collector:
 
 - **[Core](https://github.com/open-telemetry/opentelemetry-collector/releases):**
   Foundational components such as configuration and generally applicable
-  receivers, processors, exporters, and extensions. Offers support for popular
-  open-source projects including Jaeger, Prometheus, and Fluent Bit.
+  receivers, processors, exporters, and extensions.
 - **[Contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/releases):**
-  All the components of core plus optional or possibly experimental components.
+  All the components of core plus optional or possibly experimental components. Offers support for popular
+  open-source projects including Jaeger, Prometheus, and Fluent Bit.
   Also contains more specialized or vendor-specific receivers, processors,
   exporters, and extensions.
