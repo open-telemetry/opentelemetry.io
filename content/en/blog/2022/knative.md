@@ -42,7 +42,7 @@ Let's briefly example the data flow. The incoming HTTP request first goes throug
 
 Now let's take a closer look at the user workloads. The first service is a Golang service with a single REST API endpoint. The endpoint implementation creates a cloud event and sends it to the broker. Let's take a look at important facts from the observability perspective:
 * REST API is instrumented with OpenTelemetry. This allows us to link traces started in the Knative activator service with spans created in the workload and further link it with outbound spans - e.g. to calls to the second service.
-* The workload is using instrumented [Cloudevents client/SDK](https://github.com/cloudevents/sdk-go/tree/main/observability/opentelemetry/v2) - his is related to the previous point and it allows us to continue the trace in the outbound request - in our case to the second service.
+* The workload is using instrumented [Cloudevents client/SDK](https://github.com/cloudevents/sdk-go/tree/main/observability/opentelemetry/v2) - similarly to the previous point it allows us to continue the trace in the outbound request (in this scenario to the second service).
 
 How is the trace-context (`traceId`, `spanId`, `sampled` flag) being propagated in our example applications? The trace-context is propagated in HTTP headers both for incoming HTTP requests into the first service and as well for cloud events sent to the second service. The trace-context is not attached directly to the event extensions/attributes.
 
@@ -82,14 +82,14 @@ Now let's take a look at logging from the second service which exposes API to co
 Extensions,
   knativearrivaltime: 2022-02-17T13:39:34.491325425Z
 Data,
-  hello from first, traceid=84da42ff2a26bda453330b23dde1a898
+  hello from first, traceid=5f2c4775e0e36efc1d554a0b6c456cc1
 ```
 
-We see that the trace-context is not directly present in the event object. However, it is encoded in the incoming transport message - HTTP headers.
+We see that the trace context is not directly present in the event object. However, it is encoded in the incoming transport message - HTTP headers.
 
 ### Future improvements
 
-In the previous section, it was mentioned that the Knative serving and eventing components are instrumented with OpenCensus SDK. The instrumentation will change in the future to OpenTelemetry which is tracked in [knative/eventing/issues/3126](https://github.com/knative/eventing/issues/3126) and [knative/pkg/issues/855](https://github.com/knative/pkg/issues/855). The SDK change might not have an immediate impact on the user, however, it will enable users to start natively reporting data in OpenTelemetry format (OTLP).
+In the previous section, it was mentioned that the Knative serving and eventing components are instrumented with OpenCensus SDK. The instrumentation will change in the future to OpenTelemetry which is tracked in [knative/eventing/#3126](https://github.com/knative/eventing/issues/3126) and [knative/pkg#855](https://github.com/knative/pkg/issues/855). The SDK change might not have an immediate impact on the user, however, it will enable users to start natively reporting data in OpenTelemetry format (OTLP).
 
 Another recently merged change is the addition of [Cloudevents semantic attributes into the OpenTelemetry specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/cloudevents.md). The document standardizes attributes related to CloudEvents. The screenshot below is from the demo application that is still not using the standardized attribute names:
 
@@ -98,7 +98,7 @@ Another recently merged change is the addition of [Cloudevents semantic attribut
 ### Configuration
 
 Tracing in Knative can be easily enabled. Please follow the [official documentation](https://knative.dev/docs/) for a step-by-step guide. Let's briefly describe the process here:
-1. Deploy a tracing system that can ingest tracing data in Zipkin format - Zipkin, Jaeger or OpenTelemetry collector
+1. Deploy a tracing system that can ingest tracing data in Zipkin format - Zipkin, Jaeger, or OpenTelemetry collector
 2. Enable tracing in [Knative eventing](https://knative.dev/docs/eventing/accessing-traces/)
 3. Enable tracing in [Knative serving](https://knative.dev/docs/serving/accessing-traces/)
 
