@@ -60,7 +60,7 @@ You can provide a path to agent configuration file by setting the following prop
 You can enable [extensions][] by setting the following property:
 
 {{% config_option name="otel.javaagent.extensions" %}}
-  Path to a an extension jar file or folder, containing jar files. If pointing
+  Path to an extension jar file or folder, containing jar files. If pointing
   to a folder, every jar file in that folder will be treated as separate,
   independent extension.
 {{% /config_option %}}
@@ -304,11 +304,17 @@ instrumentation which would also disable the instrumentation's capturing of `htt
 [SpanKind.Server](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#spankind)
 span.
 
-{{% config_option name="otel.instrumentation.common.experimental.suppress-controller-spans" %}}
-  Suppress controller spans from being captured.
+{{% config_option
+  name="otel.instrumentation.common.experimental.controller-telemetry.enabled"
+  default=true
+%}}
+  Enables the controller telemetry.
 {{% /config_option %}}
-{{% config_option name="otel.instrumentation.common.experimental.suppress-view-spans" %}}
-  Suppress view spans from being captured.
+{{% config_option
+  name="otel.instrumentation.common.experimental.view-telemetry.enabled"
+  default=true
+%}}
+  Enables the view telemetry.
 {{% /config_option %}}
 
 ### Enable manual instrumentation only
