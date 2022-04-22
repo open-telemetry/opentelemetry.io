@@ -23,7 +23,7 @@ language:
 
 | Tracing | Metrics | Logging |
 | ------- | ------- | ------- |
-| 1.0    | Alpha   | Beta    |
+| Stable  | Stable  | Stable  |
 
 {{% latest_release "dotnet" /%}}
 
