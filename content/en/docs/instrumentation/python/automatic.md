@@ -28,8 +28,12 @@ with the agent. They should both produce the same results, demonstrating that
 the automatic instrumentation agent does exactly the same thing as manual
 instrumentation.
 
-To better understand auto-instrumentation, see the relevant part of both
-scripts:
+To better understand auto-instrumentation it's useful to know how OpenTelemetry achieves 
+the automatic instrumentation. It happens through monkey-patching which is done the
+[instrumentation libraries][instrumentation]. `opentelemetry-instrumentation-flask` is
+one of these, which we will be using below. 
+
+Now on to an example of manually instrumented code and code that is auto-instrumented
 
 ### Manually instrumented server
 
@@ -87,6 +91,15 @@ $ pip install requests
 The examples that follow send instrumentation results to the console. Learn more
 about installing and configuring the [OpenTelemetry Distro](../distro) to send
 telemetry to other destinations, like an OpenTelemetry Collector.
+
+**Note**: If you were to use auto-instrumentation and manually instrumenting your code the
+pacakage `opentelemetry-distro` won't let you set a `Resource` with attributes defined in your code, 
+you will need to set all your desired parameters through [environment variables][env]
+
+It is also possible to use the instrumentation libraries (such as `opentelemetry-instrumentation-flask`)
+by themselves which may have an advantage of customizing options. However, by choosing
+to do this it means you forego using auto-instrumentation by starting your application with
+`opentelemetry-instrument` as this is mutually exclusive. 
 
 ## Execute
 
@@ -228,9 +241,12 @@ reloader. To run instrumentation while the debug mode is enabled, set the
 if __name__ == "__main__":
     app.run(port=8082, debug=True, use_reloader=False)
 ```
-
+[env]:
+    https://opentelemetry-python.readthedocs.io/en/latest/sdk/environment_variables.html
+[instrumentation]:
+    https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-instrumentation
 [distro]:
-    https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/distro
+    https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-distro
 [OpenTracing example]:
     https://github.com/yurishkuro/opentracing-tutorial/tree/master/python
 [source files]:
