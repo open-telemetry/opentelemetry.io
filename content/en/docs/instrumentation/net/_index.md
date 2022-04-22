@@ -23,7 +23,14 @@ language:
 
 | Tracing | Metrics | Logging |
 | ------- | ------- | ------- |
-| Stable  | Stable  | Stable  |
+| Stable  | Stable  | Stable* |
+
+\* Most components are providing Stable support for
+[ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger)
+integration. OTLP Log Exporter is still Experimental. Please refer to the
+official [OpenTelemetry
+.NET](https://github.com/open-telemetry/opentelemetry-dotnet) project to get the
+latest status of individual components.
 
 {{% latest_release "dotnet" /%}}
 
