@@ -16,6 +16,7 @@ tmp/
 # Misc
 scripts/collector.yaml
 assets/jsconfig.json
+/.netlify
 
 # IntelliJ
 *.iml
