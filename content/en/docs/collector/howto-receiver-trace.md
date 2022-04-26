@@ -347,10 +347,10 @@ func NewFactory() component.ReceiverFactory {
 
   
 
-In order to instantiate your `tailtracer` receiver factory, you will use the  following function from the `receiverhelper` package:
+In order to instantiate your `tailtracer` receiver factory, you will use the  following function from the `component` package:
 
 ```go
-func NewFactory(cfgType config.Type, createDefaultConfig CreateDefaultConfig, options ...FactoryOption) component.ReceiverFactory
+func NewReceiverFactory(cfgType config.Type, createDefaultConfig CreateDefaultConfig, options ...FactoryOption) component.ReceiverFactory
 ```
 
   
