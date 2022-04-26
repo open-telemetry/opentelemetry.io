@@ -81,7 +81,7 @@ As you can see on the table above, all the `dist` tags are optional, so you will
 
 For this tutorial, you will be creating a Collector's distribution to support the development and testing of components.
 
-Go ahead and create a `builder-config.yaml` with the following content:
+Go ahead and create a manifest file named `builder-config.yaml` with the following content:
 
 > builder-config.yaml
 ```yaml
