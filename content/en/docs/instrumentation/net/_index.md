@@ -18,16 +18,17 @@ Framework](https://dotnet.microsoft.com/download/dotnet-framework) except for
 
 # Status and Releases
 
-This is the current release status for OpenTelemetry components in this
-language:
+The release status for .NET OpenTelemetry components is as follows:
 
-| Tracing | Metrics | Logging |
-| ------- | ------- | ------- |
-| 1.0    | Alpha   | Beta    |
+- **Traces**: [Stable][]
+- **Metrics**: [Stable][]
+- **Logs**:
+  - [ILogger][]: [Stable][]
+  - [OTLP log exporter][]: [Experimental][]
 
 {{% latest_release "dotnet" /%}}
 
-# Further Reading
+# Learn more
 
 - [OpenTelemetry .NET on
   GitHub](https://github.com/open-telemetry/opentelemetry-dotnet)
@@ -37,3 +38,8 @@ language:
   Contrib](https://github.com/open-telemetry/opentelemetry-dotnet-contrib)
 - [OpenTelemetry .NET Automatic Instrumentation on
   GitHub](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation)
+
+[Experimental]: /docs/reference/specification/versioning-and-stability/#experimental
+[ILogger]: https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger
+[OTLP Log Exporter]: https://github.com/open-telemetry/opentelemetry-dotnet/blob/main/src/OpenTelemetry.Exporter.OpenTelemetryProtocol/README.md#otlp-logs
+[Stable]: /docs/reference/specification/versioning-and-stability/#stable
