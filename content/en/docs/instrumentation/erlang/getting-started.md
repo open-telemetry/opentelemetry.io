@@ -131,9 +131,10 @@ of span processor that batches up multiple spans over a period of time:
 
 {{< tab >}}
 # config/runtime.exs
-config :opentelemetry,
-  span_processor: :batch,
-  exporter: {:otel_exporter_stdout, []}
+config :opentelemetry, :processors,
+  otel_batch_processor: %{
+    exporter: {:otel_exporter_stdout, []}
+  }
 {{< /tab >}}
 
 {{< /tabs >}}
