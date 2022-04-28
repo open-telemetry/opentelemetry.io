@@ -230,7 +230,7 @@ span.addEvent('some log', {
 
 ## Span links
 
-Spans can be created with casaul links to other spans.
+Spans can be created with causal links to other spans.
 
 ```js
 function someFunction(spanToLinkFrom) {
