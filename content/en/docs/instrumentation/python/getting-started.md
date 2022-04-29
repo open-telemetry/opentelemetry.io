@@ -13,39 +13,29 @@ For more elaborate examples, see
 
 ## Installation
 
-To begin, set up an environment and install dependencies:
+To begin, set up an environment and install dependencies in a new directory:
 
 ```console
-$ mkdir otel-getting-started
-$ cd otel-getting-started
-$ python3 -m venv .
-$ source ./bin/activate
+mkdir otel-getting-started
+cd otel-getting-started
+python3 -m venv .
+source ./bin/activate
 ```
 
-Now install the HTTP server:
+Now install Flask and OpenTelemetry:
 
 ```console
-$ pip install flask
-```
-
-And finally, install OpenTelemetry:
-
-```console
-$ pip install opentelemetry-distro
+pip install flask
+pip install opentelemetry-distro
 ```
 
 The `opentelemetry-distro` package installs the API, SDK, and the
 `opentelemetry-bootstrap` and `opentelemetry-instrument` tools that you'll use
 soon.
 
-## Add automatic instrumentation
+## Create the sample HTTP Server
 
-Automatic instrumentation will generate telemetry data on your behalf. There are
-several options you can take, covered in more detail in [Automatic
-Instrumentation]({{< relref "automatic" >}}). Here we'll use the
-`opentelemetry-instrument` agent.
-
-First, create a file `app.py`:
+Create a file `app.py`:
 
 ```python
 from random import randint
@@ -59,7 +49,6 @@ def roll():
     rolls = int(request.args.get('rolls'))
     return roll_sum(sides,rolls)
 
-
 def roll_sum(sides, rolls):
     sum = 0
     for r in range(0,rolls):
@@ -68,10 +57,19 @@ def roll_sum(sides, rolls):
     return str(sum)
 ```
 
-Next, install automatic instrumentation:
+When run, this will launch an HTTP server with a `/roll` route.
+
+## Add automatic instrumentation
+
+Automatic instrumentation will generate telemetry data on your behalf. There are
+several options you can take, covered in more detail in [Automatic
+Instrumentation]({{< relref "automatic" >}}). Here we'll use the
+`opentelemetry-instrument` agent.
+
+Run the `opentelemetry-bootstrap` command:
 
 ```console
-$ opentelemetry-bootstrap -a install
+opentelemetry-bootstrap -a install
 ```
 
 This will install Flask instrumentation.
@@ -85,8 +83,8 @@ it print to the console for now:
 $ opentelemetry-instrument --traces_exporter console flask run
 ```
 
-When you access the server, you'll get a result in a trace printed to the
-console, such as the following:
+When you send a request to the server, you'll get a result in a trace printed to
+the console, such as the following:
 
 ```console
 {
@@ -144,12 +142,14 @@ First, modify `app.py` to include code that initializes a tracer and uses it to
 create a trace that's a child of the one that's automatically generated:
 
 ```python
+# These are the necessary import declarations
 from opentelemetry import trace
 from opentelemetry.sdk.trace import TracerProvider
 
 from random import randint
 from flask import Flask, request
 
+# This is a way to initialize tracing
 provider = TracerProvider()
 trace.set_tracer_provider(provider)
 tracer = trace.get_tracer(__name__)
@@ -176,11 +176,13 @@ def roll_sum(sides, rolls):
 Now run the app again:
 
 ```console
-$ opentelemetry-instrument --traces_exporter console flask run
+opentelemetry-instrument --traces_exporter console flask run
 ```
 
-You'll now see two spans in the trace emitted to the console, and the one called
-`roll_sum` registers its parent as the automatically created one:
+
+When you send a request to the server, you'll see two spans in the trace emitted
+to the console, and the one called `roll_sum` registers its parent as the
+automatically created one:
 
 ```console
 {
