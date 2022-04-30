@@ -43,21 +43,15 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
-@app.route("/roll")
-def roll():
-    sides = int(request.args.get('sides'))
-    rolls = int(request.args.get('rolls'))
-    return roll_sum(sides,rolls)
+@app.route("/rolldice")
+def roll_dice():
+    return str(do_roll())
 
-def roll_sum(sides, rolls):
-    sum = 0
-    for r in range(0,rolls):
-        result = randint(1,sides)
-        sum += result
-    return str(sum)
+def do_roll(sides, rolls):
+    return randint(1, 6)
 ```
 
-When run, this will launch an HTTP server with a `/roll` route.
+When run, this will launch an HTTP server with a `/rolldice` route.
 
 ## Add automatic instrumentation
 
@@ -83,12 +77,12 @@ it print to the console for now:
 $ opentelemetry-instrument --traces_exporter console flask run
 ```
 
-When you send a request to the server, you'll get a result in a trace printed to
-the console, such as the following:
+When you send a request to the server, you'll get a result in a trace with a
+single span printed to the console, such as the following:
 
 ```console
 {
-    "name": "/roll",
+    "name": "/rolldice",
     "context": {
         "trace_id": "0xdcd253b9501348b63369d83219da0b14",
         "span_id": "0x886c05bc23d2250e",
@@ -127,8 +121,8 @@ the console, such as the following:
 }
 ```
 
-You can learn how to configure different exporters in the [Exporters page]({{<
-relref "exporters" >}}).
+The span generated for you tracks the lifetime of a request to the `/doroll`
+route.
 
 ## Add manual instrumentation to automatic instrumentation
 
@@ -156,21 +150,15 @@ tracer = trace.get_tracer(__name__)
 
 app = Flask(__name__)
 
-@app.route("/roll")
-def roll():
-    sides = int(request.args.get('sides'))
-    rolls = int(request.args.get('rolls'))
-    return roll_sum(sides,rolls)
+@app.route("/rolldice")
+def roll_dice():
+    return str(do_roll())
 
 
-def roll_sum(sides, rolls):
+def do_roll(sides, rolls):
     # This creates a new trace that's the child of thw current one, if it exists
-    with tracer.start_as_current_span("roll_sum"):  
-        sum = 0
-        for r in range(0,rolls):
-            result = randint(1,sides)
-            sum += result
-        return  str(sum)
+    with tracer.start_as_current_span("do_roll"):  
+        return randint(1, 6)
 ```
 
 Now run the app again:
@@ -179,14 +167,13 @@ Now run the app again:
 opentelemetry-instrument --traces_exporter console flask run
 ```
 
-
 When you send a request to the server, you'll see two spans in the trace emitted
-to the console, and the one called `roll_sum` registers its parent as the
+to the console, and the one called `do_roll` registers its parent as the
 automatically created one:
 
 ```console
 {
-    "name": "roll_sum",
+    "name": "do_roll",
     "context": {
         "trace_id": "0x48da59d77e13beadd1a961dc8fcaa74e",
         "span_id": "0x40c38b50bc8da6b7",
@@ -250,8 +237,150 @@ automatically created one:
 }
 ```
 
-The `parent_id` of `roll_sum` is the same is the `span_id` for `/roll`,
+The `parent_id` of `do_roll` is the same is the `span_id` for `/rolldice`,
 indicating a parent-child reletionship!
+
+## Send traces to an OpenTelemetry Collector
+
+The [OpenTelemetry Collector](/docs/collector/getting-started/) is a critical
+component of most production code. Some examples of when it's beneficial to use
+a collector:
+
+* A single telemetry sink shared by multiple services, to reduce overhead of
+  switching exporters
+* Aggregating traces across multiple services, running on multiple hosts
+* A central place to process traces prior to exporting them to a backend
+
+Unless you have just a single service or are experimenting, you'll want to use a
+collector in production code.
+
+### Configure and run a local collector
+
+First, write the following collector configuration code into `/tmp/`:
+
+```yaml
+# /tmp/otel-collector-config.yaml
+receivers:
+    otlp:
+        protocols:
+            grpc:
+            http:
+exporters:
+    logging:
+        loglevel: debug
+processors:
+    batch:
+service:
+    pipelines:
+        traces:
+            receivers: [otlp]
+            exporters: [logging]
+            processors: [batch]
+```
+
+Then run the docker command to acquire and run the collector based on this configuration:
+
+```
+docker run -p 4317:4317 \
+    -v /tmp/otel-collector-config.yaml:/etc/otel-collector-config.yaml \
+    otel/opentelemetry-collector:latest \
+    --config=/etc/otel-collector-config.yaml
+```
+
+You will now have an OpenTelemetry Collector instance running locally.
+
+### Modify the code to export spans via OTLP
+
+The next step is to modify the code to send spans to the Collector via OTLP instead of the console.
+
+To do this, install the OTLP exporter package:
+
+```
+pip install opentelemetry-exporter-otlp
+```
+
+Then configure the exporter. By default, it will send to `locahost:4317`, which is what the collector listens on.
+
+```python
+# These are the necessary import declarations
+from opentelemetry import trace
+from opentelemetry.sdk.trace import TracerProvider
+from opentelemetry.sdk.trace.export import (
+    BatchSpanProcessor,
+)
+from opentelemetry.exporter.otlp.proto.http.trace_exporter import (
+    OTLPSpanExporter,
+)
+
+from random import randint
+from flask import Flask, request
+
+# Initialize tracing, but with OTLP
+provider = TracerProvider(resource=resource)
+processor = BatchSpanProcessor(OTLPSpanExporter())
+provider.add_span_processor(processor)
+trace.set_tracer_provider(provider)
+
+tracer = provider.get_tracer(__name__)
+
+app = Flask(__name__)
+
+@app.route("/rolldice")
+def roll_dice():
+    return str(do_roll())
+
+def do_roll():
+    # This creates a new trace that's the child of the current one, if it exists
+    with tracer.start_as_current_span("do_roll"):
+        return randint(1, 6)
+
+```
+
+### Run the application
+
+Finally, you can run the application. Use the same command as before, but this time without exporting to the console:
+
+```
+opentelemetry-instrument flask run
+```
+
+You'll now see output from the collector process instead of the flask process, which should look something like this:
+
+```
+2022-04-30T18:46:44.188Z        INFO    loggingexporter/logging_exporter.go:41  TracesExporter  {"#spans": 1}
+2022-04-30T18:46:44.188Z        DEBUG   loggingexporter/logging_exporter.go:51  ResourceSpans #0
+Resource labels:
+     -> telemetry.sdk.language: STRING(python)
+     -> telemetry.sdk.name: STRING(opentelemetry)
+     -> telemetry.sdk.version: STRING(1.11.1)
+     -> telemetry.auto.version: STRING(0.30b1)
+     -> service.name: STRING(unknown_service)
+InstrumentationLibrarySpans #0
+InstrumentationLibrary opentelemetry.instrumentation.flask 0.30b1
+Span #0
+    Trace ID       : 57525300a3a9ae7f93793fa6395da9de
+    Parent ID      : 
+    ID             : 0d36fcd63b768873
+    Name           : /rolldice
+    Kind           : SPAN_KIND_SERVER
+    Start time     : 2022-04-30 18:46:43.300618364 +0000 UTC
+    End time       : 2022-04-30 18:46:43.302042754 +0000 UTC
+    Status code    : STATUS_CODE_UNSET
+    Status message : 
+Attributes:
+     -> http.method: STRING(GET)
+     -> http.server_name: STRING(127.0.0.1)
+     -> http.scheme: STRING(http)
+     -> net.host.port: INT(5000)
+     -> http.host: STRING(localhost:5000)
+     -> http.target: STRING(/rolldice)
+     -> net.peer.ip: STRING(127.0.0.1)
+     -> http.user_agent: STRING(curl/7.68.0)
+     -> net.peer.port: INT(52038)
+     -> http.flavor: STRING(1.1)
+     -> http.route: STRING(/rolldice)
+     -> http.status_code: INT(200)
+```
 
 ## Next steps
 
