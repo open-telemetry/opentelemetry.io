@@ -186,6 +186,130 @@ Resource associated with Activity:
 This output has both the span created to track work in the route, and an
 automatically-created span that tracks the inbound ASP.NET Core request itself.
 
+## Send traces to an OpenTelemetry Collector
+
+The [OpenTelemetry Collector](/docs/collector/getting-started/) is a critical
+component of most production code. Some examples of when it’s beneficial to use
+a collector:
+
+* A single telemetry sink shared by multiple services, to reduce overhead of
+  switching exporters
+* Aggregate traces across multiple services, running on multiple hosts
+* A central place to process traces prior to exporting them to a backend
+
+Unless you have just a single service or are experimenting, you’ll want to use a
+collector in production code.
+
+### Configure and run a local collector
+
+First, write the following collector configuration code into `/tmp/`:
+
+```yaml
+# /tmp/otel-collector-config.yaml
+receivers:
+    otlp:
+        protocols:
+            grpc:
+            http:
+exporters:
+    logging:
+        loglevel: debug
+processors:
+    batch:
+service:
+    pipelines:
+        traces:
+            receivers: [otlp]
+            exporters: [logging]
+            processors: [batch]
+```
+
+Then run the docker command to acquire and run the collector based on this
+configuration:
+
+```console
+docker run -p 4317:4317 \
+    -v /tmp/otel-collector-config.yaml:/etc/otel-collector-config.yaml \
+    otel/opentelemetry-collector:latest \
+    --config=/etc/otel-collector-config.yaml
+```
+
+You will now have an OpenTelemetry Collector instance running locally.
+
+### Modify the code to export spans via OTLP
+
+The next step is to modify the code to send spans to the Collector via OTLP
+instead of the console.
+
+First, add the following package:
+
+```console
+dotnet add package OpenTelemetry.Exporter.OpenTelemetryProtocol
+```
+
+Next, using the ASP.NET Core example, replace the console apsn exporter with an
+OTLP span exporter:
+
+```csharp
+using System.Diagnostics;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
+
+// Define some important constants and the activity source
+var serviceName = "MyCompany.MyProduct.MyService";
+var serviceVersion = "1.0.0";
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Configure important OpenTelemetry settings, the console exporter, and automatic instrumentation
+builder.Services.AddOpenTelemetryTracing(b =>
+{
+    b
+    .AddOtlpExporter(opt =>
+    {
+        opt.Protocol = OtlpExportProtocol.HttpProtobuf;
+    })
+    .AddSource(serviceName)
+    .SetResourceBuilder(
+        ResourceBuilder.CreateDefault()
+            .AddService(serviceName: serviceName, serviceVersion: serviceVersion))
+    .AddHttpClientInstrumentation()
+    .AddAspNetCoreInstrumentation()
+    .AddSqlClientInstrumentation();
+});
+
+var app = builder.Build();
+
+var MyActivitySource = new ActivitySource(serviceName);
+
+app.MapGet("/hello", () =>
+{
+    // Track work inside of the request
+    using var activity = MyActivitySource.StartActivity("SayHello");
+    activity?.SetTag("foo", 1);
+    activity?.SetTag("bar", "Hello, World!");
+    activity?.SetTag("baz", new int[] { 1, 2, 3 });
+
+    return "Hello, World!";
+});
+
+app.Run();
+```
+
+By default, it will send spans to `localhost:4317`, which is what the collector
+is listening on.
+
+### Run the application
+
+Finally, you can run the application like before:
+
+```
+dotnet run
+```
+
+But instead of having output from the ASP.NET Core's standard out, it will
+instead be printed from the collector process!
+
 ## Next steps
 
 To ensure you're getting the most data as easily as possible, install some
