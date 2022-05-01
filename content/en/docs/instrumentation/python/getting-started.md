@@ -47,7 +47,7 @@ app = Flask(__name__)
 def roll_dice():
     return str(do_roll())
 
-def do_roll(sides, rolls):
+def do_roll():
     return randint(1, 6)
 ```
 
@@ -154,11 +154,12 @@ app = Flask(__name__)
 def roll_dice():
     return str(do_roll())
 
-
-def do_roll(sides, rolls):
-    # This creates a new trace that's the child of thw current one, if it exists
-    with tracer.start_as_current_span("do_roll"):  
-        return randint(1, 6)
+def do_roll():
+    # This creates a new trace that's the child of the current one
+    with tracer.start_as_current_span("do_roll") as rollspan:  
+        res = randint(1, 6)
+        rollspan.set_attribute("roll.value", res)
+        return res
 ```
 
 Now run the app again:
@@ -186,7 +187,9 @@ automatically created one:
     "status": {
         "status_code": "UNSET"
     },
-    "attributes": {},
+    "attributes": {
+        "roll.value": 4
+    },
     "events": [],
     "links": [],
     "resource": {
