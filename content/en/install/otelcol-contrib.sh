@@ -12,20 +12,31 @@ LATEST_URL=$(curl -Ls -o /dev/null -w %{url_effective} https://github.com/open-t
 
 VERSION=${LATEST_URL##*/v}
 
+ARCH=""
+
+case "$(uname -m)" in
+   x86_64)
+     ARCH="amd64"
+     ;;
+   arm64)
+     ARCH="arm64"
+     ;;
+   *)
+     echo "Your operating system is not supported, please compile the collector following these instructions: http://localhost:8888/docs/collector/getting-started/#local"
+     exit -1
+     ;;
+esac
+
 case "$(uname -s)" in
    Darwin)
-     SUFFIX="darwin_amd64.tar.gz"
-     # SUFFIX="darwin_arm64.tar.gz"
+     SUFFIX="darwin_${ARCH}.tar.gz"
      ;;
    Linux)
-     SUFFIX="linux_amd64.tar.gz"
-     # SUFFIX="linux_arm64.tar.gz"
+     SUFFIX="linux_${ARCH}.tar.gz"
      ;;
    CYGWIN*|MINGW32*|MSYS*|MINGW*)
-     SUFFIX="linux_amd64.tar.gz"
+     SUFFIX="linux_${ARCH}.tar.gz"
      ;;
-   # Add here more strings to compare
-   # See correspondence table at the bottom of this answer
    *)
      echo "Your operating system is not supported, please compile the collector following these instructions: http://localhost:8888/docs/collector/getting-started/#local"
      exit -1
