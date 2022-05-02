@@ -80,7 +80,7 @@ $ opentelemetry-instrument --traces_exporter console flask run
 When you send a request to the server, you'll get a result in a trace with a
 single span printed to the console, such as the following:
 
-```console
+```json
 {
     "name": "/rolldice",
     "context": {
@@ -172,7 +172,7 @@ When you send a request to the server, you'll see two spans in the trace emitted
 to the console, and the one called `do_roll` registers its parent as the
 automatically created one:
 
-```console
+```json
 {
     "name": "do_roll",
     "context": {
@@ -246,7 +246,7 @@ indicating a parent-child reletionship!
 ## Send traces to an OpenTelemetry Collector
 
 The [OpenTelemetry Collector](/docs/collector/getting-started/) is a critical
-component of most production code. Some examples of when it's beneficial to use
+component of most production deployments. Some examples of when it's beneficial to use
 a collector:
 
 * A single telemetry sink shared by multiple services, to reduce overhead of
@@ -255,7 +255,7 @@ a collector:
 * A central place to process traces prior to exporting them to a backend
 
 Unless you have just a single service or are experimenting, you'll want to use a
-collector in production code.
+collector in production deployments.
 
 ### Configure and run a local collector
 
