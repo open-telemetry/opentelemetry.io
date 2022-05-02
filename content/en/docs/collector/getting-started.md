@@ -6,7 +6,7 @@ weight: 1
 
 If you aren't familiar with the deployment models, components, and repositories
 applicable to the OpenTelemetry Collector, first review the [Data Collection](../../concepts/data-collection)
-and [Deployment Methods](./deployment_methods) documentation
+and [Deployment Methods](../deployment-methods) documentation.
 
 ## Demo
 
