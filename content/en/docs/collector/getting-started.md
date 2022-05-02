@@ -22,7 +22,8 @@ git clone git@github.com:open-telemetry/opentelemetry-collector-contrib.git; \
 
 ## Docker
 
-Pull a docker image and run the collector in a container. Replace `0.49.0`with the version of the Collector you wish to run.
+Pull a docker image and run the collector in a container. Replace `0.49.0`
+with the version of the Collector you wish to run.
 
 ```console
 docker docker pull ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:0.49.0
@@ -38,7 +39,8 @@ kubectl apply -f https://raw.githubusercontent.com/open-telemetry/opentelemetry-
 ```
 
 The example above is meant to serve as a starting point, to be extended and
-customized before actual production usage. For production-ready customization and installation, see [OpenTelemetry Helm Charts](https://github.com/open-telemetry/opentelemetry-helm-charts).
+customized before actual production usage. For production-ready customization and installation, see
+[OpenTelemetry Helm Charts](https://github.com/open-telemetry/opentelemetry-helm-charts).
 
 The [OpenTelemetry
 Operator](https://github.com/open-telemetry/opentelemetry-operator) can also be
@@ -61,7 +63,9 @@ systems. The packaging includes a default configuration that can be found at
 
 > Please note that systemd is require for automatic service configuration
 
-### APK
+### Installation
+
+#### APK
 
 To get started on alpine systems run the following replacing `v0.49.0` with the
 version of the Collector you wish to run.
@@ -73,7 +77,7 @@ wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases
 apk add --allow-untrusted otelcol-contrib_0.49.0_linux_amd64.apk
 ```
 
-### DEB
+#### DEB
 
 To get started on Debian systems run the following replacing `v0.49.0` with the
 version of the Collector you wish to run and `amd64` with the appropriate
@@ -86,7 +90,7 @@ wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases
 sudo dpkg -i otelcol_0.49.0_linux_amd64.deb
 ```
 
-### RPM
+#### RPM
 
 To get started on Red Hat systems run the following replacing `v0.49.0` with the
 version of the Collector you wish to run and `x86_64` with the appropriate
@@ -98,6 +102,8 @@ sudo yum -y install wget systemctl
 wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.49.0/otelcol_0.49.0_linux_amd64.rpm
 sudo rpm -ivh otelcol_0.49.0_linux_amd64.rpm
 ```
+
+### Automatic Service Configuration
 
 By default, the `otelcol` systemd service will be started with the
 `--config=/etc/otelcol/config.yaml` option after installation.  To
@@ -123,14 +129,17 @@ sudo journalctl -u otelcol
 
 ## MacOS Packaging
 
-MacOS [releases](https://github.com/open-telemetry/opentelemetry-collector-releases/releases) are available for Intel & ARM based systems.
-They are packaged as gzipped tarballs (`.tar.gz`) and will need to be unpacked with a tool that supports this compression format.
+MacOS [releases](https://github.com/open-telemetry/opentelemetry-collector-releases/releases)
+are available for Intel & ARM based systems.
+They are packaged as gzipped tarballs (`.tar.gz`) and will need to be unpacked with a tool
+that supports this compression format.
 
 Every Collector release includes an `otelcol` executable that you can run after unpacking.
 
 ## Windows Packaging
 
-Windows [releases](https://github.com/open-telemetry/opentelemetry-collector-releases/releases) are packaged as gzipped tarballs (`.tar.gz`) and will need to be unpacked with a tool that supports this compression format.
+Windows [releases](https://github.com/open-telemetry/opentelemetry-collector-releases/releases) are packaged as gzipped
+tarballs (`.tar.gz`) and will need to be unpacked with a tool that supports this compression format.
 
 Every Collector release includes an `otelcol.exe` executable that you can run after unpacking.
 
