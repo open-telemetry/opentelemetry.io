@@ -189,8 +189,8 @@ interface, resulting in a call chain consisting of two spans.
 
 ### Step 1: Deploy OpenTelemetry
 
-The following uses docker-compose as an example. For other deployments,
-see [Getting Started](https://opentelemetry.io/docs/collector/getting-started/).
+The following uses docker-compose as an example. For other deployments, see
+[Getting Started](/docs/collector/getting-started/).
 
 You can see the following command to deploy:
 
@@ -229,7 +229,7 @@ Apache APISIX.
 
 You can see the following example to create a route and enable
 the`opentelemetry` plugin for sampling:
-  
+
 ```shell
 curl http://127.0.0.1:9080/apisix/admin/routes/1 \
 -H 'X-API-KEY: edd1c9f034335f136f87ad84b625c8f1' \
@@ -253,7 +253,7 @@ curl http://127.0.0.1:9080/apisix/admin/routes/1 \
 ```
 
 Modify the `./examples/demo/otel-collector-config.yaml` file to add the OTLP
-HTTP Receiver.  
+HTTP Receiver.
 
 ```yaml
 receivers:
@@ -386,7 +386,7 @@ Trace systems on the market. Apache APISIX is also actively cooperating with
 communities to create a more powerful ecosystem.
 
 Apache APISIX is also currently working on additional plugins to support
-integration with more services, if you're interested, feel free to 
+integration with more services, if you're interested, feel free to
 [start a discussion](https://github.com/apache/apisix/discussions)
 on GitHub, or communicate via the [mailing list](https://apisix.apache.org/docs/general/subscribe-guide).
 

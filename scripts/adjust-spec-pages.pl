@@ -10,7 +10,19 @@ my $file = '';
 my $title = '';
 my $linkTitle = '';
 my $gD = 0;
-my $semConvRef = 'https://github.com/open-telemetry/opentelemetry-specification/blob/main/semantic_conventions/README.md';
+my $specRepoUrl = 'https://github.com/open-telemetry/opentelemetry-specification';
+my $semConvRef = "$specRepoUrl/blob/main/semantic_conventions/README.md";
+my $path_base_for_github_subdir = 'content/en/docs/reference/specification';
+
+my $rootFrontMatterExtra = <<"EOS";
+no_list: true
+cascade:
+  body_class: otel-docs-spec
+  github_repo: &repo $specRepoUrl
+  github_subdir: specification
+  path_base_for_github_subdir: $path_base_for_github_subdir/
+  github_project_repo: *repo
+EOS
 
 sub printTitle() {
   print "---\n";
@@ -21,10 +33,11 @@ sub printTitle() {
   $linkTitle = 'FaaS' if $ARGV =~ /faas-metrics.md$/;
   $linkTitle = 'HTTP' if $ARGV =~ /http-metrics.md$/;
   print "linkTitle: $linkTitle\n" if $linkTitle;
-  if ($ARGV =~ /_index.md$/) {
+  print $rootFrontMatterExtra if $ARGV =~ /specification._index/;
+  if ($ARGV =~ /specification.(.*?)_index.md$/) {
     print "path_base_for_github_subdir:\n";
-    print "  from: content/en/docs/specification/(.*?)/_index.md\n";
-    print "  to: \$1/README.md\n";
+    print "  from: $path_base_for_github_subdir/$1_index.md\n";
+    print "  to: $1README.md\n";
   }
   print "---\n";
 }
@@ -68,14 +81,18 @@ while(<>) {
   s|(/semantic_conventions/faas.md)#function-as-a-service|$1|g;
   s/#log-data-model/./;
 
+  s|\.\.\/README.md\b|$specRepoUrl/|g if $ARGV =~ /specification._index/;
   s|\.\.\/README.md\b|..| if $ARGV =~ /specification.library-guidelines.md/;
   s|\bREADME.md\b|_index.md|g;
 
   # Rewrite inline links
-  s|\]\(([^:\)]*?\.md(#.*?)?)\)|]({{< relref "$1" >}})|g;
+  s|\]\(([^:\)]*?\.md(#.*?)?)\)|]({{% relref "$1" %}})|g;
 
   # Rewrite link defs
-  s|^(\[[^\]]+\]:\s*)([^:\s]*)(\s*(\(.*\))?)$|$1\{{< relref "$2" >}}$3|g;
+  s|^(\[[^\]]+\]:\s*)([^:\s]*)(\s*(\(.*\))?)$|$1\{{% relref "$2" %}}$3|g;
+
+  # Make website-local page references local:
+  s|https://opentelemetry.io/|/|g;
 
   print;
 }

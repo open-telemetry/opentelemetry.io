@@ -21,7 +21,7 @@ library to use the `@WithSpan` annotation.
   <dependency>
     <groupId>io.opentelemetry</groupId>
     <artifactId>opentelemetry-extension-annotations</artifactId>
-    <version>1.12.0</version>
+    <version>1.13.0</version>
   </dependency>
 </dependencies>
 ```
@@ -30,7 +30,7 @@ library to use the `@WithSpan` annotation.
 
 ```groovy
 dependencies {
-    implementation('io.opentelemetry:opentelemetry-extension-annotations:1.11.0')
+    implementation('io.opentelemetry:opentelemetry-extension-annotations:1.13.0')
 }
 ```
 
@@ -102,18 +102,20 @@ Suppressing `@WithSpan` is useful if you have code that is over-instrumented
 using `@WithSpan` and you want to suppress some of them without modifying the
 code.
 
-| System property                                                  | Environment variable                                             | Purpose |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
-| `otel.instrumentation.opentelemetry-annotations.exclude-methods` | `OTEL_INSTRUMENTATION_OPENTELEMETRY_ANNOTATIONS_EXCLUDE_METHODS` | Suppress `@WithSpan` instrumentation for specific methods. Format is `my.package.MyClass1[method1,method2];my.package.MyClass2[method3]`
+{{% config_option name="otel.instrumentation.opentelemetry-annotations.exclude-methods" %}}
+  Suppress `@WithSpan` instrumentation for specific methods.
+  Format is `my.package.MyClass1[method1,method2];my.package.MyClass2[method3]`.
+{{% /config_option %}}
 
 ## Creating spans around methods with `otel.instrumentation.methods.include`
 
 In cases where you are unable to modify the code, you can still configure the
 javaagent to capture spans around specific methods.
 
-| System property                        | Environment variable                   | Purpose |
-| -------------------------------------- | -------------------------------------- | ------- |
-| `otel.instrumentation.methods.include` | `OTEL_INSTRUMENTATION_METHODS_INCLUDE` | Add instrumentation for specific methods in lieu of `@WithSpan`. Format is `my.package.MyClass1[method1,method2];my.package.MyClass2[method3]`
+{{% config_option name="otel.instrumentation.methods.include" %}}
+  Add instrumentation for specific methods in lieu of `@WithSpan`.
+  Format is `my.package.MyClass1[method1,method2];my.package.MyClass2[method3]`.
+{{% /config_option %}}
 
 ## Next steps
 

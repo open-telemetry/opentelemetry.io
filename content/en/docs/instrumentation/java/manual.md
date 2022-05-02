@@ -235,6 +235,7 @@ try (Scope scope = span.makeCurrent()) {
 	// do something
 } catch (Throwable t) {
   span.setStatus(StatusCode.ERROR, "Something bad happened!");
+  throw t;
 } finally {
   span.end(); // Cannot set a span after this call
 }
