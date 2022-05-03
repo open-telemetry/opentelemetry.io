@@ -1,8 +1,6 @@
 ---
 title: Extensions
-description: Extensions add new features and capabilities to the agent without having to create a separate distribution 
-or to fork this repository. For example, you can create custom samplers or span exporters, set new defaults, and embed 
-it all in the agent to obtain a single jar file.
+description: Extensions add capabilities to the agent without having to create a separate distribution.
 ---
 
 ## Introduction
