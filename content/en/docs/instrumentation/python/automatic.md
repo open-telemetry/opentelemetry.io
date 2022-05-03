@@ -29,7 +29,7 @@ the automatic instrumentation agent does exactly the same thing as manual
 instrumentation.
 
 To better understand auto-instrumentation it's useful to know how OpenTelemetry achieves 
-the automatic instrumentation. It happens through [monkey-patching](https://en.wikipedia.org/wiki/Monkey_patch) which is done the
+the automatic instrumentation. It happens through [monkey-patching](https://en.wikipedia.org/wiki/Monkey_patch) which is done through
 [instrumentation libraries][instrumentation]. `opentelemetry-instrumentation-flask` is
 one of these, which we will be using below. 
 
