@@ -4,17 +4,29 @@ date: 2022-05-12
 author: OpenTelemetry .NET Automatic Instrumentation Team
 ---
 
-The .NET community already has a stable OpenTelemetry SDK. Using the SDK requires engineers 
-to modify and rebuild their applications, which may be undesirable or not possible in some 
-scenarios. Furthermore, the OpenTelemetry SDK does not provide instrumentation for all libraries 
-or versions of libraries, and as a result, there is a desire to leverage 
-[byte-code instrumentation](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v0.1.0-beta.1/docs/design.md#bytecode-instrumentations) 
-to support gathering telemetry from those libraries. The 
-[OpenTelemetry .NET Automatic Instrumentation](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation) 
-project strives to solve both of those problems.
+We're excited to announce the first beta release](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/tag/v0.1.0-beta.1) 
+of the [OpenTelemetry .NET Automatic Instrumentation](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation) 
+project!
 
-The [first beta release](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/tag/v0.1.0-beta.1) 
-of this project includes support for:
+Without this project, .NET developers need to use instrumentation packages to automatically generate
+telemetry data. For example, to instrument inbound ASP.NET Core requests, you need to use the
+ASP.NET Core instrumentation package and initialize it with the OpenTelemetry SDK.
+
+Now with the .NET Automatic Instrumentation project, developers can run the agent
+side-by-side with their application and get telemetry automatically.
+This approach has several benefits:
+
+* A technical path forward to support automatic instrumentation via 
+[byte-code instrumentation](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v0.1.0-beta.1/docs/design.md#bytecode-instrumentations), 
+which can allow for more automatic instrumentation support than relying solely on published 
+instrumentation libraries
+* No need to install and initialize an instrumentation library
+* No need to modify and rebuild an application to add automatic instrumentation
+* Less code needed to get started
+
+This first beta release is an important milestone because it establishes the technical foundation
+on which a rich set of automatic instrumentation capabilities can be built on. This release 
+includes support for:
 
 * Gathering trace data from .NET applications without requiring code changes[^devopsnote]
 * Gathering trace data from .NET libraries that the SDK does not support[^librarysupport]
@@ -25,7 +37,7 @@ Automatic Instrumentation.
 
 Over the next few months we plan to:
 
-* Support additional instrumentation libraries
+* Support additional [instrumentation libraries](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v0.1.0-beta.1/docs/config.md#instrumented-libraries-and-frameworks)
 * Improve dependency management
 * Enable metrics support
 
