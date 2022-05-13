@@ -532,8 +532,8 @@ For example, a basic configuration instantiates the SDK meter provider and sets
 to export the metrics to a logging stream.
 
 ```java
-SdkTracerProvider tracerProvider = SdkTracerProvider.builder()
-  .addSpanProcessor(PeriodicMetricReader.builder(LoggingMetricExporter.create()).build())
+SdkMeterProvider meterProvider = SdkMeterProvider.builder()
+  .registerMetricReader(PeriodicMetricReader.builder(LoggingMetricExporter.create()).build())
   .build();
 ```
 
