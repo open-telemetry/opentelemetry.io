@@ -29,13 +29,18 @@ For example:
 
 ```java
 SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder()
-    .addSpanProcessor(BatchSpanProcessor.builder(OtlpGrpcSpanExporter.builder().build()).build())
-    .build();
+  .addSpanProcessor(BatchSpanProcessor.builder(OtlpGrpcSpanExporter.builder().build()).build())
+  .build();
+
+SdkMeterProvider meterProvider = SdkMeterProvider.builder()
+  .registerMetricReader(PeriodicMetricReader.builder(OtlpGrpcMetricExporter.builder().build()).build())
+  .build();
 
 OpenTelemetry openTelemetry = OpenTelemetrySdk.builder()
-    .setTracerProvider(sdkTracerProvider)
-    .setPropagators(ContextPropagators.create(W3CTraceContextPropagator.getInstance()))
-    .buildAndRegisterGlobal();
+  .setTracerProvider(sdkTracerProvider)
+  .setMeterProvider(sdkMeterProvider)
+  .setPropagators(ContextPropagators.create(W3CTraceContextPropagator.getInstance()))
+  .buildAndRegisterGlobal();
 ```
 
 As an aside, if you are writing library instrumentation, it is strongly
