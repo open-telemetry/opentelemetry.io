@@ -45,7 +45,7 @@
               <div class="dropdown-menu" id="languageFilter">
                 <a value="all" class="dropdown-item">Any Language</a>
                 {{ range $registryItems.GroupByParam "language" -}}
-                <a value={{.Key}} id="language-item-{{.Key}}" class="dropdown-item">{{ $languages.Get .Key }}</a>
+                <a value={{.Key}} id="language-item-{{.Key}}" class="dropdown-item">{{ $languages.Get .Key | default (humanize .Key) }}</a>
                 {{ end -}}
               </div>
             </div>
