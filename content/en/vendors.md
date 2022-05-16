@@ -27,7 +27,7 @@ products.
 | Lightstep       | Yes          | Yes         | https://github.com/lightstep?q=launcher
 | LogicMonitor    | Yes          | Yes         | https://www.logicmonitor.com/support/tracing/getting-started-with-tracing
 | Logz.io         | Yes          | No          | https://docs.logz.io/shipping/tracing-sources/opentelemetry.html#overview
-| Lumigo          | Yes          | Yes         | https://www.lumigo.io/
+| Lumigo          | Yes          | Yes         | https://www.lumigo.io
 | New Relic       | Yes          | Yes         | https://newrelic.com/solutions/opentelemetry
 | Sentry Software | Yes          | Yes         | https://www.sentrysoftware.com/products/hardware-sentry-opentelemetry-collector.html
 | Splunk          | Yes          | Yes         | https://www.splunk.com/en_us/blog/conf-splunklive/announcing-native-opentelemetry-support-in-splunk-apm.html
