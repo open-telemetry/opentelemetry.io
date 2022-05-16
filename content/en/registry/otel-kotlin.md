@@ -2,7 +2,7 @@
 title: Kotlin
 registryType: core
 isThirdParty: true
-language: Kotlin
+language: kotlin
 tags:
   - Kotlin
   - Js
