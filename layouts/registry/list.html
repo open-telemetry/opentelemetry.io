@@ -29,7 +29,10 @@
               <div class="dropdown-menu" id="languageFilter">
                 <a value="all" class="dropdown-item">Any Language</a>
                 {{ range $registryItems.GroupByParam "language" -}}
-                <a value={{lower .Key}} id="language-item-{{lower .Key}}" class="dropdown-item">{{ $languageNames.Get .Key | default (humanize .Key) }}</a>
+                {{ if ne .Key (lower .Key) -}}
+                  {{ errorf "Language keys must be in lowercase. Some registry entry has the following invalid key: %s" .Key -}}
+                {{ end -}}
+                <a value={{.Key}} id="language-item-{{.Key}}" class="dropdown-item">{{ $languageNames.Get .Key | default (humanize .Key) }}</a>
                 {{ end -}}
               </div>
             </div>
@@ -38,7 +41,10 @@
               <div class="dropdown-menu" id="componentFilter">
                 <a value="all" class="dropdown-item">Any Component</a>
                 {{ range $registryItems.GroupByParam "registryType" -}}
-                <a value={{lower .Key}} id="component-item-{{lower .Key}}" class="dropdown-item">{{ humanize .Key }}</a>
+                {{ if ne .Key (lower .Key) -}}
+                  {{ errorf "Component-type keys must be in lowercase. Some registry entry has the following invalid key: %s" .Key -}}
+                {{ end -}}
+                <a value={{.Key}} id="component-item-{{.Key}}" class="dropdown-item">{{ humanize .Key }}</a>
                 {{ end -}}
               </div>
             </div>
