@@ -4,7 +4,7 @@ date: 2022-05-12
 author: OpenTelemetry .NET Automatic Instrumentation Team
 ---
 
-We're excited to announce the first beta release](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/tag/v0.1.0-beta.1) 
+We're excited to announce the [first beta release](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/tag/v0.1.0-beta.1) 
 of the [OpenTelemetry .NET Automatic Instrumentation](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation) 
 project!
 
