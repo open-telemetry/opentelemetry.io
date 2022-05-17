@@ -5,15 +5,20 @@
     min-width: 100%;
     margin: $registry-vertical-margin 0;
   }
-    
+
   &__search {
     min-width: 100%;
     margin: $registry-vertical-margin 0;
   }
-    
+
   &__header {
     background-color: $green;
   }
+}
+
+.badge.badge-collector {
+  color: white;
+  background-color: $collector;
 }
 
 .badge.badge-core {
@@ -49,7 +54,7 @@
 .badge.badge-utilities {
   color: white;
   background-color: $utilities;
-} 
+}
 
 .badge-tracer {
   color: white;
@@ -71,6 +76,11 @@
   background-color: $cpp;
 }
 
+.badge.badge-elixir {
+  color: $erlang;
+  background-color: inherit;
+  border: solid 1px;
+}
 .badge.badge-erlang {
   color: white;
   background-color: $erlang;
@@ -87,8 +97,19 @@
 }
 
 .badge.badge-js {
-  color: white;
+  color: inherit;
   background-color: $javascript;
+}
+
+.badge.badge-kotlin {
+  color: $java;
+  background-color: inherit;
+  border: solid 1px;
+}
+
+.badge.badge-lua {
+  color: white;
+  background-color: $lua;
 }
 
 .badge.badge-php {
@@ -111,7 +132,7 @@
   background-color: $rust;
 }
 
-.badge.badge-collector {
+.badge.badge-swift {
   color: white;
-  background-color: $collector;
+  background-color: $swift;
 }
