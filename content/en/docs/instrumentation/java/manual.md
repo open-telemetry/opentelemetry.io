@@ -29,13 +29,18 @@ For example:
 
 ```java
 SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder()
-    .addSpanProcessor(BatchSpanProcessor.builder(OtlpGrpcSpanExporter.builder().build()).build())
-    .build();
+  .addSpanProcessor(BatchSpanProcessor.builder(OtlpGrpcSpanExporter.builder().build()).build())
+  .build();
+
+SdkMeterProvider meterProvider = SdkMeterProvider.builder()
+  .registerMetricReader(PeriodicMetricReader.builder(OtlpGrpcMetricExporter.builder().build()).build())
+  .build();
 
 OpenTelemetry openTelemetry = OpenTelemetrySdk.builder()
-    .setTracerProvider(sdkTracerProvider)
-    .setPropagators(ContextPropagators.create(W3CTraceContextPropagator.getInstance()))
-    .buildAndRegisterGlobal();
+  .setTracerProvider(sdkTracerProvider)
+  .setMeterProvider(sdkMeterProvider)
+  .setPropagators(ContextPropagators.create(W3CTraceContextPropagator.getInstance()))
+  .buildAndRegisterGlobal();
 ```
 
 As an aside, if you are writing library instrumentation, it is strongly
@@ -346,18 +351,44 @@ public void handle(HttpExchange httpExchange) {
 
 ## Metrics
 
-Spans are a great way to get detailed information about what your application is
-doing, but what about a more aggregated perspective? OpenTelemetry provides
-supports for metrics, a time series of numbers that might express things such as
-CPU utilization, request count for an HTTP server, or a business metric such as
-transactions.
+Spans provide detailed information about your application, but produce data that
+is proportional to the load on the system. In contrast, metrics combine
+individual measurements into aggregations, and produce data which is constant as
+a function of system load. The aggregations lack details required to diagnose
+low level issues, but complement spans by helping to identify trends and
+providing application runtime telemetry.
 
-*Note* The stability of Metrics in `opentelemetry-java` is mixed. The first
-stable metrics API was release in version `1.10.0`; however, the metrics SDK is
-alpha and still subject to change. The metrics API is included in
-the `opentelemetry-api` module. In order to access the alpha metrics SDK
-library, you will need to explicitly depend on the `opentelemetry-sdk-metrics`
-module.
+The metrics API defines a variety of instruments. Instruments record
+measurements, which are aggregated by the metrics SDK and eventually exported
+out of process. Instruments come in synchronous and asynchronous varieties.
+Synchronous instruments record measurements as they happen. Asynchronous
+instrument register a callback, which is invoked once per collection, and which
+records measurements at that point in time. The following instruments are
+available:
+
+- `LongCounter`/`DoubleCounter`: records only positive values, with synchronous
+  and asynchronous options. Useful for counting things, such as the number of
+  bytes sent over a network. Counter measurements are aggregated to
+  always-increasing monotonic sums by default.
+- `LongUpDownCounter`/`DoubleUpDownCounter`: records positive and negative
+  values, with synchronous and asynchronous options. Useful for counting things
+  that go up and down, like the size of a queue. Up down counter measurements
+  are aggregated to non-monotonic sums by default.
+- `LongGauge`/`DoubleGauge`: measures an instantaneous value with an
+  asynchronous callback. Useful for recording values that can't be merged across
+  attributes, like CPU utilization percentage. Gauge measurements are aggregated
+  as gauges by default.
+- `LongHistogram`/`DoubleHistogram`: records measurements that are most useful
+  to analyze as a histogram distribution. No asynchronous option is available.
+  Useful for recording things like the duration of time spent by an HTTP server
+  processing a request. Histogram measurements are aggregated to explicit bucket
+  histograms by default.
+
+*Note* The asynchronous varieties of counter and up down counter assume that the
+registered callback is observing the cumulative sum. For example, if you
+register an asynchronous counter whose callback records bytes sent over a
+network, it must record the cumulative sum of all bytes sent over the network,
+rather than trying to compute and record the difference since last call.
 
 All metrics can be annotated with attributes: additional qualifiers that help
 describe what subdivision of the measurements the metric represents.
@@ -386,8 +417,6 @@ Attributes attributes = Attributes.of(stringKey("Key"), "SomeWork");
 counter.add(123, attributes);
 ```
 
-Asynchronous instruments support collecting metrics on demand, once per collection interval.
-
 The following is an example of usage of an asynchronous instrument:
 
 ```java
@@ -401,11 +430,13 @@ meter
   });
 ```
 
-## Tracing SDK Configuration
+## SDK Configuration
 
 The configuration examples reported in this document only apply to the SDK
 provided by `opentelemetry-sdk`. Other implementation of the API might provide
 different configuration mechanisms.
+
+### Tracing SDK
 
 The application has to install a span processor with an exporter and may
 customize the behavior of the OpenTelemetry SDK.
@@ -415,11 +446,11 @@ to export the traces to a logging stream.
 
 ```java
 SdkTracerProvider tracerProvider = SdkTracerProvider.builder()
-  .addSpanProcessor(BatchSpanProcessor.builder(new LoggingSpanExporter()).build())
+  .addSpanProcessor(BatchSpanProcessor.builder(LoggingSpanExporter.create()).build())
   .build();
 ```
 
-### Sampler
+#### Sampler
 
 It is not always feasible to trace and export every user request in an
 application. In order to strike a balance between observability and expenses,
@@ -446,7 +477,7 @@ SdkTracerProvider tracerProvider = SdkTracerProvider.builder()
   .build();
 ```
 
-### Span Processor
+#### Span Processor
 
 Different Span processors are offered by OpenTelemetry. The
 `SimpleSpanProcessor` immediately forwards ended spans to the exporter, while
@@ -456,24 +487,29 @@ processors can be configured to be active at the same time using the
 
 ```java
 SdkTracerProvider tracerProvider = SdkTracerProvider.builder()
-  .addSpanProcessor(SimpleSpanProcessor.create(new LoggingSpanExporter()))
-  .addSpanProcessor(BatchSpanProcessor.builder(new LoggingSpanExporter()).build())
+  .addSpanProcessor(SimpleSpanProcessor.create(LoggingSpanExporter.create()))
+  .addSpanProcessor(BatchSpanProcessor.builder(LoggingSpanExporter.create()).build())
   .build();
 ```
 
-### Exporter
+#### Exporter
 
 Span processors are initialized with an exporter which is responsible for
 sending the telemetry data a particular backend. OpenTelemetry offers five
 exporters out of the box:
 
-- In-Memory Exporter: keeps the data in memory, useful for debugging.
+- `InMemorySpanExporter`: keeps the data in memory, useful for testing and
+  debugging.
 - Jaeger Exporter: prepares and sends the collected telemetry data to a Jaeger
-  backend via gRPC.
-- Zipkin Exporter: prepares and sends the collected telemetry data to a Zipkin
-  backend via the Zipkin APIs.
-- Logging Exporter: saves the telemetry data into log streams.
-- OpenTelemetry Exporter: sends the data to the [OpenTelemetry Collector].
+  backend via gRPC. Varieties include `JaegerGrpcSpanExporter`
+  and `JaegerThriftSpanExporter`.
+- `ZipkinSpanExporter`: prepares and sends the collected telemetry data to a
+  Zipkin backend via the Zipkin APIs.
+- Logging Exporter: saves the telemetry data into log streams. Varieties
+  include `LoggingSpanExporter` and `OtlpJsonLoggingSpanExporter`.
+- OpenTelemetry Protocol Exporter: sends the data in OTLP to
+  the [OpenTelemetry Collector] or other OTLP receivers. Varieties
+  include `OtlpGrpcSpanExporter` and `OtlpHttpSpanExporter`.
 
 Other exporters can be found in the [OpenTelemetry Registry].
 
@@ -491,6 +527,87 @@ SdkTracerProvider tracerProvider = SdkTracerProvider.builder()
   .addSpanProcessor(BatchSpanProcessor.builder(jaegerExporter).build())
   .build();
 ```
+
+### Metrics SDK
+
+The application has to install a metric reader with an exporter, and may further
+customize the behavior of the OpenTelemetry SDK.
+
+For example, a basic configuration instantiates the SDK meter provider and sets
+to export the metrics to a logging stream.
+
+```java
+SdkMeterProvider meterProvider = SdkMeterProvider.builder()
+  .registerMetricReader(PeriodicMetricReader.builder(LoggingMetricExporter.create()).build())
+  .build();
+```
+
+#### Metric Reader
+
+Metric readers read aggregated metrics.
+
+```java
+SdkMeterProvider meterProvider = SdkMeterProvider.builder()
+  .registerMetricReader(...)
+  .build();
+```
+
+OpenTelemetry provides a variety of metric readers out of the box:
+
+- `PeriodicMetricReader`: reads metrics on a configurable interval and pushes to
+  a `MetricExporter`.
+- `InMemoryMetricReader`: reads metrics into memory, useful for debugging and
+  testing.
+- `PrometheusHttpServer` (alpha): an HTTP server that reads metrics and
+  serializes to Prometheus text format.
+
+Custom metric reader implementations are not currently supported.
+
+#### Exporter
+
+The `PeriodicMetricReader` is paired with a metric exporter, which is
+responsible for sending the telemetry data to a particular backend.
+OpenTelemetry provides the following exporters out of the box:
+
+- `InMemoryMetricExporter`: keeps the data in memory, useful for testing and
+  debugging.
+- Logging Exporter: saves the telemetry data into log streams. Varieties
+  include `LoggingMetricExporter` and `OtlpJsonLoggingMetricExporter`.
+- OpenTelemetry Protocol Exporter: sends the data in OTLP to
+  the [OpenTelemetry Collector] or other OTLP receivers. Varieties
+  include `OtlpGrpcMetricExporter` and `OtlpHttpMetricExporter`.
+
+Other exporters can be found in the [OpenTelemetry Registry].
+
+#### Views
+
+Views provide a mechanism for controlling how measurements are aggregated into
+metrics. They consist of an `InstrumentSelector` and a `View`. The instrument
+selector consists of a series of options for selecting which instruments the
+view applies to. Instruments can be selected by a combination of name, type,
+meter name, meter version, and meter schema url. The view describes how
+measurement should be aggregated. The view can change the name, description, the
+aggregation, and define the set of attribute keys that should be retained.
+
+```java
+SdkMeterProvider meterProvider = SdkMeterProvider.builder()
+  .registerView(
+    InstrumentSelector.builder()
+      .setName("my-counter") // Select instrument(s) called "my-counter"
+      .build(),
+    View.builder()
+      .setName("new-counter-name") // Change the name to "new-counter-name"
+      .build())
+  .registerMetricReader(...)
+  .build()
+```
+
+Every instrument has a default view, which retains the original name,
+description, and attributes, and has a default aggregation that is based on the
+type of instrument. When a registered view matches an instrument, the default
+view is replaced by the registered view. Additional registered views that match
+the instrument are additive, and result in multiple exported metrics for the
+instrument.
 
 ### Auto Configuration
 

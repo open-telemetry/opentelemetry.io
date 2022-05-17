@@ -125,16 +125,15 @@ of span processor that batches up multiple spans over a period of time:
 [
  {opentelemetry,
   [{span_processor, batch},
-   {exporter, {otel_exporter_stdout, []}}]}
+   {traces_exporter, {otel_exporter_stdout, []}}]}
 ].
 {{< /tab >}}
 
 {{< tab >}}
 # config/runtime.exs
-config :opentelemetry, :processors,
-  otel_batch_processor: %{
-    exporter: {:otel_exporter_stdout, []}
-  }
+config :opentelemetry, 
+  span_processor: :batch,
+  traces_exporter: {:otel_exporter_stdout, []}
 {{< /tab >}}
 
 {{< /tabs >}}
@@ -356,7 +355,7 @@ for the `otlp_protocol` the endpoint should be changed to `http://localhost:4317
 [
  {opentelemetry,
   [{span_processor, batch},
-   {exporter, otlp}]},
+   {traces_exporter, otlp}]},
 
  {opentelemetry_exporter,
   [{otlp_protocol, http_protobuf},
@@ -368,10 +367,10 @@ for the `otlp_protocol` the endpoint should be changed to `http://localhost:4317
 # config/runtime.exs
 config :opentelemetry,
   span_processor: :batch,
-  exporter: :otlp
+  traces_exporter: :otlp
 
 config :opentelemetry_exporter,
-  otlp_protocol: :http_protobuf
+  otlp_protocol: :http_protobuf,
   otlp_endpoint: "http://localhost:4318"
 {{< /tab >}}
 
