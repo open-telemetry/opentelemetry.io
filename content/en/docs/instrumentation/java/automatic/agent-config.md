@@ -220,7 +220,10 @@ environment variable `OTEL_INSTRUMENTATION_[NAME]_ENABLED`) where `name`
 | Eclipse Jetty HTTP Client                        | jetty-httpclient          |
 | Eclipse Metro                                    | metro                     |
 | Eclipse Mojarra                                  | mojarra                   |
-| Eclipse Vert.x                                   | vertx                     |
+| Eclipse Vert.x HttpClient                        | vertx-client              |
+| Eclipse Vert.x Kafka Client                      | vertx-kafka-client        |
+| Eclipse Vert.x RxJava                            | vertx-rx-java             |
+| Eclipse Vert.x Web                               | vertx-web                 |
 | Elasticsearch client                             | elasticsearch-transport   |
 | Elasticsearch REST client                        | elasticsearch-rest        |
 | Google Guava                                     | guava                     |
