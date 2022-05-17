@@ -46,7 +46,7 @@ To create a span, you'll typically want it to be started as the current span.
 with tracer.start_as_current_span("span-name") as span:
     # do some work that 'span' will track
 
-    # When the 'while' block goes out of scope, 'span' is closed for you
+    # When the 'with' block goes out of scope, 'span' is closed for you
 ```
 
 You can also use `start_span` to create a span without making it the current
@@ -102,7 +102,7 @@ current_span.set_attribute("operation.other-stuff", [1, 2, 3])
 
 ## Adding events
 
-AN event is a human-readable message on a span that represents "something
+An event is a human-readable message on a span that represents "something
 happening" during its lifetime. You can think of it as a primitive log.
 
 ```python

@@ -21,7 +21,7 @@ library to use the `@WithSpan` annotation.
   <dependency>
     <groupId>io.opentelemetry</groupId>
     <artifactId>opentelemetry-extension-annotations</artifactId>
-    <version>1.13.0</version>
+    <version>1.14.0</version>
   </dependency>
 </dependencies>
 ```
@@ -30,7 +30,7 @@ library to use the `@WithSpan` annotation.
 
 ```groovy
 dependencies {
-    implementation('io.opentelemetry:opentelemetry-extension-annotations:1.13.0')
+    implementation('io.opentelemetry:opentelemetry-extension-annotations:1.14.0')
 }
 ```
 
