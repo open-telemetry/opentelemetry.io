@@ -24,6 +24,7 @@ products.
 | F5              | No           | Yes         | https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/f5cloudexporter
 | Grafana Labs    | No           | Yes         | https://grafana.com/oss/opentelemetry/
 | Honeycomb       | Yes          | Yes         | https://docs.honeycomb.io/getting-data-in/
+| Instana         | No           | Yes         | https://www.ibm.com/docs/en/obi/current?topic=apis-opentelemetry
 | Lightstep       | Yes          | Yes         | https://github.com/lightstep?q=launcher
 | LogicMonitor    | Yes          | Yes         | https://www.logicmonitor.com/support/tracing/getting-started-with-tracing
 | Logz.io         | Yes          | No          | https://docs.logz.io/shipping/tracing-sources/opentelemetry.html#overview
