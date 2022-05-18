@@ -11,7 +11,7 @@ show_banner: true
 <div class="l-primary-buttons mt-5">
 
 - [Learn more](/docs/concepts/)
-- [Mission, Vision & Values](/mission-vision-and-values)
+- [Mission, vision & values](/mission)
 
 </div>
 

@@ -2,10 +2,9 @@
 title: Mission
 menu:
   main: {weight: 40}
-aliases: [/mission, /vision, /values]
 ---
 {{% blocks/lead color="primary" %}}
-# OpenTelemetry &mdash; Mission, Vision and Values
+# Mission, vision and values
 {{% /blocks/lead %}}
 
 {{% blocks/section type="section" color="white" %}}
@@ -79,29 +78,29 @@ time, these five key opportunities will remain outstanding until we achieve our
 mission, and as a project we refer to them to orient – and reorient – as we
 chart our path.
 
-## Engineering Values &mdash; the principles that guide our contributions
+## Engineering values &mdash; the principles that guide our contributions
 
 OpenTelemetry’s mission and vision describe where we want to go.
 OpenTelemetry’s engineering values describe how we want to get there.
 
-OpenTelemetry’s core engineering values are Compatibility, Stability,
-Resiliency, and Performance.
+OpenTelemetry’s core engineering values are compatibility, stability,
+resiliency, and performance.
 
-### We Value *Compatibility*
+### We value *compatibility*
 
 Given the number of stakeholders and supported platforms, following
 specifications and enabling interoperability is very important. OpenTelemetry
 strives to be standards-compliant, vendor-neutral, and consistent across
 languages and components.
 
-### We Value *Stability*
+### We value *stability*
 
 As many libraries take dependencies on OpenTelemetry APIs, API stability and
 backwards compatibility is vital for our end-users. As a corollary, we do not
 introduce new concepts unless we’re confident they’re needed by a broad subset
 of OpenTelemetry’s end-users.
 
-### We Value *Resilience*
+### We value *resilience*
 
 In OpenTelemetry we value technical resiliency: the ability to adapt and to
 continue operating even in the face of resource scarcity or other environmental
@@ -109,10 +108,9 @@ challenges. OpenTelemetry is designed to work and keep collecting telemetry
 signals when an application is misbehaving, and OpenTelemetry code is designed
 to degrade gracefully as needed.
 
-### We Value *Performance*
+### We value *performance*
 
 OpenTelemetry users should not have to choose between high-quality telemetry
 and a performant application. High performance is a requirement for
 OpenTelemetry, and unexpected interference effects in the host application are
 unacceptable.
-
