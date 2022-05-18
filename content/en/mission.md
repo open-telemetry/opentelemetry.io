@@ -1,7 +1,5 @@
 ---
 title: Mission
-menu:
-  main: {weight: 40}
 ---
 {{% blocks/lead color="primary" %}}
 # Mission, vision and values
