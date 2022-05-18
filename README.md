@@ -19,7 +19,7 @@ Follow the [setup instructions][contributing.md] then, to create a skeletal blog
 post, run the following command from the repo root:
 
 ```console
-$ hugo new content/en/blog/2022/file-name-for-your-blog-post.md
+$ npx hugo new content/en/blog/2022/file-name-for-your-blog-post.md
 ```
 
 Start editing the markdown file at the path you provided in the previous
