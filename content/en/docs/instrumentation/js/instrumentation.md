@@ -25,9 +25,9 @@ function doWork() {
 
 ## Initializing a Tracer
 
-As you have learned in the previous [Getting Started][] guide you need a
-TracerProvider and an Exporter. Install the dependencies and add them to the head of
-your application code to get started:
+As you have learned in the previous [Getting Started](../getting-started) guide you
+need a TracerProvider and an Exporter. Install the dependencies and add them to
+the head of your application code to get started:
 
 ```shell
 npm install @opentelemetry/api
@@ -292,5 +292,3 @@ try {
   span.setStatus({ code: otel.SpanStatusCode.ERROR });
 }
 ```
-
-[Getting Started]: {{< relref "getting-started" >}}

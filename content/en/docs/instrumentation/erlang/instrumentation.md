@@ -82,17 +82,17 @@ completes:
 {{< tabs Erlang Elixir >}}
 
 {{< tab >}}
-parent_function() ->    
+parent_function() ->
     ?with_span(<<"parent">>, #{}, fun child_function/0).
-               
+
 child_function() ->
     %% this is the same process, so the span <<"parent">> set as the active
-    %% span in the with_span call above will be the active span in this function    
-    ?with_span(<<"child">>, #{}, 
+    %% span in the with_span call above will be the active span in this function
+    ?with_span(<<"child">>, #{},
                fun() ->
                    %% do work here. when this function returns, <<"child">> will complete.
                end).
-    
+
 {{< /tab >}}
 
 {{< tab >}}
@@ -106,7 +106,7 @@ end
 
 def child_function() do
     # this is the same process, so the span <<"parent">> set as the active
-    # span in the with_span call above will be the active span in this function    
+    # span in the with_span call above will be the active span in this function
     OpenTelemetry.Tracer.with_span "child" do
         ## do work here. when this function returns, <<"child">> will complete.
     end
@@ -144,9 +144,9 @@ Ctx = otel_ctx:get_current(),
 proc_lib:spawn_link(fun() ->
                         otel_ctx:attach(Ctx),
                         ?set_current_span(SpanCtx),
-                        
+
                         %% do work here
-                        
+
                         ?end_span(SpanCtx)
                     end),
 {{< /tab >}}
@@ -159,10 +159,10 @@ task = Task.async(fn ->
                       OpenTelemetry.Ctx.attach(ctx),
                       OpenTelemetry.Tracer.set_current_span(span_ctx)
                       # do work here
-                      
+
                       # end span here or after `await` returns
                   end)
-                  
+
 _ = Task.await(task)
 OpenTelemetry.Tracer.end_span(span_ctx)
 {{< /tab >}}
@@ -224,8 +224,8 @@ in the body of the span operation:
 {{< tabs Erlang Elixir >}}
 
 {{< tab >}}
-?with_span(<<"my-span">>, #{attributes => [{<<"start-opts-attr">>, <<"start-opts-value">>}]}, 
-           fun() -> 
+?with_span(<<"my-span">>, #{attributes => [{<<"start-opts-attr">>, <<"start-opts-value">>}]},
+           fun() ->
                ?set_attributes([{<<"my-attribute">>, <<"my-value">>},
                                 {another_attribute, <<"value-of-attribute">>}])
            end)
@@ -261,8 +261,8 @@ the pool, and another when it is checked in.
 {{< tabs Erlang Elixir >}}
 
 {{< tab >}}
-?with_span(<<"my-span">>, #{}, 
-           fun() -> 
+?with_span(<<"my-span">>, #{},
+           fun() ->
                ?add_event(<<"checking out connection">>),
                %% acquire connection from connection pool
                ?add_event(<<"got connection, doing work">>),
@@ -321,7 +321,7 @@ registered with OpenTelemetry. This can be done through configuration of the
 ...
 {text_map_propagators, [baggage,
                         trace_context]},
-...                        
+...
 {{< /tab >}}
 
 {{< tab >}}
@@ -354,5 +354,5 @@ Organization](https://hex.pm/orgs/opentelemetry) and the [registry](/registry).
 The metrics API, found in `apps/opentelemetry-experimental-api` of the
 `opentelemetry-erlang` repository, is currently unstable, documentation TBA.
 
-[OpenTelemetry Specification]: {{< relref "/docs/reference/specification" >}}
-[Trace semantic conventions]: {{< relref "/docs/reference/specification/trace/semantic_conventions" >}}
+[OpenTelemetry Specification]: /docs/reference/specification
+[Trace semantic conventions]: /docs/reference/specification/trace/semantic_conventions

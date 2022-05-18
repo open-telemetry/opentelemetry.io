@@ -67,7 +67,7 @@ Note that, for each of the following sections, the **Collector** status is the s
   - Collector support for Prometheus is under development, in collaboration with the Prometheus community.
   - The metric API and SDK specification is currently being prototyped in Java, .NET, and Python.
 
-[metrics]: {{< relref "/docs/reference/specification/metrics/" >}}
+[metrics]: /docs/reference/specification/metrics/
 
 #### Baggage
 
