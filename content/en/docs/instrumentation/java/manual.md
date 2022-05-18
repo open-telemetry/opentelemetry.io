@@ -681,12 +681,12 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
 [AlwaysOffSampler]: https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/AlwaysOffSampler.java
 [AlwaysOnSampler]: https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/AlwaysOnSampler.java
 [HttpExchange]: https://docs.oracle.com/javase/8/docs/jre/api/net/httpserver/spec/com/sun/net/httpserver/HttpExchange.html
-[Instrumentation Library]: {{< relref "/docs/reference/specification/glossary#instrumentation-library" >}}
-[instrumented library]: {{< relref "/docs/reference/specification/glossary#instrumented-library" >}}
-[Library Guidelines]: {{< relref "/docs/reference/specification/library-guidelines" >}}
-[Obtaining a Tracer]: {{< relref "/docs/reference/specification/trace/api#get-a-tracer" >}}
+[Instrumentation Library]: /docs/reference/specification/glossary/#instrumentation-library
+[instrumented library]: /docs/reference/specification/glossary/#instrumented-library
+[Library Guidelines]: /docs/reference/specification/library-guidelines
+[Obtaining a Tracer]: /docs/reference/specification/trace/api/#get-a-tracer
 [OpenTelemetry Collector]: https://github.com/open-telemetry/opentelemetry-collector
-[OpenTelemetry Registry]: {{< relref "/registry/" >}}?component=exporter&language=java
+[OpenTelemetry Registry]: /registry/?component=exporter&language=java
 [ParentBased]: https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/ParentBasedSampler.java
-[Semantic Conventions]: {{< relref "/docs/reference/specification/trace/semantic_conventions" >}}
+[Semantic Conventions]: /docs/reference/specification/trace/semantic_conventions
 [TraceIdRatioBased]: https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/TraceIdRatioBasedSampler.java

@@ -1,6 +1,7 @@
 ---
 title: Concepts
-description: What is OpenTelemetry, what does it provide and what does it support?
+description: >-
+  What is OpenTelemetry, what does it provide and what does it support?
 spelling: cSpell:ignore otel
 aliases: [/about, /docs/concepts/overview, /otel]
 weight: 1
