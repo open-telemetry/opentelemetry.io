@@ -211,6 +211,7 @@ environment variable `OTEL_INSTRUMENTATION_[NAME]_ENABLED`) where `name`
 | AsyncHttpClient (AHC)                            | async-http-client         |
 | AWS Lambda                                       | aws-lambda                |
 | AWS SDK                                          | aws-sdk                   |
+| Azure SDK                                        | azure-core                |
 | Couchbase                                        | couchbase                 |
 | Dropwizard Views                                 | dropwizard-views          |
 | Eclipse Grizzly                                  | grizzly                   |
@@ -219,15 +220,20 @@ environment variable `OTEL_INSTRUMENTATION_[NAME]_ENABLED`) where `name`
 | Eclipse Jetty HTTP Client                        | jetty-httpclient          |
 | Eclipse Metro                                    | metro                     |
 | Eclipse Mojarra                                  | mojarra                   |
-| Eclipse Vert.x                                   | vertx                     |
+| Eclipse Vert.x HttpClient                        | vertx-client              |
+| Eclipse Vert.x Kafka Client                      | vertx-kafka-client        |
+| Eclipse Vert.x RxJava                            | vertx-rx-java             |
+| Eclipse Vert.x Web                               | vertx-web                 |
 | Elasticsearch client                             | elasticsearch-transport   |
 | Elasticsearch REST client                        | elasticsearch-rest        |
 | Google Guava                                     | guava                     |
 | Google HTTP client                               | google-http-client        |
 | Google Web Toolkit                               | gwt                       |
 | Grails                                           | grails                    |
+| GraphQL Java                                     | graphql-java              |
 | GRPC                                             | grpc                      |
 | Hibernate                                        | hibernate                 |
+| HikariCP                                         | hikaricp                  |
 | Java HTTP Client                                 | java-http-client          |
 | Java `HttpURLConnection`                         | http-url-connection       |
 | Java JDBC                                        | jdbc                      |
@@ -239,6 +245,8 @@ environment variable `OTEL_INSTRUMENTATION_[NAME]_ENABLED`) where `name`
 | JAX-RS (Client)                                  | jaxrs-client              |
 | JAX-RS (Server)                                  | jaxrs                     |
 | JAX-WS                                           | jaxws                     |
+| JBoss Logging Appender                           | jboss-logmanager          |
+| JBoss Logging MDC                                | jboss-logmanager-mdc      |
 | JMS                                              | jms                       |
 | JSP                                              | jsp                       |
 | K8s Client                                       | kubernetes-client         |
@@ -262,7 +270,7 @@ environment variable `OTEL_INSTRUMENTATION_[NAME]_ENABLED`) where `name`
 | Quartz                                           | quartz                    |
 | RabbitMQ Client                                  | rabbitmq                  |
 | Ratpack                                          | ratpack                   |
-| ReactiveX RxJava                                 | rxjava2, rxjava3          |
+| ReactiveX RxJava                                 | rxjava                    |
 | Reactor                                          | reactor                   |
 | Reactor Netty                                    | reactor-netty             |
 | Redis Jedis                                      | jedis                     |
