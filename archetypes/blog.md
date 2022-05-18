@@ -4,6 +4,8 @@ linkTitle: ADD A SHORT TITLE HERE # TODO: add short title or remove this line
 date: {{ dateFormat "2006-01-02" .Date }}
 author: ADD AUTHOR NAME(S) HERE # TODO
 draft: true # TODO: remove this line once your post is ready to be published
+# TODO: run the following command before submitting
+#   npx prettier --write content/en/{{ .File.Path }}
 ---
 
 ## Top-level heading
