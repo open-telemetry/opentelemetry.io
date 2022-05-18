@@ -2,7 +2,6 @@
 title: OpenTelemetry Metrics Release Candidates
 date: 2022-05-18
 author: Morgan McLean
-draft: true # TODO: remove this line once your post is ready to be published
 ---
 
 OpenTelemetry’s metrics capabilities are now available as release candidates,
