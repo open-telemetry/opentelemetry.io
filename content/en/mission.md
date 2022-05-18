@@ -83,8 +83,8 @@ chart our path.
 OpenTelemetry’s mission and vision describe where we want to go.
 OpenTelemetry’s engineering values describe how we want to get there.
 
-OpenTelemetry’s core engineering values are compatibility, stability,
-resiliency, and performance.
+OpenTelemetry’s core engineering values are *compatibility*, *stability*,
+*resiliency*, and *performance*.
 
 ### We value *compatibility*
 
