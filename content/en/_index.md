@@ -11,10 +11,7 @@ show_banner: true
 <div class="l-primary-buttons mt-5">
 
 - [Learn more](/docs/concepts/)
-- [Mission and vision][]
-
-[mission and vision]:
-  https://github.com/open-telemetry/community/blob/main/mission-vision-values.md#otel-mission-vision-and-values
+- [Mission, vision & values](/mission/)
 
 </div>
 
