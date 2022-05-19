@@ -1,5 +1,6 @@
 ---
 title: OpenTelemetry Metrics Release Candidates
+linkTitle: Metrics RCs
 date: 2022-05-18
 author: Morgan McLean
 ---
