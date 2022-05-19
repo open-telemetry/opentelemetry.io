@@ -49,6 +49,18 @@ offer distributions. In addition, end-users may consider creating a distribution
 if they wish to use components in the [Registry](../../../registry) that are not
 upstreamed to the OpenTelemetry project.
 
+## Contribution or distribution?
+
+Before you read on and learn how you can create your own distribution, ask yourself if your
+additions on top of an OpenTelemetry component would be beneficial for everyone and therefore
+should be included in the reference implementations:
+
+- Can your scripts for "ease of use" be generalized?
+- Can your changes to default settings be the better option for everyone?
+- Are your additional packaging options really specific?
+- Might your test, performance & security coverage work with the reference implementation as well?
+- Have you checked with the community if your additional capabilities could be part of the standard?
+
 ## Creating your own distribution
 
 ### Collector
@@ -59,6 +71,12 @@ A guide on how to create your own distribution is available in this blog post:
 If you are building your own distribution, the
 [OpenTelemetry Collector Builder](https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder)
 might be a good starting point.
+
+### Language Specific Instrumentation libraries
+
+There are language specific extensibility mechanisms to customize the instrumentation libraries:
+
+- [Javaagent](../../instrumentation/java/extensions)
 
 ## What you should know about distributions
 
