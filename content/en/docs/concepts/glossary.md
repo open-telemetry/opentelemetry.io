@@ -187,7 +187,7 @@ others. This page captures terminology used in the project and what it means.
 - **[Metric
   Conventions]({{< relref "/docs/reference/specification/metrics/semantic_conventions" >}})**
 
-[attribute]: /docs/reference/specification/common/common/#attributes
+[attribute]: /docs/reference/specification/common/#attributes
 [spec-exporter-lib]: /docs/reference/specification/glossary/#exporter-library
 [spec-instrumentation-lib]:
   /docs/reference/specification/glossary/#instrumentation-library
