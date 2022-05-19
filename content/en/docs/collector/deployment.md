@@ -1,5 +1,5 @@
 ---
-title: Deployment Methods
+title: Deployment
 weight: 2
 ---
 
@@ -10,7 +10,7 @@ The OpenTelemetry Collector consists of a single binary and two primary deployme
 - **Gateway:** One or more Collector instances running as a standalone service
   (e.g. container or deployment) typically per cluster, data center or region.
 
-### Agent
+## Agent
 
 It is recommended to deploy the Agent on every host within an environment. In
 doing so, the Agent is capable of receiving telemetry data (push and pull
@@ -21,7 +21,7 @@ retry, encryption, compression and more. OpenTelemetry instrumentation
 libraries by default export their data assuming a locally running Collector is
 available.
 
-### Gateway
+## Gateway
 
 Additionally, a Gateway cluster can be deployed in every cluster, data center,
 or region. A Gateway cluster runs as a standalone service and can offer
