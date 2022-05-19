@@ -6,7 +6,7 @@ author: Morgan McLean
 ---
 
 OpenTelemetry’s metrics capabilities are now available as release candidates,
-starting with Java, .Net, and Python! This means that the specification, APIs,
+starting with Java, .NET, and Python! This means that the specification, APIs,
 SDKs, and other components that author, capture, process, and otherwise interact
 with metrics now have the full set of OpenTelemetry metrics functionality and
 are ready for use. These release candidates will be promoted to general
@@ -25,7 +25,7 @@ The 1.0 metrics release includes the following:
     that they can produce custom metrics or interact with existing metrics. For
     example, an e-commerce company could use the API to track how many purchases
     are made over time.
-- Metrics functionality included in the OpenTelemetry SDKs for Java, .Net,
+- Metrics functionality included in the OpenTelemetry SDKs for Java, .NET,
   Python, and JS (coming next week) SDKs, which capture metrics from the APIs
   and perform some amount of processing. Metrics support for other languages is
   still in development. These are useful for:
@@ -71,7 +71,7 @@ As of this announcement, the following languages have issued metrics release
 candidates:
 
 - Java
-- .Net
+- .NET
 - Python
 
 The RC release for JS is planned for next week, and more languages will be
