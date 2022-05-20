@@ -17,7 +17,7 @@ preferred package manager client.
 
 For example, using the .NET CLI:
 
-```console
+```shell
 dotnet add package OpenTelemetry
 ```
 
@@ -27,7 +27,7 @@ The following sample demonstrates manual tracing via a console app.
 
 First, install required packages:
 
-```console
+```shell
 $ dotnet add package OpenTelemetry
 $ dotnet add package OpenTelemetry.Exporter.Console
 ```
@@ -90,7 +90,7 @@ Core.
 
 First, install requried packages:
 
-```console
+```shell
 $ dotnet add package OpenTelemetry --prerelease
 $ dotnet add package OpenTelemetry.Extensions.Hosting --prerelease
 $ dotnet add package OpenTelemetry.Exporter.Console --prerelease
@@ -186,23 +186,19 @@ Resource associated with Activity:
 This output has both the span created to track work in the route, and an
 automatically-created span that tracks the inbound ASP.NET Core request itself.
 
-## Send traces to an OpenTelemetry Collector
+## Send traces to a Collector
 
-The [OpenTelemetry Collector](/docs/collector/getting-started/) is a critical
-component of most production deployments. Some examples of when it’s beneficial to use
-a collector:
+The [OpenTelemetry Collector](/docs/collector/getting-started/) is a vital
+component of most production deployments. A collector is most beneficial in the following situations, among others:
 
 * A single telemetry sink shared by multiple services, to reduce overhead of
   switching exporters
 * Aggregate traces across multiple services, running on multiple hosts
 * A central place to process traces prior to exporting them to a backend
 
-Unless you have just a single service or are experimenting, you’ll want to use a
-collector in production deployments.
-
 ### Configure and run a local collector
 
-First, write the following collector configuration code into `/tmp/`:
+First, save the following collector configuration code to a file under `/tmp/`:
 
 ```yaml
 # /tmp/otel-collector-config.yaml
@@ -227,27 +223,27 @@ service:
 Then run the docker command to acquire and run the collector based on this
 configuration:
 
-```console
-docker run -p 4317:4317 \
+```shell
+docker run -p 4318:4318 \
     -v /tmp/otel-collector-config.yaml:/etc/otel-collector-config.yaml \
     otel/opentelemetry-collector:latest \
     --config=/etc/otel-collector-config.yaml
 ```
 
-You will now have an OpenTelemetry Collector instance running locally.
+You will now have an collector instance running locally.
 
 ### Modify the code to export spans via OTLP
 
-The next step is to modify the code to send spans to the Collector via OTLP
+The next step is to modify the code to send spans to the collector via OTLP
 instead of the console.
 
 First, add the following package:
 
-```console
+```shell
 dotnet add package OpenTelemetry.Exporter.OpenTelemetryProtocol
 ```
 
-Next, using the ASP.NET Core example, replace the console apsn exporter with an
+Next, using the ASP.NET Core code from earlier, replace the console span exporter with an
 OTLP span exporter:
 
 ```csharp
@@ -261,7 +257,8 @@ var serviceVersion = "1.0.0";
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configure important OpenTelemetry settings, the console exporter, and automatic instrumentation
+// Configure to send data via the OTLP exporter.
+// By default, it will send to port 4318, which the collector is listening on.
 builder.Services.AddOpenTelemetryTracing(b =>
 {
     b
@@ -301,14 +298,13 @@ is listening on.
 
 ### Run the application
 
-Finally, you can run the application like before:
+Run the application like before:
 
-```
+```shell
 dotnet run
 ```
 
-But instead of having output from the ASP.NET Core's standard out, it will
-instead be printed from the collector process!
+Now, telemetry will be output by the collector process.
 
 ## Next steps
 
