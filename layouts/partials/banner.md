@@ -4,6 +4,6 @@
 OpenTelemetry Metrics Release Candidates are now available!
 [Learn more][]
 
-[Learn more]: {{< relref /blog/2022/metrics-announcement/ >}}
+[Learn more]: https://opentelemetry.io/blog/2022/metrics-announcement/
 </div>
 {{ end -}}
