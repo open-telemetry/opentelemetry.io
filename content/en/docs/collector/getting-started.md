@@ -26,7 +26,7 @@ Pull a docker image and run the collector in a container. Replace `0.51.0`
 with the version of the Collector you wish to run.
 
 ```console
-$ docker docker pull ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:0.51.0
+$ docker pull ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:0.51.0
 $ docker run ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:0.51.0
 ```
 
