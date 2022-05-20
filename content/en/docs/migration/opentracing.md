@@ -1,8 +1,7 @@
 ---
 title: Migrating from OpenTracing
 linkTitle: OpenTracing
-draft: true
-spelling: cSpell:ignore codebases
+spelling: cSpell:ignore codebases opentracing
 ---
 
 Backwards compatibility with [OpenTracing][] has been a priority for the
@@ -27,6 +26,7 @@ of the OpenTracing and OpenTelemetry APIs are listed in the table below.
 | [Python][]     | 2.7              | 3.6               |
 | [Javascript][] | 6                | 8.5               |
 | [.NET][]       | 1.3              | 1.4               |
+| [C++][]        | 11               | 11                |
 
 Note that the OpenTelemetry API and SDKs generally have higher language version
 requirements than their OpenTracing counterparts.
@@ -185,5 +185,6 @@ shim, see [OpenTracing Compatibility][OT_spec].
 [Java]: https://github.com/open-telemetry/opentelemetry-java/tree/main/opentracing-shim
 [Javascript]: https://www.npmjs.com/package/@opentelemetry/shim-opentracing
 [OpenTracing]: https://opentracing.io
-[OT_spec]: {{< relref "/docs/reference/specification/compatibility/opentracing" >}}
+[OT_spec]: /docs/reference/specification/compatibility/opentracing/
 [Python]: https://opentelemetry-python.readthedocs.io/en/stable/shim/opentracing_shim/opentracing_shim.html
+[C++]: https://github.com/open-telemetry/opentelemetry-cpp/issues/78

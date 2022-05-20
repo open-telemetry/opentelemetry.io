@@ -11,3 +11,6 @@
 /docs/{{ $lang }}   /docs/instrumentation/{{ $lang }}
 /docs/{{ $lang }}/*  /docs/instrumentation/{{ $lang }}/:splat
 {{ end -}}
+
+/docs/reference/specification/common/common  /docs/reference/specification/common
+/docs/reference/specification/common/common/* /docs/reference/specification/common/:splat

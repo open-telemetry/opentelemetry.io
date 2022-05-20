@@ -1,6 +1,7 @@
 ---
 title: Annotations
 description: Using instrumentation annotations with a Java agent.
+aliases: [/docs/instrumentation/java/annotations]
 weight: 4
 ---
 
@@ -20,7 +21,7 @@ library to use the `@WithSpan` annotation.
   <dependency>
     <groupId>io.opentelemetry</groupId>
     <artifactId>opentelemetry-extension-annotations</artifactId>
-    <version>1.12.0</version>
+    <version>1.14.0</version>
   </dependency>
 </dependencies>
 ```
@@ -29,7 +30,7 @@ library to use the `@WithSpan` annotation.
 
 ```groovy
 dependencies {
-    implementation('io.opentelemetry:opentelemetry-extension-annotations:1.11.0')
+    implementation('io.opentelemetry:opentelemetry-extension-annotations:1.14.0')
 }
 ```
 
@@ -53,6 +54,23 @@ Each time the application invokes the annotated method, it creates a span that
 denotes its duration and provides any thrown exceptions. By default, the span
 name will be `<className>.<methodName>`, unless a name is provided as an
 argument to the annotation.
+
+If the return type of the method annotated by `@WithSpan` is one of the
+[future- or promise-like](https://en.wikipedia.org/wiki/Futures_and_promises)
+types listed below, then the span will not be ended until the future completes.
+
+* [java.util.concurrent.CompletableFuture](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html)
+* [java.util.concurrent.CompletionStage](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletionStage.html)
+* [com.google.common.util.concurrent.ListenableFuture](https://guava.dev/releases/10.0/api/docs/com/google/common/util/concurrent/ListenableFuture.html)
+* [org.reactivestreams.Publisher](https://www.reactive-streams.org/reactive-streams-1.0.1-javadoc/org/reactivestreams/Publisher.html)
+* [reactor.core.publisher.Mono](https://projectreactor.io/docs/core/3.1.0.RELEASE/api/reactor/core/publisher/Mono.html)
+* [reactor.core.publisher.Flux](https://projectreactor.io/docs/core/3.1.0.RELEASE/api/reactor/core/publisher/Flux.html)
+* [io.reactivex.Completable](http://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Completable.html)
+* [io.reactivex.Maybe](http://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Maybe.html)
+* [io.reactivex.Single](http://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Single.html)
+* [io.reactivex.Observable](http://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Observable.html)
+* [io.reactivex.Flowable](http://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Flowable.html)
+* [io.reactivex.parallel.ParallelFlowable](http://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/parallel/ParallelFlowable.html)
 
 ## Adding attributes to the span with `@SpanAttribute`
 
@@ -84,21 +102,23 @@ Suppressing `@WithSpan` is useful if you have code that is over-instrumented
 using `@WithSpan` and you want to suppress some of them without modifying the
 code.
 
-| System property                                                  | Environment variable                                             | Purpose |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
-| `otel.instrumentation.opentelemetry-annotations.exclude-methods` | `OTEL_INSTRUMENTATION_OPENTELEMETRY_ANNOTATIONS_EXCLUDE_METHODS` | Suppress `@WithSpan` instrumentation for specific methods. Format is `my.package.MyClass1[method1,method2];my.package.MyClass2[method3]`
+{{% config_option name="otel.instrumentation.opentelemetry-annotations.exclude-methods" %}}
+  Suppress `@WithSpan` instrumentation for specific methods.
+  Format is `my.package.MyClass1[method1,method2];my.package.MyClass2[method3]`.
+{{% /config_option %}}
 
 ## Creating spans around methods with `otel.instrumentation.methods.include`
 
 In cases where you are unable to modify the code, you can still configure the
 javaagent to capture spans around specific methods.
 
-| System property                        | Environment variable                   | Purpose |
-| -------------------------------------- | -------------------------------------- | ------- |
-| `otel.instrumentation.methods.include` | `OTEL_INSTRUMENTATION_METHODS_INCLUDE` | Add instrumentation for specific methods in lieu of `@WithSpan`. Format is `my.package.MyClass1[method1,method2];my.package.MyClass2[method3]`
+{{% config_option name="otel.instrumentation.methods.include" %}}
+  Add instrumentation for specific methods in lieu of `@WithSpan`.
+  Format is `my.package.MyClass1[method1,method2];my.package.MyClass2[method3]`.
+{{% /config_option %}}
 
 ## Next steps
 
 Beyond the use of annotations, the OpenTelemetry API allows you to obtain
-a tracer that can be used for [Manual Instrumentation](../manual)
+a tracer that can be used for [Manual Instrumentation](../../manual)
 and execute code within the scope of that span.

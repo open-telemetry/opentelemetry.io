@@ -8,6 +8,7 @@ Please be sure to review the following documentation:
   understand the repositories applicable to the OpenTelemetry Collector.
 - [Security
   guidance](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security.md)
+
 ## Basics
 
 The Collector consists of three components that access telemetry data:
@@ -287,8 +288,11 @@ provides a default configuration are overridden.
 > Configuring an exporter does not enable it. Exporters are enabled via
 > pipelines within the [service](#service) section.
 
-One or more exporters must be configured. By default, no exporters
-are configured. A basic example of all available exporters is provided below.
+One or more exporters must be configured. By default, no exporters are
+configured. A basic example of all available exporters is provided below.
+Certain exporter configurations require x.509 certificates to be created in
+order to be secure, as described in [setting up
+certificates](#setting-up-certificates).
 
 > For detailed exporter configuration, please see the [exporter
 README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md).
@@ -303,7 +307,8 @@ exporters:
   jaeger:
     endpoint: "jaeger-all-in-one:14250"
     tls:
-      insecure: true
+      cert_file: cert.pem
+      key_file: cert-key.pem
 
   # Data sources: traces
   kafka:
@@ -321,7 +326,8 @@ exporters:
   otlp:
     endpoint: otelcol2:4317
     tls:
-      insecure: true
+      cert_file: cert.pem
+      key_file: cert-key.pem
 
   # Data sources: traces, metrics
   otlphttp:
@@ -560,3 +566,46 @@ service:
       exporters:
         - otlp/auth
 ```
+
+
+### Setting up certificates
+
+For a production setup, we strongly recommend using TLS certificates, either for
+secure communication or mTLS for mutual authentication. See the below steps to
+generate self-signed certificates used in this example. You might want to use
+your current cert provisioning procedures to procure a certificate for
+production usage.
+
+Install [cfssl](https://github.com/cloudflare/cfssl), and create the following
+`csr.json` file:
+
+```json
+{
+    "hosts": [
+        "localhost",
+        "127.0.0.1"
+    ],
+    "key": {
+        "algo": "rsa",
+        "size": 2048
+    },
+    "names": [
+        {
+            "O":  "OpenTelemetry Example"
+        }
+    ]
+}
+```
+> csr.json
+
+Now, run the following commands:
+
+```bash
+cfssl genkey -initca csr.json | cfssljson -bare ca
+cfssl gencert -ca ca.pem -ca-key ca-key.pem csr.json | cfssljson -bare cert
+```
+
+This will create two certificates; first, an "OpenTelemetry Example" Certificate
+Authority (CA) in `ca.pem` and the associated key in `ca-key.pem`, and second a
+client certificate in `cert.pem` (signed by the OpenTelemetry Example CA) and
+the associated key in `cert-key.pem`.

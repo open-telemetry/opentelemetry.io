@@ -21,7 +21,7 @@ For example, here's how to point at an instance of an [OpenTelemetry Collector](
 
 ```js
 const { OTLPTraceExporter } = require('@opentelemetry/exporter-trace-otlp-http');
-const { SimpleSpanProcessor } = require('@opentelemetry/tracing');
+const { SimpleSpanProcessor } = require('@opentelemetry/sdk-trace-base');
 
 const exporter = new OTLPTraceExporter({
   // optional - url default value is http://localhost:55681/v1/traces
@@ -126,7 +126,7 @@ Update your opentelemetry configuration to use the exporter and to send data to 
 
 ```javascript
 const { PrometheusExporter } = require('@opentelemetry/exporter-prometheus');
-const { MeterProvider }  = require('@opentelemetry/metrics');
+const { MeterProvider }  = require('@opentelemetry/sdk-metrics-base');
 const meter = new MeterProvider({
   exporter: new PrometheusExporter({port: 9090}),
   interval: 1000,

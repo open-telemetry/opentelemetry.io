@@ -46,13 +46,11 @@ To create a span, you'll typically want it to be started as the current span.
 with tracer.start_as_current_span("span-name") as span:
     # do some work that 'span' will track
 
-    # When the 'while' block goes out of scope, 'span' is closed for you
+    # When the 'with' block goes out of scope, 'span' is closed for you
 ```
 
 You can also use `start_span` to create a span without making it the current
 span. This is usually done to track concurrent or asynchronous operations.
-
-You can also
 
 ## Creating nested spans
 
@@ -104,7 +102,7 @@ current_span.set_attribute("operation.other-stuff", [1, 2, 3])
 
 ## Adding events
 
-AN event is a human-readable message on a span that represents "something
+An event is a human-readable message on a span that represents "something
 happening" during its lifetime. You can think of it as a primitive log.
 
 ```python
@@ -112,7 +110,7 @@ from opentelemetry import trace
 
 current_span = trace.get_current_span()
 
-currrent_span.add_event("Gonna try it!")
+current_span.add_event("Gonna try it!")
 
 # Do the thing
 
@@ -127,9 +125,9 @@ another span. A link needs a span context to be created.
 ```python
 from opentelemetry import trace
 
-ctx = trace.get_current_span().abstractget_span_context()
+ctx = trace.get_current_span().get_span_context()
 
-link_from_current = Link(ctx)
+link_from_current = trace.Link(ctx)
 
 with tracer.start_as_current_span("new-span", links=[link_from_current]) as new_span:
     # do something that 'new_span' tracks

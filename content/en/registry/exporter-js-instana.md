@@ -1,0 +1,15 @@
+---
+title: Instana Node.js Exporter
+registryType: exporter
+isThirdParty: true
+language: js
+tags:
+  - Node.js
+  - exporter
+  - Instana
+repo: https://github.com/instana/nodejs/tree/main/packages/opentelemetry-exporter
+license: MIT
+description: The Instana Node.js OpenTelemetry Exporter.
+authors: Instana Authors
+otVersion: latest
+---
