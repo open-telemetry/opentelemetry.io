@@ -28,8 +28,8 @@ The following sample demonstrates manual tracing via a console app.
 First, install required packages:
 
 ```shell
-$ dotnet add package OpenTelemetry
-$ dotnet add package OpenTelemetry.Exporter.Console
+dotnet add package OpenTelemetry
+dotnet add package OpenTelemetry.Exporter.Console
 ```
 
 Next, paste the following code into your `Program.cs` file:
@@ -41,7 +41,7 @@ using OpenTelemetry;
 using OpenTelemetry.Trace;
 using OpenTelemetry.Resources;
 
-// Define some important constants and the activity source
+// Define some important constants to initialize tracing with
 var serviceName = "MyCompany.MyProduct.MyService";
 var serviceVersion = "1.0.0";
 
@@ -91,12 +91,12 @@ Core.
 First, install requried packages:
 
 ```shell
-$ dotnet add package OpenTelemetry --prerelease
-$ dotnet add package OpenTelemetry.Extensions.Hosting --prerelease
-$ dotnet add package OpenTelemetry.Exporter.Console --prerelease
-$ dotnet add package OpenTelemetry.Instrumentation.AspNetCore --prerelease
-$ dotnet add package OpenTelemetry.Instrumentation.Http --prerelease
-$ dotnet add package OpenTelemetry.Instrumentation.SqlClient --prerelease
+dotnet add package OpenTelemetry --prerelease
+dotnet add package OpenTelemetry.Extensions.Hosting --prerelease
+dotnet add package OpenTelemetry.Exporter.Console --prerelease
+dotnet add package OpenTelemetry.Instrumentation.AspNetCore --prerelease
+dotnet add package OpenTelemetry.Instrumentation.Http --prerelease
+dotnet add package OpenTelemetry.Instrumentation.SqlClient --prerelease
 ```
 
 Next, paste the following code into your `Program.cs` file:
@@ -106,16 +106,16 @@ using System.Diagnostics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
-// Define some important constants and the activity source
+// Define some important constants to initialize tracing with
 var serviceName = "MyCompany.MyProduct.MyService";
 var serviceVersion = "1.0.0";
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Configure important OpenTelemetry settings, the console exporter, and automatic instrumentation
-builder.Services.AddOpenTelemetryTracing(b =>
+builder.Services.AddOpenTelemetryTracing(tracerProviderBuilder =>
 {
-    b
+    tracerProviderBuilder
     .AddConsoleExporter()
     .AddSource(serviceName)
     .SetResourceBuilder(
@@ -186,10 +186,11 @@ Resource associated with Activity:
 This output has both the span created to track work in the route, and an
 automatically-created span that tracks the inbound ASP.NET Core request itself.
 
-## Send traces to a Collector
+## Send traces to a collector
 
 The [OpenTelemetry Collector](/docs/collector/getting-started/) is a vital
-component of most production deployments. A collector is most beneficial in the following situations, among others:
+component of most production deployments. A collector is most beneficial in the
+following situations, among others:
 
 * A single telemetry sink shared by multiple services, to reduce overhead of
   switching exporters
@@ -203,21 +204,21 @@ First, save the following collector configuration code to a file under `/tmp/`:
 ```yaml
 # /tmp/otel-collector-config.yaml
 receivers:
-    otlp:
-        protocols:
-            grpc:
-            http:
+  otlp:
+  protocols:
+    grpc:
+    http:
 exporters:
-    logging:
-        loglevel: debug
+  logging:
+    loglevel: debug
 processors:
-    batch:
+  batch:
 service:
-    pipelines:
-        traces:
-            receivers: [otlp]
-            exporters: [logging]
-            processors: [batch]
+  pipelines:
+    traces:
+      receivers: [otlp]
+      exporters: [logging]
+      processors: [batch]
 ```
 
 Then run the docker command to acquire and run the collector based on this
@@ -243,15 +244,15 @@ First, add the following package:
 dotnet add package OpenTelemetry.Exporter.OpenTelemetryProtocol
 ```
 
-Next, using the ASP.NET Core code from earlier, replace the console span exporter with an
-OTLP span exporter:
+Next, using the ASP.NET Core code from earlier, replace the console exporter
+with an OTLP exporter:
 
 ```csharp
 using System.Diagnostics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
-// Define some important constants and the activity source
+// Define some important constants to initialize tracing with
 var serviceName = "MyCompany.MyProduct.MyService";
 var serviceVersion = "1.0.0";
 
@@ -259,9 +260,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Configure to send data via the OTLP exporter.
 // By default, it will send to port 4318, which the collector is listening on.
-builder.Services.AddOpenTelemetryTracing(b =>
+builder.Services.AddOpenTelemetryTracing(tracerProviderBuilder =>
 {
-    b
+    tracerProviderBuilder
     .AddOtlpExporter(opt =>
     {
         opt.Protocol = OtlpExportProtocol.HttpProtobuf;
