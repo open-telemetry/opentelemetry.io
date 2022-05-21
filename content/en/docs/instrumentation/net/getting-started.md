@@ -25,10 +25,9 @@ dotnet add package OpenTelemetry
 
 The following sample demonstrates manual tracing via a console app.
 
-First, install required packages:
+First, install the required package:
 
 ```shell
-dotnet add package OpenTelemetry
 dotnet add package OpenTelemetry.Exporter.Console
 ```
 
@@ -91,7 +90,6 @@ Core.
 First, install requried packages:
 
 ```shell
-dotnet add package OpenTelemetry --prerelease
 dotnet add package OpenTelemetry.Extensions.Hosting --prerelease
 dotnet add package OpenTelemetry.Exporter.Console --prerelease
 dotnet add package OpenTelemetry.Instrumentation.AspNetCore --prerelease
