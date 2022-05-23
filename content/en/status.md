@@ -1,31 +1,26 @@
 ---
 title: Status
-menu:
-  main: { weight: 30 }
+menu: { main: { weight: 30 } }
 aliases: [/project-status, /releases]
 ---
 
-{{% blocks/lead color="primary" %}}
-
-# {{% param title %}}: OpenTelemetry Tracing Specification now 1.0!
-
-Our goal is to provide a generally available, production quality release for the
-tracing data source across most OpenTelemetry components in the first half
-of 2021. Several components have already reached this milestone! We expect
-metrics to reach the same status in the second half of 2021 and are targeting
-logs in 2022. {{% /blocks/lead %}}
-
 {{% blocks/section type="section" color="white" %}}
 
-## Project Overview
+## {{% param title %}}
 
 OpenTelemetry is developed on a signal by signal basis. Tracing, metrics,
 baggage, and logging are examples of signals. Signals are built on top of
 context propagation, a shared mechanism for correlating data across distributed
 systems.
 
-Each signal consists of four core components: APIs, SDKs, the OTLP protocol, and
-the Collector. Signals also have contrib components, an ecosystem of plugins and
+Each signal consists of four [core components](/docs/concepts/components/):
+
+- APIs
+- SDKs
+- [OpenTelemetry Protocol](/docs/reference/specification/protocol/) (OTLP)
+- [Collector](/docs/collector/)
+
+Signals also have contrib components, an ecosystem of plugins and
 instrumentation. All instrumentation shares the same semantic conventions, to
 ensure that they produce the same data when observing common operations, such as
 HTTP requests.
