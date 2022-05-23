@@ -105,7 +105,7 @@ same as the **Protocol** status.
 - {{% spec_status "Protocol" "protocol/otlp" "Logs" %}}
 - Notes:
   - OpenTelemetry Logging is currently under active development.
-  - The data model is experimental and released as part of the OTLP protocol.
+  - The [logs data model][] is released as part of the OpenTelemetry Protocol.
   - Log processing for many data formats has been added to the Collector, thanks
     to the donation of Stanza to the the OpenTelemetry project.
   - Log appenders are currently under develop in many languages. Log appenders
@@ -127,3 +127,5 @@ instrumentation is scheduled for this summer.
 - Provide instrumentation for a wider variety of important libraries
 - Provide testing and CI/CD tools for writing and verifying instrumentation
   quality.
+
+[logs data model]: /docs/reference/specification/logs/data-model/
