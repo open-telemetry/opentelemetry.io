@@ -91,7 +91,7 @@ First, install requried packages:
 
 ```shell
 dotnet add package OpenTelemetry.Extensions.Hosting --prerelease
-dotnet add package OpenTelemetry.Exporter.Console --prerelease
+dotnet add package OpenTelemetry.Exporter.Console
 dotnet add package OpenTelemetry.Instrumentation.AspNetCore --prerelease
 dotnet add package OpenTelemetry.Instrumentation.Http --prerelease
 dotnet add package OpenTelemetry.Instrumentation.SqlClient --prerelease
@@ -292,7 +292,7 @@ app.MapGet("/hello", () =>
 app.Run();
 ```
 
-By default, it will send spans to `localhost:4317`, which is what the collector
+By default, it will send spans to `localhost:4318`, which is what the collector
 is listening on.
 
 ### Run the application
