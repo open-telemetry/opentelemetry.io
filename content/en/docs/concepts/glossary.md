@@ -375,4 +375,3 @@ on web pages when requested.
 [tracer]: /docs/reference/specification/trace/api#tracer
 [zpages]:
   https://github.com/open-telemetry/opentelemetry-specification/blob/main/experimental/trace/zpages.md
-

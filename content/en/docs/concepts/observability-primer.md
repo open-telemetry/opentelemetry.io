@@ -14,7 +14,7 @@ allows us to easily troubleshoot and handle novel problems (i.e. “unknown
 unknowns”), and helps us answer the question, "Why is this happening?"
 
 In order to be able to ask those questions of a system, the application must be
-properly instrumented. That is, the application code must emit signals such as 
+properly instrumented. That is, the application code must emit signals such as
 [traces](/docs/concepts/observability-primer/#distributed-traces),
 [metrics](/docs/concepts/observability-primer/#reliability--metrics), and
 [logs](/docs/concepts/observability-primer/#logs). An application is properly
@@ -40,10 +40,9 @@ the system keeps adding a red pair of pants, then the system would be said to be
 infrastructure or application. Examples include: system error rate, CPU
 utilization, request rate for a given service.
 
-**SLI**, or Service Level Indicator, represents an item that is being measured.
-Although SLI created off of [metrics](#reliability--metrics), these metrics are
-derived from aggragated [Trace](#distributed-traces) data. An example SLI:
-number of successful HTTP requests / total HTTP requests (success rate).
+**SLI**, or Service Level Indicator, represents a measurement of a service's
+behaviour. A good SLI measures your service from the perspective of your users.
+An example SLI can be the speed at which a web page loads.
 
 **SLO**, or Service Level Objective, is the means by which reliability is
 communicated to an organization/other teams. This is accomplished by attaching

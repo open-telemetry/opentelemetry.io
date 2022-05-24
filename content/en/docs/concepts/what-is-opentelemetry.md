@@ -46,26 +46,29 @@ two open-source projects were born: [OpenTracing](https://opentracing.io) (a
 [OpenCensus](https://opencensus.io) (a
 [Google Open Source](https://opensource.google) community project).
 
-**OpenTracing** provided a vendor-neutral API for sending telemetry data over to an
-Observability back-end; however, it relied on developers to implement their own
-libraries to meet the specification.
+**OpenTracing** provided a vendor-neutral API for sending telemetry data over to
+an Observability back-end; however, it relied on developers to implement their
+own libraries to meet the specification.
 
-**OpenCensus** provided a set of language-specific libraries that developers could
-use to instrument their code and send to any one of their supported back-ends.
+**OpenCensus** provided a set of language-specific libraries that developers
+could use to instrument their code and send to any one of their supported
+back-ends.
 
 ## Hello, OpenTelemetry!
 
-In the interest of having one single standard,
-OpenCensus and OpenTracing were merged to form OpenTelemetry (OTel for short) [in May 2019][cncf-incubating-project]. As a CNCF incubating project, OpenTelemetry takes the best of both worlds, and then some.
+In the interest of having one single standard, OpenCensus and OpenTracing were
+merged to form OpenTelemetry (OTel for short) [in May
+2019][cncf-incubating-project]. As a CNCF incubating project, OpenTelemetry
+takes the best of both worlds, and then some.
 
-OTel's goal is to provide a set of standardized
-vendor-agnostic SDKs, APIs, and [tools](/docs/collector) for ingesting, transforming, and
-sending data to an Observability back-end (i.e. open-source or commercial vendor). 
+OTel's goal is to provide a set of standardized vendor-agnostic SDKs, APIs, and
+[tools](/docs/collector) for ingesting, transforming, and sending data to an
+Observability back-end (i.e. open-source or commercial vendor).
 
 ## What can OpenTelemetry do for me?
 
-OTel has broad industry support and adoption from cloud providers, [vendors](/vendors) and
-end users. It provides you with:
+OTel has broad industry support and adoption from cloud providers,
+[vendors](/vendors) and end users. It provides you with:
 
 - A single, vendor-agnostic instrumentation library
   [per language](/docs/instrumentation) with support for both automatic and
@@ -77,14 +80,15 @@ end users. It provides you with:
 - Full control of your data with the ability to send data to multiple
   destinations in parallel through configuration.
 - Open-standard semantic conventions to ensure vendor-agnostic data collection
-- The ability to support multiple [context propagation](/docs/reference/specification/overview/#context-propagation) formats in parallel to
-  assist with migrating as standards evolve.
-- A path forward no matter where you are on your observability journey. 
+- The ability to support multiple
+  [context propagation](/docs/reference/specification/overview/#context-propagation)
+  formats in parallel to assist with migrating as standards evolve.
+- A path forward no matter where you are on your observability journey.
 
-With
-  support for a variety of [open-source and commercial protocols][otel-collector-contrib], format and
-  context propagation mechanisms as well as providing shims to the OpenTracing
-  and OpenCensus projects, it is easy to adopt OpenTelemetry.
+With support for a variety of [open-source and commercial
+protocols][otel-collector-contrib], format and context propagation mechanisms as
+well as providing shims to the OpenTracing and OpenCensus projects, it is easy
+to adopt OpenTelemetry.
 
 ## What OpenTelemetry is not
 
@@ -93,6 +97,7 @@ Instead, it supports exporting data to a variety of open-source and commercial
 back-ends. It provides a pluggable architecture so additional technology
 protocols and formats can be easily added.
 
-
-[cncf-incubating-project]: https://www.cncf.io/blog/2021/08/26/opentelemetry-becomes-a-cncf-incubating-project/
-[otel-collector-contrib]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver
+[cncf-incubating-project]:
+  https://www.cncf.io/blog/2021/08/26/opentelemetry-becomes-a-cncf-incubating-project/
+[otel-collector-contrib]:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver
