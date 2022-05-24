@@ -204,7 +204,6 @@ First, save the following collector configuration code to a file under `/tmp/`:
 receivers:
   otlp:
   protocols:
-    grpc:
     http:
 exporters:
   logging:
