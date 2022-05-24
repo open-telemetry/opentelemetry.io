@@ -197,7 +197,7 @@ following situations, among others:
 
 ### Configure and run a local collector
 
-First, save the following collector configuration code to a file under `/tmp/`:
+First, save the following collector configuration code to a file in the `/tmp/` directory:
 
 ```yaml
 # /tmp/otel-collector-config.yaml
