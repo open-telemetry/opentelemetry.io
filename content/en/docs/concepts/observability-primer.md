@@ -10,7 +10,7 @@ concepts first.
 
 Observability lets us understand a system from the outside, by letting us ask
 questions about that system without knowing its inner workings. Furthermore,
-allows us to easily troubleshoot and handle novel problems (i.e. “unknown
+allows us to easily troubleshoot and handle novel problems (i.e. "unknown
 unknowns”), and helps us answer the question, "Why is this happening?"
 
 In order to be able to ask those questions of a system, the application must be
@@ -30,9 +30,9 @@ which application code is instrumented, to help make a system observable.
 data can come in the form of [Traces](#distributed-traces),
 [Metrics](#reliability--metrics), and [Logs](#logs).
 
-**Reliability** answers the question: “Is the service doing what users expect it
+**Reliability** answers the question: "Is the service doing what users expect it
 to be doing?” A system could be up 100% of the time, but if, when a user clicks
-“Add to Cart” to add a black pair of pants to their shopping card, and instead,
+"Add to Cart” to add a black pair of pants to their shopping card, and instead,
 the system keeps adding a red pair of pants, then the system would be said to be
 **un**reliable.
 
