@@ -57,10 +57,10 @@ Sample Span:
 ### Span Context
 
 Span Context provides specific context about the trace and span using two
-identifiers: Trace ID and Span ID. Each Span is identified by a unique ID called
-a Span ID. A Span uses a Trace ID to identify the relationship between span and
-its trace. A string represents the Span ID. A Span requires Span Context to
-travel across service and process boundaries.
+identifiers: Trace ID and Span ID. Each Span is identified by an ID that is
+unique within a Trace called a Span ID. A Span uses a Trace ID to identify the
+relationship between span and its trace. A string represents the Span ID. A Span
+requires Span Context to travel across service and process boundaries.
 
 ### Attributes
 
