@@ -31,6 +31,7 @@ products.
 | Lumigo          | Yes          | Yes         | https://www.lumigo.io
 | New Relic       | Yes          | Yes         | https://newrelic.com/solutions/opentelemetry
 | Sentry Software | Yes          | Yes         | https://www.sentrysoftware.com/products/hardware-sentry-opentelemetry-collector.html
+| SigNoz          | Yes          | Yes         | https://signoz.io
 | Splunk          | Yes          | Yes         | https://www.splunk.com/en_us/blog/conf-splunklive/announcing-native-opentelemetry-support-in-splunk-apm.html
 | Sumo Logic      | Yes          | Yes         | https://help.sumologic.com/Traces/Getting_Started_with_Transaction_Tracing
 | Uptrace         | Yes          | Yes         | https://uptrace.dev
