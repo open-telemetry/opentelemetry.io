@@ -13,7 +13,7 @@ For more elaborate examples, see
 
 ## Installation
 
-To begin, set up an environment and install dependencies in a new directory:
+To begin, set up an environment in a new directory:
 
 ```console
 mkdir otel-getting-started
