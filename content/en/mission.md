@@ -2,7 +2,7 @@
 title: Mission
 ---
 {{% blocks/lead color="primary" %}}
-# Mission, vision and values
+# Mission, vision, and values
 {{% /blocks/lead %}}
 
 {{% blocks/section type="section" color="white" %}}
