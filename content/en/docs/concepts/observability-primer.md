@@ -68,7 +68,7 @@ I, [2021-02-23T13:26:23.505892 #22473]  INFO -- : [6459ffe1-ea53-4044-aaa3-bf902
 
 Unfortunately, logs aren't extremely useful for tracking code execution, as they
 typically lack contextual information, such as where they were called from.
-capture infromation like where they were called from.
+capture information like where they were called from.
 
 They become far more useful when they are included as part of a [Span](#spans).
 
