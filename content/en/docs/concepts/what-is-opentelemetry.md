@@ -20,7 +20,7 @@ critical.
 
 In order to make a system observable, it must be instrumented. That is, the code
 must emit [traces](/docs/concepts/observability-primer/#distributed-traces),
-[metrics](/docs/concepts/observability-primer/#reliability--metrics),
+[metrics](/docs/concepts/observability-primer/#reliability--metrics), and
 [logs](/docs/concepts/observability-primer/#logs). The instrumented data must
 then be sent to an Observability back-end. There are a number of Observability
 back-ends out there, ranging from self-hosted open-source tools (e.g.
