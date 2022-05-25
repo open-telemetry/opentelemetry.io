@@ -100,7 +100,7 @@ applications.
 Without tracing, it is challenging to pinpoint the cause of performance problems
 in a distributed system.
 
-It improves the visibility of our application or system’s health and lets us
+It improves the visibility of our application or system's health and lets us
 debug behavior that is difficult to reproduce locally. Tracing is essential for
 distributed systems, which commonly have nondeterministic problems or are too
 complicated to reproduce locally.
