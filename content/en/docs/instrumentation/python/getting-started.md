@@ -15,7 +15,7 @@ For more elaborate examples, see
 
 To begin, set up an environment in a new directory:
 
-```console
+```shell
 mkdir otel-getting-started
 cd otel-getting-started
 python3 -m venv .
@@ -24,7 +24,7 @@ source ./bin/activate
 
 Now install Flask and OpenTelemetry:
 
-```console
+```shell
 pip install flask
 pip install opentelemetry-distro
 ```
@@ -62,7 +62,7 @@ Instrumentation]({{< relref "automatic" >}}). Here we'll use the
 
 Run the `opentelemetry-bootstrap` command:
 
-```console
+```shell
 opentelemetry-bootstrap -a install
 ```
 
@@ -73,8 +73,8 @@ This will install Flask instrumentation.
 You can now run your instrumented app with `opentelemetry-instrument` and have
 it print to the console for now:
 
-```console
-$ opentelemetry-instrument --traces_exporter console flask run
+```shell
+opentelemetry-instrument --traces_exporter console flask run
 ```
 
 When you send a request to the server, you'll get a result in a trace with a
@@ -166,7 +166,7 @@ def do_roll():
 
 Now run the app again:
 
-```console
+```shell
 opentelemetry-instrument --traces_exporter console flask run
 ```
 
@@ -265,43 +265,42 @@ collector in production deployments.
 
 ### Configure and run a local collector
 
-First, write the following collector configuration code into `/tmp/`:
+First, save the following collector configuration code to a file in the `/tmp/` directory:
 
 ```yaml
 # /tmp/otel-collector-config.yaml
 receivers:
-    otlp:
-        protocols:
-            grpc:
-            http:
+  otlp:
+  protocols:
+    http:
 exporters:
-    logging:
-        loglevel: debug
+  logging:
+    loglevel: debug
 processors:
-    batch:
+  batch:
 service:
-    pipelines:
-        traces:
-            receivers: [otlp]
-            exporters: [logging]
-            processors: [batch]
+  pipelines:
+    traces:
+      receivers: [otlp]
+      exporters: [logging]
+      processors: [batch]
 ```
 
 Then run the docker command to acquire and run the collector based on this
 configuration:
 
-```
-docker run -p 4317:4317 \
+```shell
+docker run -p 4318:4318 \
     -v /tmp/otel-collector-config.yaml:/etc/otel-collector-config.yaml \
     otel/opentelemetry-collector:latest \
     --config=/etc/otel-collector-config.yaml
 ```
 
-You will now have an OpenTelemetry Collector instance running locally.
+You will now have an collector instance running locally, listening on port 4318.
 
 ### Modify the code to export spans via OTLP
 
-The next step is to modify the code to send spans to the Collector via OTLP
+The next step is to modify the code to send spans to the collector via OTLP
 instead of the console.
 
 To do this, install the OTLP exporter package:
@@ -310,8 +309,8 @@ To do this, install the OTLP exporter package:
 pip install opentelemetry-exporter-otlp
 ```
 
-Then configure the exporter. By default, it will send to `locahost:4317`, which
-is what the collector listens on.
+Next, using the Flask server code from earlier, replace the console exporter
+with an OTLP exporter:
 
 ```python
 # These are the necessary import declarations
@@ -349,10 +348,12 @@ def do_roll():
         return res
 ```
 
+By default, it will send spans to `localhost:4318`, which is what the collector
+is listening on.
+
 ### Run the application
 
-Finally, you can run the application. Use the same command as before, but this
-time without exporting to the console:
+Run the application like before, but don't export to the console:
 
 ```
 opentelemetry-instrument flask run
