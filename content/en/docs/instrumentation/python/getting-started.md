@@ -81,6 +81,7 @@ When you send a request to the server, you'll get a result in a trace with a
 single span printed to the console, such as the following:
 
 <details>
+<summary>View example output</summary>
 
 ```json
 {
@@ -146,8 +147,8 @@ from opentelemetry import trace
 from random import randint
 from flask import Flask, request
 
-# Acquire a tracer. This is actually
-# set up for you in the opentelemetry-instrument agent.
+# Acquire a tracer. There's one set up for you globally,
+# and it's also used by opentelemetry-instrument.
 tracer = trace.get_tracer(__name__)
 
 app = Flask(__name__)
@@ -175,6 +176,7 @@ to the console, and the one called `do_roll` registers its parent as the
 automatically created one:
 
 <details>
+<summary>View example output</summary>
 
 ```json
 {
@@ -271,8 +273,8 @@ First, save the following collector configuration code to a file in the `/tmp/` 
 # /tmp/otel-collector-config.yaml
 receivers:
   otlp:
-  protocols:
-    http:
+    protocols:
+      grpc:
 exporters:
   logging:
     loglevel: debug
@@ -290,7 +292,7 @@ Then run the docker command to acquire and run the collector based on this
 configuration:
 
 ```shell
-docker run -p 4318:4318 \
+docker run -p 4317:4317 \
     -v /tmp/otel-collector-config.yaml:/etc/otel-collector-config.yaml \
     otel/opentelemetry-collector:latest \
     --config=/etc/otel-collector-config.yaml
@@ -313,24 +315,9 @@ Next, using the Flask server code from earlier, replace the console exporter
 with an OTLP exporter:
 
 ```python
-# These are the necessary import declarations
 from opentelemetry import trace
-from opentelemetry.sdk.trace.export import (
-    BatchSpanProcessor,
-)
-from opentelemetry.exporter.otlp.proto.http.trace_exporter import (
-    OTLPSpanExporter,
-)
-
 from random import randint
 from flask import Flask, request
-
-# Get the tracer provider used in opentelemetry-instrument
-# and have it export spans over OTLP
-provider = trace.get_tracer_provider()
-processor = BatchSpanProcessor(OTLPSpanExporter())
-provider.add_span_processor(processor)
-trace.set_tracer_provider(provider)
 
 tracer = trace.get_tracer(__name__)
 
@@ -341,14 +328,13 @@ def roll_dice():
     return str(do_roll())
 
 def do_roll():
-    # This creates a new trace that's the child of the current one
     with tracer.start_as_current_span("do_roll") as rollspan:  
         res = randint(1, 6)
         rollspan.set_attribute("roll.value", res)
         return res
 ```
 
-By default, it will send spans to `localhost:4318`, which is what the collector
+By default, it will send spans to `localhost:4317`, which is what the collector
 is listening on.
 
 ### Run the application
@@ -359,10 +345,13 @@ Run the application like before, but don't export to the console:
 opentelemetry-instrument flask run
 ```
 
+By default, `opentelemetry-instrument` exports over spans over OTLP/gRPC.
+
 When you access the `/rolldice` route now, you'll see output from the collector
 process instead of the flask process, which should look something like this:
 
 <details>
+<summary>View example output</summary>
 
 ```
 2022-05-11T23:25:24.025Z        INFO    loggingexporter/logging_exporter.go:41   TracesExporter  {"#spans": 2}
