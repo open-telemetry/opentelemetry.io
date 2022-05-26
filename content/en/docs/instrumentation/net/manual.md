@@ -146,7 +146,7 @@ although it is generally sufficient to just have one defined per service.
 
 ## Creating Activities
 
-To create an [activity](/docs/concepts/otel-concepts#spans-in-opentelemetry),
+To create an [`Activity`](/docs/concepts/otel-concepts#spans-in-opentelemetry),
 give it a name and create it from your
 [`ActivitySource`](/docs/concepts/otel-concepts#tracer).
 
