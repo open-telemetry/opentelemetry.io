@@ -203,8 +203,8 @@ First, save the following collector configuration code to a file in the `/tmp/` 
 # /tmp/otel-collector-config.yaml
 receivers:
   otlp:
-  protocols:
-    http:
+    protocols:
+      http:
 exporters:
   logging:
     loglevel: debug
