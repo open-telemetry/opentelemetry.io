@@ -30,6 +30,7 @@ products.
 | Logz.io         | Yes          | No          | https://docs.logz.io/shipping/tracing-sources/opentelemetry.html#overview
 | Lumigo          | Yes          | Yes         | https://www.lumigo.io
 | New Relic       | Yes          | Yes         | https://newrelic.com/solutions/opentelemetry
+| Promscale       | No           | Yes         | https://www.timescale.com/promscale
 | Sentry Software | Yes          | Yes         | https://www.sentrysoftware.com/products/hardware-sentry-opentelemetry-collector.html
 | SigNoz          | Yes          | Yes         | https://signoz.io
 | Splunk          | Yes          | Yes         | https://www.splunk.com/en_us/blog/conf-splunklive/announcing-native-opentelemetry-support-in-splunk-apm.html
