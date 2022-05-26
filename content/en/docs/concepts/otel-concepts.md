@@ -210,7 +210,7 @@ components that will play a part in instrumenting our code:
 
 A Tracer Provider (sometimes called `TracerProvider`) is a factory for
 `Tracer`s. In most applications, a Tracer Provider is initialized once and its
-lifecycle is congruent with the application's lifecycle. Tracer Provider
+lifecycle matches the application's lifecycle. Tracer Provider
 initialization also includes Resource and Exporter initialization. It is
 typically the first step in tracing with OpenTelemetry. In some language SDKs, a
 global Tracer Provider is already initialized for you.

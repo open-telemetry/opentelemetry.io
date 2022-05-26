@@ -20,7 +20,7 @@ terminology consistent with the OpenTelemetry spec.
 
 There are two main ways to initialize
 [tracing](/docs/concepts/otel-concepts#tracing-in-opentelemetry), depending on
-if you're using a console app or something that's ASP.NET Core-based.
+whether you're using a console app or something that's ASP.NET Core-based.
 
 ### Console app
 
