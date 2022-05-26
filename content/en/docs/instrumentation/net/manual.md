@@ -10,7 +10,8 @@ application.
 ## A note on terminology
 
 .NET is different from other languages/runtimes that support OpenTelemetry.
-Tracing is implemented by the
+[Tracing](/docs/concepts/otel-concepts#tracing-in-opentelemetry) is implemented
+by the
 [System.Diagnostics](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics)
 API, repurposing existing constructs like `ActivitySource` and `Activity` to be
 OpenTelemetry-compliant under the covers.
@@ -25,8 +26,9 @@ you can refer to the [OpenTelemetry API Shim docs for tracing]({{< relref "shim"
 
 ## Initializing tracing
 
-There are two main ways to initialize tracing, depending on if you're using a
-console app or something that's ASP.NET Core-based.
+There are two main ways to initialize
+[tracing](/docs/concepts/otel-concepts#tracing-in-opentelemetry), depending on
+if you're using a console app or something that's ASP.NET Core-based.
 
 ### Console app
 
@@ -115,8 +117,10 @@ endpoint, you'll have to use a different exporter.
 
 ## Setting up an ActivitySource
 
-Once tracing is initialized, you can configure an `ActivitySource`, which will
-be how you trace operations with `Activity`s.
+Once tracing is initialized, you can configure an
+[`ActivitySource`](/docs/concepts/otel-concepts#tracer), which will be how you
+trace operations with
+[`Activity`s](/docs/concepts/otel-concepts#spans-in-opentelemetry).
 
 Typically, an `ActivitySource` is instantiated once per app/service that is
 being instrumented, so it's a good idea to instantiate it once in a shared
@@ -142,7 +146,9 @@ although it is generally sufficient to just have one defined per service.
 
 ## Creating Activities
 
-To create an activity, give it a name and create it from your `ActivitySource`.
+To create an [activity](/docs/concepts/otel-concepts#spans-in-opentelemetry),
+give it a name and create it from your
+[`ActivitySource`](/docs/concepts/otel-concepts#tracer).
 
 ```csharp
 using var myActivity = MyActivitySource.StartActivity("SayHello");
@@ -219,9 +225,9 @@ Note that `using` is not used in the prior example. Doing so will end current
 
 ## Add tags to an Activity
 
-Tags (the equivalent of Attributes in OpenTelemetry) let you attach key/value
-pairs to an `Activity` so it carries more information about the current
-operation that it's tracking.
+Tags (the equivalent of [`Attributes`](/docs/concepts/otel-concepts#attributes)
+in OpenTelemetry) let you attach key/value pairs to an `Activity` so it carries
+more information about the current operation that it's tracking.
 
 ```csharp
 using var myActivity = MyActivitySource.StartActivity("SayHello");
@@ -233,8 +239,9 @@ activity?.SetTag("operation.other-stuff", new int[] { 1, 2, 3 });
 
 ## Adding events
 
-An event is a human-readable message on an `Activity` that represents "something
-happening" during its lifetime. You can think of it like a primitive log.
+An [event](/docs/concepts/otel-concepts#span-events) is a human-readable message
+on an `Activity` that represents "something happening" during its lifetime. You
+can think of it like a primitive log.
 
 ```csharp
 using var myActivity = MyActivitySource.StartActivity("SayHello");
@@ -271,7 +278,8 @@ myActivity?.AddEvent(new("Gonna try it!", DateTimeOffset.Now, new(eventTags)));
 
 ## Adding links
 
-An `Activity` can be created with zero or more `ActivityLink`s that are causally
+An `Activity` can be created with zero or more
+[`ActivityLink`s](/docs/concepts/otel-concepts#span-links) that are causally
 related.
 
 ```csharp
@@ -294,10 +302,10 @@ using var anotherActivity =
 
 ## Set Activity status
 
-A status can be set on an activity, typically used to specify that an activity
-has not completed successfully - `ActivityStatusCode.Error`. In rare scenarios,
-you could override the `Error` status with `Ok`, but don't set `Ok` on
-successfully-completed spans.
+A [status](/docs/concepts/otel-concepts#span-status) can be set on an activity,
+typically used to specify that an activity has not completed successfully -
+`ActivityStatusCode.Error`. In rare scenarios, you could override the `Error`
+status with `Ok`, but don't set `Ok` on successfully-completed spans.
 
 The status can be set at any time before the span is finished:
 
@@ -317,9 +325,9 @@ catch (Exception ex)
 ## Next steps
 
 After you've setup automatic instrumentation, you may want to use
-[instrumentation libraries]({{< relref "automatic" >}}).Instrumentation
+[instrumentation libraries](/docs/instrumentation/net/automatic).Instrumentation
 libraries will automatically instrument relevant libraries you're using and
 generate data for things like inbound and outbound HTTP requests and more.
 
 You'll also want to configure an appropriate exporter to [export your telemetry
-data]({{< relref "exporters" >}}) to one or more telemetry backends.
+data](/docs/instrumentation/net/exporters) to one or more telemetry backends.

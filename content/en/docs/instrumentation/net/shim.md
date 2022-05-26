@@ -4,7 +4,7 @@ linkTitle: OpenTelemetry API Shim
 weight: 5
 ---
 
-NET is different from other languages/runtimes that support OpenTelemetry.
+.NET is different from other languages/runtimes that support OpenTelemetry.
 Tracing is implemented by the
 [System.Diagnostics](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics)
 API, repurposing older constructs like `ActivitySource` and `Activity` to be
@@ -18,12 +18,14 @@ terminology consistent with the OpenTelemetry spec.
 
 ## Initializing tracing
 
-There are two main ways to initialize tracing, depending on if you're using a
-console app or something that's ASP.NET Core-based.
+There are two main ways to initialize
+[tracing](/docs/concepts/otel-concepts#tracing-in-opentelemetry), depending on
+if you're using a console app or something that's ASP.NET Core-based.
 
 ### Console app
 
-To start tracing in a console app, you need to create a tracer provider.
+To start [tracing](/docs/concepts/otel-concepts#tracing-in-opentelemetry) in a
+console app, you need to create a tracer provider.
 
 First, ensure that you have the right packages:
 
@@ -63,8 +65,8 @@ endpoint, you'll have to use a different exporter.
 
 ### ASP.NET Core
 
-To start tracing in an ASP.NET Core-based app, use the OpenTelemetry extensions
-for ASP.NET Core setup.
+To start [tracing](/docs/concepts/otel-concepts#tracing-in-opentelemetry) in an
+ASP.NET Core-based app, use the OpenTelemetry extensions for ASP.NET Core setup.
 
 First, ensure that you have the right packages:
 
@@ -103,9 +105,10 @@ builder.Services.AddOpenTelemetryTracing(b =>
 .AddSingleton(TracerProvider.Default.GetTracer(serviceName)));
 ```
 
-In the preceding example, a `Tracer` corresponding to the service is injected
-during setup. This lets you get access to an instance in your endpoint mapping
-(or controllers if you're using an older version of .NET).
+In the preceding example, a [`Tracer`](/docs/concepts/otel-concepts#tracer)
+corresponding to the service is injected during setup. This lets you get access
+to an instance in your endpoint mapping (or controllers if you're using an older
+version of .NET).
 
 It's not required to inject a service-level tracer, nor does it improve
 performance either. You will need to decide where you'll want your tracer
@@ -118,8 +121,9 @@ endpoint, you'll have to use a different exporter.
 
 ## Setting up a tracer
 
-Once tracing is initialized, you can configure a `Tracer`, which will be how you
-trace operations with `Span`s.
+Once tracing is initialized, you can configure a
+[`Tracer`](/docs/concepts/otel-concepts#tracer), which will be how you trace
+operations with [`Span`s](/docs/concepts/otel-concepts#spans-in-opentelemetry).
 
 Typically, a `Tracer` is instantiated once per app/service that is being
 instrumented, so it's a good idea to instantiate it once in a shared location.
@@ -154,7 +158,8 @@ app.MapGet("/hello", (Tracer tracer) =>
 ### Acquiring a tracer from a TracerProvider
 
 If you're not using ASP.NET Core or would rather not inject an instance of a
-`Tracer`, create one from your instantialized `TracerProvider`:
+`Tracer`, create one from your instantialized
+[`TracerProvider`](/docs/concepts/otel-concepts#tracer-provider):
 
 ```csharp
 // ...
@@ -174,7 +179,8 @@ generally sufficient to just have one defined per service.
 
 ## Creating Spans
 
-To create a span, give it a name and create it from your `Tracer`.
+To create a [span](/docs/concepts/otel-concepts#spans-in-opentelemetry), give it
+a name and create it from your `Tracer`.
 
 ```csharp
 using var span = MyTracer.StartActiveSpan("SayHello");
@@ -185,7 +191,7 @@ using var span = MyTracer.StartActiveSpan("SayHello");
 ## Creating nested Spans
 
 If you have a distinct sub-operation you'd like to track as a part of another
-one, you can create activities to represent the relationship.
+one, you can create spans to represent the relationship.
 
 ```csharp
 public static void ParentOperation(Tracer tracer)
@@ -238,8 +244,8 @@ block is explicitly defined, rather than scoped to `DoWork` itself like
 
 ## Get the current Span
 
-Sometimes it's helpful to access whatever the current `TelemetrySpan` is at a point
-in time so you can enrich it with more information.
+Sometimes it's helpful to access whatever the current `TelemetrySpan` is at a
+point in time so you can enrich it with more information.
 
 ```csharp
 var span = Tracer.CurrentSpan;
@@ -252,8 +258,9 @@ behavior.
 
 ## Add Attributes to a Span
 
-Attributes let you attach key/value pairs to a `TelemetrySpan` so it carries
-more information about the current operation that it's tracking.
+[Attributes](/docs/concepts/otel-concepts#attributes) let you attach key/value
+pairs to a `TelemetrySpan` so it carries more information about the current
+operation that it's tracking.
 
 ```csharp
 using var span = tracer.StartActiveSpan("SayHello");
@@ -265,9 +272,9 @@ span.SetAttribute("operation.other-stuff", new int[] { 1, 2, 3 });
 
 ## Adding events
 
-An event is a human-readable message on an `TelemetrySpan` that represents
-"something happening" during its lifetime. You can think of it like a primitive
-log.
+An [event](/docs/concepts/otel-concepts#span-events) is a human-readable message
+on an `TelemetrySpan` that represents "something happening" during its lifetime.
+You can think of it like a primitive log.
 
 ```csharp
 using var span = tracer.StartActiveSpan("SayHello");
@@ -281,7 +288,8 @@ span.AddEvent("Doing something...");
 span.AddEvent("Dit it!");
 ```
 
-Events can also be created with a timestamp and a collection of Tags.
+Events can also be created with a timestamp and a collection of
+[attributes](/docs/concepts/otel-concepts#attributes).
 
 ```csharp
 using var span = tracer.StartActiveSpan("SayHello");
@@ -305,8 +313,8 @@ span.AddEvent("asdf", DateTimeOffset.Now, new(attributeData));
 
 ## Adding links
 
-A `TelemetrySpan` can be created with zero or more `Link`s that are causally
-related.
+A `TelemetrySpan` can be created with zero or more
+[`Link`s](/docs/concepts/otel-concepts#span-links) that are causally related.
 
 ```csharp
 // Get a context from somewhere, perhaps it's passed in as a parameter
@@ -324,10 +332,10 @@ using var span = tracer.StartActiveSpan("another-span", links: links);
 
 ## Set span status
 
-A status can be set on a span, typically used to specify that a span has not
-completed successfully - `Status.Error`. In rare scenarios, you could override
-the `Error` status with `Ok`, but don't set `Ok` on successfully-completed
-spans.
+A [status](/docs/concepts/otel-concepts#span-status) can be set on a span,
+typically used to specify that a span has not completed successfully -
+`Status.Error`. In rare scenarios, you could override the `Error` status with
+`Ok`, but don't set `Ok` on successfully-completed spans.
 
 The status can be set at any time before the span is finished:
 
@@ -368,9 +376,9 @@ This will capture things like the current stack trace as attributes in the span.
 ## Next steps
 
 After you've setup automatic instrumentation, you may want to use
-[instrumentation libraries]({{< relref "automatic" >}}).Instrumentation
+[instrumentation libraries](/docs/instrumentation/net/automatic).Instrumentation
 libraries will automatically instrument relevant libraries you're using and
 generate data for things like inbound and outbound HTTP requests and more.
 
 You'll also want to configure an appropriate exporter to [export your telemetry
-data]({{< relref "exporters" >}}) to one or more telemetry backends.
+data](/docs/instrumentation/net/exporters) to one or more telemetry backends.
