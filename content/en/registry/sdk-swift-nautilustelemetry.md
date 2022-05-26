@@ -1,6 +1,6 @@
 ---
 title: NautilusTelemetry
-registryType: SDK
+registryType: instrumentation
 isThirdParty: true
 language: swift
 tags:
