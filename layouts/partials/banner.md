@@ -1,9 +1,9 @@
 {{ if .Params.show_banner -}}
 <div class="o-banner">
 
-The OpenTelemetry tracing specification is now 1.0!
-[Learn more][]
+OpenTelemetry metrics release candidates are now available!
+[Read more][]
 
-[Learn more]: https://medium.com/opentelemetry/opentelemetry-specification-v1-0-0-tracing-edition-72dd08936978
+[Read more]: /blog/2022/metrics-announcement/
 </div>
 {{ end -}}

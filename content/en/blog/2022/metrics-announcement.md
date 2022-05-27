@@ -90,7 +90,7 @@ also being added to each artifact’s corresponding GitHub repository.
 
 ## What’s Next for OpenTelemetry
 
-Distributed traces and logs were the two halves of OpenTelemetry’s core promise
+Distributed traces and metrics were the two halves of OpenTelemetry’s core promise
 when we announced it at Kubecon EU in 2019. With the general availability of
 metrics, we have produced the capabilities that we originally set out to create,
 meaning that we can shift our focus to further investing into the robustness and
