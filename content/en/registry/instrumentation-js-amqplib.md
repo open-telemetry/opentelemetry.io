@@ -1,7 +1,7 @@
 ---
 title: OpenTelemetry amqplib Instrumentation (RabbitMQ)
 registryType: instrumentation
-isThirdParty: true
+isThirdParty: false
 language: js
 tags:
   - Node.js
@@ -11,5 +11,5 @@ tags:
 repo: https://github.com/aspecto-io/opentelemetry-ext-js/tree/master/packages/instrumentation-amqplib
 license: Apache 2.0
 description: amqplib instrumentation for Node.js.
-authors: Aspecto Authors (amir@aspecto.io)
+authors: OpenTelemetry Authors (donated by Aspecto Authors (amir@aspecto.io))
 ---
