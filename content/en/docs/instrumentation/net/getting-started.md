@@ -23,7 +23,9 @@ dotnet add package OpenTelemetry
 
 ## Console application
 
-The following sample demonstrates manual tracing via a console app.
+The following sample demonstrates manual
+[tracing](/docs/concepts/otel-concepts#tracing-in-opentelemetry) via a console
+app.
 
 First, install the required package:
 
@@ -61,7 +63,8 @@ activity?.SetTag("bar", "Hello, World!");
 activity?.SetTag("baz", new int[] { 1, 2, 3 });
 ```
 
-The code will generate a single span like this:
+The code will generate a single
+[span](/docs/concepts/otel-concepts#spans-in-opentelemetry) like this:
 
 ```
 Activity.Id:          00-cf0e89a41682d0cc7a132277da6a45d6-c714dd3b15e21378-01
@@ -84,7 +87,8 @@ This output matches the span created in the preceding code sample.
 
 ## ASP.NET Core
 
-The following sample demonstrates automatic and manual tracing with ASP.NET
+The following sample demonstrates automatic and manual
+[tracing](/docs/concepts/otel-concepts#tracing-in-opentelemetry) with ASP.NET
 Core.
 
 First, install requried packages:
@@ -142,8 +146,9 @@ app.MapGet("/hello", () =>
 app.Run();
 ```
 
-When you run the app and navigate to the `/hello` route, you'll see output
-similar to the following:
+When you run the app and navigate to the `/hello` route, you'll see output about
+[spans](/docs/concepts/otel-concepts#spans-in-opentelemetry) similar to the
+following:
 
 ```
 Activity.Id:          00-d72f7e51dd06b57211f415489df89b1c-c8a394817946316d-01
@@ -197,7 +202,8 @@ following situations, among others:
 
 ### Configure and run a local collector
 
-First, save the following collector configuration code to a file in the `/tmp/` directory:
+First, save the following collector configuration code to a file in the `/tmp/`
+directory:
 
 ```yaml
 # /tmp/otel-collector-config.yaml
@@ -307,12 +313,12 @@ Now, telemetry will be output by the collector process.
 ## Next steps
 
 To ensure you're getting the most data as easily as possible, install some
-[instrumentation libraries]({{< relref "automatic" >}}) to automatically
+[instrumentation libraries](/docs/instrumentation/net/automatic) to automatically
 generate observability data.
 
 Additionally, enriching your instrumentation generated automatically with
-[manual instrumentation]({{< relref "manual" >}}) of your own codebase gets you
+[manual instrumentation](/docs/instrumentation/net/manual) of your own codebase gets you
 customized observability data.
 
 You'll also want to configure an appropriate exporter to [export your telemetry
-data]({{< relref "exporters" >}}) to one or more telemetry backends.
+data](/docs/instrumentation/net/exporters) to one or more telemetry backends.

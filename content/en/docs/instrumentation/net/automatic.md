@@ -5,12 +5,12 @@ linkTitle: Automatic
 ---
 
 .NET supports automatic instrumentation with [instrumentation
-libraries](/docs/reference/specification/glossary/#instrumentation-library)
-that generate telemetry data for a particular instrumented library.
+libraries](/docs/reference/specification/glossary/#instrumentation-library) that
+generate telemetry data for a particular instrumented library.
 
 For example, the instrumentation library for ASP.NET Core will automatically
-create spans that track inbound requests once you configure it in your
-app/service.
+create [spans](/docs/concepts/otel-concepts#spans-in-opentelemetry) that track
+inbound requests once you configure it in your app/service.
 
 ## Setup
 
@@ -22,7 +22,8 @@ dotnet add package OpenTelemetry.Instrumentation.{library-name-or-type}
 ```
 
 It is typically then registered at application startup time, such as when
-creating a TracerProvider.
+creating a
+[TracerProvider](/docs/concepts/otel-concepts#tracing-in-opentelemetry).
 
 ## Example with ASP.NET Core and HttpClient
 
@@ -106,13 +107,14 @@ You can also find more instrumentations available in the
 ## Next steps
 
 After you have set up instrumentation libraries, you may want to add [manual
-instrumentation]({{< relref "manual" >}}) to collect custom telemetry data.
+instrumentation](/docs/instrumentation/net/manual) to collect custom telemetry
+data.
 
 If you are using .NET Framework 4.x instead of modern .NET, refer to the [.NET
-Framework docs]({{< relref "netframework" >}}) to configure OpenTelemetry and
-instrumentation libraries on .NET Framework.
+Framework docs](/docs/instrumentation/net/netframework) to configure
+OpenTelemetry and instrumentation libraries on .NET Framework.
 
 You'll also want to configure an appropriate exporter to [export your telemetry
-data]({{< relref "exporters" >}}) to one or more telemetry backends.
+data](/docs/instrumentation/net/exporters) to one or more telemetry backends.
 
 [opentelemetry-dotnet]: https://github.com/open-telemetry/opentelemetry-dotnet

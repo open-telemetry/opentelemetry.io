@@ -3,8 +3,9 @@ title: "Exporters"
 weight: 4
 ---
 
-In order to visualize and analyze your traces and metrics, you will need to
-export them to a backend.
+In order to visualize and analyze your
+[traces](/docs/concepts/otel-concepts#tracing-in-opentelemetry) and metrics, you
+will need to export them to a backend.
 
 ## Console exporter
 
@@ -286,9 +287,9 @@ using var tracerProvider = Sdk.CreateMeterProviderBuilder()
 ## Next steps
 
 To ensure you're getting the most data as easily as possible, install [automatic
-instrumentation libraries]({{< relref "automatic" >}}) to automatically generate
-observability data.
+instrumentation libraries](/docs/instrumentation/net/automatic) to automatically
+generate observability data.
 
 Additionally, enriching your instrumentation generated automatically with
-[manual instrumentation]({{< relref "manual" >}}) of your own codebase gets you
-customized observability data.
+[manual instrumentation](/docs/instrumentation/net/manual) of your own codebase
+gets you customized observability data.

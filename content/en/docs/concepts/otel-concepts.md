@@ -206,24 +206,37 @@ components that will play a part in instrumenting our code:
 - Trace Exporter
 - Trace Context
 
-The primary responsibility of a **Tracer** is to create spans containing more
-information about what is happening during a request. The **Tracer** is also
-responsible for knowing the instrumentation library and data related to that
-specific library.
+### Tracer Provider
 
-Finally, the **Trace Provider** is responsible for providing access to and
-interaction with the **Tracer**.
+A Tracer Provider (sometimes called `TracerProvider`) is a factory for
+`Tracer`s. In most applications, a Tracer Provider is initialized once and its
+lifecycle matches the application's lifecycle. Tracer Provider
+initialization also includes Resource and Exporter initialization. It is
+typically the first step in tracing with OpenTelemetry. In some language SDKs, a
+global Tracer Provider is already initialized for you.
 
-**Trace Exporters** send data to the open-source or vendor backend of your
-choice.
+### Tracer
 
-**Trace Context** is metadata about trace spans that provides correlation
-between spans across service and process boundaries. For example, if Service A
-calls Service B and you want to track the call in a trace. In that case, we will
-use Trace Context to capture and propagate metadata about spans in Service A so
-that spans created in Service B can connect to them.
+A Tracer creates spans containing more information about what is happening for a
+given operation, such as a request in a service. Tracers are created from Tracer
+Providers. In some languages, a global Tracer is already initialized for you.
 
-Trace Context is how distributed tracing ultimately works.
+### Trace Exporters
+
+Trace Exporters send traces to a consumer. This consumer can be standard output
+for debugging and development-time, the OpenTelemetry Collector, or any
+open-source or vendor backend of your choice.
+
+### Trace Context
+
+Trace Context is metadata about trace spans that provides correlation between
+spans across service and process boundaries. For example, let's say that Service
+A calls Service B and you want to track the call in a trace. In that case,
+OpenTelemetry will use Trace Context to capture the ID of the trace and current
+span from Service A, so that spans created in Service B can connect and add to
+the trace.
+
+This is known as Context Propagation.
 
 ### Context Propagation
 
@@ -258,9 +271,9 @@ associated with
 sampled
 
 **Trace State** - Provides more vendor-specific information for tracing across
-multiple distributed systems. Please refer to
-[W3C Trace Context](https://www.w3.org/TR/trace-context/#trace-flags) for
-further explanation.
+multiple distributed systems. Please refer to [W3C Trace
+Context](https://www.w3.org/TR/trace-context/#trace-flags) for further
+explanation.
 
 By combining Context and Propagation, you now can assemble a Trace.
 
