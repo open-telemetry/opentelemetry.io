@@ -82,7 +82,7 @@ A Span contains name, time-related data,
 [other metadata (i.e. Attributes)](/docs/concepts/otel-concepts/#attributes) to
 provide information about the operation it tracks.
 
-Below is a sample of the type of information that would be prasent in a Span:
+Below is a sample of the type of information that would be present in a Span:
 
 <img src="/img/span_visualization.png" alt="Sample Span" width="300"/>
 
