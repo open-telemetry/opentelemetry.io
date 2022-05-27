@@ -10,16 +10,14 @@ concepts first.
 
 Observability lets us understand a system from the outside, by letting us ask
 questions about that system without knowing its inner workings. Furthermore,
-allows us to easily troubleshoot and handle novel problems (i.e. "unknown
-unknowns”), and helps us answer the question, "Why is this happening?"
+allows us to easily troubleshoot and handle novel problems, and helps us answer
+the question, "Why is this happening?"
 
 In order to be able to ask those questions of a system, the application must be
-properly instrumented. That is, the application code must emit signals such as
+ instrumented. That is, the application code must emit signals such as
 [traces](/docs/concepts/observability-primer/#distributed-traces),
 [metrics](/docs/concepts/observability-primer/#reliability--metrics), and
-[logs](/docs/concepts/observability-primer/#logs). An application is properly
-instrumented when developers don't need to add more instrumentation to
-troubleshoot an issue, because they have all of the information they need.
+[logs](/docs/concepts/observability-primer/#logs).
 
 [**OpenTelemetry**](/docs/concepts/what-is-opentelemetry) is the mechanism by
 which application code is instrumented, to help make a system observable.
@@ -123,4 +121,4 @@ its child Spans. When a Span encapsulates another Span, this also represents a
 nested relationship.
 
 > For more on Traces and how they pertain to OTel, visit
-> [Advanced OTel Concepts](/docs/concepts/otel-concepts/#tracing-in-opentelemetry).
+> [Data Sources: Tracing In OpenTelemetry](/docs/concepts/data-sources/#tracing-in-opentelemetry).
