@@ -75,7 +75,7 @@ def do_work():
 When you view spans in a trace visualization tool, `child` will be tracked as a
 nested span under `parent`.
 
-## Create span with decorators
+## Creating spans with decorators
 
 It's common to have a single span track the execution of an entire function. In
 that scenario, there is a decorator you can use to reduce code:
