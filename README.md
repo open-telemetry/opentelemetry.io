@@ -31,6 +31,15 @@ request][pr].
 
 See [CONTRIBUTING.md][].
 
+We (OTel Comms SIG) meet every two weeks on Thursdays at 10:30 PT.
+Check out the [OpenTelemetry community calendar](https://calendar.google.com/calendar/embed?src=google.com_b79e3e90j7bbsa2n2p5an5lf60%40group.calendar.google.com)
+for the Zoom link and any updates to this schedule.
+
+Meeting notes are available as a public [Google
+doc](https://docs.google.com/document/d/1wW0jLldwXN8Nptq2xmgETGbGn9eWP8fitvD5njM-xZY/edit?usp=sharing).
+If you have trouble accessing the doc, please get in touch on
+[Slack](https://cloud-native.slack.com/archives/C02UN96HZH6)).
+
 Roles:
 
 - Approvers: [@open-telemetry/docs-approvers][]
