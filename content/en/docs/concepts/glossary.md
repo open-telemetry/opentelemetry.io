@@ -79,8 +79,7 @@ spec][context propagation].
 
 ### **Data Source**
 
-One of [`Traces`](#trace), [`Metrics`](#metric) or [`Logs`](#log). More on Data
-Sources [here][data source].
+See [`Signal`](#signal)
 
 ### **Dimension**
 
@@ -276,6 +275,11 @@ A component of an [`Application`](#application). Multiple instances of a
 [`Service`](#service) are typically deployed for high availability and
 scalability. A [`Service`](#service) may be deployed in multiple locations.
 
+### **Signal**
+
+One of [`Traces`](#trace), [`Metrics`](#metric) or [`Logs`](#log). More on 
+Signals [here][signals].
+
 ### **Span**
 
 Represents a single operation within a [`Trace`](#trace). See [more][span].
@@ -356,7 +360,6 @@ on web pages when requested. See [more][zpages].
 [context propagation]:
   /docs/reference/specification/overview#context-propagation
 [dag]: https://en.wikipedia.org/wiki/Directed_acyclic_graph
-[data source]: /docs/concepts/data-sources
 [distributed tracing]: /docs/concepts/otel-concepts/#tracing-in-opentelemetry
 [field]: /docs/reference/specification/logs/data-model#field-kinds
 [http]: https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
@@ -372,6 +375,7 @@ on web pages when requested. See [more][zpages].
 [rest]: https://en.wikipedia.org/wiki/Representational_state_transfer
 [rpc]: https://en.wikipedia.org/wiki/Remote_procedure_call
 [sampling]: /docs/reference/specification/trace/sdk#sampling
+[signals]: /docs/concepts/signals/
 [span]: /docs/reference/specification/trace/api#span
 [spans]: /docs/reference/specification/trace/api#add-events
 [spec-exporter-lib]: /docs/reference/specification/glossary/#exporter-library
