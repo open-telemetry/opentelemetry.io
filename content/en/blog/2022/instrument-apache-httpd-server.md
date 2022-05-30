@@ -43,7 +43,7 @@ A default landing page saying "Testing 123..." for Apache Http Server on Centos 
 
 ![Testing](/img/instrument-apache-http-server/testing.png)
 
-Now, traces and spans can be seen on the zipkin backend. To view them, type `localhost:9411` in your browser and click on **Run Query** Button.
+Now, traces and spans can be seen on the zipkin backend. To view them, type `localhost:9411` in your browser and click on **Run Query** Button. Following is the screenshot from Zipkin UI showing spans emitted by the Apache webServer.
 
 ![Span-List](/img/instrument-apache-http-server/span-list.png)
 
