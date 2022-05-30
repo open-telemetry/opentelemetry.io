@@ -24,7 +24,7 @@ dotnet add package OpenTelemetry
 ## Console application
 
 The following sample demonstrates manual
-[tracing](/docs/concepts/otel-concepts#tracing-in-opentelemetry) via a console
+[tracing](/docs/concepts/signals/traces/#tracing-in-opentelemetry) via a console
 app.
 
 First, install the required package:
@@ -64,7 +64,7 @@ activity?.SetTag("baz", new int[] { 1, 2, 3 });
 ```
 
 The code will generate a single
-[span](/docs/concepts/otel-concepts#spans-in-opentelemetry) like this:
+[span](/docs/concepts/signals/traces/#spans-in-opentelemetry) like this:
 
 ```
 Activity.Id:          00-cf0e89a41682d0cc7a132277da6a45d6-c714dd3b15e21378-01
@@ -88,7 +88,7 @@ This output matches the span created in the preceding code sample.
 ## ASP.NET Core
 
 The following sample demonstrates automatic and manual
-[tracing](/docs/concepts/otel-concepts#tracing-in-opentelemetry) with ASP.NET
+[tracing](/docs/concepts/signals/traces/#tracing-in-opentelemetry) with ASP.NET
 Core.
 
 First, install requried packages:
@@ -147,7 +147,7 @@ app.Run();
 ```
 
 When you run the app and navigate to the `/hello` route, you'll see output about
-[spans](/docs/concepts/otel-concepts#spans-in-opentelemetry) similar to the
+[spans](/docs/concepts/signals/traces/#spans-in-opentelemetry) similar to the
 following:
 
 ```
