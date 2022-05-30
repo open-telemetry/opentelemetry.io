@@ -360,13 +360,13 @@ on web pages when requested. See [more][zpages].
 [context propagation]:
   /docs/reference/specification/overview#context-propagation
 [dag]: https://en.wikipedia.org/wiki/Directed_acyclic_graph
-[distributed tracing]: /docs/concepts/otel-concepts/#tracing-in-opentelemetry
+[distributed tracing]: /docs/concepts/signals/traces/
 [field]: /docs/reference/specification/logs/data-model#field-kinds
 [http]: https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
 [json]: https://en.wikipedia.org/wiki/JSON
 [log]: /docs/reference/specification/glossary#log
 [log record]: /docs/reference/specification/glossary#log-record
-[metric]: /docs/concepts/otel-concepts/#metrics-in-opentelemetry
+[metric]: /docs/concepts/signals/metrics/
 [opencensus]: https://opencensus.io
 [opentracing]: https://opentracing.io
 [propagators]: /docs/instrumentation/go/manual/#propagators-and-context

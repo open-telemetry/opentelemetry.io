@@ -79,8 +79,8 @@ that a request makes, painting a picture of what happened during the time in
 which that operation was executed.
 
 A Span contains name, time-related data,
-[structured log messages](/docs/concepts/otel-concepts/#span-events), and
-[other metadata (i.e. Attributes)](/docs/concepts/otel-concepts/#attributes) to
+[structured log messages](/docs/concepts/signals/traces/#span-events), and
+[other metadata (i.e. Attributes)](/docs/concepts/signals/traces/#attributes) to
 provide information about the operation it tracks.
 
 Below is a sample of the type of information that would be prasent in a Span:
@@ -88,7 +88,7 @@ Below is a sample of the type of information that would be prasent in a Span:
 <img src="/img/span_visualization.png" alt="Sample Span" width="300"/>
 
 > For more on Spans and how they pertain to OTel, visit
-> [Spans in OpenTelemetry](/docs/concepts/signals/tracing/#spans-in-opentelemetry).
+> [Spans in OpenTelemetry](/docs/concepts/signals/traces/#spans-in-opentelemetry).
 
 ### Distributed Traces
 
@@ -124,4 +124,4 @@ its child Spans. When a Span encapsulates another Span, this also represents a
 nested relationship.
 
 > For more on Traces and how they pertain to OTel, visit
-> [Traces in OpenTelemetry](/docs/concepts/signals/tracing/).
+> [Traces in OpenTelemetry](/docs/concepts/signals/traces/).

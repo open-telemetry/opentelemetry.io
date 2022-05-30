@@ -4,7 +4,7 @@ weight: 90
 ---
 
 The OpenTelemetry projects consists of multiple [components](../components) that
-support multiple [data sources](../data-sources). The reference implementation
+support multiple [signals](../signals). The reference implementation
 of OpenTelemetry is available as:
 
 - [Language-specific instrumentation libraries](../instrumenting)

@@ -14,7 +14,7 @@ In OpenTelemetry, "Baggage" refers to contextual information that’s passed
 between spans. It's a key-value store that resides within a trace context,
 making values available to any span created within that trace.
 
-OpenTelemetry uses [Context Propagation](#context-propagation) to pass Baggage
+OpenTelemetry uses [Context Propagation](/docs/concepts/signals/traces/#context-propagation) to pass Baggage
 around, and each of the different library implementations has propagators that
 will parse and make that Baggage available without you needing to explicitly
 implement it.
@@ -54,7 +54,7 @@ yours, so exercise caution when working with Baggage.
 ## Baggage != Span attributes
 
 One important thing to note about Baggage is that it is not a subset of the
-[Span Attributes](#attributes). When you add something as Baggage, it does not
+[Span Attributes](/docs/concepts/signals/traces/#attributes). When you add something as Baggage, it does not
 automatically end up on the Attributes of the child system’s spans. You must
 explicitly take something out of Baggage and append it as Attributes.
 

@@ -121,8 +121,7 @@ service:
 <img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Receivers.svg"></img>
 
 A receiver, which can be push or pull based, is how data gets into the
-Collector. Receivers may support one or more [data
-sources](../../concepts/data-sources).
+Collector. Receivers may support one or more [data sources](../../concepts/signals).
 
 The `receivers:` section is how receivers are configured. Many receivers come
 with default settings so simply specifying the name of the receiver is enough
@@ -277,7 +276,7 @@ processors:
 <img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Exporters.svg"></img>
 An exporter, which can be push or pull based, is how you send data to one or
 more backends/destinations. Exporters may support one or more [data
-sources](../../concepts/data-sources).
+sources](../../concepts/signals).
 
 The `exporters:` section is how exporters are configured. Exporters may come
 with default settings, but many require configuration to specify at least the

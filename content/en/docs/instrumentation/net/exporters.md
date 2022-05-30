@@ -4,7 +4,7 @@ weight: 4
 ---
 
 In order to visualize and analyze your
-[traces](/docs/concepts/otel-concepts#tracing-in-opentelemetry) and metrics, you
+[traces](/docs/concepts/signals/traces/#tracing-in-opentelemetry) and metrics, you
 will need to export them to a backend.
 
 ## Console exporter
