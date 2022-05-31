@@ -1,5 +1,6 @@
 ---
 title: Acknowledgements
+description: Acknowledgements for sources for content on this site
 spelling: cSpell:ignore otel
 aliases: [/acknowledgements]
 weight: 200

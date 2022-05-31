@@ -1,5 +1,7 @@
 ---
 title: Glossary
+description: >-
+ Terminology you may or may not be familiar with used by the OpenTelemetry project
 weight: 100
 ---
 
