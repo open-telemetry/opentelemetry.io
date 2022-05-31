@@ -9,7 +9,7 @@ libraries](/docs/reference/specification/glossary/#instrumentation-library) that
 generate telemetry data for a particular instrumented library.
 
 For example, the instrumentation library for ASP.NET Core will automatically
-create [spans](/docs/concepts/otel-concepts#spans-in-opentelemetry) that track
+create [spans](/docs/concepts/signals/traces/#spans-in-opentelemetry) that track
 inbound requests once you configure it in your app/service.
 
 ## Setup
@@ -23,7 +23,7 @@ dotnet add package OpenTelemetry.Instrumentation.{library-name-or-type}
 
 It is typically then registered at application startup time, such as when
 creating a
-[TracerProvider](/docs/concepts/otel-concepts#tracing-in-opentelemetry).
+[TracerProvider](/docs/concepts/signals/traces/#tracer-provider).
 
 ## Example with ASP.NET Core and HttpClient
 

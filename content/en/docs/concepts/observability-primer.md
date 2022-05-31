@@ -14,7 +14,8 @@ allows us to easily troubleshoot and handle novel problems (i.e. "unknown
 unknowns”), and helps us answer the question, "Why is this happening?"
 
 In order to be able to ask those questions of a system, the application must be
-properly instrumented. That is, the application code must emit signals such as
+properly instrumented. That is, the application code must emit 
+[signals](/docs/concepts/signals/) such as
 [traces](/docs/concepts/observability-primer/#distributed-traces),
 [metrics](/docs/concepts/observability-primer/#reliability--metrics), and
 [logs](/docs/concepts/observability-primer/#logs). An application is properly
@@ -78,8 +79,8 @@ that a request makes, painting a picture of what happened during the time in
 which that operation was executed.
 
 A Span contains name, time-related data,
-[structured log messages](/docs/concepts/otel-concepts/#span-events), and
-[other metadata (i.e. Attributes)](/docs/concepts/otel-concepts/#attributes) to
+[structured log messages](/docs/concepts/signals/traces/#span-events), and
+[other metadata (i.e. Attributes)](/docs/concepts/signals/traces/#attributes) to
 provide information about the operation it tracks.
 
 Below is a sample of the type of information that would be present in a Span:
@@ -87,7 +88,7 @@ Below is a sample of the type of information that would be present in a Span:
 <img src="/img/span_visualization.png" alt="Sample Span" width="300"/>
 
 > For more on Spans and how they pertain to OTel, visit
-> [Advanced OTel Concepts](/docs/concepts/otel-concepts/#spans-in-opentelemetry).
+> [Spans in OpenTelemetry](/docs/concepts/signals/traces/#spans-in-opentelemetry).
 
 ### Distributed Traces
 
@@ -123,4 +124,4 @@ its child Spans. When a Span encapsulates another Span, this also represents a
 nested relationship.
 
 > For more on Traces and how they pertain to OTel, visit
-> [Advanced OTel Concepts](/docs/concepts/otel-concepts/#tracing-in-opentelemetry).
+> [Traces in OpenTelemetry](/docs/concepts/signals/traces/).
