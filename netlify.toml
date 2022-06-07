@@ -9,3 +9,7 @@ command = "npm run build:production"
 from = "https://docs.opentelemetry.io/*"
 to = "https://opentelemetry.io/docs/:splat"
 force = true
+
+from = "https://blog.opentelemetry.io/*"
+to = "https://opentelemetry.io/blog/:splat"
+force = true
