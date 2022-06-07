@@ -43,10 +43,11 @@ With a call to `get_tracer`, you can create spans.
 To create a span, you'll typically want it to be started as the current span.
 
 ```python
-with tracer.start_as_current_span("span-name") as span:
-    # do some work that 'span' will track
-
-    # When the 'with' block goes out of scope, 'span' is closed for you
+def do_work():
+    with tracer.start_as_current_span("span-name") as span:
+        # do some work that 'span' will track
+        print("doing some work...")
+        # When the 'with' block goes out of scope, 'span' is closed for you
 ```
 
 You can also use `start_span` to create a span without making it the current
@@ -58,20 +59,42 @@ If you have a distinct sub-operation you'd like to track as a part of another
 one, you can create spans to represent the relationship:
 
 ```python
-with tracer.start_as_current_span("parent") as parent:
-    # do some work that 'parent' tracks
+def do_work():
+    with tracer.start_as_current_span("parent") as parent:
+        # do some work that 'parent' tracks
+        print("doing some work...")
+        # Create a nested span to track nested work
+        with tracer.start_as_current_span("child") as child:
+            # do some work that 'child' tracks
+            print("doing some nested work...")
+            # the nested span is closed when it's out of scope
 
-    # Create a nested span to track nested work
-    with tracer.start_as_current_span("child") as child:
-        # do some work that 'child' tracks
-
-        # the nested span is closed when it's out of scope
-
-    # This span is also closed when it goes out of scope
+        # This span is also closed when it goes out of scope
 ```
 
 When you view spans in a trace visualization tool, `child` will be tracked as a
 nested span under `parent`.
+
+## Creating spans with decorators
+
+It's common to have a single span track the execution of an entire function. In
+that scenario, there is a decorator you can use to reduce code:
+
+```python
+@tracer.start_as_current_span("do_work")
+def do_work():
+    print("doing some work...")
+```
+
+Use of the decorator is equivalent to creating the span inside `do_work()` and
+ending it when `do_work()` is finished.
+
+To use the decorator, you must have a `tracer` instance available global to your
+function declaration.
+
+If you need to add [attributes](#add-attributes-to-a-span),
+[events](#adding-events), or [links](#adding-links) then it's less convenient to
+use a decorator.
 
 ## Get the current span
 
