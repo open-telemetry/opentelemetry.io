@@ -4,7 +4,7 @@ show_banner: true
 ---
 
 {{< blocks/cover image_anchor="top" height="max" color="primary" >}}
-<img src="/img/logos/opentelemetry-horizontal-color.svg" class="otel-logo" alt="OpenTelemetry"/>
+<img src="/img/logos/opentelemetry-horizontal-pride.svg" class="otel-logo" alt="OpenTelemetry"/>
 
 <h1>High-quality, ubiquitous, and portable telemetry to enable effective observability</h1>
 
