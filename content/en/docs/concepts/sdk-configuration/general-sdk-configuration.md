@@ -11,7 +11,7 @@ regardless of language.
 ## `OTEL_SERVICE_NAME`
 
 Sets the value of the
-[`service.name`](./resource/semantic_conventions/README.md#service) resource
+[`service.name`](/docs/reference/specification/resource/semantic_conventions/#service) resource
 attribute.
 
 **Default value:** `"unknown_service"`
@@ -26,13 +26,13 @@ If `service.name` is also provided in `OTEL_RESOURCE_ATTRIBUTES`, then
 ## `OTEL_RESOURCE_ATTRIBUTES`
 
 Key-value pairs to be used as resource attributes. See [Resource
-SDK](./resource/sdk.md#specifying-resource-information-via-an-environment-variable)
+SDK](/docs/reference/specification/resource/sdk#specifying-resource-information-via-an-environment-variable)
 for more details.
 
 **Default value:** Empty.
 
 See [Resource semantic
-conventions](resource/semantic_conventions/README.md#semantic-attributes-with-sdk-provided-default-value)
+conventions](/docs/reference/specification/resource/semantic_conventions/#semantic-attributes-with-sdk-provided-default-value)
 for semantic conventions to follow for common resource types.
 
 **Example:**
@@ -42,7 +42,7 @@ for semantic conventions to follow for common resource types.
 ## `OTEL_TRACES_SAMPLER`
 
 Specifies the Sampler to be used by the SDK. Combining samples is done via an
-underscore (`_`) character. See [Sampling](./trace/sdk.md#sampling) for more
+underscore (`_`) character. See [Sampling](/docs/reference/specification/trace/sdk#sampling) for more
 information.
 
 **Default value:** `"parentbased_always_on"`
@@ -116,8 +116,8 @@ Accepted values for `OTEL_PROPAGATORS` are:
 
 - `"tracecontext"`: [W3C Trace Context](https://www.w3.org/TR/trace-context/)
 - `"baggage"`: [W3C Baggage](https://www.w3.org/TR/baggage/)
-- `"b3"`: [B3 Single](./context/api-propagators.md#configuration)
-- `"b3multi"`: [B3 Multi](./context/api-propagators.md#configuration)
+- `"b3"`: [B3 Single](/docs/reference/specification/context/api-propagators#configuration)
+- `"b3multi"`: [B3 Multi](/docs/reference/specification/context/api-propagators#configuration)
 - `"jaeger"`:
   [Jaeger](https://www.jaegertracing.io/docs/1.21/client-libraries/#propagation-format)
 - `"xray"`: [AWS
@@ -127,12 +127,3 @@ Accepted values for `OTEL_PROPAGATORS` are:
   Trace](https://github.com/opentracing?q=basic&type=&language=) (_third party_)
 - `"none"`: No automatically configured propagator.
 
-## `OTEL_LOG_LEVEL`
-
-Specifies the log level used by the SDK logger.
-
-**Default value:** `"info"`
-
-**Example:**
-
-`export OTEL_LOG_LEVEL="error"`
