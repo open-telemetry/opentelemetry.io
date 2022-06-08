@@ -48,8 +48,8 @@ end with `v1/traces` if using OTLP/HTTP.
 
 **Example:**
 
-* gRPC: `export OTEL_EXPORTER_OTLP_ENDPOINT="my-api-endpoint:443"`
-* HTTP:`export OTEL_EXPORTER_OTLP_ENDPOINT="https://my-api-endpoint/v1/traces"`
+* gRPC: `export OTEL_EXPORTER_OTLP_TRACES_ENDPOINT="my-api-endpoint:443"`
+* HTTP:`export OTEL_EXPORTER_OTLP_TRACES_ENDPOINT="https://my-api-endpoint/v1/traces"`
 
 ### `OTEL_EXPORTER_OTLP_METRICS_ENDPOINT`
 
@@ -63,8 +63,8 @@ end with `v1/metrics` if using OTLP/HTTP.
 
 **Example:**
 
-* gRPC: `export OTEL_EXPORTER_OTLP_ENDPOINT="my-api-endpoint:443"`
-* HTTP:`export OTEL_EXPORTER_OTLP_ENDPOINT="https://my-api-endpoint/v1/metrics"`
+* gRPC: `export OTEL_EXPORTER_OTLP_METRICS_ENDPOINT="my-api-endpoint:443"`
+* HTTP:`export OTEL_EXPORTER_OTLP_METRICS_ENDPOINT="https://my-api-endpoint/v1/metrics"`
 
 ### `OTEL_EXPORTER_OTLP_LOGS_ENDPOINT`
 
@@ -78,8 +78,8 @@ end with `v1/logs` if using OTLP/HTTP.
 
 **Example:**
 
-* gRPC: `export OTEL_EXPORTER_OTLP_ENDPOINT="my-api-endpoint:443"`
-* HTTP:`export OTEL_EXPORTER_OTLP_ENDPOINT="https://my-api-endpoint/v1/logs"`
+* gRPC: `export OTEL_EXPORTER_OTLP_LOGS_ENDPOINT="my-api-endpoint:443"`
+* HTTP:`export OTEL_EXPORTER_OTLP_LOGS_ENDPOINT="https://my-api-endpoint/v1/logs"`
 
 ## Header configuration
 

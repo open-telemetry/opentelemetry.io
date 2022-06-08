@@ -32,7 +32,7 @@ Specifies which exporter is used for metrics.
 
 **Example:**
 
-`export OTEL_TRACES_EXPORTER="prometheus"`
+`export OTEL_METRICS_EXPORTER="prometheus"`
 
 Accepted values for `OTEL_METRICS_EXPORTER` are:
 
@@ -48,7 +48,7 @@ Specifies which exporter is used for logs.
 
 **Example:**
 
-`export OTEL_TRACES_EXPORTER="otlp"`
+`export OTEL_LOGS_EXPORTER="otlp"`
 
 Accepted values for `OTEL_LOGS_EXPORTER` are:
 
