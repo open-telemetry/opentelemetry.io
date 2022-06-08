@@ -6,7 +6,7 @@ show_banner: true
 {{< blocks/cover image_anchor="top" height="max" color="primary" >}}
 <img src="/img/logos/opentelemetry-horizontal-pride.svg" class="otel-logo" alt="OpenTelemetry"/>
 
-<h1>High-quality, ubiquitous, and portable telemetry to enable effective observability</h1>
+## High-quality, ubiquitous, and portable telemetry to enable effective observability
 
 <div class="l-primary-buttons mt-5">
 
@@ -24,6 +24,7 @@ show_banner: true
 - [.NET](/docs/instrumentation/net/getting-started/)
 - [JavaScript](/docs/instrumentation/js/getting-started/)
 - [<i class="fas fa-ellipsis-h"></i>](/docs/instrumentation/)
+
 </div>
 {{< /blocks/cover >}}
 
