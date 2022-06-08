@@ -81,7 +81,7 @@ Sample Trace:
     },
     "events": [
         {
-            "name": "Guten tag!",
+            "name": "Guten Tag!",
             "timestamp": "2022-04-29T18:52:58.114561Z",
             "attributes": {
                 "event_attributes": 1

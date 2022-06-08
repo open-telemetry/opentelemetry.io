@@ -22,7 +22,7 @@ The OpenTelemetry Collector provides a single binary and two deployment methods:
 - **Agent:** A Collector instance running with the application or on the same
   host as the application (e.g. binary, sidecar, or daemonset).
 - **Gateway:** One or more Collector instances running as a standalone service
-  (e.g. container or deployment) typically per cluster, datacenter or region.
+  (e.g. container or deployment) typically per cluster, data center or region.
 
 For information on how to use the Collector see the
 [getting started documentation](/docs/collector/getting-started).
