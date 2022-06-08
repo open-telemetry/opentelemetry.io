@@ -205,11 +205,13 @@ By default, OpenTelemetry Python will use the following propagation formats:
 * W3C Trace Context
 * W3C Baggage
 
-If you have a need to change the defaults, you can do so either via environment variables or in code:
+If you have a need to change the defaults, you can do so either via environment
+variables or in code:
 
 ### Using Environment Variables
 
-You can set the `OTEL_PROPAGATORS` environment variable with a comma-separated list. Accepted values are:
+You can set the `OTEL_PROPAGATORS` environment variable with a comma-separated
+list. Accepted values are:
 
 * `"tracecontext"`: W3C Trace Context
 * `"baggage"`: W3C Baggage
@@ -220,13 +222,15 @@ You can set the `OTEL_PROPAGATORS` environment variable with a comma-separated l
 * `"ottrace"`: OT Trace (third party)
 * `"none"`: No automatically configured propagator.
 
-The default configuration is equivalent to `OTEL_PROPAGATORS="tracecontext,baggage"`.
+The default configuration is equivalent to
+`OTEL_PROPAGATORS="tracecontext,baggage"`.
 
 ### Using SDK APIs
 
 Alternatively, you can change the format in code.
 
-For example, if you need to use Zipkin's B3 propagation format instead, you can install the B3 package:
+For example, if you need to use Zipkin's B3 propagation format instead, you can
+install the B3 package:
 
 ```shell
 pip install opentelemetry-propagator-b3
