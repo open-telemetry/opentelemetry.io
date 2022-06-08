@@ -41,9 +41,7 @@ for semantic conventions to follow for common resource types.
 
 ## `OTEL_TRACES_SAMPLER`
 
-Specifies the Sampler to be used by the SDK. Combining samples is done via an
-underscore (`_`) character. See [Sampling](/docs/reference/specification/trace/sdk#sampling) for more
-information.
+Specifies the Sampler used to sample traces by the SDK.
 
 **Default value:** `"parentbased_always_on"`
 
