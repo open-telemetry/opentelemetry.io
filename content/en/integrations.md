@@ -11,7 +11,9 @@ OpenTelemetry integrates with or is integrated into various open source projects
 {{< row >}}
 {{< column >}}
 {{% blocks/section type="section" color="white" %}}
+
 ## Within OpenTelemetry
+
 OpenTelemetry provides integration with the following open source projects.
 <br/>
 
@@ -36,7 +38,9 @@ _Projects are listed alphabetically_
 {{< /column >}}
 {{< column >}}
 {{% blocks/section type="section" color="white" %}}
+
 ## Outside OpenTelemetry
+
 The following open source projects use OpenTelemetry components.
 <br/>
 
