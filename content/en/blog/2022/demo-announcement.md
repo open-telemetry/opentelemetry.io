@@ -54,7 +54,7 @@ libraries
 
 ## Current Architecture
 
-**INSERT PICTURE**
+!["Screenshot of the current architecture."](images/current-demo-architecture.png "Screenshot of the current architecture")
 
 ## Upcoming New Features
 
@@ -82,7 +82,7 @@ etc. \
 
 ## Future Architecture
 
-**INSERT PICTURE**
+!["Screenshot of the future architecture."](images/current-demo-architecture.png "Screenshot of the future architecture")
 
 ## Going Forward
 
