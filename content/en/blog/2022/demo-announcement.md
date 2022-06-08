@@ -1,7 +1,8 @@
 ---
-title: Checklist for TroublesShooting OpenTelemetry Node.js Tracing Issues
-linkTitle: TroublesShooting Node.js Tracing Issues
-date: 2022-06-15
+title: Announcing a Community Demo for OpenTelemetry
+linkTitle: OpenTelemetry Community Demo
+date: 2022-06-16
+author: Carter Socha
 ---
 
 As OpenTelemetry matures, users are increasingly looking for best practice
