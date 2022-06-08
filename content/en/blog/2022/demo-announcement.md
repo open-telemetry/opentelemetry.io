@@ -1,7 +1,7 @@
 ---
 title: Checklist for TroublesShooting OpenTelemetry Node.js Tracing Issues
 linkTitle: TroublesShooting Node.js Tracing Issues
-date: 2022-06-16
+date: 2022-06-15
 ---
 
 As OpenTelemetry matures, users are increasingly looking for best practice
