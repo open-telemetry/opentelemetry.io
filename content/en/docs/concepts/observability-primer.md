@@ -33,7 +33,7 @@ data can come in the form of [Traces](#distributed-traces),
 
 **Reliability** answers the question: "Is the service doing what users expect it
 to be doing?” A system could be up 100% of the time, but if, when a user clicks
-"Add to Cart” to add a black pair of pants to their shopping card, and instead,
+"Add to Cart” to add a black pair of pants to their shopping cart, and instead,
 the system keeps adding a red pair of pants, then the system would be said to be
 **un**reliable.
 
