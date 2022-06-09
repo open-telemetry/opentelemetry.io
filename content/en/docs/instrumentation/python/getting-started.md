@@ -74,7 +74,10 @@ You can now run your instrumented app with `opentelemetry-instrument` and have
 it print to the console for now:
 
 ```shell
-opentelemetry-instrument --traces_exporter console flask run
+opentelemetry-instrument \
+    --traces_exporter console \
+    --metrics_exporter console \
+    flask run
 ```
 
 When you send a request to the server, you'll get a result in a trace with a
@@ -137,6 +140,9 @@ your application. For that you'll need to write some [manual
 instrumentation]({{< relref"manual" >}}). Here's how you can easily link up
 manual instrumentation with automatic instrumentation.
 
+
+### Traces
+
 First, modify `app.py` to include code that initializes a tracer and uses it to
 create a trace that's a child of the one that's automatically generated:
 
@@ -158,7 +164,7 @@ def roll_dice():
     return str(do_roll())
 
 def do_roll():
-    # This creates a new trace that's the child of the current one
+    # This creates a new span that's the child of the current one
     with tracer.start_as_current_span("do_roll") as rollspan:  
         res = randint(1, 6)
         rollspan.set_attribute("roll.value", res)
@@ -168,7 +174,10 @@ def do_roll():
 Now run the app again:
 
 ```shell
-opentelemetry-instrument --traces_exporter console flask run
+opentelemetry-instrument \
+    --traces_exporter console \
+    --metrics_exporter console \
+    flask run
 ```
 
 When you send a request to the server, you'll see two spans in the trace emitted
@@ -251,7 +260,147 @@ automatically created one:
 The `parent_id` of `do_roll` is the same is the `span_id` for `/rolldice`,
 indicating a parent-child reletionship!
 
-## Send traces to an OpenTelemetry Collector
+### Metrics
+
+Now modify `app.py` to include code that initializes a meter and uses it to
+create a counter instrument which counts the number of rolls for each possible
+roll value:
+
+```python
+# These are the necessary import declarations
+from opentelemetry import trace
+from opentelemetry import metrics
+
+from random import randint
+from flask import Flask, request
+
+tracer = trace.get_tracer(__name__)
+# Acquire a meter. There's one set up for you globally,
+# and it's also used by opentelemetry-instrument.
+meter = metrics.get_meter(__name__)
+
+# Now create a counter instrument to make measurements with
+roll_counter = meter.create_counter(
+    "roll_counter",
+    description="The number of rolls by roll value",
+)
+
+app = Flask(__name__)
+
+@app.route("/rolldice")
+def roll_dice():
+    return str(do_roll())
+
+def do_roll():
+    with tracer.start_as_current_span("do_roll") as rollspan:  
+        res = randint(1, 6)
+        rollspan.set_attribute("roll.value", res)
+        # This adds 1 to the counter for the given roll value
+        roll_counter.add(1, {"roll.value": res})
+        return res
+```
+
+Now run the app again:
+
+```shell
+opentelemetry-instrument \
+    --traces_exporter console \
+    --metrics_exporter console \
+    flask run
+```
+
+When you send a request to the server, you'll see the roll counter metric
+emitted to the console, with separate counts for each roll value:
+
+<details>
+<summary>View example output</summary>
+
+```json
+{
+  "resource_metrics": [
+    {
+      "resource": {
+        "attributes": {
+          "telemetry.sdk.language": "python",
+          "telemetry.sdk.name": "opentelemetry",
+          "telemetry.sdk.version": "1.12.0rc1",
+          "telemetry.auto.version": "0.31b0",
+          "service.name": "unknown_service"
+        },
+        "schema_url": ""
+      },
+      "scope_metrics": [
+        {
+          "scope": {
+            "name": "app",
+            "version": "",
+            "schema_url": null
+          },
+          "metrics": [
+            {
+              "name": "roll_counter",
+              "description": "The number of rolls by roll value",
+              "unit": "",
+              "data": {
+                "data_points": [
+                  {
+                    "attributes": {
+                      "roll.value": 4
+                    },
+                    "start_time_unix_nano": 1654790325350232600,
+                    "time_unix_nano": 1654790332211598800,
+                    "value": 3
+                  },
+                  {
+                    "attributes": {
+                      "roll.value": 6
+                    },
+                    "start_time_unix_nano": 1654790325350232600,
+                    "time_unix_nano": 1654790332211598800,
+                    "value": 4
+                  },
+                  {
+                    "attributes": {
+                      "roll.value": 5
+                    },
+                    "start_time_unix_nano": 1654790325350232600,
+                    "time_unix_nano": 1654790332211598800,
+                    "value": 1
+                  },
+                  {
+                    "attributes": {
+                      "roll.value": 1
+                    },
+                    "start_time_unix_nano": 1654790325350232600,
+                    "time_unix_nano": 1654790332211598800,
+                    "value": 2
+                  },
+                  {
+                    "attributes": {
+                      "roll.value": 3
+                    },
+                    "start_time_unix_nano": 1654790325350232600,
+                    "time_unix_nano": 1654790332211598800,
+                    "value": 1
+                  }
+                ],
+                "aggregation_temporality": 2,
+                "is_monotonic": true
+              }
+            }
+          ],
+          "schema_url": null
+        }
+      ],
+      "schema_url": ""
+    }
+  ]
+}
+```
+
+</details>
+
+## Send telemetry to an OpenTelemetry Collector
 
 The [OpenTelemetry Collector](/docs/collector/getting-started/) is a critical
 component of most production deployments. Some examples of when it's beneficial
@@ -286,6 +435,10 @@ service:
       receivers: [otlp]
       exporters: [logging]
       processors: [batch]
+    metrics:
+      receivers: [otlp]
+      exporters: [logging]
+      processors: [batch]
 ```
 
 Then run the docker command to acquire and run the collector based on this
@@ -300,10 +453,10 @@ docker run -p 4317:4317 \
 
 You will now have an collector instance running locally, listening on port 4318.
 
-### Modify the code to export spans via OTLP
+### Modify the code to export spans and metrics via OTLP
 
-The next step is to modify the code to send spans to the collector via OTLP
-instead of the console.
+The next step is to modify the code to send spans and metrics to the collector via
+OTLP instead of the console.
 
 To do this, install the OTLP exporter package:
 
@@ -316,10 +469,18 @@ with an OTLP exporter:
 
 ```python
 from opentelemetry import trace
+from opentelemetry import metrics
+
 from random import randint
 from flask import Flask, request
 
 tracer = trace.get_tracer(__name__)
+meter = metrics.get_meter(__name__)
+
+roll_counter = meter.create_counter(
+    "roll_counter",
+    description="The number of rolls by roll value",
+)
 
 app = Flask(__name__)
 
@@ -331,10 +492,11 @@ def do_roll():
     with tracer.start_as_current_span("do_roll") as rollspan:  
         res = randint(1, 6)
         rollspan.set_attribute("roll.value", res)
+        roll_counter.add(1, {"roll.value": res})
         return res
 ```
 
-By default, it will send spans to `localhost:4317`, which is what the collector
+By default, it will send telemetry to `localhost:4317`, which is what the collector
 is listening on.
 
 ### Run the application
@@ -345,62 +507,86 @@ Run the application like before, but don't export to the console:
 opentelemetry-instrument flask run
 ```
 
-By default, `opentelemetry-instrument` exports over spans over OTLP/gRPC.
+By default, `opentelemetry-instrument` exports traces and metrics over OTLP/gRPC.
 
-When you access the `/rolldice` route now, you'll see output from the collector
+When you access the `/rolldice` route now, you'll see output in the collector
 process instead of the flask process, which should look something like this:
 
 <details>
 <summary>View example output</summary>
 
 ```
-2022-05-11T23:25:24.025Z        INFO    loggingexporter/logging_exporter.go:41   TracesExporter  {"#spans": 2}
-2022-05-11T23:25:24.025Z        DEBUG   loggingexporter/logging_exporter.go:51   ResourceSpans #0
+2022-06-09T20:43:39.915Z        DEBUG   loggingexporter/logging_exporter.go:51  ResourceSpans #0
 Resource labels:
      -> telemetry.sdk.language: STRING(python)
      -> telemetry.sdk.name: STRING(opentelemetry)
-     -> telemetry.sdk.version: STRING(1.11.1)
-     -> telemetry.auto.version: STRING(0.30b1)
+     -> telemetry.sdk.version: STRING(1.12.0rc1)
+     -> telemetry.auto.version: STRING(0.31b0)
      -> service.name: STRING(unknown_service)
 InstrumentationLibrarySpans #0
-InstrumentationLibrary app 
+InstrumentationLibrary app
 Span #0
-    Trace ID       : 7840fce18857dd73622be53793ea085c
-    Parent ID      : ff6696dc1af70131
-    ID             : 6521d08561e8cd03
+    Trace ID       : 7d4047189ac3d5f96d590f974bbec20a
+    Parent ID      : 0b21630539446c31
+    ID             : 4d18cee9463a79ba
     Name           : do_roll
     Kind           : SPAN_KIND_INTERNAL
-    Start time     : 2022-05-11 23:25:23.330808486 +0000 UTC
-    End time       : 2022-05-11 23:25:23.330836966 +0000 UTC
+    Start time     : 2022-06-09 20:43:37.390134089 +0000 UTC
+    End time       : 2022-06-09 20:43:37.390327687 +0000 UTC
     Status code    : STATUS_CODE_UNSET
-    Status message : 
+    Status message :
 Attributes:
-     -> roll.value: INT(2)
+     -> roll.value: INT(5)
 InstrumentationLibrarySpans #1
-InstrumentationLibrary opentelemetry.instrumentation.flask 0.30b1
+InstrumentationLibrary opentelemetry.instrumentation.flask 0.31b0
 Span #0
-    Trace ID       : 7840fce18857dd73622be53793ea085c
-    Parent ID      : 
-    ID             : ff6696dc1af70131
+    Trace ID       : 7d4047189ac3d5f96d590f974bbec20a
+    Parent ID      :
+    ID             : 0b21630539446c31
     Name           : /rolldice
     Kind           : SPAN_KIND_SERVER
-    Start time     : 2022-05-11 23:25:23.330153446 +0000 UTC
-    End time       : 2022-05-11 23:25:23.331035135 +0000 UTC
+    Start time     : 2022-06-09 20:43:37.388733595 +0000 UTC
+    End time       : 2022-06-09 20:43:37.390723792 +0000 UTC
     Status code    : STATUS_CODE_UNSET
-    Status message : 
+    Status message :
 Attributes:
      -> http.method: STRING(GET)
      -> http.server_name: STRING(127.0.0.1)
      -> http.scheme: STRING(http)
      -> net.host.port: INT(5000)
      -> http.host: STRING(localhost:5000)
-     -> http.target: STRING(/rolldice?vscodeBrowserReqId=1652311523254)
+     -> http.target: STRING(/rolldice)
      -> net.peer.ip: STRING(127.0.0.1)
-     -> http.user_agent: STRING(Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36)
-     -> net.peer.port: INT(45942)
+     -> http.user_agent: STRING(curl/7.82.0)
+     -> net.peer.port: INT(53878)
      -> http.flavor: STRING(1.1)
      -> http.route: STRING(/rolldice)
      -> http.status_code: INT(200)
+
+2022-06-09T20:43:40.025Z        INFO    loggingexporter/logging_exporter.go:56  MetricsExporter {"#metrics": 1}
+2022-06-09T20:43:40.025Z        DEBUG   loggingexporter/logging_exporter.go:66  ResourceMetrics #0
+Resource labels:
+     -> telemetry.sdk.language: STRING(python)
+     -> telemetry.sdk.name: STRING(opentelemetry)
+     -> telemetry.sdk.version: STRING(1.12.0rc1)
+     -> telemetry.auto.version: STRING(0.31b0)
+     -> service.name: STRING(unknown_service)
+InstrumentationLibraryMetrics #0
+InstrumentationLibrary app
+Metric #0
+Descriptor:
+     -> Name: roll_counter
+     -> Description: The number of rolls by roll value
+     -> Unit:
+     -> DataType: Sum
+     -> IsMonotonic: true
+     -> AggregationTemporality: AGGREGATION_TEMPORALITY_CUMULATIVE
+NumberDataPoints #0
+Data point attributes:
+     -> roll.value: INT(5)
+StartTimestamp: 2022-06-09 20:43:37.390226915 +0000 UTC
+Timestamp: 2022-06-09 20:43:39.848587966 +0000 UTC
+Value: 1
 ```
 
 </details>
