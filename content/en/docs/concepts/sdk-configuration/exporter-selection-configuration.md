@@ -1,7 +1,7 @@
 ---
 title: "Exporter Selection Configuration"
 description: >-
- Environment Variables for configuring which exporter to use.
+ Environment variables for configuring which exporter to use.
 weight: 10
 ---
 
