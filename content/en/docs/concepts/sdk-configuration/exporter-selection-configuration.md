@@ -21,7 +21,7 @@ Accepted values for are:
 
 - `"otlp"`: [OTLP][spec-otlp]
 - `"jaeger"`: export in Jaeger data model
-- `"zipkin"`: [Zipkin](https://zipkin.io/zipkin-api/) (Defaults to [protobuf](https://github.com/openzipkin/zipkin-api/blob/master/zipkin.proto) format)
+- `"zipkin"`: [Zipkin](https://zipkin.io/zipkin-api/)
 - `"none"`: No automatically configured exporter for traces.
 
 ## `OTEL_METRICS_EXPORTER`
