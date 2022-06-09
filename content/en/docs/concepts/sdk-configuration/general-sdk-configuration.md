@@ -5,9 +5,6 @@ description: >-
 weight: 1
 ---
 
-The following environment variables are respected by every OpenTelemetry SDK,
-regardless of language.
-
 ## `OTEL_SERVICE_NAME`
 
 Sets the value of the
@@ -125,168 +122,52 @@ Accepted values for `OTEL_PROPAGATORS` are:
   Trace](https://github.com/opentracing?q=basic&type=&language=) (_third party_)
 - `"none"`: No automatically configured propagator.
 
-## Endpoint Configuration
+## `OTEL_TRACES_EXPORTER`
 
-The following environment variables let you configure an OTLP/gRPC or OTLP/HTTP
-endpoint for your traces, metrics, and logs.
+Specifies which exporter is used for traces.
 
-### `OTEL_EXPORTER_OTLP_ENDPOINT`
-
-A base endpoint URL for any signal type, with an optionall-specified port
-number. Helpful for when you're sending more than one signal to the same
-endpoint and want one environment variable to control the endpoint.
-
-**Default value:**
-
-* gRPC: `"http://localhost:4317"`
-* HTTP: `"http://localhost:4318"`
+**Default value:** `"otlp"`
 
 **Example:**
 
-* gRPC: `export OTEL_EXPORTER_OTLP_ENDPOINT="my-api-endpoint:443"`
-* HTTP: `export OTEL_EXPORTER_OTLP_ENDPOINT="https://my-api-endpoint/"`
+`export OTEL_TRACES_EXPORTER="jaeger"`
 
-For OTLP/HTTP, exporters in the SDK construct signal-specific URLs when this
-environment variable is set. This means that if you're sending traces, metrics,
-and logs, the following URLS are constructed from the example above:
+Accepted values for are:
 
-* Traces: `"https://my-api-endpoint/v1/traces"`
-* Metrics: `"https://my-api-endpoint/v1/metrics"`
-* Logs: `"https://my-api-endpoint/v1/logs"`
+- `"otlp"`: [OTLP][spec-otlp]
+- `"jaeger"`: export in Jaeger data model
+- `"zipkin"`: [Zipkin](https://zipkin.io/zipkin-api/)
+- `"none"`: No automatically configured exporter for traces.
 
-### `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT`
+## `OTEL_METRICS_EXPORTER`
 
-Endpoint URL for trace data only, with an optionall-specified port number. Must
-end with `v1/traces` if using OTLP/HTTP.
+Specifies which exporter is used for metrics.
 
-**Default value:**
-
-* gRPC: `"http://localhost:4317"`
-* HTTP: `"http://localhost:4318/v1/traces"`
+**Default value:** `"otlp"`
 
 **Example:**
 
-* gRPC: `export OTEL_EXPORTER_OTLP_TRACES_ENDPOINT="my-api-endpoint:443"`
-* HTTP:`export OTEL_EXPORTER_OTLP_TRACES_ENDPOINT="https://my-api-endpoint/v1/traces"`
+`export OTEL_METRICS_EXPORTER="prometheus"`
 
-### `OTEL_EXPORTER_OTLP_METRICS_ENDPOINT`
+Accepted values for `OTEL_METRICS_EXPORTER` are:
 
-Endpoint URL for trace data only, with an optionall-specified port number. Must
-end with `v1/metrics` if using OTLP/HTTP.
+- `"otlp"`: [OTLP][spec-otlp]
+- `"prometheus"`: [Prometheus](https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md)
+- `"none"`: No automatically configured exporter for metrics.
 
-**Default value:**
+## `OTEL_LOGS_EXPORTER`
 
-* gRPC: `"http://localhost:4317"`
-* HTTP: `"http://localhost:4318/v1/metrics"`
+Specifies which exporter is used for logs.
 
-**Example:**
-
-* gRPC: `export OTEL_EXPORTER_OTLP_METRICS_ENDPOINT="my-api-endpoint:443"`
-* HTTP:`export OTEL_EXPORTER_OTLP_METRICS_ENDPOINT="https://my-api-endpoint/v1/metrics"`
-
-### `OTEL_EXPORTER_OTLP_LOGS_ENDPOINT`
-
-Endpoint URL for trace data only, with an optionall-specified port number. Must
-end with `v1/logs` if using OTLP/HTTP.
-
-**Default value:**
-
-* gRPC: `"http://localhost:4317"`
-* HTTP: `"http://localhost:4318/v1/logs"`
+**Default value:** `"otlp"`
 
 **Example:**
 
-* gRPC: `export OTEL_EXPORTER_OTLP_LOGS_ENDPOINT="my-api-endpoint:443"`
-* HTTP:`export OTEL_EXPORTER_OTLP_LOGS_ENDPOINT="https://my-api-endpoint/v1/logs"`
+`export OTEL_LOGS_EXPORTER="otlp"`
 
-## Header configuration
+Accepted values for `OTEL_LOGS_EXPORTER` are:
 
-The following environment variables let you configure additional headers as a
-list of key-value pairs to add in outgoing gRPC or HTTP requests
+- `"otlp"`: [OTLP][spec-otlp]
+- `"none"`: No automatically configured exporter for logs.
 
-### `OTEL_EXPORTER_OTLP_HEADERS`
-
-A list of headers to apply to all outgoing data (traces, metrics, and logs).
-
-**Default value:** N/A
-
-**Example:**
-
-`export OTEL_EXPORTER_OTLP_HEADERS="api-key=key,other-config-value=value"`
-
-### `OTEL_EXPORTER_OTLP_TRACES_HEADERS`
-
-A list of headers to apply to all outgoing traces.
-
-**Default value:** N/A
-
-**Example:**
-
-`export
-OTEL_EXPORTER_OTLP_TRACES_HEADERS="api-key=key,other-config-value=value"`
-
-### `OTEL_EXPORTER_OTLP_METRICS_HEADERS`
-
-A list of headers to apply to all outgoing metrics.
-
-**Default value:** N/A
-
-**Example:**
-
-`export
-OTEL_EXPORTER_OTLP_METRICS_HEADERS="api-key=key,other-config-value=value"`
-
-### `OTEL_EXPORTER_OTLP_LOGS_HEADERS`
-
-A list of headers to apply to all outgoing logs.
-
-**Default value:** N/A
-
-**Example:**
-
-`export OTEL_EXPORTER_OTLP_LOGS_HEADERS="api-key=key,other-config-value=value"`
-
-## Timeout Configuration
-
-The following environment variables configure the maximum time (in milliseconds)
-an OTLP Exporter will wait before transmitting the net batch of data.
-
-### `OTEL_EXPORTER_OTLP_TIMEOUT`
-
-The timeout value for all outgoing data (traces, metrics, and logs) in milliseconds.
-
-**Default value:** `10000` (10s)
-
-**Example:**
-
-`export OTEL_EXPORTER_OTLP_TIMEOUT=500`
-
-### `OTEL_EXPORTER_OTLP_TRACES_TIMEOUT`
-
-The timeout value for all outgoing traces in milliseconds.
-
-**Default value:** 10000 (10s)
-
-**Example:**
-
-`export OTEL_EXPORTER_OTLP_TRACES_TIMEOUT=500`
-
-### `OTEL_EXPORTER_OTLP_METRICS_TIMEOUT`
-
-The timeout value for all outgoing metrics in milliseconds.
-
-**Default value:** 10000 (10s)
-
-**Example:**
-
-`export OTEL_EXPORTER_OTLP_METRICS_TIMEOUT=500`
-
-### `OTEL_EXPORTER_OTLP_LOGS_TIMEOUT`
-
-The timeout value for all outgoing logs in milliseconds.
-
-**Default value:** 10000 (10s)
-
-**Example:**
-
-`export OTEL_EXPORTER_OTLP_LOGS_TIMEOUT=500`
+[spec-otlp](/docs/reference/specification/protocol/otlp)
