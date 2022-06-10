@@ -1,285 +1,422 @@
 ---
 title: Getting Started
 weight: 1
-code_block_from__path_base: content-modules/opentelemetry-python/docs/getting_started
 ---
 
-This guide walks you through instrumenting a Python application with
-`opentelemetry-python`.
+In this page, you'll learn how to set up and get tracing telemetry from an HTTP
+server with Flask. If you're not using Flask, that's fine - this guide will also
+work with Django, FastAPI, [and
+more](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation).
 
 For more elaborate examples, see
 [examples](https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/).
 
-## Hello world: emit a trace to your console
+## Installation
 
-To get started, install both the opentelemetry API and SDK:
+To begin, set up an environment in a new directory:
 
-```sh
-pip install opentelemetry-api
-pip install opentelemetry-sdk
+```shell
+mkdir otel-getting-started
+cd otel-getting-started
+python3 -m venv .
+source ./bin/activate
 ```
 
-The API package provides the interfaces required by the application owner, as
-well as some helper logic to load implementations.
+Now install Flask and OpenTelemetry:
 
-The SDK provides an implementation of those interfaces. The implementation is
-designed to be generic and extensible enough that in many situations, the SDK is
-sufficient.
+```shell
+pip install flask
+pip install opentelemetry-distro
+```
 
-Once installed, you can use the packages to emit spans from your application. A
-span represents an action within your application that you want to instrument,
-such as an HTTP request or a database call. Once instrumented, you can extract
-helpful information such as how long the action took. You can also add arbitrary
-attributes to the span that provide more insight for debugging.
+The `opentelemetry-distro` package installs the API, SDK, and the
+`opentelemetry-bootstrap` and `opentelemetry-instrument` tools that you'll use
+soon.
 
-The following example script emits a trace containing three named spans: “foo”,
-“bar”, and “baz”:
+## Create the sample HTTP Server
 
-{{% code_block_from file="tracing_example.py" from="15" %}}
+Create a file `app.py`:
 
-When you run the script you can see the traces printed to your console:
+```python
+from random import randint
+from flask import Flask, request
 
-```sh
-$ python tracing_example.py
+app = Flask(__name__)
+
+@app.route("/rolldice")
+def roll_dice():
+    return str(do_roll())
+
+def do_roll():
+    return randint(1, 6)
+```
+
+When run, this will launch an HTTP server with a `/rolldice` route.
+
+## Add automatic instrumentation
+
+Automatic instrumentation will generate telemetry data on your behalf. There are
+several options you can take, covered in more detail in [Automatic
+Instrumentation]({{< relref "automatic" >}}). Here we'll use the
+`opentelemetry-instrument` agent.
+
+Run the `opentelemetry-bootstrap` command:
+
+```shell
+opentelemetry-bootstrap -a install
+```
+
+This will install Flask instrumentation.
+
+## Run the instrumented app
+
+You can now run your instrumented app with `opentelemetry-instrument` and have
+it print to the console for now:
+
+```shell
+opentelemetry-instrument --traces_exporter console flask run
+```
+
+When you send a request to the server, you'll get a result in a trace with a
+single span printed to the console, such as the following:
+
+<details>
+<summary>View example output</summary>
+
+```json
 {
-    "name": "baz",
+    "name": "/rolldice",
     "context": {
-        "trace_id": "0xb51058883c02f880111c959f3aa786a2",
-        "span_id": "0xb2fa4c39f5f35e13",
-        "trace_state": "{}"
+        "trace_id": "0xdcd253b9501348b63369d83219da0b14",
+        "span_id": "0x886c05bc23d2250e",
+        "trace_state": "[]"
     },
-    "kind": "SpanKind.INTERNAL",
-    "parent_id": "0x77e577e6a8813bf4",
-    "start_time": "2020-05-07T14:39:52.906272Z",
-    "end_time": "2020-05-07T14:39:52.906343Z",
-    "status": {
-        "status_code": "OK"
-    },
-    "attributes": {},
-    "events": [],
-    "links": []
-}
-{
-    "name": "bar",
-    "context": {
-        "trace_id": "0xb51058883c02f880111c959f3aa786a2",
-        "span_id": "0x77e577e6a8813bf4",
-        "trace_state": "{}"
-    },
-    "kind": "SpanKind.INTERNAL",
-    "parent_id": "0x3791d950cc5140c5",
-    "start_time": "2020-05-07T14:39:52.906230Z",
-    "end_time": "2020-05-07T14:39:52.906601Z",
-    "status": {
-        "status_code": "OK"
-    },
-    "attributes": {},
-    "events": [],
-    "links": []
-}
-{
-    "name": "foo",
-    "context": {
-        "trace_id": "0xb51058883c02f880111c959f3aa786a2",
-        "span_id": "0x3791d950cc5140c5",
-        "trace_state": "{}"
-    },
-    "kind": "SpanKind.INTERNAL",
+    "kind": "SpanKind.SERVER",
     "parent_id": null,
-    "start_time": "2020-05-07T14:39:52.906157Z",
-    "end_time": "2020-05-07T14:39:52.906743Z",
+    "start_time": "2022-04-27T23:53:11.533109Z",
+    "end_time": "2022-04-27T23:53:11.534097Z",
     "status": {
-        "status_code": "OK"
+        "status_code": "UNSET"
     },
-    "attributes": {},
+    "attributes": {
+        "http.method": "GET",
+        "http.server_name": "127.0.0.1",
+        "http.scheme": "http",
+        "net.host.port": 5000,
+        "http.host": "localhost:5000",
+        "http.target": "/roll?sides=10&rolls=2",
+        "net.peer.ip": "127.0.0.1",
+        "http.user_agent": "curl/7.68.0",
+        "net.peer.port": 52538,
+        "http.flavor": "1.1",
+        "http.route": "/roll",
+        "http.status_code": 200
+    },
     "events": [],
-    "links": []
+    "links": [],
+    "resource": {
+        "telemetry.sdk.language": "python",
+        "telemetry.sdk.name": "opentelemetry",
+        "telemetry.sdk.version": "1.11.1",
+        "telemetry.auto.version": "0.30b1",
+        "service.name": "unknown_service"
+    }
 }
 ```
 
-Each span typically represents a single operation or unit of work. Spans can be
-nested, and have a parent-child relationship with other spans. While a given
-span is active, newly-created spans inherit the active span’s trace ID, options,
-and other attributes of its context. A span without a parent is called the root
-span, and a trace is comprised of one root span and its descendants.
+</details>
 
-In this example, the OpenTelemetry Python library creates one trace containing
-three spans and prints it to STDOUT.
+The span generated for you tracks the lifetime of a request to the `/doroll`
+route.
 
-## Configure exporters to emit spans elsewhere
+## Add manual instrumentation to automatic instrumentation
 
-The previous example does emit information about all spans, but the output is a
-bit hard to read. In most cases, you can instead *export* this data to an
-application performance monitoring backend to be visualized and queried. It’s
-also common to aggregate span and trace information from multiple services into
-a single database, so that actions requiring multiple services can still all be
-visualized together.
+Automatic instrumentation captures telemetry at the edges of your systems, such
+as inbound and outbound HTTP requests, but it doesn't capture what's going on in
+your application. For that you'll need to write some [manual
+instrumentation]({{< relref"manual" >}}). Here's how you can easily link up
+manual instrumentation with automatic instrumentation.
 
-This concept of aggregating span and trace information is known as distributed
-tracing. One such distributed tracing backend is known as Jaeger. The Jaeger
-project provides an all-in-one Docker container with a UI, database, and
-consumer.
-
-Run the following command to start Jaeger:
-
-```sh
-docker run -p 16686:16686 -p 6831:6831/udp jaegertracing/all-in-one
-```
-
-This command starts Jaeger locally on port 16686 and exposes the Jaeger thrift
-agent on port 6831. You can visit Jaeger at
-[http://localhost:16686](http://localhost:16686).
-
-After you spin up the backend, your application needs to export traces to this
-system. Although `opentelemetry-sdk` doesn’t provide an exporter for Jaeger, you
-can install it as a separate package with the following command:
-
-```sh
-pip install opentelemetry-exporter-jaeger
-```
-
-After you install the exporter, update your code to import the Jaeger exporter
-and use that instead:
-
-{{% code_block_from file="jaeger_example.py" from="15" %}}
-
-Finally, run the Python script:
+First, modify `app.py` to include code that initializes a tracer and uses it to
+create a trace that's a child of the one that's automatically generated:
 
 ```python
-python jaeger_example.py
+# These are the necessary import declarations
+from opentelemetry import trace
+
+from random import randint
+from flask import Flask, request
+
+# Acquire a tracer. There's one set up for you globally,
+# and it's also used by opentelemetry-instrument.
+tracer = trace.get_tracer(__name__)
+
+app = Flask(__name__)
+
+@app.route("/rolldice")
+def roll_dice():
+    return str(do_roll())
+
+def do_roll():
+    # This creates a new trace that's the child of the current one
+    with tracer.start_as_current_span("do_roll") as rollspan:  
+        res = randint(1, 6)
+        rollspan.set_attribute("roll.value", res)
+        return res
 ```
 
-You can then visit the Jaeger UI, see your service under “services”, and find
-your traces!
+Now run the app again:
 
-## Instrumentation example with Flask
-
-While the example in the previous section is great, it’s very manual. The
-following are common actions you might want to track and include as part of your
-distributed tracing.
-
-
-* HTTP responses from web services
-
-
-* HTTP requests from clients
-
-
-* Database calls
-
-To track these common actions, OpenTelemetry has the concept of
-instrumentations. Instrumentations are packages designed to interface with a
-specific framework or library, such as Flask and psycopg2. You can find a list
-of the currently curated extension packages in the [Contrib
-repository](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation).
-
-Instrument a basic Flask application that uses the requests library to send HTTP
-requests. First, install the instrumentation packages themselves:
-
-```sh
-pip install opentelemetry-instrumentation-flask
-pip install opentelemetry-instrumentation-requests
+```shell
+opentelemetry-instrument --traces_exporter console flask run
 ```
 
-The following small Flask application sends an HTTP request and also activates
-each instrumentation during its initialization:
+When you send a request to the server, you'll see two spans in the trace emitted
+to the console, and the one called `do_roll` registers its parent as the
+automatically created one:
 
-{{% code_block_from file="flask_example.py" from="15" %}}
+<details>
+<summary>View example output</summary>
 
-Now run the script, hit the root URL
-([http://localhost:5000/](http://localhost:5000/)) a few times, and watch your
-spans be emitted!
-
-```sh
-python flask_example.py
+```json
+{
+    "name": "do_roll",
+    "context": {
+        "trace_id": "0x48da59d77e13beadd1a961dc8fcaa74e",
+        "span_id": "0x40c38b50bc8da6b7",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.INTERNAL",
+    "parent_id": "0x84f8c5d92970d94f",
+    "start_time": "2022-04-28T00:07:55.892307Z",
+    "end_time": "2022-04-28T00:07:55.892331Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "roll.value": 4
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "telemetry.sdk.language": "python",
+        "telemetry.sdk.name": "opentelemetry",
+        "telemetry.sdk.version": "1.11.1",
+        "telemetry.auto.version": "0.30b1",
+        "service.name": "unknown_service"
+    }
+}
+{
+    "name": "/roll",
+    "context": {
+        "trace_id": "0x48da59d77e13beadd1a961dc8fcaa74e",
+        "span_id": "0x84f8c5d92970d94f",
+        "trace_state": "[]"
+    },
+    "kind": "SpanKind.SERVER",
+    "parent_id": null,
+    "start_time": "2022-04-28T00:07:55.891500Z",
+    "end_time": "2022-04-28T00:07:55.892552Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "GET",
+        "http.server_name": "127.0.0.1",
+        "http.scheme": "http",
+        "net.host.port": 5000,
+        "http.host": "localhost:5000",
+        "http.target": "/roll?sides=10&rolls=2",
+        "net.peer.ip": "127.0.0.1",
+        "http.user_agent": "curl/7.68.0",
+        "net.peer.port": 53824,
+        "http.flavor": "1.1",
+        "http.route": "/roll",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "telemetry.sdk.language": "python",
+        "telemetry.sdk.name": "opentelemetry",
+        "telemetry.sdk.version": "1.11.1",
+        "telemetry.auto.version": "0.30b1",
+        "service.name": "unknown_service"
+    }
+}
 ```
 
-## Configure Your HTTP propagator (b3, Baggage)
+</details>
 
-A major feature of distributed tracing is the ability to correlate a trace
-across multiple services. However, those services need to propagate information
-about a trace from one service to the other.
+The `parent_id` of `do_roll` is the same is the `span_id` for `/rolldice`,
+indicating a parent-child reletionship!
 
-To enable this propagation, OpenTelemetry has the concept of [propagators]({{<
-relref "/docs/reference/specification/context/api-propagators" >}}), which
-provide a common method to encode and decode span information from a request and
-response, respectively.
+## Send traces to an OpenTelemetry Collector
 
-By default, `opentelemetry-python` is configured to use the [W3C Trace
-Context](https://www.w3.org/TR/trace-context/) and [W3C
-Baggage](https://www.w3.org/TR/baggage/) HTTP headers for HTTP requests, but you
-can configure it to leverage different propagators. Here’s an example using
-Zipkin’s [b3 propagation](https://github.com/openzipkin/b3-propagation):
-
-```sh
-pip install opentelemetry-propagator-b3
-```
-
-Following the installation of the package containing the b3 propagator,
-configure the propagator as follows:
-
-```python
-from opentelemetry.propagate import set_global_textmap
-from opentelemetry.propagators.b3 import B3Format
-
-set_global_textmap(B3Format())
-```
-
-## Use the OpenTelemetry Collector for traces
-
-Although it’s possible to directly export your telemetry data to specific
-backends, you might have more complex use cases such as the following:
-
+The [OpenTelemetry Collector](/docs/collector/getting-started/) is a critical
+component of most production deployments. Some examples of when it's beneficial
+to use a collector:
 
 * A single telemetry sink shared by multiple services, to reduce overhead of
-  switching exporters.
+  switching exporters
+* Aggregating traces across multiple services, running on multiple hosts
+* A central place to process traces prior to exporting them to a backend
 
+Unless you have just a single service or are experimenting, you'll want to use a
+collector in production deployments.
 
-* Aggregating traces across multiple services, running on multiple hosts.
+### Configure and run a local collector
 
-To enable a broad range of aggregation strategies, OpenTelemetry provides the
-[opentelemetry-collector](https://github.com/open-telemetry/opentelemetry-collector).
-The Collector is a flexible application that can consume trace data and export
-to multiple other backends, including to another instance of the Collector.
-
-Start the Collector locally to see how the Collector works in practice. Write
-the following file:
+First, save the following collector configuration code to a file in the `/tmp/` directory:
 
 ```yaml
 # /tmp/otel-collector-config.yaml
 receivers:
-    otlp:
-        protocols:
-            grpc:
-            http:
+  otlp:
+    protocols:
+      grpc:
 exporters:
-    logging:
-        loglevel: debug
+  logging:
+    loglevel: debug
 processors:
-    batch:
+  batch:
 service:
-    pipelines:
-        traces:
-            receivers: [otlp]
-            exporters: [logging]
-            processors: [batch]
+  pipelines:
+    traces:
+      receivers: [otlp]
+      exporters: [logging]
+      processors: [batch]
 ```
 
-Then start the Docker container:
+Then run the docker command to acquire and run the collector based on this
+configuration:
 
-```sh
+```shell
 docker run -p 4317:4317 \
     -v /tmp/otel-collector-config.yaml:/etc/otel-collector-config.yaml \
     otel/opentelemetry-collector:latest \
     --config=/etc/otel-collector-config.yaml
 ```
 
-Install the OpenTelemetry Collector exporter:
+You will now have an collector instance running locally, listening on port 4318.
 
-```sh
+### Modify the code to export spans via OTLP
+
+The next step is to modify the code to send spans to the collector via OTLP
+instead of the console.
+
+To do this, install the OTLP exporter package:
+
+```
 pip install opentelemetry-exporter-otlp
 ```
 
-Finally, execute the following script:
+Next, using the Flask server code from earlier, replace the console exporter
+with an OTLP exporter:
 
-{{% code_block_from file="otlpcollector_example.py" from="15" %}}
+```python
+from opentelemetry import trace
+from random import randint
+from flask import Flask, request
+
+tracer = trace.get_tracer(__name__)
+
+app = Flask(__name__)
+
+@app.route("/rolldice")
+def roll_dice():
+    return str(do_roll())
+
+def do_roll():
+    with tracer.start_as_current_span("do_roll") as rollspan:  
+        res = randint(1, 6)
+        rollspan.set_attribute("roll.value", res)
+        return res
+```
+
+By default, it will send spans to `localhost:4317`, which is what the collector
+is listening on.
+
+### Run the application
+
+Run the application like before, but don't export to the console:
+
+```
+opentelemetry-instrument flask run
+```
+
+By default, `opentelemetry-instrument` exports over spans over OTLP/gRPC.
+
+When you access the `/rolldice` route now, you'll see output from the collector
+process instead of the flask process, which should look something like this:
+
+<details>
+<summary>View example output</summary>
+
+```
+2022-05-11T23:25:24.025Z        INFO    loggingexporter/logging_exporter.go:41   TracesExporter  {"#spans": 2}
+2022-05-11T23:25:24.025Z        DEBUG   loggingexporter/logging_exporter.go:51   ResourceSpans #0
+Resource labels:
+     -> telemetry.sdk.language: STRING(python)
+     -> telemetry.sdk.name: STRING(opentelemetry)
+     -> telemetry.sdk.version: STRING(1.11.1)
+     -> telemetry.auto.version: STRING(0.30b1)
+     -> service.name: STRING(unknown_service)
+InstrumentationLibrarySpans #0
+InstrumentationLibrary app 
+Span #0
+    Trace ID       : 7840fce18857dd73622be53793ea085c
+    Parent ID      : ff6696dc1af70131
+    ID             : 6521d08561e8cd03
+    Name           : do_roll
+    Kind           : SPAN_KIND_INTERNAL
+    Start time     : 2022-05-11 23:25:23.330808486 +0000 UTC
+    End time       : 2022-05-11 23:25:23.330836966 +0000 UTC
+    Status code    : STATUS_CODE_UNSET
+    Status message : 
+Attributes:
+     -> roll.value: INT(2)
+InstrumentationLibrarySpans #1
+InstrumentationLibrary opentelemetry.instrumentation.flask 0.30b1
+Span #0
+    Trace ID       : 7840fce18857dd73622be53793ea085c
+    Parent ID      : 
+    ID             : ff6696dc1af70131
+    Name           : /rolldice
+    Kind           : SPAN_KIND_SERVER
+    Start time     : 2022-05-11 23:25:23.330153446 +0000 UTC
+    End time       : 2022-05-11 23:25:23.331035135 +0000 UTC
+    Status code    : STATUS_CODE_UNSET
+    Status message : 
+Attributes:
+     -> http.method: STRING(GET)
+     -> http.server_name: STRING(127.0.0.1)
+     -> http.scheme: STRING(http)
+     -> net.host.port: INT(5000)
+     -> http.host: STRING(localhost:5000)
+     -> http.target: STRING(/rolldice?vscodeBrowserReqId=1652311523254)
+     -> net.peer.ip: STRING(127.0.0.1)
+     -> http.user_agent: STRING(Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36)
+     -> net.peer.port: INT(45942)
+     -> http.flavor: STRING(1.1)
+     -> http.route: STRING(/rolldice)
+     -> http.status_code: INT(200)
+```
+
+</details>
+
+## Next steps
+
+There are several options available for automatic instrumentation and Python.
+See [Automatic Instrumentation]({{< relref "automatic" >}}) to learn about them
+and how to configure them.
+
+There's a lot more to manual instrumentation than just creating a child span. To
+learn details about initializing manual instrumentation and many more parts of
+the OpenTelemetry API you can use, see [Manual Instrumentation]({{< relref
+"manual"
+>}}).
+
+Finally, there are several options for exporting your telemetry data with
+OpenTelemetry. To learn how to export your data to a preferred backend, see
+[Exporters]({{< relref "exporters" >}}).

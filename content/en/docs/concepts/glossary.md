@@ -1,5 +1,7 @@
 ---
 title: Glossary
+description: >-
+ Terminology you may or may not be familiar with used by the OpenTelemetry project
 weight: 100
 ---
 
@@ -175,7 +177,7 @@ A name/value pair added to telemetry data. OpenTelemetry calls this
 ### **Metric**
 
 Records a data point, either raw measurements or predefined aggregation, as
-timeseries with [`Metadata`](#metadata). See [more][metric].
+time series with [`Metadata`](#metadata). See [more][metric].
 
 ### **OC**
 
@@ -277,7 +279,7 @@ scalability. A [`Service`](#service) may be deployed in multiple locations.
 
 ### **Signal**
 
-One of [`Traces`](#trace), [`Metrics`](#metric) or [`Logs`](#log). More on 
+One of [`Traces`](#trace), [`Metrics`](#metric) or [`Logs`](#log). More on
 Signals [here][signals].
 
 ### **Span**
@@ -328,31 +330,31 @@ on web pages when requested. See [more][zpages].
 
 ### Traces
 
-##### **[Trace API Terminology](/docs/reference/specification/trace/api)**
+#### **[Trace API Terminology](/docs/reference/specification/trace/api)**
 
-##### **[Trace SDK Terminology](/docs/reference/specification/trace/sdk)**
+#### **[Trace SDK Terminology](/docs/reference/specification/trace/sdk)**
 
 ### Metrics
 
-##### **[Metric API Terminology](/docs/reference/specification/metrics/api#overview)**
+#### **[Metric API Terminology](/docs/reference/specification/metrics/api#overview)**
 
-##### **[Metric SDK Terminology](/docs/reference/specification/metrics#specifications)**
+#### **[Metric SDK Terminology](/docs/reference/specification/metrics#specifications)**
 
 ### Logs
 
-##### **[Trace Context Fields](/docs/reference/specification/logs/data-model#trace-context-fields)**
+#### **[Trace Context Fields](/docs/reference/specification/logs/data-model#trace-context-fields)**
 
-##### **[Severity Fields](/docs/reference/specification/logs/data-model#severity-fields)**
+#### **[Severity Fields](/docs/reference/specification/logs/data-model#severity-fields)**
 
-##### **[Log Record Fields](/docs/reference/specification/logs/data-model#log-and-event-record-definition)**
+#### **[Log Record Fields](/docs/reference/specification/logs/data-model#log-and-event-record-definition)**
 
 ### Semantic Conventions
 
-##### **[Resource Conventions](/docs/reference/specification/resource/semantic_conventions)**
+#### **[Resource Conventions](/docs/reference/specification/resource/semantic_conventions)**
 
-##### **[Span Conventions](/docs/reference/specification/trace/semantic_conventions)**
+#### **[Span Conventions](/docs/reference/specification/trace/semantic_conventions)**
 
-##### **[Metric Conventions](/docs/reference/specification/metrics/semantic_conventions)**
+#### **[Metric Conventions](/docs/reference/specification/metrics/semantic_conventions)**
 
 [baggage]: /docs/reference/specification/baggage/api/
 [attribute]: /docs/reference/specification/common/#attributes

@@ -1,10 +1,13 @@
 ---
 title: Observability Primer
+description: >-
+  Learn some core concepts before you dig into OpenTelemetry
 weight: 9
+description: >-
+ Before digging into OpenTelemetry, it is important to understand some core concepts first.
 ---
 
-Before digging into OpenTelemetry, it is important to understand some core
-concepts first.
+
 
 ## What is Observability?
 
@@ -14,7 +17,7 @@ allows us to easily troubleshoot and handle novel problems (i.e. "unknown
 unknowns”), and helps us answer the question, "Why is this happening?"
 
 In order to be able to ask those questions of a system, the application must be
-properly instrumented. That is, the application code must emit 
+properly instrumented. That is, the application code must emit
 [signals](/docs/concepts/signals/) such as
 [traces](/docs/concepts/observability-primer/#distributed-traces),
 [metrics](/docs/concepts/observability-primer/#reliability--metrics), and
@@ -27,13 +30,13 @@ which application code is instrumented, to help make a system observable.
 
 ## Reliability & Metrics
 
-**Telemetry** refers to data emitted from a system, about its behaviour. The
+**Telemetry** refers to data emitted from a system, about its behavior. The
 data can come in the form of [Traces](#distributed-traces),
 [Metrics](#reliability--metrics), and [Logs](#logs).
 
 **Reliability** answers the question: "Is the service doing what users expect it
 to be doing?” A system could be up 100% of the time, but if, when a user clicks
-"Add to Cart” to add a black pair of pants to their shopping card, and instead,
+"Add to Cart” to add a black pair of pants to their shopping cart, and instead,
 the system keeps adding a red pair of pants, then the system would be said to be
 **un**reliable.
 
@@ -42,7 +45,7 @@ infrastructure or application. Examples include: system error rate, CPU
 utilization, request rate for a given service.
 
 **SLI**, or Service Level Indicator, represents a measurement of a service's
-behaviour. A good SLI measures your service from the perspective of your users.
+behavior. A good SLI measures your service from the perspective of your users.
 An example SLI can be the speed at which a web page loads.
 
 **SLO**, or Service Level Objective, is the means by which reliability is
@@ -59,7 +62,7 @@ A **Log** is a timestamped message emitted by services or other components.
 Unlike [Traces](#distributed-traces), however, they are not necessarily
 associated with any particular user request or transaction. They are found
 almost everywhere in software, and have been heavily relied on in the past by
-both developers and operators alike to help them understand system behaviour.
+both developers and operators alike to help them understand system behavior.
 
 Sample Log:
 
@@ -85,7 +88,7 @@ provide information about the operation it tracks.
 
 Below is a sample of the type of information that would be present in a Span:
 
-<img src="/img/span_visualization.png" alt="Sample Span" width="300"/>
+![Sample Span](/img/span_visualization.png)
 
 > For more on Spans and how they pertain to OTel, visit
 > [Spans in OpenTelemetry](/docs/concepts/signals/traces/#spans-in-opentelemetry).
@@ -114,7 +117,7 @@ Each Root Span represents a request from start to finish. The Spans underneath
 the parent provide a more in-depth context of what occurs during a request (or
 what steps make up a request).
 
-Many Observability back-ends vizualize Traces as waterfall diagrams that may
+Many Observability back-ends visualize Traces as waterfall diagrams that may
 look something like this:
 
 ![Sample Trace](/img/waterfall_trace.png "trace waterfall diagram")

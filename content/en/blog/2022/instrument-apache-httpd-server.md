@@ -24,7 +24,7 @@ The above command downloads all required dependencies, builds the OpenTelemetry 
 
 When the build is finished,  run the docker image, by typing the following command:
 ```
-docker-compose –profile centos7 up -d
+docker-compose --profile centos7 up -d
 ```
 
 The above command starts up the centos7 image in a docker container named `webserver_centos7` along with the OpenTelemetry Collector and a Zipkin backend.
@@ -66,7 +66,7 @@ docker exec -it webserver_centos7 /bin/bash
 yum install php -y
 ```
 
-- Add `AddType application/x-httpd-php.html` in `/etc/httpd/conf/httpd.conf` as mentioned below:
+- Add `AddType application/x-httpd-php .html` in `/etc/httpd/conf/httpd.conf` as mentioned below:
 
 	![Php-Config](/img/instrument-apache-http-server/php-config.png)
 
