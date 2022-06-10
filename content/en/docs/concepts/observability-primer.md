@@ -1,5 +1,7 @@
 ---
 title: Observability Primer
+description: >-
+  Learn some core concepts before you dig into OpenTelemetry
 weight: 9
 description: >-
  Before digging into OpenTelemetry, it is important to understand some core concepts first.

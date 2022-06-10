@@ -1,5 +1,7 @@
 ---
 title: "Instrumenting"
+description: >-
+  How OpenTelemetry facilitates automatic and manual instrumentation of applications
 weight: 40
 ---
 

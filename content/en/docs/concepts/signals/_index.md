@@ -1,5 +1,7 @@
 ---
 title: Signals
+description: >-
+  Categories of telemetry supported by OpenTelemetry
 weight: 11
 ---
 

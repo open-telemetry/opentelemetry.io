@@ -1,5 +1,7 @@
 ---
 title: Components
+description: >-
+  The main components that make up OpenTelemetry
 weight: 20
 ---
 
