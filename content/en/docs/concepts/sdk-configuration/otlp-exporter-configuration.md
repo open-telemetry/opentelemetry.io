@@ -12,7 +12,7 @@ endpoint for your traces, metrics, and logs.
 
 ### `OTEL_EXPORTER_OTLP_ENDPOINT`
 
-A base endpoint URL for any signal type, with an optionall-specified port
+A base endpoint URL for any signal type, with an optionally-specified port
 number. Helpful for when you're sending more than one signal to the same
 endpoint and want one environment variable to control the endpoint.
 
@@ -36,7 +36,7 @@ and logs, the following URLS are constructed from the example above:
 
 ### `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT`
 
-Endpoint URL for trace data only, with an optionall-specified port number. Must
+Endpoint URL for trace data only, with an optionally-specified port number. Must
 end with `v1/traces` if using OTLP/HTTP.
 
 **Default value:**
@@ -51,7 +51,7 @@ end with `v1/traces` if using OTLP/HTTP.
 
 ### `OTEL_EXPORTER_OTLP_METRICS_ENDPOINT`
 
-Endpoint URL for trace data only, with an optionall-specified port number. Must
+Endpoint URL for trace data only, with an optionally-specified port number. Must
 end with `v1/metrics` if using OTLP/HTTP.
 
 **Default value:**
@@ -66,7 +66,7 @@ end with `v1/metrics` if using OTLP/HTTP.
 
 ### `OTEL_EXPORTER_OTLP_LOGS_ENDPOINT`
 
-Endpoint URL for trace data only, with an optionall-specified port number. Must
+Endpoint URL for trace data only, with an optionally-specified port number. Must
 end with `v1/logs` if using OTLP/HTTP.
 
 **Default value:**
@@ -170,3 +170,51 @@ The timeout value for all outgoing logs in milliseconds.
 **Example:**
 
 `export OTEL_EXPORTER_OTLP_LOGS_TIMEOUT=500`
+
+### `OTEL_EXPORTER_OTLP_PROTOCOL`
+
+Specifies the OTLP transport protocol to be used for all telemetry data.
+
+**Default value:** SDK-dependent, but will typically be either `http/protobuf` or `grpc`.
+
+**Example:**
+
+`export OTEL_EXPORTER_OTLP_PROTOCOL=grpc`
+
+Valid values are:
+
+* `grpc` to use OTLP/gRPC
+* `http/protobuf` to use OTLP/HTTP+protobuf
+* `http/json` to use OTLP/HTTP+protobuf
+
+### `OTEL_EXPORTER_OTLP_TRACES_PROTOCOL`
+
+Specifies the OTLP transport protocol to be used for trace data.
+
+**Default value:** SDK-dependent, but will typically be either `http/protobuf` or `grpc`.
+
+**Example:**
+
+`export OTEL_EXPORTER_OTLP_TRACES_PROTOCOL=grpc`
+
+Valid values are:
+
+* `grpc` to use OTLP/gRPC
+* `http/protobuf` to use OTLP/HTTP+protobuf
+* `http/json` to use OTLP/HTTP+protobuf
+
+### `OTEL_EXPORTER_OTLP_METRICS_PROTOCOL`
+
+Specifies the OTLP transport protocol to be used for metrics data.
+
+**Default value:** SDK-dependent, but will typically be either `http/protobuf` or `grpc`.
+
+**Example:**
+
+`export OTEL_EXPORTER_OTLP_METRICS_PROTOCOL=grpc`
+
+Valid values are:
+
+* `grpc` to use OTLP/gRPC
+* `http/protobuf` to use OTLP/HTTP+protobuf
+* `http/json` to use OTLP/HTTP+protobuf
