@@ -16,6 +16,7 @@
 * @open-telemetry/docs-approvers
 
 # content owners
+content/en/docs/instrumentation/js/      @open-telemetry/docs-approvers @open-telemetry/javascript-approvers
 content/en/docs/instrumentation/cpp/     @open-telemetry/docs-approvers @open-telemetry/cpp-maintainers
 content/en/docs/instrumentation/java/    @open-telemetry/docs-approvers @open-telemetry/java-maintainers @open-telemetry/java-instrumentation-maintainers
 content/en/docs/instrumentation/net/     @open-telemetry/docs-approvers @open-telemetry/dotnet-approvers @open-telemetry/dotnet-instrumentation-approvers
