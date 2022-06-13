@@ -182,7 +182,7 @@ type Config struct{
 
 In order to be able to give your receiver access to it's settings the `Config` struct must:
 
-- embed the [config.ReceiverSettings](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.49.0/config/receiver.go#L32) struct or a struct that extends it.
+- embed the [config.ReceiverSettings](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.53.0/config/receiver.go#L42) struct or a struct that extends it.
 
 - Add a field for each of the receiver's settings.
 
@@ -214,7 +214,7 @@ type Config struct {
 
   
 
-Now that you have access to the settings, you can provide any kind of validation needed for those values by implementing the `Validate` method according to the [validatable](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.49.0/config/config.go#L154) interface.
+Now that you have access to the settings, you can provide any kind of validation needed for those values by implementing the `Validate` method according to the [validatable](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.53.0/config/common.go#L24) interface.
 
 In this case, the `interval` value will be optional (we will look at generating default values later) but when defined should be at least 1 minute (1m) and the the `number_of_traces` will be a required value. Here is what the config.go looks like after implementing the `Validate` method.
 
@@ -255,7 +255,7 @@ func (cfg *Config) Validate() error {
 >- I added the `Validate` method to my Config struct where I am checking if the `interval` setting value is at least 1 minute (1m) and if the `number_of_traces` setting value is greater or equal to 1. If that is not true the Collector will generate an error during it's startup process and display the message accordingly.
 
 
-If you want to take a closer look at the structs and interfaces involved in the configuration aspects of a receiver component, take a look at the [config/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.49.0/config/receiver.go) file inside the Collector's GitHub project.
+If you want to take a closer look at the structs and interfaces involved in the configuration aspects of a receiver component, take a look at the [config/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.53.0/config/receiver.go) file inside the Collector's GitHub project.
 
   
 
@@ -308,11 +308,11 @@ func components() (component.Factories, error) {
 }
 ```
 
-As you can see, the `components()` function is responsible to provide the Collector the factories for all it's components which is represented by a variable called `factories` of type `component.Factories` (here is the declaration of the [component.Factories](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.49.0/component/factories.go#L25) struct), which will then be used to instantiate the components that are configured and consumed by the Collector's pipelines.
+As you can see, the `components()` function is responsible to provide the Collector the factories for all it's components which is represented by a variable called `factories` of type `component.Factories` (here is the declaration of the [component.Factories](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.53.0/component/factories.go#L25) struct), which will then be used to instantiate the components that are configured and consumed by the Collector's pipelines.
 
 Notice that `factories.Receivers` is the field holding a map to all the receiver factories (instances of `ReceiverFactory`), and it currently has the `otlpreceiver` factory only which is instantiated through the `otlpreceiver.NewFactory()` function call.
 
-The `tailtracer` receiver has to provide a `ReceiverFactory` implementation, and although you will find a `ReceiverFactory` interface (you can find it's definition in the [component/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.49.0/component/receiver.go#L105) file within the Collector's project ), the right way to provide the implementation is by using the functions available within the `go.opentelemetry.io/collector/component` package.
+The `tailtracer` receiver has to provide a `ReceiverFactory` implementation, and although you will find a `ReceiverFactory` interface (you can find it's definition in the [component/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.53.0/component/receiver.go#L104) file within the Collector's project ), the right way to provide the implementation is by using the functions available within the `go.opentelemetry.io/collector/component` package.
 
   
 
@@ -350,7 +350,7 @@ func NewFactory() component.ReceiverFactory {
 In order to instantiate your `tailtracer` receiver factory, you will use the  following function from the `component` package:
 
 ```go
-func NewReceiverFactory(cfgType config.Type, createDefaultConfig CreateDefaultConfig, options ...FactoryOption) component.ReceiverFactory
+func NewReceiverFactory(cfgType config.Type, createDefaultConfig ReceiverCreateDefaultConfigFunc, options ...ReceiverFactoryOption)) component.ReceiverFactory
 ```
 
   
@@ -359,9 +359,9 @@ The `component.NewReceiverFactory()` instantiate and returns a `component.Receiv
 
 - `config.Type`: A config.Type instance representing a unique identifier for your receiver across all Collector's components.
 
-- `CreateDefaultConfig`: A reference to a function that returns the config.Receiver instance for your receiver.
+- `ReceiverCreateDefaultConfigFunc`: A reference to a function that returns the config.Receiver instance for your receiver.
 
-- `... FactoryOption`: The slice of FactoryOptions that will determine what type of MELT datasource your receiver is capable of processing.
+- `... ReceiverFactoryOption`: The slice of ReceiverFactoryOptions that will determine what type of MELT datasource your receiver is capable of processing.
 
 Let's now implement the code to support all the parameters required by `component.NewReceiverFactory()`
 
@@ -372,7 +372,7 @@ Let's now implement the code to support all the parameters required by `componen
 ### Identifying and Providing default settings for the receiver
   
 
-If you take a look at the definition of [config.Type](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.49.0/config/config.go#L151), you will see that it's just a string. So all we need to do is to provide a string constant representing the unique identifier for our receiver.
+If you take a look at the definition of [config.Type](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.53.0/config/common.go#L21), you will see that it's just a string. So all we need to do is to provide a string constant representing the unique identifier for our receiver.
 
 Previously, we said that the `interval` setting for our `tailtracer` receiver would be optional, in that case you will need to provide a default value for it so it can be used as part of the default settings. 
 
@@ -446,9 +446,9 @@ func NewFactory() component.ReceiverFactory {
   
 
 
-If you take a closer look at the `ReceiverSettings` struct and `NewReceiverSettings` function (they are declared within the [config/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.49.0/config/receiver.go) file inside the Collector's GitHub project), you will find out that the `ReceiverSettings` is implementing the methods to support the `identifiable` interface which are also required by any Collector's component.
+If you take a closer look at the `ReceiverSettings` struct and `NewReceiverSettings` function (they are declared within the [config/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.53.0/config/receiver.go) file inside the Collector's GitHub project), you will find out that the `ReceiverSettings` is implementing the methods to support the `identifiable` interface which are also required by any Collector's component.
 
-All the types and functions involved in supporting the requirements for component's identification are implemented within the [config/identifiable.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.49.0/config/identifiable.go) file inside the Collector's GitHub project.
+All the types and functions involved in supporting the requirements for component's identification are implemented within the [config/identifiable.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.53.0/config/identifiable.go) file inside the Collector's GitHub project.
 
   
 
@@ -619,7 +619,7 @@ func components() (component.Factories, error) {
 
 >### Reviewing the code
 >
->- Importing the `github.com/rquedas/otel4devs/collector/receiver/trace-receiver/tailtracer` moudle which is where the receiver types and function are.
+>- Importing the `github.com/rquedas/otel4devs/collector/receiver/trace-receiver/tailtracer` module which is where the receiver types and function are.
 >- Added a call to `tailtracer.NewFactory()` as a parameter of the `component.MakeReceiverFactoryMap()` call so your `tailtracer` receiver factory is properly added to the `factories` map.
 
   
@@ -665,9 +665,9 @@ The `tailtracer` receiver factory and config requirements are done and the Colle
 
 In the previous section, I mentioned the fact that a receiver can process any of the OTel supported datasources (traces, metrics or log), and the Collector's API is designed to help you accomplish that.
 
-All the receiver API's responsible to enable the datasources are currently declared in the [component/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.49.0/config/receiver.go) file within the OTel Collector's project in GitHub, open the file and take a minute to browse through all the interfaces declared in it. 
+All the receiver API's responsible to enable the datasources are currently declared in the [component/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.53.0/component/receiver.go) file within the OTel Collector's project in GitHub, open the file and take a minute to browse through all the interfaces declared in it. 
 
-Notice that `component.TracesReceiver` (and it's siblings `MetricsReceiver` and `LogsReceiver`) at this point in time, doesn't describe any specific methods other than the ones it "inherits" from `component.Receiver` which also doesn't describe any specific methods other than the ones it "inherits" from `component.Component`. 
+Notice that `component.TracesReceiver` (and it's siblings `component.MetricsReceiver` and `component.LogsReceiver`) at this point in time, doesn't describe any specific methods other than the ones it "inherits" from `component.Receiver` which also doesn't describe any specific methods other than the ones it "inherits" from `component.Component`. 
 
 It might feel weird, but remember, the Collector's API was meant to be extensible, and the components and their datasources might evolve in different ways, so the role of those interfaces exist to help support that. 
 
@@ -863,7 +863,7 @@ Open the `tailtracer/factory.go` file and navigate to the `createTracesReceiver(
 
 The receiver is only instantiated if it's declared as a component within a pipeline and the factory is responsible to make sure the next consumer (either a processor or exporter) in the pipeline is valid otherwise it should generate an error. 
 
-The Collector's api provides a package with helper functions for component error handling called `go.opentelemetry.io/collector/component/componenterror`, if you open the [error.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.49.0/component/componenterror/errors.go) you will find the `ErrNilNextConsumer` error, which is what your receiver factory should throw in case the next consumer has an issue and is passed as nil.
+The Collector's api provides some standard error types to help the factory handle pipeline configurations. Your receiver factory should throw a `component.ErrNilNextConsumer` in case the next consumer has an issue and is passed as nil.
 
 The `createTracesReceiver()` function will need a guard clause to make that validation.
 
@@ -881,7 +881,6 @@ import (
 	"go.opentelemetry.io/collector/component"
 	"go.opentelemetry.io/collector/config"
 	"go.opentelemetry.io/collector/consumer"
-	"go.opentelemetry.io/collector/component/componenterror"
 )
 
 const (
@@ -898,7 +897,7 @@ func createDefaultConfig() config.Receiver {
 
 func createTracesReceiver(_ context.Context, params component.ReceiverCreateSettings, baseCfg config.Receiver, consumer consumer.Traces) (component.TracesReceiver, error) {
 	if consumer == nil {
-		return nil, componenterror.ErrNilNextConsumer
+		return nil, component.ErrNilNextConsumer
 	}
 	
 	logger := params.Logger
@@ -923,7 +922,7 @@ func NewFactory() component.ReceiverFactory {
 }
 ```
 >### Reviewing the code
->- Importing the `go.opentelemetry.io/collector/component/componenterror` which is where the component errors are declared.
+>- Added a guard clause that verifies if the consumer is properly instantiated and if not returns the `component.ErrNilNextConsumer`error. 
 >- Added a variable called `logger` and initialized it with the Collector's logger that is available as a field named `Logger` within the `component.ReceiverCreateSettings` reference.
 >- Added a variable called `tailtracerCfg` and initialized it by casting the `config.Receiver` reference to the `tailtracer` receiver `Config`.
 >- Added a variable called `traceRcvr` and initialized it with the `tailtracerReceiver` instance using the factory information stored within the variables.
@@ -1018,7 +1017,7 @@ Creating a trace within the trace receiver will be slightly different than the w
 
 ### Working with Resources
 
-In the OTel world, all telemetry is generated by a `Resource`, here is the definition according to the [OTel spec](https://github.com/open-telemetry/opentelemetry-specification/blob/v0.49.0/specification/resource/sdk.mds):
+In the OTel world, all telemetry is generated by a `Resource`, here is the definition according to the [OTel spec](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/sdk.md):
 
 >A `Resource` is an immutable representation of the entity producing telemetry as Attributes. For example, a process producing telemetry that is running in a container on Kubernetes has a Pod name, it is in a namespace and possibly is part of a Deployment which also has a name. All three of these attributes can be included in the `Resource`.
 
@@ -1065,7 +1064,7 @@ type BackendSystem struct{
 }
 ```
 
-These types are meant to represent the entities as they are within the system been observed and they contain information that would be quite meaningful to be added to the traces as part of the `Resource` definition. You will some helper functions to generate the instances of those types. 
+These types are meant to represent the entities as they are within the system been observed and they contain information that would be quite meaningful to be added to the traces as part of the `Resource` definition. You will add some helper functions to generate the instances of those types. 
 
 Here is what the `model.go` file will look with the helper functions:
 
@@ -1074,7 +1073,6 @@ Here is what the `model.go` file will look with the helper functions:
 package tailtracer
 
 import (
-	"go.opentelemetry.io/collector/model/pdata"
 	"math/rand"
 	"time"
 )
@@ -1170,18 +1168,23 @@ func getRandomNumber(min int, max int) int {
 
 Now that you have the functions to generate object instances representing the entities generating telemetry, you are ready to represent those entities in the OTel Collector world.
 
-The Collector's API provides a package named `pdata` with all the types, interfaces and helper functions required to work with traces (and all the other OTel datasources) within the Collector's pipeline components.
+The Collector's API provides a package named `ptrace` (nested under the `pdata` package) with all the types, interfaces and helper functions required to work with traces within the Collector's pipeline components.
 
-Before you can define a `Resource`, you need to create a `pdata.Traces` that will be responsible to propagate the traces through the Collector's pipeline and you can use the helper function `pdata.NewTraces()` to  instantiate it.
+Open the `tailtracer/model.go` file and add `go.opentelemetry.io/collector/pdata/ptrace` to the `import` clause so you can have access to the `ptrace` package capabilities.
+
+Before you can define a `Resource`, you need to create a `ptrace.Traces` that will be responsible to propagate the traces through the Collector's pipeline and you can use the helper function `ptrace.NewTraces()` to  instantiate it.
 You will also need to create instances of the `Atm` and `BackendSystem` types so you can have data to represent the telemetry sources involved in your trace.
 
-Open the `model.go` and add the following function to it:
+Open the `tailtracer/model.go` file and add the following function to it:
 
 ```go
-func generateTraces() pdata.Traces{
-	traces := pdata.NewTraces()
-	newAtm := generateAtm()
-	newBackendSystem := generateBackendSystem()
+func generateTraces() ptrace.Traces{
+	traces := ptraces.NewTraces()
+
+	for i := 0; i <= numberOfTraces; i++{
+		newAtm := generateAtm()
+		newBackendSystem := generateBackendSystem()
+	}
 
 	return traces
 }
@@ -1190,29 +1193,34 @@ func generateTraces() pdata.Traces{
 
 By now you have heard and read enough about how traces are made up of Spans. You have probably also written some instrumentation code using the SDK's functions and types available to create them, but what you probably didn't know, is that within the Collector's API, that there are a other types of "spans" involved in creating a trace.
 
-You will start with a type called `pdata.ResourceSpans` which represents the resource and all the operations that it either originated or received while participating in a trace. You can find it's definition within the [/model/internal/data/protogen/trace/v1/trace.pb.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.49.0/pdata/internal/data/protogen/trace/v1/trace.pb.go). 
+You will start with a type called `ptrace.ResourceSpans` which represents the resource and all the operations that it either originated or received while participating in a trace. You can find it's definition within the [/pdata/internal/data/protogen/trace/v1/trace.pb.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.50.0/pdata/internal/data/protogen/trace/v1/trace.pb.go). 
 
-`pdata.Traces` has a method named `ResourceSpans()` which returns an instance of a helper type called `pdata.ResourceSpansSlice`. The `pdata.ResourceSpansSlice` type has methods to help you handle the array of `pdata.ResourceSpans` that will contain as many items as the number of `Resource` entities participating in the request represented by the trace.
 
-`pdata.ResourceSpansSlice` has a method named `AppendEmpty()` that adds a new `pdata.ResourceSpan` to the array and return it's reference.
+`ptrace.Traces` has a method named `ResourceSpans()` which returns an instance of a helper type called `ptrace.ResourceSpansSlice`. The `ptrace.ResourceSpansSlice` type has methods to help you handle the array of `ptrace.ResourceSpans` that will contain as many items as the number of `Resource` entities participating in the request represented by the trace.
 
-Once you have an instance of a  `pdata.ResourceSpan` you will use a method named `Resource()` which will return the instance of the `Resource` associated with the `ResourceSpan`.
+`ptrace.ResourceSpansSlice` has a method named `AppendEmpty()` that adds a new `ptrace.ResourceSpan` to the array and return it's reference.
+
+Once you have an instance of a  `ptrace.ResourceSpan` you will use a method named `Resource()` which will return the instance of the `pcommon.Resource` associated with the `ResourceSpan`.
+
 
 Update the `generateTrace()` function with the following changes:
 - add a variable named `resourceSpan` to represent the `ResourceSpan`
-- add a variable named `atmResource` to represent the `Resource` associated with the `ResourceSpan`. 
+- add a variable named `atmResource` to represent the `pcommon.Resource` associated with the `ResourceSpan`. 
 - Use the methods mentioned above to initialize both variables respectively. 
 
 Here is what the function should look like after you implemented these changes:
 
  ```go
-func generateTraces() pdata.Traces{
-	traces := pdata.NewTraces()
-	newAtm := generateAtm()
-	newBackendSystem := generateBackendSystem()
+func generateTraces() ptrace.Traces{
+	traces := ptrace.NewTraces()
 
-	resourceSpan := traces.ResourceSpans().AppendEmpty()
-    atmResource := resourceSpan.Resource()
+	for i := 0; i <= numberOfTraces; i++{
+		newAtm := generateAtm()
+		newBackendSystem := generateBackendSystem()
+
+		resourceSpan := traces.ResourceSpans().AppendEmpty()
+		atmResource := resourceSpan.Resource()
+	}
 
 	return traces
 }
@@ -1220,28 +1228,32 @@ func generateTraces() pdata.Traces{
 >### Reviewing the code
 >
 >- Added the `resourceSpan` variable and initialized it with the `ResourceSpan` reference returned by the `traces.ResourceSpans().AppendEmpty()` call
->- Added the `atmResource` variable and initialized it with the `Resource` reference returned by the `resourceSpan.Resource()` call
+>- Added the `atmResource` variable and initialized it with the `pcommon.Resource` reference returned by the `resourceSpan.Resource()` call
 
   
 
 ### Describing Resources through attributes
 
-In the Collector's world, a `Resource` is described by attributes in a key/value pair format represented by the `pdata.AttributeMap` type.
+The Collector's API provides a package named `pcommon` (nested under the `pdata` package) with all the types and helper functions required to describe a `Resource`.
 
-You can check the definition of the `pdata.AttributeMap` type and the related helper functions to create attribute values using the supported formats in the [/model/internal/data/pdata/common.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.49.0/model/internal/pdata/common.go) file within the Otel Collector's GitHub project.
+In the Collector's world, a `Resource` is described by attributes in a key/value pair format represented by the `pcommon.Map` type.
+
+You can check the definition of the `pcommon.Map` type and the related helper functions to create attribute values using the supported formats in the [/pdata/internal/common.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.50.0/pdata/internal/common.go) file within the Otel Collector's GitHub project.
 
 Key/value pairs provide a lot of flexibility to help model your `Resource` data, so the OTel specification has some guidelines in place to help organize and minimize the conflicts across all the different types of telemetry generation entities that it may need to represent.
 
-Those guidelines are known as Resource Semantic Convention and can be found [here](https://github.com/open-telemetry/opentelemetry-specification/blob/v0.49.0/specification/resource/semantic_conventions/README.md) within the OTel Specification GitHub project.
+Those guidelines are known as Resource Semantic Convention and can be found [here](https://github.com/open-telemetry/opentelemetry-specification/tree/v1.11.0/specification/resource/semantic_conventions/README.md) within the OTel Specification GitHub project.
 
 When creating your own attributes to represent your own telemetry generation entities, you should follow the guideline provided by the specification:
 
 >Attributes are grouped logically by the type of the concept that they described. Attributes in the same group have a common prefix that ends with a dot. For example all attributes that describe Kubernetes properties start with "k8s."
 
-Let's create a function to read the field values from an `Atm` instance and write them as attributes (grouped by the prefix "atm.") into a `Resource` instance. Open the `tailtracer/model.go` file and add the following function:
+Let's start by opening the `tailtracer/model.go` and adding `go.opentelemetry.io/collector/pdata/pcommon` to the `import` clause so you can have access to the `pcommon` package capabilities.
+
+Now go ahead and add a function to read the field values from an `Atm` instance and write them as attributes (grouped by the prefix "atm.") into a `pcommon.Resource` instance. Here is what the function looks like:
 
 ```go
-func fillResourceWithAtm(resource *pdata.Resource, atm Atm){
+func fillResourceWithAtm(resource *pcommon.Resource, atm Atm){
    atmAttrs := resource.Attributes()
    atmAttrs.InsertInt("atm.id", atm.ID)
    atmAttrs.InsertString("atm.stateid", atm.StateID)
@@ -1251,22 +1263,22 @@ func fillResourceWithAtm(resource *pdata.Resource, atm Atm){
 ```
 >### Reviewing the code
 >
->- Declared a variable called `atmAttrs` and initialized it with the `pdata.AttributeMap` reference returned by the `resource.Attributes()` call
->- Used the `InsertInt()` and `InsertString()` methods from `pdata.AttributetMap` to add int and string attributes based on the equivalent `Atm` field types. Notice that because those attributes are very specific and only represent the `Atm` entity, they are all grouped within the "atm." prefix.
+>- Declared a variable called `atmAttrs` and initialized it with the `pcommon.Map` reference returned by the `resource.Attributes()` call
+>- Used the `InsertInt()` and `InsertString()` methods from `pcommon.Map` to add int and string attributes based on the equivalent `Atm` field types. Notice that because those attributes are very specific and only represent the `Atm` entity, they are all grouped within the "atm." prefix.
 
   
 
-The resource semantic conventions also have prescriptive attribute names and well-known values to represent telemetry generation entities that are common and applicable across different domains like [compute unit](https://github.com/open-telemetry/opentelemetry-specification/blob/v0.49.0/specification/resource/semantic_conventions/README.md#compute-unit), [environment](https://github.com/open-telemetry/opentelemetry-specification/blob/v0.49.0/specification/resource/semantic_conventions/README.md#environment) and others.
+The resource semantic conventions also have prescriptive attribute names and well-known values to represent telemetry generation entities that are common and applicable across different domains like [compute unit](https://github.com/open-telemetry/opentelemetry-specification/tree/v1.11.0/specification/resource/semantic_conventions#compute-unit), [environment](https://github.com/open-telemetry/opentelemetry-specification/tree/v1.11.0/specification/resource/semantic_conventions#compute-unit) and others.
 
-So, when you look at the `BackendSystem` entity, it has fields representing [OS](https://github.com/open-telemetry/opentelemetry-specification/blob/v0.49.0/specification/resource/semantic_conventions/os.md) related information and [Cloud](https://github.com/open-telemetry/opentelemetry-specification/blob/v0.49.0/specification/resource/semantic_conventions/cloud.md) related information, and we will use the attribute names and values prescribed by the resource semantic convention to represent that information on it's `Resource`.
+So, when you look at the `BackendSystem` entity, it has fields representing [OS](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.11.0/specification/resource/semantic_conventions/os.md) related information and [Cloud](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.11.0/specification/resource/semantic_conventions/cloud.md) related information, and we will use the attribute names and values prescribed by the resource semantic convention to represent that information on it's `Resource`.
 
-All the resource semantic convention attribute names and well known-values are kept within the [model/semconv/v1.8.0/resource.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.49.0/model/semconv/v1.8.0/resource.go) file within the Collector's GitHub project.
+All the resource semantic convention attribute names and well known-values are kept within the [/semconv/v1.9.0/generated_resource.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.50.0/semconv/v1.9.0/generated_resource.go) file within the Collector's GitHub project.
 
 
-Let's create a function to read the field values from an `BackendSystem` instance and write them as attributes  into a `Resource` instance. Open the `tailtracer/model.go` file and add the following function:
+Let's create a function to read the field values from an `BackendSystem` instance and write them as attributes  into a `pcommon.Resource` instance. Open the `tailtracer/model.go` file and add the following function:
 
 ```go
-func fillResourceWithBackendSystem(resource *pdata.Resource, backend BackendSystem){
+func fillResourceWithBackendSystem(resource *pcommon.Resource, backend BackendSystem){
 	backendAttrs := resource.Attributes()
 	var osType, cloudProvider string
 
@@ -1297,7 +1309,7 @@ func fillResourceWithBackendSystem(resource *pdata.Resource, backend BackendSyst
 ```
   
 
-Notice that I didn't add an attribute named "atm.name" or "backendsystem.name" to the `Resource` representing the `Atm` and `BackendSystem` entity names, that's because most (not to say all) distributed tracing backend systems that are compatible with the OTel trace specification, interpret the `Resource` described in a trace as a `Service`, therefore they expect the `Resource` to carry a required attribute named `service.name` as prescribed by the resource semantic convention. 
+Notice that I didn't add an attribute named "atm.name" or "backendsystem.name" to the `pcommon.Resource` representing the `Atm` and `BackendSystem` entity names, that's because most (not to say all) distributed tracing backend systems that are compatible with the OTel trace specification, interpret the `pcommon.Resource` described in a trace as a `Service`, therefore they expect the `pcommon.Resource` to carry a required attribute named `service.name` as prescribed by the resource semantic convention. 
 
 We will also use non-required attribute named `service.version` to represent the version information for both `Atm` and `BackendSystem` entities.
 
@@ -1308,10 +1320,11 @@ Here is what the `tailtracer/model.go` file looks like after adding the code for
 package tailtracer
 
 import (
-	"go.opentelemetry.io/collector/model/pdata"
 	"math/rand"
 	"time"
-	conventions "go.opentelemetry.io/collector/model/semconv/v1.8.0"
+	"go.opentelemetry.io/collector/pdata/pcommon"
+	"go.opentelemetry.io/collector/pdata/ptrace"
+	conventions "go.opentelemetry.io/collector/model/semconv/v1.9.0"
 )
 
 type Atm struct{
@@ -1394,18 +1407,21 @@ func getRandomNumber(min int, max int) int {
     return i	
 } 
 
-func generateTraces() pdata.Traces{
-	traces := pdata.NewTraces()
-	newAtm := generateAtm()
-	newBackendSystem := generateBackendSystem()
+func generateTraces() ptrace.Traces{
+	traces := ptraces.NewTraces()
 
-	resourceSpan := traces.ResourceSpans().AppendEmpty()
-	atmResource := resourceSpan.Resource()
-	fillResourceWithAtm(&atmResource, newAtm)
+	for i := 0; i <= numberOfTraces; i++{
+		newAtm := generateAtm()
+		newBackendSystem := generateBackendSystem()
 
-	resourceSpan = traces.ResourceSpans().AppendEmpty()
-	backendResource := resourceSpan.Resource()
-	fillResourceWithBackendSystem(&backendResource, newBackendSystem)
+		resourceSpan := traces.ResourceSpans().AppendEmpty()
+		atmResource := resourceSpan.Resource()
+		fillResourceWithAtm(&atmResource, newAtm)
+
+		resourceSpan = traces.ResourceSpans().AppendEmpty()
+		backendResource := resourceSpan.Resource()
+		fillResourceWithBackendSystem(&backendResource, newBackendSystem)
+	}
 
 	return traces
 }
@@ -1457,10 +1473,10 @@ func fillResourceWithBackendSystem(resource *pdata.Resource, backend BackendSyst
 ```
 >### Reviewing the code
 >
->- Imported the `go.opentelemetry.io/collector/model/semconv/v1.8.0` package as `conventions`, in order to have access to all resource semantic conventions attribute names and values.
->- Updated the `fillResourceWithAtm()` function  by adding lines to properly assign the "service.name" and "service.version" attributes to the `Resource` representing the `Atm` entity
->- Updated the `fillResourceWithBackendSystem()` function  by adding lines to properly assign the "service.name" and "service.version" attributes to the `Resource` representing the `BackendSystem` entity
->- Updated the `generateTraces()` function  by adding lines to properly instantiate a `Resource` and fill in the attribute information for both `Atm` and `BackendSystem` entities using the `fillResourceWithAtm()` and `fillResourceWithBackendSystem()` functions
+>- Imported the `go.opentelemetry.io/collector/model/semconv/v1.9.0` package as `conventions`, in order to have access to all resource semantic conventions attribute names and values.
+>- Updated the `fillResourceWithAtm()` function  by adding lines to properly assign the "service.name" and "service.version" attributes to the `pcommon.Resource` representing the `Atm` entity
+>- Updated the `fillResourceWithBackendSystem()` function  by adding lines to properly assign the "service.name" and "service.version" attributes to the `pcommon.Resource` representing the `BackendSystem` entity
+>- Updated the `generateTraces()` function  by adding lines to properly instantiate a `pcommon.Resource` and fill in the attribute information for both `Atm` and `BackendSystem` entities using the `fillResourceWithAtm()` and `fillResourceWithBackendSystem()` functions
 
 
 ### Representing operations with spans
@@ -1468,13 +1484,26 @@ You now have a `ResourceSpan` instance with their respective `Resource` properly
 
 In the OTel world, in order for a system to generate telemetry, it needs to be instrumented either manually or automatically through an instrumentation library.
 
-The instrumentation libraries are responsible to identify what operations are going to be part of a trace and describe those operations as spans within the context of the trace.
+The instrumentation libraries are responsible to set the scope (also known as the instrumentation scope) in which the operations participating on a trace happened and then describe those operations as spans within the context of the trace.
 
-`pdata.ResourceSpans` has a method named `InstrumentationLibrarySpans()` which returns an instance of a helper type called `pdata.InstrumentationLibrarySpansSlice`. The `pdata.InstrumentationLibrarySpansSlice` type has methods to help you handle the array of `pdata.InstrumentationLibrarySpan` that will contain as many items as the number of `pdata.InstrumentationLibrary` representing the different instrumentation libraries describing the spans participating in a trace.
+`pdata.ResourceSpans` has a method named `ScopeSpans()` which returns an instance of a helper type called `ptrace.ScopeSpansSlice`. The `ptrace.ScopeSpansSlice` type has methods to help you handle the array of `ptrace.ScopeSpans` that will contain as many items as the number of `ptrace.ScopeSpan` representing the different instrumentation scopes and the spans it generated within the context of a trace.
 
-`pdata.InstrumentationLibrarySpansSlice` has a method named `AppendEmpty()` that adds a new `pdata.InstrumentationLibrarySpan` to the array and return it's reference.
+`ptrace.ScopeSpansSlice` has a method named `AppendEmpty()` that adds a new `ptrace.ScopeSpans` to the array and return it's reference.
 
-`pdata.InstrumentationLibrarySpan` has the following methods to describe an instrumentation library:
+Let's create a function to instantiate a `ptrace.ScopeSpans` representing for the ATM system's instrumentation scope and it's spans. Open the `tailtracer/model.go` file and add the following function:
+
+```go
+ func appendAtmSystemInstrScopeSpans(resourceSpans *ptrace.ResourceSpans) (ptrace.ScopeSpans){
+	scopeSpans := resourceSpans.ScopeSpans().AppendEmpty()
+
+    return scopeSpans
+}
+```
+
+The `ptrace.ScopeSpans` has a method named `Scope()` that returns a reference for the `pcommon.InstrumentationScope` instance representing the instrumentation scope that generated the spans.
+
+`pcommon.InstrumentationScope` has the following methods to describe an instrumentation scope:
+
 - `SetName(v string)`  
   sets the name for the instrumentation library
 
@@ -1487,85 +1516,88 @@ The instrumentation libraries are responsible to identify what operations are go
 - `Version() string`  
   returns the version associated with the instrumentation library
 
-Let's create a function to instantiate a `pdata.InstrumentationLibrarySpan` representing for the ATM system's instrumentation library. Open the `tailtracer/model.go` file and add the following function:
+Let's update the `appendAtmSystemInstrScopeSpans` function so we can set the name and version of the instrumentation scope for the new `ptrace.ScopeSpans`. Here is what `appendAtmSystemInstrScopeSpans` looks like after the update:
 
 ```go
- func appendAtmSystemInstrLibSpans(resourceSpans *pdata.ResourceSpans) (pdata.InstrumentationLibrarySpans){
-	iLibSpans := resourceSpans.InstrumentationLibrarySpans().AppendEmpty()
-	iLibSpans.InstrumentationLibrary().SetName("atm-sytem")
-	iLibSpans.InstrumentationLibrary().SetVersion("v1.0")
-	return iLibSpans
+ func appendAtmSystemInstrScopeSpans(resourceSpans *ptrace.ResourceSpans) (ptrace.ScopeSpans){
+	scopeSpans := resourceSpans.ScopeSpans().AppendEmpty()
+	scopeSpans.Scope().SetName("atm-sytem")
+	scopeSpans.Scope().SetVersion("v1.0")
+	return scopeSpans
 }
 ```
 
-You can now update the `generateTraces()` function and add variables to represent the instrumentation library used by both `Atm` and `BackendSystem` entities by initializing them with the `appendAtmSystemInstrLibSpans()`. Here is what `generateTraces()` looks like after the update:
+You can now update the `generateTraces()` function and add variables to represent the instrumentation scope used by both `Atm` and `BackendSystem` entities by initializing them with the `appendAtmSystemInstrScopeSpans()`. Here is what `generateTraces()` looks like after the update:
 
 ```go
-func generateTraces() pdata.Traces{
-	traces := pdata.NewTraces()
-	newAtm := generateAtm()
-	newBackendSystem := generateBackendSystem()
+func generateTraces() ptrace.Traces{
+	traces := ptraces.NewTraces()
 
-	resourceSpan := traces.ResourceSpans().AppendEmpty()
-	atmResource := resourceSpan.Resource()
-	fillResourceWithAtm(&atmResource, newAtm)
+	for i := 0; i <= numberOfTraces; i++{
+		newAtm := generateAtm()
+		newBackendSystem := generateBackendSystem()
 
-	atmInstLibray := appendAtmSystemInstrLibSpans(&resourceSpan)
+		resourceSpan := traces.ResourceSpans().AppendEmpty()
+		atmResource := resourceSpan.Resource()
+		fillResourceWithAtm(&atmResource, newAtm)
 
-	resourceSpan = traces.ResourceSpans().AppendEmpty()
-	backendResource := resourceSpan.Resource()
-	fillResourceWithBackendSystem(&backendResource, newBackendSystem)
+		atmInstScope := appendAtmSystemInstrScopeSpans(&resourceSpan)
 
-	backendInstLibrary := appendAtmSystemInstrLibSpans(&resourceSpan)
-	
+		resourceSpan = traces.ResourceSpans().AppendEmpty()
+		backendResource := resourceSpan.Resource()
+		fillResourceWithBackendSystem(&backendResource, newBackendSystem)
+
+		backendInstScope := appendAtmSystemInstrScopeSpans(&resourceSpan)
+	}
+
 	return traces
 }
 ```
 
-At this point, you have everything needed to represent the telemetry generation entities in your system and the instrumentation library that is responsible to identify operations and generate the traces for the system. The next step is to finally create the spans representing the operations that happened within a trace.
+At this point, you have everything needed to represent the telemetry generation entities in your system and the instrumentation scope that is responsible to identify operations and generate the traces for the system. The next step is to finally create the spans representing the operations that the given instrumentation scope generated as part of a trace.
 
-`pdata.InstrumentationLibrarySpans` has a method named `Spans()` which returns an instance of a helper type called `pdata.SpansSlice`. The `pdata.SpansSlice` type has methods to help you handle the array of `pdata.Span` that will contain as many items as the number of operations the instrumentation library was able to identify and describe as part of the trace.
+`ptrace.ScopeSpans` has a method named `Spans()` which returns an instance of a helper type called `ptrace.SpanSlice`. The `ptrace.SpanSlice` type has methods to help you handle the array of `ptrace.Span` that will contain as many items as the number of operations the instrumentation scope was able to identify and describe as part of the trace.
 
-`pdata.SpansSlice` has a method named `AppendEmpty()` that adds a new `pdata.Span` to the array and return it's reference.
+`ptrace.SpanSlice` has a method named `AppendEmpty()` that adds a new `ptrace.Span` to the array and return it's reference.
 
-`pdata.Span` has the following methods to describe an operation:
+`ptrace.Span` has the following methods to describe an operation:
 
 
-- `SetTraceID(v pdata.TraceID)`  
-  sets the `pdata.TraceID` uniquely identifying the trace which this span is associated with
+- `SetTraceID(v pcommon.TraceID)`  
+  sets the `pcommon.TraceID` uniquely identifying the trace which this span is associated with
 
-- `SetSpanID(v pdata.SpanID)`  
-  sets the `pdata.SpanID` uniquely identifying this span within the context of the trace it is associated with
+- `SetSpanID(v pcommon.SpanID)`  
+  sets the `pcommon.SpanID` uniquely identifying this span within the context of the trace it is associated with
 
-- `SetParentSpanID(v pdata.SpanID)`  
-  sets `pdata.SpanID` for the parent span/operation in case the operation represented by this span is executed as part of the parent (nested)
+- `SetParentSpanID(v pcommon.SpanID)`  
+  sets `pcommon.SpanID` for the parent span/operation in case the operation represented by this span is executed as part of the parent (nested)
 
 - `SetName(v string)`  
   sets the name of the operation for the span
 
-- `SetKind(v pdata.SpanKind)`  
-  sets `pdata.SpanKind` defining what kind of operation the span represents.
+- `SetKind(v ptrace.SpanKind)`  
+  sets `ptrace.SpanKind` defining what kind of operation the span represents.
 
-- `SetStartTimestamp(v pdata.Timestamp)`  
-  sets the `pdata.Timestamp` representing the date and time when the operation represented by the span has started
+- `SetStartTimestamp(v pcommon.Timestamp)`  
+  sets the `pcommon.Timestamp` representing the date and time when the operation represented by the span has started
 
-- `SetEndTimestamp(v pdata.Timestamp)`  
-  sets the `pdata.Timestamp` representing the date and time when the operation represented by the span has ended
+- `SetEndTimestamp(v pcommon.Timestamp)`  
+  sets the `pcommon.Timestamp` representing the date and time when the operation represented by the span has ended
 
 
-As you can see per the methods above, a `pdata.Span` is uniquely identified by 2 required IDs; their own unique ID represented by the `pdata.SpanID` type and the ID of the trace they are associated with represented by a `pdata.TraceID` type.
+As you can see per the methods above, a `ptrace.Span` is uniquely identified by 2 required IDs; their own unique ID represented by the `pcommon.SpanID` type and the ID of the trace they are associated with represented by a `pcommon.TraceID` type.
 
-The `pdata.TraceID` has to carry a globally unique ID represented through a 16 byte array and should follow the [W3C Trace Context specification](https://www.w3.org/TR/trace-context/#trace-id) while the `pdata.SpanID` is a unique ID within the context of the trace they are associated with and it's represented through a 8 byte array.
+The `pcommon.TraceID` has to carry a globally unique ID represented through a 16 byte array and should follow the [W3C Trace Context specification](https://www.w3.org/TR/trace-context/#trace-id) while the `pcommon.SpanID` is a unique ID within the context of the trace they are associated with and it's represented through a 8 byte array.
 
-The `pdata` package provides the following helper functions to generate the span's IDs:
+The `pcommon` package provides the following helper functions to generate the span's IDs:
 
-- `NewTraceID(bytes [16]byte) pdata.TraceID`  
-returns the `pdata.TraceID` for the given byte array
+- `NewTraceID(bytes [16]byte) pcommon.TraceID`  
+returns the `pcommon.TraceID` for the given byte array
 
-- `NewSpanID(bytes [8]byte) pdata.SpanID`  
-returns the `pdata.SpanID` for the given byte array
+- `NewSpanID(bytes [8]byte) pcommon.SpanID`  
+returns the `pcommon.SpanID` for the given byte array
 
-For this tutorial, you will be creating the IDs using functions from `github.com/google/uuid` package for the `pdata.TraceID` and functions from the `crypto/rand` package to randomly generate the `pdata.SpanID`. Open the `tailtracer/model.go` file and add both packages to the `import` statement; after that, add the following functions to help generate both IDs:
+For this tutorial, you will be creating the IDs using functions from `github.com/google/uuid` package for the `pcommon.TraceID` and functions from the `crypto/rand` package to randomly generate the `pcommon.SpanID`. Open the `tailtracer/model.go` file and add both packages to the `import` statement; after that, add the following functions to help generate both IDs:
 
 ```go
 func NewTraceID() pdata.TraceID{
@@ -1591,8 +1623,7 @@ As part of the `generateBackendSystem()` function, we have randomly assigned the
 
 
 ```go
-func appendTraceSpans(backend *BackendSystem, backendInstrLbrSpans *pdata.InstrumentationLibrarySpans, atmInstrLbrSpans *pdata.InstrumentationLibrarySpans)
-
+func appendTraceSpans(backend *BackendSystem, backendScopeSpans *ptrace.ScopeSpans, atmScopeSpans *ptrace.ScopeSpans){
 	traceId := NewTraceID()
 	backendSpanId := NewSpanID()
 
@@ -1601,7 +1632,7 @@ func appendTraceSpans(backend *BackendSystem, backendInstrLbrSpans *pdata.Instru
     backendSpanFinishTime := backendSpanStartTime.Add(backendDuration)
 
 
-	backendSpan := backendInstrLbrSpans.Spans().AppendEmpty()
+	backendSpan := backendScopeSpans.Spans().AppendEmpty()
 	backendSpan.SetTraceID(traceId)
 	backendSpan.SetSpanID(backendSpanId)
 	backendSpan.SetName(backend.Endpoint)
@@ -1615,41 +1646,40 @@ func appendTraceSpans(backend *BackendSystem, backendInstrLbrSpans *pdata.Instru
 >
 >- Added `traceId` and `backendSpanId` variables to respectively represent the trace and the span id and initialized them with the helper functions created previously
 >- Added `backendSpanStartTime` and `backendSpanFinishTime` to represent the start and the end time of the operation. For the tutorial, any `BackendSystem` operation will take 1 second.
->- Added a variable called `backendSpan` which will hold the instance of the `pdata.Span` representing this operation.
+>- Added a variable called `backendSpan` which will hold the instance of the `ptrace.Span` representing this operation.
 >- Setting the `Name` of the span with the `Endpoint` field value from the `BackendSystem` instance
->- Setting the `Kind` of the span as `pdata.SpanKindServer`. Take a look at [SpanKind section](https://github.com/open-telemetry/opentelemetry-specification/blob/v0.49.0/specification/trace/api.md#spankind) within the trace specification to understand how to properly define SpanKind.
->- Used all the methods mentioned before to fill the `pdata.Span` with the proper values to represent the `BakendSytem` operation
-
-  
-
-  
+>- Setting the `Kind` of the span as `ptrace.SpanKindServer`. Take a look at [SpanKind section](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#spankind) within the trace specification to understand how to properly define SpanKind.
+>- Used all the methods mentioned before to fill the `ptrace.Span` with the proper values to represent the `BakendSytem` operation
 
 
-You probably noticed that there are 2 references to `pdata.InstrumentationLibrarySpans` as parameters in the `appendTraceSpans()` function, but we only used one of them. Don't worry about it for now, we will get back to it later.
+You probably noticed that there are 2 references to `ptrace.ScopeSpans` as parameters in the `appendTraceSpans()` function, but we only used one of them. Don't worry about it for now, we will get back to it later.
 
 You will now update the `generateTraces()` function so it can actually generate the trace by calling the `appendTraceSpans()` function. Here is what the updated `generateTraces()` function looks like:
 
 ```go
-func generateTraces() pdata.Traces{
-	traces := pdata.NewTraces()
-	newAtm := generateAtm()
-	newBackendSystem := generateBackendSystem()
+func generateTraces() ptrace.Traces{
+	traces := ptraces.NewTraces()
 
-	resourceSpan := traces.ResourceSpans().AppendEmpty()
-	atmResource := resourceSpan.Resource()
-	fillResourceWithAtm(&atmResource, newAtm)
+	for i := 0; i <= numberOfTraces; i++{			
+		newAtm := generateAtm()
+		newBackendSystem := generateBackendSystem()
 
-	atmInstLibray := appendAtmSystemInstrLibSpans(&resourceSpan)
+		resourceSpan := traces.ResourceSpans().AppendEmpty()
+		atmResource := resourceSpan.Resource()
+		fillResourceWithAtm(&atmResource, newAtm)
 
-	resourceSpan = traces.ResourceSpans().AppendEmpty()
-	backendResource := resourceSpan.Resource()
-	fillResourceWithBackendSystem(&backendResource, newBackendSystem)
+		atmInstScope := appendAtmSystemInstrScopeSpans(&resourceSpan)
 
-	backendInstLibrary := appendAtmSystemInstrLibSpans(&resourceSpan)
+		resourceSpan = traces.ResourceSpans().AppendEmpty()
+		backendResource := resourceSpan.Resource()
+		fillResourceWithBackendSystem(&backendResource, newBackendSystem)
+
+		backendInstScope := appendAtmSystemInstrScopeSpans(&resourceSpan)
+		
+
+		appendTraceSpans(&newBackendSystem, &backendInstScope, &atmInstScope)
+	}
 	
-
-	appendTraceSpans(&newBackendSystem, &backendInstLibrary, &atmInstLibray)
-
 	return traces
 }
 ```
@@ -1659,7 +1689,7 @@ func generateTraces() pdata.Traces{
 
 You now have the `BackendSystem` entity and it's operations represented in spans within a proper trace context! All you need to do is to push the generated trace through the pipeline so the next consumer (either a processor or an exporter) can receive and process it.
 
-`pdata.Traces` has a method called `ConsumeTraces()` which is responsible to push the generated traces to the next consumer in the pipeline. All you need to do now is to update the `Start()` method within the `tailtracerReceiver` type and add the code to use it.
+`consumer.Traces` has a method called `ConsumeTraces()` which is responsible to push the generated traces to the next consumer in the pipeline. All you need to do now is to update the `Start()` method within the `tailtracerReceiver` type and add the code to use it.
 
 Open the `tailtracer/trace-receiver.go` file and update the `Start()` method as follow:
 
@@ -1738,9 +1768,9 @@ Resource labels:
      -> atm.serialnumber: STRING(atmxph-2022-222)
      -> service.name: STRING(ATM-222-CA)
      -> service.version: STRING(v1.0)
-InstrumentationLibrarySpans #0
-InstrumentationLibrarySpans SchemaURL: 
-InstrumentationLibrary atm-sytem v1.0
+ScopeSpans #0
+ScopeSpans SchemaURL: 
+InstrumentationScope atm-sytem v1.0
 ResourceSpans #1
 Resource SchemaURL: 
 Resource labels:
@@ -1750,9 +1780,9 @@ Resource labels:
      -> os.version: STRING(4.16.10-300.fc28.x86_64)
      -> service.name: STRING(accounts)
      -> service.version: STRING(v2.5)
-InstrumentationLibrarySpans #0
-InstrumentationLibrarySpans SchemaURL: 
-InstrumentationLibrary atm-sytem v1.0
+ScopeSpans #0
+ScopeSpans SchemaURL: 
+InstrumentationScope atm-sytem v1.0
 Span #0
     Trace ID       : 5cce8a774d4546c2a5cbdeb607ec74c9
     Parent ID      : 
@@ -1774,9 +1804,9 @@ Resource labels:
      -> atm.serialnumber: STRING(atmxph-2022-111)
      -> service.name: STRING(ATM-111-IL)
      -> service.version: STRING(v1.0)
-InstrumentationLibrarySpans #0
-InstrumentationLibrarySpans SchemaURL: 
-InstrumentationLibrary atm-sytem v1.0
+ScopeSpans #0
+ScopeSpans SchemaURL: 
+InstrumentationScope atm-sytem v1.0
 ResourceSpans #1
 Resource SchemaURL: 
 Resource labels:
@@ -1786,9 +1816,9 @@ Resource labels:
      -> os.version: STRING(4.16.10-300.fc28.x86_64)
      -> service.name: STRING(accounts)
      -> service.version: STRING(v2.5)
-InstrumentationLibrarySpans #0
-InstrumentationLibrarySpans SchemaURL: 
-InstrumentationLibrary atm-sytem v1.0
+ScopeSpans #0
+ScopeSpans SchemaURL: 
+InstrumentationScope atm-sytem v1.0
 Span #0
     Trace ID       : 8a6ca822db0847f48facfebbb08bbb9e
     Parent ID      : 
@@ -1810,15 +1840,15 @@ Here is what the generated trace looks like in Jaeger:
   
 
 What you currently see in Jaeger is the representation of a service that is receiving a request from an external entity that isn't instrumented by an OTel SDK, therefore it can't be identified as the origin/start of the trace.
-In order for a `pdata.Span` to understand it is representing an operation that was execute as a result of another operation originated either within or outside (nested/child) of the `Resource` within the same trace context you will need to:
+In order for a `ptrace.Span` to understand it is representing an operation that was execute as a result of another operation originated either within or outside (nested/child) of the `Resource` within the same trace context you will need to:
 
-- Set the same trace context as the caller operation by calling the `SetTraceID()` method and passing the `pdata.TraceID` of the parent/caller `pdata.Span` as a parameter.
-- Define who is the caller operation within the context of the trace by calling `SetParentId()` method and passing the `pdata.SpanID` of the parent/caller `pdata.Span` as a parameter.
+- Set the same trace context as the caller operation by calling the `SetTraceID()` method and passing the `pcommon.TraceID` of the parent/caller `ptrace.Span` as a parameter.
+- Define who is the caller operation within the context of the trace by calling `SetParentId()` method and passing the `pcommon.SpanID` of the parent/caller `ptrace.Span` as a parameter.
 
-You will now create a `pdata.Span` representing the `Atm` entity operations and set it as the parent for `BackendSystem` span. Open the `tailtracer/model.go` file and update the `appendTraceSpans()` function as follow:
+You will now create a `ptrace.Span` representing the `Atm` entity operations and set it as the parent for `BackendSystem` span. Open the `tailtracer/model.go` file and update the `appendTraceSpans()` function as follow:
 
 ```go
-func appendTraceSpans(backend *BackendSystem, backendInstrLbrSpans *pdata.InstrumentationLibrarySpans, atmInstrLbrSpans *pdata.InstrumentationLibrarySpans){
+func appendTraceSpans(backend *BackendSystem, backendScopeSpans *ptrace.ScopeSpans, atmScopeSpans *ptrace.ScopeSpans){
 	traceId := NewTraceID()
 
 	var atmOperationName string
@@ -1834,41 +1864,41 @@ func appendTraceSpans(backend *BackendSystem, backendInstrLbrSpans *pdata.Instru
 
 	atmSpanId := NewSpanID()
     atmSpanStartTime := time.Now()
-    atmDuration, _ := time.ParseDuration("2s")
+    atmDuration, _ := time.ParseDuration("4s")
     atmSpanFinishTime := atmSpanStartTime.Add(atmDuration)
 
 
-	atmSpan := atmInstrLbrSpans.Spans().AppendEmpty()
+	atmSpan := atmScopeSpans.Spans().AppendEmpty()
 	atmSpan.SetTraceID(traceId)
 	atmSpan.SetSpanID(atmSpanId)
 	atmSpan.SetName(atmOperationName)
-	atmSpan.SetKind(pdata.SpanKindClient)
-	atmSpan.Status().SetCode(pdata.StatusCodeOk)
-	atmSpan.SetStartTimestamp(pdata.NewTimestampFromTime(atmSpanStartTime))
-	atmSpan.SetEndTimestamp(pdata.NewTimestampFromTime(atmSpanFinishTime))
+	atmSpan.SetKind(ptrace.SpanKindClient)
+	atmSpan.Status().SetCode(ptrace.StatusCodeOk)
+	atmSpan.SetStartTimestamp(pcommon.NewTimestampFromTime(atmSpanStartTime))
+	atmSpan.SetEndTimestamp(pcommon.NewTimestampFromTime(atmSpanFinishTime))
 
 
 	backendSpanId := NewSpanID()
 
-	backendDuration, _ := time.ParseDuration("1s")
+	backendDuration, _ := time.ParseDuration("2s")
     backendSpanStartTime := atmSpanStartTime.Add(backendDuration)
 
 
-	backendSpan := backendInstrLbrSpans.Spans().AppendEmpty()
+	backendSpan := backendScopeSpans.Spans().AppendEmpty()
 	backendSpan.SetTraceID(atmSpan.TraceID())
 	backendSpan.SetSpanID(backendSpanId)
 	backendSpan.SetParentSpanID(atmSpan.SpanID())
 	backendSpan.SetName(backend.Endpoint)
-	backendSpan.SetKind(pdata.SpanKindServer)
-	backendSpan.Status().SetCode(pdata.StatusCodeOk)
-	backendSpan.SetStartTimestamp(pdata.NewTimestampFromTime(backendSpanStartTime))
+	backendSpan.SetKind(ptrace.SpanKindServer)
+	backendSpan.Status().SetCode(ptrace.StatusCodeOk)
+	backendSpan.SetStartTimestamp(pcommon.NewTimestampFromTime(backendSpanStartTime))
 	backendSpan.SetEndTimestamp(atmSpan.EndTimestamp())
 
 }
 ```
 
 Go ahead and run your `dev-otelcol` again and after 2 minutes running, you should start seeing traces in Jaeger like the following:
-![Jaeger trace](images/Jaeger-Fullsystem-Trace-List.png)
+![Jaeger trace](images/Jaeger-Fullsystem-Trace%20list.png)
 
   
 
@@ -1877,6 +1907,6 @@ Go ahead and run your `dev-otelcol` again and after 2 minutes running, you shoul
 We now have services representing both the `Atm` and the `BackendSystem` telemetry generation entities in our system and can fully understand how both entities are been used and contributing to the performance of an operation executed by an user.
 
 Here is the detailed view of one of those traces in Jaeger:
-![Jaeger trace](images/Jaeger-FullSystem-Trace-Details.png)
+![Jaeger trace](images/Jaeger-FullSystem-Trace%20Details.png)
 
 That's it! You have now reached the end of this tutorial and successfully implemented a trace receiver, congratulations!
