@@ -13,16 +13,16 @@ As part of the process the `builder` will generate the Collector's source code, 
 
 ## Step 1 - Install the builder
 
-The `ocb` binary is available as a downloadable asset within the [OpenTelemetry Collector Releases Page](https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.49.0) within the Collector's GitHub project. You will find the list of assets at the bottom of the page.
+The `ocb` binary is available as a downloadable asset within the [OpenTelemetry Collector Releases Page](https://github.com/open-telemetry/opentelemetry-collector/releases) within the Collector's GitHub project. You will find the list of assets at the bottom of the page.
 
-v0.49.0 is the latest and the assets are named based on OS and chipset, so download the one that fits your configuration.
+v0.53.0 is the latest and the assets are named based on OS and chipset, so download the one that fits your configuration.
 
 The binary has a pretty long name, so you can simply rename it to `ocb`; and if you are running Linux or macOS, you will also need to provide execution permissions for the binary. 
 
 Open your terminal and type the following commands to accomplish both operations:
 
 ```cmd
-mv ocb_0.49.0_darwin_amd64 ocb
+mv ocb_0.53.0_darwin_amd64 ocb
 chmod 777 ocb
 ```
 
@@ -108,17 +108,17 @@ dist:
     output_path: ./otelcol-dev 
 
 exporters:
-  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/jaegerexporter v0.49.0"
+  - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/jaegerexporter v0.53.0"
   - import: go.opentelemetry.io/collector/exporter/loggingexporter
-    gomod: go.opentelemetry.io/collector v0.49.0
+    gomod: go.opentelemetry.io/collector v0.53.0
 
 receivers:
   - import: go.opentelemetry.io/collector/receiver/otlpreceiver
-    gomod: go.opentelemetry.io/collector v0.49.0
+    gomod: go.opentelemetry.io/collector v0.53.0
 
 processors:
   - import: go.opentelemetry.io/collector/processor/batchprocessor
-    gomod: go.opentelemetry.io/collector v0.49.0
+    gomod: go.opentelemetry.io/collector v0.53.0
 ```
 
 
@@ -134,13 +134,13 @@ If everything went well, here is what the output of the command should look like
 
 ```
 
-2022-04-26T10:51:19.705-0500    INFO    internal/command.go:85  OpenTelemetry Collector distribution builder    {"version": "0.49.0", "date": "2022-04-13T22:49:20Z"}
-2022-04-26T10:51:19.706-0500    INFO    internal/command.go:108 Using config file       {"path": "builder-config.yaml"}
-2022-04-26T10:51:19.707-0500    INFO    builder/config.go:99    Using go        {"go-executable": "/usr/local/go/bin/go"}
-2022-04-26T10:51:19.709-0500    INFO    builder/main.go:76      Sources created {"path": "./otelcol-dev"}
-2022-04-26T10:51:20.345-0500    INFO    builder/main.go:108     Getting go modules
-2022-04-26T10:51:30.285-0500    INFO    builder/main.go:87      Compiling
-2022-04-26T10:51:40.217-0500    INFO    builder/main.go:94      Compiled        {"binary": "./otelcol-dev/otelcol-dev"}
+2022-06-13T14:25:03.037-0500	INFO	internal/command.go:85	OpenTelemetry Collector distribution builder	{"version": "0.53.0", "date": "2022-06-08T15:05:37Z"}
+2022-06-13T14:25:03.039-0500	INFO	internal/command.go:108	Using config file	{"path": "builder-config.yaml"}
+2022-06-13T14:25:03.040-0500	INFO	builder/config.go:99	Using go	{"go-executable": "/usr/local/go/bin/go"}
+2022-06-13T14:25:03.041-0500	INFO	builder/main.go:76	Sources created	{"path": "./otelcol-dev"}
+2022-06-13T14:25:03.445-0500	INFO	builder/main.go:108	Getting go modules
+2022-06-13T14:25:04.675-0500	INFO	builder/main.go:87	Compiling
+2022-06-13T14:25:17.259-0500	INFO	builder/main.go:94	Compiled	{"binary": "./otelcol-dev/otelcol-dev"}
 
 ```
 
