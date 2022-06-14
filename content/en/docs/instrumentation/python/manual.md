@@ -341,3 +341,16 @@ meter.create_observable_gauge(
     description="The active config version for each configuration",
 )
 ```
+
+## Additional References
+
+- Trace
+    - [Trace Concepts](/docs/concepts/signals/traces/)
+    - [Trace Specification](/docs/reference/specification/overview/#tracing-signal)
+    - [Python Trace API Documentation](https://opentelemetry-python.readthedocs.io/en/latest/api/trace.html)
+    - [Python Trace SDK Documentation](https://opentelemetry-python.readthedocs.io/en/latest/sdk/trace.html)
+- Metrics
+    - [Metrics Concepts](/docs/concepts/signals/metrics/)
+    - [Metrics Specification](/docs/reference/specification/metrics/)
+    - [Python Metrics API Documentation](https://opentelemetry-python.readthedocs.io/en/latest/api/metrics.html)
+    - [Python Metrics SDK Documentation](https://opentelemetry-python.readthedocs.io/en/latest/sdk/metrics.html)
