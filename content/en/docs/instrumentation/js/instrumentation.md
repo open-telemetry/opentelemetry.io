@@ -50,7 +50,9 @@ Next, ensure that `tracing.js` is required in your node invocation. For example:
 node --require './tracing.js' <other-app-file.js>
 ```
 
-**It is required to `--require` your tracing initialization code to trace.**
+Although it's not technically required to `--require` the tracing initialization
+for only manual instrumentation, it is necessary when you use automatic
+instrumentation. So in practice, it's still likely to be necessary.
 
 ### Browser
 
@@ -59,8 +61,7 @@ First, ensure you've got the right packages:
 ```shell
 npm install \
   @opentelemetry/api \
-  @opentelemetry/sdk-trace-web \
-  @opentelemetry/context-zone
+  @opentelemetry/sdk-trace-web
 ```
 
 Create a `tracing.js` file that initialized the Web SDK, creates a
@@ -69,16 +70,10 @@ Create a `tracing.js` file that initialized the Web SDK, creates a
 ```javascript
 import opentelemetry from "@opentelemetry/api";
 import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
-import { ZoneContextManager } from '@opentelemetry/context-zone';
 
 const provider = new WebTracerProvider();
 
-provider.register({
-  // Changing default contextManager to use ZoneContextManager - supports asynchronous operations - optional
-  contextManager: new ZoneContextManager(),
-});
-
-// Optionally register some instrumentations
+// Optionally register automatic instrumentation libraries
 registerInstrumentations({
   instrumentations: [],
 });
