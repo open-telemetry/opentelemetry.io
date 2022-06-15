@@ -305,8 +305,8 @@ def do_work(work_item):
 ### Creating and using asynchronous instruments
 
 [Asynchronous instruments](/docs/reference/specification/metrics/api/#synchronous-and-asynchronous-instruments)
-give the user a way to register callback functions, which are invoked on demand to generate
-take measurements. This is useful to periodically measure a value that cannot be instrumented
+give the user a way to register callback functions, which are invoked on demand to make
+measurements. This is useful to periodically measure a value that cannot be instrumented
 directly. Async instruments are created with zero or more callbacks which will be invoked
 during metric collection. Each callback accepts options from the SDK and returns its
 observations.
