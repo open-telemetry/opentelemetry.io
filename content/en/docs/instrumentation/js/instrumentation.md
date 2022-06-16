@@ -13,6 +13,10 @@ you'll need to have an initialized
 [`TracerProvider`](/docs/concepts/signals/traces/#tracer-provider) that will let
 you create a [`Tracer`](/docs/concepts/signals/traces/#tracer).
 
+If a `TracerProvider` is not created, either explicitly or via SDK APIs, then
+the OpenTelemetry APIs for tracing will use a no-op implementation and fail to
+generate data.
+
 ### Node.js
 
 To initialize tracing with the Node.js SDK, first ensure you have the SDK
@@ -24,15 +28,18 @@ npm install \
   @opentelemetry/sdk-node
 ```
 
-It's recommended to have a separate `tracing.js` file that has all the SDK
-initialization code in it:
+Next, create a separate `tracing.js` file that has all the SDK initialization
+code in it:
 
 ```js
 import opentelemetry from "@opentelemetry/api";
 import nodeOTel from "@opentelemetry/sdk-node";
+import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace-base';
+
+const exporter = new ConsoleSpanExporter();
 
 const sdk = new nodeOTel.NodeSDK({
-  traceExporter: new opentelemetry.tracing.ConsoleSpanExporter(),
+  traceExporter: exporter,
 });
 
 sdk.start()
@@ -43,6 +50,9 @@ export const tracer = opentelemetry.trace.getTracer(
   'name-of-tracer-goes-here'
 );
 ```
+
+Under the covers, this creates a `TracerProvider` that uses the
+`BatchSpanProcessor` to process data in batches asynchronously.
 
 Next, ensure that `tracing.js` is required in your node invocation. For example:
 
@@ -70,8 +80,12 @@ Create a `tracing.js` file that initialized the Web SDK, creates a
 ```javascript
 import opentelemetry from "@opentelemetry/api";
 import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
+import { ConsoleSpanExporter, BatchSpanProcessor } from '@opentelemetry/sdk-trace-base';
 
 const provider = new WebTracerProvider();
+const exporter = new ConsoleSpanExporter();
+const processor = new BatchSpanProcessor(exporter);
+provider.addSpanProcessor(processor);
 
 // Optionally register automatic instrumentation libraries
 registerInstrumentations({
@@ -85,6 +99,14 @@ export const tracer = opentelemetry.trace.getTracer(
 
 You'll need to bundle this file with your web application to be able to use
 tracing throughought the rest of your web application.
+
+### Picking the right span processor
+
+By default, the Node SDK uses the `BatchSpanProcessor`, and this span processor is also chosen in the Web SDK example. The `BatchSpanProcessor` processes spans in batches before they are exported. This is usually the right processor to use for an application.
+
+In contrast, the `SimpleSpanProcessor` processes spans as they are created. This means that if you create 5 spans, each will be processed an exported before the next span is created in code. This can be helpful in scenarios where you do not want to risk losing a batch, or if you're experimenting with OpenTelemetry in development. However, it also comes with potentially signficant overhead, especially if spans are being exported over a network - each time a call to create a span is made, it would be processed and sent over a network before your app's execution could continue.
+
+In most cases, stick with `BatchSpanProcessor` over `SimpleSpanProcessor`.
 
 ## Create spans
 
@@ -246,15 +268,13 @@ const doWork = () => {
 
 A [Span Event](/docs/concepts/signals/traces/#span-events) is a human-readable
 message on an [`Span`](/docs/concepts/signals/traces/#spans-in-opentelemetry)
-that represents "something happening" during its lifetime. You can think of it
-like a primitive log.
+that represents a discrete event with no duration that can be tracked by a
+single time stamp. You can think of it like a primitive log.
 
 ```js
 span.addEvent('Doing something');
 
 const result = doWork();
-
-span.addEvent('Did something');
 ```
 
 You can also create Span Events with additiona
@@ -388,7 +408,7 @@ const mainWork = () => {
 }
 
 function doWork(parent, i) {
-  // To set a child span, we need to mark the parent span as the active span
+  // To create a child span, we need to mark the current (parent) span as the active span
   // in the context, then use the resulting context to create a child span.
   const ctx = opentelemetry.trace.setSpan(
     opentelemetry.context.active(),
