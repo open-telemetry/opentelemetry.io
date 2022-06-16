@@ -103,10 +103,10 @@ components that will play a part in instrumenting our code:
 
 A Tracer Provider (sometimes called `TracerProvider`) is a factory for
 `Tracer`s. In most applications, a Tracer Provider is initialized once and its
-lifecycle matches the application's lifecycle. Tracer Provider
-initialization also includes Resource and Exporter initialization. It is
-typically the first step in tracing with OpenTelemetry. In some language SDKs, a
-global Tracer Provider is already initialized for you.
+lifecycle matches the application's lifecycle. Tracer Provider initialization
+also includes Resource and Exporter initialization. It is typically the first
+step in tracing with OpenTelemetry. In some language SDKs, a global Tracer
+Provider is already initialized for you.
 
 ### Tracer
 
@@ -239,13 +239,19 @@ annotate a Span to carry information about the operation it is tracking.
 ### Span Events
 
 A Span Event can be thought of as a structured log message (or annotation) on a
-Span, provides additional context on what is occurring during a specific
-operation.
+Span, typically used to denote a meaningful, singular point in time during the
+Span's duration.
 
-For example, a critical path in a multi-threaded application might need to
-acquire a lock on a mutex to have exclusive access to a resource. An Event can
-be created at two points: once when the resource is acquired, and once when it
-is released.
+For example, consider two scenarios in a web browser:
+
+1. Tracking a page load
+2. Denoting when a page becomes interactive
+
+A Span is best used to the first scenario because it's an operation with a start
+and an end.
+
+A Span Event is best used to track the second scenario because it represents a
+meaningful, singular point in time.
 
 ### Span Links
 
