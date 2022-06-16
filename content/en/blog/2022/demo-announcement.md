@@ -54,7 +54,9 @@ libraries
 
 ## Current Architecture
 
-!["Screenshot of the current architecture."](images/current-demo-architecture.png "Screenshot of the current architecture")
+!["Screenshot of the current architecture."](../../../../static\img\blog\current-demo-architecture.png/)
+
+/current-demo-architecture.png "Screenshot of the current architecture")
 
 ## Upcoming New Features
 
@@ -82,7 +84,7 @@ etc. \
 
 ## Future Architecture
 
-!["Screenshot of the future architecture."](images/current-demo-architecture.png "Screenshot of the future architecture")
+!["Screenshot of the future architecture."](../../../../static\img\blog\future-demo-architecture.png "Screenshot of the future architecture")
 
 ## Going Forward
 
