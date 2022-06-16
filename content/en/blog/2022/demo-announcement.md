@@ -41,7 +41,7 @@ updating the documentation, & replacing a pre-existing service with a Ruby
 example. Otherwise the pre-existing feature set from the GCP demo remains the
 same:
 
-* 10 application microservice with support for 6 languages (C#, Go, Java, Node.JS,
+* 10 application microservice with support for 6 languages (C#, Go, Java, Node.js,
 Python, & Ruby)
   * Ruby support was added within the last 2 weeks of publishing
 date
