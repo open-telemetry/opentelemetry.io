@@ -35,7 +35,7 @@ standardizing on headers and whatnot, in your organization), it puts the burden
 on development teams to build helpers in every framework and language, which can
 unintentionally get neglected when other higher-priority items come up.
 
-## What OTel Baggage be used for?
+## What should OTel Baggage be used for?
 
 OTel Baggage should be used for non-sensitive data that you're okay with
 potentially exposing to third parties.
