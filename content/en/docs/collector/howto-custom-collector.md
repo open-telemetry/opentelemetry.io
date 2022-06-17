@@ -71,7 +71,7 @@ Here are the tags for the `dist` map:
 | module:          | The module name for the new distribution, following Go mod conventions. Optional, but recommended.| Yes | "go.opentelemetry.io/collector/cmd/builder" |
 | name:            | The binary name for your distribution | Yes | "otelcol-custom" |
 | description:     | A long name for the application. | Yes | "Custom OpenTelemetry Collector distribution" |
-| otelcol_version: | The OpenTelemetry Collector version to use as base for the distribution. | Yes | "0.49.0" | 
+| otelcol_version: | The OpenTelemetry Collector version to use as base for the distribution. | Yes | "0.53.0" | 
 | output_path:     | The path to write the output (sources and binary). | Yes | "/var/folders/86/s7l1czb16g124tng0d7wyrtw0000gn/T/otelcol-distribution3618633831" |
 | version:         | The version for your custom OpenTelemetry Collector. | Yes | "1.0.0" |
 | go:              | Which Go binary to use to compile the generated sources. | Yes | go from the PATH |
