@@ -60,7 +60,7 @@ Use "builder [command] --help" for more information about a command.
 ## Step 2 - Create a builder manifest file
 
 
-The builder's `manifest` file is a `yaml` where you basically pass information about the code generation and compile process combined with the components that you would like to add to your Collector's distribution.
+The builder's `manifest` file is a `yaml` where you pass information about the code generation and compile process combined with the components that you would like to add to your Collector's distribution.
 
 The `manifest` starts with a map named `dist` which contains tags to help you configure the code generation and compile process. In fact, all the tags for `dist` are the equivalent of the `ocb` command line `flags`.
 
