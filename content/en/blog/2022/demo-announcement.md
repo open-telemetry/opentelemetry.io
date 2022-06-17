@@ -1,7 +1,7 @@
 ---
 title: Announcing a Community Demo for OpenTelemetry
 linkTitle: OpenTelemetry Community Demo
-date: 2022-06-16
+date: 2022-06-20
 author: Carter Socha
 ---
 
@@ -54,9 +54,7 @@ libraries
 
 ## Current Architecture
 
-!["Screenshot of the current architecture."](/img/blog/current-demo-architecture.png/)
-
-/current-demo-architecture.png "Screenshot of the current architecture")
+![Screenshot of the current architecture.](/img/blog/current-demo-architecture.png "Screenshot of the current architecture")
 
 ## Upcoming New Features
 
@@ -84,7 +82,7 @@ etc. \
 
 ## Future Architecture
 
-!["Screenshot of the future architecture."](/img/blog/future-demo-architecture.png "Screenshot of the future architecture")
+![Screenshot of the future architecture.](/img/blog/future-demo-architecture.png "Screenshot of the future architecture")
 
 ## Going Forward
 
