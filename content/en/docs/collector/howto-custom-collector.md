@@ -96,7 +96,7 @@ Now you need to add the modules representing the components you want to be incor
 We will be adding the following components to our development and testing collector distribution:
 
 - Exporters: Jaeger and Logging
-- Receivers: Otlp
+- Receivers: OTLP
 - Processors: Batch
 
 Here is what my `builder-config.yaml` manifest file looks after adding the modules for the components above:
