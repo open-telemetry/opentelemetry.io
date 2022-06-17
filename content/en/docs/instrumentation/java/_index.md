@@ -25,22 +25,12 @@ OpenTelemetry Java consists of the following repositories:
 ## Status and Releases
 
 | Traces | Metrics | Logs         |
-| ------ | ------- | ------------ |
-| Stable | Alpha   | Experimental |
+|--------|---------|--------------|
+| Stable | Stable  | Experimental |
 
 ### Components
 
-- Tracing API
-- Tracing SDK
-- Metrics API
-- Metrics SDK
-- OTLP Exporter
-- Jaeger Trace Exporter
-- Zipkin Trace Exporter
-- Prometheus Metric Exporter
-- Context Propagation
-- OpenTracing Bridge
-- OpenCensus Bridge
+See [components] for a complete list of published components.
 
 ### Releases
 
@@ -56,7 +46,7 @@ using our BOM to keep the versions of the various components in sync.
       <dependency>
         <groupId>io.opentelemetry</groupId>
         <artifactId>opentelemetry-bom</artifactId>
-        <version>1.14.0</version>
+        <version>1.15.0</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -75,7 +65,7 @@ using our BOM to keep the versions of the various components in sync.
 
 ```kotlin
 dependencies {
-  implementation(platform("io.opentelemetry:opentelemetry-bom:1.14.0"))
+  implementation(platform("io.opentelemetry:opentelemetry-bom:1.15.0"))
   implementation("io.opentelemetry:opentelemetry-api")
 }
 ```
@@ -87,3 +77,4 @@ dependencies {
 [maven central]: https://mvnrepository.com/artifact/io.opentelemetry
 [opentelemetry-java-docs]: https://github.com/open-telemetry/opentelemetry-java-docs#java-opentelemetry-examples
 [releases]: https://github.com/open-telemetry/opentelemetry-java/releases
+[components]: https://github.com/open-telemetry/opentelemetry-java#releases
