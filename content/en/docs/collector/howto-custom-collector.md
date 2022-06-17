@@ -3,7 +3,7 @@ title: "Building your own Collector instance"
 weight: 30
 ---
 
-If you are planning to build and debug your components, you are going to need your own Collector instance. That will allow you to launch and debug your OpenTelemetry Collector components directly within your favorite Golang IDE.
+If you are planning to build and debug custom collector receivers, processors, extensions, or exporters, you are going to need your own Collector instance. That will allow you to launch and debug your OpenTelemetry Collector components directly within your favorite Golang IDE.
 
 The other interesting aspect of approaching the component development this way is that you can use all the debugging features from your IDE (stack traces are great teachers!) to understand how the Collector itself interacts with your component code.
 
