@@ -84,7 +84,7 @@ etc. \
 
 ## Future Architecture
 
-!["Screenshot of the future architecture."](../../../../static\img\blog\future-demo-architecture.png "Screenshot of the future architecture")
+!["Screenshot of the future architecture."](/img/blog/future-demo-architecture.png "Screenshot of the future architecture")
 
 ## Going Forward
 
