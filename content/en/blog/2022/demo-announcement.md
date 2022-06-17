@@ -54,7 +54,7 @@ libraries
 
 ## Current Architecture
 
-!["Screenshot of the current architecture."](../../../../static\img\blog\current-demo-architecture.png/)
+!["Screenshot of the current architecture."](/img/blog/current-demo-architecture.png/)
 
 /current-demo-architecture.png "Screenshot of the current architecture")
 
