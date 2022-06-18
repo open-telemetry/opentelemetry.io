@@ -7,11 +7,11 @@ author: Carter Socha
 
 ### TL;DR
 
-The community has taken a good pre-existing demo (thanks,
+The OpenTelemetry community has taken a good pre-existing demo (thanks,
 [Google](https://github.com/GoogleCloudPlatform/microservices-demo)!) and is in
-the process of making it better. Every GA SDK will be represented, demo support
-will be extended to Metrics and Logs, and canonical scenarios will be documented
-for each signal, with fault injection, and more!
+the process of making it even better. Every GA SDK will be represented, demo
+support will be extended to Metrics and Logs, and canonical scenarios will be
+documented for each signal, with fault injection, and more!
 
 If you want to skip the details then clone our
 [repo](https://github.com/open-telemetry/opentelemetry-demo-webstore) then run
@@ -19,7 +19,7 @@ If you want to skip the details then clone our
 requirements](https://github.com/open-telemetry/opentelemetry-demo-webstore#local-quickstart)
 so be sure to check those out too.
 
-The demo will take 15-20 minutes to build the first time so we encourage you to do some stretching and
+The demo takes 15-20 minutes to build the first time so we encourage you to do some stretching and
 take a water break in the meantime.
 
 Your command line output should look like this:
@@ -32,7 +32,8 @@ Your command line output should look like this:
 
 - And the Jaeger UI at: <http://localhost:16686>
 
-Congratulations! You can now indulge in retail therapy as much as you want and submit telemetry. A true victory.
+Congratulations! You can now indulge in retail therapy and submit telemetry. A
+true victory.
 
 ## Success of the Commons
 
@@ -79,6 +80,12 @@ gRPC, Redis, & HTTP libraries
 - Jaeger visualizations for distributed traces OpenTelemetry collector
 - Always on sampling (100% of telemetry is submitted) Synthetic load generation
 
+### Current Architecture
+
+![Screenshot of the current
+architecture.](/img/blog/current-demo-architecture.png "Screenshot of the
+current architecture")
+
 ### BYOB (Bring Your Own Backend)
 
 Jaeger is great (really) but what if you want to try this out with your APM
@@ -92,13 +99,9 @@ blog](https://lightstep.com/blog/observability-mythbusters-how-hard-is-it-to-get
 they just published on how to get started sending demo data to power their
 experiences from their forked demo.
 
-### Current Architecture
+## Future State
 
-![Screenshot of the current
-architecture.](/img/blog/current-demo-architecture.png "Screenshot of the
-current architecture")
-
-## Upcoming New Features
+### Upcoming New Features
 
 We have a lot of exciting improvements that are planned or in progress to turn
 this application into the canonical example of the full power of OpenTelemetry.
@@ -124,11 +127,12 @@ this application into the canonical example of the full power of OpenTelemetry.
 - Demonstrate the ability to add
   [Baggage](https://github.com/open-telemetry/opentelemetry-demo-webstore/issues/100)
   & other custom tags
-- Continue to build on other cloud-native technologies Kubernetes \
-gRPC \
-[OpenFeature](https://github.com/open-feature) \
-[OpenSLO](https://github.com/OpenSLO/OpenSLO) \
-etc.
+- Continue to build on other cloud-native technologies like:
+  - Kubernetes
+  - gRPC
+  - [OpenFeature](https://github.com/open-feature)
+  - [OpenSLO](https://github.com/OpenSLO/OpenSLO)
+  - etc.
 - An enhanced OpenTelemetry collector gateway capabilities for ingestion,
   transformation, and export
 - Probability based sampling
@@ -148,7 +152,7 @@ are links in our GitHub repo on how to get involved & you can [track our overall
 progress](https://github.com/open-telemetry/opentelemetry-demo-webstore/issues)
 from there.
 
-## Interesting Links
+### Interesting Links
 
 - [Demo Requirements](https://github.com/open-telemetry/opentelemetry-demo-webstore/tree/main/docs/requirements)
 - [Get Involved](https://github.com/open-telemetry/opentelemetry-demo-webstore#contributing)
