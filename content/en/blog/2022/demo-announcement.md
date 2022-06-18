@@ -9,9 +9,9 @@ author: Carter Socha
 
 The OpenTelemetry community has taken a good pre-existing demo (thanks,
 [Google](https://github.com/GoogleCloudPlatform/microservices-demo)!) and is in
-the process of making it even better. Every GA SDK will be represented, demo
-support will be extended to Metrics and Logs, and canonical scenarios will be
-documented for each signal, with fault injection, and more!
+the process of making it even better. Every GA SDK (besides Swift) will be
+represented, demo support will be extended to Metrics and Logs, and canonical
+scenarios will be documented for each signal, with fault injection, and more!
 
 If you want to skip the details then clone our
 [repo](https://github.com/open-telemetry/opentelemetry-demo-webstore) then run
@@ -19,8 +19,8 @@ If you want to skip the details then clone our
 requirements](https://github.com/open-telemetry/opentelemetry-demo-webstore#local-quickstart)
 so be sure to check those out too.
 
-The demo takes 15-20 minutes to build the first time so we encourage you to do some stretching and
-take a water break in the meantime.
+The demo takes 15-20 minutes to build the first time so we encourage you to do
+some stretching and take a water break in the meantime.
 
 Your command line output should look like this:
 
@@ -47,9 +47,9 @@ community working groups and vendors lack a singular sophisticated platform to
 demonstrate their technologies on. Greeting the world can only get us so far.
 
 Multiple vendors have written their own demo applications but are wholly
-responsible for the development & ongoing support. The existing demos are all
+responsible for the development and ongoing support. The existing demos are all
 feature incomplete in their own ways with missing languages, restrictions on
-backend choice, & they’re overly reliant on instrumentation libraries.
+backend choice, and they’re overly reliant on instrumentation libraries.
 
 ### Project Goals
 
@@ -67,16 +67,16 @@ new features/concepts real world like scenarios.
 As a starting point, we have selected a fork of the popular GCP microservices
 demo. Our first feature additions have been to simplify local deployment by
 consolidating the project onto a single docker compose file, updating the
-documentation, & replacing a pre-existing service with a Ruby example. Otherwise
+documentation, and replacing a pre-existing service with a Ruby example. Otherwise
 the pre-existing feature set from the GCP demo remains the same:
 
 - 10 application microservice with support for 6 languages (C#, Go, Java,
-Node.js, Python, & Ruby)
+Node.js, Python, and Ruby)
   - Ruby support was added within the last 2 weeks of publishing date
 - Designed to work on docker locally
 - Uses redis cache
 - Auto-instrumentation using instrumentation libraries Tracing support for the
-gRPC, Redis, & HTTP libraries
+gRPC, Redis, and HTTP libraries
 - Jaeger visualizations for distributed traces OpenTelemetry collector
 - Always on sampling (100% of telemetry is submitted) Synthetic load generation
 
@@ -110,11 +110,11 @@ this application into the canonical example of the full power of OpenTelemetry.
   [C++](https://github.com/open-telemetry/opentelemetry-demo-webstore/issues/36),
   Erlang/elixir,
   [PHP](https://github.com/open-telemetry/opentelemetry-demo-webstore/issues/34),
-  &
+  and
   [Rust](https://github.com/open-telemetry/opentelemetry-demo-webstore/issues/35)
 - Extend support to
   [Metrics](https://github.com/open-telemetry/opentelemetry-demo-webstore/issues/43)
-  &
+  and
   [Logs](https://github.com/open-telemetry/opentelemetry-demo-webstore/issues/44)
   for all GA SDKs
 - Visualization component to consume Metrics
@@ -126,7 +126,7 @@ this application into the canonical example of the full power of OpenTelemetry.
 - Additional instrumentation libraries where needed
 - Demonstrate the ability to add
   [Baggage](https://github.com/open-telemetry/opentelemetry-demo-webstore/issues/100)
-  & other custom tags
+  and other custom tags
 - Continue to build on other cloud-native technologies like:
   - Kubernetes
   - gRPC
@@ -136,7 +136,7 @@ this application into the canonical example of the full power of OpenTelemetry.
 - An enhanced OpenTelemetry collector gateway capabilities for ingestion,
   transformation, and export
 - Probability based sampling
-- Feature flag service to demonstrate various scenarios like fault injection &
+- Feature flag service to demonstrate various scenarios like fault injection and
   how to emit telemetry from a feature flag reliant service
 
 ### Future Architecture
@@ -148,7 +148,7 @@ this application into the canonical example of the full power of OpenTelemetry.
 
 We’re still at the beginning of our journey but there’s great momentum behind
 this project. If you’re interested in contributing we’d love your support. There
-are links in our GitHub repo on how to get involved & you can [track our overall
+are links in our GitHub repo on how to get involved and you can [track our overall
 progress](https://github.com/open-telemetry/opentelemetry-demo-webstore/issues)
 from there.
 
