@@ -77,7 +77,7 @@ Node.js, Python, and Ruby)
 - Uses redis cache
 - Auto-instrumentation using instrumentation libraries Tracing support for the
 gRPC, Redis, and HTTP libraries
-- Jaeger visualizations for distributed traces OpenTelemetry collector
+- Jaeger visualizations for distributed traces, forwarded by OpenTelemetry collector
 - Always on sampling (100% of telemetry is submitted) Synthetic load generation
 
 ### Current Architecture
