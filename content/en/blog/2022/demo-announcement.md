@@ -13,7 +13,7 @@ the process of making it better. Every GA SDK will be represented, demo support
 will be extended to Metrics and Logs, and canonical scenarios will be documented
 for each signal, with fault injection, and more!
 
-If you want to try it yourself clone our
+If you want to skip the details then clone our
 [repo](https://github.com/open-telemetry/opentelemetry-demo-webstore) then run
 `docker compose up` from the command line. There are a couple [technology
 requirements](https://github.com/open-telemetry/opentelemetry-demo-webstore#local-quickstart)
@@ -24,29 +24,31 @@ take a water break in the meantime.
 
 Your command line output should look like this:
 
-**INSERT PICTURE**
+![Screenshot of the console output.](/img/blog/otel-webstore-app-output.png
+"Screenshot of the console output")
 
 - Once the images are built you can access the Webstore at:
   <http://localhost:8080>
 
 - And the Jaeger UI at: <http://localhost:16686>
 
+Congratulations! You can now indulge in retail therapy as much as you want and submit telemetry. A true victory.
+
 ## Success of the Commons
 
-As OpenTelemetry matures, users are increasingly looking for best practice
-guides on how to onboard their services to the new paradigm or demo applications
-so that they can try out the new tools themselves.
+There are a couple universal problems that are the driving force behind our
+joint demo effort.
+
+As OpenTelemetry matures, users and enterprises are increasingly looking for
+best practice guides on how to onboard their services to the new paradigm or
+demo applications so that they can try out the new tools themselves. However,
+community working groups and vendors lack a singular sophisticated platform to
+demonstrate their technologies on. Greeting the world can only get us so far.
 
 Multiple vendors have written their own demo applications but are wholly
 responsible for the development & ongoing support. The existing demos are all
 feature incomplete in their own ways with missing languages, restrictions on
 backend choice, & they’re overly reliant on instrumentation libraries.
-
-The OpenTelemetry Community Demo application is intended to be a ‘showcase’ for
-OpenTelemetry API, SDK, and tools in a “production-ish” cloud native
-application. The overall goal of this application is not only to provide a
-canonical ‘demo’ of OpenTelemetry components, but also to act as a framework for
-further customization by end-users, vendors, and other stakeholders.
 
 ### Project Goals
 
@@ -92,7 +94,9 @@ experiences from their forked demo.
 
 ### Current Architecture
 
-![Screenshot of the current architecture.](/img/blog/current-demo-architecture.png "Screenshot of the current architecture")
+![Screenshot of the current
+architecture.](/img/blog/current-demo-architecture.png "Screenshot of the
+current architecture")
 
 ## Upcoming New Features
 
@@ -114,13 +118,16 @@ this application into the canonical example of the full power of OpenTelemetry.
 - Implement multiple instrumentation techniques
 - Auto-instrumentation using the agent in a sidecar
 - Manual instrumentation of all signals
+- [Service Level Objective](https://github.com/OpenSLO/OpenSLO#slo) (SLO)
+  definition and tracking
 - Additional instrumentation libraries where needed
 - Demonstrate the ability to add
   [Baggage](https://github.com/open-telemetry/opentelemetry-demo-webstore/issues/100)
   & other custom tags
 - Continue to build on other cloud-native technologies Kubernetes \
 gRPC \
-OpenFeature \
+[OpenFeature](https://github.com/open-feature) \
+[OpenSLO](https://github.com/OpenSLO/OpenSLO) \
 etc.
 - An enhanced OpenTelemetry collector gateway capabilities for ingestion,
   transformation, and export
@@ -130,7 +137,8 @@ etc.
 
 ### Future Architecture
 
-![Screenshot of the future architecture.](/img/blog/future-demo-architecture.png "Screenshot of the future architecture")
+![Screenshot of the future architecture.](/img/blog/future-demo-architecture.png
+"Screenshot of the future architecture")
 
 ## Going Forward
 
