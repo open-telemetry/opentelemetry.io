@@ -78,7 +78,7 @@ Node.js, Python, and Ruby)
 - Auto-instrumentation using instrumentation libraries Tracing support for the
 gRPC, Redis, and HTTP libraries
 - Jaeger visualizations for distributed traces, forwarded by OpenTelemetry collector
-- Always on sampling (100% of telemetry is submitted) Synthetic load generation
+- Always on sampling (100% of telemetry is submitted) and synthetic load generation
 
 ### Current Architecture
 
