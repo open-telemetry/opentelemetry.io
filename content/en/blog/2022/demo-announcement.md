@@ -5,7 +5,7 @@ date: 2022-06-20
 author: Carter Socha
 ---
 
-## TLDR
+## TL;DR
 
 The community has taken a good pre-existing demo (thanks,
 [Google](https://github.com/GoogleCloudPlatform/microservices-demo)!) and is in
@@ -22,14 +22,14 @@ so be sure to check those out too.
 The demo will take 15-20 minutes to build the first time so we encourage you to do some stretching and
 take a water break in the meantime.
 
+Your command line output should look like this:
+
+**INSERT PICTURE**
+
 - Once the images are built you can access the Webstore at:
   <http://localhost:8080>
 
 - And the Jaeger UI at: <http://localhost:16686>
-
-Your command line output should look like this:
-
-**INSERT PICTURE**
 
 ## Success of the Commons
 
