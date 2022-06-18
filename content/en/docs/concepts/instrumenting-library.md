@@ -1,5 +1,7 @@
 ---
 title: "Instrumenting libraries"
+description: >-
+  Learn how to add native instrumentation to your library
 weight: 40
 ---
 

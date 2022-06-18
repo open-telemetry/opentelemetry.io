@@ -1,5 +1,7 @@
 ---
 title: Instrumentation
+description: >-
+  OpenTelemetry code instrumentation is supported for many popular programming languages
 weight: 2
 ---
 

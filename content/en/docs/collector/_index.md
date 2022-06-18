@@ -2,7 +2,6 @@
 title: Collector
 weight: 10
 description: >-
-  <img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Collector.svg" alt="Collector logo"></img>
   Vendor-agnostic way to receive, process and export telemetry data.
 spelling: cSpell:ignore Otel
 aliases: [/docs/collector/about]
