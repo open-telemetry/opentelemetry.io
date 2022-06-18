@@ -105,6 +105,8 @@ experiences from their forked demo.
 
 We have a lot of exciting improvements that are planned or in progress to turn
 this application into the canonical example of the full power of OpenTelemetry.
+Below is a semi-exhaustive list of upcoming features but we're not limiting
+ourselves to just the items listed here.
 
 - Language examples for
   [C++](https://github.com/open-telemetry/opentelemetry-demo-webstore/issues/36),
@@ -117,14 +119,14 @@ this application into the canonical example of the full power of OpenTelemetry.
   and
   [Logs](https://github.com/open-telemetry/opentelemetry-demo-webstore/issues/44)
   for all GA SDKs
-- Visualization component to consume Metrics
-- Implement multiple instrumentation techniques
+- Visualization components to consume Metrics
+- Implementation of multiple instrumentation techniques
 - Auto-instrumentation using the agent in a sidecar
 - Manual instrumentation of all signals
 - [Service Level Objective](https://github.com/OpenSLO/OpenSLO#slo) (SLO)
   definition and tracking
-- Additional instrumentation libraries where needed
-- Demonstrate the ability to add
+- Additional instrumentation libraries introduced where needed
+- Demonstratations of the ability to add
   [Baggage](https://github.com/open-telemetry/opentelemetry-demo-webstore/issues/100)
   and other custom tags
 - Continue to build on other cloud-native technologies like:
