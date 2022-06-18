@@ -97,7 +97,7 @@ to use their Collector exporter or by using your vendor's fork of our demo.
 Lightstep has an [excellent
 blog](https://lightstep.com/blog/observability-mythbusters-how-hard-is-it-to-get-started-with-opentelemetry)
 they just published on how to get started sending data to power their
-experiences from their forked demo.
+experiences from their forked version of our demo.
 
 ## Future State
 
