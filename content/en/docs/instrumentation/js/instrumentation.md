@@ -13,9 +13,8 @@ you'll need to have an initialized
 [`TracerProvider`](/docs/concepts/signals/traces/#tracer-provider) that will let
 you create a [`Tracer`](/docs/concepts/signals/traces/#tracer).
 
-If a `TracerProvider` is not created, either explicitly or via SDK APIs, then
-the OpenTelemetry APIs for tracing will use a no-op implementation and fail to
-generate data.
+If a `TracerProvider` is not created, the OpenTelemetry APIs for tracing will
+use a no-op implementation and fail to generate data.
 
 ### Node.js
 
@@ -25,44 +24,40 @@ package and OpenTelemetry API installed:
 ```shell
 npm install \
   @opentelemetry/api \
-  @opentelemetry/sdk-node
+  @opentelemetry/sdk-trace-node
 ```
 
 Next, create a separate `tracing.js` file that has all the SDK initialization
 code in it:
 
 ```js
-import opentelemetry from "@opentelemetry/api";
-import nodeOTel from "@opentelemetry/sdk-node";
-import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace-base';
+const opentelemetry = require("@opentelemetry/api");
+const { NodeTracerProvider } = require("@opentelemetry/sdk-trace-node");
+const { registerInstrumentations } = require("@opentelemetry/instrumentation");
+const { ConsoleSpanExporter, BatchSpanProcessor } = require("@opentelemetry/sdk-trace-base");
 
+const provider = new NodeTracerProvider();
 const exporter = new ConsoleSpanExporter();
+const processor = new BatchSpanProcessor(exporter);
+provider.addSpanProcessor(processor);
 
-const sdk = new nodeOTel.NodeSDK({
-  traceExporter: exporter,
+// Optionally register automatic instrumentation libraries
+registerInstrumentations({
+  instrumentations: [],
 });
 
-sdk.start()
+provider.register();
 
-// Now you can create a tracer. Export it for the rest
-// of the app to use.
-export const tracer = opentelemetry.trace.getTracer(
+module.exports.tracer = opentelemetry.trace.getTracer(
   'name-of-tracer-goes-here'
 );
 ```
 
-Under the covers, this creates a `TracerProvider` that uses the
-`BatchSpanProcessor` to process data in batches asynchronously.
-
 Next, ensure that `tracing.js` is required in your node invocation. For example:
 
 ```
-node --require './tracing.js' <other-app-file.js>
+node --require './tracing.js' <app-file.js>
 ```
-
-Although it's not technically required to `--require` the tracing initialization
-for only manual instrumentation, it is necessary when you use automatic
-instrumentation. So in practice, it's still likely to be necessary.
 
 ### Browser
 
@@ -71,16 +66,18 @@ First, ensure you've got the right packages:
 ```shell
 npm install \
   @opentelemetry/api \
-  @opentelemetry/sdk-trace-web
+  @opentelemetry/sdk-trace-web \
+  @opentelemetry/instrumentation
 ```
 
 Create a `tracing.js` file that initialized the Web SDK, creates a
 `TracerProvider`, and exports a `Tracer`.
 
 ```javascript
-import opentelemetry from "@opentelemetry/api";
-import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
-import { ConsoleSpanExporter, BatchSpanProcessor } from '@opentelemetry/sdk-trace-base';
+const opentelemetry = require("@opentelemetry/api");
+const { WebTracerProvider } = require("@opentelemetry/sdk-trace-web");
+const { registerInstrumentations } = require("@opentelemetry/instrumentation");
+const { ConsoleSpanExporter, BatchSpanProcessor } = require("@opentelemetry/sdk-trace-base");
 
 const provider = new WebTracerProvider();
 const exporter = new ConsoleSpanExporter();
@@ -92,7 +89,9 @@ registerInstrumentations({
   instrumentations: [],
 });
 
-export const tracer = opentelemetry.trace.getTracer(
+provider.register();
+
+module.exports.tracer = opentelemetry.trace.getTracer(
   'name-of-tracer-goes-here'
 );
 ```
@@ -102,9 +101,19 @@ tracing throughought the rest of your web application.
 
 ### Picking the right span processor
 
-By default, the Node SDK uses the `BatchSpanProcessor`, and this span processor is also chosen in the Web SDK example. The `BatchSpanProcessor` processes spans in batches before they are exported. This is usually the right processor to use for an application.
+By default, the Node SDK uses the `BatchSpanProcessor`, and this span processor
+is also chosen in the Web SDK example. The `BatchSpanProcessor` processes spans
+in batches before they are exported. This is usually the right processor to use
+for an application.
 
-In contrast, the `SimpleSpanProcessor` processes spans as they are created. This means that if you create 5 spans, each will be processed an exported before the next span is created in code. This can be helpful in scenarios where you do not want to risk losing a batch, or if you're experimenting with OpenTelemetry in development. However, it also comes with potentially signficant overhead, especially if spans are being exported over a network - each time a call to create a span is made, it would be processed and sent over a network before your app's execution could continue.
+In contrast, the `SimpleSpanProcessor` processes spans as they are created. This
+means that if you create 5 spans, each will be processed an exported before the
+next span is created in code. This can be helpful in scenarios where you do not
+want to risk losing a batch, or if you're experimenting with OpenTelemetry in
+development. However, it also comes with potentially signficant overhead,
+especially if spans are being exported over a network - each time a call to
+create a span is made, it would be processed and sent over a network before your
+app's execution could continue.
 
 In most cases, stick with `BatchSpanProcessor` over `SimpleSpanProcessor`.
 
