@@ -60,7 +60,7 @@ that they can further customize or simply use OOB.
 - Provide the OpenTelemetry community with a living artifact that demonstrates
 the features and capabilities of OTel APIs, SDKs, and tools.
 - Provide OpenTelemetry maintainers and working groups a platform to demonstrate
-new features/concepts real world like scenarios.
+new features/concepts in real world like scenarios.
 
 ## Current State
 
