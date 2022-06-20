@@ -1,7 +1,9 @@
 ---
 title: Signals
 description: Categories of telemetry supported by OpenTelemetry
-aliases: [/docs/concepts/data-sources]
+aliases:
+  - /docs/concepts/data-sources
+  - /docs/concepts/otel-concepts
 weight: 11
 ---
 
