@@ -2,7 +2,7 @@
 title: Learn how to instrument Apache Http Server with OpenTelemetry
 linkTitle: Instrument Apache Http Server
 date: 2022-05-27
-spelling: cSpell:ignore Centos centos7 Debajit debuggability zipkin
+spelling: cSpell:ignore Centos centos7 Debajit debuggability libmod OLTP uncompress zipkin
 author: Debajit Das
 ---
 
@@ -218,11 +218,11 @@ cd /opt/opentelemetry-webserver-sdk
 
   - The below LoadFile are the dependent libraries that come with the package.
 
-    ![Loadfile](/img/instrument-apache-http-server/loadfile.png)
+    ![LoadFile](/img/instrument-apache-http-server/loadfile.png)
 
   - The below configuration are for the OpenTelemetry Module
 
-    ![Loadmodule](/img/instrument-apache-http-server/loadmodule.png)
+    ![LoadModule](/img/instrument-apache-http-server/loadmodule.png)
 
     In the case of Apache 2.2, `libmod_apache_otel22.so` needs to be used
     instead of `libmod_apache_otel.so`
@@ -232,7 +232,7 @@ cd /opt/opentelemetry-webserver-sdk
 
     ![enabled](/img/instrument-apache-http-server/enabled.png)
 
-  - Since the module works with the Collector and sends data in oltp format, the
+  - Since the module works with the Collector and sends data in OLTP format, the
     following directives are necessary.
 
     ![exporter](/img/instrument-apache-http-server/exporter.png)
