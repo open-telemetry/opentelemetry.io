@@ -2,7 +2,8 @@
 title: Learn how to instrument Apache Http Server with OpenTelemetry
 linkTitle: Instrument Apache Http Server
 date: 2022-05-27
-spelling: cSpell:ignore Centos centos7 Debajit debuggability libmod OLTP uncompress zipkin
+spelling:
+  cSpell:ignore Centos centos7 Debajit debuggability libmod OLTP uncompress
 author: Debajit Das
 ---
 
@@ -50,7 +51,7 @@ location and Apache server will be started with Apache OpenTelemetry Module.
 ### Viewing spans on the backend
 
 As mentioned in [docker-compose.yml][], `webserver_centos7` listens on port
-9004, zipkin listens on port 9411 and the OpenTelemetry Collector listens on
+9004, Zipkin listens on port 9411 and the OpenTelemetry Collector listens on
 port 4317.
 
 To send a request to Apache webServer you can either use curl from terminal
@@ -60,9 +61,9 @@ displayed as below:
 
 ![Testing](/img/instrument-apache-http-server/testing.png)
 
-Now, traces and spans can be seen on the zipkin backend. To view them, visit
-[localhost:9411][] in your browser and click on **Run Query** button. Following is
-the screenshot from Zipkin UI showing spans emitted by the Apache webServer.
+Now, traces and spans can be seen on the Zipkin backend. To view them, visit
+[localhost:9411][] in your browser and click on **Run Query** button. Following
+is the screenshot from Zipkin UI showing spans emitted by the Apache webServer.
 
 ![Span-List](/img/instrument-apache-http-server/span-list.png)
 
@@ -72,7 +73,7 @@ WebServer, such as `/noindex/css`.
 To see the details click on any of the **SHOW** buttons. Below is the screenshot
 from the Zipkin UI showing the span hierarchy.
 
-![A screenshot from the zipkin UI showing the span hierarchy](/img/instrument-apache-http-server/span-hierarchy.png)
+![A screenshot from the Zipkin UI showing the span hierarchy](/img/instrument-apache-http-server/span-hierarchy.png)
 
 The above shows that as a part of this request, `mod_proxy`,
 `mod_proxy_balancer` and `mod_dav` got involved in the request processing and
@@ -82,7 +83,7 @@ time consumed in each of the modules.
 
 To demonstrate the benefits of module level details, we'll introduce an
 artificial delay in a php script and see how the delay gets displayed in the
-zipkin backend. The following steps are required to be done.
+Zipkin backend. The following steps are required to be done.
 
 - Login to the container and install the php module.
 
@@ -124,10 +125,9 @@ zipkin backend. The following steps are required to be done.
 
   ![Php-Response](/img/instrument-apache-http-server/php-response.png)
 
-- Now, traces and spans can be seen on the zipkin backend. To view them, type
+- Now, traces and spans can be seen on the Zipkin backend. To view them, type
   [localhost:9411][] on the browser and click on the **Run Query** Button. To
-  see the details, click on the **SHOW** button corresponding to
-  `/index.html`.
+  see the details, click on the **SHOW** button corresponding to `/index.html`.
 
   ![Span-Delay](/img/instrument-apache-http-server/span-delay.png)
 
