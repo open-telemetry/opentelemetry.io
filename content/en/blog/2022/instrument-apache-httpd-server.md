@@ -2,6 +2,7 @@
 title: Learn how to instrument Apache Http Server with OpenTelemetry
 linkTitle: Instrument Apache Http Server
 date: 2022-05-27
+spelling: cSpell:ignore Centos centos7 Debajit debuggability zipkin
 author: Debajit Das
 ---
 
@@ -186,9 +187,8 @@ docker cp <container_name>:/otel-webserver-module/build/opentelemetry-webserver-
 **x86-64** instruction set and glibc version greater than 2.17. At the point of
 writing this blog, support for other architectures is not provided.
 
-- Transfer the above package along with
-  [opentelemetry_module.conf](https://github.com/open-telemetry/opentelemetry-cpp-contrib/blob/main/instrumentation/otel-webserver-module/opentelemetry_module.conf)
-  to the target system.
+- Transfer the above package along with [opentelemetry_module.conf][] to the
+  target system.
 
 - Uncompress the package `opentelemetry-webserver-sdk-x64-linux.tgz` to `/opt`
   directory.
@@ -205,9 +205,8 @@ cd /opt/opentelemetry-webserver-sdk
 ```
 
 - In the case of Centos, apache configuration is generally located in
-  `/etc/httpd/conf/`. Hence copy the
-  [opentelemetry_module.conf](https://github.com/open-telemetry/opentelemetry-cpp-contrib/blob/main/instrumentation/otel-webserver-module/opentelemetry_module.conf)
-  to `/etc/httpd/conf`.
+  `/etc/httpd/conf/`. Hence copy the [opentelemetry_module.conf][] to
+  `/etc/httpd/conf`.
 
 - Edit the `/etc/httpd/conf/httpd.conf` and add
   `Include conf/opentelemetry_module.conf` at the end of the file as mentioned
@@ -259,5 +258,7 @@ cd /opt/opentelemetry-webserver-sdk
 
 [docker-compose.yml]:
   https://github.com/open-telemetry/opentelemetry-cpp-contrib/blob/main/instrumentation/otel-webserver-module/docker-compose.yml
+[opentelemetry_module.conf]:
+  https://github.com/open-telemetry/opentelemetry-cpp-contrib/blob/main/instrumentation/otel-webserver-module/opentelemetry_module.conf
 [opentelemetry apache module]:
   https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/otel-webserver-module
