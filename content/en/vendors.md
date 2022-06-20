@@ -7,7 +7,7 @@ spelling: cSpell:ignore bution distri Uptrace
 
 # {{% param title %}}
 
-Distributions and vendors who natively support OpenTelemetry in their commercial
+[Distributions](/docs/concepts/distributions/) and vendors who natively support OpenTelemetry in their commercial
 products.
 {{% /blocks/lead %}}
 
@@ -30,7 +30,7 @@ products.
 | LogicMonitor    | Yes          | Yes         | <https://www.logicmonitor.com/support/tracing/getting-started-with-tracing>
 | Logz.io         | Yes          | No          | <https://docs.logz.io/shipping/tracing-sources/opentelemetry.html#overview>
 | Lumigo          | Yes          | Yes         | <https://www.lumigo.io>
-| New Relic       | Yes          | Yes         | <https://newrelic.com/solutions/opentelemetry>
+| New Relic       | No           | Yes         | <https://newrelic.com/solutions/opentelemetry>
 | Promscale       | No           | Yes         | <https://www.timescale.com/promscale>
 | Sentry Software | Yes          | Yes         | <https://www.sentrysoftware.com/products/hardware-sentry-opentelemetry-collector.html>
 | SigNoz          | Yes          | Yes         | <https://signoz.io>
