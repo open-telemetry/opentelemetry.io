@@ -58,13 +58,13 @@ terminal
 curl localhost:9004/
 ```
 
-Or, you can type `localhost:9004/` in any browser. A default landing page saying
+You can also visit [localhost:9004][] in any browser. A default landing page saying
 "Testing 123..." for Apache Http Server on Centos will be displayed as below:
 
 ![Testing](/img/instrument-apache-http-server/testing.png)
 
 Now, traces and spans can be seen on the zipkin backend. To view them, type
-`localhost:9411` in your browser and click on **Run Query** Button. Following is
+[localhost:9411][] in your browser and click on **Run Query** Button. Following is
 the screenshot from Zipkin UI showing spans emitted by the Apache webServer.
 
 ![Span-List](/img/instrument-apache-http-server/span-list.png)
@@ -123,13 +123,13 @@ yum install php -y
 httpd -k restart
 ```
 
-- Now, type `localhost:9004/index.html` in your browser. You should see
-  something like below:
+- Now, visit [localhost:9004/index.html][] in your browser. You should see
+  something like this:
 
   ![Php-Response](/img/instrument-apache-http-server/php-response.png)
 
 - Now, traces and spans can be seen on the zipkin backend. To view them, type
-  `localhost:9411` on the browser and click on the **“Run Query”** Button. To
+  [localhost:9411][] on the browser and click on the **“Run Query”** Button. To
   see the details, click on the **“SHOW”** button corresponding to
   `/index.html`.
 
@@ -258,6 +258,9 @@ cd /opt/opentelemetry-webserver-sdk
 
 [docker-compose.yml]:
   https://github.com/open-telemetry/opentelemetry-cpp-contrib/blob/main/instrumentation/otel-webserver-module/docker-compose.yml
+[localhost:9004]: http://localhost:9004
+[localhost:9004/index.html]: http://localhost:9004/index.html
+[localhost:9411]: http://localhost:9411
 [opentelemetry_module.conf]:
   https://github.com/open-telemetry/opentelemetry-cpp-contrib/blob/main/instrumentation/otel-webserver-module/opentelemetry_module.conf
 [opentelemetry apache module]:
