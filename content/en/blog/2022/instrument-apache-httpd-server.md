@@ -23,21 +23,21 @@ Getting started with the OpenTelemetry module for apache httpd is pretty simple,
 all you need is a docker engine and git. Download the source code from github
 and then build the docker image on CentOS7:
 
-```
+```sh
 git clone https://github.com/open-telemetry/opentelemetry-cpp-contrib
 cd  instrumentation/otel-webserver-module
 docker-compose --profile centos7 build
 ```
 
-The above command downloads all required dependencies, builds the OpenTelemetry
+These commands download all required dependencies, builds the OpenTelemetry
 module for Apache and installs the same on the docker image.
 
-**Note**: The above command might take around 1 hour to complete.
+**Note**: The above commands might take around 1 hour to complete.
 
 When the build is finished, run the docker image, by typing the following
 command:
 
-```
+```sh
 docker-compose --profile centos7 up -d
 ```
 
@@ -60,14 +60,14 @@ displayed as below:
 
 ![Testing](/img/instrument-apache-http-server/testing.png)
 
-Now, traces and spans can be seen on the zipkin backend. To view them, type
-[localhost:9411][] in your browser and click on **Run Query** Button. Following is
+Now, traces and spans can be seen on the zipkin backend. To view them, visit
+[localhost:9411][] in your browser and click on **Run Query** button. Following is
 the screenshot from Zipkin UI showing spans emitted by the Apache webServer.
 
 ![Span-List](/img/instrument-apache-http-server/span-list.png)
 
 This shows a list of queries or endpoints that have been triggered to Apache
-WebServer, such as `/noindex/css`
+WebServer, such as `/noindex/css`.
 
 To see the details click on any of the **SHOW** buttons. Below is the screenshot
 from the Zipkin UI showing the span hierarchy.
@@ -78,7 +78,7 @@ The above shows that as a part of this request, `mod_proxy`,
 `mod_proxy_balancer` and `mod_dav` got involved in the request processing and
 time consumed in each of the modules.
 
-## How can module level details be beneficial ?
+## How can module level details be beneficial?
 
 To demonstrate the benefits of module level details, we'll introduce an
 artificial delay in a php script and see how the delay gets displayed in the
@@ -86,10 +86,10 @@ zipkin backend. The following steps are required to be done.
 
 - Login to the container and install the php module.
 
-```
-docker exec -it webserver_centos7 /bin/bash
-yum install php -y
-```
+  ```sh
+  docker exec -it webserver_centos7 /bin/bash
+  yum install php -y
+  ```
 
 - Add `AddType application/x-httpd-php .html` in `/etc/httpd/conf/httpd.conf` as
   mentioned below:
@@ -99,35 +99,34 @@ yum install php -y
 - Create a file named as `index.html` in the **/var/www/html** directory and add
   the following text
 
-```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>PHP Test Page</title>
-  </head>
+  ```html
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>PHP Test Page</title>
+    </head>
 
-  <body>
-    <?php
-      echo date('h:i:s') . "<br>"; echo "Introduce delay of 1 seconds" . "<br />";
-    sleep(1); echo date('h:i:s'); ?>
-  </body>
-</html>
-```
+    <body>
+      <?php
+        echo date('h:i:s') . "<br>"; echo "Introduce delay of 1 seconds" . "<br />";
+      sleep(1); echo date('h:i:s'); ?>
+    </body>
+  </html>
+  ```
 
-- Restart the apache
+- Restart the server:
 
-```
-httpd -k restart
-```
+  ```sh
+  httpd -k restart
+  ```
 
-- Now, visit [localhost:9004/index.html][] in your browser. You should see
-  something like this:
+- Now, visit [localhost:9004/index.html][]. You should see something like this:
 
   ![Php-Response](/img/instrument-apache-http-server/php-response.png)
 
 - Now, traces and spans can be seen on the zipkin backend. To view them, type
-  [localhost:9411][] on the browser and click on the **“Run Query”** Button. To
-  see the details, click on the **“SHOW”** button corresponding to
+  [localhost:9411][] on the browser and click on the **Run Query** Button. To
+  see the details, click on the **SHOW** button corresponding to
   `/index.html`.
 
   ![Span-Delay](/img/instrument-apache-http-server/span-delay.png)
@@ -148,16 +147,16 @@ the package and install on the target system where apache is installed.
 
 - In order to clone the source code, execute the following
 
-```
-git clone https://github.com/open-telemetry/opentelemetry-cpp-contrib
-cd  opentelemetry-cpp-contrib/instrumentation/otel-webserver-module
-```
+  ```sh
+  git clone https://github.com/open-telemetry/opentelemetry-cpp-contrib
+  cd  opentelemetry-cpp-contrib/instrumentation/otel-webserver-module
+  ```
 
 - Trigger the build command to generate the package inside the docker image
 
-```
-docker-compose --profile centos7 build
-```
+  ```sh
+  docker-compose --profile centos7 build
+  ```
 
 The above might take around an hour to build. This would build on Centos 7 image
 as `apache_centos7`
@@ -165,9 +164,9 @@ as `apache_centos7`
 - Once the build is complete, it's time to extract the image. We need to startup
   the container which can be done by the following command
 
-```
-docker run -idt --name <container_name> apache_centos7 /bin/bash
-```
+  ```sh
+  docker run -idt --name <container_name> apache_centos7 /bin/bash
+  ```
 
 The above command would run the container and can be verified using the
 `docker ps` command.
@@ -176,9 +175,9 @@ The above command would run the container and can be verified using the
   `/otel-webserver-module/build` directory. The same can be extracted to the
   host system as
 
-```
-docker cp <container_name>:/otel-webserver-module/build/opentelemetry-webserver-sdk-x64-linux.tgz <target-directory>
-```
+  ```sh
+  docker cp <container_name>:/otel-webserver-module/build/opentelemetry-webserver-sdk-x64-linux.tgz <target-directory>
+  ```
 
 **Note:** The above package should work on any linux distribution having
 **x86-64** instruction set and glibc version greater than 2.17. At the point of
@@ -190,16 +189,16 @@ writing this blog, support for other architectures is not provided.
 - Uncompress the package `opentelemetry-webserver-sdk-x64-linux.tgz` to `/opt`
   directory.
 
-```
-“tar -xvf opentelemetry-webserver-sdk-x64-linux.tgz -C /opt”
-```
+  ```sh
+  tar -xvf opentelemetry-webserver-sdk-x64-linux.tgz -C /opt
+  ```
 
 - Now, install the module by executing the following
 
-```
-cd /opt/opentelemetry-webserver-sdk
-./install.sh
-```
+  ```sh
+  cd /opt/opentelemetry-webserver-sdk
+  ./install.sh
+  ```
 
 - In the case of Centos, apache configuration is generally located in
   `/etc/httpd/conf/`. Hence copy the [opentelemetry_module.conf][] to
@@ -250,7 +249,7 @@ cd /opt/opentelemetry-webserver-sdk
 
   ![verify-module](/img/instrument-apache-http-server/verify-module.png)
 
-- Now, Restart the apache module and open telemetry module should be
+- Now, restart the apache module and open telemetry module should be
   instrumented.
 
 [docker-compose.yml]:
