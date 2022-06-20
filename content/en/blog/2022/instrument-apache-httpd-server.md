@@ -51,15 +51,12 @@ location and Apache server will be started with Apache OpenTelemetry Module.
 
 As mentioned in [docker-compose.yml][], `webserver_centos7` listens on port
 9004, zipkin listens on port 9411 and the OpenTelemetry Collector listens on
-port 4317. To send a request to Apache webServer you can either use curl from
-terminal
+port 4317.
 
-```
-curl localhost:9004/
-```
-
-You can also visit [localhost:9004][] in any browser. A default landing page saying
-"Testing 123..." for Apache Http Server on Centos will be displayed as below:
+To send a request to Apache webServer you can either use curl from terminal
+(`curl localhost:9004`), or visit [localhost:9004][] in any browser. A default
+landing page saying "Testing 123..." for Apache Http Server on Centos will be
+displayed as below:
 
 ![Testing](/img/instrument-apache-http-server/testing.png)
 
