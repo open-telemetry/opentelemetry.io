@@ -65,7 +65,6 @@ receivers:
   otlp:
     protocols:
       grpc:
-        endpoint: localhost:55680
 
 processors:
 
