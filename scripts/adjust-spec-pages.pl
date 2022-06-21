@@ -74,7 +74,7 @@ while(<>) {
 
   # Images
   s|(\.\./)?internal(/img/[-\w]+\.png)|$2|g;
-  s|(\]\()(img/.*?\))|$1../$2|g;
+  s|(\]\()(img/.*?\))|$1../$2|g if $ARGV !~ /logs._index/;
 
   # Fix links that are to the title of the .md page
   s|(/context/api-propagators.md)#propagators-api|$1|g;
