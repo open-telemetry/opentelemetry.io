@@ -6,7 +6,7 @@
 
 >Traces track the progression of a single request, called a trace, as it is handled by services that make up an application. The request may be initiated by a user or an application. Distributed tracing is a form of tracing that traverses process, network and security boundaries.
 
-Although the definition seems very application centric, you can leverage the OpenTelemetry traces model as a way to represent a request and quickly understand it's duration and the details about every step involved in completing it.
+Although the definition seems very application centric, you can leverage the OpenTelemetry trace model as a way to represent a request and quickly understand it's duration and the details about every step involved in completing it.
 
 Assuming you already have a system generating some kind of tracing telemetry, [the OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) is the doorway to help you make it available into the OTel world.
 
