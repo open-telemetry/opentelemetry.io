@@ -714,7 +714,7 @@ func (tailtracerRcvr *tailtracerReceiver) Shutdown(context.Context) error {
 	return nil
 }
 ```
->### Reviewing the code
+>### Check Your Work
 >
 >- Importing the `context` package which is where the `Context` type and functions are declared
 >- Importing the `go.opentelemetry.io/collector/component` package which is where the `Host` type is declared
