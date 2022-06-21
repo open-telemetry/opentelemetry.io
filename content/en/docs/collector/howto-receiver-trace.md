@@ -1470,7 +1470,7 @@ func fillResourceWithBackendSystem(resource *pdata.Resource, backend BackendSyst
 
  }
 ```
->### Reviewing the code
+>### Check Your Work
 >
 >- Imported the `go.opentelemetry.io/collector/model/semconv/v1.9.0` package as `conventions`, in order to have access to all resource semantic conventions attribute names and values.
 >- Updated the `fillResourceWithAtm()` function  by adding lines to properly assign the "service.name" and "service.version" attributes to the `pcommon.Resource` representing the `Atm` entity
