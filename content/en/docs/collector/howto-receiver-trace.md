@@ -202,7 +202,7 @@ type Config struct {
 
 ```
 
->### Reviewing the code
+>### Check Your Work
 >
 >- I imported the `go.opentelemetry.io/collector/config` package, which is where ReceiverSettings is declared.
 >- I embedded the `config.ReceiverSettings` as required by the spec.
