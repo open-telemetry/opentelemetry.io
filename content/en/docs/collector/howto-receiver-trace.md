@@ -1,6 +1,6 @@
 # Building a Traces Receiver
 
- If you are reading this tutorial, you probably already have an idea of the OpenTelemetry concepts behind distributed tracing, but if you don't you can quickly read through it [here](https://opentelemetry.io/docs/concepts/signals/traces/).
+ If you are reading this tutorial, you probably already have an idea of the OpenTelemetry concepts behind distributed tracing, but if you don't you can quickly read through it [here](/content/en/docs/concepts/signals/traces.md).
 
  Here is the definition of those concepts according to OpenTelemetry:
 
@@ -8,7 +8,7 @@
 
 Although the definition seems very application centric, you can leverage the OpenTelemetry trace model as a way to represent a request and quickly understand it's duration and the details about every step involved in completing it.
 
-Assuming you already have a system generating some kind of tracing telemetry, [the OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) is the doorway to help you make it available into the OTel world.
+Assuming you already have a system generating some kind of tracing telemetry, [the OpenTelemetry Collector](/content/en/docs/collector/_index.md) is the doorway to help you make it available into the OTel world.
 
 Within the Collector, a trace receiver has the role to receive and convert your request telemetry from it's original format into the OTel trace model, so the information can be properly processed through the Collector's pipelines.
 
