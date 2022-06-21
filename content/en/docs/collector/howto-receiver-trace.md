@@ -1649,7 +1649,7 @@ func appendTraceSpans(backend *BackendSystem, backendScopeSpans *ptrace.ScopeSpa
 >- Added a variable called `backendSpan` which will hold the instance of the `ptrace.Span` representing this operation.
 >- Setting the `Name` of the span with the `Endpoint` field value from the `BackendSystem` instance
 >- Setting the `Kind` of the span as `ptrace.SpanKindServer`. Take a look at [SpanKind section](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#spankind) within the trace specification to understand how to properly define SpanKind.
->- Used all the methods mentioned before to fill the `ptrace.Span` with the proper values to represent the `BakendSytem` operation
+>- Used all the methods mentioned before to fill the `ptrace.Span` with the proper values to represent the `BackendSystem` operation
 
 
 You probably noticed that there are 2 references to `ptrace.ScopeSpans` as parameters in the `appendTraceSpans()` function, but we only used one of them. Don't worry about it for now, we will get back to it later.
