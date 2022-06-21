@@ -234,7 +234,7 @@ type Config struct {
 
 ```
 
-> ### Check Your Work
+> #### Check your work
 >
 > - I imported the `go.opentelemetry.io/collector/config` package, which is
 >   where ReceiverSettings is declared.
@@ -284,7 +284,7 @@ func (cfg *Config) Validate() error {
  }
 ```
 
-> ### Check Your Work
+> #### Check your work
 >
 > - I imported the `fmt` package, so I can properly format print my error
 >   messages.
@@ -485,7 +485,7 @@ func NewFactory() component.ReceiverFactory {
 }
 ```
 
-> ### Check Your Work
+> #### Check your work
 >
 > - Importing the `time` package in order to support the time.Duration type for
 >   the defaultInterval
@@ -626,7 +626,7 @@ func NewFactory() component.ReceiverFactory {
 }
 ```
 
-> ### Check Your Work
+> #### Check your work
 >
 > - Importing the `context` package in order to support the `context.Context`
 >   type referenced in the `createTracesReceiver` function
@@ -709,7 +709,7 @@ func components() (component.Factories, error) {
 }
 ```
 
-> ### Check Your Work
+> #### Check your work
 >
 > - Importing the
 >   `github.com/rquedas/otel4devs/collector/receiver/trace-receiver/tailtracer`
@@ -849,7 +849,7 @@ func (tailtracerRcvr *tailtracerReceiver) Shutdown(context.Context) error {
 }
 ```
 
-> ### Check Your Work
+> #### Check your work
 >
 > - Importing the `context` package which is where the `Context` type and
 >   functions are declared
@@ -922,7 +922,7 @@ func (tailtracerRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
 
 ```
 
-> ### Check Your Work
+> #### Check your work
 >
 > - Updated the `Start()` method by adding the initialization to the `host`
 >   field with the `component.Host` reference passed by the Collector and the
@@ -1006,7 +1006,7 @@ func (tailtracerRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
 
 ```
 
-> ### Check Your Work
+> #### Check your work
 >
 > - Importing the `go.opentelemetry.io/collector/consumer` which is where the
 >   pipeline's consumer types and interfaces are declared.
@@ -1105,7 +1105,7 @@ func NewFactory() component.ReceiverFactory {
 }
 ```
 
-> ### Check Your Work
+> #### Check your work
 >
 > - Added a guard clause that verifies if the consumer is properly instantiated
 >   and if not returns the `component.ErrNilNextConsumer`error.
@@ -1379,7 +1379,7 @@ func getRandomNumber(min int, max int) int {
 }
 ```
 
-> ### Check Your Work
+> #### Check your work
 >
 > - Imported the `math/rand` and `time` packages to support the implementation
 >   of the `generateRandomNumber` function
@@ -1474,7 +1474,7 @@ func generateTraces() ptrace.Traces{
 }
 ```
 
-> ### Check Your Work
+> #### Check your work
 >
 > - Added the `resourceSpan` variable and initialized it with the `ResourceSpan`
 >   reference returned by the `traces.ResourceSpans().AppendEmpty()` call
@@ -1530,7 +1530,7 @@ func fillResourceWithAtm(resource *pcommon.Resource, atm Atm){
 }
 ```
 
-> ### Check Your Work
+> #### Check your work
 >
 > - Declared a variable called `atmAttrs` and initialized it with the
 >   `pcommon.Map` reference returned by the `resource.Attributes()` call
@@ -1766,7 +1766,7 @@ func fillResourceWithBackendSystem(resource *pdata.Resource, backend BackendSyst
  }
 ```
 
-> ### Check Your Work
+> #### Check your work
 >
 > - Imported the `go.opentelemetry.io/collector/model/semconv/v1.9.0` package as
 >   `conventions`, in order to have access to all resource semantic conventions
@@ -1994,7 +1994,7 @@ func appendTraceSpans(backend *BackendSystem, backendScopeSpans *ptrace.ScopeSpa
 }
 ```
 
-> ### Check Your Work
+> #### Check your work
 >
 > - Added `traceId` and `backendSpanId` variables to respectively represent the
 >   trace and the span id and initialized them with the helper functions created
@@ -2087,7 +2087,7 @@ func (tailtracerRcvr *tailtracerReceiver) Start(ctx context.Context, host compon
 }
 ```
 
-> ### Check Your Work
+> #### Check your work
 >
 > - Added a line under the `case <=ticker.C` condition calling the
 >   `tailtracerRcvr.nextConsumer.ConsumeTraces()` method passing the new context
