@@ -29,7 +29,6 @@ First use the tutorial from the [builder](https://github.com/rquedas/otel4devs/t
 
 ```yaml
 dist:
-    module: dev-otelcol # the module name for the new distribution, following Go mod conventions. Optional, but recommended.
     name: dev-otelcol # the binary name. Optional.
     output_path: ./dev-otelcol # the path to write the output (sources and binary). Optional.
 ```
@@ -84,37 +83,35 @@ service:
       exporters: [jaeger, logging]
 ```
 
-  
-
+Notice that I am only using the `insecure` flag in my `jaeger` receiver config to make my local development setup easier; you should not use this flag when running your collector in production.
 
 In order to verify that your initial pipeline is properly setup, you should have the following output after running your `dev-otelcol` command: 
 
 ```cmd
 dev-otelcol % ./dev-otelcol --config config.yaml
-2022-02-01T09:29:36.205-0600    info    service/collector.go:190        Applying configuration...
-2022-02-01T09:29:36.206-0600    info    builder/exporters_builder.go:254        Exporter was built.  {"kind": "exporter", "name": "logging"}
-2022-02-01T09:29:36.207-0600    info    builder/exporters_builder.go:254        Exporter was built.  {"kind": "exporter", "name": "jaeger"}
-2022-02-01T09:29:36.207-0600    info    builder/pipelines_builder.go:222        Pipeline was built.  {"name": "pipeline", "name": "traces"}
-2022-02-01T09:29:36.207-0600    info    builder/receivers_builder.go:224        Receiver was built.  {"kind": "receiver", "name": "otlp", "datatype": "traces"}
-2022-02-01T09:29:36.207-0600    info    service/service.go:86   Starting extensions...
-2022-02-01T09:29:36.207-0600    info    service/service.go:91   Starting exporters...
-2022-02-01T09:29:36.207-0600    info    builder/exporters_builder.go:40 Exporter is starting... {"kind": "exporter", "name": "logging"}
-2022-02-01T09:29:36.207-0600    info    builder/exporters_builder.go:48 Exporter started.       {"kind": "exporter", "name": "logging"}
-2022-02-01T09:29:36.207-0600    info    builder/exporters_builder.go:40 Exporter is starting... {"kind": "exporter", "name": "jaeger"}
-2022-02-01T09:29:36.207-0600    info    builder/exporters_builder.go:48 Exporter started.       {"kind": "exporter", "name": "jaeger"}
-2022-02-01T09:29:36.207-0600    info    service/service.go:96   Starting processors...
-2022-02-01T09:29:36.207-0600    info    builder/pipelines_builder.go:54 Pipeline is starting... {"name": "pipeline", "name": "traces"}
-2022-02-01T09:29:36.207-0600    info    jaegerexporter@v0.41.0/exporter.go:186  State of the connection with the Jaeger Collector backend     {"kind": "exporter", "name": "jaeger", "state": "IDLE"}
-2022-02-01T09:29:36.207-0600    info    builder/pipelines_builder.go:65 Pipeline is started.    {"name": "pipeline", "name": "traces"}
-2022-02-01T09:29:36.208-0600    info    service/service.go:101  Starting receivers...
-2022-02-01T09:29:36.208-0600    info    builder/receivers_builder.go:68 Receiver is starting... {"kind": "receiver", "name": "otlp"}
-2022-02-01T09:29:36.208-0600    info    otlpreceiver/otlp.go:69 Starting GRPC server on endpoint localhost:55680      {"kind": "receiver", "name": "otlp"}
-2022-02-01T09:29:36.212-0600    info    builder/receivers_builder.go:73 Receiver started.       {"kind": "receiver", "name": "otlp"}
-2022-02-01T09:29:36.212-0600    info    service/telemetry.go:92 Setting up own telemetry...
-2022-02-01T09:29:36.219-0600    info    service/telemetry.go:116        Serving Prometheus metrics   {"address": ":8888", "level": "basic", "service.instance.id": "b9424849-d205-45ed-aa51-768c606f9b12", "service.version": "latest"}
-2022-02-01T09:29:36.219-0600    info    service/collector.go:239        Starting dev-otelcol... {"Version": "1.0.0", "NumCPU": 12}
-2022-02-01T09:29:36.219-0600    info    service/collector.go:135        Everything is ready. Begin running and processing data.
-2022-02-01T09:29:37.208-0600    info    jaegerexporter@v0.41.0/exporter.go:186  State of the connection with the Jaeger Collector backend     {"kind": "exporter", "name": "jaeger", "state": "READY"}
+2022-06-21T13:02:09.253-0500    info    builder/exporters_builder.go:255        Exporter was built.     {"kind": "exporter", "name": "jaeger"}
+2022-06-21T13:02:09.254-0500    info    builder/exporters_builder.go:255        Exporter was built.     {"kind": "exporter", "name": "logging"}
+2022-06-21T13:02:09.254-0500    info    builder/pipelines_builder.go:224        Pipeline was built.     {"kind": "pipeline", "name": "traces"}
+2022-06-21T13:02:09.254-0500    info    builder/receivers_builder.go:225        Receiver was built.     {"kind": "receiver", "name": "otlp", "datatype": "traces"}
+2022-06-21T13:02:09.254-0500    info    service/telemetry.go:102        Setting up own telemetry...
+2022-06-21T13:02:09.255-0500    info    service/telemetry.go:141        Serving Prometheus metrics      {"address": ":8888", "level": "basic"}
+2022-06-21T13:02:09.255-0500    info    service/service.go:93   Starting extensions...
+2022-06-21T13:02:09.255-0500    info    service/service.go:98   Starting exporters...
+2022-06-21T13:02:09.255-0500    info    builder/exporters_builder.go:40 Exporter is starting... {"kind": "exporter", "name": "jaeger"}
+2022-06-21T13:02:09.258-0500    info    builder/exporters_builder.go:48 Exporter started.       {"kind": "exporter", "name": "jaeger"}
+2022-06-21T13:02:09.258-0500    info    jaegerexporter@v0.53.0/exporter.go:186  State of the connection with the Jaeger Collector backend       {"kind": "exporter", "name": "jaeger", "state": "IDLE"}
+2022-06-21T13:02:09.258-0500    info    builder/exporters_builder.go:40 Exporter is starting... {"kind": "exporter", "name": "logging"}
+2022-06-21T13:02:09.258-0500    info    builder/exporters_builder.go:48 Exporter started.       {"kind": "exporter", "name": "logging"}
+2022-06-21T13:02:09.258-0500    info    service/service.go:103  Starting processors...
+2022-06-21T13:02:09.258-0500    info    builder/pipelines_builder.go:54 Pipeline is starting... {"kind": "pipeline", "name": "traces"}
+2022-06-21T13:02:09.258-0500    info    builder/pipelines_builder.go:65 Pipeline is started.    {"kind": "pipeline", "name": "traces"}
+2022-06-21T13:02:09.258-0500    info    service/service.go:108  Starting receivers...
+2022-06-21T13:02:09.258-0500    info    builder/receivers_builder.go:67 Receiver is starting... {"kind": "receiver", "name": "otlp"}
+2022-06-21T13:02:09.258-0500    info    otlpreceiver/otlp.go:70 Starting GRPC server on endpoint localhost:55690        {"kind": "receiver", "name": "otlp"}
+2022-06-21T13:02:09.261-0500    info    builder/receivers_builder.go:72 Receiver started.       {"kind": "receiver", "name": "otlp"}
+2022-06-21T13:02:09.262-0500    info    service/collector.go:226        Starting dev-otelcol... {"Version": "1.0.0", "NumCPU": 12}
+2022-06-21T13:02:09.262-0500    info    service/collector.go:134        Everything is ready. Begin running and processing data.
+2022-06-21T13:02:10.258-0500    info    jaegerexporter@v0.53.0/exporter.go:186  State of the connection with the Jaeger Collector backend       {"kind": "exporter", "name": "jaeger", "state": "READY"}
 ```
 
   
@@ -1832,7 +1829,7 @@ Span #0
   
 
 Here is what the generated trace looks like in Jaeger:
-![Jaeger trace](/img/tutorials/Jaeger-BackendSystem-Trace.png)
+![Jaeger trace](/img/docs/tutorials/Jaeger-BackendSystem-Trace.png)
 
   
 
@@ -1897,7 +1894,7 @@ func appendTraceSpans(backend *BackendSystem, backendScopeSpans *ptrace.ScopeSpa
 ```
 
 Go ahead and run your `dev-otelcol` again and after 2 minutes running, you should start seeing traces in Jaeger like the following:
-![Jaeger trace](/img/tutorials/Jaeger-Fullsystem-Trace%20list.png)
+![Jaeger trace](/img/docs/tutorials/Jaeger-Fullsystem-Trace%20list.png)
 
   
 
@@ -1906,6 +1903,6 @@ Go ahead and run your `dev-otelcol` again and after 2 minutes running, you shoul
 We now have services representing both the `Atm` and the `BackendSystem` telemetry generation entities in our system and can fully understand how both entities are been used and contributing to the performance of an operation executed by an user.
 
 Here is the detailed view of one of those traces in Jaeger:
-![Jaeger trace](/img/tutorials/Jaeger-FullSystem-Trace%20Details.png)
+![Jaeger trace](/img/docs/tutorials/Jaeger-FullSystem-Trace%20Details.png)
 
 That's it! You have now reached the end of this tutorial and successfully implemented a trace receiver, congratulations!
