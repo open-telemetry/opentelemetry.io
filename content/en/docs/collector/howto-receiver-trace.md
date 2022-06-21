@@ -665,7 +665,7 @@ All the receiver APIs responsible to enable the signals are currently declared i
 
 Notice that `component.TracesReceiver` (and it's siblings `component.MetricsReceiver` and `component.LogsReceiver`) at this point in time, doesn't describe any specific methods other than the ones it "inherits" from `component.Receiver` which also doesn't describe any specific methods other than the ones it "inherits" from `component.Component`. 
 
-It might feel weird, but remember, the Collector's API was meant to be extensible, and the components and their datasources might evolve in different ways, so the role of those interfaces exist to help support that. 
+It might feel weird, but remember, the Collector's API was meant to be extensible, and the components and their signals might evolve in different ways, so the role of those interfaces exist to help support that. 
 
 So, to create a `component.TracesReceiver`, you just need to implement the following methods described by `component.Component` interface:
 
