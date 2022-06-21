@@ -787,7 +787,7 @@ Now that you have implemented the `component.TraceReceiver` interface methods, y
 
 Open the `tailtracer/factory.go` file and navigate to the `createTracesReceiver()` function. Notice that the factory will pass references as part of the `createTracesReceiver()` function parameters that your receiver actually requires to work properly like it's configuration settings (`config.Receiver`), the next `Consumer` in the pipeline that will consume the generated traces (`consumer.Traces`) and the Collector's logger so the `tailtracer` receiver can add meaningful events to it (`component.ReceiverCreateSettings`).
 
-Given that all this information will be only  made available to the receiver at the moment it's instantiated by the factory, The `tailtracerReceiver` type will need fields to keep that information and use it within other stages of it's lifecycle.
+Given that all this information will be only be made available to the receiver at the moment its instantiated by the factory, The `tailtracerReceiver` type will need fields to keep that information and use it within other stages of its lifecycle.
 
 Here is what the `trace-receiver.go` file looks like with the updated `tailtracerReceiver` type declaration:
 
