@@ -122,7 +122,7 @@ dev-otelcol % ./dev-otelcol --config config.yaml
 
 Make sure you see the last line, that will confirm that the Jaeger exporter has successfully established a connection to your local Jaeger instance. Now that we have our environment ready, let's start writing your receiver's code.
 
-Now, create another folder called `tailtracer` so we can have a place to host all of our receivers code
+Now, create another folder called `tailtracer` so we can have a place to host all of our receiver code
 
 ```cmd
 mkdir tailtracer
