@@ -453,7 +453,7 @@ All the types and functions involved in supporting the requirements for componen
 ### Enabling the factory to describe the receiver as capable of processing traces
   
 
-The same receiver component can process traces, metrics and logs, and the receiver's factory is responsible to describe those capabilities. 
+The same receiver component can process traces, metrics, and logs. The receiver's factory is responsible for describing those capabilities. 
 
 Given that Traces are the subject of the tutorial, that's the only datasource we will enable the `tailtracer` receiver to work with. The `components` package provides the following function and type to help the factory describe the trace processing capabilities:
 
