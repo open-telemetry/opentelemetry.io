@@ -727,7 +727,7 @@ The `Start()` method is passing 2 references (`context.Context` and `component.H
 
 The `context.Context` reference should be used for creating a new context to support you receiver processing operations, and in that case you will need to decide the best way to handle context cancellation so you can finalize it properly as part of the component's shutdown within the `Shutdown()` method.
 
-The `component.Host` might be useful during the whole lifecycle of the receiver so you might want to keep that reference within your `tailtracerReceiver` type.
+The `component.Host` can be useful during the whole lifecycle of the receiver so you should keep that reference within your `tailtracerReceiver` type.
 
 Here is what the `tailtracerReceiver` type declaration will look like after you include the fields for keeping the references suggested above:  
 
