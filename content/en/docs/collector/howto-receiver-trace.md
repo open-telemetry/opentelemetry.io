@@ -455,7 +455,7 @@ All the types and functions involved in supporting the requirements for componen
 
 The same receiver component can process traces, metrics, and logs. The receiver's factory is responsible for describing those capabilities. 
 
-Given that Traces are the subject of the tutorial, that's the only datasource we will enable the `tailtracer` receiver to work with. The `components` package provides the following function and type to help the factory describe the trace processing capabilities:
+Given that traces are the subject of the tutorial, that's the only signal we will enable the `tailtracer` receiver to work with. The `components` package provides the following function and type to help the factory describe the trace processing capabilities:
 
 ```go
 func WithTracesReceiver(createTracesReceiver CreateTracesReceiver) ReceiverFactoryOption
