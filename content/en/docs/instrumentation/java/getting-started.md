@@ -105,6 +105,6 @@ For more:
 [Get the example code.]: https://grpc.io/docs/languages/java/quickstart/#get-the-example-code
 [Java Quick start example]: https://grpc.io/docs/languages/java/quickstart/
 [manual instrumentation]: ../manual
-[opentelemetry-javaagent.jar]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/download/v1.12.0/opentelemetry-javaagent.jar
+[opentelemetry-javaagent.jar]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
 [releases]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases
 [Run the example:]: https://grpc.io/docs/languages/java/quickstart/#run-the-example
