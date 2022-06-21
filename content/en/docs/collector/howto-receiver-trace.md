@@ -124,7 +124,7 @@ Now, create another folder called `tailtracer` so we can have a place to host al
 mkdir tailtracer
 ```
 
-Every Collector's component should be created as go module, so you will need to properly initialize the `tailtracer` module. In my case here is what the command looked like:
+Every Collector's component should be created as a Go module, so you will need to properly initialize the `tailtracer` module. In my case here is what the command looked like:
 
 ```cmd
 cd tailtracer
