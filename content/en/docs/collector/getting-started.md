@@ -22,12 +22,12 @@ $ git clone git@github.com:open-telemetry/opentelemetry-collector-contrib.git; \
 
 ## Docker
 
-Pull a docker image and run the collector in a container. Replace `0.51.0`
+Pull a docker image and run the collector in a container. Replace `0.53.0`
 with the version of the Collector you wish to run.
 
 ```console
-$ docker pull ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:0.51.0
-$ docker run ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:0.51.0
+$ docker pull ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:0.53.0
+$ docker run ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:0.53.0
 ```
 
 ## Kubernetes
@@ -65,40 +65,40 @@ systems. The packaging includes a default configuration that can be found at
 
 ### APK Installation
 
-To get started on alpine systems run the following replacing `v0.51.0` with the
+To get started on alpine systems run the following replacing `v0.53.0` with the
 version of the Collector you wish to run.
 
 ```console
 $ apk update
 $ apk add wget shadow
-$ wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.51.0/otelcol-contrib_0.51.0_linux_amd64.apk
-$ apk add --allow-untrusted otelcol-contrib_0.51.0_linux_amd64.apk
+$ wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.53.0/otelcol-contrib_0.53.0_linux_amd64.apk
+$ apk add --allow-untrusted otelcol-contrib_0.53.0_linux_amd64.apk
 ```
 
 ### DEB Installation
 
-To get started on Debian systems run the following replacing `v0.51.0` with the
+To get started on Debian systems run the following replacing `v0.53.0` with the
 version of the Collector you wish to run and `amd64` with the appropriate
 architecture.
 
 ```console
 $ sudo apt-get update
 $ sudo apt-get -y install wget systemctl
-$ wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.51.0/otelcol_0.51.0_linux_amd64.deb
-$ sudo dpkg -i otelcol_0.51.0_linux_amd64.deb
+$ wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.53.0/otelcol_0.53.0_linux_amd64.deb
+$ sudo dpkg -i otelcol_0.53.0_linux_amd64.deb
 ```
 
 ### RPM Installation
 
-To get started on Red Hat systems run the following replacing `v0.51.0` with the
+To get started on Red Hat systems run the following replacing `v0.53.0` with the
 version of the Collector you wish to run and `x86_64` with the appropriate
 architecture.
 
 ```console
 $ sudo yum update
 $ sudo yum -y install wget systemctl
-$ wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.51.0/otelcol_0.51.0_linux_amd64.rpm
-$ sudo rpm -ivh otelcol_0.51.0_linux_amd64.rpm
+$ wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v0.53.0/otelcol_0.53.0_linux_amd64.rpm
+$ sudo rpm -ivh otelcol_0.53.0_linux_amd64.rpm
 ```
 
 ### Automatic Service Configuration
