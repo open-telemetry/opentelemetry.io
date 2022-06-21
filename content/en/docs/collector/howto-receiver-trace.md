@@ -853,13 +853,13 @@ func (tracemokRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
 
   
 
-The `tailtracerReceiver` type is now ready to be instantiated and keep all  meaningful information passed by it's factory.
+The `tailtracerReceiver` type is now ready to be instantiated and keep all meaningful information passed by its factory.
 
 Open the `tailtracer/factory.go` file and navigate to the `createTracesReceiver()` function. 
 
 The receiver is only instantiated if it's declared as a component within a pipeline and the factory is responsible to make sure the next consumer (either a processor or exporter) in the pipeline is valid otherwise it should generate an error. 
 
-The Collector's api provides some standard error types to help the factory handle pipeline configurations. Your receiver factory should throw a `component.ErrNilNextConsumer` in case the next consumer has an issue and is passed as nil.
+The Collector's API provides some standard error types to help the factory handle pipeline configurations. Your receiver factory should throw a `component.ErrNilNextConsumer` in case the next consumer has an issue and is passed as nil.
 
 The `createTracesReceiver()` function will need a guard clause to make that validation.
 
@@ -917,7 +917,7 @@ func NewFactory() component.ReceiverFactory {
 		component.WithTracesReceiver(createTracesReceiver))
 }
 ```
->### Reviewing the code
+>### Check Your Work
 >- Added a guard clause that verifies if the consumer is properly instantiated and if not returns the `component.ErrNilNextConsumer`error. 
 >- Added a variable called `logger` and initialized it with the Collector's logger that is available as a field named `Logger` within the `component.ReceiverCreateSettings` reference.
 >- Added a variable called `tailtracerCfg` and initialized it by casting the `config.Receiver` reference to the `tailtracer` receiver `Config`.
@@ -994,11 +994,11 @@ Now, go ahead and press `ctrl+c` in your Collector's terminal so you want watch 
   
 
 As you can see there is an info log line for the `tailtracer` receiver which means the component is responding correctly to the `Shutdown()` event.
-In the next section you will learn more about the OTel Trace data model so the `tailtracer` receiver can finally generate traces!
+In the next section you will learn more about the OpenTelemetry Trace data model so the `tailtracer` receiver can finally generate traces!
 
 ## The Collector's Trace Data Model
 
-You might be familiar with OTel traces by using the SDKs and instrumenting an application so you can see and evaluate your traces within a distributed tracing backend like Jaeger. 
+You might be familiar with OpenTelemetry traces by using the SDKs and instrumenting an application so you can see and evaluate your traces within a distributed tracing backend like Jaeger. 
 
 Here is what a trace looks like in Jaeger:
 
@@ -1153,7 +1153,7 @@ func getRandomNumber(min int, max int) int {
     return i	
 }
 ```
->### Reviewing the code
+>### Check Your Work
 >
 >- Imported the `math/rand` and `time` packages to support the implementation of the `generateRandomNumber` function
 >- Added the `generateAtm` function that instantiates an `Atm` type and randomly assign either Illinois or California as values for `StateID` and the equivalent value for `ISPNetwork`
@@ -1221,7 +1221,7 @@ func generateTraces() ptrace.Traces{
 	return traces
 }
 ```
->### Reviewing the code
+>### Check Your Work
 >
 >- Added the `resourceSpan` variable and initialized it with the `ResourceSpan` reference returned by the `traces.ResourceSpans().AppendEmpty()` call
 >- Added the `atmResource` variable and initialized it with the `pcommon.Resource` reference returned by the `resourceSpan.Resource()` call
@@ -1257,7 +1257,7 @@ func fillResourceWithAtm(resource *pcommon.Resource, atm Atm){
    atmAttrs.InsertString("atm.serialnumber", atm.SerialNumber)
 }
 ```
->### Reviewing the code
+>### Check Your Work
 >
 >- Declared a variable called `atmAttrs` and initialized it with the `pcommon.Map` reference returned by the `resource.Attributes()` call
 >- Used the `InsertInt()` and `InsertString()` methods from `pcommon.Map` to add int and string attributes based on the equivalent `Atm` field types. Notice that because those attributes are very specific and only represent the `Atm` entity, they are all grouped within the "atm." prefix.
