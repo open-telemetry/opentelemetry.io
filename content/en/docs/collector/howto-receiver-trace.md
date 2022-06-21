@@ -357,7 +357,7 @@ The `component.NewReceiverFactory()` instantiates and returns a `component.Recei
 
 - `ReceiverCreateDefaultConfigFunc`: A reference to a function that returns the config.Receiver instance for your receiver.
 
-- `... ReceiverFactoryOption`: The slice of ReceiverFactoryOptions that will determine what type of MELT datasource your receiver is capable of processing.
+- `... ReceiverFactoryOption`: The slice of ReceiverFactoryOptions that will determine what type of signal your receiver is capable of processing.
 
 Let's now implement the code to support all the parameters required by `component.NewReceiverFactory()`
 
