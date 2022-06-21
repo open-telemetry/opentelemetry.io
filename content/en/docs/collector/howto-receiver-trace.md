@@ -351,7 +351,7 @@ func NewReceiverFactory(cfgType config.Type, createDefaultConfig ReceiverCreateD
 
   
 
-The `component.NewReceiverFactory()` instantiate and returns a `component.ReceiverFactory` and it requires the following parameters:
+The `component.NewReceiverFactory()` instantiates and returns a `component.ReceiverFactory` and it requires the following parameters:
 
 - `config.Type`: A config.Type instance representing a unique identifier for your receiver across all Collector's components.
 
