@@ -245,7 +245,7 @@ func (cfg *Config) Validate() error {
  }
 ```
 
->### Reviewing the code
+>### Check Your Work
 >
 >- I imported the `fmt` package, so I can properly format print my error messages.
 >- I added the `Validate` method to my Config struct where I am checking if the `interval` setting value is at least 1 minute (1m) and if the `number_of_traces` setting value is greater or equal to 1. If that is not true the Collector will generate an error during it's startup process and display the message accordingly.
