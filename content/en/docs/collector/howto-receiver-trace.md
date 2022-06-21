@@ -1771,7 +1771,7 @@ func appendTraceSpans(backend *BackendSystem, backendScopeSpans *ptrace.ScopeSpa
 ```
 
 Go ahead and run your `dev-otelcol` again and after 2 minutes running, you should start seeing traces in Jaeger like the following:
-![Jaeger trace](/img/docs/tutorials/Jaeger-FullSystem-Trace-List.png)
+![Jaeger trace](/img/docs/tutorials/Jaeger-FullSystem-Traces-List.png)
 
 We now have services representing both the `Atm` and the `BackendSystem` telemetry generation entities in our system and can fully understand how both entities are been used and contributing to the performance of an operation executed by an user.
 
