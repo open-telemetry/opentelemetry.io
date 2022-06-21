@@ -286,7 +286,7 @@ span.addEvent('Doing something');
 const result = doWork();
 ```
 
-You can also create Span Events with additiona
+You can also create Span Events with additional
 [Attributes](/docs/concepts/signals/traces/#attributes):
 
 ```js
