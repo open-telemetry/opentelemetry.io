@@ -673,7 +673,7 @@ So, to create a `component.TracesReceiver`, you just need to implement the follo
 Start(ctx context.Context, host Host) error
 Shutdown(ctx context.Context) error
 ```
-Both methods actually act as event handlers used by the Collector to communicate with it's components as part of their lifecycle.
+Both methods actually act as event handlers used by the Collector to communicate with its components as part of their lifecycle.
 
 The `Start()` represents a signal of the Collector telling the component to start it's processing. As part of the event, the Collector will pass the following information:
 - `context.Context`: Most of the time, a receiver will be processing a long-running operation, so the recommendation is to ignore this context and actually create a new one from context.Background().
