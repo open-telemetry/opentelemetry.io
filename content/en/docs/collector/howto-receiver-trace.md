@@ -659,7 +659,7 @@ The `tailtracer` receiver factory and config requirements are done and the Colle
 ## Implementing the trace receiver component
   
 
-In the previous section, I mentioned the fact that a receiver can process any of the OTel supported datasources (traces, metrics or log), and the Collector's API is designed to help you accomplish that.
+In the previous section, I mentioned the fact that a receiver can process any of the OpenTelemetry signals, and the Collector's API is designed to help you accomplish that.
 
 All the receiver API's responsible to enable the datasources are currently declared in the [component/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.53.0/component/receiver.go) file within the OTel Collector's project in GitHub, open the file and take a minute to browse through all the interfaces declared in it. 
 
