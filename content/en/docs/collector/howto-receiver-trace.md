@@ -783,7 +783,7 @@ func (tracemokRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
 ### Keeping information passed by the receiver's factory
   
 
-Now that you have implemented the `component.TraceReceiver` interface methods, your `tailtracer` receiver component is ready to be instantiated and returned by it's factory.
+Now that you have implemented the `component.TraceReceiver` interface methods, your `tailtracer` receiver component is ready to be instantiated and returned by its factory.
 
 Open the `tailtracer/factory.go` file and navigate to the `createTracesReceiver()` function. Notice that the factory will pass references as part of the `createTracesReceiver()` function parameters that your receiver actually requires to work properly like it's configuration settings (`config.Receiver`), the next `Consumer` in the pipeline that will consume the generated traces (`consumer.Traces`) and the Collector's logger so the `tailtracer` receiver can add meaningful events to it (`component.ReceiverCreateSettings`).
 
