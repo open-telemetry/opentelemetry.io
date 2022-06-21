@@ -7,6 +7,7 @@ use warnings;
 use diagnostics;
 
 my $file = '';
+my $frontMatterFromFile = '';
 my $title = '';
 my $linkTitle = '';
 my $gD = 0;
@@ -24,7 +25,7 @@ cascade:
   github_project_repo: *repo
 EOS
 
-sub printTitle() {
+sub printTitleAndFrontMatter() {
   print "---\n";
   my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
   print "title: $titleMaybeQuoted\n";
@@ -39,6 +40,7 @@ sub printTitle() {
     print "  from: $path_base_for_github_subdir/$1_index.md\n";
     print "  to: $1README.md\n";
   }
+  print "$frontMatterFromFile" if $frontMatterFromFile;
   print "---\n";
 }
 
@@ -48,12 +50,20 @@ while(<>) {
   # printf STDOUT "$ARGV Got: $_" if $gD;
 
   if ($file ne $ARGV) {
-    $title = '';
     $file = $ARGV;
+    $frontMatterFromFile = '';
+    $title = '';
+    if (/^<!---?/) {
+        while(<>) {
+          last if /^-?-->/;
+          $frontMatterFromFile .= $_;
+        }
+        next;
+    }
   }
   if(! $title) {
     ($title) = /^#\s+(.*)/;
-    printTitle() if $title;
+    printTitleAndFrontMatter() if $title;
     next;
   }
 
