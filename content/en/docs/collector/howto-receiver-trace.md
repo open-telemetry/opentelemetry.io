@@ -613,7 +613,7 @@ func components() (component.Factories, error) {
 }
 ```
 
->### Reviewing the code
+>### Check Your Work
 >
 >- Importing the `github.com/rquedas/otel4devs/collector/receiver/trace-receiver/tailtracer` module which is where the receiver types and function are.
 >- Added a call to `tailtracer.NewFactory()` as a parameter of the `component.MakeReceiverFactoryMap()` call so your `tailtracer` receiver factory is properly added to the `factories` map.
