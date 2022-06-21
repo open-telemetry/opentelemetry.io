@@ -1196,7 +1196,7 @@ You will start with a type called `ptrace.ResourceSpans` which represents the re
 
 `ptrace.ResourceSpansSlice` has a method named `AppendEmpty()` that adds a new `ptrace.ResourceSpan` to the array and return it's reference.
 
-Once you have an instance of a  `ptrace.ResourceSpan` you will use a method named `Resource()` which will return the instance of the `pcommon.Resource` associated with the `ResourceSpan`.
+Once you have an instance of a `ptrace.ResourceSpan` you will use a method named `Resource()` which will return the instance of the `pcommon.Resource` associated with the `ResourceSpan`.
 
 
 Update the `generateTrace()` function with the following changes:
