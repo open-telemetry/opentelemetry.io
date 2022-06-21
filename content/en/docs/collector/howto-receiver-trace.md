@@ -841,7 +841,7 @@ func (tracemokRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
 
 ```
 
->### Reviewing the code
+>### Check Your Work
 >- Importing the `go.opentelemetry.io/collector/consumer` which is where the pipeline's consumer types and interfaces are declared.
 >- Importing the `go.uber.org/zap` package, which is what the Collector uses for it's logging capabilities.
 >- Added a `zap.Logger` field named `logger` so we can have access to the Collector's logger reference from within the receiver.
