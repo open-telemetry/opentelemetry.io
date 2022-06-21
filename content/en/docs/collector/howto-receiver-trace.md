@@ -538,7 +538,7 @@ func NewFactory() component.ReceiverFactory {
 		component.WithTracesReceiver(createTracesReceiver))
 }
 ```
->### Reviewing the code
+>### Check Your Work
 >
 >- Importing the `context` package in order to support the `context.Context` type referenced in the `createTracesReceiver` function
 >- Importing the `go.opentelemetry.io/collector/consumer` package in order to support the `consumer.Traces` type referenced in the `createTracesReceiver` function
