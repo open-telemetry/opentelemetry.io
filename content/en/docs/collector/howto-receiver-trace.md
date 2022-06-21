@@ -428,7 +428,7 @@ func NewFactory() component.ReceiverFactory {
 }
 ```
 
->### Reviewing the code
+>### Check Your Work
 >
 >- Importing the `time` package in order to support the time.Duration type for the defaultInterval
 >- Importing the `go.opentelemetry.io/collector/config` package, which is where the Receiver interface and the NewReceiverSettings() and NewComponentID() functions are declared.
