@@ -464,7 +464,7 @@ type CreateTracesReceiver func(context.Context, component.ReceiverCreateSettings
 
   
 
-The `component.WithTracesReceiver()` instantiate and returns a `component.ReceiverFactoryOption` and it requires the following parameters:
+The `component.WithTracesReceiver()` instantiates and returns a `component.ReceiverFactoryOption` and it requires the following parameters:
 - `CreateTracesReceiver`: A reference to a function that matches the `component.CreateTracesReceiver` type 
 
   
