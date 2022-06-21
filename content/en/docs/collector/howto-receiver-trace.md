@@ -432,7 +432,7 @@ func NewFactory() component.ReceiverFactory {
 >
 >- Importing the `time` package in order to support the time.Duration type for the defaultInterval
 >- Importing the `go.opentelemetry.io/collector/config` package, which is where the Receiver interface and the NewReceiverSettings() and NewComponentID() functions are declared.
->- Added a string constant called `typeStr` to represent the unique identifier (component ID) of the receiver and assigned `tailtracer` as it's value. This id is going to be used to fetch the receiver settings from the Collector's config.
+>- Added a string constant called `typeStr` to represent the unique identifier (component ID) of the receiver and assigned `tailtracer` as it's value. This ID is going to be used to fetch the receiver settings from the Collector's config.
 >- Added a `time.Duration` constant called `defaultInterval` to represent the default value for our receiver's `Interval` setting. We will be setting the default value for 1 minute hence the assignment of `1 * time.Minute` as it's value.
 >- Added a function called `createDefaultConfig` which is responsible to return a config.Receiver implementation, which in this case is going to be an instance of our `tailtracer.Config` struct.   
 >   - The `tailtracer.Config.ReceiverSettings` field was initialized using the `config.NewReceiverSettings` function which returns a `config.ReceiverSettings` instance based on a given `config.ComponentID`.  
