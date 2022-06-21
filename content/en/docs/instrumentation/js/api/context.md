@@ -11,7 +11,7 @@ This document describes the OpenTelemetry context API for JavaScript and how it 
 
 More information:
 
-- [Context specification]({{< relref "/docs/reference/specification/context/context" >}})
+- [Context specification](/docs/reference/specification/context/)
 - [Context API reference](https://open-telemetry.github.io/opentelemetry-js-api/classes/contextapi.html)
 
 ## Context Manager
@@ -131,7 +131,7 @@ import * as api from "@opentelemetry/api";
 
 // Returns the active context
 // If no context is active, the ROOT_CONTEXT is returned
-const ctx =  api.context.active(); 
+const ctx =  api.context.active();
 ```
 
 ### Set Active Context
