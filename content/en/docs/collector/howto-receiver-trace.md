@@ -1716,7 +1716,7 @@ func (tracemokRcvr *tailtracerReceiver) Start(ctx context.Context, host componen
 	return nil
 }
 ```
->### Reviewing the code
+>### Check Your Work
 >
 >- Added a line under the `case <=ticker.C` condition calling the `tailtracerRcvr.nextConsumer.ConsumeTraces()` method passing the new context created within the `Start()` method (`ctx`) and a call to the `generateTraces()` function so the generated traces can be pushed to the next consumer in the pipeline
 
