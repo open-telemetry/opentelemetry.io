@@ -772,7 +772,7 @@ func (tracemokRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
 }
 
 ```
->### Reviewing the code
+>### Check Your Work
 >- Updated the `Start()` method by adding the initialization to the `host` field with the `component.Host` reference passed by the Collector and the `cancel` function field with the cancellation based on a new context created with `context.Background()` (according the Collector's API documentation suggestions).  
 >- Updated the `Stop()` method by adding a call to the `cancel()` context cancellation function.
 
