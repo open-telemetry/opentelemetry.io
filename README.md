@@ -38,7 +38,7 @@ for the Zoom link and any updates to this schedule.
 Meeting notes are available as a public [Google
 doc](https://docs.google.com/document/d/1wW0jLldwXN8Nptq2xmgETGbGn9eWP8fitvD5njM-xZY/edit?usp=sharing).
 If you have trouble accessing the doc, please get in touch on
-[Slack](https://cloud-native.slack.com/archives/C02UN96HZH6)).
+[Slack](https://cloud-native.slack.com/archives/C02UN96HZH6).
 
 Roles:
 
