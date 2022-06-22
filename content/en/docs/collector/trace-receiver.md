@@ -1175,8 +1175,9 @@ pipeline and is now instantiating it and starting it given that 1 minute after
 the Collector has started, you can see the info line we added to the `ticker`
 function within the `Start()` method.
 
-Now, go ahead and press `ctrl+c` in your Collector's terminal so you want watch
-the shutdown process happening. Here is what the output should look like:
+Now, go ahead and press <kbd>Control+C</kbd> in your Collector's terminal so you
+want watch the shutdown process happening. Here is what the output should look
+like:
 
 ```cmd
 ^C2022-03-03T11:20:14.652-0600  info    service/collector.go:166        Received signal from OS {"signal": "interrupt"}
