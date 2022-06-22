@@ -1,5 +1,6 @@
 ---
 title: Distributed tracing in Knative
+linkTitle: Tracing in Knative
 date: 2022-04-12
 spelling: cSpell:ignore Cloudevents istio Loffay Pavol pavolloffay
 author: Pavol Loffay
@@ -105,7 +106,7 @@ the event extensions/attributes.
 
 Follows log output with request headers from the first service:
 
-```bash
+```nocode
 2022/02/17 12:53:48 Request headers:
 2022/02/17 12:53:48 	X-B3-Sampled: [1]
 2022/02/17 12:53:48 	X-B3-Spanid: [af6c239eb7b39349]
@@ -132,7 +133,7 @@ Now let's take a look at logging from the second service which exposes API to
 consume Knative events. The event API in this case is just an HTTP endpoint
 which is a cloud event implementation detail:
 
-```cmd
+```nocode
 2022/02/17 13:39:36 Event received: Context Attributes,
   specversion: 1.0
   type: httpbody
@@ -160,7 +161,7 @@ might not have an immediate impact on the user, however, it will enable users to
 start natively reporting data in OpenTelemetry format (OTLP).
 
 Another recently merged change is the addition of
-[Cloudevents semantic attributes into the OpenTelemetry specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/cloudevents.md).
+[Cloudevents semantic attributes into the OpenTelemetry specification](/docs/reference/specification/trace/semantic_conventions/cloudevents).
 The document standardizes attributes related to CloudEvents. The screenshot
 below is from the demo application that is still not using the standardized
 attribute names:
@@ -201,16 +202,12 @@ instrumentation libraries explicitly in the code or even
 
 ## References
 
-- Knative docs: https://knative.dev/docs/
-- Knative serving tracing config:
-  https://knative.dev/docs/serving/accessing-traces/
-- Knative eventing tracing config:
-  https://knative.dev/docs/eventing/accessing-traces/
-- Cloud events: https://cloudevents.io/
-- Zipkin B3: https://github.com/openzipkin/b3-propagation
-- W3C Trace-Context: https://www.w3.org/TR/trace-context/
-- OpenTelemetry instrumentation for Cloudevents Golang SDK:
-  https://github.com/cloudevents/sdk-go/tree/main/observability/opentelemetry/v2
-- Cloudevents OpenTelemetry attributes:
-  https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/cloudevents.md
-- Knative tracing demo: https://github.com/pavolloffay/knative-tracing
+- [Knative docs](https://knative.dev/docs/)
+  - [Knative serving tracing config](https://knative.dev/docs/serving/accessing-traces/)
+  - [Knative eventing tracing config](https://knative.dev/docs/eventing/accessing-traces/)
+- [Cloud events](https://cloudevents.io)
+- [Zipkin B3](https://github.com/openzipkin/b3-propagation)
+- [W3C Trace-Context](https://www.w3.org/TR/trace-context/)
+- [OpenTelemetry instrumentation for Cloudevents Golang SDK](https://github.com/cloudevents/sdk-go/tree/main/observability/opentelemetry/v2)
+- [Cloudevents OpenTelemetry attributes](/docs/reference/specification/trace/semantic_conventions/cloudevents/)
+- [Knative tracing demo](https://github.com/pavolloffay/knative-tracing)
