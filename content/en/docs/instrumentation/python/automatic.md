@@ -19,7 +19,6 @@ example is based on an [OpenTracing example][]. You can download or view the
 This example uses two different scripts. The main difference between them is
 whether or not they’re instrumented manually:
 
-
 1. `server_instrumented.py` - instrumented manually
 2. `server_uninstrumented.py` - not instrumented manually
 
@@ -28,8 +27,12 @@ with the agent. They should both produce the same results, demonstrating that
 the automatic instrumentation agent does exactly the same thing as manual
 instrumentation.
 
-To better understand auto-instrumentation, see the relevant part of both
-scripts:
+Automatic instrumentation utilizes [monkey-patching][] to dynamically rewrite
+methods and classes at runtime through [instrumentation
+libraries][instrumentation]. This reduces the amount of work required to
+integrate OpenTelemetry into your application code. Below, you will see the
+difference between a Flask route instrumented manually versus one that utilizes
+automatic instrumentation.
 
 ### Manually instrumented server
 
@@ -88,6 +91,21 @@ The examples that follow send instrumentation results to the console. Learn more
 about installing and configuring the [OpenTelemetry Distro](../distro) to send
 telemetry to other destinations, like an OpenTelemetry Collector.
 
+> **Note**: To use automatic instrumentation through `opentelemetry-instrument`,
+> you must configure it via environment variables or the command line. The agent
+> creates a telemetry pipeline that cannot be modified other than through these
+> means. If you need more customization for your telemetry pipelines, then you
+> need to forego the agent and import the OpenTelemetry SDK and instrumentation
+> libraries into your code and configure them there. You may also extend
+> automatic instrumentation by importing the OpenTelemetry API. For more
+> details, see the [API reference][].
+
+It is also possible to use the instrumentation libraries (such as
+`opentelemetry-instrumentation-flask`) by themselves which may have an advantage
+of customizing options. However, by choosing to do this it means you forego
+using auto-instrumentation by starting your application with
+`opentelemetry-instrument` as this is mutually exclusive.
+
 ## Execute
 
 This section guides you through the manual process of instrumenting a server as
@@ -114,37 +132,37 @@ example:
 
 ```json
 {
-    "name": "server_request",
-    "context": {
-        "trace_id": "0xfa002aad260b5f7110db674a9ddfcd23",
-        "span_id": "0x8b8bbaf3ca9c5131",
-        "trace_state": "{}"
-    },
-    "kind": "SpanKind.SERVER",
-    "parent_id": null,
-    "start_time": "2020-04-30T17:28:57.886397Z",
-    "end_time": "2020-04-30T17:28:57.886490Z",
-    "status": {
-        "status_code": "OK"
-    },
-    "attributes": {
-        "http.method": "GET",
-        "http.server_name": "127.0.0.1",
-        "http.scheme": "http",
-        "host.port": 8082,
-        "http.host": "localhost:8082",
-        "http.target": "/server_request?param=testing",
-        "net.peer.ip": "127.0.0.1",
-        "net.peer.port": 52872,
-        "http.flavor": "1.1"
-    },
-    "events": [],
-    "links": [],
-    "resource": {
-        "telemetry.sdk.language": "python",
-        "telemetry.sdk.name": "opentelemetry",
-        "telemetry.sdk.version": "0.16b1"
-    }
+  "name": "server_request",
+  "context": {
+    "trace_id": "0xfa002aad260b5f7110db674a9ddfcd23",
+    "span_id": "0x8b8bbaf3ca9c5131",
+    "trace_state": "{}"
+  },
+  "kind": "SpanKind.SERVER",
+  "parent_id": null,
+  "start_time": "2020-04-30T17:28:57.886397Z",
+  "end_time": "2020-04-30T17:28:57.886490Z",
+  "status": {
+    "status_code": "OK"
+  },
+  "attributes": {
+    "http.method": "GET",
+    "http.server_name": "127.0.0.1",
+    "http.scheme": "http",
+    "host.port": 8082,
+    "http.host": "localhost:8082",
+    "http.target": "/server_request?param=testing",
+    "net.peer.ip": "127.0.0.1",
+    "net.peer.port": 52872,
+    "http.flavor": "1.1"
+  },
+  "events": [],
+  "links": [],
+  "resource": {
+    "telemetry.sdk.language": "python",
+    "telemetry.sdk.name": "opentelemetry",
+    "telemetry.sdk.version": "0.16b1"
+  }
 }
 ```
 
@@ -170,41 +188,41 @@ example:
 
 ```json
 {
-    "name": "server_request",
-    "context": {
-        "trace_id": "0x9f528e0b76189f539d9c21b1a7a2fc24",
-        "span_id": "0xd79760685cd4c269",
-        "trace_state": "{}"
-    },
-    "kind": "SpanKind.SERVER",
-    "parent_id": "0xb4fb7eee22ef78e4",
-    "start_time": "2020-04-30T17:10:02.400604Z",
-    "end_time": "2020-04-30T17:10:02.401858Z",
-    "status": {
-        "status_code": "OK"
-    },
-    "attributes": {
-        "http.method": "GET",
-        "http.server_name": "127.0.0.1",
-        "http.scheme": "http",
-        "host.port": 8082,
-        "http.host": "localhost:8082",
-        "http.target": "/server_request?param=testing",
-        "net.peer.ip": "127.0.0.1",
-        "net.peer.port": 48240,
-        "http.flavor": "1.1",
-        "http.route": "/server_request",
-        "http.status_text": "OK",
-        "http.status_code": 200
-    },
-    "events": [],
-    "links": [],
-    "resource": {
+  "name": "server_request",
+  "context": {
+    "trace_id": "0x9f528e0b76189f539d9c21b1a7a2fc24",
+    "span_id": "0xd79760685cd4c269",
+    "trace_state": "{}"
+  },
+  "kind": "SpanKind.SERVER",
+  "parent_id": "0xb4fb7eee22ef78e4",
+  "start_time": "2020-04-30T17:10:02.400604Z",
+  "end_time": "2020-04-30T17:10:02.401858Z",
+  "status": {
+    "status_code": "OK"
+  },
+  "attributes": {
+    "http.method": "GET",
+    "http.server_name": "127.0.0.1",
+    "http.scheme": "http",
+    "host.port": 8082,
+    "http.host": "localhost:8082",
+    "http.target": "/server_request?param=testing",
+    "net.peer.ip": "127.0.0.1",
+    "net.peer.port": 48240,
+    "http.flavor": "1.1",
+    "http.route": "/server_request",
+    "http.status_text": "OK",
+    "http.status_code": 200
+  },
+  "events": [],
+  "links": [],
+  "resource": {
     "telemetry.sdk.language": "python",
     "telemetry.sdk.name": "opentelemetry",
     "telemetry.sdk.version": "0.16b1",
     "service.name": ""
-    }
+  }
 }
 ```
 
@@ -229,9 +247,10 @@ if __name__ == "__main__":
     app.run(port=8082, debug=True, use_reloader=False)
 ```
 
-[distro]:
-    https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/distro
-[OpenTracing example]:
-    https://github.com/yurishkuro/opentracing-tutorial/tree/master/python
-[source files]:
-    https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/auto-instrumentation
+[API reference]: https://opentelemetry-python.readthedocs.io/en/latest/index.html
+[distro]: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-distro
+[env]: https://opentelemetry-python.readthedocs.io/en/latest/sdk/environment_variables.html
+[instrumentation]: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-instrumentation
+[monkey-patching]: https://stackoverflow.com/questions/5626193/what-is-monkey-patching
+[opentracing example]: https://github.com/yurishkuro/opentracing-tutorial/tree/master/python
+[source files]: https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/auto-instrumentation
