@@ -20,6 +20,12 @@ future improvements.
 We won’t cover the details of the OpenTelemetry collector pipeline. For that
 please, refer to [OpenTelemetry collector documentation](/docs/collector/).
 
+Before diving into the details, we need to clarify that the k8s attributes are
+not attaching to each single span. Instead the processors attach all the
+information to a OpenTelemetry
+[Resource](https://opentelemetry.io/docs/reference/specification/overview/#resources).
+this reduces the data duplication.
+
 ## Using k8sattributes processor
 
 K8sattributes processor is an OpenTelemetry collector processor that attaches
