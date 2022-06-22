@@ -15,7 +15,7 @@ To send trace data to a Collector you'll want to use an exporter package, such a
 $ npm install --save @opentelemetry/exporter-trace-otlp-http
 ```
 
-Next, configure the exporter to point at and endpoint.
+Next, configure the exporter to point at an endpoint.
 
 For example, here's how to point at an instance of an [OpenTelemetry Collector](/docs/collector/getting-started/):
 
