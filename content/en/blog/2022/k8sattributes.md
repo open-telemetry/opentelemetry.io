@@ -1,8 +1,7 @@
 ---
-title:
-  Improved application & infrastructure troubleshooting attaching k8s attributes
-linkTitle: Attaching Kubernetes attributes to traces
-date: 2022-06-16
+title: Improved troubleshooting using k8s attributes
+linkTitle: Kubernetes attributes
+date: 2022-06-23
 author: Ruben Vargas
 spelling: cSpell:ignore k8sattributes K8sattributes K8sprocessor KUBE
 ---
@@ -23,8 +22,8 @@ please, refer to [OpenTelemetry collector documentation](/docs/collector/).
 Before diving into the details, we need to clarify that the k8s attributes are
 not attaching to each single span. Instead the processors attach all the
 information to a OpenTelemetry
-[Resource](/docs/reference/specification/overview/#resources).
-this reduces the data duplication.
+[Resource](/docs/reference/specification/overview/#resources). this reduces the
+data duplication.
 
 ## Using k8sattributes processor
 
