@@ -19,7 +19,7 @@ future improvements.
 We won’t cover the details of the OpenTelemetry collector pipeline. For that
 please, refer to [OpenTelemetry collector documentation](/docs/collector/).
 
-Before diving into the details, we need to clarify that the k8s attributes are
+Before diving into the details we need to clarify that the k8s attributes are
 not attaching to each single span. Instead the processors attach all the
 information to a OpenTelemetry
 [Resource](/docs/reference/specification/overview/#resources). this reduces the
