@@ -55,7 +55,7 @@ generates a certain span.
 
 ![k8sattributes processor data flow](/img/blog-k8sattributes/k8sprocessor.png)
 
-In the figure above we can see how the data flows: The table of pods is fetched
+In the figure above you can see how the data flows: The table of pods is fetched
 using Kubernetes API, while the pod IP is extracted from the connection context
 between the pod and the collector
 
