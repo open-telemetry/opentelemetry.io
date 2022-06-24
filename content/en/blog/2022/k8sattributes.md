@@ -6,10 +6,9 @@ author: Ruben Vargas
 spelling: cSpell:ignore k8sattributes K8sattributes K8sprocessor KUBE
 ---
 
-Attaching kubernetes resource attributes to the traces is something that is very
-useful it help us to excctly identify which resource is failing or having
-performance problems. It could be also good to have this information if we want
-to correlate traces with other signals like metrics and logs.
+Attaching kubernetes resource attributes to traces is something can be very
+useful because it lets you identify which resource (such as a pod) is failing or having
+performance problems. It is also generally useful for correlating across other signals.
 
 In this article you will learn how to configure the OpenTelemetry collector to
 use the k8sattributes processor, and we will explore how to configure it in
