@@ -24,7 +24,10 @@ package and OpenTelemetry API installed:
 ```shell
 npm install \
   @opentelemetry/api \
-  @opentelemetry/sdk-trace-node
+  @opentelemetry/resources \
+  @opentelemetry/semantic-conventions \
+  @opentelemetry/sdk-trace-node \
+  @opentelemetry/instrumentation
 ```
 
 Next, create a separate `tracing.js` file that has all the SDK initialization
@@ -32,11 +35,23 @@ code in it:
 
 ```js
 const opentelemetry = require("@opentelemetry/api");
+const { Resource } = require("@opentelemetry/resources");
+const { SemanticResourceAttributes } = require("@opentelemetry/semantic-conventions");
 const { NodeTracerProvider } = require("@opentelemetry/sdk-trace-node");
 const { registerInstrumentations } = require("@opentelemetry/instrumentation");
 const { ConsoleSpanExporter, BatchSpanProcessor } = require("@opentelemetry/sdk-trace-base");
 
-const provider = new NodeTracerProvider();
+const resource =
+  Resource.default().merge(
+    new Resource({
+      [SemanticResourceAttributes.SERVICE_NAME]: "service-name-here",
+      [SemanticResourceAttributes.SERVICE_VERSION]: "0.1.0",
+    })
+  )
+
+const provider = new NodeTracerProvider({
+    resource: resource,
+});
 const exporter = new ConsoleSpanExporter();
 const processor = new BatchSpanProcessor(exporter);
 provider.addSpanProcessor(processor);
@@ -47,13 +62,10 @@ registerInstrumentations({
 });
 
 provider.register();
-
-module.exports.tracer = opentelemetry.trace.getTracer(
-  'name-of-tracer-goes-here'
-);
 ```
 
-Next, ensure that `tracing.js` is required in your node invocation. For example:
+Next, ensure that `tracing.js` is required in your node invocation. This is also
+required if you're registering automatic instrumentation libraries. For example:
 
 ```
 node --require './tracing.js' <app-file.js>
@@ -66,6 +78,8 @@ First, ensure you've got the right packages:
 ```shell
 npm install \
   @opentelemetry/api \
+  @opentelemetry/resources \
+  @opentelemetry/semantic-conventions \
   @opentelemetry/sdk-trace-web \
   @opentelemetry/instrumentation
 ```
@@ -75,11 +89,23 @@ Create a `tracing.js` file that initialized the Web SDK, creates a
 
 ```javascript
 const opentelemetry = require("@opentelemetry/api");
+const { Resource } = require("@opentelemetry/resources");
+const { SemanticResourceAttributes } = require("@opentelemetry/semantic-conventions");
 const { WebTracerProvider } = require("@opentelemetry/sdk-trace-web");
 const { registerInstrumentations } = require("@opentelemetry/instrumentation");
 const { ConsoleSpanExporter, BatchSpanProcessor } = require("@opentelemetry/sdk-trace-base");
 
-const provider = new WebTracerProvider();
+const resource =
+  Resource.default().merge(
+    new Resource({
+      [SemanticResourceAttributes.SERVICE_NAME]: "service-name-here",
+      [SemanticResourceAttributes.SERVICE_VERSION]: "0.1.0",
+    })
+  )
+
+const provider = new WebTracerProvider({
+    resource: resource,
+});
 const exporter = new ConsoleSpanExporter();
 const processor = new BatchSpanProcessor(exporter);
 provider.addSpanProcessor(processor);
@@ -90,10 +116,6 @@ registerInstrumentations({
 });
 
 provider.register();
-
-module.exports.tracer = opentelemetry.trace.getTracer(
-  'name-of-tracer-goes-here'
-);
 ```
 
 You'll need to bundle this file with your web application to be able to use
@@ -116,6 +138,28 @@ create a span is made, it would be processed and sent over a network before your
 app's execution could continue.
 
 In most cases, stick with `BatchSpanProcessor` over `SimpleSpanProcessor`.
+
+## Acquiring a tracer
+
+Anywhere in your application where you write manual tracing code should call
+`getTracer` to acquire a tracer. For example:
+
+```js
+const opentelemetry = require("@opentelemetry/api");
+//...
+
+
+const tracer = opentelemetry.trace.getTracer(
+  'my-service-tracer'
+);
+
+// You can now use a 'tracer' to do tracing!
+```
+
+It's generally recommended to call `getTracer` in your app when you need it
+rather than exporting the `tracer` instance to the rest of your app. This
+helps avoid trickier application load issues when other required dependencies are
+involved.
 
 ## Create spans
 
@@ -371,7 +415,7 @@ SDK. The biggest difference, aside from initialization code, is that you'll have
 to manually set spans as active in the current context to be able to create
 nested spans.
 
-### Initilizing tracing
+### Initilizing tracing with `sdk-trace-base`
 
 Initializing tracing is similar to how you'd do it with Node.js or the Web SDK.
 
@@ -398,7 +442,7 @@ export const tracer = opentelemetry.trace.getTracer(
 Like the other examples in this document, this exports a tracer you can use
 throughout the app.
 
-## Creating nested spans
+## Creating nested spans with `sdk-trace-base`
 
 To create nested spans, you need to set whatever the currently-created span is
 as the active span in the current context. Don't bother using `startActiveSpan`
