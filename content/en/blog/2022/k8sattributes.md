@@ -18,11 +18,14 @@ future improvements.
 Details of the OpenTelemetry collector pipeline won't be covered in this post. For those details
 please, refer to [OpenTelemetry collector documentation](/docs/collector/).
 
-Before diving into the details we need to clarify that the k8s attributes are
-not attaching to each single span. Instead the processors attach all the
-information to a OpenTelemetry
-[Resource](/docs/reference/specification/overview/#resources). this reduces the
-data duplication.
+## How k8s attributes are attached
+
+At a high level, k8s attributes are attached to traces as [Resources](/docs/concepts/glossary/#resource). This is for two reasons:
+
+ 1. They fit the definition of what a Resource is - an entity for which telemetry is recorded
+ 2. Centralizes this metadata, which is relevant for any span generated
+
+Let's dive in and see how to do it!
 
 ## Using k8sattributes processor
 
