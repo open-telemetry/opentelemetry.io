@@ -15,7 +15,7 @@ use the k8sattributes processor, and we will explore how to configure it in
 different scenarios. At the end, we present some alternatives and possible
 future improvements.
 
-We won’t cover the details of the OpenTelemetry collector pipeline. For that
+Details of the OpenTelemetry collector pipeline won't be covered in this post. For those details
 please, refer to [OpenTelemetry collector documentation](/docs/collector/).
 
 Before diving into the details we need to clarify that the k8s attributes are
