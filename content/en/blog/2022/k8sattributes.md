@@ -45,7 +45,7 @@ Some attributes we can attach to the spans are:
 - namespace `k8s.namespace.name`.
 - deployment name, if the pod was created by a deployment.
 
-Those attributes will use the OpenTelemetry semantic convention, you can see a
+Those attributes use the OpenTelemetry semantic convention. You can see a
 full list
 [here](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/k8s.md).
 
