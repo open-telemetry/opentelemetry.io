@@ -60,7 +60,7 @@ using Kubernetes API, while the pod IP is extracted from the connection context
 between the pod and the collector.
 
 The `k8sattributesprocessor` can work in different modes, and it depends on how
-the collector is configured. We are going to explore one common scenario, when
+the collector is configured. Let's explore one common scenario, when
 the collector is deployed as daemonset.
 
 ### DaemonSet mode
