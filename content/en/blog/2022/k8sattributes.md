@@ -59,7 +59,7 @@ In the figure above you can see how the data flows: The table of pods is fetched
 using Kubernetes API, while the pod IP is extracted from the connection context
 between the pod and the collector.
 
-The k8sattributes processor can work in different modes, and it depends on how
+The `k8sattributesprocessor` can work in different modes, and it depends on how
 the collector is configured. We are going to explore one common scenario, when
 the collector is deployed as daemonset.
 
