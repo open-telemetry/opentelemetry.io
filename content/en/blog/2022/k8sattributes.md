@@ -26,7 +26,7 @@ data duplication.
 
 ## Using k8sattributes processor
 
-K8sattributes processor is an OpenTelemetry collector processor that attaches
+The `k8sattributesprocessor` is an OpenTelemetry collector processor that attaches
 Kubernetes attributes to spans, logs and metrics.
 
 This processor automatically discovers pod attributes and attaches those
