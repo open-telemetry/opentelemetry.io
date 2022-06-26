@@ -177,7 +177,7 @@ version v0.50.0, see
 [PR #832](https://github.com/open-telemetry/opentelemetry-operator/pull/832).
 
 This feature sets the `OTEL_RESOURCE_ATTRIBUTES` environment variable on the
-collector container with the k8s pod attributes. It allows us to use the
+collector container with the k8s pod attributes. It lets you to use the
 resource detector processor, which attaches the environment variable values to
 the spans. This only works when the collector is deployed in sidecar mode.
 
