@@ -143,11 +143,11 @@ spec:
           exporters: [jaeger]
 ```
 
-The main parts to note are that we are using the contrib collector image, the
-reason is because this processor is not part of the OpenTelemetry collector
-core. Other things to notice are the filter mentioned above, and the use of a
-specific service account which is created previously and contains the
-permissions to fetch the pod list.
+The main parts to note are that it uses the contrib collector image. The
+`k8sattributesprocessor` is not part of the OpenTelemetry collector
+core, but the contrib distribution has it. Other things to notice are the filter
+mentioned above, and the use of a previously-created specific service account,
+which contains the permissions to fetch the pod list.
 
 Now, we can deploy the manifest above and the vertex app example to generate
 some traces.
