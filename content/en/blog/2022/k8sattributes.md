@@ -76,8 +76,8 @@ node. We need to configure the collector service account to have permissions to
 fetch all pods information. In order to do that, we will create a `ClusterRole`
 with the necessary permissions.
 
-Here are the minimum permissions required for make k8sattributes processor
-works:
+Here are the minimum permissions required to make the `k8sattributesprocessor`
+work:
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
