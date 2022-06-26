@@ -157,8 +157,8 @@ some traces.
 As we can see, each span of the trace now has the corresponding pod attributes
 attached to it.
 
-We can restrict the above configuration to a certain namespace if we add the
-namespace on the k8sattributes processor filter like this:
+You can restrict the above configuration to a certain namespace if you add the
+namespace on the `k8sattributesprocessor` filter like this:
 
 ```yaml
 processors:
