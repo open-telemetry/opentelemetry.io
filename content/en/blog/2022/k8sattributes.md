@@ -90,9 +90,9 @@ rules:
     verbs: ["get", "watch", "list"]
 ```
 
-Now, we are going to deploy the collector in daemonset mode. It is recommended
+Next, deploy the collector in daemonset mode. It is recommended
 to set a filter to only fetch the pods that belong to the node in which the
-collector is deployed. This is because if we are on a large cluster, we don’t
+collector is deployed. This is because if you have a large cluster, you don’t
 want to maintain a huge list of pods.
 
 This is the manifest used in this blog to show how the processor works:
