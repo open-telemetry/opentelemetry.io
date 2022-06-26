@@ -181,7 +181,7 @@ collector container with the k8s pod attributes. It lets you to use the
 resource detector processor, which attaches the environment variable values to
 the spans. This only works when the collector is deployed in sidecar mode.
 
-For example if we deploy this manifest:
+For example if you deploy this manifest:
 
 ```yaml
 apiVersion: opentelemetry.io/v1alpha1
