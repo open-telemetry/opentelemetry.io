@@ -167,7 +167,7 @@ processors:
       namespace: my_namespace
 ```
 
-In this way we can create a `Role` and don’t need to create a `ClusterRole`,
+In this way you can create a `Role` and don’t need to create a `ClusterRole`,
 reducing the scope of the collector service account to a single namespace.
 
 ## Using Resource detector processor
