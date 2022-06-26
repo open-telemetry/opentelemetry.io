@@ -149,7 +149,7 @@ core, but the contrib distribution has it. Other things to notice are the filter
 mentioned above, and the use of a previously-created specific service account,
 which contains the permissions to fetch the pod list.
 
-Now, we can deploy the manifest above and the vertex app example to generate
+Next, deploy the manifest and the vertex app example to generate
 some traces.
 
 ![Jaeger UI showing the span attributes](/img/blog-k8sattributes/jaeger-k8sattributes.png)
