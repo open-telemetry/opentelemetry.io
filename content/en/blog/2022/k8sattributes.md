@@ -237,7 +237,7 @@ An example of the value of the env var:
   name=dep-vertex-59b6f76585,k8s.replicaset.uid=5127bc38-e298-40e1-95df-f4a777e3176c
 ```
 
-## Conclusions
+## Conclusion
 
 We have learned about how to do a basic configuration that allows the
 OpenTelemetry collector to attach Kubernetes resource attributes to traces.
