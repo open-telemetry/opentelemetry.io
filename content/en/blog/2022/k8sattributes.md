@@ -1,19 +1,19 @@
 ---
 title: Improved troubleshooting using k8s attributes
 linkTitle: Kubernetes attributes
-date: 2022-06-23
+date: 2022-06-27
 author: Ruben Vargas
 spelling: cSpell:ignore k8sattributes K8sattributes K8sprocessor KUBE
 ---
 
-Attaching kubernetes resource metadata to OpenTelemetr traces is something can be very
-useful because it lets you identify which resource (such as a pod) is failing or
-having performance problems. It is also generally useful for correlating across
-other signals.
+Attaching kubernetes resource metadata to OpenTelemetr traces is something can
+be very useful because it lets you identify which resource (such as a pod) is
+failing or having performance problems. It is also generally useful for
+correlating across other signals.
 
 In this article, you'll learn how to configure the OpenTelemetry collector to
-use the `k8sattributesprocessor` processor in different scenarios.
-At the end, we present some alternatives.
+use the `k8sattributesprocessor` processor in different scenarios. At the end,
+we present some alternatives.
 
 Details of the OpenTelemetry collector pipeline won't be covered in this post.
 For those details please, refer to
@@ -90,10 +90,10 @@ rules:
     verbs: ["get", "watch", "list"]
 ```
 
-Next, deploy the collector in daemonset mode. It is recommended
-to set a filter to only fetch the pods that belong to the node in which the
-collector is deployed. This is because if you have a large cluster, you don’t
-want to maintain a huge list of pods.
+Next, deploy the collector in daemonset mode. It is recommended to set a filter
+to only fetch the pods that belong to the node in which the collector is
+deployed. This is because if you have a large cluster, you don’t want to
+maintain a huge list of pods.
 
 This is the manifest used in this blog to show how the processor works:
 
@@ -144,13 +144,12 @@ spec:
 ```
 
 The main parts to note are that it uses the contrib collector image. The
-`k8sattributesprocessor` is not part of the OpenTelemetry collector
-core, but the contrib distribution has it. Other things to notice are the filter
-mentioned above, and the use of a previously-created specific service account,
-which contains the permissions to fetch the pod list.
+`k8sattributesprocessor` is not part of the OpenTelemetry collector core, but
+the contrib distribution has it. Other things to notice are the filter mentioned
+above, and the use of a previously-created specific service account, which
+contains the permissions to fetch the pod list.
 
-Next, deploy the manifest and the vertex app example to generate
-some traces.
+Next, deploy the manifest and the vertex app example to generate some traces.
 
 ![Jaeger UI showing the span attributes](/img/blog-k8sattributes/jaeger-k8sattributes.png)
 
@@ -177,9 +176,9 @@ version v0.50.0, see
 [PR #832](https://github.com/open-telemetry/opentelemetry-operator/pull/832).
 
 This feature sets the `OTEL_RESOURCE_ATTRIBUTES` environment variable on the
-collector container with the k8s pod attributes. It lets you to use the
-resource detector processor, which attaches the environment variable values to
-the spans. This only works when the collector is deployed in sidecar mode.
+collector container with the k8s pod attributes. It lets you to use the resource
+detector processor, which attaches the environment variable values to the spans.
+This only works when the collector is deployed in sidecar mode.
 
 For example if you deploy this manifest:
 
@@ -224,8 +223,10 @@ spec:
           exporters: [jaeger]
 ```
 
-And then deploy the vertx app example, you can see the `OTEL_RESOURCE_ATTRIBUTES`
-environment variable was injected with some values in the sidecar container. Some of them use the Kubernetes downward API to get the attribute values.
+And then deploy the vertx app example, you can see the
+`OTEL_RESOURCE_ATTRIBUTES` environment variable was injected with some values in
+the sidecar container. Some of them use the Kubernetes downward API to get the
+attribute values.
 
 An example of the value of the env var:
 
@@ -240,13 +241,17 @@ An example of the value of the env var:
 ## Conclusion
 
 This post covers how to configure the OpenTelemetry collector to attach
-Kubernetes resource metadata as resource attributes to OpenTelemetry traces.
-The scenarios covered, although basic, illustrate how to add this kind of metadata
-to traces so that you can incorporate the technique into other more sophisticated
-scenarios.
+Kubernetes resource metadata as resource attributes to OpenTelemetry traces. The
+scenarios covered, although basic, illustrate how to add this kind of metadata
+to traces so that you can incorporate the technique into other more
+sophisticated scenarios. If you want to learn more about different scenareos or
+options for configure the processors you can see the K8sattributes processor
+documentation where you can find more scenareos like sidecar, or when one
+collector as an agent report to another collector.
 
 ## References
 
 - [K8sattributes processor](https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/k8sattributesprocessor)
 - [K8sattributes processor RBAC](https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/k8sattributesprocessor#hdr-RBAC)
 - [OpenTelemetry Kubernetes attributes](/docs/reference/specification/resource/semantic_conventions/k8s)
+- [resource detector processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/resourcedetectionprocessor/README.md)
