@@ -46,7 +46,6 @@ $ mix new --sup otel_getting_started
 
 {{< /tabs >}}
 
-
 Then, in the project you just created, add both `opentelemetry_api` and
 `opentelemetry` as dependencies. We add both because this is a project we will
 run as a Release and export spans from.
@@ -131,7 +130,7 @@ of span processor that batches up multiple spans over a period of time:
 
 {{< tab >}}
 # config/runtime.exs
-config :opentelemetry, 
+config :opentelemetry,
   span_processor: :batch,
   traces_exporter: {:otel_exporter_stdout, []}
 {{< /tab >}}
@@ -375,5 +374,3 @@ config :opentelemetry_exporter,
 {{< /tab >}}
 
 {{< /tabs >}}
-
-
