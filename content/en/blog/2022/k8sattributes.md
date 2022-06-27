@@ -12,8 +12,8 @@ having performance problems. It is also generally useful for correlating across
 other signals.
 
 In this article, you'll learn how to configure the OpenTelemetry collector to
-use the `k8sattributesprocessor` processor, and we will explore how to configure
-it in different scenarios. At the end, we present some alternatives.
+use the `k8sattributesprocessor` processor in different scenarios.
+At the end, we present some alternatives.
 
 Details of the OpenTelemetry collector pipeline won't be covered in this post.
 For those details please, refer to
