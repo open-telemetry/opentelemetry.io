@@ -235,15 +235,15 @@ Here's an example of the value of the environment variable:
   name=dep-vertex-59b6f76585,k8s.replicaset.uid=5127bc38-e298-40e1-95df-f4a777e3176c
 ```
 
-## Conclusion
+## Learn more
 
 This post covers how to configure the OpenTelemetry collector to attach
 Kubernetes resource metadata as resource attributes to OpenTelemetry traces. The
 scenarios covered, although basic, illustrate how to add this kind of metadata
 to traces so that you can incorporate the technique into other more
 sophisticated scenarios. If you want to learn more about different scenarios or
-options for configure the processors you can see the K8sattributes processor
-documentation where you can find more scenarios like sidecar, or when one
+options for configure the processors you can see the [K8sattributes processor
+documentation][] where you can find more scenarios like sidecar, or when one
 collector as an agent report to another collector.
 
 ## References
@@ -251,10 +251,12 @@ collector as an agent report to another collector.
 - [K8sattributes processor](https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/k8sattributesprocessor)
 - [K8sattributes processor RBAC](https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/k8sattributesprocessor#hdr-RBAC)
 - [OpenTelemetry Kubernetes attributes](/docs/reference/specification/resource/semantic_conventions/k8s)
-- [resource detector processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/resourcedetectionprocessor/README.md)
+- [Resource detector processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/resourcedetectionprocessor/README.md)
 
 [pr#832]: https://github.com/open-telemetry/opentelemetry-operator/pull/832
 [opentelemetry operator]:
   https://github.com/open-telemetry/opentelemetry-operator
+[k8sattributes processor documentation]:
+  https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/k8sattributesprocessor
 [kubernetes resource semantic conventions]:
   /docs/reference/specification/resource/semantic_conventions/k8s
