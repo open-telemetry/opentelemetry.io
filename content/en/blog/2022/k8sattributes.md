@@ -1,6 +1,6 @@
 ---
-title: Improved troubleshooting using k8s attributes
-linkTitle: Kubernetes attributes
+title: Improved troubleshooting using k8s metadata
+linkTitle: Kubernetes metadata
 date: 2022-06-27
 author: Ruben Vargas
 spelling:
@@ -219,10 +219,11 @@ spec:
           exporters: [jaeger]
 ```
 
-And then deploy the vertex app example, you can see the
-`OTEL_RESOURCE_ATTRIBUTES` environment variable gets injected with some values
-in the sidecar container. Some of them use the Kubernetes downward API to get
-the attribute values.
+And then deploy the
+[vertex app example](https://github.com/jaegertracing/vertx-create-span), you
+can see the `OTEL_RESOURCE_ATTRIBUTES` environment variable gets injected with
+some values in the sidecar container. Some of them use the Kubernetes downward
+API to get the attribute values.
 
 Here's an example of the value of the environment variable:
 
