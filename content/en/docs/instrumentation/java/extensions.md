@@ -12,7 +12,7 @@ Consider an instrumented database client that creates a span per database call a
 connection to provide span attributes. The following are sample use cases for that scenario that can be solved by using
 extensions:
 
-* _"I don't want this span at all"_: 
+* _"I don't want this span at all"_:
   Create an extension to disable selected instrumentation by providing new default settings.
 * _"I want to edit some attributes that don't depend on any db connection instance"_:
   Create an extension that provide a custom `SpanProcessor`.

@@ -5,7 +5,7 @@ weight: 2
 spelling: cSpell:ignore autoconfiguration Autoconfiguration Dotel HSET javaagent serverlessapis Servlet servlet
 ---
 
-> <h3>NOTE: subject to change!</h3>
+> ### NOTE: subject to change!
 >
 > Note: The environment variables/system properties in this document are very likely to change over time.
 > Please check back here when trying out a new version!
@@ -28,11 +28,11 @@ to find settings such as configuring export or sampling.
 Here are some quick links into those docs for the configuration options for specific portions of the SDK & agent:
 
 * [Exporters](https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md#exporters)
-  + [OTLP exporter (both span and metric exporters)](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure/README.md#otlp-exporter-both-span-and-metric-exporters)
-  + [Jaeger exporter](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure/README.md#jaeger-exporter)
-  + [Zipkin exporter](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure/README.md#zipkin-exporter)
-  + [Prometheus exporter](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure/README.md#prometheus-exporter)
-  + [Logging exporter](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure/README.md#logging-exporter)
+  * [OTLP exporter (both span and metric exporters)](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure/README.md#otlp-exporter-both-span-and-metric-exporters)
+  * [Jaeger exporter](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure/README.md#jaeger-exporter)
+  * [Zipkin exporter](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure/README.md#zipkin-exporter)
+  * [Prometheus exporter](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure/README.md#prometheus-exporter)
+  * [Logging exporter](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure/README.md#logging-exporter)
 * [Trace context propagation](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure/README.md#propagator)
 * [OpenTelemetry Resource and service name](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure/README.md#opentelemetry-resource)
 * [Batch span processor](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure/README.md#batch-span-processor)
@@ -43,6 +43,7 @@ Here are some quick links into those docs for the configuration options for spec
 ## Configuring the agent
 
 The agent can consume configuration from one or more of the following sources (ordered from highest to lowest priority):
+
 * system properties
 * environment variables
 * the [configuration file](#configuration-file)
@@ -357,18 +358,18 @@ example, if we have a database client which uses Reactor Netty http client which
 uses Netty networking library, then without any suppression we would have 3
 nested spans:
 
-- `CLIENT` span with database semantic attributes from the database client instrumentation
-- `CLIENT` span with http semantic attributes from Reactor Netty instrumentation
-- `CLIENT` span with http semantic attributes from Netty instrumentation
+* `CLIENT` span with database semantic attributes from the database client instrumentation
+* `CLIENT` span with http semantic attributes from Reactor Netty instrumentation
+* `CLIENT` span with http semantic attributes from Netty instrumentation
 
 With default suppression, we would have 1 span:
 
-- `CLIENT` span with database semantic attributes from the database client
+* `CLIENT` span with database semantic attributes from the database client
   instrumentation
 
 With suppression by type, we would have 2 nested spans:
 
-- `CLIENT` span with database semantic attributes from the database client instrumentation
-- `CLIENT` span with http semantic attributes from Reactor Netty instrumentation
+* `CLIENT` span with database semantic attributes from the database client instrumentation
+* `CLIENT` span with http semantic attributes from Reactor Netty instrumentation
 
 [extensions]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/examples/extension#readme
