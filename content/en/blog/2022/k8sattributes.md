@@ -221,7 +221,7 @@ spec:
           exporters: [jaeger]
 ```
 
-And then deploy the vertx app example, you can see the
+And then deploy the vertex app example, you can see the
 `OTEL_RESOURCE_ATTRIBUTES` environment variable gets injected with some values
 in the sidecar container. Some of them use the Kubernetes downward API to get
 the attribute values.
