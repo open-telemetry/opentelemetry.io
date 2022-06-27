@@ -51,8 +51,7 @@ Some attributes we can attach to the resource are:
 - Deployment name, if the pod was created by a deployment
 
 Such attributes adhere to OpenTelemetry semantic conventions. For details, see
-the
-[Kubernetes resource semantic conventions](/docs/reference/specification/resource/semantic_conventions/k8s).
+the [Kubernetes resource semantic conventions][].
 
 The processor internally maintains a list of pods and an associated attribute,
 usually the IP address of the pod, and uses this attribute to know which pod
@@ -258,3 +257,5 @@ collector as an agent report to another collector.
 [pr#832]: https://github.com/open-telemetry/opentelemetry-operator/pull/832
 [opentelemetry operator]:
   https://github.com/open-telemetry/opentelemetry-operator
+[kubernetes resource semantic conventions]:
+  /docs/reference/specification/resource/semantic_conventions/k8s
