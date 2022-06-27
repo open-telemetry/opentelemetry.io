@@ -6,7 +6,7 @@ author: Ruben Vargas
 spelling: cSpell:ignore k8sattributes K8sattributes K8sprocessor KUBE
 ---
 
-Attaching kubernetes resource attributes to traces is something can be very
+Attaching kubernetes resource metadata to OpenTelemetr traces is something can be very
 useful because it lets you identify which resource (such as a pod) is failing or
 having performance problems. It is also generally useful for correlating across
 other signals.
