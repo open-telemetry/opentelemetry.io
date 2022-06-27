@@ -173,7 +173,6 @@ Instead of mixing the two APIs in the same trace, we recommend that you migrate
 complete code paths from OpenTracing to OpenTelemetry as a single unit, so that
 only one API is used at a time.
 
-
 ## Specification and implementation details
 
 For details on how each individual OpenTracing shim works, see the appropriate
