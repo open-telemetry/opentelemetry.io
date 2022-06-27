@@ -3,7 +3,9 @@ title: Improved troubleshooting using k8s attributes
 linkTitle: Kubernetes attributes
 date: 2022-06-27
 author: Ruben Vargas
-spelling: cSpell:ignore k8sattributes k8sattributesprocessor K8sattributes k8sprocessor K8sprocessor KUBE
+spelling:
+  cSpell:ignore k8sattributes k8sattributesprocessor K8sattributes k8sprocessor
+  cSpell:ignore K8sprocessor KUBE
 ---
 
 Attaching Kubernetes resource metadata to OpenTelemetry traces can be very
@@ -24,9 +26,9 @@ For those details please, refer to
 At a high level, k8s attributes are attached to traces as
 [resources](/docs/concepts/glossary/#resource). This is for two reasons:
 
- 1. K8s attributes fit the definition of what a resource is -- an entity for
+1.  K8s attributes fit the definition of what a resource is -- an entity for
     which telemetry is recorded
- 2. It centralizes this metadata, which is relevant for any generated span.
+2.  It centralizes this metadata, which is relevant for any generated span.
 
 Let's dive in and see how to do it!
 
@@ -49,8 +51,8 @@ Some attributes we can attach to the resource are:
 - Deployment name, if the pod was created by a deployment
 
 Such attributes adhere to OpenTelemetry semantic conventions. For details, see
-the [Kubernetes resource semantic
-conventions](/docs/reference/specification/resource/semantic_conventions/k8s).
+the
+[Kubernetes resource semantic conventions](/docs/reference/specification/resource/semantic_conventions/k8s).
 
 The processor internally maintains a list of pods and an associated attribute,
 usually the IP address of the pod, and uses this attribute to know which pod
@@ -171,7 +173,7 @@ reducing the scope of the collector service account to a single namespace.
 
 ## Using Resource detector processor
 
-As of [recently][PR#832], the [OpenTelemetry operator][] sets the
+As of [recently][pr#832], the [OpenTelemetry operator][] sets the
 `OTEL_RESOURCE_ATTRIBUTES` environment variable on the collector container with
 the k8s pod attributes. This lets you to use the resource detector processor,
 which attaches the environment variable values to the spans. This only works
@@ -253,5 +255,6 @@ collector as an agent report to another collector.
 - [OpenTelemetry Kubernetes attributes](/docs/reference/specification/resource/semantic_conventions/k8s)
 - [resource detector processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/resourcedetectionprocessor/README.md)
 
-[PR#832]: https://github.com/open-telemetry/opentelemetry-operator/pull/832
-[OpenTelemetry operator]: https://github.com/open-telemetry/opentelemetry-operator
+[pr#832]: https://github.com/open-telemetry/opentelemetry-operator/pull/832
+[opentelemetry operator]:
+  https://github.com/open-telemetry/opentelemetry-operator
