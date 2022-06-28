@@ -299,7 +299,7 @@ configuration aspects of a receiver component, take a look at the
 [config/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.53.0/config/receiver.go)
 file inside the Collector's GitHub project.
 
-## Enabling the Collector to instantiate your receiver.
+## Enabling the Collector to instantiate your receiver
 
 At the beginning of this tutorial, you created your `dev-otelcol` instance,
 which is bootstrapped with the following components:
@@ -1254,7 +1254,7 @@ touch model.go
 ```
 
 Now, within the `model.go` file, add the definition for the `Atm` and the
-`BackendSytem` types as follow:
+`BackendSystem` types as follow:
 
 > model.go
 
