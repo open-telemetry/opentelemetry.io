@@ -334,7 +334,7 @@ instrumentation with `@WithSpan` and normal API interactions by using
 -Dotel.instrumentation.opentelemetry-api.enabled=true
 -Dotel.instrumentation.opentelemetry-annotations.enabled=true`
 
-### Enable instrumentation suppression by type
+### Instrumentation span suppression behavior
 
 Some of the libraries that this agent instruments in turn use lower-level
 libraries, that are also instrumented. This results in nested `CLIENT` spans (a
@@ -344,31 +344,29 @@ produced by Netty instrumentation. Or Dynamo DB spans produced by AWS SDK
 instrumentation will have children spans produced by http protocol library
 instrumentation.
 
-Although OpenTelemetry specification allows such situation, such nested spans
-often produce duplicate data without any added benefit. For this reason this
-agent by default suppresses nested `CLIENT` spans and emits only the top-level
-one.
+By default the agent will suppress nested `CLIENT` spans for the same semantic
+convention.
 
 By setting
-`-Dotel.instrumentation.experimental.outgoing-span-suppression-by-type=true` you
-can enable a more sophisticated suppression strategy: only `CLIENT` spans of the
-same semantic convention type (e.g. DB, HTTP, RPC) will be suppressed. For
-example, if we have a database client which uses Reactor Netty http client which
-uses Netty networking library, then without any suppression we would have 3
-nested spans:
+`-Dotel.instrumentation.experimental.span-suppression-strategy` you
+can enable a different suppression strategy.
+
+For example, if we have a database client which uses Reactor Netty http client which
+uses Netty networking library, then with the default suppression strategy (`semconv`),
+we would have 2 nested spans:
 
 - `CLIENT` span with database semantic attributes from the database client instrumentation
 - `CLIENT` span with http semantic attributes from Reactor Netty instrumentation
-- `CLIENT` span with http semantic attributes from Netty instrumentation
 
-With default suppression, we would have 1 span:
+With suppression strategy of `span-kind`, we would have 1 span:
 
 - `CLIENT` span with database semantic attributes from the database client
   instrumentation
 
-With suppression by type, we would have 2 nested spans:
+And with suppression strategy of `none`, we would have 3 nested spans:
 
 - `CLIENT` span with database semantic attributes from the database client instrumentation
 - `CLIENT` span with http semantic attributes from Reactor Netty instrumentation
+- `CLIENT` span with http semantic attributes from Netty instrumentation
 
 [extensions]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/examples/extension#readme
