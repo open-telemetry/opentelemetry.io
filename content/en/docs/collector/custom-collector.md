@@ -24,9 +24,8 @@ get started.
 
 ## Step 1 - Install the builder
 
-The `ocb` binary is available as a downloadable asset within the
-[OpenTelemetry Collector Releases Page](https://github.com/open-telemetry/opentelemetry-collector/releases)
-within the Collector's GitHub project. You will find the list of assets at the
+The `ocb` binary is available as a downloadable asset from the [OpenTelemetry
+Collector releases page][releases]. You will find the list of assets at the
 bottom of the page.
 
 v0.53.0 is the latest and the assets are named based on OS and chipset, so
@@ -159,15 +158,14 @@ processors:
 All you need now is to let the `ocb` do it's job, so go to your terminal and
 type the following command:
 
-```
+```cmd
 ocb --config builder-config.yaml
 ```
 
 If everything went well, here is what the output of the command should look
 like:
 
-```
-
+```nocode
 2022-06-13T14:25:03.037-0500	INFO	internal/command.go:85	OpenTelemetry Collector distribution builder	{"version": "0.53.0", "date": "2022-06-08T15:05:37Z"}
 2022-06-13T14:25:03.039-0500	INFO	internal/command.go:108	Using config file	{"path": "builder-config.yaml"}
 2022-06-13T14:25:03.040-0500	INFO	builder/config.go:99	Using go	{"go-executable": "/usr/local/go/bin/go"}
@@ -175,7 +173,6 @@ like:
 2022-06-13T14:25:03.445-0500	INFO	builder/main.go:108	Getting go modules
 2022-06-13T14:25:04.675-0500	INFO	builder/main.go:87	Compiling
 2022-06-13T14:25:17.259-0500	INFO	builder/main.go:94	Compiled	{"binary": "./otelcol-dev/otelcol-dev"}
-
 ```
 
 As defined in the `dist` section of your config file, you now have a folder
@@ -183,8 +180,9 @@ named `otelcol-dev` containing all the source code and the binary for your
 Collector's distribution.
 
 You can now use the generated code to bootstrap your component development
-projects and easily build and distribute your own Collector distribution with
+projects and easily build and distribute your own collector distribution with
 your components.
 
 [ocb]:
   https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder
+[releases]: https://github.com/open-telemetry/opentelemetry-collector/releases
