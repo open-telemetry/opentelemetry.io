@@ -53,7 +53,7 @@ The processor internally maintains a list of pods and an associated attribute,
 usually the IP address of the pod, and uses this attribute to know which pod
 generates a certain span.
 
-![k8sattributes processor data flow](/img/blog-k8sattributes/k8sprocessor.png)
+![k8sattributes processor data flow](/img/blog-k8s-metadata/k8sprocessor.png)
 
 In the figure above you can see how the data flows: The table of pods is fetched
 using Kubernetes API, while the pod IP is extracted from the connection context
@@ -149,7 +149,7 @@ contains the permissions to fetch the pod list.
 Next, deploy the manifest and the [vert.x example app][] to generate some
 traces.
 
-![Jaeger UI showing the span attributes](/img/blog-k8sattributes/jaeger-k8sattributes.png)
+![Jaeger UI showing the span attributes](/img/blog-k8s-metadata/jaeger-k8sattributes.png)
 
 As you can see, each span of the trace now has the corresponding pod attributes
 attached to it.
@@ -227,10 +227,10 @@ Here's an example of the value of the environment variable:
 
 ```yaml
 - name: OTEL_RESOURCE_ATTRIBUTES
-  value: k8s.deployment.name=dep-vertex,k8s.deployment.uid=ef3fe26b-a690-4746-9119-d2dbd94b469f,
+  value: k8s.deployment.name=dep-vert-x,k8s.deployment.uid=ef3fe26b-a690-4746-9119-d2dbd94b469f,
   k8s.namespace.name=default,k8s.node.name=$(OTEL_RESOURCE_ATTRIBUTES_NODE_NAME),k8s.pod.name=
   (OTEL_RESOURCE_ATTRIBUTES_POD_NAME),k8s.pod.uid=$(OTEL_RESOURCE_ATTRIBUTES_POD_UID),k8s.replicaset
-  name=dep-vertex-59b6f76585,k8s.replicaset.uid=5127bc38-e298-40e1-95df-f4a777e3176c
+  name=dep-vert-x-59b6f76585,k8s.replicaset.uid=5127bc38-e298-40e1-95df-f4a777e3176c
 ```
 
 ## Learn more
