@@ -4,6 +4,7 @@ weight: 20
 ---
 
 Please be sure to review the following documentation:
+
 - [Data Collection concepts](../../concepts/data-collection) in order to
   understand the repositories applicable to the OpenTelemetry Collector.
 - [Security
@@ -566,7 +567,6 @@ service:
         - otlp/auth
 ```
 
-
 ### Setting up certificates
 
 For a production setup, we strongly recommend using TLS certificates, either for
@@ -595,7 +595,6 @@ Install [cfssl](https://github.com/cloudflare/cfssl), and create the following
     ]
 }
 ```
-> csr.json
 
 Now, run the following commands:
 

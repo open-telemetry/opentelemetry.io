@@ -28,7 +28,7 @@ is the default location to which instrumentation libraries export their telemetr
 
 ## When to use a collector
 
-For most language specific instrumentation libraries you have exporters for popular backends and OTLP. You might wonder, 
+For most language specific instrumentation libraries you have exporters for popular backends and OTLP. You might wonder,
 
 > under what circumstances does one use a collector to send data, as opposed to having each service send directly to the backend?
 
