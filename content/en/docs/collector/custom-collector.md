@@ -1,5 +1,5 @@
 ---
-title: "Building your own Collector instance"
+title: Building your own Collector instance
 weight: 30
 ---
 
@@ -17,7 +17,7 @@ The `ocb` binary is available as a downloadable asset within the [OpenTelemetry 
 
 v0.53.0 is the latest and the assets are named based on OS and chipset, so download the one that fits your configuration.
 
-The binary has a pretty long name, so you can simply rename it to `ocb`; and if you are running Linux or macOS, you will also need to provide execution permissions for the binary. 
+The binary has a pretty long name, so you can simply rename it to `ocb`; and if you are running Linux or macOS, you will also need to provide execution permissions for the binary.
 
 Open your terminal and type the following commands to accomplish both operations:
 
@@ -29,7 +29,6 @@ chmod 777 ocb
 To make sure the `ocb` is ready to be used, go to your terminal and type `./ocb help`, and once you hit enter you should have the following output:
 
 ```
-
 OpenTelemetry Collector distribution builder (dev)
 
 Usage:
@@ -71,7 +70,7 @@ Here are the tags for the `dist` map:
 | module:          | The module name for the new distribution, following Go mod conventions. Optional, but recommended.| Yes | "go.opentelemetry.io/collector/cmd/builder" |
 | name:            | The binary name for your distribution | Yes | "otelcol-custom" |
 | description:     | A long name for the application. | Yes | "Custom OpenTelemetry Collector distribution" |
-| otelcol_version: | The OpenTelemetry Collector version to use as base for the distribution. | Yes | "0.53.0" | 
+| otelcol_version: | The OpenTelemetry Collector version to use as base for the distribution. | Yes | "0.53.0" |
 | output_path:     | The path to write the output (sources and binary). | Yes | "/var/folders/86/s7l1czb16g124tng0d7wyrtw0000gn/T/otelcol-distribution3618633831" |
 | version:         | The version for your custom OpenTelemetry Collector. | Yes | "1.0.0" |
 | go:              | Which Go binary to use to compile the generated sources. | Yes | go from the PATH |
@@ -86,9 +85,9 @@ Go ahead and create a manifest file named `builder-config.yaml` with the followi
 > builder-config.yaml
 ```yaml
 dist:
-    name: otelcol-dev 
+    name: otelcol-dev
     description: "Basic OTel Collector distribution for Developers"
-    output_path: ./otelcol-dev 
+    output_path: ./otelcol-dev
 ```
 
 Now you need to add the modules representing the components you want to be incorporated in this custom Collector distribution. Take a look at the [ocb configuration documentation](https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder#configuration) to understand the different modules and how to add the components.
@@ -103,9 +102,9 @@ Here is what my `builder-config.yaml` manifest file looks after adding the modul
 
 ```yaml
 dist:
-    name: otelcol-dev 
+    name: otelcol-dev
     description: "Basic OTel Collector distribution for Developers"
-    output_path: ./otelcol-dev 
+    output_path: ./otelcol-dev
 
 exporters:
   - gomod: "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/jaegerexporter v0.53.0"
