@@ -18,7 +18,7 @@ First, get and run the hello-world example without instrumentation:
 
  1. [Get the example code.][]
  2. [Run the example:][] you should see the client output "Hello world".
- 3.  Stop the server before proceeding, if it is still running.
+ 3. Stop the server before proceeding, if it is still running.
 
 ## Run the instrumented example
 
@@ -32,22 +32,27 @@ a number of ways, the steps below use environment variables.
  2. Set and export variables that specify the Java agent JAR and a [console
     trace exporter,][] using a notation suitable for your shell/terminal
     environment &mdash; we illustrate a notation for bash-like shells:
+
     ```console
     $ export JAVA_OPTS="-javaagent:PATH/TO/opentelemetry-javaagent.jar"
     $ export OTEL_TRACES_EXPORTER=logging
     ```
+
     {{% alert title="Important" color="warning" %}}Replace `PATH/TO` above, with
     your path to the JAR.{{% /alert %}}
  3. Run the **server** as a background process. For example, for bash-like
     shells run:
+
     ```console
     $ ./build/install/examples/bin/hello-world-server &
     [otel.javaagent 2022-03-19 13:38:16:712 +0000] [main] INFO io.opentelemetry.javaagent.tooling.VersionLogger - opentelemetry-javaagent - version: 1.12.0
     Mar 19, 2022 1:38:18 PM io.grpc.examples.helloworld.HelloWorldServer start
     ...
     ```
+
     Note the output from the `otel.javaagent`.
  4. From the _same_ terminal, run the **client**:
+
     ```console
     $ ./build/install/examples/bin/hello-world-client
     [otel.javaagent 2022-03-19 13:38:48:462 +0000] [main] INFO io.opentelemetry.javaagent.tooling.VersionLogger - opentelemetry-javaagent - version: 1.12.0
@@ -57,7 +62,9 @@ a number of ways, the steps below use environment variables.
     Mar 19, 2022 1:38:51 PM io.grpc.examples.helloworld.HelloWorldClient greet
     INFO: Greeting: Hello world
     ```
+
  5. Stop the server process. For example, for bash-like shells run:
+
     ```console
     $ jobs
     [1]+  Running                 ./build/install/examples/bin/hello-world-server &

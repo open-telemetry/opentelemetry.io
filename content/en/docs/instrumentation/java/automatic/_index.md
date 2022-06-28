@@ -20,9 +20,9 @@ service or app code, see [Manual instrumentation](../manual).
     `opentelemetry-java-instrumentation` repo. The JAR file contains the agent
     and all automatic instrumentation packages.
  2. Place the JAR in your preferred directory and launch it with your app:
-    ```sh
-    java -javaagent:path/to/opentelemetry-javaagent.jar \
-        -jar myapp.jar
+
+    ```console
+    $ java -javaagent:path/to/opentelemetry-javaagent.jar -jar myapp.jar
     ```
 
 ## Configuring the agent
