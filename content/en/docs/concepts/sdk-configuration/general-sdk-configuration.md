@@ -170,4 +170,4 @@ Accepted values for `OTEL_LOGS_EXPORTER` are:
 - `"otlp"`: [OTLP][spec-otlp]
 - `"none"`: No automatically configured exporter for logs.
 
-[spec-otlp](/docs/reference/specification/protocol/otlp)
+[spec-otlp]: /docs/reference/specification/protocol/otlp
