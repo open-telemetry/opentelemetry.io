@@ -5,15 +5,6 @@ weight: 2
 spelling: cSpell:ignore autoconfiguration Autoconfiguration Dotel HSET javaagent serverlessapis Servlet servlet
 ---
 
-Please report any bugs or unexpected behavior you find.
-
-## Contents
-
-* [SDK Autoconfiguration](#sdk-autoconfiguration)
-* [Configuring the agent](#configuring-the-agent)
-* [Common instrumentation configuration](#common-instrumentation-configuration)
-* [Suppressing specific auto-instrumentation](#suppressing-specific-auto-instrumentation)
-
 ## SDK Autoconfiguration
 
 The SDK's autoconfiguration module is used for basic configuration of the agent. Read the
