@@ -22,7 +22,7 @@ The current status of the major functional components for OpenTelemetry Erlang/E
 
 {{% latest_release "erlang" %}}
   Packages of the API, SDK and OTLP exporter are published to
-  [hex.pm](https://hex.pm) as 
+  [hex.pm](https://hex.pm) as
   [opentelemetry_api](https://hex.pm/packages/opentelemetry_api),
   [opentelemetry](https://hex.pm/packages/opentelemetry) and
   [opentelemetry_exporter](https://hex.pm/packages/opentelemetry_exporter).
