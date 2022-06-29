@@ -72,6 +72,7 @@ First, ensure that you have the right packages:
 
 ```
 dotnet add package OpenTelemetry --prerelease
+dotnet add package OpenTelemetry.Instrumentation.AspNetCore --prerelease
 dotnet add package OpenTelemetry.Extensions.Hosting --prerelease
 dotnet add package OpenTelemetry.Exporter.Console --prerelease
 ```
@@ -80,7 +81,6 @@ And then configure it in your ASP.NET Core startup routine where you have access
 to an `IServiceCollection`.
 
 ```csharp
-using OpenTelemetry;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
@@ -91,18 +91,16 @@ var serviceVersion = "1.0.0";
 var builder = WebApplication.CreateBuilder(args);
 
 // Configure important OpenTelemetry settings, the console exporter, and automatic instrumentation
-builder.Services.AddOpenTelemetryTracing(b =>
-    {
-        b
-        .AddConsoleExporter()
-        .AddSource(serviceName)
-        .SetResourceBuilder(
-            ResourceBuilder.CreateDefault()
-                .AddService(serviceName: serviceName, serviceVersion: serviceVersion))
-    }
-
-// Optionally inject the service-level tracer
-.AddSingleton(TracerProvider.Default.GetTracer(serviceName)));
+builder.Services.AddOpenTelemetryTracing(tcb =>
+{
+    tcb
+    .AddSource(serviceName)
+    .SetResourceBuilder(
+        ResourceBuilder.CreateDefault()
+            .AddService(serviceName: serviceName, serviceVersion: serviceVersion))
+    .AddAspNetCoreInstrumentation()
+    .AddConsoleExporter();
+});
 ```
 
 In the preceding example, a [`Tracer`](/docs/concepts/signals/traces/#tracer)
@@ -135,11 +133,13 @@ ASP.NET Core generally encourages injecting instances of long-lived objects like
 `Tracer`s during setup.
 
 ```csharp
+using OpenTelemetry.Trace;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // ...
 
-builder.Services.AddSingleton(TracerProvider.Default.GetTracer(serviceName)));
+builder.Services.AddSingleton(TracerProvider.Default.GetTracer(serviceName));
 
 // ...
 
