@@ -41,13 +41,18 @@ const { NodeTracerProvider } = require("@opentelemetry/sdk-trace-node");
 const { registerInstrumentations } = require("@opentelemetry/instrumentation");
 const { ConsoleSpanExporter, BatchSpanProcessor } = require("@opentelemetry/sdk-trace-base");
 
+// Optionally register automatic instrumentation libraries
+registerInstrumentations({
+  instrumentations: [],
+});
+
 const resource =
   Resource.default().merge(
     new Resource({
       [SemanticResourceAttributes.SERVICE_NAME]: "service-name-here",
       [SemanticResourceAttributes.SERVICE_VERSION]: "0.1.0",
     })
-  )
+  );
 
 const provider = new NodeTracerProvider({
     resource: resource,
@@ -55,11 +60,6 @@ const provider = new NodeTracerProvider({
 const exporter = new ConsoleSpanExporter();
 const processor = new BatchSpanProcessor(exporter);
 provider.addSpanProcessor(processor);
-
-// Optionally register automatic instrumentation libraries
-registerInstrumentations({
-  instrumentations: [],
-});
 
 provider.register();
 ```
@@ -95,13 +95,18 @@ const { WebTracerProvider } = require("@opentelemetry/sdk-trace-web");
 const { registerInstrumentations } = require("@opentelemetry/instrumentation");
 const { ConsoleSpanExporter, BatchSpanProcessor } = require("@opentelemetry/sdk-trace-base");
 
+// Optionally register automatic instrumentation libraries
+registerInstrumentations({
+  instrumentations: [],
+});
+
 const resource =
   Resource.default().merge(
     new Resource({
       [SemanticResourceAttributes.SERVICE_NAME]: "service-name-here",
       [SemanticResourceAttributes.SERVICE_VERSION]: "0.1.0",
     })
-  )
+  );
 
 const provider = new WebTracerProvider({
     resource: resource,
@@ -109,11 +114,6 @@ const provider = new WebTracerProvider({
 const exporter = new ConsoleSpanExporter();
 const processor = new BatchSpanProcessor(exporter);
 provider.addSpanProcessor(processor);
-
-// Optionally register automatic instrumentation libraries
-registerInstrumentations({
-  instrumentations: [],
-});
 
 provider.register();
 ```
