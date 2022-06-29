@@ -1,7 +1,7 @@
 ---
 title: Improved troubleshooting using k8s metadata
 linkTitle: Kubernetes metadata
-date: 2022-06-27
+date: 2022-06-29
 author: Ruben Vargas
 spelling:
   cSpell:ignore k8sattributes k8sattributesprocessor K8sattributes k8sprocessor
@@ -17,8 +17,7 @@ In this article, you'll learn how to configure the OpenTelemetry collector to
 use the [k8sattributesprocessor][] in different scenarios.
 
 Details of the OpenTelemetry collector pipeline won't be covered in this post.
-For those details please, refer to
-[OpenTelemetry collector documentation](/docs/collector/).
+For those details, refer to the [collector documentation](/docs/collector/).
 
 ## How k8s attributes are attached
 
