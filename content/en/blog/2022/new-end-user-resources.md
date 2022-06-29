@@ -29,7 +29,7 @@ This group is what its members make it--whatever is of interest to the group is 
 
 ### Questions:
 
-**Is this group only for Open-Telemetry end users?**
+**Is this group only for OpenTelemetry end users?**
 
 No! Anyone is welcome to join and discuss their journey to observability. This group is hosted by the OpenTelemetry Community End-User Working Group, so we expect most participants will be from organizations that are evaluating or using OpenTelemetry.
 
