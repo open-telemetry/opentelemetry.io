@@ -58,7 +58,7 @@ for specific features can be found in the
 Note that, for each of the following sections, the **Collector** status is the
 same as the **Protocol** status.
 
-#### Tracing
+#### [Tracing][]
 
 - {{% spec_status "API" "trace/api" "Status" %}}
 - {{% spec_status "SDK" "trace/sdk" "Status" %}}
@@ -85,9 +85,7 @@ same as the **Protocol** status.
   - The metric API and SDK specification is currently being prototyped in Java,
     .NET, and Python.
 
-[metrics]: /docs/reference/specification/metrics/
-
-#### Baggage
+#### [Baggage][]
 
 - {{% spec_status "API" "baggage/api" "Status" %}}
 - **SDK:** stable
@@ -128,4 +126,7 @@ instrumentation is scheduled for this summer.
 - Provide testing and CI/CD tools for writing and verifying instrumentation
   quality.
 
+[baggage]: /docs/reference/specification/baggage/
 [logs data model]: /docs/reference/specification/logs/data-model/
+[metrics]: /docs/reference/specification/metrics/
+[tracing]: /docs/reference/specification/trace/
