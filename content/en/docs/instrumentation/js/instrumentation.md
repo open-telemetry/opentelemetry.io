@@ -442,7 +442,7 @@ export const tracer = opentelemetry.trace.getTracer(
 Like the other examples in this document, this exports a tracer you can use
 throughout the app.
 
-## Creating nested spans with `sdk-trace-base`
+### Creating nested spans with `sdk-trace-base`
 
 To create nested spans, you need to set whatever the currently-created span is
 as the active span in the current context. Don't bother using `startActiveSpan`
