@@ -1,9 +1,9 @@
 {{ if .Params.show_banner -}}
 <div class="o-banner">
 
-OpenTelemetry metrics release candidates are now available!
+Want to connect with other OpenTelemetry End Users?
 [Read more][]
 
-[Read more]: /blog/2022/metrics-announcement/
+[Read more]: /blog/2022/new-end-user-resources/
 </div>
 {{ end -}}
