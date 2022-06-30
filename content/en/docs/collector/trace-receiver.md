@@ -44,7 +44,7 @@ above in order to create the receiver, so let's get started.
 
 ## Setting up your receiver development and testing environment
 
-First use the [Build a Custom Collector](/docs/collector/custom-collector) tutorial to create a Collector instance named `dev-otelcol`; all you need is to
+First use the [Building a Custom Collector](/docs/collector/custom-collector) tutorial to create a Collector instance named `dev-otelcol`; all you need is to
 copy the `builder-config.yaml` described on Step 2 and make the following changes:
 
 ```yaml
