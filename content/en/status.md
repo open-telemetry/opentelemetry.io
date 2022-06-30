@@ -82,8 +82,6 @@ same as the **Protocol** status.
   - Experimental support for metric pipelines are available in the Collector.
   - Collector support for Prometheus is under development, in collaboration with
     the Prometheus community.
-  - The metric API and SDK specification is currently being prototyped in Java,
-    .NET, and Python.
 
 #### [Baggage][]
 
