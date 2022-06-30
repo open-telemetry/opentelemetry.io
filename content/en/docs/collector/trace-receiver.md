@@ -69,6 +69,7 @@ with the following command:
 ```cmd
 docker run -d --name jaeger \
   -p 16686:16686 \
+  -p 14250:14250 \
   -p 14268:14268 \
   jaegertracing/all-in-one:1.29
 ```
@@ -717,6 +718,8 @@ func components() (component.Factories, error) {
 > - Added a call to `tailtracer.NewFactory()` as a parameter of the
 >   `component.MakeReceiverFactoryMap()` call so your `tailtracer` receiver
 >   factory is properly added to the `factories` map.
+> - execute `go mod tidy` to add module `github.com/rquedas/otel4devs/collector/receiver/trace-receiver/tailtracer` to go.mod
+> - execute `go build` to re-compile packages and dependencies
 
 We added the `tailtracer` receiver settings to the `config.yaml` previously, so
 here is what the beginning of the output for running your Collector with
