@@ -1,7 +1,7 @@
 ---
 title: Introducing new resources for OpenTelemetry end users to connect and discover best practices
 linkTitle: End User Resources
-date: 2022-07-01
+date: 2022-06-30
 author: OpenTelemetry End User Working Group
 ---
 
