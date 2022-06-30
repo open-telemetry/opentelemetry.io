@@ -44,7 +44,8 @@ chmod 777 ocb
 ```
 
 To make sure the `ocb` is ready to be used, go to your terminal and type
-`./ocb help`, and once you hit enter you should have the output of the `help` command showing up in your console.
+`./ocb help`, and once you hit enter you should have the output of the `help`
+command showing up in your console.
 
 ## Step 2 - Create a builder manifest file
 
