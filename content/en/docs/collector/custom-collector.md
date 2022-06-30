@@ -44,34 +44,7 @@ chmod 777 ocb
 ```
 
 To make sure the `ocb` is ready to be used, go to your terminal and type
-`./ocb help`, and once you hit enter you should have the following output:
-
-```
-OpenTelemetry Collector distribution builder (dev)
-
-Usage:
-  builder [flags]
-  builder [command]
-
-Available Commands:
-  completion  Generate the autocompletion script for the specified shell
-  help        Help about any command
-  version     Version of opentelemetry-collector-builder
-
-Flags:
-      --config string            config file (default is $HOME/.otelcol-builder.yaml)
-      --description string       A descriptive name for the OpenTelemetry Collector distribution (default "Custom OpenTelemetry Collector distribution")
-      --go string                The Go binary to use during the compilation phase. Default: go from the PATH
-  -h, --help                     help for builder
-      --module string            The Go module for the new distribution (default "go.opentelemetry.io/collector/cmd/builder")
-      --name string              The executable name for the OpenTelemetry Collector distribution (default "otelcol-custom")
-      --otelcol-version string   Which version of OpenTelemetry Collector to use as base (default "0.42.0")
-      --output-path string       Where to write the resulting files (default "/var/folders/86/s7l1czb16g124tng0d7wyrtw0000gn/T/otelcol-distribution3618633831")
-      --skip-compilation         Whether builder should only generate go code with no compile of the collector (default false)
-      --version string           The version for the OpenTelemetry Collector distribution (default "1.0.0")
-
-Use "builder [command] --help" for more information about a command.
-```
+`./ocb help`, and once you hit enter you should have the output of the `help` command showing up in your console. 
 
 ## Step 2 - Create a builder manifest file
 
