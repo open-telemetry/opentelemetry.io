@@ -44,12 +44,8 @@ above in order to create the receiver, so let's get started.
 
 ## Setting up your receiver development and testing environment
 
-First use the tutorial from the
-[builder](https://github.com/rquedas/otel4devs/tree/main/collector/builder)
-folder to create a Collector instance named `dev-otelcol`, all you need is to
-copy the
-[builder-config.yaml](https://github.com/rquedas/otel4devs/tree/main/collector/builder/builder/builder-config.yaml)
-file and make the following changes:
+First use the [Build a Custom Collector](/docs/collector/custom-collector) tutorial to create a Collector instance named `dev-otelcol`; all you need is to
+copy the `builder-config.yaml` described on Step 2 and make the following changes:
 
 ```yaml
 dist:
