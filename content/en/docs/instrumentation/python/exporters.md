@@ -10,6 +10,8 @@ In order to visualize and analyze your telemetry you will need to use an exporte
 The console exporter is useful for development and debugging tasks, and is the
 simplest to set up.
 
+### Trace
+
 ```python
 from opentelemetry import trace
 from opentelemetry.sdk.trace import TracerProvider
@@ -31,6 +33,31 @@ trace.set_tracer_provider(provider)
 # Merrily go about tracing!
 ```
 
+### Metrics
+
+Use a [`PeriodicExportingMetricReader`][pemr] to periodically print metrics to the console.
+`PeriodicExportingMetricReader` can be configured to export at a different interval, change the
+[temporality](/docs/reference/specification/metrics/datamodel/#temporality) for each instrument
+kind, or change the default aggregation for each instrument kind.
+
+```python
+from opentelemetry import metrics
+from opentelemetry.sdk.metrics import MeterProvider
+from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader, ConsoleMetricExporter
+from opentelemetry.sdk.resources import SERVICE_NAME, Resource
+
+# Service name is required for most backends,
+# and although it's not necessary for console export,
+# it's good to set service name anyways.
+resource = Resource(attributes={
+    SERVICE_NAME: "your-service-name"
+})
+
+reader = PeriodicExportingMetricReader(ConsoleMetricExporter())
+provider = MeterProvider(resource=resource, metric_readers=[reader])
+metrics.set_meter_provider(provider)
+```
+
 ## OTLP endpoint or Collector
 
 To send data to an OTLP endpoint or the [OpenTelemetry
@@ -40,14 +67,14 @@ exporter that sends to your endpoint.
 First, install an OTLP exporter:
 
 ```console
-$ pip install opentelemetry-exporter-otlp-proto-http
+$ pip install opentelemetry-exporter-otlp-proto-grpc
 ```
 
-Then you can use it when you initialize tracing:
+### Trace
 
 ```python
 from opentelemetry import trace
-from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
+from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
@@ -65,19 +92,43 @@ trace.set_tracer_provider(provider)
 # Merrily go about tracing!
 ```
 
-### Using gRPC
-
-If you'd prefer to use gRPC, you can install the package:
-
-```console
-$ pip install opentelemetry-exporter-otlp-proto-grpc
-```
-
-And replace the `OTLPSpanExporter` import declaration with the following:
+### Metrics
 
 ```python
-from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
+from opentelemetry import metrics
+from opentelemetry.exporter.otlp.proto.grpc.metric_exporter import OTLPMetricExporter
+from opentelemetry.sdk.metrics import MeterProvider
+from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
+from opentelemetry.sdk.resources import SERVICE_NAME, Resource
+
+# Service name is required for most backends
+resource = Resource(attributes={
+    SERVICE_NAME: "your-service-name"
+})
+
+reader = PeriodicExportingMetricReader(
+    OTLPMetricExporter(endpoint="localhost:5555")
+)
+provider = MeterProvider(resource=resource, metric_readers=[reader])
+metrics.set_meter_provider(provider)
 ```
+
+### Using HTTP
+
+If you'd prefer to use [OTLP/HTTP](/docs/reference/specification/protocol/otlp/#otlphttp) with
+the binary-encoded Protobuf format, you can install the package:
+
+```console
+$ pip install opentelemetry-exporter-otlp-proto-http
+```
+
+And replace the import declarations with the following:
+
+```python
+from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
+```
+
+There is not currently an OTLP/HTTP metric exporter.
 
 ## Jaeger
 
@@ -196,3 +247,60 @@ And replace the `ZipkinExporter` import declaration with the following:
 ```python
 from opentelemetry.exporter.zipkin.json import ZipkinExporter
 ```
+
+## Prometheus
+
+If you are using [Prometheus](https://prometheus.io/) to collect metrics data, you'll need to
+set it up first.
+
+First create a config file:
+```console
+$ cat > prometheus.yml <<EOF
+scrape_configs:
+  - job_name: 'otel-python-demo'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['localhost:8000']
+EOF
+```
+
+Then start the Prometheus server in Docker:
+```console
+$ docker run -d --rm \
+    --network=host \
+    -v $(pwd)/prometheus.yml:/etc/prometheus/prometheus.yml \
+    prom/prometheus
+```
+
+Next, install the Prometheus exporter package:
+
+```console
+$ pip install opentelemetry-exporter-prometheus
+```
+
+Then you can configure the exporter when initializing metrics:
+
+```python
+from prometheus_client import start_http_server
+
+from opentelemetry import metrics
+from opentelemetry.exporter.prometheus import PrometheusMetricReader
+from opentelemetry.sdk.metrics import MeterProvider
+from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
+from opentelemetry.sdk.resources import SERVICE_NAME, Resource
+
+# Service name is required for most backends
+resource = Resource(attributes={
+    SERVICE_NAME: "your-service-name"
+})
+
+# Start Prometheus client
+start_http_server(port=8000, addr="localhost")
+# Initialize PrometheusMetricReader which pulls metrics from the SDK
+# on-demand to respond to scrape requests
+reader = PrometheusMetricReader()
+provider = MeterProvider(resource=resource, metric_readers=[reader])
+metrics.set_meter_provider(provider)
+```
+
+[pemr]: https://opentelemetry-python.readthedocs.io/en/latest/sdk/metrics.export.html#opentelemetry.sdk.metrics.export.PeriodicExportingMetricReader
