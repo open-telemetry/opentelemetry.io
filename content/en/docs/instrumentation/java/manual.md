@@ -32,7 +32,7 @@ SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder()
   .addSpanProcessor(BatchSpanProcessor.builder(OtlpGrpcSpanExporter.builder().build()).build())
   .build();
 
-SdkMeterProvider meterProvider = SdkMeterProvider.builder()
+SdkMeterProvider sdkMeterProvider = SdkMeterProvider.builder()
   .registerMetricReader(PeriodicMetricReader.builder(OtlpGrpcMetricExporter.builder().build()).build())
   .build();
 
