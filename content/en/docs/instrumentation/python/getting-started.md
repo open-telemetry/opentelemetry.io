@@ -153,8 +153,7 @@ from opentelemetry import trace
 from random import randint
 from flask import Flask, request
 
-# Acquire a tracer. There's one set up for you globally,
-# and it's also used by opentelemetry-instrument.
+# Acquire a tracer
 tracer = trace.get_tracer(__name__)
 
 app = Flask(__name__)
@@ -275,8 +274,7 @@ from random import randint
 from flask import Flask, request
 
 tracer = trace.get_tracer(__name__)
-# Acquire a meter. There's one set up for you globally,
-# and it's also used by opentelemetry-instrument.
+# Acquire a meter.
 meter = metrics.get_meter(__name__)
 
 # Now create a counter instrument to make measurements with
