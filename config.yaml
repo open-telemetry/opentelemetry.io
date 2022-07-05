@@ -11,6 +11,7 @@ languages:
     title: OpenTelemetry
     description: The OpenTelemetry Project Site
     languageName: English
+    images: ["/featured-background.jpg"]
     weight: 1
 
 imaging:
