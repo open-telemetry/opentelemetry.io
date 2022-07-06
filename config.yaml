@@ -54,6 +54,7 @@ params:
   github_repo: https://github.com/open-telemetry/opentelemetry.io
   github_branch: main
   gcs_engine_id: bde3d634eca9cd335
+  googleAnalytics: "G-QZHM7YEG07, UA-154693307-1"
 
   ui:
     footer_about_disable: true
