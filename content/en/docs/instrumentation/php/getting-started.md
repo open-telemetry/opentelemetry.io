@@ -17,6 +17,7 @@ Span typically represents a single unit of work. A Trace is a grouping of Spans.
 
 ```php
 <?php
+// GettingStarted.php
 
 declare(strict_types=1);
 require __DIR__ . '/../vendor/autoload.php';
