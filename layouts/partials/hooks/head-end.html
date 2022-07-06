@@ -1,1 +1,3 @@
-{{ partial "google-analytics.html" . -}}
+{{ if hugo.IsProduction -}}
+  {{ partial "google-analytics.html" . -}}
+{{ end -}}
