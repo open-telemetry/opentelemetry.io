@@ -2,7 +2,7 @@
 
 {{ $ua_id := "UA-154693307-1" -}}
 {{ $ga4_id := "G-QZHM7YEG07" -}}
-{{ $ga_id := $ua_id -}}
+{{ $ga_id := $ga4_id -}}
 
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ $ga_id }}"></script>
 <script>
@@ -11,5 +11,6 @@
   gtag('js', new Date());
 
   gtag('config', '{{ $ga_id }}');
+  gtag('config', '{{ $ua_id }}');
 </script>
 {{- /**/ -}}
