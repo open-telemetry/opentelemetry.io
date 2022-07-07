@@ -152,7 +152,7 @@ trace:
 }
 ```
 
-# Export to collector
+## Export to collector
 
 The next step is to modify the code to send spans to the collector via OTLP
 instead of the console.
