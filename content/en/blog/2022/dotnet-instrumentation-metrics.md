@@ -17,15 +17,15 @@ Now you can easily export metrics from:
 - ASP.NET Core,
 - ASP.NET Framework,
 - HTTP clients (`System.Net.Http.HttpClient` and `System.Net.HttpWebRequest`),
-- measurements created using [`System.Diagnostics.Metrics`](https://docs.microsoft.com/en-us/dotnet/core/diagnostics/metrics-instrumentation).
+- measurements created using [`System.Diagnostics.Metrics`](https://docs.microsoft.com/dotnet/core/diagnostics/metrics-instrumentation).
 
 Over the next few months we plan to support:
 
-- support additional
+- additional
   [instrumentation libraries](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v0.2.0-beta.1/docs/config.md#instrumentations),
-- support the log signal.
+- the log signal.
 
-Please, give us your **feedback** (using your preferred method):
+Please, give us your feedback (using your preferred method):
 
 - [Submit a GitHub issue](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/new).
 - Write to us on [Slack](https://cloud-native.slack.com/archives/C01NR1YLSE7).
