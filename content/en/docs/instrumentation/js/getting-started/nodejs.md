@@ -201,7 +201,7 @@ Open <http://localhost:8080> in your web browser and reload the page a few times
 ## Next Steps
 
 Enrich your instrumentation generated automatically with
-[manual instrumentation](/docs/instrumentation/js/manual) of your own codebase. This gets you
+[manual instrumentation](/docs/instrumentation/js/instrumentation) of your own codebase. This gets you
 customized observability data.
 
 You'll also want to configure an appropriate exporter to [export your telemetry
