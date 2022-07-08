@@ -33,7 +33,7 @@ OpenTelemetry in their commercial products.
 | Lightstep       | Yes               | Yes         | [github.com/lightstep](https://github.com/lightstep?q=launcher)                                                                                       |
 | LogicMonitor    | Yes               | Yes         | [logicmonitor.com/...](https://www.logicmonitor.com/support/tracing/getting-started-with-tracing)                                                     |
 | Logz.io         | Yes               | No          | [docs.logz.io/...](https://docs.logz.io/shipping/tracing-sources/opentelemetry.html#overview)                                                         |
-| Lumigo          | Yes               | Yes         | [lumigo.io](https://www.lumigo.io)                                                                                                                    |
+| Lumigo          | Yes               | Yes         | [lumigo.io](https://docs.lumigo.io/docs/opentelemetry)                                                                                                                    |
 | New Relic       | No                | Yes         | [newrelic.com/...](https://newrelic.com/solutions/opentelemetry)                                                                                      |
 | Promscale       | No                | Yes         | [timescale.com/promscale](https://www.timescale.com/promscale)                                                                                        |
 | Sentry Software | Yes               | Yes         | [sentrysoftware.com/...](https://www.sentrysoftware.com/products/hardware-sentry-opentelemetry-collector.html)                                        |
