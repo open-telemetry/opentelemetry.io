@@ -348,6 +348,70 @@ public void handle(HttpExchange httpExchange) {
   }
 }
 ```
+The following code presents an example of fetching the incoming context propagated, add spans, and further propagate the context. The example utilizes [HttpHeaders](https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpHeaders.html) to fetch the traceparent header for context propagation.
+```java
+ public TextMapGetter<HttpHeaders> getter =
+            new TextMapGetter<HttpHeaders>() {
+                @Override
+                public Iterable<String> keys(HttpHeaders headers) {
+                    List<String> keys = new ArrayList<>();
+                    MultivaluedMap<String, String> requestHeaders = headers.getRequestHeaders();
+                    requestHeaders.forEach((k, v) ->{
+                        keys.add(k);
+                    });
+
+                    return new Iterable<String>() {
+                        @Override
+                        public Iterator<String> iterator() {
+                            return keys.iterator();
+                        }
+                    };
+                }
+
+                @Override
+                public String get(HttpHeaders headers, String s) {
+                    assert headers != null;
+                    return headers.getHeaderString(s);
+                }
+            };
+
+public TextMapSetter<HttpURLConnection> setter =
+            new TextMapSetter<HttpURLConnection>() {
+                @Override
+                public void set(HttpURLConnection carrier, String key, String value) {
+                    // Insert the context as Header
+                    assert carrier != null;
+                    carrier.setRequestProperty(key, value);
+                }
+            };
+
+...
+public void handle(<Library Specific Annotation> HttpHeaders headers){
+        Context extractedContext = opentelemetry.getPropagators().getTextMapPropagator()
+                .extract(Context.current(), headers, getter);
+        try (Scope scope = extractedContext.makeCurrent()) {
+            // Automatically use the extracted SpanContext as parent.
+            Span serverSpan = tracer.spanBuilder("GET /resource")
+                .setSpanKind(SpanKind.SERVER)
+                .startSpan();
+
+            try(Scope ignored = serverSpan.makeCurrent()) {
+                // Add the attributes defined in the Semantic Conventions
+                serverSpan.setAttribute(SemanticAttributes.HTTP_METHOD, "GET");
+                serverSpan.setAttribute(SemanticAttributes.HTTP_SCHEME, "http");
+                serverSpan.setAttribute(SemanticAttributes.HTTP_HOST, "localhost:8080");
+                serverSpan.setAttribute(SemanticAttributes.HTTP_TARGET, "/resource");
+                
+                HttpURLConnection transportLayer = (HttpURLConnection) url.openConnection();
+                // Inject the request with the *current*  Context, which contains our current Span.
+                openTelemetry.getPropagators().getTextMapPropagator().inject(Context.current(), transportLayer, setter);
+                // Make outgoing call
+            }finally {
+                serverSpan.end();
+            }
+      }
+}
+```
 
 ## Metrics
 
