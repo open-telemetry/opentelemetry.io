@@ -454,14 +454,24 @@ service:
 ### Configuration Environment Variables
 
 The use and expansion of environment variables is supported in the Collector
-configuration. For example:
+configuration using shell-style syntax. For example:
 
 ```yaml
 processors:
   attributes/example:
     actions:
       - key: "${DB_KEY}"
-        action: "${OPERATION}"
+        action: "$OPERATION"
+```
+
+Use `$$` to indicate a literal `$`. For example, representing
+`$DataVisualization` would look like the following: 
+
+```yaml
+exporters:
+  prometheus:
+    endpoint: "prometheus:8889"
+    namespace: "$$DataVisualization"
 ```
 
 ### Proxy Support
