@@ -4,23 +4,34 @@ description: Get up and running with OpenTelemetry for PHP.
 aliases: [/docs/instrumentation/php/getting_started]
 ---
 
-In this page you'll learn how to export traces to the console.
+## Setup
 
-First, install the OpenTelemetry SDK:
+Before you get started make sure that you have php and
+[composer](https://getcomposer.org/download/) available in your shell:
 
 ```console
-$ composer require open-telemetry/opentelemetry
+$ php -v
+$ composer -v
 ```
 
-This example uses the `ConsoleSpanExporter`, which prints Spans to stdout. A
-Span typically represents a single unit of work. A Trace is a grouping of Spans.
+In an empty directory create a minimal composer.json file in your directory:
+
+```json
+{
+  "require": {}
+}
+```
+
+## Export to Console
+
+In your directory create a file called `GettingStarted.php` with the following
+content:
 
 ```php
 <?php
-// GettingStarted.php
 
 declare(strict_types=1);
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 
 use OpenTelemetry\SDK\Trace\SpanExporter\ConsoleSpanExporter;
 use OpenTelemetry\SDK\Trace\SpanProcessor\SimpleSpanProcessor;
@@ -53,6 +64,24 @@ try {
 }
 $rootSpan->end();
 ```
+
+To use the OpenTelemetry SDK for PHP you need packages that satisfy the
+dependencies for `php-http/async-client-implementation` and
+`psr/http-factory-implementation`, for example the Guzzle 7 HTTP Adapter
+satisfies both:
+
+```console
+$ composer require "php-http/guzzle7-adapter"
+```
+
+Now you can install the OpenTelemetry SDK:
+
+```console
+$ composer require open-telemetry/opentelemetry
+```
+
+The example uses the `ConsoleSpanExporter`, which prints Spans to stdout. A Span
+typically represents a single unit of work. A Trace is a grouping of Spans.
 
 Run the script:
 
@@ -122,3 +151,62 @@ trace:
     "events": []
 }
 ```
+
+## Export to collector
+
+The next step is to modify the code to send spans to the collector via OTLP
+instead of the console.
+
+Next, using the `GettingStarted.php` from earlier, replace the console exporter
+with an OTLP exporter:
+
+```php
+<?php
+
+declare(strict_types=1);
+require __DIR__ . '/vendor/autoload.php';
+
+use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\HttpFactory;
+use OpenTelemetry\SDK\Trace\SpanExporter\ConsoleSpanExporter;
+use OpenTelemetry\SDK\Trace\SpanProcessor\SimpleSpanProcessor;
+use OpenTelemetry\Contrib\OtlpHttp\Exporter as OtlpHttpExporter;
+use OpenTelemetry\SDK\Trace\TracerProvider;
+
+echo 'Starting OtlpHttpExporter' . PHP_EOL;
+
+$tracerProvider =  new TracerProvider(
+    new SimpleSpanProcessor(
+        new OtlpHttpExporter(new Client(), new HttpFactory(), new HttpFactory())
+    )
+);
+
+$tracer = $tracerProvider->getTracer('io.opentelemetry.contrib.php');
+
+$rootSpan = $tracer->spanBuilder('root')->startSpan();
+$rootSpan->activate();
+
+try {
+    $span1 = $tracer->spanBuilder('foo')->startSpan();
+    $span1->activate();
+    try {
+        $span2 = $tracer->spanBuilder('bar')->startSpan();
+        echo 'OpenTelemetry welcomes PHP' . PHP_EOL;
+    } finally {
+        $span2->end();
+    }
+} finally {
+    $span1->end();
+}
+$rootSpan->end();
+```
+
+Set the OTLP endpoint via an environment variable and run the PHP application:
+
+```console
+$ env OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318/v1/traces php GettingStarted.php
+Starting OtlpHttpExporter
+OpenTelemetry welcomes PHP
+```
+
+Now, telemetry will be output by the collector process.
