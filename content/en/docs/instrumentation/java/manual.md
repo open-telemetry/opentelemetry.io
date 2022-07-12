@@ -348,44 +348,36 @@ public void handle(HttpExchange httpExchange) {
   }
 }
 ```
-The following code presents an example of fetching the incoming context propagated, add spans, and further propagate the context. The example utilizes [HttpHeaders](https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpHeaders.html) to fetch the traceparent header for context propagation.
+The following code presents an example to read the W3C Trace Context from incoming request, add spans, and further propagate the context. The example utilizes [HttpHeaders](https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpHeaders.html) to fetch the traceparent header for context propagation.
 ```java
- public TextMapGetter<HttpHeaders> getter =
-            new TextMapGetter<HttpHeaders>() {
-                @Override
-                public Iterable<String> keys(HttpHeaders headers) {
-                    List<String> keys = new ArrayList<>();
-                    MultivaluedMap<String, String> requestHeaders = headers.getRequestHeaders();
-                    requestHeaders.forEach((k, v) ->{
-                        keys.add(k);
-                    });
+TextMapGetter<HttpHeaders> getter =
+  new TextMapGetter<HttpHeaders>() {
+    @Override
+    public String get(HttpHeaders headers, String s) {
+      assert headers != null;
+      return headers.getHeaderString(s);
+    }
 
-                    return new Iterable<String>() {
-                        @Override
-                        public Iterator<String> iterator() {
-                            return keys.iterator();
-                        }
-                    };
-                }
+    @Override
+    public Iterable<String> keys(HttpHeaders headers) {
+      List<String> keys = new ArrayList<>();
+      MultivaluedMap<String, String> requestHeaders = headers.getRequestHeaders();
+      requestHeaders.forEach((k, v) ->{
+        keys.add(k);
+      });
+    }
+};
 
-                @Override
-                public String get(HttpHeaders headers, String s) {
-                    assert headers != null;
-                    return headers.getHeaderString(s);
-                }
-            };
+TextMapSetter<HttpURLConnection> setter =
+  new TextMapSetter<HttpURLConnection>() {
+    @Override
+    public void set(HttpURLConnection carrier, String key, String value) {
+        // Insert the context as Header
+        carrier.setRequestProperty(key, value);
+    }
+};
 
-public TextMapSetter<HttpURLConnection> setter =
-            new TextMapSetter<HttpURLConnection>() {
-                @Override
-                public void set(HttpURLConnection carrier, String key, String value) {
-                    // Insert the context as Header
-                    assert carrier != null;
-                    carrier.setRequestProperty(key, value);
-                }
-            };
-
-...
+//...
 public void handle(<Library Specific Annotation> HttpHeaders headers){
         Context extractedContext = opentelemetry.getPropagators().getTextMapPropagator()
                 .extract(Context.current(), headers, getter);
