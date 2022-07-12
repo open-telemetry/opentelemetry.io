@@ -55,7 +55,7 @@ $ pip install opentelemetry-instrumentation-{instrumentation}
 ```
 
 These are for exporter and instrumentation packages respectively. The Jaeger,
-Zipkin, OTLP and OpenCensus Exporters can be found in the
+Zipkin, OTLP, OpenCensus, and Prometheus Exporters can be found in the
 [exporter](https://github.com/open-telemetry/opentelemetry-python/blob/main/exporter/)
 directory of the repository. Instrumentations and additional exporters can be
 found in the [Contrib repo

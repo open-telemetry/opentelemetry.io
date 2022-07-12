@@ -680,7 +680,8 @@ variables and system properties, you can use the
 `opentelemetry-sdk-extension-autoconfigure` module.
 
 ```java
-OpenTelemetrySdk sdk = OpenTelemetrySdkAutoConfiguration.initialize();
+OpenTelemetrySdk sdk = AutoConfiguredOpenTelemetrySdk.initialize()
+    .getOpenTelemetrySdk();
 ```
 
 See the supported configuration options in the module's
