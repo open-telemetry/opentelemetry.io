@@ -74,7 +74,7 @@ You can now run your instrumented app with `opentelemetry-instrument` and have
 it print to the console for now:
 
 ```shell
-opentelemetry-instrument --traces_exporter console flask run
+opentelemetry-instrument --metrics_exporter none --traces_exporter console flask run
 ```
 
 When you send a request to the server, you'll get a result in a trace with a
