@@ -2,7 +2,7 @@
 
 {{ with .Site.Params.GoogleAnalytics -}}
 
-{{ $ga_ids := split . ", " -}}
+{{ $ga_ids := . -}}
 
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ index $ga_ids 0 }}"></script>
 <script>
