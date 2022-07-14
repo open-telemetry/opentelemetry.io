@@ -236,6 +236,22 @@ requires Span Context to travel across service and process boundaries.
 Attributes are key-value pairs that contain metadata that you can use to
 annotate a Span to carry information about the operation it is tracking.
 
+For example, if a span tracks an operation that adds an item to a user's
+shopping cart in an eCommerce system, you can capture the user's ID, the ID of
+the item to add to the cart, and the cart ID.
+
+Attributes have the following rules that each language SDK implements:
+
+* Keys must be non-null string values
+* Values must be a non-null string, boolean, floating point value, integer, or
+  an array of these values
+
+Additionally, there are [Semantic
+Attributes](/docs/reference/specification/trace/semantic_conventions/), which
+are known naming conventions for metadata that is typically present in common
+operations. It's helpful to use semantic attribute naming wherever possible
+so that common kinds of metadata is standardized across systems.
+
 ### Span Events
 
 A Span Event can be thought of as a structured log message (or annotation) on a
