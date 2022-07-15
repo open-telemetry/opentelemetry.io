@@ -25,7 +25,7 @@ as follows:
 
 Opentelemetry for Rust publishes the following crates:
 - [opentelemetry](https://crates.io/crates/opentelemetry)
-- [opentelemetry-api](https://crates.io/crates/opentelemetry-sdk)
+- [opentelemetry-api](https://crates.io/crates/opentelemetry-api)
 - [opentelemetry-sdk](https://crates.io/crates/opentelemetry-sdk)
 - [opentelemetry-aws](https://crates.io/crates/opentelemetry-aws)
 - [opentelemetry-contrib](https://crates.io/crates/opentelemetry-contrib)
