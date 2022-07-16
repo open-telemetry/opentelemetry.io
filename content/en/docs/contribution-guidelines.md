@@ -1,6 +1,6 @@
 ---
 title: Contribution guidelines
-description: How to contribute to the OpenTelemetry
+description: How to contribute to OpenTelemetry
 toc_hide: true
 ---
 
