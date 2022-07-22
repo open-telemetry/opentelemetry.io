@@ -6,8 +6,7 @@ language: go
 tags:
   - go
   - exporter
-  - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/prometheusexporter
+repo: https://github.com/open-telemetry/opentelemetry-go/tree/main/exporters/prometheus
 license: Apache 2.0
 description: The OpenTelemetry Prometheus Exporter for Go.
 authors: OpenTelemetry Authors
