@@ -6,8 +6,9 @@ weight: 4
 ---
 
 For most users, the out-of-the-box instrumentation is completely sufficient and
-nothing more has to be done.  Sometimes, however, users wish to create spans
-for their own custom code without doing too much code change.
+nothing more has to be done.  Sometimes, however, users wish to create
+[spans](/docs/concepts/signals/traces/#spans-in-opentelemetry) for their own
+custom code without doing too much code change.
 
 ## Dependencies
 
@@ -36,8 +37,8 @@ dependencies {
 
 ## Creating spans around methods with `@WithSpan`
 
-To create a span corresponding to one of your method, annotate the method
-with `@WithSpan`.
+To create a [span](/docs/concepts/signals/traces/#spans-in-opentelemetry)
+corresponding to one of your method, annotate the method with `@WithSpan`.
 
 ```java
 import io.opentelemetry.extension.annotations.WithSpan;
@@ -55,9 +56,9 @@ denotes its duration and provides any thrown exceptions. By default, the span
 name will be `<className>.<methodName>`, unless a name is provided as an
 argument to the annotation.
 
-If the return type of the method annotated by `@WithSpan` is one of the
-[future- or promise-like](https://en.wikipedia.org/wiki/Futures_and_promises)
-types listed below, then the span will not be ended until the future completes.
+If the return type of the method annotated by `@WithSpan` is one of the [future-
+or promise-like](https://en.wikipedia.org/wiki/Futures_and_promises) types
+listed below, then the span will not be ended until the future completes.
 
 * [java.util.concurrent.CompletableFuture](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html)
 * [java.util.concurrent.CompletionStage](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletionStage.html)
@@ -74,9 +75,11 @@ types listed below, then the span will not be ended until the future completes.
 
 ## Adding attributes to the span with `@SpanAttribute`
 
-When a span is created for an annotated method the values of the arguments to
-the method invocation can be automatically added as attributes to the created
-span by annotating the method parameters with the `@SpanAttribute` annotation.
+When a [span](/docs/concepts/signals/traces/#spans-in-opentelemetry) is created
+for an annotated method the values of the arguments to the method invocation can
+be automatically added as
+[attributes](/docs/concepts/signals/traces/#attributes) to the created span by
+annotating the method parameters with the `@SpanAttribute` annotation.
 
 ```java
 import io.opentelemetry.extension.annotations.SpanAttribute;
@@ -102,23 +105,24 @@ Suppressing `@WithSpan` is useful if you have code that is over-instrumented
 using `@WithSpan` and you want to suppress some of them without modifying the
 code.
 
-{{% config_option name="otel.instrumentation.opentelemetry-annotations.exclude-methods" %}}
-  Suppress `@WithSpan` instrumentation for specific methods.
-  Format is `my.package.MyClass1[method1,method2];my.package.MyClass2[method3]`.
-{{% /config_option %}}
+{{% config_option
+  name="otel.instrumentation.opentelemetry-annotations.exclude-methods" %}}
+  Suppress `@WithSpan` instrumentation for specific methods. Format is
+`my.package.MyClass1[method1,method2];my.package.MyClass2[method3]`. {{%
+/config_option %}}
 
 ## Creating spans around methods with `otel.instrumentation.methods.include`
 
 In cases where you are unable to modify the code, you can still configure the
 javaagent to capture spans around specific methods.
 
-{{% config_option name="otel.instrumentation.methods.include" %}}
-  Add instrumentation for specific methods in lieu of `@WithSpan`.
-  Format is `my.package.MyClass1[method1,method2];my.package.MyClass2[method3]`.
-{{% /config_option %}}
+{{% config_option name="otel.instrumentation.methods.include" %}} Add
+  instrumentation for specific methods in lieu of `@WithSpan`. Format is
+  `my.package.MyClass1[method1,method2];my.package.MyClass2[method3]`. {{%
+/config_option %}}
 
 ## Next steps
 
-Beyond the use of annotations, the OpenTelemetry API allows you to obtain
-a tracer that can be used for [Manual Instrumentation](../../manual)
-and execute code within the scope of that span.
+Beyond the use of annotations, the OpenTelemetry API allows you to obtain a
+tracer that can be used for [Manual Instrumentation](../../manual) and execute
+code within the scope of that span.

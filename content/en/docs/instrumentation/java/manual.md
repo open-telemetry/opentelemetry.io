@@ -50,9 +50,10 @@ reason, you can fall back to using an instance from the `GlobalOpenTelemetry`
 class. Note that you can't force end-users to configure the global, so this is
 the most brittle option for library instrumentation.
 
-## Tracing
+## Acquiring a Tracer
 
-In the following, we present how to trace code using the OpenTelemetry API.
+To do [Tracing](/docs/concepts/signals/traces/#tracing-in-opentelemetry) you'll
+need to aquire a [`Tracer`](/docs/concepts/signals/traces/#tracer).
 
 **Note:** Methods of the OpenTelemetry SDK should never be called.
 
@@ -64,6 +65,10 @@ application to be monitored. More information is available in the specification
 chapter [Obtaining a Tracer].
 
 ```java
+import io.opentelemetry.api;
+
+//...
+
 Tracer tracer =
     openTelemetry.getTracer("instrumentation-library-name", "1.0.0");
 ```
@@ -72,27 +77,32 @@ Important: the "name" and optional version of the tracer are purely
 informational. All `Tracer`s that are created by a single `OpenTelemetry`
 instance will interoperate, regardless of name.
 
-### Create a basic Span
+### Create Spans
 
-To create a basic span, you only need to specify the name of the span. The start
-and end time of the span is automatically set by the OpenTelemetry SDK.
+To create [Spans](/docs/concepts/signals/traces/#spans-in-opentelemetry), you
+only need to specify the name of the span. The start and end time of the span is
+automatically set by the OpenTelemetry SDK.
 
 ```java
 Span span = tracer.spanBuilder("my span").startSpan();
-// put the span into the current Context
-try {
-  // do something...
+
+// Make the span the current span
+try (Scope ss = span.makeCurrent()) {
+  // In this scope, the span is the current/active span
 } finally {
     span.end();
 }
 ```
 
+It's required to call `end()` to end the span when you want it to end.
+
 ### Create nested Spans
 
-Most of the time, we want to correlate spans for nested operations.
-OpenTelemetry supports tracing within processes and across remote processes. For
-more details how to share context between remote processes, see [Context
-Propagation](#context-propagation).
+Most of the time, we want to correlate
+[spans](/docs/concepts/signals/traces/#spans-in-opentelemetry) for nested
+operations. OpenTelemetry supports tracing within processes and across remote
+processes. For more details how to share context between remote processes, see
+[Context Propagation](#context-propagation).
 
 For a method `a` calling a method `b`, the spans could be manually linked in the
 following way:
@@ -153,8 +163,9 @@ Span childRemoteParent = tracer.spanBuilder("Child").setParent(remoteContext).st
 
 ### Get the current span
 
-Sometimes it's helpful to do something with the current/active span at a
-particular point in program execution.
+Sometimes it's helpful to do something with the current/active
+[span](/docs/concepts/signals/traces/#spans-in-opentelemetry) at a particular
+point in program execution.
 
 ```java
 Span span = Span.current()
@@ -168,10 +179,12 @@ Span span = Span.fromContext(context)
 
 ### Span Attributes
 
-In OpenTelemetry spans can be created freely and it's up to the implementor to
-annotate them with attributes specific to the represented operation. Attributes
-provide additional context on a span about the specific operation it tracks,
-such as results or operation properties.
+In OpenTelemetry [spans](/docs/concepts/signals/traces/#spans-in-opentelemetry)
+can be created freely and it's up to the implementor to annotate them with
+attributes specific to the represented operation.
+[Attributes](/docs/concepts/signals/traces/#attributes) provide additional
+context on a span about the specific operation it tracks, such as results or
+operation properties.
 
 ```java
 Span span = tracer.spanBuilder("/resource/path").setSpanKind(SpanKind.CLIENT).startSpan();
@@ -187,9 +200,11 @@ cross-language specification.
 
 ### Create Spans with events
 
-Spans can be annotated with named events that can carry zero or more [Span
-Attributes](#span-attributes), each of which is itself a key:value map paired
-automatically with a timestamp.
+[Spans](/docs/concepts/signals/traces/#spans-in-opentelemetry) can be annotated
+with named events (called [Span
+Events](/docs/concepts/signals/traces/#span-events)) that can carry zero or more
+[Span Attributes](#span-attributes), each of which is itself a key:value map
+paired automatically with a timestamp.
 
 ```java
 span.addEvent("Init");
@@ -207,10 +222,11 @@ span.addEvent("End Computation", eventAttributes);
 
 ### Create Spans with links
 
-A Span may be linked to zero or more other Spans that are causally related.
-Links can be used to represent batched operations where a Span was initiated by
-multiple initiating Spans, each representing a single incoming item being
-processed in the batch.
+A [Span](/docs/concepts/signals/traces/#spans-in-opentelemetry) may be linked to
+zero or more other Spans that are causally related via a [Span
+Link](/docs/concepts/signals/traces/#span-links). Links can be used to represent
+batched operations where a Span was initiated by multiple initiating Spans, each
+representing a single incoming item being processed in the batch.
 
 ```java
 Span child = tracer.spanBuilder("childWithLink")
@@ -226,10 +242,11 @@ Propagation](#context-propagation).
 
 ### Set span status
 
-A status can be set on a span, typically used to specify that a span
-has not completed successfully - `SpanStatus.Error`.
-In rare scenarios, you could override the `Error` status with `OK`,
-but don't set `OK` on successfully-completed spans.
+A [status](/docs/concepts/signals/traces/#span-status) can be set on a
+[span](/docs/concepts/signals/traces/#spans-in-opentelemetry), typically used to
+specify that a span has not completed successfully - `SpanStatus.Error`. In rare
+scenarios, you could override the `Error` status with `OK`, but don't set `OK`
+on successfully-completed spans.
 
 The status can be set at any time before the span is finished:
 
@@ -248,9 +265,8 @@ try (Scope scope = span.makeCurrent()) {
 
 ### Record exceptions in spans
 
-It can be a good idea to record exceptions when they happen.
-It's recommended to do this in conjunction with setting
-[span status](#set-span-status).
+It can be a good idea to record exceptions when they happen. It's recommended to
+do this in conjunction with setting [span status](#set-span-status).
 
 ```java
 Span span = tracer.spanBuilder("my span").startSpan();
@@ -348,7 +364,11 @@ public void handle(HttpExchange httpExchange) {
   }
 }
 ```
-The following code presents an example to read the W3C Trace Context from incoming request, add spans, and further propagate the context. The example utilizes [HttpHeaders](https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpHeaders.html) to fetch the traceparent header for context propagation.
+The following code presents an example to read the W3C Trace Context from
+incoming request, add spans, and further propagate the context. The example
+utilizes
+[HttpHeaders](https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpHeaders.html)
+to fetch the traceparent header for context propagation.
 ```java
 TextMapGetter<HttpHeaders> getter =
   new TextMapGetter<HttpHeaders>() {
@@ -407,12 +427,13 @@ public void handle(<Library Specific Annotation> HttpHeaders headers){
 
 ## Metrics
 
-Spans provide detailed information about your application, but produce data that
-is proportional to the load on the system. In contrast, metrics combine
-individual measurements into aggregations, and produce data which is constant as
-a function of system load. The aggregations lack details required to diagnose
-low level issues, but complement spans by helping to identify trends and
-providing application runtime telemetry.
+[Spans](/docs/concepts/signals/traces/#spans-in-opentelemetry) provide detailed
+information about your application, but produce data that is proportional to the
+load on the system. In contrast, [metrics](/docs/concepts/signals/metrics)
+combine individual measurements into aggregations, and produce data which is
+constant as a function of system load. The aggregations lack details required to
+diagnose low level issues, but complement spans by helping to identify trends
+and providing application runtime telemetry.
 
 The metrics API defines a variety of instruments. Instruments record
 measurements, which are aggregated by the metrics SDK and eventually exported
@@ -514,9 +535,12 @@ traces can be sampled.
 
 The OpenTelemetry SDK offers four samplers out of the box:
 
-- [AlwaysOnSampler] which samples every trace regardless of upstream sampling decisions.
-- [AlwaysOffSampler] which doesn't sample any trace, regardless of upstream sampling decisions.
-- [ParentBased] which uses the parent span to make sampling decisions, if present.
+- [AlwaysOnSampler] which samples every trace regardless of upstream sampling
+  decisions.
+- [AlwaysOffSampler] which doesn't sample any trace, regardless of upstream
+  sampling decisions.
+- [ParentBased] which uses the parent span to make sampling decisions, if
+  present.
 - [TraceIdRatioBased] which samples a configurable percentage of traces, and
   additionally samples any trace that was sampled upstream.
 
@@ -557,15 +581,15 @@ exporters out of the box:
 - `InMemorySpanExporter`: keeps the data in memory, useful for testing and
   debugging.
 - Jaeger Exporter: prepares and sends the collected telemetry data to a Jaeger
-  backend via gRPC. Varieties include `JaegerGrpcSpanExporter`
-  and `JaegerThriftSpanExporter`.
+  backend via gRPC. Varieties include `JaegerGrpcSpanExporter` and
+  `JaegerThriftSpanExporter`.
 - `ZipkinSpanExporter`: prepares and sends the collected telemetry data to a
   Zipkin backend via the Zipkin APIs.
-- Logging Exporter: saves the telemetry data into log streams. Varieties
-  include `LoggingSpanExporter` and `OtlpJsonLoggingSpanExporter`.
-- OpenTelemetry Protocol Exporter: sends the data in OTLP to
-  the [OpenTelemetry Collector] or other OTLP receivers. Varieties
-  include `OtlpGrpcSpanExporter` and `OtlpHttpSpanExporter`.
+- Logging Exporter: saves the telemetry data into log streams. Varieties include
+  `LoggingSpanExporter` and `OtlpJsonLoggingSpanExporter`.
+- OpenTelemetry Protocol Exporter: sends the data in OTLP to the [OpenTelemetry
+  Collector] or other OTLP receivers. Varieties include `OtlpGrpcSpanExporter`
+  and `OtlpHttpSpanExporter`.
 
 Other exporters can be found in the [OpenTelemetry Registry].
 
@@ -627,11 +651,11 @@ OpenTelemetry provides the following exporters out of the box:
 
 - `InMemoryMetricExporter`: keeps the data in memory, useful for testing and
   debugging.
-- Logging Exporter: saves the telemetry data into log streams. Varieties
-  include `LoggingMetricExporter` and `OtlpJsonLoggingMetricExporter`.
-- OpenTelemetry Protocol Exporter: sends the data in OTLP to
-  the [OpenTelemetry Collector] or other OTLP receivers. Varieties
-  include `OtlpGrpcMetricExporter` and `OtlpHttpMetricExporter`.
+- Logging Exporter: saves the telemetry data into log streams. Varieties include
+  `LoggingMetricExporter` and `OtlpJsonLoggingMetricExporter`.
+- OpenTelemetry Protocol Exporter: sends the data in OTLP to the [OpenTelemetry
+  Collector] or other OTLP receivers. Varieties include `OtlpGrpcMetricExporter`
+  and `OtlpHttpMetricExporter`.
 
 Other exporters can be found in the [OpenTelemetry Registry].
 
@@ -735,15 +759,23 @@ public class IgnoreExportErrorsFilter implements Filter {
 io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extension.logging.IgnoreExportErrorsFilter
 ```
 
-[AlwaysOffSampler]: https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/AlwaysOffSampler.java
-[AlwaysOnSampler]: https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/AlwaysOnSampler.java
-[HttpExchange]: https://docs.oracle.com/javase/8/docs/jre/api/net/httpserver/spec/com/sun/net/httpserver/HttpExchange.html
-[Instrumentation Library]: /docs/reference/specification/glossary/#instrumentation-library
-[instrumented library]: /docs/reference/specification/glossary/#instrumented-library
+[AlwaysOffSampler]:
+    https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/AlwaysOffSampler.java
+[AlwaysOnSampler]:
+    https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/AlwaysOnSampler.java
+[HttpExchange]:
+    https://docs.oracle.com/javase/8/docs/jre/api/net/httpserver/spec/com/sun/net/httpserver/HttpExchange.html
+[Instrumentation Library]:
+    /docs/reference/specification/glossary/#instrumentation-library
+[instrumented library]:
+    /docs/reference/specification/glossary/#instrumented-library
 [Library Guidelines]: /docs/reference/specification/library-guidelines
 [Obtaining a Tracer]: /docs/reference/specification/trace/api/#get-a-tracer
-[OpenTelemetry Collector]: https://github.com/open-telemetry/opentelemetry-collector
+[OpenTelemetry Collector]:
+    https://github.com/open-telemetry/opentelemetry-collector
 [OpenTelemetry Registry]: /registry/?component=exporter&language=java
-[ParentBased]: https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/ParentBasedSampler.java
+[ParentBased]:
+    https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/ParentBasedSampler.java
 [Semantic Conventions]: /docs/reference/specification/trace/semantic_conventions
-[TraceIdRatioBased]: https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/TraceIdRatioBasedSampler.java
+[TraceIdRatioBased]:
+    https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/TraceIdRatioBasedSampler.java
