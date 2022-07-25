@@ -3,6 +3,7 @@ disableKinds: [taxonomy, taxonomyTerm]
 theme: [docsy]
 disableAliases: true # We do redirects via Netlify's _redirects file
 enableGitInfo: true
+googleAnalytics: G-QZHM7YEG07
 
 # Language settings
 enableMissingTranslationPlaceholders: true
@@ -114,7 +115,7 @@ params:
           contributions or participation in the OpenTelemetry project.
 
   logos:
-    hero: opentelemetry-horizontal-pride.png
+    hero: opentelemetry-horizontal-color.png
     cncf: cncf.png
 
   social:

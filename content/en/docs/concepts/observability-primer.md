@@ -96,7 +96,7 @@ Below is a sample of the type of information that would be present in a Span:
 ### Distributed Traces
 
 A **Distributed Trace**, more commonly known as a **Trace**, records the paths
-taken by requests (made by an application or end-user) take as they propagate
+taken by requests (made by an application or end-user) as they propagate
 through multi-service architectures, like microservice and serverless
 applications.
 

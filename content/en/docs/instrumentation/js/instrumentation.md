@@ -157,8 +157,8 @@ const tracer = opentelemetry.trace.getTracer(
 ```
 
 It's generally recommended to call `getTracer` in your app when you need it
-rather than exporting the `tracer` instance to the rest of your app. This
-helps avoid trickier application load issues when other required dependencies are
+rather than exporting the `tracer` instance to the rest of your app. This helps
+avoid trickier application load issues when other required dependencies are
 involved.
 
 ## Create spans
@@ -266,17 +266,26 @@ pairs to a [`Span`](/docs/concepts/signals/traces/#spans-in-opentelemetry) so it
 carries more information about the current operation that it's tracking.
 
 ```javascript
-const span = tracer.startSpan(
+tracer.startActiveSpan('app.new-span', span => {
+  // do some work...
+
+  // Add an attribute to the span
+  span.setAttribute('attribute1', 'value1');
+  
+  span.end();
+});
+```
+You can also add attributes to a span as it's created:
+
+```javascript
+tracer.startActiveSpan(
   'app.new-span',
   { attributes: { attribute1: 'value1' } },
-  ctx
-);
-
-// Add an attribute to the same span later on
-span.setAttribute('attribute2', 'value2');
-
-// Make sure to end the span if you're done with it!
-span.end();
+  span => {
+    // do some work...
+    
+    span.end();
+  });
 ```
 
 ### Semantic Attributes
@@ -303,17 +312,14 @@ Finally, you can update your file to include semantic attributes:
 
 ```javascript
 const doWork = () => {
-  const span = tracer.startSpan(
-    'app.new-span',
-    { attributes: { [SemanticAttributes.CODE_FUNCTION]: 'doWork' } },
-    ctx
-  );
+  tracer.startActiveSpan('app.doWork', span => {
+    span.setAttribute(SemanticAttributes.CODE_FUNCTION, 'doWork');
+    span.setAttribute(SemanticAttributes.CODE_FILEPATH, __filename);
+  
+    // Do some work...
 
-  // Add an attribute to the same span later on
-  span.setAttribute(SemanticAttributes.CODE_FILEPATH, __filename);
-
-  // Make sure to end the span if you're done with it!
-  span.end();
+    span.end();
+  });
 }
 ```
 
@@ -345,7 +351,8 @@ span.addEvent('some log', {
 
 [`Span`s](/docs/concepts/signals/traces/#spans-in-opentelemetry) can be created
 with zero or more [`Link`s](/docs/concepts/signals/traces/#span-links) to other
-Spans that are causally related.
+Spans that are causally related. A common scenario is to correlate one or more
+traces with the current span.
 
 
 ```js
@@ -358,11 +365,11 @@ function someFunction(spanToLinkFrom) {
     ]
   };
 
-  const span = tracer.startSpan('someWork', options: options);
+  tracer.startActiveSpan('app.someFunction', options: options, span => {
+    // Do some work...
 
-  // do more work
-
-  span.end();
+    span.end();
+  });
 }
 ```
 
@@ -375,18 +382,22 @@ typically used to specify that a span has not completed successfully -
 The status can be set at any time before the span is finished:
 
 ```javascript
-const span = tracer.startSpan('doWork', undefined, ctx);
+const opentelemetry = require("@opentelemetry/api");
 
-for (let i = 0; i <= Math.floor(Math.random() * 40000000); i += 1) {
-  if (i > 10000) {
-    span.setStatus({
-      code: opentelemetry.SpanStatusCode.ERROR,
-      message: 'Error'
-    });
+// ...
+
+tracer.startActiveSpan('app.doWork', span => {
+  for (let i = 0; i <= Math.floor(Math.random() * 40000000); i += 1) {
+    if (i > 10000) {
+      span.setStatus({
+        code: opentelemetry.SpanStatusCode.ERROR,
+        message: 'Error'
+      });
+    }
   }
-}
-
-span.end();
+  
+  span.end();
+});
 ```
 
 By default, the status for all spans is `Unset` rather than `Ok`. It is
@@ -399,12 +410,16 @@ explicitly tracking an error.
 It can be a good idea to record exceptions when they happen. It's recommended to
 do this in conjunction with setting [span status](#span-status).
 
-```js
+```javascript
+const opentelemetry = require("@opentelemetry/api");
+
+// ...
+
 try {
   doWork();
 } catch (ex) {
   span.recordException(ex);
-  span.setStatus({ code: otel.SpanStatusCode.ERROR });
+  span.setStatus({ code: opentelemetry.SpanStatusCode.ERROR });
 }
 ```
 

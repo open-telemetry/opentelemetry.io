@@ -23,7 +23,7 @@ The current status of the major functional components for OpenTelemetry Python
 is as follows:
 
 - **Traces** ([API][api/t], [SDK][sdk/t]): [Stable][]
-- **Metrics** ([API][api/m], [SDK][sdk/m]): [Alpha][Experimental]
+- **Metrics** ([API][api/m], [SDK][sdk/m]): [RC][Experimental]
 - **Logs** ([SDK][sdk/l]): [Experimental][]
 
 [api/m]: https://opentelemetry-python.readthedocs.io/en/stable/api/metrics.html
@@ -55,7 +55,7 @@ $ pip install opentelemetry-instrumentation-{instrumentation}
 ```
 
 These are for exporter and instrumentation packages respectively. The Jaeger,
-Zipkin, OTLP and OpenCensus Exporters can be found in the
+Zipkin, Prometheus, OTLP and OpenCensus Exporters can be found in the
 [exporter](https://github.com/open-telemetry/opentelemetry-python/blob/main/exporter/)
 directory of the repository. Instrumentations and additional exporters can be
 found in the [Contrib repo
