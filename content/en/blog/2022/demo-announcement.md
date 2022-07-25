@@ -14,7 +14,7 @@ represented, demo support will be extended to Metrics and Logs, and canonical
 scenarios will be documented for each signal, with fault injection, and more!
 
 If you want to skip the details then clone our
-[repo](https://github.com/open-telemetry/opentelemetry-demo-webstore) then run
+[repo](https://github.com/open-telemetry/opentelemetry-demo) then run
 `docker compose up` from the command line. There are a couple [technology
 requirements](https://github.com/open-telemetry/opentelemetry-demo-webstore#local-quickstart)
 so be sure to check those out too.
@@ -91,7 +91,7 @@ current architecture")
 Jaeger is great (really) but what if you want to try this out with your APM
 vendor of choice? You can send data to your preferred backend by simply changing
 the [Collector
-config file](https://github.com/open-telemetry/opentelemetry-demo-webstore#bring-your-own-backend)
+config file](https://github.com/open-telemetry/opentelemetry-demo#bring-your-own-backend)
 to use their Collector exporter or by using your vendor's fork of our demo.
 
 Lightstep has an [excellent
@@ -109,15 +109,15 @@ Below is a semi-exhaustive list of upcoming features but we're not limiting
 ourselves to just the items listed here.
 
 - Language examples for
-  [C++](https://github.com/open-telemetry/opentelemetry-demo-webstore/issues/36),
+  [C++](https://github.com/open-telemetry/opentelemetry-demo/issues/36),
   Erlang/elixir,
-  [PHP](https://github.com/open-telemetry/opentelemetry-demo-webstore/issues/34),
+  [PHP](https://github.com/open-telemetry/opentelemetry-demo/issues/34),
   and
-  [Rust](https://github.com/open-telemetry/opentelemetry-demo-webstore/issues/35)
+  [Rust](https://github.com/open-telemetry/opentelemetry-demo/issues/35)
 - Extend support to
-  [Metrics](https://github.com/open-telemetry/opentelemetry-demo-webstore/issues/43)
+  [Metrics](https://github.com/open-telemetry/opentelemetry-demo/issues/43)
   and
-  [Logs](https://github.com/open-telemetry/opentelemetry-demo-webstore/issues/44)
+  [Logs](https://github.com/open-telemetry/opentelemetry-demo/issues/44)
   for all GA SDKs
 - Visualization components to consume Metrics
 - Implementation of multiple instrumentation techniques
@@ -127,7 +127,7 @@ ourselves to just the items listed here.
   definition and tracking
 - Additional instrumentation libraries introduced where needed
 - Demonstratations of the ability to add
-  [Baggage](https://github.com/open-telemetry/opentelemetry-demo-webstore/issues/100)
+  [Baggage](https://github.com/open-telemetry/opentelemetry-demo/issues/100)
   and other custom tags
 - Continue to build on other cloud-native technologies like:
   - Kubernetes
@@ -151,10 +151,10 @@ ourselves to just the items listed here.
 We’re still at the beginning of our journey but there’s great momentum behind
 this project. If you’re interested in contributing we’d love your support. There
 are links in our GitHub repo on how to get involved and you can [track our overall
-progress](https://github.com/open-telemetry/opentelemetry-demo-webstore/issues)
+progress](https://github.com/open-telemetry/opentelemetry-demo/issues)
 from there.
 
 ### Interesting Links
 
-- [Demo Requirements](https://github.com/open-telemetry/opentelemetry-demo-webstore/tree/main/docs/requirements)
-- [Get Involved](https://github.com/open-telemetry/opentelemetry-demo-webstore#contributing)
+- [Demo Requirements](https://github.com/open-telemetry/opentelemetry-demo/tree/main/docs/requirements)
+- [Get Involved](https://github.com/open-telemetry/opentelemetry-demo#contributing)
