@@ -195,13 +195,14 @@ The status can be set at any time before the span is finished:
 
 ```python
 from opentelemetry import trace
+from opentelemetry.trace import Status, StatusCode
 
 current_span = trace.get_current_span()
 
 try:
     # something that might fail
 except:
-    current_span.set_status(StatusCode.ERROR)
+    current_span.set_status(Status(StatusCode.ERROR))
 ```
 
 ### Record exceptions in spans
@@ -211,6 +212,7 @@ do this in conjunction with setting [span status](#set-span-status).
 
 ```python
 from opentelemetry import trace
+from opentelemetry.trace import Status, StatusCode
 
 current_span = trace.get_current_span()
 
@@ -219,7 +221,7 @@ try:
 
 # Consider catching a more specific exception in your code
 except Exception as ex:
-    current_span.set_status(StatusCode.ERROR)
+    current_span.set_status(Status(StatusCode.ERROR))
     current_span.record_exception(ex)
 ```
 
