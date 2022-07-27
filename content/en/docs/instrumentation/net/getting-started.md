@@ -23,7 +23,7 @@ dotnet add package OpenTelemetry
 
 ## Console application
 
-The following sample demonstrates manual
+The following example demonstrates manual
 [tracing](/docs/concepts/signals/traces/#tracing-in-opentelemetry) via a console
 app.
 
