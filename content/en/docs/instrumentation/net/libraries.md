@@ -32,7 +32,7 @@ creating a
 
 ## Example with ASP.NET Core and HttpClient
 
-As an example, here's how you can automatically instrument inbound and output
+As an example, here's how you can instrument inbound and output
 requests from an ASP.NET Core app.
 
 First, get the appropriate packages:
@@ -58,7 +58,7 @@ var serviceVersion = "1.0.0";
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configure important OpenTelemetry settings, the console exporter, and automatic instrumentation
+// Configure important OpenTelemetry settings, the console exporter, and library instrumentation
 builder.Services.AddOpenTelemetryTracing(b =>
 {
     b
@@ -94,12 +94,12 @@ app.Run();
 When you run this code and access the `/hello` endpoint, it will:
 
 * Start a new trace
-* Automatically generate a span representing the request made to the endpoint
-* Automatically generate a child span representing the HTTP GET made to
+* Generate a span representing the request made to the endpoint
+* Generate a child span representing the HTTP GET made to
   `https://example.com/`
 
-If you add more instrumentation libraries, then you can generate more data
-automatically.
+If you add more instrumentation libraries,
+then you get more telemetry data.
 
 ## Available instrumentation libraries
 
