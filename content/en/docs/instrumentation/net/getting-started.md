@@ -87,9 +87,8 @@ This output matches the span created in the preceding code sample.
 
 ## ASP.NET Core
 
-The following sample demonstrates automatic and manual
-[tracing](/docs/concepts/signals/traces/#tracing-in-opentelemetry) with ASP.NET
-Core.
+The following sample demonstrates [tracing](/docs/concepts/signals/traces/#tracing-in-opentelemetry)
+with ASP.NET Core.
 
 First, install requried packages:
 
@@ -114,7 +113,7 @@ var serviceVersion = "1.0.0";
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configure important OpenTelemetry settings, the console exporter, and automatic instrumentation
+// Configure important OpenTelemetry settings, the console exporter, and library instrumentation
 builder.Services.AddOpenTelemetryTracing(tracerProviderBuilder =>
 {
     tracerProviderBuilder
@@ -186,8 +185,8 @@ Resource associated with Activity:
     service.instance.id: 45aacfb0-e117-40cb-9d4d-9bcca661f6dd
 ```
 
-This output has both the span created to track work in the route, and an
-automatically-created span that tracks the inbound ASP.NET Core request itself.
+This output has both the span created to track work in the route,
+and a span that tracks the inbound ASP.NET Core request itself.
 
 ## Send traces to a collector
 
@@ -312,13 +311,13 @@ Now, telemetry will be output by the collector process.
 
 ## Next steps
 
-To ensure you're getting the most data as easily as possible, install some
-[instrumentation libraries](/docs/instrumentation/net/automatic) to automatically
+To ensure you're getting the most data as easily as possible, install
+[instrumentation libraries](/docs/instrumentation/net/libraries) to
 generate observability data.
 
-Additionally, enriching your instrumentation generated automatically with
-[manual instrumentation](/docs/instrumentation/net/manual) of your own codebase gets you
-customized observability data.
+Additionally, enriching your codebase with
+[manual instrumentation](/docs/instrumentation/net/manual)
+gets you customized observability data.
 
 You'll also want to configure an appropriate exporter to [export your telemetry
 data](/docs/instrumentation/net/exporters) to one or more telemetry backends.

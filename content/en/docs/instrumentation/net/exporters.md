@@ -286,10 +286,10 @@ using var tracerProvider = Sdk.CreateMeterProviderBuilder()
 
 ## Next steps
 
-To ensure you're getting the most data as easily as possible, install [automatic
-instrumentation libraries](/docs/instrumentation/net/automatic) to automatically
+To ensure you're getting the most data as easily as possible, install
+[instrumentation libraries](/docs/instrumentation/net/libraries) to
 generate observability data.
 
-Additionally, enriching your instrumentation generated automatically with
-[manual instrumentation](/docs/instrumentation/net/manual) of your own codebase
+Additionally, enriching your codebase with
+[manual instrumentation](/docs/instrumentation/net/manual)
 gets you customized observability data.
