@@ -292,4 +292,4 @@ generate observability data.
 
 Additionally, enriching your codebase with
 [manual instrumentation](/docs/instrumentation/net/manual)
-gets you customized observability data.
+gives you customized observability data.

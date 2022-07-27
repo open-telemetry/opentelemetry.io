@@ -7,7 +7,7 @@ OpenTelemetry for .NET is unique among OpenTelemetry implementations, as it is
 integrated with the .NET `System.Diagnostics` library. At a high level, you can
 think of OpenTelemetry for .NET as a bridge between the telemetry available
 through `System.Diagnostics` and the greater OpenTelemetry ecosystem, such as
-OpenTelemetry Protocol (OTLP) and the OpenTelemetry Collector. 
+OpenTelemetry Protocol (OTLP) and the OpenTelemetry Collector.
 
 ## Installation
 
@@ -317,7 +317,7 @@ generate observability data.
 
 Additionally, enriching your codebase with
 [manual instrumentation](/docs/instrumentation/net/manual)
-gets you customized observability data.
+gives you customized observability data.
 
 You'll also want to configure an appropriate exporter to [export your telemetry
 data](/docs/instrumentation/net/exporters) to one or more telemetry backends.
