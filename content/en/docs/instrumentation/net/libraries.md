@@ -1,23 +1,25 @@
 ---
-title: Automatic Instrumentation
+title: Using instrumentation libraries
+linkTitle: Libraries
+aliases: [/docs/instrumentation/net/automatic]
 weight: 3
-linkTitle: Automatic
 ---
 
-.NET supports automatic instrumentation with [instrumentation
-libraries](/docs/reference/specification/glossary/#instrumentation-library) that
-generate telemetry data for a particular instrumented library.
+You can use [instrumentation libraries](/docs/reference/specification/glossary/#instrumentation-library)
+in order to generate telemetry data for a particular instrumented library.
 
-For example, the instrumentation library for ASP.NET Core will automatically
-create [spans](/docs/concepts/signals/traces/#spans-in-opentelemetry) that track
-inbound requests once you configure it in your app/service.
+For example, [the instrumentation library for ASP.NET Core](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.AspNetCore)
+will automatically
+create [spans](/docs/concepts/signals/traces/#spans-in-opentelemetry)
+and [metrics](/docs/concepts/signals/metrics)
+based on the inbound HTTP requests.
 
 ## Setup
 
 Each instrumentation library is a NuGet package, and installing them is
 typically done like so:
 
-```
+```console
 dotnet add package OpenTelemetry.Instrumentation.{library-name-or-type}
 ```
 
@@ -27,7 +29,7 @@ creating a
 
 ## Example with ASP.NET Core and HttpClient
 
-As an example, here's how you can automatically instrument inbound and output
+As an example, here's how you can instrument inbound and output
 requests from an ASP.NET Core app.
 
 First, get the appropriate packages:
@@ -53,7 +55,7 @@ var serviceVersion = "1.0.0";
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configure important OpenTelemetry settings, the console exporter, and automatic instrumentation
+// Configure important OpenTelemetry settings, the console exporter, and instrumentation library
 builder.Services.AddOpenTelemetryTracing(b =>
 {
     b
@@ -86,15 +88,16 @@ app.MapGet("/hello", async () =>
 app.Run();
 ```
 
-When you run this code and access the `/hello` endpoint, it will:
+When you run this code and access the `/hello` endpoint,
+the instrumentation libraries will:
 
 * Start a new trace
-* Automatically generate a span representing the request made to the endpoint
-* Automatically generate a child span representing the HTTP GET made to
+* Generate a span representing the request made to the endpoint
+* Generate a child span representing the HTTP GET made to
   `https://example.com/`
 
-If you add more instrumentation libraries, then you can generate more data
-automatically.
+If you add more instrumentation libraries,
+then you get more telemetry data.
 
 ## Available instrumentation libraries
 
@@ -116,5 +119,9 @@ OpenTelemetry and instrumentation libraries on .NET Framework.
 
 You'll also want to configure an appropriate exporter to [export your telemetry
 data](/docs/instrumentation/net/exporters) to one or more telemetry backends.
+
+You can also check the
+[automatic instrumentation for .NET](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation),
+which is currently in beta.
 
 [opentelemetry-dotnet]: https://github.com/open-telemetry/opentelemetry-dotnet

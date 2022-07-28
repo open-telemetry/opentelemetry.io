@@ -98,7 +98,7 @@ var serviceVersion = "1.0.0";
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configure important OpenTelemetry settings, the console exporter, and automatic instrumentation
+// Configure important OpenTelemetry settings, the console exporter
 builder.Services.AddOpenTelemetryTracing(b =>
 {
     b
@@ -324,10 +324,14 @@ catch (Exception ex)
 
 ## Next steps
 
-After you've setup automatic instrumentation, you may want to use
-[instrumentation libraries](/docs/instrumentation/net/automatic).Instrumentation
-libraries will automatically instrument relevant libraries you're using and
+After you've setup manual instrumentation, you may want to use
+[instrumentation libraries](/docs/instrumentation/net/libraries). Instrumentation
+libraries will instrument relevant libraries you're using and
 generate data for things like inbound and outbound HTTP requests and more.
 
 You'll also want to configure an appropriate exporter to [export your telemetry
 data](/docs/instrumentation/net/exporters) to one or more telemetry backends.
+
+You can also check the
+[automatic instrumentation for .NET](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation),
+which is currently in beta.
