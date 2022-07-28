@@ -185,8 +185,9 @@ Resource associated with Activity:
     service.instance.id: 45aacfb0-e117-40cb-9d4d-9bcca661f6dd
 ```
 
-This output has both the span created to track work in the route,
-and a span that tracks the inbound ASP.NET Core request itself.
+This output has both the manually created span to track work in the route,
+and a span created by the `OpenTelemetry.Instrumentation.AspNetCore`
+instrumentation library that tracks the inbound ASP.NET Core request.
 
 ## Send traces to a collector
 
@@ -321,3 +322,7 @@ gives you customized observability data.
 
 You'll also want to configure an appropriate exporter to [export your telemetry
 data](/docs/instrumentation/net/exporters) to one or more telemetry backends.
+
+You can also check the
+[automatic instrumentation for .NET](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation),
+which is currently in beta.

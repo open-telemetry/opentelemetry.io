@@ -4,12 +4,8 @@ weight: 3
 linkTitle: Libraries
 ---
 
-The [automatic instrumentation](/docs/reference/specification/glossary/#automatic-instrumentation)
-for .NET, that can be found in the [opentelemetry-dotnet-instrumentation][] repository,
-is currently in beta.
-
-However, you can always use [instrumentation libraries](/docs/reference/specification/glossary/#instrumentation-library)
-that generate telemetry data for a particular instrumented library.
+You can use [instrumentation libraries](/docs/reference/specification/glossary/#instrumentation-library)
+in order to generate telemetry data for a particular instrumented library.
 
 For example, [the instrumentation library for ASP.NET Core](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.AspNetCore)
 will automatically
@@ -91,7 +87,8 @@ app.MapGet("/hello", async () =>
 app.Run();
 ```
 
-When you run this code and access the `/hello` endpoint, it will:
+When you run this code and access the `/hello` endpoint,
+the instrumentation libraries will:
 
 * Start a new trace
 * Generate a span representing the request made to the endpoint
@@ -122,5 +119,8 @@ OpenTelemetry and instrumentation libraries on .NET Framework.
 You'll also want to configure an appropriate exporter to [export your telemetry
 data](/docs/instrumentation/net/exporters) to one or more telemetry backends.
 
+You can also check the
+[automatic instrumentation for .NET](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation),
+which is currently in beta.
+
 [opentelemetry-dotnet]: https://github.com/open-telemetry/opentelemetry-dotnet
-[opentelemetry-dotnet-instrumentation]: https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation

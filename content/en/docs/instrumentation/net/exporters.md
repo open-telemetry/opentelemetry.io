@@ -293,3 +293,7 @@ generate observability data.
 Additionally, enriching your codebase with
 [manual instrumentation](/docs/instrumentation/net/manual)
 gives you customized observability data.
+
+You can also check the
+[automatic instrumentation for .NET](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation),
+which is currently in beta.
