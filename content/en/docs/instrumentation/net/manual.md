@@ -17,7 +17,7 @@ API, repurposing existing constructs like `ActivitySource` and `Activity` to be
 OpenTelemetry-compliant under the covers.
 
 However, there are parts of the OpenTelemetry API and terminology that .NET
-developers must still know to be able to instrument their applications, wich are
+developers must still know to be able to instrument their applications, which are
 covered here as well as the `System.Diagnostics` API.
 
 If you prefer to use OpenTelemetry APIs instead of `System.Diagnostics` APIs,

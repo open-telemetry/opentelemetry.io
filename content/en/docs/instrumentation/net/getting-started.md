@@ -91,7 +91,7 @@ The following sample demonstrates automatic and manual
 [tracing](/docs/concepts/signals/traces/#tracing-in-opentelemetry) with ASP.NET
 Core.
 
-First, install requried packages:
+First, install required packages:
 
 ```shell
 dotnet add package OpenTelemetry.Extensions.Hosting --prerelease
