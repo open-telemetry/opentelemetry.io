@@ -156,7 +156,14 @@ Next, install the Jaeger exporter package:
 $ pip install opentelemetry-exporter-jaeger
 ```
 
-Then you can configure the exporter when initializing tracing:
+This will install packages for both:
+
+* `opentelemetry-exporter-jaeger-thrift`
+* `opentelemetry-exporter-jaeger-proto-grpc`
+
+You can use either to export your traces to Jaeger.
+
+Once the package is installed, you can configure the exporter when initializing tracing:
 
 ```python
 from opentelemetry import trace
@@ -182,18 +189,10 @@ trace.set_tracer_provider(provider)
 # Merrily go about tracing!
 ```
 
-### Using Thrift
-
-If you'd prefer to use Thrift as the protocol, you can install the package:
-
-```console
-$ pip install opentelemetry-exporter-jaeger-thrift
-```
-
-And replace the `JaegerExporter` import declaration with the following:
+The previous example uses thrift. To use protobuf, change the import declaration to:
 
 ```python
-from opentelemetry.exporter.jaeger.thrift import JaegerExporter
+from opentelemetry.exporter.jaeger.proto.grpc import JaegerExporter
 ```
 
 ## Zipkin
