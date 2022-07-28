@@ -158,8 +158,8 @@ $ pip install opentelemetry-exporter-jaeger
 
 This will install packages for both:
 
-* `opentelemetry.exporter.jaeger.thrift`
-* `opentelemetry.exporter.jaeger.proto`
+* `opentelemetry-exporter-jaeger-thrift`
+* `opentelemetry-exporter-jaeger-proto-grpc`
 
 You can use either to export your traces to Jaeger.
 
