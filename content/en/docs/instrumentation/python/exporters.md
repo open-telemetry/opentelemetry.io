@@ -192,7 +192,7 @@ trace.set_tracer_provider(provider)
 The previous example uses thrift. To use protobuf, change the import declaration to:
 
 ```python
-from opentelemetry.exporter.jaeger.proto import JaegerExporter
+from opentelemetry.exporter.jaeger.proto.grpc import JaegerExporter
 ```
 
 ## Zipkin
