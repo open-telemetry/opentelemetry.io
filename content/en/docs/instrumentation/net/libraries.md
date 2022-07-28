@@ -1,7 +1,8 @@
 ---
 title: Using instrumentation libraries
-weight: 3
 linkTitle: Libraries
+aliases: [/docs/instrumentation/net/automatic]
+weight: 3
 ---
 
 You can use [instrumentation libraries](/docs/reference/specification/glossary/#instrumentation-library)
