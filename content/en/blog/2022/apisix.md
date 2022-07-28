@@ -364,7 +364,7 @@ provides a lot of value.
 When the request does not reach the demo-server, the output would not include
 the span of demo-server.
 
-![demo-server disconneted](/img/apisix/demo-server-disconnected.png)
+![demo-server disconnected](/img/apisix/demo-server-disconnected.png)
 
 ## Disable the Plugin
 

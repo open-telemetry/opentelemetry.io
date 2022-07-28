@@ -1840,7 +1840,7 @@ Here is what `appendAtmSystemInstrScopeSpans` looks like after the update:
 ```go
  func appendAtmSystemInstrScopeSpans(resourceSpans *ptrace.ResourceSpans) (ptrace.ScopeSpans){
 	scopeSpans := resourceSpans.ScopeSpans().AppendEmpty()
-	scopeSpans.Scope().SetName("atm-sytem")
+	scopeSpans.Scope().SetName("atm-system")
 	scopeSpans.Scope().SetVersion("v1.0")
 	return scopeSpans
 }
@@ -2137,7 +2137,7 @@ Resource labels:
      -> service.version: STRING(v1.0)
 ScopeSpans #0
 ScopeSpans SchemaURL:
-InstrumentationScope atm-sytem v1.0
+InstrumentationScope atm-system v1.0
 ResourceSpans #1
 Resource SchemaURL:
 Resource labels:
@@ -2149,7 +2149,7 @@ Resource labels:
      -> service.version: STRING(v2.5)
 ScopeSpans #0
 ScopeSpans SchemaURL:
-InstrumentationScope atm-sytem v1.0
+InstrumentationScope atm-system v1.0
 Span #0
     Trace ID       : 5cce8a774d4546c2a5cbdeb607ec74c9
     Parent ID      :
@@ -2173,7 +2173,7 @@ Resource labels:
      -> service.version: STRING(v1.0)
 ScopeSpans #0
 ScopeSpans SchemaURL:
-InstrumentationScope atm-sytem v1.0
+InstrumentationScope atm-system v1.0
 ResourceSpans #1
 Resource SchemaURL:
 Resource labels:
@@ -2185,7 +2185,7 @@ Resource labels:
      -> service.version: STRING(v2.5)
 ScopeSpans #0
 ScopeSpans SchemaURL:
-InstrumentationScope atm-sytem v1.0
+InstrumentationScope atm-system v1.0
 Span #0
     Trace ID       : 8a6ca822db0847f48facfebbb08bbb9e
     Parent ID      :

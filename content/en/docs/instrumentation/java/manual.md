@@ -53,7 +53,7 @@ the most brittle option for library instrumentation.
 ## Acquiring a Tracer
 
 To do [Tracing](/docs/concepts/signals/traces/#tracing-in-opentelemetry) you'll
-need to aquire a [`Tracer`](/docs/concepts/signals/traces/#tracer).
+need to acquire a [`Tracer`](/docs/concepts/signals/traces/#tracer).
 
 **Note:** Methods of the OpenTelemetry SDK should never be called.
 

@@ -8,7 +8,7 @@ assignees: ''
 ---
 
 **What happened?**
-Describe the problem that occured.
+Describe the problem that occurred.
 
 **What did you expect would happen?**
 Describe the expected result/output.

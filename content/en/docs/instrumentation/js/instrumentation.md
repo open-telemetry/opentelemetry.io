@@ -132,7 +132,7 @@ In contrast, the `SimpleSpanProcessor` processes spans as they are created. This
 means that if you create 5 spans, each will be processed an exported before the
 next span is created in code. This can be helpful in scenarios where you do not
 want to risk losing a batch, or if you're experimenting with OpenTelemetry in
-development. However, it also comes with potentially signficant overhead,
+development. However, it also comes with potentially significant overhead,
 especially if spans are being exported over a network - each time a call to
 create a span is made, it would be processed and sent over a network before your
 app's execution could continue.
