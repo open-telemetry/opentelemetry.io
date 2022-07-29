@@ -1,8 +1,7 @@
 ---
 title: Collector
 weight: 10
-description: >-
-  Vendor-agnostic way to receive, process and export telemetry data.
+description: Vendor-agnostic way to receive, process and export telemetry data.
 spelling: cSpell:ignore Otel
 aliases: [/docs/collector/about]
 ---
@@ -40,4 +39,16 @@ can take care of additional handling like retries, batching, encryption or even 
 
 It is also easier to [setup a collector](./getting-started) than you might think: the default OTLP exporters in each language assume a local collector endpoint, so you'd start up a collector and you'd just start getting telemetry.
 
+## Status and releases
+
+The **collector** status is: [Stable][].
+
+**Collector components** differ in their maturity levels. An effort is underway
+to ensure that every component has its stability documented. To track the
+progress of this effort, see [opentelemetry-collector-contrib issue
+#10116][10116]. 
+
 {{% latest_release "collector-releases" /%}}
+
+[10116]: https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/10116
+[Stable]: https://github.com/open-telemetry/opentelemetry-collector#stable
