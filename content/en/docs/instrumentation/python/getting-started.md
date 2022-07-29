@@ -129,7 +129,7 @@ single span printed to the console, such as the following:
 
 </details>
 
-The span generated for you tracks the lifetime of a request to the `/doroll`
+The span generated for you tracks the lifetime of a request to the `/rolldice`
 route.
 
 ## Add manual instrumentation to automatic instrumentation
