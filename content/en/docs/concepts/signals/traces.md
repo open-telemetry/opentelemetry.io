@@ -225,11 +225,19 @@ Sample Span:
 
 ### Span Context
 
-Span Context provides specific context about the trace and span using two
-identifiers: Trace ID and Span ID. Each Span is identified by an ID that is
-unique within a Trace called a Span ID. A Span uses a Trace ID to identify the
-relationship between span and its trace. A string represents the Span ID. A Span
-requires Span Context to travel across service and process boundaries.
+Span Context is an immutable object on every span that contains the following:
+
+* The Trace ID representing the trace that the span is a part of
+* The Span's Span ID
+* Trace Flags, a binary encoding containing information about the trace
+* Trace State, a list of key-value pairs that can carry vendor-specific trace
+  information
+
+Span Context is the part of a span that is serialized and propagated alongside
+[Distributed Context](#context-propagation) and [Baggage](/docs/concepts/signals/baggage).
+
+Because Span Context contains the Trace ID, it is used when creating [Span
+Links](#span-links).
 
 ### Attributes
 
