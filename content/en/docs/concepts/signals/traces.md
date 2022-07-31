@@ -1,7 +1,8 @@
 ---
-title: "Traces"
+title: Traces
 description: >-
-  Traces give us the big picture of what happens when a request is made by user or an application.
+  Traces give us the big picture of what happens when a request is made by user
+  or an application.
 weight: 1
 ---
 
@@ -91,6 +92,11 @@ Sample Trace:
 }
 ```
 
+This sample trace output has three items, named "hey there!",
+"Hello-Salutations" and "Hello". Because each request's context has the same
+trace ID, all of the infornation can be tied together. This provides a trail
+through the requests' various routes, timestamps and other attributes.
+
 To understand how tracing in OpenTelemetry works, let's look at a list of
 components that will play a part in instrumenting our code:
 
@@ -164,9 +170,9 @@ associated with
 sampled
 
 **Trace State** - Provides more vendor-specific information for tracing across
-multiple distributed systems. Please refer to [W3C Trace
-Context](https://www.w3.org/TR/trace-context/#trace-flags) for further
-explanation.
+multiple distributed systems. Please refer to
+[W3C Trace Context](https://www.w3.org/TR/trace-context/#trace-flags) for
+further explanation.
 
 By combining Context and Propagation, you now can assemble a Trace.
 
