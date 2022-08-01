@@ -12,6 +12,8 @@ languages:
     title: OpenTelemetry
     description: The OpenTelemetry Project Site
     languageName: English
+    # Social media image (e.g., Open Graph). Update the version tag when the image changes.
+    images: ["/featured-background.jpg?v1"]
     weight: 1
 
 imaging:
