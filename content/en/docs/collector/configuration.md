@@ -67,8 +67,7 @@ service:
       exporters: [otlp]
 ```
 
-Note that the same receiver, processor, exporter and/or pipeline can be defined
-more than once. For example:
+Note that receivers, processors, exporters and/or pipelines are defined via component identifiers in `type[/name]` format (e.g. `otlp` or `otlp/2`).  Components of a given type can be defined more than once as long as the identifiers are unique. For example:
 
 ```yaml
 receivers:
