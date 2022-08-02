@@ -449,11 +449,11 @@ docker run -p 4317:4317 \
     --config=/etc/otel-collector-config.yaml
 ```
 
-You will now have an collector instance running locally, listening on port 4318.
+You will now have an collector instance running locally, listening on port 4317.
 
-### Modify the code to export spans and metrics via OTLP
+### Modify the command to export spans and metrics via OTLP
 
-The next step is to modify the code to send spans and metrics to the collector via
+The next step is to modify the command to send spans and metrics to the collector via
 OTLP instead of the console.
 
 To do this, install the OTLP exporter package:
@@ -462,40 +462,8 @@ To do this, install the OTLP exporter package:
 pip install opentelemetry-exporter-otlp
 ```
 
-Next, using the Flask server code from earlier, replace the console exporter
-with an OTLP exporter:
-
-```python
-from opentelemetry import trace
-from opentelemetry import metrics
-
-from random import randint
-from flask import Flask, request
-
-tracer = trace.get_tracer(__name__)
-meter = metrics.get_meter(__name__)
-
-roll_counter = meter.create_counter(
-    "roll_counter",
-    description="The number of rolls by roll value",
-)
-
-app = Flask(__name__)
-
-@app.route("/rolldice")
-def roll_dice():
-    return str(do_roll())
-
-def do_roll():
-    with tracer.start_as_current_span("do_roll") as rollspan:  
-        res = randint(1, 6)
-        rollspan.set_attribute("roll.value", res)
-        roll_counter.add(1, {"roll.value": res})
-        return res
-```
-
-By default, it will send telemetry to `localhost:4317`, which is what the collector
-is listening on.
+The `opentelemetry-instrument` agent will detect the package you just installed
+and default to OTLP export when it's run next.
 
 ### Run the application
 
@@ -505,7 +473,9 @@ Run the application like before, but don't export to the console:
 opentelemetry-instrument flask run
 ```
 
-By default, `opentelemetry-instrument` exports traces and metrics over OTLP/gRPC.
+By default, `opentelemetry-instrument` exports traces and metrics over OTLP/gRPC
+and will send them to `localhost:4317`, which is what the collector
+is listening on.
 
 When you access the `/rolldice` route now, you'll see output in the collector
 process instead of the flask process, which should look something like this:
