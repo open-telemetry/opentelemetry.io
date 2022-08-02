@@ -462,8 +462,8 @@ To do this, install the OTLP exporter package:
 pip install opentelemetry-exporter-otlp
 ```
 
-As exporters are logically separated from the trace acquiring, we do not 
-need to make any code changes.  
+The `opentelemetry-instrument` agent will detect the package you just installed
+and default to OTLP export when it's run next.
 
 ### Run the application
 
