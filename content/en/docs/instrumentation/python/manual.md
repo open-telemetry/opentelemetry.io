@@ -17,8 +17,8 @@ pip install opentelemetry-sdk
 ```
 
 To start tracing, you'll need to initialize a
-[`TracerProvider`](/docs/reference/specification/trace/api/#tracerprovider) and optionally set
-it as the global default.
+[`TracerProvider`](/docs/concepts/signals/traces/#tracer-provider) and
+optionally set it as the global default.
 
 ```python
 from opentelemetry import trace
@@ -40,8 +40,8 @@ tracer = trace.get_tracer(__name__)
 ```
 
 To start collecting metrics, you'll need to initialize a
-[`MeterProvider`](/docs/reference/specification/metrics/api/#meterprovider) and optionally set
-it as the global default.
+[`MeterProvider`](/docs/reference/specification/metrics/api/#meterprovider) and
+optionally set it as the global default.
 
 ```python
 from opentelemetry import metrics
@@ -65,7 +65,8 @@ meter = metrics.get_meter(__name__)
 
 ### Creating spans
 
-To create a span, you'll typically want it to be started as the current span.
+To create a [span](/docs/concepts/signals/traces/spans-in-opentelemetry), you'll
+typically want it to be started as the current span.
 
 ```python
 def do_work():
@@ -81,7 +82,9 @@ span. This is usually done to track concurrent or asynchronous operations.
 ### Creating nested spans
 
 If you have a distinct sub-operation you'd like to track as a part of another
-one, you can create spans to represent the relationship:
+one, you can create
+[spans](/docs/concepts/signals/traces/spans-in-opentelemetry) to represent the
+relationship:
 
 ```python
 def do_work():
@@ -102,8 +105,10 @@ nested span under `parent`.
 
 ### Creating spans with decorators
 
-It's common to have a single span track the execution of an entire function. In
-that scenario, there is a decorator you can use to reduce code:
+It's common to have a single
+[span](/docs/concepts/signals/traces/spans-in-opentelemetry) track the execution
+of an entire function. In that scenario, there is a decorator you can use to
+reduce code:
 
 ```python
 @tracer.start_as_current_span("do_work")
@@ -123,8 +128,9 @@ use a decorator.
 
 ### Get the current span
 
-Sometimes it's helpful to access whatever the current span is at a point in time
-so that you can enrich it with more information.
+Sometimes it's helpful to access whatever the current
+[span](/docs/concepts/signals/traces/spans-in-opentelemetry) is at a point in
+time so that you can enrich it with more information.
 
 ```python
 from opentelemetry import trace
@@ -135,8 +141,9 @@ current_span = trace.get_current_span()
 
 ### Add attributes to a span
 
-Attributes let you attach key/value pairs to a span so it carries more
-information about the current operation that it's tracking.
+[Attributes](/docs/concepts/signals/traces/attributes) let you attach key/value
+pairs to a [span](/docs/concepts/signals/traces/spans-in-opentelemetry) so it
+carries more information about the current operation that it's tracking.
 
 ```python
 from opentelemetry import trace
@@ -150,8 +157,10 @@ current_span.set_attribute("operation.other-stuff", [1, 2, 3])
 
 ### Adding events
 
-An event is a human-readable message on a span that represents "something
-happening" during its lifetime. You can think of it as a primitive log.
+An [event](/docs/concepts/signals/traces/span-events) is a human-readable
+message on a [span](/docs/concepts/signals/traces/spans-in-opentelemetry) that
+represents "something happening" during its lifetime. You can think of it as a
+primitive log.
 
 ```python
 from opentelemetry import trace
@@ -167,8 +176,9 @@ current_span.add_event("Did it!")
 
 ### Adding links
 
-A span can be created with zero or more span links that causally link it to
-another span. A link needs a span context to be created.
+A [span](/docs/concepts/signals/traces/spans-in-opentelemetry) can be created
+with zero or more span [links](/docs/concepts/signals/traces/span-links) that
+causally link it to another span. A link needs a span context to be created.
 
 ```python
 from opentelemetry import trace
@@ -186,10 +196,11 @@ with tracer.start_as_current_span("new-span", links=[link_from_current]) as new_
 
 ### Set span status
 
-A status can be set on a span, typically used to specify that a span has not
-completed successfully - `StatusCode.ERROR`. In rare scenarios, you could
-override the Error status with `StatusCode.OK`, but don’t set `StatusCode.OK` on
-successfully-completed spans.
+A [status](/docs/concepts/signals/traces/span-status) can be set on a
+[span](/docs/concepts/signals/traces/spans-in-opentelemetry), typically used to
+specify that a span has not completed successfully - `StatusCode.ERROR`. In rare
+scenarios, you could override the Error status with `StatusCode.OK`, but don’t
+set `StatusCode.OK` on successfully-completed spans.
 
 The status can be set at any time before the span is finished:
 
@@ -280,13 +291,13 @@ Note that environment variables will override what's configured in code.
 
 Instruments are used to make measurements of your application. [Synchronous
 instruments](/docs/reference/specification/metrics/api/#synchronous-and-asynchronous-instruments)
-are used inline with application/business processing logic, like when handling a request or
-calling another service.
+are used inline with application/business processing logic, like when handling a
+request or calling another service.
 
-First, create your instrument. Instruments are generally created once at the module or class
-level and then used inline with business logic.  This example uses a
-[Counter](/docs/reference/specification/metrics/api/#counter) instrument to count the number of
-work items completed:
+First, create your instrument. Instruments are generally created once at the
+module or class level and then used inline with business logic.  This example
+uses a [Counter](/docs/reference/specification/metrics/api/#counter) instrument
+to count the number of work items completed:
 
 ```python
 work_counter = meter.create_counter(
@@ -294,8 +305,9 @@ work_counter = meter.create_counter(
 )
 ```
 
-Using the Counter's [add operation](/docs/reference/specification/metrics/api/#add), the code
-below increments the count by one, using the work item's type as an attribute.
+Using the Counter's [add
+operation](/docs/reference/specification/metrics/api/#add), the code below
+increments the count by one, using the work item's type as an attribute.
 
 ```python
 def do_work(work_item):
@@ -306,16 +318,18 @@ def do_work(work_item):
 
 ### Creating and using asynchronous instruments
 
-[Asynchronous instruments](/docs/reference/specification/metrics/api/#synchronous-and-asynchronous-instruments)
-give the user a way to register callback functions, which are invoked on demand to make
-measurements. This is useful to periodically measure a value that cannot be instrumented
-directly. Async instruments are created with zero or more callbacks which will be invoked
-during metric collection. Each callback accepts options from the SDK and returns its
-observations.
+[Asynchronous
+instruments](/docs/reference/specification/metrics/api/#synchronous-and-asynchronous-instruments)
+give the user a way to register callback functions, which are invoked on demand
+to make measurements. This is useful to periodically measure a value that cannot
+be instrumented directly. Async instruments are created with zero or more
+callbacks which will be invoked during metric collection. Each callback accepts
+options from the SDK and returns its observations.
 
-This example uses an [Asynchronous Gauge](/docs/reference/specification/metrics/api/#asynchronous-gauge)
-instrument to report the current config version provided by a configuration server by scraping
-an HTTP endpoint. First, write a callback to make observations:
+This example uses an [Asynchronous
+Gauge](/docs/reference/specification/metrics/api/#asynchronous-gauge) instrument
+to report the current config version provided by a configuration server by
+scraping an HTTP endpoint. First, write a callback to make observations:
 
 ```python
 from typing import Iterable
@@ -332,9 +346,9 @@ def scrape_config_versions(options: CallbackOptions) -> Iterable[Observation]:
         )
 ```
 
-Note that OpenTelemetry will pass options to your callback containing a timeout. Callbacks
-should respect this timeout to avoid blocking indefinitely. Finally, create the instrument with
-the callback to register it:
+Note that OpenTelemetry will pass options to your callback containing a timeout.
+Callbacks should respect this timeout to avoid blocking indefinitely. Finally,
+create the instrument with the callback to register it:
 
 ```python
 meter.create_observable_gauge(
@@ -348,11 +362,16 @@ meter.create_observable_gauge(
 
 - Trace
     - [Trace Concepts](/docs/concepts/signals/traces/)
-    - [Trace Specification](/docs/reference/specification/overview/#tracing-signal)
-    - [Python Trace API Documentation](https://opentelemetry-python.readthedocs.io/en/latest/api/trace.html)
-    - [Python Trace SDK Documentation](https://opentelemetry-python.readthedocs.io/en/latest/sdk/trace.html)
+    - [Trace
+      Specification](/docs/reference/specification/overview/#tracing-signal)
+    - [Python Trace API
+      Documentation](https://opentelemetry-python.readthedocs.io/en/latest/api/trace.html)
+    - [Python Trace SDK
+      Documentation](https://opentelemetry-python.readthedocs.io/en/latest/sdk/trace.html)
 - Metrics
     - [Metrics Concepts](/docs/concepts/signals/metrics/)
     - [Metrics Specification](/docs/reference/specification/metrics/)
-    - [Python Metrics API Documentation](https://opentelemetry-python.readthedocs.io/en/latest/api/metrics.html)
-    - [Python Metrics SDK Documentation](https://opentelemetry-python.readthedocs.io/en/latest/sdk/metrics.html)
+    - [Python Metrics API
+      Documentation](https://opentelemetry-python.readthedocs.io/en/latest/api/metrics.html)
+    - [Python Metrics SDK
+      Documentation](https://opentelemetry-python.readthedocs.io/en/latest/sdk/metrics.html)
