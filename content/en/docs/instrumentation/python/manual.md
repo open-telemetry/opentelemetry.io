@@ -65,7 +65,7 @@ meter = metrics.get_meter(__name__)
 
 ### Creating spans
 
-To create a [span](/docs/concepts/signals/traces/spans-in-opentelemetry), you'll
+To create a [span](/docs/concepts/signals/traces/#spans-in-opentelemetry, you'll
 typically want it to be started as the current span.
 
 ```python
@@ -83,7 +83,7 @@ span. This is usually done to track concurrent or asynchronous operations.
 
 If you have a distinct sub-operation you'd like to track as a part of another
 one, you can create
-[spans](/docs/concepts/signals/traces/spans-in-opentelemetry) to represent the
+[spans](/docs/concepts/signals/traces/#spans-in-opentelemetry to represent the
 relationship:
 
 ```python
@@ -106,7 +106,7 @@ nested span under `parent`.
 ### Creating spans with decorators
 
 It's common to have a single
-[span](/docs/concepts/signals/traces/spans-in-opentelemetry) track the execution
+[span](/docs/concepts/signals/traces/#spans-in-opentelemetry track the execution
 of an entire function. In that scenario, there is a decorator you can use to
 reduce code:
 
@@ -129,7 +129,7 @@ use a decorator.
 ### Get the current span
 
 Sometimes it's helpful to access whatever the current
-[span](/docs/concepts/signals/traces/spans-in-opentelemetry) is at a point in
+[span](/docs/concepts/signals/traces/#spans-in-opentelemetry is at a point in
 time so that you can enrich it with more information.
 
 ```python
@@ -142,7 +142,7 @@ current_span = trace.get_current_span()
 ### Add attributes to a span
 
 [Attributes](/docs/concepts/signals/traces/attributes) let you attach key/value
-pairs to a [span](/docs/concepts/signals/traces/spans-in-opentelemetry) so it
+pairs to a [span](/docs/concepts/signals/traces/#spans-in-opentelemetry so it
 carries more information about the current operation that it's tracking.
 
 ```python
@@ -158,7 +158,7 @@ current_span.set_attribute("operation.other-stuff", [1, 2, 3])
 ### Adding events
 
 An [event](/docs/concepts/signals/traces/span-events) is a human-readable
-message on a [span](/docs/concepts/signals/traces/spans-in-opentelemetry) that
+message on a [span](/docs/concepts/signals/traces/#spans-in-opentelemetry that
 represents "something happening" during its lifetime. You can think of it as a
 primitive log.
 
@@ -176,7 +176,7 @@ current_span.add_event("Did it!")
 
 ### Adding links
 
-A [span](/docs/concepts/signals/traces/spans-in-opentelemetry) can be created
+A [span](/docs/concepts/signals/traces/#spans-in-opentelemetry can be created
 with zero or more span [links](/docs/concepts/signals/traces/span-links) that
 causally link it to another span. A link needs a span context to be created.
 
@@ -197,7 +197,7 @@ with tracer.start_as_current_span("new-span", links=[link_from_current]) as new_
 ### Set span status
 
 A [status](/docs/concepts/signals/traces/span-status) can be set on a
-[span](/docs/concepts/signals/traces/spans-in-opentelemetry), typically used to
+[span](/docs/concepts/signals/traces/#spans-in-opentelemetry, typically used to
 specify that a span has not completed successfully - `StatusCode.ERROR`. In rare
 scenarios, you could override the Error status with `StatusCode.OK`, but don’t
 set `StatusCode.OK` on successfully-completed spans.
