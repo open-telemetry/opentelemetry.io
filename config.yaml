@@ -58,10 +58,11 @@ params:
 
   ## Social media image path, such as Open Graph's og:image
   #
-  # IMPORTANT: if you change the image, also increment the version ID in the
-  # filename below. Note that the image path gets redirected. For details see
-  # the redirect file.
-  images: ["img/social-media-image-001.png"]
+  # IMPORTANT: if you change the image but not the path, also increment the
+  # version ID in the filename below. Otherwise, for new paths, start at version
+  # `001`. Note that social-media images must be preserved (or redirected)
+  # forever.
+  images: ["img/social/logo-wordmark-001.png"]
 
   ui:
     footer_about_disable: true
