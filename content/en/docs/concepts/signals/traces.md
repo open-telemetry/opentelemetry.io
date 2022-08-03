@@ -187,6 +187,7 @@ work or operation. Spans are the building blocks of Traces. In OpenTelemetry,
 they include the following information:
 
 - Name
+- Parent span ID
 - Start and End Timestamps
 - [Span Context](#span-context)
 - [Attributes](#attributes)
@@ -228,6 +229,10 @@ Sample Span:
   }
 }
 ```
+
+As is implied by the present of a parent span ID, spans can be nested as
+child spans that represent sub-operations. This allows them to accurately
+model work done in an application.
 
 ### Span Context
 
