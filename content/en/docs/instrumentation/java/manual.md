@@ -29,9 +29,9 @@ signals, tracing and metrics, in order to build the `OpenTelemetry` instance.
 
 You can build the providers by using the `SdkTracerProvider.builder()` and
 `SdkMeterProvider.builder()` methods.
-It is also necessary to define a `Resource` instance as a representation of the
-entity producing the telemetry. It can bring attributes and the `service.name` is
-a mandatory one.
+It is also strongly recommended to define a `Resource` instance as a representation of the
+entity producing the telemetry; in particular the `service.name` attribute is
+the most important piece of telemetry source-identifying info.
 
 For example:
 
