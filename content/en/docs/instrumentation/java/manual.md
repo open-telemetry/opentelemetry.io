@@ -36,11 +36,8 @@ the most important piece of telemetry source-identifying info.
 For example:
 
 ```java
-AttributesBuilder attributesBuilder = Attributes.builder();
-attributesBuilder.put(ResourceAttributes.SERVICE_NAME, "logical-service-name");
-Attributes attributes = attributesBuilder.build();
-
-Resource resource = Resource.create(attributes, ResourceAttributes.SCHEMA_URL);
+Resource resource = Resource.getDefault()
+  .merge(Resource.create(Attributes.of(ResourceAttributes.SERVICE_NAME, "logical-service-name")));
 
 SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder()
   .addSpanProcessor(BatchSpanProcessor.builder(OtlpGrpcSpanExporter.builder().build()).build())
