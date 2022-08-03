@@ -92,7 +92,7 @@ Sample Trace:
 }
 ```
 
-This sample trace output has three items, named "hey there!",
+This sample trace output has three items, named "Hello-Greetings",
 "Hello-Salutations" and "Hello". Because each request's context has the same
 trace ID, all of the infornation can be tied together. This provides a trail
 through the requests' various routes, timestamps and other attributes.
