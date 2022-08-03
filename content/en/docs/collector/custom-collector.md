@@ -133,7 +133,7 @@ All you need now is to let the `ocb` do it's job, so go to your terminal and
 type the following command:
 
 ```cmd
-ocb --config builder-config.yaml
+./ocb --config builder-config.yaml
 ```
 
 If everything went well, here is what the output of the command should look
