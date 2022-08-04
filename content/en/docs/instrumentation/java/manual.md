@@ -24,16 +24,29 @@ interface.
 If you are an application developer, you need to configure an instance of the
 `OpenTelemetrySdk` as early as possible in your application. This can be done
 using the `OpenTelemetrySdk.builder()` method.
+The returned `OpenTelemetrySdkBuilder` instance gets the providers related to the 
+signals, tracing and metrics, in order to build the `OpenTelemetry` instance.
+
+You can build the providers by using the `SdkTracerProvider.builder()` and
+`SdkMeterProvider.builder()` methods.
+It is also strongly recommended to define a `Resource` instance as a representation of the
+entity producing the telemetry; in particular the `service.name` attribute is
+the most important piece of telemetry source-identifying info.
 
 For example:
 
 ```java
+Resource resource = Resource.getDefault()
+  .merge(Resource.create(Attributes.of(ResourceAttributes.SERVICE_NAME, "logical-service-name")));
+
 SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder()
   .addSpanProcessor(BatchSpanProcessor.builder(OtlpGrpcSpanExporter.builder().build()).build())
+  .setResource(resource)
   .build();
 
 SdkMeterProvider sdkMeterProvider = SdkMeterProvider.builder()
   .registerMetricReader(PeriodicMetricReader.builder(OtlpGrpcMetricExporter.builder().build()).build())
+  .setResource(resource)
   .build();
 
 OpenTelemetry openTelemetry = OpenTelemetrySdk.builder()
