@@ -94,7 +94,7 @@ through the operations' various routes, timestamps and other attributes.
 }
 ```
  
-A key Trace component in OpenTelemetry is a Span:
+The basic unit of a Trace in OpenTelemetry is a Span:
  
 A [**Span**](/docs/concepts/observability-primer/#spans) represents a unit of
 work or operation. Spans are the building blocks of Traces.
