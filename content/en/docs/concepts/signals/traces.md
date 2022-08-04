@@ -145,7 +145,7 @@ This is known as **context propagation**.
  
 ### Context Propagation
  
-**Context Propagation** is the core concept that enables Distributed Tracing. With
+**Context propagation** is the core concept that enables distributed tracing. With
 Context Propagation, Spans can be correlated with each other and assembled into
 a Trace, regardless of where Spans are generated. We define Context Propagation
 by two sub-concepts: *Context* and *Propagation*.
