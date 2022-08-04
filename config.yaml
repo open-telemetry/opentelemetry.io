@@ -12,8 +12,6 @@ languages:
     title: OpenTelemetry
     description: The OpenTelemetry Project Site
     languageName: English
-    # Social media image (e.g., Open Graph). Update the version tag when the image changes.
-    images: ["/featured-background.jpg?v1"]
     weight: 1
 
 imaging:
@@ -57,6 +55,14 @@ params:
   github_repo: https://github.com/open-telemetry/opentelemetry.io
   github_branch: main
   gcs_engine_id: bde3d634eca9cd335
+
+  ## Social media image path, such as Open Graph's og:image
+  #
+  # IMPORTANT: if you change the image but not the path, also increment the
+  # version ID in the filename below. Otherwise, for new paths, start at version
+  # `001`. Note that social-media images must be preserved (or redirected)
+  # forever.
+  images: ["img/social/logo-wordmark-001.png"]
 
   ui:
     footer_about_disable: true
