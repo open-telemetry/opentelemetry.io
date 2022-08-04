@@ -110,7 +110,7 @@ list of OpenTelemetry components that play a part in instrumenting our code:
  
 ### Tracer
  
-A `Tracer` creates spans, where each span has information about what's happening
+A **tracer** creates spans, where each span has information about what's happening
 for a given operation; for example a request in a service. Tracers are created
 from `TracerProvider`s. In some languages, a global Tracer is already
 initialized for you.
