@@ -122,10 +122,16 @@ the binary-encoded Protobuf format, you can install the package:
 $ pip install opentelemetry-exporter-otlp-proto-http
 ```
 
-And replace the import declarations with the following:
+Next, replace the import declarations with the following:
 
 ```python
 from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
+```
+
+Finally, update your exporter endpoint if you're specifying it in code:
+
+```python
+OTLPSpanExporter(endpoint="<traces-endpoint>/v1/traces")
 ```
 
 There is not currently an OTLP/HTTP metric exporter.
