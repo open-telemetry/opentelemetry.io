@@ -14,9 +14,9 @@ into our code in production by tracing our microservices and related
 applications.
  
 **Sample Trace** The sample trace output has three items: "hey there!",
-"Hello-Salutations" and "Hello". Because each request's context has the same
-trace ID, all of the infornation can be tied together. This provides a trail
-through the requests' various routes, timestamps and other attributes.
+"Hello-Salutations" and "Hello". Because each operation's context has the same
+trace ID, all of the information can be tied together. This provides a trail
+through the operations' various routes, timestamps and other attributes.
  
 ```json
 {
