@@ -141,7 +141,7 @@ OpenTelemetry will use Trace Context to capture the trace ID and current
 span from ServiceA, so that Spans created in ServiceB can connect and add to
 the trace.
  
-This is known as **Context Propagation**.
+This is known as **context propagation**.
  
 ### Context Propagation
  
