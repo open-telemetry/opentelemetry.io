@@ -134,8 +134,8 @@ any open-source or vendor backend of your choice.
  
 ### Trace Context
  
-The **Trace Context** is metadata about trace **Spans**. It provides correlation between
-Spans, across service and process boundaries. For example, let's say that
+A **trace context** is data about trace spans. It provides correlation between
+spans, across service and process boundaries. For example, let's say that
 ServiceA calls ServiceB, and you want to track that call in a trace. In this case,
 OpenTelemetry will use Trace Context to capture the trace ID and current
 span from ServiceA, so that Spans created in ServiceB can connect and add to
