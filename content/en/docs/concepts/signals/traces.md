@@ -128,8 +128,8 @@ already initialized for you.
  
 ### Trace Exporters
  
-**Trace Exporters** send traces to a consumer. The consumer can be standard output
-(std.out) for debugging and development-time, the OpenTelemetry Collector, or
+A **trace exporter** sends traces to a consumer. The consumer can be standard output
+for debugging and development-time, the OpenTelemetry Collector, or
 any open-source or vendor backend of your choice.
  
 ### Trace Context
