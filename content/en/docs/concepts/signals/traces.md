@@ -230,10 +230,9 @@ Sample Span:
 }
 ```
 
-As is implied by the present of a parent span ID, spans can be nested as
-child spans that represent sub-operations. This allows them to accurately
-model work done in an application.
-
+Spans can be nested, as is implied by the presence of a parent span ID:
+child spans represent sub-operations. This allows spans to more accurately
+capture the work done in an application.
 ### Span Context
 
 Span Context is an immutable object on every span that contains the following:
