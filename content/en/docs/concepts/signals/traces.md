@@ -13,7 +13,7 @@ application. OpenTelemetry provides us with a way to implement Observability
 into our code in production by tracing our microservices and related
 applications.
  
-**Sample Trace** The sample trace output has three items: "hey there!",
+The sample trace given below has three items: "hey there!",
 "Hello-Salutations" and "Hello". Because each operation's context has the same
 trace ID, all of the information can be tied together. This provides a trail
 through the operations' various routes, timestamps and other attributes.
