@@ -714,6 +714,8 @@ func components() (component.Factories, error) {
 > - Added a call to `tailtracer.NewFactory()` as a parameter of the
 >   `component.MakeReceiverFactoryMap()` call so your `tailtracer` receiver
 >   factory is properly added to the `factories` map.
+> - execute `go mod tidy` to add module `github.com/rquedas/otel4devs/collector/receiver/trace-receiver/tailtracer` to go.mod
+> - execute `go build` to re-compile packages and dependencies
 
 We added the `tailtracer` receiver settings to the `config.yaml` previously, so
 here is what the beginning of the output for running your Collector with
