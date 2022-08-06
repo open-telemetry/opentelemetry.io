@@ -41,14 +41,16 @@ It is also easier to [setup a collector](./getting-started) than you might think
 
 ## Status and releases
 
-The **collector** status is: [Stable][].
+The **collector** status is: [mixed][], since core collector components
+currently have mixed [stability levels][].
 
 **Collector components** differ in their maturity levels. An effort is underway
 to ensure that every component has its stability documented. To track the
 progress of this effort, see [opentelemetry-collector-contrib issue
-#10116][10116]. 
+#10116][10116].
 
 {{% latest_release "collector-releases" /%}}
 
 [10116]: https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/10116
-[Stable]: https://github.com/open-telemetry/opentelemetry-collector#stable
+[mixed]: /docs/reference/specification/document-status/#mixed
+[stability levels]: https://github.com/open-telemetry/opentelemetry-collector#stability-levels
