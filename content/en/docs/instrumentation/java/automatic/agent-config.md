@@ -190,6 +190,7 @@ environment variable `OTEL_INSTRUMENTATION_[NAME]_ENABLED`) where `name`
 | Apache Camel                                     | apache-camel              |
 | Apache Cassandra                                 | cassandra                 |
 | Apache CXF                                       | cxf                       |
+| Apache DBCP                                      | apache-dbcp              |
 | Apache Dubbo                                     | apache-dubbo              |
 | Apache Geode                                     | geode                     |
 | Apache HttpAsyncClient                           | apache-httpasyncclient    |
@@ -207,14 +208,16 @@ environment variable `OTEL_INSTRUMENTATION_[NAME]_ENABLED`) where `name`
 | AWS SDK                                          | aws-sdk                   |
 | Azure SDK                                        | azure-core                |
 | Couchbase                                        | couchbase                 |
+| C3P0                                             | c3p0                      |
 | Dropwizard Views                                 | dropwizard-views          |
+| Dropwizard Metrics                               | dropwizard-metrics        |
 | Eclipse Grizzly                                  | grizzly                   |
 | Eclipse Jersey                                   | jersey                    |
 | Eclipse Jetty                                    | jetty                     |
 | Eclipse Jetty HTTP Client                        | jetty-httpclient          |
 | Eclipse Metro                                    | metro                     |
 | Eclipse Mojarra                                  | mojarra                   |
-| Eclipse Vert.x HttpClient                        | vertx-client              |
+| Eclipse Vert.x HttpClient                        | vertx-http-client         |
 | Eclipse Vert.x Kafka Client                      | vertx-kafka-client        |
 | Eclipse Vert.x RxJava                            | vertx-rx-java             |
 | Eclipse Vert.x Web                               | vertx-web                 |
@@ -239,7 +242,7 @@ environment variable `OTEL_INSTRUMENTATION_[NAME]_ENABLED`) where `name`
 | JAX-RS (Client)                                  | jaxrs-client              |
 | JAX-RS (Server)                                  | jaxrs                     |
 | JAX-WS                                           | jaxws                     |
-| JBoss Logging Appender                           | jboss-logmanager          |
+| JBoss Logging Appender                           | jboss-logmanager-appender |
 | JBoss Logging MDC                                | jboss-logmanager-mdc      |
 | JMS                                              | jms                       |
 | JSP                                              | jsp                       |
@@ -256,8 +259,10 @@ environment variable `OTEL_INSTRUMENTATION_[NAME]_ENABLED`) where `name`
 | Netty                                            | netty                     |
 | OkHttp                                           | okhttp                    |
 | OpenLiberty                                      | liberty                   |
-| OpenTelemetry Trace annotations                  | opentelemetry-annotations |
+| OpenTelemetry Extension Annotations              | opentelemetry-extension-annotations |
+| OpenTelemetry Instrumentation Annotations        | opentelemetry-instrumentation-annotations |
 | OpenTelemetry API                                | opentelemetry-api         |
+| Oracle UCP                                       | oracle-ucp                |
 | OSHI (Operating System and Hardware Information) | oshi                      |
 | Play Framework                                   | play                      |
 | Play WS HTTP Client                              | play-ws                   |
@@ -277,6 +282,7 @@ environment variable `OTEL_INSTRUMENTATION_[NAME]_ENABLED`) where `name`
 | Spring Batch                                     | spring-batch              |
 | Spring Core                                      | spring-core               |
 | Spring Data                                      | spring-data               |
+| Spring JMS                                       | spring-jms                |
 | Spring Integration                               | spring-integration        |
 | Spring Kafka                                     | spring-kafka              |
 | Spring RabbitMQ                                  | spring-rabbit             |
@@ -287,10 +293,12 @@ environment variable `OTEL_INSTRUMENTATION_[NAME]_ENABLED`) where `name`
 | Spring Web MVC                                   | spring-webmvc             |
 | Spring Web Services                              | spring-ws                 |
 | Spymemcached                                     | spymemcached              |
+| Tomcat JDBC                                      | tomcat-jdbc               |
 | Twilio SDK                                       | twilio                    |
 | Twitter Finatra                                  | finatra                   |
 | Undertow                                         | undertow                  |
 | Vaadin                                           | vaadin                    |
+| Vibur DBCP                                       | vibur-dbcp                |
 
 **Note:** When using environment variables, dashes (`-`) should be converted to
 underscores (`_`). For example, to suppress traces from `akka-actor` library,
