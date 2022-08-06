@@ -29,11 +29,20 @@ files.
 
 ### Local setup
 
-1.  Install the latest [LTS release][] of **Node**. We recommend using
-    **[nvm][]** to manage your Node installation (Linux command shown):
+1.  Install the [**active LTS** release][nodejs-rel] of **Node.js**. We
+    recommend using **[nvm][]** to manage your Node installation (Linux command
+    shown):
+
     ```console
     $ nvm install --lts
     ```
+
+    To [install under Windows][nodejs-win], use [nvm-windows][]:
+
+    ```cmd
+    > nvm install lts && nvm use lts
+    ```
+
 2.  [Fork][] and then [clone][] this repo.
 3.  Change to the repo directory.
 4.  Get npm packages and other prerequisites:
@@ -131,7 +140,10 @@ required.
 [gitpod.io/workspaces]: https://gitpod.io/workspaces
 [hugo]: https://gohugo.io
 [localhost:8888]: http://localhost:8888
-[lts release]: https://nodejs.org/en/about/releases/
 [netlify]: https://netlify.com
+[nodejs-rel]: https://nodejs.org/en/about/releases/
+[nodejs-win]:
+  https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
 [nvm]:
   https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
+[nvm-windows]: https://github.com/coreybutler/nvm-windows
