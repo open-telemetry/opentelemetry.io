@@ -57,7 +57,7 @@ We will add some code that will trace the document load timings and output those
 
 ### Creating a Tracer Provider
 
-Add the following code to the `document-load.js` to create a tracer provider, which brings the instrumentaion to trace document load:
+Add the following code to the `document-load.js` to create a tracer provider, which brings the instrumentation to trace document load:
 
 ```javascript
 import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
