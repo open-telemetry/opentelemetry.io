@@ -1,6 +1,9 @@
 ---
 title: OpenTelemetry
 show_banner: true
+developer_note:
+  The blocks/cover shortcode (used below) will use as a background image any
+  image file containing "background" in its name.
 ---
 
 {{< blocks/cover image_anchor="top" height="max" color="primary" >}}

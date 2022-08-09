@@ -1,4 +1,6 @@
 # Netlify redirects. See https://www.netlify.com/docs/redirects/
+{{/* cSpell:ignore wordmark */ -}}
+
 {{ range $p := .Site.Pages -}}
 {{ range .Aliases -}}
 {{ . | printf "%-35s" }} {{ $p.RelPermalink }}
@@ -15,20 +17,9 @@
 {{/*
   Social-media image redirects. As mentioned in
   https://developers.facebook.com/docs/sharing/webmasters/images, we need to
-  preserve og:image (and similarly used social media images) URLs forever.
-
-  It isn't clear that og:image processors work through redirects or whether they
-  do so consistently, but if they do, we might need something like the
-  following:
+  preserve og:image (and other social media image) URLs forever.
+*/ -}}
 
 {{ $og_image_current := `/img/social/logo-wordmark-001.png` -}}
 
-/img/social/old-image.x  {{ $og_image_current -}}
-
-/*
-  2022/08/01 and earlier. Unfortunately, the following URL was used for both the
-  homepage hero/background image, and the social media image:
-  https://opentelemetry.io/featured-background.jpg. This means that we need to
-  preserve this URL forever. If ever the homepage starts using a hero/background
-  image at another path, then redirect the path above to $og_image_current.
-*/ -}}
+/featured-background.jpg  {{ $og_image_current }} {{/* homepage og:image used prior to 2022/08 */}}
