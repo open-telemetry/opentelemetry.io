@@ -19,3 +19,5 @@ components][main-comp] are as follows:
   [Instrumentation](/docs/instrumentation/)
 
 [main-comp]: /docs/concepts/components/
+
+{{% /blocks/section %}}

@@ -2,6 +2,11 @@
 title: Specification status summary
 linkTitle: Status
 weight: 10
+# Undo specification-section-wide page-meta parameter settings:
+github_repo: &repo https://github.com/open-telemetry/opentelemetry.io
+github_subdir:
+path_base_for_github_subdir:
+github_project_repo: *repo
 ---
 
 OpenTelemetry is developed on a signal by signal basis. Tracing, metrics,
