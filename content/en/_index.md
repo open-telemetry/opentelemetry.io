@@ -26,7 +26,7 @@ developer_note:
 - [Go](/docs/instrumentation/go/getting-started/)
 - [.NET](/docs/instrumentation/net/getting-started/)
 - [JavaScript](/docs/instrumentation/js/getting-started/)
-- [<i class="fas fa-ellipsis-h" aria-label="All languages"></i>](/docs/instrumentation/)
+- [<i class="fas fa-ellipsis-h" aria-label="All languages" role="link"></i>](/docs/instrumentation/)
 
 </div>
 {{< /blocks/cover >}}
