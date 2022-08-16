@@ -26,7 +26,7 @@ developer_note:
 - [Go](/docs/instrumentation/go/getting-started/)
 - [.NET](/docs/instrumentation/net/getting-started/)
 - [JavaScript](/docs/instrumentation/js/getting-started/)
-- [<i class="fas fa-ellipsis-h" title="All languages"></i>](/docs/instrumentation/)
+- <a href="/docs/instrumentation/" title="All languages"><i class="fas fa-ellipsis-h"></i></a>
 
 </div>
 {{< /blocks/cover >}}
