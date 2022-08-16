@@ -51,7 +51,8 @@ There are two ways to instrument our app – manually and automatically:
 
 - **Auto instrumentation:** Automatically create spans from the application libraries we use with ready-to-use OpenTelemetry libraries.
 - **Manual instrumentation:** Manually add code to your application to define the beginning and end of each span and the payload.
-  To understand more of the OpenTelemetry jargon, [visit the official documentation](https://opentelemetry.io/docs/concepts/data-sources/).
+
+  To learn more, see [Instrumenting](/docs/concepts/instrumenting/).
 
 ## Hello world: OpenTelemetry Go example
 
