@@ -27,7 +27,7 @@ people to join the OpenTelemetry in Practice team and people to give talks at
 future events - so if you’re interested in shaping these conversations, please
 reach out in the #otel-user-research channel in the CNCF Slack.
 
-Our first conversation will be on August 23rd, at 10 AM PDT, [on Zoom](), and
+Our first conversation will be on August 23rd, at 10 AM PDT, [on Zoom](/), and
 the topic is Kubernetes & The Collector. Our lightning talks include:
 
 ## Observability Pipelines for Kubernetes - Daniel Kim, New Relic
