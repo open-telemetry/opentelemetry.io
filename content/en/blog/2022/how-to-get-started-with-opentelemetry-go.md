@@ -1,8 +1,8 @@
 ---
-title: Instrument your Go web application with openTelemetry
-linkTitle: Get Started with OpenTelemetry & Go
+title: Go Web App & PpenTelemetry Instrumentation
+linkTitle: Go Web App Instrumentation
 date: 2022-06-27
-author: Team Aspecto
+author: Naveh Mevorach (Aspecto)
 canonical_url: https://www.aspecto.io/blog/opentelemetry-go-getting-started/
 ---
 
@@ -10,7 +10,7 @@ canonical_url: https://www.aspecto.io/blog/opentelemetry-go-getting-started/
 
 In this guide, you will learn hands-on how to create and visualize traces with OpenTelemetry Go without prior knowledge.
 
-We will start with creating a simple to-do app that uses Mongo and the Gin framework. Then, we will send tracing data to Jaeger Tracing and to Aspecto for visualization. You can find all the relevant files in this [Github repository](https://github.com/aspecto-io/opentelemetry-examples/tree/master/go).
+We will start with creating a simple to-do app that uses Mongo and the Gin framework. Then, we will send tracing data to Jaeger Tracing for visualization. You can find all the relevant files in this [Github repository](https://github.com/aspecto-io/opentelemetry-examples/tree/master/go).
 
 !["OpenTelemetry Go The Mandalorian"](https://www.aspecto.io/wp-content/uploads/2022/06/OpenTelemetry-Go-The-Mandalorian-2048x1406.png)
 
@@ -22,8 +22,6 @@ We will start with creating a simple to-do app that uses Mongo and the Gin frame
   - Install OpenTelemetry GO
   - Gin instrumentation: gin.Context
 - Visualization with Jaeger
-  - OpenTelemetry Go and Jaeger Tracing
-
 ## Intro to OpenTelemetry
 
 OpenTelemetry is a collection of APIs and SDKs that allows us to collect, export, and generate **traces, logs, and metrics** (also known as the three pillars of observability).
@@ -173,11 +171,11 @@ So make sure that you pass the Context to the mongodb operation. Check out this 
 
 We now have our todo app ready and instrumented. It’s time to utilize OpenTelemetry to its full potential. Our ability to visualize traces is where the true troubleshooting power of this technology comes into play.
 
-For visualization, we’ll be using the open-source Jaeger Tracing and Aspecto.
+For visualization, we’ll be using the open-source Jaeger Tracing.
+
 
 ## Visualization with Jaeger
 
-The setup to export traces to Jaeger or Aspecto is relatively similar. Follow along with the Jaeger setup, then switch to Aspecto by changing a few lines of code.
 
 ### OpenTelemetry Go and Jaeger Tracing: Export traces to Jaeger
 
@@ -416,19 +414,7 @@ By clicking the trace, you can drill down and see more details about it that all
 
 ## Summary
 
-That’s all folks! We hope this guide was informative and easy to follow. You can find all files ready to use in our Github repository.
-
-If you have any questions or issues, feel free to reach out to us via our chat.
-
-To learn more about it, check out our OpenTelemetry Bootcamp. It’s a 6 episode YouTube series that covers OpenTelemetry from zero to 100 including the implementation of opentelemetry in production, security, sampling, and more. Completely free and vendor-neutral.
-
-Follow these guides below, if you want to install OpenTelemetry in more officially supported languages:
-
-[Python](https://www.aspecto.io/blog/getting-started-with-opentelemetry-python/)
-
-[Java](https://www.aspecto.io/blog/getting-started-with-opentelemetry-java/)
-
-[Node](https://www.aspecto.io/blog/getting-started-with-opentelemetry-node/)
+That’s all folks! We hope this guide was informative and easy to follow. You can find all files ready to use in our Github [repository](https://github.com/aspecto-io/opentelemetry-examples/tree/master/go).
 
 _A version of this article was [originally posted][] on the Aspecto blog._
 
