@@ -41,11 +41,11 @@ OpenTelemetry serves as a standard observability framework that captures all dat
 
 For this OpenTelemetry Golang guide, here are the terms you need to know:
 
-- **Span:** The most basic unit. A span represents an event in our system (e.g., an HTTP request or a database operation that spans over time). A span would usually be the parent of another span, its child, or both.
-- **Trace:** [‘Call-stacks’ for distributed services](https://www.aspecto.io/blog/guide-to-distributed-tracing/). Traces represent a tree of spans connected in a child/parent relationship. Traces specify the progression of requests across different services and components in our app (DB, data sources, queues, etc.). For example, sending an API call to user-service resulted in a DB query to users-db.
-- **Exporter:** Once we create a span, the exporter handles sending the data to our backend (e.g., in memory, Jaeger Tracing, or console output)
-- **Context propagation:** The mechanism that allows us to correlate events across distributed services. Context is referred to as the metadata we collect and transfer. Propagation is how the context is packaged and transferred across services, often via HTTP headers. Context propagation is one of the areas where OpenTelemetry shines.
-- **Instrumentation:** instrumentation libraries gather the data and generate spans based on different libraries in our applications (Kafka, Mongo, Gin, etc.).
+- **Span:** Represents a single operation within a Trace.
+- **Trace:** [‘Call-stacks’ for distributed services](https://www.aspecto.io/blog/guide-to-distributed-tracing/). A DAG of Spans, where the edges between Spans are defined as parent/child. relationship.
+- **Exporter:** Provides functionality to emit telemetry to consumers. Used by Instrumentation Libraries and the Collector. Exporters can be push- or pull-based.
+- **Context propagation:** Allows all Data Sources to share an underlying context mechanism for storing state and accessing data across the lifespan of a Transaction. See context propagation spec.
+- **Instrumentation:** Denotes the Library that provides the instrumentation for a given Instrumented Library. Instrumented Library and Instrumentation Library may be the same Library if it has built-in OpenTelemetry instrumentation.
 
 There are two ways to instrument our app – manually and automatically:
 
@@ -74,49 +74,67 @@ go get go.mongodb.org/mongo-driver/mongo
 ```go
 package main
 import (
-"context"
-"net/http"
-"github.com/gin-gonic/gin"
-"go.mongodb.org/mongo-driver/bson"
-"go.mongodb.org/mongo-driver/mongo"
-"go.mongodb.org/mongo-driver/mongo/options"
+    "context"
+    "net/http"
+    "github.com/gin-gonic/gin"
+    "go.mongodb.org/mongo-driver/bson"
+    "go.mongodb.org/mongo-driver/mongo"
+    "go.mongodb.org/mongo-driver/mongo/options"
 )
-var client *mongo.Client
+var client * mongo.Client
 func main() {
-connectMongo()
-setupWebServer()
+    connectMongo()
+    setupWebServer()
 }
 func connectMongo() {
-opts := options.Client()
-opts.ApplyURI("mongodb://localhost:27017")
-client, \_ = mongo.Connect(context.Background(), opts)
-//Seed the database with todo's
-docs := []interface{}{
-bson.D{{"id", "1"}, {"title", "Buy groceries"}},
-bson.D{{"id", "2"}, {"title", "install Aspecto.io"}},
-bson.D{{"id", "3"}, {"title", "Buy dogz.io domain"}},
-}
-client.Database("todo").Collection("todos").InsertMany(context.Background(), docs)
+    opts: = options.Client()
+    opts.ApplyURI("mongodb://localhost:27017")
+    client, _ = mongo.Connect(context.Background(), opts)
+    //Seed the database with todo's
+    docs: = [] interface {} {
+        bson.D {
+                {
+                    "id", "1"
+                }, {
+                    "title", "Buy groceries"
+                }
+            },
+            bson.D {
+                {
+                    "id", "2"
+                }, {
+                    "title", "install Aspecto.io"
+                }
+            },
+            bson.D {
+                {
+                    "id", "3"
+                }, {
+                    "title", "Buy dogz.io domain"
+                }
+            },
+    }
+    client.Database("todo").Collection("todos").InsertMany(context.Background(), docs)
 }
 func setupWebServer() {
-r := gin.Default()
-r.GET("/todo", func(c *gin.Context) {
-collection := client.Database("todo").Collection("todos")
-//Important: Make sure to pass c.Request.Context() as the context and not c itself - TBD
-cur, findErr := collection.Find(c.Request.Context(), bson.D{})
-if findErr != nil {
-c.AbortWithError(500, findErr)
-return
-}
-results := make([]interface{}, 0)
-curErr := cur.All(c, &results)
-if curErr != nil {
-c.AbortWithError(500, curErr)
-return
-}
-c.JSON(http.StatusOK, results)
-})
-\_ = r.Run(":8080")
+    r: = gin.Default()
+    r.GET("/todo", func(c * gin.Context) {
+        collection: = client.Database("todo").Collection("todos")
+        //Important: Make sure to pass c.Request.Context() as the context and not c itself - TBD
+        cur, findErr: = collection.Find(c.Request.Context(), bson.D {})
+        if findErr != nil {
+            c.AbortWithError(500, findErr)
+            return
+        }
+        results: = make([] interface {}, 0)
+        curErr: = cur.All(c, & results)
+        if curErr != nil {
+            c.AbortWithError(500, curErr)
+            return
+        }
+        c.JSON(http.StatusOK, results)
+    })
+    _ = r.Run(":8080")
 }
 ```
 
@@ -128,25 +146,19 @@ We will be configuring OpenTelemetry to instrument our Go app.
 
 1. To install the OTel SDK, run:
 
-```go
+```console
 go get go.opentelemetry.io/otel /
 go.opentelemetry.io/otel/sdk /
 ```
 
 2. Instrument our Gin and Mongo libraries to generate traces.
 
-3. Gin instrumentation: Install otelgin
+3. Gin & Mongo instrumentation: Install otelgin & otelmongo
 
-```go
-go get go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin
-```
-
-4. Mongo instrumentation: Install otelmongo
-
-```go
+```console
+go get go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin /
 go get go.opentelemetry.io/contrib/instrumentation/go.mongodb.org/mongo-driver/mongo/otelmongo
 ```
-
 ### Gin instrumentation: gin.Context
 
 We previously discussed the idea of context propagation – the way to transfer metadata between distributed services to correlate events in our system.
@@ -156,8 +168,8 @@ The Gin framework has its own type gin.Context which gets passed as a parameter 
 ```go
 //Make sure to pass c.Request.Context() as the context and not c itself
 cur, findErr := collection.Find(c.Request.Context(), bson.D{})
-So make sure that you pass the Context to the mongodb operation. Check out this issue for more info.
 ```
+So make sure that you pass the Context to the mongodb operation. Check out this issue for more info.
 
 We now have our todo app ready and instrumented. It’s time to utilize OpenTelemetry to its full potential. Our ability to visualize traces is where the true troubleshooting power of this technology comes into play.
 
@@ -175,7 +187,7 @@ Here’s what the setup looks like:
 
 1. Install the Jaeger exporter
 
-```go
+```console
 go get go.opentelemetry.io/otel/exporters/jaeger
 ```
 
@@ -186,25 +198,25 @@ go get go.opentelemetry.io/otel/exporters/jaeger
 ```go
 package tracing
 import (
-"go.opentelemetry.io/otel/exporters/jaeger"
-"go.opentelemetry.io/otel/sdk/resource"
-sdktrace "go.opentelemetry.io/otel/sdk/trace"
-semconv "go.opentelemetry.io/otel/semconv/v1.4.0"
+    "go.opentelemetry.io/otel/exporters/jaeger"
+    "go.opentelemetry.io/otel/sdk/resource"
+    sdktrace "go.opentelemetry.io/otel/sdk/trace"
+    semconv "go.opentelemetry.io/otel/semconv/v1.4.0"
 )
-func JaegerTraceProvider() (\*sdktrace.TracerProvider, error) {
-exp, err := jaeger.New(jaeger.WithCollectorEndpoint(jaeger.WithEndpoint("http://localhost:14268/api/traces")))
-if err != nil {
-return nil, err
-}
-tp := sdktrace.NewTracerProvider(
-sdktrace.WithBatcher(exp),
-sdktrace.WithResource(resource.NewWithAttributes(
-semconv.SchemaURL,
-semconv.ServiceNameKey.String("todo-service"),
-semconv.DeploymentEnvironmentKey.String("production"),
-)),
-)
-return tp, nil
+func JaegerTraceProvider()(*sdktrace.TracerProvider, error) {
+    exp, err: = jaeger.New(jaeger.WithCollectorEndpoint(jaeger.WithEndpoint("http://localhost:14268/api/traces")))
+    if err != nil {
+        return nil, err
+    }
+    tp: = sdktrace.NewTracerProvider(
+        sdktrace.WithBatcher(exp),
+        sdktrace.WithResource(resource.NewWithAttributes(
+            semconv.SchemaURL,
+            semconv.ServiceNameKey.String("todo-service"),
+            semconv.DeploymentEnvironmentKey.String("production"),
+        )),
+    )
+    return tp, nil
 }
 ```
 
@@ -212,14 +224,14 @@ return tp, nil
 
 ```go
 func main() {
-tp, tpErr := tracing.JaegerTraceProvider()
-if tpErr != nil {
-log.Fatal(tpErr)
-}
-otel.SetTracerProvider(tp)
-otel.SetTextMapPropagator(propagation.NewCompositeTextMapPropagator(propagation.TraceContext{}, propagation.Baggage{}))
-connectMongo()
-setupWebServer()
+    tp, tpErr: = tracing.JaegerTraceProvider()
+    if tpErr != nil {
+        log.Fatal(tpErr)
+    }
+    otel.SetTracerProvider(tp)
+    otel.SetTextMapPropagator(propagation.NewCompositeTextMapPropagator(propagation.TraceContext {}, propagation.Baggage {}))
+    connectMongo()
+    setupWebServer()
 }
 ```
 
@@ -235,18 +247,36 @@ The function shold look like this
 
 ```go
 func connectMongo() {
-opts := options.Client()
-//Mongo OpenTelemetry instrumentation
-opts.Monitor = otelmongo.NewMonitor()
-opts.ApplyURI("mongodb://localhost:27017")
-client, \_ = mongo.Connect(context.Background(), opts)
-//Seed the database with some todo's
-docs := []interface{}{
-bson.D{{"id", "1"}, {"title", "Buy groceries"}},
-bson.D{{"id", "2"}, {"title", "install Aspecto.io"}},
-bson.D{{"id", "3"}, {"title", "Buy dogz.io domain"}},
-}
-client.Database("todo").Collection("todos").InsertMany(context.Background(), docs)
+    opts: = options.Client()
+    //Mongo OpenTelemetry instrumentation
+    opts.Monitor = otelmongo.NewMonitor()
+    opts.ApplyURI("mongodb://localhost:27017")
+    client, _ = mongo.Connect(context.Background(), opts)
+    //Seed the database with some todo's
+    docs: = [] interface {} {
+        bson.D {
+                {
+                    "id", "1"
+                }, {
+                    "title", "Buy groceries"
+                }
+            },
+            bson.D {
+                {
+                    "id", "2"
+                }, {
+                    "title", "install Aspecto.io"
+                }
+            },
+            bson.D {
+                {
+                    "id", "3"
+                }, {
+                    "title", "Buy dogz.io domain"
+                }
+            },
+    }
+    client.Database("todo").Collection("todos").InsertMany(context.Background(), docs)
 }
 ```
 
@@ -262,26 +292,26 @@ The function should look like this
 
 ```go
 func startWebServer() {
-r := gin.Default()
-//Gin OpenTelemetry instrumentation
-r.Use(otelgin.Middleware("todo-service"))
-r.GET("/todo", func(c \*gin.Context) {
-collection := client.Database("todo").Collection("todos")
-//make sure to pass c.Request.Context() as the context and not c itself
-cur, findErr := collection.Find(c.Request.Context(), bson.D{})
-if findErr != nil {
-c.AbortWithError(500, findErr)
-return
-}
-results := make([]interface{}, 0)
-curErr := cur.All(c, &results)
-if curErr != nil {
-c.AbortWithError(500, curErr)
-return
-}
-c.JSON(http.StatusOK, results)
-})
-\_ = r.Run(":8080")
+    r: = gin.Default()
+    //Gin OpenTelemetry instrumentation
+    r.Use(otelgin.Middleware("todo-service"))
+    r.GET("/todo", func(c * gin.Context) {
+        collection: = client.Database("todo").Collection("todos")
+        //make sure to pass c.Request.Context() as the context and not c itself
+        cur, findErr: = collection.Find(c.Request.Context(), bson.D {})
+        if findErr != nil {
+            c.AbortWithError(500, findErr)
+            return
+        }
+        results: = make([] interface {}, 0)
+        curErr: = cur.All(c, & results)
+        if curErr != nil {
+            c.AbortWithError(500, curErr)
+            return
+        }
+        c.JSON(http.StatusOK, results)
+    })
+    _ = r.Run(":8080")
 }
 ```
 
@@ -290,65 +320,84 @@ Below is the complete main.go file. Now we’re finally ready to export to Jaege
 ```go
 package main
 import (
-"context"
-"log"
-"net/http"
-"github.com/aspecto-io/opentelemerty-examples/tracing"
-"github.com/gin-gonic/gin"
-"go.mongodb.org/mongo-driver/bson"
-"go.mongodb.org/mongo-driver/mongo"
-"go.mongodb.org/mongo-driver/mongo/options"
-"go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin"
-"go.opentelemetry.io/contrib/instrumentation/go.mongodb.org/mongo-driver/mongo/otelmongo"
-"go.opentelemetry.io/otel"
-"go.opentelemetry.io/otel/propagation"
+    "context"
+    "log"
+    "net/http"
+    "github.com/aspecto-io/opentelemerty-examples/tracing"
+    "github.com/gin-gonic/gin"
+    "go.mongodb.org/mongo-driver/bson"
+    "go.mongodb.org/mongo-driver/mongo"
+    "go.mongodb.org/mongo-driver/mongo/options"
+    "go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin"
+    "go.opentelemetry.io/contrib/instrumentation/go.mongodb.org/mongo-driver/mongo/otelmongo"
+    "go.opentelemetry.io/otel"
+    "go.opentelemetry.io/otel/propagation"
 )
-var client *mongo.Client
-func main() { //Export traces to Jaeger
-tp, tpErr := tracing.JaegerTraceProvider()
-if tpErr != nil {
-log.Fatal(tpErr)
-}
-otel.SetTracerProvider(tp)
-otel.SetTextMapPropagator(propagation.NewCompositeTextMapPropagator(propagation.TraceContext{}, propagation.Baggage{}))
-connectMongo()
-startWebServer()
+var client * mongo.Client
+func main() { 
+    //Export traces to Jaeger
+    tp, tpErr: = tracing.JaegerTraceProvider()
+    if tpErr != nil {
+        log.Fatal(tpErr)
+    }
+    otel.SetTracerProvider(tp)
+    otel.SetTextMapPropagator(propagation.NewCompositeTextMapPropagator(propagation.TraceContext {}, propagation.Baggage {}))
+    connectMongo()
+    startWebServer()
 }
 func connectMongo() {
-opts := options.Client()
-//Mongo OpenTelemetry instrumentation
-opts.Monitor = otelmongo.NewMonitor()
-opts.ApplyURI("mongodb://localhost:27017")
-client, \_ = mongo.Connect(context.Background(), opts)
-//Seed the database with some todo's
-docs := []interface{}{
-bson.D{{"id", "1"}, {"title", "Buy groceries"}},
-bson.D{{"id", "2"}, {"title", "install Aspecto.io"}},
-bson.D{{"id", "3"}, {"title", "Buy dogz.io domain"}},
-}
-client.Database("todo").Collection("todos").InsertMany(context.Background(), docs)
+    opts: = options.Client()
+    //Mongo OpenTelemetry instrumentation
+    opts.Monitor = otelmongo.NewMonitor()
+    opts.ApplyURI("mongodb://localhost:27017")
+    client, _ = mongo.Connect(context.Background(), opts)
+    //Seed the database with some todo's
+    docs: = [] interface {} {
+        bson.D {
+                {
+                    "id", "1"
+                }, {
+                    "title", "Buy groceries"
+                }
+            },
+            bson.D {
+                {
+                    "id", "2"
+                }, {
+                    "title", "install Aspecto.io"
+                }
+            },
+            bson.D {
+                {
+                    "id", "3"
+                }, {
+                    "title", "Buy dogz.io domain"
+                }
+            },
+    }
+    client.Database("todo").Collection("todos").InsertMany(context.Background(), docs)
 }
 func startWebServer() {
-r := gin.Default()
-//gin OpenTelemetry instrumentation
-r.Use(otelgin.Middleware("todo-service"))
-r.GET("/todo", func(c *gin.Context) {
-collection := client.Database("todo").Collection("todos")
-//Make sure to pass c.Request.Context() as the context and not c itself
-cur, findErr := collection.Find(c.Request.Context(), bson.D{})
-if findErr != nil {
-c.AbortWithError(500, findErr)
-return
-}
-results := make([]interface{}, 0)
-curErr := cur.All(c, &results)
-if curErr != nil {
-c.AbortWithError(500, curErr)
-return
-}
-c.JSON(http.StatusOK, results)
-})
-\_ = r.Run(":8080")
+    r: = gin.Default()
+    //gin OpenTelemetry instrumentation
+    r.Use(otelgin.Middleware("todo-service"))
+    r.GET("/todo", func(c * gin.Context) {
+        collection: = client.Database("todo").Collection("todos")
+        //Make sure to pass c.Request.Context() as the context and not c itself
+        cur, findErr: = collection.Find(c.Request.Context(), bson.D {})
+        if findErr != nil {
+            c.AbortWithError(500, findErr)
+            return
+        }
+        results: = make([] interface {}, 0)
+        curErr: = cur.All(c, & results)
+        if curErr != nil {
+            c.AbortWithError(500, curErr)
+            return
+        }
+        c.JSON(http.StatusOK, results)
+    })
+    _ = r.Run(":8080")
 }
 ```
 
