@@ -1,8 +1,8 @@
 ---
-title: OpenTelemetry in Practice: Kubernetes & the Collector
+title: 'OpenTelemetry in Practice: Kubernetes & the Collector'
 linkTitle: OTel in Practice
 date: 2022-08-17
-author: [Rynn Mancuso](http://www.github.com/musingvirtual)
+author: '[Rynn Mancuso](http://www.github.com/musingvirtual)'
 ---
 
 ## About the Series
