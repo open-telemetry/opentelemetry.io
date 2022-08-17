@@ -32,7 +32,7 @@ and the topic is Kubernetes & The Collector.
 
 ## Talks
 
-Our lightning talks include the following:
+Our lightning talks include the following.
 
 ## Collector Configuration and Troubleshooting in Kubernetes
 
