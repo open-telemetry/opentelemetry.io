@@ -21,8 +21,8 @@ We’re aiming to:
 Each OpenTelemetry in Practice session will include a half hour of lightning
 talks and a half hour of open conversation about the topic. We are looking for
 people to join the OpenTelemetry in Practice team and people to give talks at
-future events. So if you’re interested in shaping these conversations, please
-reach out in the
+future events. So if you’re interested in shaping these conversations, reach out
+in the
 [#otel-user-research channel](https://cloud-native.slack.com/archives/C01RT3MSWGZ)
 of the [CNCF Slack](https://slack.cncf.io/).
 
