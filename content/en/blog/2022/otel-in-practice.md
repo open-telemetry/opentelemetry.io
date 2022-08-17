@@ -13,10 +13,10 @@ some OpenTelemetry contributors in the End User Working Group.
 
 We’re aiming to:
 
-- address practical problems that commonly stop development teams from
+- Address practical problems that commonly stop development teams from
   succeeding with OpenTelemetry
-- build stronger connections with developers focused on specific languages
-- improve the experience of implementing OpenTelemetry in production
+- Build stronger connections with developers focused on specific languages
+- Improve the experience of implementing OpenTelemetry in production
 
 Each OpenTelemetry in Practice session will include a half hour of lightning
 talks and a half hour of open conversation about the topic. We are looking for
