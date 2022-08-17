@@ -1,8 +1,8 @@
 ---
-title: 'OpenTelemetry in Practice: Kubernetes & the Collector'
+title: "OpenTelemetry in Practice: Kubernetes & the Collector"
 linkTitle: OTel in Practice
 date: 2022-08-17
-author: '[Rynn Mancuso](http://www.github.com/musingvirtual)'
+author: "[Rynn Mancuso](http://www.github.com/musingvirtual)"
 ---
 
 ## About the Series
@@ -25,8 +25,9 @@ reach out in the
 [#otel-user-research channel](https://cloud-native.slack.com/archives/C01RT3MSWGZ)
 of the [CNCF Slack](https://slack.cncf.io/).
 
-Our first conversation will be on August 23rd, at 10 AM PDT, [on Zoom](https://zoom.us/j/5227112777?pwd=TXBqZ3RMWVYxenVGdlk0SFlwMkwwQT09), and
-the topic is Kubernetes & The Collector.
+Our first conversation will be on August 23rd, at 10 AM PDT,
+[on Zoom](https://zoom.us/j/5227112777?pwd=TXBqZ3RMWVYxenVGdlk0SFlwMkwwQT09),
+and the topic is Kubernetes & The Collector.
 
 ## Talks
 
