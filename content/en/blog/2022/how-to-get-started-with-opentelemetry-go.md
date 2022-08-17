@@ -1,5 +1,5 @@
 ---
-title: How to Get Started with OpenTelemetry Go
+title: Instrument your Go web application with openTelemetry
 linkTitle: Get Started with OpenTelemetry & Go
 date: 2022-06-27
 author: Team Aspecto
