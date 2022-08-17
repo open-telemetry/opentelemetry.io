@@ -3,7 +3,6 @@ disableKinds: [taxonomy, taxonomyTerm]
 theme: [docsy]
 disableAliases: true # We do redirects via Netlify's _redirects file
 enableGitInfo: true
-googleAnalytics: G-QZHM7YEG07
 
 # Language settings
 enableMissingTranslationPlaceholders: true
@@ -152,6 +151,13 @@ params:
     - name: Noto Sans
       sizes: [300,400,600,700]
       type: sans_serif
+
+services:
+  googleAnalytics:
+    # The following is a placeholder (fake) ID useful for local test builds. The
+    # real ID is set in the Netlify config. For details, see
+    # https://github.com/open-telemetry/opentelemetry.io/issues/1626.
+    id: UA-00000000-0 # TODO: switch to G-0000000000 once we get confirmation that it's ok to do so
 
 module:
   mounts:
