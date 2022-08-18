@@ -25,9 +25,11 @@ observability powered by OpenTelemetry.
   meeting. Topics are rigorously time-boxed by a facilitator.
 - [Chatham House Rule](https://www.chathamhouse.org/about-us/chatham-house-rule)
   applies. Meetings will not be recorded.
-- The first meeting is on the [OpenTelemetry calendar](https://github.com/open-telemetry/community#calendar), scheduled for July 14th
-  2022 at 9AM PST. We intend to alternate months between APAC friendly and AMER
-  friendly timezones, we will re-evaluate this plan depending on attendance and
+- The first AMER friendly meeting is on the [OpenTelemetry calendar](https://github.com/open-telemetry/community#calendar), scheduled for July 14th
+  2022 at 9AM PST. This meeting series is scheduled to repeat every 8 weeks.
+- The first EMEA friendly meeting is on the [OpenTelemetry calendar](https://github.com/open-telemetry/community#calendar), scheduled for August 16th 2022 at 11AM CET. This meeting series is scheduled to repeat every 8 weeks.
+- We intend to alternate months between APAC- and AMER-friendly
+  timezones. We will re-evaluate this plan based on attendance and
   feedback.
 
 ### Slack Channel (#otel-endusers)
