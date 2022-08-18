@@ -361,7 +361,7 @@ you run into any problems, [raise an issue].
   https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/otel-webserver-module#configuration-1
 [opentelemetry-webserver-sdk-x64-linux]:
   https://github.com/open-telemetry/opentelemetry-cpp-contrib/releases/download/webserver%2Fv1.0.0/opentelemetry-webserver-sdk-x64-linux.tgz.zip
-[previous blog post]: ./instrument-apache-httpd-server.md
+[previous blog post]: /blog/2022/instrument-apache-httpd-server/
 [raise an issue]:
   https://github.com/open-telemetry/opentelemetry-cpp-contrib/issues
 [http://localhost:16686]: http://localhost:16686
