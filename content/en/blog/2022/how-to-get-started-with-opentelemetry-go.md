@@ -1,14 +1,13 @@
 ---
-title: Go Web App & PpenTelemetry Instrumentation
-linkTitle: Go Web App Instrumentation
+title: Go Web App Instrumentation
+linkTitle: Go App Instrumentation
 date: 2022-06-27
 author: Naveh Mevorach (Aspecto)
 canonical_url: https://www.aspecto.io/blog/opentelemetry-go-getting-started/
 ---
 
-# How to Get Started with OpenTelemetry Go
 
-In this guide, you will learn hands-on how to create and visualize traces with OpenTelemetry Go without prior knowledge.
+In this blog post, you will learn hands-on how to create and visualize traces with OpenTelemetry Go without prior knowledge.
 
 We will start with creating a simple to-do app that uses Mongo and the Gin framework. Then, we will send tracing data to Jaeger Tracing for visualization. You can find all the relevant files in this [Github repository](https://github.com/aspecto-io/opentelemetry-examples/tree/master/go).
 
@@ -60,7 +59,7 @@ We will start by creating our to-do service and installing two libraries (Gin an
 
 1. Install Gin and Mongo-driver
 
-```go
+```shell
 go get -u github.com/gin-gonic/gin
 go get go.mongodb.org/mongo-driver/mongo
 ```
@@ -144,7 +143,7 @@ We will be configuring OpenTelemetry to instrument our Go app.
 
 1. To install the OTel SDK, run:
 
-```console
+```shell
 go get go.opentelemetry.io/otel /
 go.opentelemetry.io/otel/sdk /
 ```
@@ -153,7 +152,7 @@ go.opentelemetry.io/otel/sdk /
 
 3. Gin & Mongo instrumentation: Install otelgin & otelmongo
 
-```console
+```shell
 go get go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin /
 go get go.opentelemetry.io/contrib/instrumentation/go.mongodb.org/mongo-driver/mongo/otelmongo
 ```
@@ -185,7 +184,7 @@ Here’s what the setup looks like:
 
 1. Install the Jaeger exporter
 
-```console
+```shell
 go get go.opentelemetry.io/otel/exporters/jaeger
 ```
 
