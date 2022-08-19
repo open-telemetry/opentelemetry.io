@@ -56,9 +56,8 @@
 
   <section class="row ml-2 pt-0">
     <div class="mx-auto">
-      <ul class="list-unstyled">
-      <div id="search-results"></div>
-      <div id="default-body">
+      <ul class="list-unstyled" id="search-results"></ul>
+      <ul class="list-unstyled" id="default-body">
       {{ range $registryItems -}}
         <li class="media" data-registrytype="{{ .Params.registryType }}" data-registrylanguage="{{ .Params.language }}">
           <div class="media-body">
@@ -69,7 +68,6 @@
           </div>
         </li>
       {{ end -}}
-      </div>
       </ul>
     </div>
   </section>
