@@ -180,7 +180,7 @@ $ curl localhost:8080
 In your browser open [localhost:16686][] and search
 for traces from `DemoService` and drill into one of them.
 
-![A screenshot of the Jaeger trace view, showing a waterfall of spans representing the time consumed by different nginx modules.](/img/instrument-nginx/nginx-spans-in-jaeger.png)
+![A screenshot of the Jaeger trace view, showing a waterfall of spans representing the time consumed by different nginx modules.](nginx-spans-in-jaeger.png)
 
 You will see one span for each nginx module being executed during the request.
 With that you can easily spot issues with certain modules, for example, a
@@ -350,7 +350,7 @@ from frontend to nginx to backend.
 The frontend trace should indicate an error, since nginx is forwarding the
 `Page Not Found` from Tomcat.
 
-![A screenshot of the jaeger trace view, showing a waterfall of spans going from the frontend to nginx down to the backend.](/img/instrument-nginx/nginx-spans-in-jaeger.png)
+![A screenshot of the jaeger trace view, showing a waterfall of spans going from the frontend to nginx down to the backend.](nginx-spans-in-jaeger.png)
 
 ## What's next?
 
