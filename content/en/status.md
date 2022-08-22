@@ -23,17 +23,17 @@ components][main-comp] are as follows:
 The development status, or maturity level, of the [per-language SDKs](/docs/instrumentation/) is as follows:
 <div class="l-primary-buttons mt-5">
 
-- [C++](/docs/instrumentation/cpp/) 
-- [.NET](/docs/instrumentation/net/) 
-- [Erlang/Elixir](/docs/instrumentation/erlang/) 
-- [Go](/docs/instrumentation/go/) 
-- [Java](/docs/instrumentation/java/) 
-- [JavaScript](/docs/instrumentation/js/) 
-- [PHP](/docs/instrumentation/php/) 
-- [Python](/docs/instrumentation/python/) 
-- [Ruby](/docs/instrumentation/ruby/) 
-- [Rust](/docs/instrumentation/rust/) 
-- [Swift](/docs/instrumentation/swift/) 
+- [C++](/docs/instrumentation/cpp/#status-and-releases) 
+- [.NET](/docs/instrumentation/net/#status-and-releases) 
+- [Erlang/Elixir](/docs/instrumentation/erlang/#status-and-releases) 
+- [Go](/docs/instrumentation/go/#status-and-releases) 
+- [Java](/docs/instrumentation/java/#status-and-releases) 
+- [JavaScript](/docs/instrumentation/js/#status-and-releases) 
+- [PHP](/docs/instrumentation/php/#status-and-releases) 
+- [Python](/docs/instrumentation/python/#status-and-releases) 
+- [Ruby](/docs/instrumentation/ruby/#status-and-releases) 
+- [Rust](/docs/instrumentation/rust/#status-and-releases) 
+- [Swift](/docs/instrumentation/swift/#status-and-releases) 
 
 </div>
 
