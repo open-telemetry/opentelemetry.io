@@ -7,6 +7,7 @@ canonical_url: https://www.aspecto.io/blog/opentelemetry-go-getting-started/
 spelling: >-
   cSpell:ignore Naveh Mevorach Mandalorian bson gonic otelgin otelmongo
   cSpell:ignore sdktrace semconv todos dogz aspecto
+draft: true # TODO: remove once this has final approval for publication
 ---
 
 In this blog post, you will learn hands-on how to create and visualize traces
