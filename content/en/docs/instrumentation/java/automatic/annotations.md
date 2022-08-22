@@ -12,7 +12,7 @@ custom code without doing too much code change.
 
 ## Dependencies
 
-You'll need to add a dependency on the `opentelemetry-extension-annotations`
+You'll need to add a dependency on the `opentelemetry-instrumentation-annotations`
 library to use the `@WithSpan` annotation.
 
 ### Maven
@@ -20,9 +20,9 @@ library to use the `@WithSpan` annotation.
 ```xml
 <dependencies>
   <dependency>
-    <groupId>io.opentelemetry</groupId>
-    <artifactId>opentelemetry-extension-annotations</artifactId>
-    <version>1.16.0</version>
+    <groupId>io.opentelemetry.instrumentation</groupId>
+    <artifactId>opentelemetry-instrumentation-annotations</artifactId>
+    <version>1.17.0</version>
   </dependency>
 </dependencies>
 ```
@@ -31,7 +31,7 @@ library to use the `@WithSpan` annotation.
 
 ```groovy
 dependencies {
-    implementation('io.opentelemetry:opentelemetry-extension-annotations:1.16.0')
+    implementation('io.opentelemetry.instrumentation:opentelemetry-instrumentation-annotations:1.17.0')
 }
 ```
 
@@ -41,7 +41,7 @@ To create a [span](/docs/concepts/signals/traces/#spans-in-opentelemetry)
 corresponding to one of your method, annotate the method with `@WithSpan`.
 
 ```java
-import io.opentelemetry.extension.annotations.WithSpan;
+import io.opentelemetry.instrumentation.annotations.WithSpan;
 
 public class MyClass {
   @WithSpan
@@ -82,8 +82,8 @@ be automatically added as
 annotating the method parameters with the `@SpanAttribute` annotation.
 
 ```java
-import io.opentelemetry.extension.annotations.SpanAttribute;
-import io.opentelemetry.extension.annotations.WithSpan;
+import io.opentelemetry.instrumentation.annotations.SpanAttribute;
+import io.opentelemetry.instrumentation.annotations.WithSpan;
 
 public class MyClass {
 
