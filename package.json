@@ -1,5 +1,5 @@
 {
-  "spelling": "cSpell:ignore docsy hugo prebuild HTMLTEST precheck preinstall postbuild -",
+  "spelling": "cSpell:ignore docsy HTMLTEST hugo netlify prebuild precheck preinstall postbuild -",
   "Notes": [
     "The 'all' and 's' scripts are conveniences for use until the following",
     "is fixed: https://github.com/mysticatea/npm-run-all/issues/209.",
@@ -55,7 +55,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.7",
     "hugo-extended": "0.101.0",
-    "netlify-cli": "^10.7.1",
+    "netlify-cli": "^11.4.0",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.14",
     "postcss-cli": "^10.0.0",
