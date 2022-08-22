@@ -289,7 +289,7 @@ export OTEL_EXPORTER_OTLP_METRICS_DEFAULT_HISTOGRAM_AGGREGATION=exponential_buck
 ```
 
 For instructions on enabling in other languages, check the relevant
-documentation on [opentelemetry.io](../../docs/instrumentation)
+documentation on [opentelemetry.io](/docs/instrumentation)
 or [github.com/open-telemetry](https://github.com/open-telemetry).
 
 _A version of this article was [originally posted][] on the New Relic blog._
