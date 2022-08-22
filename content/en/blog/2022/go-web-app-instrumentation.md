@@ -1,8 +1,8 @@
 ---
-title: Go Web App Instrumentation
+title: Go Web-app Instrumentation
 linkTitle: Go App Instrumentation
-date: 2022-06-27
-author: Naveh Mevorach (Aspecto)
+date: 2022-08-22
+author: "[Naveh Mevorach](https://github.com/NavehMevorach) (Aspecto)"
 canonical_url: https://www.aspecto.io/blog/opentelemetry-go-getting-started/
 ---
 
@@ -14,7 +14,7 @@ framework. Then, we will send tracing data to Jaeger Tracing for visualization.
 You can find all the relevant files in this
 [Github repository](https://github.com/aspecto-io/opentelemetry-examples/tree/master/go).
 
-!["OpenTelemetry Go The Mandalorian"](https://www.aspecto.io/wp-content/uploads/2022/06/OpenTelemetry-Go-The-Mandalorian-2048x1406.png)
+![OpenTelemetry Go - The Mandalorian](https://www.aspecto.io/wp-content/uploads/2022/06/OpenTelemetry-Go-The-Mandalorian-2048x1406.png)
 
 ## Hello world: OpenTelemetry Go example
 
@@ -214,7 +214,7 @@ Here’s what the setup looks like:
    }
    ```
 
-Next, we are going to hook up the instrumentations we installed.
+   Next, we are going to hook up the instrumentations we installed.
 
 5. Add the Mongo instrumentation. In our connectMongo function by adding this
    line
@@ -223,44 +223,44 @@ Next, we are going to hook up the instrumentations we installed.
    opts.Monitor = otelmongo.NewMonitor()
    ```
 
-The function shold look like this
+   The function shold look like this
 
-    ```go
-    func connectMongo() {
-        opts: = options.Client()
-        //Mongo OpenTelemetry instrumentation
-        opts.Monitor = otelmongo.NewMonitor()
-        opts.ApplyURI("mongodb://localhost:27017")
-        client, _ = mongo.Connect(context.Background(), opts)
-        //Seed the database with some todo's
-        docs: = [] interface {} {
-            bson.D {
-                    {
-                        "id", "1"
-                    }, {
-                        "title", "Buy groceries"
-                    }
-                },
-                bson.D {
-                    {
-                        "id", "2"
-                    }, {
-                        "title", "install Aspecto.io"
-                    }
-                },
-                bson.D {
-                    {
-                        "id", "3"
-                    }, {
-                        "title", "Buy dogz.io domain"
-                    }
-                },
-        }
-        client.Database("todo").Collection("todos").InsertMany(context.Background(), docs)
-    }
-    ```
+   ```go
+   func connectMongo() {
+       opts: = options.Client()
+       //Mongo OpenTelemetry instrumentation
+       opts.Monitor = otelmongo.NewMonitor()
+       opts.ApplyURI("mongodb://localhost:27017")
+       client, _ = mongo.Connect(context.Background(), opts)
+       //Seed the database with some todo's
+       docs: = [] interface {} {
+           bson.D {
+                   {
+                       "id", "1"
+                   }, {
+                       "title", "Buy groceries"
+                   }
+               },
+               bson.D {
+                   {
+                       "id", "2"
+                   }, {
+                       "title", "install Aspecto.io"
+                   }
+               },
+               bson.D {
+                   {
+                       "id", "3"
+                   }, {
+                       "title", "Buy dogz.io domain"
+                   }
+               },
+       }
+       client.Database("todo").Collection("todos").InsertMany(context.Background(), docs)
+   }
+   ```
 
-Now, add the Gin instrumentation.
+   Now, add the Gin instrumentation.
 
 6. Go to the startWebServer function and add this line right after we create the
    gin instance
@@ -269,122 +269,123 @@ Now, add the Gin instrumentation.
    r.Use(otelgin.Middleware("todo-service"))
    ```
 
-The function should look like this
+   The function should look like this
 
-    ```go
-    func startWebServer() {
-        r: = gin.Default()
-        //Gin OpenTelemetry instrumentation
-        r.Use(otelgin.Middleware("todo-service"))
-        r.GET("/todo", func(c * gin.Context) {
-            collection: = client.Database("todo").Collection("todos")
-            //make sure to pass c.Request.Context() as the context and not c itself
-            cur, findErr: = collection.Find(c.Request.Context(), bson.D {})
-            if findErr != nil {
-                c.AbortWithError(500, findErr)
-                return
-            }
-            results: = make([] interface {}, 0)
-            curErr: = cur.All(c, & results)
-            if curErr != nil {
-                c.AbortWithError(500, curErr)
-                return
-            }
-            c.JSON(http.StatusOK, results)
-        })
-        _ = r.Run(":8080")
-    }
-    ```
+   ```go
+   func startWebServer() {
+       r: = gin.Default()
+       //Gin OpenTelemetry instrumentation
+       r.Use(otelgin.Middleware("todo-service"))
+       r.GET("/todo", func(c * gin.Context) {
+           collection: = client.Database("todo").Collection("todos")
+           //make sure to pass c.Request.Context() as the context and not c itself
+           cur, findErr: = collection.Find(c.Request.Context(), bson.D {})
+           if findErr != nil {
+               c.AbortWithError(500, findErr)
+               return
+           }
+           results: = make([] interface {}, 0)
+           curErr: = cur.All(c, & results)
+           if curErr != nil {
+               c.AbortWithError(500, curErr)
+               return
+           }
+           c.JSON(http.StatusOK, results)
+       })
+       _ = r.Run(":8080")
+   }
+   ```
 
-Below is the complete main.go file. Now we’re finally ready to export to Jaeger.
+   For the complete `main.go` file, see below. Now we’re finally ready to export
+   to Jaeger.
 
-    ```go
-    package main
-    import (
-        "context"
-        "log"
-        "net/http"
-        "github.com/aspecto-io/opentelemerty-examples/tracing"
-        "github.com/gin-gonic/gin"
-        "go.mongodb.org/mongo-driver/bson"
-        "go.mongodb.org/mongo-driver/mongo"
-        "go.mongodb.org/mongo-driver/mongo/options"
-        "go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin"
-        "go.opentelemetry.io/contrib/instrumentation/go.mongodb.org/mongo-driver/mongo/otelmongo"
-        "go.opentelemetry.io/otel"
-        "go.opentelemetry.io/otel/propagation"
-    )
+   ```go
+   package main
+   import (
+       "context"
+       "log"
+       "net/http"
+       "github.com/aspecto-io/opentelemerty-examples/tracing"
+       "github.com/gin-gonic/gin"
+       "go.mongodb.org/mongo-driver/bson"
+       "go.mongodb.org/mongo-driver/mongo"
+       "go.mongodb.org/mongo-driver/mongo/options"
+       "go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin"
+       "go.opentelemetry.io/contrib/instrumentation/go.mongodb.org/mongo-driver/mongo/otelmongo"
+       "go.opentelemetry.io/otel"
+       "go.opentelemetry.io/otel/propagation"
+   )
 
-    var client * mongo.Client
+   var client * mongo.Client
 
-    func main() {
-        //Export traces to Jaeger
-        tp, tpErr: = tracing.JaegerTraceProvider()
-        if tpErr != nil {
-            log.Fatal(tpErr)
-        }
-        otel.SetTracerProvider(tp)
-        otel.SetTextMapPropagator(propagation.NewCompositeTextMapPropagator(propagation.TraceContext {}, propagation.Baggage {}))
-        connectMongo()
-        startWebServer()
-    }
+   func main() {
+       //Export traces to Jaeger
+       tp, tpErr: = tracing.JaegerTraceProvider()
+       if tpErr != nil {
+           log.Fatal(tpErr)
+       }
+       otel.SetTracerProvider(tp)
+       otel.SetTextMapPropagator(propagation.NewCompositeTextMapPropagator(propagation.TraceContext {}, propagation.Baggage {}))
+       connectMongo()
+       startWebServer()
+   }
 
-    func connectMongo() {
-        opts: = options.Client()
-        //Mongo OpenTelemetry instrumentation
-        opts.Monitor = otelmongo.NewMonitor()
-        opts.ApplyURI("mongodb://localhost:27017")
-        client, _ = mongo.Connect(context.Background(), opts)
-        //Seed the database with some todo's
-        docs: = [] interface {} {
-            bson.D {
-                    {
-                        "id", "1"
-                    }, {
-                        "title", "Buy groceries"
-                    }
-                },
-                bson.D {
-                    {
-                        "id", "2"
-                    }, {
-                        "title", "install Aspecto.io"
-                    }
-                },
-                bson.D {
-                    {
-                        "id", "3"
-                    }, {
-                        "title", "Buy dogz.io domain"
-                    }
-                },
-        }
-        client.Database("todo").Collection("todos").InsertMany(context.Background(), docs)
-    }
-    
-    func startWebServer() {
-        r: = gin.Default()
-        //gin OpenTelemetry instrumentation
-        r.Use(otelgin.Middleware("todo-service"))
-        r.GET("/todo", func(c * gin.Context) {
-            collection: = client.Database("todo").Collection("todos")
-            //Make sure to pass c.Request.Context() as the context and not c itself
-            cur, findErr: = collection.Find(c.Request.Context(), bson.D {})
-            if findErr != nil {
-                c.AbortWithError(500, findErr)
-                return
-            }
-            results: = make([] interface {}, 0)
-            curErr: = cur.All(c, & results)
-            if curErr != nil {
-                c.AbortWithError(500, curErr)
-                return
-            }
-            c.JSON(http.StatusOK, results)
-        })
-        _ = r.Run(":8080")
-    }
-    ```
+   func connectMongo() {
+       opts: = options.Client()
+       //Mongo OpenTelemetry instrumentation
+       opts.Monitor = otelmongo.NewMonitor()
+       opts.ApplyURI("mongodb://localhost:27017")
+       client, _ = mongo.Connect(context.Background(), opts)
+       //Seed the database with some todo's
+       docs: = [] interface {} {
+           bson.D {
+                   {
+                       "id", "1"
+                   }, {
+                       "title", "Buy groceries"
+                   }
+               },
+               bson.D {
+                   {
+                       "id", "2"
+                   }, {
+                       "title", "install Aspecto.io"
+                   }
+               },
+               bson.D {
+                   {
+                       "id", "3"
+                   }, {
+                       "title", "Buy dogz.io domain"
+                   }
+               },
+       }
+       client.Database("todo").Collection("todos").InsertMany(context.Background(), docs)
+   }
+
+   func startWebServer() {
+       r: = gin.Default()
+       //gin OpenTelemetry instrumentation
+       r.Use(otelgin.Middleware("todo-service"))
+       r.GET("/todo", func(c * gin.Context) {
+           collection: = client.Database("todo").Collection("todos")
+           //Make sure to pass c.Request.Context() as the context and not c itself
+           cur, findErr: = collection.Find(c.Request.Context(), bson.D {})
+           if findErr != nil {
+               c.AbortWithError(500, findErr)
+               return
+           }
+           results: = make([] interface {}, 0)
+           curErr: = cur.All(c, & results)
+           if curErr != nil {
+               c.AbortWithError(500, curErr)
+               return
+           }
+           c.JSON(http.StatusOK, results)
+       })
+       _ = r.Run(":8080")
+   }
+   ```
 
 ### Export traces to Jaeger
 
@@ -394,12 +395,14 @@ Below is the complete main.go file. Now we’re finally ready to export to Jaege
 
 You can now see the Jaeger UI. Select todo-service and click on Find traces. You
 should see your trace on the right:
-!["Jaeger UI displays opentelemetry traces in go for our todo-service"](https://lh5.googleusercontent.com/ZeFbAE9-XVSc-5GHjZkslHuJ3f01VQqSrObOgLY9yDSjuTyJdvvAzIapIvTQqumFTUP2BZE4gxd-Vt2JXjvqO1ep3JUBhkHKiry_m8bSAwwvEf3kKNfzFiKwzFP8E3btWtQV0pLZZWnsbY-sUA)
+
+![Jaeger UI displays opentelemetry traces in go for our todo-service](https://lh5.googleusercontent.com/ZeFbAE9-XVSc-5GHjZkslHuJ3f01VQqSrObOgLY9yDSjuTyJdvvAzIapIvTQqumFTUP2BZE4gxd-Vt2JXjvqO1ep3JUBhkHKiry_m8bSAwwvEf3kKNfzFiKwzFP8E3btWtQV0pLZZWnsbY-sUA)
 
 Jaeger UI displays opentelemetry traces in go for our todo-service By clicking
 the trace, you can drill down and see more details about it that allow you to
 further investigate on your own:
-!["Jaeger UI. To-do service drill down."](https://lh5.googleusercontent.com/5KI-tGGriWaMf98vNjewZZTwE1f-g7dQJXCEaCWmklT_xmCc5E_2VSGcRDeKf4GNZwRSNnSpQCQFH-1nUXIF7a5gd6Y7odFiEukSbaWaukFKP0cXXylHIqGJvAMfbQ2p60nt3wmeOwTtRr3eKQ)
+
+![Jaeger UI. To-do service drill down.](https://lh5.googleusercontent.com/5KI-tGGriWaMf98vNjewZZTwE1f-g7dQJXCEaCWmklT_xmCc5E_2VSGcRDeKf4GNZwRSNnSpQCQFH-1nUXIF7a5gd6Y7odFiEukSbaWaukFKP0cXXylHIqGJvAMfbQ2p60nt3wmeOwTtRr3eKQ)
 
 ## Summary
 
