@@ -18,7 +18,7 @@ framework. Then, we will send tracing data to Jaeger Tracing for visualization.
 You can find all the relevant files in this
 [Github repository](https://github.com/aspecto-io/opentelemetry-examples/tree/master/go).
 
-![OpenTelemetry Go - The Mandalorian](https://www.aspecto.io/wp-content/uploads/2022/06/OpenTelemetry-Go-The-Mandalorian-2048x1406.png)
+![OpenTelemetry Go - The Mandalorian](OpenTelemetry-Go-The-Mandalorian-2048x1406.png)
 
 ## Hello world: OpenTelemetry Go example
 
@@ -309,7 +309,7 @@ Here’s what the setup looks like:
        "context"
        "log"
        "net/http"
-       "github.com/aspecto-io/opentelemerty-examples/tracing"
+       "github.com/aspecto-io/opentelemetry-examples/tracing"
        "github.com/gin-gonic/gin"
        "go.mongodb.org/mongo-driver/bson"
        "go.mongodb.org/mongo-driver/mongo"
@@ -393,20 +393,20 @@ Here’s what the setup looks like:
 
 ### Export traces to Jaeger
 
-1. Run the todo-service with go run main.go
-2. Make an HTTP GET request to localhost:8080/todo to generate some traces in Go
-3. Open Jaeger at http://localhost:16686/search to view those traces
+1. Run the todo-service with `go run main.go`.
+2. To generate some traces, make an HTTP GET request to <http://localhost:8080/todo>.
+3. To view the traces, open Jaeger at <http://localhost:16686/search>.
 
 You can now see the Jaeger UI. Select todo-service and click on Find traces. You
 should see your trace on the right:
 
-![Jaeger UI displays opentelemetry traces in go for our todo-service](https://lh5.googleusercontent.com/ZeFbAE9-XVSc-5GHjZkslHuJ3f01VQqSrObOgLY9yDSjuTyJdvvAzIapIvTQqumFTUP2BZE4gxd-Vt2JXjvqO1ep3JUBhkHKiry_m8bSAwwvEf3kKNfzFiKwzFP8E3btWtQV0pLZZWnsbY-sUA)
+![Jaeger UI displays opentelemetry traces in go for our todo-service](jaeger-otel-todo.png)
 
 Jaeger UI displays opentelemetry traces in go for our todo-service By clicking
 the trace, you can drill down and see more details about it that allow you to
 further investigate on your own:
 
-![Jaeger UI. To-do service drill down.](https://lh5.googleusercontent.com/5KI-tGGriWaMf98vNjewZZTwE1f-g7dQJXCEaCWmklT_xmCc5E_2VSGcRDeKf4GNZwRSNnSpQCQFH-1nUXIF7a5gd6Y7odFiEukSbaWaukFKP0cXXylHIqGJvAMfbQ2p60nt3wmeOwTtRr3eKQ)
+![Jaeger UI. To-do service drill down](jaeger-otel-todo-drill-down.png)
 
 ## Summary
 
