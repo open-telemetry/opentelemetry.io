@@ -23,11 +23,11 @@ using them now.
 
 ## Intro to metrics in OpenTelemetry
 
-Before talking about exponential bucket histograms, let’s do a quick refresher
-on some general OpenTelemetry metrics concepts. If you’re already up to speed,
+Before talking about exponential bucket histograms, let's do a quick refresher
+on some general OpenTelemetry metrics concepts. If you're already up to speed,
 skip ahead to [Anatomy of a histogram](#anatomy-of-a-histogram).
 
-Metrics represent aggregations of many measurements. We use them because it’s
+Metrics represent aggregations of many measurements. We use them because it's
 often prohibitively expensive to export and analyze measurements individually.
 Imagine the cost of exporting the time of each request for an HTTP server
 responding to one million requests per second! Metrics aggregate measurements to
@@ -79,9 +79,8 @@ than their individual values (such as tracking the number of bytes sent over a
 network). Use a histogram when the distribution of measurements is relevant for
 analysis. For example, a histogram is a natural choice for tracking response
 times for HTTP servers, because it's useful to analyze the distribution of
-response times to
-evaluate [SLAs](https://newrelic.com/topics/what-are-slos-slis-slas) and
-identify trends. To learn more, see the guidelines
+response times to evaluate SLAs and identify trends. To learn more, see the
+guidelines
 for [instrument selection](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/supplementary-guidelines.md#instrument-selection).
 
 I mentioned earlier that the SDK aggregates measurements from instruments. Each
@@ -97,7 +96,7 @@ an [aggregation](https://github.com/open-telemetry/opentelemetry-specification/b
 
 ## Anatomy of a histogram
 
-What is a histogram? Putting OpenTelemetry aside for a moment, we’re all
+What is a histogram? Putting OpenTelemetry aside for a moment, we're all
 somewhat familiar with histograms. They consist of buckets and counts of
 occurrences within those buckets.
 
@@ -110,7 +109,7 @@ rolls, as shown in this example histogram.
 
 ![histogram-outcomes-200-rolls-two-6-sided-dice](/img/blog-exponential-histogram/histogram-outcomes-200-rolls-two-6-sided-dice.webp)
 
-OpenTelemetry has two types of histograms. Let’s start with the relatively
+OpenTelemetry has two types of histograms. Let's start with the relatively
 simpler [explicit bucket histogram](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#explicit-bucket-histogram-aggregation).
 It has buckets with boundaries explicitly defined during initialization. For
 example, if you configure it with boundaries `[0,5,10]`, there are `N+1` buckets
@@ -122,7 +121,7 @@ the [opentelemetry-proto](https://github.com/open-telemetry/opentelemetry-proto/
 for the complete definition.
 
 Before we talk about the second type of histogram, pause and think about some of
-the questions you can answer when data is structured like this. Assuming you’re
+the questions you can answer when data is structured like this. Assuming you're
 using a histogram to track the number of milliseconds it took to respond to a
 request, you can determine:
 
@@ -157,7 +156,7 @@ for the complete definition.
 
 ## Why use exponential bucket histograms
 
-On the surface, exponential bucket histograms don’t seem very different from
+On the surface, exponential bucket histograms don't seem very different from
 explicit bucket histograms. In reality, their subtle differences yield
 dramatically different results.
 
@@ -180,7 +179,7 @@ bucket histograms need an explicitly defined set of bucket boundaries that need
 to be configured somewhere.
 A [default set](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#explicit-bucket-histogram-aggregation)
 of boundaries is provided, but use cases of histograms vary wildly enough that
-it’s likely you’ll need to adjust the boundaries to better reflect your data.
+it's likely you'll need to adjust the boundaries to better reflect your data.
 The view API helps, with mechanisms to select specific instruments and redefine
 the explicit bucket histogram aggregation bucket boundaries.
 
@@ -188,7 +187,7 @@ In contrast, the only configurable parameter of exponential bucket histograms is
 the number of buckets, which defaults to 160 for positive values. The
 implementation automatically chooses the scale factor, based on the range of
 values recorded and the number of buckets available to maximize the bucket
-density around the recorded values. I can’t overstate how useful this is.
+density around the recorded values. I can't overstate how useful this is.
 
 Exponential bucket histograms capture a high-density distribution of values **
 automatically adjusted for the scale and range of measurements**, with no
@@ -200,8 +199,8 @@ Consider the scenario of capturing HTTP request time milliseconds. With an
 explicit bucket histogram, you make guesses on bucket boundaries which you hope
 will accurately capture the distribution of values. But if conditions change and
 latency spikes, your assumptions might not hold and all values could be lumped
-together. Suddenly, you’ve lost visibility into the distribution of data. You
-know latency is high overall. But you can’t know how many requests are high but
+together. Suddenly, you've lost visibility into the distribution of data. You
+know latency is high overall. But you can't know how many requests are high but
 tolerable versus terribly slow. In contrast, with an exponential bucket
 histogram, the scale automatically adjusts to the latency spikes to choose the
 optimal range of buckets. You retain insight into the distribution, even with a
@@ -209,9 +208,9 @@ large range of measurement values.
 
 ## Example scenario: explicit bucket histograms vs. exponential bucket histograms
 
-Let’s bring everything together with a proper demonstration comparing explicit
-bucket histograms to exponential bucket histograms. I’ve put together
-some [examples code](https://github.com/jack-berg/newrelic-opentelemetry-examples/commit/2681bf25518c02f4e5830f89254c736e0959d306)
+Let's bring everything together with a proper demonstration comparing explicit
+bucket histograms to exponential bucket histograms. I've put together
+some [example code](https://github.com/jack-berg/newrelic-opentelemetry-examples/commit/2681bf25518c02f4e5830f89254c736e0959d306)
 that simulates tracking response time to an HTTP server in milliseconds. It
 records one million samples to an explicit bucket histogram with the default
 buckets, and to an exponential bucket histogram with a number of buckets that
@@ -232,25 +231,25 @@ To achieve this, I used a variety of different probability distributions, each
 corresponding to different bands in the curve, and each accounting for some
 percentage of the samples.
 
-I ran the simulation, and exported the histograms
-to [New Relic via OTLP](https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/opentelemetry-setup/)
-to compare the explicit bucket histogram to the exponential bucket histogram.
-The next two charts show the results. The exponential bucket histogram has
-significantly more detail, which simply isn’t available with the more limited
-buckets of the explicit bucket histogram.
+I ran the simulation, and exported the histograms via to compare the explicit
+bucket histogram to the exponential bucket histogram. The next two charts show
+the results. The exponential bucket histogram has significantly more detail,
+which simply isn't available with the more limited buckets of the explicit
+bucket histogram.
 
-> **Note:** These visualizations are from the New Relic platform. Every platform
-> will have its own mechanism for storing and retrieving histograms, which
-> typically perform some lossy translation of buckets into a normalized storage
-> format—New Relic is no exception. Additionally, the visualization doesn’t
-> clearly delineate buckets, which causes adjacent buckets with the same count to
-> appear as a single bucket.
+> **Note:** These visualizations are from the New Relic platform, which I used
+> because they employ me, and it's the easiest way for me to visualize histograms.
+> Every platform will have its own mechanism for storing and retrieving
+> histograms, which typically perform some lossy translation of buckets into a
+> normalized storage format—New Relic is no exception. Additionally, the
+> visualization doesn't clearly delineate buckets, which causes adjacent buckets
+> with the same count to appear as a single bucket.
 
-Here’s the millisecond scale exponential bucket histogram:
+Here's the millisecond scale exponential bucket histogram:
 
 ![millisecond-scale-exponential-bucket-histogram](/img/blog-exponential-histogram/millisecond-scale-exponential-bucket-histogram.webp)
 
-Here’s the millisecond scale explicit bucket histogram:
+Here's the millisecond scale explicit bucket histogram:
 
 ![millisecond-scale-explicit-bucket-histogram](/img/blog-exponential-histogram/millisecond-scale-explicit-bucket-histogram.webp)
 
@@ -265,11 +264,11 @@ with the explicit bucket histogram. The exponential variety loses some
 definition compared to the millisecond version in the previous example, but you
 can still see the response time bands.
 
-Here’s the nanosecond scale exponential bucket histogram:
+Here's the nanosecond scale exponential bucket histogram:
 
 ![nanosecond-scale-exponential-bucket-histogram](/img/blog-exponential-histogram/nanosecond-scale-exponential-bucket-histogram.webp)
 
-Here’s the nanosecond scale explicit bucket histogram:
+Here's the nanosecond scale explicit bucket histogram:
 
 ![nanosecond-scale-explicit-bucket-histogram](/img/blog-exponential-histogram/nanosecond-scale-explicit-bucket-histogram.webp)
 
@@ -277,17 +276,10 @@ Here’s the nanosecond scale explicit bucket histogram:
 
 Exponential bucket histograms are a powerful new tool for metrics. While
 implementations are still in progress at the time of publishing this post,
-you’ll definitely want to enable them when you’re using OpenTelemetry metrics.
+you'll definitely want to enable them when you're using OpenTelemetry metrics.
 
-New Relic already
-supports [ingesting exponential bucket histograms over OTLP](https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/opentelemetry-setup/),
-and we encourage you to use them to improve your OpenTelemetry experience.
-Learn more
-about [OpenTelemetry with New Relic](https://docs.newrelic.com/docs/more-integrations/open-source-telemetry-integrations/opentelemetry/opentelemetry-introduction).
-
-As an extra tip, note that if you’re
-using [opentelemetry-java](https://github.com/open-telemetry/opentelemetry-java) (
-and eventually other languages), the easiest way to enable exponential bucket
+If you're using [opentelemetry-java](https://github.com/open-telemetry/opentelemetry-java) 
+(and eventually other languages), the easiest way to enable exponential bucket
 histograms is by setting
 the [environment variable](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md#additional-configuration)
 with this command:
@@ -296,8 +288,8 @@ with this command:
 export OTEL_EXPORTER_OTLP_METRICS_DEFAULT_HISTOGRAM_AGGREGATION=exponential_bucket_histogram
 ```
 
-For other languages, check the relevant documentation
-on [opentelemetry.io](../../docs/instrumentation)
+For instructions on enabling in other languages, check the relevant
+documentation on [opentelemetry.io](../../docs/instrumentation)
 or [github.com/open-telemetry](https://github.com/open-telemetry).
 
 _A version of this article was [originally posted][] on the New Relic blog._
