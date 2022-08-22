@@ -4,6 +4,9 @@ linkTitle: Go App Instrumentation
 date: 2022-08-22
 author: "[Naveh Mevorach](https://github.com/NavehMevorach) (Aspecto)"
 canonical_url: https://www.aspecto.io/blog/opentelemetry-go-getting-started/
+spelling: >-
+  cSpell:ignore Naveh Mevorach Mandalorian bson gonic otelgin otelmongo
+  cSpell:ignore sdktrace semconv todos dogz aspecto
 ---
 
 In this blog post, you will learn hands-on how to create and visualize traces
@@ -223,7 +226,7 @@ Here’s what the setup looks like:
    opts.Monitor = otelmongo.NewMonitor()
    ```
 
-   The function shold look like this
+   The function should look like this:
 
    ```go
    func connectMongo() {
