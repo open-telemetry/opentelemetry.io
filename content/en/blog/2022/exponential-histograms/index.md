@@ -1,6 +1,6 @@
 ---
-title: "OpenTelemetry Exponential Histograms: Better Data, Zero Configuration"
-linkTitle: OpenTelemetry Exponential Histograms
+title: "Exponential Histograms: Better Data, Zero Configuration"
+linkTitle: Exponential Histograms
 date: 2022-08-22
 author: "[Jack Berg](https://github.com/jack-berg)"
 canonical_url: https://newrelic.com/blog/best-practices/opentelemetry-histograms
@@ -34,8 +34,8 @@ responding to one million requests per second! Metrics aggregate measurements to
 reduce data volume and retain a meaningful signal.
 
 Like tracing (and someday soon logs), OpenTelemetry metrics are broken into
-the [API](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/api.md)
-and [SDK](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md)
+the [API](/docs/reference/specification/metrics/api/)
+and [SDK](/docs/reference/specification/metrics/sdk/)
 . The API is used to instrument code. Application owners can use the API to
 write custom instrumentation specific to their domain, but more commonly they
 install prebuilt instrumentation for their library or framework. The SDK is used
@@ -44,7 +44,7 @@ includes processing it and exporting it out of process for analysis, often to an
 observability platform.
 
 The API entry point for metrics is
-the [meter provider](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/api.md#meterprovider). 
+the [meter provider](/docs/reference/specification/metrics/api/#meterprovider). 
 It provides meters for different scopes, where a scope is just a logical unit
 of application code. For example, instrumentation for an HTTP client library
 would have a different scope and therefore a different meter than
@@ -69,7 +69,7 @@ aggregates measurements reported by instruments and exports them as metrics
 according to the application configuration.
 
 There are currently six types
-of [instruments](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/api.md#instrument)
+of [instruments](/docs/reference/specification/metrics/api/#instrument)
 in OpenTelemetry metrics: counter, up down counter, histogram, async counter,
 async up down counter, and async gauge. Carefully consider which instrument type
 to select, since each implies certain information about the nature of the
@@ -81,18 +81,18 @@ analysis. For example, a histogram is a natural choice for tracking response
 times for HTTP servers, because it's useful to analyze the distribution of
 response times to evaluate SLAs and identify trends. To learn more, see the
 guidelines
-for [instrument selection](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/supplementary-guidelines.md#instrument-selection).
+for [instrument selection](/docs/reference/specification/metrics/supplementary-guidelines/#instrument-selection).
 
 I mentioned earlier that the SDK aggregates measurements from instruments. Each
 instrument type has a default aggregation strategy (or
-simply [aggregation](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#aggregation))
+simply [aggregation](/docs/reference/specification/metrics/sdk/#aggregation))
 that reflects the intended use of the measurements as implied by the instrument
 type selection. For example, counters and up down counters aggregate to a sum of
 their values. Histograms aggregate to a histogram aggregation. (Note that
 histogram is both
-a [type of instrument](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/api.md#histogram)
+a [type of instrument](/docs/reference/specification/metrics/api/#histogram)
 and
-an [aggregation](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#histogram-aggregations).)
+an [aggregation](/docs/reference/specification/metrics/sdk/#histogram-aggregation-common-behavior).)
 
 ## Anatomy of a histogram
 
@@ -107,10 +107,10 @@ have the highest count because you are more likely to roll a combined total of
 7, and the 2 and 12 buckets to have the least because these are the least likely
 rolls, as shown in this example histogram.
 
-![histogram-outcomes-200-rolls-two-6-sided-dice](/img/blog-exponential-histogram/histogram-outcomes-200-rolls-two-6-sided-dice.webp)
+![histogram-outcomes-200-rolls-two-6-sided-dice](histogram-outcomes-200-rolls-two-6-sided-dice.webp)
 
 OpenTelemetry has two types of histograms. Let's start with the relatively
-simpler [explicit bucket histogram](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#explicit-bucket-histogram-aggregation).
+simpler [explicit bucket histogram](/docs/reference/specification/metrics/sdk/#explicit-bucket-histogram-aggregation).
 It has buckets with boundaries explicitly defined during initialization. For
 example, if you configure it with boundaries `[0,5,10]`, there are `N+1` buckets
 with boundaries `(-∞, 0], (0,5], (5,10], (10,+∞]`. Each bucket tracks the number
@@ -138,7 +138,7 @@ request, you can determine:
   bring down the average.
 
 The second type of OpenTelemetry histogram is
-the [exponential bucket histogram](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#exponential-bucket-histogram-aggregation).
+the [exponential bucket histogram](/docs/reference/specification/metrics/sdk/#exponential-histogram-aggregation).
 Exponential bucket histograms have buckets and bucket counts, but instead of
 explicitly defining the bucket boundaries, the boundaries are computed based on
 an exponential scale. More specifically, each bucket is defined by an index `i`
@@ -177,7 +177,7 @@ bucket histograms contain fundamentally less information.
 **Exponential bucket histograms are basically configuration-free.** Explicit
 bucket histograms need an explicitly defined set of bucket boundaries that need
 to be configured somewhere.
-A [default set](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#explicit-bucket-histogram-aggregation)
+A [default set](/docs/reference/specification/metrics/sdk/#explicit-bucket-histogram-aggregation)
 of boundaries is provided, but use cases of histograms vary wildly enough that
 it's likely you'll need to adjust the boundaries to better reflect your data.
 The view API helps, with mechanisms to select specific instruments and redefine
@@ -215,7 +215,7 @@ that simulates tracking response time to an HTTP server in milliseconds. It
 records one million samples to an explicit bucket histogram with the default
 buckets, and to an exponential bucket histogram with a number of buckets that
 produces roughly the same size
-of [OTLP](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/otlp.md)
+of [OTLP](/docs/reference/specification/protocol/otlp/)
 -encoded, Gzip-compressed payload as the explicit bucket defaults. Through trial
 and error, I determined that ~40 exponential buckets produce an equivalent
 payload size to the default explicit bucket histogram with 11 buckets. (Your
@@ -225,7 +225,7 @@ I wanted the distribution of samples to reflect what we might see in an actual
 HTTP server, with bands of response times corresponding to different operations.
 It will look something like this example:
 
-![target-probability-distribution-response-time](/img/blog-exponential-histogram/target-probability-distribution-response-time.webp)
+![target-probability-distribution-response-time](target-probability-distribution-response-time.webp)
 
 To achieve this, I used a variety of different probability distributions, each
 corresponding to different bands in the curve, and each accounting for some
@@ -247,11 +247,11 @@ bucket histogram.
 
 Here's the millisecond scale exponential bucket histogram:
 
-![millisecond-scale-exponential-bucket-histogram](/img/blog-exponential-histogram/millisecond-scale-exponential-bucket-histogram.webp)
+![millisecond-scale-exponential-bucket-histogram](millisecond-scale-exponential-bucket-histogram.webp)
 
 Here's the millisecond scale explicit bucket histogram:
 
-![millisecond-scale-explicit-bucket-histogram](/img/blog-exponential-histogram/millisecond-scale-explicit-bucket-histogram.webp)
+![millisecond-scale-explicit-bucket-histogram](millisecond-scale-explicit-bucket-histogram.webp)
 
 This demonstration is fairly generous to the explicit bucket histogram because I
 choose to report values in an optimum range for the default buckets (for
@@ -266,11 +266,11 @@ can still see the response time bands.
 
 Here's the nanosecond scale exponential bucket histogram:
 
-![nanosecond-scale-exponential-bucket-histogram](/img/blog-exponential-histogram/nanosecond-scale-exponential-bucket-histogram.webp)
+![nanosecond-scale-exponential-bucket-histogram](nanosecond-scale-exponential-bucket-histogram.webp)
 
 Here's the nanosecond scale explicit bucket histogram:
 
-![nanosecond-scale-explicit-bucket-histogram](/img/blog-exponential-histogram/nanosecond-scale-explicit-bucket-histogram.webp)
+![nanosecond-scale-explicit-bucket-histogram](nanosecond-scale-explicit-bucket-histogram.webp)
 
 ## Next steps
 
@@ -281,7 +281,7 @@ you'll definitely want to enable them when you're using OpenTelemetry metrics.
 If you're using [opentelemetry-java](https://github.com/open-telemetry/opentelemetry-java) 
 (and eventually other languages), the easiest way to enable exponential bucket
 histograms is by setting
-the [environment variable](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk_exporters/otlp.md#additional-configuration)
+the [environment variable](/docs/reference/specification/metrics/sdk_exporters/otlp/)
 with this command:
 
 ```shell
