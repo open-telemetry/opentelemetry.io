@@ -6,7 +6,6 @@ author: >-
   [Debajit Das](https://github.com/debajitdas), [Kumar
   Pratyus](https://github.com/kpratyus), and [Severin
   Neumann](https://github.com/svrnm)
-draft: false
 spelling: >
   cSpell:ignore Debajit Kumar Pratyus Severin Neumann webserver xvfz tracestate
   cSpell:ignore catalina javaagent jaegertracing protobuf WORKDIR
