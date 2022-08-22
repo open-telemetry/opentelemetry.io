@@ -51,7 +51,7 @@ end with `v1/traces` if using OTLP/HTTP.
 
 ### `OTEL_EXPORTER_OTLP_METRICS_ENDPOINT`
 
-Endpoint URL for trace data only, with an optionally-specified port number. Must
+Endpoint URL for metric data only, with an optionally-specified port number. Must
 end with `v1/metrics` if using OTLP/HTTP.
 
 **Default value:**
@@ -66,7 +66,7 @@ end with `v1/metrics` if using OTLP/HTTP.
 
 ### `OTEL_EXPORTER_OTLP_LOGS_ENDPOINT`
 
-Endpoint URL for trace data only, with an optionally-specified port number. Must
+Endpoint URL for log data only, with an optionally-specified port number. Must
 end with `v1/logs` if using OTLP/HTTP.
 
 **Default value:**

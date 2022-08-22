@@ -94,7 +94,7 @@ Sample Trace:
 
 This sample trace output has three items, named "Hello-Greetings",
 "Hello-Salutations" and "Hello". Because each request's context has the same
-trace ID, all of the infornation can be tied together. This provides a trail
+trace ID, all of the information can be tied together. This provides a trail
 through the requests' various routes, timestamps and other attributes.
 
 To understand how tracing in OpenTelemetry works, let's look at a list of
@@ -187,6 +187,7 @@ work or operation. Spans are the building blocks of Traces. In OpenTelemetry,
 they include the following information:
 
 - Name
+- Parent span ID (empty for root spans)
 - Start and End Timestamps
 - [Span Context](#span-context)
 - [Attributes](#attributes)
@@ -228,6 +229,10 @@ Sample Span:
   }
 }
 ```
+
+Spans can be nested, as is implied by the presence of a parent span ID:
+child spans represent sub-operations. This allows spans to more accurately
+capture the work done in an application.
 
 ### Span Context
 
