@@ -17,10 +17,10 @@ solutions to achieving ubiquitous observability. Share successes and failures,
 discover best practices, and meet others who are also on a journey to implement
 observability powered by OpenTelemetry.
 
-### OpenTelemetry In Practice Talk Series
+### OpenTelemetry In Practice
 
-Welcome to the **OpenTelemetry in Practice** series! This is a new experiment by
-some OpenTelemetry contributors in the End User Working Group.
+**OpenTelemetry in Practice** is an experimental **series** of talks initiated
+by some members of the End User Working Group.
 
 We’re aiming to:
 
