@@ -189,8 +189,8 @@ implementation automatically chooses the scale factor, based on the range of
 values recorded and the number of buckets available to maximize the bucket
 density around the recorded values. I can't overstate how useful this is.
 
-Exponential bucket histograms capture a high-density distribution of values **
-automatically adjusted for the scale and range of measurements**, with no
+Exponential bucket histograms capture a high-density distribution of values
+**automatically adjusted for the scale and range of measurements**, with no
 configuration. The same histogram that captures nanosecond scale measurements is
 equally good at capturing second scale measurements. They retain fidelity
 regardless of scale.
