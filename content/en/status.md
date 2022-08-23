@@ -16,7 +16,7 @@ be the same as its status in a particular language SDK.
 The development status, or maturity level, of the [per-language
 SDKs](/docs/instrumentation/) is as follows:
 
-<div class="l-primary-buttons mt-5">
+<div class="l-primary-buttons mt-0">
 
 - [C++](/docs/instrumentation/cpp/#status-and-releases) 
 - [.NET](/docs/instrumentation/net/#status-and-releases) 
@@ -35,14 +35,12 @@ SDKs](/docs/instrumentation/) is as follows:
 The development status, or maturity level, of the [language-agnostic
 components][main-comp] are as follows:
 
-
-<div class="l-primary-buttons mt-5">
+<div class="l-primary-buttons mt-0">
 
 - [Specification status](/docs/reference/specification/status/)
 - [Collector status](/docs/collector/#status-and-releases)
 
 </div>
-
 
 [main-comp]: /docs/concepts/components/
 
