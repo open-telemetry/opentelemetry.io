@@ -9,12 +9,14 @@ description: Maturity-level of the main OpenTelemetry components
 
 ## {{% param title %}}
 
-OpenTelemetry is made up of several components, each having different meanings
-for "status". For example, the status of a signal in the specification may not
-be the same as its status in a particular language SDK.
+OpenTelemetry is made up of [several components][main-comp], some
+language-specific and others language-agnostic. When looking for a status, make
+sure to look for the status from the right component page. For example, the
+status of a signal in the specification may not be the same as the signal status
+in a particular language SDK.
 
-The development status, or maturity level, of the [per-language
-SDKs](/docs/instrumentation/) is as follows:
+For the development status, or maturity level, of a [language
+SDK](/docs/instrumentation/), see the status section of that language:
 
 <div class="l-primary-buttons mt-0">
 
@@ -32,8 +34,7 @@ SDKs](/docs/instrumentation/) is as follows:
 
 </div>
 
-The development status, or maturity level, of the [language-agnostic
-components][main-comp] are as follows:
+The development status, or maturity level, of the [collector](/docs/collector/) and [specification](/docs/reference/specification/) are as follows:
 
 <div class="l-primary-buttons mt-0">
 
