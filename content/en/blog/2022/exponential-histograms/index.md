@@ -6,11 +6,11 @@ author: "[Jack Berg](https://github.com/jack-berg)"
 canonical_url: https://newrelic.com/blog/best-practices/opentelemetry-histograms
 ---
 
-Histograms are a powerful tool in the observability tool belt. Leading
-instrumentation projects like OpenTelemetry and Prometheus support histograms
-because of their ability to efficiently capture and transmit distributions of
-measurements, enabling statistical calculations like percentiles (for example,
-p90, p95, p99).
+Histograms are a powerful tool in the observability tool belt. OpenTelemetry
+supports histograms because of their ability to efficiently capture and transmit
+distributions of measurements, enabling statistical calculations like
+percentiles (for example,
+p90, p95, p99 representing the 90th, 95th, and 99th percentile).
 
 In practice, histograms come in several flavors, each with its own strategy for
 representing buckets and bucket counts. The first stable metric release for
@@ -34,8 +34,8 @@ responding to one million requests per second! Metrics aggregate measurements to
 reduce data volume and retain a meaningful signal.
 
 Like tracing (and someday soon logs), OpenTelemetry metrics are broken into
-the [API](/docs/reference/specification/metrics/api/)
-and [SDK](/docs/reference/specification/metrics/sdk/)
+the [API][]
+and [SDK][]
 . The API is used to instrument code. Application owners can use the API to
 write custom instrumentation specific to their domain, but more commonly they
 install prebuilt instrumentation for their library or framework. The SDK is used
@@ -44,7 +44,7 @@ includes processing it and exporting it out of process for analysis, often to an
 observability platform.
 
 The API entry point for metrics is
-the [meter provider](/docs/reference/specification/metrics/api/#meterprovider). 
+the [meter provider][]. 
 It provides meters for different scopes, where a scope is just a logical unit
 of application code. For example, instrumentation for an HTTP client library
 would have a different scope and therefore a different meter than
@@ -53,15 +53,15 @@ instruments. You use instruments to report measurements, which consist of a
 value and set of attributes. This Java code snippet demonstrates the workflow:
 
 ```java
-    OpenTelemetry openTelemetry = // declare OpenTelemetry instance
-    Meter meter = openTelemetry.getMeter("my-meter-scope");
-    DoubleHistogram histogram =
-        meter
-            .histogramBuilder("my-histogram")
-            .setDescription("The description")
-            .setUnit("ms")
-            .build();
-    histogram.record(10.2, Attributes.builder().put("key", "value").build());
+OpenTelemetry openTelemetry = // declare OpenTelemetry instance
+Meter meter = openTelemetry.getMeter("my-meter-scope");
+DoubleHistogram histogram =
+    meter
+        .histogramBuilder("my-histogram")
+        .setDescription("The description")
+        .setUnit("ms")
+        .build();
+histogram.record(10.2, Attributes.builder().put("key", "value").build());
 ```
 
 The SDK provides implementations of meter provider, meter, and instruments. It
@@ -69,7 +69,7 @@ aggregates measurements reported by instruments and exports them as metrics
 according to the application configuration.
 
 There are currently six types
-of [instruments](/docs/reference/specification/metrics/api/#instrument)
+of [instruments][]
 in OpenTelemetry metrics: counter, up down counter, histogram, async counter,
 async up down counter, and async gauge. Carefully consider which instrument type
 to select, since each implies certain information about the nature of the
@@ -81,18 +81,18 @@ analysis. For example, a histogram is a natural choice for tracking response
 times for HTTP servers, because it's useful to analyze the distribution of
 response times to evaluate SLAs and identify trends. To learn more, see the
 guidelines
-for [instrument selection](/docs/reference/specification/metrics/supplementary-guidelines/#instrument-selection).
+for [instrument selection][].
 
 I mentioned earlier that the SDK aggregates measurements from instruments. Each
 instrument type has a default aggregation strategy (or
-simply [aggregation](/docs/reference/specification/metrics/sdk/#aggregation))
+simply [aggregation][])
 that reflects the intended use of the measurements as implied by the instrument
 type selection. For example, counters and up down counters aggregate to a sum of
 their values. Histograms aggregate to a histogram aggregation. (Note that
 histogram is both
-a [type of instrument](/docs/reference/specification/metrics/api/#histogram)
+a [type of instrument][]
 and
-an [aggregation](/docs/reference/specification/metrics/sdk/#histogram-aggregation-common-behavior).)
+an [aggregation][histogram-aggregation].)
 
 ## Anatomy of a histogram
 
@@ -110,14 +110,14 @@ rolls, as shown in this example histogram.
 ![histogram-outcomes-200-rolls-two-6-sided-dice](histogram-outcomes-200-rolls-two-6-sided-dice.webp)
 
 OpenTelemetry has two types of histograms. Let's start with the relatively
-simpler [explicit bucket histogram](/docs/reference/specification/metrics/sdk/#explicit-bucket-histogram-aggregation).
+simpler [explicit bucket histogram][].
 It has buckets with boundaries explicitly defined during initialization. For
 example, if you configure it with boundaries `[0,5,10]`, there are `N+1` buckets
 with boundaries `(-∞, 0], (0,5], (5,10], (10,+∞]`. Each bucket tracks the number
 of occurrences of values within its boundaries. Additionally, the histogram
 tracks the sum of all values, the count of all values, the maximum value, and
 the minimum value. See
-the [opentelemetry-proto](https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/metrics/v1/metrics.proto#L382)
+the [opentelemetry-proto][explicit bucket histogram proto]
 for the complete definition.
 
 Before we talk about the second type of histogram, pause and think about some of
@@ -138,7 +138,7 @@ request, you can determine:
   bring down the average.
 
 The second type of OpenTelemetry histogram is
-the [exponential bucket histogram](/docs/reference/specification/metrics/sdk/#exponential-histogram-aggregation).
+the [exponential bucket histogram][].
 Exponential bucket histograms have buckets and bucket counts, but instead of
 explicitly defining the bucket boundaries, the boundaries are computed based on
 an exponential scale. More specifically, each bucket is defined by an index `i`
@@ -151,7 +151,7 @@ defined as `(.25, .5],(.5, 1],(1,2],(2,4],(4,8]`. By adjusting the scale, you
 can represent both large and small values. Like explicit bucket histograms,
 exponential bucket histograms also track the sum of all values, the count of all
 values, the maximum value, and the minimum value. See
-the [opentelemetry-proto](https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/metrics/v1/metrics.proto#L463)
+the [opentelemetry-proto][exponential bucket histogram proto]
 for the complete definition.
 
 ## Why use exponential bucket histograms
@@ -177,7 +177,7 @@ bucket histograms contain fundamentally less information.
 **Exponential bucket histograms are basically configuration-free.** Explicit
 bucket histograms need an explicitly defined set of bucket boundaries that need
 to be configured somewhere.
-A [default set](/docs/reference/specification/metrics/sdk/#explicit-bucket-histogram-aggregation)
+A [default set][explicit bucket histogram]
 of boundaries is provided, but use cases of histograms vary wildly enough that
 it's likely you'll need to adjust the boundaries to better reflect your data.
 The view API helps, with mechanisms to select specific instruments and redefine
@@ -210,12 +210,12 @@ large range of measurement values.
 
 Let's bring everything together with a proper demonstration comparing explicit
 bucket histograms to exponential bucket histograms. I've put together
-some [example code](https://github.com/jack-berg/newrelic-opentelemetry-examples/commit/2681bf25518c02f4e5830f89254c736e0959d306)
+some [example code][]
 that simulates tracking response time to an HTTP server in milliseconds. It
 records one million samples to an explicit bucket histogram with the default
 buckets, and to an exponential bucket histogram with a number of buckets that
 produces roughly the same size
-of [OTLP](/docs/reference/specification/protocol/otlp/)
+of [OTLP][]
 -encoded, Gzip-compressed payload as the explicit bucket defaults. Through trial
 and error, I determined that ~40 exponential buckets produce an equivalent
 payload size to the default explicit bucket histogram with 11 buckets. (Your
@@ -278,10 +278,10 @@ Exponential bucket histograms are a powerful new tool for metrics. While
 implementations are still in progress at the time of publishing this post,
 you'll definitely want to enable them when you're using OpenTelemetry metrics.
 
-If you're using [opentelemetry-java](https://github.com/open-telemetry/opentelemetry-java) 
+If you're using [opentelemetry-java][]
 (and eventually other languages), the easiest way to enable exponential bucket
 histograms is by setting
-the [environment variable](/docs/reference/specification/metrics/sdk_exporters/otlp/)
+the [environment variable][]
 with this command:
 
 ```shell
@@ -289,9 +289,28 @@ export OTEL_EXPORTER_OTLP_METRICS_DEFAULT_HISTOGRAM_AGGREGATION=exponential_buck
 ```
 
 For instructions on enabling in other languages, check the relevant
-documentation on [opentelemetry.io](/docs/instrumentation)
-or [github.com/open-telemetry](https://github.com/open-telemetry).
+documentation on [opentelemetry.io][]
+or [github.com/open-telemetry][].
 
 _A version of this article was [originally posted][] on the New Relic blog._
 
 [originally posted]: {{% param canonical_url %}}
+
+[API]: /docs/reference/specification/metrics/api/
+[SDK]: /docs/reference/specification/metrics/sdk/
+[meter provider]: /docs/reference/specification/metrics/api/#meterprovider
+[instruments]: /docs/reference/specification/metrics/api/#instrument
+[instrument selection]: /docs/reference/specification/metrics/supplementary-guidelines/#instrument-selection
+[aggregation]: /docs/reference/specification/metrics/sdk/#aggregation
+[type of instrument]: /docs/reference/specification/metrics/api/#histogram
+[histogram-aggregation]: /docs/reference/specification/metrics/sdk/#histogram-aggregation-common-behavior
+[explicit bucket histogram]: /docs/reference/specification/metrics/sdk/#explicit-bucket-histogram-aggregation
+[explicit bucket histogram proto]: https://github.com/open-telemetry/opentelemetry-proto/blob/724e427879e3d2bae2edc0218fff06e37b9eb46e/opentelemetry/proto/metrics/v1/metrics.proto#L382
+[exponential bucket histogram]: /docs/reference/specification/metrics/sdk/#exponential-histogram-aggregation
+[exponential bucket histogram proto]: https://github.com/open-telemetry/opentelemetry-proto/blob/724e427879e3d2bae2edc0218fff06e37b9eb46e/opentelemetry/proto/metrics/v1/metrics.proto#L463
+[example code]: https://github.com/jack-berg/newrelic-opentelemetry-examples/commit/2681bf25518c02f4e5830f89254c736e0959d306
+[otlp]: /docs/reference/specification/protocol/otlp/
+[opentelemetry-java]: https://github.com/open-telemetry/opentelemetry-java
+[environment variable]: /docs/reference/specification/metrics/sdk_exporters/otlp/
+[opentelemetry.io]: /docs/instrumentation
+[github.com/open-telemetry]: https://github.com/open-telemetry
