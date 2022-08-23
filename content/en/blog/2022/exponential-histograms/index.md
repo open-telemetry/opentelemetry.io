@@ -107,7 +107,7 @@ have the highest count because you are more likely to roll a combined total of
 7, and the 2 and 12 buckets to have the least because these are the least likely
 rolls, as shown in this example histogram.
 
-![histogram-outcomes-200-rolls-two-6-sided-dice](histogram-outcomes-200-rolls-two-6-sided-dice.webp)
+![histogram outcomes 200 rolls two 6 sided dice](histogram-outcomes-200-rolls-two-6-sided-dice.webp)
 
 OpenTelemetry has two types of histograms. Let's start with the relatively
 simpler [explicit bucket histogram][].
@@ -225,7 +225,7 @@ I wanted the distribution of samples to reflect what we might see in an actual
 HTTP server, with bands of response times corresponding to different operations.
 It will look something like this example:
 
-![target-probability-distribution-response-time](target-probability-distribution-response-time.webp)
+![target probability distribution response time](target-probability-distribution-response-time.webp)
 
 To achieve this, I used a variety of different probability distributions, each
 corresponding to different bands in the curve, and each accounting for some
@@ -247,11 +247,11 @@ bucket histogram.
 
 Here's the millisecond scale exponential bucket histogram:
 
-![millisecond-scale-exponential-bucket-histogram](millisecond-scale-exponential-bucket-histogram.webp)
+![millisecond scale exponential bucket histogram](millisecond-scale-exponential-bucket-histogram.webp)
 
 Here's the millisecond scale explicit bucket histogram:
 
-![millisecond-scale-explicit-bucket-histogram](millisecond-scale-explicit-bucket-histogram.webp)
+![millisecond scale explicit bucket histogram](millisecond-scale-explicit-bucket-histogram.webp)
 
 This demonstration is fairly generous to the explicit bucket histogram because I
 choose to report values in an optimum range for the default buckets (for
@@ -266,11 +266,11 @@ can still see the response time bands.
 
 Here's the nanosecond scale exponential bucket histogram:
 
-![nanosecond-scale-exponential-bucket-histogram](nanosecond-scale-exponential-bucket-histogram.webp)
+![nanosecond scale exponential bucket histogram](nanosecond-scale-exponential-bucket-histogram.webp)
 
 Here's the nanosecond scale explicit bucket histogram:
 
-![nanosecond-scale-explicit-bucket-histogram](nanosecond-scale-explicit-bucket-histogram.webp)
+![nanosecond scale explicit bucket histogram](nanosecond-scale-explicit-bucket-histogram.webp)
 
 ## Next steps
 
