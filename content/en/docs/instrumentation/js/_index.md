@@ -14,11 +14,11 @@ export data.
 
 ## Status and Releases
 
-| Signal  | API Status  | SDK Status        |
-|---------|-------------|-------------------|
-| Trace   | Stable      | Release Candidate |
-| Metrics | Development | Development       |
-| Logs    | Roadmap     | Roadmap           |
+| Signal  | API Status        | SDK Status        |
+| ------- | ----------------- | ----------------- |
+| Trace   | Stable            | Stable            |
+| Metrics | Release Candidate | Release Candidate |
+| Logs    | Development       | Development       |
 
 {{% latest_release "js" /%}}
 
