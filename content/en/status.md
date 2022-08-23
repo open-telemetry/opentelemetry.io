@@ -9,18 +9,13 @@ description: Maturity-level of the main OpenTelemetry components
 
 ## {{% param title %}}
 
-The development status, or maturity level, of the [main OpenTelemetry
-components][main-comp] are as follows:
+OpenTelemetry is made up of several components, each having different meanings
+for "status". For example, the status of a signal in the specification may not
+be the same as its status in a particular language SDK.
 
+The development status, or maturity level, of the [per-language
+SDKs](/docs/instrumentation/) is as follows:
 
-<div class="l-get-started-buttons">
-
-- [Specification status](/docs/reference/specification/status/)
-- [Collector status](/docs/collector/#status-and-releases)
-
-</div>
-
-The development status, or maturity level, of the [per-language SDKs](/docs/instrumentation/) is as follows:
 <div class="l-primary-buttons mt-5">
 
 - [C++](/docs/instrumentation/cpp/#status-and-releases) 
@@ -34,6 +29,17 @@ The development status, or maturity level, of the [per-language SDKs](/docs/inst
 - [Ruby](/docs/instrumentation/ruby/#status-and-releases) 
 - [Rust](/docs/instrumentation/rust/#status-and-releases) 
 - [Swift](/docs/instrumentation/swift/#status-and-releases) 
+
+</div>
+
+The development status, or maturity level, of the [language-agnostic
+components][main-comp] are as follows:
+
+
+<div class="l-primary-buttons mt-5">
+
+- [Specification status](/docs/reference/specification/status/)
+- [Collector status](/docs/collector/#status-and-releases)
 
 </div>
 
