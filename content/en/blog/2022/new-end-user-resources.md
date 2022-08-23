@@ -17,6 +17,30 @@ solutions to achieving ubiquitous observability. Share successes and failures,
 discover best practices, and meet others who are also on a journey to implement
 observability powered by OpenTelemetry.
 
+### OpenTelemetry In Practice Talk Series
+
+Welcome to the **OpenTelemetry in Practice** series! This is a new experiment by
+some OpenTelemetry contributors in the End User Working Group.
+
+We’re aiming to:
+
+- Address practical problems that commonly stop development teams from
+  succeeding with OpenTelemetry
+- Build stronger connections with developers focused on specific languages
+- Improve the experience of implementing OpenTelemetry in production
+
+Each OpenTelemetry in Practice session will include a half hour of lightning
+talks and a half hour of open conversation about the topic. We are looking for
+people to join the OpenTelemetry in Practice team and people to give talks at
+future events. So if you’re interested in shaping these conversations, reach out
+in the
+[#otel-user-research channel](https://cloud-native.slack.com/archives/C01RT3MSWGZ)
+of the [CNCF Slack](https://slack.cncf.io/).
+
+Our first conversation will be on August 23rd, at 10 AM PDT,
+[on Zoom](https://zoom.us/j/5227112777?pwd=TXBqZ3RMWVYxenVGdlk0SFlwMkwwQT09),
+and the topic is Kubernetes & The Collector.
+
 ### Monthly Discussion Group
 
 - Monthly hour long sessions via google meet -- all are welcome!
