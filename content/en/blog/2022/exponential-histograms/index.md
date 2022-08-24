@@ -1,7 +1,7 @@
 ---
 title: "Exponential Histograms: Better Data, Zero Configuration"
 linkTitle: Exponential Histograms
-date: 2022-08-22
+date: 2022-08-23
 author: "[Jack Berg](https://github.com/jack-berg)"
 canonical_url: https://newrelic.com/blog/best-practices/opentelemetry-histograms
 ---
@@ -9,8 +9,7 @@ canonical_url: https://newrelic.com/blog/best-practices/opentelemetry-histograms
 Histograms are a powerful tool in the observability tool belt. OpenTelemetry
 supports histograms because of their ability to efficiently capture and transmit
 distributions of measurements, enabling statistical calculations like
-percentiles (for example, p90, p95, p99 representing the 90th, 95th, and 99th
-percentile).
+[percentiles](https://en.wikipedia.org/wiki/Percentile).
 
 In practice, histograms come in several flavors, each with its own strategy for
 representing buckets and bucket counts. The first stable metric release for
@@ -104,11 +103,11 @@ rolls, as shown in this example histogram.
 OpenTelemetry has two types of histograms. Let's start with the relatively
 simpler [explicit bucket histogram][]. It has buckets with boundaries explicitly
 defined during initialization. For example, if you configure it with boundaries
-`[0,5,10]`, there are `N+1` buckets with boundaries
-`(-∞, 0], (0,5], (5,10], (10,+∞]`. Each bucket tracks the number of occurrences
-of values within its boundaries. Additionally, the histogram tracks the sum of
-all values, the count of all values, the maximum value, and the minimum value.
-See the [opentelemetry-proto][explicit bucket histogram proto] for the complete
+_[0,5,10]_, there are _N+1_ buckets with boundaries _(-∞, 0],(0,5],(5,10],
+(10,+∞]_. Each bucket tracks the number of occurrences of values within its
+boundaries. Additionally, the histogram tracks the sum of all values, the count
+of all values, the maximum value, and the minimum value. See the
+[opentelemetry-proto][explicit bucket histogram proto] for the complete
 definition.
 
 Before we talk about the second type of histogram, pause and think about some of
@@ -119,9 +118,9 @@ request, you can determine:
 - The number of requests.
 - The minimum, maximum, and average request latency.
 - The percentage of requests that had latency less than a particular bucket
-  boundary. For example, if buckets boundaries are `[0, 5, 10]`, you can take
-  the sum of the counts of buckets `(-∞, 0], (0,5], (5,10]`, and divide by the
-  total count to determine the percentage of requests that took less than 10
+  boundary. For example, if buckets boundaries are _[0,5,10]_, you can take the
+  sum of the counts of buckets _(-∞,0],(0,5],(5,10]_, and divide by the total
+  count to determine the percentage of requests that took less than 10
   milliseconds. If you have an SLA that 99% of requests must be resolved in more
   than 10 milliseconds, you can determine whether or not you met it.
 - Patterns, by analyzing the distribution. For example, you might find that most
@@ -132,12 +131,13 @@ The second type of OpenTelemetry histogram is the [exponential bucket
 histogram][]. Exponential bucket histograms have buckets and bucket counts, but
 instead of explicitly defining the bucket boundaries, the boundaries are
 computed based on an exponential scale. More specifically, each bucket is
-defined by an index `i` and has bucket boundaries `(base**i, base**(i+1)]`. The
-base is derived from a scale factor that is adjustable to reflect the range of
-reported measurements and is equal to `2**2**-scale`. Bucket indexes must be
+defined by an index _i_ and has bucket boundaries _(base\*\*i, base\*\*(i+1)]_,
+where _base\*\*i_ means that _base_ is raised to the power of _i_. The base is
+derived from a scale factor that is adjustable to reflect the range of reported
+measurements and is equal to _2\*\*2\*\*-scale_. Bucket indexes must be
 continuous, but a non-zero positive or negative offset can be defined. For
-example, at scale 0, `base = 2**2**-0 = 2` , and the bucket boundaries for
-indexes `[-2, 2]` are defined as `(.25, .5],(.5, 1],(1,2],(2,4],(4,8]`. By
+example, at scale 0, _base = 2\*\*2\*\*-0 = 2_ , and the bucket boundaries for
+indexes _[-2,2]_ are defined as _(.25,.5],(.5,1],(1,2],(2,4],(4,8]_. By
 adjusting the scale, you can represent both large and small values. Like
 explicit bucket histograms, exponential bucket histograms also track the sum of
 all values, the count of all values, the maximum value, and the minimum value.
@@ -151,15 +151,15 @@ explicit bucket histograms. In reality, their subtle differences yield
 dramatically different results.
 
 **Exponential bucket histograms are a more compressed representation.** Explicit
-bucket histograms encode data with a list of bucket counts and a list of `N - 1`
-bucket boundaries, where `N` is the number of buckets. Each bucket count and
-bucket boundary is an 8-byte value, so an `N` bucket explicit bucket histogram
-is encoded as `2N - 1` 8-byte values.
+bucket histograms encode data with a list of bucket counts and a list of _N-1_
+bucket boundaries, where _N_ is the number of buckets. Each bucket count and
+bucket boundary is an 8-byte value, so an _N_ bucket explicit bucket histogram
+is encoded as _2N-1_ 8-byte values.
 
 In contrast, bucket boundaries for exponential bucket histograms are computed
 based on a scale factor and an offset defining the starting index of the
-buckets. Each bucket count is an 8-byte value, so an `N` bucket exponential
-bucket histogram is encoded as `N + 2` 8-byte values (`N` bucket counts and `2`
+buckets. Each bucket count is an 8-byte value, so an _N_ bucket exponential
+bucket histogram is encoded as _N+2_ 8-byte values (_N_ bucket counts and 2
 constants). Of course, both of these representations are commonly compressed
 when sent over a network, so further size reduction is likely, but exponential
 bucket histograms contain fundamentally less information.
@@ -274,12 +274,13 @@ export OTEL_EXPORTER_OTLP_METRICS_DEFAULT_HISTOGRAM_AGGREGATION=exponential_buck
 ```
 
 For instructions on enabling in other languages, check the relevant
-documentation on [opentelemetry.io][] or [github.com/open-telemetry][].
+documentation on [instrumentation][] or [github.com/open-telemetry][].
 
 _A version of this article was [originally posted][] on the New Relic blog._
 
 [originally posted]: {{% param canonical_url %}}
 
+[percentiles]: https://en.wikipedia.org/wiki/Percentile
 [api]: /docs/reference/specification/metrics/api/
 [sdk]: /docs/reference/specification/metrics/sdk/
 [meter provider]: /docs/reference/specification/metrics/api/#meterprovider
@@ -304,5 +305,5 @@ _A version of this article was [originally posted][] on the New Relic blog._
 [opentelemetry-java]: https://github.com/open-telemetry/opentelemetry-java
 [environment variable]:
   /docs/reference/specification/metrics/sdk_exporters/otlp/
-[opentelemetry.io]: /docs/instrumentation
+[instrumentation]: /docs/instrumentation
 [github.com/open-telemetry]: https://github.com/open-telemetry
