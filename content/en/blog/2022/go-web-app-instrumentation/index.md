@@ -1,7 +1,7 @@
 ---
 title: Go Web-app Instrumentation
 linkTitle: Go App Instrumentation
-date: 2022-08-22
+date: 2022-08-23
 author: "[Naveh Mevorach](https://github.com/NavehMevorach) (Aspecto)"
 canonical_url: https://www.aspecto.io/blog/opentelemetry-go-getting-started/
 spelling: >-
