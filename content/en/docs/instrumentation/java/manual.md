@@ -713,7 +713,7 @@ This module is made available by adding the following dependency to your applica
 ```xml
 <dependency>
     <groupId>io.opentelemetry</groupId>
-    <artifactId>opentelemetry-exporter-jaeger</artifactId>
+    <artifactId>opentelemetry-sdk-extension-autoconfigure</artifactId>
 </dependency>
 ```
 
