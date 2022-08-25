@@ -15,6 +15,12 @@ file in `/content/en/registry` for your project. You can find a template in
 
 ## Submitting a blog post
 
+You can submit a blog post either by forking this repository and writting it locally
+or by using the GitHub UI. In both cases we ask you to follow the instructions provided
+by the [blog post template](archetypes/blog.md)
+
+### Fork & Write locally
+
 Follow the [setup instructions][contributing.md] then, to create a skeletal blog
 post, run the following command from the repo root:
 
@@ -26,6 +32,13 @@ Start editing the markdown file at the path you provided in the previous
 command. The file is initialized from the blog-post starter under
 [archetypes](archetypes). Once your post is ready, submit it through a [pull
 request][pr].
+
+### Using the Github UI
+
+* Open the [blog post template for editing][]
+* Update the file name at the top: replace `blog.md` with `../content/en/blog/2022/file-name-for-your-blog-post.md`
+* Start editing the markdown file
+* Once your post is ready click on `Propose changes` at the bottom.
 
 ## Contributing
 
@@ -71,3 +84,5 @@ already contributed][contributors]!
 [pr]:
   https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request
 [registry]: https://opentelemetry.io/registry/
+[blog post template for editing]: 
+  https://github.com/open-telemetry/opentelemetry.io/edit/main/archetypes/blog.md
