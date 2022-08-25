@@ -34,7 +34,8 @@ SDK](/docs/instrumentation/), see the status section of that language:
 
 </div>
 
-The development status, or maturity level, of the [collector](/docs/collector/) and [specification](/docs/reference/specification/) are as follows:
+For the development status, or maturity level, of the [collector](/docs/collector/)
+and [specification](/docs/reference/specification/), see the following:
 
 <div class="l-primary-buttons mt-0">
 
