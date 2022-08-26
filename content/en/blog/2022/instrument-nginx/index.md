@@ -349,7 +349,7 @@ from frontend to nginx to backend.
 The frontend trace should indicate an error, since nginx is forwarding the
 `Page Not Found` from Tomcat.
 
-![A screenshot of the jaeger trace view, showing a waterfall of spans going from the frontend to nginx down to the backend.](nginx-spans-in-jaeger.png)
+![A screenshot of the jaeger trace view, showing a waterfall of spans going from the frontend to nginx down to the backend.](frontend-to-backend-spans-in-jaeger.png)
 
 ## What's next?
 
