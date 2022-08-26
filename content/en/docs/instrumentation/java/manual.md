@@ -745,6 +745,21 @@ OpenTelemetrySdk sdk = AutoConfiguredOpenTelemetrySdk.initialize()
     .getOpenTelemetrySdk();
 ```
 
+When environment variables or system properties are not sufficient, you can use some extension points 
+provided through the auto-configure [SPI](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure-spi) 
+and several methods in the `AutoConfiguredOpenTelemetrySdk` class.
+
+Following an example with a code snippet for adding an additional custom span processor.
+
+```java
+AutoConfiguredOpenTelemetrySdk.builder()
+        .addTracerProviderCustomizer(
+            (sdkTracerProviderBuilder, configProperties) ->
+                sdkTracerProviderBuilder.addSpanProcessor(
+                    new SpanProcessor() { /* implementation omitted for brevity */ }))
+        .build();
+```
+
 ## Logging and Error Handling
 
 OpenTelemetry uses
