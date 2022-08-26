@@ -2,9 +2,9 @@
 title: Zipkin Exporter
 registryType: exporter
 isThirdParty: true
-language: java
+language: go
 tags:
-  - java
+  - go
   - exporter
 repo: https://github.com/open-telemetry/opentelemetry-go/tree/main/exporters/zipkin
 license: Apache 2.0
