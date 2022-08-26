@@ -44,11 +44,11 @@ using OpenTelemetry.Trace;
 
 public class WebApiApplication : HttpApplication
 {
-    private readonly TracerProvider _tracerProvider;
+    private TracerProvider _tracerProvider;
 
     protected void Application_Start()
     {
-        this.tracerProvider = Sdk.CreateTracerProviderBuilder()
+        _tracerProvider = Sdk.CreateTracerProviderBuilder()
             .AddAspNetInstrumentation()
             
             // Other configuration, like adding an exporter and setting resources
