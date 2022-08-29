@@ -5,10 +5,10 @@ date: 2022-09-05
 author: "[Paolo Patierno](https://github.com/ppatierno)"
 ---
 
-Nowadays, [Apache Kafka](https://kafka.apache.org/) is chosen as the central
-piece in a distributed system. Different services communicate with each other by
-using Apache Kafka as a messaging system but even more as en event or data
-streaming platform.
+Nowadays, [Apache Kafka](https://kafka.apache.org/) is chosen as the nervous
+system in a distributed environment. Different services communicate with each
+other by using Apache Kafka as a messaging system but even more as en event or
+data streaming platform.
 
 Taking into account the cloud-native approach for developing microservices,
 quite often [Kubernetes](https://kubernetes.io/) is also used to run the
@@ -19,10 +19,11 @@ infrastructure, while you can focus on developing applications which use it.
 
 Within the overall picture, because of the distributed nature, it is quite
 difficult to track how messages are moved around. This is where OpenTelemetry
-comes into the picture. It defines the specification of semantic conventions for
-[messaging systems](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/messaging.md)
-as well as it provides multiple instrumentation libraries for adding tracing to
-messaging based applications. Of course, there is one for Apache Kafka clients.
+comes into the picture. It provides multiple instrumentation libraries for
+adding tracing to messaging based applications. Of course, there is one for
+Apache Kafka clients. It also defines the specification of semantic conventions
+for
+[messaging systems](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/messaging.md).
 
 But usually, the architecture can even be more complicated: having applications
 not able to connect directly to the Apache Kafka cluster and talking its own
@@ -154,7 +155,8 @@ the initialization of tracing.
 The main environment variables to be set are the following:
 
 - `OTEL_SERVICE_NAME`: specify the logical service name. This is really useful
-  when using a tracing UI (i.e. Jaeger UI) for showing data.
+  when using a tracing UI (i.e. Jaeger UI) for showing data and it is
+  recommended to set it.
 - `OTEL_TRACES_EXPORTER`: the list of exporters to be used for tracing. For
   example, by using `jaeger` you also need to have the corresponding dependency
   in the application.
