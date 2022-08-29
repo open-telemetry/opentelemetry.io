@@ -47,16 +47,50 @@ trace how the messages are produced and consumed via the Kafka clients.
 
 In order to do so, there are two different ways:
 
-- enabling the tracing directly on the Kafka clients used by your application.
 - using an external agent running alongside your application to add tracing.
+- enabling the tracing directly on the Kafka clients used by your application.
 
-The former is mostly a "manual" approach which is about instrumenting your
+The former is actually an "automatic" approach which is about not touching your
+application at all. The agent, running alongside the application, is able to
+intercept messages coming in and out and adds tracing information to them.
+
+The latter is mostly a "manual" approach which is about instrumenting your
 application directly. It means adding some specific dependencies to your project
 and make code changes.
 
-The latter is actually an "automatic" approach which is about not touching your
-application at all. The agent, running alongside the application, is able to
-intercept messages coming in and out and adds tracing information to them.
+## Instrumenting by using the agent
+
+The simpler and automatic approach is by adding tracing to your application with
+no changes or additions into your application code. You also don't need to add
+any dependencies to OpenTelemetry specific libraries. It is possible by using
+the OpenTelemetry agent you can download from
+[here](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases).
+This agent has to run alongside your application in order to inject the logic
+for tracing messages sent and received to/from a Kafka cluster.
+
+Run the producer application in the following way.
+
+```shell
+java -javaagent:path/to/opentelemetry-javaagent.jar \
+      -Dotel.service.name=my-kafka-service \
+      -Dotel.traces.exporter=jaeger \
+      -Dotel.metrics.exporter=none \
+      -jar kafka-producer-agent/target/kafka-producer-agent-1.0-SNAPSHOT-jar-with-dependencies.jar
+```
+
+Run the consumer application similarly.
+
+```shell
+java -javaagent:path/to/opentelemetry-javaagent.jar \
+      -Dotel.service.name=my-kafka-service \
+      -Dotel.traces.exporter=jaeger \
+      -Dotel.metrics.exporter=none \
+      -Dotel.instrumentation.messaging.experimental.receive-telemetry.enabled=true \
+      -jar kafka-consumer-agent/target/kafka-consumer-agent-1.0-SNAPSHOT-jar-with-dependencies.jar
+```
+
+The agent leverages the auto-configuration SDK extension, you will see in a bit,
+by setting the main parameters through system properties.
 
 ## Instrumenting the Apache Kafka clients
 
@@ -219,40 +253,6 @@ Consumer<String, String> tracingConsumer = telemetry.wrap(this.consumer);
 
 Then use the `tracingConsumer` as usual for receiving messages from the Kafka
 cluster.
-
-## Instrumenting by using the agent
-
-Another way is by adding tracing to your application with no changes or
-additions into your application code. You also don't need to add any
-dependencies to OpenTelemetry specific libraries. It is possible by using the
-OpenTelemetry agent you can download from
-[here](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases).
-This agent has to run alongside your application in order to inject the logic
-for tracing messages sent and received to/from a Kafka cluster.
-
-Run the producer application in the following way.
-
-```shell
-java -javaagent:path/to/opentelemetry-javaagent.jar \
-      -Dotel.service.name=my-kafka-service \
-      -Dotel.traces.exporter=jaeger \
-      -Dotel.metrics.exporter=none \
-      -jar kafka-producer-agent/target/kafka-producer-agent-1.0-SNAPSHOT-jar-with-dependencies.jar
-```
-
-Run the consumer application similarly.
-
-```shell
-java -javaagent:path/to/opentelemetry-javaagent.jar \
-      -Dotel.service.name=my-kafka-service \
-      -Dotel.traces.exporter=jaeger \
-      -Dotel.metrics.exporter=none \
-      -Dotel.instrumentation.messaging.experimental.receive-telemetry.enabled=true \
-      -jar kafka-consumer-agent/target/kafka-consumer-agent-1.0-SNAPSHOT-jar-with-dependencies.jar
-```
-
-The agent leverages the auto-configuration SDK extension, by setting the main
-parameters through system properties.
 
 ## Instrumentation in action
 
