@@ -6,22 +6,22 @@ author: "[Paolo Patierno](https://github.com/ppatierno)"
 ---
 
 Nowadays, [Apache Kafka](https://kafka.apache.org/) is chosen as the central piece in a distributed system.
-Different services communicate each other by using Apache Kafka as a messaging system but even more as en event or data streaming platform.
+Different services communicate with each other by using Apache Kafka as a messaging system but even more as en event or data streaming platform.
 
 Taking into account the cloud-native approach for developing microservices, quite often [Kubernetes](https://kubernetes.io/) is also used to run the workloads.
 In this scenario, you can also easily deploy and manage an Apache Kafka cluster on top of it, by using a project like [Strimzi](https://strimzi.io/).
 It takes care of the overall Kafka infrastructure, while you can focus on developing applications which use it.
 
 Within the overall picture, because of the distributed nature, it is quite difficult to track how messages are moved around.
-This is where the OpenTelemetry project comes into the picture.
+This is where OpenTelemetry comes into the picture.
 It defines the specification of semantic conventions for [messaging systems](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/messaging.md) as well as it provides multiple instrumentation libraries for adding tracing to messaging based applications.
 Of course, there is one for Apache Kafka clients.
 
-But usually, the architecture can even be more complicated, having applications not able to connect directly to the Apache Kafka cluster and talking its own custom protocol but using a different one, like for example HTTP.
-In this case, tracing how messages are produced and consumed via HTTP through Apache Kafka could be really complex.
-Even the Strimzi project provides a bridge, with the OpenTelemetry support, for adding tracing data by using the corresponding instrumentation library.
+But usually, the architecture can even be more complicated: having applications not able to connect directly to the Apache Kafka cluster and talking its own custom protocol but using a different one, like for example HTTP.
+In this case, tracing how messages are produced and consumed via HTTP through Apache Kafka is really complex.
+The Strimzi project provides a bridge, with the OpenTelemetry support, for adding tracing data by using the corresponding instrumentation library.
 
-In this article, we are going to see how it is possible to enable tracing on Apache Kafka based client applications in different ways.
+In this article, you will learn how it is possible to enable tracing on Apache Kafka based client applications in different ways.
 We will refer to the Java based instrumentation.
 You can also find all the examples in this [repository](https://github.com/ppatierno/kafka-opentelemetry).
 
