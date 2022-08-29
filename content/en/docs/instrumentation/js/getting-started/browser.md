@@ -7,7 +7,7 @@ This guide uses the example application in HTML & javascript provided below, but
 
 ## Example Application
 
-This is a very simple guide, if you'd like to see more complex examples go to [examples/tracer-web](https://github.com/open-telemetry/opentelemetry-js/tree/main/examples/tracer-web)
+This is a very simple guide, if you'd like to see more complex examples go to [examples/opentelemetry-web](https://github.com/open-telemetry/opentelemetry-js/tree/main/examples/opentelemetry-web)
 
 Copy the following file into an empty directory and call it `index.html`.
 
