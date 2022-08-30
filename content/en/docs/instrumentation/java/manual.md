@@ -704,17 +704,61 @@ instrument.
 
 ### Auto Configuration
 
-To configure the OpenTelemetry SDK based on the standard set of environment
-variables and system properties, you can use the
-`opentelemetry-sdk-extension-autoconfigure` module.
+Instead of manually creating the `OpenTelemetry` instance by using the SDK builders
+directly from your code, it is also possible to use the SDK auto-configuration extension 
+through the `opentelemetry-sdk-extension-autoconfigure` module.
+
+This module is made available by adding the following dependency to your application.
+
+```xml
+<dependency>
+    <groupId>io.opentelemetry</groupId>
+    <artifactId>opentelemetry-sdk-extension-autoconfigure</artifactId>
+</dependency>
+```
+
+It allows you to auto-configure the OpenTelemetry SDK based on a standard set of supported 
+environment variables and system properties.
+Each environment variable has a corresponding system property named the same way but as 
+lower case and using the `.` (dot) character instead of the `_` (underscore) as separator.
+
+The logical service name can be specified via the `OTEL_SERVICE_NAME` environment variable 
+(or `otel.service.name` system property).
+
+The traces, metrics or logs exporters can be set via the `OTEL_TRACES_EXPORTER`, 
+`OTEL_METRICS_EXPORTER` and `OTEL_LOGS_EXPORTER` environment variables.
+For example `OTEL_TRACES_EXPORTER=jaeger` configures your application to use the Jaeger exporter.
+The corresponding Jaeger exporter library has to be provided in the classpath of the application as well.
+
+It's also possible to set up the propagators via the `OTEL_PROPAGATORS` environment variable, 
+like for example using the `tracecontext` value to use [W3C Trace Context](https://www.w3.org/TR/trace-context/).
+
+For more details, see all the supported configuration options in the module's
+[README](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure).
+
+The SDK auto-configuration has to be initialized from your code in order to allow the module
+to go through the provided environment variables (or system properties) and set up the 
+`OpenTelemetry` instance by using the builders internally.
 
 ```java
 OpenTelemetrySdk sdk = AutoConfiguredOpenTelemetrySdk.initialize()
     .getOpenTelemetrySdk();
 ```
 
-See the supported configuration options in the module's
-[README](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure).
+When environment variables or system properties are not sufficient, you can use some extension points 
+provided through the auto-configure [SPI](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure-spi) 
+and several methods in the `AutoConfiguredOpenTelemetrySdk` class.
+
+Following an example with a code snippet for adding an additional custom span processor.
+
+```java
+AutoConfiguredOpenTelemetrySdk.builder()
+        .addTracerProviderCustomizer(
+            (sdkTracerProviderBuilder, configProperties) ->
+                sdkTracerProviderBuilder.addSpanProcessor(
+                    new SpanProcessor() { /* implementation omitted for brevity */ }))
+        .build();
+```
 
 ## Logging and Error Handling
 
