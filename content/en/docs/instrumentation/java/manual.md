@@ -205,11 +205,39 @@ span.setAttribute("http.method", "GET");
 span.setAttribute("http.url", url.toString());
 ```
 
-Some of these operations represent calls that use well-known protocols like HTTP
-or database calls. For these, OpenTelemetry requires specific attributes to be
-set. The full attribute list is available in the [Semantic Conventions]({{<
-relref "/docs/reference/specification/trace/semantic_conventions/" >}}) in the
-cross-language specification.
+### Semantic Attributes
+
+There are semantic conventions for spans representing operations in well-known
+protocols like HTTP or database calls. Semantic conventions for these spans are
+defined in the specification at [Trace Semantic Conventions]({{< relref
+"/docs/reference/specification/trace/semantic_conventions" >}}).
+
+First add the semantic conventions as a dependency to your application:
+
+##### Maven
+
+```xml
+<dependency>
+    <groupId>io.opentelemetry</groupId>
+    <artifactId>opentelemetry-semconv</artifactId>
+</dependency>
+```
+
+##### Gradle
+
+```kotlin
+dependencies {
+  implementation("io.opentelemetry:opentelemetry-semconv")
+}
+```
+
+Finally, you can update your file to include semantic attributes:
+
+```java
+Span span = tracer.spanBuilder("/resource/path").setSpanKind(SpanKind.CLIENT).startSpan();
+span.setAttribute(SemanticAttributes.HTTP_METHOD, "GET");
+span.setAttribute(SemanticAttributes.HTTP_URL, url.toString());
+```
 
 ### Create Spans with events
 
