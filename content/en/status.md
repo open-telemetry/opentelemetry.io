@@ -18,7 +18,7 @@ in a particular language SDK.
 For the development status, or maturity level, of a [language
 SDK](/docs/instrumentation/), see the status section of that language:
 
-<div class="l-primary-buttons mt-0">
+<div class="l-status-secondary mt-0">
 
 - [C++](/docs/instrumentation/cpp/#status-and-releases) 
 - [.NET](/docs/instrumentation/net/#status-and-releases) 
@@ -37,7 +37,7 @@ SDK](/docs/instrumentation/), see the status section of that language:
 For the development status, or maturity level, of the [collector](/docs/collector/)
 and [specification](/docs/reference/specification/), see the following:
 
-<div class="l-primary-buttons mt-0">
+<div class="l-status-primary mt-0">
 
 - [Specification status](/docs/reference/specification/status/)
 - [Collector status](/docs/collector/#status-and-releases)
