@@ -26,12 +26,15 @@ end
 
 {{< /tabs >}}
 
-The test configuration should set the `exporter` to `:undefined` and the `:otel_batch_processor`'s delay to a minimum.
+The test configuration should set the `exporter` to `:none` and the span processor to `:otel_simple_processor`.
 
 {{< tabs Erlang Elixir >}}
 
 {{< tab >}}
-TODO
+{opentelemetry,
+  [{traces_exporter, none},
+   {processors,
+     [{otel_simple_processor, #{}}]}]}
 {{< /tab >}}
 
 {{< tab >}}
@@ -39,10 +42,10 @@ TODO
 import Config
 
 config :opentelemetry,
-    traces_exporter: :undefined
+    traces_exporter: :none
 
 config :opentelemetry, :processors, [
-  {:otel_batch_processor, %{scheduled_delay_ms: 1}}
+  {:otel_simple_processor, %{}}
 ]
 {{< /tab >}}
 
