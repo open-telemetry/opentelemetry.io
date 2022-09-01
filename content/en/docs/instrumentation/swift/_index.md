@@ -1,7 +1,9 @@
 ---
 title: Swift
 weight: 28
-description: A language-specific implementation of OpenTelemetry in Swift.
+description: >-
+  <img width="35" src="https://github.com/open-telemetry/opentelemetry.io/blob/main/iconography/32x32/Swift.svg"></img>
+  A language-specific implementation of OpenTelemetry in Swift.
 ---
 
 This is the OpenTelemetry for Swift documentation. OpenTelemetry is an

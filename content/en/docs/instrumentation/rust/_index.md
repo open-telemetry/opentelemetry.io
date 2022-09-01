@@ -1,6 +1,8 @@
 ---
 title: Rust
-description: A language-specific implementation of OpenTelemetry in Rust.
+description: >-
+  <img width="35" src="https://github.com/open-telemetry/opentelemetry.io/blob/main/iconography/32x32/Rust.svg"></img>
+  A language-specific implementation of OpenTelemetry in Rust.
 weight: 26
 ---
 
