@@ -110,7 +110,7 @@ If you are using [Jaeger](https://www.jaegertracing.io/) to visualize trace
 data, This is how to run it in a docker container:
 
 ```shell
-$ docker run -d --name jaeger \
+docker run -d --name jaeger \
   -e COLLECTOR_ZIPKIN_HOST_PORT=:9411 \
   -e COLLECTOR_OTLP_ENABLED=true \
   -p 6831:6831/udp \
