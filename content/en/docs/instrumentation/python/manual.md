@@ -174,8 +174,8 @@ from opentelemetry.semconv.trace import SpanAttributes
 // ...
 
 current_span = trace.get_current_span()
-rollspan.set_attribute(SpanAttributes.HTTP_METHOD, "GET")
-rollspan.set_attribute(SpanAttributes.HTTP_URL, "https://opentelemetry.io/")
+current_span.set_attribute(SpanAttributes.HTTP_METHOD, "GET")
+current_span.set_attribute(SpanAttributes.HTTP_URL, "https://opentelemetry.io/")
 ```
 
 ### Adding events
