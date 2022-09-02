@@ -107,7 +107,7 @@ If you are using .NET 5 or higher, the previous code sample is not required.
 ### Jaeger
 
 If you are using [Jaeger](https://www.jaegertracing.io/) to visualize trace
-data, This is how to run it in a docker container:
+data, this is how to run it in a docker container:
 
 ```shell
 docker run -d --name jaeger \
