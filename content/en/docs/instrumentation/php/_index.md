@@ -19,7 +19,7 @@ The current status of the major functional components for OpenTelemetry PHP is
 as follows:
 
 | Tracing   | Metrics   | Logging             |
-| -------   | -------   | -------             |
+| --------- | --------- | ------------------- |
 | Pre-Alpha | Pre-Alpha | Not Yet Implemented |
 
 {{% latest_release "php" /%}}
