@@ -16,7 +16,7 @@ get started using OpenTelemetry for Erlang/Elixir or any other language for the 
 
 The current status of the major functional components for OpenTelemetry Erlang/Elixir is as follows:
 
-| Tracing | Metrics | Logging |
+| Traces  | Metrics | Logs    |
 | ------- | ------- | ------- |
 | Stable  | Alpha   | Not Yet Implemented |
 

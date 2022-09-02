@@ -18,7 +18,7 @@ get started using OpenTelemetry for Rust.
 The current status of the major functional components for OpenTelemetry Rust is
 as follows:
 
-| Tracing | Metrics | Logging             |
+| Traces  | Metrics | Logs                |
 | ------- | ------- | ------------------- |
 | Beta    | Alpha   | Not Yet Implemented |
 

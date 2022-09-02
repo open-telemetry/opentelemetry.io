@@ -18,7 +18,7 @@ get started using OpenTelemetry for Swift.
 The current status of the major functional components for OpenTelemetry Swift is
 as follows:
 
-| Tracing | Metrics | Logging             |
+| Traces  | Metrics | Logs                |
 | ------- | ------- | ------------------- |
 | Beta    | Alpha   | Not Yet Implemented |
 

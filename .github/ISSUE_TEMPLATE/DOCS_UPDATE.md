@@ -7,10 +7,6 @@ assignees: ''
 
 ---
 
-## IMPORTANT - READ THIS FIRST
-The authoritative copy of the documentation for each language is contained in the respective language repository at `/website_docs`.
-Please report any issues in the appropriate SIG repository.
-
 **What needs to be changed?**
 Describe the update that is required.
 
