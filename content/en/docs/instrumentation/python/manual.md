@@ -155,6 +155,29 @@ current_span.set_attribute("operation.name", "Saying hello!")
 current_span.set_attribute("operation.other-stuff", [1, 2, 3])
 ```
 
+### Add semantic attributes
+
+[Semantic Attributes](/docs/reference/specification/trace/semantic_conventions/) are pre-defined [Attributes](/docs/concepts/signals/traces/#attributes) that are well-known naming conventions for common kinds of data. Using Semantic Attributes lets you normalize this kind of information across your systems.
+
+To use Semantic Attributes in Python, ensure you have the semantic convetions package:
+
+```shell
+pip install opentelemetry-semantic-conventions
+```
+
+Then you can use it in code:
+
+```python
+from opentelemetry import trace
+from opentelemetry.semconv.trace import SpanAttributes
+
+// ...
+
+current_span = trace.get_current_span()
+rollspan.set_attribute(SpanAttributes.HTTP_METHOD, "GET")
+rollspan.set_attribute(SpanAttributes.HTTP_URL, "www.gooddeals.com")
+```
+
 ### Adding events
 
 An [event](/docs/concepts/signals/traces/#span-events) is a human-readable
