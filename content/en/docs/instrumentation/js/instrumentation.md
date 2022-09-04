@@ -254,9 +254,22 @@ Sometimes it's helpful to do something with the current/active
 point in program execution.
 
 ```js
-const span = opentelemetry.trace.getSpan(opentelemetry.context.active());
+const activeSpan = opentelemetry.trace.getActiveSpan();
 
-// do something with the current span, optionally ending it if that is appropriate for your use case.
+// do something with the active span, optionally ending it if that is appropriate for your use case.
+```
+
+## Get a span from context
+
+It can also be helpful to get the
+[span](/docs/concepts/signals/traces/#spans-in-opentelemetry) from a given
+context that isn't necessarily the active span.
+
+```js
+const ctx = getContextFromSomewhere();
+const span = opentelemetry.trace.getSpan(ctx);
+
+// do something with the acquired span, optionally ending it if that is appropriate for your use case.
 ```
 
 ## Attributes
