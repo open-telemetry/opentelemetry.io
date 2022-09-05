@@ -1,6 +1,6 @@
 ---
 title: Instrumenting Apache Kafka clients with OpenTelemetry
-linkTitle: Instrumenting Apache Kafka clients with OpenTelemetry
+linkTitle: Instrumenting Apache Kafka clients
 date: 2022-09-05
 author: "[Paolo Patierno](https://github.com/ppatierno)"
 ---
