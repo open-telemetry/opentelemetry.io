@@ -18,7 +18,7 @@ The current status of the major functional components for OpenTelemetry Erlang/E
 
 | Traces  | Metrics | Logs    |
 | ------- | ------- | ------- |
-| Stable  | Alpha   | Not Yet Implemented |
+| [Stable][]  | [Stable][]   | Not Yet Implemented |
 
 {{% latest_release "erlang" %}}
   Packages of the API, SDK and OTLP exporter are published to
@@ -27,3 +27,5 @@ The current status of the major functional components for OpenTelemetry Erlang/E
   [opentelemetry](https://hex.pm/packages/opentelemetry) and
   [opentelemetry_exporter](https://hex.pm/packages/opentelemetry_exporter).
 {{% /latest_release %}}
+
+[Stable]: /docs/reference/specification/versioning-and-stability/#stable
