@@ -3,9 +3,9 @@ title: {{ replaceRE "[-_]" " " .Name | title }}
 linkTitle: ADD A SHORT TITLE HERE # Mandatory, make sure that your short title. 
 date: {{ dateFormat "2006-01-02" .Date }} # Put the current date, we will keep the date updated until your PR is merged
 author: >- # If you have only one author, then add the single name on this line in quotes.
-  [Author1 Name](https://github.com/author1_GH_ID) (Organisation Name 1),
+  [Author1 Name](https://github.com/author1_GH_ID) (Organization Name 1),
   ...
-  [AuthorX Name](https://github.com/authorX_GH_ID) (Organisation Name X)
+  [AuthorX Name](https://github.com/authorX_GH_ID) (Organization Name X)
 draft: true # TODO: remove this line once your post is ready to be published
 # canonical_url: http://somewhere.else/ # TODO: if this blog post has been posted somewhere else already, uncomment & provide the conancial URL here.
 ---
