@@ -152,3 +152,51 @@ another_tracer = trace.get_tracer(__name__, tracer_provider=another_tracer_provi
 with another_tracer.start_as_current_span("name-here") as span:
     span.set_attribute("another-key", "another-value")
 ```
+
+## Capture HTTP request and response headers
+
+To capture [HTTP request and response headers][] as span attributes,
+provide a comma-separated list of headers you want to collect via
+the environment variables
+`OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_REQUEST` and
+`OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_RESPONSE`, e.g.:
+
+```console
+$ export OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_REQUEST="Accept-Encoding,User-Agent,Referer"
+$ export OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_RESPONSE="Last-Modified,Content-Type"
+$ opentelemetry-instrument --traces_exporter console python app.py
+```
+
+This is supported for the following framework instrumentations:
+
+- Django
+- Falcon
+- FastAPI
+- Pyramid
+- Starlette
+- Tornado
+- WSGI
+
+If those headers are available, they will be included in your span:
+
+```json
+{
+    "attributes": {
+        "http.request.header.user-agent": [
+            "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)"
+        ],
+        "http.request.header.accept_encoding": [
+            "gzip, deflate, br"
+        ],
+        "http.response.header.last_modified": [
+            "2022-04-20 17:07:13.075765"
+        ],
+        "http.response.header.content_type": [
+            "text/html; charset=utf-8"
+        ]
+    }
+}
+```
+
+[HTTP request and response headers]:
+    https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/http.md#http-request-and-response-headers
