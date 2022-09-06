@@ -354,7 +354,7 @@ to see that the Span of APISIX is included in the Trace, as shown below:
 
 ![Jaeger UI](jaeger-ui-3.png)
 
-![Zipkin UI](/zipkin-ui-2.png)
+![Zipkin UI](zipkin-ui-2.png)
 
 When demo-server is not instrumented, you can still getting visibility of the
 demo-server behavior by enabling this plugin. Although this is not a typical
