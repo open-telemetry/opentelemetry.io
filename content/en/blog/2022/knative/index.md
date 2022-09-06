@@ -3,7 +3,7 @@ title: Distributed tracing in Knative
 linkTitle: Tracing in Knative
 date: 2022-04-12
 spelling: cSpell:ignore Cloudevents istio Loffay Pavol pavolloffay
-author: Pavol Loffay
+author: "[Pavol Loffay](https://github.com/pavolloffay)"
 ---
 
 In this article, you will learn how distributed tracing works in Knative and we
@@ -35,7 +35,7 @@ request or transaction. On the diagram below there are two user workloads (first
 and second) and an incoming request marked as (1. HTTP) that goes to use
 workload first and then to the workload second as a cloud event message.
 
-![Knative data flow: incoming HTTP request goes through Knative service and queue-proxy sidecar container before it reaches a workload](/img/blog-knative/knative-data-flow.jpg)
+![Knative data flow: incoming HTTP request goes through Knative service and queue-proxy sidecar container before it reaches a workload](knative-data-flow.jpg)
 
 There are two important facts about this diagram:
 
@@ -70,7 +70,7 @@ service receives an HTTP call and sends a cloud event to the second service. The
 full demo source code can be found in
 [pavolloffay/knative-tracing](https://github.com/pavolloffay/knative-tracing).
 
-![Jaeger screenshot showing a Knative trace](/img/blog-knative/jaeger-knative-trace.jpg)
+![Jaeger screenshot showing a Knative trace](jaeger-knative-trace.jpg)
 
 The trace shows the following services interacting: activator, first workload,
 broker-ingress, imc-dispatcher, broker-filter, activator, and second workload.
@@ -166,7 +166,7 @@ The document standardizes attributes related to CloudEvents. The screenshot
 below is from the demo application that is still not using the standardized
 attribute names:
 
-![A screenshot from Jaeger that shows Knative attributes](/img/blog-knative/jaeger-knative-attributes.jpg)
+![A screenshot from Jaeger that shows Knative attributes](jaeger-knative-attributes.jpg)
 
 ### Configuration
 
