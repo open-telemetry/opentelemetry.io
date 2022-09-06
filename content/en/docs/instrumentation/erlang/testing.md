@@ -1,6 +1,6 @@
 ---
 title: "Testing"
-draft: true
+weight: 40
 ---
 
 When relying on OpenTelemetry for alerts, pages, or SLIs/SLOs, it can be important to test that certain spans are created and attributes correctly set.
@@ -31,6 +31,7 @@ The test configuration should set the `exporter` to `:none` and the span process
 {{< tabs Erlang Elixir >}}
 
 {{< tab >}}
+%% config/sys.config.src
 {opentelemetry,
   [{traces_exporter, none},
    {processors,
