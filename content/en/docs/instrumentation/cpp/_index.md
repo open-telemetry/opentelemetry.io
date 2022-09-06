@@ -17,7 +17,7 @@ get started using OpenTelemetry for C++.
 The current status of the major functional components for OpenTelemetry C++ is
 as follows:
 
-| Tracing   | Metrics      | Logging      |
+| Traces    | Metrics      | Logs         |
 | --------  | -------      | -------      |
 | Stable    | Experimental | Experimental |
 
@@ -28,3 +28,7 @@ as follows:
 - [OpenTelemetry for C++ on GitHub](https://github.com/open-telemetry/opentelemetry-cpp)
 - [Examples](https://github.com/open-telemetry/opentelemetry-cpp/tree/main/examples)
 - [Documentation](https://opentelemetry-cpp.readthedocs.io/en/latest/)
+  - [Overview](https://opentelemetry-cpp.readthedocs.io/en/latest/api/Overview.html)
+  - [Instrumenting code](https://opentelemetry-cpp.readthedocs.io/en/latest/api/GettingStarted.html)
+  - [Configuring the SDK](https://opentelemetry-cpp.readthedocs.io/en/latest/sdk/GettingStarted.html#tracerprovider)
+  - [Exporters](https://opentelemetry-cpp.readthedocs.io/en/latest/sdk/GettingStarted.html#exporter)

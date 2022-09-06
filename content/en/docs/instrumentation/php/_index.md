@@ -1,6 +1,9 @@
 ---
 title: PHP
-description: A language-specific implementation of OpenTelemetry in PHP.
+description: >-
+  <img width="35"
+  src="https://raw.githubusercontent.com/open-telemetry/opentelemetry.io/main/iconography/32x32/PHP.svg"></img>
+  A language-specific implementation of OpenTelemetry in PHP.
 weight: 21
 ---
 
@@ -15,8 +18,8 @@ get started using OpenTelemetry for PHP.
 The current status of the major functional components for OpenTelemetry PHP is
 as follows:
 
-| Tracing   | Metrics   | Logging             |
-| -------   | -------   | -------             |
+| Traces    | Metrics   | Logs                |
+| --------- | --------- | ------------------- |
 | Pre-Alpha | Pre-Alpha | Not Yet Implemented |
 
 {{% latest_release "php" /%}}

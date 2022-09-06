@@ -17,9 +17,7 @@ doing so, the Agent is capable of receiving telemetry data (push and pull
 based) as well as enhancing telemetry data with metadata such as custom tags or
 infrastructure information. In addition, the Agent can offload responsibilities
 that client instrumentation would otherwise need to handle including batching,
-retry, encryption, compression and more. OpenTelemetry instrumentation
-libraries by default export their data assuming a locally running Collector is
-available.
+retry, encryption, compression and more.
 
 ## Gateway
 

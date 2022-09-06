@@ -16,7 +16,7 @@ export data.
 
 | Signal  | API Status        | SDK Status        |
 | ------- | ----------------- | ----------------- |
-| Trace   | Stable            | Stable            |
+| Traces  | Stable            | Stable            |
 | Metrics | Release Candidate | Release Candidate |
 | Logs    | Development       | Development       |
 

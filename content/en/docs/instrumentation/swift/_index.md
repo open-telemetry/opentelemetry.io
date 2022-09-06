@@ -1,7 +1,10 @@
 ---
 title: Swift
 weight: 28
-description: A language-specific implementation of OpenTelemetry in Swift.
+description: >-
+  <img width="35"
+  src="https://raw.githubusercontent.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Swift.svg"></img>
+  A language-specific implementation of OpenTelemetry in Swift.
 ---
 
 This is the OpenTelemetry for Swift documentation. OpenTelemetry is an
@@ -15,8 +18,8 @@ get started using OpenTelemetry for Swift.
 The current status of the major functional components for OpenTelemetry Swift is
 as follows:
 
-| Tracing | Metrics | Logging             |
-| ------- | ------- | -------             |
+| Traces  | Metrics | Logs                |
+| ------- | ------- | ------------------- |
 | Beta    | Alpha   | Not Yet Implemented |
 
 {{% latest_release "swift" /%}}

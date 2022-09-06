@@ -93,6 +93,10 @@ params:
         url: https://cncf-branding.netlify.app/projects/opentelemetry/
         icon: fas fa-image
         desc: Check out the CNCF logo page for OpenTelemetry
+      - name: Meeting Recordings
+        url: https://www.youtube.com/channel/UCHZDBZTIfdy94xMjMKz-_MA
+        icon: fab fa-youtube
+        desc: Watch our meeting recordings on Youtube
     developer:
       - name: GitHub
         url: https://github.com/open-telemetry

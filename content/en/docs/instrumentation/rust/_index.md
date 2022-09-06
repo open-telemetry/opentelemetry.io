@@ -1,6 +1,9 @@
 ---
 title: Rust
-description: A language-specific implementation of OpenTelemetry in Rust.
+description: >-
+  <img width="35"
+  src="https://raw.githubusercontent.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Rust.svg"></img>
+  A language-specific implementation of OpenTelemetry in Rust.
 weight: 26
 ---
 
@@ -15,8 +18,8 @@ get started using OpenTelemetry for Rust.
 The current status of the major functional components for OpenTelemetry Rust is
 as follows:
 
-| Tracing | Metrics | Logging |
-| ------- | ------- | ------- |
+| Traces  | Metrics | Logs                |
+| ------- | ------- | ------------------- |
 | Beta    | Alpha   | Not Yet Implemented |
 
 {{% latest_release "rust" /%}}
@@ -24,6 +27,7 @@ as follows:
 ## Crates
 
 Opentelemetry for Rust publishes the following crates:
+
 - [opentelemetry](https://crates.io/crates/opentelemetry)
 - [opentelemetry-api](https://crates.io/crates/opentelemetry-api)
 - [opentelemetry-sdk](https://crates.io/crates/opentelemetry-sdk)
