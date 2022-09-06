@@ -155,9 +155,11 @@ with another_tracer.start_as_current_span("name-here") as span:
 
 ## Capture HTTP request and response headers
 
-To capture [HTTP request and response headers][] as span attributes,
-provide a comma-separated list of headers you want to collect via
-the environment variables
+You can configure the agent to capture predefined HTTP headers as span
+attributes, according to the [semantic convention][]. 
+
+To define which HTTP headers you want to capture, provide a comma-separated list
+of HTTP header names via the environment variables
 `OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_REQUEST` and
 `OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_RESPONSE`, e.g.:
 
@@ -167,7 +169,8 @@ $ export OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_RESPONSE="Last-Modifie
 $ opentelemetry-instrument --traces_exporter console python app.py
 ```
 
-This is supported for the following framework instrumentations:
+
+These configuration options are supported by the following HTTP instrumentations:
 
 - Django
 - Falcon
@@ -198,5 +201,5 @@ If those headers are available, they will be included in your span:
 }
 ```
 
-[HTTP request and response headers]:
+[semantic convention]:
     https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/http.md#http-request-and-response-headers
