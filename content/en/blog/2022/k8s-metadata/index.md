@@ -52,7 +52,7 @@ The processor internally maintains a list of pods and an associated attribute,
 usually the IP address of the pod, and uses this attribute to know which pod
 generates a certain span.
 
-![k8sattributes processor data flow](/img/blog-k8s-metadata/k8sprocessor.png)
+![k8sattributes processor data flow](k8sprocessor.png)
 
 In the figure above you can see how the data flows: The table of pods is fetched
 using Kubernetes API, while the pod IP is extracted from the connection context
@@ -148,7 +148,7 @@ contains the permissions to fetch the pod list.
 Next, deploy the manifest and the [vert.x example app][] to generate some
 traces.
 
-![Jaeger UI showing the span attributes](/img/blog-k8s-metadata/jaeger-k8sattributes.png)
+![Jaeger UI showing the span attributes](jaeger-k8sattributes.png)
 
 As you can see, each span of the trace now has the corresponding pod attributes
 attached to it.

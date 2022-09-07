@@ -4,7 +4,7 @@ linkTitle: Instrument Apache Http Server
 date: 2022-05-27
 spelling:
   cSpell:ignore Centos centos7 Debajit debuggability libmod OLTP uncompress
-author: Debajit Das
+author: "[Debajit Das](https://github.com/DebajitDas) (Cisco)"
 ---
 
 If you are using Apache Web Server and in dire need of some observability tool
@@ -59,13 +59,13 @@ To send a request to Apache webServer you can either use curl from terminal
 landing page saying "Testing 123..." for Apache Http Server on Centos will be
 displayed as below:
 
-![Testing](/img/instrument-apache-http-server/testing.png)
+![Testing](testing.png)
 
 Now, traces and spans can be seen on the Zipkin backend. To view them, visit
 [localhost:9411][] in your browser and click on **Run Query** button. Following
 is the screenshot from Zipkin UI showing spans emitted by the Apache webServer.
 
-![Span-List](/img/instrument-apache-http-server/span-list.png)
+![Span-List](span-list.png)
 
 This shows a list of queries or endpoints that have been triggered to Apache
 WebServer, such as `/noindex/css`.
@@ -73,7 +73,7 @@ WebServer, such as `/noindex/css`.
 To see the details click on any of the **SHOW** buttons. Below is the screenshot
 from the Zipkin UI showing the span hierarchy.
 
-![A screenshot from the Zipkin UI showing the span hierarchy](/img/instrument-apache-http-server/span-hierarchy.png)
+![A screenshot from the Zipkin UI showing the span hierarchy](span-hierarchy.png)
 
 The above shows that as a part of this request, `mod_proxy`,
 `mod_proxy_balancer` and `mod_dav` got involved in the request processing and
@@ -95,7 +95,7 @@ Zipkin backend. The following steps are required to be done.
 - Add `AddType application/x-httpd-php .html` in `/etc/httpd/conf/httpd.conf` as
   mentioned below:
 
-  ![Php-Config](/img/instrument-apache-http-server/php-config.png)
+  ![Php-Config](php-config.png)
 
 - Create a file named as `index.html` in the **/var/www/html** directory and add
   the following text
@@ -123,13 +123,13 @@ Zipkin backend. The following steps are required to be done.
 
 - Now, visit [localhost:9004/index.html][]. You should see something like this:
 
-  ![Php-Response](/img/instrument-apache-http-server/php-response.png)
+  ![Php-Response](php-response.png)
 
 - Now, traces and spans can be seen on the Zipkin backend. To view them, type
   [localhost:9411][] on the browser and click on the **Run Query** Button. To
   see the details, click on the **SHOW** button corresponding to `/index.html`.
 
-  ![Span-Delay](/img/instrument-apache-http-server/span-delay.png)
+  ![Span-Delay](span-delay.png)
 
 - We can see that, `mod_php5.c_handler` consumes around **1 second** which
   contributes to the overall time-consumption of the request.
@@ -208,17 +208,17 @@ writing this blog, support for other architectures is not provided.
   `Include conf/opentelemetry_module.conf` at the end of the file as mentioned
   below:
 
-  ![Conf](/img/instrument-apache-http-server/conf.png)
+  ![Conf](conf.png)
 
 - Now let’s look at opentelemetry_module.conf and its contents:
 
   - The below LoadFile are the dependent libraries that come with the package.
 
-    ![LoadFile](/img/instrument-apache-http-server/loadfile.png)
+    ![LoadFile](loadfile.png)
 
   - The below configuration are for the OpenTelemetry Module
 
-    ![LoadModule](/img/instrument-apache-http-server/loadmodule.png)
+    ![LoadModule](loadmodule.png)
 
     In the case of Apache 2.2, `libmod_apache_otel22.so` needs to be used
     instead of `libmod_apache_otel.so`
@@ -226,12 +226,12 @@ writing this blog, support for other architectures is not provided.
   - The following directive should be ON for the openTelemetry module to be
     enabled, else it would be disabled.
 
-    ![enabled](/img/instrument-apache-http-server/enabled.png)
+    ![enabled](enabled.png)
 
   - Since the module works with the Collector and sends data in OLTP format, the
     following directives are necessary.
 
-    ![exporter](/img/instrument-apache-http-server/exporter.png)
+    ![exporter](exporter.png)
 
     _ApacheModuleOtelExporterEndpoint_ should point to the endpoint of the
     collector
@@ -239,7 +239,7 @@ writing this blog, support for other architectures is not provided.
   - ServiceNamespace, ServiceName and ServiceInstanceId should be provided by
     the following directives.
 
-    ![service](/img/instrument-apache-http-server/service.png)
+    ![service](service.png)
 
   - All other directives are either optional and can be kept as it is for this
     guide
@@ -247,7 +247,7 @@ writing this blog, support for other architectures is not provided.
 - To verify whether Apache OpenTelemetry Module is properly enabled into Apache
   Web Server, type `httpd -M` and look for `otel_apache_module (shared)`
 
-  ![verify-module](/img/instrument-apache-http-server/verify-module.png)
+  ![verify-module](verify-module.png)
 
 - Now, restart the apache module and open telemetry module should be
   instrumented.

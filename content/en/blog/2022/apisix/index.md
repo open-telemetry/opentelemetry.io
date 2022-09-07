@@ -2,7 +2,9 @@
 title: Apache APISIX Integrates with OpenTelemetry to Collect Tracing Data
 linkTitle: Apache APISIX-Opentelemetry Integration
 date: 2022-03-26
-author: Haochao Zhuang, Fei Han
+author: >-
+  [Haochao Zhuang](https://github.com/dmsolr), 
+  [Fei Han](https://github.com/hf400159)
 canonical_url: https://apisix.apache.org/blog/2022/02/28/apisix-integration-opentelemetry-plugin/
 ---
 
@@ -19,7 +21,7 @@ backends, such as Jaeger, Zipkin, and OpenCensus. You can view the list of
 plugins that have adapted the OpenTelemetry Collector in the
 [registry](/registry/?s=collector).
 
-![Architecture-Present](/img/apisix/architecture-present.png)
+![Architecture-Present](architecture-present.png)
 
 ## Plugin Introduction
 
@@ -170,7 +172,7 @@ After the access is successful, you can see the details of the span similar to
 `/put` in the Jaeger UI, and you can see that the custom tags in the route are
 displayed in the Tags list: `http_x-custom-ot-key` and `route_id`.
 
-![Jaeger UI](/img/apisix/jaeger-ui-1.png)
+![Jaeger UI](jaeger-ui-1.png)
 
 You need to note that the `additional_attributes` configuration is set to take
 values from Apache APISIX and Nginx variables as `attribute` values, so
@@ -206,23 +208,23 @@ successful.
 
 The following screenshots show an example of successful access.
 
-![Jaeger UI](/img/apisix/jaeger-ui-2.png)
+![Jaeger UI](jaeger-ui-2.png)
 
-![Zipkin UI](/img/apisix/zipkin-ui-1.png)
+![Zipkin UI](zipkin-ui-1.png)
 
 ### Step 2: Configure the Test Environment
 
 The Apache APISIX service is introduced, and the topology of the final
 application is shown in the following figure.
 
-![topology of the demo](/img/apisix/demo-topology.png)
+![topology of the demo](demo-topology.png)
 
 The Trace data reporting process is as follows. Among them, since Apache APISIX
 is deployed separately and not in the network of docker-compose, Apache APISIX
 accesses the OTLP HTTP Receiver of OpenTelemetry Collector through the locally
 mapped port (`127.0.0.1:4138`).
 
-![Trace data reporting process](/img/apisix/trace-data-flow.png)
+![Trace data reporting process](trace-data-flow.png)
 
 You need to make sure you have enabled the `opentelemetry` plugin and reload
 Apache APISIX.
@@ -350,21 +352,21 @@ details, see [Installation via Docker](https://apisix.apache.org/docs/apisix/how
 After the redeployment is completed, you can access the Jaeger UI or Zipkin UI
 to see that the Span of APISIX is included in the Trace, as shown below:
 
-![Jaeger UI](/img/apisix/jaeger-ui-3.png)
+![Jaeger UI](jaeger-ui-3.png)
 
-![Zipkin UI](/img/apisix/zipkin-ui-2.png)
+![Zipkin UI](zipkin-ui-2.png)
 
 When demo-server is not instrumented, you can still getting visibility of the
 demo-server behavior by enabling this plugin. Although this is not a typical
 case, it is a poor-man substitute of a real instrumentation of demo-server and
 provides a lot of value.
 
-![upstream-not-instrumented](/img/apisix/upstream-not-instrumented.png)
+![upstream-not-instrumented](upstream-not-instrumented.png)
 
 When the request does not reach the demo-server, the output would not include
 the span of demo-server.
 
-![demo-server disconnected](/img/apisix/demo-server-disconnected.png)
+![demo-server disconnected](demo-server-disconnected.png)
 
 ## Disable the Plugin
 
