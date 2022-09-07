@@ -1,7 +1,9 @@
 ---
 title: Python
 description: >-
-  <img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Python_SDK.svg"></img>
+  <img width="35"
+  src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Python_SDK.svg"
+  alt="Python"></img>
   A language-specific implementation of OpenTelemetry in Python.
 aliases: [/python, /python/metrics, /python/tracing]
 weight: 22
