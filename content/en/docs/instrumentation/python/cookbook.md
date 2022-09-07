@@ -155,8 +155,7 @@ with another_tracer.start_as_current_span("name-here") as span:
 
 ## Capture HTTP request and response headers
 
-You can configure the agent to capture predefined HTTP headers as span
-attributes, according to the [semantic convention][]. 
+You can capture predefined HTTP headers as span attributes, according to the [semantic convention][]. 
 
 To define which HTTP headers you want to capture, provide a comma-separated list
 of HTTP header names via the environment variables
