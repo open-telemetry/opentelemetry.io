@@ -171,7 +171,7 @@ transferred successfully from nginx down to the python and Node.JS application.
 Knowing that the issue does not occur with java and that it is likely a broken
 propagation, we knew what we had to do: we needed to see the trace headers.
 
-Gladly, the instrumentations for Java and Python have a feature that allows us
+Gladly, the instrumentations for [Java][] and [Python][] have a feature that allows us
 to capture [HTTP request & response headers][] as span attributes easily.
 
 By providing a comma-separated list of HTTP header names via the environment
@@ -253,3 +253,7 @@ COPY opentelemetry_module.conf /etc/nginx/conf.d
   https://github.com/open-telemetry/opentelemetry-cpp-contrib/pull/204
 [v1.0.1 release of the otel-webserver-module]:
   https://github.com/open-telemetry/opentelemetry-cpp-contrib/releases/tag/webserver%2Fv1.0.1
+[Java]:
+  https://opentelemetry.io/docs/instrumentation/java/automatic/agent-config/#capturing-http-request-and-response-headers
+[Python]:
+  https://opentelemetry.io/docs/instrumentation/python/automatic/#capture-http-request-and-response-headers
