@@ -1,6 +1,7 @@
 ---
 title: Instrumentation
 weight: 3
+aliases: [/docs/instrumentation/js/api/tracing]
 ---
 
 Manual instrumentation is the process of adding observability code to your
