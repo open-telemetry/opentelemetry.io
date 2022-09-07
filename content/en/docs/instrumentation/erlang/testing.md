@@ -3,7 +3,7 @@ title: "Testing"
 weight: 40
 ---
 
-When relying on OpenTelemetry for alerts, pages, or SLIs/SLOs, it can be important to test that certain spans are created and attributes correctly set.
+When relying on OpenTelemetry for your Observability needs, it can be important to test that certain spans are created and attributes correctly set. For example, can you be sure that you attaching the right metadata to data that ultimately powers an SLO? This document covers an approach to that kind of validation.
 
 ## Setup
 Only the `opentelemetry` and `opentelemetry_api` libraries are required for testing in Elixir/Erlang:
@@ -26,7 +26,7 @@ end
 
 {{< /tabs >}}
 
-The test configuration should set the `exporter` to `:none` and the span processor to `:otel_simple_processor`.
+Set your `exporter` to `:none` and the span processor to `:otel_simple_processor`. This ensure that your tests don't actually export data to a destination, and that spans can be analyzed after they are processed.
 
 {{< tabs Erlang Elixir >}}
 
@@ -52,7 +52,7 @@ config :opentelemetry, :processors, [
 
 {{< /tabs >}}
 
-A modified version of the `hello` function from the Getting Started guide will serve as our test case:
+A modified version of the `hello` function from the Getting Started guide serves as a test case:
 
 {{< tabs Erlang Elixir >}}
 
