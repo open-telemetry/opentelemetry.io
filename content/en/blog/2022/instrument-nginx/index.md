@@ -3,9 +3,9 @@ title: Learn how to instrument nginx with OpenTelemetry
 linkTitle: Instrument Nginx
 date: 2022-08-22
 author: >-
-  [Debajit Das](https://github.com/debajitdas), [Kumar
-  Pratyus](https://github.com/kpratyus), and [Severin
-  Neumann](https://github.com/svrnm)
+  [Debajit Das](https://github.com/debajitdas), 
+  [Kumar Pratyus](https://github.com/kpratyus), 
+  [Severin Neumann](https://github.com/svrnm) (Cisco)
 spelling: >
   cSpell:ignore Debajit Kumar Pratyus Severin Neumann webserver xvfz tracestate
   cSpell:ignore catalina javaagent jaegertracing protobuf WORKDIR

@@ -2,10 +2,10 @@
 title: Announcing a Community Demo for OpenTelemetry
 linkTitle: OpenTelemetry Community Demo
 date: 2022-06-20
-author: Carter Socha
+author: "[Carter Socha](https://github.com/cartersocha)"
 ---
 
-### TL;DR
+## TL;DR
 
 The OpenTelemetry community has taken a good pre-existing demo (thanks,
 [Google](https://github.com/GoogleCloudPlatform/microservices-demo)!) and is in
@@ -24,7 +24,7 @@ some stretching and take a water break in the meantime.
 
 Your command line output should look like this:
 
-![Screenshot of the console output.](/img/blog/otel-webstore-app-output.png
+![Screenshot of the console output.](otel-webstore-app-output.png
 "Screenshot of the console output")
 
 - Once the images are built you can access the Webstore at:
@@ -83,7 +83,7 @@ gRPC, Redis, and HTTP libraries
 ### Current Architecture
 
 ![Screenshot of the current
-architecture.](/img/blog/current-demo-architecture.png "Screenshot of the
+architecture.](current-demo-architecture.png "Screenshot of the
 current architecture")
 
 ### BYOB (Bring Your Own Backend)
@@ -143,7 +143,7 @@ ourselves to just the items listed here.
 
 ### Future Architecture
 
-![Screenshot of the future architecture.](/img/blog/future-demo-architecture.png
+![Screenshot of the future architecture.](future-demo-architecture.png
 "Screenshot of the future architecture")
 
 ## Going Forward

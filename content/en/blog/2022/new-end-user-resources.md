@@ -3,7 +3,7 @@ title: >-
   Introducing new resources for OpenTelemetry end users to connect and discover
   best practices
 linkTitle: End User Resources
-author: OpenTelemetry End User Working Group
+author: "[OpenTelemetry End User Working Group](https://github.com/open-telemetry/community/tree/main/working-groups/end-user)"
 date: 2022-06-30
 ---
 
