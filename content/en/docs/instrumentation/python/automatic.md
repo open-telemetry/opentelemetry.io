@@ -247,6 +247,58 @@ if __name__ == "__main__":
     app.run(port=8082, debug=True, use_reloader=False)
 ```
 
+## Configure
+
+The auto instrumentation can consume configuration from environment variables.
+
+### Capture HTTP request and response headers
+
+You can capture predefined HTTP headers as span attributes, according to the [semantic convention][].
+
+To define which HTTP headers you want to capture, provide a comma-separated list
+of HTTP header names via the environment variables
+`OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_REQUEST` and
+`OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_RESPONSE`, e.g.:
+
+```console
+$ export OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_REQUEST="Accept-Encoding,User-Agent,Referer"
+$ export OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_RESPONSE="Last-Modified,Content-Type"
+$ opentelemetry-instrument --traces_exporter console python app.py
+```
+
+These configuration options are supported by the following HTTP instrumentations:
+
+- Django
+- Falcon
+- FastAPI
+- Pyramid
+- Starlette
+- Tornado
+- WSGI
+
+If those headers are available, they will be included in your span:
+
+```json
+{
+    "attributes": {
+        "http.request.header.user-agent": [
+            "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)"
+        ],
+        "http.request.header.accept_encoding": [
+            "gzip, deflate, br"
+        ],
+        "http.response.header.last_modified": [
+            "2022-04-20 17:07:13.075765"
+        ],
+        "http.response.header.content_type": [
+            "text/html; charset=utf-8"
+        ]
+    }
+}
+```
+
+[semantic convention]:
+    https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/http.md#http-request-and-response-headers
 [API reference]: https://opentelemetry-python.readthedocs.io/en/latest/index.html
 [distro]: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-distro
 [env]: https://opentelemetry-python.readthedocs.io/en/latest/sdk/environment_variables.html
