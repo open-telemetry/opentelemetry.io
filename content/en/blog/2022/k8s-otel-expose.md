@@ -1,7 +1,7 @@
 ---
 title: Exposing a Collector for cross cluster communication
 linkTitle: Exposing a Collector
-date: 2022-08-25
+date: 2022-09-08
 author: '[Benedikt Bongartz](https://github.com/frzifus)'
 spelling:
   cSpell:ignore k8sattributes k8sattributesprocessor K8sattributes k8sprocessor
