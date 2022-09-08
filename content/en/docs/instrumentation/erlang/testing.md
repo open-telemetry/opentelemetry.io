@@ -52,7 +52,7 @@ config :opentelemetry, :processors, [
 
 {{< /tabs >}}
 
-A modified version of the `hello` function from the Getting Started guide serves as a test case:
+A modified version of the `hello` function from the [Getting Started](/docs/instrumentation/erlang/getting-started/) guide will serve as our test case:
 
 {{< tabs Erlang Elixir >}}
 
