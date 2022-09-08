@@ -3,7 +3,6 @@ title: "Tail Sampling with OpenTelemetry: Why it’s useful, how to do it, and w
 linkTitle: Tail Sampling
 date: 2022-09-08
 author: "[Reese Lee](https://github.com/reese-lee)"
-draft: true # TODO: remove this line once your post is ready to be published
 canonical_url: https://newrelic.com/blog/best-practices/open-telemetry-tail-sampling
 ---
 
@@ -26,7 +25,7 @@ without latency or errors, do you really need all that data? Here’s the
 thing—you don’t always need a ton of data to find the right insights. _You just
 need the right sampling of data._
 
-![Illustration shows that not all data needs to be traced, and that a sample of data is sufficient.]()
+![Illustration shows that not all data needs to be traced, and that a sample of data is sufficient.](traces_venn_diagram.png)
 
 The idea behind sampling is to control the spans you send to your observability
 backend, resulting in lower ingest costs. Different organizations will have
@@ -48,7 +47,7 @@ root span begins processing. Tail-based sampling gives you the option to filter
 your traces based on specific criteria, which isn’t an option with head-based
 sampling.
 
-![Illustration shows how spans originate from a root span. After the spans are complete, the tail sampling processor makes a sampling decision.]()
+![Illustration shows how spans originate from a root span. After the spans are complete, the tail sampling processor makes a sampling decision.](tail_sampling_process.png)
 
 Tail sampling lets you see only the traces that are of interest to you. You also
 lower data ingest and storage costs because you’re only exporting a
@@ -109,7 +108,7 @@ processors:
 The next image is an example of what you might see in your backend if you
 implement this sample configuration.
 
-![Illustration shows sampling based on both traces that have errors as well as randomly selected traces.]()
+![Illustration shows sampling based on both traces that have errors as well as randomly selected traces.](backend_visual_errors_and_random.png)
 
 The blue dots and rectangle on the right side indicate that the sampling
 decision occurs at the end of a trace when all the spans for a given request
@@ -124,7 +123,7 @@ traces can help surface other issues and give you a broader view of your
 software’s performance and behavior. Here’s what you'll see with only the status
 code policy defined.
 
-![Illustration shows an example of tail sampling based on errors only, and not including random traces.]()
+![Illustration shows an example of tail sampling based on errors only, and not including random traces.](backend_visual_errors_only.png)
 
 You also have the flexibility to add other policies. Here are a few examples:
 
