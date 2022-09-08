@@ -256,4 +256,4 @@ COPY opentelemetry_module.conf /etc/nginx/conf.d
 [Java]:
   /docs/instrumentation/java/automatic/agent-config/#capturing-http-request-and-response-headers
 [Python]:
-  /docs/instrumentation/python/automatic/#capture-http-request-and-response-headers
+  /docs/instrumentation/python/automatic/
