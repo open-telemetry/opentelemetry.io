@@ -18,15 +18,13 @@ developer_note:
 
 </div>
 
-<div class="h3 mt-4">Get started!</div>
+<div class="h3 mt-4">Find your way on how to get started with OpenTelemetry</div>
 <div class="l-get-started-buttons">
 
-- [Collector](/docs/collector/getting-started/)
-- [Java](/docs/instrumentation/java/getting-started/)
-- [Go](/docs/instrumentation/go/getting-started/)
-- [.NET](/docs/instrumentation/net/getting-started/)
-- [JavaScript](/docs/instrumentation/js/getting-started/)
-- <a href="/docs/instrumentation/" title="All languages"><i class="fas fa-ellipsis-h"></i></a>
+- [Operations](/docs/getting-started/#operations)
+- [Application Developer](/docs/getting-started/#application-developer)
+- [Library Developer](/docs/getting-started/#library-developer)
+- <a href="/docs/getting-started/" aria-label="Other">...</a>
 
 </div>
 {{< /blocks/cover >}}
