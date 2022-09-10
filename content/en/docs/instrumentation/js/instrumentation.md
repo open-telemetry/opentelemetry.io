@@ -1,6 +1,6 @@
 ---
 title: Instrumentation
-weight: 3
+weight: 4
 ---
 
 Manual instrumentation is the process of adding observability code to your

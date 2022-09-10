@@ -1,6 +1,6 @@
 ---
 title: "Exporters"
-weight: 3
+weight: 5
 ---
 
 In order to visualize and analyze your traces, you will need to
