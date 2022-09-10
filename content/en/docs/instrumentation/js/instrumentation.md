@@ -200,9 +200,7 @@ const mainWork = () => {
   });
 }
 
-function doWork(i) {
-  console.log(`doing work for ${i}`);
-
+const doWork = (i) => {
   tracer.startActiveSpan(`doWork:${i}`, span => {
     // simulate some random work.
     for (let i = 0; i <= Math.floor(Math.random() * 40000000); i += 1) {
@@ -356,7 +354,7 @@ traces with the current span.
 
 
 ```js
-function someFunction(spanToLinkFrom) {
+const someFunction = (spanToLinkFrom) => {
   const options = {
     links: [
       {
@@ -475,7 +473,7 @@ const mainWork = () => {
   parentSpan.end();
 }
 
-function doWork(parent, i) {
+const doWork = (parent, i) => {
   // To create a child span, we need to mark the current (parent) span as the active span
   // in the context, then use the resulting context to create a child span.
   const ctx = opentelemetry.trace.setSpan(
