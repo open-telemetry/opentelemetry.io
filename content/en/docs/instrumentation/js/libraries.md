@@ -158,7 +158,7 @@ from the
 repository.
 
 You can also find more instrumentations available in the
-[registry](/registry/?language=dotnet&component=instrumentation).
+[registry](/registry/?language=js&component=instrumentation).
 
 ## Next steps
 
