@@ -43,7 +43,7 @@ using var tracerProvider = Sdk.CreateTracerProviderBuilder()
 
 ## OTLP endpoint
 
-To send trace data to a OTLP endpoint (like the [collector](/docs/collector) or
+To send trace data to an OTLP endpoint (like the [collector](/docs/collector) or
 Jaeger) you'll want to configure an OTLP exporter that sends to your endpoint.
 
 ```
