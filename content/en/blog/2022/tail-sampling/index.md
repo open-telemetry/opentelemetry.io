@@ -195,6 +195,17 @@ sampling processor. This exporter ensures that all spans with the same trace ID
 end up in the same agent/collector. But there may be additional overhead with
 implementing this exporter, such as configuring it. 
 
+Another limitation to consider is that since OpenTelemetry does not propagate
+metadata that would let a backend re-weight counts – for example, P95, P99, and
+total events – you’re only getting a look at the measurements of sampled data,
+not accurate measurements in regards to _all_ data. Let’s say you’ve configured
+your sampler to keep 25% of all traces. If the backend doesn’t know it’s only
+operating on 25% of all data, any measurement it produces will be inaccurate.
+One way to get around this is to attach metadata to your spans that tells the
+backend what the sample rate is, that will allow the backend to then accurately
+measure things such as total span count for a given period of time. The Sampling
+SIG is currently working on this concept. 
+
 Finally, as OpenTelemetry is still an evolving project, many components are
 under active development, including the tail sampling processor and the
 collector. For the tail sampling processor, there is currently an [open
