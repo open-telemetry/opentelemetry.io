@@ -197,8 +197,8 @@ implementing this exporter, such as configuring it.
 
 Another limitation to consider is that since OpenTelemetry does not propagate
 metadata that would let a backend re-weight counts – for example, P95, P99, and
-total events – you’re only getting a look at the measurements of sampled data,
-not accurate measurements in regards to _all_ data. Let’s say you’ve configured
+total events – **you’re only getting a look at the measurements of sampled data,
+not accurate measurements in regards to _all_ data**. Let’s say you’ve configured
 your sampler to keep 25% of all traces. If the backend doesn’t know it’s only
 operating on 25% of all data, any measurement it produces will be inaccurate.
 One way to get around this is to attach metadata to your spans that tells the
