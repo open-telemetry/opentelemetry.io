@@ -295,5 +295,5 @@ Additionally, enriching your codebase with
 gives you customized observability data.
 
 You can also check the
-[automatic instrumentation for .NET](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation),
+[automatic instrumentation for .NET](/docs/instrumentation/net/automatic),
 which is currently in beta.
