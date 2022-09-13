@@ -38,6 +38,12 @@ A key-value pair. Used across telemetry signals - e.g. in [`Traces`](#trace) to
 attach data to a [`Span`](#span), or in [`Metrics`](#metric). See [attribute
 spec][attribute].
 
+### **Automatic Instrumentation**
+
+Refers to telemetry collection methods that do not require the end-user to
+modify application's source code. Methods vary by programming language, and
+examples include bytecode injection or monkey patching.
+
 ### **Baggage**
 
 A mechanism for propagating name/value pairs to help establish a causal
