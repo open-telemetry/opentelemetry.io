@@ -5,7 +5,7 @@ weight: 3
 ---
 
 You can use [automatic instrumentation](/docs/reference/specification/glossary/#automatic-instrumentation)
-to initalize [signal](/docs/reference/specification/glossary/#signal) providers
+to initalize [signal](/docs/reference/specification/glossary/#signals) providers
 and generate telemetry data for supported [instrumented libraries](/docs/reference/specification/glossary/#instrumented-library)
 without modifying the application's source code.
 
