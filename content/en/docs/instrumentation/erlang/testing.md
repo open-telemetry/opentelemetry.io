@@ -94,7 +94,58 @@ end
 {{< tabs Erlang Elixir >}}
 
 {{< tab >}}
-TODO
+-module(otel_getting_started_SUITE).
+
+-compile(export_all).
+
+-include_lib("stdlib/include/assert.hrl").
+-include_lib("common_test/include/ct.hrl").
+
+-include_lib("opentelemetry/include/otel_span.hrl").
+
+-define(assertReceive(SpanName),
+        receive
+            {span, Span=#span{name=SpanName}} ->
+                Span
+        after
+            1000 ->
+                ct:fail("Did not receive the span after 1s")
+        end).
+
+all() ->
+    [greets_the_world].
+
+init_per_suite(Config) ->
+    application:load(opentelemetry),
+    application:set_env(opentelemetry, processors, [{otel_simple_processor, #{}}]),
+    {ok, _} = application:ensure_all_started(opentelemetry),
+    Config.
+
+end_per_suite(_Config) ->
+    _ = application:stop(opentelemetry),
+    _ = application:unload(opentelemetry),
+    ok.
+
+init_per_testcase(greets_the_world, Config) ->
+    otel_simple_processor:set_exporter(otel_exporter_pid, self()),
+    Config.
+
+end_per_testcase(greets_the_world, _Config) ->
+    otel_simple_processor:set_exporter(none),
+    ok.
+
+greets_the_world(_Config) ->
+    %% SpanName = <<"operation">>,
+    otel_getting_started:hello(),
+
+    ExpectedAttributes = otel_attributes:new(#{a_key => <<"a_value">>}, 128, infinity),
+    #span{attributes=ReceivedAttributes} = ?assertReceive(<<"operation">>),
+
+    %% use an assertMatch instead of matching in the `receive'
+    %% so we get a nice error message if it fails
+    ?assertMatch(ReceivedAttributes, ExpectedAttributes),
+
+    ok.
 {{< /tab >}}
 
 {{< tab >}}
