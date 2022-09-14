@@ -34,7 +34,7 @@ OpenTelemetry can help you with that! To get you started, learn ...
 
 ## Application Developer
 
-> I write the code of an application.
+> I write code for my organization's apps and services.
 >
 > My goal is to get observability for my application by writing code.
 >
