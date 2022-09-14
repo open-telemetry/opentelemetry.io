@@ -21,7 +21,7 @@ If none of the roles below is applicable to you, [let us know](https://github.co
 >
 > My goal is to get telemetry out of them without touching their code.
 >
-> I want to collect logs, metrics and traces from hundreds of services and.
+> I want to collect traces, metrics, and logs from several services and
 > send them off to my observability backend easily
 
 OpenTelemetry can help you with that! To get you started, learn ...
