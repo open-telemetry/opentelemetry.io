@@ -38,7 +38,8 @@ OpenTelemetry can help you with that! To get you started, learn ...
 >
 > My goal is to get observability for my application by writing code.
 >
-> I want to have my dependencies emiting telemetry for me automatically.
+> I want to have my dependencies emit telemetry for me automatically,
+> and then use APIs to manually instrument important areas of my code.
 
 OpenTelemetry can help you with that! To get you started, learn ...
 
