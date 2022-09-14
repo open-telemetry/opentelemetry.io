@@ -8,6 +8,13 @@ description: >
   A language-specific implementation of OpenTelemetry in Erlang/Elixir.
 ---
 
+<!--
+You can see & update the `lang_instrumentation_index_head` shortcode in
+/layouts/shortcodes/lang_instrumentation_index_head.md
+
+The data (name, status) is located at
+/data/instrumentation.yaml
+-->
 {{% lang_instrumentation_index_head "erlang" %}}
   Packages of the API, SDK and OTLP exporter are published to
   [hex.pm](https://hex.pm) as
