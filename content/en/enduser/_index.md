@@ -96,3 +96,4 @@ You can find members of the End User Working Group in
 
 [code of conduct]:
   https://github.com/open-telemetry/community/blob/main/working-groups/end-user/discussion-group-code-of-conduct.md
+  

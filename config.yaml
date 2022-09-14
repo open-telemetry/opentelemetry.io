@@ -97,6 +97,10 @@ params:
         url: https://www.youtube.com/channel/UCHZDBZTIfdy94xMjMKz-_MA
         icon: fab fa-youtube
         desc: Watch our meeting recordings on Youtube
+      - name: End User Resources
+        url: /enduser
+        icon: fas fa-user-group
+        desc: Connect with other end-users, share & learn from each other.
     developer:
       - name: GitHub
         url: https://github.com/open-telemetry
