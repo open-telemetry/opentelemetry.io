@@ -135,7 +135,6 @@ end_per_testcase(greets_the_world, _Config) ->
     ok.
 
 greets_the_world(_Config) ->
-    %% SpanName = <<"operation">>,
     otel_getting_started:hello(),
 
     ExpectedAttributes = otel_attributes:new(#{a_key => <<"a_value">>}, 128, infinity),
@@ -162,7 +161,6 @@ defmodule OtelGettingStartedTest do
     # Set exporter to :otel_exporter_pid, which sends spans
     # to the given process - in this case self() - in the format {:span, span}
     :otel_batch_processor.set_exporter(:otel_exporter_pid, self())
-    OpenTelemetry.get_tracer(:test_tracer)
 
     # Call the function to be tested.
     OtelGettingStarted.hello()
