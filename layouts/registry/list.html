@@ -9,8 +9,8 @@
 
 {{ .Content -}}
 
-<div class="td-content">
-  <section class="row pb-5">
+<div class="td-content td-box">
+  <section class="row section pb-5">
     <div class="col align-self-center">
       <form action="{{ "/registry" | absURL }}" id="searchForm">
         <div class="input-group">
@@ -54,8 +54,8 @@
     </div>
   </section>
 
-  <section class="pt-0">
-    <div class="mx-auto">
+  <section class="row section pt-0">
+    <div class="col mx-auto">
       <ul class="list-unstyled" id="search-results"></ul>
       <ul class="list-unstyled" id="default-body">
       {{ range $registryItems -}}
