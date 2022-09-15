@@ -73,6 +73,7 @@ your questions!
 Thanks [Sarah Novotny](https://twitter.com/sarahnovotny) for review and
 feedback!
 
-_A version of this article was [originally posted][] on the New Relic blog._
+\_A version of this article was [originally posted][] on
+[medium.com/opentelemetry.](https://medium.com/opentelemetry).
 
 [originally posted]: {{% param canonical_url %}}
