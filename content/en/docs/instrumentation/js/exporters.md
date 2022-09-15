@@ -101,7 +101,7 @@ that the domain of your OTLP endpoint is included. If your collector endpoint
 is `https://collector.example.com:4318/v1/traces` add the following directive:
 
 ```text
-connect-src collector.example.com:4318/va/traces
+connect-src collector.example.com:4318/v1/traces
 ```
 
 If your CSP is not including the OTLP endpoint, you will see an error message,
