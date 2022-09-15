@@ -1,7 +1,7 @@
 ---
 title: Announcing the 2022 OpenTelemetry Governance Committee Election
-linkTitle: OpenTelemetry Governance Committee Election 2022
-date: 2022-09-14
+linkTitle: Governance Committee Election 2022
+date: 2022-09-15
 author: OpenTelemetry Governance Committee
 ---
 
@@ -58,9 +58,13 @@ the community.
 
 ## Questions?
 
-For any election related questions, please file an issue on the
-[community repo](https://github.com/open-telemetry/community/issues) here and
-tag @jpkrohling, @bogdandrutu, and @bhs. Or send us a message on CNCF Slack in
-#opentelemetry if you have an urgent access issue during voting.
+For any election related questions, please file an issue on the [community
+repo](https://github.com/open-telemetry/community/issues) here and tag
+[@jpkrohling](https://github.com/jpkrohling),
+[@bogdandrutu](https://github.com/bogdandrutu), and
+[@bhs](https://github.com/bhs). Or send us a message on [CNCF
+Slack](https://slack.cncf.io/) in
+[#opentelemetry](https://cloud-native.slack.com/archives/CJFCJHG4Q) if you have
+an urgent access issue during voting.
 
 See you at the polls!
