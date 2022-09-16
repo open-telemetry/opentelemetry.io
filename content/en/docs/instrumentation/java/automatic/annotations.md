@@ -3,6 +3,7 @@ title: Annotations
 description: Using instrumentation annotations with a Java agent.
 aliases: [/docs/instrumentation/java/annotations]
 weight: 4
+javaAnnotationsVersion: 1.18.0-alpha
 ---
 
 For most users, the out-of-the-box instrumentation is completely sufficient and
@@ -22,7 +23,7 @@ library to use the `@WithSpan` annotation.
   <dependency>
     <groupId>io.opentelemetry.instrumentation</groupId>
     <artifactId>opentelemetry-instrumentation-annotations</artifactId>
-    <version>1.17.0-alpha</version>
+    <version>{{% param javaAnnotationsVersion %}}</version>
   </dependency>
 </dependencies>
 ```
@@ -31,7 +32,7 @@ library to use the `@WithSpan` annotation.
 
 ```groovy
 dependencies {
-    implementation('io.opentelemetry.instrumentation:opentelemetry-instrumentation-annotations:1.17.0-alpha')
+    implementation('io.opentelemetry.instrumentation:opentelemetry-instrumentation-annotations:{{% param javaAnnotationsVersion %}}')
 }
 ```
 
