@@ -41,7 +41,7 @@ If you’ve been working on OpenTelemetry and seeing it grow, or are an end-user
 that wants to help us make OpenTelemetry better, now’s the time to consider
 running for a seat on the Governance Committee. You can read about the
 Governance Committee's role in
-[this blog](https://medium.com/opentelemetry/opentelemetry-governance-committee-explained-860353baba0)
+[this blog](/blog/2019/opentelemetry-governance-committee-explained/)
 post or refer to the
 [charter document](https://github.com/open-telemetry/community/blob/master/governance-charter.md).
 You may nominate yourself (or others!) by submitting a Pull Request against the
