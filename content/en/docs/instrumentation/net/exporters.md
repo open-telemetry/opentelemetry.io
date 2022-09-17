@@ -41,11 +41,10 @@ using var tracerProvider = Sdk.CreateTracerProviderBuilder()
     .Build();
 ```
 
-## OTLP endpoint or Collector
+## OTLP endpoint
 
-To send data to an OTLP endpoint or the [OpenTelemetry
-Collector](/docs/collector/getting-started/), you'll want to configure an OTLP
-exporter that sends to your endpoint.
+To send trace data to an OTLP endpoint (like the [collector](/docs/collector) or
+Jaeger) you'll want to configure an OTLP exporter that sends to your endpoint.
 
 ```
 dotnet add package OpenTelemetry.Exporter.OpenTelemetryProtocol
@@ -105,64 +104,26 @@ AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport
 
 If you are using .NET 5 or higher, the previous code sample is not required.
 
-## Jaeger
+### Jaeger
 
-If you are using [Jaeger](https://www.jaegertracing.io/) to visualize trace
-data, you'll need to set it up first. This is how to run it in a docker
-container:
+To try out the OTLP exporter, you can run [Jaeger](https://www.jaegertracing.io/) 
+as an OTLP endpoint and for trace visualization in a docker containe:
 
 ```shell
-$ docker run -d --name jaeger \
+docker run -d --name jaeger \
   -e COLLECTOR_ZIPKIN_HOST_PORT=:9411 \
-  -p 5775:5775/udp \
+  -e COLLECTOR_OTLP_ENABLED=true \
   -p 6831:6831/udp \
   -p 6832:6832/udp \
   -p 5778:5778 \
   -p 16686:16686 \
-  -p 14268:14268 \
+  -p 4317:4317 \
+  -p 4318:4318 \
   -p 14250:14250 \
+  -p 14268:14268 \
+  -p 14269:14269 \
   -p 9411:9411 \
   jaegertracing/all-in-one:latest
-```
-
-Next, install the Jaeger exporter package:
-
-```
-dotnet add package OpenTelemetry.Exporter.Jaeger
-dotnet add package OpenTelemetry.Extensions.Hosting --prerelease
-```
-
-If you're using ASP.NET Core, configure the exporter in your ASP.NET Core
-services:
-
-```csharp
-var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddOpenTelemetryTracing(b =>
-{
-    b
-    .AddJaegerExporter(o =>
-    {
-        o.AgentHost = "your-hostname";
-        o.AgentPort = 12345; // use port number here
-    })
-    // The rest of your setup code goes here too
-});
-```
-
-Otherwise, configure the exporter when creating a tracer provider:
-
-```csharp
-using var tracerProvider = Sdk.CreateTracerProviderBuilder()
-    .AddJaegerExporter(o =>
-    {
-        o.AgentHost = "your-hostname";
-        o.AgentPort = 12345; // use port number here
-    })
-
-    // Other setup code, like setting a resource goes here too
-
-    .Build();
 ```
 
 ## Zipkin
