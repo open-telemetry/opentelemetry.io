@@ -106,8 +106,8 @@ If you are using .NET 5 or higher, the previous code sample is not required.
 
 ### Jaeger
 
-If you are using [Jaeger](https://www.jaegertracing.io/) to visualize trace
-data, this is how to run it in a docker container:
+To try out the OTLP exporter, you can run [Jaeger](https://www.jaegertracing.io/) 
+as an OTLP endpoint and for trace visualization in a docker containe:
 
 ```shell
 docker run -d --name jaeger \
