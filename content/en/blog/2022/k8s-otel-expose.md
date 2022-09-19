@@ -333,7 +333,7 @@ spec:
 
     exporters:
       otlp:
-        endpoint: "<REPLACE: your domain endpoint, e.g.: "traces.example.com">"
+        endpoint: "<REPLACE: your domain endpoint, e.g.: "traces.example.com:443">"
         auth:
           authenticator: basicauth/client
       logging:
