@@ -29,8 +29,7 @@ One or more [`Services`](#service) designed for end users or other applications.
 
 ### **APM**
 
-Application Performance Monitoring. Typically a back-end of the
-[`Tracing`](#trace) [`Data Source`](#data-source).
+Application Performance Monitoring is about monitoring software applications, their performance (speed, reliability, availability, etc.) to detect issues, alerting and tooling for finding the root cause.
 
 ### **Attribute**
 
