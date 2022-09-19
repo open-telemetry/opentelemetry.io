@@ -17,7 +17,7 @@ The OpenTelemetry Operator is an implementation of a [Kubernetes Operator](https
 The operator manages:
 
 - OpenTelemetry Collector
-- auto-instrumentation of the workloads using OpenTelemetry instrumentation libraries
+- [auto-instrumentation of the workloads using OpenTelemetry instrumentation libraries](https://github.com/open-telemetry/opentelemetry-operator#opentelemetry-auto-instrumentation-injection)
 
 ## Getting started
 
