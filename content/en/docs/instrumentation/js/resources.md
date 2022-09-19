@@ -235,7 +235,7 @@ list
 
 [resource]: /docs/reference/specification/resource/sdk/
 [getting started - node.js]:
-  http://localhost:8888/docs/instrumentation/js/getting-started/nodejs/
+  docs/instrumentation/js/getting-started/nodejs/
 [process and process runtime resources]:
   /docs/reference/specification/resource/semantic_conventions/process/
 [host]: /docs/reference/specification/resource/semantic_conventions/host/
