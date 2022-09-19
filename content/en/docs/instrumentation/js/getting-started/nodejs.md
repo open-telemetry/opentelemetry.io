@@ -11,6 +11,12 @@ This is a small example application we will monitor in this guide.
 
 ### Dependencies
 
+Create an empty package.json:
+
+```sh
+npm init -f
+```
+
 Install dependencies used by the example.
 
 ```sh
