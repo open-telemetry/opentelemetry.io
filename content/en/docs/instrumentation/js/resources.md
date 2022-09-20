@@ -9,10 +9,9 @@ For example, a process producing telemetry that is running in a container on
 Kubernetes has a Pod name, a namespace, and possibly a deployment name.
 All three of these attributes can be included in the resource.
 
-In your observability backend you can use the information stored in the resource
-to see to which container (or pod, or deployment, etc.) your traces belong and
-if they have issues (like out of memory, network outages, etc.) you can quickly
-understand why your traces might be slower or errounous.
+In your observability backend, you can use resource information to better investigate
+interesting behavior. For example, if your trace or metrics data indicate latency in your
+system, you can narrow it down to a specific container, pod, or kubernetes deployment.
 
 Below you will find some introductions on how to setup resource detection with
 the Node.JS SDK
