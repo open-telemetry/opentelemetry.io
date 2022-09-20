@@ -28,8 +28,8 @@ with the version of the Collector you wish to run.
 
 {{< tabs DockerHub ghcr.io >}}
 {{< tab lang="console">}}
-$ docker pull otel/opentelemetry-collector:0.54.0
-$ docker run otel/opentelemetry-collector:0.54.0
+$ docker pull otel/opentelemetry-collector:{{% param collectorVersion %}}
+$ docker run otel/opentelemetry-collector:{{% param collectorVersion %}}
 {{< /tab >}}
 
 {{< tab lang="console">}}
