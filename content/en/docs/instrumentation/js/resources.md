@@ -23,10 +23,10 @@ the files `package.json`, `app.js` and `tracing.js`.
 
 ## Process & Environment Resource Detection
 
-Out of the box the Node.JS SDK detects the [process and process runtime
+Out of the box, the Node.JS SDK detects [process and process runtime
 resources][] and takes attributes from the environment variable
-`OTEL_RESOURCE_ATTRIBUTES`. A quick way to verify that, turn on debugging in
-`tracing.js`:
+`OTEL_RESOURCE_ATTRIBUTES`. You can verify what it detects by
+turning on diagnostic logging in `tracing.js`:
 
 ```javascript
 // For troubleshooting, set the log level to DiagLogLevel.DEBUG
