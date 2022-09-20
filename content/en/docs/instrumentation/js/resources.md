@@ -6,12 +6,13 @@ description:
 
 A [resource][] represents the entity producing telemetry as resource attributes.
 For example, a process producing telemetry that is running in a container on
-Kubernetes has a Pod name, a namespace, and possibly a deployment name.
-All three of these attributes can be included in the resource.
+Kubernetes has a Pod name, a namespace, and possibly a deployment name. All
+three of these attributes can be included in the resource.
 
-In your observability backend, you can use resource information to better investigate
-interesting behavior. For example, if your trace or metrics data indicate latency in your
-system, you can narrow it down to a specific container, pod, or kubernetes deployment.
+In your observability backend, you can use resource information to better
+investigate interesting behavior. For example, if your trace or metrics data
+indicate latency in your system, you can narrow it down to a specific container,
+pod, or kubernetes deployment.
 
 Below you will find some introductions on how to setup resource detection with
 the Node.JS SDK.
@@ -25,8 +26,8 @@ the files `package.json`, `app.js` and `tracing.js`.
 
 Out of the box, the Node.JS SDK detects [process and process runtime
 resources][] and takes attributes from the environment variable
-`OTEL_RESOURCE_ATTRIBUTES`. You can verify what it detects by
-turning on diagnostic logging in `tracing.js`:
+`OTEL_RESOURCE_ATTRIBUTES`. You can verify what it detects by turning on
+diagnostic logging in `tracing.js`:
 
 ```javascript
 // For troubleshooting, set the log level to DiagLogLevel.DEBUG
@@ -56,6 +57,8 @@ ProcessDetector found resource. Resource {
 ...
 ```
 
+## Adding resources with environment variables
+
 In the above example, the SDK detected the process and also added the
 `host.name=localhost` attribute set via the environment variable automatically.
 
@@ -82,6 +85,33 @@ EnvDetector found resource. Resource {
 }
 ...
 ```
+
+## Adding resources in code
+
+Custom resources can also be configured in your code. The `NodeSDK` provides a
+configuration option, where you can set them. For example you can update the
+`tracing.js` like the following to have `service.*` attributes set:
+
+```javascript
+...
+const { Resource } = require('@opentelemetry/resources');
+const { SemanticResourceAttributes } = require('@opentelemetry/semantic-conventions');
+...
+const sdk = new opentelemetry.NodeSDK({
+  ...
+  resource: new Resource({
+    [ SemanticResourceAttributes.SERVICE_NAME ]: "yourServiceName",
+    [ SemanticResourceAttributes.SERVICE_NAMESPACE ]: "yourNameSpace",
+    [ SemanticResourceAttributes.SERVICE_VERSION ]: "1.0",
+    [ SemanticResourceAttributes.SERVICE_INSTANCE_ID ]: "my-instance-id-1",
+  })
+  ...
+});
+...
+```
+
+**Note**: If you set your resource attributes via environment variable and code,
+the values set via the environment variable take precedence.
 
 ## Container Resource Detection
 
@@ -159,8 +189,8 @@ DockerCGroupV1Detector found resource. Resource {
 ```
 
 The detector has extracted the `container.id` for you. However you might
-recognize that in this example, the process attributes and the attributes set via
-an environment variable are missing! To resolve this, when you set the
+recognize that in this example, the process attributes and the attributes set
+via an environment variable are missing! To resolve this, when you set the
 `resourceDetectors` list you also need to specify the `envDetector` and
 `processDetector` detectors:
 
@@ -181,8 +211,8 @@ diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
 const sdk = new opentelemetry.NodeSDK({
   traceExporter: new opentelemetry.tracing.ConsoleSpanExporter(),
   instrumentations: [getNodeAutoInstrumentations()],
-// Make sure to add all detectors you need here!
-    resourceDetectors: [envDetector, processDetector, dockerCGroupV1Detector],
+  // Make sure to add all detectors you need here!
+  resourceDetectors: [envDetector, processDetector, dockerCGroupV1Detector],
 });
 
 sdk.start();
@@ -215,16 +245,6 @@ DockerCGroupV1Detector found resource. Resource {
 ...
 ```
 
-## Visualising resources in Jaeger
-
-To see your resources alongside your traces/spans in Jaeger, follow the
-instructions to add an [OTLP exporter][] that points to a jaeger instance. After
-sending a few requests to your nodejs running in the docker container (e.g. via
-`curl localhost:8080`) you should see your resource attributes within the
-"Process" tab.
-
-![A screenshot from jaeger that shows resource attributes](/img/nodejs_resource_attributes.png)
-
 ## Next steps
 
 There are more resource detectors you can add to your configuration, for example
@@ -233,8 +253,7 @@ list
 [here](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node).
 
 [resource]: /docs/reference/specification/resource/sdk/
-[getting started - node.js]:
-  /docs/instrumentation/js/getting-started/nodejs/
+[getting started - node.js]: /docs/instrumentation/js/getting-started/nodejs/
 [process and process runtime resources]:
   /docs/reference/specification/resource/semantic_conventions/process/
 [host]: /docs/reference/specification/resource/semantic_conventions/host/
