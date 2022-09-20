@@ -159,10 +159,10 @@ DockerCGroupV1Detector found resource. Resource {
 ```
 
 The detector has extracted the `container.id` for you. However you might
-recognize that in this example the process attributes and the attributes set via
-an environment variable are missing: By setting the `resourceDetectors` list you
-overwrite the default value. To add them back update your `tracing.js` like the
-following:
+recognize that in this example, the process attributes and the attributes set via
+an environment variable are missing! To resolve this, when you set the
+`resourceDetectors` list you also need to specify the `envDetector` and
+`processDetector` detectors:
 
 ```javascript
 const opentelemetry = require("@opentelemetry/sdk-node");
