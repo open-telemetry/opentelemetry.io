@@ -181,7 +181,8 @@ diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
 const sdk = new opentelemetry.NodeSDK({
   traceExporter: new opentelemetry.tracing.ConsoleSpanExporter(),
   instrumentations: [getNodeAutoInstrumentations()],
-  resourceDetectors: [envDetector, processDetector, dockerCGroupV1Detector],
+// Make sure to add all detectors you need here!
+    resourceDetectors: [envDetector, processDetector, dockerCGroupV1Detector],
 });
 
 sdk.start();
