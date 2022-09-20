@@ -61,8 +61,3 @@ EOF
 For more configuration options and for setting up the injetion of
 auto-instrumentation of the workloads using OpenTelemetry instrumentation
 libraries, continue reading [here](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md).
-
-## Helm Chart
-
-You can install the OpenTelemetry Operator into a Kubernetes cluster with
-the [OpenTelemetry Operator Helm Chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-operator)
