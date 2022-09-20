@@ -14,7 +14,7 @@ interesting behavior. For example, if your trace or metrics data indicate latenc
 system, you can narrow it down to a specific container, pod, or kubernetes deployment.
 
 Below you will find some introductions on how to setup resource detection with
-the Node.JS SDK
+the Node.JS SDK.
 
 ## Setup
 
