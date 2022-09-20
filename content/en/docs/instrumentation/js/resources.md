@@ -4,11 +4,10 @@ weight: 6
 description:
 ---
 
-A [resource][] is an immutable representation of the entity producing telemetry
-as attributes. For example, a process producing telemetry that is running in a
-container on Kubernetes has a Pod name, it is in a namespace and possibly is
-part of a deployment which also has a name. All three of these attributes can be
-included in the resource.
+A [resource][] represents the entity producing telemetry as resource attributes.
+For example, a process producing telemetry that is running in a container on
+Kubernetes has a Pod name, a namespace, and possibly a deployment name.
+All three of these attributes can be included in the resource.
 
 In your observability backend you can use the information stored in the resource
 to see to which container (or pod, or deployment, etc.) your traces belong and
