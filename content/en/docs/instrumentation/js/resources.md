@@ -56,8 +56,8 @@ ProcessDetector found resource. Resource {
 ...
 ```
 
-As you can see the SDK has detected the process and also added the attributes
-you set via the environment variable automatically.
+In the above example, the SDK detected the process and also added the
+`host.name=localhost` attribute set via the environment variable automatically.
 
 Below you will find instructions to get resources detected automatically for
 you. However, you might run into the situation that no detector exists for the
