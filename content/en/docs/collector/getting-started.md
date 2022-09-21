@@ -222,12 +222,12 @@ unpacked with a tool that supports this compression format:
 {{< tabs Intel ARM >}}
 {{< tab lang="console">}}
 $ curl -O -L https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_darwin_amd64.tar.gz
-$ tar -xvf otelcol_0.54.0_darwin_amd64.tar.gz
+$ tar -xvf otelcol_{{% param collectorVersion %}}_darwin_amd64.tar.gz
 {{< /tab >}}
 
 {{< tab lang="console">}}
 $ curl -O -L https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_darwin_arm64.tar.gz
-$ tar -xvf otelcol_0.54.0_darwin_arm64.tar.gz
+$ tar -xvf otelcol_{{% param collectorVersion %}}_darwin_arm64.tar.gz
 {{< /tab >}}
 {{< /tabs >}}
 
