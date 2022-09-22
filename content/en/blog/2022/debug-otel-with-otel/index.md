@@ -1,7 +1,7 @@
 ---
 title: How we used OpenTelemetry to fix a bug in OpenTelemetry
 linkTitle: Debug OTel with OTel
-date: 2022-09-12
+date: 2022-09-22
 author: >-
   [Kumar Pratyush](https://github.com/kpratyus), 
   [Sanket Mehta](https://github.com/sanketmehta28),
