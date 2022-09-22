@@ -1,7 +1,7 @@
 ---
 title: "Tail Sampling with OpenTelemetry: Why it’s useful, how to do it, and what to consider"
 linkTitle: Tail Sampling
-date: 2022-09-08
+date: 2022-09-26
 author: "[Reese Lee](https://github.com/reese-lee)"
 canonical_url: https://newrelic.com/blog/best-practices/open-telemetry-tail-sampling
 ---
