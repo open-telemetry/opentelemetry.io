@@ -18,7 +18,7 @@ OpenTelemetry in their commercial products.
 {{% blocks/section type="section" color="white" %}}
 
 | Company                    | Distri&shy;bution | Native OTLP | Learn more                                                                                                                                            |
-|----------------------------| ----------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| -------------------------- | ----------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
 | AppDynamics                | Yes               | Yes         | [docs.appdynamics.com/...](https://docs.appdynamics.com/latest/en/application-monitoring/appdynamics-for-opentelemetry)                               |
 | Aria by VMware (Wavefront) | No                | Yes         | [docs.wavefront.com/...](https://docs.wavefront.com/opentelemetry_tracing.html)                                                                       |
 | Aspecto                    | Yes               | Yes         | [aspecto.io](https://www.aspecto.io)                                                                                                                  |
@@ -42,7 +42,6 @@ OpenTelemetry in their commercial products.
 | Splunk                     | Yes               | Yes         | [splunk.com/blog/...](https://www.splunk.com/en_us/blog/conf-splunklive/announcing-native-opentelemetry-support-in-splunk-apm.html)                   |
 | Sumo Logic                 | Yes               | Yes         | [help.sumologic.com/](https://help.sumologic.com/Traces/Getting_Started_with_Transaction_Tracing)                                                     |
 | Uptrace                    | Yes               | Yes         | [uptrace.dev](https://uptrace.dev)                                                                                                                    |
-
 
 _Vendors are listed alphabetically_
 
