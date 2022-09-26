@@ -21,8 +21,7 @@ instrumentation](/docs/instrumentation/net/manual) to collect custom telemetry
 data.
 
 If you do not want to rely on automatic instrumentation,
-which is currently in beta, you may want to use [instrumentation libraries]
-(/docs/instrumentation/net/libraries) explicitly instead.
+which is currently in beta, you may want to use [instrumentation libraries](/docs/instrumentation/net/libraries) explicitly instead.
 
 [release]: https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/latest
 [repo]: https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation
