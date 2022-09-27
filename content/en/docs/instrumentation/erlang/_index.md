@@ -8,24 +8,17 @@ description: >
   A language-specific implementation of OpenTelemetry in Erlang/Elixir.
 ---
 
-This is the OpenTelemetry for Erlang/Elixir documentation. OpenTelemetry is an
-observability framework -- an API, SDK, and tools that are designed to aid in
-the generation and collection of application telemetry data such as metrics,
-logs, and traces. This documentation is designed to help you understand how to
-get started using OpenTelemetry for Erlang/Elixir or any other language for the BEAM.
+<!--
+You can see & update the `lang_instrumentation_index_head` shortcode in
+/layouts/shortcodes/lang_instrumentation_index_head.md
 
-## Status and Releases
-
-The current status of the major functional components for OpenTelemetry Erlang/Elixir is as follows:
-
-| Traces  | Metrics | Logs    |
-| ------- | ------- | ------- |
-| Stable  | Alpha   | Not Yet Implemented |
-
-{{% latest_release "erlang" %}}
+The data (name, status) is located at
+/data/instrumentation.yaml
+-->
+{{% lang_instrumentation_index_head "erlang" %}}
   Packages of the API, SDK and OTLP exporter are published to
   [hex.pm](https://hex.pm) as
   [opentelemetry_api](https://hex.pm/packages/opentelemetry_api),
   [opentelemetry](https://hex.pm/packages/opentelemetry) and
   [opentelemetry_exporter](https://hex.pm/packages/opentelemetry_exporter).
-{{% /latest_release %}}
+{{% /lang_instrumentation_index_head %}}
