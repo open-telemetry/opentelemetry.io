@@ -1,14 +1,14 @@
 ---
-title: Rust & Otel Instrumentation
-linkTitle: Rust & Otel Instrumentation
+title: Instrumenting a rust application with OTel
+linkTitle: Rust Instrumentation
 date: 2022-09-21
-author: '[Yoav Danieli](https://github.com/aspecto-io) (Aspecto)'
+author: '[Yoav Danieli](https://github.com/ydan287) (Aspecto)'
 canonical_url: https://www.aspecto.io/blog/distributed-tracing-with-opentelemetry-rust/
 ---
 
 # Getting Started: OpenTelemetry in Rust
 
-![](https://lh3.googleusercontent.com/vlVY92XQhT69sNU4ZukikMN6fBpftvvf3Qs1zizIO1jJiwhB3giIpFE4ZM1q09JMdDQvl8Z7ceBFh4sebPYlrrDsdstJUILalWw3IW6OMAci2bwusf5DUtILclDYSg3zYGsUXhrlCvPzPtvmZx2UGgWj79rRFUCWDzzAvaQeBMEjlv0swZETT-XEiQ)
+![Cover image showing Rust and OpenTelemetry Logos ](cover-image.webp)
 
 In this article, I will share my experience adding OpenTelemetry distributed tracing to a Rust application.
 
@@ -90,7 +90,7 @@ For this example, I wanted to build a simple system I could use to integrate and
 
 I chose to use these tools and build a simple REST api service to create, read and delete users following the examples given by these frameworks.
 
-Here is a link for the [source code](https://github.com/aspecto-io/opentelemetry-examples).
+Here is a link for the [source code](https://github.com/aspecto-io/opentelemetry-examples/tree/master/rust).
 
 ### Creating the service
 
@@ -253,11 +253,11 @@ let tracing_leyer = tracing_opentelemetry::layer().with_tracer(tracer);
 
 When running the application once more, I can view my traces in Jaeger:
 
-![](https://lh5.googleusercontent.com/Gx_SHoK0OSiiyYIn7wdRZsddIhlxYTTHAStHGa8tn224sXIwXVWpEfhIDht8fhh75V3dVquM2XSlcOzyppJyhWeyKPDX5XKPbQU6Ioqi0e_Xm4-F07ZjERVIHgGmlVlxtyBGjhkaDqYFB9hDCFI5adrb9owRHh8tFYVdF2lusdU8vvPOzdvYT0VToQ)
+![Jaeger distributed tracing platform showing our Rust service trace](jaeger-platfrom.png)
 
 Clicking the trace, I can view the spans and their data:
 
-![](https://lh3.googleusercontent.com/B1MNZ1KiXLkjU9xDIGveQnYVQdyxqRup4VdH8scs5Kt3EBFZchSDXswDu49K8DvaI7sYLWxU7VyktLF5UOW5tFZNf1Scw5aI7u6cEuuA-ab0xVR6LK0WD0lgr_Rr8_UutDmrc-nhJT7PUrjPDOEmfZzxCthVLGCplqAupWGls54_bigiejyO6Ad5oQ)
+![Jaeger distributed tracing platform showing raw data of our Rust service trace](raw-data.png)
 
 ### Manually instrumenting Rust functions
 
@@ -266,7 +266,7 @@ By using the macro #[instrument] on a function, we can create a span for this fu
 
 It means that the span name will be the name of the function. Its attribute will include the module crate, the library of the function, and the function's arguments.
 
-By using instrument(skip(...), field(...)), we can skip some of the arguments of a function that are not important for us to record and manually insert new attributes.
+By using `instrument(skip(...), field(...))`, we can skip some of the arguments of a function that are not important for us to record and manually insert new attributes.
 
 Let’s give it a go:
 
@@ -290,7 +290,7 @@ async fn create_user(
 
 I now added instrumentation for the function create_user. I skipped the db parameters. Let’s view this new span in Jaeger:
 
-![](https://lh4.googleusercontent.com/SuyoRwDtUNgIiwCArfZduOLIxGN3OEVxtQ73cZjlhL0UG0RrxeNTRT7CnjY7q5rH_0RA4p84mGzqfishU3Eu0XMcbnlonm3WeuMO9sACCE6IPCxFVk-RzJR7s2x9eHCDpbx5g8IPERCcqqb0gcwcqskDAWTcQjGHDyWF42ss2W4vc76tT7PZlzrUyQ)
+![A span view in Jaeger](rust-service.png)
 
 We can clearly see the new span added to the trace. Clicking the new span we can see all the attributes I mentioned before.
 
@@ -325,7 +325,7 @@ pub type DbPool = r2d2::Pool<ConnectionManager<DbConnection>>;
 
 I ran the application once more and observed the traces in Jaeger:
 
-![](https://lh6.googleusercontent.com/S6h4W60UtEAFGe6SdGW0nV6TVZsXD0qgWwjNz_zp_NMNJsdGY8FzQ1WvYZM-bTmS9AXuIY2wuopsDFfj29_LMkMMveZSRJ4xYLffkAdCcj2NKPndHdvG9Tb1-ccZ7ABr2qgKVYoFXZ7ng5ieujrwH9FcbsLe0ZJCcpLlyRpZ-0TjhaTcY8QtaXq7vQ)
+![Viewing traces in Jaeger](traces-in-jaeger.png)
 
 We can see many unrelated traces. This is because of two reasons.
 
@@ -363,7 +363,7 @@ Here we get our current span and invoking the closure within its scope.
 
 Let’s view our traces now:
 
-![](https://lh5.googleusercontent.com/dhr2yURBclC91OxfsW7cEv6TMDAjrpEAAZxmrhgpStFyxYd52nnmGvC3NHAHyMG-EtJVelAUhSMa3MxO6g7-gcMFkiqCWj8vxaBY3nkrIka5m8CWRXVEipsDzYoDUS7An7ssR5wLQ8aLirCDK3Z4GBb03ML7wXBDtxPwbYNZPkM0sVGSJHIT9_LVaw)
+![View a trace in Jaeger](trace-view.png)
 
 We can now get a full picture of the flow of our application.
 
