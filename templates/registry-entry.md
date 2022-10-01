@@ -1,7 +1,7 @@
 ---
 title: My OpenTelemetry Integration // the name of your project
 registryType: <exporter/core/instrumentation> // the type of integration; is this an exporter, plugin, API package, or something else?
-isThirdParty: <false/true> // this is only true if the project is maintained by the OpenTelemetry project
+isThirdParty: <false/true> // this is only true if the project is not maintained by the OpenTelemetry project
 language: <js/go/dotnet/etc. or collector for collector plugins>
 tags:
   - <other useful search terms>
