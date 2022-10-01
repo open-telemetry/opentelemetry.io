@@ -88,7 +88,22 @@ provide information about the operation it tracks.
 
 Below is a sample of the type of information that would be present in a Span:
 
-![Sample Span](/img/span_visualization.png)
+#### Span Attributes
+| Key                           | Value                                           |
+| ----------------------------- | ------------------------------------------------|
+| net.transport                 | IP.TCP                                          |
+| net.peer.ip                   | 10.244.0.1                                      |
+| net.peer.port                 | 10243                                           |
+| net.host.name                 | localhost                                       |
+| http.method                   | GET                                             |
+| http.target                   | /cart                                           |
+| http.server_name              | frontend                                        |
+| http.route                    | /cart                                           |
+| http.scheme                   | http                                            |
+| http.host                     | localhost                                       |
+| http.flavor                   | 1.1                                             |
+| http.status_code              | 200                                             |
+| http.user_agent               | Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36             |
 
 > For more on Spans and how they pertain to OTel, visit
 > [Spans in OpenTelemetry](/docs/concepts/signals/traces/#spans-in-opentelemetry).
