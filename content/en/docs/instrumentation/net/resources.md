@@ -14,9 +14,6 @@ investigate interesting behavior. For example, if your trace or metrics data
 indicate latency in your system, you can narrow it down to a specific container,
 pod, or kubernetes deployment.
 
-Below you will find some introductions on how to setup resource detection with
-the Node.JS SDK.
-
 ## Setup
 
 Follow the instructions in the [Getting Started][], so that you have a running
@@ -68,7 +65,7 @@ via environment variables, running unix programs like `uname` to generate the
 resource data.
 
 ```console
-env OTEL_RESOURCE_ATTRIBUTES="service.name=app.js,service.namespace=tutorial,service.version=1.0,service.instance.id=`uuidgen`,host.name=`HOSTNAME`,host.type=`uname -m`,os.name=`uname -s`,os.version=`uname -r`" dotnet run
+env OTEL_RESOURCE_ATTRIBUTES="service.name=resource-tutorial-dotnet,service.namespace=tutorial,service.version=1.0,service.instance.id=`uuidgen`,host.name=`HOSTNAME`,host.type=`uname -m`,os.name=`uname -s`,os.version=`uname -r`" dotnet run
 
 Activity.TraceId:          d1cbb7787440cc95b325835cb2ff8018
 Activity.SpanId:           2ca007300fcb3068
@@ -83,7 +80,7 @@ Activity.Tags:
     bar: Hello, World!
     baz: [1,2,3]
 Resource associated with Activity:
-    service.name: app.js
+    service.name: resource-tutorial-dotnet
     service.namespace: tutorial
     service.version: 1.0
     service.instance.id: 93B14BAD-813D-48EE-9FB1-2ADFD07C5E78
@@ -138,12 +135,8 @@ If you run the same command as in [Adding resources with environment
 variables](#adding-resources-with-environment-variables), you'll see the
 `environment.name` and `team.name` resources in the resource list:
 
-Custom resources can also be configured in your code. The `NodeSDK` provides a
-configuration option, where you can set them. For example you can update the
-`tracing.js` like the following to have `service.*` attributes set:
-
 ```console
-env OTEL_RESOURCE_ATTRIBUTES="service.name=app.js,service.namespace=tutorial,service.version=1.0,service.instance.id=`uuidgen`,host.name=`HOSTNAME`,host.type=`uname -m`,os.name=`uname -s`,os.version=`uname -r`" dotnet run
+env OTEL_RESOURCE_ATTRIBUTES="service.name=resource-tutorial-dotnet,service.namespace=tutorial,service.version=1.0,service.instance.id=`uuidgen`,host.name=`HOSTNAME`,host.type=`uname -m`,os.name=`uname -s`,os.version=`uname -r`" dotnet run
 
 Activity.TraceId:          d1cbb7787440cc95b325835cb2ff8018
 Activity.SpanId:           2ca007300fcb3068
@@ -160,7 +153,7 @@ Activity.Tags:
 Resource associated with Activity:
     environment.name: production
     team.name: backend
-    service.name: app.js
+    service.name: resource-tutorial-dotnet
     service.namespace: tutorial
     service.version: 1.0
     service.instance.id: 28976A1C-BF02-43CA-BAE0-6E0564431462
@@ -183,7 +176,6 @@ to get details about your [Cloud] environment or [Deployment][].
 [process and process runtime resources]:
   /docs/reference/specification/resource/semantic_conventions/process/
 [host]: /docs/reference/specification/resource/semantic_conventions/host/
-[otlp exporter]: /docs/instrumentation/js/exporters/#otlp-endpoint
 [cloud]: /docs/reference/specification/resource/semantic_conventions/cloud/
 [deployment]:
   /docs/reference/specification/resource/semantic_conventions/deployment_environment/
