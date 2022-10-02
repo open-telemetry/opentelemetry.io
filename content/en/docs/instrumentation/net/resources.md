@@ -19,41 +19,6 @@ pod, or kubernetes deployment.
 Follow the instructions in the [Getting Started][], so that you have a running
 .NET app exporting data to the console.
 
-## Process & Environment Resource Detection
-
-TODO
-
-To detect [process and process runtime resources][], ...
-
- and takes attributes from the environment variable `OTEL_RESOURCE_ATTRIBUTES`.
-
-Run the application with some values set to `OTEL_RESOURCE_ATTRIBUTES`, e.g. we
-set the `host.name` to identify the [Host][]:
-
-```sh
-$ env OTEL_RESOURCE_ATTRIBUTES="host.name=localhost" dotnet run
-
-Activity.TraceId:          460d16f39cc30f6f427c782da048e198
-Activity.SpanId:           c108e932c1a4709c
-Activity.TraceFlags:           Recorded
-Activity.ActivitySourceName: MyCompany.MyProduct.MyService
-Activity.DisplayName: main
-Activity.Kind:        Internal
-Activity.StartTime:   2022-10-02T13:08:30.4675920Z
-Activity.Duration:    00:00:00.0044550
-Activity.Tags:
-    key: value
-Resource associated with Activity:
-    environment: production
-    team: backend
-    service.name: MyCompany.MyProduct.MyService
-    service.version: 1.0.0
-    service.instance.id: fd0af4fd-71aa-428b-aa4c-6fa145dda3a4
-    host.name: localhost
-```
-
-As you can see, the resource `host.name` is added to the list of resources.
-
 ## Adding resources with environment variables
 
 You can use the `OTEL_RESOURCE_ATTRIBUTES` environment variable to inject
