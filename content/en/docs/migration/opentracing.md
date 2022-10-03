@@ -140,7 +140,7 @@ In OpenTracing, baggage is carried with a SpanContext object associated with a
 Span. In OpenTelemetry, context and propagation are lower-level concepts –
 spans, baggage, metrics instruments, and other items are carried within a
 context object.
-`
+
 As a result of this change, baggage which is set using the OpenTracing API is
 not available to OpenTelemetry Propagators. As a result, mixing the
 OpenTelemetry and OpenTracing APIs is not recommended when using baggage.
