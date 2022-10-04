@@ -16,9 +16,9 @@ You can find the documentation in the [project's repository][repo].
 
 ## Next steps
 
-After you have set up instrumentation libraries, you may want to add [manual
-instrumentation](/docs/instrumentation/net/manual) to collect custom telemetry
-data.
+After you have set up the automatic instrumentation, you may want to add
+[manual instrumentation](/docs/instrumentation/net/manual)
+to collect custom telemetry data.
 
 If you do not want to rely on automatic instrumentation,
 which is currently in beta, you may want to use [instrumentation libraries](/docs/instrumentation/net/libraries) explicitly instead.
