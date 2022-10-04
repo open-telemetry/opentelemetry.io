@@ -1,9 +1,9 @@
 ---
-title: Node.js
+title: TypeScript/ Node.js
 aliases: [/docs/js/getting_started/nodejs]
 ---
 
-This guide will show you how to get started with tracing in Node.js.
+This guide will show you how to get started with tracing in TypeScript and Node.js.
 
 ## Example Application
 
@@ -46,6 +46,7 @@ Please save the following code as `app.js`.
 {{< tabs TypeScript JavaScript >}}
 
 {{< tab >}}
+/*app.ts*/
 const express, {Express} = require("express");
 
 const PORT: any = process.env.PORT || "8080";
@@ -61,6 +62,7 @@ app.listen(parseInt(PORT, 10), () => {
 {{< /tab >}}
 
 {{< tab >}}
+/*app.js*/
 const express = require("express");
 
 const PORT = process.env.PORT || "8080";
@@ -98,7 +100,7 @@ Listening for requests on http://localhost:8080
 
 ### Dependencies
 
-The following dependencies are required to trace a Node.js application.
+The following dependencies are required to trace a TypeScript/ Node.js application.
 
 #### Core Dependencies
 
@@ -131,11 +133,12 @@ npm install @opentelemetry/auto-instrumentations-node
 
 The tracing setup and configuration should be run before your application code. One tool commonly used for this task is the [`-r, --require module`](https://nodejs.org/api/cli.html#cli_r_require_module) flag.
 
-Create a file with a name like `tracing.js` which will contain your tracing setup code.
+Create a file with a name like `tracing.ts`or`tracing.js` (Based on if you are using TypeScript or Node.js) which will contain your tracing setup code.
 
 {{< tabs TypeScript JavaScript >}}
 
 {{< tab >}}
+/*tracing.ts*/
 // Require dependencies
 const opentelemetry = require("@opentelemetry/sdk-node");
 const { getNodeAutoInstrumentations } = require("@opentelemetry/auto-instrumentations-node");
@@ -153,6 +156,7 @@ sdk.start()
 {{< /tab >}}
 
 {{< tab >}}
+/*tracing.js*/
 // Require dependencies
 const opentelemetry = require("@opentelemetry/sdk-node");
 const { getNodeAutoInstrumentations } = require("@opentelemetry/auto-instrumentations-node");
