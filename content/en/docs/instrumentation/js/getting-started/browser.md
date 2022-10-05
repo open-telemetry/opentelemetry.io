@@ -3,7 +3,7 @@ title: Browser
 aliases: [/docs/js/getting_started/browser]
 ---
 
-This guide uses the example application in HTML & javascript provided below, but the steps to instrument your own application should be broadly the same.
+This guide uses the example application in HTML & typescript/javascript provided below, but the steps to instrument your own application should be broadly the same.
 
 ## Example Application
 
@@ -56,7 +56,7 @@ npm install --save @opentelemetry/api @opentelemetry/sdk-trace-web @opentelemetr
 
 ### Initialization and Configuration
 
-Create a empty file called `document-load.js` and add the following code to your html right before the body end tag:
+Create a empty file called `document-load.ts` or `document-load.js` (Based on if you are using typescript or javascript) and add the following code to your html right before the body end tag:
 
 {{< tabs TypeScript JavaScript >}}
 
@@ -74,7 +74,7 @@ We will add some code that will trace the document load timings and output those
 
 ### Creating a Tracer Provider
 
-Add the following code to the `document-load.js` to create a tracer provider, which brings the instrumentation to trace document load:
+Add the following code to the `document.ts` or `document-load.js` to create a tracer provider, which brings the instrumentation to trace document load:
 
 {{< tabs TypeScript JavaScript >}}
 
@@ -145,7 +145,7 @@ Follow [these instructions](../../exporters) for setting up a backend and export
 
 You may also want to use the `BatchSpanProcessor` to export spans in batches in order to more efficiently use resources.
 
-To export traces to the console, modify `document-load.js` so that it matches the following code snippet:
+To export traces to the console, modify `document-load.ts` or `document-load.js` so that it matches the following code snippet:
 
 {{< tabs TypeScript JavaScript >}}
 
