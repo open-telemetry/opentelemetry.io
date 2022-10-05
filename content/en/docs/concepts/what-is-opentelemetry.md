@@ -6,7 +6,7 @@ weight: 10
 ---
 
 Microservices architectures have enabled developers to build and release
-software faster and with greater independence, as they were no longer beholden
+software faster and with greater independence. They are no longer bound
 to the elaborate release processes associated with monolithic architectures.
 
 As these now-distributed systems scaled, it became increasingly difficult for
