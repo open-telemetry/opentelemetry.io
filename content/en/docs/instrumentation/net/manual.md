@@ -46,8 +46,8 @@ important startup operations.
 
 ```csharp
 using OpenTelemetry;
-using OpenTelemetry.Trace;
 using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 
 // ...
 
