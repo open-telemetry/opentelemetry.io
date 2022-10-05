@@ -3,6 +3,7 @@ title: Announcing the OpenTelemetry Community Manager
 linkTitle: Announcing OpenTelemetry Community Manager
 date: 2022-09-24
 author: [Austin Parker](https://github.com/austinlparker)
+draft: false
 ---
 
 OpenTelemetry has demonstrated massive growth since its inception in 2019. What started as a handful of OpenTracing and OpenCensus maintainers and collaborators meeting at the Google campus and over Zoom, has now grown into the second-most popular project in the CNCF behind Kubernetes itself. Over [5400 contributors and 700 companies](https://opentelemetry.devstats.cncf.io/d/74/contributions-chart?orgId=1&var-period=m&var-metric=contributions&var-repogroup_name=All&var-country_name=All&var-company_name=All&var-company=all&from=now-3y&to=now-2d) have contributed code, issues, documentation, and invaluable feedback. 
