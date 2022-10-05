@@ -21,9 +21,9 @@ developer_note:
 <div class="h3 mt-4">Find your way on how to get started with OpenTelemetry</div>
 <div class="l-get-started-buttons">
 
-- [Operations](/docs/getting-started/#operations)
-- [Application Developer](/docs/getting-started/#application-developer)
-- [Library Developer](/docs/getting-started/#library-developer)
+- [Application Developer](/docs/getting-started/application-developer)
+- [Library Developer](/docs/getting-started/library-developer)
+- [Application Operator](/docs/getting-started/application-operator)
 - <a href="/docs/getting-started/" aria-label="Other">...</a>
 
 </div>
