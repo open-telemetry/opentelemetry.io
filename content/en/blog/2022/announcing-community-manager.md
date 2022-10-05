@@ -2,10 +2,10 @@
 title: Announcing the OpenTelemetry Community Manager
 linkTitle: Announcing OpenTelemetry Community Manager
 date: 2022-09-24
-author: Austin Parker
+author: [Austin Parker](https://github.com/austinlparker)
 ---
 
-OpenTelemetry has demonstrated massive growth since its inception in 2019. What started as a handful of OpenTracing and OpenCensus maintainers and collaborators meeting at the Google campus and over Zoom has now grown into the second-most popular project in the CNCF behind Kubernetes itself. Over 5400 contributors and 700 companies have contributed code, issues, documentation, and invaluable feedback. 
+OpenTelemetry has demonstrated massive growth since its inception in 2019. What started as a handful of OpenTracing and OpenCensus maintainers and collaborators meeting at the Google campus and over Zoom, has now grown into the second-most popular project in the CNCF behind Kubernetes itself. Over [5400 contributors and 700 companies](https://opentelemetry.devstats.cncf.io/d/74/contributions-chart?orgId=1&var-period=m&var-metric=contributions&var-repogroup_name=All&var-country_name=All&var-company_name=All&var-company=all&from=now-3y&to=now-2d) have contributed code, issues, documentation, and invaluable feedback. 
 
 Our community isn’t just composed of these contributors, however - our end-users, partners, integrators, and a whole host of other people make up the OpenTelemetry community. In order to serve the needs of the wider end-user community, the governance committee has formed a community manager role who can focus on the needs of this large, and growing, group of humans.
 
@@ -15,4 +15,4 @@ With that said, I’m happy to inform you that I have been designated the first 
 
 What’s next? I hope to hear from you about what you need! I’ve started a [thread](https://github.com/open-telemetry/community/discussions/1203) on the Community Discussions in GitHub, and I’d love for you to post your questions, comments, and suggestions for community initiatives and programs. This isn’t just limited to end-users of OpenTelemetry, either -- how can I help in improving the existing and new contributor experience? Please let me know! 
 
-If you’d like to reach out in other ways, you can find me on [Twitter](https://twitter.com/@austinlparker) or on the Cloud Native Community Slack.
+If you’d like to reach out in other ways, you can find me on [Twitter](https://twitter.com/@austinlparker) or on the [Cloud Native Community Slack.](https://cloud-native.slack.com/archives/CJFCJHG4Q)
