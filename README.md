@@ -11,7 +11,7 @@ perfect position to help us get better: the website and documentation is the
 entry point for newcomers like you, so if something is unclear or something is
 missing [let us know][]!
 
-Read on to learn about other ways on how you can help.
+Read on to learn about other ways you can help.
 
 ## Adding a project to the OpenTelemetry Registry
 

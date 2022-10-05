@@ -71,7 +71,7 @@ For information about configuring receivers, see the [configuration documentatio
 ### Processors
 The job of the processor is to filter unwanted telemetry data and inject additional attributes to the data 
 before it is sent to the exporter. While receivers and exporters, the capabilities of processors differ immensely
-from one processor to the other.  The table below shows the currently supported processors, and the signals they
+from one processor to the other. The table below shows the currently supported processors, and the signals they
 possess:
 
 | Signal                 |       Traces        |      Metrics       |               Logs |
@@ -79,7 +79,7 @@ possess:
 | Attributes             | :heavy_check_mark:  |                    | :heavy_check_mark: |
 | Batch                  | :heavy_check_mark:  | :heavy_check_mark: | :heavy_check_mark: |
 | Filter                 |                     | :heavy_check_mark: |                    |
-| Memory Linter          | :heavy_check_mark:  | :heavy_check_mark: | :heavy_check_mark: |
+| Memory Limiter         | :heavy_check_mark:  | :heavy_check_mark: | :heavy_check_mark: |
 | Probabilistic Sampling | :heavy_check_mark:  |                    |                    |
 | Resource               | :heavy_check_mark:  | :heavy_check_mark: | :heavy_check_mark: |
 | Span                   | :heavy_check_mark:  |                    |                    |
@@ -87,10 +87,86 @@ possess:
 Processors are optional, although [some are 
 recommended](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor#recommended-processors). 
 
-Some kinds of configurations can be used to transport values or consolidate data coming in from 
-multiple systems, where different names are used to represent the same data.
+Processors can be configured to transport values or consolidate data coming in from 
+multiple systems, where different names are used to represent the same data. It is important to learn
+about the types of processors in detail to maximize their usage. 
 
-For more information about these components see the
+**Attribute processors**
+
+The attribute processor are used to make modifications to telemetry data attributes. The following operations are 
+supported by the attribute processor:
+- `delete`: deletes an attribute for a specified key
+- `extract`: uses regex to extract values from the specified attribute and upsert new attributes resulting from that extraction
+- `hash`: calculates the sha-1 hash of the value of an existing attribute, then updates that value with the derived hash
+- `insert`: inserts an attribute for a specified key when it does not exist
+- `update`: updates an existing attribute with a specified value. 
+- `upsert`: combines the `insert` and `update` operations
+
+The attribute processor comes in handy when scraping personally identifiable information or sensitive data.
+
+**Batch processor**
+
+The batch processors enables users to batch data in order to increase the transmission efficiency. It can be configured
+to send batches based on the size of the batch, or on a schedule. An example of a batch processor use case is shown below:
+```yaml
+processors:
+  batch:
+    timeout: 10s
+    send_batch_size: 10000
+    send_batch_max_size: 11000
+```
+
+**Filter processor**
+
+The filter processor makes it possible to include or exclude telemetry data using the configuration parameters
+provided. It can be configured to match with `strict` or `regexp` names. The filter can be further scoped by specifying
+`resource_attributes`.
+
+**Memory limiter processor**
+
+The memory limiter processor enables the user to control the amount of memory the collector consumes. This ensures that the 
+collector is conscious of resource consumption, and does everything it can to avoid running out of memory. The memory
+limiter has to be the first processor to configure in the pipeline.
+
+The configuration below shows how to set the memory limiter to use up to 300 Mib via the `limit_mib` parameter with a
+difference of 50 Mib between soft and hard limits configured via the `spike_limit_mib`:
+```yaml
+processors:
+  memory_limiter:
+    check_interval: 5s
+    limit_mib: 300
+    spike_limit_mib: 50
+  extensions:
+    meory_ballast:
+      size_mib: 150
+```
+
+**Probabilistic sampling processor**
+
+The probabilistic sampling processor is used to reduce the number of traces exported from the collector. This is 
+done by specifying a sampling percentage which determines the threshold percentage that should be preserved. An example
+of a probabilistic sampler is shown below:
+```yaml
+processors:
+  probabilistic_sampler:
+    sampling_percentage: 50
+    hash_seed: 123456
+```
+
+The `hash_seed` parameter determines how the collector should hash the trace IDs for determining which traces to process.
+
+**Resource processor**
+
+The resource processor enables users to modify attributes like the attribute processor but instead of updating attributes
+on individual spans, metrics, or logs, it updates attributes of the resource associated with the telemetry data.
+
+**Span processor**
+
+The job of the span processor is to manipulate the names or attributes of spans. It can extract the attributes of a span 
+and update its name based on those attributes. It supports   include` and `exclude` configuration parameters for filtering
+spans. Some span processors are used to change the collector's behavior.
+
+For information about configuring processors, see the
 [configuration documentation](/docs/collector/configuration/#processors).
 
 ## Repositories
