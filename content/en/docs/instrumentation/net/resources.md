@@ -23,7 +23,7 @@ Follow the instructions in the [Getting Started][], so that you have a running
 
 You can use the `OTEL_RESOURCE_ATTRIBUTES` environment variable to inject
 resources into your application. The .NET SDK will automatically detect these
-resrouces.
+resources.
 
 The following example adds [Service][], [Host][] and [OS][] resource attributes
 via environment variables, running unix programs like `uname` to generate the
