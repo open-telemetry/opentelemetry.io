@@ -3,14 +3,14 @@ title: "Configuration"
 weight: 20
 ---
 
-Please be sure to review the following documentation:
 
-- [Data Collection concepts](../../concepts/data-collection) in order to
-  understand the repositories applicable to the OpenTelemetry Collector.
-- [Security
-  guidance](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security.md)
+Please be sure to review the following documentation in order to
+gain the required knowledge to use the OpenTelemetry Collector:
 
-## Basics
+- [Data Collection concepts](../../concepts/data-collection)
+- [Security guidance](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security.md)
+
+## Components of the OpenTelemetry Collector
 
 The Collector consists of three components that access telemetry data:
 
