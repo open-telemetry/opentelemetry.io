@@ -3,16 +3,14 @@ title: "Configuration"
 weight: 20
 ---
 
-
-Please be sure to review the following documentation in order to
-gain the required knowledge to use the OpenTelemetry Collector:
+Review the following documentation to gain understanding of the repositories applicable to 
+the OpenTelemetry Collector and security standards respectively:
 
 - [Data Collection concepts](../../concepts/data-collection)
-- [Security guidance](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security.md)
+- [Security standards](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security.md)
 
 ## Components of the OpenTelemetry Collector
-
-The Collector consists of three components that access telemetry data:
+The OpenTelemetry Collector consists of three components for accessing telemetry data:
 
 - <img width="32" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Receivers.svg"></img>
 [Receivers](#receivers)
@@ -21,13 +19,13 @@ The Collector consists of three components that access telemetry data:
 - <img width="32" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Exporters.svg"></img>
 [Exporters](#exporters)
 
-These components once configured must be enabled via pipelines within the
+After configuring these components, they must be enabled via pipelines within the
 [service](#service) section.
 
-Secondarily, there are [extensions](#extensions), which provide capabilities
-that can be added to the Collector, but which do not require direct access to
-telemetry data and are not part of pipelines. They are also enabled within the
-[service](#service) section.
+Furthermore, there are [extensions](#extensions) which provide capabilities
+that can be added to the Collector, but do not require direct access to
+telemetry data. They are also enabled within the
+[service](#service) section but are not part of pipelines.
 
 An example configuration would look like:
 
@@ -67,7 +65,9 @@ service:
       exporters: [otlp]
 ```
 
-Note that receivers, processors, exporters and/or pipelines are defined via component identifiers in `type[/name]` format (e.g. `otlp` or `otlp/2`).  Components of a given type can be defined more than once as long as the identifiers are unique. For example:
+Note that _receivers_, _processors_, _exporters_ and/or _pipelines_ are defined via component identifiers in
+`type[/name]` format (e.g. `otlp` or `otlp/2`).  Components of a given type can be defined more than 
+once as long as the identifiers are unique. For example:
 
 ```yaml
 receivers:
@@ -116,28 +116,22 @@ service:
       exporters: [otlp]
 ```
 
-## Receivers
-
+## Configuring Receivers
 <img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Receivers.svg"></img>
 
-A receiver, which can be push or pull based, is how data gets into the
-Collector. Receivers may support one or more [data sources](../../concepts/signals).
+Many receivers come with their own default settings. When configuring these kinds of receivers, 
+specifying the name of the receiver is enough. An example of such receivers is provided in the YAML
+configuration script below (see `zipkin:`). 
 
-The `receivers:` section is how receivers are configured. Many receivers come
-with default settings so simply specifying the name of the receiver is enough
-to configure it (for example, `zipkin:`). If configuration is required or a
-user wants to change the default configuration then such configuration must be
-defined in this section. Configuration parameters specified for which the
-receiver provides a default configuration are overridden.
+If further configuration is required or the user wants to change the default configuration, 
+then the modifications must be defined under the `receivers` section in the script. The 
+default configuration parameters specified in the receiver are consequently overridden.
 
 > Configuring a receiver does not enable it. Receivers are enabled via
 > pipelines within the [service](#service) section.
 
-One or more receivers must be configured. By default, no receivers
-are configured. A basic example of all available receivers is provided below.
-
-> For detailed receiver configuration, please see the [receiver
-README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md).
+At least one or more receivers must be configured. By default, no receivers
+are configured. A basic example of all available receivers is provided below:
 
 ```yaml
 receivers:
@@ -192,7 +186,10 @@ receivers:
   zipkin:
 ```
 
-## Processors
+> For detailed receiver configuration, please see the [receiver
+README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md).
+
+## Configuring Processors
 
 <img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Processors.svg"></img>
 
@@ -203,12 +200,17 @@ recommended](https://github.com/open-telemetry/opentelemetry-collector/tree/main
 The `processors:` section is how processors are configured. Processors may come
 with default settings, but many require configuration. Any configuration for a
 processor must be done in this section. Configuration parameters specified for
-which the processor provides a default configuration are overridden.
+which the processor provides a default configuration are overridden. The order of the components
+in the configuration script matters for processors because the data is transported 
+serially from one processor to the other.
 
 > Configuring a processor does not enable it. Processors are enabled via
 > pipelines within the [service](#service) section.
 
-A basic example of the default processors is provided below. A full list of processors can be found [here](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor)
+A basic example of the default processors is provided below. A full list of 
+processors can be found [here](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor).
+
+
 
 > For detailed processor configuration, please see the [processor
 README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md).

@@ -7,6 +7,6 @@ aliases: [/about, /docs/concepts/overview, /otel]
 weight: 1
 ---
 
-The concepts section helps you learn more about the data sources and components
+The **Concepts** section helps you learn more about the data sources and components
 of the OpenTelemetry project in order to obtain a deeper understanding of how
 OpenTelemetry works.

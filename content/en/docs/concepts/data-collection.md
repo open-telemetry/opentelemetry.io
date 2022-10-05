@@ -33,7 +33,7 @@ For information on how to use the Collector see the
 ## Components of the OpenTelemetry Collector
 The collector makes it possible for users to configure *pipelines* for signals by
 combining any necessary number of *receivers*, *processors*, and *exporters*.
-Multiple instances of components as well as pipelines can be defined via YAML configuration.
+Multiple instances of these components as well as pipelines can be defined via YAML configuration.
 
 Let's look at these components in more details:
 
@@ -45,16 +45,53 @@ Let's look at these components in more details:
 - <img width="32" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Exporters.svg"></img>
   `exporters`: Where to send received data; these can be push or pull based
 
-These components are enabled through `pipelines` as mentioned earlier. 
+These components are enabled through `pipelines` as mentioned earlier. Read further to learn
+more about the components.
 
 ### Receivers
 The receiver is the first component in a pipeline. It receives data in several supported
 [data formats](https://opentelemetry.io/docs/concepts/signals), and converts this data into 
-an internal data format recognized by the collector.
+an internal data format recognized by the collector. Receivers can be push or pull based.
 
+You can set multiple protocols for a single receiver and make them listen to different ports by default. 
+The table below shows supported receiver formats for each signal type:
+
+| Signal Source        | Traces             | Metrics            | Logs               |
+| :---                 |    :----:          |  :---:             |               ---: |
+| Host Metrics         |                    | :heavy_check_mark: |                    |
+| Jaeger               | :heavy_check_mark: |                    |                    |
+| Kafka                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| OpenCensus           | :heavy_check_mark: | :heavy_check_mark: |                    |
+| OpenTelemetry (OTLP) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Prometheus           | :heavy_check_mark: | :heavy_check_mark: |                    |
+| Zipkin               | :heavy_check_mark: |                    |                    |
+
+For information about configuring receivers, see the [configuration documentation](/docs/collector/configuration/#receivers).
+
+### Processors
+The job of the processor is to filter unwanted telemetry data and inject additional attributes to the data 
+before it is sent to the exporter. While receivers and exporters, the capabilities of processors differ immensely
+from one processor to the other.  The table below shows the currently supported processors, and the signals they
+possess:
+
+| Signal                 |       Traces        |      Metrics       |               Logs |
+|:-----------------------|:-------------------:|:------------------:|-------------------:|
+| Attributes             | :heavy_check_mark:  |                    | :heavy_check_mark: |
+| Batch                  | :heavy_check_mark:  | :heavy_check_mark: | :heavy_check_mark: |
+| Filter                 |                     | :heavy_check_mark: |                    |
+| Memory Linter          | :heavy_check_mark:  | :heavy_check_mark: | :heavy_check_mark: |
+| Probabilistic Sampling | :heavy_check_mark:  |                    |                    |
+| Resource               | :heavy_check_mark:  | :heavy_check_mark: | :heavy_check_mark: |
+| Span                   | :heavy_check_mark:  |                    |                    |
+
+Processors are optional, although [some are 
+recommended](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor#recommended-processors). 
+
+Some kinds of configurations can be used to transport values or consolidate data coming in from 
+multiple systems, where different names are used to represent the same data.
 
 For more information about these components see the
-[configuration documentation](/docs/collector/configuration/#receivers).
+[configuration documentation](/docs/collector/configuration/#processors).
 
 ## Repositories
 

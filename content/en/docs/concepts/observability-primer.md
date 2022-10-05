@@ -16,7 +16,7 @@ questions about that system without knowing its inner workings. Furthermore,
 allows us to easily troubleshoot and handle novel problems (i.e. "unknown
 unknowns”), and helps us answer the question, "Why is this happening?"
 
-In order to be able to ask those questions of a system, the application must be
+In order to be able to ask those questions about a system, the application must be
 properly instrumented. That is, the application code must emit
 [signals](/docs/concepts/signals/) such as
 [traces](/docs/concepts/observability-primer/#distributed-traces),
