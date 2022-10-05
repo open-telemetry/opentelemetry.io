@@ -1,9 +1,7 @@
 ---
 title: OTel Unplugged at KubeCon NA 2022!
-linkTitle: OTel Unplugged at KubeCon NA 2022! 
 date: 2022-10-05
 author: "[Austin Parker](https://github.com/lightstep) (Lightstep)"
-draft: false 
 ---
 
 Are you excited about [KubeCon NA 2022](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/) in Detroit later this month? Maybe you’re attending in-person or virtually, for the first time or the fifth -- either way, the OpenTelemetry community is excited to present a hybrid event that will take place on Tuesday, October 25th -- OTel Unplugged!
