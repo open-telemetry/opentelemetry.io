@@ -74,7 +74,7 @@ We will add some code that will trace the document load timings and output those
 
 ### Creating a Tracer Provider
 
-Add the following code to the `document.ts` or `document-load.js` to create a tracer provider, which brings the instrumentation to trace document load:
+Add the following code to the `document-load.ts` or `document-load.js` to create a tracer provider, which brings the instrumentation to trace document load:
 
 {{< tabs TypeScript JavaScript >}}
 
