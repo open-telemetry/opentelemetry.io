@@ -30,7 +30,7 @@ Install dependencies used by the example.
 {{< tabs TypeScript JavaScript >}}
 
 {{< tab >}}
-npm install express typescript ts-node express @types/express @types/node
+npm install express typescript ts-node express @types/express @types/node nodemon
 {{< /tab >}}
 
 {{< tab >}}
@@ -41,24 +41,24 @@ npm install express
 
 ### Code
 
-Please save the following code as `app.js`.
+Please save the following code as `app.ts` or `app.js`.
 
 {{< tabs TypeScript JavaScript >}}
 
 {{< tab >}}
 /*app.ts*/
-const express, {Express} = require("express");
+import express, {Express} from "express";
 
-const PORT: any = process.env.PORT || "8080";
+const PORT: number = parseInt(process.env.PORT || "8080");
 const app: Express = express();
 
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
-app.listen(parseInt(PORT, 10), () => {
+app.listen(PORT), () => {
   console.log(`Listening for requests on http://localhost:${PORT}`);
-});
+};
 {{< /tab >}}
 
 {{< tab >}}
