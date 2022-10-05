@@ -25,7 +25,7 @@ The current status of the major functional components for OpenTelemetry Python
 is as follows:
 
 - **Traces** ([API][api/t], [SDK][sdk/t]): [Stable][]
-- **Metrics** ([API][api/m], [SDK][sdk/m]): [RC][Experimental]
+- **Metrics** ([API][api/m], [SDK][sdk/m]): [Stable][]
 - **Logs** ([SDK][sdk/l]): [Experimental][]
 
 [api/m]: https://opentelemetry-python.readthedocs.io/en/stable/api/metrics.html
