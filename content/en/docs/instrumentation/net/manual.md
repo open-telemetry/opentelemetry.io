@@ -52,7 +52,7 @@ using OpenTelemetry.Trace;
 // ...
 
 var serviceName = "MyServiceName";
-var serviceVersion "1.0.0";
+var serviceVersion = "1.0.0";
 
 using var tracerProvider = Sdk.CreateTracerProviderBuilder()
     .AddSource(serviceName)
@@ -106,7 +106,7 @@ builder.Services.AddOpenTelemetryTracing(b =>
     .AddSource(serviceName)
     .SetResourceBuilder(
         ResourceBuilder.CreateDefault()
-            .AddService(serviceName: serviceName, serviceVersion: serviceVersion))
+            .AddService(serviceName: serviceName, serviceVersion: serviceVersion));
 });
 ```
 
