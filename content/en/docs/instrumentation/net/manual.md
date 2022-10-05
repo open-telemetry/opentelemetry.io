@@ -56,9 +56,9 @@ var serviceVersion = "1.0.0";
 
 using var tracerProvider = Sdk.CreateTracerProviderBuilder()
     .AddSource(serviceName)
-    .SetResourceBuilder(
-        ResourceBuilder.CreateDefault()
-            .AddService(serviceName: serviceName, serviceVersion: serviceVersion))
+    .SetResourceBuilder(ResourceBuilder
+        .CreateDefault()
+        .AddService(serviceName: serviceName, serviceVersion: serviceVersion))
     .AddConsoleExporter()
     .Build();
 
@@ -104,9 +104,9 @@ builder.Services.AddOpenTelemetryTracing(b =>
     b
     .AddConsoleExporter()
     .AddSource(serviceName)
-    .SetResourceBuilder(
-        ResourceBuilder.CreateDefault()
-            .AddService(serviceName: serviceName, serviceVersion: serviceVersion));
+    .SetResourceBuilder(ResourceBuilder
+        .CreateDefault()
+        .AddService(serviceName: serviceName, serviceVersion: serviceVersion));
 });
 ```
 
