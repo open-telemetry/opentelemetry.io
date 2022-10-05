@@ -1,7 +1,7 @@
 ---
 title: {{ replaceRE "[-_]" " " .Name | OTel Unplugged at KubeCon NA 2022! }}
 linkTitle: OTel Unplugged at KubeCon NA 2022! 
-date: {{ dateFormat "2006-01-02" .Date }} # Put the current date, we will keep the date updated until your PR is merged
+date: 2022-10-05
 author: >- # If you have only one author, then add the single name on this line in quotes.
   [Austin Parker](https://github.com/lightstep) (Lightstep),
 draft: false # TODO: remove this line once your post is ready to be published
