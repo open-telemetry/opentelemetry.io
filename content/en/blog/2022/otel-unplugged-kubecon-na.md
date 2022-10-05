@@ -2,7 +2,7 @@
 title: OTel Unplugged at KubeCon NA 2022!
 linkTitle: OTel Unplugged at KubeCon NA 2022! 
 date: 2022-10-05
-author: [Austin Parker](https://github.com/lightstep) (Lightstep),
+author: "[Austin Parker](https://github.com/lightstep) (Lightstep)"
 draft: false 
 ---
 
