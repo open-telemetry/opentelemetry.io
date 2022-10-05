@@ -66,7 +66,7 @@ The table below shows supported receiver formats for each signal type:
 | Prometheus           | :heavy_check_mark: | :heavy_check_mark: |                    |
 | Zipkin               | :heavy_check_mark: |                    |                    |
 
-For information about configuring receivers, see the [configuration documentation](/docs/collector/configuration/#receivers).
+Learn how to configure receivers in the [configuration documentation](/docs/collector/configuration/#receivers).
 
 ### Processors
 The job of the processor is to filter unwanted telemetry data and inject additional attributes to the data 
@@ -170,7 +170,7 @@ The job of the span processor is to manipulate the names or attributes of spans.
 and update its name based on those attributes. It supports   include` and `exclude` configuration parameters for filtering
 spans. Some span processors are used to change the collector's behavior.
 
-For information about configuring processors, see the
+Learn how to configure processors in the
 [configuration documentation](/docs/collector/configuration/#processors).
 
 ### Exporters
@@ -208,9 +208,17 @@ service:
       exporters: [otlp]
 ```
 
-For information about configuring processors, see the
-[configuration documentation](/docs/collector/configuration/#processors).
+Learn how to configure exporters in the [configuration documentation](/docs/collector/configuration/#exporters).
 
+### Extensions
+
+The job of extensions is to provide additional functionalities to the collector.
+Examples of extensions include health monitoring, service discovery, and
+data forwarding. Extensions are optional. The following extensions are currently available:
+- `ballast`: for configuring memory ballast for the collector, in order to improve the performance and stability of the collector.
+- `health_check`: used to make an endpoint available for checking the health of the collector.
+- `pprof`: enables the Go performance profiler used to identify performance issues in the collector.
+- `zpages`: enables an endpoint that provides debugging information about the components in the collector.
 
 ## Repositories
 

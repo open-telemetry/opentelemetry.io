@@ -9,7 +9,7 @@ the OpenTelemetry Collector and security standards respectively:
 - [Data Collection concepts](../../concepts/data-collection)
 - [Security standards](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security.md)
 
-## Components of the OpenTelemetry Collector
+## Components
 The OpenTelemetry Collector consists of three components for accessing telemetry data:
 
 - <img width="32" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Receivers.svg"></img>
@@ -116,7 +116,7 @@ service:
       exporters: [otlp]
 ```
 
-## Configuring Receivers
+## Receivers
 <img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Receivers.svg"></img>
 
 Many receivers come with their own default settings. When configuring these kinds of receivers, 
@@ -189,7 +189,7 @@ receivers:
 > For detailed receiver configuration, please see the [receiver
 README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md).
 
-## Configuring Processors
+## Processors
 
 <img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Processors.svg"></img>
 
@@ -273,11 +273,10 @@ An exporter, which can be push or pull based, is how you send data to one or
 more backends/destinations. Exporters may support one or more [data
 sources](../../concepts/signals).
 
-The `exporters:` section is how exporters are configured. Exporters may come
-with default settings, but many require configuration to specify at least the
+Exporters are configured in the `exporters:` section of the YAML configuration file. Exporters may come
+with their own default settings, but many require configuration to specify at least the
 destination and security settings. Any configuration for an exporter must be
-done in this section. Configuration parameters specified for which the exporter
-provides a default configuration are overridden.
+done in this section. The default configuration parameters specified in the exporter are consequently overridden.
 
 > Configuring an exporter does not enable it. Exporters are enabled via
 > pipelines within the [service](#service) section.
@@ -346,18 +345,15 @@ exporters:
 ```
 
 ## Extensions
-
 Extensions are available primarily for tasks that do not involve processing telemetry
-data. Examples of extensions include health monitoring, service discovery, and
-data forwarding. Extensions are optional.
+data.
 
-The `extensions:` section is how extensions are configured. Many extensions
-come with default settings so simply specifying the name of the extension is
-enough to configure it (for example, `health_check:`). If configuration is
-required or a user wants to change the default configuration then such
-configuration must be defined in this section. Configuration parameters
-specified for which the extension provides a default configuration are
-overridden.
+Extensions are configured in the `extensions:` section of the YAML configuration file. Many extensions
+come with their own default settings so simply specifying the name of the extension is
+enough to configure it. An example of such extensions is provided in the YAML script below (see `health_check:`).
+If configuration is required or a user wants to change the default configuration then such
+configuration must be defined under the `extensions` section. The
+default configuration parameters specified in the extensions are consequently overridden.
 
 > Configuring an extension does not enable it. Extensions are enabled within
 > the [service](#service) section.
@@ -383,7 +379,7 @@ The service section is used to configure what components are enabled in the
 Collector based on the configuration found in the receivers, processors,
 exporters, and extensions sections. If a component is configured, but not
 defined within the service section then it is not enabled. The service section
-consists of three sub-sections:
+consists of three subsections:
 
 - extensions
 - pipelines
@@ -398,15 +394,15 @@ Extensions consist of a list of all extensions to enable. For example:
 
 Pipelines can be of the following types:
 
-- traces: collects and processes trace data.
-- metrics: collects and processes metric data.
-- logs: collects and processes log data.
+- _traces_: collects and processes trace data.
+- _metrics_: collects and processes metric data.
+- _logs_: collects and processes log data.
 
 A pipeline consists of a set of receivers, processors and exporters. Each
 receiver/processor/exporter must be defined in the configuration outside of the
 service section to be included in a pipeline.
 
-*Note:* Each receiver/processor/exporter can be used in more than one pipeline.
+***Note**:* Each receiver/processor/exporter can be used in more than one pipeline.
 For processor(s) referenced in multiple pipelines, each pipeline will get a
 separate instance of that processor(s). This is in contrast to
 receiver(s)/exporter(s) referenced in multiple pipelines, where only one
@@ -474,7 +470,7 @@ exporters:
 
 ### Proxy Support
 
-Exporters that leverage the net/http package (all do today) respect the
+Exporters that leverage the net/http package (apparently all today) respect the
 following proxy environment variables:
 
 - HTTP_PROXY
