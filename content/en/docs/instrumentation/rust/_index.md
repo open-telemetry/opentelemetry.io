@@ -8,22 +8,14 @@ description: >-
 weight: 26
 ---
 
-This is the OpenTelemetry for Rust documentation. OpenTelemetry is an
-observability framework -- an API, SDK, and tools that are designed to aid in
-the generation and collection of application telemetry data such as metrics,
-logs, and traces. This documentation is designed to help you understand how to
-get started using OpenTelemetry for Rust.
+<!--
+You can see & update the `lang_instrumentation_index_head` shortcode in
+/layouts/shortcodes/lang_instrumentation_index_head.md
 
-## Status and Releases
-
-The current status of the major functional components for OpenTelemetry Rust is
-as follows:
-
-| Traces  | Metrics | Logs                |
-| ------- | ------- | ------------------- |
-| Beta    | Alpha   | Not Yet Implemented |
-
-{{% latest_release "rust" /%}}
+The data (name, status) is located at
+/data/instrumentation.yaml
+-->
+{{% lang_instrumentation_index_head "rust" /%}}
 
 ## Crates
 

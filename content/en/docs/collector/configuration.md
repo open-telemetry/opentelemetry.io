@@ -340,6 +340,10 @@ exporters:
   # Data sources: metrics
   prometheusremotewrite:
     endpoint: "http://some.url:9411/api/prom/push"
+    # For offical Prometheus (e.g. running via Docker)
+    # endpoint: 'http://prometheus:9090/api/v1/write'
+    # tls:
+    #   insecure: true
 
   # Data sources: traces
   zipkin:

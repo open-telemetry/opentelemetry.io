@@ -2,7 +2,7 @@
 title: Getting Started
 spelling: cSpell:ignore dpkg GOARCH journalctl kubectl
 weight: 1
-collectorVersion: 0.54.0
+collectorVersion: 0.60.0
 ---
 
 If you aren't familiar with the deployment models, components, and repositories
@@ -28,8 +28,8 @@ with the version of the Collector you wish to run.
 
 {{< tabs DockerHub ghcr.io >}}
 {{< tab lang="console">}}
-$ docker pull otel/opentelemetry-collector:0.54.0
-$ docker run otel/opentelemetry-collector:0.54.0
+$ docker pull otel/opentelemetry-collector:{{% param collectorVersion %}}
+$ docker run otel/opentelemetry-collector:{{% param collectorVersion %}}
 {{< /tab >}}
 
 {{< tab lang="console">}}
@@ -222,12 +222,12 @@ unpacked with a tool that supports this compression format:
 {{< tabs Intel ARM >}}
 {{< tab lang="console">}}
 $ curl -O -L https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_darwin_amd64.tar.gz
-$ tar -xvf otelcol_0.54.0_darwin_amd64.tar.gz
+$ tar -xvf otelcol_{{% param collectorVersion %}}_darwin_amd64.tar.gz
 {{< /tab >}}
 
 {{< tab lang="console">}}
 $ curl -O -L https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_darwin_arm64.tar.gz
-$ tar -xvf otelcol_0.54.0_darwin_arm64.tar.gz
+$ tar -xvf otelcol_{{% param collectorVersion %}}_darwin_arm64.tar.gz
 {{< /tab >}}
 {{< /tabs >}}
 

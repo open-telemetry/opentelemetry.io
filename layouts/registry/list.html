@@ -9,8 +9,8 @@
 
 {{ .Content -}}
 
-<div class="td-content">
-  <section class="row pb-5">
+<div class="td-content td-box">
+  <section class="row section pb-5">
     <div class="col align-self-center">
       <form action="{{ "/registry" | absURL }}" id="searchForm">
         <div class="input-group">
@@ -21,7 +21,7 @@
           <input type="hidden" name="component" id="input-component" value="" />
           <input type="hidden" name="language" id="input-language" value="" />
 
-          <div class="input-group-append">
+          <div class="input-group-append flex-wrap">
             <button type="button" class="btn btn-outline-success" onclick="document.getElementById('searchForm').submit();">Submit</button>
             <button type="button" class="btn btn-outline-danger"  onclick="document.getElementById('search-query').value = ''; document.getElementById('input-language').value = 'all';document.getElementById('input-component').value = 'all';document.getElementById('searchForm').submit();">Reset</button>
             <div>
@@ -54,8 +54,8 @@
     </div>
   </section>
 
-  <section class="pt-0">
-    <div class="mx-auto">
+  <section class="row section pt-0">
+    <div class="col mx-auto">
       <ul class="list-unstyled" id="search-results"></ul>
       <ul class="list-unstyled" id="default-body">
       {{ range $registryItems -}}

@@ -1,10 +1,10 @@
 ---
 title: "Exporters"
-weight: 3
+weight: 5
 ---
 
-In order to visualize and analyze your traces, you will need to
-export them to a backend such as [Jaeger](https://www.jaegertracing.io/) or
+In order to visualize and analyze your traces, you will need to export them to a
+backend such as [Jaeger](https://www.jaegertracing.io/) or
 [Zipkin](https://zipkin.io/). OpenTelemetry JS provides exporters for some
 common open source backends.
 
@@ -67,6 +67,113 @@ $ docker run -d --name jaeger \
   jaegertracing/all-in-one:latest
 ```
 
+### Usage with the WebTracer
+
+When you use the OTLP exporter in a browser-based application, you need to note
+that:
+
+1. Using grpc & http/proto for exporting is not supported
+2. [Content Security Policies][] (CSPs) of your website might block your exports
+3. [Cross-Origin Resource Sharing][] (CORS) headers might not allow your exports
+   being send
+4. You might need to expose your collector to the public internet
+
+Below you will find instructions to use the right exporter, to configure your
+CSPs and CORS headers and what precautions you have to take when exposing
+your collector.
+
+#### Use OTLP exporter with HTTP/JSON
+
+[OpenTelemetry Collector Exporter with grpc][] and
+[OpenTelemetry Collector Exporter with protobuf][]
+do only work with Node.JS,
+therefor you are limited to use the
+[OpenTelemetry Collector Exporter with http][]. 
+
+Make sure that the receiving end of your exporter (collector or observability
+backend) do support `http/json`, and that you are exporting your data to the
+right endpoint, i.e. make sure that your port is set to `4318`.
+
+#### Configure CSPs
+
+If your website is making use of Content Security Policies (CSPs), make sure
+that the domain of your OTLP endpoint is included. If your collector endpoint
+is `https://collector.example.com:4318/v1/traces` add the following directive:
+
+```text
+connect-src collector.example.com:4318/v1/traces
+```
+
+If your CSP is not including the OTLP endpoint, you will see an error message,
+stating that the request to your endpoint is violating the CSP directive.
+
+#### Configure CORS headers
+
+If your website and collector are hosted at a different origin, your browser
+might block the requests going out to your collector. You need to configure
+special headers for Cross-Origin Resource Sharing (CORS).
+
+The OpenTelemetry collector provides [a feature][] for http based receivers to add
+the required headers to allow the receiver to accept traces from a web browser:
+
+```yaml
+receivers:
+  otlp:
+    protocols:
+      http:
+        include_metadata: true
+        cors:
+          allowed_origins:
+            - https://foo.bar.com
+            - https://*.test.com
+          allowed_headers:
+            - Example-Header
+          max_age: 7200
+```
+
+#### Securely expose your collector
+
+To receive telemetry from a web application you need to allow the browsers of
+your end-users to send data to your collector. If your web application is
+accessible from the public internet, you also have to make your collector
+accessible for everyone.
+
+It is recommended that you do not expose your collector directly, but that you
+put a reverse proxy (nginx, apache, ...) in front of it. The reverse proxy can
+take care of SSL-offloading, setting the right CORS headers and many other
+features specific to web applications.
+
+Below you will find a configuration for the popular nginx webserver to get
+you started:
+
+```nginx
+server {
+    listen 80 default_server;
+    server_name _;
+    location / {
+        # Take care of preflight requests
+        if ($request_method = 'OPTIONS') {
+             add_header 'Access-Control-Max-Age' 1728000;
+             add_header "Access-Control-Allow-Origin" "name.of.your.website.example.com" always;
+             add_header 'Access-Control-Allow-Headers' 'Accept,Accept-Language,Content-Language,Content-Type' always;
+             add_header 'Access-Control-Allow-Credentials' 'true' always;
+             add_header 'Content-Type' 'text/plain charset=UTF-8';
+             add_header 'Content-Length' 0;
+             return 204;
+        }
+
+        add_header "Access-Control-Allow-Origin" "name.of.your.website.example.com" always;
+        add_header 'Access-Control-Allow-Credentials' 'true' always;
+        add_header 'Access-Control-Allow-Headers' 'Accept,Accept-Language,Content-Language,Content-Type' always;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass http://collector:4318;
+    }
+}
+```
+
 ## Zipkin
 
 To set up Zipkin as quickly as possible, run it in a docker container:
@@ -90,3 +197,16 @@ const { BatchSpanProcessor } = require("@opentelemetry/sdk-trace-base");
 
 provider.addSpanProcessor(new BatchSpanProcessor(new ZipkinExporter()));
 ```
+
+[Content Security Policies]:
+  https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/
+[cross-origin resource sharing]:
+  https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+[OpenTelemetry Collector Exporter with grpc]:
+  https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-grpc
+[OpenTelemetry Collector Exporter with protobuf]:
+  https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-proto
+[OpenTelemetry Collector Exporter with http]:
+  https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-http
+[a feature]:
+  https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/confighttp/README.md

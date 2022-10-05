@@ -7,6 +7,7 @@ description: >-
   A language-specific implementation of OpenTelemetry in Java.
 aliases: [/java, /java/metrics, /java/tracing]
 weight: 18
+javaVersion: 1.18.0
 ---
 
 OpenTelemetry Java consists of the following repositories:
@@ -48,7 +49,7 @@ using our BOM to keep the versions of the various components in sync.
       <dependency>
         <groupId>io.opentelemetry</groupId>
         <artifactId>opentelemetry-bom</artifactId>
-        <version>1.17.0</version>
+        <version>{{% param javaVersion %}}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -67,7 +68,7 @@ using our BOM to keep the versions of the various components in sync.
 
 ```kotlin
 dependencies {
-  implementation(platform("io.opentelemetry:opentelemetry-bom:1.17.0"))
+  implementation(platform("io.opentelemetry:opentelemetry-bom:{{% param javaVersion %}}"))
   implementation("io.opentelemetry:opentelemetry-api")
 }
 ```

@@ -20,8 +20,8 @@ repositories:
 - **[Contrib](https://github.com/open-telemetry/opentelemetry-java-contrib):**
   Optional components such as JMX metric gathers.
 
-Some instrumentation libraries, for example Ruby, offer a
-[single repository](https://github.com/open-telemetry/opentelemetry-ruby) that
+Some instrumentation libraries, for example Rust, offer a
+[single repository](https://github.com/open-telemetry/opentelemetry-rust) that
 supports both manual and automatic instrumentation. Other languages, for example
 JS, support both manual and automatic instrumentation, but separate
 [core](https://github.com/open-telemetry/opentelemetry-js) components from
