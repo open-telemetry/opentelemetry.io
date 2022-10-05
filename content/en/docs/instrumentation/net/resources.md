@@ -128,8 +128,8 @@ Resource associated with Activity:
     os.version: 21.6.0
 ```
 
-**Note**: If you set your resource attributes via environment variable and code,
-any values set via the environment variable take precedence.
+**Note**: If you set resource attributes with both environment variables and
+code, the values in code take precedence.
 
 ## Next steps
 
