@@ -84,7 +84,7 @@ Run the application with the following request and open <http://localhost:8080> 
 {{< tabs TypeScript JavaScript >}}
 
 {{< tab >}}
-$ ts-node app.ts
+$ nodemon app.ts
 Listening for requests on http://localhost:8080
 {{< /tab >}}
 
@@ -182,7 +182,7 @@ Now you can run your application as you normally would, but you can use the `--r
 {{< tabs TypeScript JavaScript >}}
 
 {{< tab >}}
-$ tsc --require './tracing.ts' app.ts
+$ nodemon --require './tracing.ts' app.ts
 Listening for requests on http://localhost:8080
 {{< /tab >}}
 
