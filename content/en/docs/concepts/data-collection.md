@@ -71,7 +71,11 @@ For information about configuring receivers, see the [configuration documentatio
 ### Processors
 The job of the processor is to filter unwanted telemetry data and inject additional attributes to the data 
 before it is sent to the exporter. While receivers and exporters, the capabilities of processors differ immensely
-from one processor to the other. The table below shows the currently supported processors, and the signals they
+from one processor to the other. Processors are run on data between being received and being exported.
+While processors are optional, [some are
+recommended](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor#recommended-processors).
+
+The table below shows the currently supported processors, and the signals they
 possess:
 
 | Signal                 |       Traces        |      Metrics       |               Logs |
@@ -137,7 +141,7 @@ processors:
     limit_mib: 300
     spike_limit_mib: 50
   extensions:
-    meory_ballast:
+    memory_ballast:
       size_mib: 150
 ```
 
@@ -168,6 +172,45 @@ spans. Some span processors are used to change the collector's behavior.
 
 For information about configuring processors, see the
 [configuration documentation](/docs/collector/configuration/#processors).
+
+### Exporters
+The job of the exporter is to receive data in the internal collector format, convert it into the output format, and 
+transport it to one or more specified destinations. Multiple exporters of the same type can be configured to transport
+data to different destinations as required. Similarly, multiple exporters can be configured in the same pipeline to 
+transport data to multiple destinations.
+
+The table below shows the available exporters and the signals they support:
+
+| Exporters            |       Traces       |      Metrics       |               Logs |
+|:---------------------|:------------------:|:------------------:|-------------------:|
+| File                 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Jaeger               | :heavy_check_mark: |                    |                    |
+| Kafka                | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Logging              | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| OpenCensus           | :heavy_check_mark: | :heavy_check_mark: |                    |
+| OpenTelemetry (OTLP) |                    | :heavy_check_mark: | :heavy_check_mark: |
+| Prometheus           | :heavy_check_mark: | :heavy_check_mark: |                    |
+| Zipkin               | :heavy_check_mark: |                    |                    |
+
+
+The script below is an example of a Jaeger exporter for traces, and an otlp exporter for traces and metrics:
+```yaml
+exporters:
+  jaeger:
+    endpoint: jaeger:14250
+  otlp:
+    endpoint: otelcol:4317
+service:
+  pipelines:
+    traces:
+      exporters: [jaeger, otlp]
+    metrics:
+      exporters: [otlp]
+```
+
+For information about configuring processors, see the
+[configuration documentation](/docs/collector/configuration/#processors).
+
 
 ## Repositories
 

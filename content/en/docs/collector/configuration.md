@@ -193,14 +193,9 @@ README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/r
 
 <img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Processors.svg"></img>
 
-Processors are run on data between being received and being exported.
-Processors are optional though [some are
-recommended](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor#recommended-processors).
-
-The `processors:` section is how processors are configured. Processors may come
-with default settings, but many require configuration. Any configuration for a
-processor must be done in this section. Configuration parameters specified for
-which the processor provides a default configuration are overridden. The order of the components
+Processors may come with their own default settings, but many of them require configuration. Any configuration for a
+processor must be done in the `processors` section and the default configuration parameters specified 
+in the processor are consequently overridden. The order of the components
 in the configuration script matters for processors because the data is transported 
 serially from one processor to the other.
 
@@ -209,8 +204,6 @@ serially from one processor to the other.
 
 A basic example of the default processors is provided below. A full list of 
 processors can be found [here](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor).
-
-
 
 > For detailed processor configuration, please see the [processor
 README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md).
