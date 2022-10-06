@@ -1,7 +1,7 @@
 ---
 title: Announcing the OpenTelemetry Community Manager
 linkTitle: Community Manager
-date: 2022-09-24
+date: 2022-10-06
 author: "[Austin Parker](https://github.com/austinlparker)"
 ---
 
