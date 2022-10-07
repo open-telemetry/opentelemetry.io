@@ -32,7 +32,7 @@ by Vineeth Pothulapati, Timescale Inc Friday, October 28 • 4:55pm - 5:30pm
 
 ## Other Co-located Events
 
-[OTel Unplugged](https://www.eventbrite.com/e/otel-unplugged-kubeconcloudnativecon-detroit-2022-tickets-427595037267)
+[OTel Unplugged](../otel-unplugged-kubecon-na/)
 is a one-day OpenTelemetry unconference event held at Colony Club Detroit on
 Tuesday, Oct 25, 2022. Join in to listen, learn about the latest features and
 get involved in the project. Network with OpenTelemetry maintainers, governance
