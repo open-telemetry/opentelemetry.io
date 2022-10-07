@@ -2,6 +2,7 @@
 title: Join us for OpenTelemetry Talks and Activities at Kubecon NA 2022
 linkTitle: Kubecon NA '22
 date: 2022-10-07
+spelling: cSpell:ignore Alolita Sharma unconference Kowall Logz Dyla Vineeth Pothulapati
 author: "[Alolita Sharma](https://github.com/alolita)"
 ---
 
@@ -58,7 +59,7 @@ Huntington Place.
 ## Come Visit the OpenTelemetry Project Booth
 
 Drop by and say Hi! at the OpenTelemetry project booth in the Kubecon NA Project
-Pavillion. If you’re lucky, you may even pick up some OpenTelemetry swag!
+Pavilion. If you’re lucky, you may even pick up some OpenTelemetry swag!
 
 The pavilion hours are:
 
