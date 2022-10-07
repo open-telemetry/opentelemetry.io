@@ -1,6 +1,6 @@
 ---
 title: Mission, vision, and values
-aliases: [/mission, /vision, /values]
+aliases: [/mission]
 ---
 
 ## Mission &mdash; our overall north star as a community
