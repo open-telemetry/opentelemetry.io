@@ -11,20 +11,12 @@ developer_note:
 
 ## High-quality, ubiquitous, and portable telemetry to enable effective observability
 
-<div class="l-primary-buttons mt-5">
 
-- [Learn more](/docs/concepts/)
-- [Mission, vision, and values](/mission/)
+<div class="h3 mt-4">Start your OpenTelemetry journey</div>
+<div class="l-primary-buttons">
 
-</div>
-
-<div class="h3 mt-4">Find your way on how to get started with OpenTelemetry</div>
-<div class="l-get-started-buttons">
-
-- [Application Developer](/docs/getting-started/application-developer)
-- [Library Developer](/docs/getting-started/library-developer)
-- [Application Operator](/docs/getting-started/application-operator)
-- <a href="/docs/getting-started/" aria-label="Other">...</a>
+- [Dev](/docs/getting-started/dev)
+- [Ops](/docs/getting-started/ops)
 
 </div>
 {{< /blocks/cover >}}

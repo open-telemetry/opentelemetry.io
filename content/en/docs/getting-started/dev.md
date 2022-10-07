@@ -1,10 +1,9 @@
 ---
-title: Application Developer
+title: Dev
 description: >-
-  I write code for my organization's apps and services. My goal is to get
-  observability for my application by writing code. I want to have my
-  dependencies emit telemetry for me automatically, and then use APIs to
-  manually instrument important areas of my code.
+  You develop software. 
+  Your goal is to get observability by writing code. 
+  You want to have your dependencies emit telemetry for you automatically.
 spelling: cSpell:ignore otel
 weight: 2
 ---
@@ -16,6 +15,12 @@ API manually, we recommend that you learn the following concepts first:
 - [What is OpenTelemetry?](/docs/concepts/what-is-opentelemetry/)
 - [How can I instrument dependencies without touching their code?](/docs/concepts/instrumenting/#automatic-instrumentation)
 - [How can I instrument my application manually?](/docs/concepts/instrumenting/#manual-instrumentation)
+
+If you develop libraries, frameworks or middleware that is used as a dependency
+within other software, we recommend that you learn how you can provide telemetry
+natively:
+
+- [How can I add native instrumentation to my library?](/docs/concepts/instrumenting-library/)
 
 Next, you can deep dive into the documentations for the language you are using:
 
