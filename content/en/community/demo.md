@@ -1,5 +1,0 @@
----
-title: Demo
----
-
-Coming soon!
