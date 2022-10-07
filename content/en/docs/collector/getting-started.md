@@ -46,7 +46,7 @@ $ docker run -v $(pwd)/config.yaml:/etc/otelcol/config.yaml otel/opentelemetry-c
 {{< /tab >}}
 
 {{< tab lang="console">}}
-$ docker run -v $(pwd)/config.yaml:/etc/otelcol/config.yaml ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:{{% param collectorVersion %}}
+$ docker run -v $(pwd)/config.yaml:/etc/otelcol-contrib/config.yaml ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:{{% param collectorVersion %}}
 {{< /tab >}}
 {{< /tabs >}}
 

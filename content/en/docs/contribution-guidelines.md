@@ -27,3 +27,8 @@ information on using pull requests.
 ### Getting Started
 
 See [README.md](https://github.com/open-telemetry/opentelemetry.io#readme) for current information.
+
+## Code of conduct
+
+OpenTelemetry follows the
+[CNCF Code of Conduct](https://github.com/cncf/foundation/blob/master/code-of-conduct.md).

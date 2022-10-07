@@ -9,8 +9,8 @@ languages:
     name: Erlang/Elixir
     status:
       traces: stable
-      metrics: alpha
-      logs: not yet implemented
+      metrics: experimental
+      logs: experimental
   go:
     name: Go
     status:
