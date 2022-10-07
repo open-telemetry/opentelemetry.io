@@ -1,5 +1,6 @@
 ---
 title: OpenTelemetry Demo
+linkTitle: Demo
 ---
 
 {{% alert title="Note" color="warning" %}} The demo is a work in progress. If
