@@ -38,21 +38,25 @@ Copy the following file into an empty directory and call it `index.html`.
 
 ### Installation
 
-To create traces in the browser, you will need `@opentelemetry/sdk-trace-web`, and the instrumentation `@opentelemetry/instrumentation-document-load`:
+Let's initialize the the package and config files for the example project.
 
 {{< tabs TypeScript JavaScript >}}
 
 {{< tab >}}
 tsc --init
-npm install --save @opentelemetry/api @opentelemetry/sdk-trace-web @opentelemetry/instrumentation-document-load @opentelemetry/context-zone
 {{< /tab >}}
 
 {{< tab >}}
 npm init -y
-npm install --save @opentelemetry/api @opentelemetry/sdk-trace-web @opentelemetry/instrumentation-document-load @opentelemetry/context-zone
 {{< /tab >}}
 
 {{< /tabs >}}
+
+To create traces in the browser, you will need `@opentelemetry/sdk-trace-web`, and the instrumentation `@opentelemetry/instrumentation-document-load`:
+
+```bash
+npm install  @opentelemetry/api @opentelemetry/sdk-trace-web @opentelemetry/instrumentation-document-load @opentelemetry/context-zone
+```
 
 ### Initialization and Configuration
 
