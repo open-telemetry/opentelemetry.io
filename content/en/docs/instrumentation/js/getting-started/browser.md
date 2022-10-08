@@ -64,11 +64,11 @@ Create an empty code file named `document-load` with a `.ts` or `.js` extension 
 
 {{< tabs TypeScript JavaScript >}}
 
-{{< tab >}}
+{{< tab lang="html">}}
 <script type="module" src="document-load.ts"></script>
 {{< /tab >}}
 
-{{< tab >}}
+{{< tab lang="html">}}
 <script type="module" src="document-load.js"></script>
 {{< /tab >}}
 
