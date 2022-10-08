@@ -3,7 +3,7 @@ title: Node.js
 aliases: [/docs/js/getting_started/nodejs]
 ---
 
-This guide will show you how to get started with tracing in TypeScript and Node.js.
+This guide will show you how to get started with tracing in Node.js.
 
 ## Example Application
 
