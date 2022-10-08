@@ -182,12 +182,12 @@ Now you can run your application as you normally would, but you can use the `--r
 
 {{< tabs TypeScript JavaScript >}}
 
-{{< tab >}}
+{{< tab lang="console">}}
 $ nodemon --require './tracing.ts' app.ts
 Listening for requests on http://localhost:8080
 {{< /tab >}}
 
-{{< tab >}}
+{{< tab lang="console">}}
 $ node --require './tracing.js' app.js
 Listening for requests on http://localhost:8080
 {{< /tab >}}
