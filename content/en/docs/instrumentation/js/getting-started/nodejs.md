@@ -100,7 +100,7 @@ Listening for requests on http://localhost:8080
 
 ### Dependencies
 
-The following dependencies are required to trace a TypeScript/ Node.js application.
+The following dependencies are required to trace a Node.js application.
 
 #### Core Dependencies
 
