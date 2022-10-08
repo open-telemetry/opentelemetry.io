@@ -84,12 +84,12 @@ Run the application with the following request and open <http://localhost:8080> 
 
 {{< tabs TypeScript JavaScript >}}
 
-{{< tab >}}
+{{< tab lang="console">}}
 $ nodemon app.ts
 Listening for requests on http://localhost:8080
 {{< /tab >}}
 
-{{< tab >}}
+{{< tab lang="console">}}
 $ node app.js
 Listening for requests on http://localhost:8080
 {{< /tab >}}
