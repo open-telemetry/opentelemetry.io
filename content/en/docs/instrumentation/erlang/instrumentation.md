@@ -70,7 +70,7 @@ function you need to propagate the `context` so that spans started in those
 functions have the proper parent.
 
 For implicit context propagation across functions within a process the [process
-dictionary](http://erlang.org/doc/reference_manual/processes.html#process-dictionary)
+dictionary](https://erlang.org/doc/reference_manual/processes.html#process-dictionary)
 is used to store the context. When you start a span with the macro `with_span`
 the context in the process dictionary is updated to make the newly started span
 the currently active span and this span will be end'ed when the block or

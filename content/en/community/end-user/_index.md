@@ -41,7 +41,7 @@ and the topic is Kubernetes & The Collector.
 ### Monthly Discussion Group
 
 - Monthly hour long sessions via google meet -- all are welcome!
-- We use a [Lean Coffee](http://leancoffee.org/) format where discussion topics
+- We use a [Lean Coffee](https://leancoffee.org/) format where discussion topics
   are generated and democratically selected by the group at the start of the
   meeting. Topics are rigorously time-boxed by a facilitator.
 - [Chatham House Rule](https://www.chathamhouse.org/about-us/chatham-house-rule)
