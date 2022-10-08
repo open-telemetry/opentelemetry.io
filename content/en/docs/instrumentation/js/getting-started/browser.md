@@ -80,32 +80,8 @@ We will add some code that will trace the document load timings and output those
 
 Add the following code to the `document-load.ts|js` to create a tracer provider, which brings the instrumentation to trace document load:
 
-{{< tabs TypeScript JavaScript >}}
-
-{{< tab >}}
-/* document-load.ts */
-import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
-import { DocumentLoadInstrumentation } from '@opentelemetry/instrumentation-document-load';
-import { ZoneContextManager } from '@opentelemetry/context-zone';
-import { registerInstrumentations } from '@opentelemetry/instrumentation';
-
-const provider:WebTracerProvider = new WebTracerProvider();
-
-provider.register({
-  // Changing default contextManager to use ZoneContextManager - supports asynchronous operations - optional
-  contextManager: new ZoneContextManager(),
-});
-
-// Registering instrumentations
-registerInstrumentations({
-  instrumentations: [
-    new DocumentLoadInstrumentation(),
-  ],
-});
-{{< /tab >}}
-
-{{< tab >}}
-/* document-load.js */
+```js
+/* document-load.ts|js file (Code Snippet is similar for both the languages)*/
 import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
 import { DocumentLoadInstrumentation } from '@opentelemetry/instrumentation-document-load';
 import { ZoneContextManager } from '@opentelemetry/context-zone';
@@ -124,9 +100,7 @@ registerInstrumentations({
     new DocumentLoadInstrumentation(),
   ],
 });
-{{< /tab >}}
-
-{{< /tabs >}}
+```
 
 In the following we will use [parcel](https://parceljs.org/) as web application bundler, but you can of course also use any other build tool.
 
@@ -151,35 +125,8 @@ You may also want to use the `BatchSpanProcessor` to export spans in batches in 
 
 To export traces to the console, modify `document-load.ts|js` so that it matches the following code snippet:
 
-{{< tabs TypeScript JavaScript >}}
-
-{{< tab >}}
-/* document-load.ts */
-import { ConsoleSpanExporter, SimpleSpanProcessor } from '@opentelemetry/sdk-trace-base';
-import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
-import { DocumentLoadInstrumentation } from '@opentelemetry/instrumentation-document-load';
-import { ZoneContextManager } from '@opentelemetry/context-zone';
-import { registerInstrumentations } from '@opentelemetry/instrumentation';
-
-const provider:WebTracerProvider = new WebTracerProvider();
-provider.addSpanProcessor(new SimpleSpanProcessor(new ConsoleSpanExporter()));
-
-provider.register({
-  // Changing default contextManager to use ZoneContextManager - supports asynchronous operations - optional
-  contextManager: new ZoneContextManager(),
-});
-
-// Registering instrumentations
-registerInstrumentations({
-  instrumentations: [
-    new DocumentLoadInstrumentation(),
-  ],
-});
-
-{{< /tab >}}
-
-{{< tab >}}
-/* document-load.js */
+```js
+/* document-load.ts|js file (Code Snippet is similar for both the languages) */
 import { ConsoleSpanExporter, SimpleSpanProcessor } from '@opentelemetry/sdk-trace-base';
 import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
 import { DocumentLoadInstrumentation } from '@opentelemetry/instrumentation-document-load';
@@ -200,10 +147,7 @@ registerInstrumentations({
     new DocumentLoadInstrumentation(),
   ],
 });
-
-{{< /tab >}}
-
-{{< /tabs >}}
+```
 
 Now, rebuild your application and open the browser again. In the console of the developer toolbar you should see some traces being exported:
 
