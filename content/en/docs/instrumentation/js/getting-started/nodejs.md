@@ -13,17 +13,9 @@ This is a small example application we will monitor in this guide.
 
 Create an empty package.json. Please run appropriate command based on language you are following:
 
-{{< tabs TypeScript JavaScript >}}
-
-{{< tab >}}
-tsc --init
-{{< /tab >}}
-
-{{< tab >}}
+```shell
 npm init -f
-{{< /tab >}}
-
-{{< /tabs >}}
+```
 
 Install dependencies used by the example.
 
@@ -41,7 +33,16 @@ npm install express
 
 ### Code
 
-Please save the following code as `app.ts` or `app.js`.
+Please save the following code as `app.ts|js`. If you are using Typescript kindly run following command
+
+
+{{< tabs TypeScript >}}
+
+{{< tab >}}
+tsc --init
+{{< /tab >}}
+
+{{< /tab >}}
 
 {{< tabs TypeScript JavaScript >}}
 
