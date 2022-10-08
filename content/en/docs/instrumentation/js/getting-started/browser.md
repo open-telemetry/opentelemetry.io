@@ -3,7 +3,7 @@ title: Browser
 aliases: [/docs/js/getting_started/browser]
 ---
 
-This guide uses the example application in HTML & typescript/javascript provided below, but the steps to instrument your own application should be broadly the same.
+While this guide uses the example application presented below, the steps to instrument your own application should be similar.
 
 ## Example Application
 
