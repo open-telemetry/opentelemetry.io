@@ -30,7 +30,7 @@ Install dependencies used by the example.
 {{< tabs TypeScript JavaScript >}}
 
 {{< tab >}}
-npm install express typescript ts-node express @types/express @types/node nodemon
+npm install express typescript ts-node express @types/express @types/node 
 {{< /tab >}}
 
 {{< tab >}}
