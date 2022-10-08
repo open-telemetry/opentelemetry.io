@@ -134,7 +134,7 @@ npm install @opentelemetry/auto-instrumentations-node
 
 The tracing setup and configuration should be run before your application code. One tool commonly used for this task is the [`-r, --require module`](https://nodejs.org/api/cli.html#cli_r_require_module) flag.
 
-Create a file with a name like `tracing.ts`or`tracing.js` (Based on if you are using TypeScript or Node.js) which will contain your tracing setup code.
+Create a file with a name like `tracing.ts|js` which will contain your tracing setup code.
 
 {{< tabs TypeScript JavaScript >}}
 
