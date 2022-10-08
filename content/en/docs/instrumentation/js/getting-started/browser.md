@@ -56,7 +56,7 @@ npm install --save @opentelemetry/api @opentelemetry/sdk-trace-web @opentelemetr
 
 ### Initialization and Configuration
 
-Create a empty file called `document-load.ts` or `document-load.js` (Based on if you are using typescript or javascript) and add the following code to your html right before the body end tag:
+Create an empty code file named `document-load` with a `.ts` or `.js` extension , as appropriate, based on the language you've chosen to write your app in. Add the following code to your HTML right before the `</body>` closing tag:
 
 {{< tabs TypeScript JavaScript >}}
 
@@ -74,7 +74,7 @@ We will add some code that will trace the document load timings and output those
 
 ### Creating a Tracer Provider
 
-Add the following code to the `document-load.ts` or `document-load.js` to create a tracer provider, which brings the instrumentation to trace document load:
+Add the following code to the `document-load.ts|js` to create a tracer provider, which brings the instrumentation to trace document load:
 
 {{< tabs TypeScript JavaScript >}}
 
@@ -145,7 +145,7 @@ Follow [these instructions](../../exporters) for setting up a backend and export
 
 You may also want to use the `BatchSpanProcessor` to export spans in batches in order to more efficiently use resources.
 
-To export traces to the console, modify `document-load.ts` or `document-load.js` so that it matches the following code snippet:
+To export traces to the console, modify `document-load.ts|js` so that it matches the following code snippet:
 
 {{< tabs TypeScript JavaScript >}}
 
