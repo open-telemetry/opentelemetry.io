@@ -1,5 +1,5 @@
 ---
-title: TypeScript/ Node.js
+title: Node.js
 aliases: [/docs/js/getting_started/nodejs]
 ---
 
