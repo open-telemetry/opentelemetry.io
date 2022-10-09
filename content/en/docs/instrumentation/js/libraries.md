@@ -44,7 +44,46 @@ npm install @opentelemetry/auto-instrumentations-node
 
 Then in your tracing initialization code, use `registerInstrumentations`:
 
-```javascript
+{{< tabs TypeScript JavaScript >}}
+
+{{< tab >}}
+/* tracing.ts */
+
+// Import dependencies
+import { getNodeAutoInstrumentations } from "@opentelemetry/auto-instrumentations-node";
+import opentelemetry from "@opentelemetry/api";
+import { Resource } from "@opentelemetry/resources";
+import { SemanticResourceAttributes } from "@opentelemetry/semantic-conventions";
+import { NodeTracerProvider } from "@opentelemetry/sdk-trace-node";
+import { registerInstrumentations } from "@opentelemetry/instrumentation";
+import { ConsoleSpanExporter, BatchSpanProcessor } from "@opentelemetry/sdk-trace-base";
+
+// This registers all instrumentation packages
+registerInstrumentations({
+  instrumentations: [
+    getNodeAutoInstrumentations()
+  ],
+});
+
+const resource =
+  Resource.default().merge(
+    new Resource({
+      [SemanticResourceAttributes.SERVICE_NAME]: "service-name-here",
+      [SemanticResourceAttributes.SERVICE_VERSION]: "0.1.0",
+    })
+  );
+
+const provider = new NodeTracerProvider({
+    resource: resource,
+});
+const exporter = new ConsoleSpanExporter();
+const processor = new BatchSpanProcessor(exporter);
+provider.addSpanProcessor(processor);
+
+provider.register();
+{{< /tab >}}
+
+{{< tab >}}
 /* tracing.js */
 
 // Require dependencies
@@ -79,7 +118,11 @@ const processor = new BatchSpanProcessor(exporter);
 provider.addSpanProcessor(processor);
 
 provider.register();
-```
+{{< /tab >}}
+
+{{< /tabs >}}
+
+
 
 ### Using individual instrumentation packages
 
@@ -98,7 +141,49 @@ npm install --save @opentelemetry/instrumentation-http @opentelemetry/instrument
 
 And then register each instrumentation library:
 
-```js
+{{< tabs TypeScript JavaScript >}}
+
+{{< tab >}}
+/* tracing.ts */
+
+// Import dependencies
+import { HttpInstrumentation } from "@opentelemetry/instrumentation-http";
+import { ExpressInstrumentation } from "@opentelemetry/instrumentation-express";
+import opentelemetry from "@opentelemetry/api";
+import { Resource } from "@opentelemetry/resources";
+import { SemanticResourceAttributes } from "@opentelemetry/semantic-conventions";
+import { NodeTracerProvider } from "@opentelemetry/sdk-trace-node";
+import { registerInstrumentations } from "@opentelemetry/instrumentation";
+import { ConsoleSpanExporter, BatchSpanProcessor } from "@opentelemetry/sdk-trace-base";
+
+// This registers all instrumentation packages
+registerInstrumentations({
+  instrumentations: [
+    // Express instrumentation expects HTTP layer to be instrumented
+    new HttpInstrumentation(),
+    new ExpressInstrumentation(),
+  ],
+});
+
+const resource =
+  Resource.default().merge(
+    new Resource({
+      [SemanticResourceAttributes.SERVICE_NAME]: "service-name-here",
+      [SemanticResourceAttributes.SERVICE_VERSION]: "0.1.0",
+    })
+  );
+
+const provider = new NodeTracerProvider({
+    resource: resource,
+});
+const exporter = new ConsoleSpanExporter();
+const processor = new BatchSpanProcessor(exporter);
+provider.addSpanProcessor(processor);
+
+provider.register();
+{{< /tab >}}
+
+{{< tab >}}
 /* tracing.js */
 
 // Require dependencies
@@ -136,7 +221,9 @@ const processor = new BatchSpanProcessor(exporter);
 provider.addSpanProcessor(processor);
 
 provider.register();
-```
+{{< /tab >}}
+
+{{< /tabs >}}
 
 ## Configuring instrumentation libraries
 
