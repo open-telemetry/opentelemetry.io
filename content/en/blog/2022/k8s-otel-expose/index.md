@@ -91,7 +91,7 @@ credentials to check whether the sender is authorized to store data. Finally, tr
 are stored in a [Jaeger in-memory](https://www.jaegertracing.io/docs/1.37/deployment/#memory)
 database for easy verification.
 
-![overview diagram](/blog/2022/k8s-otel-expose/overview-diagram.png)
+![overview diagram](overview-diagram.png)
 
 # Prerequisites
 
@@ -388,7 +388,7 @@ $ kubectl port-forward deployments/my-in-memory 16686
 Forwarding from 127.0.0.1:16686 -> 16686
 ```
 
-![jaeger-ui on remote cluster](/blog/2022/k8s-otel-expose/jaeger-ui-remote-cluster.png)
+![jaeger-ui on remote cluster](jaeger-ui-remote-cluster.png)
 
 # Conclusion
 
