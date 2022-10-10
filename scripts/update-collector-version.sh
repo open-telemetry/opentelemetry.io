@@ -43,11 +43,11 @@ fi
 
 branch="auto-update/collector_version_${latest_core_version}"
 
-# git checkout -b "${branch}" main
+git checkout -b "${branch}" main
 
 gettingStartedFile=${REPO_DIR}/content/en/docs/collector/getting-started.md
 
-# sed -i "s/collectorVersion:.*/collectorVersion: ${latest_core_version}/" ${gettingStartedFile}
+sed -i "s/collectorVersion:.*/collectorVersion: ${latest_core_version}/" ${gettingStartedFile}
 
 git diff --quiet ${gettingStartedFile}
 if [[ $? == 0 ]]; then
