@@ -1,4 +1,4 @@
-name: Auto-update Collector Version
+name: Check collector version
 
 on:
   workflow_dispatch:
