@@ -64,8 +64,9 @@ Pavilion. If you’re lucky, you may even pick up some OpenTelemetry swag!
 
 The pavilion hours are:
 
-Wednesday, October 26: 10:30 - 8:00 ET Thursday, October 27: 10:30 - 5:30 ET
-Friday, October 27: 10:30 - 4:00 ET
+- Wednesday, October 26, 10:30 - 20:00 ET
+- Thursday, October 27, 10:30 - 17:30 ET
+- Friday, October 27, 10:30 - 16:00 ET
 
 We’re super excited to learn from all of you about your experience with
 OpenTelemetry, how you are using OpenTelemetry, features you may need and issues
