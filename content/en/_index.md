@@ -14,7 +14,7 @@ developer_note:
 <div class="l-primary-buttons mt-5">
 
 - [Learn more](/docs/concepts/)
-- [Mission, vision, and values](/mission/)
+- [Mission, vision, and values](/community/mission/)
 
 </div>
 
