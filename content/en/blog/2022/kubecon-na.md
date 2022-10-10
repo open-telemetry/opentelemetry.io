@@ -42,7 +42,8 @@ committee and technical committee members. For details, check out the
 [Open Observability Day](https://events.linuxfoundation.org/open-observability-day-north-america/)
 has several OpenTelemetry sessions including panel discussions, workshops,
 individual talks and lightning talks. This event will be on Tuesday Oct 25, 2022
-and is co-located with Kubecon NA. The schedule of talks can be found here.
+and is co-located with Kubecon NA. For talk details, see the
+[schedule](https://events.linuxfoundation.org/open-observability-day-north-america/program/schedule/).
 
 [eBPF Day](https://events.linuxfoundation.org/cloud-native-ebpf-day-north-america/)
 also has some OpenTelemetry talks focused on profiling and tracing using eBPF
