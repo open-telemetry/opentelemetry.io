@@ -1,7 +1,7 @@
 ---
 title: Instrumentation
-weight: 3
 aliases: [/docs/instrumentation/js/api/tracing]
+weight: 4
 ---
 
 Manual instrumentation is the process of adding observability code to your
@@ -201,9 +201,7 @@ const mainWork = () => {
   });
 }
 
-function doWork(i) {
-  console.log(`doing work for ${i}`);
-
+const doWork = (i) => {
   tracer.startActiveSpan(`doWork:${i}`, span => {
     // simulate some random work.
     for (let i = 0; i <= Math.floor(Math.random() * 40000000); i += 1) {
@@ -255,9 +253,22 @@ Sometimes it's helpful to do something with the current/active
 point in program execution.
 
 ```js
-const span = opentelemetry.trace.getSpan(opentelemetry.context.active());
+const activeSpan = opentelemetry.trace.getActiveSpan();
 
-// do something with the current span, optionally ending it if that is appropriate for your use case.
+// do something with the active span, optionally ending it if that is appropriate for your use case.
+```
+
+## Get a span from context
+
+It can also be helpful to get the
+[span](/docs/concepts/signals/traces/#spans-in-opentelemetry) from a given
+context that isn't necessarily the active span.
+
+```js
+const ctx = getContextFromSomewhere();
+const span = opentelemetry.trace.getSpan(ctx);
+
+// do something with the acquired span, optionally ending it if that is appropriate for your use case.
 ```
 
 ## Attributes
@@ -357,7 +368,7 @@ traces with the current span.
 
 
 ```js
-function someFunction(spanToLinkFrom) {
+const someFunction = (spanToLinkFrom) => {
   const options = {
     links: [
       {
@@ -476,7 +487,7 @@ const mainWork = () => {
   parentSpan.end();
 }
 
-function doWork(parent, i) {
+const doWork = (parent, i) => {
   // To create a child span, we need to mark the current (parent) span as the active span
   // in the context, then use the resulting context to create a child span.
   const ctx = opentelemetry.trace.setSpan(

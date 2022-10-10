@@ -29,14 +29,19 @@ One or more [`Services`](#service) designed for end users or other applications.
 
 ### **APM**
 
-Application Performance Monitoring. Typically a back-end of the
-[`Tracing`](#trace) [`Data Source`](#data-source).
+Application Performance Monitoring is about monitoring software applications, their performance (speed, reliability, availability, etc.) to detect issues, alerting and tooling for finding the root cause.
 
 ### **Attribute**
 
 A key-value pair. Used across telemetry signals - e.g. in [`Traces`](#trace) to
 attach data to a [`Span`](#span), or in [`Metrics`](#metric). See [attribute
 spec][attribute].
+
+### **Automatic Instrumentation**
+
+Refers to telemetry collection methods that do not require the end-user to
+modify application's source code. Methods vary by programming language, and
+examples include bytecode injection or monkey patching.
 
 ### **Baggage**
 

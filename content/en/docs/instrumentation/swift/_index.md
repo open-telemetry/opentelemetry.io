@@ -3,26 +3,19 @@ title: Swift
 weight: 28
 description: >-
   <img width="35"
-  src="https://raw.githubusercontent.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Swift.svg"></img>
+  src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Swift.svg"
+  alt="Swift"></img>
   A language-specific implementation of OpenTelemetry in Swift.
 ---
 
-This is the OpenTelemetry for Swift documentation. OpenTelemetry is an
-observability framework -- an API, SDK, and tools that are designed to aid in
-the generation and collection of application telemetry data such as metrics,
-logs, and traces. This documentation is designed to help you understand how to
-get started using OpenTelemetry for Swift.
+<!--
+You can see & update the `lang_instrumentation_index_head` shortcode in
+/layouts/shortcodes/lang_instrumentation_index_head.md
 
-## Status and Releases
-
-The current status of the major functional components for OpenTelemetry Swift is
-as follows:
-
-| Traces  | Metrics | Logs                |
-| ------- | ------- | ------------------- |
-| Beta    | Alpha   | Not Yet Implemented |
-
-{{% latest_release "swift" /%}}
+The data (name, status) is located at
+/data/instrumentation.yaml
+-->
+{{% lang_instrumentation_index_head "swift" /%}}
 
 ## Further Reading
 

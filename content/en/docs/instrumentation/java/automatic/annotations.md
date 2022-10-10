@@ -3,6 +3,7 @@ title: Annotations
 description: Using instrumentation annotations with a Java agent.
 aliases: [/docs/instrumentation/java/annotations]
 weight: 4
+javaAnnotationsVersion: 1.18.0-alpha
 ---
 
 For most users, the out-of-the-box instrumentation is completely sufficient and
@@ -22,7 +23,7 @@ library to use the `@WithSpan` annotation.
   <dependency>
     <groupId>io.opentelemetry.instrumentation</groupId>
     <artifactId>opentelemetry-instrumentation-annotations</artifactId>
-    <version>1.17.0-alpha</version>
+    <version>{{% param javaAnnotationsVersion %}}</version>
   </dependency>
 </dependencies>
 ```
@@ -31,7 +32,7 @@ library to use the `@WithSpan` annotation.
 
 ```groovy
 dependencies {
-    implementation('io.opentelemetry.instrumentation:opentelemetry-instrumentation-annotations:1.17.0-alpha')
+    implementation('io.opentelemetry.instrumentation:opentelemetry-instrumentation-annotations:{{% param javaAnnotationsVersion %}}')
 }
 ```
 
@@ -66,12 +67,12 @@ listed below, then the span will not be ended until the future completes.
 * [org.reactivestreams.Publisher](https://www.reactive-streams.org/reactive-streams-1.0.1-javadoc/org/reactivestreams/Publisher.html)
 * [reactor.core.publisher.Mono](https://projectreactor.io/docs/core/3.1.0.RELEASE/api/reactor/core/publisher/Mono.html)
 * [reactor.core.publisher.Flux](https://projectreactor.io/docs/core/3.1.0.RELEASE/api/reactor/core/publisher/Flux.html)
-* [io.reactivex.Completable](http://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Completable.html)
-* [io.reactivex.Maybe](http://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Maybe.html)
-* [io.reactivex.Single](http://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Single.html)
-* [io.reactivex.Observable](http://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Observable.html)
-* [io.reactivex.Flowable](http://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Flowable.html)
-* [io.reactivex.parallel.ParallelFlowable](http://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/parallel/ParallelFlowable.html)
+* [io.reactivex.Completable](https://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Completable.html)
+* [io.reactivex.Maybe](https://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Maybe.html)
+* [io.reactivex.Single](https://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Single.html)
+* [io.reactivex.Observable](https://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Observable.html)
+* [io.reactivex.Flowable](https://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Flowable.html)
+* [io.reactivex.parallel.ParallelFlowable](https://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/parallel/ParallelFlowable.html)
 
 ## Adding attributes to the span with `@SpanAttribute`
 

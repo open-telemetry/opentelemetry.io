@@ -46,19 +46,19 @@ important startup operations.
 
 ```csharp
 using OpenTelemetry;
-using OpenTelemetry.Trace;
 using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 
 // ...
 
 var serviceName = "MyServiceName";
-var serviceVersion "1.0.0";
+var serviceVersion = "1.0.0";
 
 using var tracerProvider = Sdk.CreateTracerProviderBuilder()
     .AddSource(serviceName)
-    .SetResourceBuilder(
-        ResourceBuilder.CreateDefault()
-            .AddService(serviceName: serviceName, serviceVersion: serviceVersion))
+    .SetResourceBuilder(ResourceBuilder
+        .CreateDefault()
+        .AddService(serviceName: serviceName, serviceVersion: serviceVersion))
     .AddConsoleExporter()
     .Build();
 
@@ -104,9 +104,9 @@ builder.Services.AddOpenTelemetryTracing(b =>
     b
     .AddConsoleExporter()
     .AddSource(serviceName)
-    .SetResourceBuilder(
-        ResourceBuilder.CreateDefault()
-            .AddService(serviceName: serviceName, serviceVersion: serviceVersion))
+    .SetResourceBuilder(ResourceBuilder
+        .CreateDefault()
+        .AddService(serviceName: serviceName, serviceVersion: serviceVersion));
 });
 ```
 
@@ -333,5 +333,5 @@ You'll also want to configure an appropriate exporter to [export your telemetry
 data](/docs/instrumentation/net/exporters) to one or more telemetry backends.
 
 You can also check the
-[automatic instrumentation for .NET](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation),
+[automatic instrumentation for .NET](/docs/instrumentation/net/automatic),
 which is currently in beta.

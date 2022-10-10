@@ -119,7 +119,7 @@ The active context is the context which is returned by `api.context.active()`.
 The context object contains entries which allow tracing components which are tracing a single thread of execution to communicate with each other and ensure the trace is successfully created.
 For example, when a span is created it may be added to the context.
 Later, when another span is created it may use the span from the context as its parent span.
-This is accomplished through the use of mechanisms like [async_hooks](https://nodejs.org/api/async_hooks.html) or [AsyncLocalStorage](https://nodejs.org/api/async_context.html#async_context_class_asynclocalstorage) in node, or [zone.js](https://github.com/angular/zone.js/) on the web in order to propagate the context through a single execution.
+This is accomplished through the use of mechanisms like [async_hooks](https://nodejs.org/api/async_hooks.html) or [AsyncLocalStorage](https://nodejs.org/api/async_context.html#async_context_class_asynclocalstorage) in node, or [zone.js](https://github.com/angular/angular/tree/main/packages/zone.js) on the web in order to propagate the context through a single execution.
 If no context is active, the `ROOT_CONTEXT` is returned, which is just the empty context object.
 
 ### Get Active Context

@@ -1,0 +1,43 @@
+languages:
+  cpp:
+    name: C++
+    status:
+      traces: stable
+      metrics: experimental
+      logs: experimental
+  erlang:
+    name: Erlang/Elixir
+    status:
+      traces: stable
+      metrics: experimental
+      logs: experimental
+  go:
+    name: Go
+    status:
+      traces: stable
+      metrics: alpha
+      logging: not yet implemented
+  php:
+    name: PHP
+    status:
+      traces: alpha
+      metrics: alpha
+      logs: not yet implemented
+  ruby:
+    name: Ruby
+    status:
+      traces: stable
+      metrics: not yet implemented
+      logs: not yet implemented
+  rust:
+    name: Rust
+    status:
+      traces: stable
+      metrics: alpha
+      logs: not yet implemented
+  swift:
+    name: Swift
+    status:
+      traces: beta
+      metrics: alpha
+      logs: not yet implemented

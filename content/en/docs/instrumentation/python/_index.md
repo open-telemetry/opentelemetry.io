@@ -1,7 +1,9 @@
 ---
 title: Python
 description: >-
-  <img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Python_SDK.svg"></img>
+  <img width="35"
+  src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Python_SDK.svg"
+  alt="Python"></img>
   A language-specific implementation of OpenTelemetry in Python.
 aliases: [/python, /python/metrics, /python/tracing]
 weight: 22
@@ -23,7 +25,7 @@ The current status of the major functional components for OpenTelemetry Python
 is as follows:
 
 - **Traces** ([API][api/t], [SDK][sdk/t]): [Stable][]
-- **Metrics** ([API][api/m], [SDK][sdk/m]): [RC][Experimental]
+- **Metrics** ([API][api/m], [SDK][sdk/m]): [Stable][]
 - **Logs** ([SDK][sdk/l]): [Experimental][]
 
 [api/m]: https://opentelemetry-python.readthedocs.io/en/stable/api/metrics.html

@@ -222,11 +222,13 @@ Sample Span:
     "http.host": "10.177.2.152:26040",
     "http.flavor": "1.1"
   },
-  "events": {
-    "name": "",
-    "message": "OK",
-    "timestamp": "2021-10-22 16:04:01.209512872 +0000 UTC"
-  }
+  "events": [
+    {
+      "name": "",
+      "message": "OK",
+      "timestamp": "2021-10-22 16:04:01.209512872 +0000 UTC"
+    }
+  ]
 }
 ```
 
