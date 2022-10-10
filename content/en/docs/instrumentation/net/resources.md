@@ -107,7 +107,7 @@ default value.
 If you run the same command as in [Adding resources with environment
 variables](#adding-resources-with-environment-variables), but this time
 without `service.name` `service.version`, and `service.instance.id`,
- you'll see the `environment.name` and `team.name` resources in the resource list:
+you'll see the `environment.name` and `team.name` resources in the resource list:
 
 ```console
 env OTEL_RESOURCE_ATTRIBUTES="service.namespace=tutorial,host.name=`HOSTNAME`,host.type=`uname -m`,os.name=`uname -s`,os.version=`uname -r`" dotnet run
