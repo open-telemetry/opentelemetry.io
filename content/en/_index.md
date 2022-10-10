@@ -11,7 +11,6 @@ developer_note:
 
 ## High-quality, ubiquitous, and portable telemetry to enable effective observability
 
-
 <div class="h3 mt-4">Start your OpenTelemetry journey</div>
 <div class="l-primary-buttons">
 
