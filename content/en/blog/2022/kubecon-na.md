@@ -36,8 +36,8 @@ by Vineeth Pothulapati, Timescale Inc Friday, October 28 • 4:55pm - 5:30pm
 is a one-day OpenTelemetry unconference event held at Colony Club Detroit on
 Tuesday, Oct 25, 2022. Join in to listen, learn about the latest features and
 get involved in the project. Network with OpenTelemetry maintainers, governance
-committee and technical committee members. Check out event details
-[here](https://www.eventbrite.com/e/otel-unplugged-kubeconcloudnativecon-detroit-2022-tickets-427595037267).
+committee and technical committee members. For details, check out the
+[event page](https://www.eventbrite.com/e/otel-unplugged-kubeconcloudnativecon-detroit-2022-tickets-427595037267).
 
 [Open Observability Day](https://events.linuxfoundation.org/open-observability-day-north-america/)
 has several OpenTelemetry sessions including panel discussions, workshops,
