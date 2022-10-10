@@ -48,8 +48,8 @@ and is co-located with Kubecon NA. For talk details, see the
 [eBPF Day](https://events.linuxfoundation.org/cloud-native-ebpf-day-north-america/)
 also has some OpenTelemetry talks focused on profiling and tracing using eBPF
 events. This event will be held on Tuesday, Oct 25 2022 and is co-located with
-Kubecon NA. Check out the event schedule
-[here](https://events.linuxfoundation.org/cloud-native-ebpf-day-north-america/program/schedule/).
+Kubecon NA. For details, check out the
+[schedule](https://events.linuxfoundation.org/cloud-native-ebpf-day-north-america/program/schedule/).
 
 The **OpenTelemetry project meeting** is to meet and network with the
 OpenTelemetry maintainers and core contributors. This meeting will be held 3-5
