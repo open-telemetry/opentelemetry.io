@@ -74,6 +74,6 @@ you may be running into when using OpenTelemetry.
 
 Come join us to listen, learn and get involved in OpenTelemetry.
 
-See you in Detroit in three weeks!
+See you in Detroit!
 
 [Kubecon NA]: https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/
