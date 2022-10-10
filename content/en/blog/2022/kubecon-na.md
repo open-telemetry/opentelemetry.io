@@ -53,7 +53,7 @@ Kubecon NA. For details, check out the
 
 The **OpenTelemetry project meeting** is to meet and network with the
 OpenTelemetry maintainers and core contributors. This meeting will be held 3-5
-pm ET on Tuesday Oct 25, 2022 in Room 336 at the
+PM ET on Tuesday Oct 25, 2022 in Room 336 at the
 [conference venue](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/venue-travel/),
 Huntington Place.
 
