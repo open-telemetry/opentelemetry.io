@@ -7,7 +7,7 @@ spelling: cSpell:ignore otel
 weight: 1
 ---
 
-Before you deep dive into your role specific _Getting Started_, you can try out
+Before you deep dive into your role-specific _Getting Started_, you can try out
 our official [OpenTelemetry Demo][] to **see** how observability with
 OpenTelemetry looks like.
 
