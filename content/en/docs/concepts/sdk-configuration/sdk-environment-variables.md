@@ -44,7 +44,7 @@ For example, the value `12000` indicates 12000 milliseconds, i.e., 12 seconds.
 
 
 
-# Jaeger Exporter
+# Jaeger Exporter Enviornment Variables
 
 **Status**: [Stable](document-status.md)
 
@@ -138,7 +138,7 @@ Environment variables specific for the `udp/thrift.binary` transport protocol:
 [jaeger_collector]: https://www.jaegertracing.io/docs/latest/deployment/#collector
 [jaeger_agent]: https://www.jaegertracing.io/docs/latest/deployment/#agent
 
-# Zipkin Exporter
+# Zipkin Exporter Enviornment Variables
 
 **Status**: [Stable](document-status.md)
 
