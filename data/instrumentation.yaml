@@ -16,7 +16,13 @@ languages:
     status:
       traces: stable
       metrics: alpha
-      logging: not yet implemented
+      logs: not yet implemented
+  java:
+    name: Java
+    status:
+      traces: stable
+      metrics: stable
+      logs: experimental
   php:
     name: PHP
     status:

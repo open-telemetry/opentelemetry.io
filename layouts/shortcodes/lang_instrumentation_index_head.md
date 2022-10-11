@@ -2,11 +2,11 @@
 {{ $name := $data.name }}
 {{ $relUrl := printf "https://github.com/open-telemetry/opentelemetry-%s/releases" (.Get 0) -}}
 
-This is the OpenTelemetry for {{ $name }} documentation. OpenTelemetry is an
+This is the OpenTelemetry {{ $name }} documentation. OpenTelemetry is an
 observability framework -- an API, SDK, and tools that are designed to aid in
 the generation and collection of application telemetry data such as metrics,
 logs, and traces. This documentation is designed to help you understand how to
-get started using OpenTelemetry for {{ $name }}.
+get started using OpenTelemetry {{ $name }}.
 
 ## Status and Releases
 
