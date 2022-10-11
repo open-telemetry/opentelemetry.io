@@ -10,6 +10,10 @@ weight: 18
 javaVersion: 1.18.0
 ---
 
+{{% lang_instrumentation_index_head "java" /%}}
+
+### Repositories
+
 OpenTelemetry Java consists of the following repositories:
 
 - [opentelemetry-java](https://github.com/open-telemetry/opentelemetry-java):
@@ -24,12 +28,6 @@ OpenTelemetry Java consists of the following repositories:
   Provides helpful libraries and standalone OpenTelemetry-based utilities that
   don't fit the express scope of the OpenTelemetry Java or Java Instrumentation
   projects. For example, JMX metric gathering.
-
-## Status and Releases
-
-| Traces | Metrics | Logs         |
-|--------|---------|--------------|
-| Stable | Stable  | Experimental |
 
 ### Components
 
