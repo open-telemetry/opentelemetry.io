@@ -5,6 +5,12 @@ languages:
       traces: stable
       metrics: experimental
       logs: experimental
+  dotnet:
+    name: .NET
+    status:
+      traces: stable
+      metrics: stable
+      logs: mixed*
   erlang:
     name: Erlang/Elixir
     status:
