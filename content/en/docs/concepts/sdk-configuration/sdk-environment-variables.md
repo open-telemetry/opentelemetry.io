@@ -44,7 +44,7 @@ For example, the value `12000` indicates 12000 milliseconds, i.e., 12 seconds.
 
 
 
-## Jaeger Exporter
+# Jaeger Exporter
 
 **Status**: [Stable](document-status.md)
 
@@ -68,40 +68,56 @@ SDKs have good reasons to choose other as the default
 Environment variables specific for the `http/thrift.binary` transport protocol:
 
 
-- OTEL_EXPORTER_JAEGER_ENDPOINT 
- 
+## `OTEL_EXPORTER_JAEGER_ENDPOINT` 
+
  Full URL of the [Jaeger HTTP endpoint][jaeger_collector] 
 example: `http://localhost:14268/api/traces`
-- OTEL_EXPORTER_JAEGER_TIMEOUT 
-  Maximum time (in milliseconds) the Jaeger exporter will wait for each batch export 
+
+## `OTEL_EXPORTER_JAEGER_TIMEOUT` 
+
+Maximum time (in milliseconds) the Jaeger exporter will wait for each batch export 
  example: 10000
-- OTEL_EXPORTER_JAEGER_USER
- Username to be used for HTTP basic authentication 
-- OTEL_EXPORTER_JAEGER_PASSWORD 
+
+## `OTEL_EXPORTER_JAEGER_USER`
+
+Username to be used for HTTP basic authentication 
+
+## `OTEL_EXPORTER_JAEGER_PASSWORD` 
+
  Password to be used for HTTP basic authentication
  
  
 Environment variables specific for the `grpc` transport protocol:
 
 
-- OTEL_EXPORTER_JAEGER_ENDPOINT 
+## `OTEL_EXPORTER_JAEGER_ENDPOINT` 
+
  URL of the [Jaeger gRPC endpoint][jaeger_collector]
  example: `http://localhost:14250` 
-- OTEL_EXPORTER_JAEGER_TIMEOUT  
+
+## `OTEL_EXPORTER_JAEGER_TIMEOUT`  
+
  Maximum time (in milliseconds) the Jaeger exporter will wait for each batch export 
  example: 10000
-- OTEL_EXPORTER_JAEGER_USER    
+
+## `OTEL_EXPORTER_JAEGER_USER`    
+
  Username to be used for HTTP basic authentication 
-- OTEL_EXPORTER_JAEGER_PASSWORD | Password to be used for HTTP basic authentication 
+
+## `OTEL_EXPORTER_JAEGER_PASSWORD` 
+
+ Password to be used for HTTP basic authentication 
 
 
 Environment variables specific for the `udp/thrift.compact` transport protocol:
 
--  OTEL_EXPORTER_JAEGER_AGENT_HOST  
+##  `OTEL_EXPORTER_JAEGER_AGENT_HOST`  
+
  Hostname of the [Jaeger agent][jaeger_agent]
  example: `localhost` 
  
--  OTEL_EXPORTER_JAEGER_AGENT_PORT 
+##  `OTEL_EXPORTER_JAEGER_AGENT_PORT` 
+
  `udp/thrift.compact` port of the [Jaeger agent][jaeger_agent] 
   example: `6831`
 
@@ -109,32 +125,38 @@ Environment variables specific for the `udp/thrift.compact` transport protocol:
 Environment variables specific for the `udp/thrift.binary` transport protocol:
 
 
-- OTEL_EXPORTER_JAEGER_AGENT_HOST 
+## `OTEL_EXPORTER_JAEGER_AGENT_HOST` 
+
  Hostname of the [Jaeger agent][jaeger_agent]
  example: `localhost` 
-- OTEL_EXPORTER_JAEGER_AGENT_PORT 
+
+## `OTEL_EXPORTER_JAEGER_AGENT_PORT`
+
  `udp/thrift.binary` port of the [Jaeger agent][jaeger_agent] 
  example: `6832` 
 
 [jaeger_collector]: https://www.jaegertracing.io/docs/latest/deployment/#collector
 [jaeger_agent]: https://www.jaegertracing.io/docs/latest/deployment/#agent
 
-## Zipkin Exporter
+# Zipkin Exporter
 
 **Status**: [Stable](document-status.md)
 
 
-- OTEL_EXPORTER_ZIPKIN_ENDPOINT
+## `OTEL_EXPORTER_ZIPKIN_ENDPOINT`
+
   Endpoint for Zipkin traces
   example: `http://localhost:9411/api/v2/spans` 
-- OTEL_EXPORTER_ZIPKIN_TIMEOUT
+
+## `OTEL_EXPORTER_ZIPKIN_TIMEOUT`
+
   Maximum time (in milliseconds) the Zipkin exporter will wait for each batch export 
   example: 10000
 
 Additionally, the following environment variables are reserved for future
 usage in Zipkin Exporter configuration:
 
-- `OTEL_EXPORTER_ZIPKIN_PROTOCOL`
+## `OTEL_EXPORTER_ZIPKIN_PROTOCOL`
 
 This will be used to specify whether or not the exporter uses v1 or v2, json,
 thrift or protobuf.  As of 1.0 of the specification, there
