@@ -8,7 +8,7 @@ canonical_url: https://www.aspecto.io/blog/distributed-tracing-with-opentelemetr
 
 # Getting Started: OpenTelemetry in Rust
 
-![Cover image showing Rust and OpenTelemetry Logos ](cover-image.webp)
+![Cover image showing Rust and OpenTelemetry Logos](cover-image.webp)
 
 In this article, I will share my experience adding OpenTelemetry distributed tracing to a Rust application.
 
