@@ -2,7 +2,7 @@
 
 **Status**: [Mixed](document-status.md)
 
-The goal of this specification is to unify the environment variable names between different OpenTelemetry SDK implementations. SDKs MAY choose to allow configuration via the environment variables in this specification, but are not required to. If they do, they SHOULD use the names listed in this document.
+The goal of this specification is to unify the environment variable names between different OpenTelemetry SDK implementations. SDKs MAY choose to allow configuration via the environment variables in this specification, but are not required to. If they do, they MUST use the names listed in this document.
 
 ## Parsing empty value
 
@@ -10,7 +10,7 @@ The goal of this specification is to unify the environment variable names betwee
 
 The SDK MUST interpret an empty value of an environment variable the same way as when the variable is unset.
 
-## Special configuration types
+## Special Data types
 
 **Status**: [Stable](document-status.md)
 
@@ -19,13 +19,13 @@ The SDK MUST interpret an empty value of an environment variable the same way as
 Any value that represents a Boolean MUST be set to true only by the case-insensitive string `"true"`, meaning `"True"` or `"TRUE"` are also accepted, as true.
 An SDK MUST NOT extend this definition and define additional values that are interpreted as true.
 Any value not explicitly defined here as a true value, including unset and empty values, MUST be interpreted as false.
-If any value other than a true value, case-insensitive string `"false"`, empty, or unset is used, a warning SHOULD be logged to inform users about the fallback to false being applied.
-All Boolean environment variables SHOULD be named and defined such that false is the expected safe default behavior.
+If any value other than a true value, case-insensitive string `"false"`, empty, or unset is used, a warning MUST be logged to inform users about the fallback to false being applied.
+All Boolean environment variables MUST be named and defined such that false is the expected safe default behavior.
 Renaming or changing the default value MUST NOT happen without a major version upgrade.
 
 ### Numeric value
 
-If an SDK chooses to support an integer-valued environment variable, it SHOULD support nonnegative values between 0 and 2³¹ − 1 (inclusive). Individual SDKs MAY choose to support a larger range of values.
+If an SDK chooses to support an integer-valued environment variable, it MUST support nonnegative values between 0 and 2³¹ − 1 (inclusive). Individual SDKs MAY choose to support a larger range of values.
 
 ### Enum value
 
@@ -61,7 +61,7 @@ The value MUST be one of:
 [jaeger_grpc]: https://www.jaegertracing.io/docs/latest/apis/#protobuf-via-grpc-stable
 [jaeger_udp]: https://www.jaegertracing.io/docs/latest/apis/#thrift-over-udp-stable
 
-The default transport protocol SHOULD be `http/thrift.binary` unless
+The default transport protocol MUST be `http/thrift.binary` unless
 SDKs have good reasons to choose other as the default
 (e.g. for backward compatibility reasons).
 
@@ -159,6 +159,6 @@ usage in Zipkin Exporter configuration:
 ## `OTEL_EXPORTER_ZIPKIN_PROTOCOL`
 
 This will be used to specify whether or not the exporter uses v1 or v2, json,
-thrift or protobuf.  As of 1.0 of the specification, there
-_is no specified default, or configuration via environment variables_.
+thrift or protobuf.  As of 1.0 of the specification, there is 
+no specified default, or configuration via environment variables.
 
