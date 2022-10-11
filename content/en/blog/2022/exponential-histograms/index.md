@@ -290,13 +290,13 @@ _A version of this article was [originally posted][] on the New Relic blog._
 [aggregation]: /docs/reference/specification/metrics/sdk/#aggregation
 [type of instrument]: /docs/reference/specification/metrics/api/#histogram
 [histogram-aggregation]:
-  /docs/reference/specification/metrics/sdk/#histogram-aggregation-common-behavior
+  /docs/reference/specification/metrics/sdk/#histogram-aggregations
 [explicit bucket histogram]:
   /docs/reference/specification/metrics/sdk/#explicit-bucket-histogram-aggregation
 [explicit bucket histogram proto]:
   https://github.com/open-telemetry/opentelemetry-proto/blob/724e427879e3d2bae2edc0218fff06e37b9eb46e/opentelemetry/proto/metrics/v1/metrics.proto#L382
 [exponential bucket histogram]:
-  /docs/reference/specification/metrics/sdk/#exponential-histogram-aggregation
+  /docs/reference/specification/metrics/sdk/#exponential-bucket-histogram-aggregation
 [exponential bucket histogram proto]:
   https://github.com/open-telemetry/opentelemetry-proto/blob/724e427879e3d2bae2edc0218fff06e37b9eb46e/opentelemetry/proto/metrics/v1/metrics.proto#L463
 [example code]:

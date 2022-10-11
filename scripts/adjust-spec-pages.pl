@@ -88,8 +88,10 @@ while(<>) {
   s|(\]\()(img/.*?\))|$1../$2|g if $ARGV !~ /logs._index/;
 
   # Fix links that are to the title of the .md page
+  # TODO: fix these in the spec
   s|(/context/api-propagators.md)#propagators-api|$1|g;
   s|(/semantic_conventions/faas.md)#function-as-a-service|$1|g;
+  s|(/resource/sdk.md)#resource-sdk|$1|g;
   s/#log-data-model/./;
 
   s|\.\.\/README.md\b|$specRepoUrl/|g if $ARGV =~ /specification._index/;
