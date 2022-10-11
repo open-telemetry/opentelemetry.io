@@ -2,7 +2,7 @@
 title: "Using OpenTelemetry OpAMP to modify service telemetry on the go"
 linkTitle: OpAMP service usage
 date: 2022-10-12
-author: [Nimrod Shlagman](https://github.com/nemoshlag) (Cisco),
+author: "[Nimrod Shlagman](https://github.com/nemoshlag) (Cisco)",
 draft: true # TODO: remove this line once your post is ready to be published
 ---
 
