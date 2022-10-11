@@ -1,9 +1,9 @@
 ---
-title: "Using OpenTelemetry OpAMP to modify service telemetry on the go"
+title: Using OpenTelemetry OpAMP to modify service telemetry on the go
 linkTitle: OpAMP service usage
 date: 2022-10-12
-author: "[Nimrod Shlagman](https://github.com/nemoshlag) (Cisco)",
-draft: true # TODO: remove this line once your post is ready to be published
+author: >-
+  [Nimrod Shlagman](https://github.com/nemoshlag) (Cisco)
 ---
 
 How verbose should your service telemetry be? Should a service output all
