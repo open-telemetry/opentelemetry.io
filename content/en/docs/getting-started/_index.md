@@ -1,7 +1,7 @@
 ---
 title: Getting Started
 description: >-
-  Depending on your role, you might be looking for a different way to get  started
+  Depending on your role, you might be looking for a different way to get started
   with OpenTelemetry. Find your way on how to get started with OpenTelemetry.
 spelling: cSpell:ignore otel
 weight: 1
