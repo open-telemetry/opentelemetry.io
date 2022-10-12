@@ -55,5 +55,5 @@ docker run -d --name jaeger \
 ## Next steps
 
 Enriching your codebase with
-[manual instrumentation](/docs/instrumentation/cüü/manual) gives you customized
+[manual instrumentation](/docs/instrumentation/cpp/manual) gives you customized
 observability data.
