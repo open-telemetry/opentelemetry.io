@@ -8,7 +8,7 @@ spelling: cSpell:ignore otel
 weight: 2
 ---
 
-OpenTelemetry can help you with that! To accomplish your goals of having your
+OpenTelemetry can help you! To accomplish your goals of having your
 dependencies instrumented automatically and instrumenting your own code with our
 API manually, we recommend that you learn the following concepts first:
 

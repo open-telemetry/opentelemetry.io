@@ -11,8 +11,16 @@ developer_note:
 
 ## High-quality, ubiquitous, and portable telemetry to enable effective observability
 
-<div class="h3 mt-4">Start your OpenTelemetry journey</div>
 <div class="l-primary-buttons">
+
+- [Learn more](/docs/concepts/)
+
+</div>
+
+<div class="h3 mt-4">
+<a class="get-started-link" href="/docs/getting-started">Get started</a> based on your role
+</div>
+<div class="l-get-started-buttons">
 
 - [Dev](/docs/getting-started/dev)
 - [Ops](/docs/getting-started/ops)

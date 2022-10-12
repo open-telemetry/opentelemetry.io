@@ -8,7 +8,7 @@ spelling: cSpell:ignore otel
 weight: 4
 ---
 
-OpenTelemetry can help you with that! To accomplish your goal of getting
+OpenTelemetry can help you! To accomplish your goal of getting
 telemetry out of applications without touching their code, we recommend that you
 learn the following:
 
