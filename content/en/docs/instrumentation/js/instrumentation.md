@@ -1,5 +1,6 @@
 ---
 title: Instrumentation
+aliases: [/docs/instrumentation/js/api/tracing]
 weight: 4
 ---
 

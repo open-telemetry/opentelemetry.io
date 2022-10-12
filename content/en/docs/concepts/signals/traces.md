@@ -323,3 +323,29 @@ Status will be tagged as one of the following values:
 When an exception is handled, a Span status can be set to Error. Otherwise, a
 Span status is in the Unset state. By setting a Span status to Unset, the
 back-end that processes spans can now assign a final status.
+
+### Span Kind
+
+When a span is created, it is one of `Client`, `Server`, `Internal`, `Producer`, or `Consumer`. This span kind provides a hint to the tracing backend as to how the trace should be assembled. According to the OpenTelemetry specification, the parent of a server span is always a client span, and the child of a client span is always a server span. Similarly, the parent of a consumer span is always a producer and the child of a producer span is always a consumer. If not provided, the span kind is assumed to be internal.
+
+For more information regarding SpanKind, see [SpanKind]({{< relref "/docs/reference/specification/trace/api#spankind" >}}).
+
+#### Client
+
+Client spans represent a synchronous outgoing remote call such as an outgoing HTTP request or database call. Note that in this context, "synchronous" does not refer to `async/await`, but to the fact that it is not queued for later processing.
+
+#### Server
+
+Server spans represent a synchronous incoming remote call such as an incoming HTTP request or remote procedure call.
+
+#### Internal
+
+Internal spans represent operations which do not cross a process boundary. Things like instrumenting a function call or an express middleware may use internal spans.
+
+#### Producer
+
+Producer spans represent the creation of a job which may be asynchronously processed later. It may be a remote job such as one inserted into a job queue or a local job handled by an event listener.
+
+#### Consumer
+
+Consumer spans represent the processing of a job created by a producer and may start long after the producer span has already ended.
