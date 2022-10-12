@@ -215,7 +215,8 @@ headers again and again, and since having multi value headers is covered by
 We tested the capability to correlate from nginx to a downstream service with a
 Java application. And, without reading into the source code of the OTel Java
 SDK, it looks like that Java is flexible in taking a `traceparent` with multiple
-values. So propagation from nginx to the Java service worked, while in contract,
+values, even though such format is invalid per the W3C Trace Context specification. 
+So propagation from nginx to the Java service worked, while in contrast,
 python (and other languages) do not provide that flexibility and propagation
 from nginx to the downstream service silenty fails.
 
