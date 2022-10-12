@@ -10,17 +10,25 @@ How verbose should your service telemetry be? Should a service output all
 traces, metrics, and logs 100% of the time? How much of the service traffic
 should be sampled? I would like to suggest the answer of “it depends”. Desired
 telemetry data differs in a service lifecycle from development to continuous
-deployment. It changes when our client faces an error or a service has been
-thrown into major scale. In an ideal world, we would modify the entire service’s
-telemetry without the need for code changes or deployment. Thanks to Otel
-[OpAMP](https://github.com/open-telemetry/opamp-go) service and the people
-behind it, I believe the time has arrived.
+deployment. It changes when clients face an error or a service has been thrown
+into major scale.
 
-OpAMP stands for Open Agent Management Protocol. It aims at managing large
-fleets of data collection agents, and its GoLang implementation is at the Beta
-stage. It allows configuration changes as well as package downloads. It defines
-the communication between the OpAMP server and OpAMP client but does not assume
-any particular client-agent relationship giving it a lot of flexibility.
+It is possible to change a service telemetry configurations or sampling rate.
+Usually it requires only a minimal code change and a deployment process. It
+might not seem a lot, but whenever facing a change like this across an entire
+system, we tend to avoid it. Instead, it is common to collect as much data as
+possible, which causes an issue by itself. Can we dynamically modify service
+telemetry without those barriers? Thanks to OTel
+[OpAMP](https://github.com/open-telemetry/opamp-go) protocol and the people
+behind it, I believe that the answer is about to change.
+
+OpAMP stands for
+[Open Agent Management Protocol](https://github.com/open-telemetry/opamp-spec/blob/main/specification.md).
+It aims at managing large fleets of data collection agents, and its GoLang
+implementation is at the Beta stage. It allows configuration changes as well as
+package downloads. It defines the communication between the OpAMP server and
+OpAMP client but does not assume any particular client-agent relationship giving
+it a lot of flexibility.
 
 In the following example, we’ll create a simple GoLang server, instrument it,
 and then control it with an OpAMP server and supervisor. We won’t dive into
@@ -201,12 +209,12 @@ We have now a system consisting of OpAMP server supervisor and our server
 
 ![OpAMP server, supervisor and agent relations](opamp_server_supervisor_agent_relations.png)
 
-Via the supervisor we can see now our agent running at `http://localhost:4321/`.
+Via the supervisor we can now see our agent running at `http://localhost:4321/`.
 Select it and pass `instrument: true` to its configurations.
 
 ![Our service configurations over opamp server](opamp_server_agent_config.png)
 
-We can see the change take place on the supervisor console log:
+You can see the changes over the supervisor console log:
 
 ```
 Received remote config from server, hash=0008886301f3ccb3520216823cfa09a.
