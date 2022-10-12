@@ -71,10 +71,6 @@ dependencies {
 }
 ```
 
-### API reference
-
-- [Javadoc](https://www.javadoc.io/doc/io.opentelemetry)
-
 [maven central]: https://mvnrepository.com/artifact/io.opentelemetry
 [opentelemetry-java-docs]: https://github.com/open-telemetry/opentelemetry-java-docs#java-opentelemetry-examples
 [releases]: https://github.com/open-telemetry/opentelemetry-java/releases
