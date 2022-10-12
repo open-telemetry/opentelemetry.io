@@ -217,7 +217,7 @@ Java application. And, without reading into the source code of the OTel Java
 SDK, it looks like that Java is flexible in taking a `traceparent` with multiple
 values, even though such format is invalid per the W3C Trace Context specification. 
 So propagation from nginx to the Java service worked, while in contrast,
-python (and other languages) do not provide that flexibility and propagation
+Python (and other languages) do not provide that flexibility and propagation
 from nginx to the downstream service silenty fails.
 
 Note, that we are not suggesting that the other languages should have the same
