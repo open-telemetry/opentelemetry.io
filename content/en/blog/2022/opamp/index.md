@@ -10,20 +10,11 @@ How verbose should your service telemetry be? Should a service output all
 traces, metrics, and logs 100% of the time? How much of the service traffic
 should be sampled? I would like to suggest the answer of “it depends”. Desired
 telemetry data differs in a service lifecycle from development to continuous
-deployment. It changes when a client faces an error or our service has been
+deployment. It changes when our client faces an error or a service has been
 thrown into major scale. In an ideal world, we would modify the entire service’s
 telemetry without the need for code changes or deployment. Thanks to Otel
 [OpAMP](https://github.com/open-telemetry/opamp-go) service and the people
 behind it, I believe the time has arrived.
-
-OpenTelemtry, also known as Otel, is a vendor-neutral open-source observability
-framework for instrumenting, generating, collecting, and exporting telemetry
-data such as traces, metrics, and logs. It’s a fast growing Cloud Native
-Computing Foundation (CNCF) project. Otel is made of several components
-including per-language SDKs and a collector. The collector is a centralized
-pipeline made to collect, transform and export telemetry data. The SDK is a
-specific language Otel API implementation, running with a service. It is used as
-an input to the collector telemetry receiver.
 
 OpAMP stands for Open Agent Management Protocol. It aims at managing large
 fleets of data collection agents, and its GoLang implementation is at the Beta
@@ -36,7 +27,7 @@ and then control it with an OpAMP server and supervisor. We won’t dive into
 OpAMP implementation itself, but rather focus on its implications using these
 examples.
 
-####First, consider this basic go server:
+First, consider this basic go server:
 
 ```Go
 package main
@@ -102,8 +93,8 @@ func main() {
 }
 ```
 
-Sorry, no error handling here. Next, let's wrap our handler with instrumentation
-and condition it with our configuration file. Something like this:
+Next, let's wrap our handler with instrumentation and condition it with our
+configuration file. Something like this:
 
 ```go
 package main
@@ -169,8 +160,8 @@ func main() {
 }
 ```
 
-Build it with `go build .` Now if we run it and open http://localhost:8080/ on a
-browser, nothing special will be shown. It’s time to add some opamp. Git clone
+Build it with `go build .` Now if we run it and open `http://localhost:8080/` on
+a browser, nothing special will be shown. It’s time to add some opamp. Git clone
 [opamp-go](https://github.com/open-telemetry/opamp-go) and run the server with:
 
 ```
@@ -178,21 +169,40 @@ cd internal/examples/server
 go run .
 ```
 
-Go to http://localhost:4321/ to verify it running, notice no agent displayed:
+Go to `http://localhost:4321/` to verify server is running. Notice that no agent
+is displayed:
 
 ![No agents display on opamp server demo UI](opamp_server_no_agents.png)
 
-Next, open a new terminal and on internal/examples/supervisor/bin edit
-supervisor.yaml agent executable to point to our previous build. On
-internal/examples/supervisor run `go build -o bin/supervisor main.go` and on on
-internal/examples/supervisor/bin run `./supervisor`
+Next, open a new terminal and edit supervisor.yaml to point at our agent:
 
-Great, we have now a system consisting of OpAMP server supervisor and our server
+```
+cd internal/examples/supervisor/bin
+yq -yi '.agent.executable |= "<path to our previously build>"' supervisor.yaml
+```
+
+Or simply edit supervisor.yaml, eventually it should look like this:
+
+```yaml
+server:
+  endpoint: ws://127.0.0.1:4320/v1/opamp
+agent:
+  executable: <absolute|relative path to previous build>
+```
+
+Then run these following command:
+
+```
+go build -o ./supervisor ../main.go
+./supervisor
+```
+
+We have now a system consisting of OpAMP server supervisor and our server
 
 ![OpAMP server, supervisor and agent relations](opamp_server_supervisor_agent_relations.png)
 
-We can see now our agent running at http://localhost:4321/. Select it and pass
-`instrument: true` to its configurations.
+Via the supervisor we can see now our agent running at `http://localhost:4321/`.
+Select it and pass `instrument: true` to its configurations.
 
 ![Our service configurations over opamp server](opamp_server_agent_config.png)
 
@@ -209,11 +219,11 @@ Starting agent <agent path>
 Agent process started, PID=19506
 ```
 
-Finally, visiting http://localhost:8080/ should result with traces appear on
+Finally, visiting `http://localhost:8080/` should result with traces appear on
 agent.log in internal/examples/supervisor/bin:
 
-```go
-Starting server on port8080
+```text
+Starting server on port 8080
 {
    "Name": "instrumentation activated by OpAMP server",
    "SpanContext": {
@@ -225,15 +235,14 @@ Starting server on port8080
    ...
 ```
 
-The green lines are the trace itself! Ok, so what do we have here? A server that
-controls whether or not our service will generate traces. Try setting it off
-using the `instrument: false` configuration.
+These prints are the trace itself! To sum up, we have here a server that
+controls whether our service will generate traces. Try setting it off using the
+`instrument: false` configuration.
 
-Ok, so what’s next? This is the very basic implementation, wrapping a system
-above OpAMP we can achieve some sort of the “instrumentation orchestrator”
-vision. It starts with being able to externally add and match tailor-made
-dynamic telemetry for your system. Just imagine what can AI achieve over such a
-system. Collecting metrics over the entire system, automatically and dynamically
-adding trace/log collections over any spotted bottlenecks for example. This
-protocol enables many new exciting possibilities, I believe it has the potential
-to change the way we think about telemetry.
+This is a very basic implementation. Wrapping a system above OpAMP could perform
+as an instrumentation orchestrator. The starting point is being able to
+externally add and match tailor-made dynamic telemetry for your system. Imagine
+what AI can achieve on this type of system? It could collect metrics over the
+entire system, automatically and dynamically adding trace/log collections onto
+any detected bottlenecks. Using this protocol enables many new possibilities, I
+believe it has the potential to change how we think about telemetry.
