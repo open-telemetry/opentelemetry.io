@@ -18,17 +18,17 @@ Usually it requires only a minimal code change and a deployment process. It
 might not seem a lot, but whenever facing a change like this across an entire
 system, we tend to avoid it. Instead, it is common to collect as much data as
 possible, which causes an issue by itself. Can we dynamically modify service
-telemetry without those barriers? Thanks to OTel
+telemetry without those barriers? Thanks to
 [OpAMP](https://github.com/open-telemetry/opamp-go) protocol and the people
 behind it, I believe that the answer is about to change.
 
 OpAMP stands for
 [Open Agent Management Protocol](https://github.com/open-telemetry/opamp-spec/blob/main/specification.md).
 It aims at managing large fleets of data collection agents, and its GoLang
-implementation is at the Beta stage. It allows configuration changes as well as
-package downloads. It defines the communication between the OpAMP server and
-OpAMP client but does not assume any particular client-agent relationship giving
-it a lot of flexibility.
+[implementation](https://github.com/open-telemetry/opamp-go/) is at the Beta
+stage. It allows configuration changes as well as package downloads. It defines
+the communication between the OpAMP server and OpAMP client but does not assume
+any particular client-agent relationship giving it a lot of flexibility.
 
 In the following example, we’ll create a simple GoLang server, instrument it,
 and then control it with an OpAMP server and supervisor. We won’t dive into
@@ -58,8 +58,8 @@ func main() {
 }
 ```
 
-Next, add a basic named “effective.yaml” configuration file. Place it in the
-same folder as our main.go file with this configuration:
+Next, add a basic file named “effective.yaml” configuration file. Place it in
+the same folder as our main.go file with this configuration:
 
 ```yaml
 instrument: false
@@ -182,14 +182,8 @@ is displayed:
 
 ![No agents display on opamp server demo UI](opamp_server_no_agents.png)
 
-Next, open a new terminal and edit supervisor.yaml to point at our agent:
-
-```
-cd internal/examples/supervisor/bin
-yq -yi '.agent.executable |= "<path to our previously build>"' supervisor.yaml
-```
-
-Or simply edit supervisor.yaml, eventually it should look like this:
+Next, edit internal/examples/supervisor/bin/supervisor.yaml to point at our
+agent. It should look like this:
 
 ```yaml
 server:
@@ -198,9 +192,10 @@ agent:
   executable: <absolute|relative path to previous build>
 ```
 
-Then run these following command:
+Then open a new terminal and run the following command:
 
 ```
+cd internal/examples/supervisor/bin
 go build -o ./supervisor ../main.go
 ./supervisor
 ```
