@@ -8,36 +8,18 @@ description: >-
 aliases: [/python, /python/metrics, /python/tracing]
 weight: 22
 ---
+<!--
+You can see & update the `lang_instrumentation_index_head` shortcode in
+/layouts/shortcodes/lang_instrumentation_index_head.md
 
-This is the OpenTelemetry for Python documentation. OpenTelemetry is an
-observability framework -- an API, SDK, and tools that are designed to aid in
-the generation and collection of application telemetry data such as metrics,
-logs, and traces. This documentation is designed to help you understand how to
-get started using OpenTelemetry for Python.
+The data (name, status) is located at
+/data/instrumentation.yaml
+-->
+{{% lang_instrumentation_index_head "python" %}}
 
 ## Version support
 
 OpenTelemetry-Python supports Python 3.6 and higher.
-
-## Status and Releases
-
-The current status of the major functional components for OpenTelemetry Python
-is as follows:
-
-- **Traces** ([API][api/t], [SDK][sdk/t]): [Stable][]
-- **Metrics** ([API][api/m], [SDK][sdk/m]): [Stable][]
-- **Logs** ([SDK][sdk/l]): [Experimental][]
-
-[api/m]: https://opentelemetry-python.readthedocs.io/en/stable/api/metrics.html
-[api/t]: https://opentelemetry-python.readthedocs.io/en/stable/api/trace.html
-[Experimental]:
-    /docs/reference/specification/versioning-and-stability/#experimental
-[sdk/l]: https://opentelemetry-python.readthedocs.io/en/stable/sdk/logs.html
-[sdk/m]: https://opentelemetry-python.readthedocs.io/en/stable/sdk/metrics.html
-[sdk/t]: https://opentelemetry-python.readthedocs.io/en/stable/sdk/trace.html
-[Stable]: /docs/reference/specification/versioning-and-stability/#stable
-
-{{% latest_release "python" /%}}
 
 ## Installation
 
@@ -87,14 +69,22 @@ $ pip install -e ./opentelemetry-sdk
 
 ## Learn more
 
-- [API reference][]
+- [API & SDK reference][]
+  - [Traces API][], [Traces SDK][]
+  - [Metrics API][], [Metrics SDK][]
+  - [Logs API][]
 - [Examples][]
 - [Contrib repository][]
 - [Performance benchmarks][]
 
-[API reference]: https://opentelemetry-python.readthedocs.io/en/stable/
+[API & SDK reference]: https://opentelemetry-python.readthedocs.io/en/stable/
 [Contrib repository]:
     https://github.com/open-telemetry/opentelemetry-python-contrib
 [Examples]: https://opentelemetry-python.readthedocs.io/en/stable/examples/
 [Performance benchmarks]:
     https://open-telemetry.github.io/opentelemetry-python/benchmarks/
+[Metrics API]: https://opentelemetry-python.readthedocs.io/en/stable/api/metrics.html
+[Traces API]: https://opentelemetry-python.readthedocs.io/en/stable/api/trace.html
+[Logs API]: https://opentelemetry-python.readthedocs.io/en/stable/sdk/logs.html
+[Metrics SDK]: https://opentelemetry-python.readthedocs.io/en/stable/sdk/metrics.html
+[Traces SDK]: https://opentelemetry-python.readthedocs.io/en/stable/sdk/trace.html
