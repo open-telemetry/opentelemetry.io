@@ -58,7 +58,7 @@ func main() {
 }
 ```
 
-Next, add a basic file named “effective.yaml” configuration file. Place it in
+Next, add a basic configuration file named `effective.yaml`. Place it in
 the same folder as our main.go file with this configuration:
 
 ```yaml
