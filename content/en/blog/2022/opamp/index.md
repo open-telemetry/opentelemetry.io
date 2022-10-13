@@ -211,7 +211,7 @@ Select it and pass `instrument: true` to its configurations.
 
 You can see the changes over the supervisor console log:
 
-```
+```console
 Received remote config from server, hash=0008886301f3ccb3520216823cfa09a.
 Effective config changed.
 Config is changed. Signal to restart the agent.
