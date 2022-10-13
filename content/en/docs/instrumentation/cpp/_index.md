@@ -14,6 +14,7 @@ You can see & update the `lang_instrumentation_index_head` shortcode in
 The data (name, status) is located at
 /data/instrumentation.yaml
 -->
+
 {{% lang_instrumentation_index_head "cpp" /%}}
 
 ## Further Reading

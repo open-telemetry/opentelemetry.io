@@ -7,10 +7,10 @@ Welcome to the OpenTelemetry C++ getting started guide! This guide will walk you
 through the basic steps in installing, instrumenting with, configuring, and
 exporting data from OpenTelemetry.
 
-You can use Cmake or Bazel for building OpenTelemetry C++. The following getting
-started guide will make use of CMake and only provide you the most essential
-steps to have a working example application (a http server & http client). For
-more details read
+You can use [CMake](https://cmake.org/) or [Bazel](https://bazel.build/) for
+building OpenTelemetry C++. The following getting started guide will make use of
+CMake and only provide you the most essential steps to have a working example
+application (a http server & http client). For more details read
 [these instructions](https://github.com/open-telemetry/opentelemetry-cpp/blob/main/INSTALL.md).
 
 ## Prerequisites
@@ -49,8 +49,8 @@ $ mkdir build && cd build
 $ cmake -DBUILD_TESTING=OFF ..
 ```
 
-Once build configuration is created, build the CMake targets - this includes
-building SDKs, and building unittests for API and SDK.
+Once build configuration is created, build the CMake targets `http_client` and
+`http_server`:
 
 ```shell
 cmake --build . --target http_client http_server

@@ -21,7 +21,7 @@ default no-op implementation of a `TracerProvider`.
 
 The `Tracer` acquired in the second step is needed to create and start Spans.
 
-## Start a span
+## Start a span
 
 ```cpp
 auto span = tracer->StartSpan("HandleRequest");
@@ -31,7 +31,7 @@ This creates a span, sets its name to `"HandleRequest"`, and sets its start time
 to the current time. Refer to the API documentation for other operations that
 are available to enrich spans with additional data.
 
-## Mark a span as active
+## Mark a span as active
 
 ```cpp
 auto scope = tracer->WithActiveSpan(span);
@@ -45,7 +45,7 @@ The concept of an active span is important, as any span that is created without
 explicitly specifying a parent is parented to the currently active span. A span
 without a parent is called root span.
 
-## Create nested Spans
+## Create nested Spans
 
 ```cpp
 auto outer_span = tracer->StartSpan("Outer operation");
