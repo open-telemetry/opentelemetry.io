@@ -2,11 +2,7 @@
 title: Manual Instrumentation
 linkTitle: Manual
 weight: 5
-description: >-
-<img width="35"
-src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Swift.svg"
-alt="Swift"></img>
-Manual instrumentation for opentelemetry-swift
+description: Manual instrumentation for opentelemetry-swift
 ---
 
 ## Setup
