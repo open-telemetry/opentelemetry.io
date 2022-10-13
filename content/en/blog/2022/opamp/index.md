@@ -238,7 +238,9 @@ Starting server on port 8080
    ...
 ```
 
-These prints are the trace itself! To sum up, we have here a server that
+These prints are the trace itself! 
+
+To sum up, we have here a server that
 controls whether our service will generate traces. Try setting it off using the
 `instrument: false` configuration.
 
