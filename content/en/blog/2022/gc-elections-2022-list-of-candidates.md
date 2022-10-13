@@ -5,7 +5,13 @@ date: 2022-10-13
 author: OpenTelemetry Governance Committee
 ---
 
-The OpenTelemetry election committee is pleased to announce the final list of candidates running for one of the four available seats. We encourage all voters to take a moment and review all candidates, picking the one that best represents your interest. You can find their pictures, profile link, and descriptions on the [candidates page](https://github.com/open-telemetry/community/blob/main/elections/2022/governance-committee-candidates.md), but here are their names:
+The OpenTelemetry election committee is pleased to announce the final list of
+candidates running for one of the four available seats. We encourage all voters
+to take a moment and review all candidates, picking the one that best represents
+your interest. You can find their pictures, profile link, and descriptions on
+the [candidates
+page](https://github.com/open-telemetry/community/blob/main/elections/2022/governance-committee-candidates.md),
+but here are their names:
 
 * Alolita Sharma
 * Daniel Dyla
