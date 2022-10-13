@@ -1,5 +1,5 @@
 ---
-title: Final list of candidates for the 2022 OpenTelemetry Governance Committee Election
+title: Final list of candidates for the 2022 OpenTelemetry Governance Committee
 linkTitle: Candidates for the Governance Committee Election 2022
 date: 2022-10-13
 author: OpenTelemetry Governance Committee
