@@ -222,8 +222,8 @@ Starting agent <agent path>
 Agent process started, PID=19506
 ```
 
-Finally, visiting `http://localhost:8080/` should result with traces appear on
-agent.log in internal/examples/supervisor/bin:
+Finally, visit <http://localhost:8080>. Traces should now appear in
+`internal/examples/supervisor/bin/agent.log`.
 
 ```text
 Starting server on port 8080
