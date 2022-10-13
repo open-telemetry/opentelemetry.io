@@ -58,8 +58,8 @@ func main() {
 }
 ```
 
-Next, add a basic configuration file named `effective.yaml`. Place it in
-the same folder as our main.go file with this configuration:
+Next, add a basic configuration file named `effective.yaml`. Place it in the
+same folder as our main.go file with this configuration:
 
 ```yaml
 instrument: false
@@ -168,11 +168,18 @@ func main() {
 }
 ```
 
-Build it with `go build .` Now if we run it and open [http://localhost:8080/](http://localhost:8080/) on
-a browser, nothing special will be shown. It’s time to add some opamp. Git clone
+Build and run this app:
+
+```shell
+go build .
+go run .
+```
+
+Open a browser and visit <http://localhost:8080>. Nothing special will be shown.
+It’s time to add some opamp. Git clone
 [opamp-go](https://github.com/open-telemetry/opamp-go) and run the server with:
 
-```
+```shell
 cd internal/examples/server
 go run .
 ```
@@ -238,11 +245,10 @@ Starting server on port 8080
    ...
 ```
 
-These lines are the trace itself! 
+These lines are the trace itself!
 
-To sum up, we have here a server that
-controls whether our service will generate traces. Try setting it off using the
-`instrument: false` configuration.
+To sum up, we have here a server that controls whether our service will generate
+traces. Try setting it off using the `instrument: false` configuration.
 
 This is a very basic implementation. Wrapping a system above OpAMP could perform
 as an instrumentation orchestrator. The starting point is being able to
