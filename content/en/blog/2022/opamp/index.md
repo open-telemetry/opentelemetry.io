@@ -168,7 +168,7 @@ func main() {
 }
 ```
 
-Build it with `go build .` Now if we run it and open `http://localhost:8080/` on
+Build it with `go build .` Now if we run it and open [http://localhost:8080/](http://localhost:8080/) on
 a browser, nothing special will be shown. It’s time to add some opamp. Git clone
 [opamp-go](https://github.com/open-telemetry/opamp-go) and run the server with:
 
