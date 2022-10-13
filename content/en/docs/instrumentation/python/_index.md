@@ -8,13 +8,7 @@ description: >-
 aliases: [/python, /python/metrics, /python/tracing]
 weight: 22
 ---
-<!--
-You can see & update the `lang_instrumentation_index_head` shortcode in
-/layouts/shortcodes/lang_instrumentation_index_head.md
 
-The data (name, status) is located at
-/data/instrumentation.yaml
--->
 {{% lang_instrumentation_index_head "python" %}}
 
 ## Version support
