@@ -194,7 +194,7 @@ agent:
 
 Then open a new terminal and run the following command:
 
-```
+```shell
 cd internal/examples/supervisor/bin
 go build -o ./supervisor ../main.go
 ./supervisor
