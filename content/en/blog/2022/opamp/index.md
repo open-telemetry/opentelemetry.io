@@ -37,7 +37,7 @@ examples.
 
 First, consider this basic go server:
 
-```Go
+```go
 package main
 
 import (
