@@ -69,7 +69,7 @@ $ pip install -e ./opentelemetry-sdk
 
 ## Learn more
 
-- [API & SDK reference][]
+- [API reference][]
   - [Traces API][], [Traces SDK][]
   - [Metrics API][], [Metrics SDK][]
   - [Logs API][]
