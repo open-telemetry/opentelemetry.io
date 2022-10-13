@@ -204,7 +204,7 @@ We have now a system consisting of OpAMP server supervisor and our server
 
 ![OpAMP server, supervisor and agent relations](opamp_server_supervisor_agent_relations.png)
 
-Via the supervisor we can now see our agent running at `http://localhost:4321/`.
+Via the supervisor we can now see our agent running at <http://localhost:4321>.
 Select it and pass `instrument: true` to its configurations.
 
 ![Our service configurations over opamp server](opamp_server_agent_config.png)
