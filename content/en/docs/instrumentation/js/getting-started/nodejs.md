@@ -21,11 +21,11 @@ Install dependencies used by the example.
 
 {{< tabs TypeScript JavaScript >}}
 
-{{< tab >}}
+{{< tab lang="shell">}}
 npm install express typescript ts-node express @types/express @types/node 
 {{< /tab >}}
 
-{{< tab >}}
+{{< tab lang="shell">}}
 npm install express
 {{< /tab >}}
 
