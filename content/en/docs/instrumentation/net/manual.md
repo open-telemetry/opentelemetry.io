@@ -10,15 +10,15 @@ application.
 ## A note on terminology
 
 .NET is different from other languages/runtimes that support OpenTelemetry.
-[Tracing](/docs/concepts/signals/traces/#tracing-in-opentelemetry) is implemented
-by the
+[Tracing](/docs/concepts/signals/traces/#tracing-in-opentelemetry) is
+implemented by the
 [System.Diagnostics](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics)
 API, repurposing existing constructs like `ActivitySource` and `Activity` to be
 OpenTelemetry-compliant under the covers.
 
 However, there are parts of the OpenTelemetry API and terminology that .NET
-developers must still know to be able to instrument their applications, which are
-covered here as well as the `System.Diagnostics` API.
+developers must still know to be able to instrument their applications, which
+are covered here as well as the `System.Diagnostics` API.
 
 If you prefer to use OpenTelemetry APIs instead of `System.Diagnostics` APIs,
 you can refer to the [OpenTelemetry API Shim docs for tracing]({{< relref "shim"
@@ -146,8 +146,9 @@ although it is generally sufficient to just have one defined per service.
 
 ## Creating Activities
 
-To create an [`Activity`](/docs/concepts/signals/traces/#spans-in-opentelemetry),
-give it a name and create it from your
+To create an
+[`Activity`](/docs/concepts/signals/traces/#spans-in-opentelemetry), give it a
+name and create it from your
 [`ActivitySource`](/docs/concepts/signals/traces/#tracer).
 
 ```csharp
@@ -210,6 +211,53 @@ In the preceding example, `childOperation` is ended because the scope of the
 `using` block is explicitly defined, rather than scoped to `DoWork` itself like
 `parentOperation`.
 
+## Creating independent Activities
+
+The previous examples showed how to create Activities that follow a nested
+heirarchy. In some cases, you'll want to create inactive Activities that are
+siblings of the same root rather than being nested.
+
+```csharp
+public static void DoWork()
+{
+    using var currentActivity = MyActivitySource.StartActivity("MyActivity");
+
+    using var sibling1 = MyActivitySource.StartActivity(
+        "Sibling1",
+        ActivityKind.Internal, 
+        parentId: currentActivity?.Id);
+
+    using var sibling2 = MyActivitySource.StartActivity(
+        "Sibling2",
+        ActivityKind.Internal, 
+        parentId: currentActivity?.Id);
+
+    // 'Sibling1' and 'Sibling2' both share 'currentActivity' as a parent
+}
+```
+
+By default, `StartActivity` will set the created Activities parent as the
+current activity. You'll need to pass in the ID of the parent Activity for
+each Activity you wish to be a independent.
+
+## Creating new root Activities
+
+If you wish to create a new root Activity, you'll need to "de-parent" from
+the current activity.
+
+```csharp
+public static void DoWork()
+{
+    var previous = Activity.Current;
+    Activity.Current = null;
+
+    var newRoot = source.StartActivity("NewRoot");
+
+    // Re-set the previous Current Activity so the trace isn't messed up
+    Activity.Current = previous;
+}
+```
+
 ## Get the current Activity
 
 Sometimes it's helpful to access whatever the current `Activity` is at a point
@@ -225,9 +273,10 @@ Note that `using` is not used in the prior example. Doing so will end current
 
 ## Add tags to an Activity
 
-Tags (the equivalent of [`Attributes`](/docs/concepts/signals/traces/#attributes)
-in OpenTelemetry) let you attach key/value pairs to an `Activity` so it carries
-more information about the current operation that it's tracking.
+Tags (the equivalent of
+[`Attributes`](/docs/concepts/signals/traces/#attributes) in OpenTelemetry) let
+you attach key/value pairs to an `Activity` so it carries more information about
+the current operation that it's tracking.
 
 ```csharp
 using var myActivity = MyActivitySource.StartActivity("SayHello");
@@ -239,9 +288,9 @@ activity?.SetTag("operation.other-stuff", new int[] { 1, 2, 3 });
 
 ## Adding events
 
-An [event](/docs/concepts/signals/traces/#span-events) is a human-readable message
-on an `Activity` that represents "something happening" during its lifetime. You
-can think of it like a primitive log.
+An [event](/docs/concepts/signals/traces/#span-events) is a human-readable
+message on an `Activity` that represents "something happening" during its
+lifetime. You can think of it like a primitive log.
 
 ```csharp
 using var myActivity = MyActivitySource.StartActivity("SayHello");
@@ -302,10 +351,11 @@ using var anotherActivity =
 
 ## Set Activity status
 
-A [status](/docs/concepts/signals/traces/#span-status) can be set on an activity,
-typically used to specify that an activity has not completed successfully -
-`ActivityStatusCode.Error`. In rare scenarios, you could override the `Error`
-status with `Ok`, but don't set `Ok` on successfully-completed spans.
+A [status](/docs/concepts/signals/traces/#span-status) can be set on an
+activity, typically used to specify that an activity has not completed
+successfully - `ActivityStatusCode.Error`. In rare scenarios, you could override
+the `Error` status with `Ok`, but don't set `Ok` on successfully-completed
+spans.
 
 The status can be set at any time before the span is finished:
 
@@ -324,14 +374,13 @@ catch (Exception ex)
 
 ## Next steps
 
-After you've setup manual instrumentation, you may want to use
-[instrumentation libraries](/docs/instrumentation/net/libraries). Instrumentation
-libraries will instrument relevant libraries you're using and
-generate data for things like inbound and outbound HTTP requests and more.
+After you've setup manual instrumentation, you may want to use [instrumentation
+libraries](/docs/instrumentation/net/libraries). Instrumentation libraries will
+instrument relevant libraries you're using and generate data for things like
+inbound and outbound HTTP requests and more.
 
 You'll also want to configure an appropriate exporter to [export your telemetry
 data](/docs/instrumentation/net/exporters) to one or more telemetry backends.
 
-You can also check the
-[automatic instrumentation for .NET](/docs/instrumentation/net/automatic),
-which is currently in beta.
+You can also check the [automatic instrumentation for
+.NET](/docs/instrumentation/net/automatic), which is currently in beta.
