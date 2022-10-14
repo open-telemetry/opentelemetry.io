@@ -1,7 +1,7 @@
 ---
 title: Using OpenTelemetry OpAMP to modify service telemetry on the go
 linkTitle: OpAMP service usage
-date: 2022-10-12
+date: 2022-10-19
 author: >-
   [Nimrod Shlagman](https://github.com/nemoshlag) (Cisco)
 ---
