@@ -35,6 +35,12 @@ languages:
       traces: alpha
       metrics: alpha
       logs: not yet implemented
+  python:
+    name: Python
+    status:
+      traces: stable
+      metrics: stable
+      logs: experimental
   ruby:
     name: Ruby
     status:
