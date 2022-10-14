@@ -43,11 +43,11 @@ Let's initialize the the package and config files for the example project.
 {{< tabs TypeScript JavaScript >}}
 
 {{< tab >}}
-tsc --init
+$ tsc --init
 {{< /tab >}}
 
 {{< tab >}}
-npm init -y
+$ npm init -y
 {{< /tab >}}
 
 {{< /tabs >}}
@@ -55,7 +55,7 @@ npm init -y
 To create traces in the browser, you will need `@opentelemetry/sdk-trace-web`, and the instrumentation `@opentelemetry/instrumentation-document-load`:
 
 ```shell
-npm install  @opentelemetry/api @opentelemetry/sdk-trace-web @opentelemetry/instrumentation-document-load @opentelemetry/context-zone
+$ npm install  @opentelemetry/api @opentelemetry/sdk-trace-web @opentelemetry/instrumentation-document-load @opentelemetry/context-zone
 ```
 
 ### Initialization and Configuration
@@ -107,7 +107,7 @@ In the following we will use [parcel](https://parceljs.org/) as web application 
 Run
 
 ```shell
-npx parcel index.html
+$ npx parcel index.html
 ```
 
 and open the development webserver (e.g. at `http://localhost:1234`) to see if your code works.
