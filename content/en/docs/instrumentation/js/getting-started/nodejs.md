@@ -11,7 +11,7 @@ This is a small example application we will monitor in this guide.
 
 ### Dependencies
 
-Create an empty package.json. Please run appropriate command based on language you are following:
+Create an empty package.json:
 
 ```shell
 npm init -f
