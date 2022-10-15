@@ -43,7 +43,7 @@ $ tsc --init
 
 {{< tab >}}
 /*app.ts*/
-import express, {Express} from "express";
+import express, { Express } from "express";
 
 const PORT: number = parseInt(process.env.PORT || "8080");
 const app: Express = express();
