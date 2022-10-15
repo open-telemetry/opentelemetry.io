@@ -376,7 +376,7 @@ catch (Exception ex)
 
 After you've setup manual instrumentation, you may want to use [instrumentation
 libraries](/docs/instrumentation/net/libraries). Instrumentation libraries will
-instrument relevant libraries you're using and generate data for things like
+instrument relevant libraries you're using and generate spans (activities )for things like
 inbound and outbound HTTP requests and more.
 
 You'll also want to configure an appropriate exporter to [export your telemetry
