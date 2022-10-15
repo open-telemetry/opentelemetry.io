@@ -10,7 +10,7 @@ application.
 ## A note on terminology
 
 .NET is different from other languages/runtimes that support OpenTelemetry.
-[Tracing](/docs/concepts/signals/traces/#tracing-in-opentelemetry) is
+The [Tracing API](/docs/concepts/signals/traces/#tracing-in-opentelemetry) is
 implemented by the
 [System.Diagnostics](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics)
 API, repurposing existing constructs like `ActivitySource` and `Activity` to be
@@ -214,7 +214,7 @@ In the preceding example, `childOperation` is ended because the scope of the
 ## Creating independent Activities
 
 The previous examples showed how to create Activities that follow a nested
-heirarchy. In some cases, you'll want to create inactive Activities that are
+heirarchy. In some cases, you'll want to create independent Activities that are
 siblings of the same root rather than being nested.
 
 ```csharp
@@ -225,19 +225,19 @@ public static void DoWork()
     using var sibling1 = MyActivitySource.StartActivity(
         "Sibling1",
         ActivityKind.Internal, 
-        parentId: currentActivity?.Id);
+        parentContext: currentActivity is null ? default : currentActivity.Context);
 
     using var sibling2 = MyActivitySource.StartActivity(
         "Sibling2",
-        ActivityKind.Internal, 
-        parentId: currentActivity?.Id);
+        ActivityKind.Internal,
+        parentContext: currentActivity is null ? default : currentActivity.Context);
 
     // 'Sibling1' and 'Sibling2' both share 'currentActivity' as a parent
 }
 ```
 
 By default, `StartActivity` will set the created Activities parent as the
-current activity. You'll need to pass in the ID of the parent Activity for
+current Activity. You'll need to pass in the ID of the parent Activity for
 each Activity you wish to be a independent.
 
 ## Creating new root Activities
