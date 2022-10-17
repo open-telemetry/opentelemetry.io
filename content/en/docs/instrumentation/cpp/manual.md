@@ -109,7 +109,7 @@ context to remote services using the W3C Trace Context HTTP headers.
 Initialize an exporter and a reader. In this case, we initialize an OStream Exporter which will print to stdout by default. The reader periodically collects metrics from the Aggregation Store and exports them.
 
 ```cpp
-td::unique_ptr<opentelemetry::sdk::metrics::MetricExporter> exporter{new opentelemetry::exporters::OStreamMetricExporter};
+std::unique_ptr<opentelemetry::sdk::metrics::MetricExporter> exporter{new opentelemetry::exporters::OStreamMetricExporter};
 std::unique_ptr<opentelemetry::sdk::metrics::MetricReader> reader{
     new opentelemetry::sdk::metrics::PeriodicExportingMetricReader(std::move(exporter), options)};
 ```
