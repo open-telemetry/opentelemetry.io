@@ -54,6 +54,7 @@ After configuring the MeterProvider & TracerProvider all subsequently initialize
 To do tracing, you will need a tracer. 
 A tracer is acquired through the tracer provider and is responsible for creating spans. The OpenTelementrySdk manages the tracer provider as we defined and registered above. 
 A tracer requires an instrumentation name, and an optional version to be created:
+
 ```swift
 let  tracer = OpenTelemetrySDK.instance.tracerProvider.get(instrumentationName: "instrumentation-library-name", instrumentationVersion: "1.0.0") 
 ```
