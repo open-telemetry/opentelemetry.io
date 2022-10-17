@@ -118,6 +118,7 @@ func child() {
 ### Getting the Current Span
 
 Sometimes it's useful to do something with the current/active span. Here's how to access the current span from an arbitrary point in your code.
+
 ```swift 
   let currentSpan = OpenTelemetry.instance.contextProvider.activeSpan
 ```
