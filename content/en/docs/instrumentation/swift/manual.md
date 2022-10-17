@@ -73,7 +73,7 @@ It is required to call `end()` to end the span.
 
 ### Creating Nested Spans
 
-Often, spans are used to build relationship between operations. 
+Spans are used to build relationship between operations. 
 Below is an example of how we can manually build relationship between spans.
 
 Below we have `parent()` calling `child()` and how to manually link spans of each of these methods.
