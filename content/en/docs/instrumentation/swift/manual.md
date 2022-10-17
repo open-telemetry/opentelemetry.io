@@ -143,9 +143,103 @@ A Span Event can be thought of as a structured log message (or annotation) on a 
 ```
 
 ### Setting Span Status
-  
-### Recording Errors in Spans
+A [status](https://opentelemetry.io/docs/concepts/signals/traces/#span-status) can be set on a span, typically used to specify that a span has not completed successfully - SpanStatus.Error. In rare scenarios, you could override the Error status with OK, but don’t set OK on successfully-completed spans.
 
-## Acquiring A Meter
+The status can be set at any time before the span is finished:
+
+```swift
+func myFunction() {
+  let span = someTracer.spanBuilder(spanName: "my span").startSpan() 
+  defer {
+    span.end()
+  }
+  guard let criticalData = get() else {
+      span.status = .error(description: "something bad happened")
+      return 
+  }
+  // do somthing 
+}
+```
+### Recording exceptions in Spans
+Semantic conventions provide special demarcation for events that record exceptions:
+```swift
+  let span = someTracer.spanBuilder(spanName: "my span").startSpan() 
+do {
+  try throwingFunction() 
+} catch {
+  span.addEvent(name: SemanticAttributes.exception.rawValue,
+    attributes: [SemanticAttributes.exceptionType.rawValue: AttributeValue.string(String(describing: type(of: error))),
+                 SemanticAttributes.exceptionEscaped.rawValue: AttributeValue.bool(false),
+                 SemanticAttributes.exceptionMessage.rawValue: AttributeValue.string(error.localizedDescription)])
+  })
+  span.status = .error(description: error.localizedDescription)
+}
+span.end()
+```
+## Metrics 
+The metric implementation in opentelemetry-swift is out of date, but still functional. 
+The following instruments are provided: 
+
+- `ObservableGuage` : measures an instantaneous value with an asynchronous callback. Useful for recording values that can’t be merged across attributes, like CPU utilization percentage. Gauge measurements are aggregated as gauges by default.
+- `Counter` : Sums positive & negative values. Can also be set to monotonic (only positive values). Useful for counting the amount of bytes sent over the network.
+- `ObserverCounter` : an asynchronous version of a counter. 
+- `Measure` : Captures summary data of captured values: count, min, max, and sum.
+- `Histogram` : : records measurements that are most useful to analyze as a histogram distribution. Useful for recording things like the duration of time spent by an HTTP server processing a request. Histogram measurements are aggregated to explicit bucket histograms by default.
+- 
+### Acquiring A Meter
+
+The pattern for acquiring a meter is very similar to acquiring a tracer, requiring an instrumentation name and optional version.
+
+```swift
+  let meter = OpenTelemetrySDK.instance.meterProvider.get(instrumentationName: "instrumentation-library-name", instrumentationVersion: "1.0.0")
+```
+
+### Creating an Instrument
+
+All metrics can be annotated with attributes: additional qualifiers that help describe what subdivision of the measurements the metric represents.
+Below is an example counter recording the number of jobs processed, with a `type` qualifier. 
 
 
+```swift
+let counter = meter.createIntCounter(name: "processed jobs")
+counter.add(value: 1, labels: ["type" : "background"])
+```
+
+
+## SDK Configuration
+
+
+### Processors 
+Different Span processors are offered by OpenTelemetry-swift. The `SimpleSpanProcessor` immediately forwards ended spans to the exporter, while the `BatchSpanProcessor` batches them and sends them in bulk. Multiple Span processors can be configured to be active at the same time using the `MultiSpanProcessor`.
+For example, you may create a `SimpleSpanProcessor` that exports to a logger, and a `BatchSpanProcesssor` that exports to a OpenTelementry-Collector: 
+
+```swift
+let otlpConfiguration = OtlpConfiguration(timeout: OtlpConfiguration.DefaultTimeoutInterval)
+
+let grpcChannel = ClientConnection.usingPlatformAppropriateTLS(for: MultiThreadedEventLoopGroup(numberOfThreads:1))
+                                                  .connect(host: <collector host>, port: <collector port>)
+                                                  
+let traceExporter = OtlpTraceExporter(channel: grpcChannel
+                                      config: otlpConfiguration)
+                                      
+// build & register the Tracer Provider using the built otlp trace exporter                                   
+OpenTelemetry.registerTracerProvider(tracerProvider: TracerProviderBuilder()
+                                                      .add(spanProcessor:BatchSpanProcessor(spanExporter: traceExporter))
+                                                      .add(spanProcessor:SimpleSpanProcessor(spanExporter: StdoutExporter)) 
+                                                      .with(resource: Resource())
+                                                      .build())
+
+```
+The batch span processor allows for a variety of parameters for customization including.
+
+### Exporters
+
+OpenTelemetry-Swift provides the following exporters:
+
+- `InMemoryExporter`: Keeps the span data in memory. This is useful for testing and debugging.
+- `DatadogExporter` : Converts OpenTelemetry span data to Datadog traces & span Events to Datadog logs.
+- `JaegerExporter` : Converts OpenTelemetry span data to Jaeger format and exports to a Jaeger endpoint.
+- Persistence exporter : An exporter decorator that provides data persistence to existing metric and trace exporters. 
+- `PrometheusExporter` : Converts metric data to Prometheus format and exports to a Prometheus endpoint.  
+- `StdoutExporter` : Exports span data to Stdout. Useful for debugging. 
+- `ZipkinTraceExporter` : Exports span data to Zipkin format to a zipkin endpoint.
