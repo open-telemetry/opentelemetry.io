@@ -88,9 +88,12 @@ To send metrics to a prometheus endpoint you'll want to configure a prometheus
 exporter
 
 ```cpp
-opentelemetry::exporter::metrics::PrometheusExporterOptions opts;
-opts.url = "localhost:8080";
-std::unique_ptr<opentelemetry::sdk::metrics::MetricExporter> exporter{new opentelemetry::exporter::metrics::PrometheusExporter(opts)};
+opentelemetry::sdk::metrics::PeriodicExportingMetricReaderOptions options;
+options.export_interval_millis = std::chrono::milliseconds(1000); //optional, to override default values
+options.export_timeout_millis  = std::chrono::milliseconds(500); // optional, to override default values
+opentelemetry::exporter::metrics::PrometheusExporterOptions prometheusOptions;
+prometheusOptions.url = "localhost:8080";
+std::unique_ptr<opentelemetry::sdk::metrics::MetricExporter> exporter{new opentelemetry::exporter::metrics::PrometheusExporter(prometheusOptions)};
 std::unique_ptr<opentelemetry::sdk::metrics::MetricReader> reader{
     new opentelemetry::sdk::metrics::PeriodicExportingMetricReader(std::move(exporter), options)};
 ```
