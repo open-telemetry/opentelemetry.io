@@ -82,6 +82,21 @@ auto zipkin_exporter =
 
 ```
 
+## Prometheus
+
+To send metrics to a prometheus endpoint you'll want to configure a prometheus
+exporter
+
+```cpp
+opentelemetry::exporter::metrics::PrometheusExporterOptions opts;
+opts.url = "localhost:8080";
+std::unique_ptr<opentelemetry::sdk::metrics::MetricExporter> exporter{new opentelemetry::exporter::metrics::PrometheusExporter(opts)};
+std::unique_ptr<opentelemetry::sdk::metrics::MetricReader> reader{
+    new opentelemetry::sdk::metrics::PeriodicExportingMetricReader(std::move(exporter), options)};
+```
+
+To learn more on how to use the Prometheus exporter, try out the [prometheus example](https://github.com/open-telemetry/opentelemetry-cpp/tree/main/examples/prometheus)
+
 ## Next steps
 
 Enriching your codebase with
