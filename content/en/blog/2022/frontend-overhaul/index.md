@@ -179,4 +179,4 @@ are actively looking for more opportunities to contribute!
 _Oscar Reyes and Olly Babiak also are working on Tracetest, an open source tool
 that allows you to develop and test your distributed system with OpenTelemetry.
 It works with any OTel compatible system and enables trace–based tests to be
-created. Check it out at https://github.com/kubeshop/tracetest._
+created. Check it out at <https://github.com/kubeshop/tracetest>.
