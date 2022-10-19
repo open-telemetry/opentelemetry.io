@@ -86,7 +86,7 @@ func parent() {
 }
 
 func child(parentSpan: Span) {
-  let childSpan = someTracer.spanBuilder(spanName: "child span")
+let childSpan = someTracer.spanBuilder(spanName: "child span")
                              .setParent(parentSpan)
                              .startSpan()
   // do work
