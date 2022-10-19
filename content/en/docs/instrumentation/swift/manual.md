@@ -9,7 +9,7 @@ description: Manual instrumentation for opentelemetry-swift
 
 The [OpenTelemetrySdk](https://github.com/open-telemetry/opentelemetry-swift/blob/main/Sources/OpenTelemetrySdk/OpenTelemetrySdk.swift#L37) provides limited functionality in its default configuration. For more useful functionality, some configuration is required. 
 
-The default registered `TracerProvider` and `MetricProvider` are not configured with an exported. There are several [exporters](https://github.com/open-telemetry/opentelemetry-swift/tree/main/Sources/Exporters) available depending on your needs. Below we will explore configuring the OTLP exporter, which can be used for sending data to the [opentelemetry-collector](https://github.com/open-telemetry/opentelemetry-collector).
+The default registered `TracerProvider` and `MetricProvider` are not configured with an exporter. There are several [exporters](https://github.com/open-telemetry/opentelemetry-swift/tree/main/Sources/Exporters) available depending on your needs. Below we will explore configuring the OTLP exporter, which can be used for sending data to the [opentelemetry-collector](https://github.com/open-telemetry/opentelemetry-collector).
 
 
 ```swift
