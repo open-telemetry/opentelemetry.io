@@ -126,7 +126,7 @@ Sometimes it's useful to do something with the current/active span. Here's how t
 
 Spans can also be annotated with additional attributes. All spans will be automatically annotated with the `Resource` attributes attached to the tracer provider.
 The Opentelementry-swift sdk already provides instrumentation of common attributes in the `SDKResourceExtension` instrumentation.
-In this example a span for a network request capturing details about that request using existing [semantic conventions](https://opentelemetry.io/docs/reference/specification/trace/semantic_conventions/).
+In this example a span for a network request capturing details about that request using existing [semantic conventions](/docs/reference/specification/trace/semantic_conventions/).
 
 ```swift
 let span = tracer.spanBuilder("/resource/path").startSpan()
