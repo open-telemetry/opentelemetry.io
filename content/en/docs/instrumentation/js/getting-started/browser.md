@@ -3,7 +3,14 @@ title: Browser
 aliases: [/docs/js/getting_started/browser]
 ---
 
-While this guide uses the example application presented below, the steps to instrument your own application should be similar. Please make sure you have required [Typescript](https://www.typescriptlang.org/download) or [NodeJs](https://nodejs.org/en/download/) installed on your system.
+While this guide uses the example application presented below, the steps to
+instrument your own application should be similar.
+
+## Prerequisites
+
+Ensure that you have the following installed locally:
+- [Node.js](https://nodejs.org/en/download/)
+- [TypeScript](https://www.typescriptlang.org/download), if you will be using TypeScript.
 
 ## Example Application
 
