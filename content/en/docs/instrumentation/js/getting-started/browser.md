@@ -48,7 +48,8 @@ Copy the following file into an empty directory and call it `index.html`.
 To create traces in the browser, you will need `@opentelemetry/sdk-trace-web`, and the instrumentation `@opentelemetry/instrumentation-document-load`:
 
 ```shell
-$ npm install  @opentelemetry/api @opentelemetry/sdk-trace-web @opentelemetry/instrumentation-document-load @opentelemetry/context-zone
+npm init -y
+npm install  @opentelemetry/api @opentelemetry/sdk-trace-web @opentelemetry/instrumentation-document-load @opentelemetry/context-zone
 ```
 
 ### Initialization and Configuration
