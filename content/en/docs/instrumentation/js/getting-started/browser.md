@@ -124,7 +124,7 @@ You may also want to use the `BatchSpanProcessor` to export spans in batches in 
 To export traces to the console, modify `document-load.ts|js` so that it matches the following code snippet:
 
 ```js
-/* document-load.ts|js file (Code Snippet is similar for both the languages) */
+/* document-load.ts|js file - the code is the same for both the languages */
 import { ConsoleSpanExporter, SimpleSpanProcessor } from '@opentelemetry/sdk-trace-base';
 import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
 import { DocumentLoadInstrumentation } from '@opentelemetry/instrumentation-document-load';
