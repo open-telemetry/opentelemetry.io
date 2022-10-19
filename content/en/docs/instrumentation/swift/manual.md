@@ -179,39 +179,8 @@ do {
 }
 span.end()
 ```
-## Metrics 
-The metric implementation in opentelemetry-swift is out of date, but still functional. 
-The following instruments are provided: 
-
-- `ObservableGuage` : measures an instantaneous value with an asynchronous callback. Useful for recording values that can’t be merged across attributes, like CPU utilization percentage. Gauge measurements are aggregated as gauges by default.
-- `Counter` : Sums positive & negative values. Can also be set to monotonic (only positive values). Useful for counting the amount of bytes sent over the network.
-- `ObserverCounter` : an asynchronous version of a counter. 
-- `Measure` : Captures summary data of captured values: count, min, max, and sum.
-- `Histogram` : : records measurements that are most useful to analyze as a histogram distribution. Useful for recording things like the duration of time spent by an HTTP server processing a request. Histogram measurements are aggregated to explicit bucket histograms by default.
-- 
-### Acquiring A Meter
-
-The pattern for acquiring a meter is very similar to acquiring a tracer, requiring an instrumentation name and optional version.
-
-```swift
-  let meter = OpenTelemetrySDK.instance.meterProvider.get(instrumentationName: "instrumentation-library-name", instrumentationVersion: "1.0.0")
-```
-
-### Creating an Instrument
-
-All metrics can be annotated with attributes: additional qualifiers that help describe what subdivision of the measurements the metric represents.
-Below is an example counter recording the number of jobs processed, with a `type` qualifier. 
-
-
-```swift
-let counter = meter.createIntCounter(name: "processed jobs")
-counter.add(value: 1, labels: ["type" : "background"])
-```
-
 
 ## SDK Configuration
-
-
 ### Processors 
 Different Span processors are offered by OpenTelemetry-swift. The `SimpleSpanProcessor` immediately forwards ended spans to the exporter, while the `BatchSpanProcessor` batches them and sends them in bulk. Multiple Span processors can be configured to be active at the same time using the `MultiSpanProcessor`.
 For example, you may create a `SimpleSpanProcessor` that exports to a logger, and a `BatchSpanProcesssor` that exports to a OpenTelementry-Collector: 
