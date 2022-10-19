@@ -1,56 +1,55 @@
 ---
-title: Frontend Overhaul of the OpenTelemetry Demo (Go to Next.js)
-linkTitle: Frontend Overhaul
+title: Front end Overhaul of the OpenTelemetry Demo (Go to Next.js)
+linkTitle: OTel Demo Front end Overhaul
 date: 2022-10-18
 author: "[Oscar Reyes](https://github.com/xoscar) (Tracetest)"
-draft: true
-canonical_url: https://tracetest.io/blog/frontend-overhaul-opentelemetry-demo
+canonical_url: https://tracetest.io/blog/front end-overhaul-opentelemetry-demo
 ---
 
 One of the OpenTelemetry Project's many Special Interest Groups (SIG) is the
-OpenTelemetry Community Demo SIG which gives support to a set of instrumented
-backend microservices and a web frontend app that are primarily used to showcase
-how to instrument a distributed system using OpenTelemetry.
+[OpenTelemetry Community Demo SIG](https://github.com/open-telemetry/opentelemetry-demo).
+The SIG supports a set of instrumented microservices and a front end web app
+which are used to show how to instrument a distributed system with OpenTelemetry.
 
-The application's main focus is to demonstrate the implementation process to
-instrument an application no matter what programming language, platform, or
-operating system your team is using, as well as providing different approaching
-techniques (automatic and manual instrumentation, metrics, baggage). All of this
-while following the standards and conventions defined by the official
-OpenTelemetry Documentation. More about the specific requirements can be
+The main focus of the web app is to demonstrate how to instrument an application,
+no matter what programming language, platform or OS it uses. The web app also
+shows different instrumentation techniques: automatic and manual, metrics,
+and baggage. All while following the standards and conventions proscribed
+in the official OTel documentation. More about the specific requirements can be
 [found here](https://github.com/open-telemetry/opentelemetry-demo/tree/main/docs/requirements).
 
 My company was focused on becoming part of and embracing the OpenTelemetry
 community. One of our goals this summer was to get more involved with a core
-OpenTelemetry project where we could provide a meaningful contribution. The OTel
-demo became the best match for achieving that goal as it would not only help the
-community, but help our product as we needed a good example to test and showcase
-what can be done with our tool.
+OpenTelemetry project where we could provide a meaningful contribution.
+The OTel demo was the best match for our goal, as contributing would not
+only help the community, but also provide a great example to test
+and showcase our product with.
 
 The first thing we did was to get in contact with Carter Socha, the organizer of
 the OTel Demo SIG. Carter was really welcoming and helped us identify where our
 contributions could be the most impactful. We started looking at
 [the issue created by Austin Parker](https://github.com/open-telemetry/opentelemetry-demo/issues/39)
 referencing a complete front-end overhaul that would involve moving the
-application away from Go (SSR) to an architecture that included a browser-side
-client (CSR), as well as improving the overall style, theme, and user
+application away from Go (Server Side Render) to an architecture that included a browser-side
+client (Client Side Render), as well as improving the overall style, theme, and user
 experience.
 
-A fun aspect of the work was the request to move the store from a ‘normal’ store
+A fun aspect of the work was the request to move the store from a "normal" store
 to an astronomy store to match the OpenTelemetry project’s overall branding.
 
-Once we got confirmation and the green light from the rest of the OTel Demo SIG
-team then my team started working on the different changes included as part of
-the application frontend architecture overhaul.
+Once we got the green light from the rest of the OTel demo SIG,
+then we started working on the different changes that were part
+of the front end architecture overhaul.
 
 ## OpenTelemetry Demo Application Description and Tech Stack
 
-The demo app is an astronomy webstore that has the basic functionality to
-purchase online products such as a shopping cart, currency selector, product
-listing, and payment & checkout. It also includes features to display
-promotional items (ads) and related products depending on the context of the
-user. The demo stack includes a set of multiple microservices built in different
-languages, one for each of the following programming languages:
+The demo app is an astronomy store, with basic eCommerce features such as a
+shopping cart, currency selector, payment, and checkout. It also includes
+the ability to display promotions (ads) and related products depending on
+the user’s context.
+
+The demo’s stack includes multiple microservices in different languages,
+covering each of the following OTel-supported languages:
 
 1. Go
 2. PHP
@@ -71,20 +70,19 @@ instance, which uses Jaeger as one of the data stores for the traces and spans.
 
 ![Open Telemetry Demo System Diagram](system-diagram.png)
 
-The front end was constituted by a Golang SSR application which sent the
-complete HTML to the browser client to be displayed. Each request and form call
-was redirecting the user back to the server so the new piece of information was
-shown.
+Prior to re-architecting, the front end consisted of a Golang Server Side Rendered app,
+which sent complete HTML to the browser for display. Every request and call
+redirected to the server so new information was shown.
 
 ## Web App Styling Improvements, Theme Updates, and User Experience Redesign
 
-Before starting the development process, the frontend application wasn’t
+Before starting the development process, the front end application wasn’t
 matching the theme that OpenTelemetry had been using in terms of colors,
 products, and overall user experience. In addition, the demo lacked a real
-frontend (browser side) application as the current implementation was a Go SSR
+front end (browser side) application as the current implementation was a Go
 application.
 
-![Open Telemetry Demo Old Frontend](old-design.png)
+![Open Telemetry Demo Old Front end](old-design.png)
 
 The first task at hand was to bring the demo to the modern age by updating the
 design, color schemes, and user experience. Olly Babiak walked into the fray to
@@ -93,14 +91,14 @@ included an improved way to display the products landing page, an updated
 product details page, a mini cart, and a fully compatible mobile version of the
 application.
 
-![Open Telemetry Demo New Frontend](new-design.png)
+![Open Telemetry Demo New Front end](new-design.png)
 
 Now we had an application design that would match the rest of the OpenTelemetry
 themes and colors and look more like the OpenTelemetry.io website.
 
-## Frontend Application Architecture Overhaul
+## Front end Application Architecture Overhaul
 
-We worked on an initial proposal that included the following bullet points:
+We worked on an initial proposal that included the following:
 
 - Framework and tooling (Scaffolding, I/O, styling, UI library)
 - Code Architecture and structure (Directories, coding patterns)
@@ -108,27 +106,26 @@ We worked on an initial proposal that included the following bullet points:
 - Deployment & Distribution
 - Testing (E2E, unit test)
 
-This proposal was presented to the OpenTelemetry Demo SIG duringone of the
+This proposal was presented to the OpenTelemetry Demo SIG during one of the
 weekly Monday meetings and we were given the green light to move ahead. As part
 of the changes, we decided to use Next.js to not only work as the primary
-frontend application but also to work as an aggregation layer between the
-frontend and the GRPC backend services.
+front end application but also to work as an aggregation layer between the
+front end and the GRPC back end services.
 
-![New Frontend Data Flow](data-flow.png)
+![New Front end Data Flow](data-flow.png)
 
 As you can see in the Diagram, the application has two major connectivity
 points, one coming from the browser side (REST) to connect to the Next.js
-aggregation layer and the other from the aggregation layer to the backend
+aggregation layer and the other from the aggregation layer to the back end
 services (GRPC).
 
 ## OpenTelemetry Instrumentation
 
-The next big thing we worked on was having a way to instrument both sides of the
-Next.js application. To accommodate this we had to connect the same application
-twice to the same open telemetry collector that was being used by all of the
-other microservices.
+The next big thing we worked was a way to instrument both sides of
+the Next.js app. To do this we had to connect the app twice to the
+same collector used by all the microservices.
 
-For the backend side, a simple solution was designed that involved using the
+A simple back end solution was designed using the
 [official GRPC exporter](https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-grpc)
 in combination with the
 [Nodejs SDK](https://www.npmjs.com/package/@opentelemetry/sdk-node).
@@ -138,34 +135,30 @@ You can find the full
 The basic instrumentation includes auto instrumentation for most of the commonly
 used
 [libraries and tools for Node.js](https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-node).
-But as part of having a better example for users, a manual instrumentation piece
-was added in the form of a route middleware that would catch the incoming HTTP
+As part of providing a better example for users, a manual instrumentation in the
+form of route middleware was added. This would catch the incoming HTTP
 request and create a span based on it, including the context propagation. The
 [implementation can be found here](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/frontend/utils/telemetry/InstrumentationMiddleware.ts).
 
-For the frontend side, it became a little bit tricky, as the
-[initial Next.js render](https://nextjs.org/learn/foundations/how-nextjs-works/rendering)
-comes from the server side so, in this case, we had to make sure to load the
-tracer from the browser side when the Javascript code is executed.
+The front end was a little trickier, as the
+[initial rendering is server-side](https://nextjs.org/learn/foundations/how-nextjs-works/rendering).
+We had to make sure to load the tracer from the browser side when
+the Javascript code is executed.
 
-After adding validations to check for the browser side, we then can proceed to
-load the custom front-end tracing module which includes the creation of the
+After adding validations to check the browser side, we then loaded the custom
+front end tracing module, which included creating the
 [web tracer provider and the automatic web instrumentations](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/frontend/utils/telemetry/FrontendTracer.ts).
-The automatic web instrumentations capture the most common user interactions
-such as click events, fetch requests, and page loads. Another takeaway is that
-in order to allow the browser side to interact with the OTel collector there is
-a configuration change that needs to be done to enable incoming CORS requests
-from the web app. Having the collector receivers configuration looking similar
-to this:
 
-![OpenTelemetry Collector CORS Config](collector-cors-config.png)
+The automatic front end instrumentation captures the most common user actions such as clicks,
+fetch requests, and page loads. In order to allow the browser side to interact with the collector,
+a config change is needed: enable incoming CORS requests from the web app.
 
 Once the setup is complete, by loading the application from docker and
 interacting with the different features, we can start looking at the full traces
-that begin from the frontend user events all the way to the backend GRPC
+that begin from the front end user events all the way to the back end GRPC
 services.
 
-![Frontend Trace Jaeger Visualization](jaeger.png)
+![Front end Trace Jaeger Visualization](jaeger.png)
 
 ## Contributing to OpenTelemetry was Rewarding
 
