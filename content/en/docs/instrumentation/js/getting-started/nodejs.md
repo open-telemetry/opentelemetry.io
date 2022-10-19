@@ -20,7 +20,7 @@ This is a small example application we will monitor in this guide.
 Create an empty package.json:
 
 ```shell
-$ npm init -f
+npm init -f
 ```
 
 Install dependencies used by the example.
@@ -28,11 +28,11 @@ Install dependencies used by the example.
 {{< tabs TypeScript JavaScript >}}
 
 {{< tab lang="shell">}}
-$ npm install express typescript ts-node express @types/express @types/node 
+npm install express typescript ts-node express @types/express @types/node 
 {{< /tab >}}
 
 {{< tab lang="shell">}}
-$ npm install express
+npm install express
 {{< /tab >}}
 
 {{< /tabs >}}
@@ -42,7 +42,7 @@ $ npm install express
 Please save the following code as `app.ts|js`. If you are using Typescript kindly run following command
 
 ```shell
-$ tsc --init
+tsc --init
 ```
 
 {{< tabs TypeScript JavaScript >}}
@@ -86,12 +86,12 @@ Run the application with the following request and open <http://localhost:8080> 
 {{< tabs TypeScript JavaScript >}}
 
 {{< tab lang="console">}}
-$ ts-node app.ts
+ts-node app.ts
 Listening for requests on http://localhost:8080
 {{< /tab >}}
 
 {{< tab lang="console">}}
-$ node app.js
+node app.js
 Listening for requests on http://localhost:8080
 {{< /tab >}}
 
@@ -109,7 +109,7 @@ The following dependencies are required to trace a Node.js application.
 These dependencies are required to configure the tracing SDK and create spans.
 
 ```shell
-$ npm install @opentelemetry/sdk-node @opentelemetry/api
+npm install @opentelemetry/sdk-node @opentelemetry/api
 ```
 
 #### Exporter
@@ -128,7 +128,7 @@ Many common modules such as the `http` standard library module, `express`, and o
 You can also install all instrumentations maintained by the OpenTelemetry authors by using the `@opentelemetry/auto-instrumentations-node` module.
 
 ```shell
-$ npm install @opentelemetry/auto-instrumentations-node
+npm install @opentelemetry/auto-instrumentations-node
 ```
 
 ### Setup
