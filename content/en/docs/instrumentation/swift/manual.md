@@ -167,7 +167,7 @@ func myFunction() {
 ### Recording exceptions in Spans
 Semantic conventions provide special demarcation for events that record exceptions:
 ```swift
-  let span = someTracer.spanBuilder(spanName: "my span").startSpan() 
+let span = someTracer.spanBuilder(spanName: "my span").startSpan() 
 do {
   try throwingFunction() 
 } catch {
