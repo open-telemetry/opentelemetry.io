@@ -39,11 +39,13 @@ npm install express
 
 ### Code
 
-Please save the following code as `app.ts|js`. If you are using Typescript kindly run following command
+If you are using TypeScript, then run following command:
 
 ```shell
 tsc --init
 ```
+
+Create `app.ts|js` and add the following code to the file:
 
 {{< tabs TypeScript JavaScript >}}
 
