@@ -3,7 +3,13 @@ title: Node.js
 aliases: [/docs/js/getting_started/nodejs]
 ---
 
-This guide will show you how to get started with tracing in Node.js. Please make sure you have required [Typescript](https://www.typescriptlang.org/download) or [NodeJs](https://nodejs.org/en/download/) installed on your system.
+This guide will show you how to get started with tracing in Node.js.
+
+## Prerequisites
+
+Ensure that you have the following installed locally:
+- [Node.js](https://nodejs.org/en/download/)
+- [TypeScript](https://www.typescriptlang.org/download), if you will be using TypeScript.
 
 ## Example Application
 
