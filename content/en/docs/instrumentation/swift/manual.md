@@ -146,7 +146,7 @@ A Span Event can be thought of as a structured log message (or annotation) on a 
 ```
 
 ### Setting Span Status
-A [status](https://opentelemetry.io/docs/concepts/signals/traces/#span-status) can be set on a span, typically used to specify that a span has not completed successfully - SpanStatus.Error. In rare scenarios, you could override the Error status with OK, but don’t set OK on successfully-completed spans.
+A [status](https://opentelemetry.io/docs/concepts/signals/traces/#span-status) can be set on a span, typically used to specify that a span has not completed successfully - `SpanStatus.Error`. In rare scenarios, you could override the Error status with OK, but don’t set OK on successfully-completed spans.
 
 The status can be set at any time before the span is finished:
 
