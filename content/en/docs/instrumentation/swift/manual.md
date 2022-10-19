@@ -163,6 +163,7 @@ func myFunction() {
   // do somthing 
 }
 ```
+
 ### Recording exceptions in Spans
 Semantic conventions provide special demarcation for events that record exceptions:
 ```swift
