@@ -54,6 +54,10 @@ npm install  @opentelemetry/api @opentelemetry/sdk-trace-web @opentelemetry/inst
 
 ### Initialization and Configuration
 
+If you are coding in TypeScript, then run the following command: 
+```shell
+tsc --init
+```
 Create an empty code file named `document-load` with a `.ts` or `.js` extension , as appropriate, based on the language you've chosen to write your app in. Add the following code to your HTML right before the `</body>` closing tag:
 
 {{< tabs TypeScript JavaScript >}}
