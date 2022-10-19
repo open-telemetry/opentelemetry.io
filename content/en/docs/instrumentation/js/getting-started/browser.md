@@ -79,7 +79,7 @@ We will add some code that will trace the document load timings and output those
 Add the following code to the `document-load.ts|js` to create a tracer provider, which brings the instrumentation to trace document load:
 
 ```js
-/* document-load.ts|js file (Code Snippet is similar for both the languages)*/
+/* document-load.ts|js file - the code snippet is the same for both the languages */
 import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
 import { DocumentLoadInstrumentation } from '@opentelemetry/instrumentation-document-load';
 import { ZoneContextManager } from '@opentelemetry/context-zone';
