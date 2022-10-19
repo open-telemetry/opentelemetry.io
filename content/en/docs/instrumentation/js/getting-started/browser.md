@@ -105,7 +105,7 @@ In the following we will use [parcel](https://parceljs.org/) as web application 
 Run
 
 ```shell
-$ npx parcel index.html
+npx parcel index.html
 ```
 
 and open the development webserver (e.g. at `http://localhost:1234`) to see if your code works.
