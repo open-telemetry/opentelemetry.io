@@ -18,7 +18,7 @@ developer_note:
 </div>
 
 <div class="h3 mt-4">
-<a class="get-started-link" href="/docs/getting-started">Get started</a> based on your role
+<a class="text-secondary" href="/docs/getting-started/">Get started</a> based on your role
 </div>
 <div class="l-get-started-buttons">
 
