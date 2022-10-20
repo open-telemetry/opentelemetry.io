@@ -22,8 +22,8 @@ developer_note:
 </div>
 <div class="l-get-started-buttons">
 
-- [Dev](/docs/getting-started/dev)
-- [Ops](/docs/getting-started/ops)
+- [Dev](/docs/getting-started/dev/)
+- [Ops](/docs/getting-started/ops/)
 
 </div>
 {{< /blocks/cover >}}
