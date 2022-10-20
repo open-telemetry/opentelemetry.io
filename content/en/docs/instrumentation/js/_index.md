@@ -10,9 +10,16 @@ spelling: cSpell:ignore Roadmap
 weight: 20
 ---
 
-This page contains an introduction to OpenTelemetry in JavaScript. This guide
-will walk you through installation and instrumentation and show you how to
-export data.
+<!--
+You can see & update the `lang_instrumentation_index_head` shortcode in
+/layouts/shortcodes/lang_instrumentation_index_head.md
+
+The data (name, status) is located at
+/data/instrumentation.yaml
+-->
+{{% lang_instrumentation_index_head "js" %}}
+
+{{% /lang_instrumentation_index_head %}}
 
 ## Status and Releases
 

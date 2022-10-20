@@ -47,11 +47,11 @@ languages:
       traces: stable
       metrics: not yet implemented
       logs: not yet implemented
-  ruby:
-    name: Ruby
+  js:
+    name: JavaScript
     status:
       traces: stable
-      metrics: not yet implemented
+      metrics: Release Candidate
       logs: not yet implemented
   rust:
     name: Rust
