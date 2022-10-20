@@ -9,9 +9,9 @@ desire a vendor-agnostic space to discuss adopting OpenTelemetry, so we provide
 multiple ways for you to connect with other users of the project and share best
 practices:
 
-* [A synchronous monthly discussion group](/community/end-user/discussion-group/)
-* [A private slack channel](/community/end-user/slack-channel/)
-* [Talks about OTel in practice](/community/end-user/otel-in-practice/)
+* [A synchronous monthly discussion group](discussion-group/)
+* [A private slack channel](slack-channel/)
+* [Talks about OTel in practice](otel-in-practice/)
 
 These forums will bring together operations and
 development engineers from different organizations to discuss challenges and
