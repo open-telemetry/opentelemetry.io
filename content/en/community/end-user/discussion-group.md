@@ -1,5 +1,6 @@
 ---
 title: Monthly Discussion Group
+linkTitle: Monthly Discussions
 Description: >-
  Monthly hour long sessions -- all are welcome!
 ---
