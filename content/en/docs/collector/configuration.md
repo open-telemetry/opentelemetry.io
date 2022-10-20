@@ -7,7 +7,7 @@ Review the following documentation to gain understanding of the repositories app
 the OpenTelemetry Collector and security standards respectively:
 
 - [Data Collection concepts](../../concepts/data-collection)
-- [Security standards](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security.md)
+- [Security guidance](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security.md)
 
 ## Components
 The OpenTelemetry Collector consists of three components for accessing telemetry data:
@@ -25,7 +25,7 @@ After configuring these components, they must be enabled via pipelines within th
 Furthermore, there are [extensions](#extensions) which provide capabilities
 that can be added to the Collector, but do not require direct access to
 telemetry data. They are also enabled within the
-[service](#service) section but are not part of pipelines.
+[service](#service) section, although they are not part of pipelines.
 
 An example configuration would look like:
 
@@ -65,7 +65,7 @@ service:
       exporters: [otlp]
 ```
 
-Note that _receivers_, _processors_, _exporters_ and/or _pipelines_ are defined via component identifiers in
+Note that _receivers_, _processors_, _exporters_ and _pipelines_ are defined via component identifiers in
 `type[/name]` format (e.g. `otlp` or `otlp/2`).  Components of a given type can be defined more than 
 once as long as the identifiers are unique. For example:
 
@@ -124,14 +124,14 @@ specifying the name of the receiver is enough. An example of such receivers is p
 configuration script below (see `zipkin:`). 
 
 If further configuration is required or the user wants to change the default configuration, 
-then the modifications must be defined under the `receivers` section in the script. The 
-default configuration parameters specified in the receiver are consequently overridden.
+then the modifications must be defined under the receiver-specific section (e.g. under `hostmetrics` or `fluentforward`) in the script. 
+The default configuration parameters specified in the receiver are consequently overridden.
 
 > Configuring a receiver does not enable it. Receivers are enabled via
 > pipelines within the [service](#service) section.
 
 At least one or more receivers must be configured. By default, no receivers
-are configured. A basic example of all available receivers is provided below:
+are configured. A basic example of some available receivers is provided below:
 
 ```yaml
 receivers:
