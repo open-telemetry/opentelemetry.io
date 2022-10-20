@@ -6,7 +6,7 @@ weight: 1
 ---
 
 Before you deep dive into your role-specific _Getting Started_, you can try out
-our official [OpenTelemetry Demo][] to **see** how observability with
+the official [OpenTelemetry Demo][] to **see** how observability with
 OpenTelemetry looks like.
 
 If none of the roles below are applicable to you, [let us know][]!
