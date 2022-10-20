@@ -11,10 +11,10 @@ traces, metrics, and logs 100% of the time? How much of the service traffic
 should be sampled? I would like to suggest the answer of “it depends”. Desired
 telemetry data differs in a service lifecycle from development to continuous
 deployment. It changes when clients face an error or a service has been thrown
-into major scale.
+into a major scale.
 
-It is possible to change a service telemetry configurations or sampling rate.
-Usually it requires only a minimal code change and a deployment process. It
+It is possible to change a service telemetry configuration or sampling rate.
+Usually, it requires only a minimal code change and a deployment process. It
 might not seem a lot, but whenever facing a change like this across an entire
 system, we tend to avoid it. Instead, it is common to collect as much data as
 possible, which causes an issue by itself. Can we dynamically modify service
@@ -184,7 +184,7 @@ cd internal/examples/server
 go run .
 ```
 
-Visit <http://localhost:4321> to verify server is running. Notice that no agent
+Visit <http://localhost:4321> to verify the server is running. Notice that no agent
 is displayed:
 
 ![No agents display on opamp server demo UI](opamp_server_no_agents.png)
@@ -253,7 +253,7 @@ traces. Try setting it off using the `instrument: false` configuration.
 This is a very basic implementation. Wrapping a system above OpAMP could perform
 as an instrumentation orchestrator. The starting point is being able to
 externally add and match tailor-made dynamic telemetry for your system. Imagine
-what AI can achieve on this type of system? It could collect metrics over the
+what AI can achieve on this type of system. It could collect metrics over the
 entire system, automatically and dynamically adding trace/log collections onto
 any detected bottlenecks. Using this protocol enables many new possibilities, I
 believe it has the potential to change how we think about telemetry.
