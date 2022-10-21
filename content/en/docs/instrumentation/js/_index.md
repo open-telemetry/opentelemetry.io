@@ -12,16 +12,6 @@ weight: 20
 
 {{% lang_instrumentation_index_head "js" /%}}
 
-## Status and Releases
-
-| Signal  | API Status        | SDK Status        |
-| ------- | ----------------- | ----------------- |
-| Traces  | Stable            | Stable            |
-| Metrics | Release Candidate | Release Candidate |
-| Logs    | Development       | Development       |
-
-{{% latest_release "js" /%}}
-
 ## Further Reading
 
 - [OpenTelemetry for JavaScript on GitHub](https://github.com/open-telemetry/opentelemetry-js)

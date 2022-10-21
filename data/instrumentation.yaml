@@ -52,7 +52,7 @@ languages:
     status:
       traces: stable
       metrics: Release Candidate
-      logs: not yet implemented
+      logs: Development
   rust:
     name: Rust
     status:
