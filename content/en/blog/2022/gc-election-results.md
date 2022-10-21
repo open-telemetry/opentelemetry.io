@@ -23,4 +23,5 @@ Instrumentation [Trask Stalnaker](https://github.com/trask)! They will all serve
 a two-year term.
 
 We'd like to thank everyone who participated -- candidates, voters, and the
-election organizers -- for their efforts. 
+election organizers -- for their efforts. You can find the [full results of the
+election here](https://vote.heliosvoting.org/helios/elections/76558134-3384-11ed-8688-02871af94755/view).
