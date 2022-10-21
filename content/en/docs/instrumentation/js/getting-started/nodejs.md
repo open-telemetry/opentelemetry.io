@@ -1,9 +1,15 @@
 ---
-title: Node.js
+title: TypeScript/ Node.js
 aliases: [/docs/js/getting_started/nodejs]
 ---
 
-This guide will show you how to get started with tracing in Node.js.
+This guide will show you how to get started with tracing in TypeScript and Node.js.
+
+## Prerequisites
+
+Ensure that you have the following installed locally:
+- [Node.js](https://nodejs.org/en/download/)
+- [TypeScript](https://www.typescriptlang.org/download), if you will be using TypeScript.
 
 ## Example Application
 
@@ -13,23 +19,54 @@ This is a small example application we will monitor in this guide.
 
 Create an empty package.json:
 
-```sh
+```shell
 npm init -f
 ```
 
 Install dependencies used by the example.
 
-```sh
+{{< tabs TypeScript JavaScript >}}
+
+{{< tab lang="shell">}}
+npm install express typescript ts-node express @types/express @types/node 
+{{< /tab >}}
+
+{{< tab lang="shell">}}
 npm install express
-```
+{{< /tab >}}
+
+{{< /tabs >}}
 
 ### Code
 
-Please save the following code as `app.js`.
+If you are using TypeScript, then run following command:
 
-```javascript
-/* app.js */
+```shell
+tsc --init
+```
 
+Create `app.ts|js` and add the following code to the file:
+
+{{< tabs TypeScript JavaScript >}}
+
+{{< tab >}}
+/*app.ts*/
+import express, { Express } from "express";
+
+const PORT: number = parseInt(process.env.PORT || "8080");
+const app: Express = express();
+
+app.get("/", (req, res) => {
+  res.send("Hello World");
+});
+
+app.listen(PORT), () => {
+  console.log(`Listening for requests on http://localhost:${PORT}`);
+};
+{{< /tab >}}
+
+{{< tab >}}
+/*app.js*/
 const express = require("express");
 
 const PORT = process.env.PORT || "8080";
@@ -42,20 +79,32 @@ app.get("/", (req, res) => {
 app.listen(parseInt(PORT, 10), () => {
   console.log(`Listening for requests on http://localhost:${PORT}`);
 });
-```
+{{< /tab >}}
+
+{{< /tab>}}
 
 Run the application with the following request and open <http://localhost:8080> in your web browser to ensure it is working.
 
-```sh
-$ node app.js
+{{< tabs TypeScript JavaScript >}}
+
+{{< tab lang="console">}}
+ts-node app.ts
 Listening for requests on http://localhost:8080
-```
+{{< /tab >}}
+
+{{< tab lang="console">}}
+node app.js
+Listening for requests on http://localhost:8080
+{{< /tab >}}
+
+{{< /tabs >}}
+
 
 ## Tracing
 
 ### Dependencies
 
-The following dependencies are required to trace a Node.js application.
+The following dependencies are required to trace a TypeScript/ Node.js application.
 
 #### Core Dependencies
 
@@ -88,11 +137,30 @@ npm install @opentelemetry/auto-instrumentations-node
 
 The tracing setup and configuration should be run before your application code. One tool commonly used for this task is the [`-r, --require module`](https://nodejs.org/api/cli.html#cli_r_require_module) flag.
 
-Create a file with a name like `tracing.js` which will contain your tracing setup code.
+Create a file named `tracing.ts|js`, which will contain your tracing setup code.
 
-```javascript
-/* tracing.js */
+{{< tabs TypeScript JavaScript >}}
 
+{{< tab >}}
+/*tracing.ts*/
+// Require dependencies
+import * as opentelemetry from "@opentelemetry/sdk-node";
+import { getNodeAutoInstrumentations } from "@opentelemetry/auto-instrumentations-node";
+import { diag, DiagConsoleLogger, DiagLogLevel } from '@opentelemetry/api';
+
+// For troubleshooting, set the log level to DiagLogLevel.DEBUG
+diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
+
+const sdk: any = new opentelemetry.NodeSDK({
+  traceExporter: new opentelemetry.tracing.ConsoleSpanExporter(),
+  instrumentations: [getNodeAutoInstrumentations()]
+});
+
+sdk.start()
+{{< /tab >}}
+
+{{< tab >}}
+/*tracing.js*/
 // Require dependencies
 const opentelemetry = require("@opentelemetry/sdk-node");
 const { getNodeAutoInstrumentations } = require("@opentelemetry/auto-instrumentations-node");
@@ -107,16 +175,27 @@ const sdk = new opentelemetry.NodeSDK({
 });
 
 sdk.start()
-```
+{{< /tab >}}
+
+{{< /tabs >}}
 
 ### Run Application
 
 Now you can run your application as you normally would, but you can use the `--require` flag to load the tracing code before the application code.
 
-```shell
+{{< tabs TypeScript JavaScript >}}
+
+{{< tab lang="console">}}
+$ ts-node --require './tracing.ts' app.ts
+Listening for requests on http://localhost:8080
+{{< /tab >}}
+
+{{< tab lang="console">}}
 $ node --require './tracing.js' app.js
 Listening for requests on http://localhost:8080
-```
+{{< /tab >}}
+
+{{< /tabs >}}
 
 Open <http://localhost:8080> in your web browser and reload the page a few times, after a while you should see the spans printed in the console by the `ConsoleSpanExporter`.
 
