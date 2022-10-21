@@ -11,7 +11,7 @@ developer_note:
 
 ## High-quality, ubiquitous, and portable telemetry to enable effective observability
 
-<div class="l-primary-buttons">
+<div class="l-primary-buttons mt-5">
 
 - [Learn more](/docs/concepts/)
 
