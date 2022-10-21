@@ -7,7 +7,7 @@ canonical_url: https://tracetest.io/blog/frontend-overhaul-opentelemetry-demo
 ---
 
 One of the OpenTelemetry Project's many Special Interest Groups (SIG) is the
-[OpenTelemetry Community Demo SIG](https://github.com/open-telemetry/opentelemetry-demo).
+[OpenTelemetry Community demo SIG](https://github.com/open-telemetry/opentelemetry-demo).
 The SIG supports a set of instrumented microservices and a front-end web app
 which are used to show how to instrument a distributed system with
 OpenTelemetry.
@@ -34,7 +34,7 @@ could be the most impactful. We started looking at
 [the issue created by Austin Parker](https://github.com/open-telemetry/opentelemetry-demo/issues/39)
 referencing a complete front-end overhaul that would involve moving the
 application away from Go server-side render (SSR) to an architecture that
-included a browser-side client (client-side render), as well as improving the
+included a browser-side client (client-side render or CSR), as well as improving the
 overall style, theme, and user experience.
 
 A fun aspect of the work was the request to move the store from a "normal" store
@@ -54,15 +54,15 @@ context.
 The demo’s stack includes multiple microservices in different languages,
 covering each of the following OTel-supported languages:
 
-1. .NET
-2. C++
-3. Elixir
-4. Go
-5. Node.js
-6. PHP
-7. Python
-8. Ruby
-9. Rust
+- .NET
+- C++
+- Elixir
+- Go
+- Node.js
+- PHP
+- Python
+- Ruby
+- Rust
 
 Every microservice has a specific goal and can communicate with others by using
 a global gRPC definition. Persistent information is saved into a PostgresSQL
@@ -109,7 +109,7 @@ We worked on an initial proposal that included the following:
 - Deployment & Distribution
 - Testing (E2E, unit test)
 
-This proposal was presented to the OpenTelemetry Demo SIG during one of the
+This proposal was presented to the OpenTelemetry demo SIG during one of the
 weekly Monday meetings and we were given the green light to move ahead. As part
 of the changes, we decided to use [Next.js](https://nextjs.org/) to not only
 work as the primary front-end application but also to work as an aggregation
