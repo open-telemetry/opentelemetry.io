@@ -25,17 +25,17 @@ npm init -f
 
 Install dependencies used by the example.
 
-{{< tabs TypeScript JavaScript >}}
+{{< ot-tabs TypeScript JavaScript >}}
 
-{{< tab lang="shell">}}
+{{< ot-tab lang="shell">}}
 npm install express typescript ts-node express @types/express @types/node 
-{{< /tab >}}
+{{< /ot-tab >}}
 
-{{< tab lang="shell">}}
+{{< ot-tab lang="shell">}}
 npm install express
-{{< /tab >}}
+{{< /ot-tab >}}
 
-{{< /tabs >}}
+{{< /ot-tabs >}}
 
 ### Code
 
@@ -47,9 +47,9 @@ tsc --init
 
 Create `app.ts|js` and add the following code to the file:
 
-{{< tabs TypeScript JavaScript >}}
+{{< ot-tabs TypeScript JavaScript >}}
 
-{{< tab >}}
+{{< ot-tab >}}
 /*app.ts*/
 import express, { Express } from "express";
 
@@ -63,9 +63,9 @@ app.get("/", (req, res) => {
 app.listen(PORT), () => {
   console.log(`Listening for requests on http://localhost:${PORT}`);
 };
-{{< /tab >}}
+{{< /ot-tab >}}
 
-{{< tab >}}
+{{< ot-tab >}}
 /*app.js*/
 const express = require("express");
 
@@ -79,25 +79,25 @@ app.get("/", (req, res) => {
 app.listen(parseInt(PORT, 10), () => {
   console.log(`Listening for requests on http://localhost:${PORT}`);
 });
-{{< /tab >}}
+{{< /ot-tab >}}
 
-{{< /tab>}}
+{{< /ot-tab>}}
 
 Run the application with the following request and open <http://localhost:8080> in your web browser to ensure it is working.
 
-{{< tabs TypeScript JavaScript >}}
+{{< ot-tabs TypeScript JavaScript >}}
 
-{{< tab lang="console">}}
+{{< ot-tab lang="console">}}
 ts-node app.ts
 Listening for requests on http://localhost:8080
-{{< /tab >}}
+{{< /ot-tab >}}
 
-{{< tab lang="console">}}
+{{< ot-tab lang="console">}}
 node app.js
 Listening for requests on http://localhost:8080
-{{< /tab >}}
+{{< /ot-tab >}}
 
-{{< /tabs >}}
+{{< /ot-tabs >}}
 
 
 ## Tracing
@@ -139,9 +139,9 @@ The tracing setup and configuration should be run before your application code. 
 
 Create a file named `tracing.ts|js`, which will contain your tracing setup code.
 
-{{< tabs TypeScript JavaScript >}}
+{{< ot-tabs TypeScript JavaScript >}}
 
-{{< tab >}}
+{{< ot-tab >}}
 /*tracing.ts*/
 // Require dependencies
 import * as opentelemetry from "@opentelemetry/sdk-node";
@@ -157,9 +157,9 @@ const sdk: any = new opentelemetry.NodeSDK({
 });
 
 sdk.start()
-{{< /tab >}}
+{{< /ot-tab >}}
 
-{{< tab >}}
+{{< ot-tab >}}
 /*tracing.js*/
 // Require dependencies
 const opentelemetry = require("@opentelemetry/sdk-node");
@@ -175,27 +175,27 @@ const sdk = new opentelemetry.NodeSDK({
 });
 
 sdk.start()
-{{< /tab >}}
+{{< /ot-tab >}}
 
-{{< /tabs >}}
+{{< /ot-tabs >}}
 
 ### Run Application
 
 Now you can run your application as you normally would, but you can use the `--require` flag to load the tracing code before the application code.
 
-{{< tabs TypeScript JavaScript >}}
+{{< ot-tabs TypeScript JavaScript >}}
 
-{{< tab lang="console">}}
+{{< ot-tab lang="console">}}
 $ ts-node --require './tracing.ts' app.ts
 Listening for requests on http://localhost:8080
-{{< /tab >}}
+{{< /ot-tab >}}
 
-{{< tab lang="console">}}
+{{< ot-tab lang="console">}}
 $ node --require './tracing.js' app.js
 Listening for requests on http://localhost:8080
-{{< /tab >}}
+{{< /ot-tab >}}
 
-{{< /tabs >}}
+{{< /ot-tabs >}}
 
 Open <http://localhost:8080> in your web browser and reload the page a few times, after a while you should see the spans printed in the console by the `ConsoleSpanExporter`.
 
