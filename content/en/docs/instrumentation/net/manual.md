@@ -214,7 +214,7 @@ In the preceding example, `childOperation` is ended because the scope of the
 ## Creating independent Activities
 
 The previous examples showed how to create Activities that follow a nested
-heirarchy. In some cases, you'll want to create independent Activities that are
+hierarchy. In some cases, you'll want to create independent Activities that are
 siblings of the same root rather than being nested.
 
 ```csharp
@@ -290,7 +290,7 @@ activity?.SetTag("operation.other-stuff", new int[] { 1, 2, 3 });
 
 An [event](/docs/concepts/signals/traces/#span-events) is a human-readable
 message on an `Activity` that represents "something happening" during its
-lifetime. You can think of it like a primitive log.
+lifetime.
 
 ```csharp
 using var myActivity = MyActivitySource.StartActivity("SayHello");
@@ -375,8 +375,8 @@ catch (Exception ex)
 ## Next steps
 
 After you've setup manual instrumentation, you may want to use [instrumentation
-libraries](/docs/instrumentation/net/libraries). Instrumentation libraries will
-instrument relevant libraries you're using and generate spans (activities )for things like
+libraries](/docs/instrumentation/net/libraries). As the name suggests, they will
+instrument relevant libraries you're using and generate spans (activities) for things like
 inbound and outbound HTTP requests and more.
 
 You'll also want to configure an appropriate exporter to [export your telemetry
