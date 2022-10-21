@@ -220,25 +220,22 @@ siblings of the same root rather than being nested.
 ```csharp
 public static void DoWork()
 {
-    using var currentActivity = MyActivitySource.StartActivity("MyActivity");
+    using var parent = MyActivitySource.StartActivity("parent");
 
-    using var sibling1 = MyActivitySource.StartActivity(
-        "Sibling1",
-        ActivityKind.Internal, 
-        parentContext: currentActivity is null ? default : currentActivity.Context);
+    using (var child1 = DemoSource.StartActivity("child1"))
+    {
+        // Do some work that 'child1' tracks
+    }
 
-    using var sibling2 = MyActivitySource.StartActivity(
-        "Sibling2",
-        ActivityKind.Internal,
-        parentContext: currentActivity is null ? default : currentActivity.Context);
+    using (var child2 = DemoSource.StartActivity("child2"))
+    {
+        // Do some work that 'child2' tracks
+    }
 
-    // 'Sibling1' and 'Sibling2' both share 'currentActivity' as a parent
+    // 'child1' and 'child2' both share 'parent' as a parent, but are independent
+    // from one another
 }
 ```
-
-By default, `StartActivity` will set the created Activities parent as the
-current Activity. You'll need to pass in the ID of the parent Activity for
-each Activity you wish to be a independent.
 
 ## Creating new root Activities
 
