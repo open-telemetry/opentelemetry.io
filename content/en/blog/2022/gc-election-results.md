@@ -19,7 +19,7 @@ With that out of the way, please joining me in congratulating [Alolita
 Sharma](https://github.com/alolita), [Daniel Dyla](https://github.com/dyladan),
 and [Morgan McLean](https://github.com/mtwo) on their re-election! They will be
 joined by long-time contributor and maintainer of OpenTelemetry Java
-Instrumentation [Trask Stalnaker](https://github.com/trask)! They will all serve
+Instrumentation [Trask Stalnaker](https://github.com/trask)! All will serve
 a two-year term.
 
 We'd like to thank everyone who participated -- candidates, voters, and the
