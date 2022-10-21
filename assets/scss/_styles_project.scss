@@ -62,7 +62,7 @@
 .l-status-primary {
   @extend .l-buttons;
   justify-content: left;
-  
+
   > ul > li > a /*, > p > a*/ {
     @extend .btn-lg;
     @extend .btn-primary;
@@ -75,7 +75,7 @@
 .l-status-secondary {
   @extend .l-buttons;
   justify-content: left;
-  
+
   > ul > li > a /*, > p > a*/ {
     @extend .btn-lg;
     @extend .btn-secondary;
@@ -90,7 +90,7 @@
   .navbar-brand {
     @include media-breakpoint-up(md) { padding: 0; }
     svg { height: 48px; }
-    span:last-child { display: none; }
+    .navbar-brand__name { display: none; }
   }
 }
 

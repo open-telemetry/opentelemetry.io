@@ -1,13 +1,7 @@
 ---
-title: Mission
+title: Mission, vision, and values
+aliases: [/mission]
 ---
-{{% blocks/lead color="primary" %}}
-
-# Mission, vision, and values
-
-{{% /blocks/lead %}}
-
-{{% blocks/section type="section" color="white" %}}
 
 ## Mission &mdash; our overall north star as a community
 

@@ -37,7 +37,7 @@ trace.set_tracer_provider(provider)
 
 Use a [`PeriodicExportingMetricReader`][pemr] to periodically print metrics to the console.
 `PeriodicExportingMetricReader` can be configured to export at a different interval, change the
-[temporality](/docs/reference/specification/metrics/datamodel/#temporality) for each instrument
+[temporality](/docs/reference/specification/metrics/data-model/#temporality) for each instrument
 kind, or change the default aggregation for each instrument kind.
 
 ```python

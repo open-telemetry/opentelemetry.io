@@ -1,24 +1,24 @@
 // External-link icon after an external link
 //
-// (+) To ensure that the external-link icon word-wraps along with the preceding
+// To ensure that the external-link icon word-wraps along with the preceding
 // word, rather than by itself, we (1) start content with $nbsp, and (2) ensure
-// display is not 'inline-block'.
+// that `display` is 'inline'.
 //
 // For a discussion concerning this topic, see
 // https://stackoverflow.com/questions/16100956/prevent-after-element-from-wrapping-to-next-line.
-
 
 $nbsp: \00A0;
 
 @mixin external-link-icon() {
   @extend .fas;
-  display: inherit; // (+) override .fas's setting of 'inline-block'
+  display: inline;
   @include font-size(60%);
   opacity: 0.8;
   vertical-align: text-top;
   content: fa-content($nbsp + $fa-var-external-link-alt);
 }
 
+.td-sidebar-nav a[target="_blank"]:after,
 a.external-link:after {
   @include external-link-icon();
 }

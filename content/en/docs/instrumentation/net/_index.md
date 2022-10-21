@@ -9,39 +9,34 @@ aliases: [/csharp, /csharp/metrics, /csharp/tracing]
 weight: 12
 ---
 
-Welcome to the OpenTelemetry for .NET documentation! This is intended to be an
-overview of OpenTelemetry in this language, and a brief guide to its options and
-features.
+<!--
+You can see & update the `lang_instrumentation_index_head` shortcode in
+/layouts/shortcodes/lang_instrumentation_index_head.md
+
+The data (name, status) is located at
+/data/instrumentation.yaml
+-->
+{{% lang_instrumentation_index_head "dotnet" %}}
+
+\* While the OpenTelemetryLoggerProvider (i.e integration with [ILogger][]) is
+stable, the [OTLP Log Exporter][] is still non-stable.
+{{% /lang_instrumentation_index_head %}}
+
+## Version Support
 
 OpenTelemetry for .NET supports all officially supported versions of [.NET
 Core](https://dotnet.microsoft.com/download/dotnet-core) and [.NET
 Framework](https://dotnet.microsoft.com/download/dotnet-framework) except for
 .NET Framework 3.5 SP1.
 
-# Status and Releases
+## Repositories
 
-The release status for .NET OpenTelemetry components is as follows:
+OpenTelemetry .NET consists of the following repositories:
 
-- **Traces**: [Stable][]
-- **Metrics**: [Stable][]
-- **Logs**:
-  - [ILogger][]: [Stable][]
-  - [OTLP log exporter][]: [Experimental][]
-
-{{% latest_release "dotnet" /%}}
-
-# Learn more
-
-- [OpenTelemetry .NET on
-  GitHub](https://github.com/open-telemetry/opentelemetry-dotnet)
-- [Getting
-  Started](https://github.com/open-telemetry/opentelemetry-dotnet#getting-started)
+- [OpenTelemetry .NET](https://github.com/open-telemetry/opentelemetry-dotnet)
 - [OpenTelemetry .NET
   Contrib](https://github.com/open-telemetry/opentelemetry-dotnet-contrib)
-- [OpenTelemetry .NET Automatic Instrumentation on
-  GitHub](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation)
+- [OpenTelemetry .NET Automatic Instrumentation](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation)
 
-[Experimental]: /docs/reference/specification/versioning-and-stability/#experimental
 [ILogger]: https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger
 [OTLP Log Exporter]: https://github.com/open-telemetry/opentelemetry-dotnet/blob/main/src/OpenTelemetry.Exporter.OpenTelemetryProtocol/README.md#otlp-logs
-[Stable]: /docs/reference/specification/versioning-and-stability/#stable

@@ -1,12 +1,23 @@
 {{ $data := index $.Site.Data.instrumentation.languages (.Get 0) }}
 {{ $name := $data.name }}
 {{ $relUrl := printf "https://github.com/open-telemetry/opentelemetry-%s/releases" (.Get 0) -}}
-
-This is the OpenTelemetry for {{ $name }} documentation. OpenTelemetry is an
+{{ $tracesStatus := $data.status.traces | humanize }}
+{{ $metricsStatus := $data.status.metrics | humanize }}
+{{ $logsStatus := $data.status.logs | humanize }}
+{{ if in "Stable Experimental" $tracesStatus }}
+    {{ $tracesStatus = printf "[%s](/docs/reference/specification/versioning-and-stability/#%s)" $tracesStatus $data.status.traces }}
+{{ end }}
+{{ if in "Stable Experimental" $metricsStatus }}
+    {{ $metricsStatus = printf "[%s](/docs/reference/specification/versioning-and-stability/#%s)" $metricsStatus $data.status.metrics }}
+{{ end }}
+{{ if in "Stable Experimental" $logsStatus }}
+    {{ $logsStatus = printf "[%s](/docs/reference/specification/versioning-and-stability/#%s)" $logsStatus $data.status.logs }}
+{{ end }}
+This is the OpenTelemetry {{ $name }} documentation. OpenTelemetry is an
 observability framework -- an API, SDK, and tools that are designed to aid in
 the generation and collection of application telemetry data such as metrics,
 logs, and traces. This documentation is designed to help you understand how to
-get started using OpenTelemetry for {{ $name }}.
+get started using OpenTelemetry {{ $name }}.
 
 ## Status and Releases
 
@@ -15,7 +26,7 @@ as follows:
 
 | Traces    | Metrics      | Logs         |
 | --------  | -------      | -------      |
-| {{ $data.status.traces | humanize }}    | {{ $data.status.metrics | humanize }} | {{ $data.status.logs | humanize }} |
+| {{ $tracesStatus }}    | {{ $metricsStatus }} | {{ $logsStatus }} |
 
 For releases, including the [latest release][], see [Releases][].
 {{- .Inner }}

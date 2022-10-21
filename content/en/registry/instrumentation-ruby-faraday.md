@@ -6,7 +6,7 @@ language: ruby
 tags:
   - ruby
   - instrumentation
-repo: https://github.com/open-telemetry/opentelemetry-ruby/tree/main/instrumentation/faraday
+repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/faraday
 license: Apache 2.0
 description: Faraday instrumentation for Ruby.
 authors: OpenTelemetry Authors

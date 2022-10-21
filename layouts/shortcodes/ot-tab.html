@@ -1,7 +1,7 @@
 {{- $index := .Ordinal -}}
 <!-- Make sure that we are enclosed within a tabs shortcode block -->
-{{- if ne .Parent.Name "tabs" -}}
-{{- errorf "codetab must be used within a tabs block" -}}
+{{- if ne .Parent.Name "ot-tabs" -}}
+{{- errorf "ot-tab must be used within a tabs block" -}}
 {{- end -}}
 
 <!-- Generate the unique ID based on the enclosing tabs .Ordinal -->

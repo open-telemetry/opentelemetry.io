@@ -14,19 +14,16 @@ developer_note:
 <div class="l-primary-buttons mt-5">
 
 - [Learn more](/docs/concepts/)
-- [Mission, vision, and values](/mission/)
 
 </div>
 
-<div class="h3 mt-4">Get started!</div>
+<div class="h3 mt-4">
+<a class="text-secondary" href="/docs/getting-started/">Get started</a> based on your role
+</div>
 <div class="l-get-started-buttons">
 
-- [Collector](/docs/collector/getting-started/)
-- [Java](/docs/instrumentation/java/getting-started/)
-- [Go](/docs/instrumentation/go/getting-started/)
-- [.NET](/docs/instrumentation/net/getting-started/)
-- [JavaScript](/docs/instrumentation/js/getting-started/)
-- <a href="/docs/instrumentation/" title="All languages"><i class="fas fa-ellipsis-h"></i></a>
+- [Dev](/docs/getting-started/dev/)
+- [Ops](/docs/getting-started/ops/)
 
 </div>
 {{< /blocks/cover >}}

@@ -1,8 +1,9 @@
 ---
 title: Announcing the 2022 OpenTelemetry Governance Committee Election
-linkTitle: Governance Committee Election 2022
+linkTitle: 2022 GC Election
 date: 2022-09-15
 author: OpenTelemetry Governance Committee
+aliases: [/blog/2022/gc-elections-2022]
 ---
 
 The OpenTelemetry project is excited to announce the 2022 OpenTelemetry

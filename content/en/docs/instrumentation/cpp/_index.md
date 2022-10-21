@@ -4,8 +4,7 @@ weight: 11
 description: >
   <img width="35"
   src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/C++_SDK.svg"
-  alt="C++"></img>
-  A language-specific implementation of OpenTelemetry in C++.
+  alt="C++"></img> A language-specific implementation of OpenTelemetry in C++.
 ---
 
 <!--
@@ -15,6 +14,7 @@ You can see & update the `lang_instrumentation_index_head` shortcode in
 The data (name, status) is located at
 /data/instrumentation.yaml
 -->
+
 {{% lang_instrumentation_index_head "cpp" /%}}
 
 ## Further Reading

@@ -2,12 +2,7 @@
 
 <div class="o-banner">
 
-<i class="fas fa-bullhorn"></i> 
-The OpenTelemetry Governance elections are opening soon! [Learn about how to
-vote, how to run, and other important details][]
-
-[learn about how to vote, how to run, and other important details]:
-  /blog/2022/gc-elections-2022/
+<i class="fas fa-bullhorn"></i> [Announcing the 2022 Governance Committee Election Results](/blog/2022/gc-election-results/)
 
 </div>
 {{ end -}}
