@@ -15,7 +15,7 @@ election saw 169 ballots cast with 386 eligible voters. Participation was
 roughly flat year-over-year, and we're thrilled that we've welcomed so 
 many new project members and maintained a high participation rate.
 
-With that out of the way, please joining me in congratulating [Alolita
+With that out of the way, please join me in congratulating [Alolita
 Sharma](https://github.com/alolita), [Daniel Dyla](https://github.com/dyladan),
 and [Morgan McLean](https://github.com/mtwo) on their re-election! They will be
 joined by long-time contributor and maintainer of OpenTelemetry Java
