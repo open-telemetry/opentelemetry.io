@@ -1,9 +1,9 @@
 ---
-title: Node.js
+title: TypeScript/ Node.js
 aliases: [/docs/js/getting_started/nodejs]
 ---
 
-This guide will show you how to get started with tracing in Node.js.
+This guide will show you how to get started with tracing in TypeScript and Node.js.
 
 ## Prerequisites
 
@@ -104,7 +104,7 @@ Listening for requests on http://localhost:8080
 
 ### Dependencies
 
-The following dependencies are required to trace a Node.js application.
+The following dependencies are required to trace a TypeScript/ Node.js application.
 
 #### Core Dependencies
 
