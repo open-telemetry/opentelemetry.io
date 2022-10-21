@@ -9,11 +9,11 @@ The OpenTelemetry project is proud to announce the winners of the 2022
 OpenTelemetry Governance Committee (GC) election! Before we get into the
 results, I'd like to share some statistics about the election!
 
-This year, 541 project members were eligible to vote. Of those, 219 cast
-ballots, for a participation rate of nearly 41%! For comparison, the 2021
-election saw 169 ballots cast with 386 eligible voters. While our participation
-percentage was down slightly, we're thrilled that we've welcomed so many new
-project members over the past year!
+This year, 513 project members were eligible to vote. Of those, 219 cast
+ballots, for a participation rate of nearly 43%! For comparison, the 2021
+election saw 169 ballots cast with 386 eligible voters. Participation was 
+roughly flat year-over-year, and we're thrilled that we've welcomed so 
+many new project members and maintained a high participation rate.
 
 With that out of the way, please joining me in congratulating [Alolita
 Sharma](https://github.com/alolita), [Daniel Dyla](https://github.com/dyladan),
