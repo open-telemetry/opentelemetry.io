@@ -6,7 +6,7 @@ author: Austin Parker
 ---
 
 Earlier this year, we announced a project to build an [OpenTelemetry
-Demo](https://opentelemetry.io/blog/2022/demo-announcement/), representing the
+Demo](/blog/2022/demo-announcement/), representing the
 breadth of OpenTelemetry features and languages.
 Today, the Demo SIG is proud to announce [OpenTelemetry Demo
 v1.0](https://github.com/open-telemetry/opentelemetry-demo/tree/v1.0.0)!
