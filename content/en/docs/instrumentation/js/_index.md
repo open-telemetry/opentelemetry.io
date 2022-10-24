@@ -10,19 +10,7 @@ spelling: cSpell:ignore Roadmap
 weight: 20
 ---
 
-This page contains an introduction to OpenTelemetry in JavaScript. This guide
-will walk you through installation and instrumentation and show you how to
-export data.
-
-## Status and Releases
-
-| Signal  | API Status        | SDK Status        |
-| ------- | ----------------- | ----------------- |
-| Traces  | Stable            | Stable            |
-| Metrics | Release Candidate | Release Candidate |
-| Logs    | Development       | Development       |
-
-{{% latest_release "js" /%}}
+{{% lang_instrumentation_index_head "js" /%}}
 
 ## Further Reading
 
