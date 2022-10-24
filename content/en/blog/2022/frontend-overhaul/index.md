@@ -34,8 +34,8 @@ could be the most impactful. We started looking at
 [the issue created by Austin Parker](https://github.com/open-telemetry/opentelemetry-demo/issues/39)
 referencing a complete front-end overhaul that would involve moving the
 application away from Go server-side render (SSR) to an architecture that
-included a browser-side client (client-side render or CSR), as well as improving the
-overall style, theme, and user experience.
+included a browser-side client (client-side render or CSR), as well as improving
+the overall style, theme, and user experience.
 
 A fun aspect of the work was the request to move the store from a "normal" store
 to an astronomy store to match the OpenTelemetry project’s overall branding.
