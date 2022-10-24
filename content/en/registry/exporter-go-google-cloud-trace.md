@@ -6,7 +6,7 @@ language: go
 tags:
   - go
   - exporter
-repo: https://github.com/GoogleCloudPlatform/opentelemetry-operations-go/tree/master/exporter/trace
+repo: https://github.com/GoogleCloudPlatform/opentelemetry-operations-go/tree/main/exporter/trace
 license: Apache 2.0
 description: The OpenTelemetry Google Cloud Trace Exporter for Go.
 authors: Google Authors
