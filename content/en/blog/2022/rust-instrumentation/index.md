@@ -90,15 +90,15 @@ Let’s go over some of its key APIs:
 
 - SDK. This module provides an implementation for common use cases with OpenTelemetry. For example, it provides an exporter to send traces to stdout. It also implements context propagation methods that we can use instead of implementing ourselves.
 
-The git repository called [OpenTelemetry-Rust](https://github.com/open-telemetry/opentelemetry-rust) contains implementations of several crates that expand the OpenTelemetry ecosystem. There you can find common instrumentations, exporters, and subscribers use them in a Rust program.
+The git repository called [opentelemetry-rust](https://github.com/open-telemetry/opentelemetry-rust) contains implementations of several crates that expand the OpenTelemetry ecosystem. There you can find common instrumentations, exporters, and subscribers use them in a Rust program.
 
 ### Distributed tracing in Rust
 
-Using crates from the [OpenTelemetry-Rust](https://github.com/open-telemetry/opentelemetry-rust) repo, we can instrument our application across multiple services and send them to a distributed platform.
+Using crates from the [opentelemetry-rust](https://github.com/open-telemetry/opentelemetry-rust) repo, we can instrument our application across multiple services and send them to a distributed platform.
 
-For example, we can use the [OpenTelemetry-jaeger](https://crates.io/crates/opentelemetry-jaeger) to send our traces to a remote Jaeger platform.
+For example, we can use the [opentelemetry-jaeger](https://crates.io/crates/opentelemetry-jaeger) to send our traces to a remote Jaeger platform.
 
-Another example is the [OpenTelementy-otlp](https://crates.io/crates/opentelemetry-otlp) crate.
+Another example is the [opentelemetry-otlp](https://crates.io/crates/opentelemetry-otlp) crate.
 
 Traces in OTLP format can be exported to the OpenTelemetry Collector using the exporter in this crate. OpenTelemetry Collector accepts, processes, and exports traces in a vendor-agnostic manner.
 
