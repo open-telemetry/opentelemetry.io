@@ -1,10 +1,9 @@
 ---
 title: Supporting Jaeger with native OTLP
-linkTitle:
+linkTitle: Jaeger OTLP support
 date: 2022-10-20
 author: >-
   [Jason Plumb](https://github.com/breedx-splk) (Splunk)
-draft: true
 ---
 
 Back in May of 2022, the Jaeger project
@@ -15,6 +14,11 @@ for the Jaeger client libraries across many languages. With these changes,
 OpenTelemetry users are now able to send traces into Jaeger with
 industry-standard OTLP, and the Jaeger client library repositories have been
 finally archived.
+
+We intend to deprecate Jaeger exporters from OpenTelemetry in the near future,
+and are looking for your feedback to determine the length of the depreation
+phase. The best way to provide feedback is by commenting on
+[the existing draft pull request](https://github.com/open-telemetry/opentelemetry-specification/pull/2858).
 
 ## OpenTelemetry Support
 
@@ -68,4 +72,3 @@ A
 [draft PR has been created in the specification](https://github.com/open-telemetry/opentelemetry-specification/pull/2858)
 to support this deprecation. If would like to contribute and provide feedback,
 please visit the above link and add some comments. We want to hear from you.
-
