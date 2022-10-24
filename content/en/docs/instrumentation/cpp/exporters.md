@@ -7,7 +7,9 @@ In order to visualize and analyze your
 [traces](/docs/concepts/signals/traces/#tracing-in-opentelemetry) and metrics,
 you will need to export them to a backend.
 
-## OStream exporter
+## Trace exporters
+
+### OStream exporter
 
 The OStream exporter is useful for development and debugging tasks, and is the
 simplest to set up.
@@ -17,12 +19,12 @@ auto ostream_exporter =
     std::unique_ptr<opentelemetry::sdk::trace::SpanExporter>(new opentelemetry::exporter::trace::OStreamSpanExporter);
 ```
 
-## OTLP endpoint
+### OTLP endpoint
 
 To send trace data to an OTLP endpoint (like the [collector](/docs/collector) or
 Jaeger) you'll want to configure an OTLP exporter that sends to your endpoint.
 
-### OTLP HTTP Exporter
+#### OTLP HTTP Exporter
 
 ```cpp
 opentelemetry::exporter::otlp::OtlpHttpExporterOptions opts;
@@ -31,7 +33,7 @@ auto otlp_http_exporter =
     std::unique_ptr<opentelemetry::sdk::trace::SpanExporter>(new opentelemetry::exporter::otlp::OtlpHttpExporter(opts));
 ```
 
-### OTLP GRPC Exporter
+#### OTLP GRPC Exporter
 
 ```cpp
 opentelemetry::exporter::otlp::OtlpGrpcExporterOptions opts;
@@ -45,7 +47,7 @@ auto otlp_grpc_exporter =
 You can find an example of how to use the OTLP exporter
 [here](https://github.com/open-telemetry/opentelemetry-cpp/blob/main/examples/otlp/README.md).
 
-### Jaeger
+#### Jaeger
 
 To try out the OTLP exporter, you can run
 [Jaeger](https://www.jaegertracing.io/) as an OTLP endpoint and for trace
@@ -68,7 +70,7 @@ docker run -d --name jaeger \
   jaegertracing/all-in-one:latest
 ```
 
-## Zipkin
+### Zipkin
 
 To send trace data to a zipkin endpoint you'll want to configure a zipkin
 exporter that sends to your endpoint.
@@ -80,6 +82,38 @@ opts.service_name = "default_service" ;
 auto zipkin_exporter =
     std::unique_ptr<opentelemetry::sdk::trace::SpanExporter>(new opentelemetry::exporter::zipkin::ZipkinExporter(opts));
 
+```
+
+## Metrics exporters
+
+### OTLP HTTP Exporter
+
+```cpp
+opentelemetry::exporter::otlp::OtlpHttpExporterOptions otlpOptions;
+otlpOptions.url = "http://localhost:4318/v1/metrics"; // or "http://localhost:4318/
+otlpOptions.aggregation_temporality = opentelemetry::sdk::metrics::AggregationTemporality::kCumulative; // or kDelta
+auto exporter = opentelemetry::exporter::otlp::OtlpGrpcExporterOptions::Create(otlpOptions);
+// Initialize and set the global MeterProvider
+opentelemetry::sdk::metrics::PeriodicExportingMetricReaderOptions options;
+options.export_interval_millis = std::chrono::milliseconds(1000);
+options.export_timeout_millis  = std::chrono::milliseconds(500);
+std::unique_ptr<opentelemetry::sdk::metrics::MetricReader> reader{
+    new opentelemetry::sdk::metrics::PeriodicExportingMetricReader(std::move(exporter), options)};
+```
+
+### OTLP gRPC Exporter
+
+```cpp
+opentelemetry::exporter::otlp::OtlpGrpcMetricExporterOptions otlpOptions;
+otlpOptions.endpoint = "localhost:4317/v1/metrics";  // or "localhost:4317
+otlpOptions.aggregation_temporality = opentelemetry::sdk::metrics::AggregationTemporality::kDelta; // or kCumulative
+auto exporter = opentelemetry::exporter::otlp::OtlpGrpcMetricExporterFactory::Create(otlpOptions);
+// Initialize and set the global MeterProvider
+opentelemetry::sdk::metrics::PeriodicExportingMetricReaderOptions options;
+options.export_interval_millis = std::chrono::milliseconds(1000);
+options.export_timeout_millis  = std::chrono::milliseconds(500);
+std::unique_ptr<opentelemetry::sdk::metrics::MetricReader> reader{
+    new opentelemetry::sdk::metrics::PeriodicExportingMetricReader(std::move(exporter), options)};
 ```
 
 ## Prometheus
