@@ -3,12 +3,8 @@ title: "Configuration"
 weight: 20
 ---
 
-Please be sure to review the following documentation:
-
-- [Data Collection concepts](../../concepts/data-collection) in order to
-  understand the repositories applicable to the OpenTelemetry Collector.
-- [Security
-  guidance](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security.md)
+Please ensure you're familiar with [Data Collection concepts](../../concepts/data-collection)
+in order to understand the concepts applicable to the OpenTelemetry Collector.
 
 ## Basics
 
