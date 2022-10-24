@@ -2,7 +2,7 @@
 
 <div class="o-banner">
 
-<i class="fas fa-bullhorn"></i> [Announcing the 2022 Governance Committee Election Results](/blog/2022/gc-election-results/)
+<i class="fas fa-bullhorn"></i> [OpenTelemetry Demo now Generally Available!(/blog/2022/announcing-opentelemetry-demo-release/)
 
 </div>
 {{ end -}}
