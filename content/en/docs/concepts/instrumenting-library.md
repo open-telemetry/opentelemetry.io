@@ -415,5 +415,5 @@ class TestExporter implements SpanExporter {
 }
 ```
 
-[instrumentation libraries]: https://opentelemetry.io/docs/reference/specification/overview/#instrumentation-libraries
+[instrumentation libraries]: /docs/reference/specification/overview/#instrumentation-libraries
 [span events]: /docs/reference/specification/trace/api/#add-events
