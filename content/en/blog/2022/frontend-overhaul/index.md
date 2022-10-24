@@ -71,7 +71,8 @@ to trigger events (such as confirmation emails). All of the microservices,
 including the front-end, are connected to the same OpenTelemetry collector
 instance, which uses Jaeger as one of the data stores for the tracing data.
 
-![OpenTelemetry Demo System Diagram](system-diagram.png)
+![OpenTelemetry Demo System Diagram](diagram.png)
+![OpenTelemetry Demo Technology List](technologies.png)
 
 Prior to re-architecting, the front-end consisted of a Golang SSR app, which
 sent complete HTML to the browser for display. Every request and call redirected
