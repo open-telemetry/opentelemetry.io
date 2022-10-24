@@ -91,7 +91,7 @@ possess:
 Processors are optional, although [some are 
 recommended](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor#recommended-processors). 
 
-Processors can be configured to transport values into or consolidate data coming in from 
+Processors can be configured to export data into or consolidate data coming in from 
 multiple systems, where different names are used to represent the same data. It is important to learn
 about the types of processors in detail to maximize their usage.
 
