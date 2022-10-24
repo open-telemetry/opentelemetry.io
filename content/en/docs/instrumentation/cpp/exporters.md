@@ -93,7 +93,7 @@ opentelemetry::exporter::otlp::OtlpHttpExporterOptions otlpOptions;
 otlpOptions.url = "http://localhost:4318/v1/metrics"; // or "http://localhost:4318/
 otlpOptions.aggregation_temporality = opentelemetry::sdk::metrics::AggregationTemporality::kCumulative; // or kDelta
 auto exporter = opentelemetry::exporter::otlp::OtlpHttpMetricExporterFactory::Create(otlpOptions);
-// Initialize and set the global MeterProvider
+// Initialize and set the periodic metrics reader
 opentelemetry::sdk::metrics::PeriodicExportingMetricReaderOptions options;
 options.export_interval_millis = std::chrono::milliseconds(1000);
 options.export_timeout_millis  = std::chrono::milliseconds(500);
@@ -108,7 +108,7 @@ opentelemetry::exporter::otlp::OtlpGrpcMetricExporterOptions otlpOptions;
 otlpOptions.endpoint = "localhost:4317/v1/metrics";  // or "localhost:4317
 otlpOptions.aggregation_temporality = opentelemetry::sdk::metrics::AggregationTemporality::kDelta; // or kCumulative
 auto exporter = opentelemetry::exporter::otlp::OtlpGrpcMetricExporterFactory::Create(otlpOptions);
-// Initialize and set the global MeterProvider
+// Initialize and set the periodic metrics reader
 opentelemetry::sdk::metrics::PeriodicExportingMetricReaderOptions options;
 options.export_interval_millis = std::chrono::milliseconds(1000);
 options.export_timeout_millis  = std::chrono::milliseconds(500);
