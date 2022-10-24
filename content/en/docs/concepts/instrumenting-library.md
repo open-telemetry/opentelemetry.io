@@ -6,7 +6,7 @@ weight: 40
 ---
 
 OpenTelemetry provides
-[automatic instrumentation](/docs/concepts/instrumenting#automatic-instrumentation)
+[instrumentation libraries][]
 for many libraries, which is typically done through library hooks or
 monkey-patching library code.
 
@@ -48,9 +48,9 @@ are a good places to start!
 ## When **not** to instrument
 
 Some libraries are thin clients wrapping network calls. Chances are that
-OpenTelemetry has auto-instrumentation for the underlying RPC client (check out
-the [registry](/registry/)). In this case, library instrumentation may not be
-necessary.
+OpenTelemetry has an instrumentation library for the underlying RPC client (check out
+the [registry](/registry/)). In this case, instrumenting the wrapper library
+may not be necessary.
 
 Don't instrument if:
 
@@ -415,4 +415,5 @@ class TestExporter implements SpanExporter {
 }
 ```
 
+[instrumentation libraries]: https://opentelemetry.io/docs/reference/specification/overview/#instrumentation-libraries
 [span events]: /docs/reference/specification/trace/api/#add-events
