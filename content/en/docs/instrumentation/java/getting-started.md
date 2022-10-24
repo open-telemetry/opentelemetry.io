@@ -139,7 +139,7 @@ For more:
 - Run this example with another [exporter][] for telemetry data.
 - Try [automatic instrumentation](../automatic/) on one of your own apps.
 - For light-weight customized telemetry, try [annotations][].
-- Learn about [manual instrumentation][] and try out more [examples](../examples).
+- Learn about [manual instrumentation][] and try out more [examples](https://github.com/open-telemetry/opentelemetry-java-docs#java-opentelemetry-examples).
 
 [annotations]: ../automatic/annotations
 [configure the Java agent]: ../automatic/#configuring-the-agent
