@@ -92,7 +92,7 @@ auto zipkin_exporter =
 opentelemetry::exporter::otlp::OtlpHttpExporterOptions otlpOptions;
 otlpOptions.url = "http://localhost:4318/v1/metrics"; // or "http://localhost:4318/
 otlpOptions.aggregation_temporality = opentelemetry::sdk::metrics::AggregationTemporality::kCumulative; // or kDelta
-auto exporter = opentelemetry::exporter::otlp::OtlpGrpcExporterOptions::Create(otlpOptions);
+auto exporter = opentelemetry::exporter::otlp::OtlpHttpMetricExporterFactory::Create(otlpOptions);
 // Initialize and set the global MeterProvider
 opentelemetry::sdk::metrics::PeriodicExportingMetricReaderOptions options;
 options.export_interval_millis = std::chrono::milliseconds(1000);
