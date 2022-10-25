@@ -101,25 +101,25 @@ At step 5, when stopping the server, you should see an output of all the metrics
 collected (metrics output is line-wrapped and shortened for convenience):
 
 ```sh
-[otel.javaagent 2022-10-18 10:12:12:650 +0200] [Thread-0] INFO 
-io.opentelemetry.exporter.logging.LoggingMetricExporter - Received a collection 
+[otel.javaagent 2022-10-18 10:12:12:650 +0200] [Thread-0] INFO
+io.opentelemetry.exporter.logging.LoggingMetricExporter - Received a collection
 of 15 metrics for export.
-[otel.javaagent 2022-10-18 10:12:12:651 +0200] [Thread-0] INFO 
-io.opentelemetry.exporter.logging.LoggingMetricExporter - metric: 
-ImmutableMetricData{resource=Resource{...}, 
-instrumentationScopeInfo=InstrumentationScopeInfo{...}, 
-name=rpc.server.duration, description=The duration of an inbound RPC invocation, 
+[otel.javaagent 2022-10-18 10:12:12:651 +0200] [Thread-0] INFO
+io.opentelemetry.exporter.logging.LoggingMetricExporter - metric:
+ImmutableMetricData{resource=Resource{...},
+instrumentationScopeInfo=InstrumentationScopeInfo{...},
+name=rpc.server.duration, description=The duration of an inbound RPC invocation,
 unit=ms, type=HISTOGRAM,
-data=ImmutableHistogramData{aggregationTemporality=CUMULATIVE, 
-points=[ImmutableHistogramPointData{getStartEpochNanos=1666080515038517000, 
-getEpochNanos=1666080732649264000, getAttributes={net.host.name="localhost", 
-net.transport="ip_tcp", rpc.grpc.status_code=0, rpc.method="SayHello", 
+data=ImmutableHistogramData{aggregationTemporality=CUMULATIVE,
+points=[ImmutableHistogramPointData{getStartEpochNanos=1666080515038517000,
+getEpochNanos=1666080732649264000, getAttributes={net.host.name="localhost",
+net.transport="ip_tcp", rpc.grpc.status_code=0, rpc.method="SayHello",
 rpc.service="helloworld.Greeter", rpc.system="grpc"}, getSum=20.300248000000003,
 getCount=12, hasMin=true, getMin=0.278541, hasMax=true, getMax=16.563833,
 getBoundaries=[5.0, 10.0, 25.0, 50.0, 75.0, 100.0, 250.0, 500.0, 750.0, 1000.0,
 2500.0, 5000.0, 7500.0, 10000.0], getCounts=[11, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0,
 0, 0, 0, 0], getExemplars=[ImmutableDoubleExemplarData{filteredAttributes={},
-epochNanos=1666080530527597000, 
+epochNanos=1666080530527597000,
 spanContext=ImmutableSpanContext{traceId=f60e0940793cb1dc95bcb86e4668a548,
 spanId=9737452b2e78e75f, traceFlags=01,
 traceState=ArrayBasedTraceState{entries=[]}, remote=false, valid=true},
@@ -139,7 +139,7 @@ For more:
 - Run this example with another [exporter][] for telemetry data.
 - Try [automatic instrumentation](../automatic/) on one of your own apps.
 - For light-weight customized telemetry, try [annotations][].
-- Learn about [manual instrumentation][] and try out more [examples](https://github.com/open-telemetry/opentelemetry-java-docs#java-opentelemetry-examples).
+- Learn about [manual instrumentation][] and try out more [examples](../examples/).
 
 [annotations]: ../automatic/annotations
 [configure the Java agent]: ../automatic/#configuring-the-agent
