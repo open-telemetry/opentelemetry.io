@@ -2,10 +2,18 @@
 {{/* cSpell:ignore wordmark */ -}}
 
 {{ range $p := .Site.Pages -}}
-{{ range .Aliases -}}
-{{ . | printf "%-35s" }} {{ $p.RelPermalink }}
+{{ with .Aliases -}}
+
+{{ range $alias := . -}}
+  {{ $alias | printf "%-35s" }} {{ $p.RelPermalink }}
 {{ end -}}
+
+{{ with $p.Params.manualLink -}}
+  {{ $p.RelPermalink }} {{ . }} 301!
 {{ end -}}
+
+{{ end }}{{/* with .Aliases */ -}}
+{{ end }}{{/* range $p */ -}}
 
 {{ $languages := (.Site.GetPage "/docs/instrumentation").Pages -}}
 {{ range $languages -}}
