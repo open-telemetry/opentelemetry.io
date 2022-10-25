@@ -1,0 +1,15 @@
+---
+title: Aerospike Receiver
+registryType: receiver
+isThirdParty: false
+language: collector
+tags:
+    - go
+    - receiver
+    - collector
+repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/aerospikereceiver
+license: Apache 2.0
+description: The Aerospike receiver is designed to collect performance metrics from one or more Aerospike nodes.
+authors: OpenTelemetry Authors
+otVersion: latest
+---
