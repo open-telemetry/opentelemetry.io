@@ -1,0 +1,15 @@
+---
+title: NSX-T Receiver
+registryType: receiver
+isThirdParty: false
+language: collector
+tags:
+    - go
+    - receiver
+    - collector
+repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/nsxtreceiver
+license: Apache 2.0
+description: This receiver fetches metrics important to run virtual networking using NSX-T. The receiver ingests metrics via the NSX Rest API
+authors: OpenTelemetry Authors
+otVersion: latest
+---
