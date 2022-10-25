@@ -58,7 +58,9 @@ async function scrapeCollectorComponent(component) {
     const coreAndContrib = Object.assign(await scrapeNew(component, 'opentelemetry-collector', filter, keyMapper), await scrapeNew(component, 'opentelemetry-collector-contrib', filter, keyMapper))
     const existing = await scrapeExisting('collector-receiver', true)
 
+    // Create New Entries
     const result = Object.keys(coreAndContrib).reduce(async (carry, currentKey) => {
+        // Check if the entry does not exist already and create it if needed.
         if(!Object.keys(existing).includes(currentKey)) {
             const current = coreAndContrib[currentKey]
             const result = await octokit.request(`GET ${(new URL(current.url).pathname)}/README.md`)
@@ -68,12 +70,14 @@ async function scrapeCollectorComponent(component) {
                     result.name = line.substring(1).trim() 
                 } 
                  if (!result.description && /^[A-Za-z]/.test(line)) { result.description = line  } return result }, {})
-            const md = createMarkDown(parsedReadme.name, component, current.html_url, parsedReadme.description)
+            const md = createMarkDown(parsedReadme.name, `collector-${component}`, current.html_url, parsedReadme.description)
             carry[currentKey] = await fs.writeFile(`collector-${component}-${currentKey}.md`, md);
         }
         return carry
     }, [])
     return result
+
+    // To be done: Delete Outdated Entries
 }
 
 await scrapeCollectorComponent('receiver')
