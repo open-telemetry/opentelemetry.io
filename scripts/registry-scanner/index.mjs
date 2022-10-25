@@ -41,7 +41,7 @@ isThirdParty: false
 language: collector
 tags:
     - go
-    - receiver
+    - ${registryType}
     - collector
 repo: ${repo}
 license: Apache 2.0
@@ -56,7 +56,7 @@ async function scrapeCollectorComponent(component) {
     const filter = (item) => item.name.endsWith(component)
     const keyMapper = (name) => name.substring(0, name.length - component.length)
     const coreAndContrib = Object.assign(await scrapeNew(component, 'opentelemetry-collector', filter, keyMapper), await scrapeNew(component, 'opentelemetry-collector-contrib', filter, keyMapper))
-    const existing = await scrapeExisting('collector-receiver', true)
+    const existing = await scrapeExisting(`collector-${component}`, true)
 
     // Create New Entries
     const result = Object.keys(coreAndContrib).reduce(async (carry, currentKey) => {
@@ -80,4 +80,4 @@ async function scrapeCollectorComponent(component) {
     // To be done: Delete Outdated Entries
 }
 
-await scrapeCollectorComponent('receiver')
+['receiver','exporter','processor'].forEach(async (component) => await scrapeCollectorComponent(component))
