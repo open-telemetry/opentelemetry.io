@@ -16,7 +16,7 @@ The main focus of the web app is to demonstrate how to instrument an
 application, no matter what programming language, platform or OS it uses. The
 web app also shows different instrumentation techniques: automatic and manual,
 metrics, and baggage. All while following the standards and conventions
-proscribed in the official OTel documentation. More about the specific
+prescribed in the official OTel documentation. More about the specific
 requirements can be
 [found here](https://github.com/open-telemetry/opentelemetry-demo/tree/main/docs/requirements).
 
