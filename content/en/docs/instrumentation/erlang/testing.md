@@ -160,20 +160,21 @@ defmodule OtelGettingStartedTest do
   test "greets the world" do
     # Set exporter to :otel_exporter_pid, which sends spans
     # to the given process - in this case self() - in the format {:span, span}
-    :otel_batch_processor.set_exporter(:otel_exporter_pid, self())
+    :otel_simple_processor.set_exporter(:otel_exporter_pid, self())
 
     # Call the function to be tested.
     OtelGettingStarted.hello()
 
     # Use Erlang's `:otel_attributes` module to create attributes to match against.
     # See the `:otel_events` module for testing events.
-    attributes = :otel_attributes.new([a_key: "a_value"], 128, :infinity)
+    attributes = :otel_attributes.new([a_key: "a value"], 128, :infinity)
 
     # Assert that the span emitted by OtelGettingStarted.hello/0 was received and contains the desired attributes.
-    assert_receive {:span, span(
-      name: "operation",
-      attributes: ^attributes
-      )}
+    assert_receive {:span,
+                    span(
+                      name: "operation",
+                      attributes: ^attributes
+                    )}
   end
 end
 {{< /ot-tab >}}
