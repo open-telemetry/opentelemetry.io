@@ -70,7 +70,7 @@ async function scrapeCollectorComponent(component) {
                     result.name = line.substring(1).trim() 
                 } 
                  if (!result.description && /^[A-Za-z]/.test(line)) { result.description = line  } return result }, {})
-            const md = createMarkDown(parsedReadme.name, `collector-${component}`, current.html_url, parsedReadme.description)
+            const md = createMarkDown(parsedReadme.name, component, current.html_url, parsedReadme.description)
             carry[currentKey] = await fs.writeFile(`collector-${component}-${currentKey}.md`, md);
         }
         return carry
