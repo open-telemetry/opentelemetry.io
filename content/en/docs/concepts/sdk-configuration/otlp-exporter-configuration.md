@@ -185,7 +185,7 @@ Valid values are:
 
 * `grpc` to use OTLP/gRPC
 * `http/protobuf` to use OTLP/HTTP+protobuf
-* `http/json` to use OTLP/HTTP+protobuf
+* `http/json` to use OTLP/HTTP+json
 
 ### `OTEL_EXPORTER_OTLP_TRACES_PROTOCOL`
 
@@ -201,7 +201,7 @@ Valid values are:
 
 * `grpc` to use OTLP/gRPC
 * `http/protobuf` to use OTLP/HTTP+protobuf
-* `http/json` to use OTLP/HTTP+protobuf
+* `http/json` to use OTLP/HTTP+json
 
 ### `OTEL_EXPORTER_OTLP_METRICS_PROTOCOL`
 
@@ -217,4 +217,4 @@ Valid values are:
 
 * `grpc` to use OTLP/gRPC
 * `http/protobuf` to use OTLP/HTTP+protobuf
-* `http/json` to use OTLP/HTTP+protobuf
+* `http/json` to use OTLP/HTTP+json
