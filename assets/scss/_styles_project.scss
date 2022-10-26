@@ -106,7 +106,6 @@
   width: 100%;
   text-align: center;
 
-  a { color: $primary; }
   p {
     font-size: 18px;
     margin-bottom: 0;
@@ -118,17 +117,22 @@
   }
 }
 
-// https://github.com/open-telemetry/opentelemetry.io/pull/414
-.td-box--dark p > a,
-.td-box--secondary p > a {
-  color: #3176d9;
+.td-box--dark p > a {
+  color: #92b5e7;
+
+  &:hover {
+    color: #92b5e7;
+    text-decoration: underline;
+  }
 }
 
-.td-box--dark p > a:hover,
-.td-box--secondary p > a:hover,
-a:hover {
-  color: #3176d9;
-  text-decoration: underline;
+.td-box--secondary p > strong > a {
+  color: #18478b;
+
+  &:hover {
+    color: #18478b;
+  text-decoration: underline;  
+  }
 }
 
 // Adjust anchors scroll snap (https://github.com/open-telemetry/opentelemetry.io/pull/348)
