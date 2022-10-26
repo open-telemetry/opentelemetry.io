@@ -1,0 +1,15 @@
+---
+title: Redaction processor
+registryType: processor
+isThirdParty: false
+language: collector
+tags:
+    - go
+    - processor
+    - collector
+repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/redactionprocessor
+license: Apache 2.0
+description: This processor deletes span attributes that don't match a list of allowed span
+authors: OpenTelemetry Authors
+otVersion: latest
+---
