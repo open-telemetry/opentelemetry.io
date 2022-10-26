@@ -1,0 +1,15 @@
+---
+title: Service graph processor
+registryType: processor
+isThirdParty: false
+language: collector
+tags:
+    - go
+    - processor
+    - collector
+repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/servicegraphprocessor
+license: Apache 2.0
+description: The service graphs processor is a traces processor that builds a map representing the interrelationships between various services in a system.
+authors: OpenTelemetry Authors
+otVersion: latest
+---
