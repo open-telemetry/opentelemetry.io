@@ -1,15 +1,15 @@
 ---
-title: Jaeger Thrift Exporter
+title: Jaeger Thrift Collector Exporter
 registryType: exporter
-isThirdParty: false
+isThirdParty: true
 language: collector
 tags:
-    - go
-    - exporter
-    - collector
+  - go
+  - exporter
+  - collector
 repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/jaegerthrifthttpexporter
 license: Apache 2.0
-description: This exporter supports sending trace data to Jaeger over Thrift HTTP.
+description: The Jaeger Thrift Exporter for the OpenTelemetry Collector.
 authors: OpenTelemetry Authors
 otVersion: latest
 ---
