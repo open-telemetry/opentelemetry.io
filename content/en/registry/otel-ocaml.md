@@ -2,7 +2,7 @@
 title: ocaml-opentelemetry Opentelemetry exporters and instrumentation for OCaml
 registryType: instrumentation
 isThirdParty: true
-language: OCaml
+language: ocaml
 tags:
   - OCaml
   - instrumentation
