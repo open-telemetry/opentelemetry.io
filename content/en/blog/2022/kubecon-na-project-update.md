@@ -9,7 +9,7 @@ author: Morgan McLean
 
 Since January, we’ve delivered:
 
-- Metrics: defined in the specification, and delivered in the Java, JS, .Net, and Python SDKs and instrumentation, with support all the way through the Collector and protocol. More language implementations are on the way.
+- Metrics: defined in the specification, and delivered in the Java, JS, .NET, and Python SDKs and instrumentation, with support all the way through the Collector and protocol. More language implementations are on the way.
 - More instrumentation for all languages.
 - [A great demo application](../announcing-opentelemetry-demo-release), which includes services written in every supported language, already instrumented with OpenTelemetry. This is a great way to see practical examples of OpenTelemetry that you can learn from or experiment with, and the demo can also be used to test out different observability analytics systems.
 - Tracing stability in C++, Erlang, and a number of other new languages.
