@@ -24,12 +24,12 @@ import { URL } from 'url';
 const octokit = new Octokit({auth: process.env.GITHUB_AUTH_TOKEN});
 
 // Please uncomment the entries you'd like to scan for.
-// ['receiver','exporter','processor'].forEach(async (component) => await scrapeCollectorComponent(component))
-// scrapeInstrumentationLibrariesByLanguage('js', 'plugins/node')
-// scrapeInstrumentationLibrariesByLanguage('ruby', 'instrumentation')
-scrapeInstrumentationLibrariesByLanguage('python', 'instrumentation', 'rst')
+['receiver','exporter','processor'].forEach(async (component) => scanCollectorComponent(component))
+scanInstrumentationLibrariesByLanguage('js', 'plugins/node')
+scanInstrumentationLibrariesByLanguage('ruby', 'instrumentation')
+scanInstrumentationLibrariesByLanguage('python', 'instrumentation', 'rst')
 
-async function scrapeNew(path, repo, filter = () => true, keyMapper = x => x, owner = 'open-telemetry') {
+async function scanForNew(path, repo, filter = () => true, keyMapper = x => x, owner = 'open-telemetry') {
     const result = await octokit.request('GET /repos/{owner}/{repo}/contents/{path}', {
         owner,
         repo,
@@ -44,7 +44,7 @@ async function scrapeNew(path, repo, filter = () => true, keyMapper = x => x, ow
     }, {})
 }
 
-async function scrapeExisting(type, noDash = false) {
+async function scanForExisting(type, noDash = false) {
     const result = await octokit.request('GET /repos/open-telemetry/opentelemetry.io/contents/content/en/registry')
     return result.data.reduce((carry, current) => {
         if(current.name.startsWith(type)) {
@@ -98,7 +98,7 @@ function parseReadme(readme, format = 'md') {
     }, {})    
 }
 
-async function createFilesFromScrapeResult(existing, found, settings) {
+async function createFilesFromScanResult(existing, found, settings) {
     const { language, registryType, readmeFormat } = settings
     const result = Object.keys(found).forEach(async (currentKey) => {
         // Check if the entry does not exist already and create it if needed.
@@ -114,24 +114,24 @@ async function createFilesFromScrapeResult(existing, found, settings) {
     })
 }
 
-async function scrapeInstrumentationLibrariesByLanguage(language, path, readmeFormat = 'md') {
+async function scanInstrumentationLibrariesByLanguage(language, path, readmeFormat = 'md') {
     // https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/
-    const keyMapper = x => x.split('-').filter(y => !['opentelemetry', 'instrumentation'].includes(y)).join('-')
-    const found = await scrapeNew(path, `opentelemetry-${language}-contrib`, () => true, keyMapper)
-    const existing = await scrapeExisting(`instrumentation-${language}`)
-    createFilesFromScrapeResult(existing, found, {
+    const keyMapper = x => x.split(/[_-]/).filter(y => !['opentelemetry', 'instrumentation'].includes(y)).join('')
+    const found = await scanForNew(path, `opentelemetry-${language}-contrib`, () => true, keyMapper)
+    const existing = await scanForExisting(`instrumentation-${language}`)
+    createFilesFromScanResult(existing, found, {
         language,
         registryType: 'instrumentation',
         readmeFormat
     })
 }
 
-async function scrapeCollectorComponent(component) {
+async function scanCollectorComponent(component) {
     const filter = (item) => item.name.endsWith(component)
     const keyMapper = (name) => name.substring(0, name.length - component.length)
-    const found = Object.assign(await scrapeNew(component, 'opentelemetry-collector', filter, keyMapper), await scrapeNew(component, 'opentelemetry-collector-contrib', filter, keyMapper))
-    const existing = await scrapeExisting(`collector-${component}`, true)
-    createFilesFromScrapeResult(existing, found, {
+    const found = Object.assign(await scanForNew(component, 'opentelemetry-collector', filter, keyMapper), await scanForNew(component, 'opentelemetry-collector-contrib', filter, keyMapper))
+    const existing = await scanForExisting(`collector-${component}`, true)
+    createFilesFromScanResult(existing, found, {
         language: 'collector',
         registryType: component,
         readmeFormat: 'md'
