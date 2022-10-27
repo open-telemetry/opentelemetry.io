@@ -1,0 +1,15 @@
+---
+title: Kubernetes Objects Receiver
+registryType: receiver
+isThirdParty: false
+language: collector
+tags:
+    - k8sobjects
+    - receiver
+    - collector
+repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8sobjectsreceiver
+license: Apache 2.0
+description: The kubernetes Objects receiver collects(pull/watch) objects from the Kubernetes API server.
+authors: OpenTelemetry Authors
+otVersion: latest
+---
