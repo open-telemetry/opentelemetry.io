@@ -1,0 +1,15 @@
+---
+title: OpenTelemetry Tedious Instrumentation for Node.js
+registryType: instrumentation
+isThirdParty: false
+language: js
+tags:
+    - tedious
+    - instrumentation
+    - js
+repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-tedious
+license: Apache 2.0
+description: This module provides automatic instrumentation for the tedious module.
+authors: OpenTelemetry Authors
+otVersion: latest
+---
