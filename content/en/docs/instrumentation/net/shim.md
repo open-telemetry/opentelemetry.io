@@ -1,6 +1,6 @@
 ---
 title: OpenTelemetry Tracing Shim
-linkTitle: OpenTelemetry API Shim
+linkTitle: Tracing Shim
 weight: 5
 ---
 
@@ -167,7 +167,7 @@ If you're not using ASP.NET Core or would rather not inject an instance of a
 var tracer = tracerProvider.GetTracer(serviceName);
 
 // Assign it somewhere globally
- 
+
 //...
 ```
 

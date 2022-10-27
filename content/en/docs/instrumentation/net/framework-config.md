@@ -1,6 +1,7 @@
 ---
-title: ".NET Framework instrumentation configuration"
-linkTitle: ".NET Framework"
+title: .NET Framework instrumentation configuration
+linkTitle: Framework config
+aliases: [/docs/instrumentation/net/netframework]
 weight: 5
 ---
 
@@ -50,7 +51,7 @@ public class WebApiApplication : HttpApplication
     {
         _tracerProvider = Sdk.CreateTracerProviderBuilder()
             .AddAspNetInstrumentation()
-            
+
             // Other configuration, like adding an exporter and setting resources
             .AddConsoleExporter()
             .AddSource("my-service-name")
