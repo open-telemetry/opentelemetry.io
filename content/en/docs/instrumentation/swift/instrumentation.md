@@ -1,6 +1,6 @@
 ---
 title: Automatic Instrumentation
-linkTitle: Manual
+linkTitle: Automatic
 weight: 5
 description: Automatic instrumentation for opentelemetry-swift
 ---
