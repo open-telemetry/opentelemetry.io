@@ -2,8 +2,9 @@
 title: Automatic Instrumentation
 linkTitle: Automatic
 aliases:
-  - docs/java/automatic_instrumentation
-  - docs/instrumentation/java/automatic_instrumentation
+  - /docs/java/automatic_instrumentation
+  - /docs/instrumentation/java/automatic_instrumentation
+spelling: cSpell:ignore javaagent myapp zipkin Dotel
 weight: 3
 ---
 
