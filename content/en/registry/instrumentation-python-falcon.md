@@ -1,0 +1,15 @@
+---
+title: OpenTelemetry Falcon Tracing
+registryType: instrumentation
+isThirdParty: false
+language: python
+tags:
+    - falcon
+    - instrumentation
+    - python
+repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-falcon
+license: Apache 2.0
+description: This library builds on the OpenTelemetry WSGI middleware to track web requests in Falcon applications.
+authors: OpenTelemetry Authors
+otVersion: latest
+---

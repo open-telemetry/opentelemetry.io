@@ -1,0 +1,15 @@
+---
+title: OpenTelemetry confluent-kafka Instrumentation
+registryType: instrumentation
+isThirdParty: false
+language: python
+tags:
+    - confluent-kafka
+    - instrumentation
+    - python
+repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-confluent-kafka
+license: Apache 2.0
+description: This library allows tracing requests made by the confluent-kafka library.
+authors: OpenTelemetry Authors
+otVersion: latest
+---

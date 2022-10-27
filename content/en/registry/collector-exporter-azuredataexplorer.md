@@ -1,0 +1,15 @@
+---
+title: Azure Data Explorer Exporter
+registryType: exporter
+isThirdParty: false
+language: collector
+tags:
+    - go
+    - exporter
+    - collector
+repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter
+license: Apache 2.0
+description: This exporter sends metrics, logs and trace data to Azure Data Explorer
+authors: OpenTelemetry Authors
+otVersion: latest
+---

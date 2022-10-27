@@ -2,8 +2,9 @@
 title: Automatic Instrumentation
 linkTitle: Automatic
 aliases:
-  - docs/java/automatic_instrumentation
-  - docs/instrumentation/java/automatic_instrumentation
+  - /docs/java/automatic_instrumentation
+  - /docs/instrumentation/java/automatic_instrumentation
+spelling: cSpell:ignore javaagent myapp zipkin Dotel
 weight: 3
 ---
 
@@ -18,7 +19,7 @@ service or app code, see [Manual instrumentation](../manual).
 
  1. Download [opentelemetry-javaagent.jar][] from [Releases][] of the
     `opentelemetry-java-instrumentation` repo. The JAR file contains the agent
-    and all automatic instrumentation packages.
+    and instrumentation libraries.
  2. Place the JAR in your preferred directory and launch it with your app:
 
     ```console
@@ -68,8 +69,8 @@ To see the full range of configuration options, see [Agent Configuration][].
 
 ## Supported libraries, frameworks, application services, and JVMs
 
-Many popular components support automatic instrumentation. For the full list,
-see [Supported libraries, frameworks, application services, and JVMs][support].
+The Java agent ships with instrumentation libraries for many popular components. 
+For the full list, see [Supported libraries, frameworks, application services, and JVMs][support].
 
 ## Troubleshooting
 

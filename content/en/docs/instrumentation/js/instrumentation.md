@@ -42,7 +42,7 @@ const { NodeTracerProvider } = require("@opentelemetry/sdk-trace-node");
 const { registerInstrumentations } = require("@opentelemetry/instrumentation");
 const { ConsoleSpanExporter, BatchSpanProcessor } = require("@opentelemetry/sdk-trace-base");
 
-// Optionally register automatic instrumentation libraries
+// Optionally register instrumentation libraries
 registerInstrumentations({
   instrumentations: [],
 });
@@ -66,7 +66,7 @@ provider.register();
 ```
 
 Next, ensure that `tracing.js` is required in your node invocation. This is also
-required if you're registering automatic instrumentation libraries. For example:
+required if you're registering instrumentation libraries. For example:
 
 ```
 node --require './tracing.js' <app-file.js>
