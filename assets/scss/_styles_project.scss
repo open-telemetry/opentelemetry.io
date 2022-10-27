@@ -110,28 +110,31 @@
     font-size: 18px;
     margin-bottom: 0;
   }
+
   img {
     margin-top: 1rem;
     width: 20rem;
     max-width: 80%;
   }
+
+  a.external-link:after {
+    display: none;
+  }
 }
 
-.td-box--dark p > a {
-  color: #92b5e7;
+.td-box--dark a {
+  color: lighten($primary, 25%) !important;
 
   &:hover {
-    color: #92b5e7;
     text-decoration: underline;
   }
 }
 
-.td-box--secondary p > strong > a {
-  color: #18478b;
+.td-box--secondary a {
+  color: darken($primary, 25%) !important;
 
   &:hover {
-    color: #18478b;
-    text-decoration: underline;  
+    text-decoration: underline;
   }
 }
 
