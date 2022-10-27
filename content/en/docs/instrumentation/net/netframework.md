@@ -1,7 +1,6 @@
 ---
 title: .NET Framework instrumentation configuration
-linkTitle: Framework config
-aliases: [/docs/instrumentation/net/netframework]
+linkTitle: .NET Framework
 weight: 5
 ---
 
