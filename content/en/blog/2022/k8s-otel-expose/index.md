@@ -31,7 +31,7 @@ most used are probably:
 3. HTTP Basic Authentication
 
 This article focuses on **HTTP Basic Authentication** for simplicity. It is intended to show how
-a secure setup can be operated without key management or further thrid party services.
+a secure setup can be operated without key management or further third party services.
 
 
 For more information about TLS configuration I would like to refer to the article
@@ -116,7 +116,7 @@ metadata:
 ```
 
 In the next step we create an OpenTelemetry Collector using the `OpenTelemetryCollector`
-CRD. The most important entries are `mode`, `image` and the configured basicauth extention.
+CRD. The most important entries are `mode`, `image` and the configured basicauth extension.
 In the manifest below the mode `deployment` was chosen to guarantee that at least one
 collector pod is available for processing incoming information. Furthermore the default
 collector image was overwritten with the [contrib version](https://github.com/open-telemetry/opentelemetry-collector-contrib#opentelemetry-collector-contrib).
@@ -240,7 +240,7 @@ spec:
 
 In order to be able to determine the origin of the transmitted traces, the
 span-tags are extended by identifying metadata with the help of the
-[k8sattributes proccessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.58.0/processor/k8sattributesprocessor).
+[k8sattributes processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.58.0/processor/k8sattributesprocessor).
 K8sattribute processor is available in the OpenTelemetry Collector contrib
 version. In the next step we create a service account with the necessary permissions.
 If you want to learn more about the k8s metadata, you can read this post
@@ -282,7 +282,7 @@ metadata:
 Lets have a quick look on the most important edge collector settings. A `daemonset` is
 used as deployment mode to ensure that one collector instance per node exists. The `basicauth`
 extension contains `username` and `password` to identify itself to the exposed remote collector.
-More container and node specific information are provided by the `k8sattributes` proccesor via
+More container and node specific information are provided by the `k8sattributes` processor via
 the kubernetes [kubernetes downward-api](https://kubernetes.io/docs/concepts/workloads/pods/downward-api/).
 What is not covered is the cluster availability zone and the cluster name. To be able to
 identify the reported spans later, they are inserted manually with the help of the `resource`

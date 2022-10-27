@@ -31,7 +31,7 @@ people how to instrument nginx with OpenTelemetry, but also how a distributed
 trace crossing the webserver would look like.
 
 While Jaeger showed us a trace flowing from the frontend application down to the
-nginx, the connection between nginx and python app was not visibile: we had two
+nginx, the connection between nginx and python app was not visible: we had two
 disconnected traces.
 
 This came as a surprise, because in a prior test with a Java application as
@@ -218,7 +218,7 @@ SDK, it looks like that Java is flexible in taking a `traceparent` with multiple
 values, even though such format is invalid per the W3C Trace Context specification. 
 So propagation from nginx to the Java service worked, while in contrast,
 Python (and other languages) do not provide that flexibility and propagation
-from nginx to the downstream service silenty fails.
+from nginx to the downstream service silently fails.
 
 Note, that we are not suggesting that the other languages should have the same
 flexibility as Java has with reading `traceparent` or vice-versa: the bug lives
