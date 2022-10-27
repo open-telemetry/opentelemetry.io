@@ -27,9 +27,10 @@ const octokit = new Octokit({auth: process.env.GITHUB_AUTH_TOKEN});
 ['receiver','exporter','processor'].forEach(async (component) => scanCollectorComponent(component))
 scanInstrumentationLibrariesByLanguage('js', 'plugins/node')
 scanInstrumentationLibrariesByLanguage('ruby', 'instrumentation')
+scanInstrumentationLibrariesByLanguage('erlang', 'instrumentation')
 scanInstrumentationLibrariesByLanguage('python', 'instrumentation', 'rst')
-scanInstrumentationLibrariesByLanguage('java', 'instrumentation', 'md', 'opentelemetry-java-instrumentation')
-// https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation
+// scanInstrumentationLibrariesByLanguage('java', 'instrumentation', 'md', 'opentelemetry-java-instrumentation')
+// https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation
 
 async function scanForNew(path, repo, filter = () => true, keyMapper = x => x, owner = 'open-telemetry') {
     const result = await octokit.request('GET /repos/{owner}/{repo}/contents/{path}', {
