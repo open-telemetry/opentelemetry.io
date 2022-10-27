@@ -28,6 +28,8 @@ const octokit = new Octokit({auth: process.env.GITHUB_AUTH_TOKEN});
 scanInstrumentationLibrariesByLanguage('js', 'plugins/node')
 scanInstrumentationLibrariesByLanguage('ruby', 'instrumentation')
 scanInstrumentationLibrariesByLanguage('python', 'instrumentation', 'rst')
+scanInstrumentationLibrariesByLanguage('java', 'instrumentation', 'md', 'opentelemetry-java-instrumentation')
+// https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation
 
 async function scanForNew(path, repo, filter = () => true, keyMapper = x => x, owner = 'open-telemetry') {
     const result = await octokit.request('GET /repos/{owner}/{repo}/contents/{path}', {
@@ -104,8 +106,16 @@ async function createFilesFromScanResult(existing, found, settings) {
         // Check if the entry does not exist already and create it if needed.
         if(!Object.keys(existing).includes(currentKey)) {
             const current = found[currentKey]
-            const result = await octokit.request(`GET ${(new URL(current.url).pathname)}/README.${readmeFormat}`)
-            const parsedReadme = parseReadme(Buffer.from(result.data.content, 'base64').toString(), readmeFormat)
+            let parsedReadme = {
+                name: currentKey,
+                description: ''
+            }
+            try {
+                const result = await octokit.request(`GET ${(new URL(current.url).pathname)}/README.${readmeFormat}`)
+                parsedReadme = parseReadme(Buffer.from(result.data.content, 'base64').toString(), readmeFormat)
+            } catch(e) {
+                console.warn(`Request error while fetching README.md for ${currentKey}: ${e.message}`)
+            }
             const md = createMarkDown(currentKey, parsedReadme.name, language, registryType, current.html_url, parsedReadme.description)
             // collector entries are named reverse (collector-{registryTpe}) compared to languages ({registryTpe}-{language}), we fix this here.
             const fileName = language === 'collector' ? `${language}-${registryType}-${currentKey}.md` : `${registryType}-${language}-${currentKey}.md`
@@ -114,10 +124,10 @@ async function createFilesFromScanResult(existing, found, settings) {
     })
 }
 
-async function scanInstrumentationLibrariesByLanguage(language, path, readmeFormat = 'md') {
+async function scanInstrumentationLibrariesByLanguage(language, path, readmeFormat = 'md', repo = `opentelemetry-${language}-contrib`) {
     // https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/
     const keyMapper = x => x.split(/[_-]/).filter(y => !['opentelemetry', 'instrumentation'].includes(y)).join('')
-    const found = await scanForNew(path, `opentelemetry-${language}-contrib`, () => true, keyMapper)
+    const found = await scanForNew(path, repo, () => true, keyMapper)
     const existing = await scanForExisting(`instrumentation-${language}`)
     createFilesFromScanResult(existing, found, {
         language,
