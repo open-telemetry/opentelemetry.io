@@ -1,5 +1,5 @@
 ---
-title: OpenTelemetry `fs` Instrumentation for Node.js
+title: OpenTelemetry fs Instrumentation for Node.js
 registryType: instrumentation
 isThirdParty: false
 language: js
