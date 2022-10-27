@@ -1,0 +1,15 @@
+---
+title: Oban Instrumentation
+registryType: instrumentation
+isThirdParty: false
+language: erlang
+tags:
+    - oban
+    - instrumentation
+    - erlang
+repo: https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_oban
+license: Apache 2.0
+description: OpentelemetryOban uses telemetry handlers to create OpenTelemetry spans from Oban events.
+authors: OpenTelemetry Authors
+otVersion: latest
+---
