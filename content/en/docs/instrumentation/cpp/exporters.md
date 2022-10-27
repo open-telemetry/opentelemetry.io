@@ -116,7 +116,7 @@ std::unique_ptr<opentelemetry::sdk::metrics::MetricReader> reader{
     new opentelemetry::sdk::metrics::PeriodicExportingMetricReader(std::move(exporter), options)};
 ```
 
-## Prometheus
+### Prometheus
 
 To send metrics to a prometheus endpoint you'll want to configure a prometheus
 exporter
