@@ -19,7 +19,7 @@ import OpenTelemetrySdk
 import OpenTelemetryProtocolExporter
 
 
-// initalize the OtlpTraceExporter
+// initialize the OtlpTraceExporter
 let otlpConfiguration = OtlpConfiguration(timeout: OtlpConfiguration.DefaultTimeoutInterval)
 
 let grpcChannel = ClientConnection.usingPlatformAppropriateTLS(for: MultiThreadedEventLoopGroup(numberOfThreads:1))
@@ -125,7 +125,7 @@ Sometimes it's useful to do something with the current/active span. Here's how t
 ### Span Attributes
 
 Spans can also be annotated with additional attributes. All spans will be automatically annotated with the `Resource` attributes attached to the tracer provider.
-The Opentelementry-swift sdk already provides instrumentation of common attributes in the `SDKResourceExtension` instrumentation.
+The Opentelemetry-swift sdk already provides instrumentation of common attributes in the `SDKResourceExtension` instrumentation.
 In this example a span for a network request capturing details about that request using existing [semantic conventions](/docs/reference/specification/trace/semantic_conventions/).
 
 ```swift
@@ -160,7 +160,7 @@ func myFunction() {
       span.status = .error(description: "something bad happened")
       return 
   }
-  // do somthing 
+  // do something 
 }
 ```
 

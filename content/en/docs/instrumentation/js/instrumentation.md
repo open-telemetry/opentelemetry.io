@@ -120,7 +120,7 @@ provider.register();
 ```
 
 You'll need to bundle this file with your web application to be able to use
-tracing throughought the rest of your web application.
+tracing throughout the rest of your web application.
 
 ### Picking the right span processor
 
@@ -442,7 +442,7 @@ SDK. The biggest difference, aside from initialization code, is that you'll have
 to manually set spans as active in the current context to be able to create
 nested spans.
 
-### Initilizing tracing with `sdk-trace-base`
+### Initializing tracing with `sdk-trace-base`
 
 Initializing tracing is similar to how you'd do it with Node.js or the Web SDK.
 

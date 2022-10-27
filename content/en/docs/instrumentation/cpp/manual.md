@@ -104,7 +104,7 @@ context to remote services using the W3C Trace Context HTTP headers.
 
 ## Metrics
 
-### Initalize Exporter and Reader
+### Initialize Exporter and Reader
 
 Initialize an exporter and a reader. In this case, we initialize an OStream Exporter which will print to stdout by default. The reader periodically collects metrics from the Aggregation Store and exports them.
 
@@ -114,7 +114,7 @@ std::unique_ptr<opentelemetry::sdk::metrics::MetricReader> reader{
     new opentelemetry::sdk::metrics::PeriodicExportingMetricReader(std::move(exporter), options)};
 ```
 
-### Initalize Meter Provider
+### Initialize Meter Provider
 
 Initialize a MeterProvider and add the reader. We will use this to obtain Meter objects in the future.
 
@@ -149,7 +149,7 @@ histogram_counter->Record(val, labelkv);
 
 ### Create Observable Counter
 
-Create a Observable Counter Instrument from the Meter, and add a callback. The callbackwould be used to record the measurement during metrics collection. Ensure to keep the Instrument object active for the lifetime of collection.
+Create a Observable Counter Instrument from the Meter, and add a callback. The callback would be used to record the measurement during metrics collection. Ensure to keep the Instrument object active for the lifetime of collection.
 
 ```cpp
 auto meter = provider->GetMeter(name, "1.2.0");
