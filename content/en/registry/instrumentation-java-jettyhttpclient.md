@@ -1,0 +1,15 @@
+---
+title: Jetty HTTP Client Instrumentation
+registryType: instrumentation
+isThirdParty: false
+language: java
+tags:
+    - jettyhttpclient
+    - instrumentation
+    - java
+repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jetty-httpclient
+license: Apache 2.0
+description: This package provides an instrumentation library for Jetty HTTP Client
+authors: OpenTelemetry Authors
+otVersion: latest
+---

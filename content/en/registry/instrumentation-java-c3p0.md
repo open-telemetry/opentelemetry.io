@@ -1,0 +1,15 @@
+---
+title: c3p0 Instrumentation
+registryType: instrumentation
+isThirdParty: false
+language: java
+tags:
+    - c3p0
+    - instrumentation
+    - java
+repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/c3p0-0.9
+license: Apache 2.0
+description: This package provides an instrumentation library for c3p0
+authors: OpenTelemetry Authors
+otVersion: latest
+---
