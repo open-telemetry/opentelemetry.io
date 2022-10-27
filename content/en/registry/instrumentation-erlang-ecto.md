@@ -1,0 +1,15 @@
+---
+title: Ecto Instrumentation
+registryType: instrumentation
+isThirdParty: false
+language: erlang
+tags:
+    - ecto
+    - instrumentation
+    - erlang
+repo: https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_ecto
+license: Apache 2.0
+description: Telemetry handler that creates Opentelemetry spans from Ecto query events.
+authors: OpenTelemetry Authors
+otVersion: latest
+---
