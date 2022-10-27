@@ -1,5 +1,5 @@
 ---
-title: HTTP Instrumentation
+title: Java HTTP Client Instrumentation
 registryType: instrumentation
 isThirdParty: false
 language: java
