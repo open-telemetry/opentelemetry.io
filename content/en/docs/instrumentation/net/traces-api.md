@@ -1,6 +1,6 @@
 ---
 title: Tracing API reference
-linkTitle: .NET Tracing API
+linkTitle: API - tracing
 redirect: https://learn.microsoft.com/dotnet/api/system.diagnostics
 manualLinkTarget: _blank
 _build: { render: link }
