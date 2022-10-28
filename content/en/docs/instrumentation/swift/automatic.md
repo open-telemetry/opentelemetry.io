@@ -18,7 +18,7 @@ Use `DefaultResource.get()` to generate an all-in-one resource object. This
 resource can be added to a `TracerProvider` or `MetricProvider`.
 
 ```swift
-OpenTelemetry.registerMeterProvider(meterProvider: MeterProviderBuilder()
+OpenTelemetry.registerTracerProvider(traceProvider: TracerProviderBuilder()
             .with(resource: DefaultResource.get())
             .build())
 ```
@@ -95,6 +95,14 @@ response is received, it allows to add extra information to the Span
 `receivedError: ((Error, DataOrFile?, HTTPStatus, Span) -> Void)?` - Called
 after an error is received, it allows to add extra information to the Span
 
+below is an example of initialization.
+`URLSessionInstrumentationConfiguration`'s construction can be passed the
+parameters defined above to suit the needs of the application.
+
+```swift
+let sessionInstrumentation = URLSessionInstrumentation(URLSessionInstrumentationConfiguration())
+```
+
 ### Details
 
 `NSURLSession` instrumentation also provides additional attributes providing
@@ -119,7 +127,9 @@ events. This functionality is shown in `Simple Exporter` example
 
 ### Usage
 
-Just add SignpostIntegration as any other Span Processor:
+Just add SignpostIntegration as any other Span Processor (see the
+[manual instrumentation](/docs/instrumentation/swift/manual.md)) docs for
+details on configuring your providers:
 
 ```
 OpenTelemetry.instance.tracerProvider.addSpanProcessor(SignPostIntegration())`
