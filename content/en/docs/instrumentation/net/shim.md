@@ -254,10 +254,18 @@ are siblings of the same root rather than being nested.
 ```csharp
 public static void DoWork(Tracer tracer)
 {
-    using var sibling1 = tracer.StartSpan("sibling1");
-    using var sibling2 = tracer.StartSpan("sibling2");
+    using var parent = tracer.StartSpan("parent");
+    // 'parent' will be the shared parent of both 'child1' and 'child2'
 
-    // Both 'sibling1' and 'sibling2' share the same parent
+    using (var child1 = tracer.StartSpan("child1"))
+    {
+        // do some work that 'child1' tracks
+    }
+
+    using (var child2 = tracer.StartSpan("child2"))
+    {
+        // do some work that 'child2' tracks
+    }
 }
 ```
 
