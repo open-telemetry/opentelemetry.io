@@ -128,7 +128,7 @@ events. This functionality is shown in `Simple Exporter` example
 ### Usage
 
 Just add SignpostIntegration as any other Span Processor (see the
-[manual instrumentation](/docs/instrumentation/swift/manual.md)) docs for
+[manual instrumentation](../manual)) docs for
 details on configuring your providers:
 
 ```
