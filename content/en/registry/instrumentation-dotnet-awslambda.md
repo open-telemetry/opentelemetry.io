@@ -1,0 +1,15 @@
+---
+title: AWS .NET SDK for Lambda
+registryType: instrumentation
+isThirdParty: false
+language: dotnet
+tags:
+    - awslambda
+    - instrumentation
+    - dotnet
+repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.AWSLambda
+license: Apache 2.0
+description: This repo contains SDK to instrument Lambda handler to create incoming span.
+authors: OpenTelemetry Authors
+otVersion: latest
+---
