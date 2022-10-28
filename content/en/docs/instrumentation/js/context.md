@@ -1,7 +1,8 @@
 ---
 title: Context
 description: OpenTelemetry JavaScript Context API Documentation
-weight: 2
+aliases: [/docs/instrumentation/js/api/context]
+weight: 7
 ---
 
 In order for OpenTelemetry to work, it must store and propagate important telemetry data.
