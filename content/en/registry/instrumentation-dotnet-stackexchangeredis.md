@@ -1,0 +1,15 @@
+---
+title: StackExchange.Redis Instrumentation for OpenTelemetry
+registryType: instrumentation
+isThirdParty: false
+language: dotnet
+tags:
+    - stackexchangeredis
+    - instrumentation
+    - dotnet
+repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.StackExchangeRedis
+license: Apache 2.0
+description: This is an Instrumentation Library, which instruments StackExchange.Redis and collects traces about outgoing calls to Redis.
+authors: OpenTelemetry Authors
+otVersion: latest
+---

@@ -1,0 +1,15 @@
+---
+title: Elasticsearch Client Instrumentation for OpenTelemetry .NET
+registryType: instrumentation
+isThirdParty: false
+language: dotnet
+tags:
+    - elasticsearchclient
+    - instrumentation
+    - dotnet
+repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.ElasticsearchClient
+license: Apache 2.0
+description: Automatically instruments events emitted by the NEST/Elasticsearch.Net client library.
+authors: OpenTelemetry Authors
+otVersion: latest
+---

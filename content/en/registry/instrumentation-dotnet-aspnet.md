@@ -1,0 +1,15 @@
+---
+title: ASP.NET Instrumentation
+registryType: instrumentation
+isThirdParty: false
+language: dotnet
+tags:
+    - aspnet
+    - instrumentation
+    - dotnet
+repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.AspNet
+license: Apache 2.0
+description: This is an Instrumentation Library, which instruments ASP.NET and collect metrics and traces about incoming web requests.
+authors: OpenTelemetry Authors
+otVersion: latest
+---
