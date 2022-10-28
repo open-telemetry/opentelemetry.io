@@ -65,8 +65,9 @@ endpoint, you'll have to use a different exporter.
 
 ### ASP.NET Core
 
-To start [tracing](/docs/concepts/signals/traces/#tracing-in-opentelemetry) in an
-ASP.NET Core-based app, use the OpenTelemetry extensions for ASP.NET Core setup.
+To start [tracing](/docs/concepts/signals/traces/#tracing-in-opentelemetry) in
+an ASP.NET Core-based app, use the OpenTelemetry extensions for ASP.NET Core
+setup.
 
 First, ensure that you have the right packages:
 
@@ -121,7 +122,8 @@ endpoint, you'll have to use a different exporter.
 
 Once tracing is initialized, you can configure a
 [`Tracer`](/docs/concepts/signals/traces/#tracer), which will be how you trace
-operations with [`Span`s](/docs/concepts/signals/traces/#spans-in-opentelemetry).
+operations with
+[`Span`s](/docs/concepts/signals/traces/#spans-in-opentelemetry).
 
 Typically, a `Tracer` is instantiated once per app/service that is being
 instrumented, so it's a good idea to instantiate it once in a shared location.
@@ -179,8 +181,8 @@ generally sufficient to just have one defined per service.
 
 ## Creating Spans
 
-To create a [span](/docs/concepts/signals/traces/#spans-in-opentelemetry), give it
-a name and create it from your `Tracer`.
+To create a [span](/docs/concepts/signals/traces/#spans-in-opentelemetry), give
+it a name and create it from your `Tracer`.
 
 ```csharp
 using var span = MyTracer.StartActiveSpan("SayHello");
@@ -242,6 +244,44 @@ In the preceding example, `childSpan` is ended because the scope of the `using`
 block is explicitly defined, rather than scoped to `DoWork` itself like
 `parentSpan`.
 
+## Creating independent Spans
+
+The previous examples showed how to create
+[Spans](/docs/concepts/signals/traces/#spans-in-opentelemetry) that follow a
+nested heirarchy. In some cases, you'll want to create independent Spans that
+are siblings of the same root rather than being nested.
+
+```csharp
+public static void DoWork(Tracer tracer)
+{
+    using var parent = tracer.StartSpan("parent");
+    // 'parent' will be the shared parent of both 'child1' and 'child2'
+
+    using (var child1 = tracer.StartSpan("child1"))
+    {
+        // do some work that 'child1' tracks
+    }
+
+    using (var child2 = tracer.StartSpan("child2"))
+    {
+        // do some work that 'child2' tracks
+    }
+}
+```
+
+## Creating new root Spans
+
+You can also create new root
+[spans](/docs/concepts/signals/traces/#spans-in-opentelemetry) that are
+completely detached from the current trace.
+
+```csharp
+public static void DoWork(Tracer tracer)
+{
+    using var newRoot = tracer.StartRootSpan("newRoot");
+}
+```
+
 ## Get the current Span
 
 Sometimes it's helpful to access whatever the current `TelemetrySpan` is at a
@@ -272,9 +312,9 @@ span.SetAttribute("operation.other-stuff", new int[] { 1, 2, 3 });
 
 ## Adding events
 
-An [event](/docs/concepts/signals/traces/#span-events) is a human-readable message
-on an `TelemetrySpan` that represents "something happening" during its lifetime.
-You can think of it like a primitive log.
+An [event](/docs/concepts/signals/traces/#span-events) is a human-readable
+message on an `TelemetrySpan` that represents "something happening" during its
+lifetime. You can think of it like a primitive log.
 
 ```csharp
 using var span = tracer.StartActiveSpan("SayHello");
@@ -375,10 +415,10 @@ This will capture things like the current stack trace as attributes in the span.
 
 ## Next steps
 
-After you've setup manual instrumentation, you may want to use
-[instrumentation libraries](/docs/instrumentation/net/libraries). Instrumentation
-libraries will instrument relevant libraries you're using and
-generate data for things like inbound and outbound HTTP requests and more.
+After you've setup manual instrumentation, you may want to use [instrumentation
+libraries](/docs/instrumentation/net/libraries). Instrumentation libraries will
+instrument relevant libraries you're using and generate data for things like
+inbound and outbound HTTP requests and more.
 
 You'll also want to configure an appropriate exporter to [export your telemetry
 data](/docs/instrumentation/net/exporters) to one or more telemetry backends.
