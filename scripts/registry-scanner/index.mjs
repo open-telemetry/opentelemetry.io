@@ -24,13 +24,13 @@ import { URL } from 'url';
 const octokit = new Octokit({auth: process.env.GITHUB_AUTH_TOKEN});
 
 // Please uncomment the entries you'd like to scan for.
-['receiver','exporter','processor'].forEach(async (component) => scanCollectorComponent(component))
-scanInstrumentationLibrariesByLanguage('js', 'plugins/node')
-scanInstrumentationLibrariesByLanguage('ruby', 'instrumentation')
-scanInstrumentationLibrariesByLanguage('erlang', 'instrumentation')
-scanInstrumentationLibrariesByLanguage('python', 'instrumentation', 'rst')
+// ['receiver','exporter','processor'].forEach(async (component) => scanCollectorComponent(component))
+// scanInstrumentationLibrariesByLanguage('js', 'plugins/node')
+// scanInstrumentationLibrariesByLanguage('ruby', 'instrumentation')
+// scanInstrumentationLibrariesByLanguage('erlang', 'instrumentation')
+// scanInstrumentationLibrariesByLanguage('python', 'instrumentation', 'rst')
 // scanInstrumentationLibrariesByLanguage('java', 'instrumentation', 'md', 'opentelemetry-java-instrumentation')
-// https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation
+scanInstrumentationLibrariesByLanguage('dotnet', 'src', 'md', 'opentelemetry-dotnet-contrib', (item) => item.name.includes('Instrumentation'), (name) => name.split('.')[2].toLowerCase())
 
 async function scanForNew(path, repo, filter = () => true, keyMapper = x => x, owner = 'open-telemetry') {
     const result = await octokit.request('GET /repos/{owner}/{repo}/contents/{path}', {
@@ -125,10 +125,16 @@ async function createFilesFromScanResult(existing, found, settings) {
     })
 }
 
-async function scanInstrumentationLibrariesByLanguage(language, path, readmeFormat = 'md', repo = `opentelemetry-${language}-contrib`) {
+async function scanInstrumentationLibrariesByLanguage(
+        language, 
+        path, 
+        readmeFormat = 'md', 
+        repo = `opentelemetry-${language}-contrib`,
+        filter = () => true,
+        keyMapper = x => x.split(/[_-]/).filter(y => !['opentelemetry', 'instrumentation'].includes(y)).join(''),
+    ) {
     // https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/
-    const keyMapper = x => x.split(/[_-]/).filter(y => !['opentelemetry', 'instrumentation'].includes(y)).join('')
-    const found = await scanForNew(path, repo, () => true, keyMapper)
+    const found = await scanForNew(path, repo, filter, keyMapper)
     const existing = await scanForExisting(`instrumentation-${language}`)
     createFilesFromScanResult(existing, found, {
         language,
@@ -136,6 +142,7 @@ async function scanInstrumentationLibrariesByLanguage(language, path, readmeForm
         readmeFormat
     })
 }
+
 
 async function scanCollectorComponent(component) {
     const filter = (item) => item.name.endsWith(component)
