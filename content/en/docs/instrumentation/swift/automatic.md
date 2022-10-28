@@ -5,7 +5,8 @@ weight: 5
 description: Automatic instrumentation for opentelemetry-swift
 ---
 
-OpenTelemetry-Swift provides several instrumentation libraries.
+OpenTelemetry-Swift provides several instrumentation libraries that generate
+instrumentation for you when they're installed and initialized.
 
 ## `SDKResourceExtension`
 
