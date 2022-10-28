@@ -132,5 +132,5 @@ Just add SignpostIntegration as any other Span Processor (see the
 details on configuring your providers:
 
 ```
-OpenTelemetry.instance.tracerProvider.addSpanProcessor(SignPostIntegration())`
+OpenTelemetry.instance.tracerProvider.addSpanProcessor(SignPostIntegration())
 ```
