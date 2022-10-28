@@ -1,6 +1,6 @@
 ---
 title: Instrumentation Libraries
-linkTitle: Instrumentation Libraries
+linkTitle: Libraries
 weight: 5
 description: Learn how you can use instrumentation libraries for swift that will generate telemetry for many common frameworks and libraries.
 ---
