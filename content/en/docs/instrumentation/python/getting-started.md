@@ -132,6 +132,99 @@ single span printed to the console, such as the following:
 The span generated for you tracks the lifetime of a request to the `/rolldice`
 route.
 
+Send a few more requests to the endpoint, and then either wait for a little bit
+or terminate the app and you'll get metrics printed out to the console, such as
+the following
+
+<details>
+<summary>View example output</summary>
+
+```json
+{
+   "resource_metrics" : [
+      {
+         "resource" : {
+            "attributes" : {
+               "service.name" : "unknown_service",
+               "telemetry.auto.version" : "0.34b0",
+               "telemetry.sdk.language" : "python",
+               "telemetry.sdk.name" : "opentelemetry",
+               "telemetry.sdk.version" : "1.13.0"
+            },
+            "schema_url" : ""
+         },
+         "schema_url" : "",
+         "scope_metrics" : [
+            {
+               "metrics" : [
+                  {
+                     "data" : {
+                        "aggregation_temporality" : 2,
+                        "data_points" : [
+                           {
+                              "attributes" : {
+                                 "http.flavor" : "1.1",
+                                 "http.host" : "localhost:5000",
+                                 "http.method" : "GET",
+                                 "http.scheme" : "http",
+                                 "http.server_name" : "127.0.0.1"
+                              },
+                              "start_time_unix_nano" : 1666077040061693305,
+                              "time_unix_nano" : 1666077098181107419,
+                              "value" : 0
+                           }
+                        ],
+                        "is_monotonic" : false
+                     },
+                     "description" : "measures the number of concurrent HTTP requests that are currently in-flight",
+                     "name" : "http.server.active_requests",
+                     "unit" : "requests"
+                  },
+                  {
+                     "data" : {
+                        "aggregation_temporality" : 2,
+                        "data_points" : [
+                           {
+                              "attributes" : {
+                                 "http.flavor" : "1.1",
+                                 "http.host" : "localhost:5000",
+                                 "http.method" : "GET",
+                                 "http.scheme" : "http",
+                                 "http.server_name" : "127.0.0.1",
+                                 "http.status_code" : 200,
+                                 "net.host.port" : 5000
+                              },
+                              "bucket_counts" : [0,1,0,0,0,0,0,0,0,0,0],
+                              "count" : 1,
+                              "explicit_bounds" : [0,5,10,25,50,75,100,250,500,1000],
+                              "max" : 1,
+                              "min" : 1,
+                              "start_time_unix_nano" : 1666077040063027610,
+                              "sum" : 1,
+                              "time_unix_nano" : 1666077098181107419
+                           }
+                        ]
+                     },
+                     "description" : "measures the duration of the inbound HTTP request",
+                     "name" : "http.server.duration",
+                     "unit" : "ms"
+                  }
+               ],
+               "schema_url" : "",
+               "scope" : {
+                  "name" : "opentelemetry.instrumentation.flask",
+                  "schema_url" : "",
+                  "version" : "0.34b0"
+               }
+            }
+         ]
+      }
+   ]
+}
+```
+
+</details>
+
 ## Add manual instrumentation to automatic instrumentation
 
 Automatic instrumentation captures telemetry at the edges of your systems, such

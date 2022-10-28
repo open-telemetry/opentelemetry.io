@@ -30,12 +30,13 @@ a number of ways, the steps below use environment variables.
     `opentelemetry-java-instrumentation` repo. The JAR file contains the agent
     and all automatic instrumentation packages. {{% alert color="info" %}}<i class="fas fa-edit"></i> Take note of the path to the JAR file.{{% /alert %}}
  2. Set and export variables that specify the Java agent JAR and a [console
-    trace exporter,][] using a notation suitable for your shell/terminal
+    exporter][], using a notation suitable for your shell/terminal
     environment &mdash; we illustrate a notation for bash-like shells:
 
     ```console
     $ export JAVA_OPTS="-javaagent:PATH/TO/opentelemetry-javaagent.jar"
     $ export OTEL_TRACES_EXPORTER=logging
+    $ export OTEL_METRICS_EXPORTER=logging
     ```
 
     {{% alert title="Important" color="warning" %}}Replace `PATH/TO` above, with
@@ -96,6 +97,41 @@ rpc.method=SayHello, rpc.system=grpc, thread.name=main, net.peer.port=50051},
 capacity=128, totalAddedValues=9}
 ```
 
+At step 5, when stopping the server, you should see an output of all the metrics
+collected (metrics output is line-wrapped and shortened for convenience):
+
+```sh
+[otel.javaagent 2022-10-18 10:12:12:650 +0200] [Thread-0] INFO
+io.opentelemetry.exporter.logging.LoggingMetricExporter - Received a collection
+of 15 metrics for export.
+[otel.javaagent 2022-10-18 10:12:12:651 +0200] [Thread-0] INFO
+io.opentelemetry.exporter.logging.LoggingMetricExporter - metric:
+ImmutableMetricData{resource=Resource{...},
+instrumentationScopeInfo=InstrumentationScopeInfo{...},
+name=rpc.server.duration, description=The duration of an inbound RPC invocation,
+unit=ms, type=HISTOGRAM,
+data=ImmutableHistogramData{aggregationTemporality=CUMULATIVE,
+points=[ImmutableHistogramPointData{getStartEpochNanos=1666080515038517000,
+getEpochNanos=1666080732649264000, getAttributes={net.host.name="localhost",
+net.transport="ip_tcp", rpc.grpc.status_code=0, rpc.method="SayHello",
+rpc.service="helloworld.Greeter", rpc.system="grpc"}, getSum=20.300248000000003,
+getCount=12, hasMin=true, getMin=0.278541, hasMax=true, getMax=16.563833,
+getBoundaries=[5.0, 10.0, 25.0, 50.0, 75.0, 100.0, 250.0, 500.0, 750.0, 1000.0,
+2500.0, 5000.0, 7500.0, 10000.0], getCounts=[11, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0], getExemplars=[ImmutableDoubleExemplarData{filteredAttributes={},
+epochNanos=1666080530527597000,
+spanContext=ImmutableSpanContext{traceId=f60e0940793cb1dc95bcb86e4668a548,
+spanId=9737452b2e78e75f, traceFlags=01,
+traceState=ArrayBasedTraceState{entries=[]}, remote=false, valid=true},
+value=0.278541}, ImmutableDoubleExemplarData{filteredAttributes={},
+epochNanos=1666080519431994000,
+spanContext=ImmutableSpanContext{traceId=723ace62b22b2db3bc8323be279e0e55,
+spanId=44159949946521e7, traceFlags=01,
+traceState=ArrayBasedTraceState{entries=[]}, remote=false, valid=true},
+value=16.563833}]}]}}
+...
+```
+
 ## What next?
 
 For more:
@@ -103,11 +139,11 @@ For more:
 - Run this example with another [exporter][] for telemetry data.
 - Try [automatic instrumentation](../automatic/) on one of your own apps.
 - For light-weight customized telemetry, try [annotations][].
-- Learn about [manual instrumentation][] and try out more [examples](../examples).
+- Learn about [manual instrumentation][] and try out more [examples]({{% relref examples %}}).
 
 [annotations]: ../automatic/annotations
 [configure the Java agent]: ../automatic/#configuring-the-agent
-[console trace exporter,]: https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md#logging-exporter
+[console exporter]: https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md#logging-exporter
 [exporter]: https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md#exporters
 [Get the example code.]: https://grpc.io/docs/languages/java/quickstart/#get-the-example-code
 [Java Quick start example]: https://grpc.io/docs/languages/java/quickstart/

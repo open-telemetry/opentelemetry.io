@@ -17,7 +17,7 @@ ASP.NET Core requests, you need to use the ASP.NET Core instrumentation package
 and initialize it with the OpenTelemetry SDK.
 
 Now, developers can use [automatic instrumentation](/docs/reference/specification/glossary/#automatic-instrumentation)
-to initalize [signal](/docs/reference/specification/glossary/#signals) providers
+to initialize [signal](/docs/reference/specification/glossary/#signals) providers
 and generate telemetry data for supported [instrumented libraries](/docs/reference/specification/glossary/#instrumented-library).
 This approach has several benefits:
 

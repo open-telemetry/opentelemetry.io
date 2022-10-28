@@ -1,0 +1,15 @@
+---
+title: Struts Instrumentation
+registryType: instrumentation
+isThirdParty: false
+language: java
+tags:
+    - struts
+    - instrumentation
+    - java
+repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/struts-2.3
+license: Apache 2.0
+description: This package provides an instrumentation library for Struts
+authors: OpenTelemetry Authors
+otVersion: latest
+---

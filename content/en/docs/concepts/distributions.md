@@ -36,10 +36,10 @@ Distributions would broadly fall into the following categories:
 - **"Plus":** These distributions provide the same functionality as upstream
   plus more. Customizations beyond those found in pure distributions would be
   the inclusion of additional components. Examples of this would include
-  automatic instrumentation libraries or vendor exporters not upstreamed to the
+  instrumentation libraries or vendor exporters not upstreamed to the
   OpenTelemetry project.
 - **"Minus":** These distributions provide a reduced set of functionality from
-  upstream. Examples of this would include the removal of automatic
+  upstream. Examples of this would include the removal of 
   instrumentation libraries or receivers/processors/exporters/extensions found
   in the OpenTelemetry Collector project. These distributions may be provided to
   increase supportability and security considerations.

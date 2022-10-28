@@ -1,7 +1,6 @@
 ---
-title: "Resources"
+title: Resources
 weight: 6
-description:
 ---
 
 A [resource][] represents the entity producing telemetry as resource attributes.
@@ -12,7 +11,7 @@ three of these attributes can be included in the resource.
 In your observability backend, you can use resource information to better
 investigate interesting behavior. For example, if your trace or metrics data
 indicate latency in your system, you can narrow it down to a specific container,
-pod, or kubernetes deployment.
+pod, or Kubernetes deployment.
 
 ## Setup
 

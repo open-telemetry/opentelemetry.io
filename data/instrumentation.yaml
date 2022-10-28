@@ -3,7 +3,7 @@ languages:
     name: C++
     status:
       traces: stable
-      metrics: experimental
+      metrics: alpha
       logs: experimental
   dotnet:
     name: .NET
@@ -47,12 +47,12 @@ languages:
       traces: stable
       metrics: not yet implemented
       logs: not yet implemented
-  ruby:
-    name: Ruby
+  js:
+    name: JavaScript
     status:
       traces: stable
-      metrics: not yet implemented
-      logs: not yet implemented
+      metrics: Release Candidate
+      logs: Development
   rust:
     name: Rust
     status:

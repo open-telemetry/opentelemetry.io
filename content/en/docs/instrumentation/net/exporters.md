@@ -1,5 +1,5 @@
 ---
-title: "Exporters"
+title: Exporters
 weight: 4
 ---
 
@@ -106,7 +106,7 @@ If you are using .NET 5 or higher, the previous code sample is not required.
 
 ### Jaeger
 
-To try out the OTLP exporter, you can run [Jaeger](https://www.jaegertracing.io/) 
+To try out the OTLP exporter, you can run [Jaeger](https://www.jaegertracing.io/)
 as an OTLP endpoint and for trace visualization in a docker container:
 
 ```shell
