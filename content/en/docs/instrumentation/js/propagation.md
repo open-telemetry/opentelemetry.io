@@ -2,7 +2,7 @@
 title: Propagation
 description: Context propagation for the JS SDK
 aliases: [/docs/instrumentation/js/api/propagation]
-weight: 8
+weight: 7
 ---
 Propagation is the mechanism that moves data between services and processes.
 Although not limited to tracing, it is what allows traces to build causal
