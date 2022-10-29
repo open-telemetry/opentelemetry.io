@@ -26,8 +26,8 @@ context.** Although it is possible to propagate context manually, if your system
 uses libraries to communicate between services, use a matching instrumentation
 library to propagate context.
 
-Refer to [Libraries](libraries.md) to learn more about instrumentation libraries
-and how to use them.
+Refer to [Libraries](/docs/instrumentation/js/libraries) to learn more about
+instrumentation libraries and how to use them.
 
 ## Manual context propagation
 
@@ -37,7 +37,7 @@ you're using to have services communicate with one another. Or you many have
 requirements that instrumentation libraries cannot fulfill, even if they exist.
 
 When you must propagate context manually, you can use the [context
-api](context.md).
+api](/docs/instrumentation/js/context).
 
 The following generic example demonstrates how you can propagate trace context
 manually.
@@ -92,5 +92,5 @@ trace.setSpan(activeContext, span)
 From there, when you have a deserialized active context, you can create spans
 that will be a part of the same trace from the other service.
 
-You can also use the [Context](context.md) API to modify or set the deserialized
-context in other ways.
+You can also use the [Context](/docs/instrumentation/js/context) API to modify
+or set the deserialized context in other ways.
