@@ -44,7 +44,7 @@ around.
 We’ve already seen quite a bit of adoption, with five companies including
 Datadog, Dynatrace, Honeycomb, Lightstep, and New Relic integrating the
 community demo application into their product demos (you can find a list
-[here](https://github.com/open-telemetry/opentelemetry-demo#demos-featuring-online-boutique)).
+[here](https://github.com/open-telemetry/opentelemetry-demo#demos-featuring-the-astronomy-shop)).
 We hope to encourage further contributions and collaboration along these lines.
 
 However, just because we reached 1.0, that doesn’t mean we’re stopping -- this
@@ -56,7 +56,7 @@ We also hope to add new instrumentation scenarios and patterns by extending the 
 
 We’d love for you to take the demo for a spin and let us know what you think!
 Check out the
-[docs](https://github.com/open-telemetry/opentelemetry-demo/tree/main/docs), or
+[docs](https://github.com/open-telemetry/opentelemetry-demo/tree/main/docs#opentelemetry-demo-documentation), or
 run the demo using
 [Docker](https://github.com/open-telemetry/opentelemetry-demo/blob/main/docs/docker_deployment.md)
 or
