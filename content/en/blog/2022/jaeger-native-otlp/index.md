@@ -56,7 +56,7 @@ In order to better support users and the interop between OpenTelemetry and
 Jaeger, we intend to deprecate and eventually remove support for Jaeger client
 exporters in OpenTelemetry.
 
-We need your feedback! We want to hear from users who could be impacted by this
+We would like your feedback! We want to hear from users who could be impacted by this
 change.
 
 - Are you an OpenTelemetry user currently sending data to Jaeger?
