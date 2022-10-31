@@ -56,6 +56,33 @@ This causes challenges for both Jaeger users and OpenTelemetry maintainers:
 Now that Jaeger supports OTLP, this feels like a step backwards: It results in
 an increased maintenance burden with very little benefit.
 
+### User Impact
+
+To clarify: The proposal is to deprecate the following exporters from
+OpenTelemetry in favor of using native OTLP into Jaeger:
+
+- Jaeger Thrift over HTTP
+- Jaeger Protobuf via gRPC
+- Jaeger Thrift over UDP
+
+In addition to application configuration changes, there could be other
+architectural considerations. HTTP and gRPC should be straightforward
+replacements, although it may require exposing ports 4317 and 4318 if they are
+not already accessible.
+
+Thrift over UDP implies the use of the
+[Jaeger Agent](https://www.jaegertracing.io/docs/1.24/architecture/#agent).
+Users with this deployment configuration will need to make a slightly more
+complicated change, typically one of the following:
+
+1. Direct ingest. Applications will change from using Thrift+UDP to sending OTLP
+   traces directly to their `jaeger-collector` instance. This may also have
+   sampling implications.
+2. Replacing the Jaeger Agent with a sidecar
+   [OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector)
+   instance. This could have sampling implications and requires changes to your
+   infrastructure deployment code.
+
 ## Intent to Deprecate - We'd Like Your Feedback!
 
 In order to better support users and the interop between OpenTelemetry and
