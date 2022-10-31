@@ -61,24 +61,13 @@ $ pip install -e ./opentelemetry-api
 $ pip install -e ./opentelemetry-sdk
 ```
 
-## Learn more
+## Repositories and benchmarks
 
-- [API reference][]
-  - [Traces API][], [Traces SDK][]
-  - [Metrics API][], [Metrics SDK][]
-  - [Logs API][]
-- [Examples][]
-- [Contrib repository][]
+- Main repo: [opentelemetry-python](https://github.com/open-telemetry/opentelemetry-python)
+- Contrib repo: [opentelemetry-python-contrib][]
 - [Performance benchmarks][]
 
-[API & SDK reference]: https://opentelemetry-python.readthedocs.io/en/stable/
-[Contrib repository]:
+[opentelemetry-python-contrib]:
     https://github.com/open-telemetry/opentelemetry-python-contrib
-[Examples]: https://opentelemetry-python.readthedocs.io/en/stable/examples/
 [Performance benchmarks]:
     https://open-telemetry.github.io/opentelemetry-python/benchmarks/
-[Metrics API]: https://opentelemetry-python.readthedocs.io/en/stable/api/metrics.html
-[Traces API]: https://opentelemetry-python.readthedocs.io/en/stable/api/trace.html
-[Logs API]: https://opentelemetry-python.readthedocs.io/en/stable/sdk/logs.html
-[Metrics SDK]: https://opentelemetry-python.readthedocs.io/en/stable/sdk/metrics.html
-[Traces SDK]: https://opentelemetry-python.readthedocs.io/en/stable/sdk/trace.html
