@@ -3,7 +3,7 @@ languages:
     name: C++
     status:
       traces: stable
-      metrics: alpha
+      metrics: stable
       logs: experimental
   dotnet:
     name: .NET
