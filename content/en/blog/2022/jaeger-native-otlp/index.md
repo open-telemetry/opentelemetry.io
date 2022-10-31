@@ -71,4 +71,4 @@ Your input will help us to choose how long to deprecate before removal.
 A
 [draft PR has been created in the specification](https://github.com/open-telemetry/opentelemetry-specification/pull/2858)
 to support this deprecation. If would like to contribute and provide feedback,
-please visit the above link and add some comments. We want to hear from you.
+visit the link above and add some comments. We want to hear from you.
