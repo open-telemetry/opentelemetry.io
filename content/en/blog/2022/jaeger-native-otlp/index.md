@@ -53,7 +53,7 @@ This causes challenges for both Jaeger users and OpenTelemetry maintainers:
 Now that Jaeger supports OTLP, this feels like a step backwards: It results in
 an increased maintenance burden with very little benefit.
 
-## Intent to Deprecate
+## Intent to Deprecate - We'd Like Your Feedback!
 
 In order to better support users and the interop between OpenTelemetry and
 Jaeger, we intend to deprecate and eventually remove support for Jaeger client
