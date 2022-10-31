@@ -58,8 +58,8 @@ an increased maintenance burden with very little benefit.
 
 ### User Impact
 
-The proposal is to deprecate the following exporters from
-OpenTelemetry in favor of using native OTLP into Jaeger:
+The proposal is to deprecate the following exporters from OpenTelemetry in favor
+of using native OTLP into Jaeger:
 
 - Jaeger Thrift over HTTP
 - Jaeger Protobuf via gRPC
