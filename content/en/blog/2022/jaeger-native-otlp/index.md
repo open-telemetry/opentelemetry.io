@@ -93,13 +93,6 @@ We would like your feedback! We want to hear from users who could be impacted by
 this change. To better make a data-informed decision,
 [we have put together a short 4-question survey](https://forms.gle/aUuJg5DQwNzncJ4s8).
 
-- Are you an OpenTelemetry user currently sending data to Jaeger?
-- Are you using the Jaeger client exporters, or have you already made the switch
-  to OTLP?
-- How painful will it be for you to migrate to native OTLP with Jaeger?
-- Are you using the Jaeger agent? Can you use a collector sidecar instead?
-- How much time do you think you need to migrate?
-
 Your input will help us to choose how long to deprecate before removal.
 
 A
