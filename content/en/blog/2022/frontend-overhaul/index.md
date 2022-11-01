@@ -54,15 +54,15 @@ context.
 The demo’s stack includes multiple microservices in different languages,
 covering each of the following OTel-supported languages:
 
-- .NET
-- C++
-- Elixir
-- Go
-- Node.js
-- PHP
-- Python
-- Ruby
-- Rust
+- [.NET](https://opentelemetry.io/docs/instrumentation/net/)
+- [C++](https://opentelemetry.io/docs/instrumentation/cpp/)
+- [Erlang/Elixir](https://opentelemetry.io/docs/instrumentation/erlang/)
+- [Go](https://opentelemetry.io/docs/instrumentation/go/)
+- [Node.js](https://opentelemetry.io/docs/instrumentation/js/)
+- [PHP](https://opentelemetry.io/docs/instrumentation/php/)
+- [Python](https://opentelemetry.io/docs/instrumentation/python/)
+- [Ruby](https://opentelemetry.io/docs/instrumentation/ruby/)
+- [Rust](https://opentelemetry.io/docs/instrumentation/rust/)
 
 Every microservice has a specific goal and can communicate with others by using
 a global gRPC definition. Persistent information is saved into a PostgresSQL
@@ -132,7 +132,7 @@ all the microservices.
 A simple back-end solution was designed using the
 [official gRPC exporter](https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-grpc)
 in combination with the
-[Nodejs SDK](https://www.npmjs.com/package/@opentelemetry/sdk-node).
+[Node.js SDK](https://www.npmjs.com/package/@opentelemetry/sdk-node).
 
 You can find the full
 [implementation here](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/frontend/utils/telemetry/Instrumentation.js).
