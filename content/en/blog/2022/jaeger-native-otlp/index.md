@@ -15,9 +15,9 @@ OpenTelemetry users are now able to send traces into Jaeger with
 industry-standard OTLP, and the Jaeger client library repositories have been
 finally archived.
 
-We intend to **deprecate Jaeger exporters from OpenTelemetry** in the near future,
-and are looking for your feedback to determine the length of the depreation
-phase. The best way to provide feedback is by
+We intend to **deprecate Jaeger exporters from OpenTelemetry** in the near
+future, and are looking for your feedback to determine the length of the
+depreation phase. The best way to provide feedback is by
 [filling out a 4-question survey](https://forms.gle/aUuJg5DQwNzncJ4s8) or
 commenting on
 [the existing draft pull request](https://github.com/open-telemetry/opentelemetry-specification/pull/2858).
@@ -52,9 +52,6 @@ This causes challenges for both Jaeger users and OpenTelemetry maintainers:
 
     Now that Jaeger supports OTLP, this feels like a step backwards: It results
     in an increased maintenance burden with very little benefit.
-
-Now that Jaeger supports OTLP, this feels like a step backwards: It results in
-an increased maintenance burden with very little benefit.
 
 ### User Impact
 
