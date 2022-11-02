@@ -54,15 +54,15 @@ context.
 The demo’s stack includes multiple microservices in different languages,
 covering each of the following OTel-supported languages:
 
-- [.NET](https://opentelemetry.io/docs/instrumentation/net/)
-- [C++](https://opentelemetry.io/docs/instrumentation/cpp/)
-- [Erlang/Elixir](https://opentelemetry.io/docs/instrumentation/erlang/)
-- [Go](https://opentelemetry.io/docs/instrumentation/go/)
-- [Node.js](https://opentelemetry.io/docs/instrumentation/js/)
-- [PHP](https://opentelemetry.io/docs/instrumentation/php/)
-- [Python](https://opentelemetry.io/docs/instrumentation/python/)
-- [Ruby](https://opentelemetry.io/docs/instrumentation/ruby/)
-- [Rust](https://opentelemetry.io/docs/instrumentation/rust/)
+- [C++](/docs/instrumentation/cpp/)
+- [.NET](/docs/instrumentation/net/)
+- [Erlang/Elixir](/docs/instrumentation/erlang/)
+- [Go](/docs/instrumentation/go/)
+- [Node.js](/docs/instrumentation/js/)
+- [PHP](/docs/instrumentation/php/)
+- [Python](/docs/instrumentation/python/)
+- [Ruby](/docs/instrumentation/ruby/)
+- [Rust](/docs/instrumentation/rust/)
 
 Every microservice has a specific goal and can communicate with others by using
 a global gRPC definition. Persistent information is saved into a PostgresSQL
