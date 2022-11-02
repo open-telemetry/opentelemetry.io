@@ -1,7 +1,7 @@
 ---
 title: Supporting Jaeger with native OTLP
 linkTitle: Jaeger OTLP support
-date: 2022-11-01
+date: 2022-11-02
 author: >-
   [Jason Plumb](https://github.com/breedx-splk) (Splunk)
 ---
