@@ -372,12 +372,12 @@ catch (Exception ex)
 ## Next steps
 
 After you've setup manual instrumentation, you may want to use [instrumentation
-libraries](/docs/instrumentation/net/libraries). As the name suggests, they will
+libraries](../libraries/). As the name suggests, they will
 instrument relevant libraries you're using and generate spans (activities) for things like
 inbound and outbound HTTP requests and more.
 
 You'll also want to configure an appropriate exporter to [export your telemetry
-data](/docs/instrumentation/net/exporters) to one or more telemetry backends.
+data](../exporters/) to one or more telemetry backends.
 
 You can also check the [automatic instrumentation for
-.NET](/docs/instrumentation/net/automatic), which is currently in beta.
+.NET](../automatic/), which is currently in beta.
