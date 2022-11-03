@@ -1,7 +1,8 @@
 ---
 title: Front-end Overhaul of the OpenTelemetry Demo (Go to Next.js)
 linkTitle: Front-end Overhaul Demo
-date: 2022-10-18
+date: 2022-11-07
+draft: true
 author: "[Oscar Reyes](https://github.com/xoscar) (Tracetest)"
 canonical_url: https://tracetest.io/blog/frontend-overhaul-opentelemetry-demo
 ---
