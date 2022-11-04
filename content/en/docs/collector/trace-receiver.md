@@ -15,20 +15,20 @@ Here is the definition of those concepts according to OpenTelemetry:
 
 Although the definition seems very application centric, you can leverage the
 OpenTelemetry trace model as a way to represent a request and quickly understand
-it's duration and the details about every step involved in completing it.
+its duration and the details about every step involved in completing it.
 
 Assuming you already have a system generating some kind of tracing telemetry,
 [the OpenTelemetry Collector](/docs/collector/) is the doorway to help you make
 it available into the OTel world.
 
 Within the Collector, a trace receiver has the role to receive and convert your
-request telemetry from it's original format into the OTel trace model, so the
+request telemetry from its original format into the OTel trace model, so the
 information can be properly processed through the Collector's pipelines.
 
 In order to implement a traces receiver you will need the following:
 
 - A `Config` implementation to enable the trace receiver to gather and validate
-  it's configurations within the Collector's config.yaml.
+  its configurations within the Collector's config.yaml.
 
 - A `ReceiverFactory` implementation so the Collector can properly instantiate
   the trace receiver component
@@ -164,7 +164,7 @@ go mod init github.com/rquedas/otel4devs/collector/receiver/trace-receiver/tailt
 ## Reading and Validating your Receiver Settings
 
 In order to be instantiated and participate in pipelines the Collector needs to
-identify your receiver and properly load it's settings from within it's
+identify your receiver and properly load its settings from within its
 configuration file.
 
 The `tailtracer` receiver will have the following settings:
@@ -201,7 +201,7 @@ type Config struct{
 }
 ```
 
-In order to be able to give your receiver access to it's settings the `Config`
+In order to be able to give your receiver access to its settings the `Config`
 struct must:
 
 - embed the
@@ -288,7 +288,7 @@ func (cfg *Config) Validate() error {
 > - I added the `Validate` method to my Config struct where I am checking if the
 >   `interval` setting value is at least 1 minute (1m) and if the
 >   `number_of_traces` setting value is greater or equal to 1. If that is not
->   true the Collector will generate an error during it's startup process and
+>   true the Collector will generate an error during its startup process and
 >   display the message accordingly.
 
 If you want to take a closer look at the structs and interfaces involved in the
@@ -346,7 +346,7 @@ func components() (component.Factories, error) {
 ```
 
 As you can see, the `components()` function is responsible to provide the
-Collector the factories for all it's components which is represented by a
+Collector the factories for all its components which is represented by a
 variable called `factories` of type `component.Factories` (here is the
 declaration of the
 [component.Factories](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.53.0/component/factories.go#L25)
@@ -359,7 +359,7 @@ factories (instances of `ReceiverFactory`), and it currently has the
 `otlpreceiver.NewFactory()` function call.
 
 The `tailtracer` receiver has to provide a `ReceiverFactory` implementation, and
-although you will find a `ReceiverFactory` interface (you can find it's
+although you will find a `ReceiverFactory` interface (you can find its
 definition in the
 [component/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.53.0/component/receiver.go#L104)
 file within the Collector's project ), the right way to provide the
@@ -490,12 +490,12 @@ func NewFactory() component.ReceiverFactory {
 >   the Receiver interface and the NewReceiverSettings() and NewComponentID()
 >   functions are declared.
 > - Added a string constant called `typeStr` to represent the unique identifier
->   (component ID) of the receiver and assigned `tailtracer` as it's value. This
+>   (component ID) of the receiver and assigned `tailtracer` as its value. This
 >   ID is going to be used to fetch the receiver settings from the Collector's
 >   config.
 > - Added a `time.Duration` constant called `defaultInterval` to represent the
 >   default value for our receiver's `Interval` setting. We will be setting the
->   default value for 1 minute hence the assignment of `1 * time.Minute` as it's
+>   default value for 1 minute hence the assignment of `1 * time.Minute` as its
 >   value.
 > - Added a function called `createDefaultConfig` which is responsible to return
 >   a config.Receiver implementation, which in this case is going to be an
@@ -547,11 +547,11 @@ responsible to instantiate and return a `component.TraceReceiver` instance and
 it requires the following parameters:
 
 - `context.Context`: the reference to the Collector's `context.Context` so your
-  trace receiver can properly manage it's execution context.
+  trace receiver can properly manage its execution context.
 - `component.ReceiverCreateSettings`: the reference to some of the Collector's
   settings under which your receiver is created.
 - `config.Receiver`: the reference for the receiver config settings passed by
-  the Collector to the factory so it can properly read it's settings from the
+  the Collector to the factory so it can properly read its settings from the
   Collector config.
 - `consumer.Traces`: the reference to the next `consumer.Traces` in the
   pipeline, which is where received traces will go. This is either a processor
@@ -647,7 +647,7 @@ As explained before, all the Collector components are instantiated by the
 `components()` function within the `components.go` file.
 
 The `tailtracer` receiver factory instance has to be added to the `factories`
-map so the Collector can load it properly as part of it's initialization
+map so the Collector can load it properly as part of its initialization
 process.
 
 Here is what the `components.go` file looks like after making the changes to
@@ -768,7 +768,7 @@ in the
 file within the OTel Collector's project in GitHub, open the file and take a
 minute to browse through all the interfaces declared in it.
 
-Notice that `component.TracesReceiver` (and it's siblings
+Notice that `component.TracesReceiver` (and its siblings
 `component.MetricsReceiver` and `component.LogsReceiver`) at this point in time,
 doesn't describe any specific methods other than the ones it "inherits" from
 `component.Receiver` which also doesn't describe any specific methods other than
@@ -800,7 +800,7 @@ following information:
   Collector's host once it's up and running.
 
 The `Shutdown()` represents a signal of the Collector telling the component that
-the service is getting shutdown and as such the component should stop it's
+the service is getting shutdown and as such the component should stop its
 processing and make all the necessary cleanup work required:
 
 - `context.Context`: the context passed by the Collector as part of the shutdown
@@ -860,7 +860,7 @@ func (tailtracerRcvr *tailtracerReceiver) Shutdown(context.Context) error {
 
 The `Start()` method is passing 2 references (`context.Context` and
 `component.Host`) that your receiver might need to keep so they can be used as
-part of it's processing operations.
+part of its processing operations.
 
 The `context.Context` reference should be used for creating a new context to
 support you receiver processing operations, and in that case you will need to
@@ -881,8 +881,8 @@ type tailtracerReceiver struct {
 ```
 
 Now you need to update the `Start()` methods so the receiver can properly
-initialize it's own processing context and have the cancellation function kept
-in the `cancel` field and also initialize it's `host` field value. You will also
+initialize its own processing context and have the cancellation function kept
+in the `cancel` field and also initialize its `host` field value. You will also
 update the `Stop()` method in order to finalize the context by calling the
 `cancel` function.
 
@@ -938,7 +938,7 @@ its factory.
 Open the `tailtracer/factory.go` file and navigate to the
 `createTracesReceiver()` function. Notice that the factory will pass references
 as part of the `createTracesReceiver()` function parameters that your receiver
-actually requires to work properly like it's configuration settings
+actually requires to work properly like its configuration settings
 (`config.Receiver`), the next `Consumer` in the pipeline that will consume the
 generated traces (`consumer.Traces`) and the Collector's logger so the
 `tailtracer` receiver can add meaningful events to it
@@ -1008,7 +1008,7 @@ func (tailtracerRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
 > - Importing the `go.opentelemetry.io/collector/consumer` which is where the
 >   pipeline's consumer types and interfaces are declared.
 > - Importing the `go.uber.org/zap` package, which is what the Collector uses
->   for it's logging capabilities.
+>   for its logging capabilities.
 > - Added a `zap.Logger` field named `logger` so we can have access to the
 >   Collector's logger reference from within the receiver.
 > - Added a `consumer.Traces` field named `nextConsumer` so we can push the
@@ -1431,7 +1431,7 @@ creating a trace.
 
 You will start with a type called `ptrace.ResourceSpans` which represents the
 resource and all the operations that it either originated or received while
-participating in a trace. You can find it's definition within the
+participating in a trace. You can find its definition within the
 [/pdata/internal/data/protogen/trace/v1/trace.pb.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.50.0/pdata/internal/data/protogen/trace/v1/trace.pb.go).
 
 `ptrace.Traces` has a method named `ResourceSpans()` which returns an instance
@@ -1441,7 +1441,7 @@ of a helper type called `ptrace.ResourceSpansSlice`. The
 `Resource` entities participating in the request represented by the trace.
 
 `ptrace.ResourceSpansSlice` has a method named `AppendEmpty()` that adds a new
-`ptrace.ResourceSpan` to the array and return it's reference.
+`ptrace.ResourceSpan` to the array and return its reference.
 
 Once you have an instance of a `ptrace.ResourceSpan` you will use a method named
 `Resource()` which will return the instance of the `pcommon.Resource` associated
@@ -1549,7 +1549,7 @@ So, when you look at the `BackendSystem` entity, it has fields representing
 related information and
 [Cloud](/docs/reference/specification/resource/semantic_conventions/cloud/)
 related information, and we will use the attribute names and values prescribed
-by the resource semantic convention to represent that information on it's
+by the resource semantic convention to represent that information on its
 `Resource`.
 
 All the resource semantic convention attribute names and well known-values are
@@ -1804,10 +1804,10 @@ instance of a helper type called `ptrace.ScopeSpansSlice`. The
 spans it generated within the context of a trace.
 
 `ptrace.ScopeSpansSlice` has a method named `AppendEmpty()` that adds a new
-`ptrace.ScopeSpans` to the array and return it's reference.
+`ptrace.ScopeSpans` to the array and return its reference.
 
 Let's create a function to instantiate a `ptrace.ScopeSpans` representing for
-the ATM system's instrumentation scope and it's spans. Open the
+the ATM system's instrumentation scope and its spans. Open the
 `tailtracer/model.go` file and add the following function:
 
 ```go
@@ -1890,7 +1890,7 @@ the number of operations the instrumentation scope was able to identify and
 describe as part of the trace.
 
 `ptrace.SpanSlice` has a method named `AppendEmpty()` that adds a new
-`ptrace.Span` to the array and return it's reference.
+`ptrace.Span` to the array and return its reference.
 
 `ptrace.Span` has the following methods to describe an operation:
 
@@ -2047,7 +2047,7 @@ func generateTraces() ptrace.Traces{
 }
 ```
 
-You now have the `BackendSystem` entity and it's operations represented in spans
+You now have the `BackendSystem` entity and its operations represented in spans
 within a proper trace context! All you need to do is to push the generated trace
 through the pipeline so the next consumer (either a processor or an exporter)
 can receive and process it.
