@@ -326,7 +326,7 @@ back-end that processes spans can now assign a final status.
 
 ### Span Kind
 
-When a span is created, it is one of `Client`, `Server`, `Internal`, `Producer`, or `Consumer`. This span kind provides a hint to the tracing backend as to how the trace should be assembled. According to the OpenTelemetry specification, the parent of a server span is always a client span, and the child of a client span is always a server span. Similarly, the parent of a consumer span is always a producer and the child of a producer span is always a consumer. If not provided, the span kind is assumed to be internal.
+When a span is created, it is one of `Client`, `Server`, `Internal`, `Producer`, or `Consumer`. This span kind provides a hint to the tracing backend as to how the trace should be assembled. According to the OpenTelemetry specification, the parent of a server span is often a remote client span, and the child of a client span is usually a server span. Similarly, the parent of a consumer span is always a producer and the child of a producer span is always a consumer. If not provided, the span kind is assumed to be internal.
 
 For more information regarding SpanKind, see [SpanKind]({{< relref "/docs/reference/specification/trace/api#spankind" >}}).
 
