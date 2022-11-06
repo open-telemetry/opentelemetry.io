@@ -17,10 +17,6 @@ preferred package manager client.
 
 For example, using the .NET CLI:
 
-```shell
-dotnet add package OpenTelemetry
-dotnet add package OpenTelemetry.Exporter.Console
-```
 
 ## Console application
 
