@@ -8,7 +8,7 @@ backend such as [Jaeger](https://www.jaegertracing.io/) or
 [Zipkin](https://zipkin.io/). OpenTelemetry JS provides exporters for some
 common open source backends.
 
-Below you will find some introductions on how to setup backends and the matching
+Below you will find some introductions on how to set up backends and the matching
 exporters.
 
 ## OTLP endpoint
@@ -37,7 +37,7 @@ const {
 
 const sdk = new opentelemetry.NodeSDK({
   traceExporter: new OTLPTraceExporter({
-    // optional - url default value is http://localhost:4318/v1/traces
+    // optional - default url is http://localhost:4318/v1/traces
     url: "<your-otlp-endpoint>/v1/traces",
     // optional - collection of custom headers to be sent with each request, empty by default
     headers: {},
@@ -87,18 +87,18 @@ your collector.
 [OpenTelemetry Collector Exporter with grpc][] and
 [OpenTelemetry Collector Exporter with protobuf][]
 do only work with Node.JS,
-therefor you are limited to use the
-[OpenTelemetry Collector Exporter with http][]. 
+therefore you are limited to use the
+[OpenTelemetry Collector Exporter with http][].
 
 Make sure that the receiving end of your exporter (collector or observability
-backend) do support `http/json`, and that you are exporting your data to the
-right endpoint, i.e. make sure that your port is set to `4318`.
+backend) does support `http/json`, and that you are exporting your data to the
+right endpoint, i.e., make sure that your port is set to `4318`.
 
 #### Configure CSPs
 
 If your website is making use of Content Security Policies (CSPs), make sure
 that the domain of your OTLP endpoint is included. If your collector endpoint
-is `https://collector.example.com:4318/v1/traces` add the following directive:
+is `https://collector.example.com:4318/v1/traces`, add the following directive:
 
 ```text
 connect-src collector.example.com:4318/v1/traces
@@ -113,7 +113,7 @@ If your website and collector are hosted at a different origin, your browser
 might block the requests going out to your collector. You need to configure
 special headers for Cross-Origin Resource Sharing (CORS).
 
-The OpenTelemetry collector provides [a feature][] for http based receivers to add
+The OpenTelemetry collector provides [a feature][] for http-based receivers to add
 the required headers to allow the receiver to accept traces from a web browser:
 
 ```yaml
@@ -140,7 +140,7 @@ accessible for everyone.
 
 It is recommended that you do not expose your collector directly, but that you
 put a reverse proxy (nginx, apache, ...) in front of it. The reverse proxy can
-take care of SSL-offloading, setting the right CORS headers and many other
+take care of SSL-offloading, setting the right CORS headers, and many other
 features specific to web applications.
 
 Below you will find a configuration for the popular nginx webserver to get
