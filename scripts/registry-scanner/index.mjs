@@ -24,13 +24,29 @@ import { URL } from 'url';
 const octokit = new Octokit({auth: process.env.GITHUB_AUTH_TOKEN});
 
 // Please uncomment the entries you'd like to scan for.
-// ['receiver','exporter','processor'].forEach(async (component) => scanCollectorComponent(component))
-// scanInstrumentationLibrariesByLanguage('js', 'plugins/node')
-// scanInstrumentationLibrariesByLanguage('ruby', 'instrumentation')
-// scanInstrumentationLibrariesByLanguage('erlang', 'instrumentation')
-// scanInstrumentationLibrariesByLanguage('python', 'instrumentation', 'rst')
-// scanInstrumentationLibrariesByLanguage('java', 'instrumentation', 'md', 'opentelemetry-java-instrumentation')
-scanInstrumentationLibrariesByLanguage('dotnet', 'src', 'md', 'opentelemetry-dotnet-contrib', (item) => item.name.includes('Instrumentation'), (name) => name.split('.')[2].toLowerCase())
+// ['receiver','exporter','processor', 'extension'].forEach(async (component) => scanCollectorComponent(component))
+
+// scanByLanguage('instrumentation', 'js', 'plugins/node')
+
+scanByLanguage('instrumentation', 'ruby')
+// scanByLanguage('exporter', 'ruby', 'exporter', 'md', 'opentelemetry-ruby');
+
+// scanByLanguage('instrumentation', 'erlang', 'instrumentation')
+
+//scanByLanguage('instrumentation', 'python', 'instrumentation', 'rst')
+//scanByLanguage('exporter', 'python', 'exporter', 'rst', 'opentelemetry-python')
+
+
+// scanByLanguage('instrumentation', 'java', 'instrumentation', 'md', 'opentelemetry-java-instrumentation')
+
+/*[
+    ['instrumentation', 'opentelemetry-dotnet'],
+    ['instrumentation', 'opentelemetry-dotnet-contrib'],
+    ['exporter', 'opentelemetry-dotnet'],
+    ['exporter', 'opentelemetry-dotnet-contrib']
+].forEach(async ([registryType, repo]) => {
+    scanByLanguage(registryType, 'dotnet', 'src', 'md', repo, (item) => item.name.toLowerCase().includes(registryType), (name) => name.split(".").splice(2,3).join('-').toLowerCase())
+})*/
 
 async function scanForNew(path, repo, filter = () => true, keyMapper = x => x, owner = 'open-telemetry') {
     const result = await octokit.request('GET /repos/{owner}/{repo}/contents/{path}', {
@@ -125,20 +141,21 @@ async function createFilesFromScanResult(existing, found, settings) {
     })
 }
 
-async function scanInstrumentationLibrariesByLanguage(
+async function scanByLanguage(
+        registryType,
         language, 
-        path, 
+        path = registryType, 
         readmeFormat = 'md', 
         repo = `opentelemetry-${language}-contrib`,
         filter = () => true,
-        keyMapper = x => x.split(/[_-]/).filter(y => !['opentelemetry', 'instrumentation'].includes(y)).join(''),
+        keyMapper = x => x.split(/[_-]/).filter(y => !['opentelemetry', registryType].includes(y)).join(''),
     ) {
     // https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/
     const found = await scanForNew(path, repo, filter, keyMapper)
-    const existing = await scanForExisting(`instrumentation-${language}`)
+    const existing = await scanForExisting(`${registryType}-${language}`)
     createFilesFromScanResult(existing, found, {
         language,
-        registryType: 'instrumentation',
+        registryType,
         readmeFormat
     })
 }

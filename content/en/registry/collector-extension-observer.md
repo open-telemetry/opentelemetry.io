@@ -1,0 +1,15 @@
+---
+title: Host Observer Collector Extension
+registryType: extension
+isThirdParty: false
+language: collector
+tags:
+  - go
+  - extension
+  - collector
+repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/observer/
+license: Apache 2.0
+description: Observers are implemented as an extension to discover networked endpoints like a Kubernetes pod, Docker container, or local listening port. Currently available are observers for docker, ecs, ecs_task, host and k8s.
+authors: OpenTelemetry Authors
+otVersion: latest
+---

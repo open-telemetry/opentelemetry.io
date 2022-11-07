@@ -1,0 +1,15 @@
+---
+title: AWS SDK client instrumentation for OpenTelemetry
+registryType: instrumentation
+isThirdParty: false
+language: dotnet
+tags:
+    - instrumentation-aws
+    - instrumentation
+    - dotnet
+repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Contrib.Instrumentation.AWS
+license: Apache 2.0
+description: AWS SDK client instrumentation for OpenTelemetry .NET
+authors: OpenTelemetry Authors
+otVersion: latest
+---
