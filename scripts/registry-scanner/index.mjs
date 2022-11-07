@@ -24,13 +24,13 @@ import { URL } from 'url';
 const octokit = new Octokit({auth: process.env.GITHUB_AUTH_TOKEN});
 
 // Please uncomment the entries you'd like to scan for.
-// ['receiver','exporter','processor'].forEach(async (component) => scanCollectorComponent(component))
+// ['receiver','exporter','processor', 'extension'].forEach(async (component) => scanCollectorComponent(component))
 // scanInstrumentationLibrariesByLanguage('js', 'plugins/node')
 // scanInstrumentationLibrariesByLanguage('ruby', 'instrumentation')
 // scanInstrumentationLibrariesByLanguage('erlang', 'instrumentation')
 // scanInstrumentationLibrariesByLanguage('python', 'instrumentation', 'rst')
 // scanInstrumentationLibrariesByLanguage('java', 'instrumentation', 'md', 'opentelemetry-java-instrumentation')
-scanInstrumentationLibrariesByLanguage('dotnet', 'src', 'md', 'opentelemetry-dotnet-contrib', (item) => item.name.includes('Instrumentation'), (name) => name.split('.')[2].toLowerCase())
+// scanInstrumentationLibrariesByLanguage('dotnet', 'src', 'md', 'opentelemetry-dotnet-contrib', (item) => item.name.includes('Instrumentation'), (name) => name.split('.')[2].toLowerCase())
 
 async function scanForNew(path, repo, filter = () => true, keyMapper = x => x, owner = 'open-telemetry') {
     const result = await octokit.request('GET /repos/{owner}/{repo}/contents/{path}', {
