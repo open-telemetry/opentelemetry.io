@@ -28,5 +28,5 @@ jobs:
           GIT_COMMITTER_NAME: Auto-update CI workflow
 
           # Set svrnm's email, otherwise CLA checks will fail
-          GIT_AUTHOR_EMAIL: neumanns@cisco.com
-          GIT_COMMITTER_EMAIL: neumanns@cisco.com
+          GIT_AUTHOR_EMAIL: 107717825+opentelemetrybot@users.noreply.github.com
+          GIT_COMMITTER_EMAIL: 107717825+opentelemetrybot@users.noreply.github.com
