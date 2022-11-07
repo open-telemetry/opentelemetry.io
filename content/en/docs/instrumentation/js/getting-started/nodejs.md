@@ -1,13 +1,14 @@
 ---
-title: TypeScript/ Node.js
+title: Node.js
 aliases: [/docs/js/getting_started/nodejs]
 ---
 
-This guide will show you how to get started with tracing in TypeScript and Node.js.
+This guide will show you how to get started with tracing in Node.js.
 
 ## Prerequisites
 
 Ensure that you have the following installed locally:
+
 - [Node.js](https://nodejs.org/en/download/)
 - [TypeScript](https://www.typescriptlang.org/download), if you will be using TypeScript.
 
@@ -49,7 +50,7 @@ Create `app.ts|js` and add the following code to the file:
 
 {{< ot-tabs TypeScript JavaScript >}}
 
-{{< ot-tab >}}
+{{< ot-tab lang="ts">}}
 /*app.ts*/
 import express, { Express } from "express";
 
@@ -65,7 +66,7 @@ app.listen(PORT), () => {
 };
 {{< /ot-tab >}}
 
-{{< ot-tab >}}
+{{< ot-tab lang="js">}}
 /*app.js*/
 const express = require("express");
 
@@ -104,7 +105,7 @@ Listening for requests on http://localhost:8080
 
 ### Dependencies
 
-The following dependencies are required to trace a TypeScript/ Node.js application.
+The following dependencies are required to trace a Node.js application.
 
 #### Core Dependencies
 
