@@ -24,6 +24,7 @@ OpenTelemetry in their commercial products.
 | Aspecto                    | Yes               | Yes         | [aspecto.io](https://www.aspecto.io)                                                                                                                  |
 | AWS                        | Yes               | No          | [aws-otel.github.io](https://aws-otel.github.io)                                                                                                      |
 | Azure                      | Yes               | No          | [docs.microsoft.com/...](https://docs.microsoft.com/azure/azure-monitor/app/opentelemetry-overview)                                                   |
+| Crowdstrike                | No                | Yes         | [docs.crowdstrike.com/...](https://library.humio.com/)
 | Datadog                    | Yes               | Yes         | [docs.datadoghq.com/...](https://docs.datadoghq.com/tracing/setup_overview/open_standards)                                                            |
 | Dynatrace                  | Yes               | Yes         | [dynatrace.com/...](https://www.dynatrace.com/support/help/how-to-use-dynatrace/transactions-and-services/service-monitoring-settings/opentelemetry/) |
 | Elastic                    | Yes               | Yes         | [elastic.co/...](https://www.elastic.co/guide/en/apm/get-started/current/open-telemetry-elastic.html)                                                 |
