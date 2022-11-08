@@ -106,7 +106,7 @@ module.exports.hello = async (event) => {
 };
 ```
 
-## Deployment
+### Deployment
 
 There are multiple ways of deploying, but we will be using [Serverless Framework](https://github.com/serverless/serverless)
 for ease of use. Create a file called `serverless.yml`:
