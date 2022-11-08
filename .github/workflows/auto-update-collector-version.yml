@@ -12,8 +12,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
 
       - name: Set up Go
         uses: actions/setup-go@v2
@@ -24,8 +22,8 @@ jobs:
         run: ./scripts/update-collector-version.sh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GIT_AUTHOR_NAME: Auto-update CI workflow
-          GIT_COMMITTER_NAME: Auto-update CI workflow
+          GIT_AUTHOR_NAME: opentelemetrybot
+          GIT_COMMITTER_NAME: opentelemetrybot
 
           # Set svrnm's email, otherwise CLA checks will fail
           GIT_AUTHOR_EMAIL: 107717825+opentelemetrybot@users.noreply.github.com
