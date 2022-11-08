@@ -95,7 +95,7 @@ serve as a Lambda function. Save the following code as `handler.js`.
 const http = require("http");
 
 module.exports.hello = async (event) => {
-  http.get("http://aws.amazon.com");
+  http.get("https://opentelemetry.io/");
 
   return {
     statusCode: 200,
