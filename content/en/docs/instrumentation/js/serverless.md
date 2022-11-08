@@ -1,13 +1,15 @@
 ---
-title: AWS Lambda
-aliases: [/docs/instrumentation/js/api/tracing]
-weight: 4
+title: Serverless
+weight: 8
 ---
 
-This guide will show you how to get started with tracing AWS Lambda Nods.js
-functions using OpenTelemetry instrumentation libraries.
+This guide will show you how to get started with tracing serverless functions using OpenTelemetry instrumentation libraries.
 
-### Getting started
+## AWS Lambda
+
+Following the next steps will allow your AWS Lambda functions to use OpenTelemetry to send traces to the configured backend.
+
+### Dependencies
 
 Create an empty package.json:
 
@@ -71,8 +73,8 @@ registerInstrumentations({
 });
 ```
 
-Replace `<backend_url>` with the URL of your favorite backend to send all
-tracing data to it.
+Replace `<backend_url>` with the URL of your favorite backend to export all
+traces to it. If you don't have one setup already, you can check out [Jaeger](https://www.jaegertracing.io/) or [Zipkin](https://zipkin.io/).
 
 Note that `disableAwsContextPropagation` is set to true. The reason for this is
 that the Lambda instrumentation tries to use the X-Ray context headers by
