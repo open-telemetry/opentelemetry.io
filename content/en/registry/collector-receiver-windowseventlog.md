@@ -1,5 +1,5 @@
 ---
-title: # Windows Log Event Receiver
+title: Windows Log Event Receiver
 registryType: receiver
 isThirdParty: false
 language: collector
