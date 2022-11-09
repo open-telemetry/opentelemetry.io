@@ -9,6 +9,7 @@ instrument your own application should be similar.
 ## Prerequisites
 
 Ensure that you have the following installed locally:
+
 - [Node.js](https://nodejs.org/en/download/)
 - [TypeScript](https://www.typescriptlang.org/download), if you will be using TypeScript.
 
