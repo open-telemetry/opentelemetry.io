@@ -96,14 +96,32 @@ serve as a Lambda function. Save the following code as `handler.js`.
 
 const https = require('https');
 
-module.exports.hello = async (event) => {
-  https.get('https://opentelemetry.io/', res => {
-    return {
-      statusCode: res.statusCode,
-    };
-  }).on('error', err => {
-    console.log('Error: ', err.message);
+function getRequest() {
+  const url = 'https://opentelemetry.io/';
+
+  return new Promise((resolve, reject) => {
+    const req = https.get(url, res => {
+      resolve(res.statusCode);
+    });
+
+    req.on('error', err => {
+      reject(new Error(err));
+    });
   });
+}
+
+exports.handler = async (event) => {
+  try {
+    const result = await getRequest();
+    return {
+      statusCode: result,
+    };
+  } catch (error) {
+    return {
+      statusCode: 400,
+      body: error.message,
+    };
+  }
 };
 ```
 
