@@ -8,7 +8,7 @@ Please be sure to review the following documentation:
 - [Data Collection concepts](../../concepts/data-collection) in order to
   understand the repositories applicable to the OpenTelemetry Collector.
 - [Security
-  guidance](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security.md)
+  guidance](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md)
 
 ## Basics
 
@@ -340,7 +340,7 @@ exporters:
   # Data sources: metrics
   prometheusremotewrite:
     endpoint: "http://some.url:9411/api/prom/push"
-    # For offical Prometheus (e.g. running via Docker)
+    # For official Prometheus (e.g. running via Docker)
     # endpoint: 'http://prometheus:9090/api/v1/write'
     # tls:
     #   insecure: true

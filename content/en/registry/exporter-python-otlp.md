@@ -1,14 +1,14 @@
 ---
 title: OTLP Exporter
 registryType: exporter
-isThirdParty: true
+isThirdParty: false
 language: python
 tags:
   - python
   - exporter
 repo: https://github.com/open-telemetry/opentelemetry-python/tree/main/exporter/opentelemetry-exporter-otlp
 license: Apache 2.0
-description: This library allows to export data to the OpenTelemetry Collector using the OpenTelemetry Protocol.
+description: This library allows exporting telemetry data in the OpenTelemetry Protocol (OTLP) format to the OpenTelemetry Collector and OTLP-compliant backends/receivers.
 authors: OpenTelemetry Authors
 otVersion: latest
 ---

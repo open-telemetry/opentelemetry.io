@@ -1,0 +1,15 @@
+---
+title: Geneva Exporter for OpenTelemetry .NET
+registryType: exporter
+isThirdParty: false
+language: dotnet
+tags:
+    - geneva
+    - exporter
+    - dotnet
+repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Exporter.Geneva
+license: Apache 2.0
+description: The Geneva Exporter exports telemetry to Event Tracing for Windows (ETW) or to a Unix Domain Socket (UDS) on the local machine.
+authors: OpenTelemetry Authors
+otVersion: latest
+---

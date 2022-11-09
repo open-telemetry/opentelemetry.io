@@ -5,3 +5,6 @@ IgnoreInternalURLs:
   # TODO: fix the source of these inlined TOC links
   # https://github.com/open-telemetry/opentelemetry.io/issues/1357
   - /docs/reference/specification/versioning-and-stability/#not-defined-semantic-conventions-stability
+IgnoreURLs:
+  - ^/docs/instrumentation/\w+/(api|examples)/$
+  - ^/docs/instrumentation/net/(metrics-api|traces-api)/

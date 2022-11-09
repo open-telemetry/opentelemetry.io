@@ -2,10 +2,16 @@
 {{/* cSpell:ignore wordmark */ -}}
 
 {{ range $p := .Site.Pages -}}
-{{ range .Aliases -}}
-{{ . | printf "%-35s" }} {{ $p.RelPermalink }}
+
+{{ range $p.Aliases -}}
+  {{ . | printf "%-35s" }} {{ $p.RelPermalink }}
 {{ end -}}
+
+{{ with $p.Params.redirect -}}
+  {{ $p.RelPermalink | printf "%-35s" }} {{ . }}
 {{ end -}}
+
+{{ end }}{{/* range $p */ -}}
 
 {{ $languages := (.Site.GetPage "/docs/instrumentation").Pages -}}
 {{ range $languages -}}
@@ -23,3 +29,6 @@
 {{ $og_image_current := `/img/social/logo-wordmark-001.png` -}}
 
 /featured-background.jpg  {{ $og_image_current }} {{/* homepage og:image used prior to 2022/08 */}}
+
+{{/* Temporary until alias is added to spec - https://github.com/open-telemetry/opentelemetry.io/issues/1850 */ -}}
+/docs/reference/specification/metrics/datamodel  /docs/reference/specification/metrics/data-model

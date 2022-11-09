@@ -7,8 +7,12 @@ description: >-
   A language-specific implementation of OpenTelemetry in Java.
 aliases: [/java, /java/metrics, /java/tracing]
 weight: 18
-javaVersion: 1.18.0
+javaVersion: 1.19.0
 ---
+
+{{% lang_instrumentation_index_head "java" /%}}
+
+### Repositories
 
 OpenTelemetry Java consists of the following repositories:
 
@@ -24,12 +28,6 @@ OpenTelemetry Java consists of the following repositories:
   Provides helpful libraries and standalone OpenTelemetry-based utilities that
   don't fit the express scope of the OpenTelemetry Java or Java Instrumentation
   projects. For example, JMX metric gathering.
-
-## Status and Releases
-
-| Traces | Metrics | Logs         |
-|--------|---------|--------------|
-| Stable | Stable  | Experimental |
 
 ### Components
 
@@ -72,10 +70,6 @@ dependencies {
   implementation("io.opentelemetry:opentelemetry-api")
 }
 ```
-
-### API reference
-
-- [Javadoc](https://www.javadoc.io/doc/io.opentelemetry)
 
 [maven central]: https://mvnrepository.com/artifact/io.opentelemetry
 [opentelemetry-java-docs]: https://github.com/open-telemetry/opentelemetry-java-docs#java-opentelemetry-examples

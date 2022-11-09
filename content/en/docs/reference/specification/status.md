@@ -1,5 +1,5 @@
 ---
-title: Specification status summary
+title: Specification Status Summary
 linkTitle: Status
 weight: 10
 # Undo specification-section-wide page-meta parameter settings:
@@ -39,7 +39,7 @@ Deprecated, Removed.
 - **Experimental** components are released and available for beta testing.
 - **Stable** components are backwards compatible and covered under long term
   support.
-- **Deprecated** components are stable, but may eventually be removed.
+- **Deprecated** components are stable but may eventually be removed.
 
 For complete definitions of lifecycles and long term support, see [Versioning
 and
@@ -80,7 +80,7 @@ same as the **Protocol** status.
 - Notes:
   - OpenTelemetry Metrics is currently under active development.
   - The data model is stable and released as part of the OTLP protocol.
-  - Experimental support for metric pipelines are available in the Collector.
+  - Experimental support for metric pipelines is available in the Collector.
   - Collector support for Prometheus is under development, in collaboration with
     the Prometheus community.
 
@@ -104,7 +104,7 @@ same as the **Protocol** status.
   - OpenTelemetry Logging is currently under active development.
   - The [logs data model][] is released as part of the OpenTelemetry Protocol.
   - Log processing for many data formats has been added to the Collector, thanks
-    to the donation of Stanza to the the OpenTelemetry project.
+    to the donation of Stanza to the OpenTelemetry project.
   - Log appenders are currently under develop in many languages. Log appenders
     allow OpenTelemetry tracing data, such as trace and span IDs, to be appended
     to existing logging systems.
@@ -120,8 +120,8 @@ same as the **Protocol** status.
 An effort to expand the availability and quality of OpenTelemetry
 instrumentation is scheduled for this summer.
 
-- Stabilize and define long term support for instrumentation
-- Provide instrumentation for a wider variety of important libraries
+- Stabilize and define long term support for instrumentation.
+- Provide instrumentation for a wider variety of important libraries.
 - Provide testing and CI/CD tools for writing and verifying instrumentation
   quality.
 

@@ -1,0 +1,15 @@
+---
+title: Headers Setter extension
+registryType: extension
+isThirdParty: false
+language: collector
+tags:
+    - headerssetter
+    - extension
+    - collector
+repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/headerssetterextension
+license: Apache 2.0
+description: The headers_setter extension implements ClientAuthenticator and is used to set requests headers in gRPC / HTTP exporters with values provided via extension configurations or requests metadata (context).
+authors: OpenTelemetry Authors
+otVersion: latest
+---

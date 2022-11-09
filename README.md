@@ -24,9 +24,13 @@ file in `/content/en/registry` for your project. You can find a template in
 
 ## Submitting a blog post
 
-You can submit a blog post either by forking this repository and writting it
+You can submit a blog post either by forking this repository and writing it
 locally or by using the GitHub UI. In both cases we ask you to follow the
 instructions provided by the [blog post template](archetypes/blog.md).
+
+**Note**: Before writing a blog post, please ask yourself, if your content
+also might be a good addition to the documentation. If the answer is yes,
+create a new issue/PR with your content to get it added to the docs.
 
 ### Fork & Write locally
 

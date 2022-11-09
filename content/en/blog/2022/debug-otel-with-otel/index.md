@@ -3,8 +3,7 @@ title: How we used OpenTelemetry to fix a bug in OpenTelemetry
 linkTitle: Debug OTel with OTel
 date: 2022-09-22
 author: >-
-  [Kumar Pratyush](https://github.com/kpratyus), 
-  [Sanket Mehta](https://github.com/sanketmehta28),
+  [Kumar Pratyush](https://github.com/kpratyus),  [Sanket Mehta](https://github.com/sanketmehta28),
   [Severin Neumann](https://github.com/svrnm) (Cisco)
 ---
 
@@ -32,7 +31,7 @@ people how to instrument nginx with OpenTelemetry, but also how a distributed
 trace crossing the webserver would look like.
 
 While Jaeger showed us a trace flowing from the frontend application down to the
-nginx, the connection between nginx and python app was not visibile: we had two
+nginx, the connection between nginx and python app was not visible: we had two
 disconnected traces.
 
 This came as a surprise, because in a prior test with a Java application as
@@ -171,8 +170,9 @@ transferred successfully from nginx down to the python and Node.JS application.
 Knowing that the issue does not occur with java and that it is likely a broken
 propagation, we knew what we had to do: we needed to see the trace headers.
 
-Gladly, the instrumentations for [Java][] and [Python][] have a feature that allows us
-to capture [HTTP request & response headers][] as span attributes easily.
+Gladly, the instrumentations for [Java][] and [Python][] have a feature that
+allows us to capture [HTTP request & response headers][] as span attributes
+easily.
 
 By providing a comma-separated list of HTTP header names via the environment
 variables `OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_REQUEST` and
@@ -188,14 +188,14 @@ In our `docker-compose`-based example we simply can add it to the definition of
 our backend service:
 
 ```yaml
-  backend:
-    build: ./backend
-    image: backend-with-otel
-    environment:
-      - OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4318/v1/traces
-      - OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
-      - OTEL_SERVICE_NAME=python-app
-      - OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_REQUEST=tracestate,traceparent,baggage,X-B3-TraceId
+backend:
+  build: ./backend
+  image: backend-with-otel
+  environment:
+    - OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4318/v1/traces
+    - OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
+    - OTEL_SERVICE_NAME=python-app
+    - OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_REQUEST=tracestate,traceparent,baggage,X-B3-TraceId
 ```
 
 Once again we ran `docker-compose up` to bring up our sample app and we send
@@ -208,15 +208,21 @@ backend:
 ![A screenshot of the Jaeger UI showing that http.request.header.traceparent has multiple entries.](jaeger-with-request-headers.png)
 
 There it is! The trace headers (`baggage`, `traceparent`, `tracestate`) are send
-as multiple header fields.
+as multiple header fields: the nginx module added the value of each of those
+headers again and again, and since having multi value headers is covered by
+[RFC7230][], this didn't lead to an issue immediately.
 
-Doing some research on that topic, we found out, that this is coved by
-[RFC7230][] and is [allowed and defined][] for `tracestate`, but the [definition
-for `traceparent`][] does not provide details on that corner-case.
+We tested the capability to correlate from nginx to a downstream service with a
+Java application. And, without reading into the source code of the OTel Java
+SDK, it looks like that Java is flexible in taking a `traceparent` with multiple
+values, even though such format is invalid per the W3C Trace Context specification. 
+So propagation from nginx to the Java service worked, while in contrast,
+Python (and other languages) do not provide that flexibility and propagation
+from nginx to the downstream service silently fails.
 
-Although we didn't read into the source code of the OTel Java SDK & OTel Python
-SDK, it was obvious that Java was flexible in taking `traceparent` as multiple
-header field, while python (and other languages) do not allow that.
+Note, that we are not suggesting that the other languages should have the same
+flexibility as Java has with reading `traceparent` or vice-versa: the bug lives
+in the nginx module and we need to fix that.
 
 ### The fix
 
@@ -245,15 +251,10 @@ COPY opentelemetry_module.conf /etc/nginx/conf.d
 [http request & response headers]:
   https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/http.md#http-request-and-response-headers
 [rfc7230]: https://httpwg.org/specs/rfc7230.html#field.order
-[allowed and defined]:
-  https://www.w3.org/TR/trace-context/#tracestate-header-field-values
-[definition for `traceparent`]:
-  https://www.w3.org/TR/trace-context/#traceparent-header-field-values
 [added some checks to the nginx module]:
   https://github.com/open-telemetry/opentelemetry-cpp-contrib/pull/204
 [v1.0.1 release of the otel-webserver-module]:
   https://github.com/open-telemetry/opentelemetry-cpp-contrib/releases/tag/webserver%2Fv1.0.1
-[Java]:
+[java]:
   /docs/instrumentation/java/automatic/agent-config/#capturing-http-request-and-response-headers
-[Python]:
-  /docs/instrumentation/python/automatic/
+[python]: /docs/instrumentation/python/automatic/

@@ -8,37 +8,37 @@ When relying on OpenTelemetry for your Observability needs, it can be important 
 ## Setup
 Only the `opentelemetry` and `opentelemetry_api` libraries are required for testing in Elixir/Erlang:
 
-{{< tabs Erlang Elixir >}}
+{{< ot-tabs Erlang Elixir >}}
 
-{{< tab >}}
+{{< ot-tab >}}
 {deps, [{opentelemetry_api, "~> 1.0"},
         {opentelemetry, "~> 1.0"}]}.
-{{< /tab >}}
+{{< /ot-tab >}}
 
-{{< tab >}}
+{{< ot-tab >}}
 def deps do
   [
     {:opentelemetry_api, "~> 1.0"},
     {:opentelemetry, "~> 1.0"}
   ]
 end
-{{< /tab >}}
+{{< /ot-tab >}}
 
-{{< /tabs >}}
+{{< /ot-tabs >}}
 
 Set your `exporter` to `:none` and the span processor to `:otel_simple_processor`. This ensure that your tests don't actually export data to a destination, and that spans can be analyzed after they are processed.
 
-{{< tabs Erlang Elixir >}}
+{{< ot-tabs Erlang Elixir >}}
 
-{{< tab >}}
+{{< ot-tab >}}
 %% config/sys.config.src
 {opentelemetry,
   [{traces_exporter, none},
    {processors,
      [{otel_simple_processor, #{}}]}]}
-{{< /tab >}}
+{{< /ot-tab >}}
 
-{{< tab >}}
+{{< ot-tab >}}
 # config/test.exs
 import Config
 
@@ -48,15 +48,15 @@ config :opentelemetry,
 config :opentelemetry, :processors, [
   {:otel_simple_processor, %{}}
 ]
-{{< /tab >}}
+{{< /ot-tab >}}
 
-{{< /tabs >}}
+{{< /ot-tabs >}}
 
 A modified version of the `hello` function from the [Getting Started](/docs/instrumentation/erlang/getting-started/) guide will serve as our test case:
 
-{{< tabs Erlang Elixir >}}
+{{< ot-tabs Erlang Elixir >}}
 
-{{< tab >}}
+{{< ot-tab >}}
 %% apps/otel_getting_started/src/otel_getting_started.erl
 -module(otel_getting_started).
 
@@ -71,9 +71,9 @@ hello() ->
 nice_operation(_SpanCtx) ->
     ?set_attributes([{a_key, <<"a value">>}]),
     world
-{{< /tab >}}
+{{< /ot-tab >}}
 
-{{< tab >}}
+{{< ot-tab >}}
 # lib/otel_getting_started.ex
 defmodule OtelGettingStarted do
   require OpenTelemetry.Tracer, as: Tracer
@@ -85,15 +85,15 @@ defmodule OtelGettingStarted do
     end
   end
 end
-{{< /tab >}}
+{{< /ot-tab >}}
 
-{{< /tabs >}}
+{{< /ot-tabs >}}
 
 ## Testing
 
-{{< tabs Erlang Elixir >}}
+{{< ot-tabs Erlang Elixir >}}
 
-{{< tab >}}
+{{< ot-tab >}}
 -module(otel_getting_started_SUITE).
 
 -compile(export_all).
@@ -145,9 +145,9 @@ greets_the_world(_Config) ->
     ?assertMatch(ReceivedAttributes, ExpectedAttributes),
 
     ok.
-{{< /tab >}}
+{{< /ot-tab >}}
 
-{{< tab >}}
+{{< ot-tab >}}
 defmodule OtelGettingStartedTest do
   use ExUnit.Case
 
@@ -160,22 +160,23 @@ defmodule OtelGettingStartedTest do
   test "greets the world" do
     # Set exporter to :otel_exporter_pid, which sends spans
     # to the given process - in this case self() - in the format {:span, span}
-    :otel_batch_processor.set_exporter(:otel_exporter_pid, self())
+    :otel_simple_processor.set_exporter(:otel_exporter_pid, self())
 
     # Call the function to be tested.
     OtelGettingStarted.hello()
 
     # Use Erlang's `:otel_attributes` module to create attributes to match against.
     # See the `:otel_events` module for testing events.
-    attributes = :otel_attributes.new([a_key: "a_value"], 128, :infinity)
+    attributes = :otel_attributes.new([a_key: "a value"], 128, :infinity)
 
     # Assert that the span emitted by OtelGettingStarted.hello/0 was received and contains the desired attributes.
-    assert_receive {:span, span(
-      name: "operation",
-      attributes: ^attributes
-      )}
+    assert_receive {:span,
+                    span(
+                      name: "operation",
+                      attributes: ^attributes
+                    )}
   end
 end
-{{< /tab >}}
+{{< /ot-tab >}}
 
-{{< /tabs >}}
+{{< /ot-tabs >}}

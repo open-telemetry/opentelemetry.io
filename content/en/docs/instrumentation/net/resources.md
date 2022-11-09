@@ -1,7 +1,6 @@
 ---
-title: "Resources"
+title: Resources
 weight: 6
-description:
 ---
 
 A [resource][] represents the entity producing telemetry as resource attributes.
@@ -12,7 +11,7 @@ three of these attributes can be included in the resource.
 In your observability backend, you can use resource information to better
 investigate interesting behavior. For example, if your trace or metrics data
 indicate latency in your system, you can narrow it down to a specific container,
-pod, or kubernetes deployment.
+pod, or Kubernetes deployment.
 
 ## Setup
 
@@ -71,9 +70,13 @@ using OpenTelemetry;
 using OpenTelemetry.Trace;
 using OpenTelemetry.Resources;
 
+var serviceName = "resource-tutorial-dotnet";
+var serviceVersion = "1.0";
+
 var resourceBuilder =
     ResourceBuilder
         .CreateDefault()
+        .AddService(serviceName: serviceName, serviceVersion: serviceVersion)
         .AddAttributes(new Dictionary<string, object>
         {
             ["environment.name"] = "production",
@@ -96,12 +99,17 @@ activity?.SetTag("bar", "Hello, World!");
 activity?.SetTag("baz", new int[] { 1, 2, 3 });
 ```
 
+In this example, the `service.name` and `service.version` values are
+set in code as well. Additionally, `service.instance.id` gets a
+default value.
+
 If you run the same command as in [Adding resources with environment
-variables](#adding-resources-with-environment-variables), you'll see the
-`environment.name` and `team.name` resources in the resource list:
+variables](#adding-resources-with-environment-variables), but this time
+without `service.name` `service.version`, and `service.instance.id`,
+you'll see the `environment.name` and `team.name` resources in the resource list:
 
 ```console
-env OTEL_RESOURCE_ATTRIBUTES="service.name=resource-tutorial-dotnet,service.namespace=tutorial,service.version=1.0,service.instance.id=`uuidgen`,host.name=`HOSTNAME`,host.type=`uname -m`,os.name=`uname -s`,os.version=`uname -r`" dotnet run
+env OTEL_RESOURCE_ATTRIBUTES="service.namespace=tutorial,host.name=`HOSTNAME`,host.type=`uname -m`,os.name=`uname -s`,os.version=`uname -r`" dotnet run
 
 Activity.TraceId:          d1cbb7787440cc95b325835cb2ff8018
 Activity.SpanId:           2ca007300fcb3068

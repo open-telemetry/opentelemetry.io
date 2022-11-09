@@ -1,0 +1,15 @@
+---
+title: Zipkin Exporter for OpenTelemetry .NET
+registryType: exporter
+isThirdParty: false
+language: dotnet
+tags:
+    - zipkin
+    - exporter
+    - dotnet
+repo: https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/src/OpenTelemetry.Exporter.Zipkin
+license: Apache 2.0
+description: Zipkin Exporter for OpenTelemetry .NET
+authors: OpenTelemetry Authors
+otVersion: latest
+---
