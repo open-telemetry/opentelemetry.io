@@ -145,8 +145,7 @@ functions:
 ```
 
 For OpenTelemetry to work properly, `lambda-wrapper.js` must be included before
-any other file. That's why we have added the environment variable
-`NODE_OPTIONS:--require lambda-wrapper` which preloads the wrapper at startup.
+any other file: the `NODE_OPTIONS` setting ensures this.
 
 Note if you are not using Serverless Framework to deploy your Lambda function,
 you must manually add this environment variable using the AWS Console UI.
