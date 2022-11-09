@@ -19,7 +19,7 @@ jobs:
           go-version: 1.18
 
       - name: Auto-update
-        run: ./scripts/update-collector-version.sh
+        run: ./.github/workflows/scripts/update-collector-version.sh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GIT_AUTHOR_NAME: opentelemetrybot
