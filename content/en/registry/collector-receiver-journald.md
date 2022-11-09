@@ -1,5 +1,5 @@
 ---
-title: # `Journald Receiver`
+title: Journald Receiver
 registryType: receiver
 isThirdParty: false
 language: collector
