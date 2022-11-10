@@ -17,7 +17,7 @@ OpenTelemetry-Python supports Python 3.6 and higher.
 
 ## Installation
 
-The API and SDK packages are available on PyPI, and can installed via pip:
+The API and SDK packages are available on PyPI, and can be installed via pip:
 
 ```console
 $ pip install opentelemetry-api
