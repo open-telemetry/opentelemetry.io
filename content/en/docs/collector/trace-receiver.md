@@ -70,7 +70,7 @@ docker run -d --name jaeger \
   jaegertracing/all-in-one:1.29
 ```
 
-Now, create a `config.yaml` file so you can setup your Collector's components.
+Now, create a `config.yaml` file so you can set up your Collector's components.
 
 ```cmd
 cd dev-otelcol
@@ -111,7 +111,7 @@ Notice that I am only using the `insecure` flag in my `jaeger` receiver config
 to make my local development setup easier; you should not use this flag when
 running your collector in production.
 
-In order to verify that your initial pipeline is properly setup, you should have
+In order to verify that your initial pipeline is properly set up, you should have
 the following output after running your `dev-otelcol` command:
 
 ```cmd
