@@ -37,7 +37,7 @@ Also, in a development or small-scale environment you can get decent results wit
 However, in general we recommend using a collector alongside your service, since it allows your service to offload data quickly and the collector
 can take care of additional handling like retries, batching, encryption or even sensitive data filtering.
 
-It is also easier to [setup a collector](./getting-started) than you might think: the default OTLP exporters in each language assume a local collector endpoint, so you'd start up a collector and you'd just start getting telemetry.
+It is also easier to [set up a collector](./getting-started) than you might think: the default OTLP exporters in each language assume a local collector endpoint, so you'd start up a collector and you'd just start getting telemetry.
 
 ## Status and releases
 

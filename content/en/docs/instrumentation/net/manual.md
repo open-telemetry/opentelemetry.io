@@ -371,7 +371,7 @@ catch (Exception ex)
 
 ## Next steps
 
-After you've setup manual instrumentation, you may want to use [instrumentation
+After you've set up manual instrumentation, you may want to use [instrumentation
 libraries](../libraries/). As the name suggests, they will
 instrument relevant libraries you're using and generate spans (activities) for things like
 inbound and outbound HTTP requests and more.
