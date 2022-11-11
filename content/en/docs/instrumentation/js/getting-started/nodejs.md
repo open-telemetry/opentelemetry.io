@@ -178,7 +178,7 @@ const sdk = new opentelemetry.NodeSDK({
 sdk.start()
 {{< /tab >}}
 
-{{< /tabs >}}
+{{< /tabpane >}}
 
 ### Run Application
 
