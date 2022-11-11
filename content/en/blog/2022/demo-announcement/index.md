@@ -30,7 +30,7 @@ Your command line output should look like this:
 - Once the images are built you can access the Webstore at:
   <http://localhost:8080>
 
-- And the Jaeger UI at: <http://localhost:16686>
+- And the Jaeger UI at: <http://localhost:8080/jaeger/ui>
 
 Congratulations! You can now indulge in retail therapy and submit telemetry. A
 true victory.
