@@ -65,7 +65,7 @@ Create an empty code file named `document-load` with a `.ts` or `.js` extension,
 
 {{< tab header="TypeScript" lang="html">}}
 <script type="module" src="document-load.ts"></script>
-{{< /ot-tab >}}
+{{< /tab >}}
 
 {{< tab header="JavaScript" lang="html">}}
 <script type="module" src="document-load.js"></script>
