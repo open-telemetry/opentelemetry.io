@@ -61,17 +61,17 @@ tsc --init
 ```
 Create an empty code file named `document-load` with a `.ts` or `.js` extension, as appropriate, based on the language you've chosen to write your app in. Add the following code to your HTML right before the `</body>` closing tag:
 
-{{< ot-tabs TypeScript JavaScript >}}
+{{< tabpane >}}
 
-{{< ot-tab lang="html">}}
+{{< tab header="TypeScript" lang="html">}}
 <script type="module" src="document-load.ts"></script>
 {{< /ot-tab >}}
 
-{{< ot-tab lang="html">}}
+{{< tab header="JavaScript" lang="html">}}
 <script type="module" src="document-load.js"></script>
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< /ot-tabs >}}
+{{< /tabpane >}}
 
 We will add some code that will trace the document load timings and output those as OpenTelemetry Spans.
 
