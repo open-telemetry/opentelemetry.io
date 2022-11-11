@@ -3,7 +3,15 @@ title: Browser
 aliases: [/docs/js/getting_started/browser]
 ---
 
-This guide uses the example application in HTML & javascript provided below, but the steps to instrument your own application should be broadly the same.
+While this guide uses the example application presented below, the steps to
+instrument your own application should be similar.
+
+## Prerequisites
+
+Ensure that you have the following installed locally:
+
+- [Node.js](https://nodejs.org/en/download/)
+- [TypeScript](https://www.typescriptlang.org/download), if you will be using TypeScript.
 
 ## Example Application
 
@@ -42,24 +50,37 @@ To create traces in the browser, you will need `@opentelemetry/sdk-trace-web`, a
 
 ```shell
 npm init -y
-npm install --save @opentelemetry/api @opentelemetry/sdk-trace-web @opentelemetry/instrumentation-document-load @opentelemetry/context-zone
+npm install  @opentelemetry/api @opentelemetry/sdk-trace-web @opentelemetry/instrumentation-document-load @opentelemetry/context-zone
 ```
 
 ### Initialization and Configuration
 
-Create a empty file called `document-load.js` and add the following code to your html right before the body end tag:
-
-```html
-<script type="module" src="document-load.js"></script>
+If you are coding in TypeScript, then run the following command: 
+```shell
+tsc --init
 ```
+Create an empty code file named `document-load` with a `.ts` or `.js` extension, as appropriate, based on the language you've chosen to write your app in. Add the following code to your HTML right before the `</body>` closing tag:
+
+{{< ot-tabs TypeScript JavaScript >}}
+
+{{< ot-tab lang="html">}}
+<script type="module" src="document-load.ts"></script>
+{{< /ot-tab >}}
+
+{{< ot-tab lang="html">}}
+<script type="module" src="document-load.js"></script>
+{{< /ot-tab >}}
+
+{{< /ot-tabs >}}
 
 We will add some code that will trace the document load timings and output those as OpenTelemetry Spans.
 
 ### Creating a Tracer Provider
 
-Add the following code to the `document-load.js` to create a tracer provider, which brings the instrumentation to trace document load:
+Add the following code to the `document-load.ts|js` to create a tracer provider, which brings the instrumentation to trace document load:
 
-```javascript
+```js
+/* document-load.ts|js file - the code snippet is the same for both the languages */
 import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
 import { DocumentLoadInstrumentation } from '@opentelemetry/instrumentation-document-load';
 import { ZoneContextManager } from '@opentelemetry/context-zone';
@@ -101,9 +122,10 @@ Follow [these instructions](../../exporters) for setting up a backend and export
 
 You may also want to use the `BatchSpanProcessor` to export spans in batches in order to more efficiently use resources.
 
-To export traces to the console, modify `document-load.js` so that it matches the following code snippet:
+To export traces to the console, modify `document-load.ts|js` so that it matches the following code snippet:
 
-```javascript
+```js
+/* document-load.ts|js file - the code is the same for both the languages */
 import { ConsoleSpanExporter, SimpleSpanProcessor } from '@opentelemetry/sdk-trace-base';
 import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
 import { DocumentLoadInstrumentation } from '@opentelemetry/instrumentation-document-load';
