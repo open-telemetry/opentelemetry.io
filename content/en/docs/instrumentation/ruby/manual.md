@@ -11,15 +11,58 @@ weight: 4
 Auto-instrumentation is the easiest way to get started with instrumenting your code, but in order to get the most insight into your system, you should add manual instrumentation where appropriate.
 To do this, use the OpenTelemetry SDK to access the currently executing span and add attributes to it, and/or to create new spans.
 
-### Add information to the current span
+## Initializing the SDK
 
-It's often beneficial to add information to the currently executing span in a trace.
-For example, you may have an application or service that handles extended warranties, and you want to associate it with the span when querying your tracing datastore.
-In order to do this, get the current span and set [attributes](#attributes) with your application's domain specific data:
+First, ensure you have the SDK package installed:
+
+```console
+gem install opentelemetry-sdk
+```
+
+Then include configuration code that runs when your program initializes.
+Make sure that `service.name` is set by configuring a service name.
+
+### Acquiring a Tracer
+
+To being [tracing](/docs/concepts/signals/traces), you will need to
+ensure you have an initialized [`Tracer`](docs/concepts/signals/traces#tracer) that comes from a
+[`TracerProvider`](docs/concepts/signals/traces#tracer-provider).
+
+The easiest and most common way to do this is to use the globally-registered
+TracerProvider. If you are using [instrumentation libraries](/docs/instrumentation/ruby/automatic),
+then one will be registered for you.
+
+```ruby
+# config/initializers/opentelemetry.rb
+require 'opentelemetry/sdk'
+
+begin
+  OpenTelemetry::SDK.configure do |c|
+    c.service_name = '<YOUR_SERVICE_NAME>'
+  end
+rescue OpenTelemetry::SDK::ConfigurationError => e
+  puts "Error configuring Ruby OpenTelemetry SDK"
+  puts e.inspect
+end
+
+# 'Tracer' can be used throughout your code now
+Tracer = OpenTelemetry.tracer_provider.tracer('<YOUR_TRACER_NAME>')
+```
+
+With a `Tracer` acquired, you can manually trace code.
+
+## Tracing
+
+### Get the current span
+
+It's very common to add information to the current [span](/docs/concepts/signals/traces#spans-in-opentelemetry) somewhere within your program. To do so, you can get the current span and add [attributes](/docs/concepts/signals/traces#attributes) to it.
 
 ```ruby
 def track_extended_warranty(extended_warranty)
+  # Get the current span
   current_span = OpenTelemetry::Trace.current_span
+
+  # And add useful stuff to it! 
   current_span.add_attributes({
     "com.extended_warranty.id" => extended_warranty.id,
     "com.extended_warranty.timestamp" => extended_warranty.timestamp
@@ -29,50 +72,70 @@ end
 
 ### Creating New Spans
 
-Auto-instrumentation can show the shape of requests to your system, but only you know the really important parts.
-In order to get the full picture of what's happening, you will have to add manual instrumentation and create some custom spans.
-To do this, grab the tracer from the OpenTelemetry API and generate a span:
+To create a [span](/docs/concepts/signals/traces#spans-in-opentelemetry), you’ll need a [configured `Tracer`](#acquiring-a-tracer).
+
+Typically when you create a new span, you'll want it to be the active/current span. To do that, use `in_span`:
 
 ```ruby
-# ...
-
-def search_by(query)
-  tracer = OpenTelemetry.tracer_provider.tracer('my-tracer')
-  tracer.in_span("search_by") do |span|
-    # ... expensive query
+def do_work()
+  Tracer.in_span("do_work") do |span|
+    # do some work that the 'do_work' span tracks!
   end
 end
 ```
 
-The `in_span` convenience method is unique to Ruby implementation, which reduces some of the boilerplate code that you would have to otherwise write yourself:
+### Creating nested spans
+
+If you have a distinct sub-operation you’d like to track as a part of another one, you can create nested [spans](/docs/concepts/signals/traces#spans-in-opentelemetry) to represent the relationship:
 
 ```ruby
-def search_by(query)
-  span = tracer.start_span("search_by", kind: :internal)
-  OpenTelemetry::Trace.with_span(span) do |span, context|
-    # ... expensive query
+def parent_work()
+  Tracer.in_span("parent") do |span|
+    # do some work that the 'parent' span tracks!
+
+    child_work()
+
+    # do some more work afterwards
   end
-rescue Exception => e
-  span&.record_exception(e)
-  span&.status = OpenTelemetry::Trace::Status.error("Unhandled exception of type: #{e.class}")
-  raise e
-ensure
-  span&.finish
+end
+
+def child_work()
+  Tracer.in_span("child") do |span|
+    # do some work that the 'child' span tracks!
 end
 ```
 
-### Attributes
+In the preceding example, two spans are created - named `parent` and `child` - with `child` nested under `parent`. If you view a trace with these spans in a trace visualization tool, `child` will be nested under `parent`.
 
-Attributes are keys and values that are applied as metadata to your spans and are useful for aggregating, filtering, and grouping traces. Attributes can be added at span creation, or at any other time during the lifecycle of a span before it has completed.
+### Add attributes to a span
+
+[Attributes](/docs/concepts/signals/traces#attributes) let you attach key/value pairs to a [span](/docs/concepts/signals/traces#spans-in-opentelemetry) so it carries more information about the current operation that it’s tracking.
+
+You can use `set_attribute` to add a single attribute to a span:
 
 ```ruby
-# setting attributes at creation...
-tracer.in_span('foo', attributes: {  "hello" => "world", "some.number" => 1024, "tags" => [ "bugs", "won't fix" ] }, kind: :internal) do |span|
+current_span = OpenTelemetry::Trace.current_span
 
-  # ... and after creation
-  span.set_attribute("animals", ["elephant", "tiger"])
+current_span.set_attribute("animals", ["elephant", "tiger"])
+```
 
-  span.add_attributes({ "my.cool.attribute" => "a value", "my.first.name" => "Oscar" })
+You can use `add_attributes` to add a map of attributes:
+
+```ruby
+current_span = OpenTelemetry::Trace.current_span
+
+current_span.add_attributes(
+  {
+    "my.cool.attribute" => "a value",
+    "my.first.name" => "Oscar"
+  })
+```
+
+You can also add attributes to a span as [it's being created](#creating-new-spans):
+
+```ruby
+tracer.in_span('foo', attributes: { "hello" => "world", "some.number" => 1024 }) do |span|
+  #  do stuff with the span
 end
 ```
 
@@ -82,17 +145,38 @@ end
 > &#9888; Sampling decisions happen at the moment of span creation.
 > If your sampler considers span attributes when deciding to sample a span, then you _must_ pass those attributes as part of span creation. Any attributes added after creation will not be seen by the sampler, because the sampling decision has already been made.
 
-#### Semantic Attributes
+### Add semantic attributes
 
-Semantic Attributes are attributes that are defined by the [OpenTelemetry Specification][] in order to provide a shared set of attribute keys across multiple languages, frameworks, and runtimes for common concepts like HTTP methods, status codes, user agents, and more. These attributes are available in the [Semantic Conventions gem][semconv-gem].
+[Semantic Attributes][semconv-spec] are pre-defined [Attributes](/docs/concepts/signals/traces#attributes) that are well-known naming conventions for common kinds of data. Using Semantic Attributes lets you normalize this kind of information across your systems.
 
-For details, see [Trace semantic conventions][semconv-spec].
+To use Semantic Attributes in Ruby, add the appropriate gem:
 
-### Span Events
+```console
+gem install opentelemetry-semantic_conventions
+```
+
+Then you can use it in code:
+
+```ruby
+require 'opentelemetry/sdk'
+require 'opentelemetry/semantic_conventions'
+
+current_span = OpenTelemetry::Trace.current_span
+
+current_span.add_attributes(
+  {
+    OpenTelemetry::SemanticConventions::Trace::HTTP_METHOD => "GET",
+    OpenTelemetry::SemanticConventions::Trace::HTTP_URL => "https://opentelemetry.io/",
+  })
+```
+
+### Add Span Events
 
 An event is a human-readable message on a span that represents "something happening" during it's lifetime. For example, imagine a function that requires exclusive access to a resource that is under a mutex. An event could be created at two points - once, when we try to gain access to the resource, and another when we acquire the mutex.
 
 ```ruby
+span = OpenTelemetry::Trace.current_span
+
 span.add_event("Acquiring lock")
 if mutex.try_lock
   span.add_event("Got lock, doing work...")
@@ -108,7 +192,46 @@ A useful characteristic of events is that their timestamps are displayed as offs
 Events can also have attributes of their own e.g.
 
 ```ruby
-span.add_event("Cancelled wait due to external signal", attributes: { "pid" => 4328, "signal" => "SIGHUP" })
+require 'opentelemetry/sdk'
+
+span.add_event("Cancelled wait due to external signal",
+  attributes: { "pid" => 4328, "signal" => "SIGHUP" })
+```
+
+### Add Span Links
+
+A [span](/docs/concepts/signals/traces#spans-in-opentelemetry) can be created with zero or more [span links](/docs/concepts/signals/traces#spans-links) that causally link it to another span. A link needs a [span context](/docs/concepts/signals/traces#span-context) to be created.
+
+```ruby
+span_to_link_from = OpenTelemetry::Trace.current_span
+
+link = Link.new(span_to_link_from.context)
+
+Tracer.in_span("new-span", links: [link])
+  # do something that 'new_span' tracks
+
+  # The link in 'new_span' casually associated it with the previous one,
+  # but it is not a child span.
+end
+```
+
+Span Links are often used to link together different traces that are related in some way, such as
+a long-running task that calls into sub-tasks asynchronously.
+
+### Set span status
+
+A [status](/docs/concepts/signals/traces#spans-status) can be set on a [span](/docs/concepts/signals/traces#spans-in-opentelemetry), typically used to specify that a span has not completed successfully - StatusCode.ERROR. In rare scenarios, you could override the Error status with StatusCode.OK, but don’t set StatusCode.OK on successfully-completed spans.
+
+The status can be set at any time before the span is finished:
+
+```ruby
+current_span = OpenTelemetry::Trace.current_span
+
+begin
+    # something that might fail
+rescue
+    current_span.status = OpenTelemetry::Trace::Status.error("error message here!")
+end
 ```
 
 ## Context Propagation
