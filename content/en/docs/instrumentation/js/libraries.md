@@ -44,9 +44,9 @@ npm install @opentelemetry/auto-instrumentations-node
 
 Then in your tracing initialization code, use `registerInstrumentations`:
 
-{{< ot-tabs TypeScript JavaScript >}}
+{{< tabpane langEqualsHeader=true >}}
 
-{{< ot-tab >}}
+{{< tab TypeScript >}}
 /* tracing.ts */
 
 // Import dependencies
@@ -81,9 +81,9 @@ const processor = new BatchSpanProcessor(exporter);
 provider.addSpanProcessor(processor);
 
 provider.register();
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< ot-tab >}}
+{{< tab JavaScript >}}
 /* tracing.js */
 
 // Require dependencies
@@ -118,11 +118,9 @@ const processor = new BatchSpanProcessor(exporter);
 provider.addSpanProcessor(processor);
 
 provider.register();
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< /ot-tabs >}}
-
-
+{{< /tabpane >}}
 
 ### Using individual instrumentation packages
 
@@ -141,9 +139,9 @@ npm install --save @opentelemetry/instrumentation-http @opentelemetry/instrument
 
 And then register each instrumentation library:
 
-{{< ot-tabs TypeScript JavaScript >}}
+{{< tabpane langEqualsHeader=true >}}
 
-{{< ot-tab >}}
+{{< tab TypeScript >}}
 /* tracing.ts */
 
 // Import dependencies
@@ -181,9 +179,9 @@ const processor = new BatchSpanProcessor(exporter);
 provider.addSpanProcessor(processor);
 
 provider.register();
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< ot-tab >}}
+{{< tab JavaScript >}}
 /* tracing.js */
 
 // Require dependencies
@@ -221,9 +219,9 @@ const processor = new BatchSpanProcessor(exporter);
 provider.addSpanProcessor(processor);
 
 provider.register();
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< /ot-tabs >}}
+{{< /tabpane >}}
 
 ## Configuring instrumentation libraries
 
