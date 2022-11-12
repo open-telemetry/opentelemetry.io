@@ -50,7 +50,10 @@ To create traces in the browser, you will need `@opentelemetry/sdk-trace-web`, a
 
 ```shell
 npm init -y
-npm install  @opentelemetry/api @opentelemetry/sdk-trace-web @opentelemetry/instrumentation-document-load @opentelemetry/context-zone
+npm install @opentelemetry/api \
+  @opentelemetry/sdk-trace-web \
+  @opentelemetry/instrumentation-document-load \
+  @opentelemetry/context-zone
 ```
 
 ### Initialization and Configuration

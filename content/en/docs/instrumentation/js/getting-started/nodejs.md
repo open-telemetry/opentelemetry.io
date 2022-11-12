@@ -140,9 +140,9 @@ The tracing setup and configuration should be run before your application code. 
 
 Create a file named `tracing.ts|js`, which will contain your tracing setup code.
 
-{{< tabpane >}}
+{{< tabpane langEqualsHeader=true >}}
 
-{{< tab header="TypeScript" lang="ts" >}}
+{{< tab TypeScript >}}
 /*tracing.ts*/
 // Require dependencies
 import * as opentelemetry from "@opentelemetry/sdk-node";
@@ -160,7 +160,7 @@ const sdk = new opentelemetry.NodeSDK({
 sdk.start()
 {{< /tab >}}
 
-{{< tab header="JavaScript" lang="js" >}}
+{{< tab JavaScript >}}
 /*tracing.js*/
 // Require dependencies
 const opentelemetry = require("@opentelemetry/sdk-node");
@@ -184,14 +184,14 @@ sdk.start()
 
 Now you can run your application as you normally would, but you can use the `--require` flag to load the tracing code before the application code.
 
-{{< tabpane >}}
+{{< tabpane lang=console >}}
 
-{{< tab header="TypeScript" lang="console">}}
+{{< tab TypeScript >}}
 $ ts-node --require './tracing.ts' app.ts
 Listening for requests on http://localhost:8080
 {{< /tab >}}
 
-{{< tab header="JavaScript" lang="console">}}
+{{< tab JavaScript >}}
 $ node --require './tracing.js' app.js
 Listening for requests on http://localhost:8080
 {{< /tab >}}
