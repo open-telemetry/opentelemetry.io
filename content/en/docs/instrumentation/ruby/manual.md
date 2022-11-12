@@ -205,7 +205,7 @@ A [span](/docs/concepts/signals/traces#spans-in-opentelemetry) can be created wi
 ```ruby
 span_to_link_from = OpenTelemetry::Trace.current_span
 
-link = Link.new(span_to_link_from.context)
+link = OpenTelemetry::Trace::Link.new(span_to_link_from.context)
 
 Tracer.in_span("new-span", links: [link])
   # do something that 'new_span' tracks
