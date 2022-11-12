@@ -50,7 +50,10 @@ To create traces in the browser, you will need `@opentelemetry/sdk-trace-web`, a
 
 ```shell
 npm init -y
-npm install  @opentelemetry/api @opentelemetry/sdk-trace-web @opentelemetry/instrumentation-document-load @opentelemetry/context-zone
+npm install @opentelemetry/api \
+  @opentelemetry/sdk-trace-web \
+  @opentelemetry/instrumentation-document-load \
+  @opentelemetry/context-zone
 ```
 
 ### Initialization and Configuration
@@ -61,17 +64,17 @@ tsc --init
 ```
 Create an empty code file named `document-load` with a `.ts` or `.js` extension, as appropriate, based on the language you've chosen to write your app in. Add the following code to your HTML right before the `</body>` closing tag:
 
-{{< ot-tabs TypeScript JavaScript >}}
+{{< tabpane lang=html >}}
 
-{{< ot-tab lang="html">}}
+{{< tab TypeScript >}}
 <script type="module" src="document-load.ts"></script>
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< ot-tab lang="html">}}
+{{< tab JavaScript >}}
 <script type="module" src="document-load.js"></script>
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< /ot-tabs >}}
+{{< /tabpane >}}
 
 We will add some code that will trace the document load timings and output those as OpenTelemetry Spans.
 
