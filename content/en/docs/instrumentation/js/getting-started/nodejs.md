@@ -26,13 +26,13 @@ npm init -f
 
 Install dependencies used by the example.
 
-{{< tabpane >}}
+{{< tabpane lang=shell >}}
 
-{{< tab header="TypeScript" lang="console">}}
+{{< tab TypeScript >}}
 npm install express typescript ts-node express @types/express @types/node 
 {{< /tab >}}
 
-{{< tab header="JavaScript" lang="console">}}
+{{< tab JavaScript >}}
 npm install express
 {{< /tab >}}
 
@@ -48,9 +48,9 @@ tsc --init
 
 Create `app.ts|js` and add the following code to the file:
 
-{{< tabpane >}}
+{{< tabpane langEqualsHeader=true >}}
 
-{{< tab header="TypeScript" lang="ts">}}
+{{< tab TypeScript >}}
 /*app.ts*/
 import express, { Express } from "express";
 
@@ -66,7 +66,7 @@ app.listen(PORT), () => {
 };
 {{< /tab >}}
 
-{{< tab header="JavaScript" lang="js">}}
+{{< tab JavaScript >}}
 /*app.js*/
 const express = require("express");
 
@@ -86,15 +86,15 @@ app.listen(parseInt(PORT, 10), () => {
 
 Run the application with the following request and open <http://localhost:8080> in your web browser to ensure it is working.
 
-{{< tabpane >}}
+{{< tabpane lang=console >}}
 
-{{< tab header="TypeScript" lang="console">}}
-ts-node app.ts
+{{< tab TypeScript >}}
+$ ts-node app.ts
 Listening for requests on http://localhost:8080
 {{< /tab >}}
 
-{{< tab header="JavaScript" lang="console">}}
-node app.js
+{{< tab JavaScript >}}
+$ node app.js
 Listening for requests on http://localhost:8080
 {{< /tab >}}
 

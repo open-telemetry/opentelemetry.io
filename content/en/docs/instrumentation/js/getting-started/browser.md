@@ -61,13 +61,13 @@ tsc --init
 ```
 Create an empty code file named `document-load` with a `.ts` or `.js` extension, as appropriate, based on the language you've chosen to write your app in. Add the following code to your HTML right before the `</body>` closing tag:
 
-{{< tabpane >}}
+{{< tabpane lang=html >}}
 
-{{< tab header="TypeScript" lang="html">}}
+{{< tab TypeScript >}}
 <script type="module" src="document-load.ts"></script>
 {{< /tab >}}
 
-{{< tab header="JavaScript" lang="html">}}
+{{< tab JavaScript >}}
 <script type="module" src="document-load.js"></script>
 {{< /tab >}}
 
