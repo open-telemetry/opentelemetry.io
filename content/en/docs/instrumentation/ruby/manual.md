@@ -25,8 +25,8 @@ Make sure that `service.name` is set by configuring a service name.
 ### Acquiring a Tracer
 
 To being [tracing](/docs/concepts/signals/traces), you will need to
-ensure you have an initialized [`Tracer`](docs/concepts/signals/traces#tracer) that comes from a
-[`TracerProvider`](docs/concepts/signals/traces#tracer-provider).
+ensure you have an initialized [`Tracer`](/docs/concepts/signals/traces#tracer) that comes from a
+[`TracerProvider`](/docs/concepts/signals/traces#tracer-provider).
 
 The easiest and most common way to do this is to use the globally-registered
 TracerProvider. If you are using [instrumentation libraries](/docs/instrumentation/ruby/automatic),
@@ -200,7 +200,7 @@ span.add_event("Cancelled wait due to external signal",
 
 ### Add Span Links
 
-A [span](/docs/concepts/signals/traces#spans-in-opentelemetry) can be created with zero or more [span links](/docs/concepts/signals/traces#spans-links) that causally link it to another span. A link needs a [span context](/docs/concepts/signals/traces#span-context) to be created.
+A [span](/docs/concepts/signals/traces#spans-in-opentelemetry) can be created with zero or more [span links](/docs/concepts/signals/traces#span-links) that causally link it to another span. A link needs a [span context](/docs/concepts/signals/traces#span-context) to be created.
 
 ```ruby
 span_to_link_from = OpenTelemetry::Trace.current_span
@@ -220,7 +220,7 @@ a long-running task that calls into sub-tasks asynchronously.
 
 ### Set span status
 
-A [status](/docs/concepts/signals/traces#spans-status) can be set on a [span](/docs/concepts/signals/traces#spans-in-opentelemetry), typically used to specify that a span has not completed successfully - StatusCode.ERROR. In rare scenarios, you could override the Error status with StatusCode.OK, but don’t set StatusCode.OK on successfully-completed spans.
+A [status](/docs/concepts/signals/traces#span-status) can be set on a [span](/docs/concepts/signals/traces#spans-in-opentelemetry), typically used to specify that a span has not completed successfully - StatusCode.ERROR. In rare scenarios, you could override the Error status with StatusCode.OK, but don’t set StatusCode.OK on successfully-completed spans.
 
 The status can be set at any time before the span is finished:
 

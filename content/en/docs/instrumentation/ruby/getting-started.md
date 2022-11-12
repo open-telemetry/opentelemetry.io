@@ -101,4 +101,4 @@ provides a few more features that will allow you gain even deeper insights!
 [manual]: ../manual
 [repository]: https://github.com/open-telemetry/opentelemetry-ruby
 [sdk-env]: {{< relref "/docs/reference/specification/protocol/exporter#configuration-options" >}}
-[Span events]: ../manual#span-events
+[Span events]: ../manual#add-span-events
