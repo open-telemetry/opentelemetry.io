@@ -218,6 +218,12 @@ end
 Span Links are often used to link together different traces that are related in some way, such as
 a long-running task that calls into sub-tasks asynchronously.
 
+Links can also be created with additional attributes:
+
+```ruby
+link = OpenTelemetry::Trace::Link.new(span_to_link_from.context, attributes: { "some.attribute" => 12 })
+```
+
 ### Set span status
 
 A [status](/docs/concepts/signals/traces#span-status) can be set on a [span](/docs/concepts/signals/traces#spans-in-opentelemetry), typically used to specify that a span has not completed successfully - StatusCode.ERROR. In rare scenarios, you could override the Error status with StatusCode.OK, but don’t set StatusCode.OK on successfully-completed spans.
@@ -228,10 +234,33 @@ The status can be set at any time before the span is finished:
 current_span = OpenTelemetry::Trace.current_span
 
 begin
-    # something that might fail
+   1/0 # something that obviously fails
 rescue
     current_span.status = OpenTelemetry::Trace::Status.error("error message here!")
 end
+```
+
+### Record exceptions in spans
+
+It can be a good idea to record exceptions when they happen. It’s recommended to do this in conjunction with [setting span status](#set-span-status).
+
+```ruby
+current_span = OpenTelemetry::Trace.current_span
+
+begin
+   1/0 # something that obviously fails
+rescue Exception => ex
+    current_span.status = OpenTelemetry::Trace::Status.error("error message here!")
+    current_span.record_exception(ex)
+end
+```
+
+Recording an exception creates a [Span Event](/docs/concepts/signals/traces#span-event) on the current span with a stack trace as an attribute on the span event.
+
+Exceptions can also be recorded with additional attributes:
+
+```ruby
+current_span.record_exception(ex, attributes: { "some.attribute" => 12 })
 ```
 
 ## Context Propagation
