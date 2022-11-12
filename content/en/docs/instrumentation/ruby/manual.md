@@ -46,7 +46,7 @@ rescue OpenTelemetry::SDK::ConfigurationError => e
 end
 
 # 'Tracer' can be used throughout your code now
-Tracer = OpenTelemetry.tracer_provider.tracer('<YOUR_TRACER_NAME>')
+MyAppTracer = OpenTelemetry.tracer_provider.tracer('<YOUR_TRACER_NAME>')
 ```
 
 With a `Tracer` acquired, you can manually trace code.
@@ -82,7 +82,7 @@ Typically when you create a new span, you'll want it to be the active/current sp
 require "opentelemetry/sdk"
 
 def do_work()
-  Tracer.in_span("do_work") do |span|
+  MyAppTracer.in_span("do_work") do |span|
     # do some work that the 'do_work' span tracks!
   end
 end
@@ -96,7 +96,7 @@ If you have a distinct sub-operation you’d like to track as a part of another 
 require "opentelemetry/sdk"
 
 def parent_work()
-  Tracer.in_span("parent") do |span|
+  MyAppTracer.in_span("parent") do |span|
     # do some work that the 'parent' span tracks!
 
     child_work()
@@ -106,7 +106,7 @@ def parent_work()
 end
 
 def child_work()
-  Tracer.in_span("child") do |span|
+  MyAppTracer.in_span("child") do |span|
     # do some work that the 'child' span tracks!
 end
 ```
@@ -146,7 +146,7 @@ You can also add attributes to a span as [it's being created](#creating-new-span
 ```ruby
 require "opentelemetry/sdk"
 
-tracer.in_span('foo', attributes: { "hello" => "world", "some.number" => 1024 }) do |span|
+MyAppTracer.in_span('foo', attributes: { "hello" => "world", "some.number" => 1024 }) do |span|
   #  do stuff with the span
 end
 ```
@@ -223,7 +223,7 @@ span_to_link_from = OpenTelemetry::Trace.current_span
 
 link = OpenTelemetry::Trace::Link.new(span_to_link_from.context)
 
-Tracer.in_span("new-span", links: [link])
+MyAppTracer.in_span("new-span", links: [link])
   # do something that 'new_span' tracks
 
   # The link in 'new_span' casually associated it with the previous one,
