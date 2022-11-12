@@ -44,9 +44,9 @@ npm install @opentelemetry/auto-instrumentations-node
 
 Then in your tracing initialization code, use `registerInstrumentations`:
 
-{{< tabpane >}}
+{{< tabpane langEqualsHeader=true >}}
 
-{{< tab header="TypeScript" lang="ts" >}}
+{{< tab TypeScript >}}
 /* tracing.ts */
 
 // Import dependencies
@@ -83,7 +83,7 @@ provider.addSpanProcessor(processor);
 provider.register();
 {{< /tab >}}
 
-{{< tab header="JavaScript" lang="js" >}}
+{{< tab JavaScript >}}
 /* tracing.js */
 
 // Require dependencies
@@ -139,9 +139,9 @@ npm install --save @opentelemetry/instrumentation-http @opentelemetry/instrument
 
 And then register each instrumentation library:
 
-{{< tabpane >}}
+{{< tabpane langEqualsHeader=true >}}
 
-{{< tab header="TypeScript" lang="ts" >}}
+{{< tab TypeScript >}}
 /* tracing.ts */
 
 // Import dependencies
@@ -181,7 +181,7 @@ provider.addSpanProcessor(processor);
 provider.register();
 {{< /tab >}}
 
-{{< tab header="JavaScript" lang="js" >}}
+{{< tab JavaScript >}}
 /* tracing.js */
 
 // Require dependencies
