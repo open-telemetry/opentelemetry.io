@@ -172,7 +172,7 @@ current_span.add_attributes(
 
 ### Add Span Events
 
-A [span event](docs/concepts/signals/traces#span-events) is a human-readable message on a span that represents "something happening" during it's lifetime. For example, imagine a function that requires exclusive access to a resource that is under a mutex. An event could be created at two points - once, when we try to gain access to the resource, and another when we acquire the mutex.
+A [span event](/docs/concepts/signals/traces#span-events) is a human-readable message on a span that represents "something happening" during it's lifetime. For example, imagine a function that requires exclusive access to a resource that is under a mutex. An event could be created at two points - once, when we try to gain access to the resource, and another when we acquire the mutex.
 
 ```ruby
 span = OpenTelemetry::Trace.current_span
