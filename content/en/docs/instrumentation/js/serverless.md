@@ -3,7 +3,7 @@ title: Serverless
 weight: 8
 ---
 
-This guide will show you how to get started with tracing serverless functions using OpenTelemetry instrumentation libraries.
+This guide shows how to get started with tracing serverless functions using OpenTelemetry instrumentation libraries.
 
 ## AWS Lambda
 
