@@ -51,7 +51,7 @@ languages:
     name: JavaScript
     status:
       traces: stable
-      metrics: Release Candidate
+      metrics: stable
       logs: Development
   rust:
     name: Rust
