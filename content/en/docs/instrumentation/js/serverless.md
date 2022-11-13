@@ -11,7 +11,7 @@ The following show how to use OpenTelemetry to instrument AWS Lambda functions t
 
 ### Dependencies
 
-Create an empty package.json:
+First, create an empty package.json:
 
 ```sh
 npm init -y
