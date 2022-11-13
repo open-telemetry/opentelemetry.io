@@ -7,7 +7,7 @@ This guide shows how to get started with tracing serverless functions using Open
 
 ## AWS Lambda
 
-Following the next steps will allow your AWS Lambda functions to use OpenTelemetry to send traces to the configured backend.
+The following show how to use OpenTelemetry to instrument AWS Lambda functions that send traces to a configured backend.
 
 ### Dependencies
 
