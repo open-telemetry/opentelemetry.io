@@ -128,7 +128,9 @@ exports.handler = async (event) => {
 ### Deployment
 
 There are multiple ways of deploying, but we will be using [Serverless Framework](https://github.com/serverless/serverless)
-for ease of use. Create a file called `serverless.yml`:
+for ease of use. More details can be found in the [Setting Up Serverless Framework guide](https://www.serverless.com/framework/docs/getting-started).
+
+Create a file called `serverless.yml`:
 
 ```yaml
 service: lambda-otel-native
