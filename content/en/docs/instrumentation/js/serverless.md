@@ -17,7 +17,7 @@ Create an empty package.json:
 npm init -y
 ```
 
-Install dependencies used by the example.
+Then install the required dependencies:
 
 ```sh
 npm install \
