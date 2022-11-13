@@ -31,7 +31,7 @@ npm install \
 
 ### AWS Lambda wrapper code
 
-This file will contain all the OpenTelemetry logic, which will enable tracing.
+This file contains all the OpenTelemetry logic, which enables tracing.
 Please save the following code as `lambda-wrapper.js`.
 
 ```javascript
