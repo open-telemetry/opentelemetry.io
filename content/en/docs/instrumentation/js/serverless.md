@@ -127,8 +127,13 @@ exports.handler = async (event) => {
 
 ### Deployment
 
-There are multiple ways of deploying, but we will be using [Serverless Framework](https://github.com/serverless/serverless)
-for ease of use. More details can be found in the [Setting Up Serverless Framework guide](https://www.serverless.com/framework/docs/getting-started).
+There are multiple ways of deploying your Lambda function:
+* [AWS Console](https://aws.amazon.com/console/)
+* [AWS CLI](https://aws.amazon.com/cli/)
+* [Serverless Framework](https://github.com/serverless/serverless)
+* [Terraform](https://github.com/hashicorp/terraform)
+
+Here we will be using Serverless Framework, more details can be found in the [Setting Up Serverless Framework guide](https://www.serverless.com/framework/docs/getting-started).
 
 Create a file called `serverless.yml`:
 
