@@ -2,7 +2,7 @@
 title: Getting Started
 spelling: cSpell:ignore dpkg GOARCH journalctl kubectl
 weight: 1
-collectorVersion: 0.63.0
+collectorVersion: 0.64.1
 ---
 
 If you aren't familiar with the deployment models, components, and repositories
