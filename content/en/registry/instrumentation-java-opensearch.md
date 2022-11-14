@@ -9,7 +9,7 @@ tags:
     - java
 repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/opensearch
 license: Apache 2.0
-description: undefined
+description: This package provides an instrumentation library for OpenSearch
 authors: OpenTelemetry Authors
 otVersion: latest
 ---
