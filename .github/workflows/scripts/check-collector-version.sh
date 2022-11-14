@@ -12,7 +12,7 @@ fi
 # get the latest tag, without the "v" prefix
 latest_version=$(gh api -q .tag_name repos/open-telemetry/opentelemetry-collector-releases/releases/latest | sed 's/^v//')
 
-branch="opentelemetrybot/collector_version_${latest_version}"
+branch="opentelemetrybot/collector_version_${latest_version}_r${RANDOM}"
 
 # While developing the workflow this will map to the dev branch, will map to "main" when in production
 base_branch=$(git rev-parse --abbrev-ref HEAD)
