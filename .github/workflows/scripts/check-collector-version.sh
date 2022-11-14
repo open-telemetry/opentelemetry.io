@@ -14,7 +14,10 @@ latest_version=$(gh api -q .tag_name repos/open-telemetry/opentelemetry-collecto
 
 branch="opentelemetrybot/collector_version_${latest_version}"
 
-git checkout -b "${branch}" main
+# While developing the workflow this will map to the dev branch, will map to "main" when in production
+base_branch=$(git rev-parse --abbrev-ref HEAD)
+
+git checkout -b "${branch}" "${base_branch}"
 
 gettingStartedFile=${REPO_DIR}/content/en/docs/collector/getting-started.md
 
