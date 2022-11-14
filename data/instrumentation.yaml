@@ -63,5 +63,5 @@ languages:
     name: Swift
     status:
       traces: stable
-      metrics: outdated
+      metrics: in development
       logs: in development
