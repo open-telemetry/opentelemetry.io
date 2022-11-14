@@ -23,21 +23,40 @@ import { URL } from 'url';
 // $ node index.mjs
 const octokit = new Octokit({auth: process.env.GITHUB_AUTH_TOKEN});
 
+// Some components should not be listed in the registry, you can remove them here 
+// by providing the file name that would be used for their entry. 
+const ignoreList = [
+    // Internal to ruby, used by other OTLP exporters
+    'exporter-ruby-otlpcommon.md',
+    // Sub modules (kafka clients, server, ...) are listed 1-by-1
+    'instrumentation-java-kafka.md',
+    'instrumentation-java-akka.md',
+    // bunch of Java internals
+    'instrumentation-java-annotations',  
+    'instrumentation-java-api.md',
+    'instrumentation-java-cditesting.md',
+    'instrumentation-java-extensionannotations.md',
+    'instrumentation-java-externalannotations.md',
+    'instrumentation-java-internal.md',
+    'instrumentation-java-methods.md',
+    'instrumentation-java-resources.md'
+];
+
 // Please uncomment the entries you'd like to scan for.
-// ['receiver','exporter','processor', 'extension'].forEach(async (component) => scanCollectorComponent(component))
+// ['receiver','exporter','processor', 'extension'].forEach(async (component) => scanCollectorComponent(component));
 
-// scanByLanguage('instrumentation', 'js', 'plugins/node')
+// scanByLanguage('instrumentation', 'js', 'plugins/node');
 
-scanByLanguage('instrumentation', 'ruby')
+// scanByLanguage('instrumentation', 'ruby');
 // scanByLanguage('exporter', 'ruby', 'exporter', 'md', 'opentelemetry-ruby');
 
-// scanByLanguage('instrumentation', 'erlang', 'instrumentation')
+// scanByLanguage('instrumentation', 'erlang', 'instrumentation');
 
-//scanByLanguage('instrumentation', 'python', 'instrumentation', 'rst')
-//scanByLanguage('exporter', 'python', 'exporter', 'rst', 'opentelemetry-python')
+// scanByLanguage('instrumentation', 'python', 'instrumentation', 'rst');
+// scanByLanguage('exporter', 'python', 'exporter', 'rst', 'opentelemetry-python');
 
 
-// scanByLanguage('instrumentation', 'java', 'instrumentation', 'md', 'opentelemetry-java-instrumentation')
+scanByLanguage('instrumentation', 'java', 'instrumentation', 'md', 'opentelemetry-java-instrumentation')
 
 /*[
     ['instrumentation', 'opentelemetry-dotnet'],
@@ -45,7 +64,15 @@ scanByLanguage('instrumentation', 'ruby')
     ['exporter', 'opentelemetry-dotnet'],
     ['exporter', 'opentelemetry-dotnet-contrib']
 ].forEach(async ([registryType, repo]) => {
-    scanByLanguage(registryType, 'dotnet', 'src', 'md', repo, (item) => item.name.toLowerCase().includes(registryType), (name) => name.split(".").splice(2,3).join('-').toLowerCase())
+    scanByLanguage(
+        registryType, 
+        'dotnet', 
+        'src', 
+        'md', 
+        repo, 
+        (item) => item.name.toLowerCase().includes(registryType), 
+        (name) => name.split(".").splice(2,3).join('').toLowerCase()
+    )
 })*/
 
 async function scanForNew(path, repo, filter = () => true, keyMapper = x => x, owner = 'open-telemetry') {
@@ -136,7 +163,9 @@ async function createFilesFromScanResult(existing, found, settings) {
             const md = createMarkDown(currentKey, parsedReadme.name, language, registryType, current.html_url, parsedReadme.description)
             // collector entries are named reverse (collector-{registryTpe}) compared to languages ({registryTpe}-{language}), we fix this here.
             const fileName = language === 'collector' ? `${language}-${registryType}-${currentKey}.md` : `${registryType}-${language}-${currentKey}.md`
-            await fs.writeFile(fileName, md)
+            if (!ignoreList.includes(fileName)) {
+                await fs.writeFile(fileName, md)
+            }
         }
     })
 }
@@ -148,7 +177,7 @@ async function scanByLanguage(
         readmeFormat = 'md', 
         repo = `opentelemetry-${language}-contrib`,
         filter = () => true,
-        keyMapper = x => x.split(/[_-]/).filter(y => !['opentelemetry', registryType].includes(y)).join(''),
+        keyMapper = x => x.split(/[_-]/).filter(y => !['opentelemetry', 'instrumentation'].includes(y) && !y.match(/^[0-9]+.[0-9]+$/)).join(''),
     ) {
     // https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/
     const found = await scanForNew(path, repo, filter, keyMapper)
