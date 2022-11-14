@@ -58,10 +58,18 @@ npm install @opentelemetry/api \
 
 ### Initialization and Configuration
 
-If you are coding in TypeScript, then run the following command: 
+If you are coding in TypeScript, then run the following command:
+
 ```shell
 tsc --init
 ```
+
+Then acquire [parcel](https://parceljs.org/), which will (among other things) let you work in Typescript.
+
+```shell
+npm install --save-dev parcel
+```
+
 Create an empty code file named `document-load` with a `.ts` or `.js` extension, as appropriate, based on the language you've chosen to write your app in. Add the following code to your HTML right before the `</body>` closing tag:
 
 {{< tabpane lang=html >}}
@@ -104,9 +112,7 @@ registerInstrumentations({
 });
 ```
 
-In the following we will use [parcel](https://parceljs.org/) as web application bundler, but you can of course also use any other build tool.
-
-Run
+Now build the app with parcel:
 
 ```shell
 npx parcel index.html
@@ -114,7 +120,7 @@ npx parcel index.html
 
 and open the development webserver (e.g. at `http://localhost:1234`) to see if your code works.
 
-There will be no output of traces yet, for this we need to add an exporter
+There will be no output of traces yet, for this we need to add an exporter.
 
 ### Creating an Exporter
 
