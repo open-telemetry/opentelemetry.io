@@ -124,7 +124,7 @@ Providers. In some languages, a global Tracer is already initialized for you.
 
 Trace Exporters send traces to a consumer. This consumer can be standard output
 for debugging and development-time, the OpenTelemetry Collector, or any
-open-source or vendor backend of your choice.
+open source or vendor backend of your choice.
 
 ### Trace Context
 

@@ -25,9 +25,9 @@ must emit [traces](/docs/concepts/observability-primer/#distributed-traces),
 [metrics](/docs/concepts/observability-primer/#reliability--metrics), and
 [logs](/docs/concepts/observability-primer/#logs). The instrumented data must
 then be sent to an Observability back-end. There are a number of Observability
-back-ends out there, ranging from self-hosted open-source tools (e.g.
+back-ends out there, ranging from self-hosted open source tools (e.g.
 [Jaeger](https://www.jaegertracing.io/) and [Zipkin](https://zipkin.io/)), to
-commercial SAAS offerings.
+commercial SaaS offerings.
 
 In the past, the way in which code was instrumented would vary, as each
 Observability back-end would have its own instrumentation libraries and agents
@@ -43,7 +43,7 @@ choice.
 > and the burden on the user to maintain instrumentation libraries.
 
 Recognizing the need for standardization, the cloud community came together, and
-two open-source projects were born: [OpenTracing](https://opentracing.io) (a
+two open source projects were born: [OpenTracing](https://opentracing.io) (a
 [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io) project) and
 [OpenCensus](https://opencensus.io) (a
 [Google Open Source](https://opensource.google) community project).
@@ -65,7 +65,7 @@ takes the best of both worlds, and then some.
 
 OTel's goal is to provide a set of standardized vendor-agnostic SDKs, APIs, and
 [tools](/docs/collector) for ingesting, transforming, and sending data to an
-Observability back-end (i.e. open-source or commercial vendor).
+Observability back-end (i.e. open source or commercial vendor).
 
 ## What can OpenTelemetry do for me?
 
@@ -87,7 +87,7 @@ OTel has broad industry support and adoption from cloud providers,
   formats in parallel to assist with migrating as standards evolve.
 - A path forward no matter where you are on your observability journey.
 
-With support for a variety of [open-source and commercial
+With support for a variety of [open source and commercial
 protocols][otel-collector-contrib], format and context propagation mechanisms as
 well as providing shims to the OpenTracing and OpenCensus projects, it is easy
 to adopt OpenTelemetry.
@@ -95,7 +95,7 @@ to adopt OpenTelemetry.
 ## What OpenTelemetry is not
 
 OpenTelemetry is not an observability back-end like Jaeger or Prometheus.
-Instead, it supports exporting data to a variety of open-source and commercial
+Instead, it supports exporting data to a variety of open source and commercial
 back-ends. It provides a pluggable architecture so additional technology
 protocols and formats can be easily added.
 
