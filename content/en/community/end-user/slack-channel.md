@@ -15,6 +15,5 @@ Description: >-
   doesn’t exist
   [#otel-vendor](https://cloud-native.slack.com/archives/C031SAMGV2A)
 
-
 [code of conduct]:
   https://github.com/open-telemetry/community/blob/main/working-groups/end-user/discussion-group-code-of-conduct.md
