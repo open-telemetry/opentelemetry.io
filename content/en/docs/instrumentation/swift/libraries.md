@@ -36,7 +36,7 @@ values to the appropriate
 | ------------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------- |
 | `service.name`      | `MyApplication`               | `CFBundleName`; The application name defined in the App's info.plist.                                    |
 | `service.version`   | `1.0 (1234)`                  | `CFBundleShortVersion` & (`CFBundleVersion`); The application version as defined in the App's info.plist |
-| `service.namespace` | `com.myCompany.myApplicaiton` | `CFBundleIdentifier`                                                                                     |
+| `service.namespace` | `com.myCompany.myApplication` | `CFBundleIdentifier`                                                                                     |
 
 #### Device Info
 
@@ -67,7 +67,7 @@ Initialize the class with
 `URLSessionInstrumentation(configuration: URLSessionInstrumentationConfiguration())`
 to automatically capture all network calls.
 
-This behaviour can be modified or augmented by using the optional callbacks
+This behavior can be modified or augmented by using the optional callbacks
 defined in `URLSessionInstrumentationConfiguration` :
 
 `shouldInstrument: ((URLRequest) -> (Bool)?)?` : Filter which requests you want
@@ -84,7 +84,7 @@ must also return true if you want to inject custom headers.
 callback to inject custom headers or modify the request in any other way
 
 `nameSpan: ((URLRequest) -> (String)?)?` - Modifies the name for the given
-request instead of stantard Opentelemetry name
+request instead of standard OpenTelemetry name
 
 `createdRequest: ((URLRequest, Span) -> Void)?` - Called after request is
 created, it allows to add extra information to the Span
@@ -112,7 +112,7 @@ details about the network state of the device at the time of network requests.
 | ----------------------------- | ----------------------------- | ------------------------------------------------------------------------------------------- |
 | `net.host.connection.type`    | `wifi`, `cell`, `unavailable` | The type of connection utilized by the device at the time of the request.                   |
 | `net.host.connection.subtype` | `EDGE` `LTE`, etc             | They type of cellular connection. Only populated if the connection type is `cell`           |
-| `net.host.carrier.name`       | `T-Mobile`, `Verison`, etc    | The cellular carrier name. Only populated for cellular connection types.                    |
+| `net.host.carrier.name`       | `T-Mobile`, `Verizon`, etc    | The cellular carrier name. Only populated for cellular connection types.                    |
 | `net.host.carrier.icc`        | `DE`                          | The ISO 3166-1 alpha-2 2-character country code associated with the mobile carrier network. |
 | `net.host.carrier.mcc`        | `310`                         | Mobile Country Code                                                                         |
 | `net.host.carrier.mnc`        | `001`                         | Mobile network code                                                                         |
@@ -131,6 +131,6 @@ Just add SignpostIntegration as any other Span Processor (see the
 [manual instrumentation](../manual)) docs for
 details on configuring your providers:
 
-```
+```swift
 OpenTelemetry.instance.tracerProvider.addSpanProcessor(SignPostIntegration())
 ```

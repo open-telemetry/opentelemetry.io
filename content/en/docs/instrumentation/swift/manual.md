@@ -7,10 +7,9 @@ description: Manual instrumentation for opentelemetry-swift
 
 ## Setup
 
-The [OpenTelemetrySdk](https://github.com/open-telemetry/opentelemetry-swift/blob/main/Sources/OpenTelemetrySdk/OpenTelemetrySdk.swift#L37) provides limited functionality in its default configuration. For more useful functionality, some configuration is required. 
+The [OpenTelemetrySdk](https://github.com/open-telemetry/opentelemetry-swift/blob/main/Sources/OpenTelemetrySdk/OpenTelemetrySdk.swift#L37) provides limited functionality in its default configuration. For more useful functionality, some configuration is required.
 
 The default registered `TracerProvider` and `MetricProvider` are not configured with an exporter. There are several [exporters](https://github.com/open-telemetry/opentelemetry-swift/tree/main/Sources/Exporters) available depending on your needs. Below we will explore configuring the OTLP exporter, which can be used for sending data to the [opentelemetry-collector](https://github.com/open-telemetry/opentelemetry-collector).
-
 
 ```swift
 import GRPC
@@ -37,6 +36,7 @@ OpenTelemetry.registerTracerProvider(tracerProvider: TracerProviderBuilder()
 ```
 
 A similar pattern is used for the OtlpMetricExporter:
+
 ```swift
 
 // otlpConfiguration & grpcChannel can be reused
@@ -51,8 +51,8 @@ After configuring the MeterProvider & TracerProvider all subsequently initialize
 
 ## Acquiring a Tracer
 
-To do tracing, you will need a tracer. 
-A tracer is acquired through the tracer provider and is responsible for creating spans. The OpenTelementrySdk manages the tracer provider as we defined and registered above. 
+To do tracing, you will need a tracer.
+A tracer is acquired through the tracer provider and is responsible for creating spans. The OpenTelementrySdk manages the tracer provider as we defined and registered above.
 A tracer requires an instrumentation name, and an optional version to be created:
 
 ```swift
@@ -69,11 +69,12 @@ let span =  let builder = tracer.spanBuilder(spanName: "\(name)").startSpan()
 ...
 span.end()
 ```
+
 It is required to call `end()` to end the span.
 
 ### Creating Nested Spans
 
-Spans are used to build relationship between operations. 
+Spans are used to build relationship between operations.
 Below is an example of how we can manually build relationship between spans.
 
 Below we have `parent()` calling `child()` and how to manually link spans of each of these methods.
@@ -119,9 +120,10 @@ func child() {
 
 Sometimes it's useful to do something with the current/active span. Here's how to access the current span from an arbitrary point in your code.
 
-```swift 
+```swift
   let currentSpan = OpenTelemetry.instance.contextProvider.activeSpan
 ```
+
 ### Span Attributes
 
 Spans can also be annotated with additional attributes. All spans will be automatically annotated with the `Resource` attributes attached to the tracer provider.
@@ -135,6 +137,7 @@ span.setAttribute("http.url", url.toString());
 ```
 
 ### Creating Span Events
+
 A Span Event can be thought of as a structured log message (or annotation) on a Span, typically used to denote a meaningful, singular point in time during the Span’s duration.
 
 ```swift
@@ -146,6 +149,7 @@ A Span Event can be thought of as a structured log message (or annotation) on a 
 ```
 
 ### Setting Span Status
+
 A [status](/docs/concepts/signals/traces/#span-status) can be set on a span, typically used to specify that a span has not completed successfully - `SpanStatus.Error`. In rare scenarios, you could override the Error status with OK, but don’t set OK on successfully-completed spans.
 
 The status can be set at any time before the span is finished:
@@ -165,7 +169,9 @@ func myFunction() {
 ```
 
 ### Recording exceptions in Spans
+
 Semantic conventions provide special demarcation for events that record exceptions:
+
 ```swift
 let span = someTracer.spanBuilder(spanName: "my span").startSpan() 
 do {
@@ -182,9 +188,11 @@ span.end()
 ```
 
 ## SDK Configuration
-### Processors 
+
+### Processors
+
 Different Span processors are offered by OpenTelemetry-swift. The `SimpleSpanProcessor` immediately forwards ended spans to the exporter, while the `BatchSpanProcessor` batches them and sends them in bulk. Multiple Span processors can be configured to be active at the same time using the `MultiSpanProcessor`.
-For example, you may create a `SimpleSpanProcessor` that exports to a logger, and a `BatchSpanProcesssor` that exports to a OpenTelementry-Collector: 
+For example, you may create a `SimpleSpanProcessor` that exports to a logger, and a `BatchSpanProcesssor` that exports to a OpenTelementry-Collector:
 
 ```swift
 let otlpConfiguration = OtlpConfiguration(timeout: OtlpConfiguration.DefaultTimeoutInterval)
@@ -203,6 +211,7 @@ OpenTelemetry.registerTracerProvider(tracerProvider: TracerProviderBuilder()
                                                       .build())
 
 ```
+
 The batch span processor allows for a variety of parameters for customization including.
 
 ### Exporters
@@ -212,7 +221,7 @@ OpenTelemetry-Swift provides the following exporters:
 - `InMemoryExporter`: Keeps the span data in memory. This is useful for testing and debugging.
 - `DatadogExporter` : Converts OpenTelemetry span data to Datadog traces & span Events to Datadog logs.
 - `JaegerExporter` : Converts OpenTelemetry span data to Jaeger format and exports to a Jaeger endpoint.
-- Persistence exporter : An exporter decorator that provides data persistence to existing metric and trace exporters. 
+- Persistence exporter : An exporter decorator that provides data persistence to existing metric and trace exporters.
 - `PrometheusExporter` : Converts metric data to Prometheus format and exports to a Prometheus endpoint.  
-- `StdoutExporter` : Exports span data to Stdout. Useful for debugging. 
-- `ZipkinTraceExporter` : Exports span data to Zipkin format to a zipkin endpoint.
+- `StdoutExporter` : Exports span data to Stdout. Useful for debugging.
+- `ZipkinTraceExporter` : Exports span data to Zipkin format to a Zipkin endpoint.
