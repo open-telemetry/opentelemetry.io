@@ -16,6 +16,6 @@ our [community repo](https://github.com/open-telemetry/community).
 
 ## Open Source Collaboration
 
-OpenTelemetry collaborates and integrates with other open-source projects
+OpenTelemetry collaborates and integrates with other open source projects
 including Fluent Bit, Jaeger, Kubernetes, Prometheus, OpenMetrics, and W3C.
 [Read more](/integrations/).
