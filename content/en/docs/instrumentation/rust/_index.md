@@ -19,7 +19,7 @@ The data (name, status) is located at
 
 ## Crates
 
-Opentelemetry for Rust publishes the following crates:
+OpenTelemetry for Rust publishes the following crates:
 
 - [opentelemetry](https://crates.io/crates/opentelemetry)
 - [opentelemetry-api](https://crates.io/crates/opentelemetry-api)
