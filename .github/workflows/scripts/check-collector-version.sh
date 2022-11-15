@@ -15,7 +15,8 @@ latest_version=$(gh api -q .tag_name repos/open-telemetry/opentelemetry-collecto
 pr_title="Bump collector version to ${latest_version}"
 existing_pr_count=$(gh pr list -s all -S "in:title ${pr_title}" | wc -l)
 if [ $existing_pr_count -gt 0 ] ; then
-    echo "PR for this version was already created."
+    echo "PR for this version was already created:"
+    gh pr list -s all -S "in:title ${pr_title}"
     exit 0
 fi
 
