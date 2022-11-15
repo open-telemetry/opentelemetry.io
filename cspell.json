@@ -1,0 +1,15 @@
+{
+    "version": "0.2",
+    "language": "en",
+    "words": [
+        "CNCF",
+        "OTLP",
+        "OpenTelemetry",
+        "OTel",
+        "daemonset",
+        "zipkin",
+        "protobuf",
+        "parentbased",
+        "tabpane"
+    ]
+}
