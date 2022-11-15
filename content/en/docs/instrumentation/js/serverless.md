@@ -78,7 +78,7 @@ traces to it. If you don't have one setup already, you can check out [Jaeger](ht
 
 Note that `disableAwsContextPropagation` is set to true. The reason for this is
 that the Lambda instrumentation tries to use the X-Ray context headers by
-default, this results in a non-sampled context, which creates a
+default, unless active tracing is enabled for this function, this results in a non-sampled context, which creates a
 `NonRecordingSpan`.
 
 More details can be found in the instrumentation
