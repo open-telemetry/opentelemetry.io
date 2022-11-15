@@ -12,6 +12,14 @@ fi
 # get the latest tag, without the "v" prefix
 latest_version=$(gh api -q .tag_name repos/open-telemetry/opentelemetry-collector-releases/releases/latest | sed 's/^v//')
 
+pr_title="Bump collector version to ${latest_version}"
+existing_pr_count=$(gh pr list -s all -S "in:title ${pr_title}" | wc -l)
+if [ $existing_pr_count -gt 0 ] ; then
+    echo "PR for this version was already created:"
+    gh pr list -s all -S "in:title ${pr_title}"
+    exit 0
+fi
+
 branch="opentelemetrybot/collector_version_${latest_version}_r${RANDOM}"
 
 # While developing the workflow this will map to the dev branch, will map to "main" when in production
@@ -35,5 +43,5 @@ git push --set-upstream origin "${branch}"
 
 echo "Creating the pull request on your behalf."
 gh pr create --label auto-update,sig:collector \
-             --title "Bump collector version to ${latest_version}" \
+             --title ${pr_title} \
              --body "Use OpenTelemetry collector v${latest_version} in the collector getting started."

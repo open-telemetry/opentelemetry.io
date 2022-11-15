@@ -3,10 +3,12 @@ name: Check collector version
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '0 1 * * *'
 
 jobs:
   build:
+    # Make sure that the workflow does not run on forks (add yourself as exception if you work on the workflow)
+    if: github.repository_owner == 'open-telemetry' || github.repository_owner == 'svrnm'
     name: Check collector version
     runs-on: ubuntu-20.04
     steps:
