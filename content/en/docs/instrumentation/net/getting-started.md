@@ -134,7 +134,7 @@ activity?.SetTag("baz", new int[] { 1, 2, 3 });
 counter.Add(1);
 
 // And flush the batch of metrics - for example only!
-meterProvider.ForceFlush()
+meterProvider.ForceFlush();
 ```
 
 **Note:** The above example calls `ForceFlush` only for demonstrative purposes.
