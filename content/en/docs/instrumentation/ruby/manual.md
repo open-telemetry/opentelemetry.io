@@ -90,7 +90,7 @@ span. To do that, use `in_span`:
 ```ruby
 require "opentelemetry/sdk"
 
-def do_work()
+def do_work
   MyAppTracer.in_span("do_work") do |span|
     # do some work that the 'do_work' span tracks!
   end
@@ -107,19 +107,20 @@ relationship:
 ```ruby
 require "opentelemetry/sdk"
 
-def parent_work()
+def parent_work
   MyAppTracer.in_span("parent") do |span|
     # do some work that the 'parent' span tracks!
 
-    child_work()
+    child_work
 
     # do some more work afterwards
   end
 end
 
-def child_work()
+def child_work
   MyAppTracer.in_span("child") do |span|
     # do some work that the 'child' span tracks!
+  end
 end
 ```
 
@@ -150,11 +151,10 @@ require "opentelemetry/sdk"
 
 current_span = OpenTelemetry::Trace.current_span
 
-current_span.add_attributes(
-  {
-    "my.cool.attribute" => "a value",
-    "my.first.name" => "Oscar"
-  })
+current_span.add_attributes({
+  "my.cool.attribute" => "a value",
+  "my.first.name" => "Oscar"
+})
 ```
 
 You can also add attributes to a span as [it's being
@@ -200,11 +200,10 @@ require 'opentelemetry/semantic_conventions'
 
 current_span = OpenTelemetry::Trace.current_span
 
-current_span.add_attributes(
-  {
-    OpenTelemetry::SemanticConventions::Trace::HTTP_METHOD => "GET",
-    OpenTelemetry::SemanticConventions::Trace::HTTP_URL => "https://opentelemetry.io/",
-  })
+current_span.add_attributes({
+  OpenTelemetry::SemanticConventions::Trace::HTTP_METHOD => "GET",
+  OpenTelemetry::SemanticConventions::Trace::HTTP_URL => "https://opentelemetry.io/",
+})
 ```
 
 ### Add Span Events
@@ -239,8 +238,10 @@ Events can also have attributes of their own e.g.
 ```ruby
 require "opentelemetry/sdk"
 
-span.add_event("Cancelled wait due to external signal",
-  attributes: { "pid" => 4328, "signal" => "SIGHUP" })
+span.add_event("Cancelled wait due to external signal", attributes: {
+  "pid" => 4328,
+  "signal" => "SIGHUP"
+})
 ```
 
 ### Add Span Links
@@ -290,9 +291,9 @@ require "opentelemetry/sdk"
 current_span = OpenTelemetry::Trace.current_span
 
 begin
-   1/0 # something that obviously fails
+  1/0 # something that obviously fails
 rescue
-    current_span.status = OpenTelemetry::Trace::Status.error("error message here!")
+  current_span.status = OpenTelemetry::Trace::Status.error("error message here!")
 end
 ```
 
@@ -307,10 +308,10 @@ require "opentelemetry/sdk"
 current_span = OpenTelemetry::Trace.current_span
 
 begin
-   1/0 # something that obviously fails
-rescue Exception => ex
-    current_span.status = OpenTelemetry::Trace::Status.error("error message here!")
-    current_span.record_exception(ex)
+  1/0 # something that obviously fails
+rescue Exception => e
+  current_span.status = OpenTelemetry::Trace::Status.error("error message here!")
+  current_span.record_exception(e)
 end
 ```
 
