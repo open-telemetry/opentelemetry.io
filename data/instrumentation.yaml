@@ -62,6 +62,6 @@ languages:
   swift:
     name: Swift
     status:
-      traces: beta
-      metrics: alpha
-      logs: not yet implemented
+      traces: stable
+      metrics: experimental
+      logs: in development
