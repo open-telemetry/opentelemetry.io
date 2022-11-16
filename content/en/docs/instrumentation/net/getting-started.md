@@ -430,7 +430,7 @@ Value: Sum: 40.041 Count: 1
 (0,+Infinity]:0
 ```
 
-<details>
+</details>
 
 ## Send traces to a collector
 
