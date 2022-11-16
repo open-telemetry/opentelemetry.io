@@ -9,8 +9,8 @@ The OpenTelemetry project facilitates the collection of telemetry data via the
 OpenTelemetry Collector. The OpenTelemetry Collector offers a vendor-agnostic
 implementation on how to receive, process, and export telemetry data. It removes
 the need to run, operate, and maintain multiple agents/collectors in order to
-support open-source observability data formats (e.g. Jaeger, Prometheus, etc.)
-sending to one or more open-source or commercial back-ends. In addition, the
+support open source observability data formats (e.g. Jaeger, Prometheus, etc.)
+sending to one or more open source or commercial back-ends. In addition, the
 Collector gives end-users control of their data. The Collector is the default
 location instrumentation libraries export their telemetry data.
 
@@ -56,6 +56,6 @@ The OpenTelemetry project provides two versions of the Collector:
   receivers, processors, exporters, and extensions.
 - **[Contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/releases):**
   All the components of core plus optional or possibly experimental components.
-  Offers support for popular open-source projects including Jaeger, Prometheus,
+  Offers support for popular open source projects including Jaeger, Prometheus,
   and Fluent Bit. Also contains more specialized or vendor-specific receivers,
   processors, exporters, and extensions.
