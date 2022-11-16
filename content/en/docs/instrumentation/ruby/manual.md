@@ -256,8 +256,8 @@ link = OpenTelemetry::Trace::Link.new(span_to_link_from.context)
 MyAppTracer.in_span("new-span", links: [link])
   # do something that 'new_span' tracks
 
-  # The link in 'new_span' casually associated it with the previous one,
-  # but it is not a child span.
+  # The link in 'new_span' casually associated it with the span it's linked from,
+  # but it is not necessarily a child span.
 end
 ```
 
