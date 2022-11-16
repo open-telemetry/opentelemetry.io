@@ -32,8 +32,8 @@ Paste the following code into your `Program.cs` file:
 using System.Diagnostics;
 
 using OpenTelemetry;
-using OpenTelemetry.Trace;
 using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 
 // Define some important constants to initialize tracing with
 var serviceName = "MyCompany.MyProduct.MyService";
@@ -61,7 +61,7 @@ The code will generate a single
 <details>
 <summary>View example output</summary>
 
-```
+```text
 Activity.Id:          00-cf0e89a41682d0cc7a132277da6a45d6-c714dd3b15e21378-01
 Activity.ActivitySourceName: MyCompany.MyProduct.myService
 Activity.DisplayName: SayHello
@@ -93,9 +93,9 @@ using System.Diagnostics;
 using System.Diagnostics.Metrics;
 
 using OpenTelemetry;
-using OpenTelemetry.Trace;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 
 // Define some important constants to initialize tracing with
 var serviceName = "MyCompany.MyProduct.MyService";
@@ -103,9 +103,8 @@ var serviceVersion = "1.0.0";
 
 // Factor out the ResourceBuilder so it can be shared with the tracer provider
 // and the meter provider.
-var appResourceBuilder = 
-    ResourceBuilder.CreateDefault()
-        .AddService(serviceName: serviceName, serviceVersion: serviceVersion);
+var appResourceBuilder = ResourceBuilder.CreateDefault()
+    .AddService(serviceName: serviceName, serviceVersion: serviceVersion);
 
 var MyActivitySource = new ActivitySource(serviceName);
 
@@ -139,7 +138,7 @@ meterProvider.ForceFlush();
 
 **Note:** The above example calls `ForceFlush` only for demonstrative purposes.
 In most production scenarios, metrics are periodically emitted as a batch of
-data rather than forced to export each time one is created.
+data asynchronously.
 
 When you run the app again, you'll now find a single metric in the output
 alongside the trace that was created:
@@ -147,7 +146,7 @@ alongside the trace that was created:
 <details>
 <summary>View example output</summary>
 
-```
+```text
 Resource associated with Metric:
     service.name: MyCompany.MyProduct.MyService
     service.version: 1.0.0
@@ -202,6 +201,7 @@ Paste the following code into your `Program.cs` file:
 
 ```csharp
 using System.Diagnostics;
+
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
@@ -215,14 +215,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenTelemetryTracing(tracerProviderBuilder =>
 {
     tracerProviderBuilder
-    .AddConsoleExporter()
-    .AddSource(serviceName)
-    .SetResourceBuilder(
-        ResourceBuilder.CreateDefault()
-            .AddService(serviceName: serviceName, serviceVersion: serviceVersion))
-    .AddHttpClientInstrumentation()
-    .AddAspNetCoreInstrumentation()
-    .AddSqlClientInstrumentation();
+        .AddConsoleExporter()
+        .AddSource(serviceName)
+        .SetResourceBuilder(
+            ResourceBuilder.CreateDefault()
+                .AddService(serviceName: serviceName, serviceVersion: serviceVersion))
+        .AddHttpClientInstrumentation()
+        .AddAspNetCoreInstrumentation()
+        .AddSqlClientInstrumentation();
 });
 
 var app = builder.Build();
@@ -250,7 +250,7 @@ following:
 <details>
 <summary>View example output</summary>
 
-```
+```text
 Activity.Id:          00-d72f7e51dd06b57211f415489df89b1c-c8a394817946316d-01
 Activity.ParentId:    00-d72f7e51dd06b57211f415489df89b1c-e1c9fde6c8f415ad-01
 Activity.ActivitySourceName: MyCompany.MyProduct.MyServiceActivity.DisplayName: SayHello
@@ -314,19 +314,18 @@ var MyActivitySource = new ActivitySource(serviceName);
 
 var builder = WebApplication.CreateBuilder(args);
 
-var appResourceBuilder =
-    ResourceBuilder.CreateDefault()
-        .AddService(serviceName: serviceName, serviceVersion: serviceVersion);
+var appResourceBuilder = ResourceBuilder.CreateDefault()
+    .AddService(serviceName: serviceName, serviceVersion: serviceVersion);
 
 builder.Services.AddOpenTelemetryTracing(tracerProviderBuilder =>
 {
     tracerProviderBuilder
-    .AddConsoleExporter()
-    .AddSource(MyActivitySource.Name)
-    .SetResourceBuilder(appResourceBuilder)
-    .AddHttpClientInstrumentation()
-    .AddAspNetCoreInstrumentation()
-    .AddSqlClientInstrumentation();
+        .AddConsoleExporter()
+        .AddSource(MyActivitySource.Name)
+        .SetResourceBuilder(appResourceBuilder)
+        .AddHttpClientInstrumentation()
+        .AddAspNetCoreInstrumentation()
+        .AddSqlClientInstrumentation();
 });
 
 var meter = new Meter(serviceName);
@@ -334,11 +333,11 @@ var counter = meter.CreateCounter<long>("app.request-counter");
 builder.Services.AddOpenTelemetryMetrics(metricProviderBuilder =>
 {
     metricProviderBuilder
-    .AddConsoleExporter()
-    .AddMeter(meter.Name)
-    .SetResourceBuilder(appResourceBuilder)
-    .AddAspNetCoreInstrumentation()
-    .AddHttpClientInstrumentation();
+        .AddConsoleExporter()
+        .AddMeter(meter.Name)
+        .SetResourceBuilder(appResourceBuilder)
+        .AddAspNetCoreInstrumentation()
+        .AddHttpClientInstrumentation();
 });
 
 var app = builder.Build();
@@ -365,7 +364,7 @@ The output will be similar as with tracing, but now includes the request counter
 <details>
 <summary>View example output</summary>
 
-```
+```text
 Activity.TraceId:            bdf32b90913015106be97242fbfca649
 Activity.SpanId:             7dba8699cd7ae27c
 Activity.TraceFlags:         Recorded
@@ -432,7 +431,7 @@ Value: Sum: 40.041 Count: 1
 
 </details>
 
-## Send traces to a collector
+## Send data to a collector
 
 The [OpenTelemetry Collector](/docs/collector/getting-started/) is a vital
 component of most production deployments. A collector is most beneficial in the
@@ -454,6 +453,7 @@ receivers:
   otlp:
     protocols:
       http:
+      grpc:
 exporters:
   logging:
     loglevel: debug
@@ -462,6 +462,10 @@ processors:
 service:
   pipelines:
     traces:
+      receivers: [otlp]
+      exporters: [logging]
+      processors: [batch]
+    metrics:
       receivers: [otlp]
       exporters: [logging]
       processors: [batch]
@@ -497,10 +501,10 @@ with an OTLP exporter:
 using System.Diagnostics;
 using System.Diagnostics.Metrics;
 
-using OpenTelemetry.Trace;
+using OpenTelemetry.Exporter;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
-using OpenTelemetry.Exporter;
+using OpenTelemetry.Trace;
 
 // Define some important constants to initialize tracing with
 var serviceName = "MyCompany.MyProduct.MyService";
@@ -509,26 +513,23 @@ var MyActivitySource = new ActivitySource(serviceName);
 
 var builder = WebApplication.CreateBuilder(args);
 
-var appResourceBuilder =
-    ResourceBuilder.CreateDefault()
-        .AddService(serviceName: serviceName, serviceVersion: serviceVersion);
+var appResourceBuilder = ResourceBuilder.CreateDefault()
+    .AddService(serviceName: serviceName, serviceVersion: serviceVersion);
 
 // Configure to send data via the OTLP exporter.
 // By default, it will send to port 4318, which the collector is listening on.
 builder.Services.AddOpenTelemetryTracing(tracerProviderBuilder =>
 {
     tracerProviderBuilder
-    .AddOtlpExporter(opt =>
-    {
-        opt.Protocol = OtlpExportProtocol.HttpProtobuf;
-    })
-    .AddSource(MyActivitySource.Name)
-    .SetResourceBuilder(
-        ResourceBuilder.CreateDefault()
-            .AddService(serviceName: serviceName, serviceVersion: serviceVersion))
-    .AddHttpClientInstrumentation()
-    .AddAspNetCoreInstrumentation()
-    .AddSqlClientInstrumentation();
+        .AddOtlpExporter(opt =>
+        {
+            opt.Protocol = OtlpExportProtocol.HttpProtobuf;
+        })
+        .AddSource(MyActivitySource.Name)
+        .SetResourceBuilder(appResourceBuilder)
+        .AddHttpClientInstrumentation()
+        .AddAspNetCoreInstrumentation()
+        .AddSqlClientInstrumentation();
 });
 
 var meter = new Meter(serviceName);
@@ -536,14 +537,14 @@ var counter = meter.CreateCounter<long>("app.request-counter");
 builder.Services.AddOpenTelemetryMetrics(metricProviderBuilder =>
 {
     metricProviderBuilder
-    .AddOtlpExporter(opt =>
-    {
-        opt.Protocol = OtlpExportProtocol.HttpProtobuf;
-    })
-    .AddMeter(meter.Name)
-    .SetResourceBuilder(appResourceBuilder)
-    .AddAspNetCoreInstrumentation()
-    .AddHttpClientInstrumentation();
+        .AddOtlpExporter(opt =>
+        {
+            opt.Protocol = OtlpExportProtocol.HttpProtobuf;
+        })
+        .AddMeter(meter.Name)
+        .SetResourceBuilder(appResourceBuilder)
+        .AddAspNetCoreInstrumentation()
+        .AddHttpClientInstrumentation();
 });
 
 var app = builder.Build();
