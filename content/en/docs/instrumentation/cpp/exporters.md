@@ -33,7 +33,7 @@ auto otlp_http_exporter =
     std::unique_ptr<opentelemetry::sdk::trace::SpanExporter>(new opentelemetry::exporter::otlp::OtlpHttpExporter(opts));
 ```
 
-#### OTLP gRPC Exporter
+#### OTLP GRPC Exporter
 
 ```cpp
 opentelemetry::exporter::otlp::OtlpGrpcExporterOptions opts;
@@ -72,7 +72,7 @@ docker run -d --name jaeger \
 
 ### Zipkin
 
-To send trace data to a Zipkin endpoint you'll want to configure a Zipkin
+To send trace data to a zipkin endpoint you'll want to configure a zipkin
 exporter that sends to your endpoint.
 
 ```cpp
