@@ -40,13 +40,8 @@ one will be registered for you.
 # If in a rails app, this lives in config/initializers/opentelemetry.rb
 require "opentelemetry/sdk"
 
-begin
-  OpenTelemetry::SDK.configure do |c|
-    c.service_name = '<YOUR_SERVICE_NAME>'
-  end
-rescue OpenTelemetry::SDK::ConfigurationError => e
-  puts "Error configuring Ruby OpenTelemetry SDK"
-  puts e.inspect
+OpenTelemetry::SDK.configure do |c|
+  c.service_name = '<YOUR_SERVICE_NAME>'
 end
 
 # 'Tracer' can be used throughout your code now
