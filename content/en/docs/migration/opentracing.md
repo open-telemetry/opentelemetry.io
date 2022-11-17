@@ -4,7 +4,7 @@ linkTitle: OpenTracing
 spelling: cSpell:ignore codebases opentracing
 ---
 
-Backwards compatibility with [OpenTracing][] has been a priority for the
+Backward compatibility with [OpenTracing][] has been a priority for the
 OpenTelemetry project from the start. To ease migration, OpenTelemetry supports
 the use of both the OpenTelemetry _and_ OpenTracing APIs in the same codebase.
 This allows OpenTracing instrumentation to be recorded using OpenTelemetry SDKs.
@@ -39,16 +39,16 @@ OpenTracing plugins to instrument their libraries and frameworks.
 
 A general approach to migrating to OpenTelemetry can be summarized as follows:
 
- 1. Install OpenTelemetry SDK(s), and remove the current OpenTracing
-    implementation -- for example, a Jaeger client.
- 2. Install the OpenTelemetry instrumentation libraries, and remove the
-    OpenTracing equivalents.
- 3. Update your dashboards, alerts, etc., to consume the new OpenTelemetry data.
- 4. When writing new application code, write all new instrumentation using the
-    OpenTelemetry API.
- 5. Progressively re-instrument your application using the OpenTelemetry API.
-    There is no hard requirement to remove existing OpenTracing API calls from
-    your application, they will continue to work.
+1. Install OpenTelemetry SDK(s), and remove the current OpenTracing
+   implementation -- for example, a Jaeger client.
+2. Install the OpenTelemetry instrumentation libraries, and remove the
+   OpenTracing equivalents.
+3. Update your dashboards, alerts, etc., to consume the new OpenTelemetry data.
+4. When writing new application code, write all new instrumentation using the
+   OpenTelemetry API.
+5. Progressively re-instrument your application using the OpenTelemetry API.
+   There is no hard requirement to remove existing OpenTracing API calls from
+   your application, they will continue to work.
 
 While migrating a sizable application can require significant effort, as
 suggested above, we recommend that OpenTracing users progressively migrate their
@@ -66,17 +66,17 @@ currently emits. Doing this step on its own – without simultaneously introduci
 any new instrumentation – is recommended, as it makes it easier to determine whether
 there is any kind of break in instrumentation.
 
- 1. Replace the OpenTracing Tracer implementation you are currently using with
-    the OpenTelemetry SDK. For example, if you are using the Jaeger, remove the
-    Jaeger client and install the equivalent OpenTelemetry client.
- 2. Install the OpenTracing Shim. This shim allows the OpenTelemetry SDK to
-    consume OpenTracing instrumentation.
- 3. Configure the OpenTelemetry SDK to export data using the same protocol and
-    format that the OpenTracing client was using. For example, if you were using an
-    OpenTracing client that exported tracing data in Zipkin format, configure the
-    OpenTelemetry client to do the same.
- 4. Alternatively, configure the OpenTelemetry SDK to emit OTLP, and send the
-    data to a Collector, where you can manage exporting data in multiple formats.
+1. Replace the OpenTracing Tracer implementation you are currently using with
+   the OpenTelemetry SDK. For example, if you are using the Jaeger, remove the
+   Jaeger client and install the equivalent OpenTelemetry client.
+2. Install the OpenTracing Shim. This shim allows the OpenTelemetry SDK to
+   consume OpenTracing instrumentation.
+3. Configure the OpenTelemetry SDK to export data using the same protocol and
+   format that the OpenTracing client was using. For example, if you were using an
+   OpenTracing client that exported tracing data in Zipkin format, configure the
+   OpenTelemetry client to do the same.
+4. Alternatively, configure the OpenTelemetry SDK to emit OTLP, and send the
+   data to a Collector, where you can manage exporting data in multiple formats.
 
 Once you have the OpenTelemetry SDK installed, confirm that you can deploy your
 application and still receive the same OpenTracing-based telemetry. In other
@@ -87,8 +87,8 @@ tools are still working.
 
 Once the OpenTelemetry SDK is installed, all new instrumentation can now be
 written using the OpenTelemetry API. With few exceptions, OpenTelemetry and
-OpenTracing instrumentation will work together seamlessly (see "limits on
-compatibility" below).
+OpenTracing instrumentation will work together seamlessly
+(see [limits on compatibility](#limits-on-compatibility) below).
 
 What about existing instrumentation? There is no hard requirement to migrate
 existing application code to OpenTelemetry. However, we do recommend migrating
@@ -100,34 +100,34 @@ retired and may no longer be updated.
 It is important to note that when switching to an OpenTelemetry instrumentation
 library, the data which is produced will change. OpenTelemetry has an improved
 model for how we instrument software (what we refer to as our "semantic
-conventions"). In many cases OpenTelemetry produces better, more comprehensive
+conventions"). In many cases, OpenTelemetry produces better, more comprehensive
 tracing data. However, "better" also means "different." This means that existing
 dashboards, alerts, etc. based on older OpenTracing instrumentation libraries
 may no longer work when those libraries are replaced.
 
-For existing instrumentation, it is recommended that
+For existing instrumentation, it is recommended to:
 
- 1. Replace one piece of OpenTracing instrumentation with its OpenTelemetry
-    equivalent.
- 2. Observe how this changes the telemetry which your application produces.
- 3. Create new dashboards, alerts, etc which consume this new telemetry. Set up
-    these dashboards before deploying the new OpenTelemetry library to production.
- 4. Optionally, add processing rules to the Collector which convert the new
-    telemetry back into the old telemetry. The Collector can then be configured to
-    emit both versions of the same telemetry, creating a data overlap. This allows
-    new dashboards to populate themselves while you continue to use the old
-    dashboards.
+1. Replace one piece of OpenTracing instrumentation with its OpenTelemetry
+   equivalent.
+2. Observe how this changes the telemetry which your application produces.
+3. Create new dashboards, alerts, etc which consume this new telemetry. Set up
+   these dashboards before deploying the new OpenTelemetry library to production.
+4. Optionally, add processing rules to the Collector which converts the new
+   telemetry back into the old telemetry. The Collector can then be configured to
+   emit both versions of the same telemetry, creating a data overlap. This allows
+   new dashboards to populate themselves while you continue to use the old
+   dashboards.
 
 ## Limits on compatibility
 
-In this section we describe limits on compatibility other than the [language
-version constraints](#language-version-support) mentioned earlier.
+In this section, we describe limits on compatibility other than the
+[language version constraints](#language-version-support) mentioned earlier.
 
 ### Semantic conventions
 
 As mentioned above, OpenTelemetry has an improved model for instrumenting
 software. This means that the "tags" which are set by OpenTracing
-instrumentation may be different than the "attributes" which are set by
+instrumentation may be different from the "attributes" which are set by
 OpenTelemetry. In other words, when replacing existing instrumentation, the data
 OpenTelemetry produces may be different from the data OpenTracing produces.
 
@@ -175,7 +175,7 @@ only one API is used at a time.
 
 ## Specification and implementation details
 
-For details on how each individual OpenTracing shim works, see the appropriate
+For details on how each OpenTracing shim works, see the appropriate
 language-specific documentation. For details on the design of the OpenTracing
 shim, see [OpenTracing Compatibility][OT_spec].
 
