@@ -3,7 +3,7 @@ title: Annotations
 description: Using instrumentation annotations with a Java agent.
 aliases: [/docs/instrumentation/java/annotations]
 weight: 4
-javaAnnotationsVersion: 1.20.0-alpha
+javaAnnotationsVersion: 1.20.0
 ---
 
 For most users, the out-of-the-box instrumentation is completely sufficient and
@@ -107,7 +107,7 @@ using `@WithSpan` and you want to suppress some of them without modifying the
 code.
 
 {{% config_option
-  name="otel.instrumentation.opentelemetry-annotations.exclude-methods" %}}
+  name="otel.instrumentation.opentelemetry-instrumentation-annotations.exclude-methods" %}}
   Suppress `@WithSpan` instrumentation for specific methods. Format is
 `my.package.MyClass1[method1,method2];my.package.MyClass2[method3]`. {{%
 /config_option %}}
