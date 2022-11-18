@@ -551,6 +551,7 @@ npm install \
 Next, create a separate `instrumentation.js` file that has all the SDK initialization code in it:
 
 ```js
+const otel = require('@opentelemetry/api')
 const {
     MeterProvider,
     PeriodicExportingMetricReader,
@@ -581,8 +582,8 @@ const myServiceMeterProvider = new MeterProvider({
 
 myServiceMeterProvider.addMetricReader(metricReader);
 
-// hhhhhmmmmmmmmmmmmmm this might be a bad idea but it works lol
-export default myServiceMeterProvider;
+// Set this MeterProvider to be global to the app being instrumented.
+otel.metrics.setGlobalMeterProvider(myServiceMeterProvider)
 ```
 
 Now that a `MeterProvider` is configured, you can acquire a `Meter`.
@@ -592,9 +593,9 @@ Now that a `MeterProvider` is configured, you can acquire a `Meter`.
 Anywhere in your application where you have manual instrume code should call `getMeter` to acquire a meter. For example:
 
 ```js
-const myServiceMeterProvider = require("./instrumentation-setup");
+const otel = require('@opentelemetry/api')
 
-const meter = myServiceMeterProvider.getMeter(
+const myMeter = otel.metrics.getMeter(
   'my-service-meter'
 );
 
@@ -609,11 +610,27 @@ HELP
 
 ### Using Counters
 
-todo
+Counters can increment a non-negative numeric value.
+
+```js
+const counter = myMeter.createCounter("events.counter");
+
+//...
+
+counter.add(1);
+```
 
 ### Using Asynchronous Counters
 
-todo
+Asynchronous Counters can increment a numeric value.
+
+```js
+const counter = myMeter.createCounter("events.counter");
+
+//...
+
+counter.add(1);
+```
 
 ### Using UpDown Counters
 
