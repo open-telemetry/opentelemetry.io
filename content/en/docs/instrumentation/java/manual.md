@@ -16,7 +16,7 @@ any other implementation of the OpenTelemetry API. This way, libraries will
 obtain a real implementation only if the user application is configured for it.
 For more details, check out the [Library Guidelines].
 
-## Set up
+## Setup
 
 The first step is to get a handle to an instance of the `OpenTelemetry`
 interface.
@@ -72,8 +72,8 @@ need to acquire a [`Tracer`](/docs/concepts/signals/traces/#tracer).
 
 First, a `Tracer` must be acquired, which is responsible for creating spans and
 interacting with the [Context](#context-propagation). A tracer is acquired by
-using the OpenTelemetry API specifying the name and version of the [library
-instrumenting][Instrumentation Library] the [instrumented library] or
+using the OpenTelemetry API specifying the name and version of the
+[library instrumenting][Instrumentation Library] the [instrumented library] or
 application to be monitored. More information is available in the specification
 chapter [Obtaining a Tracer].
 
@@ -167,8 +167,8 @@ void childTwo() {
 }
 ```
 
-To link spans from remote processes, it is sufficient to set the [Remote
-Context](#context-propagation) as parent.
+To link spans from remote processes, it is sufficient to set the
+[Remote Context](#context-propagation) as parent.
 
 ```java
 Span childRemoteParent = tracer.spanBuilder("Child").setParent(remoteContext).startSpan();
@@ -209,12 +209,12 @@ span.setAttribute("http.url", url.toString());
 
 There are semantic conventions for spans representing operations in well-known
 protocols like HTTP or database calls. Semantic conventions for these spans are
-defined in the specification at [Trace Semantic Conventions]({{< relref
-"/docs/reference/specification/trace/semantic_conventions" >}}).
+defined in the specification at
+[Trace Semantic Conventions]({{< relref "/docs/reference/specification/trace/semantic_conventions" >}}).
 
 First add the semantic conventions as a dependency to your application:
 
-##### Maven
+#### Maven
 
 ```xml
 <dependency>
@@ -223,7 +223,7 @@ First add the semantic conventions as a dependency to your application:
 </dependency>
 ```
 
-##### Gradle
+#### Gradle
 
 ```kotlin
 dependencies {
@@ -242,9 +242,9 @@ span.setAttribute(SemanticAttributes.HTTP_URL, url.toString());
 ### Create Spans with events
 
 [Spans](/docs/concepts/signals/traces/#spans-in-opentelemetry) can be annotated
-with named events (called [Span
-Events](/docs/concepts/signals/traces/#span-events)) that can carry zero or more
-[Span Attributes](#span-attributes), each of which is itself a key:value map
+with named events (called
+[Span Events](/docs/concepts/signals/traces/#span-events)) that can carry zero or more
+[Span Attributes](#span-attributes), each of which itself is a key:value map
 paired automatically with a timestamp.
 
 ```java
@@ -264,8 +264,8 @@ span.addEvent("End Computation", eventAttributes);
 ### Create Spans with links
 
 A [Span](/docs/concepts/signals/traces/#spans-in-opentelemetry) may be linked to
-zero or more other Spans that are causally related via a [Span
-Link](/docs/concepts/signals/traces/#span-links). Links can be used to represent
+zero or more other Spans that are causally related via a
+[Span Link](/docs/concepts/signals/traces/#span-links). Links can be used to represent
 batched operations where a Span was initiated by multiple initiating Spans, each
 representing a single incoming item being processed in the batch.
 
@@ -278,8 +278,8 @@ Span child = tracer.spanBuilder("childWithLink")
     .startSpan();
 ```
 
-For more details how to read context from remote processes, see [Context
-Propagation](#context-propagation).
+For more details how to read context from remote processes, see
+[Context Propagation](#context-propagation).
 
 ### Set span status
 
@@ -405,11 +405,13 @@ public void handle(HttpExchange httpExchange) {
   }
 }
 ```
+
 The following code presents an example to read the W3C Trace Context from
 incoming request, add spans, and further propagate the context. The example
 utilizes
 [HttpHeaders](https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpHeaders.html)
 to fetch the traceparent header for context propagation.
+
 ```java
 TextMapGetter<HttpHeaders> getter =
   new TextMapGetter<HttpHeaders>() {
@@ -502,7 +504,7 @@ available:
   processing a request. Histogram measurements are aggregated to explicit bucket
   histograms by default.
 
-*Note* The asynchronous varieties of counter and up down counter assume that the
+**Note**: The asynchronous varieties of counter and up down counter assume that the
 registered callback is observing the cumulative sum. For example, if you
 register an asynchronous counter whose callback records bytes sent over a
 network, it must record the cumulative sum of all bytes sent over the network,
@@ -628,9 +630,9 @@ exporters out of the box:
   Zipkin backend via the Zipkin APIs.
 - Logging Exporter: saves the telemetry data into log streams. Varieties include
   `LoggingSpanExporter` and `OtlpJsonLoggingSpanExporter`.
-- OpenTelemetry Protocol Exporter: sends the data in OTLP to the [OpenTelemetry
-  Collector] or other OTLP receivers. Varieties include `OtlpGrpcSpanExporter`
-  and `OtlpHttpSpanExporter`.
+- OpenTelemetry Protocol Exporter: sends the data in OTLP to the
+  [OpenTelemetry Collector] or other OTLP receivers. Varieties include
+  `OtlpGrpcSpanExporter` and `OtlpHttpSpanExporter`.
 
 Other exporters can be found in the [OpenTelemetry Registry].
 
@@ -694,9 +696,9 @@ OpenTelemetry provides the following exporters out of the box:
   debugging.
 - Logging Exporter: saves the telemetry data into log streams. Varieties include
   `LoggingMetricExporter` and `OtlpJsonLoggingMetricExporter`.
-- OpenTelemetry Protocol Exporter: sends the data in OTLP to the [OpenTelemetry
-  Collector] or other OTLP receivers. Varieties include `OtlpGrpcMetricExporter`
-  and `OtlpHttpMetricExporter`.
+- OpenTelemetry Protocol Exporter: sends the data in OTLP to the
+  [OpenTelemetry Collector] or other OTLP receivers. Varieties include
+  `OtlpGrpcMetricExporter` and `OtlpHttpMetricExporter`.
 
 Other exporters can be found in the [OpenTelemetry Registry].
 
@@ -844,23 +846,15 @@ public class IgnoreExportErrorsFilter implements Filter {
 io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extension.logging.IgnoreExportErrorsFilter
 ```
 
-[AlwaysOffSampler]:
-    https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/AlwaysOffSampler.java
-[AlwaysOnSampler]:
-    https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/AlwaysOnSampler.java
-[HttpExchange]:
-    https://docs.oracle.com/javase/8/docs/jre/api/net/httpserver/spec/com/sun/net/httpserver/HttpExchange.html
-[Instrumentation Library]:
-    /docs/reference/specification/glossary/#instrumentation-library
-[instrumented library]:
-    /docs/reference/specification/glossary/#instrumented-library
+[AlwaysOffSampler]: https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/AlwaysOffSampler.java
+[AlwaysOnSampler]: https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/AlwaysOnSampler.java
+[HttpExchange]: https://docs.oracle.com/javase/8/docs/jre/api/net/httpserver/spec/com/sun/net/httpserver/HttpExchange.html
+[Instrumentation Library]: /docs/reference/specification/glossary/#instrumentation-library
+[instrumented library]: /docs/reference/specification/glossary/#instrumented-library
 [Library Guidelines]: /docs/reference/specification/library-guidelines
 [Obtaining a Tracer]: /docs/reference/specification/trace/api/#get-a-tracer
-[OpenTelemetry Collector]:
-    https://github.com/open-telemetry/opentelemetry-collector
+[OpenTelemetry Collector]: https://github.com/open-telemetry/opentelemetry-collector
 [OpenTelemetry Registry]: /registry/?component=exporter&language=java
-[ParentBased]:
-    https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/ParentBasedSampler.java
+[ParentBased]: https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/ParentBasedSampler.java
 [Semantic Conventions]: /docs/reference/specification/trace/semantic_conventions
-[TraceIdRatioBased]:
-    https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/TraceIdRatioBasedSampler.java
+[TraceIdRatioBased]: https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/TraceIdRatioBasedSampler.java
