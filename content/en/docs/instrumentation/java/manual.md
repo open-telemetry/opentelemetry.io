@@ -35,6 +35,87 @@ the most important piece of telemetry source-identifying info.
 
 For example:
 
+<details>
+  <summary>Maven top level dependencies. Click me.</summary>
+  Note that opentelemetry-semconv does not exist (yet) as 1.20.1 but only as 1.20.1-alpha.
+  
+  ```
+  
+  <project>
+      <dependencyManagement>
+          <dependencies>
+              <dependency>
+                  <groupId>io.opentelemetry</groupId>
+                  <artifactId>opentelemetry-bom</artifactId>
+                  <version>1.20.1</version>
+                  <type>pom</type>
+                  <scope>import</scope>
+              </dependency>
+          </dependencies>
+      </dependencyManagement>
+      
+      <dependencies>
+          <dependency>
+              <groupId>io.opentelemetry</groupId>
+              <artifactId>opentelemetry-api</artifactId>
+          </dependency>
+          <dependency>
+              <groupId>io.opentelemetry</groupId>
+              <artifactId>opentelemetry-sdk</artifactId>
+          </dependency>
+          <dependency>
+              <groupId>io.opentelemetry</groupId>
+              <artifactId>opentelemetry-sdk-trace</artifactId>
+          </dependency>
+          <dependency>
+              <groupId>io.opentelemetry</groupId>
+              <artifactId>opentelemetry-sdk-metrics</artifactId>
+          </dependency>
+          <dependency>
+              <groupId>io.opentelemetry</groupId>
+              <artifactId>opentelemetry-sdk-common</artifactId>
+          </dependency>
+          <dependency>
+              <groupId>io.opentelemetry</groupId>
+              <artifactId>opentelemetry-exporter-otlp</artifactId>
+          </dependency>
+          <dependency>
+              <groupId>io.opentelemetry</groupId>
+              <artifactId>opentelemetry-context</artifactId>
+          </dependency>
+          <dependency>
+              <groupId>io.opentelemetry</groupId>
+              <artifactId>opentelemetry-semconv</artifactId>
+              <version>1.20.1-alpha</version>
+          </dependency>
+      </dependencies>
+  </project>
+  
+  ```
+</details>
+
+<details>
+  <summary>Java imports. Click me.</summary>
+  
+  ```java
+  
+  import io.opentelemetry.api.OpenTelemetry;
+  import io.opentelemetry.api.common.Attributes;
+  import io.opentelemetry.api.trace.propagation.W3CTraceContextPropagator;
+  import io.opentelemetry.context.propagation.ContextPropagators;
+  import io.opentelemetry.exporter.otlp.metrics.OtlpGrpcMetricExporter;
+  import io.opentelemetry.exporter.otlp.trace.OtlpGrpcSpanExporter;
+  import io.opentelemetry.sdk.OpenTelemetrySdk;
+  import io.opentelemetry.sdk.metrics.SdkMeterProvider;
+  import io.opentelemetry.sdk.metrics.export.PeriodicMetricReader;
+  import io.opentelemetry.sdk.resources.Resource;
+  import io.opentelemetry.sdk.trace.SdkTracerProvider;
+  import io.opentelemetry.sdk.trace.export.BatchSpanProcessor;
+  import io.opentelemetry.semconv.resource.attributes.ResourceAttributes;
+  
+  ```
+</details>
+
 ```java
 Resource resource = Resource.getDefault()
   .merge(Resource.create(Attributes.of(ResourceAttributes.SERVICE_NAME, "logical-service-name")));
