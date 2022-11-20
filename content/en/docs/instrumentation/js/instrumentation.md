@@ -548,7 +548,8 @@ npm install \
   @opentelemetry/instrumentation
 ```
 
-Next, create a separate `instrumentation.js` file that has all the SDK initialization code in it:
+Next, create a separate `instrumentation.js` file that has all the SDK
+initialization code in it:
 
 ```js
 const otel = require('@opentelemetry/api')
@@ -590,7 +591,8 @@ Now that a `MeterProvider` is configured, you can acquire a `Meter`.
 
 ### Acuiring a Meter
 
-Anywhere in your application where you have manual instrume code should call `getMeter` to acquire a meter. For example:
+Anywhere in your application where you have manual instrume code should call
+`getMeter` to acquire a meter. For example:
 
 ```js
 const otel = require('@opentelemetry/api')
@@ -602,7 +604,10 @@ const myMeter = otel.metrics.getMeter(
 // You can now use a 'meter' to create instruments!
 ```
 
-It’s generally recommended to call `getMeter` in your app when you need it rather than exporting the meter instance to the rest of your app. This helps avoid trickier application load issues when other required dependencies are involved.
+It’s generally recommended to call `getMeter` in your app when you need it
+rather than exporting the meter instance to the rest of your app. This helps
+avoid trickier application load issues when other required dependencies are
+involved.
 
 ### Synchronous and asynchronous instruments
 
@@ -610,22 +615,13 @@ HELP
 
 ### Using Counters
 
-Counters can increment a non-negative numeric value.
+Counters can by used to measure a non-negative, increasing value. They are useful when
+increasing the counter is computationally cheap.
 
 ```js
-const counter = myMeter.createCounter("events.counter");
+const otel = require('@opentelemetry/api')
 
-//...
-
-counter.add(1);
-```
-
-### Using Asynchronous Counters
-
-Asynchronous Counters can increment a numeric value.
-
-```js
-const counter = myMeter.createCounter("events.counter");
+const counter = myMeter.createCounter('events.counter');
 
 //...
 
@@ -634,17 +630,71 @@ counter.add(1);
 
 ### Using UpDown Counters
 
-todo
+UpDown counters can increment and decrement, allowing you to observe a cumulative value that goes up or down.
 
-### Using Asynchronous UpDownCounters
 
-todo
+```js
+const counter = myMeter.createUpDownCounter('events.counter');
+
+//...
+
+counter.add(1);
+
+//...
+
+counter.add(-1);
+```
 
 ### Using Histograms
 
-todo
+Histograms are used to measure a distribution of values over time.
+
+For example, here's how you might report a distribution of response times for an API route with Express:
+
+```js
+const express = require('express');
+
+const app = express();
+
+app.get('/', (_req, _res) => {
+  const histogram = meter.createHistogram("taks.duration");
+  const startTime = new Date().getTime()
+
+  // do some work in an API call
+
+  const endTime = new Date().getTime()
+  const executionTime = endTime - startTime
+
+  // Record the duration of the task operation
+  histogram.record(executionTime)
+});
+```
 
 ### Using Asynchronous Gauges
+
+todo
+
+### Using Observable Counters
+
+Observable Counters observe the work of a callback. They are useful when you
+need to increase a counter, but determining the value to increase by might be
+expensive or require an asynchronous call.
+
+```js
+const observableCounter = myMeter.createObservableCounter('my.observable.counter');
+
+// Simulate a call to
+async function getData(): Promise<number> {
+  return Math.random() * 100;
+}
+
+observableCounter.addCallback(async (observableResult) => {
+  const data = await getData();
+  observableResult.observe(data, { 'some.optional.attribute': 'some value' })
+});
+```
+
+### Using Asynchronous UpDownCounters
 
 todo
 
