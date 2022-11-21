@@ -29,7 +29,7 @@ Install dependencies used by the example.
 {{< tabpane lang=shell >}}
 
 {{< tab TypeScript >}}
-npm install express typescript ts-node express @types/express @types/node 
+npm install express typescript ts-node @types/express @types/node 
 {{< /tab >}}
 
 {{< tab JavaScript >}}
@@ -61,23 +61,23 @@ app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
-app.listen(PORT), () => {
+app.listen(PORT, () => {
   console.log(`Listening for requests on http://localhost:${PORT}`);
-};
+});
 {{< /tab >}}
 
 {{< tab JavaScript >}}
 /*app.js*/
 const express = require("express");
 
-const PORT = process.env.PORT || "8080";
+const PORT = parseInt(process.env.PORT || "8080");
 const app = express();
 
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
-app.listen(parseInt(PORT, 10), () => {
+app.listen(PORT, () => {
   console.log(`Listening for requests on http://localhost:${PORT}`);
 });
 {{< /tab >}}
