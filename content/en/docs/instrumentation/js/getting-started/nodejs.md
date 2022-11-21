@@ -29,7 +29,7 @@ Install dependencies used by the example.
 {{< tabpane lang=shell >}}
 
 {{< tab TypeScript >}}
-npm install express typescript ts-node express @types/express @types/node 
+npm install express typescript ts-node @types/express @types/node 
 {{< /tab >}}
 
 {{< tab JavaScript >}}
