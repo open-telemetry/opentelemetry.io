@@ -114,17 +114,17 @@ dist:
 exporters:
   - gomod:
       "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/jaegerexporter
-      v0.53.0"
+      v0.64.0"
   - import: go.opentelemetry.io/collector/exporter/loggingexporter
-    gomod: go.opentelemetry.io/collector v0.53.0
+    gomod: go.opentelemetry.io/collector v0.64.0
 
 receivers:
   - import: go.opentelemetry.io/collector/receiver/otlpreceiver
-    gomod: go.opentelemetry.io/collector v0.53.0
+    gomod: go.opentelemetry.io/collector v0.64.0
 
 processors:
   - import: go.opentelemetry.io/collector/processor/batchprocessor
-    gomod: go.opentelemetry.io/collector v0.53.0
+    gomod: go.opentelemetry.io/collector v0.64.0
 ```
 
 ## Step 3 - Generating the Code and Building your Collector's distribution.
