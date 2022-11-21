@@ -615,8 +615,8 @@ HELP
 
 ### Using Counters
 
-Counters can by used to measure a non-negative, increasing value. They are useful when
-increasing the counter is computationally cheap.
+Counters can by used to measure a non-negative, increasing value. They are
+useful when increasing the counter is computationally cheap.
 
 ```js
 const otel = require('@opentelemetry/api')
@@ -630,7 +630,8 @@ counter.add(1);
 
 ### Using UpDown Counters
 
-UpDown counters can increment and decrement, allowing you to observe a cumulative value that goes up or down.
+UpDown counters can increment and decrement, allowing you to observe a
+cumulative value that goes up or down.
 
 
 ```js
@@ -649,7 +650,8 @@ counter.add(-1);
 
 Histograms are used to measure a distribution of values over time.
 
-For example, here's how you might report a distribution of response times for an API route with Express:
+For example, here's how you might report a distribution of response times for an
+API route with Express:
 
 ```js
 const express = require('express');
@@ -670,37 +672,28 @@ app.get('/', (_req, _res) => {
 });
 ```
 
-### Using Asynchronous Gauges
+### Describing instruments
 
-todo
-
-### Using Observable Counters
-
-Observable Counters observe the work of a callback. They are useful when you
-need to increase a counter, but determining the value to increase by might be
-expensive or require an asynchronous call.
+When you create instruments like counters, histograms, etc. you can give them a
+description.
 
 ```js
-const observableCounter = myMeter.createObservableCounter('my.observable.counter');
-
-// Simulate a call to
-async function getData(): Promise<number> {
-  return Math.random() * 100;
-}
-
-observableCounter.addCallback(async (observableResult) => {
-  const data = await getData();
-  observableResult.observe(data, { 'some.optional.attribute': 'some value' })
+const httpServerResponseDuration = myMeter.createHistogram("http.server.duration", {
+  description: 'A distribution of the HTTP server response times',
+  unit: 'milliseconds',
+  valueType: ValueType.INT
 });
 ```
 
-### Using Asynchronous UpDownCounters
+In JavaScript, each configuration type means the following:
 
-todo
+* `description` - a human-readable description for the instrument
+* `unit` - The description of the unit of measure that the value is intended to
+  represent. For example, `milliseconds` to meaure duration, or `bytes` to count
+  number of bytes.
+* `valueType` - The kind of numeric value used in measurements.
 
-### Adding attributes to an instrument
-
-todo
+It's generally recommended to describe each instrument you create.
 
 ## Next steps
 
