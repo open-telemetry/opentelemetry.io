@@ -695,6 +695,16 @@ In JavaScript, each configuration type means the following:
 
 It's generally recommended to describe each instrument you create.
 
+### Adding attributes
+
+You can add Attributes to metrics when they are generated.
+
+```js
+const counter = meter.createCounter('my.counter');
+
+cntr.add(1, { 'some.optional.attribute': 'some value' });
+```
+
 ## Next steps
 
 You'll also want to configure an appropriate exporter to [export your telemetry
