@@ -107,22 +107,25 @@ single span printed to the console, such as the following:
         "http.scheme": "http",
         "net.host.port": 5000,
         "http.host": "localhost:5000",
-        "http.target": "/roll?sides=10&rolls=2",
+        "http.target": "/rolldice",
         "net.peer.ip": "127.0.0.1",
         "http.user_agent": "curl/7.68.0",
         "net.peer.port": 52538,
         "http.flavor": "1.1",
-        "http.route": "/roll",
+        "http.route": "/rolldice",
         "http.status_code": 200
     },
     "events": [],
     "links": [],
     "resource": {
-        "telemetry.sdk.language": "python",
-        "telemetry.sdk.name": "opentelemetry",
-        "telemetry.sdk.version": "1.11.1",
-        "telemetry.auto.version": "0.30b1",
-        "service.name": "unknown_service"
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.14.0",
+            "telemetry.auto.version": "0.35b0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
     }
 }
 ```
@@ -300,15 +303,18 @@ automatically created one:
     "events": [],
     "links": [],
     "resource": {
-        "telemetry.sdk.language": "python",
-        "telemetry.sdk.name": "opentelemetry",
-        "telemetry.sdk.version": "1.11.1",
-        "telemetry.auto.version": "0.30b1",
-        "service.name": "unknown_service"
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.14.0",
+            "telemetry.auto.version": "0.35b0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
     }
 }
 {
-    "name": "/roll",
+    "name": "/rolldice",
     "context": {
         "trace_id": "0x48da59d77e13beadd1a961dc8fcaa74e",
         "span_id": "0x84f8c5d92970d94f",
@@ -327,22 +333,25 @@ automatically created one:
         "http.scheme": "http",
         "net.host.port": 5000,
         "http.host": "localhost:5000",
-        "http.target": "/roll?sides=10&rolls=2",
+        "http.target": "/rolldice",
         "net.peer.ip": "127.0.0.1",
         "http.user_agent": "curl/7.68.0",
         "net.peer.port": 53824,
         "http.flavor": "1.1",
-        "http.route": "/roll",
+        "http.route": "/rolldice",
         "http.status_code": 200
     },
     "events": [],
     "links": [],
     "resource": {
-        "telemetry.sdk.language": "python",
-        "telemetry.sdk.name": "opentelemetry",
-        "telemetry.sdk.version": "1.11.1",
-        "telemetry.auto.version": "0.30b1",
-        "service.name": "unknown_service"
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.14.0",
+            "telemetry.auto.version": "0.35b0",
+            "service.name": "unknown_service"
+        },
+        "schema_url": ""
     }
 }
 ```
