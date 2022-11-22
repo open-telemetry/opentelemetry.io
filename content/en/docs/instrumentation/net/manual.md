@@ -83,7 +83,10 @@ dotnet add package OpenTelemetry.Extensions.Hosting --prerelease
 dotnet add package OpenTelemetry.Exporter.Console --prerelease
 ```
 
-And then configure it in your ASP.NET Core startup routine where you have access
+Note that the `--prerelease` flag is required for all instrumentation packages 
+because they are all are pre-release.
+
+Next, configure it in your ASP.NET Core startup routine where you have access
 to an `IServiceCollection`.
 
 ```csharp
