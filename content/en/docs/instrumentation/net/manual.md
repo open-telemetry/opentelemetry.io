@@ -84,8 +84,7 @@ dotnet add package OpenTelemetry.Exporter.Console --prerelease
 ```
 
 Note that the `--prerelease` flag is required for all instrumentation packages 
-as they are all are pre-release, and using the flag is the only way to get the 
-latest version via the CLI. 
+because they are all are pre-release.
 
 Next, configure it in your ASP.NET Core startup routine where you have access
 to an `IServiceCollection`.
