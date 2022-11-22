@@ -578,7 +578,6 @@ const metricReader = new PeriodicExportingMetricReader({
 
 const myServiceMeterProvider = new MeterProvider({
   resource: resource,
-  reader: metricReader,
 });
 
 myServiceMeterProvider.addMetricReader(metricReader);
