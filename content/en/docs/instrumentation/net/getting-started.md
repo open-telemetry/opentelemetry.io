@@ -100,6 +100,9 @@ dotnet add package OpenTelemetry.Instrumentation.Http --prerelease
 dotnet add package OpenTelemetry.Instrumentation.SqlClient --prerelease
 ```
 
+Note that the `--prerelease` flag is required for all instrumentation packages 
+because they are all are pre-release.
+
 Next, paste the following code into your `Program.cs` file:
 
 ```csharp
