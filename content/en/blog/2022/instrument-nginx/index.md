@@ -132,7 +132,7 @@ services:
       - 8080:80
 ```
 
-Create a file called `otel-collect-rconfig.yaml` containing the following:
+Create a file called `otel-collector-config.yaml` containing the following:
 
 ```yaml
 receivers:
