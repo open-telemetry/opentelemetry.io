@@ -572,7 +572,7 @@ const resource =
 const metricReader = new PeriodicExportingMetricReader({
     exporter: new ConsoleMetricExporter(),
 
-    // Default is 60000ms (60 seconds). Set to 1 second for demonstrative purposes only.
+    // Default is 60000ms (60 seconds). Set to 3 seconds for demonstrative purposes only.
     exportIntervalMillis: 3000,
 });
 
