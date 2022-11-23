@@ -590,7 +590,7 @@ Now that a `MeterProvider` is configured, you can acquire a `Meter`.
 
 ### Acuiring a Meter
 
-Anywhere in your application where you have manual instrume code should call
+Anywhere in your application where you have manually instrumented code you can call
 `getMeter` to acquire a meter. For example:
 
 ```js
@@ -610,7 +610,7 @@ involved.
 
 ### Synchronous and asynchronous instruments
 
-HELP
+OpenTelemetry provides two major categories of instruments: synchronous and anynchronous (observable) instruments. Synchronous instruments can be used anywhere in the code. Using these, measurements can be pushed to the instrument at any time during the execution. This means that during an export cycle, multiple or no measurements can take place. Asynchronous instruments, on the other hand, provide a measurement at the request of the SDK. When the SDK exports, a callback that was provided to the instrument on creation is invoked. This callback provides the SDK with a measurement, which is then immediately exported. Therefore all measurement on asynchronous instruments are performed once per export cycle. 
 
 ### Using Counters
 
