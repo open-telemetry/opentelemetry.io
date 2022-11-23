@@ -532,7 +532,7 @@ OpenTelemetry JavaScript currently supports the following `Instrument`s:
   increments and decrements
 
 If a `MeterProvider` is not created either by an instrumentation library or
-manually, the OpenTelemetry APIs for tracing will use a no-op implementation and
+manually, the OpenTelemetry Metrics API will use a no-op implementation and
 fail to generate data.
 
 ### Initialize Metrics
