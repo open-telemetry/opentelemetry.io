@@ -586,6 +586,12 @@ myServiceMeterProvider.addMetricReader(metricReader);
 otel.metrics.setGlobalMeterProvider(myServiceMeterProvider)
 ```
 
+You'll need to `--require` this file when you run your app, such as:
+
+```shell
+node --require ./instrumentation.js index.js
+```
+
 Now that a `MeterProvider` is configured, you can acquire a `Meter`.
 
 ### Acuiring a Meter
