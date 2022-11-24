@@ -20,19 +20,7 @@ Node.js and Python into your application.
 ## Status and Releases
 The current status of the major functional components for OpenTelemetry is as follows:
 
-| Language                 | Traces            | Metrics             | Logs                |
-|--------------------------|-------------------|---------------------|---------------------|
-| [C#/.NET](net/)          | Stable            | Stable              | Stable              |
-| [C++](cpp/)              | Stable            | Experimental        | Experimental        |
-| [Erlang/Elixir](erlang/) | Stable            | Alpha               | Not Yet Implemented |
-| [Go](go/)                | Stable            | Alpha               | Not Yet Implemented |
-| [Java](java/)            | Stable            | Stable              | Experimental        |
-| [JavaScript](js/)        | Release Candidate | Development         | Roadmap             |
-| [PHP](php/)              | Pre-Alpha         | Pre-Alpha           | Not Yet Implemented |
-| [Python](python/)        | Stable            | Release Candidate   | Experimental        |
-| [Ruby](ruby/)            | Stable            | Not Yet Implemented | Not Yet Implemented |
-| [Rust](rust/)            | Beta              | Alpha               | Not Yet Implemented |
-| [Swift](swift/)          | Beta              | Alpha               | Not Yet Implemented |
+{{% telemetry_support_table " " %}}
 
 [auto]: https://github.com/open-telemetry/opentelemetry-operator#opentelemetry-auto-instrumentation-injection
 [instrumentation]: /docs/concepts/instrumenting/
