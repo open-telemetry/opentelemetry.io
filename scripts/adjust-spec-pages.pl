@@ -88,13 +88,18 @@ while(<>) {
   s|(\]\()(img/.*?\))|$1../$2|g if $ARGV !~ /logs._index/;
 
   # Fix links that are to the title of the .md page
+  # TODO: fix these in the spec
   s|(/context/api-propagators.md)#propagators-api|$1|g;
   s|(/semantic_conventions/faas.md)#function-as-a-service|$1|g;
+  s|(/resource/sdk.md)#resource-sdk|$1|g;
   s/#log-data-model/./;
 
   s|\.\.\/README.md\b|$specRepoUrl/|g if $ARGV =~ /specification._index/;
   s|\.\.\/README.md\b|..| if $ARGV =~ /specification.library-guidelines.md/;
   s|\bREADME.md\b|_index.md|g;
+
+  # Rewrite paths into experimental directory as external links
+  s|(\.\.\/)+(experimental\/[^)]+)|https://github.com/open-telemetry/opentelemetry-specification/tree/main/$1|g;
 
   # Rewrite inline links
   s|\]\(([^:\)]*?\.md(#.*?)?)\)|]({{% relref "$1" %}})|g;

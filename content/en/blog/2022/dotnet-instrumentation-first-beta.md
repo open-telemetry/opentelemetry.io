@@ -16,9 +16,10 @@ automatically generate telemetry data. For example, to instrument inbound
 ASP.NET Core requests, you need to use the ASP.NET Core instrumentation package
 and initialize it with the OpenTelemetry SDK.
 
-Now with the .NET Automatic Instrumentation project, developers can run the
-agent side-by-side with their application and get telemetry automatically. This
-approach has several benefits:
+Now, developers can use [automatic instrumentation](/docs/reference/specification/glossary/#automatic-instrumentation)
+to initialize [signal](/docs/reference/specification/glossary/#signals) providers
+and generate telemetry data for supported [instrumented libraries](/docs/reference/specification/glossary/#instrumented-library).
+This approach has several benefits:
 
 - A technical path forward to support automatic instrumentation via
   [byte-code instrumentation](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/v0.1.0-beta.1/docs/design.md#bytecode-instrumentations),
@@ -54,7 +55,7 @@ Please, give us your **feedback** (using your preferred method):
 - [Submit a GitHub issue](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/new).
 - Write to us on [Slack](https://cloud-native.slack.com/archives/C01NR1YLSE7).
   If you are new, you can create a CNCF Slack account
-  [here](http://slack.cncf.io/).
+  [here](https://slack.cncf.io/).
 
 [^devopsnote]:
     The

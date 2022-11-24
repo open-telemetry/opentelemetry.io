@@ -1,0 +1,15 @@
+---
+title: SqlClient Instrumentation for OpenTelemetry
+registryType: instrumentation
+isThirdParty: false
+language: dotnet
+tags:
+    - sqlclient
+    - instrumentation
+    - dotnet
+repo: https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/src/OpenTelemetry.Instrumentation.SqlClient
+license: Apache 2.0
+description: This is an Instrumentation Library, which instruments Microsoft.Data.SqlClient and System.Data.SqlClient and collects traces about database operations.
+authors: OpenTelemetry Authors
+otVersion: latest
+---

@@ -6,7 +6,7 @@ language: ruby
 tags:
   - ruby
   - instrumentation
-repo: https://github.com/open-telemetry/opentelemetry-ruby/tree/main/instrumentation/concurrent_ruby
+repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/concurrent_ruby
 license: Apache 2.0
 description: ConcurrentRuby instrumentation for Ruby.
 authors: OpenTelemetry Authors

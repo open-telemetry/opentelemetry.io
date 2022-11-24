@@ -1,9 +1,8 @@
 {{ if .Params.show_banner -}}
+
 <div class="o-banner">
 
-Want to connect with other OpenTelemetry End Users?
-[Read more][]
+<i class="fas fa-bullhorn"></i> [OpenTelemetry Demo now Generally Available!](/blog/2022/announcing-opentelemetry-demo-release/)
 
-[Read more]: /blog/2022/new-end-user-resources/
 </div>
 {{ end -}}

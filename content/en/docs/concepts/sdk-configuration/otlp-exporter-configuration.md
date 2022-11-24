@@ -24,15 +24,15 @@ endpoint and want one environment variable to control the endpoint.
 **Example:**
 
 * gRPC: `export OTEL_EXPORTER_OTLP_ENDPOINT="my-api-endpoint:443"`
-* HTTP: `export OTEL_EXPORTER_OTLP_ENDPOINT="https://my-api-endpoint/"`
+* HTTP: `export OTEL_EXPORTER_OTLP_ENDPOINT="http://my-api-endpoint/"`
 
 For OTLP/HTTP, exporters in the SDK construct signal-specific URLs when this
 environment variable is set. This means that if you're sending traces, metrics,
 and logs, the following URLS are constructed from the example above:
 
-* Traces: `"https://my-api-endpoint/v1/traces"`
-* Metrics: `"https://my-api-endpoint/v1/metrics"`
-* Logs: `"https://my-api-endpoint/v1/logs"`
+* Traces: `"http://my-api-endpoint/v1/traces"`
+* Metrics: `"http://my-api-endpoint/v1/metrics"`
+* Logs: `"http://my-api-endpoint/v1/logs"`
 
 ### `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT`
 
@@ -47,7 +47,7 @@ end with `v1/traces` if using OTLP/HTTP.
 **Example:**
 
 * gRPC: `export OTEL_EXPORTER_OTLP_TRACES_ENDPOINT="my-api-endpoint:443"`
-* HTTP:`export OTEL_EXPORTER_OTLP_TRACES_ENDPOINT="https://my-api-endpoint/v1/traces"`
+* HTTP:`export OTEL_EXPORTER_OTLP_TRACES_ENDPOINT="http://my-api-endpoint/v1/traces"`
 
 ### `OTEL_EXPORTER_OTLP_METRICS_ENDPOINT`
 
@@ -62,7 +62,7 @@ end with `v1/metrics` if using OTLP/HTTP.
 **Example:**
 
 * gRPC: `export OTEL_EXPORTER_OTLP_METRICS_ENDPOINT="my-api-endpoint:443"`
-* HTTP:`export OTEL_EXPORTER_OTLP_METRICS_ENDPOINT="https://my-api-endpoint/v1/metrics"`
+* HTTP:`export OTEL_EXPORTER_OTLP_METRICS_ENDPOINT="http://my-api-endpoint/v1/metrics"`
 
 ### `OTEL_EXPORTER_OTLP_LOGS_ENDPOINT`
 
@@ -77,7 +77,7 @@ end with `v1/logs` if using OTLP/HTTP.
 **Example:**
 
 * gRPC: `export OTEL_EXPORTER_OTLP_LOGS_ENDPOINT="my-api-endpoint:443"`
-* HTTP:`export OTEL_EXPORTER_OTLP_LOGS_ENDPOINT="https://my-api-endpoint/v1/logs"`
+* HTTP:`export OTEL_EXPORTER_OTLP_LOGS_ENDPOINT="http://my-api-endpoint/v1/logs"`
 
 ## Header configuration
 
@@ -185,7 +185,7 @@ Valid values are:
 
 * `grpc` to use OTLP/gRPC
 * `http/protobuf` to use OTLP/HTTP+protobuf
-* `http/json` to use OTLP/HTTP+protobuf
+* `http/json` to use OTLP/HTTP+json
 
 ### `OTEL_EXPORTER_OTLP_TRACES_PROTOCOL`
 
@@ -201,7 +201,7 @@ Valid values are:
 
 * `grpc` to use OTLP/gRPC
 * `http/protobuf` to use OTLP/HTTP+protobuf
-* `http/json` to use OTLP/HTTP+protobuf
+* `http/json` to use OTLP/HTTP+json
 
 ### `OTEL_EXPORTER_OTLP_METRICS_PROTOCOL`
 
@@ -217,4 +217,4 @@ Valid values are:
 
 * `grpc` to use OTLP/gRPC
 * `http/protobuf` to use OTLP/HTTP+protobuf
-* `http/json` to use OTLP/HTTP+protobuf
+* `http/json` to use OTLP/HTTP+json

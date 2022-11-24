@@ -1,0 +1,15 @@
+---
+title: zipkinprotohttp
+registryType: exporter
+isThirdParty: false
+language: python
+tags:
+    - zipkinprotohttp
+    - exporter
+    - python
+repo: https://github.com/open-telemetry/opentelemetry-python/tree/main/exporter/opentelemetry-exporter-zipkin-proto-http
+license: Apache 2.0
+description: This library allows export of tracing data to Zipkin using Protobuf for serialization.
+authors: OpenTelemetry Authors
+otVersion: latest
+---

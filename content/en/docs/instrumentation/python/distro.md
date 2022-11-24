@@ -2,6 +2,7 @@
 spelling: cSpell:ignore configurator distro distros loglevel
 title: OpenTelemetry Distro
 linkTitle: Distro
+weight: 48
 ---
 
 In order to make using OpenTelemetry and auto-instrumentation as quick as
@@ -22,7 +23,7 @@ auto-instrumentation via the `opentelemetry_distro` and
 any other code is executed.
 
 In order to automatically export data from OpenTelemetry to the OpenTelemetry
-collector, installing the package will setup all the required entry points.
+collector, installing the package will set up all the required entry points.
 
 ```console
 $ pip install opentelemetry-distro[otlp] opentelemetry-instrumentation

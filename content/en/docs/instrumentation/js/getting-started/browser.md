@@ -3,11 +3,19 @@ title: Browser
 aliases: [/docs/js/getting_started/browser]
 ---
 
-This guide uses the example application in HTML & javascript provided below, but the steps to instrument your own application should be broadly the same.
+While this guide uses the example application presented below, the steps to
+instrument your own application should be similar.
+
+## Prerequisites
+
+Ensure that you have the following installed locally:
+
+- [Node.js](https://nodejs.org/en/download/)
+- [TypeScript](https://www.typescriptlang.org/download), if you will be using TypeScript.
 
 ## Example Application
 
-This is a very simple guide, if you'd like to see more complex examples go to [examples/tracer-web](https://github.com/open-telemetry/opentelemetry-js/tree/main/examples/tracer-web)
+This is a very simple guide, if you'd like to see more complex examples go to [examples/opentelemetry-web](https://github.com/open-telemetry/opentelemetry-js/tree/main/examples/opentelemetry-web)
 
 Copy the following file into an empty directory and call it `index.html`.
 
@@ -42,24 +50,48 @@ To create traces in the browser, you will need `@opentelemetry/sdk-trace-web`, a
 
 ```shell
 npm init -y
-npm install --save @opentelemetry/api @opentelemetry/sdk-trace-web @opentelemetry/instrumentation-document-load @opentelemetry/context-zone
+npm install @opentelemetry/api \
+  @opentelemetry/sdk-trace-web \
+  @opentelemetry/instrumentation-document-load \
+  @opentelemetry/context-zone
 ```
 
 ### Initialization and Configuration
 
-Create a empty file called `document-load.js` and add the following code to your html right before the body end tag:
+If you are coding in TypeScript, then run the following command:
 
-```html
-<script type="module" src="document-load.js"></script>
+```shell
+tsc --init
 ```
+
+Then acquire [parcel](https://parceljs.org/), which will (among other things) let you work in Typescript.
+
+```shell
+npm install --save-dev parcel
+```
+
+Create an empty code file named `document-load` with a `.ts` or `.js` extension, as appropriate, based on the language you've chosen to write your app in. Add the following code to your HTML right before the `</body>` closing tag:
+
+{{< tabpane lang=html >}}
+
+{{< tab TypeScript >}}
+<script type="module" src="document-load.ts"></script>
+{{< /tab >}}
+
+{{< tab JavaScript >}}
+<script type="module" src="document-load.js"></script>
+{{< /tab >}}
+
+{{< /tabpane >}}
 
 We will add some code that will trace the document load timings and output those as OpenTelemetry Spans.
 
 ### Creating a Tracer Provider
 
-Add the following code to the `document-load.js` to create a tracer provider, which brings the instrumentation to trace document load:
+Add the following code to the `document-load.ts|js` to create a tracer provider, which brings the instrumentation to trace document load:
 
-```javascript
+```js
+/* document-load.ts|js file - the code snippet is the same for both the languages */
 import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
 import { DocumentLoadInstrumentation } from '@opentelemetry/instrumentation-document-load';
 import { ZoneContextManager } from '@opentelemetry/context-zone';
@@ -80,9 +112,7 @@ registerInstrumentations({
 });
 ```
 
-In the following we will use [parcel](https://parceljs.org/) as web application bundler, but you can of course also use any other build tool.
-
-Run
+Now build the app with parcel:
 
 ```shell
 npx parcel index.html
@@ -90,7 +120,7 @@ npx parcel index.html
 
 and open the development webserver (e.g. at `http://localhost:1234`) to see if your code works.
 
-There will be no output of traces yet, for this we need to add an exporter
+There will be no output of traces yet, for this we need to add an exporter.
 
 ### Creating an Exporter
 
@@ -101,9 +131,10 @@ Follow [these instructions](../../exporters) for setting up a backend and export
 
 You may also want to use the `BatchSpanProcessor` to export spans in batches in order to more efficiently use resources.
 
-To export traces to the console, modify `document-load.js` so that it matches the following code snippet:
+To export traces to the console, modify `document-load.ts|js` so that it matches the following code snippet:
 
-```javascript
+```js
+/* document-load.ts|js file - the code is the same for both the languages */
 import { ConsoleSpanExporter, SimpleSpanProcessor } from '@opentelemetry/sdk-trace-base';
 import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
 import { DocumentLoadInstrumentation } from '@opentelemetry/instrumentation-document-load';
@@ -223,7 +254,3 @@ registerInstrumentations({
 To leverage the most common instrumentations all in one you can simply use the
 [OpenTelemetry Meta Packages for Web](https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-web)
 
-## Instrumentation with Browser Extension
-
-If you'd like to quickly preview what OpenTelemetry instrumentation would look like with your website (or any other site)
-installed, you can use the [OpenTelemetry Browser Extension](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/opentelemetry-browser-extension-autoinjection)

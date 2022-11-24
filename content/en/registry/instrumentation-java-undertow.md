@@ -1,0 +1,15 @@
+---
+title: Undertow Instrumentation
+registryType: instrumentation
+isThirdParty: false
+language: java
+tags:
+    - undertow
+    - instrumentation
+    - java
+repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/undertow-1.4
+license: Apache 2.0
+description: This package provides an instrumentation library for Undertow
+authors: OpenTelemetry Authors
+otVersion: latest
+---

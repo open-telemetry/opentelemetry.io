@@ -1,11 +1,18 @@
 ---
 title: Java
 description: >-
-  <img width="35" src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Java_SDK.svg"></img>
+  <img width="35"
+  src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Java_SDK.svg"
+  alt="Java"></img>
   A language-specific implementation of OpenTelemetry in Java.
 aliases: [/java, /java/metrics, /java/tracing]
 weight: 18
+javaVersion: 1.20.1
 ---
+
+{{% lang_instrumentation_index_head "java" /%}}
+
+### Repositories
 
 OpenTelemetry Java consists of the following repositories:
 
@@ -21,12 +28,6 @@ OpenTelemetry Java consists of the following repositories:
   Provides helpful libraries and standalone OpenTelemetry-based utilities that
   don't fit the express scope of the OpenTelemetry Java or Java Instrumentation
   projects. For example, JMX metric gathering.
-
-## Status and Releases
-
-| Traces | Metrics | Logs         |
-|--------|---------|--------------|
-| Stable | Stable  | Experimental |
 
 ### Components
 
@@ -46,7 +47,7 @@ using our BOM to keep the versions of the various components in sync.
       <dependency>
         <groupId>io.opentelemetry</groupId>
         <artifactId>opentelemetry-bom</artifactId>
-        <version>1.17.0</version>
+        <version>{{% param javaVersion %}}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -65,14 +66,10 @@ using our BOM to keep the versions of the various components in sync.
 
 ```kotlin
 dependencies {
-  implementation(platform("io.opentelemetry:opentelemetry-bom:1.17.0"))
+  implementation(platform("io.opentelemetry:opentelemetry-bom:{{% param javaVersion %}}"))
   implementation("io.opentelemetry:opentelemetry-api")
 }
 ```
-
-### API reference
-
-- [Javadoc](https://www.javadoc.io/doc/io.opentelemetry)
 
 [maven central]: https://mvnrepository.com/artifact/io.opentelemetry
 [opentelemetry-java-docs]: https://github.com/open-telemetry/opentelemetry-java-docs#java-opentelemetry-examples

@@ -3,9 +3,9 @@ title: Learn how to instrument nginx with OpenTelemetry
 linkTitle: Instrument Nginx
 date: 2022-08-22
 author: >-
-  [Debajit Das](https://github.com/debajitdas), [Kumar
-  Pratyus](https://github.com/kpratyus), and [Severin
-  Neumann](https://github.com/svrnm)
+  [Debajit Das](https://github.com/debajitdas), 
+  [Kumar Pratyus](https://github.com/kpratyus), 
+  [Severin Neumann](https://github.com/svrnm) (Cisco)
 spelling: >
   cSpell:ignore Debajit Kumar Pratyus Severin Neumann webserver xvfz tracestate
   cSpell:ignore catalina javaagent jaegertracing protobuf WORKDIR
@@ -132,7 +132,7 @@ services:
       - 8080:80
 ```
 
-Create a file called `otel-collect-rconfig.yaml` containing the following:
+Create a file called `otel-collector-config.yaml` containing the following:
 
 ```yaml
 receivers:
@@ -349,7 +349,7 @@ from frontend to nginx to backend.
 The frontend trace should indicate an error, since nginx is forwarding the
 `Page Not Found` from Tomcat.
 
-![A screenshot of the jaeger trace view, showing a waterfall of spans going from the frontend to nginx down to the backend.](nginx-spans-in-jaeger.png)
+![A screenshot of the jaeger trace view, showing a waterfall of spans going from the frontend to nginx down to the backend.](frontend-to-backend-spans-in-jaeger.png)
 
 ## What's next?
 

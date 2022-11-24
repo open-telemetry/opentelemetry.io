@@ -1,6 +1,6 @@
 ---
-title: ".NET Framework instrumentation configuration"
-linkTitle: ".NET Framework"
+title: .NET Framework instrumentation configuration
+linkTitle: .NET Framework
 weight: 5
 ---
 
@@ -44,13 +44,13 @@ using OpenTelemetry.Trace;
 
 public class WebApiApplication : HttpApplication
 {
-    private readonly TracerProvider _tracerProvider;
+    private TracerProvider _tracerProvider;
 
     protected void Application_Start()
     {
-        this.tracerProvider = Sdk.CreateTracerProviderBuilder()
+        _tracerProvider = Sdk.CreateTracerProviderBuilder()
             .AddAspNetInstrumentation()
-            
+
             // Other configuration, like adding an exporter and setting resources
             .AddConsoleExporter()
             .AddSource("my-service-name")
@@ -152,5 +152,5 @@ You'll also want to configure an appropriate exporter to [export your telemetry
 data](/docs/instrumentation/net/exporters) to one or more telemetry backends.
 
 You can also check the
-[automatic instrumentation for .NET](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation),
+[automatic instrumentation for .NET](/docs/instrumentation/net/automatic),
 which is currently in beta.

@@ -5,35 +5,16 @@ description: >-
 weight: 40
 ---
 
-The OpenTelemetry project facilitates the instrumenting of applications.
-Instrumentation libraries offer a core repository per language. They may or may
-not offer additional repositories for automatic instrumentation or non-core
-components. For example, Java instrumentation libraries provide the following
-repositories:
-
-- **[Core](https://github.com/open-telemetry/opentelemetry-java):** Provides an
-  implementation of the OpenTelemetry API and SDK and can be used to manually
-  instrument an application.
-- **[Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation):**
-  All the core functionality plus automatic instrumentation for a variety of
-  libraries and frameworks.
-- **[Contrib](https://github.com/open-telemetry/opentelemetry-java-contrib):**
-  Optional components such as JMX metric gathers.
-
-Some instrumentation libraries, for example Ruby, offer a
-[single repository](https://github.com/open-telemetry/opentelemetry-ruby) that
-supports both manual and automatic instrumentation. Other languages, for example
-JS, support both manual and automatic instrumentation, but separate
-[core](https://github.com/open-telemetry/opentelemetry-js) components from
-[contrib](https://github.com/open-telemetry/opentelemetry-js-contrib) components
-in separate repositories.
+In order to make a system observable, it must be instrumented. That is, the code
+must emit [traces](/docs/concepts/observability-primer/#distributed-traces),
+[metrics](/docs/concepts/observability-primer/#reliability--metrics), and
+[logs](/docs/concepts/observability-primer/#logs). OpenTelemetry facilitates
+the instrumenting of applications, by providing means to automatically or
+manually instrument your application.
 
 The exact installation mechanism for OpenTelemetry varies based on the language
-you're developing in, but there are some similarities covered in the sections
-below.
-
-> Instrumentation libraries may be offered as a distribution, see
-> [here](../distributions) for more information.
+you’re developing in, but there are some similarities covered in the sections
+ below.
 
 ## Automatic Instrumentation
 

@@ -1,0 +1,15 @@
+---
+title: Schema Transformer Processor
+registryType: processor
+isThirdParty: false
+language: collector
+tags:
+    - go
+    - processor
+    - collector
+repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/schemaprocessor
+license: Apache 2.0
+description: The Schema Processor is used to convert existing telemetry data or signals to a version of the semantic convention defined as part of the configuration.
+authors: OpenTelemetry Authors
+otVersion: latest
+---

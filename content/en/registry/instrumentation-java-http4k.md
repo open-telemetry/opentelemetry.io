@@ -1,0 +1,14 @@
+---
+title: http4k Instrumentation
+registryType: instrumentation
+isThirdParty: false
+language: java
+tags:
+  - java
+  - instrumentation
+repo: https://github.com/http4k/http4k/tree/master/http4k-opentelemetry
+license: Apache 2.0
+description: This library provides http4k instrumentation to track HTTP requests through OpenTelemetry.
+authors: http4k Authors
+otVersion: latest
+---

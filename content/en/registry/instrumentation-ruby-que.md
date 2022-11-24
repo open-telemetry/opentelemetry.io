@@ -7,7 +7,7 @@ tags:
   - ruby
   - instrumentation
   - que
-repo: https://github.com/open-telemetry/opentelemetry-ruby/tree/main/instrumentation/que
+repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/que
 license: Apache 2.0
 description: Que instrumentation for Ruby.
 authors: OpenTelemetry Authors

@@ -326,7 +326,7 @@ instrumentation which would also disable the instrumentation's capturing of
 
 You can suppress all auto instrumentations but have support for manual
 instrumentation with `@WithSpan` and normal API interactions by using
-`-Dotel.instrumentation.common.default-enabled=false -Dotel.instrumentation.opentelemetry-api.enabled=true -Dotel.instrumentation.opentelemetry-annotations.enabled=true`
+`-Dotel.instrumentation.common.default-enabled=false -Dotel.instrumentation.opentelemetry-api.enabled=true -Dotel.instrumentation.opentelemetry-instrumentation-annotations.enabled=true`
 
 ### Instrumentation span suppression behavior
 

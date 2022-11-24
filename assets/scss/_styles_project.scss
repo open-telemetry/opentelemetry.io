@@ -58,11 +58,39 @@
   }
 }
 
+//override the button classes for the Status page only
+.l-status-primary {
+  @extend .l-buttons;
+  justify-content: left;
+
+  > ul > li > a /*, > p > a*/ {
+    @extend .btn-lg;
+    @extend .btn-primary;
+    padding: 20px;
+    border-radius:0;
+    min-width:220px;
+  }
+}
+
+.l-status-secondary {
+  @extend .l-buttons;
+  justify-content: left;
+
+  > ul > li > a /*, > p > a*/ {
+    @extend .btn-lg;
+    @extend .btn-secondary;
+    padding: 20px;
+    border-radius:0;
+    min-width:150px;
+    color:#2f4f4f;
+  }
+}
+
 .td-navbar {
   .navbar-brand {
     @include media-breakpoint-up(md) { padding: 0; }
     svg { height: 48px; }
-    span:last-child { display: none; }
+    .navbar-brand__name { display: none; }
   }
 }
 
@@ -78,29 +106,36 @@
   width: 100%;
   text-align: center;
 
-  a { color: $primary; }
   p {
     font-size: 18px;
     margin-bottom: 0;
   }
+
   img {
     margin-top: 1rem;
     width: 20rem;
     max-width: 80%;
   }
+
+  a.external-link:after {
+    display: none;
+  }
 }
 
-// https://github.com/open-telemetry/opentelemetry.io/pull/414
-.td-box--dark p > a,
-.td-box--secondary p > a {
-  color: #3176d9;
+.td-box--dark a {
+  color: lighten($primary, 25%) !important;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
-.td-box--dark p > a:hover,
-.td-box--secondary p > a:hover,
-a:hover {
-  color: #3176d9;
-  text-decoration: underline;
+.td-box--secondary a {
+  color: darken($primary, 25%) !important;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 // Adjust anchors scroll snap (https://github.com/open-telemetry/opentelemetry.io/pull/348)
