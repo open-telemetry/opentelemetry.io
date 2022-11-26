@@ -6,6 +6,8 @@ aliases:
   - /docs/java/manual_instrumentation
   - /docs/instrumentation/java/manual_instrumentation
 weight: 5
+javaVersion: 1.20.1
+javaVersionSemConv: 1.20.1-alpha
 ---
 
 **Libraries** that want to export telemetry data using OpenTelemetry MUST only
@@ -37,7 +39,6 @@ For example:
 
 <details>
   <summary>Maven top level dependencies. Click me.</summary>
-  Note that opentelemetry-semconv does not exist (yet) as 1.20.1 but only as 1.20.1-alpha.
   
   ```
   
@@ -47,7 +48,7 @@ For example:
               <dependency>
                   <groupId>io.opentelemetry</groupId>
                   <artifactId>opentelemetry-bom</artifactId>
-                  <version>1.20.1</version>
+                  <version>{{% param javaVersion %}}</version>
                   <type>pom</type>
                   <scope>import</scope>
               </dependency>
@@ -86,7 +87,7 @@ For example:
           <dependency>
               <groupId>io.opentelemetry</groupId>
               <artifactId>opentelemetry-semconv</artifactId>
-              <version>1.20.1-alpha</version>
+              <version>{{% param javaVersionSemConv %}}</version>
           </dependency>
       </dependencies>
   </project>
