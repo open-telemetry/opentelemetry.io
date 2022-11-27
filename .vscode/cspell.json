@@ -24,8 +24,10 @@
     "otelcol",
     "otlp",
     "OTLP",
+    "protobuf",
     "relref",
     "subdir",
+    "tabpane",
     "Zipkin"
   ]
 }

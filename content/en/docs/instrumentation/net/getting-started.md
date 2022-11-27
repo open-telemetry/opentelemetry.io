@@ -23,6 +23,8 @@ dotnet add package OpenTelemetry.Instrumentation.AspNetCore --prerelease
 dotnet add package OpenTelemetry.Instrumentation.Http --prerelease
 dotnet add package OpenTelemetry.Instrumentation.SqlClient --prerelease
 ```
+Note that the `--prerelease` flag is required for all instrumentation packages 
+because they are all are pre-release.
 
 This will also install the `OpenTelemetry` package.
 

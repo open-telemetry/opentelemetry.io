@@ -52,6 +52,25 @@
   "prettier": {
     "proseWrap": "always"
   },
+  "textlint": {
+    "rules": {
+      "terminology": {
+        "defaultTerms": false,
+        "skip": [],
+        "terms": [
+          "OpenTelemetry",
+          "K8s",
+          "OTel",
+          "Zipkin",
+          "Jaeger",
+          "gRPC",
+          "CNCF",
+          ["open-source", "open source"],
+          ["[Oo]pen[- ][Tt]elemetry", "OpenTelemetry"]
+        ]
+      }
+    }
+  },
   "devDependencies": {
     "autoprefixer": "^10.4.12",
     "hugo-extended": "0.105.0",
@@ -59,7 +78,9 @@
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.17",
     "postcss-cli": "^10.0.0",
-    "prettier": "^2.6.2"
+    "prettier": "^2.6.2",
+    "textlint": "^12.2.3",
+    "textlint-rule-terminology": "^3.0.4"
   },
   "dependencies": {
     "@opentelemetry/api": "^1.0.1",
