@@ -29,7 +29,7 @@ library to propagate context.
 Refer to [Libraries](/docs/instrumentation/js/libraries) to learn more about
 instrumentation libraries and how to use them.
 
-## Manual context propagation
+## Manual W3C Trace Context Propagation
 
 In some cases, it is not possible to propagate context with an instrumentation
 library. There may not be an instrumentation library that matches a library
