@@ -43,5 +43,5 @@ git push --set-upstream origin "${branch}"
 
 echo "Creating the pull request on your behalf."
 gh pr create --label auto-update,sig:collector \
-             --title ${pr_title} \
+             --title "${pr_title}" \
              --body "Use OpenTelemetry collector v${latest_version} in the collector getting started."
