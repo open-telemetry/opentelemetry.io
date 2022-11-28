@@ -13,3 +13,5 @@ Language | Traces | Metrics | Logs |
 | [Ruby](ruby/) | {{ $data.ruby.status.traces | humanize }} | {{ $data.ruby.status.metrics | humanize }} | {{ $data.ruby.status.logs | humanize }} |
 | [Rust](rust/) | {{ $data.rust.status.traces | humanize }} | {{ $data.rust.status.metrics | humanize }} | {{ $data.rust.status.logs | humanize }} |
 | [Swift](swift/) | {{ $data.swift.status.traces | humanize }} | {{ $data.swift.status.metrics | humanize }} | {{ $data.swift.status.logs | humanize }} |
+
+* For more information, see the language-specific instrumentation page.
