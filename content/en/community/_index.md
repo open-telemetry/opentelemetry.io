@@ -7,6 +7,12 @@ cascade:
 
 {{% community-lists %}}
 
+## Participate in End User Groups
+
+Interested in connecting with other end-users and providing feedback to
+OpenTelemetry maintainers? Check out the [End User
+Resources](/community/end-user) to learn more.
+
 ## Special Interest Groups
 
 We organize the community into Special Interest Groups (SIGs) in order to
