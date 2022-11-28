@@ -594,7 +594,7 @@ node --require ./instrumentation.js index.js
 
 Now that a `MeterProvider` is configured, you can acquire a `Meter`.
 
-### Acuiring a Meter
+### Acquiring a Meter
 
 Anywhere in your application where you have manually instrumented code you can call
 `getMeter` to acquire a meter. For example:
