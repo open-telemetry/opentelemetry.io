@@ -7,7 +7,9 @@ weight: 4
 Manual instrumentation is the process of adding observability code to your
 application.
 
-## Initialize Tracing
+## Tracing
+
+### Initialize Tracing
 
 To start [tracing](/docs/concepts/signals/traces/#tracing-in-opentelemetry),
 you'll need to have an initialized
@@ -17,7 +19,7 @@ you create a [`Tracer`](/docs/concepts/signals/traces/#tracer).
 If a `TracerProvider` is not created, the OpenTelemetry APIs for tracing will
 use a no-op implementation and fail to generate data.
 
-### Node.js
+#### Node.js
 
 To initialize tracing with the Node.js SDK, first ensure you have the SDK
 package and OpenTelemetry API installed:
@@ -72,7 +74,7 @@ required if you're registering instrumentation libraries. For example:
 node --require './tracing.js' <app-file.js>
 ```
 
-### Browser
+#### Browser
 
 First, ensure you've got the right packages:
 
@@ -122,7 +124,7 @@ provider.register();
 You'll need to bundle this file with your web application to be able to use
 tracing throughout the rest of your web application.
 
-### Picking the right span processor
+#### Picking the right span processor
 
 By default, the Node SDK uses the `BatchSpanProcessor`, and this span processor
 is also chosen in the Web SDK example. The `BatchSpanProcessor` processes spans
@@ -140,7 +142,7 @@ app's execution could continue.
 
 In most cases, stick with `BatchSpanProcessor` over `SimpleSpanProcessor`.
 
-## Acquiring a tracer
+### Acquiring a tracer
 
 Anywhere in your application where you write manual tracing code should call
 `getTracer` to acquire a tracer. For example:
@@ -162,7 +164,7 @@ rather than exporting the `tracer` instance to the rest of your app. This helps
 avoid trickier application load issues when other required dependencies are
 involved.
 
-## Create spans
+### Create spans
 
 Now that you have a [`Tracer`](/docs/concepts/signals/traces/#tracer)
 initialized, you can create
@@ -183,7 +185,7 @@ tracer.startActiveSpan('main', span => {
 The above code sample shows how to create an active span, which is the most
 common kind of span to create.
 
-## Create nested spans
+### Create nested spans
 
 Nested [spans](/docs/concepts/signals/traces/#spans-in-opentelemetry) let you
 track work that's nested in nature. For example, the `doWork` function below
@@ -218,7 +220,7 @@ const doWork = (i) => {
 This code will create 3 child spans that have `parentSpan`'s span ID as their
 parent IDs.
 
-## Create independent spans
+### Create independent spans
 
 The previous examples showed how to create an active span. In some cases, you'll
 want to create inactive spans that are siblings of one another rather than being
@@ -246,7 +248,7 @@ than being nested under one another.
 This arrangement can be helpful if you have units of work that are grouped
 together but are conceptually independent from one another.
 
-## Get the current span
+### Get the current span
 
 Sometimes it's helpful to do something with the current/active
 [span](/docs/concepts/signals/traces/#spans-in-opentelemetry) at a particular
@@ -258,7 +260,7 @@ const activeSpan = opentelemetry.trace.getActiveSpan();
 // do something with the active span, optionally ending it if that is appropriate for your use case.
 ```
 
-## Get a span from context
+### Get a span from context
 
 It can also be helpful to get the
 [span](/docs/concepts/signals/traces/#spans-in-opentelemetry) from a given
@@ -271,7 +273,7 @@ const span = opentelemetry.trace.getSpan(ctx);
 // do something with the acquired span, optionally ending it if that is appropriate for your use case.
 ```
 
-## Attributes
+### Attributes
 
 [Attributes](/docs/concepts/signals/traces/#attributes) let you attach key/value
 pairs to a [`Span`](/docs/concepts/signals/traces/#spans-in-opentelemetry) so it
@@ -300,7 +302,7 @@ tracer.startActiveSpan(
   });
 ```
 
-### Semantic Attributes
+#### Semantic Attributes
 
 There are semantic conventions for spans representing operations in well-known
 protocols like HTTP or database calls. Semantic conventions for these spans are
@@ -335,7 +337,7 @@ const doWork = () => {
 }
 ```
 
-## Span events
+### Span events
 
 A [Span Event](/docs/concepts/signals/traces/#span-events) is a human-readable
 message on an [`Span`](/docs/concepts/signals/traces/#spans-in-opentelemetry)
@@ -359,7 +361,7 @@ span.addEvent('some log', {
 });
 ```
 
-## Span links
+### Span links
 
 [`Span`s](/docs/concepts/signals/traces/#spans-in-opentelemetry) can be created
 with zero or more [`Link`s](/docs/concepts/signals/traces/#span-links) to other
@@ -385,7 +387,7 @@ const someFunction = (spanToLinkFrom) => {
 }
 ```
 
-## Span Status
+### Span Status
 
 A [status](/docs/concepts/signals/traces/#span-status) can be set on a span,
 typically used to specify that a span has not completed successfully -
@@ -417,7 +419,7 @@ typically the job of another component in your telemetry pipeline to interpret
 the `Unset` status of a span, so it's best not to override this unless you're
 explicitly tracking an error.
 
-## Recording exceptions
+### Recording exceptions
 
 It can be a good idea to record exceptions when they happen. It's recommended to
 do this in conjunction with setting [span status](#span-status).
@@ -435,14 +437,14 @@ try {
 }
 ```
 
-## Using `sdk-trace-base` and manually propagating span context
+### Using `sdk-trace-base` and manually propagating span context
 
 In some cases, you may not be able to use either the Node.js SDK nor the Web
 SDK. The biggest difference, aside from initialization code, is that you'll have
 to manually set spans as active in the current context to be able to create
 nested spans.
 
-### Initializing tracing with `sdk-trace-base`
+#### Initializing tracing with `sdk-trace-base`
 
 Initializing tracing is similar to how you'd do it with Node.js or the Web SDK.
 
@@ -469,7 +471,7 @@ export const tracer = opentelemetry.trace.getTracer(
 Like the other examples in this document, this exports a tracer you can use
 throughout the app.
 
-### Creating nested spans with `sdk-trace-base`
+#### Creating nested spans with `sdk-trace-base`
 
 To create nested spans, you need to set whatever the currently-created span is
 as the active span in the current context. Don't bother using `startActiveSpan`
@@ -509,6 +511,204 @@ const doWork = (parent, i) => {
 
 All other APIs behave the same when you use `sdk-trace-base` compared with the
 Node.js or Web SDKs.
+
+## Metrics
+
+To start [metrics](/docs/concepts/signals/metrics), you'll need to have an
+initialized `MeterProvider` that lets you create a `Meter`. `Meter`s let you
+create `Instrument`s that you can use to create different kinds of metrics.
+OpenTelemetry JavaScript currently supports the following `Instrument`s:
+
+* Counter, a synchronous instrument which supports non-negative increments
+* Asynchronous Counter, a asynchronous instrument which supports non-negative
+  increments
+* Histogram, a synchronous instrument which supports arbitrary values that are
+  statistically meaningful, such as histograms, summaries or percentile
+* Asynchronous Gauge, an asynchronous instrument which supports non-additive
+  values, such as room temperature
+* UpDownCounter, a synchronous instrument which supports increments and
+  decrements, such as number of active requests
+* Asynchronous UpDownCounter, an asynchronous instrument which supports
+  increments and decrements
+
+If a `MeterProvider` is not created either by an instrumentation library or
+manually, the OpenTelemetry Metrics API will use a no-op implementation and
+fail to generate data.
+
+### Initialize Metrics
+
+To initialize metrics, make sure you have the right packages installed:
+
+```shell
+npm install \
+  @opentelemetry/api \
+  @opentelemetry/resources \
+  @opentelemetry/semantic-conventions \
+  @opentelemetry/sdk-metrics \
+  @opentelemetry/instrumentation
+```
+
+Next, create a separate `instrumentation.js` file that has all the SDK
+initialization code in it:
+
+```js
+const otel = require('@opentelemetry/api')
+const {
+    MeterProvider,
+    PeriodicExportingMetricReader,
+    ConsoleMetricExporter
+  } = require('@opentelemetry/sdk-metrics');
+const { Resource } = require('@opentelemetry/resources');
+const { SemanticResourceAttributes } = require('@opentelemetry/semantic-conventions');
+
+const resource =
+  Resource.default().merge(
+    new Resource({
+      [SemanticResourceAttributes.SERVICE_NAME]: "service-name-here",
+      [SemanticResourceAttributes.SERVICE_VERSION]: "0.1.0",
+    })
+  );
+
+const metricReader = new PeriodicExportingMetricReader({
+    exporter: new ConsoleMetricExporter(),
+
+    // Default is 60000ms (60 seconds). Set to 3 seconds for demonstrative purposes only.
+    exportIntervalMillis: 3000,
+});
+
+const myServiceMeterProvider = new MeterProvider({
+  resource: resource,
+});
+
+myServiceMeterProvider.addMetricReader(metricReader);
+
+// Set this MeterProvider to be global to the app being instrumented.
+otel.metrics.setGlobalMeterProvider(myServiceMeterProvider)
+```
+
+You'll need to `--require` this file when you run your app, such as:
+
+```shell
+node --require ./instrumentation.js index.js
+```
+
+Now that a `MeterProvider` is configured, you can acquire a `Meter`.
+
+### Acquiring a Meter
+
+Anywhere in your application where you have manually instrumented code you can call
+`getMeter` to acquire a meter. For example:
+
+```js
+const otel = require('@opentelemetry/api')
+
+const myMeter = otel.metrics.getMeter(
+  'my-service-meter'
+);
+
+// You can now use a 'meter' to create instruments!
+```
+
+It’s generally recommended to call `getMeter` in your app when you need it
+rather than exporting the meter instance to the rest of your app. This helps
+avoid trickier application load issues when other required dependencies are
+involved.
+
+### Synchronous and asynchronous instruments
+
+OpenTelemetry provides two major categories of instruments: synchronous and anynchronous (observable) instruments. Synchronous instruments can be used anywhere in the code. Using these, measurements can be pushed to the instrument at any time during the execution. This means that during an export cycle, multiple or no measurements can take place. Asynchronous instruments, on the other hand, provide a measurement at the request of the SDK. When the SDK exports, a callback that was provided to the instrument on creation is invoked. This callback provides the SDK with a measurement, which is then immediately exported. Therefore all measurement on asynchronous instruments are performed once per export cycle. 
+
+### Using Counters
+
+Counters can by used to measure a non-negative, increasing value. They are
+useful when increasing the counter is computationally cheap.
+
+```js
+const otel = require('@opentelemetry/api')
+
+const counter = myMeter.createCounter('events.counter');
+
+//...
+
+counter.add(1);
+```
+
+### Using UpDown Counters
+
+UpDown counters can increment and decrement, allowing you to observe a
+cumulative value that goes up or down.
+
+
+```js
+const counter = myMeter.createUpDownCounter('events.counter');
+
+//...
+
+counter.add(1);
+
+//...
+
+counter.add(-1);
+```
+
+### Using Histograms
+
+Histograms are used to measure a distribution of values over time.
+
+For example, here's how you might report a distribution of response times for an
+API route with Express:
+
+```js
+const express = require('express');
+
+const app = express();
+
+app.get('/', (_req, _res) => {
+  const histogram = meter.createHistogram("taks.duration");
+  const startTime = new Date().getTime()
+
+  // do some work in an API call
+
+  const endTime = new Date().getTime()
+  const executionTime = endTime - startTime
+
+  // Record the duration of the task operation
+  histogram.record(executionTime)
+});
+```
+
+### Describing instruments
+
+When you create instruments like counters, histograms, etc. you can give them a
+description.
+
+```js
+const httpServerResponseDuration = myMeter.createHistogram("http.server.duration", {
+  description: 'A distribution of the HTTP server response times',
+  unit: 'milliseconds',
+  valueType: ValueType.INT
+});
+```
+
+In JavaScript, each configuration type means the following:
+
+* `description` - a human-readable description for the instrument
+* `unit` - The description of the unit of measure that the value is intended to
+  represent. For example, `milliseconds` to meaure duration, or `bytes` to count
+  number of bytes.
+* `valueType` - The kind of numeric value used in measurements.
+
+It's generally recommended to describe each instrument you create.
+
+### Adding attributes
+
+You can add Attributes to metrics when they are generated.
+
+```js
+const counter = meter.createCounter('my.counter');
+
+cntr.add(1, { 'some.optional.attribute': 'some value' });
+```
 
 ## Next steps
 
