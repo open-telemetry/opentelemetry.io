@@ -38,7 +38,7 @@ the most important piece of telemetry source-identifying info.
 For example:
 
 <details>
-  <summary>Maven top level dependencies. Click me.</summary>
+  <summary>Maven dependencies. Click me.</summary>
   
   ```
   
@@ -66,23 +66,7 @@ For example:
           </dependency>
           <dependency>
               <groupId>io.opentelemetry</groupId>
-              <artifactId>opentelemetry-sdk-trace</artifactId>
-          </dependency>
-          <dependency>
-              <groupId>io.opentelemetry</groupId>
-              <artifactId>opentelemetry-sdk-metrics</artifactId>
-          </dependency>
-          <dependency>
-              <groupId>io.opentelemetry</groupId>
-              <artifactId>opentelemetry-sdk-common</artifactId>
-          </dependency>
-          <dependency>
-              <groupId>io.opentelemetry</groupId>
               <artifactId>opentelemetry-exporter-otlp</artifactId>
-          </dependency>
-          <dependency>
-              <groupId>io.opentelemetry</groupId>
-              <artifactId>opentelemetry-context</artifactId>
           </dependency>
           <dependency>
               <groupId>io.opentelemetry</groupId>
@@ -94,6 +78,22 @@ For example:
   
   ```
 </details>
+
+<details>
+  <summary>Gradle dependencies. Click me.</summary>
+  
+  ```
+
+dependencies {
+    implementation 'io.opentelemetry:opentelemetry-api:{{% param javaVersion %}}'
+    implementation 'io.opentelemetry:opentelemetry-sdk:{{% param javaVersion %}}'
+    implementation 'io.opentelemetry:opentelemetry-exporter-otlp:{{% param javaVersion %}}'
+    implementation 'io.opentelemetry:opentelemetry-semconv:{{% param javaVersionSemConv %}}'
+}
+  
+  ```
+</details>
+  
 
 <details>
   <summary>Java imports. Click me.</summary>
