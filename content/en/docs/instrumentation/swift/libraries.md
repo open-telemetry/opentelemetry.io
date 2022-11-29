@@ -68,34 +68,42 @@ Initialize the class with
 to automatically capture all network calls.
 
 This behavior can be modified or augmented by using the optional callbacks
-defined in `URLSessionInstrumentationConfiguration` :
+defined in `URLSessionInstrumentationConfiguration`:
 
-`shouldInstrument: ((URLRequest) -> (Bool)?)?` : Filter which requests you want
-to instrument, all by default
+- `shouldInstrument: ((URLRequest) -> (Bool)?)?`
+  
+  Filter which requests you want to instrument, all by default.
 
-`shouldRecordPayload: ((URLSession) -> (Bool)?)?`: Implement if you want the
-session to record payload data, false by default.
+- `shouldRecordPayload: ((URLSession) -> (Bool)?)?`
 
-`shouldInjectTracingHeaders: ((URLRequest) -> (Bool)?)?`: Allows filtering which
-requests you want to inject headers to follow the trace, true by default. You
-must also return true if you want to inject custom headers.
+  Implement if you want the session to record payload data, false by default.
 
-`injectCustomHeaders: ((inout URLRequest, Span?) -> Void)?`: Implement this
-callback to inject custom headers or modify the request in any other way
+- `shouldInjectTracingHeaders: ((URLRequest) -> (Bool)?)?`
 
-`nameSpan: ((URLRequest) -> (String)?)?` - Modifies the name for the given
-request instead of standard OpenTelemetry name
+  Allow filtering which requests you want to inject headers to follow the trace,
+  true by default. You must also return true if you want to inject custom headers.
 
-`createdRequest: ((URLRequest, Span) -> Void)?` - Called after request is
-created, it allows to add extra information to the Span
+- `injectCustomHeaders: ((inout URLRequest, Span?) -> Void)?`
 
-`receivedResponse: ((URLResponse, DataOrFile?, Span) -> Void)?`- Called after
-response is received, it allows to add extra information to the Span
+  Implement this callback to inject custom headers or modify the request in any other way.
 
-`receivedError: ((Error, DataOrFile?, HTTPStatus, Span) -> Void)?` - Called
-after an error is received, it allows to add extra information to the Span
+- `nameSpan: ((URLRequest) -> (String)?)?`
 
-below is an example of initialization.
+  Modify the name for the given request instead of standard OpenTelemetry name.
+
+- `createdRequest: ((URLRequest, Span) -> Void)?`
+
+  Called after request is created, it allows to add extra information to the Span.
+
+- `receivedResponse: ((URLResponse, DataOrFile?, Span) -> Void)?`
+
+  Called after response is received, it allows to add extra information to the Span.
+
+- `receivedError: ((Error, DataOrFile?, HTTPStatus, Span) -> Void)?`
+
+  Called after an error is received, it allows to add extra information to the Span.
+
+Below is an example of initialization.
 `URLSessionInstrumentationConfiguration`'s construction can be passed the
 parameters defined above to suit the needs of the application.
 
