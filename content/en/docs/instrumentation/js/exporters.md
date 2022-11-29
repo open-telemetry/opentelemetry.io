@@ -22,7 +22,7 @@ $ npm install --save @opentelemetry/exporter-trace-otlp-http
 ```
 
 Next, configure the exporter to point at an OTLP endpoint. For example you can
-update `app.js` from the
+update `tracing.ts|js` from the
 [Getting Started](/docs/instrumentation/js/getting-started/nodejs/) like the
 following:
 
