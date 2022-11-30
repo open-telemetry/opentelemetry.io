@@ -13,7 +13,7 @@ code must emit
 [logs](/docs/concepts/observability-primer/#logs).
 
 A developer can
-[manually instrument](https://opentelemetry.io/docs/reference/specification/glossary/#manual-instrumentation)
+[manually instrument](/docs/reference/specification/glossary/#manual-instrumentation)
 their applications by coding against the OpenTelemetry APIs.
 
 The developer does not need to instrument all the dependencies used in their
@@ -24,10 +24,10 @@ application:
   **natively instrumented**.
 - for libraries without such an integration the OpenTelemetry projects provide
   language specific
-  [Instrumentation Libraries](https://opentelemetry.io/docs/reference/specification/overview/#instrumentation-libraries).
+  [Instrumentation Libraries](/docs/reference/specification/overview/#instrumentation-libraries).
 
 To facilitate the instrumentation of applications even more,
-[Automatic Instrumentation](https://opentelemetry.io/docs/reference/specification/glossary/#automatic-instrumentation)
+[Automatic Instrumentation](/docs/reference/specification/glossary/#automatic-instrumentation)
 can be used to collect telemetry from an application without the end-user being
 required to modify the application's source code. If you previously used an APM
 agent to automatically extract telemetry from your application, Automatic
