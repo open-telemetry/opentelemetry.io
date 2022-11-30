@@ -1,33 +1,53 @@
 ---
 title: "Instrumenting"
 description: >-
-  How OpenTelemetry facilitates automatic and manual instrumentation of applications
+  How OpenTelemetry facilitates automatic and manual instrumentation of
+  applications
 weight: 40
 ---
 
-In order to make a system observable, it must be instrumented. That is, the code
-must emit [traces](/docs/concepts/observability-primer/#distributed-traces),
+In order to make a system observable, it must be **instrumented**: That is, the
+code must emit
+[traces](/docs/concepts/observability-primer/#distributed-traces),
 [metrics](/docs/concepts/observability-primer/#reliability--metrics), and
-[logs](/docs/concepts/observability-primer/#logs). OpenTelemetry facilitates
-the instrumenting of applications, by providing means to automatically or
-manually instrument your application.
+[logs](/docs/concepts/observability-primer/#logs).
 
-The exact installation mechanism for OpenTelemetry varies based on the language
+A developer can
+[manually instrument](https://opentelemetry.io/docs/reference/specification/glossary/#manual-instrumentation)
+their applications by coding against the OpenTelemetry APIs.
+
+The developer does not need to instrument all the dependencies used in their
+application:
+
+- some of their libraries will be observable out of the box by calling the
+  OpenTelemetry API themselves directly. Those libraries are sometimes called **natively instrumented**.
+- for libraries without such an integration the OpenTelemetry projects provide
+  language specific
+  [Instrumentation Libraries](https://opentelemetry.io/docs/reference/specification/overview/#instrumentation-libraries).
+
+To facilitate the instrumentation of applications even more,
+[Automatic Instrumentation](https://opentelemetry.io/docs/reference/specification/glossary/#automatic-instrumentation)
+can be used to collect telemetry from an application without the end-user being
+required to modify the application's source code. If you previously used an APM
+agent to automatically extract telemetry from your application, Automatic Instrumentation
+will give you a similar out of the box experience.
+
+Note, that for most languages it is possible to use both manual and automatic
+instrumentation at the same time: Automatic Instrumentation will
+allow you to gain insights into your application quickly and manual instrumentation
+will enable you to embed granular observability into your code.
+
+The exact installation mechanism for manual and automatic instrumentation varies based on the language
 you’re developing in, but there are some similarities covered in the sections
- below.
+below.
 
 ## Automatic Instrumentation
 
-### Add dependencies
-
-In order to enable automatic instrumentation, one or more dependencies need to
-be added. How dependencies are added are language specific. At a minimum, these
-dependencies will add OpenTelemetry API and SDK capabilities. Some languages
-also require per instrumentation dependencies. Exporter dependencies may also be
-required. For more information about the OpenTelemetry API and SDK, see the
-[specification](/docs/reference/specification/).
-
-### Configure OpenTelemetry Instrumentation
+If applicable a language specific implementation of OpenTelemetry will provide
+a way to instrument your application without touching your source code.
+While the underlying mechanism depends on the language, at a minimum this will
+add the OpenTelemetry API and SDK capabilities to your application. Additionally
+they may add a set of Instrumentation Libraries and exporter dependencies.
 
 Configuration is available via environment variables and possibly language
 specific means such as system properties in Java. At a minimum, a service name
@@ -57,8 +77,8 @@ and/or meter provider. In general, we recommend that the SDK should provide a
 single default provider for these objects. You'll then get a tracer or meter
 instance from that provider, and give it a name and version. The name you choose
 here should identify what exactly is being instrumented -- if you're writing a
-library, for example, then you should name it after your library (i.e.,
-`com.legitimatebusiness.myLibrary` or some other unique identifier) as this name
+library, for example, then you should name it after your library (for example
+`com.legitimatebusiness.myLibrary`) as this name
 will namespace all spans or metric events produced. It is also recommended that
 you supply a version string (i.e., `semver:1.0.0`) that corresponds to the
 current version of your library or service.
@@ -75,9 +95,9 @@ options you may wish to take advantage of.
 
 Once you've configured the API and SDK, you'll then be free to create traces and
 metric events through the tracer and meter objects you obtained from the
-provider. You can also utilize a plugin or integration to create traces and
-metric events for you -- check out the [registry](/registry) or your language's
-repository for more information on these.
+provider. Make use of Instrumentation Libraries for your dependencies -- check
+out the [registry](/registry) or your language's repository for more information
+on these.
 
 ### Export Data
 
