@@ -2,9 +2,9 @@
 title: OpenTelemetry for Dart
 registryType: instrumentation
 isThirdParty: true
-language: Dart
+language: dart
 tags:
-  - Dart
+  - dart
   - instrumentation
 repo: https://github.com/Workiva/opentelemetry-dart
 license: Apache-2.0

@@ -2,9 +2,9 @@
 title: OpenTelemetry.jl
 registryType: instrumentation
 isThirdParty: true
-language: Julia
+language: julia
 tags:
-  - Julia
+  - julia
   - instrumentation
 repo: https://github.com/oolong-dev/OpenTelemetry.jl
 license: Apache-2.0

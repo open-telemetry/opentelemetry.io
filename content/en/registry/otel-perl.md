@@ -2,9 +2,9 @@
 title: OpenTelemetry for Perl
 registryType: instrumentation
 isThirdParty: true
-language: Perl
+language: perl
 tags:
-  - Perl
+  - perl
   - instrumentation
 repo: https://github.com/jjatria/perl-opentelemetry
 license: Apache-2.0

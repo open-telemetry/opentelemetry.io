@@ -2,9 +2,9 @@
 title: opentelemetry-api.cr
 registryType: instrumentation
 isThirdParty: true
-language: Crystal
+language: crystal
 tags:
-  - Crystal
+  - crystal
   - instrumentation
 repo: https://github.com/wyhaines/opentelemetry-api.cr
 license: Apache-2.0
