@@ -35,88 +35,71 @@ It is also strongly recommended to define a `Resource` instance as a representat
 entity producing the telemetry; in particular the `service.name` attribute is
 the most important piece of telemetry source-identifying info.
 
-For example:
-
-<details>
-  <summary>Maven dependencies. Click me.</summary>
-  
-  ```
-  
-  <project>
-      <dependencyManagement>
-          <dependencies>
-              <dependency>
-                  <groupId>io.opentelemetry</groupId>
-                  <artifactId>opentelemetry-bom</artifactId>
-                  <version>{{% param javaVersion %}}</version>
-                  <type>pom</type>
-                  <scope>import</scope>
-              </dependency>
-          </dependencies>
-      </dependencyManagement>
+### Maven
+```xml
+<project>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.opentelemetry</groupId>
+                <artifactId>opentelemetry-bom</artifactId>
+                <version>{{% param javaVersion %}}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
       
-      <dependencies>
-          <dependency>
-              <groupId>io.opentelemetry</groupId>
-              <artifactId>opentelemetry-api</artifactId>
-          </dependency>
-          <dependency>
-              <groupId>io.opentelemetry</groupId>
-              <artifactId>opentelemetry-sdk</artifactId>
-          </dependency>
-          <dependency>
-              <groupId>io.opentelemetry</groupId>
-              <artifactId>opentelemetry-exporter-otlp</artifactId>
-          </dependency>
-          <dependency>
-              <groupId>io.opentelemetry</groupId>
-              <artifactId>opentelemetry-semconv</artifactId>
-              <version>{{% param javaVersionSemConv %}}</version>
-          </dependency>
-      </dependencies>
-  </project>
-  
-  ```
-</details>
+    <dependencies>
+        <dependency>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-sdk</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-exporter-otlp</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-semconv</artifactId>
+            <version>{{% param javaVersion %}}-alpha</version>
+        </dependency>
+    </dependencies>
+</project>
+```
 
-<details>
-  <summary>Gradle dependencies. Click me.</summary>
-  
-  ```
-
+### Gradle
+```
 dependencies {
     implementation 'io.opentelemetry:opentelemetry-api:{{% param javaVersion %}}'
     implementation 'io.opentelemetry:opentelemetry-sdk:{{% param javaVersion %}}'
     implementation 'io.opentelemetry:opentelemetry-exporter-otlp:{{% param javaVersion %}}'
-    implementation 'io.opentelemetry:opentelemetry-semconv:{{% param javaVersionSemConv %}}'
+    implementation 'io.opentelemetry:opentelemetry-semconv:{{% param javaVersion %}}-alpha'
 }
-  
-  ```
-</details>
-  
+```  
 
-<details>
-  <summary>Java imports. Click me.</summary>
-  
-  ```java
-  
-  import io.opentelemetry.api.OpenTelemetry;
-  import io.opentelemetry.api.common.Attributes;
-  import io.opentelemetry.api.trace.propagation.W3CTraceContextPropagator;
-  import io.opentelemetry.context.propagation.ContextPropagators;
-  import io.opentelemetry.exporter.otlp.metrics.OtlpGrpcMetricExporter;
-  import io.opentelemetry.exporter.otlp.trace.OtlpGrpcSpanExporter;
-  import io.opentelemetry.sdk.OpenTelemetrySdk;
-  import io.opentelemetry.sdk.metrics.SdkMeterProvider;
-  import io.opentelemetry.sdk.metrics.export.PeriodicMetricReader;
-  import io.opentelemetry.sdk.resources.Resource;
-  import io.opentelemetry.sdk.trace.SdkTracerProvider;
-  import io.opentelemetry.sdk.trace.export.BatchSpanProcessor;
-  import io.opentelemetry.semconv.resource.attributes.ResourceAttributes;
-  
-  ```
-</details>
+### Imports
+```java
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.api.common.Attributes;
+import io.opentelemetry.api.trace.propagation.W3CTraceContextPropagator;
+import io.opentelemetry.context.propagation.ContextPropagators;
+import io.opentelemetry.exporter.otlp.metrics.OtlpGrpcMetricExporter;
+import io.opentelemetry.exporter.otlp.trace.OtlpGrpcSpanExporter;
+import io.opentelemetry.sdk.OpenTelemetrySdk;
+import io.opentelemetry.sdk.metrics.SdkMeterProvider;
+import io.opentelemetry.sdk.metrics.export.PeriodicMetricReader;
+import io.opentelemetry.sdk.resources.Resource;
+import io.opentelemetry.sdk.trace.SdkTracerProvider;
+import io.opentelemetry.sdk.trace.export.BatchSpanProcessor;
+import io.opentelemetry.semconv.resource.attributes.ResourceAttributes;
+```
 
+### Example
 ```java
 Resource resource = Resource.getDefault()
   .merge(Resource.create(Attributes.of(ResourceAttributes.SERVICE_NAME, "logical-service-name")));
