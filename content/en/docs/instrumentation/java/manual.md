@@ -7,7 +7,6 @@ aliases:
   - /docs/instrumentation/java/manual_instrumentation
 weight: 5
 javaVersion: 1.20.1
-javaVersionSemConv: 1.20.1-alpha
 ---
 
 **Libraries** that want to export telemetry data using OpenTelemetry MUST only
@@ -73,7 +72,7 @@ the most important piece of telemetry source-identifying info.
 ```
 
 ### Gradle
-```
+```kotlin
 dependencies {
     implementation 'io.opentelemetry:opentelemetry-api:{{% param javaVersion %}}'
     implementation 'io.opentelemetry:opentelemetry-sdk:{{% param javaVersion %}}'
