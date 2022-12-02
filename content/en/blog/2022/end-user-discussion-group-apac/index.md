@@ -33,10 +33,10 @@ Past participants have shared with us that these have been helpful and valuable
 for them as they migrate their observability instrumentation to OpenTelemetry. 
 
 Additionally, the End User Working Group is also improving the process to share 
-any collected user feedback* with the appropriate project maintainers to help 
+any collected user feedback\* with the appropriate project maintainers to help 
 improve the user experience and increase adoption. 
 
-*Information shared in the groups can be discussed publicly, but **not** the 
+\*Information shared in the groups can be discussed publicly, but **not** the 
 identity of the person who said it or their affiliation. 
 
 ## The when
