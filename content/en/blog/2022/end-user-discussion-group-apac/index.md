@@ -53,8 +53,8 @@ Upcoming sessions:
   * December 20, 2022 11AM CET
   * January 17, 2023 11AM CET
 * **APAC** (every third Wednesday of the month) - join [here](https://us06web.zoom.us/j/82702918447?pwd=WllKc0hmdTNuelhFdlhMM1Q3TktSQT09)
-  * January 18, 2023 11AM IST 
-  * February 15, 2023 11AM IST
+  * January 18, 2023 11AM IST (GMT +5.5)
+  * February 15, 2023 11AM IST (GMT +5.5)
 * **AMER** (every third Thursday of the month) - join [here](https://us06web.zoom.us/j/87037874951?pwd=WGo3eUZpeWFZTlhJQXhJeXZhQmwvUT09)
   * December 15, 2022 9AM PST
   * January 19, 2023 9AM PST
