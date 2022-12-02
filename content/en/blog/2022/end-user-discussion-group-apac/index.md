@@ -8,7 +8,7 @@ draft: true
 
 Since July, end users have been getting together to discuss their OpenTelemetry 
 adoption and implementation practices in a vendor-netural space known as the 
-[Monthly Discussion Groups](https://opentelemetry.io/community/end-user/discussion-group/) 
+[Monthly Discussion Groups](/community/end-user/discussion-group/) 
 (also referenced as the End User Discussion Groups). 
 
 Previously, they were only available in the EMEA and AMER regions; the End User 
