@@ -13,15 +13,12 @@ and meet other observability-minded folks.
 Here are upcoming sessions based on regions, or you can view them on the
 [OpenTelemetry calendar](https://github.com/open-telemetry/community#calendar):
 
-* **AMER**
-  * November 17 9AM PST
-  * December 15 9AM PST
-* **EMEA**
-  * November 15 11AM CET
-  * December 20 11AM CET
-* **APAC**
-  * TBD! If you are interested in facilitating these meetings for this region,
-    please reach out to Reese Lee or Rynn Mancuso in CNCF Slack.
+* **EMEA**: every third Tuesday of the month at 11AM CET
+  * December 20, 2022, join [here](https://us06web.zoom.us/j/85691064809?pwd=c0VCejh)
+* **APAC**: every third Wednesday of the month at 11AM IST (**Brand new!!**)
+  * January 18, 2023, join [here](https://us06web.zoom.us/j/82702918447?pwd=WllKc0hmdTNuelhFdlhMM1Q3TktSQT09)
+* **AMER**: every third Thursday of the month at 9AM PST
+  * December 15, 2022, join [here](https://us06web.zoom.us/j/87037874951?pwd=WGo3eUZpeWFZTlhJQXhJeXZhQmwvUT09)
 
 Past topics/questions have included:
 
