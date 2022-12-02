@@ -51,7 +51,7 @@ with tracer.start_as_current_span("parent"):
 ## Capturing baggage at different contexts
 
 ```python
-from opentelemetry import trace
+from opentelemetry import trace, baggage
 
 tracer = trace.get_tracer(__name__)
 with tracer.start_as_current_span(name="root span") as root_span:
