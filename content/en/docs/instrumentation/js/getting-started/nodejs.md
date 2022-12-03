@@ -292,3 +292,31 @@ customized observability data.
 
 You'll also want to configure an appropriate exporter to [export your telemetry
 data](/docs/instrumentation/js/exporters) to one or more telemetry backends.
+
+## Troubleshooting
+
+Did something go wrong? Remember that you need to explicitly enable logging in order to see logs from OpenTelemetry:
+{{< tabpane langEqualsHeader=true >}}
+
+{{< tab TypeScript >}}
+/*tracing.ts*/
+import { diag, DiagConsoleLogger, DiagLogLevel } from '@opentelemetry/api';
+
+// For troubleshooting, set the log level to DiagLogLevel.DEBUG
+diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
+
+// const sdk = new opentelemetry.NodeSDK({...
+{{< /tab >}}
+
+{{< tab JavaScript >}}
+/*tracing.js*/
+// Require dependencies
+const { diag, DiagConsoleLogger, DiagLogLevel } = require('@opentelemetry/api');
+
+// For troubleshooting, set the log level to DiagLogLevel.DEBUG
+diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
+
+// const sdk = new opentelemetry.NodeSDK({...
+{{< /tab >}}
+
+{{< /tabpane >}}
