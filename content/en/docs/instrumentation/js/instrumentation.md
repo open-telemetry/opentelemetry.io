@@ -33,10 +33,45 @@ npm install \
   @opentelemetry/instrumentation
 ```
 
-Next, create a separate `tracing.js` file that has all the SDK initialization
+Next, create a separate `tracing.js|ts` file that has all the SDK initialization
 code in it:
 
-```js
+{{< tabpane langEqualsHeader=true >}}
+
+{{< tab TypeScript >}}
+/*tracing.ts*/
+import { BatchSpanProcessor, ConsoleSpanExporter } from "@opentelemetry/sdk-trace-base";
+import { Resource } from "@opentelemetry/resources";
+import { SemanticResourceAttributes } from "@opentelemetry/semantic-conventions";
+import { NodeTracerProvider } from "@opentelemetry/sdk-trace-node";
+import { registerInstrumentations } from "@opentelemetry/instrumentation";
+
+
+// Optionally register instrumentation libraries
+registerInstrumentations({
+  instrumentations: [],
+});
+
+const resource =
+  Resource.default().merge(
+    new Resource({
+      [SemanticResourceAttributes.SERVICE_NAME]: "service-name-here",
+      [SemanticResourceAttributes.SERVICE_VERSION]: "0.1.0",
+    })
+  );
+
+const provider = new NodeTracerProvider({
+    resource: resource,
+});
+const exporter = new ConsoleSpanExporter();
+const processor = new BatchSpanProcessor(exporter);
+provider.addSpanProcessor(processor);
+
+provider.register();
+{{< /tab >}}
+
+{{< tab JavaScript >}}
+/*tracing.js*/
 const opentelemetry = require("@opentelemetry/api");
 const { Resource } = require("@opentelemetry/resources");
 const { SemanticResourceAttributes } = require("@opentelemetry/semantic-conventions");
@@ -65,14 +100,24 @@ const processor = new BatchSpanProcessor(exporter);
 provider.addSpanProcessor(processor);
 
 provider.register();
-```
+{{< /tab >}}
 
-Next, ensure that `tracing.js` is required in your node invocation. This is also
+{{< /tabpane>}}
+
+Next, ensure that `tracing.js|ts` is required in your node invocation. This is also
 required if you're registering instrumentation libraries. For example:
 
-```
+{{< tabpane lang=shell >}}
+
+{{< tab TypeScript >}}
+ts-node --require './tracing.ts' <app-file.ts>
+{{< /tab >}}
+
+{{< tab JavaScript >}}
 node --require './tracing.js' <app-file.js>
-```
+{{< /tab >}}
+
+{{< /tabpane >}}
 
 #### Browser
 
@@ -87,10 +132,42 @@ npm install \
   @opentelemetry/instrumentation
 ```
 
-Create a `tracing.js` file that initialized the Web SDK, creates a
+Create a `tracing.js|ts` file that initialized the Web SDK, creates a
 `TracerProvider`, and exports a `Tracer`.
 
-```javascript
+{{< tabpane langEqualsHeader=true >}}
+{{< tab TypeScript >}}
+import { Resource } from "@opentelemetry/resources";
+import { SemanticResourceAttributes } from "@opentelemetry/semantic-conventions";
+import { WebTracerProvider } from "@opentelemetry/sdk-trace-web";
+import { registerInstrumentations } from "@opentelemetry/instrumentation";
+import { BatchSpanProcessor, ConsoleSpanExporter } from "@opentelemetry/sdk-trace-base";
+
+
+// Optionally register automatic instrumentation libraries
+registerInstrumentations({
+  instrumentations: [],
+});
+
+const resource =
+  Resource.default().merge(
+    new Resource({
+      [SemanticResourceAttributes.SERVICE_NAME]: "service-name-here",
+      [SemanticResourceAttributes.SERVICE_VERSION]: "0.1.0",
+    })
+  );
+
+const provider = new WebTracerProvider({
+    resource: resource,
+});
+const exporter = new ConsoleSpanExporter();
+const processor = new BatchSpanProcessor(exporter);
+provider.addSpanProcessor(processor);
+
+provider.register();
+{{< /tab >}}
+
+{{< tab JavaScript >}}
 const opentelemetry = require("@opentelemetry/api");
 const { Resource } = require("@opentelemetry/resources");
 const { SemanticResourceAttributes } = require("@opentelemetry/semantic-conventions");
@@ -119,7 +196,9 @@ const processor = new BatchSpanProcessor(exporter);
 provider.addSpanProcessor(processor);
 
 provider.register();
-```
+{{< /tab >}}
+
+{{< /tabpane>}}
 
 You'll need to bundle this file with your web application to be able to use
 tracing throughout the rest of your web application.
@@ -147,17 +226,28 @@ In most cases, stick with `BatchSpanProcessor` over `SimpleSpanProcessor`.
 Anywhere in your application where you write manual tracing code should call
 `getTracer` to acquire a tracer. For example:
 
-```js
-const opentelemetry = require("@opentelemetry/api");
+{{< tabpane langEqualsHeader=true >}}
+{{< tab TypeScript >}}
+import opentelemetry from "@opentelemetry/api";
 //...
-
 
 const tracer = opentelemetry.trace.getTracer(
   'my-service-tracer'
 );
 
 // You can now use a 'tracer' to do tracing!
-```
+{{< /tab >}}
+{{< tab JavaScript >}}
+const opentelemetry = require("@opentelemetry/api");
+//...
+
+const tracer = opentelemetry.trace.getTracer(
+  'my-service-tracer'
+);
+
+// You can now use a 'tracer' to do tracing!
+{{< /tab >}}
+{{< /tabpane>}}
 
 It's generally recommended to call `getTracer` in your app when you need it
 rather than exporting the `tracer` instance to the rest of your app. This helps
@@ -318,9 +408,14 @@ npm install --save @opentelemetry/semantic-conventions
 
 Add the following to the top of your application file:
 
-```javascript
+{{< tabpane langEqualsHeader=true >}}
+{{< tab TypeScript >}}
+import { SemanticAttributes } from "@opentelemetry/semantic-conventions";
+{{< /tab >}}
+{{< tab JavaScript >}}
 const { SemanticAttributes } = require('@opentelemetry/semantic-conventions');
-```
+{{< /tab >}}
+{{< /tabpane>}}
 
 Finally, you can update your file to include semantic attributes:
 
@@ -395,7 +490,26 @@ typically used to specify that a span has not completed successfully -
 
 The status can be set at any time before the span is finished:
 
-```javascript
+{{< tabpane langEqualsHeader=true >}}
+{{< tab TypeScript >}}
+import opentelemetry from "@opentelemetry/api";
+
+// ...
+
+tracer.startActiveSpan('app.doWork', span => {
+  for (let i = 0; i <= Math.floor(Math.random() * 40000000); i += 1) {
+    if (i > 10000) {
+      span.setStatus({
+        code: opentelemetry.SpanStatusCode.ERROR,
+        message: 'Error'
+      });
+    }
+  }
+
+  span.end();
+});
+{{< /tab >}}
+{{< tab JavaScript >}}
 const opentelemetry = require("@opentelemetry/api");
 
 // ...
@@ -412,7 +526,8 @@ tracer.startActiveSpan('app.doWork', span => {
   
   span.end();
 });
-```
+{{< /tab >}}
+{{< /tabpane>}}
 
 By default, the status for all spans is `Unset` rather than `Ok`. It is
 typically the job of another component in your telemetry pipeline to interpret
@@ -424,7 +539,20 @@ explicitly tracking an error.
 It can be a good idea to record exceptions when they happen. It's recommended to
 do this in conjunction with setting [span status](#span-status).
 
-```javascript
+{{< tabpane langEqualsHeader=true >}}
+{{< tab TypeScript >}}
+import opentelemetry from "@opentelemetry/api";
+
+// ...
+
+try {
+  doWork();
+} catch (ex) {
+  span.recordException(ex);
+  span.setStatus({ code: opentelemetry.SpanStatusCode.ERROR });
+}
+{{< /tab >}}
+{{< tab JavaScript >}}
 const opentelemetry = require("@opentelemetry/api");
 
 // ...
@@ -435,7 +563,8 @@ try {
   span.recordException(ex);
   span.setStatus({ code: opentelemetry.SpanStatusCode.ERROR });
 }
-```
+{{< /tab >}}
+{{< /tabpane>}}
 
 ### Using `sdk-trace-base` and manually propagating span context
 
@@ -448,12 +577,13 @@ nested spans.
 
 Initializing tracing is similar to how you'd do it with Node.js or the Web SDK.
 
-```javascript
-import opentelemetry = "@opentelemetry/api";
+{{< tabpane langEqualsHeader=true >}}
+{{< tab TypeScript >}}
+import opentelemetry from "@opentelemetry/api";
 import {
   BasicTracerProvider,
-  ConsoleSpanExporter,
   BatchSpanProcessor,
+  ConsoleSpanExporter
 } from "@opentelemetry/sdk-trace-base";
 
 const provider = new BasicTracerProvider();
@@ -463,10 +593,30 @@ provider.addSpanProcessor(new BatchSpanProcessor(new ConsoleSpanExporter()));
 provider.register();
 
 // This is what we'll access in all instrumentation code
-export const tracer = opentelemetry.trace.getTracer(
+const tracer = opentelemetry.trace.getTracer(
   'example-basic-tracer-node'
 );
-```
+{{< /tab >}}
+{{< tab JavaScript >}}
+const opentelemetry = require("@opentelemetry/api");
+const {
+  BasicTracerProvider,
+  ConsoleSpanExporter,
+  BatchSpanProcessor,
+} = require("@opentelemetry/sdk-trace-base");
+
+const provider = new BasicTracerProvider();
+
+// Configure span processor to send spans to the exporter
+provider.addSpanProcessor(new BatchSpanProcessor(new ConsoleSpanExporter()));
+provider.register();
+
+// This is what we'll access in all instrumentation code
+const tracer = opentelemetry.trace.getTracer(
+    'example-basic-tracer-node'
+);
+{{< /tab >}}
+{{< /tabpane>}}
 
 Like the other examples in this document, this exports a tracer you can use
 throughout the app.
@@ -548,10 +698,45 @@ npm install \
   @opentelemetry/instrumentation
 ```
 
-Next, create a separate `instrumentation.js` file that has all the SDK
+Next, create a separate `instrumentation.js|ts` file that has all the SDK
 initialization code in it:
+{{< tabpane langEqualsHeader=true >}}
+{{< tab TypeScript >}}
+import otel from "@opentelemetry/api";
+import {
+  ConsoleMetricExporter,
+  MeterProvider,
+  PeriodicExportingMetricReader
+} from "@opentelemetry/sdk-metrics";
+import { Resource } from "@opentelemetry/resources";
+import { SemanticResourceAttributes } from "@opentelemetry/semantic-conventions";
 
-```js
+const resource =
+  Resource.default().merge(
+    new Resource({
+      [SemanticResourceAttributes.SERVICE_NAME]: "service-name-here",
+      [SemanticResourceAttributes.SERVICE_VERSION]: "0.1.0",
+    })
+  );
+
+const metricReader = new PeriodicExportingMetricReader({
+    exporter: new ConsoleMetricExporter(),
+
+    // Default is 60000ms (60 seconds). Set to 3 seconds for demonstrative purposes only.
+    exportIntervalMillis: 3000,
+});
+
+const myServiceMeterProvider = new MeterProvider({
+  resource: resource,
+});
+
+myServiceMeterProvider.addMetricReader(metricReader);
+
+// Set this MeterProvider to be global to the app being instrumented.
+otel.metrics.setGlobalMeterProvider(myServiceMeterProvider)
+{{< /tab >}}
+
+{{< tab JavaScript >}}
 const otel = require('@opentelemetry/api')
 const {
     MeterProvider,
@@ -584,13 +769,22 @@ myServiceMeterProvider.addMetricReader(metricReader);
 
 // Set this MeterProvider to be global to the app being instrumented.
 otel.metrics.setGlobalMeterProvider(myServiceMeterProvider)
-```
+{{< /tab >}}
+{{< /tabpane>}}
 
 You'll need to `--require` this file when you run your app, such as:
 
-```shell
-node --require ./instrumentation.js index.js
-```
+{{< tabpane lang=shell >}}
+
+{{< tab TypeScript >}}
+ts-node --require './instrumentation.ts' <app-file.ts>
+{{< /tab >}}
+
+{{< tab JavaScript >}}
+node --require './instrumentation.js' <app-file.js>
+{{< /tab >}}
+
+{{< /tabpane >}}
 
 Now that a `MeterProvider` is configured, you can acquire a `Meter`.
 
@@ -599,7 +793,18 @@ Now that a `MeterProvider` is configured, you can acquire a `Meter`.
 Anywhere in your application where you have manually instrumented code you can call
 `getMeter` to acquire a meter. For example:
 
-```js
+{{< tabpane langEqualsHeader=true >}}
+{{< tab TypeScript >}}
+import otel from "@opentelemetry/api";
+
+const myMeter = otel.metrics.getMeter(
+  'my-service-meter'
+);
+
+// You can now use a 'meter' to create instruments!
+{{< /tab >}}
+
+{{< tab JavaScript >}}
 const otel = require('@opentelemetry/api')
 
 const myMeter = otel.metrics.getMeter(
@@ -607,7 +812,8 @@ const myMeter = otel.metrics.getMeter(
 );
 
 // You can now use a 'meter' to create instruments!
-```
+{{< /tab >}}
+{{< /tabpane>}}
 
 It’s generally recommended to call `getMeter` in your app when you need it
 rather than exporting the meter instance to the rest of your app. This helps
@@ -624,8 +830,6 @@ Counters can by used to measure a non-negative, increasing value. They are
 useful when increasing the counter is computationally cheap.
 
 ```js
-const otel = require('@opentelemetry/api')
-
 const counter = myMeter.createCounter('events.counter');
 
 //...
@@ -658,13 +862,14 @@ Histograms are used to measure a distribution of values over time.
 For example, here's how you might report a distribution of response times for an
 API route with Express:
 
-```js
-const express = require('express');
+{{< tabpane langEqualsHeader=true >}}
+{{< tab TypeScript >}}
+import express from "express";
 
 const app = express();
 
 app.get('/', (_req, _res) => {
-  const histogram = meter.createHistogram("taks.duration");
+  const histogram = myMeter.createHistogram("taks.duration");
   const startTime = new Date().getTime()
 
   // do some work in an API call
@@ -675,7 +880,27 @@ app.get('/', (_req, _res) => {
   // Record the duration of the task operation
   histogram.record(executionTime)
 });
-```
+{{< /tab >}}
+
+{{< tab JavaScript >}}
+const express = require('express');
+
+const app = express();
+
+app.get('/', (_req, _res) => {
+  const histogram = myMeter.createHistogram("taks.duration");
+  const startTime = new Date().getTime()
+
+  // do some work in an API call
+
+  const endTime = new Date().getTime()
+  const executionTime = endTime - startTime
+
+  // Record the duration of the task operation
+  histogram.record(executionTime)
+});
+{{< /tab >}}
+{{< /tabpane>}}
 
 ### Describing instruments
 
@@ -705,7 +930,7 @@ It's generally recommended to describe each instrument you create.
 You can add Attributes to metrics when they are generated.
 
 ```js
-const counter = meter.createCounter('my.counter');
+const counter = myMeter.createCounter('my.counter');
 
 cntr.add(1, { 'some.optional.attribute': 'some value' });
 ```
