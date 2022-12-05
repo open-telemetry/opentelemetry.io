@@ -12,26 +12,22 @@ code must emit
 [metrics](/docs/concepts/observability-primer/#reliability--metrics), and
 [logs](/docs/concepts/observability-primer/#logs).
 
-A developer can
-[manually instrument](/docs/reference/specification/glossary/#manual-instrumentation)
-their applications by coding against the OpenTelemetry APIs.
+Without being required to modify the source code you can collect telemetry from
+an application using [Automatic Instrumentation][]. If you previously used an
+APM agent to extract telemetry from your application, Automatic Instrumentation
+will give you a similar out of the box experience.
 
-The developer does not need to instrument all the dependencies used in their
+To facilitate the instrumentation of applications even more, you can [manually
+instrument][] your applications by coding against the OpenTelemetry APIs.
+
+For that you don't need to instrument all the dependencies used in your
 application:
 
-- some of their libraries will be observable out of the box by calling the
+- some of your libraries will be observable out of the box by calling the
   OpenTelemetry API themselves directly. Those libraries are sometimes called
   **natively instrumented**.
 - for libraries without such an integration the OpenTelemetry projects provide
-  language specific
-  [Instrumentation Libraries](/docs/reference/specification/overview/#instrumentation-libraries).
-
-To facilitate the instrumentation of applications even more,
-[Automatic Instrumentation](/docs/reference/specification/glossary/#automatic-instrumentation)
-can be used to collect telemetry from an application without the end-user being
-required to modify the application's source code. If you previously used an APM
-agent to automatically extract telemetry from your application, Automatic
-Instrumentation will give you a similar out of the box experience.
+  language specific [Instrumentation Libraries][]
 
 Note, that for most languages it is possible to use both manual and automatic
 instrumentation at the same time: Automatic Instrumentation will allow you to
@@ -120,3 +116,10 @@ of analysis tools.
 In addition to open source tools such as Jaeger or Prometheus, a growing list of
 companies support ingesting telemetry data from OpenTelemetry. Please see
 [this page](/vendors) for more details.
+
+[automatic instrumentation]:
+  /docs/reference/specification/glossary/#automatic-instrumentation
+[manually instrument]:
+  /docs/reference/specification/glossary/#manual-instrumentation
+[instrumentation libraries]:
+  /docs/reference/specification/overview/#instrumentation-libraries
