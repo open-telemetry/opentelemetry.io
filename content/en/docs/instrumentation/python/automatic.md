@@ -172,7 +172,7 @@ Stop the execution of `server_instrumented.py` by pressing <kbd>Control+C</kbd>
 and run the following command instead:
 
 ```console
-$ opentelemetry-instrument --traces_exporter console python server_uninstrumented.py
+$ opentelemetry-instrument --traces_exporter console --metrics_exporter console python server_uninstrumented.py
 ```
 
 In the console where you previously executed `client.py`, run the following
