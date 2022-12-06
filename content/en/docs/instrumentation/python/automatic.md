@@ -172,7 +172,7 @@ Stop the execution of `server_instrumented.py` by pressing <kbd>Control+C</kbd>
 and run the following command instead:
 
 ```console
-$ opentelemetry-instrument --traces_exporter console --metrics_exporter console python server_uninstrumented.py
+$ opentelemetry-instrument --traces_exporter console --metrics_exporter none python server_uninstrumented.py
 ```
 
 In the console where you previously executed `client.py`, run the following
@@ -263,7 +263,7 @@ of HTTP header names via the environment variables
 ```console
 $ export OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_REQUEST="Accept-Encoding,User-Agent,Referer"
 $ export OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_RESPONSE="Last-Modified,Content-Type"
-$ opentelemetry-instrument --traces_exporter console --metrics_exporter console python app.py
+$ opentelemetry-instrument --traces_exporter console --metrics_exporter none python app.py
 ```
 
 These configuration options are supported by the following HTTP instrumentations:
