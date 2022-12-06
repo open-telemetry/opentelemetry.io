@@ -1,0 +1,15 @@
+---
+title: Settings for the OpenTelemetry Instrumentation Annotations integration
+registryType: instrumentation
+isThirdParty: false
+language: java
+tags:
+    - annotations
+    - instrumentation
+    - java
+repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/opentelemetry-instrumentation-annotations-1.16
+license: Apache 2.0
+description: undefined
+authors: OpenTelemetry Authors
+otVersion: latest
+---
