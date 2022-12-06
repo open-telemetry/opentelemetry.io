@@ -43,22 +43,22 @@ const ignoreList = [
 ];
 
 // Please uncomment the entries you'd like to scan for.
-// ['receiver','exporter','processor', 'extension'].forEach(async (component) => scanCollectorComponent(component));
+['receiver','exporter','processor', 'extension'].forEach(async (component) => scanCollectorComponent(component));
 
-// scanByLanguage('instrumentation', 'js', 'plugins/node');
+scanByLanguage('instrumentation', 'js', 'plugins/node');
 
-// scanByLanguage('instrumentation', 'ruby');
-// scanByLanguage('exporter', 'ruby', 'exporter', 'md', 'opentelemetry-ruby');
+scanByLanguage('instrumentation', 'ruby');
+scanByLanguage('exporter', 'ruby', 'exporter', 'md', 'opentelemetry-ruby');
 
-// scanByLanguage('instrumentation', 'erlang', 'instrumentation');
+scanByLanguage('instrumentation', 'erlang', 'instrumentation');
 
-// scanByLanguage('instrumentation', 'python', 'instrumentation', 'rst');
-// scanByLanguage('exporter', 'python', 'exporter', 'rst', 'opentelemetry-python');
+scanByLanguage('instrumentation', 'python', 'instrumentation', 'rst');
+scanByLanguage('exporter', 'python', 'exporter', 'rst', 'opentelemetry-python');
 
 
-scanByLanguage('instrumentation', 'java', 'instrumentation', 'md', 'opentelemetry-java-instrumentation')
+scanByLanguage('instrumentation', 'java', 'instrumentation', 'md', 'opentelemetry-java-instrumentation');
 
-/*[
+[
     ['instrumentation', 'opentelemetry-dotnet'],
     ['instrumentation', 'opentelemetry-dotnet-contrib'],
     ['exporter', 'opentelemetry-dotnet'],
@@ -73,7 +73,7 @@ scanByLanguage('instrumentation', 'java', 'instrumentation', 'md', 'opentelemetr
         (item) => item.name.toLowerCase().includes(registryType), 
         (name) => name.split(".").splice(2,3).join('').toLowerCase()
     )
-})*/
+})
 
 async function scanForNew(path, repo, filter = () => true, keyMapper = x => x, owner = 'open-telemetry') {
     const result = await octokit.request('GET /repos/{owner}/{repo}/contents/{path}', {
