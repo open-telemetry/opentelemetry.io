@@ -263,7 +263,7 @@ of HTTP header names via the environment variables
 ```console
 $ export OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_REQUEST="Accept-Encoding,User-Agent,Referer"
 $ export OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_RESPONSE="Last-Modified,Content-Type"
-$ opentelemetry-instrument --traces_exporter console python app.py
+$ opentelemetry-instrument --traces_exporter console --metrics_exporter console python app.py
 ```
 
 These configuration options are supported by the following HTTP instrumentations:
