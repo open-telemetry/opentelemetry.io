@@ -1,9 +1,8 @@
 ---
 title: "End User Discussion Group: New APAC Sessions Announcement!"
 linkTitle: APAC End User Discussion Group
-date: 2022-12-01
+date: 2022-12-06
 author: "[Reese Lee](https://github.com/reese-lee)"
-draft: true 
 ---
 
 Since July, end users have been getting together to discuss their OpenTelemetry 
