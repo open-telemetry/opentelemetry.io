@@ -2,7 +2,7 @@
 
 <div class="o-banner">
 
-<i class="fas fa-bullhorn"></i> [OpenTelemetry Demo now Generally Available!](/blog/2022/announcing-opentelemetry-demo-release/)
+<i class="fas fa-bullhorn"></i> [End User Discussion Group: New APAC Sessions Announcement!](/blog/2022/end-user-discussion-group-apac/)
 
 </div>
 {{ end -}}
