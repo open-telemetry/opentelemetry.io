@@ -13,9 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import  { promises as fs} from 'fs'
+import process from 'process'
+import path from 'path'
+import { promises as fs} from 'fs'
 import { Octokit } from "@octokit/rest";
 import { URL } from 'url';
+import fetch from 'node-fetch';
+import { load as cheerioLoad } from 'cheerio';
 
 // Before running this script set the GITHUB_AUTH_TOKEN as an environment variable,
 // e.g.
@@ -42,37 +46,118 @@ const ignoreList = [
     'instrumentation-java-resources.md'
 ];
 
-// Please uncomment the entries you'd like to scan for.
-['receiver','exporter','processor', 'extension'].forEach(async (component) => scanCollectorComponent(component));
+if(process.argv.length < 3) {
+    console.log(
+`USAGE: ${path.basename(process.argv[0])} ${path.basename(process.argv[1])} <list>
+    <list> is a comma separated list of the following options: 
+        - collector
+        - python
+        - ruby
+        - erlang
+        - java
+        - js
+        - dotnet
+    Use 'all' if you want to run all of them.
+    
+    Example: ${path.basename(process.argv[0])} ${path.basename(process.argv[1])} python,ruby,erlang`
+)
+    process.exit()
+}
 
-scanByLanguage('instrumentation', 'js', 'plugins/node');
+const selection = process.argv[2].split(',').map(x => x.trim())
 
-scanByLanguage('instrumentation', 'ruby');
-scanByLanguage('exporter', 'ruby', 'exporter', 'md', 'opentelemetry-ruby');
+const scanners = {
+    collector: () => {
+        ['receiver','exporter','processor', 'extension'].forEach(async (component) => scanCollectorComponent(component));
+    },
+    js: () => {
 
-scanByLanguage('instrumentation', 'erlang', 'instrumentation');
+        scanByLanguage('instrumentation', 'js', 'plugins/node');
+    },
+    java: () => {
+        scanByLanguage('instrumentation', 'java', 'instrumentation', 'md', 'opentelemetry-java-instrumentation');
+    },
+    ruby: () => {
+        scanByLanguage('instrumentation', 'ruby');
+        scanByLanguage('exporter', 'ruby', 'exporter', 'md', 'opentelemetry-ruby');
+    },
+    erlang: () => {
 
-scanByLanguage('instrumentation', 'python', 'instrumentation', 'rst');
-scanByLanguage('exporter', 'python', 'exporter', 'rst', 'opentelemetry-python');
+        scanByLanguage('instrumentation', 'erlang', 'instrumentation');
+    },
+    python: () => {
+        scanByLanguage('instrumentation', 'python', 'instrumentation', 'rst');
+        scanByLanguage('exporter', 'python', 'exporter', 'rst', 'opentelemetry-python');
+    },
+    dotnet: () => {
+        [
+            ['instrumentation', 'opentelemetry-dotnet'],
+            ['instrumentation', 'opentelemetry-dotnet-contrib'],
+            ['exporter', 'opentelemetry-dotnet'],
+            ['exporter', 'opentelemetry-dotnet-contrib']
+        ].forEach(async ([registryType, repo]) => {
+            scanByLanguage(
+                registryType, 
+                'dotnet', 
+                'src', 
+                'md', 
+                repo, 
+                (item) => item.name.toLowerCase().includes(registryType), 
+                (name) => name.split(".").splice(2,3).join('').toLowerCase()
+            )
+        })
+    },
+    go: async () => {
+        const response = await (await fetch('https://pkg.go.dev/search?limit=100&m=package&q=go.opentelemetry.io%2Fcontrib%2Finstrumentation')).text()
+        const $ = cheerioLoad(response)
 
+        const items = []
 
-scanByLanguage('instrumentation', 'java', 'instrumentation', 'md', 'opentelemetry-java-instrumentation');
+        $('.SearchSnippet').each((i, elem) => {
+            const [title, url] = $(elem).find('h2').text().trim('\n').split('\n').map(e => e.trim())
+            const description = $(elem).find('.SearchSnippet-synopsis').text().trim()
 
-[
-    ['instrumentation', 'opentelemetry-dotnet'],
-    ['instrumentation', 'opentelemetry-dotnet-contrib'],
-    ['exporter', 'opentelemetry-dotnet'],
-    ['exporter', 'opentelemetry-dotnet-contrib']
-].forEach(async ([registryType, repo]) => {
-    scanByLanguage(
-        registryType, 
-        'dotnet', 
-        'src', 
-        'md', 
-        repo, 
-        (item) => item.name.toLowerCase().includes(registryType), 
-        (name) => name.split(".").splice(2,3).join('').toLowerCase()
-    )
+            items.push({
+                title,
+                description,
+                url: 'https://' + url.substring(1,url.length-1)
+            })
+        })
+
+        const found = items.filter(item => {
+            return typeof items.find(otherItem => {
+                return item.url != otherItem.url && item.url.includes(otherItem.url)
+            }) === 'undefined'
+        })
+        const existing = await scanForExisting(`instrumentation-go`)
+
+        const language = 'go'
+        const registryType = 'instrumentation'
+
+        found.forEach(async (current) => {
+            // Check if the entry does not exist already and create it if needed.
+            if(!Object.keys(existing).includes(current.title)) {
+                const md = createMarkDown(current.title, current.title, language, registryType, current.url, current.description)
+                const fileName = `${registryType}-${language}-${current.title}.md`
+                if (!ignoreList.includes(fileName)) {
+                    await fs.writeFile(fileName, md)
+                }
+            }
+        })
+    },
+    all: () => {
+        scanners.collector()
+        scanners.js()
+        scanners.java()
+        scanners.ruby()
+        scanners.erlang()
+        scanners.python()
+        scanners.dotnet()
+    }
+}
+
+selection.forEach(selected => {
+    scanners[selected]()
 })
 
 async function scanForNew(path, repo, filter = () => true, keyMapper = x => x, owner = 'open-telemetry') {
@@ -177,7 +262,7 @@ async function scanByLanguage(
         readmeFormat = 'md', 
         repo = `opentelemetry-${language}-contrib`,
         filter = () => true,
-        keyMapper = x => x.split(/[_-]/).filter(y => !['opentelemetry', 'instrumentation'].includes(y) && !y.match(/^[0-9]+.[0-9]+$/)).join(''),
+        keyMapper = x => x.split(/[_-]/).filter(y => !['opentelemetry', registryType].includes(y) && !y.match(/^[0-9]+.[0-9]+$/)).join(''),
     ) {
     // https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/
     const found = await scanForNew(path, repo, filter, keyMapper)

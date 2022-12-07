@@ -4,6 +4,8 @@
   },
   "dependencies": {
     "@octokit/rest": "^19.0.5",
-    "marked": "^4.1.1"
+    "cheerio": "^1.0.0-rc.12",
+    "marked": "^4.1.1",
+    "node-fetch": "^3.3.0"
   }
 }
