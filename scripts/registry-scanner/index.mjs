@@ -108,42 +108,7 @@ const scanners = {
         })
     },
     go: async () => {
-        const response = await (await fetch('https://pkg.go.dev/search?limit=100&m=package&q=go.opentelemetry.io%2Fcontrib%2Finstrumentation')).text()
-        const $ = cheerioLoad(response)
-
-        const items = []
-
-        $('.SearchSnippet').each((i, elem) => {
-            const [title, url] = $(elem).find('h2').text().trim('\n').split('\n').map(e => e.trim())
-            const description = $(elem).find('.SearchSnippet-synopsis').text().trim()
-
-            items.push({
-                title,
-                description,
-                url: 'https://' + url.substring(1,url.length-1)
-            })
-        })
-
-        const found = items.filter(item => {
-            return typeof items.find(otherItem => {
-                return item.url != otherItem.url && item.url.includes(otherItem.url)
-            }) === 'undefined'
-        })
-        const existing = await scanForExisting(`instrumentation-go`)
-
-        const language = 'go'
-        const registryType = 'instrumentation'
-
-        found.forEach(async (current) => {
-            // Check if the entry does not exist already and create it if needed.
-            if(!Object.keys(existing).includes(current.title)) {
-                const md = createMarkDown(current.title, current.title, language, registryType, current.url, current.description)
-                const fileName = `${registryType}-${language}-${current.title}.md`
-                if (!ignoreList.includes(fileName)) {
-                    await fs.writeFile(fileName, md)
-                }
-            }
-        })
+        scanForGo()
     },
     all: () => {
         scanners.collector()
@@ -287,3 +252,41 @@ async function scanCollectorComponent(component) {
     })
 }
 
+async function scanForGo() {
+    const response = await (await fetch('https://pkg.go.dev/search?limit=100&m=package&q=go.opentelemetry.io%2Fcontrib%2Finstrumentation')).text()
+        const $ = cheerioLoad(response)
+
+        const items = []
+
+        $('.SearchSnippet').each((i, elem) => {
+            const [title, url] = $(elem).find('h2').text().trim('\n').split('\n').map(e => e.trim())
+            const description = $(elem).find('.SearchSnippet-synopsis').text().trim()
+
+            items.push({
+                title,
+                description,
+                url: 'https://' + url.substring(1,url.length-1)
+            })
+        })
+
+        const found = items.filter(item => {
+            return typeof items.find(otherItem => {
+                return item.url != otherItem.url && item.url.includes(otherItem.url)
+            }) === 'undefined'
+        })
+        const existing = await scanForExisting(`instrumentation-go`)
+
+        const language = 'go'
+        const registryType = 'instrumentation'
+
+        found.forEach(async (current) => {
+            // Check if the entry does not exist already and create it if needed.
+            if(!Object.keys(existing).includes(current.title)) {
+                const md = createMarkDown(current.title, current.title, language, registryType, current.url, current.description)
+                const fileName = `${registryType}-${language}-${current.title}.md`
+                if (!ignoreList.includes(fileName)) {
+                    await fs.writeFile(fileName, md)
+                }
+            }
+        })
+}
