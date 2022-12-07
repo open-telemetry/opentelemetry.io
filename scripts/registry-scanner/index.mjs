@@ -71,8 +71,8 @@ const scanners = {
         ['receiver','exporter','processor', 'extension'].forEach(async (component) => scanCollectorComponent(component));
     },
     js: () => {
-
         scanByLanguage('instrumentation', 'js', 'plugins/node');
+        scanByLanguage('resource-detector', 'js', 'detectors/node', 'resource-detector');
     },
     java: () => {
         scanByLanguage('instrumentation', 'java', 'instrumentation', 'md', 'opentelemetry-java-instrumentation');
