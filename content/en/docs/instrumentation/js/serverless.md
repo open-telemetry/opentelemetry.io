@@ -173,3 +173,120 @@ function.
 
 You should now be able to view traces produced by OpenTelemetry from your Lambda
 function in the backend!
+
+## GCP function
+
+This example shows how to instrument [http triggered function](https://cloud.google.com/functions/docs/writing/write-http-functions) using GCP UI.
+
+### Creating function
+
+Login to GCP selecting the project where your function should be placed. From serverless select Cloud Functions. Select create function and select environment. This example has been implemented using second generation. 
+
+### Setup environment variable for otelwrapper 
+
+Add following runtime environment variable NODE_OPTIONS and provide value 
+
+```shell
+--require ./otelwrapper.js
+```
+
+### Select runtime
+This demonstration used node.js 16.
+
+### Establish otel wrapper
+```javascript
+/* otelwrapper.js */
+
+const { Resource } = require('@opentelemetry/resources');
+const { SemanticResourceAttributes } = require ('@opentelemetry/semantic-conventions');
+
+
+const api = require("@opentelemetry/api");
+const { BatchSpanProcessor } = require("@opentelemetry/sdk-trace-base");
+const {
+  OTLPTraceExporter,
+} = require("@opentelemetry/exporter-trace-otlp-http");
+const { NodeTracerProvider } = require("@opentelemetry/sdk-trace-node");
+const { registerInstrumentations } = require("@opentelemetry/instrumentation");
+const {
+  getNodeAutoInstrumentations,
+} = require("@opentelemetry/auto-instrumentations-node");
+
+const providerConfig = {
+  resource: new Resource({
+      [SemanticResourceAttributes.SERVICE_NAME]: "<your function name>",
+  }),
+};
+
+api.diag.setLogger(new api.DiagConsoleLogger(), api.DiagLogLevel.ALL);
+
+const provider = new NodeTracerProvider(providerConfig);
+const collectorOptions = {
+  url: "<address for your backend>",
+};
+
+const spanProcessor = new BatchSpanProcessor(
+  new OTLPTraceExporter(collectorOptions)
+);
+
+provider.addSpanProcessor(spanProcessor);
+provider.register();
+
+registerInstrumentations({
+  instrumentations: [
+    getNodeAutoInstrumentations(),
+  ],
+});
+```
+
+### Establish package.json
+Add following content to default package.json
+
+```json
+{
+  "dependencies": {
+    "@google-cloud/functions-framework": "^3.0.0",
+    "@opentelemetry/api": "^1.3.0",
+    "@opentelemetry/auto-instrumentations-node": "^0.35.0",
+    "@opentelemetry/exporter-trace-otlp-http": "^0.34.0",
+    "@opentelemetry/instrumentation": "^0.34.0",
+    "@opentelemetry/sdk-node": "^0.34.0",
+    "@opentelemetry/sdk-trace-base": "^1.8.0",
+    "@opentelemetry/sdk-trace-node": "^1.8.0",
+    "@opentelemetry/resources": "^1.8.0",
+    "@opentelemetry/semantic-conventions": "^1.8.0"
+  }
+}
+```
+
+### Add HTTP call to function
+Below code makes call to OpenTemetry web site to demonstrate traffic
+
+```javascript
+const functions = require('@google-cloud/functions-framework');
+const https = require('https');
+
+functions.http('helloHttp', (req, res) => {
+
+    let url = "https://opentelemetry.io/";
+    https.get(url, (response) => {
+           res.send(`Response ${response.body}!`);
+      }).on('error', (e) => {
+           res.send(`Error ${e}!`);
+    })
+});
+```
+
+
+### Backend
+If you run Otel collector in GCP VM you are likely to need to create VPC access connector to be able to send traces.
+
+### Deploy
+Select Deploy in UI and await deployment to be ready.
+
+### Testing
+You can test the function using cloud shell from test tab.
+
+
+
+
