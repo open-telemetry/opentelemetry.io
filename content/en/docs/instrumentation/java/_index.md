@@ -7,7 +7,7 @@ description: >-
   A language-specific implementation of OpenTelemetry in Java.
 aliases: [/java, /java/metrics, /java/tracing]
 weight: 18
-javaVersion: 1.20.1
+javaVersion: 1.21.0
 ---
 
 {{% lang_instrumentation_index_head "java" /%}}
