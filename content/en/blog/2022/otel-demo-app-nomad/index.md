@@ -9,7 +9,7 @@ draft: true
 
 ## Running the OpenTelemetry Demo App on Nomad
 
-![Toronto city scape from the air](toronto-cityscape.png "Toronto city scape from the air")
+![Toronto city scape from the air](toronto-cityscape.jpg "Toronto city scape from the air")
 
 Y’all...I’m so excited, because I finally got to work on an item on my tech
 bucket list. Last week, I began the process of translating
@@ -379,5 +379,5 @@ Have questions about the OTel Demo App on Nomad? Feel free to connect through
 ---
 
 The OpenTelemetry community is always looking for contributions!
-[Join us](https://opentelemetry.io/community/)! If you're on Mastodon, be sure
+[Join us](https://github.com/open-telemetry/community)! If you're on Mastodon, be sure
 to follow [OpenTelemetry on Mastodon](https://fosstodon.org/@opentelemetry)
