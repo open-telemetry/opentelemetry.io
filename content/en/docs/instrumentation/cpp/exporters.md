@@ -15,8 +15,11 @@ The OStream exporter is useful for development and debugging tasks, and is the
 simplest to set up.
 
 ```cpp
-auto ostream_exporter =
-    std::unique_ptr<opentelemetry::sdk::trace::SpanExporter>(new opentelemetry::exporter::trace::OStreamSpanExporter);
+#include "opentelemetry/exporters/ostream/span_exporter_factory.h"
+
+namespace trace_exporter = opentelemetry::exporter::trace;
+
+auto exporter = trace_exporter::OStreamSpanExporterFactory::Create();
 ```
 
 ### OTLP endpoint
@@ -27,21 +30,31 @@ Jaeger) you'll want to configure an OTLP exporter that sends to your endpoint.
 #### OTLP HTTP Exporter
 
 ```cpp
-opentelemetry::exporter::otlp::OtlpHttpExporterOptions opts;
+#include "opentelemetry/exporters/otlp/otlp_http_exporter_factory.h"
+#include "opentelemetry/exporters/otlp/otlp_http_exporter_options.h"
+
+namespace otlp = opentelemetry::exporter::otlp;
+
+otlp::OtlpHttpExporterOptions opts;
 opts.url = "http://localhost:4318/v1/traces";
-auto otlp_http_exporter =
-    std::unique_ptr<opentelemetry::sdk::trace::SpanExporter>(new opentelemetry::exporter::otlp::OtlpHttpExporter(opts));
+
+auto exporter = otlp::OtlpHttpExporterFactory::Create(opts);
 ```
 
 #### OTLP GRPC Exporter
 
 ```cpp
-opentelemetry::exporter::otlp::OtlpGrpcExporterOptions opts;
+#include "opentelemetry/exporters/otlp/otlp_grpc_exporter_factory.h"
+#include "opentelemetry/exporters/otlp/otlp_grpc_exporter_options.h"
+
+namespace otlp = opentelemetry::exporter::otlp;
+
+otlp::OtlpGrpcExporterOptions opts;
 opts.endpoint = "localhost:4317";
 opts.use_ssl_credentials = true;
 opts.ssl_credentials_cacert_as_string = "ssl-certificate";
-auto otlp_grpc_exporter =
-    std::unique_ptr<opentelemetry::sdk::trace::SpanExporter>(new opentelemetry::exporter::otlp::OtlpGrpcExporter(opts));
+
+auto exporter = otlp::OtlpGrpcExporterFactory::Create(opts);
 ```
 
 You can find an example of how to use the OTLP exporter
@@ -76,12 +89,61 @@ To send trace data to a zipkin endpoint you'll want to configure a zipkin
 exporter that sends to your endpoint.
 
 ```cpp
-opentelemetry::exporter::zipkin::ZipkinExporterOptions opts;
+#include "opentelemetry/exporters/zipkin/zipkin_exporter_factory.h"
+#include "opentelemetry/exporters/zipkin/zipkin_exporter_options.h"
+
+namespace zipkin = opentelemetry::exporter::zipkin;
+
+zipkin::ZipkinExporterOptions opts;
 opts.endpoint = "http://localhost:9411/api/v2/spans" ; // or export OTEL_EXPORTER_ZIPKIN_ENDPOINT="..."
 opts.service_name = "default_service" ;
-auto zipkin_exporter =
-    std::unique_ptr<opentelemetry::sdk::trace::SpanExporter>(new opentelemetry::exporter::zipkin::ZipkinExporter(opts));
 
+auto exporter = zipkin::ZipkinExporterFactory::Create(opts);
+```
+
+## Trace processors
+
+### Simple span processor
+
+A simple processor will send spans one by one to an exporter.
+
+```cpp
+#include "opentelemetry/sdk/trace/simple_processor_factory.h"
+
+namespace trace_sdk = opentelemetry::sdk::trace;
+
+auto processor = trace_sdk::SimpleSpanProcessorFactory::Create(std::move(exporter));
+```
+
+### Batch span processor
+
+A batch span processor will group several spans together, before sending
+them to an exporter.
+
+```cpp
+#include "opentelemetry/sdk/trace/batch_span_processor_factory.h"
+#include "opentelemetry/sdk/trace/batch_span_processor_options.h"
+
+namespace trace_sdk = opentelemetry::sdk::trace;
+
+trace_sdk::BatchSpanProcessorOptions opts;
+opts.max_queue_size = 2048;
+opts.max_export_batch_size = 512;
+
+auto processor = trace_sdk::BatchSpanProcessorFactory::Create(std::move(exporter), opts);
+```
+
+## Tracer provider
+
+```cpp
+#include "opentelemetry/sdk/trace/tracer_provider_factory.h"
+
+namespace trace_api = opentelemetry::trace;
+namespace trace_sdk = opentelemetry::sdk::trace;
+
+auto provider = trace_sdk::TracerProviderFactory::Create(std::move(processor));
+
+trace_api::Provider::SetTracerProvider(provider);
 ```
 
 ## Metrics exporters
