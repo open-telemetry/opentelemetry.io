@@ -140,7 +140,7 @@ Next, let’s enable
 [Memory Oversubscription](https://developer.hashicorp.com/nomad/docs/commands/operator/scheduler/set-config#memory-oversubscription)
 in Nomad. This is a one-time setting.
 
-```
+```shell
 nomad operator scheduler set-config -memory-oversubscription true
 ```
 
