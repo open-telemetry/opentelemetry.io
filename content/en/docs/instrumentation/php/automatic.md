@@ -92,8 +92,8 @@ $tracerProvider = $instrumentation->tracer();
 
 ## Supported libraries and frameworks
 
-Auto-instrumentation has support for a number of existing PHP libraries.
-For the full list, see [auto-instrumentation packages](https://packagist.org/search/?query=open-telemetry&tags=instrumentation).
+Automatic Instrumentation comes with a number of instrumentation libraries for commonly used PHP libraries.
+For the full list, see [instrumentation libraries on packagist](https://packagist.org/search/?query=open-telemetry&tags=instrumentation).
 
 ## Next steps
 
