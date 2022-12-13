@@ -164,7 +164,7 @@ setting.
 
 Next, let’s deploy the services:
 
-```
+```shell
 nomad job run -detach otel-demo-app/jobspec/traefik.nomad
 nomad job run -detach otel-demo-app/jobspec/redis.nomad
 nomad job run -detach otel-demo-app/jobspec/ffspostgres.nomad
