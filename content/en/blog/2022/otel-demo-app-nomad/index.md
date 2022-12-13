@@ -4,7 +4,6 @@ linkTitle: OTel Demo App on Nomad
 date: 2022-12-12
 author: >-
   [Adriana Villela](https://github.com/avillela) (Lightstep)
-draft: true
 ---
 
 ## Running the OpenTelemetry Demo App on Nomad
