@@ -131,7 +131,7 @@ We’re finally ready to deploy the OTel Demo App!
 
 First, let’s clone the repo, and go to our working directory:
 
-```
+```shell
 git clone https://github.com/avillela/nomad-conversions.git
 cd nomad-conversions
 ```
