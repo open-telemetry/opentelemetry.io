@@ -11,7 +11,7 @@ draft: true
 
 ![Toronto city scape from the air](toronto-cityscape.jpg "Toronto city scape from the air")
 
-Y’all...I’m so excited, because I finally got to work on an item on my tech
+Y’all… I’m so excited, because I finally got to work on an item on my tech
 bucket list. Last week, I began the process of translating
 [OpenTelemetry (OTel) Demo App](https://github.com/open-telemetry/opentelemetry-demo)’s
 [Helm Charts](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-demo)
