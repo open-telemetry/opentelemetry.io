@@ -282,7 +282,7 @@ functions.http('helloHttp', (req, res) => {
 
 
 ### Backend
-If you run Otel collector in GCP VM you are likely to need to create VPC access connector to be able to send traces.
+If you run OTel collector in GCP VM you are likely to need to create VPC access connector to be able to send traces.
 
 ### Deploy
 Select Deploy in UI and await deployment to be ready.
