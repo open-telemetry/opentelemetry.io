@@ -1,10 +1,43 @@
 ---
 title: Automatic Instrumentation
 linkTitle: Automatic
+weight: 2
 ---
 
-Automatic instrumentation with PHP requires at least PHP 8.0, and [an extension](https://github.com/open-telemetry/opentelemetry-php-instrumentation).
+Automatic instrumentation with PHP requires at least PHP 8.0, and [the opentelemetry PHP extension](https://github.com/open-telemetry/opentelemetry-php-instrumentation).
 The extension allows developers code to hook into classes and methods, and execute userland code before and after.
+
+## Example
+```php
+<?php
+OpenTelemetry\Instrumentation\hook(
+    'class': DemoClass::class,
+    'function': 'run',
+    'pre': static function (DemoClass $demo, array $params, string $class, string $function, ?string $filename, ?int $lineno) use ($tracer) {
+        static $instrumentation;
+        $instrumentation ??= new CachedInstrumentation('example');
+        $instrumentation->tracer()->spanBuilder($class)
+            ->startSpan()
+            ->activate();
+    },
+    'post': static function (DemoClass $demo, array $params, $returnValue, ?Throwable $exception) use ($tracer) {
+        $scope = Context::storage()->scope();
+        $scope->detach();
+        $span = Span::fromContext($scope->context());
+        if ($exception) {
+            $span->recordException($exception);
+            $span->setStatus(StatusCode::STATUS_ERROR);
+        }
+        $span->end();
+    }
+);
+
+$demo = new DemoClass();
+$demo->run();
+```
+
+Here, we provide 'pre' and 'post' functions, which are executed before and after `DemoClass::run`. The `pre` function starts and activates a
+span, and the `post` function ends it.
 
 ## Setup
 
@@ -51,7 +84,10 @@ OpenTelemetry\API\Common\Instrumentation\Globals::registerInitializer(function (
 });
 
 //auto-instrumentation packages can now access the configured providers (or a no-op implementation) via `Globals` 
-$tracerProvider = Globals::tracerProvider();
+$tracer = Globals::tracerProvider()->getTracer('example');
+//or, via CachedInstrumentation
+$instrumentation = new CachedInstrumentation('example');
+$tracerProvider = $instrumentation->tracer();
 ```
 
 ## Supported libraries and frameworks
@@ -62,5 +98,4 @@ For the full list, see [auto-instrumentation packages](https://packagist.org/sea
 ## Next steps
 
 After you have automatic instrumentation configured for your app or service, you
-might want to add [manual
-instrumentation](../manual) to collect custom telemetry data.
+might want to add [manual instrumentation](../manual) to collect custom telemetry data.

@@ -1,6 +1,7 @@
 ---
 title: Manual Instrumentation
 linkTitle: Manual
+weight: 3
 ---
 
 **Libraries** that want to export telemetry data using OpenTelemetry MUST only
@@ -97,7 +98,7 @@ only need to specify the name of the span. The start and end time of the span is
 automatically set by the OpenTelemetry SDK.
 
 ```php
-$span = $tracer->spanBuilder("my span").startSpan();
+$span = $tracer->spanBuilder("my span")->startSpan();
 
 // Make the span the current span
 try {
@@ -124,7 +125,7 @@ following way:
 
 ```php
 
-  $parentSpan = $tracer->spanBuilder("parent").startSpan();
+  $parentSpan = $tracer->spanBuilder("parent")->startSpan();
   $scope = $parentSpan->activate();
   try {
     $child = $tracer->spanBuilder("child")->startSpan();
@@ -198,7 +199,7 @@ batched operations where a Span was initiated by multiple initiating Spans, each
 representing a single incoming item being processed in the batch.
 
 ```php
-$span = $tracer->spanBuilder("childWithLink")
+$span = $tracer->spanBuilder("span-with-links")
         ->addLink($parentSpan1->getContext())
         ->addLink($parentSpan2->getContext())
         ->addLink($parentSpan3->getContext())
@@ -209,7 +210,7 @@ $span = $tracer->spanBuilder("childWithLink")
 For more details how to read context from remote processes, see
 [Context Propagation](#context-propagation).
 
-### Set span status
+### Set span status and record exceptions
 
 A [status](/docs/concepts/signals/traces/#span-status) can be set on a
 [span](/docs/concepts/signals/traces/#spans-in-opentelemetry), typically used to
@@ -217,44 +218,25 @@ specify that a span has not completed successfully - `SpanStatus::ERROR`. In rar
 scenarios, you could override the `Error` status with `Ok`, but don't set `Ok`
 on successfully-completed spans.
 
+It can be a good idea to record exceptions when they happen. It's recommended to
+do this in conjunction with setting span status.
+
 The status can be set at any time before the span is finished:
 
 ```php
-$span = $tracer->spanBuilder("my span")->startSpan();
-// put the span into the current Context
+$span = $tracer->spanBuilder("my-span")->startSpan();
 $scope = $span->activate();
 try {
   // do something
 } catch (Throwable $t) {
-  $span->setStatus(StatusCode.ERROR, "Something bad happened!");
+  $span->setStatus(StatusCode::STATUS_ERROR, "Something bad happened!");
+  $span->recordException($t); //This will capture things like the current stack trace in the span.
   throw $t;
 } finally {
-  $span->end(); // Cannot set a span after this call
+  $span->end(); // Cannot modify span after this call
   $scope->detach();
 }
 ```
-
-### Record exceptions in spans
-
-It can be a good idea to record exceptions when they happen. It's recommended to
-do this in conjunction with setting [span status](#set-span-status).
-
-```php
-$span = $tracer->spanBuilder("my span").startSpan();
-// put the span into the current Context
-$scope = $span->activate();
-try {
-  // do something
-} catch (Throwable $throwable) {
-  $span->setStatus(StatusCode::ERROR, "Something bad happened!");
-  $span->recordException($throwable)
-} finally {
-  $span.end(); // Cannot set a span after this call
-  $scope->detach();
-}
-```
-
-This will capture things like the current stack trace in the span.
 
 ### Context Propagation
 
@@ -265,9 +247,9 @@ HTTP headers.
 The following presents an example of an outgoing HTTP request:
 
 ```php
-$request = new Request('http://localhost:8080/resource');
+$request = new Request('GET', 'http://localhost:8080/resource');
 $outgoing = $tracer->spanBuilder('/resource')->setSpanKind(SpanKind::CLIENT)->startSpan();
-$outgoing->setAttribute(TraceAttributes::HTTP_METHOD, 'GET');
+$outgoing->setAttribute(TraceAttributes::HTTP_METHOD, $request->getMethod());
 $outgoing->setAttribute(TraceAttributes::HTTP_URL, (string) $request->getUri());
 
 $carrier = [];
@@ -325,11 +307,11 @@ Additional samplers can be provided by implementing
 
 ```php
 $tracerProvider = TracerProvider::builder()
-  ->setSampler(Sampler.alwaysOn())
+  ->setSampler(new AlwaysOnSampler())
   //or
-  ->setSampler(Sampler.alwaysOff())
+  ->setSampler(new AlwaysOffSampler())
   //or
-  ->setSampler(Sampler.traceIdRatioBased(0.5))
+  ->setSampler(new TraceIdRatioBasedSampler(0.5))
   ->build();
 ```
 
@@ -341,8 +323,8 @@ the `BatchSpanProcessor` batches them and sends them in bulk.
 
 ```php
 $tracerProvider = TracerProvider::builder()
-  ->addSpanProcessor(SimpleSpanProcessor.create(new ConsoleSpanExporterFactory()->create()))
-  .build();
+  ->addSpanProcessor(new SimpleSpanProcessor(new ConsoleSpanExporterFactory()->create()))
+  ->build();
 ```
 
 #### Transports
@@ -365,7 +347,7 @@ sending the telemetry data to a particular backend:
   Zipkin backend via the Zipkin APIs.
 - Logging Exporter: saves the telemetry data into log streams.
 - `NewRelic`: sends the collected telemetry data to NewRelic
-- OpenTelemetry Protocol Exporter: sends the data in OTLP to the
+- OpenTelemetry Protocol Exporter: sends the data in OTLP format to the
   [OpenTelemetry Collector] or other OTLP receivers. The underlying `Transport`
   can send:
   * protobuf over http

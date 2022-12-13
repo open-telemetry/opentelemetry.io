@@ -2,6 +2,7 @@
 title: Getting Started
 description: Get up and running with OpenTelemetry for PHP.
 aliases: [/docs/instrumentation/php/getting_started]
+weight: 1
 ---
 
 ## Setup
@@ -176,7 +177,7 @@ use OpenTelemetry\SDK\Trace\SpanExporter\ConsoleSpanExporter;
 use OpenTelemetry\SDK\Trace\SpanProcessor\SimpleSpanProcessor;
 use OpenTelemetry\SDK\Trace\TracerProvider;
 
-echo 'Starting OtlpHttpExporter' . PHP_EOL;
+echo 'Starting OTLP/http Exporter' . PHP_EOL;
 
 $transport = (new OtlpHttpTransportFactory())->create('http://collector:4318/v1/traces', 'application/x-protobuf');
 $exporter = new SpanExporter($transport);
@@ -217,4 +218,4 @@ Starting OtlpHttpExporter
 OpenTelemetry welcomes PHP
 ```
 
-Now, telemetry will be output by the collector process.
+Now, telemetry will be exported to the collector process.
