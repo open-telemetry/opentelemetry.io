@@ -121,7 +121,7 @@ and the
 If you need to SSH into HashiQube, open up a new terminal window on your host
 machine and run the following command:
 
-```
+```shell
 vagrant ssh
 ```
 
