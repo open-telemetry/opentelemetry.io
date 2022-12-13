@@ -227,7 +227,7 @@ this:
 
 ![Screen capture of jobs view in Nomad, with all jobs started](nomad-started.png "Screen capture of jobs view in Nomad, with all jobs started")
 
-You can also head on over to Consul at `http://localhost:8500` to see the health
+You can also head on over to Consul at [http://localhost:8500](http://localhost:8500) to see the health
 of the services:
 
 ![Screen capture of Consul service health. All services healthy.](consul-service-health.png "Screen capture of Consul service health. All services healthy.")
