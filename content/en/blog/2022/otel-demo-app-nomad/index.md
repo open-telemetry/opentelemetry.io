@@ -212,7 +212,7 @@ A reminder that the `Evaluation ID` values will be different on your machine.
 #### 4- See it in Nomad!
 
 As things are deploying, you can mozy on over to the Nomad UI at
-`http://localhost:4646` to see how things are coming along:
+[http://localhost:4646](http://localhost:4646) to see how things are coming along:
 
 ![Screen capture of jobs view in Nomad. Some jobs have started, and others are still starting up.](nomad-jobs-startup.png "Screen capture of jobs view in Nomad. Some jobs have started, and others are still starting up")
 
