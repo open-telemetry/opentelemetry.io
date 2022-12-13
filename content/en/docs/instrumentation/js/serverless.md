@@ -194,6 +194,9 @@ Add following runtime environment variable NODE_OPTIONS and provide value
 This demonstration used node.js 16.
 
 ### Establish otel wrapper
+
+Create a new file called `otelwrapper.js`, that will be used to instrument your service. Please make sure that you provide a `SERVICE_NAME` and that you set the `<address for your backend>`
+
 ```javascript
 /* otelwrapper.js */
 
