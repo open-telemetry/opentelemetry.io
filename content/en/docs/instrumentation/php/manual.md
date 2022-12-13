@@ -1,11 +1,6 @@
 ---
 title: Manual Instrumentation
 linkTitle: Manual
-aliases:
-- /docs/php/getting_started
-- /docs/php/manual_instrumentation
-- /docs/instrumentation/php/manual_instrumentation
-  weight: 5
 ---
 
 **Libraries** that want to export telemetry data using OpenTelemetry MUST only

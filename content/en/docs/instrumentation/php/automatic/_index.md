@@ -1,10 +1,6 @@
 ---
 title: Automatic Instrumentation
 linkTitle: Automatic
-aliases:
-- /docs/php/automatic_instrumentation
-- /docs/instrumentation/php/automatic_instrumentation
-  weight: 3
 ---
 
 Automatic instrumentation with PHP requires at least PHP 8.0, and [an extension](https://github.com/open-telemetry/opentelemetry-php-instrumentation).
@@ -58,7 +54,7 @@ OpenTelemetry\API\Common\Instrumentation\Globals::registerInitializer(function (
 $tracerProvider = Globals::tracerProvider();
 ```
 
-## Supported libraries, frameworks, application services, and JVMs
+## Supported libraries and frameworks
 
 Auto-instrumentation has support for a number of existing PHP libraries.
 For the full list, see [auto-instrumentation packages](https://packagist.org/search/?query=open-telemetry&tags=instrumentation).
