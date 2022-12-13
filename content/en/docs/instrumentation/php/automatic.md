@@ -50,11 +50,11 @@ span, and the `post` function ends it.
    $ php -m | grep  otel_instrumentation
    ```
 
-## Zero-code auto-instrumentation
+## Zero-code configuration for Auto Instrumentation
 
 When used in conjunction with the OpenTelemetry SDK, you can use environment variables or php.ini to configure auto-instrumentation:
 
-```sh
+```console
 OTEL_PHP_AUTOLOAD_ENABLED=true \
 OTEL_SERVICE_NAME=your-service-name \
 OTEL_TRACES_EXPORTER=otlp \
@@ -64,7 +64,7 @@ OTEL_PROPAGATORS=baggage,tracecontext \
 php myapp.php
 ```
 
-## Manual setup for auto-instrumentation
+## Manual setup for Automatic Instrumentation
 
 ```php
 <?php
@@ -83,7 +83,7 @@ OpenTelemetry\API\Common\Instrumentation\Globals::registerInitializer(function (
         ->withPropagator($propagator);
 });
 
-//auto-instrumentation packages can now access the configured providers (or a no-op implementation) via `Globals` 
+//instrumentation libraries can access the configured providers (or a no-op implementation) via `Globals` 
 $tracer = Globals::tracerProvider()->getTracer('example');
 //or, via CachedInstrumentation
 $instrumentation = new CachedInstrumentation('example');

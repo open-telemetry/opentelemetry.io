@@ -346,7 +346,6 @@ sending the telemetry data to a particular backend:
 - `Zipkin`: prepares and sends the collected telemetry data to a
   Zipkin backend via the Zipkin APIs.
 - Logging Exporter: saves the telemetry data into log streams.
-- `NewRelic`: sends the collected telemetry data to NewRelic
 - OpenTelemetry Protocol Exporter: sends the data in OTLP format to the
   [OpenTelemetry Collector] or other OTLP receivers. The underlying `Transport`
   can send:
