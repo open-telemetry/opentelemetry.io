@@ -6,9 +6,6 @@ author: >-
   [Adriana Villela](https://github.com/avillela) (Lightstep)
 ---
 
-
-![Toronto city scape from the air](toronto-cityscape.jpg "Toronto city scape from the air")
-
 Y’all… I’m so excited, because I finally got to work on an item on my tech
 bucket list. Last week, I began the process of translating
 [OpenTelemetry (OTel) Demo App](https://github.com/open-telemetry/opentelemetry-demo)’s
@@ -18,6 +15,8 @@ Today I’ll be talking about how to run the OpenTelemetry Demo App on Nomad,
 using my favorite Hashi-in-a-box tool, [HashiQube](https://rubiksqube.com/#/).
 
 Let’s do this!
+
+![Aerial view of Toronto, Canada at night](toronto-cityscape.jpg "Aerial view of Toronto, Canada at night")
 
 ## Deployment
 
