@@ -1,8 +1,8 @@
 ---
-title: Why and How eBay Pivoted to OpenTelemetry
+title: "Why and How eBay Pivoted to OpenTelemetry"
 linkTitle: eBay OpenTelemetry 
 date: 2022-12-13 
-author: [Vijay Samuel](https://github.com/vjsamuel) (eBay),
+author: "[Vijay Samuel](https://github.com/vjsamuel) (eBay)"
 canonical_url: https://tech.ebayinc.com/engineering/why-and-how-ebay-pivoted-to-opentelemetry/
 ---
 
