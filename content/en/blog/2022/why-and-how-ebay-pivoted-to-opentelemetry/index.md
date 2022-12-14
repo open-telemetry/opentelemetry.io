@@ -1,10 +1,12 @@
 ---
 title: "Why and How eBay Pivoted to OpenTelemetry"
-linkTitle: eBay OpenTelemetry 
-date: 2022-12-13 
+linkTitle: eBay OpenTelemetry
+date: 2022-12-13
 author: "[Vijay Samuel](https://github.com/vjsamuel) (eBay)"
 canonical_url: https://tech.ebayinc.com/engineering/why-and-how-ebay-pivoted-to-opentelemetry/
 ---
+
+_A version of this article was [originally posted][] on the eBay Tech Blog._
 
 eBay makes a crucial pivot to OpenTelemetry to better align with industry
 standards for Observability.
@@ -289,6 +291,23 @@ fruitful collaboration.
 
 ## Conclusion
 
+Over the past five years, we at eBay have encountered several spikes in demand
+that forced us to rethink conventional wisdom. We started off with DaemonSets,
+and saw that it was cost-prohibitive and unreliable at scale. We moved to a
+cluster local model which cut the cost of agents by about 90 percent, but we had
+redundancies in the amount of work being done on the API server and the agents
+themselves. We decoupled the discovery, moved it into a control loop that
+performs scheduling and made the agents into stateless processes that can accept
+scrape targets. Given the growing maturity of OpenTelemetry we pivoted to using
+OpenTelemetry Collector for metrics and are actively working towards doing the
+same for logs. We will continue to learn from running agents at scale and keep
+pivoting as needed. We will continue to work with the OpenTelemetry community as
+it continues to pave the way for standardization within the Observability
+ecosystem. Now that we’re using OpenTelemetry, we can provide our developers
+with an industry-approved open standard to send telemetry into Sherlock.io. As
+the community grows to offer support for newer features like profiling, we will
+adopt them into the platform to benefit our developer community.
+
 ## Credits
 
 A lot of these optimizations/directional changes would not be possible without
@@ -325,3 +344,5 @@ Open Telemetry Collector community:
 - [Anthony Mirabella](https://github.com/Aneurysm9)
 - [Juraci Paixão Kröhling](https://github.com/jpkrohling)
 - [Albert Teoh](https://github.com/albertteoh)
+
+[originally posted]: {{% param canonical_url %}}
