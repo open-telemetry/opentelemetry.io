@@ -6,8 +6,6 @@ author: "[Vijay Samuel](https://github.com/vjsamuel) (eBay)"
 canonical_url: https://tech.ebayinc.com/engineering/why-and-how-ebay-pivoted-to-opentelemetry/
 ---
 
-_A version of this article was [originally posted][] on the eBay Tech Blog._
-
 eBay makes a crucial pivot to OpenTelemetry to better align with industry
 standards for Observability.
 
@@ -58,7 +56,7 @@ variety of instrumentation practices such as (but not limited to):
 
 - Official Prometheus clients (including Java, Go, Python and others)
 - [Micrometer](https://micrometer.io/)
-- OTEL SDK with Prometheus exporter
+- OTel SDK with Prometheus exporter
 - Custom code that emits a Prometheus endpoint when requested
 
 Frameworks offered by eBay’s platform engineering group bake in an
@@ -344,5 +342,7 @@ Open Telemetry Collector community:
 - [Anthony Mirabella](https://github.com/Aneurysm9)
 - [Juraci Paixão Kröhling](https://github.com/jpkrohling)
 - [Albert Teoh](https://github.com/albertteoh)
+
+_A version of this article was [originally posted][] on the eBay Tech Blog._
 
 [originally posted]: {{% param canonical_url %}}
