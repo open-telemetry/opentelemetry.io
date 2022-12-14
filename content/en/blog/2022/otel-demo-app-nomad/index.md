@@ -260,7 +260,7 @@ The services are accessed via the URLs below.
 
 **Webstore:** [http://otel-demo.localhost/](http://otel-demo.localhost/)
 
-![Screen capture of the Demo App Webstore UI](otel-demo-app-ui.png "Screen capture of the Demo App Webstore UI")
+![Screen capture of the Demo App Webstore UI](otel-demo-app-ui.jpg "Screen capture of the Demo App Webstore UI")
 
 Go ahead and explore the amazing selection of telescopes and accessories, and
 buy a few. 😉🔭
