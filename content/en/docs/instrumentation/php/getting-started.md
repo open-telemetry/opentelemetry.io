@@ -2,6 +2,7 @@
 title: Getting Started
 description: Get up and running with OpenTelemetry for PHP.
 aliases: [/docs/instrumentation/php/getting_started]
+weight: 1
 ---
 
 ## Setup
@@ -33,7 +34,7 @@ content:
 declare(strict_types=1);
 require __DIR__ . '/vendor/autoload.php';
 
-use OpenTelemetry\SDK\Trace\SpanExporter\ConsoleSpanExporter;
+use OpenTelemetry\SDK\Trace\SpanExporter\ConsoleSpanExporterFactory;
 use OpenTelemetry\SDK\Trace\SpanProcessor\SimpleSpanProcessor;
 use OpenTelemetry\SDK\Trace\TracerProvider;
 
@@ -41,18 +42,18 @@ echo 'Starting ConsoleSpanExporter' . PHP_EOL;
 
 $tracerProvider =  new TracerProvider(
     new SimpleSpanProcessor(
-        new ConsoleSpanExporter()
+        (new ConsoleSpanExporterFactory())->create()
     )
 );
 
 $tracer = $tracerProvider->getTracer('io.opentelemetry.contrib.php');
 
 $rootSpan = $tracer->spanBuilder('root')->startSpan();
-$rootSpan->activate();
+$rootScope = $rootSpan->activate();
 
 try {
     $span1 = $tracer->spanBuilder('foo')->startSpan();
-    $span1->activate();
+    $scope = $span1->activate();
     try {
         $span2 = $tracer->spanBuilder('bar')->startSpan();
         echo 'OpenTelemetry welcomes PHP' . PHP_EOL;
@@ -61,8 +62,10 @@ try {
     }
 } finally {
     $span1->end();
+    $scope->detach();
 }
 $rootSpan->end();
+$rootScope->detach();
 ```
 
 To use the OpenTelemetry SDK for PHP you need packages that satisfy the
@@ -168,16 +171,20 @@ require __DIR__ . '/vendor/autoload.php';
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\HttpFactory;
+use OpenTelemetry\Contrib\Otlp\OtlpHttpTransportFactory;
+use OpenTelemetry\Contrib\Otlp\SpanExporter;
 use OpenTelemetry\SDK\Trace\SpanExporter\ConsoleSpanExporter;
 use OpenTelemetry\SDK\Trace\SpanProcessor\SimpleSpanProcessor;
-use OpenTelemetry\Contrib\OtlpHttp\Exporter as OtlpHttpExporter;
 use OpenTelemetry\SDK\Trace\TracerProvider;
 
-echo 'Starting OtlpHttpExporter' . PHP_EOL;
+echo 'Starting OTLP/http Exporter' . PHP_EOL;
+
+$transport = (new OtlpHttpTransportFactory())->create('http://collector:4318/v1/traces', 'application/x-protobuf');
+$exporter = new SpanExporter($transport);
 
 $tracerProvider =  new TracerProvider(
     new SimpleSpanProcessor(
-        new OtlpHttpExporter(new Client(), new HttpFactory(), new HttpFactory())
+        $exporter
     )
 );
 
@@ -188,7 +195,7 @@ $rootSpan->activate();
 
 try {
     $span1 = $tracer->spanBuilder('foo')->startSpan();
-    $span1->activate();
+    $scope = $span1->activate();
     try {
         $span2 = $tracer->spanBuilder('bar')->startSpan();
         echo 'OpenTelemetry welcomes PHP' . PHP_EOL;
@@ -197,16 +204,18 @@ try {
     }
 } finally {
     $span1->end();
+    $scope->detach();
 }
 $rootSpan->end();
+$rootScope->detach();
 ```
 
-Set the OTLP endpoint via an environment variable and run the PHP application:
+Run the PHP application:
 
 ```console
-$ env OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318/v1/traces php GettingStarted.php
+$ php GettingStarted.php
 Starting OtlpHttpExporter
 OpenTelemetry welcomes PHP
 ```
 
-Now, telemetry will be output by the collector process.
+Now, telemetry will be exported to the collector process.

@@ -32,8 +32,8 @@ languages:
   php:
     name: PHP
     status:
-      traces: alpha
-      metrics: alpha
+      traces: beta
+      metrics: beta
       logs: not yet implemented
   python:
     name: Python
