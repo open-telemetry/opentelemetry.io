@@ -6,7 +6,6 @@ author: >-
   [Adriana Villela](https://github.com/avillela) (Lightstep)
 ---
 
-## Running the OpenTelemetry Demo App on Nomad
 
 ![Toronto city scape from the air](toronto-cityscape.jpg "Toronto city scape from the air")
 
