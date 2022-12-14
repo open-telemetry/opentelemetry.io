@@ -37,6 +37,7 @@ OpenTelemetry in their commercial products.
 | Logz.io                    | Yes               | No          | [docs.logz.io/...](https://docs.logz.io/shipping/tracing-sources/opentelemetry.html#overview)                                                         |
 | Lumigo                     | Yes               | Yes         | [lumigo.io](https://docs.lumigo.io/docs/opentelemetry)                                                                                                |
 | New Relic                  | No                | Yes         | [newrelic.com/...](https://newrelic.com/solutions/opentelemetry)                                                                                      |
+| observIQ                   | Yes                | Yes         | [observiq.com/...](https://docs.bindplane.observiq.com)                                                                                      |
 | Promscale                  | No                | Yes         | [timescale.com/promscale](https://www.timescale.com/promscale)                                                                                        |
 | Sentry Software            | Yes               | Yes         | [sentrysoftware.com/...](https://www.sentrysoftware.com/products/hardware-sentry-opentelemetry-collector.html)                                        |
 | SigNoz                     | Yes               | Yes         | [signoz.io](https://signoz.io)                                                                                                                        |
