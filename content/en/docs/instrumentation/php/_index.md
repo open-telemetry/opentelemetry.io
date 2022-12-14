@@ -21,4 +21,4 @@ The data (name, status) is located at
 
 - [OpenTelemetry for PHP on GitHub](https://github.com/open-telemetry/opentelemetry-php)
 - [Installation](https://github.com/open-telemetry/opentelemetry-php#installation)
-- [Examples](https://github.com/open-telemetry/opentelemetry-php/examples)
+- [Examples](https://github.com/open-telemetry/opentelemetry-php/tree/main/examples)

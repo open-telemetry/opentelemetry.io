@@ -4,10 +4,13 @@ linkTitle: Automatic
 weight: 2
 ---
 
-Automatic instrumentation with PHP requires at least PHP 8.0, and [the opentelemetry PHP extension](https://github.com/open-telemetry/opentelemetry-php-instrumentation).
-The extension allows developers code to hook into classes and methods, and execute userland code before and after.
+Automatic instrumentation with PHP requires at least PHP 8.0, and
+[the opentelemetry PHP extension](https://github.com/open-telemetry/opentelemetry-php-instrumentation).
+The extension allows developers code to hook into classes and methods,
+and execute userland code before and after.
 
 ## Example
+
 ```php
 <?php
 OpenTelemetry\Instrumentation\hook(
@@ -36,23 +39,28 @@ $demo = new DemoClass();
 $demo->run();
 ```
 
-Here, we provide 'pre' and 'post' functions, which are executed before and after `DemoClass::run`. The `pre` function starts and activates a
-span, and the `post` function ends it.
+Here, we provide `pre` and `post` functions, which are executed before and after
+`DemoClass::run`. The `pre` function starts and activates a span, and the `post`
+function ends it.
 
 ## Setup
 
 1. Install the extension via pickle or [php-extension-installer](https://github.com/mlocati/docker-php-extension-installer):
+
    ```console
    $ install-php-extensions open-telemetry/opentelemetry-php-instrumentation@main
    ```
+
 2. Verify that the extension is installed and enabled:
+
    ```console
    $ php -m | grep  otel_instrumentation
    ```
 
-## Zero-code configuration for Auto Instrumentation
+## Zero-code configuration for automatic instrumentation
 
-When used in conjunction with the OpenTelemetry SDK, you can use environment variables or php.ini to configure auto-instrumentation:
+When used in conjunction with the OpenTelemetry SDK, you can use environment
+variables or `php.ini` to configure auto-instrumentation:
 
 ```console
 OTEL_PHP_AUTOLOAD_ENABLED=true \
@@ -64,7 +72,7 @@ OTEL_PROPAGATORS=baggage,tracecontext \
 php myapp.php
 ```
 
-## Manual setup for Automatic Instrumentation
+## Manual setup for automatic instrumentation
 
 ```php
 <?php
