@@ -25,13 +25,12 @@ Let’s do this!
 
 Before we move on, I am assuming that you have a basic understanding of:
 
-- **[Nomad](https://nomadproject.io)**. If not, mozy on over to my
+- **[Nomad](https://nomadproject.io)**. If not, head on over to my
   [Nomad intro post](https://adri-v.medium.com/just-in-time-nomad-80f57cd403ca).
   [This blog post](https://danielabaron.me/blog/nomad-tips-and-tricks/) by
   [Daniela Baron](https://danielabaron.me) is also great.
 - **Observability (o11y) and [OpenTelemetry](https://opentelemetry.io) (OTel)**.
-  If not, mozy on over to my
-  [Observability & OTel post](https://storiesfromtheherd.com/unpacking-observability-the-observability-stack-93d4733e2a72).
+  If not, check out this [Observability primer](/docs/concepts/observability-primer/)
 
 ### Pre-Requisites
 
@@ -301,7 +300,7 @@ While I think I’ve managed to iron out a lot of the kinks as far as running th
 OTel Demo App in Nomad, I have run into a few hiccups when deploying the
 services.
 
-#### Services sometimes can’t connect to the Collector
+### Services sometimes can’t connect to the Collector
 
 Although all of the services appear to start up properly, in some cases, some
 services appear to be unable to connect to the OTel Collector. I haven’t quite
@@ -316,7 +315,7 @@ services, including the `jaeger-query` service.
 
 ![Screen capture of Jaeger service list drop-down](jaeger-service-list.png "Screen capture of Jaeger service list drop-down")
 
-#### Low memory on host machine
+### Low memory on host machine
 
 Yup…as beefy as my machine is, I do also sometimes run low on memory on my host
 machine. It probably doesn’t help that I have a zillion tabs open in Chrome and
@@ -326,7 +325,7 @@ to try to minimize memory issues, but in case the Memory Monster gets you, I
 suggest closing browsers and other apps, and re-opening them to free up some
 memory. And if this does happen to you, please let me know!
 
-### A Work in Progress
+## A Work in Progress
 
 Please bear in mind that this project is a work in progress. If you have any
 suggestions for improvement, or would like to collaborate further on the Nomad
