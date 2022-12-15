@@ -263,7 +263,7 @@ Add following content to default package.json
 ```
 
 ### Add HTTP call to function
-Below code makes call to OpenTemetry web site to demonstrate traffic
+The following code makes a call to the OpenTemetry web site to demonstrate an outbound call
 
 ```javascript
 const functions = require('@google-cloud/functions-framework');
