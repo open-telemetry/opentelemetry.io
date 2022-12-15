@@ -176,7 +176,7 @@ function in the backend!
 
 ## GCP function
 
-This example shows how to instrument [http triggered function](https://cloud.google.com/functions/docs/writing/write-http-functions) using GCP UI.
+The following shows how to instrument [http triggered function](https://cloud.google.com/functions/docs/writing/write-http-functions) using the Google Cloud Platform (GCP) UI.
 
 ### Creating function
 
