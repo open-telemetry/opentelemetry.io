@@ -180,7 +180,7 @@ This example shows how to instrument [http triggered function](https://cloud.goo
 
 ### Creating function
 
-Login to GCP selecting the project where your function should be placed. From serverless select Cloud Functions. Select create function and select environment. This example has been implemented using second generation. 
+Login to GCP and select the project where your function should be placed. From serverless select Cloud Functions. Select create function and select environment. This example uses second generation. 
 
 ### Setup environment variable for otelwrapper 
 
