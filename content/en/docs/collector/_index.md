@@ -6,7 +6,7 @@ spelling: cSpell:ignore Otel
 aliases: [/docs/collector/about]
 ---
 
-![OpenTelemetry Collector diagram with Jaeger, OTLP and Prometheus integration](https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/Otel_Collector.svg)
+![OpenTelemetry Collector diagram with Jaeger, OTLP and Prometheus integration](https://raw.githubusercontent.com/open-telemetry/opentelemetry.io/main/iconography/Otel_Collector.svg)
 
 ## Introduction
 

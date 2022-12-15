@@ -2,7 +2,7 @@
 title: JavaScript
 description: >-
   <img width="35"
-  src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/JS_SDK.svg"
+  src="https://raw.githubusercontent.com/open-telemetry/opentelemetry.io/main/iconography/32x32/JS_SDK.svg"
   alt="JavaScript"></img>
   A language-specific implementation of OpenTelemetry in JavaScript (for Node.js & the browser).
 aliases: [/js, /js/metrics, /js/tracing]
