@@ -54,7 +54,7 @@ while(<>) {
     $file = $ARGV;
     $frontMatterFromFile = '';
     $title = '';
-    if (/^<!---?/) {
+    if (/^<!---? Hugo/) {
         while(<>) {
           last if /^-?-->/;
           $frontMatterFromFile .= $_;
