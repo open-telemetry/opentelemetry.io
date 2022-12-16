@@ -94,7 +94,7 @@ same as the **Protocol** status.
     keys and values to a transaction, so that downstream services may access
     them. As such, there is no OTLP or Collector component to baggage.
 
-### Logging
+### [Logging][]
 
 - **API:** draft
 - **SDK:** draft
@@ -125,6 +125,7 @@ instrumentation is scheduled for this summer.
   quality.
 
 [baggage]: /docs/reference/specification/baggage/
+[logging]: /docs/reference/specification/logs/
 [logs data model]: /docs/reference/specification/logs/data-model/
 [metrics]: /docs/reference/specification/metrics/
 [tracing]: /docs/reference/specification/trace/
