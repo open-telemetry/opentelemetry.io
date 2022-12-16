@@ -28,6 +28,7 @@
     "relref",
     "subdir",
     "tabpane",
+    "tocstop",
     "Zipkin"
   ]
 }
