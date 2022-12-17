@@ -85,7 +85,7 @@ while(<>) {
 
   # Images
   s|(\.\./)?internal(/img/[-\w]+\.png)|$2|g;
-  s|(\]\()(img/.*?\))|$1../$2|g if $ARGV !~ /logs._index/;
+  s|(\]\()(img/.*?\))|$1../$2|g if $ARGV !~ /(logs|schemas)._index/;
 
   # Fix links that are to the title of the .md page
   # TODO: fix these in the spec
