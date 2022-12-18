@@ -100,7 +100,7 @@ Every Collector release includes APK, DEB and RPM packaging for Linux amd64/arm6
 systems. The packaging includes a default configuration that can be found at
 `/etc/otelcol/config.yaml` post-installation.
 
-> Please note that systemd is require for automatic service configuration
+> Please note that systemd is required for automatic service configuration
 
 ### APK Installation
 
