@@ -29,12 +29,15 @@ files.
 
 ### Local setup
 
-1.  Install the [**active LTS** release][nodejs-rel] of **Node.js**. We
-    recommend using **[nvm][]** to manage your Node installation (Linux command
-    shown):
+1.  [Fork][] and then [clone][] this repo.
+2.  **Change** to the repo directory.
+3.  **Install or upgrade** to the [**active LTS** release][nodejs-rel] of
+    **Node.js**. We recommend using **[nvm][]** to manage your Node
+    installation. Under Linux, run the following command (which will
+    install/upgrade to the version specified in [.nvmrc][]):
 
     ```console
-    $ nvm install --lts
+    $ nvm install
     ```
 
     To [install under Windows][nodejs-win], use [nvm-windows][]:
@@ -43,8 +46,6 @@ files.
     > nvm install lts && nvm use lts
     ```
 
-2.  [Fork][] and then [clone][] this repo.
-3.  Change to the repo directory.
 4.  Get npm packages and other prerequisites:
     ```console
     $ npm install
@@ -128,6 +129,7 @@ the production server.
 To see deploy logs and more, visit project's [dashboard][] -- Netlify login
 required.
 
+[.nvmrc]: .nvmrc
 [clone]:
   https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
 [dashboard]: https://app.netlify.com/sites/opentelemetry/overview
