@@ -262,6 +262,7 @@ Add following content to default package.json
 ```
 
 ### Add HTTP call to function
+
 The following code makes a call to the OpenTemetry web site to demonstrate an outbound call
 
 ```javascript
