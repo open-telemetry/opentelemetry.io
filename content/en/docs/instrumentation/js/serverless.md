@@ -191,6 +191,7 @@ Add the environment variable `NODE_OPTIONS` with the following value:
 ```
 
 ### Select runtime
+
 Select Node.js version 16.
 
 ### Establish otel wrapper
