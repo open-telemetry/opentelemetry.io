@@ -77,10 +77,10 @@ params:
         url: https://github.com/open-telemetry/community#mailing-lists
         icon: fa fa-envelope
         desc: List of mailing lists that the project uses.
-      - name: Twitter
-        url: https://twitter.com/opentelemetry
-        icon: fab fa-twitter
-        desc: Follow us on Twitter to get the latest news!
+      - name: Mastodon
+        url: https://fosstodon.org/@opentelemetry
+        icon: fab fa-mastodon
+        desc: Follow us on Mastodon to get the latest news!
       - name: Stack Overflow
         url: https://stackoverflow.com/questions/tagged/open-telemetry
         icon: fab fa-stack-overflow
