@@ -203,8 +203,6 @@ Create a new file called `otelwrapper.js`, that will be used to instrument your 
 
 const { Resource } = require('@opentelemetry/resources');
 const { SemanticResourceAttributes } = require ('@opentelemetry/semantic-conventions');
-
-
 const api = require("@opentelemetry/api");
 const { BatchSpanProcessor } = require("@opentelemetry/sdk-trace-base");
 const {
