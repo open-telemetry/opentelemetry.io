@@ -14,7 +14,6 @@ my $gD = 0;
 my $specRepoUrl = 'https://github.com/open-telemetry/opentelemetry-specification';
 my $semConvRef = "$specRepoUrl/blob/main/semantic_conventions/README.md";
 my $path_base_for_github_subdir = 'content/en/docs/reference/specification';
-my $removeOnNextUpdate = 1; # TODO: remove all lines that use this variable on the next spec update
 
 my $rootFrontMatterExtra = <<"EOS";
 no_list: true
@@ -31,12 +30,8 @@ sub printTitleAndFrontMatter() {
   my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
   print "title: $titleMaybeQuoted\n";
   ($linkTitle) = $title =~ /^OpenTelemetry (.*)/;
-  $linkTitle = 'FaaS' if $ARGV =~ /faas-metrics.md$/ && $removeOnNextUpdate;
-  $linkTitle = 'HTTP' if $ARGV =~ /http-metrics.md$/ && $removeOnNextUpdate;
   print "linkTitle: $linkTitle\n" if $linkTitle and $frontMatterFromFile !~ /linkTitle: /;
-  print $rootFrontMatterExtra if $ARGV =~ /specification._index/ && $removeOnNextUpdate;
   print "$frontMatterFromFile" if $frontMatterFromFile;
-  print "weight: 1\n" if $title eq "Overview" && $removeOnNextUpdate;
   if ($ARGV =~ /specification.(.*?)_index.md$/) {
     print "path_base_for_github_subdir:\n";
     print "  from: $path_base_for_github_subdir/$1_index.md\n";
