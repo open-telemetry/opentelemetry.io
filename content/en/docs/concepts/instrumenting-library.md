@@ -124,7 +124,7 @@ issues.
 
 ## What to instrument
 
-![Nested database and HTTP spans in Jaeger UI](https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/Instrumenting_Library_nested_spans.svg)
+![Nested database and HTTP spans in Jaeger UI](https://raw.githubusercontent.com/open-telemetry/opentelemetry.io/main/iconography/Instrumenting_Library_nested_spans.svg)
 
 ### Public APIs
 

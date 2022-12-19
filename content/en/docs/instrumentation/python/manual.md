@@ -159,7 +159,7 @@ current_span.set_attribute("operation.other-stuff", [1, 2, 3])
 
 [Semantic Attributes](/docs/reference/specification/trace/semantic_conventions/) are pre-defined [Attributes](/docs/concepts/signals/traces/#attributes) that are well-known naming conventions for common kinds of data. Using Semantic Attributes lets you normalize this kind of information across your systems.
 
-To use Semantic Attributes in Python, ensure you have the semantic convetions package:
+To use Semantic Attributes in Python, ensure you have the semantic conventions package:
 
 ```shell
 pip install opentelemetry-semantic-conventions

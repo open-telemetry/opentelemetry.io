@@ -3,7 +3,7 @@ title: Erlang/Elixir
 weight: 14
 description: >
   <img width="35"
-  src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Erlang_SDK.svg"
+  src="https://raw.githubusercontent.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Erlang_SDK.svg"
   alt="Erlang/Elixir"></img>
   A language-specific implementation of OpenTelemetry in Erlang/Elixir.
 ---

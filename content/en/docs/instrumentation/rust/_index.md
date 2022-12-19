@@ -2,7 +2,7 @@
 title: Rust
 description: >-
   <img width="35"
-  src="https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Rust.svg"
+  src="https://raw.githubusercontent.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Rust.svg"
   alt="Rust"></img>
   A language-specific implementation of OpenTelemetry in Rust.
 weight: 26

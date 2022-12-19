@@ -2,7 +2,7 @@
 title: Getting Started
 spelling: cSpell:ignore dpkg GOARCH journalctl kubectl
 weight: 1
-collectorVersion: 0.66.0
+collectorVersion: 0.67.0
 ---
 
 If you aren't familiar with the deployment models, components, and repositories
@@ -100,7 +100,7 @@ Every Collector release includes APK, DEB and RPM packaging for Linux amd64/arm6
 systems. The packaging includes a default configuration that can be found at
 `/etc/otelcol/config.yaml` post-installation.
 
-> Please note that systemd is require for automatic service configuration
+> Please note that systemd is required for automatic service configuration
 
 ### APK Installation
 
