@@ -270,13 +270,12 @@ const functions = require('@google-cloud/functions-framework');
 const https = require('https');
 
 functions.http('helloHttp', (req, res) => {
-
-    let url = "https://opentelemetry.io/";
-    https.get(url, (response) => {
-           res.send(`Response ${response.body}!`);
-      }).on('error', (e) => {
-           res.send(`Error ${e}!`);
-    })
+  let url = "https://opentelemetry.io/";
+  https.get(url, (response) => {
+    res.send(`Response ${response.body}!`);
+  }).on('error', (e) => {
+    res.send(`Error ${e}!`);
+  })
 });
 ```
 
