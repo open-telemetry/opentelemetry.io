@@ -287,6 +287,7 @@ If you run OTel collector in GCP VM you are likely to need to create VPC access 
 Select Deploy in UI and await deployment to be ready.
 
 ### Testing
+
 You can test the function using cloud shell from test tab.
 
 
