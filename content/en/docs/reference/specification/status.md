@@ -114,16 +114,6 @@ same as the **Protocol** status.
     focusing first on integration with existing logging systems. When metrics is
     complete, focus will shift to development of an OpenTelemetry logging API.
 
-### Instrumentation
-
-An effort to expand the availability and quality of OpenTelemetry
-instrumentation is scheduled for this summer.
-
-- Stabilize and define long term support for instrumentation.
-- Provide instrumentation for a wider variety of important libraries.
-- Provide testing and CI/CD tools for writing and verifying instrumentation
-  quality.
-
 [baggage]: /docs/reference/specification/baggage/
 [logging]: /docs/reference/specification/logs/
 [logs data model]: /docs/reference/specification/logs/data-model/
