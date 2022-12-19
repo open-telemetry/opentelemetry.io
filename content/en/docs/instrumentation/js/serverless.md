@@ -216,7 +216,7 @@ const {
 
 const providerConfig = {
   resource: new Resource({
-      [SemanticResourceAttributes.SERVICE_NAME]: "<your function name>",
+    [SemanticResourceAttributes.SERVICE_NAME]: "<your function name>",
   }),
 };
 
