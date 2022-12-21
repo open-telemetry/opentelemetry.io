@@ -39,7 +39,7 @@ Open your terminal and type the following commands to accomplish both
 operations:
 
 ```cmd
-mv ocb_0.53.0_darwin_amd64 ocb
+mv ocb_0.68.0_darwin_amd64 ocb
 chmod 777 ocb
 ```
 
