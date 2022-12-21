@@ -28,7 +28,7 @@ The `ocb` binary is available as a downloadable asset from the [OpenTelemetry
 Collector releases page][releases]. You will find the list of assets at the
 bottom of the page.
 
-v0.53.0 is the latest and the assets are named based on OS and chipset, so
+v0.68.0 is the latest and the assets are named based on OS and chipset, so
 download the one that fits your configuration.
 
 The binary has a pretty long name, so you can simply rename it to `ocb`; and if
