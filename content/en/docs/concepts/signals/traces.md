@@ -123,19 +123,8 @@ Providers. In some languages, a global Tracer is already initialized for you.
 ### Trace Exporters
 
 Trace Exporters send traces to a consumer. This consumer can be standard output
-for debugging and development-time, the OpenTelemetry Collector, or any
-open source or vendor backend of your choice.
-
-### Trace Context
-
-Trace Context is metadata about trace spans that provides correlation between
-spans across service and process boundaries. For example, let's say that Service
-A calls Service B and you want to track the call in a trace. In that case,
-OpenTelemetry will use Trace Context to capture the ID of the trace and current
-span from Service A, so that spans created in Service B can connect and add to
-the trace.
-
-This is known as Context Propagation.
+for debugging and development-time, the OpenTelemetry Collector, or any open
+source or vendor backend of your choice.
 
 ### Context Propagation
 
@@ -146,7 +135,9 @@ by two sub-concepts: Context and Propagation.
 
 A **Context** is an object that contains the information for the sending and
 receiving service to correlate one span with another and associate it with the
-trace overall.
+trace overall. For example, if Service A calls Service B, then a span from
+Service A whose ID is in context will be used as the parent span for the next
+span created in Service B.
 
 **Propagation** is the mechanism that moves Context between services and
 processes. By doing so, it assembles a Distributed Trace. It serializes or
@@ -154,25 +145,11 @@ deserializes Span Context and provides the relevant Trace information to be
 propagated from one service to another. We now have what we call: **Trace
 Context**.
 
-There are other forms of Context in OpenTelemetry. For example, some Context is
-an implementation of the W3C `TraceContext` specification on spans, and in
-OpenTelemetry, this is called **`SpanContext`**.
-
-We identify Span Context using four major components: a **`traceID`** and
-**`spanID`**, **Trace Flags**, and **Trace State**.
-
-**`traceID`** - A unique 16-byte array to identify the trace that a span is
-associated with
-
-**`spanID`** - Hex-encoded 8-byte array to identify the current span
-
-**Trace Flags** - Provides more details about the trace, such as if it is
-sampled
-
-**Trace State** - Provides more vendor-specific information for tracing across
-multiple distributed systems. Please refer to
-[W3C Trace Context](https://www.w3.org/TR/trace-context/#trace-flags) for
-further explanation.
+Context is an abstract concept - it requires a concrete implementation to
+actually be useful. OpenTelemetry supports several different Context formats.
+The default format used in OpenTelemetry tracing is W3C `TraceContext`. Each
+Context object is associated with a span and can be accessed specification on
+spans. See [Span Context](#span-context).
 
 By combining Context and Propagation, you now can assemble a Trace.
 
@@ -232,9 +209,9 @@ Sample Span:
 }
 ```
 
-Spans can be nested, as is implied by the presence of a parent span ID:
-child spans represent sub-operations. This allows spans to more accurately
-capture the work done in an application.
+Spans can be nested, as is implied by the presence of a parent span ID: child
+spans represent sub-operations. This allows spans to more accurately capture the
+work done in an application.
 
 ### Span Context
 
@@ -247,10 +224,11 @@ Span Context is an immutable object on every span that contains the following:
   information
 
 Span Context is the part of a span that is serialized and propagated alongside
-[Distributed Context](#context-propagation) and [Baggage](/docs/concepts/signals/baggage).
+[Distributed Context](#context-propagation) and
+[Baggage](/docs/concepts/signals/baggage).
 
-Because Span Context contains the Trace ID, it is used when creating
-[Span Links](#span-links).
+Because Span Context contains the Trace ID, it is used when creating [Span
+Links](#span-links).
 
 ### Attributes
 
@@ -267,11 +245,11 @@ Attributes have the following rules that each language SDK implements:
 * Values must be a non-null string, boolean, floating point value, integer, or
   an array of these values
 
-Additionally, there are
-[Semantic Attributes](/docs/reference/specification/trace/semantic_conventions/),
-which are known naming conventions for metadata that is typically present in
-common operations. It's helpful to use semantic attribute naming wherever
-possible so that common kinds of metadata are standardized across systems.
+Additionally, there are [Semantic
+Attributes](/docs/reference/specification/trace/semantic_conventions/), which
+are known naming conventions for metadata that is typically present in common
+operations. It's helpful to use semantic attribute naming wherever possible so
+that common kinds of metadata are standardized across systems.
 
 ### Span Events
 
@@ -334,14 +312,15 @@ span is usually a server span. Similarly, the parent of a consumer span is
 always a producer and the child of a producer span is always a consumer. If not
 provided, the span kind is assumed to be internal.
 
-For more information regarding SpanKind, see
-[SpanKind]({{< relref "/docs/reference/specification/trace/api#spankind" >}}).
+For more information regarding SpanKind, see [SpanKind]({{< relref
+"/docs/reference/specification/trace/api#spankind" >}}).
 
 #### Client
 
 A client span represents a synchronous outgoing remote call such as an outgoing
 HTTP request or database call. Note that in this context, "synchronous" does not
-refer to `async/await`, but to the fact that it is not queued for later processing.
+refer to `async/await`, but to the fact that it is not queued for later
+processing.
 
 #### Server
 
