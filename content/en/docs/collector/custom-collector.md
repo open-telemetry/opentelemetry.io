@@ -28,7 +28,7 @@ The `ocb` binary is available as a downloadable asset from the [OpenTelemetry
 Collector releases page][releases]. You will find the list of assets at the
 bottom of the page.
 
-v0.53.0 is the latest and the assets are named based on OS and chipset, so
+v0.68.0 is the latest and the assets are named based on OS and chipset, so
 download the one that fits your configuration.
 
 The binary has a pretty long name, so you can simply rename it to `ocb`; and if
@@ -39,7 +39,7 @@ Open your terminal and type the following commands to accomplish both
 operations:
 
 ```cmd
-mv ocb_0.53.0_darwin_amd64 ocb
+mv ocb_0.68.0_darwin_amd64 ocb
 chmod 777 ocb
 ```
 
