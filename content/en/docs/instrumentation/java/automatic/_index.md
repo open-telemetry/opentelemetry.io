@@ -18,12 +18,19 @@ service or app code, see [Manual instrumentation](../manual).
 ## Setup
 
  1. Download [opentelemetry-javaagent.jar][] from [Releases][] of the
-    `opentelemetry-java-instrumentation` repo. The JAR file contains the agent
-    and instrumentation libraries.
- 2. Place the JAR in your preferred directory and launch it with your app:
-
+    `opentelemetry-java-instrumentation` repo and place the JAR in your preferred directory.
+    The JAR file contains the agent and instrumentation libraries.
+ 2. Add `-javaagent:path/to/opentelemetry-javaagent.jar` and other config
+    to your JVM's startup arguments and launch your app:
+    - Directly on the startup command:
     ```console
-    $ java -javaagent:path/to/opentelemetry-javaagent.jar -jar myapp.jar
+    $ java -javaagent:path/to/opentelemetry-javaagent.jar -Dotel.service.name=your-service-name -jar myapp.jar
+    ```
+    - Via the `JAVA_TOOL_OPTIONS` and other environment variables:
+    ```console
+    $ export JAVA_TOOL_OPTIONS="-javaagent:path/to/opentelemetry-javaagent.jar"
+    $ export OTEL_SERVICE_NAME="your-service-name"
+    $ java -jar myapp.jar
     ```
 
 ## Configuring the agent
