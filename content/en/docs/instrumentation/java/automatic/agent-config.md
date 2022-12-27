@@ -194,8 +194,8 @@ This may be desireable to reduce startup overhead or to have more control of whi
 - Disable all instrumentation in the agent using `-Dotel.instrumentation.common.default-enabled=false`
 (or using the equivalent environment variable `OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED=false`).
 - Enable each desired instrumentation individually using `-Dotel.instrumentation.[name].enabled=true`
-(or using the equivalent environment variable `OTEL_INSTRUMENTATION_[NAME]_ENABLED`) where `name`
-(`NAME`) is the corresponding instrumentation `name` below.
+(or using the equivalent environment variable `OTEL_INSTRUMENTATION_[NAME]_ENABLED`) where `[name]`
+(`[NAME]`) is the corresponding instrumentation `name` below.
 
 ### Enable manual instrumentation only
 
