@@ -197,6 +197,10 @@ This may be desireable to reduce startup overhead or to have more control of whi
 (or using the equivalent environment variable `OTEL_INSTRUMENTATION_[NAME]_ENABLED`) where `[name]`
 (`[NAME]`) is the corresponding instrumentation `name` below.
 
+> **Note**: Some instrumentation relies on other instrumentation to function properly. When selectively
+enabling instrumentation, be sure to enable the transitive dependencies too. Determining this dependency
+relationship is left as an exercise to the user.
+
 ### Enable manual instrumentation only
 
 You can suppress all auto instrumentations but have support for manual
