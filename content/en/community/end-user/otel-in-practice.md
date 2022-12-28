@@ -21,5 +21,5 @@ in the
 [#otel-user-research channel](https://cloud-native.slack.com/archives/C01RT3MSWGZ)
 of the [CNCF Slack](https://slack.cncf.io/).
 
-Join the [OpenTelemetry in Practice Meetup Group](https://www.meetup.com/de-DE/opentelemetry-in-practice-meetup-group/)
+Join the [OpenTelemetry in Practice Meetup Group](https://www.meetup.com/opentelemetry-in-practice-meetup-group/)
 to get invited to our next talk!
