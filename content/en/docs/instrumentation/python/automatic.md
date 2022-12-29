@@ -28,8 +28,8 @@ the automatic instrumentation agent does exactly the same thing as manual
 instrumentation.
 
 Automatic instrumentation utilizes [monkey-patching][] to dynamically rewrite
-methods and classes at runtime through [instrumentation
-libraries][instrumentation]. This reduces the amount of work required to
+methods and classes at runtime through [instrumentation libraries][instrumentation].
+This reduces the amount of work required to
 integrate OpenTelemetry into your application code. Below, you will see the
 difference between a Flask route instrumented manually versus one that utilizes
 automatic instrumentation.
@@ -168,7 +168,7 @@ example:
 
 ### Execute an automatically instrumented server
 
-Stop the execution of `server_instrumented.py` by pressing <kbd>Control+C</kbd>
+Stop the execution of `server_instrumented.py` by pressing <kbd>Ctrl + C</kbd>
 and run the following command instead:
 
 ```console
@@ -297,8 +297,7 @@ If those headers are available, they will be included in your span:
 }
 ```
 
-[semantic convention]:
-    https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/http.md#http-request-and-response-headers
+[semantic convention]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/http.md#http-request-and-response-headers
 [API reference]: https://opentelemetry-python.readthedocs.io/en/latest/index.html
 [distro]: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-distro
 [env]: https://opentelemetry-python.readthedocs.io/en/latest/sdk/environment_variables.html
