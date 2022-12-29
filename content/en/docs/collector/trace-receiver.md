@@ -31,7 +31,7 @@ In order to implement a traces receiver you will need the following:
   its configurations within the Collector's config.yaml.
 
 - A `ReceiverFactory` implementation so the Collector can properly instantiate
-  the trace receiver component
+  the trace receiver component.
 
 - A `TracesReceiver` implementation that is responsible to collect the
   telemetry, convert it to the internal trace representation, and hand the
@@ -44,7 +44,8 @@ above in order to create the receiver, so let's get started.
 
 ## Setting up your receiver development and testing environment
 
-First use the [Building a Custom Collector](/docs/collector/custom-collector) tutorial to create a Collector instance named `dev-otelcol`; all you need is to
+First use the [Building a Custom Collector](/docs/collector/custom-collector) tutorial
+to create a Collector instance named `dev-otelcol`; all you need is to
 copy the `builder-config.yaml` described on Step 2 and make the following changes:
 
 ```yaml
@@ -146,7 +147,7 @@ successfully established a connection to your local Jaeger instance. Now that we
 have our environment ready, let's start writing your receiver's code.
 
 Now, create another folder called `tailtracer` so we can have a place to host
-all of our receiver code
+all of our receiver code.
 
 ```cmd
 mkdir tailtracer
@@ -171,13 +172,13 @@ The `tailtracer` receiver will have the following settings:
 
 - `interval`: a string representing the time interval (in minutes) between
   telemetry pull operations
-- `number_of_traces`: the number os mock traces generated for each interval
+- `number_of_traces`: the number of mock traces generated for each interval
 
 Here is what the `tailtracer` receiver settings will look like:
 
 ```yaml
 receivers:
-  tailtracer: #this line represents the ID of your receiver
+  tailtracer: # this line represents the ID of your receiver
     interval: 1m
     number_of_traces: 1
 ```
@@ -191,7 +192,7 @@ touch config.go
 ```
 
 To implement the configuration aspects of a receiver you need create a `Config`
-struct, so go ahead the add the following code to your `config.go` file:
+struct, so go ahead and add the following code to your `config.go` file:
 
 ```go
 package tailtracer
@@ -211,7 +212,7 @@ struct must:
 - Add a field for each of the receiver's settings.
 
 Here is what your config.go file should look like after you implemented the
-requirements above
+requirements above.
 
 > config.go
 
@@ -245,7 +246,7 @@ needed for those values by implementing the `Validate` method according to the
 interface.
 
 In this case, the `interval` value will be optional (we will look at generating
-default values later) but when defined should be at least 1 minute (1m) and the
+default values later) but when defined should be at least 1 minute (1m) and
 the `number_of_traces` will be a required value. Here is what the config.go
 looks like after implementing the `Validate` method.
 
@@ -368,7 +369,7 @@ implementation is by using the functions available within the
 
 ### Implementing your ReceiverFactory
 
-Start by creating a file named factory.go within the `tailtracer` folder
+Start by creating a file named factory.go within the `tailtracer` folder.
 
 ```cmd
 cd tailtracer
@@ -412,7 +413,7 @@ The `component.NewReceiverFactory()` instantiates and returns a
   determine what type of signal your receiver is capable of processing.
 
 Let's now implement the code to support all the parameters required by
-`component.NewReceiverFactory()`
+`component.NewReceiverFactory()`.
 
 ### Identifying and Providing default settings for the receiver
 
@@ -1172,7 +1173,7 @@ pipeline and is now instantiating it and starting it given that 1 minute after
 the Collector has started, you can see the info line we added to the `ticker`
 function within the `Start()` method.
 
-Now, go ahead and press <kbd>Control+C</kbd> in your Collector's terminal so you
+Now, go ahead and press <kbd>Ctrl + C</kbd> in your Collector's terminal so you
 want watch the shutdown process happening. Here is what the output should look
 like:
 
