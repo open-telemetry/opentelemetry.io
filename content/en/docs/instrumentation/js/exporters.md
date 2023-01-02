@@ -74,8 +74,7 @@ that:
 
 1. Using grpc & http/proto for exporting is not supported
 2. [Content Security Policies][] (CSPs) of your website might block your exports
-3. [Cross-Origin Resource Sharing][] (CORS) headers might not allow your exports
-   being send
+3. [Cross-Origin Resource Sharing][] (CORS) headers might not allow your exports to be sent
 4. You might need to expose your collector to the public internet
 
 Below you will find instructions to use the right exporter, to configure your
