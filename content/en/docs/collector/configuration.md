@@ -467,15 +467,15 @@ service:
 
 ### Configuration Environment Variables
 
-The use and expansion of environment variables is supported in the Collector
-configuration using shell-style syntax. For example:
+The use and expansion of environment variables is supported in the Collector configuration. 
+For example to use the values stored on the `DB_KEY` and `OPERATION` environment variables you can write the following:
 
 ```yaml
 processors:
   attributes/example:
     actions:
-      - key: "${DB_KEY}"
-        action: "$OPERATION"
+      - key: "${env:DB_KEY}"
+        action: "${env:OPERATION}"
 ```
 
 Use `$$` to indicate a literal `$`. For example, representing
