@@ -467,8 +467,8 @@ service:
 
 ### Configuration Environment Variables
 
-The use and expansion of environment variables is supported in the Collector
-configuration using PowerShell-style syntax. For example:
+The use and expansion of environment variables is supported in the Collector configuration. 
+For example to use the values stored on the `DB_KEY` and `OPERATION` environment variables you can write the following:
 
 ```yaml
 processors:
