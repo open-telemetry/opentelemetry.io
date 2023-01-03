@@ -1,7 +1,7 @@
 ---
 title: Traces
 description: >-
-  Traces give us the big picture of what happens when a request is made by user
+  Traces give us the big picture of what happens when a request is made by a user
   or an application.
 weight: 1
 ---
