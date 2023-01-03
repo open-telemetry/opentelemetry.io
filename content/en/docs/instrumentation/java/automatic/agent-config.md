@@ -42,6 +42,19 @@ The agent can consume configuration from one or more of the following sources
   [`ConfigPropertySource`](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/javaagent-extension-api/src/main/java/io/opentelemetry/javaagent/extension/config/ConfigPropertySource.java)
   SPI
 
+## Configuring with Environment Variables
+
+In some environments, configuring via Environment Variables is more preferred.
+Any setting configurable with a System Property can also be configured with an Environment Variable.
+Many settings below include both options, but where they don't apply the following steps
+to determine the correct name mapping of the desired System Property:
+
+- Convert the System Property to uppercase.
+- Replace all `.` and `-` characters with `_`.
+
+For example `otel.instrumentation.common.default-enabled`
+would convert to `OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED`.
+
 ### Configuration file
 
 You can provide a path to agent configuration file by setting the following
@@ -172,6 +185,27 @@ span link connecting it to the producer trace.
 
 You can disable the agent using `-Dotel.javaagent.enabled=false` (or using the
 equivalent environment variable `OTEL_JAVAAGENT_ENABLED=false`).
+
+### Enable only specific instrumentation
+
+You can disable all default auto instrumentation and selectively re-enable individual instrumentation.
+This may be desireable to reduce startup overhead or to have more control of which instrumentation is applied.
+
+- Disable all instrumentation in the agent using `-Dotel.instrumentation.common.default-enabled=false`
+(or using the equivalent environment variable `OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED=false`).
+- Enable each desired instrumentation individually using `-Dotel.instrumentation.[name].enabled=true`
+(or using the equivalent environment variable `OTEL_INSTRUMENTATION_[NAME]_ENABLED`) where `[name]`
+(`[NAME]`) is the corresponding instrumentation `name` below.
+
+> **Note**: Some instrumentation relies on other instrumentation to function properly. When selectively
+enabling instrumentation, be sure to enable the transitive dependencies too. Determining this dependency
+relationship is left as an exercise to the user.
+
+### Enable manual instrumentation only
+
+You can suppress all auto instrumentations but have support for manual
+instrumentation with `@WithSpan` and normal API interactions by using
+`-Dotel.instrumentation.common.default-enabled=false -Dotel.instrumentation.opentelemetry-api.enabled=true -Dotel.instrumentation.opentelemetry-instrumentation-annotations.enabled=true`
 
 ### Suppressing specific agent instrumentation
 
@@ -321,12 +355,6 @@ instrumentation which would also disable the instrumentation's capturing of
   name="otel.instrumentation.common.experimental.view-telemetry.enabled"
   default=true
 %}} Enables the view telemetry. {{% /config_option %}}
-
-### Enable manual instrumentation only
-
-You can suppress all auto instrumentations but have support for manual
-instrumentation with `@WithSpan` and normal API interactions by using
-`-Dotel.instrumentation.common.default-enabled=false -Dotel.instrumentation.opentelemetry-api.enabled=true -Dotel.instrumentation.opentelemetry-instrumentation-annotations.enabled=true`
 
 ### Instrumentation span suppression behavior
 
