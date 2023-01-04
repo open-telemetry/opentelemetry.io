@@ -1,5 +1,5 @@
 The [OpenTelemetry Demo](https://github.com/open-telemetry/opentelemetry-demo)
-is a reference application that does the following:
+does the following:
 
 * Provides a realistic example of a distributed system that can be used to
   demonstrate OpenTelemetry instrumentation and observability.
