@@ -158,7 +158,7 @@ receivers:
       network:
       process:
       processes:
-      swap:
+      paging:
 
   # Data sources: traces
   jaeger:
