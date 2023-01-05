@@ -29,7 +29,8 @@ OpenTelemetry in their commercial products.
 | Dynatrace                  | Yes               | Yes         | [dynatrace.com/...](https://www.dynatrace.com/support/help/how-to-use-dynatrace/transactions-and-services/service-monitoring-settings/opentelemetry/) |
 | Elastic                    | Yes               | Yes         | [elastic.co/...](https://www.elastic.co/guide/en/apm/get-started/current/open-telemetry-elastic.html)                                                 |
 | F5                         | No                | Yes         | [opentelemetry-collector-contrib/...](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/f5cloudexporter)           |
-| Grafana Labs               | No                | Yes         | [grafana.com/...](https://grafana.com/oss/opentelemetry/)                                                                                             |
+| Grafana Labs               | No                | Yes         | [grafana.com/...](https://grafana.com/oss/opentelemetry/)
+| Helios                     | Yes               | Yes         | [gethelios.dev](https://gethelios.dev/)
 | Honeycomb                  | Yes               | Yes         | [docs.honeycomb.io/...](https://docs.honeycomb.io/getting-data-in/)                                                                                   |
 | Instana                    | No                | Yes         | [ibm.com/docs/...](https://www.ibm.com/docs/en/obi/current?topic=apis-opentelemetry)                                                                 | 
 | KloudFuse                  | No                | Yes         | [kloudfuse.com](https://kloudfuse.atlassian.net/wiki/spaces/EX/pages/753860609/APM#Sending-traces-to-Kloudfuse-data-plane%3A)                                                                                                                 | 
