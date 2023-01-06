@@ -19,6 +19,7 @@ OpenTelemetry Ruby is in use by a number of companies, including:
 - [Puppet](https://puppet.com/)
 - [Shopify](https://shopify.com)
 - [TableCheck](https://www.tablecheck.com/)
+- [Dropbox DocSend](https://www.docsend.com)
 
 If you would like to add your name to this list, please feel free to submit a pull request.
 
