@@ -902,6 +902,75 @@ app.get('/', (_req, _res) => {
 {{< /tab >}}
 {{< /tabpane>}}
 
+### Using Observable (aka Async) Counters
+
+Observable counters can be used to measure an additive, non-negative, monotonically increasing value. They are
+useful when increasing the counter is NOT computationally cheap, the increments happen at very high frequencies, or we simply derive no value from knowing the precise timestamp of increments.
+
+In these instances, we would rather observe the aggregate value directly, rather than aggregate a series of deltas in post-processing (the synchronous example). Take note of the use of `observe` rather than `add`.
+
+```js
+let events = []
+
+const addEvent = (name) => {
+  events = append(events, name)
+}
+
+const counter = myMeter.createObservableCounter('events.counter');
+
+counter.addCallback(
+  (result) => {
+    result.observe(len(events))
+  }
+)
+
+//... calls to addEvent
+```
+
+### Using Observable (aka Async) UpDown Counters
+
+Observable UpDown counters can increment and decrement, allowing you to measure an additive, non-negative, non-monotonically increasing cumulative value.
+
+```js
+let events = []
+
+const addEvent = (name) => {
+  events = append(events, name)
+}
+
+const removeEvent = () => {
+  events.pop()
+}
+
+const counter = myMeter.createObservableUpDownCounter('events.counter');
+
+counter.addCallback(
+  (result) => {
+    result.observe(len(events))
+  }
+)
+
+//... calls to addEvent and removeEvent
+```
+
+### Using Observable (aka Async) Guages
+
+Observable Guages should be used to measure non-additive values. 
+
+```js
+let temperature = 32
+
+const gauge = myMeter.createObservableGauge('temperature.gauge');
+
+counter.addCallback(
+  (result) => {
+    result.observe(temperature)
+  }
+)
+
+//... temperature variable is modified by a sensor
+```
+
 ### Describing instruments
 
 When you create instruments like counters, histograms, etc. you can give them a
