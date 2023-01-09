@@ -65,7 +65,7 @@ Here's an explanation of what each configuration does:
 	python <your_app>.py
 	```
 
-	For HTTP, simply replace `otlp_proto_grpc` with `otlp_proto_http` and `0.0.0.0:4317` with `0.0.0.0:4318` (default Collector HTTP endpoint)
+	For HTTP, replace `otlp_proto_grpc` with `otlp_proto_http` and `0.0.0.0:4317` with `0.0.0.0:4318` (default Collector HTTP endpoint)
 
 ### Environment Variables
 
