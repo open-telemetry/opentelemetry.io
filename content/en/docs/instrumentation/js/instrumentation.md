@@ -1006,6 +1006,50 @@ const counter = myMeter.createCounter('my.counter');
 cntr.add(1, { 'some.optional.attribute': 'some value' });
 ```
 
+### Configure Metric Views
+
+A Metric View provides developers with the ability to customize metrics exposed by the Metrics SDK. 
+
+To instantiate a view, one must first select a target instrument. The following are valid selectors for metrics: `instrumentType`, `instrumentName`, `meterName`, `meterVersion`, and `meterSchemaUrl`. Selecting by instrument name has support for wildcards, so you can select all instruments using `*` or select all instruments starting with `http` by using `http*`.
+
+Once you've selected a target instrument, here are some examples of configurations possible with views:
+
+- Filter attributes reported on metrics
+```js
+new View({
+  // only export the attribute 'environment'
+  attributeKeys: ['environment'],
+  // apply the view to all instruments
+  instrumentName: '*',
+})
+```
+
+- Select instruments to be processed or ignored
+```js
+const dropView = new View({
+  aggregation: new DropAggregation(),
+  meterName: 'pubsub',
+});
+```
+
+- Define explicit bucket sizes for Histogram metrics
+```js
+const histogramView = new View({
+  aggregation: new ExplicitBucketHistogramAggregation([0, 1, 5, 10, 15, 20, 25, 30]),
+  instrumentName: 'http.server.duration',
+  instrumentType: InstrumentType.HISTOGRAM,
+});
+```
+
+Lastly, once a view has been configured, simply attach it to the corresponding meter provider:
+```js
+const meterProvider = new MeterProvider({
+  views: [
+    histogramView
+  ]
+});
+```
+
 ## Next steps
 
 You'll also want to configure an appropriate exporter to [export your telemetry
