@@ -87,7 +87,7 @@ A number of popular Python libraries are auto-instrumented, including [Flask](ht
 
 ## Troubleshooting
 
-### Python package installs
+### Python package installation failure
 
 The Python package installs require `gcc` and `gcc-c++`, which you may need to install if you’re running a slim version of Linux (e.g., CentOS).
 
