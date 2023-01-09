@@ -84,7 +84,8 @@ app.listen(PORT, () => {
 
 {{< /tabpane>}}
 
-Run the application with the following request and open <http://localhost:8080> in your web browser to ensure it is working.
+Run the application with the following request and open <http://localhost:8080>
+in your web browser to ensure it is working.
 
 {{< tabpane lang=console >}}
 
@@ -99,7 +100,6 @@ Listening for requests on http://localhost:8080
 {{< /tab >}}
 
 {{< /tabpane >}}
-
 
 ## Tracing
 
@@ -126,9 +126,13 @@ You may also want to use the `BatchSpanProcessor` to export spans in batches in 
 
 #### Instrumentation Modules
 
-Many common modules such as the `http` standard library module, `express`, and others can be automatically instrumented using autoinstrumentation modules. To find autoinstrumenatation modules, you can look at the [registry](/registry/?language=js&component=instrumentation).
+Many common modules such as the `http` standard library module, `express`, and
+others can be automatically instrumented using autoinstrumentation modules.
+To find autoinstrumenatation modules, you can look at the
+[registry](/registry/?language=js&component=instrumentation).
 
-You can also install all instrumentations maintained by the OpenTelemetry authors by using the `@opentelemetry/auto-instrumentations-node` module.
+You can also install all instrumentations maintained by the OpenTelemetry authors
+by using the `@opentelemetry/auto-instrumentations-node` module.
 
 ```shell
 npm install @opentelemetry/auto-instrumentations-node
@@ -136,7 +140,9 @@ npm install @opentelemetry/auto-instrumentations-node
 
 ### Setup
 
-The tracing setup and configuration should be run before your application code. One tool commonly used for this task is the [`-r, --require module`](https://nodejs.org/api/cli.html#cli_r_require_module) flag.
+The tracing setup and configuration should be run before your application code.
+One tool commonly used for this task is the
+[`-r, --require module`](https://nodejs.org/api/cli.html#cli_r_require_module) flag.
 
 Create a file named `tracing.ts|js`, which will contain your tracing setup code.
 
@@ -182,7 +188,8 @@ sdk.start()
 
 ### Run Application
 
-Now you can run your application as you normally would, but you can use the `--require` flag to load the tracing code before the application code.
+Now you can run your application as you normally would, but you can use the
+`--require` flag to load the tracing code before the application code.
 
 {{< tabpane lang=console >}}
 
@@ -198,7 +205,8 @@ Listening for requests on http://localhost:8080
 
 {{< /tabpane >}}
 
-Open <http://localhost:8080> in your web browser and reload the page a few times, after a while you should see the spans printed in the console by the `ConsoleSpanExporter`.
+Open <http://localhost:8080> in your web browser and reload the page a few times,
+after a while you should see the spans printed in the console by the `ConsoleSpanExporter`.
 
 <details>
 <summary>View example output</summary>
@@ -287,8 +295,8 @@ Open <http://localhost:8080> in your web browser and reload the page a few times
 ## Next Steps
 
 Enrich your instrumentation generated automatically with
-[manual instrumentation](/docs/instrumentation/js/instrumentation) of your own codebase. This gets you
-customized observability data.
+[manual instrumentation](/docs/instrumentation/js/instrumentation) of your own codebase.
+This gets you customized observability data.
 
 You'll also want to configure an appropriate exporter to [export your telemetry
 data](/docs/instrumentation/js/exporters) to one or more telemetry backends.
@@ -296,6 +304,7 @@ data](/docs/instrumentation/js/exporters) to one or more telemetry backends.
 ## Troubleshooting
 
 Did something go wrong? Remember that you need to explicitly enable logging in order to see logs from OpenTelemetry:
+
 {{< tabpane langEqualsHeader=true >}}
 
 {{< tab TypeScript >}}

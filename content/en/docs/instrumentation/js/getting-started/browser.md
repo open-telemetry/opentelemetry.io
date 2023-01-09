@@ -15,7 +15,8 @@ Ensure that you have the following installed locally:
 
 ## Example Application
 
-This is a very simple guide, if you'd like to see more complex examples go to [examples/opentelemetry-web](https://github.com/open-telemetry/opentelemetry-js/tree/main/examples/opentelemetry-web)
+This is a very simple guide, if you'd like to see more complex examples go to
+[examples/opentelemetry-web](https://github.com/open-telemetry/opentelemetry-js/tree/main/examples/opentelemetry-web).
 
 Copy the following file into an empty directory and call it `index.html`.
 
@@ -46,7 +47,8 @@ Copy the following file into an empty directory and call it `index.html`.
 
 ### Installation
 
-To create traces in the browser, you will need `@opentelemetry/sdk-trace-web`, and the instrumentation `@opentelemetry/instrumentation-document-load`:
+To create traces in the browser, you will need `@opentelemetry/sdk-trace-web`,
+and the instrumentation `@opentelemetry/instrumentation-document-load`:
 
 ```shell
 npm init -y
@@ -64,13 +66,16 @@ If you are coding in TypeScript, then run the following command:
 tsc --init
 ```
 
-Then acquire [parcel](https://parceljs.org/), which will (among other things) let you work in Typescript.
+Then acquire [parcel](https://parceljs.org/), which will (among other things)
+let you work in Typescript.
 
 ```shell
 npm install --save-dev parcel
 ```
 
-Create an empty code file named `document-load` with a `.ts` or `.js` extension, as appropriate, based on the language you've chosen to write your app in. Add the following code to your HTML right before the `</body>` closing tag:
+Create an empty code file named `document-load` with a `.ts` or `.js` extension,
+as appropriate, based on the language you've chosen to write your app in. Add the
+following code to your HTML right before the `</body>` closing tag:
 
 {{< tabpane lang=html >}}
 
@@ -84,11 +89,13 @@ Create an empty code file named `document-load` with a `.ts` or `.js` extension,
 
 {{< /tabpane >}}
 
-We will add some code that will trace the document load timings and output those as OpenTelemetry Spans.
+We will add some code that will trace the document load timings and output those
+as OpenTelemetry Spans.
 
 ### Creating a Tracer Provider
 
-Add the following code to the `document-load.ts|js` to create a tracer provider, which brings the instrumentation to trace document load:
+Add the following code to the `document-load.ts|js` to create a tracer provider,
+which brings the instrumentation to trace document load:
 
 ```js
 /* document-load.ts|js file - the code snippet is the same for both the languages */
@@ -157,7 +164,8 @@ registerInstrumentations({
 });
 ```
 
-Now, rebuild your application and open the browser again. In the console of the developer toolbar you should see some traces being exported:
+Now, rebuild your application and open the browser again. In the console of the
+developer toolbar you should see some traces being exported:
 
 ```json
 {
@@ -238,7 +246,8 @@ Now, rebuild your application and open the browser again. In the console of the 
 
 ### Add Instrumentations
 
-If you want to instrument AJAX requests, User Interactions and others, you can register additional instrumentations for those:
+If you want to instrument AJAX requests, User Interactions and others, you can
+register additional instrumentations for those:
 
 ```javascript
 registerInstrumentations({
