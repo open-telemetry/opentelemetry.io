@@ -681,6 +681,8 @@ OpenTelemetry JavaScript currently supports the following `Instrument`s:
 * Asynchronous UpDownCounter, an asynchronous instrument which supports
   increments and decrements
 
+For more on synchronous vs. asynchronous instruments, or what metric is best suited for your use case, see these supplementary [guidelines](https://opentelemetry.io/docs/reference/specification/metrics/supplementary-guidelines/).
+
 If a `MeterProvider` is not created either by an instrumentation library or
 manually, the OpenTelemetry Metrics API will use a no-op implementation and
 fail to generate data.
@@ -822,12 +824,15 @@ involved.
 
 ### Synchronous and asynchronous instruments
 
-OpenTelemetry provides two major categories of instruments: synchronous and anynchronous (observable) instruments. Synchronous instruments can be used anywhere in the code. Using these, measurements can be pushed to the instrument at any time during the execution. This means that during an export cycle, multiple or no measurements can take place. Asynchronous instruments, on the other hand, provide a measurement at the request of the SDK. When the SDK exports, a callback that was provided to the instrument on creation is invoked. This callback provides the SDK with a measurement, which is then immediately exported. Therefore all measurement on asynchronous instruments are performed once per export cycle. 
+OpenTelemetry provides two major categories of instruments: synchronous and asynchronous (observable) instruments. Synchronous instruments can be used anywhere in the code. Using these, measurements can be pushed to the instrument at any time during the execution. This means that during an export cycle, multiple or no measurements can take place. 
+
+Asynchronous instruments, on the other hand, provide a measurement at the request of the SDK. When the SDK exports, a callback that was provided to the instrument on creation is invoked. This callback provides the SDK with a measurement, which is then immediately exported. Therefore all measurements on asynchronous instruments are performed once per export cycle. 
+
+Asynchronous instruments are useful when updating a counter is NOT computationally cheap, the increments happen at very high frequencies, or we simply derive no value from knowing the precise timestamp of increments. In these instances, we would rather observe a cumulative value directly, rather than aggregate a series of deltas in post-processing (the synchronous example). Take note of the use of `observe` rather than `add` in the appropriate code examples below.
 
 ### Using Counters
 
-Counters can by used to measure a non-negative, increasing value. They are
-useful when increasing the counter is computationally cheap.
+Counters can by used to measure a non-negative, increasing value.
 
 ```js
 const counter = myMeter.createCounter('events.counter');
@@ -904,10 +909,7 @@ app.get('/', (_req, _res) => {
 
 ### Using Observable (aka Async) Counters
 
-Observable counters can be used to measure an additive, non-negative, monotonically increasing value. They are
-useful when increasing the counter is NOT computationally cheap, the increments happen at very high frequencies, or we simply derive no value from knowing the precise timestamp of increments.
-
-In these instances, we would rather observe the aggregate value directly, rather than aggregate a series of deltas in post-processing (the synchronous example). Take note of the use of `observe` rather than `add`.
+Observable counters can be used to measure an additive, non-negative, monotonically increasing value.
 
 ```js
 let events = []
