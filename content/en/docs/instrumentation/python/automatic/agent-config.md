@@ -4,7 +4,7 @@ weight: 45
 spelling: cSpell:ignore distro mkdir uninstrumented virtualenv
 ---
 
-Automatic instrumentation with Python uses a Python agent binary that can be attached to any Python application. It dynamically injects bytecode to capture telemetry from many popular libraries and frameworks.
+Automatic instrumentation with Python uses a Python agent that can be attached to any Python application. It dynamically injects bytecode to capture telemetry from many popular libraries and frameworks.
 
 ## Setup
 
