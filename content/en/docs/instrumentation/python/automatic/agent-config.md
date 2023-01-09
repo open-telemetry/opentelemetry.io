@@ -69,7 +69,7 @@ Here's an explanation of what each configuration does:
 
 ### Environment Variables
 
-Example of agent configuration via [environment variables](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/sdk-environment-variables.md):
+Example of agent configuration via [environment variables](/docs/concepts/sdk-configuration/):
 
 ```console
 OTEL_SERVICE_NAME=<your-service-name> \
