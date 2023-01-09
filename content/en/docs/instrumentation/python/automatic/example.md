@@ -81,7 +81,7 @@ $ pip install requests
 ```
 
 The examples that follow send instrumentation results to the console. Learn more
-about installing and configuring the [OpenTelemetry Distro](../distro) to send
+about installing and configuring the [OpenTelemetry Distro](/docs/instrumentation/python/distro) to send
 telemetry to other destinations, like an OpenTelemetry Collector.
 
 > **Note**: To use automatic instrumentation through `opentelemetry-instrument`,
