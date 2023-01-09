@@ -955,7 +955,7 @@ counter.addCallback(
 
 ### Using Observable (aka Async) Guages
 
-Observable Guages should be used to measure non-additive values. 
+Observable Gauges should be used to measure non-additive values. 
 
 ```js
 let temperature = 32
