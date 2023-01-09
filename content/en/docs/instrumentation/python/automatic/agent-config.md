@@ -33,7 +33,7 @@ The agent is highly configurable, either by:
 
 ### Configuration properties
 
-Example of agent configuration via configuration properties:
+Here's an example of agent configuration via configuration properties:
 
 ```console
 opentelemetry-instrument \
