@@ -953,7 +953,7 @@ counter.addCallback(
 //... calls to addEvent and removeEvent
 ```
 
-### Using Observable (aka Async) Guages
+### Using Observable (aka Async) Gauges
 
 Observable Gauges should be used to measure non-additive values. 
 
