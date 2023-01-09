@@ -27,6 +27,7 @@ More information can be found [here](https://github.com/open-telemetry/opentelem
 ## Configuring the agent
 
 The agent is highly configurable, either by:
+
 * Passing it configuration properties
 * Setting [environment variables](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/sdk-environment-variables.md)
 
