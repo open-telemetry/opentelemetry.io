@@ -45,11 +45,20 @@ function ends it.
 
 ## Setup
 
-1. Install the extension via pickle or [php-extension-installer](https://github.com/mlocati/docker-php-extension-installer):
+1. Install the extension via [pickle](https://github.com/FriendsOfPHP/pickle) or [php-extension-installer](https://github.com/mlocati/docker-php-extension-installer) (docker specific):
 
-   ```console
-   $ install-php-extensions open-telemetry/opentelemetry-php-instrumentation@main
-   ```
+    * **pickle** can be used to install extensions that are available via http://pecl.php.net, however that's not the case
+    for opentelemetry-php-instrumentation yet, so the only way for it is to install directly from source code.
+    Following command line shows how to do that using specific version of extension (1.0.0beta1 in this case).
+
+        ```console
+        $ php pickle.phar install --source https://github.com/open-telemetry/opentelemetry-php-instrumentation.git#1.0.0beta1
+        ```
+   
+   *  **php-extension-installer**
+        ```console
+        $ install-php-extensions open-telemetry/opentelemetry-php-instrumentation@main
+        ```
 
 2. Verify that the extension is installed and enabled:
 
