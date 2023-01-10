@@ -108,23 +108,19 @@ modules for the components above:
 ```yaml
 dist:
   name: otelcol-dev
-  description: "Basic OTel Collector distribution for Developers"
+  description: Basic OTel Collector distribution for Developers
   output_path: ./otelcol-dev
+  otelcol_version: 0.68.0
 
 exporters:
-  - gomod:
-      "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/jaegerexporter
-      v0.64.0"
-  - import: go.opentelemetry.io/collector/exporter/loggingexporter
-    gomod: go.opentelemetry.io/collector v0.64.0
-
-receivers:
-  - import: go.opentelemetry.io/collector/receiver/otlpreceiver
-    gomod: go.opentelemetry.io/collector v0.64.0
+  - gomod: go.opentelemetry.io/collector/exporter/loggingexporter v0.68.0
+  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/jaegerexporter v0.68.0
 
 processors:
-  - import: go.opentelemetry.io/collector/processor/batchprocessor
-    gomod: go.opentelemetry.io/collector v0.64.0
+  - gomod: go.opentelemetry.io/collector/processor/batchprocessor v0.68.0
+
+receivers:
+  - gomod: go.opentelemetry.io/collector/receiver/otlpreceiver v0.68.0
 ```
 
 ## Step 3 - Generating the Code and Building your Collector's distribution.
