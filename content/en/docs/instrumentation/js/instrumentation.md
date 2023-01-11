@@ -681,7 +681,7 @@ OpenTelemetry JavaScript currently supports the following `Instrument`s:
 * Asynchronous UpDownCounter, an asynchronous instrument which supports
   increments and decrements
 
-For more on synchronous vs. asynchronous instruments, or what metric is best suited for your use case, see these supplementary [guidelines](https://opentelemetry.io/docs/reference/specification/metrics/supplementary-guidelines/).
+For more on synchronous vs. asynchronous instruments, or what metric is best suited for your use case, see these supplementary [guidelines](/docs/reference/specification/metrics/supplementary-guidelines/).
 
 If a `MeterProvider` is not created either by an instrumentation library or
 manually, the OpenTelemetry Metrics API will use a no-op implementation and
@@ -1016,11 +1016,20 @@ cntr.add(1, { 'some.optional.attribute': 'some value' });
 
 ### Configure Metric Views
 
-A Metric View provides developers with the ability to customize metrics exposed by the Metrics SDK. 
+A Metric View provides developers with the ability to customize metrics exposed by the Metrics SDK.
 
-To instantiate a view, one must first select a target instrument. The following are valid selectors for metrics: `instrumentType`, `instrumentName`, `meterName`, `meterVersion`, and `meterSchemaUrl`. Selecting by instrument name has support for wildcards, so you can select all instruments using `*` or select all instruments starting with `http` by using `http*`.
+#### Selectors
 
-Here are some examples of configurations possible with views:
+To instantiate a view, one must first select a target instrument. The following are valid selectors for metrics:
+- `instrumentType`
+- `instrumentName`
+- `meterName`
+- `meterVersion`
+- `meterSchemaUrl`
+
+Selecting by `instrumentName` (of type string) has support for wildcards, so you can select all instruments using `*` or select all instruments whose name starts with `http` by using `http*`.
+
+#### Examples
 
 Filter attributes on all metric types:
 
@@ -1051,6 +1060,8 @@ const histogramView = new View({
   instrumentType: InstrumentType.HISTOGRAM,
 });
 ```
+
+#### Attach to meter provider
 
 Once a view has been configured, attach it to the corresponding meter provider:
 ```js
