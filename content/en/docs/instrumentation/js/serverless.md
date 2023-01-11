@@ -266,6 +266,7 @@ Add the following content to your package.json:
 The following code makes a call to the OpenTemetry web site to demonstrate an outbound call
 
 ```javascript
+/* index.js */
 const functions = require('@google-cloud/functions-framework');
 const https = require('https');
 
