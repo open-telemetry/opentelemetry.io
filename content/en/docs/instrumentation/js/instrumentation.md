@@ -1032,7 +1032,8 @@ new View({
 })
 ```
 
-- Select instruments to be processed or ignored
+Drop all instruments with the meter name `pubsub`:
+
 ```js
 const dropView = new View({
   aggregation: new DropAggregation(),
