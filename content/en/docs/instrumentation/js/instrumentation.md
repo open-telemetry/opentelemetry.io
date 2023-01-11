@@ -1020,7 +1020,7 @@ A Metric View provides developers with the ability to customize metrics exposed 
 
 To instantiate a view, one must first select a target instrument. The following are valid selectors for metrics: `instrumentType`, `instrumentName`, `meterName`, `meterVersion`, and `meterSchemaUrl`. Selecting by instrument name has support for wildcards, so you can select all instruments using `*` or select all instruments starting with `http` by using `http*`.
 
-Once you've selected a target instrument, here are some examples of configurations possible with views:
+Here are some examples of configurations possible with views:
 
 Filter attributes on all metric types:
 
