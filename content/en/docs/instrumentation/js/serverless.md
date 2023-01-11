@@ -184,7 +184,7 @@ Login to GCP and create or select a project where your function should be placed
 
 ### Setup environment variable for otelwrapper 
 
-Add the environment variable `NODE_OPTIONS` with the following value:
+If closed, open the _Runtime, build, connections and security settings_ menu and scroll down and add the environment variable `NODE_OPTIONS` with the following value:
 
 ```shell
 --require ./otelwrapper.js
