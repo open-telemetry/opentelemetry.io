@@ -215,12 +215,22 @@ npm install --save @opentelemetry/exporter-zipkin
 Update your opentelemetry configuration to use the exporter and to send data to
 your zipkin backend:
 
-```javascript
+{{< tabpane langEqualsHeader=true >}}
+{{< tab Typescript >}}
+import { ZipkinExporter } from "@opentelemetry/exporter-zipkin");
+import { BatchSpanProcessor } from "@opentelemetry/sdk-trace-base";
+
+provider.addSpanProcessor(new BatchSpanProcessor(new ZipkinExporter()));
+{{< /tab>}}
+
+{{< tab JavaScript >}}
 const { ZipkinExporter } = require("@opentelemetry/exporter-zipkin");
 const { BatchSpanProcessor } = require("@opentelemetry/sdk-trace-base");
 
 provider.addSpanProcessor(new BatchSpanProcessor(new ZipkinExporter()));
-```
+{{< /tab >}}
+
+{{< /tabpane>}}
 
 [Content Security Policies]:
   https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/
