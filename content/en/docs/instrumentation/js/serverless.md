@@ -280,7 +280,7 @@ functions.http('helloHttp', (req, res) => {
 ```
 ### Backend
 
-If you run OTel collector in GCP VM you are likely to need to create VPC access connector to be able to send traces.
+If you run OTel collector in GCP VM you are likely to need to create VPC access connector to be able to send traces. See https://cloud.google.com/vpc/docs/configure-serverless-vpc-access
 
 ### Deploy
 
