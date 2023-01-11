@@ -1041,7 +1041,8 @@ const dropView = new View({
 });
 ```
 
-- Define explicit bucket sizes for Histogram metrics
+Define explicit bucket sizes for the Histogram named `http.server.duration`:
+
 ```js
 const histogramView = new View({
   aggregation: new ExplicitBucketHistogramAggregation([0, 1, 5, 10, 15, 20, 25, 30]),
