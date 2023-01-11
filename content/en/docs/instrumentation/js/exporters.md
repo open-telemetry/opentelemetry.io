@@ -26,7 +26,30 @@ update `tracing.ts|js` from the
 [Getting Started](/docs/instrumentation/js/getting-started/nodejs/) like the
 following:
 
-```js
+{{< tabpane langEqualsHeader=true >}}
+{{< tab Typescript >}}
+/*tracing.ts*/
+import {
+  getNodeAutoInstrumentations,
+} from "@opentelemetry/auto-instrumentations-node";
+import {
+  OTLPTraceExporter,
+} from "@opentelemetry/exporter-trace-otlp-http";
+
+const sdk = new opentelemetry.NodeSDK({
+  traceExporter: new OTLPTraceExporter({
+    // optional - default url is http://localhost:4318/v1/traces
+    url: "<your-otlp-endpoint>/v1/traces",
+    // optional - collection of custom headers to be sent with each request, empty by default
+    headers: {},
+  }),
+  instrumentations: [getNodeAutoInstrumentations()],
+});
+sdk.start();
+{{< /tab >}}
+
+{{< tab JavaScript >}}
+/*tracing.js*/
 const opentelemetry = require("@opentelemetry/sdk-node");
 const {
   getNodeAutoInstrumentations,
@@ -45,7 +68,9 @@ const sdk = new opentelemetry.NodeSDK({
   instrumentations: [getNodeAutoInstrumentations()],
 });
 sdk.start();
-```
+{{< /tab >}}
+
+{{< /tabpane>}}
 
 To try out the `OTLPTraceExporter` quickly, you can run Jaeger in a docker
 container:
