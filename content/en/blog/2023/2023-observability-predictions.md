@@ -2,7 +2,7 @@
 title: "2023 Observability Predictions: Open Source is the Key to Explosive Growth"
 linkTitle: 2023 Observability Predictions
 date: 2023-01-04
-author: "[Paul Stefanski](https://github.com/rpstefanski) (observIQ)"
+author: "[Paul Stefanski](https://github.com/rpstefanski) ([observIQ](https://observiq.com/))"
 ---
 
 ## 2023 Observability Predictions: Open Source is the Key to Explosive Growth
