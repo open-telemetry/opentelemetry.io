@@ -1022,7 +1022,8 @@ To instantiate a view, one must first select a target instrument. The following 
 
 Once you've selected a target instrument, here are some examples of configurations possible with views:
 
-- Filter attributes reported on metrics
+Filter attributes on all metric types:
+
 ```js
 new View({
   // only export the attribute 'environment'
