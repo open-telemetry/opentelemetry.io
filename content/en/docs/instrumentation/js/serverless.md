@@ -242,7 +242,7 @@ registerInstrumentations({
 ```
 
 ### Establish package.json
-Add following content to default package.json
+Add the following content to your package.json:
 
 ```json
 {
