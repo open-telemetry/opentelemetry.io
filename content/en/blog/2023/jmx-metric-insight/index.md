@@ -1,9 +1,8 @@
 ---
-title: Jmx Metric Insight
+title: JMX Metric Insight
 linkTitle: JMX Metric Insight
 date: 2023-01-11
 author: "[Samudraneel Dasgupta](https://github.com/Samudraneel24) (Cisco)"
-draft: true # TODO: remove this line once your post is ready to be published
 ---
 
 [JMX](https://www.oracle.com/technical-resources/articles/javase/jmx.html) (Java
