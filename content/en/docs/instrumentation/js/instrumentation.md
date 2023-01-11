@@ -1050,7 +1050,7 @@ const histogramView = new View({
 });
 ```
 
-Lastly, once a view has been configured, simply attach it to the corresponding meter provider:
+Once a view has been configured, attach it to the corresponding meter provider:
 ```js
 const meterProvider = new MeterProvider({
   views: [
