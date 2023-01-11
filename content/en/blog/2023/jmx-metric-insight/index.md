@@ -26,14 +26,15 @@ corresponding metrics can be described using a YAML configuration file. The
 individual metric configurations allow precise metric selection and
 identification. JMX Metric Insight comes with a number of predefined
 configurations containing curated sets of JMX metrics for popular application
-servers or frameworks, such as
-[ActiveMQ](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/activemq.md),
-[Hadoop](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/hadoop.md),
-[Jetty](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/jetty.md),
-[Kafka Broker](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/kafka-broker.md),
-[Tomcat](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/tomcat.md)
-and
-[Wildfly](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/wildfly.md).
+servers or frameworks, such as:
+
+* [ActiveMQ](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/activemq.md)
+* [Hadoop](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/hadoop.md)
+* [Jetty](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/jetty.md)
+* [Kafka Broker](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/kafka-broker.md)
+* [Tomcat](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/tomcat.md)
+* [Wildfly](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/wildfly.md)
+
 You can also provide your own metric definitions, through one or more YAML
 files.
 
