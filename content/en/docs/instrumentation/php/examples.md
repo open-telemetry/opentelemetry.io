@@ -1,6 +1,6 @@
 ---
 title: Examples
-redirect: https://github.com/open-telemetry/opentelemetry-php/examples
+redirect: https://github.com/open-telemetry/opentelemetry-php/tree/main/examples
 manualLinkTarget: _blank
 _build: { render: link }
 weight: 60
