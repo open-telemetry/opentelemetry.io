@@ -824,11 +824,19 @@ involved.
 
 ### Synchronous and asynchronous instruments
 
-OpenTelemetry provides two major categories of instruments: synchronous and asynchronous (observable) instruments. Synchronous instruments can be used anywhere in the code. Using these, measurements can be pushed to the instrument at any time during the execution. This means that during an export cycle, multiple or no measurements can take place. 
+OpenTelemetry provides two major categories of instruments: synchronous and asynchronous (observable) instruments.
 
-Asynchronous instruments, on the other hand, provide a measurement at the request of the SDK. When the SDK exports, a callback that was provided to the instrument on creation is invoked. This callback provides the SDK with a measurement, which is then immediately exported. Therefore all measurements on asynchronous instruments are performed once per export cycle. 
+Synchronous instruments take a measurement when they are called. The measurement is done as another call during program execution, just like any other function call. Periodically, the aggregation of these measurements is exported by a configured exporter. Because measurements are decoupled from exporting values, an export cycle may contain zero or multiple aggregated measurements.
 
-Asynchronous instruments are useful when updating a counter is NOT computationally cheap, the increments happen at very high frequencies, or we simply derive no value from knowing the precise timestamp of increments. In these instances, we would rather observe a cumulative value directly, rather than aggregate a series of deltas in post-processing (the synchronous example). Take note of the use of `observe` rather than `add` in the appropriate code examples below.
+Asynchronous instruments, on the other hand, provide a measurement at the request of the SDK. When the SDK exports, a callback that was provided to the instrument on creation is invoked. This callback provides the SDK with a measurement that is immediately exported. All measurements on asynchronous instruments are performed once per export cycle. 
+
+Asynchronous instruments are useful in several circumstances, such as:
+
+* When updating a counter is not computationally cheap, and thus you don't want the currently executing thread to have to wait for that measurement
+* Observations need to happen at frequencies unrelated to program execution (i.e., they cannot be accurately measured when tied to a request lifecycle)
+* There is no value from knowing the precise timestamp of increments
+
+In cases like these, it's often better to observe a cumulative value directly, rather than aggregate a series of deltas in post-processing (the synchronous example). Take note of the use of `observe` rather than `add` in the appropriate code examples below.
 
 ### Using Counters
 
