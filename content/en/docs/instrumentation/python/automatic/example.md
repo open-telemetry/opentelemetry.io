@@ -1,18 +1,11 @@
 ---
-title: Automatic Instrumentation
-linkTitle: Automatic
-weight: 30
+title: Auto-Instrumentation Example
+linkTitle: Example
+weight: 45
 spelling: cSpell:ignore distro mkdir uninstrumented virtualenv
 ---
 
-One of the best ways to instrument Python applications is to use OpenTelemetry
-automatic instrumentation (auto-instrumentation). This approach is simple, easy,
-and doesn’t require many code changes. You only need to install a few Python
-packages to successfully instrument your application’s code.
-
-## Overview
-
-This example demonstrates how to use auto-instrumentation in OpenTelemetry. The
+This page demonstrates how to use Python auto-instrumentation in OpenTelemetry. The
 example is based on an [OpenTracing example][]. You can download or view the
 [source files][] used in this page from the `opentelemetry-python` repo.
 
@@ -28,8 +21,8 @@ the automatic instrumentation agent does exactly the same thing as manual
 instrumentation.
 
 Automatic instrumentation utilizes [monkey-patching][] to dynamically rewrite
-methods and classes at runtime through [instrumentation libraries][instrumentation].
-This reduces the amount of work required to
+methods and classes at runtime through [instrumentation
+libraries][instrumentation]. This reduces the amount of work required to
 integrate OpenTelemetry into your application code. Below, you will see the
 difference between a Flask route instrumented manually versus one that utilizes
 automatic instrumentation.
@@ -88,7 +81,7 @@ $ pip install requests
 ```
 
 The examples that follow send instrumentation results to the console. Learn more
-about installing and configuring the [OpenTelemetry Distro](../distro) to send
+about installing and configuring the [OpenTelemetry Distro](/docs/instrumentation/python/distro) to send
 telemetry to other destinations, like an OpenTelemetry Collector.
 
 > **Note**: To use automatic instrumentation through `opentelemetry-instrument`,
@@ -168,7 +161,7 @@ example:
 
 ### Execute an automatically instrumented server
 
-Stop the execution of `server_instrumented.py` by pressing <kbd>Ctrl + C</kbd>
+Stop the execution of `server_instrumented.py` by pressing <kbd>Control+C</kbd>
 and run the following command instead:
 
 ```console
@@ -297,7 +290,8 @@ If those headers are available, they will be included in your span:
 }
 ```
 
-[semantic convention]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/http.md#http-request-and-response-headers
+[semantic convention]:
+    https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/http.md#http-request-and-response-headers
 [API reference]: https://opentelemetry-python.readthedocs.io/en/latest/index.html
 [distro]: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-distro
 [env]: https://opentelemetry-python.readthedocs.io/en/latest/sdk/environment_variables.html
@@ -305,3 +299,5 @@ If those headers are available, they will be included in your span:
 [monkey-patching]: https://stackoverflow.com/questions/5626193/what-is-monkey-patching
 [opentracing example]: https://github.com/yurishkuro/opentracing-tutorial/tree/master/python
 [source files]: https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/auto-instrumentation
+
+
