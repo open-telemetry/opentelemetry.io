@@ -180,7 +180,7 @@ The following shows how to instrument [http triggered function](https://cloud.go
 
 ### Creating function
 
-Login to GCP and select the project where your function should be placed. From serverless select Cloud Functions. Select create function and select environment. This example uses second generation. See https://cloud.google.com/blog/products/serverless/cloud-functions-2nd-generation-now-generally-available 
+Login to GCP and select the project where your function should be placed. From serverless select Cloud Functions. Select create function and select environment. This example uses [second generation](https://cloud.google.com/blog/products/serverless/cloud-functions-2nd-generation-now-generally-available). 
 
 ### Setup environment variable for otelwrapper 
 
@@ -280,7 +280,7 @@ functions.http('helloHttp', (req, res) => {
 ```
 ### Backend
 
-If you run OTel collector in GCP VM you are likely to need to create VPC access connector to be able to send traces. See https://cloud.google.com/vpc/docs/configure-serverless-vpc-access
+If you run OTel collector in GCP VM you are likely to need to [create VPC access connector](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access) to be able to send traces. 
 
 ### Deploy
 
