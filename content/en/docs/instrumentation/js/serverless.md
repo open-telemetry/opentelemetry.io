@@ -192,7 +192,7 @@ If closed, open the _Runtime, build, connections and security settings_ menu and
 
 ### Select runtime
 
-Select Node.js version 16.
+On the next screen (_Code_), select Node.js version 16 for your runtime
 
 ### Establish otel wrapper
 
