@@ -681,7 +681,7 @@ OpenTelemetry JavaScript currently supports the following `Instrument`s:
 * Asynchronous UpDownCounter, an asynchronous instrument which supports
   increments and decrements
 
-For more on synchronous vs. asynchronous instruments, or what metric is best suited for your use case, see these supplementary [guidelines](/docs/reference/specification/metrics/supplementary-guidelines/).
+For more on synchronous and asynchronous instruments, and which kind is best suited for your use case, see [Supplementary Guidelines](/docs/reference/specification/metrics/supplementary-guidelines/).
 
 If a `MeterProvider` is not created either by an instrumentation library or
 manually, the OpenTelemetry Metrics API will use a no-op implementation and
