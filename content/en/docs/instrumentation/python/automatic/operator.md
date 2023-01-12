@@ -17,7 +17,7 @@ In most cases you will need to the [cert-manager installed](https://cert-manager
 
 ## Create an OpenTelemetry Collector (Optional)
 
-It is a best practice to send telemetry from containers to an [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) instead of directly to a backend.  The Collector helps simplify secret management, provides reliability and scalability, and can help improve data (k8sattributes processor).  If you chose not to use a Collector you can skip to the next section.
+It is a best practice to send telemetry from containers to an [OpenTelemetry Collector](../../../../collector/) instead of directly to a backend.  The Collector helps simplify secret management, provides reliability and scalability, and can help improve data (k8sattributes processor).  If you chose not to use a Collector you can skip to the next section.
 
 The Operator provides a [Custom Resource Definition (CRD) for an OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollector) which is used to create an instance of the Collector that the Operator will manage. This example will deploy the Collector as a deployment, which is the default, but there are other [deployment modes](https://github.com/open-telemetry/opentelemetry-operator#deployment-modes) that can be used.
 
@@ -87,7 +87,7 @@ EOF
 
 By default the Instrumentation resource auto-instruments python services to export their telemetry using the `otlp exporter` with the `http/proto` protocol, which means the endpoint must be able to receive otlp `http/proto`.  Therefore, the example uses `http://demo-collector:4318`, which is the Collector's otlpreceiver's `http` port.
 
-As of operator v0.67.0 the `OTEL_EXPORTER_OTLP_TRACES_PROTOCOL` and `OTEL_EXPORTER_OTLP_METRICS_PROTOCOL` env vars are automatically set to `http/proto`.  If you use an old version of the Operator you **MUST** set these env variables or python auto-instrumentation will not work.
+As of operator v0.67.0 the `OTEL_EXPORTER_OTLP_TRACES_PROTOCOL` and `OTEL_EXPORTER_OTLP_METRICS_PROTOCOL` env vars are automatically set to `http/proto`.  If you use an older version of the Operator you **MUST** set these env variables or python auto-instrumentation will not work.
 
 This document is working under the assumption that the only services opting into auto-instrumentation are python services.  If you have other languages to auto-instrument this instrumentation object will look different.  See the [Operators auto-instrumentation documentation](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md#opentelemetry-auto-instrumentation-injection) for more details.
 
