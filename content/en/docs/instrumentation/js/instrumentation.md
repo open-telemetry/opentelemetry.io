@@ -1063,10 +1063,12 @@ const histogramView = new View({
 
 #### Attach to meter provider
 
-Once a view has been configured, attach it to the corresponding meter provider:
+Once views have been configured, attach them to the corresponding meter provider:
 ```js
 const meterProvider = new MeterProvider({
   views: [
+    limitAttributesView,
+    dropView,
     histogramView
   ]
 });
