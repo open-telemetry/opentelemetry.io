@@ -915,7 +915,7 @@ app.get('/', (_req, _res) => {
 {{< /tab >}}
 {{< /tabpane>}}
 
-### Using Observable (aka Async) Counters
+### Using Observable (Async) Counters
 
 Observable counters can be used to measure an additive, non-negative, monotonically increasing value.
 
