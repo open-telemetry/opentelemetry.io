@@ -1034,7 +1034,7 @@ Selecting by `instrumentName` (of type string) has support for wildcards, so you
 Filter attributes on all metric types:
 
 ```js
-new View({
+const limitAttributesView = new View({
   // only export the attribute 'environment'
   attributeKeys: ['environment'],
   // apply the view to all instruments
