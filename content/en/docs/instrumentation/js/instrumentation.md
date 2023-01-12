@@ -937,7 +937,7 @@ counter.addCallback(
 //... calls to addEvent
 ```
 
-### Using Observable (aka Async) UpDown Counters
+### Using Observable (Async) UpDown Counters
 
 Observable UpDown counters can increment and decrement, allowing you to measure an additive, non-negative, non-monotonically increasing cumulative value.
 
