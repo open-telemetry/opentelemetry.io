@@ -1281,7 +1281,7 @@ type BackendSystem struct{
 ```
 
 These types are meant to represent the entities as they are within the system
-been observed and they contain information that would be quite meaningful to be
+being observed and they contain information that would be quite meaningful to be
 added to the traces as part of the `Resource` definition. You will add some
 helper functions to generate the instances of those types.
 
@@ -2277,7 +2277,7 @@ should start seeing traces in Jaeger like the following:
 
 We now have services representing both the `Atm` and the `BackendSystem`
 telemetry generation entities in our system and can fully understand how both
-entities are been used and contributing to the performance of an operation
+entities are being used and contributing to the performance of an operation
 executed by an user.
 
 Here is the detailed view of one of those traces in Jaeger:
