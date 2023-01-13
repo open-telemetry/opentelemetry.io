@@ -9,7 +9,7 @@ If you run your Python service in Kubernetes, you can take advantage of the [Ope
 
 ## Setup
 
-First you must install the [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator) into your cluster.
+First, install the [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator) into your cluster.
 
 This can be done directly via the [Operator release manifest](https://github.com/open-telemetry/opentelemetry-operator#getting-started), via the [Operator helm chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-operator#opentelemetry-operator-helm-chart), or via [Operator Hub](https://operatorhub.io/operator/opentelemetry-operator).  
 
