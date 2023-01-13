@@ -58,7 +58,7 @@ spec:
           exporters: [logging]
 EOF
 ```
-This creates an deployment of the Collector that we can use as an endpoint for the auto-instrumentation.
+The above command results in a deployment of the Collector that you can use as an endpoint for auto-instrumentation in your pods.
 
 ## Configure the Instrumentation
 
