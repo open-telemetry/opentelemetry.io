@@ -17,7 +17,7 @@ In most cases, you will need to install [cert-manager](https://cert-manager.io/d
 
 ## Create an OpenTelemetry Collector (Optional)
 
-It is a best practice to send telemetry from containers to an [OpenTelemetry Collector](../../../../collector/) instead of directly to a backend.  The Collector helps simplify secret management, provides reliability and scalability, and can help improve data (k8sattributes processor).  If you chose not to use a Collector you can skip to the next section.
+It is a best practice to send telemetry from containers to an [OpenTelemetry Collector](../../../../collector/) instead of directly to a backend.  The Collector helps simplify secret management, decouples data export problems (such as a need to do retries) from your apps, and lets you add additional data to your telemetry, such as with the `k8sattributesprocessor` component. If you chose not to use a Collector, you can skip to the next section.
 
 The Operator provides a [Custom Resource Definition (CRD) for an OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollector) which is used to create an instance of the Collector that the Operator will manage. This example will deploy the Collector as a deployment, which is the default, but there are other [deployment modes](https://github.com/open-telemetry/opentelemetry-operator#deployment-modes) that can be used.
 
