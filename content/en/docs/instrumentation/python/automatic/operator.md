@@ -13,7 +13,7 @@ First, install the [OpenTelemetry Operator](https://github.com/open-telemetry/op
 
 You can do this with the [Operator release manifest](https://github.com/open-telemetry/opentelemetry-operator#getting-started), the [Operator helm chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-operator#opentelemetry-operator-helm-chart), or with [Operator Hub](https://operatorhub.io/operator/opentelemetry-operator).  
 
-In most cases you will need to the [cert-manager installed](https://cert-manager.io/docs/installation/), but if using the helm chart there is an option to generate a self-signed cert.
+In most cases, you will need to install [cert-manager](https://cert-manager.io/docs/installation/). If you use the helm chart, there is an option to generate a self-signed cert instead.
 
 ## Create an OpenTelemetry Collector (Optional)
 
