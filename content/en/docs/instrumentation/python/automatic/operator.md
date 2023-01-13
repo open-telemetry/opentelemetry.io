@@ -5,7 +5,7 @@ weight: 45
 spelling: cSpell:ignore distro mkdir uninstrumented virtualenv
 ---
 
-If running your python service in kubernetes you can take advantage of the [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator) to inject auto-instrumentation without having to make changes to your service's dependencies to run command.
+If you run your Python service in Kubernetes, you can take advantage of the [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator) to inject auto-instrumentation without having to modify each of your services directly.
 
 ## Setup
 
