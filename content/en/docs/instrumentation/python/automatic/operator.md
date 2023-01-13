@@ -19,7 +19,7 @@ In most cases, you will need to install [cert-manager](https://cert-manager.io/d
 
 It is a best practice to send telemetry from containers to an [OpenTelemetry Collector](../../../../collector/) instead of directly to a backend.  The Collector helps simplify secret management, decouples data export problems (such as a need to do retries) from your apps, and lets you add additional data to your telemetry, such as with the `k8sattributesprocessor` component. If you chose not to use a Collector, you can skip to the next section.
 
-The Operator provides a [Custom Resource Definition (CRD) for an OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollector) which is used to create an instance of the Collector that the Operator will manage. This example will deploy the Collector as a deployment, which is the default, but there are other [deployment modes](https://github.com/open-telemetry/opentelemetry-operator#deployment-modes) that can be used.
+The Operator provides a [Custom Resource Definition (CRD) for the OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollector) which is used to create an instance of the Collector that the Operator manages. The following example deploys the Collector as a deployment (the default), but there are other [deployment modes](https://github.com/open-telemetry/opentelemetry-operator#deployment-modes) that can be used.
 
 ```bash
 kubectl apply -f - <<EOF
