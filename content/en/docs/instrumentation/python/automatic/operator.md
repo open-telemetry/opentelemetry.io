@@ -60,9 +60,9 @@ EOF
 ```
 The above command results in a deployment of the Collector that you can use as an endpoint for auto-instrumentation in your pods.
 
-## Configure the Instrumentation
+## Configure Autoinstrumentation
 
-In order to auto-instrument services the operator needs to be told how and what to instrument.  This is done via the [Instrumenation CRD](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#instrumentation).
+To be able to manage autoinstrumentation, the Operator needs to be configured to know what pods to instrument and which autoinstrumentation to use for those pods. This is done via the [Instrumentation CRD](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#instrumentation).
 
 Creating the Instrumentation object correctly is paramount to getting auto-instrumentation working.  Via the instrumentation object you are  configuring the OpenTelemetry SDK for python. Making sure all endpoints and env vars are correct is required for auto-instrumentation to work properly.
 
@@ -85,17 +85,18 @@ spec:
 EOF
 ```
 
-By default the Instrumentation resource auto-instruments python services to export their telemetry using the `otlp exporter` with the `http/proto` protocol, which means the endpoint must be able to receive otlp `http/proto`.  Therefore, the example uses `http://demo-collector:4318`, which is the Collector's otlpreceiver's `http` port.
+By default, the Instrumentation resource that auto-instruments python services uses the `otlp` with the `http/proto` protocol. This means that the configured endpoint must be able to receive OTLP over `http/proto`.  Therefore, the example uses `http://demo-collector:4318`, which is the Collector's otlpreceiver's `http` port.
 
-As of operator v0.67.0 the `OTEL_EXPORTER_OTLP_TRACES_PROTOCOL` and `OTEL_EXPORTER_OTLP_METRICS_PROTOCOL` env vars are automatically set to `http/proto`.  If you use an older version of the Operator you **MUST** set these env variables or python auto-instrumentation will not work.
+> As of operator v0.67.0, the `OTEL_EXPORTER_OTLP_TRACES_PROTOCOL` and `OTEL_EXPORTER_OTLP_METRICS_PROTOCOL` env vars are automatically set to `http/proto`.  If you use an older version of the Operator you **MUST** set these env variables to `http/proto`, or python auto-instrumentation will not work.
 
-This document is working under the assumption that the only services opting into auto-instrumentation are python services.  If you have other languages to auto-instrument this instrumentation object will look different.  See the [Operators auto-instrumentation documentation](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md#opentelemetry-auto-instrumentation-injection) for more details.
 
-At this point you have the ability to auto-instrument python services, but auto-instrumentation follows an opt-in model.  In order to become instrumented services must update their annotations.
+Now that your Instrumentation object is created, your cluster has the ability to auto-instrument python services and send data to an endpoint. However, auto-instrumentation with the OpenTelemetry Operator follows an opt-in model. In order to activate autoinstrumentation, you'll need to add an annotation to your deployment.
 
 ## Add annotations to existing deployments
 
-The final step is to opt in your python services to auto-instrumentation.  This is done by updating the service’s `spec.template.metadata.annotations` to include `instrumentation.opentelemetry.io/inject-python: "true"`.  Alternatively, the annotation can be added to the namespace and all services in the namespace will opt-in.   See the [Operators auto-instrumentation documentation](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md#opentelemetry-auto-instrumentation-injection) for more details.
+The final step is to opt in your python services to autoinstrumentation.  This is done by updating your service’s `spec.template.metadata.annotations` to include `instrumentation.opentelemetry.io/inject-python: "true"`.
+
+Alternatively, the annotation can be added to a namespace, which will result in all services in that namespace to opt-in to autoinstrumentation. See the [Operators auto-instrumentation documentation](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md#opentelemetry-auto-instrumentation-injection) for more details.
 
 ```yaml
 apiVersion: apps/v1
@@ -114,8 +115,3 @@ spec:
         instrumentation.opentelemetry.io/inject-python: "true"
     ...
 ```
-
-
-
-
-
