@@ -218,7 +218,7 @@ your zipkin backend:
 
 {{< tabpane langEqualsHeader=true >}}
 {{< tab Typescript >}}
-import { ZipkinExporter } from "@opentelemetry/exporter-zipkin");
+import { ZipkinExporter } from "@opentelemetry/exporter-zipkin";
 import { BatchSpanProcessor } from "@opentelemetry/sdk-trace-base";
 
 provider.addSpanProcessor(new BatchSpanProcessor(new ZipkinExporter()));
