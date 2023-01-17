@@ -98,8 +98,8 @@ $ kafka-console-producer --broker-list localhost:9092 --topic test
 Now we will start the Kafka console consumer which will consume messages from
 the topic from the beginning:
 
-```shell
-kafka-console-consumer --bootstrap-server localhost:9092 --topic test --from-beginning
+```console
+$ kafka-console-consumer --bootstrap-server localhost:9092 --topic test --from-beginning
 First message
 Second message
 ```
