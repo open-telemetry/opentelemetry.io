@@ -66,7 +66,7 @@ The above command results in a deployment of the Collector that you can use as a
 
 To be able to manage autoinstrumentation, the Operator needs to be configured to know what pods to instrument and which autoinstrumentation to use for those pods. This is done via the [Instrumentation CRD](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#instrumentation).
 
-Creating the Instrumentation object correctly is paramount to getting auto-instrumentation working.  Via the instrumentation object you are  configuring the OpenTelemetry SDK for python. Making sure all endpoints and env vars are correct is required for auto-instrumentation to work properly.
+Creating the Instrumentation resource correctly is paramount to getting auto-instrumentation working.  Making sure all endpoints and env vars are correct is required for auto-instrumentation to work properly.
 
 
 ```bash
