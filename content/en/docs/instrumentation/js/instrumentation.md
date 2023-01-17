@@ -824,7 +824,7 @@ involved.
 
 ### Synchronous and asynchronous instruments
 
-OpenTelemetry provides two major categories of instruments: synchronous and asynchronous (observable) instruments.
+OpenTelemetry instruments are either synchronous or asynchronous (observable).
 
 Synchronous instruments take a measurement when they are called. The measurement is done as another call during program execution, just like any other function call. Periodically, the aggregation of these measurements is exported by a configured exporter. Because measurements are decoupled from exporting values, an export cycle may contain zero or multiple aggregated measurements.
 
