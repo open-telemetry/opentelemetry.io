@@ -1,8 +1,8 @@
 ---
 title: Dev
 description: >-
-  You develop software. 
-  Your goal is to get observability by writing code. 
+  You develop software.
+  Your goal is to get observability by writing code.
   You want to have your dependencies emit telemetry for you automatically.
 spelling: cSpell:ignore otel
 weight: 2
