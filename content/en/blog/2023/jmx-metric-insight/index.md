@@ -89,8 +89,8 @@ kafka-topics --create --bootstrap-server localhost:9092 --replication-factor 1 -
 
 Start Kafka console producer to produce messages to the topic we created:
 
-```shell
-kafka-console-producer --broker-list localhost:9092 --topic test
+```console
+$ kafka-console-producer --broker-list localhost:9092 --topic test
 >First message
 >Second message
 ```
