@@ -148,7 +148,7 @@ otlpreceiver of the Collector created in the previous step.
 ---
 
 Now that your Instrumentation object is created, your cluster has the ability to
-auto-instrument python services and send data to an endpoint. However,
+auto-instrument services and send data to an endpoint. However,
 auto-instrumentation with the OpenTelemetry Operator follows an opt-in model. In
 order to activate autoinstrumentation, you'll need to add an annotation to your
 deployment.
