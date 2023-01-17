@@ -11,9 +11,7 @@ The OpenTelemetry Operator supports injecting and configuring
 auto-instrumentation libraries for `DotNet`, `Java`, `NodeJS`, and `Python`
 services.
 
-## Walkthrough
-
-### Setup
+## Installation
 
 First, install the
 [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator)
@@ -29,7 +27,7 @@ In most cases, you will need to install
 [cert-manager](https://cert-manager.io/docs/installation/). If you use the helm
 chart, there is an option to generate a self-signed cert instead.
 
-### Create an OpenTelemetry Collector (Optional)
+## Create an OpenTelemetry Collector (Optional)
 
 It is a best practice to send telemetry from containers to an
 [OpenTelemetry Collector](../../collector/) instead of directly to a backend.
@@ -92,7 +90,7 @@ EOF
 The above command results in a deployment of the Collector that you can use as
 an endpoint for auto-instrumentation in your pods.
 
-### Configure Autoinstrumentation
+## Configure Autoinstrumentation
 
 To be able to manage autoinstrumentation, the Operator needs to be configured to
 know what pods to instrument and which autoinstrumentation to use for those
@@ -103,19 +101,19 @@ Creating the Instrumentation resource correctly is paramount to getting
 auto-instrumentation working. Making sure all endpoints and env vars are correct
 is required for auto-instrumentation to work properly.
 
-#### DotNet
+### .NET
 
 Coming Soon
 
-#### Java
+### Java
 
 Coming Soon
 
-#### NodeJS
+### Node.js
 
 Coming Soon
 
-#### Python
+### Python
 
 ```bash
 kubectl apply -f - <<EOF
@@ -155,15 +153,15 @@ auto-instrumentation with the OpenTelemetry Operator follows an opt-in model. In
 order to activate autoinstrumentation, you'll need to add an annotation to your
 deployment.
 
-### Add annotations to existing deployments
+## Add annotations to existing deployments
 
 The final step is to opt in your services to autoinstrumentation. This is done
 by updating your service’s `spec.template.metadata.annotations` to include a
 language-specific annotation:
 
-- DotNet: `instrumentation.opentelemetry.io/inject-dotnet: "true"`
+- .NET: `instrumentation.opentelemetry.io/inject-dotnet: "true"`
 - Java: `instrumentation.opentelemetry.io/inject-java: "true"`
-- NodeJS: `instrumentation.opentelemetry.io/inject-nodejs: "true"`
+- Node.js: `instrumentation.opentelemetry.io/inject-nodejs: "true"`
 - Python: `instrumentation.opentelemetry.io/inject-python: "true"`
 
 Alternatively, the annotation can be added to a namespace, which will result in
