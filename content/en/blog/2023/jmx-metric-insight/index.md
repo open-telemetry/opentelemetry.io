@@ -144,7 +144,7 @@ docker run -d \
 ```
 
 The Prometheus container should be running now. You can now navigate to
-[http://localhost:9090](http://localhost:9090) and explore the Prometheus
+<http://localhost:9090> and explore the Prometheus
 dashboard. Here we are viewing the metric `kafka_request_count_total` on
 Prometheus.
 
