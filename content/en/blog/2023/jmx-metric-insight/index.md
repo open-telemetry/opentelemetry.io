@@ -164,7 +164,7 @@ docker run -d -p 3000:3000 grafana/grafana
 
 You can now navigate to <http://localhost:3000> and
 explore the Grafana home page. Click on Add Data Source and select Prometheus.
-Add the HTTP URL, default is `http://localhost:9090`. After that we can create
+Add the HTTP URL, default is <http://localhost:9090>. After that we can create
 new Dashboards, with multiple options of visualisations to choose from (Graph,
 Singlestat, Gauge, Table, Text, etc). We can then create new panels and add any
 metric we would like to observe. Here is an example dashboard consisting of 6
