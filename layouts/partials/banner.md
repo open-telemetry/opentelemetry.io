@@ -3,7 +3,7 @@
 <div class="o-banner">
 
 <i class="fas fa-bullhorn"></i>
-The [OpenTelemetry Project Roadmap](/roadmap/) is now available!
+The [OpenTelemetry Project Roadmap](/community/roadmap/) is now available!
 
 </div>
 {{ end -}}
