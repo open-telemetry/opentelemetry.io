@@ -1,6 +1,7 @@
 ---
 title: Mission, vision, and values
 aliases: [/mission]
+weight: 1
 ---
 
 ## Mission &mdash; our overall north star as a community
