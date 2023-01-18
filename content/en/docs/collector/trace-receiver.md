@@ -203,13 +203,7 @@ type Config struct{
 ```
 
 In order to be able to give your receiver access to its settings the `Config`
-struct must:
-
-- embed the
-  [config.ReceiverSettings](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.53.0/config/receiver.go#L42)
-  struct or a struct that extends it.
-
-- Add a field for each of the receiver's settings.
+struct must have a field for each of the receiver's settings.
 
 Here is what your config.go file should look like after you implemented the
 requirements above.
@@ -219,13 +213,8 @@ requirements above.
 ```go
 package tailtracer
 
-import (
-  "go.opentelemetry.io/collector/config"
-)
-
 // Config represents the receiver config settings within the collector's config.yaml
 type Config struct {
-   config.ReceiverSettings `mapstructure:",squash"`
    Interval    string `mapstructure:"interval"`
    NumberOfTraces int `mapstructure:"number_of_traces"`
 }
@@ -234,15 +223,12 @@ type Config struct {
 
 > #### Check your work
 >
-> - I imported the `go.opentelemetry.io/collector/config` package, which is
->   where ReceiverSettings is declared.
-> - I embedded the `config.ReceiverSettings` as required by the spec.
 > - I added the `Interval` and the `NumberOfTraces` fields so I can properly
 >   have access to their values from the config.yaml.
 
 Now that you have access to the settings, you can provide any kind of validation
 needed for those values by implementing the `Validate` method according to the
-[validatable](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.53.0/config/common.go#L24)
+optional [ConfigValidator](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.69.0/component/config.go#L50)
 interface.
 
 In this case, the `interval` value will be optional (we will look at generating
@@ -256,30 +242,28 @@ looks like after implementing the `Validate` method.
 package tailtracer
 
 import (
-  "fmt"
-  "go.opentelemetry.io/collector/config"
+	"fmt"
+	"time"
 )
 
 // Config represents the receiver config settings within the collector's config.yaml
 type Config struct {
-   config.ReceiverSettings `mapstructure:",squash"`
-   Interval    string `mapstructure:"interval"`
-   NumberOfTraces int `mapstructure:"number_of_traces"`
+	Interval       string `mapstructure:"interval"`
+	NumberOfTraces int    `mapstructure:"number_of_traces"`
 }
-
 
 // Validate checks if the receiver configuration is valid
 func (cfg *Config) Validate() error {
-    interval, _ := time.ParseDuration(cfg.Interval)
-	if (interval.Minutes() < 1){
-	   return fmt.Errorf("when defined, the interval has to be set to at least 1 minute (1m)")
+	interval, _ := time.ParseDuration(cfg.Interval)
+	if interval.Minutes() < 1 {
+		return fmt.Errorf("when defined, the interval has to be set to at least 1 minute (1m)")
 	}
 
-	if (cfg.NumberOfTraces < 1){
-	   return fmt.Errorf("number_of_traces must be greater or equal to 1")
+	if cfg.NumberOfTraces < 1 {
+		return fmt.Errorf("number_of_traces must be greater or equal to 1")
 	}
 	return nil
- }
+}
 ```
 
 > #### Check your work
@@ -293,8 +277,8 @@ func (cfg *Config) Validate() error {
 >   display the message accordingly.
 
 If you want to take a closer look at the structs and interfaces involved in the
-configuration aspects of a receiver component, take a look at the
-[config/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.53.0/config/receiver.go)
+configuration aspects of a component, take a look at the
+[component/config.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.69.0/component/config.go)
 file inside the Collector's GitHub project.
 
 ## Enabling the Collector to instantiate your receiver
@@ -310,36 +294,36 @@ Go ahead and open the `components.go` file under the `dev-otelcol` folder, and
 let's take a look at the `components()` function.
 
 ```go
-func components() (component.Factories, error) {
+func components() (otelcol.Factories, error) {
 	var err error
-	factories := component.Factories{}
+	factories := otelcol.Factories{}
 
-	factories.Extensions, err = component.MakeExtensionFactoryMap(
+	factories.Extensions, err = extension.MakeFactoryMap(
 	)
 	if err != nil {
-		return component.Factories{}, err
+		return otelcol.Factories{}, err
 	}
 
-	factories.Receivers, err = component.MakeReceiverFactoryMap(
+	factories.Receivers, err = receiver.MakeFactoryMap(
 		otlpreceiver.NewFactory(),
 	)
 	if err != nil {
-		return component.Factories{}, err
-	}
+		return otelcol.Factories{}, err
+	}	
 
-	factories.Exporters, err = component.MakeExporterFactoryMap(
-		jaegerexporter.NewFactory(),
+	factories.Exporters, err = exporter.MakeFactoryMap(
 		loggingexporter.NewFactory(),
+		jaegerexporter.NewFactory(),
 	)
 	if err != nil {
-		return component.Factories{}, err
+		return otelcol.Factories{}, err
 	}
 
-	factories.Processors, err = component.MakeProcessorFactoryMap(
+	factories.Processors, err = processor.MakeFactoryMap(
 		batchprocessor.NewFactory(),
 	)
 	if err != nil {
-		return component.Factories{}, err
+		return otelcol.Factories{}, err
 	}
 
 	return factories, nil
@@ -348,9 +332,9 @@ func components() (component.Factories, error) {
 
 As you can see, the `components()` function is responsible to provide the
 Collector the factories for all its components which is represented by a
-variable called `factories` of type `component.Factories` (here is the
+variable called `factories` of type `otelcol.Factories` (here is the
 declaration of the
-[component.Factories](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.53.0/component/factories.go#L25)
+[otelcol.Factories](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.69.0/otelcol/factories.go#L27)
 struct), which will then be used to instantiate the components that are
 configured and consumed by the Collector's pipelines.
 
@@ -362,10 +346,10 @@ factories (instances of `ReceiverFactory`), and it currently has the
 The `tailtracer` receiver has to provide a `ReceiverFactory` implementation, and
 although you will find a `ReceiverFactory` interface (you can find its
 definition in the
-[component/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.53.0/component/receiver.go#L104)
+[receiver/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.69.0/receiver/receiver.go#L69)
 file within the Collector's project ), the right way to provide the
 implementation is by using the functions available within the
-`go.opentelemetry.io/collector/component` package.
+`go.opentelemetry.io/collector/receiver` package.
 
 ### Implementing your ReceiverFactory
 
@@ -384,41 +368,40 @@ the following code to your `factory.go` file:
 package tailtracer
 
 import (
-	"go.opentelemetry.io/collector/component"
+	"go.opentelemetry.io/collector/receiver"
 )
 
 // NewFactory creates a factory for tailtracer receiver.
-func NewFactory() component.ReceiverFactory {
+func NewFactory() receiver.Factory {
 
 }
 ```
 
 In order to instantiate your `tailtracer` receiver factory, you will use the
-following function from the `component` package:
+following function from the `receiver` package:
 
 ```go
-func NewReceiverFactory(cfgType config.Type, createDefaultConfig ReceiverCreateDefaultConfigFunc, options ...ReceiverFactoryOption)) component.ReceiverFactory
+func NewFactory(cfgType component.Type, createDefaultConfig component.CreateDefaultConfigFunc, options ...FactoryOption) Factory
 ```
 
-The `component.NewReceiverFactory()` instantiates and returns a
-`component.ReceiverFactory` and it requires the following parameters:
+The `receiver.NewFactory()` instantiates and returns a
+`receiver.Factory` and it requires the following parameters:
 
-- `config.Type`: A config.Type instance representing a unique identifier for
+- `component.Type`: A config.Type instance representing a unique identifier for
   your receiver across all Collector's components.
 
-- `ReceiverCreateDefaultConfigFunc`: A reference to a function that returns the
+- `component.CreateDefaultConfigFunc`: A reference to a function that returns the
   config.Receiver instance for your receiver.
 
-- `... ReceiverFactoryOption`: The slice of ReceiverFactoryOptions that will
-  determine what type of signal your receiver is capable of processing.
+- `...FactoryOption`: The slice of FactoryOptions that will determine what type of signal your receiver is capable of processing.
 
 Let's now implement the code to support all the parameters required by
-`component.NewReceiverFactory()`.
+`receiver.NewFactory()`.
 
 ### Identifying and Providing default settings for the receiver
 
 If you take a look at the definition of
-[config.Type](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.53.0/config/common.go#L21),
+[component.Type](https://github.com/open-telemetry/opentelemetry-collector/blob/main/component/config.go#L122),
 you will see that it's just a string. So all we need to do is to provide a
 string constant representing the unique identifier for our receiver.
 
@@ -436,17 +419,16 @@ const (
 ```
 
 As for default settings, you just need to add a function that returns a
-config.Receiver holding the default configurations for the `tailtracer`
+`component.Config` holding the default configurations for the `tailtracer`
 receiver.
 
 To accomplish that, go ahead and add the following code to your `factory.go`
 file:
 
 ```go
-func createDefaultConfig() config.Receiver {
+func createDefaultConfig() component.Config {
 	return &Config{
-		ReceiverSettings:   config.NewReceiverSettings(config.NewComponentID(typeStr)),
-		Interval: defaultInterval,
+		Interval: string(defaultInterval),
 	}
 }
 ```
@@ -461,8 +443,9 @@ package tailtracer
 
 import (
 	"time"
+
 	"go.opentelemetry.io/collector/component"
-	"go.opentelemetry.io/collector/config"
+	"go.opentelemetry.io/collector/receiver"
 )
 
 const (
@@ -470,16 +453,15 @@ const (
 	defaultInterval = 1 * time.Minute
 )
 
-func createDefaultConfig() config.Receiver {
+func createDefaultConfig() component.Config {
 	return &Config{
-		ReceiverSettings:   config.NewReceiverSettings(config.NewComponentID(typeStr)),
-		Interval: defaultInterval,
+		Interval: string(defaultInterval),
 	}
 }
 
 // NewFactory creates a factory for tailtracer receiver.
-func NewFactory() component.ReceiverFactory {
-  return nil
+func NewFactory() receiver.Factory {
+	nil
 }
 ```
 
@@ -487,13 +469,10 @@ func NewFactory() component.ReceiverFactory {
 >
 > - Importing the `time` package in order to support the time.Duration type for
 >   the defaultInterval
-> - Importing the `go.opentelemetry.io/collector/config` package, which is where
->   the Receiver interface and the NewReceiverSettings() and NewComponentID()
->   functions are declared.
-> - Added a string constant called `typeStr` to represent the unique identifier
->   (component ID) of the receiver and assigned `tailtracer` as its value. This
->   ID is going to be used to fetch the receiver settings from the Collector's
->   config.
+> - Importing the `go.opentelemetry.io/collector/component` package, which is where
+>   `component.Config` is declared.
+> - Importing the `go.opentelemetry.io/collector/receiver` package, which is where
+>   `receiver.Factory` is declared.
 > - Added a `time.Duration` constant called `defaultInterval` to represent the
 >   default value for our receiver's `Interval` setting. We will be setting the
 >   default value for 1 minute hence the assignment of `1 * time.Minute` as its
@@ -501,26 +480,8 @@ func NewFactory() component.ReceiverFactory {
 > - Added a function called `createDefaultConfig` which is responsible to return
 >   a config.Receiver implementation, which in this case is going to be an
 >   instance of our `tailtracer.Config` struct.
->   - The `tailtracer.Config.ReceiverSettings` field was initialized using the
->     `config.NewReceiverSettings` function which returns a
->     `config.ReceiverSettings` instance based on a given `config.ComponentID`.
->   - To provide the proper `config.ComponentID`, we used the function
->     `config.NewComponentID` which returns a `config.ComponentID` for the given
->     `config.Type` which in our case is represented by the variable `typeStr`
 > - The `tailtracer.Config.Interval` field was initialized with the
 >   `defaultInterval` constant.
-
-If you take a closer look at the `ReceiverSettings` struct and
-`NewReceiverSettings` function (they are declared within the
-[config/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.53.0/config/receiver.go)
-file inside the Collector's GitHub project), you will find out that the
-`ReceiverSettings` is implementing the methods to support the `identifiable`
-interface which are also required by any Collector's component.
-
-All the types and functions involved in supporting the requirements for
-component's identification are implemented within the
-[config/identifiable.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.53.0/config/identifiable.go)
-file inside the Collector's GitHub project.
 
 ### Enabling the factory to describe the receiver as capable of processing traces
 
@@ -528,30 +489,29 @@ The same receiver component can process traces, metrics, and logs. The
 receiver's factory is responsible for describing those capabilities.
 
 Given that traces are the subject of the tutorial, that's the only signal we
-will enable the `tailtracer` receiver to work with. The `components` package
+will enable the `tailtracer` receiver to work with. The `receiver` package
 provides the following function and type to help the factory describe the trace
 processing capabilities:
 
 ```go
-func WithTracesReceiver(createTracesReceiver CreateTracesReceiver) ReceiverFactoryOption
-type CreateTracesReceiver func(context.Context, component.ReceiverCreateSettings, config.Receiver, consumer.Traces) (component.TracesReceiver, error)
+func WithTraces(createTracesReceiver CreateTracesFunc, sl component.StabilityLevel) FactoryOption
 ```
 
-The `component.WithTracesReceiver()` instantiates and returns a
-`component.ReceiverFactoryOption` and it requires the following parameters:
+The `receiver.WithTraces()` instantiates and returns a
+`receiver.FactoryOption` and it requires the following parameters:
 
-- `CreateTracesReceiver`: A reference to a function that matches the
-  `component.CreateTracesReceiver` type
+- `createTracesReceiver`: A reference to a function that matches the
+  `receiver.CreateTracesFunc` type
 
-The `component.CreateTracesReceiver` type is a pointer to a function that is
-responsible to instantiate and return a `component.TraceReceiver` instance and
+The `receiver.CreateTracesFunc` type is a pointer to a function that is
+responsible to instantiate and return a `receiver.Traces` instance and
 it requires the following parameters:
 
 - `context.Context`: the reference to the Collector's `context.Context` so your
   trace receiver can properly manage its execution context.
-- `component.ReceiverCreateSettings`: the reference to some of the Collector's
+- `receiver.CreateSettings`: the reference to some of the Collector's
   settings under which your receiver is created.
-- `config.Receiver`: the reference for the receiver config settings passed by
+- `component.Config`: the reference for the receiver config settings passed by
   the Collector to the factory so it can properly read its settings from the
   Collector config.
 - `consumer.Traces`: the reference to the next `consumer.Traces` in the
@@ -559,26 +519,26 @@ it requires the following parameters:
   or an exporter.
 
 Start by adding the bootstrap code to properly implement the
-`component.CreateTracesReceiver` function pointer. Go ahead and add the
+`receiver.CreateTracesFunc` function pointer. Go ahead and add the
 following code to your `factory.go` file:
 
 ```go
-func createTracesReceiver(_ context.Context, params component.ReceiverCreateSettings, baseCfg config.Receiver, consumer consumer.Traces) (component.TracesReceiver, error) {
-  return nil,nil
+func createTracesReceiver(_ context.Context, params receiver.CreateSettings, baseCfg component.Config, consumer consumer.Traces) (receiver.Traces, error) {
+	return nil, nil
 }
 ```
 
 You now have all the necessary components to successfully instantiate your
-receiver factory using the `component.NewReceiverFactory` function. Go ahead and
+receiver factory using the `receiver.NewFactory` function. Go ahead and
 and update your `NewFactory()` function in your `factory.go` file as follow:
 
 ```go
 // NewFactory creates a factory for tailtracer receiver.
-func NewFactory() component.ReceiverFactory {
-	return component.NewReceiverFactory(
+func NewFactory() receiver.Factory {
+	return receiver.NewFactory(
 		typeStr,
 		createDefaultConfig,
-		component.WithTracesReceiver(createTracesReceiver))
+		receiver.WithTraces(createTracesReceiver, component.StabilityLevelAlpha))
 }
 ```
 
@@ -595,8 +555,8 @@ import (
 	"time"
 
 	"go.opentelemetry.io/collector/component"
-	"go.opentelemetry.io/collector/config"
 	"go.opentelemetry.io/collector/consumer"
+	"go.opentelemetry.io/collector/receiver"
 )
 
 const (
@@ -604,23 +564,22 @@ const (
 	defaultInterval = 1 * time.Minute
 )
 
-func createDefaultConfig() config.Receiver {
+func createDefaultConfig() component.Config {
 	return &Config{
-		ReceiverSettings:   config.NewReceiverSettings(config.NewComponentID(typeStr)),
-		Interval: defaultInterval,
+		Interval: string(defaultInterval),
 	}
 }
 
-func createTracesReceiver(_ context.Context, params component.ReceiverCreateSettings, baseCfg config.Receiver, consumer consumer.Traces) (component.TracesReceiver, error) {
-  return nil,nil
+func createTracesReceiver(_ context.Context, params receiver.CreateSettings, baseCfg component.Config, consumer consumer.Traces) (receiver.Traces, error) {
+	return nil, nil
 }
 
 // NewFactory creates a factory for tailtracer receiver.
-func NewFactory() component.ReceiverFactory {
-	return component.NewReceiverFactory(
+func NewFactory() receiver.Factory {
+	return receiver.NewFactory(
 		typeStr,
 		createDefaultConfig,
-		component.WithTracesReceiver(createTracesReceiver))
+		receiver.WithTraces(createTracesReceiver, component.StabilityLevelAlpha))
 }
 ```
 
@@ -632,10 +591,10 @@ func NewFactory() component.ReceiverFactory {
 >   support the `consumer.Traces` type referenced in the `createTracesReceiver`
 >   function
 > - Updated the `NewFactory()` function so it returns the
->   `component.ReceiverFactory` generated by the
->   `component.NewReceiverFactory()` call with the required parameters. The
+>   `receiver.Factory` generated by the
+>   `receiver.NewFactory()` call with the required parameters. The
 >   generated receiver factory will be capable of processing traces through the
->   call to `component.WithTracesReceiver(createTracesReceiver)`
+>   call to `receiver.WithTraces(createTracesReceiver, component.StabilityLevelAlpha)`
 
 At this point, you have the `tailtracer` factory and config code needed for the
 Collector to validate the `tailtracer` receiver settings if they are defined
@@ -662,45 +621,49 @@ support that:
 package main
 
 import (
-	"go.opentelemetry.io/collector/component"
-	jaegerexporter "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/jaegerexporter"
+	"go.opentelemetry.io/collector/exporter"
+	"go.opentelemetry.io/collector/extension"
+	"go.opentelemetry.io/collector/otelcol"
+	"go.opentelemetry.io/collector/processor"
+	"go.opentelemetry.io/collector/receiver"
 	loggingexporter "go.opentelemetry.io/collector/exporter/loggingexporter"
+	jaegerexporter "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/jaegerexporter"
 	batchprocessor "go.opentelemetry.io/collector/processor/batchprocessor"
 	otlpreceiver "go.opentelemetry.io/collector/receiver/otlpreceiver"
-	tailtracer "github.com/rquedas/otel4devs/collector/receiver/trace-receiver/tailtracer"
+	tailtracer "github.com/gouslu/otelcol-dev/tailtracer"
 )
 
-func components() (component.Factories, error) {
+func components() (otelcol.Factories, error) {
 	var err error
-	factories := component.Factories{}
+	factories := otelcol.Factories{}
 
-	factories.Extensions, err = component.MakeExtensionFactoryMap(
+	factories.Extensions, err = extension.MakeFactoryMap(
 	)
 	if err != nil {
-		return component.Factories{}, err
+		return otelcol.Factories{}, err
 	}
 
-	factories.Receivers, err = component.MakeReceiverFactoryMap(
+	factories.Receivers, err = receiver.MakeFactoryMap(
 		otlpreceiver.NewFactory(),
 		tailtracer.NewFactory(),
 	)
 	if err != nil {
-		return component.Factories{}, err
-	}
+		return otelcol.Factories{}, err
+	}	
 
-	factories.Exporters, err = component.MakeExporterFactoryMap(
-		jaegerexporter.NewFactory(),
+	factories.Exporters, err = exporter.MakeFactoryMap(
 		loggingexporter.NewFactory(),
+		jaegerexporter.NewFactory(),
 	)
 	if err != nil {
-		return component.Factories{}, err
+		return otelcol.Factories{}, err
 	}
 
-	factories.Processors, err = component.MakeProcessorFactoryMap(
+	factories.Processors, err = processor.MakeFactoryMap(
 		batchprocessor.NewFactory(),
 	)
 	if err != nil {
-		return component.Factories{}, err
+		return otelcol.Factories{}, err
 	}
 
 	return factories, nil
@@ -713,7 +676,7 @@ func components() (component.Factories, error) {
 >   `github.com/rquedas/otel4devs/collector/receiver/trace-receiver/tailtracer`
 >   module which is where the receiver types and function are.
 > - Added a call to `tailtracer.NewFactory()` as a parameter of the
->   `component.MakeReceiverFactoryMap()` call so your `tailtracer` receiver
+>   `receiver.MakeFactoryMap()` call so your `tailtracer` receiver
 >   factory is properly added to the `factories` map.
 
 We added the `tailtracer` receiver settings to the `config.yaml` previously, so
