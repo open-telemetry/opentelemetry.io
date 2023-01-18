@@ -16,5 +16,4 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "18"
-      - run: pwd; ls -la .github;
       - run: npx prettier --ignore-path=./.github/prettierignore -w .
