@@ -1,0 +1,29 @@
+ISSUE_TEMPLATE
+PULL_REQUEST_TEMPLATE
+workflows
+dependabot.yml
+.gitpod.yml
+# .netlify
+.htmltest.yml
+.vscode
+# CONTRIBUTING.md
+# LICENSE
+#LICENSE-CODE
+# Makefile
+README.md
+archetypes
+assets
+config.yaml
+content
+content-modules
+data
+# iconography
+layouts
+# netlify.toml
+package.json 
+# resources
+scripts
+static
+templates
+themes
+tmp

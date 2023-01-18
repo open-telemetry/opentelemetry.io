@@ -1,0 +1,20 @@
+name: Prettier
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    name: Prettier
+    runs-on: ubuntu-latest
+    container:
+      image: node:18
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+      - run: pwd; ls -la .github;
+      - run: npx prettier --ignore-path=./.github/prettierignore -w .
