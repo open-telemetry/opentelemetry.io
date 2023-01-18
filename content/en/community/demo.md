@@ -1,3 +1,14 @@
+---
+title: OpenTelemetry Demo
+linkTitle: Demo
+description:
+  The OpenTelemetry Demo is a microservice-based distributed system intended to illustrate the implementation of OpenTelemetry in a near real-world environment.
+aliases:
+  - /docs/demo
+  - /docs/getting-started/demo
+  - /docs/opentelemetry-demo
+---
+
 The [OpenTelemetry Demo](https://github.com/open-telemetry/opentelemetry-demo)
 does the following:
 

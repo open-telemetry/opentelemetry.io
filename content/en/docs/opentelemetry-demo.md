@@ -1,6 +1,6 @@
 ---
-title: Demo
+title: OpenTelemetry Demo
 manualLink: /community/demo/
 _build: { render: link }
-weight: 5
+weight: 12
 ---

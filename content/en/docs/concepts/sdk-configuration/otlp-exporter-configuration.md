@@ -28,7 +28,7 @@ endpoint and want one environment variable to control the endpoint.
 
 For OTLP/HTTP, exporters in the SDK construct signal-specific URLs when this
 environment variable is set. This means that if you're sending traces, metrics,
-and logs, the following URLS are constructed from the example above:
+and logs, the following URLs are constructed from the example above:
 
 * Traces: `"http://my-api-endpoint/v1/traces"`
 * Metrics: `"http://my-api-endpoint/v1/metrics"`
@@ -47,7 +47,7 @@ end with `v1/traces` if using OTLP/HTTP.
 **Example:**
 
 * gRPC: `export OTEL_EXPORTER_OTLP_TRACES_ENDPOINT="my-api-endpoint:443"`
-* HTTP:`export OTEL_EXPORTER_OTLP_TRACES_ENDPOINT="http://my-api-endpoint/v1/traces"`
+* HTTP: `export OTEL_EXPORTER_OTLP_TRACES_ENDPOINT="http://my-api-endpoint/v1/traces"`
 
 ### `OTEL_EXPORTER_OTLP_METRICS_ENDPOINT`
 
@@ -62,7 +62,7 @@ end with `v1/metrics` if using OTLP/HTTP.
 **Example:**
 
 * gRPC: `export OTEL_EXPORTER_OTLP_METRICS_ENDPOINT="my-api-endpoint:443"`
-* HTTP:`export OTEL_EXPORTER_OTLP_METRICS_ENDPOINT="http://my-api-endpoint/v1/metrics"`
+* HTTP: `export OTEL_EXPORTER_OTLP_METRICS_ENDPOINT="http://my-api-endpoint/v1/metrics"`
 
 ### `OTEL_EXPORTER_OTLP_LOGS_ENDPOINT`
 
@@ -77,12 +77,12 @@ end with `v1/logs` if using OTLP/HTTP.
 **Example:**
 
 * gRPC: `export OTEL_EXPORTER_OTLP_LOGS_ENDPOINT="my-api-endpoint:443"`
-* HTTP:`export OTEL_EXPORTER_OTLP_LOGS_ENDPOINT="http://my-api-endpoint/v1/logs"`
+* HTTP: `export OTEL_EXPORTER_OTLP_LOGS_ENDPOINT="http://my-api-endpoint/v1/logs"`
 
 ## Header configuration
 
 The following environment variables let you configure additional headers as a
-list of key-value pairs to add in outgoing gRPC or HTTP requests
+list of key-value pairs to add in outgoing gRPC or HTTP requests.
 
 ### `OTEL_EXPORTER_OTLP_HEADERS`
 
@@ -90,9 +90,7 @@ A list of headers to apply to all outgoing data (traces, metrics, and logs).
 
 **Default value:** N/A
 
-**Example:**
-
-`export OTEL_EXPORTER_OTLP_HEADERS="api-key=key,other-config-value=value"`
+**Example:** `export OTEL_EXPORTER_OTLP_HEADERS="api-key=key,other-config-value=value"`
 
 ### `OTEL_EXPORTER_OTLP_TRACES_HEADERS`
 
@@ -100,10 +98,7 @@ A list of headers to apply to all outgoing traces.
 
 **Default value:** N/A
 
-**Example:**
-
-`export
-OTEL_EXPORTER_OTLP_TRACES_HEADERS="api-key=key,other-config-value=value"`
+**Example:** `export OTEL_EXPORTER_OTLP_TRACES_HEADERS="api-key=key,other-config-value=value"`
 
 ### `OTEL_EXPORTER_OTLP_METRICS_HEADERS`
 
@@ -111,10 +106,7 @@ A list of headers to apply to all outgoing metrics.
 
 **Default value:** N/A
 
-**Example:**
-
-`export
-OTEL_EXPORTER_OTLP_METRICS_HEADERS="api-key=key,other-config-value=value"`
+**Example:** `export OTEL_EXPORTER_OTLP_METRICS_HEADERS="api-key=key,other-config-value=value"`
 
 ### `OTEL_EXPORTER_OTLP_LOGS_HEADERS`
 
@@ -122,9 +114,7 @@ A list of headers to apply to all outgoing logs.
 
 **Default value:** N/A
 
-**Example:**
-
-`export OTEL_EXPORTER_OTLP_LOGS_HEADERS="api-key=key,other-config-value=value"`
+**Example:** `export OTEL_EXPORTER_OTLP_LOGS_HEADERS="api-key=key,other-config-value=value"`
 
 ## Timeout Configuration
 
@@ -137,9 +127,7 @@ The timeout value for all outgoing data (traces, metrics, and logs) in milliseco
 
 **Default value:** `10000` (10s)
 
-**Example:**
-
-`export OTEL_EXPORTER_OTLP_TIMEOUT=500`
+**Example:** `export OTEL_EXPORTER_OTLP_TIMEOUT=500`
 
 ### `OTEL_EXPORTER_OTLP_TRACES_TIMEOUT`
 
@@ -147,9 +135,7 @@ The timeout value for all outgoing traces in milliseconds.
 
 **Default value:** 10000 (10s)
 
-**Example:**
-
-`export OTEL_EXPORTER_OTLP_TRACES_TIMEOUT=500`
+**Example:** `export OTEL_EXPORTER_OTLP_TRACES_TIMEOUT=500`
 
 ### `OTEL_EXPORTER_OTLP_METRICS_TIMEOUT`
 
@@ -157,9 +143,7 @@ The timeout value for all outgoing metrics in milliseconds.
 
 **Default value:** 10000 (10s)
 
-**Example:**
-
-`export OTEL_EXPORTER_OTLP_METRICS_TIMEOUT=500`
+**Example:** `export OTEL_EXPORTER_OTLP_METRICS_TIMEOUT=500`
 
 ### `OTEL_EXPORTER_OTLP_LOGS_TIMEOUT`
 
@@ -167,9 +151,7 @@ The timeout value for all outgoing logs in milliseconds.
 
 **Default value:** 10000 (10s)
 
-**Example:**
-
-`export OTEL_EXPORTER_OTLP_LOGS_TIMEOUT=500`
+**Example:** `export OTEL_EXPORTER_OTLP_LOGS_TIMEOUT=500`
 
 ### `OTEL_EXPORTER_OTLP_PROTOCOL`
 
@@ -177,15 +159,13 @@ Specifies the OTLP transport protocol to be used for all telemetry data.
 
 **Default value:** SDK-dependent, but will typically be either `http/protobuf` or `grpc`.
 
-**Example:**
-
-`export OTEL_EXPORTER_OTLP_PROTOCOL=grpc`
+**Example:** `export OTEL_EXPORTER_OTLP_PROTOCOL=grpc`
 
 Valid values are:
 
 * `grpc` to use OTLP/gRPC
-* `http/protobuf` to use OTLP/HTTP+protobuf
-* `http/json` to use OTLP/HTTP+json
+* `http/protobuf` to use OTLP/HTTP + protobuf
+* `http/json` to use OTLP/HTTP + json
 
 ### `OTEL_EXPORTER_OTLP_TRACES_PROTOCOL`
 
@@ -193,15 +173,13 @@ Specifies the OTLP transport protocol to be used for trace data.
 
 **Default value:** SDK-dependent, but will typically be either `http/protobuf` or `grpc`.
 
-**Example:**
-
-`export OTEL_EXPORTER_OTLP_TRACES_PROTOCOL=grpc`
+**Example:** `export OTEL_EXPORTER_OTLP_TRACES_PROTOCOL=grpc`
 
 Valid values are:
 
 * `grpc` to use OTLP/gRPC
-* `http/protobuf` to use OTLP/HTTP+protobuf
-* `http/json` to use OTLP/HTTP+json
+* `http/protobuf` to use OTLP/HTTP + protobuf
+* `http/json` to use OTLP/HTTP + json
 
 ### `OTEL_EXPORTER_OTLP_METRICS_PROTOCOL`
 
@@ -209,12 +187,10 @@ Specifies the OTLP transport protocol to be used for metrics data.
 
 **Default value:** SDK-dependent, but will typically be either `http/protobuf` or `grpc`.
 
-**Example:**
-
-`export OTEL_EXPORTER_OTLP_METRICS_PROTOCOL=grpc`
+**Example:** `export OTEL_EXPORTER_OTLP_METRICS_PROTOCOL=grpc`
 
 Valid values are:
 
 * `grpc` to use OTLP/gRPC
-* `http/protobuf` to use OTLP/HTTP+protobuf
-* `http/json` to use OTLP/HTTP+json
+* `http/protobuf` to use OTLP/HTTP + protobuf
+* `http/json` to use OTLP/HTTP + json
