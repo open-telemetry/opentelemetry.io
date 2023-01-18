@@ -115,6 +115,8 @@ Coming Soon
 
 ### Python
 
+The following command will create a basic Instrumentation resource that is configured specifically for instrumenting Python services.
+
 ```bash
 kubectl apply -f - <<EOF
 apiVersion: opentelemetry.io/v1alpha1
