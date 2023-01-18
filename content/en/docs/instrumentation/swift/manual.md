@@ -32,7 +32,7 @@ let otlpConfiguration = OtlpConfiguration(timeout: OtlpConfiguration.DefaultTime
 let grpcChannel = ClientConnection.usingPlatformAppropriateTLS(for: MultiThreadedEventLoopGroup(numberOfThreads:1))
                                                   .connect(host: <collector host>, port: <collector port>)
 
-let traceExporter = OtlpTraceExporter(channel: grpcChannel
+let traceExporter = OtlpTraceExporter(channel: grpcChannel,
                                       config: otlpConfiguration)
 
 // build & register the Tracer Provider using the built otlp trace exporter
