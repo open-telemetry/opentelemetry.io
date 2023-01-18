@@ -14,6 +14,7 @@ developer_note:
 <div class="l-primary-buttons mt-5">
 
 - [Learn more](/docs/concepts/)
+- [Try the demo](/community/demo/)
 
 </div>
 
