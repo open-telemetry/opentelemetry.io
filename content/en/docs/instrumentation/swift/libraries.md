@@ -108,7 +108,7 @@ Below is an example of initialization.
 parameters defined above to suit the needs of the application.
 
 ```swift
-let sessionInstrumentation = URLSessionInstrumentation(URLSessionInstrumentationConfiguration())
+let sessionInstrumentation = URLSessionInstrumentation(configuration: URLSessionInstrumentationConfiguration())
 ```
 
 ### Details
