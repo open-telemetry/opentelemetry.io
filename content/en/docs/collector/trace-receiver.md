@@ -1387,13 +1387,13 @@ func generateTraces() ptrace.Traces{
 By now you have heard and read enough about how traces are made up of Spans. You
 have probably also written some instrumentation code using the SDK's functions
 and types available to create them, but what you probably didn't know, is that
-within the Collector's API, that there are a other types of "spans" involved in
+within the Collector's API, that there are other types of "spans" involved in
 creating a trace.
 
 You will start with a type called `ptrace.ResourceSpans` which represents the
 resource and all the operations that it either originated or received while
 participating in a trace. You can find its definition within the
-[/pdata/internal/data/protogen/trace/v1/trace.pb.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.50.0/pdata/internal/data/protogen/trace/v1/trace.pb.go).
+[/pdata/internal/data/protogen/trace/v1/trace.pb.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.69.0/pdata/internal/data/protogen/trace/v1/trace.pb.go).
 
 `ptrace.Traces` has a method named `ResourceSpans()` which returns an instance
 of a helper type called `ptrace.ResourceSpansSlice`. The
@@ -1451,7 +1451,7 @@ pair format represented by the `pcommon.Map` type.
 
 You can check the definition of the `pcommon.Map` type and the related helper
 functions to create attribute values using the supported formats in the
-[/pdata/internal/common.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.50.0/pdata/internal/common.go)
+[/pdata/pcommon/common.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.69.0/pdata/pcommon/common.go)
 file within the Otel Collector's GitHub project.
 
 Key/value pairs provide a lot of flexibility to help model your `Resource` data,
@@ -1482,10 +1482,10 @@ and write them as attributes (grouped by the prefix "atm.") into a
 ```go
 func fillResourceWithAtm(resource *pcommon.Resource, atm Atm){
    atmAttrs := resource.Attributes()
-   atmAttrs.InsertInt("atm.id", atm.ID)
-   atmAttrs.InsertString("atm.stateid", atm.StateID)
-   atmAttrs.InsertString("atm.ispnetwork", atm.ISPNetwork)
-   atmAttrs.InsertString("atm.serialnumber", atm.SerialNumber)
+   atmAttrs.PutInt("atm.id", atm.ID)
+   atmAttrs.PutStr("atm.stateid", atm.StateID)
+   atmAttrs.PutStr("atm.ispnetwork", atm.ISPNetwork)
+   atmAttrs.PutStr("atm.serialnumber", atm.SerialNumber)
 }
 ```
 
@@ -1493,7 +1493,7 @@ func fillResourceWithAtm(resource *pcommon.Resource, atm Atm){
 >
 > - Declared a variable called `atmAttrs` and initialized it with the
 >   `pcommon.Map` reference returned by the `resource.Attributes()` call
-> - Used the `InsertInt()` and `InsertString()` methods from `pcommon.Map` to
+> - Used the `PutInt()` and `PutStr()` methods from `pcommon.Map` to
 >   add int and string attributes based on the equivalent `Atm` field types.
 >   Notice that because those attributes are very specific and only represent
 >   the `Atm` entity, they are all grouped within the "atm." prefix.
@@ -1515,7 +1515,7 @@ by the resource semantic convention to represent that information on its
 
 All the resource semantic convention attribute names and well known-values are
 kept within the
-[/semconv/v1.9.0/generated_resource.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.50.0/semconv/v1.9.0/generated_resource.go)
+[/semconv/v1.9.0/generated_resource.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.69.0/semconv/v1.9.0/generated_resource.go)
 file within the Collector's GitHub project.
 
 Let's create a function to read the field values from an `BackendSystem`
@@ -1536,8 +1536,8 @@ func fillResourceWithBackendSystem(resource *pcommon.Resource, backend BackendSy
 			cloudProvider = conventions.AttributeCloudProviderGCP
 	}
 
-	backendAttrs.InsertString(conventions.AttributeCloudProvider, cloudProvider)
-	backendAttrs.InsertString(conventions.AttributeCloudRegion, backend.CloudRegion)
+	backendAttrs.PutStr(conventions.AttributeCloudProvider, cloudProvider)
+	backendAttrs.PutStr(conventions.AttributeCloudRegion, backend.CloudRegion)
 
 	switch {
 		case backend.OSType == "lnx":
@@ -1548,8 +1548,8 @@ func fillResourceWithBackendSystem(resource *pcommon.Resource, backend BackendSy
 			osType = conventions.AttributeOSTypeSolaris
 	}
 
-	backendAttrs.InsertString(conventions.AttributeOSType, osType)
-	backendAttrs.InsertString(conventions.AttributeOSVersion, backend.OSVersion)
+	backendAttrs.PutStr(conventions.AttributeOSType, osType)
+	backendAttrs.PutStr(conventions.AttributeOSVersion, backend.OSVersion)
  }
 ```
 
@@ -1577,11 +1577,11 @@ import (
 	"time"
 	"go.opentelemetry.io/collector/pdata/pcommon"
 	"go.opentelemetry.io/collector/pdata/ptrace"
-	conventions "go.opentelemetry.io/collector/model/semconv/v1.9.0"
+	conventions "go.opentelemetry.io/collector/semconv"
 )
 
-type Atm struct{
-    ID           int64
+type Atm struct {
+	ID           int64
 	Version      string
 	Name         string
 	StateID      string
@@ -1589,65 +1589,64 @@ type Atm struct{
 	ISPNetwork   string
 }
 
-type BackendSystem struct{
+type BackendSystem struct {
 	Version       string
 	ProcessName   string
 	OSType        string
-    OSVersion     string
+	OSVersion     string
 	CloudProvider string
 	CloudRegion   string
 	Endpoint      string
 }
 
-func generateAtm() Atm{
+func generateAtm() Atm {
 	i := getRandomNumber(1, 2)
-    var newAtm Atm
+	var newAtm Atm
 
 	switch i {
-		case 1:
-			newAtm = Atm{
-				ID: 111,
-				Name: "ATM-111-IL",
-				SerialNumber: "atmxph-2022-111",
-				Version: "v1.0",
-				ISPNetwork: "comcast-chicago",
-				StateID: "IL",
+	case 1:
+		newAtm = Atm{
+			ID:           111,
+			Name:         "ATM-111-IL",
+			SerialNumber: "atmxph-2022-111",
+			Version:      "v1.0",
+			ISPNetwork:   "comcast-chicago",
+			StateID:      "IL",
+		}
 
-			}
-
-		case 2:
-			newAtm = Atm{
-				ID: 222,
-				Name: "ATM-222-CA",
-				SerialNumber: "atmxph-2022-222",
-				Version: "v1.0",
-				ISPNetwork: "comcast-sanfrancisco",
-				StateID: "CA",
-			}
+	case 2:
+		newAtm = Atm{
+			ID:           222,
+			Name:         "ATM-222-CA",
+			SerialNumber: "atmxph-2022-222",
+			Version:      "v1.0",
+			ISPNetwork:   "comcast-sanfrancisco",
+			StateID:      "CA",
+		}
 	}
 
 	return newAtm
 }
 
-func generateBackendSystem() BackendSystem{
-    i := getRandomNumber(1, 3)
+func generateBackendSystem() BackendSystem {
+	i := getRandomNumber(1, 3)
 
 	newBackend := BackendSystem{
-    	ProcessName: "accounts",
-		Version: "v2.5",
-		OSType: "lnx",
-		OSVersion: "4.16.10-300.fc28.x86_64",
+		ProcessName:   "accounts",
+		Version:       "v2.5",
+		OSType:        "lnx",
+		OSVersion:     "4.16.10-300.fc28.x86_64",
 		CloudProvider: "amzn",
-		CloudRegion: "us-east-2",
+		CloudRegion:   "us-east-2",
 	}
 
 	switch i {
-		case 1:
-		 	newBackend.Endpoint = "api/v2.5/balance"
-		case 2:
-		  	newBackend.Endpoint = "api/v2.5/deposit"
-		case 3:
-			newBackend.Endpoint = "api/v2.5/withdrawn"
+	case 1:
+		newBackend.Endpoint = "api/v2.5/balance"
+	case 2:
+		newBackend.Endpoint = "api/v2.5/deposit"
+	case 3:
+		newBackend.Endpoint = "api/v2.5/withdrawn"
 
 	}
 
@@ -1656,14 +1655,14 @@ func generateBackendSystem() BackendSystem{
 
 func getRandomNumber(min int, max int) int {
 	rand.Seed(time.Now().UnixNano())
-	i := (rand.Intn(max - min + 1) + min)
-    return i
+	i := (rand.Intn(max-min+1) + min)
+	return i
 }
 
-func generateTraces() ptrace.Traces{
-	traces := ptraces.NewTraces()
+func generateTraces() ptrace.Traces {
+	traces := ptrace.NewTraces()
 
-	for i := 0; i <= numberOfTraces; i++{
+	for i := 0; i <= numberOfTraces; i++ {
 		newAtm := generateAtm()
 		newBackendSystem := generateBackendSystem()
 
@@ -1679,55 +1678,53 @@ func generateTraces() ptrace.Traces{
 	return traces
 }
 
-func fillResourceWithAtm(resource *pdata.Resource, atm Atm){
-   atmAttrs := resource.Attributes()
-   atmAttrs.InsertInt("atm.id", atm.ID)
-   atmAttrs.InsertString("atm.stateid", atm.StateID)
-   atmAttrs.InsertString("atm.ispnetwork", atm.ISPNetwork)
-   atmAttrs.InsertString("atm.serialnumber", atm.SerialNumber)
-   atmAttrs.InsertString(conventions.AttributeServiceName, atm.Name)
-   atmAttrs.InsertString(conventions.AttributeServiceVersion, atm.Version)
+func fillResourceWithAtm(resource *pcommon.Resource, atm Atm) {
+	atmAttrs := resource.Attributes()
+	atmAttrs.PutInt("atm.id", atm.ID)
+	atmAttrs.PutStr("atm.stateid", atm.StateID)
+	atmAttrs.PutStr("atm.ispnetwork", atm.ISPNetwork)
+	atmAttrs.PutStr("atm.serialnumber", atm.SerialNumber)
+	atmAttrs.PutStr(conventions.AttributeServiceName, atm.Name)
+	atmAttrs.PutStr(conventions.AttributeServiceVersion, atm.Version)
 
 }
 
-
-func fillResourceWithBackendSystem(resource *pdata.Resource, backend BackendSystem){
+func fillResourceWithBackendSystem(resource *pcommon.Resource, backend BackendSystem) {
 	backendAttrs := resource.Attributes()
 	var osType, cloudProvider string
 
 	switch {
-		case backend.CloudProvider == "amzn":
-			cloudProvider = conventions.AttributeCloudProviderAWS
-		case backend.OSType == "mcrsft":
-			cloudProvider = conventions.AttributeCloudProviderAzure
-		case backend.OSType == "gogl":
-			cloudProvider = conventions.AttributeCloudProviderGCP
+	case backend.CloudProvider == "amzn":
+		cloudProvider = conventions.AttributeCloudProviderAWS
+	case backend.OSType == "mcrsft":
+		cloudProvider = conventions.AttributeCloudProviderAzure
+	case backend.OSType == "gogl":
+		cloudProvider = conventions.AttributeCloudProviderGCP
 	}
 
-	backendAttrs.InsertString(conventions.AttributeCloudProvider, cloudProvider)
-	backendAttrs.InsertString(conventions.AttributeCloudRegion, backend.CloudRegion)
+	backendAttrs.PutStr(conventions.AttributeCloudProvider, cloudProvider)
+	backendAttrs.PutStr(conventions.AttributeCloudRegion, backend.CloudRegion)
 
 	switch {
-		case backend.OSType == "lnx":
-			osType = conventions.AttributeOSTypeLinux
-		case backend.OSType == "wndws":
-			osType = conventions.AttributeOSTypeWindows
-		case backend.OSType == "slrs":
-			osType = conventions.AttributeOSTypeSolaris
+	case backend.OSType == "lnx":
+		osType = conventions.AttributeOSTypeLinux
+	case backend.OSType == "wndws":
+		osType = conventions.AttributeOSTypeWindows
+	case backend.OSType == "slrs":
+		osType = conventions.AttributeOSTypeSolaris
 	}
 
-	backendAttrs.InsertString(conventions.AttributeOSType, osType)
-	backendAttrs.InsertString(conventions.AttributeOSVersion, backend.OSVersion)
+	backendAttrs.PutStr(conventions.AttributeOSType, osType)
+	backendAttrs.PutStr(conventions.AttributeOSVersion, backend.OSVersion)
 
-	backendAttrs.InsertString(conventions.AttributeServiceName, backend.ProcessName)
-	backendAttrs.InsertString(conventions.AttributeServiceVersion, backend.Version)
-
- }
+	backendAttrs.PutStr(conventions.AttributeServiceName, backend.ProcessName)
+	backendAttrs.PutStr(conventions.AttributeServiceVersion, backend.Version)
+}
 ```
 
 > #### Check your work
 >
-> - Imported the `go.opentelemetry.io/collector/model/semconv/v1.9.0` package as
+> - Imported the `go.opentelemetry.io/collector/semconv` package as
 >   `conventions`, in order to have access to all resource semantic conventions
 >   attribute names and values.
 > - Updated the `fillResourceWithAtm()` function by adding lines to properly
@@ -1889,14 +1886,12 @@ byte array and should follow the
 while the `pcommon.SpanID` is a unique ID within the context of the trace they
 are associated with and it's represented through a 8 byte array.
 
-The `pcommon` package provides the following helper functions to generate the
+The `pcommon` package provides the following types to generate the
 span's IDs:
 
-- `NewTraceID(bytes [16]byte) pcommon.TraceID` returns the `pcommon.TraceID` for
-  the given byte array
+- `type TraceID [16]byte`
 
-- `NewSpanID(bytes [8]byte) pcommon.SpanID` returns the `pcommon.SpanID` for the
-  given byte array
+- `type SpanID [8]byte`
 
 For this tutorial, you will be creating the IDs using functions from
 `github.com/google/uuid` package for the `pcommon.TraceID` and functions from
@@ -1905,18 +1900,18 @@ the `crypto/rand` package to randomly generate the `pcommon.SpanID`. Open the
 after that, add the following functions to help generate both IDs:
 
 ```go
-func NewTraceID() pdata.TraceID{
-	return pdata.NewTraceID(uuid.New())
+func NewTraceID() pcommon.TraceID {
+	return pcommon.TraceID(uuid.New())
 }
 
-func NewSpanID() pdata.SpanID {
+func NewSpanID() pcommon.SpanID {
 	var rngSeed int64
 	_ = binary.Read(crand.Reader, binary.LittleEndian, &rngSeed)
 	randSource := rand.New(rand.NewSource(rngSeed))
 
 	var sid [8]byte
 	randSource.Read(sid[:])
-    spanID := pdata.NewSpanID(sid)
+	spanID := pcommon.SpanID(sid)
 
 	return spanID
 }
@@ -1933,23 +1928,21 @@ representing the `BackendSystem` operations. Here is what the initial
 implementation for the `appendTraceSpans()` function looks like:
 
 ```go
-func appendTraceSpans(backend *BackendSystem, backendScopeSpans *ptrace.ScopeSpans, atmScopeSpans *ptrace.ScopeSpans){
+func appendTraceSpans(backend *BackendSystem, backendScopeSpans *ptrace.ScopeSpans, atmScopeSpans *ptrace.ScopeSpans) {
 	traceId := NewTraceID()
 	backendSpanId := NewSpanID()
 
 	backendDuration, _ := time.ParseDuration("1s")
-    backendSpanStartTime := time.Now()
-    backendSpanFinishTime := backendSpanStartTime.Add(backendDuration)
-
+	backendSpanStartTime := time.Now()
+	backendSpanFinishTime := backendSpanStartTime.Add(backendDuration)
 
 	backendSpan := backendScopeSpans.Spans().AppendEmpty()
 	backendSpan.SetTraceID(traceId)
 	backendSpan.SetSpanID(backendSpanId)
 	backendSpan.SetName(backend.Endpoint)
-	backendSpan.SetKind(pdata.SpanKindServer)
-	backendSpan.SetStartTimestamp(pdata.NewTimestampFromTime(backendSpanStartTime))
-	backendSpan.SetEndTimestamp(pdata.NewTimestampFromTime(backendSpanFinishTime))
-
+	backendSpan.SetKind(ptrace.SpanKindServer)
+	backendSpan.SetStartTimestamp(pcommon.NewTimestampFromTime(backendSpanStartTime))
+	backendSpan.SetEndTimestamp(pcommon.NewTimestampFromTime(backendSpanFinishTime))
 }
 ```
 
@@ -1981,10 +1974,10 @@ the trace by calling the `appendTraceSpans()` function. Here is what the updated
 `generateTraces()` function looks like:
 
 ```go
-func generateTraces() ptrace.Traces{
-	traces := ptraces.NewTraces()
+func generateTraces() ptrace.Traces {
+	traces := ptrace.NewTraces()
 
-	for i := 0; i <= numberOfTraces; i++{
+	for i := 0; i <= numberOfTraces; i++ {
 		newAtm := generateAtm()
 		newBackendSystem := generateBackendSystem()
 
@@ -1999,7 +1992,6 @@ func generateTraces() ptrace.Traces{
 		fillResourceWithBackendSystem(&backendResource, newBackendSystem)
 
 		backendInstScope := appendAtmSystemInstrScopeSpans(&resourceSpan)
-
 
 		appendTraceSpans(&newBackendSystem, &backendInstScope, &atmInstScope)
 	}
