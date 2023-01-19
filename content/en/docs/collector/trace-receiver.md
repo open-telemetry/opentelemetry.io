@@ -728,21 +728,20 @@ accomplish that.
 
 All the receiver APIs responsible to enable the signals are currently declared
 in the
-[component/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.53.0/component/receiver.go)
+[receiver/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.69.0/receiver/receiver.go)
 file within the OTel Collector's project in GitHub, open the file and take a
 minute to browse through all the interfaces declared in it.
 
-Notice that `component.TracesReceiver` (and its siblings
-`component.MetricsReceiver` and `component.LogsReceiver`) at this point in time,
+Notice that `receiver.Traces` (and its siblings
+`receiver.Metrics` and `receiver.Logs`) at this point in time,
 doesn't describe any specific methods other than the ones it "inherits" from
-`component.Receiver` which also doesn't describe any specific methods other than
-the ones it "inherits" from `component.Component`.
+`component.Component`.
 
 It might feel weird, but remember, the Collector's API was meant to be
 extensible, and the components and their signals might evolve in different ways,
 so the role of those interfaces exist to help support that.
 
-So, to create a `component.TracesReceiver`, you just need to implement the
+So, to create a `receiver.Traces`, you just need to implement the
 following methods described by `component.Component` interface:
 
 ```go
@@ -782,7 +781,7 @@ type tailtracerReceiver struct{
 
 Now that you have the `tailtracerReceiver` type you can implement the Start()
 and Shutdown() methods so the receiver type can be compliant with the
-`component.TraceReceiver` interface.
+`receiver.Traces` interface.
 
 Here is what the `tailtracer/trace-receiver.go` file should look like with the
 methods implementation:
@@ -798,14 +797,13 @@ import (
 )
 
 type tailtracerReceiver struct {
-
 }
 
 func (tailtracerRcvr *tailtracerReceiver) Start(ctx context.Context, host component.Host) error {
 	return nil
 }
 
-func (tailtracerRcvr *tailtracerReceiver) Shutdown(context.Context) error {
+func (tailtracerRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
 	return nil
 }
 ```
@@ -818,9 +816,9 @@ func (tailtracerRcvr *tailtracerReceiver) Shutdown(context.Context) error {
 >   where the `Host` type is declared
 > - Added a bootstrap implementation of the
 >   `Start(ctx context.Context, host component.Host)` method to comply with the
->   `component.TraceReceiver` interface.
+>   `receiver.Traces` interface.
 > - Added a bootstrap implementation of the `Shutdown(ctx context.Context)`
->   method to comply with the `component.TraceReceiver` interface.
+>   method to comply with the `receiver.Traces` interface.
 
 The `Start()` method is passing 2 references (`context.Context` and
 `component.Host`) that your receiver might need to keep so they can be used as
@@ -895,7 +893,7 @@ func (tailtracerRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
 
 ### Keeping information passed by the receiver's factory
 
-Now that you have implemented the `component.TraceReceiver` interface methods,
+Now that you have implemented the `receiver.Traces` interface methods,
 your `tailtracer` receiver component is ready to be instantiated and returned by
 its factory.
 
@@ -903,10 +901,10 @@ Open the `tailtracer/factory.go` file and navigate to the
 `createTracesReceiver()` function. Notice that the factory will pass references
 as part of the `createTracesReceiver()` function parameters that your receiver
 actually requires to work properly like its configuration settings
-(`config.Receiver`), the next `Consumer` in the pipeline that will consume the
+(`component.Config`), the next `Consumer` in the pipeline that will consume the
 generated traces (`consumer.Traces`) and the Collector's logger so the
 `tailtracer` receiver can add meaningful events to it
-(`component.ReceiverCreateSettings`).
+(`receiver.CreateSettings`).
 
 Given that all this information will be only be made available to the receiver
 at the moment its instantiated by the factory, The `tailtracerReceiver` type
@@ -923,14 +921,14 @@ package tailtracer
 
 import (
 	"context"
+	"time"
 	"go.opentelemetry.io/collector/component"
 	"go.opentelemetry.io/collector/consumer"
 	"go.uber.org/zap"
-
 )
 
 type tailtracerReceiver struct {
-    host         component.Host
+	host         component.Host
 	cancel       context.CancelFunc
 	logger       *zap.Logger
 	nextConsumer consumer.Traces
@@ -938,8 +936,8 @@ type tailtracerReceiver struct {
 }
 
 func (tailtracerRcvr *tailtracerReceiver) Start(ctx context.Context, host component.Host) error {
-    tailtracerRcvr.host = host
-    ctx = context.Background()
+	tailtracerRcvr.host = host
+	ctx = context.Background()
 	ctx, tailtracerRcvr.cancel = context.WithCancel(ctx)
 
 	interval, _ := time.ParseDuration(tailtracerRcvr.config.Interval)
@@ -1021,25 +1019,25 @@ package tailtracer
 
 import (
 	"context"
+	"time"
 
 	"go.opentelemetry.io/collector/component"
-	"go.opentelemetry.io/collector/config"
 	"go.opentelemetry.io/collector/consumer"
+	"go.opentelemetry.io/collector/receiver"
 )
 
 const (
 	typeStr = "tailtracer"
-	defaultInterval = "1m"
+	defaultInterval = 1 * time.Minute
 )
 
-func createDefaultConfig() config.Receiver {
+func createDefaultConfig() component.Config {
 	return &Config{
-		ReceiverSettings:   config.NewReceiverSettings(config.NewComponentID(typeStr)),
-		Interval: defaultInterval,
+		Interval: string(defaultInterval),
 	}
 }
 
-func createTracesReceiver(_ context.Context, params component.ReceiverCreateSettings, baseCfg config.Receiver, consumer consumer.Traces) (component.TracesReceiver, error) {
+func createTracesReceiver(_ context.Context, params receiver.CreateSettings, baseCfg component.Config, consumer consumer.Traces) (receiver.Traces, error) {
 	if consumer == nil {
 		return nil, component.ErrNilNextConsumer
 	}
@@ -1054,15 +1052,14 @@ func createTracesReceiver(_ context.Context, params component.ReceiverCreateSett
 	}
 
 	return traceRcvr, nil
-
 }
 
 // NewFactory creates a factory for tailtracer receiver.
-func NewFactory() component.ReceiverFactory {
-	return component.NewReceiverFactory(
+func NewFactory() receiver.Factory {
+	return receiver.NewFactory(
 		typeStr,
 		createDefaultConfig,
-		component.WithTracesReceiver(createTracesReceiver))
+		receiver.WithTraces(createTracesReceiver, component.StabilityLevelAlpha))
 }
 ```
 
@@ -1072,9 +1069,9 @@ func NewFactory() component.ReceiverFactory {
 >   and if not returns the `component.ErrNilNextConsumer`error.
 > - Added a variable called `logger` and initialized it with the Collector's
 >   logger that is available as a field named `Logger` within the
->   `component.ReceiverCreateSettings` reference.
+>   `receiver.CreateSettings` reference.
 > - Added a variable called `tailtracerCfg` and initialized it by casting the
->   `config.Receiver` reference to the `tailtracer` receiver `Config`.
+>   `component.Config` reference to the `tailtracer` receiver `Config`.
 > - Added a variable called `traceRcvr` and initialized it with the
 >   `tailtracerReceiver` instance using the factory information stored within
 >   the variables.
