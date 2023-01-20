@@ -1372,7 +1372,7 @@ have data to represent the telemetry sources involved in your trace.
 Open the `tailtracer/model.go` file and add the following function to it:
 
 ```go
-func generateTraces() ptrace.Traces{
+func generateTraces(numberOfTraces int) ptrace.Traces{
 	traces := ptraces.NewTraces()
 
 	for i := 0; i <= numberOfTraces; i++{
@@ -1418,7 +1418,7 @@ Update the `generateTrace()` function with the following changes:
 Here is what the function should look like after you implemented these changes:
 
 ```go
-func generateTraces() ptrace.Traces{
+func generateTraces(numberOfTraces int) ptrace.Traces{
 	traces := ptrace.NewTraces()
 
 	for i := 0; i <= numberOfTraces; i++{
@@ -1659,7 +1659,7 @@ func getRandomNumber(min int, max int) int {
 	return i
 }
 
-func generateTraces() ptrace.Traces {
+func generateTraces(numberOfTraces int) ptrace.Traces {
 	traces := ptrace.NewTraces()
 
 	for i := 0; i <= numberOfTraces; i++ {
@@ -1733,7 +1733,7 @@ func fillResourceWithBackendSystem(resource *pcommon.Resource, backend BackendSy
 > - Updated the `fillResourceWithBackendSystem()` function by adding lines to
 >   properly assign the "service.name" and "service.version" attributes to the
 >   `pcommon.Resource` representing the `BackendSystem` entity
-> - Updated the `generateTraces()` function by adding lines to properly
+> - Updated the `generateTraces(numberOfTraces int)` function by adding lines to properly
 >   instantiate a `pcommon.Resource` and fill in the attribute information for
 >   both `Atm` and `BackendSystem` entities using the `fillResourceWithAtm()`
 >   and `fillResourceWithBackendSystem()` functions
@@ -1805,13 +1805,13 @@ Here is what `appendAtmSystemInstrScopeSpans` looks like after the update:
 }
 ```
 
-You can now update the `generateTraces()` function and add variables to
+You can now update the `generateTraces(numberOfTraces int)` function and add variables to
 represent the instrumentation scope used by both `Atm` and `BackendSystem`
 entities by initializing them with the `appendAtmSystemInstrScopeSpans()`. Here
 is what `generateTraces()` looks like after the update:
 
 ```go
-func generateTraces() ptrace.Traces{
+func generateTraces(numberOfTraces int) ptrace.Traces{
 	traces := ptraces.NewTraces()
 
 	for i := 0; i <= numberOfTraces; i++{
@@ -1974,7 +1974,7 @@ the trace by calling the `appendTraceSpans()` function. Here is what the updated
 `generateTraces()` function looks like:
 
 ```go
-func generateTraces() ptrace.Traces {
+func generateTraces(numberOfTraces int) ptrace.Traces {
 	traces := ptrace.NewTraces()
 
 	for i := 0; i <= numberOfTraces; i++ {
@@ -2027,7 +2027,7 @@ func (tailtracerRcvr *tailtracerReceiver) Start(ctx context.Context, host compon
 			select {
 			case <-ticker.C:
 				tailtracerRcvr.logger.Info("I should start processing traces now!")
-				tailtracerRcvr.nextConsumer.ConsumeTraces(ctx, generateTraces())
+				tailtracerRcvr.nextConsumer.ConsumeTraces(ctx, generateTraces(tailtracerRcvr.config.NumberOfTraces))
 			case <-ctx.Done():
 				return
 			}
@@ -2043,7 +2043,7 @@ func (tailtracerRcvr *tailtracerReceiver) Start(ctx context.Context, host compon
 > - Added a line under the `case <=ticker.C` condition calling the
 >   `tailtracerRcvr.nextConsumer.ConsumeTraces()` method passing the new context
 >   created within the `Start()` method (`ctx`) and a call to the
->   `generateTraces()` function so the generated traces can be pushed to the
+>   `generateTraces(numberOfTraces int)` function so the generated traces can be pushed to the
 >   next consumer in the pipeline
 
 If you run your `dev-otelcol` here is what the output should look like after 2
