@@ -94,7 +94,7 @@ processors:
 
 exporters:
   logging:
-    logLevel: debug
+    verbosity: Detailed
   jaeger:
     endpoint: localhost:14250
     tls:
