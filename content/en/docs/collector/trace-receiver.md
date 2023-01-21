@@ -45,16 +45,16 @@ above in order to create the receiver, so let's get started.
 ## Setting up your receiver development and testing environment
 
 First use the [Building a Custom Collector](/docs/collector/custom-collector) tutorial
-to create a Collector instance named `dev-otelcol`; all you need is to
+to create a Collector instance named `otelcol-dev`; all you need is to
 copy the `builder-config.yaml` described on Step 2 and make the following changes:
 
 ```yaml
 dist:
-  name: dev-otelcol # the binary name. Optional.
-  output_path: ./dev-otelcol # the path to write the output (sources and binary). Optional.
+  name: otelcol-dev # the binary name. Optional.
+  output_path: ./otelcol-dev # the path to write the output (sources and binary). Optional.
 ```
 
-As an outcome you should now have a `dev-otelcol` folder with your Collector's
+As an outcome you should now have a `otelcol-dev` folder with your Collector's
 development instance ready to go.
 
 In order to properly test your trace receiver, you will need a distributed
@@ -74,7 +74,7 @@ docker run -d --name jaeger \
 Now, create a `config.yaml` file so you can set up your Collector's components.
 
 ```cmd
-cd dev-otelcol
+cd otelcol-dev
 touch config.yaml
 ```
 
@@ -106,6 +106,9 @@ service:
       receivers: [otlp]
       processors: []
       exporters: [jaeger, logging]
+  telemetry:
+    logs:
+      level: "debug"
 ```
 
 Notice that I am only using the `insecure` flag in my `jaeger` receiver config
@@ -113,10 +116,10 @@ to make my local development setup easier; you should not use this flag when
 running your collector in production.
 
 In order to verify that your initial pipeline is properly set up, you should have
-the following output after running your `dev-otelcol` command:
+the following output after running your `otelcol-dev` command:
 
 ```cmd
-dev-otelcol % ./dev-otelcol --config config.yaml
+otelcol-dev % ./otelcol-dev --config config.yaml
 2022-06-21T13:02:09.253-0500    info    builder/exporters_builder.go:255        Exporter was built.     {"kind": "exporter", "name": "jaeger"}
 2022-06-21T13:02:09.254-0500    info    builder/exporters_builder.go:255        Exporter was built.     {"kind": "exporter", "name": "logging"}
 2022-06-21T13:02:09.254-0500    info    builder/pipelines_builder.go:224        Pipeline was built.     {"kind": "pipeline", "name": "traces"}
@@ -137,7 +140,7 @@ dev-otelcol % ./dev-otelcol --config config.yaml
 2022-06-21T13:02:09.258-0500    info    builder/receivers_builder.go:67 Receiver is starting... {"kind": "receiver", "name": "otlp"}
 2022-06-21T13:02:09.258-0500    info    otlpreceiver/otlp.go:70 Starting GRPC server on endpoint localhost:55690        {"kind": "receiver", "name": "otlp"}
 2022-06-21T13:02:09.261-0500    info    builder/receivers_builder.go:72 Receiver started.       {"kind": "receiver", "name": "otlp"}
-2022-06-21T13:02:09.262-0500    info    service/collector.go:226        Starting dev-otelcol... {"Version": "1.0.0", "NumCPU": 12}
+2022-06-21T13:02:09.262-0500    info    service/collector.go:226        Starting otelcol-dev... {"Version": "1.0.0", "NumCPU": 12}
 2022-06-21T13:02:09.262-0500    info    service/collector.go:134        Everything is ready. Begin running and processing data.
 2022-06-21T13:02:10.258-0500    info    jaegerexporter@v0.53.0/exporter.go:186  State of the connection with the Jaeger Collector backend       {"kind": "exporter", "name": "jaeger", "state": "READY"}
 ```
@@ -283,14 +286,14 @@ file inside the Collector's GitHub project.
 
 ## Enabling the Collector to instantiate your receiver
 
-At the beginning of this tutorial, you created your `dev-otelcol` instance,
+At the beginning of this tutorial, you created your `otelcol-dev` instance,
 which is bootstrapped with the following components:
 
 - Receivers: OTLP Receiver
 - Processors: Batch Processor
 - Exporters: Logging and Jaeger Exporters
 
-Go ahead and open the `components.go` file under the `dev-otelcol` folder, and
+Go ahead and open the `components.go` file under the `otelcol-dev` folder, and
 let's take a look at the `components()` function.
 
 ```go
@@ -461,7 +464,7 @@ func createDefaultConfig() component.Config {
 
 // NewFactory creates a factory for tailtracer receiver.
 func NewFactory() receiver.Factory {
-	nil
+	return nil
 }
 ```
 
@@ -630,7 +633,7 @@ import (
 	jaegerexporter "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/jaegerexporter"
 	batchprocessor "go.opentelemetry.io/collector/processor/batchprocessor"
 	otlpreceiver "go.opentelemetry.io/collector/receiver/otlpreceiver"
-	tailtracer "github.com/gouslu/otelcol-dev/tailtracer"
+	tailtracer "github.com/rquedas/otel4devs/collector/receiver/trace-receiver/tailtracer"
 )
 
 func components() (otelcol.Factories, error) {
@@ -681,11 +684,11 @@ func components() (otelcol.Factories, error) {
 
 We added the `tailtracer` receiver settings to the `config.yaml` previously, so
 here is what the beginning of the output for running your Collector with
-`dev-otelcol` command should look like after building it with the current
+`otelcol-dev` command should look like after building it with the current
 codebase:
 
 ```cmd
-dev-otelcol % ./dev-otelcol --config config.yaml
+otelcol-dev % ./otelcol-dev --config config.yaml
 2022-02-24T12:17:41.454-0600    info    service/collector.go:190        Applying configuration...
 2022-02-24T12:17:41.454-0600    info    builder/exporters_builder.go:254        Exporter was built.     {"kind": "exporter", "name": "logging"}
 2022-02-24T12:17:41.454-0600    info    builder/exporters_builder.go:254        Exporter was built.     {"kind": "exporter", "name": "jaeger"}
@@ -711,7 +714,7 @@ Now, let's test one of the `tailtracer` settings validation rules. Remove the
 for running the Collector will look like:
 
 ```cmd
-dev-otelcol % ./dev-otelcol --config config.yaml
+otelcol-dev % ./otelcol-dev --config config.yaml
 Error: invalid configuration: receiver "tailtracer" has invalid configuration: number_of_traces must be at least 1
 2022/02/24 13:00:20 collector server run finished with error: invalid configuration: receiver "tailtracer" has invalid configuration: number_of_traces must be at least 1
 ```
@@ -1091,11 +1094,11 @@ service:
       exporters: [jaeger, logging]
 ```
 
-Here is what the output for running your Collector with `dev-otelcol` command
+Here is what the output for running your Collector with `otelcol-dev` command
 should look like after you updated the `traces` pipeline:
 
 ```cmd
-dev-otelcol % ./dev-otelcol --config config.yaml
+otelcol-dev % ./otelcol-dev --config config.yaml
 2022-03-03T11:19:50.779-0600    info    service/collector.go:190        Applying configuration...
 2022-03-03T11:19:50.780-0600    info    builder/exporters_builder.go:254        Exporter was built.     {"kind": "exporter", "name": "jaeger"}
 2022-03-03T11:19:50.780-0600    info    builder/exporters_builder.go:254        Exporter was built.     {"kind": "exporter", "name": "logging"}
@@ -1120,7 +1123,7 @@ dev-otelcol % ./dev-otelcol --config config.yaml
 2022-03-03T11:19:50.783-0600    info    builder/receivers_builder.go:73 Receiver started.       {"kind": "receiver", "name": "tailtracer"}
 2022-03-03T11:19:50.783-0600    info    service/telemetry.go:92 Setting up own telemetry...
 2022-03-03T11:19:50.788-0600    info    service/telemetry.go:116        Serving Prometheus metrics      {"address": ":8888", "level": "basic", "service.instance.id": "0ca4907c-6fda-4fe1-b0e9-b73d789354a4", "service.version": "latest"}
-2022-03-03T11:19:50.788-0600    info    service/collector.go:239        Starting dev-otelcol... {"Version": "1.0.0", "NumCPU": 12}
+2022-03-03T11:19:50.788-0600    info    service/collector.go:239        Starting otelcol-dev... {"Version": "1.0.0", "NumCPU": 12}
 2022-03-03T11:19:50.788-0600    info    service/collector.go:135        Everything is ready. Begin running and processing data.
 2022-03-21T15:19:51.717-0500	info	jaegerexporter@v0.46.0/exporter.go:186	State of the connection with the Jaeger Collector backend	{"kind": "exporter", "name": "jaeger", "state": "READY"}
 2022-03-03T11:20:51.783-0600    info    tailtracer/trace-receiver.go:23  I should start processing traces now!   {"kind": "receiver", "name": "tailtracer"}
@@ -1373,7 +1376,7 @@ Open the `tailtracer/model.go` file and add the following function to it:
 
 ```go
 func generateTraces(numberOfTraces int) ptrace.Traces{
-	traces := ptraces.NewTraces()
+	traces := ptrace.NewTraces()
 
 	for i := 0; i <= numberOfTraces; i++{
 		newAtm := generateAtm()
@@ -1577,7 +1580,7 @@ import (
 	"time"
 	"go.opentelemetry.io/collector/pdata/pcommon"
 	"go.opentelemetry.io/collector/pdata/ptrace"
-	conventions "go.opentelemetry.io/collector/semconv"
+	conventions "go.opentelemetry.io/collector/semconv/v1.9.0""
 )
 
 type Atm struct {
@@ -1724,7 +1727,7 @@ func fillResourceWithBackendSystem(resource *pcommon.Resource, backend BackendSy
 
 > #### Check your work
 >
-> - Imported the `go.opentelemetry.io/collector/semconv` package as
+> - Imported the `go.opentelemetry.io/collector/semconv/v1.9.0` package as
 >   `conventions`, in order to have access to all resource semantic conventions
 >   attribute names and values.
 > - Updated the `fillResourceWithAtm()` function by adding lines to properly
@@ -2046,11 +2049,11 @@ func (tailtracerRcvr *tailtracerReceiver) Start(ctx context.Context, host compon
 >   `generateTraces(numberOfTraces int)` function so the generated traces can be pushed to the
 >   next consumer in the pipeline
 
-If you run your `dev-otelcol` here is what the output should look like after 2
+If you run your `otelcol-dev` here is what the output should look like after 2
 minutes running:
 
 ```cmd
-Starting: /Users/rquedas/go/bin/dlv dap --check-go-version=false --listen=127.0.0.1:54625 --log-dest=3 from /Users/rquedas/Documents/vscode-workspace/otel4devs/collector/receiver/trace-receiver/dev-otelcol
+Starting: /Users/rquedas/go/bin/dlv dap --check-go-version=false --listen=127.0.0.1:54625 --log-dest=3 from /Users/rquedas/Documents/vscode-workspace/otel4devs/collector/receiver/trace-receiver/otelcol-dev
 DAP server listening at: 127.0.0.1:54625
 2022-03-21T15:44:22.737-0500	info	builder/exporters_builder.go:255	Exporter was built.	{"kind": "exporter", "name": "logging"}
 2022-03-21T15:44:22.737-0500	info	builder/exporters_builder.go:255	Exporter was built.	{"kind": "exporter", "name": "jaeger"}
@@ -2075,7 +2078,7 @@ DAP server listening at: 127.0.0.1:54625
 2022-03-21T15:44:22.741-0500	info	builder/receivers_builder.go:73	Receiver started.	{"kind": "receiver", "name": "tailtracer"}
 2022-03-21T15:44:22.741-0500	info	service/telemetry.go:109	Setting up own telemetry...
 2022-03-21T15:44:22.741-0500	info	service/telemetry.go:129	Serving Prometheus metrics	{"address": ":8888", "level": "basic", "service.instance.id": "4b134d3e-2822-4360-b2c6-7030bea0beec", "service.version": "latest"}
-2022-03-21T15:44:22.742-0500	info	service/collector.go:248	Starting dev-otelcol...	{"Version": "1.0.0", "NumCPU": 12}
+2022-03-21T15:44:22.742-0500	info	service/collector.go:248	Starting otelcol-dev...	{"Version": "1.0.0", "NumCPU": 12}
 2022-03-21T15:44:22.742-0500	info	service/collector.go:144	Everything is ready. Begin running and processing data.
 2022-03-21T15:44:23.739-0500	info	jaegerexporter@v0.46.0/exporter.go:186	State of the connection with the Jaeger Collector backend	{"kind": "exporter", "name": "jaeger", "state": "READY"}
 2022-03-21T15:45:22.743-0500	info	tailtracer/trace-receiver.go:33	I should start processing traces now!	{"kind": "receiver", "name": "tailtracer"}
@@ -2223,7 +2226,7 @@ func appendTraceSpans(backend *BackendSystem, backendScopeSpans *ptrace.ScopeSpa
 }
 ```
 
-Go ahead and run your `dev-otelcol` again and after 2 minutes running, you
+Go ahead and run your `otelcol-dev` again and after 2 minutes running, you
 should start seeing traces in Jaeger like the following:
 ![Jaeger trace](/img/docs/tutorials/Jaeger-FullSystem-Traces-List.png)
 
