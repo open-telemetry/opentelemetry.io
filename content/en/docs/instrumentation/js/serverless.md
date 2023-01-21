@@ -3,13 +3,16 @@ title: Serverless
 weight: 8
 ---
 
-This guide shows how to get started with tracing serverless functions using OpenTelemetry instrumentation libraries.
+This guide shows how to get started with tracing serverless functions using
+OpenTelemetry instrumentation libraries.
 
 ## AWS Lambda
 
-The following show how to use Lambda wrappers with OpenTelemetry to instrument AWS Lambda functions and send traces to a configured backend.
+The following show how to use Lambda wrappers with OpenTelemetry to instrument
+AWS Lambda functions and send traces to a configured backend.
 
-Check out [OpenTelemetry Lambda Layers](https://github.com/open-telemetry/opentelemetry-lambda), if you are interested in a plug and play user experience.
+Check out [OpenTelemetry Lambda Layers](https://github.com/open-telemetry/opentelemetry-lambda),
+if you are interested in a plug and play user experience.
 
 ### Dependencies
 
@@ -76,12 +79,13 @@ registerInstrumentations({
 ```
 
 Replace `<backend_url>` with the URL of your favorite backend to export all
-traces to it. If you don't have one setup already, you can check out [Jaeger](https://www.jaegertracing.io/) or [Zipkin](https://zipkin.io/).
+traces to it. If you don't have one setup already, you can check out
+[Jaeger](https://www.jaegertracing.io/) or [Zipkin](https://zipkin.io/).
 
 Note that `disableAwsContextPropagation` is set to true. The reason for this is
 that the Lambda instrumentation tries to use the X-Ray context headers by
-default, unless active tracing is enabled for this function, this results in a non-sampled context, which creates a
-`NonRecordingSpan`.
+default, unless active tracing is enabled for this function, this results in a
+non-sampled context, which creates a `NonRecordingSpan`.
 
 More details can be found in the instrumentation
 [documentation](https://www.npmjs.com/package/@opentelemetry/instrumentation-aws-lambda).
@@ -135,7 +139,8 @@ There are multiple ways of deploying your Lambda function:
 * [Serverless Framework](https://github.com/serverless/serverless)
 * [Terraform](https://github.com/hashicorp/terraform)
 
-Here we will be using Serverless Framework, more details can be found in the [Setting Up Serverless Framework guide](https://www.serverless.com/framework/docs/getting-started).
+Here we will be using Serverless Framework, more details can be found in the
+[Setting Up Serverless Framework guide](https://www.serverless.com/framework/docs/getting-started).
 
 Create a file called `serverless.yml`:
 
@@ -180,11 +185,15 @@ The following shows how to instrument [http triggered function](https://cloud.go
 
 ### Creating function
 
-Login to GCP and create or select a project where your function should be placed. In the side menu go to _Serverless_ and select _Cloud Functions_. Next, click on _Create Function_, and select [2nd generation](https://cloud.google.com/blog/products/serverless/cloud-functions-2nd-generation-now-generally-available) for your environment, provide a function name and select your region.  
+Login to GCP and create or select a project where your function should be placed.
+In the side menu go to _Serverless_ and select _Cloud Functions_. Next, click on _Create Function_,
+and select [2nd generation](https://cloud.google.com/blog/products/serverless/cloud-functions-2nd-generation-now-generally-available)
+for your environment, provide a function name and select your region.  
 
-### Setup environment variable for otelwrapper 
+### Setup environment variable for otelwrapper
 
-If closed, open the _Runtime, build, connections and security settings_ menu and scroll down and add the environment variable `NODE_OPTIONS` with the following value:
+If closed, open the _Runtime, build, connections and security settings_ menu and
+scroll down and add the environment variable `NODE_OPTIONS` with the following value:
 
 ```shell
 --require ./otelwrapper.js
@@ -192,11 +201,12 @@ If closed, open the _Runtime, build, connections and security settings_ menu and
 
 ### Select runtime
 
-On the next screen (_Code_), select Node.js version 16 for your runtime
+On the next screen (_Code_), select Node.js version 16 for your runtime.
 
 ### Establish otel wrapper
 
-Create a new file called `otelwrapper.js`, that will be used to instrument your service. Please make sure that you provide a `SERVICE_NAME` and that you set the `<address for your backend>`
+Create a new file called `otelwrapper.js`, that will be used to instrument your service.
+Please make sure that you provide a `SERVICE_NAME` and that you set the `<address for your backend>`.
 
 ```javascript
 /* otelwrapper.js */
@@ -242,6 +252,7 @@ registerInstrumentations({
 ```
 
 ### Establish package.json
+
 Add the following content to your package.json:
 
 ```json
@@ -263,7 +274,7 @@ Add the following content to your package.json:
 
 ### Add HTTP call to function
 
-The following code makes a call to the OpenTemetry web site to demonstrate an outbound call
+The following code makes a call to the OpenTemetry web site to demonstrate an outbound call.
 
 ```javascript
 /* index.js */
@@ -279,9 +290,12 @@ functions.http('helloHttp', (req, res) => {
   })
 });
 ```
+
 ### Backend
 
-If you run OTel collector in GCP VM you are likely to need to [create VPC access connector](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access) to be able to send traces. 
+If you run OTel collector in GCP VM you are likely to need to
+[create VPC access connector](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
+to be able to send traces.
 
 ### Deploy
 
