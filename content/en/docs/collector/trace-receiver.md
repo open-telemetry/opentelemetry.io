@@ -950,10 +950,10 @@ func (tailtracerRcvr *tailtracerReceiver) Start(ctx context.Context, host compon
 
 		for {
 			select {
-			case <-ticker.C:
-				tailtracerRcvr.logger.Info("I should start processing traces now!")
-			case <-ctx.Done():
-				return
+				case <-ticker.C:
+					tailtracerRcvr.logger.Info("I should start processing traces now!")
+				case <-ctx.Done():
+					return
 			}
 		}
 	}()
@@ -1607,25 +1607,25 @@ func generateAtm() Atm {
 	var newAtm Atm
 
 	switch i {
-	case 1:
-		newAtm = Atm{
-			ID:           111,
-			Name:         "ATM-111-IL",
-			SerialNumber: "atmxph-2022-111",
-			Version:      "v1.0",
-			ISPNetwork:   "comcast-chicago",
-			StateID:      "IL",
-		}
+		case 1:
+			newAtm = Atm{
+				ID:           111,
+				Name:         "ATM-111-IL",
+				SerialNumber: "atmxph-2022-111",
+				Version:      "v1.0",
+				ISPNetwork:   "comcast-chicago",
+				StateID:      "IL",
+			}
 
-	case 2:
-		newAtm = Atm{
-			ID:           222,
-			Name:         "ATM-222-CA",
-			SerialNumber: "atmxph-2022-222",
-			Version:      "v1.0",
-			ISPNetwork:   "comcast-sanfrancisco",
-			StateID:      "CA",
-		}
+		case 2:
+			newAtm = Atm{
+				ID:           222,
+				Name:         "ATM-222-CA",
+				SerialNumber: "atmxph-2022-222",
+				Version:      "v1.0",
+				ISPNetwork:   "comcast-sanfrancisco",
+				StateID:      "CA",
+			}
 	}
 
 	return newAtm
@@ -1644,13 +1644,12 @@ func generateBackendSystem() BackendSystem {
 	}
 
 	switch i {
-	case 1:
-		newBackend.Endpoint = "api/v2.5/balance"
-	case 2:
-		newBackend.Endpoint = "api/v2.5/deposit"
-	case 3:
-		newBackend.Endpoint = "api/v2.5/withdrawn"
-
+		case 1:
+			newBackend.Endpoint = "api/v2.5/balance"
+		case 2:
+			newBackend.Endpoint = "api/v2.5/deposit"
+		case 3:
+			newBackend.Endpoint = "api/v2.5/withdrawn"
 	}
 
 	return newBackend
@@ -1697,24 +1696,24 @@ func fillResourceWithBackendSystem(resource *pcommon.Resource, backend BackendSy
 	var osType, cloudProvider string
 
 	switch {
-	case backend.CloudProvider == "amzn":
-		cloudProvider = conventions.AttributeCloudProviderAWS
-	case backend.OSType == "mcrsft":
-		cloudProvider = conventions.AttributeCloudProviderAzure
-	case backend.OSType == "gogl":
-		cloudProvider = conventions.AttributeCloudProviderGCP
+		case backend.CloudProvider == "amzn":
+			cloudProvider = conventions.AttributeCloudProviderAWS
+		case backend.OSType == "mcrsft":
+			cloudProvider = conventions.AttributeCloudProviderAzure
+		case backend.OSType == "gogl":
+			cloudProvider = conventions.AttributeCloudProviderGCP
 	}
 
 	backendAttrs.PutStr(conventions.AttributeCloudProvider, cloudProvider)
 	backendAttrs.PutStr(conventions.AttributeCloudRegion, backend.CloudRegion)
 
 	switch {
-	case backend.OSType == "lnx":
-		osType = conventions.AttributeOSTypeLinux
-	case backend.OSType == "wndws":
-		osType = conventions.AttributeOSTypeWindows
-	case backend.OSType == "slrs":
-		osType = conventions.AttributeOSTypeSolaris
+		case backend.OSType == "lnx":
+			osType = conventions.AttributeOSTypeLinux
+		case backend.OSType == "wndws":
+			osType = conventions.AttributeOSTypeWindows
+		case backend.OSType == "slrs":
+			osType = conventions.AttributeOSTypeSolaris
 	}
 
 	backendAttrs.PutStr(conventions.AttributeOSType, osType)
@@ -2028,11 +2027,11 @@ func (tailtracerRcvr *tailtracerReceiver) Start(ctx context.Context, host compon
 		defer ticker.Stop()
 		for {
 			select {
-			case <-ticker.C:
-				tailtracerRcvr.logger.Info("I should start processing traces now!")
-				tailtracerRcvr.nextConsumer.ConsumeTraces(ctx, generateTraces(tailtracerRcvr.config.NumberOfTraces))
-			case <-ctx.Done():
-				return
+				case <-ticker.C:
+					tailtracerRcvr.logger.Info("I should start processing traces now!")
+					tailtracerRcvr.nextConsumer.ConsumeTraces(ctx, generateTraces(tailtracerRcvr.config.NumberOfTraces))
+				case <-ctx.Done():
+					return
 			}
 		}
 	}()
@@ -2183,13 +2182,13 @@ func appendTraceSpans(backend *BackendSystem, backendScopeSpans *ptrace.ScopeSpa
 	var atmOperationName string
 
 	switch {
-	case strings.Contains(backend.Endpoint, "balance"):
-        atmOperationName = "Check Balance"
-	case strings.Contains(backend.Endpoint, "deposit"):
-		atmOperationName = "Make Deposit"
-	case strings.Contains(backend.Endpoint, "withdraw"):
-		atmOperationName = "Fast Cash"
-	}
+		case strings.Contains(backend.Endpoint, "balance"):
+			atmOperationName = "Check Balance"
+		case strings.Contains(backend.Endpoint, "deposit"):
+			atmOperationName = "Make Deposit"
+		case strings.Contains(backend.Endpoint, "withdraw"):
+			atmOperationName = "Fast Cash"
+		}
 
 	atmSpanId := NewSpanID()
     atmSpanStartTime := time.Now()
