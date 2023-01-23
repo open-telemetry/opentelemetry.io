@@ -5,7 +5,10 @@ description: >-
 weight: 30
 ---
 
-OpenTelemetry defines Semantic Conventions (sometimes called Semantic Attributes) that specify common names for different kinds of operations and data. The benefit to using Semantic Conventions is in following a common naming scheme that can be standardized across a codebase, libraries, and platforms.
+OpenTelemetry defines Semantic Conventions (sometimes called Semantic Attributes)
+that specify common names for different kinds of operations and data. The benefit
+to using Semantic Conventions is in following a common naming scheme that can be
+standardized across a codebase, libraries, and platforms.
 
 Currently, Semantic Conventions are available for traces, metrics and resources:
 
