@@ -681,6 +681,8 @@ OpenTelemetry JavaScript currently supports the following `Instrument`s:
 * Asynchronous UpDownCounter, an asynchronous instrument which supports
   increments and decrements
 
+For more on synchronous and asynchronous instruments, and which kind is best suited for your use case, see [Supplementary Guidelines](/docs/reference/specification/metrics/supplementary-guidelines/).
+
 If a `MeterProvider` is not created either by an instrumentation library or
 manually, the OpenTelemetry Metrics API will use a no-op implementation and
 fail to generate data.
@@ -822,12 +824,23 @@ involved.
 
 ### Synchronous and asynchronous instruments
 
-OpenTelemetry provides two major categories of instruments: synchronous and anynchronous (observable) instruments. Synchronous instruments can be used anywhere in the code. Using these, measurements can be pushed to the instrument at any time during the execution. This means that during an export cycle, multiple or no measurements can take place. Asynchronous instruments, on the other hand, provide a measurement at the request of the SDK. When the SDK exports, a callback that was provided to the instrument on creation is invoked. This callback provides the SDK with a measurement, which is then immediately exported. Therefore all measurement on asynchronous instruments are performed once per export cycle. 
+OpenTelemetry instruments are either synchronous or asynchronous (observable).
+
+Synchronous instruments take a measurement when they are called. The measurement is done as another call during program execution, just like any other function call. Periodically, the aggregation of these measurements is exported by a configured exporter. Because measurements are decoupled from exporting values, an export cycle may contain zero or multiple aggregated measurements.
+
+Asynchronous instruments, on the other hand, provide a measurement at the request of the SDK. When the SDK exports, a callback that was provided to the instrument on creation is invoked. This callback provides the SDK with a measurement that is immediately exported. All measurements on asynchronous instruments are performed once per export cycle. 
+
+Asynchronous instruments are useful in several circumstances, such as:
+
+* When updating a counter is not computationally cheap, and thus you don't want the currently executing thread to have to wait for that measurement
+* Observations need to happen at frequencies unrelated to program execution (i.e., they cannot be accurately measured when tied to a request lifecycle)
+* There is no value from knowing the precise timestamp of increments
+
+In cases like these, it's often better to observe a cumulative value directly, rather than aggregate a series of deltas in post-processing (the synchronous example). Take note of the use of `observe` rather than `add` in the appropriate code examples below.
 
 ### Using Counters
 
-Counters can by used to measure a non-negative, increasing value. They are
-useful when increasing the counter is computationally cheap.
+Counters can by used to measure a non-negative, increasing value.
 
 ```js
 const counter = myMeter.createCounter('events.counter');
@@ -902,6 +915,72 @@ app.get('/', (_req, _res) => {
 {{< /tab >}}
 {{< /tabpane>}}
 
+### Using Observable (Async) Counters
+
+Observable counters can be used to measure an additive, non-negative, monotonically increasing value.
+
+```js
+let events = []
+
+const addEvent = (name) => {
+  events = append(events, name)
+}
+
+const counter = myMeter.createObservableCounter('events.counter');
+
+counter.addCallback(
+  (result) => {
+    result.observe(len(events))
+  }
+)
+
+//... calls to addEvent
+```
+
+### Using Observable (Async) UpDown Counters
+
+Observable UpDown counters can increment and decrement, allowing you to measure an additive, non-negative, non-monotonically increasing cumulative value.
+
+```js
+let events = []
+
+const addEvent = (name) => {
+  events = append(events, name)
+}
+
+const removeEvent = () => {
+  events.pop()
+}
+
+const counter = myMeter.createObservableUpDownCounter('events.counter');
+
+counter.addCallback(
+  (result) => {
+    result.observe(len(events))
+  }
+)
+
+//... calls to addEvent and removeEvent
+```
+
+### Using Observable (Async) Gauges
+
+Observable Gauges should be used to measure non-additive values. 
+
+```js
+let temperature = 32
+
+const gauge = myMeter.createObservableGauge('temperature.gauge');
+
+counter.addCallback(
+  (result) => {
+    result.observe(temperature)
+  }
+)
+
+//... temperature variable is modified by a sensor
+```
+
 ### Describing instruments
 
 When you create instruments like counters, histograms, etc. you can give them a
@@ -933,6 +1012,66 @@ You can add Attributes to metrics when they are generated.
 const counter = myMeter.createCounter('my.counter');
 
 cntr.add(1, { 'some.optional.attribute': 'some value' });
+```
+
+### Configure Metric Views
+
+A Metric View provides developers with the ability to customize metrics exposed by the Metrics SDK.
+
+#### Selectors
+
+To instantiate a view, one must first select a target instrument. The following are valid selectors for metrics:
+- `instrumentType`
+- `instrumentName`
+- `meterName`
+- `meterVersion`
+- `meterSchemaUrl`
+
+Selecting by `instrumentName` (of type string) has support for wildcards, so you can select all instruments using `*` or select all instruments whose name starts with `http` by using `http*`.
+
+#### Examples
+
+Filter attributes on all metric types:
+
+```js
+const limitAttributesView = new View({
+  // only export the attribute 'environment'
+  attributeKeys: ['environment'],
+  // apply the view to all instruments
+  instrumentName: '*',
+})
+```
+
+Drop all instruments with the meter name `pubsub`:
+
+```js
+const dropView = new View({
+  aggregation: new DropAggregation(),
+  meterName: 'pubsub',
+});
+```
+
+Define explicit bucket sizes for the Histogram named `http.server.duration`:
+
+```js
+const histogramView = new View({
+  aggregation: new ExplicitBucketHistogramAggregation([0, 1, 5, 10, 15, 20, 25, 30]),
+  instrumentName: 'http.server.duration',
+  instrumentType: InstrumentType.HISTOGRAM,
+});
+```
+
+#### Attach to meter provider
+
+Once views have been configured, attach them to the corresponding meter provider:
+```js
+const meterProvider = new MeterProvider({
+  views: [
+    limitAttributesView,
+    dropView,
+    histogramView
+  ]
+});
 ```
 
 ## Next steps
