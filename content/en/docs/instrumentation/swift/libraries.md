@@ -62,7 +62,7 @@ network requests. `NetworkStatus` is a dependency of this package, which
 provides network status attributes on network spans.
 
 Note: The NSURLSession instrumentation relies on the global tracer provider in the OpenTelemetry object.
-Custom tracer providers must be configured and set as the global provider prior this instrumentation.
+Custom tracer providers must be configured and set as the global provider prior to this instrumentation.
 
 ### Usage
 
