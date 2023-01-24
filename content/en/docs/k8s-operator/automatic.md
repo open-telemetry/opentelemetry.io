@@ -8,8 +8,7 @@ spelling: cSpell:ignore Otel
 ---
 
 The OpenTelemetry Operator supports injecting and configuring
-auto-instrumentation libraries for .NET, Java, NodeJS and Python
-services.
+auto-instrumentation libraries for .NET, Java, NodeJS and Python services.
 
 ## Installation
 
@@ -33,8 +32,10 @@ It is a best practice to send telemetry from containers to an
 [OpenTelemetry Collector](../../collector/) instead of directly to a backend.
 The Collector helps simplify secret management, decouples data export problems
 (such as a need to do retries) from your apps, and lets you add additional data
-to your telemetry, such as with the [k8sattributesprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor) component. If you
-chose not to use a Collector, you can skip to the next section.
+to your telemetry, such as with the
+[k8sattributesprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor)
+component. If you chose not to use a Collector, you can skip to the next
+section.
 
 The Operator provides a
 [Custom Resource Definition (CRD) for the OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollector)
@@ -115,7 +116,8 @@ Coming Soon
 
 ### Python
 
-The following command will create a basic Instrumentation resource that is configured specifically for instrumenting Python services.
+The following command will create a basic Instrumentation resource that is
+configured specifically for instrumenting Python services.
 
 ```bash
 kubectl apply -f - <<EOF
