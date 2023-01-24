@@ -1,5 +1,6 @@
 ---
 title: Vendors
+description: Vendors who natively support OpenTelemetry
 aliases: [/vendors]
 spelling:
   cSpell:ignore appdynamics aria aspecto bution datadoghq distri dynatrace grafana

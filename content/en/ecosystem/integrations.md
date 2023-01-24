@@ -1,5 +1,6 @@
 ---
 title: Integrations
+description: OpenTelemetry integrations with other open-source projects
 aliases: [/integrations]
 ---
 
