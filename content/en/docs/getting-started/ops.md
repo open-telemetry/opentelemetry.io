@@ -19,5 +19,5 @@ learn the following:
 
 If you are looking for a set of applications to try things out, you will find
 our official
-[OpenTelemetry Demo](/community/demo)
+[OpenTelemetry Demo](/ecosystem/demo/)
 useful!
