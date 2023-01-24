@@ -8,6 +8,7 @@ aliases:
   - /docs/demo
   - /docs/getting-started/demo
   - /docs/opentelemetry-demo
+weight: 10
 ---
 
 The [OpenTelemetry Demo](https://github.com/open-telemetry/opentelemetry-demo)
