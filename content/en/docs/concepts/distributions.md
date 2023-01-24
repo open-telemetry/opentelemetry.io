@@ -39,16 +39,16 @@ Distributions would broadly fall into the following categories:
   instrumentation libraries or vendor exporters not upstreamed to the
   OpenTelemetry project.
 - **"Minus":** These distributions provide a reduced set of functionality from
-  upstream. Examples of this would include the removal of 
+  upstream. Examples of this would include the removal of
   instrumentation libraries or receivers/processors/exporters/extensions found
   in the OpenTelemetry Collector project. These distributions may be provided to
   increase supportability and security considerations.
 
 ## Who would create a distribution?
 
-Anyone could create a distribution. Today, several [vendors](../../../vendors)
+Anyone could create a distribution. Today, several [vendors](/ecosystem/vendors/)
 offer distributions. In addition, end-users may consider creating a distribution
-if they wish to use components in the [Registry](../../../registry) that are not
+if they wish to use components in the [Registry](/registry) that are not
 upstreamed to the OpenTelemetry project.
 
 ## Contribution or distribution?

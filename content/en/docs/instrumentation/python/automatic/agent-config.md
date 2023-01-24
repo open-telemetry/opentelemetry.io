@@ -41,10 +41,10 @@ Here's an explanation of what each configuration does:
   your to specify a metrics exporter. If you aren't exporting metrics, specify
   `none` as the value instead.
 - `service_name` sets the name of the service associated to the trace, and is
-  sent to your [Observability back-end](/vendors).
+  sent to your [Observability back-end](/ecosystem/vendors/).
 - `exporter_otlp_endpoint` tells `opentelemetry-instrument` to send the traces
-  to the given [Observability back-end's](/vendors) endpiont via gRPC, or
-  directly to the [OpenTelemetry Collector](/docs/collector/).
+  to the given [Observability back-end's](/ecosystem/vendors/) endpiont via
+  gRPC, or directly to the [OpenTelemetry Collector](/docs/collector/).
 - `exporter_otlp_headers` is required depending on your chosen Observability
   back-end. More info exporter OTLP headers be found
   [here](/docs/concepts/sdk-configuration/otlp-exporter-configuration/#otel_exporter_otlp_headers).

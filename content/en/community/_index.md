@@ -20,8 +20,7 @@ improve our workflow and more easily manage a community project. [Read
 more](https://github.com/open-telemetry/community#special-interest-groups) from
 our [community repo](https://github.com/open-telemetry/community).
 
-## Open Source Collaboration
+## Ecosystem
 
-OpenTelemetry collaborates and integrates with other open source projects
-including Fluent Bit, Jaeger, Kubernetes, Prometheus, OpenMetrics, and W3C.
-[Read more](/integrations/).
+Looking for components, examples, integrations and more? See
+[Ecosystem](/ecosystem).

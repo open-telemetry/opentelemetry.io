@@ -1,7 +1,6 @@
 ---
 title: Registry
 outputs: [html, json]
-menu: { main: { weight: 20 } }
 ---
 
 {{% blocks/lead color="primary" %}}

@@ -70,7 +70,7 @@ Observability back-end (i.e. open source or commercial vendor).
 ## What can OpenTelemetry do for me?
 
 OTel has broad industry support and adoption from cloud providers,
-[vendors](/vendors) and end users. It provides you with:
+[vendors](/ecosystem/vendors/) and end users. It provides you with:
 
 - A single, vendor-agnostic instrumentation library
   [per language](/docs/instrumentation) with support for both automatic and

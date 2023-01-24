@@ -1,6 +1,6 @@
 ---
 title: Demo
-manualLink: /community/demo/
+manualLink: /ecosystem/demo/
 _build: { render: link }
 weight: 5
 ---
