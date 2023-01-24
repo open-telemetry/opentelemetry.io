@@ -8,8 +8,7 @@ spelling: cSpell:ignore Otel
 ---
 
 The OpenTelemetry Operator supports injecting and configuring
-auto-instrumentation libraries for .NET, Java, NodeJS and Python
-services.
+auto-instrumentation libraries for .NET, Java, NodeJS and Python services.
 
 ## Installation
 
@@ -33,8 +32,10 @@ It is a best practice to send telemetry from containers to an
 [OpenTelemetry Collector](../../collector/) instead of directly to a backend.
 The Collector helps simplify secret management, decouples data export problems
 (such as a need to do retries) from your apps, and lets you add additional data
-to your telemetry, such as with the [k8sattributesprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor) component. If you
-chose not to use a Collector, you can skip to the next section.
+to your telemetry, such as with the
+[k8sattributesprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor)
+component. If you chose not to use a Collector, you can skip to the next
+section.
 
 The Operator provides a
 [Custom Resource Definition (CRD) for the OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollector)
@@ -115,7 +116,8 @@ Coming Soon
 
 ### Python
 
-The following command will create a basic Instrumentation resource that is configured specifically for instrumenting Python services.
+The following command will create a basic Instrumentation resource that is
+configured specifically for instrumenting Python services.
 
 ```bash
 kubectl apply -f - <<EOF
@@ -146,6 +148,36 @@ otlpreceiver of the Collector created in the previous step.
 > to `http/proto` for Python services. If you use an older version of the
 > Operator you **MUST** set these env variables to `http/proto`, or python
 > auto-instrumentation will not work.
+
+By default the Python auto-instrumentation will detect the packages in your
+Python service and instrument anything it can. This makes instrumentation easy,
+but can result in too much or unwanted data. If there are any packages you do
+not want to instrument, you can set the `OTEL_PYTHON_DISABLED_INSTRUMENTATIONS`
+environment variable
+
+```yaml
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: demo-instrumentation
+spec:
+  exporter:
+    endpoint: http://demo-collector:4318
+  propagators:
+    - tracecontext
+    - baggage
+  sampler:
+    type: parentbased_traceidratio
+    argument: "1"
+  python:
+    env:
+      - name: OTEL_PYTHON_DISABLED_INSTRUMENTATIONS
+        value:
+          <comma-separated list of package names to exclude from
+          instrumentation>
+```
+
+[See the Python Agent Configuration docs for more details.](/docs/instrumentation/python/automatic/agent-config/#disabling-specific-instrumentations)
 
 ---
 
