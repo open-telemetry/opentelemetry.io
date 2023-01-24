@@ -6,8 +6,8 @@ weight: 2
 
 Automatic instrumentation with PHP requires at least PHP 8.0, and
 [the opentelemetry PHP extension](https://github.com/open-telemetry/opentelemetry-php-instrumentation).
-The extension allows developers code to hook into classes and methods,
-and execute userland code before and after.
+The extension allows developers code to hook into classes and methods, and
+execute userland code before and after.
 
 ## Example
 
@@ -45,26 +45,39 @@ function ends it.
 
 ## Setup
 
-1. Install the extension via [pickle](https://github.com/FriendsOfPHP/pickle) or [php-extension-installer](https://github.com/mlocati/docker-php-extension-installer) (docker specific):
+1.  Install the extension via [pickle](https://github.com/FriendsOfPHP/pickle)
+    or
+    [php-extension-installer](https://github.com/mlocati/docker-php-extension-installer)
+    (docker specific):
 
-    * **pickle** can be used to install extensions that are available via http://pecl.php.net, however that's not the case
-    for opentelemetry-php-instrumentation yet, so the only way for it is to install directly from source code.
-    Following command line shows how to do that using specific version of extension (1.0.0beta1 in this case).
+    - **pickle** can be used to install extensions that are available via
+      http://pecl.php.net, however that's not the case for
+      opentelemetry-php-instrumentation yet, so the only way for it is to
+      install directly from source code. The following command line shows you
+      how to do that using a specific version of the extension (1.0.0beta2 in
+      this case):
 
-        ```console
-        $ php pickle.phar install --source https://github.com/open-telemetry/opentelemetry-php-instrumentation.git#1.0.0beta1
-        ```
-   
-   *  **php-extension-installer**
-        ```console
-        $ install-php-extensions open-telemetry/opentelemetry-php-instrumentation@main
-        ```
+      ```console
+      $ php pickle.phar install --source https://github.com/open-telemetry/opentelemetry-php-instrumentation.git#1.0.0beta2
+      ```
 
-2. Verify that the extension is installed and enabled:
+      Add the extension to your `php.ini` file:
 
-   ```console
-   $ php -m | grep  otel_instrumentation
-   ```
+      ```ini
+      [Otel instrumentation]
+      extension=otel_instrumentation.so
+      ```
+
+    - **php-extension-installer**
+      ```console
+      $ install-php-extensions open-telemetry/opentelemetry-php-instrumentation@main
+      ```
+
+2.  Verify that the extension is installed and enabled:
+
+    ```console
+    $ php -m | grep  otel_instrumentation
+    ```
 
 ## Zero-code configuration for automatic instrumentation
 
@@ -100,7 +113,7 @@ OpenTelemetry\API\Common\Instrumentation\Globals::registerInitializer(function (
         ->withPropagator($propagator);
 });
 
-//instrumentation libraries can access the configured providers (or a no-op implementation) via `Globals` 
+//instrumentation libraries can access the configured providers (or a no-op implementation) via `Globals`
 $tracer = Globals::tracerProvider()->getTracer('example');
 //or, via CachedInstrumentation
 $instrumentation = new CachedInstrumentation('example');
@@ -109,10 +122,12 @@ $tracerProvider = $instrumentation->tracer();
 
 ## Supported libraries and frameworks
 
-Automatic Instrumentation comes with a number of instrumentation libraries for commonly used PHP libraries.
-For the full list, see [instrumentation libraries on packagist](https://packagist.org/search/?query=open-telemetry&tags=instrumentation).
+Automatic Instrumentation comes with a number of instrumentation libraries for
+commonly used PHP libraries. For the full list, see
+[instrumentation libraries on packagist](https://packagist.org/search/?query=open-telemetry&tags=instrumentation).
 
 ## Next steps
 
 After you have automatic instrumentation configured for your app or service, you
-might want to add [manual instrumentation](../manual) to collect custom telemetry data.
+might want to add [manual instrumentation](../manual) to collect custom
+telemetry data.
