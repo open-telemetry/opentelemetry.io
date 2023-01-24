@@ -44,4 +44,4 @@ OpenTelemetry in their commercial products.
 | Uptrace                    | Yes               | Yes         | [uptrace.dev](https://uptrace.dev)
 |
 
-*_Vendors are listed alphabetically_
+\* _Vendors are listed alphabetically_.
