@@ -60,7 +60,7 @@ Installation and integration can be as simple as a few lines of code.
 {{% blocks/feature icon="fab fa-github" title="Open Source, Vendor Neutral" %}}
 
 100% Free and Open Source, OpenTelemetry is adopted and supported by
-[industry leaders](/vendors) in the observability space.
+[industry leaders](/ecosystem/vendors/) in the observability space.
 
 {{% /blocks/feature %}}
 
