@@ -85,14 +85,14 @@ $ npm run serve
 The website is built from the following content:
 
 - Files under `content/`, `static/`, etc. per [Hugo][] defaults.
-- Mount points, defined in [config.yaml][] under `mounts`.
+- Mount points, defined in [hugo.yaml][] under `mounts`.
 - Content from git submodules under [content-modules][].
 
 Note that nonstandard mount points and symlinked sections under `content/` refer
 to directories under [content-modules][], and no where else.
 
-[config.yaml]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/config.yaml
+[hugo.yaml]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/hugo.yaml
 [content-modules]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/content-modules
 
