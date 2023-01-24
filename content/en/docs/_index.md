@@ -10,7 +10,7 @@ for instrumenting, generating, collecting, and exporting telemetry data such as
 [traces](concepts/observability-primer/#distributed-traces),
 [metrics](concepts/observability-primer/#reliability--metrics),
 [logs](concepts/observability-primer/#logs). As an industry-standard it is
-[natively supported by a number of vendors](/vendors).
+[natively supported by a number of vendors](/ecosystem/vendors/).
 
 ![OpenTelemetry Reference Architecture](/img/otel_diagram.png)
 

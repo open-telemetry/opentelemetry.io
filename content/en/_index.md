@@ -14,7 +14,7 @@ developer_note:
 <div class="l-primary-buttons mt-5">
 
 - [Learn more](/docs/concepts/)
-- [Try the demo](/community/demo/)
+- [Try the demo](/ecosystem/demo/)
 
 </div>
 
@@ -57,10 +57,10 @@ Installation and integration can be as simple as a few lines of code.
 
 {{% /blocks/feature %}}
 
-{{% blocks/feature icon="fab fa-github" title="Open Source, Vendor Neutral" url="https://github.com/open-telemetry"%}}
+{{% blocks/feature icon="fab fa-github" title="Open Source, Vendor Neutral" %}}
 
 100% Free and Open Source, OpenTelemetry is adopted and supported by
-[industry leaders](/vendors) in the observability space.
+[industry leaders](/ecosystem/vendors/) in the observability space.
 
 {{% /blocks/feature %}}
 

@@ -364,7 +364,7 @@ distributions can save you time and effort:
 - Up to date with latest OpenTelemetry versions
 - Implementing best practices and avoiding the pitfalls mentioned above
 
-For a list of OpenTelemetry vendors, see [Vendors](/vendors/).
+For a list of OpenTelemetry vendors, see [Vendors](/ecosystem/vendors/).
 
 _A version of this article was [originally posted][] on the Aspecto blog._
 
