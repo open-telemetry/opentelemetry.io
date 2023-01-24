@@ -1,23 +1,16 @@
 ---
-title: Vendor support
+title: Vendors
+aliases: [/vendors]
 spelling:
   cSpell:ignore appdynamics aria aspecto bution datadoghq distri dynatrace grafana
   cSpell:ignore Instana lightstep logz logicmonitor lumigo promscale
   cSpell:ignore sentrysoftware signoz solarwinds splunk sumologic uptrace vmware wavefront
 ---
 
-{{% blocks/lead color="primary" %}}
-
-# {{% param title %}}
-
 [Distributions](/docs/concepts/distributions/) and vendors who natively support
 OpenTelemetry in their commercial products.
 
-{{% /blocks/lead %}}
-
-{{% blocks/section type="section" color="white" %}}
-
-| Company                    | Distri&shy;bution | Native OTLP | Learn more                                                                                                                                            |
+| Company*                   | Distri&shy;bution | Native OTLP | Learn more                                                                                                                                            |
 | -------------------------- | ----------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
 | AppDynamics (Cisco)        | Yes               | Yes         | [docs.appdynamics.com/...](https://docs.appdynamics.com/latest/en/application-monitoring/appdynamics-for-opentelemetry)                               |
 | Aria by VMware (Wavefront) | No                | Yes         | [docs.wavefront.com/...](https://docs.wavefront.com/opentelemetry_tracing.html)                                                                       |
@@ -34,8 +27,8 @@ OpenTelemetry in their commercial products.
 | Grafana Labs               | No                | Yes         | [grafana.com/...](https://grafana.com/oss/opentelemetry/)
 | Helios                     | Yes               | Yes         | [gethelios.dev](https://gethelios.dev/)
 | Honeycomb                  | Yes               | Yes         | [docs.honeycomb.io/...](https://docs.honeycomb.io/getting-data-in/)                                                                                   |
-| Instana                    | No                | Yes         | [ibm.com/docs/...](https://www.ibm.com/docs/en/obi/current?topic=apis-opentelemetry)                                                                 | 
-| KloudFuse                  | No                | Yes         | [kloudfuse.com](https://kloudfuse.atlassian.net/wiki/spaces/EX/pages/753860609/APM#Sending-traces-to-Kloudfuse-data-plane%3A)                                                                                                                 | 
+| Instana                    | No                | Yes         | [ibm.com/docs/...](https://www.ibm.com/docs/en/obi/current?topic=apis-opentelemetry)                                                                 |
+| KloudFuse                  | No                | Yes         | [kloudfuse.com](https://kloudfuse.atlassian.net/wiki/spaces/EX/pages/753860609/APM#Sending-traces-to-Kloudfuse-data-plane%3A)                                                                                                                 |
 | Lightstep                  | Yes               | Yes         | [github.com/lightstep](https://github.com/lightstep?q=launcher)                                                                                       |
 | LogicMonitor               | Yes               | Yes         | [logicmonitor.com/...](https://www.logicmonitor.com/support/tracing/getting-started-with-tracing)                                                     |
 | Logz.io                    | Yes               | No          | [docs.logz.io/...](https://docs.logz.io/shipping/tracing-sources/opentelemetry.html#overview)                                                         |
@@ -48,9 +41,7 @@ OpenTelemetry in their commercial products.
 | SolarWinds                 | Yes               | Yes         | [documentation.solarwinds.com/...](https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=third-otel-integration)     |
 | Splunk                     | Yes               | Yes         | [splunk.com/blog/...](https://www.splunk.com/en_us/blog/conf-splunklive/announcing-native-opentelemetry-support-in-splunk-apm.html)                   |
 | Sumo Logic                 | Yes               | Yes         | [help.sumologic.com/](https://help.sumologic.com/docs/apm/traces/quickstart/)                                                                          |
-| Uptrace                    | Yes               | Yes         | [uptrace.dev](https://uptrace.dev)                                                                                     
+| Uptrace                    | Yes               | Yes         | [uptrace.dev](https://uptrace.dev)
 |
 
-_Vendors are listed alphabetically_
-
-{{% /blocks/section %}}
+*_Vendors are listed alphabetically_
