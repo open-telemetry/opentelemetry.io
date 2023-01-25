@@ -64,7 +64,9 @@ function ends it.
       {{< ot-tab lang="shell">}} $ sudo apt-get install gcc make autoconf {{< /ot-tab >}}
       {{< ot-tab lang="shell">}} $ brew install gcc make autoconf {{< /ot-tab >}}
       {{< /ot-tabs >}}
-With your environment setup you can install the extension:
+      
+      With your environment setup you can install the extension:
+
       ```console
       $ php pickle.phar install --source https://github.com/open-telemetry/opentelemetry-php-instrumentation.git#1.0.0beta2
       ```
