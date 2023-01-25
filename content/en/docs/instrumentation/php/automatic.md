@@ -57,8 +57,8 @@ function ends it.
       how to do that using a specific version of the extension (1.0.0beta2 in
       this case):
 
-      **Installing from source requires proper development environment and few
-      dependendencies:**
+      Installing from source requires proper development environment and few
+      dependencies:
 
       {{< ot-tabs "Linux (apt)" "MacOS (homebrew)">}}
       {{< ot-tab lang="shell">}} $ sudo apt-get install gcc make autoconf {{< /ot-tab >}}
