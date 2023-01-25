@@ -5,9 +5,7 @@ Description: >-
 ---
 
 - Confirm your agreement with channel [Code of Conduct][] and reach out to Reese
-  Lee or Rynn Mancuso on CNCF slack for an invite to `#otel-endusers`.
-- [Chatham House Rule](https://www.chathamhouse.org/about-us/chatham-house-rule)
-  applies.
+  Lee, Rynn Mancuso, or Adriana Villela on CNCF slack for an invite to `#otel-endusers`.
 - Troubleshooting or tactical SDK specific questions are still best directed to
   individual SIG channels or the
   [#opentelemetry](https://cloud-native.slack.com/archives/CJFCJHG4Q) channel.
