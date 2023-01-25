@@ -57,6 +57,16 @@ function ends it.
       how to do that using a specific version of the extension (1.0.0beta2 in
       this case):
 
+      Installing from source requires proper development environment and few
+      dependencies:
+
+      {{< ot-tabs "Linux (apt)" "macOS (homebrew)">}}
+      {{< ot-tab lang="shell">}} sudo apt-get install gcc make autoconf {{< /ot-tab >}}
+      {{< ot-tab lang="shell">}} brew install gcc make autoconf {{< /ot-tab >}}
+      {{< /ot-tabs >}}
+      
+      With your environment setup you can install the extension:
+
       ```console
       $ php pickle.phar install --source https://github.com/open-telemetry/opentelemetry-php-instrumentation.git#1.0.0beta2
       ```
