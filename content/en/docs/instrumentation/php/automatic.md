@@ -60,7 +60,7 @@ function ends it.
       Installing from source requires proper development environment and few
       dependencies:
 
-      {{< ot-tabs "Linux (apt)" "MacOS (homebrew)">}}
+      {{< ot-tabs "Linux (apt)" "macOS (homebrew)">}}
       {{< ot-tab lang="shell">}} $ sudo apt-get install gcc make autoconf {{< /ot-tab >}}
       {{< ot-tab lang="shell">}} $ brew install gcc make autoconf {{< /ot-tab >}}
       {{< /ot-tabs >}}
