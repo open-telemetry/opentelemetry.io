@@ -57,20 +57,13 @@ function ends it.
       how to do that using a specific version of the extension (1.0.0beta2 in
       this case):
 
-      **Installing from source requires proper development environment and few dependendencies:**
+      **Installing from source requires proper development environment and few
+      dependendencies:**
 
-        <!-- prettier-ignore-start -->
-        {{< ot-tabs "Linux (apt)" "MacOS (homebrew)">}}
-        {{< ot-tab lang="shell">}}
-        $ sudo apt-get install gcc make autoconf
-        {{< /ot-tab >}}
-        {{< ot-tab lang="shell">}}
-        $ brew install gcc make autoconf
-        {{< /ot-tab >}}
-        {{< /ot-tabs >}}
-        <!-- prettier-ignore-end -->
-
-
+      {{< ot-tabs "Linux (apt)" "MacOS (homebrew)">}}
+      {{< ot-tab lang="shell">}} $ sudo apt-get install gcc make autoconf {{< /ot-tab >}}
+      {{< ot-tab lang="shell">}} $ brew install gcc make autoconf {{< /ot-tab >}}
+      {{< /ot-tabs >}}
 
       ```console
       $ php pickle.phar install --source https://github.com/open-telemetry/opentelemetry-php-instrumentation.git#1.0.0beta2
