@@ -24,7 +24,7 @@ additional context and insight into the topics discussed.
 This is the first in a series of blog posts summarizing our monthly OTel End
 User Discussions, starting with our January 2023 sessions.
 
-### What we talked about
+## What we talked about
 
 We saw a few common themes this month across our three sessions:
 
@@ -37,11 +37,11 @@ We saw a few common themes this month across our three sessions:
 
 We’ll dig into these and more!
 
-#### Discussion highlights
+## Discussion highlights
 
 Below is a summary of this month’s discussions.
 
-##### OpenTelemetry Collector
+### OpenTelemetry Collector
 
 **1- OpenTelemetry Transformation Language (OTTL)**
 
@@ -120,7 +120,7 @@ Collectors.
   you might want to have a dedicated Collector for that namespace that uses the
   [attributes processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/attributesprocessor/README.md).
 
-##### OpenTelemetry Adoption and Enablement
+### OpenTelemetry Adoption and Enablement
 
 **Q:** So you’ve decided to go with OpenTelemetry at your organization…now what?
 What’s the best way to promote OpenTelemetry adoption, and get developers
@@ -137,7 +137,7 @@ excited about using OpenTelemetry, without overwhelming them?
 - A “big bang” approach may not be the best way to adopt OpenTelemetry, as it
   may be too overwhelming for an organization. Start with a component or two.
 
-##### OpenTelemetry Language API and SDKs
+### OpenTelemetry Language API & SDKs
 
 **1- New language instrumentation**
 
@@ -163,7 +163,7 @@ a SIG, OTel Python tries to minimize shipping breaking changes, but as with
 everything, there is no guarantee that there will be no breaking changes. There
 is no firm timeframe on when Python instrumentation will be marked as stable.
 
-##### Misc Items
+### Misc Items
 
 **1- OpenTelemetry exemplars**
 
@@ -212,7 +212,7 @@ overhead. How can this be addressed?
 raise the issue there. If anyone is actively working on an API to solve this
 internally, it would be great to contribute this back to the OTel community.
 
-#### Meeting Notes & Recordings
+## Meeting Notes & Recordings
 
 For a deeper dive on the above topics, check out the following:
 
@@ -226,7 +226,7 @@ For a deeper dive on the above topics, check out the following:
 
 Going forward, we will be recording all End-User Discussion meetings.
 
-### Join us!
+## Join us!
 
 If you have a story to share about how you use OpenTelemetry at your
 organization, we’d love to hear from you! Ways to share:
