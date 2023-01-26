@@ -181,7 +181,7 @@ Please also check out
 
 #### 2- Correlation between traces and logs
 
-**Q: **Is there a way to more easily correlate traces to logs?
+**Q:** Is there a way to more easily correlate traces to logs?
 
 **A:** Implementing correlation takes time and is a work in progress.
 Correlation work is more mature for some languages (e.g. Java, Go) than for
