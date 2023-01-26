@@ -91,7 +91,7 @@ can make this approach inefficient.
 
 #### 4- Managing time drift in telemetry data
 
-**Q: **When clocks on servers are not in sync, you can end up with some data
+**Q:**When clocks on servers are not in sync, you can end up with some data
 points being recorded in the future. Can something be implemented on the OTel
 Collector to mitigate this?
 
