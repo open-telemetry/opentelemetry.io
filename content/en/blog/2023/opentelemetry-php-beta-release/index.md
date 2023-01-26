@@ -6,7 +6,7 @@ date: 2023-01-25
 author: " [Bob Strecansky](https://github.com/bobstrecansky/) (Intuit)"
 draft: true
 
-The OpenTelemetry PHP SIG is very excited to announce the release of [v1.0.0beta1](https://github.com/open-telemetry/opentelemetry-php/releases/tag/1.0.0beta1) of OpenTelemetry PHP.  This is the culmination of over 3 years of work done by the OpenTelemetry PHP team.  
+The OpenTelemetry PHP SIG is very excited to announce the release of [v1.0.0beta1](https://github.com/open-telemetry/opentelemetry-php/releases/tag/1.0.0beta1) of [OpenTelemetry PHP](https://github.com/open-telemetry/opentelemetry-php).  This is the culmination of over 3 years of work done by the OpenTelemetry PHP team.  
 
 We are actively soliciting feedback from the development community for this library. Please check out the repo, instrument your PHP app with the product, and open an [issue](https://github.com/open-telemetry/opentelemetry-php/issues/new/choose) if you’d like to see a bug squashed or a new feature added.
 
