@@ -170,7 +170,7 @@ is no firm timeframe on when Python instrumentation will be marked as stable.
 [Exemplars](/docs/reference/specification/metrics/data-model/) and how they are
 being used in the real world?
 
-**A: **[Exemplars](/docs/reference/specification/metrics/data-model/) are used
+**A:** [Exemplars](/docs/reference/specification/metrics/data-model/) are used
 to correlate OpenTelemetry [metrics](/docs/concepts/signals/metrics/) to
 [traces](/docs/concepts/signals/traces/). Exemplars are currently in the early
 stages of development, and more work still needs to be done. For more on the
