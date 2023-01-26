@@ -12,7 +12,7 @@ This is the culmination of over 3 years of work done by the OpenTelemetry PHP
 team.
 
 We are actively soliciting feedback from the development community for this
-library. Please check out the repo, instrument your PHP app with the product,
+library. Try the beta release, instrument your PHP app with it,
 and open an
 [issue](https://github.com/open-telemetry/opentelemetry-php/issues/new/choose)
 if you’d like to see a bug squashed or a new feature added.
@@ -28,6 +28,6 @@ There are many ways you can get started with our project:
   is a demo application built in PHP to showcase the library.
 
 Questions? Feel free to reach out to us in the CNCF
-[#otel-php](https://cloud-native.slack.com/archives/C01NFPCV44V) slack channel,
+[#otel-php](https://cloud-native.slack.com/archives/C01NFPCV44V) Slack channel,
 or come to our SIG meeting, which you can find on the
-[otel public calendar](https://calendar.google.com/calendar/embed?src=google.com_b79e3e90j7bbsa2n2p5an5lf60%40group.calendar.google.com).
+[OTel public calendar](https://calendar.google.com/calendar/embed?src=google.com_b79e3e90j7bbsa2n2p5an5lf60%40group.calendar.google.com).
