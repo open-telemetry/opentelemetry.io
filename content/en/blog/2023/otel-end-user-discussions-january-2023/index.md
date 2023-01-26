@@ -43,7 +43,7 @@ Below is a summary of this month’s discussions.
 
 ### OpenTelemetry Collector
 
-**1- OpenTelemetry Transformation Language (OTTL)**
+#### 1- OpenTelemetry Transformation Language (OTTL)
 
 **Q:** Will exporters support
 [OTTL](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl)
@@ -59,7 +59,7 @@ pipelines together) or the
 A routing processor reads data from an HTTP request or attribute, and routes it
 to a specified exporter.
 
-**2- Service Graph Processor**
+#### 2- Service Graph Processor
 
 **Q:** How can OpenTelemetry be used to generate a service graph, generate
 metrics, and send the data to a visualization tool?
@@ -71,7 +71,7 @@ some known issues around the Service Graph regarding the dependency mapping. One
 span doesn’t have the entire context, and in order to get the complete picture,
 you will have to send the spans to a centralized service.
 
-**3- Bifurcating data in a pipeline**
+#### 3- Bifurcating data in a pipeline
 
 **Q:** If I want to use the Collector to send different sets of data to
 different back-ends, what’s the best way to go about it?
@@ -89,7 +89,7 @@ A routing processor reads data from an HTTP request or attribute, and routes it
 to a specified exporter. This is done by making new network connections, which
 can make this approach inefficient.
 
-**4- Managing time drift in telemetry data**
+#### 4- Managing time drift in telemetry data
 
 **Q: **When clocks on servers are not in sync, you can end up with some data
 points being recorded in the future. Can something be implemented on the OTel
@@ -100,7 +100,7 @@ synchronized, especially in microservices architectures. The owner of the system
 that generates the telemetry is in a better position to understand the clock
 nuances. The Collector is not suited to address this.
 
-**5- Advanced Collector deployment and configuration**
+#### 5- Advanced Collector deployment and configuration
 
 **Q:** When should I be horizontally scaling my pod vs modifying config of an
 individual collector? When do I add more collectors or change collector config?
@@ -120,7 +120,7 @@ Collectors.
   you might want to have a dedicated Collector for that namespace that uses the
   [attributes processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/attributesprocessor/README.md).
 
-### OpenTelemetry Adoption and Enablement
+### OpenTelemetry Adoption & Enablement
 
 **Q:** So you’ve decided to go with OpenTelemetry at your organization…now what?
 What’s the best way to promote OpenTelemetry adoption, and get developers
@@ -139,7 +139,7 @@ excited about using OpenTelemetry, without overwhelming them?
 
 ### OpenTelemetry Language API & SDKs
 
-**1- New language instrumentation**
+#### 1- New language instrumentation
 
 **Q:** How do you find information on OTel implementations for different
 languages, for example, [Dart](https://dart.dev) and [Lua](https://www.lua.org)?
@@ -152,7 +152,7 @@ find a channel for your language, feel free to start a discussion on the
 or on [GitHub](https://github.com/open-telemetry/community), like with
 [this issue for OTel for Perl](https://github.com/open-telemetry/community/issues/828).
 
-**2- Python instrumentation**
+#### 2- Python instrumentation
 
 **Q:** How mature is auto-instrumentation for Python and what has been the
 experience of folks working with OpenTelemetry Python?
@@ -165,7 +165,7 @@ is no firm timeframe on when Python instrumentation will be marked as stable.
 
 ### Misc Items
 
-**1- OpenTelemetry exemplars**
+#### 1- OpenTelemetry exemplars**
 
 **Q:** Where can users learn more about
 [Exemplars](/docs/reference/specification/metrics/data-model/) and how they are
@@ -180,7 +180,7 @@ state of exemplars, check out the
 Please also check out
 [Michael Hausenblas’ recent talk on this topic](https://www.slideshare.net/Altinity/osa-con-2022-signal-correlation-the-ho11y-grail-michael-hausenblas-awspdf).
 
-**2- Correlation between traces and logs**
+#### 2- Correlation between traces and logs
 
 **Q: **Is there a way to more easily correlate traces to logs?
 
@@ -190,7 +190,7 @@ others. The best approach is to raise this issue in one of the language-specific
 repos that pertains to your situation. A possible work-around is to start traces
 at the log level, whereby every log will have its own associated trace.
 
-**3- Profiling**
+#### 3- Profiling
 
 **Q:** What is the status of Profiling in OpenTelemetry?
 
@@ -201,7 +201,7 @@ the protocol, before SDK work can start. You can check out the
 as well as the
 [Profiling Vision pull request on GitHub](https://github.com/open-telemetry/oteps/pull/212).
 
-**4- Context propagation**
+#### 4- Context propagation
 
 **Q:** Browsers cannot track context propagation automatically, and must
 therefore be done manually. Current workarounds have come with a lot of
