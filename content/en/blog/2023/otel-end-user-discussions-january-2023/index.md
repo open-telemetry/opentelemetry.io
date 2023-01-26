@@ -33,7 +33,7 @@ We saw a few common themes this month across our three sessions:
   (Collector)
 - [Service Graph Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/servicegraphprocessor)
   (Collector)
-- Signal correlation (e.g. metrics/traces correlation, logs/traces correlation)
+- Signal correlation (e.g., metrics/traces correlation, logs/traces correlation)
 
 We’ll dig into these and more!
 
