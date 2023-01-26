@@ -10,7 +10,7 @@ conventions stable!
 
 Following the recently proposed
 [Semantic Convention Process](https://docs.google.com/document/d/1ghvajKaipiNZso3fDtyNxU7x1zx0_Eyd02OGpMGEpLE), 
-the HTTP semantic convention stability working group will be meeting three times
+the HTTP semantic convention stability working group will meet three times
 a week for the next six weeks (starting January 30) to work through the
 remaining
 [list of issues](https://github.com/orgs/open-telemetry/projects/41/views/1).
