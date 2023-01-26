@@ -14,7 +14,7 @@ the HTTP semantic convention stability working group will meet three times
 a week for the next six weeks (starting January 30) to work through the
 remaining
 [list of issues](https://github.com/orgs/open-telemetry/projects/41/views/1).
-This group will be submitting spec PRs for any changes that need to be made
+This group will submit spec PRs for any changes that need to be made
 prior to declaring the HTTP semantic conventions stable.
 
 Once this is done, the community will have four weeks to review and provide
