@@ -118,6 +118,53 @@ service:
       exporters: [otlp]
 ```
 
+The configuration can also include other files, causing the Collector to merge the two files in a single in-memory representation of the YAML configuration:
+
+```yaml
+receivers:
+  otlp:
+    protocols:
+      grpc:
+
+exporters: ${file:otlp-exporter.yaml}
+
+service:
+  extensions: [ ]
+  pipelines:
+    traces:
+      receivers:  [ otlp ]
+      processors: [  ]
+      exporters:  [ otlp ]
+```
+
+With the `receivers.yaml` file being:
+
+```yaml
+otlp:
+  endpoint: otelcol.observability.svc.cluster.local:443
+```
+
+The final result in memory will be:
+
+```yaml
+receivers:
+  otlp:
+    protocols:
+      grpc:
+
+exporters:
+  otlp:
+    endpoint: otelcol.observability.svc.cluster.local:443
+
+service:
+  extensions: [ ]
+  pipelines:
+    traces:
+      receivers:  [ otlp ]
+      processors: [  ]
+      exporters:  [ otlp ]
+```
+
 ## Receivers
 
 <img width="35" src="https://raw.githubusercontent.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Receivers.svg"></img>
