@@ -105,7 +105,7 @@ nuances. The Collector is not suited to address this.
 **Q:** When should I be horizontally scaling my pod vs modifying config of an
 individual collector? When do I add more collectors or change collector config?
 
-**A: **There are a few things to consider when deploying and configuring
+**A:** There are a few things to consider when deploying and configuring
 Collectors.
 
 - If you only have stateless components in your Collector, you can scale (add
