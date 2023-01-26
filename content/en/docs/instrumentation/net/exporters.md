@@ -22,12 +22,10 @@ services:
 
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddOpenTelemetryTracing(b =>
-{
+builder.Services.AddOpenTelemetry().WithTracing(b =>
     b.AddConsoleExporter()
     // The rest of your setup code goes here too
-});
+).StartWithHost();
 ```
 
 Otherwise, configure the exporter when creating a tracer provider:
@@ -57,8 +55,7 @@ services:
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddOpenTelemetryTracing(b =>
-{
+builder.Services.AddOpenTelemetry().WithTracing(b =>
     b
     .AddOtlpExporter(opt =>
     {
@@ -66,7 +63,7 @@ builder.Services.AddOpenTelemetryTracing(b =>
         opt.Protocol = OtlpExportProtocol.HttpProtobuf;
     })
     // The rest of your setup code goes here too
-});
+).StartWithHost();
 ```
 
 Otherwise, configure the exporter when creating a tracer provider:
@@ -148,15 +145,14 @@ services:
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddOpenTelemetryTracing(b =>
-{
+builder.Services.AddOpenTelemetry().WithTracing(b =>
     b
     .AddZipkinExporter(o =>
     {
         o.Endpoint = new Uri("your-zipkin-uri-here");
     })
     // The rest of your setup code goes here too
-});
+).StartWithHost();
 ```
 
 Otherwise, configure the exporter when creating a tracer provider:
@@ -214,8 +210,7 @@ services:
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddOpenTelemetryMetrics(b =>
-{
+builder.Services.AddOpenTelemetry().WithMetrics(b =>
     b
     .AddPrometheusExporter(options =>
     {
@@ -225,7 +220,7 @@ builder.Services.AddOpenTelemetryMetrics(b =>
         options.ScrapeResponseCacheDurationMilliseconds = 0;
     })
     // The rest of your setup code goes here too
-});
+).StartWithHost();
 ```
 
 Otherwise, configure the exporter when creating a meter provider:

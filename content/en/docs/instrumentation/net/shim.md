@@ -82,6 +82,7 @@ And then configure it in your ASP.NET Core startup routine where you have access
 to an `IServiceCollection`.
 
 ```csharp
+using OpenTelemetry;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
@@ -92,16 +93,15 @@ var serviceVersion = "1.0.0";
 var builder = WebApplication.CreateBuilder(args);
 
 // Configure important OpenTelemetry settings, the console exporter, and instrumentation library
-builder.Services.AddOpenTelemetryTracing(tcb =>
-{
+builder.Services.AddOpenTelemetry().WithTracing(tcb =>
     tcb
     .AddSource(serviceName)
     .SetResourceBuilder(
         ResourceBuilder.CreateDefault()
             .AddService(serviceName: serviceName, serviceVersion: serviceVersion))
     .AddAspNetCoreInstrumentation()
-    .AddConsoleExporter();
-});
+    .AddConsoleExporter()
+).StartWithHost();
 ```
 
 In the preceding example, a [`Tracer`](/docs/concepts/signals/traces/#tracer)

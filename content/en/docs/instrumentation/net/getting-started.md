@@ -23,7 +23,7 @@ dotnet add package OpenTelemetry.Instrumentation.AspNetCore --prerelease
 dotnet add package OpenTelemetry.Instrumentation.Http --prerelease
 dotnet add package OpenTelemetry.Instrumentation.SqlClient --prerelease
 ```
-Note that the `--prerelease` flag is required for all instrumentation packages 
+Note that the `--prerelease` flag is required for all instrumentation packages
 because they are all are pre-release.
 
 This will also install the `OpenTelemetry` package.
@@ -38,6 +38,7 @@ Paste the following code into your `Program.cs` file:
 ```csharp
 using System.Diagnostics;
 
+using OpenTelemetry;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
@@ -48,8 +49,7 @@ var serviceVersion = "1.0.0";
 var builder = WebApplication.CreateBuilder(args);
 
 // Configure important OpenTelemetry settings, the console exporter, and instrumentation library
-builder.Services.AddOpenTelemetryTracing(tracerProviderBuilder =>
-{
+builder.Services.AddOpenTelemetry().WithTracing(tracerProviderBuilder =>
     tracerProviderBuilder
         .AddConsoleExporter()
         .AddSource(serviceName)
@@ -58,8 +58,8 @@ builder.Services.AddOpenTelemetryTracing(tracerProviderBuilder =>
                 .AddService(serviceName: serviceName, serviceVersion: serviceVersion))
         .AddHttpClientInstrumentation()
         .AddAspNetCoreInstrumentation()
-        .AddSqlClientInstrumentation();
-});
+        .AddSqlClientInstrumentation()
+).StartWithHost();
 
 var app = builder.Build();
 
@@ -138,6 +138,7 @@ configures automatic metrics instrumentation.
 using System.Diagnostics;
 using System.Diagnostics.Metrics;
 
+using OpenTelemetry;
 using OpenTelemetry.Trace;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
@@ -153,28 +154,26 @@ var builder = WebApplication.CreateBuilder(args);
 var appResourceBuilder = ResourceBuilder.CreateDefault()
     .AddService(serviceName: serviceName, serviceVersion: serviceVersion);
 
-builder.Services.AddOpenTelemetryTracing(tracerProviderBuilder =>
-{
+builder.Services.AddOpenTelemetry().WithTracing(tracerProviderBuilder =>
     tracerProviderBuilder
         .AddConsoleExporter()
         .AddSource(MyActivitySource.Name)
         .SetResourceBuilder(appResourceBuilder)
         .AddHttpClientInstrumentation()
         .AddAspNetCoreInstrumentation()
-        .AddSqlClientInstrumentation();
-});
+        .AddSqlClientInstrumentation()
+).StartWithHost();
 
 var meter = new Meter(serviceName);
 var counter = meter.CreateCounter<long>("app.request-counter");
-builder.Services.AddOpenTelemetryMetrics(metricProviderBuilder =>
-{
+builder.Services.AddOpenTelemetry().WithMetrics(metricProviderBuilder =>
     metricProviderBuilder
         .AddConsoleExporter()
         .AddMeter(meter.Name)
         .SetResourceBuilder(appResourceBuilder)
         .AddAspNetCoreInstrumentation()
-        .AddHttpClientInstrumentation();
-});
+        .AddHttpClientInstrumentation()
+).StartWithHost();
 
 var app = builder.Build();
 
@@ -246,7 +245,7 @@ Export app.request-counter, Meter: MyCompany.MyProduct.MyService
 Value: 1
 
 (2022-11-16T06:09:04.2574360Z, 2022-11-16T06:09:44.2393730Z] http.flavor: 1.1 http.host: localhost:7026 http.method: GET http.scheme: https http.status_code: 200 http.target: /hello Histogram
-Value: Sum: 40.041 Count: 1 
+Value: Sum: 40.041 Count: 1
 (-Infinity,0]:0
 (0,5]:0
 (0,10]:0
@@ -337,6 +336,7 @@ with an OTLP exporter:
 using System.Diagnostics;
 using System.Diagnostics.Metrics;
 
+using OpenTelemetry;
 using OpenTelemetry.Exporter;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
@@ -354,8 +354,7 @@ var appResourceBuilder = ResourceBuilder.CreateDefault()
 
 // Configure to send data via the OTLP exporter.
 // By default, it will send to port 4318, which the collector is listening on.
-builder.Services.AddOpenTelemetryTracing(tracerProviderBuilder =>
-{
+builder.Services.AddOpenTelemetry().WithTracing(tracerProviderBuilder =>
     tracerProviderBuilder
         .AddOtlpExporter(opt =>
         {
@@ -365,13 +364,12 @@ builder.Services.AddOpenTelemetryTracing(tracerProviderBuilder =>
         .SetResourceBuilder(appResourceBuilder)
         .AddHttpClientInstrumentation()
         .AddAspNetCoreInstrumentation()
-        .AddSqlClientInstrumentation();
-});
+        .AddSqlClientInstrumentation()
+).StartWithHost();
 
 var meter = new Meter(serviceName);
 var counter = meter.CreateCounter<long>("app.request-counter");
-builder.Services.AddOpenTelemetryMetrics(metricProviderBuilder =>
-{
+builder.Services.AddOpenTelemetry().WithMetrics(metricProviderBuilder =>
     metricProviderBuilder
         .AddOtlpExporter(opt =>
         {
@@ -380,8 +378,8 @@ builder.Services.AddOpenTelemetryMetrics(metricProviderBuilder =>
         .AddMeter(meter.Name)
         .SetResourceBuilder(appResourceBuilder)
         .AddAspNetCoreInstrumentation()
-        .AddHttpClientInstrumentation();
-});
+        .AddHttpClientInstrumentation()
+).StartWithHost();
 
 var app = builder.Build();
 

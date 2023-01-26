@@ -45,6 +45,7 @@ Next, configure each instrumentation library at startup and use them!
 
 ```csharp
 using System.Diagnostics;
+using OpenTelemetry;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
@@ -55,8 +56,7 @@ var serviceVersion = "1.0.0";
 var builder = WebApplication.CreateBuilder(args);
 
 // Configure important OpenTelemetry settings, the console exporter, and instrumentation library
-builder.Services.AddOpenTelemetryTracing(b =>
-{
+builder.Services.AddOpenTelemetry().WithTracing(b =>
     b
     .AddConsoleExporter()
     .AddSource(serviceName)
@@ -64,8 +64,8 @@ builder.Services.AddOpenTelemetryTracing(b =>
         ResourceBuilder.CreateDefault()
             .AddService(serviceName: serviceName, serviceVersion: serviceVersion))
     .AddHttpClientInstrumentation()
-    .AddAspNetCoreInstrumentation();
-});
+    .AddAspNetCoreInstrumentation()
+).StartWithHost();
 
 var app = builder.Build();
 

@@ -83,7 +83,7 @@ dotnet add package OpenTelemetry.Extensions.Hosting --prerelease
 dotnet add package OpenTelemetry.Exporter.Console --prerelease
 ```
 
-Note that the `--prerelease` flag is required for all instrumentation packages 
+Note that the `--prerelease` flag is required for all instrumentation packages
 because they are all are pre-release.
 
 Next, configure it in your ASP.NET Core startup routine where you have access
@@ -102,15 +102,14 @@ var serviceVersion = "1.0.0";
 var builder = WebApplication.CreateBuilder(args);
 
 // Configure important OpenTelemetry settings, the console exporter
-builder.Services.AddOpenTelemetryTracing(b =>
-{
+builder.Services.AddOpenTelemetry().WithTracing(b =>
     b
     .AddConsoleExporter()
     .AddSource(serviceName)
     .SetResourceBuilder(ResourceBuilder
         .CreateDefault()
-        .AddService(serviceName: serviceName, serviceVersion: serviceVersion));
-});
+        .AddService(serviceName: serviceName, serviceVersion: serviceVersion))
+).StartWithHost();
 ```
 
 This is also where you can configure instrumentation libraries.
