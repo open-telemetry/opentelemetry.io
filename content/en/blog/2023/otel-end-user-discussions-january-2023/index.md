@@ -76,8 +76,7 @@ you will have to send the spans to a centralized service.
 **Q:** If I want to use the Collector to send different sets of data to
 different back-ends, what’s the best way to go about it?
 
-**A:
-**[Connectors](https://github.com/open-telemetry/opentelemetry-collector/pull/6140)
+**A:** [Connectors](https://github.com/open-telemetry/opentelemetry-collector/pull/6140)
 (a new Collector component that acts as an exporter/receiver pair to join
 pipelines together) can be used to solve this. Connectors will be launching
 soon. For more info, see the Connector PR
