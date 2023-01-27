@@ -1,7 +1,7 @@
 ---
 title: OpenTelemetry End User Discussions Summary for January 2023
 linkTitle: End User Discussions Jan 2023
-date: 2023-01-25
+date: 2023-01-27
 author: >-
   [Adriana Villela](https://github.com/avillela) (Lightstep)
 ---
