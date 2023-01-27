@@ -27,9 +27,9 @@ If you are interested in participating in the working group, please join the
 meetings starting Monday, January 30 at 3pm Pacific Time, and continuing for
 six weeks on Mondays, Wednesdays and Fridays: 
 
-* Mon 3-3:30
-* Wed 3-3:30
-* Fri 9:30-10
+* Mon 3-3:30pm Pacific Time
+* Wed 3-3:30pm Pacific Time
+* Fri 9:30-10am Pacific Time
 
 See the
 [OpenTelemetry calendar](https://github.com/open-telemetry/community#calendar)
