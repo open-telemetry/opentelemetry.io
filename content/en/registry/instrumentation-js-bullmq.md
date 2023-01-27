@@ -1,5 +1,5 @@
 ---
-title: opentelemetry-instrumentation-bullmq
+title: BullMQ Instrumentation
 registryType: instrumentation
 isThirdParty: true
 language: js
