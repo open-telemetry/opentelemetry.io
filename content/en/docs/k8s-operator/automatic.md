@@ -79,11 +79,15 @@ spec:
       pipelines:
         traces:
           receivers: [otlp]
-          processors: [memory_limiter]
+          processors: [memory_limiter, batch]
           exporters: [logging]
         metrics:
           receivers: [otlp]
-          processors: [memory_limiter]
+          processors: [memory_limiter, batch]
+          exporters: [logging]
+        logs:
+          receivers: [otlp]
+          processors: [memory_limiter, batch]
           exporters: [logging]
 EOF
 ```
