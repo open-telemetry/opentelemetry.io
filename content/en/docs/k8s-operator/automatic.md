@@ -85,6 +85,10 @@ spec:
           receivers: [otlp]
           processors: [memory_limiter, batch]
           exporters: [logging]
+        logs:
+          receivers: [otlp]
+          processors: [memory_limiter, batch]
+          exporters: [logging]
 EOF
 ```
 
