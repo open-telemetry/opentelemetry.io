@@ -5,8 +5,11 @@ date: 2023-01-26
 author: "[Trask Stalnaker](https://github.com/trask) (Microsoft)"
 ---
 
-The OpenTelemetry community is beginning the final push to declare HTTP semantic
-conventions stable!
+The OpenTelemetry community is beginning the final push to declare HTTP
+[tracing](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/http.md)
+and
+[metrics](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/semantic_conventions/http-metrics.md)
+semantic conventions stable!
 
 Following the recently proposed
 [Semantic Convention Process](https://docs.google.com/document/d/1ghvajKaipiNZso3fDtyNxU7x1zx0_Eyd02OGpMGEpLE), 
