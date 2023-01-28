@@ -126,7 +126,7 @@ receivers:
     protocols:
       grpc:
 
-exporters: ${file:otlp-exporter.yaml}
+exporters: ${file:receivers.yaml}
 
 service:
   extensions: [ ]
