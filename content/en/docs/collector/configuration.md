@@ -137,7 +137,7 @@ service:
       exporters:  [ otlp ]
 ```
 
-With the `receivers.yaml` file being:
+With the `otlp-exporter.yaml` file being:
 
 ```yaml
 otlp:
