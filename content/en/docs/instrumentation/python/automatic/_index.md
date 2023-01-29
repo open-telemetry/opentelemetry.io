@@ -5,7 +5,9 @@ weight: 30
 spelling: cSpell:ignore distro mkdir uninstrumented virtualenv
 ---
 
-Automatic instrumentation with Python uses a Python agent that can be attached to any Python application. It dynamically injects bytecode to capture telemetry from many popular libraries and frameworks.
+Automatic instrumentation with Python uses a Python agent that can be attached
+to any Python application. It dynamically injects bytecode to capture telemetry
+from many popular libraries and frameworks.
 
 ## Setup
 
@@ -18,12 +20,20 @@ pip install opentelemetry-distro \
 opentelemetry-bootstrap -a install
 ```
 
-The `opentelemetry-distro` package installs the API, SDK, and the `opentelemetry-bootstrap` and `opentelemetry-instrument` tools.
+The `opentelemetry-distro` package installs the API, SDK, and the
+`opentelemetry-bootstrap` and `opentelemetry-instrument` tools.
 
-The `opentelemetry-bootstrap -a install` command reads through the list of packages installed in your active `site-packages` folder, and installs the corresponding instrumentation libraries for these packages, if applicable. For example, if you already installed the `flask` package, running `opentelemetry-bootstrap -a install` will install `opentelemetry-instrumentation-flask` for you.
+The `opentelemetry-bootstrap -a install` command reads through the list of
+packages installed in your active `site-packages` folder, and installs the
+corresponding instrumentation libraries for these packages, if applicable.
+For example, if you already installed the `flask` package, running
+`opentelemetry-bootstrap -a install` will install
+`opentelemetry-instrumentation-flask` for you.
 
-> **NOTE:** If you leave out `-a install`, the command will simply list out the recommended auto-instrumentation packages to be installed.
-More information can be found [here](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-instrumentation#opentelemetry-bootstrap).
+> **NOTE:** If you leave out `-a install`, the command will simply list out the
+> recommended auto-instrumentation packages to be installed. More information
+> can be found
+> [here](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-instrumentation#opentelemetry-bootstrap).
 
 ## Configuring the agent
 
@@ -55,15 +65,20 @@ To see the full range of configuration options, see [Agent Configuration](agent-
 
 ## Supported libraries and frameworks
 
-A number of popular Python libraries are auto-instrumented, including [Flask](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-flask) and [Django](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-django). You can find the full list [here](/registry/?language=python&component=instrumentation).
+A number of popular Python libraries are auto-instrumented, including
+[Flask](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-flask)
+and
+[Django](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-django).
+You can find the full list [here](/registry/?language=python&component=instrumentation).
 
 ## Troubleshooting
 
 ### Python package installation failure
 
-The Python package installs require `gcc` and `gcc-c++`, which you may need to install if you’re running a slim version of Linux (e.g., CentOS).
+The Python package installs require `gcc` and `gcc-c++`, which you may need to
+install if you’re running a slim version of Linux (e.g., CentOS).
 
-Centos:
+CentOS:
 
 ```console
 yum -y install python3-devel

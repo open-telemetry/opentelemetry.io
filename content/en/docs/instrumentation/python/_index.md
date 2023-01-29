@@ -35,11 +35,9 @@ $ pip install opentelemetry-instrumentation-{instrumentation}
 These are for exporter and instrumentation packages respectively. The Jaeger,
 Zipkin, Prometheus, OTLP and OpenCensus Exporters can be found in the
 [exporter](https://github.com/open-telemetry/opentelemetry-python/blob/main/exporter/)
-directory of the repository. Instrumentations and additional exporters can be
-found in the [Contrib repo
-instrumentation](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation)
-and [Contrib repo
-exporter](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/exporter)
+directory of the repository. Instrumentations and additional exporters can be found in the
+[Contrib repo instrumentation](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation)
+and [Contrib repo exporter](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/exporter)
 directories.
 
 ## Extensions
@@ -67,7 +65,5 @@ $ pip install -e ./opentelemetry-sdk
 - Contrib repo: [opentelemetry-python-contrib][]
 - [Performance benchmarks][]
 
-[opentelemetry-python-contrib]:
-    https://github.com/open-telemetry/opentelemetry-python-contrib
-[Performance benchmarks]:
-    https://open-telemetry.github.io/opentelemetry-python/benchmarks/
+[opentelemetry-python-contrib]: https://github.com/open-telemetry/opentelemetry-python-contrib
+[Performance benchmarks]: https://open-telemetry.github.io/opentelemetry-python/benchmarks/
