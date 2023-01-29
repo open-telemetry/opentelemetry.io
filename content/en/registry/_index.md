@@ -1,6 +1,9 @@
 ---
 title: Registry
 outputs: [html, json]
+_build: { render: always }
+cascade:
+  _build: { render: link }
 ---
 
 {{% blocks/lead color="primary" %}}
