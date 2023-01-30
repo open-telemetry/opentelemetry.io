@@ -2,7 +2,8 @@
 
 <div class="o-banner">
 
-<i class="fas fa-bullhorn"></i> [End User Discussion Group: New APAC Sessions Announcement!](/blog/2022/end-user-discussion-group-apac/)
+<i class="fas fa-bullhorn"></i> [Observability Day Europe: CFP now open!](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/cncf-hosted-co-located-events/observability-day/)
+<i class="fas fa-bullhorn"></i> [Opentelemetry PHP Beta Release](/blog/2023/php-beta-release/)
 
 </div>
 {{ end -}}
