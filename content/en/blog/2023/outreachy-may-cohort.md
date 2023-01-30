@@ -1,6 +1,6 @@
 ---
 title: Call for participation - Outreachy May 2023
-linkTitle: End User Discussions Jan 2023
+linkTitle: Outreachy Call for participation '23
 date: 2023-02-02
 author: >-
   [Juraci Paixão Kröhling](https://twitter.com/jpkrohling) (Grafana Labs)
