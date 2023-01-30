@@ -153,6 +153,36 @@ otlpreceiver of the Collector created in the previous step.
 > Operator you **MUST** set these env variables to `http/proto`, or python
 > auto-instrumentation will not work.
 
+By default the Python auto-instrumentation will detect the packages in your
+Python service and instrument anything it can. This makes instrumentation easy,
+but can result in too much or unwanted data. If there are any packages you do
+not want to instrument, you can set the `OTEL_PYTHON_DISABLED_INSTRUMENTATIONS`
+environment variable
+
+```yaml
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: demo-instrumentation
+spec:
+  exporter:
+    endpoint: http://demo-collector:4318
+  propagators:
+    - tracecontext
+    - baggage
+  sampler:
+    type: parentbased_traceidratio
+    argument: "1"
+  python:
+    env:
+      - name: OTEL_PYTHON_DISABLED_INSTRUMENTATIONS
+        value:
+          <comma-separated list of package names to exclude from
+          instrumentation>
+```
+
+[See the Python Agent Configuration docs for more details.](/docs/instrumentation/python/automatic/agent-config/#disabling-specific-instrumentations)
+
 ---
 
 Now that your Instrumentation object is created, your cluster has the ability to

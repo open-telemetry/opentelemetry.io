@@ -81,3 +81,21 @@ desired configuration property:
 
 For example, `exporter_otlp_endpoint` would convert to
 `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT`.
+
+### Disabling Specific Instrumentations
+
+The Python agent by default will detect a python program's packages and
+instrument any packages it can.  
+This makes instrumentation easy, but can result in too much or unwanted data.
+
+You can omit specific packages from instrumentation by using the
+`OTEL_PYTHON_DISABLED_INSTRUMENTATIONS` environment variable. The environment
+variable can be set to a comma-separated list of package names to exclude from
+instrumentation.
+
+For example, if your Python program uses the `redis` and `kafka-python`
+packages, by default the agent will use the
+`opentelemetry-instrumentation-redis` and
+`opentelemetry-instrumentation-kafka-python` packages to instrument them. To
+disable this, you can set
+`OTEL_PYTHON_DISABLED_INSTRUMENTATIONS=redis,kafka-python`.
