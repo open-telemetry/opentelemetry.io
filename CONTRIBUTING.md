@@ -96,9 +96,19 @@ to directories under [content-modules][], and no where else.
 [content-modules]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/content-modules
 
+## Found a problem?
+
+If you find a problem with the content of this repo, or you would like to
+request an enhancement, [create an issue][new-issue].
+
+> **NOTE**: As a general policy, we only _assign_ issues to community members
+> who have already made contributions to the [OpenTelemetry organization][org].
+
 ## Submitting a change
 
-Before submitting a PR, run `npm run test` and address any reported issues.
+Enhancements and fixes to the website are most welcome! Before submitting a
+[pull request][PR] (PR) over the website, run `npm run test` and address any
+reported issues.
 
 ### Submodule changes
 
@@ -143,9 +153,12 @@ required.
 [hugo]: https://gohugo.io
 [localhost:8888]: http://localhost:8888
 [netlify]: https://netlify.com
+[new-issue]: https://github.com/open-telemetry/opentelemetry.io/issues/new/choose
 [nodejs-rel]: https://nodejs.org/en/about/releases/
 [nodejs-win]:
   https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
 [nvm]:
   https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
 [nvm-windows]: https://github.com/coreybutler/nvm-windows
+[org]: https://github.com/open-telemetry
+[pr]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
