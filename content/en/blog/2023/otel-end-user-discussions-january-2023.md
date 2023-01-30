@@ -4,6 +4,12 @@ linkTitle: End User Discussions Jan 2023
 date: 2023-01-27
 author: >-
   [Adriana Villela](https://github.com/avillela) (Lightstep)
+  <br/> with contributions from: <br/>
+  [Henrik Rexed](https://github.com/henrikrexed) (Dynatrace) |
+  [Michael Hausenblas](https://github.com/mhausenblas) (AWS) |
+  [Pranay Prateek](https://github.com/pranay01) (Signoz) |
+  [Rynn Mancuso](https://github.com/musingvirtual) (Honeycomb) |
+  [Reese Lee](https://github.com/reese-lee) (New Relic)
 ---
 
 Each month, users in the OpenTelemetry (OTel) community gather to talk about how
