@@ -1,7 +1,7 @@
 ---
 title: Opentelemetry PHP Beta Release
 linkTitle: PHP Beta Release
-date: 2023-01-26
+date: 2023-01-30
 author: "[Bob Strecansky](https://github.com/bobstrecansky/) (Intuit)"
 ---
 
