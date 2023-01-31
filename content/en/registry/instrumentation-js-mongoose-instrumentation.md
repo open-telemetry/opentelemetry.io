@@ -11,5 +11,5 @@ tags:
 repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-mongoose
 license: MIT
 description: Mongoose instrumentation for Node.js.
-authors: The OpenTelemetry Authors
+authors: OpenTelemetry Authors
 ---
