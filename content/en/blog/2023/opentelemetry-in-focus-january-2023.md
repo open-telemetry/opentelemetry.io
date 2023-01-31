@@ -1,6 +1,6 @@
 ---
 title: OpenTelemetry in Focus - January 2023
-linkTitle: OpenTelemetry in Focus - January 2023
+linkTitle: OTel in Focus - 2023/01
 date: 2023-01-31
 author: >-
   [Austin Parker](https://github.com/austinlparker)
@@ -11,7 +11,7 @@ be an overview of important releases, roadmap updates, and community news. This
 series will be focusing on our core components, such as the specification, data
 format, tools, and most popular API/SDKs.
 
-Are you a maintainer with something you’d like featured here? Please get in
+Are you a maintainer with something you’d like featured here? Get in
 touch with me via email, or on the CNCF Slack!
 
 ## Releases and Updates
@@ -83,10 +83,3 @@ Europe](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/cncf-ho
 as part of KubeCon EU 2023. If you’re planning to be in Amsterdam for KubeCon,
 be sure to come a day early and meet up with OpenTelemetry contributors and
 maintainers!
-
-
-
-
-
-
-
