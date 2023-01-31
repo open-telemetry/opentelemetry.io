@@ -71,7 +71,7 @@ notes](https://docs.google.com/document/d/187XYoQcXQ9JxS_5v2wvZ0NEysaJ02xoOYNXj0
 for more information.
 
 The [End User Working
-Group](https://opentelemetry.io/blog/2023/otel-end-user-discussions-january-2023/)
+Group](/blog/2023/otel-end-user-discussions-january-2023)
 has published a summary of their discussions for the month. If you’re a user of
 OpenTelemetry, these meetings are a great place to get connected with your peers
 and discuss how you’re using the project.
