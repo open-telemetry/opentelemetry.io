@@ -12,7 +12,7 @@ series will be focusing on our core components, such as the specification, data
 format, tools, and most popular API/SDKs.
 
 Are you a maintainer with something you’d like featured here? Get in
-touch with me [via email](austin@lightstep.com), or on the CNCF Slack!
+touch with me [via email](mailto:austin@lightstep.com), or on the CNCF Slack!
 
 ## Releases and Updates
 
