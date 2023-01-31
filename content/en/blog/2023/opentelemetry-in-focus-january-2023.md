@@ -76,7 +76,7 @@ has published a summary of their discussions for the month. If you’re a user o
 OpenTelemetry, these meetings are a great place to get connected with your peers
 and discuss how you’re using the project.
 
-## News andUpcoming Events
+## News and Upcoming Events
 
 We’re proud to support [Observability Day
 Europe](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/cncf-hosted-co-located-events/observability-day/)
