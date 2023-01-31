@@ -1,5 +1,5 @@
 ---
-title: OpenTelemetry Python Integration for Sentry (sentry.io)
+title: Python Integration for Sentry
 registryType: utilities
 isThirdParty: true
 language: python
@@ -12,7 +12,11 @@ tags:
   - error monitoring
 repo: https://github.com/getsentry/sentry-python/tree/master/sentry_sdk/integrations/opentelemetry
 license: MIT
-description: The Sentry OpenTelemetry Python integration provides a processor and propagator to send data to Sentry and to associate traces/spans to Sentry errors. [See the Sentry docs to see how to configure](https://docs.sentry.io/platforms/python/performance/instrumentation/opentelemetry/).
-authors: Sentry (sentry.io) <otel@sentry.io>
+description:
+  The Sentry OpenTelemetry Python integration provides a processor and
+  propagator to send data to Sentry and to associate traces/spans to Sentry
+  errors. For configuration details, see [OpenTelemetry
+  Support](https://docs.sentry.io/platforms/python/performance/instrumentation/opentelemetry/).
+authors: Sentry authors <otel@sentry.io>
 otVersion: latest
 ---
