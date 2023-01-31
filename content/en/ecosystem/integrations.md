@@ -1,7 +1,8 @@
 ---
 title: Integrations
 description: OpenTelemetry integrations with other open-source projects
-aliases: [/integrations]
+aliases: [/integrations]spelling:
+  cSpell:ignore containerd buildx quarkus
 ---
 
 OpenTelemetry integrates with or is integrated into various open source
@@ -25,7 +26,7 @@ OpenTelemetry provides integration with the following open source projects.
 | [Zipkin](https://zipkin.io/)                              | Collector, DotNet, Go, Java, JS, PHP, Python, Rust       |
 | [W3C trace-context](https://www.w3.org/TR/trace-context/) | DotNet, Go, Java, JS, Python, Ruby                       |
 
-_Projects are listed alphabetically_
+\* _Projects are listed alphabetically_.
 
 ## Outside OpenTelemetry
 
@@ -33,10 +34,12 @@ The following open source projects use OpenTelemetry components.
 
 | External Project                                                                           | Applicable OpenTelemetry Components |
 | ------------------------------------------------------------------------------------------ | ----------------------------------- |
+| [containerd](https://github.com/containerd/containerd/blob/main/docs/tracing.md)           | Go                                  |
+| [CRI-O](https://github.com/cri-o/cri-o/blob/main/docs/crio.conf.5.md#criotracing-table)    | Go                                  |
 | [Docker buildx](https://github.com/docker/buildx/blob/master/docs/guides/opentelemetry.md) | Go                                  |
 | [Jaeger](https://www.jaegertracing.io/docs/latest/opentelemetry/)                          | Collector                           |
+| [Kubernetes](https://kubernetes.io/docs/concepts/cluster-administration/system-traces/)    | Go                                  |
 | [Micrometer](https://micrometer.io/docs/tracing#_micrometer_tracing_opentelemetry_setup)   | Java                                |
 | [Quarkus](https://quarkus.io/guides/opentelemetry)                                         | Java                                |
 
-\* _Projects are listed alphabetically_. [^partial-support]: Projects only
-partially supported at this time. Full support coming soon!
+\* _Projects are listed alphabetically_.
