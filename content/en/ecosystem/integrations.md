@@ -1,7 +1,8 @@
 ---
 title: Integrations
 description: OpenTelemetry integrations with other open-source projects
-aliases: [/integrations]spelling:
+aliases: [/integrations]
+spelling:
   cSpell:ignore containerd buildx quarkus
 ---
 
