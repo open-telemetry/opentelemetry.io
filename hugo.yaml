@@ -169,6 +169,8 @@ services:
 
 module:
   mounts:
+    - source: tmp/demo/docs
+      target: content/docs/demo
     - source: tmp/specification
       target: content/docs/reference/specification
     - source: content/en
