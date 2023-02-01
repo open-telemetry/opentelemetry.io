@@ -6,13 +6,14 @@ author: >-
   [Austin Parker](https://github.com/austinlparker)
 ---
 
-Welcome to the first edition of OpenTelemetry In Focus! This blog is intended to
+Welcome to the first edition of _OpenTelemetry In Focus_! This blog is intended to
 be an overview of important releases, roadmap updates, and community news. This
 series will be focusing on our core components, such as the specification, data
 format, tools, and most popular API/SDKs.
 
 Are you a maintainer with something you’d like featured here? Get in
-touch with me [via email](mailto:austin@lightstep.com), or on the CNCF Slack!
+touch with me [via email](mailto:austin@lightstep.com), or on the
+[CNCF Slack, #otel-comms](https://cloud-native.slack.com/archives/C02UN96HZH6) channel.
 
 ## Releases and Updates
 
@@ -58,7 +59,7 @@ detection, and updates to OpenTelemetry API and SDKs.
 ## Project Updates
 
 Over the past few months, through community discussions both in-person and
-online, a new [public roadmap](/community/roadmap/) has
+online, a new public [roadmap](/community/roadmap/) has
 been created and published! This roadmap isn’t meant to be a set-in-stone list
 of priorities, but more of a guide to our priorities and prioritization.
 
