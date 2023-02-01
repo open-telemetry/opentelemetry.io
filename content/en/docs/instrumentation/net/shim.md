@@ -45,7 +45,7 @@ using OpenTelemetry.Resources;
 // ...
 
 var serviceName = "MyServiceName";
-var serviceVersion "1.0.0";
+var serviceVersion = "1.0.0";
 
 using var tracerProvider = Sdk.CreateTracerProviderBuilder()
     .AddSource(serviceName)
