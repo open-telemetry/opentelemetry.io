@@ -58,8 +58,7 @@ detection, and updates to OpenTelemetry API and SDKs.
 ## Project Updates
 
 Over the past few months, through community discussions both in-person and
-online, a [new public
-roadmap](https://github.com/open-telemetry/community/blob/main/roadmap.md) has
+online, a new [public roadmap](/community/roadmap/) has
 been created and published! This roadmap isn’t meant to be a set-in-stone list
 of priorities, but more of a guide to our priorities and prioritization.
 
