@@ -172,7 +172,7 @@ spec:
         value: false
 ```
 
-For more details, see [Agent Configuration](/docs/instrumentation/java/automatic/agent-config/).
+For more details, see [Java Agent Configuration](/docs/instrumentation/java/automatic/agent-config/).
 
 ### Node.js
 
