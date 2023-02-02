@@ -50,7 +50,7 @@ if (pathName.includes("registry")) {
 
 // Runs search through Fuse for fuzzy search
 function executeSearch(searchQuery) {
-  fetch("/registry/index.json")
+  fetch("/ecosystem/registry/index.json")
     .then((res) => res.json())
     .then((json) => {
       let fuse = new Fuse(json, fuseOptions);

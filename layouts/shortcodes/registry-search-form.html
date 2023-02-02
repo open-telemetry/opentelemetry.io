@@ -1,5 +1,3 @@
-{{ define "main" -}}
-
 {{ $registry := .Site.Data.registry -}}
 
 {{ $languageNames := newScratch -}}
@@ -28,12 +26,10 @@
 {{ end -}}
 {{ $types = $types | uniq | sort -}}
 
-{{ .Content -}}
-
 <div class="td-content td-box">
   <section class="row section pb-5">
     <div class="col align-self-center">
-      <form action="{{ "/registry" | absURL }}" id="searchForm">
+      <form action="{{ "/ecosystem/registry" }}" id="searchForm">
         <div class="input-group">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1" title="{{ len $registry }} entries">Search</span>
@@ -99,4 +95,3 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script>
   {{ partial "script.html" (dict "src" "js/registrySearch.js") -}}
 </div>
-{{ end -}}

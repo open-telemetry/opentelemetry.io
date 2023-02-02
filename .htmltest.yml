@@ -9,3 +9,4 @@ IgnoreInternalURLs:
 IgnoreURLs:
   - ^/docs/instrumentation/\w+/(api|examples)/$
   - ^/docs/instrumentation/net/(metrics-api|traces-api)/
+  - ^/registry # [temporary] safe to ignore since we have a corresponding global rewrite rule
