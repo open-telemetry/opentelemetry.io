@@ -139,7 +139,7 @@ must be able to receive OTLP over `grpc`. Therefore, the example uses
 `http://demo-collector:4317`, which will connect to the `grpc` port of the
 otlpreceiver of the Collector created in the previous step.
 
-By default the Java auto-instrumentation ships with
+By default, the Java auto-instrumentation ships with
 [many many instrumentation libraries](/docs/instrumentation/java/automatic/#supported-libraries-frameworks-application-services-and-jvms).
 This makes instrumentation easy, but can result in too much or unwanted data. If
 there are any libraries you do not want to use you can set the
@@ -147,9 +147,8 @@ there are any libraries you do not want to use you can set the
 libary. If you know exactly which libraries you want to use you can disbale the
 default libraries by setting `OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED=false`
 and then use `OTEL_INSTRUMENTATION_[NAME]_ENABLED=true` where `[NAME]` is the
-name of the library. See
-[Suppressing specific auto-instrumentation](/docs/instrumentation/java/automatic/agent-config/#suppressing-specific-auto-instrumentation)
-in the Java docs for more details
+name of the library. For more details, see
+[Suppressing specific auto-instrumentation](/docs/instrumentation/java/automatic/agent-config/#suppressing-specific-auto-instrumentation).
 
 ```yaml
 apiVersion: opentelemetry.io/v1alpha1
@@ -173,7 +172,7 @@ spec:
         value: false
 ```
 
-[See the Java Agent Configuration docs for more details.](/docs/instrumentation/java/automatic/agent-config/)
+For more details, see [Agent Configuration](/docs/instrumentation/java/automatic/agent-config/).
 
 ### Node.js
 
