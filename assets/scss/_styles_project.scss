@@ -122,7 +122,8 @@
   }
 }
 
-.td-box--dark a {
+.td-box--dark a,
+.td-box--primary a {
   color: lighten($primary, 25%) !important;
 
   &:hover {
