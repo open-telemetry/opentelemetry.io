@@ -11,7 +11,7 @@ will find in our documentation. OpenTelemetry is designed in a way that it is
 possible to implement it in every language you like.
 
 For some languages, unofficial implementations exist -- you can find them in the
-[registry](/registry). If you know about an implementation not listed there,
+[registry](/ecosystem/registry/). If you know about an implementation not listed there,
 please [add it to the registry][].
 
 The OpenTelemetry community is open to maintain implementations for additional

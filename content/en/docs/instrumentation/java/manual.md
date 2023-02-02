@@ -48,7 +48,7 @@ the most important piece of telemetry source-identifying info.
             </dependency>
         </dependencies>
     </dependencyManagement>
-      
+
     <dependencies>
         <dependency>
             <groupId>io.opentelemetry</groupId>
@@ -79,7 +79,7 @@ dependencies {
     implementation 'io.opentelemetry:opentelemetry-exporter-otlp:{{% param javaVersion %}}'
     implementation 'io.opentelemetry:opentelemetry-semconv:{{% param javaVersion %}}-alpha'
 }
-```  
+```
 
 ### Imports
 ```java
@@ -918,7 +918,7 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
 [Library Guidelines]: /docs/reference/specification/library-guidelines
 [Obtaining a Tracer]: /docs/reference/specification/trace/api/#get-a-tracer
 [OpenTelemetry Collector]: https://github.com/open-telemetry/opentelemetry-collector
-[OpenTelemetry Registry]: /registry/?component=exporter&language=java
+[OpenTelemetry Registry]: /ecosystem/registry/?component=exporter&language=java
 [ParentBased]: https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/ParentBasedSampler.java
 [Semantic Conventions]: /docs/reference/specification/trace/semantic_conventions
 [TraceIdRatioBased]: https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/TraceIdRatioBasedSampler.java

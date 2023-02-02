@@ -9,4 +9,5 @@ IgnoreInternalURLs:
 IgnoreURLs:
   - ^/docs/instrumentation/\w+/(api|examples)/$
   - ^/docs/instrumentation/net/(metrics-api|traces-api)/
+  # Next rule is waiting on update to Go docs
   - ^/registry # [temporary] safe to ignore since we have a corresponding global rewrite rule

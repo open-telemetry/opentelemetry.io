@@ -104,7 +104,7 @@ A full list of instrumentation libraries produced by OpenTelemetry is available
 from the [opentelemetry-dotnet][] repository.
 
 You can also find more instrumentations available in the
-[registry](/registry/?language=dotnet&component=instrumentation).
+[registry](/ecosystem/registry/?language=dotnet&component=instrumentation).
 
 ## Next steps
 

@@ -346,7 +346,7 @@ many popular frameworks and libraries. You can find in the
 [opentelemetry-erlang-contrib
 repo](https://github.com/open-telemetry/opentelemetry-erlang-contrib/),
 published to [hex.pm](https://hex.pm) under the [OpenTelemetry
-Organization](https://hex.pm/orgs/opentelemetry) and the [registry](/registry).
+Organization](https://hex.pm/orgs/opentelemetry) and the [registry](/ecosystem/registry/).
 
 ## Creating Metrics
 

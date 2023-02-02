@@ -3,7 +3,7 @@ title: Apache APISIX Integrates with OpenTelemetry to Collect Tracing Data
 linkTitle: Apache APISIX-Opentelemetry Integration
 date: 2022-03-26
 author: >-
-  [Haochao Zhuang](https://github.com/dmsolr), 
+  [Haochao Zhuang](https://github.com/dmsolr),
   [Fei Han](https://github.com/hf400159)
 canonical_url: https://apisix.apache.org/blog/2022/02/28/apisix-integration-opentelemetry-plugin/
 ---
@@ -19,7 +19,7 @@ collection and reporting, but also provides data collection side for data
 receiving, processing, and exporting. Export to any or more OpenTelemetry
 backends, such as Jaeger, Zipkin, and OpenCensus. You can view the list of
 plugins that have adapted the OpenTelemetry Collector in the
-[registry](/registry/?s=collector).
+[registry](/ecosystem/registry/?s=collector).
 
 ![Architecture-Present](architecture-present.png)
 
