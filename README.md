@@ -18,9 +18,9 @@ Read on to learn about other ways on how you can help.
 Do you maintain or contribute to an integration for OpenTelemetry? We'd love to
 feature your project in the [registry][]!
 
-To add your project, submit a [pull request][pr]. You'll need to create a data
-file in `/content/en/registry` for your project. You can find a template in
-`./templates/registry-entry.md`
+To add your project, submit a [pull request][]. You'll need to create a data
+file in [data/registry][] for your project. You can find a template in
+[templates/registry-entry.yml][].
 
 ## Submitting a blog post
 
@@ -28,9 +28,9 @@ You can submit a blog post either by forking this repository and writing it
 locally or by using the GitHub UI. In both cases we ask you to follow the
 instructions provided by the [blog post template](archetypes/blog.md).
 
-**Note**: Before writing a blog post, please ask yourself, if your content
-also might be a good addition to the documentation. If the answer is yes,
-create a new issue/PR with your content to get it added to the docs.
+**Note**: Before writing a blog post, please ask yourself, if your content also
+might be a good addition to the documentation. If the answer is yes, create a
+new issue/PR with your content to get it added to the docs.
 
 ### Fork & Write locally
 
@@ -47,8 +47,7 @@ command. The file is initialized from the blog-post starter under
 
 Put assets like images into the folder created.
 
-Once your post is ready, submit it through a [pull
-request][pr].
+Once your post is ready, submit it through a [pull request][].
 
 ### Using the Github UI
 
@@ -56,7 +55,8 @@ request][pr].
   `Copy raw content` at the top right of the menu
 - [Create a new file](https://github.com/open-telemetry/opentelemetry.io/new/main)
 - Paste the content from the template
-- Name your file, e.g. `content/en/blog/2022/short-name-for-your-blog-post/index.md`
+- Name your file, e.g.
+  `content/en/blog/2022/short-name-for-your-blog-post/index.md`
 - Start editing the markdown file
 - Once your post is ready click on `Propose changes` at the bottom.
 
@@ -88,6 +88,7 @@ already contributed][contributors]!
 - Documentation: [CC-BY-4.0](LICENSE)
 - Code: [Apache-2.0](LICENSE-CODE)
 
+[data/registry]: data/registry
 [let us know]:
   https://github.com/open-telemetry/opentelemetry.io/issues/new/choose
 [@open-telemetry/blog-approvers]:
@@ -104,9 +105,9 @@ already contributed][contributors]!
 [hugo]: https://gohugo.io
 [netlify]: https://netlify.com
 [opentelemetry]: https://opentelemetry.io
-[pr]:
+[pull request]:
   https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request
-[registry]: https://opentelemetry.io/registry/
+[registry]: https://opentelemetry.io/ecosystem/registry/
 [opentelemetry community calendar]:
   https://calendar.google.com/calendar/embed?src=google.com_b79e3e90j7bbsa2n2p5an5lf60%40group.calendar.google.com
 [help wanted]:
@@ -116,3 +117,4 @@ already contributed][contributors]!
 [google doc]:
   https://docs.google.com/document/d/1wW0jLldwXN8Nptq2xmgETGbGn9eWP8fitvD5njM-xZY/edit?usp=sharing
 [slack]: https://cloud-native.slack.com/archives/C02UN96HZH6
+[templates/registry-entry.yml]: templates/registry-entry.yml
