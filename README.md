@@ -37,15 +37,21 @@ new issue/PR with your content to get it added to the docs.
 Follow the [setup instructions][contributing.md] then, to create a skeletal blog
 post, run the following command from the repo root:
 
-```console
-$ npx hugo new content/en/blog/2022/short-name-for-your-blog-post/index.md
+```sh
+npx hugo new content/en/blog/2023/short-name-for-post.md
 ```
 
-Start editing the markdown file at the path you provided in the previous
+If you post will have images or other assets, instead run:
+
+```sh
+npx hugo new content/en/blog/2023/short-name-for-post/index.md
+```
+
+Edit the markdown file at the path you provided in the previous
 command. The file is initialized from the blog-post starter under
 [archetypes](archetypes).
 
-Put assets like images into the folder created.
+Put assets, if any, like images into the folder created.
 
 Once your post is ready, submit it through a [pull request][].
 
