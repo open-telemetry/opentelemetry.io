@@ -107,12 +107,5 @@ while(<>) {
   # Make website-local page references local:
   s|https://opentelemetry.io/|/|g;
 
-  # DEMO DOCS custom processing
-
-  s|\./(services/\w+)\.md|$1/|g if $ARGV =~ /demo.docs._index/;
-  s/#demo-screenshots/./;
-  s|(/vendors/)|/ecosystem$1|g;
-  s|(\.\.\/)+(src/)|https://github.com/open-telemetry/opentelemetry-demo/blob/main/$2|g if $ARGV =~ /demo.docs/;
-
   print;
 }
