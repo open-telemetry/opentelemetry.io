@@ -93,7 +93,7 @@ options you may wish to take advantage of.
 Once you've configured the API and SDK, you'll then be free to create traces and
 metric events through the tracer and meter objects you obtained from the
 provider. Make use of Instrumentation Libraries for your dependencies -- check
-out the [registry](/registry) or your language's repository for more information
+out the [registry](/ecosystem/registry/) or your language's repository for more information
 on these.
 
 ### Export Data

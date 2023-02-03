@@ -272,7 +272,7 @@ process and export telemetry data. The package
 provides support for both exporting over both HTTP (the default) and gRPC to the
 collector, which can then export Spans to a self-hosted service like Zipkin or
 Jaeger, as well as commercial services. For a full list of available exporters,
-see the [registry](/registry/?component=exporter).
+see the [registry](/ecosystem/registry/?component=exporter).
 
 For testing purposes the `opentelemetry-erlang` repo has a Collector
 configuration,

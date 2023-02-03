@@ -39,6 +39,3 @@ OpenTelemetry ecosystem.
 {{% /blocks/section %}}
 
 {{<registry-search-form>}}
-
-[add]:
-  https://github.com/open-telemetry/opentelemetry.io#adding-a-project-to-the-opentelemetry-registry

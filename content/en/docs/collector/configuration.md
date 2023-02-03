@@ -514,7 +514,7 @@ service:
 
 ### Configuration Environment Variables
 
-The use and expansion of environment variables is supported in the Collector configuration. 
+The use and expansion of environment variables is supported in the Collector configuration.
 For example to use the values stored on the `DB_KEY` and `OPERATION` environment variables you can write the following:
 
 ```yaml
@@ -564,7 +564,7 @@ authenticator for receivers, authenticating incoming connections. Refer to the
 authentication extension for a list of its capabilities, but in general, an
 authentication extension would only implement one of those traits. For a list of
 known authenticators, use the
-[Registry](/registry/?s=authenticator&component=extension&language=) available
+[Registry](/ecosystem/registry/?s=authenticator&component=extension) available
 in this website.
 
 To add a server authenticator to a receiver in your collector, make sure to:

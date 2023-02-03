@@ -69,7 +69,7 @@ A number of popular Python libraries are auto-instrumented, including
 [Flask](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-flask)
 and
 [Django](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-django).
-You can find the full list [here](/registry/?language=python&component=instrumentation).
+You can find the full list [here](/ecosystem/registry/?language=python&component=instrumentation).
 
 ## Troubleshooting
 

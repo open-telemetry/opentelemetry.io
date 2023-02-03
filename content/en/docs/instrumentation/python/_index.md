@@ -43,7 +43,7 @@ directories.
 ## Extensions
 
 To find related projects like exporters, instrumentation libraries, tracer
-implementations, etc., visit the [Registry](/registry/?s=python).
+implementations, etc., visit the [Registry](/ecosystem/registry/?s=python).
 
 ### Installing Cutting-edge Packages
 

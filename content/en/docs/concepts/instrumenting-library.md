@@ -49,7 +49,7 @@ are a good places to start!
 
 Some libraries are thin clients wrapping network calls. Chances are that
 OpenTelemetry has an instrumentation library for the underlying RPC client (check out
-the [registry](/registry/)). In this case, instrumenting the wrapper library
+the [registry](/ecosystem/registry/)). In this case, instrumenting the wrapper library
 may not be necessary.
 
 Don't instrument if:
@@ -213,7 +213,7 @@ should have a verbosity, logs are a better choice than traces.
 
 Chances are that your app uses logging or some similar module already. Your
 module might already have OpenTelemetry integration -- to find out, see the
-[registry](/registry/). Integrations usually stamp active trace context on all
+[registry](/ecosystem/registry/). Integrations usually stamp active trace context on all
 logs, so users can correlate them.
 
 If your language and ecosystem don't have common logging support, use [span
@@ -342,7 +342,7 @@ stable yet and we don't yet define metrics conventions.
 ### Instrumentation registry
 
 Please add your instrumentation library to the
-[OpenTelemetry registry](/registry/), so users can find it.
+[OpenTelemetry registry](/ecosystem/registry/), so users can find it.
 
 ### Performance
 

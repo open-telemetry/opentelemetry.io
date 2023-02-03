@@ -29,7 +29,7 @@ Install dependencies used by the example.
 {{< tabpane lang=shell >}}
 
 {{< tab TypeScript >}}
-npm install express typescript ts-node @types/express @types/node 
+npm install express typescript ts-node @types/express @types/node
 {{< /tab >}}
 
 {{< tab JavaScript >}}
@@ -129,7 +129,7 @@ You may also want to use the `BatchSpanProcessor` to export spans in batches in 
 Many common modules such as the `http` standard library module, `express`, and
 others can be automatically instrumented using autoinstrumentation modules.
 To find autoinstrumenatation modules, you can look at the
-[registry](/registry/?language=js&component=instrumentation).
+[registry](/ecosystem/registry/?language=js&component=instrumentation).
 
 You can also install all instrumentations maintained by the OpenTelemetry authors
 by using the `@opentelemetry/auto-instrumentations-node` module.
