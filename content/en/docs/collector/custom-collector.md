@@ -24,12 +24,10 @@ get started.
 
 ## Step 1 - Install the builder
 
-The `ocb` binary is available as a downloadable asset from the [OpenTelemetry
-Collector releases page][releases]. You will find the list of assets at the
-bottom of the page.
-
-v0.68.0 is the latest and the assets are named based on OS and chipset, so
-download the one that fits your configuration.
+The `ocb` binary is available as a downloadable asset from [OpenTelemetry
+Collector releases][releases]. You will find the list of assets at the bottom of
+the page. Assets are named based on OS and chipset, so download the one that
+fits your configuration.
 
 The binary has a pretty long name, so you can simply rename it to `ocb`; and if
 you are running Linux or macOS, you will also need to provide execution
@@ -39,7 +37,7 @@ Open your terminal and type the following commands to accomplish both
 operations:
 
 ```cmd
-mv ocb_0.68.0_darwin_amd64 ocb
+mv ocb_{{% param collectorVersion %}}_darwin_amd64 ocb
 chmod 777 ocb
 ```
 
@@ -64,7 +62,7 @@ Here are the tags for the `dist` map:
 | module:          | The module name for the new distribution, following Go mod conventions. Optional, but recommended. | Yes      | "go.opentelemetry.io/collector/cmd/builder"                                       |
 | name:            | The binary name for your distribution                                                              | Yes      | "otelcol-custom"                                                                  |
 | description:     | A long name for the application.                                                                   | Yes      | "Custom OpenTelemetry Collector distribution"                                     |
-| otelcol_version: | The OpenTelemetry Collector version to use as base for the distribution.                           | Yes      | "0.53.0"                                                                          |
+| otelcol_version: | The OpenTelemetry Collector version to use as base for the distribution.                           | Yes      | "{{% param collectorVersion %}}"                                                                          |
 | output_path:     | The path to write the output (sources and binary).                                                 | Yes      | "/var/folders/86/s7l1czb16g124tng0d7wyrtw0000gn/T/otelcol-distribution3618633831" |
 | version:         | The version for your custom OpenTelemetry Collector.                                               | Yes      | "1.0.0"                                                                           |
 | go:              | Which Go binary to use to compile the generated sources.                                           | Yes      | go from the PATH                                                                  |
@@ -110,17 +108,17 @@ dist:
   name: otelcol-dev
   description: Basic OTel Collector distribution for Developers
   output_path: ./otelcol-dev
-  otelcol_version: 0.68.0
+  otelcol_version: {{% param collectorVersion %}}
 
 exporters:
-  - gomod: go.opentelemetry.io/collector/exporter/loggingexporter v0.68.0
-  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/jaegerexporter v0.68.0
+  - gomod: go.opentelemetry.io/collector/exporter/loggingexporter v{{% param collectorVersion %}}
+  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/jaegerexporter v{{% param collectorVersion %}}
 
 processors:
-  - gomod: go.opentelemetry.io/collector/processor/batchprocessor v0.68.0
+  - gomod: go.opentelemetry.io/collector/processor/batchprocessor v{{% param collectorVersion %}}
 
 receivers:
-  - gomod: go.opentelemetry.io/collector/receiver/otlpreceiver v0.68.0
+  - gomod: go.opentelemetry.io/collector/receiver/otlpreceiver v{{% param collectorVersion %}}
 ```
 
 ## Step 3 - Generating the Code and Building your Collector's distribution.
@@ -136,7 +134,7 @@ If everything went well, here is what the output of the command should look
 like:
 
 ```nocode
-2022-06-13T14:25:03.037-0500	INFO	internal/command.go:85	OpenTelemetry Collector distribution builder	{"version": "0.53.0", "date": "2022-06-08T15:05:37Z"}
+2022-06-13T14:25:03.037-0500	INFO	internal/command.go:85	OpenTelemetry Collector distribution builder	{"version": "{{% param collectorVersion %}}", "date": "2023-01-03T15:05:37Z"}
 2022-06-13T14:25:03.039-0500	INFO	internal/command.go:108	Using config file	{"path": "builder-config.yaml"}
 2022-06-13T14:25:03.040-0500	INFO	builder/config.go:99	Using go	{"go-executable": "/usr/local/go/bin/go"}
 2022-06-13T14:25:03.041-0500	INFO	builder/main.go:76	Sources created	{"path": "./otelcol-dev"}
