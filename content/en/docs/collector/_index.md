@@ -4,7 +4,7 @@ description: Vendor-agnostic way to receive, process and export telemetry data.
 spelling: cSpell:ignore Otel
 aliases: [/docs/collector/about]
 cascade:
-  collectorVersion: 0.70.0
+  collectorVersion: 0.70.1
 weight: 10
 ---
 
