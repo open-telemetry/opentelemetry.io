@@ -1,6 +1,5 @@
 ---
 title: Distributions
-spelling: cSpell:ignore
 weight: 25
 ---
 
