@@ -41,7 +41,7 @@ post, run the following command from the repo root:
 npx hugo new content/en/blog/2023/short-name-for-post.md
 ```
 
-If you post will have images or other assets, instead run:
+If your post will have images or other assets, instead run:
 
 ```sh
 npx hugo new content/en/blog/2023/short-name-for-post/index.md
