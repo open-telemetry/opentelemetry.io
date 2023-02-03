@@ -8,4 +8,4 @@ tags:
 repo: https://github.com/honeycombio/honeycomb-opentelemetry-go
 license: Apache 2.0
 description: Honeycomb's distribution of OpenTelemetry for Go
-authors: Hound Technology Inc
+authors: Honeycomb, Hound Technology, Inc
