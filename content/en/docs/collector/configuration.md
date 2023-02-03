@@ -1,5 +1,5 @@
 ---
-title: "Configuration"
+title: Configuration
 weight: 20
 ---
 

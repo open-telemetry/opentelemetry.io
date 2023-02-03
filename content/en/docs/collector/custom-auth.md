@@ -1,5 +1,5 @@
 ---
-title: "Building a custom authenticator"
+title: Building a custom authenticator
 weight: 30
 ---
 
