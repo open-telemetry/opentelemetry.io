@@ -1,6 +1,19 @@
 ---
 title: Building a Trace Receiver
+spelling: cSpell:ignore struct tailtracer
+collectorVersion: 0.53.0 # Pin to older version until prose is updated
 ---
+
+{{% alert title="Version note" color="warning" %}}
+
+This instructions in this page were written for collector version [{{% param
+collectorVersion %}}][old-vers], and are known to not work with the [latest
+release][].
+
+[old-vers]: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/v{{% param collectorVersion %}}
+[latest release]: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/latest
+
+{{% /alert %}}
 
 If you are reading this tutorial, you probably already have an idea of the
 OpenTelemetry concepts behind distributed tracing, but if you don't you can
@@ -18,7 +31,7 @@ OpenTelemetry trace model as a way to represent a request and quickly understand
 its duration and the details about every step involved in completing it.
 
 Assuming you already have a system generating some kind of tracing telemetry,
-[the OpenTelemetry Collector](/docs/collector/) is the doorway to help you make
+the [OpenTelemetry Collector](/docs/collector/) is the doorway to help you make
 it available into the OTel world.
 
 Within the Collector, a trace receiver has the role to receive and convert your
@@ -192,7 +205,7 @@ touch config.go
 ```
 
 To implement the configuration aspects of a receiver you need create a `Config`
-struct, so go ahead and add the following code to your `config.go` file:
+struct. Add the following code to your `config.go` file:
 
 ```go
 package tailtracer
@@ -202,16 +215,12 @@ type Config struct{
 }
 ```
 
-In order to be able to give your receiver access to its settings the `Config`
-struct must:
+To give your receiver access to its settings the `Config` struct must:
 
-- embed the
-  [config.ReceiverSettings](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.53.0/config/receiver.go#L42)
-  struct or a struct that extends it.
-
+- Embed the [config.ReceiverSettings][] struct or a struct that extends it.
 - Add a field for each of the receiver's settings.
 
-Here is what your config.go file should look like after you implemented the
+Here is what your `config.go` file should look like after you implemented the
 requirements above.
 
 > config.go
@@ -229,7 +238,6 @@ type Config struct {
    Interval    string `mapstructure:"interval"`
    NumberOfTraces int `mapstructure:"number_of_traces"`
 }
-
 ```
 
 > #### Check your work
@@ -242,7 +250,7 @@ type Config struct {
 
 Now that you have access to the settings, you can provide any kind of validation
 needed for those values by implementing the `Validate` method according to the
-[validatable](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.53.0/config/common.go#L24)
+[validatable](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param collectorVersion %}}/config/common.go#L24)
 interface.
 
 In this case, the `interval` value will be optional (we will look at generating
@@ -294,7 +302,7 @@ func (cfg *Config) Validate() error {
 
 If you want to take a closer look at the structs and interfaces involved in the
 configuration aspects of a receiver component, take a look at the
-[config/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.53.0/config/receiver.go)
+[config/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param collectorVersion %}}/config/receiver.go)
 file inside the Collector's GitHub project.
 
 ## Enabling the Collector to instantiate your receiver
@@ -350,7 +358,7 @@ As you can see, the `components()` function is responsible to provide the
 Collector the factories for all its components which is represented by a
 variable called `factories` of type `component.Factories` (here is the
 declaration of the
-[component.Factories](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.53.0/component/factories.go#L25)
+[component.Factories](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param collectorVersion %}}/component/factories.go#L25)
 struct), which will then be used to instantiate the components that are
 configured and consumed by the Collector's pipelines.
 
@@ -362,7 +370,7 @@ factories (instances of `ReceiverFactory`), and it currently has the
 The `tailtracer` receiver has to provide a `ReceiverFactory` implementation, and
 although you will find a `ReceiverFactory` interface (you can find its
 definition in the
-[component/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.53.0/component/receiver.go#L104)
+[component/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param collectorVersion %}}/component/receiver.go#L104)
 file within the Collector's project ), the right way to provide the
 implementation is by using the functions available within the
 `go.opentelemetry.io/collector/component` package.
@@ -418,7 +426,7 @@ Let's now implement the code to support all the parameters required by
 ### Identifying and Providing default settings for the receiver
 
 If you take a look at the definition of
-[config.Type](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.53.0/config/common.go#L21),
+[config.Type](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param collectorVersion %}}/config/common.go#L21),
 you will see that it's just a string. So all we need to do is to provide a
 string constant representing the unique identifier for our receiver.
 
@@ -512,14 +520,14 @@ func NewFactory() component.ReceiverFactory {
 
 If you take a closer look at the `ReceiverSettings` struct and
 `NewReceiverSettings` function (they are declared within the
-[config/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.53.0/config/receiver.go)
+[config/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param collectorVersion %}}/config/receiver.go)
 file inside the Collector's GitHub project), you will find out that the
 `ReceiverSettings` is implementing the methods to support the `identifiable`
 interface which are also required by any Collector's component.
 
 All the types and functions involved in supporting the requirements for
 component's identification are implemented within the
-[config/identifiable.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.53.0/config/identifiable.go)
+[config/identifiable.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param collectorVersion %}}/config/identifiable.go)
 file inside the Collector's GitHub project.
 
 ### Enabling the factory to describe the receiver as capable of processing traces
@@ -765,7 +773,7 @@ accomplish that.
 
 All the receiver APIs responsible to enable the signals are currently declared
 in the
-[component/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.53.0/component/receiver.go)
+[component/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param collectorVersion %}}/component/receiver.go)
 file within the OTel Collector's project in GitHub, open the file and take a
 minute to browse through all the interfaces declared in it.
 
@@ -2285,3 +2293,6 @@ Here is the detailed view of one of those traces in Jaeger:
 
 That's it! You have now reached the end of this tutorial and successfully
 implemented a trace receiver, congratulations!
+
+[config.ReceiverSettings]:
+  https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param collectorVersion %}}/config/receiver.go#L42
