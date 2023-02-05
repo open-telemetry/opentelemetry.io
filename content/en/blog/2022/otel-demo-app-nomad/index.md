@@ -291,7 +291,7 @@ emitted with OpenTelemetry.
 **Load Generator UI:**
 [http://otel-demo.localhost/loadgen/](http://otel-demo.localhost/loadgen/)
 
-![Screen capture of loadgenerator UI](loadgen.png "Screen capture of loadgenerator UI")
+<img style="border:2px solid black;" src="loadgen.png" width="700" alt="Screen capture of loadgenerator UI" />
 
 ## Gotchas
 
