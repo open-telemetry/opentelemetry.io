@@ -1,28 +1,22 @@
 ---
 title: OpenTelemetry Demo Documentation
-linkTitle: Demo Documentation
+linkTitle: Demo
+cascade:
+  repo: https://github.com/open-telemetry/opentelemetry-demo
 ---
 
 Welcome to the OpenTelemetry Demo! This folder contains overall documentation
 for the project, how to install and run it, and some scenarios you can use to
 view OpenTelemetry in action.
 
-## Table of Contents
-
-- [Guided Scenarios](#scenarios)
-- [Language Instrumentation Examples](#language-feature-reference)
-- [Quick Start](#running-the-demo)
-- [References](#reference)
-- [Service Documentation](#service-documentation)
-
-### Running the Demo
+## Running the Demo
 
 Want to deploy the demo and see it in action? Start here.
 
 - [Docker]({{% relref "./docker_deployment.md" %}})
 - [Kubernetes]({{% relref "./kubernetes_deployment.md" %}})
 
-### Language Feature Reference
+## Language Feature Reference
 
 Want to understand how a particular language's instrumentation works? Start
 here.
@@ -41,7 +35,7 @@ here.
 | Ruby          | [Email Service]({{% relref "services/emailservice/" %}})                                                                                                                                | [Email Service]({{% relref "services/emailservice/" %}})                                                                         |
 | Rust          | [Shipping Service]({{% relref "services/shippingservice/" %}})                                                                                                                          | [Shipping Service]({{% relref "services/shippingservice/" %}})                                                                   |
 
-### Service Documentation
+## Service Documentation
 
 Specific information about how OpenTelemetry is deployed in each service can be
 found here:
@@ -59,7 +53,7 @@ found here:
 - [Recommendation Service]({{% relref "services/recommendationservice/" %}})
 - [Shipping Service]({{% relref "services/shippingservice/" %}})
 
-### Scenarios
+## Scenarios
 
 How can you solve problems with OpenTelemetry? These scenarios walk you through
 some pre-configured problems and show you how to interpret OpenTelemetry data to
@@ -71,7 +65,7 @@ We'll be adding more scenarios over time.
   with product id: `OLJCESPC7Z` using the Feature Flag service
 - Discover a memory leak and diagnose it using metrics and traces. [Read more]({{% relref "./scenarios/recommendation_cache.md" %}})
 
-### Reference
+## Reference
 
 Project reference documentation, like requirements and feature matrices.
 

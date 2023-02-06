@@ -1,5 +1,6 @@
 ---
 title: Quote Service
+linkTitle: Quote
 ---
 
 This service is responsible for calculating shipping costs, based on

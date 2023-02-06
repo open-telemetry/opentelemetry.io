@@ -1,5 +1,6 @@
 ---
 title: Fraud Detection Service
+linkTitle: Fraud Detection
 ---
 
 This service analyses incoming orders and detects malicious customers.

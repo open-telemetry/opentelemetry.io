@@ -1,5 +1,6 @@
 ---
-title: Demo Architecture
+title: Architecture Requirements
+linkTitle: Architecture
 ---
 
 ## Summary

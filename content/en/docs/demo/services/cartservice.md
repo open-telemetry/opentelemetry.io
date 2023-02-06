@@ -1,5 +1,6 @@
 ---
 title: Cart Service
+linkTitle: Cart
 ---
 
 This service maintains items placed in the shopping cart by users. It interacts

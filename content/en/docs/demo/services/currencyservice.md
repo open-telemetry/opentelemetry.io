@@ -1,5 +1,6 @@
 ---
 title: Currency Service
+linkTitle: Currency
 ---
 
 This service provides functionality to convert amounts between different

@@ -1,5 +1,6 @@
 ---
-title: Kubernetes
+title: Kubernetes deployment
+linkTitle: Kubernetes
 ---
 
 We provide a [OpenTelemetry Demo Helm

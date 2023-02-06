@@ -1,5 +1,6 @@
 ---
-title: Features
+title: Demo Features
+linkTitle: Features
 ---
 
 - **[Kubernetes](https://kubernetes.io)**: the app is designed to run on

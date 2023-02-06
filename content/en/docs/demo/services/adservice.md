@@ -1,5 +1,6 @@
 ---
 title: Ad Service
+linkTitle: Ad
 ---
 
 This service determines appropriate ads to serve to users based on context

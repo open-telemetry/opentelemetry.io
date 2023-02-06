@@ -1,5 +1,6 @@
 ---
 title: Product Catalog Service
+linkTitle: Product Catalog
 ---
 
 This service is responsible to return information about products. The service

@@ -1,5 +1,6 @@
 ---
 title: Payment Service
+linkTitle: Payment
 ---
 
 This service is responsible to process credit card payments for orders. It will

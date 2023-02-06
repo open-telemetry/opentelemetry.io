@@ -1,5 +1,6 @@
 ---
 title: Email Service
+linkTitle: Email
 ---
 
 This service will send a confirmation email to the user when an order is placed.
