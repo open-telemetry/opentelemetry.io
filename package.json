@@ -86,7 +86,7 @@
     "postcss": "^8.4.21",
     "postcss-cli": "^10.1.0",
     "prettier": "^2.6.2",
-    "textlint": "^12.2.3",
+    "textlint": "^13.1.4",
     "textlint-rule-terminology": "^3.0.4"
   },
   "dependencies": {
