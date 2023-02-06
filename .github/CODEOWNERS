@@ -16,7 +16,10 @@
 * @open-telemetry/docs-approvers
 
 # content owners
+content/en/blog/                         @open-telemetry/docs-approvers @open-telemetry/blog-approvers
+content/en/community/end-user/           @open-telemetry/docs-approvers @open-telemetry/end-user-wg
 content/en/docs/collector                @open-telemetry/docs-approvers @open-telemetry/collector-approvers
+content/en/docs/demo                     @open-telemetry/docs-approvers @open-telemetry/demo-approvers
 content/en/docs/instrumentation/cpp/     @open-telemetry/docs-approvers @open-telemetry/cpp-maintainers
 content/en/docs/instrumentation/erlang/  @open-telemetry/docs-approvers @open-telemetry/erlang-approvers
 # go is a content module
@@ -26,9 +29,7 @@ content/en/docs/instrumentation/net/     @open-telemetry/docs-approvers @open-te
 content/en/docs/instrumentation/php/     @open-telemetry/docs-approvers @open-telemetry/php-maintainers @open-telemetry/php-approvers
 content/en/docs/instrumentation/python/  @open-telemetry/docs-approvers @open-telemetry/python-maintainers @open-telemetry/python-approvers
 content/en/docs/instrumentation/ruby/    @open-telemetry/docs-approvers @open-telemetry/ruby-approvers @open-telemetry/ruby-contrib-approvers
-content/en/docs/instrumentation/rust/  @open-telemetry/docs-approvers @open-telemetry/rust-maintainers @open-telemetry/rust-approvers
-content/en/docs/instrumentation/swift/  @open-telemetry/docs-approvers @open-telemetry/swift-maintainers @open-telemetry/swift-approvers
-content/en/docs/k8s-operator		@open-telemetry/operator-approvers @open-telemetry/operator-maintainers
-content/en/blog/                         @open-telemetry/docs-approvers @open-telemetry/blog-approvers
-content/en/community/end-user/		@open-telemetry/end-user-wg
-content/en/ecosystem/demo/		@open-telemetry/demo-approvers @open-telemetry/demo-maintainers
+content/en/docs/instrumentation/rust/    @open-telemetry/docs-approvers @open-telemetry/rust-maintainers @open-telemetry/rust-approvers
+content/en/docs/instrumentation/swift/   @open-telemetry/docs-approvers @open-telemetry/swift-maintainers @open-telemetry/swift-approvers
+content/en/docs/k8s-operator             @open-telemetry/docs-approvers @open-telemetry/operator-approvers @open-telemetry/operator-maintainers
+content/en/ecosystem/demo/               @open-telemetry/demo-approvers @open-telemetry/demo-maintainers
