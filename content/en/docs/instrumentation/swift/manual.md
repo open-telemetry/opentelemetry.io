@@ -8,7 +8,7 @@ description: Manual instrumentation for opentelemetry-swift
 ## Setup
 
 The
-[OpenTelemetrySdk](https://github.com/open-telemetry/opentelemetry-swift/blob/main/Sources/OpenTelemetrySdk/OpenTelemetrySdk.swift#L37)
+[OpenTelemetry](https://github.com/open-telemetry/opentelemetry-swift/blob/main/Sources/OpenTelemetryApi/OpenTelemetry.swift#L11)
 provides limited functionality in its default configuration. For more useful
 functionality, some configuration is required.
 
@@ -61,12 +61,12 @@ initialized instrumentation will be exporting using this OTLP exporter.
 ## Acquiring a Tracer
 
 To do tracing, you will need a tracer. A tracer is acquired through the tracer
-provider and is responsible for creating spans. The OpenTelementrySdk manages
+provider and is responsible for creating spans. The OpenTelemetry manages
 the tracer provider as we defined and registered above. A tracer requires an
 instrumentation name, and an optional version to be created:
 
 ```swift
-let  tracer = OpenTelemetrySDK.instance.tracerProvider.get(instrumentationName: "instrumentation-library-name", instrumentationVersion: "1.0.0")
+let  tracer = OpenTelemetry.instance.tracerProvider.get(instrumentationName: "instrumentation-library-name", instrumentationVersion: "1.0.0")
 ```
 
 ### Creating Spans
