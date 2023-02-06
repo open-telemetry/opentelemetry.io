@@ -35,7 +35,7 @@ echo "Latest version: $latest_version"
 
 fileWithVersInfo=${REPO_DIR}/content/en/docs/collector/_index.md
 
-sed -i $BACKUP_EXT "s/collectorVersion:.*/collectorVersion: $latest_version/" $fileWithVersInfo
+sed -i$BACKUP_EXT -e "s/collectorVersion:.*/collectorVersion: $latest_version/" $fileWithVersInfo
 
 if [[ -e $fileWithVersInfo$BACKUP_EXT ]]; then
   rm $fileWithVersInfo$BACKUP_EXT
