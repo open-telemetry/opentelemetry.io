@@ -38,7 +38,7 @@ Here's an explanation of what each configuration does:
   metrics are being exported to `console` (stdout). It is currently required for
   your to specify a metrics exporter. If you aren't exporting metrics, specify
   `none` as the value instead.
-- `service_name` sets the name of the service associated to the telemetries, and is
+- `service_name` sets the name of the service associated with your telemetry, and is
   sent to your [Observability backend](/ecosystem/vendors/).
 - `exporter_otlp_endpoint` sets the endpoint which the telemetries are exported to.
   If omitted, the default [Collector](/docs/collector) endpoint will be used, which is
