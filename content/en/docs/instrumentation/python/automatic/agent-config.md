@@ -40,7 +40,7 @@ Here's an explanation of what each configuration does:
   `none` as the value instead.
 - `service_name` sets the name of the service associated with your telemetry, and is
   sent to your [Observability backend](/ecosystem/vendors/).
-- `exporter_otlp_endpoint` sets the endpoint which the telemetries are exported to.
+- `exporter_otlp_endpoint` sets the endpoint where telemetry is exported to.
   If omitted, the default [Collector](/docs/collector) endpoint will be used, which is
    `0.0.0.0:4317` for gRPC and `0.0.0.0:4318` for HTTP.
 - `exporter_otlp_headers` is required depending on your chosen Observability
