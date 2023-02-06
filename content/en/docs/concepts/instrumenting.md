@@ -8,7 +8,6 @@ weight: 40
 
 In order to make a system observable, it must be **instrumented**: That is, code from the
 system's components must emit
-system must emit
 [traces](/docs/concepts/observability-primer/#distributed-traces),
 [metrics](/docs/concepts/observability-primer/#reliability--metrics), and
 [logs](/docs/concepts/observability-primer/#logs).
