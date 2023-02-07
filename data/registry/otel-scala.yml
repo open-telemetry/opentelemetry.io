@@ -1,7 +1,7 @@
 title: otel4s
 registryType: instrumentation
 isThirdParty: true # this is only true if the project is not maintained by the OpenTelemetry project
-language: Scala
+language: scala
 tags:
   - scala
   - typelevel
