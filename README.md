@@ -47,9 +47,8 @@ If your post will have images or other assets, instead run:
 npx hugo new content/en/blog/2023/short-name-for-post/index.md
 ```
 
-Edit the markdown file at the path you provided in the previous
-command. The file is initialized from the blog-post starter under
-[archetypes](archetypes).
+Edit the markdown file at the path you provided in the previous command. The
+file is initialized from the blog-post starter under [archetypes](archetypes).
 
 Put assets, if any, like images into the folder created.
 

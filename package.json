@@ -35,6 +35,8 @@
     "precheck-links": "npm run build",
     "prepare": "run-s get:submodule _prepare:docsy",
     "preserve:hugo": "npm run _prebuild",
+    "prettier:check-all": "npx prettier --check .",
+    "prettier:no-ignore": "npx prettier --ignore-path ''",
     "preserve": "npm run _prebuild",
     "s": "run-s",
     "schemas:update": "npm run update:submodule content-modules/opentelemetry-specification",

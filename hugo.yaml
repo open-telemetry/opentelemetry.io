@@ -40,7 +40,8 @@ outputs:
   home: [HTML, REDIRECTS, RSS]
 
 params:
-  copyright: 'The OpenTelemetry Authors | Documentation Distributed under CC BY 4.0 | '
+  copyright: >-
+    The OpenTelemetry Authors | Documentation Distributed under CC BY 4.0 |
   tagline: Effective observability requires high-quality telemetry
   sub_tagline: >-
     **OpenTelemetry** makes robust, portable telemetry a built-in feature of
@@ -108,7 +109,7 @@ params:
         url: https://github.com/open-telemetry
         icon: fab fa-github
         desc: Find us on GitHub.
-      - name: 'Slack #opentelemetry'
+      - name: "Slack #opentelemetry"
         url: https://cloud-native.slack.com/archives/CJFCJHG4Q
         icon: fab fa-slack
         desc: >-
@@ -159,7 +160,7 @@ params:
 
   fonts:
     - name: Noto Sans
-      sizes: [300,400,600,700]
+      sizes: [300, 400, 600, 700]
       type: sans_serif
 
 services:

@@ -1,0 +1,23 @@
+# Base
+
+/.netlify
+/.vscode
+/content-modules
+/iconography
+/layouts
+package-lock.json
+/public
+/themes
+/tmp
+
+# Temporary while we ramp up use of Prettier
+
+/.github
+/archetypes
+/assets
+/content
+/data
+/resources
+/scripts
+/static
+/templates
