@@ -111,7 +111,7 @@ also want to make sure you do a proper introduction to the use case for people
 who may not know the technology.
 
 One of the most valuable talks I ever attended was about a topic I needed
-(debugging strategies) in a language I had never used at that point (.NET)
+(debugging strategies) in a language I had never used at that point (.NET).
 
 So really, what you want to tell your audience in your abstract is: what will
 they learn from attending your talk?
