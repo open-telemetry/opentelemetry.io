@@ -7,7 +7,7 @@ canonical_url: https://joshuamlee.com/submitting-your-first-conference-talk/
 ---
 
 Submitting a conference talk in the tech industry can be a thrilling and nerve-wracking experience, especially if it’s your first time. The thought of presenting your ideas to a room full of experts and industry professionals can be intimidating, but also an opportunity to showcase your skills, gain recognition, and network with others in your field. 
-
+On Wednesday, February 1st, 2023, the [OpenTelemetry End User Working Group](https://opentelemetry.io/community/end-user/) ran an Observability Abstract Workshop. The goal was to help folks who are new to speaking, and are interested in submitting an observability panel or talk. The workshop featured advice and expertise from OpenTelemetry community members [Reese Lee](https://github.com/reese-lee), [Daniel Kim](https://github.com/lazyplatypus), [Rynn Mancuso](https://github.com/musingvirtual), [Juraci Paixão Kröhling](https://github.com/jpkrohling), and [Adriana Villela](https://github.com/avillela).
 Whether you’re a seasoned speaker or just starting out, this guide will provide you with tips to help you make the most of your conference talk submission and increase your chances of being selected to speak.
 
 ## Tip #1: Just do it
