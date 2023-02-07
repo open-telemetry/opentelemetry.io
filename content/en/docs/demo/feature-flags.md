@@ -1,5 +1,6 @@
 ---
 title: Feature Flags
+aliases: [/docs/demo/feature_flags]
 ---
 
 This demo comes with several feature flags which can control failure conditions

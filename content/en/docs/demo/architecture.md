@@ -1,6 +1,7 @@
 ---
 title: Demo Architecture
 linkTitle: Architecture
+aliases: [/docs/demo/current_architecture]
 ---
 
 **OpenTelemetry Demo** is composed of microservices written in different programming

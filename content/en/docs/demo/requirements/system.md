@@ -1,6 +1,7 @@
 ---
 title: System Requirements
 linkTitle: System
+aliases: [/docs/demo/requirements/system_requirements]
 ---
 
 To ensure the demo runs correctly please ensure your environment meets the

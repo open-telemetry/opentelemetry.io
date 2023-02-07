@@ -1,6 +1,7 @@
 ---
 title: OpenTelemetry Requirements
 linkTitle: OTel Requirements
+aliases: [/docs/demo/requirements/opentelemetry_requirements]
 ---
 
 The following requirements were decided upon to define what OpenTelemetry (OTel)

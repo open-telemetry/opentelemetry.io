@@ -1,6 +1,7 @@
 ---
 title: Feature Flag Service
 linkTitle: Feature Flag
+aliases: [/docs/demo/services/featureflagservice]
 ---
 
 This service is written in Erlang/Elixir and it is responsible for creating,

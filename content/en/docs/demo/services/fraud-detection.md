@@ -1,6 +1,7 @@
 ---
 title: Fraud Detection Service
 linkTitle: Fraud Detection
+aliases: [/docs/demo/services/frauddetectionservice]
 ---
 
 This service analyses incoming orders and detects malicious customers.

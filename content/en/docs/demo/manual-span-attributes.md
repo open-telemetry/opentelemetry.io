@@ -1,5 +1,6 @@
 ---
 title: Manual Span Attributes
+aliases: [/docs/demo/manual_span_attributes]
 ---
 
 This document contains the list of manual Span Attributes used throughout the demo:

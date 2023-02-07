@@ -1,5 +1,6 @@
 ---
 title: Load Generator
+aliases: [/docs/demo/services/loadgenerator]
 ---
 
 The load generator is based on the Python load testing framework [Locust](https://locust.io).

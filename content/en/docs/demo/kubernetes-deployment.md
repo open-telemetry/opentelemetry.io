@@ -1,6 +1,7 @@
 ---
 title: Kubernetes deployment
 linkTitle: Kubernetes
+aliases: [/docs/demo/kubernetes_deployment]
 ---
 
 We provide a [OpenTelemetry Demo Helm

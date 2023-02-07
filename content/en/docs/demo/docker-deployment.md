@@ -1,6 +1,7 @@
 ---
 title: Docker deployment
 linkTitle: Docker
+aliases: [/docs/demo/docker_deployment]
 ---
 
 ## Prerequisites

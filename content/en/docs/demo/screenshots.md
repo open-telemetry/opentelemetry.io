@@ -1,6 +1,7 @@
 ---
 title: Demo Screenshots
 linkTitle: Screenshots
+aliases: [/docs/demo/demo_screenshots]
 ---
 
 ## Webstore

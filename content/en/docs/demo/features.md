@@ -1,6 +1,7 @@
 ---
 title: Demo Features
 linkTitle: Features
+aliases: [/docs/demo/demo_features]
 ---
 
 - **[Kubernetes](https://kubernetes.io)**: the app is designed to run on

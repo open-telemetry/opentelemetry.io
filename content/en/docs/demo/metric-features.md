@@ -1,6 +1,7 @@
 ---
 title: Metric Feature Coverage by Service
 linkTitle: Metric Feature Coverage
+aliases: [/docs/demo/metric_service_features]
 ---
 
 Emoji Legend
@@ -10,7 +11,7 @@ Emoji Legend
 - Not Present (Yet): :construction:
 
 | Service         | Language        | Auto-instrumentation | Manual Instrumentation | Multiple Instruments | Views          | Custom Attributes | Resource Detection | Trace Exemplars |
-|-----------------|-----------------|----------------------|------------------------|----------------------|----------------|-------------------|--------------------|-----------------|
+| --------------- | --------------- | -------------------- | ---------------------- | -------------------- | -------------- | ----------------- | ------------------ | --------------- |
 | Accounting      | Go              | :construction:       | :construction:         | :construction:       | :construction: | :construction:    | :construction:     | :construction:  |
 | Ad              | Java            | :100:                | :100:                  | :construction:       | :construction: | :100:             | :100:              | :100:           |
 | Cart            | .NET            | :100:                | :construction:         | :construction:       | :construction: | :construction:    | :construction:     | :construction:  |
