@@ -6,7 +6,8 @@ and blog. The site is [built][contributing.md] using [Hugo][] and hosted on
 
 ## Get involved
 
-If you are new to OpenTelemetry and just get started with it, you are in a perfect position to help us get better: the website and documentation is the
+If you are new to OpenTelemetry and just get started with it, you are in a
+perfect position to help us get better: the website and documentation is the
 entry point for newcomers like you, so if something is unclear or something is
 missing [let us know][]!
 
