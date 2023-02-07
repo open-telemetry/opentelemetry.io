@@ -21,6 +21,10 @@ particular interest in the following:
 * Challenges with adoption within the organization -- how can the 
   Community help you drive adoption with your teams? 
 
+We will then take the feedback you shared and turn them into actionable tasks 
+for the relevant SIGs, as well as provide context and insight for you during
+the session as appropriate. 
+
 We schedule these sessions once a month, usually during one of the EUWG's
 meetings (alternating Thursdays at 10AM Pacific Time), but can set up a 
 different time if that does not work for you. The sessions are typically 
@@ -38,4 +42,4 @@ Things to keep in mind:
   
 To schedule a session, reach out to us:
 * In [#otel-user-research](https://cloud-native.slack.com/archives/C01RT3MSWGZ)
-* Direct message in the [CNCF Community Slack](https://communityinviter.com/apps/cloud-native/cncf)  -- ping Reese Lee, Adriana Villela, or Rynn Mancuso
+* Via direct message in the [CNCF Community Slack](https://communityinviter.com/apps/cloud-native/cncf)  -- ping Reese Lee, Adriana Villela, or Rynn Mancuso
