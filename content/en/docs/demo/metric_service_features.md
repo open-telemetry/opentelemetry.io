@@ -1,5 +1,6 @@
 ---
 title: Metric Feature Coverage by Service
+linkTitle: Metric Feature Coverage
 ---
 
 Emoji Legend

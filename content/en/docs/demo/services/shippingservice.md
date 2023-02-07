@@ -1,5 +1,6 @@
 ---
 title: Shipping Service
+linkTitle: Shipping
 ---
 
 This service is responsible for providing shipping information including pricing

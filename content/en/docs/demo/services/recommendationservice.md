@@ -1,5 +1,6 @@
 ---
 title: Recommendation Service
+linkTitle: Recommendation
 ---
 
 This service is responsible to get a list of recommended products for the user

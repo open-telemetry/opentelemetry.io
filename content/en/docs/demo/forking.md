@@ -1,15 +1,16 @@
 ---
-title: Forking this Repository
+title: Forking the demo repository
+linkTitle: Forking
 ---
 
-This repository is designed to be forked and used as a tool to show off what you
-are doing with OpenTelemetry.
+The [demo repository][] is designed to be forked and used as a tool to show off
+what you are doing with OpenTelemetry.
 
 Setting up a fork or a demo usually only requires overriding some environment
 variables and possibly replacing some container images.
 
-Live demos can be added to the
-[README](https://github.com/open-telemetry/opentelemetry-demo/blob/main/_index.md?plain=1#L186).
+Live demos can be added to the demo
+[README](https://github.com/open-telemetry/opentelemetry-demo/blob/main/README.md?plain=1).
 
 ## Suggestions for Fork Maintainers
 
@@ -28,3 +29,5 @@ Live demos can be added to the
 
 If you have any questions or would like to suggest ways that we can make your
 life easier as a fork maintainer, please open an issue.
+
+[demo repository]: {{% param repo %}}

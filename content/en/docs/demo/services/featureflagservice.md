@@ -1,5 +1,6 @@
 ---
 title: Feature Flag Service
+linkTitle: Feature Flag
 ---
 
 This service is written in Erlang/Elixir and it is responsible for creating,

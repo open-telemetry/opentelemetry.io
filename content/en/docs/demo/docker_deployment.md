@@ -1,5 +1,6 @@
 ---
-title: Docker
+title: Docker deployment
+linkTitle: Docker
 ---
 
 ## Prerequisites

@@ -1,5 +1,6 @@
 ---
 title: Application Requirements
+title: Application
 ---
 
 The following requirements were decided upon to define what OpenTelemetry (OTel)

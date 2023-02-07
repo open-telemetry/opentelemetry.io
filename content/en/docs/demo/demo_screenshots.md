@@ -1,14 +1,7 @@
 ---
 title: Demo Screenshots
+linkTitle: Screenshots
 ---
-
-- [Demo Screenshots](.)
-  - [Webstore](#webstore)
-  - [Jaeger](#jaeger)
-  - [Prometheus](#prometheus)
-  - [Grafana](#grafana)
-  - [Feature Flag UI](#feature-flag-ui)
-  - [Load Generator UI](#load-generator-ui)
 
 ## Webstore
 

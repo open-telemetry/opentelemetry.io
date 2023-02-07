@@ -1,5 +1,6 @@
 ---
 title: Trace Feature Coverage by Service
+linkTitle: Trace Feature Coverage
 ---
 
 Emoji Legend

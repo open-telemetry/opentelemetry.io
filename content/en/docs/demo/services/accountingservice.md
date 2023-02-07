@@ -1,5 +1,6 @@
 ---
 title: Accounting Service
+linkTitle: Accounting
 ---
 
 This service calculates the total amount of sold products.

@@ -1,5 +1,6 @@
 ---
 title: Checkout Service
+linkTitle: Checkout
 ---
 
 This service is responsible to process a checkout order from the user. The
