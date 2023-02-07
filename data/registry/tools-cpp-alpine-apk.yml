@@ -1,0 +1,14 @@
+title: Alpine Linux Package for OpenTelemetry C++
+registryType: core
+isThirdParty: true
+language: cpp
+tags:
+  - cpp
+  - alpine
+  - apk
+  - package
+repo: https://pkgs.alpinelinux.org/packages?name=opentelemetry-cpp-* 
+license: Apache 2.0
+description: If you are using alpine linux you can install opentelemetry-cpp with these packages.
+authors: Severin Neumann
+otVersion: unknown
