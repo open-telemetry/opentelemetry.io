@@ -64,7 +64,8 @@ params:
   # version ID in the filename below. Otherwise, for new paths, start at version
   # `001`. Note that social-media images must be preserved (or redirected)
   # forever.
-  images: ["img/social/logo-wordmark-001.png"]
+  images:
+    - img/social/logo-wordmark-001.png
 
   ui:
     footer_about_disable: true
@@ -109,7 +110,7 @@ params:
         url: https://github.com/open-telemetry
         icon: fab fa-github
         desc: Find us on GitHub.
-      - name: "Slack #opentelemetry"
+      - name: 'Slack #opentelemetry'
         url: https://cloud-native.slack.com/archives/CJFCJHG4Q
         icon: fab fa-slack
         desc: >-
