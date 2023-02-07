@@ -1,6 +1,7 @@
 ---
 title: Architecture Requirements
 linkTitle: Architecture
+aliases: [/docs/demo/requirements/architecture_requirements]
 ---
 
 ## Summary
@@ -13,9 +14,9 @@ further customization by end-users, vendors, and other stakeholders.
 
 ### Requirements
 
-- [Application Requirements]({{% relref "./application_requirements.md" %}})
-- [OpenTelemetry Requirements]({{% relref "./opentelemetry_requirements.md" %}})
-- [System Requirements]({{% relref "./system_requirements.md" %}})
+- [Application Requirements](../application/)
+- [OpenTelemetry Requirements](../opentelemetry/)
+- [System Requirements](../system/)
 
 ### Application Goals
 

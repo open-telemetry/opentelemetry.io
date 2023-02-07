@@ -1,6 +1,7 @@
 ---
 title: Recommendation Service
 linkTitle: Recommendation
+aliases: [/docs/demo/services/recommendationservice]
 ---
 
 This service is responsible to get a list of recommended products for the user

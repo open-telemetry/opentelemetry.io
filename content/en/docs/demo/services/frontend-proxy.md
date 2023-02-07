@@ -1,6 +1,7 @@
 ---
 title: Frontend Proxy (Envoy)
 linkTitle: Frontend Proxy
+aliases: [docs/demo/services/frontendproxy]
 ---
 
 The frontend proxy is used as a reverse proxy for user-facing web

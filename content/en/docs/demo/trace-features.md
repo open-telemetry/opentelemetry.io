@@ -1,6 +1,7 @@
 ---
 title: Trace Feature Coverage by Service
 linkTitle: Trace Feature Coverage
+aliases: [/docs/demo/trace_service_features]
 ---
 
 Emoji Legend
@@ -10,7 +11,7 @@ Emoji Legend
 - Not Present (Yet): :construction:
 
 | Service            | Language        | Instrumentation Libraries | Manual Span Creation | Span Data Enrichment | RPC Context Propagation | Span Links     | Baggage        | Resource Detection |
-|--------------------|-----------------|---------------------------|----------------------|----------------------|-------------------------|----------------|----------------|--------------------|
+| ------------------ | --------------- | ------------------------- | -------------------- | -------------------- | ----------------------- | -------------- | -------------- | ------------------ |
 | Accounting Service | Go              | :construction:            | :construction:       | :construction:       | :construction:          | :construction: | :construction: | :100:              |
 | Ad                 | Java            | :100:                     | :100:                | :100:                | :no_bell:               | :no_bell:      | :no_bell:      | :construction:     |
 | Cart               | .NET            | :100:                     | :100:                | :100:                | :no_bell:               | :no_bell:      | :no_bell:      | :100:              |

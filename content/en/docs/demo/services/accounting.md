@@ -1,6 +1,7 @@
 ---
 title: Accounting Service
 linkTitle: Accounting
+aliases: [/docs/demo/services/accountingservice]
 ---
 
 This service calculates the total amount of sold products.

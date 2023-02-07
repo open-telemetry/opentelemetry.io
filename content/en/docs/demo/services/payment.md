@@ -1,6 +1,7 @@
 ---
 title: Payment Service
 linkTitle: Payment
+aliases: [/docs/demo/services/paymentservice]
 ---
 
 This service is responsible to process credit card payments for orders. It will

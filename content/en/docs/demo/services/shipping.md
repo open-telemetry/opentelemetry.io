@@ -1,6 +1,7 @@
 ---
 title: Shipping Service
 linkTitle: Shipping
+aliases: [/docs/demo/services/shippingservice]
 ---
 
 This service is responsible for providing shipping information including pricing

@@ -1,6 +1,7 @@
 ---
 title: Currency Service
 linkTitle: Currency
+aliases: [/docs/demo/services/currencyservice]
 ---
 
 This service provides functionality to convert amounts between different

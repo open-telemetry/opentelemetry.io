@@ -7,9 +7,9 @@ The following documents capture the Application, OpenTelemetry (OTel), and Syste
 requirements for our shared demo application. These were decided upon in the
 ongoing SIG meeting.
 
-1. [Application Requirements]({{% relref "./application_requirements.md" %}})
-2. [OpenTelemetry Requirements]({{% relref "./opentelemetry_requirements.md" %}})
-3. [System Requirements]({{% relref "./system_requirements.md" %}})
+1. [Application Requirements](application/)
+2. [OpenTelemetry Requirements](opentelemetry/)
+3. [System Requirements](system/)
 
 ## Target Personas
 
