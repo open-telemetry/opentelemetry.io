@@ -11,6 +11,6 @@ license: Apache 2.0
 description: An OpenTelemetry implementation for Scala, based on Cats-Effect
 authors:
   - Ross A. Baker <ross@rossabaker.com>
-  - Zach McCoy
-  - Maksym Ochenashko
+  - Zach McCoy <zachabbott@gmail.com>
+  - Maksym Ochenashko <maxochenashko@gmail.com>
 otVersion: latest
