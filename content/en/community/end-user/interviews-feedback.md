@@ -30,7 +30,7 @@ as well as some curious general members of the Community.
 Things to keep in mind:
 * These sessions are recorded. However, if your organization has compliance
   concerns, we can delete them once we've summarized the notes and feedback. 
-* We will write up a user profile for the OpenTelemetry blog. Our goal with
+* We will write up a summary post for the OpenTelemetry blog. Our goal with
   these is to drive awareness and adoption of the software, and to chronicle
   interesting use cases. These can be anonymized if your org has compliance
   concerns. 
