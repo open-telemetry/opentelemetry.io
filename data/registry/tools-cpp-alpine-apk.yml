@@ -4,7 +4,7 @@ isThirdParty: true
 language: cpp
 tags:
   - cpp
-  - alpine
+  - alpine linux
   - apk
   - package
 repo: https://pkgs.alpinelinux.org/packages?name=opentelemetry-cpp-* 
