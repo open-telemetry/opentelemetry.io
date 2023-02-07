@@ -12,7 +12,7 @@ presenting your ideas to a room full of experts and industry professionals can
 be intimidating, but also an opportunity to showcase your skills, gain
 recognition, and network with others in your field. On Wednesday, February 1st,
 2023, the
-[OpenTelemetry End User Working Group](https://opentelemetry.io/community/end-user/)
+[OpenTelemetry End User Working Group](/community/end-user/)
 ran an Observability Abstract Workshop. The goal was to help folks who are new
 to speaking, and are interested in submitting an observability panel or talk.
 The workshop featured advice and expertise from OpenTelemetry community members
