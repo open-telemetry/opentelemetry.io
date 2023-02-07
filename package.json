@@ -25,7 +25,7 @@
     "check:links:all": "HTMLTEST_ARGS= npm run _check:links",
     "check:links": "npm run _check:links",
     "clean": "make clean",
-    "cp:spec": "./scripts/cp-spec-pages.sh",
+    "cp:spec": "./scripts/content-modules/cp-pages.sh",
     "get:submodule": "npm run _get:${GET:-submodule}",
     "make:public": "make public ls-public",
     "postbuild:preview": "npm run _check:links",
