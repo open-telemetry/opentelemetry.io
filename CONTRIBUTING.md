@@ -107,7 +107,7 @@ request an enhancement, [create an issue][new-issue].
 ## Submitting a change
 
 Enhancements and fixes to the website are most welcome! Before submitting a
-[pull request][PR] (PR) over the website, run `npm run test` and address any
+[pull request][pr] (PR) over the website, run `npm run test` and address any
 reported issues.
 
 ### Submodule changes
@@ -153,7 +153,8 @@ required.
 [hugo]: https://gohugo.io
 [localhost:8888]: http://localhost:8888
 [netlify]: https://netlify.com
-[new-issue]: https://github.com/open-telemetry/opentelemetry.io/issues/new/choose
+[new-issue]:
+  https://github.com/open-telemetry/opentelemetry.io/issues/new/choose
 [nodejs-rel]: https://nodejs.org/en/about/releases/
 [nodejs-win]:
   https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
@@ -161,4 +162,5 @@ required.
   https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
 [nvm-windows]: https://github.com/coreybutler/nvm-windows
 [org]: https://github.com/open-telemetry
-[pr]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
+[pr]:
+  https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
