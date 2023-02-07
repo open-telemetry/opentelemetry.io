@@ -40,6 +40,6 @@ Things to keep in mind:
   concerns. 
 * These are open to the public, so other users may come and ask you questions.
   
-To schedule a session, reach out to us:
-* In [#otel-user-research](https://cloud-native.slack.com/archives/C01RT3MSWGZ) channel in the [CNCF Community Slack](https://communityinviter.com/apps/cloud-native/cncf)
-* Via direct message in the [CNCF Community Slack](https://communityinviter.com/apps/cloud-native/cncf)  -- ping Reese Lee, Adriana Villela, or Rynn Mancuso
+To schedule a session, reach out to us in [CNCF Community Slack](https://communityinviter.com/apps/cloud-native/cncf):
+* In the [#otel-user-research](https://cloud-native.slack.com/archives/C01RT3MSWGZ) channel
+* Via direct message -- ping Reese Lee, Adriana Villela, or Rynn Mancuso 
