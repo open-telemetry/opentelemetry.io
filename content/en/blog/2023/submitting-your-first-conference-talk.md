@@ -10,26 +10,31 @@ Submitting a conference talk in the tech industry can be a thrilling and
 nerve-wracking experience, especially if it’s your first time. The thought of
 presenting your ideas to a room full of experts and industry professionals can
 be intimidating, but also an opportunity to showcase your skills, gain
-recognition, and network with others in your field. On Wednesday, February 1st,
-2023, the
-[OpenTelemetry End User Working Group](/community/end-user/)
-ran an Observability Abstract Workshop. The goal was to help folks who are new
-to speaking, and are interested in submitting an observability panel or talk.
-The workshop featured advice and expertise from OpenTelemetry community members
+recognition, and network with others in your field.
+
+On Wednesday, February 1st, 2023, the
+[OpenTelemetry End User Working Group](/community/end-user/) ran an
+Observability Abstract Workshop. The goal was to help folks who are new to
+speaking, and are interested in submitting an observability panel or talk. The
+workshop featured advice and expertise from OpenTelemetry community members
 [Reese Lee](https://github.com/reese-lee),
 [Daniel Kim](https://github.com/lazyplatypus),
 [Rynn Mancuso](https://github.com/musingvirtual),
 [Juraci Paixão Kröhling](https://github.com/jpkrohling), and
-[Adriana Villela](https://github.com/avillela). What follows is a summary of the
-workshop's main takeaways. Whether you’re a seasoned speaker or just starting
-out, this guide will provide you with tips to help you make the most of your
-conference talk submission and increase your chances of being selected to speak.
+[Adriana Villela](https://github.com/avillela).
+
+What follows is a summary of the workshop's main takeaways. Whether you’re a
+seasoned speaker or just starting out, this guide will provide you with tips to
+help you make the most of your conference talk submission and increase your
+chances of being selected to speak.
 
 ## Tip #1: Just do it
 
-Don’t let perfect be the enemy of good. The best way to start giving talks is to
-just start submitting and see what happens. You don’t need to craft the perfect
-proposal and you don’t need to be an industry-leading subject matter expert.
+Don’t let perfectection be the enemy of good. The best way to start giving talks
+is to just start submitting and see what happens. You don’t need to craft the
+perfect proposal (although tailoring it for the event and target audience will
+certainly help!) and you don’t need to be an industry-leading subject matter
+expert.
 
 Don’t let any excuse stop you. So many conferences and events are desperate for
 anybody who simply has the **willingness** to speak and a little something to
