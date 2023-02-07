@@ -25,6 +25,7 @@ cascade:
   github_project_repo: *repo
 EOS
 my $roadmapFrontMatter = <<"EOS";
+linkTitle: Roadmap
 github_repo: &repo https://github.com/open-telemetry/community
 github_subdir: ''
 path_base_for_github_subdir: content/en/community/
@@ -36,7 +37,7 @@ sub printTitleAndFrontMatter() {
   print "---\n";
   # TODO(chalin): remove the following Community repo hack
   if ($ARGV =~ /community.roadmap/) {
-    $title = 'Roadmap';
+    $title = 'OpenTelemetry Project Roadmap';
     $frontMatterFromFile .= $roadmapFrontMatter;
   }
   my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
