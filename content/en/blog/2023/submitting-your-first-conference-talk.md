@@ -96,7 +96,7 @@ help and form great connections in the community.
 ## Where to submit your talk
 
 [Observability Day at KubeCon EU](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/cncf-hosted-co-located-events/observability-day/)
-is accepting CFPs until Sunday, February 12 at 11:59 PM PST.
+is accepting proposals until Sunday, February 12 at 11:59 PM PST.
 
 I am thrilled to see the resurgence in conferences that is currently underway.
 There is no shortage of venues in need of up-and-coming speakers.
