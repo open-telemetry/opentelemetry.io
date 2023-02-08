@@ -13,7 +13,7 @@ author: >-
 
 On Thursday, January 26th, 2023, the OpenTelemetry End User Working Group hosted the first of its monthly End User Q&A sessions of 2023. This series is a monthly casual discussion with a team using OpenTelemetry in production. The goal is to learn more about their environment, their successes, and the challenges that they face, and to share it with the community, so that together, we can help make OpenTelemetry awesome!
 
-This month, Dynatrace’s [Henrik Rexed](https://github.com/henrikrexed) spoke with J, who works at a financial services organization, about how they use OpenTelemetry with GraphQL.
+This month, Dynatrace’s [Henrik Rexed](https://github.com/henrikrexed) spoke with J, who works at a financial services organization, about how they use OpenTelemetry with [GraphQL](https://graphql.org/).
 
 ## Overview
 
