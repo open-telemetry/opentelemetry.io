@@ -38,7 +38,7 @@ expert.
 
 Don’t let any excuse stop you. So many conferences and events are desperate for
 anybody who simply has the **willingness** to speak and a little something to
-share.
+share. You may be surprised how happy people are to hear real world experience from their peers.
 
 But if you’re still unsure, you may want to consider…
 
@@ -89,6 +89,8 @@ If you’re stumped for deeper ideas, consider:
 If your topic is touching some Open Source project - you can always ask for the feedback from the expert in the community. They may suggest an interesting angle for your talk.  You can even try to find a co-speaker. Don't be shy asking for help and form great connections in the community.
 ## Where to submit your talk
 
+[Observability Day at KubeCon EU](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/cncf-hosted-co-located-events/observability-day/) is accepting CFPs until Sunday, February 12 at 11:59 PM PST.
+
 I am thrilled to see the resurgence in conferences that is currently underway.
 There is no shortage of venues in need of up-and-coming speakers.
 
@@ -104,6 +106,7 @@ conferences:
 - [GitHub - scraly/developers-conferences-agenda](https://github.com/scraly/developers-conferences-agenda)
 - [SeeCFP](https://seecfp.com/)
 - [Sessionize](https://sessionize.com/)
+- [The Linux Foundation](https://events.linuxfoundation.org/)
 
 ## Writing your abstract
 
@@ -142,10 +145,3 @@ conversations and connections happen.
 Third is important - any data that may help you remember your experience or be used to brag or convince your company to sponsor your next speaking engagement, are very valuable. You have done a lot of work, be proud of it.
 The only way to take advantage of this is if you leave some wiggle room in your
 schedule and aren’t afraid to take breaks when you need them.
-
-## Credits
-
-This post was inspired by the discussion in the OTel End User Working Group’s
-session on writing CFPs to help OTel community members submit talks for the
-upcoming conferences, including
-[Observability Day at KubeCon EU](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/cncf-hosted-co-located-events/observability-day/).
