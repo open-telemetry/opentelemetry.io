@@ -15,9 +15,6 @@ the collector. These topics are covered elsewhere:
 - [Configuration][otel-collector-configuration] for how to configure the
   OpenTelemetry collector, setting up telemetry pipelines.
 
-This document describes how you can manage your OpenTelemetry collector
-deployment at scale.
-
 ## Basics
 
 Telemetry collection at scale requires a structured approach to manage agents.
