@@ -42,8 +42,9 @@ OpenTelemetry in their commercial products.
 | SigNoz                     | Yes               | Yes         | [signoz.io](https://signoz.io)                                                                                                                        |
 | SolarWinds                 | Yes               | Yes         | [documentation.solarwinds.com/...](https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=third-otel-integration)     |
 | Splunk                     | Yes               | Yes         | [splunk.com/blog/...](https://www.splunk.com/en_us/blog/conf-splunklive/announcing-native-opentelemetry-support-in-splunk-apm.html)                   |
-| Sumo Logic                 | Yes               | Yes         | [help.sumologic.com/](https://help.sumologic.com/docs/apm/traces/quickstart/)                                                                          |
+| Sumo Logic                 | Yes               | Yes         | [help.sumologic.com/](https://help.sumologic.com/docs/apm/traces/quickstart/)                                                                         |
+| TelemetryHub               | No                | Yes         | [telemetryhub.com](https://telemetryhub.com/)                                                                                                         |
 | Uptrace                    | Yes               | Yes         | [uptrace.dev](https://uptrace.dev)
-|
+
 
 \* _Vendors are listed alphabetically_.
