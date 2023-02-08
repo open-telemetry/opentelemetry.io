@@ -4,7 +4,11 @@ description: How to manage your OpenTelemetry collector deployment at scale
 weight: 23
 ---
 
-Please be sure to review the following documentation as prerequisite:
+This document describes how you can manage your OpenTelemetry collector
+deployment at scale.
+
+To get the most out of this page you should know how to install and configure
+the collector. These topics are covered elsewhere:
 
 - [Getting Started][otel-collector-getting-started] to understand how to install
   the OpenTelemetry collector.
