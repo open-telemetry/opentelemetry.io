@@ -81,21 +81,25 @@ Let's have a look at a concrete setup:
    collector) implementing OpAMP client-side.
 
 You can try out a simple OpAMP setup yourself by using the [OpAMP protocol
-implementation in Go][opamp-go]. For the following you will need to have Go in
-version 1.19 or above.
+implementation in Go][opamp-go]. For the following walkthrough you will need to
+have Go in version 1.19 or above available.
 
-First, clone the repo:
+We will set up a simple OpAMP control plane consisting of an example OpAMP
+server and let an OpenTelemetry collector connect to it via an example OpAMP
+supervisor.
 
-```
+First, clone the `open-telemetry/opamp-go` repo:
+
+```sh
 $ git clone https://github.com/open-telemetry/opamp-go.git
 ```
 
 Next, we need an OpenTelemetry collector binary that the OpAMP supervisor can
-run. Install the [OpenTelemetry Collector Contrib][otelcolcontrib] distro. The
-path to the collector binary (where you installed it into) is referred to as
-`$OTEL_COLLECTOR_BINARY` in the following.
+manage. For that, install the [OpenTelemetry Collector Contrib][otelcolcontrib]
+distro. The path to the collector binary (where you installed it into) is
+referred to as `$OTEL_COLLECTOR_BINARY` in the following.
 
-In the `opamp-go/internal/examples/server` directory, run the OpAMP server:
+In the `./opamp-go/internal/examples/server` directory, launch the OpAMP server:
 
 ```
 $ go run .
@@ -103,8 +107,9 @@ $ go run .
 2023/02/08 13:31:32.004815 [MAIN] OpAMP Server running...
 ```
 
-In the `opamp-go/internal/examples/supervisor` directory create a file named
-`supervisor.yaml` with the following content:
+In the `./opamp-go/internal/examples/supervisor` directory create a file named
+`supervisor.yaml` with the following content (telling the supervisor where to
+find the server and what OpenTelemetry collector binary to manage):
 
 ```yaml
 server:
@@ -114,12 +119,13 @@ agent:
   executable: $OTEL_COLLECTOR_BINARY
 ```
 
-> **Note** Make sure to replace `$OTEL_COLLECTOR_BINARY` with the actual path,
-> for example, in Linux or macOS, if you installed the collector in
-> `/usr/local/bin/` then the value would be `/usr/local/bin/otelcol`.
+> **Note** Make sure to replace `$OTEL_COLLECTOR_BINARY` with the actual file
+> path. For example, in Linux or macOS, if you installed the collector in
+> `/usr/local/bin/` then you would replace `$OTEL_COLLECTOR_BINARY` with
+> `/usr/local/bin/otelcol`.
 
-Next, create the follwoing collector configuration, save it in a file called
-`effective.yaml` in the `supervisor/` directory:
+Next, create a collector configuration as follows (save it in a file called
+`effective.yaml` in the `./opamp-go/internal/examples/supervisor` directory):
 
 ```yaml
 receivers:
@@ -184,7 +190,8 @@ where you should see your collector listed, managed by the supervisor:
 
 ![OpAMP example setup](../img/opamp-server-ui.png)
 
-You can also query the collector for the metrics exported:
+You can also query the collector for the metrics exported (note the label
+values):
 
 ```
 $ curl localhost:8888/metrics
@@ -199,9 +206,12 @@ otelcol_receiver_refused_metric_points{receiver="prometheus/own_metrics",service
 
 ## Other information
 
-- [Using OpenTelemetry OpAMP to modify service telemetry on the
+- Blog post [Using OpenTelemetry OpAMP to modify service telemetry on the
   go][blog-opamp-service-telemetry]
-- [What is OpAMP & What is BindPlane][opamp-bindplane]
+- YouTube videos:
+  - [Lightning Talk: Managing OpenTelemetry Through the OpAMP
+    Protocol][opamp-lt]
+  - [What is OpAMP & What is BindPlane][opamp-bindplane]
 
 [otel-collector]: /docs/collector/
 [otel-collector-getting-started]: /docs/collector/getting-started
@@ -214,4 +224,5 @@ otelcol_receiver_refused_metric_points{receiver="prometheus/own_metrics",service
 [otelcolcontrib]:
   https://github.com/open-telemetry/opentelemetry-collector-releases/releases
 [blog-opamp-service-telemetry]: /blog/2022/opamp/
+[opamp-lt]: https://www.youtube.com/watch?v=LUsfZFRM4yo
 [opamp-bindplane]: https://www.youtube.com/watch?v=N18z2dOJSd8
