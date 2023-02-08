@@ -4,25 +4,25 @@ linkTitle: Metric Feature Coverage
 aliases: [/docs/demo/metric_service_features]
 ---
 
-Emoji Legend
+| Service         | Language        | Auto-instrumentation | Manual Instrumentation | Multiple Instruments | Views | Custom Attributes | Resource Detection | Trace Exemplars |
+| --------------- | --------------- | -------------------- | ---------------------- | -------------------- | ----- | ----------------- | ------------------ | --------------- |
+| Accounting      | Go              | 🚧                   | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧              |
+| Ad              | Java            | ✅                   | ✅                     | 🚧                   | 🚧    | ✅                | ✅                 | ✅              |
+| Cart            | .NET            | ✅                   | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧              |
+| Checkout        | Go              | ✅                   | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧              |
+| Currency        | C++             | 🔕                   | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧              |
+| Email           | Ruby            | 🚧                   | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧              |
+| Feature Flag    | Erlang / Elixir | 🚧                   | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧              |
+| Fraud Detection | Kotlin          | ✅                   | 🚧                     | 🚧                   | 🚧    | 🚧                | ✅                 | 🚧              |
+| Frontend        | TypeScript      | 🚧                   | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧              |
+| Payment         | JavaScript      | 🚧                   | ✅                     | 🚧                   | 🚧    | 🚧                | ✅                 | 🚧              |
+| Product Catalog | Go              | 🚧                   | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧              |
+| Quote           | PHP             | 🚧                   | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧              |
+| Recommendation  | Python          | ✅                   | ✅                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧              |
+| Shipping        | Rust            | 🚧                   | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧              |
 
-- Completed: :100:
-- Not Applicable: :no_bell:
-- Not Present (Yet): :construction:
+Emoji Legend:
 
-| Service         | Language        | Auto-instrumentation | Manual Instrumentation | Multiple Instruments | Views          | Custom Attributes | Resource Detection | Trace Exemplars |
-| --------------- | --------------- | -------------------- | ---------------------- | -------------------- | -------------- | ----------------- | ------------------ | --------------- |
-| Accounting      | Go              | :construction:       | :construction:         | :construction:       | :construction: | :construction:    | :construction:     | :construction:  |
-| Ad              | Java            | :100:                | :100:                  | :construction:       | :construction: | :100:             | :100:              | :100:           |
-| Cart            | .NET            | :100:                | :construction:         | :construction:       | :construction: | :construction:    | :construction:     | :construction:  |
-| Checkout        | Go              | :100:                | :construction:         | :construction:       | :construction: | :construction:    | :construction:     | :construction:  |
-| Currency        | C++             | :no_bell:            | :construction:         | :construction:       | :construction: | :construction:    | :construction:     | :construction:  |
-| Email           | Ruby            | :construction:       | :construction:         | :construction:       | :construction: | :construction:    | :construction:     | :construction:  |
-| Feature Flag    | Erlang / Elixir | :construction:       | :construction:         | :construction:       | :construction: | :construction:    | :construction:     | :construction:  |
-| Fraud Detection | Kotlin          | :100:                | :construction:         | :construction:       | :construction: | :construction:    | :100:              | :construction:  |
-| Frontend        | TypeScript      | :construction:       | :construction:         | :construction:       | :construction: | :construction:    | :construction:     | :construction:  |
-| Payment         | JavaScript      | :construction:       | :100:                  | :construction:       | :construction: | :construction:    | :100:              | :construction:  |
-| Product Catalog | Go              | :construction:       | :construction:         | :construction:       | :construction: | :construction:    | :construction:     | :construction:  |
-| Quote           | PHP             | :construction:       | :construction:         | :construction:       | :construction: | :construction:    | :construction:     | :construction:  |
-| Recommendation  | Python          | :100:                | :100:                  | :construction:       | :construction: | :construction:    | :construction:     | :construction:  |
-| Shipping        | Rust            | :construction:       | :construction:         | :construction:       | :construction: | :construction:    | :construction:     | :construction:  |
+- Completed: ✅
+- Not Applicable: 🔕
+- Not Present (Yet): 🚧
