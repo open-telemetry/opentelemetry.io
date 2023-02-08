@@ -144,9 +144,8 @@ docker run -d \
 ```
 
 The Prometheus container should be running now. You can now navigate to
-<http://localhost:9090> and explore the Prometheus
-dashboard. Here we are viewing the metric `kafka_request_count_total` on
-Prometheus.
+<http://localhost:9090> and explore the Prometheus dashboard. Here we are
+viewing the metric `kafka_request_count_total` on Prometheus.
 
 ![A sample Kafka Broker metric shown on Prometheus](prometheus.png)
 
@@ -162,14 +161,14 @@ do that, first, pull the Grafana docker image using the following command:
 docker run -d -p 3000:3000 grafana/grafana
 ```
 
-You can now navigate to <http://localhost:3000> and
-explore the Grafana home page. Click on Add Data Source and select Prometheus.
-Add the HTTP URL, default is <http://localhost:9090>. After that we can create
-new Dashboards, with multiple options of visualisations to choose from (Graph,
-Singlestat, Gauge, Table, Text, etc). We can then create new panels and add any
-metric we would like to observe. Here is an example dashboard consisting of 6
-panels, we are observing a metric in each panel. We can observe the health of
-our Kafka Broker in real time on this dashboard.
+You can now navigate to <http://localhost:3000> and explore the Grafana home
+page. Click on Add Data Source and select Prometheus. Add the HTTP URL, default
+is <http://localhost:9090>. After that we can create new Dashboards, with
+multiple options of visualisations to choose from (Graph, Singlestat, Gauge,
+Table, Text, etc). We can then create new panels and add any metric we would
+like to observe. Here is an example dashboard consisting of 6 panels, we are
+observing a metric in each panel. We can observe the health of our Kafka Broker
+in real time on this dashboard.
 
 ![Grafana dashboard showing 6 Kafka Broker metrics](grafana.png)
 

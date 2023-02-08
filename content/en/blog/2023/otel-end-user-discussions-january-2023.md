@@ -3,13 +3,12 @@ title: OpenTelemetry End User Discussions Summary for January 2023
 linkTitle: End User Discussions Jan 2023
 date: 2023-01-27
 author: >-
-  [Adriana Villela](https://github.com/avillela) (Lightstep)
-  <br/> with contributions from: <br/>
-  [Henrik Rexed](https://github.com/henrikrexed) (Dynatrace) |
-  [Michael Hausenblas](https://github.com/mhausenblas) (AWS) |
-  [Pranay Prateek](https://github.com/pranay01) (Signoz) |
-  [Rynn Mancuso](https://github.com/musingvirtual) (Honeycomb) |
-  [Reese Lee](https://github.com/reese-lee) (New Relic)
+  [Adriana Villela](https://github.com/avillela) (Lightstep) <br/> with
+  contributions from: <br/> [Henrik Rexed](https://github.com/henrikrexed)
+  (Dynatrace) | [Michael Hausenblas](https://github.com/mhausenblas) (AWS) |
+  [Pranay Prateek](https://github.com/pranay01) (Signoz) | [Rynn
+  Mancuso](https://github.com/musingvirtual) (Honeycomb) | [Reese
+  Lee](https://github.com/reese-lee) (New Relic)
 ---
 
 Each month, users in the OpenTelemetry (OTel) community gather to talk about how
@@ -82,7 +81,8 @@ you will have to send the spans to a centralized service.
 **Q:** If I want to use the Collector to send different sets of data to
 different back-ends, what’s the best way to go about it?
 
-**A:** [Connectors](https://github.com/open-telemetry/opentelemetry-collector/pull/6140)
+**A:**
+[Connectors](https://github.com/open-telemetry/opentelemetry-collector/pull/6140)
 (a new Collector component that acts as an exporter/receiver pair to join
 pipelines together) can be used to solve this. Connectors will be launching
 soon. For more info, see the Connector PR
@@ -155,7 +155,8 @@ which follow the naming convention **otel-&lt;language_name>**. If you don’t
 find a channel for your language, feel free to start a discussion on the
 [OpenTelemetry CNCF Slack channel](https://cloud-native.slack.com/archives/CJFCJHG4Q),
 or on [GitHub](https://github.com/open-telemetry/community), like with
-[this issue for OTel for Perl](https://github.com/open-telemetry/community/issues/828). Please also check out [this page](/docs/instrumentation/other/) for more info.
+[this issue for OTel for Perl](https://github.com/open-telemetry/community/issues/828).
+Please also check out [this page](/docs/instrumentation/other/) for more info.
 
 #### 2- Python instrumentation
 
