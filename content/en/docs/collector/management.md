@@ -1,5 +1,6 @@
 ---
 title: Management
+description: How to manage your OpenTelemetry collector deployment at scale
 weight: 23
 ---
 
@@ -44,10 +45,9 @@ management. In the open source observability space, there is an emerging
 standard that you can use for agent management: Open Agent Management Protocol
 (OpAMP).
 
-The [OpAMP specification][opamp-spec] (status: Beta) defines how to manage a
-fleet of telemetry data agents. These agents can be [OpenTelemetry
-collectors][otel-collector], Fluent Bit or other agents in any arbitrary
-combination.
+The [OpAMP specification][opamp-spec] defines how to manage a fleet of telemetry
+data agents. These agents can be [OpenTelemetry collectors][otel-collector],
+Fluent Bit or other agents in any arbitrary combination.
 
 > **Note** The term "agent" is used here as a catch-all term for OpenTelemetry
 > components that respond to OpAMP, this could be the collector but also SDK
@@ -69,7 +69,7 @@ WebSockets:
 
 Let's have a look at a concrete setup:
 
-![OpAMP example setup](/img/docs/OTel_OpAMP.svg)
+![OpAMP example setup](../img/opamp.svg)
 
 1. The OpenTelemetry collector, configured with pipeline(s) to:
    - (A) receive signals from downstream sources
@@ -182,7 +182,7 @@ If everything worked out you should now be able to go to
 [http://localhost:4321/](http://localhost:4321/) and access the OpAMP server UI
 where you should see your collector listed, managed by the supervisor:
 
-![OpAMP example setup](/img/docs/OpAMP_server_UI.png)
+![OpAMP example setup](../img/opamp-server-ui.png)
 
 You can also query the collector for the metrics exported:
 
@@ -203,9 +203,9 @@ otelcol_receiver_refused_metric_points{receiver="prometheus/own_metrics",service
   go][blog-opamp-service-telemetry]
 - [What is OpAMP & What is BindPlane][opamp-bindplane]
 
-[otel-collector]: ../../collector/
-[otel-collector-getting-started]: ../../collector/getting-started
-[otel-collector-configuration]: ../../collector/configuration
+[otel-collector]: /docs/collector/
+[otel-collector-getting-started]: /docs/collector/getting-started
+[otel-collector-configuration]: /docs/collector/configuration
 [opamp-spec]:
   https://github.com/open-telemetry/opamp-spec/blob/main/specification.md
 [opamp-in-otel-collector]:
@@ -213,5 +213,5 @@ otelcol_receiver_refused_metric_points{receiver="prometheus/own_metrics",service
 [opamp-go]: https://github.com/open-telemetry/opamp-go
 [otelcolcontrib]:
   https://github.com/open-telemetry/opentelemetry-collector-releases/releases
-[blog-opamp-service-telemetry]: ../../../blog/2022/opamp/
+[blog-opamp-service-telemetry]: /blog/2022/opamp/
 [opamp-bindplane]: https://www.youtube.com/watch?v=N18z2dOJSd8
