@@ -12,8 +12,7 @@ This is the culmination of over 3 years of work done by the OpenTelemetry PHP
 team.
 
 We are actively soliciting feedback from the development community for this
-library. Try the beta release, instrument your PHP app with it,
-and open an
+library. Try the beta release, instrument your PHP app with it, and open an
 [issue](https://github.com/open-telemetry/opentelemetry-php/issues/new/choose)
 if you’d like to see a bug squashed or a new feature added.
 
