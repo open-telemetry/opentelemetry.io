@@ -6,10 +6,9 @@ linkTitle: >
 date: 2023-02-07
 author: >-
   [Adriana Villela](https://github.com/avillela) (Lightstep)
-  <br/> with contributions from: <br/>
-  [Rynn Mancuso](https://github.com/musingvirtual) (Honeycomb) |
-  [Reese Lee](https://github.com/reese-lee) (New Relic)
 ---
+
+*with contributions from: [Rynn Mancuso](https://github.com/musingvirtual) (Honeycomb) and [Reese Lee](https://github.com/reese-lee) (New Relic)*
 
 On Thursday, January 26th, 2023, the OpenTelemetry End User Working Group hosted the first of its monthly End User Q&A sessions of 2023. This series is a monthly casual discussion with a team using OpenTelemetry in production. The goal is to learn more about their environment, their successes, and the challenges that they face, and to share it with the community, so that together, we can help make OpenTelemetry awesome!
 
