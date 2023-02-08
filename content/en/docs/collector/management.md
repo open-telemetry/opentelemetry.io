@@ -67,7 +67,7 @@ WebSockets:
   example to apply a configuration or to upgrade it. Note that the
   supervisor/telemetry communication is not part of OpAMP.
 
-Let's have a look at a concrete deployment:
+Let's have a look at a concrete setup:
 
 ![OpAMP example setup](/img/docs/OTel_OpAMP.svg)
 
@@ -79,6 +79,123 @@ Let's have a look at a concrete deployment:
 1. The bi-directional OpAMP control flow between the control plane implementing
    the server-side OpAMP part and the collector (or a supervisor controlling the
    collector) implementing OpAMP client-side.
+
+You can try out a simple OpAMP setup yourself by using the [OpAMP protocol
+implementation in Go][opamp-go]. For the following you will need to have Go in
+version 1.19 or above.
+
+First, clone the repo:
+
+```
+$ git clone https://github.com/open-telemetry/opamp-go.git
+```
+
+Next, we need an OpenTelemetry collector binary that the OpAMP supervisor can
+run. Install the [OpenTelemetry Collector Contrib][otelcolcontrib] distro. The
+path to the collector binary (where you installed it into) is referred to as
+`$OTEL_COLLECTOR_BINARY` in the following.
+
+In the `opamp-go/internal/examples/server` directory, run the OpAMP server:
+
+```
+$ go run .
+2023/02/08 13:31:32.004501 [MAIN] OpAMP Server starting...
+2023/02/08 13:31:32.004815 [MAIN] OpAMP Server running...
+```
+
+In the `opamp-go/internal/examples/supervisor` directory create a file named
+`supervisor.yaml` with the following content:
+
+```yaml
+server:
+  endpoint: ws://127.0.0.1:4320/v1/opamp
+
+agent:
+  executable: $OTEL_COLLECTOR_BINARY
+```
+
+> **Note** Make sure to replace `$OTEL_COLLECTOR_BINARY` with the actual path,
+> for example, in Linux or macOS, if you installed the collector in
+> `/usr/local/bin/` then the value would be `/usr/local/bin/otelcol`.
+
+Next, create the follwoing collector configuration, save it in a file called
+`effective.yaml` in the `supervisor/` directory:
+
+```yaml
+receivers:
+  prometheus/own_metrics:
+    config:
+      scrape_configs:
+        - job_name: "otel-collector"
+          scrape_interval: 10s
+          static_configs:
+            - targets: ["0.0.0.0:8888"]
+  hostmetrics:
+    collection_interval: 10s
+    scrapers:
+      load:
+      filesystem:
+      memory:
+      network:
+
+exporters:
+  logging:
+    verbosity: detailed
+
+service:
+  pipelines:
+    metrics:
+      receivers: [hostmetrics, prometheus/own_metrics]
+      exporters: [logging]
+```
+
+Now it's time to launch the supervisor (which in turn will launch your
+OpenTelemetry collector):
+
+```
+$ go run .
+2023/02/08 13:32:54 Supervisor starting, id=01GRRKNBJE06AFVGQT5ZYC0GEK, type=io.opentelemetry.collector, version=1.0.0.
+2023/02/08 13:32:54 Starting OpAMP client...
+2023/02/08 13:32:54 OpAMP Client started.
+2023/02/08 13:32:54 Starting agent /usr/local/bin/otelcol
+2023/02/08 13:32:54 Connected to the server.
+2023/02/08 13:32:54 Received remote config from server, hash=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.
+2023/02/08 13:32:54 Agent process started, PID=13553
+2023/02/08 13:32:54 Effective config changed.
+2023/02/08 13:32:54 Enabling own metrics pipeline in the config<F11>
+2023/02/08 13:32:54 Effective config changed.
+2023/02/08 13:32:54 Config is changed. Signal to restart the agent.
+2023/02/08 13:32:54 Agent is not healthy: Get "http://localhost:13133": dial tcp [::1]:13133: connect: connection refused
+2023/02/08 13:32:54 Stopping the agent to apply new config.
+2023/02/08 13:32:54 Stopping agent process, PID=13553
+2023/02/08 13:32:54 Agent process PID=13553 successfully stopped.
+2023/02/08 13:32:54 Starting agent /usr/local/bin/otelcol
+2023/02/08 13:32:54 Agent process started, PID=13554
+2023/02/08 13:32:54 Agent is not healthy: Get "http://localhost:13133": dial tcp [::1]:13133: connect: connection refused
+2023/02/08 13:32:55 Agent is not healthy: health check on http://localhost:13133 returned 503
+2023/02/08 13:32:55 Agent is not healthy: health check on http://localhost:13133 returned 503
+2023/02/08 13:32:56 Agent is not healthy: health check on http://localhost:13133 returned 503
+2023/02/08 13:32:57 Agent is healthy.
+```
+
+If everything worked out you should now be able to go to
+[http://localhost:4321/](http://localhost:4321/) and access the OpAMP server UI
+where you should see your collector listed, managed by the supervisor:
+
+![OpAMP example setup](/img/docs/OpAMP_server_UI.png)
+
+You can also query the collector for the metrics exported:
+
+```
+$ curl localhost:8888/metrics
+...
+# HELP otelcol_receiver_accepted_metric_points Number of metric points successfully pushed into the pipeline.
+# TYPE otelcol_receiver_accepted_metric_points counter
+otelcol_receiver_accepted_metric_points{receiver="prometheus/own_metrics",service_instance_id="01GRRKNBJE06AFVGQT5ZYC0GEK",service_name="io.opentelemetry.collector",service_version="1.0.0",transport="http"} 322
+# HELP otelcol_receiver_refused_metric_points Number of metric points that could not be pushed into the pipeline.
+# TYPE otelcol_receiver_refused_metric_points counter
+otelcol_receiver_refused_metric_points{receiver="prometheus/own_metrics",service_instance_id="01GRRKNBJE06AFVGQT5ZYC0GEK",service_name="io.opentelemetry.collector",service_version="1.0.0",transport="http"} 0
+```
 
 ## Other information
 
@@ -93,5 +210,8 @@ Let's have a look at a concrete deployment:
   https://github.com/open-telemetry/opamp-spec/blob/main/specification.md
 [opamp-in-otel-collector]:
   https://docs.google.com/document/d/1KtH5atZQUs9Achbce6LiOaJxLbksNJenvgvyKLsJrkc/edit#heading=h.ioikt02qpy5f
+[opamp-go]: https://github.com/open-telemetry/opamp-go
+[otelcolcontrib]:
+  https://github.com/open-telemetry/opentelemetry-collector-releases/releases
 [blog-opamp-service-telemetry]: ../../../blog/2022/opamp/
 [opamp-bindplane]: https://www.youtube.com/watch?v=N18z2dOJSd8
