@@ -69,7 +69,7 @@ WebSockets:
 
 Let's have a look at a concrete deployment:
 
-![OpAMP example setup](../../../../static/img/docs/OTel_OpAMP.svg)
+![OpAMP example setup](../../../../img/docs/OTel_OpAMP.svg)
 
 1. The OpenTelemetry collector, configured with pipeline(s) to:
    - (A) receive signals from downstream sources
