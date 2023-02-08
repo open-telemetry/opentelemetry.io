@@ -296,7 +296,7 @@ _A version of this article was [originally posted][] on the New Relic blog._
 [explicit bucket histogram proto]:
   https://github.com/open-telemetry/opentelemetry-proto/blob/724e427879e3d2bae2edc0218fff06e37b9eb46e/opentelemetry/proto/metrics/v1/metrics.proto#L382
 [exponential bucket histogram]:
-  /docs/reference/specification/metrics/sdk/#exponential-bucket-histogram-aggregation
+  /docs/reference/specification/metrics/sdk/#base2-exponential-bucket-histogram-aggregation
 [exponential bucket histogram proto]:
   https://github.com/open-telemetry/opentelemetry-proto/blob/724e427879e3d2bae2edc0218fff06e37b9eb46e/opentelemetry/proto/metrics/v1/metrics.proto#L463
 [example code]:
