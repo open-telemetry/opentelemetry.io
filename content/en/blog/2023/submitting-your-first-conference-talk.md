@@ -46,7 +46,7 @@ But if you’re still unsure, you may want to consider…
 
 If you’re not sure about your public speaking and want to start in a
 low-pressure environment, I would definitely recommend pitching any topics to a
-local meetup or user group.
+local meetup or user group. You can even treat your next team meeting as an opportunity to speak, paying attention how you present your thoughts.
 
 As a former meetup organizer, I can tell you that they are constantly looking
 for willing speakers.
@@ -86,6 +86,7 @@ If you’re stumped for deeper ideas, consider:
 - Diving deep on a specific topic or technology
 - Doing a bake-off or round-up of comparable tools
 
+If your topic is touching some Open Source project - you can always ask for the feedback from the expert in the community. They may suggest an interesting angle for your talk.  You can even try to find a co-speaker. Don't be shy asking for help and form great connections in the community.
 ## Where to submit your talk
 
 I am thrilled to see the resurgence in conferences that is currently underway.
@@ -128,6 +129,7 @@ but I want to share my top two most important tips:
 
 1. Wear comfortable shoes
 2. Leave room for serendipity (the hallway track)
+3. Collect stats, make notes, and record feedback to motivate you to do it again
 
 The first point should be obvious. Most of us are used to spending 10-12 hours a
 day on our butts. Shifting that weight to our feet for a week can be a lot.
@@ -137,6 +139,7 @@ missing out any time I wasn’t in a session. Now I know better. While the talks
 are amazing for revving my mental engine, the “Hallway Track” is where the best
 conversations and connections happen.
 
+Third is important - any data that may help you remember your experience or be used to brag or convince your company to sponsor your next speaking engagement, are very valuable. You have done a lot of work, be proud of it.
 The only way to take advantage of this is if you leave some wiggle room in your
 schedule and aren’t afraid to take breaks when you need them.
 
