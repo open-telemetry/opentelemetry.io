@@ -24,9 +24,22 @@ cascade:
   path_base_for_github_subdir: $path_base_for_github_subdir/
   github_project_repo: *repo
 EOS
+my $roadmapFrontMatter = <<"EOS";
+linkTitle: Roadmap
+github_repo: &repo https://github.com/open-telemetry/community
+github_subdir: ''
+path_base_for_github_subdir: content/en/community/
+github_project_repo: *repo
+weight: 20
+EOS
 
 sub printTitleAndFrontMatter() {
   print "---\n";
+  # TODO(chalin): remove the following Community repo hack
+  if ($ARGV =~ /community.roadmap/) {
+    $title = 'OpenTelemetry Project Roadmap';
+    $frontMatterFromFile .= $roadmapFrontMatter;
+  }
   my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
   print "title: $titleMaybeQuoted\n";
   ($linkTitle) = $title =~ /^OpenTelemetry (.*)/;
@@ -70,6 +83,13 @@ while(<>) {
   if(/<!-- toc -->/) {
     while(<>) { last if/<!-- tocstop -->/; }
     next;
+  }
+
+  # COMMUNITY custom processing
+
+  # TODO(chalin): remove the following Community repo hack
+  if ($ARGV =~ /community.roadmap/) {
+    s/(^#)/#$1/;
   }
 
   # SPECIFICATION custom processing
