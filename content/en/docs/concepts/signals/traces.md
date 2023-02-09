@@ -118,7 +118,7 @@ Provider is already initialized for you.
 
 A Tracer creates spans containing more information about what is happening for a
 given operation, such as a request in a service. Tracers are created from Tracer
-Providers. In some languages, a global Tracer is already initialized for you.
+Providers.
 
 ### Trace Exporters
 
