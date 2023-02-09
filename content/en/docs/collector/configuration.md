@@ -3,9 +3,9 @@ title: Configuration
 weight: 20
 ---
 
-Please be sure to review the following documentation:
+Familiarity with the following pages is assumed:
 
-- [Data Collection concepts](../../concepts/data-collection) in order to
+- [Data Collection concepts](/docs/concepts/data-collection/) in order to
   understand the repositories applicable to the OpenTelemetry Collector.
 - [Security guidance](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md)
 
@@ -118,7 +118,8 @@ service:
       exporters: [otlp]
 ```
 
-The configuration can also include other files, causing the Collector to merge the two files in a single in-memory representation of the YAML configuration:
+The configuration can also include other files, causing the Collector to merge
+the two files in a single in-memory representation of the YAML configuration:
 
 ```yaml
 receivers:
@@ -129,12 +130,12 @@ receivers:
 exporters: ${file:receivers.yaml}
 
 service:
-  extensions: [ ]
+  extensions: []
   pipelines:
     traces:
-      receivers:  [ otlp ]
-      processors: [  ]
-      exporters:  [ otlp ]
+      receivers: [otlp]
+      processors: []
+      exporters: [otlp]
 ```
 
 With the `receivers.yaml` file being:
@@ -157,12 +158,12 @@ exporters:
     endpoint: otelcol.observability.svc.cluster.local:443
 
 service:
-  extensions: [ ]
+  extensions: []
   pipelines:
     traces:
-      receivers:  [ otlp ]
-      processors: [  ]
-      exporters:  [ otlp ]
+      receivers: [otlp]
+      processors: []
+      exporters: [otlp]
 ```
 
 ## Receivers
@@ -170,17 +171,18 @@ service:
 <img width="35" src="https://raw.githubusercontent.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Receivers.svg"></img>
 
 A receiver, which can be push or pull based, is how data gets into the
-Collector. Receivers may support one or more [data sources](../../concepts/signals).
+Collector. Receivers may support one or more
+[data sources](/docs/concepts/signals/).
 
 The `receivers:` section is how receivers are configured. Many receivers come
-with default settings so simply specifying the name of the receiver is enough
-to configure it (for example, `zipkin:`). If configuration is required or a
-user wants to change the default configuration then such configuration must be
+with default settings so simply specifying the name of the receiver is enough to
+configure it (for example, `zipkin:`). If configuration is required or a user
+wants to change the default configuration then such configuration must be
 defined in this section. Configuration parameters specified for which the
 receiver provides a default configuration are overridden.
 
-> Configuring a receiver does not enable it. Receivers are enabled via
-> pipelines within the [service](#service) section.
+> Configuring a receiver does not enable it. Receivers are enabled via pipelines
+> within the [service](#service) section.
 
 One or more receivers must be configured. By default, no receivers are
 configured. A basic example of all available receivers is provided below.
@@ -245,8 +247,8 @@ receivers:
 
 <img width="35" src="https://raw.githubusercontent.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Processors.svg"></img>
 
-Processors are run on data between being received and being exported.
-Processors are optional though
+Processors are run on data between being received and being exported. Processors
+are optional though
 [some are recommended](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor#recommended-processors).
 
 The `processors:` section is how processors are configured. Processors may come
@@ -328,7 +330,7 @@ processors:
 
 An exporter, which can be push or pull based, is how you send data to one or
 more backends/destinations. Exporters may support one or more
-[data sources](../../concepts/signals).
+[data sources](/docs/concepts/signals/).
 
 The `exporters:` section is how exporters are configured. Exporters may come
 with default settings, but many require configuration to specify at least the
@@ -345,7 +347,7 @@ Certain exporter configurations require x.509 certificates to be created in
 order to be secure, as described in
 [setting up certificates](#setting-up-certificates).
 
-> For detailed exporter configuration, please see the
+> For detailed exporter configuration, see the
 > [exporter README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md).
 
 ```yaml
@@ -415,8 +417,8 @@ a user wants to change the default configuration then such configuration must be
 defined in this section. Configuration parameters specified for which the
 extension provides a default configuration are overridden.
 
-> Configuring an extension does not enable it. Extensions are enabled within
-> the [service](#service) section.
+> Configuring an extension does not enable it. Extensions are enabled within the
+> [service](#service) section.
 
 By default, no extensions are configured. A basic example of all available
 extensions is provided below.
@@ -486,9 +488,10 @@ service:
 Telemetry is where the telemetry for the collector itself can be configured. It
 has two subsections: `logs` and `metrics`.
 
-The `logs` subsection allows configuration of the logs generated by the collector.
-By default the collector will write its logs to stderr with a log level of `INFO`.
-You can also add static key-value pairs to all logs using the `initial_fields` section.
+The `logs` subsection allows configuration of the logs generated by the
+collector. By default the collector will write its logs to stderr with a log
+level of `INFO`. You can also add static key-value pairs to all logs using the
+`initial_fields` section.
 [View the full list of `logs` options here.](https://github.com/open-telemetry/opentelemetry-collector/blob/7666eb04c30e5cfd750db9969fe507562598f0ae/config/service.go#L41-L97)
 
 The `metrics` subsection allows configuration of the metrics generated by the
@@ -514,8 +517,9 @@ service:
 
 ### Configuration Environment Variables
 
-The use and expansion of environment variables is supported in the Collector configuration.
-For example to use the values stored on the `DB_KEY` and `OPERATION` environment variables you can write the following:
+The use and expansion of environment variables is supported in the Collector
+configuration. For example to use the values stored on the `DB_KEY` and
+`OPERATION` environment variables you can write the following:
 
 ```yaml
 processors:
