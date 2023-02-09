@@ -17,7 +17,7 @@ The filter processor allows users to filter telemetry based on `include` or `exc
 
 For example, to _only_ allow span data from services app1, app2, and app3 and drop data from all other services:
 
-```
+```yaml
 processors:
   filter/allowlist:
     spans:
@@ -87,7 +87,7 @@ processors:
       new_name: system.cpu.usage_time
 ```
 
-The [metrics transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/metricstransformprocessor)` `also supports regexes to apply transform rules to multiple metric names or metric labels at the same time. This example renames cluster_name to cluster-name for all metrics:
+The [metrics transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/metricstransformprocessor) also supports regexes to apply transform rules to multiple metric names or metric labels at the same time. This example renames cluster_name to cluster-name for all metrics:
 
 
 ```
@@ -107,7 +107,7 @@ processors:
 
 **Processor**: [resource detection processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor) and [k8sattributes processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor)
 
-Lightstep recommends that customers use processors to enrich their telemetry data with relevant infrastructure metadata to help teams quickly identify when underlying infrastructure is impacting service health or performance.
+It is recommended that end-users use processors to enrich their telemetry data with relevant infrastructure metadata to help teams quickly identify when underlying infrastructure is impacting service health or performance.
 
 The resource detection processor adds relevant cloud or host-level information to telemetry: 
 
