@@ -5,8 +5,9 @@ title: Legacy Workshop resources
 > The following workshop contents are considered legacy and have outdated code.
 > Many of the slides are still relevant and you should feel free to use them.
 >
-> For a reference application, refer to the [OpenTelemetry Demo](https://github.com/open-telemetry/opentelemetry-demo)
-> to teach people how to best use automatic and manual instrumentation.
+> For a reference application, refer to the
+> [OpenTelemetry Demo](https://github.com/open-telemetry/opentelemetry-demo) to
+> teach people how to best use automatic and manual instrumentation.
 
 OpenTelemetry provides the following resources free of charge and available
 under the Apache 2.0 license. These resources are intended to aid you in running
