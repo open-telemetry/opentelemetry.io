@@ -105,7 +105,7 @@ processors:
 
 ## Enriching Telemetry with Resource Attributes
 
-**Processor**: [resource detection processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor) and [k8sattributes processor](k8sattributesprocessor)
+**Processor**: [resource detection processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor) and [k8sattributes processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor)
 
 Lightstep recommends that customers use processors to enrich their telemetry data with relevant infrastructure metadata to help teams quickly identify when underlying infrastructure is impacting service health or performance.
 
