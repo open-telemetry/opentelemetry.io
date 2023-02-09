@@ -1,6 +1,5 @@
 ---
 title: Interviews or Feedback Sessions
-linkTitle: Interviews or Feedback Sessions
 Description: >-
  Help improve OpenTelemetry - share your feedback directly with us!
 ---
