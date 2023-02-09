@@ -25,7 +25,7 @@ Sample Trace:
     },
     "parent_id": "0x051581bf3cb55c13",
     "start_time": "2022-04-29T18:52:58.114304Z",
-    "end_time": "2022-04-29T18:52:58.114435Z",
+    "end_time": "2022-04-29T22:52:58.114561Z",
     "attributes": {
         "http.route": "some_route1"
     },
@@ -39,7 +39,7 @@ Sample Trace:
         },
         {
             "name": "bye now!",
-            "timestamp": "2022-04-29T22:52:58.114561Z",
+            "timestamp": "2022-04-29T18:52:58.114585Z",
             "attributes": {
                 "event_attributes": 1
             }
@@ -118,7 +118,7 @@ Provider is already initialized for you.
 
 A Tracer creates spans containing more information about what is happening for a
 given operation, such as a request in a service. Tracers are created from Tracer
-Providers. In some languages, a global Tracer is already initialized for you.
+Providers.
 
 ### Trace Exporters
 
