@@ -5,13 +5,14 @@ toc_hide: true
 ---
 
 OpenTelemetry is an open source project, and we gladly accept new contributions
-and contributors. Please see the CONTRIBUTING.md file in each SIG repository
-for information on getting started.
+and contributors. Please see the CONTRIBUTING.md file in each SIG repository for
+information on getting started.
 
 ## Contributing to the OpenTelemetry Documentation
 
-Individual SIGs may maintain documentation above and beyond what is offered here,
-but we strive for accurate general guidance on using the project from our main website.
+Individual SIGs may maintain documentation above and beyond what is offered
+here, but we strive for accurate general guidance on using the project from our
+main website.
 
 The per-language API, SDK, and "Getting Started" documentation is hosted in each
 language's GitHub repository. For more information,
@@ -20,8 +21,8 @@ of the website repository's CONTRIBUTING.md file.
 
 ### Contributor License Agreement (CLA)
 
-Contributors to this and other OpenTelemetry projects require acceptance of our CLA,
-managed by [EasyCLA](https://lfcla.com/).
+Contributors to this and other OpenTelemetry projects require acceptance of our
+CLA, managed by [EasyCLA](https://lfcla.com/).
 
 ### Code reviews
 
@@ -32,7 +33,8 @@ information on using pull requests.
 
 ### Getting started
 
-See [README.md](https://github.com/open-telemetry/opentelemetry.io#readme) for current information.
+See [README.md](https://github.com/open-telemetry/opentelemetry.io#readme) for
+current information.
 
 ## Code of conduct
 
