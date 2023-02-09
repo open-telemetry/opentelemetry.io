@@ -102,7 +102,7 @@ referred to as `$OTEL_COLLECTOR_BINARY` in the following.
 
 In the `./opamp-go/internal/examples/server` directory, launch the OpAMP server:
 
-```
+```console
 $ go run .
 2023/02/08 13:31:32.004501 [MAIN] OpAMP Server starting...
 2023/02/08 13:31:32.004815 [MAIN] OpAMP Server running...
