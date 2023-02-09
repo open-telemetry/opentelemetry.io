@@ -3,7 +3,7 @@ title: >
   End-User Q&A Series: Using OTel with GraphQL
 linkTitle: >
   End-User Q&A: OTel with GraphQL
-date: 2023-02-07
+date: 2023-02-09
 author: >-
   [Adriana Villela](https://github.com/avillela) (Lightstep)
 ---
@@ -306,7 +306,19 @@ contributors.
 ### Documentation
 
 J and his team have also experienced some challenges with documentation, noting
-that there are some gaps in the online docs.
+that there are some gaps in the online docs:
+
+- Under metrics for JavaScript there is no mention of the Observable Guage at
+  all. J had to go into the code to find it.
+- There are some short, very high-level metric API examples. Those examples
+  currently don't show which libraries you need to bring in. It also doesn't
+  talk about how to export items.
+- In .NET it is very hard to keep a trace going in your work due to all the
+  async/await and it jumping between threads. .NET docs lack some detail around
+  context propagation in this particular scenario.
+
+.NET docs and keeping context. I found a bunch of instrumentation but I noticed
+it has a hard time keeping the context around.
 
 ## Final Thoughts
 
