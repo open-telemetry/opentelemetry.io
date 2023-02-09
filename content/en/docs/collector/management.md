@@ -92,7 +92,7 @@ supervisor.
 First, clone the `open-telemetry/opamp-go` repo:
 
 ```sh
-$ git clone https://github.com/open-telemetry/opamp-go.git
+git clone https://github.com/open-telemetry/opamp-go.git
 ```
 
 Next, we need an OpenTelemetry collector binary that the OpAMP supervisor can
