@@ -1,32 +1,77 @@
 ---
 title: Deployment
+description: Patterns you can apply to run the OpenTelemetry collector
 weight: 2
 ---
 
-The OpenTelemetry Collector consists of a single binary and two primary deployment methods:
+The OpenTelemetry collector consists of a single binary which you can use in
+different ways, for different use cases. This document describes deployment
+patterns, their use cases along with pros and cons.
 
-- **Agent:** A Collector instance running with the application or on the same
-  host as the application (e.g. binary, sidecar, or daemonset).
-- **Gateway:** One or more Collector instances running as a standalone service
-  (e.g. container or deployment) typically per cluster, data center or region.
+## Decentralized Deployment
 
-## Agent
+Clients (SDK) directly ingest into back-end
 
-It is recommended to deploy the Agent on every host within an environment. In
-doing so, the Agent is capable of receiving telemetry data (push and pull
-based) as well as enhancing telemetry data with metadata such as custom tags or
-infrastructure information. In addition, the Agent can offload responsibilities
-that client instrumentation would otherwise need to handle including batching,
-retry, encryption, compression and more.
+Clients send to one or more collector, each client is configured with a
+collector location.
 
-## Gateway
+Pros:
 
-Additionally, a Gateway cluster can be deployed in every cluster, data center,
-or region. A Gateway cluster runs as a standalone service and can offer
-advanced capabilities over the Agent including tail-based sampling. In
-addition, a Gateway cluster can limit the number of egress points required to
-send data as well as consolidate API token management. Each Collector instance
-in a Gateway cluster operates independently so it is easy to scale the
-architecture based on performance needs with a simple load balancer. If a
-gateway cluster is deployed, it usually receives data from Agents deployed
-within an environment.
+- Simple to get started
+
+Cons:
+
+- Scalability (human and load-wise)
+- Inflexible
+
+## Centralized Deployment
+
+Clients send to a collection of OpenTelemetry collectors behind a load-balancer
+
+Pros:
+
+- Separation of concerns
+- Centralized policy management
+
+Cons:
+
+- Effort
+
+## Best Practices
+
+Now that you are equipped with the essential deployment patterns for the
+collector, let's have a closer look at best practices for collector (pipeline)
+configurations for different use cases.
+
+### Fan Out
+
+Export signals into more than one back-end destination, for example, for
+testing, policy (signals from dev/test go into backend X, prod goes into Y), or
+migrations from one back-end to another (cut-over).
+
+### Normalizing
+
+Normalize the metadata from different instrumentations
+
+### Multitenancy
+
+You want to isolate different tenants (customers, teams, etc.)
+
+### Cross-Environment
+
+You want to aggregate signals from multiple environments (on-prem, Kubernetes,
+etc.)
+
+### Per-Signal Instances
+
+Have one collector instance per signal type, for example, one dedicated to
+Prometheus metrics, one dedicated to Jaeger traces.
+
+## Other information
+
+- GitHub repo [OpenTelemetry Collector Deployment Patterns][gh-patterns]
+- YouTube video [OpenTelemetry Collector Deployment Patterns][y-patterns]
+
+[gh-patterns]:
+  https://github.com/jpkrohling/opentelemetry-collector-deployment-patterns/
+[y-patterns]: https://www.youtube.com/watch?v=WhRrwSHDBFs
