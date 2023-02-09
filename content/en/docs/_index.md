@@ -2,6 +2,7 @@
 title: Documentation
 linkTitle: Docs
 menu: { main: { weight: 10 } }
+aliases: [/docs/workshop/*]
 ---
 
 OpenTelemetry, also known as OTel for short, is a vendor-neutral open-source
