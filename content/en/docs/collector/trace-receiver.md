@@ -7,11 +7,13 @@ collectorVersion: 0.53.0 # Pin to older version until prose is updated
 {{% alert title="Version note" color="warning" %}}
 
 This instructions in this page were written for collector version [{{% param
-collectorVersion %}}][old-vers], and are known to not work with the [latest
+collectorVersion
+%}}](https://github.com/open-telemetry/opentelemetry-collector-releases/releases/v{{%
+param collectorVersion %}}), and are known to not work with the [latest
 release][].
 
-[old-vers]: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/v{{% param collectorVersion %}}
-[latest release]: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/latest
+[latest release]:
+  https://github.com/open-telemetry/opentelemetry-collector-releases/releases/latest
 
 {{% /alert %}}
 
@@ -57,9 +59,10 @@ above in order to create the receiver, so let's get started.
 
 ## Setting up your receiver development and testing environment
 
-First use the [Building a Custom Collector](/docs/collector/custom-collector) tutorial
-to create a Collector instance named `dev-otelcol`; all you need is to
-copy the `builder-config.yaml` described on Step 2 and make the following changes:
+First use the [Building a Custom Collector](/docs/collector/custom-collector)
+tutorial to create a Collector instance named `dev-otelcol`; all you need is to
+copy the `builder-config.yaml` described on Step 2 and make the following
+changes:
 
 ```yaml
 dist:
@@ -125,8 +128,8 @@ Notice that I am only using the `insecure` flag in my `jaeger` receiver config
 to make my local development setup easier; you should not use this flag when
 running your collector in production.
 
-In order to verify that your initial pipeline is properly set up, you should have
-the following output after running your `dev-otelcol` command:
+In order to verify that your initial pipeline is properly set up, you should
+have the following output after running your `dev-otelcol` command:
 
 ```cmd
 dev-otelcol % ./dev-otelcol --config config.yaml
@@ -217,7 +220,10 @@ type Config struct{
 
 To give your receiver access to its settings the `Config` struct must:
 
-- Embed the [config.ReceiverSettings][] struct or a struct that extends it.
+- Embed the
+  [config.ReceiverSettings](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{%
+  param collectorVersion %}}/config/receiver.go#L42) struct or a struct that
+  extends it.
 - Add a field for each of the receiver's settings.
 
 Here is what your `config.go` file should look like after you implemented the
@@ -250,13 +256,13 @@ type Config struct {
 
 Now that you have access to the settings, you can provide any kind of validation
 needed for those values by implementing the `Validate` method according to the
-[validatable](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param collectorVersion %}}/config/common.go#L24)
-interface.
+[validatable](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{%param
+collectorVersion %}}/config/common.go#L24) interface.
 
 In this case, the `interval` value will be optional (we will look at generating
-default values later) but when defined should be at least 1 minute (1m) and
-the `number_of_traces` will be a required value. Here is what the config.go
-looks like after implementing the `Validate` method.
+default values later) but when defined should be at least 1 minute (1m) and the
+`number_of_traces` will be a required value. Here is what the config.go looks
+like after implementing the `Validate` method.
 
 > config.go
 
@@ -302,8 +308,9 @@ func (cfg *Config) Validate() error {
 
 If you want to take a closer look at the structs and interfaces involved in the
 configuration aspects of a receiver component, take a look at the
-[config/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param collectorVersion %}}/config/receiver.go)
-file inside the Collector's GitHub project.
+[config/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{%
+param collectorVersion %}}/config/receiver.go) file inside the Collector's
+GitHub project.
 
 ## Enabling the Collector to instantiate your receiver
 
@@ -358,9 +365,10 @@ As you can see, the `components()` function is responsible to provide the
 Collector the factories for all its components which is represented by a
 variable called `factories` of type `component.Factories` (here is the
 declaration of the
-[component.Factories](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param collectorVersion %}}/component/factories.go#L25)
-struct), which will then be used to instantiate the components that are
-configured and consumed by the Collector's pipelines.
+[component.Factories](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{%
+param collectorVersion %}}/component/factories.go#L25) struct), which will then
+be used to instantiate the components that are configured and consumed by the
+Collector's pipelines.
 
 Notice that `factories.Receivers` is the field holding a map to all the receiver
 factories (instances of `ReceiverFactory`), and it currently has the
@@ -370,10 +378,11 @@ factories (instances of `ReceiverFactory`), and it currently has the
 The `tailtracer` receiver has to provide a `ReceiverFactory` implementation, and
 although you will find a `ReceiverFactory` interface (you can find its
 definition in the
-[component/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param collectorVersion %}}/component/receiver.go#L104)
-file within the Collector's project ), the right way to provide the
-implementation is by using the functions available within the
-`go.opentelemetry.io/collector/component` package.
+[component/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{%
+param collectorVersion %}}/component/receiver.go#L104) file within the
+Collector's project ), the right way to provide the implementation is by using
+the functions available within the `go.opentelemetry.io/collector/component`
+package.
 
 ### Implementing your ReceiverFactory
 
@@ -426,9 +435,10 @@ Let's now implement the code to support all the parameters required by
 ### Identifying and Providing default settings for the receiver
 
 If you take a look at the definition of
-[config.Type](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param collectorVersion %}}/config/common.go#L21),
-you will see that it's just a string. So all we need to do is to provide a
-string constant representing the unique identifier for our receiver.
+[config.Type](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{%
+param collectorVersion %}}/config/common.go#L21), you will see that it's just a
+string. So all we need to do is to provide a string constant representing the
+unique identifier for our receiver.
 
 Previously, we said that the `interval` setting for our `tailtracer` receiver
 would be optional, in that case you will need to provide a default value for it
@@ -520,15 +530,17 @@ func NewFactory() component.ReceiverFactory {
 
 If you take a closer look at the `ReceiverSettings` struct and
 `NewReceiverSettings` function (they are declared within the
-[config/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param collectorVersion %}}/config/receiver.go)
-file inside the Collector's GitHub project), you will find out that the
-`ReceiverSettings` is implementing the methods to support the `identifiable`
-interface which are also required by any Collector's component.
+[config/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{%
+param collectorVersion %}}/config/receiver.go) file inside the Collector's
+GitHub project), you will find out that the `ReceiverSettings` is implementing
+the methods to support the `identifiable` interface which are also required by
+any Collector's component.
 
 All the types and functions involved in supporting the requirements for
 component's identification are implemented within the
-[config/identifiable.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param collectorVersion %}}/config/identifiable.go)
-file inside the Collector's GitHub project.
+[config/identifiable.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{%
+param collectorVersion %}}/config/identifiable.go) file inside the Collector's
+GitHub project.
 
 ### Enabling the factory to describe the receiver as capable of processing traces
 
@@ -656,8 +668,7 @@ As explained before, all the Collector components are instantiated by the
 `components()` function within the `components.go` file.
 
 The `tailtracer` receiver factory instance has to be added to the `factories`
-map so the Collector can load it properly as part of its initialization
-process.
+map so the Collector can load it properly as part of its initialization process.
 
 Here is what the `components.go` file looks like after making the changes to
 support that:
@@ -773,9 +784,10 @@ accomplish that.
 
 All the receiver APIs responsible to enable the signals are currently declared
 in the
-[component/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param collectorVersion %}}/component/receiver.go)
-file within the OTel Collector's project in GitHub, open the file and take a
-minute to browse through all the interfaces declared in it.
+[component/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{%
+param collectorVersion %}}/component/receiver.go) file within the OTel
+Collector's project in GitHub, open the file and take a minute to browse through
+all the interfaces declared in it.
 
 Notice that `component.TracesReceiver` (and its siblings
 `component.MetricsReceiver` and `component.LogsReceiver`) at this point in time,
@@ -890,8 +902,8 @@ type tailtracerReceiver struct {
 ```
 
 Now you need to update the `Start()` methods so the receiver can properly
-initialize its own processing context and have the cancellation function kept
-in the `cancel` field and also initialize its `host` field value. You will also
+initialize its own processing context and have the cancellation function kept in
+the `cancel` field and also initialize its `host` field value. You will also
 update the `Stop()` method in order to finalize the context by calling the
 `cancel` function.
 
@@ -1228,8 +1240,8 @@ concepts.
 ### Working with Resources
 
 In the OTel world, all telemetry is generated by a `Resource`, here is the
-definition according to the [OTel
-spec](/docs/reference/specification/resource/sdk):
+definition according to the
+[OTel spec](/docs/reference/specification/resource/sdk):
 
 > A `Resource` is an immutable representation of the entity producing telemetry
 > as Attributes. For example, a process producing telemetry that is running in a
@@ -1507,9 +1519,8 @@ so the OTel specification has some guidelines in place to help organize and
 minimize the conflicts across all the different types of telemetry generation
 entities that it may need to represent.
 
-Those guidelines are known as Resource Semantic Convention and can be found
-[here](/docs/reference/specification/resource/semantic_conventions/)
-within the OTel specification.
+These guidelines are known as Resource Semantic Conventions and are
+[documented in the OTel specification](/docs/reference/specification/resource/semantic_conventions/).
 
 When creating your own attributes to represent your own telemetry generation
 entities, you should follow the guideline provided by the specification:
@@ -1554,8 +1565,8 @@ applicable across different domains like
 and others.
 
 So, when you look at the `BackendSystem` entity, it has fields representing
-[OS](/docs/reference/specification/resource/semantic_conventions/os/)
-related information and
+[OS](/docs/reference/specification/resource/semantic_conventions/os/) related
+information and
 [Cloud](/docs/reference/specification/resource/semantic_conventions/cloud/)
 related information, and we will use the attribute names and values prescribed
 by the resource semantic convention to represent that information on its
@@ -2014,9 +2025,8 @@ func appendTraceSpans(backend *BackendSystem, backendScopeSpans *ptrace.ScopeSpa
 > - Setting the `Name` of the span with the `Endpoint` field value from the
 >   `BackendSystem` instance
 > - Setting the `Kind` of the span as `ptrace.SpanKindServer`. Take a look at
->   [SpanKind section](/docs/reference/specification/trace/api/#spankind)
->   within the trace specification to understand how to properly define
->   SpanKind.
+>   [SpanKind section](/docs/reference/specification/trace/api/#spankind) within
+>   the trace specification to understand how to properly define SpanKind.
 > - Used all the methods mentioned before to fill the `ptrace.Span` with the
 >   proper values to represent the `BackendSystem` operation
 
@@ -2230,7 +2240,7 @@ set it as the parent for `BackendSystem` span. Open the `tailtracer/model.go`
 file and update the `appendTraceSpans()` function as follow:
 
 ```go
-func appendTraceSpans(backend *BackendSystem, backendScopeSpans *ptrace.ScopeSpans, atmScopeSpans *ptrace.ScopeSpans){
+func appendTraceSpans(backend *BackendSystem, backendScopeSpans *ptrace.ScopeSpans, atmScopeSpans *ptrace.ScopeSpans) {
 	traceId := NewTraceID()
 
 	var atmOperationName string
@@ -2293,6 +2303,3 @@ Here is the detailed view of one of those traces in Jaeger:
 
 That's it! You have now reached the end of this tutorial and successfully
 implemented a trace receiver, congratulations!
-
-[config.ReceiverSettings]:
-  https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param collectorVersion %}}/config/receiver.go#L42

@@ -40,8 +40,9 @@ popular backends and OTLP. You might wonder,
 > having each service send directly to the backend?
 
 For trying out and getting started with OpenTelemetry, sending your data
-directly to a backend is a great way to get value quickly. Also, in a development
-or small-scale environment you can get decent results without a collector.
+directly to a backend is a great way to get value quickly. Also, in a
+development or small-scale environment you can get decent results without a
+collector.
 
 However, in general we recommend using a collector alongside your service, since
 it allows your service to offload data quickly and the collector can take care
@@ -59,10 +60,12 @@ currently have mixed [stability levels][].
 
 **Collector components** differ in their maturity levels. An effort is underway
 to ensure that every component has its stability documented. To track the
-progress of this effort, see [opentelemetry-collector-contrib issue #10116][10116].
+progress of this effort, see `opentelemetry-collector-contrib` [issue #10116][].
 
 {{% latest_release "collector-releases" /%}}
 
-[10116]: https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/10116
+[issue #10116]:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/10116
 [mixed]: /docs/reference/specification/document-status/#mixed
-[stability levels]: https://github.com/open-telemetry/opentelemetry-collector#stability-levels
+[stability levels]:
+  https://github.com/open-telemetry/opentelemetry-collector#stability-levels
