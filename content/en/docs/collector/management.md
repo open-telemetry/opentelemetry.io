@@ -159,7 +159,7 @@ service:
 Now it's time to launch the supervisor (which in turn will launch your
 OpenTelemetry collector):
 
-```
+```console
 $ go run .
 2023/02/08 13:32:54 Supervisor starting, id=01GRRKNBJE06AFVGQT5ZYC0GEK, type=io.opentelemetry.collector, version=1.0.0.
 2023/02/08 13:32:54 Starting OpAMP client...
