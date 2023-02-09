@@ -88,7 +88,8 @@ would specify the following in your values file:
 ```yaml
 components:
   frontendProxy:
-    serviceType: LoadBalancer
+    service:
+      type: LoadBalancer
 ```
 
 > **Note**
