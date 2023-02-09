@@ -194,7 +194,7 @@ where you should see your collector listed, managed by the supervisor:
 You can also query the collector for the metrics exported (note the label
 values):
 
-```
+```console
 $ curl localhost:8888/metrics
 ...
 # HELP otelcol_receiver_accepted_metric_points Number of metric points successfully pushed into the pipeline.
