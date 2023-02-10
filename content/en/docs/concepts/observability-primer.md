@@ -13,7 +13,7 @@ description: >-
 
 Observability lets us understand a system from the outside, by letting us ask
 questions about that system without knowing its inner workings. Furthermore,
-allows us to easily troubleshoot and handle novel problems (i.e. "unknown
+it allows us to easily troubleshoot and handle novel problems (i.e. "unknown
 unknowns”), and helps us answer the question, "Why is this happening?"
 
 In order to be able to ask those questions of a system, the application must be
