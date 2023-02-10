@@ -12,6 +12,8 @@ patterns, their use cases along with pros and cons.
 
 Clients (SDK) directly ingest into back-end
 
+![OpAMP example setup](../img/decentralized-sdk.svg)
+
 Clients send to one or more collector, each client is configured with a
 collector location.
 
