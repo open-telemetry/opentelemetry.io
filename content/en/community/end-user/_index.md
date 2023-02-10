@@ -9,29 +9,28 @@ desire a vendor-agnostic space to discuss adopting OpenTelemetry, so we provide
 multiple ways for you to connect with other users of the project and share best
 practices:
 
-* [A synchronous monthly discussion group](discussion-group/)
-* [A private slack channel](slack-channel/)
-* [Talks about OTel in practice](otel-in-practice/)
+- [A synchronous monthly discussion group](discussion-group/)
+- [A private slack channel](slack-channel/)
+- [Talks about OTel in practice](otel-in-practice/)
 
-These forums will bring together operations and
-development engineers from different organizations to discuss challenges and
-solutions to achieving ubiquitous observability. Share successes and failures,
-discover best practices, and meet others who are also on a journey to implement
-observability powered by OpenTelemetry.
+These forums will bring together operations and development engineers from
+different organizations to discuss challenges and solutions to achieving
+ubiquitous observability. Share successes and failures, discover best practices,
+and meet others who are also on a journey to implement observability powered by
+OpenTelemetry.
 
 ### Topics
 
 This group is what its members make it -- whatever is of interest to the group
 is fair game!
 
-But here are some of the kinds of things we expect will be on the
-table:
+But here are some of the kinds of things we expect will be on the table:
 
-* Refactoring with telemetry
-* What is company X doing with OpenTelemetry?
-* Correlating multiple observability signals
-* Maintaining and scaling OpenTelemetry deployments
-* Writing custom instrumentation
+- Refactoring with telemetry
+- What is company X doing with OpenTelemetry?
+- Correlating multiple observability signals
+- Maintaining and scaling OpenTelemetry deployments
+- Writing custom instrumentation
 
 ### Questions
 
