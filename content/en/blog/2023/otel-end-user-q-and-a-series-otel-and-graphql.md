@@ -317,9 +317,6 @@ that there are some gaps in the online docs:
   async/await and it jumping between threads. .NET docs lack some detail around
   context propagation in this particular scenario.
 
-.NET docs and keeping context. I found a bunch of instrumentation but I noticed
-it has a hard time keeping the context around.
-
 ## Final Thoughts
 
 OpenTelemetry is all about community, and we wouldn’t be where we are without
