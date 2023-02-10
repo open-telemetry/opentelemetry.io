@@ -41,4 +41,4 @@ Things to keep in mind:
   
 To schedule a session, reach out to us in [CNCF Community Slack](https://communityinviter.com/apps/cloud-native/cncf):
 * In the [#otel-user-research](https://cloud-native.slack.com/archives/C01RT3MSWGZ) channel
-* Via direct message -- ping Reese Lee, Adriana Villela, or Rynn Mancuso 
+* Via direct message: ping Reese Lee, Adriana Villela, or Rynn Mancuso 
