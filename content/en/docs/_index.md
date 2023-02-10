@@ -2,6 +2,7 @@
 title: Documentation
 linkTitle: Docs
 menu: { main: { weight: 10 } }
+aliases: [/docs/workshop/*]
 ---
 
 OpenTelemetry, also known as OTel for short, is a vendor-neutral open-source
@@ -15,5 +16,5 @@ for instrumenting, generating, collecting, and exporting telemetry data such as
 ![OpenTelemetry Reference Architecture](/img/otel_diagram.png)
 
 > For an in-depth guide on OpenTelemetry, including documentation and guides on
-> language-specific instrumentation or the Collector, please follow the links
-> in the navigation bar.
+> language-specific instrumentation or the Collector, please follow the links in
+> the navigation bar.

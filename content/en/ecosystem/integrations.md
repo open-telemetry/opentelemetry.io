@@ -2,8 +2,7 @@
 title: Integrations
 description: OpenTelemetry integrations with other open-source projects
 aliases: [/integrations]
-spelling:
-  cSpell:ignore containerd buildx quarkus
+spelling: cSpell:ignore containerd buildx quarkus
 ---
 
 OpenTelemetry integrates with or is integrated into various open source
@@ -44,4 +43,6 @@ The following open source projects use OpenTelemetry components.
 | [Quarkus](https://quarkus.io/guides/opentelemetry)                                         | Java                                |
 
 \* _Projects are listed alphabetically_.
-[^partial-support]: Projects only partially supported at this time. Full support coming soon!
+
+[^partial-support]:
+    Projects only partially supported at this time. Full support coming soon!

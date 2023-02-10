@@ -27,7 +27,7 @@ sure that `service.name` is set by configuring a service name.
 
 ### Acquiring a Tracer
 
-To being [tracing](/docs/concepts/signals/traces), you will need to ensure you
+To begin [tracing](/docs/concepts/signals/traces), you will need to ensure you
 have an initialized [`Tracer`](/docs/concepts/signals/traces#tracer) that comes
 from a [`TracerProvider`](/docs/concepts/signals/traces#tracer-provider).
 

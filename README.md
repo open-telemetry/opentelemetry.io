@@ -15,12 +15,7 @@ Read on to learn about other ways on how you can help.
 
 ## Adding a project to the OpenTelemetry Registry
 
-Do you maintain or contribute to an integration for OpenTelemetry? We'd love to
-feature your project in the [registry][]!
-
-To add your project, submit a [pull request][]. You'll need to create a data
-file in [data/registry][] for your project. You can find a template in
-[templates/registry-entry.yml][].
+For details, see [Adding to the registry][].
 
 ## Submitting a blog post
 
@@ -93,7 +88,7 @@ already contributed][contributors]!
 - Documentation: [CC-BY-4.0](LICENSE)
 - Code: [Apache-2.0](LICENSE-CODE)
 
-[data/registry]: data/registry
+[adding to the registry]: https://opentelemetry.io/ecosystem/registry/adding/
 [let us know]:
   https://github.com/open-telemetry/opentelemetry.io/issues/new/choose
 [@open-telemetry/blog-approvers]:
@@ -122,4 +117,3 @@ already contributed][contributors]!
 [google doc]:
   https://docs.google.com/document/d/1wW0jLldwXN8Nptq2xmgETGbGn9eWP8fitvD5njM-xZY/edit?usp=sharing
 [slack]: https://cloud-native.slack.com/archives/C02UN96HZH6
-[templates/registry-entry.yml]: templates/registry-entry.yml

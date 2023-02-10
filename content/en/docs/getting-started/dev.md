@@ -1,16 +1,15 @@
 ---
 title: Dev
 description: >-
-  You develop software.
-  Your goal is to get observability by writing code.
-  You want to have your dependencies emit telemetry for you automatically.
+  You develop software. Your goal is to get observability by writing code. You
+  want to have your dependencies emit telemetry for you automatically.
 spelling: cSpell:ignore otel
 weight: 2
 ---
 
-OpenTelemetry can help you! To accomplish your goals of having your
-dependencies instrumented automatically and instrumenting your own code with our
-API manually, we recommend that you learn the following concepts first:
+OpenTelemetry can help you! To accomplish your goals of having your dependencies
+instrumented automatically and instrumenting your own code with our API
+manually, we recommend that you learn the following concepts first:
 
 - [What is OpenTelemetry?](/docs/concepts/what-is-opentelemetry/)
 - [How can I instrument dependencies without touching their code?](/docs/concepts/instrumenting/#automatic-instrumentation)

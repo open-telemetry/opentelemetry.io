@@ -237,3 +237,10 @@
     }
   }
 }
+
+.td-content pre.mermaid {
+  max-width: inherit;
+  svg {
+    height: auto;
+  }
+}
