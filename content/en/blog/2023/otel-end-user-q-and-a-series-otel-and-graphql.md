@@ -313,7 +313,7 @@ that there are some gaps in the online docs:
 - There are some short, very high-level metric API examples. Those examples
   currently don't show which libraries you need to bring in. It also doesn't
   talk about how to export items.
-- In .NET it is very hard to keep a trace going in your work due to all the
+- In .NET, it is very hard to keep a trace going in your work due to all the
   async/await and it jumping between threads. .NET docs lack some detail around
   context propagation in this particular scenario.
 
