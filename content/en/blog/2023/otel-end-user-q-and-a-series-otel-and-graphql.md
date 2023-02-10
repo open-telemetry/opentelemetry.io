@@ -308,7 +308,7 @@ contributors.
 J and his team have also experienced some challenges with documentation, noting
 that there are some gaps in the online docs:
 
-- Under metrics for JavaScript there is no mention of the Observable Guage at
+- Under metrics for JavaScript, there is no mention of the Observable Guage at
   all. J had to go into the code to find it.
 - There are some short, very high-level metric API examples. Those examples
   currently don't show which libraries you need to bring in. It also doesn't
