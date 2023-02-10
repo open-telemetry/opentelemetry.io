@@ -36,41 +36,69 @@ export OTEL_EXPORTER_OTLP_ENDPOINT=http://collector.example.com:4318
 
 The collector would then be configured like so:
 
-{{< ot-tabs Traces Metrics Logs >}} {{< ot-tab lang="yaml">}} receivers: otlp: #
-the OTLP receiver the app is sending traces to protocols: grpc:
+{{< ot-tabs Traces Metrics Logs >}} {{< ot-tab lang="yaml">}}
+receivers:
+  otlp: # the OTLP receiver the app is sending traces to
+    protocols:
+      grpc:
 
-processors: batch:
+processors:
+  batch:
 
-exporters: jaeger: # the Jaeger exporter, to ingest traces to backend endpoint:
-"https://jaeger.example.com:14250" insecure: true
+exporters:
+  jaeger: # the Jaeger exporter, to ingest traces to backend
+    endpoint: "https://jaeger.example.com:14250"
+    insecure: true
 
-service: pipelines: traces/dev: receivers: [otlp] processors: [batch] exporters:
-[jaeger]
-
+service:
+  pipelines:
+    traces/dev:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [jaeger]
 {{< /ot-tab >}}
 
-{{< ot-tab lang="yaml">}} receivers: otlp: # the OTLP receiver the app is
-sending metrics to protocols: grpc:
+{{< ot-tab lang="yaml">}} 
+receivers:
+  otlp: # the OTLP receiver the app is sending metrics to
+    protocols:
+      grpc:
 
-processors: batch:
+processors:
+  batch:
 
-exporters: prometheusremotewrite: # the PRW exporter, to ingest metrics to
-backend endpoint: "https://prw.example.com/v1/api/remote_write"
+exporters:
+  prometheusremotewrite: # the PRW exporter, to ingest metrics to backend
+    endpoint: "https://prw.example.com/v1/api/remote_write"
 
-service: pipelines: metrics/prod: receivers: [otlp] processors: [batch]
-exporters: [prometheusremotewrite] {{< /ot-tab >}}
+service:
+  pipelines:
+    metrics/prod:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [prometheusremotewrite]
+{{< /ot-tab >}}
 
-{{< ot-tab lang="yaml">}} receivers: otlp: # the OTLP receiver the app is
-sending logs to protocols: grpc:
+{{< ot-tab lang="yaml">}}
+receivers:
+  otlp: # the OTLP receiver the app is sending logs to
+    protocols:
+      grpc:
 
-processors: batch:
+processors:
+  batch:
 
-exporters: file: # the File Exporter, to ingest logs to local file path:
-"./app42_example.log" rotation:
+exporters:
+  file: # the File Exporter, to ingest logs to local file 
+    path: "./app42_example.log"
+    rotation:
 
-service: pipelines: logs/dev: receivers: [otlp] processors: [batch] exporters:
-[file]
-
+service:
+  pipelines:
+    logs/dev:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [file]
 {{< /ot-tab >}} {{< /ot-tabs >}}
 
 If you want to try it out for yourself, you can have a look at the end-to-end
