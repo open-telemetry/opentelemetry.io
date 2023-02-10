@@ -5,9 +5,9 @@ cascade:
   repo: https://github.com/open-telemetry/opentelemetry-demo
 ---
 
-Welcome to the OpenTelemetry Demo! This folder contains overall documentation
-for the project, how to install and run it, and some scenarios you can use to
-view OpenTelemetry in action.
+Welcome to the [OpenTelemetry Demo](/ecosystem/demo/) documentation, which
+covers how to install and run the demo, and some scenarios you can use to view
+OpenTelemetry in action.
 
 ## Running the Demo
 
