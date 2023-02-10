@@ -239,7 +239,7 @@
 }
 
 .td-content pre.mermaid {
-  max-width: fit-content;
+  max-width: inherit;
   svg {
     height: auto;
   }
