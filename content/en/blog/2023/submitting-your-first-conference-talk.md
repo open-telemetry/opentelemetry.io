@@ -1,7 +1,7 @@
 ---
 title: Submitting Your First Conference Talk
 linkTitle: Submitting a CFP
-date: 2023-02-07
+date: 2023-02-10
 author: "[Josh Lee](https://github.com/joshleecreates/) (IBM)"
 canonical_url: https://joshuamlee.com/submitting-your-first-conference-talk/
 ---
