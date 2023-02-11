@@ -1,9 +1,9 @@
 ---
 title: OpenTelemetry In Practice
 linkTitle: OTel in Practice
-Description: >- 
- **OpenTelemetry in Practice** is a **series** of talks initiated
- by some members of the End User Working Group.
+Description: >-
+  _OpenTelemetry in Practice_ is a _series_ of talks initiated by some members
+  of the End User Working Group.
 ---
 
 We’re aiming to:
@@ -19,7 +19,8 @@ people to join the OpenTelemetry in Practice team and people to give talks at
 future events. So if you’re interested in shaping these conversations, reach out
 in the
 [#otel-user-research channel](https://cloud-native.slack.com/archives/C01RT3MSWGZ)
-of the [CNCF Slack](https://slack.cncf.io/).
+of the [CNCF Slack](https://slack.cncf.io).
 
-Join the [OpenTelemetry in Practice Meetup Group](https://www.meetup.com/opentelemetry-in-practice-meetup-group/)
+Join the
+[OpenTelemetry in Practice Meetup Group](https://meetup.com/opentelemetry-in-practice-meetup-group)
 to get invited to our next talk!
