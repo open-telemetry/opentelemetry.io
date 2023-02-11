@@ -131,12 +131,42 @@ collectors.
 ![OpAMP example setup](../img/centralized-sdk.svg)
 
 1. In the app, the SDK is configured to send OTLP data to a central location.
-1. The load balancer distributes the telemetry data according to a load
-   balancing algorithm (round robin, resource based, hash based, session
-   affinity/sticky sessions, etc.).
+1. A collector configured using the [Trace ID/Service-name aware load-balancing
+   exporter][lb-exporter] distributes the telemetry data to a group of
+   collectors.
 1. The collectors are configured to send telemetry data to one or more backends.
 
 ### Example
+
+```yaml
+receivers:
+  otlp:
+    protocols:
+      grpc:
+
+processors:
+
+exporters:
+  loadbalancing:
+    protocol:
+      otlp:
+        insecure: true
+    resolver:
+      static:
+        hostnames:
+          - collector-1.example.com:5317
+          - collector-2.example.com:5317
+          - collector-3.example.com:5317
+
+service:
+  pipelines:
+    traces:
+      receivers:
+        - otlp
+      processors: []
+      exporters:
+        - loadbalancing
+```
 
 ### Tradeoffs
 
@@ -193,6 +223,8 @@ Prometheus metrics, one dedicated to Jaeger traces.
   https://github.com/open-telemetry/opentelemetry-java-docs/tree/main/otlp
 [py-otlp-example]:
   https://opentelemetry-python.readthedocs.io/en/stable/examples/metrics/instruments/README.html
+[lb-exporter]:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter
 [gh-patterns]:
   https://github.com/jpkrohling/opentelemetry-collector-deployment-patterns/
 [y-patterns]: https://www.youtube.com/watch?v=WhRrwSHDBFs
