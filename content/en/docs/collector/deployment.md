@@ -19,7 +19,7 @@ location:
 ![OpAMP example setup](../img/decentralized-sdk.svg)
 
 1. In the app, the SDK is configured to send OTLP data to a collector.
-1. The collector is configured to send telemetry data to a backend.
+1. The collector is configured to send telemetry data to one or more backends.
 
 ### Example
 
@@ -36,6 +36,7 @@ export OTEL_EXPORTER_OTLP_ENDPOINT=http://collector.example.com:4318
 
 The collector would then be configured like so:
 
+<!-- prettier-ignore-start -->
 {{< ot-tabs Traces Metrics Logs >}} {{< ot-tab lang="yaml">}}
 receivers:
   otlp: # the OTLP receiver the app is sending traces to
@@ -58,7 +59,7 @@ service:
       exporters: [jaeger]
 {{< /ot-tab >}}
 
-{{< ot-tab lang="yaml">}} 
+{{< ot-tab lang="yaml">}}
 receivers:
   otlp: # the OTLP receiver the app is sending metrics to
     protocols:
@@ -100,6 +101,7 @@ service:
       processors: [batch]
       exporters: [file]
 {{< /ot-tab >}} {{< /ot-tabs >}}
+<!-- prettier-ignore-end -->
 
 If you want to try it out for yourself, you can have a look at the end-to-end
 [Java][java-otlp-example] or [Python][py-otlp-example] examples.
@@ -121,7 +123,22 @@ Cons:
 
 ## Centralized Deployment
 
-Clients send to a collection of OpenTelemetry collectors behind a load-balancer
+The centralized collector deployment pattern consists of applications (or other
+collectors) sending signals to a group of collectors behind a load balancer. The
+main point is that there's only one OTLP endpoint shared between a fleet of
+collectors.
+
+![OpAMP example setup](../img/centralized-sdk.svg)
+
+1. In the app, the SDK is configured to send OTLP data to a central location.
+1. The load balancer distributes the telemetry data according to a load
+   balancing algorithm (round robin, resource based, hash based, session
+   affinity/sticky sessions, etc.).
+1. The collectors are configured to send telemetry data to one or more backends.
+
+### Example
+
+### Tradeoffs
 
 Pros:
 
