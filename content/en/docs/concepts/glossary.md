@@ -315,7 +315,7 @@ See [`Metadata`](#metadata).
 ### **Trace**
 
 A [`DAG`](#dag) of [`Spans`](#span), where the edges between [`Spans`](#span)
-are defined as parent/child. relationship. See [more][trace].
+are defined as parent/child relationship. See [more][trace].
 
 ### **Tracer**
 
