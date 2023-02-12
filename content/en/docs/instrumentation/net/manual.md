@@ -210,9 +210,9 @@ public static void DoWork()
 }
 ```
 
-In the preceding example, `childOperation` is ended because the scope of the
+In the preceding example, `childActivity` is ended because the scope of the
 `using` block is explicitly defined, rather than scoped to `DoWork` itself like
-`parentOperation`.
+`parentActivity`.
 
 ## Creating independent Activities
 
