@@ -1,7 +1,7 @@
 ---
 title: Slack Channel
 linkTitle: Slack
-Description: >-
+description: >-
   Join a private slack channel to discuss OpenTelemetry with other end users.
 ---
 

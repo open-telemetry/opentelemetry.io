@@ -1,7 +1,7 @@
 ---
 title: Monthly Discussion Group
 linkTitle: Monthly Discussions
-Description: Monthly OpenTelemetry usage discussions, all are welcome!
+description: Monthly OpenTelemetry usage discussions, all are welcome!
 ---
 
 Interested in learning how other end users are implementing OpenTelemetry in

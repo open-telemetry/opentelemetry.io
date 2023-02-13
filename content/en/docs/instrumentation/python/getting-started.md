@@ -260,7 +260,7 @@ def roll_dice():
 
 def do_roll():
     # This creates a new span that's the child of the current one
-    with tracer.start_as_current_span("do_roll") as rollspan:  
+    with tracer.start_as_current_span("do_roll") as rollspan:
         res = randint(1, 6)
         rollspan.set_attribute("roll.value", res)
         return res
@@ -392,7 +392,7 @@ def roll_dice():
     return str(do_roll())
 
 def do_roll():
-    with tracer.start_as_current_span("do_roll") as rollspan:  
+    with tracer.start_as_current_span("do_roll") as rollspan:
         res = randint(1, 6)
         rollspan.set_attribute("roll.value", res)
         # This adds 1 to the counter for the given roll value

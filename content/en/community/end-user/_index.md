@@ -1,7 +1,7 @@
 ---
 title: End-user Resources
 linkTitle: End User
-Description: Vendor-agnostic resources for users of OpenTelemetry
+description: Vendor-agnostic resources for users of OpenTelemetry
 ---
 
 The [OpenTelemetry End User Working Group][] has heard feedback from users who
