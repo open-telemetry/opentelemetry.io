@@ -113,7 +113,7 @@ This allows users to query or
 want. Uses of GraphQL include microservices development, and extracting data for
 analysis.
 
-### How do you generate Traces?
+### How do you generate traces?
 
 To instrument their code, they configure the
 [Node.JS SDK](/docs/instrumentation/js/getting-started/nodejs/) and use a number
@@ -121,7 +121,7 @@ of
 [Node.JS auto-instrumentation plug-ins](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node).
 While the team is currently only using
 [auto-instrumentation](/docs/reference/specification/glossary/#automatic-instrumentation)
-to generate Traces and [spans](/docs/concepts/observability-primer/#spans), they
+to generate traces and [spans](/docs/concepts/observability-primer/#spans), they
 do occasionally add more data to a span (e.g.
 [attributes](/docs/concepts/signals/traces/#attributes)). They do this by
 grabbing the [context](/docs/concepts/signals/traces/#context-propagation) to
@@ -140,7 +140,7 @@ is installed on all of their nodes.
 The team has implemented a custom Node.JS plugin for getting certain
 [metrics](/docs/concepts/signals/metrics/) data about GraphQL, such as
 deprecated field usage and overall query usage, which is something that they
-can’t get from their Traces. These metrics are being sent to the observability
+can’t get from their traces. These metrics are being sent to the observability
 back-end through the
 [OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector#-opentelemetry-collector)’s
 [OTLP metrics receiver](https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/otlpreceiver/README.md).
@@ -160,13 +160,13 @@ for logging. They are currently doing a proof-of-concept (POC) of migrating .NET
 logs to their observability back-end. The ultimate goal is to have
 [metrics](/docs/concepts/signals/metrics/),
 [logs](/docs/concepts/signals/logs/), and
-[Traces](/docs/concepts/signals/traces/) under one roof.
+[traces](/docs/concepts/signals/traces/) under one roof.
 
-They have currently been able to automatically link Traces to logs in ELK using
+They have currently been able to automatically link traces to logs in ELK using
 [Node.JS Bunyan](https://nodejs.org/en/blog/module/service-logging-in-json-with-bunyan/).
 They are hoping to leverage
 [OpenTelemetry’s Exemplars](/docs/reference/specification/metrics/data-model/#exemplars)
-to link Traces and metrics.
+to link traces and metrics.
 
 ### How is the organization sending telemetry data to various observability back-ends?
 
@@ -182,7 +182,7 @@ traces help developers pinpoint where the problem might be.
 
 Because GraphQL mostly returns HTTP 200s, it gives the impression that it
 returns no errors, when in fact, there might be errors lurking behind the
-scenes. Having Traces enables developers to see if there’s actually an error in
+scenes. Having traces enables developers to see if there’s actually an error in
 the response body. For example, when accessing a database, if there’s a
 connection hangup, GraphQL will report HTTP 200, but the Trace will show that
 there’s an error, and where.
