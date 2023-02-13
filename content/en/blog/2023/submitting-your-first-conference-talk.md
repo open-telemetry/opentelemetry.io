@@ -30,8 +30,8 @@ chances of being selected to speak.
 
 ## Tip #1: Just do it
 
-Don’t let perfection be the enemy of good. The best way to start giving talks
-is to just start submitting and see what happens. You don’t need to craft the
+Don’t let perfection be the enemy of good. The best way to start giving talks is
+to just start submitting and see what happens. You don’t need to craft the
 perfect proposal (although tailoring it for the event and target audience will
 certainly help!) and you don’t need to be an industry-leading subject matter
 expert.
