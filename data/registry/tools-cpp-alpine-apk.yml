@@ -1,4 +1,4 @@
-title: Alpine Linux Package for OpenTelemetry C++
+title: Alpine Linux Packages for OpenTelemetry C++
 registryType: core
 isThirdParty: true
 language: cpp
