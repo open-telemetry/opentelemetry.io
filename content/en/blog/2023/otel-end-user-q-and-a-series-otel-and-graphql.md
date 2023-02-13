@@ -333,7 +333,7 @@ organization, we’d love to hear from you! Ways to share:
 - Join our monthly
   [End Users Discussion Group calls](/community/end-user/discussion-group/)
 - [Join our OTel in Practice sessions](/community/end-user/otel-in-practice/)
-- [Sign up for one of our monthly interview/feedback sessions](https://opentelemetry.io/community/end-user/interviews-feedback/)
+- [Sign up for one of our monthly interview/feedback sessions](/community/end-user/interviews-feedback/)
 - Share your stories on the
   [OpenTelemetry blog](https://github.com/open-telemetry/opentelemetry.io/blob/954103a7444d691db3967121f0f1cb194af1dccb/README.md#submitting-a-blog-post)
 
