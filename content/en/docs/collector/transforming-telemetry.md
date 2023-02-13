@@ -31,7 +31,7 @@ processors:
 
 To only block spans from a service called development while allowing all other spans, an exclude rule is used:
 
-```
+```yaml
 processors:
   filter/denylist:
     spans:
@@ -41,8 +41,7 @@ processors:
           - development
 ```
 
-The [filter processor docs](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/filterprocessor) have more examples, including filtering on logs and metrics. More advanced filtering is also available in the [transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor).
-
+The [filter processor docs](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/filterprocessor) have more examples, including filtering on logs and metrics.
 
 ## Adding or Deleting Attributes
 
@@ -50,7 +49,7 @@ The [filter processor docs](https://github.com/open-telemetry/opentelemetry-coll
 
 The attributes processor can be used to update, insert, delete, or replace existing attributes on metrics or traces. For example, here’s a configuration that adds an attribute called account_id to all spans:
 
-```
+```yaml
 processors:
   attributes/accountid:
     actions:
@@ -61,7 +60,7 @@ processors:
 
 The resource processor has an identical configuration, but applies only to [resource attributes](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/README.md). Use the resource processor to modify infrastructure metadata related to telemetry. For example, this inserts the Kubernetes cluster name:
 
-```
+```yaml
 processors:
   resource/k8s:
     attributes:
@@ -70,19 +69,17 @@ processors:
       action: insert
 ```
 
-More advanced attribute transformations are also available in the [transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor).
-
 ## Renaming Metrics or Metric Labels
 
 **Processor:** [metrics transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/metricstransformprocessor)
 
 The [metrics transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/metricstransformprocessor) shares some functionality with the [attributes processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/attributesprocessor), but also supports renaming and other metric-specific functionality.
 
-```
+```yaml
 processors:
   metricstransform/rename:
     transforms:
-      include: system.cpu.usage`
+      include: system.cpu.usage
       action: update
       new_name: system.cpu.usage_time
 ```
@@ -90,7 +87,7 @@ processors:
 The [metrics transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/metricstransformprocessor) also supports regexes to apply transform rules to multiple metric names or metric labels at the same time. This example renames cluster_name to cluster-name for all metrics:
 
 
-```
+```yaml
 processors:
   metricstransform/clustername:
    transforms:
@@ -107,11 +104,11 @@ processors:
 
 **Processor**: [resource detection processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor) and [k8sattributes processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor)
 
-It is recommended that end-users use processors to enrich their telemetry data with relevant infrastructure metadata to help teams quickly identify when underlying infrastructure is impacting service health or performance.
+These processors can be used for enriching telemetry with relevant infrastructure metadata to help teams quickly identify when underlying infrastructure is impacting service health or performance.
 
 The resource detection processor adds relevant cloud or host-level information to telemetry: 
 
-```
+```yaml
 processors:
   resourcedetection/system:
     # Modify the list of detectors to match the cloud environment
@@ -122,7 +119,11 @@ processors:
 
 Similarly, the k8s processor enriches telemetry with relevant Kubernetes metadata like pod name, node name, or workload name. The collector pod must be configured to have read access to certain Kubernetes RBAC APIs, which is documented [here](https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/k8sattributesprocessor#hdr-RBAC). To use the default options, it can be configured with an empty block:
 
-```
+```yaml
 processors:
   k8sattributes/default:
 ```
+
+## Advanced Transformations
+
+More advanced attribute transformations are also available in the [transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor). The transform processor allows end-users to specify transformations on metrics, logs, and traces using the [OpenTelemetry Transformation Language](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl).
