@@ -3,7 +3,8 @@ title: Exporters
 weight: 4
 ---
 
-In order to visualize and analyze your telemetry you will need to use an exporter.
+In order to visualize and analyze your telemetry you will need to use an
+exporter.
 
 ## Console exporter
 
@@ -35,10 +36,12 @@ trace.set_tracer_provider(provider)
 
 ### Metrics
 
-Use a [`PeriodicExportingMetricReader`][pemr] to periodically print metrics to the console.
-`PeriodicExportingMetricReader` can be configured to export at a different interval, change the
-[temporality](/docs/reference/specification/metrics/data-model/#temporality) for each instrument
-kind, or change the default aggregation for each instrument kind.
+Use a [`PeriodicExportingMetricReader`][pemr] to periodically print metrics to
+the console. `PeriodicExportingMetricReader` can be configured to export at a
+different interval, change the
+[temporality](/docs/reference/specification/metrics/data-model/#temporality) for
+each instrument kind, or change the default aggregation for each instrument
+kind.
 
 ```python
 from opentelemetry import metrics
@@ -60,9 +63,9 @@ metrics.set_meter_provider(provider)
 
 ## OTLP endpoint or Collector
 
-To send data to an OTLP endpoint or the [OpenTelemetry
-Collector](/docs/collector/getting-started/), you'll want to configure an OTLP
-exporter that sends to your endpoint.
+To send data to an OTLP endpoint or the
+[OpenTelemetry Collector](/docs/collector/getting-started/), you'll want to
+configure an OTLP exporter that sends to your endpoint.
 
 First, install an OTLP exporter:
 
@@ -115,8 +118,9 @@ metrics.set_meter_provider(provider)
 
 ### Using HTTP
 
-If you'd prefer to use [OTLP/HTTP](/docs/reference/specification/protocol/otlp/#otlphttp) with
-the binary-encoded Protobuf format, you can install the package:
+If you'd prefer to use
+[OTLP/HTTP](/docs/reference/specification/protocol/otlp/#otlphttp) with the
+binary-encoded Protobuf format, you can install the package:
 
 ```console
 $ pip install opentelemetry-exporter-otlp-proto-http
@@ -164,12 +168,13 @@ $ pip install opentelemetry-exporter-jaeger
 
 This will install packages for both:
 
-* `opentelemetry-exporter-jaeger-thrift`
-* `opentelemetry-exporter-jaeger-proto-grpc`
+- `opentelemetry-exporter-jaeger-thrift`
+- `opentelemetry-exporter-jaeger-proto-grpc`
 
 You can use either to export your traces to Jaeger.
 
-Once the package is installed, you can configure the exporter when initializing tracing:
+Once the package is installed, you can configure the exporter when initializing
+tracing:
 
 ```python
 from opentelemetry import trace
@@ -195,7 +200,8 @@ trace.set_tracer_provider(provider)
 # Merrily go about tracing!
 ```
 
-The previous example uses thrift. To use protobuf, change the import declaration to:
+The previous example uses thrift. To use protobuf, change the import declaration
+to:
 
 ```python
 from opentelemetry.exporter.jaeger.proto.grpc import JaegerExporter
@@ -255,10 +261,11 @@ from opentelemetry.exporter.zipkin.json import ZipkinExporter
 
 ## Prometheus
 
-If you are using [Prometheus](https://prometheus.io/) to collect metrics data, you'll need to
-set it up first.
+If you are using [Prometheus](https://prometheus.io/) to collect metrics data,
+you'll need to set it up first.
 
 First create a config file:
+
 ```console
 $ cat > prometheus.yml <<EOF
 scrape_configs:
@@ -270,6 +277,7 @@ EOF
 ```
 
 Then start the Prometheus server in Docker:
+
 ```console
 $ docker run -d --rm \
     --network=host \
@@ -308,4 +316,5 @@ provider = MeterProvider(resource=resource, metric_readers=[reader])
 metrics.set_meter_provider(provider)
 ```
 
-[pemr]: https://opentelemetry-python.readthedocs.io/en/latest/sdk/metrics.export.html#opentelemetry.sdk.metrics.export.PeriodicExportingMetricReader
+[pemr]:
+  https://opentelemetry-python.readthedocs.io/en/latest/sdk/metrics.export.html#opentelemetry.sdk.metrics.export.PeriodicExportingMetricReader

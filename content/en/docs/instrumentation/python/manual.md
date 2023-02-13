@@ -65,8 +65,8 @@ meter = metrics.get_meter(__name__)
 
 ### Creating spans
 
-To create a [span](/docs/concepts/signals/traces/#spans-in-opentelemetry), you'll
-typically want it to be started as the current span.
+To create a [span](/docs/concepts/signals/traces/#spans-in-opentelemetry),
+you'll typically want it to be started as the current span.
 
 ```python
 def do_work():
@@ -106,9 +106,9 @@ nested span under `parent`.
 ### Creating spans with decorators
 
 It's common to have a single
-[span](/docs/concepts/signals/traces/#spans-in-opentelemetry) track the execution
-of an entire function. In that scenario, there is a decorator you can use to
-reduce code:
+[span](/docs/concepts/signals/traces/#spans-in-opentelemetry) track the
+execution of an entire function. In that scenario, there is a decorator you can
+use to reduce code:
 
 ```python
 @tracer.start_as_current_span("do_work")
@@ -159,10 +159,11 @@ current_span.set_attribute("operation.other-stuff", [1, 2, 3])
 
 [Semantic Attributes](/docs/reference/specification/trace/semantic_conventions/)
 are pre-defined [Attributes](/docs/concepts/signals/traces/#attributes) that are
-well-known naming conventions for common kinds of data. Using Semantic Attributes
-lets you normalize this kind of information across your systems.
+well-known naming conventions for common kinds of data. Using Semantic
+Attributes lets you normalize this kind of information across your systems.
 
-To use Semantic Attributes in Python, ensure you have the semantic conventions package:
+To use Semantic Attributes in Python, ensure you have the semantic conventions
+package:
 
 ```shell
 pip install opentelemetry-semantic-conventions
@@ -266,8 +267,8 @@ except Exception as ex:
 
 By default, OpenTelemetry Python will use the following propagation formats:
 
-* W3C Trace Context
-* W3C Baggage
+- W3C Trace Context
+- W3C Baggage
 
 If you have a need to change the defaults, you can do so either via environment
 variables or in code:
@@ -277,14 +278,14 @@ variables or in code:
 You can set the `OTEL_PROPAGATORS` environment variable with a comma-separated
 list. Accepted values are:
 
-* `"tracecontext"`: W3C Trace Context
-* `"baggage"`: W3C Baggage
-* `"b3"`: B3 Single
-* `"b3multi"`: B3 Multi
-* `"jaeger"`: Jaeger
-* `"xray"`: AWS X-Ray (third party)
-* `"ottrace"`: OT Trace (third party)
-* `"none"`: No automatically configured propagator.
+- `"tracecontext"`: W3C Trace Context
+- `"baggage"`: W3C Baggage
+- `"b3"`: B3 Single
+- `"b3multi"`: B3 Multi
+- `"jaeger"`: Jaeger
+- `"xray"`: AWS X-Ray (third party)
+- `"ottrace"`: OT Trace (third party)
+- `"none"`: No automatically configured propagator.
 
 The default configuration is equivalent to
 `OTEL_PROPAGATORS="tracecontext,baggage"`.
@@ -321,7 +322,7 @@ are used inline with application/business processing logic, like when handling a
 request or calling another service.
 
 First, create your instrument. Instruments are generally created once at the
-module or class level and then used inline with business logic.  This example
+module or class level and then used inline with business logic. This example
 uses a [Counter](/docs/reference/specification/metrics/api/#counter) instrument
 to count the number of work items completed:
 
@@ -331,8 +332,9 @@ work_counter = meter.create_counter(
 )
 ```
 
-Using the Counter's [add operation](/docs/reference/specification/metrics/api/#add),
-the code below increments the count by one, using the work item's type as an attribute.
+Using the Counter's
+[add operation](/docs/reference/specification/metrics/api/#add), the code below
+increments the count by one, using the work item's type as an attribute.
 
 ```python
 def do_work(work_item):
@@ -350,9 +352,11 @@ be instrumented directly. Async instruments are created with zero or more
 callbacks which will be invoked during metric collection. Each callback accepts
 options from the SDK and returns its observations.
 
-This example uses an [Asynchronous Gauge](/docs/reference/specification/metrics/api/#asynchronous-gauge)
-instrument to report the current config version provided by a configuration server by
-scraping an HTTP endpoint. First, write a callback to make observations:
+This example uses an
+[Asynchronous Gauge](/docs/reference/specification/metrics/api/#asynchronous-gauge)
+instrument to report the current config version provided by a configuration
+server by scraping an HTTP endpoint. First, write a callback to make
+observations:
 
 ```python
 from typing import Iterable
@@ -384,12 +388,12 @@ meter.create_observable_gauge(
 ## Additional References
 
 - Trace
-    - [Trace Concepts](/docs/concepts/signals/traces/)
-    - [Trace Specification](/docs/reference/specification/overview/#tracing-signal)
-    - [Python Trace API Documentation](https://opentelemetry-python.readthedocs.io/en/latest/api/trace.html)
-    - [Python Trace SDK Documentation](https://opentelemetry-python.readthedocs.io/en/latest/sdk/trace.html)
+  - [Trace Concepts](/docs/concepts/signals/traces/)
+  - [Trace Specification](/docs/reference/specification/overview/#tracing-signal)
+  - [Python Trace API Documentation](https://opentelemetry-python.readthedocs.io/en/latest/api/trace.html)
+  - [Python Trace SDK Documentation](https://opentelemetry-python.readthedocs.io/en/latest/sdk/trace.html)
 - Metrics
-    - [Metrics Concepts](/docs/concepts/signals/metrics/)
-    - [Metrics Specification](/docs/reference/specification/metrics/)
-    - [Python Metrics API Documentation](https://opentelemetry-python.readthedocs.io/en/latest/api/metrics.html)
-    - [Python Metrics SDK Documentation](https://opentelemetry-python.readthedocs.io/en/latest/sdk/metrics.html)
+  - [Metrics Concepts](/docs/concepts/signals/metrics/)
+  - [Metrics Specification](/docs/reference/specification/metrics/)
+  - [Python Metrics API Documentation](https://opentelemetry-python.readthedocs.io/en/latest/api/metrics.html)
+  - [Python Metrics SDK Documentation](https://opentelemetry-python.readthedocs.io/en/latest/sdk/metrics.html)

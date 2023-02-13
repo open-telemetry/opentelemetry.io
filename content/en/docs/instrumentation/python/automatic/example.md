@@ -5,8 +5,8 @@ weight: 45
 spelling: cSpell:ignore distro mkdir uninstrumented virtualenv
 ---
 
-This page demonstrates how to use Python auto-instrumentation in OpenTelemetry. The
-example is based on an [OpenTracing example][]. You can download or view the
+This page demonstrates how to use Python auto-instrumentation in OpenTelemetry.
+The example is based on an [OpenTracing example][]. You can download or view the
 [source files][] used in this page from the `opentelemetry-python` repo.
 
 This example uses two different scripts. The main difference between them is
@@ -81,8 +81,9 @@ $ pip install requests
 ```
 
 The examples that follow send instrumentation results to the console. Learn more
-about installing and configuring the [OpenTelemetry Distro](/docs/instrumentation/python/distro) to send
-telemetry to other destinations, like an OpenTelemetry Collector.
+about installing and configuring the
+[OpenTelemetry Distro](/docs/instrumentation/python/distro) to send telemetry to
+other destinations, like an OpenTelemetry Collector.
 
 > **Note**: To use automatic instrumentation through `opentelemetry-instrument`,
 > you must configure it via environment variables or the command line. The agent
@@ -246,7 +247,8 @@ The auto instrumentation can consume configuration from environment variables.
 
 ### Capture HTTP request and response headers
 
-You can capture predefined HTTP headers as span attributes, according to the [semantic convention][].
+You can capture predefined HTTP headers as span attributes, according to the
+[semantic convention][].
 
 To define which HTTP headers you want to capture, provide a comma-separated list
 of HTTP header names via the environment variables
@@ -259,7 +261,8 @@ $ export OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_RESPONSE="Last-Modifie
 $ opentelemetry-instrument --traces_exporter console --metrics_exporter none python app.py
 ```
 
-These configuration options are supported by the following HTTP instrumentations:
+These configuration options are supported by the following HTTP
+instrumentations:
 
 - Django
 - Falcon
@@ -273,31 +276,30 @@ If those headers are available, they will be included in your span:
 
 ```json
 {
-    "attributes": {
-        "http.request.header.user-agent": [
-            "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)"
-        ],
-        "http.request.header.accept_encoding": [
-            "gzip, deflate, br"
-        ],
-        "http.response.header.last_modified": [
-            "2022-04-20 17:07:13.075765"
-        ],
-        "http.response.header.content_type": [
-            "text/html; charset=utf-8"
-        ]
-    }
+  "attributes": {
+    "http.request.header.user-agent": [
+      "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)"
+    ],
+    "http.request.header.accept_encoding": ["gzip, deflate, br"],
+    "http.response.header.last_modified": ["2022-04-20 17:07:13.075765"],
+    "http.response.header.content_type": ["text/html; charset=utf-8"]
+  }
 }
 ```
 
 [semantic convention]:
-    https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/http.md#http-request-and-response-headers
-[API reference]: https://opentelemetry-python.readthedocs.io/en/latest/index.html
-[distro]: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-distro
-[env]: https://opentelemetry-python.readthedocs.io/en/latest/sdk/environment_variables.html
-[instrumentation]: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-instrumentation
-[monkey-patching]: https://stackoverflow.com/questions/5626193/what-is-monkey-patching
-[opentracing example]: https://github.com/yurishkuro/opentracing-tutorial/tree/master/python
-[source files]: https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/auto-instrumentation
-
-
+  https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/http.md#http-request-and-response-headers
+[api reference]:
+  https://opentelemetry-python.readthedocs.io/en/latest/index.html
+[distro]:
+  https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-distro
+[env]:
+  https://opentelemetry-python.readthedocs.io/en/latest/sdk/environment_variables.html
+[instrumentation]:
+  https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-instrumentation
+[monkey-patching]:
+  https://stackoverflow.com/questions/5626193/what-is-monkey-patching
+[opentracing example]:
+  https://github.com/yurishkuro/opentracing-tutorial/tree/master/python
+[source files]:
+  https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/auto-instrumentation

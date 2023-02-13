@@ -12,9 +12,9 @@ By harnessing their power, users of OpenTelemetry can configure the components
 as they need. The `opentelemetry-distro` package provides some defaults to users
 looking to get started, it configures:
 
-* the SDK TracerProvider
-* a BatchSpanProcessor
-* the OTLP `SpanExporter` to send data to an OpenTelemetry collector
+- the SDK TracerProvider
+- a BatchSpanProcessor
+- the OTLP `SpanExporter` to send data to an OpenTelemetry collector
 
 The package also provides a starting point for anyone interested in producing an
 alternative distro. The interfaces implemented by the package are loaded by the
@@ -35,21 +35,21 @@ file:
 ```yaml
 # /tmp/otel-collector-config.yaml
 receivers:
-    otlp:
-        protocols:
-            grpc:
-            http:
+  otlp:
+    protocols:
+      grpc:
+      http:
 exporters:
-    logging:
-        loglevel: debug
+  logging:
+    loglevel: debug
 processors:
-    batch:
+  batch:
 service:
-    pipelines:
-        traces:
-            receivers: [otlp]
-            exporters: [logging]
-            processors: [batch]
+  pipelines:
+    traces:
+      receivers: [otlp]
+      exporters: [logging]
+      processors: [batch]
 ```
 
 Then start the Docker container:
