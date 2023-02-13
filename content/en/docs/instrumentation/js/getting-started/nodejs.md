@@ -128,7 +128,7 @@ You may also want to use the `BatchSpanProcessor` to export spans in batches in 
 
 Many common modules such as the `http` standard library module, `express`, and
 others can be automatically instrumented using autoinstrumentation modules.
-To find autoinstrumenatation modules, you can look at the
+To find autoinstrumentation modules, you can look at the
 [registry](/ecosystem/registry/?language=js&component=instrumentation).
 
 You can also install all instrumentations maintained by the OpenTelemetry authors
