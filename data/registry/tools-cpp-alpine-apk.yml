@@ -9,6 +9,6 @@ tags:
   - package
 repo: https://pkgs.alpinelinux.org/packages?name=opentelemetry-cpp-* 
 license: Apache 2.0
-description: If you are using alpine linux you can install opentelemetry-cpp with these packages.
+description: Alpine Linux packages in support of opentelemetry-cpp.
 authors: Severin Neumann
 otVersion: unknown
