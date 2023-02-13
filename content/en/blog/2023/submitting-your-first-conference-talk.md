@@ -30,7 +30,7 @@ chances of being selected to speak.
 
 ## Tip #1: Just do it
 
-Don’t let perfectection be the enemy of good. The best way to start giving talks
+Don’t let perfection be the enemy of good. The best way to start giving talks
 is to just start submitting and see what happens. You don’t need to craft the
 perfect proposal (although tailoring it for the event and target audience will
 certainly help!) and you don’t need to be an industry-leading subject matter
@@ -95,9 +95,6 @@ help and form great connections in the community.
 
 ## Where to submit your talk
 
-[Observability Day at KubeCon EU](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/cncf-hosted-co-located-events/observability-day/)
-is accepting proposals until Sunday, February 12 at 11:59 PM PST.
-
 I am thrilled to see the resurgence in conferences that is currently underway.
 There is no shortage of venues in need of up-and-coming speakers.
 
@@ -135,7 +132,7 @@ they learn from attending your talk?
 ## Making the most of your conference experience
 
 Making the most of a conference could be a topic for an entirely new blog post,
-but I want to share my top two most important tips:
+but I want to share my top three most important tips:
 
 1. Wear comfortable shoes
 2. Leave room for serendipity (the hallway track)
