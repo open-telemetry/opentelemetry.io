@@ -1,0 +1,13 @@
+title: vcpkg package for OpenTelemetry C++
+registryType: core
+isThirdParty: true
+language: cpp
+tags:
+  - cpp
+  - vcpkg
+  - package
+repo: https://github.com/microsoft/vcpkg/tree/master/ports/opentelemetry-cpp
+license: MIT 
+description: A vcpkg package for opentelemetry-cpp. 
+authors:
+otVersion: unknown
