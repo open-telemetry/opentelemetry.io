@@ -8,6 +8,6 @@ tags:
   - package
 repo: https://conan.io/center/opentelemetry-cpp
 license: MIT
-description: If you are using Conan to manage your dependencies, add opentelemetry-cpp/x.y.z to your conanfile's requires.
+description: Conan package for `opentelemetry-cpp`.
 authors: Others
 otVersion: unknown
