@@ -9,5 +9,5 @@ tags:
 repo: https://conan.io/center/opentelemetry-cpp
 license: MIT
 description: Conan package for `opentelemetry-cpp`.
-authors: Others
+authors:
 otVersion: unknown
