@@ -1,6 +1,6 @@
 ---
 title: Transforming telemetry
-weight: 31
+weight: 26
 ---
 
 The OpenTelemetry Collector is a convenient place to transform data before
