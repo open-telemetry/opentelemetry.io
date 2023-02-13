@@ -1,5 +1,5 @@
 title: Alpine Linux Packages for OpenTelemetry C++
-registryType: core
+registryType: core exporter
 isThirdParty: true
 language: cpp
 tags:
