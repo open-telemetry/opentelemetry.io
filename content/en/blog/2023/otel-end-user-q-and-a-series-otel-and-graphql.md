@@ -3,7 +3,7 @@ title: >
   End-User Q&A Series: Using OTel with GraphQL
 linkTitle: >
   End-User Q&A: OTel with GraphQL
-date: 2023-02-09
+date: 2023-02-13
 author: >-
   [Adriana Villela](https://github.com/avillela) (Lightstep)
 ---
