@@ -9,5 +9,5 @@ tags:
 repo: https://github.com/microsoft/vcpkg/tree/master/ports/opentelemetry-cpp
 license: MIT 
 description: A vcpkg package for opentelemetry-cpp. 
-authors: Others
+authors:
 otVersion: unknown
