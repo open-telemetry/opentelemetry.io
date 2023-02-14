@@ -25,8 +25,8 @@ The `opentelemetry-distro` package installs the API, SDK, and the
 
 The `opentelemetry-bootstrap -a install` command reads through the list of
 packages installed in your active `site-packages` folder, and installs the
-corresponding instrumentation libraries for these packages, if applicable.
-For example, if you already installed the `flask` package, running
+corresponding instrumentation libraries for these packages, if applicable. For
+example, if you already installed the `flask` package, running
 `opentelemetry-bootstrap -a install` will install
 `opentelemetry-instrumentation-flask` for you.
 
@@ -39,7 +39,8 @@ For example, if you already installed the `flask` package, running
 
 The agent is highly configurable.
 
-One option is to configure the agent by way of configuration properties from the CLI:
+One option is to configure the agent by way of configuration properties from the
+CLI:
 
 ```console
 opentelemetry-instrument \
@@ -61,7 +62,8 @@ opentelemetry-instrument \
     python myapp.py
 ```
 
-To see the full range of configuration options, see [Agent Configuration](agent-config).
+To see the full range of configuration options, see
+[Agent Configuration](agent-config).
 
 ## Supported libraries and frameworks
 
@@ -69,7 +71,8 @@ A number of popular Python libraries are auto-instrumented, including
 [Flask](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-flask)
 and
 [Django](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-django).
-You can find the full list [here](/ecosystem/registry/?language=python&component=instrumentation).
+You can find the full list
+[here](/ecosystem/registry/?language=python&component=instrumentation).
 
 ## Troubleshooting
 
@@ -101,7 +104,8 @@ apk add build-base
 
 ### gRPC Connectivity
 
-To debug Python gRPC connectivity issues, set the following gRPC debug environment variables:
+To debug Python gRPC connectivity issues, set the following gRPC debug
+environment variables:
 
 ```console
 export GRPC_VERBOSITY=debug
