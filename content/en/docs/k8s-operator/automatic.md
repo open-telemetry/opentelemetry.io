@@ -141,13 +141,14 @@ otlpreceiver of the Collector created in the previous step.
 
 By default, the Java auto-instrumentation ships with
 [many instrumentation libraries](/docs/instrumentation/java/automatic/#supported-libraries-frameworks-application-services-and-jvms).
-This makes instrumentation easy, but could result in too much or unwanted data. If
-there are any libraries you do not want to use you can set the
+This makes instrumentation easy, but could result in too much or unwanted data.
+If there are any libraries you do not want to use you can set the
 `OTEL_INSTRUMENTATION_[NAME]_ENABLED=false` where `[NAME]` is the name of the
-library. If you know exactly which libraries you want to use, you can disable the
-default libraries by setting `OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED=false`
-and then use `OTEL_INSTRUMENTATION_[NAME]_ENABLED=true` where `[NAME]` is the
-name of the library. For more details, see
+library. If you know exactly which libraries you want to use, you can disable
+the default libraries by setting
+`OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED=false` and then use
+`OTEL_INSTRUMENTATION_[NAME]_ENABLED=true` where `[NAME]` is the name of the
+library. For more details, see
 [Suppressing specific auto-instrumentation](/docs/instrumentation/java/automatic/agent-config/#suppressing-specific-auto-instrumentation).
 
 ```yaml
@@ -172,7 +173,8 @@ spec:
         value: false
 ```
 
-For more details, see [Java Agent Configuration](/docs/instrumentation/java/automatic/agent-config/).
+For more details, see
+[Java Agent Configuration](/docs/instrumentation/java/automatic/agent-config/).
 
 ### Node.js
 
