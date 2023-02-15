@@ -30,7 +30,7 @@ If you find yourself asking questions like:
 - How should my services be configured?
 - How should my OpenTelemetry Collector be configured?
 - How do I consider the
-  [architecture](https://github.com/open-telemetry/opentelemetry-demo/blob/main/docs/current_architecture.md)
+  [architecture](https://opentelemetry.io/docs/demo/architecture/)
   of a system using OpenTelemetry?
 
 Then check out the [Demo](https://github.com/open-telemetry/opentelemetry-demo).
