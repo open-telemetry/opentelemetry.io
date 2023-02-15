@@ -18,7 +18,7 @@ web app also shows different instrumentation techniques: automatic and manual,
 metrics, and baggage. All while following the standards and conventions
 prescribed in the official OTel documentation. More about the specific
 requirements can be
-[found here](https://github.com/open-telemetry/opentelemetry-demo/tree/main/docs/requirements).
+[found here](/docs/demo/requirements/).
 
 My company was focused on becoming part of and embracing the OpenTelemetry
 community. One of our goals this summer was to get more involved with a core

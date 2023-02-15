@@ -181,7 +181,7 @@ The
 which connects the checkout service with the accounting and fraud detection
 services is based on Kafka and utilises the JMX Metric Insight module to export
 Kafka broker metrics out of the box. You can head to the
-[documentation](https://github.com/open-telemetry/opentelemetry-demo/blob/main/docs/services/kafka.md).
+[documentation](/docs/demo/services/kafka/).
 
 ![Prometheus dashboard showing kafka_request_count metric](kafka-request-count-dashboard.png)
 

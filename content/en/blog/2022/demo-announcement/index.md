@@ -156,5 +156,5 @@ from there.
 
 ### Interesting Links
 
-- [Demo Requirements](https://github.com/open-telemetry/opentelemetry-demo/tree/main/docs/requirements)
+- [Demo Requirements](/docs/demo/requirements/)
 - [Get Involved](https://github.com/open-telemetry/opentelemetry-demo#contributing)
