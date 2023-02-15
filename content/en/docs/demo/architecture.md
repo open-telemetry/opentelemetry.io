@@ -114,9 +114,9 @@ classDef typescript fill:#e98516,color:black;
 ```
 
 Follow these links for the current state of
- [metric](https://github.com/open-telemetry/opentelemetry-demo/blob/main/docs/metric_service_features.md)
+ [metric](/docs/demo/metric-features/)
  and
- [trace](https://github.com/open-telemetry/opentelemetry-demo/blob/main/docs/trace_service_features.md)
+ [trace](/docs/demo/trace-features/)
  instrumentation of the demo applications.
 
 The collector is configured in

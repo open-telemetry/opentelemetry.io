@@ -333,7 +333,7 @@ jobspecs, please [hit me up](https://www.linkedin.com/in/adrianavillela/)!
 ## Final Thoughts
 
 Well, there you have it, folks! You now have an example of how to deploy
-[OpenTelemetry Demo App](https://github.com/open-telemetry/opentelemetry-demo/blob/main/docs/kubernetes_deployment.md)
+[OpenTelemetry Demo App](/docs/demo/kubernetes-deployment/)
 (a multi-micro-service app running OpenTelemetry) to HashiCorp Nomad. Main
 highlights:
 

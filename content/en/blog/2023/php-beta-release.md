@@ -22,9 +22,8 @@ There are many ways you can get started with our project:
   you started.
 - The [getting started guide](/docs/instrumentation/php/getting-started/) can
   help you to instrument a sample php file.
-- The
-  [quote service](https://github.com/open-telemetry/opentelemetry-demo/blob/main/docs/services/quoteservice.md),
-  is a demo application built in PHP to showcase the library.
+- The [quote service](/docs/demo/services/quote/), is a demo application built
+  in PHP to showcase the library.
 
 Questions? Feel free to reach out to us in the CNCF
 [#otel-php](https://cloud-native.slack.com/archives/C01NFPCV44V) Slack channel,
