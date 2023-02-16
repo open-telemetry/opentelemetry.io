@@ -11,6 +11,10 @@ echo "Latest version: $latest_version"
 
 for file_name in "${file_names[@]}"
 do
+  if ! grep -q "$variable_name" "$file_name"; then
+    echo "Could not find \"$variable_name\" in $file_name, failing job."
+    exit 1
+  fi
   sed -i -e "s/$variable_name: .*/$variable_name: $latest_version/" "$file_name"
 done
 
