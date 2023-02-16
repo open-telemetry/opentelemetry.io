@@ -20,7 +20,9 @@ if git diff --quiet; then
 fi
 
 message="Update $repo version to $latest_version"
-body="Update $repo version to \`$latest_version\`."
+body="Update $repo version to \`$latest_version\`.
+
+See https://github.com/open-telemetry/$repo/releases/tag/v$latest_version."
 
 existing_pr_count=$(gh pr list --state all --search "in:title $message" | wc -l)
 if [ "$existing_pr_count" -gt 0 ]; then
