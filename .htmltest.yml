@@ -7,10 +7,12 @@ IgnoreURLs: # list of regexs to paths or URLs
   - ^/docs/instrumentation/net/(metrics-api|traces-api)/
 
   - ^https?://localhost\b
+  - ^https?://(otel-demo|traefik).localhost
   - ^https?://(www\.)?github\b
+  - ^https://mvnrepository.com # Always yields 403 Forbidden
 
   # Temporary as we process external links incrementally:
-  - ^https?://[^a-i]
+  - ^https?://[^a-o]
 
   # TODO: drop after fix to https://github.com/rust-lang/crates.io/issues/788
   - ^https://crates.io/crates
@@ -18,3 +20,9 @@ IgnoreURLs: # list of regexs to paths or URLs
   - ^https://docs.daocloud.io
   # TODO: drop after fix to https://github.com/open-telemetry/opentelemetry-specification/pull/3217
   - ^https://golang.org/pkg/runtime/debug/#Stack
+  # TODO: drop after fix to https://github.com/micrometer-metrics/micrometer-docs/issues/239
+  - ^https://micrometer.io/docs
+  # TODO: drop after fix to https://github.com/google/docsy/issues/1337
+  - ^https://opentelemetry.io/
+  # TODO: drop after fix to https://github.com/open-telemetry/opentelemetry.io/issues/2354
+  - ^https://open-telemetry.github.io/opentelemetry-python/benchmarks/
