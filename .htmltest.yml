@@ -5,3 +5,16 @@ IgnoreInternalURLs: # list of paths
 IgnoreURLs: # list of regexs to paths or URLs
   - ^/docs/instrumentation/\w+/(api|examples)/$
   - ^/docs/instrumentation/net/(metrics-api|traces-api)/
+
+  - ^https?://localhost\b
+  - ^https?://(www\.)?github\b
+
+  # Temporary as we process external links incrementally:
+  - ^https?://[^a-i]
+
+  # TODO: drop after fix to https://github.com/rust-lang/crates.io/issues/788
+  - ^https://crates.io/crates
+  # Invalid certificate (x509) for daocloud.io:
+  - ^https://docs.daocloud.io
+  # TODO: drop after fix to https://github.com/open-telemetry/opentelemetry-specification/pull/3217
+  - ^https://golang.org/pkg/runtime/debug/#Stack

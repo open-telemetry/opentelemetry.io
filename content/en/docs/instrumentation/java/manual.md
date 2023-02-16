@@ -6,7 +6,6 @@ aliases:
   - /docs/java/manual_instrumentation
   - /docs/instrumentation/java/manual_instrumentation
 weight: 5
-javaVersion: 1.20.1
 ---
 
 **Libraries** that want to export telemetry data using OpenTelemetry MUST only

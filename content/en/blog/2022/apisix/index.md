@@ -6,6 +6,7 @@ author: >-
   [Haochao Zhuang](https://github.com/dmsolr),
   [Fei Han](https://github.com/hf400159)
 canonical_url: https://apisix.apache.org/blog/2022/02/28/apisix-integration-opentelemetry-plugin/
+spelling: cSpell:ignore APISIX
 ---
 
 This article introduces the Apache APISIX's `opentelemetry` plugin concept and
@@ -345,7 +346,7 @@ be changed to your Apache APISIX address, and ensure that it can be accessed
 normally in the container.
 
 Of course, you can also deploy Apache APISIX through `docker-compose.yaml`. For
-details, see [Installation via Docker](https://apisix.apache.org/docs/apisix/how-to-build/#installation-via-docker).
+details, see [Installation via Docker](https://hub.docker.com/r/apache/apisix).
 
 ### Step 3: Verify the Outputs
 
@@ -390,7 +391,7 @@ communities to create a more powerful ecosystem.
 Apache APISIX is also currently working on additional plugins to support
 integration with more services, if you're interested, feel free to
 [start a discussion](https://github.com/apache/apisix/discussions)
-on GitHub, or communicate via the [mailing list](https://apisix.apache.org/docs/general/subscribe-guide).
+on GitHub, or communicate via the [mailing list](https://apisix.apache.org/docs/general/join/#subscribe-to-the-mailing-list).
 
 _A version of this article was [originally posted][] on the Apache APISIX blog._
 
