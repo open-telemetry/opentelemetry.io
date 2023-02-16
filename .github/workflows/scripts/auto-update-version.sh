@@ -34,7 +34,7 @@ git checkout -b "$branch"
 git commit -a -m "$message"
 git push --set-upstream origin "$branch"
 
-echo "Creating a pull request on your behalf."
+echo "Submitting auto-update PR '$message'."
 gh pr create --label auto-update \
              --title "$message" \
              --body "$body"
