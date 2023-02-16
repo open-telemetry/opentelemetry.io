@@ -38,7 +38,7 @@ docker compose up --no-build
 > build` in order to create local images vs. pulling them from the repository.
 
 **Note:** The `--no-build` flag is used to fetch released docker images from
-[ghcr](http://ghcr.io/open-telemetry/demo) instead of building from source.
+[ghcr](https://ghcr.io/open-telemetry/demo) instead of building from source.
 Removing the `--no-build` command line option will rebuild all images from
 source. It may take more than 20 minutes to build if the flag is omitted.
 
