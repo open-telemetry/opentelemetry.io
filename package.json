@@ -22,7 +22,7 @@
     "cd:public": "cd public &&",
     "check": "npm run all -- check:*",
     "check:formatting": "npx prettier --check .",
-    "check:links:all": "HTMLTEST_ARGS= npm run _check:links",
+    "check:links:all": "HTMLTEST_ARGS='--log-level 1' npm run _check:links",
     "check:links": "npm run _check:links",
     "clean": "make clean",
     "cp:spec": "./scripts/content-modules/cp-pages.sh",

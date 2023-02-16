@@ -25,7 +25,7 @@ Let’s do this!
 Before we move on, I am assuming that you have a basic understanding of:
 
 - **[Nomad](https://nomadproject.io)**. If not, head on over to my
-  [Nomad intro post](https://adri-v.medium.com/just-in-time-nomad-80f57cd403ca).
+  [Nomad intro post](https://storiesfromtheherd.com/just-in-time-nomad-80f57cd403ca).
   [This blog post](https://danielabaron.me/blog/nomad-tips-and-tricks/) by
   [Daniela Baron](https://danielabaron.me) is also great.
 - **Observability (o11y) and [OpenTelemetry](https://opentelemetry.io) (OTel)**.
