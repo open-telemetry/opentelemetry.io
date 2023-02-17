@@ -14,7 +14,7 @@ following sections provide some basic examples on getting started with a few
 frequently-used processors.
 
 The configuration of processors, particularly advanced transformations, may have
-a signficant impact on collector performance.
+a significant impact on collector performance.
 
 ## Basic filtering
 
