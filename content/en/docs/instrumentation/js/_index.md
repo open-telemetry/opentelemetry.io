@@ -16,5 +16,4 @@ weight: 20
 
 - [OpenTelemetry for JavaScript on GitHub](https://github.com/open-telemetry/opentelemetry-js)
 - [Getting Started](getting-started/)
-- [API Reference](https://open-telemetry.github.io/opentelemetry-js/modules/_opentelemetry_api.html)
-- [SDK Reference](https://open-telemetry.github.io/opentelemetry-js)
+- [SDK and API Reference](https://open-telemetry.github.io/opentelemetry-js)
