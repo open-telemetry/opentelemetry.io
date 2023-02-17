@@ -2,7 +2,7 @@
 title: C++
 weight: 11
 description: >
-  <img width="35"
+  <img width="35" class="img-initial"
   src="https://raw.githubusercontent.com/open-telemetry/opentelemetry.io/main/iconography/32x32/C++_SDK.svg"
   alt="C++"></img> A language-specific implementation of OpenTelemetry in C++.
 ---

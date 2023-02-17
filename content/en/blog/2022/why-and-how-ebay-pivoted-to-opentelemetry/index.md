@@ -1,5 +1,5 @@
 ---
-title: "Why and How eBay Pivoted to OpenTelemetry"
+title: Why and How eBay Pivoted to OpenTelemetry
 linkTitle: eBay OpenTelemetry
 date: 2022-12-19
 author: "[Vijay Samuel](https://github.com/vjsamuel) (eBay)"
@@ -134,6 +134,7 @@ Filebeat and Auditbeat, would interface with the Sherlock.io platform when
 deployed as a DaemonSet:
 
 ![daemonset](daemonset.jpeg)
+{.border-0}
 
 ## Moving To Cluster Local Scrapes
 
@@ -177,6 +178,7 @@ that are monitored by that instance alone, the failure percentage is reduced to
 The new deployment pattern can be visualized as follows:
 
 ![clusterlocal](cluster-local.jpeg)
+{.border-0}
 
 ## Decoupling Autodiscover
 
@@ -250,6 +252,7 @@ filereloadreceiver in place, we were able to generate new configurations for the
 OpenTelemetry Collector as follows.
 
 ![config](config.jpeg)
+{.border-0}
 
 As shown above, we were able to keep the end user contract of Pod/Namespace
 annotations the same and simply swap the agent under the hood. This greatly

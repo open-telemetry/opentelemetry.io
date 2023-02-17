@@ -1,7 +1,7 @@
 ---
 title: Ruby
 description: >
-  <img width="35" src="https://raw.githubusercontent.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Ruby_SDK.svg" alt="Ruby"></img>
+  <img width="35" class="img-initial" src="https://raw.githubusercontent.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Ruby_SDK.svg" alt="Ruby"></img>
   A language-specific implementation of OpenTelemetry in Ruby.
 aliases: [/ruby, /ruby/metrics, /ruby/tracing]
 weight: 24
