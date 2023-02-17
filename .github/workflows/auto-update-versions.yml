@@ -1,0 +1,29 @@
+name: Auto-update versions
+
+on:
+  workflow_dispatch:
+  schedule:
+    # hourly at minute 10
+    - cron: "10 * * * *"
+
+jobs:
+  auto-update-versions:
+    name: Auto-update versions
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Use CLA approved github bot
+        run: |
+          git config user.name opentelemetrybot
+          git config user.email 107717825+opentelemetrybot@users.noreply.github.com
+
+      - name: Auto-update
+        run: |
+          .github/workflows/scripts/auto-update-version.sh "opentelemetry-collector-releases" "collectorVersion" "content/en/docs/collector/_index.md"
+          git reset --hard origin/main
+          .github/workflows/scripts/auto-update-version.sh "opentelemetry-java" "javaVersion" "content/en/docs/instrumentation/java/_index.md"
+        env:
+          # change this to secrets.GITHUB_TOKEN when testing against a fork
+          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
