@@ -10,9 +10,10 @@ Y’all… I’m so excited, because I finally got to work on an item on my tech
 bucket list. Last week, I began the process of translating
 [OpenTelemetry (OTel) Demo App](https://github.com/open-telemetry/opentelemetry-demo)’s
 [Helm Charts](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-demo)
-to [HashiCorp](https://hashicorp.com) [Nomad](https://nomadproj.io) job specs.
-Today I’ll be talking about how to run the OpenTelemetry Demo App on Nomad,
-using my favorite Hashi-in-a-box tool, [HashiQube](https://rubiksqube.com/#/).
+to [HashiCorp](https://hashicorp.com) [Nomad](https://nomadproject.io) job
+specs. Today I’ll be talking about how to run the OpenTelemetry Demo App on
+Nomad, using my favorite Hashi-in-a-box tool,
+[HashiQube](https://rubiksqube.com/#/).
 
 Let’s do this!
 
@@ -29,7 +30,8 @@ Before we move on, I am assuming that you have a basic understanding of:
   [This blog post](https://danielabaron.me/blog/nomad-tips-and-tricks/) by
   [Daniela Baron](https://danielabaron.me) is also great.
 - **Observability (o11y) and [OpenTelemetry](https://opentelemetry.io) (OTel)**.
-  If not, check out this [Observability primer](/docs/concepts/observability-primer/)
+  If not, check out this
+  [Observability primer](/docs/concepts/observability-primer/)
 
 ### Pre-Requisites
 
@@ -101,18 +103,14 @@ are good to go:
 
 You can now access the apps using the URLs below:
 
-**Vault:** [http://localhost:8200](http://localhost:8200)
-
-**Nomad:** [http://localhost:4646](http://localhost:4646)
-
-**Consul:** [http://localhost:8500](http://localhost:8500)
-
-**Traefik:** [http://traefik.localhost](http://traefik.localhost)
+- **Vault:** <http://localhost:8200>
+- **Nomad:** <http://localhost:4646>
+- **Consul:** <http://localhost:8500>
+- **Traefik:** <http://traefik.localhost>
 
 Don’t forget to download and install the
-[Nomad CLI](https://medium.com/r/?url=https%3A%2F%2Fwww.nomadproject.io%2Fdownloads)
-and the
-[Vault CLI](https://medium.com/r/?url=https%3A%2F%2Fwww.vaultproject.io%2Fdownloads).
+[Nomad CLI](https://developer.hashicorp.com/nomad/downloads) and the
+[Vault CLI](https://developer.hashicorp.com/vault/downloads).
 
 If you need to SSH into HashiQube, open up a new terminal window on your host
 machine and run the following command:
@@ -208,7 +206,7 @@ A reminder that the `Evaluation ID` values will be different on your machine.
 #### 4- See it in Nomad!
 
 As things are deploying, you can mozy on over to the Nomad UI at
-[http://localhost:4646](http://localhost:4646) to see how things are coming along:
+<http://localhost:4646> to see how things are coming along:
 
 ![Screen capture of jobs view in Nomad. Some jobs have started, and others are still starting up.](nomad-jobs-startup.png "Screen capture of jobs view in Nomad. Some jobs have started, and others are still starting up")
 
@@ -223,7 +221,7 @@ this:
 
 ![Screen capture of jobs view in Nomad, with all jobs started](nomad-started.png "Screen capture of jobs view in Nomad, with all jobs started")
 
-You can also head on over to Consul at [http://localhost:8500](http://localhost:8500) to see the health
+You can also head on over to Consul at <http://localhost:8500> to see the health
 of the services:
 
 ![Screen capture of Consul service health. All services healthy.](consul-service-health.png "Screen capture of Consul service health. All services healthy.")
@@ -258,23 +256,21 @@ Note that the `Host` is set to `otel-demo.localhost`.
 
 The services are accessed via the URLs below.
 
-**Webstore:** [http://otel-demo.localhost/](http://otel-demo.localhost/)
+**Webstore:** <http://otel-demo.localhost/>
 
 ![Screen capture of the Demo App Webstore UI](otel-demo-app-ui.jpg "Screen capture of the Demo App Webstore UI")
 
 Go ahead and explore the amazing selection of telescopes and accessories, and
 buy a few. 😉🔭
 
-**Jaeger UI:**
-[http://otel-demo.localhost/jaeger/ui/](http://otel-demo.localhost/jaeger/ui/)
+**Jaeger UI:** <http://otel-demo.localhost/jaeger/ui/>
 
 ![Screen capture of the Jaeger UI](jaeger.png "Screen capture of the Jaeger UI")
 
 In the screen capture above, we can see a sample Trace from the
 [checkoutservice](https://github.com/avillela/nomad-conversions/blob/main/otel-demo-app/jobspec/checkoutservice.nomad).
 
-**Grafana:**
-[http://otel-demo.localhost/grafana/](http://otel-demo.localhost/grafana/)
+**Grafana:** <http://otel-demo.localhost/grafana/>
 
 ![Screen capture of one of the OpenTelemetry dashboard on Grafana](grafana-1.png "Screen capture of one of the OpenTelemetry dashboard on Grafana")
 
@@ -283,13 +279,11 @@ In the screen capture above, we can see a sample Trace from the
 The Demo App comes bundled with a two Grafana dashboards, which showcase Metrics
 emitted with OpenTelemetry.
 
-**Feature Flags UI:**
-[http://otel-demo.localhost/feature/](http://otel-demo.localhost/feature/)
+**Feature Flags UI:** <http://otel-demo.localhost/feature/>
 
 ![Screen capture of featureflagservice UI](featureflag.png "Screen capture of featureflagservice UI")
 
-**Load Generator UI:**
-[http://otel-demo.localhost/loadgen/](http://otel-demo.localhost/loadgen/)
+**Load Generator UI:** <http://otel-demo.localhost/loadgen/>
 
 ![Screen capture of loadgenerator UI](loadgen.png "Screen capture of loadgenerator UI")
 
@@ -333,8 +327,8 @@ jobspecs, please [hit me up](https://www.linkedin.com/in/adrianavillela/)!
 ## Final Thoughts
 
 Well, there you have it, folks! You now have an example of how to deploy
-[OpenTelemetry Demo App](/docs/demo/kubernetes-deployment/)
-(a multi-micro-service app running OpenTelemetry) to HashiCorp Nomad. Main
+[OpenTelemetry Demo App](/docs/demo/kubernetes-deployment/) (a
+multi-micro-service app running OpenTelemetry) to HashiCorp Nomad. Main
 highlights:
 
 - We used [HashiQube](https://github.com/avillela/hashiqube) to stand up a local
@@ -375,5 +369,6 @@ Have questions about the OTel Demo App on Nomad? Feel free to connect through
 ---
 
 The OpenTelemetry community is always looking for contributions!
-[Join us](https://github.com/open-telemetry/community)! If you're on Mastodon, be sure
-to follow [OpenTelemetry on Mastodon](https://fosstodon.org/@opentelemetry)
+[Join us](https://github.com/open-telemetry/community)! If you're on Mastodon,
+be sure to follow
+[OpenTelemetry on Mastodon](https://fosstodon.org/@opentelemetry)

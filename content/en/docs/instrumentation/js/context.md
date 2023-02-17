@@ -13,7 +13,7 @@ This document describes the OpenTelemetry context API for JavaScript and how it 
 More information:
 
 - [Context specification](/docs/reference/specification/context/)
-- [Context API reference](https://open-telemetry.github.io/opentelemetry-js-api/classes/contextapi.html)
+- [Context API reference](https://open-telemetry.github.io/opentelemetry-js/classes/_opentelemetry_api.ContextAPI.html)
 
 ## Context Manager
 
