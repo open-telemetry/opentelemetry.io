@@ -1,7 +1,7 @@
 ---
 title: .NET
 description: >
-  <img width="35"
+  <img width="35" class="img-initial"
   src="https://raw.githubusercontent.com/open-telemetry/opentelemetry.io/main/iconography/32x32/.NET.svg"
   alt=".NET"></img>
   A language-specific implementation of OpenTelemetry in .NET.
@@ -9,13 +9,6 @@ aliases: [/csharp, /csharp/metrics, /csharp/tracing]
 weight: 12
 ---
 
-<!--
-You can see & update the `lang_instrumentation_index_head` shortcode in
-/layouts/shortcodes/lang_instrumentation_index_head.md
-
-The data (name, status) is located at
-/data/instrumentation.yaml
--->
 {{% lang_instrumentation_index_head "dotnet" %}}
 
 \* While the OpenTelemetryLoggerProvider (i.e integration with [ILogger][]) is

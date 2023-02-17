@@ -1,20 +1,13 @@
 ---
 title: Rust
 description: >-
-  <img width="35"
+  <img width="35" class="img-initial"
   src="https://raw.githubusercontent.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Rust.svg"
   alt="Rust"></img>
   A language-specific implementation of OpenTelemetry in Rust.
 weight: 26
 ---
 
-<!--
-You can see & update the `lang_instrumentation_index_head` shortcode in
-/layouts/shortcodes/lang_instrumentation_index_head.md
-
-The data (name, status) is located at
-/data/instrumentation.yaml
--->
 {{% lang_instrumentation_index_head "rust" /%}}
 
 ## Crates

@@ -244,3 +244,10 @@
     height: auto;
   }
 }
+
+.td-content img:not(.img-initial) {
+  display: block;
+  border: $border-width solid $border-color;
+  margin-bottom: $paragraph-margin-bottom;
+  @extend .td-max-width-on-larger-screens;
+}
