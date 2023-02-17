@@ -122,7 +122,7 @@ details about the network state of the device at the time of network requests.
 | Attribute                     | Value example                 | Description                                                                                 |
 | ----------------------------- | ----------------------------- | ------------------------------------------------------------------------------------------- |
 | `net.host.connection.type`    | `wifi`, `cell`, `unavailable` | The type of connection utilized by the device at the time of the request.                   |
-| `net.host.connection.subtype` | `EDGE` `LTE`, etc             | They type of cellular connection. Only populated if the connection type is `cell`           |
+| `net.host.connection.subtype` | `EDGE` `LTE`, etc             | They type of cellular connection. Only populated if the connection type is `cell`.          |
 | `net.host.carrier.name`       | `T-Mobile`, `Verizon`, etc    | The cellular carrier name. Only populated for cellular connection types.                    |
 | `net.host.carrier.icc`        | `DE`                          | The ISO 3166-1 alpha-2 2-character country code associated with the mobile carrier network. |
 | `net.host.carrier.mcc`        | `310`                         | Mobile Country Code                                                                         |
@@ -134,7 +134,7 @@ This package creates `os_signpost` `begin` and `end` calls when spans are
 started or ended. It allows automatic integration of applications instrumented
 with OpenTelemetry to show their spans in a profiling app like `Instruments`. It
 also exports the `OSLog` it uses for posting so the user can add extra signpost
-events. This functionality is shown in `Simple Exporter` example
+events. This functionality is shown in `Simple Exporter` example.
 
 ### Usage
 
