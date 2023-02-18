@@ -1,28 +1,32 @@
 DirectoryPath: public
 IgnoreDirectoryMissingTrailingSlash: true
 IgnoreAltMissing: true
+IgnoreCanonicalBrokenLinks: false
 IgnoreInternalURLs: # list of paths
-IgnoreURLs: # list of regexs to paths or URLs
+IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^/docs/instrumentation/\w+/(api|examples)/$
   - ^/docs/instrumentation/net/(metrics-api|traces-api)/
 
   - ^https?://localhost\b
-  - ^https?://(otel-demo|traefik).localhost
-  - ^https?://(www\.)?github\b
-  - ^https://mvnrepository.com # Always yields 403 Forbidden
-
-  # Temporary as we process external links incrementally:
-  - ^https?://[^a-o]
+  - ^https?://127\.0\.0\.1\b
+  - ^https?://(otel-demo|traefik)\.localhost
+  - ^https?://(www\.)?github\b # TODO: process GitHub links too
+  - ^https?://(www\.)?linkedin\.com\b # Always yields 999 Request Denied
+  - ^https://mvnrepository\.com # Always yields 403 Forbidden
 
   # TODO: drop after fix to https://github.com/rust-lang/crates.io/issues/788
-  - ^https://crates.io/crates
-  # Invalid certificate (x509) for daocloud.io:
-  - ^https://docs.daocloud.io
+  - ^https://crates\.io/crates
   # TODO: drop after fix to https://github.com/open-telemetry/opentelemetry-specification/pull/3217
-  - ^https://golang.org/pkg/runtime/debug/#Stack
+  - ^https://golang\.org/pkg/runtime/debug/#Stack
   # TODO: drop after fix to https://github.com/micrometer-metrics/micrometer-docs/issues/239
-  - ^https://micrometer.io/docs
+  - ^https://micrometer\.io/docs
   # TODO: drop after fix to https://github.com/google/docsy/issues/1337
-  - ^https://opentelemetry.io/
+  - ^https://opentelemetry\.io/
   # TODO: drop after fix to https://github.com/open-telemetry/opentelemetry.io/issues/2354
-  - ^https://open-telemetry.github.io/opentelemetry-python/benchmarks/
+  - ^https://open-telemetry\.github\.io/opentelemetry-python/benchmarks/
+  # TODO: drop after fix to https://github.com/open-telemetry/opentelemetry.io/issues/2361
+  - ^https://www\.jaegertracing\.io/docs/latest/opentelemetry
+  # TODO: drop after fix to https://github.com/open-telemetry/opentelemetry-specification/pull/3230
+  - ^https://wikipedia\.org/wiki/Double-precision_floating-point_format
+  # Ignore links into Netlify deploy-preview servers (because the preview might not be deployed when we check)
+  - ^https://deploy-preview-\d+--opentelemetry.netlify.app/
