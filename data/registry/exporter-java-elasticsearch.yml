@@ -1,0 +1,13 @@
+title: Elasticsearch Exporter
+registryType: exporter
+isThirdParty: true
+language: java
+tags:
+  - java
+  - exporter
+  - elasticsearch
+repo: https://github.com/lambdaprime/opentelemetry-exporters-pack
+license: Apache 2.0
+description: This module supports sending OpenTelemetry metrics to Elasticsearch. Optionally allows export to Elasticsearch with self-signed SSL certificates (by default it is disabled and when enabled it prints warning message to the logs)
+authors: lambdaprime
+otVersion: latest

@@ -1,0 +1,13 @@
+title: CSV Exporter
+registryType: exporter
+isThirdParty: true
+language: java
+tags:
+  - java
+  - exporter
+  - CSV
+repo: https://github.com/lambdaprime/opentelemetry-exporters-pack
+license: Apache 2.0
+description: This module supports exporting OpenTelemetry metrics to CSV files.
+authors: lambdaprime
+otVersion: latest
