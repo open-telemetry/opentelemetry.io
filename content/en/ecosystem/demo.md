@@ -29,8 +29,7 @@ If you find yourself asking questions like:
 - What's the best way to use OpenTelemetry APIs?
 - How should my services be configured?
 - How should my OpenTelemetry Collector be configured?
-- How do I consider the
-  [architecture](/docs/demo/architecture/)
-  of a system using OpenTelemetry?
+- How do I consider the [architecture](/docs/demo/architecture/) of a system
+  using OpenTelemetry?
 
 Then check out the [Demo](https://github.com/open-telemetry/opentelemetry-demo).
