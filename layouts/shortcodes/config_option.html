@@ -16,5 +16,5 @@
   <span class="label">Default</span>: {{ .Get "default" }}<br>
 {{ end -}}
 <span class="label">Description</span>:
-{{- .Inner }}
+{{ trim .InnerDeindent "\n " }}
 </div>
