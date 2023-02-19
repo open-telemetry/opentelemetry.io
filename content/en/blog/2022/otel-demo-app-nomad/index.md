@@ -10,7 +10,7 @@ Y’all… I’m so excited, because I finally got to work on an item on my tech
 bucket list. Last week, I began the process of translating
 [OpenTelemetry (OTel) Demo App](https://github.com/open-telemetry/opentelemetry-demo)’s
 [Helm Charts](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-demo)
-to [HashiCorp](https://hashicorp.com) [Nomad](https://nomadproject.io) job
+to [HashiCorp](https://hashicorp.com) [Nomad][] job
 specs. Today I’ll be talking about how to run the OpenTelemetry Demo App on
 Nomad, using my favorite Hashi-in-a-box tool,
 [HashiQube](https://rubiksqube.com/#/).
@@ -25,7 +25,7 @@ Let’s do this!
 
 Before we move on, I am assuming that you have a basic understanding of:
 
-- **[Nomad](https://nomadproject.io)**. If not, head on over to my
+- **[Nomad][]**. If not, head on over to my
   [Nomad intro post](https://storiesfromtheherd.com/just-in-time-nomad-80f57cd403ca).
   [This blog post](https://danielabaron.me/blog/nomad-tips-and-tricks/) by
   [Daniela Baron](https://danielabaron.me) is also great.
@@ -53,7 +53,7 @@ Below are the repos that we’ll be using for today’s tutorial:
 ### HashiQube Setup
 
 Before you start, just a friendly reminder that HashiQube by default runs
-[Nomad](https://nomadproject.io), [Vault](http://vaultproject.io), and
+[Nomad][], [Vault](https://www.vaultproject.io), and
 [Consul](https://consul.io) on Docker. In addition, we’ll be deploying 21 job
 specs to Nomad. This means that we’ll need a decent amount of CPU and RAM, so
 please make sure that you have enough resources allocated in your Docker
@@ -372,3 +372,5 @@ The OpenTelemetry community is always looking for contributions!
 [Join us](https://github.com/open-telemetry/community)! If you're on Mastodon,
 be sure to follow
 [OpenTelemetry on Mastodon](https://fosstodon.org/@opentelemetry)
+
+[Nomad]: https://www.nomadproject.io
