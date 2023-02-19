@@ -126,7 +126,7 @@ All matched files use Prettier code style!
 To _fix_ formatting run:
 
 ```console
-$ npm run check:formatting -- --write
+$ npm run prettier:write
 ```
 
 ### Submodule changes
