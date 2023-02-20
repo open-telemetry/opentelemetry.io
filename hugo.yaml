@@ -97,10 +97,6 @@ params:
         url: https://stackoverflow.com/questions/tagged/open-telemetry
         icon: fab fa-stack-overflow
         desc: Practical questions and curated answers
-      - name: Iconography
-        url: https://github.com/open-telemetry/opentelemetry.io/blob/main/iconography/Otel_iconography.zip
-        icon: fa fa-file-archive
-        desc: The OpenTelemetry logos and iconography can be found here.
       - name: CNCF branding
         url: https://cncf-branding.netlify.app/projects/opentelemetry/
         icon: fas fa-image
@@ -108,7 +104,7 @@ params:
       - name: Meeting Recordings
         url: https://www.youtube.com/channel/UCHZDBZTIfdy94xMjMKz-_MA
         icon: fab fa-youtube
-        desc: Watch our meeting recordings on Youtube
+        desc: Watch our meeting recordings on YouTube
     developer:
       - name: GitHub
         url: https://github.com/open-telemetry
