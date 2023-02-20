@@ -1,7 +1,6 @@
 ---
-title: "Instrumenting libraries"
-description: >-
-  Learn how to add native instrumentation to your library
+title: Instrumenting libraries
+description: Learn how to add native instrumentation to your library
 weight: 40
 ---
 
@@ -125,8 +124,6 @@ issues.
 
 ## What to instrument
 
-![Nested database and HTTP spans in Jaeger UI](https://raw.githubusercontent.com/open-telemetry/opentelemetry.io/main/iconography/Instrumenting_Library_nested_spans.svg)
-
 ### Public APIs
 
 Public APIs are a good candidates for tracing: spans created for public API
@@ -172,12 +169,14 @@ private Response selectWithTracing(Query query) {
 
 Follow conventions to populate attributes! If there is no applicable one, check
 out [general
-conventions]({{< relref "/docs/reference/specification/trace/semantic_conventions/span-general" >}}).
+conventions](/docs/reference/specification/trace/semantic_conventions/span-general/).
 
 ### Nested network and other spans
 
 Network calls are usually traced with OpenTelemetry auto-instrumentations
 through corresponding client implementation.
+
+![Nested database and HTTP spans in Jaeger UI](nested-spans.svg)
 
 If OpenTelemetry does not support tracing your network client, use your best
 judgement, here are some considerations to help:
