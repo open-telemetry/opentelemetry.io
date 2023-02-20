@@ -1,3 +1,4 @@
+CacheExpires: 2200h # ~ 3 months
 DirectoryPath: public
 IgnoreDirectoryMissingTrailingSlash: true
 IgnoreAltMissing: true
@@ -14,9 +15,11 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^https?://127\.0\.0\.1\b
   - ^https?://(otel-demo|traefik)\.localhost
 
-  - ^https?://(www\.)?github\b # TODO: process GitHub links too
-  - ^https?://(www\.)?linkedin\.com\b # Always yields 999 Request Denied
-  - ^https://mvnrepository\.com # Always yields 403 Forbidden
+  - ^https://(www\.)?linkedin\.com\b # Always yields 999 Request Denied
+  - ^https://(www\.)?mvnrepository\.com # Always yields 403 Forbidden
+
+  - ^https?://github\.com/.*?/.*?/(new|edit)/
+  - ^https?://github\.com/.*?/.*?/(blob|tree)/
 
   # TODO: drop after fix to https://github.com/rust-lang/crates.io/issues/788
   - ^https://crates\.io/crates
