@@ -33,12 +33,12 @@ For information on how to use the Collector see the
 
 The Collector is made up of the following components:
 
-- <img width="32" class="img-initial" src="https://raw.githubusercontent.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Receivers.svg"></img>
+- <img width="32" class="img-initial" src="/img/logos/32x32/Receivers.svg"></img>
   `receivers`: How to get data into the Collector; these can be push or pull
   based
-- <img width="32" class="img-initial" src="https://raw.githubusercontent.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Processors.svg"></img>
+- <img width="32" class="img-initial" src="/img/logos/32x32/Processors.svg"></img>
   `processors`: What to do with received data
-- <img width="32" class="img-initial" src="https://raw.githubusercontent.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Exporters.svg"></img>
+- <img width="32" class="img-initial" src="/img/logos/32x32/Exporters.svg"></img>
   `exporters`: Where to send received data; these can be push or pull based
 
 These components are enabled through `pipelines`. Multiple instances of

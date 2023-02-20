@@ -2,7 +2,7 @@
 title: PHP
 description: >-
   <img width="35" class="img-initial"
-  src="https://raw.githubusercontent.com/open-telemetry/opentelemetry.io/main/iconography/32x32/PHP.svg"
+  src="/img/logos/32x32/PHP.svg"
   alt="PHP"></img>
   A language-specific implementation of OpenTelemetry in PHP.
 weight: 21
