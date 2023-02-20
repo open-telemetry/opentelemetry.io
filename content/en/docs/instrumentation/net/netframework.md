@@ -5,8 +5,8 @@ weight: 5
 ---
 
 OpenTelemetry supports both
-[.NET](https://dotnet.microsoft.com/en-us/learn/dotnet/what-is-dotnet) and [.NET
-Framework](https://dotnet.microsoft.com/en-us/learn/dotnet/what-is-dotnet-framework)
+[.NET](https://dotnet.microsoft.com/en-us/learn/dotnet/what-is-dotnet) and
+[.NET Framework](https://dotnet.microsoft.com/en-us/learn/dotnet/what-is-dotnet-framework)
 (an older Windows-based .NET implementation).
 
 If you're already using the modern, cross-platform implementation of .NET, you
@@ -18,8 +18,8 @@ Initialization for ASP.NET is a little different than for ASP.NET Core.
 
 First, install the following NuGet packages:
 
-* [OpenTelemetry.Instrumentation.AspNet](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.AspNet/)
-* [OpenTelemetry.Extensions.Hosting](https://www.nuget.org/packages/OpenTelemetry.Extensions.Hosting)
+- [OpenTelemetry.Instrumentation.AspNet](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.AspNet/)
+- [OpenTelemetry.Extensions.Hosting](https://www.nuget.org/packages/OpenTelemetry.Extensions.Hosting)
 
 Next, modify your `Web.Config` file to add a required HttpModule:
 
@@ -93,9 +93,10 @@ this.tracerProvider = Sdk.CreateTracerProviderBuilder()
     .Build();
 ```
 
-Filtering happens at an early stage, and is different from [Sampling]({{< relref
-"/docs/reference/specification/trace/sdk#sampling" >}}), which occurs after data
-has been collected. Filtering will limit what gets collected in the first place.
+Filtering happens at an early stage, and is different from
+[Sampling](/docs/reference/specification/trace/sdk/#sampling), which occurs
+after data has been collected. Filtering will limit what gets collected in the
+first place.
 
 ### Enrich
 
@@ -130,8 +131,8 @@ this.tracerProvider = Sdk.CreateTracerProviderBuilder()
     .Build();
 ```
 
-See [Add tags to an Activity]({{< relref "manual#add-tags-to-an-activity" >}})
-for annotating trace data more generally.
+See [Add tags to an Activity](../manual/#add-tags-to-an-activity) for annotating
+trace data more generally.
 
 ### RecordException
 
@@ -144,13 +145,14 @@ exception on the `Activity` itself as an `ActivityEvent`.
 ## Next steps
 
 After you have observability generated automatically with instrumentation
-libraries, you may want to add [manual
-instrumentation](/docs/instrumentation/net/manual) to collect custom telemetry
-data.
+libraries, you may want to add
+[manual instrumentation](/docs/instrumentation/net/manual) to collect custom
+telemetry data.
 
-You'll also want to configure an appropriate exporter to [export your telemetry
-data](/docs/instrumentation/net/exporters) to one or more telemetry backends.
+You'll also want to configure an appropriate exporter to
+[export your telemetry data](/docs/instrumentation/net/exporters) to one or more
+telemetry backends.
 
 You can also check the
-[automatic instrumentation for .NET](/docs/instrumentation/net/automatic),
-which is currently in beta.
+[automatic instrumentation for .NET](/docs/instrumentation/net/automatic), which
+is currently in beta.

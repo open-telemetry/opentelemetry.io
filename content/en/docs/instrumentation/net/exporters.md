@@ -4,8 +4,8 @@ weight: 4
 ---
 
 In order to visualize and analyze your
-[traces](/docs/concepts/signals/traces/#tracing-in-opentelemetry) and metrics, you
-will need to export them to a backend.
+[traces](/docs/concepts/signals/traces/#tracing-in-opentelemetry) and metrics,
+you will need to export them to a backend.
 
 ## Console exporter
 
@@ -106,8 +106,9 @@ If you are using .NET 5 or higher, the previous code sample is not required.
 
 ### Jaeger
 
-To try out the OTLP exporter, you can run [Jaeger](https://www.jaegertracing.io/)
-as an OTLP endpoint and for trace visualization in a docker container:
+To try out the OTLP exporter, you can run
+[Jaeger](https://www.jaegertracing.io/) as an OTLP endpoint and for trace
+visualization in a docker container:
 
 ```shell
 docker run -d --name jaeger \
@@ -248,13 +249,13 @@ using var tracerProvider = Sdk.CreateMeterProviderBuilder()
 ## Next steps
 
 To ensure you're getting the most data as easily as possible, install
-[instrumentation libraries](/docs/instrumentation/net/libraries) to
-generate observability data.
+[instrumentation libraries](/docs/instrumentation/net/libraries) to generate
+observability data.
 
 Additionally, enriching your codebase with
-[manual instrumentation](/docs/instrumentation/net/manual)
-gives you customized observability data.
+[manual instrumentation](/docs/instrumentation/net/manual) gives you customized
+observability data.
 
 You can also check the
-[automatic instrumentation for .NET](/docs/instrumentation/net/automatic),
-which is currently in beta.
+[automatic instrumentation for .NET](/docs/instrumentation/net/automatic), which
+is currently in beta.

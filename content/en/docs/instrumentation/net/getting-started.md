@@ -23,7 +23,8 @@ dotnet add package OpenTelemetry.Instrumentation.AspNetCore --prerelease
 dotnet add package OpenTelemetry.Instrumentation.Http --prerelease
 dotnet add package OpenTelemetry.Instrumentation.SqlClient --prerelease
 ```
-Note that the `--prerelease` flag is required for all instrumentation packages 
+
+Note that the `--prerelease` flag is required for all instrumentation packages
 because they are all are pre-release.
 
 This will also install the `OpenTelemetry` package.
@@ -195,7 +196,8 @@ app.MapGet("/hello", () =>
 app.Run();
 ```
 
-The output will be similar as with tracing, but now includes the request counter and periodically exports a histogram of request times for each route.
+The output will be similar as with tracing, but now includes the request counter
+and periodically exports a histogram of request times for each route.
 
 <details>
 <summary>View example output</summary>
@@ -246,7 +248,7 @@ Export app.request-counter, Meter: MyCompany.MyProduct.MyService
 Value: 1
 
 (2022-11-16T06:09:04.2574360Z, 2022-11-16T06:09:44.2393730Z] http.flavor: 1.1 http.host: localhost:7026 http.method: GET http.scheme: https http.status_code: 200 http.target: /hello Histogram
-Value: Sum: 40.041 Count: 1 
+Value: Sum: 40.041 Count: 1
 (-Infinity,0]:0
 (0,5]:0
 (0,10]:0
@@ -273,10 +275,10 @@ The [OpenTelemetry Collector](/docs/collector/getting-started/) is a vital
 component of most production deployments. A collector is most beneficial in the
 following situations, among others:
 
-* A single telemetry sink shared by multiple services, to reduce overhead of
+- A single telemetry sink shared by multiple services, to reduce overhead of
   switching exporters
-* Aggregate traces across multiple services, running on multiple hosts
-* A central place to process traces prior to exporting them to a backend
+- Aggregate traces across multiple services, running on multiple hosts
+- A central place to process traces prior to exporting them to a backend
 
 ### Configure and run a local collector
 
@@ -421,13 +423,14 @@ To ensure you're getting the most data as easily as possible, install
 [instrumentation libraries](/docs/instrumentation/net/libraries) to generate
 observability data.
 
-Additionally, enriching your codebase with [manual
-instrumentation](/docs/instrumentation/net/manual) gives you customized
+Additionally, enriching your codebase with
+[manual instrumentation](/docs/instrumentation/net/manual) gives you customized
 observability data.
 
-You'll also want to configure an appropriate exporter to [export your telemetry
-data](/docs/instrumentation/net/exporters) to one or more telemetry backends.
+You'll also want to configure an appropriate exporter to
+[export your telemetry data](/docs/instrumentation/net/exporters) to one or more
+telemetry backends.
 
-You can also check the [automatic instrumentation for
-.NET](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation),
+You can also check the
+[automatic instrumentation for .NET](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation),
 which is currently in beta.
