@@ -20,6 +20,7 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
 
   # Ignore Docsy-generated GitHub links:
   - ^https?://github\.com/.*?/.*?/(new|edit)/ # view-page, edit-source etc
+  # TODO: drop after fix to https://github.com/google/docsy/issues/1432
   - ^https://github.com/open-telemetry/opentelemetry.io/commit/ # last mod
 
   # Ignore links to GH repo content for now.
