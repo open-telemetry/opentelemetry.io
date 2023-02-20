@@ -16,9 +16,9 @@ if you aren't familiar with gRPC.
 
 First, get and run the hello-world example without instrumentation:
 
- 1. [Get the example code.][]
- 2. [Run the example:][] you should see the client output "Hello world".
- 3. Stop the server before proceeding, if it is still running.
+1.  [Get the example code.][]
+2.  [Run the example:][] you should see the client output "Hello world".
+3.  Stop the server before proceeding, if it is still running.
 
 ## Run the instrumented example
 
@@ -26,12 +26,14 @@ Next, you'll use a [Java agent to automatically instrument](../automatic) the
 client and server at launch time. While you can [configure the Java agent][] in
 a number of ways, the steps below use environment variables.
 
- 1. Download [opentelemetry-javaagent.jar][] from [Releases][] of the
+1.  Download [opentelemetry-javaagent.jar][] from [Releases][] of the
     `opentelemetry-java-instrumentation` repo. The JAR file contains the agent
-    and all automatic instrumentation packages. {{% alert color="info" %}}<i class="fas fa-edit"></i> Take note of the path to the JAR file.{{% /alert %}}
- 2. Set and export variables that specify the Java agent JAR and a [console
-    exporter][], using a notation suitable for your shell/terminal
-    environment &mdash; we illustrate a notation for bash-like shells:
+    and all automatic instrumentation packages.
+    {{% alert color="info" %}}<i class="fas fa-edit"></i> Take note of the path
+    to the JAR file.{{% /alert %}}
+2.  Set and export variables that specify the Java agent JAR and a [console
+    exporter][], using a notation suitable for your shell/terminal environment
+    &mdash; we illustrate a notation for bash-like shells:
 
     ```console
     $ export JAVA_OPTS="-javaagent:PATH/TO/opentelemetry-javaagent.jar"
@@ -41,7 +43,8 @@ a number of ways, the steps below use environment variables.
 
     {{% alert title="Important" color="warning" %}}Replace `PATH/TO` above, with
     your path to the JAR.{{% /alert %}}
- 3. Run the **server** as a background process. For example, for bash-like
+
+3.  Run the **server** as a background process. For example, for bash-like
     shells run:
 
     ```console
@@ -52,7 +55,8 @@ a number of ways, the steps below use environment variables.
     ```
 
     Note the output from the `otel.javaagent`.
- 4. From the _same_ terminal, run the **client**:
+
+4.  From the _same_ terminal, run the **client**:
 
     ```console
     $ ./build/install/examples/bin/hello-world-client
@@ -64,7 +68,7 @@ a number of ways, the steps below use environment variables.
     INFO: Greeting: Hello world
     ```
 
- 5. Stop the server process. For example, for bash-like shells run:
+5.  Stop the server process. For example, for bash-like shells run:
 
     ```console
     $ jobs
@@ -139,15 +143,22 @@ For more:
 - Run this example with another [exporter][] for telemetry data.
 - Try [automatic instrumentation](../automatic/) on one of your own apps.
 - For light-weight customized telemetry, try [annotations][].
-- Learn about [manual instrumentation][] and try out more [examples]({{% relref examples %}}).
+- Learn about [manual instrumentation][] and try out more
+  [examples]({{% relref examples %}}).
 
 [annotations]: ../automatic/annotations
-[configure the Java agent]: ../automatic/#configuring-the-agent
-[console exporter]: https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md#logging-exporter
-[exporter]: https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md#exporters
-[Get the example code.]: https://grpc.io/docs/languages/java/quickstart/#get-the-example-code
-[Java Quick start example]: https://grpc.io/docs/languages/java/quickstart/
+[configure the java agent]: ../automatic/#configuring-the-agent
+[console exporter]:
+  https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md#logging-exporter
+[exporter]:
+  https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md#exporters
+[get the example code.]:
+  https://grpc.io/docs/languages/java/quickstart/#get-the-example-code
+[java quick start example]: https://grpc.io/docs/languages/java/quickstart/
 [manual instrumentation]: ../manual
-[opentelemetry-javaagent.jar]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
-[releases]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases
-[Run the example:]: https://grpc.io/docs/languages/java/quickstart/#run-the-example
+[opentelemetry-javaagent.jar]:
+  https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
+[releases]:
+  https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases
+[run the example:]:
+  https://grpc.io/docs/languages/java/quickstart/#run-the-example
