@@ -14,11 +14,11 @@ weight: 24
 OpenTelemetry Ruby is in use by a number of companies, including:
 
 - [Heroku](https://heroku.com)
-- [GitHub](https://github.com/)
-- [Fulcrum](https://www.fulcrumapp.com/)
-- [Puppet](https://puppet.com/)
+- [GitHub](https://github.com)
+- [Fulcrum](https://www.fulcrumapp.com)
+- [Puppet](https://puppet.com)
 - [Shopify](https://shopify.com)
-- [TableCheck](https://www.tablecheck.com/)
+- [TableCheck](https://www.tablecheck.com)
 - [Dropbox DocSend](https://www.docsend.com)
 
 If you would like to add your name to this list, please feel free to submit a pull request.

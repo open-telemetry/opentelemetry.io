@@ -2,9 +2,7 @@
 title: Apache APISIX Integrates with OpenTelemetry to Collect Tracing Data
 linkTitle: Apache APISIX-Opentelemetry Integration
 date: 2022-03-26
-author: >-
-  [Haochao Zhuang](https://github.com/dmsolr),
-  [Fei Han](https://github.com/hf400159)
+author: "[Haochao Zhuang](https://github.com/dmsolr), Fei Han"
 canonical_url: https://apisix.apache.org/blog/2022/02/28/apisix-integration-opentelemetry-plugin/
 spelling: cSpell:ignore APISIX
 ---
