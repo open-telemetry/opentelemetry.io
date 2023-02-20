@@ -191,3 +191,5 @@ module:
       target: static/img
     - source: content-modules/opentelemetry-specification/internal/img
       target: static/img
+    - source: iconography/32x32
+      target: static/img/logos/32x32
