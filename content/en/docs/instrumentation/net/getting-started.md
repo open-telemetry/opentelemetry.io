@@ -3,11 +3,16 @@ title: Getting Started
 weight: 2
 ---
 
-OpenTelemetry for .NET is unique among OpenTelemetry implementations, as it is integrated with the .NET `System.Diagnostics` library. At a high level, you can think of OpenTelemetry for .NET as a bridge between the telemetry available through `System.Diagnostics` and the greater OpenTelemetry ecosystem, such as OpenTelemetry Protocol (OTLP) and the OpenTelemetry Collector.
+OpenTelemetry for .NET is unique among OpenTelemetry implementations, as it is
+integrated with the .NET `System.Diagnostics` library. At a high level, you can
+think of OpenTelemetry for .NET as a bridge between the telemetry available
+through `System.Diagnostics` and the greater OpenTelemetry ecosystem, such as
+OpenTelemetry Protocol (OTLP) and the OpenTelemetry Collector.
 
 ## ASP.NET Core
 
-The following example demonstrates automatic and manual instrumentation via an ASP.NET Core app.
+The following example demonstrates automatic and manual instrumentation via an
+ASP.NET Core app.
 
 First, create your basic ASP.NET Core site:
 
@@ -22,19 +27,25 @@ dotnet add package OpenTelemetry.Exporter.Console
 dotnet add package OpenTelemetry.Extensions.Hosting
 ```
 
-Now let's add the automatic instrumentation packages for ASP.NET Core. This will give us some automatic spans for each HTTP request to our app.
+Now let's add the automatic instrumentation packages for ASP.NET Core. This will
+give us some automatic spans for each HTTP request to our app.
 
 ```shell
 dotnet add package OpenTelemetry.Instrumentation.AspNetCore --prerelease
 ```
 
-*Note that as the Semantic Conventions for attribute names are not currently stable the instrumentation package is current not in a released state. That doesn't mean that the functionality itself is not stable. This means that you need to use the `--prerelease` flag, or install a specific version of the package*
+_Note that as the Semantic Conventions for attribute names are not currently
+stable the instrumentation package is current not in a released state. That
+doesn't mean that the functionality itself is not stable. This means that you
+need to use the `--prerelease` flag, or install a specific version of the
+package_
 
 This will also install the `OpenTelemetry` core packages.
 
 ### Setup
 
-Next, we need to add OpenTelemetry to our Service Collection in `program.cs` so that it's listening correctly.
+Next, we need to add OpenTelemetry to our Service Collection in `program.cs` so
+that it's listening correctly.
 
 ```csharp
 using System.Diagnostics;
@@ -46,7 +57,7 @@ var builder = WebApplication.CreateBuilder(args);
 // .. other setup
 
 builder.Services.AddOpenTelemetry()
-    .WithTracing(tracerProviderBuilder => 
+    .WithTracing(tracerProviderBuilder =>
         tracerProviderBuilder
             .AddSource(DiagnosticsConfig.ActivitySource.Name)
             .ConfigureResource(resource => resource
@@ -63,7 +74,9 @@ public static class DiagnosticsConfig
 }
 ```
 
-At this stage, you should be able to run you site, and see a Console output similar to this:
+At this stage, you should be able to run you site, and see a Console output
+similar to this:
+
 <details>
 <summary>View example output</summary>
 
@@ -90,12 +103,13 @@ Resource associated with Activity:
     service.name: MyService
     service.instance.id: 2c7ca153-e460-4643-b550-7c08487a4c0c
 ```
-</details>
 
+</details>
 
 ### Manual Instrumentation
 
-Next, add [tracing](/docs/concepts/signals/traces/#tracing-in-opentelemetry) via the `System.Diagnostics` API.
+Next, add [tracing](/docs/concepts/signals/traces/#tracing-in-opentelemetry) via
+the `System.Diagnostics` API.
 
 Paste the following code into your `HomeController`'s `Index` action:
 
@@ -140,7 +154,8 @@ Resource associated with Activity:
 
 </details>
 
-You'll notice the `Activity` objects from ASP.NET Core alongside the `Activity` we created manually in our controller action.
+You'll notice the `Activity` objects from ASP.NET Core alongside the `Activity`
+we created manually in our controller action.
 
 ### Automatic Metrics
 
@@ -157,7 +172,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenTelemetry()
     .WithTracing(/*  .. tracing setup */ )
-    .WithMetrics(metricsProviderBuilder => 
+    .WithMetrics(metricsProviderBuilder =>
         metricsProviderBuilder
             .ConfigureResource(resource => resource
                 .AddService(DiagnosticsConfig.ServiceName))
@@ -167,7 +182,8 @@ builder.Services.AddOpenTelemetry()
 // .. other setup
 ```
 
-If you run your application now, you'll see a series of metrics output to the console. like this.
+If you run your application now, you'll see a series of metrics output to the
+console. like this.
 
 <details>
 <summary>View example output</summary>
@@ -175,7 +191,7 @@ If you run your application now, you'll see a series of metrics output to the co
 ```
 Export http.server.duration, Measures the duration of inbound HTTP requests., Unit: ms, Meter: OpenTelemetry.Instrumentation.AspNetCore/1.0.0.0
 (2023-02-21T12:38:57.0187781Z, 2023-02-21T12:44:16.9651349Z] http.flavor: 1.1 http.method: GET http.route: {controller=Home}/{action=Index}/{id?} http.scheme: http http.status_code: 200 net.host.name: localhost net.host.port: 5123 Histogram
-Value: Sum: 373.4504 Count: 1 Min: 373.4504 Max: 373.4504 
+Value: Sum: 373.4504 Count: 1 Min: 373.4504 Max: 373.4504
 (-Infinity,0]:0
 (0,5]:0
 (5,10]:0
@@ -199,7 +215,8 @@ Value: Sum: 373.4504 Count: 1 Min: 373.4504 Max: 373.4504
 
 ### Manual Metrics
 
-Next, add some manual metrics to the app. This will initialize a [Meter](/docs/concepts/signals/metrics) to create a counter in code. 
+Next, add some manual metrics to the app. This will initialize a
+[Meter](/docs/concepts/signals/metrics) to create a counter in code.
 
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
@@ -208,10 +225,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenTelemetry()
     .WithTracing(/*  .. tracing setup */ )
-    .WithMetrics(metricsProviderBuilder => 
+    .WithMetrics(metricsProviderBuilder =>
         metricsProviderBuilder
             .AddMeter(DiagnosticsConfig.Meter.Name)
-			// .. more metrics	
+			// .. more metrics
              );
 
 public static class DiagnosticsConfig
@@ -219,9 +236,9 @@ public static class DiagnosticsConfig
     public const string ServiceName = "MyService";
 
     // .. other config
-    
+
     public static Meter Meter = new(ServiceName);
-    public static Counter<long> RequestCounter = 
+    public static Counter<long> RequestCounter =
         Meter.CreateCounter<long>("Request Counter");
 }
 
@@ -234,7 +251,7 @@ Now we can increment the counter in our `Index` action.
     {
         // do other stuff
 
-        DiagnosticsConfig.RequestCounter.Add(1, 
+        DiagnosticsConfig.RequestCounter.Add(1,
             new("Action", nameof(Index)),
             new("Controller", nameof(HomeController)));
 
@@ -242,7 +259,8 @@ Now we can increment the counter in our `Index` action.
     }
 ```
 
-You'll notice here that we're also adding labels to our request counter that distinguish it from other requests. You should now see an output like this.
+You'll notice here that we're also adding labels to our request counter that
+distinguish it from other requests. You should now see an output like this.
 
 <details>
 <summary>View example output</summary>
@@ -255,14 +273,17 @@ Value: 1
 
 </details>
 
-Tip: if you comment out the `.AddAspNetCoreInstrumentation()` line in `Program.cs` you'll be able to see the output better.
+Tip: if you comment out the `.AddAspNetCoreInstrumentation()` line in
+`Program.cs` you'll be able to see the output better.
 
 ## Send data to a collector
 
-The [OpenTelemetry Collector](/docs/collector/getting-started/) is a vital component of most production deployments. A collector is most beneficial in the
+The [OpenTelemetry Collector](/docs/collector/getting-started/) is a vital
+component of most production deployments. A collector is most beneficial in the
 following situations, among others:
 
-- A single telemetry sink shared by multiple services, to reduce overhead of switching exporters
+- A single telemetry sink shared by multiple services, to reduce overhead of
+  switching exporters
 - Aggregate traces across multiple services, running on multiple hosts
 - A central place to process traces prior to exporting them to a backend
 
@@ -295,7 +316,8 @@ service:
       processors: [batch]
 ```
 
-Then run the docker command to acquire and run the collector based on this configuration:
+Then run the docker command to acquire and run the collector based on this
+configuration:
 
 ```shell
 docker run -p 4317:4317 \
@@ -308,7 +330,8 @@ You will now have an collector instance running locally.
 
 ### Modify the code to export spans via OTLP
 
-The next step is to modify the code to send spans to the collector via OTLP instead of the console.
+The next step is to modify the code to send spans to the collector via OTLP
+instead of the console.
 
 First, add the following package:
 
@@ -316,21 +339,23 @@ First, add the following package:
 dotnet add package OpenTelemetry.Exporter.OpenTelemetryProtocol
 ```
 
-Next, using the ASP.NET Core code from earlier, replace the console exporter with an OTLP exporter:
+Next, using the ASP.NET Core code from earlier, replace the console exporter
+with an OTLP exporter:
 
 ```csharp
 builder.Services.AddOpenTelemetry()
-    .WithTracing(tracerProviderBuilder => 
+    .WithTracing(tracerProviderBuilder =>
         tracerProviderBuilder
              // .. other config
             .AddOtlpExporter())
-    .WithMetrics(metricsProviderBuilder => 
+    .WithMetrics(metricsProviderBuilder =>
         metricsProviderBuilder
             // .. other config
             .AddOtlpExporter());
 ```
 
-By default, it will send spans to `localhost:4317`, which is what the collector is listening on if you've followed the step above.
+By default, it will send spans to `localhost:4317`, which is what the collector
+is listening on if you've followed the step above.
 
 ### Run the application
 
@@ -344,10 +369,18 @@ Now, telemetry will be output by the collector process.
 
 ## Next steps
 
-To ensure you're getting the most data as easily as possible, install [instrumentation libraries](/docs/instrumentation/net/libraries) to generate observability data.
+To ensure you're getting the most data as easily as possible, install
+[instrumentation libraries](/docs/instrumentation/net/libraries) to generate
+observability data.
 
-Additionally, enriching your codebase with [manual instrumentation](/docs/instrumentation/net/manual) gives you customized observability data.
+Additionally, enriching your codebase with
+[manual instrumentation](/docs/instrumentation/net/manual) gives you customized
+observability data.
 
-You'll also want to configure an appropriate exporter to [export your telemetry data](/docs/instrumentation/net/exporters) to one or more telemetry backends.
+You'll also want to configure an appropriate exporter to
+[export your telemetry data](/docs/instrumentation/net/exporters) to one or more
+telemetry backends.
 
-You can also check the [automatic instrumentation for .NET](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation), which is currently in beta.
+You can also check the
+[automatic instrumentation for .NET](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation),
+which is currently in beta.
