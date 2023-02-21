@@ -234,10 +234,10 @@ receivers:
   prometheus:
     config:
       scrape_configs:
-        - job_name: "otel-collector"
+        - job_name: otel-collector
           scrape_interval: 5s
           static_configs:
-            - targets: ["localhost:8888"]
+            - targets: [localhost:8888]
 
   # Data sources: traces
   zipkin:
@@ -301,7 +301,7 @@ processors:
   resource:
     attributes:
       - key: cloud.zone
-        value: "zone-1"
+        value: zone-1
         action: upsert
       - key: k8s.cluster.name
         from_attribute: k8s-cluster
@@ -320,8 +320,8 @@ processors:
       to_attributes:
         rules:
           - ^\/api\/v1\/document\/(?P<documentId>.*)\/update$
-      from_attributes: ["db.svc", "operation"]
-      separator: "::"
+      from_attributes: [db.svc, operation]
+      separator: '::'
 ```
 
 ## Exporters
@@ -358,7 +358,7 @@ exporters:
 
   # Data sources: traces
   jaeger:
-    endpoint: "jaeger-all-in-one:14250"
+    endpoint: jaeger-all-in-one:14250
     tls:
       cert_file: cert.pem
       key_file: cert-key.pem
@@ -373,7 +373,7 @@ exporters:
 
   # Data sources: traces, metrics
   opencensus:
-    endpoint: "otelcol2:55678"
+    endpoint: otelcol2:55678
 
   # Data sources: traces, metrics, logs
   otlp:
@@ -388,12 +388,12 @@ exporters:
 
   # Data sources: metrics
   prometheus:
-    endpoint: "prometheus:8889"
-    namespace: "default"
+    endpoint: prometheus:8889
+    namespace: default
 
   # Data sources: metrics
   prometheusremotewrite:
-    endpoint: "http://some.url:9411/api/prom/push"
+    endpoint: http://some.url:9411/api/prom/push
     # For official Prometheus (e.g. running via Docker)
     # endpoint: 'http://prometheus:9090/api/v1/write'
     # tls:
@@ -401,7 +401,7 @@ exporters:
 
   # Data sources: traces
   zipkin:
-    endpoint: "http://localhost:9411/api/v2/spans"
+    endpoint: http://localhost:9411/api/v2/spans
 ```
 
 ## Extensions
@@ -525,8 +525,8 @@ configuration. For example to use the values stored on the `DB_KEY` and
 processors:
   attributes/example:
     actions:
-      - key: "${env:DB_KEY}"
-        action: "${env:OPERATION}"
+      - key: ${env:DB_KEY}
+        action: ${env:OPERATION}
 ```
 
 Use `$$` to indicate a literal `$`. For example, representing
@@ -535,8 +535,8 @@ Use `$$` to indicate a literal `$`. For example, representing
 ```yaml
 exporters:
   prometheus:
-    endpoint: "prometheus:8889"
-    namespace: "$$DataVisualization"
+    endpoint: prometheus:8889
+    namespace: $$DataVisualization
 ```
 
 ### Proxy Support

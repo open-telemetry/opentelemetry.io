@@ -123,7 +123,7 @@ cluster-name for all metrics:
 processors:
   metricstransform/clustername:
     transforms:
-      - include: "^.*$"
+      - include: ^.*$
         match_type: regexp
         action: update
         operations:

@@ -18,7 +18,7 @@ $nbsp: \00A0;
   content: fa-content($nbsp + $fa-var-external-link-alt);
 }
 
-.td-sidebar-nav a[target="_blank"]:after,
+.td-sidebar-nav a[target='_blank']:after,
 a.external-link:after {
   @include external-link-icon();
 }

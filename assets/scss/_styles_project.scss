@@ -1,9 +1,9 @@
 /* docsy-delta full file override: we're not tracking changes to the docsy file of the same name. */
 // cSpell:ignore cncf docsy
 
-@import "registry";
-@import "tabs";
-@import "external_link";
+@import 'registry';
+@import 'tabs';
+@import 'external_link';
 
 .td-home {
   .otel-logo {

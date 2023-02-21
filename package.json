@@ -60,7 +60,8 @@
   },
   "private": true,
   "prettier": {
-    "proseWrap": "always"
+    "proseWrap": "always",
+    "singleQuote": true
   },
   "textlint": {
     "rules": {

@@ -188,9 +188,9 @@ global:
   evaluation_interval: 1s
 
 scrape_configs:
-  - job_name: "prometheus"
+  - job_name: prometheus
     static_configs:
-      - targets: ["localhost:9090"]
+      - targets: [localhost:9090]
 ```
 
 Next, run the following docker command to set up Prometheus:

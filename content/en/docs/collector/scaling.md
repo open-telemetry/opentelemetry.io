@@ -171,7 +171,7 @@ kind: Pod
 metadata:
   name: my-microservice
   annotations:
-    sidecar.opentelemetry.io/inject: "true"
+    sidecar.opentelemetry.io/inject: 'true'
 spec:
   containers:
     - name: my-microservice

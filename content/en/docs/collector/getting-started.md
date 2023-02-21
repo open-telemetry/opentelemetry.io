@@ -60,17 +60,17 @@ the following:
 # Collector
 otel-collector:
   image: otel/opentelemetry-collector
-  command: ["--config=/etc/otel-collector-config.yaml"]
+  command: [--config=/etc/otel-collector-config.yaml]
   volumes:
     - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
   ports:
-    - "1888:1888" # pprof extension
-    - "8888:8888" # Prometheus metrics exposed by the collector
-    - "8889:8889" # Prometheus exporter metrics
-    - "13133:13133" # health_check extension
-    - "4317:4317" # OTLP gRPC receiver
-    - "4318:4318" # OTLP http receiver
-    - "55679:55679" # zpages extension
+    - 1888:1888 # pprof extension
+    - 8888:8888 # Prometheus metrics exposed by the collector
+    - 8889:8889 # Prometheus exporter metrics
+    - 13133:13133 # health_check extension
+    - 4317:4317 # OTLP gRPC receiver
+    - 4318:4318 # OTLP http receiver
+    - 55679:55679 # zpages extension
 ```
 
 ## Kubernetes
