@@ -48,18 +48,18 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenTelemetry()
     .WithTracing(tracerProviderBuilder => 
         tracerProviderBuilder
-            .AddSource(ActivityConfig.Source.Name)
+            .AddSource(DiagnosticsConfig.ActivitySource.Name)
             .ConfigureResource(resource => resource
-                .AddService(ActivityConfig.ServiceName))
+                .AddService(DiagnosticsConfig.ServiceName))
             .AddAspNetCoreInstrumentation()
             .AddConsoleExporter());
 
 // ... other setup
 
-public static class ActivityConfig
+public static class DiagnosticsConfig
 {
     public const string ServiceName = "MyService";
-    public static ActivitySource Source = new ActivitySource(ServiceName);
+    public static ActivitySource ActivitySource = new ActivitySource(ServiceName);
 }
 ```
 
@@ -103,7 +103,7 @@ Paste the following code into your `HomeController`'s `Index` action:
 public IActionResult Index()
 {
     // Track work inside of the request
-    using var activity = ActivityConfig.Source.StartActivity("SayHello");
+    using var activity = DiagnosticsConfig.Source.StartActivity("SayHello");
     activity?.SetTag("foo", 1);
     activity?.SetTag("bar", "Hello, World!");
     activity?.SetTag("baz", new int[] { 1, 2, 3 });
@@ -160,7 +160,7 @@ builder.Services.AddOpenTelemetry()
     .WithMetrics(metricsProviderBuilder => 
         metricsProviderBuilder
             .ConfigureResource(resource => resource
-                .AddService(ActivityConfig.ServiceName))
+                .AddService(DiagnosticsConfig.ServiceName))
             .AddAspNetCoreInstrumentation()
             .AddConsoleExporter());
 
