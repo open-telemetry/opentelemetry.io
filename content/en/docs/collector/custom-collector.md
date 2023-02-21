@@ -84,7 +84,7 @@ following content:
 ```yaml
 dist:
   name: otelcol-dev
-  description: "Basic OTel Collector distribution for Developers"
+  description: Basic OTel Collector distribution for Developers
   output_path: ./otelcol-dev
 ```
 

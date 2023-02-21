@@ -133,10 +133,10 @@ receivers:
   prometheus/own_metrics:
     config:
       scrape_configs:
-        - job_name: "otel-collector"
+        - job_name: otel-collector
           scrape_interval: 10s
           static_configs:
-            - targets: ["0.0.0.0:8888"]
+            - targets: [0.0.0.0:8888]
   hostmetrics:
     collection_interval: 10s
     scrapers:

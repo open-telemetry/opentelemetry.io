@@ -110,7 +110,7 @@ params:
         url: https://github.com/open-telemetry
         icon: fab fa-github
         desc: Find us on GitHub.
-      - name: "Slack #opentelemetry"
+      - name: 'Slack #opentelemetry'
         url: https://cloud-native.slack.com/archives/CJFCJHG4Q
         icon: fab fa-slack
         desc: >-
