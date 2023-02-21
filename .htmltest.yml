@@ -40,5 +40,3 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^https://www\.jaegertracing\.io/docs/latest/opentelemetry
   # TODO: drop after fix to https://github.com/open-telemetry/opentelemetry-specification/pull/3230
   - ^https://wikipedia\.org/wiki/Double-precision_floating-point_format
-  # TODO: drop after fix to https://github.com/open-telemetry/opentelemetry-go/pull/3758
-  - ^https://raw.github.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Golang_SDK.svg
