@@ -1,5 +1,5 @@
 ---
-title: "Exporters"
+title: Exporters
 weight: 5
 ---
 
@@ -8,8 +8,8 @@ backend such as [Jaeger](https://www.jaegertracing.io/) or
 [Zipkin](https://zipkin.io/). OpenTelemetry JS provides exporters for some
 common open source backends.
 
-Below you will find some introductions on how to set up backends and the matching
-exporters.
+Below you will find some introductions on how to set up backends and the
+matching exporters.
 
 ## OTLP endpoint
 
@@ -17,8 +17,8 @@ To send trace data to a OTLP endpoint (like the [collector](/docs/collector) or
 Jaeger) you'll want to use an exporter package, such as
 `@opentelemetry/exporter-trace-otlp-http`:
 
-```console
-$ npm install --save @opentelemetry/exporter-trace-otlp-http
+```shell
+npm install --save @opentelemetry/exporter-trace-otlp-http
 ```
 
 Next, configure the exporter to point at an OTLP endpoint. For example you can
@@ -26,6 +26,7 @@ update `tracing.ts|js` from the
 [Getting Started](/docs/instrumentation/js/getting-started/nodejs/) like the
 following:
 
+<!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 {{< tab Typescript >}}
 /*tracing.ts*/
@@ -72,12 +73,13 @@ sdk.start();
 {{< /tab >}}
 
 {{< /tabpane>}}
+<!-- prettier-ignore-end -->
 
 To try out the `OTLPTraceExporter` quickly, you can run Jaeger in a docker
 container:
 
 ```shell
-$ docker run -d --name jaeger \
+docker run -d --name jaeger \
   -e COLLECTOR_ZIPKIN_HOST_PORT=:9411 \
   -e COLLECTOR_OTLP_ENABLED=true \
   -p 6831:6831/udp \
@@ -100,20 +102,19 @@ that:
 
 1. Using grpc & http/proto for exporting is not supported
 2. [Content Security Policies][] (CSPs) of your website might block your exports
-3. [Cross-Origin Resource Sharing][] (CORS) headers might not allow your exports to be sent
+3. [Cross-Origin Resource Sharing][] (CORS) headers might not allow your exports
+   to be sent
 4. You might need to expose your collector to the public internet
 
 Below you will find instructions to use the right exporter, to configure your
-CSPs and CORS headers and what precautions you have to take when exposing
-your collector.
+CSPs and CORS headers and what precautions you have to take when exposing your
+collector.
 
 #### Use OTLP exporter with HTTP/JSON
 
-[OpenTelemetry Collector Exporter with grpc][] and
-[OpenTelemetry Collector Exporter with protobuf][]
-do only work with Node.JS,
-therefore you are limited to use the
-[OpenTelemetry Collector Exporter with http][].
+[OpenTelemetry Collector Exporter with grpc][] and [OpenTelemetry Collector
+Exporter with protobuf][] do only work with Node.JS, therefore you are limited
+to use the [OpenTelemetry Collector Exporter with http][].
 
 Make sure that the receiving end of your exporter (collector or observability
 backend) does support `http/json`, and that you are exporting your data to the
@@ -122,8 +123,8 @@ right endpoint, i.e., make sure that your port is set to `4318`.
 #### Configure CSPs
 
 If your website is making use of Content Security Policies (CSPs), make sure
-that the domain of your OTLP endpoint is included. If your collector endpoint
-is `https://collector.example.com:4318/v1/traces`, add the following directive:
+that the domain of your OTLP endpoint is included. If your collector endpoint is
+`https://collector.example.com:4318/v1/traces`, add the following directive:
 
 ```text
 connect-src collector.example.com:4318/v1/traces
@@ -138,8 +139,9 @@ If your website and collector are hosted at a different origin, your browser
 might block the requests going out to your collector. You need to configure
 special headers for Cross-Origin Resource Sharing (CORS).
 
-The OpenTelemetry collector provides [a feature][] for http-based receivers to add
-the required headers to allow the receiver to accept traces from a web browser:
+The OpenTelemetry collector provides [a feature][] for http-based receivers to
+add the required headers to allow the receiver to accept traces from a web
+browser:
 
 ```yaml
 receivers:
@@ -168,8 +170,8 @@ put a reverse proxy (nginx, apache, ...) in front of it. The reverse proxy can
 take care of SSL-offloading, setting the right CORS headers, and many other
 features specific to web applications.
 
-Below you will find a configuration for the popular nginx webserver to get
-you started:
+Below you will find a configuration for the popular nginx webserver to get you
+started:
 
 ```nginx
 server {
@@ -216,6 +218,7 @@ npm install --save @opentelemetry/exporter-zipkin
 Update your opentelemetry configuration to use the exporter and to send data to
 your zipkin backend:
 
+<!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 {{< tab Typescript >}}
 import { ZipkinExporter } from "@opentelemetry/exporter-zipkin";
@@ -230,18 +233,18 @@ const { BatchSpanProcessor } = require("@opentelemetry/sdk-trace-base");
 
 provider.addSpanProcessor(new BatchSpanProcessor(new ZipkinExporter()));
 {{< /tab >}}
-
 {{< /tabpane>}}
+<!-- prettier-ignore-end -->
 
-[Content Security Policies]:
+[content security policies]:
   https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/
 [cross-origin resource sharing]:
   https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
-[OpenTelemetry Collector Exporter with grpc]:
+[opentelemetry collector exporter with grpc]:
   https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-grpc
-[OpenTelemetry Collector Exporter with protobuf]:
+[opentelemetry collector exporter with protobuf]:
   https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-proto
-[OpenTelemetry Collector Exporter with http]:
+[opentelemetry collector exporter with http]:
   https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-http
 [a feature]:
   https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/confighttp/README.md

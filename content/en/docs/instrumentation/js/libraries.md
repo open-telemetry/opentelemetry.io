@@ -4,12 +4,12 @@ linkTitle: Libraries
 weight: 3
 ---
 
-You can use [instrumentation
-libraries](/docs/reference/specification/glossary/#instrumentation-library) in
-order to generate telemetry data for a library or framework.
+You can use
+[instrumentation libraries](/docs/reference/specification/glossary/#instrumentation-library)
+in order to generate telemetry data for a library or framework.
 
-For example, [the instrumentation library for
-Express](https://www.npmjs.com/package/@opentelemetry/instrumentation-express)
+For example,
+[the instrumentation library for Express](https://www.npmjs.com/package/@opentelemetry/instrumentation-express)
 will automatically create
 [spans](/docs/concepts/signals/traces/#spans-in-opentelemetry) based on the
 inbound HTTP requests.
@@ -44,6 +44,7 @@ npm install @opentelemetry/auto-instrumentations-node
 
 Then in your tracing initialization code, use `registerInstrumentations`:
 
+<!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 
 {{< tab TypeScript >}}
@@ -121,6 +122,7 @@ provider.register();
 {{< /tab >}}
 
 {{< /tabpane >}}
+<!-- prettier-ignore-end -->
 
 ### Using individual instrumentation packages
 
@@ -139,6 +141,7 @@ npm install --save @opentelemetry/instrumentation-http @opentelemetry/instrument
 
 And then register each instrumentation library:
 
+<!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 
 {{< tab TypeScript >}}
@@ -222,13 +225,14 @@ provider.register();
 {{< /tab >}}
 
 {{< /tabpane >}}
+<!-- prettier-ignore-end -->
 
 ## Configuring instrumentation libraries
 
 Some instrumentation libraries offer additional configuration options.
 
-For example, [Express
-instrumentation](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-express#express-instrumentation-options)
+For example,
+[Express instrumentation](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-express#express-instrumentation-options)
 offers ways to ignore specified middleware or enrich spans created automatically
 with a request hook.
 
@@ -247,9 +251,10 @@ You can also find more instrumentations available in the
 
 ## Next steps
 
-After you have set up instrumentation libraries, you may want to add [manual
-instrumentation](/docs/instrumentation/js/instrumentation) to collect custom
-telemetry data.
+After you have set up instrumentation libraries, you may want to add
+[manual instrumentation](/docs/instrumentation/js/instrumentation) to collect
+custom telemetry data.
 
-You'll also want to configure an appropriate exporter to [export your telemetry
-data](/docs/instrumentation/js/exporters) to one or more telemetry backends.
+You'll also want to configure an appropriate exporter to
+[export your telemetry data](/docs/instrumentation/js/exporters) to one or more
+telemetry backends.

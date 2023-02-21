@@ -11,7 +11,8 @@ instrument your own application should be similar.
 Ensure that you have the following installed locally:
 
 - [Node.js](https://nodejs.org/en/download/)
-- [TypeScript](https://www.typescriptlang.org/download), if you will be using TypeScript.
+- [TypeScript](https://www.typescriptlang.org/download), if you will be using
+  TypeScript.
 
 ## Example Application
 
@@ -23,25 +24,29 @@ Copy the following file into an empty directory and call it `index.html`.
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Document Load Instrumentation Example</title>
-  <base href="/">
-  <!--
-    https://www.w3.org/TR/trace-context/
-    Set the `traceparent` in the server's HTML template code. It should be
-    dynamically generated server side to have the server's request trace Id,
-    a parent span Id that was set on the server's request span, and the trace
-    flags to indicate the server's sampling decision
-    (01 = sampled, 00 = notsampled).
-    '{version}-{traceId}-{spanId}-{sampleDecision}'
-  -->
-  <meta name="traceparent" content="00-ab42124a3c573678d4d8b21ba52df3bf-d21f7bc17caa5aba-01">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-  Example of using Web Tracer with document load instrumentation with console exporter and collector exporter
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Document Load Instrumentation Example</title>
+    <base href="/" />
+    <!--
+      https://www.w3.org/TR/trace-context/
+      Set the `traceparent` in the server's HTML template code. It should be
+      dynamically generated server side to have the server's request trace Id,
+      a parent span Id that was set on the server's request span, and the trace
+      flags to indicate the server's sampling decision
+      (01 = sampled, 00 = notsampled).
+      '{version}-{traceId}-{spanId}-{sampleDecision}'
+    -->
+    <meta
+      name="traceparent"
+      content="00-ab42124a3c573678d4d8b21ba52df3bf-d21f7bc17caa5aba-01"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    Example of using Web Tracer with document load instrumentation with console
+    exporter and collector exporter
+  </body>
 </html>
 ```
 
@@ -74,20 +79,19 @@ npm install --save-dev parcel
 ```
 
 Create an empty code file named `document-load` with a `.ts` or `.js` extension,
-as appropriate, based on the language you've chosen to write your app in. Add the
-following code to your HTML right before the `</body>` closing tag:
+as appropriate, based on the language you've chosen to write your app in. Add
+the following code to your HTML right before the `</body>` closing tag:
 
+<!-- prettier-ignore-start -->
 {{< tabpane lang=html >}}
-
 {{< tab TypeScript >}}
 <script type="module" src="document-load.ts"></script>
 {{< /tab >}}
-
 {{< tab JavaScript >}}
 <script type="module" src="document-load.js"></script>
 {{< /tab >}}
-
 {{< /tabpane >}}
+<!-- prettier-ignore-end -->
 
 We will add some code that will trace the document load timings and output those
 as OpenTelemetry Spans.
@@ -113,9 +117,7 @@ provider.register({
 
 // Registering instrumentations
 registerInstrumentations({
-  instrumentations: [
-    new DocumentLoadInstrumentation(),
-  ],
+  instrumentations: [new DocumentLoadInstrumentation()],
 });
 ```
 
@@ -125,24 +127,32 @@ Now build the app with parcel:
 npx parcel index.html
 ```
 
-and open the development webserver (e.g. at `http://localhost:1234`) to see if your code works.
+and open the development webserver (e.g. at `http://localhost:1234`) to see if
+your code works.
 
 There will be no output of traces yet, for this we need to add an exporter.
 
 ### Creating an Exporter
 
-In the following example, we will use the `ConsoleSpanExporter` which prints all spans to the console.
+In the following example, we will use the `ConsoleSpanExporter` which prints all
+spans to the console.
 
-In order to visualize and analyze your traces, you will need to export them to a tracing backend.
-Follow [these instructions](../../exporters) for setting up a backend and exporter.
+In order to visualize and analyze your traces, you will need to export them to a
+tracing backend. Follow [these instructions](../../exporters) for setting up a
+backend and exporter.
 
-You may also want to use the `BatchSpanProcessor` to export spans in batches in order to more efficiently use resources.
+You may also want to use the `BatchSpanProcessor` to export spans in batches in
+order to more efficiently use resources.
 
-To export traces to the console, modify `document-load.ts|js` so that it matches the following code snippet:
+To export traces to the console, modify `document-load.ts|js` so that it matches
+the following code snippet:
 
 ```js
 /* document-load.ts|js file - the code is the same for both the languages */
-import { ConsoleSpanExporter, SimpleSpanProcessor } from '@opentelemetry/sdk-trace-base';
+import {
+  ConsoleSpanExporter,
+  SimpleSpanProcessor,
+} from '@opentelemetry/sdk-trace-base';
 import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
 import { DocumentLoadInstrumentation } from '@opentelemetry/instrumentation-document-load';
 import { ZoneContextManager } from '@opentelemetry/context-zone';
@@ -158,9 +168,7 @@ provider.register({
 
 // Registering instrumentations
 registerInstrumentations({
-  instrumentations: [
-    new DocumentLoadInstrumentation(),
-  ],
+  instrumentations: [new DocumentLoadInstrumentation()],
 });
 ```
 
@@ -186,59 +194,35 @@ developer toolbar you should see some traces being exported:
   "events": [
     {
       "name": "fetchStart",
-      "time": [
-        1606814247,
-        811266158
-      ]
+      "time": [1606814247, 811266158]
     },
     {
       "name": "domainLookupStart",
-      "time": [
-        1606814247,
-        811266158
-      ]
+      "time": [1606814247, 811266158]
     },
     {
       "name": "domainLookupEnd",
-      "time": [
-        1606814247,
-        811266158
-      ]
+      "time": [1606814247, 811266158]
     },
     {
       "name": "connectStart",
-      "time": [
-        1606814247,
-        811266158
-      ]
+      "time": [1606814247, 811266158]
     },
     {
       "name": "connectEnd",
-      "time": [
-        1606814247,
-        811266158
-      ]
+      "time": [1606814247, 811266158]
     },
     {
       "name": "requestStart",
-      "time": [
-        1606814247,
-        819101158
-      ]
+      "time": [1606814247, 819101158]
     },
     {
       "name": "responseStart",
-      "time": [
-        1606814247,
-        819791158
-      ]
+      "time": [1606814247, 819791158]
     },
     {
       "name": "responseEnd",
-      "time": [
-        1606814247,
-        820656158
-      ]
+      "time": [1606814247, 820656158]
     }
   ]
 }
@@ -253,7 +237,7 @@ register additional instrumentations for those:
 registerInstrumentations({
   instrumentations: [
     new UserInteractionInstrumentation(),
-    new XMLHttpRequestInstrumentation()
+    new XMLHttpRequestInstrumentation(),
   ],
 });
 ```
@@ -262,4 +246,3 @@ registerInstrumentations({
 
 To leverage the most common instrumentations all in one you can simply use the
 [OpenTelemetry Meta Packages for Web](https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-web)
-

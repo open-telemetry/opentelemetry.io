@@ -36,6 +36,7 @@ npm install \
 Next, create a separate `tracing.js|ts` file that has all the SDK initialization
 code in it:
 
+<!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 
 {{< tab TypeScript >}}
@@ -103,10 +104,12 @@ provider.register();
 {{< /tab >}}
 
 {{< /tabpane>}}
+<!-- prettier-ignore-end -->
 
-Next, ensure that `tracing.js|ts` is required in your node invocation. This is also
-required if you're registering instrumentation libraries. For example:
+Next, ensure that `tracing.js|ts` is required in your node invocation. This is
+also required if you're registering instrumentation libraries. For example:
 
+<!-- prettier-ignore-start -->
 {{< tabpane lang=shell >}}
 
 {{< tab TypeScript >}}
@@ -118,6 +121,7 @@ node --require './tracing.js' <app-file.js>
 {{< /tab >}}
 
 {{< /tabpane >}}
+<!-- prettier-ignore-end -->
 
 #### Browser
 
@@ -135,6 +139,7 @@ npm install \
 Create a `tracing.js|ts` file that initialized the Web SDK, creates a
 `TracerProvider`, and exports a `Tracer`.
 
+<!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 {{< tab TypeScript >}}
 import { Resource } from "@opentelemetry/resources";
@@ -199,6 +204,7 @@ provider.register();
 {{< /tab >}}
 
 {{< /tabpane>}}
+<!-- prettier-ignore-end -->
 
 You'll need to bundle this file with your web application to be able to use
 tracing throughout the rest of your web application.
@@ -226,6 +232,7 @@ In most cases, stick with `BatchSpanProcessor` over `SimpleSpanProcessor`.
 Anywhere in your application where you write manual tracing code should call
 `getTracer` to acquire a tracer. For example:
 
+<!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 {{< tab TypeScript >}}
 import opentelemetry from "@opentelemetry/api";
@@ -248,6 +255,7 @@ const tracer = opentelemetry.trace.getTracer(
 // You can now use a 'tracer' to do tracing!
 {{< /tab >}}
 {{< /tabpane>}}
+<!-- prettier-ignore-end -->
 
 It's generally recommended to call `getTracer` in your app when you need it
 rather than exporting the `tracer` instance to the rest of your app. This helps
@@ -262,9 +270,9 @@ initialized, you can create
 
 ```javascript
 // Create a span. A span must be closed.
-tracer.startActiveSpan('main', span => {
+tracer.startActiveSpan('main', (span) => {
   for (let i = 0; i < 10; i += 1) {
-    console.log(i)
+    console.log(i);
   }
 
   // Be sure to end the span!
@@ -284,17 +292,17 @@ tracks the `doWork` function:
 
 ```javascript
 const mainWork = () => {
-  tracer.startActiveSpan('main', parentSpan => {
+  tracer.startActiveSpan('main', (parentSpan) => {
     for (let i = 0; i < 3; i += 1) {
       doWork(i);
     }
     // Be sure to end the parent span!
     parentSpan.end();
   });
-}
+};
 
 const doWork = (i) => {
-  tracer.startActiveSpan(`doWork:${i}`, span => {
+  tracer.startActiveSpan(`doWork:${i}`, (span) => {
     // simulate some random work.
     for (let i = 0; i <= Math.floor(Math.random() * 40000000); i += 1) {
       // empty
@@ -304,7 +312,7 @@ const doWork = (i) => {
     // it will continue to track work beyond 'doWork'!
     span.end();
   });
-}
+};
 ```
 
 This code will create 3 child spans that have `parentSpan`'s span ID as their
@@ -328,7 +336,7 @@ const doWork = () => {
   span1.end();
   span2.end();
   span3.end();
-}
+};
 ```
 
 In this example, `span1`, `span2`, and `span3` are sibling spans and none of
@@ -370,26 +378,28 @@ pairs to a [`Span`](/docs/concepts/signals/traces/#spans-in-opentelemetry) so it
 carries more information about the current operation that it's tracking.
 
 ```javascript
-tracer.startActiveSpan('app.new-span', span => {
+tracer.startActiveSpan('app.new-span', (span) => {
   // do some work...
 
   // Add an attribute to the span
   span.setAttribute('attribute1', 'value1');
-  
+
   span.end();
 });
 ```
+
 You can also add attributes to a span as it's created:
 
 ```javascript
 tracer.startActiveSpan(
   'app.new-span',
   { attributes: { attribute1: 'value1' } },
-  span => {
+  (span) => {
     // do some work...
-    
+
     span.end();
-  });
+  }
+);
 ```
 
 #### Semantic Attributes
@@ -397,8 +407,8 @@ tracer.startActiveSpan(
 There are semantic conventions for spans representing operations in well-known
 protocols like HTTP or database calls. Semantic conventions for these spans are
 defined in the specification at [Trace Semantic Conventions]({{< relref
-"/docs/reference/specification/trace/semantic_conventions" >}}). In the simple
-example of this guide the source code attributes can be used.
+"/docs/reference/specification/trace/semantic_conventions" >}}). In the simple example
+of this guide the source code attributes can be used.
 
 First add the semantic conventions as a dependency to your application:
 
@@ -408,6 +418,7 @@ npm install --save @opentelemetry/semantic-conventions
 
 Add the following to the top of your application file:
 
+<!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 {{< tab TypeScript >}}
 import { SemanticAttributes } from "@opentelemetry/semantic-conventions";
@@ -416,20 +427,21 @@ import { SemanticAttributes } from "@opentelemetry/semantic-conventions";
 const { SemanticAttributes } = require('@opentelemetry/semantic-conventions');
 {{< /tab >}}
 {{< /tabpane>}}
+<!-- prettier-ignore-end -->
 
 Finally, you can update your file to include semantic attributes:
 
 ```javascript
 const doWork = () => {
-  tracer.startActiveSpan('app.doWork', span => {
+  tracer.startActiveSpan('app.doWork', (span) => {
     span.setAttribute(SemanticAttributes.CODE_FUNCTION, 'doWork');
     span.setAttribute(SemanticAttributes.CODE_FILEPATH, __filename);
-  
+
     // Do some work...
 
     span.end();
   });
-}
+};
 ```
 
 ### Span events
@@ -463,7 +475,6 @@ with zero or more [`Link`s](/docs/concepts/signals/traces/#span-links) to other
 Spans that are causally related. A common scenario is to correlate one or more
 traces with the current span.
 
-
 ```js
 const someFunction = (spanToLinkFrom) => {
   const options = {
@@ -490,6 +501,7 @@ typically used to specify that a span has not completed successfully -
 
 The status can be set at any time before the span is finished:
 
+<!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 {{< tab TypeScript >}}
 import opentelemetry from "@opentelemetry/api";
@@ -523,11 +535,12 @@ tracer.startActiveSpan('app.doWork', span => {
       });
     }
   }
-  
+
   span.end();
 });
 {{< /tab >}}
 {{< /tabpane>}}
+<!-- prettier-ignore-end -->
 
 By default, the status for all spans is `Unset` rather than `Ok`. It is
 typically the job of another component in your telemetry pipeline to interpret
@@ -539,6 +552,7 @@ explicitly tracking an error.
 It can be a good idea to record exceptions when they happen. It's recommended to
 do this in conjunction with setting [span status](#span-status).
 
+<!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 {{< tab TypeScript >}}
 import opentelemetry from "@opentelemetry/api";
@@ -565,6 +579,7 @@ try {
 }
 {{< /tab >}}
 {{< /tabpane>}}
+<!-- prettier-ignore-end -->
 
 ### Using `sdk-trace-base` and manually propagating span context
 
@@ -577,6 +592,7 @@ nested spans.
 
 Initializing tracing is similar to how you'd do it with Node.js or the Web SDK.
 
+<!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 {{< tab TypeScript >}}
 import opentelemetry from "@opentelemetry/api";
@@ -617,6 +633,7 @@ const tracer = opentelemetry.trace.getTracer(
 );
 {{< /tab >}}
 {{< /tabpane>}}
+<!-- prettier-ignore-end -->
 
 Like the other examples in this document, this exports a tracer you can use
 throughout the app.
@@ -637,7 +654,7 @@ const mainWork = () => {
 
   // Be sure to end the parent span!
   parentSpan.end();
-}
+};
 
 const doWork = (parent, i) => {
   // To create a child span, we need to mark the current (parent) span as the active span
@@ -656,7 +673,7 @@ const doWork = (parent, i) => {
   // Make sure to end this child span! If you don't,
   // it will continue to track work beyond 'doWork'!
   span.end();
-}
+};
 ```
 
 All other APIs behave the same when you use `sdk-trace-base` compared with the
@@ -669,23 +686,25 @@ initialized `MeterProvider` that lets you create a `Meter`. `Meter`s let you
 create `Instrument`s that you can use to create different kinds of metrics.
 OpenTelemetry JavaScript currently supports the following `Instrument`s:
 
-* Counter, a synchronous instrument which supports non-negative increments
-* Asynchronous Counter, a asynchronous instrument which supports non-negative
+- Counter, a synchronous instrument which supports non-negative increments
+- Asynchronous Counter, a asynchronous instrument which supports non-negative
   increments
-* Histogram, a synchronous instrument which supports arbitrary values that are
+- Histogram, a synchronous instrument which supports arbitrary values that are
   statistically meaningful, such as histograms, summaries or percentile
-* Asynchronous Gauge, an asynchronous instrument which supports non-additive
+- Asynchronous Gauge, an asynchronous instrument which supports non-additive
   values, such as room temperature
-* UpDownCounter, a synchronous instrument which supports increments and
+- UpDownCounter, a synchronous instrument which supports increments and
   decrements, such as number of active requests
-* Asynchronous UpDownCounter, an asynchronous instrument which supports
+- Asynchronous UpDownCounter, an asynchronous instrument which supports
   increments and decrements
 
-For more on synchronous and asynchronous instruments, and which kind is best suited for your use case, see [Supplementary Guidelines](/docs/reference/specification/metrics/supplementary-guidelines/).
+For more on synchronous and asynchronous instruments, and which kind is best
+suited for your use case, see
+[Supplementary Guidelines](/docs/reference/specification/metrics/supplementary-guidelines/).
 
 If a `MeterProvider` is not created either by an instrumentation library or
-manually, the OpenTelemetry Metrics API will use a no-op implementation and
-fail to generate data.
+manually, the OpenTelemetry Metrics API will use a no-op implementation and fail
+to generate data.
 
 ### Initialize Metrics
 
@@ -702,6 +721,8 @@ npm install \
 
 Next, create a separate `instrumentation.js|ts` file that has all the SDK
 initialization code in it:
+
+<!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 {{< tab TypeScript >}}
 import otel from "@opentelemetry/api";
@@ -773,9 +794,11 @@ myServiceMeterProvider.addMetricReader(metricReader);
 otel.metrics.setGlobalMeterProvider(myServiceMeterProvider)
 {{< /tab >}}
 {{< /tabpane>}}
+<!-- prettier-ignore-end -->
 
 You'll need to `--require` this file when you run your app, such as:
 
+<!-- prettier-ignore-start -->
 {{< tabpane lang=shell >}}
 
 {{< tab TypeScript >}}
@@ -787,14 +810,16 @@ node --require './instrumentation.js' <app-file.js>
 {{< /tab >}}
 
 {{< /tabpane >}}
+<!-- prettier-ignore-end -->
 
 Now that a `MeterProvider` is configured, you can acquire a `Meter`.
 
 ### Acquiring a Meter
 
-Anywhere in your application where you have manually instrumented code you can call
-`getMeter` to acquire a meter. For example:
+Anywhere in your application where you have manually instrumented code you can
+call `getMeter` to acquire a meter. For example:
 
+<!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 {{< tab TypeScript >}}
 import otel from "@opentelemetry/api";
@@ -816,6 +841,7 @@ const myMeter = otel.metrics.getMeter(
 // You can now use a 'meter' to create instruments!
 {{< /tab >}}
 {{< /tabpane>}}
+<!-- prettier-ignore-end -->
 
 It’s generally recommended to call `getMeter` in your app when you need it
 rather than exporting the meter instance to the rest of your app. This helps
@@ -826,17 +852,30 @@ involved.
 
 OpenTelemetry instruments are either synchronous or asynchronous (observable).
 
-Synchronous instruments take a measurement when they are called. The measurement is done as another call during program execution, just like any other function call. Periodically, the aggregation of these measurements is exported by a configured exporter. Because measurements are decoupled from exporting values, an export cycle may contain zero or multiple aggregated measurements.
+Synchronous instruments take a measurement when they are called. The measurement
+is done as another call during program execution, just like any other function
+call. Periodically, the aggregation of these measurements is exported by a
+configured exporter. Because measurements are decoupled from exporting values,
+an export cycle may contain zero or multiple aggregated measurements.
 
-Asynchronous instruments, on the other hand, provide a measurement at the request of the SDK. When the SDK exports, a callback that was provided to the instrument on creation is invoked. This callback provides the SDK with a measurement that is immediately exported. All measurements on asynchronous instruments are performed once per export cycle. 
+Asynchronous instruments, on the other hand, provide a measurement at the
+request of the SDK. When the SDK exports, a callback that was provided to the
+instrument on creation is invoked. This callback provides the SDK with a
+measurement that is immediately exported. All measurements on asynchronous
+instruments are performed once per export cycle.
 
 Asynchronous instruments are useful in several circumstances, such as:
 
-* When updating a counter is not computationally cheap, and thus you don't want the currently executing thread to have to wait for that measurement
-* Observations need to happen at frequencies unrelated to program execution (i.e., they cannot be accurately measured when tied to a request lifecycle)
-* There is no value from knowing the precise timestamp of increments
+- When updating a counter is not computationally cheap, and thus you don't want
+  the currently executing thread to have to wait for that measurement
+- Observations need to happen at frequencies unrelated to program execution
+  (i.e., they cannot be accurately measured when tied to a request lifecycle)
+- There is no value from knowing the precise timestamp of increments
 
-In cases like these, it's often better to observe a cumulative value directly, rather than aggregate a series of deltas in post-processing (the synchronous example). Take note of the use of `observe` rather than `add` in the appropriate code examples below.
+In cases like these, it's often better to observe a cumulative value directly,
+rather than aggregate a series of deltas in post-processing (the synchronous
+example). Take note of the use of `observe` rather than `add` in the appropriate
+code examples below.
 
 ### Using Counters
 
@@ -854,7 +893,6 @@ counter.add(1);
 
 UpDown counters can increment and decrement, allowing you to observe a
 cumulative value that goes up or down.
-
 
 ```js
 const counter = myMeter.createUpDownCounter('events.counter');
@@ -875,6 +913,7 @@ Histograms are used to measure a distribution of values over time.
 For example, here's how you might report a distribution of response times for an
 API route with Express:
 
+<!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 {{< tab TypeScript >}}
 import express from "express";
@@ -914,69 +953,66 @@ app.get('/', (_req, _res) => {
 });
 {{< /tab >}}
 {{< /tabpane>}}
+<!-- prettier-ignore-end -->
 
 ### Using Observable (Async) Counters
 
-Observable counters can be used to measure an additive, non-negative, monotonically increasing value.
+Observable counters can be used to measure an additive, non-negative,
+monotonically increasing value.
 
 ```js
-let events = []
+let events = [];
 
 const addEvent = (name) => {
-  events = append(events, name)
-}
+  events = append(events, name);
+};
 
 const counter = myMeter.createObservableCounter('events.counter');
 
-counter.addCallback(
-  (result) => {
-    result.observe(len(events))
-  }
-)
+counter.addCallback((result) => {
+  result.observe(len(events));
+});
 
 //... calls to addEvent
 ```
 
 ### Using Observable (Async) UpDown Counters
 
-Observable UpDown counters can increment and decrement, allowing you to measure an additive, non-negative, non-monotonically increasing cumulative value.
+Observable UpDown counters can increment and decrement, allowing you to measure
+an additive, non-negative, non-monotonically increasing cumulative value.
 
 ```js
-let events = []
+let events = [];
 
 const addEvent = (name) => {
-  events = append(events, name)
-}
+  events = append(events, name);
+};
 
 const removeEvent = () => {
-  events.pop()
-}
+  events.pop();
+};
 
 const counter = myMeter.createObservableUpDownCounter('events.counter');
 
-counter.addCallback(
-  (result) => {
-    result.observe(len(events))
-  }
-)
+counter.addCallback((result) => {
+  result.observe(len(events));
+});
 
 //... calls to addEvent and removeEvent
 ```
 
 ### Using Observable (Async) Gauges
 
-Observable Gauges should be used to measure non-additive values. 
+Observable Gauges should be used to measure non-additive values.
 
 ```js
-let temperature = 32
+let temperature = 32;
 
 const gauge = myMeter.createObservableGauge('temperature.gauge');
 
-counter.addCallback(
-  (result) => {
-    result.observe(temperature)
-  }
-)
+counter.addCallback((result) => {
+  result.observe(temperature);
+});
 
 //... temperature variable is modified by a sensor
 ```
@@ -987,20 +1023,23 @@ When you create instruments like counters, histograms, etc. you can give them a
 description.
 
 ```js
-const httpServerResponseDuration = myMeter.createHistogram("http.server.duration", {
-  description: 'A distribution of the HTTP server response times',
-  unit: 'milliseconds',
-  valueType: ValueType.INT
-});
+const httpServerResponseDuration = myMeter.createHistogram(
+  'http.server.duration',
+  {
+    description: 'A distribution of the HTTP server response times',
+    unit: 'milliseconds',
+    valueType: ValueType.INT,
+  }
+);
 ```
 
 In JavaScript, each configuration type means the following:
 
-* `description` - a human-readable description for the instrument
-* `unit` - The description of the unit of measure that the value is intended to
+- `description` - a human-readable description for the instrument
+- `unit` - The description of the unit of measure that the value is intended to
   represent. For example, `milliseconds` to meaure duration, or `bytes` to count
   number of bytes.
-* `valueType` - The kind of numeric value used in measurements.
+- `valueType` - The kind of numeric value used in measurements.
 
 It's generally recommended to describe each instrument you create.
 
@@ -1016,18 +1055,23 @@ cntr.add(1, { 'some.optional.attribute': 'some value' });
 
 ### Configure Metric Views
 
-A Metric View provides developers with the ability to customize metrics exposed by the Metrics SDK.
+A Metric View provides developers with the ability to customize metrics exposed
+by the Metrics SDK.
 
 #### Selectors
 
-To instantiate a view, one must first select a target instrument. The following are valid selectors for metrics:
+To instantiate a view, one must first select a target instrument. The following
+are valid selectors for metrics:
+
 - `instrumentType`
 - `instrumentName`
 - `meterName`
 - `meterVersion`
 - `meterSchemaUrl`
 
-Selecting by `instrumentName` (of type string) has support for wildcards, so you can select all instruments using `*` or select all instruments whose name starts with `http` by using `http*`.
+Selecting by `instrumentName` (of type string) has support for wildcards, so you
+can select all instruments using `*` or select all instruments whose name starts
+with `http` by using `http*`.
 
 #### Examples
 
@@ -1039,7 +1083,7 @@ const limitAttributesView = new View({
   attributeKeys: ['environment'],
   // apply the view to all instruments
   instrumentName: '*',
-})
+});
 ```
 
 Drop all instruments with the meter name `pubsub`:
@@ -1055,7 +1099,9 @@ Define explicit bucket sizes for the Histogram named `http.server.duration`:
 
 ```js
 const histogramView = new View({
-  aggregation: new ExplicitBucketHistogramAggregation([0, 1, 5, 10, 15, 20, 25, 30]),
+  aggregation: new ExplicitBucketHistogramAggregation([
+    0, 1, 5, 10, 15, 20, 25, 30,
+  ]),
   instrumentName: 'http.server.duration',
   instrumentType: InstrumentType.HISTOGRAM,
 });
@@ -1063,18 +1109,17 @@ const histogramView = new View({
 
 #### Attach to meter provider
 
-Once views have been configured, attach them to the corresponding meter provider:
+Once views have been configured, attach them to the corresponding meter
+provider:
+
 ```js
 const meterProvider = new MeterProvider({
-  views: [
-    limitAttributesView,
-    dropView,
-    histogramView
-  ]
+  views: [limitAttributesView, dropView, histogramView],
 });
 ```
 
 ## Next steps
 
-You'll also want to configure an appropriate exporter to [export your telemetry
-data](/docs/instrumentation/js/exporters) to one or more telemetry backends.
+You'll also want to configure an appropriate exporter to
+[export your telemetry data](/docs/instrumentation/js/exporters) to one or more
+telemetry backends.
