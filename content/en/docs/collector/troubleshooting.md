@@ -17,10 +17,6 @@ network issues, it can be helpful to send a small amount of data to a collector
 configured to output to local logs. This is detailed in
 ["Local exporters" in the collector configuration documentation](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/troubleshooting.md#local-exporters).
 
-Other open source tools, like the
-[otel-cli](https://github.com/equinix-labs/otel-cli), are useful for generating
-trace data from the command line.
-
 ## Checklist for debugging complex pipelines
 
 It can be difficult to isolate problems when telemetry flows through multiple
