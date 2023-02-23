@@ -1,5 +1,5 @@
 ---
-title: Additional collector SIGs for APAC
+title: New APAC Collector SIG meetings
 linkTitle: APAC collector SIGs
 date: 2023-02-23
 author: '[Sean Marciniak](https://github.com/MovieStoreGuy) (Atlassian)'
