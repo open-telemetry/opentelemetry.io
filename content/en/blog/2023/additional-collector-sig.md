@@ -1,7 +1,7 @@
 ---
 title: Additional collector Sig for APAC regions
 linkTitle: APAC collector SIGs
-date: 2023-02-23 # Put the current date, we will keep the date updated until your PR is merged
+date: 2023-02-23
 author: '[Sean Marciniak](https://github.com/MovieStoreGuy) (Atlassian)'
 ---
 
