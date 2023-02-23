@@ -5,8 +5,6 @@ date: 2023-02-23
 author: '[Sean Marciniak](https://github.com/MovieStoreGuy) (Atlassian)'
 ---
 
-## Additional collector SIGs for APAC
-
 As more investment grows for the collector from around the world, the ability to
 gather and converse becomes a challenge. To help bring more of maintainers and
 contributors together, two additional times have been added:
