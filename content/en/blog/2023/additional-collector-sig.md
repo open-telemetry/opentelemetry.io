@@ -19,8 +19,8 @@ contributors together, two additional times have been added:
 | EU-APAC | 00:00           | 03:00            | 09:00            | 16:00              | 19:00               |
 | NA-APAC | 15:00           | 18:00            | 00:00            | 07:00              | 10:00               |
 
-To stay up to date with these times, please subscribe to our
-[community calendar](https://github.com/open-telemetry/community#calendar)
+To stay up to date with these times, subscribe to our
+[community calendar](https://github.com/open-telemetry/community#calendar).
 
 Look forward to seeing new faces and reaching out to more of the collector
 community.
