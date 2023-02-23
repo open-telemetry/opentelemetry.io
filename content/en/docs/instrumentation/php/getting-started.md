@@ -10,9 +10,9 @@ weight: 1
 Before you get started make sure that you have php and
 [composer](https://getcomposer.org/download/) available in your shell:
 
-```console
-$ php -v
-$ composer -v
+```sh
+php -v
+composer -v
 ```
 
 In an empty directory create a minimal composer.json file in your directory:
@@ -73,14 +73,14 @@ dependencies for `php-http/async-client-implementation` and
 `psr/http-factory-implementation`, for example the Guzzle 7 HTTP Adapter
 satisfies both:
 
-```console
-$ composer require "php-http/guzzle7-adapter"
+```sh
+composer require "php-http/guzzle7-adapter"
 ```
 
 Now you can install the OpenTelemetry SDK:
 
-```console
-$ composer require open-telemetry/opentelemetry
+```sh
+composer require open-telemetry/opentelemetry
 ```
 
 The example uses the `ConsoleSpanExporter`, which prints Spans to stdout. A Span

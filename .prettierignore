@@ -22,8 +22,6 @@ package-lock.json
 /content/en/docs/demo
 content/en/docs/instrumentation/erlang
 content/en/docs/instrumentation/go
-content/en/docs/instrumentation/other
-content/en/docs/instrumentation/php
 content/en/docs/instrumentation/ruby
 content/en/docs/instrumentation/rust
 content/en/docs/instrumentation/swift
