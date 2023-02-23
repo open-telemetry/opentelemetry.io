@@ -61,14 +61,18 @@ function ends it.
       dependencies:
 
       {{< ot-tabs "Linux (apt)" "macOS (homebrew)">}}
-      {{< ot-tab lang="shell">}} sudo apt-get install gcc make autoconf {{< /ot-tab >}}
+
+      {{< ot-tab lang="shell">}} sudo apt-get install gcc make autoconf
+      {{< /ot-tab >}}
+
       {{< ot-tab lang="shell">}} brew install gcc make autoconf {{< /ot-tab >}}
+
       {{< /ot-tabs >}}
-      
+
       With your environment setup you can install the extension:
 
-      ```console
-      $ php pickle.phar install --source https://github.com/open-telemetry/opentelemetry-php-instrumentation.git#1.0.0beta2
+      ```sh
+      php pickle.phar install --source https://github.com/open-telemetry/opentelemetry-php-instrumentation.git#1.0.0beta2
       ```
 
       Add the extension to your `php.ini` file:
@@ -79,14 +83,14 @@ function ends it.
       ```
 
     - **php-extension-installer**
-      ```console
-      $ install-php-extensions open-telemetry/opentelemetry-php-instrumentation@main
+      ```sh
+      install-php-extensions open-telemetry/opentelemetry-php-instrumentation@main
       ```
 
 2.  Verify that the extension is installed and enabled:
 
-    ```console
-    $ php -m | grep  otel_instrumentation
+    ```sh
+    php -m | grep  otel_instrumentation
     ```
 
 ## Zero-code configuration for automatic instrumentation
@@ -94,7 +98,7 @@ function ends it.
 When used in conjunction with the OpenTelemetry SDK, you can use environment
 variables or `php.ini` to configure auto-instrumentation:
 
-```console
+```sh
 OTEL_PHP_AUTOLOAD_ENABLED=true \
 OTEL_SERVICE_NAME=your-service-name \
 OTEL_TRACES_EXPORTER=otlp \
