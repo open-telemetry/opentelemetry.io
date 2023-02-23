@@ -3,8 +3,6 @@ title: Additional Collector Sig for APAC regions
 linkTitle: Additional APAC friendly meetings for Collector # Mandatory, make sure that your short title.
 date: 2023-02-23 # Put the current date, we will keep the date updated until your PR is merged
 author: '[Sean Marciniak](https://github.com/MovieStoreGuy) (Atlassian)'
-draft: true # TODO: remove this line once your post is ready to be published
-# canonical_url: http://somewhere.else/ # TODO: if this blog post has been posted somewhere else already, uncomment & provide the conancial URL here.
 ---
 
 ## Additional Collector SIGs for APAC
