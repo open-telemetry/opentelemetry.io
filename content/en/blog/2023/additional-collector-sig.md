@@ -1,5 +1,5 @@
 ---
-title: Additional collector Sig for APAC regions
+title: Additional collector SIGs for APAC
 linkTitle: APAC collector SIGs
 date: 2023-02-23
 author: '[Sean Marciniak](https://github.com/MovieStoreGuy) (Atlassian)'
