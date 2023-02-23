@@ -11,15 +11,16 @@ using the [OpenTelemetry API][manual].
 
 ### Requirements
 
-These instructions will explain how to set up automatic and manual instrumentation
-for a Ruby service. In order to follow along, you will need:
+These instructions will explain how to set up automatic and manual
+instrumentation for a Ruby service. In order to follow along, you will need:
 
 - MRI Ruby >= `2.7`, jruby >= `9.3.2.0`, or truffleruby >= 22.1
 - Docker Compose
 
-> jruby only targets compatibility with MRI Ruby 2.6.8; which is EOL. This project
-> does not officially support MRI Ruby 2.6.8, and provides jruby support on a best-effort
-> basis until the jruby project supports compatibility with more modern Ruby runtimes.
+> jruby only targets compatibility with MRI Ruby 2.6.8; which is EOL. This
+> project does not officially support MRI Ruby 2.6.8, and provides jruby support
+> on a best-effort basis until the jruby project supports compatibility with
+> more modern Ruby runtimes.
 >
 > truffleruby is tested, but support is best-effort at this time.
 
@@ -27,20 +28,21 @@ for a Ruby service. In order to follow along, you will need:
 
 The first step is to add these gems to your Gemfile:
 
-```ruby
+```sh
 gem 'opentelemetry-sdk'
 gem 'opentelemetry-exporter-otlp'
 gem 'opentelemetry-instrumentation-all'
 ```
 
-The inclusion of `opentelemetry-instrumentation-all` provides [instrumentations][auto]
-for Rails, Sinatra, several HTTP libraries, and more.
+The inclusion of `opentelemetry-instrumentation-all` provides
+[instrumentations][auto] for Rails, Sinatra, several HTTP libraries, and more.
 
 ### Initialization
 
-The OpenTelemetry initialization needs to happen early in your application lifecycle.
-For Rails applications, the usual way to initialize OpenTelemetry is in a Rails initializer.
-For other Ruby services, perform this initialization as early as possible in the start-up process.
+The OpenTelemetry initialization needs to happen early in your application
+lifecycle. For Rails applications, the usual way to initialize OpenTelemetry is
+in a Rails initializer. For other Ruby services, perform this initialization as
+early as possible in the start-up process.
 
 OpenTelemetry initialization:
 
@@ -55,45 +57,49 @@ OpenTelemetry::SDK.configure do |c|
 end
 ```
 
-The call `c.use_all()` enables all instrumentations in the `instrumentation/all` package.
-If you have more advanced configuration needs, see [configuring specific instrumentation libraries][config].
+The call `c.use_all()` enables all instrumentations in the `instrumentation/all`
+package. If you have more advanced configuration needs, see [configuring
+specific instrumentation libraries][config].
 
-Now that you have setup your application to perform tracing, you'll need to configure
-the SDK to export the traces somewhere. Our example loaded the `OTLP` exporter, which
-the SDK tries to use by default. Next, we'll use the OpenTelemetry Collector to receive
-these traces and visualize them using Jaeger and Zipkin!
+Now that you have setup your application to perform tracing, you'll need to
+configure the SDK to export the traces somewhere. Our example loaded the `OTLP`
+exporter, which the SDK tries to use by default. Next, we'll use the
+OpenTelemetry Collector to receive these traces and visualize them using Jaeger
+and Zipkin!
 
 ### Exporting Traces
 
-The following section assumes you are new to OpenTelemetry or do not currently use
-a vendor that supports distributed tracing using OTLP. Please refer to your vendor's
-product documentation if you would like to export your traces to a vendor for analysis
-and visualization.
+The following section assumes you are new to OpenTelemetry or do not currently
+use a vendor that supports distributed tracing using OTLP. Please refer to your
+vendor's product documentation if you would like to export your traces to a
+vendor for analysis and visualization.
 
-For the purposes of this tutorial you will configure an OpenTelemetry collector that
-will receive the traces and visualize them using Jaeger or Zipkin UI.
+For the purposes of this tutorial you will configure an OpenTelemetry collector
+that will receive the traces and visualize them using Jaeger or Zipkin UI.
 
 First, start up an example system:
 
-```console
-$ git clone git@github.com:open-telemetry/opentelemetry-ruby.git; \
-    cd opentelemetry-ruby/examples/otel-collector; \
-       docker-compose up -d
+```sh
+git clone git@github.com:open-telemetry/opentelemetry-ruby.git; \
+  cd opentelemetry-ruby/examples/otel-collector; \
+     docker-compose up -d
 ```
 
-Next, you'll have to let the SDK know where the collector endpoint is to receive traces.
-Set the [`OTEL_EXPORTER_OTLP_ENDPOINT`][sdk-env] environment variable to `http://0.0.0.0:4318`:
+Next, you'll have to let the SDK know where the collector endpoint is to receive
+traces. Set the [`OTEL_EXPORTER_OTLP_ENDPOINT`][sdk-env] environment variable to
+`http://0.0.0.0:4318`:
 
-```console
-$ export OTEL_EXPORTER_OTLP_ENDPOINT=http://0.0.0.0:4318
+```sh
+export OTEL_EXPORTER_OTLP_ENDPOINT=http://0.0.0.0:4318
 ```
 
 Now, start up your application and perform a few operations to generate tracing
 data, e.g. navigate around your web app or kick off background tasks.
 
 Lastly, open a browser and navigate to the [Jaeger UI](http://localhost:16686)
-or [Zipkin UI](http://localhost:9411) and search for traces related to your service,
-which were generated by the auto-instrumentation features of OpenTelemetry!
+or [Zipkin UI](http://localhost:9411) and search for traces related to your
+service, which were generated by the auto-instrumentation features of
+OpenTelemetry!
 
 ### What next?
 
@@ -101,19 +107,21 @@ Adding tracing to a single service is a great first step and although
 auto-instrumentation provides quite a bit of insight on its own, OpenTelemetry
 provides a few more features that will allow you gain even deeper insights!
 
-- [Context propagation][] is perhaps one of the most powerful
-  concepts in OpenTelemetry because it will upgrade your single service trace
-  into a _distributed trace_, which makes it possible for OpenTelemetry vendors
-  to visualize a request from end-to-end across process and network boundaries.
+- [Context propagation][] is perhaps one of the most powerful concepts in
+  OpenTelemetry because it will upgrade your single service trace into a
+  _distributed trace_, which makes it possible for OpenTelemetry vendors to
+  visualize a request from end-to-end across process and network boundaries.
 - [Span events][] allow you to add a human-readable message on a span that
   represents "something happening" during its lifetime.
 - [Manual instrumentation][manual] will give provide you the ability to enrich
   your traces with domain specific data.
 
-[auto]: https://github.com/open-telemetry/opentelemetry-ruby#instrumentation-libraries
-[config]: {{< relref "automatic#configuring-specific-instrumentation-libraries" >}}
-[Context propagation]: ../manual#context-propagation
-[manual]: ../manual
+[auto]:
+  https://github.com/open-telemetry/opentelemetry-ruby#instrumentation-libraries
+[config]: ../automatic/#configuring-specific-instrumentation-libraries
+[context propagation]: ../manual/#context-propagation
+[manual]: ../manual/
 [repository]: https://github.com/open-telemetry/opentelemetry-ruby
-[sdk-env]: {{< relref "/docs/reference/specification/protocol/exporter#configuration-options" >}}
-[Span events]: ../manual#add-span-events
+[sdk-env]:
+  /docs/reference/specification/protocol/exporter/#configuration-options
+[span events]: ../manual/#add-span-events

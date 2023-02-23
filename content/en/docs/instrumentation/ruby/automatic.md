@@ -10,15 +10,16 @@ Automatic instrumentation in ruby is done via instrumentation packages, and most
 commonly, the `opentelemetry-instrumentation-all` package. These are called
 Instrumentation Libraries.
 
-For example, if you are using Rails and enable instrumentation, your running Rails
-app will automatically generate telemetry data for inbound requests to your controllers.
+For example, if you are using Rails and enable instrumentation, your running
+Rails app will automatically generate telemetry data for inbound requests to
+your controllers.
 
 ### Configuring all instrumentation libraries
 
 The recommended way to use instrumentation libraries is to use the
 `opentelemetry-instrumentation-all` package:
 
-```console
+```sh
 gem 'opentelemetry-sdk'
 gem 'opentelemetry-exporter-otlp'
 gem 'opentelemetry-instrumentation-all'
@@ -45,10 +46,11 @@ up to libraries you're using in your app.
 
 If you are enabling all instrumentation but want to override the configuration
 for a specific one, call `use_all` with a configuration map parameter, where the
-key represents the library, and the value is its specific configuration parameter.
+key represents the library, and the value is its specific configuration
+parameter.
 
-For example, here's how you can install all instrumentations _except_ the `Redis`
-instrumentation into your app:
+For example, here's how you can install all instrumentations _except_ the
+`Redis` instrumentation into your app:
 
 ```ruby
 require 'opentelemetry/sdk'
@@ -64,13 +66,14 @@ To override more instrumentation, add another entry in the `config` map.
 
 ### Configuring specific instrumentation libraries
 
-If you prefer more selectively installing and using only specific instrumentation
-libraries, you can do that too. For example, here's how to use only `Sinatra` and
-`Faraday`, with `Faraday` being configured with an additional configuration parameter.
+If you prefer more selectively installing and using only specific
+instrumentation libraries, you can do that too. For example, here's how to use
+only `Sinatra` and `Faraday`, with `Faraday` being configured with an additional
+configuration parameter.
 
 First, install the specific instrumentation libraries you know you want to use:
 
-```console
+```sh
 gem install opentelemetry-instrumentation-sinatra
 gem install opentelemetry-instrumentation-faraday
 ```
@@ -89,7 +92,8 @@ end
 
 ### Next steps
 
-Instrumentation libraries are the easiest way to generate lots of useful telemetry
-data about your ruby apps. But they don't generate data specific to your application's
-logic! To do that, you'll need to enrich the automatic instrumentation from
-instrumentation libraries with [manual instrumentation](../manual).
+Instrumentation libraries are the easiest way to generate lots of useful
+telemetry data about your ruby apps. But they don't generate data specific to
+your application's logic! To do that, you'll need to enrich the automatic
+instrumentation from instrumentation libraries with
+[manual instrumentation](../manual).

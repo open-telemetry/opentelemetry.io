@@ -7,17 +7,16 @@ description: Manual instrumentation for opentelemetry-swift
 
 ## Setup
 
-The
 [OpenTelemetry](https://github.com/open-telemetry/opentelemetry-swift/blob/main/Sources/OpenTelemetryApi/OpenTelemetry.swift#L11)
-provides limited functionality in its default configuration. For more useful
-functionality, some configuration is required.
+Swift provides limited functionality in its default configuration. For more
+useful functionality, some configuration is required.
 
 The default registered `TracerProvider` and `MetricProvider` are not configured
 with an exporter. There are several
 [exporters](https://github.com/open-telemetry/opentelemetry-swift/tree/main/Sources/Exporters)
 available depending on your needs. Below we will explore configuring the OTLP
 exporter, which can be used for sending data to the
-[opentelemetry-collector](https://github.com/open-telemetry/opentelemetry-collector).
+[collector](/docs/collector/).
 
 ```swift
 import GRPC
@@ -61,8 +60,8 @@ initialized instrumentation will be exporting using this OTLP exporter.
 ## Acquiring a Tracer
 
 To do tracing, you will need a tracer. A tracer is acquired through the tracer
-provider and is responsible for creating spans. The OpenTelemetry manages
-the tracer provider as we defined and registered above. A tracer requires an
+provider and is responsible for creating spans. The OpenTelemetry manages the
+tracer provider as we defined and registered above. A tracer requires an
 instrumentation name, and an optional version to be created:
 
 ```swift
@@ -85,8 +84,8 @@ It is required to call `end()` to end the span.
 
 ### Creating Nested Spans
 
-Spans are used to build relationship between operations.
-Below is an example of how we can manually build relationship between spans.
+Spans are used to build relationship between operations. Below is an example of
+how we can manually build relationship between spans.
 
 Below we have `parent()` calling `child()` and how to manually link spans of
 each of these methods.
@@ -108,7 +107,8 @@ let childSpan = someTracer.spanBuilder(spanName: "child span")
 
 ```
 
-The parent-child relationship will be automatically linked if `activeSpan` is used:
+The parent-child relationship will be automatically linked if `activeSpan` is
+used:
 
 ```swift
 func parent() {
@@ -191,7 +191,8 @@ func myFunction() {
 
 ### Recording exceptions in Spans
 
-Semantic conventions provide special demarcation for events that record exceptions:
+Semantic conventions provide special demarcation for events that record
+exceptions:
 
 ```swift
 let span = someTracer.spanBuilder(spanName: "my span").startSpan()
@@ -238,16 +239,23 @@ OpenTelemetry.registerTracerProvider(tracerProvider: TracerProviderBuilder()
 
 ```
 
-The batch span processor allows for a variety of parameters for customization including.
+The batch span processor allows for a variety of parameters for customization
+including.
 
 ### Exporters
 
 OpenTelemetry-Swift provides the following exporters:
 
-- `InMemoryExporter`: Keeps the span data in memory. This is useful for testing and debugging.
-- `DatadogExporter`: Converts OpenTelemetry span data to Datadog traces & span Events to Datadog logs.
-- `JaegerExporter`: Converts OpenTelemetry span data to Jaeger format and exports to a Jaeger endpoint.
-- Persistence exporter: An exporter decorator that provides data persistence to existing metric and trace exporters.
-- `PrometheusExporter`: Converts metric data to Prometheus format and exports to a Prometheus endpoint.
+- `InMemoryExporter`: Keeps the span data in memory. This is useful for testing
+  and debugging.
+- `DatadogExporter`: Converts OpenTelemetry span data to Datadog traces & span
+  Events to Datadog logs.
+- `JaegerExporter`: Converts OpenTelemetry span data to Jaeger format and
+  exports to a Jaeger endpoint.
+- Persistence exporter: An exporter decorator that provides data persistence to
+  existing metric and trace exporters.
+- `PrometheusExporter`: Converts metric data to Prometheus format and exports to
+  a Prometheus endpoint.
 - `StdoutExporter`: Exports span data to Stdout. Useful for debugging.
-- `ZipkinTraceExporter`: Exports span data to Zipkin format to a Zipkin endpoint.
+- `ZipkinTraceExporter`: Exports span data to Zipkin format to a Zipkin
+  endpoint.
