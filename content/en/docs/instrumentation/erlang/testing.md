@@ -1,5 +1,5 @@
 ---
-title: "Testing"
+title: Testing
 weight: 40
 ---
 
@@ -14,6 +14,7 @@ validation.
 Only the `opentelemetry` and `opentelemetry_api` libraries are required for
 testing in Elixir/Erlang:
 
+<!-- prettier-ignore-start -->
 {{< ot-tabs Erlang Elixir >}}
 
 {{< ot-tab >}}
@@ -31,11 +32,13 @@ end
 {{< /ot-tab >}}
 
 {{< /ot-tabs >}}
+<!-- prettier-ignore-end -->
 
-Set your `exporter` to `:none` and the span processor to `:otel_simple_processor`.
-This ensure that your tests don't actually export data to a destination, and that
-spans can be analyzed after they are processed.
+Set your `exporter` to `:none` and the span processor to
+`:otel_simple_processor`. This ensure that your tests don't actually export data
+to a destination, and that spans can be analyzed after they are processed.
 
+<!-- prettier-ignore-start -->
 {{< ot-tabs Erlang Elixir >}}
 
 {{< ot-tab >}}
@@ -59,11 +62,13 @@ config :opentelemetry, :processors, [
 {{< /ot-tab >}}
 
 {{< /ot-tabs >}}
+<!-- prettier-ignore-end -->
 
 A modified version of the `hello` function from the
 [Getting Started](/docs/instrumentation/erlang/getting-started/) guide will
 serve as our test case:
 
+<!-- prettier-ignore-start -->
 {{< ot-tabs Erlang Elixir >}}
 
 {{< ot-tab >}}
@@ -98,9 +103,11 @@ end
 {{< /ot-tab >}}
 
 {{< /ot-tabs >}}
+<!-- prettier-ignore-end -->
 
 ## Testing
 
+<!-- prettier-ignore-start -->
 {{< ot-tabs Erlang Elixir >}}
 
 {{< ot-tab >}}
@@ -190,3 +197,4 @@ end
 {{< /ot-tab >}}
 
 {{< /ot-tabs >}}
+<!-- prettier-ignore-end -->

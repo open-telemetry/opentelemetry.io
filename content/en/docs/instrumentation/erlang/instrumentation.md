@@ -3,10 +3,10 @@ title: Instrumentation
 weight: 30
 ---
 
-Instrumentation is the act of adding observability code to your
-application. This can be done with direct calls to the OpenTelemetry API within
-your code or including a dependency which calls the API and hooks into your
-project, like a middleware for an HTTP server.
+Instrumentation is the act of adding observability code to your application.
+This can be done with direct calls to the OpenTelemetry API within your code or
+including a dependency which calls the API and hooks into your project, like a
+middleware for an HTTP server.
 
 ## TracerProvider and Tracers
 
@@ -25,6 +25,7 @@ variable `create_application_tracers` to `false`. If you want a more specific
 name for a `Tracer` you can create a `Tracer` with a name and version and pass
 it manually to `otel_tracer` or `OpenTelemetry.Tracer`. Examples:
 
+<!-- prettier-ignore-start -->
 {{< ot-tabs Erlang Elixir >}}
 
 {{< ot-tab >}}
@@ -42,6 +43,7 @@ OpenTelemetry.Tracer.end_span(span_ctx)
 {{< /ot-tab >}}
 
 {{< /ot-tabs >}}
+<!-- prettier-ignore-end -->
 
 In most cases you will not need to manually create a `Tracer`. Simply use the
 macros provided, which are covered in the following section, and the `Tracer`
@@ -54,7 +56,7 @@ out to be generating too many or in some way problematic spans and it is desired
 to disable their generation.
 
 Additionally, the name and version of the `Tracer` are exported as the
-[`InstrumentationLibrary`]({{< relref "/docs/reference/specification/glossary#instrumentation-library" >}})
+[`InstrumentationLibrary`](/docs/reference/specification/glossary/#instrumentation-library)
 component of spans. This allows users to group and search spans by the
 Application they came from.
 
@@ -69,8 +71,8 @@ the `Context` as an argument not only to the OpenTelemetry functions but to any
 function you need to propagate the `context` so that spans started in those
 functions have the proper parent.
 
-For implicit context propagation across functions within a process the [process
-dictionary](https://erlang.org/doc/reference_manual/processes.html#process-dictionary)
+For implicit context propagation across functions within a process the
+[process dictionary](https://erlang.org/doc/reference_manual/processes.html#process-dictionary)
 is used to store the context. When you start a span with the macro `with_span`
 the context in the process dictionary is updated to make the newly started span
 the currently active span and this span will be end'ed when the block or
@@ -79,6 +81,7 @@ function completes. Additionally, starting a new span within the body of
 parent is again the active span when the child's block or function body
 completes:
 
+<!-- prettier-ignore-start -->
 {{< ot-tabs Erlang Elixir >}}
 
 {{< ot-tab >}}
@@ -114,6 +117,7 @@ end
 {{< /ot-tab >}}
 
 {{< /ot-tabs >}}
+<!-- prettier-ignore-end -->
 
 ### Cross Process Propagation
 
@@ -121,7 +125,8 @@ The examples in the previous section were spans with a child-parent relationship
 within the same process where the parent is available in the process dictionary
 when creating a child span. Using the process dictionary this way isn't possible
 when crossing processes, either by spawning a new process or sending a message
-to an existing process. Instead, the context must be manually passed as a variable.
+to an existing process. Instead, the context must be manually passed as a
+variable.
 
 #### Creating Spans for New Processes
 
@@ -130,11 +135,12 @@ particular process. This can be done with the macro `start_span`. Unlike
 `with_span`, the `start_span` macro does not set the new span as the currently
 active span in the context of the process dictionary.
 
-Connecting a span as a parent to a child in a new process can be done by attaching
-the context and setting the new span as currently active in the process. The
-whole context should be attached in order to not lose other telemetry data like
-[baggage]({{< relref "/docs/reference/specification/baggage/api" >}}).
+Connecting a span as a parent to a child in a new process can be done by
+attaching the context and setting the new span as currently active in the
+process. The whole context should be attached in order to not lose other
+telemetry data like [baggage](/docs/reference/specification/baggage/api/).
 
+<!-- prettier-ignore-start -->
 {{< ot-tabs Erlang Elixir >}}
 
 {{< ot-tab >}}
@@ -168,16 +174,18 @@ _ = Task.await(task)
 {{< /ot-tab >}}
 
 {{< /ot-tabs >}}
+<!-- prettier-ignore-end -->
 
 #### Linking the New Span
 
 If the work being done by the other process is better represented as a `link` --
-see [the `link` definition in the
-specification]({{< relref "/docs/reference/specification/overview#links-between-spans" >}})
-for more on when that is appropriate
--- then the `SpanCtx` returned by `start_span` is passed to `link/1` to create
-a `link` that can be passed to `with_span` or `start_span`:
+see
+[the `link` definition in the specification](/docs/reference/specification/overview/#links-between-spans)
+for more on when that is appropriate -- then the `SpanCtx` returned by
+`start_span` is passed to `link/1` to create a `link` that can be passed to
+`with_span` or `start_span`:
 
+<!-- prettier-ignore-start -->
 {{< ot-tabs Erlang Elixir >}}
 
 {{< ot-tab >}}
@@ -204,6 +212,7 @@ task = Task.async(fn ->
 {{< /ot-tab >}}
 
 {{< /ot-tabs >}}
+<!-- prettier-ignore-end -->
 
 ### Attributes
 
@@ -221,6 +230,7 @@ The following example shows the two ways of setting attributes on a span by both
 setting an attribute in the start options and then again with `set_attributes`
 in the body of the span operation:
 
+<!-- prettier-ignore-start -->
 {{< ot-tabs Erlang Elixir >}}
 
 {{< ot-tab >}}
@@ -239,14 +249,15 @@ end
 {{< /ot-tab >}}
 
 {{< /ot-tabs >}}
+<!-- prettier-ignore-end -->
 
 #### Semantic Attributes
 
 Semantic Attributes are attributes that are defined by the [OpenTelemetry
-Specification][] in order to provide a shared set of attribute keys across multiple
-languages, frameworks, and runtimes for common concepts like HTTP methods,
-status codes, user agents, and more. These attribute keys and values are
-available in the header `opentelemetry_api/include/otel_resource.hrl`.
+Specification][] in order to provide a shared set of attribute keys across
+multiple languages, frameworks, and runtimes for common concepts like HTTP
+methods, status codes, user agents, and more. These attribute keys and values
+are available in the header `opentelemetry_api/include/otel_resource.hrl`.
 
 For details, see [Trace semantic conventions][].
 
@@ -258,6 +269,7 @@ exclusive access to a resource like a database connection from a pool. An event
 could be created at two points - once, when the connection is checked out from
 the pool, and another when it is checked in.
 
+<!-- prettier-ignore-start -->
 {{< ot-tabs Erlang Elixir >}}
 
 {{< ot-tab >}}
@@ -282,6 +294,7 @@ end
 {{< /ot-tab >}}
 
 {{< /ot-tabs >}}
+<!-- prettier-ignore-end -->
 
 A useful characteristic of events is that their timestamps are displayed as
 offsets from the beginning of the span, allowing you to easily see how much time
@@ -289,6 +302,7 @@ elapsed between them.
 
 Additionally, events can also have attributes of their own:
 
+<!-- prettier-ignore-start -->
 {{< ot-tabs Erlang Elixir >}}
 
 {{< ot-tab >}}
@@ -300,19 +314,21 @@ Span.add_event("Process exited with reason", pid: pid, reason: Reason)
 {{< /ot-tab >}}
 
 {{< /ot-tabs >}}
+<!-- prettier-ignore-end -->
 
 ## Cross Service Propagators
 
 Distributed traces extend beyond a single service, meaning some context must be
 propagated across services to create the parent-child relationship between
-spans. This requires cross service [_context
-propagation_]({{< relref "/docs/reference/specification/overview#context-propagation" >}}),
+spans. This requires cross service
+[_context propagation_](/docs/reference/specification/overview/#context-propagation),
 a mechanism where identifiers for a trace are sent to remote processes.
 
 In order to propagate trace context over the wire, a propagator must be
 registered with OpenTelemetry. This can be done through configuration of the
 `opentelemetry` application:
 
+<!-- prettier-ignore-start -->
 {{< ot-tabs Erlang Elixir >}}
 
 {{< ot-tab >}}
@@ -331,10 +347,11 @@ text_map_propagators: [:baggage, :trace_context],
 {{< /ot-tab >}}
 
 {{< /ot-tabs >}}
+<!-- prettier-ignore-end -->
 
-If you instead need to use the [B3
-specification](https://github.com/openzipkin/b3-propagation), originally from
-the [Zipkin project](https://zipkin.io/), then replace `trace_context` and
+If you instead need to use the
+[B3 specification](https://github.com/openzipkin/b3-propagation), originally
+from the [Zipkin project](https://zipkin.io/), then replace `trace_context` and
 `:trace_context` with `b3` and `:b3` for Erlang or Elixir respectively.
 
 ## Library Instrumentation
@@ -343,15 +360,16 @@ Library instrumentations, broadly speaking, refers to instrumentation code that
 you didn't write but instead include through another library. OpenTelemetry for
 Erlang/Elixir supports this process through wrappers and helper functions around
 many popular frameworks and libraries. You can find in the
-[opentelemetry-erlang-contrib
-repo](https://github.com/open-telemetry/opentelemetry-erlang-contrib/),
-published to [hex.pm](https://hex.pm) under the [OpenTelemetry
-Organization](https://hex.pm/orgs/opentelemetry) and the [registry](/ecosystem/registry/).
+[opentelemetry-erlang-contrib repo](https://github.com/open-telemetry/opentelemetry-erlang-contrib/),
+published to [hex.pm](https://hex.pm) under the
+[OpenTelemetry Organization](https://hex.pm/orgs/opentelemetry) and the
+[registry](/ecosystem/registry/).
 
 ## Creating Metrics
 
 The metrics API, found in `apps/opentelemetry-experimental-api` of the
 `opentelemetry-erlang` repository, is currently unstable, documentation TBA.
 
-[OpenTelemetry Specification]: /docs/reference/specification
-[Trace semantic conventions]: /docs/reference/specification/trace/semantic_conventions
+[opentelemetry specification]: /docs/reference/specification/
+[trace semantic conventions]:
+  /docs/reference/specification/trace/semantic_conventions/

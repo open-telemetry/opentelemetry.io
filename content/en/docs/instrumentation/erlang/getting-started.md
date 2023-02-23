@@ -4,8 +4,8 @@ weight: 20
 ---
 
 Welcome to the OpenTelemetry for Erlang/Elixir getting started guide! This guide
-will walk you through the basic steps in installing, configuring, and exporting data
-from OpenTelemetry.
+will walk you through the basic steps in installing, configuring, and exporting
+data from OpenTelemetry.
 
 ## Installation
 
@@ -15,41 +15,45 @@ depending on what you are trying to accomplish.
 
 ### `opentelemetry_api`
 
-If you are developing a library or OTP Application that someone else would include
-into their deployed code and you want to provide OpenTelemetry instrumentation
-for them, you'll want to add the dependency `opentelemetry_api`. This package contains
-only the API of OpenTelemetry. It will not start any processes and all API calls
-(such as starting a span) will be a no-op that creates no data, unless the
-`opentelemetry` SDK package is also installed.
+If you are developing a library or OTP Application that someone else would
+include into their deployed code and you want to provide OpenTelemetry
+instrumentation for them, you'll want to add the dependency `opentelemetry_api`.
+This package contains only the API of OpenTelemetry. It will not start any
+processes and all API calls (such as starting a span) will be a no-op that
+creates no data, unless the `opentelemetry` SDK package is also installed.
 
 ### `opentelemetry`
 
 If you are developing an Application that will actually be deployed and export
 OpenTelemetry data, whether from instrumented dependencies or your code itself,
-you'll want to add the `opentelemetry` package. This is the implementation of the
-API and will start a Supervision tree, handling the necessary components for recording
-and exporting OpenTelemetry signals. This is the package where you would configure
-the destination(s) for your OpenTelemetry data, whether it be to an OpenTelemetry
-Collector instance, or directly to a vendor's data ingestion API.
+you'll want to add the `opentelemetry` package. This is the implementation of
+the API and will start a Supervision tree, handling the necessary components for
+recording and exporting OpenTelemetry signals. This is the package where you
+would configure the destination(s) for your OpenTelemetry data, whether it be to
+an OpenTelemetry Collector instance, or directly to a vendor's data ingestion
+API.
 
 To get started with this guide, create a new project with `rebar3` or `mix`:
 
+<!-- prettier-ignore-start -->
 {{< ot-tabs Erlang Elixir >}}
 
-{{< ot-tab >}}
-$ rebar3 new release otel_getting_started
+{{< ot-tab lang="sh" >}}
+rebar3 new release otel_getting_started
 {{< /ot-tab >}}
 
-{{< ot-tab >}}
-$ mix new --sup otel_getting_started
+{{< ot-tab lang="sh" >}}
+mix new --sup otel_getting_started
 {{< /ot-tab >}}
 
 {{< /ot-tabs >}}
+<!-- prettier-ignore-end -->
 
 Then, in the project you just created, add both `opentelemetry_api` and
 `opentelemetry` as dependencies. We add both because this is a project we will
 run as a Release and export spans from.
 
+<!-- prettier-ignore-start -->
 {{< ot-tabs Erlang Elixir >}}
 
 {{< ot-tab >}}
@@ -67,11 +71,13 @@ end
 {{< /ot-tab >}}
 
 {{< /ot-tabs >}}
+<!-- prettier-ignore-end -->
 
 In the case of Erlang, the Applications will also need to be added to
-`src/otel_getting_started.app.src`. In an Elixir project, a `releases`
-section needs to be added to `mix.exs`:
+`src/otel_getting_started.app.src`. In an Elixir project, a `releases` section
+needs to be added to `mix.exs`:
 
+<!-- prettier-ignore-start -->
 {{< ot-tabs Erlang Elixir >}}
 
 {{< ot-tab >}}
@@ -93,16 +99,18 @@ releases: [
 {{< /ot-tab >}}
 
 {{< /ot-tabs >}}
+<!-- prettier-ignore-end -->
 
 ## Initialization and Configuration
 
-Configuration is done through the [Application
-environment](https://erlang.org/doc/design_principles/applications.html#configuring-an-application)
-or [OS Environment Variables]({{< relref "/docs/reference/specification/sdk-environment-variables" >}}). The
-`opentelemetry` Application uses the configuration to initialize a [Tracer
-Provider](https://hexdocs.pm/opentelemetry_api/otel_tracer_provider.html), its
-[Span Processors](https://hexdocs.pm/opentelemetry/otel_span_processor.html) and
-the [Exporter](https://hexdocs.pm/opentelemetry/otel_exporter.html).
+Configuration is done through the
+[Application environment](https://erlang.org/doc/design_principles/applications.html#configuring-an-application)
+or
+[OS Environment Variables](/docs/reference/specification/sdk-environment-variables/).
+The `opentelemetry` Application uses the configuration to initialize a
+[Tracer Provider](https://hexdocs.pm/opentelemetry_api/otel_tracer_provider.html),
+its [Span Processors](https://hexdocs.pm/opentelemetry/otel_span_processor.html)
+and the [Exporter](https://hexdocs.pm/opentelemetry/otel_exporter.html).
 
 ### Using the Console Exporter
 
@@ -113,10 +121,11 @@ variety of exporters through its ecosystem, including popular open-source tools
 like Jaeger and Zipkin.
 
 To configure OpenTelemetry to use a particular exporter, in this case
-`otel_exporter_stdout`, the Application environment for `opentelemetry` must
-set the `exporter` for the span processor `otel_batch_processor`, a type
-of span processor that batches up multiple spans over a period of time:
+`otel_exporter_stdout`, the Application environment for `opentelemetry` must set
+the `exporter` for the span processor `otel_batch_processor`, a type of span
+processor that batches up multiple spans over a period of time:
 
+<!-- prettier-ignore-start -->
 {{< ot-tabs Erlang Elixir >}}
 
 {{< ot-tab >}}
@@ -136,12 +145,14 @@ config :opentelemetry,
 {{< /ot-tab >}}
 
 {{< /ot-tabs >}}
+<!-- prettier-ignore-end -->
 
 ## Working with Spans
 
-Now that the dependencies and configuration are set up, we can create a module with
-a function `hello/0` that starts some spans:
+Now that the dependencies and configuration are set up, we can create a module
+with a function `hello/0` that starts some spans:
 
+<!-- prettier-ignore-start -->
 {{< ot-tabs Erlang Elixir >}}
 
 {{< ot-tab >}}
@@ -188,30 +199,32 @@ end
 {{< /ot-tab >}}
 
 {{< /ot-tabs >}}
+<!-- prettier-ignore-end -->
 
-In this example, we're using macros that use the process dictionary for
-context propagation and for getting the tracer.
+In this example, we're using macros that use the process dictionary for context
+propagation and for getting the tracer.
 
 Inside our function, we're creating a new span named `operation` with the
 `with_span` macro. The macro sets the new span as `active` in the current
-context -- stored in the process dictionary, since we aren't passing a
-context as a variable.
+context -- stored in the process dictionary, since we aren't passing a context
+as a variable.
 
 Spans can have attributes and events, which are metadata and log statements that
-help you interpret traces after-the-fact. The first span has an event `Nice
-operation!`, with attributes on the event, as well as an attribute set on the
-span itself.
+help you interpret traces after-the-fact. The first span has an event
+`Nice operation!`, with attributes on the event, as well as an attribute set on
+the span itself.
 
 Finally, in this code snippet, we can see an example of creating a child span of
 the currently-active span. When the `with_span` macro starts a new span, it uses
-the active span of the current context as the parent. So when you run this program,
-you'll see that the `Sub operation...` span has been created as a child of the
-`operation` span.
+the active span of the current context as the parent. So when you run this
+program, you'll see that the `Sub operation...` span has been created as a child
+of the `operation` span.
 
-To test out this project and see the spans created, you can run with `rebar3
-shell` or `iex -S mix`, each will pick up the corresponding configuration for
-the release, resulting in the tracer and exporter to started.
+To test out this project and see the spans created, you can run with
+`rebar3 shell` or `iex -S mix`, each will pick up the corresponding
+configuration for the release, resulting in the tracer and exporter to started.
 
+<!-- prettier-ignore-start -->
 {{< ot-tabs Erlang Elixir >}}
 
 {{< ot-tab >}}
@@ -263,6 +276,7 @@ iex(2)>
 {{< /ot-tab >}}
 
 {{< /ot-tabs >}}
+<!-- prettier-ignore-end -->
 
 ## Exporting to the OpenTelemetry Collector
 
@@ -285,6 +299,7 @@ Zipkin also run by [docker-compose](https://docs.docker.com/compose/).
 To export to the running Collector the `opentelemetry_exporter` package must be
 added to the project's dependencies:
 
+<!-- prettier-ignore-start -->
 {{< ot-tabs Erlang Elixir >}}
 
 {{< ot-tab >}}
@@ -304,14 +319,16 @@ end
 {{< /ot-tab >}}
 
 {{< /ot-tabs >}}
+<!-- prettier-ignore-end -->
 
-It should then be added to the configuration of the Release, it should be before the SDK
-Application to ensure the exporter's dependencies are started before the SDK
-attempts to initialize and use the exporter.
+It should then be added to the configuration of the Release, it should be before
+the SDK Application to ensure the exporter's dependencies are started before the
+SDK attempts to initialize and use the exporter.
 
-Example of Release configuration in `rebar.config` and for [mix's Release
-task](https://hexdocs.pm/mix/Mix.Tasks.Release.html):
+Example of Release configuration in `rebar.config` and for
+[mix's Release task](https://hexdocs.pm/mix/Mix.Tasks.Release.html):
 
+<!-- prettier-ignore-start -->
 {{< ot-tabs Erlang Elixir >}}
 
 {{< ot-tab >}}
@@ -340,13 +357,16 @@ end
 {{< /ot-tab >}}
 
 {{< /ot-tabs >}}
+<!-- prettier-ignore-end -->
 
 Finally, the runtime configuration of the `opentelemetry` and
 `opentelemetry_exporter` Applications are set to export to the Collector. The
 configurations below show the defaults that are used if none are set, which are
 the HTTP protocol with endpoint of `localhost` on port `4318`. If using `grpc`
-for the `otlp_protocol` the endpoint should be changed to `http://localhost:4317`.
+for the `otlp_protocol` the endpoint should be changed to
+`http://localhost:4317`.
 
+<!-- prettier-ignore-start -->
 {{< ot-tabs Erlang Elixir >}}
 
 {{< ot-tab >}}
@@ -374,3 +394,4 @@ config :opentelemetry_exporter,
 {{< /ot-tab >}}
 
 {{< /ot-tabs >}}
+<!-- prettier-ignore-end -->
