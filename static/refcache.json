@@ -3119,6 +3119,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-18T12:43:42.995104-05:00"
   },
+  "https://skywalking.apache.org/docs/main/next/en/setup/backend/opentelemetry-receiver/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-02-23T10:04:43.572968177Z"
+  },
   "https://slack.cncf.io": {
     "StatusCode": 200,
     "LastSeen": "2023-02-18T12:44:01.093215-05:00"
