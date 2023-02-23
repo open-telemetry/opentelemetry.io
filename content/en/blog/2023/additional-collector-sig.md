@@ -24,4 +24,5 @@ contributors together, two additional times have been added:
 To stay up to date with these times, please subscribe to our
 [community calendar](https://github.com/open-telemetry/community#calendar)
 
-Look forward to seeing new faces and reaching out to more of the collector community.
+Look forward to seeing new faces and reaching out to more of the collector
+community.
