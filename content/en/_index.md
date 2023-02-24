@@ -10,7 +10,7 @@ spelling: cSpell:ignore shortcode
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
 
 {{< blocks/cover image_anchor="top" height="max" color="primary" >}}
-<img src="/img/logos/opentelemetry-horizontal-color.svg" class="otel-logo" alt="OpenTelemetry"/>
+<img src="static/img/logos/opentelemetry-horizontal-color.svg" class="otel-logo" alt="OpenTelemetry"/>
 
 ## High-quality, ubiquitous, and portable telemetry to enable effective observability
 
