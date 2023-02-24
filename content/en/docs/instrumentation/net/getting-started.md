@@ -35,7 +35,7 @@ dotnet add package OpenTelemetry.Instrumentation.AspNetCore --prerelease
 ```
 
 _Note that as the Semantic Conventions for attribute names are not currently
-stable the instrumentation package is current not in a released state. That
+stable the instrumentation package is currently not in a released state. That
 doesn't mean that the functionality itself is not stable. This means that you
 need to use the `--prerelease` flag, or install a specific version of the
 package_
@@ -157,7 +157,7 @@ Resource associated with Activity:
 You'll notice the `Activity` objects from ASP.NET Core alongside the `Activity`
 we created manually in our controller action.
 
-### Automatic Metrics
+### Metrics
 
 Next we'll add the ASP.NET automatic metrics to the app.
 
