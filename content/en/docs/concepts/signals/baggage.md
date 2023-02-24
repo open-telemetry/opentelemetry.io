@@ -1,7 +1,7 @@
 ---
-title: "Baggage"
+title: Baggage
 description: >-
- Baggage refers to contextual information that’s passed between spans
+  Baggage refers to contextual information that’s passed between spans.
 weight: 4
 ---
 
@@ -14,11 +14,11 @@ your trace, which involves multiple services; however, `CustomerId` is only
 available in one specific service. To accomplish your goal, you can use
 OpenTelemetry Baggage to propagate this value across your system.
 
-OpenTelemetry uses [Context
-Propagation](/docs/concepts/signals/traces/#context-propagation) to pass Baggage
-around, and each of the different library implementations has propagators that
-parse and make that Baggage available without you needing to explicitly
-implement it.
+OpenTelemetry uses
+[Context Propagation](/docs/concepts/signals/traces/#context-propagation) to
+pass Baggage around, and each of the different library implementations has
+propagators that parse and make that Baggage available without you needing to
+explicitly implement it.
 
 ![OTel Baggage](/img/otel_baggage.png)
 

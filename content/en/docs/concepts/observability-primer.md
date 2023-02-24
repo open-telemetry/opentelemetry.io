@@ -1,19 +1,14 @@
 ---
 title: Observability Primer
-description: >-
-  Learn some core concepts before you dig into OpenTelemetry
+description: Learn some core concepts before you dig into OpenTelemetry.
 weight: 9
-description: >-
- Before digging into OpenTelemetry, it is important to understand some core concepts first.
 ---
-
-
 
 ## What is Observability?
 
 Observability lets us understand a system from the outside, by letting us ask
-questions about that system without knowing its inner workings. Furthermore,
-it allows us to easily troubleshoot and handle novel problems (i.e. "unknown
+questions about that system without knowing its inner workings. Furthermore, it
+allows us to easily troubleshoot and handle novel problems (i.e. "unknown
 unknowns”), and helps us answer the question, "Why is this happening?"
 
 In order to be able to ask those questions of a system, the application must be
@@ -30,8 +25,8 @@ which application code is instrumented, to help make a system observable.
 
 ## Reliability & Metrics
 
-**Telemetry** refers to data emitted from a system, about its behavior. The
-data can come in the form of [Traces](#distributed-traces),
+**Telemetry** refers to data emitted from a system, about its behavior. The data
+can come in the form of [Traces](#distributed-traces),
 [Metrics](#reliability--metrics), and [Logs](#logs).
 
 **Reliability** answers the question: "Is the service doing what users expect it
@@ -89,21 +84,22 @@ provide information about the operation it tracks.
 Below is a sample of the type of information that would be present in a Span:
 
 #### Span Attributes
-| Key                           | Value                                           |
-| ----------------------------- | ------------------------------------------------|
-| net.transport                 | IP.TCP                                          |
-| net.peer.ip                   | 10.244.0.1                                      |
-| net.peer.port                 | 10243                                           |
-| net.host.name                 | localhost                                       |
-| http.method                   | GET                                             |
-| http.target                   | /cart                                           |
-| http.server_name              | frontend                                        |
-| http.route                    | /cart                                           |
-| http.scheme                   | http                                            |
-| http.host                     | localhost                                       |
-| http.flavor                   | 1.1                                             |
-| http.status_code              | 200                                             |
-| http.user_agent               | Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36             |
+
+| Key              | Value                                                                                                                 |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------- |
+| net.transport    | IP.TCP                                                                                                                |
+| net.peer.ip      | 10.244.0.1                                                                                                            |
+| net.peer.port    | 10243                                                                                                                 |
+| net.host.name    | localhost                                                                                                             |
+| http.method      | GET                                                                                                                   |
+| http.target      | /cart                                                                                                                 |
+| http.server_name | frontend                                                                                                              |
+| http.route       | /cart                                                                                                                 |
+| http.scheme      | http                                                                                                                  |
+| http.host        | localhost                                                                                                             |
+| http.flavor      | 1.1                                                                                                                   |
+| http.status_code | 200                                                                                                                   |
+| http.user_agent  | Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 |
 
 > For more on Spans and how they pertain to OTel, visit
 > [Spans in OpenTelemetry](/docs/concepts/signals/traces/#spans-in-opentelemetry).
@@ -111,9 +107,8 @@ Below is a sample of the type of information that would be present in a Span:
 ### Distributed Traces
 
 A **Distributed Trace**, more commonly known as a **Trace**, records the paths
-taken by requests (made by an application or end-user) as they propagate
-through multi-service architectures, like microservice and serverless
-applications.
+taken by requests (made by an application or end-user) as they propagate through
+multi-service architectures, like microservice and serverless applications.
 
 Without tracing, it is challenging to pinpoint the cause of performance problems
 in a distributed system.
@@ -135,7 +130,7 @@ what steps make up a request).
 Many Observability back-ends visualize Traces as waterfall diagrams that may
 look something like this:
 
-![Sample Trace](/img/waterfall_trace.png "trace waterfall diagram")
+![Sample Trace](/img/waterfall_trace.png 'trace waterfall diagram')
 
 Waterfall diagrams show the parent-child relationship between a Root Span and
 its child Spans. When a Span encapsulates another Span, this also represents a
