@@ -249,7 +249,7 @@ exporters:
   otlp:
   logging:
   zipkin:
-    endpoint: "http://my-zipkin-service:9411/api/v2/spans"
+    endpoint: http://my-zipkin-service:9411/api/v2/spans
 service:
   pipelines:
     traces:

@@ -3,7 +3,7 @@ title: Distributed tracing in Knative
 linkTitle: Tracing in Knative
 date: 2022-04-12
 spelling: cSpell:ignore Cloudevents istio Loffay Pavol pavolloffay
-author: "[Pavol Loffay](https://github.com/pavolloffay)"
+author: '[Pavol Loffay](https://github.com/pavolloffay)'
 ---
 
 In this article, you will learn how distributed tracing works in Knative and we

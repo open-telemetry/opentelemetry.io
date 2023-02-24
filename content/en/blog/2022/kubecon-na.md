@@ -2,8 +2,9 @@
 title: Join us for OpenTelemetry Talks and Activities at Kubecon NA 2022
 linkTitle: Kubecon NA '22
 date: 2022-10-10
-spelling: cSpell:ignore Alolita Sharma unconference Kowall Logz Dyla Vineeth Pothulapati
-author: "[Alolita Sharma](https://github.com/alolita)"
+spelling:
+  cSpell:ignore Alolita Sharma unconference Kowall Logz Dyla Vineeth Pothulapati
+author: '[Alolita Sharma](https://github.com/alolita)'
 ---
 
 The OpenTelemetry project maintainers, and members of the governance committee
@@ -32,11 +33,11 @@ by Vineeth Pothulapati, Timescale Inc Friday, October 28 • 4:55pm - 5:30pm
 
 ## Other Co-located Events
 
-[OTel Unplugged](../otel-unplugged-kubecon-na/)
-is a one-day OpenTelemetry unconference event held at Colony Club Detroit on
-Tuesday, Oct 25, 2022. Join in to listen, learn about the latest features and
-get involved in the project. Network with OpenTelemetry maintainers, governance
-committee and technical committee members. For details, check out the
+[OTel Unplugged](../otel-unplugged-kubecon-na/) is a one-day OpenTelemetry
+unconference event held at Colony Club Detroit on Tuesday, Oct 25, 2022. Join in
+to listen, learn about the latest features and get involved in the project.
+Network with OpenTelemetry maintainers, governance committee and technical
+committee members. For details, check out the
 [event page](https://www.eventbrite.com/e/otel-unplugged-kubeconcloudnativecon-detroit-2022-tickets-427595037267).
 
 [Open Observability Day](https://events.linuxfoundation.org/open-observability-day-north-america/)
@@ -76,4 +77,5 @@ Come join us to listen, learn and get involved in OpenTelemetry.
 
 See you in Detroit!
 
-[Kubecon NA]: https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/
+[kubecon na]:
+  https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/
