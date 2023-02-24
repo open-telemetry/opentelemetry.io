@@ -5,8 +5,8 @@ author: '[Sean Marciniak](https://github.com/MovieStoreGuy) (Atlassian)'
 ---
 
 As the collector community grows worldwide, having the ability to meet with each
-other is a challenge. To help more APAC maintainers and contributors connect,
-we have created two new meetings times:
+other is a challenge. To help more APAC maintainers and contributors connect, we
+have created two new meetings times:
 
 - 1st Wednesday is EU-APAC friendly
 - 3rd Wednesday is NA-APAC friendly
