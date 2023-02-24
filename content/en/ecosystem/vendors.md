@@ -4,7 +4,7 @@ description: Vendors who natively support OpenTelemetry
 aliases: [/vendors]
 # Note: the keywords after 'cSpell:ignore' must be on the same line, no wrapping, hence the Prettier ignore directive
 # prettier-ignore
-spelling: cSpell:ignore appdynamics aria aspecto bution coralogix daocloud datadoghq distri dynatrace gethelios grafana humio Instana kloudfuse lightstep logz logicmonitor lumigo observiq promscale sentrysoftware signoz solarwinds splunk sumologic uptrace vmware wavefront
+spelling: cSpell:ignore appdynamics aria aspecto bution chronosphere coralogix daocloud datadoghq distri dynatrace gethelios grafana humio Instana kloudfuse lightstep logz logicmonitor lumigo observiq promscale sentrysoftware signoz solarwinds splunk sumologic uptrace vmware wavefront
 ---
 
 [Distributions](/docs/concepts/distributions/) and vendors who natively support
@@ -17,6 +17,7 @@ OpenTelemetry in their commercial products.
 | Aspecto                    | Yes               | Yes         | [aspecto.io](https://www.aspecto.io)                                                                                                                  |
 | AWS                        | Yes               | No          | [aws-otel.github.io](https://aws-otel.github.io)                                                                                                      |
 | Azure                      | Yes               | No          | [docs.microsoft.com/...](https://docs.microsoft.com/azure/azure-monitor/app/opentelemetry-overview)                                                   |
+| Chronosphere               | No                | Yes         | [chronosphere.io/...](https://chronosphere.io/open-source/)  
 | Coralogix                  | Yes               | Yes         | [coralogix.com/...](https://coralogix.com/docs/opentelemetry/)                                                                                        |
 | DaoCloud                   | Yes               | Yes         | [docs.daocloud.io/...](https://docs.daocloud.io/en/insight/06UserGuide/01quickstart/otel/otel/)                                                       |
 | Datadog                    | Yes               | Yes         | [docs.datadoghq.com/...](https://docs.datadoghq.com/tracing/setup_overview/open_standards)                                                            |
