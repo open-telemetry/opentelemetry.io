@@ -21,14 +21,3 @@ Or, use a command-line switch:
 ```shell
 mypy --namespace-packages
 ```
-
-## Using the `strict` option
-
-If you're using the `strict` option with mypy, and you're using the
-OpenTelemetry Python SDK (instead of just the API), you'll need to also set the
-following in your project configuration file:
-
-```toml
-[mypy-opentelemetry.sdk.*]
-implicit_reexport = True
-```

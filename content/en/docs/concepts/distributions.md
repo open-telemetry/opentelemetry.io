@@ -1,13 +1,14 @@
 ---
-title: "Distributions"
+title: Distributions
 description: >-
- A distribution, not to be confused with a fork, is customized version of an OpenTelemetry component.
+  A distribution, not to be confused with a fork, is customized version of an
+  OpenTelemetry component.
 weight: 90
 ---
 
 The OpenTelemetry projects consists of multiple [components](../components) that
-support multiple [signals](../signals). The reference implementation
-of OpenTelemetry is available as:
+support multiple [signals](../signals). The reference implementation of
+OpenTelemetry is available as:
 
 - [Language-specific instrumentation libraries](../instrumenting)
 - [A Collector binary](../data-collection)
@@ -39,17 +40,18 @@ Distributions would broadly fall into the following categories:
   instrumentation libraries or vendor exporters not upstreamed to the
   OpenTelemetry project.
 - **"Minus":** These distributions provide a reduced set of functionality from
-  upstream. Examples of this would include the removal of
-  instrumentation libraries or receivers/processors/exporters/extensions found
-  in the OpenTelemetry Collector project. These distributions may be provided to
+  upstream. Examples of this would include the removal of instrumentation
+  libraries or receivers/processors/exporters/extensions found in the
+  OpenTelemetry Collector project. These distributions may be provided to
   increase supportability and security considerations.
 
 ## Who would create a distribution?
 
-Anyone could create a distribution. Today, several [vendors](/ecosystem/vendors/)
-offer distributions. In addition, end-users may consider creating a distribution
-if they wish to use components in the [Registry](/ecosystem/registry/) that are not
-upstreamed to the OpenTelemetry project.
+Anyone could create a distribution. Today, several
+[vendors](/ecosystem/vendors/) offer distributions. In addition, end-users may
+consider creating a distribution if they wish to use components in the
+[Registry](/ecosystem/registry/) that are not upstreamed to the OpenTelemetry
+project.
 
 ## Contribution or distribution?
 
