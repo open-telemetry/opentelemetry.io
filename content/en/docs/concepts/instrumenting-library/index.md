@@ -1,13 +1,11 @@
 ---
 title: Instrumenting libraries
-description: Learn how to add native instrumentation to your library
+description: Learn how to add native instrumentation to your library.
 weight: 40
 ---
 
-OpenTelemetry provides
-[instrumentation libraries][]
-for many libraries, which is typically done through library hooks or
-monkey-patching library code.
+OpenTelemetry provides [instrumentation libraries][] for many libraries, which
+is typically done through library hooks or monkey-patching library code.
 
 Native library instrumentation with OpenTelemetry provides better observability
 and developer experience for users, removing the need for libraries to expose
@@ -25,8 +23,8 @@ and document hooks:
 
 ## Semantic Conventions
 
-Check out available [semantic
-conventions]({{< relref "/docs/reference/specification/trace/semantic_conventions/" >}})
+Check out available
+[semantic conventions](/docs/reference/specification/trace/semantic_conventions/)
 that cover web-frameworks, RPC clients, databases, messaging clients, infra
 pieces and more!
 
@@ -47,9 +45,9 @@ are a good places to start!
 ## When **not** to instrument
 
 Some libraries are thin clients wrapping network calls. Chances are that
-OpenTelemetry has an instrumentation library for the underlying RPC client (check out
-the [registry](/ecosystem/registry/)). In this case, instrumenting the wrapper library
-may not be necessary.
+OpenTelemetry has an instrumentation library for the underlying RPC client
+(check out the [registry](/ecosystem/registry/)). In this case, instrumenting
+the wrapper library may not be necessary.
 
 Don't instrument if:
 
@@ -72,19 +70,18 @@ decide to do it.
 
 The first step is to take dependency on the OpenTelemetry API package.
 
-OpenTelemetry has [two main
-modules]({{< relref "/docs/reference/specification/overview" >}}) - API and SDK.
-OpenTelemetry API is a set of abstractions and not-operational implementations.
-Unless your application imports the OpenTelemetry SDK, your instrumentation does
-nothing and does not impact application performance.
+OpenTelemetry has [two main modules](/docs/reference/specification/overview/) -
+API and SDK. OpenTelemetry API is a set of abstractions and not-operational
+implementations. Unless your application imports the OpenTelemetry SDK, your
+instrumentation does nothing and does not impact application performance.
 
 **Libraries should only use the OpenTelemetry API.**
 
 You may be rightfully concerned about adding new dependencies, here are some
 considerations to help you decide how to minimize dependency hell:
 
-- OpenTelemetry Trace API reached stability in early 2021, it follows [Semantic
-  Versioning 2.0](/docs/reference/specification/versioning-and-stability)
+- OpenTelemetry Trace API reached stability in early 2021, it follows
+  [Semantic Versioning 2.0](/docs/reference/specification/versioning-and-stability)
   and we take API stability seriously.
 - When taking dependency, use the earliest stable OpenTelemetry API (1.0.\*) and
   avoid updating it unless you have to use new features.
@@ -100,13 +97,13 @@ considerations to help you decide how to minimize dependency hell:
   for your users.
 
   [stable, but subject to evolution]:
-      /docs/reference/specification/versioning-and-stability/#semantic-conventions-stability
+    /docs/reference/specification/versioning-and-stability/#semantic-conventions-stability
 
 ### Getting a tracer
 
 All application configuration is hidden from your library through the Tracer
-API. Libraries should obtain tracer from [global
-`TracerProvider`]({{< relref "/docs/reference/specification/trace/api#get-a-tracer" >}})
+API. Libraries should obtain tracer from
+[global `TracerProvider`](/docs/reference/specification/trace/api/#get-a-tracer)
 by default.
 
 ```java
@@ -168,8 +165,8 @@ private Response selectWithTracing(Query query) {
 ```
 
 Follow conventions to populate attributes! If there is no applicable one, check
-out [general
-conventions](/docs/reference/specification/trace/semantic_conventions/span-general/).
+out
+[general conventions](/docs/reference/specification/trace/semantic_conventions/span-general/).
 
 ### Nested network and other spans
 
@@ -213,8 +210,8 @@ should have a verbosity, logs are a better choice than traces.
 
 Chances are that your app uses logging or some similar module already. Your
 module might already have OpenTelemetry integration -- to find out, see the
-[registry](/ecosystem/registry/). Integrations usually stamp active trace context on all
-logs, so users can correlate them.
+[registry](/ecosystem/registry/). Integrations usually stamp active trace
+context on all logs, so users can correlate them.
 
 If your language and ecosystem don't have common logging support, use [span
 events][] to share additional app details. Events maybe more convenient if you
@@ -266,8 +263,8 @@ check out OpenTelemetry documentation in your language.
 In the case of a messaging system, you may receive more than one message at
 once. Received messages become
 [_links_](/docs/instrumentation/java/manual/#create-spans-with-links) on the
-span you create. Refer to [messaging
-conventions]({{< relref "/docs/reference/specification/trace/semantic_conventions/messaging" >}})
+span you create. Refer to
+[messaging conventions](/docs/reference/specification/trace/semantic_conventions/messaging/)
 for details (WARNING: messaging conventions are
 [under constructions](https://github.com/open-telemetry/oteps/pull/173) 🚧).
 
@@ -334,8 +331,8 @@ There might be some exceptions:
 
 ## Metrics
 
-[Metrics API]({{< relref "/docs/reference/specification/metrics/api" >}}) is not
-stable yet and we don't yet define metrics conventions.
+[Metrics API](/docs/reference/specification/metrics/api/) is not stable yet and
+we don't yet define metrics conventions.
 
 ## Misc
 
@@ -347,8 +344,8 @@ Please add your instrumentation library to the
 ### Performance
 
 OpenTelemetry API is no-op and very performant when there is no SDK in the
-application. When OpenTelemetry SDK is configured, it [consumes bound
-resources]({{< relref "/docs/reference/specification/performance" >}}).
+application. When OpenTelemetry SDK is configured, it
+[consumes bound resources](/docs/reference/specification/performance/).
 
 Real-life applications, especially on the high scale, would frequently have
 head-based sampling configured. Sampled-out spans are cheap and you can check if
@@ -372,8 +369,8 @@ if (span.isRecording()) {
 
 ### Error handling
 
-OpenTelemetry API is [forgiving at
-runtime]({{< relref "/docs/reference/specification/error-handling#basic-error-handling-principles" >}}) -
+OpenTelemetry API is
+[forgiving at runtime](/docs/reference/specification/error-handling/#basic-error-handling-principles) -
 does not fail on invalid arguments, never throws, and swallows exceptions. This
 way instrumentation issues do not affect application logic. Test the
 instrumentation to notice issues OpenTelemetry hides at runtime.
@@ -415,5 +412,6 @@ class TestExporter implements SpanExporter {
 }
 ```
 
-[instrumentation libraries]: /docs/reference/specification/overview/#instrumentation-libraries
+[instrumentation libraries]:
+  /docs/reference/specification/overview/#instrumentation-libraries
 [span events]: /docs/reference/specification/trace/api/#add-events

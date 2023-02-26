@@ -1,7 +1,6 @@
 ---
-title: "OTLP Exporter Configuration"
-description: >-
- Environment variables for configuring your OTLP Exporter.
+title: OTLP Exporter Configuration
+description: Environment variables for configuring your OTLP Exporter.
 weight: 2
 ---
 
@@ -18,21 +17,21 @@ endpoint and want one environment variable to control the endpoint.
 
 **Default value:**
 
-* gRPC: `"http://localhost:4317"`
-* HTTP: `"http://localhost:4318"`
+- gRPC: `"http://localhost:4317"`
+- HTTP: `"http://localhost:4318"`
 
 **Example:**
 
-* gRPC: `export OTEL_EXPORTER_OTLP_ENDPOINT="my-api-endpoint:443"`
-* HTTP: `export OTEL_EXPORTER_OTLP_ENDPOINT="http://my-api-endpoint/"`
+- gRPC: `export OTEL_EXPORTER_OTLP_ENDPOINT="my-api-endpoint:443"`
+- HTTP: `export OTEL_EXPORTER_OTLP_ENDPOINT="http://my-api-endpoint/"`
 
 For OTLP/HTTP, exporters in the SDK construct signal-specific URLs when this
 environment variable is set. This means that if you're sending traces, metrics,
 and logs, the following URLs are constructed from the example above:
 
-* Traces: `"http://my-api-endpoint/v1/traces"`
-* Metrics: `"http://my-api-endpoint/v1/metrics"`
-* Logs: `"http://my-api-endpoint/v1/logs"`
+- Traces: `"http://my-api-endpoint/v1/traces"`
+- Metrics: `"http://my-api-endpoint/v1/metrics"`
+- Logs: `"http://my-api-endpoint/v1/logs"`
 
 ### `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT`
 
@@ -41,28 +40,30 @@ end with `v1/traces` if using OTLP/HTTP.
 
 **Default value:**
 
-* gRPC: `"http://localhost:4317"`
-* HTTP: `"http://localhost:4318/v1/traces"`
+- gRPC: `"http://localhost:4317"`
+- HTTP: `"http://localhost:4318/v1/traces"`
 
 **Example:**
 
-* gRPC: `export OTEL_EXPORTER_OTLP_TRACES_ENDPOINT="my-api-endpoint:443"`
-* HTTP: `export OTEL_EXPORTER_OTLP_TRACES_ENDPOINT="http://my-api-endpoint/v1/traces"`
+- gRPC: `export OTEL_EXPORTER_OTLP_TRACES_ENDPOINT="my-api-endpoint:443"`
+- HTTP:
+  `export OTEL_EXPORTER_OTLP_TRACES_ENDPOINT="http://my-api-endpoint/v1/traces"`
 
 ### `OTEL_EXPORTER_OTLP_METRICS_ENDPOINT`
 
-Endpoint URL for metric data only, with an optionally-specified port number. Must
-end with `v1/metrics` if using OTLP/HTTP.
+Endpoint URL for metric data only, with an optionally-specified port number.
+Must end with `v1/metrics` if using OTLP/HTTP.
 
 **Default value:**
 
-* gRPC: `"http://localhost:4317"`
-* HTTP: `"http://localhost:4318/v1/metrics"`
+- gRPC: `"http://localhost:4317"`
+- HTTP: `"http://localhost:4318/v1/metrics"`
 
 **Example:**
 
-* gRPC: `export OTEL_EXPORTER_OTLP_METRICS_ENDPOINT="my-api-endpoint:443"`
-* HTTP: `export OTEL_EXPORTER_OTLP_METRICS_ENDPOINT="http://my-api-endpoint/v1/metrics"`
+- gRPC: `export OTEL_EXPORTER_OTLP_METRICS_ENDPOINT="my-api-endpoint:443"`
+- HTTP:
+  `export OTEL_EXPORTER_OTLP_METRICS_ENDPOINT="http://my-api-endpoint/v1/metrics"`
 
 ### `OTEL_EXPORTER_OTLP_LOGS_ENDPOINT`
 
@@ -71,13 +72,14 @@ end with `v1/logs` if using OTLP/HTTP.
 
 **Default value:**
 
-* gRPC: `"http://localhost:4317"`
-* HTTP: `"http://localhost:4318/v1/logs"`
+- gRPC: `"http://localhost:4317"`
+- HTTP: `"http://localhost:4318/v1/logs"`
 
 **Example:**
 
-* gRPC: `export OTEL_EXPORTER_OTLP_LOGS_ENDPOINT="my-api-endpoint:443"`
-* HTTP: `export OTEL_EXPORTER_OTLP_LOGS_ENDPOINT="http://my-api-endpoint/v1/logs"`
+- gRPC: `export OTEL_EXPORTER_OTLP_LOGS_ENDPOINT="my-api-endpoint:443"`
+- HTTP:
+  `export OTEL_EXPORTER_OTLP_LOGS_ENDPOINT="http://my-api-endpoint/v1/logs"`
 
 ## Header configuration
 
@@ -90,7 +92,8 @@ A list of headers to apply to all outgoing data (traces, metrics, and logs).
 
 **Default value:** N/A
 
-**Example:** `export OTEL_EXPORTER_OTLP_HEADERS="api-key=key,other-config-value=value"`
+**Example:**
+`export OTEL_EXPORTER_OTLP_HEADERS="api-key=key,other-config-value=value"`
 
 ### `OTEL_EXPORTER_OTLP_TRACES_HEADERS`
 
@@ -98,7 +101,8 @@ A list of headers to apply to all outgoing traces.
 
 **Default value:** N/A
 
-**Example:** `export OTEL_EXPORTER_OTLP_TRACES_HEADERS="api-key=key,other-config-value=value"`
+**Example:**
+`export OTEL_EXPORTER_OTLP_TRACES_HEADERS="api-key=key,other-config-value=value"`
 
 ### `OTEL_EXPORTER_OTLP_METRICS_HEADERS`
 
@@ -106,7 +110,8 @@ A list of headers to apply to all outgoing metrics.
 
 **Default value:** N/A
 
-**Example:** `export OTEL_EXPORTER_OTLP_METRICS_HEADERS="api-key=key,other-config-value=value"`
+**Example:**
+`export OTEL_EXPORTER_OTLP_METRICS_HEADERS="api-key=key,other-config-value=value"`
 
 ### `OTEL_EXPORTER_OTLP_LOGS_HEADERS`
 
@@ -114,7 +119,8 @@ A list of headers to apply to all outgoing logs.
 
 **Default value:** N/A
 
-**Example:** `export OTEL_EXPORTER_OTLP_LOGS_HEADERS="api-key=key,other-config-value=value"`
+**Example:**
+`export OTEL_EXPORTER_OTLP_LOGS_HEADERS="api-key=key,other-config-value=value"`
 
 ## Timeout Configuration
 
@@ -123,7 +129,8 @@ an OTLP Exporter will wait before transmitting the net batch of data.
 
 ### `OTEL_EXPORTER_OTLP_TIMEOUT`
 
-The timeout value for all outgoing data (traces, metrics, and logs) in milliseconds.
+The timeout value for all outgoing data (traces, metrics, and logs) in
+milliseconds.
 
 **Default value:** `10000` (10s)
 
@@ -157,40 +164,43 @@ The timeout value for all outgoing logs in milliseconds.
 
 Specifies the OTLP transport protocol to be used for all telemetry data.
 
-**Default value:** SDK-dependent, but will typically be either `http/protobuf` or `grpc`.
+**Default value:** SDK-dependent, but will typically be either `http/protobuf`
+or `grpc`.
 
 **Example:** `export OTEL_EXPORTER_OTLP_PROTOCOL=grpc`
 
 Valid values are:
 
-* `grpc` to use OTLP/gRPC
-* `http/protobuf` to use OTLP/HTTP + protobuf
-* `http/json` to use OTLP/HTTP + json
+- `grpc` to use OTLP/gRPC
+- `http/protobuf` to use OTLP/HTTP + protobuf
+- `http/json` to use OTLP/HTTP + json
 
 ### `OTEL_EXPORTER_OTLP_TRACES_PROTOCOL`
 
 Specifies the OTLP transport protocol to be used for trace data.
 
-**Default value:** SDK-dependent, but will typically be either `http/protobuf` or `grpc`.
+**Default value:** SDK-dependent, but will typically be either `http/protobuf`
+or `grpc`.
 
 **Example:** `export OTEL_EXPORTER_OTLP_TRACES_PROTOCOL=grpc`
 
 Valid values are:
 
-* `grpc` to use OTLP/gRPC
-* `http/protobuf` to use OTLP/HTTP + protobuf
-* `http/json` to use OTLP/HTTP + json
+- `grpc` to use OTLP/gRPC
+- `http/protobuf` to use OTLP/HTTP + protobuf
+- `http/json` to use OTLP/HTTP + json
 
 ### `OTEL_EXPORTER_OTLP_METRICS_PROTOCOL`
 
 Specifies the OTLP transport protocol to be used for metrics data.
 
-**Default value:** SDK-dependent, but will typically be either `http/protobuf` or `grpc`.
+**Default value:** SDK-dependent, but will typically be either `http/protobuf`
+or `grpc`.
 
 **Example:** `export OTEL_EXPORTER_OTLP_METRICS_PROTOCOL=grpc`
 
 Valid values are:
 
-* `grpc` to use OTLP/gRPC
-* `http/protobuf` to use OTLP/HTTP + protobuf
-* `http/json` to use OTLP/HTTP + json
+- `grpc` to use OTLP/gRPC
+- `http/protobuf` to use OTLP/HTTP + protobuf
+- `http/json` to use OTLP/HTTP + json
