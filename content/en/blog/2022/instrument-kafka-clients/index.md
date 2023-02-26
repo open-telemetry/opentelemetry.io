@@ -2,7 +2,7 @@
 title: Instrumenting Apache Kafka clients with OpenTelemetry
 linkTitle: Instrumenting Apache Kafka clients
 date: 2022-09-06
-author: "[Paolo Patierno](https://github.com/ppatierno)"
+author: '[Paolo Patierno](https://github.com/ppatierno)'
 ---
 
 Nowadays, [Apache Kafka](https://kafka.apache.org/) is chosen as the nervous

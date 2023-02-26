@@ -4,7 +4,7 @@ linkTitle: Instrument Apache Http Server
 date: 2022-05-27
 spelling:
   cSpell:ignore Centos centos7 Debajit debuggability libmod OLTP uncompress
-author: "[Debajit Das](https://github.com/DebajitDas) (Cisco)"
+author: '[Debajit Das](https://github.com/DebajitDas) (Cisco)'
 ---
 
 If you are using Apache Web Server and in dire need of some observability tool
