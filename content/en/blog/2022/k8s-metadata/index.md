@@ -81,9 +81,9 @@ kind: ClusterRole
 metadata:
   name: otel-collector
 rules:
-  - apiGroups: [""]
-    resources: ["pods", "namespaces"]
-    verbs: ["get", "watch", "list"]
+  - apiGroups: ['']
+    resources: ['pods', 'namespaces']
+    verbs: ['get', 'watch', 'list']
 ```
 
 Next, deploy the collector in daemonset mode. We recommend that you set a filter

@@ -17,10 +17,7 @@ package-lock.json
 /assets/**/*.js
 /content/en/blog/2019
 /content/en/blog/2021
-/content/en/blog/2022
-/content/en/docs/concepts
 /content/en/docs/demo
-/content/en/docs/instrumentation/go
 /data
 /resources
 /scripts

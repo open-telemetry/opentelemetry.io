@@ -1,15 +1,15 @@
 ---
-title: "General SDK Configuration"
+title: General SDK Configuration
 description: >-
- General-purpose environment variables for configuring an OpenTelemetry SDK.
+  General-purpose environment variables for configuring an OpenTelemetry SDK.
 weight: 1
 ---
 
 ## `OTEL_SERVICE_NAME`
 
 Sets the value of the
-[`service.name`](/docs/reference/specification/resource/semantic_conventions/#service) resource
-attribute.
+[`service.name`](/docs/reference/specification/resource/semantic_conventions/#service)
+resource attribute.
 
 **Default value:** `"unknown_service"`
 
@@ -22,14 +22,14 @@ If `service.name` is also provided in `OTEL_RESOURCE_ATTRIBUTES`, then
 
 ## `OTEL_RESOURCE_ATTRIBUTES`
 
-Key-value pairs to be used as resource attributes. See [Resource
-SDK](/docs/reference/specification/resource/sdk#specifying-resource-information-via-an-environment-variable)
+Key-value pairs to be used as resource attributes. See
+[Resource SDK](/docs/reference/specification/resource/sdk#specifying-resource-information-via-an-environment-variable)
 for more details.
 
 **Default value:** Empty.
 
-See [Resource semantic
-conventions](/docs/reference/specification/resource/semantic_conventions/#semantic-attributes-with-sdk-provided-default-value)
+See
+[Resource semantic conventions](/docs/reference/specification/resource/semantic_conventions/#semantic-attributes-with-sdk-provided-default-value)
 for semantic conventions to follow for common resource types.
 
 **Example:**
@@ -56,8 +56,8 @@ Accepted values for `OTEL_TRACES_SAMPLER` are:
 - `"parentbased_traceidratio"`: `ParentBased(root=TraceIdRatioBased)`
 - `"parentbased_jaeger_remote"`: `ParentBased(root=JaegerRemoteSampler)`
 - `"jaeger_remote"`: `JaegerRemoteSampler`
-- `"xray"`: [AWS X-Ray Centralized
-  Sampling](https://docs.aws.amazon.com/xray/latest/devguide/xray-console-sampling.html)
+- `"xray"`:
+  [AWS X-Ray Centralized Sampling](https://docs.aws.amazon.com/xray/latest/devguide/xray-console-sampling.html)
   (_third party_)
 
 ## `OTEL_TRACES_SAMPLER_ARG`
@@ -89,9 +89,9 @@ be set as follows:
   - `endpoint`: the endpoint in form of `scheme://host:port` of gRPC server that
     serves the sampling strategy for the service
     ([sampling.proto](https://github.com/jaegertracing/jaeger-idl/blob/master/proto/api_v2/sampling.proto)).
-  - `pollingIntervalMs`:  in milliseconds indicating how often the sampler will
+  - `pollingIntervalMs`: in milliseconds indicating how often the sampler will
     poll the backend for updates to sampling strategy.
-  - `initialSamplingRate`:  in the [0..1] range, which is used as the sampling
+  - `initialSamplingRate`: in the [0..1] range, which is used as the sampling
     probability when the backend cannot be reached to retrieve a sampling
     strategy. This value stops having an effect once a sampling strategy is
     retrieved successfully, as the remote strategy will be used until a new
@@ -111,15 +111,18 @@ Accepted values for `OTEL_PROPAGATORS` are:
 
 - `"tracecontext"`: [W3C Trace Context](https://www.w3.org/TR/trace-context/)
 - `"baggage"`: [W3C Baggage](https://www.w3.org/TR/baggage/)
-- `"b3"`: [B3 Single](/docs/reference/specification/context/api-propagators#configuration)
-- `"b3multi"`: [B3 Multi](/docs/reference/specification/context/api-propagators#configuration)
+- `"b3"`:
+  [B3 Single](/docs/reference/specification/context/api-propagators#configuration)
+- `"b3multi"`:
+  [B3 Multi](/docs/reference/specification/context/api-propagators#configuration)
 - `"jaeger"`:
   [Jaeger](https://www.jaegertracing.io/docs/1.21/client-libraries/#propagation-format)
-- `"xray"`: [AWS
-  X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html#xray-concepts-tracingheader)
+- `"xray"`:
+  [AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html#xray-concepts-tracingheader)
   (_third party_)
-- `"ottrace"`: [OT
-  Trace](https://github.com/opentracing?q=basic&type=&language=) (_third party_)
+- `"ottrace"`:
+  [OT Trace](https://github.com/opentracing?q=basic&type=&language=) (_third
+  party_)
 - `"none"`: No automatically configured propagator.
 
 ## `OTEL_TRACES_EXPORTER`
@@ -152,7 +155,8 @@ Specifies which exporter is used for metrics.
 Accepted values for `OTEL_METRICS_EXPORTER` are:
 
 - `"otlp"`: [OTLP][spec-otlp]
-- `"prometheus"`: [Prometheus](https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md)
+- `"prometheus"`:
+  [Prometheus](https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md)
 - `"none"`: No automatically configured exporter for metrics.
 
 ## `OTEL_LOGS_EXPORTER`
