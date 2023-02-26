@@ -206,7 +206,6 @@ Next, install the Prometheus exporter:
 
 ```
 dotnet add package OpenTelemetry.Exporter.Prometheus.AspNetCore --prerelease
-dotnet add package OpenTelemetry.Exporter.Prometheus.HttpListener --prerelease
 dotnet add package OpenTelemetry.Extensions.Hosting --prerelease
 ```
 
@@ -240,6 +239,18 @@ using var tracerProvider = Sdk.CreateMeterProviderBuilder()
 
     .Build();
 ```
+
+Finally, register the Prometheus scraping middleware using the
+  `UseOpenTelemetryPrometheusScrapingEndpoint` extension method
+  on `IApplicationBuilder` :
+
+```csharp
+var builder = WebApplication.CreateBuilder(args);
+var app = builder.Build();
+app.UseOpenTelemetryPrometheusScrapingEndpoint(); 
+```
+    
+Further details on configuring the Prometheus exporter can be found [here](https://github.com/open-telemetry/opentelemetry-dotnet/blob/main/src/OpenTelemetry.Exporter.Prometheus.AspNetCore/README.md).
 
 ## Next steps
 
