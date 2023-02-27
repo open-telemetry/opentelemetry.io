@@ -75,8 +75,8 @@ func createClient(ctx context.Context, svcAddr string) (*grpc.ClientConn, error)
 ### Adding Kafka ( Sarama ) auto-instrumentation
 
 This service will write the processed results onto a Kafka topic which will then
-be in turn be processed by other microservices.
-To instrument the Kafka client the Producer has to be wrapped after it has been created.
+be in turn be processed by other microservices. To instrument the Kafka client
+the Producer has to be wrapped after it has been created.
 
 ```go
     saramaConfig := sarama.NewConfig()
@@ -111,8 +111,8 @@ object. In the `PlaceOrder` function several attributes are added to the span.
 ### Add span events
 
 Adding span events is accomplished using `AddEvent` on the span object. In the
-`PlaceOrder` function several span events are added. Some events have
-additional attributes, others do not.
+`PlaceOrder` function several span events are added. Some events have additional
+attributes, others do not.
 
 Adding a span event without attributes:
 

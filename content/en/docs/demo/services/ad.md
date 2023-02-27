@@ -4,8 +4,8 @@ linkTitle: Ad
 aliases: [/docs/demo/services/adservice]
 ---
 
-This service determines appropriate ads to serve to users based on context
-keys. The ads will be for products available in the store.
+This service determines appropriate ads to serve to users based on context keys.
+The ads will be for products available in the store.
 
 [Ad service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/adservice/)
 
@@ -64,9 +64,8 @@ span status is set when an exception is caught.
 
 New spans can be created and started using
 `Tracer.spanBuilder("spanName").startSpan()`. Newly created spans should be set
-into context using `Span.makeCurrent()`. The `getRandomAds` function will
-create a new span, set it into context, perform an operation, and finally end
-the span.
+into context using `Span.makeCurrent()`. The `getRandomAds` function will create
+a new span, set it into context, perform an operation, and finally end the span.
 
 ```java
     // create and start a new span manually
@@ -92,9 +91,9 @@ the span.
 ### Initializing Metrics
 
 Similar to creating spans, the first step in creating metrics is initializing a
-`Meter` instance, e.g. `GlobalOpenTelemetry.getMeter("adservice")`.  From
-there, use the various builder methods available on the `Meter` instance to
-create the desired metric instrument, e.g.:
+`Meter` instance, e.g. `GlobalOpenTelemetry.getMeter("adservice")`. From there,
+use the various builder methods available on the `Meter` instance to create the
+desired metric instrument, e.g.:
 
 ```java
 meter
@@ -112,16 +111,16 @@ characters transformed to `_`.
 
 The following custom metrics are currently available:
 
-* `app.ads.ad_requests`: A counter of ad requests with dimensions describing
-whether the request was targeted with context keys or not, and whether the
-response was targeted or random ads.
+- `app.ads.ad_requests`: A counter of ad requests with dimensions describing
+  whether the request was targeted with context keys or not, and whether the
+  response was targeted or random ads.
 
 #### Auto-instrumented metrics
 
 The following auto-instrumented metrics are available for the application:
 
-* [Runtime metrics for the JVM](/docs/reference/specification/metrics/semantic_conventions/runtime-environment-metrics/#jvm-metrics).
-* [Latency metrics for RPCs](/docs/reference/specification/metrics/semantic_conventions/rpc-metrics/#rpc-server)
+- [Runtime metrics for the JVM](/docs/reference/specification/metrics/semantic_conventions/runtime-environment-metrics/#jvm-metrics).
+- [Latency metrics for RPCs](/docs/reference/specification/metrics/semantic_conventions/rpc-metrics/#rpc-server)
 
 ## Logs
 
