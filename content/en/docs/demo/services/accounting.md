@@ -4,8 +4,8 @@ linkTitle: Accounting
 aliases: [/docs/demo/services/accountingservice]
 ---
 
-This service calculates the total amount of sold products.
-This is only mocked and received orders are printed out.
+This service calculates the total amount of sold products. This is only mocked
+and received orders are printed out.
 
 [Accounting Service](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/accountingservice/)
 
@@ -53,9 +53,8 @@ deferred function in main
 ### Adding Kafka ( Sarama ) auto-instrumentation
 
 This service will receive the processed results of the Checkout Service via a
-Kafka topic.
-To instrument the Kafka client the ConsumerHandler implemented by the developer
-has to be wrapped.
+Kafka topic. To instrument the Kafka client the ConsumerHandler implemented by
+the developer has to be wrapped.
 
 ```go
     handler := groupHandler{} // implements sarama.ConsumerGroupHandler

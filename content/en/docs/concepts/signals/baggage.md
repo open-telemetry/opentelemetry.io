@@ -1,7 +1,5 @@
 ---
 title: Baggage
-description: >-
-  Baggage refers to contextual information that’s passed between spans.
 weight: 4
 ---
 

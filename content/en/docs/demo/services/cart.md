@@ -9,18 +9,17 @@ with a Redis caching service for fast access to shopping cart data.
 
 [Cart service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/cartservice/)
 
-> **Note**
-> OpenTelemetry for .NET uses the `System.Diagnostic` library as its API
-> in lieu of the standard OpenTelemetry API.
+> **Note** OpenTelemetry for .NET uses the `System.Diagnostic` library as its
+> API in lieu of the standard OpenTelemetry API.
 
 ## Traces
 
 ### Initializing Tracing
 
-OpenTelemetry is configured in the .NET DI container. The
-`AddOpenTelemetry()` builder method is used to configure desired
-instrumentation libraries, add exporters, and set other options. Configuration
-of the exporter and resource attributes is performed through environment variables.
+OpenTelemetry is configured in the .NET DI container. The `AddOpenTelemetry()`
+builder method is used to configure desired instrumentation libraries, add
+exporters, and set other options. Configuration of the exporter and resource
+attributes is performed through environment variables.
 
 ```cs
 services.AddOpenTelemetry().WithTracing(builder => builder
@@ -73,8 +72,8 @@ added.
 ### Initializing Metrics
 
 Similar to configuring OpenTelemetry Traces, the .NET DI container requires a
-call to `AddOpenTelemetry()`. This builder configures desired
-instrumentation libraries, exporters, etc.
+call to `AddOpenTelemetry()`. This builder configures desired instrumentation
+libraries, exporters, etc.
 
 ```cs
 services.AddOpenTelemetry().WithMetrics(builder => builder

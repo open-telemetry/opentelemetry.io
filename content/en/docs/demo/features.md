@@ -10,18 +10,18 @@ aliases: [/docs/demo/demo_features]
   only with Docker.
 - **[gRPC](https://grpc.io)**: microservices use a high volume of gRPC calls to
   communicate to each other.
-- **[HTTP](https://www.rfc-editor.org/rfc/rfc9110.html)**: microservices use HTTP
-  where gRPC is unavailable or not well supported.
+- **[HTTP](https://www.rfc-editor.org/rfc/rfc9110.html)**: microservices use
+  HTTP where gRPC is unavailable or not well supported.
 - **[OpenTelemetry Traces](https://opentelemetry.io)**: all services are
   instrumented using OpenTelemetry available instrumentation libraries.
 - **[OpenTelemetry Metrics](https://opentelemetry.io)**: Select services are
-instrumented using OpenTelemetry available instrumentation libraries. More will
-be added as the relevant SDKs are released.
-- **[OpenTelemetry
-  Collector](/docs/collector/getting-started)**: all
-  services are instrumented and sending the generated traces and metrics to the
+  instrumented using OpenTelemetry available instrumentation libraries. More
+  will be added as the relevant SDKs are released.
+- **[OpenTelemetry Collector](/docs/collector/getting-started)**: all services
+  are instrumented and sending the generated traces and metrics to the
   OpenTelemetry Collector via gRPC. The received traces are then exported to the
-  logs and to Jaeger; received metrics and exemplars* are exported to logs and Prometheus.
+  logs and to Jaeger; received metrics and exemplars\* are exported to logs and
+  Prometheus.
 - **[Jaeger](https://www.jaegertracing.io)**: all generated traces are being
   sent to Jaeger.
 - **Synthetic Load Generation**: the application demo comes with a background
@@ -36,5 +36,6 @@ be added as the relevant SDKs are released.
   flag service.
 
 _\*Only exemplars attached to histograms are currently exported to Prometheus.
-See [issue in the collector](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/18201)
+See
+[issue in the collector](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/18201)
 for details._

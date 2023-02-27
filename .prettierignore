@@ -23,9 +23,6 @@ package-lock.json
 /.github
 /archetypes
 /assets/**/*.js
-/content/en/blog/2019
-/content/en/blog/2021
-/content/en/docs/demo
 /data
 /resources
 /scripts

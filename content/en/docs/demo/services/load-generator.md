@@ -3,9 +3,9 @@ title: Load Generator
 aliases: [/docs/demo/services/loadgenerator]
 ---
 
-The load generator is based on the Python load testing framework [Locust](https://locust.io).
-By default it will simulate users requesting several different routes from the
-frontend.
+The load generator is based on the Python load testing framework
+[Locust](https://locust.io). By default it will simulate users requesting
+several different routes from the frontend.
 
 [Load generator source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/loadgenerator/)
 
@@ -13,9 +13,10 @@ frontend.
 
 ### Initializing Tracing
 
-Since this service is a [locustfile](https://docs.locust.io/en/stable/writing-a-locustfile.html),
-the The OpenTelemetry SDK is initialized after the import statements. This code
-will create a tracer provider, and establish a Span Processor to use. Export
+Since this service is a
+[locustfile](https://docs.locust.io/en/stable/writing-a-locustfile.html), the
+The OpenTelemetry SDK is initialized after the import statements. This code will
+create a tracer provider, and establish a Span Processor to use. Export
 endpoints, resource attributes, and service name are automatically set using
 [OpenTelemetry environment variables](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/sdk-environment-variables.md).
 

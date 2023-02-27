@@ -4,9 +4,9 @@ linkTitle: Architecture
 aliases: [/docs/demo/current_architecture]
 ---
 
-**OpenTelemetry Demo** is composed of microservices written in different programming
-languages that talk to each other over gRPC and HTTP; and a load generator which
-uses [Locust](https://locust.io/) to fake user traffic.
+**OpenTelemetry Demo** is composed of microservices written in different
+programming languages that talk to each other over gRPC and HTTP; and a load
+generator which uses [Locust](https://locust.io/) to fake user traffic.
 
 ```mermaid
 graph TD
@@ -114,14 +114,12 @@ classDef typescript fill:#e98516,color:black;
 ```
 
 Follow these links for the current state of
- [metric](/docs/demo/metric-features/)
- and
- [trace](/docs/demo/trace-features/)
- instrumentation of the demo applications.
+[metric](/docs/demo/metric-features/) and [trace](/docs/demo/trace-features/)
+instrumentation of the demo applications.
 
 The collector is configured in
- [otelcol-config.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otelcollector/otelcol-config.yml),
- alternative exporters can be configured here.
+[otelcol-config.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otelcollector/otelcol-config.yml),
+alternative exporters can be configured here.
 
 ```mermaid
 graph TB

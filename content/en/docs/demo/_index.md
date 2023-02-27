@@ -21,19 +21,19 @@ Want to deploy the demo and see it in action? Start here.
 Want to understand how a particular language's instrumentation works? Start
 here.
 
-| Language      | Auto Instrumentation                                                                                                                                                       | Manual Instrumentation                                                                                              |
-|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|
-| .NET          | [Cart Service](services/cart/)                                                                                                                                  | [Cart Service](services/cart/)                                                                           |
-| C++           |                                                                                                                                                                            | [Currency Service](services/currency/)                                                                   |
-| Erlang/Elixir | [Feature Flag Service](services/feature-flag/)                                                                                                                   | [Feature Flag Service](services/feature-flag/)                                                            |
-| Go            | [Accounting Service](services/accounting/), [Checkout Service](services/checkout/), [Product Catalog Service]( services/product-catalog/ ) | [Checkout Service](services/checkout/), [Product Catalog Service]( services/product-catalog/ ) |
-| Java          | [Ad Service](services/ad/)                                                                                                                                      | [Ad Service](services/ad/)                                                                               |
-| JavaScript    | [Frontend]( services/frontend/ )                                                                                                                                       | [Frontend](services/frontend/), [Payment Service](services/payment/)                                 |
-| Kotlin        | [Fraud Detection Service]( services/fraud-detection/ )                                                                                                           |                                                                                                                     |
-| PHP           | [Quote Service](services/quote/)                                                                                                                                | [Quote Service](services/quote/)                                                                         |
-| Python        | [Recommendation Service](services/recommendation/)                                                                                                              | [Recommendation Service](services/recommendation/)                                                       |
-| Ruby          | [Email Service](services/email/)                                                                                                                                | [Email Service](services/email/)                                                                         |
-| Rust          | [Shipping Service](services/shipping/)                                                                                                                          | [Shipping Service](services/shipping/)                                                                   |
+| Language      | Auto Instrumentation                                                                                                                     | Manual Instrumentation                                                                       |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| .NET          | [Cart Service](services/cart/)                                                                                                           | [Cart Service](services/cart/)                                                               |
+| C++           |                                                                                                                                          | [Currency Service](services/currency/)                                                       |
+| Erlang/Elixir | [Feature Flag Service](services/feature-flag/)                                                                                           | [Feature Flag Service](services/feature-flag/)                                               |
+| Go            | [Accounting Service](services/accounting/), [Checkout Service](services/checkout/), [Product Catalog Service](services/product-catalog/) | [Checkout Service](services/checkout/), [Product Catalog Service](services/product-catalog/) |
+| Java          | [Ad Service](services/ad/)                                                                                                               | [Ad Service](services/ad/)                                                                   |
+| JavaScript    | [Frontend](services/frontend/)                                                                                                           | [Frontend](services/frontend/), [Payment Service](services/payment/)                         |
+| Kotlin        | [Fraud Detection Service](services/fraud-detection/)                                                                                     |                                                                                              |
+| PHP           | [Quote Service](services/quote/)                                                                                                         | [Quote Service](services/quote/)                                                             |
+| Python        | [Recommendation Service](services/recommendation/)                                                                                       | [Recommendation Service](services/recommendation/)                                           |
+| Ruby          | [Email Service](services/email/)                                                                                                         | [Email Service](services/email/)                                                             |
+| Rust          | [Shipping Service](services/shipping/)                                                                                                   | [Shipping Service](services/shipping/)                                                       |
 
 ## Service Documentation
 
@@ -63,7 +63,8 @@ We'll be adding more scenarios over time.
 
 - Generate a [Product Catalog error](feature-flags) for `GetProduct` requests
   with product id: `OLJCESPC7Z` using the Feature Flag service
-- Discover a memory leak and diagnose it using metrics and traces. [Read more](scenarios/recommendation-cache/)
+- Discover a memory leak and diagnose it using metrics and traces.
+  [Read more](scenarios/recommendation-cache/)
 
 ## Reference
 
