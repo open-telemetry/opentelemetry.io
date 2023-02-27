@@ -6,8 +6,8 @@ labels: feature request
 assignees: ''
 ---
 
-**Desired feature or idea.** What would you like to see happen?
+**Desired feature or idea**: What would you like to see happen?
 
-**Additional context** Anything else you can think about that would be helpful.
+**Additional context**: anything else you can think about that would be helpful.
 
 _Please delete paragraphs that you did not use before submitting._

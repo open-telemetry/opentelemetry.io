@@ -14,8 +14,8 @@ assignees: ''
 relative path and page title where you found a problem.
 
 **What browser, OS, and platform were you using when you encountered the
-problem?** Please include the browser version if you know it as well.
+problem?** Include the browser version if you know it as well.
 
-**Additional context** Anything else you can think about that would be helpful.
+**Additional context**: anything else you can think about that would be helpful.
 
 _Please delete paragraphs that you did not use before submitting._
