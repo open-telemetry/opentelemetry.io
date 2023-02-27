@@ -92,7 +92,7 @@ More details can be found in the instrumentation
 
 ### AWS Lambda function handler
 
-Now that you have a Lambda wrapper, create a simple handler that servers as a
+Now that you have a Lambda wrapper, create a simple handler that serves as a
 Lambda function. Save the following code as `handler.js`.
 
 ```javascript

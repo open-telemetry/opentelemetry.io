@@ -173,12 +173,16 @@ services:
 
 module:
   mounts:
-    - source: tmp/specification
-      target: content/docs/reference/specification
-    - source: tmp/community/roadmap.md
-      target: content/community/roadmap.md
     - source: content/en
       target: content
+    - source: content-modules/opentelemetry-go/website_docs
+      target: content/docs/instrumentation/go
+    - source: tmp/specification
+      target: content/docs/reference/specification
+    - source: tmp/community/mission-vision-values.md
+      target: content/community/mission.md
+    - source: tmp/community/roadmap.md
+      target: content/community/roadmap.md
     - source: static
       target: static
     - source: content-modules/opentelemetry-specification/schemas

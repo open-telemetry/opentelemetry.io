@@ -2,7 +2,7 @@
 title: Announcing a Community Demo for OpenTelemetry
 linkTitle: OpenTelemetry Community Demo
 date: 2022-06-20
-author: "[Carter Socha](https://github.com/cartersocha)"
+author: '[Carter Socha](https://github.com/cartersocha)'
 ---
 
 ## TL;DR
@@ -15,8 +15,8 @@ scenarios will be documented for each signal, with fault injection, and more!
 
 If you want to skip the details then clone our
 [repo](https://github.com/open-telemetry/opentelemetry-demo) then run
-`docker compose up` from the command line. There are a couple [technology
-requirements](https://github.com/open-telemetry/opentelemetry-demo-webstore#local-quickstart)
+`docker compose up` from the command line. There are a couple
+[technology requirements](https://github.com/open-telemetry/opentelemetry-demo-webstore#local-quickstart)
 so be sure to check those out too.
 
 The demo takes 15-20 minutes to build the first time so we encourage you to do
@@ -24,8 +24,7 @@ some stretching and take a water break in the meantime.
 
 Your command line output should look like this:
 
-![Screenshot of the console output.](otel-webstore-app-output.png
-"Screenshot of the console output")
+![Screenshot of the console output.](otel-webstore-app-output.png 'Screenshot of the console output')
 
 - Once the images are built you can access the Webstore at:
   <http://localhost:8080>
@@ -54,48 +53,50 @@ backend choice, and they’re overly reliant on instrumentation libraries.
 ### Project Goals
 
 - Provide developers with a robust sample application they can use in learning
-OpenTelemetry instrumentation.
+  OpenTelemetry instrumentation.
 - Provide observability vendors with a single, well-supported, demo platform
-that they can further customize or simply use OOB.
+  that they can further customize or simply use OOB.
 - Provide the OpenTelemetry community with a living artifact that demonstrates
-the features and capabilities of OTel APIs, SDKs, and tools.
+  the features and capabilities of OTel APIs, SDKs, and tools.
 - Provide OpenTelemetry maintainers and working groups a platform to demonstrate
-new features/concepts in real world like scenarios.
+  new features/concepts in real world like scenarios.
 
 ## Current State
 
 As a starting point, we have selected a fork of the popular GCP microservices
 demo. Our first feature additions have been to simplify local deployment by
 consolidating the project onto a single docker compose file, updating the
-documentation, and replacing a pre-existing service with a Ruby example. Otherwise
-the pre-existing feature set from the GCP demo remains the same:
+documentation, and replacing a pre-existing service with a Ruby example.
+Otherwise the pre-existing feature set from the GCP demo remains the same:
 
 - 10 application microservice with support for 6 languages (C#, Go, Java,
-Node.js, Python, and Ruby)
+  Node.js, Python, and Ruby)
   - Ruby support was added within the last 2 weeks of publishing date
 - Designed to work on docker locally
 - Uses redis cache
 - Auto-instrumentation using instrumentation libraries Tracing support for the
-gRPC, Redis, and HTTP libraries
-- Jaeger visualizations for distributed traces, forwarded by OpenTelemetry collector
-- Always on sampling (100% of telemetry is submitted) and synthetic load generation
+  gRPC, Redis, and HTTP libraries
+- Jaeger visualizations for distributed traces, forwarded by OpenTelemetry
+  collector
+- Always on sampling (100% of telemetry is submitted) and synthetic load
+  generation
 
 ### Current Architecture
 
 ![Screenshot of the current
-architecture.](current-demo-architecture.png "Screenshot of the
-current architecture")
+architecture.](current-demo-architecture.png 'Screenshot of the
+current architecture')
 
 ### BYOB (Bring Your Own Backend)
 
 Jaeger is great (really) but what if you want to try this out with your APM
 vendor of choice? You can send data to your preferred backend by simply changing
-the [Collector
-config file](https://github.com/open-telemetry/opentelemetry-demo#bring-your-own-backend)
+the
+[Collector config file](https://github.com/open-telemetry/opentelemetry-demo#bring-your-own-backend)
 to use their Collector exporter or by using your vendor's fork of our demo.
 
-Lightstep has an [excellent
-blog](https://lightstep.com/blog/observability-mythbusters-how-hard-is-it-to-get-started-with-opentelemetry)
+Lightstep has an
+[excellent blog](https://lightstep.com/blog/observability-mythbusters-how-hard-is-it-to-get-started-with-opentelemetry)
 they just published on how to get started sending data to power their
 experiences from their forked version of our demo.
 
@@ -111,14 +112,12 @@ ourselves to just the items listed here.
 - Language examples for
   [C++](https://github.com/open-telemetry/opentelemetry-demo/issues/36),
   Erlang/elixir,
-  [PHP](https://github.com/open-telemetry/opentelemetry-demo/issues/34),
-  and
+  [PHP](https://github.com/open-telemetry/opentelemetry-demo/issues/34), and
   [Rust](https://github.com/open-telemetry/opentelemetry-demo/issues/35)
 - Extend support to
-  [Metrics](https://github.com/open-telemetry/opentelemetry-demo/issues/43)
-  and
-  [Logs](https://github.com/open-telemetry/opentelemetry-demo/issues/44)
-  for all GA SDKs
+  [Metrics](https://github.com/open-telemetry/opentelemetry-demo/issues/43) and
+  [Logs](https://github.com/open-telemetry/opentelemetry-demo/issues/44) for all
+  GA SDKs
 - Visualization components to consume Metrics
 - Implementation of multiple instrumentation techniques
 - Auto-instrumentation using the agent in a sidecar
@@ -127,8 +126,8 @@ ourselves to just the items listed here.
   definition and tracking
 - Additional instrumentation libraries introduced where needed
 - Demonstratations of the ability to add
-  [Baggage](https://github.com/open-telemetry/opentelemetry-demo/issues/100)
-  and other custom tags
+  [Baggage](https://github.com/open-telemetry/opentelemetry-demo/issues/100) and
+  other custom tags
 - Continue to build on other cloud-native technologies like:
   - Kubernetes
   - gRPC
@@ -143,15 +142,14 @@ ourselves to just the items listed here.
 
 ### Future Architecture
 
-![Screenshot of the future architecture.](future-demo-architecture.png
-"Screenshot of the future architecture")
+![Screenshot of the future architecture.](future-demo-architecture.png 'Screenshot of the future architecture')
 
 ## Going Forward
 
 We’re still at the beginning of our journey but there’s great momentum behind
 this project. If you’re interested in contributing we’d love your support. There
-are links in our GitHub repo on how to get involved and you can [track our overall
-progress](https://github.com/open-telemetry/opentelemetry-demo/issues)
+are links in our GitHub repo on how to get involved and you can
+[track our overall progress](https://github.com/open-telemetry/opentelemetry-demo/issues)
 from there.
 
 ### Interesting Links

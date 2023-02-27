@@ -92,7 +92,7 @@ var serviceVersion = "1.0.0";
 var builder = WebApplication.CreateBuilder(args);
 
 // Configure important OpenTelemetry settings, the console exporter, and instrumentation library
-builder.Services.AddOpenTelemetryTracing(tcb =>
+builder.Services.AddOpenTelemetry().WithTracing(tcb =>
 {
     tcb
     .AddSource(serviceName)

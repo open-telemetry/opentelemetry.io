@@ -1,10 +1,8 @@
 ---
 title: PHP
 description: >-
-  <img width="35" class="img-initial"
-  src="/img/logos/32x32/PHP.svg"
-  alt="PHP"></img>
-  A language-specific implementation of OpenTelemetry in PHP.
+  <img width="35" class="img-initial" src="/img/logos/32x32/PHP.svg"
+  alt="PHP"></img> A language-specific implementation of OpenTelemetry in PHP.
 weight: 21
 ---
 

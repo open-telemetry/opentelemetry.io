@@ -43,6 +43,7 @@ OpenTelemetry in their commercial products.
 | Splunk                     | Yes               | Yes         | [splunk.com/blog/...](https://www.splunk.com/en_us/blog/conf-splunklive/announcing-native-opentelemetry-support-in-splunk-apm.html)                   |
 | Sumo Logic                 | Yes               | Yes         | [help.sumologic.com/](https://help.sumologic.com/docs/apm/traces/quickstart/)                                                                         |
 | TelemetryHub               | No                | Yes         | [telemetryhub.com](https://app.telemetryhub.com/docs)                                                                                                 |
+| Traceloop                  | No                | Yes         | [traceloop.dev](https://docs.traceloop.dev)                                                                                                           |
 | Uptrace                    | Yes               | Yes         | [uptrace.dev](https://uptrace.dev)                                                                                                                    |
 
 \* _Vendors are listed alphabetically_.

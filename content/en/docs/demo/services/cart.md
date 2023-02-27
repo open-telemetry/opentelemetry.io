@@ -18,12 +18,12 @@ with a Redis caching service for fast access to shopping cart data.
 ### Initializing Tracing
 
 OpenTelemetry is configured in the .NET DI container. The
-`AddOpenTelemetryTracing()` builder method is used to configure desired
+`AddOpenTelemetry()` builder method is used to configure desired
 instrumentation libraries, add exporters, and set other options. Configuration
 of the exporter and resource attributes is performed through environment variables.
 
 ```cs
-services.AddOpenTelemetryTracing((builder) => builder
+services.AddOpenTelemetry().WithTracing(builder => builder
     .ConfigureResource(r => r
         .AddTelemetrySdk()
         .AddEnvironmentVariableDetector()
@@ -73,11 +73,11 @@ added.
 ### Initializing Metrics
 
 Similar to configuring OpenTelemetry Traces, the .NET DI container requires a
-call to `AddOpenTelemetryMetrics()`. This builder configures desired
+call to `AddOpenTelemetry()`. This builder configures desired
 instrumentation libraries, exporters, etc.
 
 ```cs
-services.AddOpenTelemetryMetrics(builder => builder
+services.AddOpenTelemetry().WithMetrics(builder => builder
     .ConfigureResource(r => r
         .AddTelemetrySdk()
         .AddEnvironmentVariableDetector()
