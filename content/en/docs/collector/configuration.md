@@ -384,7 +384,7 @@ exporters:
 
   # Data sources: traces, metrics
   otlphttp:
-    endpoint: https://example.com:4318/v1/traces
+    endpoint: https://example.com:4318
 
   # Data sources: metrics
   prometheus:
