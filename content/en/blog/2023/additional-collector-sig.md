@@ -1,6 +1,6 @@
 ---
 title: Additional collector SIGs for APAC
-date: 2023-02-23
+date: 2023-02-27
 author: '[Sean Marciniak](https://github.com/MovieStoreGuy) (Atlassian)'
 ---
 
