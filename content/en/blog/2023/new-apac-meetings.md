@@ -1,7 +1,8 @@
 ---
-title: New Collector SIGs for APAC
+title: New APAC Collector-SIG meetings
 date: 2023-02-27
 author: '[Sean Marciniak](https://github.com/MovieStoreGuy) (Atlassian)'
+aliases: [/blog/2023/additional-collector-sig/]
 ---
 
 As the collector community grows worldwide, having the ability to meet with each
@@ -18,8 +19,8 @@ have created two new meetings times:
 | EU-APAC | 00:00           | 03:00            | 09:00            | 16:00              | 19:00               |
 | NA-APAC | 15:00           | 18:00            | 00:00            | 07:00              | 10:00               |
 
-To stay up to date with these times, subscribe to our
+To stay up to date with these times, subscribe to the
 [community calendar](https://github.com/open-telemetry/community#calendar).
 
-We look forward to seeing more of you, the collector community, at these new
+We look forward to seeing more of you join the Collector community at these new
 meetings!
