@@ -11,10 +11,9 @@ application.
 
 ### Initialize Tracing
 
-To start [tracing](/docs/concepts/signals/traces/#tracing-in-opentelemetry),
-you'll need to have an initialized
-[`TracerProvider`](/docs/concepts/signals/traces/#tracer-provider) that will let
-you create a [`Tracer`](/docs/concepts/signals/traces/#tracer).
+To start [tracing](/docs/concepts/signals/traces/), you'll need to have an
+initialized [`TracerProvider`](/docs/concepts/signals/traces/#tracer-provider)
+that will let you create a [`Tracer`](/docs/concepts/signals/traces/#tracer).
 
 If a `TracerProvider` is not created, the OpenTelemetry APIs for tracing will
 use a no-op implementation and fail to generate data.

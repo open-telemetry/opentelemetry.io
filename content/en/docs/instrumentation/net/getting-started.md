@@ -31,8 +31,8 @@ This will also install the `OpenTelemetry` package.
 
 ### Tracing
 
-Next, add [tracing](/docs/concepts/signals/traces/#tracing-in-opentelemetry) via
-the `System.Diagnostics` API.
+Next, add [tracing](/docs/concepts/signals/traces/) via the `System.Diagnostics`
+API.
 
 Paste the following code into your `Program.cs` file:
 

@@ -18,14 +18,14 @@ terminology consistent with the OpenTelemetry spec.
 
 ## Initializing tracing
 
-There are two main ways to initialize
-[tracing](/docs/concepts/signals/traces/#tracing-in-opentelemetry), depending on
-whether you're using a console app or something that's ASP.NET Core-based.
+There are two main ways to initialize [tracing](/docs/concepts/signals/traces/),
+depending on whether you're using a console app or something that's ASP.NET
+Core-based.
 
 ### Console app
 
-To start [tracing](/docs/concepts/signals/traces/#tracing-in-opentelemetry) in a
-console app, you need to create a tracer provider.
+To start [tracing](/docs/concepts/signals/traces/) in a console app, you need to
+create a tracer provider.
 
 First, ensure that you have the right packages:
 
@@ -65,9 +65,8 @@ endpoint, you'll have to use a different exporter.
 
 ### ASP.NET Core
 
-To start [tracing](/docs/concepts/signals/traces/#tracing-in-opentelemetry) in
-an ASP.NET Core-based app, use the OpenTelemetry extensions for ASP.NET Core
-setup.
+To start [tracing](/docs/concepts/signals/traces/) in an ASP.NET Core-based app,
+use the OpenTelemetry extensions for ASP.NET Core setup.
 
 First, ensure that you have the right packages:
 
