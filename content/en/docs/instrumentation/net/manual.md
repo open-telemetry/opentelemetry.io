@@ -10,8 +10,7 @@ application.
 ## A note on terminology
 
 .NET is different from other languages/runtimes that support OpenTelemetry. The
-[Tracing API](/docs/concepts/signals/traces/#tracing-in-opentelemetry) is
-implemented by the
+[Tracing API](/docs/concepts/signals/traces/) is implemented by the
 [System.Diagnostics](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics)
 API, repurposing existing constructs like `ActivitySource` and `Activity` to be
 OpenTelemetry-compliant under the covers.
@@ -25,9 +24,9 @@ you can refer to the [OpenTelemetry API Shim docs for tracing](../shim).
 
 ## Initializing tracing
 
-There are two main ways to initialize
-[tracing](/docs/concepts/signals/traces/#tracing-in-opentelemetry), depending on
-whether you're using a console app or something that's ASP.NET Core-based.
+There are two main ways to initialize [tracing](/docs/concepts/signals/traces/),
+depending on whether you're using a console app or something that's ASP.NET
+Core-based.
 
 ### Console app
 
