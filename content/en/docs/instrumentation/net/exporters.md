@@ -204,7 +204,7 @@ docker run \
 Next, install the Prometheus exporter:
 
 ```
-dotnet add package OpenTelemetry.Exporter.Prometheus
+dotnet add package OpenTelemetry.Exporter.Prometheus.AspNetCore --prerelease
 dotnet add package OpenTelemetry.Extensions.Hosting --prerelease
 ```
 
@@ -219,9 +219,6 @@ builder.Services.AddOpenTelemetry().WithMetrics(b =>
     b
     .AddPrometheusExporter(options =>
     {
-        options.StartHttpListener = true;
-        // Use your endpoint and port here
-        options.HttpListenerPrefixes = new string[] { $"http://localhost:{9090}/" };
         options.ScrapeResponseCacheDurationMilliseconds = 0;
     })
     // The rest of your setup code goes here too
@@ -234,9 +231,6 @@ Otherwise, configure the exporter when creating a meter provider:
 using var tracerProvider = Sdk.CreateMeterProviderBuilder()
     .AddPrometheusExporter(options =>
     {
-        options.StartHttpListener = true;
-        // Use your endpoint and port here
-        options.HttpListenerPrefixes = new string[] { $"http://localhost:{9090}/" };
         options.ScrapeResponseCacheDurationMilliseconds = 0;
     })
 
@@ -244,6 +238,19 @@ using var tracerProvider = Sdk.CreateMeterProviderBuilder()
 
     .Build();
 ```
+
+Finally, register the Prometheus scraping middleware using the
+`UseOpenTelemetryPrometheusScrapingEndpoint` extension method on
+`IApplicationBuilder` :
+
+```csharp
+var builder = WebApplication.CreateBuilder(args);
+var app = builder.Build();
+app.UseOpenTelemetryPrometheusScrapingEndpoint();
+```
+
+Further details on configuring the Prometheus exporter can be found
+[here](https://github.com/open-telemetry/opentelemetry-dotnet/blob/main/src/OpenTelemetry.Exporter.Prometheus.AspNetCore/README.md).
 
 ## Next steps
 
