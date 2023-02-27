@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     # hourly at minute 10
-    - cron: "10 * * * *"
+    - cron: 10 * * * *
 
 jobs:
   auto-update-versions:

@@ -13,3 +13,4 @@ description: Go contrib plugin for the github.com/Shopify/sarama package.
 authors: OpenTelemetry Authors
 otVersion: latest
 ---
+

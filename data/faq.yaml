@@ -2,11 +2,16 @@
   a: |
     OpenTelemetry is made up of an integrated set of APIs and libraries as well as a collection mechanism via an agent and collector. These components are used to generate, collect, and describe telemetry about distributed systems. This data includes basic context propagation, distributed traces, metrics, and other signals in the future. OpenTelemetry is designed to make it easy to get critical telemetry data out of your services and into your backend(s) of choice. For each supported language it offers a single set of APIs, libraries, and data specifications, and developers can take advantage of whichever components they see fit.
 - q: Where can I read the OpenTelemetry specification?
-  a: The spec is available in the [open-telemetry/specification](https://github.com/open-telemetry/specification) repo on GitHub.
+  a:
+    The spec is available in the
+    [open-telemetry/specification](https://github.com/open-telemetry/specification)
+    repo on GitHub.
 - q: I want to start instrumenting production code today. What should I use?
   a: |
     We are still working on the first production-ready release of OpenTelemetry. For those who want to start instrumenting production code immediately, use either [OpenCensus](https://opencensus.io) or [OpenTracing](https://opentracing.io). OpenTelemetry will provide compatibility bridges and there is no need to wait for production-ready OpenTelemetry APIs in your language.
-- q: I want to help influence the future direction of cloud-native telemetry. What should I do?
+- q:
+    I want to help influence the future direction of cloud-native telemetry.
+    What should I do?
   a: |
     Excellent! The [OpenTelemetry community repo](https://github.com/open-telemetry/community) has the full details, but here are a few good starting points:
     - Join our [community mailing list](https://lists.cncf.io/g/cncf-opentelemetry-community)

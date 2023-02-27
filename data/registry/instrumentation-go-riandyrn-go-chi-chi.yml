@@ -13,3 +13,4 @@ description: Instrumentation for the Golang `go-chi/chi` package.
 authors: Riandy R.N (riandyrn@gmail.com)
 otVersion: v1.0.1
 ---
+

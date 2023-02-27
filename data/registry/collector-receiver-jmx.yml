@@ -8,6 +8,9 @@ tags:
   - collector
 repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/jmxreceiver
 license: Apache 2.0
-description: The JMX Receiver will work in conjunction with the OpenTelemetry JMX Metric Gatherer to report metrics from a target MBean server using a built-in or your custom otel helper-utilizing Groovy script.
+description:
+  The JMX Receiver will work in conjunction with the OpenTelemetry JMX Metric
+  Gatherer to report metrics from a target MBean server using a built-in or your
+  custom otel helper-utilizing Groovy script.
 authors: OpenTelemetry Authors
 otVersion: latest

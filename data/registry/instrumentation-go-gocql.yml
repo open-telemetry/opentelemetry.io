@@ -14,3 +14,4 @@ description: Go contrib plugin for the github.com/gocql/gocql package.
 authors: OpenTelemetry Authors
 otVersion: latest
 ---
+
