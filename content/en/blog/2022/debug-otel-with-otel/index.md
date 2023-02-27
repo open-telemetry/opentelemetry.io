@@ -3,8 +3,9 @@ title: How we used OpenTelemetry to fix a bug in OpenTelemetry
 linkTitle: Debug OTel with OTel
 date: 2022-09-22
 author: >-
-  [Kumar Pratyush](https://github.com/kpratyus),  [Sanket Mehta](https://github.com/sanketmehta28),
-  [Severin Neumann](https://github.com/svrnm) (Cisco)
+  [Kumar Pratyush](https://github.com/kpratyus),  [Sanket
+  Mehta](https://github.com/sanketmehta28), [Severin
+  Neumann](https://github.com/svrnm) (Cisco)
 ---
 
 OpenTelemetry is here to help us find the root cause of issues in our software
@@ -100,15 +101,15 @@ three files into the `backend` folder instead:
 Update the `docker-compose.yml` with the following:
 
 ```yaml
-version: "2"
+version: '2'
 services:
   jaeger:
     image: jaegertracing/all-in-one:latest
     ports:
-      - "16686:16686"
+      - '16686:16686'
   collector:
     image: otel/opentelemetry-collector:latest
-    command: ["--config=/etc/otel-collector-config.yaml"]
+    command: ['--config=/etc/otel-collector-config.yaml']
     volumes:
       - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
   nginx:
@@ -124,12 +125,12 @@ services:
       - OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
       - OTEL_SERVICE_NAME=python-app
   redis:
-    image: "redis:alpine"
+    image: 'redis:alpine'
   frontend:
     build: ./frontend
     image: frontend-with-otel
     ports:
-      - "8000:8000"
+      - '8000:8000'
     environment:
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4318/
       - OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
@@ -215,10 +216,10 @@ headers again and again, and since having multi value headers is covered by
 We tested the capability to correlate from nginx to a downstream service with a
 Java application. And, without reading into the source code of the OTel Java
 SDK, it looks like that Java is flexible in taking a `traceparent` with multiple
-values, even though such format is invalid per the W3C Trace Context specification. 
-So propagation from nginx to the Java service worked, while in contrast,
-Python (and other languages) do not provide that flexibility and propagation
-from nginx to the downstream service silently fails.
+values, even though such format is invalid per the W3C Trace Context
+specification. So propagation from nginx to the Java service worked, while in
+contrast, Python (and other languages) do not provide that flexibility and
+propagation from nginx to the downstream service silently fails.
 
 Note, that we are not suggesting that the other languages should have the same
 flexibility as Java has with reading `traceparent` or vice-versa: the bug lives

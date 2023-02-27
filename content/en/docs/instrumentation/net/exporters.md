@@ -23,7 +23,7 @@ services:
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddOpenTelemetryTracing(b =>
+builder.Services.AddOpenTelemetry().WithTracing(b =>
 {
     b.AddConsoleExporter()
     // The rest of your setup code goes here too
@@ -57,7 +57,7 @@ services:
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddOpenTelemetryTracing(b =>
+builder.Services.AddOpenTelemetry().WithTracing(b =>
 {
     b
     .AddOtlpExporter(opt =>
@@ -149,7 +149,7 @@ services:
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddOpenTelemetryTracing(b =>
+builder.Services.AddOpenTelemetry().WithTracing(b =>
 {
     b
     .AddZipkinExporter(o =>
@@ -215,7 +215,7 @@ services:
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddOpenTelemetryMetrics(b =>
+builder.Services.AddOpenTelemetry().WithMetrics(b =>
 {
     b
     .AddPrometheusExporter(options =>

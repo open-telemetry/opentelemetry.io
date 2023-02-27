@@ -3,7 +3,7 @@ title: Checklist for TroublesShooting OpenTelemetry Node.js Tracing Issues
 linkTitle: TroublesShooting Node.js Tracing Issues
 date: 2022-02-22
 canonical_url: https://www.aspecto.io/blog/checklist-for-troubleshooting-opentelemetry-nodejs-tracing-issues
-author: "[Amir Blum](https://github.com/blumamir) (Aspecto)"
+author: '[Amir Blum](https://github.com/blumamir) (Aspecto)'
 ---
 
 I’ll try to make this one short and to the point. You are probably here because
@@ -56,18 +56,22 @@ instrumentation libraries, continue reading this section.
 
 ```js
 import { trace } from '@opentelemetry/api';
-trace.getTracerProvider().getTracer('debug').startSpan('test manual span').end();
+trace
+  .getTracerProvider()
+  .getTracer('debug')
+  .startSpan('test manual span')
+  .end();
 ```
 
 ### Install and Enable
 
 To use an auto instrumentation library in your service, you’ll need to:
 
- 1. Install it: `npm install @opentelemetry/instrumentation-foo`. You can search
+1.  Install it: `npm install @opentelemetry/instrumentation-foo`. You can search
     the OpenTelemetry Registry to find available instrumentations
- 2. Create the instrumentation object: `new FooInstrumentation(config)`
- 3. Make sure instrumentation is enabled: call `registerInstrumentations(...)`
- 4. Verify you are using the right TracerProvider
+2.  Create the instrumentation object: `new FooInstrumentation(config)`
+3.  Make sure instrumentation is enabled: call `registerInstrumentations(...)`
+4.  Verify you are using the right TracerProvider
 
 For most users, the following should cover it:
 
@@ -96,11 +100,14 @@ packages before enabling the instrumentation libraries for them**.
 Here is a **bad** example:
 
 ```js
-import { NodeTracerProvider } from "@opentelemetry/sdk-trace-node";
-import { registerInstrumentations } from "@opentelemetry/instrumentation";
-import { HttpInstrumentation } from "@opentelemetry/instrumentation-http";
-import { SimpleSpanProcessor, ConsoleSpanExporter } from "@opentelemetry/sdk-trace-base";
-import http from "http"; // ⇐ BAD - at this point instrumentation is not registered yet
+import { NodeTracerProvider } from '@opentelemetry/sdk-trace-node';
+import { registerInstrumentations } from '@opentelemetry/instrumentation';
+import { HttpInstrumentation } from '@opentelemetry/instrumentation-http';
+import {
+  SimpleSpanProcessor,
+  ConsoleSpanExporter,
+} from '@opentelemetry/sdk-trace-base';
+import http from 'http'; // ⇐ BAD - at this point instrumentation is not registered yet
 const provider = new NodeTracerProvider();
 provider.addSpanProcessor(new SimpleSpanProcessor(new ConsoleSpanExporter()));
 provider.register();
@@ -146,7 +153,8 @@ Consult the documentation of the library you are using to verify if your version
 is compatible. This data is usually found in the README for the instrumentation,
 for example see the [redis README][].
 
-[redis README]: https://www.npmjs.com/package/@opentelemetry/instrumentation-redis
+[redis readme]:
+  https://www.npmjs.com/package/@opentelemetry/instrumentation-redis
 
 ## No Recording and Non-Sampled Spans
 
@@ -164,13 +172,13 @@ import { ReadableSpan } from '@opentelemetry/sdk-trace-base';
 import { trace, Span, Context, TraceFlags } from '@opentelemetry/api';
 const provider = new NodeTracerProvider();
 provider.addSpanProcessor({
-    forceFlush: async () => {},
-    onStart: (_span: Span, _parentContext: Context) => {},
-    onEnd: (span: ReadableSpan) => {
-        const sampled = !!(span.spanContext().traceFlags & TraceFlags.SAMPLED);
-        console.log(`span sampled: ${sampled}`);
-    },
-    shutdown: async () => {},
+  forceFlush: async () => {},
+  onStart: (_span: Span, _parentContext: Context) => {},
+  onEnd: (span: ReadableSpan) => {
+    const sampled = !!(span.spanContext().traceFlags & TraceFlags.SAMPLED);
+    console.log(`span sampled: ${sampled}`);
+  },
+  shutdown: async () => {},
 });
 provider.register();
 ```
@@ -185,7 +193,10 @@ You need to have code similar to this as early as possible in your application:
 
 ```js
 import { NodeTracerProvider } from '@opentelemetry/sdk-trace-node';
-import { ConsoleSpanExporter, SimpleSpanProcessor } from '@opentelemetry/sdk-trace-base';
+import {
+  ConsoleSpanExporter,
+  SimpleSpanProcessor,
+} from '@opentelemetry/sdk-trace-base';
 const provider = new NodeTracerProvider();
 provider.addSpanProcessor(new SimpleSpanProcessor(new ConsoleSpanExporter()));
 provider.register();
@@ -230,7 +241,10 @@ section.
 
 ```js
 import { NodeTracerProvider } from '@opentelemetry/sdk-trace-node';
-import { ConsoleSpanExporter, SimpleSpanProcessor } from '@opentelemetry/sdk-trace-base';
+import {
+  ConsoleSpanExporter,
+  SimpleSpanProcessor,
+} from '@opentelemetry/sdk-trace-base';
 const provider = new NodeTracerProvider();
 provider.addSpanProcessor(new SimpleSpanProcessor(new ConsoleSpanExporter()));
 provider.register();
@@ -296,8 +310,8 @@ import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-proto';
 const exporter = new OTLPTraceExporter({
   url: 'https://otelcol.aspecto.io/v1/trace',
   headers: {
-      Authorization: 'YOUR_API_KEY_HERE'
-  }
+    Authorization: 'YOUR_API_KEY_HERE',
+  },
 });
 provider.addSpanProcessor(new BatchSpanProcessor(exporter));
 ```
@@ -343,16 +357,18 @@ to remove or disable it and check if the problem goes away.
 If none of the above solved your problems, you can ask for help on the following
 channels:
 
-- [CNCF `#otel-js`](https://cloud-native.slack.com/archives/C01NL1GRPQR) Slack channel
-- [CNCF `#opentelemetry-bootcamp`](https://cloud-native.slack.com/messages/opentelemetry-bootcamp) Slack channel
-- GitHub [discussions page](https://github.com/open-telemetry/opentelemetry-js/discussions)
+- [CNCF `#otel-js`](https://cloud-native.slack.com/archives/C01NL1GRPQR) Slack
+  channel
+- [CNCF `#opentelemetry-bootcamp`](https://cloud-native.slack.com/messages/opentelemetry-bootcamp)
+  Slack channel
+- GitHub
+  [discussions page](https://github.com/open-telemetry/opentelemetry-js/discussions)
 
 ### Resources
 
 - [Opentelemetry-js GitHub repo](https://github.com/open-telemetry/opentelemetry-js)
 - [The OpenTelemetry Bootcamp](https://www.aspecto.io/opentelemetry-bootcamp/)
 - [Opentelemetry docs](/docs/)
-
 
 ### Should I Use a Vendor?
 

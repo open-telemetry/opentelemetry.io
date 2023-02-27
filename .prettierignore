@@ -2,13 +2,21 @@
 
 /.netlify
 /.vscode
-/content-modules
 /iconography
 /layouts
 package-lock.json
 /public
 /themes
 /tmp
+
+# Ignore content-modules except for Go docs
+
+/content-modules/*
+!/content-modules/opentelemetry-go
+/content-modules/opentelemetry-go/*
+!/content-modules/opentelemetry-go/website_docs
+/content-modules/opentelemetry-go/website_docs/**/*
+!/content-modules/opentelemetry-go/website_docs/**/*.md
 
 # Temporary while we ramp up use of Prettier
 
@@ -17,8 +25,6 @@ package-lock.json
 /assets/**/*.js
 /content/en/blog/2019
 /content/en/blog/2021
-/content/en/blog/2022
-/content/en/docs/concepts
 /content/en/docs/demo
 /data
 /resources

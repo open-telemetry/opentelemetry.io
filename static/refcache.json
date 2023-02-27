@@ -855,6 +855,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-15T21:03:39.650397-05:00"
   },
+  "https://docs.traceloop.dev": {
+    "StatusCode": 206,
+    "LastSeen": "2023-02-26T11:00:42.522142-08:00"
+  },
   "https://docs.wavefront.com/opentelemetry_tracing.html": {
     "StatusCode": 206,
     "LastSeen": "2023-02-15T21:01:54.460528-05:00"
@@ -2270,6 +2274,10 @@
   "https://github.com/tonglil/opentelemetry-go-datadog-propagator": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:47:42.43243-05:00"
+  },
+  "https://github.com/traceloop/jest-opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2023-02-26T11:00:43.117314-08:00"
   },
   "https://github.com/trask": {
     "StatusCode": 200,

@@ -1,0 +1,16 @@
+title: Traceloop Jest Test Engine
+registryType: utilities
+isThirdParty: true
+language: js
+tags:
+  - js
+  - ts
+  - testing
+  - test-automation
+  - e2e-testing
+  - api-testing
+repo: https://github.com/traceloop/jest-opentelemetry
+license: Apache 2.0
+description: Generate e2e tests from traces
+authors: Traceloop dev <dev@traceloop.dev>
+otVersion: latest

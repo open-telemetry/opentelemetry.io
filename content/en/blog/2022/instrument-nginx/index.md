@@ -3,8 +3,9 @@ title: Learn how to instrument nginx with OpenTelemetry
 linkTitle: Instrument Nginx
 date: 2022-08-22
 author: >-
-  [Debajit Das](https://github.com/debajitdas), 
-  [Kumar Pratyus](https://github.com/kpratyus), 
+  [Debajit Das](https://github.com/debajitdas),  [Kumar
+  Pratyus](https://github.com/kpratyus),
+
   [Severin Neumann](https://github.com/svrnm) (Cisco)
 spelling: >
   cSpell:ignore Debajit Kumar Pratyus Severin Neumann webserver xvfz tracestate
@@ -113,15 +114,15 @@ the collector and Jaeger:
 Create a file called `docker-compose.yml` and add the following content:
 
 ```yaml
-version: "2"
+version: '2'
 services:
   jaeger:
     image: jaegertracing/all-in-one:latest
     ports:
-      - "16686:16686"
+      - '16686:16686'
   collector:
     image: otel/opentelemetry-collector:latest
-    command: ["--config=/etc/otel-collector-config.yaml"]
+    command: ['--config=/etc/otel-collector-config.yaml']
     volumes:
       - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
   nginx:
@@ -176,8 +177,8 @@ In another shell, create some traffic:
 $ curl localhost:8080
 ```
 
-In your browser open [localhost:16686][] and search
-for traces from `DemoService` and drill into one of them.
+In your browser open [localhost:16686][] and search for traces from
+`DemoService` and drill into one of them.
 
 ![A screenshot of the Jaeger trace view, showing a waterfall of spans representing the time consumed by different nginx modules.](nginx-spans-in-jaeger.png)
 
@@ -200,15 +201,15 @@ Update the `docker-compose` file to contain those 2 services and to overwrite
 the `default.conf` in nginx:
 
 ```yaml
-version: "2"
+version: '2'
 services:
   jaeger:
     image: jaegertracing/all-in-one:latest
     ports:
-      - "16686:16686"
+      - '16686:16686'
   collector:
     image: otel/opentelemetry-collector:latest
-    command: ["--config=/etc/otel-collector-config.yaml"]
+    command: ['--config=/etc/otel-collector-config.yaml']
     volumes:
       - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
   nginx:
@@ -229,7 +230,7 @@ services:
     build: ./frontend
     image: frontend-with-otel
     ports:
-      - "8000:8000"
+      - '8000:8000'
     environment:
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4318/
       - OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
@@ -253,13 +254,13 @@ Create two empty folders `backend` and `frontend`.
 In the frontend folder, create a simple Node.js app:
 
 ```javascript
-const opentelemetry = require("@opentelemetry/sdk-node");
+const opentelemetry = require('@opentelemetry/sdk-node');
 const {
   getNodeAutoInstrumentations,
-} = require("@opentelemetry/auto-instrumentations-node");
+} = require('@opentelemetry/auto-instrumentations-node');
 const {
   OTLPTraceExporter,
-} = require("@opentelemetry/exporter-trace-otlp-http");
+} = require('@opentelemetry/exporter-trace-otlp-http');
 
 const sdk = new opentelemetry.NodeSDK({
   traceExporter: new OTLPTraceExporter(),
@@ -267,26 +268,26 @@ const sdk = new opentelemetry.NodeSDK({
 });
 
 sdk.start().then(() => {
-  const express = require("express");
-  const http = require("http");
+  const express = require('express');
+  const http = require('http');
   const app = express();
-  app.get("/", (_, response) => {
+  app.get('/', (_, response) => {
     const options = {
-      hostname: "nginx",
+      hostname: 'nginx',
       port: 80,
-      path: "/",
-      method: "GET",
+      path: '/',
+      method: 'GET',
     };
     const req = http.request(options, (res) => {
       console.log(`statusCode: ${res.statusCode}`);
-      res.on("data", (d) => {
-        response.send("Hello World");
+      res.on('data', (d) => {
+        response.send('Hello World');
       });
     });
     req.end();
   });
   app.listen(parseInt(8000, 10), () => {
-    console.log("Listening for requests");
+    console.log('Listening for requests');
   });
 });
 ```
@@ -303,8 +304,8 @@ EXPOSE 8000
 CMD [ "node", "app.js" ]
 ```
 
-For the backend service, you are going to use Tomcat with the OpenTelemetry
-Java agent installed. For this, create a `Dockerfile` like the following in the
+For the backend service, you are going to use Tomcat with the OpenTelemetry Java
+agent installed. For this, create a `Dockerfile` like the following in the
 `backend` folder
 
 ```Dockerfile
