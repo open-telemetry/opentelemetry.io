@@ -13,8 +13,8 @@ currencies.
 
 ### Initializing Tracing
 
-The OpenTelemetry SDK is initialized from `main` using the `initTracer`
-function defined in `tacer_common.h`
+The OpenTelemetry SDK is initialized from `main` using the `initTracer` function
+defined in `tacer_common.h`
 
 ```cpp
 void initTracer()

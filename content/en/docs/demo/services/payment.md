@@ -24,22 +24,40 @@ service name. It then `require`s your app at `./index.js` to start it up once
 the SDK is initialized.
 
 ```javascript
-const opentelemetry = require("@opentelemetry/sdk-node")
-const { getNodeAutoInstrumentations } = require("@opentelemetry/auto-instrumentations-node")
-const { OTLPTraceExporter } = require('@opentelemetry/exporter-trace-otlp-grpc')
-const { OTLPMetricExporter } = require('@opentelemetry/exporter-metrics-otlp-grpc')
-const { PeriodicExportingMetricReader } = require('@opentelemetry/sdk-metrics')
-const { alibabaCloudEcsDetector } = require('@opentelemetry/resource-detector-alibaba-cloud')
-const { awsEc2Detector, awsEksDetector } = require('@opentelemetry/resource-detector-aws')
-const { containerDetector } = require('@opentelemetry/resource-detector-container')
-const { gcpDetector } = require('@opentelemetry/resource-detector-gcp')
-const { envDetector, hostDetector, osDetector, processDetector } = require('@opentelemetry/resources')
+const opentelemetry = require('@opentelemetry/sdk-node');
+const {
+  getNodeAutoInstrumentations,
+} = require('@opentelemetry/auto-instrumentations-node');
+const {
+  OTLPTraceExporter,
+} = require('@opentelemetry/exporter-trace-otlp-grpc');
+const {
+  OTLPMetricExporter,
+} = require('@opentelemetry/exporter-metrics-otlp-grpc');
+const { PeriodicExportingMetricReader } = require('@opentelemetry/sdk-metrics');
+const {
+  alibabaCloudEcsDetector,
+} = require('@opentelemetry/resource-detector-alibaba-cloud');
+const {
+  awsEc2Detector,
+  awsEksDetector,
+} = require('@opentelemetry/resource-detector-aws');
+const {
+  containerDetector,
+} = require('@opentelemetry/resource-detector-container');
+const { gcpDetector } = require('@opentelemetry/resource-detector-gcp');
+const {
+  envDetector,
+  hostDetector,
+  osDetector,
+  processDetector,
+} = require('@opentelemetry/resources');
 
 const sdk = new opentelemetry.NodeSDK({
   traceExporter: new OTLPTraceExporter(),
-  instrumentations: [ getNodeAutoInstrumentations() ],
+  instrumentations: [getNodeAutoInstrumentations()],
   metricReader: new PeriodicExportingMetricReader({
-    exporter: new OTLPMetricExporter()
+    exporter: new OTLPMetricExporter(),
   }),
   resourceDetectors: [
     containerDetector,
@@ -50,15 +68,15 @@ const sdk = new opentelemetry.NodeSDK({
     alibabaCloudEcsDetector,
     awsEksDetector,
     awsEc2Detector,
-    gcpDetector
+    gcpDetector,
   ],
-})
+});
 
-sdk.start().then(() => require("./index"));
+sdk.start().then(() => require('./index'));
 ```
 
-You can then use `opentelemetry.js` to start your app.
-This can be done in the `ENTRYPOINT` command for the service's `Dockerfile`.
+You can then use `opentelemetry.js` to start your app. This can be done in the
+`ENTRYPOINT` command for the service's `Dockerfile`.
 
 ```dockerfile
 ENTRYPOINT [ "node", "./opentelemetry.js" ]
@@ -72,17 +90,17 @@ Within the execution of auto-instrumented code you can get current span from
 context.
 
 ```javascript
-  const span = opentelemetry.trace.getActiveSpan();
+const span = opentelemetry.trace.getActiveSpan();
 ```
 
 Adding attributes to a span is accomplished using `setAttributes` on the span
-object. In the `chargeServiceHandler` function an attributes is added to
-the span as an anonymous object (map) for the attribute key/values pair.
+object. In the `chargeServiceHandler` function an attributes is added to the
+span as an anonymous object (map) for the attribute key/values pair.
 
 ```javascript
-    span.setAttributes({
-      'app.payment.amount': parseFloat(`${amount.units}.${amount.nanos}`)
-    })
+span.setAttributes({
+  'app.payment.amount': parseFloat(`${amount.units}.${amount.nanos}`),
+});
 ```
 
 ### Span Exceptions and status
@@ -93,8 +111,8 @@ be sure to set the span's status accordingly. You can see this in the
 `chargeServiceHandler` function
 
 ```javascript
-    span.recordException(err)
-    span.setStatus({ code: opentelemetry.SpanStatusCode.ERROR })
+span.recordException(err);
+span.setStatus({ code: opentelemetry.SpanStatusCode.ERROR });
 ```
 
 ## Metrics
@@ -109,11 +127,11 @@ instruments.
 const { metrics } = require('@opentelemetry/api-metrics');
 
 const meter = metrics.getMeter('paymentservice');
-const transactionsCounter = meter.createCounter('app.payment.transactions')
+const transactionsCounter = meter.createCounter('app.payment.transactions');
 ```
 
-Meters and Instruments are supposed to stick around. This means you should
-get a Meter or an Instrument once , and then re-use it as needed, if possible.
+Meters and Instruments are supposed to stick around. This means you should get a
+Meter or an Instrument once , and then re-use it as needed, if possible.
 
 ## Logs
 
@@ -127,11 +145,15 @@ which is indicated with a span attribute. The `charge.js` file which does the
 actual payment processing, has logic to check the baggage.
 
 ```javascript
-  // check baggage for synthetic_request=true, and add charged attribute accordingly
-  const baggage = propagation.getBaggage(context.active());
-  if (baggage && baggage.getEntry("synthetic_request") && baggage.getEntry("synthetic_request").value == "true") {
-    span.setAttribute('app.payment.charged', false);
-  } else {
-    span.setAttribute('app.payment.charged', true);
-  }
+// check baggage for synthetic_request=true, and add charged attribute accordingly
+const baggage = propagation.getBaggage(context.active());
+if (
+  baggage &&
+  baggage.getEntry('synthetic_request') &&
+  baggage.getEntry('synthetic_request').value == 'true'
+) {
+  span.setAttribute('app.payment.charged', false);
+} else {
+  span.setAttribute('app.payment.charged', true);
+}
 ```
