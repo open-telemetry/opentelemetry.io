@@ -14,5 +14,3 @@ description:
   releasing the trace to the next processor.
 authors: OpenTelemetry Authors
 otVersion: latest
----
-

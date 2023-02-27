@@ -14,5 +14,3 @@ description:
   extracted metadata to the relevant spans, metrics and logs.
 authors: OpenTelemetry Authors
 otVersion: latest
----
-

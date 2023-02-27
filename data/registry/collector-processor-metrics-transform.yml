@@ -14,5 +14,3 @@ description:
   be used to perform aggregations on metrics across labels or label values.
 authors: OpenTelemetry Authors
 otVersion: latest
----
-

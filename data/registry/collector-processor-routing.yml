@@ -14,5 +14,3 @@ description:
   information to specific exporters based on the attribute's value.
 authors: OpenTelemetry Authors
 otVersion: latest
----
-

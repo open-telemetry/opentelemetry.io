@@ -13,5 +13,3 @@ description:
   Error and Duration (R.E.D) metrics from span data.
 authors: OpenTelemetry Authors
 otVersion: latest
----
-
