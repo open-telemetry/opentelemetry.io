@@ -12,5 +12,3 @@ description:
   The Google Cloud Operations Exporter for the OpenTelemetry Collector.
 authors: Google
 otVersion: latest
----
-
