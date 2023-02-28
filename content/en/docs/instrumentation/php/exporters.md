@@ -82,7 +82,7 @@ $tracerProvider =  new TracerProvider(
 $tracer = $tracerProvider->getTracer('io.opentelemetry.contrib.php');
 ```
 
-To try out the example quickly, you can run Jaeger in a docker container:
+To try out the example locally, you can run [Jaeger](https://www.jaegertracing.io/) in a docker container:
 
 ```shell
 docker run -d --name jaeger \
