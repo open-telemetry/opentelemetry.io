@@ -10,6 +10,11 @@ Although not limited to tracing, it is what allows traces to build causal
 information about a system across services that are arbitrarily distributed
 across process and network boundaries.
 
+
+OpenTelemetry provides a text-based approach to propagate context to remote
+services using the [W3C Trace Context](https://www.w3.org/TR/trace-context/)
+HTTP headers.
+
 ## Context propagation with frameworks and libraries
 
 Auto-instrumentation exists for some popular PHP frameworks (eg Symfony,
@@ -51,53 +56,43 @@ requirements that instrumentation libraries cannot fulfill, even if they exist.
 
 When you must propagate context manually, you can use the context api.
 
-The following generic example demonstrates how you can propagate trace context
-manually.
-
-First, on the sending service, you'll need to inject the current `context`:
+The following presents an example of an outgoing HTTP request:
 
 ```php
-// Sending service
-$carrier = [];
-// Serialize the traceparent and tracestate from context into
-// a carrier.
-//
-// This example uses the active trace context, but you can
-// use whatever context is appropriate to your scenario.
-TraceContextPropagator::getInstance()->inject($carrier);
+$request = new Request('GET', 'http://localhost:8080/resource');
+$outgoing = $tracer->spanBuilder('/resource')->setSpanKind(SpanKind::CLIENT)->startSpan();
+$outgoing->setAttribute(TraceAttributes::HTTP_METHOD, $request->getMethod());
+$outgoing->setAttribute(TraceAttributes::HTTP_URL, (string) $request->getUri());
 
-//$carrier now contains traceparent and tracestate
-$request = new Request('example.com');
+$carrier = [];
+TraceContextPropagator::getInstance()->inject($carrier);
 foreach ($carrier as $name => $value) {
-    $request = $request->withHeader($name, $value);
+    $request = $request->withAddedHeader($name, $value);
 }
-const { traceparent, tracestate } = output;
-// You can then pass the traceparent and tracestate
-// data to whatever mechanism you use to propagate
-// across services.
+try {
+    $response = $client->send($request);
+} finally {
+    $outgoing->end();
+}
 ```
 
-On the receiving service, you'll need to extract `context` (for example, from
-parsed HTTP headers) and then set them as the current trace context.
+Similarly, the text-based approach can be used to read the W3C Trace Context
+from incoming requests. The following presents an example of processing an
+incoming HTTP request:
 
 ```php
-// Receiving service
-
-// assume $request represents an incoming HTTP request
-$parent = TraceContextPropagator::getInstance()->extract($request->getHeaders());
-// Extracts the 'traceparent' and 'tracestate' data into a context object.
-//
-// You can then treat this context as the active context for your
-// traces.
-$span = $tracer->spanBuilder('demo')
-    ->setParent($parent)
+$request = ServerRequestCreator::createFromGlobals();
+$context = TraceContextPropagator::getInstance()->extract($request->getHeaders());
+$root = $tracer->spanBuilder('HTTP ' . $request->getMethod())
+    ->setStartTimestamp((int) ($request->getServerParams()['REQUEST_TIME_FLOAT'] * 1e9))
+    ->setParent($context)
     ->setSpanKind(SpanKind::KIND_SERVER)
     ->startSpan();
-
-// Set the created span as active in the context. Future spans will be created as
-// children of this span.
-$scope = $span->activate();
+$scope = $root->activate();
+try {
+    /* do stuff */
+} finally {
+    $root->end();
+    $scope->detach();
+}
 ```
-
-From there, when you have an active context, you can create spans that will be a
-part of the same trace from the other service.

@@ -240,53 +240,6 @@ try {
 }
 ```
 
-### Context Propagation
-
-OpenTelemetry provides a text-based approach to propagate context to remote
-services using the [W3C Trace Context](https://www.w3.org/TR/trace-context/)
-HTTP headers.
-
-The following presents an example of an outgoing HTTP request:
-
-```php
-$request = new Request('GET', 'http://localhost:8080/resource');
-$outgoing = $tracer->spanBuilder('/resource')->setSpanKind(SpanKind::CLIENT)->startSpan();
-$outgoing->setAttribute(TraceAttributes::HTTP_METHOD, $request->getMethod());
-$outgoing->setAttribute(TraceAttributes::HTTP_URL, (string) $request->getUri());
-
-$carrier = [];
-TraceContextPropagator::getInstance()->inject($carrier);
-foreach ($carrier as $name => $value) {
-    $request = $request->withAddedHeader($name, $value);
-}
-try {
-    $response = $client->send($request);
-} finally {
-    $outgoing->end();
-}
-```
-
-Similarly, the text-based approach can be used to read the W3C Trace Context
-from incoming requests. The following presents an example of processing an
-incoming HTTP request:
-
-```php
-$request = ServerRequestCreator::createFromGlobals();
-$context = TraceContextPropagator::getInstance()->extract($request->getHeaders());
-$root = $tracer->spanBuilder('HTTP ' . $request->getMethod())
-    ->setStartTimestamp((int) ($request->getServerParams()['REQUEST_TIME_FLOAT'] * 1e9))
-    ->setParent($context)
-    ->setSpanKind(SpanKind::KIND_SERVER)
-    ->startSpan();
-$scope = $root->activate();
-try {
-    /* do stuff */
-} finally {
-    $root->end();
-    $scope->detach();
-}
-```
-
 #### Sampler
 
 It is not always feasible to trace and export every user request in an
