@@ -119,11 +119,11 @@ composer require open-telemetry/exporter-zipkin
 Update the example to use the Zipkin exporter and to send data to your zipkin
 backend:
 
-<!-- prettier-ignore-start -->
+```php
 $transport = PsrTransportFactory::discover()->create('http://zipkin:9411/api/v2/spans', 'application/json');
 $zipkinExporter = new ZipkinExporter($transport);
 $tracerProvider =  new TracerProvider(
     new SimpleSpanProcessor($zipkinExporter)
 );
 $tracer = $tracerProvider->getTracer('io.opentelemetry.contrib.php');
-<!-- prettier-ignore-end -->
+```
