@@ -63,7 +63,7 @@ use OpenTelemetry\SDK\Trace\TracerProvider;
 
 $transport = (new OtlpHttpTransportFactory())->create('http://collector:4318/v1/traces', 'application/json');
 $exporter = new SpanExporter($transport);
-{{< /tab>}}
+{{< /tab >}}
 {{< tab nd-json >}}
 /* newline-delimited JSON */
 use OpenTelemetry\Contrib\Otlp\OtlpHttpTransportFactory;
@@ -73,7 +73,7 @@ use OpenTelemetry\SDK\Trace\TracerProvider;
 
 $transport = (new OtlpHttpTransportFactory())->create('http://collector:4318/v1/traces', 'application/x-ndjson');
 $exporter = new SpanExporter($transport);
-{{< /tab>}}
+{{< /tab >}}
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
