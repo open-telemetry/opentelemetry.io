@@ -7,8 +7,6 @@ In order to visualize and analyze your telemetry, you will need to export it to 
 backend. OpenTelemetry PHP provides exporters for some
 common open source backends.
 
-Below you will find some introductions on how to set up backends and the
-matching exporters.
 
 ## OTLP
 
