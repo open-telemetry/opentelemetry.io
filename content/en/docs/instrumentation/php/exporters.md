@@ -17,7 +17,7 @@ Jaeger) you'll need to use the `open-telemetry/exporter-otlp` package:
 composer require open-telemetry/exporter-otlp
 ```
 
-If you wish to use the gRPC protocol, you will also need to install the
+If you use gRPC, you will also need to install the
 `open-telemetry/transport-grpc` package:
 
 ```shell
