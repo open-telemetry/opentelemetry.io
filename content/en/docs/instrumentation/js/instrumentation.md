@@ -112,11 +112,11 @@ also required if you're registering instrumentation libraries. For example:
 {{< tabpane lang=shell persistLang=false >}}
 
 {{< tab TypeScript >}}
-ts-node --require './tracing.ts' <app-file.ts>
+ts-node --require ./tracing.ts <app-file.ts>
 {{< /tab >}}
 
 {{< tab JavaScript >}}
-node --require './tracing.js' <app-file.js>
+node --require ./tracing.js <app-file.js>
 {{< /tab >}}
 
 {{< /tabpane >}}
@@ -801,11 +801,11 @@ You'll need to `--require` this file when you run your app, such as:
 {{< tabpane lang=shell persistLang=false >}}
 
 {{< tab TypeScript >}}
-ts-node --require './instrumentation.ts' <app-file.ts>
+ts-node --require ./instrumentation.ts <app-file.ts>
 {{< /tab >}}
 
 {{< tab JavaScript >}}
-node --require './instrumentation.js' <app-file.js>
+node --require ./instrumentation.js <app-file.js>
 {{< /tab >}}
 
 {{< /tabpane >}}

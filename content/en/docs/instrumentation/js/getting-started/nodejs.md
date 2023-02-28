@@ -208,12 +208,12 @@ Now you can run your application as you normally would, but you can use the
 {{< tabpane lang=console persistLang=false >}}
 
 {{< tab TypeScript >}}
-$ ts-node --require './tracing.ts' app.ts
+$ ts-node --require ./tracing.ts app.ts
 Listening for requests on http://localhost:8080
 {{< /tab >}}
 
 {{< tab JavaScript >}}
-$ node --require './tracing.js' app.js
+$ node --require ./tracing.js app.js
 Listening for requests on http://localhost:8080
 {{< /tab >}}
 
