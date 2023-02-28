@@ -8,6 +8,8 @@ tags:
   - collector
 repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/splunkhecexporter
 license: Apache 2.0
-description: The Splunk HTTP Event Collector (HEC) Exporter for the OpenTelemetry Collector.
+description:
+  The Splunk HTTP Event Collector (HEC) Exporter for the OpenTelemetry
+  Collector.
 authors: Splunk
 otVersion: latest

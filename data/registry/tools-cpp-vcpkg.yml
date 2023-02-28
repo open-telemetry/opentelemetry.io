@@ -7,7 +7,7 @@ tags:
   - vcpkg
   - package
 repo: https://github.com/microsoft/vcpkg/tree/master/ports/opentelemetry-cpp
-license: MIT 
-description: A vcpkg package for opentelemetry-cpp. 
+license: MIT
+description: A vcpkg package for opentelemetry-cpp.
 authors:
 otVersion: unknown

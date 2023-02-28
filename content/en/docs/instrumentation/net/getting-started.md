@@ -31,8 +31,8 @@ This will also install the `OpenTelemetry` package.
 
 ### Tracing
 
-Next, add [tracing](/docs/concepts/signals/traces/#tracing-in-opentelemetry) via
-the `System.Diagnostics` API.
+Next, add [tracing](/docs/concepts/signals/traces/) via the `System.Diagnostics`
+API.
 
 Paste the following code into your `Program.cs` file:
 
@@ -49,7 +49,7 @@ var serviceVersion = "1.0.0";
 var builder = WebApplication.CreateBuilder(args);
 
 // Configure important OpenTelemetry settings, the console exporter, and instrumentation library
-builder.Services.AddOpenTelemetryTracing(tracerProviderBuilder =>
+builder.Services.AddOpenTelemetry().WithTracing(tracerProviderBuilder =>
 {
     tracerProviderBuilder
         .AddConsoleExporter()
@@ -154,7 +154,7 @@ var builder = WebApplication.CreateBuilder(args);
 var appResourceBuilder = ResourceBuilder.CreateDefault()
     .AddService(serviceName: serviceName, serviceVersion: serviceVersion);
 
-builder.Services.AddOpenTelemetryTracing(tracerProviderBuilder =>
+builder.Services.AddOpenTelemetry().WithTracing(tracerProviderBuilder =>
 {
     tracerProviderBuilder
         .AddConsoleExporter()
@@ -167,7 +167,7 @@ builder.Services.AddOpenTelemetryTracing(tracerProviderBuilder =>
 
 var meter = new Meter(serviceName);
 var counter = meter.CreateCounter<long>("app.request-counter");
-builder.Services.AddOpenTelemetryMetrics(metricProviderBuilder =>
+builder.Services.AddOpenTelemetry().WithMetrics(metricProviderBuilder =>
 {
     metricProviderBuilder
         .AddConsoleExporter()
@@ -356,7 +356,7 @@ var appResourceBuilder = ResourceBuilder.CreateDefault()
 
 // Configure to send data via the OTLP exporter.
 // By default, it will send to port 4318, which the collector is listening on.
-builder.Services.AddOpenTelemetryTracing(tracerProviderBuilder =>
+builder.Services.AddOpenTelemetry().WithTracing(tracerProviderBuilder =>
 {
     tracerProviderBuilder
         .AddOtlpExporter(opt =>
@@ -372,7 +372,7 @@ builder.Services.AddOpenTelemetryTracing(tracerProviderBuilder =>
 
 var meter = new Meter(serviceName);
 var counter = meter.CreateCounter<long>("app.request-counter");
-builder.Services.AddOpenTelemetryMetrics(metricProviderBuilder =>
+builder.Services.AddOpenTelemetry().WithMetrics(metricProviderBuilder =>
 {
     metricProviderBuilder
         .AddOtlpExporter(opt =>

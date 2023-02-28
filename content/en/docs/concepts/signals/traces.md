@@ -1,12 +1,7 @@
 ---
 title: Traces
-description: >-
-  Traces give us the big picture of what happens when a request is made by a user
-  or an application.
 weight: 1
 ---
-
-## Tracing in OpenTelemetry
 
 [**Traces**](/docs/concepts/observability-primer/#distributed-traces) give us
 the big picture of what happens when a request is made by user or an
@@ -217,18 +212,18 @@ work done in an application.
 
 Span Context is an immutable object on every span that contains the following:
 
-* The Trace ID representing the trace that the span is a part of
-* The Span's Span ID
-* Trace Flags, a binary encoding containing information about the trace
-* Trace State, a list of key-value pairs that can carry vendor-specific trace
+- The Trace ID representing the trace that the span is a part of
+- The Span's Span ID
+- Trace Flags, a binary encoding containing information about the trace
+- Trace State, a list of key-value pairs that can carry vendor-specific trace
   information
 
 Span Context is the part of a span that is serialized and propagated alongside
 [Distributed Context](#context-propagation) and
 [Baggage](/docs/concepts/signals/baggage).
 
-Because Span Context contains the Trace ID, it is used when creating [Span
-Links](#span-links).
+Because Span Context contains the Trace ID, it is used when creating
+[Span Links](#span-links).
 
 ### Attributes
 
@@ -241,15 +236,15 @@ the item to add to the cart, and the cart ID.
 
 Attributes have the following rules that each language SDK implements:
 
-* Keys must be non-null string values
-* Values must be a non-null string, boolean, floating point value, integer, or
+- Keys must be non-null string values
+- Values must be a non-null string, boolean, floating point value, integer, or
   an array of these values
 
-Additionally, there are [Semantic
-Attributes](/docs/reference/specification/trace/semantic_conventions/), which
-are known naming conventions for metadata that is typically present in common
-operations. It's helpful to use semantic attribute naming wherever possible so
-that common kinds of metadata are standardized across systems.
+Additionally, there are
+[Semantic Attributes](/docs/reference/specification/trace/semantic_conventions/),
+which are known naming conventions for metadata that is typically present in
+common operations. It's helpful to use semantic attribute naming wherever
+possible so that common kinds of metadata are standardized across systems.
 
 ### Span Events
 
@@ -312,8 +307,8 @@ span is usually a server span. Similarly, the parent of a consumer span is
 always a producer and the child of a producer span is always a consumer. If not
 provided, the span kind is assumed to be internal.
 
-For more information regarding SpanKind, see [SpanKind]({{< relref
-"/docs/reference/specification/trace/api#spankind" >}}).
+For more information regarding SpanKind, see
+[SpanKind](/docs/reference/specification/trace/api/#spankind).
 
 #### Client
 

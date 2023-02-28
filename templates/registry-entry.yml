@@ -7,5 +7,5 @@ tags:
 repo: https://github.com/your-organization/your-repo # projects don't have to be hosted on GitHub, but this should link to the git or other source control repository for your project
 license: Apache 2.0 # or whatever your OSS license is
 description: A friendly description of your integration/plugin
-authors: <The author or authors of your integration. An email is a great thing to include!>
+authors: <The author(s), including email address>
 otVersion: <The OpenTelemetry version your plugin targets.>

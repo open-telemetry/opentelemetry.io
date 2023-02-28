@@ -5,8 +5,8 @@ aliases: [/docs/demo/services/featureflagservice]
 ---
 
 This service is written in Erlang/Elixir and it is responsible for creating,
-reading, updating and deleting feature flags in a PostgreSQL DB.
-It is called by Product Catalog and Shipping services.
+reading, updating and deleting feature flags in a PostgreSQL DB. It is called by
+Product Catalog and Shipping services.
 
 [Feature Flag Service Source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/featureflagservice/)
 
@@ -69,8 +69,8 @@ config :grpcbox,
 
 ### Add attributes to auto-instrumented spans
 
-Adding attributes to a span is accomplished by using `?set_attribute` on the span
-object. In the `get_flag` function two attributes are added to the span.
+Adding attributes to a span is accomplished by using `?set_attribute` on the
+span object. In the `get_flag` function two attributes are added to the span.
 
 ```elixir
 -include_lib("grpcbox/include/grpcbox.hrl").

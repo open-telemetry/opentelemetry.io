@@ -15,6 +15,7 @@ OpenTelemetry provides integration with the following open source projects.
 | External Project\*                                        | OpenTelemetry Supported Components                       |
 | --------------------------------------------------------- | -------------------------------------------------------- |
 | [Apache Kafka](https://kafka.apache.org/)                 | Collector                                                |
+| [Apache SkyWalking](https://skywalking.apache.org)        | Collector                                                |
 | [Elasticsearch](https://github.com/elastic/elasticsearch) | Collector, C++, Java, Python                             |
 | [Fluent Bit](https://fluentbit.io/)                       | Collector                                                |
 | [Graphite](https://graphiteapp.org/)                      | Collector                                                |

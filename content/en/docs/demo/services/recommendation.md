@@ -11,9 +11,9 @@ based on existing product ids the user is browsing.
 
 ## Auto-instrumentation
 
-This Python based service, makes use of the OpenTelemetry auto-instrumentor
-for Python, accomplished by leveraging the `opentelemetry-instrument` Python
-wrapper to run the scripts. This can be done in the `ENTRYPOINT` command for the
+This Python based service, makes use of the OpenTelemetry auto-instrumentor for
+Python, accomplished by leveraging the `opentelemetry-instrument` Python wrapper
+to run the scripts. This can be done in the `ENTRYPOINT` command for the
 service's `Dockerfile`.
 
 ```dockerfile
@@ -65,9 +65,9 @@ block ends execution. This is done in the `get_product_list` function.
 ### Initializing Metrics
 
 The OpenTelemetry SDK is initialized in the `__main__` code block. This code
-will create a meter provider. Export
-endpoints, resource attributes, and service name are automatically set by the
-OpenTelemetry auto instrumentor based on environment variables.
+will create a meter provider. Export endpoints, resource attributes, and service
+name are automatically set by the OpenTelemetry auto instrumentor based on
+environment variables.
 
 ```python
     meter = metrics.get_meter_provider().get_meter("recommendationservice")
@@ -77,8 +77,8 @@ OpenTelemetry auto instrumentor based on environment variables.
 
 The following custom metrics are currently available:
 
-* `app_recommendations_counter`: Cumulative count of # recommended
- products per service call
+- `app_recommendations_counter`: Cumulative count of # recommended products per
+  service call
 
 ### Auto-instrumented metrics
 
@@ -86,9 +86,9 @@ The following metrics are available through auto-instrumentation, courtesy of
 the `opentelemetry-instrumentation-system-metrics`, which is installed as part
 of `opentelemetry-bootstrap` on building the recommendationservice Docker image:
 
-* `runtime.cpython.cpu_time`
-* `runtime.cpython.memory`
-* `runtime.cpython.gc_count`
+- `runtime.cpython.cpu_time`
+- `runtime.cpython.memory`
+- `runtime.cpython.gc_count`
 
 ## Logs
 

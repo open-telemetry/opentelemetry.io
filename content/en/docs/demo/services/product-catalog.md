@@ -83,8 +83,8 @@ context.
 ```
 
 Adding attributes to a span is accomplished using `SetAttributes` on the span
-object. In the `GetProduct` function an attribute for the product id is added
-to the span.
+object. In the `GetProduct` function an attribute for the product id is added to
+the span.
 
 ```go
     span.SetAttributes(
@@ -94,9 +94,9 @@ to the span.
 
 ### Setting span status
 
-This service can catch and handle an error condition based on a feature flag.
-In an error condition, the span status is set accordingly using `SetStatus` on
-the span object. You can see this in the `GetProduct` function.
+This service can catch and handle an error condition based on a feature flag. In
+an error condition, the span status is set accordingly using `SetStatus` on the
+span object. You can see this in the `GetProduct` function.
 
 ```go
     msg := fmt.Sprintf("Error: ProductCatalogService Fail Feature Flag Enabled")
