@@ -103,7 +103,8 @@ docker run -d --name jaeger \
 
 ## Zipkin
 
-To set up Zipkin as quickly as possible, run it in a docker container:
+If you're using [Zipkin](https://zipkin.io/) to visualize traces, you'll need to set it up forst.
+Here's how to run it locally in a docker container.
 
 ```shell
 docker run --rm -d -p 9411:9411 --name zipkin openzipkin/zipkin
