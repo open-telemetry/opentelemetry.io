@@ -8,6 +8,8 @@ tags:
   - collector
 repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/zookeeperreceiver
 license: Apache 2.0
-description: The Zookeeper Receiver for the OpenTelemetry Collector collects metrics from a Zookeeper instance, using the 'mntr' command.
+description:
+  The Zookeeper Receiver for the OpenTelemetry Collector collects metrics from a
+  Zookeeper instance, using the 'mntr' command.
 authors: OpenTelemetry Authors
 otVersion: latest

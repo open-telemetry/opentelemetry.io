@@ -42,8 +42,8 @@ If you’ve been working on OpenTelemetry and seeing it grow, or are an end-user
 that wants to help us make OpenTelemetry better, now’s the time to consider
 running for a seat on the Governance Committee. You can read about the
 Governance Committee's role in
-[this blog](/blog/2019/opentelemetry-governance-committee-explained/)
-post or refer to the
+[this blog](/blog/2019/opentelemetry-governance-committee-explained/) post or
+refer to the
 [charter document](https://github.com/open-telemetry/community/blob/master/governance-charter.md).
 You may nominate yourself (or others!) by submitting a Pull Request against the
 [list of candidates](https://github.com/open-telemetry/community/blob/main/elections/2022/governance-committee-candidates.md)
@@ -59,12 +59,12 @@ the community.
 
 ## Questions?
 
-For any election related questions, please file an issue on the [community
-repo](https://github.com/open-telemetry/community/issues) here and tag
-[@jpkrohling](https://github.com/jpkrohling),
+For any election related questions, please file an issue on the
+[community repo](https://github.com/open-telemetry/community/issues) here and
+tag [@jpkrohling](https://github.com/jpkrohling),
 [@bogdandrutu](https://github.com/bogdandrutu), and
-[@bhs](https://github.com/bhs). Or send us a message on [CNCF
-Slack](https://slack.cncf.io/) in
+[@bhs](https://github.com/bhs). Or send us a message on
+[CNCF Slack](https://slack.cncf.io/) in
 [#opentelemetry](https://cloud-native.slack.com/archives/CJFCJHG4Q) if you have
 an urgent access issue during voting.
 

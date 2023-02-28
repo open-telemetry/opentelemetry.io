@@ -3,9 +3,9 @@ title: Demo Requirements
 linkTitle: Requirements
 ---
 
-The following documents capture the Application, OpenTelemetry (OTel), and System
-requirements for our shared demo application. These were decided upon in the
-ongoing SIG meeting.
+The following documents capture the Application, OpenTelemetry (OTel), and
+System requirements for our shared demo application. These were decided upon in
+the ongoing SIG meeting.
 
 1. [Application Requirements](application/)
 2. [OpenTelemetry Requirements](opentelemetry/)
@@ -13,7 +13,8 @@ ongoing SIG meeting.
 
 ## Target Personas
 
-We're building the demo application with several different target personas in mind:
+We're building the demo application with several different target personas in
+mind:
 
 1. **Enthusiasts** at a company that can use the demo app as an individual to
    advocate for OTel within their organization.

@@ -17,7 +17,8 @@ Now you can easily export metrics from:
 - ASP.NET Core,
 - ASP.NET Framework,
 - HTTP clients (`System.Net.Http.HttpClient` and `System.Net.HttpWebRequest`),
-- measurements created using [`System.Diagnostics.Metrics`](https://docs.microsoft.com/dotnet/core/diagnostics/metrics-instrumentation).
+- measurements created using
+  [`System.Diagnostics.Metrics`](https://docs.microsoft.com/dotnet/core/diagnostics/metrics-instrumentation).
 
 Over the next few months we plan to support:
 

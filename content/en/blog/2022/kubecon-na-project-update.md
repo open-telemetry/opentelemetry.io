@@ -9,9 +9,9 @@ author: Morgan McLean
 signal type, and are being used on production services and infrastructure
 alongside OpenTelemetry’s existing distributed tracing support to send critical
 performance data to any observability backend for processing. Everywhere we look
-we see OpenTelemetry being tested, rolled out, or already in use in organizations
-everywhere, from the largest to smallest, from the most cutting edge to the
-historically cautious.
+we see OpenTelemetry being tested, rolled out, or already in use in
+organizations everywhere, from the largest to smallest, from the most cutting
+edge to the historically cautious.
 
 Since January, we’ve delivered:
 

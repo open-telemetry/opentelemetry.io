@@ -1,7 +1,6 @@
 ---
-title: "What is OpenTelemetry?"
-description: >-
-  Background information on OpenTelemetry
+title: What is OpenTelemetry?
+description: Background information on OpenTelemetry.
 weight: 10
 ---
 

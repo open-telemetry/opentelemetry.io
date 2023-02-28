@@ -1,7 +1,5 @@
 ---
-title: "Metrics"
-description: >-
-  A metric is a measurement about a service, captured at runtime.
+title: Metrics
 weight: 2
 ---
 

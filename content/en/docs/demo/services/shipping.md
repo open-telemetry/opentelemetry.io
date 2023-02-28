@@ -11,12 +11,12 @@ Shipping service is built primarily with Tonic, Reqwest, and OpenTelemetry
 Libraries/Components. Other sub-dependencies are included in `Cargo.toml`.
 
 Depending on your framework and runtime, you may consider consulting
-[rust docs](/docs/instrumentation/rust/) to supplement.
-You'll find examples of async and sync spans in quote requests and tracking ID's
-respectively.
+[rust docs](/docs/instrumentation/rust/) to supplement. You'll find examples of
+async and sync spans in quote requests and tracking ID's respectively.
 
 The `build.rs` supports development outside docker, given a rust installation.
-Otherwise, consider building with `docker compose` to edit / assess changes as needed.
+Otherwise, consider building with `docker compose` to edit / assess changes as
+needed.
 
 [Shipping service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/shippingservice/)
 
@@ -55,18 +55,18 @@ fn init_tracer() -> Result<sdktrace::Tracer, TraceError> {
 ```
 
 Spans and other metrics are created in this example throughout `tokio` async
-runtimes found within [`tonic` server
-functions](https://github.com/hyperium/tonic/blob/master/examples/helloworld-tutorial.md#writing-our-server).
-Be mindful of async runtime, [context
-guards](https://docs.rs/opentelemetry/latest/opentelemetry/struct.ContextGuard.html),
+runtimes found within
+[`tonic` server functions](https://github.com/hyperium/tonic/blob/master/examples/helloworld-tutorial.md#writing-our-server).
+Be mindful of async runtime,
+[context guards](https://docs.rs/opentelemetry/latest/opentelemetry/struct.ContextGuard.html),
 and inability to move and clone `spans` when replicating from these samples.
 
 ### Adding gRPC instrumentation
 
 This service receives gRPC requests, which are instrumented in the middleware.
 
-The root span is started and passed down as reference in the same thread
-to another closure where we call `quoteservice`.
+The root span is started and passed down as reference in the same thread to
+another closure where we call `quoteservice`.
 
 ```rust
     let tracer = global::tracer("shippingservice");
@@ -102,20 +102,21 @@ to another closure where we call `quoteservice`.
     cx.span().set_attribute(semcov::trace::RPC_GRPC_STATUS_CODE.i64(RPC_GRPC_STATUS_CODE_OK));
 ```
 
-Note that we create a context around the root span and send a clone to the
-async function create_quote_from_count(). After create_quote_from_count()
-completes, we can add additional attributes to the root span as appropriate.
+Note that we create a context around the root span and send a clone to the async
+function create_quote_from_count(). After create_quote_from_count() completes,
+we can add additional attributes to the root span as appropriate.
 
 You may also notice the `attributes` set on the span in this example, and
 `events` propogated similarly. With any valid `span` pointer (attached to
-context) the [OpenTelemetry API](https://docs.rs/opentelemetry/0.17.0/opentelemetry/trace/struct.SpanRef.html)
+context) the
+[OpenTelemetry API](https://docs.rs/opentelemetry/0.17.0/opentelemetry/trace/struct.SpanRef.html)
 will work.
 
 ### Adding HTTP instrumentation
 
-A child *client* span is also produced for the outoing HTTP call to
+A child _client_ span is also produced for the outoing HTTP call to
 `quoteservice` via the `reqwest` client. This span pairs up with the
-corresponding `quoteservice` *server* span. The tracing instrumentation is
+corresponding `quoteservice` _server_ span. The tracing instrumentation is
 implemented in the client middleware making use of the available
 `reqwest-middleware`, `reqwest-tracing` and `tracing-opentelementry` libraries:
 
@@ -128,12 +129,12 @@ implemented in the client middleware making use of the available
 
 ### Add span attributes
 
-Provided you are on the same thread, or in a context passed from a
-span-owning thread, or a `ContextGuard` is in scope, you can get
-an active span with `get_active_span`. You can find examples of all of these
-in the demo, with context available in `shipping_service` for sync/async runtime.
-You should consult `quote.rs` and/or the example above to see
-context-passed-to-async runtime.
+Provided you are on the same thread, or in a context passed from a span-owning
+thread, or a `ContextGuard` is in scope, you can get an active span with
+`get_active_span`. You can find examples of all of these in the demo, with
+context available in `shipping_service` for sync/async runtime. You should
+consult `quote.rs` and/or the example above to see context-passed-to-async
+runtime.
 
 See below for a snippet from `shiporder` that holds context and a span in scope.
 This is appropriate in our case of a sync runtime.
@@ -160,8 +161,9 @@ You must add attributes to a span in context with `set_attribute`, followed by a
 ### Add span events
 
 Adding span events is accomplished using `add_event` on the span object. Both
-server routes, for `ShipOrderRequest` (sync) and `GetQuoteRequest` (async),
-have events on spans. Attributes are not included here, but are [simple to include](https://docs.rs/opentelemetry/latest/opentelemetry/trace/trait.Span.html#method.add_event).
+server routes, for `ShipOrderRequest` (sync) and `GetQuoteRequest` (async), have
+events on spans. Attributes are not included here, but are
+[simple to include](https://docs.rs/opentelemetry/latest/opentelemetry/trace/trait.Span.html#method.add_event).
 
 Adding a span event:
 

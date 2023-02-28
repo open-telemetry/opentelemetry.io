@@ -3,9 +3,9 @@ registryType: resource-detector
 isThirdParty: false
 language: js
 tags:
-    - gcp
-    - resource-detector
-    - js
+  - gcp
+  - resource-detector
+  - js
 repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node/opentelemetry-resource-detector-gcp
 license: Apache 2.0
 description: Resource detector for Google Cloud Platform.
