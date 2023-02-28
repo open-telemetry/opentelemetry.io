@@ -25,7 +25,7 @@ composer require open-telemetry/transport-grpc
 
 Next, configure the exporter with an OTLP endpoint. For example, you can update
 `GettingStarted.php` from
-[Getting Started](/docs/instrumentation/php/getting-started/) like the
+[Getting Started](../getting-started/) like the
 following:
 
 <!-- prettier-ignore-start -->
