@@ -25,9 +25,8 @@ markdown formatter (see below).
 If you use images, make sure that your blog post is located in it's own
 directory. Put the images into the same directory.
 
-If you have an image stored at
-`content/en/{{ .File.Dir }}imagename.png`,
-you can reference them like the following:
+If you have an image stored at `content/en/{{ .File.Dir }}imagename.png`, you
+can reference them like the following:
 
 ![Provide a good image description for improved accessibility](imagename.png)
 

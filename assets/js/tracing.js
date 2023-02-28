@@ -1,4 +1,7 @@
-import { ConsoleSpanExporter, SimpleSpanProcessor } from '@opentelemetry/sdk-trace-base';
+import {
+  ConsoleSpanExporter,
+  SimpleSpanProcessor,
+} from '@opentelemetry/sdk-trace-base';
 import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
 import { getWebAutoInstrumentations } from '@opentelemetry/auto-instrumentations-web';
 import { registerInstrumentations } from '@opentelemetry/instrumentation';
@@ -9,12 +12,12 @@ import { ZoneContextManager } from '@opentelemetry/context-zone-peer-dep';
 
 const collectorOptions = {
   url: 'https://otelwebtelemetry.com/v1/traces',
-}
+};
 const exporter = new OTLPTraceExporter(collectorOptions);
 
 const resources = new Resource({
   [SemanticResourceAttributes.SERVICE_NAME]: 'opentelemetry.io',
-  "browser.language": navigator.language,
+  'browser.language': navigator.language,
 });
 
 const provider = new WebTracerProvider({
@@ -22,11 +25,9 @@ const provider = new WebTracerProvider({
 });
 
 registerInstrumentations({
-  instrumentations: [
-    getWebAutoInstrumentations({})
-  ],
-  tracerProvider: provider
-})
+  instrumentations: [getWebAutoInstrumentations({})],
+  tracerProvider: provider,
+});
 
 provider.addSpanProcessor(new SimpleSpanProcessor(exporter));
 provider.addSpanProcessor(new SimpleSpanProcessor(new ConsoleSpanExporter()));

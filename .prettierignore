@@ -1,29 +1,27 @@
 # Base
 
 /.netlify
-/.vscode
 /iconography
 /layouts
-package-lock.json
-/public
 /themes
 /tmp
 
-# Ignore content-modules except for Go docs
+# Ignore content-modules except for Community pages and Go docs
 
 /content-modules/*
+!/content-modules/community
+/content-modules/community/*
+!/content-modules/community/mission-vision-values.md
+!/content-modules/community/roadmap.md
+
 !/content-modules/opentelemetry-go
 /content-modules/opentelemetry-go/*
 !/content-modules/opentelemetry-go/website_docs
 /content-modules/opentelemetry-go/website_docs/**/*
 !/content-modules/opentelemetry-go/website_docs/**/*.md
 
-# Temporary while we ramp up use of Prettier
+# Ignore generated resources
 
-/.github
-/archetypes
-/assets/**/*.js
-/data
+package-lock.json
+/public
 /resources
-/scripts
-/templates

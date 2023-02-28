@@ -3,11 +3,12 @@ registryType: processor
 isThirdParty: false
 language: collector
 tags:
-    - datadog
-    - processor
-    - collector
+  - datadog
+  - processor
+  - collector
 repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/datadogprocessor
 license: Apache 2.0
-description: The Datadog Processor can be used to compute Datadog APM Stats pre-sampling.
+description:
+  The Datadog Processor can be used to compute Datadog APM Stats pre-sampling.
 authors: OpenTelemetry Authors
 otVersion: latest

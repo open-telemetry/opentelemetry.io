@@ -7,6 +7,8 @@ tags:
   - sdk-extension
 repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/sdk-extension/opentelemetry-sdk-extension-aws
 license: Apache 2.0
-description: This library provides components to configure OpenTelemetry Python to generate traces which are compatible with AWS X-Ray.
+description:
+  This library provides components to configure OpenTelemetry Python to generate
+  traces which are compatible with AWS X-Ray.
 authors: OpenTelemetry Authors
 otVersion: latest

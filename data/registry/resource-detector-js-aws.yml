@@ -3,9 +3,9 @@ registryType: resource-detector
 isThirdParty: false
 language: js
 tags:
-    - aws
-    - resource-detector
-    - js
+  - aws
+  - resource-detector
+  - js
 repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node/opentelemetry-resource-detector-aws
 license: Apache 2.0
 description: Resource detector for Amazon Web Services.

@@ -3,9 +3,9 @@ registryType: exporter
 isThirdParty: false
 language: collector
 tags:
-    - logicmonitor
-    - exporter
-    - collector
+  - logicmonitor
+  - exporter
+  - collector
 repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/logicmonitorexporter
 license: Apache 2.0
 description: This exporter supports sending logs and traces data to Logicmonitor
