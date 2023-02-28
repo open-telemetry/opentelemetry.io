@@ -78,7 +78,7 @@ To do [Tracing](/docs/concepts/signals/traces/) you'll need to acquire a
 **Note:** Methods of the OpenTelemetry SDK should never be called.
 
 First, a `Tracer` must be acquired, which is responsible for creating spans and
-interacting with the [Context](./propagation.md). A tracer is acquired by using
+interacting with the [Context](../propagation). A tracer is acquired by using
 the OpenTelemetry API specifying the name and version of the [library
 instrumenting][instrumentation library] the [instrumented library] or
 application to be monitored. More information is available in the specification
@@ -120,7 +120,7 @@ Most of the time, we want to correlate
 [spans](/docs/concepts/signals/traces/#spans-in-opentelemetry) for nested
 operations. OpenTelemetry supports tracing within processes and across remote
 processes. For more details how to share context between remote processes, see
-[Context Propagation](./propagation.md).
+[Context Propagation](../propagation).
 
 For a method `a` calling a method `b`, the spans could be manually linked in the
 following way:
@@ -210,7 +210,7 @@ $span = $tracer->spanBuilder("span-with-links")
 ```
 
 For more details how to read context from remote processes, see
-[Context Propagation](./propagation.md).
+[Context Propagation](../propagation).
 
 ### Set span status and record exceptions
 
