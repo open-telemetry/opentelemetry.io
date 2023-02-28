@@ -78,11 +78,11 @@ To do [Tracing](/docs/concepts/signals/traces/) you'll need to acquire a
 **Note:** Methods of the OpenTelemetry SDK should never be called.
 
 First, a `Tracer` must be acquired, which is responsible for creating spans and
-interacting with the [Context](/docs/instrumentation/php/propagation). A tracer is acquired by using
-the OpenTelemetry API specifying the name and version of the [library
-instrumenting][instrumentation library] the [instrumented library] or
-application to be monitored. More information is available in the specification
-chapter [Obtaining a Tracer].
+interacting with the [Context](/docs/instrumentation/php/propagation). A tracer
+is acquired by using the OpenTelemetry API specifying the name and version of
+the [library instrumenting][instrumentation library] the [instrumented library]
+or application to be monitored. More information is available in the
+specification chapter [Obtaining a Tracer].
 
 ```php
 $tracer = Globals::tracerProvider()->getTracer('instrumentation-library-name', '1.0.0');
