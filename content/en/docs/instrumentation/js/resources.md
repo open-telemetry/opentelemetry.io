@@ -36,8 +36,9 @@ diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
 Run the application with some values set to `OTEL_RESOURCE_ATTRIBUTES`, e.g. we
 set the `host.name` to identify the [Host][]:
 
-```sh
-$ env OTEL_RESOURCE_ATTRIBUTES="host.name=localhost" node --require './tracing.js' app.js
+```console
+$ env OTEL_RESOURCE_ATTRIBUTES="host.name=localhost" \
+  node --require ./tracing.js app.js
 @opentelemetry/api: Registered a global for diag v1.2.0.
 ...
 Listening for requests on http://localhost:8080
@@ -67,8 +68,9 @@ resource you need. In that case you can use the environment
 `OTEL_RESOURCE_ATTRIBUTES` to inject whatever you need. For example the
 following script adds [Service][], [Host][] and [OS][] resource attributes:
 
-```sh
-$ env OTEL_RESOURCE_ATTRIBUTES="service.name=app.js,service.namespace=tutorial,service.version=1.0,service.instance.id=`uuidgen`,host.name=${HOSTNAME:},host.type=`uname -m`,os.name=`uname -s`,os.version=`uname -r`" node --require './tracing.js' app.js
+```console
+$ env OTEL_RESOURCE_ATTRIBUTES="service.name=app.js,service.namespace=tutorial,service.version=1.0,service.instance.id=`uuidgen`,host.name=${HOSTNAME:},host.type=`uname -m`,os.name=`uname -s`,os.version=`uname -r`" \
+  node --require ./tracing.js app.js
 ...
 EnvDetector found resource. Resource {
   attributes: {

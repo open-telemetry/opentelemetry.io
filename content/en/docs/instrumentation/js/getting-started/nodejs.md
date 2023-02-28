@@ -28,7 +28,7 @@ npm init -f
 Install dependencies used by the example.
 
 <!-- prettier-ignore-start -->
-{{< tabpane lang=shell >}}
+{{< tabpane lang=shell persistLang=false >}}
 
 {{< tab TypeScript >}}
 npm install express typescript ts-node @types/express @types/node
@@ -93,7 +93,7 @@ Run the application with the following request and open <http://localhost:8080>
 in your web browser to ensure it is working.
 
 <!-- prettier-ignore-start -->
-{{< tabpane lang=console >}}
+{{< tabpane lang=console persistLang=false >}}
 
 {{< tab TypeScript >}}
 $ ts-node app.ts
@@ -205,15 +205,15 @@ Now you can run your application as you normally would, but you can use the
 `--require` flag to load the tracing code before the application code.
 
 <!-- prettier-ignore-start -->
-{{< tabpane lang=console >}}
+{{< tabpane lang=console persistLang=false >}}
 
 {{< tab TypeScript >}}
-$ ts-node --require './tracing.ts' app.ts
+$ ts-node --require ./tracing.ts app.ts
 Listening for requests on http://localhost:8080
 {{< /tab >}}
 
 {{< tab JavaScript >}}
-$ node --require './tracing.js' app.js
+$ node --require ./tracing.js app.js
 Listening for requests on http://localhost:8080
 {{< /tab >}}
 
