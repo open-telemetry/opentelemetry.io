@@ -1,6 +1,6 @@
 ---
 title: Propagation
-description: Context propagation for the PHP SDK
+description: Context propagation for the PHP API
 aliases: [/docs/instrumentation/php/api/propagation]
 weight: 7
 ---
