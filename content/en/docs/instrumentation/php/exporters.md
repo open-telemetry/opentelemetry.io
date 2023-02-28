@@ -14,8 +14,7 @@ matching exporters.
 ## OTLP
 
 To send trace data to a OTLP endpoint (like the [collector](/docs/collector) or
-Jaeger) you'll want to use an exporter package, such as
-`open-telemetry/exporter-otlp`:
+Jaeger) you'll need to use the `open-telemetry/exporter-otlp` package:
 
 ```shell
 composer require open-telemetry/exporter-otlp

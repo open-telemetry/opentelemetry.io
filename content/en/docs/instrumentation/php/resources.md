@@ -3,8 +3,8 @@ title: Resources
 weight: 6
 ---
 
-A [resource][] represents the entity producing telemetry as resource attributes.
-For example, a process producing telemetry that is running in a container on
+A resource represents the entity producing telemetry as resource attributes. For
+example, a process producing telemetry that is running in a container on
 Kubernetes has a Pod name, a namespace, and possibly a deployment name. All
 three of these attributes can be included in the resource.
 
@@ -15,11 +15,6 @@ pod, or Kubernetes deployment.
 
 Below you will find some introductions on how to set up resource detection with
 the PHP SDK.
-
-## Setup
-
-Follow the instructions in [Getting Started - PHP][], so that you have the files
-`composer.json` and `GettingStarted.php`.
 
 ## Resource Detection
 
@@ -55,8 +50,9 @@ only certain detectors:
 ## Adding resources with environment variables
 
 If there is not an SDK detector for the resource you need, you can add arbitrary
-resources via the `OTEL_RESOURCE_ATTRIBUTES` environment variable. This variable
-takes a comma-separated list of key=value pairs, for example:
+resources via the `OTEL_RESOURCE_ATTRIBUTES` environment variable, which is
+interpreted by the `env` detector. This variable takes a comma-separated list of
+key=value pairs, for example:
 
 ```shell
 $ env OTEL_RESOURCE_ATTRIBUTES="service.name=my_service,service.namespace=demo,service.version=1.0,deployment.environment=development" example.php
