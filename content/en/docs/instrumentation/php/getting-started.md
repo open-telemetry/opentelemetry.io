@@ -1,7 +1,6 @@
 ---
 title: Getting Started
 description: Get up and running with OpenTelemetry for PHP.
-aliases: [/docs/instrumentation/php/getting_started]
 weight: 1
 ---
 

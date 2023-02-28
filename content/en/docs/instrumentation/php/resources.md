@@ -43,7 +43,8 @@ completely disable them:
 For example, to enable only the `env`, `host` and `sdk` detectors:
 
 ```shell
-env OTEL_PHP_RESOURCE_DETECTORS=env,host,sdk php <script.php>
+env OTEL_PHP_RESOURCE_DETECTORS=env,host,sdk \
+php example.php
 ```
 
 ## Adding resources with environment variables
@@ -54,7 +55,8 @@ interpreted by the `env` detector. This variable takes a comma-separated list of
 key=value pairs, for example:
 
 ```shell
-$ env OTEL_RESOURCE_ATTRIBUTES="service.name=my_service,service.namespace=demo,service.version=1.0,deployment.environment=development" example.php
+env OTEL_RESOURCE_ATTRIBUTES="service.name=my_service,service.namespace=demo,service.version=1.0,deployment.environment=development" \
+php example.php
 ```
 
 ## Adding resources in code

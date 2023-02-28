@@ -1,7 +1,6 @@
 ---
 title: Propagation
 description: Context propagation for the PHP API
-aliases: [/docs/instrumentation/php/api/propagation]
 weight: 7
 ---
 
@@ -20,7 +19,7 @@ Auto-instrumentation exists for some popular PHP frameworks (eg Symfony,
 Laravel, Slim) and HTTP libraries propagate context for incoming and outgoing
 HTTP requests.
 
-**It is highly recommend that you use auto-instrumentation or instrumentation
+**We highly recommend that you use auto-instrumentation or instrumentation
 libraries to propagate context**. Although it is possible to propagate context
 manually, the PHP auto-instrumentation and instrumentation libraries are
 well-tested and easier to use.
@@ -33,7 +32,7 @@ automatically extract W3C tracecontext headers, create a root span, and set a
 remote parent for the root span.
 
 ```shell
-$ composer require open-telemetry/opentelemetry-auto-psr15
+composer require open-telemetry/opentelemetry-auto-psr15
 ```
 
 ### Outgoing
@@ -43,7 +42,7 @@ automatically apply W3C tracecontext headers to outgoing HTTP requests for any
 library which implements the PSR-18 interface.
 
 ```shell
-$ open-telemetry/opentelemetry-auto-psr18
+open-telemetry/opentelemetry-auto-psr18
 ```
 
 ## Manual W3C Trace Context Propagation
