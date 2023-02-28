@@ -13,10 +13,10 @@ investigate interesting behavior. For example, if your trace or metrics data
 indicate latency in your system, you can narrow it down to a specific container,
 pod, or Kubernetes deployment.
 
-
 ## Resource Detection
 
-The PHP SDK detects resources from a variety of sources:
+The PHP SDK detects resources from a variety of sources, and by default will use
+all available resource detectors:
 
 - environment (`OTEL_RESOURCE_ATTRIBUTES`, `OTEL_SERVICE_NAME`)
 - host information
@@ -24,16 +24,11 @@ The PHP SDK detects resources from a variety of sources:
 - current process
 - runtime
 
-Run the application with some values set to `OTEL_RESOURCE_ATTRIBUTES`, e.g. we
-set the `host.name` to identify the [Host][]:
-
 ## Disabling resource detection
 
-By default, all SDK resource detectors are used to detect as many resources as
-possible.
-
-You can use the environment variable `OTEL_PHP_RESOURCE_DETECTORS` to enable
-only certain detectors:
+By default, all SDK resource detectors are used, but you can use the environment
+variable `OTEL_PHP_RESOURCE_DETECTORS` to enable only certain detectors, or
+completely disable them:
 
 - `env`
 - `host`
@@ -44,6 +39,12 @@ only certain detectors:
 - `sdk_provided`
 - `all` - enable all resource detectors
 - `none` - disable resource detection
+
+For example, to enable only the `env`, `host` and `sdk` detectors:
+
+```shell
+env OTEL_PHP_RESOURCE_DETECTORS=env,host,sdk php <script.php>
+```
 
 ## Adding resources with environment variables
 

@@ -13,13 +13,14 @@ across process and network boundaries.
 ## Context propagation with frameworks and libraries
 
 Auto-instrumentation exists for some popular PHP frameworks (eg Symfony,
-Laravel, Slim) and HTTP libraries propagate context for
-incoming and outgoing HTTP requests.
+Laravel, Slim) and HTTP libraries propagate context for incoming and outgoing
+HTTP requests.
 
-**It is highly recommend that you use auto-instrumentation
-or instrumentation libraries to propagate context**. Although it is
-possible to propagate context manually, the PHP auto-instrumentation
-and instrumentation libraries are well-tested and easier to use.
+**It is highly recommend that you use auto-instrumentation or instrumentation
+libraries to propagate context**. Although it is possible to propagate context
+manually, the PHP auto-instrumentation and instrumentation libraries are
+well-tested and easier to use.
+
 ### Incoming
 
 Auto-instrumentation for frameworks which implement the

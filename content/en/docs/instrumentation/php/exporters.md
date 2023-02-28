@@ -3,10 +3,9 @@ title: Exporters
 weight: 5
 ---
 
-In order to visualize and analyze your telemetry, you will need to export it to a
-backend. OpenTelemetry PHP provides exporters for some
-common open source backends.
-
+In order to visualize and analyze your telemetry, you will need to export it to
+a backend. OpenTelemetry PHP provides exporters for some common open source
+backends.
 
 ## OTLP
 
@@ -24,8 +23,8 @@ If you use gRPC, you will also need to install the
 composer require open-telemetry/transport-grpc
 ```
 
-Next, configure the exporter with an OTLP endpoint. For example, you can
-update `GettingStarted.php` from
+Next, configure the exporter with an OTLP endpoint. For example, you can update
+`GettingStarted.php` from
 [Getting Started](/docs/instrumentation/php/getting-started/) like the
 following:
 
@@ -82,7 +81,8 @@ $tracerProvider =  new TracerProvider(
 $tracer = $tracerProvider->getTracer('io.opentelemetry.contrib.php');
 ```
 
-To try out the example locally, you can run [Jaeger](https://www.jaegertracing.io/) in a docker container:
+To try out the example locally, you can run
+[Jaeger](https://www.jaegertracing.io/) in a docker container:
 
 ```shell
 docker run -d --name jaeger \
@@ -103,8 +103,8 @@ docker run -d --name jaeger \
 
 ## Zipkin
 
-If you're using [Zipkin](https://zipkin.io/) to visualize traces, you'll need to set it up forst.
-Here's how to run it locally in a docker container.
+If you're using [Zipkin](https://zipkin.io/) to visualize traces, you'll need to
+set it up first. Here's how to run it locally in a docker container.
 
 ```shell
 docker run --rm -d -p 9411:9411 --name zipkin openzipkin/zipkin
