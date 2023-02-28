@@ -10,7 +10,6 @@ Although not limited to tracing, it is what allows traces to build causal
 information about a system across services that are arbitrarily distributed
 across process and network boundaries.
 
-
 OpenTelemetry provides a text-based approach to propagate context to remote
 services using the [W3C Trace Context](https://www.w3.org/TR/trace-context/)
 HTTP headers.
