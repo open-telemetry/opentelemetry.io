@@ -1,7 +1,6 @@
 ---
 title: Building a Trace Receiver
 spelling: cSpell:ignore struct tailtracer
-collectorVersion: v0.69.0
 ---
 
 If you are reading this tutorial, you probably already have an idea of the
@@ -66,7 +65,7 @@ tracing backend so the Collector can send the telemetry to it. We will be using
 don't have a `Jaeger` instance running, you can easily start one using Docker
 with the following command:
 
-```cmd
+```sh
 docker run -d --name jaeger \
   -p 16686:16686 \
   -p 14268:14268 \
@@ -76,7 +75,7 @@ docker run -d --name jaeger \
 
 Now, create a `config.yaml` file so you can set up your Collector's components.
 
-```cmd
+```sh
 cd otelcol-dev
 touch config.yaml
 ```
@@ -121,8 +120,8 @@ running your collector in production.
 In order to verify that your initial pipeline is properly set up, you should
 have the following output after running your `otelcol-dev` command:
 
-```cmd
-otelcol-dev % ./otelcol-dev --config config.yaml
+```console
+$ ./otelcol-dev --config config.yaml
 2022-06-21T13:02:09.253-0500    info    builder/exporters_builder.go:255        Exporter was built.     {"kind": "exporter", "name": "jaeger"}
 2022-06-21T13:02:09.254-0500    info    builder/exporters_builder.go:255        Exporter was built.     {"kind": "exporter", "name": "logging"}
 2022-06-21T13:02:09.254-0500    info    builder/pipelines_builder.go:224        Pipeline was built.     {"kind": "pipeline", "name": "traces"}
@@ -155,7 +154,7 @@ have our environment ready, let's start writing your receiver's code.
 Now, create another folder called `tailtracer` so we can have a place to host
 all of our receiver code.
 
-```cmd
+```sh
 mkdir tailtracer
 ```
 
@@ -163,7 +162,7 @@ Every Collector's component should be created as a Go module, so you will need
 to properly initialize the `tailtracer` module. In my case here is what the
 command looked like:
 
-```cmd
+```sh
 cd tailtracer
 go mod init github.com/rquedas/otel4devs/collector/receiver/trace-receiver/tailtracer
 ```
@@ -192,7 +191,7 @@ receivers:
 Under the `tailtracer` folder, create a file named `config.go` where you will
 write all the code to support your receiver settings.
 
-```cmd
+```sh
 cd tailtracer
 touch config.go
 ```
@@ -363,7 +362,7 @@ available within the `go.opentelemetry.io/collector/receiver` package.
 
 Start by creating a file named factory.go within the `tailtracer` folder.
 
-```cmd
+```sh
 cd tailtracer
 touch factory.go
 ```
@@ -395,25 +394,19 @@ func NewFactory(cfgType component.Type, createDefaultConfig component.CreateDefa
 The `receiver.NewFactory()` instantiates and returns a `receiver.Factory` and it
 requires the following parameters:
 
-- `component.Type`: A component.Type instance representing a unique identifier
-  for your receiver across all Collector's components.
+- `component.Type`: a unique string identifier for your receiver across all
+  Collector's components.
 
-- `component.CreateDefaultConfigFunc`: A reference to a function that returns
+- `component.CreateDefaultConfigFunc`: a reference to a function that returns
   the component.Config instance for your receiver.
 
-- `...FactoryOption`: The slice of `receiver.FactoryOption`s that will determine
+- `...FactoryOption`: the slice of `receiver.FactoryOption`s that will determine
   what type of signal your receiver is capable of processing.
 
 Let's now implement the code to support all the parameters required by
 `receiver.NewFactory()`.
 
 ### Identifying and Providing default settings for the receiver
-
-If you take a look at the definition of
-[component.Type](https://github.com/open-telemetry/opentelemetry-collector/blob/{{%
-param collectorVersion %}}/component/config.go#L122), you will see that it's
-just a string. So all we need to do is to provide a string constant representing
-the unique identifier for our receiver.
 
 Previously, we said that the `interval` setting for our `tailtracer` receiver
 would be optional, in that case you will need to provide a default value for it
@@ -693,8 +686,8 @@ here is what the beginning of the output for running your Collector with
 `otelcol-dev` command should look like after building it with the current
 codebase:
 
-```cmd
-otelcol-dev % ./otelcol-dev --config config.yaml
+```console
+$ ./otelcol-dev --config config.yaml
 2022-02-24T12:17:41.454-0600    info    service/collector.go:190        Applying configuration...
 2022-02-24T12:17:41.454-0600    info    builder/exporters_builder.go:254        Exporter was built.     {"kind": "exporter", "name": "logging"}
 2022-02-24T12:17:41.454-0600    info    builder/exporters_builder.go:254        Exporter was built.     {"kind": "exporter", "name": "jaeger"}
@@ -719,8 +712,8 @@ Now, let's test one of the `tailtracer` settings validation rules. Remove the
 `number_of_traces` setting from the `config.yaml`, and here is what the output
 for running the Collector will look like:
 
-```cmd
-otelcol-dev % ./otelcol-dev --config config.yaml
+```console
+$ ./otelcol-dev --config config.yaml
 Error: invalid configuration: receiver "tailtracer" has invalid configuration: number_of_traces must be at least 1
 2022/02/24 13:00:20 collector server run finished with error: invalid configuration: receiver "tailtracer" has invalid configuration: number_of_traces must be at least 1
 ```
@@ -887,7 +880,6 @@ func (tailtracerRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
 	tailtracerRcvr.cancel()
 	return nil
 }
-
 ```
 
 > #### Check your work
@@ -971,7 +963,6 @@ func (tailtracerRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
 	tailtracerRcvr.cancel()
 	return nil
 }
-
 ```
 
 > #### Check your work
@@ -1103,8 +1094,8 @@ service:
 Here is what the output for running your Collector with `otelcol-dev` command
 should look like after you updated the `traces` pipeline:
 
-```cmd
-otelcol-dev % ./otelcol-dev --config config.yaml
+```console
+$ ./otelcol-dev --config config.yaml
 2022-03-03T11:19:50.779-0600    info    service/collector.go:190        Applying configuration...
 2022-03-03T11:19:50.780-0600    info    builder/exporters_builder.go:254        Exporter was built.     {"kind": "exporter", "name": "jaeger"}
 2022-03-03T11:19:50.780-0600    info    builder/exporters_builder.go:254        Exporter was built.     {"kind": "exporter", "name": "logging"}
@@ -1215,7 +1206,7 @@ representing the ATM and the backend system.
 
 Go ahead and create a file named `model.go` inside the `tailtracer` folder
 
-```cmd
+```sh
 cd tailtracer
 touch model.go
 ```
@@ -2054,7 +2045,7 @@ func (tailtracerRcvr *tailtracerReceiver) Start(ctx context.Context, host compon
 >   `generateTraces` function so the generated traces can be pushed to the next
 >   consumer in the pipeline
 
-If you run your `otelcol-dev` here is what the output should look like after 2
+If you run your `otelcol-dev`, here is what the output should look like after 2
 minutes running:
 
 ```cmd
