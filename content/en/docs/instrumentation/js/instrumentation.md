@@ -109,7 +109,7 @@ Next, ensure that `tracing.js|ts` is required in your node invocation. This is
 also required if you're registering instrumentation libraries. For example:
 
 <!-- prettier-ignore-start -->
-{{< tabpane lang=shell >}}
+{{< tabpane lang=shell persistLang=false >}}
 
 {{< tab TypeScript >}}
 ts-node --require './tracing.ts' <app-file.ts>
@@ -798,7 +798,7 @@ otel.metrics.setGlobalMeterProvider(myServiceMeterProvider)
 You'll need to `--require` this file when you run your app, such as:
 
 <!-- prettier-ignore-start -->
-{{< tabpane lang=shell >}}
+{{< tabpane lang=shell persistLang=false >}}
 
 {{< tab TypeScript >}}
 ts-node --require './instrumentation.ts' <app-file.ts>
