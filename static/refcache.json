@@ -123,9 +123,9 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-15T20:41:36.268773-05:00"
   },
-  "https://cdn.jsdelivr.net/npm/mermaid@9.1.3/dist/mermaid.min.js": {
+  "https://cdn.jsdelivr.net/npm/mermaid@9.2.2/dist/mermaid.min.js": {
     "StatusCode": 206,
-    "LastSeen": "2023-02-15T20:37:35.490003-05:00"
+    "LastSeen": "2023-02-28T10:57:08.962316-05:00"
   },
   "https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js": {
     "StatusCode": 200,
