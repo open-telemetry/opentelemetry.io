@@ -16,6 +16,10 @@ Auto-instrumentation exists for some popular PHP frameworks (eg Symfony,
 Laravel, Slim) and HTTP libraries which facilitates context propagation for
 incoming and outgoing HTTP requests.
 
+**It is highly recommend that you use auto-instrumentation
+or instrumentation libraries to propagate context**. Although it is
+possible to propagate context manually, the PHP auto-instrumentation
+and instrumentation libraries are well-tested and easier to use.
 ### Incoming
 
 Auto-instrumentation for frameworks which implement the
