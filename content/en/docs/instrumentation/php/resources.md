@@ -13,8 +13,6 @@ investigate interesting behavior. For example, if your trace or metrics data
 indicate latency in your system, you can narrow it down to a specific container,
 pod, or Kubernetes deployment.
 
-Below you will find some introductions on how to set up resource detection with
-the PHP SDK.
 
 ## Resource Detection
 
