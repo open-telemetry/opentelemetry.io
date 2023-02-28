@@ -54,7 +54,7 @@ use OpenTelemetry\SDK\Trace\TracerProvider;
 
 $transport = (new OtlpHttpTransportFactory())->create('http://collector:4318/v1/traces', 'application/x-protobuf');
 $exporter = new SpanExporter($transport);
-<<< /tab>}}
+{{< /tab>}}
 {{< tab json >}}
 use OpenTelemetry\Contrib\Otlp\OtlpHttpTransportFactory;
 use OpenTelemetry\Contrib\Otlp\SpanExporter;
