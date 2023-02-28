@@ -21,14 +21,16 @@ Jaeger) you'll want to use an exporter package, such as
 composer require open-telemetry/exporter-otlp
 ```
 
-If you wish to use the gRPC protocol, you will also need to install the `open-telemetry/transport-grpc` package:
+If you wish to use the gRPC protocol, you will also need to install the
+`open-telemetry/transport-grpc` package:
 
 ```shell
 composer require open-telemetry/transport-grpc
 ```
 
 Next, configure the exporter to point at an OTLP endpoint. For example, you can
-update `GettingStarted.php` from [Getting Started](/docs/instrumentation/php/getting-started/) like the
+update `GettingStarted.php` from
+[Getting Started](/docs/instrumentation/php/getting-started/) like the
 following:
 
 <!-- prettier-ignore-start -->
@@ -117,8 +119,8 @@ Install the exporter package as a dependency for your application:
 composer require open-telemetry/exporter-zipkin
 ```
 
-Update the example to use the Zipkin exporter and to send data to
-your zipkin backend:
+Update the example to use the Zipkin exporter and to send data to your zipkin
+backend:
 
 <!-- prettier-ignore-start -->
 $transport = PsrTransportFactory::discover()->create('http://zipkin:9411/api/v2/spans', 'application/json');

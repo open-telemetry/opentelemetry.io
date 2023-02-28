@@ -18,43 +18,45 @@ the PHP SDK.
 
 ## Setup
 
-Follow the instructions in [Getting Started - PHP](getting-started.md), so that you have
-the files `composer.json` and `GettingStarted.php`.
+Follow the instructions in [Getting Started - PHP](getting-started.md), so that
+you have the files `composer.json` and `GettingStarted.php`.
 
 ## Resource Detection
 
 The PHP SDK detects resources from a variety of sources:
 
-* environment (`OTEL_RESOURCE_ATTRIBUTES`, `OTEL_SERVICE_NAME`)
-* host information
-* host operating system
-* current process
-* runtime
+- environment (`OTEL_RESOURCE_ATTRIBUTES`, `OTEL_SERVICE_NAME`)
+- host information
+- host operating system
+- current process
+- runtime
 
 Run the application with some values set to `OTEL_RESOURCE_ATTRIBUTES`, e.g. we
 set the `host.name` to identify the [Host][]:
 
 ## Disabling resource detection
 
-By default, all SDK resource detectors are used to detect as many resources as possible.
+By default, all SDK resource detectors are used to detect as many resources as
+possible.
 
-You can use the environment variable `OTEL_PHP_RESOURCE_DETECTORS` to enable only certain detectors:
+You can use the environment variable `OTEL_PHP_RESOURCE_DETECTORS` to enable
+only certain detectors:
 
-* `env`
-* `host`
-* `os`
-* `process`
-* `process_runtime`
-* `sdk`
-* `sdk_provided`
-* `all` - enable all resource detectors
-* `none` - disable resource detection
+- `env`
+- `host`
+- `os`
+- `process`
+- `process_runtime`
+- `sdk`
+- `sdk_provided`
+- `all` - enable all resource detectors
+- `none` - disable resource detection
 
 ## Adding resources with environment variables
 
-If there is not an SDK detector for the resource you need, you can add arbitrary resources via the
-`OTEL_RESOURCE_ATTRIBUTES` environment variable. This variable takes a comma-separated list of key=value
-pairs, for example:
+If there is not an SDK detector for the resource you need, you can add arbitrary
+resources via the `OTEL_RESOURCE_ATTRIBUTES` environment variable. This variable
+takes a comma-separated list of key=value pairs, for example:
 
 ```shell
 $ env OTEL_RESOURCE_ATTRIBUTES="service.name=my_service,service.namespace=demo,service.version=1.0,deployment.environment=development" example.php
@@ -62,9 +64,10 @@ $ env OTEL_RESOURCE_ATTRIBUTES="service.name=my_service,service.namespace=demo,s
 
 ## Adding resources in code
 
-Custom resources can also be configured in your code. Here, the default resources (detected as described
-above) are merged with custom resources. The resources are then passed to the tracer provider, where they
-will be associated with all generated spans.
+Custom resources can also be configured in your code. Here, the default
+resources (detected as described above) are merged with custom resources. The
+resources are then passed to the tracer provider, where they will be associated
+with all generated spans.
 
 ```php
 $resource = ResourceInfoFactory::merge(ResourceInfo::create(Attributes::create([
