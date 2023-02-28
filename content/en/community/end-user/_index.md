@@ -12,6 +12,7 @@ practices:
 - [A synchronous monthly discussion group](discussion-group/)
 - [A private slack channel](slack-channel/)
 - [Talks about OTel in practice](otel-in-practice/)
+- [Direct interview/feedback sessions](interviews-feedback/)
 
 These forums will bring together operations and development engineers from
 different organizations to discuss challenges and solutions to achieving
