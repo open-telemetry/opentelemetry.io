@@ -18,8 +18,8 @@ the PHP SDK.
 
 ## Setup
 
-Follow the instructions in [Getting Started - PHP][], so that
-you have the files `composer.json` and `GettingStarted.php`.
+Follow the instructions in [Getting Started - PHP][], so that you have the files
+`composer.json` and `GettingStarted.php`.
 
 ## Resource Detection
 
