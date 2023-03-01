@@ -72,7 +72,7 @@ that is currently under development to support buffering and data persistence.
 
 **Q:** What is the timeline for full specification compliance for OTel Go SDK?
 
-**A:** In the Go Otel SDK, the current progress is mostly around metrics. The
+**A:** In the Go OTel SDK, the current progress is mostly around metrics. The
 logging development is frozen. Major work is being done in metrics sdk. Go
 metrics progress can be tracked
 [here](https://github.com/open-telemetry/opentelemetry-go/projects?query=is%3Aopen).
