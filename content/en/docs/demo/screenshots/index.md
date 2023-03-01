@@ -22,13 +22,13 @@ aliases: [/docs/demo/demo_screenshots]
 
 ## Prometheus
 
-![Prometheus](Prometheus.png)
+![Prometheus](prometheus.png)
 
 ## Grafana
 
 | Prometheus Data Source                        | Jaeger Data Source                    |
 | --------------------------------------------- | ------------------------------------- |
-| ![Grafana-Prometheus](Grafana-Prometheus.png) | ![Gragana-jaeger](Gragana-jaeger.png) |
+| ![Grafana-Prometheus](grafana-prometheus.png) | ![Gragana-jaeger](gragana-jaeger.png) |
 
 ## Feature Flag UI
 
