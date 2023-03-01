@@ -1009,7 +1009,7 @@ let temperature = 32;
 
 const gauge = myMeter.createObservableGauge('temperature.gauge');
 
-counter.addCallback((result) => {
+gauge.addCallback((result) => {
   result.observe(temperature);
 });
 
@@ -1049,7 +1049,7 @@ You can add Attributes to metrics when they are generated.
 ```js
 const counter = myMeter.createCounter('my.counter');
 
-cntr.add(1, { 'some.optional.attribute': 'some value' });
+counter.add(1, { 'some.optional.attribute': 'some value' });
 ```
 
 ### Configure Metric Views
