@@ -920,7 +920,7 @@ import express from "express";
 const app = express();
 
 app.get('/', (_req, _res) => {
-  const histogram = myMeter.createHistogram("taks.duration");
+  const histogram = myMeter.createHistogram("task.duration");
   const startTime = new Date().getTime()
 
   // do some work in an API call
@@ -939,7 +939,7 @@ const express = require('express');
 const app = express();
 
 app.get('/', (_req, _res) => {
-  const histogram = myMeter.createHistogram("taks.duration");
+  const histogram = myMeter.createHistogram("task.duration");
   const startTime = new Date().getTime()
 
   // do some work in an API call
@@ -1036,7 +1036,7 @@ In JavaScript, each configuration type means the following:
 
 - `description` - a human-readable description for the instrument
 - `unit` - The description of the unit of measure that the value is intended to
-  represent. For example, `milliseconds` to meaure duration, or `bytes` to count
+  represent. For example, `milliseconds` to measure duration, or `bytes` to count
   number of bytes.
 - `valueType` - The kind of numeric value used in measurements.
 
