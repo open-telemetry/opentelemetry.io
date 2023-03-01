@@ -57,7 +57,7 @@ management?
 from the community for opamp. You can track the issue
 [here](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/16462).
 
-#### 3 - Buffer capabilities of OTel collector
+#### 3 - Buffer capabilities of OTel Collector
 
 **Q:** What are some backup/retry buffer capabilities of OTel collectors when
 endpoints are unavailable?
