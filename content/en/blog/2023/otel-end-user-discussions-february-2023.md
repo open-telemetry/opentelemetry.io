@@ -110,7 +110,7 @@ start and end?"
 
 #### 1 - Supporting other metrics format
 
-**Q:** Can Otel collector support metrics generated from other libraries like
+**Q:** Can OTel collector support metrics generated from other libraries like
 statsd library?
 
 **A:** The OpenTelemetry Collector contrib has a lot of receivers for different
