@@ -11,7 +11,7 @@ author: >-
   Villela](https://github.com/avillela) (Lightstep)
 ---
 
-Welcome to the highlights of OpenTelemetry End User Discussions in
+Welcome to the highlights of OpenTelemetry End-User Discussions in
 February 2023. The OpenTelemetry end user group meet takes place every month for
 users in the Americas (AMER), Europe Middle-East & Africa (EMEA), and
 Asia-Pacific (APAC).
