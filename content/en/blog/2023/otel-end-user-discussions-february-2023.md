@@ -1,5 +1,5 @@
 ---
-title: OpenTelemetry End User Discussions Summary for February 2023
+title: OpenTelemetry End-User Discussions Summary for February 2023
 linkTitle: End User Discussions Feb 2023
 date: 2023-02-27
 author: >-
