@@ -22,7 +22,7 @@ and [http](https://www.npmjs.com/package/@opentelemetry/instrumentation-http)
 instrumentation libraries to automatically propagate trace context across
 services for you.
 
-**It is highly recommend that you use instrumentation libraries to progagate
+**It is highly recommend that you use instrumentation libraries to propagate
 context.** Although it is possible to propagate context manually, if your system
 uses libraries to communicate between services, use a matching instrumentation
 library to propagate context.
