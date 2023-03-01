@@ -115,7 +115,7 @@ statsd library?
 
 **A:** The OpenTelemetry Collector contrib has a lot of receivers for different
 types of metrics that can be used. For example, if you are sending out metrics
-in Prometheus format, you can configure your Otel collector to scrape Prometheus
+in Prometheus format, you can configure your OTel collector to scrape Prometheus
 metrics. There is also a statsd receiver that is available. If you have
 something that is already working, then you don’t need to change it. You can
 check the list of receivers
