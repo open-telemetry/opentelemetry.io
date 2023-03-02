@@ -139,7 +139,7 @@ creating new spans.
 
 ### Initializing Metrics
 
-The OpenTelemetry `MeterProvider` is initialized from `main` using the `initMeter` function
+The OpenTelemetry `MeterProvider` is initialized from `main()` using the `initMeter()` function
 defined in `meter_common.h`.
 
 ```cpp
@@ -168,8 +168,8 @@ void initMeter()
 
 ### Starting IntCounter
 
-A global `currency_counter` variable is created at `main` calling the function
-`initIntCounter` defined at `meter_common.h`.
+A global `currency_counter` variable is created at `main()` calling the function
+`initIntCounter()` defined in `meter_common.h`.
 
 ```cpp
 nostd::unique_ptr<metrics_api::Counter<uint64_t>> initIntCounter()
@@ -184,7 +184,7 @@ nostd::unique_ptr<metrics_api::Counter<uint64_t>> initIntCounter()
 
 ### Counting currency conversion requests
 
-The method `CurrencyCounter` is implemented as follows.
+The method `CurrencyCounter()` is implemented as follows:
 
 ```cpp
 void CurrencyCounter(const std::string& currency_code)
@@ -195,7 +195,7 @@ void CurrencyCounter(const std::string& currency_code)
 }
 ```
 
-Every time the function `Convert` is called, the currency code
+Every time the function `Convert()` is called, the currency code
 received as `to_code` is used to count the conversions.
 
 ```cpp
