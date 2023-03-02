@@ -1036,8 +1036,8 @@ In JavaScript, each configuration type means the following:
 
 - `description` - a human-readable description for the instrument
 - `unit` - The description of the unit of measure that the value is intended to
-  represent. For example, `milliseconds` to measure duration, or `bytes` to count
-  number of bytes.
+  represent. For example, `milliseconds` to measure duration, or `bytes` to
+  count number of bytes.
 - `valueType` - The kind of numeric value used in measurements.
 
 It's generally recommended to describe each instrument you create.
