@@ -178,7 +178,7 @@ example:
 }
 ```
 
-### Execute an automatically instrumented server
+### Execute the automatically-instrumented server
 
 Stop the execution of `server_manual.py` by pressing <kbd>Control+C</kbd> and
 run the following command instead:
