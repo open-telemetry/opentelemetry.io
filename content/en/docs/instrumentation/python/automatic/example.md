@@ -321,9 +321,9 @@ $ source auto_instrumentation/bin/activate
 $ python server_programmatic.py
 ```
 
-```console
-$ source auto_instrumentation/bin/activate
-$ python client.py testing
+```sh
+source auto_instrumentation/bin/activate
+python client.py testing
 ```
 
 The results should be the same as running with manual instrumentation.
