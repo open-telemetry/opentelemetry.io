@@ -19,8 +19,8 @@ how they are instrumented:
 [_Programmatic_ instrumentation](#execute-a-programatically-instrumented-server)
 is a kind of instrumentation that requires miminal instrumentation code to be
 added to the application. Only some instrumentation libraries offer additional
-capabilities that give you greater control over the instrumentation process
-when used programmatically.
+capabilities that give you greater control over the instrumentation process when
+used programmatically.
 
 Run the first script without the automatic instrumentation agent and second with
 the agent. They should both produce the same results, demonstrating that the
@@ -241,6 +241,47 @@ example:
 You can see that both outputs are the same because automatic instrumentation
 does exactly what manual instrumentation does.
 
+### Execute a programmatically instrumented server
+
+It is also possible to use the instrumentation libraries (such as
+`opentelemetry-instrumentation-flask`) by themselves which may have an advantage
+of customizing options. However, by choosing to do this it means you forego
+using auto-instrumentation by starting your application with
+`opentelemetry-instrument` as this is mutually exclusive.
+
+Execute the server just like you would do for manual instrumentation, in two
+separate consoles, one to run each of the scripts that make up this example:
+
+```sh
+source auto_instrumentation/bin/activate
+python server_programmatic.py
+```
+
+```sh
+source auto_instrumentation/bin/activate
+python client.py testing
+```
+
+The results should be the same as running with manual instrumentation.
+
+#### Using programmatic-instrumentation features
+
+Some instrumentation libraries include features that allow for more precise
+control while instrumenting programmatically, the instrumentation library for
+Flask is one of them.
+
+This example has a line commented out, change it like this:
+
+```python
+# instrumentor.instrument_app(app)
+instrumentor.instrument_app(app, excluded_urls="/server_request")
+```
+
+After running the example again, no instrumentation should appear on the server
+side. This is because or the `excluded_urls` option passed to `instrument_app`
+that effectively stops the `server_request` function from being instrumented as
+its URL matches the regular expression passed to `excluded_urls`.
+
 ### Instrumentation while debugging
 
 The debug mode can be enabled in the Flask app like this:
@@ -304,47 +345,6 @@ If those headers are available, they will be included in your span:
   }
 }
 ```
-
-### Execute a programmatically instrumented server
-
-It is also possible to use the instrumentation libraries (such as
-`opentelemetry-instrumentation-flask`) by themselves which may have an advantage
-of customizing options. However, by choosing to do this it means you forego
-using auto-instrumentation by starting your application with
-`opentelemetry-instrument` as this is mutually exclusive.
-
-Execute the server just like you would do for manual instrumentation, in two
-separate consoles, one to run each of the scripts that make up this example:
-
-```sh
-source auto_instrumentation/bin/activate
-python server_programmatic.py
-```
-
-```sh
-source auto_instrumentation/bin/activate
-python client.py testing
-```
-
-The results should be the same as running with manual instrumentation.
-
-#### Using programmatic-instrumentation features
-
-Some instrumentation libraries include features that allow for more precise
-control while instrumenting programmatically, the instrumentation library for
-Flask is one of them.
-
-This example has a line commented out, change it like this:
-
-```python
-# instrumentor.instrument_app(app)
-instrumentor.instrument_app(app, excluded_urls="/server_request")
-```
-
-After running the example again, no instrumentation should appear on the server
-side. This is because or the `excluded_urls` option passed to `instrument_app`
-that effectively stops the `server_request` function from being instrumented as
-its URL matches the regular expression passed to `excluded_urls`.
 
 [semantic convention]:
   https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/http.md#http-request-and-response-headers
