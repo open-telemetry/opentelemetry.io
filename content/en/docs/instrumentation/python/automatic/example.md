@@ -16,7 +16,7 @@ how they are instrumented:
 2. `server_automatic.py` is instrumented _automatically_.
 3. `server_programmatic.py` is instrumented _programmatically_.
 
-[_Programmatic_ instrumentation](#execute-a-programatically-instrumented-server)
+[_Programmatic_ instrumentation](#execute-a-programmatically-instrumented-server)
 is a kind of instrumentation that requires miminal instrumentation code to be
 added to the application. Only some instrumentation libraries offer additional
 capabilities that give you greater control over the instrumentation process when
