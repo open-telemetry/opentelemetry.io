@@ -143,7 +143,7 @@ The OpenTelemetry `MeterProvider` is initialized from `main()` using the `initMe
 defined in `meter_common.h`.
 
 ```cpp
-void initMeter() 
+void initMeter()
 {
   // Build MetricExporter
   otlp_exporter::OtlpGrpcMetricExporterOptions otlpOptions;
