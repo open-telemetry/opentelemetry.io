@@ -12,9 +12,9 @@ The example is based on an [OpenTracing example][]. You can download or view the
 This example uses three different scripts. The main difference between them is
 how they are instrumented:
 
-1. `server_manual.py` - instrumented _manually_
-2. `server_automatic.py` - instrumented _automatically_
-3. `server_programmatic.py` - instrumented _programmatically_
+1. `server_manual.py` is instrumented _manually_.
+2. `server_automatic.py` is instrumented _automatically_.
+3. `server_programmatic.py` is instrumented _programmatically_.
 
 _Programmatic_ instrumentation](#execute-a-programatically-instrumented-server)
 is a kind of instrumentation that requires miminal instrumentation code to be
