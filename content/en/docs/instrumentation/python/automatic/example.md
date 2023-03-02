@@ -19,7 +19,7 @@ how they are instrumented:
 [_Programmatic_ instrumentation](#execute-a-programatically-instrumented-server)
 is a kind of instrumentation that requires miminal instrumentation code to be
 added to the application. Only some instrumentation libraries offer additional
-capabilities that give the user greater control over the instrumentation process
+capabilities that give you greater control over the instrumentation process
 when used programmatically.
 
 Run the first script without the automatic instrumentation agent and second with
