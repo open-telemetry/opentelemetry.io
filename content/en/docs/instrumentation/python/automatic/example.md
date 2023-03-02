@@ -241,7 +241,7 @@ example:
 You can see that both outputs are the same because automatic instrumentation
 does exactly what manual instrumentation does.
 
-### Execute a programmatically instrumented server
+### Execute the programmatically-instrumented server
 
 It is also possible to use the instrumentation libraries (such as
 `opentelemetry-instrumentation-flask`) by themselves which may have an advantage
