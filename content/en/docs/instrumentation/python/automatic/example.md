@@ -51,7 +51,7 @@ def server_request():
         return "served"
 ```
 
-### Automatically instrumented server
+### Automatically-instrumented server
 
 `server_automatic.py`
 
