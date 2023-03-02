@@ -16,7 +16,7 @@ how they are instrumented:
 2. `server_automatic.py` is instrumented _automatically_.
 3. `server_programmatic.py` is instrumented _programmatically_.
 
-[_Programmatic_ instrumentation](#execute-a-programmatically-instrumented-server)
+[_Programmatic_ instrumentation](#execute-the-programmatically-instrumented-server)
 is a kind of instrumentation that requires miminal instrumentation code to be
 added to the application. Only some instrumentation libraries offer additional
 capabilities that give you greater control over the instrumentation process when
@@ -123,7 +123,7 @@ other destinations, like an OpenTelemetry Collector.
 This section guides you through the manual process of instrumenting a server as
 well as the process of executing an automatically instrumented server.
 
-### Execute a manually instrumented server
+### Execute the manually instrumented server
 
 Execute the server in two separate consoles, one to run each of the scripts that
 make up this example:
