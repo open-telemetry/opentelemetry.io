@@ -328,7 +328,7 @@ python client.py testing
 
 The results should be the same as running with manual instrumentation.
 
-#### Using programmatic instrumentation features
+#### Using programmatic-instrumentation features
 
 Some instrumentation libraries include features that allow for more precise
 control while instrumenting programmatically, the instrumentation library for
