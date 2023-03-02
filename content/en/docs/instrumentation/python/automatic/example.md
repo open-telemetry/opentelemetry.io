@@ -73,8 +73,6 @@ app = Flask(__name__)
 
 instrumentor.instrument_app(app)
 # instrumentor.instrument_app(app, excluded_urls="/server_request")
-
-
 @app.route("/server_request")
 def server_request():
     print(request.args.get("param"))
