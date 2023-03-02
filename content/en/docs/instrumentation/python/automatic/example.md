@@ -316,9 +316,9 @@ using auto-instrumentation by starting your application with
 Execute the server just like you would do for manual instrumentation, in two
 separate consoles, one to run each of the scripts that make up this example:
 
-```console
-$ source auto_instrumentation/bin/activate
-$ python server_programmatic.py
+```sh
+source auto_instrumentation/bin/activate
+python server_programmatic.py
 ```
 
 ```sh
