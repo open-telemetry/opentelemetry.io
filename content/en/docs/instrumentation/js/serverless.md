@@ -280,8 +280,8 @@ Add the following content to your package.json:
 
 ### Add HTTP call to function
 
-The following code makes a call to the OpenTelemetry web site to demonstrate an
-outbound call.
+The following code makes a call to the OpenTelemetry web site to demonstrate
+an outbound call.
 
 ```javascript
 /* index.js */
