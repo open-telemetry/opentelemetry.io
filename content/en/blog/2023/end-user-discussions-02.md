@@ -44,7 +44,7 @@ patterns for collecting agent telemetry?
 which doesn't really need to be a disparate telemetry system. Users should also
 think about collecting multiple signals so that even if one signal fails, they
 get alerted by another. Here's an
-[article](https://ref.otel.help/otel-Collector-ops/) discussing this.
+[article](https://ref.otel.help/otel-collector-ops/) discussing this.
 
 #### 2 - Timeline for opamp extension
 
@@ -111,11 +111,11 @@ kind of exclusion policy.
 **A:** [Span links](/docs/concepts/signals/traces/#span-links) are used for
 implying a causal relationship between one or more spans. It was a part of the
 original traces specification, and its status is now stable. It can be used to
-link traces that are related but runs asynchronously. 
+link traces that are related but runs asynchronously.
 
-For example, span links can be used in batched operations to link spans initiated by multiple initiating
-spans. Spans can have many-to-many mappings via links. Jaeger supports span
-links in its UI.
+For example, span links can be used in batched operations to link spans
+initiated by multiple initiating spans. Spans can have many-to-many mappings via
+links. Jaeger supports span links in its UI.
 
 ### OpenTelemetry Metrics
 
