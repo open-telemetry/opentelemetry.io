@@ -139,8 +139,8 @@ creating new spans.
 
 ### Initializing Metrics
 
-The OpenTelemetry `MeterProvider` is initialized from `main()` using the `initMeter()` function
-defined in `meter_common.h`.
+The OpenTelemetry `MeterProvider` is initialized from `main()` using the
+`initMeter()` function defined in `meter_common.h`.
 
 ```cpp
 void initMeter()
@@ -195,8 +195,8 @@ void CurrencyCounter(const std::string& currency_code)
 }
 ```
 
-Every time the function `Convert()` is called, the currency code
-received as `to_code` is used to count the conversions.
+Every time the function `Convert()` is called, the currency code received as
+`to_code` is used to count the conversions.
 
 ```cpp
 CurrencyCounter(to_code);
