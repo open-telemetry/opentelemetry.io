@@ -62,7 +62,7 @@ def server_request():
     return "served"
 ```
 
-### Programmatically instrumented server
+### Programmatically-instrumented server
 
 `server_programmatic.py`
 
