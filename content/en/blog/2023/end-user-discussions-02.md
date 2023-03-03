@@ -125,7 +125,7 @@ links. Jaeger supports span links in its UI.
 statsd library?
 
 **A:** The
-[OpenTelemetry Collector contrib](https://github.com/open-telemetry/opentelemetry-Collector-contrib)
+[OpenTelemetry Collector contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib)
 has a lot of
 [receivers](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver)
 for different types of metrics that can be used. For example, if you are sending
