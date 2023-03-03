@@ -8,10 +8,9 @@ jobs:
     name: Check formatting
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: npm install
 
       - name: Check formatting
