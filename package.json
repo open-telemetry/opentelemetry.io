@@ -35,7 +35,7 @@
     "make:public": "make public ls-public",
     "postbuild:preview": "npm run _check:links",
     "postbuild:production": "npm run _check:links",
-    "prebuild:preview": "run-s _prebuild check:formatting",
+    "prebuild:preview": "run-s _prebuild",
     "prebuild:production": "run-s _prebuild check:formatting",
     "prebuild": "npm run _prebuild",
     "precheck:links": "npm run build",
