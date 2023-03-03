@@ -1,7 +1,9 @@
 ---
 title: Sampling
-description: Learn about sampling, and the different sampling options available in OpenTelemetry.
-weight: 
+description:
+  Learn about sampling, and the different sampling options available in
+  OpenTelemetry.
+weight:
 ---
 
 With distributed tracing, you observe requests as they move from one service to
@@ -10,9 +12,9 @@ reasons, such as understanding your service connections and diagnosing latency
 issues, among many other benefits.
 
 However, if the majority of all your requests are successful 200s and finish
-without unacceptable latency or errors, do you really need all that data? Here’s the
-thing—you don’t always need a ton of data to find the right insights. _You just
-need the right sampling of data._
+without unacceptable latency or errors, do you really need all that data? Here’s
+the thing—you don’t always need a ton of data to find the right insights. _You
+just need the right sampling of data._
 
 ![Illustration shows that not all data needs to be traced, and that a sample of data is sufficient.](traces_venn_diagram.png)
 
@@ -21,9 +23,9 @@ backend, resulting in lower ingest costs. Different organizations will have
 their own reasons for not just _why_ they want to sample, but also _what_ they
 want to sample. You might want to customize your sampling strategy to:
 
-- **Manage costs**: If you have a high volume of telemetry, you risk
-incurring heavy charges from a telemetry backend vendor or cloud
-provider to export and store every span.
+- **Manage costs**: If you have a high volume of telemetry, you risk incurring
+  heavy charges from a telemetry backend vendor or cloud provider to export and
+  store every span.
 - **Focus on interesting traces**: For example, your frontend team may only want
   to see traces with specific user attributes.
 - **Filter out noise**: For example, you may want to filter out health checks.
