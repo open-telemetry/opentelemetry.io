@@ -134,7 +134,7 @@ scrape Prometheus metrics. There is also a
 [statsd receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/statsdreceiver)
 that is available. If you have something that is already working, then you don’t
 need to change it. You can check the list of receivers
-[here](https://github.com/open-telemetry/opentelemetry-Collector-contrib/tree/main/receiver).
+[here](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver).
 
 #### 2 - Emitting business metrics
 
