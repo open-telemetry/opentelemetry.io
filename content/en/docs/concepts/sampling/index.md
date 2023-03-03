@@ -7,8 +7,7 @@ weight:
 With distributed tracing, you observe requests as they move from one service to
 another in a distributed system. It’s superbly practical for a number of
 reasons, such as understanding your service connections and diagnosing latency
-issues, among many other benefits. If distributed tracing is a new topic for
-you, make sure to read this post on distributed tracing and sampling.
+issues, among many other benefits.
 
 However, if the majority of all your requests are successful 200s and finish
 without latency or errors, do you really need all that data? Here’s the
