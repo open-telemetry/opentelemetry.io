@@ -10,7 +10,7 @@ reasons, such as understanding your service connections and diagnosing latency
 issues, among many other benefits.
 
 However, if the majority of all your requests are successful 200s and finish
-without latency or errors, do you really need all that data? Here’s the
+without unacceptable latency or errors, do you really need all that data? Here’s the
 thing—you don’t always need a ton of data to find the right insights. _You just
 need the right sampling of data._
 
