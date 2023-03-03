@@ -100,7 +100,7 @@ we can drop or truncate the number of spans.
 **A:** Tail-based sampling processor provides users with a bunch of sampling
 policies. Span count is one such policy. You can also combine multiple policies.
 Here's the link to tail
-[sampling processor](https://github.com/open-telemetry/opentelemetry-Collector-contrib/blob/main/processor/tailsamplingprocessor/README.md).
+[sampling processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/tailsamplingprocessor/README.md).
 The span count policy is based on min span count. Some users might look for some
 kind of exclusion policy.
 
