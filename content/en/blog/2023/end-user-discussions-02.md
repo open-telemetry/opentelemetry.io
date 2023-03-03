@@ -53,7 +53,7 @@ get alerted by another. Here's an
 
 **A:** It's not a top priority as of now. It would be good to have a maintainer
 from the community for opamp. You can track the issue
-[here](https://github.com/open-telemetry/opentelemetry-Collector-contrib/issues/16462).
+[here](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/16462).
 
 #### 3 - Buffer capabilities of OTel Collector
 
