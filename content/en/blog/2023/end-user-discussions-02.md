@@ -61,7 +61,7 @@ from the community for opamp. You can track the issue
 endpoints are unavailable?
 
 **A:** There is an experimental
-[storage extension](https://github.com/open-telemetry/opentelemetry-Collector/tree/main/extension/experimental/storage)
+[storage extension](https://github.com/open-telemetry/opentelemetry-collector/tree/main/extension/experimental/storage)
 that is currently under development to support buffering and data persistence.
 
 #### 4 - Periodically profiling Collectors to improve performance
