@@ -21,8 +21,9 @@ backend, resulting in lower ingest costs. Different organizations will have
 their own reasons for not just _why_ they want to sample, but also _what_ they
 want to sample. You might want to customize your sampling strategy to:
 
-- **Manage costs**: You risk incurring heavy charges from the relevant cloud
-  provider or vendor if you’re exporting and storing all your spans.
+- **Manage costs**: If you have a high volume of telemetry, you risk
+incurring heavy charges from a telemetry backend vendor or cloud
+provider to export and store every span.
 - **Focus on interesting traces**: For example, your frontend team may only want
   to see traces with specific user attributes.
 - **Filter out noise**: For example, you may want to filter out health checks.
