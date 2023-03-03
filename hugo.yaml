@@ -59,8 +59,6 @@ params:
   github_repo: https://github.com/open-telemetry/opentelemetry.io
   github_branch: main
   gcs_engine_id: bde3d634eca9cd335
-  # The following mermaid config can be dropped after we update Docsy to v0.6.0 or later
-  mermaid: { enable: true }
 
   ## Social media image path, such as Open Graph's og:image
   #

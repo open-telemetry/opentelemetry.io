@@ -83,7 +83,7 @@ as appropriate, based on the language you've chosen to write your app in. Add
 the following code to your HTML right before the `</body>` closing tag:
 
 <!-- prettier-ignore-start -->
-{{< tabpane lang=html >}}
+{{< tabpane lang=html persistLang=false >}}
 {{< tab TypeScript >}}
 <script type="module" src="document-load.ts"></script>
 {{< /tab >}}

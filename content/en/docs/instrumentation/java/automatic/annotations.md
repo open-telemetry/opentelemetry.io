@@ -122,6 +122,10 @@ instrumentation for specific methods in lieu of `@WithSpan`. Format is
 `my.package.MyClass1[method1,method2];my.package.MyClass2[method3]`. {{%
 /config_option %}}
 
+If a method is overloaded (appears more than once on the same class with the
+same name but different parameters), all versions of the method will be
+instrumented.
+
 ## Next steps
 
 Beyond the use of annotations, the OpenTelemetry API allows you to obtain a

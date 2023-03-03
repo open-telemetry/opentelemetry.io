@@ -239,6 +239,7 @@
 }
 
 .td-content pre.mermaid {
+  margin-block-end: 0;
   max-width: inherit;
   svg {
     height: auto;

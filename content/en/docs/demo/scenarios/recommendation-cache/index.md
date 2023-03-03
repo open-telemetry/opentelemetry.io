@@ -2,6 +2,7 @@
 title: Using Metrics and Traces to diagnose a memory leak
 linkTitle: Diagnosing memory leaks
 aliases: [/docs/demo/scenarios/recommendation_cache]
+spelling: cSpell:ignore recommendationservice
 ---
 
 Application telemetry, such as the kind that OpenTelemetry can provide, is very
@@ -26,8 +27,7 @@ after launching the demo with two dashboards; One is to monitor your
 OpenTelemetry Collector, and the other contains several queries and charts to
 analyze latency and request rate from each service.
 
-![Grafana
-Dashboard](https://user-images.githubusercontent.com/4140740/197369586-57b49c94-fef2-49d8-bcd0-9424b8312acc.png)
+![Grafana dashboard](grafana-dashboard.png)
 
 This dashboard will contain a number of charts, but a few should appear
 interesting:
@@ -48,7 +48,7 @@ spikes in the memory utilization of this service.
 We know that we're emitting trace data from our application as well, so let's
 think about another way that we'd be able to determine that a problem exist.
 
-![Jaeger](https://user-images.githubusercontent.com/4140740/197369715-6475902a-9601-4dda-b21a-db6160d6922a.png)
+![Jaeger](jaeger.png)
 
 Jaeger allows us to search for traces and display the end-to-end latency of an
 entire request with visibility into each individual part of the overall request.
@@ -60,8 +60,7 @@ By sorting by latency, we're able to quickly find specific traces that took a
 long time. Clicking on a trace in the right panel, we're able to view the
 waterfall view.
 
-![Jaeger
-Waterfall](https://user-images.githubusercontent.com/4140740/197369866-4b27c02d-035d-4f3f-b369-6138b09a8d68.png)
+![Jaeger waterfall](jaeger-waterfall.png)
 
 We can see that the recommendation service is taking a long time to complete its
 work, and viewing the details allows us to get a better idea of what's going on.

@@ -127,9 +127,9 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-15T20:41:36.268773-05:00"
   },
-  "https://cdn.jsdelivr.net/npm/mermaid@9.1.3/dist/mermaid.min.js": {
+  "https://cdn.jsdelivr.net/npm/mermaid@9.2.2/dist/mermaid.min.js": {
     "StatusCode": 206,
-    "LastSeen": "2023-02-15T20:37:35.490003-05:00"
+    "LastSeen": "2023-02-28T10:57:08.962316-05:00"
   },
   "https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js": {
     "StatusCode": 200,
@@ -1071,6 +1071,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-15T21:21:43.46666-05:00"
   },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/observability-day/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-02-28T15:13:33.601955-05:00"
+  },
   "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/": {
     "StatusCode": 206,
     "LastSeen": "2023-02-15T21:20:28.432278-05:00"
@@ -1811,6 +1815,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:50:30.414821-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet/releases/tag/core-1.4.0": {
+    "StatusCode": 200,
+    "LastSeen": "2023-02-28T15:13:32.378572-05:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-erlang": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:45:37.27498-05:00"
@@ -1859,6 +1867,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:14:16.592304-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.14.0": {
+    "StatusCode": 200,
+    "LastSeen": "2023-02-28T15:13:30.12689-05:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-helm-charts": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:50:02.628017-05:00"
@@ -1895,6 +1907,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:14:27.395664-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/tag/v1.23.0": {
+    "StatusCode": 200,
+    "LastSeen": "2023-02-28T15:13:31.303363-05:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-java/releases": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:55:19.188338-05:00"
@@ -1906,6 +1922,10 @@
   "https://github.com/open-telemetry/opentelemetry-java/releases/tag/v1.22.0": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:14:22.019791-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java/releases/tag/v1.23.0": {
+    "StatusCode": 200,
+    "LastSeen": "2023-02-28T15:13:30.740402-05:00"
   },
   "https://github.com/open-telemetry/opentelemetry-js": {
     "StatusCode": 200,
@@ -2023,6 +2043,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:52:04.353054-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-python/releases/tag/v1.16.0": {
+    "StatusCode": 200,
+    "LastSeen": "2023-02-28T15:13:31.868472-05:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-ruby": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:47:04.881373-05:00"
@@ -2114,6 +2138,10 @@
   "https://github.com/open-telemetry/opentelemetry-specification/releases/tag/v1.17.0": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:14:11.209881-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/releases/tag/v1.18.0": {
+    "StatusCode": 200,
+    "LastSeen": "2023-02-28T15:13:29.505888-05:00"
   },
   "https://github.com/open-telemetry/opentelemetry-swift": {
     "StatusCode": 200,
@@ -3347,58 +3375,6 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-18T13:25:41.001753-05:00"
   },
-  "https://user-images.githubusercontent.com/15364991/194416314-d8210de5-814a-45b8-a47c-9d6bace51fa5.png": {
-    "StatusCode": 206,
-    "LastSeen": "2023-02-18T13:23:48.308194-05:00"
-  },
-  "https://user-images.githubusercontent.com/15364991/194416580-7f7ac8fe-85c0-462d-a896-6e0f6c95afac.png": {
-    "StatusCode": 206,
-    "LastSeen": "2023-02-18T13:23:53.656385-05:00"
-  },
-  "https://user-images.githubusercontent.com/15364991/194416769-188acc26-71c9-4611-8150-aa8639f11217.png": {
-    "StatusCode": 206,
-    "LastSeen": "2023-02-18T13:24:04.358318-05:00"
-  },
-  "https://user-images.githubusercontent.com/15364991/194417029-1e40f276-8785-47fb-b645-c90820c0ff52.png": {
-    "StatusCode": 206,
-    "LastSeen": "2023-02-18T13:23:59.012527-05:00"
-  },
-  "https://user-images.githubusercontent.com/4140740/197369586-57b49c94-fef2-49d8-bcd0-9424b8312acc.png": {
-    "StatusCode": 206,
-    "LastSeen": "2023-02-18T13:24:42.258234-05:00"
-  },
-  "https://user-images.githubusercontent.com/4140740/197369715-6475902a-9601-4dda-b21a-db6160d6922a.png": {
-    "StatusCode": 206,
-    "LastSeen": "2023-02-18T13:24:47.606796-05:00"
-  },
-  "https://user-images.githubusercontent.com/4140740/197369866-4b27c02d-035d-4f3f-b369-6138b09a8d68.png": {
-    "StatusCode": 206,
-    "LastSeen": "2023-02-18T13:24:52.953719-05:00"
-  },
-  "https://user-images.githubusercontent.com/47896520/196495466-86d3ce33-def4-4808-a6d9-3e32934bbf03.png": {
-    "StatusCode": 206,
-    "LastSeen": "2023-02-18T13:24:20.40934-05:00"
-  },
-  "https://user-images.githubusercontent.com/47896520/196495509-c233d0d9-5e4c-4607-b609-dbf7869298d9.png": {
-    "StatusCode": 206,
-    "LastSeen": "2023-02-18T13:24:25.759055-05:00"
-  },
-  "https://user-images.githubusercontent.com/47896520/196496050-22fbbb56-9e62-46dd-a23c-c34c5566f7d2.png": {
-    "StatusCode": 206,
-    "LastSeen": "2023-02-18T13:24:31.109746-05:00"
-  },
-  "https://user-images.githubusercontent.com/47896520/196496223-6d6ea729-5bea-4a8c-a2c6-cd51cce386ae.png": {
-    "StatusCode": 206,
-    "LastSeen": "2023-02-18T13:24:09.709658-05:00"
-  },
-  "https://user-images.githubusercontent.com/47896520/196496589-bda802fc-aada-4e72-a184-93bb4711abca.png": {
-    "StatusCode": 206,
-    "LastSeen": "2023-02-18T13:24:36.463375-05:00"
-  },
-  "https://user-images.githubusercontent.com/47896520/196564627-ba9f5e91-a0fa-4bf0-beb1-f3a79ca309b5.png": {
-    "StatusCode": 206,
-    "LastSeen": "2023-02-18T13:24:15.058909-05:00"
-  },
   "https://v8.dev/docs/stack-trace-api": {
     "StatusCode": 206,
     "LastSeen": "2023-02-18T13:25:18.244577-05:00"
@@ -3782,6 +3758,14 @@
   "https://www.outreachy.org/outreachy-december-2022-internship-round/communities/cncf-tracing/#create-a-component-generator": {
     "StatusCode": 200,
     "LastSeen": "2023-02-18T13:46:19.448057-05:00"
+  },
+  "https://www.php-fig.org/psr/psr-15/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-02-28T03:33:34.741771102Z"
+  },
+  "https://www.php-fig.org/psr/psr-18/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-02-28T03:33:35.061283512Z"
   },
   "https://www.python.org/dev/peps/pep-3333/": {
     "StatusCode": 206,
