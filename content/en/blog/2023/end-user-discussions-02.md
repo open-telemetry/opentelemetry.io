@@ -127,7 +127,7 @@ statsd library?
 **A:** The
 [OpenTelemetry Collector contrib](https://github.com/open-telemetry/opentelemetry-Collector-contrib)
 has a lot of
-[receivers](https://github.com/open-telemetry/opentelemetry-Collector-contrib/tree/main/receiver)
+[receivers](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver)
 for different types of metrics that can be used. For example, if you are sending
 out metrics in Prometheus format, you can configure your OTel Collector to
 scrape Prometheus metrics. There is also a
