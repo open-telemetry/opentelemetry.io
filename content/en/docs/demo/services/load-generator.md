@@ -15,7 +15,7 @@ several different routes from the frontend.
 
 Since this service is a
 [locustfile](https://docs.locust.io/en/stable/writing-a-locustfile.html), the
-The OpenTelemetry SDK is initialized after the import statements. This code will
+OpenTelemetry SDK is initialized after the import statements. This code will
 create a tracer provider, and establish a Span Processor to use. Export
 endpoints, resource attributes, and service name are automatically set using
 [OpenTelemetry environment variables](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/sdk-environment-variables.md).
