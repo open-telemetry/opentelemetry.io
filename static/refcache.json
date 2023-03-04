@@ -3739,6 +3739,14 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-18T13:46:19.448057-05:00"
   },
+  "https://www.php-fig.org/psr/psr-15/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-02-28T03:33:34.741771102Z"
+  },
+  "https://www.php-fig.org/psr/psr-18/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-02-28T03:33:35.061283512Z"
+  },
   "https://www.python.org/dev/peps/pep-3333/": {
     "StatusCode": 206,
     "LastSeen": "2023-02-18T13:41:14.813514-05:00"

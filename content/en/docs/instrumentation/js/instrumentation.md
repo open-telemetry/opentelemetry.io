@@ -920,7 +920,7 @@ import express from "express";
 const app = express();
 
 app.get('/', (_req, _res) => {
-  const histogram = myMeter.createHistogram("taks.duration");
+  const histogram = myMeter.createHistogram("task.duration");
   const startTime = new Date().getTime()
 
   // do some work in an API call
@@ -939,7 +939,7 @@ const express = require('express');
 const app = express();
 
 app.get('/', (_req, _res) => {
-  const histogram = myMeter.createHistogram("taks.duration");
+  const histogram = myMeter.createHistogram("task.duration");
   const startTime = new Date().getTime()
 
   // do some work in an API call
@@ -1009,7 +1009,7 @@ let temperature = 32;
 
 const gauge = myMeter.createObservableGauge('temperature.gauge');
 
-counter.addCallback((result) => {
+gauge.addCallback((result) => {
   result.observe(temperature);
 });
 
@@ -1036,8 +1036,8 @@ In JavaScript, each configuration type means the following:
 
 - `description` - a human-readable description for the instrument
 - `unit` - The description of the unit of measure that the value is intended to
-  represent. For example, `milliseconds` to meaure duration, or `bytes` to count
-  number of bytes.
+  represent. For example, `milliseconds` to measure duration, or `bytes` to
+  count number of bytes.
 - `valueType` - The kind of numeric value used in measurements.
 
 It's generally recommended to describe each instrument you create.
@@ -1049,7 +1049,7 @@ You can add Attributes to metrics when they are generated.
 ```js
 const counter = myMeter.createCounter('my.counter');
 
-cntr.add(1, { 'some.optional.attribute': 'some value' });
+counter.add(1, { 'some.optional.attribute': 'some value' });
 ```
 
 ### Configure Metric Views

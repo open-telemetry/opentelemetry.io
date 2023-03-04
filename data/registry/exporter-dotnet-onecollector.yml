@@ -1,0 +1,15 @@
+title: OneCollector Exporter for OpenTelemetry .NET
+registryType: exporter
+isThirdParty: false
+language: dotnet
+tags:
+  - onecollector
+  - exporter
+  - dotnet
+repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Exporter.OneCollector
+license: Apache 2.0
+description:
+  The OneCollectorExporter is designed for Microsoft products to send data to
+  public-facing end-points which route to Microsoft's internal data pipeline.
+authors: OpenTelemetry Authors
+otVersion: latest

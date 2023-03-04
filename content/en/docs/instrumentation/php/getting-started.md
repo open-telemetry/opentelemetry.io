@@ -80,7 +80,7 @@ composer require "php-http/guzzle7-adapter"
 Now you can install the OpenTelemetry SDK:
 
 ```sh
-composer require open-telemetry/opentelemetry
+composer require open-telemetry/sdk
 ```
 
 The example uses the `ConsoleSpanExporter`, which prints Spans to stdout. A Span

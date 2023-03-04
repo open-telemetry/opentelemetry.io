@@ -78,8 +78,8 @@ To do [Tracing](/docs/concepts/signals/traces/) you'll need to acquire a
 **Note:** Methods of the OpenTelemetry SDK should never be called.
 
 First, a `Tracer` must be acquired, which is responsible for creating spans and
-interacting with the [Context](#context-propagation). A tracer is acquired by
-using the OpenTelemetry API specifying the name and version of the [library
+interacting with the [Context](../propagation/). A tracer is acquired by using
+the OpenTelemetry API specifying the name and version of the [library
 instrumenting][instrumentation library] the [instrumented library] or
 application to be monitored. More information is available in the specification
 chapter [Obtaining a Tracer].
@@ -120,7 +120,7 @@ Most of the time, we want to correlate
 [spans](/docs/concepts/signals/traces/#spans-in-opentelemetry) for nested
 operations. OpenTelemetry supports tracing within processes and across remote
 processes. For more details how to share context between remote processes, see
-[Context Propagation](#context-propagation).
+[Context Propagation](../propagation/).
 
 For a method `a` calling a method `b`, the spans could be manually linked in the
 following way:
@@ -210,7 +210,7 @@ $span = $tracer->spanBuilder("span-with-links")
 ```
 
 For more details how to read context from remote processes, see
-[Context Propagation](#context-propagation).
+[Context Propagation](../propagation/).
 
 ### Set span status and record exceptions
 
@@ -237,53 +237,6 @@ try {
 } finally {
   $span->end(); // Cannot modify span after this call
   $scope->detach();
-}
-```
-
-### Context Propagation
-
-OpenTelemetry provides a text-based approach to propagate context to remote
-services using the [W3C Trace Context](https://www.w3.org/TR/trace-context/)
-HTTP headers.
-
-The following presents an example of an outgoing HTTP request:
-
-```php
-$request = new Request('GET', 'http://localhost:8080/resource');
-$outgoing = $tracer->spanBuilder('/resource')->setSpanKind(SpanKind::CLIENT)->startSpan();
-$outgoing->setAttribute(TraceAttributes::HTTP_METHOD, $request->getMethod());
-$outgoing->setAttribute(TraceAttributes::HTTP_URL, (string) $request->getUri());
-
-$carrier = [];
-TraceContextPropagator::getInstance()->inject($carrier);
-foreach ($carrier as $name => $value) {
-    $request = $request->withAddedHeader($name, $value);
-}
-try {
-    $response = $client->send($request);
-} finally {
-    $outgoing->end();
-}
-```
-
-Similarly, the text-based approach can be used to read the W3C Trace Context
-from incoming requests. The following presents an example of processing an
-incoming HTTP request:
-
-```php
-$request = ServerRequestCreator::createFromGlobals();
-$context = TraceContextPropagator::getInstance()->extract($request->getHeaders());
-$root = $tracer->spanBuilder('HTTP ' . $request->getMethod())
-    ->setStartTimestamp((int) ($request->getServerParams()['REQUEST_TIME_FLOAT'] * 1e9))
-    ->setParent($context)
-    ->setSpanKind(SpanKind::KIND_SERVER)
-    ->startSpan();
-$scope = $root->activate();
-try {
-    /* do stuff */
-} finally {
-    $root->end();
-    $scope->detach();
 }
 ```
 

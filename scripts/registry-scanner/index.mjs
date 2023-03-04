@@ -31,19 +31,19 @@ const octokit = new Octokit({ auth: process.env.GITHUB_AUTH_TOKEN });
 // by providing the file name that would be used for their entry.
 const ignoreList = [
   // Internal to ruby, used by other OTLP exporters
-  'exporter-ruby-otlpcommon.md',
+  'exporter-ruby-otlpcommon.yml',
   // Sub modules (kafka clients, server, ...) are listed 1-by-1
-  'instrumentation-java-kafka.md',
-  'instrumentation-java-akka.md',
+  'instrumentation-java-kafka.yml',
+  'instrumentation-java-akka.yml',
   // bunch of Java internals
   'instrumentation-java-annotations',
-  'instrumentation-java-api.md',
-  'instrumentation-java-cditesting.md',
-  'instrumentation-java-extensionannotations.md',
-  'instrumentation-java-externalannotations.md',
-  'instrumentation-java-internal.md',
-  'instrumentation-java-methods.md',
-  'instrumentation-java-resources.md',
+  'instrumentation-java-api.yml',
+  'instrumentation-java-cditesting.yml',
+  'instrumentation-java-extensionannotations.yml',
+  'instrumentation-java-externalannotations.yml',
+  'instrumentation-java-internal.yml',
+  'instrumentation-java-methods.yml',
+  'instrumentation-java-resources.yml',
 ];
 
 if (process.argv.length < 3) {
@@ -173,12 +173,12 @@ async function scanForNew(
 
 async function scanForExisting(type, noDash = false) {
   const result = await octokit.request(
-    'GET /repos/open-telemetry/opentelemetry.io/contents/content/en/registry'
+    'GET /repos/open-telemetry/opentelemetry.io/contents/data/registry'
   );
   return result.data.reduce((carry, current) => {
     if (current.name.startsWith(type)) {
       const name = current.name
-        .substring(type.length + 1, current.name.length - 3)
+        .substring(type.length + 1, current.name.length - 4)
         .replaceAll('-', '');
       carry[name] = current;
     }
@@ -186,7 +186,7 @@ async function scanForExisting(type, noDash = false) {
   }, {});
 }
 
-function createMarkDown(
+function createYaml(
   shortName,
   title,
   language,
@@ -194,8 +194,7 @@ function createMarkDown(
   repo,
   description
 ) {
-  return `---
-title: ${title}
+  return `title: ${title}
 registryType: ${registryType}
 isThirdParty: false
 language: ${language}
@@ -208,7 +207,6 @@ license: Apache 2.0
 description: ${description}
 authors: OpenTelemetry Authors
 otVersion: latest
----
 `;
 }
 
@@ -259,7 +257,7 @@ async function createFilesFromScanResult(existing, found, settings) {
           `Request error while fetching README.md for ${currentKey}: ${e.message}`
         );
       }
-      const md = createMarkDown(
+      const yaml = createYaml(
         currentKey,
         parsedReadme.name,
         language,
@@ -270,10 +268,10 @@ async function createFilesFromScanResult(existing, found, settings) {
       // collector entries are named reverse (collector-{registryTpe}) compared to languages ({registryTpe}-{language}), we fix this here.
       const fileName =
         language === 'collector'
-          ? `${language}-${registryType}-${currentKey}.md`
-          : `${registryType}-${language}-${currentKey}.md`;
+          ? `${language}-${registryType}-${currentKey}.yml`
+          : `${registryType}-${language}-${currentKey}.yml`;
       if (!ignoreList.includes(fileName)) {
-        await fs.writeFile(fileName, md);
+        await fs.writeFile(fileName, yaml);
       }
     }
   });
@@ -367,7 +365,7 @@ async function scanForGo() {
   found.forEach(async (current) => {
     // Check if the entry does not exist already and create it if needed.
     if (!Object.keys(existing).includes(current.title)) {
-      const md = createMarkDown(
+      const yaml = createYaml(
         current.title,
         current.title,
         language,
@@ -375,9 +373,9 @@ async function scanForGo() {
         current.url,
         current.description
       );
-      const fileName = `${registryType}-${language}-${current.title}.md`;
+      const fileName = `${registryType}-${language}-${current.title}.yml`;
       if (!ignoreList.includes(fileName)) {
-        await fs.writeFile(fileName, md);
+        await fs.writeFile(fileName, yaml);
       }
     }
   });
