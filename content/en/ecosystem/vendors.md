@@ -38,6 +38,7 @@ OpenTelemetry in their commercial products.
 | observIQ                   | Yes               | Yes         | [observiq.com/...](https://docs.bindplane.observiq.com)                                                                                               |
 | Promscale                  | No                | Yes         | [timescale.com/promscale](https://www.timescale.com/promscale)                                                                                        |
 | Sentry Software            | Yes               | Yes         | [sentrysoftware.com/...](https://www.sentrysoftware.com/products/hardware-sentry-opentelemetry-collector.html)                                        |
+| ServicePilot               | No                | Yes         | [servicepilot.com/...](https://www.servicepilot.com/en/doc/apm#opentelemetry)                                                                         |
 | SigNoz                     | Yes               | Yes         | [signoz.io](https://signoz.io)                                                                                                                        |
 | SolarWinds                 | Yes               | Yes         | [documentation.solarwinds.com/...](https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=third-otel-integration)     |
 | Splunk                     | Yes               | Yes         | [splunk.com/blog/...](https://www.splunk.com/en_us/blog/conf-splunklive/announcing-native-opentelemetry-support-in-splunk-apm.html)                   |
