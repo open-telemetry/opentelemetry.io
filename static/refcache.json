@@ -1139,6 +1139,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:12:41.441607-05:00"
   },
+  "https://github.com/Azure/azure-functions-host/issues/8938": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-04T15:56:34.635789+05:30"
+  },
   "https://github.com/DataDog/dd-opentelemetry-exporter-js": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:42:32.869352-05:00"
@@ -1586,6 +1590,10 @@
   "https://github.com/open-telemetry/opamp-go/": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:08:18.053937-05:00"
+  },
+  "https://github.com/open-telemetry/opamp-spec": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-04T15:56:33.769146+05:30"
   },
   "https://github.com/open-telemetry/opentelemetry-collector": {
     "StatusCode": 200,

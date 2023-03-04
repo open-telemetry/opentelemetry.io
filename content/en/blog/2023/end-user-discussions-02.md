@@ -3,13 +3,14 @@ title: OpenTelemetry End-User Discussions Summary for February 2023
 linkTitle: End-User Discussions Feb 2023
 date: 2023-02-27
 author: >-
-  [Pranay Prateek](https://github.com/pranay01) (SigNoz) with contributions
-  from: <br/> [Henrik Rexed](https://github.com/henrikrexed) (Dynatrace) |
-  [Michael Hausenblas](https://github.com/mhausenblas) (AWS) | [Rynn
-  Mancuso](https://github.com/musingvirtual) (Honeycomb) | [Reese
-  Lee](https://github.com/reese-lee) (New Relic) | [Adriana
-  Villela](https://github.com/avillela) (Lightstep)
+  [Pranay Prateek](https://github.com/pranay01) (SigNoz)
 ---
+
+_With contributions from [Henrik Rexed](https://github.com/henrikrexed)
+(Dynatrace), [Michael Hausenblas](https://github.com/mhausenblas) (AWS),
+[Rynn Mancuso](https://github.com/musingvirtual) (Honeycomb),
+[Reese Lee](https://github.com/reese-lee) (New Relic) and
+[Adriana Villela](https://github.com/avillela) (Lightstep)_
 
 The OpenTelemetry end-user group meet takes place every month for users in the
 Americas (AMER), Europe Middle-East & Africa (EMEA), and Asia-Pacific (APAC).
