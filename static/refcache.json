@@ -2595,10 +2595,6 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-16T17:12:37.551902-05:00"
   },
-  "https://kubernetes.io": {
-    "StatusCode": 206,
-    "LastSeen": "2023-02-16T17:11:45.604175-05:00"
-  },
   "https://kubernetes.io/": {
     "StatusCode": 206,
     "LastSeen": "2023-02-16T17:12:58.76128-05:00"
@@ -3567,10 +3563,6 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-18T13:40:27.898905-05:00"
   },
-  "https://www.jaegertracing.io": {
-    "StatusCode": 206,
-    "LastSeen": "2023-02-18T13:35:08.409709-05:00"
-  },
   "https://www.jaegertracing.io/": {
     "StatusCode": 206,
     "LastSeen": "2023-02-18T13:34:34.435284-05:00"
@@ -3822,6 +3814,10 @@
   "https://www.serverless.com/framework/docs/getting-started": {
     "StatusCode": 206,
     "LastSeen": "2023-02-18T13:36:25.938702-05:00"
+  },
+  "https://www.servicepilot.com/en/doc/apm#opentelemetry": {
+    "StatusCode": 206,
+    "LastSeen": "2023-02-28T12:47:23.320993-05:00"
   },
   "https://www.slideshare.net/Altinity/osa-con-2022-signal-correlation-the-ho11y-grail-michael-hausenblas-awspdf": {
     "StatusCode": 206,

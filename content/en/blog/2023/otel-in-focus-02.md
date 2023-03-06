@@ -6,6 +6,10 @@ author: >-
   [Austin Parker](https://github.com/austinlparker)
 ---
 
+<style>
+  dt { padding-bottom: 0.5em; }
+</style>
+
 Welcome to this month’s edition of OpenTelemetry in Focus! It might be cold and
 snowy in much of the Northern Hemisphere, but that hasn’t frozen our progress.
 Read on for an overview of new releases, announcements, and other important
@@ -13,19 +17,26 @@ updates.
 
 Are you a maintainer with something you’d like featured here? Get in touch with
 me [via email](mailto:austin@lightstep.com), or on the
-[CNCF Slack, #otel-comms](https://cloud-native.slack.com/archives/C02UN96HZH6)
+[CNCF Slack #otel-comms](https://cloud-native.slack.com/archives/C02UN96HZH6)
 channel.
 
 ## Releases and Updates
 
-Here's the latest updates from our core repositories:
+Here's the latest updates from our core repositories.
 
-- [Specification v1.18](https://github.com/open-telemetry/opentelemetry-specification/releases/tag/v1.18.0)
+<!-- prettier-ignore-start -->
+[Specification](/docs/reference/specification/)
+
+: [v1.18](https://github.com/open-telemetry/opentelemetry-specification/releases/tag/v1.18.0)
   has been released, with a batch of semantic convention updates and
   clarifications on mapping and converting between Prometheus and OpenTelemetry
   Metrics.
-- [Collector (and Contrib) v0.72](https://github.com/open-telemetry/opentelemetry-collector-contrib/releases)
-  have been released with several major changes to be aware of --
+
+[Collector](/docs/collector/) and contrib
+
+: [v0.72](https://github.com/open-telemetry/opentelemetry-collector-contrib/releases)
+  have been released with several major changes to be aware of:
+
   - The minimum supported Golang version is now 1.19
   - The host metrics receiver has removed deprecated metrics for process memory.
   - The promtail receiver has been removed from collector-contrib.
@@ -35,35 +46,50 @@ Here's the latest updates from our core repositories:
     allowing you to route data through pipelines. Please see the component docs
     for more information.
   - Many bug fixes and enhancements.
-- [Go v1.14](https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.14.0)
+
+[Go](/docs/instrumentation/go/)
+
+: [v1.14](https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.14.0)
   has been released. This is the last release to support Go 1.18; 1.19 will be
   required in the future. Semantic conventions have been updated, resulting in
   changes to constant and function names. Finally, there’s a variety of bug
   fixes and other small changes.
-- [Java v1.23](https://github.com/open-telemetry/opentelemetry-java/releases/tag/v1.23.0)
+
+[Java](/docs/instrumentation/java/)
+
+: [v1.23](https://github.com/open-telemetry/opentelemetry-java/releases/tag/v1.23.0)
   has been released, bringing with it stable base2 exponential histogram
   aggregations and significant metrics refactoring. Semantic convention updates,
   improvements to SDK shutdown, and several enhancements to the SDK extensions
-  are also in this release.
-  [Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/tag/v1.23.0)
+  are also in this release. [Java
+  Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/tag/v1.23.0)
   has been updated as well, most notably changing HTTP span names to reflect
   updated semantic conventions.
-- [Python v1.16](https://github.com/open-telemetry/opentelemetry-python/releases/tag/v1.16.0)
+
+[OpenTelemetry PHP](/docs/instrumentation/php/)
+
+: [v1 beta](https://github.com/open-telemetry/opentelemetry-php/releases/tag/1.0.0beta1)
+  was [announced](/blog/2023/php-beta-release/) at the end of January. The PHP
+  SIG is looking forward to your feedback. In addition, the Communications SIG
+  is planning a release of new documentation for PHP soon.
+
+[Python](/docs/instrumentation/python/)
+
+: [v1.16](https://github.com/open-telemetry/opentelemetry-python/releases/tag/v1.16.0)
   has been released with deprecations to Jaeger exporters, several performance
   improvements and bug fixes, and changes to Prometheus export.
-- [.NET v1.4](https://github.com/open-telemetry/opentelemetry-dotnet/releases/tag/core-1.4.0)
+
+[.NET](/docs/instrumentation/net/)
+
+: [v1.4](https://github.com/open-telemetry/opentelemetry-dotnet/releases/tag/core-1.4.0)
   removes several deprecated extension methods.
+<!-- prettier-ignore-end -->
 
 As always, this is just a snapshot of important changes and improvements across
 the core projects. Please make sure you thoroughly read the release notes when
 upgrading your OpenTelemetry dependencies.
 
 ## Project Updates
-
-The PHP SIG announced the release of
-[OpenTelemetry PHP v1 Beta](/blog/2023/php-beta-release/) at the end of January,
-and are looking forward to your feedback. In addition, the Communications SIG is
-planning to release new documentation for PHP soon.
 
 The [Outreachy](/blog/2023/outreachy-may-cohort/) project is looking for
 participants. This is an annual program that connects new open source
