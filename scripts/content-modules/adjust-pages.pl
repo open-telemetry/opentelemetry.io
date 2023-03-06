@@ -13,7 +13,8 @@ my $linkTitle = '';
 my $gD = 0;
 my $specRepoUrl = 'https://github.com/open-telemetry/opentelemetry-specification';
 my $semConvRef = "$specRepoUrl/blob/main/semantic_conventions/README.md";
-my $path_base_for_github_subdir = 'content/en/docs/reference/specification';
+my $spec_base_path = '/docs/reference/specification';
+my $path_base_for_github_subdir = "content/en$spec_base_path";
 
 my $rootFrontMatterExtra = <<"EOS";
 no_list: true
@@ -74,7 +75,8 @@ while(<>) {
 
   # SPECIFICATION custom processing
 
-  s|\(https://github.com/open-telemetry/opentelemetry-specification\)|(/docs/reference/specification/)|;
+  s|\(https://github.com/open-telemetry/opentelemetry-specification\)|($spec_base_path/)|;
+  s|(\]\()/specification/|$1$spec_base_path/)|;
   s|\.\./semantic_conventions/README.md|$semConvRef| if $ARGV =~ /overview/;
 
   # Bug fix from original source
