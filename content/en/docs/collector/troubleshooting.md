@@ -1,14 +1,12 @@
 ---
 title: Troubleshooting
+description: Recommendations for troubleshooting the collector
 weight: 25
 ---
 
-The OpenTelemetry Collector supports a variety of metrics, logs, and extensions
-for troubleshooting collector health and performance.
-
-Detailed recommendations, including common problems, are detailed in the
-OpenTelemetry Collector GitHub repo's
-[troubleshooting document](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/troubleshooting.md).
+This document describes some options when troubleshooting the health or
+performance of The OpenTelemetry Collector. The Collector provides a variety of
+metrics, logs, and extensions for debugging issues.
 
 ## Sending test data
 
@@ -32,3 +30,9 @@ following:
 - What format is the telemetry in?
 - How is the next hop configured?
 - Are there any network policies that prevent data from getting in or out?
+
+### More
+
+Detailed recommendations, including common problems, are in the OpenTelemetry
+Collector GitHub repo's
+[troubleshooting document](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/troubleshooting.md).
