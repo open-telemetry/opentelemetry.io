@@ -6,7 +6,7 @@ description: >-
 weight: 26
 ---
 
-{{% lang_instrumentation_index_head "rust" /%}}
+{{% lang_instrumentation_index_head rust /%}}
 
 ## Crates
 
