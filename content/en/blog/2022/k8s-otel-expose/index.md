@@ -218,38 +218,38 @@ metadata:
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
-    email: <REPLACE: your e-mail address, e.g.: "someone@example.com">
+    email: your-email-address-here@example.com # REPLACE
     privateKeySecretRef:
       name: letsencrypt
     solvers:
-    - http01:
-        ingress:
-          class: nginx
+      - http01:
+          ingress:
+            class: nginx
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-otel
   annotations:
-    kubernetes.io/ingress.class: "nginx"
-    nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
-    cert-manager.io/cluster-issuer: "letsencrypt"
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/backend-protocol: GRPC
+    cert-manager.io/cluster-issuer: letsencrypt
 spec:
   tls:
     - hosts:
-      - <REPLACE: your domain endpoint, e.g.: "traces@example.com">
+        - your-host # REPLACE your domain endpoint, e.g., traces@example.com
       secretName: letsencrypt
   rules:
-  - host: <REPLACE: your domain endpoint, e.g.: "traces@example.com">
-    http:
-      paths:
-      - pathType: Prefix
-        path: "/"
-        backend:
-          service:
-            name: otel-collector-app-collector
-            port:
-              number: 4317
+    - host: your-host # REPLACE your domain endpoint, e.g., traces@example.com
+      http:
+        paths:
+          - pathType: Prefix
+            path: '/'
+            backend:
+              service:
+                name: otel-collector-app-collector
+                port:
+                  number: 4317
 ```
 
 ### Edge Cluster configuration

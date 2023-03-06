@@ -7,7 +7,7 @@ aliases: [/ruby, /ruby/metrics, /ruby/tracing]
 weight: 24
 ---
 
-{{% lang_instrumentation_index_head "ruby" /%}}
+{{% lang_instrumentation_index_head ruby /%}}
 
 ## Who's using OpenTelemetry Ruby?
 

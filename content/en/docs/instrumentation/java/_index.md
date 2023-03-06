@@ -9,7 +9,7 @@ cascade:
   javaVersion: 1.23.1
 ---
 
-{{% lang_instrumentation_index_head "java" /%}}
+{{% lang_instrumentation_index_head java /%}}
 
 ### Repositories
 
