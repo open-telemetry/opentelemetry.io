@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-weight: 32
+weight: 25
 ---
 
 The OpenTelemetry Collector supports a variety of metrics, logs, and extensions
