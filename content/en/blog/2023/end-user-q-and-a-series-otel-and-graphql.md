@@ -1,15 +1,14 @@
 ---
-title: >
-  End-User Q&A Series: Using OTel with GraphQL
-linkTitle: >
-  End-User Q&A: OTel with GraphQL
+title: 'End-User Q&A Series: Using OTel with GraphQL'
+linkTitle: 'End-User Q&A: OTel with GraphQL'
 date: 2023-02-13
-author: >-
-  [Adriana Villela](https://github.com/avillela) (Lightstep)
+author: '[Adriana Villela](https://github.com/avillela) (Lightstep)'
+aliases: [/blog/2023/otel-end-user-q-and-a-series-otel-and-graphql]
+body_class: otel-with-contributions-from
 ---
 
-_With contributions from [Rynn Mancuso](https://github.com/musingvirtual)
-(Honeycomb) and [Reese Lee](https://github.com/reese-lee) (New Relic)_.
+With contributions from [Rynn Mancuso](https://github.com/musingvirtual)
+(Honeycomb) and [Reese Lee](https://github.com/reese-lee) (New Relic).
 
 On Thursday, January 26th, 2023, the OpenTelemetry End User Working Group hosted
 the first of its monthly End User Q&A sessions of 2023. This series is a monthly

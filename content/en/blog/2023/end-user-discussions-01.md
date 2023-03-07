@@ -1,15 +1,17 @@
 ---
-title: OpenTelemetry End User Discussions Summary for January 2023
-linkTitle: End User Discussions Jan 2023
+title: OpenTelemetry End-User Discussions Summary for January 2023
+linkTitle: End-User Discussions Jan 2023
 date: 2023-01-27
-author: >-
-  [Adriana Villela](https://github.com/avillela) (Lightstep) <br/> with
-  contributions from: <br/> [Henrik Rexed](https://github.com/henrikrexed)
-  (Dynatrace) | [Michael Hausenblas](https://github.com/mhausenblas) (AWS) |
-  [Pranay Prateek](https://github.com/pranay01) (Signoz) | [Rynn
-  Mancuso](https://github.com/musingvirtual) (Honeycomb) | [Reese
-  Lee](https://github.com/reese-lee) (New Relic)
+author: '[Adriana Villela](https://github.com/avillela) (Lightstep)'
+aliases: [/blog/2023/otel-end-user-discussions-january-2023]
+body_class: otel-with-contributions-from
 ---
+
+With contributions from [Henrik Rexed](https://github.com/henrikrexed)
+(Dynatrace), [Michael Hausenblas](https://github.com/mhausenblas) (AWS),
+[Pranay Prateek](https://github.com/pranay01) (Signoz),
+[Rynn Mancuso](https://github.com/musingvirtual) (Honeycomb), and
+[Reese Lee](https://github.com/reese-lee) (New Relic).
 
 Each month, users in the OpenTelemetry (OTel) community gather to talk about how
 they use OpenTelemetry in real life. Sessions are held for users in the Americas
@@ -240,7 +242,7 @@ organization, we’d love to hear from you! Ways to share:
 - Join the [#otel-endusers channel](/community/end-user/slack-channel/) on the
   [CNCF Community Slack](https://communityinviter.com/apps/cloud-native/cncf)
 - Join our monthly
-  [End Users Discussion Group calls](/community/end-user/discussion-group/)
+  [End-User Discussion Group calls](/community/end-user/discussion-group/)
 - [Join our OTel in Practice sessions](/community/end-user/otel-in-practice/)
 - Share your stories on the
   [OpenTelemetry blog](https://github.com/open-telemetry/opentelemetry.io/blob/954103a7444d691db3967121f0f1cb194af1dccb/README.md#submitting-a-blog-post)
