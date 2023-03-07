@@ -62,13 +62,13 @@ Interested in AWS Lambda, or other Functions-as-a-Service workloads, and how to
 emit OpenTelemetry data from them? Our
 [FAAS Working Group](https://github.com/open-telemetry/community#implementation-sigs)
 has restarted in order to work on this problem. Join a meeting, or
-[check out their notes](https://docs.google.com/document/d/187XYoQcXQ9JxS_5v2wvZ0NEysaJ02xoOYNXj08pT0zc/edit),
+[check out their notes](https://docs.google.com/document/d/187XYoQcXQ9JxS_5v2wvZ0NEysaJ02xoOYNXj08pT0zc/),
 for more information.
 
-The [End User Working Group](/blog/2023/otel-end-user-discussions-january-2023)
-has published a summary of their discussions for the month. If you’re a user of
-OpenTelemetry, these meetings are a great place to get connected with your peers
-and discuss how you’re using the project.
+The [End User Working Group](/blog/2023/end-user-discussions-01) has published a
+summary of their discussions for the month. If you’re a user of OpenTelemetry,
+these meetings are a great place to get connected with your peers and discuss
+how you’re using the project.
 
 ## News and Upcoming Events
 

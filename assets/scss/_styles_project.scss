@@ -252,3 +252,20 @@
   margin-bottom: $paragraph-margin-bottom;
   @extend .td-max-width-on-larger-screens;
 }
+
+.td-blog.otel-with-contributions-from {
+  .td-content {
+    .td-byline {
+      margin: 0 !important;
+    }
+    .article-meta {
+      margin: 0;
+    }
+    p:first-of-type {
+      @extend .small;
+      opacity: 0.65;
+      padding-top: 0.2rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+}
