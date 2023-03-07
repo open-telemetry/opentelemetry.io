@@ -80,9 +80,9 @@ but noone is working to improve it.
 **Q:** What is the timeline for full specification compliance for OTel Go SDK?
 
 **A:** In the Go OTel SDK, the current progress is mostly around metrics. The
-logging development is frozen. Major work is being done in metrics sdk. Go
-metrics progress can be tracked
-[here](https://github.com/open-telemetry/opentelemetry-go/projects?query=is%3Aopen).
+logging development is frozen. Major work is being done on the metrics SDK. To track
+progress on Go metrics, see the
+[Metric project tables](https://github.com/open-telemetry/opentelemetry-go/projects?query=metric).
 Once metrics are done, logs will be taken care of.
 
 ### OpenTelemetry Traces
