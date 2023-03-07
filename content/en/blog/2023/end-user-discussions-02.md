@@ -10,8 +10,7 @@ _With contributions from [Henrik Rexed](https://github.com/henrikrexed)
 (Dynatrace), [Michael Hausenblas](https://github.com/mhausenblas) (AWS),
 [Rynn Mancuso](https://github.com/musingvirtual) (Honeycomb),
 [Reese Lee](https://github.com/reese-lee) (New Relic) and
-[Adriana Villela](https://github.com/avillela) (Lightstep)._
-{.small}
+[Adriana Villela](https://github.com/avillela) (Lightstep)._ {.small}
 
 The OpenTelemetry end-user group meet takes place every month for users in the
 Americas (AMER), Europe Middle-East & Africa (EMEA), and Asia-Pacific (APAC).
