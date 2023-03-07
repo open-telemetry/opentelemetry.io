@@ -12,8 +12,8 @@ metrics, logs, and extensions for debugging issues.
 
 For certain types of issues, particularly verifing configuration and debugging
 network issues, it can be helpful to send a small amount of data to a collector
-configured to output to local logs. This is detailed in
-["Local exporters" in the collector configuration documentation](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/troubleshooting.md#local-exporters).
+configured to output to local logs. For details, see
+[Local exporters](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/troubleshooting.md#local-exporters).
 
 ## Checklist for debugging complex pipelines
 
