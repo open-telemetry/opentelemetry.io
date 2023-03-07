@@ -47,7 +47,7 @@ think about collecting multiple signals so that even if one signal fails, they
 get alerted by another. Here's an
 [article](https://ref.otel.help/otel-collector-ops/) discussing this.
 
-#### 2 - Timeline for opamp extension
+#### 2 - Timeline for OpAMP extension
 
 **Q:** Is there any timeline for implementing the
 [opamp spec](https://github.com/open-telemetry/opamp-spec) for agent management?
