@@ -50,7 +50,7 @@ get alerted by another. Here's an
 #### 2 - Timeline for OpAMP extension
 
 **Q:** Is there any timeline for implementing the
-[opamp spec](https://github.com/open-telemetry/opamp-spec) for agent management?
+[OpAMP spec](https://github.com/open-telemetry/opamp-spec) for agent management?
 
 **A:** It's not a top priority as of now. It would be good to have a maintainer
 from the community for opamp. You can track the issue
