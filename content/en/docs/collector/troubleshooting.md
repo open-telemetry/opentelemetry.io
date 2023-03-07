@@ -33,6 +33,5 @@ following:
 
 ### More
 
-Detailed recommendations, including common problems, are in the OpenTelemetry
-Collector GitHub repo's
-[troubleshooting document](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/troubleshooting.md).
+For detailed recommendations, including common problems, see 
+[Troubleshooting](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/troubleshooting.md) from the Collector repo.
