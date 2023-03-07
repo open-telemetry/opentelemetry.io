@@ -4,9 +4,9 @@ description: Recommendations for troubleshooting the collector
 weight: 25
 ---
 
-This page describes some options when troubleshooting the health or
-performance of the OpenTelemetry Collector. The Collector provides a variety of
-metrics, logs, and extensions for debugging issues.
+This page describes some options when troubleshooting the health or performance
+of the OpenTelemetry Collector. The Collector provides a variety of metrics,
+logs, and extensions for debugging issues.
 
 ## Sending test data
 
@@ -33,5 +33,6 @@ following:
 
 ### More
 
-For detailed recommendations, including common problems, see 
-[Troubleshooting](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/troubleshooting.md) from the Collector repo.
+For detailed recommendations, including common problems, see
+[Troubleshooting](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/troubleshooting.md)
+from the Collector repo.
