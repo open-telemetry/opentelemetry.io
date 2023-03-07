@@ -7,7 +7,7 @@ description: >
   in Erlang/Elixir.
 ---
 
-{{% lang_instrumentation_index_head "erlang" %}}
+{{% lang_instrumentation_index_head erlang %}}
 
 Packages of the API, SDK and OTLP exporter are published to
 [hex.pm](https://hex.pm) as

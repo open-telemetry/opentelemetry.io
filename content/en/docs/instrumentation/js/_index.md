@@ -9,7 +9,7 @@ spelling: cSpell:ignore Roadmap
 weight: 20
 ---
 
-{{% lang_instrumentation_index_head "js" /%}}
+{{% lang_instrumentation_index_head js /%}}
 
 ## Further Reading
 

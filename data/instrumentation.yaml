@@ -21,7 +21,7 @@ languages:
     name: Go
     status:
       traces: stable
-      metrics: alpha
+      metrics: beta
       logs: not yet implemented
   java:
     name: Java
