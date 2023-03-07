@@ -4,8 +4,8 @@ description: Recommendations for troubleshooting the collector
 weight: 25
 ---
 
-This document describes some options when troubleshooting the health or
-performance of The OpenTelemetry Collector. The Collector provides a variety of
+This page describes some options when troubleshooting the health or
+performance of the OpenTelemetry Collector. The Collector provides a variety of
 metrics, logs, and extensions for debugging issues.
 
 ## Sending test data
