@@ -53,7 +53,7 @@ get alerted by another. Here's an
 [OpAMP spec](https://github.com/open-telemetry/opamp-spec) for agent management?
 
 **A:** It's not a top priority as of now. It would be good to have a maintainer
-from the community for OpAMP. To track progress, see 
+from the community for OpAMP. To track progress, see
 [issue #16462](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/16462).
 
 #### 3 - Buffer capabilities of OTel Collector
@@ -80,8 +80,8 @@ but noone is working to improve it.
 **Q:** What is the timeline for full specification compliance for OTel Go SDK?
 
 **A:** In the Go OTel SDK, the current progress is mostly around metrics. The
-logging development is frozen. Major work is being done on the metrics SDK. To track
-progress on Go metrics, see the
+logging development is frozen. Major work is being done on the metrics SDK. To
+track progress on Go metrics, see the
 [Metric project tables](https://github.com/open-telemetry/opentelemetry-go/projects?query=metric).
 Once metrics are done, logs will be taken care of.
 
