@@ -53,8 +53,8 @@ get alerted by another. Here's an
 [OpAMP spec](https://github.com/open-telemetry/opamp-spec) for agent management?
 
 **A:** It's not a top priority as of now. It would be good to have a maintainer
-from the community for opamp. You can track the issue
-[here](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/16462).
+from the community for OpAMP. To track progress, see 
+[issue #16462](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/16462).
 
 #### 3 - Buffer capabilities of OTel Collector
 
