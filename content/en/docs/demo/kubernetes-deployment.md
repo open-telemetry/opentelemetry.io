@@ -15,6 +15,7 @@ Helm's [documentation](https://helm.sh/docs/) to get started.
 
 - Pre-existing Kubernetes Cluster
 - Helm 3.0+
+- 4 GB of RAM for the application
 
 ## Install the Chart
 
