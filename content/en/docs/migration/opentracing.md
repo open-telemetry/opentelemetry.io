@@ -189,4 +189,5 @@ shim, see [OpenTracing Compatibility][ot_spec].
 [ot_spec]: /docs/reference/specification/compatibility/opentracing/
 [python]:
   https://opentelemetry-python.readthedocs.io/en/stable/shim/opentracing_shim/opentracing_shim.html
-[c++]: https://github.com/open-telemetry/opentelemetry-cpp/issues/78
+[c++]:
+  https://github.com/open-telemetry/opentelemetry-cpp/tree/main/opentracing-shim
