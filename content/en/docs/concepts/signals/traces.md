@@ -88,7 +88,7 @@ Consider the following example trace that tracks three units of work:
 ```
 
 This sample trace output has three distinct log-like items, called
-[Spans](#span-in-openTelemetry), named `Hello-Greetings`, `Hello-Salutations`
+[Spans](#spans-in-opentelemetry), named `Hello-Greetings`, `Hello-Salutations`
 and `Hello`. Because each request's context has the same `trace_id`, they are
 considered to be a part of the same Trace.
 
