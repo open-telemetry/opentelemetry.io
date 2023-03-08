@@ -1,9 +1,8 @@
 ---
-title: OpenTelemetry in Focus - January 2023
-linkTitle: OTel in Focus - 2023/01
+title: OpenTelemetry in Focus, January 2023
+linkTitle: OTel in Focus 2023/01
 date: 2023-01-31
-author: >-
-  [Austin Parker](https://github.com/austinlparker)
+author: '[Austin Parker](https://github.com/austinlparker)'
 ---
 
 Welcome to the first edition of _OpenTelemetry In Focus_! This blog is intended
