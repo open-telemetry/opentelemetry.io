@@ -1,6 +1,7 @@
 ---
 title: Node.js
 aliases: [/docs/js/getting_started/nodejs]
+weight: 2
 ---
 
 This guide will show you how to get started with tracing in Node.js.
