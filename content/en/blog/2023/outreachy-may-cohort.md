@@ -42,4 +42,5 @@ on previous cohorts:
 - [CNCF OpenTelemetry: Past community participation in Outreachy](https://www.outreachy.org/communities/cfp/cncf-tracing/)
 
 The easiest way to get in touch with us if you have a project idea or want to be
-a mentor is via [CNCF Slack](https://slack.cncf.io), [#outreachy](https://cloud-native.slack.com/archives/C01SF4LCYK1).
+a mentor is via [CNCF Slack](https://slack.cncf.io),
+[#outreachy](https://cloud-native.slack.com/archives/C01SF4LCYK1).

@@ -107,8 +107,27 @@ request an enhancement, [create an issue][new-issue].
 ## Submitting a change
 
 Enhancements and fixes to the website are most welcome! Before submitting a
-[pull request][PR] (PR) over the website, run `npm run test` and address any
-reported issues.
+[pull request][pr] (PR) to the repo, run the following command and address any
+reported issues:
+
+```console
+$ npm run test
+```
+
+If you only want to check formatting run:
+
+```console
+$ npm run check:formatting
+...
+Checking formatting...
+All matched files use Prettier code style!
+```
+
+To _fix_ formatting run:
+
+```console
+$ npm run prettier:write
+```
 
 ### Submodule changes
 
@@ -126,7 +145,7 @@ itself.
 > the CI scripts get submodules on every invocation. To prevent this behavior
 > while you work within a submodule, set the environment variable `GET="no"`.
 > You'll also need to `git fetch --unshallow` the submodule before you can
-> submit a PR. Alternatively, set `DEPTH=" "` and re-fetch submodules.
+> submit a PR. Alternatively, set `DEPTH="100"` and re-fetch submodules.
 
 ## Site deploys and PR previews
 
@@ -153,7 +172,8 @@ required.
 [hugo]: https://gohugo.io
 [localhost:8888]: http://localhost:8888
 [netlify]: https://netlify.com
-[new-issue]: https://github.com/open-telemetry/opentelemetry.io/issues/new/choose
+[new-issue]:
+  https://github.com/open-telemetry/opentelemetry.io/issues/new/choose
 [nodejs-rel]: https://nodejs.org/en/about/releases/
 [nodejs-win]:
   https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
@@ -161,4 +181,5 @@ required.
   https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
 [nvm-windows]: https://github.com/coreybutler/nvm-windows
 [org]: https://github.com/open-telemetry
-[pr]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
+[pr]:
+  https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests

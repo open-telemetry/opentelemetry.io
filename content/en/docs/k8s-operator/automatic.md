@@ -112,7 +112,69 @@ Coming Soon
 
 ### Java
 
-Coming Soon
+The following command creates a basic Instrumentation resource that is
+configured for instrumenting Java services.
+
+```bash
+kubectl apply -f - <<EOF
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: demo-instrumentation
+spec:
+  exporter:
+    endpoint: http://demo-collector:4317
+  propagators:
+    - tracecontext
+    - baggage
+  sampler:
+    type: parentbased_traceidratio
+    argument: "1"
+EOF
+```
+
+By default, the Instrumentation resource that auto-instruments Java services
+uses `otlp` with the `grpc` protocol. This means that the configured endpoint
+must be able to receive OTLP over `grpc`. Therefore, the example uses
+`http://demo-collector:4317`, which connects to the `grpc` port of the
+otlpreceiver of the Collector created in the previous step.
+
+By default, the Java auto-instrumentation ships with
+[many instrumentation libraries](/docs/instrumentation/java/automatic/#supported-libraries-frameworks-application-services-and-jvms).
+This makes instrumentation easy, but could result in too much or unwanted data.
+If there are any libraries you do not want to use you can set the
+`OTEL_INSTRUMENTATION_[NAME]_ENABLED=false` where `[NAME]` is the name of the
+library. If you know exactly which libraries you want to use, you can disable
+the default libraries by setting
+`OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED=false` and then use
+`OTEL_INSTRUMENTATION_[NAME]_ENABLED=true` where `[NAME]` is the name of the
+library. For more details, see
+[Suppressing specific auto-instrumentation](/docs/instrumentation/java/automatic/agent-config/#suppressing-specific-auto-instrumentation).
+
+```yaml
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: demo-instrumentation
+spec:
+  exporter:
+    endpoint: http://demo-collector:4317
+  propagators:
+    - tracecontext
+    - baggage
+  sampler:
+    type: parentbased_traceidratio
+    argument: '1'
+  java:
+    env:
+      - name: OTEL_INSTRUMENTATION_KAFKA_ENABLED
+        value: false
+      - name: OTEL_INSTRUMENTATION_REDISCALA_ENABLED
+        value: false
+```
+
+For more details, see
+[Java Agent Configuration](/docs/instrumentation/java/automatic/agent-config/).
 
 ### Node.js
 
@@ -172,7 +234,7 @@ spec:
     - baggage
   sampler:
     type: parentbased_traceidratio
-    argument: "1"
+    argument: '1'
   python:
     env:
       - name: OTEL_PYTHON_DISABLED_INSTRUMENTATIONS

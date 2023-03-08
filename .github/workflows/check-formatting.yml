@@ -1,0 +1,16 @@
+name: Check formatting
+
+on:
+  pull_request:
+
+jobs:
+  check-formatting:
+    name: Check formatting
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - run: npm install
+
+      - name: Check formatting
+        run: npm run check:formatting

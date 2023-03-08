@@ -10,4 +10,3 @@ license: Apache 2.0
 description: The OpenTelemetry Google Cloud Monitoring Exporter for Go.
 authors: Google Authors
 otVersion: latest
----

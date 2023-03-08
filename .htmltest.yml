@@ -1,11 +1,36 @@
+CacheExpires: 2200h # ~ 3 months
 DirectoryPath: public
 IgnoreDirectoryMissingTrailingSlash: true
 IgnoreAltMissing: true
-IgnoreInternalURLs:
-  # TODO: fix the source of these inlined TOC links
-  # https://github.com/open-telemetry/opentelemetry.io/issues/1357
-  - /docs/reference/specification/versioning-and-stability/#not-defined-semantic-conventions-stability
-  - /community/roadmap/
-IgnoreURLs:
+IgnoreCanonicalBrokenLinks: false
+IgnoreInternalURLs: # list of paths
+IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^/docs/instrumentation/\w+/(api|examples)/$
   - ^/docs/instrumentation/net/(metrics-api|traces-api)/
+
+  - ^https://deploy-preview-\d+--opentelemetry.netlify.app/
+  - ^https://www\.googletagmanager\.com
+
+  - ^https?://localhost\b
+  - ^https?://127\.0\.0\.1\b
+  - ^https?://(otel-demo|traefik)\.localhost
+
+  - ^https://(www\.)?linkedin\.com\b # Always yields 999 Request Denied
+  - ^https://(www\.)?mvnrepository\.com # Always yields 403 Forbidden
+
+  # Ignore Docsy-generated GitHub links:
+  - ^https?://github\.com/.*?/.*?/(new|edit)/ # view-page, edit-source etc
+  # TODO: drop after fix to https://github.com/google/docsy/issues/1432
+  - ^https://github.com/open-telemetry/opentelemetry.io/commit/ # last mod
+
+  # Ignore links to GH repo content for now.
+  - ^https?://github\.com/.*?/.*?/(blob|tree)/
+
+  # TODO: drop after fix to https://github.com/rust-lang/crates.io/issues/788
+  - ^https://crates\.io/crates
+  # TODO: drop after fix to https://github.com/micrometer-metrics/micrometer-docs/issues/239
+  - ^https://micrometer\.io/docs
+  # TODO: drop after fix to https://github.com/google/docsy/issues/1337
+  - ^https://opentelemetry\.io/.
+  # TODO: drop after fix to https://github.com/open-telemetry/opentelemetry.io/issues/2354
+  - ^https://open-telemetry\.github\.io/opentelemetry-python/benchmarks/

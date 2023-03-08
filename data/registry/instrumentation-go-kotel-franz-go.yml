@@ -1,0 +1,18 @@
+title: Kotel - Instrumentation plugin for franz-go
+registryType: instrumentation
+isThirdParty: true
+language: go
+tags:
+  - go
+  - instrumentation
+  - kafka
+  - franz-go
+  - tracing
+  - metrics
+repo: https://github.com/twmb/franz-go/tree/master/plugin/kotel
+license: BSD-3-Clause
+description:
+  Kotel is an instrumentation plugin for the franz-go Kafka client. It provides
+  tracing and metrics options.
+authors: John Gerassimou <john.gerassimou@gmail.com>
+otVersion: latest

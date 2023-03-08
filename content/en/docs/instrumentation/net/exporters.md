@@ -3,9 +3,8 @@ title: Exporters
 weight: 4
 ---
 
-In order to visualize and analyze your
-[traces](/docs/concepts/signals/traces/#tracing-in-opentelemetry) and metrics, you
-will need to export them to a backend.
+In order to visualize and analyze your [traces](/docs/concepts/signals/traces/)
+and metrics, you will need to export them to a backend.
 
 ## Console exporter
 
@@ -23,7 +22,7 @@ services:
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddOpenTelemetryTracing(b =>
+builder.Services.AddOpenTelemetry().WithTracing(b =>
 {
     b.AddConsoleExporter()
     // The rest of your setup code goes here too
@@ -57,7 +56,7 @@ services:
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddOpenTelemetryTracing(b =>
+builder.Services.AddOpenTelemetry().WithTracing(b =>
 {
     b
     .AddOtlpExporter(opt =>
@@ -106,8 +105,9 @@ If you are using .NET 5 or higher, the previous code sample is not required.
 
 ### Jaeger
 
-To try out the OTLP exporter, you can run [Jaeger](https://www.jaegertracing.io/)
-as an OTLP endpoint and for trace visualization in a docker container:
+To try out the OTLP exporter, you can run
+[Jaeger](https://www.jaegertracing.io/) as an OTLP endpoint and for trace
+visualization in a docker container:
 
 ```shell
 docker run -d --name jaeger \
@@ -148,7 +148,7 @@ services:
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddOpenTelemetryTracing(b =>
+builder.Services.AddOpenTelemetry().WithTracing(b =>
 {
     b
     .AddZipkinExporter(o =>
@@ -187,9 +187,9 @@ global:
   evaluation_interval: 1s
 
 scrape_configs:
-  - job_name: "prometheus"
+  - job_name: prometheus
     static_configs:
-      - targets: ["localhost:9090"]
+      - targets: [localhost:9090]
 ```
 
 Next, run the following docker command to set up Prometheus:
@@ -204,7 +204,7 @@ docker run \
 Next, install the Prometheus exporter:
 
 ```
-dotnet add package OpenTelemetry.Exporter.Prometheus
+dotnet add package OpenTelemetry.Exporter.Prometheus.AspNetCore --prerelease
 dotnet add package OpenTelemetry.Extensions.Hosting --prerelease
 ```
 
@@ -214,14 +214,11 @@ services:
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddOpenTelemetryMetrics(b =>
+builder.Services.AddOpenTelemetry().WithMetrics(b =>
 {
     b
     .AddPrometheusExporter(options =>
     {
-        options.StartHttpListener = true;
-        // Use your endpoint and port here
-        options.HttpListenerPrefixes = new string[] { $"http://localhost:{9090}/" };
         options.ScrapeResponseCacheDurationMilliseconds = 0;
     })
     // The rest of your setup code goes here too
@@ -234,9 +231,6 @@ Otherwise, configure the exporter when creating a meter provider:
 using var tracerProvider = Sdk.CreateMeterProviderBuilder()
     .AddPrometheusExporter(options =>
     {
-        options.StartHttpListener = true;
-        // Use your endpoint and port here
-        options.HttpListenerPrefixes = new string[] { $"http://localhost:{9090}/" };
         options.ScrapeResponseCacheDurationMilliseconds = 0;
     })
 
@@ -245,16 +239,29 @@ using var tracerProvider = Sdk.CreateMeterProviderBuilder()
     .Build();
 ```
 
+Finally, register the Prometheus scraping middleware using the
+`UseOpenTelemetryPrometheusScrapingEndpoint` extension method on
+`IApplicationBuilder` :
+
+```csharp
+var builder = WebApplication.CreateBuilder(args);
+var app = builder.Build();
+app.UseOpenTelemetryPrometheusScrapingEndpoint();
+```
+
+Further details on configuring the Prometheus exporter can be found
+[here](https://github.com/open-telemetry/opentelemetry-dotnet/blob/main/src/OpenTelemetry.Exporter.Prometheus.AspNetCore/README.md).
+
 ## Next steps
 
 To ensure you're getting the most data as easily as possible, install
-[instrumentation libraries](/docs/instrumentation/net/libraries) to
-generate observability data.
+[instrumentation libraries](/docs/instrumentation/net/libraries) to generate
+observability data.
 
 Additionally, enriching your codebase with
-[manual instrumentation](/docs/instrumentation/net/manual)
-gives you customized observability data.
+[manual instrumentation](/docs/instrumentation/net/manual) gives you customized
+observability data.
 
 You can also check the
-[automatic instrumentation for .NET](/docs/instrumentation/net/automatic),
-which is currently in beta.
+[automatic instrumentation for .NET](/docs/instrumentation/net/automatic), which
+is currently in beta.

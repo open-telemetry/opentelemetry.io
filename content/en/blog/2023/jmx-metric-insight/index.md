@@ -2,7 +2,7 @@
 title: Gaining JMX Metric Insights with the OpenTelemetry Java Agent
 linkTitle: JMX Metric Insight
 date: 2023-01-17
-author: "[Samudraneel Dasgupta](https://github.com/Samudraneel24) (Cisco)"
+author: '[Samudraneel Dasgupta](https://github.com/Samudraneel24) (Cisco)'
 ---
 
 [JMX](https://www.oracle.com/technical-resources/articles/javase/jmx.html) (Java
@@ -128,10 +128,10 @@ global:
   evaluation_interval: 10s
 
 scrape_configs:
-  - job_name: "my-kafka-broker"
+  - job_name: my-kafka-broker
     scrape_interval: 5s
     static_configs:
-      - targets: ["host.docker.internal:9464"]
+      - targets: [host.docker.internal:9464]
 ```
 
 Then run the command below to deploy Prometheus on Docker:
@@ -144,9 +144,8 @@ docker run -d \
 ```
 
 The Prometheus container should be running now. You can now navigate to
-<http://localhost:9090> and explore the Prometheus
-dashboard. Here we are viewing the metric `kafka_request_count_total` on
-Prometheus.
+<http://localhost:9090> and explore the Prometheus dashboard. Here we are
+viewing the metric `kafka_request_count_total` on Prometheus.
 
 ![A sample Kafka Broker metric shown on Prometheus](prometheus.png)
 
@@ -162,14 +161,14 @@ do that, first, pull the Grafana docker image using the following command:
 docker run -d -p 3000:3000 grafana/grafana
 ```
 
-You can now navigate to <http://localhost:3000> and
-explore the Grafana home page. Click on Add Data Source and select Prometheus.
-Add the HTTP URL, default is <http://localhost:9090>. After that we can create
-new Dashboards, with multiple options of visualisations to choose from (Graph,
-Singlestat, Gauge, Table, Text, etc). We can then create new panels and add any
-metric we would like to observe. Here is an example dashboard consisting of 6
-panels, we are observing a metric in each panel. We can observe the health of
-our Kafka Broker in real time on this dashboard.
+You can now navigate to <http://localhost:3000> and explore the Grafana home
+page. Click on Add Data Source and select Prometheus. Add the HTTP URL, default
+is <http://localhost:9090>. After that we can create new Dashboards, with
+multiple options of visualisations to choose from (Graph, Singlestat, Gauge,
+Table, Text, etc). We can then create new panels and add any metric we would
+like to observe. Here is an example dashboard consisting of 6 panels, we are
+observing a metric in each panel. We can observe the health of our Kafka Broker
+in real time on this dashboard.
 
 ![Grafana dashboard showing 6 Kafka Broker metrics](grafana.png)
 
@@ -182,7 +181,7 @@ The
 which connects the checkout service with the accounting and fraud detection
 services is based on Kafka and utilises the JMX Metric Insight module to export
 Kafka broker metrics out of the box. You can head to the
-[documentation](https://github.com/open-telemetry/opentelemetry-demo/blob/main/docs/services/kafka.md).
+[documentation](/docs/demo/services/kafka/).
 
 ![Prometheus dashboard showing kafka_request_count metric](kafka-request-count-dashboard.png)
 
@@ -208,7 +207,7 @@ rules:
         metric: kafka.message.count
         type: counter
         desc: The number of messages received by the broker
-        unit: "{messages}"
+        unit: '{messages}'
 ```
 
 Each file can consist of multiple rules. Each rule can identify a set of one or

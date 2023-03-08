@@ -17,20 +17,21 @@ service or app code, see [Manual instrumentation](../manual).
 
 ## Setup
 
- 1. Download [opentelemetry-javaagent.jar][] from [Releases][] of the
-    `opentelemetry-java-instrumentation` repo and place the JAR in your preferred directory.
-    The JAR file contains the agent and instrumentation libraries.
- 2. Add `-javaagent:path/to/opentelemetry-javaagent.jar` and other config
-    to your JVM's startup arguments and launch your app:
+1.  Download [opentelemetry-javaagent.jar][] from [Releases][] of the
+    `opentelemetry-java-instrumentation` repo and place the JAR in your
+    preferred directory. The JAR file contains the agent and instrumentation
+    libraries.
+2.  Add `-javaagent:path/to/opentelemetry-javaagent.jar` and other config to
+    your JVM's startup arguments and launch your app:
     - Directly on the startup command:
-    ```console
-    $ java -javaagent:path/to/opentelemetry-javaagent.jar -Dotel.service.name=your-service-name -jar myapp.jar
+    ```shell
+    java -javaagent:path/to/opentelemetry-javaagent.jar -Dotel.service.name=your-service-name -jar myapp.jar
     ```
     - Via the `JAVA_TOOL_OPTIONS` and other environment variables:
-    ```console
-    $ export JAVA_TOOL_OPTIONS="-javaagent:path/to/opentelemetry-javaagent.jar"
-    $ export OTEL_SERVICE_NAME="your-service-name"
-    $ java -jar myapp.jar
+    ```shell
+    export JAVA_TOOL_OPTIONS="-javaagent:path/to/opentelemetry-javaagent.jar"
+    export OTEL_SERVICE_NAME="your-service-name"
+    java -jar myapp.jar
     ```
 
 ## Configuring the agent
@@ -56,7 +57,8 @@ java -javaagent:path/to/opentelemetry-javaagent.jar \
      -jar myapp.jar
 ```
 
-You can also supply a Java properties file and load configuration values from there:
+You can also supply a Java properties file and load configuration values from
+there:
 
 ```sh
 java -javaagent:path/to/opentelemetry-javaagent.jar \
@@ -76,8 +78,9 @@ To see the full range of configuration options, see [Agent Configuration][].
 
 ## Supported libraries, frameworks, application services, and JVMs
 
-The Java agent ships with instrumentation libraries for many popular components. 
-For the full list, see [Supported libraries, frameworks, application services, and JVMs][support].
+The Java agent ships with instrumentation libraries for many popular components.
+For the full list, see [Supported libraries, frameworks, application services,
+and JVMs][support].
 
 ## Troubleshooting
 
@@ -87,10 +90,13 @@ debug logs. Note that these are quite verbose.
 ## Next steps
 
 After you have automatic instrumentation configured for your app or service, you
-might want to [annotate](annotations) selected methods or add [manual
-instrumentation](../manual) to collect custom telemetry data.
+might want to [annotate](annotations) selected methods or add
+[manual instrumentation](../manual) to collect custom telemetry data.
 
-[Agent Configuration]: agent-config
-[opentelemetry-javaagent.jar]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
-[releases]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases
-[support]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md
+[agent configuration]: agent-config
+[opentelemetry-javaagent.jar]:
+  https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
+[releases]:
+  https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases
+[support]:
+  https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md

@@ -15,7 +15,6 @@ Select a role[^1] to get started:
 
 </div>
 
-
 You can also try out the official [OpenTelemetry Demo][demo] to _see_ what
 observability with OpenTelemetry looks like!
 

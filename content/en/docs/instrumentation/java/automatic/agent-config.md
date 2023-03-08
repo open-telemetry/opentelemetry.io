@@ -3,7 +3,7 @@ title: Agent Configuration
 linkTitle: Configuration
 weight: 2
 spelling:
-  cSpell:ignore autoconfiguration Autoconfiguration Dotel HSET javaagent
+  cSpell:ignore akka autoconfiguration Autoconfiguration Dotel HSET javaagent
   cSpell:ignore serverlessapis Servlet servlet
 ---
 
@@ -45,15 +45,16 @@ The agent can consume configuration from one or more of the following sources
 ## Configuring with Environment Variables
 
 In some environments, configuring via Environment Variables is more preferred.
-Any setting configurable with a System Property can also be configured with an Environment Variable.
-Many settings below include both options, but where they don't apply the following steps
-to determine the correct name mapping of the desired System Property:
+Any setting configurable with a System Property can also be configured with an
+Environment Variable. Many settings below include both options, but where they
+don't apply the following steps to determine the correct name mapping of the
+desired System Property:
 
 - Convert the System Property to uppercase.
 - Replace all `.` and `-` characters with `_`.
 
-For example `otel.instrumentation.common.default-enabled`
-would convert to `OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED`.
+For example `otel.instrumentation.common.default-enabled` would convert to
+`OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED`.
 
 ### Configuration file
 
@@ -68,9 +69,12 @@ Java properties file which contains the agent configuration.
 
 You can enable [extensions][] by setting the following property:
 
-{{% config_option name="otel.javaagent.extensions" %}} Path to an extension jar
-file or folder, containing jar files. If pointing to a folder, every jar file in
-that folder will be treated as separate, independent extension.
+{{% config_option name="otel.javaagent.extensions" %}}
+
+Path to an extension jar file or folder, containing jar files. If pointing to a
+folder, every jar file in that folder will be treated as separate, independent
+extension.
+
 {{% /config_option %}}
 
 ## Common instrumentation configuration
@@ -87,6 +91,7 @@ is the name of a remote service to which a connection is made. It corresponds to
 for the local service.
 
 {{% config_option name="otel.instrumentation.common.peer-service-mapping" %}}
+
 Used to specify a mapping from host names or IP addresses to peer services, as a
 comma-separated list of `<host_or_ip>=<user_assigned_name>` pairs. The peer
 service is added as an attribute to a span whose host or IP address match the
@@ -98,7 +103,9 @@ For example, if set to the following:
 
 Then, requests to `1.2.3.4` will have a `peer.service` attribute of
 `cats-service` and requests to `dogs-abcdef123.serverlessapis.com` will have an
-attribute of `dogs-api`. {{% /config_option %}}
+attribute of `dogs-api`.
+
+{{% /config_option %}}
 
 ### DB statement sanitization
 
@@ -132,14 +139,17 @@ Use the following properties to define which HTTP headers you want to capture:
 A comma-separated list of HTTP header names. HTTP client instrumentations will
 capture HTTP request header values for all configured header names.
 {{% /config_option %}}
+
 {{% config_option name="otel.instrumentation.http.capture-headers.client.response" %}}
 A comma-separated list of HTTP header names. HTTP client instrumentations will
 capture HTTP response header values for all configured header names.
 {{% /config_option %}}
+
 {{% config_option name="otel.instrumentation.http.capture-headers.server.request" %}}
 A comma-separated list of HTTP header names. HTTP server instrumentations will
 capture HTTP request header values for all configured header names.
 {{% /config_option %}}
+
 {{% config_option name="otel.instrumentation.http.capture-headers.server.response" %}}
 A comma-separated list of HTTP header names. HTTP server instrumentations will
 capture HTTP response header values for all configured header names.
@@ -188,18 +198,22 @@ equivalent environment variable `OTEL_JAVAAGENT_ENABLED=false`).
 
 ### Enable only specific instrumentation
 
-You can disable all default auto instrumentation and selectively re-enable individual instrumentation.
-This may be desireable to reduce startup overhead or to have more control of which instrumentation is applied.
+You can disable all default auto instrumentation and selectively re-enable
+individual instrumentation. This may be desireable to reduce startup overhead or
+to have more control of which instrumentation is applied.
 
-- Disable all instrumentation in the agent using `-Dotel.instrumentation.common.default-enabled=false`
-(or using the equivalent environment variable `OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED=false`).
-- Enable each desired instrumentation individually using `-Dotel.instrumentation.[name].enabled=true`
-(or using the equivalent environment variable `OTEL_INSTRUMENTATION_[NAME]_ENABLED`) where `[name]`
-(`[NAME]`) is the corresponding instrumentation `name` below.
+- Disable all instrumentation in the agent using
+  `-Dotel.instrumentation.common.default-enabled=false` (or using the equivalent
+  environment variable `OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED=false`).
+- Enable each desired instrumentation individually using
+  `-Dotel.instrumentation.[name].enabled=true` (or using the equivalent
+  environment variable `OTEL_INSTRUMENTATION_[NAME]_ENABLED`) where `[name]`
+  (`[NAME]`) is the corresponding instrumentation `name` below.
 
-> **Note**: Some instrumentation relies on other instrumentation to function properly. When selectively
-enabling instrumentation, be sure to enable the transitive dependencies too. Determining this dependency
-relationship is left as an exercise to the user.
+> **Note**: Some instrumentation relies on other instrumentation to function
+> properly. When selectively enabling instrumentation, be sure to enable the
+> transitive dependencies too. Determining this dependency relationship is left
+> as an exercise to the user.
 
 ### Enable manual instrumentation only
 
@@ -214,125 +228,125 @@ You can suppress agent instrumentation of specific libraries by using
 environment variable `OTEL_INSTRUMENTATION_[NAME]_ENABLED`) where `name`
 (`NAME`) is the corresponding instrumentation `name`:
 
-| Library/Framework                                | Instrumentation name      |
-| ------------------------------------------------ | ------------------------- |
-| Additional methods tracing                       | methods                   |
-| Additional tracing annotations                   | external-annotations      |
-| Akka Actor                                       | akka-actor                |
-| Akka HTTP                                        | akka-http                 |
-| Apache Axis2                                     | axis2                     |
-| Apache Camel                                     | apache-camel              |
-| Apache Cassandra                                 | cassandra                 |
-| Apache CXF                                       | cxf                       |
-| Apache DBCP                                      | apache-dbcp              |
-| Apache Dubbo                                     | apache-dubbo              |
-| Apache Geode                                     | geode                     |
-| Apache HttpAsyncClient                           | apache-httpasyncclient    |
-| Apache HttpClient                                | apache-httpclient         |
-| Apache Kafka                                     | kafka                     |
-| Apache MyFaces                                   | myfaces                   |
-| Apache RocketMQ                                  | rocketmq-client           |
-| Apache Struts 2                                  | struts                    |
-| Apache Tapestry                                  | tapestry                  |
-| Apache Tomcat                                    | tomcat                    |
-| Apache Wicket                                    | wicket                    |
-| Armeria                                          | armeria                   |
-| AsyncHttpClient (AHC)                            | async-http-client         |
-| AWS Lambda                                       | aws-lambda                |
-| AWS SDK                                          | aws-sdk                   |
-| Azure SDK                                        | azure-core                |
-| Couchbase                                        | couchbase                 |
-| C3P0                                             | c3p0                      |
-| Dropwizard Views                                 | dropwizard-views          |
-| Dropwizard Metrics                               | dropwizard-metrics        |
-| Eclipse Grizzly                                  | grizzly                   |
-| Eclipse Jersey                                   | jersey                    |
-| Eclipse Jetty                                    | jetty                     |
-| Eclipse Jetty HTTP Client                        | jetty-httpclient          |
-| Eclipse Metro                                    | metro                     |
-| Eclipse Mojarra                                  | mojarra                   |
-| Eclipse Vert.x HttpClient                        | vertx-http-client         |
-| Eclipse Vert.x Kafka Client                      | vertx-kafka-client        |
-| Eclipse Vert.x RxJava                            | vertx-rx-java             |
-| Eclipse Vert.x Web                               | vertx-web                 |
-| Elasticsearch client                             | elasticsearch-transport   |
-| Elasticsearch REST client                        | elasticsearch-rest        |
-| Google Guava                                     | guava                     |
-| Google HTTP client                               | google-http-client        |
-| Google Web Toolkit                               | gwt                       |
-| Grails                                           | grails                    |
-| GraphQL Java                                     | graphql-java              |
-| GRPC                                             | grpc                      |
-| Hibernate                                        | hibernate                 |
-| HikariCP                                         | hikaricp                  |
-| Java HTTP Client                                 | java-http-client          |
-| Java `HttpURLConnection`                         | http-url-connection       |
-| Java JDBC                                        | jdbc                      |
-| Java JDBC `DataSource`                           | jdbc-datasource           |
-| Java RMI                                         | rmi                       |
-| Java Servlet                                     | servlet                   |
-| java.util.concurrent                             | executor                  |
-| java.util.logging                                | java-util-logging         |
-| JAX-RS (Client)                                  | jaxrs-client              |
-| JAX-RS (Server)                                  | jaxrs                     |
-| JAX-WS                                           | jaxws                     |
-| JBoss Logging Appender                           | jboss-logmanager-appender |
-| JBoss Logging MDC                                | jboss-logmanager-mdc      |
-| JMS                                              | jms                       |
-| JSP                                              | jsp                       |
-| K8s Client                                       | kubernetes-client         |
-| kotlinx.coroutines                               | kotlinx-coroutines        |
-| Log4j Appender                                   | log4j-appender            |
-| Log4j MDC (1.x)                                  | log4j-mdc                 |
-| Log4j Context Data (2.x)                         | log4j-context-data        |
-| Logback Appender                                 | logback-appender          |
-| Logback MDC                                      | logback-mdc               |
-| Micrometer                                       | micrometer                |
-| MongoDB                                          | mongo                     |
-| Netflix Hystrix                                  | hystrix                   |
-| Netty                                            | netty                     |
-| OkHttp                                           | okhttp                    |
-| OpenLiberty                                      | liberty                   |
-| OpenTelemetry Extension Annotations              | opentelemetry-extension-annotations |
+| Library/Framework                                | Instrumentation name                      |
+| ------------------------------------------------ | ----------------------------------------- |
+| Additional methods tracing                       | methods                                   |
+| Additional tracing annotations                   | external-annotations                      |
+| Akka Actor                                       | akka-actor                                |
+| Akka HTTP                                        | akka-http                                 |
+| Apache Axis2                                     | axis2                                     |
+| Apache Camel                                     | apache-camel                              |
+| Apache Cassandra                                 | cassandra                                 |
+| Apache CXF                                       | cxf                                       |
+| Apache DBCP                                      | apache-dbcp                               |
+| Apache Dubbo                                     | apache-dubbo                              |
+| Apache Geode                                     | geode                                     |
+| Apache HttpAsyncClient                           | apache-httpasyncclient                    |
+| Apache HttpClient                                | apache-httpclient                         |
+| Apache Kafka                                     | kafka                                     |
+| Apache MyFaces                                   | myfaces                                   |
+| Apache RocketMQ                                  | rocketmq-client                           |
+| Apache Struts 2                                  | struts                                    |
+| Apache Tapestry                                  | tapestry                                  |
+| Apache Tomcat                                    | tomcat                                    |
+| Apache Wicket                                    | wicket                                    |
+| Armeria                                          | armeria                                   |
+| AsyncHttpClient (AHC)                            | async-http-client                         |
+| AWS Lambda                                       | aws-lambda                                |
+| AWS SDK                                          | aws-sdk                                   |
+| Azure SDK                                        | azure-core                                |
+| Couchbase                                        | couchbase                                 |
+| C3P0                                             | c3p0                                      |
+| Dropwizard Views                                 | dropwizard-views                          |
+| Dropwizard Metrics                               | dropwizard-metrics                        |
+| Eclipse Grizzly                                  | grizzly                                   |
+| Eclipse Jersey                                   | jersey                                    |
+| Eclipse Jetty                                    | jetty                                     |
+| Eclipse Jetty HTTP Client                        | jetty-httpclient                          |
+| Eclipse Metro                                    | metro                                     |
+| Eclipse Mojarra                                  | mojarra                                   |
+| Eclipse Vert.x HttpClient                        | vertx-http-client                         |
+| Eclipse Vert.x Kafka Client                      | vertx-kafka-client                        |
+| Eclipse Vert.x RxJava                            | vertx-rx-java                             |
+| Eclipse Vert.x Web                               | vertx-web                                 |
+| Elasticsearch client                             | elasticsearch-transport                   |
+| Elasticsearch REST client                        | elasticsearch-rest                        |
+| Google Guava                                     | guava                                     |
+| Google HTTP client                               | google-http-client                        |
+| Google Web Toolkit                               | gwt                                       |
+| Grails                                           | grails                                    |
+| GraphQL Java                                     | graphql-java                              |
+| GRPC                                             | grpc                                      |
+| Hibernate                                        | hibernate                                 |
+| HikariCP                                         | hikaricp                                  |
+| Java HTTP Client                                 | java-http-client                          |
+| Java `HttpURLConnection`                         | http-url-connection                       |
+| Java JDBC                                        | jdbc                                      |
+| Java JDBC `DataSource`                           | jdbc-datasource                           |
+| Java RMI                                         | rmi                                       |
+| Java Servlet                                     | servlet                                   |
+| java.util.concurrent                             | executor                                  |
+| java.util.logging                                | java-util-logging                         |
+| JAX-RS (Client)                                  | jaxrs-client                              |
+| JAX-RS (Server)                                  | jaxrs                                     |
+| JAX-WS                                           | jaxws                                     |
+| JBoss Logging Appender                           | jboss-logmanager-appender                 |
+| JBoss Logging MDC                                | jboss-logmanager-mdc                      |
+| JMS                                              | jms                                       |
+| JSP                                              | jsp                                       |
+| K8s Client                                       | kubernetes-client                         |
+| kotlinx.coroutines                               | kotlinx-coroutines                        |
+| Log4j Appender                                   | log4j-appender                            |
+| Log4j MDC (1.x)                                  | log4j-mdc                                 |
+| Log4j Context Data (2.x)                         | log4j-context-data                        |
+| Logback Appender                                 | logback-appender                          |
+| Logback MDC                                      | logback-mdc                               |
+| Micrometer                                       | micrometer                                |
+| MongoDB                                          | mongo                                     |
+| Netflix Hystrix                                  | hystrix                                   |
+| Netty                                            | netty                                     |
+| OkHttp                                           | okhttp                                    |
+| OpenLiberty                                      | liberty                                   |
+| OpenTelemetry Extension Annotations              | opentelemetry-extension-annotations       |
 | OpenTelemetry Instrumentation Annotations        | opentelemetry-instrumentation-annotations |
-| OpenTelemetry API                                | opentelemetry-api         |
-| Oracle UCP                                       | oracle-ucp                |
-| OSHI (Operating System and Hardware Information) | oshi                      |
-| Play Framework                                   | play                      |
-| Play WS HTTP Client                              | play-ws                   |
-| Quartz                                           | quartz                    |
-| RabbitMQ Client                                  | rabbitmq                  |
-| Ratpack                                          | ratpack                   |
-| ReactiveX RxJava                                 | rxjava                    |
-| Reactor                                          | reactor                   |
-| Reactor Netty                                    | reactor-netty             |
-| Redis Jedis                                      | jedis                     |
-| Redis Lettuce                                    | lettuce                   |
-| Rediscala                                        | rediscala                 |
-| Redisson                                         | redisson                  |
-| Restlet                                          | restlet                   |
-| Scala ForkJoinPool                               | scala-fork-join           |
-| Spark Web Framework                              | spark                     |
-| Spring Batch                                     | spring-batch              |
-| Spring Core                                      | spring-core               |
-| Spring Data                                      | spring-data               |
-| Spring JMS                                       | spring-jms                |
-| Spring Integration                               | spring-integration        |
-| Spring Kafka                                     | spring-kafka              |
-| Spring RabbitMQ                                  | spring-rabbit             |
-| Spring RMI                                       | spring-rmi                |
-| Spring Scheduling                                | spring-scheduling         |
-| Spring Web                                       | spring-web                |
-| Spring WebFlux                                   | spring-webflux            |
-| Spring Web MVC                                   | spring-webmvc             |
-| Spring Web Services                              | spring-ws                 |
-| Spymemcached                                     | spymemcached              |
-| Tomcat JDBC                                      | tomcat-jdbc               |
-| Twilio SDK                                       | twilio                    |
-| Twitter Finatra                                  | finatra                   |
-| Undertow                                         | undertow                  |
-| Vaadin                                           | vaadin                    |
-| Vibur DBCP                                       | vibur-dbcp                |
+| OpenTelemetry API                                | opentelemetry-api                         |
+| Oracle UCP                                       | oracle-ucp                                |
+| OSHI (Operating System and Hardware Information) | oshi                                      |
+| Play Framework                                   | play                                      |
+| Play WS HTTP Client                              | play-ws                                   |
+| Quartz                                           | quartz                                    |
+| RabbitMQ Client                                  | rabbitmq                                  |
+| Ratpack                                          | ratpack                                   |
+| ReactiveX RxJava                                 | rxjava                                    |
+| Reactor                                          | reactor                                   |
+| Reactor Netty                                    | reactor-netty                             |
+| Redis Jedis                                      | jedis                                     |
+| Redis Lettuce                                    | lettuce                                   |
+| Rediscala                                        | rediscala                                 |
+| Redisson                                         | redisson                                  |
+| Restlet                                          | restlet                                   |
+| Scala ForkJoinPool                               | scala-fork-join                           |
+| Spark Web Framework                              | spark                                     |
+| Spring Batch                                     | spring-batch                              |
+| Spring Core                                      | spring-core                               |
+| Spring Data                                      | spring-data                               |
+| Spring JMS                                       | spring-jms                                |
+| Spring Integration                               | spring-integration                        |
+| Spring Kafka                                     | spring-kafka                              |
+| Spring RabbitMQ                                  | spring-rabbit                             |
+| Spring RMI                                       | spring-rmi                                |
+| Spring Scheduling                                | spring-scheduling                         |
+| Spring Web                                       | spring-web                                |
+| Spring WebFlux                                   | spring-webflux                            |
+| Spring Web MVC                                   | spring-webmvc                             |
+| Spring Web Services                              | spring-ws                                 |
+| Spymemcached                                     | spymemcached                              |
+| Tomcat JDBC                                      | tomcat-jdbc                               |
+| Twilio SDK                                       | twilio                                    |
+| Twitter Finatra                                  | finatra                                   |
+| Undertow                                         | undertow                                  |
+| Vaadin                                           | vaadin                                    |
+| Vibur DBCP                                       | vibur-dbcp                                |
 
 **Note:** When using environment variables, dashes (`-`) should be converted to
 underscores (`_`). For example, to suppress traces from `akka-actor` library,
@@ -351,7 +365,9 @@ instrumentation which would also disable the instrumentation's capturing of
 {{% config_option
   name="otel.instrumentation.common.experimental.controller-telemetry.enabled"
   default=true
-%}} Enables the controller telemetry. {{% /config_option %}} {{% config_option
+%}} Enables the controller telemetry. {{% /config_option %}}
+
+{{% config_option
   name="otel.instrumentation.common.experimental.view-telemetry.enabled"
   default=true
 %}} Enables the view telemetry. {{% /config_option %}}

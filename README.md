@@ -1,4 +1,4 @@
-# <img src="https://opentelemetry.io/img/logos/opentelemetry-logo-nav.png" alt="OpenTelemetry Icon" width="45" height=""> OpenTelemetry.io
+# <img src="https://opentelemetry.io/img/logos/opentelemetry-logo-nav.png" alt="OTel logo" width="45"> OpenTelemetry.io
 
 This is the source repo for the [OpenTelemetry][] website, project documentation
 and blog. The site is [built][contributing.md] using [Hugo][] and hosted on
@@ -15,12 +15,7 @@ Read on to learn about other ways on how you can help.
 
 ## Adding a project to the OpenTelemetry Registry
 
-Do you maintain or contribute to an integration for OpenTelemetry? We'd love to
-feature your project in the [registry][]!
-
-To add your project, submit a [pull request][]. You'll need to create a data
-file in [data/registry][] for your project. You can find a template in
-[templates/registry-entry.yml][].
+For details, see [Adding to the registry][].
 
 ## Submitting a blog post
 
@@ -47,9 +42,8 @@ If your post will have images or other assets, instead run:
 npx hugo new content/en/blog/2023/short-name-for-post/index.md
 ```
 
-Edit the markdown file at the path you provided in the previous
-command. The file is initialized from the blog-post starter under
-[archetypes](archetypes).
+Edit the markdown file at the path you provided in the previous command. The
+file is initialized from the blog-post starter under [archetypes](archetypes).
 
 Put assets, if any, like images into the folder created.
 
@@ -94,7 +88,7 @@ already contributed][contributors]!
 - Documentation: [CC-BY-4.0](LICENSE)
 - Code: [Apache-2.0](LICENSE-CODE)
 
-[data/registry]: data/registry
+[adding to the registry]: https://opentelemetry.io/ecosystem/registry/adding/
 [let us know]:
   https://github.com/open-telemetry/opentelemetry.io/issues/new/choose
 [@open-telemetry/blog-approvers]:
@@ -123,4 +117,3 @@ already contributed][contributors]!
 [google doc]:
   https://docs.google.com/document/d/1wW0jLldwXN8Nptq2xmgETGbGn9eWP8fitvD5njM-xZY/edit?usp=sharing
 [slack]: https://cloud-native.slack.com/archives/C02UN96HZH6
-[templates/registry-entry.yml]: templates/registry-entry.yml

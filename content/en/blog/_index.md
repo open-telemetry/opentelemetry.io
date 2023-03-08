@@ -1,5 +1,5 @@
 ---
 title: Blog
 menu:
-  main: {weight: 50}
+  main: { weight: 50 }
 ---

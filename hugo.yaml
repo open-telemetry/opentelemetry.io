@@ -20,6 +20,10 @@ imaging:
 
 markup:
   goldmark:
+    parser:
+      attribute:
+        block: true
+      wrapStandAloneImageWithinParagraph: false
     renderer:
       unsafe: true
   highlight:
@@ -40,7 +44,8 @@ outputs:
   home: [HTML, REDIRECTS, RSS]
 
 params:
-  copyright: 'The OpenTelemetry Authors | Documentation Distributed under CC BY 4.0 | '
+  copyright: >-
+    The OpenTelemetry Authors | Documentation Distributed under CC BY 4.0 |
   tagline: Effective observability requires high-quality telemetry
   sub_tagline: >-
     **OpenTelemetry** makes robust, portable telemetry a built-in feature of
@@ -54,8 +59,6 @@ params:
   github_repo: https://github.com/open-telemetry/opentelemetry.io
   github_branch: main
   gcs_engine_id: bde3d634eca9cd335
-  # The following mermaid config can be dropped after we update Docsy to v0.6.0 or later
-  mermaid: { enable: true }
 
   ## Social media image path, such as Open Graph's og:image
   #
@@ -63,7 +66,8 @@ params:
   # version ID in the filename below. Otherwise, for new paths, start at version
   # `001`. Note that social-media images must be preserved (or redirected)
   # forever.
-  images: ["img/social/logo-wordmark-001.png"]
+  images:
+    - img/social/logo-wordmark-001.png
 
   ui:
     footer_about_disable: true
@@ -91,10 +95,6 @@ params:
         url: https://stackoverflow.com/questions/tagged/open-telemetry
         icon: fab fa-stack-overflow
         desc: Practical questions and curated answers
-      - name: Iconography
-        url: https://github.com/open-telemetry/opentelemetry.io/blob/main/iconography/Otel_iconography.zip
-        icon: fa fa-file-archive
-        desc: The OpenTelemetry logos and iconography can be found here.
       - name: CNCF branding
         url: https://cncf-branding.netlify.app/projects/opentelemetry/
         icon: fas fa-image
@@ -102,7 +102,7 @@ params:
       - name: Meeting Recordings
         url: https://www.youtube.com/channel/UCHZDBZTIfdy94xMjMKz-_MA
         icon: fab fa-youtube
-        desc: Watch our meeting recordings on Youtube
+        desc: Watch our meeting recordings on YouTube
     developer:
       - name: GitHub
         url: https://github.com/open-telemetry
@@ -159,7 +159,7 @@ params:
 
   fonts:
     - name: Noto Sans
-      sizes: [300,400,600,700]
+      sizes: [300, 400, 600, 700]
       type: sans_serif
 
 services:
@@ -171,12 +171,16 @@ services:
 
 module:
   mounts:
-    - source: tmp/demo/docs
-      target: content/docs/demo
-    - source: tmp/specification
-      target: content/docs/reference/specification
     - source: content/en
       target: content
+    - source: content-modules/opentelemetry-go/website_docs
+      target: content/docs/instrumentation/go
+    - source: tmp/specification
+      target: content/docs/reference/specification
+    - source: tmp/community/mission-vision-values.md
+      target: content/community/mission.md
+    - source: tmp/community/roadmap.md
+      target: content/community/roadmap.md
     - source: static
       target: static
     - source: content-modules/opentelemetry-specification/schemas
@@ -185,3 +189,5 @@ module:
       target: static/img
     - source: content-modules/opentelemetry-specification/internal/img
       target: static/img
+    - source: iconography/32x32
+      target: static/img/logos/32x32

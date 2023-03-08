@@ -2,7 +2,7 @@
 title: Go Web-app Instrumentation
 linkTitle: Go App Instrumentation
 date: 2022-08-23
-author: "[Naveh Mevorach](https://github.com/NavehMevorach) (Aspecto)"
+author: '[Naveh Mevorach](https://github.com/NavehMevorach) (Aspecto)'
 canonical_url: https://www.aspecto.io/blog/opentelemetry-go-getting-started/
 spelling: >-
   cSpell:ignore Naveh Mevorach Mandalorian bson gonic otelgin otelmongo
@@ -393,7 +393,8 @@ Here’s what the setup looks like:
 ### Export traces to Jaeger
 
 1. Run the todo-service with `go run main.go`.
-2. To generate some traces, make an HTTP GET request to <http://localhost:8080/todo>.
+2. To generate some traces, make an HTTP GET request to
+   <http://localhost:8080/todo>.
 3. To view the traces, open Jaeger at <http://localhost:16686/search>.
 
 You can now see the Jaeger UI. Select todo-service and click on Find traces. You

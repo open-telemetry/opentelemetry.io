@@ -97,16 +97,17 @@ context to remote services using the W3C Trace Context HTTP headers.
 
 ### Further Reading
 
-* [Traces API](https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/namespace_opentelemetry__trace.html)
-* [Traces SDK](https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/namespace_opentelemetry__sdk__trace.html)
-* [Simple Metrics Example](https://github.com/open-telemetry/opentelemetry-cpp/tree/main/examples/metrics_simple)
-
+- [Traces API](https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/namespace_opentelemetry__trace.html)
+- [Traces SDK](https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/namespace_opentelemetry__sdk__trace.html)
+- [Simple Metrics Example](https://github.com/open-telemetry/opentelemetry-cpp/tree/main/examples/metrics_simple)
 
 ## Metrics
 
 ### Initialize Exporter and Reader
 
-Initialize an exporter and a reader. In this case, we initialize an OStream Exporter which will print to stdout by default. The reader periodically collects metrics from the Aggregation Store and exports them.
+Initialize an exporter and a reader. In this case, we initialize an OStream
+Exporter which will print to stdout by default. The reader periodically collects
+metrics from the Aggregation Store and exports them.
 
 ```cpp
 std::unique_ptr<opentelemetry::sdk::metrics::MetricExporter> exporter{new opentelemetry::exporters::OStreamMetricExporter};
@@ -116,7 +117,8 @@ std::unique_ptr<opentelemetry::sdk::metrics::MetricReader> reader{
 
 ### Initialize Meter Provider
 
-Initialize a MeterProvider and add the reader. We will use this to obtain Meter objects in the future.
+Initialize a MeterProvider and add the reader. We will use this to obtain Meter
+objects in the future.
 
 ```cpp
 auto provider = std::shared_ptr<opentelemetry::metrics::MeterProvider>(new opentelemetry::sdk::metrics::MeterProvider());
@@ -126,7 +128,10 @@ p->AddMetricReader(std::move(reader));
 
 ### Create a Counter
 
-Create a Counter instrument from the Meter, and record the measurement. Every Meter pointer returned by the MeterProvider points to the same Meter. This means that the Meter will be able to combine metrics captured from different functions without having to constantly pass the Meter around the library.
+Create a Counter instrument from the Meter, and record the measurement. Every
+Meter pointer returned by the MeterProvider points to the same Meter. This means
+that the Meter will be able to combine metrics captured from different functions
+without having to constantly pass the Meter around the library.
 
 ```cpp
 auto meter = provider->GetMeter(name, "1.2.0");
@@ -149,7 +154,9 @@ histogram_counter->Record(val, labelkv);
 
 ### Create Observable Counter
 
-Create a Observable Counter Instrument from the Meter, and add a callback. The callback would be used to record the measurement during metrics collection. Ensure to keep the Instrument object active for the lifetime of collection.
+Create a Observable Counter Instrument from the Meter, and add a callback. The
+callback would be used to record the measurement during metrics collection.
+Ensure to keep the Instrument object active for the lifetime of collection.
 
 ```cpp
 auto meter = provider->GetMeter(name, "1.2.0");
@@ -161,7 +168,10 @@ counter->AddCallback(MeasurementFetcher::Fetcher, nullptr);
 
 #### Map the Counter Instrument to Sum Aggregation
 
-Create a view to map the Counter Instrument to Sum Aggregation. Add this view to provider. View creation is optional unless we want to add custom aggregation config, and attribute processor. Metrics SDK will implicitly create a missing view with default mapping between Instrument and Aggregation.
+Create a view to map the Counter Instrument to Sum Aggregation. Add this view to
+provider. View creation is optional unless we want to add custom aggregation
+config, and attribute processor. Metrics SDK will implicitly create a missing
+view with default mapping between Instrument and Aggregation.
 
 ```cpp
 std::unique_ptr<opentelemetry::sdk::metrics::InstrumentSelector> instrument_selector{
@@ -202,6 +212,6 @@ p->AddView(std::move(observable_instrument_selector), std::move(observable_meter
 
 ### Further Reading
 
-* [Metrics API](https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/namespace_opentelemetry__metrics.html#)
-* [Metrics SDK](https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/namespace_opentelemetry__sdk__metrics.html)
-* [Simple Metrics Example](https://github.com/open-telemetry/opentelemetry-cpp/tree/main/examples/metrics_simple)
+- [Metrics API](https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/namespace_opentelemetry__metrics.html#)
+- [Metrics SDK](https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/namespace_opentelemetry__sdk__metrics.html)
+- [Simple Metrics Example](https://github.com/open-telemetry/opentelemetry-cpp/tree/main/examples/metrics_simple)

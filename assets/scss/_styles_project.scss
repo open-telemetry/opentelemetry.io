@@ -1,9 +1,9 @@
-/* docsy-delta full file override: we're not tracking changes to the docsy file of the same name. */
+/* Docsy-delta full file override: we're not tracking changes to the Docsy file of the same name. */
 // cSpell:ignore cncf docsy
 
-@import "registry";
-@import "tabs";
-@import "external_link";
+@import 'registry';
+@import 'tabs';
+@import 'external_link';
 
 .td-home {
   .otel-logo {
@@ -67,8 +67,8 @@
     @extend .btn-lg;
     @extend .btn-primary;
     padding: 20px;
-    border-radius:0;
-    min-width:220px;
+    border-radius: 0;
+    min-width: 220px;
   }
 }
 
@@ -80,21 +80,29 @@
     @extend .btn-lg;
     @extend .btn-secondary;
     padding: 20px;
-    border-radius:0;
-    min-width:150px;
-    color:#2f4f4f;
+    border-radius: 0;
+    min-width: 150px;
+    color: #2f4f4f;
   }
 }
 
 .td-navbar {
   .navbar-brand {
-    @include media-breakpoint-up(md) { padding: 0; }
-    svg { height: 48px; }
-    .navbar-brand__name { display: none; }
+    @include media-breakpoint-up(md) {
+      padding: 0;
+    }
+    svg {
+      height: 48px;
+    }
+    .navbar-brand__name {
+      display: none;
+    }
   }
 }
 
-.foldable-nav { padding-top: 0.5rem; } // TODO: propagate this fix to Docsy. Also class name should be prefixed with td
+.foldable-nav {
+  padding-top: 0.5rem;
+} // TODO: propagate this fix to Docsy. Also class name should be prefixed with td
 
 // Adjust the spacing of page-meta and page-TOC (https://github.com/open-telemetry/opentelemetry.io/pull/354)
 .td-toc #TableOfContents {
@@ -141,8 +149,16 @@
 
 // Adjust anchors scroll snap (https://github.com/open-telemetry/opentelemetry.io/pull/348)
 @include media-breakpoint-up(md) {
-  h2[id], h3[id], h4[id], h5[id] { scroll-margin-top: 5rem; }
-  h2[id]:before, h3[id]:before, h4[id]:before, h5[id]:before {
+  h2[id],
+  h3[id],
+  h4[id],
+  h5[id] {
+    scroll-margin-top: 5rem;
+  }
+  h2[id]:before,
+  h3[id]:before,
+  h4[id]:before,
+  h5[id]:before {
     margin-top: 0;
     height: 0;
   }
@@ -166,9 +182,13 @@
   }
 }
 
-.td-page-meta--child { display: none !important; }
+.td-page-meta--child {
+  display: none !important;
+}
 .otel-docs-spec {
-  .td-page-meta--edit { display: none !important; }
+  .td-page-meta--edit {
+    display: none !important;
+  }
 }
 
 // Contribution section in community page
@@ -183,20 +203,26 @@
   }
 }
 
-.td-breadcrumbs__single { display: none !important; }
+.td-breadcrumbs__single {
+  display: none !important;
+}
 
 .config-option {
   padding-inline-start: 1.5em;
 
-  .label { font-weight: bold; }
+  .label {
+    font-weight: bold;
+  }
 
   details {
     background-color: $gray-100;
-    margin-bottom: .5em;
+    margin-bottom: 0.5em;
 
     summary {
       display: block;
-      &::-webkit-details-marker { display: none; }
+      &::-webkit-details-marker {
+        display: none;
+      }
 
       &::after {
         color: $secondary;
@@ -208,6 +234,38 @@
     &[open] summary::after {
       @extend .fas;
       content: fa-content($nbsp + $fa-var-minus-circle);
+    }
+  }
+}
+
+.td-content pre.mermaid {
+  margin-block-end: 0;
+  max-width: inherit;
+  svg {
+    height: auto;
+  }
+}
+
+.td-content img:not(.img-initial) {
+  display: block;
+  border: $border-width solid $border-color;
+  margin-bottom: $paragraph-margin-bottom;
+  @extend .td-max-width-on-larger-screens;
+}
+
+.td-blog.otel-with-contributions-from {
+  .td-content {
+    .td-byline {
+      margin: 0 !important;
+    }
+    .article-meta {
+      margin: 0;
+    }
+    p:first-of-type {
+      @extend .small;
+      opacity: 0.65;
+      padding-top: 0.2rem;
+      margin-bottom: 1.5rem;
     }
   }
 }

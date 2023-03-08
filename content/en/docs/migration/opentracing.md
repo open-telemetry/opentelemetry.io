@@ -19,14 +19,14 @@ Before using an OpenTracing shim, check your project's language and runtime
 component versions, and update if necessary. The minimum **language** versions
 of the OpenTracing and OpenTelemetry APIs are listed in the table below.
 
-| Language       | OpenTracing API  | OpenTelemetry API |
-| -------------- | ---------------- | ----------------- |
-| [Go][]         | 1.13             | 1.16              |
-| [Java][]       | 7                | 8                 |
-| [Python][]     | 2.7              | 3.6               |
-| [Javascript][] | 6                | 8.5               |
-| [.NET][]       | 1.3              | 1.4               |
-| [C++][]        | 11               | 11                |
+| Language       | OpenTracing API | OpenTelemetry API |
+| -------------- | --------------- | ----------------- |
+| [Go][]         | 1.13            | 1.16              |
+| [Java][]       | 7               | 8                 |
+| [Python][]     | 2.7             | 3.6               |
+| [Javascript][] | 6               | 8.5               |
+| [.NET][]       | 1.3             | 1.4               |
+| [C++][]        | 11              | 11                |
 
 Note that the OpenTelemetry API and SDKs generally have higher language version
 requirements than their OpenTracing counterparts.
@@ -63,8 +63,8 @@ OpenTelemetry.
 Before changing any instrumentation, ensure that you can switch to the
 OpenTelemetry SDK without causing any break in the telemetry the application
 currently emits. Doing this step on its own – without simultaneously introducing
-any new instrumentation – is recommended, as it makes it easier to determine whether
-there is any kind of break in instrumentation.
+any new instrumentation – is recommended, as it makes it easier to determine
+whether there is any kind of break in instrumentation.
 
 1. Replace the OpenTracing Tracer implementation you are currently using with
    the OpenTelemetry SDK. For example, if you are using the Jaeger, remove the
@@ -72,9 +72,9 @@ there is any kind of break in instrumentation.
 2. Install the OpenTracing Shim. This shim allows the OpenTelemetry SDK to
    consume OpenTracing instrumentation.
 3. Configure the OpenTelemetry SDK to export data using the same protocol and
-   format that the OpenTracing client was using. For example, if you were using an
-   OpenTracing client that exported tracing data in Zipkin format, configure the
-   OpenTelemetry client to do the same.
+   format that the OpenTracing client was using. For example, if you were using
+   an OpenTracing client that exported tracing data in Zipkin format, configure
+   the OpenTelemetry client to do the same.
 4. Alternatively, configure the OpenTelemetry SDK to emit OTLP, and send the
    data to a Collector, where you can manage exporting data in multiple formats.
 
@@ -87,8 +87,8 @@ tools are still working.
 
 Once the OpenTelemetry SDK is installed, all new instrumentation can now be
 written using the OpenTelemetry API. With few exceptions, OpenTelemetry and
-OpenTracing instrumentation will work together seamlessly
-(see [limits on compatibility](#limits-on-compatibility) below).
+OpenTracing instrumentation will work together seamlessly (see
+[limits on compatibility](#limits-on-compatibility) below).
 
 What about existing instrumentation? There is no hard requirement to migrate
 existing application code to OpenTelemetry. However, we do recommend migrating
@@ -111,12 +111,13 @@ For existing instrumentation, it is recommended to:
    equivalent.
 2. Observe how this changes the telemetry which your application produces.
 3. Create new dashboards, alerts, etc which consume this new telemetry. Set up
-   these dashboards before deploying the new OpenTelemetry library to production.
+   these dashboards before deploying the new OpenTelemetry library to
+   production.
 4. Optionally, add processing rules to the Collector which converts the new
-   telemetry back into the old telemetry. The Collector can then be configured to
-   emit both versions of the same telemetry, creating a data overlap. This allows
-   new dashboards to populate themselves while you continue to use the old
-   dashboards.
+   telemetry back into the old telemetry. The Collector can then be configured
+   to emit both versions of the same telemetry, creating a data overlap. This
+   allows new dashboards to populate themselves while you continue to use the
+   old dashboards.
 
 ## Limits on compatibility
 
@@ -147,8 +148,8 @@ OpenTelemetry and OpenTracing APIs is not recommended when using baggage.
 
 Specifically, when baggage is set using the OpenTracing API:
 
-* It is not accessible via the OpenTelemetry API.
-* It is not injected by the OpenTelemetry propagators.
+- It is not accessible via the OpenTelemetry API.
+- It is not injected by the OpenTelemetry propagators.
 
 If you are using baggage, it is recommended that all baggage-related API calls
 be switched to OpenTelemetry at the same time. Be sure to check that any
@@ -158,10 +159,10 @@ into production.
 ### Context management in Javascript
 
 In Javascript, the OpenTelemetry API makes use of commonly available context
-managers, such as `async_hooks` for Node.js and `Zones.js` for the browser. These
-context managers make tracing instrumentation a much less invasive and onerous
-task, compared to adding a span as a parameter to every method which needs to
-be traced.
+managers, such as `async_hooks` for Node.js and `Zones.js` for the browser.
+These context managers make tracing instrumentation a much less invasive and
+onerous task, compared to adding a span as a parameter to every method which
+needs to be traced.
 
 However, the OpenTracing API predates the common use of these context managers.
 OpenTracing code which passes the current active span as a parameter may create
@@ -177,13 +178,16 @@ only one API is used at a time.
 
 For details on how each OpenTracing shim works, see the appropriate
 language-specific documentation. For details on the design of the OpenTracing
-shim, see [OpenTracing Compatibility][OT_spec].
+shim, see [OpenTracing Compatibility][ot_spec].
 
-[.NET]: /docs/instrumentation/net/shim/
-[Go]: https://pkg.go.dev/go.opentelemetry.io/otel/bridge/opentracing
-[Java]: https://github.com/open-telemetry/opentelemetry-java/tree/main/opentracing-shim
-[Javascript]: https://www.npmjs.com/package/@opentelemetry/shim-opentracing
-[OpenTracing]: https://opentracing.io
-[OT_spec]: /docs/reference/specification/compatibility/opentracing/
-[Python]: https://opentelemetry-python.readthedocs.io/en/stable/shim/opentracing_shim/opentracing_shim.html
-[C++]: https://github.com/open-telemetry/opentelemetry-cpp/issues/78
+[.net]: /docs/instrumentation/net/shim/
+[go]: https://pkg.go.dev/go.opentelemetry.io/otel/bridge/opentracing
+[java]:
+  https://github.com/open-telemetry/opentelemetry-java/tree/main/opentracing-shim
+[javascript]: https://www.npmjs.com/package/@opentelemetry/shim-opentracing
+[opentracing]: https://opentracing.io
+[ot_spec]: /docs/reference/specification/compatibility/opentracing/
+[python]:
+  https://opentelemetry-python.readthedocs.io/en/stable/shim/opentracing_shim/opentracing_shim.html
+[c++]:
+  https://github.com/open-telemetry/opentelemetry-cpp/tree/main/opentracing-shim

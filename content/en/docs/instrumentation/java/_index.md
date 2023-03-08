@@ -1,16 +1,15 @@
 ---
 title: Java
 description: >-
-  <img width="35"
-  src="https://raw.githubusercontent.com/open-telemetry/opentelemetry.io/main/iconography/32x32/Java_SDK.svg"
-  alt="Java"></img>
-  A language-specific implementation of OpenTelemetry in Java.
+  <img width="35" class="img-initial" src="/img/logos/32x32/Java_SDK.svg"
+  alt="Java"></img> A language-specific implementation of OpenTelemetry in Java.
 aliases: [/java, /java/metrics, /java/tracing]
 weight: 18
-javaVersion: 1.22.0
+cascade:
+  javaVersion: 1.23.1
 ---
 
-{{% lang_instrumentation_index_head "java" /%}}
+{{% lang_instrumentation_index_head java /%}}
 
 ### Repositories
 
@@ -72,6 +71,7 @@ dependencies {
 ```
 
 [maven central]: https://mvnrepository.com/artifact/io.opentelemetry
-[opentelemetry-java-docs]: https://github.com/open-telemetry/opentelemetry-java-docs#java-opentelemetry-examples
+[opentelemetry-java-docs]:
+  https://github.com/open-telemetry/opentelemetry-java-docs#java-opentelemetry-examples
 [releases]: https://github.com/open-telemetry/opentelemetry-java/releases
 [components]: https://github.com/open-telemetry/opentelemetry-java#releases

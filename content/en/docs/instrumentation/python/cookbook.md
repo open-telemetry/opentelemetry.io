@@ -67,7 +67,9 @@ print(baggage.get_baggage("context", child_ctx))
 
 ## Manually setting span context
 
-Usually your application or serving framework will take care of propagating your trace context for you. But in some cases, you may need to save your trace context (with `.inject`) and restore it elsewhere (with `.extract`) yourself.
+Usually your application or serving framework will take care of propagating your
+trace context for you. But in some cases, you may need to save your trace
+context (with `.inject`) and restore it elsewhere (with `.extract`) yourself.
 
 ```python
 from opentelemetry import trace, context

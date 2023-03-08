@@ -1,7 +1,6 @@
 ---
-title: "Resources"
+title: Resources
 weight: 6
-description:
 ---
 
 A [resource][] represents the entity producing telemetry as resource attributes.
@@ -12,7 +11,7 @@ three of these attributes can be included in the resource.
 In your observability backend, you can use resource information to better
 investigate interesting behavior. For example, if your trace or metrics data
 indicate latency in your system, you can narrow it down to a specific container,
-pod, or kubernetes deployment.
+pod, or Kubernetes deployment.
 
 Below you will find some introductions on how to set up resource detection with
 the Node.JS SDK.
@@ -37,8 +36,9 @@ diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
 Run the application with some values set to `OTEL_RESOURCE_ATTRIBUTES`, e.g. we
 set the `host.name` to identify the [Host][]:
 
-```sh
-$ env OTEL_RESOURCE_ATTRIBUTES="host.name=localhost" node --require './tracing.js' app.js
+```console
+$ env OTEL_RESOURCE_ATTRIBUTES="host.name=localhost" \
+  node --require ./tracing.js app.js
 @opentelemetry/api: Registered a global for diag v1.2.0.
 ...
 Listening for requests on http://localhost:8080
@@ -68,8 +68,9 @@ resource you need. In that case you can use the environment
 `OTEL_RESOURCE_ATTRIBUTES` to inject whatever you need. For example the
 following script adds [Service][], [Host][] and [OS][] resource attributes:
 
-```sh
-$ env OTEL_RESOURCE_ATTRIBUTES="service.name=app.js,service.namespace=tutorial,service.version=1.0,service.instance.id=`uuidgen`,host.name=${HOSTNAME:},host.type=`uname -m`,os.name=`uname -s`,os.version=`uname -r`" node --require './tracing.js' app.js
+```console
+$ env OTEL_RESOURCE_ATTRIBUTES="service.name=app.js,service.namespace=tutorial,service.version=1.0,service.instance.id=`uuidgen`,host.name=${HOSTNAME:},host.type=`uname -m`,os.name=`uname -s`,os.version=`uname -r`" \
+  node --require ./tracing.js app.js
 ...
 EnvDetector found resource. Resource {
   attributes: {
@@ -132,7 +133,7 @@ To make sure that you can stop your docker container with <kbd>Ctrl + C</kbd>
 (`SIGINT`) add the following to the bottom of `app.js`:
 
 ```javascript
-process.on("SIGINT", function () {
+process.on('SIGINT', function () {
   process.exit();
 });
 ```
@@ -147,14 +148,14 @@ npm install @opentelemetry/resource-detector-docker
 Next, update your `tracing.js` like the following:
 
 ```javascript
-const opentelemetry = require("@opentelemetry/sdk-node");
+const opentelemetry = require('@opentelemetry/sdk-node');
 const {
   getNodeAutoInstrumentations,
-} = require("@opentelemetry/auto-instrumentations-node");
-const { diag, DiagConsoleLogger, DiagLogLevel } = require("@opentelemetry/api");
+} = require('@opentelemetry/auto-instrumentations-node');
+const { diag, DiagConsoleLogger, DiagLogLevel } = require('@opentelemetry/api');
 const {
   dockerCGroupV1Detector,
-} = require("@opentelemetry/resource-detector-docker");
+} = require('@opentelemetry/resource-detector-docker');
 
 // For troubleshooting, set the log level to DiagLogLevel.DEBUG
 diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
@@ -195,15 +196,15 @@ via an environment variable are missing! To resolve this, when you set the
 `processDetector` detectors:
 
 ```javascript
-const opentelemetry = require("@opentelemetry/sdk-node");
+const opentelemetry = require('@opentelemetry/sdk-node');
 const {
   getNodeAutoInstrumentations,
-} = require("@opentelemetry/auto-instrumentations-node");
-const { diag, DiagConsoleLogger, DiagLogLevel } = require("@opentelemetry/api");
+} = require('@opentelemetry/auto-instrumentations-node');
+const { diag, DiagConsoleLogger, DiagLogLevel } = require('@opentelemetry/api');
 const {
   dockerCGroupV1Detector,
-} = require("@opentelemetry/resource-detector-docker");
-const { envDetector, processDetector } = require("@opentelemetry/resources");
+} = require('@opentelemetry/resource-detector-docker');
+const { envDetector, processDetector } = require('@opentelemetry/resources');
 
 // For troubleshooting, set the log level to DiagLogLevel.DEBUG
 diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);

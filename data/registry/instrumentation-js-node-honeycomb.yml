@@ -1,0 +1,12 @@
+title: Honeycomb OpenTelemetry Distro for Node.js
+registryType: instrumentation
+isThirdParty: true
+language: js
+tags:
+  - js
+  - Node.js
+  - instrumentation
+repo: https://github.com/honeycombio/honeycomb-opentelemetry-node
+license: Apache 2.0
+description: Honeycomb's distribution of OpenTelemetry for Node.js
+authors: Honeycomb, Hound Technology, Inc

@@ -41,8 +41,9 @@ Deprecated, Removed.
   support.
 - **Deprecated** components are stable but may eventually be removed.
 
-For complete definitions of lifecycles and long term support, see
-[Versioning and stability]({{< relref "/docs/reference/specification/versioning-and-stability" >}}).
+For complete definitions of lifecycles and long term support, see [Versioning
+and
+stability]({{< relref "/docs/reference/specification/versioning-and-stability" >}}).
 
 ## Current Status
 
@@ -104,9 +105,9 @@ same as the **Protocol** status.
   - The [logs data model][] is released as part of the OpenTelemetry Protocol.
   - Log processing for many data formats has been added to the Collector, thanks
     to the donation of Stanza to the OpenTelemetry project.
-  - Log appenders are currently under development in many languages. Log appenders
-    allow OpenTelemetry tracing data, such as trace and span IDs, to be appended
-    to existing logging systems.
+  - Log appenders are currently under development in many languages. Log
+    appenders allow OpenTelemetry tracing data, such as trace and span IDs, to
+    be appended to existing logging systems.
   - An OpenTelemetry logging SDK is currently under development. This allows
     OpenTelemetry clients to ingest logging data from existing logging systems,
     outputting logs as part of OTLP along with tracing and metrics.

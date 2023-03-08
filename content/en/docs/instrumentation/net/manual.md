@@ -9,9 +9,8 @@ application.
 
 ## A note on terminology
 
-.NET is different from other languages/runtimes that support OpenTelemetry.
-The [Tracing API](/docs/concepts/signals/traces/#tracing-in-opentelemetry) is
-implemented by the
+.NET is different from other languages/runtimes that support OpenTelemetry. The
+[Tracing API](/docs/concepts/signals/traces/) is implemented by the
 [System.Diagnostics](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics)
 API, repurposing existing constructs like `ActivitySource` and `Activity` to be
 OpenTelemetry-compliant under the covers.
@@ -21,14 +20,13 @@ developers must still know to be able to instrument their applications, which
 are covered here as well as the `System.Diagnostics` API.
 
 If you prefer to use OpenTelemetry APIs instead of `System.Diagnostics` APIs,
-you can refer to the [OpenTelemetry API Shim docs for tracing]({{< relref "shim"
->}}).
+you can refer to the [OpenTelemetry API Shim docs for tracing](../shim).
 
 ## Initializing tracing
 
-There are two main ways to initialize
-[tracing](/docs/concepts/signals/traces/#tracing-in-opentelemetry), depending on
-whether you're using a console app or something that's ASP.NET Core-based.
+There are two main ways to initialize [tracing](/docs/concepts/signals/traces/),
+depending on whether you're using a console app or something that's ASP.NET
+Core-based.
 
 ### Console app
 
@@ -83,11 +81,11 @@ dotnet add package OpenTelemetry.Extensions.Hosting --prerelease
 dotnet add package OpenTelemetry.Exporter.Console --prerelease
 ```
 
-Note that the `--prerelease` flag is required for all instrumentation packages 
+Note that the `--prerelease` flag is required for all instrumentation packages
 because they are all are pre-release.
 
-Next, configure it in your ASP.NET Core startup routine where you have access
-to an `IServiceCollection`.
+Next, configure it in your ASP.NET Core startup routine where you have access to
+an `IServiceCollection`.
 
 ```csharp
 using OpenTelemetry;
@@ -102,7 +100,7 @@ var serviceVersion = "1.0.0";
 var builder = WebApplication.CreateBuilder(args);
 
 // Configure important OpenTelemetry settings, the console exporter
-builder.Services.AddOpenTelemetryTracing(b =>
+builder.Services.AddOpenTelemetry().WithTracing(b =>
 {
     b
     .AddConsoleExporter()
@@ -210,9 +208,9 @@ public static void DoWork()
 }
 ```
 
-In the preceding example, `childOperation` is ended because the scope of the
+In the preceding example, `childActivity` is ended because the scope of the
 `using` block is explicitly defined, rather than scoped to `DoWork` itself like
-`parentOperation`.
+`parentActivity`.
 
 ## Creating independent Activities
 
@@ -242,8 +240,8 @@ public static void DoWork()
 
 ## Creating new root Activities
 
-If you wish to create a new root Activity, you'll need to "de-parent" from
-the current activity.
+If you wish to create a new root Activity, you'll need to "de-parent" from the
+current activity.
 
 ```csharp
 public static void DoWork()
@@ -374,13 +372,13 @@ catch (Exception ex)
 
 ## Next steps
 
-After you've set up manual instrumentation, you may want to use [instrumentation
-libraries](../libraries/). As the name suggests, they will
-instrument relevant libraries you're using and generate spans (activities) for things like
-inbound and outbound HTTP requests and more.
+After you've set up manual instrumentation, you may want to use
+[instrumentation libraries](../libraries/). As the name suggests, they will
+instrument relevant libraries you're using and generate spans (activities) for
+things like inbound and outbound HTTP requests and more.
 
-You'll also want to configure an appropriate exporter to [export your telemetry
-data](../exporters/) to one or more telemetry backends.
+You'll also want to configure an appropriate exporter to
+[export your telemetry data](../exporters/) to one or more telemetry backends.
 
-You can also check the [automatic instrumentation for
-.NET](../automatic/), which is currently in beta.
+You can also check the [automatic instrumentation for .NET](../automatic/),
+which is currently in beta.

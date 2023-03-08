@@ -18,7 +18,7 @@ create new spans.
 
 First, ensure you have the SDK package installed:
 
-```console
+```sh
 gem install opentelemetry-sdk
 ```
 
@@ -27,14 +27,14 @@ sure that `service.name` is set by configuring a service name.
 
 ### Acquiring a Tracer
 
-To being [tracing](/docs/concepts/signals/traces), you will need to ensure you
+To begin [tracing](/docs/concepts/signals/traces), you will need to ensure you
 have an initialized [`Tracer`](/docs/concepts/signals/traces#tracer) that comes
 from a [`TracerProvider`](/docs/concepts/signals/traces#tracer-provider).
 
 The easiest and most common way to do this is to use the globally-registered
-TracerProvider. If you are using [instrumentation
-libraries](/docs/instrumentation/ruby/automatic), such as in a Rails app, then
-one will be registered for you.
+TracerProvider. If you are using
+[instrumentation libraries](/docs/instrumentation/ruby/automatic), such as in a
+Rails app, then one will be registered for you.
 
 ```ruby
 # If in a rails app, this lives in config/initializers/opentelemetry.rb
@@ -66,7 +66,7 @@ def track_extended_warranty(extended_warranty)
   # Get the current span
   current_span = OpenTelemetry::Trace.current_span
 
-  # And add useful stuff to it! 
+  # And add useful stuff to it!
   current_span.add_attributes({
     "com.extended_warranty.id" => extended_warranty.id,
     "com.extended_warranty.timestamp" => extended_warranty.timestamp
@@ -152,8 +152,8 @@ current_span.add_attributes({
 })
 ```
 
-You can also add attributes to a span as [it's being
-created](#creating-new-spans):
+You can also add attributes to a span as
+[it's being created](#creating-new-spans):
 
 ```ruby
 require "opentelemetry/sdk"
@@ -183,7 +183,7 @@ normalize this kind of information across your systems.
 
 To use Semantic Attributes in Ruby, add the appropriate gem:
 
-```console
+```sh
 gem install opentelemetry-semantic_conventions
 ```
 
@@ -243,8 +243,8 @@ span.add_event("Cancelled wait due to external signal", attributes: {
 
 A [span](/docs/concepts/signals/traces#spans-in-opentelemetry) can be created
 with zero or more [span links](/docs/concepts/signals/traces#span-links) that
-causally link it to another span. A link needs a [span
-context](/docs/concepts/signals/traces#span-context) to be created.
+causally link it to another span. A link needs a
+[span context](/docs/concepts/signals/traces#span-context) to be created.
 
 ```ruby
 require "opentelemetry/sdk"
@@ -310,9 +310,9 @@ rescue Exception => e
 end
 ```
 
-Recording an exception creates a [Span
-Event](/docs/concepts/signals/traces#span-events) on the current span with a
-stack trace as an attribute on the span event.
+Recording an exception creates a
+[Span Event](/docs/concepts/signals/traces#span-events) on the current span with
+a stack trace as an attribute on the span event.
 
 Exceptions can also be recorded with additional attributes:
 
@@ -354,11 +354,10 @@ gem 'opentelemetry-propagator-b3'
 
 [glossary]: /docs/concepts/glossary/
 [propagators]:
-    https://github.com/open-telemetry/opentelemetry-ruby/tree/main/propagator
+  https://github.com/open-telemetry/opentelemetry-ruby/tree/main/propagator
 [auto-instrumentation]:
-    https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation
+  https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation
 [semconv-gem]:
-    https://github.com/open-telemetry/opentelemetry-ruby/tree/main/semantic_conventions
-[semconv-spec]: {{< relref
-    "/docs/reference/specification/trace/semantic_conventions" >}}
-[OpenTelemetry Specification]: {{< relref "/docs/reference/specification" >}}
+  https://github.com/open-telemetry/opentelemetry-ruby/tree/main/semantic_conventions
+[semconv-spec]: /docs/reference/specification/trace/semantic_conventions/
+[opentelemetry specification]: /docs/reference/specification/

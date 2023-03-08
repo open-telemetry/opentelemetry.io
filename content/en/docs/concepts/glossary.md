@@ -1,7 +1,8 @@
 ---
 title: Glossary
 description: >-
- Terminology you may or may not be familiar with used by the OpenTelemetry project
+  Terminology you may or may not be familiar with used by the OpenTelemetry
+  project.
 weight: 100
 ---
 
@@ -29,7 +30,9 @@ One or more [`Services`](#service) designed for end users or other applications.
 
 ### **APM**
 
-Application Performance Monitoring is about monitoring software applications, their performance (speed, reliability, availability, etc.) to detect issues, alerting and tooling for finding the root cause.
+Application Performance Monitoring is about monitoring software applications,
+their performance (speed, reliability, availability, etc.) to detect issues,
+alerting and tooling for finding the root cause.
 
 ### **Attribute**
 
@@ -181,8 +184,8 @@ A name/value pair added to telemetry data. OpenTelemetry calls this
 
 ### **Metric**
 
-Records a data point, either raw measurements or predefined aggregation, as
-time series with [`Metadata`](#metadata). See [more][metric].
+Records a data point, either raw measurements or predefined aggregation, as time
+series with [`Metadata`](#metadata). See [more][metric].
 
 ### **OC**
 
@@ -315,7 +318,7 @@ See [`Metadata`](#metadata).
 ### **Trace**
 
 A [`DAG`](#dag) of [`Spans`](#span), where the edges between [`Spans`](#span)
-are defined as parent/child. relationship. See [more][trace].
+are defined as parent/child relationship. See [more][trace].
 
 ### **Tracer**
 

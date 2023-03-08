@@ -1,8 +1,8 @@
 ---
-title: "Why and How eBay Pivoted to OpenTelemetry"
+title: Why and How eBay Pivoted to OpenTelemetry
 linkTitle: eBay OpenTelemetry
 date: 2022-12-19
-author: "[Vijay Samuel](https://github.com/vjsamuel) (eBay)"
+author: '[Vijay Samuel](https://github.com/vjsamuel) (eBay)'
 canonical_url: https://tech.ebayinc.com/engineering/why-and-how-ebay-pivoted-to-opentelemetry/
 ---
 
@@ -133,7 +133,9 @@ The following diagram represents how any Beats instance, like Metricbeat,
 Filebeat and Auditbeat, would interface with the Sherlock.io platform when
 deployed as a DaemonSet:
 
+<!-- prettier-ignore -->
 ![daemonset](daemonset.jpeg)
+{.border-0}
 
 ## Moving To Cluster Local Scrapes
 
@@ -176,7 +178,9 @@ that are monitored by that instance alone, the failure percentage is reduced to
 
 The new deployment pattern can be visualized as follows:
 
+<!-- prettier-ignore -->
 ![clusterlocal](cluster-local.jpeg)
+{.border-0}
 
 ## Decoupling Autodiscover
 
@@ -249,7 +253,9 @@ using the attribute processor on OpenTelemetry. With such mappings and the
 filereloadreceiver in place, we were able to generate new configurations for the
 OpenTelemetry Collector as follows.
 
+<!-- prettier-ignore -->
 ![config](config.jpeg)
+{.border-0}
 
 As shown above, we were able to keep the end user contract of Pod/Namespace
 annotations the same and simply swap the agent under the hood. This greatly

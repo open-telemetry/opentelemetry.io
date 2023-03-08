@@ -1,0 +1,27 @@
+# Base
+
+/.netlify
+/iconography
+/layouts
+/themes
+/tmp
+
+# Ignore content-modules except for Community pages and Go docs
+
+/content-modules/*
+!/content-modules/community
+/content-modules/community/*
+!/content-modules/community/mission-vision-values.md
+!/content-modules/community/roadmap.md
+
+!/content-modules/opentelemetry-go
+/content-modules/opentelemetry-go/*
+!/content-modules/opentelemetry-go/website_docs
+/content-modules/opentelemetry-go/website_docs/**/*
+!/content-modules/opentelemetry-go/website_docs/**/*.md
+
+# Ignore generated resources
+
+package-lock.json
+/public
+/resources

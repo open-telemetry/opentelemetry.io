@@ -5,31 +5,38 @@ weight: 45
 spelling: cSpell:ignore distro mkdir uninstrumented virtualenv
 ---
 
-This page demonstrates how to use Python auto-instrumentation in OpenTelemetry. The
-example is based on an [OpenTracing example][]. You can download or view the
+This page demonstrates how to use Python auto-instrumentation in OpenTelemetry.
+The example is based on an [OpenTracing example][]. You can download or view the
 [source files][] used in this page from the `opentelemetry-python` repo.
 
-This example uses two different scripts. The main difference between them is
-whether or not they’re instrumented manually:
+This example uses three different scripts. The main difference between them is
+how they are instrumented:
 
-1. `server_instrumented.py` - instrumented manually
-2. `server_uninstrumented.py` - not instrumented manually
+1. `server_manual.py` is instrumented _manually_.
+2. `server_automatic.py` is instrumented _automatically_.
+3. `server_programmatic.py` is instrumented _programmatically_.
 
-Run the first script without the automatic instrumentation agent and the second
-with the agent. They should both produce the same results, demonstrating that
-the automatic instrumentation agent does exactly the same thing as manual
+[_Programmatic_ instrumentation](#execute-the-programmatically-instrumented-server)
+is a kind of instrumentation that requires miminal instrumentation code to be
+added to the application. Only some instrumentation libraries offer additional
+capabilities that give you greater control over the instrumentation process when
+used programmatically.
+
+Run the first script without the automatic instrumentation agent and second with
+the agent. They should both produce the same results, demonstrating that the
+automatic instrumentation agent does exactly the same thing as manual
 instrumentation.
 
 Automatic instrumentation utilizes [monkey-patching][] to dynamically rewrite
 methods and classes at runtime through [instrumentation
 libraries][instrumentation]. This reduces the amount of work required to
 integrate OpenTelemetry into your application code. Below, you will see the
-difference between a Flask route instrumented manually versus one that utilizes
-automatic instrumentation.
+difference between a Flask route instrumented manually, automatically and
+programmatically.
 
 ### Manually instrumented server
 
-`server_instrumented.py`
+`server_manual.py`
 
 ```python
 @app.route("/server_request")
@@ -44,11 +51,28 @@ def server_request():
         return "served"
 ```
 
-### Server not instrumented manually
+### Automatically-instrumented server
 
-`server_uninstrumented.py`
+`server_automatic.py`
 
 ```python
+@app.route("/server_request")
+def server_request():
+    print(request.args.get("param"))
+    return "served"
+```
+
+### Programmatically-instrumented server
+
+`server_programmatic.py`
+
+```python
+instrumentor = FlaskInstrumentor()
+
+app = Flask(__name__)
+
+instrumentor.instrument_app(app)
+# instrumentor.instrument_app(app, excluded_urls="/server_request")
 @app.route("/server_request")
 def server_request():
     print(request.args.get("param"))
@@ -81,8 +105,9 @@ $ pip install requests
 ```
 
 The examples that follow send instrumentation results to the console. Learn more
-about installing and configuring the [OpenTelemetry Distro](/docs/instrumentation/python/distro) to send
-telemetry to other destinations, like an OpenTelemetry Collector.
+about installing and configuring the
+[OpenTelemetry Distro](/docs/instrumentation/python/distro) to send telemetry to
+other destinations, like an OpenTelemetry Collector.
 
 > **Note**: To use automatic instrumentation through `opentelemetry-instrument`,
 > you must configure it via environment variables or the command line. The agent
@@ -93,25 +118,19 @@ telemetry to other destinations, like an OpenTelemetry Collector.
 > automatic instrumentation by importing the OpenTelemetry API. For more
 > details, see the [API reference][].
 
-It is also possible to use the instrumentation libraries (such as
-`opentelemetry-instrumentation-flask`) by themselves which may have an advantage
-of customizing options. However, by choosing to do this it means you forego
-using auto-instrumentation by starting your application with
-`opentelemetry-instrument` as this is mutually exclusive.
-
 ## Execute
 
 This section guides you through the manual process of instrumenting a server as
 well as the process of executing an automatically instrumented server.
 
-### Execute a manually instrumented server
+### Execute the manually instrumented server
 
 Execute the server in two separate consoles, one to run each of the scripts that
 make up this example:
 
 ```console
 $ source auto_instrumentation/bin/activate
-$ python server_instrumented.py
+$ python server_manual.py
 ```
 
 ```console
@@ -119,7 +138,7 @@ $ source auto_instrumentation/bin/activate
 $ python client.py testing
 ```
 
-The console running `server_instrumented.py` will display the spans generated by
+The console running `server_manual.py` will display the spans generated by
 instrumentation as JSON. The spans should appear similar to the following
 example:
 
@@ -159,13 +178,13 @@ example:
 }
 ```
 
-### Execute an automatically instrumented server
+### Execute the automatically-instrumented server
 
-Stop the execution of `server_instrumented.py` by pressing <kbd>Control+C</kbd>
-and run the following command instead:
+Stop the execution of `server_manual.py` by pressing <kbd>Control+C</kbd> and
+run the following command instead:
 
 ```console
-$ opentelemetry-instrument --traces_exporter console --metrics_exporter none python server_uninstrumented.py
+$ opentelemetry-instrument --traces_exporter console --metrics_exporter none python server_automatic.py
 ```
 
 In the console where you previously executed `client.py`, run the following
@@ -175,8 +194,8 @@ command again:
 $ python client.py testing
 ```
 
-The console running `server_uninstrumented.py` will display the spans generated
-by instrumentation as JSON. The spans should appear similar to the following
+The console running `server_automatic.py` will display the spans generated by
+instrumentation as JSON. The spans should appear similar to the following
 example:
 
 ```json
@@ -222,6 +241,47 @@ example:
 You can see that both outputs are the same because automatic instrumentation
 does exactly what manual instrumentation does.
 
+### Execute the programmatically-instrumented server
+
+It is also possible to use the instrumentation libraries (such as
+`opentelemetry-instrumentation-flask`) by themselves which may have an advantage
+of customizing options. However, by choosing to do this it means you forego
+using auto-instrumentation by starting your application with
+`opentelemetry-instrument` as this is mutually exclusive.
+
+Execute the server just like you would do for manual instrumentation, in two
+separate consoles, one to run each of the scripts that make up this example:
+
+```sh
+source auto_instrumentation/bin/activate
+python server_programmatic.py
+```
+
+```sh
+source auto_instrumentation/bin/activate
+python client.py testing
+```
+
+The results should be the same as running with manual instrumentation.
+
+#### Using programmatic-instrumentation features
+
+Some instrumentation libraries include features that allow for more precise
+control while instrumenting programmatically, the instrumentation library for
+Flask is one of them.
+
+This example has a line commented out, change it like this:
+
+```python
+# instrumentor.instrument_app(app)
+instrumentor.instrument_app(app, excluded_urls="/server_request")
+```
+
+After running the example again, no instrumentation should appear on the server
+side. This is because or the `excluded_urls` option passed to `instrument_app`
+that effectively stops the `server_request` function from being instrumented as
+its URL matches the regular expression passed to `excluded_urls`.
+
 ### Instrumentation while debugging
 
 The debug mode can be enabled in the Flask app like this:
@@ -246,7 +306,8 @@ The auto instrumentation can consume configuration from environment variables.
 
 ### Capture HTTP request and response headers
 
-You can capture predefined HTTP headers as span attributes, according to the [semantic convention][].
+You can capture predefined HTTP headers as span attributes, according to the
+[semantic convention][].
 
 To define which HTTP headers you want to capture, provide a comma-separated list
 of HTTP header names via the environment variables
@@ -259,7 +320,8 @@ $ export OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_RESPONSE="Last-Modifie
 $ opentelemetry-instrument --traces_exporter console --metrics_exporter none python app.py
 ```
 
-These configuration options are supported by the following HTTP instrumentations:
+These configuration options are supported by the following HTTP
+instrumentations:
 
 - Django
 - Falcon
@@ -273,31 +335,30 @@ If those headers are available, they will be included in your span:
 
 ```json
 {
-    "attributes": {
-        "http.request.header.user-agent": [
-            "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)"
-        ],
-        "http.request.header.accept_encoding": [
-            "gzip, deflate, br"
-        ],
-        "http.response.header.last_modified": [
-            "2022-04-20 17:07:13.075765"
-        ],
-        "http.response.header.content_type": [
-            "text/html; charset=utf-8"
-        ]
-    }
+  "attributes": {
+    "http.request.header.user-agent": [
+      "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)"
+    ],
+    "http.request.header.accept_encoding": ["gzip, deflate, br"],
+    "http.response.header.last_modified": ["2022-04-20 17:07:13.075765"],
+    "http.response.header.content_type": ["text/html; charset=utf-8"]
+  }
 }
 ```
 
 [semantic convention]:
-    https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/http.md#http-request-and-response-headers
-[API reference]: https://opentelemetry-python.readthedocs.io/en/latest/index.html
-[distro]: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-distro
-[env]: https://opentelemetry-python.readthedocs.io/en/latest/sdk/environment_variables.html
-[instrumentation]: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-instrumentation
-[monkey-patching]: https://stackoverflow.com/questions/5626193/what-is-monkey-patching
-[opentracing example]: https://github.com/yurishkuro/opentracing-tutorial/tree/master/python
-[source files]: https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/auto-instrumentation
-
-
+  https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/http.md#http-request-and-response-headers
+[api reference]:
+  https://opentelemetry-python.readthedocs.io/en/latest/index.html
+[distro]:
+  https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-distro
+[env]:
+  https://opentelemetry-python.readthedocs.io/en/latest/sdk/environment_variables.html
+[instrumentation]:
+  https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-instrumentation
+[monkey-patching]:
+  https://stackoverflow.com/questions/5626193/what-is-monkey-patching
+[opentracing example]:
+  https://github.com/yurishkuro/opentracing-tutorial/tree/master/python
+[source files]:
+  https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/auto-instrumentation

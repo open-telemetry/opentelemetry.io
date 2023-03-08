@@ -6,7 +6,6 @@ aliases:
   - /docs/java/manual_instrumentation
   - /docs/instrumentation/java/manual_instrumentation
 weight: 5
-javaVersion: 1.20.1
 ---
 
 **Libraries** that want to export telemetry data using OpenTelemetry MUST only
@@ -24,17 +23,18 @@ interface.
 
 If you are an application developer, you need to configure an instance of the
 `OpenTelemetrySdk` as early as possible in your application. This can be done
-using the `OpenTelemetrySdk.builder()` method.
-The returned `OpenTelemetrySdkBuilder` instance gets the providers related to the
-signals, tracing and metrics, in order to build the `OpenTelemetry` instance.
+using the `OpenTelemetrySdk.builder()` method. The returned
+`OpenTelemetrySdkBuilder` instance gets the providers related to the signals,
+tracing and metrics, in order to build the `OpenTelemetry` instance.
 
 You can build the providers by using the `SdkTracerProvider.builder()` and
-`SdkMeterProvider.builder()` methods.
-It is also strongly recommended to define a `Resource` instance as a representation of the
-entity producing the telemetry; in particular the `service.name` attribute is
-the most important piece of telemetry source-identifying info.
+`SdkMeterProvider.builder()` methods. It is also strongly recommended to define
+a `Resource` instance as a representation of the entity producing the telemetry;
+in particular the `service.name` attribute is the most important piece of
+telemetry source-identifying info.
 
 ### Maven
+
 ```xml
 <project>
     <dependencyManagement>
@@ -72,6 +72,7 @@ the most important piece of telemetry source-identifying info.
 ```
 
 ### Gradle
+
 ```kotlin
 dependencies {
     implementation 'io.opentelemetry:opentelemetry-api:{{% param javaVersion %}}'
@@ -82,6 +83,7 @@ dependencies {
 ```
 
 ### Imports
+
 ```java
 import io.opentelemetry.api.OpenTelemetry;
 import io.opentelemetry.api.common.Attributes;
@@ -99,6 +101,7 @@ import io.opentelemetry.semconv.resource.attributes.ResourceAttributes;
 ```
 
 ### Example
+
 ```java
 Resource resource = Resource.getDefault()
   .merge(Resource.create(Attributes.of(ResourceAttributes.SERVICE_NAME, "logical-service-name")));
@@ -129,15 +132,15 @@ the most brittle option for library instrumentation.
 
 ## Acquiring a Tracer
 
-To do [Tracing](/docs/concepts/signals/traces/#tracing-in-opentelemetry) you'll
-need to acquire a [`Tracer`](/docs/concepts/signals/traces/#tracer).
+To do [Tracing](/docs/concepts/signals/traces/) you'll need to acquire a
+[`Tracer`](/docs/concepts/signals/traces/#tracer).
 
 **Note:** Methods of the OpenTelemetry SDK should never be called.
 
 First, a `Tracer` must be acquired, which is responsible for creating spans and
 interacting with the [Context](#context-propagation). A tracer is acquired by
-using the OpenTelemetry API specifying the name and version of the
-[library instrumenting][Instrumentation Library] the [instrumented library] or
+using the OpenTelemetry API specifying the name and version of the [library
+instrumenting][instrumentation library] the [instrumented library] or
 application to be monitored. More information is available in the specification
 chapter [Obtaining a Tracer].
 
@@ -274,7 +277,7 @@ span.setAttribute("http.url", url.toString());
 There are semantic conventions for spans representing operations in well-known
 protocols like HTTP or database calls. Semantic conventions for these spans are
 defined in the specification at
-[Trace Semantic Conventions]({{< relref "/docs/reference/specification/trace/semantic_conventions" >}}).
+[Trace Semantic Conventions](/docs/reference/specification/trace/semantic_conventions/).
 
 First add the semantic conventions as a dependency to your application:
 
@@ -307,9 +310,9 @@ span.setAttribute(SemanticAttributes.HTTP_URL, url.toString());
 
 [Spans](/docs/concepts/signals/traces/#spans-in-opentelemetry) can be annotated
 with named events (called
-[Span Events](/docs/concepts/signals/traces/#span-events)) that can carry zero or more
-[Span Attributes](#span-attributes), each of which itself is a key:value map
-paired automatically with a timestamp.
+[Span Events](/docs/concepts/signals/traces/#span-events)) that can carry zero
+or more [Span Attributes](#span-attributes), each of which itself is a key:value
+map paired automatically with a timestamp.
 
 ```java
 span.addEvent("Init");
@@ -329,9 +332,9 @@ span.addEvent("End Computation", eventAttributes);
 
 A [Span](/docs/concepts/signals/traces/#spans-in-opentelemetry) may be linked to
 zero or more other Spans that are causally related via a
-[Span Link](/docs/concepts/signals/traces/#span-links). Links can be used to represent
-batched operations where a Span was initiated by multiple initiating Spans, each
-representing a single incoming item being processed in the batch.
+[Span Link](/docs/concepts/signals/traces/#span-links). Links can be used to
+represent batched operations where a Span was initiated by multiple initiating
+Spans, each representing a single incoming item being processed in the batch.
 
 ```java
 Span child = tracer.spanBuilder("childWithLink")
@@ -568,8 +571,8 @@ available:
   processing a request. Histogram measurements are aggregated to explicit bucket
   histograms by default.
 
-**Note**: The asynchronous varieties of counter and up down counter assume that the
-registered callback is observing the cumulative sum. For example, if you
+**Note**: The asynchronous varieties of counter and up down counter assume that
+the registered callback is observing the cumulative sum. For example, if you
 register an asynchronous counter whose callback records bytes sent over a
 network, it must record the cumulative sum of all bytes sent over the network,
 rather than trying to compute and record the difference since last call.
@@ -694,9 +697,9 @@ exporters out of the box:
   Zipkin backend via the Zipkin APIs.
 - Logging Exporter: saves the telemetry data into log streams. Varieties include
   `LoggingSpanExporter` and `OtlpJsonLoggingSpanExporter`.
-- OpenTelemetry Protocol Exporter: sends the data in OTLP to the
-  [OpenTelemetry Collector] or other OTLP receivers. Varieties include
-  `OtlpGrpcSpanExporter` and `OtlpHttpSpanExporter`.
+- OpenTelemetry Protocol Exporter: sends the data in OTLP to the [OpenTelemetry
+  Collector] or other OTLP receivers. Varieties include `OtlpGrpcSpanExporter`
+  and `OtlpHttpSpanExporter`.
 
 Other exporters can be found in the [OpenTelemetry Registry].
 
@@ -760,9 +763,9 @@ OpenTelemetry provides the following exporters out of the box:
   debugging.
 - Logging Exporter: saves the telemetry data into log streams. Varieties include
   `LoggingMetricExporter` and `OtlpJsonLoggingMetricExporter`.
-- OpenTelemetry Protocol Exporter: sends the data in OTLP to the
-  [OpenTelemetry Collector] or other OTLP receivers. Varieties include
-  `OtlpGrpcMetricExporter` and `OtlpHttpMetricExporter`.
+- OpenTelemetry Protocol Exporter: sends the data in OTLP to the [OpenTelemetry
+  Collector] or other OTLP receivers. Varieties include `OtlpGrpcMetricExporter`
+  and `OtlpHttpMetricExporter`.
 
 Other exporters can be found in the [OpenTelemetry Registry].
 
@@ -798,11 +801,13 @@ instrument.
 
 ### Auto Configuration
 
-Instead of manually creating the `OpenTelemetry` instance by using the SDK builders
-directly from your code, it is also possible to use the SDK auto-configuration extension
-through the `opentelemetry-sdk-extension-autoconfigure` module.
+Instead of manually creating the `OpenTelemetry` instance by using the SDK
+builders directly from your code, it is also possible to use the SDK
+auto-configuration extension through the
+`opentelemetry-sdk-extension-autoconfigure` module.
 
-This module is made available by adding the following dependency to your application.
+This module is made available by adding the following dependency to your
+application.
 
 ```xml
 <dependency>
@@ -811,39 +816,44 @@ This module is made available by adding the following dependency to your applica
 </dependency>
 ```
 
-It allows you to auto-configure the OpenTelemetry SDK based on a standard set of supported
-environment variables and system properties.
-Each environment variable has a corresponding system property named the same way but as
-lower case and using the `.` (dot) character instead of the `_` (underscore) as separator.
+It allows you to auto-configure the OpenTelemetry SDK based on a standard set of
+supported environment variables and system properties. Each environment variable
+has a corresponding system property named the same way but as lower case and
+using the `.` (dot) character instead of the `_` (underscore) as separator.
 
-The logical service name can be specified via the `OTEL_SERVICE_NAME` environment variable
-(or `otel.service.name` system property).
+The logical service name can be specified via the `OTEL_SERVICE_NAME`
+environment variable (or `otel.service.name` system property).
 
 The traces, metrics or logs exporters can be set via the `OTEL_TRACES_EXPORTER`,
-`OTEL_METRICS_EXPORTER` and `OTEL_LOGS_EXPORTER` environment variables.
-For example `OTEL_TRACES_EXPORTER=jaeger` configures your application to use the Jaeger exporter.
-The corresponding Jaeger exporter library has to be provided in the classpath of the application as well.
+`OTEL_METRICS_EXPORTER` and `OTEL_LOGS_EXPORTER` environment variables. For
+example `OTEL_TRACES_EXPORTER=jaeger` configures your application to use the
+Jaeger exporter. The corresponding Jaeger exporter library has to be provided in
+the classpath of the application as well.
 
-It's also possible to set up the propagators via the `OTEL_PROPAGATORS` environment variable,
-like for example using the `tracecontext` value to use [W3C Trace Context](https://www.w3.org/TR/trace-context/).
+It's also possible to set up the propagators via the `OTEL_PROPAGATORS`
+environment variable, like for example using the `tracecontext` value to use
+[W3C Trace Context](https://www.w3.org/TR/trace-context/).
 
 For more details, see all the supported configuration options in the module's
 [README](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure).
 
-The SDK auto-configuration has to be initialized from your code in order to allow the module
-to go through the provided environment variables (or system properties) and set up the
-`OpenTelemetry` instance by using the builders internally.
+The SDK auto-configuration has to be initialized from your code in order to
+allow the module to go through the provided environment variables (or system
+properties) and set up the `OpenTelemetry` instance by using the builders
+internally.
 
 ```java
 OpenTelemetrySdk sdk = AutoConfiguredOpenTelemetrySdk.initialize()
     .getOpenTelemetrySdk();
 ```
 
-When environment variables or system properties are not sufficient, you can use some extension points
-provided through the auto-configure [SPI](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure-spi)
+When environment variables or system properties are not sufficient, you can use
+some extension points provided through the auto-configure
+[SPI](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure-spi)
 and several methods in the `AutoConfiguredOpenTelemetrySdk` class.
 
-Following an example with a code snippet for adding an additional custom span processor.
+Following an example with a code snippet for adding an additional custom span
+processor.
 
 ```java
 AutoConfiguredOpenTelemetrySdk.builder()
@@ -910,15 +920,23 @@ public class IgnoreExportErrorsFilter implements Filter {
 io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extension.logging.IgnoreExportErrorsFilter
 ```
 
-[AlwaysOffSampler]: https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/AlwaysOffSampler.java
-[AlwaysOnSampler]: https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/AlwaysOnSampler.java
-[HttpExchange]: https://docs.oracle.com/javase/8/docs/jre/api/net/httpserver/spec/com/sun/net/httpserver/HttpExchange.html
-[Instrumentation Library]: /docs/reference/specification/glossary/#instrumentation-library
-[instrumented library]: /docs/reference/specification/glossary/#instrumented-library
-[Library Guidelines]: /docs/reference/specification/library-guidelines
-[Obtaining a Tracer]: /docs/reference/specification/trace/api/#get-a-tracer
-[OpenTelemetry Collector]: https://github.com/open-telemetry/opentelemetry-collector
-[OpenTelemetry Registry]: /ecosystem/registry/?component=exporter&language=java
-[ParentBased]: https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/ParentBasedSampler.java
-[Semantic Conventions]: /docs/reference/specification/trace/semantic_conventions
-[TraceIdRatioBased]: https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/TraceIdRatioBasedSampler.java
+[alwaysoffsampler]:
+  https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/AlwaysOffSampler.java
+[alwaysonsampler]:
+  https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/AlwaysOnSampler.java
+[httpexchange]:
+  https://docs.oracle.com/javase/8/docs/jre/api/net/httpserver/spec/com/sun/net/httpserver/HttpExchange.html
+[instrumentation library]:
+  /docs/reference/specification/glossary/#instrumentation-library
+[instrumented library]:
+  /docs/reference/specification/glossary/#instrumented-library
+[library guidelines]: /docs/reference/specification/library-guidelines
+[obtaining a tracer]: /docs/reference/specification/trace/api/#get-a-tracer
+[opentelemetry collector]:
+  https://github.com/open-telemetry/opentelemetry-collector
+[opentelemetry registry]: /ecosystem/registry/?component=exporter&language=java
+[parentbased]:
+  https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/ParentBasedSampler.java
+[semantic conventions]: /docs/reference/specification/trace/semantic_conventions
+[traceidratiobased]:
+  https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/TraceIdRatioBasedSampler.java
