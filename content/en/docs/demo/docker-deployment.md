@@ -9,7 +9,7 @@ aliases: [/docs/demo/docker_deployment]
 - Docker
 - [Docker Compose](https://docs.docker.com/compose/install/#install-compose)
   v2.0.0+
-- 5 GB of RAM
+- 4 GB of RAM for the application
 
 ## Clone Repo
 
