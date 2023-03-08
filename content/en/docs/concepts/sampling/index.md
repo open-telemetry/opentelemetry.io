@@ -73,10 +73,10 @@ within them are sampled. For this, you need Tail Sampling.
 
 ## Tail Sampling
 
-Tail Sampling is where the decision to sample a trace happens _after_ all the
-spans in a request have been completed. Tail Sampling gives you the option to
-sample your traces based on specific criteria, which isn’t an option with Head
-Sampling.
+Tail Sampling is where the decision to sample a trace takes place by considering
+all or most of the spans within the trace. Tail Sampling gives you the option to
+sample your traces based on specific criteria derived from different parts of a
+trace, which isn’t an option with Head Sampling.
 
 ![Illustration shows how spans originate from a root span. After the spans are complete, the tail sampling processor makes a sampling decision.](tail_sampling_process.png)
 
@@ -85,7 +85,8 @@ Some examples of how you can use Tail Sampling include:
 - Always sampling traces that contain an error
 - Sampling traces based on overall latency
 - Sampling traces based on the presence or value of specific attributes on one
-  or more spans in a trace; for example, sampling more traces originating from a newly deployed service
+  or more spans in a trace; for example, sampling more traces originating from a
+  newly deployed service
 - Applying different sampling rates to traces based on certain criteria
 
 As you can see, Tail Sampling allows for a much higher degree of sophistication.
@@ -94,12 +95,12 @@ use Tail Sampling to balance data volume with usefulness of that data.
 
 There are three primary downsides to Tail Sampling today:
 
-- Tail Sampling can be sophisticated to implement. Depending on the kind of
-  sampling techniques available to you, it is not always a "set and forget" kind
-  of setting. As your systems change, so too will your sampling strategies. For
-  a larger and more sophisticated your distributed system, sampling strategies
-  can be large and sophisticated.
-- Tail Sampling can be sophisticated to operate. The component(s) that implement
+- Tail Sampling can be difficult to implement. Depending on the kind of sampling
+  techniques available to you, it is not always a "set and forget" kind of
+  setting. As your systems change, so too will your sampling strategies. For a
+  large and sophisticated distributed system, rules that implement sampling
+  strategies can also be large and sophisticated
+- Tail Sampling can be difficult to operate. The component(s) that implement
   Tail Sampling must be stateful systems that can accept and store a large
   amount of data. Depending on traffic patterns, this can require dozens or even
   hundreds of nodes that all utilize resources differently. Furthermore, a Tail
