@@ -85,7 +85,7 @@ Some examples of how you can use Tail Sampling include:
 - Always sampling traces that contain an error
 - Sampling traces based on overall latency
 - Sampling traces based on the presence or value of specific attributes on one
-  or more spans in a trace
+  or more spans in a trace; for example, sampling more traces originating from a newly deployed service
 - Applying different sampling rates to traces based on certain criteria
 
 As you can see, Tail Sampling allows for a much higher degree of sophistication.
