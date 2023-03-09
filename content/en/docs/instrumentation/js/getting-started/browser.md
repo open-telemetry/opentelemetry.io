@@ -1,6 +1,7 @@
 ---
 title: Browser
 aliases: [/docs/js/getting_started/browser]
+weight: 3
 ---
 
 While this guide uses the example application presented below, the steps to
