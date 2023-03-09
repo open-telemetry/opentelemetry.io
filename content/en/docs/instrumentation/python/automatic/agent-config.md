@@ -2,10 +2,8 @@
 title: Agent Configuration
 linkTitle: Configuration
 weight: 45
-spelling: cSpell:ignore distro mkdir uninstrumented virtualenv
+spelling: cSpell:ignore distro mkdir myapp uninstrumented virtualenv
 ---
-
-## Configuring the agent
 
 The agent is highly configurable, either by:
 
@@ -13,7 +11,7 @@ The agent is highly configurable, either by:
 - Setting
   [environment variables](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/sdk-environment-variables.md)
 
-### Configuration properties
+## Configuration properties
 
 Here's an example of agent configuration via configuration properties:
 
@@ -48,7 +46,7 @@ Here's an explanation of what each configuration does:
   backend. More info exporter OTLP headers be found
   [here](/docs/concepts/sdk-configuration/otlp-exporter-configuration/#otel_exporter_otlp_headers).
 
-### Environment Variables
+## Environment Variables
 
 In some cases, configuring via
 [Environment Variables](/docs/concepts/sdk-configuration/) is more preferred.
@@ -64,11 +62,11 @@ desired configuration property:
 For example, `exporter_otlp_endpoint` would convert to
 `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT`.
 
-### Disabling Specific Instrumentations
+## Disabling Specific Instrumentations
 
 The Python agent by default will detect a python program's packages and
-instrument any packages it can.  
-This makes instrumentation easy, but can result in too much or unwanted data.
+instrument any packages it can. This makes instrumentation easy, but can result
+in too much or unwanted data.
 
 You can omit specific packages from instrumentation by using the
 `OTEL_PYTHON_DISABLED_INSTRUMENTATIONS` environment variable. The environment
