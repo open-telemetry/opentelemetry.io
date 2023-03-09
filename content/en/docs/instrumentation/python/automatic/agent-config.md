@@ -30,19 +30,20 @@ Here's an explanation of what each configuration does:
 
 - `traces_exporter` specifies which traces exporter to use. In this case, traces
   are being exported to `console` (stdout) and with `otlp`. The `otlp` option
-  tells `opentelemetry-instrument` to send the traces to an endpoint that accepts OTLP
-  via gRPC. In order to use HTTP instead of gRPC, add `--exporter_otlp_protocol http`.
-  The full list of available options for traces_exporter can be found
+  tells `opentelemetry-instrument` to send the traces to an endpoint that
+  accepts OTLP via gRPC. In order to use HTTP instead of gRPC, add
+  `--exporter_otlp_protocol http`. The full list of available options for
+  traces_exporter can be found
   [here](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-instrumentation).
 - `metrics_exporter` specifies which metrics exporter to use. In this case,
   metrics are being exported to `console` (stdout). It is currently required for
   your to specify a metrics exporter. If you aren't exporting metrics, specify
   `none` as the value instead.
-- `service_name` sets the name of the service associated with your telemetry, and is
-  sent to your [Observability backend](/ecosystem/vendors/).
-- `exporter_otlp_endpoint` sets the endpoint where telemetry is exported to.
-  If omitted, the default [Collector](/docs/collector) endpoint will be used, which is
-   `0.0.0.0:4317` for gRPC and `0.0.0.0:4318` for HTTP.
+- `service_name` sets the name of the service associated with your telemetry,
+  and is sent to your [Observability backend](/ecosystem/vendors/).
+- `exporter_otlp_endpoint` sets the endpoint where telemetry is exported to. If
+  omitted, the default [Collector](/docs/collector) endpoint will be used, which
+  is `0.0.0.0:4317` for gRPC and `0.0.0.0:4318` for HTTP.
 - `exporter_otlp_headers` is required depending on your chosen Observability
   backend. More info exporter OTLP headers be found
   [here](/docs/concepts/sdk-configuration/otlp-exporter-configuration/#otel_exporter_otlp_headers).
