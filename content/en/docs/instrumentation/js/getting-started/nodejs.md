@@ -313,7 +313,7 @@ telemetry backends.
 ## Troubleshooting
 
 Did something go wrong? You can enable diagnostic logging to validate that
-opentelemetry is initialized correctly:
+OpenTelemetry is initialized correctly:
 
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
