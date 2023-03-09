@@ -7,15 +7,15 @@ spelling: cSpell:ignore distro mkdir myapp uninstrumented virtualenv
 
 The agent is highly configurable, either by:
 
-- Passing it configuration properties from the CLI
+- Passing configuration properties from the CLI
 - Setting
-  [environment variables](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/sdk-environment-variables.md)
+  [environment variables](/docs/reference/specification/sdk-environment-variables/)
 
 ## Configuration properties
 
 Here's an example of agent configuration via configuration properties:
 
-```console
+```sh
 opentelemetry-instrument \
     --traces_exporter console,otlp \
     --metrics_exporter console \
@@ -31,8 +31,8 @@ Here's an explanation of what each configuration does:
   tells `opentelemetry-instrument` to send the traces to an endpoint that
   accepts OTLP via gRPC. In order to use HTTP instead of gRPC, add
   `--exporter_otlp_protocol http`. The full list of available options for
-  traces_exporter can be found
-  [here](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-instrumentation).
+  traces_exporter, see the Python contrib
+  [OpenTelemetry Instrumentation](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-instrumentation).
 - `metrics_exporter` specifies which metrics exporter to use. In this case,
   metrics are being exported to `console` (stdout). It is currently required for
   your to specify a metrics exporter. If you aren't exporting metrics, specify
@@ -40,8 +40,8 @@ Here's an explanation of what each configuration does:
 - `service_name` sets the name of the service associated with your telemetry,
   and is sent to your [Observability backend](/ecosystem/vendors/).
 - `exporter_otlp_endpoint` sets the endpoint where telemetry is exported to. If
-  omitted, the default [Collector](/docs/collector) endpoint will be used, which
-  is `0.0.0.0:4317` for gRPC and `0.0.0.0:4318` for HTTP.
+  omitted, the default [Collector](/docs/collector/) endpoint will be used,
+  which is `0.0.0.0:4317` for gRPC and `0.0.0.0:4318` for HTTP.
 - `exporter_otlp_headers` is required depending on your chosen Observability
   backend. More info exporter OTLP headers be found
   [here](/docs/concepts/sdk-configuration/otlp-exporter-configuration/#otel_exporter_otlp_headers).
@@ -49,7 +49,7 @@ Here's an explanation of what each configuration does:
 ## Environment Variables
 
 In some cases, configuring via
-[Environment Variables](/docs/concepts/sdk-configuration/) is more preferred.
+[environment variables](/docs/concepts/sdk-configuration/) is more preferred.
 Any setting configurable with a command-line argument can also be configured
 with an Environment Variable.
 
