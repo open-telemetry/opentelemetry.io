@@ -97,9 +97,9 @@ There are three primary downsides to Tail Sampling today:
 
 - Tail Sampling can be difficult to implement. Depending on the kind of sampling
   techniques available to you, it is not always a "set and forget" kind of
-  setting. As your systems change, so too will your sampling strategies. For a
+  thing. As your systems change, so too will your sampling strategies. For a
   large and sophisticated distributed system, rules that implement sampling
-  strategies can also be large and sophisticated
+  strategies can also be large and sophisticated.
 - Tail Sampling can be difficult to operate. The component(s) that implement
   Tail Sampling must be stateful systems that can accept and store a large
   amount of data. Depending on traffic patterns, this can require dozens or even
