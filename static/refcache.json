@@ -151,6 +151,14 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-15T20:38:51.346491-05:00"
   },
+  "https://circleci.com": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-09T15:12:05.074298-08:00"
+  },
+  "https://cloud-native.slack.com/archives/C01N5UCHTEH": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-09T15:12:23.17669-08:00"
+  },
   "https://cloud-native.slack.com/archives/C01N6P7KR6W": {
     "StatusCode": 200,
     "LastSeen": "2023-02-15T20:38:10.77116-05:00"
@@ -174,6 +182,10 @@
   "https://cloud-native.slack.com/archives/C01NR1YLSE7": {
     "StatusCode": 200,
     "LastSeen": "2023-02-15T20:40:03.562398-05:00"
+  },
+  "https://cloud-native.slack.com/archives/C01PD4HUVBL": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-09T15:12:24.668712-08:00"
   },
   "https://cloud-native.slack.com/archives/C01QZFGMLQ7": {
     "StatusCode": 200,
@@ -202,6 +214,10 @@
   "https://cloud-native.slack.com/archives/C0422FSELH0": {
     "StatusCode": 200,
     "LastSeen": "2023-02-15T20:40:32.32299-05:00"
+  },
+  "https://cloud-native.slack.com/archives/C0476L7UJT1": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-09T15:12:28.826905-08:00"
   },
   "https://cloud-native.slack.com/archives/CJFCJHG4Q": {
     "StatusCode": 200,
@@ -975,6 +991,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-15T21:21:37.356938-05:00"
   },
+  "https://en.wikipedia.org/wiki/Channel_9_%28Microsoft%29": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-09T15:12:10.262715-08:00"
+  },
   "https://en.wikipedia.org/wiki/Count_noun": {
     "StatusCode": 200,
     "LastSeen": "2023-02-15T21:19:10.304029-05:00"
@@ -1154,6 +1174,10 @@
   "https://expressjs.com": {
     "StatusCode": 200,
     "LastSeen": "2023-02-15T21:17:02.709221-05:00"
+  },
+  "https://fastapi.tiangolo.com": {
+    "StatusCode": 206,
+    "LastSeen": "2023-03-09T15:12:04.427994-08:00"
   },
   "https://fluentbit.io/": {
     "StatusCode": 206,
@@ -1790,6 +1814,10 @@
   "https://github.com/open-telemetry/opentelemetry-demo": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:41:27.192458-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo#-opentelemetry-demo": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-09T15:12:26.647379-08:00"
   },
   "https://github.com/open-telemetry/opentelemetry-demo#bring-your-own-backend": {
     "StatusCode": 200,
@@ -2731,6 +2759,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-16T17:13:57.444064-05:00"
   },
+  "https://loom.com": {
+    "StatusCode": 206,
+    "LastSeen": "2023-03-09T15:12:08.749012-08:00"
+  },
   "https://lu.ma/1w129wgu": {
     "StatusCode": 206,
     "LastSeen": "2023-03-06T13:39:32.677929+05:30"
@@ -3447,6 +3479,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-18T13:25:12.431032-05:00"
   },
+  "https://uplight.com": {
+    "StatusCode": 206,
+    "LastSeen": "2023-03-09T15:12:03.976803-08:00"
+  },
   "https://uptrace.dev": {
     "StatusCode": 206,
     "LastSeen": "2023-02-18T13:23:42.822607-05:00"
@@ -3734,6 +3770,10 @@
   "https://www.java.com/en/": {
     "StatusCode": 200,
     "LastSeen": "2023-02-18T13:46:50.950005-05:00"
+  },
+  "https://www.jenkins.io": {
+    "StatusCode": 206,
+    "LastSeen": "2023-03-09T15:12:06.226543-08:00"
   },
   "https://www.jsonrpc.org/": {
     "StatusCode": 206,
