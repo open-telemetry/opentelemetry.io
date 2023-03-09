@@ -30,18 +30,94 @@ want to sample. You might want to customize your sampling strategy to:
   to see traces with specific user attributes.
 - **Filter out noise**: For example, you may want to filter out health checks.
 
-## What is tail-based sampling?
+## Terminology
 
-Tail-based sampling is where the decision to sample a trace happens _after_ all
-the spans in a request have been completed. This is in contrast to head-based
-sampling, where the decision is made at the _beginning_ of a request when the
-root span begins processing. Tail-based sampling gives you the option to filter
-your traces based on specific criteria, which isn’t an option with head-based
-sampling.
+It's important to use consistent terminology when discussing sampling. A trace
+or span is considered "sampled" or "not sampled":
+
+- **Sampled**: A trace or span is processed and exported. Because it is chosen
+  by the sampler as a representive of the population, it is considered
+  "sampled".
+- **Not sampled**: A trace or span is not processed or exported. Because it is
+  not chosen by the sampler, it is considered "not sampled".
+
+Sometimes, the definitions of these terms get mixed up. You may find someone
+state that they are "sampling out data" or that data not processed or exported
+is considered "sampled". These are incorrect statements.
+
+## Head Sampling
+
+Head sampling is a sampling technique used to make a sampling decision as early
+as possible. A decision to sample or drop a span or trace is not made by
+inspecting the trace as a whole.
+
+For example, the most common form of head sampling is
+[Consistent Probability Sampling](/docs/reference/specification/trace/tracestate-probability-sampling/#consistent-probability-sampling).
+It may also be referred to as Deterministic Sampling. In this case, a sampling
+decision is made based on the trace ID and a desired percentage of traces to
+sample. This ensures that whole traces are sampled - no missing spans - at a
+consistent rate, such as 5% of all traces.
+
+The upsides to head sampling are:
+
+- Easy to understand
+- Easy to configure
+- Efficient
+- Can be done at any point in the trace collection pipeline
+
+The primary downside to head sampling is that it is not possible make a sampling
+decision based on data in the entire trace. This means that head sampling is
+effective as a blunt instrument, but is wholly insufficient for sampling
+strategies that must take whole-system information into account. For example, it
+is not possible to use head sampling to ensure that all traces with an error
+within them are sampled. For this, you need Tail Sampling.
+
+## Tail Sampling
+
+Tail sampling is where the decision to sample a trace takes place by considering
+all or most of the spans within the trace. Tail Sampling gives you the option to
+sample your traces based on specific criteria derived from different parts of a
+trace, which isn’t an option with Head Sampling.
 
 ![Illustration shows how spans originate from a root span. After the spans are complete, the tail sampling processor makes a sampling decision.](tail_sampling_process.png)
 
-Tail sampling lets you see only the traces that are of interest to you. You also
-lower data ingest and storage costs because you’re only exporting a
-predetermined subset of your traces. For instance, as an app developer, I may
-only be interested in traces with errors or latency for debugging.
+Some examples of how you can use Tail Sampling include:
+
+- Always sampling traces that contain an error
+- Sampling traces based on overall latency
+- Sampling traces based on the presence or value of specific attributes on one
+  or more spans in a trace; for example, sampling more traces originating from a
+  newly deployed service
+- Applying different sampling rates to traces based on certain criteria
+
+As you can see, tail sampling allows for a much higher degree of sophistication.
+For larger systems that must sample telemetry, it is almost always necessary to
+use Tail Sampling to balance data volume with usefulness of that data.
+
+There are three primary downsides to tail sampling today:
+
+- Tail sampling can be difficult to implement. Depending on the kind of sampling
+  techniques available to you, it is not always a "set and forget" kind of
+  thing. As your systems change, so too will your sampling strategies. For a
+  large and sophisticated distributed system, rules that implement sampling
+  strategies can also be large and sophisticated.
+- Tail sampling can be difficult to operate. The component(s) that implement
+  tail sampling must be stateful systems that can accept and store a large
+  amount of data. Depending on traffic patterns, this can require dozens or even
+  hundreds of nodes that all utilize resources differently. Furthermore, a tail
+  sampler may need to "fall back" to less computationally-intensive sampling
+  techniques if it is unable to keep up with the volume of data it is receiving.
+  Because of these factors, it is critical to monitor tail sampling components
+  to ensure that they have the resources they need to make the correct sampling
+  decisions.
+- Tail samplers often end up being in the domain of vendor-specific technology
+  today. If you're using a paid vendor for Observability, the most effective
+  tail sampling options available to you may be limited to what the vendor
+  offers.
+
+Finally, for some systems, tail sampling may be used in conjunction with Head
+Sampling. For example, a set of services that produce an extremely high volume
+of trace data may first use head sampling to only sample a small percentage of
+traces, and then later in the telemetry pipeline use tail sampling to make more
+sophisticated sampling decisions before exporting to a backend. This is often
+done in the interest of protecting the telemetry pipeline from being overloaded.
