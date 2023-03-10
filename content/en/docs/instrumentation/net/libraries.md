@@ -29,11 +29,11 @@ creating a [TracerProvider](/docs/concepts/signals/traces/#tracer-provider).
 ## Note on Versioning
 
 The Semantic Conventions (Standards) for attribute names are not currently
-stable therefore the instrumentation package is currently not in a released state. That
-doesn't mean that the functionality itself is not stable, only that the names of
-some of the attributes may change in the future, some may be added, some may be
-removed. This means that you need to use the `--prerelease` flag, or install a
-specific version of the package
+stable therefore the instrumentation package is currently not in a released
+state. That doesn't mean that the functionality itself is not stable, only that
+the names of some of the attributes may change in the future, some may be added,
+some may be removed. This means that you need to use the `--prerelease` flag, or
+install a specific version of the package
 
 ## Example with ASP.NET Core and HttpClient
 

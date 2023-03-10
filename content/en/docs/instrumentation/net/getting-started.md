@@ -259,8 +259,9 @@ Now we can increment the counter in our `Index` action.
     }
 ```
 
-You'll notice here that we're also adding Tags (OpenTelemetry Attributes) to our request counter that
-distinguishes it from other requests. You should now see an output like this.
+You'll notice here that we're also adding Tags (OpenTelemetry Attributes) to our
+request counter that distinguishes it from other requests. You should now see an
+output like this.
 
 <details>
 <summary>View example output</summary>
