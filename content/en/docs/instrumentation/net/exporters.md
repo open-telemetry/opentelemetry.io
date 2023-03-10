@@ -105,6 +105,8 @@ production.
 
 ### Note for .NET Core 3.1 and below and gRPC
 
+Note: Versions below .NET 6 are not officially supported by opentelemetry-dotnet, therefore this section is here to help, but may not work as the library progresses.
+
 If you're not using ASP.NET Core gRPC and you are running on .NET Core 3.x,
 you'll need to add the following at application startup
 
@@ -151,15 +153,14 @@ services:
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenTelemetry()
-  .WithTracing(b =>
-  {
-    b
-    .AddZipkinExporter(o =>
+    .WithTracing(b =>
     {
-        o.Endpoint = new Uri("your-zipkin-uri-here");
-    })
-    // The rest of your setup code goes here too
-  });
+        b.AddZipkinExporter(o =>
+        {
+            o.Endpoint = new Uri("your-zipkin-uri-here");
+        })
+        // The rest of your setup code goes here too
+    });
 ```
 
 Otherwise, configure the exporter when creating a tracer provider:

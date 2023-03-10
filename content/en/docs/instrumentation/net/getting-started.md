@@ -40,11 +40,9 @@ doesn't mean that the functionality itself is not stable. This means that you
 need to use the `--prerelease` flag, or install a specific version of the
 package_
 
-This will also install the `OpenTelemetry` core packages.
-
 ### Setup
 
-Next, we need to add OpenTelemetry to our Service Collection in `program.cs` so
+Next, we need to add OpenTelemetry to our Service Collection in `Program.cs` so
 that it's listening correctly.
 
 ```csharp
@@ -74,8 +72,10 @@ public static class DiagnosticsConfig
 }
 ```
 
-At this stage, you should be able to run you site, and see a Console output
+At this stage, you should be able to run your site, and see a Console output
 similar to this:
+
+Note: an `Activity` in .NET is analogous to a Span in OpenTelemetry terminology
 
 <details>
 <summary>View example output</summary>
@@ -159,7 +159,7 @@ we created manually in our controller action.
 
 ### Metrics
 
-Next we'll add the ASP.NET automatic metrics to the app.
+Next we'll add the ASP.NET Core automatically generated metrics to the app.
 
 ```csharp
 using OpenTelemetry.Resources;
@@ -239,7 +239,7 @@ public static class DiagnosticsConfig
 
     public static Meter Meter = new(ServiceName);
     public static Counter<long> RequestCounter =
-        Meter.CreateCounter<long>("Request Counter");
+        Meter.CreateCounter<long>("app.request_counter");
 }
 
 ```
@@ -259,8 +259,8 @@ Now we can increment the counter in our `Index` action.
     }
 ```
 
-You'll notice here that we're also adding labels to our request counter that
-distinguish it from other requests. You should now see an output like this.
+You'll notice here that we're also adding Tags (OpenTelemetry Attributes) to our request counter that
+distinguishes it from other requests. You should now see an output like this.
 
 <details>
 <summary>View example output</summary>
