@@ -347,7 +347,7 @@ If those headers are available, they will be included in your span:
 ```
 
 [semantic convention]:
-  https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/http.md#http-request-and-response-headers
+  /docs/reference/specification/trace/semantic_conventions/http/#http-request-and-response-headers
 [api reference]:
   https://opentelemetry-python.readthedocs.io/en/latest/index.html
 [distro]:

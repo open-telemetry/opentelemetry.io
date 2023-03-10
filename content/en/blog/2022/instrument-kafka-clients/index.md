@@ -23,7 +23,7 @@ comes into the picture. It provides multiple instrumentation libraries for
 adding tracing to messaging based applications. Of course, there is one for
 Apache Kafka clients. It also defines the specification of semantic conventions
 for
-[messaging systems](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/messaging.md).
+[messaging systems](/docs/reference/specification/trace/semantic_conventions/messaging/).
 
 But usually, the architecture can even be more complicated: having applications
 not able to connect directly to the Apache Kafka cluster and talking its own

@@ -17,7 +17,7 @@ libraries to leverage, or make use of the `getNodeAutoInstrumentations()`
 function which includes most popular frameworks. The
 `utils/telemetry/Instrumentation.js` file contains all code required to
 initialize the SDK and auto-instrumentation based on standard
-[OpenTelemetry environment variables](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/sdk-environment-variables.md)
+[OpenTelemetry environment variables](/docs/reference/specification/sdk-environment-variables/)
 for OTLP export, resource attributes, and service name.
 
 ```javascript
