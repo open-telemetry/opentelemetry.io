@@ -25,7 +25,7 @@ this evidence will stop the debate of performance impact so that teams can
 instead debate the value of instrumenting their code.
 
 TL;DR: if you’re optimizing at the level where OpenTelemetry and Activity usage
-would be a concern, you should probably be more worried about the .NET framework
+would be a concern, you should probably be more worried about the .NET
 as a whole.
 
 ## Activity vs. OpenTelemetry vs. OpenTelemetry Shim
