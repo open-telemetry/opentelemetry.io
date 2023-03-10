@@ -80,7 +80,7 @@ processors:
 ```
 
 The resource processor has an identical configuration, but applies only to
-[resource attributes](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/semantic_conventions/README.md).
+[resource attributes](/docs/reference/specification/resource/semantic_conventions/).
 Use the resource processor to modify infrastructure metadata related to
 telemetry. For example, this inserts the Kubernetes cluster name:
 
