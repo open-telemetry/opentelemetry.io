@@ -21,4 +21,10 @@
     background-color: inherit;
     border: solid 1px;
   }
+
+  // Default color attributes, in case we miss a component definition above;
+  // which has happened, see https://github.com/open-telemetry/opentelemetry.io/pull/2481.
+  $default-otel-badge-bg: $yellow;
+  color: color-contrast($default-otel-badge-bg);
+  background-color: $default-otel-badge-bg;
 }
