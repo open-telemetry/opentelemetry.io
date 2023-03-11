@@ -79,8 +79,14 @@ while(<>) {
   s|(\]\()/specification/|$1$spec_base_path/)|;
   s|\.\./semantic_conventions/README.md|$semConvRef| if $ARGV =~ /overview/;
 
+  if (/\((https:\/\/github.com\/open-telemetry\/opentelemetry-specification\/\w+\/\w+\/specification([^\)]*))\)/) {
+    printf STDOUT "WARNING: link to spec page encoded as an external URL, but should be a local path, fix this upstream;\n  File: $ARGV \n  Link: $1\n";
+  }
+  s|\(https://github.com/open-telemetry/opentelemetry-specification/\w+/\w+/specification([^\)]*)\)|($spec_base_path$1)|;
+
   # Bug fix from original source
-  s/#(#(instrument|set-status))/$1/;
+  # TODO drop on fix lands for https://github.com/open-telemetry/opentelemetry-specification/pull/3310
+  s|/docs/reference/specification/metrics/data-model.md#metric-metadata-1|prometheus_and_openmetrics.md#metric-metadata-1|;
 
   # Images
   s|(\.\./)?internal(/img/[-\w]+\.png)|$2|g;
