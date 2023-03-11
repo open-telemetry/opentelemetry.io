@@ -225,6 +225,7 @@ sudo journalctl -u otelcol
 packaged as gzipped tarballs (`.tar.gz`) and will need to be unpacked with a
 tool that supports this compression format:
 
+<!-- prettier-ignore-start -->
 {{< ot-tabs Intel ARM >}}
 {{< ot-tab lang="console">}}
 $ curl -O -L https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol*{{% param collectorVersion %}}\_darwin_amd64.tar.gz
@@ -236,6 +237,7 @@ $ curl -O -L https://github.com/open-telemetry/opentelemetry-collector-releases/
 $ tar -xvf otelcol*{{% param collectorVersion %}}\_darwin_arm64.tar.gz
 {{< /ot-tab >}}
 {{< /ot-tabs >}}
+<!-- prettier-ignore-end -->
 
 Every Collector release includes an `otelcol` executable that you can run after
 unpacking.
