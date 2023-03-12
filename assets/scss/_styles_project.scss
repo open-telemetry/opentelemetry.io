@@ -35,6 +35,10 @@
       > a {
         @extend .btn;
         margin: 0.25rem;
+
+        &:hover {
+          text-decoration: none;
+        }
       }
     }
   }
@@ -135,21 +139,21 @@
   }
 }
 
-.td-box--dark a,
-.td-box--primary a {
-  color: lighten($primary, 25%) !important;
-
-  &:hover {
+.td-default, // E.g.: Homepage, Status, Search, 404; excludes navbar
+.td-section main, .td-page main, // Doc and blog main content without left/right navs
+.td-page-meta {
+  a:hover {
     text-decoration: underline;
   }
 }
 
-.td-box--secondary a {
-  color: darken($primary, 25%) !important;
+.td-box--dark a,
+.td-box--primary a {
+  color: lighten($primary, 25%) !important; // TODO: upstream
+}
 
-  &:hover {
-    text-decoration: underline;
-  }
+.td-box--secondary a {
+  color: darken($primary, 25%) !important; // TODO: upstream
 }
 
 // Adjust anchors scroll snap (https://github.com/open-telemetry/opentelemetry.io/pull/348)
