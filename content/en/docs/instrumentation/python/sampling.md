@@ -28,7 +28,7 @@ export OTEL_TRACES_SAMPLER="traceidratio"
 export OTEL_TRACES_SAMPLER_ARG="0.1"
 ```
 
-This tells the SDK to sample spans such that only 10% of traces get created.
+This tells the SDK to sample spans such that only 10% of traces get exported.
 
 ### Configuration in Code
 
