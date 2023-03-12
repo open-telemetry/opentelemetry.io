@@ -8,7 +8,7 @@ weight: 1
 
 Select a role[^1] to get started:
 
-<div class="l-get-started-buttons justify-content-start mt-3 ml-3">
+<div class="l-get-started-buttons justify-content-start mt-3 ms-3">
 
 - [Dev](dev/)
 - [Ops](ops/)
@@ -18,7 +18,7 @@ Select a role[^1] to get started:
 You can also try out the official [OpenTelemetry Demo][demo] to _see_ what
 observability with OpenTelemetry looks like!
 
-<div class="l-primary-buttons justify-content-start mt-3 mb-5 ml-3">
+<div class="l-primary-buttons justify-content-start mt-3 mb-5 ms-3">
 
 - [Try the demo][demo]
 

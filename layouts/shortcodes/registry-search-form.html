@@ -26,72 +26,88 @@
 {{ end -}}
 {{ $types = $types | uniq | sort -}}
 
-<div class="td-content td-box">
-  <section class="row section pb-5">
-    <div class="col align-self-center">
-      <form action="{{ "/ecosystem/registry" }}" id="searchForm">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1" title="{{ len $registry }} entries">Search</span>
-          </div>
-          <input type="text" name="s" class="form-control" id="search-query" aria-label="Registry Search Input Field">
-          <input type="hidden" name="component" id="input-component" value="" />
-          <input type="hidden" name="language" id="input-language" value="" />
+<div class="pb-4">
+  <form action="/ecosystem/registry" id="searchForm">
+    <div class="input-group">
+      <span class="input-group-text" id="basic-addon1" title="{{ len $registry }} entries">Search</span>
+      <input class="form-control w-auto" id="search-query" type="text" name="s"
+        aria-label="Registry search input field">
 
-          <div class="input-group-append flex-wrap">
-            <button type="button" class="btn btn-outline-success" onclick="document.getElementById('searchForm').submit();">Submit</button>
-            <button type="button" class="btn btn-outline-danger"  onclick="document.getElementById('search-query').value = ''; document.getElementById('input-language').value = 'all';document.getElementById('input-component').value = 'all';document.getElementById('searchForm').submit();">Reset</button>
-            <div>
-              <button class="btn btn-outline-secondary dropdown-toggle" id="languageDropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
-              <div class="dropdown-menu" id="languageFilter">
-                <a value="all" class="dropdown-item">Any Language</a>
-                {{ range $langs -}}
-                  <a value="{{ . }}" id="language-item-{{ . }}" class="dropdown-item">{{ $languageNames.Get . | default (humanize .) }}</a>
-                {{ end -}}
-              </div>
-            </div>
-            <div>
-              <button class="btn btn-outline-secondary dropdown-toggle" id="componentDropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Type</button>
-              <div class="dropdown-menu" id="componentFilter">
-                <a value="all" class="dropdown-item">Any Component</a>
-                {{ range $types -}}
-                    <a value="{{ . }}" id="component-item-{{ . }}" class="dropdown-item">{{ humanize . }}</a>
-                {{ end -}}
-              </div>
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
-  </section>
+      <input type="hidden" name="component" id="input-component" value="" />
+      <input type="hidden" name="language" id="input-language" value="" />
 
-  <section class="row section pt-0">
-    <div class="col mx-auto">
-      <ul class="list-unstyled" id="search-results"></ul>
-      <ul class="list-unstyled" id="default-body">
-      {{ range $registry -}}
-        <li class="media" data-registrytype="{{ .registryType }}" data-registrylanguage="{{ .language }}">
-          <div class="media-body">
-            <a href="{{ .repo }}" target="_blank" rel="noopener"><h5 class="mt-0 mb-1">{{ .title }}</h5></a>
-            {{ .description }}
-            <span class="badge badge-{{.registryType}} float-right">{{ .registryType }}</span>
-            <span class="badge badge-{{.language}} float-right mr-2">{{ .language }}</span>
-          </div>
-        </li>
-      {{ end -}}
-      </ul>
-    </div>
-  </section>
-  <script id="search-result-template" type="text/x-js-template">
-    <li class="media" data-registrytype="${registryType}" data-registrylanguage="${language}">
-      <div class="media-body">
-        <a href=${repo}><h5 class="mt-0 mb-1">${title}</h5></a>
-        ${description}
-        <span class="badge badge-${registryType} float-right">${registryType}</span>
-        <span class="badge badge-${language} float-right mr-2">${language}</span>
+      <button type="button" class="btn btn-outline-success"
+        onclick="document.getElementById('searchForm').submit();">Submit</button>
+      <button type="button" class="btn btn-outline-danger"
+        onclick="document.getElementById('search-query').value = ''; document.getElementById('input-language').value = 'all';document.getElementById('input-component').value = 'all';document.getElementById('searchForm').submit();">Reset</button>
+
+      <button class="btn btn-outline-secondary dropdown-toggle" id="languageDropdown" type="button"
+        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
+      <div class="dropdown-menu" id="languageFilter">
+        <a value="all" class="dropdown-item">Any Language</a>
+        {{ range $langs -}}
+        <a value="{{ . }}" id="language-item-{{ . }}" class="dropdown-item">{{ $languageNames.Get . | default (humanize
+          .) }}</a>
+        {{ end -}}
       </div>
-    </li>
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script>
-  {{ partial "script.html" (dict "src" "js/registrySearch.js") -}}
+
+      <button class="btn btn-outline-secondary dropdown-toggle" id="componentDropdown" type="button"
+        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Type</button>
+      <div class="dropdown-menu" id="componentFilter">
+        <a value="all" class="dropdown-item">Any Component</a>
+        {{ range $types -}}
+        <a value="{{ . }}" id="component-item-{{ . }}" class="dropdown-item">{{ humanize . }}</a>
+        {{ end -}}
+      </div>
+
+    </div>
+  </form>
 </div>
+
+<div class="mx-auto">
+  <ul class="list-unstyled" id="search-results"></ul>
+  <ul class="list-unstyled" id="default-body">
+    {{ range $registry -}}
+      {{ template "registry-entry" . }}
+    {{ end -}}
+  </ul>
+</div>
+
+{{-
+  $fuseVar := (dict
+    "description" "${description}"
+    "language" "${language}"
+    "registryType" "${registryType}"
+    "repo" "${repo}"
+    "title" "${title}"
+  )
+-}}
+<script id="search-result-template" type="text/x-js-template">
+  {{ template "registry-entry" $fuseVar }}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script>
+{{ partial "script.html" (dict "src" "js/registrySearch.js") -}}
+</div>
+
+{{- define "registry-entry" -}}
+<li class="registry-entry" data-registrytype="{{ .registryType }}" data-registrylanguage="{{ .language }}">
+  <div class="registry-entry-body">
+    <div class="h5">
+      <a href="{{ .repo }}" target="_blank" rel="noopener">
+        {{- .title -}}
+      </a>
+    </div>
+    <span class="me-auto">
+      {{- .description | markdownify -}}
+    </span>
+    <div class="float-end">
+      {{ with .language -}}
+        <span class="badge badge-{{ . }}">{{ . }}</span>
+      {{- end }}
+      {{ with .registryType -}}
+        <span class="badge badge-{{ . }} me-1">{{ . }}</span>
+      {{- end -}}
+    </div>
+  </div>
+</li>
+{{- end -}}

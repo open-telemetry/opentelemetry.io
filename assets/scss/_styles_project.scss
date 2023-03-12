@@ -109,24 +109,29 @@
   padding-top: 1rem;
 }
 
-// Homepage
-#cncf {
-  width: 100%;
-  text-align: center;
-
-  p {
-    font-size: 18px;
-    margin-bottom: 0;
+.td-home {
+  .td-main {
+    // Remove the gap between the last block shortcode and the footer (on homepage)
+    flex-grow: 0;
   }
 
-  img {
-    margin-top: 1rem;
-    width: 20rem;
-    max-width: 80%;
-  }
+  .cncf {
+    text-align: center;
 
-  a.external-link:after {
-    display: none;
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 0;
+    }
+
+    img {
+      width: 20rem;
+      padding-top: 1rem;
+      max-width: 80%;
+    }
+
+    a.external-link:after {
+      display: none;
+    }
   }
 }
 
@@ -266,6 +271,28 @@
       opacity: 0.65;
       padding-top: 0.2rem;
       margin-bottom: 1.5rem;
+    }
+  }
+}
+
+// Registry
+
+.td-section.registry {
+  .td-outer {
+    height: auto;
+  }
+
+  .registry-entry {
+    display: flex;
+    align-items: flex-start;
+    padding-bottom: 0.5rem;
+
+    .h5 {
+      margin-bottom: 0.2rem;
+    }
+
+    &-body {
+      flex: 1;
     }
   }
 }

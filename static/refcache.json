@@ -899,6 +899,22 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-15T21:03:39.650397-05:00"
   },
+  "https://docs.sentry.io/platforms/java/performance/instrumentation/opentelemetry/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-03-11T14:17:12.914539-05:00"
+  },
+  "https://docs.sentry.io/platforms/node/performance/instrumentation/opentelemetry/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-03-11T14:17:18.015995-05:00"
+  },
+  "https://docs.sentry.io/platforms/python/performance/instrumentation/opentelemetry/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-03-11T14:17:23.207009-05:00"
+  },
+  "https://docs.sentry.io/platforms/ruby/performance/instrumentation/opentelemetry/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-03-11T14:17:28.309561-05:00"
+  },
   "https://docs.traceloop.dev": {
     "StatusCode": 206,
     "LastSeen": "2023-02-26T11:00:42.522142-08:00"
@@ -1414,6 +1430,10 @@
   "https://github.com/frzifus/jaeger-otel-test/pkgs/container/jaeger-otel-test": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:04:27.366762-05:00"
+  },
+  "https://github.com/gosnmp/gosnmp": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-11T14:17:07.656637-05:00"
   },
   "https://github.com/hashicorp/nomad-open-telemetry-getting-started": {
     "StatusCode": 200,
