@@ -14,10 +14,11 @@ do not need to manage data volume, don't bother setting a sampler.
 
 ## TraceIDRatioBased Sampler
 
-The most common head sampler to use is [TraceIdRatioBased][].
-It deterministically samples a percentage of traces.
+The most common head sampler to use is [TraceIdRatioBased][]. It
+deterministically samples a percentage of traces.
 
-[TraceIdRatioBased]: https://opentelemetry-python.readthedocs.io/en/latest/sdk/trace.sampling.html#opentelemetry.sdk.trace.sampling.TraceIdRatioBased
+[TraceIdRatioBased]:
+  https://opentelemetry-python.readthedocs.io/en/latest/sdk/trace.sampling.html#opentelemetry.sdk.trace.sampling.TraceIdRatioBased
 
 ### Environment Variables
 
