@@ -33,7 +33,7 @@ through the OpenTelemetry API:
   example would be the fuel gauge in a vehicle. Gauges are _always_
   asynchronous.
 - **Histogram**: A histogram is a client-side aggregation of values, e.g.
-  request latencies. A histogram is likely a good choice if you have a lot
+  request latencies. A histogram is likely a good choice if you have a lot of
   values, and are not interested in every individual value.
 
 In addition to the metric instruments, the concept of _aggregations_ is an
