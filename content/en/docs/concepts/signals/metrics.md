@@ -32,9 +32,10 @@ through the OpenTelemetry API:
 - **(Asynchronous) Gauge**: Measures a current value at the time it is read. An
   example would be the fuel gauge in a vehicle. Gauges are _always_
   asynchronous.
-- **Histogram**: A histogram is a client-side aggregation of values, e.g.
+- **Histogram**: A histogram is a client-side aggregation of values, e.g.,
   request latencies. A histogram is likely a good choice if you have a lot of
-  values, and are not interested in every individual value.
+  values, and are not interested in every individual value, but a statistic
+  about these values (e.g., How many requests take fewer than 1s?)
 
 In addition to the metric instruments, the concept of _aggregations_ is an
 important one to understand. An aggregation is a technique whereby a large
