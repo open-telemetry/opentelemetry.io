@@ -47,8 +47,8 @@ The collector servicing the central OTLP endpoint would be configured as shown
 below:
 
 <!-- prettier-ignore-start -->
-{{< ot-tabs Static DNS "DNS with service" >}}
-{{< ot-tab lang="yaml">}}
+{{< tabpane persistLang=false >}}
+{{< tab header="Static" lang="yaml" >}}
 receivers:
   otlp:
     protocols:
@@ -71,9 +71,8 @@ service:
     traces:
       receivers: [otlp]
       exporters: [loadbalancing]
-{{< /ot-tab >}}
-
-{{< ot-tab lang="yaml">}}
+{{< /tab >}}
+{{< tab header="DNS" lang="yaml" >}}
 receivers:
   otlp:
     protocols:
@@ -93,9 +92,8 @@ service:
     traces:
       receivers: [otlp]
       exporters: [loadbalancing]
-{{< /ot-tab >}}
-
-{{< ot-tab lang="yaml">}}
+{{< /tab >}}
+{{< tab header="DNS with service" lang="yaml" >}}
 receivers:
   otlp:
     protocols:
@@ -117,8 +115,8 @@ service:
     traces:
       receivers: [otlp]
       exporters: [loadbalancing]
-{{< /ot-tab >}}
-{{< /ot-tabs >}}
+{{< /tab >}}
+{{< /tabpane>}}
 <!-- prettier-ignore-end -->
 
 The Load-balancing exporter emits metrics including

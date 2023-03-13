@@ -35,7 +35,7 @@ like so:
 
 <!-- prettier-ignore-start -->
 {{< tabpane persistLang=false >}}
-  {{< tab header="Traces" lang="yaml" >}}
+{{< tab header="Traces" lang="yaml" >}}
 receivers:
   otlp: # the OTLP receiver the app is sending traces to
     protocols:
@@ -55,8 +55,8 @@ service:
       receivers: [otlp]
       processors: [batch]
       exporters: [jaeger]
-  {{< /tab >}}
-  {{< tab header="Metrics" lang="yaml" >}}
+{{< /tab >}}
+{{< tab header="Metrics" lang="yaml" >}}
 receivers:
   otlp: # the OTLP receiver the app is sending metrics to
     protocols:
@@ -76,8 +76,8 @@ service:
       processors: [batch]
       exporters: [prometheusremotewrite]
 
-  {{< /tab >}}
-  {{< tab header="Logs" lang="yaml" >}}
+{{< /tab >}}
+{{< tab header="Logs" lang="yaml" >}}
 receivers:
   otlp: # the OTLP receiver the app is sending logs to
     protocols:
@@ -97,7 +97,7 @@ service:
       receivers: [otlp]
       processors: [batch]
       exporters: [file]
-  {{< /tab >}}
+{{< /tab >}}
 {{< /tabpane>}}
 <!-- prettier-ignore-end -->
 
