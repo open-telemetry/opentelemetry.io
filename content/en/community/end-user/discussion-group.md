@@ -36,9 +36,9 @@ Here are upcoming sessions, or you can view them on the
   - March 21
   - April 18
   - May 16
-- **APAC (Asia Pacific)**: every third Wednesday of the month at 11AM IST (GMT
-  +5.5), join
-  [here](https://us06web.zoom.us/j/82702918447?pwd=WllKc0hmdTNuelhFdlhMM1Q3TktSQT09)
+- **APAC (Asia Pacific)**: every third Wednesday of the month at 11AM India ST (GMT
+  +5.5), register
+  [here](https://lu.ma/1w129wgu) to get the Zoom link
   - March 15
   - April 19
   - May 17
