@@ -94,7 +94,7 @@ considered to be a part of the same Trace.
 
 Another think you'll note is that each Span of this example Trace looks like a
 structured log. That's because it kind of is! One way to think of Traces is that
-they're a collection of structured logs with context, correlation, heirarchy,
+they're a collection of structured logs with context, correlation, hierarchy,
 and more baked in. However, these "structured logs" can come from different
 processes, services, VMs, data centers, and so on. This is what allows tracing
 to represent an end-to-end view of any system.
