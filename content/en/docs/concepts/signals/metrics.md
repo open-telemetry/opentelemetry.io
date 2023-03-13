@@ -14,25 +14,27 @@ indicators impact user experience or the business. Collected data can be used to
 alert of an outage or trigger scheduling decisions to scale up a deployment
 automatically upon high demand.
 
-OpenTelemetry defines six _metric instruments_ today which can be created through
-the OpenTelemetry API:
+OpenTelemetry defines six _metric instruments_ today which can be created
+through the OpenTelemetry API:
 
-- **Counter**: A value that accumulates over time -- you can think of this like an
-  odometer on a car; it only ever goes up.
-- **Asynchronous Counter**: Same as the **Counter**, but is collected once for each
-  export. Could be used if you don't have access to the continous increments, but
-  only to the aggregated value.
-- **UpDownCounter**: A value that accumulates over time, but can also go down again.
-  An example could be a queue length, it will increase and decrease with the number
-  of work items in the queue.
-- **Asynchronous UpDownCounter**: Same as the **UpDownCounter**, but is collected
-  once for each export. Could be used if you don't have access to the continous
-  changes, but only to the aggregated value (e.g., current queue size).
+- **Counter**: A value that accumulates over time -- you can think of this like
+  an odometer on a car; it only ever goes up.
+- **Asynchronous Counter**: Same as the **Counter**, but is collected once for
+  each export. Could be used if you don't have access to the continous
+  increments, but only to the aggregated value.
+- **UpDownCounter**: A value that accumulates over time, but can also go down
+  again. An example could be a queue length, it will increase and decrease with
+  the number of work items in the queue.
+- **Asynchronous UpDownCounter**: Same as the **UpDownCounter**, but is
+  collected once for each export. Could be used if you don't have access to the
+  continous changes, but only to the aggregated value (e.g., current queue
+  size).
 - **(Asynchronous) Gauge**: Measures a current value at the time it is read. An
-  example would be the fuel gauge in a vehicle. Gauges are _always_ asynchronous. 
-- **Histogram**: A histogram is a client-side aggregation of values, e.g. request
-  latencies. A histogram is likely a good choice if you have a lot values, and are
-  not interested in every individual value.
+  example would be the fuel gauge in a vehicle. Gauges are _always_
+  asynchronous.
+- **Histogram**: A histogram is a client-side aggregation of values, e.g.
+  request latencies. A histogram is likely a good choice if you have a lot
+  values, and are not interested in every individual value.
 
 In addition to the metric instruments, the concept of _aggregations_ is an
 important one to understand. An aggregation is a technique whereby a large
