@@ -92,7 +92,7 @@ This sample trace output has three distinct log-like items, called
 and `Hello`. Because each request's context has the same `trace_id`, they are
 considered to be a part of the same Trace.
 
-Another think you'll note is that each Span of this example Trace looks like a
+Another thing you'll note is that each Span of this example Trace looks like a
 structured log. That's because it kind of is! One way to think of Traces is that
 they're a collection of structured logs with context, correlation, hierarchy,
 and more baked in. However, these "structured logs" can come from different
