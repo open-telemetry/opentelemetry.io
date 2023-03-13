@@ -27,7 +27,7 @@ export OTEL_TRACES_SAMPLER="traceidratio"
 export OTEL_TRACES_SAMPLER_ARG="0.1"
 ```
 
-This tells the SDK to sample spans such that only 10% of traces get created.
+This tells the SDK to sample spans such that only 10% of traces get exported.
 
 ### Configuration in Code
 
@@ -38,13 +38,14 @@ require 'opentelemetry/sdk'
 require 'opentelemetry/exporter/otlp'
 require 'opentelemetry/instrumentation/all'
 
-
 # sample 10% of traces
 sampling_percentage = 0.1
+sampler = Samplers.trace_id_ratio_based(sampleing_percentage)
 
+tracer_provider = OpenTelemetry.tracer_provider(sampler: sampler)
 
-OpenTelemetry::SDK.configure(OpenTelemetry.tracer_provider = TracerProvider.new(sampler)) do |c|
+OpenTelemetry::SDK.configure do |c|
   # Other initialization code goes here too...
-  c.tracer_provider
+  c.tracer_provider = tracer_provider
 end
 ```
