@@ -12,7 +12,7 @@ collector configurations for cross-environment and multi-backend deployments.
 ## Other information
 
 - GitHub repo [OpenTelemetry Collector Deployment Patterns][gh-patterns]
-- YouTube video [OpenTelemetry Collector Deployment Patterns][y-patterns]
+- KubeCon NA 2021 Talk [OpenTelemetry Collector Deployment Patterns][y-patterns]
 
 [gh-patterns]:
   https://github.com/jpkrohling/opentelemetry-collector-deployment-patterns/
