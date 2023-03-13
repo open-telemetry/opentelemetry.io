@@ -16,8 +16,8 @@ one back-end to another (cut-over) or different signal types go into different
 backends.
 
 <!-- prettier-ignore-start -->
-{{< ot-tabs "Per type" "Per env" "Migration" >}}
-{{< ot-tab lang="yaml">}}
+{{< tabpane persistLang=false >}}
+{{< tab header="Per type" lang="yaml" >}}
 receivers:
   otlp:
     protocols:
@@ -40,9 +40,8 @@ service:
       receivers: [otlp]
       processors: [batch]
       exporters: [jaeger]
-{{< /ot-tab >}}
-
-{{< ot-tab lang="yaml">}}
+{{< /tab >}}
+{{< tab header="Per environment" lang="yaml" >}}
 receivers:
   otlp:
     protocols:
@@ -79,9 +78,8 @@ service:
       receivers: [otlp]
       processors: [metricstransform/dev]
       exporters: [prometheus]
-{{< /ot-tab >}}
-
-{{< ot-tab lang="yaml">}}
+{{< /tab >}}
+{{< tab header="Migration" lang="yaml" >}}
 receivers:
   otlp:
     protocols:
@@ -101,9 +99,8 @@ service:
     metrics/target:
       receivers: [otlp]
       exporters: [prometheusremotewrite/new]
-{{< /ot-tab >}}
-
-{{< /ot-tabs >}}
+{{< /tab >}}
+{{< /tabpane>}}
 <!-- prettier-ignore-end -->
 
 ## Normalizing
