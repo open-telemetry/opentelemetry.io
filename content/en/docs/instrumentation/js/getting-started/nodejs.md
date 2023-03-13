@@ -1,6 +1,7 @@
 ---
 title: Node.js
 aliases: [/docs/js/getting_started/nodejs]
+weight: 2
 ---
 
 This guide will show you how to get started with tracing in Node.js.
@@ -15,23 +16,27 @@ Ensure that you have the following installed locally:
 
 ## Example Application
 
-This is a small example application we will monitor in this guide.
+The following example uses a basic Express application.
 
 ### Dependencies
 
-Create an empty package.json:
+First, create an empty package.json:
 
 ```shell
 npm init -f
 ```
 
-Install dependencies used by the example.
+Next, install Express dependencies.
 
 <!-- prettier-ignore-start -->
 {{< tabpane lang=shell persistLang=false >}}
 
 {{< tab TypeScript >}}
-npm install express typescript ts-node @types/express @types/node
+npm install typescript \
+  ts-node \
+  @types/node \
+  express \
+  @types/express \
 {{< /tab >}}
 
 {{< tab JavaScript >}}
@@ -110,47 +115,32 @@ Listening for requests on http://localhost:8080
 
 ## Tracing
 
+The following shows how to install, initialize, and run an application
+instrumented with traces.
+
 ### Dependencies
 
-The following dependencies are required to trace a Node.js application.
+First, install the Node SDK and autoinstrumentations package.
 
-#### Core Dependencies
+The Node SDK lets you intialize OpenTelemetry with several configuration
+defaults that are correct for the majorty of use cases.
 
-These dependencies are required to configure the tracing SDK and create spans.
+The `auto-instrumentations-node` package installs instrumentation packages that
+will automatically create spans corresponding to code called in libraries. In
+this case, it provides instrumentation for Express, letting the example app
+automatically create spans for each incoming request.
 
 ```shell
-npm install @opentelemetry/sdk-node @opentelemetry/api
+npm install @opentelemetry/sdk-node \
+  @opentelemetry/auto-instrumentations-node
 ```
 
-#### Exporter
-
-In the following example, we will use the `ConsoleSpanExporter` which prints all
-spans to the console.
-
-In order to visualize and analyze your traces, you will need to export them to a
-tracing backend. Follow [these instructions](../../exporters) for setting up a
-backend and exporter.
-
-You may also want to use the `BatchSpanProcessor` to export spans in batches in
-order to more efficiently use resources.
-
-#### Instrumentation Modules
-
-Many common modules such as the `http` standard library module, `express`, and
-others can be automatically instrumented using autoinstrumentation modules. To
-find autoinstrumentation modules, you can look at the
+To find all autoinstrumentation modules, you can look at the
 [registry](/ecosystem/registry/?language=js&component=instrumentation).
-
-You can also install all instrumentations maintained by the OpenTelemetry
-authors by using the `@opentelemetry/auto-instrumentations-node` module.
-
-```shell
-npm install @opentelemetry/auto-instrumentations-node
-```
 
 ### Setup
 
-The tracing setup and configuration should be run before your application code.
+The tracing setup and configuration must be run _before_ your application code.
 One tool commonly used for this task is the
 [`-r, --require module`](https://nodejs.org/api/cli.html#cli_r_require_module)
 flag.
@@ -162,20 +152,21 @@ Create a file named `tracing.ts|js`, which will contain your tracing setup code.
 
 {{< tab TypeScript >}}
 /*tracing.ts*/
-// Require dependencies
-import * as opentelemetry from "@opentelemetry/sdk-node";
-import { getNodeAutoInstrumentations } from "@opentelemetry/auto-instrumentations-node";
-import { diag, DiagConsoleLogger, DiagLogLevel } from '@opentelemetry/api';
+import { NodeSDK } from '@opentelemetry/sdk-node';
+import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace-node';
+import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
 
-// For troubleshooting, set the log level to DiagLogLevel.DEBUG
-diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
-
-const sdk = new opentelemetry.NodeSDK({
-  traceExporter: new opentelemetry.tracing.ConsoleSpanExporter(),
+const sdk = new NodeSDK({
+  traceExporter: new ConsoleSpanExporter(),
   instrumentations: [getNodeAutoInstrumentations()]
 });
 
-sdk.start()
+sdk
+  .start()
+  .then(() => {
+    console.log('Tracing initialized');
+  })
+  .catch((error) => console.log('Error initializing tracing', error));
 {{< /tab >}}
 
 {{< tab JavaScript >}}
@@ -183,17 +174,18 @@ sdk.start()
 // Require dependencies
 const opentelemetry = require("@opentelemetry/sdk-node");
 const { getNodeAutoInstrumentations } = require("@opentelemetry/auto-instrumentations-node");
-const { diag, DiagConsoleLogger, DiagLogLevel } = require('@opentelemetry/api');
-
-// For troubleshooting, set the log level to DiagLogLevel.DEBUG
-diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
 
 const sdk = new opentelemetry.NodeSDK({
   traceExporter: new opentelemetry.tracing.ConsoleSpanExporter(),
   instrumentations: [getNodeAutoInstrumentations()]
 });
 
-sdk.start()
+sdk
+  .start()
+  .then(() => {
+    console.log('Tracing initialized');
+  })
+  .catch((error) => console.log('Error initializing tracing', error));
 {{< /tab >}}
 
 {{< /tabpane >}}
@@ -320,8 +312,8 @@ telemetry backends.
 
 ## Troubleshooting
 
-Did something go wrong? Remember that you need to explicitly enable logging in
-order to see logs from OpenTelemetry:
+Did something go wrong? You can enable diagnostic logging to validate that
+OpenTelemetry is initialized correctly:
 
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}

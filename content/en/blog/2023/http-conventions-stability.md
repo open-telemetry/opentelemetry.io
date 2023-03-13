@@ -6,9 +6,8 @@ author: '[Trask Stalnaker](https://github.com/trask) (Microsoft)'
 ---
 
 The OpenTelemetry community is beginning the final push to declare HTTP
-[tracing](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/semantic_conventions/http.md)
-and
-[metrics](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/semantic_conventions/http-metrics.md)
+[tracing](/docs/reference/specification/trace/semantic_conventions/http/) and
+[metrics](/docs/reference/specification/metrics/semantic_conventions/http-metrics/)
 semantic conventions stable!
 
 Following the recently proposed
