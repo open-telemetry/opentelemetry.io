@@ -7,14 +7,12 @@ description:
   environment.
 aliases:
   - /community/demo
-  - /docs/demo
   - /docs/getting-started/demo
   - /docs/opentelemetry-demo
 weight: 10
 ---
 
-The [OpenTelemetry Demo](https://github.com/open-telemetry/opentelemetry-demo)
-does the following:
+The [OpenTelemetry Demo](/docs/demo/) does the following:
 
 - Provides a realistic example of a distributed system that can be used to
   demonstrate OpenTelemetry instrumentation and observability.
@@ -32,4 +30,7 @@ If you find yourself asking questions like:
 - How do I consider the [architecture](/docs/demo/architecture/) of a system
   using OpenTelemetry?
 
-Then check out the [Demo](https://github.com/open-telemetry/opentelemetry-demo).
+For more information, see:
+
+- [Demo documentation](/docs/demo/)
+- [Demo repo](https://github.com/open-telemetry/opentelemetry-demo)
