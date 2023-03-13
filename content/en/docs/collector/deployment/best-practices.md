@@ -112,10 +112,10 @@ receivers:
   prometheus:
     config:
       scrape_configs:
-        - job_name: "otel-collector"
+        - job_name: 'otel-collector'
           scrape_interval: 5s
           static_configs:
-            - targets: ["0.0.0.0:8888"]
+            - targets: ['0.0.0.0:8888']
   jaeger:
     protocols:
       grpc:
