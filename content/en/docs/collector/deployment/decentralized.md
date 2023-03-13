@@ -34,8 +34,8 @@ The collector serving at `collector.example.com:4318` would then be configured
 like so:
 
 <!-- prettier-ignore-start -->
-{{< ot-tabs Traces Metrics Logs >}}
-{{< ot-tab lang="yaml">}}
+{{< tabpane persistLang=false >}}
+  {{< tab header="Traces" lang="yaml" >}}
 receivers:
   otlp: # the OTLP receiver the app is sending traces to
     protocols:
@@ -55,9 +55,8 @@ service:
       receivers: [otlp]
       processors: [batch]
       exporters: [jaeger]
-{{< /ot-tab >}}
-
-{{< ot-tab lang="yaml">}}
+  {{< /tab >}}
+  {{< tab header="Metrics" lang="yaml" >}}
 receivers:
   otlp: # the OTLP receiver the app is sending metrics to
     protocols:
@@ -76,9 +75,9 @@ service:
       receivers: [otlp]
       processors: [batch]
       exporters: [prometheusremotewrite]
-{{< /ot-tab >}}
 
-{{< ot-tab lang="yaml">}}
+  {{< /tab >}}
+  {{< tab header="Logs" lang="yaml" >}}
 receivers:
   otlp: # the OTLP receiver the app is sending logs to
     protocols:
@@ -98,8 +97,8 @@ service:
       receivers: [otlp]
       processors: [batch]
       exporters: [file]
-{{< /ot-tab >}}
-{{< /ot-tabs >}}
+  {{< /tab >}}
+{{< /tabpane>}}
 <!-- prettier-ignore-end -->
 
 If you want to try it out for yourself, you can have a look at the end-to-end
