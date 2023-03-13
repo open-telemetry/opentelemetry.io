@@ -200,7 +200,7 @@ function setInput(key, value) {
 
 // Filters items based on language and component filters
 function updateFilters() {
-  let allItems = [...document.getElementsByClassName('media')];
+  let allItems = [...document.getElementsByClassName('registry-entry')];
   if (selectedComponent === 'all' && selectedLanguage === 'all') {
     allItems.forEach((element) => element.classList.remove('d-none'));
   } else {

@@ -35,6 +35,10 @@
       > a {
         @extend .btn;
         margin: 0.25rem;
+
+        &:hover {
+          text-decoration: none;
+        }
       }
     }
   }
@@ -109,42 +113,47 @@
   padding-top: 1rem;
 }
 
-// Homepage
-#cncf {
-  width: 100%;
-  text-align: center;
-
-  p {
-    font-size: 18px;
-    margin-bottom: 0;
+.td-home {
+  .td-main {
+    // Remove the gap between the last block shortcode and the footer (on homepage)
+    flex-grow: 0;
   }
 
-  img {
-    margin-top: 1rem;
-    width: 20rem;
-    max-width: 80%;
-  }
+  .cncf {
+    text-align: center;
 
-  a.external-link:after {
-    display: none;
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 0;
+    }
+
+    img {
+      width: 20rem;
+      padding-top: 1rem;
+      max-width: 80%;
+    }
+
+    a.external-link:after {
+      display: none;
+    }
+  }
+}
+
+.td-default, // E.g.: Homepage, Status, Search, 404; excludes navbar
+.td-section main, .td-page main, // Doc and blog main content without left/right navs
+.td-page-meta {
+  a:hover {
+    text-decoration: underline;
   }
 }
 
 .td-box--dark a,
 .td-box--primary a {
-  color: lighten($primary, 25%) !important;
-
-  &:hover {
-    text-decoration: underline;
-  }
+  color: lighten($primary, 25%) !important; // TODO: upstream
 }
 
 .td-box--secondary a {
-  color: darken($primary, 25%) !important;
-
-  &:hover {
-    text-decoration: underline;
-  }
+  color: darken($primary, 25%) !important; // TODO: upstream
 }
 
 // Adjust anchors scroll snap (https://github.com/open-telemetry/opentelemetry.io/pull/348)
@@ -266,6 +275,28 @@
       opacity: 0.65;
       padding-top: 0.2rem;
       margin-bottom: 1.5rem;
+    }
+  }
+}
+
+// Registry
+
+.td-section.registry {
+  .td-outer {
+    height: auto;
+  }
+
+  .registry-entry {
+    display: flex;
+    align-items: flex-start;
+    padding-bottom: 0.5rem;
+
+    .h5 {
+      margin-bottom: 0.2rem;
+    }
+
+    &-body {
+      flex: 1;
     }
   }
 }

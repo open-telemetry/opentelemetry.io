@@ -135,6 +135,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-28T10:57:08.962316-05:00"
   },
+  "https://cdn.jsdelivr.net/npm/mermaid@9.3.0/dist/mermaid.min.js": {
+    "StatusCode": 206,
+    "LastSeen": "2023-03-08T11:07:07.821724-05:00"
+  },
   "https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js": {
     "StatusCode": 200,
     "LastSeen": "2023-02-15T20:37:53.05407-05:00"
@@ -294,6 +298,10 @@
   "https://code.jquery.com/jquery-3.6.0.min.js": {
     "StatusCode": 206,
     "LastSeen": "2023-02-15T20:37:19.225321-05:00"
+  },
+  "https://code.jquery.com/jquery-3.6.3.min.js": {
+    "StatusCode": 206,
+    "LastSeen": "2023-03-08T11:07:01.589189-05:00"
   },
   "https://collectd.org/wiki/index.php/Binary_protocol": {
     "StatusCode": 200,
@@ -891,6 +899,22 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-15T21:03:39.650397-05:00"
   },
+  "https://docs.sentry.io/platforms/java/performance/instrumentation/opentelemetry/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-03-11T14:17:12.914539-05:00"
+  },
+  "https://docs.sentry.io/platforms/node/performance/instrumentation/opentelemetry/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-03-11T14:17:18.015995-05:00"
+  },
+  "https://docs.sentry.io/platforms/python/performance/instrumentation/opentelemetry/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-03-11T14:17:23.207009-05:00"
+  },
+  "https://docs.sentry.io/platforms/ruby/performance/instrumentation/opentelemetry/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-03-11T14:17:28.309561-05:00"
+  },
   "https://docs.traceloop.dev": {
     "StatusCode": 206,
     "LastSeen": "2023-02-26T11:00:42.522142-08:00"
@@ -1406,6 +1430,10 @@
   "https://github.com/frzifus/jaeger-otel-test/pkgs/container/jaeger-otel-test": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:04:27.366762-05:00"
+  },
+  "https://github.com/gosnmp/gosnmp": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-11T14:17:07.656637-05:00"
   },
   "https://github.com/hashicorp/nomad-open-telemetry-getting-started": {
     "StatusCode": 200,
