@@ -4,12 +4,12 @@ weight: 1
 ---
 
 [**Traces**](/docs/concepts/observability-primer/#distributed-traces) give us
-the big picture of what happens when a request is made by user or an
-application. OpenTelemetry provides us with a way to implement Observability
-into our code in production by tracing our microservices and related
-applications.
+the big picture of what happens when a request is made to an application.
+Whether your application is a monolith with a single database or a sophisticated
+mesh of services, traces are essential to understanding the full "path" a
+request takes in your application.
 
-Sample Trace:
+Consider the following example trace that tracks three units of work:
 
 ```json
 {
@@ -87,10 +87,17 @@ Sample Trace:
 }
 ```
 
-This sample trace output has three items, named "Hello-Greetings",
-"Hello-Salutations" and "Hello". Because each request's context has the same
-trace ID, all of the information can be tied together. This provides a trail
-through the requests' various routes, timestamps and other attributes.
+This sample trace output has three distinct log-like items, called
+[Spans](#spans-in-opentelemetry), named `Hello-Greetings`, `Hello-Salutations`
+and `Hello`. Because each request's context has the same `trace_id`, they are
+considered to be a part of the same Trace.
+
+Another think you'll note is that each Span of this example Trace looks like a
+structured log. That's because it kind of is! One way to think of Traces is that
+they're a collection of structured logs with context, correlation, hierarchy,
+and more baked in. However, these "structured logs" can come from different
+processes, services, VMs, data centers, and so on. This is what allows tracing
+to represent an end-to-end view of any system.
 
 To understand how tracing in OpenTelemetry works, let's look at a list of
 components that will play a part in instrumenting our code:
