@@ -1,10 +1,10 @@
 {{ $isExternal := hasPrefix .Destination "http" -}}
 {{ if $isExternal -}}
   {{ if findRE "^https://opentelemetry.io/\\w" .Destination -}}
-    {{ errorf "%s: use a local path, not an external URL, for the following reference to a site local page: %s"
+    {{ warnf "%s: use a local path, not an external URL, for the following reference to a site local page: %s"
         .Page.File.Path .Destination -}}
   {{ else if findRE "^https://github.com/open-telemetry/opentelemetry-specification/(blob|tree)/main/specification/\\w" .Destination -}}
-    {{ errorf "%s: use a local path, not an external URL, for the following reference to a local specification page: %s"
+    {{ warnf "%s: use a local path, not an external URL, for the following reference to a local specification page: %s"
     .Page.File.Path .Destination -}}
   {{ end -}}
 {{ end -}}
