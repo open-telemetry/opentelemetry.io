@@ -71,8 +71,7 @@ for browser apps:
 {{< tabpane lang=shell persistLang=false >}}
 
 {{< tab TypeScript >}}
-import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
-import { TraceIdRatioBasedSampler } from '@opentelemetry/sdk-trace-node';
+import { WebTracerProvider, TraceIdRatioBasedSampler } from '@opentelemetry/sdk-trace-web';
 
 const samplePercentage = 0.1;
 
@@ -82,8 +81,7 @@ const provider = new WebTracerProvider({
 {{< /tab >}}
 
 {{< tab JavaScript >}}
-const { WebTracerProvider } = require('@opentelemetry/sdk-trace-web');
-const { TraceIdRatioBasedSampler } = require('@opentelemetry/sdk-trace-node');
+const { WebTracerProvider, TraceIdRatioBasedSampler } = require('@opentelemetry/sdk-trace-web');
 
 const samplePercentage = 0.1;
 
