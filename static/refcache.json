@@ -2303,6 +2303,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:07:00.144837-05:00"
   },
+  "https://github.com/pdelewski/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-14T18:07:43.01568+01:00"
+  },
   "https://github.com/ppatierno": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:09:26.797967-05:00"
@@ -2691,6 +2695,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-16T17:12:32.145251-05:00"
   },
+  "https://laravel.com/docs/10.x/installation": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-14T18:07:43.731128+01:00"
+  },
   "https://leancoffee.org": {
     "StatusCode": 206,
     "LastSeen": "2023-02-16T17:14:46.273759-05:00"
@@ -3030,6 +3038,10 @@
   "https://operatorhub.io/operator/opentelemetry-operator": {
     "StatusCode": 206,
     "LastSeen": "2023-02-16T17:45:10.013699-05:00"
+  },
+  "https://packagist.org/packages/open-telemetry/opentelemetry-instrumentation-installer": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-14T18:07:43.947011+01:00"
   },
   "https://packagist.org/search/": {
     "StatusCode": 200,
@@ -3690,6 +3702,10 @@
   "https://www.jaegertracing.io/docs/1.41/sampling/#remote-sampling": {
     "StatusCode": 206,
     "LastSeen": "2023-03-06T12:32:08.847983-05:00"
+  },
+  "https://www.jaegertracing.io/docs/1.42/getting-started/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-03-14T18:18:04.372552+01:00"
   },
   "https://www.jaegertracing.io/docs/latest/apis/": {
     "StatusCode": 200,
