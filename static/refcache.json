@@ -3903,6 +3903,14 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-18T13:38:57.647971-05:00"
   },
+  "https://www.rubydoc.info/gems/opentelemetry-sdk/OpenTelemetry/SDK/Trace/Samplers": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-14T22:39:10.837691902Z"
+  },
+  "https://www.rubydoc.info/gems/opentelemetry-sdk/OpenTelemetry/SDK/Trace/Samplers/ParentBased": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-14T22:39:10.744485794Z"
+  },
   "https://www.rubydoc.info/gems/opentelemetry-sdk/OpenTelemetry/SDK/Trace/Samplers/TraceIdRatioBased": {
     "StatusCode": 200,
     "LastSeen": "2023-03-14T22:32:16.257935604Z"
