@@ -15,7 +15,9 @@ and changes to the project.
 
 **New for 2023!**
 
-- APAC (Asia Pacific) sessions begin, come join the first session on January 18!
+- Sessions are now available for all regions!
+- You can now find summaries of past discussions every month! Search the blog
+  for "End-User Discussions".
 - A project maintainer and/or a Governance Committee member will be in
   attendance at each session to provide additional context, insight, and plans
   to user questions and feedback.
@@ -31,18 +33,20 @@ Here are upcoming sessions, or you can view them on the
 - **EMEA (Europe, Middle East, and Africa)**: every third Tuesday of the month
   at 11AM CET (GMT +1), join
   [here](https://us06web.zoom.us/j/85691064809?pwd=c0VCejh)
-  - January 17
-  - February 21
-- **APAC (Asia Pacific)**: every third Wednesday of the month at 11AM IST (GMT
-  +5.5), join
-  [here](https://us06web.zoom.us/j/82702918447?pwd=WllKc0hmdTNuelhFdlhMM1Q3TktSQT09)
-  - January 18
-  - February 15
+  - March 21
+  - April 18
+  - May 16
+- **APAC (Asia Pacific)**: every third Wednesday of the month at 11AM India ST
+  (GMT +5.5), register [here](https://lu.ma/1w129wgu) to get the Zoom link
+  - March 15
+  - April 19
+  - May 17
 - **AMER (Americas)**: every third Thursday of the month at 9AM PST (GMT -8),
   join
   [here](https://us06web.zoom.us/j/87037874951?pwd=WGo3eUZpeWFZTlhJQXhJeXZhQmwvUT09)
-  - January 19
-  - February 16
+  - March 16
+  - April 20
+  - May 18
 
 Past topics/questions have included:
 
