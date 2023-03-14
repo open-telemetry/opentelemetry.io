@@ -15,9 +15,9 @@ and changes to the project.
 
 **New for 2023!**
 
-- Sessions are now available for all regions! 
+- Sessions are now available for all regions!
 - You can now find summaries of past discussions every month! Search the blog
-  for "End-User Discussions". 
+  for "End-User Discussions".
 - A project maintainer and/or a Governance Committee member will be in
   attendance at each session to provide additional context, insight, and plans
   to user questions and feedback.
@@ -36,9 +36,8 @@ Here are upcoming sessions, or you can view them on the
   - March 21
   - April 18
   - May 16
-- **APAC (Asia Pacific)**: every third Wednesday of the month at 11AM India ST (GMT
-  +5.5), register
-  [here](https://lu.ma/1w129wgu) to get the Zoom link
+- **APAC (Asia Pacific)**: every third Wednesday of the month at 11AM India ST
+  (GMT +5.5), register [here](https://lu.ma/1w129wgu) to get the Zoom link
   - March 15
   - April 19
   - May 17
