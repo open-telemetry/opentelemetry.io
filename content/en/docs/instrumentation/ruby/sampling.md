@@ -19,7 +19,7 @@ deterministically samples a percentage of traces that you pass in as a
 parameter.
 
 [TraceIdRatioBased]:
-  https://open-telemetry.github.io/opentelemetry-ruby/opentelemetry-sdk/v1.2.0/OpenTelemetry/SDK/Trace/Samplers/TraceIdRatioBased.html
+  https://www.rubydoc.info/gems/opentelemetry-sdk/OpenTelemetry/SDK/Trace/Samplers/TraceIdRatioBased
 
 ### Environment Variables
 
