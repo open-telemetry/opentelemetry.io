@@ -34,12 +34,12 @@ aliases: [/docs/demo/docker_deployment]
     > **Notes:**
     >
     > - The `--no-build` flag is used to fetch released docker images from
-      [ghcr](https://ghcr.io/open-telemetry/demo) instead of building from
-      source. Removing the `--no-build` command line option will rebuild all
-      images from source. It may take more than 20 minutes to build if the flag is
-      omitted.
-    > - If you're running on Apple Silicon, run `docker compose build`
-      in order to create local images vs. pulling them from the repository.
+    >   [ghcr](https://ghcr.io/open-telemetry/demo) instead of building from
+    >   source. Removing the `--no-build` command line option will rebuild all
+    >   images from source. It may take more than 20 minutes to build if the
+    >   flag is omitted.
+    > - If you're running on Apple Silicon, run `docker compose build` in order
+    >   to create local images vs. pulling them from the repository.
 
 ## Verify the Webstore and Telemetry
 
@@ -54,8 +54,8 @@ Once the images are built and containers are started you can access:
 ## Bring your own backend
 
 Likely you want to use the Webstore as a demo application for an observability
-backend you already have (e.g., an existing instance of Jaeger, Zipkin, or one of
-the [vendor of your choice](/ecosystem/vendors/).
+backend you already have (e.g., an existing instance of Jaeger, Zipkin, or one
+of the [vendor of your choice](/ecosystem/vendors/).
 
 OpenTelemetry Collector can be used to export telemetry data to multiple
 backends. By default, the collector in the demo application will merge the
