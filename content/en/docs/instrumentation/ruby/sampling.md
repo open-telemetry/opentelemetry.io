@@ -40,7 +40,7 @@ require 'opentelemetry/instrumentation/all'
 
 # sample 10% of traces
 sampling_percentage = 0.1
-sampler = Samplers.trace_id_ratio_based(sampleing_percentage)
+sampler = Samplers.trace_id_ratio_based(sampling_percentage)
 
 tracer_provider = OpenTelemetry.tracer_provider(sampler: sampler)
 
