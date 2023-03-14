@@ -14,13 +14,15 @@ do not need to manage data volume, don't bother setting a sampler.
 
 ## TraceIDRatioBased Sampler
 
-When sampling, the most common head sampler to use is the TraceIdRatioBased
+The most common head sampler to use is the [TraceIdRatioBased][]
 sampler. It deterministically samples a percentage of traces that you pass in as
 a parameter.
 
+[TraceIdRatioBased]: https://open-telemetry.github.io/opentelemetry-ruby/opentelemetry-sdk/latest/OpenTelemetry/SDK/Trace/Samplers/TraceIdRatioBased.html
+
 ### Environment Variables
 
-You can configure the TraceIdRatioBasedSampler with environment variables:
+You can configure a `TraceIdRatioBased` sampler with environment variables:
 
 ```shell
 export OTEL_TRACES_SAMPLER="traceidratio"
@@ -31,7 +33,7 @@ This tells the SDK to sample spans such that only 10% of traces get exported.
 
 ### Configuration in Code
 
-You can also configure the TraceIdRatioBased sampler in code. Here's an example:
+You can also configure a `TraceIdRatioBased` sampler in code. Here's an example:
 
 ```ruby
 require 'opentelemetry/sdk'
