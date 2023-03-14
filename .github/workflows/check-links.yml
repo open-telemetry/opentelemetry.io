@@ -1,0 +1,22 @@
+name: Check links and refcache
+
+on:
+  pull_request:
+
+jobs:
+  check-formatting:
+    name: Check links and refcache
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - run: npm install
+
+      - name: Build site
+        run: npm run build
+
+      - name: Check links
+        run: npm run _check:links
+
+      - name: Fail on uncommitted refcache changes
+        run: npm run diff:fail
