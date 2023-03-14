@@ -59,9 +59,9 @@ with your Helm chart release name accordingly):
 kubectl port-forward svc/my-otel-demo-otelcol 4318:4318
 ```
 
-> **Note** > `kubectl port-forward` will proxy the port until the process
+> **Note**: `kubectl port-forward` will proxy the port until the process
 > terminates. You may need to create separate terminal sessions for each use of
-> `kubectl port-forward`, and use CTRL-C to terminate the process when done.
+> `kubectl port-forward`, and use <kbd>Ctrl-C</kbd> to terminate the process when done.
 
 With the frontendproxy and Collector port-forward set up, you can access:
 
