@@ -20,7 +20,7 @@ Due to the technique chosen by the opentelemetry-php community for auto-instrume
 are a few preconditions that must be fulfilled before user can use it in their
 application. PHP auto-instrumentation is based on observability API that was
 introduced in PHP 8.0. This means that user has to have at least PHP 8
-installed. Another important component is
+installed. Another important component is the
 [composer](https://getcomposer.org/download/) package manager in most recent
 version. Third, is availability of c compiler in order to build
 [c extension](https://github.com/open-telemetry/opentelemetry-php-instrumentation)
