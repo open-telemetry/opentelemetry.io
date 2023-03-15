@@ -139,7 +139,7 @@ application and providing working default configuration.
 
 Now, as a result of triggering request to `http://localhost:8080` you should see
 following result in
-[jaeger](https://www.jaegertracing.io/docs/1.42/getting-started/)
+[Jaeger](https://www.jaegertracing.io/docs/1.42/getting-started/)
 
 ![laravel-auto](laravel-auto.png)
 
