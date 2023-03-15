@@ -123,7 +123,7 @@ After installation we have to run `install-otel-instrumentation` with either
 
 and last step is to run your application by another tool
 `run-with-otel-instrumentation` that ask you for few settings and finally
-execute passed command `php -S localhost:8080 -t public public/index.php` in
+executes the provided command, `php -S localhost:8080 -t public public/index.php` in
 this case.
 
 **NOTE** Everything that `run-with-otel-instrumentation` is doing can be done by
