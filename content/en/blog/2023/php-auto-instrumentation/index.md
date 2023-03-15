@@ -11,16 +11,16 @@ Automatic Instrumentation is a process of adding tracing capabilities into user
 application without modyfing it's source code. There are several techniques to
 do that, but all of them more or less work in the same way by injecting
 additional code into original one during compile time, link time, run-time or by
-extending the operating system in case of ebpf. This blogpost presents method used by
-Opentelemetry PHP auto-instrumentation.
+extending the operating system in case of [ebpf](https://ebpf.io/). This
+blogpost presents method used by Opentelemetry PHP auto-instrumentation.
 
 ## Preconditions
 
-Due to the technique chosen by the opentelemetry-php community for auto-instrumentation purposes, there
-are a few preconditions that must be fulfilled before user can use it in their
-application. PHP auto-instrumentation is based on observability API that was
-introduced in PHP 8.0. This means that user has to have at least PHP 8
-installed. Another important component is the
+Due to the technique chosen by the opentelemetry-php community for
+auto-instrumentation purposes, there are a few preconditions that must be
+fulfilled before user can use it in their application. PHP auto-instrumentation
+is based on observability API that was introduced in PHP 8.0. This means that
+user has to have at least PHP 8 installed. Another important component is the
 [composer](https://getcomposer.org/download/) package manager in most recent
 version. Third, is availability of c compiler in order to build
 [c extension](https://github.com/open-telemetry/opentelemetry-php-instrumentation)
@@ -123,13 +123,13 @@ After installation we have to run `install-otel-instrumentation` with either
 
 and last step is to run your application by another tool
 `run-with-otel-instrumentation` that ask you for few settings and finally
-executes the provided command, `php -S localhost:8080 -t public public/index.php` in
-this case.
+executes the provided command,
+`php -S localhost:8080 -t public public/index.php` in this case.
 
 **NOTE** Everything that `run-with-otel-instrumentation` is doing can be done by
 hand by setting needed environment variables and running application as usual.
-It was created for convenience for rapidly testing out open-telemetry against an application and providing
-working default configuration.
+It was created for convenience for rapidly testing out open-telemetry against an
+application and providing working default configuration.
 
 ```
 ./vendor/bin/run-with-otel-instrumentation php -S localhost:8080 -t public public/index.php
@@ -156,7 +156,8 @@ We have all necessary components in place:
 One of our goals is to increase awareness of this work and involve more people
 that will help us improve it, extend coverage and fix bugs.
 
-Please try it out and give us feedback. If you encounter any problems, you can open an
+Please try it out and give us feedback. If you encounter any problems, you can
+open an
 [issue](https://github.com/open-telemetry/opentelemetry-php/issues/new/choose).
 Questions? Feel free to reach out to us in the CNCF
 [#otel-php](https://cloud-native.slack.com/archives/C01NFPCV44V) Slack channel,
