@@ -179,7 +179,9 @@ using var tracerProvider = Sdk.CreateTracerProviderBuilder()
     .Build();
 ```
 
-## Prometheus
+## Prometheus (Experimental)
+
+***Note:** this is experimental and dependent on the OpenTelemetry specification to be made stable before it will be a released package. For now, we recommend using the OTLP exporter and using the OpenTelemetry Collector to send metrics to Prometheus*
 
 If you're using Prometheus to visualize metrics data, you'll need to set it up
 first. Here's how to do it using a docker container:
@@ -209,8 +211,10 @@ docker run \
 
 Next, install the Prometheus exporter:
 
+### ASP.NET
+
 ```
-dotnet add package OpenTelemetry.Exporter.Prometheus
+dotnet add package OpenTelemetry.Exporter.Prometheus.AspNetCore --version 1.4.0-rc.4
 dotnet add package OpenTelemetry.Extensions.Hosting
 ```
 
@@ -221,34 +225,32 @@ services:
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenTelemetry()
-  .WithMetrics(b =>
-{
-    b
-    .AddPrometheusExporter(options =>
-    {
-        options.StartHttpListener = true;
-        // Use your endpoint and port here
-        options.HttpListenerPrefixes = new string[] { $"http://localhost:{9090}/" };
-        options.ScrapeResponseCacheDurationMilliseconds = 0;
-    })
-    // The rest of your setup code goes here too
-});
+  .WithMetrics(b => b.AddPrometheusExporter());
 ```
 
-Otherwise, configure the exporter when creating a meter provider:
+You'll then need to add the endpoint so that Prometheus can scrape your site. You can do this using the `IAppBuilder` extension like this:
 
 ```csharp
-using var tracerProvider = Sdk.CreateMeterProviderBuilder()
-    .AddPrometheusExporter(options =>
-    {
-        options.StartHttpListener = true;
-        // Use your endpoint and port here
-        options.HttpListenerPrefixes = new string[] { $"http://localhost:{9090}/" };
-        options.ScrapeResponseCacheDurationMilliseconds = 0;
-    })
+var builder = WebApplication.CreateBuilder(args);
 
-    // Other setup code, like setting a meter goes here
+// .. Setup
 
+var app = builder.Build();
+
+app.UseOpenTelemetryPrometheusScrapingEndpoint();
+
+await app.RunAsync();
+```
+
+### Non-ASP.NET Core
+
+For applications not using ASP.NET Core, you can use the `HttpListner` version. This is setup directly on the `MeterProviderBuilder`:
+
+```csharp
+var meterProvider = Sdk.CreateMeterProviderBuilder()
+    .AddMeter(MyMeter.Name)
+    .AddPrometheusHttpListener(
+        options => options.UriPrefixes = new string[] { "http://localhost:9090/" })
     .Build();
 ```
 
