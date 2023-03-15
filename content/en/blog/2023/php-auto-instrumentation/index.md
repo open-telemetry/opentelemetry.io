@@ -61,7 +61,6 @@ functionality executed before and after. Below code snippet shows how to
 instrument dummy `helloworld` function:
 
 ```php
-
 function helloWorld() {
   echo 'helloWorld';
 }
