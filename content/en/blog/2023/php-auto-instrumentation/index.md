@@ -17,7 +17,7 @@ Opentelemetry PHP auto-instrumentation.
 ## Preconditions
 
 Due to the technique chosen by the opentelemetry-php community for auto-instrumentation purposes, there
-are few preconditions that must be fulfilled before user can use it in his
+are a few preconditions that must be fulfilled before user can use it in their
 application. PHP auto-instrumentation is based on observability API that was
 introduced in PHP 8.0. This means that user has to have at least PHP 8
 installed. Another important component is
