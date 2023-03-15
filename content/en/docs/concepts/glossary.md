@@ -51,6 +51,10 @@ examples include bytecode injection or monkey patching.
 A mechanism for propagating name/value pairs to help establish a causal
 relationship between events and services. See [baggage spec][baggage].
 
+### **Builder**
+
+See [Collector Builder](#collector-builder).
+
 ### **Client Library**
 
 See [`Instrumented Library`](#instrumented-library).
@@ -68,6 +72,12 @@ telemetry data. A single binary that can be deployed as an agent or gateway.
 
 Also known as the OpenTelemetry Collector. More on the Collector
 [here][collector].
+
+### **Collector Builder**
+
+A command-line tool that generates sources and binaries for OpenTelemetry
+Collector [distributions](/docs/collector/distributions/). For more information,
+see [OpenTelemetry Collector Builder (ocb)](/docs/collector/builder).
 
 ### **Contrib**
 
@@ -190,6 +200,10 @@ series with [`Metadata`](#metadata). See [more][metric].
 ### **OC**
 
 Short form for [`OpenCensus`](#opencensus).
+
+### **`ocb`**
+
+See [Collector Builder](#collector-builder).
 
 ### **OpenCensus**
 
