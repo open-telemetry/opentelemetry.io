@@ -99,7 +99,7 @@ application created from scratch.
 First step is to create a demo application. Here we use the popular
 [laravel](https://laravel.com/docs/10.x/installation). framework:
 
-```
+```sh
 composer create-project laravel/laravel example-app
 ```
 
