@@ -90,10 +90,11 @@
 </div>
 
 {{- define "registry-entry" -}}
+{{ $href := printf "href=%q" .repo | safeHTMLAttr -}}
 <li class="registry-entry" data-registrytype="{{ .registryType }}" data-registrylanguage="{{ .language }}">
   <div class="registry-entry-body">
     <div class="h5">
-      <a href="{{ .repo }}" target="_blank" rel="noopener">
+      <a {{ $href }} target="_blank" rel="noopener">
         {{- .title -}}
       </a>
     </div>
