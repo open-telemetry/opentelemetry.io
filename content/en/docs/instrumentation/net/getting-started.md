@@ -11,7 +11,7 @@ OpenTelemetry Protocol (OTLP) and the OpenTelemetry Collector.
 
 ## ASP.NET Core
 
-The following example demonstrates automatic and manual instrumentation via an
+The following example demonstrates library based and manual instrumentation via an
 ASP.NET Core app.
 
 First, create your basic ASP.NET Core site:
@@ -27,7 +27,7 @@ dotnet add package OpenTelemetry.Exporter.Console
 dotnet add package OpenTelemetry.Extensions.Hosting
 ```
 
-Now let's add the automatic instrumentation packages for ASP.NET Core. This will
+Now let's add the instrumentation packages for ASP.NET Core. This will
 give us some automatic spans for each HTTP request to our app.
 
 ```shell
