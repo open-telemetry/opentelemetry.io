@@ -28,19 +28,22 @@ which is core component used for injecting tracing code.
 
 ## Background
 
-Observability API allows register and execute additional code (function) before
-and after original one without introducing additional performance penalties in
-other areas, so in other words, we pay only for what we use and only for altered
-function. Before PHP 8, the most common technique for adding tracing
-capabilities was altering `zend_execute_ex` function (a monkey patching kind
-technique), however this could lead to stack overflow and performance problems
-as whole application paid for that. There were also considered other approaches
-like compile time AST modifications which seems feasible, howerer there are no
-known production ready tracers that works in this way up to date.
+[Observability API](https://github.com/php/php-src/blob/PHP-8.0/Zend/zend_observer.h)
+allows register and execute additional code (function) before and after original
+one without introducing additional performance penalties in other areas, so in
+other words, we pay only for what we use and only for altered function. Before
+PHP 8, the most common technique for adding tracing capabilities was altering
+`zend_execute_ex` function (a monkey patching kind technique), however this
+could lead to stack overflow and performance problems as whole application paid
+for that. There were also considered other approaches like compile time AST
+modifications which seems feasible, howerer there are no known production ready
+tracers that works in this way up to date.
 
 ## Observability API from auto-instrumentation perspective
 
-At the moment of this writing, observability API is used by
+At the moment of this writing,
+[observability API](https://github.com/php/php-src/blob/PHP-8.0/Zend/zend_observer.h)
+is used by
 [c extension](https://github.com/open-telemetry/opentelemetry-php-instrumentation)
 and exposes one function with following interface:
 
@@ -94,8 +97,8 @@ however we invested time to lower the barier and created an installer that can
 do that for you. This section will show how auto-instrument simple php `laravel`
 application created from scratch.
 
-First step is to create a demo application. Here we use the popular [laravel](https://laravel.com/docs/10.x/installation). framework:
-
+First step is to create a demo application. Here we use the popular
+[laravel](https://laravel.com/docs/10.x/installation). framework:
 
 ```
 composer create-project laravel/laravel example-app
