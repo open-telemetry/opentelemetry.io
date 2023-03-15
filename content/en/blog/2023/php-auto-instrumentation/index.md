@@ -128,7 +128,7 @@ this case.
 
 **NOTE** Everything that `run-with-otel-instrumentation` is doing can be done by
 hand by setting needed environment variables and running application as usual.
-It was created for convenienence for rapidly testing application and preventing
+It was created for convenience for rapidly testing out open-telemetry against an application and providing
 situation when user might miss something.
 
 ```
