@@ -45,7 +45,7 @@ At the moment of this writing,
 [observability API](https://github.com/php/php-src/blob/PHP-8.0/Zend/zend_observer.h)
 is used by
 [c extension](https://github.com/open-telemetry/opentelemetry-php-instrumentation)
-and exposes one function with following interface:
+and exposes one function with the following interface:
 
 ```php
 function hook(
@@ -57,8 +57,8 @@ function hook(
 ```
 
 This function can be used from user application in order to add additional
-functionality executed before and after. Below code snippet shows how to
-instrument dummy `helloworld` function:
+functionality executed before and after the observed function. The below code
+snippet shows how to instrument dummy `helloworld` function:
 
 ```php
 function helloWorld() {
@@ -77,13 +77,13 @@ function helloWorld() {
 );
 ```
 
-In the same way, we implemented tracing support for the most important
-`interfaces/libraries/frameworks` that are parts of
+In the same way, we have implemented tracing support for some of the most
+important `interfaces/libraries/frameworks` that are parts of
 [Contrib](https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation)
 repo. Each `auto-instrumentation` package uses above `hook` function in order to
 register and provide tracing functionality. One missing thing, not mentioned yet
 is an `API and SDK` used to create traces and other necessary components. This
-is content and responisibility of
+is the responsibility of the opentelemetry-php
 [main](https://github.com/open-telemetry/opentelemetry-php) repo which is
 foundation for everything.
 
@@ -92,9 +92,9 @@ foundation for everything.
 ## How to use it
 
 All components necessary for auto-instrumentation can be installed manually,
-however we invested time to lower the barier and created an installer that can
-do that for you. This section will show how auto-instrument simple php `laravel`
-application created from scratch.
+however we invested time to lower the barrier to entry and have created an
+installer that can do that for you. This section will show how auto-instrument a
+simple php `laravel` application created from scratch.
 
 First step is to create a demo application. Here we use the popular
 [laravel](https://laravel.com/docs/10.x/installation) framework:
@@ -106,7 +106,7 @@ composer create-project laravel/laravel example-app
 Next, we have to install
 [opentelemetry-instrumentation-installer](https://packagist.org/packages/open-telemetry/opentelemetry-instrumentation-installer).
 
-```
+```sh
 cd example-app
 composer require open-telemetry/opentelemetry-instrumentation-installer
 ```
@@ -119,12 +119,12 @@ Opentelemetry instrumentation installer works in two modes:
 After installation we have to run `install-otel-instrumentation` with either
 `basic` or `advanced` switch as below.
 
-```
+```sh
 ./vendor/bin/install-otel-instrumentation basic
 ```
 
-and last step is to run your application by another tool
-`run-with-otel-instrumentation` that ask you for few settings and finally
+The final step is to run your application via another tool,
+`run-with-otel-instrumentation` that prompts you for a few settings and then
 executes the provided command,
 `php -S localhost:8080 -t public public/index.php` in this case.
 
@@ -133,7 +133,7 @@ hand by setting needed environment variables and running application as usual.
 It was created for convenience for rapidly testing out open-telemetry against an
 application and providing working default configuration.
 
-```
+```sh
 ./vendor/bin/run-with-otel-instrumentation php -S localhost:8080 -t public public/index.php
 ```
 
