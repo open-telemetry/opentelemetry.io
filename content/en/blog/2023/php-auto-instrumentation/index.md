@@ -150,7 +150,7 @@ We have all necessary components in place:
 - C extension as a foundation for auto-instrumentation.
 - Auto Instrumentation support (WIP) for most important and popular libraries
   and frameworks.
-- Development tools that can help lower barier for users and developers
+- Development tools that can help lower barrier for users and developers
   interested in instrumenting arbitrary code.
 
 One of our goals is to increase awareness of this work and involve more people
