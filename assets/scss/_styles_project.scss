@@ -142,7 +142,7 @@
 .td-default, // E.g.: Homepage, Status, Search, 404; excludes navbar
 .td-section main, .td-page main, // Doc and blog main content without left/right navs
 .td-page-meta {
-  a:hover {
+  a:hover:not(.dropdown-item) {
     text-decoration: underline;
   }
 }
