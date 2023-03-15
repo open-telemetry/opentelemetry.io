@@ -156,7 +156,7 @@ We have all necessary components in place:
 One of our goals is to increase awareness of this work and involve more people
 that will help us improve it, extend coverage and fix bugs.
 
-Try it and give us feedback. In case of any problem open
+Please try it out and give us feedback. If you encounter any problems, you can open an
 [issue](https://github.com/open-telemetry/opentelemetry-php/issues/new/choose).
 Questions? Feel free to reach out to us in the CNCF
 [#otel-php](https://cloud-native.slack.com/archives/C01NFPCV44V) Slack channel,
