@@ -37,6 +37,7 @@ OpenTelemetry in their commercial products.
 | New Relic                  | No                | Yes         | [newrelic.com/...](https://newrelic.com/solutions/opentelemetry)                                                                                      |
 | observIQ                   | Yes               | Yes         | [observiq.com/...](https://docs.bindplane.observiq.com)                                                                                               |
 | Promscale                  | No                | Yes         | [timescale.com/promscale](https://www.timescale.com/promscale)                                                                                        |
+| Red Hat                    | Yes               | Yes         | [docs.openshift.com/...](https://docs.openshift.com/container-platform/4.12/distr_tracing/distr_tracing_install/distr-tracing-deploying-otel.html)    |
 | Sentry Software            | Yes               | Yes         | [sentrysoftware.com/...](https://www.sentrysoftware.com/products/hardware-sentry-opentelemetry-collector.html)                                        |
 | ServicePilot               | No                | Yes         | [servicepilot.com/...](https://www.servicepilot.com/en/doc/apm#opentelemetry)                                                                         |
 | SigNoz                     | Yes               | Yes         | [signoz.io](https://signoz.io)                                                                                                                        |
