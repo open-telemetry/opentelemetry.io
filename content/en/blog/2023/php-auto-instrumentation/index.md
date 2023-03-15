@@ -26,7 +26,7 @@ version. Third, is availability of c compiler in order to build
 [c extension](https://github.com/open-telemetry/opentelemetry-php-instrumentation)
 which is core component used for injecting tracing code.
 
-## Little background
+## Background
 
 Observability API allows register and execute additional code (function) before
 and after original one without introducing additional performance penalties in
