@@ -94,8 +94,8 @@ however we invested time to lower the barier and created an installer that can
 do that for you. This section will show how auto-instrument simple php `laravel`
 application created from scratch.
 
-First step is to create a demo application
-[more info](https://laravel.com/docs/10.x/installation).
+First step is to create a demo application. Here we use the popular [laravel](https://laravel.com/docs/10.x/installation). framework:
+
 
 ```
 composer create-project laravel/laravel example-app
