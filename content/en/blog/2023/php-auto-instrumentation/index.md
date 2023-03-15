@@ -11,7 +11,7 @@ Automatic Instrumentation is a process of adding tracing capabilities into user
 application without modyfing it's source code. There are several techniques to
 do that, but all of them more or less work in the same way by injecting
 additional code into original one during compile time, link time, run-time or by
-extending os in case of ebpf. This blogpost presents method used by
+extending the operating system in case of ebpf. This blogpost presents method used by
 Opentelemetry PHP auto-instrumentation.
 
 ## Preconditions
