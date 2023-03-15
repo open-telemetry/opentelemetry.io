@@ -129,7 +129,7 @@ this case.
 **NOTE** Everything that `run-with-otel-instrumentation` is doing can be done by
 hand by setting needed environment variables and running application as usual.
 It was created for convenience for rapidly testing out open-telemetry against an application and providing
-situation when user might miss something.
+working default configuration.
 
 ```
 ./vendor/bin/run-with-otel-instrumentation php -S localhost:8080 -t public public/index.php
