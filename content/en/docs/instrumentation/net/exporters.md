@@ -181,7 +181,8 @@ using var tracerProvider = Sdk.CreateTracerProviderBuilder()
 
 ## Prometheus (Experimental)
 
-***Note:** this is experimental and dependent on the OpenTelemetry specification to be made stable before it will be a released package. For now, we recommend using the OTLP exporter and using the OpenTelemetry Collector to send metrics to Prometheus*
+***Note:** this is experimental and dependent on the OpenTelemetry
+specification to be made stable before it will be a released package. For now, we recommend using the OTLP exporter and using the OpenTelemetry Collector to send metrics to Prometheus*
 
 If you're using Prometheus to visualize metrics data, you'll need to set it up
 first. Here's how to do it using a docker container:
@@ -228,7 +229,8 @@ builder.Services.AddOpenTelemetry()
   .WithMetrics(b => b.AddPrometheusExporter());
 ```
 
-You'll then need to add the endpoint so that Prometheus can scrape your site. You can do this using the `IAppBuilder` extension like this:
+You'll then need to add the endpoint so that Prometheus can scrape your site.
+You can do this using the `IAppBuilder` extension like this:
 
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
@@ -244,7 +246,8 @@ await app.RunAsync();
 
 ### Non-ASP.NET Core
 
-For applications not using ASP.NET Core, you can use the `HttpListner` version. This is setup directly on the `MeterProviderBuilder`:
+For applications not using ASP.NET Core, you can use the `HttpListner` version.
+This is setup directly on the `MeterProviderBuilder`:
 
 ```csharp
 var meterProvider = Sdk.CreateMeterProviderBuilder()
