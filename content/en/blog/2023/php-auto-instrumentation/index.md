@@ -28,7 +28,7 @@ which is core component used for injecting tracing code.
 
 ## Background
 
-[Observability API](https://github.com/php/php-src/blob/PHP-8.0/Zend/zend_observer.h)
+[Observability API](https://www.datadoghq.com/blog/engineering/php-8-observability-baked-right-in/)
 allows register and execute additional code (function) before and after original
 one without introducing additional performance penalties in other areas, so in
 other words, we pay only for what we use and only for altered function. Before
