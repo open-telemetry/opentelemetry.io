@@ -137,7 +137,7 @@ application and providing working default configuration.
 ./vendor/bin/run-with-otel-instrumentation php -S localhost:8080 -t public public/index.php
 ```
 
-Now, as a result of triggering request to `http://localhost:8080` you should see
+Now, as a result of triggering request to <http://localhost:8080> you should see
 following result in
 [Jaeger](https://www.jaegertracing.io/docs/1.42/getting-started/)
 
