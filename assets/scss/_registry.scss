@@ -1,138 +1,30 @@
-.registry {
-  display: block;
-
-  &__main {
-    min-width: 100%;
-    margin: $registry-vertical-margin 0;
+.badge {
+  @each $component, $color in $otel-component-colors {
+    &.badge-#{$component} {
+      color: white;
+      background-color: $color;
+    }
   }
 
-  &__search {
-    min-width: 100%;
-    margin: $registry-vertical-margin 0;
+  &.badge-elixir {
+    color: map-get($otel-component-colors, erlang);
+    background-color: inherit;
+    border: solid 1px;
   }
 
-  &__header {
-    background-color: $green;
+  &.badge-js {
+    color: inherit;
   }
-}
 
-.badge.badge-collector {
-  color: white;
-  background-color: $collector;
-}
+  &.badge-kotlin {
+    color: map-get($otel-component-colors, java);
+    background-color: inherit;
+    border: solid 1px;
+  }
 
-.badge.badge-core {
-  color: white;
-  background-color: $core;
-}
-
-.badge.badge-instrumentation {
-  color: white;
-  background-color: $instrumentation;
-}
-
-.badge.badge-exporter {
-  color: white;
-  background-color: $exporter;
-}
-
-.badge.badge-extension {
-  color: white;
-  background-color: $extension;
-}
-
-.badge.badge-receiver {
-  color: white;
-  background-color: $receiver;
-}
-
-.badge.badge-processor {
-  color: white;
-  background-color: $processor;
-}
-
-.badge.badge-utilities {
-  color: white;
-  background-color: $utilities;
-}
-
-.badge-tracer {
-  color: white;
-  background-color: $dark-blue;
-}
-
-.badge-instrumentation {
-  color: white;
-  background-color: $green;
-}
-
-.badge.badge-dotnet {
-  color: white;
-  background-color: $dotnet;
-}
-
-.badge.badge-cpp {
-  color: white;
-  background-color: $cpp;
-}
-
-.badge.badge-elixir {
-  color: $erlang;
-  background-color: inherit;
-  border: solid 1px;
-}
-.badge.badge-erlang {
-  color: white;
-  background-color: $erlang;
-}
-
-.badge.badge-go {
-  color: white;
-  background-color: $go;
-}
-
-.badge.badge-java {
-  color: white;
-  background-color: $java;
-}
-
-.badge.badge-js {
-  color: inherit;
-  background-color: $javascript;
-}
-
-.badge.badge-kotlin {
-  color: $java;
-  background-color: inherit;
-  border: solid 1px;
-}
-
-.badge.badge-lua {
-  color: white;
-  background-color: $lua;
-}
-
-.badge.badge-php {
-  color: white;
-  background-color: $php;
-}
-
-.badge.badge-python {
-  color: white;
-  background-color: $python;
-}
-
-.badge.badge-ruby {
-  color: white;
-  background-color: $ruby;
-}
-
-.badge.badge-rust {
-  color: white;
-  background-color: $rust;
-}
-
-.badge.badge-swift {
-  color: white;
-  background-color: $swift;
+  // Default color attributes, in case we miss a component definition above;
+  // which has happened, see https://github.com/open-telemetry/opentelemetry.io/pull/2481.
+  $default-otel-badge-bg: $yellow;
+  color: color-contrast($default-otel-badge-bg);
+  background-color: $default-otel-badge-bg;
 }

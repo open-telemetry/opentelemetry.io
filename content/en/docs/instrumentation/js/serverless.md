@@ -11,8 +11,8 @@ OpenTelemetry instrumentation libraries.
 The following show how to use Lambda wrappers with OpenTelemetry to instrument
 AWS Lambda functions and send traces to a configured backend.
 
-Check out [OpenTelemetry Lambda Layers](https://github.com/open-telemetry/opentelemetry-lambda),
-if you are interested in a plug and play user experience.
+If you are interested in a plug and play user experience, see
+[OpenTelemetry Lambda Layers](https://github.com/open-telemetry/opentelemetry-lambda).
 
 ### Dependencies
 
@@ -36,28 +36,28 @@ npm install \
 
 ### AWS Lambda wrapper code
 
-This file contains all the OpenTelemetry logic, which enables tracing.
-Please save the following code as `lambda-wrapper.js`.
+This file contains all the OpenTelemetry logic, which enables tracing. Save the
+following code as `lambda-wrapper.js`.
 
 ```javascript
 /* lambda-wrapper.js */
 
-const api = require("@opentelemetry/api");
-const { BatchSpanProcessor } = require("@opentelemetry/sdk-trace-base");
+const api = require('@opentelemetry/api');
+const { BatchSpanProcessor } = require('@opentelemetry/sdk-trace-base');
 const {
   OTLPTraceExporter,
-} = require("@opentelemetry/exporter-trace-otlp-http");
-const { NodeTracerProvider } = require("@opentelemetry/sdk-trace-node");
-const { registerInstrumentations } = require("@opentelemetry/instrumentation");
+} = require('@opentelemetry/exporter-trace-otlp-http');
+const { NodeTracerProvider } = require('@opentelemetry/sdk-trace-node');
+const { registerInstrumentations } = require('@opentelemetry/instrumentation');
 const {
   getNodeAutoInstrumentations,
-} = require("@opentelemetry/auto-instrumentations-node");
+} = require('@opentelemetry/auto-instrumentations-node');
 
 api.diag.setLogger(new api.DiagConsoleLogger(), api.DiagLogLevel.ALL);
 
 const provider = new NodeTracerProvider();
 const collectorOptions = {
-  url: "<backend_url>",
+  url: '<backend_url>',
 };
 
 const spanProcessor = new BatchSpanProcessor(
@@ -70,7 +70,7 @@ provider.register();
 registerInstrumentations({
   instrumentations: [
     getNodeAutoInstrumentations({
-      "@opentelemetry/instrumentation-aws-lambda": {
+      '@opentelemetry/instrumentation-aws-lambda': {
         disableAwsContextPropagation: true,
       },
     }),
@@ -92,13 +92,13 @@ More details can be found in the instrumentation
 
 ### AWS Lambda function handler
 
-Now that you have a Lambda wrapper, create a simple handler that servers
-as a Lambda function. Save the following code as `handler.js`.
+Now that you have a Lambda wrapper, create a simple handler that serves as a
+Lambda function. Save the following code as `handler.js`.
 
 ```javascript
 /* handler.js */
 
-"use strict";
+'use strict';
 
 const https = require('https');
 
@@ -106,11 +106,11 @@ function getRequest() {
   const url = 'https://opentelemetry.io/';
 
   return new Promise((resolve, reject) => {
-    const req = https.get(url, res => {
+    const req = https.get(url, (res) => {
       resolve(res.statusCode);
     });
 
-    req.on('error', err => {
+    req.on('error', (err) => {
       reject(new Error(err));
     });
   });
@@ -134,10 +134,11 @@ exports.handler = async (event) => {
 ### Deployment
 
 There are multiple ways of deploying your Lambda function:
-* [AWS Console](https://aws.amazon.com/console/)
-* [AWS CLI](https://aws.amazon.com/cli/)
-* [Serverless Framework](https://github.com/serverless/serverless)
-* [Terraform](https://github.com/hashicorp/terraform)
+
+- [AWS Console](https://aws.amazon.com/console/)
+- [AWS CLI](https://aws.amazon.com/cli/)
+- [Serverless Framework](https://github.com/serverless/serverless)
+- [Terraform](https://github.com/hashicorp/terraform)
 
 Here we will be using Serverless Framework, more details can be found in the
 [Setting Up Serverless Framework guide](https://www.serverless.com/framework/docs/getting-started).
@@ -146,11 +147,11 @@ Create a file called `serverless.yml`:
 
 ```yaml
 service: lambda-otel-native
-frameworkVersion: "3"
+frameworkVersion: '3'
 provider:
   name: aws
   runtime: nodejs14.x
-  region: "<your-region>"
+  region: '<your-region>'
   environment:
     NODE_OPTIONS: --require lambda-wrapper
 functions:
@@ -181,19 +182,23 @@ function in the backend!
 
 ## GCP function
 
-The following shows how to instrument [http triggered function](https://cloud.google.com/functions/docs/writing/write-http-functions) using the Google Cloud Platform (GCP) UI.
+The following shows how to instrument
+[http triggered function](https://cloud.google.com/functions/docs/writing/write-http-functions)
+using the Google Cloud Platform (GCP) UI.
 
 ### Creating function
 
-Login to GCP and create or select a project where your function should be placed.
-In the side menu go to _Serverless_ and select _Cloud Functions_. Next, click on _Create Function_,
-and select [2nd generation](https://cloud.google.com/blog/products/serverless/cloud-functions-2nd-generation-now-generally-available)
-for your environment, provide a function name and select your region.  
+Login to GCP and create or select a project where your function should be
+placed. In the side menu go to _Serverless_ and select _Cloud Functions_. Next,
+click on _Create Function_, and select
+[2nd generation](https://cloud.google.com/blog/products/serverless/cloud-functions-2nd-generation-now-generally-available)
+for your environment, provide a function name and select your region.
 
 ### Setup environment variable for otelwrapper
 
 If closed, open the _Runtime, build, connections and security settings_ menu and
-scroll down and add the environment variable `NODE_OPTIONS` with the following value:
+scroll down and add the environment variable `NODE_OPTIONS` with the following
+value:
 
 ```shell
 --require ./otelwrapper.js
@@ -205,28 +210,31 @@ On the next screen (_Code_), select Node.js version 16 for your runtime.
 
 ### Establish otel wrapper
 
-Create a new file called `otelwrapper.js`, that will be used to instrument your service.
-Please make sure that you provide a `SERVICE_NAME` and that you set the `<address for your backend>`.
+Create a new file called `otelwrapper.js`, that will be used to instrument your
+service. Please make sure that you provide a `SERVICE_NAME` and that you set the
+`<address for your backend>`.
 
 ```javascript
 /* otelwrapper.js */
 
 const { Resource } = require('@opentelemetry/resources');
-const { SemanticResourceAttributes } = require ('@opentelemetry/semantic-conventions');
-const api = require("@opentelemetry/api");
-const { BatchSpanProcessor } = require("@opentelemetry/sdk-trace-base");
+const {
+  SemanticResourceAttributes,
+} = require('@opentelemetry/semantic-conventions');
+const api = require('@opentelemetry/api');
+const { BatchSpanProcessor } = require('@opentelemetry/sdk-trace-base');
 const {
   OTLPTraceExporter,
-} = require("@opentelemetry/exporter-trace-otlp-http");
-const { NodeTracerProvider } = require("@opentelemetry/sdk-trace-node");
-const { registerInstrumentations } = require("@opentelemetry/instrumentation");
+} = require('@opentelemetry/exporter-trace-otlp-http');
+const { NodeTracerProvider } = require('@opentelemetry/sdk-trace-node');
+const { registerInstrumentations } = require('@opentelemetry/instrumentation');
 const {
   getNodeAutoInstrumentations,
-} = require("@opentelemetry/auto-instrumentations-node");
+} = require('@opentelemetry/auto-instrumentations-node');
 
 const providerConfig = {
   resource: new Resource({
-    [SemanticResourceAttributes.SERVICE_NAME]: "<your function name>",
+    [SemanticResourceAttributes.SERVICE_NAME]: '<your function name>',
   }),
 };
 
@@ -234,7 +242,7 @@ api.diag.setLogger(new api.DiagConsoleLogger(), api.DiagLogLevel.ALL);
 
 const provider = new NodeTracerProvider(providerConfig);
 const collectorOptions = {
-  url: "<address for your backend>",
+  url: '<address for your backend>',
 };
 
 const spanProcessor = new BatchSpanProcessor(
@@ -245,9 +253,7 @@ provider.addSpanProcessor(spanProcessor);
 provider.register();
 
 registerInstrumentations({
-  instrumentations: [
-    getNodeAutoInstrumentations(),
-  ],
+  instrumentations: [getNodeAutoInstrumentations()],
 });
 ```
 
@@ -274,7 +280,8 @@ Add the following content to your package.json:
 
 ### Add HTTP call to function
 
-The following code makes a call to the OpenTemetry web site to demonstrate an outbound call.
+The following code makes a call to the OpenTelemetry web site to demonstrate an
+outbound call.
 
 ```javascript
 /* index.js */
@@ -282,12 +289,14 @@ const functions = require('@google-cloud/functions-framework');
 const https = require('https');
 
 functions.http('helloHttp', (req, res) => {
-  let url = "https://opentelemetry.io/";
-  https.get(url, (response) => {
-    res.send(`Response ${response.body}!`);
-  }).on('error', (e) => {
-    res.send(`Error ${e}!`);
-  })
+  let url = 'https://opentelemetry.io/';
+  https
+    .get(url, (response) => {
+      res.send(`Response ${response.body}!`);
+    })
+    .on('error', (e) => {
+      res.send(`Error ${e}!`);
+    });
 });
 ```
 

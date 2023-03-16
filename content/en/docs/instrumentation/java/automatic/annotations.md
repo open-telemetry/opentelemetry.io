@@ -3,7 +3,7 @@ title: Annotations
 description: Using instrumentation annotations with a Java agent.
 aliases: [/docs/instrumentation/java/annotations]
 weight: 4
-javaAnnotationsVersion: 1.23.0
+javaAnnotationsVersion: 1.24.0
 ---
 
 For most users, the out-of-the-box instrumentation is completely sufficient and
@@ -121,6 +121,10 @@ javaagent to capture spans around specific methods.
 instrumentation for specific methods in lieu of `@WithSpan`. Format is
 `my.package.MyClass1[method1,method2];my.package.MyClass2[method3]`. {{%
 /config_option %}}
+
+If a method is overloaded (appears more than once on the same class with the
+same name but different parameters), all versions of the method will be
+instrumented.
 
 ## Next steps
 

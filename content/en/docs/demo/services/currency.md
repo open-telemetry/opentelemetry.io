@@ -13,8 +13,8 @@ currencies.
 
 ### Initializing Tracing
 
-The OpenTelemetry SDK is initialized from `main` using the `initTracer`
-function defined in `tacer_common.h`
+The OpenTelemetry SDK is initialized from `main` using the `initTracer` function
+defined in `tracer_common.h`
 
 ```cpp
 void initTracer()
@@ -137,7 +137,70 @@ creating new spans.
 
 ## Metrics
 
-TBD
+### Initializing Metrics
+
+The OpenTelemetry `MeterProvider` is initialized from `main()` using the
+`initMeter()` function defined in `meter_common.h`.
+
+```cpp
+void initMeter()
+{
+  // Build MetricExporter
+  otlp_exporter::OtlpGrpcMetricExporterOptions otlpOptions;
+
+  // Configuration via environment variable not supported yet
+  otlpOptions.endpoint = "otelcol:4317";
+  otlpOptions.aggregation_temporality = metric_sdk::AggregationTemporality::kDelta;
+  auto exporter = otlp_exporter::OtlpGrpcMetricExporterFactory::Create(otlpOptions);
+
+  // Build MeterProvider and Reader
+  metric_sdk::PeriodicExportingMetricReaderOptions options;
+  options.export_interval_millis = std::chrono::milliseconds(1000);
+  options.export_timeout_millis = std::chrono::milliseconds(500);
+  std::unique_ptr<metric_sdk::MetricReader> reader{
+      new metric_sdk::PeriodicExportingMetricReader(std::move(exporter), options) };
+  auto provider = std::shared_ptr<metrics_api::MeterProvider>(new metric_sdk::MeterProvider());
+  auto p = std::static_pointer_cast<metric_sdk::MeterProvider>(provider);
+  p->AddMetricReader(std::move(reader));
+  metrics_api::Provider::SetMeterProvider(provider);
+}
+```
+
+### Starting IntCounter
+
+A global `currency_counter` variable is created at `main()` calling the function
+`initIntCounter()` defined in `meter_common.h`.
+
+```cpp
+nostd::unique_ptr<metrics_api::Counter<uint64_t>> initIntCounter()
+{
+  std::string counter_name = name + "_counter";
+  auto provider = metrics_api::Provider::GetMeterProvider();
+  nostd::shared_ptr<metrics_api::Meter> meter = provider->GetMeter(name, version);
+  auto int_counter = meter->CreateUInt64Counter(counter_name);
+  return int_counter;
+}
+```
+
+### Counting currency conversion requests
+
+The method `CurrencyCounter()` is implemented as follows:
+
+```cpp
+void CurrencyCounter(const std::string& currency_code)
+{
+    std::map<std::string, std::string> labels = { {"currency_code", currency_code} };
+    auto labelkv = common::KeyValueIterableView<decltype(labels)>{ labels };
+    currency_counter->Add(1, labelkv);
+}
+```
+
+Every time the function `Convert()` is called, the currency code received as
+`to_code` is used to count the conversions.
+
+```cpp
+CurrencyCounter(to_code);
+```
 
 ## Logs
 

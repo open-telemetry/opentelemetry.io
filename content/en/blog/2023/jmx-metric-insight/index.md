@@ -2,7 +2,7 @@
 title: Gaining JMX Metric Insights with the OpenTelemetry Java Agent
 linkTitle: JMX Metric Insight
 date: 2023-01-17
-author: "[Samudraneel Dasgupta](https://github.com/Samudraneel24) (Cisco)"
+author: '[Samudraneel Dasgupta](https://github.com/Samudraneel24) (Cisco)'
 ---
 
 [JMX](https://www.oracle.com/technical-resources/articles/javase/jmx.html) (Java
@@ -128,10 +128,10 @@ global:
   evaluation_interval: 10s
 
 scrape_configs:
-  - job_name: "my-kafka-broker"
+  - job_name: my-kafka-broker
     scrape_interval: 5s
     static_configs:
-      - targets: ["host.docker.internal:9464"]
+      - targets: [host.docker.internal:9464]
 ```
 
 Then run the command below to deploy Prometheus on Docker:
@@ -207,7 +207,7 @@ rules:
         metric: kafka.message.count
         type: counter
         desc: The number of messages received by the broker
-        unit: "{messages}"
+        unit: '{messages}'
 ```
 
 Each file can consist of multiple rules. Each rule can identify a set of one or

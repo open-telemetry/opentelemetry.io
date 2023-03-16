@@ -1,8 +1,8 @@
 ---
-title: "Exponential Histograms: Better Data, Zero Configuration"
+title: 'Exponential Histograms: Better Data, Zero Configuration'
 linkTitle: Exponential Histograms
 date: 2022-08-24
-author: "[Jack Berg](https://github.com/jack-berg)"
+author: '[Jack Berg](https://github.com/jack-berg)'
 canonical_url: https://newrelic.com/blog/best-practices/opentelemetry-histograms
 ---
 

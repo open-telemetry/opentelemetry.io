@@ -1,5 +1,8 @@
 ---
 title: OpenTelemetry
+description: >-
+  High-quality, ubiquitous, and portable telemetry to enable effective
+  observability
 show_banner: true
 developer_note:
   The blocks/cover shortcode (used below) will use as a background image any
@@ -10,14 +13,19 @@ spelling: cSpell:ignore shortcode
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
 
 {{< blocks/cover image_anchor="top" height="max" color="primary" >}}
-<img src="/img/logos/opentelemetry-horizontal-color.svg" class="otel-logo" alt="OpenTelemetry"/>
 
-## High-quality, ubiquitous, and portable telemetry to enable effective observability
+<!-- prettier-ignore -->
+![OpenTelemetry](/img/logos/opentelemetry-horizontal-color.svg)
+{.otel-logo}
+
+<!-- prettier-ignore -->
+{{% param description %}}
+{.display-6}
 
 <div class="l-primary-buttons mt-5">
 
 - [Learn more](/docs/concepts/)
-- [Try the demo](/ecosystem/demo/)
+- [Try the demo](/docs/demo/)
 
 </div>
 
@@ -43,7 +51,7 @@ you analyze your software's performance and behavior.
 
 {{% /blocks/lead %}}
 
-{{% blocks/section color="dark" %}}
+{{% blocks/section color="dark" type="row" %}}
 
 {{% blocks/feature icon="fas fa-chart-line" title="Traces, Metrics, Logs"%}}
 
@@ -69,13 +77,10 @@ Installation and integration can be as simple as a few lines of code.
 
 {{% /blocks/section %}}
 
-{{% blocks/section color="secondary" %}}
+{{% blocks/section color="secondary" type="cncf" %}}
 
-<div id="cncf">
-
-**OpenTelemetry is a [CNCF][] [incubating][] project**.
-
-Formed through a merger of the OpenTracing and OpenCensus projects.
+**OpenTelemetry is a [CNCF][] [incubating][] project**.<br> Formed through a
+merger of the OpenTracing and OpenCensus projects.
 
 [![CNCF logo][]][cncf]
 
@@ -83,5 +88,4 @@ Formed through a merger of the OpenTracing and OpenCensus projects.
 [cncf logo]: /img/logos/cncf-white.svg
 [incubating]: https://www.cncf.io/projects/
 
-</div>
 {{% /blocks/section %}}

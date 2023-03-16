@@ -7,6 +7,7 @@ aliases: [/registry/*]
 type: default
 layout: registry
 outputs: [html, json]
+body_class: registry
 weight: 20
 ---
 
@@ -18,7 +19,7 @@ weight: 20
 
 {{% /blocks/lead %}}
 
-{{% blocks/section type="section" color="dark" %}}
+{{% blocks/section color="dark" %}}
 
 ## What do you need?
 
@@ -35,4 +36,8 @@ OpenTelemetry ecosystem.
 
 {{% /blocks/section %}}
 
+{{< blocks/section color="white" type="container-lg" >}}
+
 {{<registry-search-form>}}
+
+{{< /blocks/section >}}

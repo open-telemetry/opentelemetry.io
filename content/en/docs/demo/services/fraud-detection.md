@@ -4,8 +4,8 @@ linkTitle: Fraud Detection
 aliases: [/docs/demo/services/frauddetectionservice]
 ---
 
-This service analyses incoming orders and detects malicious customers.
-This is only mocked and received orders are printed out.
+This service analyses incoming orders and detects malicious customers. This is
+only mocked and received orders are printed out.
 
 ## Auto-instrumentation
 

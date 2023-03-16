@@ -15,6 +15,7 @@ OpenTelemetry provides integration with the following open source projects.
 | External Project\*                                        | OpenTelemetry Supported Components                       |
 | --------------------------------------------------------- | -------------------------------------------------------- |
 | [Apache Kafka](https://kafka.apache.org/)                 | Collector                                                |
+| [Apache SkyWalking](https://skywalking.apache.org)        | Collector                                                |
 | [Elasticsearch](https://github.com/elastic/elasticsearch) | Collector, C++, Java, Python                             |
 | [Fluent Bit](https://fluentbit.io/)                       | Collector                                                |
 | [Graphite](https://graphiteapp.org/)                      | Collector                                                |
@@ -37,7 +38,7 @@ The following open source projects use OpenTelemetry components.
 | [containerd](https://github.com/containerd/containerd/blob/main/docs/tracing.md)           | Go                                  |
 | [CRI-O](https://github.com/cri-o/cri-o/blob/main/docs/crio.conf.5.md#criotracing-table)    | Go                                  |
 | [Docker buildx](https://github.com/docker/buildx/blob/master/docs/guides/opentelemetry.md) | Go                                  |
-| [Jaeger](https://www.jaegertracing.io/docs/latest/opentelemetry/)                          | Collector                           |
+| [Jaeger](https://www.jaegertracing.io/)                                                    | Collector, Go                       |
 | [Kubernetes](https://kubernetes.io/docs/concepts/cluster-administration/system-traces/)    | Go                                  |
 | [Micrometer](https://micrometer.io/docs/tracing#_micrometer_tracing_opentelemetry_setup)   | Java                                |
 | [Quarkus](https://quarkus.io/guides/opentelemetry)                                         | Java                                |

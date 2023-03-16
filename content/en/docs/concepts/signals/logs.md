@@ -1,7 +1,5 @@
 ---
-title: "Logs"
-description: >-
-  A log is a timestamped text record, either structured (recommended) or unstructured, with metadata. 
+title: Logs
 weight: 3
 ---
 

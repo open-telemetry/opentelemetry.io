@@ -7,6 +7,8 @@ tags:
   - instrumentation
 repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-wsgi
 license: Apache 2.0
-description: This library provides a WSGI middleware that can be used on any WSGI framework (such as Django / Flask) to track requests timing through OpenTelemetry.
+description:
+  This library provides a WSGI middleware that can be used on any WSGI framework
+  (such as Django / Flask) to track requests timing through OpenTelemetry.
 authors: OpenTelemetry Authors
 otVersion: latest

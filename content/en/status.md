@@ -5,7 +5,7 @@ aliases: [/project-status, /releases]
 description: Maturity-level of the main OpenTelemetry components
 ---
 
-{{% blocks/section type="section" color="white" %}}
+{{% blocks/section color="white" %}}
 
 ## {{% param title %}}
 

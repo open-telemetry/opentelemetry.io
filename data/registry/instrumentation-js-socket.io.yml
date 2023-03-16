@@ -10,4 +10,3 @@ repo: https://github.com/aspecto-io/opentelemetry-ext-js/tree/master/packages/in
 license: Apache 2.0
 description: Socket.io instrumentation for Node.js.
 authors: Aspecto Authors (motti@aspecto.io)
----

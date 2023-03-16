@@ -3,9 +3,8 @@ title: Exporters
 weight: 4
 ---
 
-In order to visualize and analyze your
-[traces](/docs/concepts/signals/traces/#tracing-in-opentelemetry) and metrics,
-you will need to export them to a backend.
+In order to visualize and analyze your [traces](/docs/concepts/signals/traces/)
+and metrics, you will need to export them to a backend.
 
 ## Console exporter
 
@@ -23,7 +22,7 @@ services:
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddOpenTelemetryTracing(b =>
+builder.Services.AddOpenTelemetry().WithTracing(b =>
 {
     b.AddConsoleExporter()
     // The rest of your setup code goes here too
@@ -196,9 +195,9 @@ global:
   evaluation_interval: 1s
 
 scrape_configs:
-  - job_name: "prometheus"
+  - job_name: prometheus
     static_configs:
-      - targets: ["localhost:9090"]
+      - targets: [localhost:9090]
 ```
 
 Next, run the following docker command to set up Prometheus:
@@ -256,6 +255,19 @@ var meterProvider = Sdk.CreateMeterProviderBuilder()
         options => options.UriPrefixes = new string[] { "http://localhost:9090/" })
     .Build();
 ```
+
+Finally, register the Prometheus scraping middleware using the
+`UseOpenTelemetryPrometheusScrapingEndpoint` extension method on
+`IApplicationBuilder` :
+
+```csharp
+var builder = WebApplication.CreateBuilder(args);
+var app = builder.Build();
+app.UseOpenTelemetryPrometheusScrapingEndpoint();
+```
+
+Further details on configuring the Prometheus exporter can be found
+[here](https://github.com/open-telemetry/opentelemetry-dotnet/blob/main/src/OpenTelemetry.Exporter.Prometheus.AspNetCore/README.md).
 
 ## Next steps
 

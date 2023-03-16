@@ -3,9 +3,8 @@ title: Exporters
 weight: 4
 ---
 
-In order to visualize and analyze your
-[traces](/docs/concepts/signals/traces/#tracing-in-opentelemetry) and metrics,
-you will need to export them to a backend.
+In order to visualize and analyze your [traces](/docs/concepts/signals/traces/)
+and metrics, you will need to export them to a backend.
 
 ## Trace exporters
 
@@ -117,8 +116,8 @@ auto processor = trace_sdk::SimpleSpanProcessorFactory::Create(std::move(exporte
 
 ### Batch span processor
 
-A batch span processor will group several spans together, before sending
-them to an exporter.
+A batch span processor will group several spans together, before sending them to
+an exporter.
 
 ```cpp
 #include "opentelemetry/sdk/trace/batch_span_processor_factory.h"
@@ -194,7 +193,8 @@ std::unique_ptr<opentelemetry::sdk::metrics::MetricReader> reader{
     new opentelemetry::sdk::metrics::PeriodicExportingMetricReader(std::move(exporter), options)};
 ```
 
-To learn more on how to use the Prometheus exporter, try out the [prometheus example](https://github.com/open-telemetry/opentelemetry-cpp/tree/main/examples/prometheus)
+To learn more on how to use the Prometheus exporter, try out the
+[prometheus example](https://github.com/open-telemetry/opentelemetry-cpp/tree/main/examples/prometheus)
 
 ## Next steps
 

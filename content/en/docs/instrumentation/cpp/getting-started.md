@@ -20,38 +20,43 @@ install some dependencies:
 
 <!-- prettier-ignore-start -->
 {{< ot-tabs "Linux (apt)" "Linux (yum)" "Linux (alpine)" "MacOS (homebrew)">}}
+
 {{< ot-tab lang="shell">}}
-$ sudo apt-get install git cmake g++ libcurl4-openssl-dev
+sudo apt-get install git cmake g++ libcurl4-openssl-dev
 {{< /ot-tab >}}
+
 {{< ot-tab lang="shell">}}
-$ sudo yum install git cmake g++ libcurl-devel
+sudo yum install git cmake g++ libcurl-devel
 {{< /ot-tab >}}
+
 {{< ot-tab lang="shell">}}
-$ sudo apk add git cmake g++ make curl-dev
+sudo apk add git cmake g++ make curl-dev
 {{< /ot-tab >}}
+
 {{< ot-tab lang="shell">}}
-$ xcode-select —install
-$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-$ brew install git cmake
+xcode-select —install
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install git cmake
 {{< /ot-tab >}}
+
 {{< /ot-tabs >}}
 <!-- prettier-ignore-end -->
 
 ## Building
 
-Get the opentelementry-cpp source:
+Get the `opentelementry-cpp` source:
 
 ```shell
-$ git clone --recursive https://github.com/open-telemetry/opentelemetry-cpp
+git clone --recursive https://github.com/open-telemetry/opentelemetry-cpp
 ```
 
 Navigate to the repository cloned above, and create the CMake build
 configuration:
 
 ```shell
-$ cd opentelemetry-cpp
-$ mkdir build && cd build
-$ cmake -DBUILD_TESTING=OFF -DWITH_EXAMPLES_HTTP=ON ..
+cd opentelemetry-cpp
+mkdir build && cd build
+cmake -DBUILD_TESTING=OFF -DWITH_EXAMPLES_HTTP=ON ..
 ```
 
 Once build configuration is created, build the CMake targets `http_client` and
@@ -64,7 +69,7 @@ cmake --build . --target http_client http_server
 If all goes well, you should find binaries `http_server` and `http_client` in
 `./examples/http`:
 
-```shell
+```console
 $ ls ./examples/http
 CMakeFiles  Makefile  cmake_install.cmake  http_client  http_server
 ```
@@ -73,14 +78,14 @@ CMakeFiles  Makefile  cmake_install.cmake  http_client  http_server
 
 Open two terminals, in the first terminal, start the http server:
 
-```shell
+```console
 $ ./examples/http/http_server
 Server is running..Press ctrl-c to exit..
 ```
 
 In the other terminal, run the http client:
 
-```shell
+```console
 $ ./examples/http/http_client
 {
   name          : /helloworld
@@ -116,7 +121,7 @@ $ ./examples/http/http_client
 
 Also the server should dump you a trace to the console:
 
-```shell
+```properties
 {
   name          : /helloworld
   trace_id      : 05eec7a55d3544434265dad89d7fe96f

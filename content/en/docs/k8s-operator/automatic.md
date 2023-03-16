@@ -164,7 +164,7 @@ spec:
     - baggage
   sampler:
     type: parentbased_traceidratio
-    argument: "1"
+    argument: '1'
   java:
     env:
       - name: OTEL_INSTRUMENTATION_KAFKA_ENABLED
@@ -234,7 +234,7 @@ spec:
     - baggage
   sampler:
     type: parentbased_traceidratio
-    argument: "1"
+    argument: '1'
   python:
     env:
       - name: OTEL_PYTHON_DISABLED_INSTRUMENTATIONS

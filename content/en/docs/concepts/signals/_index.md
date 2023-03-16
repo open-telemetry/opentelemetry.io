@@ -1,12 +1,13 @@
 ---
 title: Signals
-description: Categories of telemetry supported by OpenTelemetry
+description: Learn about the categories of telemetry supported by OpenTelemetry
 aliases:
   - /docs/concepts/data-sources
   - /docs/concepts/otel-concepts
 weight: 11
 ---
 
-In OpenTelemetry, a **Signal** refers to the categories of telemetry that are
-supported by the specification. It currently supports the **Signals** below, and
-more may be added in the future.
+In OpenTelemetry, a **[signal][]** refers to a category of telemetry. A brief
+introduction to the currently supported signals is provided in this section.
+
+[signal]: /docs/reference/specification/glossary/#signals

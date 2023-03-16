@@ -1,46 +1,38 @@
-/* docsy-delta full file override: we're not tracking changes to the docsy file of the same name. */
+/* Docsy-delta full file override: we're not tracking changes to the Docsy file of the same name. */
 
-$twitter-blue: #00aced;
-$gitter-magenta: #ec1363;
-$opentelemetry-orange: #f5a800;
-$opentelemetry-orange-light: #fff0ce;
-$opentelemetry-blue: #4f62ad;
-$opentelemetry-blue-light: #cee1ff;
-$opentelemetry-purple: #425cc7;
-$light-green: #c0f587;
+$otel-colors: (
+  'orange': #f5a800,
+  'orange-light': #fff0ce,
+  'blue': #4f62ad,
+  'blue-light': #cee1ff,
+  'purple': #425cc7,
+  'light-green': #c0f587,
+);
 
-$primary: $opentelemetry-blue;
-$secondary: $opentelemetry-orange;
+$otel-component-colors: (
+  'collector': #070002,
+  'core': #2c3ed3,
+  'cpp': #f34b7d,
+  'dotnet': #178600,
+  'erlang': #b83998,
+  'exporter': #3ed32c,
+  'extension': #d3532c,
+  'go': #00add8,
+  'instrumentation': #d32c3e,
+  'java': #b07219,
+  'js': #f1e05a,
+  'lua': #03037b,
+  'php': #4f5d95,
+  'processor': #d32c42,
+  'python': #3572a5,
+  'receiver': #742cd3,
+  'resource-detector': green,
+  'ruby': #701516,
+  'rust': #dea584,
+  'swift': #de5d43,
+  'utilities': #2cd3b4,
+);
+
+$primary: map-get($otel-colors, 'blue');
+$secondary: map-get($otel-colors, 'orange');
 $td-enable-google-fonts: false;
-$google_font_name: "Noto Sans";
-$google_font_family: "Noto+Sans:300,400,600,700";
-
-$enable-gradients: false;
-$enable-rounded: true;
-$enable-shadows: false;
-
-$registry-vertical-margin: 1rem;
-$green: #26c53e;
-$dark-blue: #39a9da;
-
-$core: #2c3ed3;
-$instrumentation: #d32c3e;
-$exporter: #3ed32c;
-$extension: #d3532c;
-$utilities: #2cd3b4;
-$receiver: #742cd3;
-$processor: #d32c42;
-
-$collector: #070002;
-$dotnet: #178600;
-$cpp: #f34b7d;
-$erlang: #b83998;
-$go: #00add8;
-$java: #b07219;
-$javascript: #f1e05a;
-$lua: #03037b;
-$php: #4f5d95;
-$python: #3572a5;
-$ruby: #701516;
-$rust: #dea584;
-$swift: #de5d43;

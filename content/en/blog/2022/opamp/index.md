@@ -184,8 +184,8 @@ cd internal/examples/server
 go run .
 ```
 
-Visit <http://localhost:4321> to verify that the server is running. Notice that no agent
-is displayed:
+Visit <http://localhost:4321> to verify that the server is running. Notice that
+no agent is displayed:
 
 ![No agents display on opamp server demo UI](opamp_server_no_agents.png)
 

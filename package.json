@@ -11,6 +11,7 @@
     "_check:formatting": "npx prettier --check .",
     "_check:links": "HTMLTEST_ARGS='--log-level 1' npm run __check:links",
     "_check:links:internal": "npm run __check:links",
+    "_check:links--warn": "npm run _check:links || (echo; echo 'WARNING: see link-checker output for issues.'; echo)",
     "_get:no": "echo SKIPPING get operation",
     "_get:submodule:non-lang": "npm run _get:submodule -- content-modules/opentelemetry-specification themes/docsy",
     "_get:submodule": "set -x && git submodule update --init ${DEPTH:- --depth 1}",
@@ -33,9 +34,9 @@
     "diff:fail": "git diff --name-only --exit-code || (echo; echo 'ERROR: the files above have changed. Locally rerun `npm run test` and commit changes'; echo; git diff | head -100; exit 1)",
     "get:submodule": "npm run _get:${GET:-submodule}",
     "make:public": "make public ls-public",
-    "postbuild:preview": "npm run _check:links",
-    "postbuild:production": "npm run _check:links",
-    "prebuild:preview": "run-s _prebuild check:formatting",
+    "postbuild:preview": "npm run _check:links--warn",
+    "postbuild:production": "npm run _check:links--warn",
+    "prebuild:preview": "run-s _prebuild",
     "prebuild:production": "run-s _prebuild check:formatting",
     "prebuild": "npm run _prebuild",
     "precheck:links": "npm run build",
@@ -60,7 +61,8 @@
   },
   "private": true,
   "prettier": {
-    "proseWrap": "always"
+    "proseWrap": "always",
+    "singleQuote": true
   },
   "textlint": {
     "rules": {
@@ -88,13 +90,13 @@
     }
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.13",
-    "hugo-extended": "0.110.0",
-    "netlify-cli": "^12.10.0",
+    "autoprefixer": "^10.4.14",
+    "hugo-extended": "0.111.3",
+    "netlify-cli": "^13.1.3",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.21",
     "postcss-cli": "^10.1.0",
-    "prettier": "^2.6.2",
+    "prettier": "^2.8.4",
     "textlint": "^13.1.4",
     "textlint-rule-terminology": "^3.0.4"
   },

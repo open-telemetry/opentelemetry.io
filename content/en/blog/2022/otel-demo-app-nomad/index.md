@@ -10,14 +10,13 @@ Y’all… I’m so excited, because I finally got to work on an item on my tech
 bucket list. Last week, I began the process of translating
 [OpenTelemetry (OTel) Demo App](https://github.com/open-telemetry/opentelemetry-demo)’s
 [Helm Charts](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-demo)
-to [HashiCorp](https://hashicorp.com) [Nomad][] job
-specs. Today I’ll be talking about how to run the OpenTelemetry Demo App on
-Nomad, using my favorite Hashi-in-a-box tool,
-[HashiQube](https://rubiksqube.com/#/).
+to [HashiCorp](https://hashicorp.com) [Nomad][] job specs. Today I’ll be talking
+about how to run the OpenTelemetry Demo App on Nomad, using my favorite
+Hashi-in-a-box tool, [HashiQube](https://rubiksqube.com/#/).
 
 Let’s do this!
 
-![Aerial view of Toronto, Canada at night](toronto-cityscape.jpg "Aerial view of Toronto, Canada at night")
+![Aerial view of Toronto, Canada at night](toronto-cityscape.jpg 'Aerial view of Toronto, Canada at night')
 
 ## Deployment
 
@@ -53,12 +52,12 @@ Below are the repos that we’ll be using for today’s tutorial:
 ### HashiQube Setup
 
 Before you start, just a friendly reminder that HashiQube by default runs
-[Nomad][], [Vault](https://www.vaultproject.io), and
-[Consul](https://consul.io) on Docker. In addition, we’ll be deploying 21 job
-specs to Nomad. This means that we’ll need a decent amount of CPU and RAM, so
-please make sure that you have enough resources allocated in your Docker
-desktop. For reference, I’m running an M1 Macbook Pro with 8 cores and 32 GB
-RAM. My Docker Desktop Resource settings are as follows:
+[Nomad][], [Vault](https://www.vaultproject.io), and [Consul](https://consul.io)
+on Docker. In addition, we’ll be deploying 21 job specs to Nomad. This means
+that we’ll need a decent amount of CPU and RAM, so please make sure that you
+have enough resources allocated in your Docker desktop. For reference, I’m
+running an M1 Macbook Pro with 8 cores and 32 GB RAM. My Docker Desktop Resource
+settings are as follows:
 
 - **CPUs:** 3
 - **Memory:** 9.5GB
@@ -67,7 +66,7 @@ RAM. My Docker Desktop Resource settings are as follows:
 Here’s a screenshot of my Docker Preferences Resources settings, if you need a
 visual:
 
-![Screen capture of Docker Desktop resources preferences](docker-desktop-resources-config.png "Screen capture of Docker Desktop resources preferences")
+![Screen capture of Docker Desktop resources preferences](docker-desktop-resources-config.png 'Screen capture of Docker Desktop resources preferences')
 
 For more, check out the Docker docs on how to change your resources settings for
 [Mac](https://docs.docker.com/desktop/settings/mac/),
@@ -99,7 +98,7 @@ Once everything is up and running (this will take several minutes, by the way),
 you’ll see this in the tail-end of the startup sequence, to indicate that you
 are good to go:
 
-![Screen capture of the tail-end of the HashiQube startup sequence, displaying the URLs for Nomad, Nomad Documentation, Traefik, and Traefik documentation](hashiqube-startup-sequence.png "Screen capture of the tail-end of the HashiQube startup sequence")
+![Screen capture of the tail-end of the HashiQube startup sequence, displaying the URLs for Nomad, Nomad Documentation, Traefik, and Traefik documentation](hashiqube-startup-sequence.png 'Screen capture of the tail-end of the HashiQube startup sequence')
 
 You can now access the apps using the URLs below:
 
@@ -208,7 +207,7 @@ A reminder that the `Evaluation ID` values will be different on your machine.
 As things are deploying, you can mozy on over to the Nomad UI at
 <http://localhost:4646> to see how things are coming along:
 
-![Screen capture of jobs view in Nomad. Some jobs have started, and others are still starting up.](nomad-jobs-startup.png "Screen capture of jobs view in Nomad. Some jobs have started, and others are still starting up")
+![Screen capture of jobs view in Nomad. Some jobs have started, and others are still starting up.](nomad-jobs-startup.png 'Screen capture of jobs view in Nomad. Some jobs have started, and others are still starting up')
 
 It will take some time for all of the services to come up (sometimes up to 10
 minutes), especially since Nomad needs to download the images and initialize the
@@ -219,12 +218,12 @@ the above screen capture. DON’T PANIC! IT WILL ALL BE OKAY!!
 Once all of the jobs are up and running, you’ll see everything look green, like
 this:
 
-![Screen capture of jobs view in Nomad, with all jobs started](nomad-started.png "Screen capture of jobs view in Nomad, with all jobs started")
+![Screen capture of jobs view in Nomad, with all jobs started](nomad-started.png 'Screen capture of jobs view in Nomad, with all jobs started')
 
 You can also head on over to Consul at <http://localhost:8500> to see the health
 of the services:
 
-![Screen capture of Consul service health. All services healthy.](consul-service-health.png "Screen capture of Consul service health. All services healthy.")
+![Screen capture of Consul service health. All services healthy.](consul-service-health.png 'Screen capture of Consul service health. All services healthy.')
 
 By default, unhealthy services show up at the top, with a red “x” next to them.
 Since we don’t see any nasty red “x”s in the above screen shot, we know that our
@@ -258,34 +257,34 @@ The services are accessed via the URLs below.
 
 **Webstore:** <http://otel-demo.localhost/>
 
-![Screen capture of the Demo App Webstore UI](otel-demo-app-ui.jpg "Screen capture of the Demo App Webstore UI")
+![Screen capture of the Demo App Webstore UI](otel-demo-app-ui.jpg 'Screen capture of the Demo App Webstore UI')
 
 Go ahead and explore the amazing selection of telescopes and accessories, and
 buy a few. 😉🔭
 
 **Jaeger UI:** <http://otel-demo.localhost/jaeger/ui/>
 
-![Screen capture of the Jaeger UI](jaeger.png "Screen capture of the Jaeger UI")
+![Screen capture of the Jaeger UI](jaeger.png 'Screen capture of the Jaeger UI')
 
 In the screen capture above, we can see a sample Trace from the
 [checkoutservice](https://github.com/avillela/nomad-conversions/blob/main/otel-demo-app/jobspec/checkoutservice.nomad).
 
 **Grafana:** <http://otel-demo.localhost/grafana/>
 
-![Screen capture of one of the OpenTelemetry dashboard on Grafana](grafana-1.png "Screen capture of one of the OpenTelemetry dashboard on Grafana")
+![Screen capture of one of the OpenTelemetry dashboard on Grafana](grafana-1.png 'Screen capture of one of the OpenTelemetry dashboard on Grafana')
 
-![Screen capture of the recommendationservice metrics dashboard on Grafana](grafana-2.png "Screen capture of the recommendationservice metrics dashboard on Grafana")
+![Screen capture of the recommendationservice metrics dashboard on Grafana](grafana-2.png 'Screen capture of the recommendationservice metrics dashboard on Grafana')
 
 The Demo App comes bundled with a two Grafana dashboards, which showcase Metrics
 emitted with OpenTelemetry.
 
 **Feature Flags UI:** <http://otel-demo.localhost/feature/>
 
-![Screen capture of featureflagservice UI](featureflag.png "Screen capture of featureflagservice UI")
+![Screen capture of featureflagservice UI](featureflag.png 'Screen capture of featureflagservice UI')
 
 **Load Generator UI:** <http://otel-demo.localhost/loadgen/>
 
-![Screen capture of loadgenerator UI](loadgen.png "Screen capture of loadgenerator UI")
+![Screen capture of loadgenerator UI](loadgen.png 'Screen capture of loadgenerator UI')
 
 ## Gotchas
 
@@ -306,7 +305,7 @@ Usually a good indicator that services aren’t sending telemetry to the Collect
 is to look at the number of services showing up in Jaeger. You should see 14
 services, including the `jaeger-query` service.
 
-![Screen capture of Jaeger service list drop-down](jaeger-service-list.png "Screen capture of Jaeger service list drop-down")
+![Screen capture of Jaeger service list drop-down](jaeger-service-list.png 'Screen capture of Jaeger service list drop-down')
 
 ### Low memory on host machine
 
@@ -356,7 +355,7 @@ were my guests on the [On-Call Me Maybe Podcast](https://oncallmemaybe.com)!)
 I will now leave you with a picture of Phoebe the rat, peering out of a pink
 basket. Doesn’t she look cute? 🥰
 
-![Light brown and white rat peering out of a pink wicker basket](phoebe-basket.jpg "Phoebe the rat peers out of a pink wicker basket")
+![Light brown and white rat peering out of a pink wicker basket](phoebe-basket.jpg 'Phoebe the rat peers out of a pink wicker basket')
 
 Peace, love, and code. 🦄 🌈 💫
 
@@ -373,4 +372,4 @@ The OpenTelemetry community is always looking for contributions!
 be sure to follow
 [OpenTelemetry on Mastodon](https://fosstodon.org/@opentelemetry)
 
-[Nomad]: https://www.nomadproject.io
+[nomad]: https://www.nomadproject.io
