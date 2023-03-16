@@ -125,6 +125,7 @@ visualization in a docker container:
 
 ```shell
 docker run -d --name jaeger \
+  -e COLLECTOR_OTLP_ENABLED=true \
   -p 16686:16686 \
   -p 4317:4317 \
   -p 4318:4318 \
@@ -180,8 +181,10 @@ using var tracerProvider = Sdk.CreateTracerProviderBuilder()
 
 ## Prometheus (Experimental)
 
-***Note:** this is experimental and dependent on the OpenTelemetry
-specification to be made stable before it will be a released package. For now, we recommend using the OTLP exporter and using the OpenTelemetry Collector to send metrics to Prometheus*
+**\*Note:** this is experimental and dependent on the OpenTelemetry
+specification to be made stable before it will be a released package. For now,
+we recommend using the OTLP exporter and using the OpenTelemetry Collector to
+send metrics to Prometheus\*
 
 If you're using Prometheus to visualize metrics data, you'll need to set it up
 first. Here's how to do it using a docker container:
@@ -213,7 +216,7 @@ Next, install the Prometheus exporter:
 
 ### ASP.NET
 
-```
+```shell
 dotnet add package OpenTelemetry.Exporter.Prometheus.AspNetCore --version 1.4.0-rc.4
 dotnet add package OpenTelemetry.Extensions.Hosting
 ```
@@ -245,8 +248,14 @@ await app.RunAsync();
 
 ### Non-ASP.NET Core
 
-For applications not using ASP.NET Core, you can use the `HttpListner` version.
-This is setup directly on the `MeterProviderBuilder`:
+For applications not using ASP.NET Core, you can use the `HttpListner` version
+which is available in a different package:
+
+```shell
+dotnet add package OpenTelemetry.Exporter.Prometheus.HttpListener --version 1.4.0-rc.4
+```
+
+Then this is setup directly on the `MeterProviderBuilder`:
 
 ```csharp
 var meterProvider = Sdk.CreateMeterProviderBuilder()
