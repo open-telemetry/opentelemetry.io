@@ -23,13 +23,8 @@ OpenTelemetry Ruby is in use by a number of companies, including:
 
 If you would like to add your name to this list, submit a pull request.
 
-## Further Reading
+## Repository
 
-- [OpenTelemetry for Ruby on GitHub][repository]
-- [Ruby API Documentation][ruby-docs]
-- [Examples][]
+- [OpenTelemetry for Ruby repository][repo]
 
-[repository]: https://github.com/open-telemetry/opentelemetry-ruby
-[ruby-docs]: https://open-telemetry.github.io/opentelemetry-ruby/
-[examples]:
-  https://github.com/open-telemetry/opentelemetry-ruby/tree/main/examples
+[repo]: https://github.com/open-telemetry/opentelemetry-ruby
