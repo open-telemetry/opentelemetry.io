@@ -108,7 +108,7 @@ Resource associated with Activity:
 
 ### Manual Instrumentation
 
-Next, add [tracing](/docs/concepts/signals/traces/#tracing-in-opentelemetry) via
+Next, add [tracing](/docs/concepts/signals/traces/) via
 the `System.Diagnostics` API.
 
 Paste the following code into your `HomeController`'s `Index` action:
