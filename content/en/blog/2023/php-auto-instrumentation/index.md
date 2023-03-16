@@ -5,8 +5,6 @@ date: 2023-03-15
 author: '[Przemek Delewski](https://github.com/pdelewski/) (Sumo Logic)'
 ---
 
-## Introduction
-
 Automatic Instrumentation is a process of adding tracing capabilities into user
 application without modyfing it's source code. There are several techniques to
 do that, but all of them more or less work in the same way by injecting
