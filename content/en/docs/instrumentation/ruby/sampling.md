@@ -44,21 +44,7 @@ This tells the SDK to sample spans such that only 10% of traces get exported.
 
 ### Configuration in Code
 
-You can also configure a `TraceIdRatioBased` sampler in code. Here's an example:
-
-```ruby
-require 'opentelemetry/sdk'
-require 'opentelemetry/exporter/otlp'
-require 'opentelemetry/instrumentation/all'
-
-# sample 10% of traces
-sampling_percentage = 0.1
-sampler = Samplers.trace_id_ratio_based(sampling_percentage)
-
-tracer_provider = OpenTelemetry.tracer_provider(sampler: sampler)
-
-OpenTelemetry::SDK.configure do |c|
-  # Other initialization code goes here too...
-  c.tracer_provider = tracer_provider
-end
-```
+Although it is possible to configure a `TraceIdRatioBased` sampler in code, it's
+not recommended. Doing so requires you to manually set up a Tracer Provider with
+all the right configuration options, which is hard to get right compared to just
+using `OpenTelemetry::SDK.configure`.
