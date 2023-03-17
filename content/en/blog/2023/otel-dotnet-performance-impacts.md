@@ -1,6 +1,6 @@
 ---
 title: Does OpenTelemetry in .NET Cause Performance Degradation?
-linkTitle: opentelemetry dotnet performance impacts
+linkTitle: OTel .NET Performance Impacts
 date: 2023-03-10
 author: '[MartinDotNet](https://github.com/martinjt) (Honeycomb)'
 ---
