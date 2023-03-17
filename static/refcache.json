@@ -2427,6 +2427,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:46:31.868527-05:00"
   },
+  "https://go.dev/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-17T15:50:01.50326093-03:00"
+  },
   "https://go.dev/doc/install/gccgo": {
     "StatusCode": 200,
     "LastSeen": "2023-02-15T21:26:22.8779-05:00"
@@ -3018,6 +3022,10 @@
   "https://opentelemetry.io": {
     "StatusCode": 206,
     "LastSeen": "2023-02-16T17:43:21.964687-05:00"
+  },
+  "https://opentelemetry.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-03-17T15:49:55.861069175-03:00"
   },
   "https://opentracing.io": {
     "StatusCode": 206,
