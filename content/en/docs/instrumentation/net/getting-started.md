@@ -11,73 +11,119 @@ OpenTelemetry Protocol (OTLP) and the OpenTelemetry Collector.
 
 ## ASP.NET Core
 
-The following example demonstrates automatic and manual instrumentation via an
-ASP.NET Core app.
+The following example demonstrates using Instrumentation Libraries and manual
+instrumentation via an ASP.NET Core app.
 
-First, install all the required packages:
+First, create your basic ASP.NET Core site:
+
+```shell
+dotnet new mvc
+```
+
+Next, Add the Core OpenTelemetry packages
 
 ```shell
 dotnet add package OpenTelemetry.Exporter.Console
-dotnet add package OpenTelemetry.Extensions.Hosting --prerelease
-dotnet add package OpenTelemetry.Instrumentation.AspNetCore --prerelease
-dotnet add package OpenTelemetry.Instrumentation.Http --prerelease
-dotnet add package OpenTelemetry.Instrumentation.SqlClient --prerelease
+dotnet add package OpenTelemetry.Extensions.Hosting
 ```
 
-Note that the `--prerelease` flag is required for all instrumentation packages
-because they are all are pre-release.
+Now let's add the instrumentation packages for ASP.NET Core. This will give us
+some automatic spans for each HTTP request to our app.
 
-This will also install the `OpenTelemetry` package.
+```shell
+dotnet add package OpenTelemetry.Instrumentation.AspNetCore --prerelease
+```
 
-### Tracing
+_Note that as the Semantic Conventions for attribute names are not currently
+stable the instrumentation package is currently not in a released state. That
+doesn't mean that the functionality itself is not stable. This means that you
+need to use the `--prerelease` flag, or install a specific version of the
+package_
+
+### Setup
+
+Next, we need to add OpenTelemetry to our Service Collection in `Program.cs` so
+that its listening correctly.
+
+```csharp
+using System.Diagnostics;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// .. other setup
+
+builder.Services.AddOpenTelemetry()
+    .WithTracing(tracerProviderBuilder =>
+        tracerProviderBuilder
+            .AddSource(DiagnosticsConfig.ActivitySource.Name)
+            .ConfigureResource(resource => resource
+                .AddService(DiagnosticsConfig.ServiceName))
+            .AddAspNetCoreInstrumentation()
+            .AddConsoleExporter());
+
+// ... other setup
+
+public static class DiagnosticsConfig
+{
+    public const string ServiceName = "MyService";
+    public static ActivitySource ActivitySource = new ActivitySource(ServiceName);
+}
+```
+
+At this stage, you should be able to run your site, and see a Console output
+similar to this:
+
+Note: an `Activity` in .NET is analogous to a Span in OpenTelemetry terminology
+
+<details>
+<summary>View example output</summary>
+
+```
+Activity.TraceId:            54d084eba205a7a39398df4642be8f4a
+Activity.SpanId:             aca5e39a86a17d59
+Activity.TraceFlags:         Recorded
+Activity.ActivitySourceName: Microsoft.AspNetCore
+Activity.DisplayName:        /
+Activity.Kind:               Server
+Activity.StartTime:          2023-02-21T12:19:28.2499974Z
+Activity.Duration:           00:00:00.3106744
+Activity.Tags:
+    net.host.name: localhost
+    net.host.port: 5123
+    http.method: GET
+    http.scheme: http
+    http.target: /
+    http.url: http://localhost:5123/
+    http.flavor: 1.1
+    http.user_agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.50
+    http.status_code: 200
+Resource associated with Activity:
+    service.name: MyService
+    service.instance.id: 2c7ca153-e460-4643-b550-7c08487a4c0c
+```
+
+</details>
+
+### Manual Instrumentation
 
 Next, add [tracing](/docs/concepts/signals/traces/) via the `System.Diagnostics`
 API.
 
-Paste the following code into your `Program.cs` file:
+Paste the following code into your `HomeController`'s `Index` action:
 
 ```csharp
-using System.Diagnostics;
-
-using OpenTelemetry.Resources;
-using OpenTelemetry.Trace;
-
-// Define some important constants to initialize tracing with
-var serviceName = "MyCompany.MyProduct.MyService";
-var serviceVersion = "1.0.0";
-
-var builder = WebApplication.CreateBuilder(args);
-
-// Configure important OpenTelemetry settings, the console exporter, and instrumentation library
-builder.Services.AddOpenTelemetry().WithTracing(tracerProviderBuilder =>
-{
-    tracerProviderBuilder
-        .AddConsoleExporter()
-        .AddSource(serviceName)
-        .SetResourceBuilder(
-            ResourceBuilder.CreateDefault()
-                .AddService(serviceName: serviceName, serviceVersion: serviceVersion))
-        .AddHttpClientInstrumentation()
-        .AddAspNetCoreInstrumentation()
-        .AddSqlClientInstrumentation();
-});
-
-var app = builder.Build();
-
-var MyActivitySource = new ActivitySource(serviceName);
-
-app.MapGet("/hello", () =>
+public IActionResult Index()
 {
     // Track work inside of the request
-    using var activity = MyActivitySource.StartActivity("SayHello");
+    using var activity = DiagnosticsConfig.Source.StartActivity("SayHello");
     activity?.SetTag("foo", 1);
     activity?.SetTag("bar", "Hello, World!");
     activity?.SetTag("baz", new int[] { 1, 2, 3 });
 
-    return "Hello, World!";
-});
-
-app.Run();
+    return View();
+}
 ```
 
 When you run the app and navigate to the `/hello` route, you'll see output about
@@ -88,186 +134,148 @@ following:
 <summary>View example output</summary>
 
 ```text
-Activity.Id:          00-d72f7e51dd06b57211f415489df89b1c-c8a394817946316d-01
-Activity.ParentId:    00-d72f7e51dd06b57211f415489df89b1c-e1c9fde6c8f415ad-01
-Activity.ActivitySourceName: MyCompany.MyProduct.MyServiceActivity.DisplayName: SayHello
-Activity.Kind:        Internal
-Activity.StartTime:   2021-12-21T01:15:27.5712866Z
-Activity.Duration:    00:00:00.0000487
-Activity.TagObjects:
-    foo: 1
-    bar: Hello, World!
-    baz: [1, 2, 3]
-Resource associated with Activity:
-    service.name: MyCompany.MyProduct.MyService
-    service.version: 1.0.0
-    service.instance.id: 45aacfb0-e117-40cb-9d4d-9bcca661f6dd
-
-Activity.Id:          00-d72f7e51dd06b57211f415489df89b1c-e1c9fde6c8f415ad-01
-Activity.ActivitySourceName: OpenTelemetry.Instrumentation.AspNetCore
-Activity.DisplayName: /hello
-Activity.Kind:        Server
-Activity.StartTime:   2021-12-21T01:15:27.5384997Z
-Activity.Duration:    00:00:00.0429197
-Activity.TagObjects:
-    http.host: localhost:7207
-    http.method: GET
-    http.target: /hello
-    http.url: https://localhost:7207/hello
-    http.user_agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36
-    http.status_code: 200
-    otel.status_code: UNSET
-Resource associated with Activity:
-    service.name: MyCompany.MyProduct.MyService
-    service.version: 1.0.0
-    service.instance.id: 45aacfb0-e117-40cb-9d4d-9bcca661f6dd
-```
-
-</details>
-
-This output has both the manually created span to track work in the route, and a
-span created by the `OpenTelemetry.Instrumentation.AspNetCore` instrumentation
-library that tracks the inbound ASP.NET Core request.
-
-### Metrics
-
-Next, add metrics to the app. This will initialize a
-[Meter](/docs/concepts/signals/metrics) to create a counter in code. It also
-configures automatic metrics instrumentation.
-
-```csharp
-using System.Diagnostics;
-using System.Diagnostics.Metrics;
-
-using OpenTelemetry.Trace;
-using OpenTelemetry.Metrics;
-using OpenTelemetry.Resources;
-
-// Define some important constants to initialize tracing with
-var serviceName = "MyCompany.MyProduct.MyService";
-var serviceVersion = "1.0.0";
-
-var MyActivitySource = new ActivitySource(serviceName);
-
-var builder = WebApplication.CreateBuilder(args);
-
-var appResourceBuilder = ResourceBuilder.CreateDefault()
-    .AddService(serviceName: serviceName, serviceVersion: serviceVersion);
-
-builder.Services.AddOpenTelemetry().WithTracing(tracerProviderBuilder =>
-{
-    tracerProviderBuilder
-        .AddConsoleExporter()
-        .AddSource(MyActivitySource.Name)
-        .SetResourceBuilder(appResourceBuilder)
-        .AddHttpClientInstrumentation()
-        .AddAspNetCoreInstrumentation()
-        .AddSqlClientInstrumentation();
-});
-
-var meter = new Meter(serviceName);
-var counter = meter.CreateCounter<long>("app.request-counter");
-builder.Services.AddOpenTelemetry().WithMetrics(metricProviderBuilder =>
-{
-    metricProviderBuilder
-        .AddConsoleExporter()
-        .AddMeter(meter.Name)
-        .SetResourceBuilder(appResourceBuilder)
-        .AddAspNetCoreInstrumentation()
-        .AddHttpClientInstrumentation();
-});
-
-var app = builder.Build();
-
-app.MapGet("/hello", () =>
-{
-    // Track work inside of the request
-    using var activity = MyActivitySource.StartActivity("SayHello");
-    activity?.SetTag("foo", 1);
-    activity?.SetTag("bar", "Hello, World!");
-    activity?.SetTag("baz", new int[] { 1, 2, 3 });
-
-    // Up a counter for each request
-    counter.Add(1);
-
-    return "Hello, World!";
-});
-
-app.Run();
-```
-
-The output will be similar as with tracing, but now includes the request counter
-and periodically exports a histogram of request times for each route.
-
-<details>
-<summary>View example output</summary>
-
-```text
-Activity.TraceId:            bdf32b90913015106be97242fbfca649
-Activity.SpanId:             7dba8699cd7ae27c
+Activity.TraceId:            47d25efc8b5e9184ce57e692f5f65465
+Activity.SpanId:             bb864adcf4592f54
 Activity.TraceFlags:         Recorded
-Activity.ParentSpanId:       c28199417929ae65
-Activity.ActivitySourceName: MyCompany.MyProduct.MyService
+Activity.ParentSpanId:       acbff23f5ad721ff
+Activity.ActivitySourceName: MyService
 Activity.DisplayName:        SayHello
 Activity.Kind:               Internal
-Activity.StartTime:          2022-11-16T06:09:37.7932050Z
-Activity.Duration:           00:00:00.0018200
+Activity.StartTime:          2023-02-21T12:27:41.9596458Z
+Activity.Duration:           00:00:00.0005683
 Activity.Tags:
     foo: 1
     bar: Hello, World!
     baz: [1,2,3]
 Resource associated with Activity:
-    service.name: MyCompany.MyProduct.MyService
-    service.version: 1.0.0
-    service.instance.id: c1593668-d427-4e5d-a7a6-03c3dd4fa342
-
-Activity.TraceId:            bdf32b90913015106be97242fbfca649
-Activity.SpanId:             c28199417929ae65
-Activity.TraceFlags:         Recorded
-Activity.ActivitySourceName: OpenTelemetry.Instrumentation.AspNetCore
-Activity.DisplayName:        /hello
-Activity.Kind:               Server
-Activity.StartTime:          2022-11-16T06:09:37.7878590Z
-Activity.Duration:           00:00:00.0400410
-Activity.Tags:
-    http.host: localhost:7026
-    http.method: GET
-    http.scheme: https
-    http.target: /hello
-    http.url: https://localhost:7026/hello
-    http.flavor: 1.1
-    http.user_agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36
-    http.status_code: 200
-Resource associated with Activity:
-    service.name: MyCompany.MyProduct.MyService
-    service.version: 1.0.0
-    service.instance.id: c1593668-d427-4e5d-a7a6-03c3dd4fa342
-
-Export app.request-counter, Meter: MyCompany.MyProduct.MyService
-(2022-11-16T06:09:04.2555860Z, 2022-11-16T06:09:44.2393710Z] LongSum
-Value: 1
-
-(2022-11-16T06:09:04.2574360Z, 2022-11-16T06:09:44.2393730Z] http.flavor: 1.1 http.host: localhost:7026 http.method: GET http.scheme: https http.status_code: 200 http.target: /hello Histogram
-Value: Sum: 40.041 Count: 1
-(-Infinity,0]:0
-(0,5]:0
-(0,10]:0
-(0,25]:0
-(0,50]:1
-(0,75]:0
-(0,100]:0
-(0,250]:0
-(0,500]:0
-(0,750]:0
-(0,1000]:0
-(0,2500]:0
-(0,5000]:0
-(0,7500]:0
-(0,10000]:0
-(0,+Infinity]:0
+    service.name: MyService
+    service.instance.id: 2b07a9ca-29c4-4e01-b0ed-929184b32192
 ```
 
 </details>
+
+You'll notice the `Activity` objects from ASP.NET Core alongside the `Activity`
+we created manually in our controller action.
+
+### Metrics
+
+Next we'll add the ASP.NET Core automatically generated metrics to the app.
+
+```csharp
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
+using OpenTelemetry.Metrics;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// .. other setup
+
+builder.Services.AddOpenTelemetry()
+    .WithTracing(/*  .. tracing setup */ )
+    .WithMetrics(metricsProviderBuilder =>
+        metricsProviderBuilder
+            .ConfigureResource(resource => resource
+                .AddService(DiagnosticsConfig.ServiceName))
+            .AddAspNetCoreInstrumentation()
+            .AddConsoleExporter());
+
+// .. other setup
+```
+
+If you run your application now, you'll see a series of metrics output to the
+console. like this.
+
+<details>
+<summary>View example output</summary>
+
+```
+Export http.server.duration, Measures the duration of inbound HTTP requests., Unit: ms, Meter: OpenTelemetry.Instrumentation.AspNetCore/1.0.0.0
+(2023-02-21T12:38:57.0187781Z, 2023-02-21T12:44:16.9651349Z] http.flavor: 1.1 http.method: GET http.route: {controller=Home}/{action=Index}/{id?} http.scheme: http http.status_code: 200 net.host.name: localhost net.host.port: 5123 Histogram
+Value: Sum: 373.4504 Count: 1 Min: 373.4504 Max: 373.4504
+(-Infinity,0]:0
+(0,5]:0
+(5,10]:0
+(10,25]:0
+(25,50]:0
+(50,75]:0
+(75,100]:0
+(100,250]:0
+(250,500]:1
+(500,750]:0
+(750,1000]:0
+(1000,2500]:0
+(2500,5000]:0
+(5000,7500]:0
+(7500,10000]:0
+(10000,+Infinity]:0
+
+```
+
+</details>
+
+### Manual Metrics
+
+Next, add some manual metrics to the app. This will initialize a
+[Meter](/docs/concepts/signals/metrics) to create a counter in code.
+
+```csharp
+var builder = WebApplication.CreateBuilder(args);
+
+// .. other setup
+
+builder.Services.AddOpenTelemetry()
+    .WithTracing(/*  .. tracing setup */ )
+    .WithMetrics(metricsProviderBuilder =>
+        metricsProviderBuilder
+            .AddMeter(DiagnosticsConfig.Meter.Name)
+			// .. more metrics
+             );
+
+public static class DiagnosticsConfig
+{
+    public const string ServiceName = "MyService";
+
+    // .. other config
+
+    public static Meter Meter = new(ServiceName);
+    public static Counter<long> RequestCounter =
+        Meter.CreateCounter<long>("app.request_counter");
+}
+
+```
+
+Now we can increment the counter in our `Index` action.
+
+```csharp
+    public IActionResult Index()
+    {
+        // do other stuff
+
+        DiagnosticsConfig.RequestCounter.Add(1,
+            new("Action", nameof(Index)),
+            new("Controller", nameof(HomeController)));
+
+        return View();
+    }
+```
+
+You'll notice here that we're also adding Tags (OpenTelemetry Attributes) to our
+request counter that distinguishes it from other requests. You should now see an
+output like this.
+
+<details>
+<summary>View example output</summary>
+
+```
+Export app.request_counter, Meter: MyService
+(2023-02-21T13:11:28.7265324Z, 2023-02-21T13:11:48.7074259Z] Action: Index Controller: HomeController LongSum
+Value: 1
+```
+
+</details>
+
+Tip: if you comment out the `.AddAspNetCoreInstrumentation()` line in
+`Program.cs` you'll be able to see the output better.
 
 ## Send data to a collector
 
@@ -313,7 +321,7 @@ Then run the docker command to acquire and run the collector based on this
 configuration:
 
 ```shell
-docker run -p 4318:4318 \
+docker run -p 4317:4317 \
     -v /tmp/otel-collector-config.yaml:/etc/otel-collector-config.yaml \
     otel/opentelemetry-collector:latest \
     --config=/etc/otel-collector-config.yaml
@@ -336,76 +344,19 @@ Next, using the ASP.NET Core code from earlier, replace the console exporter
 with an OTLP exporter:
 
 ```csharp
-using System.Diagnostics;
-using System.Diagnostics.Metrics;
-
-using OpenTelemetry.Exporter;
-using OpenTelemetry.Metrics;
-using OpenTelemetry.Resources;
-using OpenTelemetry.Trace;
-
-// Define some important constants to initialize tracing with
-var serviceName = "MyCompany.MyProduct.MyService";
-var serviceVersion = "1.0.0";
-var MyActivitySource = new ActivitySource(serviceName);
-
-var builder = WebApplication.CreateBuilder(args);
-
-var appResourceBuilder = ResourceBuilder.CreateDefault()
-    .AddService(serviceName: serviceName, serviceVersion: serviceVersion);
-
-// Configure to send data via the OTLP exporter.
-// By default, it will send to port 4318, which the collector is listening on.
-builder.Services.AddOpenTelemetry().WithTracing(tracerProviderBuilder =>
-{
-    tracerProviderBuilder
-        .AddOtlpExporter(opt =>
-        {
-            opt.Protocol = OtlpExportProtocol.HttpProtobuf;
-        })
-        .AddSource(MyActivitySource.Name)
-        .SetResourceBuilder(appResourceBuilder)
-        .AddHttpClientInstrumentation()
-        .AddAspNetCoreInstrumentation()
-        .AddSqlClientInstrumentation();
-});
-
-var meter = new Meter(serviceName);
-var counter = meter.CreateCounter<long>("app.request-counter");
-builder.Services.AddOpenTelemetry().WithMetrics(metricProviderBuilder =>
-{
-    metricProviderBuilder
-        .AddOtlpExporter(opt =>
-        {
-            opt.Protocol = OtlpExportProtocol.HttpProtobuf;
-        })
-        .AddMeter(meter.Name)
-        .SetResourceBuilder(appResourceBuilder)
-        .AddAspNetCoreInstrumentation()
-        .AddHttpClientInstrumentation();
-});
-
-var app = builder.Build();
-
-app.MapGet("/hello", () =>
-{
-    // Track work inside of the request
-    using var activity = MyActivitySource.StartActivity("SayHello");
-    activity?.SetTag("foo", 1);
-    activity?.SetTag("bar", "Hello, World!");
-    activity?.SetTag("baz", new int[] { 1, 2, 3 });
-
-    // Up a counter for each request
-    counter.Add(1);
-
-    return "Hello, World!";
-});
-
-app.Run();
+builder.Services.AddOpenTelemetry()
+    .WithTracing(tracerProviderBuilder =>
+        tracerProviderBuilder
+             // .. other config
+            .AddOtlpExporter())
+    .WithMetrics(metricsProviderBuilder =>
+        metricsProviderBuilder
+            // .. other config
+            .AddOtlpExporter());
 ```
 
-By default, it will send spans to `localhost:4318`, which is what the collector
-is listening on.
+By default, it will send spans to `localhost:4317`, which is what the collector
+is listening on if you've followed the step above.
 
 ### Run the application
 
