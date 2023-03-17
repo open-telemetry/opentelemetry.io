@@ -5,9 +5,10 @@ date: 2023-03-10
 author: '[MartinDotNet](https://github.com/martinjt) (Honeycomb)'
 ---
 
-Contrary to Betteridge’s Law of Tabloid Headlines, the answer is “yes,” but
-context is important. I get this question so often that I thought it was time to
-get some stats on it.
+Contrary to
+[Betteridge’s Law of Tabloid Headlines](https://en.wikipedia.org/wiki/Betteridge%27s_law_of_headlines),
+the answer is “yes,” but context is important. I get this question so often that
+I thought it was time to get some stats on it.
 
 I’ve heard comments like:
 
@@ -25,8 +26,8 @@ this evidence will stop the debate of performance impact so that teams can
 instead debate the value of instrumenting their code.
 
 TL;DR: if you’re optimizing at the level where OpenTelemetry and Activity usage
-would be a concern, you should probably be more worried about the .NET
-as a whole.
+would be a concern, you should probably be more worried about the .NET as a
+whole.
 
 ## Activity vs. OpenTelemetry vs. OpenTelemetry Shim
 
