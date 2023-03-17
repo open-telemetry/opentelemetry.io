@@ -10,8 +10,8 @@ function isInViewport(element) {
   );
 }
 
-let ele = document.querySelector("#td-section-nav .td-sidebar-nav-active-item");
+let ele = document.querySelector('#td-section-nav .td-sidebar-nav-active-item');
 
 if (ele && !isInViewport(ele)) {
-  ele.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+  ele.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
 }
