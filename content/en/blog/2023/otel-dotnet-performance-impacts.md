@@ -138,7 +138,7 @@ BenchmarkDotNet=v0.13.3, OS=ubuntu 22.10
   DefaultJob : .NET 7.0.0 (7.0.22.51805), X64 RyuJIT AVX2
 ```
 
-## The Results
+## The results
 
 | Method                                        |      Mean |     Error |    StdDev |    Median | Ratio | RatioSD |   Gen0 | Allocated | Alloc Ratio |
 | --------------------------------------------- | --------: | --------: | --------: | --------: | ----: | ------: | -----: | --------: | ----------: |
