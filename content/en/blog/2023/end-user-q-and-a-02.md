@@ -1,7 +1,7 @@
 ---
 title: 'End-User Q&A Series: Using OTel at Uplight'
 linkTitle: 'End-User Q&A: OTel at Uplight'
-date: 2023-03-09
+date: 2023-03-20
 author: '[Adriana Villela](https://github.com/avillela) (Lightstep)'
 body_class: otel-with-contributions-from
 ---
