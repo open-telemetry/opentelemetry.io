@@ -12,17 +12,14 @@ additional code into original one during compile time, link time, run-time or by
 extending the operating system in case of [ebpf](https://ebpf.io/). This
 blogpost presents method used by Opentelemetry PHP auto-instrumentation.
 
-## Preconditions
+## Prerequisites
 
-Due to the technique chosen by the opentelemetry-php community for
-auto-instrumentation purposes, there are a few preconditions that must be
-fulfilled before user can use it in their application. PHP auto-instrumentation
-is based on observability API that was introduced in PHP 8.0. This means that
-user has to have at least PHP 8 installed. Another important component is the
-[composer](https://getcomposer.org/download/) package manager in most recent
-version. Third, is availability of c compiler in order to build
-[c extension](https://github.com/open-telemetry/opentelemetry-php-instrumentation)
-which is core component used for injecting tracing code.
+To use the [PHP auto-instrumentation](https://github.com/open-telemetry/opentelemetry-php-instrumentation), you'll need three things:
+
+- PHP 8.0 or higher. The PH auto-instrumentation used the Observability
+API introduced in PHP 8.0.
+- [Composer]((https://getcomposer.org/download/)
+- A C Compiler must be available on your machine
 
 ## Background
 
