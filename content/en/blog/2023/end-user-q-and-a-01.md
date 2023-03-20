@@ -3,7 +3,9 @@ title: 'End-User Q&A Series: Using OTel with GraphQL'
 linkTitle: 'End-User Q&A: OTel with GraphQL'
 date: 2023-02-13
 author: '[Adriana Villela](https://github.com/avillela) (Lightstep)'
-aliases: [/blog/2023/otel-end-user-q-and-a-series-otel-and-graphql]
+aliases:
+  - /blog/2023/end-user-q-and-a-series-otel-and-graphql
+  - /blog/2023/otel-end-user-q-and-a-series-otel-and-graphql
 body_class: otel-with-contributions-from
 ---
 
