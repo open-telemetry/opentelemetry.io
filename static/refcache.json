@@ -3799,6 +3799,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-18T13:46:03.622221-05:00"
   },
+  "https://www.meetup.com/opentelemetry-in-practice-meetup-group/events/292227710/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-03-20T13:54:25.980688-04:00"
+  },
   "https://www.nomadproject.io": {
     "StatusCode": 206,
     "LastSeen": "2023-02-18T13:44:16.025576-05:00"
