@@ -273,8 +273,8 @@ him in the
 [#otel-user-research](https://cloud-native.slack.com/archives/C01RT3MSWGZ) Slack
 channel!
 
-Also, be sure to check out more of Doug's OTel adventures at this month's OTel
-in Practice series, on March 27th, 09:00 PT/11:00 ET.
+Also, be sure to check out more of Doug's OTel adventures at this month's
+[OTel in Practice series, on March 27th, 09:00 PT/11:00 ET](https://www.meetup.com/opentelemetry-in-practice-meetup-group/events/292227710/).
 
 ## Final Thoughts
 
