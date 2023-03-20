@@ -6,35 +6,37 @@ author: '[Przemek Delewski](https://github.com/pdelewski/) (Sumo Logic)'
 ---
 
 Automatic Instrumentation is a process of adding tracing capabilities into user
-application without modyfing it's source code. There are several techniques to
-do that, but all of them more or less work in the same way by injecting
-additional code into original one during compile time, link time, run-time or by
-extending the operating system in case of [ebpf](https://ebpf.io/). This
-blogpost presents method used by Opentelemetry PHP auto-instrumentation.
+application without modyfing its source code. There are several techniques to do
+that, but all of them more or less work in the same way by injecting additional
+code into original one during compile time, link time, run-time or by extending
+the operating system in case of [ebpf](https://ebpf.io/). This blogpost presents
+method used by Opentelemetry PHP auto-instrumentation.
 
 ## Prerequisites
 
-To use the [PHP auto-instrumentation](https://github.com/open-telemetry/opentelemetry-php-instrumentation), you'll need three things:
+To use the
+[PHP auto-instrumentation](https://github.com/open-telemetry/opentelemetry-php-instrumentation),
+you'll need three things:
 
-- PHP 8.0 or higher. The PH auto-instrumentation used the Observability
-API introduced in PHP 8.0.
+- PHP 8.0 or higher. The PH auto-instrumentation used the Observability API
+  introduced in PHP 8.0.
 - [Composer]((https://getcomposer.org/download/)
 - A C Compiler must be available on your machine
 
-## Background
+### Background on the PHP 8.0 Observability API
 
 [Observability API](https://www.datadoghq.com/blog/engineering/php-8-observability-baked-right-in/)
-allows register and execute additional code (function) before and after original
-one without introducing additional performance penalties in other areas, so in
-other words, we pay only for what we use and only for altered function. Before
-PHP 8, the most common technique for adding tracing capabilities was altering
-`zend_execute_ex` function (a monkey patching kind technique), however this
-could lead to stack overflow and performance problems as whole application paid
-for that. There were also considered other approaches like compile time AST
-modifications which seems feasible, howerer there are no known production ready
-tracers that works in this way up to date.
+allows you to register and execute additional code (function) before and after
+an original one without introducing additional performance penalties in other
+areas. Before PHP 8.0, the most common technique for adding tracing capabilities
+was altering the `zend_execute_ex` function (a monkey patching kind technique).
+However, the use of monkey patching can lead to performance problems, stack
+overflows at runtime, and a general application overhead that may not be
+desirable. Another approach considered in the past was plugging into the AST and
+modifying it during compilation time, but there are not known production ready
+traces that use this technique.
 
-## Observability API from auto-instrumentation perspective
+### Observability API from auto-instrumentation perspective
 
 At the moment of this writing,
 [observability API](https://github.com/php/php-src/blob/PHP-8.0/Zend/zend_observer.h)
@@ -77,8 +79,8 @@ important `interfaces/libraries/frameworks` that are parts of
 [Contrib](https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation)
 repo. Each `auto-instrumentation` package uses above `hook` function in order to
 register and provide tracing functionality. One missing thing, not mentioned yet
-is an `API and SDK` used to create traces and other necessary components. This
-is the responsibility of the opentelemetry-php
+is an `API` `SDK` used to create traces and other necessary components. This is
+the responsibility of the opentelemetry-php
 [main](https://github.com/open-telemetry/opentelemetry-php) repo which is
 foundation for everything.
 
@@ -91,14 +93,14 @@ however we invested time to lower the barrier to entry and have created an
 installer that can do that for you. This section will show how auto-instrument a
 simple php `laravel` application created from scratch.
 
-First step is to create a demo application. Here we use the popular
+The first step is to create a demo application. Here we use the popular
 [laravel](https://laravel.com/docs/10.x/installation) framework:
 
 ```sh
 composer create-project laravel/laravel example-app
 ```
 
-Next, we have to install
+Next, install
 [opentelemetry-instrumentation-installer](https://packagist.org/packages/open-telemetry/opentelemetry-instrumentation-installer).
 
 ```sh
@@ -111,22 +113,23 @@ Opentelemetry instrumentation installer works in two modes:
 - basic (installs everything with most recent version)
 - advanced (gives control to the user)
 
-After installation we have to run `install-otel-instrumentation` with either
-`basic` or `advanced` switch as below.
+After installation, run `install-otel-instrumentation` with either `basic` or
+`advanced` switch as below.
 
 ```sh
 ./vendor/bin/install-otel-instrumentation basic
 ```
 
-The final step is to run your application via another tool,
-`run-with-otel-instrumentation` that prompts you for a few settings and then
-executes the provided command,
-`php -S localhost:8080 -t public public/index.php` in this case.
+The final step is to run your application with `run-with-otel-instrumentation`:
 
-**NOTE** Everything that `run-with-otel-instrumentation` is doing can be done by
-hand by setting needed environment variables and running application as usual.
-It was created for convenience for rapidly testing out open-telemetry against an
-application and providing working default configuration.
+```sh
+./vendor/bin/run-with-otel-instrumentation php -S localhost:8080 -t public public/index.php
+```
+
+The run-with-otel-instrumentation isn't magic: everything it does can be done by
+hand by setting environment variables and running your application normally. It
+is a convenience tool for rapidly testing out open-telemetry against an
+application with a working default configuration.
 
 ```sh
 ./vendor/bin/run-with-otel-instrumentation php -S localhost:8080 -t public public/index.php
