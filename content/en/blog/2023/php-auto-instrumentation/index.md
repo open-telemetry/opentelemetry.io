@@ -18,7 +18,7 @@ To use the
 [PHP auto-instrumentation](https://github.com/open-telemetry/opentelemetry-php-instrumentation),
 you'll need three things:
 
-- PHP 8.0 or higher. The PH auto-instrumentation used the Observability API
+- PHP 8.0 or higher. The PHP auto-instrumentation uses the Observability API
   introduced in PHP 8.0.
 - [Composer]((https://getcomposer.org/download/)
 - A C Compiler must be available on your machine
