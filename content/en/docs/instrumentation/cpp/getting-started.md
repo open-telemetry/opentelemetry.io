@@ -1,6 +1,9 @@
 ---
 title: Getting Started
 weight: 2
+spelling:
+  cSpell:ignore Bazel libcurl openssl xcode DBUILD DWITH helloworld tracestate
+  traceparent devel
 ---
 
 Welcome to the OpenTelemetry C++ getting started guide! This guide will walk you
@@ -19,32 +22,32 @@ You can build OpenTelemetry C++ on Windows, macOS or Linux. First you need to
 install some dependencies:
 
 <!-- prettier-ignore-start -->
-{{< ot-tabs "Linux (apt)" "Linux (yum)" "Linux (alpine)" "MacOS (homebrew)">}}
+{{< tabpane lang=shell persistLang=false >}}
 
-{{< ot-tab lang="shell">}}
+{{< tab "Linux (apt)" >}}
 sudo apt-get install git cmake g++ libcurl4-openssl-dev
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< ot-tab lang="shell">}}
+{{< tab "Linux (yum)" >}}
 sudo yum install git cmake g++ libcurl-devel
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< ot-tab lang="shell">}}
+{{< tab "Linux (alpine)" >}}
 sudo apk add git cmake g++ make curl-dev
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< ot-tab lang="shell">}}
+{{< tab "MacOS (homebrew)" >}}
 xcode-select —install
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew install git cmake
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< /ot-tabs >}}
+{{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
 ## Building
 
-Get the `opentelementry-cpp` source:
+Get the `opentelemetry-cpp` source:
 
 ```shell
 git clone --recursive https://github.com/open-telemetry/opentelemetry-cpp
