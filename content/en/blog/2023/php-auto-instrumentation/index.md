@@ -30,11 +30,11 @@ allows you to register and execute additional code (function) before and after
 an original one without introducing additional performance penalties in other
 areas. Before PHP 8.0, the most common technique for adding tracing capabilities
 was altering the `zend_execute_ex` function (a monkey patching kind technique).
-However, the use of monkey patching can lead to performance problems, stack
-overflows at runtime, and a general application overhead that may not be
-desirable. Another approach considered in the past was plugging into the AST and
-modifying it during compilation time, but there are not known production ready
-traces that use this technique.
+However, this can lead to performance problems, stack overflows at runtime, and
+a general application overhead that may not be desirable. Another approach
+considered in the past was plugging into the AST and modifying it during
+compilation time, but there are not known production ready traces that use this
+technique.
 
 ### Observability API from auto-instrumentation perspective
 
