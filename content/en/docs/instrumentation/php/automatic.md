@@ -2,10 +2,11 @@
 title: Automatic Instrumentation
 linkTitle: Automatic
 weight: 2
+spelling: cSpell:ignore userland phar AUTOLOAD tracecontext myapp configurator packagist
 ---
 
 Automatic instrumentation with PHP requires at least PHP 8.0, and
-[the opentelemetry PHP extension](https://github.com/open-telemetry/opentelemetry-php-instrumentation).
+[the OpenTelemetry PHP extension](https://github.com/open-telemetry/opentelemetry-php-instrumentation).
 The extension allows developers code to hook into classes and methods, and
 execute userland code before and after.
 
@@ -45,13 +46,13 @@ function ends it.
 
 ## Setup
 
-1.  Install the extension via [pickle](https://github.com/FriendsOfPHP/pickle)
+1. Install the extension via [pickle](https://github.com/FriendsOfPHP/pickle)
     or
     [php-extension-installer](https://github.com/mlocati/docker-php-extension-installer)
     (docker specific):
 
     - **pickle** can be used to install extensions that are available via
-      http://pecl.php.net, however that's not the case for
+      <http://pecl.php.net>, however that's not the case for
       opentelemetry-php-instrumentation yet, so the only way for it is to
       install directly from source code. The following command line shows you
       how to do that using a specific version of the extension (1.0.0beta2 in
@@ -60,14 +61,15 @@ function ends it.
       Installing from source requires proper development environment and few
       dependencies:
 
-      {{< ot-tabs "Linux (apt)" "macOS (homebrew)">}}
+      <!-- prettier-ignore-start -->
+      {{< tabpane lang=shell persistLang=false >}}
 
-      {{< ot-tab lang="shell">}} sudo apt-get install gcc make autoconf
-      {{< /ot-tab >}}
+      {{< tab "Linux (apt)" >}}sudo apt-get install gcc make autoconf{{< /tab >}}
 
-      {{< ot-tab lang="shell">}} brew install gcc make autoconf {{< /ot-tab >}}
+      {{< tab "MacOS (homebrew)" >}}brew install gcc make autoconf{{< /tab >}}
 
-      {{< /ot-tabs >}}
+      {{< /tabpane >}}
+      <!-- prettier-ignore-end -->
 
       With your environment setup you can install the extension:
 
@@ -83,11 +85,12 @@ function ends it.
       ```
 
     - **php-extension-installer**
+
       ```sh
       install-php-extensions open-telemetry/opentelemetry-php-instrumentation@main
       ```
 
-2.  Verify that the extension is installed and enabled:
+2. Verify that the extension is installed and enabled:
 
     ```sh
     php -m | grep  otel_instrumentation
