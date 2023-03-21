@@ -1,7 +1,7 @@
 ---
 title: Opentelemetry PHP Auto-Instrumentation
 linkTitle: PHP Auto-Instrumentation
-date: 2023-03-15
+date: 2023-03-21
 author: '[Przemek Delewski](https://github.com/pdelewski/) (Sumo Logic)'
 ---
 
