@@ -13,7 +13,7 @@ simplest to set up.
 
 ```
 dotnet add package OpenTelemetry.Exporter.Console
-dotnet add package OpenTelemetry.Extensions.Hosting --prerelease
+dotnet add package OpenTelemetry.Extensions.Hosting
 ```
 
 If you're using ASP.NET Core, configure the exporter in your ASP.NET Core
@@ -47,7 +47,7 @@ Jaeger) you'll want to configure an OTLP exporter that sends to your endpoint.
 
 ```
 dotnet add package OpenTelemetry.Exporter.OpenTelemetryProtocol
-dotnet add package OpenTelemetry.Extensions.Hosting --prerelease
+dotnet add package OpenTelemetry.Extensions.Hosting
 ```
 
 If you're using ASP.NET Core, configure the exporter in your ASP.NET Core
@@ -56,7 +56,23 @@ services:
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddOpenTelemetry().WithTracing(b =>
+builder.Services.AddOpenTelemetry()
+  .WithTracing(b =>
+  {
+    b.AddOtlpExporter()
+    // The rest of your setup code goes here too
+  });
+```
+
+This will, by default, send traces using gRPC to http://localhost:4317, to
+customize this to use Http and the ProtoBuf format, you can add options like
+this:
+
+```csharp
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddOpenTelemetry()
+  .WithTracing(b =>
 {
     b
     .AddOtlpExporter(opt =>
@@ -86,13 +102,11 @@ using var tracerProvider = Sdk.CreateTracerProviderBuilder()
 Use environment variables to set values like headers and an endpoint URL for
 production.
 
-### Using gRPC
+### Note for .NET Core 3.1 and below and gRPC
 
-You can also use gRPC to send your OTLP data. To do that, use the following:
-
-```csharp
-OtlpExportProtocol.Grpc
-```
+Note: Versions below .NET 6 are not officially supported by
+opentelemetry-dotnet, therefore this section is here to help, but may not work
+as the library progresses.
 
 If you're not using ASP.NET Core gRPC and you are running on .NET Core 3.x,
 you'll need to add the following at application startup
@@ -111,18 +125,10 @@ visualization in a docker container:
 
 ```shell
 docker run -d --name jaeger \
-  -e COLLECTOR_ZIPKIN_HOST_PORT=:9411 \
   -e COLLECTOR_OTLP_ENABLED=true \
-  -p 6831:6831/udp \
-  -p 6832:6832/udp \
-  -p 5778:5778 \
   -p 16686:16686 \
   -p 4317:4317 \
   -p 4318:4318 \
-  -p 14250:14250 \
-  -p 14268:14268 \
-  -p 14269:14269 \
-  -p 9411:9411 \
   jaegertracing/all-in-one:latest
 ```
 
@@ -139,7 +145,7 @@ Next, install the Zipkin exporter package:
 
 ```shell
 dotnet add package OpenTelemetry.Exporter.Zipkin
-dotnet add package OpenTelemetry.Extensions.Hosting --prerelease
+dotnet add package OpenTelemetry.Extensions.Hosting
 ```
 
 If you're using ASP.NET Core, configure the exporter in your ASP.NET Core
@@ -148,15 +154,15 @@ services:
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddOpenTelemetry().WithTracing(b =>
-{
-    b
-    .AddZipkinExporter(o =>
+builder.Services.AddOpenTelemetry()
+    .WithTracing(b =>
     {
-        o.Endpoint = new Uri("your-zipkin-uri-here");
-    })
-    // The rest of your setup code goes here too
-});
+        b.AddZipkinExporter(o =>
+        {
+            o.Endpoint = new Uri("your-zipkin-uri-here");
+        })
+        // The rest of your setup code goes here too
+    });
 ```
 
 Otherwise, configure the exporter when creating a tracer provider:
@@ -173,7 +179,12 @@ using var tracerProvider = Sdk.CreateTracerProviderBuilder()
     .Build();
 ```
 
-## Prometheus
+## Prometheus (Experimental)
+
+**\*Note:** this is experimental and dependent on the OpenTelemetry
+specification to be made stable before it will be a released package. For now,
+we recommend using the OTLP exporter and using the OpenTelemetry Collector to
+send metrics to Prometheus\*
 
 If you're using Prometheus to visualize metrics data, you'll need to set it up
 first. Here's how to do it using a docker container:
@@ -203,9 +214,11 @@ docker run \
 
 Next, install the Prometheus exporter:
 
-```
-dotnet add package OpenTelemetry.Exporter.Prometheus.AspNetCore --prerelease
-dotnet add package OpenTelemetry.Extensions.Hosting --prerelease
+### ASP.NET
+
+```shell
+dotnet add package OpenTelemetry.Exporter.Prometheus.AspNetCore --version 1.4.0-rc.4
+dotnet add package OpenTelemetry.Extensions.Hosting
 ```
 
 If you're using ASP.NET Core, configure the exporter in your ASP.NET Core
@@ -214,28 +227,41 @@ services:
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddOpenTelemetry().WithMetrics(b =>
-{
-    b
-    .AddPrometheusExporter(options =>
-    {
-        options.ScrapeResponseCacheDurationMilliseconds = 0;
-    })
-    // The rest of your setup code goes here too
-});
+builder.Services.AddOpenTelemetry()
+  .WithMetrics(b => b.AddPrometheusExporter());
 ```
 
-Otherwise, configure the exporter when creating a meter provider:
+You'll then need to add the endpoint so that Prometheus can scrape your site.
+You can do this using the `IAppBuilder` extension like this:
 
 ```csharp
-using var tracerProvider = Sdk.CreateMeterProviderBuilder()
-    .AddPrometheusExporter(options =>
-    {
-        options.ScrapeResponseCacheDurationMilliseconds = 0;
-    })
+var builder = WebApplication.CreateBuilder(args);
 
-    // Other setup code, like setting a meter goes here
+// .. Setup
 
+var app = builder.Build();
+
+app.UseOpenTelemetryPrometheusScrapingEndpoint();
+
+await app.RunAsync();
+```
+
+### Non-ASP.NET Core
+
+For applications not using ASP.NET Core, you can use the `HttpListner` version
+which is available in a different package:
+
+```shell
+dotnet add package OpenTelemetry.Exporter.Prometheus.HttpListener --version 1.4.0-rc.4
+```
+
+Then this is setup directly on the `MeterProviderBuilder`:
+
+```csharp
+var meterProvider = Sdk.CreateMeterProviderBuilder()
+    .AddMeter(MyMeter.Name)
+    .AddPrometheusHttpListener(
+        options => options.UriPrefixes = new string[] { "http://localhost:9090/" })
     .Build();
 ```
 

@@ -163,10 +163,7 @@ const sdk = new NodeSDK({
 
 sdk
   .start()
-  .then(() => {
-    console.log('Tracing initialized');
-  })
-  .catch((error) => console.log('Error initializing tracing', error));
+
 {{< /tab >}}
 
 {{< tab JavaScript >}}
@@ -182,10 +179,7 @@ const sdk = new opentelemetry.NodeSDK({
 
 sdk
   .start()
-  .then(() => {
-    console.log('Tracing initialized');
-  })
-  .catch((error) => console.log('Error initializing tracing', error));
+
 {{< /tab >}}
 
 {{< /tabpane >}}

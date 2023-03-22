@@ -8,7 +8,7 @@ author: >-
 
 Y’all… I’m so excited, because I finally got to work on an item on my tech
 bucket list. Last week, I began the process of translating
-[OpenTelemetry (OTel) Demo App](https://github.com/open-telemetry/opentelemetry-demo)’s
+[OpenTelemetry Demo App](/docs/demo/)’s
 [Helm Charts](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-demo)
 to [HashiCorp](https://hashicorp.com) [Nomad][] job specs. Today I’ll be talking
 about how to run the OpenTelemetry Demo App on Nomad, using my favorite
@@ -28,9 +28,9 @@ Before we move on, I am assuming that you have a basic understanding of:
   [Nomad intro post](https://storiesfromtheherd.com/just-in-time-nomad-80f57cd403ca).
   [This blog post](https://danielabaron.me/blog/nomad-tips-and-tricks/) by
   [Daniela Baron](https://danielabaron.me) is also great.
-- **Observability (o11y) and [OpenTelemetry](https://opentelemetry.io) (OTel)**.
-  If not, check out this
-  [Observability primer](/docs/concepts/observability-primer/)
+- **[Observability](/docs/concepts/observability-primer/#what-is-observability)**
+  (o11y) and **[OpenTelemetry](/docs/concepts/what-is-opentelemetry/)** (OTel).
+  If not, see [Observability primer](/docs/concepts/observability-primer/).
 
 ### Pre-Requisites
 
