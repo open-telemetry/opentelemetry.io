@@ -75,17 +75,22 @@ rebar3 and Hex:
 {{< tabpane langEqualsHeader=true >}}
 
 {{< tab Erlang >}}
-{opentelemetry_api, {git_subdir, "http://github.com/open-telemetry/opentelemetry-erlang", {branch, "main"}, "apps/opentelemetry_api"}},
-{opentelemetry, {git_subdir, "http://github.com/open-telemetry/opentelemetry-erlang", {branch, "main"},
-"apps/opentelemetry"}}
+{deps, [{opentelemetry_api, {git_subdir, "http://github.com/open-telemetry/opentelemetry-erlang", {branch, "main"}, "apps/opentelemetry_api"}},
+        {opentelemetry, {git_subdir, "http://github.com/open-telemetry/opentelemetry-erlang", {branch, "main"},
+"apps/opentelemetry"}}]}.
 {{< /tab >}}
 
 {{< tab Elixir >}}
-{:opentelemetry_api, github: "open-telemetry/opentelemetry-erlang", sparse:
+def deps do
+  [
+    {:opentelemetry_api, github: "open-telemetry/opentelemetry-erlang", sparse:
 "apps/opentelemetry_api", override: true},
-{:opentelemetry, github: "open-telemetry/opentelemetry-erlang", sparse:
+    {:opentelemetry, github: "open-telemetry/opentelemetry-erlang", sparse:
 "apps/opentelemetry", override: true},
-{:opentelemetry_exporter, github: "open-telemetry/opentelemetry-erlang", sparse: "apps/opentelemetry_exporter", override: true}
+    {:opentelemetry_exporter, github: "open-telemetry/opentelemetry-erlang", sparse:
+"apps/opentelemetry_exporter", override: true}
+  ]
+end
 {{< /tab >}}
 
 {{< /tabpane >}}
