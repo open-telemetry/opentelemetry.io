@@ -15,7 +15,7 @@ middleware for an HTTP server.
 To start [tracing](/docs/concepts/signals/traces/) a
 [`TracerProvider`](/docs/concepts/signals/traces/#tracer-provider) is required
 for creating a [`Tracer`](/docs/concepts/signals/traces/#tracer). When the
-OpenTelemetry SDK Application (`opentelemetry`) boots it starts and configures a
+OpenTelemetry SDK Application (`opentelemetry`) boots, it starts and configures a
 global `TracerProvider`. A `Tracer` for each loaded OTP Application is created
 once the `TracerProvider` has started.
 
