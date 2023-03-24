@@ -19,7 +19,7 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-15T21:09:05.748522-05:00"
   },
-  "http://mypy-lang.org/": {
+  "https://mypy-lang.org/": {
     "StatusCode": 206,
     "LastSeen": "2023-02-16T17:15:20.756374-05:00"
   },
@@ -27,11 +27,11 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-16T17:34:39.115382-05:00"
   },
-  "http://pecl.php.net": {
+  "https://pecl.php.net": {
     "StatusCode": 206,
     "LastSeen": "2023-02-18T09:19:36.873592-05:00"
   },
-  "http://surl.li/fqdox": {
+  "https://surl.li/fqdox": {
     "StatusCode": 200,
     "LastSeen": "2023-03-20T14:01:38.36921-04:00"
   },

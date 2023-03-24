@@ -52,7 +52,7 @@ function ends it.
    (docker specific):
 
    - **pickle** can be used to install extensions that are available via
-     <http://pecl.php.net>, however that's not the case for
+     <https://pecl.php.net>, however that's not the case for
      opentelemetry-php-instrumentation yet, so the only way for it is to install
      directly from source code. The following command line shows you how to do
      that using a specific version of the extension (1.0.0beta2 in this case):
