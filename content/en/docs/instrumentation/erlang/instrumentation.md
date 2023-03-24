@@ -207,7 +207,7 @@ task = Task.async(fn ->
                     # a new process has a new context so the span created
                     # by the following `with_span` will have no parent
                     link = OpenTelemetry.link(parent)
-                    Tracer.with_span :my-task, %{links: [link]} do
+                    Tracer.with_span :"my-task", %{links: [link]} do
                       :hello
                     end
                  end)
