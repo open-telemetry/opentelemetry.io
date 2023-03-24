@@ -21,7 +21,7 @@ once the `TracerProvider` has started.
 
 If a TracerProvider is not successfully created (for example, the
 `opentelemetry` application is not booted or fails to boot), the OpenTelemetry
-APIs for tracing will use a no-op implementation and fail to generate data.
+APIs for tracing will use a no-op implementation and will not generate data.
 
 ### Acquiring a Tracer
 
