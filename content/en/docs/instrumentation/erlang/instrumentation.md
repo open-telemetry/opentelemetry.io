@@ -196,7 +196,7 @@ proc_lib:spawn_link(fun() ->
                         %% a new process has a new context so the span created
                         %% by the following `with_span` will have no parent
                         Link = opentelemetry:link(Parent),
-                        ?with_span(other-process, #{links => [Link]},
+                        ?with_span('other-process', #{links => [Link]},
                                    fun() -> ok end)
                     end),
 {{< /tab >}}
