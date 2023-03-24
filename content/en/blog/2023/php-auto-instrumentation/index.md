@@ -20,7 +20,7 @@ you'll need three things:
 
 - PHP 8.0 or higher. The PHP auto-instrumentation uses the Observability API
   introduced in PHP 8.0.
-- [Composer]((https://getcomposer.org/download/)
+- [Composer](https://getcomposer.org/download/)
 - A C Compiler must be available on your machine
 
 ### Background on the PHP 8.0 Observability API

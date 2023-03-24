@@ -26,23 +26,23 @@ name for a `Tracer` you can create a `Tracer` with a name and version and pass
 it manually to `otel_tracer` or `OpenTelemetry.Tracer`. Examples:
 
 <!-- prettier-ignore-start -->
-{{< ot-tabs Erlang Elixir >}}
+{{< tabpane langEqualsHeader=true >}}
 
-{{< ot-tab >}}
+{{< tab Erlang >}}
 Tracer = opentelemetry:get_tracer(test_tracer),
 SpanCtx = otel_tracer:start_span(Tracer, <<"hello-world">>, #{}),
 ...
 otel_tracer:end_span(SpanCtx).
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< ot-tab >}}
+{{< tab Elixir >}}
 tracer = OpenTelemetry.get_tracer(:test_tracer)
 span_ctx = OpenTelemetry.Tracer.start_span(tracer, "hello-world", %{})
 ...
 OpenTelemetry.Tracer.end_span(span_ctx)
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< /ot-tabs >}}
+{{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
 In most cases you will not need to manually create a `Tracer`. Simply use the
@@ -82,9 +82,9 @@ parent is again the active span when the child's block or function body
 completes:
 
 <!-- prettier-ignore-start -->
-{{< ot-tabs Erlang Elixir >}}
+{{< tabpane langEqualsHeader=true >}}
 
-{{< ot-tab >}}
+{{< tab Erlang >}}
 parent_function() ->
     ?with_span(<<"parent">>, #{}, fun child_function/0).
 
@@ -96,9 +96,9 @@ child_function() ->
                    %% do work here. when this function returns, <<"child">> will complete.
                end).
 
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< ot-tab >}}
+{{< tab Elixir >}}
 require OpenTelemetry.Tracer
 
 def parent_function() do
@@ -114,9 +114,9 @@ def child_function() do
         ## do work here. when this function returns, <<"child">> will complete.
     end
 end
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< /ot-tabs >}}
+{{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
 ### Cross Process Propagation
@@ -141,9 +141,9 @@ process. The whole context should be attached in order to not lose other
 telemetry data like [baggage](/docs/reference/specification/baggage/api/).
 
 <!-- prettier-ignore-start -->
-{{< ot-tabs Erlang Elixir >}}
+{{< tabpane langEqualsHeader=true >}}
 
-{{< ot-tab >}}
+{{< tab Erlang >}}
 SpanCtx = ?start_span(<<"child">>),
 Ctx = otel_ctx:get_current(),
 
@@ -155,9 +155,9 @@ proc_lib:spawn_link(fun() ->
 
                         ?end_span(SpanCtx)
                     end),
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< ot-tab >}}
+{{< tab Elixir >}}
 span_ctx = OpenTelemetry.Tracer.start_span(<<"child">>)
 ctx = OpenTelemetry.Ctx.get_current()
 
@@ -171,9 +171,9 @@ task = Task.async(fn ->
                   end)
 
 _ = Task.await(task)
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< /ot-tabs >}}
+{{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
 #### Linking the New Span
@@ -186,9 +186,9 @@ for more on when that is appropriate -- then the `SpanCtx` returned by
 `with_span` or `start_span`:
 
 <!-- prettier-ignore-start -->
-{{< ot-tabs Erlang Elixir >}}
+{{< tabpane langEqualsHeader=true >}}
 
-{{< ot-tab >}}
+{{< tab Erlang >}}
 Parent = ?current_span_ctx,
 proc_lib:spawn_link(fun() ->
                         %% a new process has a new context so the span created
@@ -197,9 +197,9 @@ proc_lib:spawn_link(fun() ->
                         ?with_span(<<"other-process">>, #{links => [Link]},
                                    fun() -> ok end)
                     end),
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< ot-tab >}}
+{{< tab Elixir >}}
 parent = OpenTelemetry.current_span_ctx()
 task = Task.async(fn ->
                     # a new process has a new context so the span created
@@ -209,9 +209,9 @@ task = Task.async(fn ->
                       :hello
                     end
                  end)
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< /ot-tabs >}}
+{{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
 ### Attributes
@@ -231,24 +231,24 @@ setting an attribute in the start options and then again with `set_attributes`
 in the body of the span operation:
 
 <!-- prettier-ignore-start -->
-{{< ot-tabs Erlang Elixir >}}
+{{< tabpane langEqualsHeader=true >}}
 
-{{< ot-tab >}}
+{{< tab Erlang >}}
 ?with_span(<<"my-span">>, #{attributes => [{<<"start-opts-attr">>, <<"start-opts-value">>}]},
            fun() ->
                ?set_attributes([{<<"my-attribute">>, <<"my-value">>},
                                 {another_attribute, <<"value-of-attribute">>}])
            end)
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< ot-tab >}}
+{{< tab Elixir >}}
 Tracer.with_span "span-1", %{attributes: [{<<"start-opts-attr">>, <<"start-opts-value">>}]} do
   Tracer.set_attributes([{"my-attributes", "my-value"},
                          {:another_attribute, "value-of-attributes"}])
 end
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< /ot-tabs >}}
+{{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
 #### Semantic Attributes
@@ -270,9 +270,9 @@ could be created at two points - once, when the connection is checked out from
 the pool, and another when it is checked in.
 
 <!-- prettier-ignore-start -->
-{{< ot-tabs Erlang Elixir >}}
+{{< tabpane langEqualsHeader=true >}}
 
-{{< ot-tab >}}
+{{< tab Erlang >}}
 ?with_span(<<"my-span">>, #{},
            fun() ->
                ?add_event(<<"checking out connection">>),
@@ -281,9 +281,9 @@ the pool, and another when it is checked in.
                %% do some work with the connection and then return it to the pool
                ?add_event(<<"checking in connection">>)
            end)
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< ot-tab >}}
+{{< tab Elixir >}}
 Tracer.with_span "my-span" do
   Span.add_event("checking out connection")
   # acquire connection from connection pool
@@ -291,9 +291,9 @@ Tracer.with_span "my-span" do
   # do some work with the connection and then return it to the pool
   Span.add_event("checking in connection")
 end
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< /ot-tabs >}}
+{{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
 A useful characteristic of events is that their timestamps are displayed as
@@ -303,17 +303,17 @@ elapsed between them.
 Additionally, events can also have attributes of their own:
 
 <!-- prettier-ignore-start -->
-{{< ot-tabs Erlang Elixir >}}
+{{< tabpane langEqualsHeader=true >}}
 
-{{< ot-tab >}}
+{{< tab Erlang >}}
 ?add_event("Process exited with reason", [{pid, Pid)}, {reason, Reason}]))
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< ot-tab >}}
+{{< tab Elixir >}}
 Span.add_event("Process exited with reason", pid: pid, reason: Reason)
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< /ot-tabs >}}
+{{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
 ## Cross Service Propagators
@@ -329,24 +329,24 @@ registered with OpenTelemetry. This can be done through configuration of the
 `opentelemetry` application:
 
 <!-- prettier-ignore-start -->
-{{< ot-tabs Erlang Elixir >}}
+{{< tabpane langEqualsHeader=true >}}
 
-{{< ot-tab >}}
+{{< tab Erlang >}}
 %% sys.config
 ...
 {text_map_propagators, [baggage,
                         trace_context]},
 ...
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< ot-tab >}}
+{{< tab Elixir >}}
 ## runtime.exs
 ...
 text_map_propagators: [:baggage, :trace_context],
 ...
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< /ot-tabs >}}
+{{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
 If you instead need to use the
