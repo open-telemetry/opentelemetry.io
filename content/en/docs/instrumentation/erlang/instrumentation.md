@@ -265,7 +265,7 @@ include semantic attributes like the scheme of the URL:
 {{< tab Erlang >}}
 -include_lib("opentelemetry_semantic_conventions/include/trace.hrl").
 
-?with_span(<my_span, #{attributes => [{?HTTP_SCHEME, <<"https">>}]},
+?with_span(my_span, #{attributes => [{?HTTP_SCHEME, <<"https">>}]},
            fun() ->
              ...
            end)
