@@ -15,23 +15,23 @@ Only the `opentelemetry` and `opentelemetry_api` libraries are required for
 testing in Elixir/Erlang:
 
 <!-- prettier-ignore-start -->
-{{< ot-tabs Erlang Elixir >}}
+{{< tabpane langEqualsHeader=true >}}
 
-{{< ot-tab >}}
+{{< tab Erlang >}}
 {deps, [{opentelemetry_api, "~> 1.0"},
         {opentelemetry, "~> 1.0"}]}.
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< ot-tab >}}
+{{< tab Elixir >}}
 def deps do
   [
     {:opentelemetry_api, "~> 1.0"},
     {:opentelemetry, "~> 1.0"}
   ]
 end
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< /ot-tabs >}}
+{{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
 Set your `exporter` to `:none` and the span processor to
@@ -39,17 +39,17 @@ Set your `exporter` to `:none` and the span processor to
 to a destination, and that spans can be analyzed after they are processed.
 
 <!-- prettier-ignore-start -->
-{{< ot-tabs Erlang Elixir >}}
+{{< tabpane langEqualsHeader=true >}}
 
-{{< ot-tab >}}
+{{< tab Erlang >}}
 %% config/sys.config.src
 {opentelemetry,
   [{traces_exporter, none},
    {processors,
      [{otel_simple_processor, #{}}]}]}
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< ot-tab >}}
+{{< tab Elixir >}}
 # config/test.exs
 import Config
 
@@ -59,9 +59,9 @@ config :opentelemetry,
 config :opentelemetry, :processors, [
   {:otel_simple_processor, %{}}
 ]
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< /ot-tabs >}}
+{{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
 A modified version of the `hello` function from the
@@ -69,9 +69,9 @@ A modified version of the `hello` function from the
 serve as our test case:
 
 <!-- prettier-ignore-start -->
-{{< ot-tabs Erlang Elixir >}}
+{{< tabpane langEqualsHeader=true >}}
 
-{{< ot-tab >}}
+{{< tab Erlang >}}
 %% apps/otel_getting_started/src/otel_getting_started.erl
 -module(otel_getting_started).
 
@@ -86,9 +86,9 @@ hello() ->
 nice_operation(_SpanCtx) ->
     ?set_attributes([{a_key, <<"a value">>}]),
     world
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< ot-tab >}}
+{{< tab Elixir >}}
 # lib/otel_getting_started.ex
 defmodule OtelGettingStarted do
   require OpenTelemetry.Tracer, as: Tracer
@@ -100,17 +100,17 @@ defmodule OtelGettingStarted do
     end
   end
 end
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< /ot-tabs >}}
+{{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
 ## Testing
 
 <!-- prettier-ignore-start -->
-{{< ot-tabs Erlang Elixir >}}
+{{< tabpane langEqualsHeader=true >}}
 
-{{< ot-tab >}}
+{{< tab Erlang >}}
 -module(otel_getting_started_SUITE).
 
 -compile(export_all).
@@ -162,9 +162,9 @@ greets_the_world(_Config) ->
     ?assertMatch(ReceivedAttributes, ExpectedAttributes),
 
     ok.
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< ot-tab >}}
+{{< tab Elixir >}}
 defmodule OtelGettingStartedTest do
   use ExUnit.Case
 
@@ -194,7 +194,7 @@ defmodule OtelGettingStartedTest do
                     )}
   end
 end
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< /ot-tabs >}}
+{{< /tabpane >}}
 <!-- prettier-ignore-end -->
