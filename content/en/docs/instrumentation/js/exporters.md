@@ -181,7 +181,7 @@ server {
         # Take care of preflight requests
         if ($request_method = 'OPTIONS') {
              add_header 'Access-Control-Max-Age' 1728000;
-             add_header "Access-Control-Allow-Origin" "name.of.your.website.example.com" always;
+             add_header 'Access-Control-Allow-Origin' 'name.of.your.website.example.com' always;
              add_header 'Access-Control-Allow-Headers' 'Accept,Accept-Language,Content-Language,Content-Type' always;
              add_header 'Access-Control-Allow-Credentials' 'true' always;
              add_header 'Content-Type' 'text/plain charset=UTF-8';
@@ -189,7 +189,7 @@ server {
              return 204;
         }
 
-        add_header "Access-Control-Allow-Origin" "name.of.your.website.example.com" always;
+        add_header 'Access-Control-Allow-Origin' 'name.of.your.website.example.com' always;
         add_header 'Access-Control-Allow-Credentials' 'true' always;
         add_header 'Access-Control-Allow-Headers' 'Accept,Accept-Language,Content-Language,Content-Type' always;
         proxy_http_version 1.1;
