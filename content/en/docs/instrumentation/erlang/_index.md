@@ -23,8 +23,9 @@ OpenTelemetry Erlang supports Erlang 23+ and Elixir 1.13+.
 
 The API and SDK packages are available on [Hex](https://hex.pm):
 
-* [opentelemetry_api](https://hex.pm/packages/opentelemetry_api) is the API package used to instrument applications.
-* [opentelemetry](https://hex.pm/packages/opentelemetry) is the SDK package to
+- [opentelemetry_api](https://hex.pm/packages/opentelemetry_api) is the API
+  package used to instrument applications.
+- [opentelemetry](https://hex.pm/packages/opentelemetry) is the SDK package to
   include in your deploy-able -- e.g. an OTP Release or an escript.
 
 <!-- prettier-ignore-start -->
@@ -47,17 +48,17 @@ end
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
-In addition, there are packages for exporting, both over the [OpenTelemetry
-Protocol (OTLP)](https://hex.pm/packages/opentelemetry_exporter) and [Zipkin protocol](https://hex.pm/packages/opentelemetry_zipkin), as well as Instrumentation Libraries
-that provide instrumentation to plug in -- through middlewares, telemetry event handlers,
-etc -- to your application for many common Erlang and Elixir applications, like
-[Phoenix](https://www.phoenixframework.org/) and [Ecto](https://hexdocs.pm/ecto/Ecto.html). See
-the [instrumentation directory of the
-Contrib
-repos](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation).
+In addition, there are packages for exporting, both over the
+[OpenTelemetry Protocol (OTLP)](https://hex.pm/packages/opentelemetry_exporter)
+and [Zipkin protocol](https://hex.pm/packages/opentelemetry_zipkin), as well as
+Instrumentation Libraries that provide instrumentation to plug in -- through
+middlewares, telemetry event handlers, etc -- to your application for many
+common Erlang and Elixir applications, like
+[Phoenix](https://www.phoenixframework.org/) and
+[Ecto](https://hexdocs.pm/ecto/Ecto.html). See the
+[instrumentation directory of the Contrib repos](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation).
 
-Other Applications in Contrib help with writing manual instrumentation. There
-is
+Other Applications in Contrib help with writing manual instrumentation. There is
 [opentelemetry_telemetry](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/utilities/opentelemetry_telemetry)
 for creating OpenTelemetry Spans from `telemetry` events, and
 [OpenTelemetryProcessPropagator](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/propagators/opentelemetry_process_propagator)
@@ -92,9 +93,10 @@ rebar3 and Hex:
 
 ### Installing Experimental Applications
 
-The Experimental API and SDK Applications are where [Signals](/docs/concepts/signals/) live before they are
-stable and can be moved to the main API and SDK packages. These Applications are
-published to Hex but will always be versioned less than `1.0.0`:
+The Experimental API and SDK Applications are where
+[Signals](/docs/concepts/signals/) live before they are stable and can be moved
+to the main API and SDK packages. These Applications are published to Hex but
+will always be versioned less than `1.0.0`:
 
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}

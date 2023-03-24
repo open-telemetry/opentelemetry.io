@@ -31,8 +31,8 @@ and version of the OTP Application the module using the `Tracer` is in. If the
 call to use a `Tracer` is not in a module, for example when using the
 interactive shell, a `Tracer` with a blank name and version is used.
 
-The created `Tracer`'s record can be looked up by the name of a module in the OTP
-Application:
+The created `Tracer`'s record can be looked up by the name of a module in the
+OTP Application:
 
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
@@ -53,10 +53,8 @@ This is how the Erlang and Elixir macros for starting and updating `Spans` get a
 
 ### Create Spans
 
-Now that you have
-[Tracer](/docs/concepts/signals/traces/#tracer)s
-initialized, you can create
-[Spans](/docs/concepts/signals/traces/#spans-in-opentelemetry).
+Now that you have [Tracer](/docs/concepts/signals/traces/#tracer)s initialized,
+you can create [Spans](/docs/concepts/signals/traces/#spans-in-opentelemetry).
 
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
@@ -220,9 +218,9 @@ task = Task.async(fn ->
 
 ### Adding Attributes to a Span
 
-[Attributes](/docs/concepts/signals/traces/#attributes)
-let you attach key/value pairs to a Span so it carries more information about
-the current operation that it’s tracking.
+[Attributes](/docs/concepts/signals/traces/#attributes) let you attach key/value
+pairs to a Span so it carries more information about the current operation that
+it’s tracking.
 
 The following example shows the two ways of setting attributes on a span by both
 setting an attribute in the start options and then again with `set_attributes`
@@ -332,7 +330,11 @@ Tracer.add_event("Process exited with reason", pid: pid, reason: Reason)
 
 ### Set Span Status
 
-A [Status](/docs/concepts/signals/traces/#span-status) can be set on a [Span](/docs/concepts/signals/traces/#spans-in-opentelemetry), typically used to specify that a Span has not completed successfully - `StatusCode.ERROR`. In rare scenarios, you could override the Error status with `StatusCode.OK`, but don’t set `StatusCode.OK` on successfully-completed spans.
+A [Status](/docs/concepts/signals/traces/#span-status) can be set on a
+[Span](/docs/concepts/signals/traces/#spans-in-opentelemetry), typically used to
+specify that a Span has not completed successfully - `StatusCode.ERROR`. In rare
+scenarios, you could override the Error status with `StatusCode.OK`, but don’t
+set `StatusCode.OK` on successfully-completed spans.
 
 The status can be set at any time before the span is finished:
 
