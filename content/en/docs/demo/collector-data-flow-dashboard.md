@@ -33,39 +33,39 @@ processor, are exceeded.
 
 ### Ingress Traces Pipeline
 
-- otelcol_receiver_accepted_spans
-- otelcol_receiver_refused_spans
-- by (receiver,transport)
+- `otelcol_receiver_accepted_spans`
+- `otelcol_receiver_refused_spans`
+- `by (receiver,transport)`
 
 ### Ingress Metrics Pipeline
 
-- otelcol_receiver_accepted_metric_points
-- otelcol_receiver_refused_metric_points
-- by (receiver,transport)
+- `otelcol_receiver_accepted_metric_points`
+- `otelcol_receiver_refused_metric_points`
+- `by (receiver,transport)`
 
 ### Processor
 
 Only batch processor is currently present in the demo application. And the
 processor is used by both traces and metrics pipelines.
 
-- otelcol_processor_batch_batch_send_size_sum
+- `otelcol_processor_batch_batch_send_size_sum`
 
 ### Egress Traces Pipeline
 
-- otelcol_exporter_sent_spans
-- otelcol_exporter_send_failed_spans
-- by (exporter)
+- `otelcol_exporter_sent_spans`
+- `otelcol_exporter_send_failed_spans`
+- `by (exporter)`
 
 ### Egress Metrics Pipeline
 
-- otelcol_exporter_sent_metric_points
-- otelcol_exporter_send_failed_metric_points
-- by (exporter)
+- `otelcol_exporter_sent_metric_points`
+- `otelcol_exporter_send_failed_metric_points`
+- `by (exporter)`
 
 ### Prometheus Scraping
 
-- scrape_samples_scraped
-- by (job)
+- `scrape_samples_scraped`
+- `by (job)`
 
 ## Dashboard
 
@@ -90,7 +90,7 @@ the data flow.
 
 Export ratio is basically the ratio between receiver and exporter metrics. You
 can notice over the dashboard screenshot above that the export ratio on metrics
-is way too hight than the received metrics. This is because the demo application
+is way too high than the received metrics. This is because the demo application
 is configured to generate spanmetrics which is a processor that generates
 metrics from spans inside collector as illustrated in overview diagram.
 
