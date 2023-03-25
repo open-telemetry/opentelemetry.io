@@ -96,7 +96,7 @@ metrics from spans inside collector as illustrated in overview diagram.
 
 ### Process Metrics
 
-![](screenshots/otelcol-dashbord-process-metrics.png)
+![](/docs/demo/screenshots/otelcol-dashbord-process-metrics.png)
 
 Very limited but informative process metrics are added to dashboard. For
 example, you might observe more than one instance of otelcol running on the
