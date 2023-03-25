@@ -10,7 +10,7 @@ for users to build upon.
 
 ## Overview
 
-![](screenshots/otelcol-data-flow-overview.png)
+![](/docs/demo/screenshots/otelcol-data-flow-overview.png)
 
 The diagram above provides an overview of the system components, showcasing the
 configuration derived from the OpenTelemetry Collector (otelcol) configuration
