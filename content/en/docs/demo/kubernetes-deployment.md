@@ -13,11 +13,11 @@ Helm's [documentation](https://helm.sh/docs/) to get started.
 
 ## Prerequisites
 
-- Pre-existing Kubernetes Cluster
-- Helm 3.0+
-- 4 GB of RAM for the application
+- Kubernetes 1.23+
+- 4 GB of free RAM for the application
+- Helm 3.9+ (for Helm installation method only
 
-## Install the Chart
+## Install using Helm (recommended)
 
 Add OpenTelemetry Helm repository:
 
@@ -34,6 +34,18 @@ helm install my-otel-demo open-telemetry/opentelemetry-demo
 
 > **Note** The OpenTelemetry Demo Helm chart version 0.11.0 or greater is
 > required to perform all usage methods mentioned below.
+
+## Install using kubectl
+
+The following command will install the demo application to your Kubernetes
+cluster. 
+
+```shell
+kubectl apply -f https://raw.githubusercontent.com/open-telemetry/opentelemetry-demo/main/kubernetes/opentelemetry-demo.yaml
+```
+
+> **Note** These manifests are generated from the Helm chart and are provided
+> for convenience. It is recommended to use the Helm chart for installation.
 
 ## Use the Demo
 
