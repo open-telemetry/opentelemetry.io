@@ -38,7 +38,7 @@ helm install my-otel-demo open-telemetry/opentelemetry-demo
 ## Install using kubectl
 
 The following command will install the demo application to your Kubernetes
-cluster. 
+cluster.
 
 ```shell
 kubectl apply -f https://raw.githubusercontent.com/open-telemetry/opentelemetry-demo/main/kubernetes/opentelemetry-demo.yaml
