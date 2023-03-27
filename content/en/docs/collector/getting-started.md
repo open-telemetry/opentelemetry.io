@@ -44,7 +44,7 @@ To load your custom configuration `config.yaml` from your current working direct
 
 {{< ot-tabs DockerHub ghcr.io >}}
 {{< ot-tab lang="sh" >}}
-docker run -v $(pwd)/config.yaml:/etc/otelcol/config.yaml otel/opentelemetry-collector:{{% param collectorVersion %}}
+docker run -v $(pwd)/config.yaml:/etc/otelcol-contrib/config.yaml otel/opentelemetry-collector:{{% param collectorVersion %}}
 {{< /ot-tab >}}
 
 {{< ot-tab lang="sh" >}}
