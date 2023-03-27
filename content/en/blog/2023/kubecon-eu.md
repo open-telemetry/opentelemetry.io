@@ -43,11 +43,9 @@ OpenTelemetry.
 
 ## Co-located Events
 
-The [OpenTelemetry project meeting](https://sched.co/1JWS7) is to meet and
-network with the OpenTelemetry maintainers and core contributors. This meeting
-will be held 13:00 - 15:00 on Tuesday April 18, 2023. _This meeting can be
-attended with the standard in-person pass and does not require an "all-access"
-pass._
+Come network with OpenTelemetry maintainers and core contributors during 
+the [OpenTelemetry project meeting](https://sched.co/1JWS7), on Tuesday April 18, 2023
+from 13:00 - 15:00. You can attend with a _standard in-person pass_.
 
 [Observability Day][] _fosters collaboration, discussion, and knowledge sharing
 of cloud-native observability projects_. This event will be held on April 18,
