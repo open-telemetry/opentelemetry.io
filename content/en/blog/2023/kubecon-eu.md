@@ -12,8 +12,8 @@ The OpenTelemetry project maintainers, members of the governance committee,
 and technical committee are excited to be at [KubeCon EU][] in Amsterdam from
 April 18 - 21, 2023!
 
-You can meet us at the [project booth][], listen to our talks or learn with us
-during workshops. We are looking forward to hear from you, how you are using
+Come meet us at the [project booth][], listen to our talks or learn with us
+during workshops. We are looking forward to hear from you, in particular how you are using
 OpenTelemetry or contributing to the project.
 
 You will find below a list of talks and other activities related to
