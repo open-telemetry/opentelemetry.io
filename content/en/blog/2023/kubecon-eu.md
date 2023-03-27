@@ -8,7 +8,7 @@ spelling:
 author: '[Severin Neumann](https://github.com/svrnm)'
 ---
 
-The OpenTelemetry project maintainers, and members of the governance committee
+The OpenTelemetry project maintainers, members of the governance committee,
 and technical committee are excited to be at [KubeCon EU][] in Amsterdam from
 April 18 - 21, 2023!
 
