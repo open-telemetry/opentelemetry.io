@@ -43,13 +43,17 @@ OpenTelemetry.
 
 The [OpenTelemetry project meeting](https://sched.co/1JWS7) is to meet and
 network with the OpenTelemetry maintainers and core contributors. This meeting
-will be held 13:00 - 15:00 on Tuesday April 18, 2023.
-_This meeting can be attended with the standard in-person pass and does not require an "all-access" pass._
+will be held 13:00 - 15:00 on Tuesday April 18, 2023. _This meeting can be
+attended with the standard in-person pass and does not require an "all-access"
+pass._
 
 [Observability Day][] _fosters collaboration, discussion, and knowledge sharing
 of cloud-native observability projects_. This event will be held on April 18,
 2023 from 9:00 - 17:00. There will be several sessions on OpenTelemetry as well.
-_This co-located event is not included in the general in-person pass but only in the "in-person all-access" pass. See the [Kubecon website](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/) for more details._
+_This co-located event is not included in the general in-person pass but only in
+the "in-person all-access" pass. See the
+[Kubecon website](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/)
+for more details._
 
 ## OpenTelemetry Project Booth
 
