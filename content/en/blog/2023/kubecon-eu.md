@@ -16,7 +16,7 @@ You can meet us at the [project booth][], listen to our talks or learn with us
 during workshops. We are looking forward to hear from you, how you are using
 OpenTelemetry or contributing to the project.
 
-Below you will find a list of talks and other activities related to
+You will find below a list of talks and other activities related to
 OpenTelemetry.
 
 ## KubeCon Talks and Maintainer Sessions
