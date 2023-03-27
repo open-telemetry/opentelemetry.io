@@ -1,6 +1,6 @@
 ---
-title: Join us for OpenTelemetry Talks and Activities at Kubecon EU 2023
-linkTitle: Kubecon EU '23
+title: Join us for OpenTelemetry Talks and Activities at KubeCon EU 2023
+linkTitle: KubeCon EU '23
 date: 2023-03-30
 spelling:
   cSpell:ignore Severin Neumann Pavol Loffay Kowall Aiven Vider Xiaochun Alolita
@@ -9,7 +9,7 @@ author: '[Severin Neumann](https://github.com/svrnm)'
 ---
 
 The OpenTelemetry project maintainers, and members of the governance committee
-and technical committee are excited to be at [Kubecon EU][] in Amsterdam from
+and technical committee are excited to be at [KubeCon EU][] in Amsterdam from
 April 18 - 21, 2023!
 
 You can meet us at the [project booth][], listen to our talks or learn with us
@@ -19,7 +19,7 @@ OpenTelemetry or contributing to the project.
 Below you will find a list of talks and other activities related to
 OpenTelemetry.
 
-## Kubecon Talks and Maintainer Sessions
+## KubeCon Talks and Maintainer Sessions
 
 - **[Jaeger: The Future with OpenTelemetry and Metrics](https://sched.co/1HySf)**<br>
   by Pavol Loffay, Red Hat & Jonah Kowall, Aiven<br> Wednesday, April 19 •
@@ -52,12 +52,12 @@ of cloud-native observability projects_. This event will be held on April 18,
 2023 from 9:00 - 17:00. There will be several sessions on OpenTelemetry as well.
 _This co-located event is not included in the general in-person pass but only in
 the "in-person all-access" pass. See the
-[Kubecon website](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/)
+[KubeCon website](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/)
 for more details._
 
 ## OpenTelemetry Project Booth
 
-Drop by and say Hi! at the OpenTelemetry project booth in the Kubecon EU Project
+Drop by and say Hi! at the OpenTelemetry project booth in the KubeCon EU Project
 Pavilion. If you’re lucky, you may even pick up some OpenTelemetry swag!
 
 You will find us in the Solutions Showcase in Hall 5, Kiosk Number 20.
