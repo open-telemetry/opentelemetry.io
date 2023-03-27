@@ -34,6 +34,8 @@ OpenTelemetry.
 - **[OpenTelemetry: Using Unified Semantics to Drive Insights + Project Update](https://sched.co/1HyS5)**<br>
   by Morgan McLean, Splunk, Alolita Sharma, Apple, Daniel Dyla, Dynatrace, & Ted
   Young, Lightstep<br> Thursday, April 20 • 16:30 - 17:05
+- **[Connected Observability Pipelines in the OpenTelemetry Collector](https://sched.co/1HyXb)**<br>
+  by Daniel Jaglowski, observIQ<br> Friday, April 21 • 11:55 - 12:30
 - **[Tutorial: Exploring the Power of OpenTelemetry on Kubernetes](https://sched.co/1HyZ3)**<br>
   by Pavol Loffay, Benedikt Bongartz & Yuri Oliveira Sa, Red Hat, Severin
   Neumann, Cisco & Kristina Pathak, LightStep<br> Friday, April 21 • 16:00 -
