@@ -3,8 +3,8 @@ title: Join us for OpenTelemetry Talks and Activities at KubeCon EU 2023
 linkTitle: KubeCon EU '23
 date: 2023-03-30
 spelling:
-  cSpell:ignore Severin Neumann Pavol Loffay Kowall Aiven Vider Xiaochun Alolita
-  Sharma Dyla Benedikt Bongartz Oliveira Pathak
+  cSpell:ignore Severin Neumann Pavol Loffay Kowall Aiven Vider Xiaochun
+  cSpell:ignore Alolita Sharma Dyla Benedikt Bongartz Oliveira Pathak
 author: '[Severin Neumann](https://github.com/svrnm)'
 ---
 
