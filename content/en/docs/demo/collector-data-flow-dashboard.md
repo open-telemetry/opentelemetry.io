@@ -8,8 +8,6 @@ counts and cardinality, is essential for comprehending the collector's internal
 dynamics. However, when delving into the details, the interconnections can
 become complex. The Collector Data Flow Dashboard aims to demonstrate the
 capabilities of the OpenTelemetry demo application, offering a solid foundation
-for users to build upon. The Collector Data Flow Dashboard aims to demonstrate the
-capabilities of the OpenTelemetry demo application, offering a solid foundation
 for users to build upon. Collector Data Flow Dashboard provides valuable guidance on which metrics to monitor. Users can tailor their own dashboard variations by adding necessary metrics specific to their use cases, such as memory delimiters or other performance indicators. This demo dashboard serves as a starting point, enabling users to explore diverse usage scenarios and adapt the tool to their unique monitoring needs. Collector Data Flow Dashboard provides valuable guidance on which metrics to monitor. Users can tailor their own dashboard variations by adding necessary metrics specific to their use cases, such as memory delimiters or other data flow indicators. This demo dashboard serves as a starting point, enabling users to explore diverse usage scenarios and adapt the tool to their unique monitoring needs.
 
 
