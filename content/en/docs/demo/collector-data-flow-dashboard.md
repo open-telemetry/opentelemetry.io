@@ -1,4 +1,6 @@
-# Collector Data Flow Dashboard
+---
+title: Collector Data Flow Dashboard
+---
 
 Monitoring data flow through the OpenTelemetry Collector is crucial for several
 reasons. Gaining a macro-level perspective on incoming data, such as sample
