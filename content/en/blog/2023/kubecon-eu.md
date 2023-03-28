@@ -5,19 +5,15 @@ date: 2023-03-30
 spelling:
   cSpell:ignore Severin Neumann Pavol Loffay Kowall Aiven Vider Xiaochun
   cSpell:ignore Alolita Sharma Dyla Benedikt Bongartz Oliveira Pathak
+  cSpell:ignore Jaglowski observ
 author: '[Severin Neumann](https://github.com/svrnm)'
 ---
 
-The OpenTelemetry project maintainers, members of the governance committee,
-and technical committee are excited to be at [KubeCon EU][] in Amsterdam from
-April 18 - 21, 2023!
+The OpenTelemetry project maintainers, members of the governance committee, and
+technical committee are excited to be at [KubeCon EU][] in Amsterdam from April
+18 - 21, 2023!
 
-Come meet us at the [project booth][], listen to our talks or learn with us
-during workshops. We are looking forward to hear from you, in particular how you are using
-OpenTelemetry or contributing to the project.
-
-You will find below a list of talks and other activities related to
-OpenTelemetry.
+Read on to learn about all the things related OpenTelemetry during KubeCon.
 
 ## KubeCon Talks and Maintainer Sessions
 
@@ -43,9 +39,9 @@ OpenTelemetry.
 
 ## Co-located Events
 
-Come network with OpenTelemetry maintainers and core contributors during 
-the [OpenTelemetry project meeting](https://sched.co/1JWS7), on Tuesday April 18, 2023
-from 13:00 - 15:00. You can attend with a _standard in-person pass_.
+Come network with OpenTelemetry maintainers and core contributors during the
+[OpenTelemetry project meeting](https://sched.co/1JWS7), on Tuesday April 18,
+2023 from 13:00 - 15:00. You can attend with a _standard in-person pass_.
 
 [Observability Day][] _fosters collaboration, discussion, and knowledge sharing
 of cloud-native observability projects_. This event will be held on April 18,
@@ -53,15 +49,16 @@ of cloud-native observability projects_. This event will be held on April 18,
 
 > <i class="far fa-exclamation-triangle"></i> **IMPORTANT access note**: You
 > need an _in-person all-access_ pass for access to **Observability Day**. For
-> details, see [KubeCon
-> registration](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/).
+> details, see [KubeCon registration][].
 
 ## OpenTelemetry Project Booth
 
 Drop by and say Hi! at the OpenTelemetry project booth in the KubeCon EU Project
 Pavilion. If you’re lucky, you may even pick up some OpenTelemetry swag!
 
-You will find us in the Solutions Showcase in Hall 5, Kiosk Number 20. [Pavilion hours][] are as follows:
+You will find us in the Solutions Showcase in Hall 5, Kiosk Number 20.
+
+[Pavilion hours][] are as follows:
 
 - Wednesday, April 19: 10:30 – 21:00 (includes KubeCrawl + CloudNativeFest from
   18:00 – 21:00)
@@ -77,9 +74,9 @@ Come join us to listen, learn, and get involved in OpenTelemetry.
 See you in Amsterdam!
 
 [kubecon eu]: https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/
-[project booth]:
-  https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/program/project-engagement/#project-pavilion
 [Observability Day]:
   https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/observability-day/
+[kubecon registration]:
+  (https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/)
 [pavilion hours]:
   https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/program/project-engagement/#project-pavilion
