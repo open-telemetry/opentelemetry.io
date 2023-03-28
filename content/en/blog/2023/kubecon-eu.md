@@ -50,10 +50,11 @@ from 13:00 - 15:00. You can attend with a _standard in-person pass_.
 [Observability Day][] _fosters collaboration, discussion, and knowledge sharing
 of cloud-native observability projects_. This event will be held on April 18,
 2023 from 9:00 - 17:00. There will be several sessions on OpenTelemetry as well.
-_This co-located event is not included in the general in-person pass but only in
-the "in-person all-access" pass. See the
-[KubeCon website](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/)
-for more details._
+
+> <i class="far fa-exclamation-triangle"></i> **IMPORTANT access note**: You
+> need an _in-person all-access_ pass for access to **Observability Day**. For
+> details, see [KubeCon
+> registration](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/).
 
 ## OpenTelemetry Project Booth
 
