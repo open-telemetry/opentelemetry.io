@@ -60,9 +60,7 @@ for more details._
 Drop by and say Hi! at the OpenTelemetry project booth in the KubeCon EU Project
 Pavilion. If you’re lucky, you may even pick up some OpenTelemetry swag!
 
-You will find us in the Solutions Showcase in Hall 5, Kiosk Number 20.
-
-[The pavilion hours are][]:
+You will find us in the Solutions Showcase in Hall 5, Kiosk Number 20. [Pavilion hours][] are as follows:
 
 - Wednesday, April 19: 10:30 – 21:00 (includes KubeCrawl + CloudNativeFest from
   18:00 – 21:00)
