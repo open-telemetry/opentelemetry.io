@@ -77,6 +77,6 @@ See you in Amsterdam!
 [Observability Day]:
   https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/observability-day/
 [kubecon registration]:
-  (https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/)
+  https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/
 [pavilion hours]:
   https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/program/project-engagement/#project-pavilion
