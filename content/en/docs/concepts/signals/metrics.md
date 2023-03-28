@@ -41,7 +41,7 @@ In addition to the metric instruments, the concept of _aggregations_ is an
 important one to understand. An aggregation is a technique whereby a large
 number of measurements are combined into either exact or estimated statistics
 about metric events that took place during a time window. The OTLP protocol
-transports such aggreagated metrics. The OpenTelemetry API provides a default
+transports such aggregated metrics. The OpenTelemetry API provides a default
 aggregation for each instrument which can be overridden using the Views API. The
 OpenTelemetry project aims to provide default aggregations that are supported by
 visualizers and telemetry backends.
