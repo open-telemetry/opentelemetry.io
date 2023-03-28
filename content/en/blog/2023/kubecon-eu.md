@@ -82,5 +82,5 @@ See you in Amsterdam!
   https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/program/project-engagement/#project-pavilion
 [Observability Day]:
   https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/observability-day/
-[The pavilion hours are]:
+[pavilion hours]:
   https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/program/project-engagement/#project-pavilion
