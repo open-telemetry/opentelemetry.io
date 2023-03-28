@@ -703,6 +703,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-15T21:02:22.862266-05:00"
   },
+  "https://docs.itrsgroup.com/docs/geneos/data-collection/opentelemetry/current/opentelemetry.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-03-27T15:33:45.790239-04:00"
+  },
   "https://docs.jboss.org/jbossas/guides/webguide/r2/en/html/ch06.html": {
     "StatusCode": 200,
     "LastSeen": "2023-02-15T21:09:16.994306-05:00"
