@@ -73,7 +73,7 @@ We’re super excited to learn from all of you about your experience with
 OpenTelemetry, how you are using OpenTelemetry, features you may need and issues
 you may be running into when using OpenTelemetry.
 
-Come join us to listen, learn and get involved in OpenTelemetry.
+Come join us to listen, learn, and get involved in OpenTelemetry.
 
 See you in Amsterdam!
 
