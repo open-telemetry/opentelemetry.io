@@ -152,7 +152,7 @@ We have all necessary components in place:
   and frameworks.
 - Development tools that can help lower barrier for users and developers
   interested in instrumenting arbitrary code.
-- [Documentation](https://opentelemetry.io/docs/instrumentation/php/automatic/)
+- [Documentation](/docs/instrumentation/php/automatic/)
 
 One of our goals is to increase awareness of this work and involve more people
 that will help us improve it, extend coverage and fix bugs.
