@@ -92,9 +92,9 @@ Release not producing telemetry over crashing the entire Release.
 
 In addition to the API and SDK, an exporter for getting data out is needed. The
 SDK comes with an exporter for debugging purposes that prints to stdout and
-there are separate packages for exporting over the [OpenTelemetry Protocol
-(OTLP)](https://hex.pm/packages/opentelemetry_exporter) and the [Zipkin
-protocol](https://hex.pm/packages/opentelemetry_zipkin).
+there are separate packages for exporting over the
+[OpenTelemetry Protocol (OTLP)](https://hex.pm/packages/opentelemetry_exporter)
+and the [Zipkin protocol](https://hex.pm/packages/opentelemetry_zipkin).
 
 ## Initialization and Configuration
 
