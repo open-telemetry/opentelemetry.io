@@ -26,13 +26,13 @@ to find a `php-http/async-client` implementation.
 
 ### Optional PHP extensions
 
-| Extension                                                       | Why                                                               |
-| --------------------------------------------------------------- | ----------------------------------------------------------------- |
-| [ext-grpc](https://pecl.php.net/package/gRPC)                   | Required to use gRPC as a transport for the OTLP exporter         |
-| [ext-mbstring](https://www.php.net/manual/en/book.mbstring.php) | More performant than the fallback, `symfony/polyfill-mbstring`    |
-| [ext-zlib](https://www.php.net/manual/en/book.zlib.php)         | If you want to compress data for exporting                        |
-| [ext-ffi](https://www.php.net/manual/en/book.ffi.php)           | Fiber-based context storage                                       |
-| [ext-protobuf](https://pecl.php.net/package/protobuf)           | _Significant_ performance improvement for otlp+protobuf exporting |
+| Extension                                                                 | Why                                                               |
+| ------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| [ext-grpc](https://github.com/grpc/grpc/tree/master/src/php)              | Required to use gRPC as a transport for the OTLP exporter         |
+| [ext-mbstring](https://www.php.net/manual/en/book.mbstring.php)           | More performant than the fallback, `symfony/polyfill-mbstring`    |
+| [ext-zlib](https://www.php.net/manual/en/book.zlib.php)                   | If you want to compress data for exporting                        |
+| [ext-ffi](https://www.php.net/manual/en/book.ffi.php)                     | Fiber-based context storage                                       |
+| [ext-protobuf](https://github.com/protocolbuffers/protobuf/tree/main/php) | _Significant_ performance improvement for otlp+protobuf exporting |
 
 #### ext-ffi
 
