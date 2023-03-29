@@ -7,31 +7,7 @@ Welcome to the OpenTelemetry for Erlang/Elixir getting started guide! This guide
 will walk you through the basic steps in installing, configuring, and exporting
 data from OpenTelemetry.
 
-## Installation
-
-OpenTelemetry packages for Erlang/Elixir are available on
-[hex.pm](https://hex.pm). There are two packages you might want to install,
-depending on what you are trying to accomplish.
-
-### `opentelemetry_api`
-
-If you are developing a library or OTP Application that someone else would
-include into their deployed code and you want to provide OpenTelemetry
-instrumentation for them, you'll want to add the dependency `opentelemetry_api`.
-This package contains only the API of OpenTelemetry. It will not start any
-processes and all API calls (such as starting a span) will be a no-op that
-creates no data, unless the `opentelemetry` SDK package is also installed.
-
-### `opentelemetry`
-
-If you are developing an Application that will actually be deployed and export
-OpenTelemetry data, whether from instrumented dependencies or your code itself,
-you'll want to add the `opentelemetry` package. This is the implementation of
-the API and will start a Supervision tree, handling the necessary components for
-recording and exporting OpenTelemetry signals. This is the package where you
-would configure the destination(s) for your OpenTelemetry data, whether it be to
-an OpenTelemetry Collector instance, or directly to a vendor's data ingestion
-API.
+## Creating a New Project
 
 To get started with this guide, create a new project with `rebar3` or `mix`:
 
@@ -57,15 +33,15 @@ run as a Release and export spans from.
 {{< tabpane langEqualsHeader=true >}}
 
 {{< tab Erlang >}}
-{deps, [{opentelemetry_api, "~> 1.0"},
-        {opentelemetry, "~> 1.0"}]}.
+{deps, [{opentelemetry_api, "~> 1.2"},
+        {opentelemetry, "~> 1.3"}]}.
 {{< /tab >}}
 
 {{< tab Elixir >}}
 def deps do
   [
-    {:opentelemetry_api, "~> 1.0"},
-    {:opentelemetry, "~> 1.0"}
+    {:opentelemetry_api, "~> 1.2"},
+    {:opentelemetry, "~> 1.3"}
   ]
 end
 {{< /tab >}}
@@ -73,27 +49,35 @@ end
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
-In the case of Erlang, the Applications will also need to be added to
-`src/otel_getting_started.app.src`. In an Elixir project, a `releases` section
-needs to be added to `mix.exs`:
+In the case of Erlang, the API Application will also need to be added to
+`src/otel_getting_started.app.src` and a `relx` section to `rebar.config`. In an
+Elixir project, a `releases` section needs to be added to `mix.exs`:
 
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 
 {{< tab Erlang >}}
+%% src/otel_getting_started.app.src
 ...
 {applications, [kernel,
                 stdlib,
-                opentelemetry_api,
-                opentelemetry]},
+                opentelemetry_api]},
 ...
+
+%% rebar.config
+{relx, [{release, {otel_getting_started, "0.1.0"},
+         [{opentelemetry, temporary},
+          otel_getting_started]},
+
+       ...]}.
 {{< /tab >}}
 
 {{< tab Elixir >}}
+# mix.exs
 releases: [
   otel_getting_started: [
     version: "0.0.1",
-    applications: [otel_getting_started: :permanent]
+    applications: [opentelemetry: :temporary, otel_getting_started: :permanent]
   ]
 ]
 {{< /tab >}}
@@ -101,14 +85,24 @@ releases: [
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
+The SDK `opentelemetry` should be added as early as possible in the Release boot
+process to ensure it is available before any telemetry is produced. Here it is
+also set to `temporary` under the assumption that we prefer to have a running
+Release not producing telemetry over crashing the entire Release.
+
+In addition to the API and SDK, an exporter for getting data out is needed. The
+SDK comes with an exporter for debugging purposes that prints to stdout and
+there are separate packages for exporting over the
+[OpenTelemetry Protocol (OTLP)](https://hex.pm/packages/opentelemetry_exporter)
+and the [Zipkin protocol](https://hex.pm/packages/opentelemetry_zipkin).
+
 ## Initialization and Configuration
 
 Configuration is done through the
 [Application environment](https://erlang.org/doc/design_principles/applications.html#configuring-an-application)
-or
-[OS Environment Variables](/docs/reference/specification/sdk-environment-variables/).
-The `opentelemetry` Application uses the configuration to initialize a
-[Tracer Provider](https://hexdocs.pm/opentelemetry_api/otel_tracer_provider.html),
+or [OS Environment Variables]({{< relref
+"/docs/reference/specification/sdk-environment-variables" >}}). The SDK (`opentelemetry`
+Application) uses the configuration to initialize a [Tracer Provider](https://hexdocs.pm/opentelemetry_api/otel_tracer_provider.html),
 its [Span Processors](https://hexdocs.pm/opentelemetry/otel_span_processor.html)
 and the [Exporter](https://hexdocs.pm/opentelemetry/otel_exporter.html).
 
@@ -165,7 +159,7 @@ with a function `hello/0` that starts some spans:
 
 hello() ->
     %% start an active span and run a local function
-    ?with_span(<<"operation">>, #{}, fun nice_operation/1).
+    ?with_span(operation, #{}, fun nice_operation/1).
 
 nice_operation(_SpanCtx) ->
     ?add_event(<<"Nice operation!">>, [{<<"bogons">>, 100}]),
@@ -185,7 +179,7 @@ defmodule OtelGettingStarted do
   require OpenTelemetry.Tracer, as: Tracer
 
   def hello do
-    Tracer.with_span "operation" do
+    Tracer.with_span :operation do
       Tracer.add_event("Nice operation!", [{"bogons", 100}])
       Tracer.set_attributes([{:another_key, "yes"}])
 
@@ -244,7 +238,7 @@ true
       [{event,-576460750077786044,<<"Sub span event!">>,[]}],
       [],undefined,1,false,undefined}
 {span,177312096541376795265675405126880478701,13736713257910636645,undefined,
-      undefined,<<"operation">>,internal,-576460750086570890,
+      undefined,operation,internal,-576460750086570890,
       -576460750077752627,
       [{another_key,<<"yes">>}],
       [{event,-576460750077877345,<<"Nice operation!">>,[{<<"bogons">>,100}]}],
@@ -268,7 +262,7 @@ iex(2)>
       [{event,-576460741349414157,<<"Sub span event!">>,[]}],
       [],undefined,1,false,undefined}
 {span,180094370450826032544967824850795294459,14276444653144535440,undefined,
-      undefined,<<"operation">>,'INTERNAL',-576460741353342627,
+      undefined,:operation,'INTERNAL',-576460741353342627,
       -576460741349400034,
       [{another_key,<<"yes">>}],
       [{event,-576460741349446725,<<"Nice operation!">>,[{<<"bogons">>,100}]}],
@@ -303,17 +297,17 @@ added to the project's dependencies:
 {{< tabpane langEqualsHeader=true >}}
 
 {{< tab Erlang >}}
-{deps, [{opentelemetry_api, "~> 1.0"},
-        {opentelemetry, "~> 1.0"},
-        {opentelemetry_exporter, "~> 1.0"}]}.
+{deps, [{opentelemetry_api, "~> 1.3"},
+        {opentelemetry, "~> 1.3"},
+        {opentelemetry_exporter, "~> 1.4"}]}.
 {{< /tab >}}
 
 {{< tab Elixir >}}
 def deps do
   [
-    {:opentelemetry_api, "~> 1.0"},
-    {:opentelemetry, "~> 1.0"},
-    {:opentelemetry_exporter, "~> 1.0"}
+    {:opentelemetry_api, "~> 1.3"},
+    {:opentelemetry, "~> 1.3"},
+    {:opentelemetry_exporter, "~> 1.4"}
   ]
 end
 {{< /tab >}}
@@ -321,9 +315,9 @@ end
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
-It should then be added to the configuration of the Release, it should be before
-the SDK Application to ensure the exporter's dependencies are started before the
-SDK attempts to initialize and use the exporter.
+It should then be added to the configuration of the Release before the SDK
+Application to ensure the exporter's dependencies are started before the SDK
+attempts to initialize and use the exporter.
 
 Example of Release configuration in `rebar.config` and for
 [mix's Release task](https://hexdocs.pm/mix/Mix.Tasks.Release.html):
