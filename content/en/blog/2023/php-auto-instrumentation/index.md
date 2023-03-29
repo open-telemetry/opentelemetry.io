@@ -1,5 +1,5 @@
 ---
-title: Opentelemetry PHP Auto-Instrumentation
+title: OpenTelemetry PHP Auto-Instrumentation
 linkTitle: PHP Auto-Instrumentation
 date: 2023-03-21
 author: '[Przemek Delewski](https://github.com/pdelewski/) (Sumo Logic)'
@@ -10,7 +10,7 @@ application without modyfing its source code. There are several techniques to do
 that, but all of them more or less work in the same way by injecting additional
 code into original one during compile time, link time, run-time or by extending
 the operating system in case of [ebpf](https://ebpf.io/). This blogpost presents
-method used by Opentelemetry PHP auto-instrumentation.
+method used by OpenTelemetry PHP auto-instrumentation.
 
 ## Prerequisites
 
@@ -108,7 +108,7 @@ cd example-app
 composer require open-telemetry/opentelemetry-instrumentation-installer
 ```
 
-Opentelemetry instrumentation installer works in two modes:
+OpenTelemetry instrumentation installer works in two modes:
 
 - basic (installs everything with most recent version)
 - advanced (gives control to the user)
