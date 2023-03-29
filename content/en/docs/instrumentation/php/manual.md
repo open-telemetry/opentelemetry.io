@@ -70,6 +70,18 @@ $instrumentation = new CachedInstrumentation('example');
 $tracer = $instrumentation->tracer();
 ```
 
+It's important to run the tracer provider's `shutdown()` method when the PHP
+process ends, to enable flushing of any enqueued telemetry.
+The shutdown process is blocking, so consider running it in an async process.
+Otherwise, you can use the `ShutdownHandler` to register the shutdown function
+as part of PHP's shutdown process:
+
+```php
+\OpenTelemetry\SDK\Common\Util\ShutdownHandler::register([$tracerProvider, 'shutdown']);
+\OpenTelemetry\SDK\Common\Util\ShutdownHandler::register([$meterProvider, 'shutdown']);
+```
+
+
 ## Acquiring a Tracer
 
 To do [Tracing](/docs/concepts/signals/traces/) you'll need to acquire a
