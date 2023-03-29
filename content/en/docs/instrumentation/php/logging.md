@@ -3,21 +3,18 @@ title: Logging
 weight: 10
 ---
 
-## Introduction
-
 As logging is a mature and well-established function, the
 [OpenTelemetry approach](/docs/concepts/signals/logs/) is a little different for
 this signal.
 
 The OpenTelemetry logger is not designed to be used directly, but rather to be
-integrated into existing logging libraries as a handler. In this way you can
+integrated into existing logging libraries as a handler. In this way, you can
 choose to have some or all of your application logs sent to an
 OpenTelemetry-compatible service such as the [collector](/docs/collector/).
 
 ## Setup
 
-Loggers must be obtained from a `LoggerProvider`, and log records must be
-emitted via an `EventLogger`:
+You get a logger from a `LoggerProvider`. Log records get emitted via an `EventLogger`:
 
 ```php
 <?php

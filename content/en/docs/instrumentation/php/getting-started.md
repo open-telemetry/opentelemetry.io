@@ -8,7 +8,7 @@ weight: 1
 ## Requirements
 
 OpenTelemetry for PHP requires a minimum PHP version of 7.4, and
-auto-instrumentation requires version 8.0+
+auto-instrumentation requires version 8.0+.
 
 ### Dependencies
 
@@ -18,7 +18,7 @@ Some of the `SDK` and `Contrib` packages have a dependency on both a
 implementation. You can find appropriate composer packages implementing given
 standards on [packagist.org](https://packagist.org/).
 
-Please see
+See
 [http-factory-implementations](https://packagist.org/providers/psr/http-factory-implementation)
 to find a `PSR17 (HTTP factories)` implementation, and
 [async-client-implementations](https://packagist.org/providers/php-http/async-client-implementation)
@@ -26,11 +26,11 @@ to find a `php-http/async-client` implementation.
 
 ### Optional PHP extensions
 
-| Extension                                                                 | Why                                                               |
+| Extension                                                                 | Purpose                                                           |
 | ------------------------------------------------------------------------- | ----------------------------------------------------------------- |
 | [ext-grpc](https://github.com/grpc/grpc/tree/master/src/php)              | Required to use gRPC as a transport for the OTLP exporter         |
 | [ext-mbstring](https://www.php.net/manual/en/book.mbstring.php)           | More performant than the fallback, `symfony/polyfill-mbstring`    |
-| [ext-zlib](https://www.php.net/manual/en/book.zlib.php)                   | If you want to compress data for exporting                        |
+| [ext-zlib](https://www.php.net/manual/en/book.zlib.php)                   | If you want to compress exported data                        |
 | [ext-ffi](https://www.php.net/manual/en/book.ffi.php)                     | Fiber-based context storage                                       |
 | [ext-protobuf](https://github.com/protocolbuffers/protobuf/tree/main/php) | _Significant_ performance improvement for otlp+protobuf exporting |
 
