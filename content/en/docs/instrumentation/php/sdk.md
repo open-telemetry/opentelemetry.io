@@ -8,7 +8,8 @@ set up and configured in a number of ways.
 
 ## Manual setup
 
-When manually setting up an SDK, you have full control.
+Setting up an SDK manually gives you the most control over the SDK's
+configuration:
 
 ```php
 <?php
@@ -29,7 +30,7 @@ $tracerProvider =  new TracerProvider(
 
 ## SDK Builder
 
-The SDK builder provides a fluent interface to configure parts of the SDK.
+The SDK builder provides a convenient interface to configure parts of the SDK.
 However, it doesn't support all of the features that manual setup does.
 
 ```php

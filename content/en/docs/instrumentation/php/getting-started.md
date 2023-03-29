@@ -30,7 +30,7 @@ to find a `php-http/async-client` implementation.
 | ------------------------------------------------------------------------- | ----------------------------------------------------------------- |
 | [ext-grpc](https://github.com/grpc/grpc/tree/master/src/php)              | Required to use gRPC as a transport for the OTLP exporter         |
 | [ext-mbstring](https://www.php.net/manual/en/book.mbstring.php)           | More performant than the fallback, `symfony/polyfill-mbstring`    |
-| [ext-zlib](https://www.php.net/manual/en/book.zlib.php)                   | If you want to compress exported data                        |
+| [ext-zlib](https://www.php.net/manual/en/book.zlib.php)                   | If you want to compress exported data                             |
 | [ext-ffi](https://www.php.net/manual/en/book.ffi.php)                     | Fiber-based context storage                                       |
 | [ext-protobuf](https://github.com/protocolbuffers/protobuf/tree/main/php) | _Significant_ performance improvement for otlp+protobuf exporting |
 

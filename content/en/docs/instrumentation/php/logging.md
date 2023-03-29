@@ -14,7 +14,8 @@ OpenTelemetry-compatible service such as the [collector](/docs/collector/).
 
 ## Setup
 
-You get a logger from a `LoggerProvider`. Log records get emitted via an `EventLogger`:
+You get a logger from a `LoggerProvider`. Log records get emitted via an
+`EventLogger`:
 
 ```php
 <?php
