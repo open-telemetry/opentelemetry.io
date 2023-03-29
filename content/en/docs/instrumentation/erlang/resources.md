@@ -5,10 +5,11 @@ weight: 36
 
 ## Resources
 
-A resource represents the entity producing telemetry as resource attributes. For
-example, an OTP Release producing telemetry that is running in a container on
-Kubernetes has an OTP Release name, a Pod name, a namespace, and possibly a
-deployment name. All four of these attributes can be included in the resource.
+A [resource](/docs/reference/specification/overview/#resources) represents the
+entity producing telemetry as resource attributes. For example, an OTP Release
+producing telemetry that is running in a container on Kubernetes has an OTP
+Release name, a Pod name, a namespace, and possibly a deployment name. All four
+of these attributes can be included in the resource.
 
 In your observability backend, you can use resource information to better
 investigate interesting behavior. For example, if your trace or metrics data
@@ -81,12 +82,18 @@ resource: %{deployment: %{environment: "development" }}
 <!-- prettier-ignore-end -->
 
 Resource attributes in the `resource` Application environment variable are
-flattened and combined with `.`, so `#{deployment => #{environment =>
-<<"development">> }` is the same as `#{'deployment.environment' =>
-<<"development">>}`.
+flattened and combined with `.`, so
+`#{deployment => #{environment => <<"development">> }` is the same as
+`#{'deployment.environment' => <<"development">>}`.
 
 ### Custom resource detectors
 
-Custom resource detectors can be created by implementing the [`otel_resource_detector`
-behaviour](https://hexdocs.pm/opentelemetry/1.3.0/otel_resource_detector.html#callbacks)
-which contains a single callback `get_resource/1` that returns an [`otel_resource`](https://hexdocs.pm/opentelemetry/1.3.0/otel_resource.html).
+Custom resource detectors can be created by implementing the
+[`otel_resource_detector` behaviour](https://hexdocs.pm/opentelemetry/1.3.0/otel_resource_detector.html#callbacks)
+which contains a single callback `get_resource/1` that returns an
+[`otel_resource`](https://hexdocs.pm/opentelemetry/1.3.0/otel_resource.html).
+
+Note that there are
+[semantic conventions](/docs/reference/specification/resource/semantic_conventions/)
+defined for `resource` that should be followed if they apply when adding new
+resource attributes.
