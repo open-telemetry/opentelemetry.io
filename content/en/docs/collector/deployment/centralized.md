@@ -47,8 +47,8 @@ The collector servicing the central OTLP endpoint would be configured as shown
 below:
 
 <!-- prettier-ignore-start -->
-{{< tabpane persistLang=false >}}
-{{< tab header="Static" lang="yaml" >}}
+{{< tabpane lang=yaml persistLang=false >}}
+{{< tab Static >}}
 receivers:
   otlp:
     protocols:
@@ -72,7 +72,7 @@ service:
       receivers: [otlp]
       exporters: [loadbalancing]
 {{< /tab >}}
-{{< tab header="DNS" lang="yaml" >}}
+{{< tab DNS >}}
 receivers:
   otlp:
     protocols:
@@ -93,7 +93,7 @@ service:
       receivers: [otlp]
       exporters: [loadbalancing]
 {{< /tab >}}
-{{< tab header="DNS with service" lang="yaml" >}}
+{{< tab "DNS with service" >}}
 receivers:
   otlp:
     protocols:

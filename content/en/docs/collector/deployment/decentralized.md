@@ -34,8 +34,8 @@ The collector serving at `collector.example.com:4318` would then be configured
 like so:
 
 <!-- prettier-ignore-start -->
-{{< tabpane persistLang=false >}}
-{{< tab header="Traces" lang="yaml" >}}
+{{< tabpane lang=yaml persistLang=false >}}
+{{< tab Traces >}}
 receivers:
   otlp: # the OTLP receiver the app is sending traces to
     protocols:
@@ -56,7 +56,7 @@ service:
       processors: [batch]
       exporters: [jaeger]
 {{< /tab >}}
-{{< tab header="Metrics" lang="yaml" >}}
+{{< tab Metrics >}}
 receivers:
   otlp: # the OTLP receiver the app is sending metrics to
     protocols:
@@ -77,7 +77,7 @@ service:
       exporters: [prometheusremotewrite]
 
 {{< /tab >}}
-{{< tab header="Logs" lang="yaml" >}}
+{{< tab Logs >}}
 receivers:
   otlp: # the OTLP receiver the app is sending logs to
     protocols:
@@ -87,7 +87,7 @@ processors:
   batch:
 
 exporters:
-  file: # the File Exporter, to ingest logs to local file 
+  file: # the File Exporter, to ingest logs to local file
     path: "./app42_example.log"
     rotation:
 
