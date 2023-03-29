@@ -36,9 +36,10 @@ to find a `php-http/async-client` implementation.
 
 #### ext-ffi
 
-Fibers support can be enabled by setting the `OTEL_PHP_FIBERS_ENABLED` environment
-variable to a truthy value (`1`, `true`, `on`). Using fibers with non-`CLI`
-SAPIs may require preloading of bindings. One way to achieve this is setting
+Fibers support can be enabled by setting the `OTEL_PHP_FIBERS_ENABLED`
+environment variable to a truthy value (`1`, `true`, `on`). Using fibers with
+non-`CLI` SAPIs may require preloading of bindings. One way to achieve this is
+setting
 [`ffi.preload`](https://www.php.net/manual/en/ffi.configuration.php#ini.ffi.preload)
 to `src/Context/fiber/zend_observer_fiber.h` and setting
 [`opcache.preload`](https://www.php.net/manual/en/opcache.preloading.php) to

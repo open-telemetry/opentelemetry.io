@@ -3,8 +3,8 @@ title: SDK
 weight: 8
 ---
 
-The OpenTelemetry SDK provides a working implementation of the API, and can be set up and configured
-in a number of ways.
+The OpenTelemetry SDK provides a working implementation of the API, and can be
+set up and configured in a number of ways.
 
 ## Manual setup
 
@@ -29,8 +29,8 @@ $tracerProvider =  new TracerProvider(
 
 ## SDK Builder
 
-The SDK builder provides a fluent interface to configure parts of the SDK. However, it doesn't support
-all of the features that manual setup does.
+The SDK builder provides a fluent interface to configure parts of the SDK.
+However, it doesn't support all of the features that manual setup does.
 
 ```php
 <?php
@@ -83,8 +83,9 @@ SDK autoloading happens as part of the composer autoloader.
 ## Configuration
 
 The PHP SDK supports most of the
-[available configurations](/docs/concepts/sdk-configuration/). Our conformance to the
-specification is listed in the [spec compliance matrix](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md).
+[available configurations](/docs/concepts/sdk-configuration/). Our conformance
+to the specification is listed in the
+[spec compliance matrix](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md).
 
 There are also a number of PHP-specific configurations:
 
