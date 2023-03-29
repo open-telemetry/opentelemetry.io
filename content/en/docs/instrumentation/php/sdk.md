@@ -3,23 +3,39 @@ title: SDK
 weight: 8
 ---
 
-The OpenTelemetry SDK provides a working implementation of the API.
+The OpenTelemetry SDK provides a working implementation of the API, and can be set up and configured
+in a number of ways.
 
-## Builder
+## Manual setup
 
-You can use the SDK builder as a convenience over the methods introduced in [getting started](getting-started):
+When manually setting up an SDK, you have full control.
+
+```php
+<?php
+$exporter = new InMemoryExporter();
+$meterProvider = new NoopMeterProvider();
+$tracerProvider =  new TracerProvider(
+    new BatchSpanProcessor(
+        $exporter,
+        ClockFactory::getDefault(),
+        2048, //max queue size
+        5000, //export timeout
+        1024, //max batch size
+        true, //autoflush
+        $meterProvider
+    )
+);
+```
+
+## SDK Builder
+
+The SDK builder provides a fluent interface to configure parts of the SDK. However, it doesn't support
+all of the features that manual setup does.
 
 ```php
 <?php
 
-use OpenTelemetry\API\Trace\Propagation\TraceContextPropagator;
-use OpenTelemetry\SDK\Sdk;
-use OpenTelemetry\SDK\Trace\Sampler\AlwaysOnSampler;
-use OpenTelemetry\SDK\Trace\Sampler\ParentBased;
-use OpenTelemetry\SDK\Trace\TracerProvider;
-
 $spanExporter = new InMemoryExporter(); //mock exporter for demonstration purposes
-$resource = ResourceInfoFactory::defaultResource();
 
 $tracerProvider = TracerProvider::builder()
     ->addSpanProcessor(
@@ -27,8 +43,6 @@ $tracerProvider = TracerProvider::builder()
             ->setMeterProvider($meterProvider)
             ->build()
     )
-    ->setResource($resource)
-    ->setSampler(new ParentBased(new AlwaysOnSampler()))
     ->build();
 
 Sdk::builder()
@@ -41,17 +55,18 @@ Sdk::builder()
 
 ## Autoloading
 
-If all configuration comes from environment variables (or `php.ini`), you can use SDK
-autoloading to automatically configure and globally register an SDK.
-The only requirement for this is that you set `OTEL_PHP_AUTOLOAD_ENABLED=true`, and
-any required configuration as set out in [sdk-configuration](/docs/concepts/sdk-configuration/).
+If all configuration comes from environment variables (or `php.ini`), you can
+use SDK autoloading to automatically configure and globally register an SDK. The
+only requirement for this is that you set `OTEL_PHP_AUTOLOAD_ENABLED=true`, and
+provide any required/non-standard configuration as set out in
+[sdk-configuration](/docs/concepts/sdk-configuration/).
 
 For example:
 
 ```shell
-export OTEL_PHP_AUTOLOAD_ENABLED=true \
-       OTEL_EXPORTER_OTLP_PROTOCOL=grpc \
-       OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317
+OTEL_PHP_AUTOLOAD_ENABLED=true \
+OTEL_EXPORTER_OTLP_PROTOCOL=grpc \
+OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317 \
 php example.php
 ```
 
@@ -63,17 +78,22 @@ $tracer = OpenTelemetry\API\Common\Instrumentation\Globals::tracerProvider()->ge
 $meter = OpenTelemetry\API\Common\Instrumentation\Globals::meterProvider()->getTracer('name', 'version', 'schema.url', [/*attributes*/]);
 ```
 
+SDK autoloading happens as part of the composer autoloader.
+
 ## Configuration
 
-The PHP SDK supports most of the [available configurations](/docs/concepts/sdk-configuration/).
+The PHP SDK supports most of the
+[available configurations](/docs/concepts/sdk-configuration/). Our conformance to the
+specification is listed in the [spec compliance matrix](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md).
 
 There are also a number of PHP-specific configurations:
 
-| Name                                | Default value | Values                                                                | Example        | Description                                         |
-|-------------------------------------|---------------|-----------------------------------------------------------------------|----------------|-----------------------------------------------------|
-| OTEL_PHP_TRACES_PROCESSOR           | batch         | batch, simple                                                         | simple         | Span processor selection                            |
-| OTEL_PHP_DETECTORS                  | all           | env, host, os, process, process_runtime, sdk, sdk_provided, container | env,os,process | Resource detector selection                         |
-| OTEL_PHP_AUTOLOAD_ENABLED           | false         | true, false                                                           | true           | Enable/disable SDK autoloading                      |
-| OTEL_PHP_DISABLED_INSTRUMENTATIONS  | []            | Instrumentation name(s)                                               | psr15,psr18    | Disable one or more installed auto-instrumentations |
+| Name                               | Default value | Values                                                                | Example        | Description                                         |
+| ---------------------------------- | ------------- | --------------------------------------------------------------------- | -------------- | --------------------------------------------------- |
+| OTEL_PHP_TRACES_PROCESSOR          | batch         | batch, simple                                                         | simple         | Span processor selection                            |
+| OTEL_PHP_DETECTORS                 | all           | env, host, os, process, process_runtime, sdk, sdk_provided, container | env,os,process | Resource detector selection                         |
+| OTEL_PHP_AUTOLOAD_ENABLED          | false         | true, false                                                           | true           | Enable/disable SDK autoloading                      |
+| OTEL_PHP_DISABLED_INSTRUMENTATIONS | []            | Instrumentation name(s)                                               | psr15,psr18    | Disable one or more installed auto-instrumentations |
 
-Configurations can be provided as environment variables, or via `php.ini` (or a file included by `php.ini`)
+Configurations can be provided as environment variables, or via `php.ini` (or a
+file included by `php.ini`)
