@@ -14,7 +14,7 @@ investigate interesting behavior. For example, if your trace or metrics data
 indicate latency in your system, you can narrow it down to a specific container,
 pod, or Kubernetes deployment.
 
-### Using resource detectors
+## Using resource detectors
 
 Resource detectors fetch resource attributes from various sources. The default
 detectors use the OS environment variable `OTEL_RESOURCE_ATTRIBUTES` and the
