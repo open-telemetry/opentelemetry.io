@@ -84,7 +84,7 @@ flattened and combined with `.`, so
 `#{deployment => #{environment => <<"development">> }` is the same as
 `#{'deployment.environment' => <<"development">>}`.
 
-### Custom resource detectors
+## Custom resource detectors
 
 Custom resource detectors can be created by implementing the
 [`otel_resource_detector` behaviour](https://hexdocs.pm/opentelemetry/1.3.0/otel_resource_detector.html#callbacks)
