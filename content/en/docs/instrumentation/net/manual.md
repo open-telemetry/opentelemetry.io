@@ -130,8 +130,7 @@ endpoint, you'll have to use a different exporter.
 
 Once tracing is initialized, you can configure an
 [`ActivitySource`](/docs/concepts/signals/traces/#tracer), which will be how you
-trace operations with
-[`Activity`s](/docs/concepts/signals/traces/#spans-in-opentelemetry).
+trace operations with [`Activity`s](/docs/concepts/signals/traces/#spans).
 
 Typically, an `ActivitySource` is instantiated once per app/service that is
 being instrumented, so it's a good idea to instantiate it once in a shared
@@ -157,9 +156,8 @@ although it is generally sufficient to just have one defined per service.
 
 ## Creating Activities
 
-To create an
-[`Activity`](/docs/concepts/signals/traces/#spans-in-opentelemetry), give it a
-name and create it from your
+To create an [`Activity`](/docs/concepts/signals/traces/#spans), give it a name
+and create it from your
 [`ActivitySource`](/docs/concepts/signals/traces/#tracer).
 
 ```csharp

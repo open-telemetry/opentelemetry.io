@@ -88,9 +88,9 @@ Consider the following example trace that tracks three units of work:
 ```
 
 This sample trace output has three distinct log-like items, called
-[Spans](#spans-in-opentelemetry), named `Hello-Greetings`, `Hello-Salutations`
-and `Hello`. Because each request's context has the same `trace_id`, they are
-considered to be a part of the same Trace.
+[Spans](#spans), named `Hello-Greetings`, `Hello-Salutations` and `Hello`.
+Because each request's context has the same `trace_id`, they are considered to
+be a part of the same Trace.
 
 Another thing you'll note is that each Span of this example Trace looks like a
 structured log. That's because it kind of is! One way to think of Traces is that
@@ -107,7 +107,7 @@ components that will play a part in instrumenting our code:
 - Trace Exporter
 - Trace Context
 
-### Tracer Provider
+## Tracer Provider
 
 A Tracer Provider (sometimes called `TracerProvider`) is a factory for
 `Tracer`s. In most applications, a Tracer Provider is initialized once and its
@@ -116,19 +116,19 @@ also includes Resource and Exporter initialization. It is typically the first
 step in tracing with OpenTelemetry. In some language SDKs, a global Tracer
 Provider is already initialized for you.
 
-### Tracer
+## Tracer
 
 A Tracer creates spans containing more information about what is happening for a
 given operation, such as a request in a service. Tracers are created from Tracer
 Providers.
 
-### Trace Exporters
+## Trace Exporters
 
 Trace Exporters send traces to a consumer. This consumer can be standard output
 for debugging and development-time, the OpenTelemetry Collector, or any open
 source or vendor backend of your choice.
 
-### Context Propagation
+## Context Propagation
 
 Context Propagation is the core concept that enables Distributed Tracing. With
 Context Propagation, Spans can be correlated with each other and assembled into
@@ -159,9 +159,9 @@ By combining Context and Propagation, you now can assemble a Trace.
 
 [traces specification]: /docs/reference/specification/overview/#tracing-signal
 
-## Spans in OpenTelemetry
+## Spans
 
-A [**Span**](/docs/concepts/observability-primer/#spans) represents a unit of
+A [**span**](/docs/concepts/observability-primer/#spans) represents a unit of
 work or operation. Spans are the building blocks of Traces. In OpenTelemetry,
 they include the following information:
 
@@ -174,7 +174,7 @@ they include the following information:
 - [Span Links](#span-links)
 - [Span Status](#span-status)
 
-Sample Span:
+Sample span:
 
 ```json
 {
@@ -217,15 +217,15 @@ work done in an application.
 
 ### Span Context
 
-Span Context is an immutable object on every span that contains the following:
+Span context is an immutable object on every span that contains the following:
 
 - The Trace ID representing the trace that the span is a part of
-- The Span's Span ID
+- The span's Span ID
 - Trace Flags, a binary encoding containing information about the trace
 - Trace State, a list of key-value pairs that can carry vendor-specific trace
   information
 
-Span Context is the part of a span that is serialized and propagated alongside
+Span context is the part of a span that is serialized and propagated alongside
 [Distributed Context](#context-propagation) and
 [Baggage](/docs/concepts/signals/baggage).
 

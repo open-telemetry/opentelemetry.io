@@ -159,8 +159,8 @@ instance will interoperate, regardless of name.
 
 ### Create Spans
 
-To create [Spans](/docs/concepts/signals/traces/#spans-in-opentelemetry), you
-only need to specify the name of the span. The start and end time of the span is
+To create [Spans](/docs/concepts/signals/traces/#spans), you only need to
+specify the name of the span. The start and end time of the span is
 automatically set by the OpenTelemetry SDK.
 
 ```java
@@ -179,9 +179,9 @@ It's required to call `end()` to end the span when you want it to end.
 ### Create nested Spans
 
 Most of the time, we want to correlate
-[spans](/docs/concepts/signals/traces/#spans-in-opentelemetry) for nested
-operations. OpenTelemetry supports tracing within processes and across remote
-processes. For more details how to share context between remote processes, see
+[spans](/docs/concepts/signals/traces/#spans) for nested operations.
+OpenTelemetry supports tracing within processes and across remote processes. For
+more details how to share context between remote processes, see
 [Context Propagation](#context-propagation).
 
 For a method `a` calling a method `b`, the spans could be manually linked in the
@@ -244,8 +244,8 @@ Span childRemoteParent = tracer.spanBuilder("Child").setParent(remoteContext).st
 ### Get the current span
 
 Sometimes it's helpful to do something with the current/active
-[span](/docs/concepts/signals/traces/#spans-in-opentelemetry) at a particular
-point in program execution.
+[span](/docs/concepts/signals/traces/#spans) at a particular point in program
+execution.
 
 ```java
 Span span = Span.current()
@@ -259,9 +259,9 @@ Span span = Span.fromContext(context)
 
 ### Span Attributes
 
-In OpenTelemetry [spans](/docs/concepts/signals/traces/#spans-in-opentelemetry)
-can be created freely and it's up to the implementor to annotate them with
-attributes specific to the represented operation.
+In OpenTelemetry [spans](/docs/concepts/signals/traces/#spans) can be created
+freely and it's up to the implementor to annotate them with attributes specific
+to the represented operation.
 [Attributes](/docs/concepts/signals/traces/#attributes) provide additional
 context on a span about the specific operation it tracks, such as results or
 operation properties.
@@ -308,11 +308,10 @@ span.setAttribute(SemanticAttributes.HTTP_URL, url.toString());
 
 ### Create Spans with events
 
-[Spans](/docs/concepts/signals/traces/#spans-in-opentelemetry) can be annotated
-with named events (called
-[Span Events](/docs/concepts/signals/traces/#span-events)) that can carry zero
-or more [Span Attributes](#span-attributes), each of which itself is a key:value
-map paired automatically with a timestamp.
+[Spans](/docs/concepts/signals/traces/#spans) can be annotated with named events
+(called [Span Events](/docs/concepts/signals/traces/#span-events)) that can
+carry zero or more [Span Attributes](#span-attributes), each of which itself is
+a key:value map paired automatically with a timestamp.
 
 ```java
 span.addEvent("Init");
@@ -330,8 +329,8 @@ span.addEvent("End Computation", eventAttributes);
 
 ### Create Spans with links
 
-A [Span](/docs/concepts/signals/traces/#spans-in-opentelemetry) may be linked to
-zero or more other Spans that are causally related via a
+A [Span](/docs/concepts/signals/traces/#spans) may be linked to zero or more
+other Spans that are causally related via a
 [Span Link](/docs/concepts/signals/traces/#span-links). Links can be used to
 represent batched operations where a Span was initiated by multiple initiating
 Spans, each representing a single incoming item being processed in the batch.
@@ -351,10 +350,10 @@ For more details how to read context from remote processes, see
 ### Set span status
 
 A [status](/docs/concepts/signals/traces/#span-status) can be set on a
-[span](/docs/concepts/signals/traces/#spans-in-opentelemetry), typically used to
-specify that a span has not completed successfully - `SpanStatus.Error`. In rare
-scenarios, you could override the `Error` status with `OK`, but don't set `OK`
-on successfully-completed spans.
+[span](/docs/concepts/signals/traces/#spans), typically used to specify that a
+span has not completed successfully - `SpanStatus.Error`. In rare scenarios, you
+could override the `Error` status with `OK`, but don't set `OK` on
+successfully-completed spans.
 
 The status can be set at any time before the span is finished:
 
@@ -537,13 +536,13 @@ public void handle(<Library Specific Annotation> HttpHeaders headers){
 
 ## Metrics
 
-[Spans](/docs/concepts/signals/traces/#spans-in-opentelemetry) provide detailed
-information about your application, but produce data that is proportional to the
-load on the system. In contrast, [metrics](/docs/concepts/signals/metrics)
-combine individual measurements into aggregations, and produce data which is
-constant as a function of system load. The aggregations lack details required to
-diagnose low level issues, but complement spans by helping to identify trends
-and providing application runtime telemetry.
+[Spans](/docs/concepts/signals/traces/#spans) provide detailed information about
+your application, but produce data that is proportional to the load on the
+system. In contrast, [metrics](/docs/concepts/signals/metrics) combine
+individual measurements into aggregations, and produce data which is constant as
+a function of system load. The aggregations lack details required to diagnose
+low level issues, but complement spans by helping to identify trends and
+providing application runtime telemetry.
 
 The metrics API defines a variety of instruments. Instruments record
 measurements, which are aggregated by the metrics SDK and eventually exported
