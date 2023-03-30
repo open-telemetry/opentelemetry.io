@@ -45,10 +45,12 @@ Or through the environment variable `OTEL_RESOURCE_DETECTORS`:
 OTEL_RESOURCE_DETECTORS=otel_resource_env_var,otel_resource_app_env
 ```
 
-Since resource detectors may hit the network there is a timeout, in
-milliseconds, that when reached will result in an empty result for that
-particular detector. The default is 5000 milliseconds and can be set with
-environment variable `OTEL_RESOURCE_DETECTOR_TIMEOUT` or Application variable
+
+All resources detectors are protected with a timeout, in milliseconds, after
+which they return an empty value. This allows for resource detectors to do
+things like hit the network without potentially hanging the entire program
+indefinitely. The default is 5000 milliseconds and can be set with environment
+variable `OTEL_RESOURCE_DETECTOR_TIMEOUT` or Application variable
 `otel_resource_detector_timeout`.
 
 ## Adding resources with OS and Application environment variables
