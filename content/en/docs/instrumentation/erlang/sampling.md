@@ -128,7 +128,7 @@ sampler: {:parent_based, %{root: :always_on,
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
-### Custom Sampler
+## Custom Sampler
 
 Custom samplers can be created by implementing the
 [`otel_sampler` behaviour](https://hexdocs.pm/opentelemetry/1.3.0/otel_sampler.html#callbacks).
