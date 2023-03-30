@@ -19,7 +19,7 @@ When sampling, the `ParentBasedSampler` is most often used for
 decision of the Span's parent, or the fact that there is no parent, to know
 which secondary sampler to use.
 
-The sampler can be configured with environment variables `OTEL_TRACES_SAMPLER`
+The sampler can be configured with the environment variables `OTEL_TRACES_SAMPLER`
 and `OTEL_TRACES_SAMPLER_ARG` or using the Application configuration allows you
 to configure each of the 5 potential states of a Span's parent:
 
