@@ -35,7 +35,7 @@ Within the `ParentBasedSampler` the most common is the
 `TraceIdRatioBasedSampler`. It deterministically samples a percentage of traces
 that you pass in as a parameter.
 
-##### Environment Variables
+#### Environment Variables
 
 You can configure the `TraceIdRatioBasedSampler` with environment variables:
 
