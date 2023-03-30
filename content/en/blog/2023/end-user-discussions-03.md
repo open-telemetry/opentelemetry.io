@@ -219,7 +219,7 @@ Wikipedia). Check out
 **A:** IoT use cases (car manufacturer). There is also ongoing work for semantic
 conventions support for messages.
 
-### UPDATES AND COMMUNICATIONS
+### Updates and Communications
 
 #### 1 - Unified query standard
 
