@@ -98,7 +98,7 @@ export OTEL_TRACES_SAMPLER="parentbased_always_off"
 
 #### Application configuration
 
-Example in the Application configuration with a root sampler that always samples
+Here's an example in the Application configuration with a root sampler that always samples
 and using the parent decision in the other cases:
 
 <!-- prettier-ignore-start -->
