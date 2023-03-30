@@ -60,7 +60,7 @@ either with the OS environment variable `OTEL_RESOURCE_ATTRIBUTES`:
 OTEL_RESOURCE_ATTRIBUTES="deployment.environment=development"
 ```
 
-Or using the `resource` Application environment under the `opentelemetry`
+Alternatively, use the `resource` Application environment under the `opentelemetry`
 Application configuration of `sys.config` or `runtime.exs`:
 
 <!-- prettier-ignore-start -->
