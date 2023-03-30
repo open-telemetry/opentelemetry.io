@@ -3,8 +3,6 @@ title: Resources
 weight: 36
 ---
 
-## Resources
-
 A [resource](/docs/reference/specification/overview/#resources) represents the
 entity producing telemetry as resource attributes. For example, an OTP Release
 producing telemetry that is running in a container on Kubernetes has an OTP
