@@ -84,7 +84,7 @@ You can access the dashboard by navigating to the Grafana UI, selecting the
 "OpenTelemetry Collector Data Flow" dashboard under browse icon on the left-hand
 side of the screen.
 
-Dashboard mainly consists of four sections:
+The dashboard has four main sections:
 
 1. Process Metrics
 2. Traces Pipeline
