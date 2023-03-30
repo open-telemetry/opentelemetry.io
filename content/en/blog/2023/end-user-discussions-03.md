@@ -129,7 +129,7 @@ further exploration:
 - [Paper by Uber](https://www.uber.com/en-IN/blog/crisp-critical-path-analysis-for-microservice-architectures/)
 - [Tail sampling processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/tailsamplingprocessor/README.md)
 
-### ADOPTION, MIGRATION, AND IMPLEMENTATION
+### Adoption, Migration, and Implementation
 
 #### 1 - Common migration challenges
 
