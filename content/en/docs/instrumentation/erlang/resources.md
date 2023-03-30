@@ -3,8 +3,8 @@ title: Resources
 weight: 36
 ---
 
-A [resource](/docs/reference/specification/overview/#resources) represents the
-entity producing telemetry as resource attributes. For example, an OTP Release
+A [resource](/docs/reference/specification/overview/#resources) represents an
+entity producing telemetry as attributes. For example, an OTP Release
 producing telemetry that is running in a container on Kubernetes has an OTP
 Release name, a Pod name, a namespace, and possibly a deployment name. All four
 of these attributes can be included in the resource.
