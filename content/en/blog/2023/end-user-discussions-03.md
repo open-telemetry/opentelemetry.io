@@ -60,7 +60,7 @@ distribution?
 
 **A:** Each vendor distribution will come with customizations, whereas the
 community Collector distribution will include everything: receivers and
-exporters. If you need the flexibility, then you should use the OTel Collector
+exporters. If you need the flexibility, then you should use the OTel community Collector
 distro.
 
 #### 4 - Rate limiting on receivers
