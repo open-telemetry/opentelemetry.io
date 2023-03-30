@@ -102,7 +102,7 @@ The term "distro" is short for distribution. Check out
 [this documentation](https://opentelemetry.io/ecosystem/vendors/) to see which
 vendors provide distros.
 
-### SAMPLING
+### Sampling
 
 #### 1 - Tail sampling
 
