@@ -98,7 +98,7 @@ And for the `AlwaysOffSampler`:
 export OTEL_TRACES_SAMPLER="parentbased_always_off"
 ```
 
-##### Application configuration
+#### Application configuration
 
 Example in the Application configuration with a root sampler that always samples
 and using the parent decision in the other cases:
