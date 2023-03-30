@@ -102,7 +102,7 @@ The following table contains examples of span attributes:
 | http.user_agent  | Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 |
 
 For more on spans and how they pertain to OTel, see
-[Spans](/docs/concepts/signals/traces/#spans-in-opentelemetry).
+[Spans](/docs/concepts/signals/traces/#spans).
 
 ### Distributed Traces
 

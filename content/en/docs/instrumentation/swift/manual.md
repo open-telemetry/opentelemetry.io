@@ -70,9 +70,9 @@ let  tracer = OpenTelemetry.instance.tracerProvider.get(instrumentationName: "in
 
 ### Creating Spans
 
-A [span](/docs/concepts/signals/traces/#spans-in-opentelemetry) represents a
-unit of work or operation. Spans are the building blocks of Traces. To create a
-span use the span builder associated with the tracer:
+A [span](/docs/concepts/signals/traces/#spans) represents a unit of work or
+operation. Spans are the building blocks of Traces. To create a span use the
+span builder associated with the tracer:
 
 ```swift
 let span =  let builder = tracer.spanBuilder(spanName: "\(name)").startSpan()

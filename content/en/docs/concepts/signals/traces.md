@@ -88,9 +88,9 @@ Consider the following example trace that tracks three units of work:
 ```
 
 This sample trace output has three distinct log-like items, called
-[Spans](#spans-in-opentelemetry), named `Hello-Greetings`, `Hello-Salutations`
-and `Hello`. Because each request's context has the same `trace_id`, they are
-considered to be a part of the same Trace.
+[Spans](#spans), named `Hello-Greetings`, `Hello-Salutations` and `Hello`.
+Because each request's context has the same `trace_id`, they are considered to
+be a part of the same Trace.
 
 Another thing you'll note is that each Span of this example Trace looks like a
 structured log. That's because it kind of is! One way to think of Traces is that

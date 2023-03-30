@@ -55,8 +55,8 @@ With a `Tracer` acquired, you can manually trace code.
 ### Get the current span
 
 It's very common to add information to the current
-[span](/docs/concepts/signals/traces#spans-in-opentelemetry) somewhere within
-your program. To do so, you can get the current span and add
+[span](/docs/concepts/signals/traces#spans) somewhere within your program. To do
+so, you can get the current span and add
 [attributes](/docs/concepts/signals/traces#attributes) to it.
 
 ```ruby
@@ -76,8 +76,8 @@ end
 
 ### Creating New Spans
 
-To create a [span](/docs/concepts/signals/traces#spans-in-opentelemetry), you’ll
-need a [configured `Tracer`](#acquiring-a-tracer).
+To create a [span](/docs/concepts/signals/traces#spans), you’ll need a
+[configured `Tracer`](#acquiring-a-tracer).
 
 Typically when you create a new span, you'll want it to be the active/current
 span. To do that, use `in_span`:
@@ -95,9 +95,8 @@ end
 ### Creating nested spans
 
 If you have a distinct sub-operation you’d like to track as a part of another
-one, you can create nested
-[spans](/docs/concepts/signals/traces#spans-in-opentelemetry) to represent the
-relationship:
+one, you can create nested [spans](/docs/concepts/signals/traces#spans) to
+represent the relationship:
 
 ```ruby
 require "opentelemetry/sdk"
@@ -126,8 +125,8 @@ trace visualization tool, `child` will be nested under `parent`.
 ### Add attributes to a span
 
 [Attributes](/docs/concepts/signals/traces#attributes) let you attach key/value
-pairs to a [span](/docs/concepts/signals/traces#spans-in-opentelemetry) so it
-carries more information about the current operation that it’s tracking.
+pairs to a [span](/docs/concepts/signals/traces#spans) so it carries more
+information about the current operation that it’s tracking.
 
 You can use `set_attribute` to add a single attribute to a span:
 
@@ -241,9 +240,9 @@ span.add_event("Cancelled wait due to external signal", attributes: {
 
 ### Add Span Links
 
-A [span](/docs/concepts/signals/traces#spans-in-opentelemetry) can be created
-with zero or more [span links](/docs/concepts/signals/traces#span-links) that
-causally link it to another span. A link needs a
+A [span](/docs/concepts/signals/traces#spans) can be created with zero or more
+[span links](/docs/concepts/signals/traces#span-links) that causally link it to
+another span. A link needs a
 [span context](/docs/concepts/signals/traces#span-context) to be created.
 
 ```ruby
@@ -273,10 +272,10 @@ link = OpenTelemetry::Trace::Link.new(span_to_link_from.context, attributes: { "
 ### Set span status
 
 A [status](/docs/concepts/signals/traces#span-status) can be set on a
-[span](/docs/concepts/signals/traces#spans-in-opentelemetry), typically used to
-specify that a span has not completed successfully - StatusCode.ERROR. In rare
-scenarios, you could override the Error status with StatusCode.OK, but don’t set
-StatusCode.OK on successfully-completed spans.
+[span](/docs/concepts/signals/traces#spans), typically used to specify that a
+span has not completed successfully - StatusCode.ERROR. In rare scenarios, you
+could override the Error status with StatusCode.OK, but don’t set StatusCode.OK
+on successfully-completed spans.
 
 The status can be set at any time before the span is finished:
 
