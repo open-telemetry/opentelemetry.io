@@ -56,7 +56,7 @@ Traces and using the parent decision in the other cases:
 
 {{< tab Erlang >}}
 %% config/sys.config.src
-{sampler, {parent_based, #{root => {trace_id_ratio_based, 0.1},
+{sampler, {parent_based, #{root => {trace_id_ratio_based, 0.10},
                            remote_parent_sampled => always_on,
                            remote_parent_not_sampled => always_off,
                            local_parent_sampled => always_on,
@@ -65,7 +65,7 @@ Traces and using the parent decision in the other cases:
 
 {{< tab Elixir >}}
 # config/runtime.exs
-sampler: {:parent_based, %{root: {:trace_id_ratio_based, 0.1},
+sampler: {:parent_based, %{root: {:trace_id_ratio_based, 0.10},
                            remote_parent_sampled: :always_on,
                            remote_parent_not_sampled: :always_off,
                            local_parent_sampled: :always_on,
