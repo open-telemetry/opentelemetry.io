@@ -210,15 +210,18 @@ causally link it to another span. A link needs a span context to be created.
 ```python
 from opentelemetry import trace
 
-ctx = trace.get_current_span().get_span_context()
+tracer = trace.get_tracer(__name__)
 
-link_from_current = trace.Link(ctx)
+with tracer.start_as_current_span("span-1"):
+    # Do something that 'span-1' tracks.
+    ctx = trace.get_current_span().get_span_context()
+    link_from_span_1 = trace.Link(ctx)
 
-with tracer.start_as_current_span("new-span", links=[link_from_current]) as new_span:
-    # do something that 'new_span' tracks
-
-    # The link in 'new_span' casually associated it with the previous one,
+with tracer.start_as_current_span("span-2", links=[link_from_span_1]):
+    # Do something that 'span-2' tracks.
+    # The link in 'span-2' is casually associated it with the 'span-1',
     # but it is not a child span.
+    pass
 ```
 
 ### Set span status

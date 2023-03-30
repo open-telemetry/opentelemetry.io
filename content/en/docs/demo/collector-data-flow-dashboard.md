@@ -11,9 +11,9 @@ capabilities of the OpenTelemetry demo application, offering a solid foundation
 for users to build upon. Collector Data Flow Dashboard provides valuable
 guidance on which metrics to monitor. Users can tailor their own dashboard
 variations by adding necessary metrics specific to their use cases, such as
-memory_delimiter processor or other data flow indicators. This demo
-dashboard serves as a starting point, enabling users to explore diverse usage
-scenarios and adapt the tool to their unique monitoring needs.
+memory_delimiter processor or other data flow indicators. This demo dashboard
+serves as a starting point, enabling users to explore diverse usage scenarios
+and adapt the tool to their unique monitoring needs.
 
 ## Overview
 

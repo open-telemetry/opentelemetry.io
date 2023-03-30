@@ -1939,6 +1939,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:45:31.864938-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-erlang-contrib": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-29T12:11:58.789694604-06:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-erlang-contrib/": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:55:02.471109-05:00"
@@ -2611,6 +2615,18 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-15T21:47:24.160442-05:00"
   },
+  "https://hex.pm/packages/opentelemetry_semantic_conventions": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-29T12:11:58.011874587-06:00"
+  },
+  "https://hex.pm/packages/opentelemetry_zipkin": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-29T12:11:58.253221854-06:00"
+  },
+  "https://hexdocs.pm/ecto/Ecto.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-03-29T12:11:59.363133963-06:00"
+  },
   "https://hexdocs.pm/mix/Mix.Tasks.Release.html": {
     "StatusCode": 206,
     "LastSeen": "2023-02-15T21:47:40.349021-05:00"
@@ -3070,6 +3086,10 @@
   "https://opentelemetry.devstats.cncf.io/d/8/dashboards": {
     "StatusCode": 200,
     "LastSeen": "2023-02-16T17:43:01.177325-05:00"
+  },
+  "https://opentelemetry.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-03-29T12:11:52.979049301-06:00"
   },
   "https://opentracing.io": {
     "StatusCode": 206,
@@ -3931,6 +3951,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-18T13:46:19.448057-05:00"
   },
+  "https://www.phoenixframework.org/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-29T12:11:59.188257421-06:00"
+  },
   "https://www.php-fig.org/psr/psr-15/": {
     "StatusCode": 206,
     "LastSeen": "2023-02-28T03:33:34.741771102Z"
@@ -3978,6 +4002,18 @@
   "https://www.rfc-editor.org/rfc/rfc9110.html#target.resource": {
     "StatusCode": 200,
     "LastSeen": "2023-02-18T13:38:57.647971-05:00"
+  },
+  "https://www.rubydoc.info/gems/opentelemetry-sdk/OpenTelemetry/SDK/Trace/Samplers": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-14T22:39:10.837691902Z"
+  },
+  "https://www.rubydoc.info/gems/opentelemetry-sdk/OpenTelemetry/SDK/Trace/Samplers/ParentBased": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-14T22:39:10.744485794Z"
+  },
+  "https://www.rubydoc.info/gems/opentelemetry-sdk/OpenTelemetry/SDK/Trace/Samplers/TraceIdRatioBased": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-14T22:32:16.257935604Z"
   },
   "https://www.sentrysoftware.com/products/hardware-sentry-opentelemetry-collector.html": {
     "StatusCode": 206,
