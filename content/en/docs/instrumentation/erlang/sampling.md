@@ -48,7 +48,7 @@ export OTEL_TRACES_SAMPLER_ARG="0.1"
 
 This tells the SDK to sample spans such that only 10% of Traces get created.
 
-##### Application configuration
+#### Application configuration
 
 Example in the Application configuration with a root sampler for sampling 10% of
 Traces and using the parent decision in the other cases:
