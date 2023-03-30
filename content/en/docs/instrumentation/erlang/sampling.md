@@ -83,7 +83,7 @@ sampler: {:parent_based, %{root: {:trace_id_ratio_based, 0.1},
 The other two built-in samplers are the `AlwaysOnSampler` and the
 `AlwaysOffSampler`.
 
-##### Environment Variables
+#### Environment Variables
 
 You can configure the `ParentBasedSampler` to use either the `AlwaysOnSampler`
 or `AlwaysOffSampler` with the environment variable `OTEL_TRACES_SAMPLER`:
