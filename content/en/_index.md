@@ -24,7 +24,7 @@ spelling: cSpell:ignore shortcode
 
 <div class="l-primary-buttons mt-5">
 
-- [Learn more](/docs/concepts/)
+- [Learn more](/docs/what-is-opentelemetry/)
 - [Try the demo](/docs/demo/)
 
 </div>
