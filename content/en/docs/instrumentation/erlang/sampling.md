@@ -31,7 +31,7 @@ to configure each of the 5 potential states of a Span's parent:
 - `local_parent_sampled` - Parent is from a local Span that is sampled
 - `local_parent_not_sampled` - Parent is from a local Span that is not sampled
 
-#### TraceIdRatioBasedSampler
+### TraceIdRatioBasedSampler
 
 Within the `ParentBasedSampler` the most common is the
 `TraceIdRatioBasedSampler`. It deterministically samples a percentage of traces
