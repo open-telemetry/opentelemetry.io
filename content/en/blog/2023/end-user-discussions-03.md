@@ -98,9 +98,8 @@ in a system are connected to each other. Check out
 [this article](https://reflectoring.io/upstream-downstream/) for more
 information as it applies to different situations in software.
 
-The term "distro" is short for distribution. Check out
-[this documentation](https://opentelemetry.io/ecosystem/vendors/) to see which
-vendors provide distros.
+The term "distro" is short for distribution. For a list of vendors that provide distros,
+see [Vendors](/ecosystem/vendors/).
 
 ### Sampling
 
