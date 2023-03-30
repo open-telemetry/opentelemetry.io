@@ -15,7 +15,7 @@ do not need to manage data volume, don't bother setting a sampler.
 ## ParentBasedSampler
 
 When sampling, the `ParentBasedSampler` is most often used for
-[head sampler](/docs/concepts/sampling/#head-sampling). It uses the sampling
+[head sampling](/docs/concepts/sampling/#head-sampling). It uses the sampling
 decision of the Span's parent, or the fact that there is no parent, to know
 which secondary sampler to use.
 
