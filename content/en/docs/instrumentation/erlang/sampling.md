@@ -78,7 +78,7 @@ sampler: {:parent_based, %{root: {:trace_id_ratio_based, 0.1},
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
-#### AlwaysOn and AlwaysOff Sampler
+### AlwaysOn and AlwaysOff Sampler
 
 The other two built-in samplers are the `AlwaysOnSampler` and the
 `AlwaysOffSampler`.
