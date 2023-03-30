@@ -185,14 +185,14 @@ agent to the host metrics receiver for infrastructure monitoring.
 
 **A:** It depends on the use cases:
 
-- [Auto instrumentation](https://opentelemetry.io/docs/concepts/instrumenting/#automatic-instrumentation)
+- [Auto instrumentation](/docs/concepts/instrumenting/#automatic-instrumentation)
   options are maturing in OTel; for example, the Java JAR agent takes care of
   instrumenting
   [most libraries](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks)
   that are used by applications. Auto-instrumentation is also available for
-  [Python](https://opentelemetry.io/docs/instrumentation/python/automatic/),
-  [.NET](https://opentelemetry.io/docs/instrumentation/net/automatic/), and
-  [Node.js](https://opentelemetry.io/docs/instrumentation/js/libraries/#node-autoinstrumentation-package).
+  [Python](/docs/instrumentation/python/automatic/),
+  [.NET](/docs/instrumentation/net/automatic/), and
+  [Node.js](/docs/instrumentation/js/libraries/#node-autoinstrumentation-package).
 - If you’re using Kubernetes, they can use the
   [OTel operator](https://github.com/open-telemetry/opentelemetry-operator),
   which takes care of instrumentations for applications deployed on k8s. The
@@ -210,7 +210,7 @@ telemetry from OTel?
 are not directly connected to the place from which the telecommand is sent (per
 Wikipedia). Check out
 [this paper](https://www.gsse.biz/pdfs/papers/DASIA2018-abstract.pdf), and
-[OpAMP](https://opentelemetry.io/blog/2022/opamp/).
+[OpAMP](/blog/2022/opamp/).
 
 #### 5 - Message brokers
 
