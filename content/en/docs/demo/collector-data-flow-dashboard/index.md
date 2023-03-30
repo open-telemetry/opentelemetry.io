@@ -91,7 +91,7 @@ The dashboard has four main sections:
 3. Metrics Pipeline
 4. Prometheus Scraping
 
-Sections 2,3 and 4 represents over all the data flow using the metrics mentioned
+Sections 2,3 and 4 represent overall data flow using the metrics mentioned
 above. Additionally, export ratio is calculated for each pipeline to understand
 the data flow.
 
