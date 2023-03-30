@@ -51,7 +51,7 @@ is 5 seconds and can be set with environment variable
 `OTEL_RESOURCE_DETECTOR_TIMEOUT` or Application variable
 `otel_resource_detector_timeout`.
 
-### Adding resources with OS and Application environment variables
+## Adding resources with OS and Application environment variables
 
 With the two default resource detectors enabled you can set resource attributes
 either with the OS environment variable `OTEL_RESOURCE_ATTRIBUTES`:
