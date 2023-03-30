@@ -54,8 +54,8 @@ processor, are exceeded.
 
 ### Processor
 
-Only batch processor is currently present in the demo application. And the
-processor is used by both traces and metrics pipelines.
+Currently, the only processor present in the demo application is a batch
+processor, which is used by both traces and metrics pipelines.
 
 - `otelcol_processor_batch_batch_send_size_sum`
 
