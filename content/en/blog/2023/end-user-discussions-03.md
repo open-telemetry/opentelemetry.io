@@ -60,15 +60,14 @@ distribution?
 
 **A:** Each vendor distribution will come with customizations, whereas the
 community Collector distribution will include everything: receivers and
-exporters. If you need the flexibility, then you should use the OTel community Collector
+exporters. If you need the flexibility, then you should use the OTel Collector
 distro.
 
 #### 4 - Rate limiting on receivers
 
-**Q:** Each vendor distribution will come with customizations, whereas the
-community Collector distribution will include everything: receivers and
-exporters. If you need the flexibility, then you should use the OTel Collector
-distro.
+**Q:** Are there any plans for enabling rate limiting and circuit breaks on
+receivers? Imagine having lots of clients sending telemetry to the same set of
+OTel collectors.
 
 **More context**: How do I rate-limit in a situation where I have collectors for
 traces, metrics, and logs, and I’m receiving traffic from more than 100
@@ -84,18 +83,24 @@ balancing.
 
 #### 5 - Connectors
 
-**Q:** What are connectors?
+**Q:** What is a connector?
 
-**A:**
-[Read about connectors here](https://o11y.news/2023-03-13/#opentelemetry-connectors).
+**A:** A connector is a collector component that consumes telemetry signals as
+an exporter in one pipeline, and emits it as a receiver in another pipeline.
+[Read more here](https://o11y.news/2023-03-13/#opentelemetry-connectors).
 
 #### 6 - Definitions of upstream, downstream, and distro
 
 **Q:** What is upstream? Downstream? Distro?
 
-**A:** Check out
-[this documentation](https://opentelemetry.io/ecosystem/vendors/) and this
-[blog post](https://www.honeycomb.io/blog/ask-miss-o11y-opentelemetry-collector).
+**A:** The terms "upstream" and "downstream" refer to how services or components
+in a system are connected to each other. Check out
+[this article](https://reflectoring.io/upstream-downstream/) for more
+information as it applies to different situations in software.
+
+The term "distro" is short for distribution. Check out
+[this documentation](https://opentelemetry.io/ecosystem/vendors/) to see which
+vendors provide distros.
 
 ### SAMPLING
 
@@ -150,7 +155,7 @@ Additional suggestions:
 - Start with dev or testing environments first to build trust in the software
 - Choose a stack where OTel is more robust, such as Java and Node.js
 - For countering developer resistance, using auto-instrumentation modules to
-start with is a good step
+- start with is a good step
 
 #### 2 - Starting and scaling
 
@@ -181,22 +186,30 @@ agent to the host metrics receiver for infrastructure monitoring.
 
 **A:** It depends on the use cases:
 
-- Auto instrumentation options are maturing in OTel; for example, the Java JAR
-- agent takes care of instrumenting
+- [Auto instrumentation](https://opentelemetry.io/docs/concepts/instrumenting/#automatic-instrumentation)
+  options are maturing in OTel; for example, the Java JAR agent takes care of
+  instrumenting
   [most libraries](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks)
-  that are used by applications.
+  that are used by applications. Auto-instrumentation is also available for
+  [Python](https://opentelemetry.io/docs/instrumentation/python/automatic/),
+  [.NET](https://opentelemetry.io/docs/instrumentation/net/automatic/), and
+  [Node.js](https://opentelemetry.io/docs/instrumentation/js/libraries/#node-autoinstrumentation-package).
 - If you’re using Kubernetes, they can use the
   [OTel operator](https://github.com/open-telemetry/opentelemetry-operator),
-- which takes care of instrumentations for applications deployed on k8s.
+  which takes care of instrumentations for applications deployed on k8s. The
+  OTel Operator also supports injecting and configuring auto-instrumentation
+  libraries where available (see point above).
 - If you’re using AWS lambda, you should check out the
   [OTel Lambda extension](https://github.com/open-telemetry/opentelemetry-lambda).
 
 #### 4 - Leveraging telemetry from OTel
 
-**Q:** Has there been work toward tele-command standards to leverage the
+**Q:** Has there been work toward telecommand standards to leverage the
 telemetry from OTel?
 
-**A:** Check out
+**A:** Telecommand is a command sent to control a remote system or systems that
+are not directly connected to the place from which the telecommand is sent (per
+Wikipedia). Check out
 [this paper](https://www.gsse.biz/pdfs/papers/DASIA2018-abstract.pdf), and
 [OpAMP](https://opentelemetry.io/blog/2022/opamp/).
 
@@ -235,12 +248,14 @@ CNCF’s Slack instance.
 
 **Q:** Where do you go to find documentation and answers to your questions?
 
-**A:** It would be helpful to gather feedback from end users – do you go to the
-OTel docs site, or GitHub repos? What is your process?
+**A:** We have many resources, including official documentation and Github
+repos.
 
-Do you search for answers or post questions on Stack Overflow? The community is
+To help us improve our resources, it would be helpful to gather feedback from
+you as an end user – what is your process for finding OTel information? Do you
+search for answers or post questions on Stack Overflow? The community is
 researching options that make sense so that questions can be indexed for
-searching. One option is Stack Overflow. Please share your thoughts using one of
+searching. One option is Stack Overflow. Please share your answers using one of
 the avenues below!
 
 ## Meeting Notes & Recordings
