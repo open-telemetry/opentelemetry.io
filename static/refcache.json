@@ -223,6 +223,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-03-09T15:12:28.826905-08:00"
   },
+  "https://cloud-native.slack.com/archives/C04LXHPDW6M": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-30T19:59:34.460406-04:00"
+  },
   "https://cloud-native.slack.com/archives/CJFCJHG4Q": {
     "StatusCode": 200,
     "LastSeen": "2023-02-15T20:37:30.005524-05:00"
@@ -646,6 +650,10 @@
   "https://docs.google.com/document/d/187XYoQcXQ9JxS_5v2wvZ0NEysaJ02xoOYNXj08pT0zc/": {
     "StatusCode": 200,
     "LastSeen": "2023-03-07T17:15:57.471522-05:00"
+  },
+  "https://docs.google.com/document/d/1JRQ4hoLtvWl6NqBu_RN8T7tFaFY5jkzdzsB9H-V370A": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-30T19:59:29.179813-04:00"
   },
   "https://docs.google.com/document/d/1KtH5atZQUs9Achbce6LiOaJxLbksNJenvgvyKLsJrkc/edit#heading=h.ioikt02qpy5f": {
     "StatusCode": 200,
@@ -2295,6 +2303,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:02:44.486488-05:00"
   },
+  "https://github.com/open-telemetry/oteps/pull/171": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-30T19:59:09.626563-04:00"
+  },
   "https://github.com/open-telemetry/oteps/pull/173": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:59:55.079245-05:00"
@@ -2975,6 +2987,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-16T17:45:34.220648-05:00"
   },
+  "https://o11y.news/2023-03-13/#opentelemetry-connectors": {
+    "StatusCode": 206,
+    "LastSeen": "2023-03-30T19:58:58.251407-04:00"
+  },
   "https://oncallmemaybe.com": {
     "StatusCode": 206,
     "LastSeen": "2023-02-16T17:47:29.773741-05:00"
@@ -3298,6 +3314,10 @@
   "https://ref.otel.help/otel-collector-ops/": {
     "StatusCode": 206,
     "LastSeen": "2023-02-28T17:42:10.418735+05:30"
+  },
+  "https://reflectoring.io/upstream-downstream/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-03-30T19:59:03.64709-04:00"
   },
   "https://rubiksqube.com/#/": {
     "StatusCode": 206,
@@ -3703,6 +3723,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-20T08:26:04.497414-05:00"
   },
+  "https://www.gsse.biz/pdfs/papers/DASIA2018-abstract.pdf": {
+    "StatusCode": 206,
+    "LastSeen": "2023-03-30T19:59:23.7534-04:00"
+  },
   "https://www.hangfire.io/": {
     "StatusCode": 206,
     "LastSeen": "2023-02-18T13:41:36.36414-05:00"
@@ -4058,6 +4082,10 @@
   "https://www.typescriptlang.org/download": {
     "StatusCode": 206,
     "LastSeen": "2023-02-18T13:36:51.530459-05:00"
+  },
+  "https://www.uber.com/en-IN/blog/crisp-critical-path-analysis-for-microservice-architectures/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-30T19:59:18.174723-04:00"
   },
   "https://www.vaultproject.io": {
     "StatusCode": 206,
