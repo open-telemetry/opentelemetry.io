@@ -207,8 +207,10 @@ otlpreceiver of the Collector created in the previous step.
 
 By default, the Node.js auto-instrumentation ships with
 [many instrumentation libraries](https://github.com/open-telemetry/opentelemetry-js-contrib/blob/main/metapackages/auto-instrumentations-node/README.md#supported-instrumentations).
-At the moment, there is no way to opt-in to only specific packages or disable specific packages.
-If you don't want to use a package included by the default image you must either supply your own image that includes only the packages you want or use manual instrumentation.
+At the moment, there is no way to opt-in to only specific packages or disable
+specific packages. If you don't want to use a package included by the default
+image you must either supply your own image that includes only the packages you
+want or use manual instrumentation.
 
 For more details, see
 [Node.js auto-instrumentation](/docs/instrumentation/js/libraries/#node-autoinstrumentation-package).
