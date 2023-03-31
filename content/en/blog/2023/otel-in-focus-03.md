@@ -46,7 +46,7 @@ version as well. Highlights include:
 ##### [Go](/docs/instrumentation/go/)
 
 [Version v1.15.0-rc.2](https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.15.0-rc.2)
-has been released. 1.15 will ship with Metrics v1 support, and its associated
+has been released. Version 1.15 will ship with Metrics v1 support, and its associated
 stability guarantees. Other highlights of the release candidate include:
 
 - Support for global meter providers.
