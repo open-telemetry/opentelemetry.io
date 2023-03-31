@@ -108,7 +108,65 @@ is required for auto-instrumentation to work properly.
 
 ### .NET
 
-Coming Soon
+The following command will create a basic Instrumentation resource that is
+configured specifically for instrumenting .Net services.
+
+```bash
+kubectl apply -f - <<EOF
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: demo-instrumentation
+spec:
+  exporter:
+    endpoint: http://demo-collector:4318
+  propagators:
+    - tracecontext
+    - baggage
+  sampler:
+    type: parentbased_traceidratio
+    argument: "1"
+EOF
+```
+
+By default, the Instrumentation resource that auto-instruments .Net services
+uses `otlp` with the `http/proto` protocol. This means that the configured
+endpoint must be able to receive OTLP over `http/proto`. Therefore, the example
+uses `http://demo-collector:4318`, which will connect to the `http` port of the
+otlpreceiver of the Collector created in the previous step.
+
+By default, the .NET auto-instrumentation ships with
+[many instrumentation libraries](/docs/instrumentation/net/libraries/#available-instrumentation-libraries).
+This makes instrumentation easy, but could result in too much or unwanted data.
+If there are any libraries you do not want to use you can set the
+`OTEL_DOTNET_AUTO_[SIGNAL]_[NAME]_INSTRUMENTATION_ENABLED=false` where
+`[SIGNAL]` is the type of the signal and `[NAME]` is the case-sensitive name of
+the library.
+
+```yaml
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: demo-instrumentation
+spec:
+  exporter:
+    endpoint: http://demo-collector:4317
+  propagators:
+    - tracecontext
+    - baggage
+  sampler:
+    type: parentbased_traceidratio
+    argument: '1'
+  java:
+    env:
+      - name: OTEL_DOTNET_AUTO_TRACES_GRPCNETCLIENT_INSTRUMENTATION_ENABLED
+        value: false
+      - name: OTEL_DOTNET_AUTO_METRICS_PROCESS_INSTRUMENTATION_ENABLED
+        value: false
+```
+
+For more details, see
+[.Net Auto Instrumentation configuration](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/config.md#instrumentations).
 
 ### Java
 
