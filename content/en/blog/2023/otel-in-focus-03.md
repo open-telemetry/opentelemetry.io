@@ -5,7 +5,7 @@ date: 2023-03-31
 author: '[Austin Parker](https://github.com/austinlparker)'
 ---
 
-Welcome to this month’s edition of OpenTelemetry in Focus! It's been another
+Welcome to this month’s edition of **OpenTelemetry in Focus**! It's been another
 busy month in the OpenTelemetry community, with some big announcements and new
 releases from our core repositories. I've also put together an overview of some
 [blog, website, and project highlights](https://arc.net/e/18897C6F-3A57-4769-A929-902A18AB1B04) -
