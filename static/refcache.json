@@ -227,6 +227,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-03-09T15:12:28.826905-08:00"
   },
+  "https://cloud-native.slack.com/archives/C04LXHPDW6M": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-30T19:59:34.460406-04:00"
+  },
   "https://cloud-native.slack.com/archives/CJFCJHG4Q": {
     "StatusCode": 200,
     "LastSeen": "2023-02-15T20:37:30.005524-05:00"
@@ -651,6 +655,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-03-07T17:15:57.471522-05:00"
   },
+  "https://docs.google.com/document/d/1JRQ4hoLtvWl6NqBu_RN8T7tFaFY5jkzdzsB9H-V370A": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-30T19:59:29.179813-04:00"
+  },
   "https://docs.google.com/document/d/1KtH5atZQUs9Achbce6LiOaJxLbksNJenvgvyKLsJrkc/edit#heading=h.ioikt02qpy5f": {
     "StatusCode": 200,
     "LastSeen": "2023-02-15T21:03:45.532027-05:00"
@@ -894,6 +902,10 @@
   "https://docs.oracle.com/javase/tutorial/jmx/mbeans/index.html": {
     "StatusCode": 200,
     "LastSeen": "2023-02-15T21:14:26.223031-05:00"
+  },
+  "https://docs.php-http.org/en/latest/clients.html": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-29T03:57:45.844229122Z"
   },
   "https://docs.python.org/3/library/sys.html#sys.implementation": {
     "StatusCode": 206,
@@ -2339,6 +2351,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:02:44.486488-05:00"
   },
+  "https://github.com/open-telemetry/oteps/pull/171": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-30T19:59:09.626563-04:00"
+  },
   "https://github.com/open-telemetry/oteps/pull/173": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:59:55.079245-05:00"
@@ -3023,6 +3039,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-16T17:45:34.220648-05:00"
   },
+  "https://o11y.news/2023-03-13/#opentelemetry-connectors": {
+    "StatusCode": 206,
+    "LastSeen": "2023-03-30T19:58:58.251407-04:00"
+  },
   "https://oncallmemaybe.com": {
     "StatusCode": 206,
     "LastSeen": "2023-02-16T17:47:29.773741-05:00"
@@ -3151,9 +3171,29 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-16T17:45:10.013699-05:00"
   },
+  "https://packagist.org/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-29T03:57:46.228775307Z"
+  },
+  "https://packagist.org/packages/google/protobuf": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-29T03:57:52.438347267Z"
+  },
+  "https://packagist.org/packages/open-telemetry/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-29T03:57:52.875982797Z"
+  },
   "https://packagist.org/packages/open-telemetry/opentelemetry-instrumentation-installer": {
     "StatusCode": 200,
     "LastSeen": "2023-03-14T18:07:43.947011+01:00"
+  },
+  "https://packagist.org/providers/php-http/async-client-implementation": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-29T03:57:47.546094076Z"
+  },
+  "https://packagist.org/providers/psr/http-factory-implementation": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-29T03:57:46.915444079Z"
   },
   "https://packagist.org/search/": {
     "StatusCode": 200,
@@ -3346,6 +3386,10 @@
   "https://ref.otel.help/otel-collector-ops/": {
     "StatusCode": 206,
     "LastSeen": "2023-02-28T17:42:10.418735+05:30"
+  },
+  "https://reflectoring.io/upstream-downstream/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-03-30T19:59:03.64709-04:00"
   },
   "https://rubiksqube.com/#/": {
     "StatusCode": 206,
@@ -3751,6 +3795,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-20T08:26:04.497414-05:00"
   },
+  "https://www.gsse.biz/pdfs/papers/DASIA2018-abstract.pdf": {
+    "StatusCode": 206,
+    "LastSeen": "2023-03-30T19:59:23.7534-04:00"
+  },
   "https://www.hangfire.io/": {
     "StatusCode": 206,
     "LastSeen": "2023-02-18T13:41:36.36414-05:00"
@@ -4007,9 +4055,33 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-28T03:33:34.741771102Z"
   },
+  "https://www.php-fig.org/psr/psr-17/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-03-29T03:57:45.198897206Z"
+  },
   "https://www.php-fig.org/psr/psr-18/": {
     "StatusCode": 206,
     "LastSeen": "2023-02-28T03:33:35.061283512Z"
+  },
+  "https://www.php.net/manual/en/book.ffi.php": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-29T03:57:50.206342903Z"
+  },
+  "https://www.php.net/manual/en/book.mbstring.php": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-29T03:57:48.558076531Z"
+  },
+  "https://www.php.net/manual/en/book.zlib.php": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-29T03:57:49.468930417Z"
+  },
+  "https://www.php.net/manual/en/ffi.configuration.php#ini.ffi.preload": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-29T03:57:51.220192806Z"
+  },
+  "https://www.php.net/manual/en/opcache.preloading.php": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-29T03:57:51.962566491Z"
   },
   "https://www.python.org/dev/peps/pep-3333/": {
     "StatusCode": 206,
@@ -4106,6 +4178,10 @@
   "https://www.typescriptlang.org/download": {
     "StatusCode": 206,
     "LastSeen": "2023-02-18T13:36:51.530459-05:00"
+  },
+  "https://www.uber.com/en-IN/blog/crisp-critical-path-analysis-for-microservice-architectures/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-30T19:59:18.174723-04:00"
   },
   "https://www.vaultproject.io": {
     "StatusCode": 206,
