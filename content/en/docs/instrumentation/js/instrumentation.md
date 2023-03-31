@@ -264,8 +264,7 @@ involved.
 ### Create spans
 
 Now that you have a [`Tracer`](/docs/concepts/signals/traces/#tracer)
-initialized, you can create
-[`Span`s](/docs/concepts/signals/traces/#spans-in-opentelemetry).
+initialized, you can create [`Span`s](/docs/concepts/signals/traces/#spans).
 
 ```javascript
 // Create a span. A span must be closed.
@@ -284,10 +283,10 @@ common kind of span to create.
 
 ### Create nested spans
 
-Nested [spans](/docs/concepts/signals/traces/#spans-in-opentelemetry) let you
-track work that's nested in nature. For example, the `doWork` function below
-represents a nested operation. The following sample creates a nested span that
-tracks the `doWork` function:
+Nested [spans](/docs/concepts/signals/traces/#spans) let you track work that's
+nested in nature. For example, the `doWork` function below represents a nested
+operation. The following sample creates a nested span that tracks the `doWork`
+function:
 
 ```javascript
 const mainWork = () => {
@@ -348,8 +347,8 @@ together but are conceptually independent from one another.
 ### Get the current span
 
 Sometimes it's helpful to do something with the current/active
-[span](/docs/concepts/signals/traces/#spans-in-opentelemetry) at a particular
-point in program execution.
+[span](/docs/concepts/signals/traces/#spans) at a particular point in program
+execution.
 
 ```js
 const activeSpan = opentelemetry.trace.getActiveSpan();
@@ -359,9 +358,8 @@ const activeSpan = opentelemetry.trace.getActiveSpan();
 
 ### Get a span from context
 
-It can also be helpful to get the
-[span](/docs/concepts/signals/traces/#spans-in-opentelemetry) from a given
-context that isn't necessarily the active span.
+It can also be helpful to get the [span](/docs/concepts/signals/traces/#spans)
+from a given context that isn't necessarily the active span.
 
 ```js
 const ctx = getContextFromSomewhere();
@@ -373,8 +371,8 @@ const span = opentelemetry.trace.getSpan(ctx);
 ### Attributes
 
 [Attributes](/docs/concepts/signals/traces/#attributes) let you attach key/value
-pairs to a [`Span`](/docs/concepts/signals/traces/#spans-in-opentelemetry) so it
-carries more information about the current operation that it's tracking.
+pairs to a [`Span`](/docs/concepts/signals/traces/#spans) so it carries more
+information about the current operation that it's tracking.
 
 ```javascript
 tracer.startActiveSpan('app.new-span', (span) => {
@@ -446,9 +444,9 @@ const doWork = () => {
 ### Span events
 
 A [Span Event](/docs/concepts/signals/traces/#span-events) is a human-readable
-message on an [`Span`](/docs/concepts/signals/traces/#spans-in-opentelemetry)
-that represents a discrete event with no duration that can be tracked by a
-single time stamp. You can think of it like a primitive log.
+message on an [`Span`](/docs/concepts/signals/traces/#spans) that represents a
+discrete event with no duration that can be tracked by a single time stamp. You
+can think of it like a primitive log.
 
 ```js
 span.addEvent('Doing something');
@@ -469,10 +467,10 @@ span.addEvent('some log', {
 
 ### Span links
 
-[`Span`s](/docs/concepts/signals/traces/#spans-in-opentelemetry) can be created
-with zero or more [`Link`s](/docs/concepts/signals/traces/#span-links) to other
-Spans that are causally related. A common scenario is to correlate one or more
-traces with the current span.
+[`Span`s](/docs/concepts/signals/traces/#spans) can be created with zero or more
+[`Link`s](/docs/concepts/signals/traces/#span-links) to other Spans that are
+causally related. A common scenario is to correlate one or more traces with the
+current span.
 
 ```js
 const someFunction = (spanToLinkFrom) => {
