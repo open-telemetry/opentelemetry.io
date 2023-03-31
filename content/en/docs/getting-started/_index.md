@@ -1,7 +1,6 @@
 ---
 title: Getting Started
 description: Get started with OpenTelemetry based on your role.
-spelling: cSpell:ignore otel
 no_list: true
 weight: 1
 ---
@@ -15,7 +14,7 @@ Select a role[^1] to get started:
 
 </div>
 
-You can also try out the official [OpenTelemetry Demo][demo] to _see_ what
+You can also try out the official [OpenTelemetry demo][demo] to _see_ what
 observability with OpenTelemetry looks like!
 
 <div class="l-primary-buttons justify-content-start mt-3 mb-5 ms-3">

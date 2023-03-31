@@ -127,8 +127,7 @@ public IActionResult Index()
 ```
 
 When you run the app and navigate to the `/` route, you'll see output about
-[spans](/docs/concepts/signals/traces/#spans-in-opentelemetry) similar to the
-following:
+[spans](/docs/concepts/signals/traces/#spans) similar to the following:
 
 <details>
 <summary>View example output</summary>

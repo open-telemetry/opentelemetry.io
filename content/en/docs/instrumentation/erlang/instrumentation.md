@@ -54,7 +54,7 @@ This is how the Erlang and Elixir macros for starting and updating `Spans` get a
 ### Create Spans
 
 Now that you have [Tracer](/docs/concepts/signals/traces/#tracer)s initialized,
-you can create [Spans](/docs/concepts/signals/traces/#spans-in-opentelemetry).
+you can create [Spans](/docs/concepts/signals/traces/#spans).
 
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
@@ -74,7 +74,7 @@ require OpenTelemetry.Tracer
 
 OpenTelemetry.Tracer.with_span :main do
   # do work here
-  # when the block ends the Span ends       
+  # when the block ends the Span ends
 end
 {{< /tab >}}
 
@@ -182,8 +182,8 @@ _ = Task.await(task)
 
 ### Linking the New Span
 
-A [Span](/docs/concepts/signals/traces/#spans-in-opentelemetry) can be created
-with zero or more Span Links that causally link it to another Span. A
+A [Span](/docs/concepts/signals/traces/#spans) can be created with zero or more
+Span Links that causally link it to another Span. A
 [Link](/docs/concepts/signals/traces/#span-links) needs a Span context to be
 created.
 
@@ -275,7 +275,7 @@ include semantic attributes like the scheme of the URL:
 alias OpenTelemetry.SemanticConventions.Trace, as: Trace
 
 Tracer.with_span :span_1, %{attributes: [{Trace.http_scheme(), <<"https">>}]} do
-  
+
 end
 {{< /tab >}}
 
@@ -286,7 +286,7 @@ end
 A [Span
 Event](/docs/concepts/signals/traces/#span-events) is a
 human-readable message on an
-[Span](/docs/concepts/signals/traces/#spans-in-opentelemetry)
+[Span](/docs/concepts/signals/traces/#spans)
 that represents a discrete event with no duration that can be tracked by a
 single time stamp. You can think of it like a primitive log.
 
@@ -331,10 +331,10 @@ Tracer.add_event("Process exited with reason", pid: pid, reason: Reason)
 ### Set Span Status
 
 A [Status](/docs/concepts/signals/traces/#span-status) can be set on a
-[Span](/docs/concepts/signals/traces/#spans-in-opentelemetry), typically used to
-specify that a Span has not completed successfully - `StatusCode.ERROR`. In rare
-scenarios, you could override the Error status with `StatusCode.OK`, but don’t
-set `StatusCode.OK` on successfully-completed spans.
+[Span](/docs/concepts/signals/traces/#spans), typically used to specify that a
+Span has not completed successfully - `StatusCode.ERROR`. In rare scenarios, you
+could override the Error status with `StatusCode.OK`, but don’t set
+`StatusCode.OK` on successfully-completed spans.
 
 The status can be set at any time before the span is finished:
 
