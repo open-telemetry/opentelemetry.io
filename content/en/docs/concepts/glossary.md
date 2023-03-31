@@ -196,13 +196,13 @@ Short form for [`OpenCensus`](#opencensus).
 A set of libraries for various languages that allow you to collect application
 metrics and distributed traces, then transfer the data to a backend of your
 choice in real time.
-[Precursor to OpenTelemetry](/docs/concepts/what-is-opentelemetry/#so-what). See
+[Precursor to OpenTelemetry](/docs/what-is-opentelemetry/#so-what). See
 [more][opencensus].
 
 ### **OpenTracing**
 
 Vendor-neutral APIs and instrumentation for distributed tracing.
-[Precursor to OpenTelemetry](/docs/concepts/what-is-opentelemetry/#so-what). See
+[Precursor to OpenTelemetry](/docs/what-is-opentelemetry/#so-what). See
 [more][opentracing].
 
 ### **OT**
@@ -211,7 +211,7 @@ Short form for [`OpenTracing`](#opentracing).
 
 ### **OTel**
 
-Short form for [OpenTelemetry](/docs/concepts/what-is-opentelemetry).
+Short form for [OpenTelemetry](/docs/what-is-opentelemetry/).
 
 ### **OTelCol**
 

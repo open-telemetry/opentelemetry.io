@@ -8,8 +8,8 @@ javaAnnotationsVersion: 1.24.0
 
 For most users, the out-of-the-box instrumentation is completely sufficient and
 nothing more has to be done. Sometimes, however, users wish to create
-[spans](/docs/concepts/signals/traces/#spans-in-opentelemetry) for their own
-custom code without doing too much code change.
+[spans](/docs/concepts/signals/traces/#spans) for their own custom code without
+doing too much code change.
 
 ## Dependencies
 
@@ -39,8 +39,8 @@ dependencies {
 
 ## Creating spans around methods with `@WithSpan`
 
-To create a [span](/docs/concepts/signals/traces/#spans-in-opentelemetry)
-corresponding to one of your method, annotate the method with `@WithSpan`.
+To create a [span](/docs/concepts/signals/traces/#spans) corresponding to one of
+your method, annotate the method with `@WithSpan`.
 
 ```java
 import io.opentelemetry.instrumentation.annotations.WithSpan;
@@ -77,11 +77,10 @@ types listed below, then the span will not be ended until the future completes.
 
 ## Adding attributes to the span with `@SpanAttribute`
 
-When a [span](/docs/concepts/signals/traces/#spans-in-opentelemetry) is created
-for an annotated method the values of the arguments to the method invocation can
-be automatically added as
-[attributes](/docs/concepts/signals/traces/#attributes) to the created span by
-annotating the method parameters with the `@SpanAttribute` annotation.
+When a [span](/docs/concepts/signals/traces/#spans) is created for an annotated
+method the values of the arguments to the method invocation can be automatically
+added as [attributes](/docs/concepts/signals/traces/#attributes) to the created
+span by annotating the method parameters with the `@SpanAttribute` annotation.
 
 ```java
 import io.opentelemetry.instrumentation.annotations.SpanAttribute;

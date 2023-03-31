@@ -1,12 +1,10 @@
 ---
-title: Concepts
-description: >-
-  What is OpenTelemetry, what does it provide and what does it support?
-spelling: cSpell:ignore otel
-aliases: [/about, /docs/concepts/overview, /otel]
+title: OpenTelemetry Concepts
+linkTitle: Concepts
+description: Key concepts in OpenTelemetry
+aliases: [/docs/concepts/overview]
 weight: 2
 ---
 
-The concepts section helps you learn more about the data sources and components
-of the OpenTelemetry project in order to obtain a deeper understanding of how
-OpenTelemetry works.
+In this section you'll learn about the data sources and key components of the
+OpenTelemetry project. This will help you understanding how OpenTelemetry works.

@@ -29,8 +29,8 @@ Before we move on, I am assuming that you have a basic understanding of:
   [This blog post](https://danielabaron.me/blog/nomad-tips-and-tricks/) by
   [Daniela Baron](https://danielabaron.me) is also great.
 - **[Observability](/docs/concepts/observability-primer/#what-is-observability)**
-  (o11y) and **[OpenTelemetry](/docs/concepts/what-is-opentelemetry/)** (OTel).
-  If not, see [Observability primer](/docs/concepts/observability-primer/).
+  (o11y) and **[OpenTelemetry](/docs/what-is-opentelemetry/)** (OTel). If not,
+  see [Observability primer](/docs/concepts/observability-primer/).
 
 ### Pre-Requisites
 
