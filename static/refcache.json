@@ -899,6 +899,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-15T21:14:26.223031-05:00"
   },
+  "https://docs.php-http.org/en/latest/clients.html": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-29T03:57:45.844229122Z"
+  },
   "https://docs.python.org/3/library/sys.html#sys.implementation": {
     "StatusCode": 206,
     "LastSeen": "2023-02-15T21:12:08.314891-05:00"
@@ -3119,9 +3123,29 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-16T17:45:10.013699-05:00"
   },
+  "https://packagist.org/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-29T03:57:46.228775307Z"
+  },
+  "https://packagist.org/packages/google/protobuf": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-29T03:57:52.438347267Z"
+  },
+  "https://packagist.org/packages/open-telemetry/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-29T03:57:52.875982797Z"
+  },
   "https://packagist.org/packages/open-telemetry/opentelemetry-instrumentation-installer": {
     "StatusCode": 200,
     "LastSeen": "2023-03-14T18:07:43.947011+01:00"
+  },
+  "https://packagist.org/providers/php-http/async-client-implementation": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-29T03:57:47.546094076Z"
+  },
+  "https://packagist.org/providers/psr/http-factory-implementation": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-29T03:57:46.915444079Z"
   },
   "https://packagist.org/search/": {
     "StatusCode": 200,
@@ -3983,9 +4007,33 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-28T03:33:34.741771102Z"
   },
+  "https://www.php-fig.org/psr/psr-17/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-03-29T03:57:45.198897206Z"
+  },
   "https://www.php-fig.org/psr/psr-18/": {
     "StatusCode": 206,
     "LastSeen": "2023-02-28T03:33:35.061283512Z"
+  },
+  "https://www.php.net/manual/en/book.ffi.php": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-29T03:57:50.206342903Z"
+  },
+  "https://www.php.net/manual/en/book.mbstring.php": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-29T03:57:48.558076531Z"
+  },
+  "https://www.php.net/manual/en/book.zlib.php": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-29T03:57:49.468930417Z"
+  },
+  "https://www.php.net/manual/en/ffi.configuration.php#ini.ffi.preload": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-29T03:57:51.220192806Z"
+  },
+  "https://www.php.net/manual/en/opcache.preloading.php": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-29T03:57:51.962566491Z"
   },
   "https://www.python.org/dev/peps/pep-3333/": {
     "StatusCode": 206,
