@@ -113,6 +113,10 @@ The agent sanitizes all database queries/statements before setting the
 `db.statement` semantic attribute. All values (strings, numbers) in the query
 string are replaced with a question mark (`?`).
 
+Note: JDBC bind parameters are not captured in `db.statement`. See [the
+corresponding issue](open-telemetry/opentelemetry-java-instrumentation#7413)
+if you are looking to capture bind parameters.
+
 Examples:
 
 - SQL query `SELECT a from b where password="secret"` will appear as
