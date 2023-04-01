@@ -109,7 +109,7 @@ is required for auto-instrumentation to work properly.
 ### .NET
 
 The following command will create a basic Instrumentation resource that is
-configured specifically for instrumenting .Net services.
+configured specifically for instrumenting .NET services.
 
 ```bash
 kubectl apply -f - <<EOF
