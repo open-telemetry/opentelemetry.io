@@ -43,6 +43,52 @@ different interval, change the
 each instrument kind, or change the default aggregation for each instrument
 kind.
 
+#### Temporality Presets
+
+There are temporality presets for each instrumentation kind. These presets can
+be set with the environment variable
+`OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE`, for example:
+
+```console
+$ export OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE="DELTA"
+```
+
+The default value for `OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE` is
+`"CUMULATIVE"`.
+
+The available values and their corresponding settings for this environment
+variable are:
+
+- `CUMULATIVE`
+
+  - `Counter`: `CUMULATIVE`
+  - `UpDownCounter`: `CUMULATIVE`
+  - `Histogram`: `CUMULATIVE`
+  - `ObservableCounter`: `CUMULATIVE`
+  - `ObservableUpDownCounter`: `CUMULATIVE`
+  - `ObservableGauge`: `CUMULATIVE`
+
+- `DELTA`
+
+  - `Counter`: `DELTA`
+  - `UpDownCounter`: `CUMULATIVE`
+  - `Histogram`: `DELTA`
+  - `ObservableCounter`: `DELTA`
+  - `ObservableUpDownCounter`: `CUMULATIVE`
+  - `ObservableGauge`: `CUMULATIVE`
+
+- `LOWMEMORY`
+  - `Counter`: `DELTA`
+  - `UpDownCounter`: `CUMULATIVE`
+  - `Histogram`: `DELTA`
+  - `ObservableCounter`: `CUMULATIVE`
+  - `ObservableUpDownCounter`: `CUMULATIVE`
+  - `ObservableGauge`: `CUMULATIVE`
+
+Setting `OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE` to any other value than
+`CUMULATIVE`, `DELTA` or `LOWMEMORY` will log a warning and set this environment
+variable to `CUMULATIVE`.
+
 ```python
 from opentelemetry import metrics
 from opentelemetry.sdk.metrics import MeterProvider

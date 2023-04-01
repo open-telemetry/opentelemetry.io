@@ -34,7 +34,7 @@ languages:
     status:
       traces: beta
       metrics: beta
-      logs: not yet implemented
+      logs: alpha
   python:
     name: Python
     status:
