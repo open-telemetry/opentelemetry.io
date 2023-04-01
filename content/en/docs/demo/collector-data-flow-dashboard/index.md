@@ -32,7 +32,7 @@ exported on port 8888, and subsequently scraped by Prometheus. The namespace
 associated with these metrics is "otelcol," and the job name is labeled as
 "otel."
 
-![OpenTelemetry Collector Ingress/Egress Metrics](otelcol-data-flow-metrics.png)
+![OpenTelemetry Collector Ingress and Egress Metrics](otelcol-data-flow-metrics.png)
 
 Labels serve as a valuable tool for identifying specific metric sets (such as
 exporter, receiver, or job), enabling differentiation among metric sets within
