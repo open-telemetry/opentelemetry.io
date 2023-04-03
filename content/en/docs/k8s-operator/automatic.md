@@ -130,10 +130,10 @@ EOF
 ```
 
 By default, the Instrumentation resource that auto-instruments .NET services
-uses `otlp` with the `http/proto` protocol. This means that the configured
-endpoint must be able to receive OTLP over `http/proto`. Therefore, the example
-uses `http://demo-collector:4318`, which will connect to the `http` port of the
-otlpreceiver of the Collector created in the previous step.
+uses `otlp` with the `http/protobuf` protocol. This means that the configured
+endpoint must be able to receive OTLP over `http/protobuf`. Therefore, the
+example uses `http://demo-collector:4318`, which will connect to the `http` port
+of the otlpreceiver of the Collector created in the previous step.
 
 By default, the .NET auto-instrumentation ships with
 [many instrumentation libraries](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/config.md#instrumentations).
@@ -297,15 +297,15 @@ EOF
 ```
 
 By default, the Instrumentation resource that auto-instruments python services
-uses `otlp` with the `http/proto` protocol. This means that the configured
-endpoint must be able to receive OTLP over `http/proto`. Therefore, the example
-uses `http://demo-collector:4318`, which will connect to the `http` port of the
-otlpreceiver of the Collector created in the previous step.
+uses `otlp` with the `http/protobuf` protocol. This means that the configured
+endpoint must be able to receive OTLP over `http/protobuf`. Therefore, the
+example uses `http://demo-collector:4318`, which will connect to the `http` port
+of the otlpreceiver of the Collector created in the previous step.
 
 > As of operator v0.67.0, the Instrumentation resource automatically sets
 > `OTEL_EXPORTER_OTLP_TRACES_PROTOCOL` and `OTEL_EXPORTER_OTLP_METRICS_PROTOCOL`
-> to `http/proto` for Python services. If you use an older version of the
-> Operator you **MUST** set these env variables to `http/proto`, or python
+> to `http/protobuf` for Python services. If you use an older version of the
+> Operator you **MUST** set these env variables to `http/protobuf`, or python
 > auto-instrumentation will not work.
 
 By default the Python auto-instrumentation will detect the packages in your
