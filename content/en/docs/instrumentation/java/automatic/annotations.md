@@ -3,7 +3,7 @@ title: Annotations
 description: Using instrumentation annotations with a Java agent.
 aliases: [/docs/instrumentation/java/annotations]
 weight: 4
-javaAnnotationsVersion: 1.24.0
+javaInstrumentationVersion: 1.24.0
 ---
 
 For most users, the out-of-the-box instrumentation is completely sufficient and
@@ -24,7 +24,7 @@ annotation.
   <dependency>
     <groupId>io.opentelemetry.instrumentation</groupId>
     <artifactId>opentelemetry-instrumentation-annotations</artifactId>
-    <version>{{% param javaAnnotationsVersion %}}</version>
+    <version>{{% param javaInstrumentationVersion %}}</version>
   </dependency>
 </dependencies>
 ```
@@ -33,7 +33,7 @@ annotation.
 
 ```groovy
 dependencies {
-    implementation('io.opentelemetry.instrumentation:opentelemetry-instrumentation-annotations:{{% param javaAnnotationsVersion %}}')
+    implementation('io.opentelemetry.instrumentation:opentelemetry-instrumentation-annotations:{{% param javaInstrumentationVersion %}}')
 }
 ```
 
