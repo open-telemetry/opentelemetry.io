@@ -48,8 +48,10 @@ of cloud-native observability projects_. This event will be held on April 18,
 2023 from 9:00 - 17:00. There will be several sessions on OpenTelemetry as well.
 
 > <i class="far fa-exclamation-triangle"></i> **IMPORTANT access note**: You
-> need an _in-person all-access_ pass for access to **Observability Day**. For
-> details, see [KubeCon registration][].
+> need an _in-person all-access_ pass for on-site access to **Observability
+> Day**. For details, see [KubeCon registration][]. If you have a virtual
+> ticket, you will be able to follow **Observability Day** through a live
+> stream.
 
 ## OpenTelemetry Project Booth
 
@@ -65,9 +67,11 @@ You will find us in the Solutions Showcase in Hall 5, Kiosk Number 20.
 - Thursday, April 20: 10:30 – 17:30
 - Friday, April 21: 10:30 – 14:30
 
-We’re super excited to learn from all of you about your experience with
-OpenTelemetry, how you are using OpenTelemetry, features you may need and issues
-you may be running into when using OpenTelemetry.
+You can help us improve the project by sharing your thoughts and feedback about
+your OpenTelemetry adoption, implementation, and usage! We also invite you to
+fill out our [community survey][]. We will create action items from your
+comments as appropriate. Check [#otel-user-research][] in CNCF's Slack instance
+for survey results and action item updates to come after KubeCon EU.
 
 Come join us to listen, learn, and get involved in OpenTelemetry.
 
@@ -80,3 +84,6 @@ See you in Amsterdam!
   https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/
 [pavilion hours]:
   https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/program/project-engagement/#project-pavilion
+[community survey]:
+  https://docs.google.com/forms/d/e/1FAIpQLSdKm6oLYRXlZOhEZMVmjoIn4eBToVYNmF6fwpm5GAIipQmPxA/viewform?pli=1
+[#otel-user-research]: https://cloud-native.slack.com/archives/C01RT3MSWGZ
