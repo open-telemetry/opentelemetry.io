@@ -1,7 +1,8 @@
 ---
 title: What is OpenTelemetry?
-description: Background information on OpenTelemetry.
-weight: 10
+description: A short explanation of what OpenTelemetry is, and is not.
+aliases: [/about, /docs/concepts/what-is-opentelemetry, /otel]
+weight: -1
 ---
 
 Microservices architectures have enabled developers to build and release
@@ -97,6 +98,11 @@ OpenTelemetry is not an observability back-end like Jaeger or Prometheus.
 Instead, it supports exporting data to a variety of open source and commercial
 back-ends. It provides a pluggable architecture so additional technology
 protocols and formats can be easily added.
+
+## What next?
+
+- [Getting started](/docs/getting-started/) &mdash; jump right in!
+- Learn about [OpenTelemetry concepts](/docs/concepts/).
 
 [cncf-incubating-project]:
   https://www.cncf.io/blog/2021/08/26/opentelemetry-becomes-a-cncf-incubating-project/

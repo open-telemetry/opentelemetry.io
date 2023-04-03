@@ -70,6 +70,17 @@ $instrumentation = new CachedInstrumentation('example');
 $tracer = $instrumentation->tracer();
 ```
 
+It's important to run the tracer provider's `shutdown()` method when the PHP
+process ends, to enable flushing of any enqueued telemetry. The shutdown process
+is blocking, so consider running it in an async process. Otherwise, you can use
+the `ShutdownHandler` to register the shutdown function as part of PHP's
+shutdown process:
+
+```php
+\OpenTelemetry\SDK\Common\Util\ShutdownHandler::register([$tracerProvider, 'shutdown']);
+\OpenTelemetry\SDK\Common\Util\ShutdownHandler::register([$meterProvider, 'shutdown']);
+```
+
 ## Acquiring a Tracer
 
 To do [Tracing](/docs/concepts/signals/traces/) you'll need to acquire a
@@ -94,8 +105,8 @@ instance will interoperate, regardless of name.
 
 ### Create Spans
 
-To create [Spans](/docs/concepts/signals/traces/#spans-in-opentelemetry), you
-only need to specify the name of the span. The start and end time of the span is
+To create [Spans](/docs/concepts/signals/traces/#spans), you only need to
+specify the name of the span. The start and end time of the span is
 automatically set by the OpenTelemetry SDK.
 
 ```php
@@ -117,9 +128,9 @@ scope if you have activated it.
 ### Create nested Spans
 
 Most of the time, we want to correlate
-[spans](/docs/concepts/signals/traces/#spans-in-opentelemetry) for nested
-operations. OpenTelemetry supports tracing within processes and across remote
-processes. For more details how to share context between remote processes, see
+[spans](/docs/concepts/signals/traces/#spans) for nested operations.
+OpenTelemetry supports tracing within processes and across remote processes. For
+more details how to share context between remote processes, see
 [Context Propagation](../propagation/).
 
 For a method `a` calling a method `b`, the spans could be manually linked in the
@@ -142,8 +153,8 @@ following way:
 ### Get the current span
 
 Sometimes it's helpful to do something with the current/active
-[span](/docs/concepts/signals/traces/#spans-in-opentelemetry) at a particular
-point in program execution.
+[span](/docs/concepts/signals/traces/#spans) at a particular point in program
+execution.
 
 ```php
 $span = OpenTelemetry\API\Trace\Span::getCurrent();
@@ -157,9 +168,9 @@ $span = OpenTelemetry\API\Trace\Span::fromContext($context);
 
 ### Span Attributes
 
-In OpenTelemetry [spans](/docs/concepts/signals/traces/#spans-in-opentelemetry)
-can be created freely and it's up to the implementor to annotate them with
-attributes specific to the represented operation.
+In OpenTelemetry [spans](/docs/concepts/signals/traces/#spans) can be created
+freely and it's up to the implementor to annotate them with attributes specific
+to the represented operation.
 [Attributes](/docs/concepts/signals/traces/#attributes) provide additional
 context on a span about the specific operation it tracks, such as results or
 operation properties.
@@ -172,11 +183,10 @@ $span->setAttribute("http.url", (string) $url);
 
 ### Create Spans with events
 
-[Spans](/docs/concepts/signals/traces/#spans-in-opentelemetry) can be annotated
-with named events (called
-[Span Events](/docs/concepts/signals/traces/#span-events)) that can carry zero
-or more [Span Attributes](#span-attributes), each of which itself is a key:value
-map paired automatically with a timestamp.
+[Spans](/docs/concepts/signals/traces/#spans) can be annotated with named events
+(called [Span Events](/docs/concepts/signals/traces/#span-events)) that can
+carry zero or more [Span Attributes](#span-attributes), each of which itself is
+a key:value map paired automatically with a timestamp.
 
 ```php
 $span->addEvent("Init");
@@ -194,8 +204,8 @@ $span->addEvent("End Computation", $eventAttributes);
 
 ### Create Spans with links
 
-A [Span](/docs/concepts/signals/traces/#spans-in-opentelemetry) may be linked to
-zero or more other Spans that are causally related via a
+A [Span](/docs/concepts/signals/traces/#spans) may be linked to zero or more
+other Spans that are causally related via a
 [Span Link](/docs/concepts/signals/traces/#span-links). Links can be used to
 represent batched operations where a Span was initiated by multiple initiating
 Spans, each representing a single incoming item being processed in the batch.
@@ -215,10 +225,10 @@ For more details how to read context from remote processes, see
 ### Set span status and record exceptions
 
 A [status](/docs/concepts/signals/traces/#span-status) can be set on a
-[span](/docs/concepts/signals/traces/#spans-in-opentelemetry), typically used to
-specify that a span has not completed successfully - `SpanStatus::ERROR`. In
-rare scenarios, you could override the `Error` status with `Ok`, but don't set
-`Ok` on successfully-completed spans.
+[span](/docs/concepts/signals/traces/#spans), typically used to specify that a
+span has not completed successfully - `SpanStatus::ERROR`. In rare scenarios,
+you could override the `Error` status with `Ok`, but don't set `Ok` on
+successfully-completed spans.
 
 It can be a good idea to record exceptions when they happen. It's recommended to
 do this in conjunction with setting span status.
