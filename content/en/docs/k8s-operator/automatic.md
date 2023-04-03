@@ -136,7 +136,7 @@ uses `http://demo-collector:4318`, which will connect to the `http` port of the
 otlpreceiver of the Collector created in the previous step.
 
 By default, the .NET auto-instrumentation ships with
-[many instrumentation libraries]( https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/config.md#instrumentations).
+[many instrumentation libraries](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/config.md#instrumentations).
 This makes instrumentation easy, but could result in too much or unwanted data.
 If there are any libraries you do not want to use you can set the
 `OTEL_DOTNET_AUTO_[SIGNAL]_[NAME]_INSTRUMENTATION_ENABLED=false` where
