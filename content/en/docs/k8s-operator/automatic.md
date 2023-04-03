@@ -129,7 +129,7 @@ spec:
 EOF
 ```
 
-By default, the Instrumentation resource that auto-instruments .Net services
+By default, the Instrumentation resource that auto-instruments .NET services
 uses `otlp` with the `http/proto` protocol. This means that the configured
 endpoint must be able to receive OTLP over `http/proto`. Therefore, the example
 uses `http://demo-collector:4318`, which will connect to the `http` port of the
