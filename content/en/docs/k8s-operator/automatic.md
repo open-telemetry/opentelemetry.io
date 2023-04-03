@@ -136,7 +136,7 @@ uses `http://demo-collector:4318`, which will connect to the `http` port of the
 otlpreceiver of the Collector created in the previous step.
 
 By default, the .NET auto-instrumentation ships with
-[many instrumentation libraries](/docs/instrumentation/net/libraries/#available-instrumentation-libraries).
+[many instrumentation libraries]( https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/config.md#instrumentations).
 This makes instrumentation easy, but could result in too much or unwanted data.
 If there are any libraries you do not want to use you can set the
 `OTEL_DOTNET_AUTO_[SIGNAL]_[NAME]_INSTRUMENTATION_ENABLED=false` where
@@ -150,14 +150,14 @@ metadata:
   name: demo-instrumentation
 spec:
   exporter:
-    endpoint: http://demo-collector:4317
+    endpoint: http://demo-collector:4318
   propagators:
     - tracecontext
     - baggage
   sampler:
     type: parentbased_traceidratio
     argument: '1'
-  java:
+  dotnet:
     env:
       - name: OTEL_DOTNET_AUTO_TRACES_GRPCNETCLIENT_INSTRUMENTATION_ENABLED
         value: false
@@ -166,7 +166,7 @@ spec:
 ```
 
 For more details, see
-[.Net Auto Instrumentation configuration](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/config.md#instrumentations).
+[.NET Auto Instrumentation docs](/docs/instrumentation/net/automatic/).
 
 ### Java
 
