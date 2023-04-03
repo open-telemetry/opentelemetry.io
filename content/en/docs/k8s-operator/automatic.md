@@ -178,7 +178,42 @@ For more details, see
 
 ### Node.js
 
-Coming Soon
+The following command creates a basic Instrumentation resource that is
+configured for instrumenting Node.js services.
+
+```bash
+kubectl apply -f - <<EOF
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: demo-instrumentation
+spec:
+  exporter:
+    endpoint: http://demo-collector:4317
+  propagators:
+    - tracecontext
+    - baggage
+  sampler:
+    type: parentbased_traceidratio
+    argument: "1"
+EOF
+```
+
+By default, the Instrumentation resource that auto-instruments Node.js services
+uses `otlp` with the `grpc` protocol. This means that the configured endpoint
+must be able to receive OTLP over `grpc`. Therefore, the example uses
+`http://demo-collector:4317`, which connects to the `grpc` port of the
+otlpreceiver of the Collector created in the previous step.
+
+By default, the Node.js auto-instrumentation ships with
+[many instrumentation libraries](https://github.com/open-telemetry/opentelemetry-js-contrib/blob/main/metapackages/auto-instrumentations-node/README.md#supported-instrumentations).
+At the moment, there is no way to opt-in to only specific packages or disable
+specific packages. If you don't want to use a package included by the default
+image you must either supply your own image that includes only the packages you
+want or use manual instrumentation.
+
+For more details, see
+[Node.js auto-instrumentation](/docs/instrumentation/js/libraries/#node-autoinstrumentation-package).
 
 ### Python
 
