@@ -711,6 +711,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-15T21:13:35.77217-05:00"
   },
+  "https://docs.google.com/forms/d/e/1FAIpQLSdKm6oLYRXlZOhEZMVmjoIn4eBToVYNmF6fwpm5GAIipQmPxA/viewform": {
+    "StatusCode": 200,
+    "LastSeen": "2023-04-03T19:01:59.829693+02:00"
+  },
   "https://docs.honeycomb.io/getting-data-in/": {
     "StatusCode": 206,
     "LastSeen": "2023-02-15T21:02:22.862266-05:00"
@@ -1175,6 +1179,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-15T21:21:04.227535-05:00"
   },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-03-22T11:31:31.658276+01:00"
+  },
   "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/cncf-hosted-co-located-events/observability-day/": {
     "StatusCode": 206,
     "LastSeen": "2023-02-15T21:21:43.46666-05:00"
@@ -1183,13 +1191,21 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-28T15:13:33.601955-05:00"
   },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/program/project-engagement/#project-pavilion": {
+    "StatusCode": 206,
+    "LastSeen": "2023-03-22T11:31:39.216535+01:00"
+  },
   "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/program/schedule/": {
     "StatusCode": 206,
-    "LastSeen": "2023-03-30T22:09:49.39441-04:00"
+    "LastSeen": "2023-04-03T19:05:05.160219+02:00"
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-04-03T19:05:05.368226+02:00"
   },
   "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/": {
     "StatusCode": 206,
-    "LastSeen": "2023-02-15T21:20:28.432278-05:00"
+    "LastSeen": "2023-04-03T19:05:04.741891+02:00"
   },
   "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/venue-travel/": {
     "StatusCode": 206,
@@ -3414,6 +3430,38 @@
   "https://sched.co/182On": {
     "StatusCode": 200,
     "LastSeen": "2023-02-18T12:45:17.100157-05:00"
+  },
+  "https://sched.co/1HyS5": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-22T11:31:37.054233+01:00"
+  },
+  "https://sched.co/1HySf": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-22T11:31:32.96536+01:00"
+  },
+  "https://sched.co/1HyXb": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-27T16:16:13.026156+02:00"
+  },
+  "https://sched.co/1HyYT": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-22T11:31:33.871507+01:00"
+  },
+  "https://sched.co/1HyZ3": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-22T11:31:37.947465+01:00"
+  },
+  "https://sched.co/1Hya1": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-22T11:31:36.18092+01:00"
+  },
+  "https://sched.co/1Hyb2": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-22T11:31:35.006215+01:00"
+  },
+  "https://sched.co/1JWS7": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-22T11:31:39.107638+01:00"
   },
   "https://seecfp.com/": {
     "StatusCode": 206,
