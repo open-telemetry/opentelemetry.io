@@ -108,7 +108,65 @@ is required for auto-instrumentation to work properly.
 
 ### .NET
 
-Coming Soon
+The following command will create a basic Instrumentation resource that is
+configured specifically for instrumenting .NET services.
+
+```bash
+kubectl apply -f - <<EOF
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: demo-instrumentation
+spec:
+  exporter:
+    endpoint: http://demo-collector:4318
+  propagators:
+    - tracecontext
+    - baggage
+  sampler:
+    type: parentbased_traceidratio
+    argument: "1"
+EOF
+```
+
+By default, the Instrumentation resource that auto-instruments .NET services
+uses `otlp` with the `http/protobuf` protocol. This means that the configured
+endpoint must be able to receive OTLP over `http/protobuf`. Therefore, the
+example uses `http://demo-collector:4318`, which will connect to the `http` port
+of the otlpreceiver of the Collector created in the previous step.
+
+By default, the .NET auto-instrumentation ships with
+[many instrumentation libraries](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/config.md#instrumentations).
+This makes instrumentation easy, but could result in too much or unwanted data.
+If there are any libraries you do not want to use you can set the
+`OTEL_DOTNET_AUTO_[SIGNAL]_[NAME]_INSTRUMENTATION_ENABLED=false` where
+`[SIGNAL]` is the type of the signal and `[NAME]` is the case-sensitive name of
+the library.
+
+```yaml
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: demo-instrumentation
+spec:
+  exporter:
+    endpoint: http://demo-collector:4318
+  propagators:
+    - tracecontext
+    - baggage
+  sampler:
+    type: parentbased_traceidratio
+    argument: '1'
+  dotnet:
+    env:
+      - name: OTEL_DOTNET_AUTO_TRACES_GRPCNETCLIENT_INSTRUMENTATION_ENABLED
+        value: false
+      - name: OTEL_DOTNET_AUTO_METRICS_PROCESS_INSTRUMENTATION_ENABLED
+        value: false
+```
+
+For more details, see
+[.NET Auto Instrumentation docs](/docs/instrumentation/net/automatic/).
 
 ### Java
 
@@ -239,15 +297,15 @@ EOF
 ```
 
 By default, the Instrumentation resource that auto-instruments python services
-uses `otlp` with the `http/proto` protocol. This means that the configured
-endpoint must be able to receive OTLP over `http/proto`. Therefore, the example
-uses `http://demo-collector:4318`, which will connect to the `http` port of the
-otlpreceiver of the Collector created in the previous step.
+uses `otlp` with the `http/protobuf` protocol. This means that the configured
+endpoint must be able to receive OTLP over `http/protobuf`. Therefore, the
+example uses `http://demo-collector:4318`, which will connect to the `http` port
+of the otlpreceiver of the Collector created in the previous step.
 
 > As of operator v0.67.0, the Instrumentation resource automatically sets
 > `OTEL_EXPORTER_OTLP_TRACES_PROTOCOL` and `OTEL_EXPORTER_OTLP_METRICS_PROTOCOL`
-> to `http/proto` for Python services. If you use an older version of the
-> Operator you **MUST** set these env variables to `http/proto`, or python
+> to `http/protobuf` for Python services. If you use an older version of the
+> Operator you **MUST** set these env variables to `http/protobuf`, or python
 > auto-instrumentation will not work.
 
 By default the Python auto-instrumentation will detect the packages in your
