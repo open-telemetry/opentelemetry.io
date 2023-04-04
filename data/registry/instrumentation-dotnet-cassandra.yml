@@ -1,0 +1,14 @@
+title: Cassandra Instrumentation for OpenTelemetry
+registryType: instrumentation
+isThirdParty: false
+language: dotnet
+tags:
+  - cassandra
+  - instrumentation
+  - dotnet
+repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.Cassandra
+license: Apache 2.0
+description:
+  This is an Instrumentation Library, which instruments CassandraCSharpDriver
+authors: OpenTelemetry Authors
+otVersion: latest

@@ -1,0 +1,15 @@
+title: Cloudflare Receiver
+registryType: receiver
+isThirdParty: false
+language: collector
+tags:
+  - cloudflare
+  - receiver
+  - collector
+repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/cloudflarereceiver
+license: Apache 2.0
+description:
+  This Cloudflare receiver allows Cloudflare's LogPush Jobs to send logs from
+  the Cloudflare logs aggregation system
+authors: OpenTelemetry Authors
+otVersion: latest

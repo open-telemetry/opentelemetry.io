@@ -1,0 +1,14 @@
+title: OpentelemetryReq
+registryType: instrumentation
+isThirdParty: false
+language: erlang
+tags:
+  - req
+  - instrumentation
+  - erlang
+repo: https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_req
+license: Apache 2.0
+description:
+  See https://hex.pm/packages/opentelemetry_req for usage instructions.
+authors: OpenTelemetry Authors
+otVersion: latest
