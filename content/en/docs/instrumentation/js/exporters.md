@@ -18,11 +18,12 @@ Jaeger) you'll want to use an exporter package, such as
 `@opentelemetry/exporter-trace-otlp-http`:
 
 ```shell
-npm install --save @opentelemetry/exporter-trace-otlp-http
+npm install --save @opentelemetry/exporter-trace-otlp-http \
+  opentelemetry/exporter-metrics-otlp-grpc
 ```
 
 Next, configure the exporter to point at an OTLP endpoint. For example you can
-update `tracing.ts|js` from the
+update `instrumentation.ts|js` from the
 [Getting Started](/docs/instrumentation/js/getting-started/nodejs/) like the
 following:
 
@@ -30,13 +31,19 @@ following:
 {{< tabpane langEqualsHeader=true >}}
 {{< tab Typescript >}}
 /*tracing.ts*/
-import * as opentelemetry from '@opentelemetry/sdk-node';
+import * as opentelemetry from "@opentelemetry/sdk-node";
 import {
   getNodeAutoInstrumentations,
 } from "@opentelemetry/auto-instrumentations-node";
 import {
   OTLPTraceExporter,
 } from "@opentelemetry/exporter-trace-otlp-http";
+import {
+  OTLPMetricExporter
+} from "@opentelemetry/exporter-metrics-otlp-http";
+import {
+  PeriodicExportingMetricReader
+} from "@opentelemetry/sdk-metrics";
 
 const sdk = new opentelemetry.NodeSDK({
   traceExporter: new OTLPTraceExporter({
@@ -44,6 +51,13 @@ const sdk = new opentelemetry.NodeSDK({
     url: "<your-otlp-endpoint>/v1/traces",
     // optional - collection of custom headers to be sent with each request, empty by default
     headers: {},
+  }),
+  metricReader: new PeriodicExportingMetricReader({
+    exporter: new OTLPMetricExporter({
+      url: '<your-otlp-endpoint>/v1/metrics', // url is optional and can be omitted - default is http://localhost:4318/v1/metrics
+      headers: {}, // an optional object containing custom headers to be sent with each request
+      concurrencyLimit: 1, // an optional limit on pending requests
+    }),
   }),
   instrumentations: [getNodeAutoInstrumentations()],
 });
@@ -59,6 +73,9 @@ const {
 const {
   OTLPTraceExporter,
 } = require("@opentelemetry/exporter-trace-otlp-http");
+const {
+  OTLPMetricExporter
+} = require("@opentelemetry/exporter-metrics-otlp-http");
 
 const sdk = new opentelemetry.NodeSDK({
   traceExporter: new OTLPTraceExporter({
@@ -66,6 +83,13 @@ const sdk = new opentelemetry.NodeSDK({
     url: "<your-otlp-endpoint>/v1/traces",
     // optional - collection of custom headers to be sent with each request, empty by default
     headers: {},
+  }),
+  metricReader: new PeriodicExportingMetricReader({
+    exporter: new OTLPMetricExporter({
+      url: '<your-otlp-endpoint>/v1/metrics', // url is optional and can be omitted - default is http://localhost:4318/v1/metrics
+      headers: {}, // an optional object containing custom headers to be sent with each request
+      concurrencyLimit: 1, // an optional limit on pending requests
+    }),
   }),
   instrumentations: [getNodeAutoInstrumentations()],
 });
