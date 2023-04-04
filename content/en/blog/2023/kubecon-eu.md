@@ -41,7 +41,7 @@ Read on to learn about all the things related OpenTelemetry during KubeCon.
 
 Come network with OpenTelemetry maintainers and core contributors during the
 [OpenTelemetry project meeting](https://sched.co/1JWS7), on Tuesday April 18,
-2023 from 13:00 - 15:00. You can attend with a _standard in-person pass_.
+2023 from 16:00 - 17:00. You can attend with a _standard in-person pass_.
 
 [Observability Day][] _fosters collaboration, discussion, and knowledge sharing
 of cloud-native observability projects_. This event will be held on April 18,
