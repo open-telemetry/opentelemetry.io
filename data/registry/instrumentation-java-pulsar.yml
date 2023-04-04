@@ -1,0 +1,13 @@
+title: Apache Pulsar instrumentation
+registryType: instrumentation
+isThirdParty: false
+language: java
+tags:
+  - pulsar
+  - instrumentation
+  - java
+repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/pulsar
+license: Apache 2.0
+description: This library provides an Apache Pulsar instrumentation
+authors: OpenTelemetry Authors
+otVersion: latest

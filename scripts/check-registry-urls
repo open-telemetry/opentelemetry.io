@@ -2,7 +2,7 @@
 
 REPO_DIR=$(dirname $0)/..
 
-REGISTRY_FILES=$REPO_DIR/content/en/registry/*
+REGISTRY_FILES=$REPO_DIR/data/registry/*
 
 for FILE in ${REGISTRY_FILES} ; do
     REPO_URL=$(grep "repo: " ${FILE})

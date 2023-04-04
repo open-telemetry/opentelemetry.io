@@ -2699,6 +2699,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-15T21:47:24.160442-05:00"
   },
+  "https://hex.pm/packages/opentelemetry_req": {
+    "StatusCode": 200,
+    "LastSeen": "2023-04-04T16:47:25.186004+02:00"
+  },
   "https://hex.pm/packages/opentelemetry_semantic_conventions": {
     "StatusCode": 200,
     "LastSeen": "2023-03-29T12:11:58.011874587-06:00"
