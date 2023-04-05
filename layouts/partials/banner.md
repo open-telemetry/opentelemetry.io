@@ -2,8 +2,7 @@
 
 <div class="o-banner">
 
-OpenTelemetry PHP reaches beta!
-[Learn more](/blog/2023/php-beta-release/)
+Join us at [KubeCon + CloudNativeCon EU, April 18-21](/blog/2023/kubecon-eu/)!
 
 </div>
 {{ end -}}
