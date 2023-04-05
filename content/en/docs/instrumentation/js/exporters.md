@@ -56,7 +56,6 @@ const sdk = new opentelemetry.NodeSDK({
     exporter: new OTLPMetricExporter({
       url: '<your-otlp-endpoint>/v1/metrics', // url is optional and can be omitted - default is http://localhost:4318/v1/metrics
       headers: {}, // an optional object containing custom headers to be sent with each request
-      concurrencyLimit: 1, // an optional limit on pending requests
     }),
   }),
   instrumentations: [getNodeAutoInstrumentations()],
