@@ -27,7 +27,7 @@ huge value to the open-source community because:
 * Converging two separate standards into one single standard will help to boost
   the ecosystem (e.g. instrumentation libraries, tools and consumption
   experiences), which benefits both the telemetry producers and consumers.
-* This joint effort would benefit from domain experts across logging, -
+* This joint effort would benefit from domain experts across logging,
   distributed tracing, metrics and security. As a result, we expect to have more
   consistent signals across different pillars of observability and security.
 
