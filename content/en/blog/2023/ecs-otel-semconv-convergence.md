@@ -1,7 +1,7 @@
 ---
 title: Announcing the Elastic Common Schema (ECS) and OpenTelemetry Semantic Convention Convergence
 linkTitle: ECS and OTel SemConv Convergence
-date: 2023-04-07
+date: 2023-04-17
 spelling:
   cSpell:ignore Reiley Yang
   cSpell:ignore ECS
