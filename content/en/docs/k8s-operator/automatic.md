@@ -357,6 +357,14 @@ language-specific annotation:
 - Node.js: `instrumentation.opentelemetry.io/inject-nodejs: "true"`
 - Python: `instrumentation.opentelemetry.io/inject-python: "true"`
 
+
+The possible values for the annotation can be
+* `"true"` - to inject  `Instrumentation` resource with default name from the curent namespace.
+* `"my-instrumentation"` - to inject `Instrumentation` CR instance with name `"my-instrumentation"` in the current namespace.
+* `"my-other-namespace/my-instrumentation"` - to inject `Instrumentation` CR instance with name `"my-instrumentation"` from another namespace `"my-other-namespace"`.
+* `"false"` - do not inject
+
+
 Alternatively, the annotation can be added to a namespace, which will result in
 all services in that namespace to opt-in to autoinstrumentation. See the
 [Operators auto-instrumentation documentation](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md#opentelemetry-auto-instrumentation-injection)
