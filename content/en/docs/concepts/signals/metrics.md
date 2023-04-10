@@ -20,7 +20,7 @@ through the OpenTelemetry API:
 - **Counter**: A value that accumulates over time -- you can think of this like
   an odometer on a car; it only ever goes up.
 - **Asynchronous Counter**: Same as the **Counter**, but is collected once for
-  each export. Could be used if you don't have access to the continous
+  each export. Could be used if you don't have access to the continuous
   increments, but only to the aggregated value.
 - **UpDownCounter**: A value that accumulates over time, but can also go down
   again. An example could be a queue length, it will increase and decrease with
