@@ -27,7 +27,7 @@ through the OpenTelemetry API:
   the number of work items in the queue.
 - **Asynchronous UpDownCounter**: Same as the **UpDownCounter**, but is
   collected once for each export. Could be used if you don't have access to the
-  continous changes, but only to the aggregated value (e.g., current queue
+  continuous changes, but only to the aggregated value (e.g., current queue
   size).
 - **(Asynchronous) Gauge**: Measures a current value at the time it is read. An
   example would be the fuel gauge in a vehicle. Gauges are _always_
