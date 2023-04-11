@@ -15,11 +15,11 @@ matching exporters.
 
 To send trace data to a OTLP endpoint (like the [collector](/docs/collector) or
 Jaeger) you'll want to use an exporter package, such as
-`@opentelemetry/exporter-trace-otlp-http`:
+`@opentelemetry/exporter-trace-otlp-proto`:
 
 ```shell
-npm install --save @opentelemetry/exporter-trace-otlp-http \
-  opentelemetry/exporter-metrics-otlp-grpc
+npm install --save @opentelemetry/exporter-trace-otlp-proto \
+  opentelemetry/exporter-metrics-otlp-proto
 ```
 
 Next, configure the exporter to point at an OTLP endpoint. For example you can
@@ -37,10 +37,10 @@ import {
 } from "@opentelemetry/auto-instrumentations-node";
 import {
   OTLPTraceExporter,
-} from "@opentelemetry/exporter-trace-otlp-http";
+} from "@opentelemetry/exporter-trace-otlp-proto";
 import {
   OTLPMetricExporter
-} from "@opentelemetry/exporter-metrics-otlp-http";
+} from "@opentelemetry/exporter-metrics-otlp-proto";
 import {
   PeriodicExportingMetricReader
 } from "@opentelemetry/sdk-metrics";
@@ -71,10 +71,10 @@ const {
 } = require("@opentelemetry/auto-instrumentations-node");
 const {
   OTLPTraceExporter,
-} = require("@opentelemetry/exporter-trace-otlp-http");
+} = require("@opentelemetry/exporter-trace-otlp-proto");
 const {
   OTLPMetricExporter
-} = require("@opentelemetry/exporter-metrics-otlp-http");
+} = require("@opentelemetry/exporter-metrics-otlp-proto");
 
 const sdk = new opentelemetry.NodeSDK({
   traceExporter: new OTLPTraceExporter({
