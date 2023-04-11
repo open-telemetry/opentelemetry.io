@@ -4,7 +4,7 @@ aliases: [/docs/js/getting_started/nodejs]
 weight: 2
 ---
 
-This guide will show you how to get started with OpenTelemetry in Node.js.
+This page will show you how to get started with OpenTelemetry in Node.js.
 
 ## Prerequisites
 
