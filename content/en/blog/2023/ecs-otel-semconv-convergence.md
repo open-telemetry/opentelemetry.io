@@ -28,8 +28,9 @@ huge value to the open-source community because:
   the ecosystem (e.g. instrumentation libraries, tools and consumption
   experiences), which benefits both the telemetry producers and consumers.
 * This joint effort would benefit from domain experts across logging,
-  distributed tracing, metrics and security. As a result, we expect to have more
-  consistent signals across different pillars of observability and security.
+  distributed tracing, metrics and security events. As a result, we expect to
+  have more consistent signals across different pillars of observability and
+  security events.
 
 Both Elastic and the OpenTelemetry community understand that converging two
 widely used standards into one singular common schema, and having a smooth
