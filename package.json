@@ -32,6 +32,8 @@
     "cp:spec": "./scripts/content-modules/cp-pages.sh",
     "diff:check": "git diff --name-only --exit-code || (echo; echo 'WARNING: the files above have not been committed'; echo)",
     "diff:fail": "git diff --name-only --exit-code || (echo; echo 'ERROR: the files above have changed. Locally rerun `npm run test` and commit changes'; echo; git diff | head -100; exit 1)",
+    "format": "npm run _check:formatting -- --write",
+    "format:write": "npm run _check:formatting -- --write",
     "get:submodule": "npm run _get:${GET:-submodule}",
     "make:public": "make public ls-public",
     "postbuild:preview": "npm run _check:links--warn",
