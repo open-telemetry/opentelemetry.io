@@ -4,7 +4,7 @@ aliases: [/docs/js/getting_started/nodejs]
 weight: 2
 ---
 
-This guide will show you how to get started with tracing in Node.js.
+This page will show you how to get started with OpenTelemetry in Node.js.
 
 ## Prerequisites
 
@@ -113,17 +113,17 @@ Listening for requests on http://localhost:8080
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
-## Tracing
+## Instrumentation
 
 The following shows how to install, initialize, and run an application
-instrumented with traces.
+instrumented with OpenTelemetry.
 
 ### Dependencies
 
 First, install the Node SDK and autoinstrumentations package.
 
-The Node SDK lets you intialize OpenTelemetry with several configuration
-defaults that are correct for the majorty of use cases.
+The Node SDK lets you initialize OpenTelemetry with several configuration
+defaults that are correct for the majority of use cases.
 
 The `auto-instrumentations-node` package installs instrumentation packages that
 will automatically create spans corresponding to code called in libraries. In
@@ -132,7 +132,8 @@ automatically create spans for each incoming request.
 
 ```shell
 npm install @opentelemetry/sdk-node \
-  @opentelemetry/auto-instrumentations-node
+  @opentelemetry/auto-instrumentations-node \
+  @opentelemetry/sdk-metrics
 ```
 
 To find all autoinstrumentation modules, you can look at the
@@ -140,24 +141,29 @@ To find all autoinstrumentation modules, you can look at the
 
 ### Setup
 
-The tracing setup and configuration must be run _before_ your application code.
-One tool commonly used for this task is the
+The instrumentation setup and configuration must be run _before_ your
+application code. One tool commonly used for this task is the
 [`-r, --require module`](https://nodejs.org/api/cli.html#cli_r_require_module)
 flag.
 
-Create a file named `tracing.ts|js`, which will contain your tracing setup code.
+Create a file named `instrumentation.ts|js`, which will contain your
+instrumentation setup code.
 
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 
 {{< tab TypeScript >}}
-/*tracing.ts*/
+/*instrumentation.ts*/
 import { NodeSDK } from '@opentelemetry/sdk-node';
 import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace-node';
 import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
+import { PeriodicExportingMetricReader } from '@opentelemetry/sdk-metrics';
 
 const sdk = new NodeSDK({
   traceExporter: new ConsoleSpanExporter(),
+  metricReader: new PeriodicExportingMetricReader({
+    exporter: new opentelemetry.metrics.ConsoleMetricExporter()
+  }),
   instrumentations: [getNodeAutoInstrumentations()]
 });
 
@@ -167,19 +173,22 @@ sdk
 {{< /tab >}}
 
 {{< tab JavaScript >}}
-/*tracing.js*/
+/*instrumentation.js*/
 // Require dependencies
 const opentelemetry = require("@opentelemetry/sdk-node");
 const { getNodeAutoInstrumentations } = require("@opentelemetry/auto-instrumentations-node");
+const { PeriodicExportingMetricReader } = require('@opentelemetry/sdk-metrics');
 
 const sdk = new opentelemetry.NodeSDK({
   traceExporter: new opentelemetry.tracing.ConsoleSpanExporter(),
+  metricReader: new PeriodicExportingMetricReader({
+    exporter: new opentelemetry.metrics.ConsoleMetricExporter()
+  }),
   instrumentations: [getNodeAutoInstrumentations()]
 });
 
 sdk
   .start()
-
 {{< /tab >}}
 
 {{< /tabpane >}}
@@ -188,18 +197,18 @@ sdk
 ### Run Application
 
 Now you can run your application as you normally would, but you can use the
-`--require` flag to load the tracing code before the application code.
+`--require` flag to load the instrumentation before the application code.
 
 <!-- prettier-ignore-start -->
 {{< tabpane lang=console persistLang=false >}}
 
 {{< tab TypeScript >}}
-$ ts-node --require ./tracing.ts app.ts
+$ ts-node --require ./instrumentation.ts app.ts
 Listening for requests on http://localhost:8080
 {{< /tab >}}
 
 {{< tab JavaScript >}}
-$ node --require ./tracing.js app.js
+$ node --require ./instrumentation.js app.js
 Listening for requests on http://localhost:8080
 {{< /tab >}}
 
@@ -290,6 +299,39 @@ times, after a while you should see the spans printed in the console by the
   "status": { "code": 1 },
   "events": []
 }
+{
+  descriptor: {
+    name: 'http.server.duration',
+    type: 'HISTOGRAM',
+    description: 'measures the duration of the inbound HTTP requests',
+    unit: 'ms',
+    valueType: 1
+  },
+  dataPointType: 0,
+  dataPoints: []
+}
+{
+  descriptor: {
+    name: 'http.client.duration',
+    type: 'HISTOGRAM',
+    description: 'measures the duration of the outbound HTTP requests',
+    unit: 'ms',
+    valueType: 1
+  },
+  dataPointType: 0,
+  dataPoints: []
+}
+{
+  descriptor: {
+    name: 'db.client.connections.usage',
+    type: 'UP_DOWN_COUNTER',
+    description: 'The number of connections that are currently in the state referenced by the attribute "state".',
+    unit: '{connections}',
+    valueType: 1
+  },
+  dataPointType: 3,
+  dataPoints: []
+}
 ```
 
 </details>
@@ -313,7 +355,7 @@ OpenTelemetry is initialized correctly:
 {{< tabpane langEqualsHeader=true >}}
 
 {{< tab TypeScript >}}
-/*tracing.ts*/
+/*instrumentation.ts*/
 import { diag, DiagConsoleLogger, DiagLogLevel } from '@opentelemetry/api';
 
 // For troubleshooting, set the log level to DiagLogLevel.DEBUG
@@ -323,7 +365,7 @@ diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
 {{< /tab >}}
 
 {{< tab JavaScript >}}
-/*tracing.js*/
+/*instrumentation.js*/
 // Require dependencies
 const { diag, DiagConsoleLogger, DiagLogLevel } = require('@opentelemetry/api');
 
