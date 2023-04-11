@@ -32,7 +32,7 @@ retrieve information.
 
 ## What should OTel Baggage be used for?
 
-OTel Baggage should be used for non-sensitive data that you're okay with
+OTel Baggage should be used for data that you're okay with
 potentially exposing to third parties. This is because it's stored in HTTP
 headers alongside the current context.
 
