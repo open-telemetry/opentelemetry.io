@@ -32,9 +32,10 @@ retrieve information.
 
 ## What should OTel Baggage be used for?
 
-OTel Baggage should be used for data that you're okay with
-potentially exposing to third parties. This is because it's stored in HTTP
-headers alongside the current context.
+OTel Baggage should be used for data that you're okay with potentially exposing
+to anyone who inspects your network traffic. This is because it's stored in HTTP
+headers alongside the current context. If your relevant network traffic is
+entirely within your own network, then this caveat may not apply.
 
 Common use cases include information that’s only accessible further up a stack.
 This can include things like Account Identification, User Ids, Product Ids, and
