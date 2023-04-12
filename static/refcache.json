@@ -219,6 +219,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-15T20:41:03.78002-05:00"
   },
+  "https://cloud-native.slack.com/archives/C041APFBYQP": {
+    "StatusCode": 200,
+    "LastSeen": "2023-04-12T11:20:32.403714-04:00"
+  },
   "https://cloud-native.slack.com/archives/C0422FSELH0": {
     "StatusCode": 200,
     "LastSeen": "2023-02-15T20:40:32.32299-05:00"
@@ -1755,6 +1759,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:15:28.84376-05:00"
   },
+  "https://github.com/open-telemetry/community#specification-sigs": {
+    "StatusCode": 200,
+    "LastSeen": "2023-04-12T11:20:27.134426-04:00"
+  },
   "https://github.com/open-telemetry/community/discussions/1203": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:04:49.421838-05:00"
@@ -2534,6 +2542,10 @@
   "https://github.com/reese-lee": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:04:55.176981-05:00"
+  },
+  "https://github.com/reyang": {
+    "StatusCode": 200,
+    "LastSeen": "2023-04-12T11:20:10.566057-04:00"
   },
   "https://github.com/riandyrn/otelchi": {
     "StatusCode": 200,
@@ -3895,6 +3907,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-18T13:33:53.628417-05:00"
   },
+  "https://www.elastic.co/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-04-12T11:20:16.022774-04:00"
+  },
   "https://www.elastic.co/guide/en/apm/get-started/current/open-telemetry-elastic.html": {
     "StatusCode": 206,
     "LastSeen": "2023-02-18T13:33:59.582146-05:00"
@@ -3906,6 +3922,10 @@
   "https://www.elastic.co/guide/en/ecs/current/ecs-field-reference.html": {
     "StatusCode": 206,
     "LastSeen": "2023-02-18T13:41:59.100249-05:00"
+  },
+  "https://www.elastic.co/guide/en/ecs/master/ecs-reference.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-04-12T11:20:21.66934-04:00"
   },
   "https://www.envoyproxy.io": {
     "StatusCode": 206,
