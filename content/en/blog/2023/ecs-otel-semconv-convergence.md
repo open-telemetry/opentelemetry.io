@@ -47,4 +47,9 @@ and join the discussion on our
 
 - [Announcement from Elastic](https://elastic.co/blog/ecs-elastic-common-schema-otel-opentelemetry-announcement)
 - [OpenTelemetry Semantic Conventions](https://opentelemetry.io/docs/concepts/semantic-conventions/)
-- [OTEP 199: Merge Elastic Common Schema with OpenTelemetry Semantic Conventions](https://github.com/open-telemetry/oteps/blob/d02a3e2e75dc934fb38c5db88eb41fbe85730af4/text/0199-support-elastic-common-schema-in-opentelemetry.md)
+- [OTEP 199: Merge Elastic Common Schema with OpenTelemetry Semantic
+  Conventions](https://github.com/open-telemetry/oteps/blob/d02a3e2e75dc934fb38c5db88eb41fbe85730af4/text/0199-support-elastic-common-schema-in-opentelemetry.md)
+- [OTEP Pull Request 199: Support Elastic Common Schema in
+  OpenTelemetry](https://github.com/open-telemetry/oteps/pull/199)
+- [OTEP Pull Request 222: Support Elastic Common Schema (ECS) in
+  OpenTelemetry](https://github.com/open-telemetry/oteps/pull/222)
