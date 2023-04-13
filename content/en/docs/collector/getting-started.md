@@ -232,13 +232,13 @@ tool that supports this compression format:
 <!-- prettier-ignore-start -->
 {{< tabpane lang=shell persistLang=false >}}
 {{< tab Intel >}}
-curl -O -L https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol*{{% param collectorVersion %}}\_darwin_amd64.tar.gz
-tar -xvf otelcol*{{% param collectorVersion %}}\_darwin_amd64.tar.gz
+curl -O -L https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_darwin_amd64.tar.gz
+tar -xvf otelcol_{{% param collectorVersion %}}_darwin_amd64.tar.gz
 {{< /tab >}}
 
 {{< tab ARM >}}
-curl -O -L https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol*{{% param collectorVersion %}}\_darwin_arm64.tar.gz
-tar -xvf otelcol*{{% param collectorVersion %}}\_darwin_arm64.tar.gz
+curl -O -L https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_darwin_arm64.tar.gz
+tar -xvf otelcol_{{% param collectorVersion %}}_darwin_arm64.tar.gz
 {{< /tab >}}
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
