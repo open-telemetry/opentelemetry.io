@@ -22,8 +22,8 @@ Want to deploy the demo and see it in action? Start here.
 Want to understand how a particular language's instrumentation works? Start
 here.
 
-| Language      | Auto Instrumentation                                                                                                                     | Manual Instrumentation                                                                       |
-| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| Language      | Instrumentation Libraries                                                                                                                | Manual Instrumentation                                                                       |
+|---------------|------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
 | .NET          | [Cart Service](services/cart/)                                                                                                           | [Cart Service](services/cart/)                                                               |
 | C++           |                                                                                                                                          | [Currency Service](services/currency/)                                                       |
 | Erlang/Elixir | [Feature Flag Service](services/feature-flag/)                                                                                           | [Feature Flag Service](services/feature-flag/)                                               |
