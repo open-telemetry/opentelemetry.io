@@ -9,9 +9,9 @@ author: '[Reiley Yang](https://github.com/reyang)'
 ---
 
 Today, we're very excited to make a joint announcement with
-[Elastic](https://www.elastic.co/) about the future of
-[ECS](https://www.elastic.co/guide/en/ecs/master/ecs-reference.html) (Elastic
-Common Schema) and the OpenTelemetry Semantic Conventions.
+[Elastic](https://www.elastic.co/) about the future of [Elastic Common
+Schema](https://www.elastic.co/guide/en/ecs/master/ecs-reference.html) (ECS) and
+the [OpenTelemetry Semantic Conventions][].
 
 The goal is to achieve convergence of ECS and OTel Semantic Conventions into a
 single open schema that is maintained by OpenTelemetry, so that OpenTelemetry
@@ -51,8 +51,7 @@ and join the discussion on our
   Conventions][]
 - [OTEP Issue 197: Proposal: Add support for Elastic Common Schema (ECS) in
   OpenTelemetry][]
-- [OTEP Pull Request 199: Support Elastic Common Schema in
-  OpenTelemetry][]
+- [OTEP Pull Request 199: Support Elastic Common Schema in OpenTelemetry][]
 - [OTEP Pull Request 222: Support Elastic Common Schema (ECS) in
   OpenTelemetry][]
 
