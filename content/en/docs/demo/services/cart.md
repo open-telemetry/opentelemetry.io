@@ -22,15 +22,15 @@ exporters, and set other options. Configuration of the exporter and resource
 attributes is performed through environment variables.
 
 ```cs
-var appResourceBuilder = ResourceBuilder
-    .CreateDefault()
-    .AddTelemetrySdk()
-    .AddEnvironmentVariableDetector()
-    .AddDetector(new ContainerResourceDetector());
+Action<ResourceBuilder> appResourceBuilder =
+    resource => resource
+        .AddTelemetrySdk()
+        .AddEnvironmentVariableDetector()
+        .AddDetector(new ContainerResourceDetector());
 
 builder.Services.AddOpenTelemetry()
+    .ConfigureResource(appResourceBuilder)
     .WithTracing(builder => builder
-        .SetResourceBuilder(appResourceBuilder)
         .AddRedisInstrumentation(
             cartStore.GetConnection(),
             options => options.SetVerboseDatabaseStatements = true)
@@ -79,15 +79,15 @@ call to `AddOpenTelemetry()`. This builder configures desired instrumentation
 libraries, exporters, etc.
 
 ```cs
-var appResourceBuilder = ResourceBuilder
-    .CreateDefault()
-    .AddTelemetrySdk()
-    .AddEnvironmentVariableDetector()
-    .AddDetector(new ContainerResourceDetector());
+Action<ResourceBuilder> appResourceBuilder =
+    resource => resource
+        .AddTelemetrySdk()
+        .AddEnvironmentVariableDetector()
+        .AddDetector(new ContainerResourceDetector());
 
 builder.Services.AddOpenTelemetry()
+    .ConfigureResource(appResourceBuilder)
     .WithMetrics(builder => builder
-        .SetResourceBuilder(appResourceBuilder)
         .AddRuntimeInstrumentation()
         .AddAspNetCoreInstrumentation()
         .AddOtlpExporter());
