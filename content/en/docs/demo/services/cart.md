@@ -22,19 +22,22 @@ exporters, and set other options. Configuration of the exporter and resource
 attributes is performed through environment variables.
 
 ```cs
-services.AddOpenTelemetry().WithTracing(builder => builder
-    .ConfigureResource(r => r
-        .AddTelemetrySdk()
-        .AddEnvironmentVariableDetector()
-        .AddDetector(new DockerResourceDetector())
-    )
-    .AddRedisInstrumentation(
-        cartStore.GetConnection(),
-        options => options.SetVerboseDatabaseStatements = true)
-    .AddAspNetCoreInstrumentation()
-    .AddGrpcClientInstrumentation()
-    .AddHttpClientInstrumentation()
-    .AddOtlpExporter());
+var appResourceBuilder = ResourceBuilder
+    .CreateDefault()
+    .AddTelemetrySdk()
+    .AddEnvironmentVariableDetector()
+    .AddDetector(new ContainerResourceDetector());
+
+builder.Services.AddOpenTelemetry()
+    .WithTracing(builder => builder
+        .SetResourceBuilder(appResourceBuilder)
+        .AddRedisInstrumentation(
+            cartStore.GetConnection(),
+            options => options.SetVerboseDatabaseStatements = true)
+        .AddAspNetCoreInstrumentation()
+        .AddGrpcClientInstrumentation()
+        .AddHttpClientInstrumentation()
+        .AddOtlpExporter());
 ```
 
 ### Add attributes to auto-instrumented spans
@@ -76,15 +79,18 @@ call to `AddOpenTelemetry()`. This builder configures desired instrumentation
 libraries, exporters, etc.
 
 ```cs
-services.AddOpenTelemetry().WithMetrics(builder => builder
-    .ConfigureResource(r => r
-        .AddTelemetrySdk()
-        .AddEnvironmentVariableDetector()
-        .AddDetector(new DockerResourceDetector())
-    )
-    .AddRuntimeInstrumentation()
-    .AddAspNetCoreInstrumentation()
-    .AddOtlpExporter());
+var appResourceBuilder = ResourceBuilder
+    .CreateDefault()
+    .AddTelemetrySdk()
+    .AddEnvironmentVariableDetector()
+    .AddDetector(new ContainerResourceDetector());
+
+builder.Services.AddOpenTelemetry()
+    .WithMetrics(builder => builder
+        .SetResourceBuilder(appResourceBuilder)
+        .AddRuntimeInstrumentation()
+        .AddAspNetCoreInstrumentation()
+        .AddOtlpExporter());
 ```
 
 ## Logs
