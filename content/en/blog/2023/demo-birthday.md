@@ -10,6 +10,8 @@ It's hard to believe as we prepare our 1.4.0 release but the
 and it's been 6 months since we declared general availability with our
 [1.0.0 release](https://opentelemetry.io/blog/2022/announcing-opentelemetry-demo-release/).
 
+### Project Milestones
+
 The demo has achieved remarkable milestones in its first year, with more than
 **70 contributors, 20 official vendor forks, 780 Github stars, and 180K Docker
 pulls**. The project team has been hard at work adding new capabilities and
@@ -19,7 +21,7 @@ in new languages, and 7 brand new components / services_.
 Time flies when you're stabilizing semantic conventions. But what's actually
 changed between our 1.0.0 and 1.4.0 releases? Quite a lot actually.
 
-The highlights:
+### The Highlights
 
 - **2x build time improvements despite adding additional services**
 - _Support added for arm64 architectures (M1 and M2 Macs)_
