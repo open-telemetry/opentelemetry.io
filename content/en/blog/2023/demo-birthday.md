@@ -10,29 +10,29 @@ demo](https://opentelemetry.io/docs/demo/) is turning 1 year old and it's been 6
 months since we declared general availability with our [1.0.0
 release](https://opentelemetry.io/blog/2022/announcing-opentelemetry-demo-release/).
 
-The demo has achieved remarkable milestones in its first year, with more than **70 contributors, 20 official vendor forks, 780 Github stars, and 180K Docker pulls**. The project team has been hard at work adding new capabilities and improving on existing ones with more than 460 merged PRs, 5 re-written services in new languages, and 7 brand new components / services.  
+The demo has achieved remarkable milestones in its first year, with more than **70 contributors, 20 official vendor forks, 780 Github stars, and 180K Docker pulls**. The project team has been hard at work adding new capabilities and improving on existing ones with more than *460 merged PRs, 5 re-written services in new languages, and 7 brand new components / services*.  
 
 Time flies when you're stabilizing semantic conventions. But what's actually
 changed between our 1.0.0 and 1.4.0 releases? Quite a lot actually.
 
 The highlights:
 
-* 2x build time improvements despite adding additional services
-* Support added for arm64 architectures (M1 and M2 Macs)
-* Async support using Kafka and 2 new services
-* Kubernetes manifest
-* More out of the box dashboards
-* Our first logging SDK addition
-* A myriad of frontend bug fixes
-* First
+* **2x build time improvements despite adding additional services**
+* *Support added for arm64 architectures (M1 and M2 Macs)*
+* **Async support using Kafka and 2 new services**
+* *Kubernetes manifest*
+* **More out of the box dashboards**
+* *Our first logging SDK addition*
+* **A myriad of frontend bug fixes**
+* *First
   [Connector](https://github.com/open-telemetry/opentelemetry-collector/blob/main/connector/README.md)
-  in the Collector
-* New metric SDKs
-* New manual metric instruments
-* More auto-instrumentation in more languages
-* Browser and compute resource detectors
-* More feature flag scenarios
-* General stability improvements to fix service restarts
+  in the Collector*
+* **New metric SDKs**
+* *New manual metric instruments*
+* **More auto-instrumentation in more languages**
+* *Browser and compute resource detectors*
+* **More feature flag scenarios**
+* *General stability improvements to fix service restarts*
 
 For detailed changes, check out our in depth [release
 notes](https://github.com/open-telemetry/opentelemetry-demo/releases) or
