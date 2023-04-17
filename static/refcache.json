@@ -2439,6 +2439,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:41:21.740221-05:00"
   },
+  "https://github.com/open-telemetry/oteps/issues/197": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-30T19:59:09.626563-04:00"
+  },
   "https://github.com/open-telemetry/oteps/pull/108/files": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:01:24.26414-05:00"
@@ -2458,6 +2462,10 @@
   "https://github.com/open-telemetry/oteps/pull/192": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:09:46.360301-05:00"
+  },
+  "https://github.com/open-telemetry/oteps/pull/199": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-30T19:59:09.626563-04:00"
   },
   "https://github.com/open-telemetry/oteps/pull/212": {
     "StatusCode": 200,
