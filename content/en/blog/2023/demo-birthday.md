@@ -10,11 +10,7 @@ demo](https://opentelemetry.io/docs/demo/) is turning 1 year old and it's been 6
 months since we declared general availability with our [1.0.0
 release](https://opentelemetry.io/blog/2022/announcing-opentelemetry-demo-release/).
 
-Over the past year, the demo project has gained more than 70 individual
-contributors, 180K docker pulls, 20 official [vendor
-forks](https://opentelemetry.io/docs/demo/forking/), and 780 Github stars. We've
-merged 460+ PRs, re-written 5 services in new languages, and added 7 new
-components / services.
+The demo has achieved remarkable milestones in its first year, with more than **70 contributors, 20 official vendor forks, 780 Github stars, and 180K Docker pulls**. The project team has been hard at work adding new capabilities and improving on existing ones with more than 460 merged PRs, 5 re-written services in new languages, and 7 brand new components / services.  
 
 Time flies when you're stabilizing semantic conventions. But what's actually
 changed between our 1.0.0 and 1.4.0 releases? Quite a lot actually.
@@ -33,11 +29,12 @@ The highlights:
   in the Collector
 * New metric SDKs
 * New manual metric instruments
+* More auto-instrumentation in more languages
 * Browser and compute resource detectors
 * More feature flag scenarios
 * General stability improvements to fix service restarts
 
-For detailed changes check out our in depth [release
+For detailed changes, check out our in depth [release
 notes](https://github.com/open-telemetry/opentelemetry-demo/releases) or
 [changelog](https://github.com/open-telemetry/opentelemetry-demo/blob/main/CHANGELOG.md).
 
