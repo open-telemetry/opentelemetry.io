@@ -37,7 +37,7 @@ changed between our 1.0.0 and 1.4.0 releases? Quite a lot actually.
   in the Collector to demonstrate how telemetry pipelines can be linked_
 - **New OTel SDKs like the Java logging SDK and JavaScript / Go Metric SDK**
 - _New manual metric instruments in the Ad, Currency, Product Catalog services_
-- **PHP no-code changes auto-instrumentation**
+- **PHP no-code change auto-instrumentation**
 - _Browser and compute resource detectors that enrich our data with
   infrastructure information_
 - **More
