@@ -1027,6 +1027,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-03-11T14:17:28.309561-05:00"
   },
+  "https://docs.teletrace.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-04-15T22:50:33.371377+03:00"
+  },
   "https://docs.traceloop.dev": {
     "StatusCode": 206,
     "LastSeen": "2023-02-26T11:00:42.522142-08:00"
