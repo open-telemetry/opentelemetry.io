@@ -5,7 +5,7 @@ date: 2023-04-16
 author: '[Carter Socha](https://github.com/cartersocha) (Lightstep)'
 ---
 
-It's hard to belive as we prepare our 1.4.0 release but the [OpenTelemetry
+It's hard to believe as we prepare our 1.4.0 release but the [OpenTelemetry
 demo](https://opentelemetry.io/docs/demo/) is turning 1 year old and it's been 6
 months since we declared general availability with our [1.0.0
 release](https://opentelemetry.io/blog/2022/announcing-opentelemetry-demo-release/).
