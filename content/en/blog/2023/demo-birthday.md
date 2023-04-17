@@ -25,9 +25,12 @@ changed between our 1.0.0 and 1.4.0 releases? Quite a lot actually.
 
 - **2x build time improvements despite adding additional services**
 - _Support added for arm64 architectures (M1 and M2 Macs)_
-- **Async support using Kafka and the new Fraud Detection (Kotlin) / Accounting (Go) services**
-- _Kubernetes manifest to enable Kubernetes deployment without using requiring Helm_
-- **More out of the box dashboards like our [Collector Data Flow Dashboard](https://opentelemetry.io/docs/demo/collector-data-flow-dashboard/)**
+- **Async support using Kafka and the new Fraud Detection (Kotlin) / Accounting
+  (Go) services**
+- _Kubernetes manifest to enable Kubernetes deployment without using requiring
+  Helm_
+- **More out of the box dashboards like our
+  [Collector Data Flow Dashboard](https://opentelemetry.io/docs/demo/collector-data-flow-dashboard/)**
 - **A myriad of frontend bug fixes**
 - _Our first
   [Connector](https://github.com/open-telemetry/opentelemetry-collector/blob/main/connector/README.md)
@@ -35,8 +38,11 @@ changed between our 1.0.0 and 1.4.0 releases? Quite a lot actually.
 - **New OTel SDKs like the Java logging SDK and JavaScript / Go Metric SDK**
 - _New manual metric instruments in the Ad, Currency, Product Catalog services_
 - **PHP no-code changes auto-instrumentation**
-- _Browser and compute resource detectors that enrich our data with infrastructure information_
-- **More [feature flag scenarios](https://opentelemetry.io/docs/demo/feature-flags/) like generating a failure for every 10th Ad shown**
+- _Browser and compute resource detectors that enrich our data with
+  infrastructure information_
+- **More
+  [feature flag scenarios](https://opentelemetry.io/docs/demo/feature-flags/)
+  like generating a failure for every 10th Ad shown**
 - _General stability improvements to fix service restarts_
 
 For detailed changes, check out our in depth
