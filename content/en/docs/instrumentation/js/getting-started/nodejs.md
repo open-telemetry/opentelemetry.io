@@ -48,12 +48,6 @@ npm install express
 
 ### Code
 
-If you are using TypeScript, then run following command:
-
-```shell
-tsc --init
-```
-
 Create `app.ts|js` and add the following code to the file:
 
 <!-- prettier-ignore-start -->
@@ -101,7 +95,7 @@ in your web browser to ensure it is working.
 {{< tabpane lang=console persistLang=false >}}
 
 {{< tab TypeScript >}}
-$ ts-node app.ts
+$ npx ts-node app.ts
 Listening for requests on http://localhost:8080
 {{< /tab >}}
 
@@ -158,12 +152,12 @@ instrumentation setup code.
 import { NodeSDK } from '@opentelemetry/sdk-node';
 import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace-node';
 import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
-import { PeriodicExportingMetricReader } from '@opentelemetry/sdk-metrics';
+import { PeriodicExportingMetricReader, ConsoleMetricExporter } from '@opentelemetry/sdk-metrics';
 
 const sdk = new NodeSDK({
   traceExporter: new ConsoleSpanExporter(),
   metricReader: new PeriodicExportingMetricReader({
-    exporter: new opentelemetry.metrics.ConsoleMetricExporter()
+    exporter: new ConsoleMetricExporter()
   }),
   instrumentations: [getNodeAutoInstrumentations()]
 });
@@ -176,14 +170,15 @@ sdk
 {{< tab JavaScript >}}
 /*instrumentation.js*/
 // Require dependencies
-const opentelemetry = require("@opentelemetry/sdk-node");
-const { getNodeAutoInstrumentations } = require("@opentelemetry/auto-instrumentations-node");
-const { PeriodicExportingMetricReader } = require('@opentelemetry/sdk-metrics');
+const { NodeSDK } = require('@opentelemetry/sdk-node');
+const { ConsoleSpanExporter } = require('@opentelemetry/sdk-trace-node');
+const { getNodeAutoInstrumentations } = require('@opentelemetry/auto-instrumentations-node');
+const { PeriodicExportingMetricReader, ConsoleMetricExporter } = require('@opentelemetry/sdk-metrics');
 
-const sdk = new opentelemetry.NodeSDK({
-  traceExporter: new opentelemetry.tracing.ConsoleSpanExporter(),
+const sdk = new NodeSDK({
+  traceExporter: new ConsoleSpanExporter(),
   metricReader: new PeriodicExportingMetricReader({
-    exporter: new opentelemetry.metrics.ConsoleMetricExporter()
+    exporter: new ConsoleMetricExporter()
   }),
   instrumentations: [getNodeAutoInstrumentations()]
 });
@@ -204,7 +199,7 @@ Now you can run your application as you normally would, but you can use the
 {{< tabpane lang=console persistLang=false >}}
 
 {{< tab TypeScript >}}
-$ ts-node --require ./instrumentation.ts app.ts
+$ npx ts-node --require ./instrumentation.ts app.ts
 Listening for requests on http://localhost:8080
 {{< /tab >}}
 
@@ -362,7 +357,7 @@ import { diag, DiagConsoleLogger, DiagLogLevel } from '@opentelemetry/api';
 // For troubleshooting, set the log level to DiagLogLevel.DEBUG
 diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
 
-// const sdk = new opentelemetry.NodeSDK({...
+// const sdk = new NodeSDK({...
 {{< /tab >}}
 
 {{< tab JavaScript >}}
@@ -373,7 +368,7 @@ const { diag, DiagConsoleLogger, DiagLogLevel } = require('@opentelemetry/api');
 // For troubleshooting, set the log level to DiagLogLevel.DEBUG
 diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
 
-// const sdk = new opentelemetry.NodeSDK({...
+// const sdk = new NodeSDK({...
 {{< /tab >}}
 
 {{< /tabpane >}}
