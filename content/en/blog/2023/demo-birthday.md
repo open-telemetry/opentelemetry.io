@@ -1,7 +1,7 @@
 ---
 title: The OpenTelemetry Demo Turns 1(.4)
 linkTitle: OTel Demo Updates
-date: 2023-04-16
+date: 2023-04-18
 author: '[Carter Socha](https://github.com/cartersocha) (Lightstep)'
 ---
 
