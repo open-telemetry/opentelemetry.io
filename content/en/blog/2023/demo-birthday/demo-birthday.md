@@ -51,6 +51,8 @@ For detailed changes, check out our in depth
 or
 [changelog](https://github.com/open-telemetry/opentelemetry-demo/blob/main/CHANGELOG.md).
 
+### Get Involved
+
 Our contributors are essential to all of this and the project team can't thank
 them enough. New development is constantly ongoing as we add new capabilities
 and the community's tools evolve. If you'd like to help, check out our
