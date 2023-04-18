@@ -107,7 +107,7 @@
     "@opentelemetry/context-zone": "^1.8.0",
     "@opentelemetry/core": "^1.8.0",
     "@opentelemetry/exporter-trace-otlp-http": "^0.38.0",
-    "@opentelemetry/instrumentation": "^0.37.0",
+    "@opentelemetry/instrumentation": "^0.38.0",
     "@opentelemetry/resources": "^1.8.0",
     "@opentelemetry/sdk-trace-base": "^1.8.0",
     "@opentelemetry/sdk-trace-web": "^1.8.0",
