@@ -111,7 +111,6 @@
     "@opentelemetry/resources": "^1.8.0",
     "@opentelemetry/sdk-trace-base": "^1.8.0",
     "@opentelemetry/sdk-trace-web": "^1.8.0",
-    "@opentelemetry/semantic-conventions": "^1.8.0",
-    "npm": "^9.6.4"
+    "@opentelemetry/semantic-conventions": "^1.8.0"
   }
 }
