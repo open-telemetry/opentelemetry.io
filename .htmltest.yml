@@ -34,3 +34,5 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^https://opentelemetry\.io/.
   # TODO: drop after fix to https://github.com/open-telemetry/opentelemetry.io/issues/2354
   - ^https://open-telemetry\.github\.io/opentelemetry-python/benchmarks/
+  # TODO: remove after merge of https://github.com/open-telemetry/opentelemetry.io/pull/2594
+  - ^https://elastic.co/blog/ecs-elastic-common-schema-otel-opentelemetry-announcement
