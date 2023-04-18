@@ -18,27 +18,27 @@ OpenTelemetry-Python supports Python 3.6 and higher.
 
 The API and SDK packages are available on PyPI, and can be installed via pip:
 
-```console
-$ pip install opentelemetry-api
-$ pip install opentelemetry-sdk
+```sh
+pip install opentelemetry-api
+pip install opentelemetry-sdk
 ```
 
 In addition, there are several extension packages which can be installed
 separately as:
 
-```console
-$ pip install opentelemetry-exporter-{exporter}
-$ pip install opentelemetry-instrumentation-{instrumentation}
+```sh
+pip install opentelemetry-exporter-{exporter}
+pip install opentelemetry-instrumentation-{instrumentation}
 ```
 
 These are for exporter and instrumentation packages respectively. The Jaeger,
 Zipkin, Prometheus, OTLP and OpenCensus Exporters can be found in the
 [exporter](https://github.com/open-telemetry/opentelemetry-python/blob/main/exporter/)
 directory of the repository. Instrumentations and additional exporters can be
-found in the
-[Contrib repo instrumentation](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation)
+found in the contrib repo
+[instrumentation](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation)
 and
-[Contrib repo exporter](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/exporter)
+[exporter](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/exporter)
 directories.
 
 ## Extensions
@@ -53,21 +53,18 @@ situation, you may want to install the packages directly from the repo. This can
 be done by cloning the repository and doing an
 [editable install](https://pip.pypa.io/en/stable/reference/pip_install/#editable-installs):
 
-```console
-$ git clone https://github.com/open-telemetry/opentelemetry-python.git
-$ cd opentelemetry-python
-$ pip install -e ./opentelemetry-api
-$ pip install -e ./opentelemetry-sdk
+```sh
+git clone https://github.com/open-telemetry/opentelemetry-python.git
+cd opentelemetry-python
+pip install -e ./opentelemetry-api
+pip install -e ./opentelemetry-sdk
 ```
 
 ## Repositories and benchmarks
 
-- Main repo:
-  [opentelemetry-python](https://github.com/open-telemetry/opentelemetry-python)
+- Main repo: [opentelemetry-python][]
 - Contrib repo: [opentelemetry-python-contrib][]
-- [Performance benchmarks][]
 
+[opentelemetry-python]: https://github.com/open-telemetry/opentelemetry-python
 [opentelemetry-python-contrib]:
   https://github.com/open-telemetry/opentelemetry-python-contrib
-[performance benchmarks]:
-  https://open-telemetry.github.io/opentelemetry-python/benchmarks/
