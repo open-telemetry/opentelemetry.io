@@ -4,10 +4,10 @@ weight: 36
 ---
 
 A [resource](/docs/reference/specification/overview/#resources) represents an
-entity producing telemetry as attributes. For example, an OTP Release
-producing telemetry that is running in a container on Kubernetes has an OTP
-Release name, a Pod name, a namespace, and possibly a deployment name. All four
-of these attributes can be included in the resource.
+entity producing telemetry as attributes. For example, an OTP Release producing
+telemetry that is running in a container on Kubernetes has an OTP Release name,
+a Pod name, a namespace, and possibly a deployment name. All four of these
+attributes can be included in the resource.
 
 In your observability backend, you can use resource information to better
 investigate interesting behavior. For example, if your trace or metrics data
@@ -45,7 +45,6 @@ Or through the environment variable `OTEL_RESOURCE_DETECTORS`:
 OTEL_RESOURCE_DETECTORS=otel_resource_env_var,otel_resource_app_env
 ```
 
-
 All resources detectors are protected with a timeout, in milliseconds, after
 which they return an empty value. This allows for resource detectors to do
 things like hit the network without potentially hanging the entire program
@@ -62,8 +61,8 @@ either with the OS environment variable `OTEL_RESOURCE_ATTRIBUTES`:
 OTEL_RESOURCE_ATTRIBUTES="deployment.environment=development"
 ```
 
-Alternatively, use the `resource` Application environment under the `opentelemetry`
-Application configuration of `sys.config` or `runtime.exs`:
+Alternatively, use the `resource` Application environment under the
+`opentelemetry` Application configuration of `sys.config` or `runtime.exs`:
 
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}

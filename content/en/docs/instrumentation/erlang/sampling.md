@@ -19,9 +19,10 @@ When sampling, the `ParentBasedSampler` is most often used for
 decision of the Span's parent, or the fact that there is no parent, to know
 which secondary sampler to use.
 
-The sampler can be configured with the environment variables `OTEL_TRACES_SAMPLER`
-and `OTEL_TRACES_SAMPLER_ARG` or using the Application configuration allows you
-to configure each of the 5 potential states of a Span's parent:
+The sampler can be configured with the environment variables
+`OTEL_TRACES_SAMPLER` and `OTEL_TRACES_SAMPLER_ARG` or using the Application
+configuration allows you to configure each of the 5 potential states of a Span's
+parent:
 
 - `root` - No parent
 - `remote_parent_sampled` - Parent is from a remote Span that is sampled
@@ -98,8 +99,8 @@ export OTEL_TRACES_SAMPLER="parentbased_always_off"
 
 #### Application configuration
 
-Here's an example in the Application configuration with a root sampler that always samples
-and using the parent decision in the other cases:
+Here's an example in the Application configuration with a root sampler that
+always samples and using the parent decision in the other cases:
 
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
