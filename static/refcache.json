@@ -2815,6 +2815,18 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-15T21:47:40.349021-05:00"
   },
+  "https://hexdocs.pm/opentelemetry/1.3.0/otel_resource.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-04-18T17:53:22.687849481-06:00"
+  },
+  "https://hexdocs.pm/opentelemetry/1.3.0/otel_resource_detector.html#callbacks": {
+    "StatusCode": 206,
+    "LastSeen": "2023-04-18T17:53:22.515854627-06:00"
+  },
+  "https://hexdocs.pm/opentelemetry/1.3.0/otel_sampler.html#callbacks": {
+    "StatusCode": 206,
+    "LastSeen": "2023-04-18T17:53:22.862761088-06:00"
+  },
   "https://hexdocs.pm/opentelemetry/otel_exporter.html": {
     "StatusCode": 206,
     "LastSeen": "2023-02-15T21:47:34.984079-05:00"
@@ -2822,6 +2834,10 @@
   "https://hexdocs.pm/opentelemetry/otel_span_processor.html": {
     "StatusCode": 206,
     "LastSeen": "2023-02-15T21:45:24.525812-05:00"
+  },
+  "https://hexdocs.pm/opentelemetry/otel_tracer_server.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-04-18T17:53:23.082563624-06:00"
   },
   "https://hexdocs.pm/opentelemetry_api/otel_tracer_provider.html": {
     "StatusCode": 206,

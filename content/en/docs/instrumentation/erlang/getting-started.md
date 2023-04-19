@@ -102,7 +102,7 @@ Configuration is done through the
 [Application environment](https://erlang.org/doc/design_principles/applications.html#configuring-an-application)
 or [OS Environment Variables]({{< relref
 "/docs/reference/specification/sdk-environment-variables" >}}). The SDK (`opentelemetry`
-Application) uses the configuration to initialize a [Tracer Provider](https://hexdocs.pm/opentelemetry_api/otel_tracer_provider.html),
+Application) uses the configuration to initialize a [Tracer Provider](https://hexdocs.pm/opentelemetry/otel_tracer_server.html),
 its [Span Processors](https://hexdocs.pm/opentelemetry/otel_span_processor.html)
 and the [Exporter](https://hexdocs.pm/opentelemetry/otel_exporter.html).
 
