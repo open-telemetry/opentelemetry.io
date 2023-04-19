@@ -4,6 +4,7 @@ linkTitle: OTel Demo Updates
 date: 2023-04-18
 author: '[Carter Socha](https://github.com/cartersocha) (Lightstep)'
 ---
+
 ![The OTel Demo turns 1.4](demo-birthday-2.png 'The OTel Demo turns 1.4')
 
 It's hard to believe as we prepare our 1.4.0 release but the
