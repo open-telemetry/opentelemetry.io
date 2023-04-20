@@ -7,6 +7,7 @@ IgnoreInternalURLs: # list of paths
 IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^/docs/instrumentation/\w+/(api|examples)/$
   - ^/docs/instrumentation/net/(metrics-api|traces-api)/
+  - ^/community/end-user/feedback-survey/$
 
   - ^https://deploy-preview-\d+--opentelemetry.netlify.app/
   - ^https://www\.googletagmanager\.com
