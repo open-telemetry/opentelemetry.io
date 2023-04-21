@@ -635,7 +635,7 @@ requirements.
 
 In the direct to collector workflow, logs are emitted directly from an
 application to a collector using a network protocol (e.g. OTLP). This workflow
-is simple to set up as is doesn't require any additional log forwarding
+is simple to set up as it doesn't require any additional log forwarding
 components, and allows an application to easily emit structured logs that
 conform to the [log data model][log data model]. However, the overhead required
 for applications to queue and export logs to a network location may not be
@@ -657,7 +657,7 @@ are available for various popular java log frameworks:
 - [Log4j2 Appender][log4j2 appender]
 - [Logback Appender][logback appender]
 
-This links above contain full usage and installation documentation, but
+The links above contain full usage and installation documentation, but
 installation is generally as follows:
 
 - Add required dependency via gradle or maven.
@@ -892,9 +892,9 @@ instrument.
 
 The logs SDK dictates how logs are processed when using the
 [direct to collector](#direct-to-collector) workflow. No log SDK is needed when
-using [log forwarding](#via-file-or-stdout) workflows.
+using the [log forwarding](#via-file-or-stdout) workflow.
 
-The typical log SDK configuration installs log record processor and exporter.
+The typical log SDK configuration installs a log record processor and exporter.
 For example, the following installs the
 [BatchLogRecordProcessor](#logrecord-processor), which periodically exports to a
 network location via the [OtlpGrpcLogRecordExporter](#logrecord-exporter):
