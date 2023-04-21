@@ -40,7 +40,9 @@ The agent can consume configuration from one or more of the following sources
 - the [configuration file](#configuration-file)
 - properties provided by the
   [`AutoConfigurationCustomizer#addPropertiesSupplier()`](https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure-spi/src/main/java/io/opentelemetry/sdk/autoconfigure/spi/AutoConfigurationCustomizer.java#L73)
-  function; using the [`AutoConfigurationCustomizerProvider`](https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure-spi/src/main/java/io/opentelemetry/sdk/autoconfigure/spi/AutoConfigurationCustomizerProvider.java) SPI
+  function; using the
+  [`AutoConfigurationCustomizerProvider`](https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure-spi/src/main/java/io/opentelemetry/sdk/autoconfigure/spi/AutoConfigurationCustomizerProvider.java)
+  SPI
 
 ### Configuring with Environment Variables
 
@@ -233,7 +235,7 @@ environment variable `OTEL_INSTRUMENTATION_[NAME]_ENABLED`) where `name`
 (`NAME`) is the corresponding instrumentation `name`:
 
 | Library/Framework                                | Instrumentation name                        |
-|--------------------------------------------------|---------------------------------------------|
+| ------------------------------------------------ | ------------------------------------------- |
 | Additional methods tracing                       | `methods`                                   |
 | Additional tracing annotations                   | `external-annotations`                      |
 | Akka Actor                                       | `akka-actor`                                |
