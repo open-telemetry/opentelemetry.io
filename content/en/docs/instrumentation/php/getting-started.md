@@ -219,7 +219,7 @@ instead of the console.
 This will require the installation of the otlp exporter:
 
 ```shell
-composer require opentelemetry/exporter-otlp
+composer require open-telemetry/exporter-otlp
 ```
 
 Next, using the `GettingStarted.php` from earlier, replace the console exporter
