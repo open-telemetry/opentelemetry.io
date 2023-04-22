@@ -6,7 +6,7 @@ description: >-
 aliases: [/java, /java/metrics, /java/tracing]
 weight: 18
 cascade:
-  javaVersion: 1.24.0
+  javaVersion: 1.25.0
 ---
 
 {{% lang_instrumentation_index_head java /%}}

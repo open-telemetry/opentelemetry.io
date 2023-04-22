@@ -219,6 +219,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-15T20:41:03.78002-05:00"
   },
+  "https://cloud-native.slack.com/archives/C041APFBYQP": {
+    "StatusCode": 200,
+    "LastSeen": "2023-04-12T11:20:32.403714-04:00"
+  },
   "https://cloud-native.slack.com/archives/C0422FSELH0": {
     "StatusCode": 200,
     "LastSeen": "2023-02-15T20:40:32.32299-05:00"
@@ -550,6 +554,66 @@
   "https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html#api-gateway-simple-proxy-for-lambda-input-format": {
     "StatusCode": 206,
     "LastSeen": "2023-02-15T21:08:21.991813-05:00"
+  },
+  "https://docs.aws.amazon.com/cli/latest/reference/s3api/abort-multipart-upload.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-04-07T13:37:22.279271-04:00"
+  },
+  "https://docs.aws.amazon.com/cli/latest/reference/s3api/complete-multipart-upload.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-04-07T13:37:27.43471-04:00"
+  },
+  "https://docs.aws.amazon.com/cli/latest/reference/s3api/copy-object.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-04-07T13:36:46.162913-04:00"
+  },
+  "https://docs.aws.amazon.com/cli/latest/reference/s3api/create-multipart-upload.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-04-07T13:37:32.598569-04:00"
+  },
+  "https://docs.aws.amazon.com/cli/latest/reference/s3api/delete-object.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-04-07T13:36:51.309382-04:00"
+  },
+  "https://docs.aws.amazon.com/cli/latest/reference/s3api/delete-objects.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-04-07T13:37:53.336367-04:00"
+  },
+  "https://docs.aws.amazon.com/cli/latest/reference/s3api/get-object.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-04-07T13:36:56.466253-04:00"
+  },
+  "https://docs.aws.amazon.com/cli/latest/reference/s3api/head-object.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-04-07T13:37:01.631169-04:00"
+  },
+  "https://docs.aws.amazon.com/cli/latest/reference/s3api/index.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-04-07T13:36:41.007694-04:00"
+  },
+  "https://docs.aws.amazon.com/cli/latest/reference/s3api/list-parts.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-04-07T13:37:37.752369-04:00"
+  },
+  "https://docs.aws.amazon.com/cli/latest/reference/s3api/put-object.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-04-07T13:37:06.788757-04:00"
+  },
+  "https://docs.aws.amazon.com/cli/latest/reference/s3api/restore-object.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-04-07T13:37:11.95168-04:00"
+  },
+  "https://docs.aws.amazon.com/cli/latest/reference/s3api/select-object-content.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-04-07T13:37:17.119514-04:00"
+  },
+  "https://docs.aws.amazon.com/cli/latest/reference/s3api/upload-part-copy.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-04-07T13:37:48.173234-04:00"
+  },
+  "https://docs.aws.amazon.com/cli/latest/reference/s3api/upload-part.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-04-07T13:37:43.016705-04:00"
   },
   "https://docs.aws.amazon.com/eks/latest/userguide/clusters.html": {
     "StatusCode": 206,
@@ -962,6 +1026,10 @@
   "https://docs.sentry.io/platforms/ruby/performance/instrumentation/opentelemetry/": {
     "StatusCode": 206,
     "LastSeen": "2023-03-11T14:17:28.309561-05:00"
+  },
+  "https://docs.teletrace.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-04-15T22:50:33.371377+03:00"
   },
   "https://docs.traceloop.dev": {
     "StatusCode": 206,
@@ -1695,6 +1763,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:15:28.84376-05:00"
   },
+  "https://github.com/open-telemetry/community#specification-sigs": {
+    "StatusCode": 200,
+    "LastSeen": "2023-04-12T11:20:27.134426-04:00"
+  },
   "https://github.com/open-telemetry/community/discussions/1203": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:04:49.421838-05:00"
@@ -1930,6 +2002,10 @@
   "https://github.com/open-telemetry/opentelemetry-demo/issues/44": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:03:41.496446-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/releases": {
+    "StatusCode": 200,
+    "LastSeen": "2023-04-18T22:18:47.6729-07:00"
   },
   "https://github.com/open-telemetry/opentelemetry-demo/releases/tag/1.3.0": {
     "StatusCode": 200,
@@ -2367,6 +2443,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:41:21.740221-05:00"
   },
+  "https://github.com/open-telemetry/oteps/issues/197": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-30T19:59:09.626563-04:00"
+  },
   "https://github.com/open-telemetry/oteps/pull/108/files": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:01:24.26414-05:00"
@@ -2386,6 +2466,10 @@
   "https://github.com/open-telemetry/oteps/pull/192": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:09:46.360301-05:00"
+  },
+  "https://github.com/open-telemetry/oteps/pull/199": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-30T19:59:09.626563-04:00"
   },
   "https://github.com/open-telemetry/oteps/pull/212": {
     "StatusCode": 200,
@@ -2475,6 +2559,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:04:55.176981-05:00"
   },
+  "https://github.com/reyang": {
+    "StatusCode": 200,
+    "LastSeen": "2023-04-12T11:20:10.566057-04:00"
+  },
   "https://github.com/riandyrn/otelchi": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:43:32.400852-05:00"
@@ -2542,6 +2630,10 @@
   "https://github.com/typelevel/otel4s": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:47:15.636056-05:00"
+  },
+  "https://github.com/ulid/spec": {
+    "StatusCode": 200,
+    "LastSeen": "2023-04-07T13:37:59.916582-04:00"
   },
   "https://github.com/vivint-smarthome/opentelemetry-stackdriver": {
     "StatusCode": 200,
@@ -2719,9 +2811,25 @@
     "StatusCode": 206,
     "LastSeen": "2023-03-29T12:11:59.363133963-06:00"
   },
+  "https://hexdocs.pm/elixir/1.14.3/Exception.html#format/3": {
+    "StatusCode": 206,
+    "LastSeen": "2023-04-07T13:36:27.817661-04:00"
+  },
   "https://hexdocs.pm/mix/Mix.Tasks.Release.html": {
     "StatusCode": 206,
     "LastSeen": "2023-02-15T21:47:40.349021-05:00"
+  },
+  "https://hexdocs.pm/opentelemetry/1.3.0/otel_resource.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-04-18T17:53:22.687849481-06:00"
+  },
+  "https://hexdocs.pm/opentelemetry/1.3.0/otel_resource_detector.html#callbacks": {
+    "StatusCode": 206,
+    "LastSeen": "2023-04-18T17:53:22.515854627-06:00"
+  },
+  "https://hexdocs.pm/opentelemetry/1.3.0/otel_sampler.html#callbacks": {
+    "StatusCode": 206,
+    "LastSeen": "2023-04-18T17:53:22.862761088-06:00"
   },
   "https://hexdocs.pm/opentelemetry/otel_exporter.html": {
     "StatusCode": 206,
@@ -2730,6 +2838,10 @@
   "https://hexdocs.pm/opentelemetry/otel_span_processor.html": {
     "StatusCode": 206,
     "LastSeen": "2023-02-15T21:45:24.525812-05:00"
+  },
+  "https://hexdocs.pm/opentelemetry/otel_tracer_server.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-04-18T17:53:23.082563624-06:00"
   },
   "https://hexdocs.pm/opentelemetry_api/otel_tracer_provider.html": {
     "StatusCode": 206,
@@ -3827,6 +3939,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-18T13:33:53.628417-05:00"
   },
+  "https://www.elastic.co/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-04-12T11:20:16.022774-04:00"
+  },
   "https://www.elastic.co/guide/en/apm/get-started/current/open-telemetry-elastic.html": {
     "StatusCode": 206,
     "LastSeen": "2023-02-18T13:33:59.582146-05:00"
@@ -3839,6 +3955,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-18T13:41:59.100249-05:00"
   },
+  "https://www.elastic.co/guide/en/ecs/master/ecs-reference.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-04-12T11:20:21.66934-04:00"
+  },
   "https://www.envoyproxy.io": {
     "StatusCode": 206,
     "LastSeen": "2023-02-18T13:44:26.91649-05:00"
@@ -3846,6 +3966,10 @@
   "https://www.envoyproxy.io/": {
     "StatusCode": 206,
     "LastSeen": "2023-02-18T13:35:14.153679-05:00"
+  },
+  "https://www.erlang.org/doc/man/erl_error.html#format_exception-3": {
+    "StatusCode": 206,
+    "LastSeen": "2023-04-07T13:36:35.670878-04:00"
   },
   "https://www.eventbrite.com/e/otel-unplugged-kubeconcloudnativecon-detroit-2022-tickets-427595037267": {
     "StatusCode": 200,

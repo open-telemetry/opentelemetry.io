@@ -63,7 +63,7 @@ same as the **Protocol** status.
 
 - {{% spec_status "API" "trace/api" "Status" %}}
 - {{% spec_status "SDK" "trace/sdk" "Status" %}}
-- {{% spec_status "Protocol" "protocol/otlp" "Tracing" %}}
+- {{% spec_status "Protocol" "protocol/otlp" "Status" %}}
 - Notes:
   - The tracing specification is now completely stable, and covered by long term
     support.
@@ -76,7 +76,7 @@ same as the **Protocol** status.
 
 - {{% spec_status "API" "metrics/api" "Status" %}}
 - {{% spec_status "SDK" "metrics/sdk" "Status" %}}
-- {{% spec_status "Protocol" "protocol/otlp" "Metrics" %}}
+- {{% spec_status "Protocol" "protocol/otlp" "Status" %}}
 - Notes:
   - OpenTelemetry Metrics is currently under active development.
   - The data model is stable and released as part of the OTLP protocol.
@@ -99,7 +99,7 @@ same as the **Protocol** status.
 
 - **API:** draft
 - **SDK:** draft
-- {{% spec_status "Protocol" "protocol/otlp" "Logs" %}}
+- {{% spec_status "Protocol" "protocol/otlp" "Status" %}}
 - Notes:
   - OpenTelemetry Logging is currently under active development.
   - The [logs data model][] is released as part of the OpenTelemetry Protocol.
