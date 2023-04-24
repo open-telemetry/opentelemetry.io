@@ -5,30 +5,119 @@ spelling: cSpell:ignore helloworld javaagent
 weight: 1
 ---
 
-In this page, you'll learn how to set up and get tracing telemetry from a simple
-hello-world client-server example.
+This page will show you how to get started with OpenTelemetry in Node.js.
 
-You'll work with gRPC's [Java Quick start example][], which uses gRPC to
-communicate between the client and server. You can work through this page even
-if you aren't familiar with gRPC.
+You will learn how you can instrument a simple java application automatically,
+in such a way that traces, metrics and logs are emitted to the console.
 
-## Get and run the example
+## Prerequisites
 
-First, get and run the hello-world example without instrumentation:
+Ensure that you have the following installed locally:
 
-1.  [Get the example code.][]
-2.  [Run the example:][] you should see the client output "Hello world".
-3.  Stop the server before proceeding, if it is still running.
+* Java JDK 
+* [Gradle](https://gradle.org/)
 
-## Run the instrumented example
+## Example Application
+
+The following example uses a basic spring boot application.
+
+### Dependencies
+
+Create a folder called `java-simple` and within that folder, create a file called `build.gradle` with the following content:
+
+```gradle
+plugins {
+  id 'java'
+  id 'org.springframework.boot' version '3.0.5'
+  id 'io.spring.dependency-management' version '1.1.0'
+}
+
+
+sourceSets {
+        main.java.srcDirs = ['.']
+}
+
+repositories { 
+  mavenCentral()
+}
+
+dependencies {
+  implementation 'org.springframework.boot:spring-boot-starter-web',
+                 'org.apache.logging.log4j:log4j-core:2.17.2'
+}
+```
+
+### Code
+
+In that same folder, create a file called `DiceApplication.java` and add the following code to the file:
+
+```java
+package otel;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.Banner;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+@SpringBootApplication
+public class DiceApplication {
+  public static void main(String[] args) {
+    SpringApplication app = new SpringApplication(DiceApplication.class);
+    app.setBannerMode(Banner.Mode.OFF);
+    app.run(args);
+  }
+}
+```
+
+Create another file called `RollController.java` and add the following code to the file:
+
+```java
+package otel;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import java.util.Optional;
+
+
+@RestController
+public class RollController {
+  private static final Logger logger = LogManager.getLogger(RollController.class);
+  @GetMapping("/rolldice")
+  public String index(@RequestParam("player") Optional<String> player) {
+    int result = this.getRandomNumber(-1, 6);
+    if(player.isPresent()) {
+      logger.info(player.get() + " is rolling the dice: " + result);
+    } else {
+      logger.info("Anonymous player is rolling the dice: " + result);
+    }
+    return Integer.toString(result);
+  }
+    public int getRandomNumber(int min, int max) {
+        return (int) ((Math.random() * (max - min)) + min);
+    }
+}
+```
+
+To test the application, build and run it:
+
+```console
+gradle assemble
+java -jar ./java-simple.jar
+```
+
+## Instrumentation
 
 Next, you'll use a [Java agent to automatically instrument](../automatic) the
-client and server at launch time. While you can [configure the Java agent][] in
+application at launch time. While you can [configure the Java agent][] in
 a number of ways, the steps below use environment variables.
 
 1.  Download [opentelemetry-javaagent.jar][] from [Releases][] of the
     `opentelemetry-java-instrumentation` repo. The JAR file contains the agent
-    and all automatic instrumentation packages.
+    and all automatic instrumentation packages:
+
+    ```console
+    curl -L -O https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
+    ```
+
     {{% alert color="info" %}}<i class="fas fa-edit"></i> Take note of the path
     to the JAR file.{{% /alert %}}
 2.  Set and export variables that specify the Java agent JAR and a [console
@@ -36,21 +125,19 @@ a number of ways, the steps below use environment variables.
     &mdash; we illustrate a notation for bash-like shells:
 
     ```console
-    $ export JAVA_OPTS="-javaagent:PATH/TO/opentelemetry-javaagent.jar"
-    $ export OTEL_TRACES_EXPORTER=logging
-    $ export OTEL_METRICS_EXPORTER=logging
+    $ export JAVA_OPTS="-javaagent:PATH/TO/opentelemetry-javaagent.jar" \
+      OTEL_TRACES_EXPORTER=logging \
+      OTEL_METRICS_EXPORTER=logging \
+      OTEL_LOGS_EXPORTER=logging
     ```
 
     {{% alert title="Important" color="warning" %}}Replace `PATH/TO` above, with
     your path to the JAR.{{% /alert %}}
 
-3.  Run the **server** as a background process. For example, for bash-like
-    shells run:
+3.  Run your **application** once again:
 
     ```console
-    $ ./build/install/examples/bin/hello-world-server &
-    [otel.javaagent 2022-03-19 13:38:16:712 +0000] [main] INFO io.opentelemetry.javaagent.tooling.VersionLogger - opentelemetry-javaagent - version: 1.12.0
-    Mar 19, 2022 1:38:18 PM io.grpc.examples.helloworld.HelloWorldServer start
+    $ java -jar ./java-simple.jar
     ...
     ```
 
