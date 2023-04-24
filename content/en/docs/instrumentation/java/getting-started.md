@@ -1,7 +1,8 @@
 ---
 title: Getting Started
 description: Get telemetry from a client-server app in less than 5 minutes!
-spelling: cSpell:ignore helloworld javaagent
+spelling: cSpell:ignore helloworld javaagent springframework autoreconfigure
+spelling: cSpell:ignore rolldice aarch Nanos darwin autoconfigure webmvc
 weight: 1
 ---
 
@@ -113,47 +114,47 @@ Next, you'll use a [Java agent to automatically instrument](../automatic) the
 application at launch time. While you can [configure the Java agent][] in a
 number of ways, the steps below use environment variables.
 
-1.  Download [opentelemetry-javaagent.jar][] from [Releases][] of the
-    `opentelemetry-java-instrumentation` repo. The JAR file contains the agent
-    and all automatic instrumentation packages:
+1. Download [opentelemetry-javaagent.jar][] from [Releases][] of the
+   `opentelemetry-java-instrumentation` repo. The JAR file contains the agent
+   and all automatic instrumentation packages:
 
-    ```console
-    curl -L -O https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
-    ```
+   ```console
+   curl -L -O https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
+   ```
 
-    {{% alert color="info" %}}<i class="fas fa-edit"></i> Take note of the path
-    to the JAR file.{{% /alert %}}
+   {{% alert color="info" %}}<i class="fas fa-edit"></i> Take note of the path
+   to the JAR file.{{% /alert %}}
 
-2.  Set and export variables that specify the Java agent JAR and a [console
-    exporter][], using a notation suitable for your shell/terminal environment
-    &mdash; we illustrate a notation for bash-like shells:
+2. Set and export variables that specify the Java agent JAR and a [console
+   exporter][], using a notation suitable for your shell/terminal environment
+   &mdash; we illustrate a notation for bash-like shells:
 
-    ```console
-    $ export JAVA_OPTS="-javaagent:PATH/TO/opentelemetry-javaagent.jar" \
-      OTEL_TRACES_EXPORTER=logging \
-      OTEL_METRICS_EXPORTER=logging \
-      OTEL_LOGS_EXPORTER=logging
-    ```
+   ```console
+   $ export JAVA_OPTS="-javaagent:PATH/TO/opentelemetry-javaagent.jar" \
+     OTEL_TRACES_EXPORTER=logging \
+     OTEL_METRICS_EXPORTER=logging \
+     OTEL_LOGS_EXPORTER=logging
+   ```
 
-    {{% alert title="Important" color="warning" %}}Replace `PATH/TO` above, with
-    your path to the JAR.{{% /alert %}}
+   {{% alert title="Important" color="warning" %}}Replace `PATH/TO` above, with
+   your path to the JAR.{{% /alert %}}
 
-3.  Run your **application** once again:
+3. Run your **application** once again:
 
-    ```console
-    $ java -jar ./java-simple.jar
-    ...
-    ```
+   ```console
+   $ java -jar ./java-simple.jar
+   ...
+   ```
 
-    Note the output from the `otel.javaagent`.
+   Note the output from the `otel.javaagent`.
 
-4.  From _another_ terminal, send a request using `curl`:
+4. From _another_ terminal, send a request using `curl`:
 
-    ```console
-    $ curl localhost:8080
-    ```
+   ```console
+   $ curl localhost:8080
+   ```
 
-5.  Stop the server process. For example, for bash-like shells run:
+5. Stop the server process. For example, for bash-like shells run:
 
 At step 4, you should have seen trace & log output from the server and client
 that looks something like this (trace output is line-wrapped for convenience):
@@ -223,19 +224,24 @@ For more:
 - Learn about [manual instrumentation][] and try out more
   [examples]({{% relref examples %}}).
 
+## Troubleshooting
+
+Did something go wrong? You can enable diagnostic logging to validate that
+OpenTelemetry is initialized correctly by setting the `OTEL_JAVAAGENT_DEBUG`
+environment variable to true:
+
+```console
+env OTEL_JAVAAGENT_DEBUG=true java -jar ./java-simple.jar
+```
+
 [annotations]: ../automatic/annotations
 [configure the java agent]: ../automatic/#configuring-the-agent
 [console exporter]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md#logging-exporter
 [exporter]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md#exporters
-[get the example code.]:
-  https://grpc.io/docs/languages/java/quickstart/#get-the-example-code
-[java quick start example]: https://grpc.io/docs/languages/java/quickstart/
 [manual instrumentation]: ../manual
 [opentelemetry-javaagent.jar]:
   https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
 [releases]:
   https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases
-[run the example:]:
-  https://grpc.io/docs/languages/java/quickstart/#run-the-example
