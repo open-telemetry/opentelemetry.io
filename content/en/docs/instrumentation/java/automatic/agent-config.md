@@ -96,7 +96,7 @@ The javaagent logging mode. The following 3 modes are supported:
   one-jar applications that do not use multiple classloaders; Spring Boot apps
   are supported as well. The javaagent output logs can be further configured
   using the instrumented application's logging configuration (e.g. `logback.xml`
-  or `log4j4.xml`). **Make sure to test that this mode works for your
+  or `log4j2.xml`). **Make sure to test that this mode works for your
   application before running it in a production environment.**
 
 {{% /config_option %}}
