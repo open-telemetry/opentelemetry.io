@@ -143,29 +143,15 @@ a number of ways, the steps below use environment variables.
 
     Note the output from the `otel.javaagent`.
 
-4.  From the _same_ terminal, run the **client**:
+4.  From _another_ terminal, send a request using `curl`:
 
     ```console
-    $ ./build/install/examples/bin/hello-world-client
-    [otel.javaagent 2022-03-19 13:38:48:462 +0000] [main] INFO io.opentelemetry.javaagent.tooling.VersionLogger - opentelemetry-javaagent - version: 1.12.0
-    Mar 19, 2022 1:38:50 PM io.grpc.examples.helloworld.HelloWorldClient greet
-    INFO: Will try to greet world ...
-    [Trace output elided -- see below for details]
-    Mar 19, 2022 1:38:51 PM io.grpc.examples.helloworld.HelloWorldClient greet
-    INFO: Greeting: Hello world
+    $ curl localhost:8080
     ```
 
 5.  Stop the server process. For example, for bash-like shells run:
 
-    ```console
-    $ jobs
-    [1]+  Running                 ./build/install/examples/bin/hello-world-server &
-    $ kill %1
-    ...
-    *** server shut down
-    ```
-
-At step 4, you should have seen trace output from the server and client that
+At step 4, you should have seen trace & log output from the server and client that
 looks something like this (trace output is line-wrapped for convenience):
 
 ```sh
