@@ -207,17 +207,17 @@ archive containing the binary and install it on your machine manually:
 
 <!-- prettier-ignore-start -->
 {{< tabpane lang=shell persistLang=false >}}
-{{< tab 386 >}}
+{{< tab i386 >}}
 curl -O -L https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_linux_386.tar.gz
 tar -xvf otelcol_{{% param collectorVersion %}}_linux_386.tar.gz
 {{< /tab >}}
 
-{{< tab amd64 >}}
+{{< tab AMD64 >}}
 curl -O -L https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_linux_amd64.tar.gz
 tar -xvf otelcol_{{% param collectorVersion %}}_linux_amd64.tar.gz
 {{< /tab >}}
 
-{{< tab ARM >}}
+{{< tab ARM64 >}}
 curl -O -L https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_linux_arm64.tar.gz
 tar -xvf otelcol_{{% param collectorVersion %}}_linux_arm64.tar.gz
 {{< /tab >}}
