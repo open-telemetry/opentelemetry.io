@@ -60,8 +60,12 @@ import express, { Express } from "express";
 const PORT: number = parseInt(process.env.PORT || "8080");
 const app: Express = express();
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
+function getRandomNumber(min: number, max: number) {
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+app.get("/rolldice", (req, res) => {
+  res.send(getRandomNumber(1, 6).toString());
 });
 
 app.listen(PORT, () => {
@@ -76,8 +80,12 @@ const express = require("express");
 const PORT = parseInt(process.env.PORT || "8080");
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
+function getRandomNumber(int: min, int: max) {
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+app.get("/rolldice", (req, res) => {
+  res.send(getRandomNumber(1, 6).toString());
 });
 
 app.listen(PORT, () => {
@@ -211,7 +219,7 @@ Listening for requests on http://localhost:8080
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
-Open <http://localhost:8080> in your web browser and reload the page a few
+Open <http://localhost:8080/rolldicen> in your web browser and reload the page a few
 times, after a while you should see the spans printed in the console by the
 `ConsoleSpanExporter`.
 
