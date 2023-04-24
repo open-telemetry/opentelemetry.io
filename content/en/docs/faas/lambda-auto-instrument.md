@@ -36,15 +36,14 @@ Note: ADOT Lambda Layer for Java Auto-instrumentation Agent - Automatic instrume
 
 ### Add the ARN of Instrumentation Lambda Layer
 
-Enable auto-instrumentation for your Lambda function
-To enable the AWS Distro for OpenTelemetry in your Lambda function, you need to add and configure the layer, and then enable tracing.
+To enable the OTel auto-instrumentation in your Lambda function, you need to add and configure the layer, and then enable tracing.
 
-Open the Lambda function you intend to instrument in the AWS console.
-In the Layers in Designer section, choose Add a layer.
-Under specify an ARN, paste the layer ARN, and then choose Add.
-Add the environment variable AWS_LAMBDA_EXEC_WRAPPER and set it to one of the following options:
-/opt/otel-handler - for wrapping regular handlers (implementing RequestHandler)
-Enable active tracing for your AWS Lambda function.
+1. Open the Lambda function you intend to instrument in the AWS console.
+2. In the Layers in Designer section, choose Add a layer.
+3. Under specify an ARN, paste the layer ARN, and then choose Add.
+4. Add the environment variable AWS_LAMBDA_EXEC_WRAPPER and set it to one of the following options:
+    * /opt/otel-handler - for wrapping regular handlers (implementing RequestHandler)
+5. Enable active tracing for your AWS Lambda function.
 
 Tips:
 
@@ -71,4 +70,3 @@ Tips:
 ### Add the ARN of the OTel Collector Lambda layer
 
 See the [Collector Lambda layer guidance](lambda-manual-instrument) to add the layer to your application and configure the Collector.
-
