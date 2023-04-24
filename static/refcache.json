@@ -1419,6 +1419,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:43:37.8719-05:00"
   },
+  "https://github.com/aabmass": {
+    "StatusCode": 200,
+    "LastSeen": "2023-04-24T16:54:54.131842195Z"
+  },
   "https://github.com/aishyandapalli": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:12:22.870564-05:00"
@@ -1498,6 +1502,14 @@
   "https://github.com/cartersocha": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:02:57.433517-05:00"
+  },
+  "https://github.com/census-instrumentation/opencensus-python": {
+    "StatusCode": 200,
+    "LastSeen": "2023-04-24T16:54:55.217650606Z"
+  },
+  "https://github.com/census-instrumentation/opencensus-python,": {
+    "StatusCode": 404,
+    "LastSeen": "2023-04-24T16:55:45.823746584Z"
   },
   "https://github.com/census-instrumentation/opencensus-specs": {
     "StatusCode": 200,
@@ -3107,6 +3119,14 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-16T17:17:36.925688-05:00"
   },
+  "https://medium.com/opentracing/a-roadmap-to-convergence-b074e5815289": {
+    "StatusCode": 200,
+    "LastSeen": "2023-04-24T16:54:55.28743128Z"
+  },
+  "https://medium.com/opentracing/merging-opentracing-and-opencensus-f0fe9c7ca6f0": {
+    "StatusCode": 200,
+    "LastSeen": "2023-04-24T16:54:55.343964078Z"
+  },
   "https://medium.com/p/42337e994b63": {
     "StatusCode": 200,
     "LastSeen": "2023-02-16T17:15:39.339631-05:00"
@@ -3911,9 +3931,17 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-18T13:37:44.838318-05:00"
   },
+  "https://www.cncf.io/blog/2019/05/21/a-brief-history-of-opentelemetry-so-far/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-04-24T16:54:54.215591367Z"
+  },
   "https://www.cncf.io/blog/2021/08/26/opentelemetry-becomes-a-cncf-incubating-project/": {
     "StatusCode": 206,
     "LastSeen": "2023-02-18T13:37:50.760488-05:00"
+  },
+  "https://www.cncf.io/blog/2023/01/11/a-look-at-the-2022-velocity-of-cncf-linux-foundation-and-top-30-open-source-projects/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-04-24T16:54:54.873649488Z"
   },
   "https://www.cncf.io/projects/": {
     "StatusCode": 206,
