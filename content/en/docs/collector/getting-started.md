@@ -202,8 +202,9 @@ sudo rpm -ivh otelcol_{{% param collectorVersion %}}_linux_386.rpm
 
 ### Manual Installation
 
-Linux [releases][] are available for various architectures. It's possible to download the
-archive containing the binary and install it on your machine manually:
+Linux [releases][] are available for various architectures. It's possible to
+download the archive containing the binary and install it on your machine
+manually:
 
 <!-- prettier-ignore-start -->
 {{< tabpane lang=shell persistLang=false >}}
