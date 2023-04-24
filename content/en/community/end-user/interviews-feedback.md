@@ -1,6 +1,7 @@
 ---
 title: Interviews or Feedback Sessions
 description: Help improve OpenTelemetry - share your feedback directly with us!
+weight: 10
 ---
 
 One of the core functions of the OpenTelemetry End User Working Group is to

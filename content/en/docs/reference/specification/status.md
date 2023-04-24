@@ -97,25 +97,29 @@ same as the **Protocol** status.
 
 ### [Logging][]
 
-- **API:** draft
-- **SDK:** draft
+- {{% spec_status "Bridge API" "logs/bridge-api" "Status" %}}
+- {{% spec_status "SDK" "logs/sdk" "Status" %}}
+- {{% spec_status "Event API" "logs/event-api" "Status" %}}
 - {{% spec_status "Protocol" "protocol/otlp" "Status" %}}
 - Notes:
-  - OpenTelemetry Logging is currently under active development.
   - The [logs data model][] is released as part of the OpenTelemetry Protocol.
   - Log processing for many data formats has been added to the Collector, thanks
     to the donation of Stanza to the OpenTelemetry project.
-  - Log appenders are currently under development in many languages. Log
-    appenders allow OpenTelemetry tracing data, such as trace and span IDs, to
-    be appended to existing logging systems.
-  - An OpenTelemetry logging SDK is currently under development. This allows
-    OpenTelemetry clients to ingest logging data from existing logging systems,
-    outputting logs as part of OTLP along with tracing and metrics.
-  - An OpenTelemetry logging API is not currently under development. We are
-    focusing first on integration with existing logging systems. When metrics is
-    complete, focus will shift to development of an OpenTelemetry logging API.
+  - The OpenTelemetry Log Bridge API allows for writing appenders which bridge
+    logs from existing log frameworks into OpenTelemetry. The Logs Bridge API is
+    not meant to be called directly by end users. Log appenders are under
+    development in many languages.
+  - The OpenTelemetry Log SDK is the standard implementation of the Log Bridge
+    API. Applications configure the SDK to indicate how logs are processed and
+    exported (e.g. using OTLP).
+  - The OpenTelemetry Event API allows log records to be emitted which conform
+    to the [event semantic conventions][]. In contrast to the Log Bridge API,
+    the Event API is intended to be called by end users. The Event API is under
+    active development.
 
 [baggage]: /docs/reference/specification/baggage/
+[event semantic conventions]:
+  /docs/reference/specification/logs/semantic_conventions/events/
 [logging]: /docs/reference/specification/logs/
 [logs data model]: /docs/reference/specification/logs/data-model/
 [metrics]: /docs/reference/specification/metrics/

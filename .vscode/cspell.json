@@ -24,6 +24,7 @@
     "opentelemetry",
     "otel",
     "otelcol",
+    "OTEP",
     "otlp",
     "OTLP",
     "pluggable",
