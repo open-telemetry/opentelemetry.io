@@ -200,6 +200,35 @@ sudo rpm -ivh otelcol_{{% param collectorVersion %}}_linux_386.rpm
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
+### Manual Installation
+
+Linux [releases][] are available for various architectures. It's possible to download the
+archive containing the binary and install it on your machine manually:
+
+<!-- prettier-ignore-start -->
+{{< tabpane lang=shell persistLang=false >}}
+{{< tab 386 >}}
+curl -O -L https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_linux_386.tar.gz
+tar -xvf otelcol_{{% param collectorVersion %}}_linux_386.tar.gz
+{{< /tab >}}
+
+{{< tab amd64 >}}
+curl -O -L https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_linux_amd64.tar.gz
+tar -xvf otelcol_{{% param collectorVersion %}}_linux_amd64.tar.gz
+{{< /tab >}}
+
+{{< tab ARM >}}
+curl -O -L https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_linux_arm64.tar.gz
+tar -xvf otelcol_{{% param collectorVersion %}}_linux_arm64.tar.gz
+{{< /tab >}}
+
+{{< tab ppc64le >}}
+curl -O -L https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_linux_ppc64le.tar.gz
+tar -xvf otelcol_{{% param collectorVersion %}}_linux_ppc64le.tar.gz
+{{< /tab >}}
+{{< /tabpane >}}
+<!-- prettier-ignore-end -->
+
 ### Automatic Service Configuration
 
 By default, the `otelcol` systemd service will be started with the
