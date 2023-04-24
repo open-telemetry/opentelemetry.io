@@ -36,7 +36,7 @@ npm install typescript \
   ts-node \
   @types/node \
   express \
-  @types/express \
+  @types/express
 {{< /tab >}}
 
 {{< tab JavaScript >}}
