@@ -27,16 +27,17 @@ The following example uses a basic spring boot application.
 Create a folder called `java-simple` and within that folder, create a file
 called `build.gradle.kts` with the following content:
 
-```gradle
+```kotlin
 plugins {
-  id 'java'
-  id 'org.springframework.boot' version '3.0.5'
-  id 'io.spring.dependency-management' version '1.1.0'
+  id("java")
+  id("org.springframework.boot") version "3.0.6"
+  id("io.spring.dependency-management") version "1.1.0"
 }
 
-
 sourceSets {
-        main.java.srcDirs = ['.']
+  main {
+    java.setSrcDirs(setOf("."))
+  }
 }
 
 repositories {
@@ -44,10 +45,8 @@ repositories {
 }
 
 dependencies {
-  implementation 'org.springframework.boot:spring-boot-starter-web',
-                 'org.apache.logging.log4j:log4j-core:2.17.2'
+  implementation("org.springframework.boot:spring-boot-starter-web")
 }
-```
 
 ### Code
 
