@@ -1,9 +1,8 @@
 ---
 title: Sunsetting OpenCensus
 linkTitle: Sunsetting OpenCensus
-date: 2023-04-24 # Put the current date, we will keep the date updated until your PR is merged
+date: 2023-05-01
 author: '[Aaron Abbott](https://github.com/aabmass) (Google)'
-# draft: true # TODO: remove this line to publish on 2023-05-01
 ---
 
 In 2019, we announced that OpenTracing and OpenCensus would be merging to form
@@ -35,13 +34,12 @@ of the OpenTelemetry project is to provide backward compatibility with
 OpenCensus and a migration story for existing users.
 
 To help ease the migration path, we have provided backward compatibility bridges
-in [Go][go shim], [Java][java shim], [Python][python shim], and
-JavaScript<!-- TODO: add link before publishing -->. Installing these bridges
-allows OpenCensus and OpenTelemetry instrumentation to smoothly interoperate,
-with all of your telemetry flowing out of OpenTelemetry exporters. This lets
-OpenCensus users incrementally transition all of their instrumentation from
-OpenCensus to OpenTelemetry, and finally remove OpenCensus libraries from their
-applications.
+in [Go][go shim], [Java][java shim], [Python][python shim][^shim-next-release],
+and [JavaScript][js shim][^shim-next-release]. Installing these bridges allows
+OpenCensus and OpenTelemetry instrumentation to smoothly interoperate, with all
+of your telemetry flowing out of OpenTelemetry exporters. This lets OpenCensus
+users incrementally transition all of their instrumentation from OpenCensus to
+OpenTelemetry, and finally remove OpenCensus libraries from their applications.
 
 While OpenTelemetry was never intended to be a strict superset of OpenCensus,
 most of the APIs and data models are compatible. Migration should be considered
@@ -49,7 +47,7 @@ a "major version bump" and you may notice some changes in your telemetry.
 
 More details on what to expect and some suggested workflows for migration are
 outlined in the
-[compatibility specification](https://opentelemetry.io/docs/reference/specification/compatibility/opencensus/#migration-path).
+[OpenCensus Compatibility specification](/docs/reference/specification/compatibility/opencensus/)[^spec-next-release].
 
 ## What to Expect After July 31st, 2023
 
@@ -73,5 +71,15 @@ TBD<!-- TODO: add date before publishing-->.
   https://github.com/open-telemetry/opentelemetry-java/tree/main/opencensus-shim
 [python shim]:
   https://github.com/open-telemetry/opentelemetry-python/tree/main/shim/opentelemetry-opencensus-shim
+[js shim]:
+  https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-shim-opencensus
 [census-instrumentation/opencensus-python]:
   https://github.com/census-instrumentation/opencensus-python
+
+[^shim-next-release]:
+    Python and JavaScript shim packages are currently unreleased but will be
+    available in the next OpenTelemetry release.
+
+[^spec-next-release]:
+    The OpenCensus Compatability specification is marked stable for the next
+    specification release.
