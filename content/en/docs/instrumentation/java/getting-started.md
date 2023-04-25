@@ -156,7 +156,7 @@ number of ways, the steps below use environment variables.
 4. From _another_ terminal, send a request using `curl`:
 
    ```console
-   $ curl localhost:8080
+   $ curl localhost:8080/rolldice
    ```
 
 5. Stop the server process. For example, for bash-like shells run:
