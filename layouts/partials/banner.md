@@ -2,7 +2,7 @@
 
 <div class="o-banner">
 
-Join us at [KubeCon + CloudNativeCon EU, April 18-21](/blog/2023/kubecon-eu/)!
+[The OpenTelemetry Demo Turns 1(.4)](/blog/2023/demo-birthday/)!
 
 </div>
 {{ end -}}
