@@ -101,9 +101,9 @@ params:
         icon: fas fa-image
         desc: Check out the CNCF logo page for OpenTelemetry
       - name: Meeting Recordings
-        url: https://www.youtube.com/channel/UCHZDBZTIfdy94xMjMKz-_MA
+        url: https://docs.google.com/spreadsheets/d/1SYKfjYhZdm2Wh2Cl6KVQalKg_m4NhTPZqq-8SzEVO6s
         icon: fab fa-youtube
-        desc: Watch our meeting recordings on YouTube
+        desc: Watch our meeting recordings on Zoom cloud
     developer:
       - name: GitHub
         url: https://github.com/open-telemetry
