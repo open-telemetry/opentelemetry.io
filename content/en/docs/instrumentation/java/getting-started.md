@@ -228,16 +228,6 @@ For more:
 - Learn about [manual instrumentation][] and try out more
   [examples]({{% relref examples %}}).
 
-## Troubleshooting
-
-Did something go wrong? You can enable diagnostic logging to validate that
-OpenTelemetry is initialized correctly by setting the `OTEL_JAVAAGENT_DEBUG`
-environment variable to true:
-
-```console
-env OTEL_JAVAAGENT_DEBUG=true java -jar ./java-simple.jar
-```
-
 [annotations]: ../automatic/annotations
 [configure the java agent]: ../automatic/#configuring-the-agent
 [console exporter]:
