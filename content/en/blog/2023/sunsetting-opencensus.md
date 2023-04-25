@@ -20,8 +20,8 @@ libraries and exporters, and an
 [active open source community](https://www.cncf.io/blog/2023/01/11/a-look-at-the-2022-velocity-of-cncf-linux-foundation-and-top-30-open-source-projects/).
 
 As a result, we will be archiving all OpenCensus Github repositories (with the
-exception of [census-instrumentation/opencensus-python][]) on July 31st, 2023.
-We are excited to see the
+exception of [census-instrumentation/opencensus-python][][^python-timeline]) on
+July 31st, 2023. We are excited to see the
 [long term plan for OpenTelemetry](https://medium.com/opentracing/a-roadmap-to-convergence-b074e5815289)
 coming to fruition and encourage all users of OpenCensus to migrate to
 OpenTelemetry.
@@ -61,9 +61,8 @@ projects. Existing releases of OpenCensus will remain available in public
 package repositories like NPM and PyPI. **We encourage all OpenCensus users to
 migrate to OpenTelemetry as soon as possible.**
 
-One exception to this is the [census-instrumentation/opencensus-python], which
-will continue to be maintained until
-TBD<!-- TODO: add date before publishing-->.
+One exception to this is the
+[census-instrumentation/opencensus-python][][^python-timeline] repo.
 
 [go shim]:
   https://github.com/open-telemetry/opentelemetry-go/tree/main/bridge/opencensus
@@ -76,9 +75,16 @@ TBD<!-- TODO: add date before publishing-->.
 [census-instrumentation/opencensus-python]:
   https://github.com/census-instrumentation/opencensus-python
 
+[^python-timeline]:
+    A number of projects within this repository are still being used as
+    recommended production solutions. These projects will continue to be
+    maintained. Please reach out to the individual maintainers for details
+    regarding maintenance timeline, next steps for migration and general support
+    questions.
+
 [^shim-next-release]:
     Python and JavaScript shim packages are currently unreleased but will be
-    available in the next OpenTelemetry release.
+    available in future releases.
 
 [^spec-next-release]:
     The OpenCensus Compatability specification is marked stable for the next
