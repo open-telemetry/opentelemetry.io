@@ -109,7 +109,7 @@ To test the application, build and run it:
 
 ```console
 gradle assemble
-java -jar ./java-simple.jar
+java -jar ./build/libs/java-simple.jar
 ```
 
 ## Instrumentation
