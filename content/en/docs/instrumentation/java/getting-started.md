@@ -135,7 +135,7 @@ number of ways, the steps below use environment variables.
    &mdash; we illustrate a notation for bash-like shells:
 
    ```console
-   $ export JAVA_OPTS="-javaagent:PATH/TO/opentelemetry-javaagent.jar" \
+   $ export JAVA_TOOL_OPTIONS="-javaagent:PATH/TO/opentelemetry-javaagent.jar" \
      OTEL_TRACES_EXPORTER=logging \
      OTEL_METRICS_EXPORTER=logging \
      OTEL_LOGS_EXPORTER=logging
