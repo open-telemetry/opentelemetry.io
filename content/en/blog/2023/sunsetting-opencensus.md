@@ -47,7 +47,7 @@ a "major version bump" and you may notice some changes in your telemetry.
 
 More details on what to expect and some suggested workflows for migration are
 outlined in the
-[OpenCensus Compatibility specification](/docs/reference/specification/compatibility/opencensus/)[^spec-next-release].
+[OpenCensus Compatibility specification](/docs/reference/specification/compatibility/opencensus#migration-path)[^spec-next-release].
 
 ## What to Expect After July 31st, 2023
 
