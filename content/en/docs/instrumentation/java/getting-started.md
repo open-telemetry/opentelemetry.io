@@ -25,7 +25,7 @@ The following example uses a basic spring boot application.
 ### Dependencies
 
 Create a folder called `java-simple` and within that folder, create a file
-called `build.gradle` with the following content:
+called `build.gradle.kts` with the following content:
 
 ```gradle
 plugins {
