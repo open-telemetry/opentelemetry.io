@@ -146,7 +146,7 @@ number of ways, the steps below use environment variables.
 3. Run your **application** once again:
 
    ```console
-   $ java -jar ./java-simple.jar
+   $ java -jar ./build/libs/java-simple.jar
    ...
    ```
 
