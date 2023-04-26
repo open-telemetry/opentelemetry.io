@@ -406,39 +406,67 @@ instrumentation which would also disable the instrumentation's capturing of
 
 ### Instrumentation span suppression behavior
 
-Some of the libraries that this agent instruments in turn use lower-level
-libraries, that are also instrumented. This results in nested `CLIENT` spans (a
-span with the kind `CLIENT` has a child span with the same kind `CLIENT`). For
-example spans produced by Reactor Netty instrumentation will have children spans
-produced by Netty instrumentation. Or Dynamo DB spans produced by AWS SDK
-instrumentation will have children spans produced by http protocol library
-instrumentation.
+Some libraries that this agent instruments in turn use lower-level libraries,
+that are also instrumented. This would normally result in nested spans
+containing duplicate telemetry data. For example:
 
-By default, the agent will suppress nested `CLIENT` spans for the same semantic
-convention.
+- Spans produced by the Reactor Netty HTTP client instrumentation would have
+  duplicate HTTP client spans produced by the Netty instrumentation;
+- Dynamo DB spans produced by the AWS SDK instrumentation would have children
+  HTTP client spans produced by its internal HTTP client library (which is also
+  instrumented);
+- Spans produced by the Tomcat instrumentation would have duplicate HTTP server
+  spans produced by the generic Servlet API instrumentation.
 
-By setting `-Dotel.instrumentation.experimental.span-suppression-strategy` you
-can enable a different suppression strategy.
+The javaagent prevents these situations by detecting and suppressing nested
+spans that duplicate telemetry data. The suppression behavior can be configured
+using the following configuration option:
 
-For example, if we have a database client which uses Reactor Netty http client
-which uses Netty networking library, then with the default suppression strategy
-(`semconv`), we would have 2 nested spans:
+{{% config_option name="otel.instrumentation.experimental.span-suppression-strategy" %}}
 
-- `CLIENT` span with database semantic attributes from the database client
-  instrumentation
-- `CLIENT` span with http semantic attributes from Reactor Netty instrumentation
+The javaagent span suppression strategy. The following 3 strategies are
+supported:
 
-With suppression strategy of `span-kind`, we would have 1 span:
+- `semconv`: The agent will suppress duplicate semantic conventions. This is the
+  default behavior of the javaagent.
+- `span-kind`: The agent will suppress spans with the same kind (except
+  `INTERNAL`).
+- `none`: The agent will not suppress anything at all. **We do not recommend
+  using this option for anything other than debug purposes, as it generates lots
+  of duplicate telemetry data**.
 
-- `CLIENT` span with database semantic attributes from the database client
-  instrumentation
+{{% /config_option %}}
 
-And with suppression strategy of `none`, we would have 3 nested spans:
+For example, suppose we instrument a database client which internally uses the
+Reactor Netty HTTP client; which in turn uses Netty.
 
-- `CLIENT` span with database semantic attributes from the database client
-  instrumentation
-- `CLIENT` span with http semantic attributes from Reactor Netty instrumentation
-- `CLIENT` span with http semantic attributes from Netty instrumentation
+Using the default `semconv` suppression strategy would result in 2 nested
+`CLIENT` spans:
+
+- `CLIENT` span with database client semantic attributes emitted by the database
+  client instrumentation;
+- `CLIENT` span with HTTP client semantic attributes emitted by the Reactor
+  Netty instrumentation.
+
+The Netty instrumentation would be suppressed, as it duplicates the Reactor
+Netty HTTP client instrumentation.
+
+Using the suppression strategy `span-kind` would result in just one span:
+
+- `CLIENT` span with database client semantic attributes emitted by the database
+  client instrumentation.
+
+Both Reactor Netty and Netty instrumentations would be suppressed, as they also
+emit `CLIENT` spans.
+
+Finally, using the suppression strategy `none` would result in 3 spans:
+
+- `CLIENT` span with database client semantic attributes emitted by the database
+  client instrumentation;
+- `CLIENT` span with HTTP client semantic attributes emitted by the Reactor
+  Netty instrumentation;
+- `CLIENT` span with HTTP client semantic attributes emitted by the Netty
+  instrumentation.
 
 [extensions]:
   https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/examples/extension#readme

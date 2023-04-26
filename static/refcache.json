@@ -2683,6 +2683,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-15T21:26:16.922966-05:00"
   },
+  "https://gradle.org/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-04-24T17:44:10.474433+02:00"
+  },
   "https://grafana.com/": {
     "StatusCode": 200,
     "LastSeen": "2023-02-15T21:24:27.889758-05:00"
