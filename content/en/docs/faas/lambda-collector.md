@@ -24,7 +24,7 @@ By default, the OTel Lambda layer uses the config.yaml. To customize the Collect
 
 Please find the list of available components supported for custom configuration here. To enable debugging, you can use the configuration file to set log level to debug. See the example below.
 
-The ADOT Lambda Layers supports the following types of confmap providers: file, env, yaml, http, https and s3. To customize the ADOT collector configuration using different Confmap providers, Please refer to Confmap providers section for more information.
+The OTel Lambda Layers supports the following types of confmap providers: file, env, yaml, http, https and s3. To customize the OTel collector configuration using different Confmap providers, Please refer to Confmap providers section for more information.
 
 Once your collector configuration is set through a confmap providers. Create an environment variable on your Lambda function OPENTELEMETRY_COLLECTOR_CONFIG_FILE and set the path of configuration w.r.t to the confmap provider as its value. for e.g, if you are using a file configmap provider, set its value to /var/task/*<path/<to>/<filename>*. This will tell the extension where to find the collector configuration.
 

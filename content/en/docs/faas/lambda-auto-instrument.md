@@ -65,6 +65,41 @@ To enable the OTel auto-instrumentation in your Lambda function, you need to add
 
 **Note:** By default, the layer is configured to export traces to AWS X-Ray. Make sure your Lambda role has the required AWS X-Ray permissions. For more on AWS X-Ray permissions for AWS Lambda, see the AWS Lambda documentation.
 
+### Configure your SDK exporters
+
+The default exporters used by the Lambda layers will work without any changes if there is an embedded Collector with gRPC / HTTP receivers. The environment variables do not need to be updated. However, there are varying levels of protocol support and default values by language which are documented below.
+
+<!-- prettier-ignore -->
+{{< tabpane text=true >}}
+{{% tab Java %}}
+
+`OTEL_EXPORTER_OTLP_PROTOCOL=grpc`
+Supports: `grpc`, `http/protobuf` and `http/json`
+`OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317`
+
+<!-- prettier-ignore -->
+{{% /tab %}}
+{{% tab Python %}}
+
+`OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf`
+Supports: `http/protobuf` and `http/json`
+`OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318`
+
+<!-- prettier-ignore -->
+{{% /tab %}}
+
+<!-- prettier-ignore -->
+{{% /tab %}}
+{{% tab JavaScript %}}
+
+`OTEL_EXPORTER_OTLP_PROTOCOL` env var is not supported
+The hard coded exporter uses the protocol `http/protobuf`
+`OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318`
+
+<!-- prettier-ignore -->
+{{% /tab %}}
+{{< /tabpane >}}
+
 ### Add the ARN of the OTel Collector Lambda layer
 
 See the [Collector Lambda layer guidance](lambda-manual-instrument) to add the layer to your application and configure the Collector.
