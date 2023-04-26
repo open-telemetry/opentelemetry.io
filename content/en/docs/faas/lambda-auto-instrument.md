@@ -22,7 +22,25 @@ These can be added to your Lambda using the AWS portal to automatically instrume
 
 The Lambda layer supports the Java 11 (Corretto) Lambda runtime. It does not support the Java 8 Lambda runtimes. For more information about supported Java versions, see the OpenTelemetry Java documentation.
 
-Note: The Java Auto-instrumentation Agent is in the Lambda layer - Automatic instrumentation has a notable impact on startup time on AWS Lambda and you will generally need to use this along with provisioned concurrency and warmup requests to serve production requests without causing timeouts on initial requests while it initializes.
+**Note:** The Java Auto-instrumentation Agent is in the Lambda layer - Automatic instrumentation has a notable impact on startup time on AWS Lambda and you will generally need to use this along with provisioned concurrency and warmup requests to serve production requests without causing timeouts on initial requests while it initializes.
+
+By default, the OTel Java Agent in the Layer will try to auto-instrument all the code in your application. This can have a negative impact on the Lambda cold startup time.
+
+We recommend that you only enable auto-instrumentation for the libraries/frameworks that are used by your application.
+
+To enable only specific instrumentations you can use the following environment variables:
+
+    * OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED - When set to false, disables auto-instrumentation in the Layer, requiring each instrumentation to be enabled individually.
+    * OTEL_INSTRUMENTATION_[NAME]_ENABLED - Set to true to enable auto-instrumentation for a specific library or framework. [NAME] should be replaced by the instrumentation that you want to enable. The full list of available instrumentations can be found in this link.
+
+For example, to only enable auto-instrumentation for Lambda and the AWS SDK, you would have to set the following environment variables:
+
+    ```bash
+    Copy
+    OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED=false
+    OTEL_INSTRUMENTATION_AWS_LAMBDA_ENABLED=true
+    OTEL_INSTRUMENTATION_AWS_SDK_ENABLED=true
+    ```
 
 <!-- prettier-ignore -->
 {{% /tab %}}
@@ -45,27 +63,7 @@ To enable the OTel auto-instrumentation in your Lambda function, you need to add
     * /opt/otel-handler - for wrapping regular handlers (implementing RequestHandler)
 5. Enable active tracing for your AWS Lambda function.
 
-Tips:
-
-* By default, the layer is configured to export traces to AWS X-Ray. Make sure your Lambda role has the required AWS X-Ray permissions. For more on AWS X-Ray permissions for AWS Lambda, see the AWS Lambda documentation.
-
-* By default, the OTel Java Agent in the Layer will try to auto-instrument all the code in your application. This can have a negative impact on the Lambda cold startup time.
-
-    We recommend that you only enable auto-instrumentation for the libraries/frameworks that are used by your application.
-
-    To enable only specific instrumentations you can use the following environment variables:
-
-        * OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED - When set to false, disables auto-instrumentation in the Layer, requiring each instrumentation to be enabled individually.
-        * OTEL_INSTRUMENTATION_[NAME]_ENABLED - Set to true to enable auto-instrumentation for a specific library or framework. [NAME] should be replaced by the instrumentation that you want to enable. The full list of available instrumentations can be found in this link.
-
-    For example, to only enable auto-instrumentation for Lambda and the AWS SDK, you would have to set the following environment variables:
-
-    ```bash
-    Copy
-    OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED=false
-    OTEL_INSTRUMENTATION_AWS_LAMBDA_ENABLED=true
-    OTEL_INSTRUMENTATION_AWS_SDK_ENABLED=true
-    ```
+**Note:** By default, the layer is configured to export traces to AWS X-Ray. Make sure your Lambda role has the required AWS X-Ray permissions. For more on AWS X-Ray permissions for AWS Lambda, see the AWS Lambda documentation.
 
 ### Add the ARN of the OTel Collector Lambda layer
 
