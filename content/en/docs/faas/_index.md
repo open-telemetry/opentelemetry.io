@@ -1,7 +1,7 @@
 ---
-title: Cloud Functions
+title: Functions as a Service
 description: >-
-  OpenTelemetry supports various methods of monitoring Cloud Functions
+  OpenTelemetry supports various methods of monitoring Functions as a Service provided by different cloud vendors
 weight: 2
 ---
 

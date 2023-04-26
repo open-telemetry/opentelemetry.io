@@ -12,7 +12,7 @@ The OpenTelemetry community provides standalone instrumentation Lambda layers fo
 * JavaScript
 * Python
 
-These can be added to your Lambda using the AWS portal to automatically instrument your application. These layers do not include the Collector which is an optional but recommended standalone Lambda layer.
+These can be added to your Lambda using the AWS portal to automatically instrument your application. These layers do not include the Collector which is a required addition unless you configure an external Collector instance to send your data.
 
 ### Language Requirements
 
@@ -22,7 +22,7 @@ These can be added to your Lambda using the AWS portal to automatically instrume
 
 The Lambda layer supports the Java 11 (Corretto) Lambda runtime. It does not support the Java 8 Lambda runtimes. For more information about supported Java versions, see the OpenTelemetry Java documentation.
 
-Note: ADOT Lambda Layer for Java Auto-instrumentation Agent - Automatic instrumentation has a notable impact on startup time on AWS Lambda and you will generally need to use this along with provisioned concurrency and warmup requests to serve production requests without causing timeouts on initial requests while it initializes.
+Note: The Java Auto-instrumentation Agent is in the Lambda layer - Automatic instrumentation has a notable impact on startup time on AWS Lambda and you will generally need to use this along with provisioned concurrency and warmup requests to serve production requests without causing timeouts on initial requests while it initializes.
 
 <!-- prettier-ignore -->
 {{% /tab %}}
@@ -36,7 +36,7 @@ Note: ADOT Lambda Layer for Java Auto-instrumentation Agent - Automatic instrume
 
 ### Add the ARN of Instrumentation Lambda Layer
 
-To enable the OTel auto-instrumentation in your Lambda function, you need to add and configure the layer, and then enable tracing.
+To enable the OTel auto-instrumentation in your Lambda function, you need to add and configure the instrumentation and Collector layers, and then enable tracing.
 
 1. Open the Lambda function you intend to instrument in the AWS console.
 2. In the Layers in Designer section, choose Add a layer.
@@ -49,7 +49,7 @@ Tips:
 
 * By default, the layer is configured to export traces to AWS X-Ray. Make sure your Lambda role has the required AWS X-Ray permissions. For more on AWS X-Ray permissions for AWS Lambda, see the AWS Lambda documentation.
 
-* By default, the ADOT Java Agent in the Layer will try to auto-instrument all the code in your application. This can have a negative impact on the Lambda cold startup time.
+* By default, the OTel Java Agent in the Layer will try to auto-instrument all the code in your application. This can have a negative impact on the Lambda cold startup time.
 
     We recommend that you only enable auto-instrumentation for the libraries/frameworks that are used by your application.
 
