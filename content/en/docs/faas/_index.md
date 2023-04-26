@@ -11,6 +11,6 @@ The initial vendor scope of the FaaS documentation is around Azure, GCP, and AWS
 
 ### Community Assets
 
-The community currently provides pre-built Lambda layers to quickly add instrumentation or the Collector to your Lambda.
+The community currently provides pre-built Lambda layers able to auto-instrument your application as well as a the option of standalone Collector Lambda layer that can be used when instrumenting applications manually or automatically.
 
 The release status can be tracked in the [OpenTelemetry-Lambda repo](https://github.com/open-telemetry/opentelemetry-lambda).
