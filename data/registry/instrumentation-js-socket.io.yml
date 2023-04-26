@@ -1,0 +1,14 @@
+title: OpenTelemetry socket.io Instrumentation for Node.js
+registryType: instrumentation
+isThirdParty: false
+language: js
+tags:
+  - socket.io
+  - instrumentation
+  - js
+repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-socket.io
+license: Apache 2.0
+description:
+  This module provides automatic instrumentation for the socket.io module
+authors: OpenTelemetry Authors
+otVersion: latest
