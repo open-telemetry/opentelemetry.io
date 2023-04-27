@@ -59,7 +59,7 @@ However, the OpenCensus repositories will remain archived on GitHub. This means
 users will still be able to download the OpenCensus code and use it in their
 projects. Existing releases of OpenCensus will remain available in public
 package repositories like NPM and PyPI. **We encourage all OpenCensus users to
-migrate to OpenTelemetry as soon as possible.**
+begin planning your migration to OpenTelemetry now.**
 
 One exception to this is the
 [census-instrumentation/opencensus-python][][^python-timeline] repo.
