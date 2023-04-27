@@ -39,7 +39,8 @@ and [Python][python shim][^shim-next-release]. Installing these bridges allows
 OpenCensus and OpenTelemetry instrumentation to smoothly interoperate, with all
 of your telemetry flowing out of OpenTelemetry exporters. This lets OpenCensus
 users incrementally transition all of their instrumentation from OpenCensus to
-OpenTelemetry, and finally remove OpenCensus libraries from their applications.
+OpenTelemetry, and finally remove OpenCensus libraries from their
+applications[^shim-support].
 
 While OpenTelemetry was never intended to be a strict superset of OpenCensus,
 most of the APIs and data models are compatible. Migration should be considered
@@ -90,3 +91,10 @@ One exception to this is the
     The
     [OpenCensus Compatability specification](https://opentelemetry.io/docs/reference/specification/compatibility/opencensus/)
     is marked stable for the next specification release.
+
+[^shim-support]:
+    These shims implement the stable
+    [OpenCensus Compatibility specification](/docs/reference/specification/compatibility/opencensus#migration-path)[^spec-next-release]
+    and will be supported for at least one year following
+    [OpenTelemetry's long term support](https://opentelemetry.io/docs/reference/specification/versioning-and-stability/#long-term-support)
+    guidelines.
