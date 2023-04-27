@@ -19,7 +19,7 @@ OpenTelemetry offers a [richer ecosystem](/ecosystem) of instrumentation
 libraries and exporters, and an
 [active open source community](https://www.cncf.io/blog/2023/01/11/a-look-at-the-2022-velocity-of-cncf-linux-foundation-and-top-30-open-source-projects/).
 
-As a result, we will be archiving all OpenCensus Github repositories (with the
+As a result, we will be archiving all OpenCensus GitHub repositories (with the
 exception of [census-instrumentation/opencensus-python][][^python-timeline]) on
 July 31st, 2023. We are excited to see the
 [long term plan for OpenTelemetry](https://medium.com/opentracing/a-roadmap-to-convergence-b074e5815289)
