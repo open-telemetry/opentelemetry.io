@@ -24,40 +24,29 @@ service name. It then `require`s your app at `./index.js` to start it up once
 the SDK is initialized.
 
 ```javascript
-const opentelemetry = require('@opentelemetry/sdk-node');
-const {
-  getNodeAutoInstrumentations,
-} = require('@opentelemetry/auto-instrumentations-node');
-const {
-  OTLPTraceExporter,
-} = require('@opentelemetry/exporter-trace-otlp-grpc');
-const {
-  OTLPMetricExporter,
-} = require('@opentelemetry/exporter-metrics-otlp-grpc');
-const { PeriodicExportingMetricReader } = require('@opentelemetry/sdk-metrics');
-const {
-  alibabaCloudEcsDetector,
-} = require('@opentelemetry/resource-detector-alibaba-cloud');
-const {
-  awsEc2Detector,
-  awsEksDetector,
-} = require('@opentelemetry/resource-detector-aws');
-const {
-  containerDetector,
-} = require('@opentelemetry/resource-detector-container');
-const { gcpDetector } = require('@opentelemetry/resource-detector-gcp');
-const {
-  envDetector,
-  hostDetector,
-  osDetector,
-  processDetector,
-} = require('@opentelemetry/resources');
+const opentelemetry = require("@opentelemetry/sdk-node")
+const {getNodeAutoInstrumentations} = require("@opentelemetry/auto-instrumentations-node")
+const {OTLPTraceExporter} = require('@opentelemetry/exporter-trace-otlp-grpc')
+const {OTLPMetricExporter} = require('@opentelemetry/exporter-metrics-otlp-grpc')
+const {PeriodicExportingMetricReader} = require('@opentelemetry/sdk-metrics')
+const {alibabaCloudEcsDetector} = require('@opentelemetry/resource-detector-alibaba-cloud')
+const {awsEc2Detector, awsEksDetector} = require('@opentelemetry/resource-detector-aws')
+const {containerDetector} = require('@opentelemetry/resource-detector-container')
+const {gcpDetector} = require('@opentelemetry/resource-detector-gcp')
+const {envDetector, hostDetector, osDetector, processDetector} = require('@opentelemetry/resources')
 
 const sdk = new opentelemetry.NodeSDK({
   traceExporter: new OTLPTraceExporter(),
-  instrumentations: [getNodeAutoInstrumentations()],
+  instrumentations: [
+    getNodeAutoInstrumentations({
+      // only instrument fs if it is part of another trace
+      '@opentelemetry/instrumentation-fs': {
+        requireParentSpan: true,
+      },
+    })
+  ],
   metricReader: new PeriodicExportingMetricReader({
-    exporter: new OTLPMetricExporter(),
+    exporter: new OTLPMetricExporter()
   }),
   resourceDetectors: [
     containerDetector,
@@ -68,11 +57,12 @@ const sdk = new opentelemetry.NodeSDK({
     alibabaCloudEcsDetector,
     awsEksDetector,
     awsEc2Detector,
-    gcpDetector,
+    gcpDetector
   ],
-});
+})
 
-sdk.start().then(() => require('./index'));
+sdk.start();
+
 ```
 
 You can then use `opentelemetry.js` to start your app. This can be done in the
