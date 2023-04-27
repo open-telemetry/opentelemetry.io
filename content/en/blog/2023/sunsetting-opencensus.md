@@ -10,7 +10,7 @@ the OpenTelemetry project. From the start, we considered OpenTelemetry
 [to be the next major version of both OpenTracing and OpenCensus](https://www.cncf.io/blog/2019/05/21/a-brief-history-of-opentelemetry-so-far/).
 
 We are excited to announce that OpenTelemetry has reached feature parity with
-OpenCensus in C++, C#, Go, Java, JavaScript, PHP and Python.
+OpenCensus in C++, .NET, Go, Java, JavaScript, PHP and Python.
 [Stable releases](/docs/instrumentation/#status-and-releases) of both the
 Tracing and Metrics SDKs are available in most of these languages with Go and
 PHP soon to follow. This means that OpenTelemetry can collect and export
@@ -34,8 +34,8 @@ of the OpenTelemetry project is to provide backward compatibility with
 OpenCensus and a migration story for existing users.
 
 To help ease the migration path, we have provided backward compatibility bridges
-in [Go][go shim], [Java][java shim], [Python][python shim][^shim-next-release],
-and [JavaScript][js shim][^shim-next-release]. Installing these bridges allows
+in [Go][go shim], [Java][java shim], [JavaScript][js shim][^shim-next-release],
+and [Python][python shim][^shim-next-release]. Installing these bridges allows
 OpenCensus and OpenTelemetry instrumentation to smoothly interoperate, with all
 of your telemetry flowing out of OpenTelemetry exporters. This lets OpenCensus
 users incrementally transition all of their instrumentation from OpenCensus to
@@ -87,5 +87,6 @@ One exception to this is the
     available in future releases.
 
 [^spec-next-release]:
-    The OpenCensus Compatability specification is marked stable for the next
-    specification release.
+    The [OpenCensus Compatability
+    specification](https://opentelemetry.io/docs/reference/specification/compatibility/opencensus/)
+    is marked stable for the next specification release.
