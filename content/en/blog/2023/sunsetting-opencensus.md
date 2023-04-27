@@ -87,6 +87,6 @@ One exception to this is the
     available in future releases.
 
 [^spec-next-release]:
-    The [OpenCensus Compatability
-    specification](https://opentelemetry.io/docs/reference/specification/compatibility/opencensus/)
+    The
+    [OpenCensus Compatability specification](https://opentelemetry.io/docs/reference/specification/compatibility/opencensus/)
     is marked stable for the next specification release.
