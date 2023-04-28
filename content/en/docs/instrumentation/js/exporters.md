@@ -19,7 +19,7 @@ Jaeger) you'll want to use an exporter package, such as
 
 ```shell
 npm install --save @opentelemetry/exporter-trace-otlp-proto \
-  opentelemetry/exporter-metrics-otlp-proto
+  @opentelemetry/exporter-metrics-otlp-proto
 ```
 
 Next, configure the exporter to point at an OTLP endpoint. For example you can
