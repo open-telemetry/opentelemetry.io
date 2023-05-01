@@ -31,7 +31,7 @@ mean? At a high level, you can expect to see that semantic conventions will
 split out of the specification as we proceed towards aligning our standards.
 Please be on the look out for more information.
 
-Other changes include -
+Other changes include:
 
 - Changes to span and metric SDK details.
 - Clean up the log bridge API.
