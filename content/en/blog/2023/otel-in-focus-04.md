@@ -8,7 +8,8 @@ author: '[Austin Parker](https://github.com/austinlparker)'
 Welcome to this month’s edition of **OpenTelemetry in Focus**! It's been another
 busy month in the OpenTelemetry community, with some big announcements and new
 releases from our core repositories. I'll also be sharing some highlights from
-OpenTelemetry at KubeCon EU, which was a blast. Can't wait for Chicago this fall!
+OpenTelemetry at KubeCon EU, which was a blast. Can't wait for Chicago this
+fall!
 
 Are you a maintainer with something you’d like featured here? Get in touch with
 me [via email](mailto:austin@lightstep.com), or on the
@@ -25,11 +26,11 @@ Here are the latest updates from some of our core repositories.
 has been released, and it's a big one!
 
 First, **OpenTelemetry Protocol** has been declared stable! Second, we've
-started a process to converge the [Elastic Common Schema with OpenTelemetry
-Semantic Conventions](/blog/2023/ecs-otel-semconv-convergence/). What does this
-mean? At a high level, you can expect to see that semantic conventions will
-split out of the specification as we proceed towards aligning our standards.
-Please be on the look out for more information.
+started a process to converge the
+[Elastic Common Schema with OpenTelemetry Semantic Conventions](/blog/2023/ecs-otel-semconv-convergence/).
+What does this mean? At a high level, you can expect to see that semantic
+conventions will split out of the specification as we proceed towards aligning
+our standards. Please be on the look out for more information.
 
 Other changes include:
 
@@ -61,7 +62,8 @@ changes and renamings, especially if you're using metrics.
 [Version 1.25.0](https://github.com/open-telemetry/opentelemetry-java/releases/tag/v1.25.0)
 of the Java SDK has been released, with several bugfixes and improvements.
 Please note that this includes a change to exponential bucket histograms, please
-see the release notes for details if you rely on automatic configuration of histograms.
+see the release notes for details if you rely on automatic configuration of
+histograms.
 
 In addition, the
 [Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/tag/v1.25.1)
@@ -90,14 +92,13 @@ the coming months, including:
 - Finishing up the Logging Bridge API and getting logs to stability.
 
 There were also a lot of great talks from the Observability community at
-KubeCon, including at [Observability Day
-Europe](https://www.youtube.com/watch?v=2VuAIhL3xG4&list=PLj6h78yzYM2ORxwcjTn4RLAOQOYjvQ2A3).
+KubeCon, including at
+[Observability Day Europe](https://www.youtube.com/watch?v=2VuAIhL3xG4&list=PLj6h78yzYM2ORxwcjTn4RLAOQOYjvQ2A3).
 Go check it out if you have some time, there's some really interesting
 real-world examples in there of how people are using OpenTelemetry!
 
 ## News and Upcoming Events
 
-[OpenCensus is being
-sunset](https://opentelemetry.io/blog/2023/sunsetting-opencensus/) in July 2023.
-Once this has concluded, our initial goal of OpenTelemetry as a single
-replacement for OpenTracing and OpenCensus will have been realized!
+[OpenCensus is being sunset](https://opentelemetry.io/blog/2023/sunsetting-opencensus/)
+in July 2023. Once this has concluded, our initial goal of OpenTelemetry as a
+single replacement for OpenTracing and OpenCensus will have been realized!
