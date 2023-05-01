@@ -17,7 +17,7 @@ channel.
 
 ## Releases and Updates
 
-Here are the latest updates from our core repositories.
+Here are the latest updates from some of our core repositories.
 
 ##### [Specification](/docs/reference/specification/)
 
