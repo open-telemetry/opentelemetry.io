@@ -45,12 +45,17 @@ For example, to only enable auto-instrumentation for Lambda and the AWS SDK, you
     OTEL_INSTRUMENTATION_AWS_LAMBDA_ENABLED=true
     OTEL_INSTRUMENTATION_AWS_SDK_ENABLED=true
     ```
+<!-- prettier-ignore -->
+{{% /tab %}}
+{{% tab JavaScript %}}
+
+The Lambda layer supports Node.JS v14+ Lambda runtimes. For more information about supported JavaScript and Node.JS versions, see the [OpenTelemetry JavaScript documentation](https://github.com/open-telemetry/opentelemetry-js).
 
 <!-- prettier-ignore -->
 {{% /tab %}}
 {{% tab Python %}}
 
-...
+The Lambda layer supports Python 3.8 and Python 3.9 Lambda runtimes. For more information about supported Python versions, see the [OpenTelemetry Python documentation](https://github.com/open-telemetry/opentelemetry-python/blob/master/README.md#supported-runtimes) and the package on [PyPi](https://pypi.org/project/opentelemetry-api/).
 
 <!-- prettier-ignore -->
 {{% /tab %}}
@@ -83,9 +88,6 @@ Supports: `grpc`, `http/protobuf` and `http/json`
 `OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf`
 Supports: `http/protobuf` and `http/json`
 `OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318`
-
-<!-- prettier-ignore -->
-{{% /tab %}}
 
 <!-- prettier-ignore -->
 {{% /tab %}}
