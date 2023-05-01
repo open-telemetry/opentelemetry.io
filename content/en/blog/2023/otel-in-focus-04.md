@@ -83,7 +83,7 @@ there'll be more limited edition stickers. Just not for KubeCon, because it's
 come and gone.
 
 There was a lot of great feedback that we're excited to tackle as a project over
-the coming months, including --
+the coming months, including:
 
 - Improving discoverability of components for the collector.
 - Increasing responsiveness to PR's and issues.
