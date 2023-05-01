@@ -48,7 +48,7 @@ OpenTelemetry in their commercial products.
 | Sumo Logic                 | Yes               | Yes         | [help.sumologic.com/](https://help.sumologic.com/docs/apm/traces/quickstart/)
 | TelemetryHub               | No                | Yes         | [telemetryhub.com](https://app.telemetryhub.com/docs)
 | Teletrace                  | Yes               | Yes         | [docs.teletrace.io](https://docs.teletrace.io/)
-| Traceloop                  | No                | Yes         | [traceloop.dev](https://docs.traceloop.dev)
+| Traceloop                  | No                | Yes         | [traceloop.com](https://www.traceloop.com)
 | Uptrace                    | Yes               | Yes         | [uptrace.dev](https://uptrace.dev)
 
 \* _Vendors are listed alphabetically_.
