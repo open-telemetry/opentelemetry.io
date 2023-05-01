@@ -6,6 +6,9 @@ weight: 2
 
 This page will show you how to get started with OpenTelemetry in Node.js.
 
+You will learn how you can instrument a simple application automatically, in
+such a way that traces, metrics and logs are emitted to the console.
+
 ## Prerequisites
 
 Ensure that you have the following installed locally:
@@ -36,7 +39,7 @@ npm install typescript \
   ts-node \
   @types/node \
   express \
-  @types/express \
+  @types/express
 {{< /tab >}}
 
 {{< tab JavaScript >}}
@@ -60,8 +63,12 @@ import express, { Express } from "express";
 const PORT: number = parseInt(process.env.PORT || "8080");
 const app: Express = express();
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
+function getRandomNumber(min: number, max: number) {
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+app.get("/rolldice", (req, res) => {
+  res.send(getRandomNumber(1, 6).toString());
 });
 
 app.listen(PORT, () => {
@@ -76,8 +83,12 @@ const express = require("express");
 const PORT = parseInt(process.env.PORT || "8080");
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
+function getRandomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+app.get("/rolldice", (req, res) => {
+  res.send(getRandomNumber(1, 6).toString());
 });
 
 app.listen(PORT, () => {
@@ -88,8 +99,8 @@ app.listen(PORT, () => {
 {{< /tabpane>}}
 <!-- prettier-ignore-end -->
 
-Run the application with the following request and open <http://localhost:8080>
-in your web browser to ensure it is working.
+Run the application with the following command and open
+<http://localhost:8080/rolldice> in your web browser to ensure it is working.
 
 <!-- prettier-ignore-start -->
 {{< tabpane lang=console persistLang=false >}}
@@ -211,8 +222,8 @@ Listening for requests on http://localhost:8080
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
-Open <http://localhost:8080> in your web browser and reload the page a few
-times, after a while you should see the spans printed in the console by the
+Open <http://localhost:8080/rolldice> in your web browser and reload the page a
+few times, after a while you should see the spans printed in the console by the
 `ConsoleSpanExporter`.
 
 <details>

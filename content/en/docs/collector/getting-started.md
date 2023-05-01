@@ -200,6 +200,36 @@ sudo rpm -ivh otelcol_{{% param collectorVersion %}}_linux_386.rpm
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
+### Manual Installation
+
+Linux [releases][] are available for various architectures. It's possible to
+download the archive containing the binary and install it on your machine
+manually:
+
+<!-- prettier-ignore-start -->
+{{< tabpane lang=shell persistLang=false >}}
+{{< tab AMD64 >}}
+curl --proto '=https' --tlsv1.2 -fOL https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_linux_amd64.tar.gz
+tar -xvf otelcol_{{% param collectorVersion %}}_linux_amd64.tar.gz
+{{< /tab >}}
+
+{{< tab ARM64 >}}
+curl --proto '=https' --tlsv1.2 -fOL https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_linux_arm64.tar.gz
+tar -xvf otelcol_{{% param collectorVersion %}}_linux_arm64.tar.gz
+{{< /tab >}}
+
+{{< tab i386 >}}
+curl --proto '=https' --tlsv1.2 -fOL https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_linux_386.tar.gz
+tar -xvf otelcol_{{% param collectorVersion %}}_linux_386.tar.gz
+{{< /tab >}}
+
+{{< tab ppc64le >}}
+curl --proto '=https' --tlsv1.2 -fOL https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_linux_ppc64le.tar.gz
+tar -xvf otelcol_{{% param collectorVersion %}}_linux_ppc64le.tar.gz
+{{< /tab >}}
+{{< /tabpane >}}
+<!-- prettier-ignore-end -->
+
 ### Automatic Service Configuration
 
 By default, the `otelcol` systemd service will be started with the
@@ -232,12 +262,12 @@ tool that supports this compression format:
 <!-- prettier-ignore-start -->
 {{< tabpane lang=shell persistLang=false >}}
 {{< tab Intel >}}
-curl -O -L https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_darwin_amd64.tar.gz
+curl --proto '=https' --tlsv1.2 -fOL https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_darwin_amd64.tar.gz
 tar -xvf otelcol_{{% param collectorVersion %}}_darwin_amd64.tar.gz
 {{< /tab >}}
 
 {{< tab ARM >}}
-curl -O -L https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_darwin_arm64.tar.gz
+curl --proto '=https' --tlsv1.2 -fOL https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_darwin_arm64.tar.gz
 tar -xvf otelcol_{{% param collectorVersion %}}_darwin_arm64.tar.gz
 {{< /tab >}}
 {{< /tabpane >}}

@@ -29,6 +29,10 @@ const {
   OTLPTraceExporter,
 } = require('@opentelemetry/exporter-trace-otlp-grpc');
 const {
+  OTLPMetricExporter,
+} = require('@opentelemetry/exporter-metrics-otlp-grpc');
+const { PeriodicExportingMetricReader } = require('@opentelemetry/sdk-metrics');
+const {
   alibabaCloudEcsDetector,
 } = require('@opentelemetry/resource-detector-alibaba-cloud');
 const {
@@ -48,7 +52,17 @@ const {
 
 const sdk = new opentelemetry.NodeSDK({
   traceExporter: new OTLPTraceExporter(),
-  instrumentations: [getNodeAutoInstrumentations()],
+  instrumentations: [
+    getNodeAutoInstrumentations({
+      // only instrument fs if it is part of another trace
+      '@opentelemetry/instrumentation-fs': {
+        requireParentSpan: true,
+      },
+    }),
+  ],
+  metricReader: new PeriodicExportingMetricReader({
+    exporter: new OTLPMetricExporter(),
+  }),
   resourceDetectors: [
     containerDetector,
     envDetector,
