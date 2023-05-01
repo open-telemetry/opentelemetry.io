@@ -14,6 +14,10 @@ The OpenTelemetry community provides standalone instrumentation Lambda layers fo
 
 These can be added to your Lambda using the AWS portal to automatically instrument your application. These layers do not include the Collector which is a required addition unless you configure an external Collector instance to send your data.
 
+### Add the ARN of the OTel Collector Lambda layer
+
+See the [Collector Lambda layer guidance](lambda-manual-instrument) to add the layer to your application and configure the Collector. We recommend you add this first.
+
 ### Language Requirements
 
 <!-- prettier-ignore -->
@@ -59,11 +63,6 @@ To enable the OTel auto-instrumentation in your Lambda function, you need to add
 1. Open the Lambda function you intend to instrument in the AWS console.
 2. In the Layers in Designer section, choose Add a layer.
 3. Under specify an ARN, paste the layer ARN, and then choose Add.
-4. Add the environment variable AWS_LAMBDA_EXEC_WRAPPER and set it to one of the following options:
-    * /opt/otel-handler - for wrapping regular handlers (implementing RequestHandler)
-5. Enable active tracing for your AWS Lambda function.
-
-**Note:** By default, the layer is configured to export traces to AWS X-Ray. Make sure your Lambda role has the required AWS X-Ray permissions. For more on AWS X-Ray permissions for AWS Lambda, see the AWS Lambda documentation.
 
 ### Configure your SDK exporters
 
@@ -100,6 +99,6 @@ The hard coded exporter uses the protocol `http/protobuf`
 {{% /tab %}}
 {{< /tabpane >}}
 
-### Add the ARN of the OTel Collector Lambda layer
+### Publish your Lambda
 
-See the [Collector Lambda layer guidance](lambda-manual-instrument) to add the layer to your application and configure the Collector.
+Publish a new version of your Lambda to deploy the new changes and instrumentation.
