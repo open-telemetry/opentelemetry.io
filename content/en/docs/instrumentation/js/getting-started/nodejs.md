@@ -1,13 +1,15 @@
 ---
 title: Node.js
+description: Get telemetry for your app in less than 5 minutes!
 aliases: [/docs/js/getting_started/nodejs]
+spelling: cSpell:ignore rolldice autoinstrumentation autoinstrumentations KHTML
 weight: 2
 ---
 
 This page will show you how to get started with OpenTelemetry in Node.js.
 
 You will learn how you can instrument a simple application automatically, in
-such a way that traces, metrics and logs are emitted to the console.
+such a way that [traces][], [metrics][] and [logs][] are emitted to the console.
 
 ## Prerequisites
 
@@ -19,11 +21,16 @@ Ensure that you have the following installed locally:
 
 ## Example Application
 
-The following example uses a basic Express application.
+The following example uses a basic [Express](https://expressjs.com/)
+application. If you're not using Flask, that's fine — this guide will also work
+with Koa, Nest.JS
+[and more](https://opentelemetry.io/ecosystem/registry/?component=instrumentation&language=js)
+
+For more elaborate examples, see [examples](/docs/instrumentation/js/examples/).
 
 ### Dependencies
 
-First, create an empty package.json:
+To begin, set up an empty package.json in a new directory:
 
 ```shell
 npm init -f
@@ -49,9 +56,9 @@ npm install express
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
-### Code
+### Create the sample HTTP Server
 
-Create `app.ts|js` and add the following code to the file:
+Create a file called `app.ts|js` and add the following code to it:
 
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
@@ -201,7 +208,7 @@ sdk
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
-### Run Application
+## Run the instrumented app
 
 Now you can run your application as you normally would, but you can use the
 `--require` flag to load the instrumentation before the application code.
@@ -343,6 +350,140 @@ few times, after a while you should see the spans printed in the console by the
 
 </details>
 
+The span generated for you tracks the lifetime of a request to the `/rolldice`
+route.
+
+Send a few more requests to the endpoint, and then wait for a little bit and
+you'll get metrics printed out to the console, such as the following
+
+<details>
+<summary>View example output</summary>
+
+```json
+{
+  descriptor: {
+    name: 'http.server.duration',
+    type: 'HISTOGRAM',
+    description: 'measures the duration of the inbound HTTP requests',
+    unit: 'ms',
+    valueType: 1
+  },
+  dataPointType: 0,
+  dataPoints: [
+    {
+      attributes: [Object],
+      startTime: [Array],
+      endTime: [Array],
+      value: [Object]
+    }
+  ]
+}
+{
+  descriptor: {
+    name: 'http.client.duration',
+    type: 'HISTOGRAM',
+    description: 'measures the duration of the outbound HTTP requests',
+    unit: 'ms',
+    valueType: 1
+  },
+  dataPointType: 0,
+  dataPoints: []
+}
+{
+  descriptor: {
+    name: 'db.client.connections.usage',
+    type: 'UP_DOWN_COUNTER',
+    description: 'The number of connections that are currently in the state referenced by the attribute "state".',
+    unit: '{connections}',
+    valueType: 1
+  },
+  dataPointType: 3,
+  dataPoints: []
+}
+{
+  descriptor: {
+    name: 'http.server.duration',
+    type: 'HISTOGRAM',
+    description: 'measures the duration of the inbound HTTP requests',
+    unit: 'ms',
+    valueType: 1
+  },
+  dataPointType: 0,
+  dataPoints: [
+    {
+      attributes: [Object],
+      startTime: [Array],
+      endTime: [Array],
+      value: [Object]
+    }
+  ]
+}
+{
+  descriptor: {
+    name: 'http.client.duration',
+    type: 'HISTOGRAM',
+    description: 'measures the duration of the outbound HTTP requests',
+    unit: 'ms',
+    valueType: 1
+  },
+  dataPointType: 0,
+  dataPoints: []
+}
+{
+  descriptor: {
+    name: 'db.client.connections.usage',
+    type: 'UP_DOWN_COUNTER',
+    description: 'The number of connections that are currently in the state referenced by the attribute "state".',
+    unit: '{connections}',
+    valueType: 1
+  },
+  dataPointType: 3,
+  dataPoints: []
+}
+{
+  descriptor: {
+    name: 'http.server.duration',
+    type: 'HISTOGRAM',
+    description: 'measures the duration of the inbound HTTP requests',
+    unit: 'ms',
+    valueType: 1
+  },
+  dataPointType: 0,
+  dataPoints: [
+    {
+      attributes: [Object],
+      startTime: [Array],
+      endTime: [Array],
+      value: [Object]
+    }
+  ]
+}
+{
+  descriptor: {
+    name: 'http.client.duration',
+    type: 'HISTOGRAM',
+    description: 'measures the duration of the outbound HTTP requests',
+    unit: 'ms',
+    valueType: 1
+  },
+  dataPointType: 0,
+  dataPoints: []
+}
+{
+  descriptor: {
+    name: 'db.client.connections.usage',
+    type: 'UP_DOWN_COUNTER',
+    description: 'The number of connections that are currently in the state referenced by the attribute "state".',
+    unit: '{connections}',
+    valueType: 1
+  },
+  dataPointType: 3,
+  dataPoints: []
+}
+```
+
+</details>
+
 ## Next Steps
 
 Enrich your instrumentation generated automatically with
@@ -384,3 +525,7 @@ diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
 
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+
+[traces]: https://opentelemetry.io/docs/concepts/signals/traces/
+[metrics]: https://opentelemetry.io/docs/concepts/signals/metrics/
+[logs]: https://opentelemetry.io/docs/concepts/signals/logs/
