@@ -22,7 +22,7 @@ Ensure that you have the following installed locally:
 ## Example Application
 
 The following example uses a basic [Express](https://expressjs.com/)
-application. If you're not using Flask, that's fine — this guide will also work
+application. If you're not using Express, that's fine — this guide will also work
 with Koa, Nest.JS
 [and more](/ecosystem/registry/?component=instrumentation&language=js)
 
@@ -313,39 +313,6 @@ few times, after a while you should see the spans printed in the console by the
   "status": { "code": 1 },
   "events": []
 }
-{
-  descriptor: {
-    name: 'http.server.duration',
-    type: 'HISTOGRAM',
-    description: 'measures the duration of the inbound HTTP requests',
-    unit: 'ms',
-    valueType: 1
-  },
-  dataPointType: 0,
-  dataPoints: []
-}
-{
-  descriptor: {
-    name: 'http.client.duration',
-    type: 'HISTOGRAM',
-    description: 'measures the duration of the outbound HTTP requests',
-    unit: 'ms',
-    valueType: 1
-  },
-  dataPointType: 0,
-  dataPoints: []
-}
-{
-  descriptor: {
-    name: 'db.client.connections.usage',
-    type: 'UP_DOWN_COUNTER',
-    description: 'The number of connections that are currently in the state referenced by the attribute "state".',
-    unit: '{connections}',
-    valueType: 1
-  },
-  dataPointType: 3,
-  dataPoints: []
-}
 ```
 
 </details>
@@ -359,7 +326,7 @@ you'll get metrics printed out to the console, such as the following
 <details>
 <summary>View example output</summary>
 
-```json
+```javascript
 {
   descriptor: {
     name: 'http.server.duration',
