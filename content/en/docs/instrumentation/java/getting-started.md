@@ -1,15 +1,16 @@
 ---
 title: Getting Started
-description: Get telemetry from a client-server app in less than 5 minutes!
+description: Get telemetry for your app in less than 5 minutes!
 spelling: cSpell:ignore helloworld javaagent springframework autoreconfigure
-spelling: cSpell:ignore rolldice aarch Nanos darwin autoconfigure webmvc
+spelling: cSpell:ignore rolldice aarch Nanos darwin autoconfigure webmvc kotlin
 weight: 1
 ---
 
 This page will show you how to get started with OpenTelemetry in Java.
 
 You will learn how you can instrument a simple java application automatically,
-in such a way that traces, metrics and logs are emitted to the console.
+in such a way that [traces][], [metrics][] and [logs][] are emitted to the
+console.
 
 ## Prerequisites
 
@@ -20,12 +21,17 @@ Ensure that you have the following installed locally:
 
 ## Example Application
 
-The following example uses a basic spring boot application.
+The following example uses a basic
+[Spring Boot](https://spring.io/guides/gs/spring-boot/) application. If you are
+not using Spring Boot, that's fine — this guide will also work with Apache
+Wicket, Play
+[and more](https://opentelemetry.io/ecosystem/registry/?component=instrumentation&language=java)
 
 ### Dependencies
 
-Create a folder called `java-simple` and within that folder, create a file
-called `build.gradle.kts` with the following content:
+To begin, set up an environment in a new directory called `java-simple`. Within
+that directory, create a file called `build.gradle.kts` with the following
+content:
 
 ```kotlin
 plugins {
@@ -49,7 +55,7 @@ dependencies {
 }
 ```
 
-### Code
+### Create the sample HTTP Server
 
 In that same folder, create a file called `DiceApplication.java` and add the
 following code to the file:
@@ -106,7 +112,8 @@ public class RollController {
 }
 ```
 
-To test the application, build and run it:
+Build and run the application with the following command and open
+<http://localhost:8080/rolldice> in your web browser to ensure it is working.
 
 ```console
 gradle assemble
@@ -159,7 +166,7 @@ number of ways, the steps below use environment variables.
    $ curl localhost:8080/rolldice
    ```
 
-5. Stop the server process. For example, for bash-like shells run:
+5. Stop the server process
 
 At step 4, you should have seen trace & log output from the server and client
 that looks something like this (trace output is line-wrapped for convenience):
@@ -227,8 +234,12 @@ For more:
 - Try [automatic instrumentation](../automatic/) on one of your own apps.
 - For light-weight customized telemetry, try [annotations][].
 - Learn about [manual instrumentation][] and try out more
-  [examples]({{% relref examples %}}).
+[examples]({{% relref examples %}}).
+<!-- prettier-ignore-end -->
 
+[traces]: https://opentelemetry.io/docs/concepts/signals/traces/
+[metrics]: https://opentelemetry.io/docs/concepts/signals/metrics/
+[logs]: https://opentelemetry.io/docs/concepts/signals/logs/
 [annotations]: ../automatic/annotations
 [configure the java agent]: ../automatic/#configuring-the-agent
 [console exporter]:
