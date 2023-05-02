@@ -27,6 +27,9 @@ not using Spring Boot, that's fine — this guide will also work with Apache
 Wicket, Play
 [and more](/ecosystem/registry/?component=instrumentation&language=java)
 
+For more elaborate examples, see
+[examples](/docs/instrumentation/java/examples/).
+
 ### Dependencies
 
 To begin, set up an environment in a new directory called `java-simple`. Within
