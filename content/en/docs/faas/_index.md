@@ -25,4 +25,4 @@ The release status can be tracked in the
 
 - [Get started with the Collector Lambda Layer](./lambda-collector)
 - [Auto-instrumentation](./lambda-auto-instrument)
-- ]Manual instrumentation](./lambda-manual-instrument)
+- [Manual instrumentation](./lambda-manual-instrument)
