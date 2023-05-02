@@ -22,7 +22,7 @@ Ensure that you have the following installed locally:
 The following example uses a basic [Flaks](https://flask.palletsprojects.com/)
 application. If you're not using Flask, that's fine — this guide will also work
 with Django, FastAPI
-[and more](https://opentelemetry.io/ecosystem/registry/?component=instrumentation&language=python)
+[and more](/ecosystem/registry/?component=instrumentation&language=python)
 
 For more elaborate examples, see
 [examples](/docs/instrumentation/python/examples/).
@@ -703,6 +703,6 @@ Finally, there are several options for exporting your telemetry data with
 OpenTelemetry. To learn how to export your data to a preferred backend, see
 [Exporters](../exporters/).
 
-[traces]: https://opentelemetry.io/docs/concepts/signals/traces/
-[metrics]: https://opentelemetry.io/docs/concepts/signals/metrics/
-[logs]: https://opentelemetry.io/docs/concepts/signals/logs/
+[traces]: /docs/concepts/signals/traces/
+[metrics]: /docs/concepts/signals/metrics/
+[logs]: /docs/concepts/signals/logs/
