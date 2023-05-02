@@ -1,15 +1,31 @@
 ---
 title: Getting Started
+description: Get telemetry for your app in less than 5 minutes!
+spelling: cSpell:ignore venv distro rolldice randint 
+spelling: cSpell:ignore rollspan loglevel loggingexporter
 weight: 1
 ---
 
-In this page, you'll learn how to set up and get tracing telemetry from an HTTP
-server with Flask. If you're not using Flask, that's fine - this guide will also
-work with Django, FastAPI,
-[and more](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation).
+This page will show you how to get started with OpenTelemetry in Python.
+
+You will learn how you can instrument a simple application automatically, in
+such a way that [traces][], [metrics][] and [logs][] are emitted to the console.
+
+## Prerequisites
+
+Ensure that you have the following installed locally:
+
+- [Python 3](https://www.python.org/)
+
+## Example Application
+
+The following example uses a basic [Flaks](https://flask.palletsprojects.com/)
+application. If you're not using Flask, that's fine — this guide will also work
+with Django, FastAPI
+[and more](https://opentelemetry.io/ecosystem/registry/?component=instrumentation&language=python)
 
 For more elaborate examples, see
-[examples](https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/).
+[examples](/docs/instrumentation/python/examples/).
 
 ## Installation
 
@@ -22,20 +38,15 @@ python3 -m venv .
 source ./bin/activate
 ```
 
-Now install Flask and OpenTelemetry:
+Now install Flask:
 
 ```shell
 pip install flask
-pip install opentelemetry-distro
 ```
-
-The `opentelemetry-distro` package installs the API, SDK, and the
-`opentelemetry-bootstrap` and `opentelemetry-instrument` tools that you'll use
-soon.
 
 ## Create the sample HTTP Server
 
-Create a file `app.py`:
+Create a file `app.py` and add the following code to it:
 
 ```python
 from random import randint
@@ -51,14 +62,27 @@ def do_roll():
     return randint(1, 6)
 ```
 
-When run, this will launch an HTTP server with a `/rolldice` route.
+Run the application with the following command and open
+<http://localhost:80800/rolldice> in your web browser to ensure it is working.
 
-## Add automatic instrumentation
+```console
+$ flask run -p 8080
+```
+
+## Instrumentation
 
 Automatic instrumentation will generate telemetry data on your behalf. There are
 several options you can take, covered in more detail in
 [Automatic Instrumentation](../automatic/). Here we'll use the
 `opentelemetry-instrument` agent.
+
+Install the `opentelemetry-distro` package, which contains the OpenTelemetry
+API, SDK and also the tools `opentelemetry-bootstrap` and
+`opentelemetry-instrument` you will use below.
+
+```
+pip install opentelemetry-distro
+```
 
 Run the `opentelemetry-bootstrap` command:
 
@@ -77,11 +101,13 @@ it print to the console for now:
 opentelemetry-instrument \
     --traces_exporter console \
     --metrics_exporter console \
+    --logs_exporter console \
     flask run
 ```
 
-When you send a request to the server, you'll get a result in a trace with a
-single span printed to the console, such as the following:
+Open <http://localhost:8080/rolldice> in your web browser and reload the page a
+few times, after a while you should see the spans printed in the console, such
+as the following:
 
 <details>
 <summary>View example output</summary>
@@ -676,3 +702,7 @@ the OpenTelemetry API you can use, see [Manual Instrumentation](../manual/).
 Finally, there are several options for exporting your telemetry data with
 OpenTelemetry. To learn how to export your data to a preferred backend, see
 [Exporters](../exporters/).
+
+[traces]: https://opentelemetry.io/docs/concepts/signals/traces/
+[metrics]: https://opentelemetry.io/docs/concepts/signals/metrics/
+[logs]: https://opentelemetry.io/docs/concepts/signals/logs/
