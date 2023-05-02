@@ -5,9 +5,9 @@ weight: 11
 description: Add and configure the Collector Lambda layer to your Lambda
 ---
 
-The community offers the Collector in a separate Lambda layer from the
+The OpenTelemetry community offers the Collector in a separate Lambda layer from the
 instrumentation layers to give users maximum flexibility. This is different than
-the current ADOT implementation which bundles instrumentation and the Collector
+the current AWS Distribution of OpenTelemetry (ADOT) implementation which bundles instrumentation and the Collector
 together.
 
 ### Add the ARN of the OTel Collector Lambda layer
