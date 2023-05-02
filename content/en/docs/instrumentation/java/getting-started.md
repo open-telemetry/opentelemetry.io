@@ -25,7 +25,7 @@ The following example uses a basic
 [Spring Boot](https://spring.io/guides/gs/spring-boot/) application. If you are
 not using Spring Boot, that's fine — this guide will also work with Apache
 Wicket, Play
-[and more](https://opentelemetry.io/ecosystem/registry/?component=instrumentation&language=java)
+[and more](/ecosystem/registry/?component=instrumentation&language=java)
 
 ### Dependencies
 
@@ -237,9 +237,9 @@ For more:
 [examples]({{% relref examples %}}).
 <!-- prettier-ignore-end -->
 
-[traces]: https://opentelemetry.io/docs/concepts/signals/traces/
-[metrics]: https://opentelemetry.io/docs/concepts/signals/metrics/
-[logs]: https://opentelemetry.io/docs/concepts/signals/logs/
+[traces]: /docs/concepts/signals/traces/
+[metrics]: /docs/concepts/signals/metrics/
+[logs]: /docs/concepts/signals/logs/
 [annotations]: ../automatic/annotations
 [configure the java agent]: ../automatic/#configuring-the-agent
 [console exporter]:
