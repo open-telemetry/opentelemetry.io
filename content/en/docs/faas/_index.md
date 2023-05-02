@@ -21,7 +21,7 @@ your application as well as a the option of standalone Collector Lambda layer
 that can be used when instrumenting applications manually or automatically.
 
 The release status can be tracked in the
-[OpenTelemetry-Lambda repo](https://github.com/open-telemetry/opentelemetry-lambda).
+[OpenTelemetry-Lambda repository](https://github.com/open-telemetry/opentelemetry-lambda).
 
 - [Get started with the Collector Lambda Layer](./lambda-collector)
 - [Auto-instrumentation](./lambda-auto-instrument)
