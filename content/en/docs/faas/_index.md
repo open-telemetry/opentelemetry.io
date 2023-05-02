@@ -16,7 +16,7 @@ functions (Lambdas).
 
 ### Community Assets
 
-The community currently provides pre-built Lambda layers able to auto-instrument
+The OpenTelemetry community currently provides pre-built Lambda layers able to auto-instrument
 your application as well as a the option of standalone Collector Lambda layer
 that can be used when instrumenting applications manually or automatically.
 
