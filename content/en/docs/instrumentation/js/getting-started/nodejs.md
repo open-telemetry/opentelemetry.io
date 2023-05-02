@@ -22,8 +22,8 @@ Ensure that you have the following installed locally:
 ## Example Application
 
 The following example uses a basic [Express](https://expressjs.com/)
-application. If you're not using Express, that's fine — this guide will also work
-with Koa, Nest.JS
+application. If you're not using Express, that's fine — this guide will also
+work with Koa, Nest.JS
 [and more](/ecosystem/registry/?component=instrumentation&language=js)
 
 For more elaborate examples, see [examples](/docs/instrumentation/js/examples/).
