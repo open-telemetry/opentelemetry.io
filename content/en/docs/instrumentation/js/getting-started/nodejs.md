@@ -24,7 +24,7 @@ Ensure that you have the following installed locally:
 The following example uses a basic [Express](https://expressjs.com/)
 application. If you're not using Flask, that's fine — this guide will also work
 with Koa, Nest.JS
-[and more](https://opentelemetry.io/ecosystem/registry/?component=instrumentation&language=js)
+[and more](/ecosystem/registry/?component=instrumentation&language=js)
 
 For more elaborate examples, see [examples](/docs/instrumentation/js/examples/).
 
@@ -526,6 +526,6 @@ diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
-[traces]: https://opentelemetry.io/docs/concepts/signals/traces/
-[metrics]: https://opentelemetry.io/docs/concepts/signals/metrics/
-[logs]: https://opentelemetry.io/docs/concepts/signals/logs/
+[traces]: /docs/concepts/signals/traces/
+[metrics]: /docs/concepts/signals/metrics/
+[logs]: /docs/concepts/signals/logs/
