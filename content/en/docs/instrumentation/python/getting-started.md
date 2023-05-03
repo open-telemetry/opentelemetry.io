@@ -66,8 +66,8 @@ def do_roll():
 Run the application with the following command and open
 <http://localhost:80800/rolldice> in your web browser to ensure it is working.
 
-```console
-$ flask run -p 8080
+```sh
+flask run -p 8080
 ```
 
 ## Instrumentation
