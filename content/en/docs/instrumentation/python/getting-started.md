@@ -19,7 +19,7 @@ Ensure that you have the following installed locally:
 
 ## Example Application
 
-The following example uses a basic [Flaks](https://flask.palletsprojects.com/)
+The following example uses a basic [Flask](https://flask.palletsprojects.com/)
 application. If you're not using Flask, that's fine — this guide will also work
 with Django, FastAPI
 [and more](/ecosystem/registry/?component=instrumentation&language=python)
