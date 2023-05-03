@@ -39,9 +39,32 @@ $record = (new LogRecord('hello world'))
 $eventLogger->logEvent('foo', $record);
 ```
 
-## Examples
+## Integrations for 3rd-party logging libraries
 
-The
-[monolog-otel-integration example](https://github.com/open-telemetry/opentelemetry-php/blob/main/examples/logs/features/monolog-otel-integration.php)
-demonstrates using the popular Monolog logger to send some logs to a stream (in
-their usual format), as well as sending some logs to an OpenTelemetry collector.
+### Monolog
+
+We provide a
+[monolog handler](https://packagist.org/packages/open-telemetry/opentelemetry-logger-monolog)
+which can be used to send monolog logs to an OpenTelemetry-capable receiver:
+
+```shell
+composer require open-telemetry/opentelemetry-logger-monolog
+```
+
+```php
+$loggerProvider = new LoggerProvider(/*params*/);
+
+$handler = new \OpenTelemetry\Contrib\Logs\Monolog\Handler(
+    $loggerProvider,
+    \Psr\Log\LogLevel::ERROR,
+);
+$logger = new \Monolog\Logger('example', [$handler]);
+
+$logger->info('hello, world');
+$logger->error('oh no', [
+    'foo' => 'bar',
+    'exception' => new \Exception('something went wrong'),
+]);
+
+$loggerProvider->shutdown();
+```

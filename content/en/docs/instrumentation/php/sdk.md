@@ -81,6 +81,11 @@ $meter = OpenTelemetry\API\Common\Instrumentation\Globals::meterProvider()->getT
 
 SDK autoloading happens as part of the composer autoloader.
 
+{{% alert title="Important" color="warning" %}}The batch span and log processors
+emit metrics about their internal state, so ensure you have a correctly
+configured metrics exporter. Alternatively, you can disable it by setting
+`OTEL_METRICS_EXPORTER=none`{{% /alert %}}
+
 ## Configuration
 
 The PHP SDK supports most of the
