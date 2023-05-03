@@ -230,7 +230,7 @@ Listening for requests on http://localhost:8080
 <!-- prettier-ignore-end -->
 
 Open <http://localhost:8080/rolldice> in your web browser and reload the page a
-few times, after a while you should see the spans printed in the console by the
+few times. After a while you should see the spans printed in the console by the
 `ConsoleSpanExporter`.
 
 <details>
