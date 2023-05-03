@@ -19,8 +19,8 @@ your data.
 
 ### Add the ARN of the OTel Collector Lambda layer
 
-See the [Collector Lambda layer guidance](lambda-collector/) to add the
-layer to your application and configure the Collector. We recommend you add this
+See the [Collector Lambda layer guidance](./lambda-collector) to add the layer
+to your application and configure the Collector. We recommend you add this
 first.
 
 ### Language Requirements
