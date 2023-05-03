@@ -24,7 +24,7 @@ $loggerProvider = new LoggerProvider(
         new ConsoleExporter()
     )
 );
-$logger = $loggerProvider->getLogger('demo', '1.0', 'http://schema.url', true, [/*attributes*/]);
+$logger = $loggerProvider->getLogger('demo', '1.0', 'http://schema.url', [/*attributes*/]);
 $eventLogger = new EventLogger($logger, 'my-domain');
 ```
 
