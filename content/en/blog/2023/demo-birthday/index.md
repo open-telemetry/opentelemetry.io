@@ -8,9 +8,9 @@ author: '[Carter Socha](https://github.com/cartersocha) (Lightstep)'
 ![The OTel Demo turns 1.4](demo-birthday-3.png 'The OTel Demo turns 1.4')
 
 It's hard to believe as we prepare our 1.4.0 release but the
-[OpenTelemetry demo](https://opentelemetry.io/docs/demo/) is turning 1 year old
-and it's been 6 months since we declared general availability with our
-[1.0.0 release](https://opentelemetry.io/blog/2022/announcing-opentelemetry-demo-release/).
+[OpenTelemetry demo](/docs/demo/) is turning 1 year old and it's been 6 months
+since we declared general availability with our
+[1.0.0 release](/blog/2022/announcing-opentelemetry-demo-release/).
 
 ### Project Milestones
 
@@ -32,7 +32,7 @@ changed between our 1.0.0 and 1.4.0 releases? Quite a lot actually.
 - _Kubernetes manifest to enable Kubernetes deployment without using requiring
   Helm_
 - **More out of the box dashboards like our
-  [Collector Data Flow Dashboard](https://opentelemetry.io/docs/demo/collector-data-flow-dashboard/)**
+  [Collector Data Flow Dashboard](/docs/demo/collector-data-flow-dashboard/)**
 - **A myriad of frontend bug fixes**
 - _Our first
   [Connector](https://github.com/open-telemetry/opentelemetry-collector/blob/main/connector/README.md)
@@ -42,9 +42,8 @@ changed between our 1.0.0 and 1.4.0 releases? Quite a lot actually.
 - **PHP no-code change auto-instrumentation**
 - _Browser and compute resource detectors that enrich our data with
   infrastructure information_
-- **More
-  [feature flag scenarios](https://opentelemetry.io/docs/demo/feature-flags/)
-  like generating a failure for every 10th Ad shown**
+- **More [feature flag scenarios](/docs/demo/feature-flags/) like generating a
+  failure for every 10th Ad shown**
 - _General stability improvements to fix service restarts_
 
 For detailed changes, check out our in depth

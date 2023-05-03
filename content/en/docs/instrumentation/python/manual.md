@@ -36,7 +36,7 @@ provider.add_span_processor(processor)
 trace.set_tracer_provider(provider)
 
 # Creates a tracer from the global tracer provider
-tracer = trace.get_tracer(__name__)
+tracer = trace.get_tracer("my.tracer.name")
 ```
 
 To start collecting metrics, you'll need to initialize a
@@ -58,7 +58,7 @@ provider = MeterProvider(metric_readers=[metric_reader])
 metrics.set_meter_provider(provider)
 
 # Creates a meter from the global meter provider
-meter = metrics.get_meter(__name__)
+meter = metrics.get_meter("my.meter.name")
 ```
 
 ## Tracing
