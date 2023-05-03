@@ -106,7 +106,7 @@ opentelemetry-instrument \
 ```
 
 Open <http://localhost:8080/rolldice> in your web browser and reload the page a
-few times, after a while you should see the spans printed in the console, such
+few times. After a while you should see the spans printed in the console, such
 as the following:
 
 <details>
