@@ -11,8 +11,7 @@ cloud native applications. However, platform quirks usually mean these
 applications have slightly different monitoring guidance and requirements than
 applications running on Kubernetes or Virtual Machines.
 
-The initial vendor scope of the FaaS documentation is around Azure, GCP, and AWS
-functions (Lambdas).
+The initial vendor scope of the FaaS documentation is around Microsoft Azure, Google Cloud Platform (GCP), and Amazon Web Services (AWS). AWS functions are also known as Lambda.
 
 ### Community Assets
 
