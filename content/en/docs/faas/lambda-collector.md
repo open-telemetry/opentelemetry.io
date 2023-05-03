@@ -5,10 +5,10 @@ weight: 11
 description: Add and configure the Collector Lambda layer to your Lambda
 ---
 
-The OpenTelemetry community offers the Collector in a separate Lambda layer from the
-instrumentation layers to give users maximum flexibility. This is different than
-the current AWS Distribution of OpenTelemetry (ADOT) implementation which bundles instrumentation and the Collector
-together.
+The OpenTelemetry community offers the Collector in a separate Lambda layer from
+the instrumentation layers to give users maximum flexibility. This is different
+than the current AWS Distribution of OpenTelemetry (ADOT) implementation which
+bundles instrumentation and the Collector together.
 
 ### Add the ARN of the OTel Collector Lambda layer
 
@@ -88,10 +88,10 @@ using different Confmap providers, Please refer to Confmap providers section for
 more information.
 
 Once your collector configuration is set through a confmap providers. Create an
-environment variable on your Lambda function OPENTELEMETRY_COLLECTOR_CONFIG_FILE
+environment variable on your Lambda function OPENTELEMETRY*COLLECTOR_CONFIG_FILE
 and set the path of configuration w.r.t to the confmap provider as its value.
 for e.g, if you are using a file configmap provider, set its value to
-/var/task/_<path/<to>/<filename>_. This will tell the extension where to find
+/var/task/*<path/<to>/<filename>\_. This will tell the extension where to find
 the collector configuration.
 
 You can set this via the Lambda console, or via the AWS CLI.
