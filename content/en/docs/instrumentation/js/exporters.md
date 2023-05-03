@@ -15,14 +15,15 @@ matching exporters.
 
 To send trace data to a OTLP endpoint (like the [collector](/docs/collector) or
 Jaeger) you'll want to use an exporter package, such as
-`@opentelemetry/exporter-trace-otlp-http`:
+`@opentelemetry/exporter-trace-otlp-proto`:
 
 ```shell
-npm install --save @opentelemetry/exporter-trace-otlp-http
+npm install --save @opentelemetry/exporter-trace-otlp-proto \
+  @opentelemetry/exporter-metrics-otlp-proto
 ```
 
 Next, configure the exporter to point at an OTLP endpoint. For example you can
-update `tracing.ts|js` from the
+update `instrumentation.ts|js` from the
 [Getting Started](/docs/instrumentation/js/getting-started/nodejs/) like the
 following:
 
@@ -30,13 +31,19 @@ following:
 {{< tabpane langEqualsHeader=true >}}
 {{< tab Typescript >}}
 /*tracing.ts*/
-import * as opentelemetry from '@opentelemetry/sdk-node';
+import * as opentelemetry from "@opentelemetry/sdk-node";
 import {
   getNodeAutoInstrumentations,
 } from "@opentelemetry/auto-instrumentations-node";
 import {
   OTLPTraceExporter,
-} from "@opentelemetry/exporter-trace-otlp-http";
+} from "@opentelemetry/exporter-trace-otlp-proto";
+import {
+  OTLPMetricExporter
+} from "@opentelemetry/exporter-metrics-otlp-proto";
+import {
+  PeriodicExportingMetricReader
+} from "@opentelemetry/sdk-metrics";
 
 const sdk = new opentelemetry.NodeSDK({
   traceExporter: new OTLPTraceExporter({
@@ -44,6 +51,12 @@ const sdk = new opentelemetry.NodeSDK({
     url: "<your-otlp-endpoint>/v1/traces",
     // optional - collection of custom headers to be sent with each request, empty by default
     headers: {},
+  }),
+  metricReader: new PeriodicExportingMetricReader({
+    exporter: new OTLPMetricExporter({
+      url: '<your-otlp-endpoint>/v1/metrics', // url is optional and can be omitted - default is http://localhost:4318/v1/metrics
+      headers: {}, // an optional object containing custom headers to be sent with each request
+    }),
   }),
   instrumentations: [getNodeAutoInstrumentations()],
 });
@@ -58,7 +71,10 @@ const {
 } = require("@opentelemetry/auto-instrumentations-node");
 const {
   OTLPTraceExporter,
-} = require("@opentelemetry/exporter-trace-otlp-http");
+} = require("@opentelemetry/exporter-trace-otlp-proto");
+const {
+  OTLPMetricExporter
+} = require("@opentelemetry/exporter-metrics-otlp-proto");
 
 const sdk = new opentelemetry.NodeSDK({
   traceExporter: new OTLPTraceExporter({
@@ -66,6 +82,13 @@ const sdk = new opentelemetry.NodeSDK({
     url: "<your-otlp-endpoint>/v1/traces",
     // optional - collection of custom headers to be sent with each request, empty by default
     headers: {},
+  }),
+  metricReader: new PeriodicExportingMetricReader({
+    exporter: new OTLPMetricExporter({
+      url: '<your-otlp-endpoint>/v1/metrics', // url is optional and can be omitted - default is http://localhost:4318/v1/metrics
+      headers: {}, // an optional object containing custom headers to be sent with each request
+      concurrencyLimit: 1, // an optional limit on pending requests
+    }),
   }),
   instrumentations: [getNodeAutoInstrumentations()],
 });
@@ -181,7 +204,7 @@ server {
         # Take care of preflight requests
         if ($request_method = 'OPTIONS') {
              add_header 'Access-Control-Max-Age' 1728000;
-             add_header "Access-Control-Allow-Origin" "name.of.your.website.example.com" always;
+             add_header 'Access-Control-Allow-Origin' 'name.of.your.website.example.com' always;
              add_header 'Access-Control-Allow-Headers' 'Accept,Accept-Language,Content-Language,Content-Type' always;
              add_header 'Access-Control-Allow-Credentials' 'true' always;
              add_header 'Content-Type' 'text/plain charset=UTF-8';
@@ -189,7 +212,7 @@ server {
              return 204;
         }
 
-        add_header "Access-Control-Allow-Origin" "name.of.your.website.example.com" always;
+        add_header 'Access-Control-Allow-Origin' 'name.of.your.website.example.com' always;
         add_header 'Access-Control-Allow-Credentials' 'true' always;
         add_header 'Access-Control-Allow-Headers' 'Accept,Accept-Language,Content-Language,Content-Type' always;
         proxy_http_version 1.1;

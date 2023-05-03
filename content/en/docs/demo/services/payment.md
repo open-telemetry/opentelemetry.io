@@ -55,7 +55,14 @@ const {
 
 const sdk = new opentelemetry.NodeSDK({
   traceExporter: new OTLPTraceExporter(),
-  instrumentations: [getNodeAutoInstrumentations()],
+  instrumentations: [
+    getNodeAutoInstrumentations({
+      // only instrument fs if it is part of another trace
+      '@opentelemetry/instrumentation-fs': {
+        requireParentSpan: true,
+      },
+    }),
+  ],
   metricReader: new PeriodicExportingMetricReader({
     exporter: new OTLPMetricExporter(),
   }),
@@ -72,7 +79,7 @@ const sdk = new opentelemetry.NodeSDK({
   ],
 });
 
-sdk.start().then(() => require('./index'));
+sdk.start();
 ```
 
 You can then use `opentelemetry.js` to start your app. This can be done in the

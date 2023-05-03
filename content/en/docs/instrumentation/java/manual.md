@@ -71,6 +71,8 @@ telemetry source-identifying info.
 </project>
 ```
 
+See [releases][releases] for a full list of artifact coordinates.
+
 ### Gradle
 
 ```kotlin
@@ -81,6 +83,8 @@ dependencies {
     implementation 'io.opentelemetry:opentelemetry-semconv:{{% param javaVersion %}}-alpha'
 }
 ```
+
+See [releases][releases] for a full list of artifact coordinates.
 
 ### Imports
 
@@ -115,6 +119,8 @@ SdkMeterProvider sdkMeterProvider = SdkMeterProvider.builder()
   .registerMetricReader(PeriodicMetricReader.builder(OtlpGrpcMetricExporter.builder().build()).build())
   .setResource(resource)
   .build();
+
+// TODO: add log configuration when stable
 
 OpenTelemetry openTelemetry = OpenTelemetrySdk.builder()
   .setTracerProvider(sdkTracerProvider)
@@ -159,8 +165,8 @@ instance will interoperate, regardless of name.
 
 ### Create Spans
 
-To create [Spans](/docs/concepts/signals/traces/#spans-in-opentelemetry), you
-only need to specify the name of the span. The start and end time of the span is
+To create [Spans](/docs/concepts/signals/traces/#spans), you only need to
+specify the name of the span. The start and end time of the span is
 automatically set by the OpenTelemetry SDK.
 
 ```java
@@ -179,9 +185,9 @@ It's required to call `end()` to end the span when you want it to end.
 ### Create nested Spans
 
 Most of the time, we want to correlate
-[spans](/docs/concepts/signals/traces/#spans-in-opentelemetry) for nested
-operations. OpenTelemetry supports tracing within processes and across remote
-processes. For more details how to share context between remote processes, see
+[spans](/docs/concepts/signals/traces/#spans) for nested operations.
+OpenTelemetry supports tracing within processes and across remote processes. For
+more details how to share context between remote processes, see
 [Context Propagation](#context-propagation).
 
 For a method `a` calling a method `b`, the spans could be manually linked in the
@@ -244,8 +250,8 @@ Span childRemoteParent = tracer.spanBuilder("Child").setParent(remoteContext).st
 ### Get the current span
 
 Sometimes it's helpful to do something with the current/active
-[span](/docs/concepts/signals/traces/#spans-in-opentelemetry) at a particular
-point in program execution.
+[span](/docs/concepts/signals/traces/#spans) at a particular point in program
+execution.
 
 ```java
 Span span = Span.current()
@@ -259,9 +265,9 @@ Span span = Span.fromContext(context)
 
 ### Span Attributes
 
-In OpenTelemetry [spans](/docs/concepts/signals/traces/#spans-in-opentelemetry)
-can be created freely and it's up to the implementor to annotate them with
-attributes specific to the represented operation.
+In OpenTelemetry [spans](/docs/concepts/signals/traces/#spans) can be created
+freely and it's up to the implementor to annotate them with attributes specific
+to the represented operation.
 [Attributes](/docs/concepts/signals/traces/#attributes) provide additional
 context on a span about the specific operation it tracks, such as results or
 operation properties.
@@ -308,11 +314,10 @@ span.setAttribute(SemanticAttributes.HTTP_URL, url.toString());
 
 ### Create Spans with events
 
-[Spans](/docs/concepts/signals/traces/#spans-in-opentelemetry) can be annotated
-with named events (called
-[Span Events](/docs/concepts/signals/traces/#span-events)) that can carry zero
-or more [Span Attributes](#span-attributes), each of which itself is a key:value
-map paired automatically with a timestamp.
+[Spans](/docs/concepts/signals/traces/#spans) can be annotated with named events
+(called [Span Events](/docs/concepts/signals/traces/#span-events)) that can
+carry zero or more [Span Attributes](#span-attributes), each of which itself is
+a key:value map paired automatically with a timestamp.
 
 ```java
 span.addEvent("Init");
@@ -330,8 +335,8 @@ span.addEvent("End Computation", eventAttributes);
 
 ### Create Spans with links
 
-A [Span](/docs/concepts/signals/traces/#spans-in-opentelemetry) may be linked to
-zero or more other Spans that are causally related via a
+A [Span](/docs/concepts/signals/traces/#spans) may be linked to zero or more
+other Spans that are causally related via a
 [Span Link](/docs/concepts/signals/traces/#span-links). Links can be used to
 represent batched operations where a Span was initiated by multiple initiating
 Spans, each representing a single incoming item being processed in the batch.
@@ -351,10 +356,10 @@ For more details how to read context from remote processes, see
 ### Set span status
 
 A [status](/docs/concepts/signals/traces/#span-status) can be set on a
-[span](/docs/concepts/signals/traces/#spans-in-opentelemetry), typically used to
-specify that a span has not completed successfully - `SpanStatus.Error`. In rare
-scenarios, you could override the `Error` status with `OK`, but don't set `OK`
-on successfully-completed spans.
+[span](/docs/concepts/signals/traces/#spans), typically used to specify that a
+span has not completed successfully - `SpanStatus.Error`. In rare scenarios, you
+could override the `Error` status with `OK`, but don't set `OK` on
+successfully-completed spans.
 
 The status can be set at any time before the span is finished:
 
@@ -537,13 +542,13 @@ public void handle(<Library Specific Annotation> HttpHeaders headers){
 
 ## Metrics
 
-[Spans](/docs/concepts/signals/traces/#spans-in-opentelemetry) provide detailed
-information about your application, but produce data that is proportional to the
-load on the system. In contrast, [metrics](/docs/concepts/signals/metrics)
-combine individual measurements into aggregations, and produce data which is
-constant as a function of system load. The aggregations lack details required to
-diagnose low level issues, but complement spans by helping to identify trends
-and providing application runtime telemetry.
+[Spans](/docs/concepts/signals/traces/#spans) provide detailed information about
+your application, but produce data that is proportional to the load on the
+system. In contrast, [metrics](/docs/concepts/signals/metrics) combine
+individual measurements into aggregations, and produce data which is constant as
+a function of system load. The aggregations lack details required to diagnose
+low level issues, but complement spans by helping to identify trends and
+providing application runtime telemetry.
 
 The metrics API defines a variety of instruments. Instruments record
 measurements, which are aggregated by the metrics SDK and eventually exported
@@ -616,6 +621,90 @@ meter
     measurement.record(getCpuUsage(), Attributes.of(stringKey("Key"), "SomeWork"));
   });
 ```
+
+## Logs
+
+Logs are distinct from Metrics and Tracing in that there is no user-facing logs
+API. Instead, there is tooling to bridge logs from existing popular log
+frameworks (e.g. SLF4j, JUL, Logback, Log4j) into the OpenTelemetry ecosystem.
+
+The two typical workflows discussed below each cater to different application
+requirements.
+
+### Direct to collector
+
+In the direct to collector workflow, logs are emitted directly from an
+application to a collector using a network protocol (e.g. OTLP). This workflow
+is simple to set up as it doesn't require any additional log forwarding
+components, and allows an application to easily emit structured logs that
+conform to the [log data model][log data model]. However, the overhead required
+for applications to queue and export logs to a network location may not be
+suitable for all applications.
+
+To use this workflow:
+
+- Install appropriate [Log Appender](#log-appenders).
+- Configure the OpenTelemetry [Log SDK](#logs-sdk) to export log records to
+  desired target destination (the [collector][opentelemetry collector] or
+  other).
+
+#### Log appenders
+
+A log appender bridges logs from a log framework into the OpenTelemetry
+[Log SDK](#logs-sdk) using the [Logs Bridge API][logs bridge API]. Log appenders
+are available for various popular java log frameworks:
+
+- [Log4j2 Appender][log4j2 appender]
+- [Logback Appender][logback appender]
+
+The links above contain full usage and installation documentation, but
+installation is generally as follows:
+
+- Add required dependency via gradle or maven.
+- Extend the application's log configuration (i.e. `logback.xml`, `log4j.xml`,
+  etc) to include a reference to the OpenTelemetry log appender.
+  - Optionally configure the log framework to determine which logs (i.e. filter
+    by severity or logger name) are passed to the appender.
+  - Optionally configure the appender to indicate how logs are mapped to
+    OpenTelemetry Log Records (i.e. capture thread information, context data,
+    markers, etc).
+
+Log appenders automatically include the trace context in log records, enabling
+log correlation with traces.
+
+The [Log Appender example][log appender example] demonstrates setup for a
+variety of scenarios.
+
+### Via file or stdout
+
+In the file or stdout workflow, logs are written to files or standout output.
+Another component (e.g. FluentBit) is responsible for reading / tailing the
+logs, parsing them to more structured format, and forwarding them a target, such
+as the collector. This workflow may be preferable in situations where
+application requirements do not permit additional overhead from
+[direct to collector](#direct-to-collector). However, it requires that all log
+fields required down stream are encoded into the logs, and that the component
+reading the logs parse the data into the [log data model][log data model]. The
+installation and configuration of log forwarding components is outside the scope
+of this document.
+
+Log correlation with traces is available by installing
+[log context instrumentation](#log-context-instrumentation).
+
+#### Log context instrumentation
+
+OpenTelemetry provides components which enrich log context with trace context
+for various popular java log frameworks:
+
+- [Log4j context data instrumentation][log4j context instrumentation]
+- [Logback MDC instrumentation][logback context instrumentation]
+
+This links above contain full usage and installation documentation, but
+installation is generally as follows:
+
+- Add required dependency via gradle or maven.
+- Extend the application's log configuration (i.e. `logback.xml` or `log4j.xml`,
+  etc) to reference the trace context fields in the log pattern.
 
 ## SDK Configuration
 
@@ -799,6 +888,68 @@ view is replaced by the registered view. Additional registered views that match
 the instrument are additive, and result in multiple exported metrics for the
 instrument.
 
+### Logs SDK
+
+The logs SDK dictates how logs are processed when using the
+[direct to collector](#direct-to-collector) workflow. No log SDK is needed when
+using the [log forwarding](#via-file-or-stdout) workflow.
+
+The typical log SDK configuration installs a log record processor and exporter.
+For example, the following installs the
+[BatchLogRecordProcessor](#logrecord-processor), which periodically exports to a
+network location via the [OtlpGrpcLogRecordExporter](#logrecord-exporter):
+
+```java
+SdkLoggerProvider loggerProvider = SdkLoggerProvider.builder()
+  .addLogRecordProcessor(
+    BatchLogRecordProcessor.builder(
+      OtlpGrpcLogRecordExporter.builder()
+          .setEndpoint("http://localhost:4317")
+          .build())
+      .build())
+  .build();
+```
+
+See [releases][releases] for log specific artifact coordinates.
+
+#### LogRecord Processor
+
+LogRecord processors process LogRecords emitted by
+[log appenders](#log-appenders).
+
+OpenTelemetry provides the following LogRecord processors out of the box:
+
+- `BatchLogRecordProcessor`: periodically sends batches of LogRecords to a
+  [LogRecordExporter](#logrecord-exporter).
+- `SimpleLogRecordProcessor`: immediately sends each LogRecord to a
+  [LogRecordExporter](#logrecord-exporter).
+
+Custom LogRecord processors are supported by implementing the
+`LogRecordProcessor` interface. Common use cases include enriching the
+LogRecords with contextual data like baggage, or filtering / obfuscating
+sensitive data.
+
+#### LogRecord Exporter
+
+`BatchLogRecordProcessor` and `SimpleLogRecordProcessor` are paired with
+`LogRecordExporter`, which is responsible for sending telemetry data to a
+particular backend. OpenTelemetry provides the following exporters out of the
+box:
+
+- OpenTelemetry Protocol Exporter: sends the data in OTLP to the [OpenTelemetry
+  Collector] or other OTLP receivers. Varieties include
+  `OtlpGrpcLogRecordExporter` and `OtlpHttpLogRecordExporter`.
+- `InMemoryLogRecordExporter`: keeps the data in memory, useful for testing and
+  debugging.
+- Logging Exporter: saves the telemetry data into log streams. Varieties include
+  `SystemOutLogRecordExporter` and `OtlpJsonLoggingLogRecordExporter`. Note:
+  `OtlpJsonLoggingLogRecordExporter` logs to JUL, and may cause infinite loops
+  (i.e. JUL -> SLF4J -> Logback -> OpenTelemetry Appender -> OpenTelemetry Log
+  SDK -> JUL) if not carefully configured.
+
+Custom exporters are supported by implementing the `LogRecordExporter`
+interface.
+
 ### Auto Configuration
 
 Instead of manually creating the `OpenTelemetry` instance by using the SDK
@@ -864,7 +1015,7 @@ AutoConfiguredOpenTelemetrySdk.builder()
         .build();
 ```
 
-## Logging and Error Handling
+## SDK Logging and Error Handling
 
 OpenTelemetry uses
 [java.util.logging](https://docs.oracle.com/javase/7/docs/api/java/util/logging/package-summary.html)
@@ -931,12 +1082,25 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
 [instrumented library]:
   /docs/reference/specification/glossary/#instrumented-library
 [library guidelines]: /docs/reference/specification/library-guidelines
+[logs bridge API]: /docs/reference/specification/logs/bridge-api
+[log data model]: /docs/reference/specification/logs/data-model
+[log4j2 appender]:
+  https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/log4j/log4j-appender-2.17/library
+[logback appender]:
+  https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/logback/logback-appender-1.0/library
+[log appender example]:
+  https://github.com/open-telemetry/opentelemetry-java-docs/tree/main/log-appender
+[log4j context instrumentation]:
+  https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/log4j/log4j-context-data/log4j-context-data-2.17/library-autoconfigure
+[logback context instrumentation]:
+  https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/logback/logback-mdc-1.0/library
 [obtaining a tracer]: /docs/reference/specification/trace/api/#get-a-tracer
 [opentelemetry collector]:
   https://github.com/open-telemetry/opentelemetry-collector
 [opentelemetry registry]: /ecosystem/registry/?component=exporter&language=java
 [parentbased]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/ParentBasedSampler.java
+[releases]: https://github.com/open-telemetry/opentelemetry-java#releases
 [semantic conventions]: /docs/reference/specification/trace/semantic_conventions
 [traceidratiobased]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/TraceIdRatioBasedSampler.java

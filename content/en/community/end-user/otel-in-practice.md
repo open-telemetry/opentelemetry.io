@@ -4,6 +4,7 @@ linkTitle: OTel in Practice
 description: >-
   _OpenTelemetry in Practice_ is a _series_ of talks initiated by some members
   of the End User Working Group.
+weight: 30
 ---
 
 We’re aiming to:

@@ -10,9 +10,8 @@ in order to generate telemetry data for a library or framework.
 
 For example,
 [the instrumentation library for Express](https://www.npmjs.com/package/@opentelemetry/instrumentation-express)
-will automatically create
-[spans](/docs/concepts/signals/traces/#spans-in-opentelemetry) based on the
-inbound HTTP requests.
+will automatically create [spans](/docs/concepts/signals/traces/#spans) based on
+the inbound HTTP requests.
 
 ## Setup
 

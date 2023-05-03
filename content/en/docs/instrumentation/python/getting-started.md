@@ -360,7 +360,7 @@ automatically created one:
 </details>
 
 The `parent_id` of `do_roll` is the same is the `span_id` for `/rolldice`,
-indicating a parent-child reletionship!
+indicating a parent-child relationship!
 
 ### Metrics
 

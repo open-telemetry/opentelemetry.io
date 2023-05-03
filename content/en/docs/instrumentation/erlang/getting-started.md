@@ -7,46 +7,22 @@ Welcome to the OpenTelemetry for Erlang/Elixir getting started guide! This guide
 will walk you through the basic steps in installing, configuring, and exporting
 data from OpenTelemetry.
 
-## Installation
-
-OpenTelemetry packages for Erlang/Elixir are available on
-[hex.pm](https://hex.pm). There are two packages you might want to install,
-depending on what you are trying to accomplish.
-
-### `opentelemetry_api`
-
-If you are developing a library or OTP Application that someone else would
-include into their deployed code and you want to provide OpenTelemetry
-instrumentation for them, you'll want to add the dependency `opentelemetry_api`.
-This package contains only the API of OpenTelemetry. It will not start any
-processes and all API calls (such as starting a span) will be a no-op that
-creates no data, unless the `opentelemetry` SDK package is also installed.
-
-### `opentelemetry`
-
-If you are developing an Application that will actually be deployed and export
-OpenTelemetry data, whether from instrumented dependencies or your code itself,
-you'll want to add the `opentelemetry` package. This is the implementation of
-the API and will start a Supervision tree, handling the necessary components for
-recording and exporting OpenTelemetry signals. This is the package where you
-would configure the destination(s) for your OpenTelemetry data, whether it be to
-an OpenTelemetry Collector instance, or directly to a vendor's data ingestion
-API.
+## Creating a New Project
 
 To get started with this guide, create a new project with `rebar3` or `mix`:
 
 <!-- prettier-ignore-start -->
-{{< ot-tabs Erlang Elixir >}}
+{{< tabpane langEqualsHeader=true >}}
 
-{{< ot-tab lang="sh" >}}
+{{< tab Erlang >}}
 rebar3 new release otel_getting_started
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< ot-tab lang="sh" >}}
+{{< tab Elixir >}}
 mix new --sup otel_getting_started
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< /ot-tabs >}}
+{{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
 Then, in the project you just created, add both `opentelemetry_api` and
@@ -54,61 +30,79 @@ Then, in the project you just created, add both `opentelemetry_api` and
 run as a Release and export spans from.
 
 <!-- prettier-ignore-start -->
-{{< ot-tabs Erlang Elixir >}}
+{{< tabpane langEqualsHeader=true >}}
 
-{{< ot-tab >}}
-{deps, [{opentelemetry_api, "~> 1.0"},
-        {opentelemetry, "~> 1.0"}]}.
-{{< /ot-tab >}}
+{{< tab Erlang >}}
+{deps, [{opentelemetry_api, "~> 1.2"},
+        {opentelemetry, "~> 1.3"}]}.
+{{< /tab >}}
 
-{{< ot-tab >}}
+{{< tab Elixir >}}
 def deps do
   [
-    {:opentelemetry_api, "~> 1.0"},
-    {:opentelemetry, "~> 1.0"}
+    {:opentelemetry_api, "~> 1.2"},
+    {:opentelemetry, "~> 1.3"}
   ]
 end
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< /ot-tabs >}}
+{{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
-In the case of Erlang, the Applications will also need to be added to
-`src/otel_getting_started.app.src`. In an Elixir project, a `releases` section
-needs to be added to `mix.exs`:
+In the case of Erlang, the API Application will also need to be added to
+`src/otel_getting_started.app.src` and a `relx` section to `rebar.config`. In an
+Elixir project, a `releases` section needs to be added to `mix.exs`:
 
 <!-- prettier-ignore-start -->
-{{< ot-tabs Erlang Elixir >}}
+{{< tabpane langEqualsHeader=true >}}
 
-{{< ot-tab >}}
+{{< tab Erlang >}}
+%% src/otel_getting_started.app.src
 ...
 {applications, [kernel,
                 stdlib,
-                opentelemetry_api,
-                opentelemetry]},
+                opentelemetry_api]},
 ...
-{{< /ot-tab >}}
 
-{{< ot-tab >}}
+%% rebar.config
+{relx, [{release, {otel_getting_started, "0.1.0"},
+         [{opentelemetry, temporary},
+          otel_getting_started]},
+
+       ...]}.
+{{< /tab >}}
+
+{{< tab Elixir >}}
+# mix.exs
 releases: [
   otel_getting_started: [
     version: "0.0.1",
-    applications: [otel_getting_started: :permanent]
+    applications: [opentelemetry: :temporary, otel_getting_started: :permanent]
   ]
 ]
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< /ot-tabs >}}
+{{< /tabpane >}}
 <!-- prettier-ignore-end -->
+
+The SDK `opentelemetry` should be added as early as possible in the Release boot
+process to ensure it is available before any telemetry is produced. Here it is
+also set to `temporary` under the assumption that we prefer to have a running
+Release not producing telemetry over crashing the entire Release.
+
+In addition to the API and SDK, an exporter for getting data out is needed. The
+SDK comes with an exporter for debugging purposes that prints to stdout and
+there are separate packages for exporting over the
+[OpenTelemetry Protocol (OTLP)](https://hex.pm/packages/opentelemetry_exporter)
+and the [Zipkin protocol](https://hex.pm/packages/opentelemetry_zipkin).
 
 ## Initialization and Configuration
 
 Configuration is done through the
 [Application environment](https://erlang.org/doc/design_principles/applications.html#configuring-an-application)
-or
-[OS Environment Variables](/docs/reference/specification/sdk-environment-variables/).
-The `opentelemetry` Application uses the configuration to initialize a
-[Tracer Provider](https://hexdocs.pm/opentelemetry_api/otel_tracer_provider.html),
+or [OS Environment Variables]({{< relref
+"/docs/reference/specification/sdk-environment-variables" >}}). The SDK (`opentelemetry`
+Application) uses the configuration to initialize a [Tracer Provider](https://hexdocs.pm/opentelemetry/otel_tracer_server.html),
 its [Span Processors](https://hexdocs.pm/opentelemetry/otel_span_processor.html)
 and the [Exporter](https://hexdocs.pm/opentelemetry/otel_exporter.html).
 
@@ -126,25 +120,25 @@ the `exporter` for the span processor `otel_batch_processor`, a type of span
 processor that batches up multiple spans over a period of time:
 
 <!-- prettier-ignore-start -->
-{{< ot-tabs Erlang Elixir >}}
+{{< tabpane langEqualsHeader=true >}}
 
-{{< ot-tab >}}
+{{< tab Erlang >}}
 %% config/sys.config.src
 [
  {opentelemetry,
   [{span_processor, batch},
    {traces_exporter, {otel_exporter_stdout, []}}]}
 ].
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< ot-tab >}}
+{{< tab Elixir >}}
 # config/runtime.exs
 config :opentelemetry,
   span_processor: :batch,
   traces_exporter: {:otel_exporter_stdout, []}
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< /ot-tabs >}}
+{{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
 ## Working with Spans
@@ -153,9 +147,9 @@ Now that the dependencies and configuration are set up, we can create a module
 with a function `hello/0` that starts some spans:
 
 <!-- prettier-ignore-start -->
-{{< ot-tabs Erlang Elixir >}}
+{{< tabpane langEqualsHeader=true >}}
 
-{{< ot-tab >}}
+{{< tab Erlang >}}
 %% apps/otel_getting_started/src/otel_getting_started.erl
 -module(otel_getting_started).
 
@@ -165,7 +159,7 @@ with a function `hello/0` that starts some spans:
 
 hello() ->
     %% start an active span and run a local function
-    ?with_span(<<"operation">>, #{}, fun nice_operation/1).
+    ?with_span(operation, #{}, fun nice_operation/1).
 
 nice_operation(_SpanCtx) ->
     ?add_event(<<"Nice operation!">>, [{<<"bogons">>, 100}]),
@@ -177,15 +171,15 @@ nice_operation(_SpanCtx) ->
                        ?set_attributes([{lemons_key, <<"five">>}]),
                        ?add_event(<<"Sub span event!">>, [])
                end).
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< ot-tab >}}
+{{< tab Elixir >}}
 # lib/otel_getting_started.ex
 defmodule OtelGettingStarted do
   require OpenTelemetry.Tracer, as: Tracer
 
   def hello do
-    Tracer.with_span "operation" do
+    Tracer.with_span :operation do
       Tracer.add_event("Nice operation!", [{"bogons", 100}])
       Tracer.set_attributes([{:another_key, "yes"}])
 
@@ -196,9 +190,9 @@ defmodule OtelGettingStarted do
     end
   end
 end
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< /ot-tabs >}}
+{{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
 In this example, we're using macros that use the process dictionary for context
@@ -225,9 +219,9 @@ To test out this project and see the spans created, you can run with
 configuration for the release, resulting in the tracer and exporter to started.
 
 <!-- prettier-ignore-start -->
-{{< ot-tabs Erlang Elixir >}}
+{{< tabpane langEqualsHeader=true >}}
 
-{{< ot-tab >}}
+{{< tab Erlang >}}
 $ rebar3 shell
 ===> Compiling otel_getting_started
 Erlang/OTP 23 [erts-11.1] [source] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:1] [hipe]
@@ -244,14 +238,14 @@ true
       [{event,-576460750077786044,<<"Sub span event!">>,[]}],
       [],undefined,1,false,undefined}
 {span,177312096541376795265675405126880478701,13736713257910636645,undefined,
-      undefined,<<"operation">>,internal,-576460750086570890,
+      undefined,operation,internal,-576460750086570890,
       -576460750077752627,
       [{another_key,<<"yes">>}],
       [{event,-576460750077877345,<<"Nice operation!">>,[{<<"bogons">>,100}]}],
       [],undefined,1,false,undefined}
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< ot-tab >}}
+{{< tab Elixir >}}
 $ iex -S mix
 Erlang/OTP 23 [erts-11.1] [source] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:1] [hipe]
 
@@ -268,14 +262,14 @@ iex(2)>
       [{event,-576460741349414157,<<"Sub span event!">>,[]}],
       [],undefined,1,false,undefined}
 {span,180094370450826032544967824850795294459,14276444653144535440,undefined,
-      undefined,<<"operation">>,'INTERNAL',-576460741353342627,
+      undefined,:operation,'INTERNAL',-576460741353342627,
       -576460741349400034,
       [{another_key,<<"yes">>}],
       [{event,-576460741349446725,<<"Nice operation!">>,[{<<"bogons">>,100}]}],
       [],undefined,1,false,undefined}
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< /ot-tabs >}}
+{{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
 ## Exporting to the OpenTelemetry Collector
@@ -300,38 +294,38 @@ To export to the running Collector the `opentelemetry_exporter` package must be
 added to the project's dependencies:
 
 <!-- prettier-ignore-start -->
-{{< ot-tabs Erlang Elixir >}}
+{{< tabpane langEqualsHeader=true >}}
 
-{{< ot-tab >}}
-{deps, [{opentelemetry_api, "~> 1.0"},
-        {opentelemetry, "~> 1.0"},
-        {opentelemetry_exporter, "~> 1.0"}]}.
-{{< /ot-tab >}}
+{{< tab Erlang >}}
+{deps, [{opentelemetry_api, "~> 1.3"},
+        {opentelemetry, "~> 1.3"},
+        {opentelemetry_exporter, "~> 1.4"}]}.
+{{< /tab >}}
 
-{{< ot-tab >}}
+{{< tab Elixir >}}
 def deps do
   [
-    {:opentelemetry_api, "~> 1.0"},
-    {:opentelemetry, "~> 1.0"},
-    {:opentelemetry_exporter, "~> 1.0"}
+    {:opentelemetry_api, "~> 1.3"},
+    {:opentelemetry, "~> 1.3"},
+    {:opentelemetry_exporter, "~> 1.4"}
   ]
 end
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< /ot-tabs >}}
+{{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
-It should then be added to the configuration of the Release, it should be before
-the SDK Application to ensure the exporter's dependencies are started before the
-SDK attempts to initialize and use the exporter.
+It should then be added to the configuration of the Release before the SDK
+Application to ensure the exporter's dependencies are started before the SDK
+attempts to initialize and use the exporter.
 
 Example of Release configuration in `rebar.config` and for
 [mix's Release task](https://hexdocs.pm/mix/Mix.Tasks.Release.html):
 
 <!-- prettier-ignore-start -->
-{{< ot-tabs Erlang Elixir >}}
+{{< tabpane langEqualsHeader=true >}}
 
-{{< ot-tab >}}
+{{< tab Erlang >}}
 %% rebar.config
 {relx, [{release, {my_instrumented_release, "0.1.0"},
          [opentelemetry_exporter,
@@ -339,9 +333,9 @@ Example of Release configuration in `rebar.config` and for
           my_instrumented_app]},
 
        ...]}.
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< ot-tab >}}
+{{< tab Elixir >}}
 # mix.exs
 def project do
   [
@@ -354,9 +348,9 @@ def project do
     ]
   ]
 end
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< /ot-tabs >}}
+{{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
 Finally, the runtime configuration of the `opentelemetry` and
@@ -367,9 +361,9 @@ for the `otlp_protocol` the endpoint should be changed to
 `http://localhost:4317`.
 
 <!-- prettier-ignore-start -->
-{{< ot-tabs Erlang Elixir >}}
+{{< tabpane langEqualsHeader=true >}}
 
-{{< ot-tab >}}
+{{< tab Erlang >}}
 %% config/sys.config.src
 [
  {opentelemetry,
@@ -380,9 +374,9 @@ for the `otlp_protocol` the endpoint should be changed to
   [{otlp_protocol, http_protobuf},
    {otlp_endpoint, "http://localhost:4318"}]}]}
 ].
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< ot-tab >}}
+{{< tab Elixir >}}
 # config/runtime.exs
 config :opentelemetry,
   span_processor: :batch,
@@ -391,7 +385,7 @@ config :opentelemetry,
 config :opentelemetry_exporter,
   otlp_protocol: :http_protobuf,
   otlp_endpoint: "http://localhost:4318"
-{{< /ot-tab >}}
+{{< /tab >}}
 
-{{< /ot-tabs >}}
+{{< /tabpane >}}
 <!-- prettier-ignore-end -->

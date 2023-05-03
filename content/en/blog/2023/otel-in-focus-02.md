@@ -95,7 +95,7 @@ The
 to support contributors and maintainers worldwide.
 
 Our End-User Working Group has written up a
-[Q&A about using OpenTelemetry with GraphQL](/blog/2023/end-user-q-and-a-series-otel-and-graphql/).
+[Q&A about using OpenTelemetry with GraphQL](/blog/2023/end-user-q-and-a-01/).
 
 ## News and Upcoming Events
 

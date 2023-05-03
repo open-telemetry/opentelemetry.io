@@ -121,8 +121,7 @@ endpoint, you'll have to use a different exporter.
 
 Once tracing is initialized, you can configure a
 [`Tracer`](/docs/concepts/signals/traces/#tracer), which will be how you trace
-operations with
-[`Span`s](/docs/concepts/signals/traces/#spans-in-opentelemetry).
+operations with [`Span`s](/docs/concepts/signals/traces/#spans).
 
 Typically, a `Tracer` is instantiated once per app/service that is being
 instrumented, so it's a good idea to instantiate it once in a shared location.
@@ -180,8 +179,8 @@ generally sufficient to just have one defined per service.
 
 ## Creating Spans
 
-To create a [span](/docs/concepts/signals/traces/#spans-in-opentelemetry), give
-it a name and create it from your `Tracer`.
+To create a [span](/docs/concepts/signals/traces/#spans), give it a name and
+create it from your `Tracer`.
 
 ```csharp
 using var span = MyTracer.StartActiveSpan("SayHello");
@@ -246,9 +245,9 @@ block is explicitly defined, rather than scoped to `DoWork` itself like
 ## Creating independent Spans
 
 The previous examples showed how to create
-[Spans](/docs/concepts/signals/traces/#spans-in-opentelemetry) that follow a
-nested heirarchy. In some cases, you'll want to create independent Spans that
-are siblings of the same root rather than being nested.
+[Spans](/docs/concepts/signals/traces/#spans) that follow a nested heirarchy. In
+some cases, you'll want to create independent Spans that are siblings of the
+same root rather than being nested.
 
 ```csharp
 public static void DoWork(Tracer tracer)
@@ -270,9 +269,8 @@ public static void DoWork(Tracer tracer)
 
 ## Creating new root Spans
 
-You can also create new root
-[spans](/docs/concepts/signals/traces/#spans-in-opentelemetry) that are
-completely detached from the current trace.
+You can also create new root [spans](/docs/concepts/signals/traces/#spans) that
+are completely detached from the current trace.
 
 ```csharp
 public static void DoWork(Tracer tracer)

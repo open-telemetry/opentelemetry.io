@@ -329,11 +329,6 @@ There might be some exceptions:
     or other things that can break due to async context flow limitations in your
     language
 
-## Metrics
-
-[Metrics API](/docs/reference/specification/metrics/api/) is not stable yet and
-we don't yet define metrics conventions.
-
 ## Misc
 
 ### Instrumentation registry

@@ -20,14 +20,14 @@ through the OpenTelemetry API:
 - **Counter**: A value that accumulates over time -- you can think of this like
   an odometer on a car; it only ever goes up.
 - **Asynchronous Counter**: Same as the **Counter**, but is collected once for
-  each export. Could be used if you don't have access to the continous
+  each export. Could be used if you don't have access to the continuous
   increments, but only to the aggregated value.
 - **UpDownCounter**: A value that accumulates over time, but can also go down
   again. An example could be a queue length, it will increase and decrease with
   the number of work items in the queue.
 - **Asynchronous UpDownCounter**: Same as the **UpDownCounter**, but is
   collected once for each export. Could be used if you don't have access to the
-  continous changes, but only to the aggregated value (e.g., current queue
+  continuous changes, but only to the aggregated value (e.g., current queue
   size).
 - **(Asynchronous) Gauge**: Measures a current value at the time it is read. An
   example would be the fuel gauge in a vehicle. Gauges are _always_
@@ -41,7 +41,7 @@ In addition to the metric instruments, the concept of _aggregations_ is an
 important one to understand. An aggregation is a technique whereby a large
 number of measurements are combined into either exact or estimated statistics
 about metric events that took place during a time window. The OTLP protocol
-transports such aggreagated metrics. The OpenTelemetry API provides a default
+transports such aggregated metrics. The OpenTelemetry API provides a default
 aggregation for each instrument which can be overridden using the Views API. The
 OpenTelemetry project aims to provide default aggregations that are supported by
 visualizers and telemetry backends.

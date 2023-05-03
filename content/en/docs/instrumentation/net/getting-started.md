@@ -117,7 +117,7 @@ Paste the following code into your `HomeController`'s `Index` action:
 public IActionResult Index()
 {
     // Track work inside of the request
-    using var activity = DiagnosticsConfig.Source.StartActivity("SayHello");
+    using var activity = DiagnosticsConfig.ActivitySource.StartActivity("SayHello");
     activity?.SetTag("foo", 1);
     activity?.SetTag("bar", "Hello, World!");
     activity?.SetTag("baz", new int[] { 1, 2, 3 });
@@ -126,9 +126,8 @@ public IActionResult Index()
 }
 ```
 
-When you run the app and navigate to the `/hello` route, you'll see output about
-[spans](/docs/concepts/signals/traces/#spans-in-opentelemetry) similar to the
-following:
+When you run the app and navigate to the `/` route, you'll see output about
+[spans](/docs/concepts/signals/traces/#spans) similar to the following:
 
 <details>
 <summary>View example output</summary>

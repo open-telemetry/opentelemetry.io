@@ -1,0 +1,13 @@
+title: Instrumentation for R2dbc
+registryType: instrumentation
+isThirdParty: false
+language: java
+tags:
+  - r2dbc
+  - instrumentation
+  - java
+repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/r2dbc-1.0
+license: Apache 2.0
+description: Provides OpenTelemetry instrumentation for R2dbc.
+authors: OpenTelemetry Authors
+otVersion: latest

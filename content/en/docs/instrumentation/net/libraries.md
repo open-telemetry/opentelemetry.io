@@ -10,8 +10,7 @@ in order to generate telemetry data for a particular instrumented library.
 
 For example,
 [the instrumentation library for ASP.NET Core](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.AspNetCore)
-will automatically create
-[spans](/docs/concepts/signals/traces/#spans-in-opentelemetry) and
+will automatically create [spans](/docs/concepts/signals/traces/#spans) and
 [metrics](/docs/concepts/signals/metrics) based on the inbound HTTP requests.
 
 ## Setup
