@@ -317,8 +317,7 @@ few times. After a while you should see the spans printed in the console by the
 
 </details>
 
-The span generated for you tracks the lifetime of a request to the `/rolldice`
-route.
+The generated span tracks the lifetime of a request to the `/rolldice` route.
 
 Send a few more requests to the endpoint, and then wait for a little bit and
 you'll get metrics printed out to the console, such as the following
