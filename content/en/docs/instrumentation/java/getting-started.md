@@ -23,9 +23,10 @@ Ensure that you have the following installed locally:
 
 The following example uses a basic
 [Spring Boot](https://spring.io/guides/gs/spring-boot/) application. If you are
-not using Spring Boot, that's fine — this guide will also work with Apache
-Wicket, Play
-[and more](/ecosystem/registry/?component=instrumentation&language=java)
+not using Spring Boot, that's ok — you can use OpenTelemetry Java with other web
+frameworks as well, such as Apache Wicket and Play. For a complete list of
+libraries for supported frameworks, see the
+[regsitry](/ecosystem/registry/?component=instrumentation&language=java).
 
 For more elaborate examples, see
 [examples](/docs/instrumentation/java/examples/).
