@@ -22,10 +22,10 @@ Ensure that you have the following installed locally:
 ## Example Application
 
 The following example uses a basic [Express](https://expressjs.com/)
-application. If you are not using Express, that's ok — you can use OpenTelemetry 
-JavaScript with other web frameworks as well, such as Koa and Nest.JS. For a 
-complete list of libraries for supported frameworks, see the 
-[regsitry](https://github.com/ecosystem/registry/?component=instrumentation&language=js).
+application. If you are not using Express, that's ok — you can use OpenTelemetry
+JavaScript with other web frameworks as well, such as Koa and Nest.JS. For a
+complete list of libraries for supported frameworks, see the
+[regsitry](/ecosystem/registry/?component=instrumentation&language=js).
 
 For more elaborate examples, see [examples](/docs/instrumentation/js/examples/).
 
@@ -59,7 +59,8 @@ npm install express
 
 ### Create and launch an HTTP Server
 
-Create a file named `app.ts` (or `app.js` if not using typescript) and add the following code to it:
+Create a file named `app.ts` (or `app.js` if not using typescript) and add the
+following code to it:
 
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
@@ -157,8 +158,7 @@ To find all autoinstrumentation modules, you can look at the
 
 The instrumentation setup and configuration must be run _before_ your
 application code. One tool commonly used for this task is the
-[--require](https://nodejs.org/api/cli.html#-r---require-module)
-flag.
+[--require](https://nodejs.org/api/cli.html#-r---require-module) flag.
 
 Create a file named `instrumentation.ts|js`, which will contain your
 instrumentation setup code.
@@ -320,8 +320,8 @@ few times. After a while you should see the spans printed in the console by the
 
 The generated span tracks the lifetime of a request to the `/rolldice` route.
 
-Send a few more requests to the endpoint. After a moment,
-you'll see metrics in the console output, such as the following:
+Send a few more requests to the endpoint. After a moment, you'll see metrics in
+the console output, such as the following:
 
 <details>
 <summary>View example output</summary>
