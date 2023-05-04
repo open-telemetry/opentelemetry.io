@@ -22,9 +22,10 @@ Ensure that you have the following installed locally:
 ## Example Application
 
 The following example uses a basic [Express](https://expressjs.com/)
-application. If you're not using Express, that's fine — this guide will also
-work with Koa, Nest.JS
-[and more](/ecosystem/registry/?component=instrumentation&language=js)
+application. If you are not using Express, that's ok — you can use OpenTelemetry 
+JavaScript with other web frameworks as well, such as Koa and Nest.JS. For a 
+complete list of libraries for supported frameworks, see the 
+[regsitry](https://github.com/ecosystem/registry/?component=instrumentation&language=js).
 
 For more elaborate examples, see [examples](/docs/instrumentation/js/examples/).
 
@@ -156,7 +157,7 @@ To find all autoinstrumentation modules, you can look at the
 
 The instrumentation setup and configuration must be run _before_ your
 application code. One tool commonly used for this task is the
-[`-r, --require module`](https://nodejs.org/api/cli.html#cli_r_require_module)
+[--require](https://nodejs.org/api/cli.html#-r---require-module)
 flag.
 
 Create a file named `instrumentation.ts|js`, which will contain your
