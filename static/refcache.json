@@ -135,6 +135,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-15T20:36:46.174243-05:00"
   },
+  "https://bundler.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-04T10:07:22.237529+02:00"
+  },
   "https://calendar.google.com/calendar/embed": {
     "StatusCode": 200,
     "LastSeen": "2023-02-15T20:41:36.268773-05:00"
@@ -1546,6 +1550,10 @@
   "https://github.com/eBay/NautilusTelemetry": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:47:26.390977-05:00"
+  },
+  "https://github.com/ecosystem/registry/": {
+    "StatusCode": 404,
+    "LastSeen": "2023-05-04T10:07:23.310712+02:00"
   },
   "https://github.com/elastic/beats": {
     "StatusCode": 200,
@@ -3650,6 +3658,10 @@
   "https://signoz.io": {
     "StatusCode": 206,
     "LastSeen": "2023-02-18T12:43:42.995104-05:00"
+  },
+  "https://sinatrarb.com/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-04T10:07:22.738034+02:00"
   },
   "https://skywalking.apache.org": {
     "StatusCode": 206,
