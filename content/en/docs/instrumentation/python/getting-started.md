@@ -20,9 +20,9 @@ Ensure that you have the following installed locally:
 ## Example Application
 
 The following example uses a basic [Flask](https://flask.palletsprojects.com/)
-application. If you are not using Flask, that's ok — you can use OpenTelemetry 
-Python with other web frameworks as well, such as Django and FastAPI. For a 
-complete list of libraries for supported frameworks, see the 
+application. If you are not using Flask, that's ok — you can use OpenTelemetry
+Python with other web frameworks as well, such as Django and FastAPI. For a
+complete list of libraries for supported frameworks, see the
 [regsitry](/ecosystem/registry/?component=instrumentation&language=python).
 
 For more elaborate examples, see
@@ -162,8 +162,8 @@ as the following:
 The generated span tracks the lifetime of a request to the `/rolldice` route.
 
 Send a few more requests to the endpoint, and then either wait for a little bit
-or terminate the app and you'll see metrics in the console output, such as
-the following:
+or terminate the app and you'll see metrics in the console output, such as the
+following:
 
 <details>
 <summary>View example output</summary>
