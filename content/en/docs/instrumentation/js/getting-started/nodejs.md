@@ -56,7 +56,7 @@ npm install express
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
-### Create the sample HTTP Server
+### Create and launch an HTTP Server
 
 Create a file called `app.ts|js` and add the following code to it:
 
