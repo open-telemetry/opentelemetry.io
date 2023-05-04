@@ -52,47 +52,51 @@ The extension can be installed via pecl,
 [php-extension-installer](https://github.com/mlocati/docker-php-extension-installer)
 (docker specific).
 
-1. Setup development environment
-  Installing from source requires proper development environment
-  and some dependencies:
+1. Setup development environment Installing from source requires proper
+   development environment and some dependencies:
 
-    <!-- prettier-ignore-start -->
-    {{< tabpane lang=shell persistLang=false >}}
+     <!-- prettier-ignore-start -->
 
-    {{< tab "Linux (apt)" >}}sudo apt-get install gcc make autoconf{{< /tab >}}
+   {{< tabpane lang=shell persistLang=false >}}
 
-    {{< tab "MacOS (homebrew)" >}}brew install gcc make autoconf{{< /tab >}}
+   {{< tab "Linux (apt)" >}}sudo apt-get install gcc make autoconf{{< /tab >}}
 
-    {{< /tabpane >}}
-    <!-- prettier-ignore-end -->
+   {{< tab "MacOS (homebrew)" >}}brew install gcc make autoconf{{< /tab >}}
 
-2. Build/install the extension
-  With your environment set up you can install the extension:
+   {{< /tabpane >}}
+     <!-- prettier-ignore-end -->
 
-    <!-- prettier-ignore-start -->
-    {{< tabpane lang=shell persistLang=false >}}
+2. Build/install the extension With your environment set up you can install the
+   extension:
 
-    {{< tab "pecl" >}}pecl install opentelemetry-beta{{< /tab >}}
+     <!-- prettier-ignore-start -->
 
-    {{< tab "pickle" >}}php pickle.phar install --source https://github.com/open-telemetry/opentelemetry-php-instrumentation.git#1.0.0beta2{{< /tab >}}
+   {{< tabpane lang=shell persistLang=false >}}
 
-    {{< tab "php-extension-installer (docker)" >}}install-php-extensions opentelemetry{{< /tab >}}
+   {{< tab "pecl" >}}pecl install opentelemetry-beta{{< /tab >}}
 
-    {{< /tabpane >}}
-    <!-- prettier-ignore-end -->
+   {{< tab "pickle" >}}php pickle.phar install --source
+   https://github.com/open-telemetry/opentelemetry-php-instrumentation.git#1.0.0beta2{{<
+   /tab >}}
+
+   {{< tab "php-extension-installer (docker)" >}}install-php-extensions
+   opentelemetry{{< /tab >}}
+
+   {{< /tabpane >}}
+     <!-- prettier-ignore-end -->
 
 3. Add the extension to your `php.ini` file:
 
-    ```ini
-    [opentelemetry]
-    extension=opentelemetry.so
-    ```
+   ```ini
+   [opentelemetry]
+   extension=opentelemetry.so
+   ```
 
 4. Verify that the extension is installed and enabled:
 
-    ```sh
-    php -m | grep opentelemetry
-    ```
+   ```sh
+   php -m | grep opentelemetry
+   ```
 
 ## Zero-code configuration for automatic instrumentation
 
