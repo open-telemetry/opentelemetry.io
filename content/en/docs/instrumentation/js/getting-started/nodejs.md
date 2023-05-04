@@ -58,7 +58,7 @@ npm install express
 
 ### Create and launch an HTTP Server
 
-Create a file called `app.ts|js` and add the following code to it:
+Create a file named `app.ts` (or `app.js` if not using typescript) and add the following code to it:
 
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
