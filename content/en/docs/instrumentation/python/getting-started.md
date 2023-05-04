@@ -277,7 +277,7 @@ from random import randint
 from flask import Flask, request
 
 # Acquire a tracer
-tracer = trace.get_tracer(__name__)
+tracer = trace.get_tracer("diceroller.tracer")
 
 app = Flask(__name__)
 
@@ -402,9 +402,9 @@ from opentelemetry import metrics
 from random import randint
 from flask import Flask, request
 
-tracer = trace.get_tracer(__name__)
+tracer = trace.get_tracer("diceroller.tracer")
 # Acquire a meter.
-meter = metrics.get_meter(__name__)
+meter = metrics.get_meter(diceroller.meter)
 
 # Now create a counter instrument to make measurements with
 roll_counter = meter.create_counter(
