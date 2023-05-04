@@ -45,7 +45,7 @@ Now install Flask:
 pip install flask
 ```
 
-## Create the sample HTTP Server
+### Create and launch an HTTP Server
 
 Create a file `app.py` and add the following code to it:
 
@@ -159,12 +159,11 @@ as the following:
 
 </details>
 
-The span generated for you tracks the lifetime of a request to the `/rolldice`
-route.
+The generated span tracks the lifetime of a request to the `/rolldice` route.
 
 Send a few more requests to the endpoint, and then either wait for a little bit
-or terminate the app and you'll get metrics printed out to the console, such as
-the following
+or terminate the app and you'll see metrics in the console output, such as
+the following:
 
 <details>
 <summary>View example output</summary>
