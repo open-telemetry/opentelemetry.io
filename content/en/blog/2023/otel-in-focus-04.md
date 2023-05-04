@@ -99,6 +99,6 @@ real-world examples in there of how people are using OpenTelemetry!
 
 ## News and Upcoming Events
 
-[OpenCensus is being sunset](https://opentelemetry.io/blog/2023/sunsetting-opencensus/)
-in July 2023. Once this has concluded, our initial goal of OpenTelemetry as a
-single replacement for OpenTracing and OpenCensus will have been realized!
+[OpenCensus is being sunset](/blog/2023/sunsetting-opencensus/) in July 2023.
+Once this has concluded, our initial goal of OpenTelemetry as a single
+replacement for OpenTracing and OpenCensus will have been realized!
