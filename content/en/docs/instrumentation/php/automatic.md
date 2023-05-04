@@ -43,65 +43,56 @@ $demo->run();
 Here, we provide `pre` and `post` functions, which are executed before and after
 `DemoClass::run`. The `pre` function starts and activates a span, and the `post`
 function ends it. If an exception was thrown by `DemoClass::run()`, the `post`
-function will record it (without affecting exception propagation).
+function will record it, without affecting exception propagation.
 
-## Setup
+## Installation
 
-1. Install the extension via pecl,
-   [pickle](https://github.com/FriendsOfPHP/pickle) or
-   [php-extension-installer](https://github.com/mlocati/docker-php-extension-installer)
-   (docker specific).
+The extension can be installed via pecl,
+[pickle](https://github.com/FriendsOfPHP/pickle) or
+[php-extension-installer](https://github.com/mlocati/docker-php-extension-installer)
+(docker specific).
 
-   Installing from source requires proper development environment and few
-   dependencies:
+1. Setup development environment
+  Installing from source requires proper development environment
+  and some dependencies:
 
-     <!-- prettier-ignore-start -->
+    <!-- prettier-ignore-start -->
+    {{< tabpane lang=shell persistLang=false >}}
 
-   {{< tabpane lang=shell persistLang=false >}}
+    {{< tab "Linux (apt)" >}}sudo apt-get install gcc make autoconf{{< /tab >}}
 
-   {{< tab "Linux (apt)" >}}sudo apt-get install gcc make autoconf{{< /tab >}}
+    {{< tab "MacOS (homebrew)" >}}brew install gcc make autoconf{{< /tab >}}
 
-   {{< tab "MacOS (homebrew)" >}}brew install gcc make autoconf{{< /tab >}}
+    {{< /tabpane >}}
+    <!-- prettier-ignore-end -->
 
-   {{< /tabpane >}}
-     <!-- prettier-ignore-end -->
+2. Build/install the extension
+  With your environment set up you can install the extension:
 
-   With your environment setup you can install the extension in a variety of
-   ways:
+    <!-- prettier-ignore-start -->
+    {{< tabpane lang=shell persistLang=false >}}
 
-   - **pecl**:
+    {{< tab "pecl" >}}pecl install opentelemetry-beta{{< /tab >}}
 
-   ```shell
-   pecl install opentelemetry-beta
-   ```
+    {{< tab "pickle" >}}php pickle.phar install --source https://github.com/open-telemetry/opentelemetry-php-instrumentation.git#1.0.0beta2{{< /tab >}}
 
-   - **pickle** can be used to install extensions that are available via
-     <http://pecl.php.net>, or directly from source code. The following command
-     line shows you how to install a specific version of the extension from
-     github (1.0.0beta2 in this case):
+    {{< tab "php-extension-installer (docker)" >}}install-php-extensions opentelemetry{{< /tab >}}
 
-     ```sh
-     php pickle.phar install --source https://github.com/open-telemetry/opentelemetry-php-instrumentation.git#1.0.0beta2
-     ```
+    {{< /tabpane >}}
+    <!-- prettier-ignore-end -->
 
-     Add the extension to your `php.ini` file:
+3. Add the extension to your `php.ini` file:
 
-     ```ini
-     [Opentelemetry]
-     extension=opentelemetry.so
-     ```
+    ```ini
+    [opentelemetry]
+    extension=opentelemetry.so
+    ```
 
-   - **php-extension-installer**
+4. Verify that the extension is installed and enabled:
 
-     ```sh
-     install-php-extensions opentelemetry
-     ```
-
-2. Verify that the extension is installed and enabled:
-
-   ```sh
-   php -m | grep  opentelemetry
-   ```
+    ```sh
+    php -m | grep opentelemetry
+    ```
 
 ## Zero-code configuration for automatic instrumentation
 

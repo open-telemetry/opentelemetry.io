@@ -43,9 +43,9 @@ $eventLogger->logEvent('foo', $record);
 
 ### Monolog
 
-We provide a
+You can use the 
 [monolog handler](https://packagist.org/packages/open-telemetry/opentelemetry-logger-monolog)
-which can be used to send monolog logs to an OpenTelemetry-capable receiver:
+to send monolog logs to an OpenTelemetry-capable receiver:
 
 ```shell
 composer require open-telemetry/opentelemetry-logger-monolog
