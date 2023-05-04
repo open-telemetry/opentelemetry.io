@@ -30,7 +30,7 @@ For more elaborate examples, see [examples](/docs/instrumentation/js/examples/).
 
 ### Dependencies
 
-To begin, set up an empty package.json in a new directory:
+To begin, set up an empty `package.json` in a new directory:
 
 ```shell
 npm init -f
