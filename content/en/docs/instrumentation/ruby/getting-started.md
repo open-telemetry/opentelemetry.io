@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-description: Get telemetry for your app in less than 5 minutes!
+description: Get telemetry from your app in less than 5 minutes!
 aliases: [/docs/instrumentation/ruby/getting_started]
 spelling: cSpell:ignore truffleruby sinatra
 weight: 1
@@ -40,14 +40,14 @@ For more elaborate examples, see
 
 To begin, set up a new Gemfile in a new directory:
 
-```console
+```sh
 bundle init
 ```
 
 Now install Sinatra and Puma:
 
-```console
-$ bundle add sinatra puma
+```sh
+bundle add sinatra puma
 ```
 
 ## Create the sample HTTP Server
@@ -74,8 +74,8 @@ end
 Run the application with the following command and open
 <http://localhost:80800/rolldice> in your web browser to ensure it is working.
 
-```console
-$ ruby app.rb
+```sh
+ruby app.rb
 ```
 
 ## Instrumentation
@@ -83,8 +83,8 @@ $ ruby app.rb
 Install the `opentelemetry-sdk` and `opentelemetry-instrumentation-all`
 packages:
 
-```console
-$ bundle add opentelemetry-sdk opentelemetry-instrumentation-all
+```sh
+bundle add opentelemetry-sdk opentelemetry-instrumentation-all
 ```
 
 The inclusion of `opentelemetry-instrumentation-all` provides
@@ -128,8 +128,8 @@ specific instrumentation libraries][config].
 
 You can now run your instrumented app and have it print to the console for now:
 
-```console
-$ env OTEL_TRACES_EXPORTER="console" ruby app.rb
+```sh
+env OTEL_TRACES_EXPORTER="console" ruby app.rb
 ```
 
 Open <http://localhost:8080/rolldice> in your web browser and reload the page a

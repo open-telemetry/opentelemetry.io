@@ -56,16 +56,16 @@ end
 
 If you now run your application it will use OTLP to export traces:
 
-```ruby
-$ ruby app.rb
+```sh
+ruby app.rb
 ```
 
 By default traces are sent to an OTLP endpoint listening on localhost:4318. You
 can change the endpoint by setting the `OTEL_EXPORTER_OTLP_ENDPOINT`
 accordingly:
 
-```ruby
-$ env OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:4318/v1/traces" ruby app.rb
+```sh
+env OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:4318/v1/traces" ruby app.rb
 ```
 
 To try out the OTLP exporter quickly and see your traces visualized at the
@@ -98,18 +98,13 @@ docker run --rm -d -p 9411:9411 --name zipkin openzipkin/zipkin
 
 Install the exporter package as a dependency for your application:
 
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
-{{< tab bundle >}}
-$ bundle add opentelemetry-exporter-zipkin
-{{< /tab >}}
+{{< tabpane lang=shell persistLang=false >}}
 
-{{< tab gem >}}
-$ gem install opentelemetry-exporter-zipkin
-{{< /tab >}}
+{{< tab bundle >}} bundle add opentelemetry-exporter-zipkin {{< /tab >}}
+
+{{< tab gem >}} gem install opentelemetry-exporter-zipkin {{< /tab >}}
 
 {{< /tabpane>}}
-<!-- prettier-ignore-end -->
 
 Update your opentelemetry configuration to use the exporter and to send data to
 your zipkin backend:
@@ -142,7 +137,7 @@ end
 If you now run your application, set the environment variable
 `OTEL_TRACES_EXPORTER` to zipkin:
 
-```ruby
+```sh
 env OTEL_TRACES_EXPORTER="zipkin" ruby app.rb
 ```
 
@@ -150,6 +145,6 @@ By default traces are sent to a Zipkin endpoint listening on port
 localhost:9411. You can change the endpoint by setting the
 `OTEL_EXPORTER_ZIPKIN_ENDPOINT` accordingly:
 
-```ruby
-$ env OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:9411" ruby app.rb
+```sh
+env OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:9411" ruby app.rb
 ```

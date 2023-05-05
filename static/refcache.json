@@ -1551,10 +1551,6 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:47:26.390977-05:00"
   },
-  "https://github.com/ecosystem/registry/": {
-    "StatusCode": 404,
-    "LastSeen": "2023-05-04T10:07:23.310712+02:00"
-  },
   "https://github.com/elastic/beats": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:11:18.100812-05:00"
