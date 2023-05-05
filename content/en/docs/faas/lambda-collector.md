@@ -40,7 +40,7 @@ In your `config.yaml` file add your preferred exporter(s) if they are not
 already present. Configure your exporter(s) using the environment variables you
 set for your access tokens in the previous step.
 
-Here is a sample configuration file of collector.yaml in the root directory:
+Here is `collector.yaml`, a sample configuration file in the root directory:
 
 ```yaml
 #collector.yaml in the root directory
