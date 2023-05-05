@@ -52,10 +52,8 @@ The extension can be installed via pecl,
 [php-extension-installer](https://github.com/mlocati/docker-php-extension-installer)
 (docker specific).
 
-1. Setup development environment Installing from source requires proper
+1. Setup development environment. Installing from source requires proper
    development environment and some dependencies:
-
-     <!-- prettier-ignore-start -->
 
    {{< tabpane lang=shell persistLang=false >}}
 
@@ -64,26 +62,26 @@ The extension can be installed via pecl,
    {{< tab "MacOS (homebrew)" >}}brew install gcc make autoconf{{< /tab >}}
 
    {{< /tabpane >}}
-     <!-- prettier-ignore-end -->
 
-2. Build/install the extension With your environment set up you can install the
+2. Build/install the extension. With your environment set up you can install the
    extension:
-
-     <!-- prettier-ignore-start -->
 
    {{< tabpane lang=shell persistLang=false >}}
 
-   {{< tab "pecl" >}}pecl install opentelemetry-beta{{< /tab >}}
+   {{< tab pecl >}}pecl install opentelemetry-beta{{< /tab >}}
 
-   {{< tab "pickle" >}}php pickle.phar install --source
-   https://github.com/open-telemetry/opentelemetry-php-instrumentation.git#1.0.0beta2{{<
-   /tab >}}
+<!-- The remaining shortcode lines must be unindented so that tab content is unindented in the generated page -->
+<!-- prettier-ignore-start -->
+{{< tab pickle >}}
+php pickle.phar install --source https://github.com/open-telemetry/opentelemetry-php-instrumentation.git#1.0.0beta2
+{{< /tab >}}
 
-   {{< tab "php-extension-installer (docker)" >}}install-php-extensions
-   opentelemetry{{< /tab >}}
+{{< tab "php-extension-installer (docker)" >}}
+install-php-extensions opentelemetry
+{{< /tab >}}
 
-   {{< /tabpane >}}
-     <!-- prettier-ignore-end -->
+{{< /tabpane >}}
+<!-- prettier-ignore-end -->
 
 3. Add the extension to your `php.ini` file:
 
