@@ -82,8 +82,8 @@ Please find the list of available components supported for custom configuration
 here. To enable debugging, you can use the configuration file to set log level
 to debug. See the example below.
 
-The OTel Lambda Layers supports the following types of confmap providers: file,
-env, yaml, http, https and s3. To customize the OTel collector configuration
+The OTel Lambda Layers supports the following types of confmap providers: `file`,
+`env`, `yaml`, `http`, `https`, and `s3`. To customize the OTel collector configuration
 using different Confmap providers, Please refer to Confmap providers section for
 more information.
 
