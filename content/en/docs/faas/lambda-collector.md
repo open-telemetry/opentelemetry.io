@@ -91,7 +91,7 @@ Once your collector configuration is set through a confmap providers. Create an
 environment variable on your Lambda function OPENTELEMETRY*COLLECTOR_CONFIG_FILE
 and set the path of configuration w.r.t to the confmap provider as its value.
 for e.g, if you are using a file configmap provider, set its value to
-/var/task/*<path/<to>/<filename>\_. This will tell the extension where to find
+`/var/task/*<path>/<to>/<filename>\_`. This will tell the extension where to find
 the collector configuration.
 
 You can set this via the Lambda console, or via the AWS CLI.
