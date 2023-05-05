@@ -1,6 +1,5 @@
 ---
 title: Lambda Auto-Instrumentation
-linkTitle: Lambda Auto-Instrumentation
 weight: 11
 description: Automatically instrument your Lambdas with OpenTelemetry
 ---
