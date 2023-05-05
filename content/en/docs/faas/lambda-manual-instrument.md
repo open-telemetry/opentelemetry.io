@@ -1,6 +1,5 @@
 ---
 title: Lambda Manual Instrumentation
-linkTitle: Lambda Manual Instrumentation
 weight: 11
 description: Manually instrument your Lambdas with OpenTelemetry
 ---
