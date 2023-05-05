@@ -34,7 +34,7 @@ For more elaborate examples, see [examples](/docs/instrumentation/js/examples/).
 To begin, set up an empty `package.json` in a new directory:
 
 ```shell
-npm init -f
+npm init -y
 ```
 
 Next, install Express dependencies.
