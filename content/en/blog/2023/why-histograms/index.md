@@ -52,7 +52,7 @@ under 90ms.
 
 What if you're already defining SLOs based on other metrics?
 You may have considered defining the SLOs to be based on gauges or counters.
-This approach can work, but it requires defining your SLOs before understand your
+This approach can work, but it requires defining your SLOs before understanding your
 data distribution and requires non-trivial implementation at collection time. It
 is also inflexible; if you decide to change your SLO from 90% of requests to 99%
 of requests, you have to make and release code changes, then wait for the old
