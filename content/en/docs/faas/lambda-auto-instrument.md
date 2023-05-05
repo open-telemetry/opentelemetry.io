@@ -32,7 +32,7 @@ first.
 The Lambda layer supports the Java 11 (Corretto) Lambda runtime. It does not
 support the Java 8 Lambda runtimes. For more information about supported Java
 versions, see the
-[OpenTelemetry Java documentation](https://opentelemetry.io/docs/instrumentation/java/).
+[OpenTelemetry Java documentation](/docs/instrumentation/java/).
 
 **Note:** The Java Auto-instrumentation Agent is in the Lambda layer - Automatic
 instrumentation has a notable impact on startup time on AWS Lambda and you will
