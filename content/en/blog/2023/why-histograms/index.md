@@ -4,6 +4,8 @@ date: 2023-05-05
 author: '[Daniel Dyla](https://github.com/dyladan)'
 ---
 
+<i>Originally posted to https://dyladan.me/histograms/2023/05/02/why-histograms/</i>
+
 A histogram is a multi-value counter which summarizes the distribution of one or more data points.
 For example, a histogram may have 3 counters which count the occurrences of negative, positive, and zero values respectively.
 Given a series of numbers, `3`, `-9`, `7`, `6`, `0`, and `-1`, the histogram would count `2` negative, `1` zero, and `3` positive values.
