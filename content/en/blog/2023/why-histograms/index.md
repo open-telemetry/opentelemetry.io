@@ -33,7 +33,7 @@ number φ\*N among the N observations.
 
 ## Why are Histograms useful?
 
-The most common use-case for histograms in the observability space is defining
+A common use-case for histograms in observability is defining
 service level objectives (SLOs). One example of such an SLO might be ">=99% of
 all queries should respond in less than 30ms," or "90% of all page loads should
 become interactive within 100ms of first paint."
@@ -50,9 +50,9 @@ under 90ms.
 
 ## Other metric types
 
-Another solution might be to define the SLOs you're interested in and collect
-them as non-histogram metrics in advance as gauges or counters. This approach
-works, but requires defining your SLOs before you have an understanding of your
+What if you're already defining SLOs based on other metrics?
+You may have considered defining the SLOs to be based on gauges or counters.
+This approach can work, but it requires defining your SLOs before understand your
 data distribution and requires non-trivial implementation at collection time. It
 is also inflexible; if you decide to change your SLO from 90% of requests to 99%
 of requests, you have to make and release code changes, then wait for the old
