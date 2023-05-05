@@ -52,7 +52,7 @@ The extension can be installed via pecl,
 [php-extension-installer](https://github.com/mlocati/docker-php-extension-installer)
 (docker specific).
 
-1. Setup development environment Installing from source requires proper
+1. Setup development environment. Installing from source requires proper
    development environment and some dependencies:
 
    {{< tabpane lang=shell persistLang=false >}}
@@ -63,7 +63,7 @@ The extension can be installed via pecl,
 
    {{< /tabpane >}}
 
-2. Build/install the extension With your environment set up you can install the
+2. Build/install the extension. With your environment set up you can install the
    extension:
 
    {{< tabpane lang=shell persistLang=false >}}
