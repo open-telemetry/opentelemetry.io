@@ -59,7 +59,7 @@ dependencies {
 }
 ```
 
-### Create the sample HTTP Server
+### Create and launch an HTTP Server
 
 In that same folder, create a file called `DiceApplication.java` and add the
 following code to the file:
@@ -116,10 +116,10 @@ public class RollController {
 }
 ```
 
-Build and run the application with the following command and open
+Build and run the application with the following command, then open
 <http://localhost:8080/rolldice> in your web browser to ensure it is working.
 
-```console
+```sh
 gradle assemble
 java -jar ./build/libs/java-simple.jar
 ```
@@ -170,7 +170,7 @@ number of ways, the steps below use environment variables.
    $ curl localhost:8080/rolldice
    ```
 
-5. Stop the server process
+5. Stop the server process.
 
 At step 4, you should have seen trace & log output from the server and client
 that looks something like this (trace output is line-wrapped for convenience):
@@ -238,13 +238,12 @@ For more:
 - Try [automatic instrumentation](../automatic/) on one of your own apps.
 - For light-weight customized telemetry, try [annotations][].
 - Learn about [manual instrumentation][] and try out more
-[examples]({{% relref examples %}}).
-<!-- prettier-ignore-end -->
+[examples](../examples/).
 
 [traces]: /docs/concepts/signals/traces/
 [metrics]: /docs/concepts/signals/metrics/
 [logs]: /docs/concepts/signals/logs/
-[annotations]: ../automatic/annotations
+[annotations]: ../automatic/annotations/
 [configure the java agent]: ../automatic/#configuring-the-agent
 [console exporter]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md#logging-exporter
