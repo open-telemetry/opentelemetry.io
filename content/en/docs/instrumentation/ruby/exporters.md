@@ -17,18 +17,13 @@ To send trace data to a OTLP endpoint (like the [collector](/docs/collector) or
 Jaeger) you'll want to use an exporter package, such as
 `opentelemetry-exporter-otlp`:
 
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
-{{< tab bundle >}}
-$ bundle add opentelemetry-exporter-otlp
-{{< /tab >}}
+{{< tabpane lang=shell persistLang=false >}}
 
-{{< tab gem >}}
-$ gem install opentelemetry-exporter-otlp
-{{< /tab >}}
+{{< tab bundle >}} bundle add opentelemetry-exporter-otlp {{< /tab >}}
+
+{{< tab gem >}} gem install opentelemetry-exporter-otlp {{< /tab >}}
 
 {{< /tabpane>}}
-<!-- prettier-ignore-end -->
 
 Next, configure the exporter to point at an OTLP endpoint. For example you can
 update `app.rb` from the [Getting Started](../getting-started/) like the
