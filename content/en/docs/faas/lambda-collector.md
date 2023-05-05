@@ -1,6 +1,6 @@
 ---
 title: Lambda Collector Configuration
-linkTitle: Lambda Collector Configuration
+linkTitle: Lambda Collector Config
 weight: 11
 description: Add and configure the Collector Lambda layer to your Lambda
 ---
