@@ -2,7 +2,7 @@
 title: Functions as a Service
 linkTitle: FaaS
 description: >-
-  OpenTelemetry supports various methods of monitoring Functions as a Service
+  OpenTelemetry supports various methods of monitoring Function-as-a-Service
   provided by different cloud vendors
 weight: 12
 ---
