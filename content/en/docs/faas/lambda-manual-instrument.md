@@ -20,7 +20,7 @@ first.
 ### Instrument the Lambda with OTel
 
 Review the
-[language instrumentation guidance](https://opentelemetry.io/docs/instrumentation/)
+[language instrumentation guidance](/docs/instrumentation/)
 on how to manually instrument your application.
 
 ### Publish your Lambda
