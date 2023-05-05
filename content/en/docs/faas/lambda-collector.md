@@ -80,6 +80,8 @@ Please find the list of available components supported for custom configuration
 here. To enable debugging, you can use the configuration file to set log level
 to debug. See the example below.
 
+#### Choose your Preferred Confmap Provider
+
 The OTel Lambda Layers supports the following types of confmap providers:
 `file`, `env`, `yaml`, `http`, `https`, and `s3`. To customize the OTel
 collector configuration using different Confmap providers, Please refer to
@@ -87,13 +89,6 @@ collector configuration using different Confmap providers, Please refer to
 for more information.
 
 #### Create a Custom Configuration File
-
-Once your collector configuration is set through a confmap providers. Create an
-environment variable on your Lambda function
-`OPENTELEMETRY_COLLECTOR_CONFIG_FILE` and set the path of configuration w.r.t to
-the confmap provider as its value. for e.g, if you are using a file configmap
-provider, set its value to `/var/task/*<path>/<to>/<filename>\_`. This will tell
-the extension where to find the collector configuration.
 
 Here is a sample configuration file of `collector.yaml` in the root directory:
 
@@ -126,7 +121,16 @@ service:
       address: localhost:8888
 ```
 
-#### Custom Collector Configuration Using the CLI
+#### Map your Custom Configuration File using Environment Variables
+
+Once your collector configuration is set through a confmap providers. Create an
+environment variable on your Lambda function
+`OPENTELEMETRY_COLLECTOR_CONFIG_FILE` and set the path of configuration w.r.t to
+the confmap provider as its value. for e.g, if you are using a file configmap
+provider, set its value to `/var/task/*<path>/<to>/<filename>\_`. This will tell
+the extension where to find the collector configuration.
+
+##### Custom Collector Configuration Using the CLI
 
 You can set this via the Lambda console, or via the AWS CLI.
 
@@ -134,7 +138,7 @@ You can set this via the Lambda console, or via the AWS CLI.
 aws lambda update-function-configuration --function-name Function --environment Variables={OPENTELEMETRY_COLLECTOR_CONFIG_FILE=/var/task/collector.yaml}
 ```
 
-#### Set Configuration Environment Variables from CloudFormation
+##### Set Configuration Environment Variables from CloudFormation
 
 You can configure environment variables via **CloudFormation** template as well:
 
@@ -148,7 +152,7 @@ Function:
         OPENTELEMETRY_COLLECTOR_CONFIG_FILE: /var/task/collector.yaml
 ```
 
-#### Load Configuration from an S3 Object
+##### Load Configuration from an S3 Object
 
 Loading configuration from S3 will require that the IAM role attached to your
 function includes read access to the relevant bucket.
