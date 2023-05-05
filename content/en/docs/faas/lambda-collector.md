@@ -40,7 +40,9 @@ In your `config.yaml` file add your preferred exporter(s) if they are not
 already present. Configure your exporter(s) using the environment variables you
 set for your access tokens in the previous step.
 
-Here is the default configuration:
+**Without an environment variable being set the default configuration only
+supports emitting data using the logging exporter.** Here is the default
+configuration:
 
 ```yaml
 receivers:
