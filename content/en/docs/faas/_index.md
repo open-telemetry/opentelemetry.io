@@ -25,7 +25,3 @@ automatically.
 
 The release status can be tracked in the
 [OpenTelemetry-Lambda repository](https://github.com/open-telemetry/opentelemetry-lambda).
-
-- [Get started with the Collector Lambda Layer](./lambda-collector)
-- [Auto-instrumentation](./lambda-auto-instrument)
-- [Manual instrumentation](./lambda-manual-instrument)
