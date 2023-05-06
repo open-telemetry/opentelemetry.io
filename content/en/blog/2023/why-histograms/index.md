@@ -2,6 +2,8 @@
 title: Why Histograms?
 date: 2023-05-05
 author: '[Daniel Dyla](https://github.com/dyladan)'
+spelling: sSpell:ignore Dyla quantile quantiles reimplementation
+canonical_url: https://dyladan.me/histograms/2023/05/02/why-histograms/
 ---
 
 <i>Originally posted to
@@ -47,7 +49,7 @@ very quickly see that at least 50% of your users are receiving very fast
 response times, but almost all of your users are experiencing response times
 under 90ms.
 
-![p99, p90, and p50 plotted as lines](hist-lines.png "p99, p90, and p50 plotted as a line chart with title 'response times.' Time is on the x-axis and response times in milliseconds on the y-axis. p99 response times are around 80 milliseconds. p90 response times are betweeen 60 and 80 milliseconds. p50 response times are between 20 and 30 milliseconds.")
+![p99, p90, and p50 plotted as lines](hist-lines.png "p99, p90, and p50 plotted as a line chart with title 'response times.' Time is on the x-axis and response times in milliseconds on the y-axis. p99 response times are around 80 milliseconds. p90 response times are between 60 and 80 milliseconds. p50 response times are between 20 and 30 milliseconds.")
 
 ## Other metric types
 
@@ -88,3 +90,7 @@ things are not affecting derived metrics, or that they are properly re-weighted,
 or you risk not being able to accurately asses your SLOs. Depending on your
 sampling strategy, it may not even be possible. Using histograms is a way to
 avoid these subtle problems if they apply to you.
+
+_A version of this article was [originally posted][] to the author's blog._
+
+[originally posted]: {{% param canonical_url %}}
