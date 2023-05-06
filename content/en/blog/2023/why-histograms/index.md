@@ -1,6 +1,6 @@
 ---
 title: Why Histograms?
-date: 2023-05-05
+date: 2023-05-08
 author: '[Daniel Dyla](https://github.com/dyladan)'
 spelling: sSpell:ignore Dyla quantile quantiles reimplementation
 canonical_url: https://dyladan.me/histograms/2023/05/02/why-histograms/
