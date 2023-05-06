@@ -76,11 +76,15 @@ histograms.
 
 ## Other data sources and metric types
 
-You may ask why you would report a separate metric rather than calculating these
-metrics from your existing log and trace data? While it is true that for _some_
-use cases, like response times, this may be possible, it is not possible for
-_all_ use cases. Even when percentiles can be calculated from existing data,
-this typically requires querying a massive amount of data to answer a very
-simple question. Further, if you are sampling your tracing and logs data, you
-may be missing crucial information required to asses whether or not you are
-meeting your SLOs.
+You may ask, "why would I report a separate metric rather than calculating it
+from my existing log and trace data?" While it is true that for _some_ use
+cases, like response times, this may be possible, it is not necessarily possible
+for _all_ use cases. Even when quantiles can be calculated from existing data,
+you may run into other problems. You need to be sure your observability backend
+is able to query and analyze a large amount of existing data on-line or index
+and analyze it at ingestion time. If you are sampling your logs and traces or
+employing a data retention policy that ages data out, you need to be sure those
+things are not affecting derived metrics, or that they are properly re-weighted,
+or you risk not being able to accurately asses your SLOs. Depending on your
+sampling strategy, it may not even be possible. Using histograms is a way to
+avoid these subtle problems if they apply to you.
