@@ -1,0 +1,15 @@
+title: otlpr - A logr implementation backed by OTLP
+registryType: exporter
+isThirdParty: true
+language: go
+tags:
+  - go
+  - exporter
+  - log
+  - logging
+  - logr
+repo: https://github.com/MrAlias/otlpr
+license: Apache 2.0
+description: Provides a `logr.Logger` that exports messages as OTLP logs.
+authors: MrAlias
+otVersion: latest
