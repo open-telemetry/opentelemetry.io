@@ -68,10 +68,14 @@ gauge impact when your SLO is violated. For example, imagine you are collecting
 a gauge that calculates the `p99` of some metric and you define an SLO based on
 it. When your SLO is violated and an alert is triggered, how do you know it is
 really only affecting 1% of queries, 10%, or 50%? A histogram allows you to
-answer that question by querying the percentiles you're interested in. You could
-technically collect additional gauges for each percentile, but that's just an
-ad-hoc reimplementation of histograms anyways, so you're better off using
-histograms.
+answer that question by querying the percentiles you're interested in.
+
+Another option is to collect each quantile you're interested in as a gauge. Some
+systems, like Prometheus, support this natively using a metric type sometimes
+called a summary. Summaries can work, but they suffer the same inflexibility as
+gauges and counters, requiring you to decide ahead of time which quantiles to
+collect. They also cannot be aggregated, meaning that a `p90` cannot be
+accurately calculated from two separate hosts each reporting their own `p90`.
 
 ## Other data sources and metric types
 
