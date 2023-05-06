@@ -6,9 +6,6 @@ spelling: sSpell:ignore Dyla quantile quantiles reimplementation
 canonical_url: https://dyladan.me/histograms/2023/05/02/why-histograms/
 ---
 
-<i>Originally posted to
-https://dyladan.me/histograms/2023/05/02/why-histograms/</i>
-
 A histogram is a multi-value counter that summarizes the distribution of data
 points. For example, a histogram may have 3 counters which count the occurrences
 of negative, positive, and zero values respectively. Given a series of numbers,
