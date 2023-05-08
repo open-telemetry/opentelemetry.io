@@ -161,8 +161,8 @@ The instrumentation setup and configuration must be run _before_ your
 application code. One tool commonly used for this task is the
 [--require](https://nodejs.org/api/cli.html#-r---require-module) flag.
 
-Create a file named `instrumentation.ts` (or `instrumentation.js` if 
-not using typescript) , which will contain your instrumentation setup code.
+Create a file named `instrumentation.ts` (or `instrumentation.js` if not using
+typescript) , which will contain your instrumentation setup code.
 
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
