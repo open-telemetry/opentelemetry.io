@@ -3,6 +3,7 @@ title: Node.js
 description: Get telemetry for your app in less than 5 minutes!
 aliases: [/docs/js/getting_started/nodejs]
 spelling: cSpell:ignore rolldice autoinstrumentation autoinstrumentations KHTML
+spelling: cSpell:ignore jsonlines
 weight: 2
 ---
 
@@ -25,7 +26,7 @@ The following example uses a basic [Express](https://expressjs.com/)
 application. If you are not using Express, that's ok — you can use OpenTelemetry
 JavaScript with other web frameworks as well, such as Koa and Nest.JS. For a
 complete list of libraries for supported frameworks, see the
-[regsitry](/ecosystem/registry/?component=instrumentation&language=js).
+[registry](/ecosystem/registry/?component=instrumentation&language=js).
 
 For more elaborate examples, see [examples](/docs/instrumentation/js/examples/).
 
