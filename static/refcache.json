@@ -3687,6 +3687,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-18T12:43:48.632952-05:00"
   },
+  "https://spring.io/guides/gs/spring-boot/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-02T21:07:51.048873+02:00"
+  },
   "https://stackoverflow.com/questions/5626193/what-is-monkey-patching": {
     "StatusCode": 200,
     "LastSeen": "2023-02-18T12:44:06.989952-05:00"
