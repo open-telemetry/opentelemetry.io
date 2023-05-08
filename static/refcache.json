@@ -95,6 +95,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-15T20:20:22.109017-05:00"
   },
+  "https://aws-otel.github.io/docs/components/confmap-providers#confmap-providers-supported-by-the-adot-collector": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-05T14:18:57.288423-07:00"
+  },
   "https://aws.amazon.com/": {
     "StatusCode": 200,
     "LastSeen": "2023-02-15T20:20:57.179898-05:00"
@@ -1063,6 +1067,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-15T21:04:36.825244-05:00"
   },
+  "https://dyladan.me/histograms/2023/05/02/why-histograms/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-05T13:16:06.026606-04:00"
+  },
   "https://ebpf.io/": {
     "StatusCode": 206,
     "LastSeen": "2023-03-15T09:16:58.309342+01:00"
@@ -1386,6 +1394,10 @@
   "https://github.com/MrAlias/flow": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:47:31.703432-05:00"
+  },
+  "https://github.com/MrAlias/otlpr": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-05T09:49:48.182190079-07:00"
   },
   "https://github.com/MrAlias/redact": {
     "StatusCode": 200,
@@ -3555,6 +3567,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:26:15.285143-05:00"
   },
+  "https://pypi.org/project/opentelemetry-api/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-05T14:18:57.011667-07:00"
+  },
   "https://quarkus.io": {
     "StatusCode": 206,
     "LastSeen": "2023-02-18T12:39:46.550519-05:00"
@@ -3674,6 +3690,10 @@
   "https://spring.io": {
     "StatusCode": 200,
     "LastSeen": "2023-02-18T12:43:48.632952-05:00"
+  },
+  "https://spring.io/guides/gs/spring-boot/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-02T21:07:51.048873+02:00"
   },
   "https://stackoverflow.com/questions/5626193/what-is-monkey-patching": {
     "StatusCode": 200,
@@ -4138,6 +4158,10 @@
   "https://www.jaegertracing.io/docs/latest/apis/#thrift-over-udp-stable": {
     "StatusCode": 206,
     "LastSeen": "2023-02-18T13:42:20.916021-05:00"
+  },
+  "https://www.jaegertracing.io/docs/latest/client-libraries/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-05T15:20:49.484688+02:00"
   },
   "https://www.jaegertracing.io/docs/latest/client-libraries/#propagation-format": {
     "StatusCode": 200,
