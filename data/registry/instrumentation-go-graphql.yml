@@ -1,4 +1,4 @@
-title: graphql-go instrumentation
+title: GraphQL-Go instrumentation
 registryType: instrumentation
 isThirdParty: true
 language: go
