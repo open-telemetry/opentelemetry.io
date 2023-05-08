@@ -75,15 +75,6 @@ There are also several OpenTelemetry receivers
 Using these receivers, you can start sending telemetry data from different
 components of your application.
 
-#### Roadmap for auto instrumentation in OpenTelemetry
-
-**Q:** Is there any roadmap for auto instrumentation in OpenTelemetry?
-
-**A:** Auto instrumentation is not a priority for OpenTelemetry right now. It is
-also something that is driven by the community. If you're interested in the
-auto-instrumentation of a language or want to improve on existing areas, you can
-take it up. On a side note, the first version of Golang auto instrumentation
-just got released.
 
 ## Meeting Notes & Recordings
 
