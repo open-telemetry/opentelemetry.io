@@ -2,7 +2,8 @@
 title: Getting Started
 description: Get telemetry from your app in less than 5 minutes!
 aliases: [/docs/instrumentation/ruby/getting_started]
-spelling: cSpell:ignore truffleruby sinatra
+spelling: cSpell:ignore truffleruby sinatra rolldice struct darwin Tracestate
+spelling: cSpell:ignore tracestate
 weight: 1
 ---
 
@@ -27,56 +28,67 @@ truffleruby is tested, but support is best-effort at this time. {{% /alert %}}
 
 ## Example Application
 
-The following example uses a basic [Sinatra](https://sinatrarb.com/)
+The following example uses a basic [Rails](https://rubyonrails.org//)
 application. If you are not using Sinatra, that's ok — you can use OpenTelemetry
-Ruby with other web frameworks as well, such as Rails and Rack. For a complete
+Ruby with other web frameworks as well, such as Sinatra and Rack. For a complete
 list of libraries for supported frameworks, see the
-[regsitry](/ecosystem/registry/?component=instrumentation&language=ruby).
+[registry](/ecosystem/registry/?component=instrumentation&language=ruby).
 
 For more elaborate examples, see
 [examples](/docs/instrumentation/ruby/examples/).
 
 ### Dependencies
 
-To begin, set up a new Gemfile in a new directory:
+To begin, install rails:
 
 ```sh
-bundle init
+gem install rails
 ```
 
-Now install Sinatra and Puma:
+## Create an application
+
+Create a new api-only application called `dice-ruby` and change into the newly
+created folder `dice-ruby`
 
 ```sh
-bundle add sinatra puma
+rails new --api dice-ruby
+cd dice-ruby
 ```
 
-## Create the sample HTTP Server
+Create a controller for rolling a dice:
 
-Create a file `app.rb` and add the following code to it:
+```sh
+rails generate controller dice
+```
+
+This will create a file called `app/controllers/dice_controller.rb`. Open that
+file in your preferred editor and update it with the following code:
 
 ```ruby
-require 'rubygems'
-require 'bundler/setup'
-require 'sinatra/base'
+class DiceController < ApplicationController
+    def roll
+        render json: (rand(6) + 1).to_s
+    end
+end
+```
 
-class App < Sinatra::Base
-  set :bind, '0.0.0.0'
-  set :port, 8080
+Next, open the `config/routes.rb` file and add the following code:
 
-  get '/rolldice' do
-    (rand(6) + 1).to_s
-  end
-
-  run! if app_file == $0
+```ruby
+Rails.application.routes.draw do
+  get 'rolldice', to: 'dice#roll'
 end
 ```
 
 Run the application with the following command and open
-<http://localhost:80800/rolldice> in your web browser to ensure it is working.
+<http://localhost:8080/rolldice> in your web browser to ensure it is working.
 
 ```sh
-ruby app.rb
+rails server -p 8080
 ```
+
+If everything works fine you should see a number between 1 and 6 returned to
+you. You can now stop the application and instrument it using OpenTelemetry.
 
 ## Instrumentation
 
@@ -90,33 +102,20 @@ bundle add opentelemetry-sdk opentelemetry-instrumentation-all
 The inclusion of `opentelemetry-instrumentation-all` provides
 [instrumentations][auto] for Rails, Sinatra, several HTTP libraries, and more.
 
-The OpenTelemetry initialization needs to happen early in your application
-lifecycle. Perform this initialization as early as possible in the start-up
-process.
+For Rails applications, the usual way to initialize OpenTelemetry is in a Rails
+initializer. For other Ruby services, perform this initialization as early as
+possible in the start-up process.
 
-Update the `app.rb` to contain the initialization of the OpenTelemetry SDK:
+Create a file named `config/initializers/opentelemetry.rb` with the following
+code:
 
 ```ruby
-require 'rubygems'
-require 'bundler/setup'
-require 'sinatra/base'
+# config/initializers/opentelemetry.rb
 require 'opentelemetry/sdk'
 require 'opentelemetry/instrumentation/all'
-
 OpenTelemetry::SDK.configure do |c|
-  c.service_name = 'roll-the-dice'
+  c.service_name = 'dice-ruby'
   c.use_all() # enables all instrumentation!
-end
-
-class App < Sinatra::Base
-  set :bind, '0.0.0.0'
-  set :port, 8080
-
-  get '/rolldice' do
-    (rand(6) + 1).to_s
-  end
-
-  run! if app_file == $0
 end
 ```
 
@@ -129,7 +128,7 @@ specific instrumentation libraries][config].
 You can now run your instrumented app and have it print to the console for now:
 
 ```sh
-env OTEL_TRACES_EXPORTER="console" ruby app.rb
+env OTEL_TRACES_EXPORTER="console" rails server -p 8080
 ```
 
 Open <http://localhost:8080/rolldice> in your web browser and reload the page a
@@ -138,47 +137,43 @@ following:
 
 ```ruby
 #<struct OpenTelemetry::SDK::Trace::SpanData
- name="GET /rolldice",
+ name="DiceController#roll",
  kind=:server,
- status=
-  #<OpenTelemetry::Trace::Status:0x000000013eb22160 @code=1, @description="">,
+ status=#<OpenTelemetry::Trace::Status:0x000000010587fc48 @code=1, @description="">,
  parent_span_id="\x00\x00\x00\x00\x00\x00\x00\x00",
- total_recorded_attributes=7,
+ total_recorded_attributes=8,
  total_recorded_events=0,
  total_recorded_links=0,
- start_timestamp=1683144794318648000,
- end_timestamp=1683144794319924000,
+ start_timestamp=1683555544407294000,
+ end_timestamp=1683555544464308000,
  attributes=
   {"http.method"=>"GET",
    "http.host"=>"localhost:8080",
    "http.scheme"=>"http",
    "http.target"=>"/rolldice",
    "http.user_agent"=>"curl/7.87.0",
-   "http.route"=>"/rolldice",
+   "code.namespace"=>"DiceController",
+   "code.function"=>"roll",
    "http.status_code"=>200},
  links=nil,
  events=nil,
  resource=
-  #<OpenTelemetry::SDK::Resources::Resource:0x000000013eb49e68
+  #<OpenTelemetry::SDK::Resources::Resource:0x000000010511d1f8
    @attributes=
-    {"service.name"=>"roll-the-dice",
-     "process.pid"=>11471,
-     "process.command"=>"app.rb",
+    {"service.name"=>"<YOUR_SERVICE_NAME>",
+     "process.pid"=>83900,
+     "process.command"=>"bin/rails",
      "process.runtime.name"=>"ruby",
-     "process.runtime.version"=>"2.6.10",
-     "process.runtime.description"=>
-      "ruby 2.6.10p210 (2022-04-12 revision 67958) [universal.arm64e-darwin22]",
+     "process.runtime.version"=>"3.2.2",
+     "process.runtime.description"=>"ruby 3.2.2 (2023-03-30 revision e51014f9c0) [arm64-darwin22]",
      "telemetry.sdk.name"=>"opentelemetry",
      "telemetry.sdk.language"=>"ruby",
      "telemetry.sdk.version"=>"1.2.0"}>,
- instrumentation_scope=
-  #<struct OpenTelemetry::SDK::InstrumentationScope
-   name="OpenTelemetry::Instrumentation::Rack",
-   version="0.22.1">,
- span_id="s\x91\xFB\xF3\xB9-\xEB\xF6",
- trace_id="\xEFHi7\xC0Qc6}D^\xE7\a\xF3\xF8i",
- trace_flags=#<OpenTelemetry::Trace::TraceFlags:0x000000013ea80720 @flags=1>,
- tracestate=#<OpenTelemetry::Trace::Tracestate:0x000000013ea905a8 @hash={}>>
+ instrumentation_scope=#<struct OpenTelemetry::SDK::InstrumentationScope name="OpenTelemetry::Instrumentation::Rack", version="0.23.0">,
+ span_id="\xA7\xF0\x9B#\b[\xE4I",
+ trace_id="\xF3\xDC\b8\x91h\xB0\xDF\xDEn*CH\x9Blf",
+ trace_flags=#<OpenTelemetry::Trace::TraceFlags:0x00000001057b7b08 @flags=1>,
+ tracestate=#<OpenTelemetry::Trace::Tracestate:0x00000001057b67f8 @hash={}>>
 ```
 
 ## What next?

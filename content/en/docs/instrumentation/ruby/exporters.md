@@ -1,6 +1,7 @@
 ---
 title: Exporters
 weight: 5
+spelling: cSpell:ignore Zipkin jaegertracing openzipkin zipkin
 ---
 
 In order to visualize and analyze your traces, you will need to export them to a
@@ -26,38 +27,25 @@ Jaeger) you'll want to use an exporter package, such as
 {{< /tabpane>}}
 
 Next, configure the exporter to point at an OTLP endpoint. For example you can
-update `app.rb` from the [Getting Started](../getting-started/) like the
-following:
+update `config/initializers/opentelemetry.rb` from the
+[Getting Started](../getting-started/) by adding
+`require 'opentelemetry-exporter-otlp'` to the code:
 
 ```ruby
-require 'rubygems'
-require 'bundler/setup'
-require 'sinatra/base'
+# config/initializers/opentelemetry.rb
 require 'opentelemetry/sdk'
 require 'opentelemetry/instrumentation/all'
 require 'opentelemetry-exporter-otlp'
-
 OpenTelemetry::SDK.configure do |c|
-  c.service_name = 'roll-the-dice'
+  c.service_name = 'dice-ruby'
   c.use_all() # enables all instrumentation!
-end
-
-class App < Sinatra::Base
-  set :bind, '0.0.0.0'
-  set :port, 8080
-
-  get '/rolldice' do
-    (rand(6) + 1).to_s
-  end
-
-  run! if app_file == $0
 end
 ```
 
 If you now run your application it will use OTLP to export traces:
 
 ```sh
-ruby app.rb
+rails server -p 8080
 ```
 
 By default traces are sent to an OTLP endpoint listening on localhost:4318. You
@@ -65,7 +53,7 @@ can change the endpoint by setting the `OTEL_EXPORTER_OTLP_ENDPOINT`
 accordingly:
 
 ```sh
-env OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:4318/v1/traces" ruby app.rb
+env OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:4318/v1/traces" rails server -p 8080
 ```
 
 To try out the OTLP exporter quickly and see your traces visualized at the
@@ -106,31 +94,18 @@ Install the exporter package as a dependency for your application:
 
 {{< /tabpane>}}
 
-Update your opentelemetry configuration to use the exporter and to send data to
-your zipkin backend:
+Update your OpenTelemetry configuration to use the exporter and to send data to
+your Zipkin backend:
 
 ```ruby
-require 'rubygems'
-require 'bundler/setup'
-require 'sinatra/base'
+# config/initializers/opentelemetry.rb
 require 'opentelemetry/sdk'
 require 'opentelemetry/instrumentation/all'
+
 require 'opentelemetry-exporter-zipkin'
-
 OpenTelemetry::SDK.configure do |c|
-  c.service_name = 'roll-the-dice'
+  c.service_name = 'dice-ruby'
   c.use_all() # enables all instrumentation!
-end
-
-class App < Sinatra::Base
-  set :bind, '0.0.0.0'
-  set :port, 8080
-
-  get '/rolldice' do
-    (rand(6) + 1).to_s
-  end
-
-  run! if app_file == $0
 end
 ```
 
@@ -138,7 +113,7 @@ If you now run your application, set the environment variable
 `OTEL_TRACES_EXPORTER` to zipkin:
 
 ```sh
-env OTEL_TRACES_EXPORTER="zipkin" ruby app.rb
+env OTEL_TRACES_EXPORTER="zipkin" rails server
 ```
 
 By default traces are sent to a Zipkin endpoint listening on port
@@ -146,5 +121,5 @@ localhost:9411. You can change the endpoint by setting the
 `OTEL_EXPORTER_ZIPKIN_ENDPOINT` accordingly:
 
 ```sh
-env OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:9411" ruby app.rb
+env OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:9411" rails server
 ```
