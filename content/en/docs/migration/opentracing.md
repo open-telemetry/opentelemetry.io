@@ -2,6 +2,7 @@
 title: Migrating from OpenTracing
 linkTitle: OpenTracing
 spelling: cSpell:ignore codebases opentracing
+weight: 2
 ---
 
 Backward compatibility with [OpenTracing][] has been a priority for the
