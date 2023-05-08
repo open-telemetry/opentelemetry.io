@@ -15,6 +15,10 @@ my $specRepoUrl = 'https://github.com/open-telemetry/opentelemetry-specification
 my $semConvRef = "$specRepoUrl/blob/main/semantic_conventions/README.md";
 my $spec_base_path = '/docs/reference/specification';
 my $path_base_for_github_subdir = "content/en$spec_base_path";
+my %versions = qw(
+  spec: 1.20.0
+);
+my $spec_vers = $versions{'spec:'};
 
 my $rootFrontMatterExtra = <<"EOS";
 no_list: true
@@ -28,6 +32,11 @@ EOS
 
 sub printTitleAndFrontMatter() {
   print "---\n";
+  if ($title eq 'OpenTelemetry Specification') {
+    $title .= " $spec_vers";
+    # Temporary adjustment to front matter until spec is updated:
+    $frontMatterFromFile =~ s/linkTitle: .*/$& $spec_vers/;
+  }
   my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
   print "title: $titleMaybeQuoted\n";
   ($linkTitle) = $title =~ /^OpenTelemetry (.*)/;
