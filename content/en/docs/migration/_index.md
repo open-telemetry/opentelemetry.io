@@ -13,7 +13,7 @@ OpenTelemetry project is to provide backward compatibility with OpenCensus and a
 migration story for existing users.
 
 If you come from one of these projects, you can follow the migration guides for
-both [OpenTracing](./opentracing/) and [OpenCensus](./opencensus/)
+both [OpenTracing](opentracing/) and [OpenCensus](opencensus/)
 
 ## Jaeger Client
 
