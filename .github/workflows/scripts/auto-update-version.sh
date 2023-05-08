@@ -69,6 +69,14 @@ if [ "$existing_pr_count" -gt 0 ]; then
     exit 0
 fi
 
+if [[ "$repo" == "opentelemetry-specification" ]]; then
+  echo "Switching to $repo at tag v$latest_version"
+  ( set -x;
+    cd content-modules/opentelemetry-specification &&
+    git switch --detach v$latest_version
+  )
+fi
+
 branch="opentelemetrybot/auto-update-$repo-$latest_version"
 
 $GIT checkout -b "$branch"
