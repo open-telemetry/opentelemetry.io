@@ -1,4 +1,4 @@
-title: database/sql instrumentation
+title: SQL instrumentation
 registryType: instrumentation
 isThirdParty: true
 language: go
