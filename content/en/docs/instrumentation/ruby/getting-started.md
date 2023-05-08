@@ -19,12 +19,14 @@ Ensure that you have the following installed locally:
 - MRI Ruby >= `3.0`, jruby >= `9.3.2.0`, or truffleruby >= 22.1
 - [Bundler](https://bundler.io/)
 
-{{% alert  title="Warning" color="warning" %}} `jruby` only targets compatibility with MRI Ruby
-2.6.8, which is EOL. This project does not officially support MRI Ruby 2.6.8,
-and provides `jruby` support on a best-effort basis until the `jruby` project
-supports compatibility with more modern Ruby runtimes.
+{{% alert  title="Warning" color="warning" %}} `jruby` only targets
+compatibility with MRI Ruby 2.6.8, which is EOL. This project does not
+officially support MRI Ruby 2.6.8, and provides `jruby` support on a best-effort
+basis until the `jruby` project supports compatibility with more modern Ruby
+runtimes.
 
-While tested, support for `truffleruby` is on a best-effort basis at this time. {{% /alert %}}
+While tested, support for `truffleruby` is on a best-effort basis at this time.
+{{% /alert %}}
 
 ## Example Application
 
