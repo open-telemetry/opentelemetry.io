@@ -1071,6 +1071,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-05-05T13:16:06.026606-04:00"
   },
+  "https://dyladan.me/histograms/2023/05/03/histograms-vs-summaries/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-08T11:16:20.874689-04:00"
+  },
   "https://ebpf.io/": {
     "StatusCode": 206,
     "LastSeen": "2023-03-15T09:16:58.309342+01:00"
@@ -3538,6 +3542,10 @@
   "https://projectreactor.io/docs/core/3.1.0.RELEASE/api/reactor/core/publisher/Mono.html": {
     "StatusCode": 200,
     "LastSeen": "2023-02-18T09:19:25.73206-05:00"
+  },
+  "https://promcon.io/2022-munich/talks/native-histograms-in-prometheus/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-08T11:16:21.143157-04:00"
   },
   "https://prometheus.io": {
     "StatusCode": 206,

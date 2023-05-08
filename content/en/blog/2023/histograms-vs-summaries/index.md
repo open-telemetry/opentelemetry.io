@@ -2,28 +2,27 @@
 title: Histograms vs Summaries
 date: 2023-05-15
 author: '[Daniel Dyla](https://github.com/dyladan)'
+spelling: cSpell:ignore Dyla quantile quantiles timeseries aggregatable
+canonical_url: https://dyladan.me/histograms/2023/05/03/histograms-vs-summaries/
 ---
 
-<i>Originally posted to
-https://dyladan.me/histograms/2023/05/03/histograms-vs-summaries/</i>
-
-In many ways, prometheus histograms and summaries appear quite similar. They
-both roll up many data points into a data structure for efficient processing,
-transmission, and storage. They can also both be used to track arbitrary
-quantiles such as the median or p99 of your data. So the question is raised when
-to use a summary and when to use a histogram.
+In many ways histograms and summaries appear quite similar. They both roll up
+many data points into a data structure for efficient processing, transmission,
+and storage. They can also both be used to track arbitrary quantiles such as the
+median or p99 of your data. So the question is raised when to use a summary and
+when to use a histogram.
 
 # Histograms
 
 Since I just published a post about
-[histograms and when they are useful](../why-histograms/index.md), I will only
-provide a quick summary here. A histogram is a data structure which describes
-the distribution of a set of data points. For example, one may collect all
-response times to an HTTP endpoint and describe them as a histogram with 10 bins
-ranging from 0 to 1000 milliseconds. Each bin counts the number of requests that
-fall within its range.
+[histograms and when they are useful](../why-histograms), I will only provide a
+quick summary here. A histogram is a data structure which describes the
+distribution of a set of data points. For example, one may collect all response
+times to an HTTP endpoint and describe them as a histogram with 10 bins ranging
+from 0 to 1000 milliseconds. Each bin counts the number of requests that fall
+within its range.
 
-![Reponse Time Histogram](response-times-histogram.png "A histogram titled 'Response Time (1260 requests).' The y-axis is the request count and there are 12 buckets ranging from less than 10 milliseconds to greater than 1000 milliseconds. The distribution appears to be a normal bell curve with a mode in the 'less than 75 milliseconds' bucket. The 'greater than 1000' bucket shows a slight bump to indicate a long tail captured by a single bucket.")
+![Response Time Histogram](response-times-histogram.png "A histogram titled 'Response Time (1260 requests).' The y-axis is the request count and there are 12 buckets ranging from less than 10 milliseconds to greater than 1000 milliseconds. The distribution appears to be a normal bell curve with a mode in the 'less than 75 milliseconds' bucket. The 'greater than 1000' bucket shows a slight bump to indicate a long tail captured by a single bucket.")
 
 From this we can estimate φ-quantiles like the 90th percentile. We know there
 are 1260 requests, so the 1134th-ranked (`1260 * .90`) request represents the
@@ -60,26 +59,27 @@ advance.
 Given these disadvantages, summaries do have some advantages. First, they trade
 off a small performance penalty on the client for a significant reduction in
 transmission, storage, and server processing cost. In our histogram example
-above, it is represented as 12 separate timeseries: 1 counter for each bucket +
-1 bucket for out of range values + a total sum of all values. That is for a
-single, relatively modest, histogram with no attributes to multiply cardinality.
-By comparison, the summary is only a single timeseries for the precomputed `p99`
-value. Second, they have very low and configurable relative error rates. The in
-the histogram example above, we had a potential relative error of 17% where our
-summary is guaranteed to be within ± 0.5% accuracy.
+above, the distribution is represented as 12 separate timeseries: 1 counter for
+each bucket + 1 bucket for out of range values + a total sum of all values. That
+is for a single, relatively modest, histogram with no attributes to multiply
+cardinality. By comparison, the summary is only a single timeseries for the
+precomputed `p99` value. Second, they have very low and configurable relative
+error rates. In the histogram example above, we had a potential relative error
+of 17% where our summary is guaranteed to be within ± 0.5% accuracy.
 
 # So which should you choose?
 
 The disappointing answer is "it depends," and there is no one-size-fits-all
 solution. If you need to aggregate data from many sources, then histograms may
 be the right choice. If you are collecting a large number of separate metrics
-with very strict SLOs, or your prometheus server is particularly resource
+with very strict SLOs, or your Prometheus server is particularly resource
 constrained, then maybe summaries are the right choice for you. Maybe your ideal
 solution is a hybrid with some histograms for flexible querying and some
-summaries. Only you can know the ins and outs of your own system and design an
-observability solution around it that is accurate and flexible. The key is
-knowing the strengths and limitations of the data structure you're using so you
-can make informed decisions.
+summaries for high-accuracy, low-cost alerting. Only you can know the ins and
+outs of your own system and design an observability solution around it that is
+accurate and flexible and fits your particular needs. The key is knowing the
+strengths and limitations of the available tools so you can make informed
+decisions.
 
 # Bonus round: native histograms
 
@@ -102,3 +102,7 @@ Until then, here are some talks I found helpful:
 - [PromCon EU 2022 - Native Histograms in Prometheus - Ganesh Vernekar](https://promcon.io/2022-munich/talks/native-histograms-in-prometheus/)
 - [Kubecon EU 2023 - Prometheus Native Histograms in Production - Björn Rabenstein, Grafana Labs](https://www.youtube.com/watch?v=TgINvIK9SYc)
 - [Using OpenTelemetry’s Exponential Histograms in Prometheus - Ruslan Kovalov & Ganesh Vernekar](https://www.youtube.com/watch?v=W2_TpDcess8)
+
+_A version of this article was [originally posted][] to the author's blog._
+
+[originally posted]: {{% param canonical_url %}}
