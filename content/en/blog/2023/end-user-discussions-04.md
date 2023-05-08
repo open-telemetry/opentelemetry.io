@@ -43,16 +43,19 @@ of captured data is unusable. None of the vendors help you understand what data
 is accessed and how to bring that visibility to the engineering teams sending
 the data.
 
-**A:** One of the ways to optimize observability at scale is sampling. There are
-a number of options for you to reduce the data volumes at the SDKs level and the
-collector level.
+**A:** One of the ways to optimize observability at scale is sampling. Here's an
+article on
+[tail sampling with OpenTelemetry](https://opentelemetry.io/blog/2022/tail-sampling/).
+There are a number of options for you to reduce the data volumes at the SDKs
+level and the collector level.
 
 Also, there is active work going on the OpenTelemetry Collector side to handle
 data at scale more efficiently. For example, there is work going around using
-Apache Arrow for serialization to optimize network costs.
+[Apache Arrow](https://github.com/open-telemetry/oteps/pull/171) for
+serialization to optimize network costs.
 
-One of the other ways is to look at retention settings for the collected
-telemetry data. There is no need to retain data that won't be used later.
+One of the other ways to optimize observability data at scale is to decide how
+much of it you want to store for future use.
 
 ## Other Important discussion points
 
@@ -64,16 +67,19 @@ should be able to go to a team and tell them to start with X, and then do Y to
 move ahead. In a big enterprise, you have to provide something for people to
 understand the maturity of OpenTelemetry.
 
-**A:** OpenTelemetry metrics is a good place to start for infrastructure
-monitoring. For teams adopting OpenTelemetry, a good idea is to start with
-minimal changes. For example, teams can start with languages that have
+**A:** For teams adopting OpenTelemetry, a good idea is to start with minimal
+changes. For example, teams can start with languages that have
 auto-instrumentation support. Seeing value from small changes can build more
 confidence in the team to go deeper into OpenTelemetry adoption.
 
 There are also several OpenTelemetry receivers
 [available](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver).
-Using these receivers, you can start sending telemetry data from different
-components of your application.
+These receivers help to collect the telemetry end-users already have. For
+example,
+[Prometheus receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/README.md)
+can help you receive metrics data in Prometheus format. Using these receivers,
+you can start sending telemetry data from different components of your
+application.
 
 #### Roadmap for auto instrumentation in OpenTelemetry
 
