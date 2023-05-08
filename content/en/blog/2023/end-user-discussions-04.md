@@ -5,8 +5,14 @@ date: 2023-05-02
 author: '[Pranay Prateek](https://github.com/pranay01) (SigNoz)'
 ---
 
+<i>Note: The answers are provided by a mix of OTel community members and
+end-users to the best of their knowledge. The answers are not official
+recommendations by OpenTelemetry.</i>
+
 For the month of April 2023, the OpenTelemetry end-user group meet took place
-for users in the Asia-Pacific (APAC) region. Due to KubeCon EU, the AMER and EMEA sessions did not take place; however, we will have meetings for all 3 regions again in May.
+for users in the Asia-Pacific (APAC) region. Due to KubeCon EU, the AMER and
+EMEA sessions did not take place; however, we will have meetings for all 3
+regions again in May.
 
 The discussions take place using a
 [Lean Coffee format](https://agilecoffee.com/leancoffee/), whereby folks are
@@ -80,7 +86,6 @@ example,
 can help you receive metrics data in Prometheus format. Using these receivers,
 you can start sending telemetry data from different components of your
 application.
-
 
 ## Meeting Notes & Recordings
 
