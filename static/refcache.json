@@ -1067,6 +1067,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-15T21:04:36.825244-05:00"
   },
+  "https://dyladan.me/histograms/2023/05/02/why-histograms/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-05T13:16:06.026606-04:00"
+  },
   "https://ebpf.io/": {
     "StatusCode": 206,
     "LastSeen": "2023-03-15T09:16:58.309342+01:00"
