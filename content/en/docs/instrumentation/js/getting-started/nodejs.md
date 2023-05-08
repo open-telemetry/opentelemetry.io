@@ -326,7 +326,7 @@ the console output, such as the following:
 <details>
 <summary>View example output</summary>
 
-```javascript
+```jsonlines
 {
   descriptor: {
     name: 'http.server.duration',
