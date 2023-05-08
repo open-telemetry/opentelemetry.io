@@ -66,7 +66,8 @@ For example, `exporter_otlp_endpoint` would convert to
 
 ### Excluded URLs
 
-Comma-separated regexes representing which URLs to exclude across all instrumentations
+Comma-separated regexes representing which URLs to exclude across all
+instrumentations:
 
 - OTEL_PYTHON_EXCLUDED_URLS
 
@@ -90,7 +91,8 @@ Examples:
 
 ### Request Attribute Names
 
-Set to a comma-separated list of attributes names that will be extracted from the request object and set as attributes on spans.
+Set to a comma-separated list of attributes names that will be extracted from
+the request object and set as attributes on spans.
 
 - OTEL_PYTHON_DJANGO_TRACED_REQUEST_ATTRS
 - OTEL_PYTHON_FALCON_TRACED_REQUEST_ATTRS
@@ -104,9 +106,12 @@ Examples:
 
 ### Logging
 
-- OTEL_PYTHON_LOG_CORRELATION - to enable trace context injection into logs (true, false)
-- OTEL_PYTHON_LOG_FORMAT - to instruct the instrumentation to use a custom logging format
-- OTEL_PYTHON_LOG_LEVEL - to set a custom log level (info, error, debug, warning)
+- OTEL_PYTHON_LOG_CORRELATION - to enable trace context injection into logs
+  (true, false)
+- OTEL_PYTHON_LOG_FORMAT - to instruct the instrumentation to use a custom
+  logging format
+- OTEL_PYTHON_LOG_LEVEL - to set a custom log level (info, error, debug,
+  warning)
 
 Examples:
 
@@ -116,10 +121,14 @@ Examples:
 
 ### Other
 
-- OTEL_PYTHON_DJANGO_INSTRUMENT - set to `False` to disable the default enabled state for the Django instrumentation
-- OTEL_PYTHON_ELASTICSEARCH_NAME_PREFIX - changes the default prefixes for Elasticsearch operation names from "Elasticsearch" to whatever is used here
-- OTEL_PYTHON_GRPC_EXCLUDED_SERVICES - comma-separated list of specific services to exclude for the GRPC instrumentation
-- OTEL_PYTHON_ID_GENERATOR - to specify which IDs Generator to use for the global Tracer Provider
+- OTEL_PYTHON_DJANGO_INSTRUMENT - set to `False` to disable the default enabled
+  state for the Django instrumentation
+- OTEL_PYTHON_ELASTICSEARCH_NAME_PREFIX - changes the default prefixes for
+  Elasticsearch operation names from "Elasticsearch" to whatever is used here
+- OTEL_PYTHON_GRPC_EXCLUDED_SERVICES - comma-separated list of specific services
+  to exclude for the GRPC instrumentation
+- OTEL_PYTHON_ID_GENERATOR - to specify which IDs Generator to use for the
+  global Tracer Provider
 - OTEL_PYTHON_INSTRUMENTATION_SANITIZE_REDIS - to enable query sanitization
 
 Examples:
