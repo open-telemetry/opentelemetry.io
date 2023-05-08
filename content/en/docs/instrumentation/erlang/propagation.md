@@ -7,8 +7,8 @@ weight: 35
 
 Distributed traces extend beyond a single service, meaning some context must be
 propagated across services to create the parent-child relationship between
-Spans. This requires cross service [_context
-propagation_]({{< relref "/docs/reference/specification/overview#context-propagation" >}}),
+Spans. This requires cross service
+[_context propagation_](/docs/specification/otel/overview/#context-propagation),
 a mechanism where identifiers for a Trace are sent to remote processes.
 
 Instrumentation Libraries for HTTP frameworks and servers like
