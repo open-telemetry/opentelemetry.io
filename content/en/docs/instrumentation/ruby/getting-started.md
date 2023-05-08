@@ -19,16 +19,16 @@ Ensure that you have the following installed locally:
 - MRI Ruby >= `3.0`, jruby >= `9.3.2.0`, or truffleruby >= 22.1
 - [Bundler](https://bundler.io/)
 
-{{% alert color="warning" %}} jruby only targets compatibility with MRI Ruby
-2.6.8; which is EOL. This project does not officially support MRI Ruby 2.6.8,
-and provides jruby support on a best-effort basis until the jruby project
+{{% alert  title="Warning" color="warning" %}} `jruby` only targets compatibility with MRI Ruby
+2.6.8, which is EOL. This project does not officially support MRI Ruby 2.6.8,
+and provides `jruby` support on a best-effort basis until the `jruby` project
 supports compatibility with more modern Ruby runtimes.
 
-truffleruby is tested, but support is best-effort at this time. {{% /alert %}}
+While tested, support for `truffleruby` is on a best-effort basis at this time. {{% /alert %}}
 
 ## Example Application
 
-The following example uses a basic [Rails](https://rubyonrails.org//)
+The following example uses a basic [Rails](https://rubyonrails.org/)
 application. If you are not using Sinatra, that's ok — you can use OpenTelemetry
 Ruby with other web frameworks as well, such as Sinatra and Rack. For a complete
 list of libraries for supported frameworks, see the
@@ -45,7 +45,7 @@ To begin, install rails:
 gem install rails
 ```
 
-## Create an application
+### Create the application
 
 Create a new api-only application called `dice-ruby` and change into the newly
 created folder `dice-ruby`
@@ -90,7 +90,7 @@ rails server -p 8080
 If everything works fine you should see a number between 1 and 6 returned to
 you. You can now stop the application and instrument it using OpenTelemetry.
 
-## Instrumentation
+### Instrumentation
 
 Install the `opentelemetry-sdk` and `opentelemetry-instrumentation-all`
 packages:
@@ -123,12 +123,12 @@ The call `c.use_all()` enables all instrumentations in the `instrumentation/all`
 package. If you have more advanced configuration needs, see [configuring
 specific instrumentation libraries][config].
 
-## Run the instrumented app
+### Run the instrumented app
 
 You can now run your instrumented app and have it print to the console for now:
 
 ```sh
-env OTEL_TRACES_EXPORTER="console" rails server -p 8080
+env OTEL_TRACES_EXPORTER=console rails server -p 8080
 ```
 
 Open <http://localhost:8080/rolldice> in your web browser and reload the page a

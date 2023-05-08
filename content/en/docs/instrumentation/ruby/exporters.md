@@ -20,7 +20,7 @@ Jaeger) you'll want to use an exporter package, such as
 
 {{< tabpane lang=shell persistLang=false >}}
 
-{{< tab bundle >}} bundle add opentelemetry-exporter-otlp {{< /tab >}}
+{{< tab bundler >}} bundle add opentelemetry-exporter-otlp {{< /tab >}}
 
 {{< tab gem >}} gem install opentelemetry-exporter-otlp {{< /tab >}}
 
@@ -113,7 +113,7 @@ If you now run your application, set the environment variable
 `OTEL_TRACES_EXPORTER` to zipkin:
 
 ```sh
-env OTEL_TRACES_EXPORTER="zipkin" rails server
+env OTEL_TRACES_EXPORTER=zipkin rails server
 ```
 
 By default traces are sent to a Zipkin endpoint listening on port
