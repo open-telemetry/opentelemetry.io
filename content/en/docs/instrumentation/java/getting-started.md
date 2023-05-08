@@ -238,7 +238,7 @@ For more:
 - Try [automatic instrumentation](../automatic/) on one of your own apps.
 - For light-weight customized telemetry, try [annotations][].
 - Learn about [manual instrumentation][] and try out more
-[examples](../examples/).
+  [examples](/docs/instrumentation/java/examples/).
 
 [traces]: /docs/concepts/signals/traces/
 [metrics]: /docs/concepts/signals/metrics/
