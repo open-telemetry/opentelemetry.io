@@ -2,7 +2,7 @@
 {{ $label := .Get 0 -}}
 {{ $pageRef := .Get 1 -}}
 {{ if not (hasPrefix $pageRef "/") -}}
-  {{ $pageRef = printf "/docs/reference/specification/%s" $pageRef -}}
+  {{ $pageRef = printf "/docs/specification/otel/%s" $pageRef -}}
 {{ end -}}
 {{ $page := .Site.GetPage $pageRef -}}
 {{ if not $page -}}
@@ -22,7 +22,7 @@
 
 {{ $status := "" -}}
 {{/* Valid statuses, as taken from:
-  - https://opentelemetry.io/docs/reference/specification/document-status/
+  - https://opentelemetry.io/docs/specification/otel/document-status/
   - https://github.com/open-telemetry/opentelemetry-proto#maturity-level
 */ -}}
 {{ $statusValueRE := "(?i:experimental|stable|deprecated|removed|mixed|feature.freeze|alpha|beta)" -}}
