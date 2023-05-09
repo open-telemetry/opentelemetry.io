@@ -134,8 +134,8 @@ specific category.
 - `OTEL_PYTHON_ELASTICSEARCH_NAME_PREFIX`: changes the default prefixes for
   Elasticsearch operation names from "Elasticsearch" to whatever is used here
 - `OTEL_PYTHON_GRPC_EXCLUDED_SERVICES`: comma-separated list of specific
-  services to exclude for the GRPC instrumentation
-- `OTEL_PYTHON_ID_GENERATOR`: to specify which IDs Generator to use for the
+  services to exclude for the gRPC instrumentation
+- `OTEL_PYTHON_ID_GENERATOR`: to specify which IDs generator to use for the
   global Tracer Provider
 - `OTEL_PYTHON_INSTRUMENTATION_SANITIZE_REDIS`: to enable query sanitization
 
