@@ -109,11 +109,11 @@ export OTEL_PYTHON_TORNADO_TRACED_REQUEST_ATTRS='uri,query'
 There are some configuration options used to control the logs that are
 outputted.
 
-- `OTEL_PYTHON_LOG_CORRELATION` - to enable trace context injection into logs
+- `OTEL_PYTHON_LOG_CORRELATION`: to enable trace context injection into logs
   (true, false)
-- `OTEL_PYTHON_LOG_FORMAT` - to instruct the instrumentation to use a custom
+- `OTEL_PYTHON_LOG_FORMAT`: to instruct the instrumentation to use a custom
   logging format
-- `OTEL_PYTHON_LOG_LEVEL` - to set a custom log level (info, error, debug,
+- `OTEL_PYTHON_LOG_LEVEL`: to set a custom log level (info, error, debug,
   warning)
 
 Examples:
@@ -129,15 +129,15 @@ export OTEL_PYTHON_LOG_LEVEL=debug
 There are some more configuration options that can be set that don't fall into a
 specific category.
 
-- `OTEL_PYTHON_DJANGO_INSTRUMENT` - set to `false` to disable the default
-  enabled state for the Django instrumentation
-- `OTEL_PYTHON_ELASTICSEARCH_NAME_PREFIX` - changes the default prefixes for
+- `OTEL_PYTHON_DJANGO_INSTRUMENT`: set to `false` to disable the default enabled
+  state for the Django instrumentation
+- `OTEL_PYTHON_ELASTICSEARCH_NAME_PREFIX`: changes the default prefixes for
   Elasticsearch operation names from "Elasticsearch" to whatever is used here
-- `OTEL_PYTHON_GRPC_EXCLUDED_SERVICES` - comma-separated list of specific
+- `OTEL_PYTHON_GRPC_EXCLUDED_SERVICES`: comma-separated list of specific
   services to exclude for the GRPC instrumentation
-- `OTEL_PYTHON_ID_GENERATOR` - to specify which IDs Generator to use for the
+- `OTEL_PYTHON_ID_GENERATOR`: to specify which IDs Generator to use for the
   global Tracer Provider
-- `OTEL_PYTHON_INSTRUMENTATION_SANITIZE_REDIS` - to enable query sanitization
+- `OTEL_PYTHON_INSTRUMENTATION_SANITIZE_REDIS`: to enable query sanitization
 
 Examples:
 
