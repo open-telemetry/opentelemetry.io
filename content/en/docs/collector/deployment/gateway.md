@@ -7,23 +7,23 @@ weight: 3
 ---
 
 The gateway collector deployment pattern consists of applications (or other
-collectors) sending telemetry signals to a single OTLP endpoint provided by one or more 
-collector instances running as a standalone service (for example,
-a deployment in Kubernetes), typically per cluster, per data center or per region.
+collectors) sending telemetry signals to a single OTLP endpoint provided by one
+or more collector instances running as a standalone service (for example, a
+deployment in Kubernetes), typically per cluster, per data center or per region.
 
 In the general case you can use an out-of-the-box load balancer to distribute
 the load amongst the collectors:
 
 ![Gateway deployment concept](../../img/gateway-sdk.svg)
 
-For use cases where the processing of the telemetry data processing has to happen 
-in a specific collector, you would use a two-tiered setup with a collector that
-has a pipeline configured with the [Trace ID/Service-name aware load-balancing 
-exporter][lb-exporter] in the first tier and the collectors handling the scale
-out in the second tier. For example, you will need to use the load-balancing 
-exporter when using the [Tail Sampling processor][tailsample-processor] so that
-all spans for a given trace reach the same collector instance where the tail 
-sampling policy is applied.
+For use cases where the processing of the telemetry data processing has to
+happen in a specific collector, you would use a two-tiered setup with a
+collector that has a pipeline configured with the [Trace ID/Service-name aware
+load-balancing exporter][lb-exporter] in the first tier and the collectors
+handling the scale out in the second tier. For example, you will need to use the
+load-balancing exporter when using the [Tail Sampling
+processor][tailsample-processor] so that all spans for a given trace reach the
+same collector instance where the tail sampling policy is applied.
 
 Let's have a look at such a case where we are using the load-balancing exporter:
 
@@ -58,8 +58,8 @@ configuration fields:
   spans of a service will be send to the same downstream collector for metric
   collection, guaranteeting accurate aggregations.
 
-The first-tier collector servicing the OTLP endpoint would be configured as shown
-below:
+The first-tier collector servicing the OTLP endpoint would be configured as
+shown below:
 
 <!-- prettier-ignore-start -->
 {{< tabpane lang=yaml persistLang=false >}}
@@ -136,8 +136,8 @@ service:
 
 The load-balancing exporter emits metrics including
 `otelcol_loadbalancer_num_backends` and `otelcol_loadbalancer_backend_latency`
-that you can use for health and performance monitoring of the  OTLP
-endpoint collector.
+that you can use for health and performance monitoring of the OTLP endpoint
+collector.
 
 ## Tradeoffs
 
@@ -164,7 +164,7 @@ Cons:
   https://opentelemetry-python.readthedocs.io/en/stable/examples/metrics/instruments/README.html
 [lb-exporter]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter
-[tailsample-processor]: 
+[tailsample-processor]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor
 [spanmetrics-connector]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/spanmetricsconnector

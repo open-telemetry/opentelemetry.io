@@ -8,9 +8,9 @@ weight: 2
 The agent collector deployment pattern consists of
 applications—[instrumented][instrumentation] with an OpenTelemetry SDK using
 [OpenTelemetry protocol (OTLP)][otlp]—or other collectors (using the OTLP
-exporter) that send telemetry signals to a [collector][collector]
-instance running with the application or on the same host as the application
-(such as a sidecar or a daemonset).
+exporter) that send telemetry signals to a [collector][collector] instance
+running with the application or on the same host as the application (such as a
+sidecar or a daemonset).
 
 Each client-side SDK or downstream collector is configured with a collector
 location:

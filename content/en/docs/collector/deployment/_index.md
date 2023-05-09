@@ -11,7 +11,8 @@ collector configurations for cross-environment and multi-backend deployments.
 
 ## Resources
 
-- KubeCon NA 2021 Talk on [OpenTelemetry Collector Deployment Patterns][y-patterns]
+- KubeCon NA 2021 Talk on [OpenTelemetry Collector Deployment
+  Patterns][y-patterns]
 - [Deployment Patterns][gh-patterns] accompanying the talk
 
 [gh-patterns]:
