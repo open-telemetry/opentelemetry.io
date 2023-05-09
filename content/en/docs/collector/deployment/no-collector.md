@@ -27,5 +27,6 @@ Cons:
 
 - Requires code changes if collection, processing, or ingestion changes
 - Strong coupling between the application code and the backend
+- There are limited number of exporters per language implementation
 
 [instrumentation]: /docs/instrumentation/

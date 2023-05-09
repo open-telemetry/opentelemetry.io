@@ -9,7 +9,7 @@ different ways, for different use cases. This section describes deployment
 patterns, their use cases along with pros and cons and best practices for
 collector configurations for cross-environment and multi-backend deployments.
 
-## Other information
+## Resources
 
 - KubeCon NA 2021 Talk on [OpenTelemetry Collector Deployment Patterns][y-patterns]
 - [Deployment Patterns][gh-patterns] accompanying the talk
