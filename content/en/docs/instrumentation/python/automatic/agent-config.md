@@ -89,8 +89,8 @@ export OTEL_PYTHON_REQUESTS_EXCLUDED_URLS="healthcheck"
 
 ### Request Attribute Names
 
-Set to a comma-separated list of attributes names that will be extracted from
-the request object and set as attributes on spans.
+Comma-separated list of names that will be extracted from the request object and
+set as attributes on spans.
 
 - `OTEL_PYTHON_DJANGO_TRACED_REQUEST_ATTRS`
 - `OTEL_PYTHON_FALCON_TRACED_REQUEST_ATTRS`
