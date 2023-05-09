@@ -13,7 +13,7 @@ my $linkTitle = '';
 my $gD = 0;
 my $specRepoUrl = 'https://github.com/open-telemetry/opentelemetry-specification';
 my $semConvRef = "$specRepoUrl/blob/main/semantic_conventions/README.md";
-my $spec_base_path = '/docs/reference/specification';
+my $spec_base_path = '/docs/specification/otel';
 my $path_base_for_github_subdir = "content/en$spec_base_path";
 my %versions = qw(
   spec: 1.20.0
@@ -34,7 +34,9 @@ sub printTitleAndFrontMatter() {
   print "---\n";
   if ($title eq 'OpenTelemetry Specification') {
     $title .= " $spec_vers";
-    # Temporary adjustment to front matter until spec is updated:
+    # start:temporary adjustment to front matter until spec is updated:
+    $frontMatterFromFile =~ s/linkTitle: .*/linkTitle: OTel spec/;
+    # end:temporary adjustment
     $frontMatterFromFile =~ s/linkTitle: .*/$& $spec_vers/;
   }
   my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
@@ -87,6 +89,7 @@ while(<>) {
   s|\(https://github.com/open-telemetry/opentelemetry-specification\)|($spec_base_path/)|;
   s|(\]\()/specification/|$1$spec_base_path/)|;
   s|\.\./semantic_conventions/README.md|$semConvRef| if $ARGV =~ /overview/;
+  s|\.\./specification/(.*?\))|../otel/$1)|g if $ARGV =~ /otel\/specification/;
 
   if (/\((https:\/\/github.com\/open-telemetry\/opentelemetry-specification\/\w+\/\w+\/specification([^\)]*))\)/) {
     printf STDOUT "WARNING: link to spec page encoded as an external URL, but should be a local path, fix this upstream;\n  File: $ARGV \n  Link: $1\n";
