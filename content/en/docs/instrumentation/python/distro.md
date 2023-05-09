@@ -67,8 +67,8 @@ The following code will create a span with no configuration.
 # no_configuration.py
 from opentelemetry import trace
 
-with trace.get_tracer("my.tracer").start_as_current_span("foo"):
-    with trace.get_tracer("my.tracer").start_as_current_span("bar"):
+with trace.get_tracer(__name__).start_as_current_span("foo"):
+    with trace.get_tracer(__name__).start_as_current_span("bar"):
         print("baz")
 ```
 
