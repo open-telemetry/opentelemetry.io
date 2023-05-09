@@ -1,18 +1,21 @@
 ---
-title: Decentralized
+title: Agent
 description:
   Why and how to send signals to collectors and from there to backends
 weight: 2
 ---
 
-The decentralized collector deployment pattern consists of
+The agent collector deployment pattern consists of
 applications—[instrumented][instrumentation] with an OpenTelemetry SDK using
 [OpenTelemetry protocol (OTLP)][otlp]—or other collectors (using the OTLP
-exporter) that send telemetry signals to one or more [collectors][collector].
+exporter) that send telemetry signals to a [collector][collector]
+instance running with the application or on the same host as the application
+(such as a sidecar or a daemonset).
+
 Each client-side SDK or downstream collector is configured with a collector
 location:
 
-![Decentralized collector deployment concept](../../img/decentralized-sdk.svg)
+![Decentralized collector deployment concept](../../img/agent-sdk.svg)
 
 1. In the app, the SDK is configured to send OTLP data to a collector.
 1. The collector is configured to send telemetry data to one or more backends.
