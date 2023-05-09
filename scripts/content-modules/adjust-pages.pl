@@ -15,6 +15,10 @@ my $specRepoUrl = 'https://github.com/open-telemetry/opentelemetry-specification
 my $semConvRef = "$specRepoUrl/blob/main/semantic_conventions/README.md";
 my $spec_base_path = '/docs/reference/specification';
 my $path_base_for_github_subdir = "content/en$spec_base_path";
+my %versions = qw(
+  spec: 1.20.0
+);
+my $spec_vers = $versions{'spec:'};
 
 my $rootFrontMatterExtra = <<"EOS";
 no_list: true
@@ -28,6 +32,11 @@ EOS
 
 sub printTitleAndFrontMatter() {
   print "---\n";
+  if ($title eq 'OpenTelemetry Specification') {
+    $title .= " $spec_vers";
+    # Temporary adjustment to front matter until spec is updated:
+    $frontMatterFromFile =~ s/linkTitle: .*/$& $spec_vers/;
+  }
   my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
   print "title: $titleMaybeQuoted\n";
   ($linkTitle) = $title =~ /^OpenTelemetry (.*)/;
@@ -84,10 +93,6 @@ while(<>) {
   }
   s|\(https://github.com/open-telemetry/opentelemetry-specification/\w+/\w+/specification([^\)]*)\)|($spec_base_path$1)|;
 
-  # Bug fix from original source
-  # TODO drop on fix lands for https://github.com/open-telemetry/opentelemetry-specification/pull/3310
-  s|/docs/reference/specification/metrics/data-model.md#metric-metadata-1|prometheus_and_openmetrics.md#metric-metadata-1|;
-
   # Images
   s|(\.\./)?internal(/img/[-\w]+\.png)|$2|g;
   s|(\]\()(img/.*?\))|$1../$2|g if $ARGV !~ /(logs|schemas)._index/;
@@ -97,7 +102,6 @@ while(<>) {
   s|(/context/api-propagators.md)#propagators-api|$1|g;
   s|(/semantic_conventions/faas.md)#function-as-a-service|$1|g;
   s|(/resource/sdk.md)#resource-sdk|$1|g;
-  s/#log-data-model/./;
 
   s|\.\.\/README.md\b|$specRepoUrl/|g if $ARGV =~ /specification._index/;
   s|\.\.\/README.md\b|..| if $ARGV =~ /specification.library-guidelines.md/;
