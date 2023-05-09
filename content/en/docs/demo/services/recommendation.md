@@ -30,7 +30,7 @@ endpoints, resource attributes, and service name are automatically set by the
 OpenTelemetry auto instrumentor based on environment variables.
 
 ```python
-    tracer = trace.get_tracer_provider().get_tracer("recommendationservice")
+    tracer = trace.get_tracer_provider().get_tracer("app.system.recommendation")
 ```
 
 ### Add attributes to auto-instrumented spans
@@ -70,7 +70,7 @@ name are automatically set by the OpenTelemetry auto instrumentor based on
 environment variables.
 
 ```python
-    meter = metrics.get_meter_provider().get_meter("recommendationservice")
+    meter = metrics.get_meter_provider().get_meter("app.system.recommendation")
 ```
 
 ### Custom metrics
