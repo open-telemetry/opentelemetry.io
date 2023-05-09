@@ -3,10 +3,10 @@
 SCRIPT_DIR="$(cd `dirname $0`; pwd)"
 DEST_BASE="$(cd $SCRIPT_DIR; cd ../../; pwd)/tmp"
 
-## Specification pages
+## OTel specification pages
 
 SRC=content-modules/opentelemetry-specification/specification
-DEST=$DEST_BASE/specification
+DEST=$DEST_BASE/otel/specification
 
 rm -Rf $DEST
 mkdir -p $DEST
