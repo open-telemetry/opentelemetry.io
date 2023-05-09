@@ -18,7 +18,7 @@ npm install --save @opentelemetry/auto-instrumentations-node
 ```
 
 The `@opentelemetry/api` and `@opentelemetry/auto-instrumentations-node`
-packages installs the API, SDK, and the instrumentation tools.
+packages install the API, SDK, and the instrumentation tools.
 
 ## Configuring the module
 
