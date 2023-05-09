@@ -1,6 +1,6 @@
 ---
 title: Deployment
-description: Patterns you can apply to run the OpenTelemetry collector
+description: Patterns you can apply to deploy the OpenTelemetry collector
 weight: 2
 ---
 
