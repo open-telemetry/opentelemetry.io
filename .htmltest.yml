@@ -1,4 +1,4 @@
-CacheExpires: 2200h # ~ 3 months
+CacheExpires: 4400h # ~ 6 months
 DirectoryPath: public
 IgnoreDirectoryMissingTrailingSlash: true
 IgnoreAltMissing: true
@@ -8,6 +8,9 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^/docs/instrumentation/\w+/(api|examples)/$
   - ^/docs/instrumentation/net/(metrics-api|traces-api)/
   - ^/community/end-user/feedback-survey/$
+  - ^(/docs/migration/)?opencensus/$
+  # TODO: drop after OTel spec rework is complete
+  - ^/docs/reference/specification
 
   - ^https://deploy-preview-\d+--opentelemetry.netlify.app/
   - ^https://www\.googletagmanager\.com
