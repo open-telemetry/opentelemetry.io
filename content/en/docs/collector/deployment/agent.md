@@ -22,7 +22,7 @@ location:
 
 ## Example
 
-A concrete example of the decentralized collector deployment pattern could look
+A concrete example of the agent collector deployment pattern could look
 as follows: you manually instrument, say, a [Java application to export
 metrics][instrument-java-metrics] using the OpenTelemetry Java SDK. In the
 context of the app, you would set the `OTEL_METRICS_EXPORTER` to `otlp` (which
