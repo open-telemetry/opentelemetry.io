@@ -404,7 +404,7 @@ from flask import Flask, request
 
 tracer = trace.get_tracer("diceroller.tracer")
 # Acquire a meter.
-meter = metrics.get_meter(diceroller.meter)
+meter = metrics.get_meter("diceroller.meter")
 
 # Now create a counter instrument to make measurements with
 roll_counter = meter.create_counter(
