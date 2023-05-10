@@ -11,3 +11,6 @@
 [submodule "content-modules/community"]
 	path = content-modules/community
 	url = https://github.com/open-telemetry/community
+[submodule "content-modules/opentelemetry-proto"]
+	path = content-modules/opentelemetry-proto
+	url = https://github.com/open-telemetry/opentelemetry-proto
