@@ -1675,6 +1675,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:10:49.246765-05:00"
   },
+  "https://github.com/jpkrohling/opentelemetry-collector-deployment-patterns/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-14T06:35:50.116854Z"
+  },
   "https://github.com/jufab/opentelemetry-angular-interceptor": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:43:48.729669-05:00"
@@ -3346,6 +3350,10 @@
   "https://opentelemetry-python.readthedocs.io/en/latest/sdk/trace.html": {
     "StatusCode": 200,
     "LastSeen": "2023-02-16T17:43:51.469854-05:00"
+  },
+  "https://opentelemetry-python.readthedocs.io/en/stable/examples/metrics/instruments/README.html": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-14T06:35:50.907539Z"
   },
   "https://opentelemetry-python.readthedocs.io/en/stable/shim/opentracing_shim/opentracing_shim.html": {
     "StatusCode": 200,
