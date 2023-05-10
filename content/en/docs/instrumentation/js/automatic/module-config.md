@@ -17,7 +17,7 @@ information can be found [here](/docs/concepts/sdk-configuration/).
 
 ## SDK resource detector configuration
 
-Byy default, the module will enable all SDK resource detectors. You can use the
+By default, the module will enable all SDK resource detectors. You can use the
 `OTEL_NODE_RESOURCE_DETECTORS` environment variable to enable only certain
 detectors, or completely disable them:
 
