@@ -34,8 +34,8 @@ Let's have a look at such a case where we are using the load-balancing exporter:
    signals to a group of collectors.
 1. The collectors are configured to send telemetry data to one or more backends.
 
-> **Note** Currently, only trace pipelines are supported by the load-balancing
-> exporter.
+{{% alert title="Note" color="info" %}} Currently, the load-balancing exporter
+only supports pipelines of the `traces` type. {{% /alert %}}
 
 ## Example
 
