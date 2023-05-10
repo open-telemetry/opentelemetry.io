@@ -54,7 +54,7 @@ configuration fields:
   (default) then the Load-balancing exporter exports spans based on their
   `traceID`. Otherwise, if you use `service` as the value for `routing_key`, it
   exports spans based on their service name which is useful when using
-  connectors like the [Span Metrics connector][spanmetrics-connector]], so all
+  connectors like the [Span Metrics connector][spanmetrics-connector], so all
   spans of a service will be send to the same downstream collector for metric
   collection, guaranteeting accurate aggregations.
 
