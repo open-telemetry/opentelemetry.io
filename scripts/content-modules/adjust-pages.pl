@@ -13,7 +13,7 @@ my $linkTitle = '';
 my $gD = 0;
 my $specRepoUrl = 'https://github.com/open-telemetry/opentelemetry-specification';
 my $semConvRef = "$specRepoUrl/blob/main/semantic_conventions/README.md";
-my $spec_base_path = '/docs/reference/specification';
+my $spec_base_path = '/docs/specification/otel';
 my $path_base_for_github_subdir = "content/en$spec_base_path";
 my %versions = qw(
   spec: 1.20.0
@@ -34,7 +34,9 @@ sub printTitleAndFrontMatter() {
   print "---\n";
   if ($title eq 'OpenTelemetry Specification') {
     $title .= " $spec_vers";
-    # Temporary adjustment to front matter until spec is updated:
+    # start:temporary adjustment to front matter until spec is updated:
+    $frontMatterFromFile =~ s/linkTitle: .*/linkTitle: OTel spec/;
+    # end:temporary adjustment
     $frontMatterFromFile =~ s/linkTitle: .*/$& $spec_vers/;
   }
   my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
@@ -87,15 +89,12 @@ while(<>) {
   s|\(https://github.com/open-telemetry/opentelemetry-specification\)|($spec_base_path/)|;
   s|(\]\()/specification/|$1$spec_base_path/)|;
   s|\.\./semantic_conventions/README.md|$semConvRef| if $ARGV =~ /overview/;
+  s|\.\./specification/(.*?\))|../otel/$1)|g if $ARGV =~ /otel\/specification/;
 
   if (/\((https:\/\/github.com\/open-telemetry\/opentelemetry-specification\/\w+\/\w+\/specification([^\)]*))\)/) {
     printf STDOUT "WARNING: link to spec page encoded as an external URL, but should be a local path, fix this upstream;\n  File: $ARGV \n  Link: $1\n";
   }
   s|\(https://github.com/open-telemetry/opentelemetry-specification/\w+/\w+/specification([^\)]*)\)|($spec_base_path$1)|;
-
-  # Bug fix from original source
-  # TODO drop on fix lands for https://github.com/open-telemetry/opentelemetry-specification/pull/3310
-  s|/docs/reference/specification/metrics/data-model.md#metric-metadata-1|prometheus_and_openmetrics.md#metric-metadata-1|;
 
   # Images
   s|(\.\./)?internal(/img/[-\w]+\.png)|$2|g;
@@ -106,7 +105,6 @@ while(<>) {
   s|(/context/api-propagators.md)#propagators-api|$1|g;
   s|(/semantic_conventions/faas.md)#function-as-a-service|$1|g;
   s|(/resource/sdk.md)#resource-sdk|$1|g;
-  s/#log-data-model/./;
 
   s|\.\.\/README.md\b|$specRepoUrl/|g if $ARGV =~ /specification._index/;
   s|\.\.\/README.md\b|..| if $ARGV =~ /specification.library-guidelines.md/;
