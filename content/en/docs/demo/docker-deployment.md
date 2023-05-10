@@ -28,7 +28,7 @@ aliases: [/docs/demo/docker_deployment]
 3.  Run docker compose to start the demo:
 
     ```shell
-    docker compose up --no-build
+    docker-compose up --no-build
     ```
 
     > **Notes:**
@@ -94,5 +94,5 @@ different exporters, you may find them and their documentation available at
 [opentelemetry-collector-contrib/exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter).
 
 After updating the `otelcol-config-extras.yml`, start the demo by running
-`docker compose up`. After a while, you should see the traces flowing into your
+`docker-compose up`. After a while, you should see the traces flowing into your
 backend as well.
