@@ -27,7 +27,7 @@ ensure that they produce the same data when observing common operations, such as
 HTTP requests.
 
 To learn more about signals and components, see the specification
-[Overview]({{< relref "/docs/reference/specification/overview" >}}).
+[Overview](/docs/reference/specification/overview/).
 
 ## Component Lifecycle
 
@@ -41,9 +41,8 @@ Deprecated, Removed.
   support.
 - **Deprecated** components are stable but may eventually be removed.
 
-For complete definitions of lifecycles and long term support, see [Versioning
-and
-stability]({{< relref "/docs/reference/specification/versioning-and-stability" >}}).
+For complete definitions of lifecycles and long term support, see
+[Versioning and stability](/docs/reference/specification/versioning-and-stability/).
 
 ## Current Status
 
