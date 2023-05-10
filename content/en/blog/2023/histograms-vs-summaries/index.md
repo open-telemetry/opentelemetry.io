@@ -6,11 +6,10 @@ spelling: cSpell:ignore Dyla quantile quantiles timeseries aggregatable
 canonical_url: https://dyladan.me/histograms/2023/05/03/histograms-vs-summaries/
 ---
 
-In many ways histograms and summaries appear quite similar. They both roll up
+In many ways, histograms and summaries appear quite similar. They both roll up
 many data points into a data structure for efficient processing, transmission,
 and storage. They can also both be used to track arbitrary quantiles such as the
-median or p99 of your data. So the question is raised when to use a summary and
-when to use a histogram.
+median or p99 of your data. So how do they differ? Let's dive in.
 
 # Histograms
 
@@ -40,7 +39,7 @@ that as long as the bucket boundaries line up, an arbitrary number of histograms
 can be combined into a single histogram with no loss of data or precision. This
 means that an arbitrary number of hosts can report histogram data structures to
 a server, which can aggregate and compute quantiles from all of them as if they
-were reported by a single host. By collecting histograms from 1 or many hosts
+were reported by a single host. By collecting histograms from 1 or more hosts
 over a long period of time, developers can gain a strong understanding of how
 their data is distributed and how that distribution changes over time.
 
