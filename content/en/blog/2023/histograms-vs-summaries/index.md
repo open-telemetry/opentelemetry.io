@@ -80,21 +80,27 @@ accurate and flexible and fits your particular needs. The key is knowing the
 strengths and limitations of the available tools so you can make informed
 decisions.
 
-# Bonus round: native histograms
+# Bonus round: native/exponential histograms
 
 I'm planning a longer post on this so I'll keep this short, but many of the key
-disadvantages of histograms are mitigated by native histograms, called
-exponential histograms in OpenTelemetry. Available in Prometheus as an
+disadvantages of histograms are mitigated by exponential histograms, called
+native histograms in Prometheus. They are available in Prometheus as an
 experimental feature since v2.40.0, and stable in the OpenTelemetry
-specification as of v1.17.0, native histograms enable very efficient data
-collection and transmission, fewer, and a constant number of, timeseries created
-per histogram, and very low relative error rates. They achieve these and other
-benefits by defining buckets automatically according to a scale factor and
-resizing intelligently as needed. If you're not happy with the state of your
-current histograms and summaries, I encourage you to give native histograms a
-try. As of this writing there are no official Prometheus docs on native
-histograms, but if you stay tuned I plan to add a thorough explanation of them
-in the coming days.
+specification as of v1.17.0. Exponential histograms come with several
+advantages:
+
+- Very efficient data collection and transmission
+- A constant number of timeseries created (and fewer of them) per histogram
+- Very low relative error rates
+- Automatic bucket boundaries, making them simpler to configure and use
+
+These advantages are accomplished by defining bucket boundaries according to a
+scale factor, intelligently resizing buckets as your distribution evolves,
+instead of the traditional method of defining explicit buckets. If you're not
+happy with the state of your current histograms and summaries, I encourage you
+to give exponential histograms a try. As of this writing there are no official
+Prometheus docs on native histograms, but if you stay tuned I plan to add a
+thorough explanation of them in the coming days.
 
 Until then, here are some talks I found helpful:
 
