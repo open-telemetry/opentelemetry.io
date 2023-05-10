@@ -103,7 +103,7 @@ opentelemetry-instrument \
     --traces_exporter console \
     --metrics_exporter console \
     --logs_exporter console \
-    flask run
+    flask run -p 8080
 ```
 
 Open <http://localhost:8080/rolldice> in your web browser and reload the page a
@@ -299,7 +299,7 @@ Now run the app again:
 opentelemetry-instrument \
     --traces_exporter console \
     --metrics_exporter console \
-    flask run
+    flask run -p 8080
 ```
 
 When you send a request to the server, you'll see two spans in the trace emitted
@@ -433,7 +433,7 @@ Now run the app again:
 opentelemetry-instrument \
     --traces_exporter console \
     --metrics_exporter console \
-    flask run
+    flask run -p 8080
 ```
 
 When you send a request to the server, you'll see the roll counter metric
@@ -600,7 +600,7 @@ and default to OTLP export when it's run next.
 Run the application like before, but don't export to the console:
 
 ```
-opentelemetry-instrument flask run
+opentelemetry-instrument flask run -p 8080
 ```
 
 By default, `opentelemetry-instrument` exports traces and metrics over OTLP/gRPC
