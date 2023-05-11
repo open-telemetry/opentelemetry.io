@@ -11,7 +11,7 @@ many data points into a data structure for efficient processing, transmission,
 and storage. They can also both be used to track arbitrary quantiles such as the
 median or p99 of your data. So how do they differ? Let's dive in.
 
-# Histograms
+## Histograms
 
 Since I just published a post about
 [histograms and when they are useful](../why-histograms), I will only provide a
@@ -43,7 +43,7 @@ were reported by a single host. By collecting histograms from 1 or more hosts
 over a long period of time, developers can gain a strong understanding of how
 their data is distributed and how that distribution changes over time.
 
-# Summaries
+## Summaries
 
 Summaries work in almost the opposite manner. When a summary is configured it is
 given a φ-quantile to track, an acceptable error range, and a decay rate. For
@@ -66,7 +66,7 @@ precomputed `p99` value. Second, they have very low and configurable relative
 error rates. In the histogram example above, we had a potential relative error
 of 17% where our summary is guaranteed to be within ± 0.5% accuracy.
 
-# So which should you choose?
+## So which should you choose?
 
 The disappointing answer is "it depends," and there is no one-size-fits-all
 solution. If you need to aggregate data from many sources, then histograms may
@@ -80,7 +80,7 @@ accurate and flexible and fits your particular needs. The key is knowing the
 strengths and limitations of the available tools so you can make informed
 decisions.
 
-# Bonus round: native/exponential histograms
+## Bonus round: native/exponential histograms
 
 I'm planning a longer post on this so I'll keep this short, but many of the key
 disadvantages of histograms are mitigated by exponential histograms, called
