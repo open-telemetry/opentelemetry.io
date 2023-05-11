@@ -4,6 +4,7 @@ linkTitle: End-User Discussions April 2023
 date: 2023-05-02
 author: '[Pranay Prateek](https://github.com/pranay01) (SigNoz)'
 ---
+
 For the month of April 2023, the OpenTelemetry end-user group meet took place
 for users in the Asia-Pacific (APAC) region. Due to KubeCon EU, the AMER and
 EMEA sessions did not take place; however, we will have meetings for all 3
@@ -60,7 +61,8 @@ data at scale more efficiently. For example, there is work going around using
 serialization to optimize network costs.
 
 One of the other ways to optimize observability data at scale is to decide how
-much of it you want to store for future use.
+much of it you want to store for future use. You should optimize data storage so
+that you incur less cost.
 
 ## Other Important discussion points
 
