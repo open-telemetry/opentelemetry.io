@@ -23,8 +23,10 @@ echo "OTEL SPEC pages copied and processed."
 
 ## OTLP specification
 
-SRC=content-modules/opentelemetry-proto/specification
-DEST=$DEST_BASE/otlp/specification
+if [[ $GET == no ]]; then
+
+SRC=content-modules/opentelemetry-proto/docs
+DEST=$DEST_BASE/otlp/docs
 
 rm -Rf $DEST
 mkdir -p $DEST
@@ -32,7 +34,7 @@ cp -R $SRC/* $DEST/
 
 find $DEST/ -name "README.md" -exec sh -c 'f="{}"; mv -- "$f" "${f%README.md}_index.md"' \;
 
-# To exclude a file use, e.g.: -not -path '*/specification/_index.md'
+# To exclude a file use, e.g.: -not -path '*/docs/_index.md'
 FILES=$(find $DEST -name "*.md")
 
 $SCRIPT_DIR/adjust-pages.pl $FILES
@@ -47,6 +49,8 @@ echo "OTLP SPEC pages copied and processed."
 # cp -R $SRC/* $DEST/
 
 # echo "OTLP SPEC protos copied and processed."
+
+fi
 
 ## Community
 

@@ -106,8 +106,9 @@ while(<>) {
   s|\.\.\/README.md\b|$otelSpecRepoUrl/|g if $ARGV =~ /specification._index/;
   s|\.\.\/README.md\b|..| if $ARGV =~ /specification.library-guidelines.md/;
 
-  s|\.\.\/(opentelemetry/proto/?.*)|$otlpSpecRepoUrl/tree/$otlpSpecVers/$1/|g if $ARGV =~ /\/tmp\/otlp/;
-  s|\.\.\/README.md\b|$otlpSpecRepoUrl/|g if $ARGV =~ /\/tmp\/otlp/;
+  s|\.\./(opentelemetry/proto/?.*)|$otlpSpecRepoUrl/tree/$otlpSpecVers/$1/|g if $ARGV =~ /\/tmp\/otlp/;
+  s|\.\./README.md\b|$otlpSpecRepoUrl/|g if $ARGV =~ /\/tmp\/otlp/;
+  s|\.\./examples/README.md\b|$otlpSpecRepoUrl/tree/$otlpSpecVers/examples/|g if $ARGV =~ /\/tmp\/otlp/;
 
   s|\bREADME.md\b|_index.md|g;
 
