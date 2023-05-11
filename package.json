@@ -18,6 +18,7 @@
     "_get:submodule": "set -x && git submodule update --init ${DEPTH:- --depth 1}",
     "_prebuild": "run-s get:submodule cp:spec",
     "_prepare:docsy": "cd themes/docsy && npm install",
+    "_prettier:any": "npx prettier --ignore-path ''",
     "_serve:hugo": "hugo serve -DFE --minify",
     "_serve:netlify": "netlify dev -c \"npm run _serve:hugo\"",
     "all": "npm-run-all",
