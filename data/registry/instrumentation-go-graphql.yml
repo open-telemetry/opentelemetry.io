@@ -1,0 +1,16 @@
+title: GraphQL-Go instrumentation
+registryType: instrumentation
+isThirdParty: true
+language: go
+tags:
+  - go
+  - instrumentation
+  - database
+  - graphql
+repo: https://github.com/uptrace/opentelemetry-go-extra/tree/main/otelgraphql
+license: BSD-2-Clause
+description:
+  Instrumentation for graphql-go GraphQL Server that records GraphQL operations
+  using OpenTelemetry Tracing API.
+authors: Benjamin Ziehms
+otVersion: v1.0.0
