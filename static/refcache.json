@@ -139,6 +139,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-15T20:36:46.174243-05:00"
   },
+  "https://bundler.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-04T10:07:22.237529+02:00"
+  },
   "https://calendar.google.com/calendar/embed": {
     "StatusCode": 200,
     "LastSeen": "2023-02-15T20:41:36.268773-05:00"
@@ -1670,6 +1674,10 @@
   "https://github.com/jpkrohling": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:10:49.246765-05:00"
+  },
+  "https://github.com/jpkrohling/opentelemetry-collector-deployment-patterns/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-14T06:35:50.116854Z"
   },
   "https://github.com/jufab/opentelemetry-angular-interceptor": {
     "StatusCode": 200,
@@ -3343,6 +3351,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-16T17:43:51.469854-05:00"
   },
+  "https://opentelemetry-python.readthedocs.io/en/stable/examples/metrics/instruments/README.html": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-14T06:35:50.907539Z"
+  },
   "https://opentelemetry-python.readthedocs.io/en/stable/shim/opentracing_shim/opentracing_shim.html": {
     "StatusCode": 200,
     "LastSeen": "2023-02-16T17:45:15.666125-05:00"
@@ -3615,6 +3627,14 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-18T12:42:33.865992-05:00"
   },
+  "https://rubyonrails.org/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-08T18:19:46.152081+02:00"
+  },
+  "https://rubyonrails.org//": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-08T16:34:49.259754+02:00"
+  },
   "https://sched.co/182Ib": {
     "StatusCode": 200,
     "LastSeen": "2023-02-18T12:45:22.56496-05:00"
@@ -3682,6 +3702,10 @@
   "https://signoz.io": {
     "StatusCode": 206,
     "LastSeen": "2023-02-18T12:43:42.995104-05:00"
+  },
+  "https://sinatrarb.com/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-04T10:07:22.738034+02:00"
   },
   "https://skywalking.apache.org": {
     "StatusCode": 206,
