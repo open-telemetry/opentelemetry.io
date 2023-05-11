@@ -72,11 +72,18 @@ To **serve** the site run:
 $ npm run serve
 ```
 
-> **Note 1**: The Netlify CLI will locally serve the site at [localhost:8888][].
+The site will be served at [localhost:1313][].
 
-> **Note 2**: The serve command serves files from memory, not from disk.
+If you need to test Netlify redirects, use the following command, and visit the
+site at [localhost:8888][]:
 
-> **Note 3**: See an error like `too many open files` or `pipe failed` under
+```console
+$ npm run serve:netlify
+```
+
+> **Note 1**: The serve command serves files from memory, not from disk.
+>
+> **Note 2**: See an error like `too many open files` or `pipe failed` under
 > macOS? You may need to increase the file descriptor limit. See
 > [Hugo issue #6109](https://github.com/gohugoio/hugo/issues/6109).
 
@@ -114,19 +121,19 @@ reported issues:
 $ npm run test
 ```
 
-If you only want to check formatting run:
+If you only want to check the format of files, run:
 
 ```console
-$ npm run check:formatting
+$ npm run check:format
 ...
 Checking formatting...
 All matched files use Prettier code style!
 ```
 
-To _fix_ formatting run:
+To _fix_ the format of files, run:
 
 ```console
-$ npm run prettier:write
+$ npm run format
 ```
 
 ### Submodule changes
@@ -170,6 +177,7 @@ required.
 [gitpod.io]: https://gitpod.io
 [gitpod.io/workspaces]: https://gitpod.io/workspaces
 [hugo]: https://gohugo.io
+[localhost:1313]: http://localhost:1313
 [localhost:8888]: http://localhost:8888
 [netlify]: https://netlify.com
 [new-issue]:
