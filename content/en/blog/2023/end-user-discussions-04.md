@@ -1,7 +1,7 @@
 ---
 title: OpenTelemetry End-User Discussions Summary for April 2023
 linkTitle: End-User Discussions April 2023
-date: 2023-05-02
+date: 2023-05-11
 author: '[Pranay Prateek](https://github.com/pranay01) (SigNoz)'
 ---
 
