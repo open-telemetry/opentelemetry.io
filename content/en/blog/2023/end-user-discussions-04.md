@@ -24,6 +24,10 @@ and also discussed how to optimize observability data at scale.
 
 Below is the summary of this month's discussion.
 
+<i>Note: The answers are provided by a mix of OTel community members and
+end-users to the best of their knowledge. The answers are not official
+recommendations by OpenTelemetry.</i>
+
 ### Evangelizing adoption of OpenTelemetry in a big organization
 
 **Q:** How do you evangelize the adoption of OpenTelemetry in a big
