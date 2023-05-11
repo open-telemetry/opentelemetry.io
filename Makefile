@@ -33,7 +33,7 @@ endif
 refcache-save: $(LINK_CACHE_FILE_SRC_DIR)/$(LINK_CACHE_FILE)
 ifeq (refcache, $(REFCACHE))
 	cp $(LINK_CACHE_FILE_SRC_DIR)/$(LINK_CACHE_FILE) $(LINK_CACHE_FILE_DEST_DIR)/
-	npm run format $(LINK_CACHE_FILE_DEST_DIR)/$(LINK_CACHE_FILE)
+	npm run _prettier:any -- --write $(LINK_CACHE_FILE_DEST_DIR)/$(LINK_CACHE_FILE)
 else
 	@echo "SKIPPING refcache-save"
 endif
