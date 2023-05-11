@@ -88,8 +88,13 @@ Server is running..Press ctrl-c to exit..
 
 In the other terminal, run the http client:
 
+```sh
+./examples/http/http_client
+```
+
+You should see client output similar to this:
+
 ```properties
-$ ./examples/http/http_client
 {
   name          : /helloworld
   trace_id      : 05eec7a55d3544434265dad89d7fe96f
