@@ -88,7 +88,7 @@ Server is running..Press ctrl-c to exit..
 
 In the other terminal, run the http client:
 
-```console
+```properties
 $ ./examples/http/http_client
 {
   name          : /helloworld
