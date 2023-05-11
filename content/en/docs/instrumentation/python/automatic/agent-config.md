@@ -62,7 +62,7 @@ desired configuration property:
 For example, `exporter_otlp_endpoint` would convert to
 `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT`.
 
-## Python-specific Configurations
+## Python-specific Configuration
 
 There are some python specific configuration options you can set by prefixing
 environment variables with `OTEL_PYTHON_`.
