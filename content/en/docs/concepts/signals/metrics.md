@@ -61,4 +61,4 @@ metrics include:
 
 > For more information, see the [metrics specification][].
 
-[metrics specification]: /docs/reference/specification/overview/#metric-signal
+[metrics specification]: /docs/specs/otel/overview/#metric-signal

@@ -66,6 +66,6 @@ progress of this effort, see `opentelemetry-collector-contrib` [issue #10116][].
 
 [issue #10116]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/10116
-[mixed]: /docs/reference/specification/document-status/#mixed
+[mixed]: /docs/specs/otel/document-status/#mixed
 [stability levels]:
   https://github.com/open-telemetry/opentelemetry-collector#stability-levels
