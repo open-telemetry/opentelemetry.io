@@ -176,7 +176,7 @@ module:
     - source: content-modules/opentelemetry-go/website_docs
       target: content/docs/instrumentation/go
     - source: tmp/otel/specification
-      target: content/docs/specification/otel
+      target: content/docs/specs/otel
     - source: tmp/community/mission-vision-values.md
       target: content/community/mission.md
     - source: tmp/community/roadmap.md

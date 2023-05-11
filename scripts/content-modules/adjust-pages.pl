@@ -14,7 +14,7 @@ my $gD = 0;
 my $otelSpecRepoUrl = 'https://github.com/open-telemetry/opentelemetry-specification';
 my $otlpSpecRepoUrl = 'https://github.com/open-telemetry/opentelemetry-proto';
 my $semConvRef = "$otelSpecRepoUrl/blob/main/semantic_conventions/README.md";
-my $specBasePath = '/docs/specification';
+my $specBasePath = '/docs/specs';
 my $path_base_for_github_subdir = "content/en$specBasePath";
 my %versions = qw(
   spec: 1.20.0
