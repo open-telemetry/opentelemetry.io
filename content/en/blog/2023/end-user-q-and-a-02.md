@@ -198,7 +198,7 @@ Uplight currently has a few different Collector configurations:
 
 Doug’s ultimate goal is for any deployment in any environment to be able to
 easily send telemetry to an
-[OTel Collector gateway](/docs/collector/deployment/#gateway).
+[OTel Collector gateway](/docs/collector/deployment/gateway/).
 
 Collectors at Uplight are typically run and maintained by the infrastructure
 team, unless individual teams decide to take ownership of their own Collectors.

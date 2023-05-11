@@ -1,16 +1,16 @@
-name: Check formatting
+name: Check file format
 
 on:
   pull_request:
 
 jobs:
   check-formatting:
-    name: Check formatting
+    name: Check file format
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
       - run: npm install
 
-      - name: Check formatting
-        run: npm run check:formatting
+      - name: Check file format
+        run: npm run check:format

@@ -99,6 +99,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-15T20:20:22.109017-05:00"
   },
+  "https://aws-otel.github.io/docs/components/confmap-providers#confmap-providers-supported-by-the-adot-collector": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-05T14:18:57.288423-07:00"
+  },
   "https://aws.amazon.com/": {
     "StatusCode": 200,
     "LastSeen": "2023-02-15T20:20:57.179898-05:00"
@@ -138,6 +142,10 @@
   "https://blog.logrocket.com/understanding-schema-stitching-graphql/": {
     "StatusCode": 200,
     "LastSeen": "2023-02-15T20:36:46.174243-05:00"
+  },
+  "https://bundler.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-04T10:07:22.237529+02:00"
   },
   "https://calendar.google.com/calendar/embed": {
     "StatusCode": 200,
@@ -1067,6 +1075,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-15T21:04:36.825244-05:00"
   },
+  "https://dyladan.me/histograms/2023/05/02/why-histograms/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-05T13:16:06.026606-04:00"
+  },
   "https://ebpf.io/": {
     "StatusCode": 206,
     "LastSeen": "2023-03-15T09:16:58.309342+01:00"
@@ -1299,9 +1311,17 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-15T21:17:02.709221-05:00"
   },
+  "https://expressjs.com/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-02T21:01:02.903295+02:00"
+  },
   "https://fastapi.tiangolo.com": {
     "StatusCode": 206,
     "LastSeen": "2023-03-09T15:12:04.427994-08:00"
+  },
+  "https://flask.palletsprojects.com/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-02T20:58:57.383716+02:00"
   },
   "https://fluentbit.io/": {
     "StatusCode": 206,
@@ -1386,6 +1406,10 @@
   "https://github.com/MrAlias/flow": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:47:31.703432-05:00"
+  },
+  "https://github.com/MrAlias/otlpr": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-05T09:49:48.182190079-07:00"
   },
   "https://github.com/MrAlias/redact": {
     "StatusCode": 200,
@@ -1654,6 +1678,10 @@
   "https://github.com/jpkrohling": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:10:49.246765-05:00"
+  },
+  "https://github.com/jpkrohling/opentelemetry-collector-deployment-patterns/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-14T06:35:50.116854Z"
   },
   "https://github.com/jufab/opentelemetry-angular-interceptor": {
     "StatusCode": 200,
@@ -3207,6 +3235,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-16T17:34:14.825385-05:00"
   },
+  "https://nodejs.org/api/cli.html#-r---require-module": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-04T10:13:36.696593+02:00"
+  },
   "https://nodejs.org/api/cli.html#cli_r_require_module": {
     "StatusCode": 200,
     "LastSeen": "2023-02-16T17:34:31.242936-05:00"
@@ -3323,6 +3355,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-16T17:43:51.469854-05:00"
   },
+  "https://opentelemetry-python.readthedocs.io/en/stable/examples/metrics/instruments/README.html": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-14T06:35:50.907539Z"
+  },
   "https://opentelemetry-python.readthedocs.io/en/stable/shim/opentracing_shim/opentracing_shim.html": {
     "StatusCode": 200,
     "LastSeen": "2023-02-16T17:45:15.666125-05:00"
@@ -3374,6 +3410,10 @@
   "https://packagist.org/packages/open-telemetry/opentelemetry-instrumentation-installer": {
     "StatusCode": 200,
     "LastSeen": "2023-03-14T18:07:43.947011+01:00"
+  },
+  "https://packagist.org/packages/open-telemetry/opentelemetry-logger-monolog": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-03T13:01:43.900239313Z"
   },
   "https://packagist.org/providers/php-http/async-client-implementation": {
     "StatusCode": 200,
@@ -3551,6 +3591,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:26:15.285143-05:00"
   },
+  "https://pypi.org/project/opentelemetry-api/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-05T14:18:57.011667-07:00"
+  },
   "https://quarkus.io": {
     "StatusCode": 206,
     "LastSeen": "2023-02-18T12:39:46.550519-05:00"
@@ -3586,6 +3630,14 @@
   "https://ruby-doc.org/core-2.7.1/Exception.html#method-i-full_message": {
     "StatusCode": 206,
     "LastSeen": "2023-02-18T12:42:33.865992-05:00"
+  },
+  "https://rubyonrails.org/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-08T18:19:46.152081+02:00"
+  },
+  "https://rubyonrails.org//": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-08T16:34:49.259754+02:00"
   },
   "https://sched.co/182Ib": {
     "StatusCode": 200,
@@ -3655,6 +3707,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-18T12:43:42.995104-05:00"
   },
+  "https://sinatrarb.com/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-04T10:07:22.738034+02:00"
+  },
   "https://skywalking.apache.org": {
     "StatusCode": 206,
     "LastSeen": "2023-02-27T02:42:59.806812281Z"
@@ -3670,6 +3726,10 @@
   "https://spring.io": {
     "StatusCode": 200,
     "LastSeen": "2023-02-18T12:43:48.632952-05:00"
+  },
+  "https://spring.io/guides/gs/spring-boot/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-02T21:07:51.048873+02:00"
   },
   "https://stackoverflow.com/questions/5626193/what-is-monkey-patching": {
     "StatusCode": 200,
@@ -4135,6 +4195,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-18T13:42:20.916021-05:00"
   },
+  "https://www.jaegertracing.io/docs/latest/client-libraries/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-05T15:20:49.484688+02:00"
+  },
   "https://www.jaegertracing.io/docs/latest/client-libraries/#propagation-format": {
     "StatusCode": 200,
     "LastSeen": "2023-02-18T13:39:37.864392-05:00"
@@ -4322,6 +4386,10 @@
   "https://www.php.net/manual/en/opcache.preloading.php": {
     "StatusCode": 200,
     "LastSeen": "2023-03-29T03:57:51.962566491Z"
+  },
+  "https://www.python.org/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-02T20:58:56.845596+02:00"
   },
   "https://www.python.org/dev/peps/pep-3333/": {
     "StatusCode": 206,

@@ -34,7 +34,7 @@ OpenTelemetry in their commercial products.
 | Lightstep                  | Yes               | Yes         | [github.com/lightstep](https://github.com/lightstep?q=launcher)
 | LogicMonitor               | Yes               | Yes         | [logicmonitor.com/...](https://www.logicmonitor.com/support/tracing/getting-started-with-tracing)
 | Logz.io                    | Yes               | No          | [docs.logz.io/...](https://docs.logz.io/shipping/tracing-sources/opentelemetry.html#overview)
-| LogScale                   | No                | Yes         | [library.humio.com/...](https://library.humio.com/falcon-logscale/log-shippers-opentelemetry.html)
+| LogScale by Crowdstrike (Humio)| No            | Yes         | [library.humio.com/...](https://library.humio.com/falcon-logscale/log-shippers-opentelemetry.html)
 | Lumigo                     | Yes               | Yes         | [lumigo.io](https://docs.lumigo.io/docs/opentelemetry)
 | New Relic                  | No                | Yes         | [newrelic.com/...](https://newrelic.com/solutions/opentelemetry)
 | observIQ                   | Yes               | Yes         | [observiq.com/...](https://docs.bindplane.observiq.com)

@@ -89,12 +89,12 @@ One exception to this is the
 
 [^spec-next-release]:
     The
-    [OpenCensus Compatability specification](https://opentelemetry.io/docs/reference/specification/compatibility/opencensus/)
+    [OpenCensus Compatability specification](/docs/reference/specification/compatibility/opencensus/)
     is marked stable for the next specification release.
 
 [^shim-support]:
     These shims implement the stable
     [OpenCensus Compatibility specification](/docs/reference/specification/compatibility/opencensus#migration-path)[^spec-next-release]
     and will be supported for at least one year following
-    [OpenTelemetry's long term support](https://opentelemetry.io/docs/reference/specification/versioning-and-stability/#long-term-support)
+    [OpenTelemetry's long term support](/docs/reference/specification/versioning-and-stability/#long-term-support)
     guidelines.
