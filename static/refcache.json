@@ -115,6 +115,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-15T20:20:44.797617-05:00"
   },
+  "https://aws.amazon.com/ec2/getting-started/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-08T15:37:16.234975-07:00"
+  },
   "https://aws.amazon.com/ecs/": {
     "StatusCode": 200,
     "LastSeen": "2023-02-15T20:22:15.105647-05:00"
@@ -515,6 +519,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-15T21:12:46.673559-05:00"
   },
+  "https://docs.appdynamics.com/appd-cloud/en/infrastructure-monitoring/host-monitoring/appdynamics-distribution-of-opentelemetry-collector-linux-settings": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-08T15:37:16.642519-07:00"
+  },
   "https://docs.appdynamics.com/latest/en/application-monitoring/appdynamics-for-opentelemetry": {
     "StatusCode": 200,
     "LastSeen": "2023-02-15T21:01:48.974397-05:00"
@@ -550,6 +558,10 @@
   "https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-override-request-response-parameters.html": {
     "StatusCode": 206,
     "LastSeen": "2023-02-15T21:08:16.770406-05:00"
+  },
+  "https://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-08T15:37:16.023098-07:00"
   },
   "https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html#api-gateway-simple-proxy-for-lambda-input-format": {
     "StatusCode": 206,
@@ -2239,6 +2251,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:52:54.321473-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-lambda/releases": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-08T15:37:17.165808-07:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-operator": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:46:26.471476-05:00"
@@ -2622,6 +2638,10 @@
   "https://github.com/servian/hashiqube": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:07:40.266516-05:00"
+  },
+  "https://github.com/shuwpan": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-08T15:37:15.66329-07:00"
   },
   "https://github.com/statsd/statsd": {
     "StatusCode": 200,
