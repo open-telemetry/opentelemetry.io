@@ -50,10 +50,9 @@ is accessed and how to bring that visibility to the engineering teams sending
 the data.
 
 **A:** One of the ways to optimize observability at scale is sampling. Here's an
-article on
-[tail sampling with OpenTelemetry](https://opentelemetry.io/blog/2022/tail-sampling/).
-There are a number of options for you to reduce the data volumes at the SDKs
-level and the collector level.
+article on [tail sampling with OpenTelemetry](/blog/2022/tail-sampling/). There
+are a number of options for you to reduce the data volumes at the SDKs level and
+the collector level.
 
 Also, there is active work going on the OpenTelemetry Collector side to handle
 data at scale more efficiently. For example, there is work going around using
