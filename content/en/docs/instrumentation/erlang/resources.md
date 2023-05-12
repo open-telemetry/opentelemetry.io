@@ -3,8 +3,8 @@ title: Resources
 weight: 36
 ---
 
-A [resource](/docs/reference/specification/overview/#resources) represents an
-entity producing telemetry as attributes. For example, an OTP Release producing
+A [resource](/docs/specs/otel/overview/#resources) represents an entity
+producing telemetry as attributes. For example, an OTP Release producing
 telemetry that is running in a container on Kubernetes has an OTP Release name,
 a Pod name, a namespace, and possibly a deployment name. All four of these
 attributes can be included in the resource.
@@ -93,6 +93,6 @@ which contains a single callback `get_resource/1` that returns an
 [`otel_resource`](https://hexdocs.pm/opentelemetry/1.3.0/otel_resource.html).
 
 Note that there are
-[semantic conventions](/docs/reference/specification/resource/semantic_conventions/)
-defined for `resource` that should be followed if they apply when adding new
-resource attributes.
+[semantic conventions](/docs/specs/otel/resource/semantic_conventions/) defined
+for `resource` that should be followed if they apply when adding new resource
+attributes.

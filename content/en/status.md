@@ -35,12 +35,12 @@ For the development status, or maturity level, of a
 </div>
 
 For the development status, or maturity level, of the
-[collector](/docs/collector/) and
-[specification](/docs/reference/specification/), see the following:
+[collector](/docs/collector/) and [specification](/docs/specs/otel/), see the
+following:
 
 <div class="l-status-primary mt-0">
 
-- [Specification status](/docs/reference/specification/status/)
+- [Specification status](/docs/specs/otel/status/)
 - [Collector status](/docs/collector/#status-and-releases)
 
 </div>
