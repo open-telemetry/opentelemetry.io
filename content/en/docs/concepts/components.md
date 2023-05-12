@@ -6,7 +6,7 @@ weight: 20
 
 OpenTelemetry is currently made up of several main components:
 
-- [Cross-language specification](/docs/reference/specification/)
+- [Cross-language specification](/docs/specs/otel/)
 - [OpenTelemetry Collector](/docs/collector/)
 - [Per-language SDKs](/docs/instrumentation/)
 - [Per-language instrumentation libraries](/docs/concepts/instrumenting-library/)
@@ -30,7 +30,7 @@ following:
 - **Data:** Defines the OpenTelemetry Protocol (OTLP) and vendor-agnostic
   semantic conventions that a telemetry backend can provide support for.
 
-For more information, see the [specification](/docs/reference/specification/).
+For more information, see the [specification](/docs/specs/otel/).
 
 Additionally, extensively-commented protobuf interface files for API concepts
 can be found in the

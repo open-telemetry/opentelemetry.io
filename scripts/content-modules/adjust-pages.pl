@@ -14,7 +14,7 @@ my $gD = 0;
 my $otelSpecRepoUrl = 'https://github.com/open-telemetry/opentelemetry-specification';
 my $otlpSpecRepoUrl = 'https://github.com/open-telemetry/opentelemetry-proto';
 my $semConvRef = "$otelSpecRepoUrl/blob/main/semantic_conventions/README.md";
-my $specBasePath = '/docs/specification';
+my $specBasePath = '/docs/specs';
 my $path_base_for_github_subdir = "content/en$specBasePath";
 my %versions = qw(
   spec: 1.20.0
@@ -106,8 +106,9 @@ while(<>) {
   s|\.\.\/README.md\b|$otelSpecRepoUrl/|g if $ARGV =~ /specification._index/;
   s|\.\.\/README.md\b|..| if $ARGV =~ /specification.library-guidelines.md/;
 
-  s|\.\.\/(opentelemetry/proto/?.*)|$otlpSpecRepoUrl/tree/$otlpSpecVers/$1/|g if $ARGV =~ /\/tmp\/otlp/;
-  s|\.\.\/README.md\b|$otlpSpecRepoUrl/|g if $ARGV =~ /\/tmp\/otlp/;
+  s|\.\./(opentelemetry/proto/?.*)|$otlpSpecRepoUrl/tree/$otlpSpecVers/$1/|g if $ARGV =~ /\/tmp\/otlp/;
+  s|\.\./README.md\b|$otlpSpecRepoUrl/|g if $ARGV =~ /\/tmp\/otlp/;
+  s|\.\./examples/README.md\b|$otlpSpecRepoUrl/tree/$otlpSpecVers/examples/|g if $ARGV =~ /\/tmp\/otlp/;
 
   s|\bREADME.md\b|_index.md|g;
 
