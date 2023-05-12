@@ -10,4 +10,4 @@ weight: 11
 In OpenTelemetry, a **[signal][]** refers to a category of telemetry. A brief
 introduction to the currently supported signals is provided in this section.
 
-[signal]: /docs/reference/specification/glossary/#signals
+[signal]: /docs/specs/otel/glossary/#signals

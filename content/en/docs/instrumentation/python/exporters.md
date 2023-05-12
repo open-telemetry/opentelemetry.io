@@ -39,9 +39,8 @@ trace.set_tracer_provider(provider)
 Use a [`PeriodicExportingMetricReader`][pemr] to periodically print metrics to
 the console. `PeriodicExportingMetricReader` can be configured to export at a
 different interval, change the
-[temporality](/docs/reference/specification/metrics/data-model/#temporality) for
-each instrument kind, or change the default aggregation for each instrument
-kind.
+[temporality](/docs/specs/otel/metrics/data-model/#temporality) for each
+instrument kind, or change the default aggregation for each instrument kind.
 
 #### Temporality Presets
 
@@ -164,9 +163,8 @@ metrics.set_meter_provider(provider)
 
 ### Using HTTP
 
-If you'd prefer to use
-[OTLP/HTTP](/docs/reference/specification/protocol/otlp/#otlphttp) with the
-binary-encoded Protobuf format, you can install the package:
+If you'd prefer to use [OTLP/HTTP](/docs/specs/otel/protocol/otlp/#otlphttp)
+with the binary-encoded Protobuf format, you can install the package:
 
 ```console
 $ pip install opentelemetry-exporter-otlp-proto-http

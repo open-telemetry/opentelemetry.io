@@ -176,11 +176,11 @@ is no firm timeframe on when Python instrumentation will be marked as stable.
 #### 1- OpenTelemetry exemplars
 
 **Q:** Where can users learn more about
-[Exemplars](/docs/reference/specification/metrics/data-model/) and how they are
-being used in the real world?
+[Exemplars](/docs/specs/otel/metrics/data-model/) and how they are being used in
+the real world?
 
-**A:** [Exemplars](/docs/reference/specification/metrics/data-model/) are used
-to correlate OpenTelemetry [metrics](/docs/concepts/signals/metrics/) to
+**A:** [Exemplars](/docs/specs/otel/metrics/data-model/) are used to correlate
+OpenTelemetry [metrics](/docs/concepts/signals/metrics/) to
 [traces](/docs/concepts/signals/traces/). Exemplars are currently in the early
 stages of development, and more work still needs to be done. For more on the
 state of exemplars, check out the

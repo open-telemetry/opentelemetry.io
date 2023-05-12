@@ -141,7 +141,7 @@ active span in the context of the process dictionary.
 Connecting a span as a parent to a child in a new process can be done by
 attaching the context and setting the new span as currently active in the
 process. The whole context should be attached in order to not lose other
-telemetry data like [baggage](/docs/reference/specification/baggage/api/).
+telemetry data like [baggage](/docs/specs/otel/baggage/api/).
 
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
@@ -360,6 +360,5 @@ The metrics API, found in `apps/opentelemetry_experimental_api` of the
 [opentelemetry-erlang](https://github.com/open-telemetry/opentelemetry-erlang)
 repository, is currently unstable, documentation TBA.
 
-[opentelemetry specification]: /docs/reference/specification/
-[trace semantic conventions]:
-  /docs/reference/specification/trace/semantic_conventions/
+[opentelemetry specification]: /docs/specs/otel/
+[trace semantic conventions]: /docs/specs/otel/trace/semantic_conventions/
