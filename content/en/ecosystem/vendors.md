@@ -37,6 +37,7 @@ OpenTelemetry in their commercial products.
 | LogScale by Crowdstrike (Humio)| No            | Yes         | [library.humio.com/...](https://library.humio.com/falcon-logscale/log-shippers-opentelemetry.html)
 | Lumigo                     | Yes               | Yes         | [lumigo.io](https://docs.lumigo.io/docs/opentelemetry)
 | New Relic                  | No                | Yes         | [newrelic.com/...](https://newrelic.com/solutions/opentelemetry)
+| Observe, Inc.              | Yes               | Yes         | [observeinc.com](https://www.observeinc.com/blog/whats-new-opentelemetry-app/)
 | observIQ                   | Yes               | Yes         | [observiq.com/...](https://docs.bindplane.observiq.com)
 | Oracle                     | No                | Yes         | [docs.oracle.com/...](https://docs.oracle.com/en-us/iaas/application-performance-monitoring/doc/configure-open-source-tracing-systems.html#GUID-4D941163-F357-4839-8B06-688876D4C61F)
 | Promscale                  | No                | Yes         | [timescale.com/promscale](https://www.timescale.com/promscale)
