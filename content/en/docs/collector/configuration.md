@@ -348,10 +348,9 @@ provides a default configuration are overridden.
 > pipelines within the [service](#service) section.
 
 One or more exporters must be configured. By default, no exporters are
-configured. A basic example of exporters is provided below.
-Certain exporter configurations require x.509 certificates to be created in
-order to be secure, as described in
-[setting up certificates](#setting-up-certificates).
+configured. A basic example of exporters is provided below. Certain exporter
+configurations require x.509 certificates to be created in order to be secure,
+as described in [setting up certificates](#setting-up-certificates).
 
 > For detailed exporter configuration, see the
 > [exporter README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md).
@@ -478,7 +477,7 @@ extension provides a default configuration are overridden.
 > Configuring an extension does not enable it. Extensions are enabled within the
 > [service](#service) section.
 
-By default, no extensions are configured. A basic example of extensions is 
+By default, no extensions are configured. A basic example of extensions is
 provided below.
 
 > For detailed extension configuration, please see the
