@@ -1,6 +1,10 @@
 ---
 title: Configuration
 weight: 20
+spelling: cSpell:ignore pprof zpages zipkin fluentforward hostmetrics opencensus
+spelling: cSpell:ignore prometheus loglevel otlphttp upsert spanevents OIDC
+spelling: cSpell:ignore prometheusremotewrite prodevent spanmetrics servicegraph
+spelling: cSpell:ignore oidc cfssl genkey initca cfssljson gencert
 ---
 
 Familiarity with the following pages is assumed:
@@ -11,7 +15,7 @@ Familiarity with the following pages is assumed:
 
 ## Basics
 
-The Collector consists of three components that access telemetry data:
+The Collector consists of four components that access telemetry data:
 
 - <img width="32" class="img-initial" src="/img/logos/32x32/Receivers.svg"></img>
   [Receivers](#receivers)
@@ -19,6 +23,8 @@ The Collector consists of three components that access telemetry data:
   [Processors](#processors)
 - <img width="32" class="img-initial" src="/img/logos/32x32/Exporters.svg"></img>
   [Exporters](#exporters)
+- <img width="32" class="img-initial" src="/img/logos/32x32/Load_Balancer.svg"></img>
+  [Connectors](#connectors)
 
 These components once configured must be enabled via pipelines within the
 [service](#service) section.
@@ -402,6 +408,56 @@ exporters:
   # Data sources: traces
   zipkin:
     endpoint: http://localhost:9411/api/v2/spans
+```
+
+## Connectors
+
+A connector is both an exporter and receiver. It consumes data as an exporter in
+one pipeline and emits data as a receiver in another pipeline. It may consume
+and emit data of the same data type, or of different data types. A connector may
+generate and emit data to summarize the consumed data, or it may simply
+replicate or route data.
+
+The `connectors:` section is how connectors are configured.
+
+> Configuring a connectors does not enable it. Connectors are enabled via
+> pipelines within the [service](#service) section.
+
+One or more connectors may be configured. By default, no receivers are
+configured. A basic example of all available connectors is provided below.
+
+> For detailed connector configuration, please see the
+> [connector README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/connector/README.md).
+
+```yaml
+connectors:
+  count:
+    spanevents:
+      my.prod.event.count:
+        description: The number of span events from my prod environment.
+        conditions:
+          - 'attributes["env"] == "prod"'
+          - 'name == "prodevent"'
+
+  spanmetrics:
+    histogram:
+      explicit:
+        buckets: [100us, 1ms, 2ms, 6ms, 10ms, 100ms, 250ms]
+    dimensions:
+      - name: http.method
+        default: GET
+      - name: http.status_code
+    dimensions_cache_size: 1000
+    aggregation_temporality: 'AGGREGATION_TEMPORALITY_CUMULATIVE'
+
+  servicegraph:
+    latency_histogram_buckets: [1, 2, 3, 4, 5]
+    dimensions:
+      - dimension-1
+      - dimension-2
+    store:
+      ttl: 1s
+      max_items: 10
 ```
 
 ## Extensions
