@@ -253,14 +253,14 @@ to get details about your [Cloud] environment or [Deployment][]. You will find a
 list
 [here](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node).
 
-[resource]: /docs/reference/specification/resource/sdk/
+[resource]: /docs/specs/otel/resource/sdk/
 [getting started - node.js]: /docs/instrumentation/js/getting-started/nodejs/
 [process and process runtime resources]:
-  /docs/reference/specification/resource/semantic_conventions/process/
-[host]: /docs/reference/specification/resource/semantic_conventions/host/
+  /docs/specs/otel/resource/semantic_conventions/process/
+[host]: /docs/specs/otel/resource/semantic_conventions/host/
 [otlp exporter]: /docs/instrumentation/js/exporters/#otlp-endpoint
-[cloud]: /docs/reference/specification/resource/semantic_conventions/cloud/
+[cloud]: /docs/specs/otel/resource/semantic_conventions/cloud/
 [deployment]:
-  /docs/reference/specification/resource/semantic_conventions/deployment_environment/
-[service]: /docs/reference/specification/resource/semantic_conventions/#service
-[os]: /docs/reference/specification/resource/semantic_conventions/os/
+  /docs/specs/otel/resource/semantic_conventions/deployment_environment/
+[service]: /docs/specs/otel/resource/semantic_conventions/#service
+[os]: /docs/specs/otel/resource/semantic_conventions/os/

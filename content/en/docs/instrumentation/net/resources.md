@@ -144,13 +144,13 @@ code, the values in code take precedence.
 There are more resource detectors you can add to your configuration, for example
 to get details about your [Cloud] environment or [Deployment][].
 
-[resource]: /docs/reference/specification/resource/sdk/
+[resource]: /docs/specs/otel/resource/sdk/
 [getting started]: /docs/instrumentation/net/getting-started/
 [process and process runtime resources]:
-  /docs/reference/specification/resource/semantic_conventions/process/
-[host]: /docs/reference/specification/resource/semantic_conventions/host/
-[cloud]: /docs/reference/specification/resource/semantic_conventions/cloud/
+  /docs/specs/otel/resource/semantic_conventions/process/
+[host]: /docs/specs/otel/resource/semantic_conventions/host/
+[cloud]: /docs/specs/otel/resource/semantic_conventions/cloud/
 [deployment]:
-  /docs/reference/specification/resource/semantic_conventions/deployment_environment/
-[service]: /docs/reference/specification/resource/semantic_conventions/#service
-[os]: /docs/reference/specification/resource/semantic_conventions/os/
+  /docs/specs/otel/resource/semantic_conventions/deployment_environment/
+[service]: /docs/specs/otel/resource/semantic_conventions/#service
+[os]: /docs/specs/otel/resource/semantic_conventions/os/
