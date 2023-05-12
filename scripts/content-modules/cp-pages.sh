@@ -19,14 +19,14 @@ FILES=$(find $DEST -name "*.md")
 
 $SCRIPT_DIR/adjust-pages.pl $FILES
 
-echo "OTEL SPEC pages copied and processed."
+echo "OTEL SPEC pages copied and processed"
 
 ## OTLP specification
 
-if [[ $GET == no ]]; then
-
 SRC=content-modules/opentelemetry-proto/docs
 DEST=$DEST_BASE/otlp/docs
+
+if [[ -e $SRC ]]; then
 
 rm -Rf $DEST
 mkdir -p $DEST
@@ -39,7 +39,7 @@ FILES=$(find $DEST -name "*.md")
 
 $SCRIPT_DIR/adjust-pages.pl $FILES
 
-echo "OTLP SPEC pages copied and processed."
+echo "OTLP SPEC pages: copied and processed."
 
 # SRC=content-modules/opentelemetry-proto/opentelemetry
 # DEST=$DEST_BASE/otlp/opentelemetry
@@ -49,6 +49,10 @@ echo "OTLP SPEC pages copied and processed."
 # cp -R $SRC/* $DEST/
 
 # echo "OTLP SPEC protos copied and processed."
+
+else
+
+echo "OTLP SPEC pages: skipped"
 
 fi
 
@@ -68,4 +72,4 @@ FILES=$(find $DEST -name mission-vision-values.md -o -name roadmap.md)
 
 $SCRIPT_DIR/adjust-pages.pl $FILES
 
-echo "COMMUNITY pages copied and processed."
+echo "COMMUNITY pages: copied and processed"

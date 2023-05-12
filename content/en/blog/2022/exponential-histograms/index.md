@@ -281,29 +281,27 @@ _A version of this article was [originally posted][] on the New Relic blog._
 [originally posted]: {{% param canonical_url %}}
 
 [percentiles]: https://en.wikipedia.org/wiki/Percentile
-[api]: /docs/reference/specification/metrics/api/
-[sdk]: /docs/reference/specification/metrics/sdk/
-[meter provider]: /docs/reference/specification/metrics/api/#meterprovider
-[instruments]: /docs/reference/specification/metrics/api/#instrument
+[api]: /docs/specs/otel/metrics/api/
+[sdk]: /docs/specs/otel/metrics/sdk/
+[meter provider]: /docs/specs/otel/metrics/api/#meterprovider
+[instruments]: /docs/specs/otel/metrics/api/#instrument
 [instrument selection]:
-  /docs/reference/specification/metrics/supplementary-guidelines/#instrument-selection
-[aggregation]: /docs/reference/specification/metrics/sdk/#aggregation
-[type of instrument]: /docs/reference/specification/metrics/api/#histogram
-[histogram-aggregation]:
-  /docs/reference/specification/metrics/sdk/#histogram-aggregations
+  /docs/specs/otel/metrics/supplementary-guidelines/#instrument-selection
+[aggregation]: /docs/specs/otel/metrics/sdk/#aggregation
+[type of instrument]: /docs/specs/otel/metrics/api/#histogram
+[histogram-aggregation]: /docs/specs/otel/metrics/sdk/#histogram-aggregations
 [explicit bucket histogram]:
-  /docs/reference/specification/metrics/sdk/#explicit-bucket-histogram-aggregation
+  /docs/specs/otel/metrics/sdk/#explicit-bucket-histogram-aggregation
 [explicit bucket histogram proto]:
   https://github.com/open-telemetry/opentelemetry-proto/blob/724e427879e3d2bae2edc0218fff06e37b9eb46e/opentelemetry/proto/metrics/v1/metrics.proto#L382
 [exponential bucket histogram]:
-  /docs/reference/specification/metrics/sdk/#base2-exponential-bucket-histogram-aggregation
+  /docs/specs/otel/metrics/sdk/#base2-exponential-bucket-histogram-aggregation
 [exponential bucket histogram proto]:
   https://github.com/open-telemetry/opentelemetry-proto/blob/724e427879e3d2bae2edc0218fff06e37b9eb46e/opentelemetry/proto/metrics/v1/metrics.proto#L463
 [example code]:
   https://github.com/jack-berg/newrelic-opentelemetry-examples/commit/2681bf25518c02f4e5830f89254c736e0959d306
-[otlp]: /docs/reference/specification/protocol/otlp/
+[otlp]: /docs/specs/otel/protocol/otlp/
 [opentelemetry-java]: https://github.com/open-telemetry/opentelemetry-java
-[environment variable]:
-  /docs/reference/specification/metrics/sdk_exporters/otlp/
+[environment variable]: /docs/specs/otel/metrics/sdk_exporters/otlp/
 [instrumentation]: /docs/instrumentation
 [github.com/open-telemetry]: https://github.com/open-telemetry

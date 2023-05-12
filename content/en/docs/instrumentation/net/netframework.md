@@ -94,9 +94,8 @@ this.tracerProvider = Sdk.CreateTracerProviderBuilder()
 ```
 
 Filtering happens at an early stage, and is different from
-[Sampling](/docs/reference/specification/trace/sdk/#sampling), which occurs
-after data has been collected. Filtering will limit what gets collected in the
-first place.
+[Sampling](/docs/specs/otel/trace/sdk/#sampling), which occurs after data has
+been collected. Filtering will limit what gets collected in the first place.
 
 ### Enrich
 

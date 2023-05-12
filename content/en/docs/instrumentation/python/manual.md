@@ -40,8 +40,8 @@ tracer = trace.get_tracer("my.tracer.name")
 ```
 
 To start collecting metrics, you'll need to initialize a
-[`MeterProvider`](/docs/reference/specification/metrics/api/#meterprovider) and
-optionally set it as the global default.
+[`MeterProvider`](/docs/specs/otel/metrics/api/#meterprovider) and optionally
+set it as the global default.
 
 ```python
 from opentelemetry import metrics
@@ -155,8 +155,8 @@ current_span.set_attribute("operation.other-stuff", [1, 2, 3])
 
 ### Add semantic attributes
 
-[Semantic Attributes](/docs/reference/specification/trace/semantic_conventions/)
-are pre-defined [Attributes](/docs/concepts/signals/traces/#attributes) that are
+[Semantic Attributes](/docs/specs/otel/trace/semantic_conventions/) are
+pre-defined [Attributes](/docs/concepts/signals/traces/#attributes) that are
 well-known naming conventions for common kinds of data. Using Semantic
 Attributes lets you normalize this kind of information across your systems.
 
@@ -318,14 +318,14 @@ Note that environment variables will override what's configured in code.
 ### Creating and using synchronous instruments
 
 Instruments are used to make measurements of your application.
-[Synchronous instruments](/docs/reference/specification/metrics/api/#synchronous-and-asynchronous-instruments)
+[Synchronous instruments](/docs/specs/otel/metrics/api/#synchronous-and-asynchronous-instruments)
 are used inline with application/business processing logic, like when handling a
 request or calling another service.
 
 First, create your instrument. Instruments are generally created once at the
 module or class level and then used inline with business logic. This example
-uses a [Counter](/docs/reference/specification/metrics/api/#counter) instrument
-to count the number of work items completed:
+uses a [Counter](/docs/specs/otel/metrics/api/#counter) instrument to count the
+number of work items completed:
 
 ```python
 work_counter = meter.create_counter(
@@ -333,9 +333,8 @@ work_counter = meter.create_counter(
 )
 ```
 
-Using the Counter's
-[add operation](/docs/reference/specification/metrics/api/#add), the code below
-increments the count by one, using the work item's type as an attribute.
+Using the Counter's [add operation](/docs/specs/otel/metrics/api/#add), the code
+below increments the count by one, using the work item's type as an attribute.
 
 ```python
 def do_work(work_item):
@@ -346,7 +345,7 @@ def do_work(work_item):
 
 ### Creating and using asynchronous instruments
 
-[Asynchronous instruments](/docs/reference/specification/metrics/api/#synchronous-and-asynchronous-instruments)
+[Asynchronous instruments](/docs/specs/otel/metrics/api/#synchronous-and-asynchronous-instruments)
 give the user a way to register callback functions, which are invoked on demand
 to make measurements. This is useful to periodically measure a value that cannot
 be instrumented directly. Async instruments are created with zero or more
@@ -354,7 +353,7 @@ callbacks which will be invoked during metric collection. Each callback accepts
 options from the SDK and returns its observations.
 
 This example uses an
-[Asynchronous Gauge](/docs/reference/specification/metrics/api/#asynchronous-gauge)
+[Asynchronous Gauge](/docs/specs/otel/metrics/api/#asynchronous-gauge)
 instrument to report the current config version provided by a configuration
 server by scraping an HTTP endpoint. First, write a callback to make
 observations:
@@ -390,11 +389,11 @@ meter.create_observable_gauge(
 
 - Trace
   - [Trace Concepts](/docs/concepts/signals/traces/)
-  - [Trace Specification](/docs/reference/specification/overview/#tracing-signal)
+  - [Trace Specification](/docs/specs/otel/overview/#tracing-signal)
   - [Python Trace API Documentation](https://opentelemetry-python.readthedocs.io/en/latest/api/trace.html)
   - [Python Trace SDK Documentation](https://opentelemetry-python.readthedocs.io/en/latest/sdk/trace.html)
 - Metrics
   - [Metrics Concepts](/docs/concepts/signals/metrics/)
-  - [Metrics Specification](/docs/reference/specification/metrics/)
+  - [Metrics Specification](/docs/specs/otel/metrics/)
   - [Python Metrics API Documentation](https://opentelemetry-python.readthedocs.io/en/latest/api/metrics.html)
   - [Python Metrics SDK Documentation](https://opentelemetry-python.readthedocs.io/en/latest/sdk/metrics.html)

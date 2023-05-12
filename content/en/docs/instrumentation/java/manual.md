@@ -283,7 +283,7 @@ span.setAttribute("http.url", url.toString());
 There are semantic conventions for spans representing operations in well-known
 protocols like HTTP or database calls. Semantic conventions for these spans are
 defined in the specification at
-[Trace Semantic Conventions](/docs/reference/specification/trace/semantic_conventions/).
+[Trace Semantic Conventions](/docs/specs/otel/trace/semantic_conventions/).
 
 First add the semantic conventions as a dependency to your application:
 
@@ -1077,13 +1077,11 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/AlwaysOnSampler.java
 [httpexchange]:
   https://docs.oracle.com/javase/8/docs/jre/api/net/httpserver/spec/com/sun/net/httpserver/HttpExchange.html
-[instrumentation library]:
-  /docs/reference/specification/glossary/#instrumentation-library
-[instrumented library]:
-  /docs/reference/specification/glossary/#instrumented-library
-[library guidelines]: /docs/reference/specification/library-guidelines
-[logs bridge API]: /docs/reference/specification/logs/bridge-api
-[log data model]: /docs/reference/specification/logs/data-model
+[instrumentation library]: /docs/specs/otel/glossary/#instrumentation-library
+[instrumented library]: /docs/specs/otel/glossary/#instrumented-library
+[library guidelines]: /docs/specs/otel/library-guidelines
+[logs bridge API]: /docs/specs/otel/logs/bridge-api
+[log data model]: /docs/specs/otel/logs/data-model
 [log4j2 appender]:
   https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/log4j/log4j-appender-2.17/library
 [logback appender]:
@@ -1094,13 +1092,13 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
   https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/log4j/log4j-context-data/log4j-context-data-2.17/library-autoconfigure
 [logback context instrumentation]:
   https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/logback/logback-mdc-1.0/library
-[obtaining a tracer]: /docs/reference/specification/trace/api/#get-a-tracer
+[obtaining a tracer]: /docs/specs/otel/trace/api/#get-a-tracer
 [opentelemetry collector]:
   https://github.com/open-telemetry/opentelemetry-collector
 [opentelemetry registry]: /ecosystem/registry/?component=exporter&language=java
 [parentbased]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/ParentBasedSampler.java
 [releases]: https://github.com/open-telemetry/opentelemetry-java#releases
-[semantic conventions]: /docs/reference/specification/trace/semantic_conventions
+[semantic conventions]: /docs/specs/otel/trace/semantic_conventions
 [traceidratiobased]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/TraceIdRatioBasedSampler.java
