@@ -191,7 +191,7 @@ receiver provides a default configuration are overridden.
 > within the [service](#service) section.
 
 One or more receivers must be configured. By default, no receivers are
-configured. A basic example of all available receivers is provided below.
+configured. A basic example of receivers is provided below.
 
 > For detailed receiver configuration, please see the
 > [receiver README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md).
@@ -348,7 +348,7 @@ provides a default configuration are overridden.
 > pipelines within the [service](#service) section.
 
 One or more exporters must be configured. By default, no exporters are
-configured. A basic example of all available exporters is provided below.
+configured. A basic example of exporters is provided below.
 Certain exporter configurations require x.509 certificates to be created in
 order to be secure, as described in
 [setting up certificates](#setting-up-certificates).
@@ -424,13 +424,15 @@ The `connectors:` section is how connectors are configured.
 > pipelines within the [service](#service) section.
 
 One or more connectors may be configured. By default, no connectors are
-configured. A basic example of all available connectors is provided below.
+configured. A basic example of connectors is provided below.
 
 > For detailed connector configuration, please see the
 > [connector README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/connector/README.md).
 
 ```yaml
 connectors:
+  forward:
+
   count:
     spanevents:
       my.prod.event.count:
@@ -476,8 +478,8 @@ extension provides a default configuration are overridden.
 > Configuring an extension does not enable it. Extensions are enabled within the
 > [service](#service) section.
 
-By default, no extensions are configured. A basic example of all available
-extensions is provided below.
+By default, no extensions are configured. A basic example of extensions is 
+provided below.
 
 > For detailed extension configuration, please see the
 > [extension README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/extension/README.md).
