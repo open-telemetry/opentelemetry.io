@@ -154,10 +154,10 @@ Cons:
 - Higher overall resource usage (costs)
 
 [instrumentation]: /docs/instrumentation/
-[otlp]: /docs/reference/specification/protocol/
+[otlp]: /docs/specs/otel/protocol/
 [collector]: /docs/collector/
 [instrument-java-metrics]: /docs/instrumentation/java/manual/#metrics
-[otlp-exporter]: /docs/reference/specification/protocol/exporter/
+[otlp-exporter]: /docs/specs/otel/protocol/exporter/
 [java-otlp-example]:
   https://github.com/open-telemetry/opentelemetry-java-docs/tree/main/otlp
 [py-otlp-example]:

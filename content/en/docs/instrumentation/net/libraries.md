@@ -5,7 +5,7 @@ weight: 3
 ---
 
 You can use
-[instrumentation libraries](/docs/reference/specification/glossary/#instrumentation-library)
+[instrumentation libraries](/docs/specs/otel/glossary/#instrumentation-library)
 in order to generate telemetry data for a particular instrumented library.
 
 For example,

@@ -48,7 +48,7 @@ a "major version bump" and you may notice some changes in your telemetry.
 
 More details on what to expect and some suggested workflows for migration are
 outlined in the
-[OpenCensus Compatibility specification](/docs/reference/specification/compatibility/opencensus#migration-path)[^spec-next-release].
+[OpenCensus Compatibility specification](/docs/specs/otel/compatibility/opencensus#migration-path)[^spec-next-release].
 
 ## What to Expect After July 31st, 2023
 
@@ -89,12 +89,12 @@ One exception to this is the
 
 [^spec-next-release]:
     The
-    [OpenCensus Compatability specification](/docs/reference/specification/compatibility/opencensus/)
+    [OpenCensus Compatability specification](/docs/specs/otel/compatibility/opencensus/)
     is marked stable for the next specification release.
 
 [^shim-support]:
     These shims implement the stable
-    [OpenCensus Compatibility specification](/docs/reference/specification/compatibility/opencensus#migration-path)[^spec-next-release]
+    [OpenCensus Compatibility specification](/docs/specs/otel/compatibility/opencensus#migration-path)[^spec-next-release]
     and will be supported for at least one year following
-    [OpenTelemetry's long term support](/docs/reference/specification/versioning-and-stability/#long-term-support)
+    [OpenTelemetry's long term support](/docs/specs/otel/versioning-and-stability/#long-term-support)
     guidelines.

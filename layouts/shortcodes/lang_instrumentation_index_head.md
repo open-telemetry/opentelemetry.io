@@ -5,13 +5,13 @@
 {{ $metricsStatus := $data.status.metrics | humanize }}
 {{ $logsStatus := $data.status.logs | humanize }}
 {{ if in "Stable Experimental" $tracesStatus }}
-    {{ $tracesStatus = printf "[%s](/docs/reference/specification/versioning-and-stability/#%s)" $tracesStatus $data.status.traces }}
+    {{ $tracesStatus = printf "[%s](/docs/specs/otel/versioning-and-stability/#%s)" $tracesStatus $data.status.traces }}
 {{ end }}
 {{ if in "Stable Experimental" $metricsStatus }}
-    {{ $metricsStatus = printf "[%s](/docs/reference/specification/versioning-and-stability/#%s)" $metricsStatus $data.status.metrics }}
+    {{ $metricsStatus = printf "[%s](/docs/specs/otel/versioning-and-stability/#%s)" $metricsStatus $data.status.metrics }}
 {{ end }}
 {{ if in "Stable Experimental" $logsStatus }}
-    {{ $logsStatus = printf "[%s](/docs/reference/specification/versioning-and-stability/#%s)" $logsStatus $data.status.logs }}
+    {{ $logsStatus = printf "[%s](/docs/specs/otel/versioning-and-stability/#%s)" $logsStatus $data.status.logs }}
 {{ end }}
 This is the OpenTelemetry {{ $name }} documentation. OpenTelemetry is an
 observability framework -- an API, SDK, and tools that are designed to aid in

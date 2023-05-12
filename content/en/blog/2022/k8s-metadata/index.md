@@ -247,7 +247,7 @@ sidecar, or when one collector as an agent report to another collector.
 
 - [K8sattributes processor documentation][k8sattributesprocessor]
 - [K8sattributes processor RBAC](https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/k8sattributesprocessor#hdr-RBAC)
-- [OpenTelemetry Kubernetes attributes](/docs/reference/specification/resource/semantic_conventions/k8s)
+- [OpenTelemetry Kubernetes attributes](/docs/specs/otel/resource/semantic_conventions/k8s)
 - [Resource detector processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/resourcedetectionprocessor/README.md)
 
 [pr#832]: https://github.com/open-telemetry/opentelemetry-operator/pull/832
@@ -256,5 +256,5 @@ sidecar, or when one collector as an agent report to another collector.
 [k8sattributesprocessor]:
   https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/k8sattributesprocessor
 [kubernetes resource semantic conventions]:
-  /docs/reference/specification/resource/semantic_conventions/k8s
+  /docs/specs/otel/resource/semantic_conventions/k8s
 [vert.x example app]: https://github.com/jaegertracing/vertx-create-span
