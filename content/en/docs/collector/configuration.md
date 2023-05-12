@@ -423,7 +423,7 @@ The `connectors:` section is how connectors are configured.
 > Configuring a connectors does not enable it. Connectors are enabled via
 > pipelines within the [service](#service) section.
 
-One or more connectors may be configured. By default, no receivers are
+One or more connectors may be configured. By default, no connectors are
 configured. A basic example of all available connectors is provided below.
 
 > For detailed connector configuration, please see the
