@@ -13,4 +13,4 @@ the change.
 
 > For more information, see the [logs specification][].
 
-[logs specification]: /docs/reference/specification/overview/#log-signal
+[logs specification]: /docs/specs/otel/overview/#log-signal
