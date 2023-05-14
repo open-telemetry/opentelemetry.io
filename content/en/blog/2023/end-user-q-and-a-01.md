@@ -121,9 +121,9 @@ To instrument their code, they configure the
 of
 [Node.JS auto-instrumentation plug-ins](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node).
 While the team is currently only using
-[auto-instrumentation](/docs/reference/specification/glossary/#automatic-instrumentation)
-to generate traces and [spans](/docs/concepts/observability-primer/#spans), they
-do occasionally add more data to a span (e.g.
+[auto-instrumentation](/docs/specs/otel/glossary/#automatic-instrumentation) to
+generate traces and [spans](/docs/concepts/observability-primer/#spans), they do
+occasionally add more data to a span (e.g.
 [attributes](/docs/concepts/signals/traces/#attributes)). They do this by
 grabbing the [context](/docs/concepts/signals/traces/#context-propagation) to
 find the span, and injecting custom attributes into that spans.
@@ -166,8 +166,8 @@ logs to their observability back-end. The ultimate goal is to have
 They have currently been able to automatically link traces to logs in ELK using
 [Node.JS Bunyan](https://nodejs.org/en/blog/module/service-logging-in-json-with-bunyan/).
 They are hoping to leverage
-[OpenTelemetry’s Exemplars](/docs/reference/specification/metrics/data-model/#exemplars)
-to link traces and metrics.
+[OpenTelemetry’s Exemplars](/docs/specs/otel/metrics/data-model/#exemplars) to
+link traces and metrics.
 
 ### How is the organization sending telemetry data to various observability back-ends?
 

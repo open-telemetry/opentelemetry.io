@@ -157,7 +157,7 @@ By combining Context and Propagation, you now can assemble a Trace.
 
 > For more information, see the [traces specification][]
 
-[traces specification]: /docs/reference/specification/overview/#tracing-signal
+[traces specification]: /docs/specs/otel/overview/#tracing-signal
 
 ## Spans
 
@@ -248,10 +248,10 @@ Attributes have the following rules that each language SDK implements:
   an array of these values
 
 Additionally, there are
-[Semantic Attributes](/docs/reference/specification/trace/semantic_conventions/),
-which are known naming conventions for metadata that is typically present in
-common operations. It's helpful to use semantic attribute naming wherever
-possible so that common kinds of metadata are standardized across systems.
+[Semantic Attributes](/docs/specs/otel/trace/semantic_conventions/), which are
+known naming conventions for metadata that is typically present in common
+operations. It's helpful to use semantic attribute naming wherever possible so
+that common kinds of metadata are standardized across systems.
 
 ### Span Events
 
@@ -315,7 +315,7 @@ always a producer and the child of a producer span is always a consumer. If not
 provided, the span kind is assumed to be internal.
 
 For more information regarding SpanKind, see
-[SpanKind](/docs/reference/specification/trace/api/#spankind).
+[SpanKind](/docs/specs/otel/trace/api/#spankind).
 
 #### Client
 

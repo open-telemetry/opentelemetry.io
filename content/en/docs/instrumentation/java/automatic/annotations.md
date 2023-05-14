@@ -3,7 +3,7 @@ title: Annotations
 description: Using instrumentation annotations with a Java agent.
 aliases: [/docs/instrumentation/java/annotations]
 weight: 4
-javaInstrumentationVersion: 1.25.1
+javaInstrumentationVersion: 1.26.0
 ---
 
 For most users, the out-of-the-box instrumentation is completely sufficient and

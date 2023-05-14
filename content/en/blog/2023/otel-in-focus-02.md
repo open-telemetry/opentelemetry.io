@@ -19,7 +19,7 @@ channel.
 
 Here are the latest updates from our core repositories.
 
-##### [Specification](/docs/reference/specification/)
+##### [Specification](/docs/specs/otel/)
 
 [v1.18](https://github.com/open-telemetry/opentelemetry-specification/releases/tag/v1.18.0)
 has been released, with a batch of semantic convention updates and
