@@ -19,7 +19,7 @@ FILES=$(find $DEST -name "*.md")
 
 $SCRIPT_DIR/adjust-pages.pl $FILES
 
-echo "OTEL SPEC pages copied and processed"
+echo "OTEL SPEC pages: copied and processed"
 
 ## OTLP specification
 
