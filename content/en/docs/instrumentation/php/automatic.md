@@ -116,7 +116,7 @@ php myapp.php
 ```php
 <?php
 OpenTelemetry\API\Common\Instrumentation\Globals::registerInitializer(function (Configurator $configurator) {
-    $propagator = TextMapPropagator::getInstance();
+    $propagator = TraceContextPropagator::getInstance();
     $spanProcessor = new BatchSpanProcessor(/*params*/);
     $tracerProvider = (new TracerProviderBuilder())
         ->addSpanProcessor($spanProcessor)
