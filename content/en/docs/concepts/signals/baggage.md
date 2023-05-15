@@ -65,4 +65,4 @@ Activity.Current?.SetTag("AccountId", accountId);
 
 > For more information, see the [baggage specification][].
 
-[baggage specification]: /docs/reference/specification/overview/#baggage-signal
+[baggage specification]: /docs/specs/otel/overview/#baggage-signal

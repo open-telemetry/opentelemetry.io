@@ -4,7 +4,7 @@ description: Vendor-agnostic way to receive, process and export telemetry data.
 spelling: cSpell:ignore Otel
 aliases: [/docs/collector/about]
 cascade:
-  collectorVersion: 0.76.1
+  collectorVersion: 0.77.0
 weight: 10
 ---
 
@@ -66,6 +66,6 @@ progress of this effort, see `opentelemetry-collector-contrib` [issue #10116][].
 
 [issue #10116]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/10116
-[mixed]: /docs/reference/specification/document-status/#mixed
+[mixed]: /docs/specs/otel/document-status/#mixed
 [stability levels]:
   https://github.com/open-telemetry/opentelemetry-collector#stability-levels

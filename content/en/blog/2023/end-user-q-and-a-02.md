@@ -81,9 +81,9 @@ The ultimate goal was to get folks to understand OpenTelemetry and the long-term
 vision around observability. Most developers are familiar and comfortable with
 logs – they just want to be able to write a log and see what happens. So, Doug
 started by getting developers to add
-[OpenTelemetry (structured) logs](/docs/reference/specification/logs/) to all of
-the services across their various platforms. In order to leverage OTel logs,
-developers had to add the
+[OpenTelemetry (structured) logs](/docs/specs/otel/logs/) to all of the services
+across their various platforms. In order to leverage OTel logs, developers had
+to add the
 [OpenTelemetry language-specific SDKs](/docs/concepts/sdk-configuration/) into
 their code. Once they got past that initial hump and got the SDKs into their
 code, it then became easier for developers to add
@@ -110,8 +110,7 @@ processing for deploying to the cloud.
 
 ### OTel logs are relatively new. Why use something so new?
 
-As one of the
-[newer OpenTelemetry signals](/docs/reference/specification/logs/), there was a
+As one of the [newer OpenTelemetry signals](/docs/specs/otel/logs/), there was a
 lot of concern around the maturity of logs. There were also many concerns about
 whether OTel itself would go away, or whether logs would be eliminated from the
 spec. All of that unease was put to rest once the folks at Uplight began
@@ -198,7 +197,7 @@ Uplight currently has a few different Collector configurations:
 
 Doug’s ultimate goal is for any deployment in any environment to be able to
 easily send telemetry to an
-[OTel Collector gateway](/docs/collector/deployment/#gateway).
+[OTel Collector gateway](/docs/collector/deployment/gateway/).
 
 Collectors at Uplight are typically run and maintained by the infrastructure
 team, unless individual teams decide to take ownership of their own Collectors.

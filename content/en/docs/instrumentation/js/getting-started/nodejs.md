@@ -1,13 +1,15 @@
 ---
 title: Node.js
+description: Get telemetry for your app in less than 5 minutes!
 aliases: [/docs/js/getting_started/nodejs]
+spelling: cSpell:ignore rolldice autoinstrumentation autoinstrumentations KHTML
 weight: 2
 ---
 
 This page will show you how to get started with OpenTelemetry in Node.js.
 
 You will learn how you can instrument a simple application automatically, in
-such a way that traces, metrics and logs are emitted to the console.
+such a way that [traces][], [metrics][] and [logs][] are emitted to the console.
 
 ## Prerequisites
 
@@ -19,14 +21,20 @@ Ensure that you have the following installed locally:
 
 ## Example Application
 
-The following example uses a basic Express application.
+The following example uses a basic [Express](https://expressjs.com/)
+application. If you are not using Express, that's ok — you can use OpenTelemetry
+JavaScript with other web frameworks as well, such as Koa and Nest.JS. For a
+complete list of libraries for supported frameworks, see the
+[registry](/ecosystem/registry/?component=instrumentation&language=js).
+
+For more elaborate examples, see [examples](/docs/instrumentation/js/examples/).
 
 ### Dependencies
 
-First, create an empty package.json:
+To begin, set up an empty `package.json` in a new directory:
 
 ```shell
-npm init -f
+npm init -y
 ```
 
 Next, install Express dependencies.
@@ -49,9 +57,10 @@ npm install express
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
-### Code
+### Create and launch an HTTP Server
 
-Create `app.ts|js` and add the following code to the file:
+Create a file named `app.ts` (or `app.js` if not using typescript) and add the
+following code to it:
 
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
@@ -149,11 +158,10 @@ To find all autoinstrumentation modules, you can look at the
 
 The instrumentation setup and configuration must be run _before_ your
 application code. One tool commonly used for this task is the
-[`-r, --require module`](https://nodejs.org/api/cli.html#cli_r_require_module)
-flag.
+[--require](https://nodejs.org/api/cli.html#-r---require-module) flag.
 
-Create a file named `instrumentation.ts|js`, which will contain your
-instrumentation setup code.
+Create a file named `instrumentation.ts` (or `instrumentation.js` if not using
+typescript) , which will contain your instrumentation setup code.
 
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
@@ -201,7 +209,7 @@ sdk
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
-### Run Application
+## Run the instrumented app
 
 Now you can run your application as you normally would, but you can use the
 `--require` flag to load the instrumentation before the application code.
@@ -223,7 +231,7 @@ Listening for requests on http://localhost:8080
 <!-- prettier-ignore-end -->
 
 Open <http://localhost:8080/rolldice> in your web browser and reload the page a
-few times, after a while you should see the spans printed in the console by the
+few times. After a while you should see the spans printed in the console by the
 `ConsoleSpanExporter`.
 
 <details>
@@ -306,6 +314,19 @@ few times, after a while you should see the spans printed in the console by the
   "status": { "code": 1 },
   "events": []
 }
+```
+
+</details>
+
+The generated span tracks the lifetime of a request to the `/rolldice` route.
+
+Send a few more requests to the endpoint. After a moment, you'll see metrics in
+the console output, such as the following:
+
+<details>
+<summary>View example output</summary>
+
+```yaml
 {
   descriptor: {
     name: 'http.server.duration',
@@ -315,7 +336,94 @@ few times, after a while you should see the spans printed in the console by the
     valueType: 1
   },
   dataPointType: 0,
+  dataPoints: [
+    {
+      attributes: [Object],
+      startTime: [Array],
+      endTime: [Array],
+      value: [Object]
+    }
+  ]
+}
+{
+  descriptor: {
+    name: 'http.client.duration',
+    type: 'HISTOGRAM',
+    description: 'measures the duration of the outbound HTTP requests',
+    unit: 'ms',
+    valueType: 1
+  },
+  dataPointType: 0,
   dataPoints: []
+}
+{
+  descriptor: {
+    name: 'db.client.connections.usage',
+    type: 'UP_DOWN_COUNTER',
+    description: 'The number of connections that are currently in the state referenced by the attribute "state".',
+    unit: '{connections}',
+    valueType: 1
+  },
+  dataPointType: 3,
+  dataPoints: []
+}
+{
+  descriptor: {
+    name: 'http.server.duration',
+    type: 'HISTOGRAM',
+    description: 'measures the duration of the inbound HTTP requests',
+    unit: 'ms',
+    valueType: 1
+  },
+  dataPointType: 0,
+  dataPoints: [
+    {
+      attributes: [Object],
+      startTime: [Array],
+      endTime: [Array],
+      value: [Object]
+    }
+  ]
+}
+{
+  descriptor: {
+    name: 'http.client.duration',
+    type: 'HISTOGRAM',
+    description: 'measures the duration of the outbound HTTP requests',
+    unit: 'ms',
+    valueType: 1
+  },
+  dataPointType: 0,
+  dataPoints: []
+}
+{
+  descriptor: {
+    name: 'db.client.connections.usage',
+    type: 'UP_DOWN_COUNTER',
+    description: 'The number of connections that are currently in the state referenced by the attribute "state".',
+    unit: '{connections}',
+    valueType: 1
+  },
+  dataPointType: 3,
+  dataPoints: []
+}
+{
+  descriptor: {
+    name: 'http.server.duration',
+    type: 'HISTOGRAM',
+    description: 'measures the duration of the inbound HTTP requests',
+    unit: 'ms',
+    valueType: 1
+  },
+  dataPointType: 0,
+  dataPoints: [
+    {
+      attributes: [Object],
+      startTime: [Array],
+      endTime: [Array],
+      value: [Object]
+    }
+  ]
 }
 {
   descriptor: {
@@ -384,3 +492,7 @@ diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
 
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+
+[traces]: /docs/concepts/signals/traces/
+[metrics]: /docs/concepts/signals/metrics/
+[logs]: /docs/concepts/signals/logs/

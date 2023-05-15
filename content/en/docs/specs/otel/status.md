@@ -18,7 +18,7 @@ Each signal consists of four [core components](/docs/concepts/components/):
 
 - APIs
 - SDKs
-- [OpenTelemetry Protocol](/docs/reference/specification/protocol/) (OTLP)
+- [OpenTelemetry Protocol](/docs/specs/otel/protocol/) (OTLP)
 - [Collector](/docs/collector/)
 
 Signals also have contrib components, an ecosystem of plugins and
@@ -27,7 +27,7 @@ ensure that they produce the same data when observing common operations, such as
 HTTP requests.
 
 To learn more about signals and components, see the specification
-[Overview]({{< relref "/docs/reference/specification/overview" >}}).
+[Overview](/docs/specs/otel/overview/).
 
 ## Component Lifecycle
 
@@ -41,9 +41,8 @@ Deprecated, Removed.
   support.
 - **Deprecated** components are stable but may eventually be removed.
 
-For complete definitions of lifecycles and long term support, see [Versioning
-and
-stability]({{< relref "/docs/reference/specification/versioning-and-stability" >}}).
+For complete definitions of lifecycles and long term support, see
+[Versioning and stability](/docs/specs/otel/versioning-and-stability/).
 
 ## Current Status
 
@@ -117,10 +116,9 @@ same as the **Protocol** status.
     the Event API is intended to be called by end users. The Event API is under
     active development.
 
-[baggage]: /docs/reference/specification/baggage/
-[event semantic conventions]:
-  /docs/reference/specification/logs/semantic_conventions/events/
-[logging]: /docs/reference/specification/logs/
-[logs data model]: /docs/reference/specification/logs/data-model/
-[metrics]: /docs/reference/specification/metrics/
-[tracing]: /docs/reference/specification/trace/
+[baggage]: /docs/specs/otel/baggage/
+[event semantic conventions]: /docs/specs/otel/logs/semantic_conventions/events/
+[logging]: /docs/specs/otel/logs/
+[logs data model]: /docs/specs/otel/logs/data-model/
+[metrics]: /docs/specs/otel/metrics/
+[tracing]: /docs/specs/otel/trace/

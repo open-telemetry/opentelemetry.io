@@ -2,6 +2,7 @@
 title: Migrating from OpenTracing
 linkTitle: OpenTracing
 spelling: cSpell:ignore codebases opentracing
+weight: 2
 ---
 
 Backward compatibility with [OpenTracing][] has been a priority for the
@@ -186,7 +187,7 @@ shim, see [OpenTracing Compatibility][ot_spec].
   https://github.com/open-telemetry/opentelemetry-java/tree/main/opentracing-shim
 [javascript]: https://www.npmjs.com/package/@opentelemetry/shim-opentracing
 [opentracing]: https://opentracing.io
-[ot_spec]: /docs/reference/specification/compatibility/opentracing/
+[ot_spec]: /docs/specs/otel/compatibility/opentracing/
 [python]:
   https://opentelemetry-python.readthedocs.io/en/stable/shim/opentracing_shim/opentracing_shim.html
 [c++]:

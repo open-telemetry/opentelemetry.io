@@ -1,0 +1,17 @@
+title: jmoiron/sqlx instrumentation
+registryType: instrumentation
+isThirdParty: true
+language: go
+tags:
+  - go
+  - instrumentation
+  - database
+  - sql
+  - sqlx
+repo: https://github.com/uptrace/opentelemetry-go-extra/tree/main/otelsqlx
+license: BSD-2-Clause
+description:
+  Instrumentation for jmoiron/sqlx that records sqlx queries and reports DBStats
+  metrics.
+authors: Vladimir Mihailenco
+otVersion: v1.0.0

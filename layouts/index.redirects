@@ -22,6 +22,9 @@
 {{ end -}}
 {{ end -}}
 
+/docs/reference/specification    /docs/specs/otel
+/docs/reference/specification/*  /docs/specs/otel/:splat
+
 {{/*
   Social-media image redirects. As mentioned in
   https://developers.facebook.com/docs/sharing/webmasters/images, we need to
