@@ -61,6 +61,93 @@ desired configuration property:
 For example, `exporter_otlp_endpoint` would convert to
 `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT`.
 
+## Python-specific Configuration
+
+There are some python specific configuration options you can set by prefixing
+environment variables with `OTEL_PYTHON_`.
+
+### Excluded URLs
+
+Comma-separated regexes representing which URLs to exclude across all
+instrumentations:
+
+- `OTEL_PYTHON_EXCLUDED_URLS`
+
+You can also exclude URLs for specific instrumentations by using a variable
+`OTEL_PYTHON_<library>_EXCLUDED_URLS`, where library is the uppercase version of
+one of the following: Django, Falcon, FastAPI, Flask, Pyramid, Requests,
+Starlette, Tornado, urllib, urllib3.
+
+Examples:
+
+```sh
+export OTEL_PYTHON_EXCLUDED_URLS="client/.*/info,healthcheck"
+export OTEL_PYTHON_URLLIB3_EXCLUDED_URLS="client/.*/info"
+export OTEL_PYTHON_REQUESTS_EXCLUDED_URLS="healthcheck"
+```
+
+### Request Attribute Names
+
+Comma-separated list of names that will be extracted from the request object and
+set as attributes on spans.
+
+- `OTEL_PYTHON_DJANGO_TRACED_REQUEST_ATTRS`
+- `OTEL_PYTHON_FALCON_TRACED_REQUEST_ATTRS`
+- `OTEL_PYTHON_TORNADO_TRACED_REQUEST_ATTRS`
+
+Examples:
+
+```sh
+export OTEL_PYTHON_DJANGO_TRACED_REQUEST_ATTRS='path_info,content_type'
+export OTEL_PYTHON_FALCON_TRACED_REQUEST_ATTRS='query_string,uri_template'
+export OTEL_PYTHON_TORNADO_TRACED_REQUEST_ATTRS='uri,query'
+```
+
+### Logging
+
+There are some configuration options used to control the logs that are
+outputted.
+
+- `OTEL_PYTHON_LOG_CORRELATION`: to enable trace context injection into logs
+  (true, false)
+- `OTEL_PYTHON_LOG_FORMAT`: to instruct the instrumentation to use a custom
+  logging format
+- `OTEL_PYTHON_LOG_LEVEL`: to set a custom log level (info, error, debug,
+  warning)
+
+Examples:
+
+```sh
+export OTEL_PYTHON_LOG_CORRELATION=true
+export OTEL_PYTHON_LOG_FORMAT="%(msg)s [span_id=%(span_id)s]"
+export OTEL_PYTHON_LOG_LEVEL=debug
+```
+
+### Other
+
+There are some more configuration options that can be set that don't fall into a
+specific category.
+
+- `OTEL_PYTHON_DJANGO_INSTRUMENT`: set to `false` to disable the default enabled
+  state for the Django instrumentation
+- `OTEL_PYTHON_ELASTICSEARCH_NAME_PREFIX`: changes the default prefixes for
+  Elasticsearch operation names from "Elasticsearch" to whatever is used here
+- `OTEL_PYTHON_GRPC_EXCLUDED_SERVICES`: comma-separated list of specific
+  services to exclude for the gRPC instrumentation
+- `OTEL_PYTHON_ID_GENERATOR`: to specify which IDs generator to use for the
+  global Tracer Provider
+- `OTEL_PYTHON_INSTRUMENTATION_SANITIZE_REDIS`: to enable query sanitization
+
+Examples:
+
+```sh
+export OTEL_PYTHON_DJANGO_INSTRUMENT=false
+export OTEL_PYTHON_ELASTICSEARCH_NAME_PREFIX=my-custom-prefix
+export OTEL_PYTHON_GRPC_EXCLUDED_SERVICES="GRPCTestServer,GRPCHealthServer"
+export OTEL_PYTHON_ID_GENERATOR=xray
+export OTEL_PYTHON_INSTRUMENTATION_SANITIZE_REDIS=true
+```
+
 ## Disabling Specific Instrumentations
 
 The Python agent by default will detect a python program's packages and
