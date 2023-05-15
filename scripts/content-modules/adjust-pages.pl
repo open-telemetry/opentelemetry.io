@@ -112,8 +112,9 @@ while(<>) {
 
   s|\bREADME.md\b|_index.md|g;
 
-  # Rewrite paths into experimental directory as external links
-  s|(\.\.\/)+(experimental\/[^)]+)|https://github.com/open-telemetry/opentelemetry-specification/tree/main/$1|g;
+  # Rewrite paths that are outside of the main spec folder as external links
+  s|(\.\.\/)+(experimental\/[^)]+)|$otelSpecRepoUrl/tree/$otelSpecVers/$2|g;
+  s|(\.\.\/)+(supplementary-guidelines\/compatibility\/[^)]+)|$otelSpecRepoUrl/tree/$otelSpecVers/$2|g;
 
   # Rewrite inline links
   s|\]\(([^:\)]*?\.md(#.*?)?)\)|]({{% relref "$1" %}})|g;
