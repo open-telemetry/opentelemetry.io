@@ -2,10 +2,9 @@
 title: Exponential Histograms
 date: 2023-05-22
 author: '[Daniel Dyla](https://github.com/dyladan)'
+spelling: cSpell:ignore Dyla quantiles subsetting Ruslan Vovalov Ganesh Vernekar
+canonical_url: https://dyladan.me/histograms/2023/05/04/exponential-histograms/
 ---
-
-<i>Originally posted to
-https://dyladan.me/histograms/2023/05/04/exponential-histograms/</i>
 
 In the previous two posts, I have gone over the basics of histograms and
 summaries and the tradeoffs, benefits, and limitations of each of them. Because
@@ -180,10 +179,13 @@ discarded.
 # OpenTelemetry and Prometheus
 
 Compatibility between OpenTelemetry and Prometheus is probably a topic large
-enough for its own post, and I may write that post, but for now it is enough to
-state that for all practical purposes, OpenTelemetry exponential histograms are
-1:1 compatible with Prometheus native histograms. Scale calculations, bucket
-boundaries, error rates, zero buckets, etc are all the same. For more
-information, I recommend you watch this talk given by Ruslan Vovalov and Ganesh
-Vernekar:
+enough for its own post. For now I will just say that for all practical
+purposes, OpenTelemetry exponential histograms are 1:1 compatible with
+Prometheus native histograms. Scale calculations, bucket boundaries, error
+rates, zero buckets, etc are all the same. For more information, I recommend you
+watch this talk given by Ruslan Vovalov and Ganesh Vernekar:
 [Using OpenTelemetry’s Exponential Histograms in Prometheus](https://www.youtube.com/watch?v=W2_TpDcess8)
+
+_A version of this article was [originally posted][] to the author's blog._
+
+[originally posted]: {{% param canonical_url %}}
