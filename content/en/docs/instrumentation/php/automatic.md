@@ -120,7 +120,7 @@ OpenTelemetry\API\Common\Instrumentation\Globals::registerInitializer(function (
     $spanProcessor = new BatchSpanProcessor(/*params*/);
     $tracerProvider = (new TracerProviderBuilder())
         ->addSpanProcessor($spanProcessor)
-        ->setSampler(new ParentBased(new AlwaysOnSampler());)
+        ->setSampler(new ParentBased(new AlwaysOnSampler()))
         ->build();
 
     ShutdownHandler::register([$tracerProvider, 'shutdown']);
