@@ -314,7 +314,7 @@ environment variable `OTEL_INSTRUMENTATION_[NAME]_ENABLED`) where `name`
 | Java JDBC `DataSource`                           | `jdbc-datasource`                           |
 | Java RMI                                         | `rmi`                                       |
 | Java Servlet                                     | `servlet`                                   |
-| java.util.concurrent                             | `executor`                                  |
+| java.util.concurrent                             | `executors`                                  |
 | java.util.logging                                | `java-util-logging`                         |
 | JAX-RS (Client)                                  | `jaxrs-client`                              |
 | JAX-RS (Server)                                  | `jaxrs`                                     |
