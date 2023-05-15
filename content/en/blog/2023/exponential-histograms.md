@@ -182,8 +182,11 @@ purposes, OpenTelemetry exponential histograms are 1:1 compatible with
 Prometheus native histograms. Scale calculations, bucket boundaries, error
 rates, zero buckets, etc are all the same. For more information, I recommend you
 watch this talk given by Ruslan Vovalov and Ganesh Vernekar:
-[Using OpenTelemetry’s Exponential Histograms in Prometheus](https://www.youtube.com/watch?v=W2_TpDcess8)
+[Using OpenTelemetry’s Exponential Histograms in Prometheus][]
 
 _A version of this article was [originally posted][] to the author's blog._
 
 [originally posted]: {{% param canonical_url %}}
+[Why Histograms?]: ./why-histograms
+[Histograms vs Summaries]: ./histograms-vs-summaries
+[Using OpenTelemetry’s Exponential Histograms in Prometheus]: https://www.youtube.com/watch?v=W2_TpDcess8
