@@ -6,14 +6,14 @@ spelling: cSpell:ignore Dyla quantiles subsetting Ruslan Vovalov Ganesh Vernekar
 canonical_url: https://dyladan.me/histograms/2023/05/04/exponential-histograms/
 ---
 
-In the previous two posts, I have gone over the basics of histograms and
-summaries and the tradeoffs, benefits, and limitations of each of them. Because
-they're easy to understand and demonstrate, those posts focused on so-called
-explicit bucket histograms. The exponential bucket histogram, also referred to
-as native histogram in Prometheus, is a low-cost, efficient alternative to
-explicit bucket histograms. In this post, I will go through what they are, how
-they work, and the problems they solve that explicit bucket histograms struggle
-with.
+Previously, in _"[Why Histograms?][]"_ and _"[Histograms vs Summaries][]"_, I
+have gone over the basics of histograms and summaries and the tradeoffs,
+benefits, and limitations of each of them. Because they're easy to understand
+and demonstrate, those posts focused on so-called explicit bucket histograms.
+The exponential bucket histogram, also referred to as native histogram in
+Prometheus, is a low-cost, efficient alternative to explicit bucket histograms.
+In this post, I will go through what they are, how they work, and the problems
+they solve that explicit bucket histograms struggle with.
 
 # Types of histograms
 
@@ -35,9 +35,7 @@ buckets and greater precision. It is important to select a scale factor that is
 appropriate for the scale of values you are collecting in order to minimize
 error, maximize efficiency, and ensure the values being collected fit in a
 reasonable number of buckets. In the next few sections, I'll go over the scale
-and error calculations in detail, show you how to select a scale factor, then
-provide some examples of reasonable scale factors for a few different
-applications.
+and error calculations in detail.
 
 # Scale factor
 
