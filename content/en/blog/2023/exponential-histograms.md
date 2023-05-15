@@ -6,14 +6,14 @@ spelling: cSpell:ignore Dyla quantiles subsetting Ruslan Vovalov Ganesh Vernekar
 canonical_url: https://dyladan.me/histograms/2023/05/04/exponential-histograms/
 ---
 
-Previously, in _"[Why Histograms?][]"_ and _"[Histograms vs Summaries][]"_, I
-have gone over the basics of histograms and summaries and the tradeoffs,
-benefits, and limitations of each of them. Because they're easy to understand
-and demonstrate, those posts focused on so-called explicit bucket histograms.
-The exponential bucket histogram, also referred to as native histogram in
-Prometheus, is a low-cost, efficient alternative to explicit bucket histograms.
-In this post, I will go through what they are, how they work, and the problems
-they solve that explicit bucket histograms struggle with.
+Previously, in [Why Histograms?][] and [Histograms vs Summaries][], I have gone
+over the basics of histograms and summaries and the tradeoffs, benefits, and
+limitations of each of them. Because they're easy to understand and demonstrate,
+those posts focused on so-called explicit bucket histograms. The exponential
+bucket histogram, also referred to as native histogram in Prometheus, is a
+low-cost, efficient alternative to explicit bucket histograms. In this post, I
+will go through what they are, how they work, and the problems they solve that
+explicit bucket histograms struggle with.
 
 # Types of histograms
 
