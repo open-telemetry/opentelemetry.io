@@ -13,9 +13,9 @@ monitor Amazon Web Services (AWS) Lambdas.
 ### A Slightly New World
 
 If you've been monitoring Lambdas using OTel for a while now you may be slightly
-confused by this announcement. You might say something like OTel has had a [repo
-for Lambda layers](https://github.com/open-telemetry/opentelemetry-lambda) and
-they've been available on AWS for years.
+confused by this announcement. You might say something like OTel has had a
+[repo for Lambda layers](https://github.com/open-telemetry/opentelemetry-lambda)
+and they've been available on AWS for years.
 
 Which is totally correct. Thankfully, we're not remaking the wheel here.
 However, there are a couple new updates.
@@ -42,7 +42,7 @@ on adding similar documentation + (potentially) auto-instrumentation for other
 Cloud vendors like Azure and GCP, enhancing the existing Lambda assets, and
 improving OpenTelemetry performance for Function specific scenarios.
 
-If you'd like to help move this work forward, join a [SIG
-meeting](https://github.com/open-telemetry/community#implementation-sigs) (every
-Tuesday at 12 pm PST) or join our [Slack
-channel](https://cloud-native.slack.com/archives/C04HVBETC9Z).
+If you'd like to help move this work forward, join a
+[SIG meeting](https://github.com/open-telemetry/community#implementation-sigs)
+(every Tuesday at 12 pm PST) or join our
+[Slack channel](https://cloud-native.slack.com/archives/C04HVBETC9Z).
