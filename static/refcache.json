@@ -1083,6 +1083,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-05-08T11:16:20.874689-04:00"
   },
+  "https://dyladan.me/histograms/2023/05/04/exponential-histograms/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-15T09:51:40.56436-04:00"
+  },
   "https://ebpf.io/": {
     "StatusCode": 206,
     "LastSeen": "2023-03-15T09:16:58.309342+01:00"
