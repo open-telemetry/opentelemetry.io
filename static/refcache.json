@@ -923,6 +923,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-15T21:12:25.207145-05:00"
   },
+  "https://docs.observeinc.com/en/latest/content/integrations/otel/opentelemetry.html": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-15T13:36:54.19368-07:00"
+  },
   "https://docs.openfaas.com/architecture/metrics/": {
     "StatusCode": 206,
     "LastSeen": "2023-02-15T21:06:30.02865-05:00"
