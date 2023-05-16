@@ -4,7 +4,7 @@ linkTitle: Automatic
 weight: 30
 ---
 
-Automatic instrumentation provides a way to instrument any NodeJS application
+Automatic instrumentation provides a way to instrument any Node.js application
 and capture telemetry data from many popular libraries and frameworks without
 any code changes.
 
