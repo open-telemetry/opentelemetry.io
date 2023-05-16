@@ -6,16 +6,16 @@ spelling: cSpell:ignore Dyla quantiles subsetting Ruslan Vovalov Ganesh Vernekar
 canonical_url: https://dyladan.me/histograms/2023/05/04/exponential-histograms/
 ---
 
-Previously, in [Why Histograms?][] and [Histograms vs Summaries][], I have gone
-over the basics of histograms and summaries and the tradeoffs, benefits, and
-limitations of each of them. Because they're easy to understand and demonstrate,
+Previously, in [Why Histograms?][] and [Histograms vs Summaries][], I went
+over the basics of histograms and summaries, explaining the tradeoffs, benefits, and
+limitations of each. Because they're easy to understand and demonstrate,
 those posts focused on so-called explicit bucket histograms. The exponential
 bucket histogram, also referred to as native histogram in Prometheus, is a
 low-cost, efficient alternative to explicit bucket histograms. In this post, I
-will go through what they are, how they work, and the problems they solve that
+go through what they are, how they work, and the problems they solve that
 explicit bucket histograms struggle with.
 
-# Types of histograms
+## Types of histograms
 
 For the purposes of this blog post, there are two major types of histograms:
 explicit bucket histograms and exponential bucket histograms. In previous posts,
@@ -118,7 +118,7 @@ to make the math easy. An example is shown below using a scale of 3.
 
 ```
 scale = 3
-# see above for base calculation
+# For base calculation, see above
 base  = 1.090508
 
 relative error = (bucketWidth / 2) / bucketMidpoint
