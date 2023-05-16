@@ -49,7 +49,7 @@ J also shared:
 J’s company has a diverse tech ecosystem, ranging from on-premise old-school
 mainframes, to AWS Cloud and Azure Cloud, where they run both Windows and Linux
 servers. They also use a number of different languages, including
-[Node.JS](https://nodejs.org/en/), [.NET](https://dotnet.microsoft.com/en-us/),
+[Node.js](https://nodejs.org/en/), [.NET](https://dotnet.microsoft.com/en-us/),
 [Java](https://www.java.com/en/), C, C++, and
 [PL/I](https://en.wikipedia.org/wiki/PL/I) (mainframe).
 
@@ -66,7 +66,7 @@ was to use a standard, vendor-neutral way to emit telemetry: OpenTelemetry.
 Another reason that his team took to using OpenTelemetry was
 [GraphQL](https://graphql.org), which they had been using for four years.
 GraphQL
-[is an open-source language used to query and manipulate APIs](https://en.wikipedia.org/wiki/GraphQL).
+[is an open source language used to query and manipulate APIs](https://en.wikipedia.org/wiki/GraphQL).
 With GraphQL, everything is held in the body of data: request, response and
 errors, and as a result everything returns an
 [HTTP status of 200](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/200),
@@ -77,7 +77,7 @@ They pass a lot of data into a GraphQL response, because they have a main
 gateway that brings all of the different GraphQL endpoints into a single one, so
 it all looks like one massive query. OpenTelemetry exposed massive amounts of
 data from their GraphQL systems–with traces as large as **three to four
-thousand** spans! Instrumentation has been done around Node.JS GraphQL systems,
+thousand** spans! Instrumentation has been done around Node.js GraphQL systems,
 and instrumentation has also started for their .NET GraphQL systems.
 
 Another black box that they are still facing is around AWS, and they are looking
@@ -96,7 +96,7 @@ manage deployments. The GitLab custom pipelines deploy Kubernetes YAML files
 The team is currently in the early stages of planning to use Amazon’s
 [cdk8s](https://aws.amazon.com/about-aws/whats-new/2021/10/cdk-kubernetes-cdk8s-available/)
 to deploy to Kubernetes, and Flagger to manage those deployments (including
-[Canary deploymentss](https://martinfowler.com/bliki/CanaryRelease.html)).
+[Canary deployments](https://martinfowler.com/bliki/CanaryRelease.html)).
 
 ### How are queries built in GraphQL?
 
@@ -117,9 +117,9 @@ analysis.
 ### How do you generate traces?
 
 To instrument their code, they configure the
-[Node.JS SDK](/docs/instrumentation/js/getting-started/nodejs/) and use a number
+[Node.js SDK](/docs/instrumentation/js/getting-started/nodejs/) and use a number
 of
-[Node.JS auto-instrumentation plug-ins](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node).
+[Node.js auto-instrumentation plug-ins](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node).
 While the team is currently only using
 [auto-instrumentation](/docs/specs/otel/glossary/#automatic-instrumentation) to
 generate traces and [spans](/docs/concepts/observability-primer/#spans), they do
@@ -138,7 +138,7 @@ is installed on all of their nodes.
 
 ### Besides traces, do you use other signals?
 
-The team has implemented a custom Node.JS plugin for getting certain
+The team has implemented a custom Node.js plugin for getting certain
 [metrics](/docs/concepts/signals/metrics/) data about GraphQL, such as
 deprecated field usage and overall query usage, which is something that they
 can’t get from their traces. These metrics are being sent to the observability
@@ -164,7 +164,7 @@ logs to their observability back-end. The ultimate goal is to have
 [traces](/docs/concepts/signals/traces/) under one roof.
 
 They have currently been able to automatically link traces to logs in ELK using
-[Node.JS Bunyan](https://nodejs.org/en/blog/module/service-logging-in-json-with-bunyan/).
+[Node.js Bunyan](https://nodejs.org/en/blog/module/service-logging-in-json-with-bunyan/).
 They are hoping to leverage
 [OpenTelemetry’s Exemplars](/docs/specs/otel/metrics/data-model/#exemplars) to
 link traces and metrics.
@@ -215,13 +215,13 @@ organization.
 ### Are you seeing the benefits of using OpenTelemetry with GraphQL in your production environments?
 
 Using the
-[GraphQL OpenTelemetry plugin-for Node.JS](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-graphql)
+[GraphQL OpenTelemetry plugin-for Node.js](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-graphql)
 made it super easy to identify an issue with a GraphQL resolver that was acting
 up in production.
 
 ### Were the outputs produced by the instrumentation libraries that you used meaningful to you, or did you have to make any adjustments?
 
-On the Node.JS side, the team used auto-instrumentation for
+On the Node.js side, the team used auto-instrumentation for
 [HTTP](https://www.npmjs.com/package/@opentelemetry/instrumentation-http),
 [Express](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-express),
 [GraphQL](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-graphql),
@@ -277,19 +277,19 @@ There is also a huge focus on
 and as part of that effort, maintainers plan to go through the existing
 instrumentation packages and to make sure that they’re all up to date with the
 latest conventions. While it’s very well-maintained for certain languages, such
-as Java, that is not the case for other languages, such as Node.JS.
+as Java, that is not the case for other languages, such as Node.js.
 
 JavaScript environments are akin to the Wild West of Development due to:
 
 - Multiple facets: web side vs server side
 - Multiple languages: JavaScript, TypeScript, Elm
-- Two similar, but different server-side runtimes: Node.JS and
+- Two similar, but different server-side runtimes: Node.js and
   [Deno](https://deno.land)
 
 One of J’s suggestions is to treat OTel Javascript as a hierarchy, which starts
 with a Core JavaScript team that splits into two subgroups: front-end web group,
 and back-end group. Front-end and back-end would in turn split. For example, for
-the back-end, have a separate Deno and Node.JS group.
+the back-end, have a separate Deno and Node.js group.
 
 Another suggestion is to have a contrib maintainers group, separate from core
 SDK and API maintainers group.
@@ -309,7 +309,7 @@ contributors.
 J and his team have also experienced some challenges with documentation, noting
 that there are some gaps in the online docs:
 
-- Under metrics for JavaScript, there is no mention of the Observable Guage at
+- Under metrics for JavaScript, there is no mention of the Observable Gauge at
   all. J had to go into the code to find it.
 - There are some short, very high-level metric API examples. Those examples
   currently don't show which libraries you need to bring in. It also doesn't
