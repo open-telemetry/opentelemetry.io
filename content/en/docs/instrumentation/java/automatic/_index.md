@@ -4,7 +4,7 @@ linkTitle: Automatic
 aliases:
   - /docs/java/automatic_instrumentation
   - /docs/instrumentation/java/automatic_instrumentation
-spelling: cSpell:ignore javaagent myapp zipkin Dotel
+spelling: cSpell:ignore javaagent myapp Dotel
 weight: 3
 ---
 
@@ -22,24 +22,28 @@ service or app code, see [Manual instrumentation](../manual).
     preferred directory. The JAR file contains the agent and instrumentation
     libraries.
 2.  Add `-javaagent:path/to/opentelemetry-javaagent.jar` and other config to
-    your JVM's startup arguments and launch your app:
+    your JVMs startup arguments and launch your app:
+
     - Directly on the startup command:
-    ```shell
-    java -javaagent:path/to/opentelemetry-javaagent.jar -Dotel.service.name=your-service-name -jar myapp.jar
-    ```
+
+      ```shell
+      java -javaagent:path/to/opentelemetry-javaagent.jar -Dotel.service.name=your-service-name -jar myapp.jar
+      ```
+
     - Via the `JAVA_TOOL_OPTIONS` and other environment variables:
-    ```shell
-    export JAVA_TOOL_OPTIONS="-javaagent:path/to/opentelemetry-javaagent.jar"
-    export OTEL_SERVICE_NAME="your-service-name"
-    java -jar myapp.jar
-    ```
+
+      ```shell
+      export JAVA_TOOL_OPTIONS="-javaagent:path/to/opentelemetry-javaagent.jar"
+      export OTEL_SERVICE_NAME="your-service-name"
+      java -jar myapp.jar
+      ```
 
 ## Configuring the agent
 
 The agent is highly configurable.
 
 One option is to pass configuration properties via the `-D` flag. In this
-example, a service name and zipkin exporter for traces are configured:
+example, a service name and Zipkin exporter for traces are configured:
 
 ```sh
 java -javaagent:path/to/opentelemetry-javaagent.jar \
