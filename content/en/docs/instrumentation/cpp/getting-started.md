@@ -1,9 +1,8 @@
 ---
 title: Getting Started
 weight: 2
-spelling:
-  cSpell:ignore Bazel libcurl openssl xcode DBUILD DWITH helloworld tracestate
-  cSpell:ignore traceparent devel
+spelling: cSpell:ignore Bazel libcurl openssl xcode DBUILD DWITH helloworld tracestate
+spelling: cSpell:ignore traceparent devel
 ---
 
 Welcome to the OpenTelemetry C++ getting started guide! This guide will walk you
