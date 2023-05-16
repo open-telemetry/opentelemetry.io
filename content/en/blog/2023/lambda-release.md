@@ -20,12 +20,11 @@ and they've been available on AWS for years.
 Which is totally correct. Thankfully, we're not remaking the wheel here.
 However, there are a couple new updates.
 
-Previously the OTel Lambda layers were only released as part of the 
-[Amazon Distribution of OTel (ADOT)](https://aws-otel.github.io/)
-and the community had limited control over releases,
-the layers available on AWS combined the Collector and auto-instrumentation
-capabilities into 1 package, and there wasn't official OTel guidance on how to
-monitor Lambdas.
+Previously the OTel Lambda layers were only released as part of the
+[Amazon Distribution of OTel (ADOT)](https://aws-otel.github.io/) and the
+community had limited control over releases, the layers available on AWS
+combined the Collector and auto-instrumentation capabilities into 1 package, and
+there wasn't official OTel guidance on how to monitor Lambdas.
 
 The FAAS SIG has written new Github Actions to release the Lambda layers
 ourselves and empower the community to make our own release decisions, separated
