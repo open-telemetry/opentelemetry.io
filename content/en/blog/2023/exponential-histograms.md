@@ -27,7 +27,7 @@ boundaries using an exponential growth function. This means each consecutive
 bucket is larger than the previous bucket and ensures a constant relative error
 for every bucket.
 
-# Exponential histograms
+## Exponential histograms
 
 In OpenTelemetry exponential histograms, buckets are calculated automatically
 from an integer _scale factor_, with larger scale factors offering smaller
@@ -37,7 +37,7 @@ error, maximize efficiency, and ensure the values being collected fit in a
 reasonable number of buckets. In the next few sections, I'll go over the scale
 and error calculations in detail.
 
-# Scale factor
+## Scale factor
 
 The most important and most fundamental part of an exponential histogram is also
 one of the trickiest to understand, the scale factor. From the scale factor,
@@ -51,7 +51,7 @@ negative scale, as the scale grows, the base shrinks and vice versa. As will be
 shown later, this is the fundamental reason that a greater scale factor results
 in smaller buckets and a higher resolution histogram.
 
-# Bucket calculation
+## Bucket calculation
 
 Given a scale factor and its resulting base, we can calculate every possible
 bucket in the histogram. From the base, the upper bound of each bucket at index
@@ -81,7 +81,7 @@ and 1. Keeping with our example using a scale of 3 and resulting base of
 I've bolded some of the values here to show an important property of exponential
 histograms called _perfect subsetting_.
 
-# Perfect subsetting
+## Perfect subsetting
 
 In the chart above, some of the bucket boundaries are shared between histograms
 with differing scale factors. In fact, each time the scale factor increases by
@@ -100,7 +100,7 @@ pair of neighboring buckets in _A_ to form histogram _A'_ with scale 2. Then,
 each bucket in _A'_ is summed with the corresponding bucket of the same index in
 _B_ to make _C_.
 
-# Error rate
+## Error rate
 
 The error rate of a histogram is defined as the average relative error when
 estimating the value of a particular-ranked data point. This is important
@@ -129,7 +129,7 @@ relative error = (bucketWidth / 2) / bucketMidpoint
                = 4.329%
 ```
 
-# Choosing a scale
+## Choosing a scale
 
 Because increasing the scale factor increases the resolution and decreases the
 relative error, it may be tempting to choose a large scale factor. After all,
@@ -161,7 +161,7 @@ the OpenTelemetry authors to be able to cover typical web requests between 1ms
 and 10s with less than 5% relative error. If your data has less contrast, your
 error will be even less.
 
-# Negative or zero values
+## Negative or zero values
 
 For the bulk of this post we have ignored zero and negative values, but negative
 buckets work much the same way, growing larger as the buckets get further from
@@ -174,7 +174,7 @@ thresholds, the larger threshold is taken and any buckets with absolute value
 upper bounds within the zero threshold are added to the zero bucket and
 discarded.
 
-# OpenTelemetry and Prometheus
+## OpenTelemetry and Prometheus
 
 Compatibility between OpenTelemetry and Prometheus is probably a topic large
 enough for its own post. For now I will just say that for all practical
