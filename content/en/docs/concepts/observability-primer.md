@@ -2,7 +2,7 @@
 title: Observability Primer
 description: Core observability concepts.
 weight: 9
-cSpell:ignore KHTML
+spelling: cSpell:ignore KHTML
 ---
 
 ## What is Observability?
