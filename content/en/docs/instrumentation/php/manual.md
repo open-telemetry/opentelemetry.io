@@ -10,7 +10,6 @@ on the OpenTelemetry SDK. The SDK configuration must be provided by
 **Applications** which should also depend on the `opentelemetry-sdk` package, or
 any other implementation of the OpenTelemetry API. This way, libraries will
 obtain a real implementation only if the user application is configured for it.
-For more details, check out the [Library Guidelines].
 
 ## Setup
 
@@ -90,10 +89,11 @@ To do [Tracing](/docs/concepts/signals/traces/) you'll need to acquire a
 
 First, a `Tracer` must be acquired, which is responsible for creating spans and
 interacting with the [Context](../propagation/). A tracer is acquired by using
-the OpenTelemetry API specifying the name and version of the [library
-instrumenting][instrumentation library] the [instrumented library] or
-application to be monitored. More information is available in the specification
-chapter [Obtaining a Tracer].
+the OpenTelemetry API specifying the name and version of the
+[library instrumenting](/docs/concepts/instrumenting-library/) the instrumented
+library or application to be monitored. More information is available in the
+specification chapter
+[Obtaining a Tracer](/docs/specs/otel/trace/api/#tracerprovider).
 
 ```php
 $tracer = Globals::tracerProvider()->getTracer('instrumentation-library-name', '1.0.0');
@@ -258,17 +258,14 @@ traces can be sampled.
 
 The OpenTelemetry SDK offers four samplers out of the box:
 
-- [AlwaysOnSampler] which samples every trace regardless of upstream sampling
+- `AlwaysOnSampler` which samples every trace regardless of upstream sampling
   decisions.
-- [AlwaysOffSampler] which doesn't sample any trace, regardless of upstream
+- `AlwaysOffSampler` which doesn't sample any trace, regardless of upstream
   sampling decisions.
-- [ParentBased] which uses the parent span to make sampling decisions, if
+- `ParentBased` which uses the parent span to make sampling decisions, if
   present.
-- [TraceIdRatioBased] which samples a configurable percentage of traces, and
+- `TraceIdRatioBased` which samples a configurable percentage of traces, and
   additionally samples any trace that was sampled upstream.
-
-Additional samplers can be provided by implementing
-`OpenTelemetry\SDK\Trace\SamplerInterrace`.
 
 ```php
 $tracerProvider = TracerProvider::builder()
@@ -279,6 +276,10 @@ $tracerProvider = TracerProvider::builder()
   ->setSampler(new TraceIdRatioBasedSampler(0.5))
   ->build();
 ```
+
+Additional samplers can be provided by implementing
+`OpenTelemetry\SDK\Trace\SamplerInterface`. An example of doing so would be to
+make sampling decisions based on attributes set at span creation time.
 
 #### Span Processor
 
@@ -312,8 +313,8 @@ sending the telemetry data to a particular backend:
   via the Zipkin APIs.
 - Logging Exporter: saves the telemetry data into log streams.
 - OpenTelemetry Protocol Exporter: sends the data in OTLP format to the
-  [OpenTelemetry Collector] or other OTLP receivers. The underlying `Transport`
-  can send:
+  [OpenTelemetry Collector](/docs/collector/) or other OTLP receivers. The
+  underlying `Transport` can send:
   - protobuf over http
   - protobuf over grpc
   - json over http
@@ -328,6 +329,9 @@ exporting data:
 $logger = new Psr3Logger(LogLevel::INFO);
 LoggerHolder::set($logger);
 ```
+
+If no PSR-3 logger is provided, error messages will instead be recorded via
+`trigger_error` (at a level no higher than `E_USER_WARNING`).
 
 For more fine-grained control and special case handling, custom handlers and
 filters can be applied to the logger (if the logger offers this ability).
