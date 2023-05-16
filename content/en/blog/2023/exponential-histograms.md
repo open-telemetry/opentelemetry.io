@@ -186,11 +186,11 @@ OpenTelemetry’s Exponential Histograms in Prometheus][]
 
 _A version of this article was [originally posted][] to the author's blog._
 
-[originally posted]: {{% param canonical_url %}}
-
+<!-- prettier-ignore-start -->
 [Why Histograms?]: {{% relref "why-histograms" %}}
-
 [Histograms vs Summaries]: {{% relref "histograms-vs-summaries" %}}
-
 [Using OpenTelemetry’s Exponential Histograms in Prometheus]:
   https://www.youtube.com/watch?v=W2_TpDcess8
+
+[originally posted]: {{% param canonical_url %}}
+<!-- prettier-ignore-end -->
