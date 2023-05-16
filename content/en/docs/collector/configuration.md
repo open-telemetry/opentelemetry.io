@@ -374,7 +374,7 @@ exporters:
 
   # Data sources: traces, metrics, logs
   logging:
-    loglevel: debug
+    verbosity: detailed
 
   # Data sources: traces, metrics
   opencensus:
