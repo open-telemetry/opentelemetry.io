@@ -1,6 +1,7 @@
 ---
 title: Exporters
 weight: 5
+spelling: cSpell:ignore proto nginx openzipkin
 ---
 
 In order to visualize and analyze your traces, you will need to export them to a
@@ -123,7 +124,7 @@ docker run -d --name jaeger \
 When you use the OTLP exporter in a browser-based application, you need to note
 that:
 
-1. Using grpc & http/proto for exporting is not supported
+1. Using gRPC & http/proto for exporting is not supported
 2. [Content Security Policies][] (CSPs) of your website might block your exports
 3. [Cross-Origin Resource Sharing][] (CORS) headers might not allow your exports
    to be sent
@@ -135,8 +136,8 @@ collector.
 
 #### Use OTLP exporter with HTTP/JSON
 
-[OpenTelemetry Collector Exporter with grpc][] and [OpenTelemetry Collector
-Exporter with protobuf][] do only work with Node.JS, therefore you are limited
+[OpenTelemetry Collector Exporter with gRPC][] and [OpenTelemetry Collector
+Exporter with protobuf][] do only work with Node.js, therefore you are limited
 to use the [OpenTelemetry Collector Exporter with http][].
 
 Make sure that the receiving end of your exporter (collector or observability
@@ -193,7 +194,7 @@ put a reverse proxy (nginx, apache, ...) in front of it. The reverse proxy can
 take care of SSL-offloading, setting the right CORS headers, and many other
 features specific to web applications.
 
-Below you will find a configuration for the popular nginx webserver to get you
+Below you will find a configuration for the popular nginx web server to get you
 started:
 
 ```nginx
@@ -238,8 +239,8 @@ Install the exporter package as a dependency for your application:
 npm install --save @opentelemetry/exporter-zipkin
 ```
 
-Update your opentelemetry configuration to use the exporter and to send data to
-your zipkin backend:
+Update your OpenTelemetry configuration to use the exporter and to send data to
+your Zipkin backend:
 
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
