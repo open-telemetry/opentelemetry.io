@@ -4,7 +4,7 @@ linkTitle: Automatic
 weight: 30
 ---
 
-Automatic instrumentation provides a way to instrument any NodeJS application
+Automatic instrumentation provides a way to instrument any Node.js application
 and capture telemetry data from many popular libraries and frameworks without
 any code changes.
 
@@ -52,7 +52,7 @@ To see the full range of configuration options, see
 
 ## Supported libraries and frameworks
 
-A number of popular NodeJS libraries are auto-instrumented. For the full list,
+A number of popular Node.js libraries are auto-instrumented. For the full list,
 see
 [Supported instrumentation](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/metapackages/auto-instrumentations-node#supported-instrumentations).
 
