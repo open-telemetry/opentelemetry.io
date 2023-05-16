@@ -74,11 +74,15 @@
         "terms": [
           "OpenTelemetry",
           "K8s",
+          "Kubernetes",
           "OTel",
           "Zipkin",
           "Jaeger",
           "gRPC",
           "CNCF",
+          "eBPF",
+          "HTTP",
+	  ".NET",
           [
             "open-source",
             "open source"
@@ -86,6 +90,10 @@
           [
             "[Oo]pen[- ][Tt]elemetry",
             "OpenTelemetry"
+          ],
+          [
+            "[Nn]ode\\.?[Jj][sS]",
+            "Node.js"
           ]
         ]
       }
@@ -107,8 +115,8 @@
     "@opentelemetry/auto-instrumentations-web": "^0.32.0",
     "@opentelemetry/context-zone": "^1.8.0",
     "@opentelemetry/core": "^1.8.0",
-    "@opentelemetry/instrumentation": "^0.39.1",
     "@opentelemetry/exporter-trace-otlp-http": "^0.39.1",
+    "@opentelemetry/instrumentation": "^0.39.1",
     "@opentelemetry/resources": "^1.8.0",
     "@opentelemetry/sdk-trace-base": "^1.8.0",
     "@opentelemetry/sdk-trace-web": "^1.8.0",

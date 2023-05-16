@@ -14,6 +14,8 @@
     "hugo",
     "initializers",
     "Istio",
+    "Jaeger",
+    "jaegertracing",
     "Javadoc",
     "Knative",
     "Kubecon",
@@ -28,6 +30,7 @@
     "otlp",
     "OTLP",
     "pluggable",
+    "prometheus",
     "protobuf",
     "relref",
     "roadmap",
@@ -35,7 +38,9 @@
     "SNMP",
     "subdir",
     "tabpane",
+    "textlint",
     "tocstop",
+    "zipkin",
     "Zipkin"
   ]
 }
