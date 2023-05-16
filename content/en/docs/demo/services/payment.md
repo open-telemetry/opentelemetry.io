@@ -14,7 +14,7 @@ processed.
 
 It is recommended to `require` Node.js app using an initializer file that
 initializes the SDK and auto-instrumentation. When initializing the
-OpenTelemetry NodeJS SDK in that module, you optionally specify which
+OpenTelemetry Node.js SDK in that module, you optionally specify which
 auto-instrumentation libraries to leverage, or make use of the
 `getNodeAutoInstrumentations()` function which includes most popular frameworks.
 The below example of an intiailizer file (`opentelemetry.js`) contains all code
