@@ -31,7 +31,7 @@ While tested, support for `truffleruby` is on a best-effort basis at this time.
 ## Example Application
 
 The following example uses a basic [Rails](https://rubyonrails.org/)
-application. If you are not using Sinatra, that's ok — you can use OpenTelemetry
+application. If you are not using Rails, that's ok — you can use OpenTelemetry
 Ruby with other web frameworks as well, such as Sinatra and Rack. For a complete
 list of libraries for supported frameworks, see the
 [registry](/ecosystem/registry/?component=instrumentation&language=ruby).
