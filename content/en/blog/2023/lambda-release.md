@@ -18,22 +18,28 @@ confused by this announcement. You might say something like OTel has had a
 and they've been available on AWS for years.
 
 Which is totally correct. Thankfully, we're not remaking the wheel here.
-However, there are a couple new updates.
+However, there are some pre-existing problems that impact our users:
 
-Previously the OTel Lambda layers were only released as part of the
-[Amazon Distribution of OTel (ADOT)](https://aws-otel.github.io/) and the
-community had limited control over releases, the layers available on AWS
-combined the Collector and auto-instrumentation capabilities into 1 package, and
-there wasn't official OTel guidance on how to monitor Lambdas.
+- The OTel Lambda layers were only released as part of the
+  [Amazon Distribution of OTel (ADOT)](https://aws-otel.github.io/) and the
+  community had limited control over releases which meant a delay getting new
+  features and fixes delivered.
+- The layers available on AWS combined the Collector and auto-instrumentation
+  capabilities into 1 package which spilled over into performance degradations
+  and limited user choice.
+- There wasn't official OTel guidance on how to monitor Lambdas and no single
+  source of truth for OTel users to reference.
 
-The FAAS SIG has written new Github Actions to release the Lambda layers
-ourselves and empower the community to make our own release decisions, separated
-the Collector and instrumentation layers to give customers options when
-instrumenting their Lambdas, and added Lambda documentation to the OTel
-collection.
+The FAAS SIG has updated our assets to address these shortcomings:
 
-The community now offers a standalone Lambda layer for the Collector alongside
-auto-instrumentation layers for JavaScript, Java, and Python.
+- We have written new Github Actions to release the Lambda layers ourselves and
+  empower the community to make our own release decisions.
+- Separated the Collector and instrumentation layers to give customers options
+  when instrumenting their Lambdas. The community now offers a standalone Lambda
+  layer for the Collector alongside auto-instrumentation layers for JavaScript,
+  Java, and Python.
+- Added official community Lambda documentation to the OTel website under the
+  new FAAS section.
 
 ### Get Involved
 
