@@ -108,11 +108,11 @@ Common settings that apply to multiple instrumentations at once.
 ### Peer service name
 
 The
-[peer service name](/docs/reference/specification/trace/semantic_conventions/span-general/#general-remote-service-attributes)
+[peer service name](/docs/specs/otel/trace/semantic_conventions/span-general/#general-remote-service-attributes)
 is the name of a remote service to which a connection is made. It corresponds to
 `service.name` in the
-[resource](/docs/reference/specification/resource/semantic_conventions/#service)
-for the local service.
+[resource](/docs/specs/otel/resource/semantic_conventions/#service) for the
+local service.
 
 {{% config_option name="otel.instrumentation.common.peer-service-mapping" %}}
 
@@ -160,7 +160,7 @@ following property to disable it:
 
 You can configure the agent to capture predefined HTTP headers as span
 attributes, according to the
-[semantic convention](/docs/reference/specification/trace/semantic_conventions/http/#http-request-and-response-headers).
+[semantic convention](/docs/specs/otel/trace/semantic_conventions/http/#http-request-and-response-headers).
 Use the following properties to define which HTTP headers you want to capture:
 
 {{% config_option name="otel.instrumentation.http.capture-headers.client.request" %}}
@@ -227,7 +227,7 @@ equivalent environment variable `OTEL_JAVAAGENT_ENABLED=false`).
 ### Enable only specific instrumentation
 
 You can disable all default auto instrumentation and selectively re-enable
-individual instrumentation. This may be desireable to reduce startup overhead or
+individual instrumentation. This may be desirable to reduce startup overhead or
 to have more control of which instrumentation is applied.
 
 - Disable all instrumentation in the agent using
@@ -314,7 +314,7 @@ environment variable `OTEL_INSTRUMENTATION_[NAME]_ENABLED`) where `name`
 | Java JDBC `DataSource`                           | `jdbc-datasource`                           |
 | Java RMI                                         | `rmi`                                       |
 | Java Servlet                                     | `servlet`                                   |
-| java.util.concurrent                             | `executor`                                  |
+| java.util.concurrent                             | `executors`                                 |
 | java.util.logging                                | `java-util-logging`                         |
 | JAX-RS (Client)                                  | `jaxrs-client`                              |
 | JAX-RS (Server)                                  | `jaxrs`                                     |
@@ -387,12 +387,12 @@ set `OTEL_INSTRUMENTATION_AKKA_ACTOR_ENABLED` to `false`.
 ### Suppressing controller and/or view spans
 
 Some instrumentations (e.g. Spring Web MVC instrumentation) produce
-[SpanKind.Internal](/docs/reference/specification/trace/api/#spankind) spans to
-capture the controller and/or view execution. These spans can be suppressed
-using the configuration settings below, without suppressing the entire
-instrumentation which would also disable the instrumentation's capturing of
-`http.route` and associated span name on the parent
-[SpanKind.Server](/docs/reference/specification/trace/api/#spankind) span.
+[SpanKind.Internal](/docs/specs/otel/trace/api/#spankind) spans to capture the
+controller and/or view execution. These spans can be suppressed using the
+configuration settings below, without suppressing the entire instrumentation
+which would also disable the instrumentation's capturing of `http.route` and
+associated span name on the parent
+[SpanKind.Server](/docs/specs/otel/trace/api/#spankind) span.
 
 {{% config_option
   name="otel.instrumentation.common.experimental.controller-telemetry.enabled"

@@ -358,5 +358,5 @@ gem 'opentelemetry-propagator-b3'
   https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation
 [semconv-gem]:
   https://github.com/open-telemetry/opentelemetry-ruby/tree/main/semantic_conventions
-[semconv-spec]: /docs/reference/specification/trace/semantic_conventions/
-[opentelemetry specification]: /docs/reference/specification/
+[semconv-spec]: /docs/specs/otel/trace/semantic_conventions/
+[opentelemetry specification]: /docs/specs/otel/

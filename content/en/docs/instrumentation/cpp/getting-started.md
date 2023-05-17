@@ -1,9 +1,8 @@
 ---
 title: Getting Started
 weight: 2
-spelling:
-  cSpell:ignore Bazel libcurl openssl xcode DBUILD DWITH helloworld tracestate
-  traceparent devel
+spelling: cSpell:ignore Bazel libcurl openssl xcode DBUILD DWITH helloworld tracestate
+spelling: cSpell:ignore traceparent devel
 ---
 
 Welcome to the OpenTelemetry C++ getting started guide! This guide will walk you
@@ -88,8 +87,13 @@ Server is running..Press ctrl-c to exit..
 
 In the other terminal, run the http client:
 
-```console
-$ ./examples/http/http_client
+```sh
+./examples/http/http_client
+```
+
+You should see client output similar to this:
+
+```properties
 {
   name          : /helloworld
   trace_id      : 05eec7a55d3544434265dad89d7fe96f

@@ -94,7 +94,7 @@ Here is a sample configuration file of `collector.yaml` in the root directory:
 
 ```yaml
 #collector.yaml in the root directory
-#Set an environemnt variable 'OPENTELEMETRY_COLLECTOR_CONFIG_FILE' to '/var/task/collector.yaml'
+#Set an environment variable 'OPENTELEMETRY_COLLECTOR_CONFIG_FILE' to '/var/task/collector.yaml'
 
 receivers:
   otlp:

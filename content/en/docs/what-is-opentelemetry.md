@@ -83,8 +83,8 @@ OTel has broad industry support and adoption from cloud providers,
   destinations in parallel through configuration.
 - Open-standard semantic conventions to ensure vendor-agnostic data collection
 - The ability to support multiple
-  [context propagation](/docs/reference/specification/overview/#context-propagation)
-  formats in parallel to assist with migrating as standards evolve.
+  [context propagation](/docs/specs/otel/overview/#context-propagation) formats
+  in parallel to assist with migrating as standards evolve.
 - A path forward no matter where you are on your observability journey.
 
 With support for a variety of [open source and commercial

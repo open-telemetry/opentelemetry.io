@@ -24,9 +24,9 @@ and document hooks:
 ## Semantic Conventions
 
 Check out available
-[semantic conventions](/docs/reference/specification/trace/semantic_conventions/)
-that cover web-frameworks, RPC clients, databases, messaging clients, infra
-pieces and more!
+[semantic conventions](/docs/specs/otel/trace/semantic_conventions/) that cover
+web-frameworks, RPC clients, databases, messaging clients, infra pieces and
+more!
 
 If your library is one of those things - follow the conventions, they are the
 main source of truth and tell which information should be included on spans.
@@ -70,10 +70,10 @@ decide to do it.
 
 The first step is to take dependency on the OpenTelemetry API package.
 
-OpenTelemetry has [two main modules](/docs/reference/specification/overview/) -
-API and SDK. OpenTelemetry API is a set of abstractions and not-operational
-implementations. Unless your application imports the OpenTelemetry SDK, your
-instrumentation does nothing and does not impact application performance.
+OpenTelemetry has [two main modules](/docs/specs/otel/overview/) - API and SDK.
+OpenTelemetry API is a set of abstractions and not-operational implementations.
+Unless your application imports the OpenTelemetry SDK, your instrumentation does
+nothing and does not impact application performance.
 
 **Libraries should only use the OpenTelemetry API.**
 
@@ -81,8 +81,8 @@ You may be rightfully concerned about adding new dependencies, here are some
 considerations to help you decide how to minimize dependency hell:
 
 - OpenTelemetry Trace API reached stability in early 2021, it follows
-  [Semantic Versioning 2.0](/docs/reference/specification/versioning-and-stability)
-  and we take API stability seriously.
+  [Semantic Versioning 2.0](/docs/specs/otel/versioning-and-stability) and we
+  take API stability seriously.
 - When taking dependency, use the earliest stable OpenTelemetry API (1.0.\*) and
   avoid updating it unless you have to use new features.
 - While your instrumentation stabilizes, consider shipping it as a separate
@@ -97,14 +97,13 @@ considerations to help you decide how to minimize dependency hell:
   for your users.
 
   [stable, but subject to evolution]:
-    /docs/reference/specification/versioning-and-stability/#semantic-conventions-stability
+    /docs/specs/otel/versioning-and-stability/#semantic-conventions-stability
 
 ### Getting a tracer
 
 All application configuration is hidden from your library through the Tracer
 API. Libraries should obtain tracer from
-[global `TracerProvider`](/docs/reference/specification/trace/api/#get-a-tracer)
-by default.
+[global `TracerProvider`](/docs/specs/otel/trace/api/#get-a-tracer) by default.
 
 ```java
 private static final Tracer tracer = GlobalOpenTelemetry.getTracer("demo-db-client", "0.1.0-beta1");
@@ -166,7 +165,7 @@ private Response selectWithTracing(Query query) {
 
 Follow conventions to populate attributes! If there is no applicable one, check
 out
-[general conventions](/docs/reference/specification/trace/semantic_conventions/span-general/).
+[general conventions](/docs/specs/otel/trace/semantic_conventions/span-general/).
 
 ### Nested network and other spans
 
@@ -264,7 +263,7 @@ In the case of a messaging system, you may receive more than one message at
 once. Received messages become
 [_links_](/docs/instrumentation/java/manual/#create-spans-with-links) on the
 span you create. Refer to
-[messaging conventions](/docs/reference/specification/trace/semantic_conventions/messaging/)
+[messaging conventions](/docs/specs/otel/trace/semantic_conventions/messaging/)
 for details (WARNING: messaging conventions are
 [under constructions](https://github.com/open-telemetry/oteps/pull/173) 🚧).
 
@@ -340,7 +339,7 @@ Please add your instrumentation library to the
 
 OpenTelemetry API is no-op and very performant when there is no SDK in the
 application. When OpenTelemetry SDK is configured, it
-[consumes bound resources](/docs/reference/specification/performance/).
+[consumes bound resources](/docs/specs/otel/performance/).
 
 Real-life applications, especially on the high scale, would frequently have
 head-based sampling configured. Sampled-out spans are cheap and you can check if
@@ -365,7 +364,7 @@ if (span.isRecording()) {
 ### Error handling
 
 OpenTelemetry API is
-[forgiving at runtime](/docs/reference/specification/error-handling/#basic-error-handling-principles) -
+[forgiving at runtime](/docs/specs/otel/error-handling/#basic-error-handling-principles) -
 does not fail on invalid arguments, never throws, and swallows exceptions. This
 way instrumentation issues do not affect application logic. Test the
 instrumentation to notice issues OpenTelemetry hides at runtime.
@@ -408,5 +407,5 @@ class TestExporter implements SpanExporter {
 ```
 
 [instrumentation libraries]:
-  /docs/reference/specification/overview/#instrumentation-libraries
-[span events]: /docs/reference/specification/trace/api/#add-events
+  /docs/specs/otel/overview/#instrumentation-libraries
+[span events]: /docs/specs/otel/trace/api/#add-events

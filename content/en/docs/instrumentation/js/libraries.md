@@ -2,10 +2,11 @@
 title: Using instrumentation libraries
 linkTitle: Libraries
 weight: 3
+spelling: cSpell:ignore autoinstrumentation metapackage
 ---
 
 You can use
-[instrumentation libraries](/docs/reference/specification/glossary/#instrumentation-library)
+[instrumentation libraries](/docs/specs/otel/glossary/#instrumentation-library)
 in order to generate telemetry data for a library or framework.
 
 For example,
@@ -42,6 +43,8 @@ npm install @opentelemetry/auto-instrumentations-node
 ```
 
 Then in your tracing initialization code, use `registerInstrumentations`:
+
+<!-- textlint-disable -->
 
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
@@ -122,6 +125,8 @@ provider.register();
 
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+
+<!-- textlint-enable -->
 
 ### Using individual instrumentation packages
 

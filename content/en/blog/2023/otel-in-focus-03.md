@@ -20,7 +20,7 @@ channel.
 
 Here are the latest updates from our core repositories.
 
-##### [Specification](/docs/reference/specification/)
+##### [Specification](/docs/specs/otel/)
 
 [Version 1.19](https://github.com/open-telemetry/opentelemetry-specification/releases/tag/v1.19.0)
 has been released with a number of important udates.

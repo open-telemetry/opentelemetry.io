@@ -219,8 +219,7 @@ Short form for [OpenTelemetry Collector](#collector).
 
 ### **OTLP**
 
-Short for
-[OpenTelemetry Protocol](/docs/reference/specification/protocol/otlp/).
+Short for [OpenTelemetry Protocol](/docs/specs/otel/protocol/otlp/).
 
 ### **Processor**
 
@@ -297,9 +296,8 @@ Represents a single operation within a [`Trace`](#trace). See [more][span].
 ### **Span Link**
 
 A span link is a link between causally-related spans. For details see
-[Links between spans](/docs/reference/specification/overview#links-between-spans)
-and
-[Specifying Links](/docs/reference/specification/trace/api#specifying-links).
+[Links between spans](/docs/specs/otel/overview#links-between-spans) and
+[Specifying Links](/docs/specs/otel/trace/api#specifying-links).
 
 ### **Specification**
 
@@ -338,44 +336,43 @@ on web pages when requested. See [more][zpages].
 
 ### Traces
 
-#### **[Trace API Terminology](/docs/reference/specification/trace/api)**
+#### **[Trace API Terminology](/docs/specs/otel/trace/api)**
 
-#### **[Trace SDK Terminology](/docs/reference/specification/trace/sdk)**
+#### **[Trace SDK Terminology](/docs/specs/otel/trace/sdk)**
 
 ### Metrics
 
-#### **[Metric API Terminology](/docs/reference/specification/metrics/api#overview)**
+#### **[Metric API Terminology](/docs/specs/otel/metrics/api#overview)**
 
-#### **[Metric SDK Terminology](/docs/reference/specification/metrics#specifications)**
+#### **[Metric SDK Terminology](/docs/specs/otel/metrics#specifications)**
 
 ### Logs
 
-#### **[Trace Context Fields](/docs/reference/specification/logs/data-model#trace-context-fields)**
+#### **[Trace Context Fields](/docs/specs/otel/logs/data-model#trace-context-fields)**
 
-#### **[Severity Fields](/docs/reference/specification/logs/data-model#severity-fields)**
+#### **[Severity Fields](/docs/specs/otel/logs/data-model#severity-fields)**
 
-#### **[Log Record Fields](/docs/reference/specification/logs/data-model#log-and-event-record-definition)**
+#### **[Log Record Fields](/docs/specs/otel/logs/data-model#log-and-event-record-definition)**
 
 ### Semantic Conventions
 
-#### **[Resource Conventions](/docs/reference/specification/resource/semantic_conventions)**
+#### **[Resource Conventions](/docs/specs/otel/resource/semantic_conventions)**
 
-#### **[Span Conventions](/docs/reference/specification/trace/semantic_conventions)**
+#### **[Span Conventions](/docs/specs/otel/trace/semantic_conventions)**
 
-#### **[Metric Conventions](/docs/reference/specification/metrics/semantic_conventions)**
+#### **[Metric Conventions](/docs/specs/otel/metrics/semantic_conventions)**
 
-[baggage]: /docs/reference/specification/baggage/api/
-[attribute]: /docs/reference/specification/common/#attributes
+[baggage]: /docs/specs/otel/baggage/api/
+[attribute]: /docs/specs/otel/common/#attributes
 [collector]: /docs/collector
-[context propagation]:
-  /docs/reference/specification/overview#context-propagation
+[context propagation]: /docs/specs/otel/overview#context-propagation
 [dag]: https://en.wikipedia.org/wiki/Directed_acyclic_graph
 [distributed tracing]: /docs/concepts/signals/traces/
-[field]: /docs/reference/specification/logs/data-model#field-kinds
+[field]: /docs/specs/otel/logs/data-model#field-kinds
 [http]: https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
 [json]: https://en.wikipedia.org/wiki/JSON
-[log]: /docs/reference/specification/glossary#log
-[log record]: /docs/reference/specification/glossary#log-record
+[log]: /docs/specs/otel/glossary#log
+[log record]: /docs/specs/otel/glossary#log-record
 [metric]: /docs/concepts/signals/metrics/
 [opencensus]: https://opencensus.io
 [opentracing]: https://opentracing.io
@@ -384,18 +381,16 @@ on web pages when requested. See [more][zpages].
 [receiver]: /docs/collector/configuration/#receivers
 [rest]: https://en.wikipedia.org/wiki/Representational_state_transfer
 [rpc]: https://en.wikipedia.org/wiki/Remote_procedure_call
-[sampling]: /docs/reference/specification/trace/sdk#sampling
+[sampling]: /docs/specs/otel/trace/sdk#sampling
 [signals]: /docs/concepts/signals/
-[span]: /docs/reference/specification/trace/api#span
-[spans]: /docs/reference/specification/trace/api#add-events
-[spec-exporter-lib]: /docs/reference/specification/glossary/#exporter-library
-[spec-instrumentation-lib]:
-  /docs/reference/specification/glossary/#instrumentation-library
-[spec-instrumented-lib]:
-  /docs/reference/specification/glossary/#instrumented-library
+[span]: /docs/specs/otel/trace/api#span
+[spans]: /docs/specs/otel/trace/api#add-events
+[spec-exporter-lib]: /docs/specs/otel/glossary/#exporter-library
+[spec-instrumentation-lib]: /docs/specs/otel/glossary/#instrumentation-library
+[spec-instrumented-lib]: /docs/specs/otel/glossary/#instrumented-library
 [specification]: /docs/concepts/components/#specification
-[status]: /docs/reference/specification/trace/api#set-status
-[trace]: /docs/reference/specification/overview#traces
-[tracer]: /docs/reference/specification/trace/api#tracer
+[status]: /docs/specs/otel/trace/api#set-status
+[trace]: /docs/specs/otel/overview#traces
+[tracer]: /docs/specs/otel/trace/api#tracer
 [zpages]:
   https://github.com/open-telemetry/opentelemetry-specification/blob/main/experimental/trace/zpages.md

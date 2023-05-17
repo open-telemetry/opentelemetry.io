@@ -1,4 +1,8 @@
 {
+  "http://agile.coffee/#2f83c1c1-918c-4c78-8671-194b2e9d8e54": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-02T16:20:20.728324+05:30"
+  },
   "http://agile.coffee/#3716060f-183a-4966-8da4-60daab2842c4": {
     "StatusCode": 206,
     "LastSeen": "2023-02-28T17:42:09.69742+05:30"
@@ -18,6 +22,10 @@
   "http://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-tech-overview-2.0.html": {
     "StatusCode": 206,
     "LastSeen": "2023-02-15T21:09:05.748522-05:00"
+  },
+  "http://github.com/open-telemetry/semantic-conventions": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-15T13:55:17.780686-04:00"
   },
   "http://mypy-lang.org/": {
     "StatusCode": 206,
@@ -138,6 +146,10 @@
   "https://blog.logrocket.com/understanding-schema-stitching-graphql/": {
     "StatusCode": 200,
     "LastSeen": "2023-02-15T20:36:46.174243-05:00"
+  },
+  "https://bundler.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-04T10:07:22.237529+02:00"
   },
   "https://calendar.google.com/calendar/embed": {
     "StatusCode": 200,
@@ -307,6 +319,14 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-15T20:39:04.971548-05:00"
   },
+  "https://cloud.google.com/run/docs/container-contract#jobs-env-vars": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-15T13:58:51.977416-04:00"
+  },
+  "https://cloud.google.com/run/docs/managing/job-executions": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-15T13:58:46.213279-04:00"
+  },
   "https://cloud.google.com/run/docs/managing/revisions": {
     "StatusCode": 200,
     "LastSeen": "2023-02-15T20:39:40.667513-05:00"
@@ -435,6 +455,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-15T21:13:29.941423-05:00"
   },
+  "https://datatracker.ietf.org/doc/html/rfc3986#section-3.2.1": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-15T13:58:32.732504-04:00"
+  },
   "https://datatracker.ietf.org/doc/html/rfc7230#section-2.7.1": {
     "StatusCode": 200,
     "LastSeen": "2023-02-15T21:09:50.310882-05:00"
@@ -490,6 +514,10 @@
   "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/": {
     "StatusCode": 206,
     "LastSeen": "2023-02-15T21:04:42.891544-05:00"
+  },
+  "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Forwarded": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-15T13:58:02.84789-04:00"
   },
   "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For": {
     "StatusCode": 206,
@@ -895,6 +923,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-15T21:12:25.207145-05:00"
   },
+  "https://docs.observeinc.com/en/latest/content/integrations/otel/opentelemetry.html": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-15T13:36:54.19368-07:00"
+  },
   "https://docs.openfaas.com/architecture/metrics/": {
     "StatusCode": 206,
     "LastSeen": "2023-02-15T21:06:30.02865-05:00"
@@ -935,6 +967,18 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-15T21:06:02.416793-05:00"
   },
+  "https://docs.oracle.com/en/java/javase/17/docs/api/jdk.management/com/sun/management/OperatingSystemMXBean.html#getCpuLoad%28%29": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-15T13:56:47.596682-04:00"
+  },
+  "https://docs.oracle.com/en/java/javase/17/docs/api/jdk.management/com/sun/management/OperatingSystemMXBean.html#getProcessCpuLoad%28%29": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-15T13:56:30.762393-04:00"
+  },
+  "https://docs.oracle.com/en/java/javase/17/docs/api/jdk.management/com/sun/management/OperatingSystemMXBean.html#getSystemCpuLoad%28%29": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-15T13:56:42.21615-04:00"
+  },
   "https://docs.oracle.com/javase/7/docs/api/java/lang/Throwable.html#printStackTrace%28%29": {
     "StatusCode": 200,
     "LastSeen": "2023-02-15T21:08:06.175077-05:00"
@@ -947,6 +991,54 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-15T21:05:27.201201-05:00"
   },
+  "https://docs.oracle.com/javase/8/docs/api/java/lang/management/BufferPoolMXBean.html#getCount--": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-15T13:57:14.880125-04:00"
+  },
+  "https://docs.oracle.com/javase/8/docs/api/java/lang/management/BufferPoolMXBean.html#getMemoryUsed--": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-15T13:57:03.887248-04:00"
+  },
+  "https://docs.oracle.com/javase/8/docs/api/java/lang/management/BufferPoolMXBean.html#getTotalCapacity--": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-15T13:57:09.298646-04:00"
+  },
+  "https://docs.oracle.com/javase/8/docs/api/java/lang/management/ClassLoadingMXBean.html#getLoadedClassCount--": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-15T13:56:25.355665-04:00"
+  },
+  "https://docs.oracle.com/javase/8/docs/api/java/lang/management/ClassLoadingMXBean.html#getTotalLoadedClassCount--": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-15T13:56:14.545008-04:00"
+  },
+  "https://docs.oracle.com/javase/8/docs/api/java/lang/management/ClassLoadingMXBean.html#getUnloadedClassCount--": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-15T13:56:19.961265-04:00"
+  },
+  "https://docs.oracle.com/javase/8/docs/api/java/lang/management/GarbageCollectorMXBean.html": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-15T13:55:51.648587-04:00"
+  },
+  "https://docs.oracle.com/javase/8/docs/api/java/lang/management/MemoryPoolMXBean.html#getCollectionUsage--": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-15T13:55:40.687863-04:00"
+  },
+  "https://docs.oracle.com/javase/8/docs/api/java/lang/management/MemoryPoolMXBean.html#getUsage--": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-15T13:55:35.246976-04:00"
+  },
+  "https://docs.oracle.com/javase/8/docs/api/java/lang/management/OperatingSystemMXBean.html#getSystemLoadAverage--": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-15T13:56:58.440619-04:00"
+  },
+  "https://docs.oracle.com/javase/8/docs/api/java/lang/management/ThreadMXBean.html#getDaemonThreadCount--": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-15T13:56:03.660423-04:00"
+  },
+  "https://docs.oracle.com/javase/8/docs/api/java/lang/management/ThreadMXBean.html#getThreadCount--": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-15T13:56:09.060511-04:00"
+  },
   "https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html": {
     "StatusCode": 200,
     "LastSeen": "2023-02-15T21:05:04.694703-05:00"
@@ -954,6 +1046,14 @@
   "https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletionStage.html": {
     "StatusCode": 200,
     "LastSeen": "2023-02-15T21:05:10.377544-05:00"
+  },
+  "https://docs.oracle.com/javase/8/docs/jre/api/management/extension/com/sun/management/GarbageCollectionNotificationInfo.html": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-15T13:55:46.183553-04:00"
+  },
+  "https://docs.oracle.com/javase/8/docs/jre/api/management/extension/com/sun/management/GcInfo.html#getDuration--": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-15T13:55:57.139861-04:00"
   },
   "https://docs.oracle.com/javase/8/docs/jre/api/net/httpserver/spec/com/sun/net/httpserver/HttpExchange.html": {
     "StatusCode": 200,
@@ -1071,6 +1171,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-05-05T13:16:06.026606-04:00"
   },
+  "https://dyladan.me/histograms/2023/05/03/histograms-vs-summaries/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-08T11:16:20.874689-04:00"
+  },
   "https://ebpf.io/": {
     "StatusCode": 206,
     "LastSeen": "2023-03-15T09:16:58.309342+01:00"
@@ -1162,6 +1266,10 @@
   "https://en.wikipedia.org/wiki/In-band_signaling": {
     "StatusCode": 200,
     "LastSeen": "2023-02-15T21:20:05.938917-05:00"
+  },
+  "https://en.wikipedia.org/wiki/Inter-process_communication": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-15T13:57:25.897409-04:00"
   },
   "https://en.wikipedia.org/wiki/JSON": {
     "StatusCode": 200,
@@ -1671,6 +1779,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:10:49.246765-05:00"
   },
+  "https://github.com/jpkrohling/opentelemetry-collector-deployment-patterns/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-14T06:35:50.116854Z"
+  },
   "https://github.com/jufab/opentelemetry-angular-interceptor": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:43:48.729669-05:00"
@@ -1942,6 +2054,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.70.0": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:14:38.263463-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-configuration": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-15T13:57:37.029913-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-cpp": {
     "StatusCode": 200,
@@ -2531,6 +2647,14 @@
     "StatusCode": 200,
     "LastSeen": "2023-03-30T22:09:47.191499-04:00"
   },
+  "https://github.com/open-telemetry/oteps/pull/225": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-15T13:57:49.752268-04:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-15T13:58:20.569641-04:00"
+  },
   "https://github.com/opentelemetry-php/contrib-auto-psr15": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:44:32.187118-05:00"
@@ -2943,6 +3067,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-16T17:09:33.386443-05:00"
   },
+  "https://json-schema.org/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-15T13:57:42.563111-04:00"
+  },
   "https://kafka.apache.org/": {
     "StatusCode": 206,
     "LastSeen": "2023-02-16T17:11:34.975001-05:00"
@@ -3343,6 +3471,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-16T17:43:51.469854-05:00"
   },
+  "https://opentelemetry-python.readthedocs.io/en/stable/examples/metrics/instruments/README.html": {
+    "StatusCode": 200,
+    "LastSeen": "2023-03-14T06:35:50.907539Z"
+  },
   "https://opentelemetry-python.readthedocs.io/en/stable/shim/opentracing_shim/opentracing_shim.html": {
     "StatusCode": 200,
     "LastSeen": "2023-02-16T17:45:15.666125-05:00"
@@ -3378,6 +3510,18 @@
   "https://operatorhub.io/operator/opentelemetry-operator": {
     "StatusCode": 206,
     "LastSeen": "2023-02-16T17:45:10.013699-05:00"
+  },
+  "https://osi-model.com/application-layer/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-15T13:55:23.216154-04:00"
+  },
+  "https://osi-model.com/network-layer/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-15T13:57:31.282166-04:00"
+  },
+  "https://osi-model.com/transport-layer/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-15T13:57:20.475585-04:00"
   },
   "https://packagist.org/": {
     "StatusCode": 200,
@@ -3539,6 +3683,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-18T09:19:25.73206-05:00"
   },
+  "https://promcon.io/2022-munich/talks/native-histograms-in-prometheus/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-08T11:16:21.143157-04:00"
+  },
   "https://prometheus.io": {
     "StatusCode": 206,
     "LastSeen": "2023-02-18T09:31:58.402174-05:00"
@@ -3615,6 +3763,14 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-18T12:42:33.865992-05:00"
   },
+  "https://rubyonrails.org/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-08T18:19:46.152081+02:00"
+  },
+  "https://rubyonrails.org//": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-08T16:34:49.259754+02:00"
+  },
   "https://sched.co/182Ib": {
     "StatusCode": 200,
     "LastSeen": "2023-02-18T12:45:22.56496-05:00"
@@ -3682,6 +3838,10 @@
   "https://signoz.io": {
     "StatusCode": 206,
     "LastSeen": "2023-02-18T12:43:42.995104-05:00"
+  },
+  "https://sinatrarb.com/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-04T10:07:22.738034+02:00"
   },
   "https://skywalking.apache.org": {
     "StatusCode": 206,
@@ -4083,6 +4243,14 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-18T13:38:12.987934-05:00"
   },
+  "https://www.ibm.com/docs/api/v1/content/SSYKE2_8.0.0/com.ibm.java.api.80.doc/com.ibm.lang.management/com/ibm/lang/management/OperatingSystemMXBean.html#getProcessCpuLoad--": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-15T13:56:36.701476-04:00"
+  },
+  "https://www.ibm.com/docs/api/v1/content/SSYKE2_8.0.0/com.ibm.java.api.80.doc/com.ibm.lang.management/com/ibm/lang/management/OperatingSystemMXBean.html#getSystemCpuLoad--": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-15T13:56:52.995519-04:00"
+  },
   "https://www.ibm.com/docs/en/ibm-mq/9.1": {
     "StatusCode": 206,
     "LastSeen": "2023-02-18T13:43:07.738636-05:00"
@@ -4098,6 +4266,10 @@
   "https://www.iso.org/iso-8601-date-and-time-format.html": {
     "StatusCode": 200,
     "LastSeen": "2023-02-18T13:40:27.898905-05:00"
+  },
+  "https://www.itu.int/ITU-T/studygroups/com17/oid.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-15T13:58:40.102533-04:00"
   },
   "https://www.jaegertracing.io/": {
     "StatusCode": 206,
@@ -4375,9 +4547,29 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-18T13:40:39.41697-05:00"
   },
+  "https://www.rfc-editor.org/rfc/rfc3986": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-15T13:57:57.369817-04:00"
+  },
+  "https://www.rfc-editor.org/rfc/rfc3986#section-3.1": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-15T13:55:29.45078-04:00"
+  },
   "https://www.rfc-editor.org/rfc/rfc3986#section-3.2.2": {
     "StatusCode": 200,
     "LastSeen": "2023-02-18T13:40:45.246566-05:00"
+  },
+  "https://www.rfc-editor.org/rfc/rfc3986#section-3.3": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-15T13:58:08.899345-04:00"
+  },
+  "https://www.rfc-editor.org/rfc/rfc3986#section-3.4": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-15T13:58:14.968637-04:00"
+  },
+  "https://www.rfc-editor.org/rfc/rfc3986#section-3.5": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-15T13:58:27.159768-04:00"
   },
   "https://www.rfc-editor.org/rfc/rfc9110.html": {
     "StatusCode": 200,

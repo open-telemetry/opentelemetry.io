@@ -25,7 +25,7 @@ explicitly implement it.
 Baggage provides a uniform way to store and propagate information across a trace
 and other signals. For example, you may want to attach information from your
 application to a span and retrieve that information much later and use it later
-on with another span. However, spans in opentelemetry are immutable once
+on with another span. However, spans in OpenTelemetry are immutable once
 created, and can be exported before you need information on them later on.
 Baggage allows you to work around this problem by providing a place to store and
 retrieve information.
@@ -65,4 +65,4 @@ Activity.Current?.SetTag("AccountId", accountId);
 
 > For more information, see the [baggage specification][].
 
-[baggage specification]: /docs/reference/specification/overview/#baggage-signal
+[baggage specification]: /docs/specs/otel/overview/#baggage-signal

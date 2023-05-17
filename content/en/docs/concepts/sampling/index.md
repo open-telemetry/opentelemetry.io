@@ -36,7 +36,7 @@ It's important to use consistent terminology when discussing sampling. A trace
 or span is considered "sampled" or "not sampled":
 
 - **Sampled**: A trace or span is processed and exported. Because it is chosen
-  by the sampler as a representive of the population, it is considered
+  by the sampler as a representative of the population, it is considered
   "sampled".
 - **Not sampled**: A trace or span is not processed or exported. Because it is
   not chosen by the sampler, it is considered "not sampled".
@@ -52,7 +52,7 @@ as possible. A decision to sample or drop a span or trace is not made by
 inspecting the trace as a whole.
 
 For example, the most common form of head sampling is
-[Consistent Probability Sampling](/docs/reference/specification/trace/tracestate-probability-sampling/#consistent-probability-sampling).
+[Consistent Probability Sampling](/docs/specs/otel/trace/tracestate-probability-sampling/#consistent-probability-sampling).
 It may also be referred to as Deterministic Sampling. In this case, a sampling
 decision is made based on the trace ID and a desired percentage of traces to
 sample. This ensures that whole traces are sampled - no missing spans - at a

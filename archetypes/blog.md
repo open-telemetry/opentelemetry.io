@@ -7,7 +7,7 @@ author: >- # If you have only one author, then add the single name on this line 
   ...
   [AuthorX Name](https://github.com/authorX_GH_ID) (Organization Name X)
 draft: true # TODO: remove this line once your post is ready to be published
-# canonical_url: http://somewhere.else/ # TODO: if this blog post has been posted somewhere else already, uncomment & provide the conancial URL here.
+# canonical_url: http://somewhere.else/ # TODO: if this blog post has been posted somewhere else already, uncomment & provide the canonical URL here.
 body_class: otel-with-contributions-from # TODO: remove this line if there are no secondary contributing authors
 ---
 
@@ -37,10 +37,10 @@ can reference them like the following:
 
 ## Markdown formatter
 
-Before submitting a new commit run the Prettier command over your file:
+Before submitting a new commit run the formatter over your file:
 
 ```sh
-npm run prettier:write
+npm run format
 ```
 
 Happy writing!

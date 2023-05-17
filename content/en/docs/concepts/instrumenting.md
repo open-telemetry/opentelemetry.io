@@ -65,7 +65,7 @@ developing a library or some other component that is intended to be consumed by
 a runnable binary, then you would only take a dependency on the API. If your
 artifact is a standalone process or service, then you would take a dependency on
 the API and the SDK. For more information about the OpenTelemetry API and SDK,
-see the [specification](/docs/reference/specification/).
+see the [specification](/docs/specs/otel/).
 
 ### Configure the OpenTelemetry API
 
@@ -113,13 +113,12 @@ as a proxy or sidecar to your service instances or run on a separate host. The
 Collector can then be configured to forward and export this data to your choice
 of analysis tools.
 
-In addition to open-source tools such as Jaeger or Prometheus, a growing list of
+In addition to open source tools such as Jaeger or Prometheus, a growing list of
 companies support ingesting telemetry data from OpenTelemetry. For details, see
 [Vendors](/ecosystem/vendors/).
 
 [automatic instrumentation]:
-  /docs/reference/specification/glossary/#automatic-instrumentation
-[manually instrument]:
-  /docs/reference/specification/glossary/#manual-instrumentation
+  /docs/specs/otel/glossary/#automatic-instrumentation
+[manually instrument]: /docs/specs/otel/glossary/#manual-instrumentation
 [instrumentation libraries]:
-  /docs/reference/specification/overview/#instrumentation-libraries
+  /docs/specs/otel/overview/#instrumentation-libraries
