@@ -66,8 +66,8 @@ would have to set the following environment variables:
 {{% /tab %}}
 {{% tab JavaScript %}}
 
-The Lambda layer supports Node.JS v14+ Lambda runtimes. For more information
-about supported JavaScript and Node.JS versions, see the
+The Lambda layer supports Node.js v14+ Lambda runtimes. For more information
+about supported JavaScript and Node.js versions, see the
 [OpenTelemetry JavaScript documentation](https://github.com/open-telemetry/opentelemetry-js).
 
 <!-- prettier-ignore -->

@@ -3,6 +3,7 @@ title: Propagation
 description: Context propagation for the JS SDK
 aliases: [/docs/instrumentation/js/api/propagation]
 weight: 7
+spelling: cSpell:ignore traceparent tracestate
 ---
 
 Propagation is the mechanism that moves data between services and processes.
@@ -17,8 +18,8 @@ instrumentation libraries.
 
 For example, if you have several Node.js services that communicate over HTTP,
 you can use the
-[express](https://www.npmjs.com/package/@opentelemetry/instrumentation-express)
-and [http](https://www.npmjs.com/package/@opentelemetry/instrumentation-http)
+[`express`](https://www.npmjs.com/package/@opentelemetry/instrumentation-express)
+and [`http`](https://www.npmjs.com/package/@opentelemetry/instrumentation-http)
 instrumentation libraries to automatically propagate trace context across
 services for you.
 

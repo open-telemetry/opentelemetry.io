@@ -36,7 +36,7 @@ It's important to use consistent terminology when discussing sampling. A trace
 or span is considered "sampled" or "not sampled":
 
 - **Sampled**: A trace or span is processed and exported. Because it is chosen
-  by the sampler as a representive of the population, it is considered
+  by the sampler as a representative of the population, it is considered
   "sampled".
 - **Not sampled**: A trace or span is not processed or exported. Because it is
   not chosen by the sampler, it is considered "not sampled".
