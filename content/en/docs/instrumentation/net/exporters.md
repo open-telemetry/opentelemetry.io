@@ -1,6 +1,7 @@
 ---
 title: Exporters
 weight: 4
+spelling: cSpell:ignore dotnet openzipkin
 ---
 
 In order to visualize and analyze your [traces](/docs/concepts/signals/traces/)
@@ -11,7 +12,7 @@ and metrics, you will need to export them to a backend.
 The console exporter is useful for development and debugging tasks, and is the
 simplest to set up.
 
-```
+```sh
 dotnet add package OpenTelemetry.Exporter.Console
 dotnet add package OpenTelemetry.Extensions.Hosting
 ```
@@ -45,7 +46,7 @@ using var tracerProvider = Sdk.CreateTracerProviderBuilder()
 To send trace data to an OTLP endpoint (like the [collector](/docs/collector) or
 Jaeger) you'll want to configure an OTLP exporter that sends to your endpoint.
 
-```
+```sh
 dotnet add package OpenTelemetry.Exporter.OpenTelemetryProtocol
 dotnet add package OpenTelemetry.Extensions.Hosting
 ```
@@ -64,8 +65,8 @@ builder.Services.AddOpenTelemetry()
   });
 ```
 
-This will, by default, send traces using gRPC to http://localhost:4317, to
-customize this to use Http and the ProtoBuf format, you can add options like
+This will, by default, send traces using gRPC to <http://localhost:4317>, to
+customize this to use HTTP and the ProtoBuf format, you can add options like
 this:
 
 ```csharp
@@ -248,7 +249,7 @@ await app.RunAsync();
 
 ### Non-ASP.NET Core
 
-For applications not using ASP.NET Core, you can use the `HttpListner` version
+For applications not using ASP.NET Core, you can use the `HttpListener` version
 which is available in a different package:
 
 ```shell
