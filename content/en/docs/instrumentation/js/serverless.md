@@ -1,6 +1,7 @@
 ---
 title: Serverless
 weight: 8
+spelling: cSpell:ignore otelwrapper
 ---
 
 This guide shows how to get started with tracing serverless functions using
@@ -183,7 +184,7 @@ function in the backend!
 ## GCP function
 
 The following shows how to instrument
-[http triggered function](https://cloud.google.com/functions/docs/writing/write-http-functions)
+[HTTP triggered function](https://cloud.google.com/functions/docs/writing/write-http-functions)
 using the Google Cloud Platform (GCP) UI.
 
 ### Creating function
@@ -208,7 +209,7 @@ value:
 
 On the next screen (_Code_), select Node.js version 16 for your runtime.
 
-### Establish otel wrapper
+### Establish OTel wrapper
 
 Create a new file called `otelwrapper.js`, that will be used to instrument your
 service. Please make sure that you provide a `SERVICE_NAME` and that you set the

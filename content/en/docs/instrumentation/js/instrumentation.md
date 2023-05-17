@@ -2,6 +2,7 @@
 title: Instrumentation
 aliases: [/docs/instrumentation/js/api/tracing]
 weight: 4
+spelling: cSpell:ignore Millis
 ---
 
 Manual instrumentation is the process of adding observability code to your
@@ -45,7 +46,6 @@ import { Resource } from "@opentelemetry/resources";
 import { SemanticResourceAttributes } from "@opentelemetry/semantic-conventions";
 import { NodeTracerProvider } from "@opentelemetry/sdk-trace-node";
 import { registerInstrumentations } from "@opentelemetry/instrumentation";
-
 
 // Optionally register instrumentation libraries
 registerInstrumentations({
@@ -146,7 +146,6 @@ import { SemanticResourceAttributes } from "@opentelemetry/semantic-conventions"
 import { WebTracerProvider } from "@opentelemetry/sdk-trace-web";
 import { registerInstrumentations } from "@opentelemetry/instrumentation";
 import { BatchSpanProcessor, ConsoleSpanExporter } from "@opentelemetry/sdk-trace-base";
-
 
 // Optionally register automatic instrumentation libraries
 registerInstrumentations({
