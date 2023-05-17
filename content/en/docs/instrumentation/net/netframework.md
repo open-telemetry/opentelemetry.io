@@ -2,6 +2,7 @@
 title: .NET Framework instrumentation configuration
 linkTitle: .NET Framework
 weight: 5
+spelling: cSpell:ignore asax LINQ
 ---
 
 OpenTelemetry supports both
@@ -74,7 +75,7 @@ ASP.NET instrumentation can be configured to change the default behavior.
 
 ### Filter
 
-ASP.NET instrumentation collects all incoming http requests by default. However,
+ASP.NET instrumentation collects all incoming HTTP requests by default. However,
 you can filter incoming requests by using the `Filter` method in
 `AspNetInstrumentationOptions`. This works similar to a LINQ `Where` clause,
 where only requests that match a condition will be collected.

@@ -245,7 +245,7 @@ block is explicitly defined, rather than scoped to `DoWork` itself like
 ## Creating independent Spans
 
 The previous examples showed how to create
-[Spans](/docs/concepts/signals/traces/#spans) that follow a nested heirarchy. In
+[Spans](/docs/concepts/signals/traces/#spans) that follow a nested hierarchy. In
 some cases, you'll want to create independent Spans that are siblings of the
 same root rather than being nested.
 
