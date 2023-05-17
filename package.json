@@ -83,6 +83,9 @@
           "eBPF",
           "HTTP",
           ".NET",
+          "JSON",
+          "protobuf",
+	  "PHP",
           [
             "open-source",
             "open source"
