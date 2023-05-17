@@ -22,7 +22,7 @@ service or app code, see [Manual instrumentation](../manual).
     preferred directory. The JAR file contains the agent and instrumentation
     libraries.
 2.  Add `-javaagent:path/to/opentelemetry-javaagent.jar` and other config to
-    your JVMs startup arguments and launch your app:
+    your JVM startup arguments and launch your app:
 
     - Directly on the startup command:
 
