@@ -3,8 +3,8 @@ title: Metrics
 weight: 20
 ---
 
-OpenTelemetry can be used to measure and record different types of
-[metrics](docs/concepts/signals/metrics/) from an application, which can then be
+OpenTelemetry can be used to measure and record different types of metrics from
+an application, which can then be
 [pushed](/docs/specs/otel/metrics/sdk/#push-metric-exporter) to a metrics
 service such as the OpenTelemetry collector:
 
@@ -16,7 +16,7 @@ service such as the OpenTelemetry collector:
 - async up/down counter
 
 Meter types and usage are explained in the
-[concepts](/docs/concepts/signals/metrics/) documentation.
+[metrics concepts](/docs/concepts/signals/metrics/) documentation.
 
 ## Setup
 
