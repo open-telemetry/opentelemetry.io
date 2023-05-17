@@ -71,7 +71,7 @@ php -v
 composer -v
 ```
 
-In an empty directory create a minimal composer.json file in your directory:
+In an empty directory create a minimal `composer.json` file in your directory:
 
 ```json
 {

@@ -321,7 +321,7 @@ sending the telemetry data to a particular backend:
   underlying `Transport` can send:
   - protobuf over HTTP
   - protobuf over gRPC
-  - json over HTTP
+  - JSON over HTTP
 
 ### Logging and Error Handling
 
