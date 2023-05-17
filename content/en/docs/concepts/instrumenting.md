@@ -113,7 +113,7 @@ as a proxy or sidecar to your service instances or run on a separate host. The
 Collector can then be configured to forward and export this data to your choice
 of analysis tools.
 
-In addition to open-source tools such as Jaeger or Prometheus, a growing list of
+In addition to open source tools such as Jaeger or Prometheus, a growing list of
 companies support ingesting telemetry data from OpenTelemetry. For details, see
 [Vendors](/ecosystem/vendors/).
 
