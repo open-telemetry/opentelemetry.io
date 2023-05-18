@@ -6,6 +6,8 @@ author: >-
   [Kumar Pratyush](https://github.com/kpratyus),  [Sanket
   Mehta](https://github.com/sanketmehta28), [Severin
   Neumann](https://github.com/svrnm) (Cisco)
+spelling: cSpell:ignore Kumar Pratyush Sanket Mehta Neumann nginx webserver
+spelling: cSpell:ignore WORKDIR linux proto distro traceparent tracestate xvfz
 ---
 
 OpenTelemetry is here to help us find the root cause of issues in our software
@@ -23,13 +25,13 @@ issues.
 ### Describe the bug
 
 For the blog post [Learn how to instrument nginx with OpenTelemetry][] we
-created a small sample app that had a frontend application in Node.JS, that
+created a small sample app that had a frontend application in Node.js, that
 called an nginx, which acted as a reverse proxy for a backend application in
 python.
 
 Our goal was to create a re-usable `docker-compose` that would not only show
 people how to instrument nginx with OpenTelemetry, but also how a distributed
-trace crossing the webserver would look like.
+trace crossing the web server would look like.
 
 While Jaeger showed us a trace flowing from the frontend application down to the
 nginx, the connection between nginx and python app was not visible: we had two
@@ -142,12 +144,12 @@ to the frontend with `curl localhost:8000`
 
 ### What did you expect to see?
 
-In the jaeger UI at [localhost:16686][] you would expect to see traces going
+In the Jaeger UI at [localhost:16686][] you would expect to see traces going
 from the `frontend` through nginx down to the `python-app`.
 
 ### What did you see instead?
 
-In the jaeger UI at [localhost:16686][] you will see two traces, one going from
+In the Jaeger UI at [localhost:16686][] you will see two traces, one going from
 the `frontend` down to nginx, and another one only for the `python-app`.
 
 ## The solution
@@ -159,12 +161,12 @@ problem was either caused by the python application or by the combination of the
 nginx instrumentation and the python application.
 
 We could quickly rule out that the python application alone was the issue:
-trying out a simple Node.JS application as backend, we got the same result: two
-traces, one from frontend to nginx, another one for the Node.JS application
+trying out a simple Node.js application as backend, we got the same result: two
+traces, one from frontend to nginx, another one for the Node.js application
 alone.
 
 With that, we knew that we had a propagation issue: the trace context was not
-transferred successfully from nginx down to the python and Node.JS application.
+transferred successfully from nginx down to the python and Node.js application.
 
 ### The analysis
 

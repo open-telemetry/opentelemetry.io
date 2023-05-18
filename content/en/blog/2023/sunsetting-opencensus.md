@@ -89,7 +89,7 @@ One exception to this is the
 
 [^spec-next-release]:
     The
-    [OpenCensus Compatability specification](/docs/specs/otel/compatibility/opencensus/)
+    [OpenCensus Compatibility specification](/docs/specs/otel/compatibility/opencensus/)
     is marked stable for the next specification release.
 
 [^shim-support]:

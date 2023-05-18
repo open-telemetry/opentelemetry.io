@@ -4,6 +4,7 @@ linkTitle: Exponential Histograms
 date: 2022-08-24
 author: '[Jack Berg](https://github.com/jack-berg)'
 canonical_url: https://newrelic.com/blog/best-practices/opentelemetry-histograms
+spelling: cSpell:ignore proto
 ---
 
 Histograms are a powerful tool in the observability tool belt. OpenTelemetry
@@ -280,7 +281,6 @@ _A version of this article was [originally posted][] on the New Relic blog._
 
 [originally posted]: {{% param canonical_url %}}
 
-[percentiles]: https://en.wikipedia.org/wiki/Percentile
 [api]: /docs/specs/otel/metrics/api/
 [sdk]: /docs/specs/otel/metrics/sdk/
 [meter provider]: /docs/specs/otel/metrics/api/#meterprovider

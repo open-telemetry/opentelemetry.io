@@ -4,6 +4,13 @@ linkTitle: eBay OpenTelemetry
 date: 2022-12-19
 author: '[Vijay Samuel](https://github.com/vjsamuel) (eBay)'
 canonical_url: https://tech.ebayinc.com/engineering/why-and-how-ebay-pivoted-to-opentelemetry/
+spelling: cSpell:ignore Vijay Metricbeat sharded Filebeat autodiscover
+spelling: cSpell:ignore Dropwizard kube Auditbeat metricbeat statefulset
+spelling: cSpell:ignore clusterlocal filereloadreceiver Premendra Aishwarya
+spelling: cSpell:ignore Yandapalli Santanu Bhattacharya Feldmeier Rami Charif
+spelling: cSpell:ignore Sarbu Golubenco Ruflin Steffen Siering Pérez Aradros 
+spelling: cSpell:ignore Kroh Christos Markou Soriano Tigran Nigaryan Bogdan
+spelling: cSpell:ignore Drutu Ashpole Mirabella Juraci Paixão Kröhling Teoh
 ---
 
 eBay makes a crucial pivot to OpenTelemetry to better align with industry
@@ -22,10 +29,10 @@ order to pivot to using it. eBay’s observability platform Sherlock.io provides
 developers and Site Reliability Engineers (SREs) with a robust set of
 cloud-native offerings to observe the various applications that power the eBay
 ecosystem. Sherlock.io supports the three pillars of observability — metrics,
-logs and traces. The platform’s metricstore is a clustered and sharded
+logs and traces. The platform’s metric store is a clustered and sharded
 implementation of the Prometheus storage engine. We use the Metricbeat agent to
 scrape around 1.5 million Prometheus endpoints every minute, which are ingested
-into the metricstores. These endpoints along with recording rules result in
+into the metric stores. These endpoints along with recording rules result in
 ingesting around 40 million samples per second. The ingested samples result in 3
 billion active series being stored on Prometheus. As a result, eBay’s
 observability platform operates at an uncommonly massive scale, which brings
@@ -44,7 +51,7 @@ cluster. However, an experiment performed during an internal hack week provided
 some surprising conclusions and led to us reconsidering our usage of DaemonSets.
 In this blog post, we discuss some of the problems we ran into, especially for
 metrics scraping, and how we evolved our own solution. We will also discuss in
-detail about how we have been navigating the evolving open-source landscape with
+detail about how we have been navigating the evolving open source landscape with
 regards to licensing and how we intend to align with OpenTelemetry as an
 initiative.
 
@@ -88,7 +95,7 @@ Kubernetes API server to deliver to the agent information such as:
   like an SSL certificate?
 
 With more and more complex discovery patterns required, we worked with the Beats
-open-source community to enhance the power of autodiscover for our specific
+open source community to enhance the power of autodiscover for our specific
 needs. Some of the features we contributed include:
 
 - [Discovering multiple sets of configurations](https://github.com/elastic/beats/pull/18883):
@@ -269,19 +276,19 @@ include:
 - [Align sanitizing labels and metric names that start with “\_” with Prometheus](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/7112)
 - [Ability to disable label sanitization](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/8270)
 - [Correctly handle metric names starting with “:”](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/14158)
-- [Ability to extract pod labels using regexes](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/9525)
+- [Ability to extract pod labels using regular expressions](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/9525)
 
 These issues proved difficult to catch, and sometimes only surfaced when we
 attempted to upgrade a Kubernetes cluster to use OpenTelemetry Collector. Once
 we hit such an issue, rollback was the only option and we were forced to go back
 to the drawing board. One partial solution involved writing a comparison script
 that can scrape an endpoint using Metricbeat and OpenTelemetry Collector,
-simultaneously ingest them nto the metricstore and compare the metricname and
+simultaneously ingest them to the metric store and compare the metric name and
 labels to ensure that the scrapes are on par with each other. This greatly
 improved our confidence in moving forward.
 
 Sometimes moving forward simply means dropping support for certain features. We
-did just that with support for dropwizard metrics and had users migrate away
+did just that with support for Dropwizard metrics and had users migrate away
 from the same. Outside of semantic differences, we are also actively working on
 adding features that we feel are critical for the project, like
 [supporting Exemplars](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/14132).
@@ -325,7 +332,7 @@ the many thought leaders who have been involved in these activities:
 - [Rami El-Charif](https://www.linkedin.com/in/ramielcharif)
 
 We are extremely grateful to both the Elastic Beats community of the past and
-the present Open Telemetry community for supporting and working with us as we
+the present OpenTelemetry community for supporting and working with us as we
 strive to build world-class Observability offerings for our eBay developer
 community.
 
@@ -340,7 +347,7 @@ Elastic community:
 - [Christos Markou](https://www.linkedin.com/in/christos-markou-a6542ab4)
 - [Jaime Soriano Pastor](https://www.linkedin.com/in/jaimesorianopastor/)
 
-Open Telemetry Collector community:
+OpenTelemetry Collector community:
 
 - [Tigran Nigaryan](https://github.com/tigrannajaryan)
 - [Bogdan Drutu](https://github.com/bogdandrutu)

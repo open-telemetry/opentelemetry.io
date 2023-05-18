@@ -4,6 +4,7 @@ linkTitle: Governance Committee Explained
 date: 2019-11-06
 canonical_url: https://medium.com/opentelemetry/opentelemetry-governance-committee-explained-860353baba0
 author: '[Sergey Kanzhelev](https://github.com/SergeyKanzhelev)'
+spelling: cSpell:ignore Sergey Kanzhelev
 ---
 
 This article describes the functions and responsibilities of the OpenTelemetry
@@ -74,6 +75,6 @@ Thanks [Sarah Novotny](https://twitter.com/sarahnovotny) for review and
 feedback!
 
 _A version of this article was [originally posted][] on
-[medium.com/opentelemetry.](https://medium.com/opentelemetry)._
+[medium.com/opentelemetry](https://medium.com/opentelemetry)._
 
 [originally posted]: {{% param canonical_url %}}
