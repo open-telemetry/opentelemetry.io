@@ -1469,7 +1469,7 @@ entities, you should follow the guideline provided by the specification:
 > Attributes are grouped logically by the type of the concept that they
 > described. Attributes in the same group have a common prefix that ends with a
 > dot. For example all attributes that describe Kubernetes properties start with
-> "k8s."
+> `k8s.`
 
 Let's start by opening the `tailtracer/model.go` and adding
 `go.opentelemetry.io/collector/pdata/pcommon` to the `import` clause so you can
