@@ -8,7 +8,7 @@ spelling: cSpell:ignore Otel
 ---
 
 The OpenTelemetry Operator supports injecting and configuring
-auto-instrumentation libraries for .NET, Java, NodeJS and Python services.
+auto-instrumentation libraries for .NET, Java, Node.js and Python services.
 
 ## Installation
 

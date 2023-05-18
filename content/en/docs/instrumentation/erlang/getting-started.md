@@ -1,6 +1,8 @@
 ---
 title: Getting Started
 weight: 20
+spelling: cSpell:ignore rebar relx stdlib bogons
+spelling: cSpell:ignore defmodule erts hipe Eshell erlang
 ---
 
 Welcome to the OpenTelemetry for Erlang/Elixir getting started guide! This guide
@@ -111,7 +113,7 @@ the [Exporter](https://hexdocs.pm/opentelemetry/otel_exporter.html).
 Exporters are packages that allow telemetry data to be emitted somewhere -
 either to the console (which is what we're doing here), or to a remote system or
 collector for further analysis and/or enrichment. OpenTelemetry supports a
-variety of exporters through its ecosystem, including popular open-source tools
+variety of exporters through its ecosystem, including popular open source tools
 like Jaeger and Zipkin.
 
 To configure OpenTelemetry to use a particular exporter, in this case

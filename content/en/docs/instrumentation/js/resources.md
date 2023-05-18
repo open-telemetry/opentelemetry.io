@@ -14,7 +14,7 @@ indicate latency in your system, you can narrow it down to a specific container,
 pod, or Kubernetes deployment.
 
 Below you will find some introductions on how to set up resource detection with
-the Node.JS SDK.
+the Node.js SDK.
 
 ## Setup
 
@@ -23,7 +23,7 @@ the files `package.json`, `app.js` and `tracing.js`.
 
 ## Process & Environment Resource Detection
 
-Out of the box, the Node.JS SDK detects [process and process runtime
+Out of the box, the Node.js SDK detects [process and process runtime
 resources][] and takes attributes from the environment variable
 `OTEL_RESOURCE_ATTRIBUTES`. You can verify what it detects by turning on
 diagnostic logging in `tracing.js`:
