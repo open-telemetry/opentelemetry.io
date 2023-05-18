@@ -313,6 +313,7 @@ environment variable `OTEL_INSTRUMENTATION_[NAME]_ENABLED`) where `name`
 | Java JDBC                                        | `jdbc`                                      |
 | Java JDBC `DataSource`                           | `jdbc-datasource`                           |
 | Java RMI                                         | `rmi`                                       |
+| Java Runtime                                     | `runtime-metrics`                           |
 | Java Servlet                                     | `servlet`                                   |
 | java.util.concurrent                             | `executors`                                 |
 | java.util.logging                                | `java-util-logging`                         |
