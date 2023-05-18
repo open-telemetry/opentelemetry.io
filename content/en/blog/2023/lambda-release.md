@@ -21,7 +21,7 @@ Which is totally correct. Thankfully, we're not remaking the wheel here.
 However, there are some pre-existing problems that impact our users:
 
 - The OTel Lambda layers were only released as part of the
-  [Amazon Distribution of OTel (ADOT)](https://aws-otel.github.io/) and the
+  [AWS Distribution for OTel (ADOT)](https://aws-otel.github.io/) and the
   community had limited control over releases which meant a delay getting new
   features and fixes delivered.
 - The layers available on AWS combined the Collector and auto-instrumentation
