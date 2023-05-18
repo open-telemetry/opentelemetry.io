@@ -227,7 +227,7 @@ equivalent environment variable `OTEL_JAVAAGENT_ENABLED=false`).
 ### Enable only specific instrumentation
 
 You can disable all default auto instrumentation and selectively re-enable
-individual instrumentation. This may be desireable to reduce startup overhead or
+individual instrumentation. This may be desirable to reduce startup overhead or
 to have more control of which instrumentation is applied.
 
 - Disable all instrumentation in the agent using
@@ -313,6 +313,7 @@ environment variable `OTEL_INSTRUMENTATION_[NAME]_ENABLED`) where `name`
 | Java JDBC                                        | `jdbc`                                      |
 | Java JDBC `DataSource`                           | `jdbc-datasource`                           |
 | Java RMI                                         | `rmi`                                       |
+| Java Runtime                                     | `runtime-metrics`                           |
 | Java Servlet                                     | `servlet`                                   |
 | java.util.concurrent                             | `executors`                                 |
 | java.util.logging                                | `java-util-logging`                         |
