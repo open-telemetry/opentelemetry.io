@@ -21,11 +21,11 @@ OpenTelemetry provides integration with the following open source projects.
 | [Graphite](https://graphiteapp.org/)                      | Collector                                                |
 | [Jaeger](https://www.jaegertracing.io/)                   | Collector, DotNet, Go, Java, JS, PHP, Python, Ruby, Rust |
 | [OpenCensus](https://opencensus.io/)                      | Collector, Python                                        |
-| [OpenTracing](https://opentracing.io/)                    | DotNet, Go, Java, JS, Python, Ruby                       |
 | [OpenMetrics](https://openmetrics.io/) [^partial-support] | Collector                                                |
+| [OpenTracing](https://opentracing.io/)                    | DotNet, Go, Java, JS, Python, Ruby                       |
 | [Prometheus](https://prometheus.io/) [^partial-support]   | Collector, C++, Go, Java, JS, Rust                       |
-| [Zipkin](https://zipkin.io/)                              | Collector, DotNet, Go, Java, JS, PHP, Python, Rust       |
 | [W3C trace-context](https://www.w3.org/TR/trace-context/) | DotNet, Go, Java, JS, Python, Ruby                       |
+| [Zipkin](https://zipkin.io/)                              | Collector, DotNet, Go, Java, JS, PHP, Python, Rust       |
 
 \* _Projects are listed alphabetically_.
 
