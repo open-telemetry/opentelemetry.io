@@ -32,10 +32,10 @@ for every bucket.
 In OpenTelemetry exponential histograms, buckets are calculated automatically
 from an integer _scale factor_, with larger scale factors offering smaller
 buckets and greater precision. It is important to select a scale factor that is
-appropriate for the scale of values you are collecting in order to minimize
-error, maximize efficiency, and ensure the values being collected fit in a
-reasonable number of buckets. In the next few sections, I'll go over the scale
-and error calculations in detail.
+appropriate for the distribution of values you are collecting in order to
+minimize error, maximize efficiency, and ensure the values being collected fit
+in a reasonable number of buckets. In the next few sections, I'll go over the
+scale and error calculations in detail.
 
 ## Scale factor
 
@@ -100,21 +100,21 @@ pair of neighboring buckets in _A_ to form histogram _A'_ with scale 2. Then,
 each bucket in _A'_ is summed with the corresponding bucket of the same index in
 _B_ to make _C_.
 
-## Error rate
+## Relative Error
 
-The error rate of a histogram is defined as the average relative error when
-estimating the value of a particular-ranked data point. This is important
-because it is how φ-quantiles are estimated. In a histogram with x data points,
-the nth percentile is the data point at rank `n / 100 * x`. For an example of
-this calculation, see my previous post [Histograms vs Summaries][]. When
-estimating ɸ-quantiles it is very important to know the expected relative error
-rates and maximum relative error rates so that you can effectively monitor your
-SLOs.
+A histogram does not store exact values for each point, but represents each
+point as a bucket consisting of a range of possible points. This can be thought
+of as being similar to lossy compression. In the same way the it is impossible
+to recover an exact source image from a compressed JPEG, it is impossible to
+recover the exact input data set from a histogram. The difference between the
+input data and the estimated reconstruction of the data is the error of the
+histogram. It is important to understand histogram errors because it affects
+φ-quantile estimation and may affect how you define your SLOs.
 
-When using linear interpolation, the expected relative error is half the bucket
-width divided by the bucket midpoint. Because the relative error is the same
-across all buckets, we can use the first bucket with the upper bound of the base
-to make the math easy. An example is shown below using a scale of 3.
+The relative error for a histogram is defined as half the bucket width divided
+by the bucket midpoint. Because the relative error is the same across all
+buckets, we can use the first bucket with the upper bound of the base to make
+the math easy. An example is shown below using a scale of 3.
 
 ```
 scale = 3
@@ -122,12 +122,16 @@ scale = 3
 base  = 1.090508
 
 relative error = (bucketWidth / 2) / bucketMidpoint
+               = ((upper - lower) / 2) / ((upper + lower) / 2)
                = ((base - 1) / 2) / ((base + 1) / 2)
                = (base - 1) / (base + 1)
                = (1.090508 - 1) / (1.090508 + 1)
                = 0.04329
                = 4.329%
 ```
+
+For more information regarding histogram errors, see [OTEP 149][] and the
+[specification for exponential histogram aggregations][].
 
 ## Choosing a scale
 
@@ -191,6 +195,8 @@ _A version of this article was [originally posted][] to the author's blog._
 [Histograms vs Summaries]: {{% relref "histograms-vs-summaries" %}}
 [Using OpenTelemetry’s Exponential Histograms in Prometheus]:
   https://www.youtube.com/watch?v=W2_TpDcess8
+[OTEP 149]: https://github.com/open-telemetry/oteps/blob/976c9395e4cbb3ea933d3b51589eba94b87a17bd/text/0149-exponential-histogram.md
+[specification for exponential histogram aggregations]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#base2-exponential-bucket-histogram-aggregation
 
 [originally posted]: {{% param canonical_url %}}
 <!-- prettier-ignore-end -->
