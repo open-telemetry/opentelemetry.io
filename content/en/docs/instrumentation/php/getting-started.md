@@ -3,81 +3,57 @@ title: Getting Started
 description: Get up and running with OpenTelemetry for PHP.
 aliases: [/docs/instrumentation/php/getting_started]
 weight: 1
+spelling: cSpell:ignore Wordpress Symfony Laravel rolldice autoload strval PECL
+spelling: cSpell:ignore darwin
 ---
 
-## Requirements
+This page will show you how to get started with OpenTelemetry in PHP.
 
-OpenTelemetry for PHP requires a minimum PHP version of 7.4, and
-auto-instrumentation requires version 8.0+.
+You will learn how you can instrument a simple java application automatically,
+in such a way that [traces][], [metrics][] and [logs][] are emitted to the
+console.
+
+## Prerequisites
+
+Ensure that you have the following installed locally: open source
+
+- [PHP 8.0+](https://www.php.net/)
+- [PECL](https://pecl.php.net/)
+- [composer](https://getcomposer.org/)
+
+Before you get started make sure that you have both available in your shell:
+
+```sh
+$ php -v
+$ composer -v
+```
+
+## Example Application
+
+The following example uses a basic [Slim](https://www.slimframework.com/)
+application. If you are not using Slim, that's ok — you can use OpenTelemetry
+PHP with other web frameworks as well, such as Wordpress, Symfony and Laravel.
+For a complete list of libraries for supported frameworks, see the
+[registry](/ecosystem/registry/?component=instrumentation&language=php).
 
 ### Dependencies
 
-Some of the `SDK` and `Contrib` packages have a dependency on both a
-[HTTP Factories (PSR17)](https://www.php-fig.org/psr/psr-17/) and a
-[php-http/async-client](https://docs.php-http.org/en/latest/clients.html)
-implementation. You can find appropriate composer packages implementing given
-standards on [packagist.org](https://packagist.org/).
-
-See
-[http-factory-implementations](https://packagist.org/providers/psr/http-factory-implementation)
-to find a `PSR17 (HTTP factories)` implementation, and
-[async-client-implementations](https://packagist.org/providers/php-http/async-client-implementation)
-to find a `php-http/async-client` implementation.
-
-### Optional PHP extensions
-
-| Extension                                                                 | Purpose                                                           |
-| ------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| [ext-grpc](https://github.com/grpc/grpc/tree/master/src/php)              | Required to use gRPC as a transport for the OTLP exporter         |
-| [ext-mbstring](https://www.php.net/manual/en/book.mbstring.php)           | More performant than the fallback, `symfony/polyfill-mbstring`    |
-| [ext-zlib](https://www.php.net/manual/en/book.zlib.php)                   | If you want to compress exported data                             |
-| [ext-ffi](https://www.php.net/manual/en/book.ffi.php)                     | Fiber-based context storage                                       |
-| [ext-protobuf](https://github.com/protocolbuffers/protobuf/tree/main/php) | _Significant_ performance improvement for otlp+protobuf exporting |
-
-#### ext-ffi
-
-Fibers support can be enabled by setting the `OTEL_PHP_FIBERS_ENABLED`
-environment variable to a truthy value (`1`, `true`, `on`). Using fibers with
-non-`CLI` SAPIs may require preloading of bindings. One way to achieve this is
-setting
-[`ffi.preload`](https://www.php.net/manual/en/ffi.configuration.php#ini.ffi.preload)
-to `src/Context/fiber/zend_observer_fiber.h` and setting
-[`opcache.preload`](https://www.php.net/manual/en/opcache.preloading.php) to
-`vendor/autoload.php`.
-
-#### ext-protobuf
-
-The [native protobuf library](https://packagist.org/packages/google/protobuf) is
-significantly slower than the extension. We strongly encourage the use of the
-extension.
-
-## Introduction
-
-OpenTelemetry for PHP is distributed via
-[packagist](https://packagist.org/packages/open-telemetry/), in a number of
-packages. We recommend that you install only the packages that you need, which
-as a minimum is usually `API`, `Context`, `SDK` and an exporter.
-
-We strongly encourage that your code only depend on classes and interfaces in
-the `API` package.
-
-## Setup
-
-Before you get started make sure that you have php and
-[composer](https://getcomposer.org/download/) available in your shell:
+In an empty directory create a minimal `composer.json` file in your directory:
 
 ```sh
-php -v
-composer -v
+echo '{"require": {}, "minimum-stability": "beta", "config": {"allow-plugins": {"php-http/discovery": true}}}' > composer.json
 ```
 
 In an empty directory create a minimal `composer.json` file in your directory:
 
-```json
-{
-  "require": {}
-}
+```sh
+composer require slim/slim:"4.*"
+composer require slim/psr7
 ```
+
+### Create and launch an HTTP Server
+
+In that same directory, create a file called `index.php`
 
 ## Export to Console
 
@@ -86,198 +62,157 @@ content:
 
 ```php
 <?php
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Factory\AppFactory;
 
-declare(strict_types=1);
 require __DIR__ . '/vendor/autoload.php';
 
-use OpenTelemetry\SDK\Trace\SpanExporter\ConsoleSpanExporterFactory;
-use OpenTelemetry\SDK\Trace\SpanProcessor\SimpleSpanProcessor;
-use OpenTelemetry\SDK\Trace\TracerProvider;
+$app = AppFactory::create();
 
-echo 'Starting ConsoleSpanExporter' . PHP_EOL;
+$app->get('/rolldice', function (Request $request, Response $response, $args) {
+    $response->getBody()->write(strval(random_int(1,6)));
+    return $response;
+});
 
-$tracerProvider =  new TracerProvider(
-    new SimpleSpanProcessor(
-        (new ConsoleSpanExporterFactory())->create()
-    )
-);
+$app->run();
 
-$tracer = $tracerProvider->getTracer('io.opentelemetry.contrib.php');
-
-$rootSpan = $tracer->spanBuilder('root')->startSpan();
-$rootScope = $rootSpan->activate();
-
-try {
-    $span1 = $tracer->spanBuilder('foo')->startSpan();
-    $scope = $span1->activate();
-    try {
-        $span2 = $tracer->spanBuilder('bar')->startSpan();
-        echo 'OpenTelemetry welcomes PHP' . PHP_EOL;
-    } finally {
-        $span2->end();
-    }
-} finally {
-    $span1->end();
-    $scope->detach();
-}
-$rootSpan->end();
-$rootScope->detach();
 ```
 
-To use the OpenTelemetry SDK for PHP you need packages that satisfy the
-dependencies for `php-http/async-client-implementation` and
-`psr/http-factory-implementation`, for example the Guzzle 7 HTTP Adapter
-satisfies both:
+Run the application with the following command and open
+<http://localhost:8080/rolldice> in your web browser to ensure it is working.
 
 ```sh
-composer require "php-http/guzzle7-adapter"
+php -S localhost:8080
 ```
 
-Now you can install the OpenTelemetry SDK:
+## Instrumentation
+
+Next, you’ll use the OpenTelemetry PHP extension to
+[automatically instrument](/automatic/) the application at launch time.
+
+1. Since the extension is built from source, you need to setup some build tools
+
+   {{< tabpane lang=shell persistLang=false >}}
+
+   {{< tab "Linux (apt)" >}}sudo apt-get install gcc make autoconf{{< /tab >}}
+
+   {{< tab "MacOS (homebrew)" >}}brew install gcc make autoconf{{< /tab >}}
+
+   {{< /tabpane >}}
+
+2. Build the extension with `PECL`:
+
+   ```sh
+   $ pecl install opentelemetry-beta
+   ```
+
+   {{% alert title="Note" color="warning" %}}If you want to pickle or the
+   docker-specific use php-extension-installer to build/install the extension,
+   [read the instructions here](../automatic). {{% /alert %}}
+
+3. Add the extension to your `php.ini` file:
+
+   ```ini
+   [opentelemetry]
+   extension=opentelemetry.so
+   ```
+
+4. Verify that the extension is installed and enabled:
+
+   ```sh
+   $ php -m | grep opentelemetry
+   ```
+
+5. Add additional dependencies to your application, which are required for the
+   automatic instrumentation of your code:
+
+   ```sh
+   $ composer require php-http/guzzle7-adapter open-telemetry/sdk open-telemetry/opentelemetry-auto-slim
+   ```
+
+With the OpenTelemetry PHP extension set up you can now run your application and
+automatically instrument it at launch time:
 
 ```sh
-composer require open-telemetry/sdk
+env OTEL_PHP_AUTOLOAD_ENABLED=true  OTEL_TRACES_EXPORTER=console OTEL_METRICS_EXPORTER=none OTEL_LOGS_EXPORTER=none php -S localhost:8080
 ```
 
-The example uses the `ConsoleSpanExporter`, which prints Spans to stdout. A Span
-typically represents a single unit of work. A Trace is a grouping of Spans.
+Open <http://localhost:8080/rolldice> in your web browser and reload the page a
+few times. After a while you should see the spans printed to your console:
 
-Run the script:
-
-```console
-$ php GettingStarted.php
-Starting ConsoleSpanExporter
-OpenTelemetry welcomes PHP
-...
-```
-
-You'll see output similar to the following, which shows 3 spans within a single
-trace:
+<details>
+<summary>View example output</summary>
 
 ```json
-{
-    "name": "bar",
+[
+  {
+    "name": "GET /rolldice",
     "context": {
-        "trace_id": "e7bc999fb17f453c6e6445802ba1e558",
-        "span_id": "24afe9c453481636",
-        "trace_state": null
+      "trace_id": "16d7c6da7c021c574205736527816eb7",
+      "span_id": "268e52331de62e33",
+      "trace_state": ""
     },
-    "parent_span_id": "c63030cc93c48641",
-    "kind": "KIND_INTERNAL",
-    "start": 1635373538696880128,
-    "end": 1635373538697000960,
-    "attributes": [],
-    "status": {
-        "code": "Unset",
-        "description": ""
-    },
-    "events": []
-}
-{
-    "name": "foo",
-    "context": {
-        "trace_id": "e7bc999fb17f453c6e6445802ba1e558",
-        "span_id": "c63030cc93c48641",
-        "trace_state": null
-    },
-    "parent_span_id": "4e6396224842fc15",
-    "kind": "KIND_INTERNAL",
-    "start": 1635373538696482048,
-    "end": 1635373538700564992,
-    "attributes": [],
-    "status": {
-        "code": "Unset",
-        "description": ""
-    },
-    "events": []
-}
-{
-    "name": "root",
-    "context": {
-        "trace_id": "e7bc999fb17f453c6e6445802ba1e558",
-        "span_id": "4e6396224842fc15",
-        "trace_state": null
+    "resource": {
+      "service.name": "__root__",
+      "service.version": "1.0.0+no-version-set",
+      "telemetry.sdk.name": "opentelemetry",
+      "telemetry.sdk.language": "php",
+      "telemetry.sdk.version": "1.0.0beta10",
+      "telemetry.auto.version": "1.0.0beta5",
+      "process.runtime.name": "cli-server",
+      "process.runtime.version": "8.2.6",
+      "process.pid": 24435,
+      "process.executable.path": "/bin/php",
+      "process.owner": "php",
+      "os.type": "darwin",
+      "os.description": "22.4.0",
+      "os.name": "Darwin",
+      "os.version": "Darwin Kernel Version 22.4.0: Mon Mar  6 20:59:28 PST 2023; root:xnu-8796.101.5~3/RELEASE_ARM64_T6000",
+      "host.name": "OPENTELEMETRY-PHP",
+      "host.arch": "arm64"
     },
     "parent_span_id": "",
-    "kind": "KIND_INTERNAL",
-    "start": 1635373538691308032,
-    "end": 1635373538700800000,
-    "attributes": [],
-    "status": {
-        "code": "Unset",
-        "description": ""
+    "kind": "KIND_SERVER",
+    "start": 1684749478068582482,
+    "end": 1684749478072715774,
+    "attributes": {
+      "code.function": "handle",
+      "code.namespace": "Slim\\App",
+      "code.filepath": "/vendor/slim/slim/Slim/App.php",
+      "code.lineno": 197,
+      "http.url": "http://localhost:8080/rolldice",
+      "http.method": "GET",
+      "http.request_content_length": "",
+      "http.scheme": "http",
+      "http.status_code": 200,
+      "http.flavor": "1.1",
+      "http.response_content_length": ""
     },
-    "events": []
-}
+    "status": {
+      "code": "Unset",
+      "description": ""
+    },
+    "events": [],
+    "links": []
+  }
+]
 ```
 
-## Export to collector
+</details>
 
-The next step is to modify the code to send spans to the collector via OTLP
-instead of the console.
+## What's next?
 
-This will require the installation of the otlp exporter:
+For more:
 
-```shell
-composer require open-telemetry/exporter-otlp
-```
+- Run this example with another [exporter][] for telemetry data.
+- Try [automatic instrumentation](../automatic/) on one of your own apps.
+- Learn about [manual instrumentation][] and try out more
+  [examples](/docs/instrumentation/java/examples/).
 
-Next, using the `GettingStarted.php` from earlier, replace the console exporter
-with an OTLP exporter:
-
-```php
-<?php
-
-declare(strict_types=1);
-require __DIR__ . '/vendor/autoload.php';
-
-use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\HttpFactory;
-use OpenTelemetry\Contrib\Otlp\OtlpHttpTransportFactory;
-use OpenTelemetry\Contrib\Otlp\SpanExporter;
-use OpenTelemetry\SDK\Trace\SpanExporter\ConsoleSpanExporter;
-use OpenTelemetry\SDK\Trace\SpanProcessor\SimpleSpanProcessor;
-use OpenTelemetry\SDK\Trace\TracerProvider;
-
-echo 'Starting OTLP/http Exporter' . PHP_EOL;
-
-$transport = (new OtlpHttpTransportFactory())->create('http://collector:4318/v1/traces', 'application/x-protobuf');
-$exporter = new SpanExporter($transport);
-
-$tracerProvider =  new TracerProvider(
-    new SimpleSpanProcessor(
-        $exporter
-    )
-);
-
-$tracer = $tracerProvider->getTracer('io.opentelemetry.contrib.php');
-
-$rootSpan = $tracer->spanBuilder('root')->startSpan();
-$rootScope = $rootSpan->activate();
-
-try {
-    $span1 = $tracer->spanBuilder('foo')->startSpan();
-    $scope = $span1->activate();
-    try {
-        $span2 = $tracer->spanBuilder('bar')->startSpan();
-        echo 'OpenTelemetry welcomes PHP' . PHP_EOL;
-    } finally {
-        $span2->end();
-    }
-} finally {
-    $span1->end();
-    $scope->detach();
-}
-$rootSpan->end();
-$rootScope->detach();
-```
-
-Run the PHP application:
-
-```console
-$ php GettingStarted.php
-Starting OtlpHttpExporter
-OpenTelemetry welcomes PHP
-```
-
-Now, telemetry will be exported to the collector.
+[traces]: /docs/concepts/signals/traces/
+[metrics]: /docs/concepts/signals/metrics/
+[logs]: /docs/concepts/signals/logs/
+[exporter]:
+  https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md#exporters
+[manual instrumentation]: ../manual
