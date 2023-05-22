@@ -72,6 +72,7 @@ fi
 if [[ "$repo" == "opentelemetry-specification" ]]; then
   echo "Switching to $repo at tag v$latest_version"
   ( set -x;
+    npm run get:submodule -- content-modules/opentelemetry-specification &&
     cd content-modules/opentelemetry-specification &&
     git switch --detach v$latest_version
   )
