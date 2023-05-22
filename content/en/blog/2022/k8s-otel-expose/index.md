@@ -5,13 +5,15 @@ date: 2022-09-08
 author: '[Benedikt Bongartz](https://github.com/frzifus)'
 spelling:
   cSpell:ignore k8sattributes k8sattributesprocessor K8sattributes k8sprocessor
-  cSpell:ignore K8sprocessor KUBE
+  cSpell:ignore K8sprocessor KUBE Benedikt Bongartz OIDC Juraci Paixão Kröhling
+  cSpell:ignore Keycloak dXNlci0xOjEyMzQK nginx basicauth htpasswd llczt
+  cSpell:ignore letsencrypt kubernetes frzifus oidc rolebinding
 ---
 
 Exposing an [OpenTelemetry Collector](/docs/collector/) currently requires a
 number of configuration steps. The goal of this blog post is to demonstrate
 `how to establish a secure communication` between two collectors in different
-kubernetes clusters.
+Kubernetes clusters.
 
 Details of CRDs and dependency installations are not covered by this post.
 
@@ -25,7 +27,7 @@ services from sending data.
 The OpenTelemetry Collector supports different authentication methods. The most
 used are probably:
 
-1. TLS Authentification
+1. TLS Authentication
 2. OpenID Connect (OIDC-Authentication)
 3. HTTP Basic Authentication
 
@@ -56,7 +58,7 @@ The HTTP Basic Authentication mechanism is quite simple. An HTTP user agent
 request. Transmitted credentials are included in the HTTP header by the key
 `Authorization` when the connection is established. As a value the
 authentication method `basic` is mentioned first, followed by the encoded
-crendentials. Note that the credential form is `username:password`.
+credentials. Note that the credential form is `username:password`.
 
 In the following example, `dXNlci0xOjEyMzQK` is the encoding for a combination
 of `username=user-1` and `password=1234`. Note to encode or decode base64
@@ -141,7 +143,7 @@ not contain the
 extension. This extension was configured with the name `basicauth/server` and
 registered in `otlp/basicauth`. As
 [otlp exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/v0.58.0/exporter/otlpexporter)
-endpoint the jaeger inmemory service was configured.
+endpoint the Jaeger in-memory service was configured.
 
 ```yaml
 apiVersion: opentelemetry.io/v1alpha1
@@ -204,7 +206,7 @@ otel-collector-app-collector-monitoring   ClusterIP   10.245.116.38   <none>    
 ```
 
 Finally, cert-manager is configured to automatically request TLS certificates
-from [lets encrypt](https://letsencrypt.org/) and make it available to the
+from [Let’s Encrypt](https://letsencrypt.org/) and make it available to the
 Ingress TLS configuration. The following `ClusterIssuer` and `Ingress` entries
 expose the `otel-collector-app-collector` service. Note that you'll need to
 replace values for the `email` and `host` fields.
@@ -257,10 +259,10 @@ spec:
 In order to be able to determine the origin of the transmitted traces, the
 span-tags are extended by identifying metadata with the help of the
 [k8sattributes processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.58.0/processor/k8sattributesprocessor).
-K8sattribute processor is available in the OpenTelemetry Collector contrib
-version. In the next step we create a service account with the necessary
-permissions. If you want to learn more about the k8s metadata, you can read this
-post "[Improved troubleshooting using k8s metadata](/blog/2022/k8s-metadata)".
+It is available in the OpenTelemetry Collector contrib version. In the next step
+we create a service account with the necessary permissions. If you want to learn
+more about the K8s metadata, you can read this post
+"[Improved troubleshooting using K8s metadata](/blog/2022/k8s-metadata)".
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1

@@ -319,9 +319,9 @@ sending the telemetry data to a particular backend:
 - OpenTelemetry Protocol Exporter: sends the data in OTLP format to the
   [OpenTelemetry Collector](/docs/collector/) or other OTLP receivers. The
   underlying `Transport` can send:
-  - protobuf over http
-  - protobuf over grpc
-  - json over http
+  - protobuf over HTTP
+  - protobuf over gRPC
+  - JSON over HTTP
 
 ### Logging and Error Handling
 

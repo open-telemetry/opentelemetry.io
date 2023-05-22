@@ -4,6 +4,8 @@ linkTitle: End-User Discussions Mar 2023
 date: 2023-03-30
 author: '[Reese Lee](https://github.com/reese-lee) (New Relic)'
 body_class: otel-with-contributions-from
+spelling: cSpell:ignore Rexed Hausenblas Rynn Mancuso Villela Pranay Prateek
+spelling: cSpell:ignore EMEA APAC distro firehosing distros telecommand endusers
 ---
 
 With contributions from [Henrik Rexed](https://github.com/henrikrexed)
@@ -195,7 +197,7 @@ agent to the host metrics receiver for infrastructure monitoring.
   [Node.js](/docs/instrumentation/js/libraries/#node-autoinstrumentation-package).
 - If you’re using Kubernetes, they can use the
   [OTel operator](https://github.com/open-telemetry/opentelemetry-operator),
-  which takes care of instrumentations for applications deployed on k8s. The
+  which takes care of instrumentations for applications deployed on K8s. The
   OTel Operator also supports injecting and configuring auto-instrumentation
   libraries where available (see point above).
 - If you’re using AWS lambda, you should check out the
@@ -268,7 +270,7 @@ For a deeper dive into the above topics, check out the following:
 - [APAC](https://docs.google.com/document/d/1eDYC97LfvE428cpIf3A_hSGirdNzglPurlxgKCmw8o4)
   meeting notes
 
-## Join us!
+## Join us
 
 If you have a story to share about how you use OpenTelemetry at your
 organization, we’d love to hear from you! Ways to share:

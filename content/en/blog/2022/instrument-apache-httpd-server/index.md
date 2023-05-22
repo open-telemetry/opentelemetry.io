@@ -2,8 +2,8 @@
 title: Learn how to instrument Apache Http Server with OpenTelemetry
 linkTitle: Instrument Apache Http Server
 date: 2022-05-27
-spelling:
-  cSpell:ignore Centos centos7 Debajit debuggability libmod OLTP uncompress
+spelling: cSpell:ignore Centos centos7 Debajit debuggability libmod OLTP
+spelling: cSpell:ignore uncompress webserver linux
 author: '[Debajit Das](https://github.com/DebajitDas) (Cisco)'
 ---
 
@@ -223,7 +223,7 @@ writing this blog, support for other architectures is not provided.
     In the case of Apache 2.2, `libmod_apache_otel22.so` needs to be used
     instead of `libmod_apache_otel.so`
 
-  - The following directive should be ON for the openTelemetry module to be
+  - The following directive should be ON for the OpenTelemetry module to be
     enabled, else it would be disabled.
 
     ![enabled](enabled.png)
@@ -249,7 +249,7 @@ writing this blog, support for other architectures is not provided.
 
   ![verify-module](verify-module.png)
 
-- Now, restart the apache module and open telemetry module should be
+- Now, restart the apache module and OpenTelemetry module should be
   instrumented.
 
 [docker-compose.yml]:
