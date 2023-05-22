@@ -1,0 +1,13 @@
+title: Golang OpenTelemetry Neo4j Instrumentation
+registryType: instrumentation
+isThirdParty: true
+language: go
+tags:
+  - golang
+  - instrumentation
+  - neo4j
+  - neo4j-driver
+repo: https://github.com/raito-io/neo4j-tracing
+license: Apache 2.0
+description: Neo4j instrumentation for golang.
+authors: Ruben Mennes (ruben@raito.io)
