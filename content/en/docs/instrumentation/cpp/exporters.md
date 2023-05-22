@@ -1,6 +1,7 @@
 ---
 title: Exporters
 weight: 4
+spelling: cSpell:ignore ostream jaegertracing millis chrono
 ---
 
 In order to visualize and analyze your [traces](/docs/concepts/signals/traces/)
@@ -40,7 +41,7 @@ opts.url = "http://localhost:4318/v1/traces";
 auto exporter = otlp::OtlpHttpExporterFactory::Create(opts);
 ```
 
-#### OTLP GRPC Exporter
+#### OTLP gRPC Exporter
 
 ```cpp
 #include "opentelemetry/exporters/otlp/otlp_grpc_exporter_factory.h"
@@ -84,7 +85,7 @@ docker run -d --name jaeger \
 
 ### Zipkin
 
-To send trace data to a zipkin endpoint you'll want to configure a zipkin
+To send trace data to a Zipkin endpoint you'll want to configure a Zipkin
 exporter that sends to your endpoint.
 
 ```cpp

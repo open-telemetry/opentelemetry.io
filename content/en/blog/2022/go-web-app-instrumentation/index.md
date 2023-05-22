@@ -152,7 +152,7 @@ We now have our todo app ready and instrumented. It’s time to utilize
 OpenTelemetry to its full potential. Our ability to visualize traces is where
 the true troubleshooting power of this technology comes into play.
 
-For visualization, we’ll be using the open-source Jaeger Tracing.
+For visualization, we’ll be using the open source Jaeger Tracing.
 
 ## Visualization with Jaeger
 
@@ -160,8 +160,8 @@ For visualization, we’ll be using the open-source Jaeger Tracing.
 
 [Jaeger Tracing](https://www.aspecto.io/blog/jaeger-tracing-the-ultimate-guide/)
 is a suite of open source projects managing the entire distributed tracing
-“stack”: client, collector, and UI. Jaeger UI is the most commonly used
-open-source to visualize traces.
+“stack”: client, collector, and UI. Jaeger UI is the most commonly used open
+source to visualize traces.
 
 Here’s what the setup looks like:
 
@@ -402,7 +402,7 @@ should see your trace on the right:
 
 ![Jaeger UI displays opentelemetry traces in go for our todo-service](jaeger-otel-todo.png)
 
-Jaeger UI displays opentelemetry traces in go for our todo-service By clicking
+Jaeger UI displays OpenTelemetry traces in go for our todo-service By clicking
 the trace, you can drill down and see more details about it that allow you to
 further investigate on your own:
 

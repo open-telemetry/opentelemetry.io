@@ -6,12 +6,16 @@ weight: 3
 
 **Libraries** that want to export telemetry data using OpenTelemetry MUST only
 depend on the `opentelemetry-api` package and should never configure or depend
-on the OpenTelemetry SDK. The SDK configuration must be provided by
-**Applications** which should also depend on the `opentelemetry-sdk` package, or
-any other implementation of the OpenTelemetry API. This way, libraries will
-obtain a real implementation only if the user application is configured for it.
+on the OpenTelemetry SDK.
 
-## Setup
+The SDK configuration must be provided by **Applications** which should also
+depend on the `opentelemetry-sdk` package, or any other implementation of the
+OpenTelemetry API. This way, libraries will obtain a real implementation only if
+the user application is configured for it.
+
+## Tracing
+
+### Setup
 
 The first step is to get a handle to an instance of the `OpenTelemetry`
 interface.
@@ -80,7 +84,7 @@ shutdown process:
 \OpenTelemetry\SDK\Common\Util\ShutdownHandler::register([$meterProvider, 'shutdown']);
 ```
 
-## Acquiring a Tracer
+### Acquiring a Tracer
 
 To do [Tracing](/docs/concepts/signals/traces/) you'll need to acquire a
 [`Tracer`](/docs/concepts/signals/traces/#tracer).
@@ -250,7 +254,7 @@ try {
 }
 ```
 
-#### Sampler
+### Sampler
 
 It is not always feasible to trace and export every user request in an
 application. In order to strike a balance between observability and expenses,
@@ -281,7 +285,7 @@ Additional samplers can be provided by implementing
 `OpenTelemetry\SDK\Trace\SamplerInterface`. An example of doing so would be to
 make sampling decisions based on attributes set at span creation time.
 
-#### Span Processor
+### Span Processor
 
 Different Span processors are offered by OpenTelemetry. The
 `SimpleSpanProcessor` immediately forwards ended spans to the exporter, while
@@ -293,7 +297,7 @@ $tracerProvider = TracerProvider::builder()
   ->build();
 ```
 
-#### Transports
+### Transports
 
 All exporters require a `Transport`, which is responsible for the sending of
 telemetry data from an exporter:
@@ -302,7 +306,7 @@ telemetry data from an exporter:
 - `StreamTransport` - uses a stream to send data
 - `GrpcTransport` - uses gRPC to send protobuf-encoded data
 
-#### Exporter
+### Exporter
 
 Span processors are initialized with an exporter which is responsible for
 sending the telemetry data to a particular backend:
@@ -315,11 +319,11 @@ sending the telemetry data to a particular backend:
 - OpenTelemetry Protocol Exporter: sends the data in OTLP format to the
   [OpenTelemetry Collector](/docs/collector/) or other OTLP receivers. The
   underlying `Transport` can send:
-  - protobuf over http
-  - protobuf over grpc
-  - json over http
+  - protobuf over HTTP
+  - protobuf over gRPC
+  - JSON over HTTP
 
-## Logging and Error Handling
+### Logging and Error Handling
 
 OpenTelemetry can be configured to use a PSR-3 logger to log information about
 OpenTelemetry, including errors and warnings about misconfigurations or failures
@@ -335,3 +339,156 @@ If no PSR-3 logger is provided, error messages will instead be recorded via
 
 For more fine-grained control and special case handling, custom handlers and
 filters can be applied to the logger (if the logger offers this ability).
+
+## Metrics
+
+OpenTelemetry can be used to measure and record different types of metrics from
+an application, which can then be
+[pushed](/docs/specs/otel/metrics/sdk/#push-metric-exporter) to a metrics
+service such as the OpenTelemetry collector:
+
+- counter
+- async counter
+- histogram
+- async gauge
+- up/down counter
+- async up/down counter
+
+Meter types and usage are explained in the
+[metrics concepts](/docs/concepts/signals/metrics/) documentation.
+
+### Setup
+
+First, create a `MeterProvider`:
+
+```php
+$reader = new ExportingReader((new ConsoleMetricExporterFactory())->create());
+
+$meterProvider = MeterProvider::builder()
+    ->addReader($reader)
+    ->build();
+```
+
+You can now use the meter provider to retrieve meters.
+
+### Synchronous meters
+
+A synchronous meter must be manually adjusted as data changes:
+
+```php
+$up_down = $meterProvider
+    ->getMeter('my_up_down')
+    ->createUpDownCounter('queued', 'jobs', 'The number of jobs enqueued');
+//jobs come in
+$up_down->add(2);
+//job completed
+$up_down->add(-1);
+//more jobs come in
+$up_down->add(2);
+
+$meterProvider->forceFlush();
+```
+
+Synchronous metrics are exported when `forceFlush()` and/or `shutdown()` are
+called on the meter provider.
+
+### Asynchronous meters
+
+Async meters are `observable`, eg `ObservableGauge`. When registering an
+observable/async meter, you provide one ore more callback functions. The
+callback functions will be called by a periodic exporting metric reader, for
+example based on an event-loop timer. The callback(s) are responsible for
+returning the latest data for the meter.
+
+In this example, the callbacks are executed when `$reader->collect()` is
+executed:
+
+```php
+$queue = [
+    'job1',
+    'job2',
+    'job3',
+];
+$meterProvider
+    ->getMeter('my_gauge')
+    ->createObservableGauge('queued', 'jobs', 'The number of jobs enqueued')
+    ->observe(static function (ObserverInterface $observer) use ($queue): void {
+        $observer->observe(count($queue));
+    });
+$reader->collect();
+```
+
+### Readers
+
+Currently we only have an `ExportingReader`, which is an implementation of the
+[periodic exporting metric reader](/docs/specs/otel/metrics/sdk/#periodic-exporting-metricreader).
+When its `collect()` method is called, all associated asynchronous meters are
+observed, and metrics pushed to the exporter.
+
+## Logging
+
+As logging is a mature and well-established function, the
+[OpenTelemetry approach](/docs/concepts/signals/logs/) is a little different for
+this signal.
+
+The OpenTelemetry logger is not designed to be used directly, but rather to be
+integrated into existing logging libraries as a handler. In this way, you can
+choose to have some or all of your application logs sent to an
+OpenTelemetry-compatible service such as the [collector](/docs/collector/).
+
+### Setup
+
+You get a logger from a `LoggerProvider`. Log records get emitted via an
+`EventLogger`:
+
+```php
+<?php
+$loggerProvider = new LoggerProvider(
+    new SimpleLogsProcessor(
+        new ConsoleExporter()
+    )
+);
+$logger = $loggerProvider->getLogger('demo', '1.0', 'http://schema.url', [/*attributes*/]);
+$eventLogger = new EventLogger($logger, 'my-domain');
+```
+
+Once configured, a `LogRecord` can be created and sent via the event logger's
+`logEvent`method:
+
+```php
+$record = (new LogRecord('hello world'))
+    ->setSeverityText('INFO')
+    ->setAttributes([/*attributes*/]);
+
+$eventLogger->logEvent('foo', $record);
+```
+
+## Integrations for 3rd-party logging libraries
+
+### Monolog
+
+You can use the
+[monolog handler](https://packagist.org/packages/open-telemetry/opentelemetry-logger-monolog)
+to send monolog logs to an OpenTelemetry-capable receiver:
+
+```shell
+composer require open-telemetry/opentelemetry-logger-monolog
+```
+
+```php
+$loggerProvider = new LoggerProvider(/*params*/);
+
+$handler = new \OpenTelemetry\Contrib\Logs\Monolog\Handler(
+    $loggerProvider,
+    \Psr\Log\LogLevel::ERROR,
+);
+$logger = new \Monolog\Logger('example', [$handler]);
+
+$logger->info('hello, world');
+$logger->error('oh no', [
+    'foo' => 'bar',
+    'exception' => new \Exception('something went wrong'),
+]);
+
+$loggerProvider->shutdown();
+```

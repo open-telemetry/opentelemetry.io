@@ -1,0 +1,13 @@
+title: Dataset Collector Exporter
+registryType: exporter
+isThirdParty: true
+language: collector
+tags:
+  - go
+  - exporter
+  - collector
+repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/datasetexporter
+license: Apache 2.0
+description: The Dataset Exporter for the OpenTelemetry Collector.
+authors: Dataset
+otVersion: latest

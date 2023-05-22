@@ -26,7 +26,7 @@ The following example uses a basic
 not using Spring Boot, that's ok — you can use OpenTelemetry Java with other web
 frameworks as well, such as Apache Wicket and Play. For a complete list of
 libraries for supported frameworks, see the
-[regsitry](/ecosystem/registry/?component=instrumentation&language=java).
+[registry](/ecosystem/registry/?component=instrumentation&language=java).
 
 For more elaborate examples, see
 [examples](/docs/instrumentation/java/examples/).
