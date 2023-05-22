@@ -219,7 +219,7 @@ the `BatchSpanProcessor` batches them and sends them in bulk. Multiple Span
 processors can be configured to be active at the same time using the
 `MultiSpanProcessor`. For example, you may create a `SimpleSpanProcessor` that
 exports to a logger, and a `BatchSpanProcesssor` that exports to a
-OpenTelementry-Collector:
+OpenTelemetry Collector:
 
 ```swift
 let otlpConfiguration = OtlpConfiguration(timeout: OtlpConfiguration.DefaultTimeoutInterval)
