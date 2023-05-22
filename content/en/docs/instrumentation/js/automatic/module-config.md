@@ -5,7 +5,7 @@ weight: 45
 ---
 
 This module is highly configurable by setting
-[environment variables](/docs/reference/specification/sdk-environment-variables/).
+[environment variables](/docs/specs/otel/configuration/sdk-environment-variables/).
 Many aspects of the auto instrumentation's behavior can be configured for your
 needs, such as resource detectors, exporters, trace context propagation headers,
 and more.
