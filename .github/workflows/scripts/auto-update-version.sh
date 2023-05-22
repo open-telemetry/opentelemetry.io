@@ -74,6 +74,7 @@ if [[ "$repo" == "opentelemetry-specification" ]]; then
   ( set -x;
     npm run get:submodule -- content-modules/opentelemetry-specification &&
     cd content-modules/opentelemetry-specification &&
+    git fetch &&
     git switch --detach v$latest_version
   )
 fi
