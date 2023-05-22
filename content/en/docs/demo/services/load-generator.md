@@ -18,7 +18,7 @@ Since this service is a
 OpenTelemetry SDK is initialized after the import statements. This code will
 create a tracer provider, and establish a Span Processor to use. Export
 endpoints, resource attributes, and service name are automatically set using
-[OpenTelemetry environment variables](/docs/specs/otel/sdk-environment-variables/).
+[OpenTelemetry environment variables](/docs/specs/otel/configuration/sdk-environment-variables/).
 
 ```python
 tracer_provider = TracerProvider()
