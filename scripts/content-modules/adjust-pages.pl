@@ -27,9 +27,6 @@ sub printTitleAndFrontMatter() {
   print "---\n";
   if ($title eq 'OpenTelemetry Specification') {
     $title .= " $otelSpecVers";
-    # start:temporary adjustment to front matter until spec is updated:
-    $frontMatterFromFile =~ s/linkTitle: .*/linkTitle: OTel spec/;
-    # end:temporary adjustment
     $frontMatterFromFile =~ s/linkTitle: .*/$& $otelSpecVers/;
   } elsif ( $title eq 'OpenTelemetry Protocol' ) {
     # $frontMatterFromFile = "linkTitle: OTLP\n";
@@ -38,8 +35,6 @@ sub printTitleAndFrontMatter() {
   print "title: $titleMaybeQuoted\n";
   ($linkTitle) = $title =~ /^OpenTelemetry (.*)/;
   print "linkTitle: $linkTitle\n" if $linkTitle and $frontMatterFromFile !~ /linkTitle: /;
-  # Temporary adjustment until OTel spec is updated: https://github.com/open-telemetry/opentelemetry.io/issues/2704
-  $frontMatterFromFile =~ s|(path_base_for_github_subdir: content/en/docs)/reference/specification/|$1/specs/otel/|;
   print "$frontMatterFromFile" if $frontMatterFromFile;
   if ($ARGV =~ /otel\/specification\/(.*?)_index.md$/) {
     print "path_base_for_github_subdir:\n";
