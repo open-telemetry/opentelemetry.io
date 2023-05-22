@@ -388,7 +388,7 @@ try (Scope scope = span.makeCurrent()) {
 	// do something
 } catch (Throwable throwable) {
   span.setStatus(StatusCode.ERROR, "Something bad happened!");
-  span.recordException(throwable)
+  span.recordException(throwable);
 } finally {
   span.end(); // Cannot set a span after this call
 }
