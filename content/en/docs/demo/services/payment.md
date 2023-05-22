@@ -17,7 +17,7 @@ initializes the SDK and auto-instrumentation. When initializing the
 OpenTelemetry Node.js SDK in that module, you optionally specify which
 auto-instrumentation libraries to leverage, or make use of the
 `getNodeAutoInstrumentations()` function which includes most popular frameworks.
-The below example of an intiailizer file (`opentelemetry.js`) contains all code
+The below example of an initializer file (`opentelemetry.js`) contains all code
 required to initialize the SDK and auto-instrumentation based on standard
 OpenTelemetry environment variables for OTLP export, resource attributes, and
 service name. It then `require`s your app at `./index.js` to start it up once
