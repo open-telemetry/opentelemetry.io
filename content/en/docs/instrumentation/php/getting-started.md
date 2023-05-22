@@ -89,7 +89,7 @@ php -S localhost:8080
 ## Instrumentation
 
 Next, you’ll use the OpenTelemetry PHP extension to
-[automatically instrument](/automatic/) the application at launch time.
+[automatically instrument](../automatic) the application at launch time.
 
 1. Since the extension is built from source, you need to setup some build tools
 
