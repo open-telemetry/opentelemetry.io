@@ -59,8 +59,9 @@ if (process.argv.length < 3) {
         - java
         - js
         - dotnet
-	- php
-    Use 'all' if you want to run all of them.
+	      - php
+        - go
+    Use 'all' if you want to run all of them (except go).
     
     Example: ${path.basename(process.argv[0])} ${path.basename(
       process.argv[1]
@@ -152,6 +153,7 @@ const scanners = {
     scanners.erlang();
     scanners.python();
     scanners.dotnet();
+    scanners.php();
   },
 };
 
