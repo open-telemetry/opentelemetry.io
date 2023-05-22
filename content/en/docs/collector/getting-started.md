@@ -47,7 +47,7 @@ directory, mount that file as a volume:
 <!-- prettier-ignore-start -->
 {{< tabpane lang=shell persistLang=false >}}
 {{< tab DockerHub >}}
-docker run -v $(pwd)/config.yaml:/etc/otelcol-contrib/config.yaml otel/opentelemetry-collector:{{% param collectorVersion %}}
+docker run -v $(pwd)/config.yaml:/etc/otelcol/config.yaml otel/opentelemetry-collector:{{% param collectorVersion %}}
 {{< /tab >}}
 
 {{< tab ghcr.io >}}
