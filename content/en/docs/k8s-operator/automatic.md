@@ -8,7 +8,7 @@ spelling: cSpell:ignore Otel
 ---
 
 The OpenTelemetry Operator supports injecting and configuring
-auto-instrumentation libraries for .NET, Java, NodeJS and Python services.
+auto-instrumentation libraries for .NET, Java, Node.js and Python services.
 
 ## Installation
 
@@ -360,7 +360,7 @@ language-specific annotation:
 The possible values for the annotation can be
 
 - `"true"` - to inject `Instrumentation` resource with default name from the
-  curent namespace.
+  current namespace.
 - `"my-instrumentation"` - to inject `Instrumentation` CR instance with name
   `"my-instrumentation"` in the current namespace.
 - `"my-other-namespace/my-instrumentation"` - to inject `Instrumentation` CR

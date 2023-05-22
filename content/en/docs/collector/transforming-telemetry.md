@@ -5,7 +5,7 @@ weight: 26
 
 The OpenTelemetry Collector is a convenient place to transform data before
 sending it to a vendor or other systems. This is frequently done for data
-quality, goveranance, cost, and security reasons.
+quality, governance, cost, and security reasons.
 
 Processors available from the the
 [Collector Contrib repository](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor)
@@ -115,8 +115,8 @@ processors:
 
 The
 [metrics transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/metricstransformprocessor)
-also supports regexes to apply transform rules to multiple metric names or
-metric labels at the same time. This example renames cluster_name to
+also supports regular expressions to apply transform rules to multiple metric
+names or metric labels at the same time. This example renames cluster_name to
 cluster-name for all metrics:
 
 ```yaml
@@ -155,7 +155,7 @@ processors:
     override: false
 ```
 
-Similarly, the k8s processor enriches telemetry with relevant Kubernetes
+Similarly, the K8s processor enriches telemetry with relevant Kubernetes
 metadata like pod name, node name, or workload name. The collector pod must be
 configured to have read access to certain Kubernetes RBAC APIs, which is
 documented

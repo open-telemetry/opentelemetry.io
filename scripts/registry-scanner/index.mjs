@@ -59,7 +59,9 @@ if (process.argv.length < 3) {
         - java
         - js
         - dotnet
-    Use 'all' if you want to run all of them.
+        - php
+        - go
+    Use 'all' if you want to run all of them (except go).
     
     Example: ${path.basename(process.argv[0])} ${path.basename(
       process.argv[1]
@@ -132,6 +134,17 @@ const scanners = {
   go: async () => {
     scanForGo();
   },
+  php: async () => {
+    scanByLanguage(
+      'instrumentation',
+      'php',
+      'src/Instrumentation',
+      'md',
+      'opentelemetry-php-contrib',
+      () => true,
+      (name) => name.toLowerCase()
+    );
+  },
   all: () => {
     scanners.collector();
     scanners.js();
@@ -140,6 +153,7 @@ const scanners = {
     scanners.erlang();
     scanners.python();
     scanners.dotnet();
+    scanners.php();
   },
 };
 
@@ -266,10 +280,11 @@ async function createFilesFromScanResult(existing, found, settings) {
         parsedReadme.description
       );
       // collector entries are named reverse (collector-{registryTpe}) compared to languages ({registryTpe}-{language}), we fix this here.
-      const fileName =
+      const fileName = (
         language === 'collector'
           ? `${language}-${registryType}-${currentKey}.yml`
-          : `${registryType}-${language}-${currentKey}.yml`;
+          : `${registryType}-${language}-${currentKey}.yml`
+      ).toLowerCase();
       if (!ignoreList.includes(fileName)) {
         await fs.writeFile(fileName, yaml);
       }

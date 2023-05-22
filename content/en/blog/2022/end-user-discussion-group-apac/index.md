@@ -6,7 +6,7 @@ author: '[Reese Lee](https://github.com/reese-lee)'
 ---
 
 Since July, end users have been getting together to discuss their OpenTelemetry
-adoption and implementation practices in a vendor-netural space known as the
+adoption and implementation practices in a vendor-neutral space known as the
 [Monthly Discussion Groups](/community/end-user/discussion-group/) (also
 referenced as the End User Discussion Groups).
 

@@ -6,11 +6,11 @@ author: '[Przemek Delewski](https://github.com/pdelewski/) (Sumo Logic)'
 ---
 
 Automatic Instrumentation is a process of adding tracing capabilities into user
-application without modyfing its source code. There are several techniques to do
-that, but all of them more or less work in the same way by injecting additional
-code into original one during compile time, link time, run-time or by extending
-the operating system in case of [ebpf](https://ebpf.io/). This blogpost presents
-method used by OpenTelemetry PHP auto-instrumentation.
+application without modifying its source code. There are several techniques to
+do that, but all of them more or less work in the same way by injecting
+additional code into original one during compile time, link time, run-time or by
+extending the operating system in case of [eBPF](https://ebpf.io/). This blog
+post presents method used by OpenTelemetry PHP auto-instrumentation.
 
 ## Prerequisites
 
@@ -128,7 +128,7 @@ The final step is to run your application with `run-with-otel-instrumentation`:
 
 The run-with-otel-instrumentation isn't magic: everything it does can be done by
 hand by setting environment variables and running your application normally. It
-is a convenience tool for rapidly testing out open-telemetry against an
+is a convenience tool for rapidly testing out OpenTelemetry against an
 application with a working default configuration.
 
 ```sh

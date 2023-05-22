@@ -5,7 +5,7 @@ date: 2022-06-29
 author: '[Ruben Vargas](https://github.com/rubenvp8510)'
 spelling:
   cSpell:ignore k8sattributes k8sattributesprocessor K8sattributes k8sprocessor
-  cSpell:ignore K8sprocessor KUBE
+  cSpell:ignore K8sprocessor KUBE resourcedetection replicaset
 ---
 
 Attaching Kubernetes resource metadata to OpenTelemetry traces is useful to
@@ -19,14 +19,14 @@ use the [k8sattributesprocessor][] in different scenarios.
 Details of the OpenTelemetry collector pipeline won't be covered in this post.
 For those details, refer to the [collector documentation](/docs/collector/).
 
-## How k8s attributes are attached
+## How K8s attributes are attached
 
-At a high level, k8s attributes are attached to traces as
+At a high level, K8s attributes are attached to traces as
 [resources](/docs/concepts/glossary/#resource). This is for two reasons:
 
-1.  K8s attributes fit the definition of what a resource is: an entity for which
-    telemetry is recorded
-2.  It centralizes this metadata, which is relevant for any generated span.
+1. K8s attributes fit the definition of what a resource is: an entity for which
+   telemetry is recorded
+2. It centralizes this metadata, which is relevant for any generated span.
 
 Let's dive in and see how to do it!
 
@@ -170,7 +170,7 @@ reducing the scope of the collector service account to a single namespace.
 
 As of [recently][pr#832], the [OpenTelemetry operator][] sets the
 `OTEL_RESOURCE_ATTRIBUTES` environment variable on the collector container with
-the k8s pod attributes. This lets you to use the resource detector processor,
+the K8s pod attributes. This lets you to use the resource detector processor,
 which attaches the environment variable values to the spans. This only works
 when the collector is deployed in sidecar mode.
 
@@ -217,7 +217,7 @@ spec:
           exporters: [jaeger]
 ```
 
-And then deploy the [vert.x app example][], you can see the
+And then deploy the [vert.x example app][], you can see the
 `OTEL_RESOURCE_ATTRIBUTES` environment variable gets injected with some values
 in the sidecar container. Some of them use the Kubernetes downward API to get
 the attribute values.

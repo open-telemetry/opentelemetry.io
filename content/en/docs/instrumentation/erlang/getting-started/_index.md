@@ -1,13 +1,301 @@
 ---
 title: Getting Started
 weight: 20
+spelling: cSpell:ignore rebar relx stdlib bogons
+spelling: cSpell:ignore defmodule erts hipe Eshell erlang
 ---
 
 Welcome to the OpenTelemetry for Erlang/Elixir getting started guide! This guide
 will walk you through the basic steps in installing, configuring, and exporting
 data from OpenTelemetry.
 
-## Creating a New Project
+## Phoenix
+
+This part of the guide will show you how to get started with OpenTelemetry in
+the Phoenix Web Framework.
+
+### Prerequisites
+
+Ensure that you have erlang, elixir, postgres (or the database of your choice),
+and phoenix installed locally. The phoenix
+[installation guide](https://hexdocs.pm/phoenix/installation.html) will help you
+get set up with everything you need.
+
+### Example Application
+
+The following example uses a basic [Phoenix](https://www.phoenixframework.org/)
+web application. For reference, a complete example of the code you will build
+can be found here:
+[opentelemetry-erlang-contrib/examples/dice_game](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/examples/dice_game).
+You can git clone that project or just follow along in your browser.
+
+Additional examples can be found [here](/docs/instrumentation/erlang/examples/).
+
+### Dependencies
+
+We'll need a few other dependencies that Phoenix doesn't come with.
+
+- `opentelemetry_api`: contains the interfaces you'll use to instrument your
+  code. Things like `Tracer.with_span` and `Tracer.set_attribute` are defined
+  here.
+- `opentelemetry`: contains the SDK that implements the interfaces defined in
+  the API. Without it, all the functions in the API are no-ops.
+- `opentelemetry_exporter`: allows you to send your telemetry data to an
+  OpenTelemetry Collector and/or to self-hosted or commercial services.
+- `opentelemetry_phoenix`: creates OpenTelemetry spans from the Elixir
+  `:telemetry` events created by Phoenix.
+- `opentelemetry_cowboy`: creates OpenTelemetry spans from the Elixir
+  `:telemetry` events created by the Cowboy web server (which is used by
+  Phoenix).
+
+```elixir
+# mix.exs
+def deps do
+  [
+    {:opentelemetry, "~> 1.3"},
+    {:opentelemetry_api, "~> 1.2"},
+    {:opentelemetry_exporter, "~> 1.4"},
+    {:opentelemetry_phoenix, "~> 1.1"},
+    {:opentelemetry_cowboy, "~> 0.2"}
+  ]
+end
+```
+
+The last two also need to be setup when your application starts:
+
+```elixir
+# application.ex
+@impl true
+def start(_type, _args) do
+  :opentelemetry_cowboy.setup()
+  OpentelemetryPhoenix.setup(adapter: :cowboy2)
+end
+```
+
+If you're using ecto, you'll also want to add
+`OpentelemetryEcto.setup([:dice_game, :repo])`.
+
+We also need to configure the `opentelemetry` application as temporary by adding
+a `releases` section to your project configuration. This will ensure that if it
+terminates, even abnormally, the `dice_game` application will be terminated.
+
+```elixir
+# mix.exs
+def project do
+  [
+    app: :dice_game,
+    version: "0.1.0",
+    elixir: "~> 1.14",
+    elixirc_paths: elixirc_paths(Mix.env()),
+    start_permanent: Mix.env() == :prod,
+    releases: [
+      dice_game: [
+        applications: [opentelemetry: :temporary]
+      ]
+    ],
+    aliases: aliases(),
+    deps: deps()
+  ]
+end
+```
+
+Now we can use the new `mix setup` command to install the dependencies, build
+the assets, and create and migrate the database.
+
+### Try It Out
+
+We can ensure everything is working by setting the stdout exporter as
+opentelemetry's traces_exporter and then starting the app with `mix phx.server`.
+
+```elixir
+# config/dev.exs
+config :opentelemetry, traces_exporter: {:otel_exporter_stdout, []}
+```
+
+If everything went well, you should be able to visit
+[`localhost:4000`](http://localhost:4000) in your browser and see quite a few
+lines that look like this in your terminal.
+
+(Don't worry if the format looks a little unfamiliar. Spans are recorded in the
+Erlang `record` data structure. You can find more information about records
+[here](https://www.erlang.org/doc/reference_manual/records.html), and
+[this](https://github.com/open-telemetry/opentelemetry-erlang/blob/main/apps/opentelemetry/include/otel_span.hrl#L19)
+file describes the `span` record structure, and explains what the different
+fields are.)
+
+```shell
+*SPANS FOR DEBUG*
+{span,64480120921600870463539706779905870846,11592009751350035697,[],
+      undefined,<<"/">>,server,-576460731933544855,-576460731890088522,
+      {attributes,128,infinity,0,
+                  #{'http.status_code' => 200,
+                    'http.client_ip' => <<"127.0.0.1">>,
+                    'http.flavor' => '1.1','http.method' => <<"GET">>,
+                    'http.scheme' => <<"http">>,'http.target' => <<"/">>,
+                    'http.user_agent' =>
+                        <<"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36">>,
+                    'net.transport' => 'IP.TCP',
+                    'net.host.name' => <<"localhost">>,
+                    'net.host.port' => 4000,'net.peer.port' => 62839,
+                    'net.sock.host.addr' => <<"127.0.0.1">>,
+                    'net.sock.peer.addr' => <<"127.0.0.1">>,
+                    'http.route' => <<"/">>,'phoenix.action' => home,
+                    'phoenix.plug' =>
+                        'Elixir.DiceGameWeb.PageController'}},
+      {events,128,128,infinity,0,[]},
+      {links,128,128,infinity,0,[]},
+      undefined,1,false,
+      {instrumentation_scope,<<"opentelemetry_phoenix">>,<<"1.1.0">>,
+                             undefined}}
+```
+
+These are the raw Erlang records that will get serialized and sent when you
+configure the exporter for your preferred service.
+
+### Rolling The Dice
+
+Now we'll check out the API endpoint that will let us roll the dice and return a
+random number between 1 and 6.
+
+Before we call our API, let's add our first bit of manual instrumentation. In
+our `DiceController` we call a private `dice_roll` method that generates our
+random number. This seems like a pretty important operation, so in order to
+capture it in our trace we'll need to wrap it in a span.
+
+```elixir
+  defp dice_roll do
+    Tracer.with_span("dice_roll") do
+      to_string(Enum.random(1..6))
+    end
+  end
+```
+
+It would also be nice to know what number it generated, so we can extract it as
+a local variable and add it as an attribute on the span.
+
+```elixir
+  defp dice_roll do
+    Tracer.with_span("dice_roll") do
+      roll = Enum.random(1..6)
+
+      Tracer.set_attribute(:roll, roll)
+
+      to_string(roll)
+    end
+  end
+```
+
+Now if you point your browser/curl/etc. to
+[`localhost:4000/api/rolldice`](http://localhost:4000/api/rolldice) you should
+get a random number in response, and 3 spans in your console.
+
+<details>
+<summary>View the full spans</summary>
+
+```shell
+*SPANS FOR DEBUG*
+{span,224439009126930788594246993907621543552,5581431573601075988,[],
+      undefined,<<"/api/rolldice">>,server,-576460729549928500,
+      -576460729491912750,
+      {attributes,128,infinity,0,
+                  #{'http.request_content_length' => 0,
+                    'http.response_content_length' => 1,
+                    'http.status_code' => 200,
+                    'http.client_ip' => <<"127.0.0.1">>,
+                    'http.flavor' => '1.1','http.host' => <<"localhost">>,
+                    'http.host.port' => 4000,'http.method' => <<"GET">>,
+                    'http.scheme' => <<"http">>,
+                    'http.target' => <<"/api/rolldice">>,
+                    'http.user_agent' =>
+                        <<"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36">>,
+                    'net.host.ip' => <<"127.0.0.1">>,
+                    'net.transport' => 'IP.TCP',
+                    'http.route' => <<"/api/rolldice">>,
+                    'phoenix.action' => roll,
+                    'phoenix.plug' => 'Elixir.DiceGameWeb.DiceController'}},
+      {events,128,128,infinity,0,[]},
+      {links,128,128,infinity,0,[]},
+      undefined,1,false,
+      {instrumentation_scope,<<"opentelemetry_cowboy">>,<<"0.2.1">>,
+                             undefined}}
+
+{span,237952789931001653450543952469252891760,13016664705250513820,[],
+      undefined,<<"HTTP GET">>,server,-576460729422104083,-576460729421433042,
+      {attributes,128,infinity,0,
+                  #{'http.request_content_length' => 0,
+                    'http.response_content_length' => 1258,
+                    'http.status_code' => 200,
+                    'http.client_ip' => <<"127.0.0.1">>,
+                    'http.flavor' => '1.1','http.host' => <<"localhost">>,
+                    'http.host.port' => 4000,'http.method' => <<"GET">>,
+                    'http.scheme' => <<"http">>,
+                    'http.target' => <<"/favicon.ico">>,
+                    'http.user_agent' =>
+                        <<"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36">>,
+                    'net.host.ip' => <<"127.0.0.1">>,
+                    'net.transport' => 'IP.TCP'}},
+      {events,128,128,infinity,0,[]},
+      {links,128,128,infinity,0,[]},
+      undefined,1,false,
+      {instrumentation_scope,<<"opentelemetry_cowboy">>,<<"0.2.1">>,
+                             undefined}}
+
+{span,224439009126930788594246993907621543552,17387612312604368700,[],
+      5581431573601075988,<<"dice_roll">>,internal,-576460729494399167,
+      -576460729494359917,
+      {attributes,128,infinity,0,#{roll => 2}},
+      {events,128,128,infinity,0,[]},
+      {links,128,128,infinity,0,[]},
+      undefined,1,false,
+      {instrumentation_scope,<<"dice_game">>,<<"0.1.0">>,undefined}}
+```
+
+</details>
+
+##### `<<"/api/rolldice">>`
+
+This is the first span in the request, aka the root span. That `undefined` next
+to the span name tells you that it doesn't have a parent span. The two very
+large negative numbers are the start and end time of the span, in the `native`
+time unit. If you're curious, you can calculate the duration in milliseconds
+like so
+`System.convert_time_unit(-576460729491912750 - -576460729549928500, :native, :millisecond)`.
+The `phoenix.plug` and `phoenix.action` will tell you the controller and
+function that handled the request. You'll notice however, that the
+instrumentation_scope is `opentelemetry_cowboy`. When we told
+opentelemetry_phoenix's setup function that we want to use the `:cowboy2`
+adapter, that let it know not to create and additional span, but to instead
+append attributes to the existing cowboy span. This ensures we have more
+accurate latency data in our traces.
+
+##### `<<"HTTP GET">>`
+
+This is the request for the favicon, which you can see in the
+`'http.target' => <<"/favicon.ico">>` attribute. I _believe_ it has a generic
+name because it does not have an `http.route`.
+
+##### `<<"dice_roll">>`
+
+This is the custom span we added to our private method. You'll notice it only
+has the one attribute that we set, `roll => 2`. You should also note that it is
+part of the same trace as our `<<"/api/rolldice">>` span,
+`224439009126930788594246993907621543552` and has a parent span id of
+`5581431573601075988` which is the span id of the `<<"/api/rolldice">>` span.
+That means that this span is a child of that one, and will be shown below it
+when rendered in your tracing tool of choice.
+
+### Next Steps
+
+Enrich your automatically generated instrumentation with
+[manual instrumentation](/docs/instrumentation/erlang/instrumentation) of your
+own codebase. This allows you to customize the observability data your
+application emits.
+
+You'll also want to configure an appropriate exporter to
+[export your telemetry data](/docs/instrumentation/erlang/getting-started#exporting-to-the-opentelemetry-collector)
+to one or more telemetry backends.
+
+## Creating a New Mix/Rebar Project
 
 To get started with this guide, create a new project with `rebar3` or `mix`:
 
@@ -100,8 +388,9 @@ and the [Zipkin protocol](https://hex.pm/packages/opentelemetry_zipkin).
 
 Configuration is done through the
 [Application environment](https://erlang.org/doc/design_principles/applications.html#configuring-an-application)
-or [OS Environment Variables](/docs/specs/otel/sdk-environment-variables/). The
-SDK (`opentelemetry` Application) uses the configuration to initialize a
+or
+[OS Environment Variables](/docs/specs/otel/configuration/sdk-environment-variables/).
+The SDK (`opentelemetry` Application) uses the configuration to initialize a
 [Tracer Provider](https://hexdocs.pm/opentelemetry/otel_tracer_server.html), its
 [Span Processors](https://hexdocs.pm/opentelemetry/otel_span_processor.html) and
 the [Exporter](https://hexdocs.pm/opentelemetry/otel_exporter.html).
@@ -111,7 +400,7 @@ the [Exporter](https://hexdocs.pm/opentelemetry/otel_exporter.html).
 Exporters are packages that allow telemetry data to be emitted somewhere -
 either to the console (which is what we're doing here), or to a remote system or
 collector for further analysis and/or enrichment. OpenTelemetry supports a
-variety of exporters through its ecosystem, including popular open-source tools
+variety of exporters through its ecosystem, including popular open source tools
 like Jaeger and Zipkin.
 
 To configure OpenTelemetry to use a particular exporter, in this case

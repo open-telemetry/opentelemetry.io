@@ -319,9 +319,9 @@ sending the telemetry data to a particular backend:
 - OpenTelemetry Protocol Exporter: sends the data in OTLP format to the
   [OpenTelemetry Collector](/docs/collector/) or other OTLP receivers. The
   underlying `Transport` can send:
-  - protobuf over http
-  - protobuf over grpc
-  - json over http
+  - protobuf over HTTP
+  - protobuf over gRPC
+  - JSON over HTTP
 
 ### Logging and Error Handling
 
@@ -395,10 +395,10 @@ called on the meter provider.
 ### Asynchronous meters
 
 Async meters are `observable`, eg `ObservableGauge`. When registering an
-observable/async meter, you provide one ore more callback functions. The
-callback functions will be called by a periodic exporting metric reader, for
-example based on an event-loop timer. The callback(s) are responsible for
-returning the latest data for the meter.
+observable/async meter, you provide one or more callback functions. The callback
+functions will be called by a periodic exporting metric reader, for example
+based on an event-loop timer. The callback(s) are responsible for returning the
+latest data for the meter.
 
 In this example, the callbacks are executed when `$reader->collect()` is
 executed:
