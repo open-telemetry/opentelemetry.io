@@ -162,6 +162,11 @@ params:
       sizes: [300, 400, 600, 700]
       type: sans_serif
 
+  notes: # as markdown
+    docker-compose-v2: |
+      `docker-compose` is deprecated. For details, see
+      [Migrate to Compose V2](https://docs.docker.com/compose/migrate/).
+
 services:
   googleAnalytics:
     # The following is a placeholder (fake) ID useful for local test builds. The

@@ -97,6 +97,4 @@ After updating the `otelcol-config-extras.yml`, start the demo by running
 `docker compose up`[^1]. After a while, you should see the traces flowing into
 your backend as well.
 
-[^1]:
-    Please note that `docker-compose` is deprecated and you should
-    [migrate to Compose V2](https://docs.docker.com/compose/migrate/)
+[^1]: {{% _param notes.docker-compose-v2 %}}

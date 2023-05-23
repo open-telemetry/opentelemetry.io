@@ -286,10 +286,6 @@ that we can continue to improve OpenTelemetry. ❣️
 If you have a story to share about how you use OpenTelemetry at your
 organization, we’d love to hear from you! Ways to share:
 
-[^1]:
-    Please note that `docker-compose` is deprecated and you should
-    [migrate to Compose V2](https://docs.docker.com/compose/migrate/)
-
 - Join the [#otel-endusers channel](/community/end-user/slack-channel/) on the
   [CNCF Community Slack](https://communityinviter.com/apps/cloud-native/cncf)
 - Join our monthly
@@ -306,3 +302,5 @@ Be sure to follow OpenTelemetry on
 [Mastodon](https://fosstodon.org/@opentelemetry) and
 [Twitter](https://twitter.com/opentelemetry), and share your stories using the
 **#OpenTelemetry** hashtag!
+
+[^1]: {{% _param notes.docker-compose-v2 %}}

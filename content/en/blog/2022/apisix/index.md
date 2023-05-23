@@ -394,8 +394,6 @@ communicate via the
 
 _A version of this article was [originally posted][] on the Apache APISIX blog._
 
-[^1]:
-    Please note that `docker-compose` is deprecated and you should
-    [migrate to Compose V2](https://docs.docker.com/compose/migrate/)
+[^1]: {{% _param notes.docker-compose-v2 %}}
 
 [originally posted]: {{% param canonical_url %}}
