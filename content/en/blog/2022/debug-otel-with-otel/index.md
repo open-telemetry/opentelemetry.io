@@ -139,7 +139,7 @@ services:
       - OTEL_SERVICE_NAME=frontend
 ```
 
-Spin up that environment by running `docker-compose up` and send some requests
+Spin up that environment by running `docker compose up` and send some requests
 to the frontend with `curl localhost:8000`
 
 ### What did you expect to see?
@@ -201,7 +201,7 @@ backend:
     - OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_REQUEST=tracestate,traceparent,baggage,X-B3-TraceId
 ```
 
-Once again we ran `docker-compose up` to bring up our sample app and we send
+Once again we ran `docker compose up` to bring up our sample app and we send
 some request with `curl localhost:8080` to the frontend application.
 
 In Jaeger we still see that the traces are disconnected. However, when we look

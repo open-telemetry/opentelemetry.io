@@ -27,7 +27,7 @@ and then build the docker image on CentOS7:
 ```sh
 git clone https://github.com/open-telemetry/opentelemetry-cpp-contrib
 cd  instrumentation/otel-webserver-module
-docker-compose --profile centos7 build
+docker compose --profile centos7 build
 ```
 
 These commands download all required dependencies, builds the OpenTelemetry
@@ -39,7 +39,7 @@ When the build is finished, run the docker image, by typing the following
 command:
 
 ```sh
-docker-compose --profile centos7 up -d
+docker compose --profile centos7 up -d
 ```
 
 The above command starts up the centos7 image in a docker container named
@@ -155,7 +155,7 @@ the package and install on the target system where apache is installed.
 - Trigger the build command to generate the package inside the docker image
 
   ```sh
-  docker-compose --profile centos7 build
+  docker compose --profile centos7 build
   ```
 
 The above might take around an hour to build. This would build on Centos 7 image

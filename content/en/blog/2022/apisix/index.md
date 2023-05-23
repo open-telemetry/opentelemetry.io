@@ -192,7 +192,7 @@ resulting in a call chain consisting of two spans.
 
 ### Step 1: Deploy OpenTelemetry
 
-The following uses docker-compose as an example. For other deployments, see
+The following uses `docker compose` as an example. For other deployments, see
 [Getting Started](/docs/collector/getting-started/).
 
 You can see the following command to deploy:
@@ -200,7 +200,7 @@ You can see the following command to deploy:
 ```shell
 git clone https://github.com/open-telemetry/opentelemetry-collector-contrib.git
 cd opentelemetry-collector-contrib/examples/demo
-docker-compose up -d
+docker compose up -d
 ```
 
 Visit <http://127.0.0.1:16886> (Jaeger UI) or <http://127.0.0.1:9411/zipkin>

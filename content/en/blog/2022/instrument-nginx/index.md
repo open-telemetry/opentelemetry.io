@@ -168,7 +168,7 @@ startup.
 Get everything up and running:
 
 ```console
-$ docker-compose up
+$ docker compose up
 ```
 
 In another shell, create some traffic:
@@ -332,7 +332,7 @@ You should now have the following files in your top level directory:
 With everything in place, you can now start the demo environment:
 
 ```console
-$ docker-compose up
+$ docker compose up
 ```
 
 Within a few moments you should have five docker containers up and running:
