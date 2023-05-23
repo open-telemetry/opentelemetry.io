@@ -165,7 +165,7 @@ You don't need to rebuild your docker image, because the `docker-compose.yaml`
 above loads the `opentelemetry_module.conf` as a file volume on container
 startup.
 
-Get everything up and running:
+Get everything up and running[^1]:
 
 ```console
 $ docker compose up
@@ -329,7 +329,7 @@ You should now have the following files in your top level directory:
 - ./frontend/Dockerfile
 - ./frontend/app.js
 
-With everything in place, you can now start the demo environment:
+With everything in place, you can now start the demo environment[^1]:
 
 ```console
 $ docker compose up
@@ -357,6 +357,10 @@ The frontend trace should indicate an error, since nginx is forwarding the
 You should now be able to apply what you have learned from this blog post to
 your own installation of nginx. We would love to hear about your experience! If
 you run into any problems, [create an issue][].
+
+[^1]:
+    Please note that `docker-compose` is deprecated and you should
+    [migrate to Compose V2](https://docs.docker.com/compose/migrate/)
 
 [create an issue]:
   https://github.com/open-telemetry/opentelemetry-cpp-contrib/issues
