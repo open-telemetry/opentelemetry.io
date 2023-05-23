@@ -6,7 +6,7 @@ tags:
   - php
   - psr15
   - instrumentation
-repo: https://github.com/opentelemetry-php/contrib-auto-psr15
+repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/Psr15
 license: Apache 2.0
 description: Instrumentation Library for PSR15 middleware
 authors: OpenTelemetry Authors

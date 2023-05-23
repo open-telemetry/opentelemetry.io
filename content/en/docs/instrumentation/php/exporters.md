@@ -1,7 +1,7 @@
 ---
 title: Exporters
 weight: 5
-spelling: cSpell:ignore openzipkin ndjson fastcgi
+spelling: cSpell:ignore fastcgi jaegertracing openzipkin ndjson zipkin
 ---
 
 In order to visualize and analyze your telemetry, you will need to export it to
@@ -131,7 +131,7 @@ $tracer = $tracerProvider->getTracer('io.opentelemetry.contrib.php');
 ## Minimizing export delays
 
 Most PHP runtimes are synchronous and blocking. Sending telemetry data
-[can delay](/docs/reference/specification/performance/#shutdown-and-explicit-flushing-could-block)
+[can delay](/docs/specs/otel/performance/#shutdown-and-explicit-flushing-could-block)
 HTTP responses being received by your users.
 
 If you are using `fastcgi`, you could issue a call to `fastcgi_finish_request()`
@@ -140,6 +140,6 @@ will not hold up request processing.
 
 To minimize the impact of slow transport of telemetry data, particularly for
 external or cloud-based backends, you should consider using a local
-[OpenTelemetry Collector](/docs/collector). A local collector can quickly
+[OpenTelemetry Collector](/docs/collector/). A local collector can quickly
 accept, then batch and send all of your telemetry to the backend. Such a setup
 will make your system more robust and scalable.

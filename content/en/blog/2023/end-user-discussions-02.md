@@ -71,7 +71,7 @@ that is currently under development to support buffering and data persistence.
 performance on an ongoing basis?
 
 **A:** There is a GitHub action that runs load test on OpenTelemetry Collector,
-but noone is working to improve it.
+but no one is working to improve it.
 
 ### OpenTelemetry Language API & SDKs
 
