@@ -14,7 +14,7 @@ from the system's components must emit
 [logs](/docs/concepts/observability-primer/#logs).
 
 Without being required to modify the source code you can collect telemetry from
-an application using [Automatic Instrumentation](./automatic/). If you
+an application using [automatic instrumentation](automatic/). If you
 previously used an APM agent to extract telemetry from your application,
 Automatic Instrumentation will give you a similar out of the box experience.
 
