@@ -3,7 +3,7 @@ title: Automatic
 description: >-
   Learn how Automatic Instrumentation can add observability to your application
   without the need to touch your code
-weight: 30
+weight: 10
 ---
 
 If applicable a language specific implementation of OpenTelemetry will provide a
