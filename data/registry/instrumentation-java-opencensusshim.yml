@@ -1,0 +1,13 @@
+title: opencensusshim
+registryType: instrumentation
+isThirdParty: false
+language: java
+tags:
+  - opencensusshim
+  - instrumentation
+  - java
+repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/opencensus-shim
+license: Apache 2.0
+description: This library provides an instrumentation shim for OpenCensus
+authors: OpenTelemetry Authors
+otVersion: latest

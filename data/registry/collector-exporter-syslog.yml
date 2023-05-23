@@ -1,0 +1,14 @@
+title: Syslog Exporter
+registryType: exporter
+isThirdParty: false
+language: collector
+tags:
+  - syslog
+  - exporter
+  - collector
+repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/syslogexporter
+license: Apache 2.0
+description:
+  The syslog exporter supports sending messages to a remote syslog server.
+authors: OpenTelemetry Authors
+otVersion: latest

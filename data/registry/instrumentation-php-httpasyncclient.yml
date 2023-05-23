@@ -1,0 +1,13 @@
+title: OpenTelemetry HTTPlug async auto-instrumentation
+registryType: instrumentation
+isThirdParty: false
+language: php
+tags:
+  - httpasyncclient
+  - instrumentation
+  - php
+repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/HttpAsyncClient
+license: Apache 2.0
+description: Instrumentation Library for PHP HTTP Async Client
+authors: OpenTelemetry Authors
+otVersion: latest

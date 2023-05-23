@@ -1,0 +1,13 @@
+title: OpenTelemetry IO auto-instrumentation
+registryType: instrumentation
+isThirdParty: false
+language: php
+tags:
+  - io
+  - instrumentation
+  - php
+repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/IO
+license: Apache 2.0
+description: Instrumentation Library for PHP IO
+authors: OpenTelemetry Authors
+otVersion: latest
