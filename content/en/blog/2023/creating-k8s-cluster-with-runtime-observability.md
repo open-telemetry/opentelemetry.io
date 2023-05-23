@@ -452,7 +452,7 @@ This will be helpful for developers that create custom tasks, like
 [Kubernetes Operators](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/)
 that update internal resources to add more functionalities to Kubernetes.
 
-[Tracetest](https://github.com/kubeshop/tracetest) is interested in seeing how
+[Tracetest](https://tracetest.io/) is interested in seeing how
 applying trace-based testing techniques to traces from the core Kubernetes
 engine can be leveraged to verify expected functionality. With the current level
 of observability being exposed by Kubernetes, we feel it is a bit early to work
