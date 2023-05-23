@@ -19,7 +19,7 @@ previously used an APM agent to extract telemetry from your application,
 Automatic Instrumentation will give you a similar out of the box experience.
 
 To facilitate the instrumentation of applications even more, you can
-[manually instrument](./manual/) your applications by coding against the
+[manually instrument](manual/) your applications by coding against the
 OpenTelemetry APIs.
 
 For that you don't need to instrument all the dependencies used in your
