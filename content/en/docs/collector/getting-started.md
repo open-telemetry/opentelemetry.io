@@ -18,8 +18,11 @@ Prometheus back-ends. More information can be found on the demo [README.md][].
 ```sh
 git clone git@github.com:open-telemetry/opentelemetry-collector-contrib.git --depth 1; \
   cd opentelemetry-collector-contrib/examples/demo; \
-  docker-compose up -d
+  docker compose up -d
 ```
+
+**Note**: `docker-compose` is deprecated and you should
+[migrate to Compose V2](https://docs.docker.com/compose/migrate/)
 
 ## Docker
 
