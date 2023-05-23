@@ -551,7 +551,7 @@ do this in conjunction with setting [span status](#span-status).
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 {{< tab TypeScript >}}
-import opentelemetry from "@opentelemetry/api";
+import opentelemetry, { SpanStatusCode } from "@opentelemetry/api";
 
 // ...
 
@@ -559,7 +559,7 @@ try {
   doWork();
 } catch (ex) {
   span.recordException(ex);
-  span.setStatus({ code: opentelemetry.SpanStatusCode.ERROR });
+  span.setStatus({ code: SpanStatusCode.ERROR });
 }
 {{< /tab >}}
 {{< tab JavaScript >}}
