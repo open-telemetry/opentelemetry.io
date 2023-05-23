@@ -1,7 +1,7 @@
 ---
 title: Libraries
 description: Learn how to add native instrumentation to your library.
-aliases: [/docs/concepts/instrumenting-library/]
+aliases: [/docs/concepts/instrumenting-library]
 weight: 40
 ---
 
