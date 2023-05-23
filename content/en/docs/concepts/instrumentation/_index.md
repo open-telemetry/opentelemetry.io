@@ -36,8 +36,8 @@ instrumentation at the same time: Automatic Instrumentation will allow you to
 gain insights into your application quickly and manual instrumentation will
 enable you to embed granular observability into your code.
 
-The exact installation mechanism for [manual](./manual/) and
-[automatic](./automatic/) instrumentation varies based on the language you’re
+The exact installation mechanism for [manual](manual/) and
+[automatic](automatic/) instrumentation varies based on the language you’re
 developing in, but there are some similarities covered in the sections below.
 
 [instrumentation libraries]:
