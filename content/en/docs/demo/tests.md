@@ -10,5 +10,7 @@ execute the different flows in the webstore. While the backend services use
 To run the test you can simply run `make run-tests` at the root directory.
 
 In case you need to run a specific suite of tests you can execute
-`docker compose run frontendTests` for the frontend tests or
-`docker compose run integrationTests` for the backend tests.
+`docker compose run frontendTests`[^1] for the frontend tests or
+`docker compose run integrationTests`[^1] for the backend tests.
+
+[^1]: {{% _param notes.docker-compose-v2 %}}

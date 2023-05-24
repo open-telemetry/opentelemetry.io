@@ -719,6 +719,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-15T21:03:17.781026-05:00"
   },
+  "https://docs.docker.com/compose/migrate/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-23T09:47:50.912587+02:00"
+  },
   "https://docs.docker.com/desktop": {
     "StatusCode": 206,
     "LastSeen": "2023-02-15T21:03:12.654004-05:00"
@@ -1450,6 +1454,10 @@
   "https://gcc.gnu.org/frontends.html": {
     "StatusCode": 206,
     "LastSeen": "2023-02-15T21:26:28.637715-05:00"
+  },
+  "https://getcomposer.org/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-22T14:37:50.903169+02:00"
   },
   "https://getcomposer.org/download/": {
     "StatusCode": 200,
@@ -3575,6 +3583,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-18T09:19:14.053259-05:00"
   },
+  "https://pecl.php.net/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-22T14:37:49.798026+02:00"
+  },
   "https://pip.pypa.io/en/stable/reference/pip_install/#editable-installs": {
     "StatusCode": 200,
     "LastSeen": "2023-02-18T09:19:08.332591-05:00"
@@ -4535,6 +4547,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-28T03:33:35.061283512Z"
   },
+  "https://www.php.net/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-22T14:37:49.249509+02:00"
+  },
   "https://www.php.net/manual/en/book.ffi.php": {
     "StatusCode": 200,
     "LastSeen": "2023-03-29T03:57:50.206342903Z"
@@ -4646,6 +4662,10 @@
   "https://www.slideshare.net/Altinity/osa-con-2022-signal-correlation-the-ho11y-grail-michael-hausenblas-awspdf": {
     "StatusCode": 206,
     "LastSeen": "2023-02-18T13:46:09.073514-05:00"
+  },
+  "https://www.slimframework.com/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-22T14:37:51.429125+02:00"
   },
   "https://www.splunk.com/en_us/blog/conf-splunklive/announcing-native-opentelemetry-support-in-splunk-apm.html": {
     "StatusCode": 200,
