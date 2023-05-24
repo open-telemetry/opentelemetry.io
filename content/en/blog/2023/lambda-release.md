@@ -5,9 +5,7 @@ date: 2023-05-15
 author: '[Carter Socha](https://github.com/cartersocha) (Lightstep)'
 ---
 
-The Functions-as-a-Service (FAAS) SIG is incredibly excited to announce that the
-OpenTelemetry (OTel) community is now releasing our own Lambda layers and has
-[centralized documentation](https://opentelemetry.io/docs/faas/) on how to
+The [Functions-as-a-Service (FaaS) SIG](https://docs.google.com/document/d/187XYoQcXQ9JxS_5v2wvZ0NEysaJ02xoOYNXj08pT0zc) is incredibly excited to announce that the release of OpenTelemetry Lambda layers, and associated [documentation](/docs/faas/) on how to
 monitor Amazon Web Services (AWS) Lambdas.
 
 ### A Slightly New World
