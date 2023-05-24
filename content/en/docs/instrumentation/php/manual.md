@@ -13,6 +13,26 @@ depend on the `opentelemetry-sdk` package, or any other implementation of the
 OpenTelemetry API. This way, libraries will obtain a real implementation only if
 the user application is configured for it.
 
+## Installation
+
+The following shows how to install, initialize, and run an application
+instrumented with OpenTelemetry.
+
+To use the OpenTelemetry SDK for PHP you need packages that satisfy the
+dependencies for `php-http/async-client-implementation` and
+`psr/http-factory-implementation`, for example the Guzzle 7 HTTP Adapter
+satisfies both:
+
+```sh
+composer require "php-http/guzzle7-adapter"
+```
+
+Now you can install the OpenTelemetry SDK:
+
+```sh
+composer require open-telemetry/sdk
+```
+
 ## Tracing
 
 ### Setup
@@ -395,10 +415,10 @@ called on the meter provider.
 ### Asynchronous meters
 
 Async meters are `observable`, eg `ObservableGauge`. When registering an
-observable/async meter, you provide one ore more callback functions. The
-callback functions will be called by a periodic exporting metric reader, for
-example based on an event-loop timer. The callback(s) are responsible for
-returning the latest data for the meter.
+observable/async meter, you provide one or more callback functions. The callback
+functions will be called by a periodic exporting metric reader, for example
+based on an event-loop timer. The callback(s) are responsible for returning the
+latest data for the meter.
 
 In this example, the callbacks are executed when `$reader->collect()` is
 executed:

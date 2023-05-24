@@ -15,7 +15,7 @@ scenarios will be documented for each signal, with fault injection, and more!
 
 If you want to skip the details then clone our
 [repo](https://github.com/open-telemetry/opentelemetry-demo) then run
-`docker compose up` from the command line. There are a couple
+`docker compose up`[^1] from the command line. There are a couple
 [technology requirements](https://github.com/open-telemetry/opentelemetry-demo-webstore#local-quickstart)
 so be sure to check those out too.
 
@@ -156,3 +156,5 @@ from there.
 
 - [Demo Requirements](/docs/demo/requirements/)
 - [Get Involved](https://github.com/open-telemetry/opentelemetry-demo#contributing)
+
+[^1]: {{% _param notes.docker-compose-v2 %}}

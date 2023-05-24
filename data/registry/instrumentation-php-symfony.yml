@@ -1,0 +1,13 @@
+title: OpenTelemetry Symfony auto-instrumentation
+registryType: instrumentation
+isThirdParty: false
+language: php
+tags:
+  - symfony
+  - instrumentation
+  - php
+repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/Symfony
+license: Apache 2.0
+description: Instrumentation Library for the Symfony Framework
+authors: OpenTelemetry Authors
+otVersion: latest

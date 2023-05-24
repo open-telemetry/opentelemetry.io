@@ -72,7 +72,9 @@ fi
 if [[ "$repo" == "opentelemetry-specification" ]]; then
   echo "Switching to $repo at tag v$latest_version"
   ( set -x;
+    npm run get:submodule -- content-modules/opentelemetry-specification &&
     cd content-modules/opentelemetry-specification &&
+    git fetch &&
     git switch --detach v$latest_version
   )
 fi
@@ -84,6 +86,4 @@ $GIT commit -a -m "$message"
 $GIT push --set-upstream origin "$branch"
 
 echo "Submitting auto-update PR '$message'."
-$GH pr create --label auto-update \
-             --title "$message" \
-             --body "$body"
+$GH pr create --title "$message" --body "$body"

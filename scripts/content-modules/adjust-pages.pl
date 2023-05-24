@@ -17,7 +17,7 @@ my $semConvRef = "$otelSpecRepoUrl/blob/main/semantic_conventions/README.md";
 my $specBasePath = '/docs/specs';
 my $path_base_for_github_subdir = "content/en$specBasePath";
 my %versions = qw(
-  spec: 1.20.0
+  spec: 1.21.0
   otlp: main
 );
 my $otelSpecVers = $versions{'spec:'};
@@ -27,9 +27,6 @@ sub printTitleAndFrontMatter() {
   print "---\n";
   if ($title eq 'OpenTelemetry Specification') {
     $title .= " $otelSpecVers";
-    # start:temporary adjustment to front matter until spec is updated:
-    $frontMatterFromFile =~ s/linkTitle: .*/linkTitle: OTel spec/;
-    # end:temporary adjustment
     $frontMatterFromFile =~ s/linkTitle: .*/$& $otelSpecVers/;
   } elsif ( $title eq 'OpenTelemetry Protocol' ) {
     # $frontMatterFromFile = "linkTitle: OTLP\n";
@@ -38,8 +35,6 @@ sub printTitleAndFrontMatter() {
   print "title: $titleMaybeQuoted\n";
   ($linkTitle) = $title =~ /^OpenTelemetry (.*)/;
   print "linkTitle: $linkTitle\n" if $linkTitle and $frontMatterFromFile !~ /linkTitle: /;
-  # Temporary adjustment until OTel spec is updated: https://github.com/open-telemetry/opentelemetry.io/issues/2704
-  $frontMatterFromFile =~ s|(path_base_for_github_subdir: content/en/docs)/reference/specification/|$1/specs/otel/|;
   print "$frontMatterFromFile" if $frontMatterFromFile;
   if ($ARGV =~ /otel\/specification\/(.*?)_index.md$/) {
     print "path_base_for_github_subdir:\n";
@@ -88,7 +83,10 @@ while(<>) {
   s|\.\./semantic_conventions/README.md|$semConvRef| if $ARGV =~ /overview/;
   s|\.\./specification/(.*?\))|../otel/$1)|g if $ARGV =~ /otel\/specification/;
 
-  if (/\((https:\/\/github.com\/open-telemetry\/opentelemetry-specification\/\w+\/\w+\/specification([^\)]*))\)/) {
+  if (
+    /\((https:\/\/github.com\/open-telemetry\/opentelemetry-specification\/\w+\/\w+\/specification([^\)]*))\)/ &&
+    $ARGV !~ /semantic_conventions/
+    ) {
     printf STDOUT "WARNING: link to spec page encoded as an external URL, but should be a local path, fix this upstream;\n  File: $ARGV \n  Link: $1\n";
   }
   s|\(https://github.com/open-telemetry/opentelemetry-specification/\w+/\w+/specification([^\)]*)\)|($specBasePath/otel$1)|;
