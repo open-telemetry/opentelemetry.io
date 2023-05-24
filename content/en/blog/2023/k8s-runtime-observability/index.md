@@ -416,8 +416,8 @@ Kubernetes control plane:
 Let’s run a sample command against Kubernetes with `kubectl`, like running an
 echo:
 
-```bash
-kubectl run -it --rm --restart=Never --image=alpine echo-command -- echo hi
+```console
+$ kubectl run -it --rm --restart=Never --image=alpine echo-command -- echo hi
 
 # Output
 # If you don't see a command prompt, try pressing enter.
