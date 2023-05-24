@@ -37,7 +37,7 @@ The FaaS SIG has addressed the above-mentioned shortcomings:
   layer for the Collector alongside auto-instrumentation layers for JavaScript,
   Java, and Python.
 - Added official community Lambda documentation to the OTel website under the
-  new FAAS section.
+  new [FaaS section](/docs/faas/).
 
 ## What next
 
