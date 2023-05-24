@@ -13,6 +13,4 @@ In case you need to run a specific suite of tests you can execute
 `docker compose run frontendTests`[^1] for the frontend tests or
 `docker compose run integrationTests`[^1] for the backend tests.
 
-[^1]:
-    Please note that `docker-compose` is deprecated and you should
-    [migrate to Compose V2](https://docs.docker.com/compose/migrate/)
+[^1]: {{% _param notes.docker-compose-v2 %}}

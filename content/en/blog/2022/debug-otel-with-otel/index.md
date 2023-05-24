@@ -247,9 +247,7 @@ COPY default.conf /etc/nginx/conf.d
 COPY opentelemetry_module.conf /etc/nginx/conf.d
 ```
 
-[^1]:
-    Please note that `docker-compose` is deprecated and you should
-    [migrate to Compose V2](https://docs.docker.com/compose/migrate/)
+[^1]: {{% _param notes.docker-compose-v2 %}}
 
 [learn how to instrument nginx with opentelemetry]: /blog/2022/instrument-nginx/
 [put nginx between two services]:

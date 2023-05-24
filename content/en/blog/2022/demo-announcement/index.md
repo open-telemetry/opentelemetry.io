@@ -157,6 +157,4 @@ from there.
 - [Demo Requirements](/docs/demo/requirements/)
 - [Get Involved](https://github.com/open-telemetry/opentelemetry-demo#contributing)
 
-[^1]:
-    Please note that `docker-compose` is deprecated and you should
-    [migrate to Compose V2](https://docs.docker.com/compose/migrate/)
+[^1]: {{% _param notes.docker-compose-v2 %}}
