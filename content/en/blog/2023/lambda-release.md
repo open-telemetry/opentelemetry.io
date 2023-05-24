@@ -19,7 +19,7 @@ You're totally correct. Rest assured, we're not reinventing the wheel.
 However, there are some pre-existing problems that may impact users:
 
 - The OTel Lambda layers were only released as part of the
-  [AWS Distribution for OTel (ADOT)](https://aws-otel.github.io/) and the
+  [AWS Distribution for OTel (ADOT)](https://aws-otel.github.io/), and the
   community had limited control over releases which meant a delay getting new
   features and fixes delivered.
 - The layers available on AWS combined the Collector and auto-instrumentation
