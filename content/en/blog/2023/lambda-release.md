@@ -23,7 +23,7 @@ However, there are some pre-existing problems that may impact users:
   community had limited control over releases which meant a delay getting new
   features and fixes delivered.
 - The layers available on AWS combined the Collector and auto-instrumentation
-  capabilities into 1 package which spilled over into performance degradations
+  capabilities into a single package, which contributed to performance degradations
   and limited user choice.
 - There wasn't official OTel guidance on how to monitor Lambdas and no single
   source of truth for OTel users to reference.
