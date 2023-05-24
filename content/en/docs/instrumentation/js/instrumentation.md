@@ -72,7 +72,6 @@ provider.register();
 
 {{< tab JavaScript >}}
 /*tracing.js*/
-const opentelemetry = require("@opentelemetry/api");
 const { Resource } = require("@opentelemetry/resources");
 const { SemanticResourceAttributes } = require("@opentelemetry/semantic-conventions");
 const { NodeTracerProvider } = require("@opentelemetry/sdk-trace-node");
