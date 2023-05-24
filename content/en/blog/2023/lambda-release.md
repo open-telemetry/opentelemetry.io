@@ -13,7 +13,7 @@ monitor Amazon Web Services (AWS) Lambdas.
 ### A Slightly New World
 
 If you've been monitoring Lambdas using OTel for a while now you may be slightly
-confused by this announcement. You might say something like OTel has had a
+confused by this announcement. You might think something like: OTel has had a
 [repo for Lambda layers](https://github.com/open-telemetry/opentelemetry-lambda)
 and they've been available on AWS for years.
 
