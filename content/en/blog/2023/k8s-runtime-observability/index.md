@@ -4,6 +4,7 @@ linkTitle: K8s Runtime Observability
 date: 2023-05-23
 author: '[Daniel Dias](https://github.com/danielbdias) (Tracetest)'
 body_class: otel-with-contributions-from
+spelling: cSpell:ignore apiserver choren tracetest kube kubelet containerd
 ---
 
 With contributions from [Sebastian Choren](https://github.com/schoren),
@@ -72,9 +73,8 @@ First, install the following tools on your local machine:
 
 ## Setting up an Observability Stack to Monitor Traces
 
-To set up the observability stack, you’ll run the
-[OpenTelemetry Collector](../../../docs/collector/) (OTel
-Collector), a tool that receives telemetry data from different apps and sends it
+To set up the observability stack, you’ll run the OpenTelemetry (OTel)
+[Collector](/docs/collector/), a tool that receives telemetry data from different apps and sends it
 to a tracing backend. As a tracing backend, you’ll use
 [Jaeger](https://www.jaegertracing.io/), an open source tool that collects
 traces and lets you query them.
@@ -209,7 +209,7 @@ which is a template file used by `k3s` to configure `containerd`. This file is
 similar to the default configuration that `k3s` uses, with two more sections at
 the end of the file that configures `containerd` to send traces.
 
-```liquid
+```go-html-template
 version = 2
 
 [plugins."io.containerd.internal.v1.opt"]
@@ -406,12 +406,12 @@ Open the browser, and navigate to the Jaeger UI located at
 <http://localhost:16686/search>. You’ll see that the `apiserver`, `containerd`,
 and `kubelet` services are publishing traces:
 
-![Jaeger screen with services dropdown open showing apiserver, containerd and kubelet services as options](./k8s-services-reported-on-jaeger.png)
+![Jaeger screen with services dropdown open showing apiserver, containerd and kubelet services as options](k8s-services-reported-on-jaeger.png)
 
 Choose `apiserver` and click on **"Find Traces”.** Here you see traces from the
 Kubernetes control plane:
 
-![Jaeger screen showing a list of spans found for apiserver](./spans-found-for-apiserver.png)
+![Jaeger screen showing a list of spans found for apiserver](spans-found-for-apiserver.png)
 
 Let’s run a sample command against Kubernetes with `kubectl`, like running an
 echo:
@@ -430,11 +430,11 @@ And now, open Jaeger again, choose the `kubelet` service, operation `syncPod`,
 and add the tag `k8s.pod=default/echo-command`, you should be able to see spans
 related to this pod:
 
-![Jaeger screen showing a list of spans found for the syncPod operation on kubelet service](./syncpod-operations-on-kubelet.png)
+![Jaeger screen showing a list of spans found for the syncPod operation on kubelet service](syncpod-operations-on-kubelet.png)
 
 Expanding one trace, you’ll see the operations that created this pod:
 
-![Jaeger screen showing a single syncPod expanded](./single-syncpod-expanded.png)
+![Jaeger screen showing a single syncPod expanded](single-syncpod-expanded.png)
 
 ## Conclusion
 
@@ -460,15 +460,16 @@ that allows you to develop and test your distributed system with OpenTelemetry.
 It works with any OTel compatible system and enables trace–based tests to be
 created. Check it out at https://github.com/kubeshop/tracetest.
 
-You can find the examples that were used in this article
-[here](https://github.com/kubeshop/tracetest/tree/main/examples/tracetesting-kubernetes/kubetracing)
-and a brief description of them
-[here](https://github.com/kubeshop/tracetest/blob/main/examples/tracetesting-kubernetes/setup-k8s-with-k3d.md).
+The
+[example sources](https://github.com/kubeshop/tracetest/tree/main/examples/tracetesting-kubernetes/kubetracing)
+used in this article, and
+[setup instructions](https://github.com/kubeshop/tracetest/blob/main/examples/tracetesting-kubernetes/setup-k8s-with-k3d.md)
+are available from the Tracetest repo.
 
 ## References
 
 - [Traces For Kubernetes System Components](https://kubernetes.io/docs/concepts/cluster-administration/system-traces/)
 - [Tracing on ContainerD](https://github.com/containerd/containerd/blob/main/docs/tracing.md)
 - [Kubernetes: Tools for Monitoring Resources](https://kubernetes.io/docs/tasks/debug/debug-cluster/resource-usage-monitoring/)
-- [Getting Started with OTel Collector](../../../docs/collector/getting-started/)
+- [Getting Started with OTel Collector](/docs/collector/getting-started/)
 - [Boosting Kubernetes container runtime observability with OpenTelemetry](https://kubernetes.io/blog/2022/12/01/runtime-observability-opentelemetry/)
