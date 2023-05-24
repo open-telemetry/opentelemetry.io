@@ -26,8 +26,6 @@ echo "OTEL SPEC pages: copied and processed"
 SRC=content-modules/opentelemetry-proto/docs
 DEST=$DEST_BASE/otlp/docs
 
-if [[ -e $SRC ]]; then
-
 rm -Rf $DEST
 mkdir -p $DEST
 cp -R $SRC/* $DEST/
@@ -41,20 +39,14 @@ $SCRIPT_DIR/adjust-pages.pl $FILES
 
 echo "OTLP SPEC pages: copied and processed."
 
-# SRC=content-modules/opentelemetry-proto/opentelemetry
-# DEST=$DEST_BASE/otlp/opentelemetry
+SRC=content-modules/opentelemetry-proto/opentelemetry
+DEST=$DEST_BASE/otlp/opentelemetry
 
-# rm -Rf $DEST
-# mkdir -p $DEST
-# cp -R $SRC/* $DEST/
+rm -Rf $DEST
+mkdir -p $DEST
+cp -R $SRC/* $DEST/
 
-# echo "OTLP SPEC protos copied and processed."
-
-else
-
-echo "OTLP SPEC pages: skipped"
-
-fi
+echo "OTLP SPEC protos copied and processed."
 
 ## Community
 
