@@ -28,7 +28,7 @@ However, there are some pre-existing problems that may impact users:
 - There wasn't official OTel guidance on how to monitor Lambdas and no single
   source of truth for OTel users to reference.
 
-The FAAS SIG has updated our assets to address these shortcomings:
+The FaaS SIG has addressed the above-mentioned shortcomings:
 
 - We have written new Github Actions to release the Lambda layers ourselves and
   empower the community to make our own release decisions.
