@@ -21,8 +21,8 @@ git clone git@github.com:open-telemetry/opentelemetry-collector-contrib.git --de
   docker compose up -d
 ```
 
-**Note**: `docker-compose` is deprecated and you should
-[migrate to Compose V2](https://docs.docker.com/compose/migrate/)
+{{% alert title="Note" color="info" %}} {{% _param notes.docker-compose-v2 %}}
+{{% /alert %}}
 
 ## Docker
 
