@@ -15,8 +15,8 @@ confused by this announcement. You might think something like: OTel has had a
 [repo for Lambda layers](https://github.com/open-telemetry/opentelemetry-lambda)
 and they've been available on AWS for years.
 
-Which is totally correct. Thankfully, we're not remaking the wheel here.
-However, there are some pre-existing problems that impact our users:
+You're totally correct. Rest assured, we're not reinventing the wheel.
+However, there are some pre-existing problems that may impact users:
 
 - The OTel Lambda layers were only released as part of the
   [AWS Distribution for OTel (ADOT)](https://aws-otel.github.io/) and the
