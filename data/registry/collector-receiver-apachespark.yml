@@ -1,0 +1,15 @@
+title: Apache Spark Receiver
+registryType: receiver
+isThirdParty: false
+language: collector
+tags:
+  - apachespark
+  - receiver
+  - collector
+repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/apachesparkreceiver
+license: Apache 2.0
+description:
+  This receiver fetches metrics for an Apache Spark cluster through the Apache
+  Spark REST API
+authors: OpenTelemetry Authors
+otVersion: latest

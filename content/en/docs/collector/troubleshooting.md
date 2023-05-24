@@ -10,7 +10,7 @@ logs, and extensions for debugging issues.
 
 ## Sending test data
 
-For certain types of issues, particularly verifing configuration and debugging
+For certain types of issues, particularly verifying configuration and debugging
 network issues, it can be helpful to send a small amount of data to a collector
 configured to output to local logs. For details, see
 [Local exporters](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/troubleshooting.md#local-exporters).
