@@ -40,7 +40,6 @@
     "tabpane",
     "textlint",
     "tocstop",
-    "zipkin",
-    "Zipkin"
+    "zipkin"
   ]
 }
