@@ -158,7 +158,7 @@ app.MapGet("/hello", (Tracer tracer) =>
 ### Acquiring a tracer from a TracerProvider
 
 If you're not using ASP.NET Core or would rather not inject an instance of a
-`Tracer`, create one from your instantialized
+`Tracer`, create one from your instantiated
 [`TracerProvider`](/docs/concepts/signals/traces/#tracer-provider):
 
 ```csharp
@@ -218,7 +218,7 @@ as a nested operation under `parent-span"`.
 
 ### Nested Spans in the same scope
 
-You may wish to create a parent-child relationsip in the same scope. Although
+You may wish to create a parent-child relationship in the same scope. Although
 possible, this is generally not recommended because you need to be careful to
 end any nested `TelemetrySpan` when you expect it to end.
 

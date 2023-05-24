@@ -719,6 +719,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-15T21:03:17.781026-05:00"
   },
+  "https://docs.docker.com/compose/migrate/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-23T09:47:50.912587+02:00"
+  },
   "https://docs.docker.com/desktop": {
     "StatusCode": 206,
     "LastSeen": "2023-02-15T21:03:12.654004-05:00"

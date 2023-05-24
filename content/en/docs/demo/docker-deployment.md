@@ -25,7 +25,7 @@ aliases: [/docs/demo/docker_deployment]
     cd opentelemetry-demo/
     ```
 
-3.  Run docker compose to start the demo:
+3.  Run docker compose[^1] to start the demo:
 
     ```shell
     docker compose up --no-build
@@ -38,8 +38,8 @@ aliases: [/docs/demo/docker_deployment]
     >   source. Removing the `--no-build` command line option will rebuild all
     >   images from source. It may take more than 20 minutes to build if the
     >   flag is omitted.
-    > - If you're running on Apple Silicon, run `docker compose build` in order
-    >   to create local images vs. pulling them from the repository.
+    > - If you're running on Apple Silicon, run `docker compose build`[^1] in
+    >   order to create local images vs. pulling them from the repository.
 
 ## Verify the Webstore and Telemetry
 
@@ -94,5 +94,9 @@ different exporters, you may find them and their documentation available at
 [opentelemetry-collector-contrib/exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter).
 
 After updating the `otelcol-config-extras.yml`, start the demo by running
-`docker compose up`. After a while, you should see the traces flowing into your
-backend as well.
+`docker compose up`[^1]. After a while, you should see the traces flowing into
+your backend as well.
+
+[^1]:
+    Please note that `docker-compose` is deprecated and you should
+    [migrate to Compose V2](https://docs.docker.com/compose/migrate/)

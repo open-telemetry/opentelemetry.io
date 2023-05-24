@@ -22,12 +22,12 @@ the module.
 
 Getting started with the OpenTelemetry module for apache httpd is pretty simple,
 all you need is a docker engine and git. Download the source code from github
-and then build the docker image on CentOS7:
+and then build the docker image on CentOS7[^1]:
 
 ```sh
 git clone https://github.com/open-telemetry/opentelemetry-cpp-contrib
 cd  instrumentation/otel-webserver-module
-docker-compose --profile centos7 build
+docker compose --profile centos7 build
 ```
 
 These commands download all required dependencies, builds the OpenTelemetry
@@ -36,10 +36,10 @@ module for Apache and installs the same on the docker image.
 **Note**: The above commands might take around 1 hour to complete.
 
 When the build is finished, run the docker image, by typing the following
-command:
+command[^1]:
 
 ```sh
-docker-compose --profile centos7 up -d
+docker compose --profile centos7 up -d
 ```
 
 The above command starts up the centos7 image in a docker container named
@@ -152,10 +152,10 @@ the package and install on the target system where apache is installed.
   cd  opentelemetry-cpp-contrib/instrumentation/otel-webserver-module
   ```
 
-- Trigger the build command to generate the package inside the docker image
+- Trigger the build command to generate the package inside the docker image[^1]
 
   ```sh
-  docker-compose --profile centos7 build
+  docker compose --profile centos7 build
   ```
 
 The above might take around an hour to build. This would build on Centos 7 image
@@ -251,6 +251,10 @@ writing this blog, support for other architectures is not provided.
 
 - Now, restart the apache module and OpenTelemetry module should be
   instrumented.
+
+[^1]:
+    Please note that `docker-compose` is deprecated and you should
+    [migrate to Compose V2](https://docs.docker.com/compose/migrate/)
 
 [docker-compose.yml]:
   https://github.com/open-telemetry/opentelemetry-cpp-contrib/blob/main/instrumentation/otel-webserver-module/docker-compose.yml
