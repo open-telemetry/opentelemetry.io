@@ -1,11 +1,9 @@
 ---
 title:
-  'Creating a Kubernetes Cluster with Runtime Observability Using k3d and
-  OpenTelemetry'
-linkTitle: 'Creating a Kubernetes Cluster with Runtime Observability'
+  'Creating a Kubernetes Cluster with Runtime Observability'
+linkTitle: 'K8s Runtime Observability'
 date: 2023-05-23
 author: '[Daniel Dias](https://github.com/danielbdias) (Tracetest)'
-draft: true # TODO: remove this line once your post is ready to be published
 # canonical_url: http://somewhere.else/ # TODO: if this blog post has been posted somewhere else already, uncomment & provide the canonical URL here.
 body_class: otel-with-contributions-from
 ---
@@ -16,8 +14,8 @@ With contributions from [Sebastian Choren](https://github.com/schoren),
 
 ## Creating a Kubernetes Cluster with Runtime Observability Using k3d and OpenTelemetry
 
-[Kubernetes](https://kubernetes.io/) is an open-source system widely used in the
-cloud-native landscape to provide ways to deploy and scale containerized
+[Kubernetes](https://kubernetes.io/) is an open source system widely used in the
+cloud native landscape to provide ways to deploy and scale containerized
 applications in the cloud. Its ability to observe logs and metrics is well-known
 and documented, but its observability regarding application traces is new.
 
@@ -68,11 +66,11 @@ of Kubernetes with tracing enabled.
 First, install the following tools on your local machine:
 
 - [Docker](https://www.docker.com/): a container environment that allows us to
-  run containerized environments;
+  run containerized environments
 - [k3d](https://k3d.io/): a wrapper to run [k3s](https://k3s.io/) (a lightweight
-  Kubernetes distribution) with Docker;
+  Kubernetes distribution) with Docker
 - [kubectl](https://kubernetes.io/docs/reference/kubectl/): a Kubernetes CLI to
-  interact with clusters.
+  interact with clusters
 
 ### Setting up an Observability Stack to Monitor Traces
 
@@ -80,7 +78,7 @@ To set up the observability stack, you’ll run the
 [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) (OTel
 Collector), a tool that receives telemetry data from different apps and sends it
 to a tracing backend. As a tracing backend, you’ll use
-[Jaeger](https://www.jaegertracing.io/), an open-source tool that collects
+[Jaeger](https://www.jaegertracing.io/), an open source tool that collects
 traces and lets you query them.
 
 On your machine, create a directory called `kubetracing` and create a file
@@ -367,7 +365,7 @@ CoreDNS is running at https://0.0.0.0:60503/api/v1/namespaces/kube-system/servic
 Metrics-server is running at https://0.0.0.0:60503/api/v1/namespaces/kube-system/services/https:metrics-server:https/proxy
 ```
 
-Going back to the logs of the Observability environment, you should see some
+Going back to the logs of the observability environment, you should see some
 spans of internal Kubernetes operations being published in OpenTelemetry
 Collector, like this:
 
