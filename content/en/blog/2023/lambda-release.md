@@ -32,8 +32,8 @@ The FaaS SIG has addressed the above-mentioned shortcomings:
 
 - We have written new Github Actions to release the Lambda layers ourselves, thus
   empowering the community to make its own release decisions.
-- Separated the Collector and instrumentation layers to give customers options
-  when instrumenting their Lambdas. The community now offers a standalone Lambda
+- Separated the Collector and instrumentation layers to give users options
+  when instrumenting their Lambdas. We now offer a standalone Lambda
   layer for the Collector alongside auto-instrumentation layers for JavaScript,
   Java, and Python.
 - Added official community Lambda documentation to the OTel website under the
