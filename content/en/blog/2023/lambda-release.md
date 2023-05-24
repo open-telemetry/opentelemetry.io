@@ -46,7 +46,9 @@ on adding similar documentation + (potentially) auto-instrumentation for other
 Cloud vendors like Azure and GCP, enhancing the existing Lambda assets, and
 improving OpenTelemetry performance for Function specific scenarios.
 
-If you'd like to help move this work forward, join a
+## Get Involved
+
+Interested in learning more, or if you'd like to help: join us in a
 [SIG meeting](https://github.com/open-telemetry/community#implementation-sigs)
-(every Tuesday at 12 pm PST) or join our
-[Slack channel](https://cloud-native.slack.com/archives/C04HVBETC9Z).
+(every Tuesday at 12 pm PST), or join us on Slack at 
+[#otel-faas](https://cloud-native.slack.com/archives/C04HVBETC9Z).
