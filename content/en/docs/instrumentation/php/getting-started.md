@@ -9,7 +9,7 @@ spelling: cSpell:ignore darwin
 
 This page will show you how to get started with OpenTelemetry in PHP.
 
-You will learn how you can instrument a simple java application automatically,
+You will learn how you can instrument a simple PHP application automatically,
 in such a way that [traces][], [metrics][] and [logs][] are emitted to the
 console.
 
