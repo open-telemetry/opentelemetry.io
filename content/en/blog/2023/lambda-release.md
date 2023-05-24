@@ -1,5 +1,5 @@
 ---
-title: OpenTelemetry Updates our Lambda Support
+title: OpenTelemetry Updates Lambda Support
 linkTitle: OTel Lambda Updates
 date: 2023-05-25
 author: '[Carter Socha](https://github.com/cartersocha) (Lightstep)'
@@ -8,7 +8,7 @@ author: '[Carter Socha](https://github.com/cartersocha) (Lightstep)'
 The [Functions-as-a-Service (FaaS) SIG](https://docs.google.com/document/d/187XYoQcXQ9JxS_5v2wvZ0NEysaJ02xoOYNXj08pT0zc) is incredibly excited to announce that the release of OpenTelemetry Lambda layers, and associated [documentation](/docs/faas/) on how to
 monitor Amazon Web Services (AWS) Lambdas.
 
-### A Slightly New World
+## OTel FaaS repackaged
 
 If you've been monitoring Lambdas using OTel for a while now, you may be slightly
 confused by this announcement. You might think something like: OTel has had a
