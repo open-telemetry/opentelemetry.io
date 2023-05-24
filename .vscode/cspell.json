@@ -14,7 +14,7 @@
     "hugo",
     "initializers",
     "Istio",
-    "Jaeger",
+    "jaeger",
     "jaegertracing",
     "Javadoc",
     "Knative",
