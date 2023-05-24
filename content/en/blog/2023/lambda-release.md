@@ -39,7 +39,7 @@ The FAAS SIG has updated our assets to address these shortcomings:
 - Added official community Lambda documentation to the OTel website under the
   new FAAS section.
 
-### Get Involved
+## What next
 
 We're not stopping at our current state. Going forward, the FAAS SIG is planning
 on adding similar documentation + (potentially) auto-instrumentation for other
