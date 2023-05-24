@@ -48,6 +48,8 @@ opentelemetry-instrument \
     --metrics_exporter console \
     --service_name your-service-name \
     --exporter_otlp_endpoint 0.0.0.0:4317 \
+    --distro distro
+    --configurator configurator
     python myapp.py
 ```
 
@@ -58,6 +60,8 @@ OTEL_SERVICE_NAME=your-service-name \
 OTEL_TRACES_EXPORTER=console,otlp \
 OTEL_METRICS_EXPORTER=console \
 OTEL_EXPORTER_OTLP_TRACES_ENDPOINT=0.0.0.0:4317
+OTEL_PYTHON_DISTRO=distro
+OTEL_PYTHON_CONFIGURATOR=configurator
 opentelemetry-instrument \
     python myapp.py
 ```

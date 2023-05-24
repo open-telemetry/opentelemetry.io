@@ -17,6 +17,8 @@ Here's an example of agent configuration via configuration properties:
 
 ```sh
 opentelemetry-instrument \
+    --distro distro \
+    --configurator configurator \
     --traces_exporter console,otlp \
     --metrics_exporter console \
     --service_name your-service-name \
@@ -26,6 +28,8 @@ opentelemetry-instrument \
 
 Here's an explanation of what each configuration does:
 
+- `distro` specifies which distro should be loaded. Argument should be the entry point name of the desired distro. If only a single distro exists, this argument may be left out.
+- `configurator` specifies which configurator should be loaded. Argument should be the entry point name of the desired configurator. If only a single configurator exists, this argument may be left out.
 - `traces_exporter` specifies which traces exporter to use. In this case, traces
   are being exported to `console` (stdout) and with `otlp`. The `otlp` option
   tells `opentelemetry-instrument` to send the traces to an endpoint that
@@ -66,6 +70,10 @@ For example, `exporter_otlp_endpoint` would convert to
 
 There are some python specific configuration options you can set by prefixing
 environment variables with `OTEL_PYTHON_`.
+
+### Selecting Distro and Configurator
+
+In addition to the `distro` and `configurator` arguments, you can use the `OTEL_PYTHON_DISTRO` and `OTEL_PYTHON_CONFIGURATOR` environment variables. If only a single distro or configurator exists, these arguments may be left out.
 
 ### Excluded URLs
 
