@@ -500,7 +500,7 @@ The status can be set at any time before the span is finished:
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 {{< tab TypeScript >}}
-import opentelemetry from "@opentelemetry/api";
+import opentelemetry, { SpanStatusCode } from "@opentelemetry/api";
 
 // ...
 
@@ -508,7 +508,7 @@ tracer.startActiveSpan('app.doWork', span => {
   for (let i = 0; i <= Math.floor(Math.random() * 40000000); i += 1) {
     if (i > 10000) {
       span.setStatus({
-        code: opentelemetry.SpanStatusCode.ERROR,
+        code: SpanStatusCode.ERROR,
         message: 'Error'
       });
     }
