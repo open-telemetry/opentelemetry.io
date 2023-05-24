@@ -252,9 +252,7 @@ writing this blog, support for other architectures is not provided.
 - Now, restart the apache module and OpenTelemetry module should be
   instrumented.
 
-[^1]:
-    Please note that `docker-compose` is deprecated and you should
-    [migrate to Compose V2](https://docs.docker.com/compose/migrate/)
+[^1]: {{% _param notes.docker-compose-v2 %}}
 
 [docker-compose.yml]:
   https://github.com/open-telemetry/opentelemetry-cpp-contrib/blob/main/instrumentation/otel-webserver-module/docker-compose.yml

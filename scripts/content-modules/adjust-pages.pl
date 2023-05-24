@@ -83,7 +83,10 @@ while(<>) {
   s|\.\./semantic_conventions/README.md|$semConvRef| if $ARGV =~ /overview/;
   s|\.\./specification/(.*?\))|../otel/$1)|g if $ARGV =~ /otel\/specification/;
 
-  if (/\((https:\/\/github.com\/open-telemetry\/opentelemetry-specification\/\w+\/\w+\/specification([^\)]*))\)/) {
+  if (
+    /\((https:\/\/github.com\/open-telemetry\/opentelemetry-specification\/\w+\/\w+\/specification([^\)]*))\)/ &&
+    $ARGV !~ /semantic_conventions/
+    ) {
     printf STDOUT "WARNING: link to spec page encoded as an external URL, but should be a local path, fix this upstream;\n  File: $ARGV \n  Link: $1\n";
   }
   s|\(https://github.com/open-telemetry/opentelemetry-specification/\w+/\w+/specification([^\)]*)\)|($specBasePath/otel$1)|;
