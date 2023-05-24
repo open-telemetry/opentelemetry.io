@@ -41,9 +41,8 @@ The FAAS SIG has updated our assets to address these shortcomings:
 
 ## What next
 
-We're not stopping at our current state. Going forward, the FAAS SIG is planning
-on adding similar documentation + (potentially) auto-instrumentation for other
-Cloud vendors like Azure and GCP, enhancing the existing Lambda assets, and
+Moving forward, the FaaS SIG plans to: enhance the documentation, add auto-instrumentation for other
+Cloud vendors like Azure and GCP (tentative), enhancing the existing Lambda assets, and
 improving OpenTelemetry performance for Function specific scenarios.
 
 ## Get Involved
