@@ -86,8 +86,8 @@ to provide information about the operation it tracks.
 
 The following table contains examples of span attributes:
 
-| Key              | Value                                                                                                                 |
-| ---------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Key              | Value                                                                                                                   |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------- |
 | net.transport    | `IP.TCP`                                                                                                                |
 | net.peer.ip      | `10.244.0.1`                                                                                                            |
 | net.peer.port    | `10243`                                                                                                                 |
