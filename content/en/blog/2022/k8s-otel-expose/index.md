@@ -446,6 +446,6 @@ to stay updated.
 - [Basic HTTP Authentication](https://datatracker.ietf.org/doc/html/rfc7617)
 - [Kubernetes Downward-API](https://kubernetes.io/docs/concepts/workloads/pods/downward-api/)
 - [Let’s Encrypt](https://letsencrypt.org/)
-- [Ingress nginx gRPC example](https://kubernetes.github.io/ingress-nginx/examples/grpc/)
+- [Ingress NGINX gRPC example](https://kubernetes.github.io/ingress-nginx/examples/grpc/)
 - [OpenTelemetry-Collector TLS-Config](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.58.0/config/configtls/README.md)
 - [How TLS provides identification, authentication, confidentiality, and integrity](https://www.ibm.com/docs/en/ibm-mq/9.1?topic=tls-how-provides-identification-authentication-confidentiality-integrity)
