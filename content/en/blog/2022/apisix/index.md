@@ -192,15 +192,15 @@ resulting in a call chain consisting of two spans.
 
 ### Step 1: Deploy OpenTelemetry
 
-The following uses docker-compose as an example. For other deployments, see
+The following uses `docker compose` as an example. For other deployments, see
 [Getting Started](/docs/collector/getting-started/).
 
-You can see the following command to deploy:
+You can see the following command to deploy[^1]:
 
 ```shell
 git clone https://github.com/open-telemetry/opentelemetry-collector-contrib.git
 cd opentelemetry-collector-contrib/examples/demo
-docker-compose up -d
+docker compose up -d
 ```
 
 Visit <http://127.0.0.1:16886> (Jaeger UI) or <http://127.0.0.1:9411/zipkin>
@@ -393,5 +393,7 @@ communicate via the
 [mailing list](https://apisix.apache.org/docs/general/join/#subscribe-to-the-mailing-list).
 
 _A version of this article was [originally posted][] on the Apache APISIX blog._
+
+[^1]: {{% _param notes.docker-compose-v2 %}}
 
 [originally posted]: {{% param canonical_url %}}

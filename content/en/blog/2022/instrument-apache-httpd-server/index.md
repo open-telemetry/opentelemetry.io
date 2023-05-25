@@ -20,14 +20,14 @@ quick guide to get started with the module.
 
 ### Building the module
 
-Getting started with the OpenTelemetry module for Apache HTTP Server is pretty
-simple, all you need is a docker engine and git. Download the source code from
-github and then build the docker image on CentOS7:
+Getting started with the OpenTelemetry module for apache httpd is pretty simple,
+all you need is a docker engine and git. Download the source code from github
+and then build the docker image on CentOS7[^1]:
 
 ```sh
 git clone https://github.com/open-telemetry/opentelemetry-cpp-contrib
 cd  instrumentation/otel-webserver-module
-docker-compose --profile centos7 build
+docker compose --profile centos7 build
 ```
 
 These commands download all required dependencies, builds the OpenTelemetry
@@ -36,10 +36,10 @@ module for Apache HTTP Server and installs the same on the docker image.
 **Note**: The above commands might take around 1 hour to complete.
 
 When the build is finished, run the docker image, by typing the following
-command:
+command[^1]:
 
 ```sh
-docker-compose --profile centos7 up -d
+docker compose --profile centos7 up -d
 ```
 
 The above command starts up the centos7 image in a docker container named
@@ -155,10 +155,10 @@ Apache HTTP Server is installed.
   cd  opentelemetry-cpp-contrib/instrumentation/otel-webserver-module
   ```
 
-- Trigger the build command to generate the package inside the docker image
+- Trigger the build command to generate the package inside the docker image[^1]
 
   ```sh
-  docker-compose --profile centos7 build
+  docker compose --profile centos7 build
   ```
 
 The above might take around an hour to build. This would build on Centos 7 image
@@ -254,6 +254,8 @@ writing this blog, support for other architectures is not provided.
 
 - Now, restart the Apache HTTP Server and OpenTelemetry module should be
   instrumented.
+
+[^1]: {{% _param notes.docker-compose-v2 %}}
 
 [docker-compose.yml]:
   https://github.com/open-telemetry/opentelemetry-cpp-contrib/blob/main/instrumentation/otel-webserver-module/docker-compose.yml

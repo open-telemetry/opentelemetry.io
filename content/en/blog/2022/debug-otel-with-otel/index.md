@@ -139,8 +139,8 @@ services:
       - OTEL_SERVICE_NAME=frontend
 ```
 
-Spin up that environment by running `docker-compose up` and send some requests
-to the frontend with `curl localhost:8000`
+Spin up that environment by running `docker compose up`[^1] and send some
+requests to the frontend with `curl localhost:8000`
 
 ### What did you expect to see?
 
@@ -201,7 +201,7 @@ backend:
     - OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SERVER_REQUEST=tracestate,traceparent,baggage,X-B3-TraceId
 ```
 
-Once again we ran `docker-compose up` to bring up our sample app and we send
+Once again we ran `docker compose up`[^1] to bring up our sample app and we send
 some request with `curl localhost:8080` to the frontend application.
 
 In Jaeger we still see that the traces are disconnected. However, when we look
@@ -246,6 +246,8 @@ RUN echo "load_module /opt/opentelemetry-webserver-sdk/WebServerModule/Nginx/ngx
 COPY default.conf /etc/nginx/conf.d
 COPY opentelemetry_module.conf /etc/nginx/conf.d
 ```
+
+[^1]: {{% _param notes.docker-compose-v2 %}}
 
 [learn how to instrument nginx with opentelemetry]: /blog/2022/instrument-nginx/
 [put nginx between two services]:
