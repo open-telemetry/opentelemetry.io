@@ -73,7 +73,6 @@ provider.register();
 
 {{< tab JavaScript >}}
 /*tracing.js*/
-const opentelemetry = require("@opentelemetry/api");
 const { Resource } = require("@opentelemetry/resources");
 const { SemanticResourceAttributes } = require("@opentelemetry/semantic-conventions");
 const { NodeTracerProvider } = require("@opentelemetry/sdk-trace-node");
@@ -723,7 +722,7 @@ initialization code in it:
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 {{< tab TypeScript >}}
-import otel from "@opentelemetry/api";
+import opentelemetry from "@opentelemetry/api";
 import {
   ConsoleMetricExporter,
   MeterProvider,
@@ -754,11 +753,11 @@ const myServiceMeterProvider = new MeterProvider({
 myServiceMeterProvider.addMetricReader(metricReader);
 
 // Set this MeterProvider to be global to the app being instrumented.
-otel.metrics.setGlobalMeterProvider(myServiceMeterProvider)
+opentelemetry.metrics.setGlobalMeterProvider(myServiceMeterProvider)
 {{< /tab >}}
 
 {{< tab JavaScript >}}
-const otel = require('@opentelemetry/api')
+const opentelemetry = require('@opentelemetry/api')
 const {
     MeterProvider,
     PeriodicExportingMetricReader,
@@ -789,7 +788,7 @@ const myServiceMeterProvider = new MeterProvider({
 myServiceMeterProvider.addMetricReader(metricReader);
 
 // Set this MeterProvider to be global to the app being instrumented.
-otel.metrics.setGlobalMeterProvider(myServiceMeterProvider)
+opentelemetry.metrics.setGlobalMeterProvider(myServiceMeterProvider)
 {{< /tab >}}
 {{< /tabpane>}}
 <!-- prettier-ignore-end -->
@@ -820,9 +819,9 @@ call `getMeter` to acquire a meter. For example:
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 {{< tab TypeScript >}}
-import otel from "@opentelemetry/api";
+import opentelemetry from "@opentelemetry/api";
 
-const myMeter = otel.metrics.getMeter(
+const myMeter = opentelemetry.metrics.getMeter(
   'my-service-meter'
 );
 
@@ -830,9 +829,9 @@ const myMeter = otel.metrics.getMeter(
 {{< /tab >}}
 
 {{< tab JavaScript >}}
-const otel = require('@opentelemetry/api')
+const opentelemetry = require('@opentelemetry/api')
 
-const myMeter = otel.metrics.getMeter(
+const myMeter = opentelemetry.metrics.getMeter(
   'my-service-meter'
 );
 
