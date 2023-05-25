@@ -74,9 +74,9 @@ First, install the following tools on your local machine:
 ## Setting up an Observability Stack to Monitor Traces
 
 To set up the observability stack, you’ll run the OpenTelemetry (OTel)
-[Collector](/docs/collector/), a tool that receives telemetry data from different apps and sends it
-to a tracing backend. As a tracing backend, you’ll use
-[Jaeger](https://www.jaegertracing.io/), an open source tool that collects
+[Collector](/docs/collector/), a tool that receives telemetry data from
+different apps and sends it to a tracing backend. As a tracing backend, you’ll
+use [Jaeger](https://www.jaegertracing.io/), an open source tool that collects
 traces and lets you query them.
 
 On your machine, create a directory called `kubetracing` and create a file
