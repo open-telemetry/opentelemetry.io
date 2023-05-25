@@ -46,7 +46,7 @@
     "precheck:links:internal": "npm run build",
     "prepare": "run-s get:submodule _prepare:docsy",
     "preserve:hugo": "npm run _prebuild",
-    "preserve": "npm run _prebuild",
+    "preserve:netlify": "npm run _prebuild",
     "s": "run-s",
     "schemas:update": "npm run update:submodule content-modules/opentelemetry-specification",
     "serve:hugo": "npm run _serve:hugo",
