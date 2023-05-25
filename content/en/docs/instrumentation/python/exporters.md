@@ -164,7 +164,7 @@ metrics.set_meter_provider(provider)
 ### Using HTTP
 
 If you'd prefer to use [OTLP/HTTP](/docs/specs/otel/protocol/otlp/#otlphttp)
-with the binary-encoded Protobuf format, you can install the package:
+with the binary-encoded protobuf format, you can install the package:
 
 ```console
 $ pip install opentelemetry-exporter-otlp-proto-http

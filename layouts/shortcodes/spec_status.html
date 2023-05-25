@@ -2,7 +2,7 @@
 {{ $label := .Get 0 -}}
 {{ $pageRef := .Get 1 -}}
 {{ if not (hasPrefix $pageRef "/") -}}
-  {{ $pageRef = printf "/docs/specs/otel/%s" $pageRef -}}
+  {{ $pageRef = printf "/docs/specs/%s" $pageRef -}}
 {{ end -}}
 {{ $page := .Site.GetPage $pageRef -}}
 {{ if not $page -}}
