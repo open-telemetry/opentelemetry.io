@@ -211,7 +211,7 @@ backend:
 ![A screenshot of the Jaeger UI showing that http.request.header.traceparent has multiple entries.](jaeger-with-request-headers.png)
 
 There it is! The trace headers (`baggage`, `traceparent`, `tracestate`) are send
-as multiple header fields: the module for NGINX added the value of each of those
+as multiple header fields: the NGINX module added the value of each of those
 headers again and again, and since having multi value headers is covered by
 [RFC7230][], this didn't lead to an issue immediately.
 
