@@ -86,6 +86,4 @@ $GIT commit -a -m "$message"
 $GIT push --set-upstream origin "$branch"
 
 echo "Submitting auto-update PR '$message'."
-$GH pr create --label auto-update \
-             --title "$message" \
-             --body "$body"
+$GH pr create --title "$message" --body "$body"

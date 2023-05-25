@@ -245,7 +245,7 @@ World” program to send data to the Collector, and nothing is showing up, and
 need some guidance around this. How do we help folks who aren’t super familiar
 with Docker and aren’t super familiar with OpenTelemetry? Can we have some super
 simple reference implementations to hold folks’ hands as they get started? For
-example, for a Ruby developer, clone X repo, run `docker-compose up`, and
+example, for a Ruby developer, clone X repo, run `docker compose up`[^1], and
 everything should be up and running. That way, they can focus on learning
 OpenTelemetry, rather than mess around with Docker networking and other
 distracting things.
@@ -302,3 +302,5 @@ Be sure to follow OpenTelemetry on
 [Mastodon](https://fosstodon.org/@opentelemetry) and
 [Twitter](https://twitter.com/opentelemetry), and share your stories using the
 **#OpenTelemetry** hashtag!
+
+[^1]: {{% _param notes.docker-compose-v2 %}}

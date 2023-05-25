@@ -8,7 +8,7 @@ The simplest pattern is not to use a collector at all. This pattern consists of
 applications [instrumented][instrumentation] with an OpenTelemetry SDK that
 export telemetry signals (traces, metrics, logs) directly into a backend:
 
-![No collector deployment concept](../../img/otel_sdk.png)
+![No collector deployment concept](../../img/otel_sdk.svg)
 
 ## Example
 
