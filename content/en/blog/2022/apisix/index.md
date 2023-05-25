@@ -176,8 +176,8 @@ displayed in the Tags list: `http_x-custom-ot-key` and `route_id`.
 ![Jaeger UI](jaeger-ui-1.png)
 
 You need to note that the `additional_attributes` configuration is set to take
-values from Apache APISIX and Nginx variables as `attribute` values, so
-`additional_attributes` must be a valid Apache APISIX or Nginx variable. It also
+values from Apache APISIX and NGINX variables as `attribute` values, so
+`additional_attributes` must be a valid Apache APISIX or NGINX variable. It also
 includes HTTP Header, but when fetching http*header, you need to add
 `http*`as the prefix of the variable name. If the variable does not exist, the`tag`
 will not be displayed.
