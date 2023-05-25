@@ -180,7 +180,7 @@ std::unique_ptr<opentelemetry::sdk::metrics::MetricReader> reader{
 
 ### Prometheus
 
-To send metrics to a prometheus endpoint you'll want to configure a prometheus
+To send metrics to a Prometheus endpoint you'll want to configure a prometheus
 exporter
 
 ```cpp

@@ -18,8 +18,11 @@ Prometheus back-ends. More information can be found on the demo [README.md][].
 ```sh
 git clone git@github.com:open-telemetry/opentelemetry-collector-contrib.git --depth 1; \
   cd opentelemetry-collector-contrib/examples/demo; \
-  docker-compose up -d
+  docker compose up -d
 ```
+
+{{% alert title="Note" color="info" %}} {{% _param notes.docker-compose-v2 %}}
+{{% /alert %}}
 
 ## Docker
 
@@ -30,8 +33,8 @@ run.
 <!-- prettier-ignore-start -->
 {{< tabpane lang=shell persistLang=false >}}
 {{< tab DockerHub >}}
-docker pull otel/opentelemetry-collector:{{% param collectorVersion %}}
-docker run otel/opentelemetry-collector:{{% param collectorVersion %}}
+docker pull otel/opentelemetry-collector-contrib:{{% param collectorVersion %}}
+docker run otel/opentelemetry-collector-contrib:{{% param collectorVersion %}}
 {{< /tab >}}
 
 {{< tab ghcr.io >}}
@@ -47,7 +50,7 @@ directory, mount that file as a volume:
 <!-- prettier-ignore-start -->
 {{< tabpane lang=shell persistLang=false >}}
 {{< tab DockerHub >}}
-docker run -v $(pwd)/config.yaml:/etc/otelcol-contrib/config.yaml otel/opentelemetry-collector:{{% param collectorVersion %}}
+docker run -v $(pwd)/config.yaml:/etc/otelcol-contrib/config.yaml otel/opentelemetry-collector-contrib:{{% param collectorVersion %}}
 {{< /tab >}}
 
 {{< tab ghcr.io >}}
@@ -63,7 +66,7 @@ the following:
 
 ```yaml
 otel-collector:
-  image: otel/opentelemetry-collector
+  image: otel/opentelemetry-collector-contrib
   command: [--config=/etc/otel-collector-config.yaml]
   volumes:
     - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml

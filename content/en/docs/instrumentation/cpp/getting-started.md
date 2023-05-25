@@ -12,7 +12,7 @@ exporting data from OpenTelemetry.
 You can use [CMake](https://cmake.org/) or [Bazel](https://bazel.build/) for
 building OpenTelemetry C++. The following getting started guide will make use of
 CMake and only provide you the most essential steps to have a working example
-application (a http server & http client). For more details read
+application (a HTTP server & HTTP client). For more details read
 [these instructions](https://github.com/open-telemetry/opentelemetry-cpp/blob/main/INSTALL.md).
 
 ## Prerequisites
@@ -21,6 +21,7 @@ You can build OpenTelemetry C++ on Windows, macOS or Linux. First you need to
 install some dependencies:
 
 <!-- prettier-ignore-start -->
+
 {{< tabpane lang=shell persistLang=false >}}
 
 {{< tab "Linux (apt)" >}}
@@ -42,6 +43,7 @@ brew install git cmake
 {{< /tab >}}
 
 {{< /tabpane >}}
+
 <!-- prettier-ignore-end -->
 
 ## Building
@@ -78,14 +80,14 @@ CMakeFiles  Makefile  cmake_install.cmake  http_client  http_server
 
 ## Run Application
 
-Open two terminals, in the first terminal, start the http server:
+Open two terminals, in the first terminal, start the HTTP server:
 
 ```console
 $ ./examples/http/http_server
 Server is running..Press ctrl-c to exit..
 ```
 
-In the other terminal, run the http client:
+In the other terminal, run the HTTP client:
 
 ```sh
 ./examples/http/http_client

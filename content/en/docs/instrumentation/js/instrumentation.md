@@ -37,6 +37,7 @@ Next, create a separate `tracing.js|ts` file that has all the SDK initialization
 code in it:
 
 <!-- prettier-ignore-start -->
+
 {{< tabpane langEqualsHeader=true >}}
 
 {{< tab TypeScript >}}
@@ -103,6 +104,7 @@ provider.register();
 {{< /tab >}}
 
 {{< /tabpane>}}
+
 <!-- prettier-ignore-end -->
 
 Next, ensure that `tracing.js|ts` is required in your node invocation. This is
@@ -500,7 +502,7 @@ The status can be set at any time before the span is finished:
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 {{< tab TypeScript >}}
-import opentelemetry from "@opentelemetry/api";
+import opentelemetry, { SpanStatusCode } from "@opentelemetry/api";
 
 // ...
 
@@ -508,7 +510,7 @@ tracer.startActiveSpan('app.doWork', span => {
   for (let i = 0; i <= Math.floor(Math.random() * 40000000); i += 1) {
     if (i > 10000) {
       span.setStatus({
-        code: opentelemetry.SpanStatusCode.ERROR,
+        code: SpanStatusCode.ERROR,
         message: 'Error'
       });
     }
@@ -551,7 +553,7 @@ do this in conjunction with setting [span status](#span-status).
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 {{< tab TypeScript >}}
-import opentelemetry from "@opentelemetry/api";
+import opentelemetry, { SpanStatusCode } from "@opentelemetry/api";
 
 // ...
 
@@ -559,7 +561,7 @@ try {
   doWork();
 } catch (ex) {
   span.recordException(ex);
-  span.setStatus({ code: opentelemetry.SpanStatusCode.ERROR });
+  span.setStatus({ code: SpanStatusCode.ERROR });
 }
 {{< /tab >}}
 {{< tab JavaScript >}}
