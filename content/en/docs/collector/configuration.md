@@ -599,7 +599,7 @@ exporters:
 
 ### Proxy Support
 
-Exporters that leverage the net/http package (all do today) respect the
+Exporters that leverage the `net/http` package (all do today) respect the
 following proxy environment variables:
 
 - HTTP_PROXY
