@@ -56,7 +56,7 @@ port 4317.
 
 To send a request to Apache webServer you can either use curl from terminal
 (`curl localhost:9004`), or visit [localhost:9004][] in any browser. A default
-landing page saying "Testing 123..." for Apache HTTPD Server on Centos will be
+landing page saying "Testing 123..." for Apache HTTP Server on Centos will be
 displayed as below:
 
 ![Testing](testing.png)
