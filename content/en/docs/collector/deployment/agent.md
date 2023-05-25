@@ -15,7 +15,7 @@ daemonset).
 Each client-side SDK or downstream collector is configured with a collector
 location:
 
-![Decentralized collector deployment concept](../../img/agent-sdk.svg)
+![Decentralized collector deployment concept](../../img/otel_agent_sdk_v2.svg)
 
 1. In the app, the SDK is configured to send OTLP data to a collector.
 1. The collector is configured to send telemetry data to one or more backends.

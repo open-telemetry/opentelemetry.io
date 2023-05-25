@@ -103,6 +103,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-15T20:20:22.109017-05:00"
   },
+  "https://aws-otel.github.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-16T12:43:59.580912-07:00"
+  },
   "https://aws-otel.github.io/docs/components/confmap-providers#confmap-providers-supported-by-the-adot-collector": {
     "StatusCode": 206,
     "LastSeen": "2023-05-05T14:18:57.288423-07:00"
@@ -246,6 +250,10 @@
   "https://cloud-native.slack.com/archives/C0476L7UJT1": {
     "StatusCode": 200,
     "LastSeen": "2023-03-09T15:12:28.826905-08:00"
+  },
+  "https://cloud-native.slack.com/archives/C04HVBETC9Z": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-15T16:08:15.260181-07:00"
   },
   "https://cloud-native.slack.com/archives/C04LXHPDW6M": {
     "StatusCode": 200,
@@ -750,6 +758,10 @@
   "https://docs.google.com/document/d/15vR7D1x2tKd7u3zaTF0yH1WaHkUr2T4hhr7OyiZgmBg/edit#heading=h.4xuru5ljcups": {
     "StatusCode": 200,
     "LastSeen": "2023-02-15T21:10:34.824386-05:00"
+  },
+  "https://docs.google.com/document/d/187XYoQcXQ9JxS_5v2wvZ0NEysaJ02xoOYNXj08pT0zc": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-24T11:47:55.18976-07:00"
   },
   "https://docs.google.com/document/d/187XYoQcXQ9JxS_5v2wvZ0NEysaJ02xoOYNXj08pT0zc/": {
     "StatusCode": 200,
