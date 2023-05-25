@@ -59,7 +59,7 @@ The proposal is to deprecate the following exporters from OpenTelemetry in favor
 of using native OTLP into Jaeger:
 
 - Jaeger Thrift over HTTP
-- Jaeger Protobuf via gRPC
+- Jaeger protobuf via gRPC
 - Jaeger Thrift over UDP
 
 In addition to application configuration changes, there could be other

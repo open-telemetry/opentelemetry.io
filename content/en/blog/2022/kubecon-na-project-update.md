@@ -38,10 +38,10 @@ which is a very healthy signal for the project. People and companies are getting
 so much usefulness out of OpenTelemetry that they’re contributing back and
 making it even more useful for everyone.
 
-We’re publishing this post during Kubecon, where many community members and end
+We’re publishing this post during KubeCon, where many community members and end
 users will be gathered discussing OpenTelemetry and how it’s being used, how it
 can be improved, and where we should go from here. In May of this year at
-Kubecon EU we
+KubeCon EU we
 [started a process to create a more formal OpenTelemetry roadmap](https://docs.google.com/document/d/1jt47KPwgDG_-4kR4J5GtFSCEhQO3CHgUdAwpCKTQHO8/edit#),
 and we’ll be continuing that process in Detroit. I’m writing this post in
 advance of the conference, so I won’t be able to post the full outcome, but here

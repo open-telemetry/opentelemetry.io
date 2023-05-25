@@ -303,7 +303,7 @@ node exists. The `basicauth` extension contains `username` and `password` to
 identify itself to the exposed remote collector. More container and node
 specific information are provided by the `k8sattributes` processor via the
 kubernetes
-[kubernetes downward-api](https://kubernetes.io/docs/concepts/workloads/pods/downward-api/).
+[Kubernetes downward-api](https://kubernetes.io/docs/concepts/workloads/pods/downward-api/).
 What is not covered is the cluster availability zone and the cluster name. To be
 able to identify the reported spans later, they are inserted manually with the
 help of the `resource` processor. Last, the OTLP exporter endpoint has also been
@@ -418,7 +418,7 @@ Forwarding from 127.0.0.1:16686 -> 16686
 
 Configurations like `Ingress`, `ClusterIssuer` and `OpenTelemetryCollector` on
 client and server side have to be configured manually. Depending on installed
-kubernetes components, the configurations differ a lot. Overall the
+Kubernetes components, the configurations differ a lot. Overall the
 configuration is very error-prone. In the future the exposing of the collector
 should be simplified with the help of the OpenTelemetry operator. If you are
 interested in the development, you can follow

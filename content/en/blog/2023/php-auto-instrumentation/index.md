@@ -91,7 +91,7 @@ foundation for everything.
 All components necessary for auto-instrumentation can be installed manually,
 however we invested time to lower the barrier to entry and have created an
 installer that can do that for you. This section will show how auto-instrument a
-simple php `laravel` application created from scratch.
+simple PHP `laravel` application created from scratch.
 
 The first step is to create a demo application. Here we use the popular
 [laravel](https://laravel.com/docs/10.x/installation) framework:

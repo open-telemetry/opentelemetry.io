@@ -56,7 +56,7 @@ port 4317.
 
 To send a request to Apache webServer you can either use curl from terminal
 (`curl localhost:9004`), or visit [localhost:9004][] in any browser. A default
-landing page saying "Testing 123..." for Apache Http Server on Centos will be
+landing page saying "Testing 123..." for Apache HTTPD Server on Centos will be
 displayed as below:
 
 ![Testing](testing.png)
@@ -82,10 +82,10 @@ time consumed in each of the modules.
 ## How can module level details be beneficial?
 
 To demonstrate the benefits of module level details, we'll introduce an
-artificial delay in a php script and see how the delay gets displayed in the
+artificial delay in a PHP script and see how the delay gets displayed in the
 Zipkin backend. The following steps are required to be done.
 
-- Login to the container and install the php module.
+- Login to the container and install the PHP module.
 
   ```sh
   docker exec -it webserver_centos7 /bin/bash
