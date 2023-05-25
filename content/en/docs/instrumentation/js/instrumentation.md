@@ -37,6 +37,7 @@ Next, create a separate `tracing.js|ts` file that has all the SDK initialization
 code in it:
 
 <!-- prettier-ignore-start -->
+
 {{< tabpane langEqualsHeader=true >}}
 
 {{< tab TypeScript >}}
@@ -103,6 +104,7 @@ provider.register();
 {{< /tab >}}
 
 {{< /tabpane>}}
+
 <!-- prettier-ignore-end -->
 
 Next, ensure that `tracing.js|ts` is required in your node invocation. This is
