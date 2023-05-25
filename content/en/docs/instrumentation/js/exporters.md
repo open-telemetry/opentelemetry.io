@@ -192,9 +192,9 @@ accessible from the public internet, you also have to make your collector
 accessible for everyone.
 
 It is recommended that you do not expose your collector directly, but that you
-put a reverse proxy (NGINX, Apache HTTP Server, ...) in front of it. The reverse proxy can
-take care of SSL-offloading, setting the right CORS headers, and many other
-features specific to web applications.
+put a reverse proxy (NGINX, Apache HTTP Server, ...) in front of it. The reverse
+proxy can take care of SSL-offloading, setting the right CORS headers, and many
+other features specific to web applications.
 
 Below you will find a configuration for the popular NGINX web server to get you
 started:
