@@ -229,8 +229,8 @@ in the NGINX module and we need to fix that.
 
 ### The fix
 
-To fix our problem we [added some checks to the module for NGINX][], that make sure
-that the trace headers are only set once.
+To fix our problem we [added some checks to the module for NGINX][], that make
+sure that the trace headers are only set once.
 
 This fix is contained in the [v1.0.1 release of the otel-webserver-module][].
 This means you can update the `Dockerfile` to install the NGINX module like the

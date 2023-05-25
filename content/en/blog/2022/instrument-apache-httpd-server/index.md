@@ -8,21 +8,21 @@ author: '[Debajit Das](https://github.com/DebajitDas) (Cisco)'
 ---
 
 If you are using Apache HTTP Server and in dire need of some observability tool
-to monitor your web server, the [OpenTelemetry Module for Apache HTTP Server][] is the right
-candidate for you: it enables tracing of incoming requests to the server and it
-will capture the response time of many modules (including `mod_proxy`) involved
-in such an incoming request. With that you will get hierarchical time
-consumption by each module. This article demonstrates the monitoring
-capabilities of the OpenTelemetry Module for Apache HTTP Server and quick guide to get started with
-the module.
+to monitor your web server, the [OpenTelemetry Module for Apache HTTP Server][]
+is the right candidate for you: it enables tracing of incoming requests to the
+server and it will capture the response time of many modules (including
+`mod_proxy`) involved in such an incoming request. With that you will get
+hierarchical time consumption by each module. This article demonstrates the
+monitoring capabilities of the OpenTelemetry Module for Apache HTTP Server and
+quick guide to get started with the module.
 
 ## Getting Started with OpenTelemetry Module
 
 ### Building the module
 
-Getting started with the OpenTelemetry module for Apache HTTP Server is pretty simple,
-all you need is a docker engine and git. Download the source code from github
-and then build the docker image on CentOS7:
+Getting started with the OpenTelemetry module for Apache HTTP Server is pretty
+simple, all you need is a docker engine and git. Download the source code from
+github and then build the docker image on CentOS7:
 
 ```sh
 git clone https://github.com/open-telemetry/opentelemetry-cpp-contrib
@@ -45,8 +45,9 @@ docker-compose --profile centos7 up -d
 The above command starts up the centos7 image in a docker container named
 `webserver_centos7` along with the OpenTelemetry Collector and a Zipkin backend.
 
-OpenTelemetry Module for Apache HTTP Server will be configured and installed in the desired
-location and Apache HTTP Server will be started with the OpenTelemetry Module.
+OpenTelemetry Module for Apache HTTP Server will be configured and installed in
+the desired location and Apache HTTP Server will be started with the
+OpenTelemetry Module.
 
 ### Viewing spans on the backend
 
@@ -63,7 +64,8 @@ displayed as below:
 
 Now, traces and spans can be seen on the Zipkin backend. To view them, visit
 [localhost:9411][] in your browser and click on **Run Query** button. Following
-is the screenshot from Zipkin UI showing spans emitted by the Apache HTTP Server.
+is the screenshot from Zipkin UI showing spans emitted by the Apache HTTP
+Server.
 
 ![Span-List](span-list.png)
 
@@ -142,8 +144,9 @@ debuggability of the Apache HTTP Server.
 
 ## Installing OpenTelemetry Module in Target System
 
-To make use of the OpenTelemetry module for Apache HTTP Server, use the following steps to extract
-the package and install on the target system where Apache HTTP Server is installed.
+To make use of the OpenTelemetry module for Apache HTTP Server, use the
+following steps to extract the package and install on the target system where
+Apache HTTP Server is installed.
 
 - In order to clone the source code, execute the following
 
@@ -200,8 +203,8 @@ writing this blog, support for other architectures is not provided.
   ./install.sh
   ```
 
-- In the case of Centos, Apache HTTP Server configuration is generally located in
-  `/etc/httpd/conf/`. Hence copy the [opentelemetry_module.conf][] to
+- In the case of Centos, Apache HTTP Server configuration is generally located
+  in `/etc/httpd/conf/`. Hence copy the [opentelemetry_module.conf][] to
   `/etc/httpd/conf`.
 
 - Edit the `/etc/httpd/conf/httpd.conf` and add
@@ -220,8 +223,8 @@ writing this blog, support for other architectures is not provided.
 
     ![LoadModule](loadmodule.png)
 
-    In the case of Apache HTTP Server 2.2, `libmod_apache_otel22.so` needs to be used
-    instead of `libmod_apache_otel.so`
+    In the case of Apache HTTP Server 2.2, `libmod_apache_otel22.so` needs to be
+    used instead of `libmod_apache_otel.so`
 
   - The following directive should be ON for the OpenTelemetry module to be
     enabled, else it would be disabled.

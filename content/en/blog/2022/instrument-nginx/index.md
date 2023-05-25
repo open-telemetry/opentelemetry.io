@@ -12,10 +12,11 @@ spelling: >
   cSpell:ignore catalina javaagent jaegertracing protobuf WORKDIR
 ---
 
-Apache HTTP Server and NGINX are the most popular web servers. It's most likely that you are
-using one of them in your application. In a [previous blog post][], you learned
-how to use the OpenTelemetry Module for Apache HTTP Server to add observability to Apache HTTP Server. In
-this blog post, you will learn how you can get observability for NGINX!
+Apache HTTP Server and NGINX are the most popular web servers. It's most likely
+that you are using one of them in your application. In a [previous blog post][],
+you learned how to use the OpenTelemetry Module for Apache HTTP Server to add
+observability to Apache HTTP Server. In this blog post, you will learn how you
+can get observability for NGINX!
 
 ## Install the module for NGINX
 
