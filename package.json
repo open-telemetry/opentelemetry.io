@@ -13,6 +13,8 @@
     "_check:links": "HTMLTEST_ARGS='--log-level 1' npm run __check:links",
     "_check:links:internal": "npm run __check:links",
     "_check:links--warn": "npm run _check:links || (echo; echo 'WARNING: see link-checker output for issues.'; echo)",
+    "_check:spelling": "npx cspell -c .vscode/cspell.json content data",
+    "_check:text": "npx textlint content data",
     "_get:no": "echo SKIPPING get operation",
     "_get:submodule:non-lang": "npm run _get:submodule -- content-modules/opentelemetry-specification themes/docsy",
     "_get:submodule": "set -x && git submodule update --init ${DEPTH:- --depth 1}",
@@ -67,18 +69,59 @@
     "singleQuote": true
   },
   "textlint": {
+    "plugins": {
+      "@textlint/text": {
+        "extensions": [
+          ".yml"
+        ]
+      }
+    },
+    "filters": {
+      "comments": {
+        "disablingComment": "prettier-ignore-start",
+        "enablingComment": "prettier-ignore-end"
+      },
+      "allowlist": {
+        "allow": [
+          "/{{%.*%}}/",
+          "/<http://.*>/",
+          "medium.com/opentelemetry",
+          "github.com/open-telemetry",
+          "#opentelemetry"
+        ]
+      }
+    },
     "rules": {
       "terminology": {
         "defaultTerms": false,
         "skip": [],
         "terms": [
-          "OpenTelemetry",
-          "K8s",
-          "OTel",
-          "Zipkin",
-          "Jaeger",
-          "gRPC",
+          ".NET",
+          "Apache",
           "CNCF",
+          "eBPF",
+          "gRPC",
+          "HTTP",
+          "Jaeger",
+          "K8s",
+          "KubeCon",
+          "Kubernetes",
+          "MySQL",
+          "NGINX",
+          "OTel",
+          "OTEP",
+          "PHP",
+          "PostgreSQL",
+          "protobuf",
+          "Zipkin",
+          [
+            "[^\\.]json",
+            "JSON"
+          ],
+          [
+            "[Nn]ode\\.?[Jj][sS]",
+            "Node.js"
+          ],
           [
             "open-source",
             "open source"
@@ -100,6 +143,7 @@
     "postcss-cli": "^10.1.0",
     "prettier": "^2.8.4",
     "textlint": "^13.1.4",
+    "textlint-filter-rule-allowlist": "^4.0.0",
     "textlint-rule-terminology": "^3.0.4"
   },
   "dependencies": {
@@ -107,8 +151,8 @@
     "@opentelemetry/auto-instrumentations-web": "^0.32.0",
     "@opentelemetry/context-zone": "^1.8.0",
     "@opentelemetry/core": "^1.8.0",
-    "@opentelemetry/instrumentation": "^0.39.1",
     "@opentelemetry/exporter-trace-otlp-http": "^0.39.1",
+    "@opentelemetry/instrumentation": "^0.39.1",
     "@opentelemetry/resources": "^1.8.0",
     "@opentelemetry/sdk-trace-base": "^1.8.0",
     "@opentelemetry/sdk-trace-web": "^1.8.0",
