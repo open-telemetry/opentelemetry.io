@@ -107,14 +107,14 @@ function create_quote_from_count(). After create_quote_from_count() completes,
 we can add additional attributes to the root span as appropriate.
 
 You may also notice the `attributes` set on the span in this example, and
-`events` propogated similarly. With any valid `span` pointer (attached to
+`events` propagated similarly. With any valid `span` pointer (attached to
 context) the
 [OpenTelemetry API](https://docs.rs/opentelemetry/0.17.0/opentelemetry/trace/struct.SpanRef.html)
 will work.
 
 ### Adding HTTP instrumentation
 
-A child _client_ span is also produced for the outoing HTTP call to
+A child _client_ span is also produced for the outgoing HTTP call to
 `quoteservice` via the `reqwest` client. This span pairs up with the
 corresponding `quoteservice` _server_ span. The tracing instrumentation is
 implemented in the client middleware making use of the available

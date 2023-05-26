@@ -40,7 +40,7 @@ following:
 
 <div class="l-status-primary mt-0">
 
-- [Specification status](/docs/specs/otel/status/)
+- [Specification status](/docs/specs/status/)
 - [Collector status](/docs/collector/#status-and-releases)
 
 </div>

@@ -54,7 +54,7 @@ Below is a summary of this month’s discussions.
 
 **Q:** Will exporters support
 [OTTL](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl)
-(a language for transforming open telemetry data)? Use case: data needs to be
+(a language for transforming OpenTelemetry data)? Use case: data needs to be
 transformed, but don’t want to do it in a processor.
 
 **A:** Due to separation of concerns, it is unlikely that OTTL will be added to

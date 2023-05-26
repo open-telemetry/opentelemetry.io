@@ -105,7 +105,7 @@ thorough explanation of them in the coming days.
 Until then, here are some talks I found helpful:
 
 - [PromCon EU 2022 - Native Histograms in Prometheus - Ganesh Vernekar](https://promcon.io/2022-munich/talks/native-histograms-in-prometheus/)
-- [Kubecon EU 2023 - Prometheus Native Histograms in Production - Björn Rabenstein, Grafana Labs](https://www.youtube.com/watch?v=TgINvIK9SYc)
+- [KubeCon EU 2023 - Prometheus Native Histograms in Production - Björn Rabenstein, Grafana Labs](https://www.youtube.com/watch?v=TgINvIK9SYc)
 - [Using OpenTelemetry’s Exponential Histograms in Prometheus - Ruslan Kovalov & Ganesh Vernekar](https://www.youtube.com/watch?v=W2_TpDcess8)
 
 _A version of this article was [originally posted][] to the author's blog._

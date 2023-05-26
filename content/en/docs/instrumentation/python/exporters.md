@@ -1,6 +1,7 @@
 ---
 title: Exporters
 weight: 4
+spelling: cSpell:ignore LOWMEMORY proto
 ---
 
 In order to visualize and analyze your telemetry you will need to use an
@@ -163,8 +164,8 @@ metrics.set_meter_provider(provider)
 
 ### Using HTTP
 
-If you'd prefer to use [OTLP/HTTP](/docs/specs/otel/protocol/otlp/#otlphttp)
-with the binary-encoded Protobuf format, you can install the package:
+If you'd prefer to use [OTLP/HTTP](/docs/specs/otlp/#otlphttp) with the
+binary-encoded protobuf format, you can install the package:
 
 ```console
 $ pip install opentelemetry-exporter-otlp-proto-http

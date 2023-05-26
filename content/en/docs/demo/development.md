@@ -8,7 +8,7 @@ update to the latest version for all tooling. The OpenTelemetry demo team will
 attempt to keep the services in this repository up to date with the latest
 version for dependencies and tooling when possible.
 
-## Generate Protobuf files
+## Generate protobuf files
 
 The `make generate-protobuf` command is provided to generate protobuf files for
 all services. This can be used to compile code locally (without Docker) and

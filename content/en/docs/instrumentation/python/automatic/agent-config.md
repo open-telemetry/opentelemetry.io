@@ -8,7 +8,8 @@ spelling: cSpell:ignore distro mkdir myapp uninstrumented virtualenv
 The agent is highly configurable, either by:
 
 - Passing configuration properties from the CLI
-- Setting [environment variables](/docs/specs/otel/sdk-environment-variables/)
+- Setting
+  [environment variables](/docs/specs/otel/configuration/sdk-environment-variables/)
 
 ## Configuration properties
 

@@ -7,7 +7,7 @@ tags:
   - psr18
   - http
   - instrumentation
-repo: https://github.com/opentelemetry-php/contrib-auto-psr18
+repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/Psr18
 license: Apache 2.0
 description: Instrumentation Library for PSR18 HTTP clients
 authors: OpenTelemetry Authors

@@ -53,7 +53,7 @@ synthetics? If not, are there any plans to work towards such a thing?
 **A:** The
 [health check](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/extension/healthcheckextension/README.md)
 might be a helpful reference. Also check out the
-[http check receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/extension/healthcheckextension/README.md).
+[HTTP check receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/extension/healthcheckextension/README.md).
 
 #### 3 - Collector distributions
 
