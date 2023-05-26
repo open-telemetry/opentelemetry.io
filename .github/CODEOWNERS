@@ -33,3 +33,4 @@ content/en/docs/instrumentation/rust/    @open-telemetry/docs-approvers @open-te
 content/en/docs/instrumentation/swift/   @open-telemetry/docs-approvers @open-telemetry/swift-maintainers @open-telemetry/swift-approvers
 content/en/docs/k8s-operator             @open-telemetry/docs-approvers @open-telemetry/operator-approvers @open-telemetry/operator-maintainers
 content/en/ecosystem/demo/               @open-telemetry/demo-approvers @open-telemetry/demo-maintainers
+content/en/docs/specs/                   @open-telemetry/docs-approvers @open-telemetry/specs-approvers
