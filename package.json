@@ -71,7 +71,9 @@
   "textlint": {
     "plugins": {
       "@textlint/text": {
-        "extensions": [".yml"]
+        "extensions": [
+          ".yml"
+        ]
       }
     },
     "filters": {
