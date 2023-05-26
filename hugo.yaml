@@ -183,7 +183,7 @@ module:
     - source: tmp/otel/specification
       target: content/docs/specs/otel
     - source: tmp/otlp/docs/specification.md
-      target: content/docs/specs/otlp/index.md
+      target: content/docs/specs/otlp/_index.md
     - source: tmp/otlp/docs/img
       target: content/docs/specs/otlp/img
     - source: tmp/community/mission-vision-values.md

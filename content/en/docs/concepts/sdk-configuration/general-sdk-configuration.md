@@ -136,7 +136,7 @@ Specifies which exporter is used for traces.
 
 Accepted values for are:
 
-- `"otlp"`: [OTLP][spec-otlp]
+- `"otlp"`: [OTLP][]
 - `"jaeger"`: export in Jaeger data model
 - `"zipkin"`: [Zipkin](https://zipkin.io/zipkin-api/)
 - `"none"`: No automatically configured exporter for traces.
@@ -153,7 +153,7 @@ Specifies which exporter is used for metrics.
 
 Accepted values for `OTEL_METRICS_EXPORTER` are:
 
-- `"otlp"`: [OTLP][spec-otlp]
+- `"otlp"`: [OTLP][]
 - `"prometheus"`:
   [Prometheus](https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md)
 - `"none"`: No automatically configured exporter for metrics.
@@ -170,7 +170,7 @@ Specifies which exporter is used for logs.
 
 Accepted values for `OTEL_LOGS_EXPORTER` are:
 
-- `"otlp"`: [OTLP][spec-otlp]
+- `"otlp"`: [OTLP][]
 - `"none"`: No automatically configured exporter for logs.
 
-[spec-otlp]: /docs/specs/otel/protocol/otlp
+[otlp]: /docs/specs/otlp/
