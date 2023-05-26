@@ -300,7 +300,7 @@ _A version of this article was [originally posted][] on the New Relic blog._
   https://github.com/open-telemetry/opentelemetry-proto/blob/724e427879e3d2bae2edc0218fff06e37b9eb46e/opentelemetry/proto/metrics/v1/metrics.proto#L463
 [example code]:
   https://github.com/jack-berg/newrelic-opentelemetry-examples/commit/2681bf25518c02f4e5830f89254c736e0959d306
-[otlp]: /docs/specs/otel/protocol/otlp/
+[otlp]: /docs/specs/otlp/
 [opentelemetry-java]: https://github.com/open-telemetry/opentelemetry-java
 [environment variable]: /docs/specs/otel/metrics/sdk_exporters/otlp/
 [instrumentation]: /docs/instrumentation
