@@ -1,12 +1,8 @@
 ---
 title: Specification Status Summary
 linkTitle: Status
+aliases: [/docs/specs/otel/status]
 weight: 10
-# Undo specification-section-wide page-meta parameter settings:
-github_repo: &repo https://github.com/open-telemetry/opentelemetry.io
-github_subdir:
-path_base_for_github_subdir:
-github_project_repo: *repo
 ---
 
 OpenTelemetry is developed on a signal by signal basis. Tracing, metrics,
@@ -26,7 +22,7 @@ instrumentation. All instrumentation shares the same semantic conventions, to
 ensure that they produce the same data when observing common operations, such as
 HTTP requests.
 
-To learn more about signals and components, see the specification
+To learn more about signals and components, see the OTel specification
 [Overview](/docs/specs/otel/overview/).
 
 ## Component Lifecycle
