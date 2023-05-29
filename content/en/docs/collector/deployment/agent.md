@@ -49,7 +49,8 @@ processors:
 exporters:
   jaeger: # the Jaeger exporter, to ingest traces to backend
     endpoint: "https://jaeger.example.com:14250"
-    insecure: true
+    tls:
+      insecure: true
 
 service:
   pipelines:
