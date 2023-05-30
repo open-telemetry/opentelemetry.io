@@ -77,6 +77,9 @@ const {
 const {
   OTLPMetricExporter
 } = require("@opentelemetry/exporter-metrics-otlp-proto");
+const {
+  PeriodicExportingMetricReader
+} = require('@opentelemetry/sdk-metrics');
 
 const sdk = new opentelemetry.NodeSDK({
   traceExporter: new OTLPTraceExporter({
