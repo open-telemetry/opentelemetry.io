@@ -398,7 +398,7 @@ approved and merged.
 ## Additional Resources
 
 If you’d like to see my conversation with Iris in full, you can check out the
-video [here](https://youtu.be/QC2RPiGGEu0).
+video [here](https://youtu.be/9iaGG-YZw5I).
 
 If anyone would like to continue the conversation with Iris, please reach out to
 her in the
