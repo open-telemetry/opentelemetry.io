@@ -36,7 +36,7 @@ core issues, including:
 - Batch processor can now batch by attribute keys.
 - Initial support for internal OpenTelemetry SDK usage.
 - Default queue size for exporters reduced from 5000 to 1000.
-- High cardinality OTLP attributes can be disabled.
+- Feature gate added to disable internal metrics with high cardinality.
 
 In addition,
 [collector-contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.78.0)
