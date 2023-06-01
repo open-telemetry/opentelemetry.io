@@ -180,10 +180,11 @@ a team sport!
 The OTel Operator is only partially used in production, and is currently not
 available for everyone. Iris and her team really love the OTel Operator;
 however, it did take a bit of getting used to. Iris and her team found that
-there is a tight coupling between cert-manager and the OTel Operator. They were
-not able to use our own custom certificates, and they did not support
-cert-manager in their clusters, so they found it hard to use the Operator in our
-clusters. They solved this by submitting a PR!
+there is a tight coupling between [cert-manager](https://cert-manager.io/) and
+the OTel Operator. They were not able to use our own custom certificates, and
+they did not support [cert-manager](https://cert-manager.io/) in their clusters,
+so they found it hard to use the Operator in our clusters.
+[They solved this by submitting a PR](https://github.com/open-telemetry/opentelemetry-helm-charts/pull/760)!
 
 One of the things she loves about OpenTelemetry was that, when she was trying to
 troubleshoot an issue whereby Prometheus was not sending metrics to the
@@ -331,8 +332,8 @@ The team, led by the architect, has made a contribution recently to the OTel
 Operator around certificates. The OTel Operator relied on
 [cert-manager](https://cert-manager.io/) for certificates, rather than custom
 certificates. They initially put in a feature request, but then decided to
-develop the features themselves, and
-[filed a pull reques](https://github.com/open-telemetry/opentelemetry-helm-charts/pull/760)t.
+develop the feature themselves, and
+[filed a pull request](https://github.com/open-telemetry/opentelemetry-helm-charts/pull/760).
 
 ## Audience Questions
 
@@ -390,15 +391,17 @@ help improve them.
 ### Turnaround time on PRs
 
 Iris and her team were pleasantly surprised by the quick turnaround time on
-getting their OTel Operator PR approved and merged.
+getting their
+[OTel Operator PR](https://github.com/open-telemetry/opentelemetry-helm-charts/pull/760)
+approved and merged.
 
 ## Additional Resources
 
 If you’d like to see my conversation with Iris in full, you can check out the
-video here.
+video [here](https://youtu.be/QC2RPiGGEu0).
 
-If anyone would like to continue the conversation with Doug, please reach out to
-him in the
+If anyone would like to continue the conversation with Iris, please reach out to
+her in the
 [#otel-user-research](https://cloud-native.slack.com/archives/C01RT3MSWGZ) Slack
 channel!
 
