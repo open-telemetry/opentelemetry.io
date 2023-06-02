@@ -147,8 +147,8 @@ spans per second, to processing 40,000 spans per second!
 
 ### How are you collecting your traces right now?
 
-Traces are being collected through a combination of manual and auto
-instrumentation.
+Traces are being collected through a combination of [manual and auto
+instrumentation](/docs/concepts/instrumenting/).
 
 Some applications are being manually instrumented through OpenTelemetry, and
 others are still being instrumented using OpenTracing,
