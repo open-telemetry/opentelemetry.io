@@ -1,7 +1,7 @@
 ---
 title: Creating a Kubernetes Cluster with Runtime Observability
 linkTitle: K8s Runtime Observability
-date: 2023-05-23
+date: 2023-06-05
 author: '[Daniel Dias](https://github.com/danielbdias) (Tracetest)'
 body_class: otel-with-contributions-from
 spelling: cSpell:ignore apiserver choren tracetest kube kubelet containerd
