@@ -399,8 +399,7 @@ If anyone would like to continue the conversation with Iris, reach out to her in
 the [#otel-user-research](https://cloud-native.slack.com/archives/C01RT3MSWGZ)
 Slack channel!
 
-She will also be presenting at OTel in Practice on June 8th. Details can be
-found [here](https://shorturl.at/bqtxO).
+She will also be presenting at [OTel in Practice on June 8th](https://shorturl.at/bqtxO).
 
 ## Final Thoughts
 
