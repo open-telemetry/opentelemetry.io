@@ -11,12 +11,12 @@ With contributions from [Rynn Mancuso](https://github.com/musingvirtual)
 
 On Thursday, May 25th, 2023, the OpenTelemetry (OTel) End User Working Group
 hosted its third
-[End User Q&A session](/community/end-user/interviews-feedback/)
-of 2023. We had a bit of a gap due to KubeCon Europe, but now we’re back! This
-series is a monthly casual discussion with a team using OpenTelemetry in
-production. The goal is to learn more about their environment, their successes,
-and the challenges that they face, and to share it with the community, so that
-together, we can help make OpenTelemetry awesome!
+[End User Q&A session](/community/end-user/interviews-feedback/) of 2023. We had
+a bit of a gap due to KubeCon Europe, but now we’re back! This series is a
+monthly casual discussion with a team using OpenTelemetry in production. The
+goal is to learn more about their environment, their successes, and the
+challenges that they face, and to share it with the community, so that together,
+we can help make OpenTelemetry awesome!
 
 This month, I spoke with
 [Iris Dyrmishi](https://www.linkedin.com/in/iris-dyrmishi-b15a9a164/), Platform
@@ -58,13 +58,12 @@ at Farfetch, which she has been doing for a little over a year now.
 ### How did you hear about OpenTelemetry?
 
 Iris first heard about OpenTelemetry on LinkedIn. The company she was working at
-at the time, which was not using
-[traces](/docs/concepts/signals/traces/), had started
-exploring the possibility of using them and was looking into tracing solutions.
-After reading about OpenTelemetry, Iris created a small Proof-of-Concept (POC)
-for her manager. While nothing had moved past the POC at that role, when Iris
-joined Farfetch and OpenTelemetry came up again, she jumped at the chance to
-work with it.
+at the time, which was not using [traces](/docs/concepts/signals/traces/), had
+started exploring the possibility of using them and was looking into tracing
+solutions. After reading about OpenTelemetry, Iris created a small
+Proof-of-Concept (POC) for her manager. While nothing had moved past the POC at
+that role, when Iris joined Farfetch and OpenTelemetry came up again, she jumped
+at the chance to work with it.
 
 ### What is the architecture at Farfetch like? How has OpenTelemetry helped?
 
@@ -76,10 +75,9 @@ Prometheus is used mostly as a standard for collecting metrics; however, in some
 cases, engineers found that Prometheus did not suit their needs. With the
 introduction of OpenTelemetry, Farfetch was able to standardize the collection
 of both [metrics](/docs/concepts/signals/metrics/) and
-[traces](/docs/concepts/signals/traces/), and enabled
-them to collect
-[telemetry signals](/docs/concepts/signals/) from
-services where signal collection had not previously been possible.
+[traces](/docs/concepts/signals/traces/), and enabled them to collect
+[telemetry signals](/docs/concepts/signals/) from services where signal
+collection had not previously been possible.
 
 ### Can you describe the build and deployment process at Farfetch?
 
@@ -141,11 +139,11 @@ They are not fully there yet:
 - Not all applications have been instrumented with OpenTelemetry
 
 In spite of that, Iris and her team are leveraging the power of the
-[OpenTelemetry Collector](/docs/collector/) to gather
-and send metrics and traces to various Observability back-ends. Since she and
-her team started using OpenTelemetery, they started instrumenting more traces.
-In fact, with their current setup, Iris has happily reported that they went from
-processing 1,000 spans per second, to processing 40,000 spans per second!
+[OpenTelemetry Collector](/docs/collector/) to gather and send metrics and
+traces to various Observability back-ends. Since she and her team started using
+OpenTelemetery, they started instrumenting more traces. In fact, with their
+current setup, Iris has happily reported that they went from processing 1,000
+spans per second, to processing 40,000 spans per second!
 
 ### How are you collecting your traces right now?
 
@@ -157,8 +155,7 @@ others are still being instrumented using OpenTracing,
 [which is backwards-compatible with OpenTelemetry](/docs/migration/opentracing/).
 
 The OpenTelemetry Operator is being implemented to auto-instrument Java and .NET
-code. The OTel Operator
-([among other things](/docs/k8s-operator/#introduction))
+code. The OTel Operator ([among other things](/docs/k8s-operator/#introduction))
 [supports injecting and configuring auto-instrumentation in .NET, Java, Python, and Node.js](/docs/k8s-operator/automatic/#configure-autoinstrumentation).
 Iris hopes that Go auto-instrumentation will be available in the near-future.
 See [here](https://github.com/open-telemetry/opentelemetry-go-instrumentation)
@@ -193,13 +190,12 @@ suggested using OpenTelemetry to troubleshoot OpenTelemetry.
 
 ### Have you or anyone on your team or at Farfetch started playing with OTel Logging?
 
-Iris has played around a bit with OTel
-[logging](/docs/concepts/signals/logs/), mostly
-consuming logs from a
+Iris has played around a bit with OTel [logging](/docs/concepts/signals/logs/),
+mostly consuming logs from a
 [Kafka topic](https://developer.confluent.io/learn-kafka/apache-kafka/topics/).
 This experiment has not included
-[log correlation](/docs/specs/otel/logs/#log-correlation),
-but it is something that Iris would like to explore further.
+[log correlation](/docs/specs/otel/logs/#log-correlation), but it is something
+that Iris would like to explore further.
 
 Since logs are not yet stable, Iris doesn’t expect logging to go into production
 at Farfetch just yet. Farfetch has a huge volume of logs (more than traces), so
@@ -254,15 +250,14 @@ Iris and team have not played around with this beta feature.
 Because there are so many Kubernetes clusters, having a single OTel Collector
 would be a bottleneck in terms of load and single point of failure. The team
 currently has one
-[OpenTelemetry Collector agent](/docs/collector/deployment/agent/)
-per Kubernetes cluster. The end goal is to replace those agents with the
-[OTel Operator](/docs/k8s-operator/) instead, which
-allows you to deploy and configure the OTel Collector and inject and configure
-auto-instrumentation.
+[OpenTelemetry Collector agent](/docs/collector/deployment/agent/) per
+Kubernetes cluster. The end goal is to replace those agents with the
+[OTel Operator](/docs/k8s-operator/) instead, which allows you to deploy and
+configure the OTel Collector and inject and configure auto-instrumentation.
 
 Everything is then sent to a central OTel Collector (i.e. an
-[OTel Collector gateway](/docs/collector/deployment/gateway/))
-per data center, where data masking (using the
+[OTel Collector gateway](/docs/collector/deployment/gateway/)) per data center,
+where data masking (using the
 [transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor),
 or
 [redaction processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/redactionprocessor)),
@@ -310,8 +305,7 @@ are only using the [batch processor](https://github.com/open-telemetry/opentelem
 
 > **_NOTE: A span event provides additional point-in-time information in a
 > trace. It’s basically a structured log within a span. For more on span events,
-> check out docs
-> [here](/docs/concepts/signals/traces/#span-events)._**
+> check out docs [here](/docs/concepts/signals/traces/#span-events)._**
 
 Not at the moment, but it is something that they would like to explore. When the
 Observability team first started, there was little interest in tracing. As they
@@ -419,14 +413,11 @@ that we can continue to improve OpenTelemetry. ❣️
 If you have a story to share about how you use OpenTelemetry at your
 organization, we’d love to hear from you! Ways to share:
 
-- Join the
-  [#otel-endusers channel](/community/end-user/slack-channel/)
-  on the
+- Join the [#otel-endusers channel](/community/end-user/slack-channel/) on the
   [CNCF Community Slack](https://communityinviter.com/apps/cloud-native/cncf)
 - Join our monthly
   [End Users Discussion Group calls](/community/end-user/discussion-group/)
-- Join our
-  [OTel in Practice sessions](/community/end-user/otel-in-practice/)
+- Join our [OTel in Practice sessions](/community/end-user/otel-in-practice/)
 - Sign up for one of our
   [monthly interview/feedback sessions](/community/end-user/interviews-feedback/)
 - Join the
