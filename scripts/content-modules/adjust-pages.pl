@@ -28,9 +28,6 @@ sub printTitleAndFrontMatter() {
   if ($title eq 'OpenTelemetry Specification') {
     $title .= " $otelSpecVers";
     $frontMatterFromFile =~ s/(linkTitle:) .*/$1 OTel $otelSpecVers/;
-  # TODO: remove once OTLP spec page is updated
-  } elsif ( $ARGV =~ /otlp\/docs\/specification.md$/ ) {
-    $frontMatterFromFile =~ s/(linkTitle:) .*/$1 OTLP/;
   }
   my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
   print "title: $titleMaybeQuoted\n";
