@@ -235,12 +235,12 @@ that they can maintain their stack on the clusters.
 
 ### Have you dabbled in any of the OTel experimental features in Kubernetes?
 
-> **_NOTE: This question is referring to the ability for Kubernetes components
-> to emit OTLP traces which can then be consumed by the OTel Collector. More
-> info can be found
-> [here](https://kubernetes.io/docs/concepts/cluster-administration/system-traces/).
-> This feature is currently in beta, and was first introduced in Kubernetes 1.25
-> (release notes [here](https://sysdig.com/blog/kubernetes-1-25-whats-new/))._**
+> This question is referring to the ability for Kubernetes components to emit
+> OTLP traces which can then be consumed by the OTel Collector. For more info,
+> see
+> [Traces For Kubernetes System Components](https://kubernetes.io/docs/concepts/cluster-administration/system-traces/).
+> This feature is currently in beta, and was first introduced in
+> [Kubernetes 1.25](https://sysdig.com/blog/kubernetes-1-25-whats-new/).
 
 Iris and team have not played around with this beta feature.
 
