@@ -155,8 +155,8 @@ others are still instrumented using the [legacy OpenTracing
 [using shims](/docs/migration/opentracing/).
 
 The OpenTelemetry Operator is being implemented to auto-instrument Java and .NET
-code. The OTel Operator ([among other things](/docs/k8s-operator/#introduction))
-[supports injecting and configuring auto-instrumentation in .NET, Java, Python, and Node.js](/docs/k8s-operator/automatic/#configure-autoinstrumentation).
+code. Among other things, the [OTel Operator](/docs/k8s-operator/)
+supports injecting and [configuring auto-instrumentation](/docs/k8s-operator/automatic/#configure-autoinstrumentation) in .NET, Java, Python, and Node.js.
 Iris hopes that Go auto-instrumentation will be available in the near-future.
 See [here](https://github.com/open-telemetry/opentelemetry-go-instrumentation)
 for more on the progress of auto-instrumentation in Go.
