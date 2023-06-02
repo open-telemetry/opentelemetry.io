@@ -24,7 +24,7 @@ Engineer at [Farfetch](https://www.farfetch.com).
 
 ## Overview
 
-Iris is a huge fan of Observability and OpenTelemetry, and her love of these two
+Iris is a huge fan of [observability](/docs/concepts/observability-primer/) and OpenTelemetry, and her love of these two
 topics is incredibly infectious.
 
 In this session, Iris shared:
