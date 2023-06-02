@@ -182,8 +182,9 @@ however, it did take a bit of getting used to. Iris and her team found that
 there is a tight coupling between [cert-manager](https://cert-manager.io/) and
 the OTel Operator. They were not able to use our own custom certificates, and
 they did not support [cert-manager](https://cert-manager.io/) in their clusters,
-so they found it hard to use the Operator in our clusters.
-They solved this by submitting a PR -- [opentelemetry-helm-charts PR #760](https://github.com/open-telemetry/opentelemetry-helm-charts/pull/760)!
+so they found it hard to use the Operator in our clusters. They solved this by
+submitting a PR --
+[opentelemetry-helm-charts PR #760](https://github.com/open-telemetry/opentelemetry-helm-charts/pull/760)!
 
 One of the things she loves about OpenTelemetry was that, when she was trying to
 troubleshoot an issue whereby Prometheus was not sending metrics to the
@@ -204,7 +205,8 @@ at Farfetch just yet. Farfetch has a huge volume of logs (more than traces), so
 they don’t want to start converting to OTel logging until things are more
 stable.
 
-> **Note**: some parts of OTel logs are stable. For details, see [Specification Status Summary](/docs/specs/status/#logging).
+> **Note**: some parts of OTel logs are stable. For details, see
+> [Specification Status Summary](/docs/specs/status/#logging).
 
 ### How are you collecting the metrics signal?
 
@@ -399,7 +401,8 @@ If anyone would like to continue the conversation with Iris, reach out to her in
 the [#otel-user-research](https://cloud-native.slack.com/archives/C01RT3MSWGZ)
 Slack channel!
 
-She will also be presenting at [OTel in Practice on June 8th](https://shorturl.at/bqtxO).
+She will also be presenting at
+[OTel in Practice on June 8th](https://shorturl.at/bqtxO).
 
 ## Final Thoughts
 
