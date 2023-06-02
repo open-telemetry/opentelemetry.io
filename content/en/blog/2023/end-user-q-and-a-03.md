@@ -302,9 +302,9 @@ are only using the [batch processor](https://github.com/open-telemetry/opentelem
 
 ### Are you aware of any teams using span events?
 
-> **_NOTE: A span event provides additional point-in-time information in a
-> trace. It’s basically a structured log within a span. For more on span events,
-> check out docs [here](/docs/concepts/signals/traces/#span-events)._**
+> A [span event](/docs/concepts/signals/traces/#span-events) provides
+> additional point-in-time information in a trace. It’s basically a structured
+> log within a span.
 
 Not at the moment, but it is something that they would like to explore. When the
 Observability team first started, there was little interest in tracing. As they
