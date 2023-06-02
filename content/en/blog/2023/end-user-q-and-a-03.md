@@ -393,7 +393,7 @@ approved and merged.
 If you’d like to see my conversation with Iris in full, you can check out the
 video [here](https://youtu.be/9iaGG-YZw5I).
 
-If anyone would like to continue the conversation with Iris, please reach out to
+If anyone would like to continue the conversation with Iris, reach out to
 her in the
 [#otel-user-research](https://cloud-native.slack.com/archives/C01RT3MSWGZ) Slack
 channel!
