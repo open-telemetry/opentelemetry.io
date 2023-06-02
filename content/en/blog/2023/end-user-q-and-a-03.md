@@ -24,8 +24,8 @@ Engineer at [Farfetch](https://www.farfetch.com).
 
 ## Overview
 
-Iris is a huge fan of [observability](/docs/concepts/observability-primer/) and OpenTelemetry, and her love of these two
-topics is incredibly infectious.
+Iris is a huge fan of [observability](/docs/concepts/observability-primer/) and
+OpenTelemetry, and her love of these two topics is incredibly infectious.
 
 In this session, Iris shared:
 
@@ -147,18 +147,21 @@ spans per second, to processing 40,000 spans per second!
 
 ### How are you collecting your traces right now?
 
-Traces are being collected through a combination of [manual and auto
-instrumentation](/docs/concepts/instrumenting/).
+Traces are being collected through a combination of
+[manual and auto instrumentation](/docs/concepts/instrumenting/).
 
 Some applications are being manually instrumented through OpenTelemetry, and
 others are still instrumented using the [legacy OpenTracing
 [using shims](/docs/migration/opentracing/).
 
 The OpenTelemetry Operator is being implemented to auto-instrument Java and .NET
-code. Among other things, the [OTel Operator](/docs/k8s-operator/)
-supports injecting and [configuring auto-instrumentation](/docs/k8s-operator/automatic/#configure-autoinstrumentation) in .NET, Java, Python, and Node.js.
-Iris hopes that Go auto-instrumentation will be available in the near-future.
-To track progress of auto-instrumentation in Go, see [OpenTelemetry Go Automatic Instrumentation](https://github.com/open-telemetry/opentelemetry-go-instrumentation).
+code. Among other things, the [OTel Operator](/docs/k8s-operator/) supports
+injecting and
+[configuring auto-instrumentation](/docs/k8s-operator/automatic/#configure-autoinstrumentation)
+in .NET, Java, Python, and Node.js. Iris hopes that Go auto-instrumentation will
+be available in the near-future. To track progress of auto-instrumentation in
+Go, see
+[OpenTelemetry Go Automatic Instrumentation](https://github.com/open-telemetry/opentelemetry-go-instrumentation).
 
 Although this will be a lengthy and time-consuming process, the team’s goal is
 to have all applications instrumented using OpenTelemetry.
@@ -302,9 +305,9 @@ are only using the [batch processor](https://github.com/open-telemetry/opentelem
 
 ### Are you aware of any teams using span events?
 
-> A [span event](/docs/concepts/signals/traces/#span-events) provides
-> additional point-in-time information in a trace. It’s basically a structured
-> log within a span.
+> A [span event](/docs/concepts/signals/traces/#span-events) provides additional
+> point-in-time information in a trace. It’s basically a structured log within a
+> span.
 
 Not at the moment, but it is something that they would like to explore. When the
 Observability team first started, there was little interest in tracing. As they
@@ -390,12 +393,12 @@ approved and merged.
 
 ## Additional Resources
 
-My conversation with Iris, in full, is [available on YouTube](https://youtu.be/9iaGG-YZw5I).
+My conversation with Iris, in full, is
+[available on YouTube](https://youtu.be/9iaGG-YZw5I).
 
-If anyone would like to continue the conversation with Iris, reach out to
-her in the
-[#otel-user-research](https://cloud-native.slack.com/archives/C01RT3MSWGZ) Slack
-channel!
+If anyone would like to continue the conversation with Iris, reach out to her in
+the [#otel-user-research](https://cloud-native.slack.com/archives/C01RT3MSWGZ)
+Slack channel!
 
 She will also be presenting at OTel in Practice on June 8th. Details can be
 found [here](https://shorturl.at/bqtxO).
