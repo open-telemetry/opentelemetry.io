@@ -1,7 +1,7 @@
 ---
 title: 'End-User Q&A Series: Using OTel at Farfetch'
 linkTitle: 'End-User Q&A: OTel at Farfetch'
-date: 2023-06-01
+date: 2023-06-07
 author: '[Adriana Villela](https://github.com/avillela) (Lightstep)'
 body_class: otel-with-contributions-from
 ---
