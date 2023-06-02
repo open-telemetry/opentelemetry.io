@@ -1531,6 +1531,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:44:15.986668-05:00"
   },
+  "https://github.com/Monkeyanator/kubernetes/pull/15": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-25T14:26:24.559921-03:00"
+  },
   "https://github.com/MovieStoreGuy": {
     "StatusCode": 200,
     "LastSeen": "2023-02-23T14:17:42.344431+10:30"
@@ -1582,6 +1586,10 @@
   "https://github.com/aabmass": {
     "StatusCode": 200,
     "LastSeen": "2023-04-24T16:54:54.131842195Z"
+  },
+  "https://github.com/adnanrahic": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-25T14:26:22.535481-03:00"
   },
   "https://github.com/aishyandapalli": {
     "StatusCode": 200,
@@ -1675,9 +1683,29 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:48:55.902382-05:00"
   },
+  "https://github.com/containerd/containerd": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-25T14:26:29.946222-03:00"
+  },
+  "https://github.com/containerd/containerd/pull/5731": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-25T14:26:34.208395-03:00"
+  },
+  "https://github.com/cri-o/cri-o": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-25T14:26:30.717466-03:00"
+  },
+  "https://github.com/cri-o/cri-o/issues/4734": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-25T14:26:31.383151-03:00"
+  },
   "https://github.com/damemi": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:06:38.047737-05:00"
+  },
+  "https://github.com/danielbdias": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-25T14:26:20.36802-03:00"
   },
   "https://github.com/dashpole": {
     "StatusCode": 200,
@@ -1722,6 +1750,18 @@
   "https://github.com/elastic/elasticsearch": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:42:05.720389-05:00"
+  },
+  "https://github.com/etcd-io/etcd": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-25T14:26:25.144533-03:00"
+  },
+  "https://github.com/etcd-io/etcd/issues/12460": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-25T14:26:26.003483-03:00"
+  },
+  "https://github.com/etcd-io/etcd/pull/12919": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-25T14:26:29.235705-03:00"
   },
   "https://github.com/ethercrow/opentelemetry-haskell": {
     "StatusCode": 200,
@@ -1818,6 +1858,10 @@
   "https://github.com/jufab/opentelemetry-angular-interceptor": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:43:48.729669-05:00"
+  },
+  "https://github.com/kdhamric": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-25T14:26:23.327275-03:00"
   },
   "https://github.com/keyval-dev/opentelemetry-go-instrumentation": {
     "StatusCode": 200,
@@ -2835,6 +2879,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:08:29.371758-05:00"
   },
+  "https://github.com/schoren": {
+    "StatusCode": 200,
+    "LastSeen": "2023-05-25T14:26:21.513961-03:00"
+  },
   "https://github.com/scraly/developers-conferences-agenda": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:15:16.890856-05:00"
@@ -3163,6 +3211,14 @@
     "StatusCode": 206,
     "LastSeen": "2023-05-15T13:57:42.563111-04:00"
   },
+  "https://k3d.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-25T14:26:37.243122-03:00"
+  },
+  "https://k3s.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-25T14:26:38.202067-03:00"
+  },
   "https://kafka.apache.org/": {
     "StatusCode": 206,
     "LastSeen": "2023-02-16T17:11:34.975001-05:00"
@@ -3203,6 +3259,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-16T17:12:58.76128-05:00"
   },
+  "https://kubernetes.io/blog/2022/12/01/runtime-observability-opentelemetry/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-25T14:26:34.915073-03:00"
+  },
   "https://kubernetes.io/docs/concepts/cluster-administration/system-traces/": {
     "StatusCode": 200,
     "LastSeen": "2023-02-16T17:11:40.16064-05:00"
@@ -3210,6 +3270,14 @@
   "https://kubernetes.io/docs/concepts/extend-kubernetes/operator/": {
     "StatusCode": 200,
     "LastSeen": "2023-02-16T17:11:53.645179-05:00"
+  },
+  "https://kubernetes.io/docs/concepts/overview/components/#kube-apiserver": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-25T14:26:35.387871-03:00"
+  },
+  "https://kubernetes.io/docs/concepts/overview/components/#kubelet": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-25T14:26:35.867723-03:00"
   },
   "https://kubernetes.io/docs/concepts/overview/working-with-objects/names/": {
     "StatusCode": 200,
@@ -3234,6 +3302,14 @@
   "https://kubernetes.io/docs/concepts/workloads/pods/downward-api/": {
     "StatusCode": 200,
     "LastSeen": "2023-02-16T17:12:32.145251-05:00"
+  },
+  "https://kubernetes.io/docs/reference/kubectl/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-25T14:26:38.685433-03:00"
+  },
+  "https://kubernetes.io/docs/tasks/debug/debug-cluster/resource-usage-monitoring/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-25T14:26:23.882231-03:00"
   },
   "https://laravel.com/docs/10.x/installation": {
     "StatusCode": 200,
@@ -4274,6 +4350,10 @@
   "https://www.datadoghq.com/blog/engineering/php-8-observability-baked-right-in/": {
     "StatusCode": 206,
     "LastSeen": "2023-03-15T13:26:14.698097+01:00"
+  },
+  "https://www.docker.com/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-05-25T14:26:36.294982-03:00"
   },
   "https://www.docsend.com": {
     "StatusCode": 206,
