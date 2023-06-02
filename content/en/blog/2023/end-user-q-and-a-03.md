@@ -204,8 +204,7 @@ at Farfetch just yet. Farfetch has a huge volume of logs (more than traces), so
 they don’t want to start converting to OTel logging until things are more
 stable.
 
-> **_NOTE:
-> [Some parts of OTel logs are currently stable](/docs/specs/status/#logging)_**
+> **Note**: some parts of OTel logs are stable. For details, see [Specification Status Summary](/docs/specs/status/#logging).
 
 ### How are you collecting the metrics signal?
 
