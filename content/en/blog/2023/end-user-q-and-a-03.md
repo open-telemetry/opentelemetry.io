@@ -151,8 +151,8 @@ Traces are being collected through a combination of [manual and auto
 instrumentation](/docs/concepts/instrumenting/).
 
 Some applications are being manually instrumented through OpenTelemetry, and
-others are still being instrumented using OpenTracing,
-[which is backwards-compatible with OpenTelemetry](/docs/migration/opentracing/).
+others are still instrumented using the [legacy OpenTracing
+[using shims](/docs/migration/opentracing/).
 
 The OpenTelemetry Operator is being implemented to auto-instrument Java and .NET
 code. The OTel Operator ([among other things](/docs/k8s-operator/#introduction))
