@@ -421,7 +421,7 @@ organization, we’d love to hear from you! Ways to share:
 - Join the
   [OpenTelemetry group on LinkedIn](https://www.linkedin.com/groups/14081251)
 - Share your stories on the
-  [OpenTelemetry blog](https://github.com/open-telemetry/opentelemetry.io/blob/954103a7444d691db3967121f0f1cb194af1dccb/README.md#submitting-a-blog-post)
+  [OpenTelemetry blog](https://github.com/open-telemetry/opentelemetry.io/blob/main/README.md#submitting-a-blog-post)
 
 Be sure to follow OpenTelemetry on
 [Mastodon](https://fosstodon.org/@opentelemetry) and
