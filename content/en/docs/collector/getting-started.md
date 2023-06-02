@@ -66,7 +66,7 @@ the following:
 
 ```yaml
 otel-collector:
-  image: otel/opentelemetry-collector-contrib
+  image: otel/opentelemetry-collector
   command: [--config=/etc/otel-collector-config.yaml]
   volumes:
     - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
