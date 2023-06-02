@@ -11,7 +11,7 @@ With contributions from [Rynn Mancuso](https://github.com/musingvirtual)
 
 On Thursday, May 25th, 2023, the OpenTelemetry (OTel) End User Working Group
 hosted its third
-[End User Q&A session](https://opentelemetry.io/community/end-user/interviews-feedback/)
+[End User Q&A session](/community/end-user/interviews-feedback/)
 of 2023. We had a bit of a gap due to KubeCon Europe, but now we’re back! This
 series is a monthly casual discussion with a team using OpenTelemetry in
 production. The goal is to learn more about their environment, their successes,
@@ -59,7 +59,7 @@ at Farfetch, which she has been doing for a little over a year now.
 
 Iris first heard about OpenTelemetry on LinkedIn. The company she was working at
 at the time, which was not using
-[traces](https://opentelemetry.io/docs/concepts/signals/traces/), had started
+[traces](/docs/concepts/signals/traces/), had started
 exploring the possibility of using them and was looking into tracing solutions.
 After reading about OpenTelemetry, Iris created a small Proof-of-Concept (POC)
 for her manager. While nothing had moved past the POC at that role, when Iris
@@ -75,10 +75,10 @@ with a lack of standardization on how to collect this information. For example,
 Prometheus is used mostly as a standard for collecting metrics; however, in some
 cases, engineers found that Prometheus did not suit their needs. With the
 introduction of OpenTelemetry, Farfetch was able to standardize the collection
-of both [metrics](https://opentelemetry.io/docs/concepts/signals/metrics/) and
-[traces](https://opentelemetry.io/docs/concepts/signals/traces/), and enabled
+of both [metrics](/docs/concepts/signals/metrics/) and
+[traces](/docs/concepts/signals/traces/), and enabled
 them to collect
-[telemetry signals](https://opentelemetry.io/docs/concepts/signals/) from
+[telemetry signals](/docs/concepts/signals/) from
 services where signal collection had not previously been possible.
 
 ### Can you describe the build and deployment process at Farfetch?
@@ -141,7 +141,7 @@ They are not fully there yet:
 - Not all applications have been instrumented with OpenTelemetry
 
 In spite of that, Iris and her team are leveraging the power of the
-[OpenTelemetry Collector](https://opentelemetry.io/docs/collector/) to gather
+[OpenTelemetry Collector](/docs/collector/) to gather
 and send metrics and traces to various Observability back-ends. Since she and
 her team started using OpenTelemetery, they started instrumenting more traces.
 In fact, with their current setup, Iris has happily reported that they went from
@@ -154,12 +154,12 @@ instrumentation.
 
 Some applications are being manually instrumented through OpenTelemetry, and
 others are still being instrumented using OpenTracing,
-[which is backwards-compatible with OpenTelemetry](https://opentelemetry.io/docs/migration/opentracing/).
+[which is backwards-compatible with OpenTelemetry](/docs/migration/opentracing/).
 
 The OpenTelemetry Operator is being implemented to auto-instrument Java and .NET
 code. The OTel Operator
-([among other things](https://opentelemetry.io/docs/k8s-operator/#introduction))
-[supports injecting and configuring auto-instrumentation in .NET, Java, Python, and Node.js](https://opentelemetry.io/docs/k8s-operator/automatic/#configure-autoinstrumentation).
+([among other things](/docs/k8s-operator/#introduction))
+[supports injecting and configuring auto-instrumentation in .NET, Java, Python, and Node.js](/docs/k8s-operator/automatic/#configure-autoinstrumentation).
 Iris hopes that Go auto-instrumentation will be available in the near-future.
 See [here](https://github.com/open-telemetry/opentelemetry-go-instrumentation)
 for more on the progress of auto-instrumentation in Go.
@@ -194,11 +194,11 @@ suggested using OpenTelemetry to troubleshoot OpenTelemetry.
 ### Have you or anyone on your team or at Farfetch started playing with OTel Logging?
 
 Iris has played around a bit with OTel
-[logging](https://opentelemetry.io/docs/concepts/signals/logs/), mostly
+[logging](/docs/concepts/signals/logs/), mostly
 consuming logs from a
 [Kafka topic](https://developer.confluent.io/learn-kafka/apache-kafka/topics/).
 This experiment has not included
-[log correlation](https://opentelemetry.io/docs/specs/otel/logs/#log-correlation),
+[log correlation](/docs/specs/otel/logs/#log-correlation),
 but it is something that Iris would like to explore further.
 
 Since logs are not yet stable, Iris doesn’t expect logging to go into production
@@ -207,7 +207,7 @@ they don’t want to start converting to OTel logging until things are more
 stable.
 
 > **_NOTE:
-> [Some parts of OTel logs are currently stable](https://opentelemetry.io/docs/specs/status/#logging)_**
+> [Some parts of OTel logs are currently stable](/docs/specs/status/#logging)_**
 
 ### How are you collecting the metrics signal?
 
@@ -254,14 +254,14 @@ Iris and team have not played around with this beta feature.
 Because there are so many Kubernetes clusters, having a single OTel Collector
 would be a bottleneck in terms of load and single point of failure. The team
 currently has one
-[OpenTelemetry Collector agent](https://opentelemetry.io/docs/collector/deployment/agent/)
+[OpenTelemetry Collector agent](/docs/collector/deployment/agent/)
 per Kubernetes cluster. The end goal is to replace those agents with the
-[OTel Operator](https://opentelemetry.io/docs/k8s-operator/) instead, which
+[OTel Operator](/docs/k8s-operator/) instead, which
 allows you to deploy and configure the OTel Collector and inject and configure
 auto-instrumentation.
 
 Everything is then sent to a central OTel Collector (i.e. an
-[OTel Collector gateway](https://opentelemetry.io/docs/collector/deployment/gateway/))
+[OTel Collector gateway](/docs/collector/deployment/gateway/))
 per data center, where data masking (using the
 [transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor),
 or
@@ -311,7 +311,7 @@ are only using the [batch processor](https://github.com/open-telemetry/opentelem
 > **_NOTE: A span event provides additional point-in-time information in a
 > trace. It’s basically a structured log within a span. For more on span events,
 > check out docs
-> [here](https://opentelemetry.io/docs/concepts/signals/traces/#span-events)._**
+> [here](/docs/concepts/signals/traces/#span-events)._**
 
 Not at the moment, but it is something that they would like to explore. When the
 Observability team first started, there was little interest in tracing. As they
@@ -345,7 +345,7 @@ instances of the Collector, using around 8GB memory.
 ### Are you doing any correlation between metrics data, trace data, and log data?
 
 This is something that is currently being explored. The team is exploring
-[traces/metrics correlation (exemplars)](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#exemplars)
+[traces/metrics correlation (exemplars)](/docs/specs/otel/metrics/data-model/#exemplars)
 through OpenTelemetry; however, they found that this correlation is accomplished
 more easily through their tracing back-end, Tempo.
 
@@ -420,15 +420,15 @@ If you have a story to share about how you use OpenTelemetry at your
 organization, we’d love to hear from you! Ways to share:
 
 - Join the
-  [#otel-endusers channel](https://opentelemetry.io/community/end-user/slack-channel/)
+  [#otel-endusers channel](/community/end-user/slack-channel/)
   on the
   [CNCF Community Slack](https://communityinviter.com/apps/cloud-native/cncf)
 - Join our monthly
-  [End Users Discussion Group calls](https://opentelemetry.io/community/end-user/discussion-group/)
+  [End Users Discussion Group calls](/community/end-user/discussion-group/)
 - Join our
-  [OTel in Practice sessions](https://opentelemetry.io/community/end-user/otel-in-practice/)
+  [OTel in Practice sessions](/community/end-user/otel-in-practice/)
 - Sign up for one of our
-  [monthly interview/feedback sessions](https://opentelemetry.io/community/end-user/interviews-feedback/)
+  [monthly interview/feedback sessions](/community/end-user/interviews-feedback/)
 - Join the
   [OpenTelemetry group on LinkedIn](https://www.linkedin.com/groups/14081251)
 - Share your stories on the
