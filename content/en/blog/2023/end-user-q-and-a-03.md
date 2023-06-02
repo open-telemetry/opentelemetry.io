@@ -183,7 +183,7 @@ there is a tight coupling between [cert-manager](https://cert-manager.io/) and
 the OTel Operator. They were not able to use our own custom certificates, and
 they did not support [cert-manager](https://cert-manager.io/) in their clusters,
 so they found it hard to use the Operator in our clusters.
-[They solved this by submitting a PR](https://github.com/open-telemetry/opentelemetry-helm-charts/pull/760)!
+They solved this by submitting a PR -- [opentelemetry-helm-charts PR #760](https://github.com/open-telemetry/opentelemetry-helm-charts/pull/760)!
 
 One of the things she loves about OpenTelemetry was that, when she was trying to
 troubleshoot an issue whereby Prometheus was not sending metrics to the
