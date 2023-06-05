@@ -42,8 +42,8 @@ In addition,
 [collector-contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.78.0)
 has been updated with several changes and enhancements. The
 [Operator](https://github.com/open-telemetry/opentelemetry-operator/releases/tag/v0.77.0)
-now supports Golang auto-instrumentation in addition to Python, Java, Node.JS,
-and .NET.
+now supports Golang & Apache HTTP server auto-instrumentation in addition to
+Python, Java, Node.JS, and .NET.
 
 ##### [Go](/docs/instrumentation/go/)
 
@@ -77,7 +77,7 @@ environment variable, as well as various bug fixes related to resource
 detection, exporting, and suppressing instrumentation.
 
 - Add ability to select histogram aggregation with an environment variable
-- Move Protobuf encoding to its own package
+- Move protobuf encoding to its own package
 - Add experimental feature to detect resource detectors in auto instrumentation
 - Fix exporting of ExponentialBucketHistogramAggregation from
   opentelemetry.sdk.metrics.view
