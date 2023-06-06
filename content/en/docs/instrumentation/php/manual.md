@@ -114,9 +114,9 @@ To do [Tracing](/docs/concepts/signals/traces/) you'll need to acquire a
 First, a `Tracer` must be acquired, which is responsible for creating spans and
 interacting with the [Context](../propagation/). A tracer is acquired by using
 the OpenTelemetry API specifying the name and version of the
-[library instrumenting](/docs/concepts/instrumenting-library/) the instrumented
-library or application to be monitored. More information is available in the
-specification chapter
+[library instrumenting](/docs/concepts/instrumentation/libraries/) the
+instrumented library or application to be monitored. More information is
+available in the specification chapter
 [Obtaining a Tracer](/docs/specs/otel/trace/api/#tracerprovider).
 
 ```php

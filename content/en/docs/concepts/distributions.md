@@ -10,7 +10,7 @@ The OpenTelemetry projects consists of multiple [components](../components) that
 support multiple [signals](../signals). The reference implementation of
 OpenTelemetry is available as:
 
-- [Language-specific instrumentation libraries](../instrumenting)
+- [Language-specific instrumentation libraries](../instrumentation)
 - [A Collector binary](../data-collection)
 
 From any reference implementation a distribution may be created.

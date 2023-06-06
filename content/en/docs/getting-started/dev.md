@@ -14,14 +14,14 @@ instrumented automatically and instrumenting your own code with our API
 manually, we recommend that you learn the following concepts first:
 
 - [What is OpenTelemetry?](/docs/what-is-opentelemetry/)
-- [How can I instrument dependencies without touching their code?](/docs/concepts/instrumenting/#automatic-instrumentation)
-- [How can I instrument my application manually?](/docs/concepts/instrumenting/#manual-instrumentation)
+- [How can I instrument dependencies without touching their code?](/docs/concepts/instrumentation/automatic/)
+- [How can I instrument my application manually?](/docs/concepts/instrumentation/manual/)
 
 If you develop libraries, frameworks or middleware that is used as a dependency
 within other software, we recommend that you learn how you can provide telemetry
 natively:
 
-- [How can I add native instrumentation to my library?](/docs/concepts/instrumenting-library/)
+- [How can I add native instrumentation to my library?](/docs/concepts/instrumentation/libraries/)
 
 Next, you can deep dive into the documentations for the
 [language](/docs/instrumentation/) you are using:
