@@ -37,7 +37,7 @@ FILES=$(find $DEST -name "*.md")
 
 $SCRIPT_DIR/adjust-pages.pl $FILES
 
-echo "OTLP SPEC pages: copied and processed."
+echo "OTLP SPEC pages: copied and processed"
 
 SRC=content-modules/opentelemetry-proto/opentelemetry
 DEST=$DEST_BASE/otlp/opentelemetry
@@ -46,7 +46,7 @@ rm -Rf $DEST
 mkdir -p $DEST
 cp -R $SRC/* $DEST/
 
-echo "OTLP SPEC protos copied and processed."
+echo "OTLP SPEC protos copied and processed"
 
 ## Community
 
