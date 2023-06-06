@@ -9,8 +9,8 @@ OpenTelemetry is currently made up of several main components:
 - [Cross-language specification](/docs/specs/otel/)
 - [OpenTelemetry Collector](/docs/collector/)
 - [Per-language SDKs](/docs/instrumentation/)
-- [Per-language instrumentation libraries](/docs/concepts/instrumenting-library/)
-- [Per-language automatic instrumentation](/docs/concepts/instrumenting/#automatic-instrumentation)
+- [Per-language instrumentation libraries](/docs/concepts/instrumentation/libraries/)
+- [Per-language automatic instrumentation](/docs/concepts/instrumentation/automatic/)
 - [K8s Operator](/docs/k8s-operator/)
 
 OpenTelemetry lets you replace the need for vendor-specific SDKs and tools for
@@ -56,7 +56,7 @@ preferred backend. These SDKs also let you incorporate instrumentation libraries
 for common libraries and frameworks that you can use to connect to manual
 instrumentation in your application.
 
-For more information, see [Instrumenting](/docs/concepts/instrumenting/).
+For more information, see [Instrumenting](/docs/concepts/instrumentation/).
 
 ## Instrumentation Libraries
 
@@ -69,7 +69,7 @@ It is a long-term goal that popular libraries are authored to be observable out
 of the box, such that pulling in a separate component is not required.
 
 For more information, see
-[Instrumenting Libraries](/docs/concepts/instrumenting-library/).
+[Instrumenting Libraries](/docs/concepts/instrumentation/libraries/).
 
 ## Automatic Instrumentation
 
@@ -80,7 +80,7 @@ OpenTelemetry API and SDK capabilities to your application. Additionally they
 may add a set of Instrumentation Libraries and exporter dependencies.
 
 For more information, see
-[Instrumenting](/docs/concepts/instrumenting/#automatic-instrumentation).
+[Instrumenting](/docs/concepts/instrumentation/automatic/).
 
 ## K8s operator
 

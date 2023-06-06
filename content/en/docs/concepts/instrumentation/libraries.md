@@ -1,6 +1,7 @@
 ---
-title: Instrumenting libraries
+title: Libraries
 description: Learn how to add native instrumentation to your library.
+aliases: [/docs/concepts/instrumenting-library]
 weight: 40
 ---
 
@@ -172,7 +173,7 @@ out
 Network calls are usually traced with OpenTelemetry auto-instrumentations
 through corresponding client implementation.
 
-![Nested database and HTTP spans in Jaeger UI](nested-spans.svg)
+![Nested database and HTTP spans in Jaeger UI](../nested-spans.svg)
 
 If OpenTelemetry does not support tracing your network client, use your best
 judgement, here are some considerations to help:

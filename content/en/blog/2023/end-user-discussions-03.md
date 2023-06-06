@@ -187,9 +187,8 @@ agent to the host metrics receiver for infrastructure monitoring.
 
 **A:** It depends on the use cases:
 
-- [Auto instrumentation](/docs/concepts/instrumenting/#automatic-instrumentation)
-  options are maturing in OTel; for example, the Java JAR agent takes care of
-  instrumenting
+- [Auto instrumentation](/docs/concepts/instrumentation/automatic/) options are
+  maturing in OTel; for example, the Java JAR agent takes care of instrumenting
   [most libraries](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks)
   that are used by applications. Auto-instrumentation is also available for
   [Python](/docs/instrumentation/python/automatic/),
