@@ -1,4 +1,6 @@
 baseURL: https://opentelemetry.io
+title: &title OpenTelemetry
+description: &desc The OpenTelemetry Project Site
 disableKinds: [taxonomy, taxonomyTerm]
 theme: [docsy]
 disableAliases: true # We do redirects via Netlify's _redirects file
@@ -8,11 +10,10 @@ enableGitInfo: true
 enableMissingTranslationPlaceholders: true
 languages:
   en:
-    title: OpenTelemetry
-    description: The OpenTelemetry Project Site
     languageName: English
-    weight: 1
-
+    params:
+      title: *title
+      description: *desc
 imaging:
   resampleFilter: CatmullRom
   quality: 75
