@@ -265,9 +265,11 @@ which the processor provides a default configuration are overridden.
 > Configuring a processor does not enable it. Processors are enabled via
 > pipelines within the [service](#service) section.
 
-A basic example of the default processors is provided below. A full list of
-processors can be found
+A basic example of the default processors is provided below. The full list of
+processors can be found by combining the list found
 [here](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor)
+and
+[here](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor).
 
 > For detailed processor configuration, please see the
 > [processor README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md).
