@@ -247,12 +247,8 @@
   }
 }
 
-.td-content pre.mermaid {
-  margin-block-end: 0;
+.otel-mermaid-max-width pre.mermaid {
   max-width: inherit;
-  svg {
-    height: auto;
-  }
 }
 
 .td-content img:not(.img-initial) {
