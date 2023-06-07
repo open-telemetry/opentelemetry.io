@@ -1,7 +1,9 @@
 ---
-title: Instrumentation
-aliases: [/docs/instrumentation/js/api/tracing]
-weight: 4
+title: Manual
+aliases:
+  - /docs/instrumentation/js/api/tracing
+  - /docs/instrumentation/js/instrumentation
+weight: 30
 spelling: cSpell:ignore Millis
 ---
 
