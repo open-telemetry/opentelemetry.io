@@ -3,7 +3,7 @@ title: Getting Started
 description: Get telemetry for your app in less than 5 minutes!
 spelling: cSpell:ignore venv distro rolldice randint 
 spelling: cSpell:ignore rollspan loglevel loggingexporter
-weight: 1
+weight: 10
 ---
 
 This page will show you how to get started with OpenTelemetry in Python.

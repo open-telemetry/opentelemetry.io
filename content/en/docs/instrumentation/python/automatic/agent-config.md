@@ -1,7 +1,7 @@
 ---
 title: Agent Configuration
 linkTitle: Configuration
-weight: 45
+weight: 10
 spelling: cSpell:ignore distro mkdir myapp uninstrumented virtualenv
 ---
 
