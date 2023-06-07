@@ -1,7 +1,7 @@
 ---
 title: Getting Started
 aliases: [/docs/js/getting_started]
-weight: 1
+weight: 10
 ---
 
 These two guides for Node.js and the browser use simple examples in javascript

@@ -3,7 +3,7 @@ title: Node.js
 description: Get telemetry for your app in less than 5 minutes!
 aliases: [/docs/js/getting_started/nodejs]
 spelling: cSpell:ignore rolldice autoinstrumentation autoinstrumentations KHTML
-weight: 2
+weight: 10
 ---
 
 This page will show you how to get started with OpenTelemetry in Node.js.
@@ -454,8 +454,8 @@ the console output, such as the following:
 ## Next Steps
 
 Enrich your instrumentation generated automatically with
-[manual instrumentation](/docs/instrumentation/js/instrumentation) of your own
-codebase. This gets you customized observability data.
+[manual instrumentation](/docs/instrumentation/js/manual) of your own codebase.
+This gets you customized observability data.
 
 You'll also want to configure an appropriate exporter to
 [export your telemetry data](/docs/instrumentation/js/exporters) to one or more
