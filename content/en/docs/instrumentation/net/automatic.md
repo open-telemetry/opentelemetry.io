@@ -1,7 +1,7 @@
 ---
 title: Automatic Instrumentation
 linkTitle: Automatic
-weight: 3
+weight: 20
 ---
 
 You can use

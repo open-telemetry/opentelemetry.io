@@ -2,7 +2,7 @@
 title: Annotations
 description: Using instrumentation annotations with a Java agent.
 aliases: [/docs/instrumentation/java/annotations]
-weight: 4
+weight: 20
 javaInstrumentationVersion: 1.26.0
 ---
 
