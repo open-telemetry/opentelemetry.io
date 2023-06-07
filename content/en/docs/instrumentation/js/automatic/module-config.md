@@ -1,7 +1,7 @@
 ---
 title: Automatic Instrumentation Configuration
 linkTitle: Configuration
-weight: 45
+weight: 10
 ---
 
 This module is highly configurable by setting

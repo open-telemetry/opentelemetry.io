@@ -1,7 +1,7 @@
 ---
 title: Agent Configuration
 linkTitle: Configuration
-weight: 2
+weight: 10
 spelling:
   cSpell:ignore akka autoconfiguration Autoconfiguration Dotel HSET javaagent
   cSpell:ignore serverlessapis Servlet servlet

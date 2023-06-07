@@ -1,6 +1,6 @@
 ---
 title: Resources
-weight: 6
+weight: 70
 ---
 
 A [resource][] represents the entity producing telemetry as resource attributes.

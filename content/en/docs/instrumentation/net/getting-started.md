@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-weight: 2
+weight: 10
 ---
 
 OpenTelemetry for .NET is unique among OpenTelemetry implementations, as it is
