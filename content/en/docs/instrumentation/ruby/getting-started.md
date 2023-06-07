@@ -4,7 +4,7 @@ description: Get telemetry from your app in less than 5 minutes!
 aliases: [/docs/instrumentation/ruby/getting_started]
 spelling: cSpell:ignore truffleruby sinatra rolldice struct darwin Tracestate
 spelling: cSpell:ignore tracestate
-weight: 1
+weight: 10
 ---
 
 This page will show you how to get started with OpenTelemetry in Ruby.
