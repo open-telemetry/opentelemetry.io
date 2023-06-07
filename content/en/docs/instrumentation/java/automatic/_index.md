@@ -5,7 +5,7 @@ aliases:
   - /docs/java/automatic_instrumentation
   - /docs/instrumentation/java/automatic_instrumentation
 spelling: cSpell:ignore javaagent myapp Dotel
-weight: 3
+weight: 20
 ---
 
 Automatic instrumentation with Java uses a Java agent JAR that can be attached
