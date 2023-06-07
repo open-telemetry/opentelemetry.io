@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-weight: 20
+weight: 10
 spelling: cSpell:ignore rebar relx stdlib bogons
 spelling: cSpell:ignore defmodule erts hipe Eshell erlang
 ---
@@ -287,9 +287,9 @@ when rendered in your tracing tool of choice.
 ### Next Steps
 
 Enrich your automatically generated instrumentation with
-[manual instrumentation](/docs/instrumentation/erlang/instrumentation) of your
-own codebase. This allows you to customize the observability data your
-application emits.
+[manual instrumentation](/docs/instrumentation/erlang/manual) of your own
+codebase. This allows you to customize the observability data your application
+emits.
 
 You'll also want to configure an appropriate exporter to
 [export your telemetry data](/docs/instrumentation/erlang/getting-started#exporting-to-the-opentelemetry-collector)
