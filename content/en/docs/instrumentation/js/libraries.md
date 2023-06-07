@@ -1,7 +1,7 @@
 ---
 title: Using instrumentation libraries
 linkTitle: Libraries
-weight: 3
+weight: 40
 spelling: cSpell:ignore autoinstrumentation metapackage
 ---
 
