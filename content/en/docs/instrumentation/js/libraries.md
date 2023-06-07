@@ -256,7 +256,7 @@ You can also find more instrumentations available in the
 ## Next steps
 
 After you have set up instrumentation libraries, you may want to add
-[manual instrumentation](/docs/instrumentation/js/instrumentation) to collect
+[manual instrumentation](/docs/instrumentation/js/manual) to collect
 custom telemetry data.
 
 You'll also want to configure an appropriate exporter to

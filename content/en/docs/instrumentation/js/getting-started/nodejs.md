@@ -454,7 +454,7 @@ the console output, such as the following:
 ## Next Steps
 
 Enrich your instrumentation generated automatically with
-[manual instrumentation](/docs/instrumentation/js/instrumentation) of your own
+[manual instrumentation](/docs/instrumentation/js/manual) of your own
 codebase. This gets you customized observability data.
 
 You'll also want to configure an appropriate exporter to
