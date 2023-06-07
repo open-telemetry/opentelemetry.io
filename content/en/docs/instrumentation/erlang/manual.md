@@ -1,6 +1,6 @@
 ---
 title: Manual
-aliases: [/docs/instrumentation/erlang/instrumentation/]
+aliases: [/docs/instrumentation/erlang/instrumentation]
 weight: 30
 ---
 
