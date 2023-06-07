@@ -5,7 +5,7 @@ aliases:
   - /docs/java/getting_started
   - /docs/java/manual_instrumentation
   - /docs/instrumentation/java/manual_instrumentation
-weight: 5
+weight: 30
 ---
 
 **Libraries** that want to export telemetry data using OpenTelemetry MUST only

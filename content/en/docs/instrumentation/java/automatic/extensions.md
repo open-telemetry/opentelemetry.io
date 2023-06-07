@@ -4,7 +4,7 @@ aliases: [/docs/instrumentation/java/extensions]
 description: >-
   Extensions add capabilities to the agent without having to create a separate
   distribution.
-weight: 10
+weight: 30
 ---
 
 ## Introduction
