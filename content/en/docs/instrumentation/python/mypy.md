@@ -1,6 +1,6 @@
 ---
 title: Using mypy
-weight: 110
+weight: 120
 ---
 
 If you're using [mypy](http://mypy-lang.org/), you'll need to turn on
