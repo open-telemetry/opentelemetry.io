@@ -53,7 +53,7 @@ synthetics? If not, are there any plans to work towards such a thing?
 **A:** The
 [health check](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/extension/healthcheckextension/README.md)
 might be a helpful reference. Also check out the
-[http check receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/extension/healthcheckextension/README.md).
+[HTTP check receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/extension/healthcheckextension/README.md).
 
 #### 3 - Collector distributions
 
@@ -187,9 +187,8 @@ agent to the host metrics receiver for infrastructure monitoring.
 
 **A:** It depends on the use cases:
 
-- [Auto instrumentation](/docs/concepts/instrumenting/#automatic-instrumentation)
-  options are maturing in OTel; for example, the Java JAR agent takes care of
-  instrumenting
+- [Auto instrumentation](/docs/concepts/instrumentation/automatic/) options are
+  maturing in OTel; for example, the Java JAR agent takes care of instrumenting
   [most libraries](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks)
   that are used by applications. Auto-instrumentation is also available for
   [Python](/docs/instrumentation/python/automatic/),

@@ -29,6 +29,7 @@ update `instrumentation.ts|js` from the
 following:
 
 <!-- prettier-ignore-start -->
+
 {{< tabpane langEqualsHeader=true >}}
 {{< tab Typescript >}}
 /*tracing.ts*/
@@ -76,6 +77,9 @@ const {
 const {
   OTLPMetricExporter
 } = require("@opentelemetry/exporter-metrics-otlp-proto");
+const {
+  PeriodicExportingMetricReader
+} = require('@opentelemetry/sdk-metrics');
 
 const sdk = new opentelemetry.NodeSDK({
   traceExporter: new OTLPTraceExporter({
@@ -97,6 +101,7 @@ sdk.start();
 {{< /tab >}}
 
 {{< /tabpane>}}
+
 <!-- prettier-ignore-end -->
 
 To try out the `OTLPTraceExporter` quickly, you can run Jaeger in a docker
@@ -138,7 +143,7 @@ collector.
 
 [OpenTelemetry Collector Exporter with gRPC][] and [OpenTelemetry Collector
 Exporter with protobuf][] do only work with Node.js, therefore you are limited
-to use the [OpenTelemetry Collector Exporter with http][].
+to use the [OpenTelemetry Collector Exporter with HTTP][].
 
 Make sure that the receiving end of your exporter (collector or observability
 backend) does support `http/json`, and that you are exporting your data to the
@@ -190,11 +195,11 @@ accessible from the public internet, you also have to make your collector
 accessible for everyone.
 
 It is recommended that you do not expose your collector directly, but that you
-put a reverse proxy (nginx, apache, ...) in front of it. The reverse proxy can
-take care of SSL-offloading, setting the right CORS headers, and many other
-features specific to web applications.
+put a reverse proxy (NGINX, Apache HTTP Server, ...) in front of it. The reverse
+proxy can take care of SSL-offloading, setting the right CORS headers, and many
+other features specific to web applications.
 
-Below you will find a configuration for the popular nginx web server to get you
+Below you will find a configuration for the popular NGINX web server to get you
 started:
 
 ```nginx

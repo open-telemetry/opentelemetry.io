@@ -1,6 +1,6 @@
 ---
 title: Exporters
-weight: 4
+weight: 50
 spelling: cSpell:ignore dotnet openzipkin
 ---
 
@@ -66,7 +66,7 @@ builder.Services.AddOpenTelemetry()
 ```
 
 This will, by default, send traces using gRPC to <http://localhost:4317>, to
-customize this to use HTTP and the ProtoBuf format, you can add options like
+customize this to use HTTP and the protobuf format, you can add options like
 this:
 
 ```csharp

@@ -265,9 +265,11 @@ which the processor provides a default configuration are overridden.
 > Configuring a processor does not enable it. Processors are enabled via
 > pipelines within the [service](#service) section.
 
-A basic example of the default processors is provided below. A full list of
-processors can be found
+A basic example of the default processors is provided below. The full list of
+processors can be found by combining the list found
 [here](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor)
+and
+[here](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor).
 
 > For detailed processor configuration, please see the
 > [processor README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md).
@@ -411,11 +413,12 @@ exporters:
 
 ## Connectors
 
-A connector is both an exporter and receiver. It consumes data as an exporter in
-one pipeline and emits data as a receiver in another pipeline. It may consume
-and emit data of the same data type, or of different data types. A connector may
-generate and emit data to summarize the consumed data, or it may simply
-replicate or route data.
+A connector is both an exporter and receiver. As the name suggests a Connector
+connects two pipelines: It consumes data as an exporter at the end of one
+pipeline and emits data as a receiver at the start of another pipeline. It may
+consume and emit data of the same data type, or of different data types. A
+connector may generate and emit data to summarize the consumed data, or it may
+simply replicate or route data.
 
 The `connectors:` section is how connectors are configured.
 
@@ -598,7 +601,7 @@ exporters:
 
 ### Proxy Support
 
-Exporters that leverage the net/http package (all do today) respect the
+Exporters that leverage the `net/http` package (all do today) respect the
 following proxy environment variables:
 
 - HTTP_PROXY

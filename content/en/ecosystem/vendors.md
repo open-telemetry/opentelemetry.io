@@ -49,6 +49,7 @@ OpenTelemetry in their commercial products.
 | Sumo Logic                 | Yes               | Yes         | [help.sumologic.com/](https://help.sumologic.com/docs/apm/traces/quickstart/)
 | TelemetryHub               | No                | Yes         | [telemetryhub.com](https://app.telemetryhub.com/docs)
 | Teletrace                  | Yes               | Yes         | [docs.teletrace.io](https://docs.teletrace.io/)
+| ThousandEyes (Cisco)       | No                | Yes         | [docs.thousandeyes.com](https://docs.thousandeyes.com/product-documentation/api/opentelemetry)
 | Traceloop                  | No                | Yes         | [traceloop.com](https://www.traceloop.com)
 | Uptrace                    | Yes               | Yes         | [uptrace.dev](https://uptrace.dev)
 

@@ -5,7 +5,7 @@ aliases:
   - /docs/collector/about
   - /docs/concepts/data-collection
 cascade:
-  collectorVersion: 0.77.0
+  collectorVersion: 0.79.0
 weight: 10
 ---
 

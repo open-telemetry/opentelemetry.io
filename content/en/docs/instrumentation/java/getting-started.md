@@ -3,7 +3,7 @@ title: Getting Started
 description: Get telemetry for your app in less than 5 minutes!
 spelling: cSpell:ignore helloworld javaagent springframework autoreconfigure
 spelling: cSpell:ignore rolldice aarch Nanos darwin autoconfigure webmvc kotlin
-weight: 1
+weight: 10
 ---
 
 This page will show you how to get started with OpenTelemetry in Java.

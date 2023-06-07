@@ -1,12 +1,8 @@
 ---
 title: Specification Status Summary
 linkTitle: Status
+aliases: [/docs/specs/otel/status]
 weight: 10
-# Undo specification-section-wide page-meta parameter settings:
-github_repo: &repo https://github.com/open-telemetry/opentelemetry.io
-github_subdir:
-path_base_for_github_subdir:
-github_project_repo: *repo
 ---
 
 OpenTelemetry is developed on a signal by signal basis. Tracing, metrics,
@@ -18,7 +14,7 @@ Each signal consists of four [core components](/docs/concepts/components/):
 
 - APIs
 - SDKs
-- [OpenTelemetry Protocol](/docs/specs/otel/protocol/) (OTLP)
+- [OpenTelemetry Protocol](/docs/specs/otlp/) (OTLP)
 - [Collector](/docs/collector/)
 
 Signals also have contrib components, an ecosystem of plugins and
@@ -26,7 +22,7 @@ instrumentation. All instrumentation shares the same semantic conventions, to
 ensure that they produce the same data when observing common operations, such as
 HTTP requests.
 
-To learn more about signals and components, see the specification
+To learn more about signals and components, see the OTel specification
 [Overview](/docs/specs/otel/overview/).
 
 ## Component Lifecycle
@@ -60,9 +56,9 @@ same as the **Protocol** status.
 
 ### [Tracing][]
 
-- {{% spec_status "API" "trace/api" "Status" %}}
-- {{% spec_status "SDK" "trace/sdk" "Status" %}}
-- {{% spec_status "Protocol" "protocol/otlp" "Status" %}}
+- {{% spec_status "API" "otel/trace/api" "Status" %}}
+- {{% spec_status "SDK" "otel/trace/sdk" "Status" %}}
+- {{% spec_status "Protocol" "otlp" "Status" %}}
 - Notes:
   - The tracing specification is now completely stable, and covered by long term
     support.
@@ -73,9 +69,9 @@ same as the **Protocol** status.
 
 ### [Metrics][]
 
-- {{% spec_status "API" "metrics/api" "Status" %}}
-- {{% spec_status "SDK" "metrics/sdk" "Status" %}}
-- {{% spec_status "Protocol" "protocol/otlp" "Status" %}}
+- {{% spec_status "API" "otel/metrics/api" "Status" %}}
+- {{% spec_status "SDK" "otel/metrics/sdk" "Status" %}}
+- {{% spec_status "Protocol" "otlp" "Status" %}}
 - Notes:
   - OpenTelemetry Metrics is currently under active development.
   - The data model is stable and released as part of the OTLP protocol.
@@ -85,7 +81,7 @@ same as the **Protocol** status.
 
 ### [Baggage][]
 
-- {{% spec_status "API" "baggage/api" "Status" %}}
+- {{% spec_status "API" "otel/baggage/api" "Status" %}}
 - **SDK:** stable
 - **Protocol:** N/A
 - Notes:
@@ -96,10 +92,10 @@ same as the **Protocol** status.
 
 ### [Logging][]
 
-- {{% spec_status "Bridge API" "logs/bridge-api" "Status" %}}
-- {{% spec_status "SDK" "logs/sdk" "Status" %}}
-- {{% spec_status "Event API" "logs/event-api" "Status" %}}
-- {{% spec_status "Protocol" "protocol/otlp" "Status" %}}
+- {{% spec_status "Bridge API" "otel/logs/bridge-api" "Status" %}}
+- {{% spec_status "SDK" "otel/logs/sdk" "Status" %}}
+- {{% spec_status "Event API" "otel/logs/event-api" "Status" %}}
+- {{% spec_status "Protocol" "otlp" "Status" %}}
 - Notes:
   - The [logs data model][] is released as part of the OpenTelemetry Protocol.
   - Log processing for many data formats has been added to the Collector, thanks

@@ -14,7 +14,7 @@ deployment in Kubernetes), typically per cluster, per data center or per region.
 In the general case you can use an out-of-the-box load balancer to distribute
 the load amongst the collectors:
 
-![Gateway deployment concept](../../img/gateway-sdk.svg)
+![Gateway deployment concept](../../img/otel_gateway_sdk.svg)
 
 For use cases where the processing of the telemetry data processing has to
 happen in a specific collector, you would use a two-tiered setup with a
@@ -153,15 +153,6 @@ Cons:
 - Added latency in case of cascaded collectors
 - Higher overall resource usage (costs)
 
-[instrumentation]: /docs/instrumentation/
-[otlp]: /docs/specs/otel/protocol/
-[collector]: /docs/collector/
-[instrument-java-metrics]: /docs/instrumentation/java/manual/#metrics
-[otlp-exporter]: /docs/specs/otel/protocol/exporter/
-[java-otlp-example]:
-  https://github.com/open-telemetry/opentelemetry-java-docs/tree/main/otlp
-[py-otlp-example]:
-  https://opentelemetry-python.readthedocs.io/en/stable/examples/metrics/instruments/README.html
 [lb-exporter]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter
 [tailsample-processor]:

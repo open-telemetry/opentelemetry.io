@@ -27,5 +27,5 @@ follows:
 
 [auto]:
   https://github.com/open-telemetry/opentelemetry-operator#opentelemetry-auto-instrumentation-injection
-[instrumentation]: /docs/concepts/instrumenting/
+[instrumentation]: /docs/concepts/instrumentation/
 [otel-op]: https://github.com/open-telemetry/opentelemetry-operator

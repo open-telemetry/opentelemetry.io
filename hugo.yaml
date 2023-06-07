@@ -1,4 +1,6 @@
 baseURL: https://opentelemetry.io
+title: &title OpenTelemetry
+description: &desc The OpenTelemetry Project Site
 disableKinds: [taxonomy, taxonomyTerm]
 theme: [docsy]
 disableAliases: true # We do redirects via Netlify's _redirects file
@@ -8,11 +10,10 @@ enableGitInfo: true
 enableMissingTranslationPlaceholders: true
 languages:
   en:
-    title: OpenTelemetry
-    description: The OpenTelemetry Project Site
     languageName: English
-    weight: 1
-
+    params:
+      title: *title
+      description: *desc
 imaging:
   resampleFilter: CatmullRom
   quality: 75
@@ -162,6 +163,11 @@ params:
       sizes: [300, 400, 600, 700]
       type: sans_serif
 
+  notes: # as markdown
+    docker-compose-v2: |
+      `docker-compose` is deprecated. For details, see
+      [Migrate to Compose V2](https://docs.docker.com/compose/migrate/).
+
 services:
   googleAnalytics:
     # The following is a placeholder (fake) ID useful for local test builds. The
@@ -177,8 +183,10 @@ module:
       target: content/docs/instrumentation/go
     - source: tmp/otel/specification
       target: content/docs/specs/otel
-    # - source: tmp/otlp/docs
-    #   target: content/docs/specs/otlp
+    - source: tmp/otlp/docs/specification.md
+      target: content/docs/specs/otlp/_index.md
+    - source: tmp/otlp/docs/img
+      target: content/docs/specs/otlp/img
     - source: tmp/community/mission-vision-values.md
       target: content/community/mission.md
     - source: tmp/community/roadmap.md

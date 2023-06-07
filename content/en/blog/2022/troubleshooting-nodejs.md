@@ -46,7 +46,7 @@ Pro tip: You can use the `OTEL_LOG_LEVEL` environment variable to set
 
 Many users choose to use auto Instrumentation libraries, which automatically
 create spans for interesting operations in popular and widely used packages (DB
-drivers, http frameworks, cloud services SDKs, etc)
+drivers, HTTP frameworks, cloud services SDKs, etc)
 
 Some initialization patterns and configuration options can cause your service to
 fail to create spans, to begin with.
@@ -133,7 +133,7 @@ If missing, chances are your auto instrumentation library is not being applied.
 ### Library Configuration
 
 Some auto instrumentation libraries include a custom configuration that controls
-when **instrumentation is skipped**. For example, http instrumentation has
+when **instrumentation is skipped**. For example, HTTP instrumentation has
 options such as `ignoreIncomingRequestHook` and `requireParentforOutgoingSpans`
 
 In specific cases, some libraries are **not instrumenting by default**, and you
@@ -275,13 +275,13 @@ A a few common configuration errors are covered in the following subsections.
 - **Format** — OTLP supports `http/json`, `http/proto`, and `grpc` formats. You
   need to choose an exporter package that matches the format your OTLP collector
   support.
-- **Path** — If you set http collector endpoint (via config in code or
+- **Path** — If you set HTTP collector endpoint (via config in code or
   environment variables), **you must also set the path**:
   `http://my-collector-host:4318/v1/traces`. If you forget the path, the export
   will fail. In gRPC, you must not add path: “grpc://localhost:4317”. This can
   be a bit confusing to get right at first.
 - **Secure Connection** — Check if your collector expects a secure or insecure
-  connection. In http, this is determined by the URL scheme (`http:` /
+  connection. In HTTP, this is determined by the URL scheme (`http:` /
   `https:`). In gRPC, the scheme has no effect and the connection security is
   set exclusively by the credentials parameter: `grpc.credentials.createSsl()`,
   `grpc.credentials.createInsecure()`, etc. The default security for both HTTP

@@ -123,11 +123,11 @@ service:
 
 #### Map your Custom Configuration File using Environment Variables
 
-Once your collector configuration is set through a confmap providers. Create an
+Once your collector configuration is set through a confmap provider, create an
 environment variable on your Lambda function
 `OPENTELEMETRY_COLLECTOR_CONFIG_FILE` and set the path of configuration w.r.t to
 the confmap provider as its value. for e.g, if you are using a file configmap
-provider, set its value to `/var/task/*<path>/<to>/<filename>\_`. This will tell
+provider, set its value to `/var/task/<path>/<to>/<filename>`. This will tell
 the extension where to find the collector configuration.
 
 ##### Custom Collector Configuration Using the CLI

@@ -219,7 +219,7 @@ Short form for [OpenTelemetry Collector](#collector).
 
 ### **OTLP**
 
-Short for [OpenTelemetry Protocol](/docs/specs/otel/protocol/otlp/).
+Short for [OpenTelemetry Protocol](/docs/specs/otlp/).
 
 ### **Processor**
 
