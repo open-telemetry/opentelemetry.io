@@ -1,7 +1,7 @@
 ---
 title: Propagation
 description: Context propagation for the PHP API
-weight: 7
+weight: 60
 ---
 
 Propagation is the mechanism that moves data between services and processes.
