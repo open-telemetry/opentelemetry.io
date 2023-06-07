@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-weight: 2
+weight: 10
 spelling: cSpell:ignore Bazel libcurl openssl xcode DBUILD DWITH helloworld tracestate
 spelling: cSpell:ignore traceparent devel
 ---

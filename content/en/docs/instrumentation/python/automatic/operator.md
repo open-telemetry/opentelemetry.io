@@ -1,7 +1,7 @@
 ---
 title: Using the OpenTelemetry Operator to Inject Auto-Instrumentation
 linkTitle: Operator
-weight: 45
+weight: 30
 spelling: cSpell:ignore distro mkdir uninstrumented virtualenv
 ---
 

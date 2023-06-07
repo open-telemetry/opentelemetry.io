@@ -1,6 +1,6 @@
 ---
 title: Exporters
-weight: 4
+weight: 50
 spelling: cSpell:ignore ostream jaegertracing millis chrono
 ---
 
