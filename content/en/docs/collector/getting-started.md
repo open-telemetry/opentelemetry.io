@@ -318,7 +318,7 @@ terminal window as well.
 **Note:** The commands shown above demonstrate the process in a bash shell.
 These commands may vary slightly for other shells.
 
-[data collection]: /docs/concepts/data-collection/
+[data collection]: ../
 [deployment methods]: ../deployment/
 [readme.md]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/examples/demo

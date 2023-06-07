@@ -9,7 +9,7 @@ spelling: cSpell:ignore oidc cfssl genkey initca cfssljson gencert
 
 Familiarity with the following pages is assumed:
 
-- [Data Collection concepts](/docs/concepts/data-collection/) in order to
+- [Data Collection concepts](../) in order to
   understand the repositories applicable to the OpenTelemetry Collector.
 - [Security guidance](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md)
 
