@@ -1,7 +1,7 @@
 ---
 title: .NET Framework instrumentation configuration
 linkTitle: .NET Framework
-weight: 5
+weight: 80
 spelling: cSpell:ignore asax LINQ
 ---
 
