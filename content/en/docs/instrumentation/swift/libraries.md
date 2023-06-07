@@ -2,7 +2,7 @@
 title: Instrumentation Libraries
 linkTitle: Libraries
 description: How to use Swift instrumentation libraries
-weight: 5
+weight: 40
 ---
 
 OpenTelemetry-Swift provides several instrumentation libraries that generate
