@@ -1,6 +1,6 @@
 ---
 title: SDK
-weight: 8
+weight: 100
 ---
 
 The OpenTelemetry SDK provides a working implementation of the API, and can be

@@ -2,7 +2,7 @@
 title: Getting Started
 description: Get up and running with OpenTelemetry for PHP.
 aliases: [/docs/instrumentation/php/getting_started]
-weight: 1
+weight: 10
 spelling: cSpell:ignore Wordpress Symfony Laravel rolldice autoload strval PECL
 spelling: cSpell:ignore darwin
 ---
