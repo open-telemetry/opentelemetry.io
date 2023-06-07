@@ -1,6 +1,6 @@
 ---
 title: Cookbook
-weight: 90
+weight: 100
 ---
 
 This page is a cookbook for common scenarios.
