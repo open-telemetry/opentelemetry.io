@@ -10,7 +10,6 @@
     margin-top: 2rem;
     margin-bottom: 3rem;
     max-height: 12rem;
-    // max-width: 85%;
   }
 
   .td-box--white .container blockquote {
@@ -109,16 +108,12 @@
 } // TODO: propagate this fix to Docsy. Also class name should be prefixed with td
 
 // Adjust the spacing of page-meta and page-TOC (https://github.com/open-telemetry/opentelemetry.io/pull/354)
+// TODO: upstream
 .td-toc #TableOfContents {
   padding-top: 1rem;
 }
 
 .td-home {
-  .td-main {
-    // Remove the gap between the last block shortcode and the footer (on homepage)
-    flex-grow: 0;
-  }
-
   .cncf {
     text-align: center;
 
@@ -136,40 +131,6 @@
     a.external-link:after {
       display: none;
     }
-  }
-}
-
-.td-default, // E.g.: Homepage, Status, Search, 404; excludes navbar
-.td-section main, .td-page main, // Doc and blog main content without left/right navs
-.td-page-meta {
-  a:hover:not(.dropdown-item) {
-    text-decoration: underline;
-  }
-}
-
-.td-box--dark a,
-.td-box--primary a {
-  color: lighten($primary, 25%) !important; // TODO: upstream
-}
-
-.td-box--secondary a {
-  color: darken($primary, 25%) !important; // TODO: upstream
-}
-
-// Adjust anchors scroll snap (https://github.com/open-telemetry/opentelemetry.io/pull/348)
-@include media-breakpoint-up(md) {
-  h2[id],
-  h3[id],
-  h4[id],
-  h5[id] {
-    scroll-margin-top: 5rem;
-  }
-  h2[id]:before,
-  h3[id]:before,
-  h4[id]:before,
-  h5[id]:before {
-    margin-top: 0;
-    height: 0;
   }
 }
 
@@ -194,6 +155,7 @@
 .td-page-meta--child {
   display: none !important;
 }
+
 .otel-docs-spec {
   .td-page-meta--edit {
     display: none !important;
