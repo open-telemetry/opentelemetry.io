@@ -1,5 +1,6 @@
 ---
-title: Instrumentation
+title: Manual
+aliases: [/docs/instrumentation/erlang/instrumentation/]
 weight: 30
 ---
 
