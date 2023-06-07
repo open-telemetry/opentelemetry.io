@@ -2,7 +2,7 @@
 spelling: cSpell:ignore configurator distro distros loglevel
 title: OpenTelemetry Distro
 linkTitle: Distro
-weight: 100
+weight: 110
 ---
 
 In order to make using OpenTelemetry and auto-instrumentation as quick as
