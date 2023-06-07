@@ -1,6 +1,6 @@
 ---
 title: Exporters
-weight: 5
+weight: 50
 spelling: cSpell:ignore Zipkin jaegertracing openzipkin zipkin
 ---
 
