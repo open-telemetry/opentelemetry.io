@@ -1875,10 +1875,6 @@
     "StatusCode": 200,
     "LastSeen": "2023-05-25T14:26:23.327275-03:00"
   },
-  "https://github.com/keyval-dev/opentelemetry-go-instrumentation": {
-    "StatusCode": 200,
-    "LastSeen": "2023-02-20T07:45:48.100397-05:00"
-  },
   "https://github.com/knative/eventing/issues/3126": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:07:05.960017-05:00"
@@ -2342,6 +2338,10 @@
   "https://github.com/open-telemetry/opentelemetry-go-instrumentation": {
     "StatusCode": 200,
     "LastSeen": "2023-06-01T15:55:23.849088-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-instrumentation/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-06-07T16:32:38.79601-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-go/issues/new": {
     "StatusCode": 200,
