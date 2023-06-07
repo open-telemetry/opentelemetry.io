@@ -3,7 +3,7 @@ title: Automatic instrumentation
 linkTitle: Automatic
 aliases: [/docs/instrumentation/ruby/configuring_automatic_instrumentation]
 spelling: cSpell:ignore faraday sinatra
-weight: 2
+weight: 20
 ---
 
 Automatic instrumentation in ruby is done via instrumentation packages, and most
