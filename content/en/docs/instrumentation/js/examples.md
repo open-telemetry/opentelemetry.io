@@ -2,7 +2,7 @@
 title: Instrumentation Examples
 title: Examples
 aliases: [/docs/instrumentation/js/instrumentation_examples]
-weight: 99
+weight: 220
 ---
 
 Here are some of the resources for OpenTelemetry instrumentation examples.
