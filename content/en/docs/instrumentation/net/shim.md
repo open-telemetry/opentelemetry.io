@@ -1,7 +1,7 @@
 ---
 title: OpenTelemetry Tracing Shim
 linkTitle: Tracing Shim
-weight: 5
+weight: 110
 ---
 
 .NET is different from other languages/runtimes that support OpenTelemetry.

@@ -1,6 +1,6 @@
 ---
 title: Resources
-weight: 36
+weight: 70
 ---
 
 A [resource](/docs/specs/otel/overview/#resources) represents an entity
