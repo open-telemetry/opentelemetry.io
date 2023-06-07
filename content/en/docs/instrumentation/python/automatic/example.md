@@ -1,7 +1,7 @@
 ---
 title: Auto-Instrumentation Example
 linkTitle: Example
-weight: 45
+weight: 20
 spelling: cSpell:ignore distro mkdir uninstrumented virtualenv
 ---
 

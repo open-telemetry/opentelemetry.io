@@ -1,7 +1,7 @@
 ---
 title: Automatic Instrumentation
 linkTitle: Automatic
-weight: 2
+weight: 20
 spelling: cSpell:ignore userland phar AUTOLOAD tracecontext myapp configurator
 spelling: cSpell:ignore packagist pecl shortcode unindented
 ---

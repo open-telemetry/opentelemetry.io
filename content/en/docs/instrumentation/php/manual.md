@@ -1,7 +1,7 @@
 ---
 title: Manual Instrumentation
 linkTitle: Manual
-weight: 3
+weight: 30
 ---
 
 **Libraries** that want to export telemetry data using OpenTelemetry MUST only
