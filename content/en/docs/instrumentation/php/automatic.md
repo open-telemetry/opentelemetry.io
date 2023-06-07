@@ -18,13 +18,13 @@ execute userland code before and after the hooked method runs.
 OpenTelemetry\Instrumentation\hook(
     'class': DemoClass::class,
     'function': 'run',
-    'pre': static function (DemoClass $demo, array $params, string $class, string $function, ?string $filename, ?int $lineno) use ($tracer) {
+    'pre': static function (DemoClass $demo, array $params, string $class, string $function, ?string $filename, ?int $lineno) {
         static $instrumentation;
         $instrumentation ??= new CachedInstrumentation('example');
         $span = $instrumentation->tracer()->spanBuilder($class)->startSpan();
         Context::storage()->attach($span->storeInContext(Context::getCurrent()));
     },
-    'post': static function (DemoClass $demo, array $params, $returnValue, ?Throwable $exception) use ($tracer) {
+    'post': static function (DemoClass $demo, array $params, $returnValue, ?Throwable $exception) {
         $scope = Context::storage()->scope();
         $scope->detach();
         $span = Span::fromContext($scope->context());

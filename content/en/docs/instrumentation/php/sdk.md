@@ -38,6 +38,12 @@ However, it doesn't support all of the features that manual setup does.
 
 $spanExporter = new InMemoryExporter(); //mock exporter for demonstration purposes
 
+$meterProvider = MeterProvider::builder()
+    ->registerMetricReader(
+        new ExportingReader(new MetricExporter((new StreamTransportFactory())->create(STDOUT, 'application/x-ndjson'), /*Temporality::CUMULATIVE*/))
+    )
+    ->build();
+
 $tracerProvider = TracerProvider::builder()
     ->addSpanProcessor(
         (new BatchSpanProcessorBuilder($spanExporter))
@@ -46,8 +52,18 @@ $tracerProvider = TracerProvider::builder()
     )
     ->build();
 
+$loggerProvider = LoggerProvider::builder()
+    ->addLogRecordProcessor(
+        new SimpleLogsProcessor(
+            (new ConsoleExporterFactory())->create()
+        )
+    )
+    ->setResource(ResourceInfo::create(Attributes::create(['foo' => 'bar'])))
+    ->build();
+
 Sdk::builder()
     ->setTracerProvider($tracerProvider)
+    ->setLoggerProvider($loggerProvider)
     ->setMeterProvider($meterProvider)
     ->setPropagator(TraceContextPropagator::getInstance())
     ->setAutoShutdown(true)

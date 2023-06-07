@@ -83,13 +83,13 @@ resources are then passed to the tracer provider, where they will be associated
 with all generated spans.
 
 ```php
-$resource = ResourceInfoFactory::merge(ResourceInfo::create(Attributes::create([
+$resource = ResourceInfoFactory::defaultResource()->merge(ResourceInfo::create(Attributes::create([
     ResourceAttributes::SERVICE_NAMESPACE => 'foo',
     ResourceAttributes::SERVICE_NAME => 'bar',
     ResourceAttributes::SERVICE_INSTANCE_ID => 1,
     ResourceAttributes::SERVICE_VERSION => '0.1',
     ResourceAttributes::DEPLOYMENT_ENVIRONMENT => 'development',
-])), ResourceInfoFactory::defaultResource());
+])));
 
 $tracerProvider =  new TracerProvider(
     new SimpleSpanProcessor(
