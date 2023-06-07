@@ -287,7 +287,7 @@ when rendered in your tracing tool of choice.
 ### Next Steps
 
 Enrich your automatically generated instrumentation with
-[manual instrumentation](/docs/instrumentation/erlang/instrumentation) of your
+[manual instrumentation](/docs/instrumentation/erlang/manual) of your
 own codebase. This allows you to customize the observability data your
 application emits.
 
