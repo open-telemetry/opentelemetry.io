@@ -2,6 +2,7 @@
 title: Demo Architecture
 linkTitle: Architecture
 aliases: [/docs/demo/current_architecture]
+body_class: otel-mermaid-max-width
 ---
 
 **OpenTelemetry Demo** is composed of microservices written in different
