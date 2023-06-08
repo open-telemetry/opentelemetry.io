@@ -11,7 +11,7 @@ support multiple [signals](../signals). The reference implementation of
 OpenTelemetry is available as:
 
 - [Language-specific instrumentation libraries](../instrumentation)
-- [A Collector binary](../data-collection)
+- [A Collector binary](/docs/collector)
 
 From any reference implementation a distribution may be created.
 
