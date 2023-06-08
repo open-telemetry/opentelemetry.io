@@ -1,7 +1,7 @@
 ---
 title: Automatic Instrumentation
 linkTitle: Automatic
-weight: 30
+weight: 20
 ---
 
 Automatic instrumentation provides a way to instrument any Node.js application

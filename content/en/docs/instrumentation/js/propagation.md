@@ -2,7 +2,7 @@
 title: Propagation
 description: Context propagation for the JS SDK
 aliases: [/docs/instrumentation/js/api/propagation]
-weight: 7
+weight: 65
 spelling: cSpell:ignore traceparent tracestate
 ---
 

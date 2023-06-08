@@ -1,7 +1,7 @@
 ---
 title: Automatic Instrumentation
 linkTitle: Automatic
-weight: 30
+weight: 20
 spelling: cSpell:ignore distro mkdir uninstrumented virtualenv
 ---
 

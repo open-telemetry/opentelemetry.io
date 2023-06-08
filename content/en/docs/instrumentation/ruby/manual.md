@@ -5,7 +5,7 @@ aliases:
   - /docs/instrumentation/ruby/manual_instrumentation
   - /docs/instrumentation/ruby/events
   - /docs/instrumentation/ruby/context-propagation
-weight: 4
+weight: 20
 ---
 
 Auto-instrumentation is the easiest way to get started with instrumenting your

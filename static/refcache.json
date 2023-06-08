@@ -127,6 +127,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-15T20:20:49.970492-05:00"
   },
+  "https://aws.amazon.com/cloudwatch/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-06-01T15:55:18.320726-04:00"
+  },
   "https://aws.amazon.com/console/": {
     "StatusCode": 200,
     "LastSeen": "2023-02-15T20:20:44.797617-05:00"
@@ -138,6 +142,10 @@
   "https://azure.microsoft.com/": {
     "StatusCode": 200,
     "LastSeen": "2023-02-15T20:21:03.223444-05:00"
+  },
+  "https://azure.microsoft.com/en-ca/products/monitor": {
+    "StatusCode": 200,
+    "LastSeen": "2023-06-01T15:55:19.33583-04:00"
   },
   "https://azure.microsoft.com/en-us/global-infrastructure/geographies/": {
     "StatusCode": 206,
@@ -498,6 +506,10 @@
   "https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor": {
     "StatusCode": 206,
     "LastSeen": "2023-02-15T21:11:51.638506-05:00"
+  },
+  "https://developer.confluent.io/learn-kafka/apache-kafka/topics/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-06-01T15:55:24.471079-04:00"
   },
   "https://developer.hashicorp.com/nomad/docs/commands/job/run#detach": {
     "StatusCode": 206,
@@ -1863,10 +1875,6 @@
     "StatusCode": 200,
     "LastSeen": "2023-05-25T14:26:23.327275-03:00"
   },
-  "https://github.com/keyval-dev/opentelemetry-go-instrumentation": {
-    "StatusCode": 200,
-    "LastSeen": "2023-02-20T07:45:48.100397-05:00"
-  },
   "https://github.com/knative/eventing/issues/3126": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:07:05.960017-05:00"
@@ -2327,6 +2335,14 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:51:57.559398-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-go-instrumentation": {
+    "StatusCode": 200,
+    "LastSeen": "2023-06-01T15:55:23.849088-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go-instrumentation/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-06-07T16:32:38.79601-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-go/issues/new": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:51:40.991344-05:00"
@@ -2366,6 +2382,10 @@
   "https://github.com/open-telemetry/opentelemetry-helm-charts": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:50:02.628017-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-helm-charts/pull/760": {
+    "StatusCode": 200,
+    "LastSeen": "2023-06-01T15:55:25.600351-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-java": {
     "StatusCode": 200,
@@ -2915,6 +2935,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:08:35.691488-05:00"
   },
+  "https://github.com/thanos-io/thanos": {
+    "StatusCode": 200,
+    "LastSeen": "2023-06-01T15:55:22.327398-04:00"
+  },
   "https://github.com/tigrannajaryan": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T08:12:28.957595-05:00"
@@ -2994,6 +3018,10 @@
   "https://gradle.org/": {
     "StatusCode": 206,
     "LastSeen": "2023-04-24T17:44:10.474433+02:00"
+  },
+  "https://grafana.com": {
+    "StatusCode": 200,
+    "LastSeen": "2023-06-01T15:55:19.932913-04:00"
   },
   "https://grafana.com/": {
     "StatusCode": 200,
@@ -3190,6 +3218,10 @@
   "https://intl.cloud.tencent.com/document/product/213/6091": {
     "StatusCode": 200,
     "LastSeen": "2023-02-15T21:54:38.310014-05:00"
+  },
+  "https://jaegertracing.io": {
+    "StatusCode": 206,
+    "LastSeen": "2023-06-01T15:55:20.985886-04:00"
   },
   "https://jakarta.ee/specifications/platform/8/apidocs/javax/servlet/http/HttpServletRequest.html": {
     "StatusCode": 206,
@@ -3470,6 +3502,10 @@
   "https://medium.com/p/42337e994b63": {
     "StatusCode": 200,
     "LastSeen": "2023-02-16T17:15:39.339631-05:00"
+  },
+  "https://medium.com/velotio-perspectives/a-comprehensive-tutorial-to-implementing-opentracing-with-jaeger-a01752e1a8ce": {
+    "StatusCode": 200,
+    "LastSeen": "2023-06-01T15:55:21.768196-04:00"
   },
   "https://meetup.com/opentelemetry-in-practice-meetup-group": {
     "StatusCode": 206,
@@ -3879,6 +3915,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-02-18T09:20:11.272872-05:00"
   },
+  "https://prometheus.io/docs/prometheus/latest/configuration/configuration/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-06-01T15:55:26.349478-04:00"
+  },
   "https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs": {
     "StatusCode": 206,
     "LastSeen": "2023-02-18T09:20:05.792878-05:00"
@@ -4011,6 +4051,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-18T12:44:18.549854-05:00"
   },
+  "https://shorturl.at/bqtxO": {
+    "StatusCode": 200,
+    "LastSeen": "2023-06-01T17:06:18.570048-04:00"
+  },
   "https://signoz.io": {
     "StatusCode": 206,
     "LastSeen": "2023-02-18T12:43:42.995104-05:00"
@@ -4058,6 +4102,10 @@
   "https://studio.apollographql.com": {
     "StatusCode": 200,
     "LastSeen": "2023-02-18T12:45:28.293492-05:00"
+  },
+  "https://sysdig.com/blog/kubernetes-1-25-whats-new/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-06-01T15:55:25.047205-04:00"
   },
   "https://tech.ebayinc.com/engineering/beats-ebay-collectbeat-a-journey-where-company-and-community-come-together/": {
     "StatusCode": 200,
@@ -4406,6 +4454,10 @@
   "https://www.eventbrite.com/e/otel-unplugged-kubeconcloudnativecon-detroit-2022-tickets-427595037267": {
     "StatusCode": 200,
     "LastSeen": "2023-02-18T13:43:51.052572-05:00"
+  },
+  "https://www.farfetch.com": {
+    "StatusCode": 200,
+    "LastSeen": "2023-06-01T15:55:17.477011-04:00"
   },
   "https://www.fulcrumapp.com": {
     "StatusCode": 206,
@@ -4914,6 +4966,10 @@
   "https://www.youtube.com/watch": {
     "StatusCode": 200,
     "LastSeen": "2023-02-18T13:35:26.288747-05:00"
+  },
+  "https://youtu.be/9iaGG-YZw5I": {
+    "StatusCode": 200,
+    "LastSeen": "2023-06-01T17:03:14.742262-04:00"
   },
   "https://zipkin.io/": {
     "StatusCode": 206,
