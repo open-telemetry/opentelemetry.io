@@ -18,7 +18,7 @@ my $specBasePath = '/docs/specs';
 my $path_base_for_github_subdir = "content/en$specBasePath";
 my %versions = qw(
   spec: 1.21.0
-  otlp: main
+  otlp: 0.20.0
 );
 my $otelSpecVers = $versions{'spec:'};
 my $otlpSpecVers = $versions{'otlp:'};
@@ -28,9 +28,11 @@ sub printTitleAndFrontMatter() {
   if ($title eq 'OpenTelemetry Specification') {
     $title .= " $otelSpecVers";
     $frontMatterFromFile =~ s/(linkTitle:) .*/$1 OTel $otelSpecVers/;
+  } elsif ($title eq 'OpenTelemetry Protocol Specification') {
+    $frontMatterFromFile =~ s/(title|linkTitle): .*/$& $otlpSpecVers/g;
   }
   my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
-  print "title: $titleMaybeQuoted\n";
+  print "title: $titleMaybeQuoted\n" if $frontMatterFromFile !~ /title: /;
   ($linkTitle) = $title =~ /^OpenTelemetry (.*)/;
   print "linkTitle: $linkTitle\n" if $linkTitle and $frontMatterFromFile !~ /linkTitle: /;
   print "$frontMatterFromFile" if $frontMatterFromFile;
