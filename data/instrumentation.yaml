@@ -28,7 +28,7 @@ languages:
     status:
       traces: stable
       metrics: stable
-      logs: experimental
+      logs: stable
   php:
     name: PHP
     status:
