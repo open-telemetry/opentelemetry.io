@@ -5,7 +5,7 @@ weight: 20
 description: Manual instrumentation for OpenTelemetry Python
 ---
 
-{{% docs/instrumentation/manual-intro /%}}
+{{% docs/instrumentation/manual-intro %}}
 
 ## Initializing the SDK
 

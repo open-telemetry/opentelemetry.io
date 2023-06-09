@@ -8,7 +8,7 @@ spelling: cSpell:ignore Millis
 description: Manual instrumentation for OpenTelemetry JavaScript
 ---
 
-{{% docs/instrumentation/manual-intro /%}}
+{{% docs/instrumentation/manual-intro %}}
 
 ## Tracing
 

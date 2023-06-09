@@ -9,7 +9,7 @@ weight: 30
 description: Manual instrumentation for OpenTelemetry Java
 ---
 
-{{% docs/instrumentation/manual-intro /%}}
+{{% docs/instrumentation/manual-intro %}}
 
 ## Setup
 

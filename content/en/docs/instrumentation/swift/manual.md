@@ -5,7 +5,7 @@ weight: 30
 description: Manual instrumentation for OpenTelemetry Swift
 ---
 
-{{% docs/instrumentation/manual-intro /%}}
+{{% docs/instrumentation/manual-intro %}}
 
 ## Setup
 

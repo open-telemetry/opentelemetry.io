@@ -9,7 +9,7 @@ weight: 20
 description: Manual instrumentation for OpenTelemetry Ruby
 ---
 
-{{% docs/instrumentation/manual-intro /%}}
+{{% docs/instrumentation/manual-intro %}}
 
 ## Initializing the SDK
 

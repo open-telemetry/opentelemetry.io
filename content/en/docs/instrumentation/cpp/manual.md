@@ -5,7 +5,7 @@ weight: 30
 description: Manual instrumentation for OpenTelemetry C++
 ---
 
-{{% docs/instrumentation/manual-intro /%}}
+{{% docs/instrumentation/manual-intro %}}
 
 ## Tracing
 
