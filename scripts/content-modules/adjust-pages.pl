@@ -22,6 +22,7 @@ my %versions = qw(
 );
 my $otelSpecVers = $versions{'spec:'};
 my $otlpSpecVers = $versions{'otlp:'};
+my $unused;
 
 sub printTitleAndFrontMatter() {
   print "---\n";
@@ -33,7 +34,8 @@ sub printTitleAndFrontMatter() {
   }
   my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
   print "title: $titleMaybeQuoted\n" if $frontMatterFromFile !~ /title: /;
-  ($linkTitle) = $title =~ /^OpenTelemetry (.*)/;
+  ($unused, $linkTitle) = $title =~ /^OpenTelemetry (Protocol )?(.*)/;
+  $linkTitle = 'Design Goals' if $title eq 'Design Goals for OpenTelemetry Wire Protocol';
   print "linkTitle: $linkTitle\n" if $linkTitle and $frontMatterFromFile !~ /linkTitle: /;
   print "$frontMatterFromFile" if $frontMatterFromFile;
   if ($ARGV =~ /otel\/specification\/(.*?)_index.md$/) {
