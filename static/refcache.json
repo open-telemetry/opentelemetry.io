@@ -4487,6 +4487,14 @@
     "StatusCode": 206,
     "LastSeen": "2023-05-15T13:56:52.995519-04:00"
   },
+  "https://www.ibm.com/docs/api/v1/content/SSYKE2_8.0.0/openj9/api/jdk8/jre/management/extension/com/ibm/lang/management/OperatingSystemMXBean.html#getProcessCpuLoad--": {
+    "StatusCode": 206,
+    "LastSeen": "2023-06-09T09:34:45.428293-04:00"
+  },
+  "https://www.ibm.com/docs/api/v1/content/SSYKE2_8.0.0/openj9/api/jdk8/jre/management/extension/com/ibm/lang/management/OperatingSystemMXBean.html#getSystemCpuLoad--": {
+    "StatusCode": 206,
+    "LastSeen": "2023-06-09T09:34:50.499871-04:00"
+  },
   "https://www.ibm.com/docs/en/ibm-mq/9.1": {
     "StatusCode": 206,
     "LastSeen": "2023-02-18T13:43:07.738636-05:00"
