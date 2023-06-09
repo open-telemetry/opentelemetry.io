@@ -8,7 +8,7 @@ description: >
 spelling: cSpell:ignore erlang
 ---
 
-{{% lang_instrumentation_index_head erlang %}}
+{{% docs/instrumentation/index-intro erlang %}}
 
 Packages of the API, SDK and OTLP exporter are published to
 [`hex.pm`](https://hex.pm) as
@@ -29,4 +29,4 @@ OpenTelemetry Erlang supports Erlang 23+ and Elixir 1.13+.
   like [Phoenix](https://www.phoenixframework.org/) and
   [Ecto](https://hexdocs.pm/ecto/Ecto.html)
 
-{{% /lang_instrumentation_index_head %}}
+{{% /docs/instrumentation/index-intro %}}

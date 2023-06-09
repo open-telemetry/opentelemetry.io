@@ -69,11 +69,12 @@ if [ "$existing_pr_count" -gt 0 ]; then
     exit 0
 fi
 
-if [[ "$repo" == "opentelemetry-specification" ]]; then
+if [[ "$repo" == "opentelemetry-specification"
+   || "$repo" == "opentelemetry-proto" ]]; then
   echo "Switching to $repo at tag v$latest_version"
   ( set -x;
-    npm run get:submodule -- content-modules/opentelemetry-specification &&
-    cd content-modules/opentelemetry-specification &&
+    npm run get:submodule -- content-modules/$repo &&
+    cd content-modules/$repo &&
     git fetch &&
     git switch --detach v$latest_version
   )

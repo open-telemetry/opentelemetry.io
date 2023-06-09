@@ -1,5 +1,5 @@
 {
-  "spelling": "cSpell:ignore docsy elemetry HTMLTEST hugo netlify prebuild precheck preinstall postbuild textlint -",
+  "spelling": "cSpell:ignore docsy elemetry HTMLTEST hugo netlify prebuild precheck preinstall postbuild postget textlint -",
   "Notes": [
     "The 'all' and 's' scripts are conveniences for use until the following",
     "is fixed: https://github.com/mysticatea/npm-run-all/issues/209.",
@@ -41,6 +41,7 @@
     "make:public": "make public ls-public",
     "postbuild:preview": "npm run _check:links--warn",
     "postbuild:production": "npm run _check:links--warn",
+    "postget:submodule": "git submodule",
     "prebuild:preview": "run-s _prebuild",
     "prebuild:production": "run-s _prebuild _check:format",
     "prebuild": "npm run _prebuild",
