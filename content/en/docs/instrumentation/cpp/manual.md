@@ -11,7 +11,7 @@ are developing a standalone process or service, then you would take a dependency
 on the API and the SDK.
 
 If you are developing a library and want it to export telemetry data using
-OpenTelemetry, it MUST only depend on the API and should never configure or
+OpenTelemetry, it **must** depend only on the API and should never configure or
 depend on the OpenTelemetry SDK.
 
 This way libraries will obtain a real implementation of OpenTelemetry only if
