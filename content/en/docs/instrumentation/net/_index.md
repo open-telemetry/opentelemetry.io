@@ -7,12 +7,12 @@ aliases: [/csharp, /csharp/metrics, /csharp/tracing]
 weight: 12
 ---
 
-{{% lang_instrumentation_index_head dotnet %}}
+{{% docs/instrumentation/index-intro dotnet %}}
 
 \* While the OpenTelemetryLoggerProvider (i.e integration with [ILogger][]) is
 stable, the [OTLP Log Exporter][] is still non-stable.
 
-{{% /lang_instrumentation_index_head %}}
+{{% /docs/instrumentation/index-intro %}}
 
 ## Version Support
 

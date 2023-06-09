@@ -1,3 +1,8 @@
+{{/*
+  TODO: keep this duplicate of `layouts/shortcodes/docs/instrumentation/index-intro.md`
+  only until the Go docs are updated.
+*/ -}}
+
 {{ $data := index $.Site.Data.instrumentation.languages (.Get 0) }}
 {{ $name := $data.name }}
 {{ $relUrl := printf "https://github.com/open-telemetry/opentelemetry-%s/releases" (.Get 0) -}}

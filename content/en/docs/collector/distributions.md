@@ -12,7 +12,7 @@ the `manifest.yaml` of each distribution.
 [distributions]:
   https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions
 
-{{% latest_release "collector-releases" /%}}
+{{% docs/latest-release collector-releases /%}}
 
 ## Custom Distributions
 
