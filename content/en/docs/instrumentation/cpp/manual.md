@@ -18,8 +18,8 @@ This way libraries will obtain a real implementation of OpenTelemetry only if
 the user application is configured for it and otherwise will function as without
 added observability.
 
-For more details, check out the
-[Library Guidelines](https://opentelemetry.io/docs/concepts/instrumentation/libraries/).
+For more details, see
+[Library Guidelines](/docs/concepts/instrumentation/libraries/).
 
 ## Tracing
 
