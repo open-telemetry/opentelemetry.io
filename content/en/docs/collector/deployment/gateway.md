@@ -42,9 +42,9 @@ only supports pipelines of the `traces` type. {{% /alert %}}
 
 ### NGINX as an "out-of-the-box" load balancer
 
-Assuming you have three collectors (`collector1`, `collector2`, and `collector3`)
-configured and you want to load balance traffic across them using NGINX, you can
-use the following configuration:
+Assuming you have three collectors (`collector1`, `collector2`, and
+`collector3`) configured and you want to load balance traffic across them using
+NGINX, you can use the following configuration:
 
 ```nginx
 server {
