@@ -7,7 +7,7 @@ weight: 26
 spelling: cSpell:ignore datadog dynatrace stackdriver
 ---
 
-{{% lang_instrumentation_index_head rust /%}}
+{{% docs/instrumentation/lang-index-head rust /%}}
 
 ## Crates
 
