@@ -10,7 +10,7 @@ is the process of adding observability code to your application yourself. If you
 are developing a standalone process or service, then you would take a dependency
 on the API and the SDK.
 
-If you are developing a library, that wants to export telemetry data using
+If you are developing a library and want it to export telemetry data using
 OpenTelemetry, it MUST only depend on the API and should never configure or
 depend on the OpenTelemetry SDK.
 
