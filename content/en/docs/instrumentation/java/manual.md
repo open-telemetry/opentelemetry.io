@@ -95,12 +95,15 @@ import io.opentelemetry.api.trace.propagation.W3CTraceContextPropagator;
 import io.opentelemetry.context.propagation.ContextPropagators;
 import io.opentelemetry.exporter.otlp.metrics.OtlpGrpcMetricExporter;
 import io.opentelemetry.exporter.otlp.trace.OtlpGrpcSpanExporter;
+import io.opentelemetry.exporter.otlp.logs.OtlpGrpcLogRecordExporter;
 import io.opentelemetry.sdk.OpenTelemetrySdk;
 import io.opentelemetry.sdk.metrics.SdkMeterProvider;
 import io.opentelemetry.sdk.metrics.export.PeriodicMetricReader;
 import io.opentelemetry.sdk.resources.Resource;
 import io.opentelemetry.sdk.trace.SdkTracerProvider;
 import io.opentelemetry.sdk.trace.export.BatchSpanProcessor;
+import io.opentelemetry.sdk.logs.SdkLoggerProvider;
+import io.opentelemetry.sdk.logs.export.BatchLogRecordProcessor;
 import io.opentelemetry.semconv.resource.attributes.ResourceAttributes;
 ```
 
@@ -120,11 +123,15 @@ SdkMeterProvider sdkMeterProvider = SdkMeterProvider.builder()
   .setResource(resource)
   .build();
 
-// TODO: add log configuration when stable
+SdkLoggerProvider sdkLoggerProvider = SdkLoggerProvider.builder()
+  .addLogRecordProcessor(BatchLogRecordProcessor.builder(OtlpGrpcLogRecordExporter.builder().build()).build())
+  .setResource(resource)
+  .build();
 
 OpenTelemetry openTelemetry = OpenTelemetrySdk.builder()
   .setTracerProvider(sdkTracerProvider)
   .setMeterProvider(sdkMeterProvider)
+  .setLoggerProvider(sdkLoggerProvider)
   .setPropagators(ContextPropagators.create(W3CTraceContextPropagator.getInstance()))
   .buildAndRegisterGlobal();
 ```
@@ -909,8 +916,6 @@ SdkLoggerProvider loggerProvider = SdkLoggerProvider.builder()
       .build())
   .build();
 ```
-
-See [releases][releases] for log specific artifact coordinates.
 
 #### LogRecord Processor
 
