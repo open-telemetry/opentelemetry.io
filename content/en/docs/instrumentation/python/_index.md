@@ -8,7 +8,7 @@ aliases: [/python, /python/metrics, /python/tracing]
 weight: 22
 ---
 
-{{% docs/instrumentation/lang-index-intro python /%}}
+{{% docs/instrumentation/index-intro python /%}}
 
 ## Version support
 

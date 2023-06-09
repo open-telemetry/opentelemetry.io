@@ -1,5 +1,5 @@
 {{/*
-  TODO: keep this duplicate of `layouts/shortcodes/docs/instrumentation/lang-index-intro.md`
+  TODO: keep this duplicate of `layouts/shortcodes/docs/instrumentation/index-intro.md`
   only until the Go docs are updated.
 */ -}}
 
