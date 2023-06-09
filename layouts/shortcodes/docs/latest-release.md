@@ -1,7 +1,1 @@
-{{ $relUrl := printf "https://github.com/open-telemetry/opentelemetry-%s/releases" (.Get 0) -}}
-
-For releases, including the [latest release][], see [Releases][].
-{{- .Inner }}
-
-[latest release]: {{ $relUrl }}/latest
-[Releases]: {{ $relUrl }}
+{{ partial "docs/latest-release.md" (dict "lang" (.Get 0) "Inner" .Inner) -}}
