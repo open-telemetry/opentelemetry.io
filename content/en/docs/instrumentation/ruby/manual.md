@@ -6,13 +6,24 @@ aliases:
   - /docs/instrumentation/ruby/events
   - /docs/instrumentation/ruby/context-propagation
 weight: 20
+description: Manual instrumentation for OpenTelemetry Ruby
 ---
 
-Auto-instrumentation is the easiest way to get started with instrumenting your
-code, but in order to get the most insight into your system, you should add
-manual instrumentation where appropriate. To do this, use the OpenTelemetry SDK
-to access the currently executing span and add attributes to it, and/or to
-create new spans.
+[Manual instrumentation](https://opentelemetry.io/docs/concepts/instrumentation/manual/)
+is the process of adding observability code to your application yourself. If you
+are developing a standalone process or service, then you would take a dependency
+on the API and the SDK.
+
+If you are developing a library, that wants to export telemetry data using
+OpenTelemetry, it MUST only depend on the API and should never configure or
+depend on the OpenTelemetry SDK.
+
+This way libraries will obtain a real implementation of OpenTelemetry only if
+the user application is configured for it and otherwise will function as without
+added observability.
+
+For more details, check out the
+[Library Guidelines](https://opentelemetry.io/docs/concepts/instrumentation/libraries/).
 
 ## Initializing the SDK
 

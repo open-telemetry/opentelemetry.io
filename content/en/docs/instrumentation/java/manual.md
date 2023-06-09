@@ -6,15 +6,24 @@ aliases:
   - /docs/java/manual_instrumentation
   - /docs/instrumentation/java/manual_instrumentation
 weight: 30
+description: Manual instrumentation for OpenTelemetry Java
 ---
 
-**Libraries** that want to export telemetry data using OpenTelemetry MUST only
-depend on the `opentelemetry-api` package and should never configure or depend
-on the OpenTelemetry SDK. The SDK configuration must be provided by
-**Applications** which should also depend on the `opentelemetry-sdk` package, or
-any other implementation of the OpenTelemetry API. This way, libraries will
-obtain a real implementation only if the user application is configured for it.
-For more details, check out the [Library Guidelines].
+[Manual instrumentation](https://opentelemetry.io/docs/concepts/instrumentation/manual/)
+is the process of adding observability code to your application yourself. If you
+are developing a standalone process or service, then you would take a dependency
+on the API and the SDK.
+
+If you are developing a library, that wants to export telemetry data using
+OpenTelemetry, it MUST only depend on the API and should never configure or
+depend on the OpenTelemetry SDK.
+
+This way libraries will obtain a real implementation of OpenTelemetry only if
+the user application is configured for it and otherwise will function as without
+added observability.
+
+For more details, check out the
+[Library Guidelines](https://opentelemetry.io/docs/concepts/instrumentation/libraries/).
 
 ## Setup
 

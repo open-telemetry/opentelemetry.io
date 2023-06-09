@@ -2,12 +2,24 @@
 title: Manual
 aliases: [/docs/instrumentation/erlang/instrumentation]
 weight: 30
+description: Manual instrumentation for OpenTelemetry Erlang/Elixir
 ---
 
-Instrumentation is the act of adding observability code to your application.
-This can be done with direct calls to the OpenTelemetry API within your code or
-including a dependency which calls the API and hooks into your project, like a
-middleware for an HTTP server.
+[Manual instrumentation](https://opentelemetry.io/docs/concepts/instrumentation/manual/)
+is the process of adding observability code to your application yourself. If you
+are developing a standalone process or service, then you would take a dependency
+on the API and the SDK.
+
+If you are developing a library, that wants to export telemetry data using
+OpenTelemetry, it MUST only depend on the API and should never configure or
+depend on the OpenTelemetry SDK.
+
+This way libraries will obtain a real implementation of OpenTelemetry only if
+the user application is configured for it and otherwise will function as without
+added observability.
+
+For more details, check out the
+[Library Guidelines](https://opentelemetry.io/docs/concepts/instrumentation/libraries/).
 
 ## Tracing
 
