@@ -91,6 +91,8 @@ while(<>) {
   }
   s|\(https://github.com/open-telemetry/opentelemetry-specification/\w+/\w+/specification([^\)]*)\)|($specBasePath/otel$1)|;
 
+  s|(https://)?github.com/open-telemetry/opentelemetry-proto/(blob/main/)?docs/specification.md|$specBasePath/otlp/|g;
+
   # Images
   s|(\.\./)?internal(/img/[-\w]+\.png)|$2|g;
   s|(\]\()(img/.*?\))|$1../$2|g if $ARGV !~ /(logs|schemas)._index/ && $ARGV !~ /otlp\/docs/;
@@ -108,7 +110,7 @@ while(<>) {
   s|\.\./README.md\b|$otlpSpecRepoUrl/|g if $ARGV =~ /\/tmp\/otlp/;
   s|\.\./examples/README.md\b|$otlpSpecRepoUrl/tree/$otlpSpecVers/examples/|g if $ARGV =~ /\/tmp\/otlp/;
 
-  s|\bREADME.md\b|_index.md|g;
+  s|\bREADME.md\b|_index.md|g if $ARGV !~ /otel\/specification\/protocol\/_index.md/;
 
   # Rewrite paths that are outside of the main spec folder as external links
   s|(\.\.\/)+(experimental\/[^)]+)|$otelSpecRepoUrl/tree/$otelSpecVers/$2|g;
