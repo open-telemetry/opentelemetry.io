@@ -7,7 +7,7 @@ description: >-
 weight: 28
 ---
 
-{{% docs/instrumentation/lang-index-head swift /%}}
+{{% docs/instrumentation/lang-index-intro swift /%}}
 
 ## Further Reading
 

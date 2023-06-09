@@ -9,7 +9,7 @@ cascade:
   javaVersion: 1.26.0
 ---
 
-{{% docs/instrumentation/lang-index-head java /%}}
+{{% docs/instrumentation/lang-index-intro java /%}}
 
 ### Repositories
 

@@ -6,7 +6,7 @@ description: >-
 weight: 21
 ---
 
-{{% docs/instrumentation/lang-index-head php /%}}
+{{% docs/instrumentation/lang-index-intro php /%}}
 
 ## Further Reading
 

@@ -6,7 +6,7 @@ description: >
   alt="C++"></img> A language-specific implementation of OpenTelemetry in C++.
 ---
 
-{{% docs/instrumentation/lang-index-head cpp /%}}
+{{% docs/instrumentation/lang-index-intro cpp /%}}
 
 ## Repositories
 
