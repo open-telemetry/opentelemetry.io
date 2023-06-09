@@ -1,6 +1,6 @@
 [Manual instrumentation](/docs/concepts/instrumentation/manual/)
 is the process of adding observability code to your application yourself. If you
-are developing a standalone application, then you would take a dependency
+are developing a standalone service, then you would take a dependency
 on the API and the SDK.
 
 If you are developing a library and want it to export telemetry data using
