@@ -5,7 +5,7 @@ weight: 30
 description: Manual instrumentation for OpenTelemetry C++
 ---
 
-[Manual instrumentation](https://opentelemetry.io/docs/concepts/instrumentation/manual/)
+[Manual instrumentation](/docs/concepts/instrumentation/manual/)
 is the process of adding observability code to your application yourself. If you
 are developing a standalone process or service, then you would take a dependency
 on the API and the SDK.
