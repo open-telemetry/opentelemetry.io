@@ -45,7 +45,8 @@ end with `v1/traces` if using OTLP/HTTP.
 
 **Example:**
 
-- gRPC: `export OTEL_EXPORTER_OTLP_TRACES_ENDPOINT="https://my-api-endpoint:443"`
+- gRPC:
+  `export OTEL_EXPORTER_OTLP_TRACES_ENDPOINT="https://my-api-endpoint:443"`
 - HTTP:
   `export OTEL_EXPORTER_OTLP_TRACES_ENDPOINT="http://my-api-endpoint/v1/traces"`
 
@@ -61,7 +62,8 @@ Must end with `v1/metrics` if using OTLP/HTTP.
 
 **Example:**
 
-- gRPC: `export OTEL_EXPORTER_OTLP_METRICS_ENDPOINT="https://my-api-endpoint:443"`
+- gRPC:
+  `export OTEL_EXPORTER_OTLP_METRICS_ENDPOINT="https://my-api-endpoint:443"`
 - HTTP:
   `export OTEL_EXPORTER_OTLP_METRICS_ENDPOINT="http://my-api-endpoint/v1/metrics"`
 
