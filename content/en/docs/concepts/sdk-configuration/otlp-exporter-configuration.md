@@ -22,7 +22,7 @@ endpoint and want one environment variable to control the endpoint.
 
 **Example:**
 
-- gRPC: `export OTEL_EXPORTER_OTLP_ENDPOINT="my-api-endpoint:443"`
+- gRPC: `export OTEL_EXPORTER_OTLP_ENDPOINT="https://my-api-endpoint:443"`
 - HTTP: `export OTEL_EXPORTER_OTLP_ENDPOINT="http://my-api-endpoint/"`
 
 For OTLP/HTTP, exporters in the SDK construct signal-specific URLs when this
@@ -45,7 +45,7 @@ end with `v1/traces` if using OTLP/HTTP.
 
 **Example:**
 
-- gRPC: `export OTEL_EXPORTER_OTLP_TRACES_ENDPOINT="my-api-endpoint:443"`
+- gRPC: `export OTEL_EXPORTER_OTLP_TRACES_ENDPOINT="https://my-api-endpoint:443"`
 - HTTP:
   `export OTEL_EXPORTER_OTLP_TRACES_ENDPOINT="http://my-api-endpoint/v1/traces"`
 
@@ -61,7 +61,7 @@ Must end with `v1/metrics` if using OTLP/HTTP.
 
 **Example:**
 
-- gRPC: `export OTEL_EXPORTER_OTLP_METRICS_ENDPOINT="my-api-endpoint:443"`
+- gRPC: `export OTEL_EXPORTER_OTLP_METRICS_ENDPOINT="https://my-api-endpoint:443"`
 - HTTP:
   `export OTEL_EXPORTER_OTLP_METRICS_ENDPOINT="http://my-api-endpoint/v1/metrics"`
 
@@ -77,7 +77,7 @@ end with `v1/logs` if using OTLP/HTTP.
 
 **Example:**
 
-- gRPC: `export OTEL_EXPORTER_OTLP_LOGS_ENDPOINT="my-api-endpoint:443"`
+- gRPC: `export OTEL_EXPORTER_OTLP_LOGS_ENDPOINT="https://my-api-endpoint:443"`
 - HTTP:
   `export OTEL_EXPORTER_OTLP_LOGS_ENDPOINT="http://my-api-endpoint/v1/logs"`
 
