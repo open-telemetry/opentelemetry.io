@@ -1,3 +1,7 @@
+{{ $prettier_ignore := `
+
+<!-- prettier-ignore -->
+` -}}
 {{ $lang := .Get 0 -}}
 {{ $data := index $.Site.Data.instrumentation.languages $lang }}
 {{ $name := $data.name -}}
@@ -22,11 +26,11 @@ get started using OpenTelemetry {{ $name }}.
 
 ## Status and Releases
 
-The current status of the major functional components for OpenTelemetry {{ $name }} is
-as follows:
+The current status of the major functional components for OpenTelemetry
+{{ $name }} is as follows:
 
-| Traces    | Metrics      | Logs         |
-| --------  | -------      | -------      |
-| {{ $tracesStatus }}    | {{ $metricsStatus }} | {{ $logsStatus }} |
+| Traces              | Metrics              | Logs              |
+| ------------------- | -------------------- | ----------------- |
+| {{ $tracesStatus }} | {{ $metricsStatus }} | {{ $logsStatus }} |
 
 {{ partial "docs/latest-release.md" (dict "lang" $lang "Inner" .Inner) -}}

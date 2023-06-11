@@ -2,9 +2,13 @@
 
 /.netlify
 /iconography
-/layouts
 /themes
 /tmp
+
+/layouts/*
+!/layouts/shortcodes
+/layouts/shortcodes/*
+!/layouts/shortcodes/docs
 
 # Ignore content-modules except for Community pages and Go docs
 
