@@ -34,20 +34,20 @@ Here are upcoming sessions, or you can view them on the
 - **EMEA (Europe, Middle East, and Africa)**: every third Tuesday of the month
   at 11AM CET (GMT +1), join
   [here](https://us06web.zoom.us/j/85691064809?pwd=c0VCejh)
-  - March 21
-  - April 18
-  - May 16
+  - June 20
+  - July 18
+  - August 15
 - **APAC (Asia Pacific)**: every third Wednesday of the month at 11AM India ST
   (GMT +5.5), register [here](https://lu.ma/1w129wgu) to get the Zoom link
-  - March 15
-  - April 19
-  - May 17
+  - June 21
+  - July 19
+  - August 16
 - **AMER (Americas)**: every third Thursday of the month at 9AM PST (GMT -8),
   join
   [here](https://us06web.zoom.us/j/87037874951?pwd=WGo3eUZpeWFZTlhJQXhJeXZhQmwvUT09)
-  - March 16
-  - April 20
-  - May 18
+  - June 15
+  - July 20
+  - August 17
 
 Past topics/questions have included:
 
