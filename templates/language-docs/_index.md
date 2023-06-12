@@ -18,7 +18,7 @@ Important status or maturity information should go into a table here, as below.
 | ------- | ------- |
 | Beta    | Alpha   |
 
-{{% latest_release "language-name" /%}}
+{{% docs/latest-release "language-name" /%}}
 
 ## Further Reading
 

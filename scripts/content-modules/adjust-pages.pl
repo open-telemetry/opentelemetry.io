@@ -17,11 +17,12 @@ my $semConvRef = "$otelSpecRepoUrl/blob/main/semantic_conventions/README.md";
 my $specBasePath = '/docs/specs';
 my $path_base_for_github_subdir = "content/en$specBasePath";
 my %versions = qw(
-  spec: 1.21.0
+  spec: 1.22.0
   otlp: 0.20.0
 );
 my $otelSpecVers = $versions{'spec:'};
 my $otlpSpecVers = $versions{'otlp:'};
+my $unused;
 
 sub printTitleAndFrontMatter() {
   print "---\n";
@@ -33,7 +34,8 @@ sub printTitleAndFrontMatter() {
   }
   my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
   print "title: $titleMaybeQuoted\n" if $frontMatterFromFile !~ /title: /;
-  ($linkTitle) = $title =~ /^OpenTelemetry (.*)/;
+  ($unused, $linkTitle) = $title =~ /^OpenTelemetry (Protocol )?(.*)/;
+  $linkTitle = 'Design Goals' if $title eq 'Design Goals for OpenTelemetry Wire Protocol';
   print "linkTitle: $linkTitle\n" if $linkTitle and $frontMatterFromFile !~ /linkTitle: /;
   print "$frontMatterFromFile" if $frontMatterFromFile;
   if ($ARGV =~ /otel\/specification\/(.*?)_index.md$/) {
@@ -91,6 +93,8 @@ while(<>) {
   }
   s|\(https://github.com/open-telemetry/opentelemetry-specification/\w+/\w+/specification([^\)]*)\)|($specBasePath/otel$1)|;
 
+  s|(https://)?github.com/open-telemetry/opentelemetry-proto/(blob/main/)?docs/specification.md|$specBasePath/otlp/|g;
+
   # Images
   s|(\.\./)?internal(/img/[-\w]+\.png)|$2|g;
   s|(\]\()(img/.*?\))|$1../$2|g if $ARGV !~ /(logs|schemas)._index/ && $ARGV !~ /otlp\/docs/;
@@ -108,7 +112,7 @@ while(<>) {
   s|\.\./README.md\b|$otlpSpecRepoUrl/|g if $ARGV =~ /\/tmp\/otlp/;
   s|\.\./examples/README.md\b|$otlpSpecRepoUrl/tree/$otlpSpecVers/examples/|g if $ARGV =~ /\/tmp\/otlp/;
 
-  s|\bREADME.md\b|_index.md|g;
+  s|\bREADME.md\b|_index.md|g if $ARGV !~ /otel\/specification\/protocol\/_index.md/;
 
   # Rewrite paths that are outside of the main spec folder as external links
   s|(\.\.\/)+(experimental\/[^)]+)|$otelSpecRepoUrl/tree/$otelSpecVers/$2|g;
