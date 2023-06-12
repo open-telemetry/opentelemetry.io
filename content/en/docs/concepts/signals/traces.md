@@ -9,103 +9,108 @@ Whether your application is a monolith with a single database or a sophisticated
 mesh of services, traces are essential to understanding the full "path" a
 request takes in your application.
 
-Consider the following example trace that tracks three units of work:
+Three units of work, represented as [Spans](#spans):
+
+`hello-greetings` span:
 
 ```json
 {
-    "name": "Hello-Greetings",
-    "context": {
-        "trace_id": "0x5b8aa5a2d2c872e8321cf37308d69df2",
-        "span_id": "0x5fb397be34d26b51",
+  "name": "hello-greetings",
+  "context": {
+    "trace_id": "0x5b8aa5a2d2c872e8321cf37308d69df2",
+    "span_id": "0x5fb397be34d26b51"
+  },
+  "parent_id": "0x051581bf3cb55c13",
+  "start_time": "2022-04-29T18:52:58.114304Z",
+  "end_time": "2022-04-29T22:52:58.114561Z",
+  "attributes": {
+    "http.route": "some_route1"
+  },
+  "events": [
+    {
+      "name": "hey there!",
+      "timestamp": "2022-04-29T18:52:58.114561Z",
+      "attributes": {
+        "event_attributes": 1
+      }
     },
-    "parent_id": "0x051581bf3cb55c13",
-    "start_time": "2022-04-29T18:52:58.114304Z",
-    "end_time": "2022-04-29T22:52:58.114561Z",
-    "attributes": {
-        "http.route": "some_route1"
-    },
-    "events": [
-        {
-            "name": "hey there!",
-            "timestamp": "2022-04-29T18:52:58.114561Z",
-            "attributes": {
-                "event_attributes": 1
-            }
-        },
-        {
-            "name": "bye now!",
-            "timestamp": "2022-04-29T18:52:58.114585Z",
-            "attributes": {
-                "event_attributes": 1
-            }
-        }
-    ],
-}
-{
-    "name": "Hello-Salutations",
-    "context": {
-        "trace_id": "0x5b8aa5a2d2c872e8321cf37308d69df2",
-        "span_id": "0x93564f51e1abe1c2",
-    },
-    "parent_id": "0x051581bf3cb55c13",
-    "start_time": "2022-04-29T18:52:58.114492Z",
-    "end_time": "2022-04-29T18:52:58.114631Z",
-    "attributes": {
-        "http.route": "some_route2"
-    },
-    "events": [
-        {
-            "name": "hey there!",
-            "timestamp": "2022-04-29T18:52:58.114561Z",
-            "attributes": {
-                "event_attributes": 1
-            }
-        }
-    ],
-}
-{
-    "name": "Hello",
-    "context": {
-        "trace_id": "0x5b8aa5a2d2c872e8321cf37308d69df2",
-        "span_id": "0x051581bf3cb55c13",
-    },
-    "parent_id": null,
-    "start_time": "2022-04-29T18:52:58.114201Z",
-    "end_time": "2022-04-29T18:52:58.114687Z",
-    "attributes": {
-        "http.route": "some_route3"
-    },
-    "events": [
-        {
-            "name": "Guten Tag!",
-            "timestamp": "2022-04-29T18:52:58.114561Z",
-            "attributes": {
-                "event_attributes": 1
-            }
-        }
-    ],
+    {
+      "name": "bye now!",
+      "timestamp": "2022-04-29T18:52:58.114585Z",
+      "attributes": {
+        "event_attributes": 1
+      }
+    }
+  ]
 }
 ```
 
-This sample trace output has three distinct log-like items, called
-[Spans](#spans), named `Hello-Greetings`, `Hello-Salutations` and `Hello`.
-Because each request's context has the same `trace_id`, they are considered to
-be a part of the same Trace.
+`hello-salutations` span:
 
-Another thing you'll note is that each Span of this example Trace looks like a
-structured log. That's because it kind of is! One way to think of Traces is that
-they're a collection of structured logs with context, correlation, hierarchy,
-and more baked in. However, these "structured logs" can come from different
-processes, services, VMs, data centers, and so on. This is what allows tracing
-to represent an end-to-end view of any system.
+```json
+{
+  "name": "hello-salutations",
+  "context": {
+    "trace_id": "0x5b8aa5a2d2c872e8321cf37308d69df2",
+    "span_id": "0x93564f51e1abe1c2"
+  },
+  "parent_id": "0x051581bf3cb55c13",
+  "start_time": "2022-04-29T18:52:58.114492Z",
+  "end_time": "2022-04-29T18:52:58.114631Z",
+  "attributes": {
+    "http.route": "some_route2"
+  },
+  "events": [
+    {
+      "name": "hey there!",
+      "timestamp": "2022-04-29T18:52:58.114561Z",
+      "attributes": {
+        "event_attributes": 1
+      }
+    }
+  ]
+}
+```
+
+`hello` span:
+
+```json
+{
+  "name": "hello",
+  "context": {
+    "trace_id": "0x5b8aa5a2d2c872e8321cf37308d69df2",
+    "span_id": "0x051581bf3cb55c13"
+  },
+  "parent_id": null,
+  "start_time": "2022-04-29T18:52:58.114201Z",
+  "end_time": "2022-04-29T18:52:58.114687Z",
+  "attributes": {
+    "http.route": "some_route3"
+  },
+  "events": [
+    {
+      "name": "Guten Tag!",
+      "timestamp": "2022-04-29T18:52:58.114561Z",
+      "attributes": {
+        "event_attributes": 1
+      }
+    }
+  ]
+}
+```
+
+These three blocks of JSON all share the same `trace_id`, and the `parent_id`
+field represents a hierarchy. That makes it a Trace!
+
+Another thing you'll note is that each Span looks like a structured log. That's
+because it kind of is! One way to think of Traces is that they're a collection
+of structured logs with context, correlation, hierarchy, and more baked in.
+However, these "structured logs" can come from different processes, services,
+VMs, data centers, and so on. This is what allows tracing to represent an
+end-to-end view of any system.
 
 To understand how tracing in OpenTelemetry works, let's look at a list of
-components that will play a part in instrumenting our code:
-
-- Tracer
-- Tracer Provider
-- Trace Exporter
-- Trace Context
+components that will play a part in instrumenting our code.
 
 ## Tracer Provider
 
