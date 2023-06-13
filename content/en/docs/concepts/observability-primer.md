@@ -131,7 +131,7 @@ what steps make up a request).
 Many Observability back-ends visualize traces as waterfall diagrams that may
 look something like this:
 
-![Sample Trace](/img/waterfall_trace.png 'Trace waterfall diagram')
+![Sample Trace](/img/waterfall_trace.svg 'Trace waterfall diagram')
 
 Waterfall diagrams show the parent-child relationship between a root span and
 its child spans. When a span encapsulates another span, this also represents a
