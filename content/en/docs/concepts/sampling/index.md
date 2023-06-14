@@ -16,7 +16,7 @@ without unacceptable latency or errors, do you really need all that data? Here�
 the thing—you don’t always need a ton of data to find the right insights. _You
 just need the right sampling of data._
 
-![Illustration shows that not all data needs to be traced, and that a sample of data is sufficient.](traces_venn_diagram.svg)
+![Illustration shows that not all data needs to be traced, and that a sample of data is sufficient.](traces-venn-diagram.svg)
 
 The idea behind sampling is to control the spans you send to your observability
 backend, resulting in lower ingest costs. Different organizations will have
@@ -79,7 +79,7 @@ all or most of the spans within the trace. Tail Sampling gives you the option to
 sample your traces based on specific criteria derived from different parts of a
 trace, which isn’t an option with Head Sampling.
 
-![Illustration shows how spans originate from a root span. After the spans are complete, the tail sampling processor makes a sampling decision.](tail_sampling_process_v2.svg)
+![Illustration shows how spans originate from a root span. After the spans are complete, the tail sampling processor makes a sampling decision.](tail-sampling-process.svg)
 
 Some examples of how you can use Tail Sampling include:
 
