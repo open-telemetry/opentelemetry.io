@@ -1,6 +1,7 @@
 ---
 title: Components
 description: The main components that make up OpenTelemetry
+aliases: [/docs/concepts/data-collection]
 weight: 20
 ---
 
@@ -30,7 +31,7 @@ following:
 - **Data:** Defines the OpenTelemetry Protocol (OTLP) and vendor-agnostic
   semantic conventions that a telemetry backend can provide support for.
 
-For more information, see the [specification](/docs/specs/otel/).
+For more information, see the [specifications](/docs/specs/).
 
 Additionally, extensively-commented protobuf interface files for API concepts
 can be found in the
