@@ -7,7 +7,7 @@ aliases: [/golang, /golang/metrics, /golang/tracing]
 weight: 16
 ---
 
-{{% lang_instrumentation_index_head "go" /%}}
+{{% docs/instrumentation/index-intro go /%}}
 
 ## More
 
