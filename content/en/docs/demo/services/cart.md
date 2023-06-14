@@ -24,8 +24,6 @@ attributes is performed through environment variables.
 ```cs
 Action<ResourceBuilder> appResourceBuilder =
     resource => resource
-        .AddTelemetrySdk()
-        .AddEnvironmentVariableDetector()
         .AddDetector(new ContainerResourceDetector());
 
 builder.Services.AddOpenTelemetry()
@@ -81,8 +79,6 @@ libraries, exporters, etc.
 ```cs
 Action<ResourceBuilder> appResourceBuilder =
     resource => resource
-        .AddTelemetrySdk()
-        .AddEnvironmentVariableDetector()
         .AddDetector(new ContainerResourceDetector());
 
 builder.Services.AddOpenTelemetry()
