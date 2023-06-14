@@ -18,7 +18,7 @@ pass Baggage around, and each of the different library implementations has
 propagators that parse and make that Baggage available without you needing to
 explicitly implement it.
 
-![OTel Baggage](/img/otel_baggage.png)
+![OTel Baggage](/img/otel-baggage.svg)
 
 ## Why does OTel Baggage exist?
 
@@ -46,7 +46,7 @@ you’re searching in your Observability back-end.
 There are no built-in integrity checks to ensure that the Baggage items are
 yours, so exercise caution when retrieving them.
 
-![OTel Baggage](/img/otel_baggage-2.png)
+![OTel Baggage](/img/otel-baggage-2.svg)
 
 ## Baggage is not the same as Span attributes
 
