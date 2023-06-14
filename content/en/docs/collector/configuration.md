@@ -9,7 +9,7 @@ spelling: cSpell:ignore oidc cfssl genkey initca cfssljson gencert
 
 Familiarity with the following pages is assumed:
 
-- [Data Collection concepts](../) in order to understand the repositories
+- [Data collection concepts][dcc] in order to understand the repositories
   applicable to the OpenTelemetry Collector.
 - [Security guidance](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md)
 
@@ -746,3 +746,5 @@ This will create two certificates; first, an "OpenTelemetry Example" Certificate
 Authority (CA) in `ca.pem` and the associated key in `ca-key.pem`, and second a
 client certificate in `cert.pem` (signed by the OpenTelemetry Example CA) and
 the associated key in `cert-key.pem`.
+
+[dcc]: /docs/concepts/components/#collector
