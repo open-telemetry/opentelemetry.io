@@ -18,12 +18,6 @@
 !/content-modules/community/mission-vision-values.md
 !/content-modules/community/roadmap.md
 
-!/content-modules/opentelemetry-go
-/content-modules/opentelemetry-go/*
-!/content-modules/opentelemetry-go/website_docs
-/content-modules/opentelemetry-go/website_docs/**/*
-!/content-modules/opentelemetry-go/website_docs/**/*.md
-
 # Ignore generated resources
 
 package-lock.json
