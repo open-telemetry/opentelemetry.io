@@ -1,15 +1,14 @@
 [Manual instrumentation](/docs/concepts/instrumentation/manual/)
-is the process of adding observability code to your application yourself. If you
-are developing a standalone service, then you would take a dependency
-on the API and the SDK.
+is the process of adding observability code to your application yourself.
+To do so, you need to import OpenTelemetry to your code. If you're
+developing a library or some other component that is intended to be consumed by
+a runnable binary, then you would only take a dependency on the API, because
+unless the OpenTelemetry SDK, the instrumentation does nothing and does not
+impact software performance. For more details, on instrumenting libraries read
+[these guidelines](/docs/concepts/instrumentation/libraries/).
 
-If you are developing a library and want it to export telemetry data using
-OpenTelemetry, it **must** depend only on the API and should never configure or
-depend on the OpenTelemetry SDK.
+If your artifact is a standalone service, then you would take a dependency on
+the API and the SDK.
 
-This way libraries will obtain a real implementation of OpenTelemetry only if
-the user application is configured for it and otherwise will function as without
-added observability.
-
-For more details, see
-[Library Guidelines](/docs/concepts/instrumentation/libraries/).
+For more information about the OpenTelemetry API and SDK,
+see the [specification](/docs/specs/otel/).
