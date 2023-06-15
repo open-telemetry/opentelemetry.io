@@ -167,7 +167,7 @@ opentelemetry-collector:
         traces:
           receivers: [otlp]
           processors: [batch]
-          exporters: [otlphttp/example]
+          exporters: [spanmetrics, otlphttp/example]
 ```
 
 > **Note** When merging YAML values with Helm, objects are merged and arrays are
