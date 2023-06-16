@@ -28,7 +28,7 @@ same collector instance where the tail sampling policy is applied.
 
 Let's have a look at such a case where we are using the load-balancing exporter:
 
-![Gateway deployment with load-balancing exporter](../../img/gateway-lb-sdk.svg)
+![Gateway deployment with load-balancing exporter](../../img/otel-gateway-lb-sdk.svg)
 
 1. In the app, the SDK is configured to send OTLP data to a central location.
 2. A collector configured using the load-balancing exporter that distributes

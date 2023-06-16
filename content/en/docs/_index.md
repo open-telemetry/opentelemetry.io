@@ -13,4 +13,4 @@ for instrumenting, generating, collecting, and exporting telemetry data such as
 [logs](/docs/concepts/signals/logs/). As an industry-standard, it is
 [natively supported by a number of vendors](/ecosystem/vendors/).
 
-![OpenTelemetry Reference Architecture](/img/otel_diagram.png)
+![OpenTelemetry Reference Architecture](/img/otel-diagram.svg)
