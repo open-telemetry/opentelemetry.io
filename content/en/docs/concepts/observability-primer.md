@@ -15,11 +15,11 @@ unknowns”), and helps us answer the question, "Why is this happening?"
 In order to be able to ask those questions of a system, the application must be
 properly instrumented. That is, the application code must emit
 [signals](/docs/concepts/signals/) such as
-[traces](/docs/concepts/observability-primer/#distributed-traces),
-[metrics](/docs/concepts/observability-primer/#reliability--metrics), and
-[logs](/docs/concepts/observability-primer/#logs). An application is properly
-instrumented when developers don't need to add more instrumentation to
-troubleshoot an issue, because they have all of the information they need.
+[traces](/docs/concepts/signals/traces/),
+[metrics](/docs/concepts/signals/metrics/), and
+[logs](/docs/concepts/signals/logs/). An application is properly instrumented
+when developers don't need to add more instrumentation to troubleshoot an issue,
+because they have all of the information they need.
 
 [OpenTelemetry](/docs/what-is-opentelemetry/) is the mechanism by which
 application code is instrumented, to help make a system observable.
@@ -27,8 +27,9 @@ application code is instrumented, to help make a system observable.
 ## Reliability & Metrics
 
 **Telemetry** refers to data emitted from a system, about its behavior. The data
-can come in the form of [traces](#distributed-traces),
-[metrics](#reliability--metrics), and [logs](#logs).
+can come in the form of [traces](/docs/concepts/signals/traces/),
+[metrics](/docs/concepts/signals/metrics/), and
+[logs](/docs/concepts/signals/logs/).
 
 **Reliability** answers the question: "Is the service doing what users expect it
 to be doing?” A system could be up 100% of the time, but if, when a user clicks
@@ -38,7 +39,8 @@ the system keeps adding a red pair of pants, then the system would be said to be
 
 **Metrics** are aggregations over a period of time of numeric data about your
 infrastructure or application. Examples include: system error rate, CPU
-utilization, request rate for a given service.
+utilization, request rate for a given service. For more on metrics and how they
+pertain to OTel, see [Metrics](/docs/concepts/signals/metrics/).
 
 **SLI**, or Service Level Indicator, represents a measurement of a service's
 behavior. A good SLI measures your service from the perspective of your users.
@@ -69,7 +71,11 @@ I, [2021-02-23T13:26:23.505892 #22473]  INFO -- : [6459ffe1-ea53-4044-aaa3-bf902
 Unfortunately, logs aren't extremely useful for tracking code execution, as they
 typically lack contextual information, such as where they were called from.
 
-They become far more useful when they are included as part of a [span](#spans).
+They become far more useful when they are included as part of a [span](#spans),
+or when they are correlated with a trace and a span.
+
+For more on logs and how they pertain to OTel, see
+[Logs](/docs/concepts/signals/logs/).
 
 ### Spans
 
