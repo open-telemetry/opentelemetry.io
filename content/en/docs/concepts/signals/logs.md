@@ -4,27 +4,23 @@ weight: 3
 ---
 
 A **log** is a timestamped text record, either structured (recommended) or
-unstructured, with metadata. Of all telemetry signals logs have probably the
+unstructured, with metadata. Of all telemetry signals logs, have the
 biggest legacy. Most programming languages have built-in logging capabilities or
-well-known, widely used logging libraries. While logs are an independent data
+well-known, widely used logging libraries. Although logs are an independent data
 source, they may also be attached to spans. In OpenTelemetry, any data that is
 not part of a distributed trace or a metric is a log. For example, _events_ are
-a specific type of log. Logs are often used to determine the root cause of an
-issue and typically contain information about who changed what as well as the
-result of the change.
+a specific type of log. Logs often contain detailed debugging/diagnostic info,
+such as inputs to an operation, the result of the operation, and any supporting
+metadata for that operation.
 
-For metrics and traces OpenTelemetry takes the approach of a clean-sheet design,
-specifies a new API and provides full implementations of this API in multiple
-languages.
+For traces and metrics, OpenTelemetry takes the approach of a clean-sheet design,
+specifies a new API, and provides full implementations of this API in multiple
+language SDKs.
 
-Our approach with logs is somewhat different. For OpenTelemetry to be successful
-in logging space we need to support existing legacy of logs and logging
-libraries, while offering improvements and better integration with the rest of
-observability world where possible.
-
-This is in essence the philosophy behind OpenTelemetry’s logs support. We
-embrace existing logging solutions and make sure OpenTelemetry works nicely with
-existing logging libraries, log collection and processing solutions.
+OpenTelemetry's approach with logs is different. Because existing logging solutions
+are widespread in language and operational ecosystems, OpenTelemetry acts as a
+"bridge" between those logs, the tracing and metrics signals, and other OpenTelemetry
+components. In fact, the API for logs is called the "Logs Bridge API" for this reason.
 
 The [logs specification][] contains more details on this philosophy.
 
@@ -33,11 +29,13 @@ components that will play a part in instrumenting our code.
 
 ## Log Appender / Bridge
 
-As an application developer it is important for you to understand, that the
-**Logs Bridge API** should not be called by you directly, as it is provided for
-logging library authors to build log appenders / bridges. Instead you use your
-preferred logging library and configure it to use an log appender (or log
-bridge) that is able to emit logs into an OpenTelemetry LogRecordExporter.
+As an application developer, the **Logs Bridge API** should not be called by
+you directly, as it is provided for logging library authors to build log
+appenders / bridges. Instead, you just use your preferred logging library
+and configure it to use an log appender (or log bridge) that is able to emit
+logs into an OpenTelemetry LogRecordExporter.
+
+OpenTelemetry language SDKs offer this functionality.
 
 ## Logger Provider
 
@@ -96,7 +94,7 @@ Metrics are a [stable](/docs/specs/otel/versioning-and-stability/#stable) signal
 in the OpenTelemetry specification. For the individual language specific
 implementations of the Metrics API & SDK, the status is as follows:
 
-{{% logs_support_table " " %}}
+{{% logs_support_table %}}
 
 ## Specification
 
