@@ -8,10 +8,9 @@ weight: 15
 ---
 
 In order to make a system observable, it must be **instrumented**: That is, code
-from the system's components must emit
-[traces](/docs/concepts/observability-primer/#distributed-traces),
-[metrics](/docs/concepts/observability-primer/#reliability--metrics), and
-[logs](/docs/concepts/observability-primer/#logs).
+from the system's components must emit [traces](/docs/concepts/signals/traces/),
+[metrics](/docs/concepts/signals/metrics/), and
+[logs](/docs/concepts/signals/logs/).
 
 Without being required to modify the source code you can collect telemetry from
 an application using [automatic instrumentation](automatic/). If you previously
