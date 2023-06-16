@@ -27,7 +27,7 @@ must emit [traces](/docs/concepts/signals/traces/)),
 to an Observability back-end. There are a number of Observability back-ends out
 there, ranging from self-hosted open source tools (e.g.
 [Jaeger](https://www.jaegertracing.io/) and [Zipkin](https://zipkin.io/)), to
-[commercial offerings](http://localhost:1313/ecosystem/vendors/).
+[commercial offerings](/ecosystem/vendors/).
 
 In the past, the way in which code was instrumented would vary, as each
 Observability back-end would have its own instrumentation libraries and agents
