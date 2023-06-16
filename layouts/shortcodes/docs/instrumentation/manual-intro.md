@@ -1,5 +1,5 @@
 [Manual instrumentation](/docs/concepts/instrumentation/manual/) is the act
-of adding observability code to your application yourself.
+of adding observability code to an application yourself.
 
 If you're instrumenting an application, you need to use the OpenTelemetry SDK
 for your language. You'll then use the SDK to initialize OpenTelemetry and the
