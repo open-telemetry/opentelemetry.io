@@ -21,13 +21,13 @@ critical.
 ## So what?
 
 In order to make a system observable, it must be instrumented. That is, the code
-must emit [traces](/docs/concepts/observability-primer/#distributed-traces),
-[metrics](/docs/concepts/observability-primer/#reliability--metrics), and
-[logs](/docs/concepts/observability-primer/#logs). The instrumented data must
-then be sent to an Observability back-end. There are a number of Observability
-back-ends out there, ranging from self-hosted open source tools (e.g.
+must emit [traces](/docs/concepts/signals/traces/)),
+[metrics](/docs/concepts/signals/metrics/)), and
+[logs](/docs/concepts/signals/logs/)). The instrumented data must then be sent
+to an Observability back-end. There are a number of Observability back-ends out
+there, ranging from self-hosted open source tools (e.g.
 [Jaeger](https://www.jaegertracing.io/) and [Zipkin](https://zipkin.io/)), to
-commercial SaaS offerings.
+[commercial offerings](/ecosystem/vendors/).
 
 In the past, the way in which code was instrumented would vary, as each
 Observability back-end would have its own instrumentation libraries and agents
