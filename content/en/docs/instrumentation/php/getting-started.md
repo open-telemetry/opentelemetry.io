@@ -41,8 +41,7 @@ For a complete list of libraries for supported frameworks, see the
 
 ### Dependencies
 
-In an empty directory initialize a minimal `composer.json` file in your
-directory:
+In an empty directory initialize a minimal `composer.json` file:
 
 ```sh
 composer init \
