@@ -23,9 +23,13 @@ Ensure that you have the following installed locally: open source
 Before you get started make sure that you have both available in your shell:
 
 ```sh
-$ php -v
-$ composer -v
+php -v
+composer -v
 ```
+
+{{% alert title="Important" color="warning" %}}While OpenTelemetry PHP is in a pre-GA state,
+please ensure you set `minimum-stability` to `beta` in `composer.json`, otherwise you will get the early `0.x`
+versions of many of our packages.{{% /alert %}}
 
 ## Example Application
 
@@ -37,26 +41,20 @@ For a complete list of libraries for supported frameworks, see the
 
 ### Dependencies
 
-In an empty directory create a minimal `composer.json` file in your directory:
+In an empty directory initialize a minimal `composer.json` file in your
+directory:
 
 ```sh
-echo '{"require": {}, "minimum-stability": "beta", "config": {"allow-plugins": {"php-http/discovery": true}}}' > composer.json
-```
-
-In an empty directory create a minimal `composer.json` file in your directory:
-
-```sh
-composer require slim/slim:"4.*"
-composer require slim/psr7
+composer init \
+  --no-interaction \
+  --stability beta \
+  --require slim/slim:"^4" \
+  --require slim/psr7:"^1"
 ```
 
 ### Create and launch an HTTP Server
 
-In that same directory, create a file called `index.php`
-
-## Export to Console
-
-In your directory create a file called `GettingStarted.php` with the following
+In that same directory, create a file called `index.php` with the following
 content:
 
 ```php
@@ -103,7 +101,7 @@ Next, you’ll use the OpenTelemetry PHP extension to
 2. Build the extension with `PECL`:
 
    ```sh
-   $ pecl install opentelemetry-beta
+   pecl install opentelemetry-beta
    ```
 
    {{% alert title="Note" color="warning" %}}If you want to pickle or the
@@ -120,21 +118,26 @@ Next, you’ll use the OpenTelemetry PHP extension to
 4. Verify that the extension is installed and enabled:
 
    ```sh
-   $ php -m | grep opentelemetry
+   php -m | grep opentelemetry
    ```
 
 5. Add additional dependencies to your application, which are required for the
    automatic instrumentation of your code:
 
    ```sh
-   $ composer require php-http/guzzle7-adapter open-telemetry/sdk open-telemetry/opentelemetry-auto-slim
+   composer config allow-plugins.php-http/discovery true
+   composer require php-http/guzzle7-adapter open-telemetry/sdk open-telemetry/opentelemetry-auto-slim
    ```
 
 With the OpenTelemetry PHP extension set up you can now run your application and
 automatically instrument it at launch time:
 
 ```sh
-env OTEL_PHP_AUTOLOAD_ENABLED=true  OTEL_TRACES_EXPORTER=console OTEL_METRICS_EXPORTER=none OTEL_LOGS_EXPORTER=none php -S localhost:8080
+env OTEL_PHP_AUTOLOAD_ENABLED=true \
+    OTEL_TRACES_EXPORTER=console \
+    OTEL_METRICS_EXPORTER=none \
+    OTEL_LOGS_EXPORTER=none \
+    php -S localhost:8080
 ```
 
 Open <http://localhost:8080/rolldice> in your web browser and reload the page a
