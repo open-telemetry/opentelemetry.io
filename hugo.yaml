@@ -179,8 +179,6 @@ module:
   mounts:
     - source: content/en
       target: content
-    - source: content-modules/opentelemetry-go/website_docs
-      target: content/docs/instrumentation/go
     - source: tmp/otel/specification
       target: content/docs/specs/otel
     - source: tmp/otlp/docs/specification.md
