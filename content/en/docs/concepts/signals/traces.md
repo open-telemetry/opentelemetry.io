@@ -3,11 +3,10 @@ title: Traces
 weight: 1
 ---
 
-[**Traces**](/docs/concepts/observability-primer/#distributed-traces) give us
-the big picture of what happens when a request is made to an application.
-Whether your application is a monolith with a single database or a sophisticated
-mesh of services, traces are essential to understanding the full "path" a
-request takes in your application.
+**Traces** give us the big picture of what happens when a request is made to an
+application. Whether your application is a monolith with a single database or a
+sophisticated mesh of services, traces are essential to understanding the full
+"path" a request takes in your application.
 
 Three units of work, represented as [Spans](#spans):
 
@@ -166,9 +165,8 @@ By combining Context and Propagation, you now can assemble a Trace.
 
 ## Spans
 
-A [**span**](/docs/concepts/observability-primer/#spans) represents a unit of
-work or operation. Spans are the building blocks of Traces. In OpenTelemetry,
-they include the following information:
+A **span** represents a unit of work or operation. Spans are the building blocks
+of Traces. In OpenTelemetry, they include the following information:
 
 - Name
 - Parent span ID (empty for root spans)
