@@ -21,26 +21,28 @@ OpenTelemetry is a
 OpenTelemetry consists of the following major components:
 
 - A [specification](/docs/specs/otel) for all components
-- A standard [protocol](/docs/specs/otlp/) that defines the shape of telemetry data
+- A standard [protocol](/docs/specs/otlp/) that defines the shape of telemetry
+  data
 - Semantic conventions that define a standard naming scheme for common telemetry
   data types
 - APIs that define how to generate telemetry data
-- A [library ecosystem](/docs/ecosystem/registry) that implements instrumentation for common libraries and
-  frameworks
+- A [library ecosystem](/ecosystem/registry) that implements instrumentation for
+  common libraries and frameworks
 - Automatic instrumentation components that generate telemetry data without
   requiring code changes
 - Language SDKs that implement the specification, APIs, and export of telemetry
   data
-- The [OpenTelemetry Collector](/docs/collector), a proxy that receives, processes, and exports
-  telemetry data
-- Various other tools, such as the [OpenTelemetry Operator for Kubernetes](/docs/k8s-operator/)
+- The [OpenTelemetry Collector](/docs/collector), a proxy that receives,
+  processes, and exports telemetry data
+- Various other tools, such as the
+  [OpenTelemetry Operator for Kubernetes](/docs/k8s-operator/)
 
 OpenTelemetry is compatible with a wide variety of open source
-[ecosystem integrations](/docs/ecosystem/integrations/).
+[ecosystem integrations](/ecosystem/integrations/).
 
-OpenTelemetry is supported by a vast number of
-[vendors](/docs/ecosystem/vendors/), many of whom provide commercial support for
-OpenTelemetry and contribute to the project directly.
+OpenTelemetry is supported by a vast number of [vendors](/ecosystem/vendors/),
+many of whom provide commercial support for OpenTelemetry and contribute to the
+project directly.
 
 ## Extensibility
 
