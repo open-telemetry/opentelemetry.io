@@ -20,20 +20,20 @@ OpenTelemetry is a
 
 OpenTelemetry consists of the following major components:
 
-- A specification for all components
-- A standard protocol that defines the shape of telemetry data
+- A [specification](/docs/specs/otel) for all components
+- A standard [protocol](/docs/specs/otlp/) that defines the shape of telemetry data
 - Semantic conventions that define a standard naming scheme for common telemetry
   data types
 - APIs that define how to generate telemetry data
-- A library ecosystem that implements instrumentation for common libraries and
+- A [library ecosystem](/docs/ecosystem/registry) that implements instrumentation for common libraries and
   frameworks
 - Automatic instrumentation components that generate telemetry data without
   requiring code changes
 - Language SDKs that implement the specification, APIs, and export of telemetry
   data
-- The OpenTelemetry Collector, a proxy that receives, processes, and exports
+- The [OpenTelemetry Collector](/docs/collector), a proxy that receives, processes, and exports
   telemetry data
-- Various other tools, such as the OpenTelemetry Operator for Kubernetes
+- Various other tools, such as the [OpenTelemetry Operator for Kubernetes](/docs/k8s-operator/)
 
 OpenTelemetry is compatible with a wide variety of open source
 [ecosystem integrations](/docs/ecosystem/integrations/).
@@ -63,7 +63,7 @@ designed to make it possible at nearly every level.
 
 With the rise of cloud computing, microservices architectures, and ever-more
 complex business requirements, the need for
-Observability](/docs/concepts/observability-primer/#what-is-observability) has
+[Observability](/docs/concepts/observability-primer/#what-is-observability) has
 never been greater. Observability is the ability to understand the internal
 state of a system by examining its outputs. In the context of software, this
 means being able to understand the internal state of a system by examining its
