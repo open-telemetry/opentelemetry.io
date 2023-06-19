@@ -95,7 +95,7 @@ Metrics are a [stable](/docs/specs/otel/versioning-and-stability/#stable) signal
 in the OpenTelemetry specification. For the individual language specific
 implementations of the Metrics API & SDK, the status is as follows:
 
-{{% logs_support_table %}}
+{{% logs-support-table %}}
 
 ## Specification
 
