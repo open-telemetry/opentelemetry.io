@@ -8,11 +8,13 @@ weight: -1
 OpenTelemetry is an
 [Observability](/docs/concepts/observability-primer/#what-is-observability)
 framework and toolkit designed to create and manage _telemetry data_ such as
-traces, metrics, and logs. Crucially, OpenTelemetry is vendor- and
+[traces](/docs/concepts/signals/traces/),
+[metrics](/docs/concepts/signals/metrics/), and
+[logs](/docs/concepts/signals/logs/). Crucially, OpenTelemetry is vendor- and
 tool-agnostic, meaning that it can be used with a broad variety of Observability
 backends, including open source tools like
 [Jaeger](https://www.jaegertracing.io/) and
-[Prometheus](https://prometheus.io/), as well as commercial SaaS offerings.
+[Prometheus](https://prometheus.io/), as well as commercial offerings.
 OpenTelemetry is a
 [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io) project.
 
