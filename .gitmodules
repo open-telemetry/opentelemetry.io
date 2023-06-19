@@ -2,9 +2,6 @@
 	path = themes/docsy
 	url = https://github.com/cncf/docsy.git
 	branch = opentelemetry.io
-[submodule "content-modules/opentelemetry-go"]
-	path = content-modules/opentelemetry-go
-	url = https://github.com/open-telemetry/opentelemetry-go
 [submodule "content-modules/opentelemetry-specification"]
 	path = content-modules/opentelemetry-specification
 	url = https://github.com/open-telemetry/opentelemetry-specification.git
