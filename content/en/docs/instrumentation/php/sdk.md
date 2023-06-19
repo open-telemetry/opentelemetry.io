@@ -39,7 +39,7 @@ However, it doesn't support all of the features that manual setup does.
 $spanExporter = new InMemoryExporter(); //mock exporter for demonstration purposes
 
 $meterProvider = MeterProvider::builder()
-    ->registerMetricReader(
+    ->addReader(
         new ExportingReader(new MetricExporter((new StreamTransportFactory())->create(STDOUT, 'application/x-ndjson'), /*Temporality::CUMULATIVE*/))
     )
     ->build();

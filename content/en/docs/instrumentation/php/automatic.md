@@ -21,7 +21,7 @@ OpenTelemetry\Instrumentation\hook(
     'pre': static function (DemoClass $demo, array $params, string $class, string $function, ?string $filename, ?int $lineno) {
         static $instrumentation;
         $instrumentation ??= new CachedInstrumentation('example');
-        $span = $instrumentation->tracer()->spanBuilder($class)->startSpan();
+        $span = $instrumentation->tracer()->spanBuilder('democlass-run')->startSpan();
         Context::storage()->attach($span->storeInContext(Context::getCurrent()));
     },
     'post': static function (DemoClass $demo, array $params, $returnValue, ?Throwable $exception) {
@@ -132,7 +132,7 @@ OpenTelemetry\API\Common\Instrumentation\Globals::registerInitializer(function (
 
 //instrumentation libraries can access the configured providers (or a no-op implementation) via `Globals`
 $tracer = Globals::tracerProvider()->getTracer('example');
-//or, via CachedInstrumentation
+//or, via CachedInstrumentation which uses `Globals` internally
 $instrumentation = new CachedInstrumentation('example');
 $tracerProvider = $instrumentation->tracer();
 ```
