@@ -15,12 +15,13 @@ bundles instrumentation and the Collector together.
 Once you've instrumented your application you should add the Collector Lambda
 layer to collect and submit your data to your chosen backend.
 
+Find the [most recent Collector layer
+release](https://github.com/open-telemetry/opentelemetry-lambda/releases) and
+use it's ARN after changing the `<region>` tag to the region your Lambda is in.
+
 Note: Lambda layers are a regionalized resource, meaning that they can only be
 used in the Region in which they are published. Make sure to use the layer in
 the same region as your Lambda functions.
-
-Find the supported regions and amd64(x86_64)/arm64 layer ARN in the table below
-for the ARNs to consume.
 
 ### Configure the OTel Collector
 
