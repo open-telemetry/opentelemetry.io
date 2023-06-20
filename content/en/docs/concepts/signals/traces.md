@@ -143,19 +143,22 @@ A **Context** is an object that contains the information for the sending and
 receiving service to correlate one span with another and associate it with the
 trace overall. For example, if Service A calls Service B, then a span from
 Service A whose ID is in context will be used as the parent span for the next
-span created in Service B.
+span created in Service B. The trace ID that is in context will be used for the
+next span created in Service B as well, which signifies that the span is part of
+the same trace as the span from Service A.
 
-**Propagation** is the mechanism that moves Context between services and
-processes. By doing so, it assembles a Distributed Trace. It serializes or
-deserializes Span Context and provides the relevant Trace information to be
-propagated from one service to another. We now have what we call: **Trace
-Context**.
+**Propagation** is the mechanism that moves context between services and
+processes. It serializes or deserializes the context object and provides the
+relevant Trace information to be propagated from one service to another.
+Propagation is usually handled by instrumentation libraries and is transparent
+to the user, but in the event that you need to manually propagate context, you
+can use Propagation APIs.
 
-Context is an abstract concept - it requires a concrete implementation to
-actually be useful. OpenTelemetry supports several different Context formats.
-The default format used in OpenTelemetry tracing is W3C `TraceContext`. Each
-Context object is associated with a span and can be accessed specification on
-spans. See [Span Context](#span-context).
+OpenTelemetry supports several different context formats. The default format
+used in OpenTelemetry tracing is called
+[W3C TraceContext](https://www.w3.org/TR/trace-context/). Each context object is
+stored in a span. See [Span Context](#span-context) for details on the context
+object and what other information is available..
 
 By combining Context and Propagation, you now can assemble a Trace.
 
