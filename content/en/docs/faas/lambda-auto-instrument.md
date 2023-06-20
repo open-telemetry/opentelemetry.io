@@ -99,7 +99,8 @@ region your Lambda is in.
 
 Note: Lambda layers are a regionalized resource, meaning that they can only be
 used in the Region in which they are published. Make sure to use the layer in
-the same region as your Lambda functions.
+the same region as your Lambda functions. The community publishes layers in all
+available regions.
 
 ### Configure your SDK exporters
 
