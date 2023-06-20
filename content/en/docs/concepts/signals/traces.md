@@ -155,10 +155,10 @@ to the user, but in the event that you need to manually propagate context, you
 can use Propagation APIs.
 
 OpenTelemetry supports several different context formats. The default format
-used in OpenTelemetry tracing is
+used in OpenTelemetry tracing is called
 [W3C TraceContext](https://www.w3.org/TR/trace-context/). Each context object is
-associated with a span. See [Span Context](#span-context) for details on what
-information is available.
+stored in a span. See [Span Context](#span-context) for details on the context
+object and what other information is available..
 
 By combining Context and Propagation, you now can assemble a Trace.
 
