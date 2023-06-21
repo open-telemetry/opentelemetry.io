@@ -178,7 +178,7 @@ after sending a user response, which means that delays in sending telemetry data
 will not hold up request processing.
 
 To minimize the impact of slow transport of telemetry data, particularly for
-external or cloud-based backends, you should consider using a local
-[OpenTelemetry Collector](/docs/collector/). A local collector can quickly
-accept, then batch and send all of your telemetry to the backend. Such a setup
+external or cloud-based backends, you should consider using the
+[OpenTelemetry Collector](/docs/collector/) as an [agent](/docs/collector/deployment/agent/). The agent can quickly
+accept, then batch send telemetry data to the backend. Such a setup
 will make your system more robust and scalable.
