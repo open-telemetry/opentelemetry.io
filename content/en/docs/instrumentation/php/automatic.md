@@ -9,22 +9,39 @@ spelling: cSpell:ignore packagist pecl shortcode unindented
 Automatic instrumentation with PHP requires at least PHP 8.0, and
 [the OpenTelemetry PHP extension](https://github.com/open-telemetry/opentelemetry-php-instrumentation).
 The extension allows developers code to hook into classes and methods, and
-execute userland code before and after the hooked method runs.
+execute userland code before and after the hooked method runs, via the `hook()`
+method.
 
 ## Example
 
 ```php
 <?php
+
+use OpenTelemetry\API\Common\Instrumentation\CachedInstrumentation;
+use OpenTelemetry\API\Trace\Span;
+use OpenTelemetry\API\Trace\StatusCode;
+use OpenTelemetry\Context\Context;
+
+require 'vendor/autoload.php';
+
+class DemoClass
+{
+    public function run(): void
+    {
+        echo 'Hello, world';
+    }
+}
+
 OpenTelemetry\Instrumentation\hook(
-    'class': DemoClass::class,
-    'function': 'run',
-    'pre': static function (DemoClass $demo, array $params, string $class, string $function, ?string $filename, ?int $lineno) {
+    class: DemoClass::class,
+    function: 'run',
+    pre: static function (DemoClass $demo, array $params, string $class, string $function, ?string $filename, ?int $lineno) {
         static $instrumentation;
         $instrumentation ??= new CachedInstrumentation('example');
         $span = $instrumentation->tracer()->spanBuilder('democlass-run')->startSpan();
         Context::storage()->attach($span->storeInContext(Context::getCurrent()));
     },
-    'post': static function (DemoClass $demo, array $params, $returnValue, ?Throwable $exception) {
+    post: static function (DemoClass $demo, array $params, $returnValue, ?Throwable $exception) {
         $scope = Context::storage()->scope();
         $scope->detach();
         $span = Span::fromContext($scope->context());
