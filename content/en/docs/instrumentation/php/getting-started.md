@@ -40,10 +40,11 @@ packages.{{% /alert %}}
 
 ## Example Application
 
-The following example uses a basic [Slim](https://www.slimframework.com/)
-application. If you are not using Slim, that's ok — you can use OpenTelemetry
-PHP with other web frameworks as well, such as Wordpress, Symfony and Laravel.
-For a complete list of libraries for supported frameworks, see the
+The following example uses a basic
+[Slim Framework](https://www.slimframework.com/) application. If you are not
+using Slim, that's ok — you can use OpenTelemetry PHP with other web frameworks
+as well, such as Wordpress, Symfony and Laravel. For a complete list of
+libraries for supported frameworks, see the
 [registry](/ecosystem/registry/?component=instrumentation&language=php).
 
 ### Dependencies
@@ -96,9 +97,10 @@ working.
 ## Add automatic instrumentation
 
 Next, you’ll use the OpenTelemetry PHP extension to
-[automatically instrument](../automatic/) the application at launch time.
+[automatically instrument](../automatic/) the application.
 
-1. Since the extension is built from source, you need to setup some build tools
+1. Since the extension is built from source, you need to install some build
+   tools
 
    {{< tabpane lang=shell persistLang=false >}}
 
@@ -254,18 +256,18 @@ $app->get('/rolldice', function (Request $request, Response $response) use ($tra
 $app->run();
 ```
 
-Start the build-in webserver again as before, and browse to
+Start the built-in webserver again, and browse to
 <http://localhost:8080/rolldice>. You should see similar output, but with the
 addition of a new span named `manual-span`.
 
 Note that the manual span's `parent_span_id` contains the same value as the
-`{closure}` span's `context.span_id`. Manual and automatic instrumentation work
+"{closure}" span's `context.span_id`. Manual and automatic instrumentation work
 well together, since under the hood they use the same APIs.
 
 ### Logging
 
 Now let's add some logging. We will use the popular `monolog` logging library to
-do this, via a handler which will emit the logs using the OpenTelemetry format.
+do this, via a handler which will emit the logs in the OpenTelemetry format.
 
 First, let's install some more dependencies:
 
