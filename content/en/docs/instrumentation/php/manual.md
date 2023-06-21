@@ -35,8 +35,8 @@ interface.
 If you are an application developer, you need to configure an instance of the
 `OpenTelemetry SDK` as early as possible in your application. This can be done
 using the `Sdk::builder()` method. The returned `SdkBuilder` instance gets the
-providers related to the signals, tracing and metrics, in order to build the
-`OpenTelemetry` instance.
+providers related to the tracing, logging and metrics signals, in order to build
+the `OpenTelemetry` instance.
 
 You can build the providers by using the `TracerProvider::builder()`,
 `LoggerProvider::builder()`, and `MeterProvider::builder()` methods. It is also
@@ -51,13 +51,14 @@ the most important piece of telemetry source-identifying info.
 
 use OpenTelemetry\API\Common\Signal\Signals;
 use OpenTelemetry\API\Trace\Propagation\TraceContextPropagator;
-use OpenTelemetry\Contrib\Grpc\GrpcTransportFactory;
+use OpenTelemetry\Contrib\Otlp\LogsExporter;
 use OpenTelemetry\Contrib\Otlp\MetricExporter;
 use OpenTelemetry\Contrib\Otlp\OtlpUtil;
 use OpenTelemetry\Contrib\Otlp\SpanExporter;
 use OpenTelemetry\SDK\Common\Attribute\Attributes;
 use OpenTelemetry\SDK\Common\Export\Http\PsrTransportFactory;
 use OpenTelemetry\SDK\Logs\LoggerProvider;
+use OpenTelemetry\SDK\Logs\Processor\SimpleLogsProcessor;
 use OpenTelemetry\SDK\Metrics\MeterProvider;
 use OpenTelemetry\SDK\Metrics\MetricReader\ExportingReader;
 use OpenTelemetry\SDK\Resource\ResourceInfo;
@@ -72,13 +73,18 @@ use OpenTelemetry\SemConv\ResourceAttributes;
 require 'vendor/autoload.php';
 
 $resource = ResourceInfoFactory::defaultResource()->merge(ResourceInfo::create(Attributes::create([
-    ResourceAttributes::SERVICE_NAMESPACE => 'foo',
-    ResourceAttributes::SERVICE_NAME => 'bar',
+    ResourceAttributes::SERVICE_NAMESPACE => 'demo',
+    ResourceAttributes::SERVICE_NAME => 'test-application',
     ResourceAttributes::SERVICE_VERSION => '0.1',
     ResourceAttributes::DEPLOYMENT_ENVIRONMENT => 'development',
 ])));
-$transport = (new GrpcTransportFactory())->create('http://collector:4317' . OtlpUtil::method(Signals::TRACE));
-$spanExporter = new SpanExporter($transport);
+$spanExporter = new SpanExporter(
+    PsrTransportFactory::discover()->create('http://collector:4318/v1/traces', 'application/x-protobuf')
+);
+
+$logExporter = new LogsExporter(
+    PsrTransportFactory::discover()->create('http://collector:4318/v1/logs', 'application/x-protobuf')
+);
 
 $reader = new ExportingReader(
     new MetricExporter(
@@ -103,6 +109,9 @@ $tracerProvider = TracerProvider::builder()
 
 $loggerProvider = LoggerProvider::builder()
     ->setResource($resource)
+    ->addLogRecordProcessor(
+        new SimpleLogsProcessor($logExporter)
+    )
     ->build();
 
 Sdk::builder()
