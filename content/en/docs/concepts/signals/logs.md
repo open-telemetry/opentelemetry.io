@@ -91,9 +91,9 @@ the
 
 ## Language Support
 
-Metrics are a [stable](/docs/specs/otel/versioning-and-stability/#stable) signal
+Logs are a [stable](/docs/specs/otel/versioning-and-stability/#stable) signal
 in the OpenTelemetry specification. For the individual language specific
-implementations of the Metrics API & SDK, the status is as follows:
+implementations of the Logs API & SDK, the status is as follows:
 
 {{% logs-support-table %}}
 
