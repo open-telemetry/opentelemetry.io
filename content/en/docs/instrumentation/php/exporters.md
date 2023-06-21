@@ -21,9 +21,10 @@ composer require \
 ```
 
 To use the [gRPC](https://grpc.io/) exporter, you will also need to install the
-`open-telemetry/transport-grpc` package:
+`open-telemetry/transport-grpc` package, and the `grpc` extension:
 
 ```shell
+pecl install grpc
 composer require open-telemetry/transport-grpc
 ```
 

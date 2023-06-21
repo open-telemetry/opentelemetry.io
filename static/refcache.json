@@ -4779,6 +4779,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-03-29T03:57:51.220192806Z"
   },
+  "https://www.php.net/manual/en/function.error-log.php": {
+    "StatusCode": 200,
+    "LastSeen": "2023-06-21T07:38:41.031879553Z"
+  },
   "https://www.php.net/manual/en/opcache.preloading.php": {
     "StatusCode": 200,
     "LastSeen": "2023-03-29T03:57:51.962566491Z"
