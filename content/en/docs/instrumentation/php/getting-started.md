@@ -488,11 +488,10 @@ For more:
 
 - Run this example with another [exporter][] for telemetry data.
 - Try [automatic instrumentation](../automatic/) on one of your own apps.
-- Learn more about [manual instrumentation][] and try out some [examples][].
+- Learn more about [manual instrumentation][] and try out some [examples](/docs/instrumentation/php/examples/).
 
 [traces]: /docs/concepts/signals/traces/
 [metrics]: /docs/concepts/signals/metrics/
 [logs]: /docs/concepts/signals/logs/
 [exporter]: ../exporters/
-[examples]: ../examples/
 [manual instrumentation]: ../manual/
