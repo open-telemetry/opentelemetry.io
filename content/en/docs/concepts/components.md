@@ -75,11 +75,11 @@ For more information, see
 
 In order to visualize and analyze your telemetry, you will need to export your
 data to a Collector or a backend such as Jaeger, Zipkin, Prometheus or a
-[vendor-specific](https://opentelemetry.io/ecosystem/vendors/) one.
+[vendor-specific](/ecosystem/vendors/) one.
 
 As part of the language specific implementations you will find many Exporters
-being available. Among them, [OTLP](/docs/specs/otlp/)
-Exporters provide the best experience for you as an end-user.
+being available. Among them, [OTLP](/docs/specs/otlp/) Exporters provide the
+best experience for you as an end-user.
 
 ### Automatic Instrumentation
 
