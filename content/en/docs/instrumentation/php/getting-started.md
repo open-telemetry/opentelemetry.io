@@ -7,10 +7,13 @@ spelling: cSpell:ignore Wordpress Symfony Laravel rolldice autoload strval PECL
 spelling: cSpell:ignore darwin
 ---
 
+OpenTelemetry for PHP can be used to generate and export [traces][], [metrics][]
+and [logs][].
+
 This page will show you how to get started with OpenTelemetry in PHP. We will
 create a simple "roll the dice" application, then apply both automatic and
-manual instrumentation to generate [traces][], [metrics][] and [logs][] and
-export them to the console.
+manual instrumentation to generate [traces][] and export them to the console. We
+will then emit some [logs][] which will also be sent to the console.
 
 ## Prerequisites
 
@@ -138,7 +141,7 @@ Next, you’ll use the OpenTelemetry PHP extension to
      open-telemetry/opentelemetry-auto-slim
    ```
 
-With the OpenTelemetry PHP extension set up and an instrumentation library
+With the OpenTelemetry PHP extension set up and an auto-instrumentation package
 installed, you can now run your application and generate some traces:
 
 ```sh

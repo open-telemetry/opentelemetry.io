@@ -149,9 +149,6 @@ $logger = new \Example\Psr3Logger(LogLevel::INFO);
 \OpenTelemetry\API\LoggerHolder::set($logger);
 ```
 
-If no PSR-3 logger is provided, error messages will instead be recorded via
-`trigger_error` .
-
 For more fine-grained control and special case handling, custom handlers and
 filters can be applied to the logger (if the logger offers this ability).
 
@@ -164,7 +161,7 @@ To do [Tracing](/docs/concepts/signals/traces/) you'll need to acquire a
 
 A `Tracer` is responsible for creating spans and interacting with the
 [Context](../propagation/). A tracer is acquired from a `TracerProvider`,
-specifying the name and version of the
+specifying the name and other (optional) identifying information about the
 [library instrumenting](/docs/concepts/instrumentation/libraries/) the
 instrumented library or application to be monitored. More information is
 available in the specification chapter
@@ -173,7 +170,7 @@ available in the specification chapter
 ```php
 $tracerProvider = Globals::tracerProvider();
 $tracer = $tracerProvider->getTracer(
-  'instrumentation-library-name', //name
+  'instrumentation-library-name', //name (required)
   '1.0.0', //version
   'http://example.com/my-schema', //schema url
   ['foo' => 'bar'] //attributes
@@ -198,7 +195,7 @@ $span = $tracer->spanBuilder("my span")->startSpan();
 $span->end();
 ```
 
-It's required to call `end()` to end the span.
+It's required to `end()` the span, otherwise it will not be sent.
 
 ### Create nested Spans
 
