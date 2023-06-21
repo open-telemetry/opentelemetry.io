@@ -2499,6 +2499,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:52:54.321473-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-lambda/releases": {
+    "StatusCode": 200,
+    "LastSeen": "2023-06-21T15:44:29.080592+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-operator": {
     "StatusCode": 200,
     "LastSeen": "2023-02-20T07:46:26.471476-05:00"
