@@ -79,7 +79,7 @@ use OpenTelemetry\Contrib\Otlp\SpanExporter;
 use OpenTelemetry\SDK\Trace\SpanProcessor\SimpleSpanProcessor;
 use OpenTelemetry\SDK\Trace\TracerProvider;
 
-$transport = (new OtlpHttpTransportFactory())->create('http://collector:4318/v1/traces', 'application/json');
+$transport = (new OtlpHttpTransportFactory())->create('http://jaeger:4318/v1/traces', 'application/json');
 $exporter = new SpanExporter($transport);
 
 $tracerProvider =  new TracerProvider(
@@ -98,7 +98,7 @@ use OpenTelemetry\Contrib\Otlp\SpanExporter;
 use OpenTelemetry\SDK\Trace\SpanProcessor\SimpleSpanProcessor;
 use OpenTelemetry\SDK\Trace\TracerProvider;
 
-$transport = (new OtlpHttpTransportFactory())->create('http://collector:4318/v1/traces', 'application/x-ndjson');
+$transport = (new OtlpHttpTransportFactory())->create('http://jaeger:4318/v1/traces', 'application/x-ndjson');
 $exporter = new SpanExporter($transport);
 
 $tracerProvider =  new TracerProvider(
