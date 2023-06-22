@@ -6,11 +6,17 @@ spelling: cSpell:ignore userland phar AUTOLOAD tracecontext myapp configurator
 spelling: cSpell:ignore packagist pecl shortcode unindented
 ---
 
-Automatic instrumentation with PHP requires at least PHP 8.0, and
-[the OpenTelemetry PHP extension](https://github.com/open-telemetry/opentelemetry-php-instrumentation).
-The extension allows developers code to hook into classes and methods, and
-execute userland code before and after the hooked method runs, via the `hook()`
-method.
+Automatic instrumentation with PHP requires at least PHP 8.0, and the
+[OpenTelemetry PHP extension](https://github.com/open-telemetry/opentelemetry-php-instrumentation).
+The extension enables registering observer functions (as PHP code) against
+classes and methods, and executing those functions before and after the observed
+method runs.
+
+{{% alert title="Important" color="warning" %}}Installing the OpenTelemetry
+extension by itself will not generate traces. You must also install one or more
+[packages](/ecosystem/registry/?component=instrumentation&language=php) for the
+frameworks and libraries that you are using, or alternatively write your
+own.{{% /alert %}}
 
 ## Example
 
