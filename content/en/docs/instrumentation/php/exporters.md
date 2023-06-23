@@ -159,7 +159,8 @@ Update the example to use the Zipkin exporter and to send data to your zipkin
 backend:
 
 ```php
-$transport = PsrTransportFactory::discover()->create('http://zipkin:9411/api/v2/spans', 'application/json');
+$transport = \OpenTelemetry\SDK\Common\Export\Http\PsrTransportFactory::discover()
+    ->create('http://zipkin:9411/api/v2/spans', 'application/json');
 $zipkinExporter = new ZipkinExporter($transport);
 $tracerProvider =  new TracerProvider(
     new SimpleSpanProcessor($zipkinExporter)
@@ -180,5 +181,4 @@ will not hold up request processing.
 To minimize the impact of slow transport of telemetry data, particularly for
 external or cloud-based backends, you should consider using the
 [OpenTelemetry Collector](/docs/collector/) as an [agent](/docs/collector/deployment/agent/). The agent can quickly
-accept, then batch send telemetry data to the backend. Such a setup
-will make your system more robust and scalable.
+accept, then batch send telemetry data to the backend.

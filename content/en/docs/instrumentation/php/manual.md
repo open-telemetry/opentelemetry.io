@@ -10,21 +10,24 @@ description: Manual instrumentation for OpenTelemetry PHP
 ## Installation
 
 The following shows how to install, initialize, and run an application
-instrumented with OpenTelemetry.
+instrumented with OpenTelemetry. Telemetry data will be displayed in the
+console.
 
 To use the OpenTelemetry SDK for PHP you need packages that satisfy the
 dependencies for `psr/http-client-implementation` and
-`psr/http-factory-implementation`, for example the Guzzle 7 HTTP Adapter
-satisfies both:
+`psr/http-factory-implementation`. Here we will use the Guzzle 7 HTTP Adapter
+which satisfies both:
 
 ```sh
-composer require "php-http/guzzle7-adapter"
+composer require php-http/guzzle7-adapter
 ```
 
-Now you can install the OpenTelemetry SDK:
+Now you can install the OpenTelemetry SDK, and OTLP exporter:
 
 ```sh
-composer require open-telemetry/sdk
+composer require \
+  open-telemetry/sdk \
+  open-telemetry/exporter-otlp
 ```
 
 ## Setup
@@ -33,30 +36,26 @@ The first step is to get a handle to an instance of the `OpenTelemetry`
 interface.
 
 If you are an application developer, you need to configure an instance of the
-`OpenTelemetry SDK` as early as possible in your application. This can be done
-using the `Sdk::builder()` method. The returned `SdkBuilder` instance gets the
-providers related to the tracing, logging and metrics signals, in order to build
-the `OpenTelemetry` instance.
+`OpenTelemetry SDK` as early as possible in your application. Here we will use
+the `Sdk::builder()` method, and we will globally register the providers.
 
 You can build the providers by using the `TracerProvider::builder()`,
 `LoggerProvider::builder()`, and `MeterProvider::builder()` methods. It is also
-strongly recommended to define a `Resource` instance as a representation of the
-entity producing the telemetry; in particular the `service.name` attribute is
-the most important piece of telemetry source-identifying info.
+recommended to define a `Resource` instance as a representation of the
+entity producing the telemetry; in particular the `service.name` attribute.
 
 ### Example
 
 ```php
 <?php
 
-use OpenTelemetry\API\Common\Signal\Signals;
+use OpenTelemetry\API\Globals;
 use OpenTelemetry\API\Trace\Propagation\TraceContextPropagator;
 use OpenTelemetry\Contrib\Otlp\LogsExporter;
 use OpenTelemetry\Contrib\Otlp\MetricExporter;
-use OpenTelemetry\Contrib\Otlp\OtlpUtil;
 use OpenTelemetry\Contrib\Otlp\SpanExporter;
 use OpenTelemetry\SDK\Common\Attribute\Attributes;
-use OpenTelemetry\SDK\Common\Export\Http\PsrTransportFactory;
+use OpenTelemetry\SDK\Common\Export\Stream\StreamTransportFactory;
 use OpenTelemetry\SDK\Logs\LoggerProvider;
 use OpenTelemetry\SDK\Logs\Processor\SimpleLogsProcessor;
 use OpenTelemetry\SDK\Metrics\MeterProvider;
@@ -72,23 +71,23 @@ use OpenTelemetry\SemConv\ResourceAttributes;
 
 require 'vendor/autoload.php';
 
-$resource = ResourceInfoFactory::defaultResource()->merge(ResourceInfo::create(Attributes::create([
+$resource = ResourceInfoFactory::emptyResource()->merge(ResourceInfo::create(Attributes::create([
     ResourceAttributes::SERVICE_NAMESPACE => 'demo',
     ResourceAttributes::SERVICE_NAME => 'test-application',
     ResourceAttributes::SERVICE_VERSION => '0.1',
     ResourceAttributes::DEPLOYMENT_ENVIRONMENT => 'development',
 ])));
 $spanExporter = new SpanExporter(
-    PsrTransportFactory::discover()->create('http://collector:4318/v1/traces', 'application/x-protobuf')
+    (new StreamTransportFactory())->create('php://stdout', 'application/json')
 );
 
 $logExporter = new LogsExporter(
-    PsrTransportFactory::discover()->create('http://collector:4318/v1/logs', 'application/x-protobuf')
+    (new StreamTransportFactory())->create('php://stdout', 'application/json')
 );
 
 $reader = new ExportingReader(
     new MetricExporter(
-        PsrTransportFactory::discover()->create('http://collector:4318/v1/metrics', 'application/x-protobuf')
+        (new StreamTransportFactory())->create('php://stdout', 'application/json')
     )
 );
 
@@ -123,13 +122,22 @@ Sdk::builder()
     ->buildAndRegisterGlobal();
 ```
 
+In the above example the SDK was globally registered. Throughout the following examples
+we will obtain the various providers via `OpenTelemetry\API\Globals`:
+
+```php
+$tracerProvider = \OpenTelemetry\API\Globals::tracerProvider();
+$meterProvider = \OpenTelemetry\API\Globals::meterProvider();
+$loggerProvider = \OpenTelemetry\API\Globals::loggerProvider();
+```
+
+#### Shutdown
+
 It's important that each provider's `shutdown()` method is run when the PHP
-process ends, to enable flushing of any enqueued telemetry.
+process ends, to enable flushing of any enqueued telemetry. In the above
+example, this has been taken care of with `setAutoShutdown(true)`.
 
-In the above example, this has been taken care of with `setAutoshutdown(true)`.
-The shutdown process is blocking, so consider running it in an async process.
-
-Otherwise, you can use the `ShutdownHandler` to register the shutdown function
+You can also use the `ShutdownHandler` to register each provider's shutdown function
 as part of PHP's shutdown process:
 
 ```php
@@ -142,7 +150,7 @@ as part of PHP's shutdown process:
 
 ### Default
 
-By default, OpenTelemetry will log informational messages via PHP's
+By default, OpenTelemetry will log errora and warnings via PHP's
 [`error_log`](https://www.php.net/manual/en/function.error-log.php) function.
 The verbosity can be controlled or disabled via the `OTEL_LOG_LEVEL` setting.
 
@@ -172,7 +180,9 @@ A `Tracer` is responsible for creating spans and interacting with the
 [Context](../propagation/). A tracer is acquired from a `TracerProvider`,
 specifying the name and other (optional) identifying information about the
 [library instrumenting](/docs/concepts/instrumentation/libraries/) the
-instrumented library or application to be monitored. More information is
+instrumented library or application to be monitored.
+
+More information is
 available in the specification chapter
 [Obtaining a Tracer](/docs/specs/otel/trace/api/#tracerprovider).
 
@@ -552,7 +562,7 @@ $reader->collect();
 
 ### Readers
 
-Currently we only have an `ExportingReader`, which is an implementation of the
+The `ExportingReader` is an implementation of the
 [periodic exporting metric reader](/docs/specs/otel/metrics/sdk/#periodic-exporting-metricreader).
 When its `collect()` method is called, all associated asynchronous meters are
 observed, and metrics pushed to the exporter.
