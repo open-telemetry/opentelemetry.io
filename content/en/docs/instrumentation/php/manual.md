@@ -41,15 +41,17 @@ the `Sdk::builder()` method, and we will globally register the providers.
 
 You can build the providers by using the `TracerProvider::builder()`,
 `LoggerProvider::builder()`, and `MeterProvider::builder()` methods. It is also
-recommended to define a `Resource` instance as a representation of the
-entity producing the telemetry; in particular the `service.name` attribute.
+recommended to define a `Resource` instance as a representation of the entity
+producing the telemetry; in particular the `service.name` attribute.
 
 ### Example
 
 ```php
 <?php
 
-use OpenTelemetry\API\Globals;
+use OpenTelemetry\API\Common\Instrumentation\Globals;
+use OpenTelemetry\API\Logs\EventLogger;
+use OpenTelemetry\API\Logs\LogRecord;
 use OpenTelemetry\API\Trace\Propagation\TraceContextPropagator;
 use OpenTelemetry\Contrib\Otlp\LogsExporter;
 use OpenTelemetry\Contrib\Otlp\MetricExporter;
@@ -65,7 +67,7 @@ use OpenTelemetry\SDK\Resource\ResourceInfoFactory;
 use OpenTelemetry\SDK\Sdk;
 use OpenTelemetry\SDK\Trace\Sampler\AlwaysOnSampler;
 use OpenTelemetry\SDK\Trace\Sampler\ParentBased;
-use OpenTelemetry\SDK\Trace\SpanProcessor\BatchSpanProcessorBuilder;
+use OpenTelemetry\SDK\Trace\SpanProcessor\SimpleSpanProcessor;
 use OpenTelemetry\SDK\Trace\TracerProvider;
 use OpenTelemetry\SemConv\ResourceAttributes;
 
@@ -98,9 +100,7 @@ $meterProvider = MeterProvider::builder()
 
 $tracerProvider = TracerProvider::builder()
     ->addSpanProcessor(
-        (new BatchSpanProcessorBuilder($spanExporter))
-            ->setMeterProvider($meterProvider)
-            ->build()
+        new SimpleSpanProcessor($spanExporter)
     )
     ->setResource($resource)
     ->setSampler(new ParentBased(new AlwaysOnSampler()))
@@ -122,8 +122,8 @@ Sdk::builder()
     ->buildAndRegisterGlobal();
 ```
 
-In the above example the SDK was globally registered. Throughout the following examples
-we will obtain the various providers via `OpenTelemetry\API\Globals`:
+Throughout the following examples we will usually obtain the globally registered
+providers via `OpenTelemetry\API\Globals`:
 
 ```php
 $tracerProvider = \OpenTelemetry\API\Globals::tracerProvider();
@@ -137,8 +137,8 @@ It's important that each provider's `shutdown()` method is run when the PHP
 process ends, to enable flushing of any enqueued telemetry. In the above
 example, this has been taken care of with `setAutoShutdown(true)`.
 
-You can also use the `ShutdownHandler` to register each provider's shutdown function
-as part of PHP's shutdown process:
+You can also use the `ShutdownHandler` to register each provider's shutdown
+function as part of PHP's shutdown process:
 
 ```php
 \OpenTelemetry\SDK\Common\Util\ShutdownHandler::register([$tracerProvider, 'shutdown']);
@@ -182,8 +182,7 @@ specifying the name and other (optional) identifying information about the
 [library instrumenting](/docs/concepts/instrumentation/libraries/) the
 instrumented library or application to be monitored.
 
-More information is
-available in the specification chapter
+More information is available in the specification chapter
 [Obtaining a Tracer](/docs/specs/otel/trace/api/#tracerprovider).
 
 ```php
@@ -462,15 +461,13 @@ $meterProvider = MeterProvider::builder()
     ->build();
 ```
 
-You can now use the meter provider to retrieve meters.
-
 ### Synchronous meters
 
 A synchronous meter must be manually adjusted as data changes:
 
 ```php
 $up_down = $meterProvider
-    ->getMeter('my_up_down')
+    ->getMeter('demo_meter')
     ->createUpDownCounter('queued', 'jobs', 'The number of jobs enqueued');
 //jobs come in
 $up_down->add(5);
@@ -482,8 +479,8 @@ $up_down->add(2);
 $meterProvider->forceFlush();
 ```
 
-Synchronous metrics are exported when `forceFlush()` and/or `shutdown()` are
-called on the meter provider.
+Synchronous metrics are exported when `forceFlush()` or `shutdown()` are called
+on the meter provider.
 
 <details>
 <summary>View output</summary>
@@ -495,7 +492,7 @@ called on the meter provider.
       "resource": {},
       "scopeMetrics": [
         {
-          "scope": { "name": "my_up_down" },
+          "scope": { "name": "demo_meter" },
           "metrics": [
             {
               "name": "queued",
@@ -526,12 +523,14 @@ called on the meter provider.
 
 Async meters are `observable`, eg `ObservableGauge`. When registering an
 observable/async meter, you provide one or more callback functions. The callback
-functions will be called by a periodic exporting metric reader, for example
-based on an event-loop timer. The callback(s) are responsible for returning the
-current data for the meter.
+functions will be called by a
+[periodic exporting metric reader](/docs/specs/otel/metrics/sdk/#periodic-exporting-metricreader)
+whenever its `collect()` method is called, for example based on an event-loop
+timer. The callback(s) are responsible for returning the current data for the
+meter.
 
-In this example, the callbacks are executed when `$reader->collect()` is
-executed:
+In this example, the callbacks are executed every time that `$reader->collect()`
+is executed:
 
 ```php
 $queue = [
@@ -540,7 +539,7 @@ $queue = [
     'job3',
 ];
 $meterProvider
-    ->getMeter('my_gauge')
+    ->getMeter('demo_meter')
     ->createObservableGauge('queued', 'jobs', 'The number of jobs enqueued')
     ->observe(static function (ObserverInterface $observer) use (&$queue): void {
         $observer->observe(count($queue));
@@ -554,18 +553,11 @@ $reader->collect();
 <summary>View output</summary>
 
 ```json
-{"resourceMetrics":[{"resource":{},"scopeMetrics":[{"scope":{"name":"my_gauge"},"metrics":[{"name":"queued","description":"The number of jobs enqueued","unit":"jobs","gauge":{"dataPoints":[{"startTimeUnixNano":"1687331630161510994","timeUnixNano":"1687331630162989144","asInt":"3"}]}}]}]}]}
-{"resourceMetrics":[{"resource":{},"scopeMetrics":[{"scope":{"name":"my_gauge"},"metrics":[{"name":"queued","description":"The number of jobs enqueued","unit":"jobs","gauge":{"dataPoints":[{"startTimeUnixNano":"1687331630161510994","timeUnixNano":"1687331631164759171","asInt":"2"}]}}]}]}]}
+{"resourceMetrics":[{"resource":{},"scopeMetrics":[{"scope":{"name":"demo_meter"},"metrics":[{"name":"queued","description":"The number of jobs enqueued","unit":"jobs","gauge":{"dataPoints":[{"startTimeUnixNano":"1687331630161510994","timeUnixNano":"1687331630162989144","asInt":"3"}]}}]}]}]}
+{"resourceMetrics":[{"resource":{},"scopeMetrics":[{"scope":{"name":"demo_meter"},"metrics":[{"name":"queued","description":"The number of jobs enqueued","unit":"jobs","gauge":{"dataPoints":[{"startTimeUnixNano":"1687331630161510994","timeUnixNano":"1687331631164759171","asInt":"2"}]}}]}]}]}
 ```
 
 </details>
-
-### Readers
-
-The `ExportingReader` is an implementation of the
-[periodic exporting metric reader](/docs/specs/otel/metrics/sdk/#periodic-exporting-metricreader).
-When its `collect()` method is called, all associated asynchronous meters are
-observed, and metrics pushed to the exporter.
 
 ## Logging
 
@@ -580,24 +572,38 @@ such as the [collector](/docs/collector/).
 
 ### Setup
 
-You get a logger from a `LoggerProvider`. Log records get emitted via an
-`EventLogger`:
+First, we create a `LoggerProvider`:
 
 ```php
 <?php
-$loggerProvider = new LoggerProvider(
-    new SimpleLogsProcessor(
-        new ConsoleExporter()
-    )
+
+use OpenTelemetry\API\Logs\EventLogger;
+use OpenTelemetry\API\Logs\LogRecord;
+use OpenTelemetry\Contrib\Otlp\LogsExporter;
+use OpenTelemetry\SDK\Common\Export\Stream\StreamTransportFactory;
+use OpenTelemetry\SDK\Logs\LoggerProvider;
+use OpenTelemetry\SDK\Logs\Processor\SimpleLogsProcessor;
+use OpenTelemetry\SDK\Resource\ResourceInfoFactory;
+
+require 'vendor/autoload.php';
+
+$exporter = new LogsExporter(
+    (new StreamTransportFactory())->create('php://stdout', 'application/json')
 );
-$logger = $loggerProvider->getLogger('demo', '1.0', 'http://schema.url', [/*attributes*/]);
-$eventLogger = new EventLogger($logger, 'my-domain');
+
+$loggerProvider = LoggerProvider::builder()
+    ->addLogRecordProcessor(new SimpleLogsProcessor($exporter))
+    ->setResource(ResourceInfoFactory::emptyResource())
+    ->build();
 ```
 
-Once configured, a `LogRecord` can be created and sent via the event logger's
-`logEvent`method:
+### Logging events
+
+An `EventLogger` can use a `Logger` to emit log events:
 
 ```php
+$logger = $loggerProvider->getLogger('demo', '1.0', 'http://schema.url', [/*attributes*/]);
+$eventLogger = new EventLogger($logger, 'my-domain');
 $record = (new LogRecord('hello world'))
     ->setSeverityText('INFO')
     ->setAttributes([/*attributes*/]);
@@ -605,32 +611,150 @@ $record = (new LogRecord('hello world'))
 $eventLogger->logEvent('foo', $record);
 ```
 
-## Integrations for 3rd-party logging libraries
+<details>
+<summary>View sample output</summary>
 
-### Monolog
+```json
+{
+  "resourceLogs": [
+    {
+      "resource": {},
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "demo",
+            "version": "1.0"
+          },
+          "logRecords": [
+            {
+              "observedTimeUnixNano": "1687496730010009088",
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "hello world"
+              },
+              "attributes": [
+                {
+                  "key": "event.name",
+                  "value": {
+                    "stringValue": "foo"
+                  }
+                },
+                {
+                  "key": "event.domain",
+                  "value": {
+                    "stringValue": "my-domain"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+</details>
+
+### Integrations for 3rd-party logging libraries
+
+#### Monolog
 
 You can use the
 [monolog handler](https://packagist.org/packages/open-telemetry/opentelemetry-logger-monolog)
-to send monolog logs to an OpenTelemetry-capable receiver:
+to send monolog logs to an OpenTelemetry-capable receiver. First, install the
+monolog library and a handler:
 
 ```shell
-composer require open-telemetry/opentelemetry-logger-monolog
+composer require \
+  monolog/monolog \
+  open-telemetry/opentelemetry-logger-monolog
 ```
 
-```php
-$loggerProvider = new LoggerProvider(/*params*/);
+Following on from the logging example above:
 
+```php
 $handler = new \OpenTelemetry\Contrib\Logs\Monolog\Handler(
     $loggerProvider,
     \Psr\Log\LogLevel::ERROR,
 );
-$logger = new \Monolog\Logger('example', [$handler]);
+$monolog = new \Monolog\Logger('example', [$handler]);
 
-$logger->info('hello, world');
-$logger->error('oh no', [
+$monolog->info('hello, world');
+$monolog->error('oh no', [
     'foo' => 'bar',
     'exception' => new \Exception('something went wrong'),
 ]);
-
-$loggerProvider->shutdown();
 ```
+
+<details>
+<summary>View sample output</summary>
+
+```json
+{
+  "resourceLogs": [
+    {
+      "resource": {},
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "monolog"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1687496945597429000",
+              "observedTimeUnixNano": "1687496945598242048",
+              "severityNumber": "SEVERITY_NUMBER_ERROR",
+              "severityText": "ERROR",
+              "body": {
+                "stringValue": "oh no"
+              },
+              "attributes": [
+                {
+                  "key": "channel",
+                  "value": {
+                    "stringValue": "example"
+                  }
+                },
+                {
+                  "key": "context",
+                  "value": {
+                    "arrayValue": {
+                      "values": [
+                        {
+                          "stringValue": "bar"
+                        },
+                        {
+                          "arrayValue": {
+                            "values": [
+                              {
+                                "stringValue": "Exception"
+                              },
+                              {
+                                "stringValue": "something went wrong"
+                              },
+                              {
+                                "intValue": "0"
+                              },
+                              {
+                                "stringValue": "/usr/src/myapp/logging.php:31"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+</details>
