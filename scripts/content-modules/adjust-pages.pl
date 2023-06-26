@@ -13,15 +13,18 @@ my $linkTitle = '';
 my $gD = 0;
 my $otelSpecRepoUrl = 'https://github.com/open-telemetry/opentelemetry-specification';
 my $otlpSpecRepoUrl = 'https://github.com/open-telemetry/opentelemetry-proto';
+my $semconvSpecRepoUrl = 'https://github.com/open-telemetry/semantic-conventions';
 my $semConvRef = "$otelSpecRepoUrl/blob/main/semantic_conventions/README.md";
 my $specBasePath = '/docs/specs';
 my $path_base_for_github_subdir = "content/en$specBasePath";
 my %versions = qw(
   spec: 1.22.0
   otlp: 0.20.0
+  semconv: 1.21.0
 );
 my $otelSpecVers = $versions{'spec:'};
 my $otlpSpecVers = $versions{'otlp:'};
+my $semconvSpecVers = $versions{'semconv:'};
 my $unused;
 
 sub printTitleAndFrontMatter() {
@@ -31,6 +34,8 @@ sub printTitleAndFrontMatter() {
     $frontMatterFromFile =~ s/(linkTitle:) .*/$1 OTel $otelSpecVers/;
   } elsif ($title eq 'OpenTelemetry Protocol Specification') {
     $frontMatterFromFile =~ s/(title|linkTitle): .*/$& $otlpSpecVers/g;
+  } elsif ($title eq 'OpenTelemetry Semantic Conventions') {
+    $frontMatterFromFile =~ s/(title|linkTitle): .*/$& $semconvSpecVers/g;
   }
   my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
   print "title: $titleMaybeQuoted\n" if $frontMatterFromFile !~ /title: /;

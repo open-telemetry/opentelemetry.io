@@ -189,6 +189,8 @@ module:
       target: content/community/mission.md
     - source: tmp/community/roadmap.md
       target: content/community/roadmap.md
+    - source: tmp/semconv/specification/
+      target: content/docs/specs/semconv
     - source: static
       target: static
     - source: content-modules/semantic-conventions/schemas

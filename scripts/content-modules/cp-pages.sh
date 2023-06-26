@@ -65,3 +65,21 @@ FILES=$(find $DEST -name mission-vision-values.md -o -name roadmap.md)
 $SCRIPT_DIR/adjust-pages.pl $FILES
 
 echo "COMMUNITY pages: copied and processed"
+
+## Semantic Conventions
+
+SRC=content-modules/semantic-conventions/specification
+DEST=$DEST_BASE/semconv/specification
+
+rm -Rf $DEST
+mkdir -p $DEST
+cp -R $SRC/* $DEST/
+
+find $DEST/ -name "README.md" -exec sh -c 'f="{}"; mv -- "$f" "${f%README.md}_index.md"' \;
+
+# To exclude a file use, e.g.: -not -path '*/specification/_index.md'
+FILES=$(find $DEST -name "*.md")
+
+$SCRIPT_DIR/adjust-pages.pl $FILES
+
+echo "OTEL SEMCONV pages: copied and processed"
