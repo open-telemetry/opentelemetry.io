@@ -25,11 +25,6 @@ directory.
 ```go
 package main
 
-import "errors"
-
-// ErrOverflow is returned when Fibonacci returned value is too big to be represented as uint.
-var ErrOverflow = errors.New("unsigned integer overflow")
-
 // Fibonacci returns the n-th fibonacci number.
 func Fibonacci(n uint) (uint64, error) {
 	if n <= 1 {
@@ -38,9 +33,6 @@ func Fibonacci(n uint) (uint64, error) {
 
 	var n2, n1 uint64 = 0, 1
 	for i := uint(2); i < n; i++ {
-		if (n1+n2)+n1 < n1 {
-			return 0, ErrOverflow
-		}
 		n2, n1 = n1, n1+n2
 	}
 
