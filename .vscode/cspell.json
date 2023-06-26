@@ -7,6 +7,7 @@
   // cloud-native), edit the text-lint rules in package.json
   "words": [
     "appdynamics",
+    "appender",
     "appenders",
     "aspecto",
     "bytecode",

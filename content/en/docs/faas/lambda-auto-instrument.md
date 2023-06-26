@@ -92,6 +92,16 @@ and configure the instrumentation and Collector layers, and then enable tracing.
 2. In the Layers in Designer section, choose Add a layer.
 3. Under specify an ARN, paste the layer ARN, and then choose Add.
 
+Find the
+[most recent instrumentation layer release](https://github.com/open-telemetry/opentelemetry-lambda/releases)
+for your language and use it's ARN after changing the `<region>` tag to the
+region your Lambda is in.
+
+Note: Lambda layers are a regionalized resource, meaning that they can only be
+used in the Region in which they are published. Make sure to use the layer in
+the same region as your Lambda functions. The community publishes layers in all
+available regions.
+
 ### Configure your SDK exporters
 
 The default exporters used by the Lambda layers will work without any changes if

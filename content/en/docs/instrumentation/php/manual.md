@@ -13,7 +13,7 @@ The following shows how to install, initialize, and run an application
 instrumented with OpenTelemetry.
 
 To use the OpenTelemetry SDK for PHP you need packages that satisfy the
-dependencies for `php-http/async-client-implementation` and
+dependencies for `psr/http-client-implementation` and
 `psr/http-factory-implementation`, for example the Guzzle 7 HTTP Adapter
 satisfies both:
 
@@ -103,8 +103,6 @@ shutdown process:
 To do [Tracing](/docs/concepts/signals/traces/) you'll need to acquire a
 [`Tracer`](/docs/concepts/signals/traces/#tracer).
 
-**Note:** Methods of the OpenTelemetry SDK should never be called.
-
 First, a `Tracer` must be acquired, which is responsible for creating spans and
 interacting with the [Context](../propagation/). A tracer is acquired by using
 the OpenTelemetry API specifying the name and version of the
@@ -148,11 +146,11 @@ scope if you have activated it.
 Most of the time, we want to correlate
 [spans](/docs/concepts/signals/traces/#spans) for nested operations.
 OpenTelemetry supports tracing within processes and across remote processes. For
-more details how to share context between remote processes, see
+more details on how to share context between remote processes, see
 [Context Propagation](../propagation/).
 
-For a method `a` calling a method `b`, the spans could be manually linked in the
-following way:
+For a method `parent` calling a method `child`, the spans could be manually
+linked in the following way:
 
 ```php
 
@@ -160,7 +158,6 @@ following way:
   $scope = $parentSpan->activate();
   try {
     $child = $tracer->spanBuilder("child")->startSpan();
-    //do stuff
     $child->end();
   } finally {
     $parentSpan->end();
@@ -214,8 +211,8 @@ $span->addEvent("End");
 
 ```php
 $eventAttributes = Attributes::create([
-    "key" => "value",
-    "result" => 3.14159;
+    "operation" => "calculate-pi",
+    "result" => 3.14159,
 ]);
 $span->addEvent("End Computation", $eventAttributes);
 ```
@@ -230,10 +227,10 @@ Spans, each representing a single incoming item being processed in the batch.
 
 ```php
 $span = $tracer->spanBuilder("span-with-links")
-        ->addLink($parentSpan1->getContext())
-        ->addLink($parentSpan2->getContext())
-        ->addLink($parentSpan3->getContext())
-        ->addLink($remoteSpanContext)
+    ->addLink($parentSpan1->getContext())
+    ->addLink($parentSpan2->getContext())
+    ->addLink($parentSpan3->getContext())
+    ->addLink($remoteSpanContext)
     ->startSpan();
 ```
 
@@ -260,7 +257,8 @@ try {
   // do something
 } catch (Throwable $t) {
   $span->setStatus(StatusCode::STATUS_ERROR, "Something bad happened!");
-  $span->recordException($t); //This will capture things like the current stack trace in the span.
+  //This will capture things like the current stack trace in the span.
+  $span->recordException($t, ['exception.escaped' => true]);
   throw $t;
 } finally {
   $span->end(); // Cannot modify span after this call
@@ -272,26 +270,41 @@ try {
 
 It is not always feasible to trace and export every user request in an
 application. In order to strike a balance between observability and expenses,
-traces can be sampled.
+traces can be [sampled](/docs/concepts/sampling).
 
-The OpenTelemetry SDK offers four samplers out of the box:
+The OpenTelemetry SDK provides four samplers:
 
 - `AlwaysOnSampler` which samples every trace regardless of upstream sampling
   decisions.
 - `AlwaysOffSampler` which doesn't sample any trace, regardless of upstream
   sampling decisions.
-- `ParentBased` which uses the parent span to make sampling decisions, if
-  present.
 - `TraceIdRatioBased` which samples a configurable percentage of traces, and
   additionally samples any trace that was sampled upstream.
+- `ParentBased` which uses the parent span to make sampling decisions, if
+  present. This sampler needs to be used in conjunction with a root sampler,
+  which is used to determine if a root span (a span without a parent) should be
+  sampled. The root sampler can be any of the other samplers.
+
+<!-- prettier-ignore-start -->
+{{< tabpane lang=php persistLang=false >}}
+{{< tab "TraceId ratio-based" >}}
+//trace 50% of requests
+$sampler = new TraceIdRatioBasedSampler(0.5);
+{{< /tab >}}
+{{< tab "Always On" >}}
+//always trace
+$sampler = new AlwaysOnSampler();
+{{< /tab >}}
+{{< tab "Parent-based + ratio-based" >}}
+//always sample if the parent is sampled, otherwise only sample 10% of spans
+$sampler = new ParentBased(new TraceIdRatioBasedSampler(0.1));
+{{< /tab >}}
+{{< /tabpane >}}
+<!-- prettier-ignore-end -->
 
 ```php
 $tracerProvider = TracerProvider::builder()
-  ->setSampler(new AlwaysOnSampler())
-  //or
-  ->setSampler(new AlwaysOffSampler())
-  //or
-  ->setSampler(new TraceIdRatioBasedSampler(0.5))
+  ->setSampler($sampler)
   ->build();
 ```
 
@@ -329,7 +342,7 @@ sending the telemetry data to a particular backend:
 - `Console`: sends the data to a stream such as `stdout` or `stderr`
 - `Zipkin`: prepares and sends the collected telemetry data to a Zipkin backend
   via the Zipkin APIs.
-- Logging Exporter: saves the telemetry data into log streams.
+- Logging Exporter: sends the telemetry data to a PSR-3 logger.
 - OpenTelemetry Protocol Exporter: sends the data in OTLP format to the
   [OpenTelemetry Collector](/docs/collector/) or other OTLP receivers. The
   underlying `Transport` can send:
