@@ -109,6 +109,7 @@
           "Kubernetes",
           "MySQL",
           "NGINX",
+          "OpenTelemetry Collector",
           "OTel",
           "OTEP",
           "PHP",

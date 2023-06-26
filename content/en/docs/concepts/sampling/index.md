@@ -121,3 +121,19 @@ of trace data may first use head sampling to only sample a small percentage of
 traces, and then later in the telemetry pipeline use tail sampling to make more
 sophisticated sampling decisions before exporting to a backend. This is often
 done in the interest of protecting the telemetry pipeline from being overloaded.
+
+## Support
+
+### Collector
+
+The OpenTelemetry Collector includes the following sampling processors:
+
+- [Probabilistic Sampling Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/probabilisticsamplerprocessor)
+- [Tail Sampling Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor)
+
+### Language SDKs
+
+For the individual language specific implementations of the OpenTelemetry API &
+SDK you will find support for sampling at the respective documentation pages:
+
+{{% sampling-support-list " " %}}
