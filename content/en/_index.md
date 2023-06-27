@@ -42,7 +42,7 @@ spelling: cSpell:ignore shortcode
 
 {{% blocks/lead color="white" %}}
 
-OpenTelemetry is a collection of tools, APIs, and SDKs. Use it to instrument,
+OpenTelemetry is a collection of APIs, SDKs, and tools. Use it to instrument,
 generate, collect, and export telemetry data (metrics, logs, and traces) to help
 you analyze your software's performance and behavior.
 
