@@ -2,10 +2,10 @@
 title: Manual Instrumentation
 linkTitle: Manual
 weight: 20
+description: Manual instrumentation for OpenTelemetry Python
 ---
 
-Manual instrumentation is the process of adding observability code to your
-application.
+{{% docs/instrumentation/manual-intro %}}
 
 ## Initializing the SDK
 

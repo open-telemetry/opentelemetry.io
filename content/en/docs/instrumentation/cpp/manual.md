@@ -2,10 +2,10 @@
 title: Manual Instrumentation
 linkTitle: Manual
 weight: 30
+description: Manual instrumentation for OpenTelemetry C++
 ---
 
-Manual instrumentation is the process of adding observability code to your
-application.
+{{% docs/instrumentation/manual-intro %}}
 
 ## Tracing
 

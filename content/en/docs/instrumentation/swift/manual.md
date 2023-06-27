@@ -2,8 +2,10 @@
 title: Manual Instrumentation
 linkTitle: Manual
 weight: 30
-description: Manual instrumentation for opentelemetry-swift
+description: Manual instrumentation for OpenTelemetry Swift
 ---
+
+{{% docs/instrumentation/manual-intro %}}
 
 ## Setup
 

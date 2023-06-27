@@ -2,12 +2,10 @@
 title: Manual
 aliases: [/docs/instrumentation/erlang/instrumentation]
 weight: 30
+description: Manual instrumentation for OpenTelemetry Erlang/Elixir
 ---
 
-Instrumentation is the act of adding observability code to your application.
-This can be done with direct calls to the OpenTelemetry API within your code or
-including a dependency which calls the API and hooks into your project, like a
-middleware for an HTTP server.
+{{% docs/instrumentation/manual-intro %}}
 
 ## Tracing
 
