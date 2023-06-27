@@ -1576,7 +1576,7 @@ import (
 	"time"
 	"go.opentelemetry.io/collector/pdata/pcommon"
 	"go.opentelemetry.io/collector/pdata/ptrace"
-	conventions "go.opentelemetry.io/collector/semconv/v1.9.0""
+	conventions "go.opentelemetry.io/collector/semconv/v1.9.0"
 )
 
 type Atm struct {
