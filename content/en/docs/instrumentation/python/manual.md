@@ -217,7 +217,7 @@ with tracer.start_as_current_span("span-1"):
 
 with tracer.start_as_current_span("span-2", links=[link_from_span_1]):
     # Do something that 'span-2' tracks.
-    # The link in 'span-2' is casually associated it with the 'span-1',
+    # The link in 'span-2' is causally associated it with the 'span-1',
     # but it is not a child span.
     pass
 ```
