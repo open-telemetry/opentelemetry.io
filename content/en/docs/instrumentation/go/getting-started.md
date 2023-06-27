@@ -20,7 +20,12 @@ For reference, a complete example of the code you will build can be found
 
 To start building the application, make a new directory named `fib` to house our
 Fibonacci project. Next, add the following to a new file named `fib.go` in that
-directory.
+directory[^1].
+
+[^1]:
+    The `Fibonacci()` function intentionally produces invalid results for
+    sufficiently large values of `n`. This is addressed in
+    [Error handling](#error-handling).
 
 ```go
 package main
@@ -503,11 +508,11 @@ goodbye
 A new file named `traces.txt` should be created in your working directory. All
 the traces created from running your application should be in there!
 
-## (Bonus) Errors
+## Error handling
 
-At this point you have a working application and it is producing tracing
-telemetry data. Unfortunately, it was discovered that there is an error in the
-core functionality of the `fib` module.
+At this point, you have a working application and it is producing tracing
+telemetry data. Unfortunately, there is an error in the core functionality of
+the `fib` module.
 
 ```console
 $ go run .
@@ -517,10 +522,10 @@ Fibonacci(100) = 3736710778780434371
 # …
 ```
 
-But the 100-th Fibonacci number is `354224848179261915075`, not
+The 100-th Fibonacci number is `354224848179261915075`, not
 `3736710778780434371`! This application is only meant as a demo, but it
-shouldn't return wrong values. Update the `Fibonacci` function to return an
-error instead of computing incorrect values.
+shouldn't return incorrect values. Update the `Fibonacci` function to return an
+error instead of an incorrect value:
 
 ```go
 // Fibonacci returns the n-th fibonacci number. An error is returned if the
@@ -545,7 +550,7 @@ func Fibonacci(n uint) (uint64, error) {
 
 Great, you have fixed the code, but it would be ideal to include errors returned
 to a user in the telemetry data. Luckily, spans can be configured to communicate
-this information. Update the `Write` method in `app.go` with the following code.
+such information. Update the `Write` method in `app.go` with the following code.
 
 ```go
 // Write writes the n-th Fibonacci number back to the user.
