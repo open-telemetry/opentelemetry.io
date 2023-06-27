@@ -191,8 +191,17 @@ module:
       target: content/community/roadmap.md
     - source: static
       target: static
+    - source: content-modules/semantic-conventions/schemas
+      target: static/schemas
+      # TODO: drop the lines marked below once
+      # https://github.com/open-telemetry/opentelemetry.io/issues/2721
+      # is fully resolved.
+      # [DROP-FROM-HERE
+      excludeFiles: [1.21.0]
     - source: content-modules/opentelemetry-specification/schemas
       target: static/schemas
+      includeFiles: [1.21.0]
+      # DROP-TO-HERE]
     - source: static/img
       target: static/img
     - source: content-modules/opentelemetry-specification/internal/img
