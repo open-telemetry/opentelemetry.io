@@ -17,13 +17,13 @@ Familiarity with the following pages is assumed:
 
 The Collector consists of four components that access telemetry data:
 
-- <img width="32" class="img-initial" src="/img/logos/32x32/Receivers.svg"></img>
+- <img width="32" class="img-initial" src="/img/logos/32x32/Receivers.svg">
   [Receivers](#receivers)
-- <img width="32" class="img-initial" src="/img/logos/32x32/Processors.svg"></img>
+- <img width="32" class="img-initial" src="/img/logos/32x32/Processors.svg">
   [Processors](#processors)
-- <img width="32" class="img-initial" src="/img/logos/32x32/Exporters.svg"></img>
+- <img width="32" class="img-initial" src="/img/logos/32x32/Exporters.svg">
   [Exporters](#exporters)
-- <img width="32" class="img-initial" src="/img/logos/32x32/Load_Balancer.svg"></img>
+- <img width="32" class="img-initial" src="/img/logos/32x32/Load_Balancer.svg">
   [Connectors](#connectors)
 
 These components once configured must be enabled via pipelines within the
@@ -174,7 +174,7 @@ service:
 
 ## Receivers
 
-<img width="35" class="img-initial" src="/img/logos/32x32/Receivers.svg"></img>
+<img width="35" class="img-initial" src="/img/logos/32x32/Receivers.svg">
 
 A receiver, which can be push or pull based, is how data gets into the
 Collector. Receivers may support one or more
@@ -251,7 +251,7 @@ receivers:
 
 ## Processors
 
-<img width="35" class="img-initial" src="/img/logos/32x32/Processors.svg"></img>
+<img width="35" class="img-initial" src="/img/logos/32x32/Processors.svg">
 
 Processors are run on data between being received and being exported. Processors
 are optional though
@@ -334,7 +334,7 @@ processors:
 
 ## Exporters
 
-<img width="35" class="img-initial" src="/img/logos/32x32/Exporters.svg"></img>
+<img width="35" class="img-initial" src="/img/logos/32x32/Exporters.svg">
 
 An exporter, which can be push or pull based, is how you send data to one or
 more backends/destinations. Exporters may support one or more
