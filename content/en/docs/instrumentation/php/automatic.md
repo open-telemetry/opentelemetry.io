@@ -6,25 +6,48 @@ spelling: cSpell:ignore userland phar AUTOLOAD tracecontext myapp configurator
 spelling: cSpell:ignore packagist pecl shortcode unindented
 ---
 
-Automatic instrumentation with PHP requires at least PHP 8.0, and
-[the OpenTelemetry PHP extension](https://github.com/open-telemetry/opentelemetry-php-instrumentation).
-The extension allows developers code to hook into classes and methods, and
-execute userland code before and after the hooked method runs.
+Automatic instrumentation with PHP requires at least PHP 8.0, and the
+[OpenTelemetry PHP extension](https://github.com/open-telemetry/opentelemetry-php-instrumentation).
+The extension enables registering observer functions (as PHP code) against
+classes and methods, and executing those functions before and after the observed
+method runs.
+
+{{% alert title="Important" color="warning" %}}Installing the OpenTelemetry
+extension by itself will not generate traces. You must also install one or more
+[packages](/ecosystem/registry/?component=instrumentation&language=php) for the
+frameworks and libraries that you are using, or alternatively write your
+own.{{% /alert %}}
 
 ## Example
 
 ```php
 <?php
+
+use OpenTelemetry\API\Common\Instrumentation\CachedInstrumentation;
+use OpenTelemetry\API\Trace\Span;
+use OpenTelemetry\API\Trace\StatusCode;
+use OpenTelemetry\Context\Context;
+
+require 'vendor/autoload.php';
+
+class DemoClass
+{
+    public function run(): void
+    {
+        echo 'Hello, world';
+    }
+}
+
 OpenTelemetry\Instrumentation\hook(
-    'class': DemoClass::class,
-    'function': 'run',
-    'pre': static function (DemoClass $demo, array $params, string $class, string $function, ?string $filename, ?int $lineno) {
+    class: DemoClass::class,
+    function: 'run',
+    pre: static function (DemoClass $demo, array $params, string $class, string $function, ?string $filename, ?int $lineno) {
         static $instrumentation;
         $instrumentation ??= new CachedInstrumentation('example');
         $span = $instrumentation->tracer()->spanBuilder('democlass-run')->startSpan();
         Context::storage()->attach($span->storeInContext(Context::getCurrent()));
     },
-    'post': static function (DemoClass $demo, array $params, $returnValue, ?Throwable $exception) {
+    post: static function (DemoClass $demo, array $params, $returnValue, ?Throwable $exception) {
         $scope = Context::storage()->scope();
         $scope->detach();
         $span = Span::fromContext($scope->context());
