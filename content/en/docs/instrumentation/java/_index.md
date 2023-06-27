@@ -2,7 +2,7 @@
 title: Java
 description: >-
   <img width="35" class="img-initial" src="/img/logos/32x32/Java_SDK.svg"
-  alt="Java"></img> A language-specific implementation of OpenTelemetry in Java.
+  alt="Java"> A language-specific implementation of OpenTelemetry in Java.
 aliases: [/java, /java/metrics, /java/tracing]
 weight: 18
 cascade:
