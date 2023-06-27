@@ -15,7 +15,7 @@ cp -R $SRC/* $DEST/
 find $DEST/ -name "README.md" -exec sh -c 'f="{}"; mv -- "$f" "${f%README.md}_index.md"' \;
 
 # To exclude a file use, e.g.: -not -path '*/specification/_index.md'
-FILES=$(find $DEST -name "*.md")
+FILES=$(find $DEST -name "*.md" -not -path '*/specification/*/semantic_conventions/*')
 
 $SCRIPT_DIR/adjust-pages.pl $FILES
 

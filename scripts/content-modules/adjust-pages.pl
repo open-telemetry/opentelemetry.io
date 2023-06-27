@@ -35,6 +35,7 @@ sub printTitleAndFrontMatter() {
   } elsif ($title eq 'OpenTelemetry Protocol Specification') {
     $frontMatterFromFile =~ s/(title|linkTitle): .*/$& $otlpSpecVers/g;
   } elsif ($title eq 'OpenTelemetry Semantic Conventions') {
+    $title .= " $semconvSpecVers";
     $frontMatterFromFile =~ s/(title|linkTitle): .*/$& $semconvSpecVers/g;
   }
   my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
@@ -82,6 +83,10 @@ while(<>) {
     while(<>) { last if/<!-- tocstop -->/; }
     next;
   }
+
+  # SEMANTIC CONVENTIONS custom processing
+
+  s|\(https://github.com/open-telemetry/semantic-conventions\)|($specBasePath/semconv)|;
 
   # SPECIFICATION custom processing
 
