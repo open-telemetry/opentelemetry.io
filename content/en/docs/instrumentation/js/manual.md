@@ -5,10 +5,10 @@ aliases:
   - /docs/instrumentation/js/instrumentation
 weight: 30
 spelling: cSpell:ignore Millis
+description: Manual instrumentation for OpenTelemetry JavaScript
 ---
 
-Manual instrumentation is the process of adding observability code to your
-application.
+{{% docs/instrumentation/manual-intro %}}
 
 ## Tracing
 

@@ -6,13 +6,10 @@ aliases:
   - /docs/instrumentation/ruby/events
   - /docs/instrumentation/ruby/context-propagation
 weight: 20
+description: Manual instrumentation for OpenTelemetry Ruby
 ---
 
-Auto-instrumentation is the easiest way to get started with instrumenting your
-code, but in order to get the most insight into your system, you should add
-manual instrumentation where appropriate. To do this, use the OpenTelemetry SDK
-to access the currently executing span and add attributes to it, and/or to
-create new spans.
+{{% docs/instrumentation/manual-intro %}}
 
 ## Initializing the SDK
 

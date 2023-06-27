@@ -6,15 +6,10 @@ aliases:
   - /docs/java/manual_instrumentation
   - /docs/instrumentation/java/manual_instrumentation
 weight: 30
+description: Manual instrumentation for OpenTelemetry Java
 ---
 
-**Libraries** that want to export telemetry data using OpenTelemetry MUST only
-depend on the `opentelemetry-api` package and should never configure or depend
-on the OpenTelemetry SDK. The SDK configuration must be provided by
-**Applications** which should also depend on the `opentelemetry-sdk` package, or
-any other implementation of the OpenTelemetry API. This way, libraries will
-obtain a real implementation only if the user application is configured for it.
-For more details, check out the [Library Guidelines].
+{{% docs/instrumentation/manual-intro %}}
 
 ## Setup
 
