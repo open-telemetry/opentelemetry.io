@@ -86,8 +86,7 @@ The top-level fields are:
 | Attributes            | Additional information about the event.      |
 
 You can find more details on log records and the definitions of those fields in
-the
-[Logs Data Model](https://opentelemetry.io/docs/specs/otel/logs/data-model/).
+the [Logs Data Model](/docs/specs/otel/logs/data-model/).
 
 ## Language Support
 
