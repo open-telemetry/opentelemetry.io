@@ -11,3 +11,6 @@
 [submodule "content-modules/opentelemetry-proto"]
 	path = content-modules/opentelemetry-proto
 	url = https://github.com/open-telemetry/opentelemetry-proto
+[submodule "content-modules/semantic-conventions"]
+	path = content-modules/semantic-conventions
+	url = https://github.com/open-telemetry/semantic-conventions
