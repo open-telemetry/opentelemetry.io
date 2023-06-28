@@ -181,6 +181,8 @@ module:
       target: content
     - source: tmp/otel/specification
       target: content/docs/specs/otel
+    - source: tmp/opamp
+      target: content/docs/specs/opamp
     - source: tmp/otlp/docs/specification.md
       target: content/docs/specs/otlp/_index.md
     - source: tmp/otlp/docs/img
