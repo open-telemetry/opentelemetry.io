@@ -10,11 +10,13 @@ description: Manual instrumentation for OpenTelemetry Go
 
 {{% docs/instrumentation/manual-intro %}}
 
-## Getting a Tracer
+## Setup
+
+## Traces
+
+### Getting a Tracer
 
 To create spans, you'll need to acquire or initialize a tracer first.
-
-### Initializing a new tracer
 
 Ensure you have the right packages installed:
 
@@ -91,7 +93,7 @@ func main() {
 
 You can now access `tracer` to manually instrument your code.
 
-## Creating Spans
+### Creating Spans
 
 Spans are created by tracers. If you don't have one initialized, you'll need to
 do that.
@@ -267,11 +269,7 @@ It is highly recommended that you also set a span's status to `Error` when using
 operation as an error span. The `RecordError` function does **not**
 automatically set a span status when called.
 
-## Creating Metrics
-
-The metrics API is currently unstable, documentation TBA.
-
-## Propagators and Context
+### Propagators and Context
 
 Traces can extend beyond a single process. This requires _context propagation_,
 a mechanism where identifiers for a trace are sent to remote processes.
@@ -295,6 +293,20 @@ otel.SetTextMapPropagator(propagation.TraceContext{})
 After configuring context propagation, you'll most likely want to use automatic
 instrumentation to handle the behind-the-scenes work of actually managing
 serializing the context.
+
+## Metrics
+
+The metrics API is currently unstable, documentation TBA.
+
+## Logs
+
+The logs API is currently unstable, documentation TBA.
+
+## Next Steps
+
+You’ll also want to configure an appropriate exporter to
+[export your telemetry data](/docs/instrumentation/go/exporters) to one or more
+telemetry backends.
 
 [opentelemetry specification]: /docs/specs/otel/
 [trace semantic conventions]: /docs/specs/otel/trace/semantic_conventions/
