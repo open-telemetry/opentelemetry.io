@@ -185,6 +185,14 @@ module:
       target: content/docs/specs/otlp/_index.md
     - source: tmp/otlp/docs/img
       target: content/docs/specs/otlp/img
+    - source: tmp/semconv/specification/logs
+      target: content/docs/specs/semconv/logs
+    - source: tmp/semconv/specification/metrics
+      target: content/docs/specs/semconv/metrics
+    - source: tmp/semconv/specification/resource
+      target: content/docs/specs/semconv/resource
+    - source: tmp/semconv/specification/trace
+      target: content/docs/specs/semconv/trace
     - source: tmp/community/mission-vision-values.md
       target: content/community/mission.md
     - source: tmp/community/roadmap.md

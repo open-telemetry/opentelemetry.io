@@ -311,6 +311,14 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-15T20:40:15.875102-05:00"
   },
+  "https://cloud.google.com/compute/docs/instances/custom-hostname-vm": {
+    "StatusCode": 200,
+    "LastSeen": "2023-06-27T17:18:02.125065-04:00"
+  },
+  "https://cloud.google.com/compute/docs/internal-dns#instance-fully-qualified-domain-names": {
+    "StatusCode": 200,
+    "LastSeen": "2023-06-27T17:17:56.736764-04:00"
+  },
   "https://cloud.google.com/error-reporting/reference/rest/v1beta1/projects.events/report": {
     "StatusCode": 200,
     "LastSeen": "2023-02-15T20:39:17.120733-05:00"
@@ -1002,6 +1010,10 @@
   "https://docs.oracle.com/en/java/javase/17/docs/api/jdk.management/com/sun/management/OperatingSystemMXBean.html#getProcessCpuLoad%28%29": {
     "StatusCode": 200,
     "LastSeen": "2023-05-15T13:56:30.762393-04:00"
+  },
+  "https://docs.oracle.com/en/java/javase/17/docs/api/jdk.management/com/sun/management/OperatingSystemMXBean.html#getProcessCpuTime%28%29": {
+    "StatusCode": 200,
+    "LastSeen": "2023-06-27T17:17:39.237886-04:00"
   },
   "https://docs.oracle.com/en/java/javase/17/docs/api/jdk.management/com/sun/management/OperatingSystemMXBean.html#getSystemCpuLoad%28%29": {
     "StatusCode": 200,
@@ -4491,9 +4503,17 @@
     "StatusCode": 206,
     "LastSeen": "2023-05-15T13:56:52.995519-04:00"
   },
+  "https://www.ibm.com/docs/api/v1/content/SSYKE2_8.0.0/openj9/api/jdk8/jre/management/extension/com/ibm/lang/management/OperatingSystemMXBean.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-06-27T17:17:49.452299-04:00"
+  },
   "https://www.ibm.com/docs/api/v1/content/SSYKE2_8.0.0/openj9/api/jdk8/jre/management/extension/com/ibm/lang/management/OperatingSystemMXBean.html#getProcessCpuLoad--": {
     "StatusCode": 206,
     "LastSeen": "2023-06-09T09:34:45.428293-04:00"
+  },
+  "https://www.ibm.com/docs/api/v1/content/SSYKE2_8.0.0/openj9/api/jdk8/jre/management/extension/com/ibm/lang/management/OperatingSystemMXBean.html#getProcessCpuTime--": {
+    "StatusCode": 206,
+    "LastSeen": "2023-06-27T17:17:44.341257-04:00"
   },
   "https://www.ibm.com/docs/api/v1/content/SSYKE2_8.0.0/openj9/api/jdk8/jre/management/extension/com/ibm/lang/management/OperatingSystemMXBean.html#getSystemCpuLoad--": {
     "StatusCode": 206,
@@ -4827,6 +4847,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-05-15T13:58:27.159768-04:00"
   },
+  "https://www.rfc-editor.org/rfc/rfc5789.html": {
+    "StatusCode": 200,
+    "LastSeen": "2023-06-27T17:17:33.646508-04:00"
+  },
   "https://www.rfc-editor.org/rfc/rfc9110.html": {
     "StatusCode": 200,
     "LastSeen": "2023-02-18T13:35:03.0461-05:00"
@@ -4838,6 +4862,10 @@
   "https://www.rfc-editor.org/rfc/rfc9110.html#field.user-agent": {
     "StatusCode": 200,
     "LastSeen": "2023-02-18T13:40:51.35642-05:00"
+  },
+  "https://www.rfc-editor.org/rfc/rfc9110.html#name-methods": {
+    "StatusCode": 200,
+    "LastSeen": "2023-06-27T17:17:27.904619-04:00"
   },
   "https://www.rfc-editor.org/rfc/rfc9110.html#name-uri-origin": {
     "StatusCode": 200,
