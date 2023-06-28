@@ -142,6 +142,9 @@ while(<>) {
   # Make website-local page references local:
   s|https://opentelemetry.io/|/|g;
 
+  ## OpAMP
+
+  s|\]\((proto/opamp.proto)\)|]($opAmpSpecRepoUrl/blob/main/$1)|;
   # TODO: drop once OpAMP spec has been updated
   s|^#+|#$&| if $ARGV =~ /\/opamp/;
 
