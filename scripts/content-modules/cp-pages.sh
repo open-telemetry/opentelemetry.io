@@ -82,4 +82,21 @@ FILES=$(find $DEST -name "*.md")
 
 $SCRIPT_DIR/adjust-pages.pl $FILES
 
-echo "OTEL SEMCONV pages: copied and processed"
+echo "SEM CONV  pages: copied and processed"
+
+## OpAMP spec
+
+SRC=content-modules/opamp-spec
+DEST=$DEST_BASE/opamp
+
+rm -Rf $DEST
+mkdir -p $DEST
+# Note: in contrast to other projects, we're copying a single file here
+cp $SRC/specification.md $DEST/index.md
+
+# To exclude a file use, e.g.: -not -path '*/specification/_index.md'
+FILES=$(find $DEST -name "*.md")
+
+$SCRIPT_DIR/adjust-pages.pl $FILES
+
+echo "OpAMP SPEC page: copied and processed"
