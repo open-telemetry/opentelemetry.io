@@ -36,8 +36,8 @@ files.
     installation. Under Linux, run the following command (which will
     install/upgrade to the version specified in [.nvmrc][]):
 
-    ```console
-    $ nvm install
+    ```sh
+    nvm install
     ```
 
     To [install under Windows][nodejs-win], use [nvm-windows][]:
@@ -47,8 +47,8 @@ files.
     ```
 
 4.  Get npm packages and other prerequisites:
-    ```console
-    $ npm install
+    ```sh
+    npm install
     ```
 
 You're now ready to [build](#build), [serve](#serve) and/or make updates to the
@@ -58,8 +58,8 @@ website files.
 
 To **build** the site run:
 
-```console
-$ npm run build
+```sh
+npm run build
 ```
 
 You'll find the generated site files under `public`.
@@ -68,8 +68,8 @@ You'll find the generated site files under `public`.
 
 To **serve** the site run:
 
-```console
-$ npm run serve
+```sh
+npm run serve
 ```
 
 The site will be served at [localhost:1313][].
@@ -77,8 +77,8 @@ The site will be served at [localhost:1313][].
 If you need to test Netlify redirects, use the following command, and visit the
 site at [localhost:8888][]:
 
-```console
-$ npm run serve:netlify
+```sh
+npm run serve:netlify
 ```
 
 > **Note 1**: The serve command serves files from memory, not from disk.
@@ -115,8 +115,8 @@ Enhancements and fixes to the website are most welcome! Before submitting a
 [pull request][pr] (PR) to the repo, run the following command and address any
 reported issues:
 
-```console
-$ npm run test
+```sh
+npm run test
 ```
 
 If you only want to check the format of files, run:
@@ -130,8 +130,8 @@ All matched files use Prettier code style!
 
 To _fix_ the format of files, run:
 
-```console
-$ npm run format
+```sh
+npm run format
 ```
 
 ### Submodule changes
@@ -148,9 +148,9 @@ itself.
 > **For expert contributors**, you can work directly in the submodule. You'll
 > then be able to directly build and serve your (submodule) changes. By default,
 > the CI scripts get submodules on every invocation. To prevent this behavior
-> while you work within a submodule, set the environment variable `GET="no"`.
+> while you work within a submodule, set the environment variable `GET=no`.
 > You'll also need to `git fetch --unshallow` the submodule before you can
-> submit a PR. Alternatively, set `DEPTH="100"` and re-fetch submodules.
+> submit a PR. Alternatively, set `DEPTH=100` and re-fetch submodules.
 
 ## Site deploys and PR previews
 
