@@ -41,8 +41,12 @@ sub printTitleAndFrontMatter() {
   if ($title eq 'OpenTelemetry Specification') {
     $title .= " $otelSpecVers";
     $frontMatterFromFile =~ s/(linkTitle:) .*/$1 OTel $otelSpecVers/;
+    # TODO: add to spec landing page
+    $frontMatterFromFile .= "weight: 10\n" if $frontMatterFromFile !~ /^\s*weight/;
   } elsif ($title eq 'OpenTelemetry Protocol Specification') {
     $frontMatterFromFile =~ s/(title|linkTitle): .*/$& $otlpSpecVers/g;
+    # TODO: add to spec landing page
+    $frontMatterFromFile .= "weight: 20\n" if $frontMatterFromFile !~ /^\s*weight/;
   } elsif ($title eq 'OpAMP: Open Agent Management Protocol') {
     $frontMatterFromFile = $opampFrontMatter unless $frontMatterFromFile;
   }
