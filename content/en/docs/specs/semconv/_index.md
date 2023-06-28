@@ -1,6 +1,6 @@
 ---
 title: OpenTelemetry Semantic Conventions
-linkTitle: SemConv
+linkTitle: Semantic Conventions
 cascade:
   draft: true
 ---
