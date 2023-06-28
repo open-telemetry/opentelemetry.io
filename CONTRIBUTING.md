@@ -92,11 +92,9 @@ $ npm run serve:netlify
 The website is built from the following content:
 
 - Files under `content/`, `static/`, etc. per [Hugo][] defaults.
-- Mount points, defined in [hugo.yaml][] under `mounts`.
-- Content from git submodules under [content-modules][].
-
-Note that nonstandard mount points and symlinked sections under `content/` refer
-to directories under [content-modules][], and no where else.
+- Mount points, defined in [hugo.yaml][] under `mounts`. Mounts are either
+  directly from git submodules under [content-modules][], or preprocessed
+  content from `content-modules` (placed under `tmp/`), and no where else.
 
 [hugo.yaml]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/hugo.yaml

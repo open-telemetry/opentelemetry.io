@@ -64,6 +64,35 @@
     "update:submodule:lang": "run-s update:submodule _get:submodule:non-lang",
     "update:submodule": "set -x && git submodule update --remote ${DEPTH:- --depth 1}"
   },
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "cspell": "^6.31.1",
+    "hugo-extended": "0.113.0",
+    "netlify-cli": "^15.0.1",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^10.1.0",
+    "prettier": "^2.8.4",
+    "textlint": "^13.1.4",
+    "textlint-filter-rule-allowlist": "^4.0.0",
+    "textlint-filter-rule-comments": "^1.2.2",
+    "textlint-rule-terminology": "^3.0.4"
+  },
+  "dependencies": {
+    "@opentelemetry/api": "^1.3.0",
+    "@opentelemetry/auto-instrumentations-web": "^0.32.0",
+    "@opentelemetry/context-zone": "^1.8.0",
+    "@opentelemetry/core": "^1.8.0",
+    "@opentelemetry/exporter-trace-otlp-http": "^0.40.0",
+    "@opentelemetry/instrumentation": "^0.40.0",
+    "@opentelemetry/resources": "^1.8.0",
+    "@opentelemetry/sdk-trace-base": "^1.8.0",
+    "@opentelemetry/sdk-trace-web": "^1.8.0",
+    "@opentelemetry/semantic-conventions": "^1.8.0"
+  },
+  "engines-comment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
+  "engines": {
+    "node": "18.x"
+  },
   "private": true,
   "prettier": {
     "proseWrap": "always",
@@ -135,30 +164,5 @@
         ]
       }
     }
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.14",
-    "cspell": "^6.31.1",
-    "hugo-extended": "0.113.0",
-    "netlify-cli": "^15.0.1",
-    "npm-run-all": "^4.1.5",
-    "postcss-cli": "^10.1.0",
-    "prettier": "^2.8.4",
-    "textlint": "^13.1.4",
-    "textlint-filter-rule-allowlist": "^4.0.0",
-    "textlint-filter-rule-comments": "^1.2.2",
-    "textlint-rule-terminology": "^3.0.4"
-  },
-  "dependencies": {
-    "@opentelemetry/api": "^1.3.0",
-    "@opentelemetry/auto-instrumentations-web": "^0.32.0",
-    "@opentelemetry/context-zone": "^1.8.0",
-    "@opentelemetry/core": "^1.8.0",
-    "@opentelemetry/exporter-trace-otlp-http": "^0.40.0",
-    "@opentelemetry/instrumentation": "^0.40.0",
-    "@opentelemetry/resources": "^1.8.0",
-    "@opentelemetry/sdk-trace-base": "^1.8.0",
-    "@opentelemetry/sdk-trace-web": "^1.8.0",
-    "@opentelemetry/semantic-conventions": "^1.8.0"
   }
 }
