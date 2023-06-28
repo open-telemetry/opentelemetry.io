@@ -11,7 +11,7 @@ description: Manual instrumentation for OpenTelemetry Ruby
 
 {{% docs/instrumentation/manual-intro %}}
 
-## Initializing the SDK
+## Setup
 
 First, ensure you have the SDK package installed:
 
@@ -21,6 +21,8 @@ gem install opentelemetry-sdk
 
 Then include configuration code that runs when your program initializes. Make
 sure that `service.name` is set by configuring a service name.
+
+## Traces
 
 ### Acquiring a Tracer
 
@@ -46,8 +48,6 @@ MyAppTracer = OpenTelemetry.tracer_provider.tracer('<YOUR_TRACER_NAME>')
 ```
 
 With a `Tracer` acquired, you can manually trace code.
-
-## Tracing
 
 ### Get the current span
 
@@ -316,7 +316,7 @@ Exceptions can also be recorded with additional attributes:
 current_span.record_exception(ex, attributes: { "some.attribute" => 12 })
 ```
 
-## Context Propagation
+### Context Propagation
 
 > Distributed Tracing tracks the progression of a single Request, called a
 > Trace, as it is handled by Services that make up an Application. A Distributed
@@ -347,6 +347,20 @@ dependencies to your Gemfile, e.g.:
 ```ruby
 gem 'opentelemetry-propagator-b3'
 ```
+
+## Metrics
+
+The metrics API & SDK are currently under development.
+
+## Logs
+
+The logs API & SDK are currently under development.
+
+## Next Steps
+
+You’ll also want to configure an appropriate exporter to
+[export your telemetry data](/docs/instrumentation/ruby/exporters) to one or
+more telemetry backends.
 
 [glossary]: /docs/concepts/glossary/
 [propagators]:

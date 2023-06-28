@@ -7,7 +7,13 @@ description: Manual instrumentation for OpenTelemetry C++
 
 {{% docs/instrumentation/manual-intro %}}
 
-## Tracing
+## Setup
+
+Follow the instructions in the
+[Getting Started Guide](/docs/instrumentation/cpp/getting-started/) to build
+OpenTelemetry C++.
+
+## Traces
 
 ### Initializing tracing
 
@@ -215,3 +221,13 @@ p->AddView(std::move(observable_instrument_selector), std::move(observable_meter
 - [Metrics API](https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/namespace_opentelemetry__metrics.html#)
 - [Metrics SDK](https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/namespace_opentelemetry__sdk__metrics.html)
 - [Simple Metrics Example](https://github.com/open-telemetry/opentelemetry-cpp/tree/main/examples/metrics_simple)
+
+## Logs
+
+The logs API & SDK are currently under development.
+
+## Next Steps
+
+You’ll also want to configure an appropriate exporter to
+[export your telemetry data](/docs/instrumentation/cpp/exporters) to one or more
+telemetry backends.

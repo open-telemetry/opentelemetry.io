@@ -138,7 +138,9 @@ reason, you can fall back to using an instance from the `GlobalOpenTelemetry`
 class. Note that you can't force end-users to configure the global, so this is
 the most brittle option for library instrumentation.
 
-## Acquiring a Tracer
+## Traces
+
+### Acquiring a Tracer
 
 To do [Tracing](/docs/concepts/signals/traces/) you'll need to acquire a
 [`Tracer`](/docs/concepts/signals/traces/#tracer).

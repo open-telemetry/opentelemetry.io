@@ -146,30 +146,7 @@ function as part of PHP's shutdown process:
 \OpenTelemetry\SDK\Common\Util\ShutdownHandler::register([$loggerProvider, 'shutdown']);
 ```
 
-## Logging and Error Handling
-
-### Default
-
-By default, OpenTelemetry will log errora and warnings via PHP's
-[`error_log`](https://www.php.net/manual/en/function.error-log.php) function.
-The verbosity can be controlled or disabled via the `OTEL_LOG_LEVEL` setting.
-
-Messages sent to `error_log` will be at a level no higher than `E_USER_WARNING`,
-to avoid breaking applications.
-
-### PSR-3
-
-You can optionally configure OpenTelemetry to instead log via a PSR-3 logger:
-
-```php
-$logger = new \Example\Psr3Logger(LogLevel::INFO);
-\OpenTelemetry\API\LoggerHolder::set($logger);
-```
-
-For more fine-grained control and special case handling, custom handlers and
-filters can be applied to the logger (if the logger offers this ability).
-
-## Tracing
+## Traces
 
 ### Acquiring a Tracer
 
@@ -559,7 +536,7 @@ $reader->collect();
 
 </details>
 
-## Logging
+## Logs
 
 As logging is a mature and well-established function, the
 [OpenTelemetry approach](/docs/concepts/signals/logs/) is a little different for
@@ -758,3 +735,28 @@ $monolog->error('oh no', [
 ```
 
 </details>
+
+## Error Handling
+
+By default, OpenTelemetry will log errors and warnings via PHP's
+[`error_log`](https://www.php.net/manual/en/function.error-log.php) function.
+The verbosity can be controlled or disabled via the `OTEL_LOG_LEVEL` setting.
+
+Messages sent to `error_log` will be at a level no higher than `E_USER_WARNING`,
+to avoid breaking applications.
+
+You can optionally configure OpenTelemetry to instead log via a PSR-3 logger:
+
+```php
+$logger = new \Example\Psr3Logger(LogLevel::INFO);
+\OpenTelemetry\API\LoggerHolder::set($logger);
+```
+
+For more fine-grained control and special case handling, custom handlers and
+filters can be applied to the logger (if the logger offers this ability).
+
+## Next steps
+
+You'll also want to configure an appropriate exporter to
+[export your telemetry data](/docs/instrumentation/php/exporters) to one or more
+telemetry backends.

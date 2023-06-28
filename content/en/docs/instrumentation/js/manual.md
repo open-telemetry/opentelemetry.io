@@ -10,7 +10,7 @@ description: Manual instrumentation for OpenTelemetry JavaScript
 
 {{% docs/instrumentation/manual-intro %}}
 
-## Tracing
+## Traces
 
 ### Initialize Tracing
 
@@ -1116,6 +1116,10 @@ const meterProvider = new MeterProvider({
   views: [limitAttributesView, dropView, histogramView],
 });
 ```
+
+## Logs
+
+The logs API & SDK are currently under development.
 
 ## Next steps
 

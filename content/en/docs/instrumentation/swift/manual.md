@@ -59,7 +59,9 @@ OpenTelemetry.registerMeterProvider(meterProvider: MeterProviderBuilder()
 After configuring the MeterProvider & TracerProvider all subsequently
 initialized instrumentation will be exporting using this OTLP exporter.
 
-## Acquiring a Tracer
+## Traces
+
+### Acquiring a Tracer
 
 To do tracing, you will need a tracer. A tracer is acquired through the tracer
 provider and is responsible for creating spans. The OpenTelemetry manages the
@@ -210,6 +212,16 @@ do {
 }
 span.end()
 ```
+
+## Metrics
+
+The documentation for the metrics API & SDK is missing, you can help make it
+available by
+[editing this page](https://github.com/open-telemetry/opentelemetry.io/edit/main/content/en/docs/instrumentation/swift/manual.md).
+
+## Logs
+
+The logs API & SDK are currently under development.
 
 ## SDK Configuration
 
