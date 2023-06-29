@@ -2,6 +2,8 @@
 title: Checkout Service
 linkTitle: Checkout
 aliases: [/docs/demo/services/checkoutservice]
+spelling: cSpell:ignore sdktrace otlptracegrpc otelgrpc sarama otelsarama
+spelling: cSpell:ignore otlpmetricgrpc fatalf sdkmetric
 ---
 
 This service is responsible to process a checkout order from the user. The

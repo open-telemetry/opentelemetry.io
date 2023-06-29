@@ -3,6 +3,9 @@ title: Demo Architecture
 linkTitle: Architecture
 aliases: [/docs/demo/current_architecture]
 body_class: otel-mermaid-max-width
+spelling: cSpell:ignore loadgenerator featureflagstore dotnetsvc cppsvc
+spelling: cSpell:ignore erlangsvc golangsvc javasvc javascriptsvc kotlinsvc
+spelling: cSpell:ignore phpsvc pythonsvc rubysvc rustsvc typescriptsvc tsdb
 ---
 
 **OpenTelemetry Demo** is composed of microservices written in different
