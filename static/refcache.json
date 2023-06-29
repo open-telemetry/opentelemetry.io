@@ -427,62 +427,6 @@
     "StatusCode": 200,
     "LastSeen": "2023-02-15T20:37:41.946671-05:00"
   },
-  "https://crates.io/crates/opentelemetry": {
-    "StatusCode": 416,
-    "LastSeen": "2023-02-15T20:52:56.836434-05:00"
-  },
-  "https://crates.io/crates/opentelemetry-api": {
-    "StatusCode": 416,
-    "LastSeen": "2023-02-15T20:53:02.220232-05:00"
-  },
-  "https://crates.io/crates/opentelemetry-aws": {
-    "StatusCode": 416,
-    "LastSeen": "2023-02-15T20:53:12.972279-05:00"
-  },
-  "https://crates.io/crates/opentelemetry-contrib": {
-    "StatusCode": 416,
-    "LastSeen": "2023-02-15T20:53:18.35804-05:00"
-  },
-  "https://crates.io/crates/opentelemetry-datadog": {
-    "StatusCode": 416,
-    "LastSeen": "2023-02-15T20:53:23.739057-05:00"
-  },
-  "https://crates.io/crates/opentelemetry-dynatrace": {
-    "StatusCode": 416,
-    "LastSeen": "2023-02-15T20:53:29.125864-05:00"
-  },
-  "https://crates.io/crates/opentelemetry-http": {
-    "StatusCode": 416,
-    "LastSeen": "2023-02-15T20:53:34.519475-05:00"
-  },
-  "https://crates.io/crates/opentelemetry-jaeger": {
-    "StatusCode": 416,
-    "LastSeen": "2023-02-15T20:53:39.891356-05:00"
-  },
-  "https://crates.io/crates/opentelemetry-otlp": {
-    "StatusCode": 416,
-    "LastSeen": "2023-02-15T20:53:45.273272-05:00"
-  },
-  "https://crates.io/crates/opentelemetry-prometheus": {
-    "StatusCode": 416,
-    "LastSeen": "2023-02-15T20:53:50.653624-05:00"
-  },
-  "https://crates.io/crates/opentelemetry-sdk": {
-    "StatusCode": 416,
-    "LastSeen": "2023-02-15T20:53:07.589781-05:00"
-  },
-  "https://crates.io/crates/opentelemetry-semantic-conventions": {
-    "StatusCode": 416,
-    "LastSeen": "2023-02-15T20:53:56.026577-05:00"
-  },
-  "https://crates.io/crates/opentelemetry-stackdriver": {
-    "StatusCode": 416,
-    "LastSeen": "2023-02-15T20:54:01.487388-05:00"
-  },
-  "https://crates.io/crates/opentelemetry-zipkin": {
-    "StatusCode": 416,
-    "LastSeen": "2023-02-15T20:54:06.869453-05:00"
-  },
   "https://danielabaron.me": {
     "StatusCode": 206,
     "LastSeen": "2023-02-15T21:12:36.204053-05:00"
