@@ -1,6 +1,8 @@
 ---
 title: Getting Started
 weight: 10
+spelling: cSpell:ignore fibonacci struct fscanf chan println strconv stdouttrace
+spelling: cSpell:ignore codebases errorf
 ---
 
 Welcome to the OpenTelemetry for Go getting started guide! This guide will walk
