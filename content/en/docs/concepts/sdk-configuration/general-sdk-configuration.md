@@ -3,7 +3,7 @@ title: General SDK Configuration
 description: >-
   General-purpose environment variables for configuring an OpenTelemetry SDK.
 weight: 1
-spelling: cSpell:ignore parentbased traceidratio tracecontext ottrace
+spelling: cSpell:ignore ottrace
 ---
 
 ## `OTEL_SERVICE_NAME`
