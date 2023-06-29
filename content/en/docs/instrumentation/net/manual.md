@@ -3,6 +3,7 @@ title: Manual Instrumentation
 linkTitle: Manual
 weight: 30
 description: Manual instrumentation for OpenTelemetry .NET
+spelling: cSpell:ignore discoverability
 ---
 
 {{% docs/instrumentation/manual-intro %}}
@@ -36,7 +37,7 @@ To start tracing in a console app, you need to create a tracer provider.
 
 First, ensure that you have the right packages:
 
-```
+```sh
 dotnet add package OpenTelemetry
 dotnet add package OpenTelemetry.Exporter.Console
 ```

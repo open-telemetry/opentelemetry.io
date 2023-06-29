@@ -160,6 +160,10 @@
           [
             "[Oo]pen[- ][Tt]elemetry",
             "OpenTelemetry"
+          ],
+          [
+            "regexes",
+            "regular expressions"
           ]
         ]
       }
