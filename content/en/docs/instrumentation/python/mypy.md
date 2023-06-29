@@ -1,6 +1,7 @@
 ---
 title: Using mypy
 weight: 120
+spelling: cSpell:ignore mypy
 ---
 
 If you're using [mypy](http://mypy-lang.org/), you'll need to turn on

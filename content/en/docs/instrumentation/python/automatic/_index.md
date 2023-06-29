@@ -2,7 +2,7 @@
 title: Automatic Instrumentation
 linkTitle: Automatic
 weight: 20
-spelling: cSpell:ignore distro mkdir uninstrumented virtualenv
+spelling: cSpell:ignore distro mkdir uninstrumented virtualenv devel myapp
 ---
 
 Automatic instrumentation with Python uses a Python agent that can be attached
@@ -14,9 +14,7 @@ from many popular libraries and frameworks.
 Run the following commands to install the appropriate packages.
 
 ```console
-pip install opentelemetry-distro \
-	opentelemetry-exporter-otlp
-
+pip install opentelemetry-distro opentelemetry-exporter-otlp
 opentelemetry-bootstrap -a install
 ```
 

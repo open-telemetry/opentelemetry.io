@@ -1,7 +1,7 @@
 ---
 title: Getting Started
 description: Get telemetry for your app in less than 5 minutes!
-spelling: cSpell:ignore venv distro rolldice randint 
+spelling: cSpell:ignore venv distro rolldice randint diceroller
 spelling: cSpell:ignore rollspan loglevel loggingexporter
 weight: 10
 ---
@@ -81,7 +81,7 @@ Install the `opentelemetry-distro` package, which contains the OpenTelemetry
 API, SDK and also the tools `opentelemetry-bootstrap` and
 `opentelemetry-instrument` you will use below.
 
-```
+```shell
 pip install opentelemetry-distro
 ```
 
@@ -588,7 +588,7 @@ collector via OTLP instead of the console.
 
 To do this, install the OTLP exporter package:
 
-```
+```shell
 pip install opentelemetry-exporter-otlp
 ```
 
@@ -599,7 +599,7 @@ and default to OTLP export when it's run next.
 
 Run the application like before, but don't export to the console:
 
-```
+```shell
 opentelemetry-instrument flask run -p 8080
 ```
 
@@ -613,7 +613,7 @@ process instead of the flask process, which should look something like this:
 <details>
 <summary>View example output</summary>
 
-```
+```text
 2022-06-09T20:43:39.915Z        DEBUG   loggingexporter/logging_exporter.go:51  ResourceSpans #0
 Resource labels:
      -> telemetry.sdk.language: STRING(python)
