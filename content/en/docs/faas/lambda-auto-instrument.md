@@ -28,7 +28,7 @@ first.
 {{< tabpane text=true >}}
 {{% tab Java %}}
 
-The Lambda layer supports the Java 8, 11, and 17 (Corretto) Lambda runtimes. 
+The Lambda layer supports the Java 8, 11, and 17 (Corretto) Lambda runtimes.
 For more information about supported Java versions, see the
 [OpenTelemetry Java documentation](/docs/instrumentation/java/).
 
@@ -83,7 +83,7 @@ and the package on [PyPi](https://pypi.org/project/opentelemetry-api/).
 
 ### Configure `AWS_LAMBDA_EXEC_WRAPPER`
 
-Change the entry point of your application by setting `AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-handler` for node.js or java and 
+Change the entry point of your application by setting `AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-handler` for Node.js or java and
 `AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-instrument` for python.  These wrapper scripts will invoke your lambda application
 with the auto instrumentation package applied.
 
