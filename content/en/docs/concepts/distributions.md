@@ -4,7 +4,6 @@ description: >-
   A distribution, not to be confused with a fork, is customized version of an
   OpenTelemetry component.
 weight: 90
-spelling: cSpell:ignore javaagent
 ---
 
 The OpenTelemetry projects consists of multiple [components](../components) that
