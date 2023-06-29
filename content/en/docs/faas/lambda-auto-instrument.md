@@ -28,9 +28,8 @@ first.
 {{< tabpane text=true >}}
 {{% tab Java %}}
 
-The Lambda layer supports the Java 11 (Corretto) Lambda runtime. It does not
-support the Java 8 Lambda runtimes. For more information about supported Java
-versions, see the
+The Lambda layer supports the Java 8, 11, and 17 (Corretto) Lambda runtimes. 
+For more information about supported Java versions, see the
 [OpenTelemetry Java documentation](/docs/instrumentation/java/).
 
 **Note:** The Java Auto-instrumentation Agent is in the Lambda layer - Automatic
@@ -56,7 +55,6 @@ For example, to only enable auto-instrumentation for Lambda and the AWS SDK, you
 would have to set the following environment variables:
 
     ```bash
-    Copy
     OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED=false
     OTEL_INSTRUMENTATION_AWS_LAMBDA_ENABLED=true
     OTEL_INSTRUMENTATION_AWS_SDK_ENABLED=true
@@ -82,6 +80,12 @@ and the package on [PyPi](https://pypi.org/project/opentelemetry-api/).
 <!-- prettier-ignore -->
 {{% /tab %}}
 {{< /tabpane >}}
+
+### Configure `AWS_LAMBDA_EXEC_WRAPPER`
+
+Change the entry point of your application by setting `AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-handler` for node.js or java and 
+`AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-instrument` for python.  These wrapper scripts will invoke your lambda application
+with the auto instrumentation package applied.
 
 ### Add the ARN of Instrumentation Lambda Layer
 
