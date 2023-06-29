@@ -3,6 +3,7 @@ title: General SDK Configuration
 description: >-
   General-purpose environment variables for configuring an OpenTelemetry SDK.
 weight: 1
+spelling: cSpell:ignore ottrace
 ---
 
 ## `OTEL_SERVICE_NAME`
@@ -88,7 +89,7 @@ be set as follows:
     `"endpoint=http://localhost:14250,pollingIntervalMs=5000,initialSamplingRate=0.25"`
   - `endpoint`: the endpoint in form of `scheme://host:port` of gRPC server that
     serves the sampling strategy for the service
-    ([sampling.proto](https://github.com/jaegertracing/jaeger-idl/blob/master/proto/api_v2/sampling.proto)).
+    ([sampling.proto](https://github.com/jaegertracing/jaeger-idl/blob/main/proto/api_v2/sampling.proto)).
   - `pollingIntervalMs`: in milliseconds indicating how often the sampler will
     poll the backend for updates to sampling strategy.
   - `initialSamplingRate`: in the [0..1] range, which is used as the sampling
@@ -155,7 +156,7 @@ Accepted values for `OTEL_METRICS_EXPORTER` are:
 
 - `"otlp"`: [OTLP][]
 - `"prometheus"`:
-  [Prometheus](https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md)
+  [Prometheus](https://github.com/prometheus/docs/blob/main/content/docs/instrumenting/exposition_formats.md)
 - `"none"`: No automatically configured exporter for metrics.
 
 ## `OTEL_LOGS_EXPORTER`
