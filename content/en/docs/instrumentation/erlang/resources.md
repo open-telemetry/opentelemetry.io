@@ -88,7 +88,7 @@ flattened and combined with `.`, so
 ## Custom resource detectors
 
 Custom resource detectors can be created by implementing the
-[`otel_resource_detector` behaviour](https://hexdocs.pm/opentelemetry/1.3.0/otel_resource_detector.html#callbacks)
+[`otel_resource_detector` behavior](https://hexdocs.pm/opentelemetry/1.3.0/otel_resource_detector.html#callbacks)
 which contains a single callback `get_resource/1` that returns an
 [`otel_resource`](https://hexdocs.pm/opentelemetry/1.3.0/otel_resource.html).
 

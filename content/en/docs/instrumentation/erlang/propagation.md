@@ -1,6 +1,7 @@
 ---
 title: Propagation
 weight: 60
+spelling: cSpell:ignore elli
 ---
 
 ## Cross Service Propagators
