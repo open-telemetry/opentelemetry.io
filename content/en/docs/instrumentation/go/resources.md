@@ -45,7 +45,7 @@ resources := resource.New(context.Background(),
     resource.WithOS(), // This option configures a set of Detectors that discover OS information
     resource.WithContainer(), // This option configures a set of Detectors that discover container information
     resource.WithHost(), // This option configures a set of Detectors that discover host information
-    resource.WithDetectors(thirdParty.Detector{}), // Bring your own external Detector implementation
+    resource.WithDetectors(thirdparty.Detector{}), // Bring your own external Detector implementation
     resource.WithAttributes(attribute.String("foo", "bar")), // Or specify resource attributes directly
 )
 ```
