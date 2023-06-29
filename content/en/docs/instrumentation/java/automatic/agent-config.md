@@ -4,7 +4,12 @@ linkTitle: Configuration
 weight: 10
 spelling:
   cSpell:ignore akka autoconfiguration Autoconfiguration Dotel HSET javaagent
-  cSpell:ignore serverlessapis Servlet servlet
+  cSpell:ignore serverlessapis Servlet servlet Customizer classloaders logback
+  cSpell:ignore jdbc cassandra dbcp dubbo httpclient httpasyncclient myfaces
+  cSpell:ignore rocketmq armeria couchbase dropwizard mojarra vertx hikari
+  cSpell:ignore hikaricp jaxrs logmanager jaxws jboss jodd kotlinx hystrix vibur
+  cSpell:ignore okhttp oshi rabbitmq ratpack jedis rediscala redisson restlet
+  cSpell:ignore webflux webmvc spymemcached twilio finatra vaadin  datasource
 ---
 
 ## SDK Autoconfiguration
