@@ -2,6 +2,7 @@
 title: Lambda Auto-Instrumentation
 weight: 11
 description: Automatically instrument your Lambdas with OpenTelemetry
+spelling: cSpell:ignore Corretto regionalized
 ---
 
 The OpenTelemetry community provides standalone instrumentation Lambda layers
@@ -76,7 +77,7 @@ about supported JavaScript and Node.js versions, see the
 
 The Lambda layer supports Python 3.8 and Python 3.9 Lambda runtimes. For more
 information about supported Python versions, see the
-[OpenTelemetry Python documentation](https://github.com/open-telemetry/opentelemetry-python/blob/master/README.md#supported-runtimes)
+[OpenTelemetry Python documentation](https://github.com/open-telemetry/opentelemetry-python/blob/main/README.md#supported-runtimes)
 and the package on [PyPi](https://pypi.org/project/opentelemetry-api/).
 
 <!-- prettier-ignore -->
