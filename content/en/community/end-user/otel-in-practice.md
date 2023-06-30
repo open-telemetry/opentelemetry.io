@@ -23,5 +23,5 @@ in the
 of the [CNCF Slack](https://slack.cncf.io).
 
 Join the
-[OpenTelemetry in Practice Meetup Group](https://meetup.com/opentelemetry-in-practice-meetup-group)
+[OpenTelemetry in Practice Meetup Group](https://www.meetup.com/opentelemetry-in-practice-meetup-group/)
 to get invited to our next talk!
