@@ -28,7 +28,6 @@ Company                                           | Components                  
 [Logicmonitor](https://www.logicmonitor.com/)     | Collector, Java, Go, JS, Python, .Net |
 [Logz.io](https://logz.io)                        | Collector, Java, C++, Go, JS, K8s         |  [blog](https://logz.io/learn/opentelemetry-guide/)
 [Microsoft](https://www.microsoft.com/)           | Collector, C++, Go, Java, JS, Python, Ruby, .NET    | [Azure blog](https://techcommunity.microsoft.com/t5/azure-monitor/opentelemetry-azure-monitor/ba-p/2737823), [Dapr docs](https://docs.dapr.io/operations/monitoring/tracing/otel-collector/), [GitHub blog](https://github.blog/2021-05-26-why-and-how-github-is-adopting-opentelemetry/)
-[OpenTelemetry](https://opentelemetry.io)         | Collector, JS                   |
 [OrderMyGear](https://www.ordermygear.com/)       |                                 |
 [PITS Globale Datenrettungsdienste](https://www.pitsdatenrettung.de/) | Python |
 [Red Hat](https://redhat.com/)                    | Collector, Operator             |  [website](https://docs.openshift.com/container-platform/4.12/distr_tracing/distr_tracing_arch/distr-tracing-architecture.html)
