@@ -83,7 +83,9 @@ async function pruneTask() {
     }
 
     if (!n) {
-      console.log(`WARN: num is ${n} so nothing will be pruned. Specify number of entries to prune as --num <n>.`);
+      console.log(
+        `WARN: num is ${n} so nothing will be pruned. Specify number of entries to prune as --num <n>.`
+      );
       return;
     }
 
