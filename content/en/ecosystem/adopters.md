@@ -11,7 +11,7 @@ OpenTelemetry.
 
 <!-- prettier-ignore-start -->
 Organization                                      | Components                      |  Learn more
-------------------------------------------------  | ------------------------------- |  :-----------------------------------------------------------------------------------------------------------------:
+------------------------------------------------  | ------------------------------- |  ----------
 [Amazon Web Services](https://aws.amazon.com/)    | Collector, Java, JS, Python     |  [website](https://aws.amazon.com/otel/)
 [AppDirect](https://www.appdirect.com/)           | Collector                       |
 [Care.com](https://www.care.com)                  | Collector, Go, Java, JS, .NET   |
