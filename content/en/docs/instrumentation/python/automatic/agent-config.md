@@ -3,6 +3,7 @@ title: Agent Configuration
 linkTitle: Configuration
 weight: 10
 spelling: cSpell:ignore distro mkdir myapp uninstrumented virtualenv
+spelling: cSpell:ignore Starlette urllib healthcheck
 ---
 
 The agent is highly configurable, either by:
@@ -69,8 +70,8 @@ environment variables with `OTEL_PYTHON_`.
 
 ### Excluded URLs
 
-Comma-separated regexes representing which URLs to exclude across all
-instrumentations:
+Comma-separated regular expressions representing which URLs to exclude across
+all instrumentations:
 
 - `OTEL_PYTHON_EXCLUDED_URLS`
 

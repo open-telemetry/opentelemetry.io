@@ -22,7 +22,7 @@ with tracer.start_as_current_span("print") as span:
 from opentelemetry import trace
 
 current_span = trace.get_current_span()
-current_span.set_attribute("hometown", "seattle")
+current_span.set_attribute("hometown", "Seattle")
 ```
 
 ## Create a nested span
