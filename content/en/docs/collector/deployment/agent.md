@@ -3,6 +3,7 @@ title: Agent
 description:
   Why and how to send signals to collectors and from there to backends
 weight: 2
+spelling: cSpell:ignore prometheusremotewrite
 ---
 
 The agent collector deployment pattern consists of applications —
@@ -28,7 +29,7 @@ context of the app, you would set the `OTEL_METRICS_EXPORTER` to `otlp` (which
 is the default value) and configure the [OTLP exporter][otlp-exporter] with the
 address of your collector, for example (in Bash or `zsh` shell):
 
-```
+```shell
 export OTEL_EXPORTER_OTLP_ENDPOINT=http://collector.example.com:4318
 ```
 
@@ -128,7 +129,3 @@ Cons:
   https://github.com/open-telemetry/opentelemetry-java-docs/tree/main/otlp
 [py-otlp-example]:
   https://opentelemetry-python.readthedocs.io/en/stable/examples/metrics/instruments/README.html
-[lb-exporter]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter
-[spanmetrics-processor]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/spanmetricsprocessor

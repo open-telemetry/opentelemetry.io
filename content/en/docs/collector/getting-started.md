@@ -2,7 +2,7 @@
 title: Getting Started
 spelling:
   - cSpell:ignore darwin dpkg GOARCH journalctl kubectl linux otelcorecol pprof
-  - cSpell:ignore zpages
+  - cSpell:ignore zpages tlsv
 weight: 1
 ---
 
@@ -61,7 +61,7 @@ docker run -v $(pwd)/config.yaml:/etc/otelcol-contrib/config.yaml ghcr.io/open-t
 
 ## Docker Compose
 
-You can add OpenTelemetry collector to your existing `docker-compose.yaml` like
+You can add OpenTelemetry Collector to your existing `docker-compose.yaml` like
 the following:
 
 ```yaml
