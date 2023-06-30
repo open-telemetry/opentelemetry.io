@@ -46,22 +46,24 @@ startup time.
 We recommend that you only enable auto-instrumentation for the
 libraries/frameworks that are used by your application.
 
-To enable only specific instrumentations you can use the following environment
+To enable only specific instrumentations, you can use the following environment
 variables:
 
-- `OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED` - When set to false, disables
+- `OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED`: when set to false, disables
   auto-instrumentation in the Layer, requiring each instrumentation to be
   enabled individually.
-- `OTEL_INSTRUMENTATION_[NAME]_ENABLED` - Set to true to enable
-  auto-instrumentation for a specific library or framework. [NAME] should be
-  replaced by the instrumentation that you want to enable. The full list of
-  available instrumentations can be found
-  [here](https://opentelemetry.io/docs/instrumentation/java/automatic/agent-config/#suppressing-specific-agent-instrumentation).
+- `OTEL_INSTRUMENTATION_<NAME>_ENABLED`: set to true to enable
+  auto-instrumentation for a specific library or framework. Replace `<NAME>` by
+  the instrumentation that you want to enable. For the list of available
+  instrumentations, see [Suppressing specific agent instrumentation][1].
+
+  [1]:
+    /docs/instrumentation/java/automatic/agent-config/#suppressing-specific-agent-instrumentation
 
 For example, to only enable auto-instrumentation for Lambda and the AWS SDK, you
-would have to set the following environment variables:
+would set the following environment variables:
 
-```bash
+```sh
 OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED=false
 OTEL_INSTRUMENTATION_AWS_LAMBDA_ENABLED=true
 OTEL_INSTRUMENTATION_AWS_SDK_ENABLED=true
