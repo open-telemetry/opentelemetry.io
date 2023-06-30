@@ -13,7 +13,7 @@ from many popular libraries and frameworks.
 
 Run the following commands to install the appropriate packages.
 
-```console
+```sh
 pip install opentelemetry-distro opentelemetry-exporter-otlp
 opentelemetry-bootstrap -a install
 ```
