@@ -4,6 +4,7 @@ description: Using instrumentation annotations with a Java agent.
 aliases: [/docs/instrumentation/java/annotations]
 weight: 20
 javaInstrumentationVersion: 1.27.0
+spelling: cSpell:ignore reactivestreams reactivex Flowable javac
 ---
 
 For most users, the out-of-the-box instrumentation is completely sufficient and
