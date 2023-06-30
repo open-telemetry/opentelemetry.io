@@ -10,7 +10,7 @@ A non-exhaustive, alphabetized list of organizations that have adopted
 OpenTelemetry.
 
 <!-- prettier-ignore-start -->
-Company                                           | Components                      |  Notes
+Organization                                           | Components                      |  Notes
 ------------------------------------------------  | ------------------------------- |  :-----------------------------------------------------------------------------------------------------------------:
 [Amazon Web Services](https://aws.amazon.com/)    | Collector, Java, JS, Python     |  [website](https://aws.amazon.com/otel/)
 [AppDirect](https://www.appdirect.com/)           | Collector                       |
