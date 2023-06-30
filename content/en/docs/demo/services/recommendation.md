@@ -95,10 +95,9 @@ of `opentelemetry-bootstrap` on building the recommendationservice Docker image:
 
 ### Initializing Logs
 
-The OpenTelemetry SDK is initialized in the `__main__` code block. This code
-will create a logger provider with a batch processor, an OTLP log exporter, and
-a logging handler. Finally, a logger is created to be used for creating logs
-throughout the application.
+The OpenTelemetry SDK is initialized in the `__main__` code block. The following code
+creates a logger provider with a batch processor, an OTLP log exporter, and
+a logging handler. Finally, it creates a logger for use throughout the application.
 
 ```python
     logger_provider = LoggerProvider(
@@ -119,21 +118,19 @@ throughout the application.
 
 ### Create log records
 
-Log records are created by using a logger, which was previously attached to the
-logging handler. Examples can be found in ListRecommendation and
-get_product_list functions.
+Create logs using the logger. Examples can be found in `ListRecommendations` and
+`get_product_list` functions.
 
 ```python
     logger.info(f"Receive ListRecommendations for product ids:{prod_list}")
 ```
 
 As you can see, after the initialization, log records can be created in the same
-way as in standard Python. OpenTelemetry libraries will automatically add
-trace_id and span_id for each log record and, in this way, enable correlating
+way as in standard Python. OpenTelemetry libraries automatically add a trace ID
+and span ID for each log record and, in this way, enable correlating 
 logs and traces.
 
 ### Notes
 
 Logs for Python are still experimental, and some changes can be expected. The
-implementation in this service follows the Python log example that is available
-[here](https://github.com/open-telemetry/opentelemetry-python/blob/stable/docs/examples/logs/example.py).
+implementation in this service follows the [Python log example](https://github.com/open-telemetry/opentelemetry-python/blob/stable/docs/examples/logs/example.py).
