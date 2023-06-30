@@ -16,6 +16,7 @@ Organization                                      | Components                  
 [AppDirect](https://www.appdirect.com/)           | Collector                       |
 [Care.com](https://www.care.com)                  | Collector, Go, Java, JS, .NET   |
 [Cloud Scale](https://www.cloudscaleinc.com)      | Collector, Python    |
+[CNCF Jaeger project](https://jaegertracing.io)   | Collector, Go SDK               |  [blog post](https://medium.com/jaegertracing/jaeger-embraces-opentelemetry-collector-90a545cbc24)
 [Dynatrace](https://www.dynatrace.com/)           | Collector, Java, JS, Python, Go, .NET |
 [EcoBee](https://www.ecobee.com/)                 | Collector, Java                 |  [blog post](https://www.honeycomb.io/blog/bees-working-together-how-ecobees-engineers-adopted-honeycomb-for-visibility-into-system-optimization-and-customer-experience)
 [F5](https://www.f5.com/)                         | Collector.                      |
@@ -23,7 +24,6 @@ Organization                                      | Components                  
 [Grafana Labs](https://grafana.com/)              | Collector                       |
 [Honeycomb](https://honeycomb.io)                 | Go                              |  [blog post](https://www.honeycomb.io/blog/interview-with-honeycomb-engineer-chris-toshok-dogfooding-opentelemetry/)
 [Instana](https://www.instana.com)                | Collector, JS                   |  [docs](https://www.ibm.com/docs/en/obi/current?topic=apis-opentelemetry)
-[CNCF Jaeger project](https://jaegertracing.io)   | Collector, Go SDK               |  [blog post](https://medium.com/jaegertracing/jaeger-embraces-opentelemetry-collector-90a545cbc24)
 [Lightstep](https://lightstep.com)                | Go, JS                          |
 [Logicmonitor](https://www.logicmonitor.com/)     | Collector, Java, Go, JS, Python, .Net |
 [Logz.io](https://logz.io)                        | Collector, Java, C++, Go, JS, K8s   |  [blog](https://logz.io/learn/opentelemetry-guide/)
