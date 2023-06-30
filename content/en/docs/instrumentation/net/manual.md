@@ -132,7 +132,7 @@ endpoint, you'll have to use a different exporter.
 
 Once tracing is initialized, you can configure an
 [`ActivitySource`](/docs/concepts/signals/traces/#tracer), which will be how you
-trace operations with [`Activity`s](/docs/concepts/signals/traces/#spans).
+trace operations with [`Activity`](/docs/concepts/signals/traces/#spans) elements.
 
 Typically, an `ActivitySource` is instantiated once per app/service that is
 being instrumented, so it's a good idea to instantiate it once in a shared
