@@ -530,15 +530,15 @@ shouldn't return incorrect values. Update the `Fibonacci` function to return an
 error instead of an incorrect value:
 
 ```go
-// Fibonacci returns the n-th fibonacci number. An error is returned if the
-// fibonacci number cannot be represented as a uint64.
+// Fibonacci returns the n-th Fibonacci number. An error is returned if the
+// Fibonacci number cannot be represented as a uint64.
 func Fibonacci(n uint) (uint64, error) {
 	if n <= 1 {
 		return uint64(n), nil
 	}
 
 	if n > 93 {
-		return 0, fmt.Errorf("unsupported fibonacci number %d: too large", n)
+		return 0, fmt.Errorf("unsupported Fibonacci number %d: too large", n)
 	}
 
 	var n2, n1 uint64 = 0, 1
@@ -631,7 +631,7 @@ With these fixes in place and the instrumentation updated, re-trigger the bug.
 $ go run .
 What Fibonacci number would you like to know:
 100
-Fibonacci(100): unsupported fibonacci number 100: too large
+Fibonacci(100): unsupported Fibonacci number 100: too large
 What Fibonacci number would you like to know:
 ^C
 goodbye
@@ -657,7 +657,7 @@ event.
 				"Key": "exception.message",
 				"Value": {
 					"Type": "STRING",
-					"Value": "unsupported fibonacci number 100: too large"
+					"Value": "unsupported Fibonacci number 100: too large"
 				}
 			}
 		],
