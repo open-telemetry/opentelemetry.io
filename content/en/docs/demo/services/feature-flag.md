@@ -2,6 +2,7 @@
 title: Feature Flag Service
 linkTitle: Feature Flag
 aliases: [/docs/demo/services/featureflagservice]
+spelling: cSpell:ignore ecto grpcbox protos hipstershop struct featureflag nanos
 ---
 
 This service is written in Erlang/Elixir and it is responsible for creating,
