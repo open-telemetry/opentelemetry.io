@@ -93,7 +93,7 @@ of `opentelemetry-bootstrap` on building the recommendationservice Docker image:
 
 ## Logs
 
-### Initializing Logs
+### Initializing logs
 
 The OpenTelemetry SDK is initialized in the `__main__` code block. The following code
 creates a logger provider with a batch processor, an OTLP log exporter, and
