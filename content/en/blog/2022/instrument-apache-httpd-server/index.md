@@ -2,7 +2,7 @@
 title: Learn how to instrument Apache Http Server with OpenTelemetry
 linkTitle: Instrument Apache Http Server
 date: 2022-05-27
-spelling: cSpell:ignore Centos centos7 Debajit debuggability libmod OLTP
+spelling: cSpell:ignore Centos centos7 Debajit debuggability libmod
 spelling: cSpell:ignore uncompress webserver linux
 author: '[Debajit Das](https://github.com/DebajitDas) (Cisco)'
 ---
@@ -20,9 +20,9 @@ quick guide to get started with the module.
 
 ### Building the module
 
-Getting started with the OpenTelemetry module for Apache HTTP Server is pretty simple,
-all you need is a docker engine and git. Download the source code from github
-and then build the docker image on CentOS7[^1]:
+Getting started with the OpenTelemetry module for Apache HTTP Server is pretty
+simple, all you need is a docker engine and git. Download the source code from
+github and then build the docker image on CentOS7[^1]:
 
 ```sh
 git clone https://github.com/open-telemetry/opentelemetry-cpp-contrib
@@ -231,7 +231,7 @@ writing this blog, support for other architectures is not provided.
 
     ![enabled](enabled.png)
 
-  - Since the module works with the Collector and sends data in OLTP format, the
+  - Since the module works with the Collector and sends data in OTLP format, the
     following directives are necessary.
 
     ![exporter](exporter.png)

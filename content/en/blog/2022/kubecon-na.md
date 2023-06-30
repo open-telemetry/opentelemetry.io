@@ -2,8 +2,7 @@
 title: Join us for OpenTelemetry Talks and Activities at Kubecon NA 2022
 linkTitle: Kubecon NA '22
 date: 2022-10-10
-spelling:
-  cSpell:ignore unconference Kowall Logz Vineeth Pothulapati
+spelling: cSpell:ignore unconference Kowall Logz Vineeth Pothulapati
 author: '[Alolita Sharma](https://github.com/alolita)'
 ---
 

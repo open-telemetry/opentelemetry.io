@@ -7,9 +7,8 @@ author: >-
   Pratyus](https://github.com/kpratyus),
 
   [Severin Neumann](https://github.com/svrnm) (Cisco)
-spelling: >
-  cSpell:ignore Debajit Kumar Pratyus webserver xvfz tracestate
-  cSpell:ignore catalina WORKDIR realip
+spelling: cSpell:ignore Debajit Kumar Pratyus webserver xvfz tracestate
+spelling: cSpell:ignore catalina WORKDIR realip
 ---
 
 Apache HTTP Server and NGINX are the most popular web servers. It's most likely

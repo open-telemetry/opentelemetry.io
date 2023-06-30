@@ -33,25 +33,25 @@ This causes challenges for both Jaeger users and OpenTelemetry maintainers:
 
 1. **Confusing Choices**
 
-    Currently, users are faced with a choice of exporter (Jaeger or OTLP), and
-    this can be a source of confusion. A user might be inclined, when exporting
-    telemetry to Jaeger, to simply choose the Jaeger exporter because the name
-    matches (even though Jaeger now actively encourages the use of OTLP).
+   Currently, users are faced with a choice of exporter (Jaeger or OTLP), and
+   this can be a source of confusion. A user might be inclined, when exporting
+   telemetry to Jaeger, to simply choose the Jaeger exporter because the name
+   matches (even though Jaeger now actively encourages the use of OTLP).
 
-    If we can eliminate this potentially confusing choice, we can improve the
-    user experience and continue standardizing on a single interoperable
-    protocol. We love it when things "just work" out of the box!
+   If we can eliminate this potentially confusing choice, we can improve the
+   user experience and continue standardizing on a single interoperable
+   protocol. We love it when things "just work" out of the box!
 
 2. **Maintenance and duplication**
 
-    Because the Jaeger client libraries are now archived, they will not receive
-    updates (including security patches). To continue properly supporting Jaeger
-    client exporters, OpenTelemetry authors would be required to re-implement
-    some of the functionality it had previously leveraged from the Jaeger
-    clients.
+   Because the Jaeger client libraries are now archived, they will not receive
+   updates (including security patches). To continue properly supporting Jaeger
+   client exporters, OpenTelemetry authors would be required to re-implement
+   some of the functionality it had previously leveraged from the Jaeger
+   clients.
 
-    Now that Jaeger supports OTLP, this feels like a step backwards: It results
-    in an increased maintenance burden with very little benefit.
+   Now that Jaeger supports OTLP, this feels like a step backwards: It results
+   in an increased maintenance burden with very little benefit.
 
 ### User Impact
 

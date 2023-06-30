@@ -3,11 +3,10 @@ title: Exposing a Collector for cross cluster communication
 linkTitle: Exposing a Collector
 date: 2022-09-08
 author: '[Benedikt Bongartz](https://github.com/frzifus)'
-spelling:
-  cSpell:ignore k8sattributes k8sattributesprocessor K8sattributes k8sprocessor
-  cSpell:ignore K8sprocessor Benedikt Bongartz
-  cSpell:ignore Keycloak dXNlci0xOjEyMzQK basicauth htpasswd llczt
-  cSpell:ignore letsencrypt frzifus oidc rolebinding
+spelling: cSpell:ignore k8sattributes k8sattributesprocessor K8sattributes 
+spelling: cSpell:ignore K8sprocessor Benedikt Bongartz Keycloak k8sprocessor
+spelling: cSpell:ignore dXNlci0xOjEyMzQK basicauth htpasswd llczt 
+spelling: cSpell:ignore oidc rolebinding letsencrypt frzifus
 ---
 
 Exposing an [OpenTelemetry Collector](/docs/collector/) currently requires a
