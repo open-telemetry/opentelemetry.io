@@ -1,7 +1,7 @@
 ---
 title: Getting Started
 weight: 10
-spelling: cSpell:ignore fibonacci struct fscanf chan println strconv stdouttrace
+spelling: cSpell:ignore struct fscanf chan println strconv stdouttrace
 spelling: cSpell:ignore codebases errorf
 ---
 
@@ -32,7 +32,7 @@ directory[^1].
 ```go
 package main
 
-// Fibonacci returns the n-th fibonacci number.
+// Fibonacci returns the n-th Fibonacci number.
 func Fibonacci(n uint) (uint64, error) {
 	if n <= 1 {
 		return uint64(n), nil
