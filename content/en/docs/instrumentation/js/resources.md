@@ -1,6 +1,7 @@
 ---
 title: Resources
 weight: 70
+spelling: cSpell:ignore SIGINT WORKDIR myhost uuidgen
 ---
 
 A [resource][] represents the entity producing telemetry as resource attributes.
@@ -258,7 +259,6 @@ list
 [process and process runtime resources]:
   /docs/specs/otel/resource/semantic_conventions/process/
 [host]: /docs/specs/otel/resource/semantic_conventions/host/
-[otlp exporter]: /docs/instrumentation/js/exporters/#otlp-endpoint
 [cloud]: /docs/specs/otel/resource/semantic_conventions/cloud/
 [deployment]:
   /docs/specs/otel/resource/semantic_conventions/deployment_environment/
