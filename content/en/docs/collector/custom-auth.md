@@ -1,6 +1,7 @@
 ---
 title: Building a custom authenticator
 weight: 30
+spelling: cSpell:ignore oidc configauth
 ---
 
 The OpenTelemetry Collector allows receivers and exporters to be connected to
