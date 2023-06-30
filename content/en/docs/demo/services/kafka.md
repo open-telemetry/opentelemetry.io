@@ -1,5 +1,6 @@
 ---
 title: Kafka
+spelling: cSpell:ignore Dotel
 ---
 
 This is used as a message queue service to connect the checkout service with the

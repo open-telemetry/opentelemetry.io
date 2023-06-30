@@ -2,6 +2,8 @@
 title: Shipping Service
 linkTitle: Shipping
 aliases: [/docs/demo/services/shippingservice]
+spelling: cSpell:ignore reqwest sdktrace tokio
+spelling: cSpell:ignore hipstershop semcov itemct shiporder
 ---
 
 This service is responsible for providing shipping information including pricing
@@ -118,7 +120,7 @@ A child _client_ span is also produced for the outgoing HTTP call to
 `quoteservice` via the `reqwest` client. This span pairs up with the
 corresponding `quoteservice` _server_ span. The tracing instrumentation is
 implemented in the client middleware making use of the available
-`reqwest-middleware`, `reqwest-tracing` and `tracing-opentelementry` libraries:
+`reqwest-middleware`, `reqwest-tracing` and `tracing-opentelemetry` libraries:
 
 ```rust
     let reqwest_client = reqwest::Client::new();

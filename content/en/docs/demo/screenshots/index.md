@@ -4,7 +4,7 @@ linkTitle: Screenshots
 aliases: [/docs/demo/demo_screenshots]
 ---
 
-## Webstore
+## Web store
 
 | Home Page                     | Checkout Screen               |
 | ----------------------------- | ----------------------------- |
@@ -28,7 +28,7 @@ aliases: [/docs/demo/demo_screenshots]
 
 | Prometheus Data Source                        | Jaeger Data Source                    |
 | --------------------------------------------- | ------------------------------------- |
-| ![Grafana-Prometheus](grafana-prometheus.png) | ![Gragana-jaeger](gragana-jaeger.png) |
+| ![Grafana-Prometheus](grafana-prometheus.png) | ![Grafana-jaeger](gragana-jaeger.png) |
 
 ## Feature Flag UI
 

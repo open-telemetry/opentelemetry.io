@@ -1,7 +1,7 @@
 ---
 title: Exporters
 weight: 50
-spelling: cSpell:ignore fastcgi jaegertracing openzipkin ndjson zipkin
+spelling: cSpell:ignore fastcgi ndjson autoload pecl
 ---
 
 In order to visualize and analyze your telemetry, you will need to export it to
@@ -12,7 +12,7 @@ you can send to a number of open source backends.
 
 To send trace data to a OTLP endpoint (like the [collector](/docs/collector) or
 Jaeger) you'll need to use the `open-telemetry/exporter-otlp` package and an
-http client that satisfied `psr/http-client-implementation`:
+HTTP client that satisfied `psr/http-client-implementation`:
 
 ```shell
 composer require \

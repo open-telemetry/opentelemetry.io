@@ -1,6 +1,7 @@
 ---
 title: SDK
 weight: 100
+spelling: cSpell:ignore ndjson autoloading autoload autoloader
 ---
 
 The OpenTelemetry SDK provides a working implementation of the API, and can be
@@ -22,7 +23,7 @@ $tracerProvider =  new TracerProvider(
         2048, //max queue size
         5000, //export timeout
         1024, //max batch size
-        true, //autoflush
+        true, //auto flush
         $meterProvider
     )
 );
