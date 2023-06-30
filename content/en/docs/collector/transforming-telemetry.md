@@ -1,6 +1,8 @@
 ---
 title: Transforming telemetry
 weight: 26
+spelling: cSpell:ignore accountid k8sattributes resourcedetection
+spelling: cSpell:ignore clustername metricstransform
 ---
 
 The OpenTelemetry Collector is a convenient place to transform data before

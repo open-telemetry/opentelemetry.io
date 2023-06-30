@@ -1,6 +1,8 @@
 ---
 title: Building a custom collector
 weight: 29
+spelling: cSpell:ignore chipset darwin wyrtw gomod loggingexporter
+spelling: cSpell:ignore batchprocessor jaegerexporter otlpreceiver
 ---
 
 If you are planning to build and debug custom collector receivers, processors,
@@ -127,7 +129,7 @@ receivers:
       go.opentelemetry.io/collector/receiver/otlpreceiver v{{% param collectorVersion %}}
 ```
 
-## Step 3 - Generating the Code and Building your Collector's distribution.
+## Step 3 - Generating the Code and Building your Collector's distribution
 
 All you need now is to let the `ocb` do it's job, so go to your terminal and
 type the following command:

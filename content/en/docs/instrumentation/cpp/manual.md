@@ -3,6 +3,7 @@ title: Manual Instrumentation
 linkTitle: Manual
 weight: 30
 description: Manual instrumentation for OpenTelemetry C++
+spelling: cSpell:ignore nostd labelkv decltype nullptr
 ---
 
 {{% docs/instrumentation/manual-intro %}}
