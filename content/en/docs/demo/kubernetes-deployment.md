@@ -2,6 +2,7 @@
 title: Kubernetes deployment
 linkTitle: Kubernetes
 aliases: [/docs/demo/kubernetes_deployment]
+spelling: cSpell:ignore loadgen otlphttp
 ---
 
 We provide a
@@ -79,7 +80,7 @@ kubectl port-forward svc/my-otel-demo-otelcol 4318:4318
 
 With the frontendproxy and Collector port-forward set up, you can access:
 
-- Webstore: <http://localhost:8080/>
+- Web store: <http://localhost:8080/>
 - Grafana: <http://localhost:8080/grafana/>
 - Feature Flags UI: <http://localhost:8080/feature/>
 - Load Generator UI: <http://localhost:8080/loadgen/>
@@ -139,7 +140,7 @@ With the frontendproxy and Collector exposed, you can access the demo UI at the
 base path for the frontendproxy. Other demo components can be accessed at the
 following sub-paths:
 
-- Webstore: `/` (base)
+- Web store: `/` (base)
 - Grafana: `/grafana`
 - Feature Flags UI: `/feature`
 - Load Generator UI: `/loadgen/` (must include trailing slash)
@@ -147,7 +148,7 @@ following sub-paths:
 
 ## Bring your own backend
 
-Likely you want to use the Webstore as a demo application for an observability
+Likely you want to use the web store as a demo application for an observability
 backend you already have (e.g. an existing instance of Jaeger, Zipkin, or one of
 the [vendor of your choice](/ecosystem/vendors/).
 

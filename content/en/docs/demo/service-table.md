@@ -1,6 +1,7 @@
 ---
 title: Service Roles
 aliases: [/docs/demo/service_table]
+spelling: cSpell:ignore loadgenerator
 ---
 
 View [Service Graph](../architecture/) to visualize request flows.
@@ -15,7 +16,7 @@ View [Service Graph](../architecture/) to visualize request flows.
 | [emailservice](../services/email/)                    | Ruby          | Sends users an order confirmation email (mock/).                                                                                             |
 | [frauddetectionservice](../services/fraud-detection/) | Kotlin        | Analyzes incoming orders and detects fraud attempts (mock/).                                                                                 |
 | [featureflagservice](../services/feature-flag/)       | Erlang/Elixir | CRUD feature flag service to demonstrate various scenarios like fault injection & how to emit telemetry from a feature flag reliant service. |
-| [frontend](../services/frontend/)                     | JavaScript    | Exposes an HTTP server to serve the website. Does not require signup/login and generates session IDs for all users automatically.            |
+| [frontend](../services/frontend/)                     | JavaScript    | Exposes an HTTP server to serve the website. Does not require sign up / login and generates session IDs for all users automatically.         |
 | [loadgenerator](../services/load-generator/)          | Python/Locust | Continuously sends requests imitating realistic user shopping flows to the frontend.                                                         |
 | [paymentservice](../services/payment/)                | JavaScript    | Charges the given credit card info (mock/) with the given amount and returns a transaction ID.                                               |
 | [productcatalogservice](../services/product-catalog/) | Go            | Provides the list of products from a JSON file and ability to search products and get individual products.                                   |

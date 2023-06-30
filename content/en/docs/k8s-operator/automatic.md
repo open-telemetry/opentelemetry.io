@@ -4,7 +4,8 @@ linkTitle: Auto-instrumentation
 weight: 11
 description:
   An implementation of auto-instrumentation using the OpenTelemetry Operator.
-spelling: cSpell:ignore Otel
+spelling:
+  cSpell:ignore otlpreceiver k8sattributesprocessor GRPCNETCLIENT REDISCALA
 ---
 
 The OpenTelemetry Operator supports injecting and configuring
@@ -95,11 +96,11 @@ EOF
 The above command results in a deployment of the Collector that you can use as
 an endpoint for auto-instrumentation in your pods.
 
-## Configure Autoinstrumentation
+## Configure Automatic Instrumentation
 
-To be able to manage autoinstrumentation, the Operator needs to be configured to
-know what pods to instrument and which autoinstrumentation to use for those
-pods. This is done via the
+To be able to manage automatic instrumentation, the Operator needs to be
+configured to know what pods to instrument and which automatic instrumentation
+to use for those pods. This is done via the
 [Instrumentation CRD](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#instrumentation).
 
 Creating the Instrumentation resource correctly is paramount to getting
@@ -133,7 +134,7 @@ By default, the Instrumentation resource that auto-instruments .NET services
 uses `otlp` with the `http/protobuf` protocol. This means that the configured
 endpoint must be able to receive OTLP over `http/protobuf`. Therefore, the
 example uses `http://demo-collector:4318`, which will connect to the `http` port
-of the otlpreceiver of the Collector created in the previous step.
+of the `otlpreceiver` of the Collector created in the previous step.
 
 By default, the .NET auto-instrumentation ships with
 [many instrumentation libraries](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/config.md#instrumentations).
@@ -261,7 +262,7 @@ By default, the Instrumentation resource that auto-instruments Node.js services
 uses `otlp` with the `grpc` protocol. This means that the configured endpoint
 must be able to receive OTLP over `grpc`. Therefore, the example uses
 `http://demo-collector:4317`, which connects to the `grpc` port of the
-otlpreceiver of the Collector created in the previous step.
+`otlpreceiver` of the Collector created in the previous step.
 
 By default, the Node.js auto-instrumentation ships with
 [many instrumentation libraries](https://github.com/open-telemetry/opentelemetry-js-contrib/blob/main/metapackages/auto-instrumentations-node/README.md#supported-instrumentations).
@@ -300,7 +301,7 @@ By default, the Instrumentation resource that auto-instruments python services
 uses `otlp` with the `http/protobuf` protocol. This means that the configured
 endpoint must be able to receive OTLP over `http/protobuf`. Therefore, the
 example uses `http://demo-collector:4318`, which will connect to the `http` port
-of the otlpreceiver of the Collector created in the previous step.
+of the `otlpreceiver` of the Collector created in the previous step.
 
 > As of operator v0.67.0, the Instrumentation resource automatically sets
 > `OTEL_EXPORTER_OTLP_TRACES_PROTOCOL` and `OTEL_EXPORTER_OTLP_METRICS_PROTOCOL`
@@ -343,14 +344,14 @@ spec:
 Now that your Instrumentation object is created, your cluster has the ability to
 auto-instrument services and send data to an endpoint. However,
 auto-instrumentation with the OpenTelemetry Operator follows an opt-in model. In
-order to activate autoinstrumentation, you'll need to add an annotation to your
-deployment.
+order to activate automatic instrumentation, you'll need to add an annotation to
+your deployment.
 
 ## Add annotations to existing deployments
 
-The final step is to opt in your services to autoinstrumentation. This is done
-by updating your service’s `spec.template.metadata.annotations` to include a
-language-specific annotation:
+The final step is to opt in your services to automatic instrumentation. This is
+done by updating your service’s `spec.template.metadata.annotations` to include
+a language-specific annotation:
 
 - .NET: `instrumentation.opentelemetry.io/inject-dotnet: "true"`
 - Java: `instrumentation.opentelemetry.io/inject-java: "true"`
@@ -369,6 +370,6 @@ The possible values for the annotation can be
 - `"false"` - do not inject
 
 Alternatively, the annotation can be added to a namespace, which will result in
-all services in that namespace to opt-in to autoinstrumentation. See the
+all services in that namespace to opt-in to automatic instrumentation. See the
 [Operators auto-instrumentation documentation](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md#opentelemetry-auto-instrumentation-injection)
 for more details.
