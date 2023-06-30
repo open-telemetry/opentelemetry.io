@@ -101,7 +101,7 @@ combine their strengths and truly offer a single standard.
 ## What OpenTelemetry is not
 
 OpenTelemetry is not an observability back-end like Jaeger, Prometheus, or
-commerical vendors. OpenTelemetry is focused on the generation, collection,
+commercial vendors. OpenTelemetry is focused on the generation, collection,
 management, and export of telemetry data. The storage and visualization of that
 data is intentionally left to other tools.
 
