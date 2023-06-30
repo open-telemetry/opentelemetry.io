@@ -2,7 +2,6 @@
 title: Ad Service
 linkTitle: Ad
 aliases: [/docs/demo/services/adservice]
-spelling: cSpell:ignore javaagent
 ---
 
 This service determines appropriate ads to serve to users based on context keys.
