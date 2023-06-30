@@ -2,6 +2,7 @@
 title: Propagation
 description: Context propagation for the PHP API
 weight: 60
+spelling: cSpell:ignore Symfony Laravel
 ---
 
 Propagation is the mechanism that moves data between services and processes.
@@ -15,7 +16,7 @@ HTTP headers.
 
 ## Context propagation with frameworks and libraries
 
-Auto-instrumentation exists for some popular PHP frameworks (eg Symfony,
+Auto-instrumentation exists for some popular PHP frameworks (eg. Symfony,
 Laravel, Slim) and HTTP libraries propagate context for incoming and outgoing
 HTTP requests.
 

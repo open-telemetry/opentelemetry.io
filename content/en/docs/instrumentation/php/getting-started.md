@@ -4,7 +4,7 @@ description: Get up and running with OpenTelemetry for PHP.
 aliases: [/docs/instrumentation/php/getting_started]
 weight: 10
 spelling: cSpell:ignore Wordpress Symfony Laravel rolldice autoload strval PECL
-spelling: cSpell:ignore darwin
+spelling: cSpell:ignore darwin pecl autoloaded myapp
 ---
 
 OpenTelemetry for PHP can be used to generate and export [traces][], [metrics][]
@@ -85,7 +85,7 @@ $app->run();
 
 ```
 
-Run the application using the PHP built-in webserver:
+Run the application using the PHP built-in web server:
 
 ```shell
 php -S localhost:8080
@@ -256,7 +256,7 @@ $app->get('/rolldice', function (Request $request, Response $response) use ($tra
 $app->run();
 ```
 
-Start the built-in webserver again, and browse to
+Start the built-in web server again, and browse to
 <http://localhost:8080/rolldice>. You should see similar output, but with the
 addition of a new span named `manual-span`.
 
@@ -311,7 +311,7 @@ $app->get('/rolldice', function (Request $request, Response $response) use ($mon
 $app->run();
 ```
 
-Start the built-in webserver with the following command (note the change to
+Start the built-in web server with the following command (note the change to
 `OTEL_LOGS_EXPORTER`):
 
 ```shell

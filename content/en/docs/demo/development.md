@@ -1,5 +1,7 @@
 ---
 title: Development
+spelling: cSpell:ignore intellij libcurl openssl libprotobuf nlohmann rebar
+spelling: cSpell:ignore protoc grpcio
 ---
 
 Development for this demo requires tooling in several programming languages.
