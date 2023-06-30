@@ -2,7 +2,7 @@
 title: Exponential Histograms
 date: 2023-05-22
 author: '[Daniel Dyla](https://github.com/dyladan)'
-spelling: cSpell:ignore Dyla quantiles subsetting Ruslan Vovalov Ganesh Vernekar
+spelling: cSpell:ignore subsetting Ruslan Vovalov Ganesh Vernekar
 canonical_url: https://dyladan.me/histograms/2023/05/04/exponential-histograms/
 ---
 
@@ -185,18 +185,17 @@ enough for its own post. For now I will just say that for all practical
 purposes, OpenTelemetry exponential histograms are 1:1 compatible with
 Prometheus native histograms. Scale calculations, bucket boundaries, error
 rates, zero buckets, etc are all the same. For more information, I recommend you
-watch this talk given by Ruslan Vovalov and Ganesh Vernekar: [Using
-OpenTelemetry’s Exponential Histograms in Prometheus][]
+watch this talk given by Ruslan Vovalov and Ganesh Vernekar:
+[Using OpenTelemetry’s Exponential Histograms in Prometheus][]
 
 _A version of this article was [originally posted][] to the author's blog._
 
 <!-- prettier-ignore-start -->
-[Why Histograms?]: {{% relref "why-histograms" %}}
-[Histograms vs Summaries]: {{% relref "histograms-vs-summaries" %}}
 [Using OpenTelemetry’s Exponential Histograms in Prometheus]:
   https://www.youtube.com/watch?v=W2_TpDcess8
 [OTEP 149]: https://github.com/open-telemetry/oteps/blob/976c9395e4cbb3ea933d3b51589eba94b87a17bd/text/0149-exponential-histogram.md
 [specification for exponential histogram aggregations]: /docs/specs/otel/metrics/sdk/#base2-exponential-bucket-histogram-aggregation
-
+[Why Histograms?]: {{% relref "why-histograms" %}}
+[Histograms vs Summaries]: {{% relref "histograms-vs-summaries" %}}
 [originally posted]: {{% param canonical_url %}}
 <!-- prettier-ignore-end -->

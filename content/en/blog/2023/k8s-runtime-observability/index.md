@@ -5,6 +5,9 @@ date: 2023-06-05
 author: '[Daniel Dias](https://github.com/danielbdias) (Tracetest)'
 body_class: otel-with-contributions-from
 spelling: cSpell:ignore apiserver choren tracetest kube kubelet containerd
+spelling: cSpell:ignore Adnan Rahić Hamric kubetracing healthcheck apparmor
+spelling: cSpell:ignore snapshotter stargz keychain identitytoken runc
+spelling: cSpell:ignore tracingcluster
 ---
 
 With contributions from [Sebastian Choren](https://github.com/schoren),
@@ -455,10 +458,10 @@ That’s why we were researching finding new ways of collecting traces from the
 core Kubernetes engine. With the current level of observability being exposed by
 Kubernetes we wanted to publish our findings in order to help others interested
 in seeing the current state of distributed tracing in the Kubernetes engine.
-Daniel Dias and Sebastian Choren are working on Tracetest, an open-source tool
+Daniel Dias and Sebastian Choren are working on Tracetest, an open source tool
 that allows you to develop and test your distributed system with OpenTelemetry.
 It works with any OTel compatible system and enables trace–based tests to be
-created. Check it out at https://github.com/kubeshop/tracetest.
+created. Check it out at <https://github.com/kubeshop/tracetest>.
 
 The
 [example sources](https://github.com/kubeshop/tracetest/tree/main/examples/tracetesting-kubernetes/kubetracing)

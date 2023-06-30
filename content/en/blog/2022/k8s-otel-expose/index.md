@@ -5,9 +5,9 @@ date: 2022-09-08
 author: '[Benedikt Bongartz](https://github.com/frzifus)'
 spelling:
   cSpell:ignore k8sattributes k8sattributesprocessor K8sattributes k8sprocessor
-  cSpell:ignore K8sprocessor KUBE Benedikt Bongartz OIDC Juraci Paixão Kröhling
-  cSpell:ignore Keycloak dXNlci0xOjEyMzQK nginx basicauth htpasswd llczt
-  cSpell:ignore letsencrypt kubernetes frzifus oidc rolebinding
+  cSpell:ignore K8sprocessor Benedikt Bongartz
+  cSpell:ignore Keycloak dXNlci0xOjEyMzQK basicauth htpasswd llczt
+  cSpell:ignore letsencrypt frzifus oidc rolebinding
 ---
 
 Exposing an [OpenTelemetry Collector](/docs/collector/) currently requires a
@@ -183,7 +183,7 @@ spec:
 ```
 
 After a successful installation, a pod for the Jaeger backend and the
-OpenTelemetry collector should be created in the selected namespace.
+OpenTelemetry Collector should be created in the selected namespace.
 
 ```bash
 NAME                                            READY   STATUS    RESTARTS   AGE

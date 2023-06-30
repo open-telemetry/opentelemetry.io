@@ -17,7 +17,7 @@ finally archived.
 
 We intend to **deprecate Jaeger exporters from OpenTelemetry** in the near
 future, and are looking for your feedback to determine the length of the
-depreation phase. The best way to provide feedback is by
+deprecation phase. The best way to provide feedback is by
 [filling out a 4-question survey](https://forms.gle/aUuJg5DQwNzncJ4s8) or
 commenting on
 [the existing draft pull request](https://github.com/open-telemetry/opentelemetry-specification/pull/2858).
@@ -31,7 +31,7 @@ languages.
 
 This causes challenges for both Jaeger users and OpenTelemetry maintainers:
 
-1.  **Confusing Choices**
+1. **Confusing Choices**
 
     Currently, users are faced with a choice of exporter (Jaeger or OTLP), and
     this can be a source of confusion. A user might be inclined, when exporting
@@ -42,7 +42,7 @@ This causes challenges for both Jaeger users and OpenTelemetry maintainers:
     user experience and continue standardizing on a single interoperable
     protocol. We love it when things "just work" out of the box!
 
-2.  **Maintenance and duplication**
+2. **Maintenance and duplication**
 
     Because the Jaeger client libraries are now archived, they will not receive
     updates (including security patches). To continue properly supporting Jaeger

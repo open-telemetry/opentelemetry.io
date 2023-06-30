@@ -6,8 +6,8 @@ author: >-
   [Kumar Pratyush](https://github.com/kpratyus),  [Sanket
   Mehta](https://github.com/sanketmehta28), [Severin
   Neumann](https://github.com/svrnm) (Cisco)
-spelling: cSpell:ignore Kumar Pratyush Sanket Mehta Neumann nginx webserver
-spelling: cSpell:ignore WORKDIR linux proto distro traceparent tracestate xvfz
+spelling: cSpell:ignore Kumar Pratyush Sanket Mehta webserver
+spelling: cSpell:ignore WORKDIR distro xvfz tracestate
 ---
 
 OpenTelemetry is here to help us find the root cause of issues in our software

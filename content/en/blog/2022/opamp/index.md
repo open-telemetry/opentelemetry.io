@@ -4,6 +4,8 @@ linkTitle: OpAMP service usage
 date: 2022-10-19
 author: >-
   [Nimrod Shlagman](https://github.com/nemoshlag) (Cisco)
+spelling: cSpell:ignore Shlagman fprintf println gopkg ioutil struct unmarshal
+spelling: cSpell:ignore otelhttp stdouttrace sdktrace
 ---
 
 How verbose should your service telemetry be? Should a service output all

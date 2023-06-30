@@ -3,6 +3,7 @@ title: OpenTelemetry in Focus, February 2023
 linkTitle: OTel in Focus 2023/02
 date: 2023-02-28
 author: '[Austin Parker](https://github.com/austinlparker)'
+spelling: cSpell:ignore promtail Outreachy
 ---
 
 Welcome to this month’s edition of OpenTelemetry in Focus! It might be cold and

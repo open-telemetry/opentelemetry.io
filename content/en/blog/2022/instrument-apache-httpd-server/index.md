@@ -20,7 +20,7 @@ quick guide to get started with the module.
 
 ### Building the module
 
-Getting started with the OpenTelemetry module for apache httpd is pretty simple,
+Getting started with the OpenTelemetry module for Apache HTTP Server is pretty simple,
 all you need is a docker engine and git. Download the source code from github
 and then build the docker image on CentOS7[^1]:
 
