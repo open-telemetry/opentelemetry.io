@@ -101,7 +101,7 @@ The following table contains examples of span attributes:
 | http.method      | `GET`                                                                                                                   |
 | http.target      | `/cart`                                                                                                                 |
 | http.server_name | `frontend`                                                                                                              |
-| http.route       | `/cart `                                                                                                                |
+| http.route       | `/cart`                                                                                                                 |
 | http.scheme      | `http`                                                                                                                  |
 | http.host        | `localhost`                                                                                                             |
 | http.flavor      | `1.1`                                                                                                                   |

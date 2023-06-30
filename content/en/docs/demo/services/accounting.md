@@ -2,6 +2,7 @@
 title: Accounting Service
 linkTitle: Accounting
 aliases: [/docs/demo/services/accountingservice]
+spelling: cSpell:ignore sdktrace otlptracegrpc sarama otelsarama
 ---
 
 This service calculates the total amount of sold products. This is only mocked

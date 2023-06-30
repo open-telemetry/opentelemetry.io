@@ -3,6 +3,7 @@ title: Manual Instrumentation
 linkTitle: Manual
 weight: 30
 description: Manual instrumentation for OpenTelemetry PHP
+spelling: cSpell:ignore myapp autoload
 ---
 
 {{% docs/instrumentation/manual-intro %}}
