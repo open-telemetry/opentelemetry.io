@@ -2,7 +2,7 @@
 
 <div class="o-banner">
 
-[The OpenTelemetry Demo Turns 1(.4)](/blog/2023/demo-birthday/)!
+[Catch up on the latest releases!](/blog/2023/otel-in-focus-06/)!
 
 </div>
 {{ end -}}
