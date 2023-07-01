@@ -118,7 +118,7 @@ has been released, as well as 1.5.0. 1.5.1 is a fix for issues introduced in
 - The bug introduced in 1.5.0-rc.1 that caused the "Build" extension to return
   null has been fixed.
 - The Exemplars feature has been marked as internal and will be added back in
-  the 1.6.\* prerelease versions.
+  the 1.6.x prerelease versions.
 - A new overload has been added for configuring MeterProviderBuilders while the
   IServiceCollection is modifiable.
 - The Console and OpenTelemetryProtocol exporters no longer support exporting
@@ -132,7 +132,7 @@ has been released, as well as 1.5.0. 1.5.1 is a fix for issues introduced in
 
 ## Project and Community Updates
 
-### OTLP 1.0 is here!
+### OTLP 1.0 is here
 
 OTLP 1.0 is out (or will soon be)! We'll publish more details about what
 this means on the blog at some later point. Keep in mind that just because the
@@ -142,12 +142,14 @@ have adopted or released it. Please keep an eye out for future information.
 This is still a major accomplishment, and a huge congratulations is in order to
 everyone who has contributed. Thank you!
 
-### From the blog...
+### From the blog
 
-[End-User Q&A: OTel at Farfetch](/blog/2023/end-user-q-and-a-03/) is the latest
+Here's the latest blog posts. Want to contribute? Get in touch!
+
+- [End-User Q&A: OTel at Farfetch](/blog/2023/end-user-q-and-a-03/) is the latest
 in the End-User Q&A series, featuring Iris Dyrmishi of Farfetch.
 
-[Creating a Kubernetes Cluster with Runtime Observability](/blog/2023/k8s-runtime-observability/)
+- [Creating a Kubernetes Cluster with Runtime Observability](/blog/2023/k8s-runtime-observability/)
 discusses how to use recent tracing features in Kubernetes components to better
 understand your k8s clusters.
 
