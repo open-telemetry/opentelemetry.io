@@ -134,8 +134,8 @@ has been released, as well as 1.5.0. 1.5.1 is a fix for issues introduced in
 
 ### OTLP 1.0 is here
 
-OTLP 1.0 is out (or will soon be)! We'll publish more details about what
-this means on the blog at some later point. Keep in mind that just because the
+OTLP 1.0 is out (or will soon be)! We'll publish more details about what this
+means on the blog at some later point. Keep in mind that just because the
 specification and protocol are 1.0, this does not mean all OpenTelemetry SIGs
 have adopted or released it. Please keep an eye out for future information.
 
@@ -146,12 +146,12 @@ everyone who has contributed. Thank you!
 
 Here's the latest blog posts. Want to contribute? Get in touch!
 
-- [End-User Q&A: OTel at Farfetch](/blog/2023/end-user-q-and-a-03/) is the latest
-in the End-User Q&A series, featuring Iris Dyrmishi of Farfetch.
+- [End-User Q&A: OTel at Farfetch](/blog/2023/end-user-q-and-a-03/) is the
+  latest in the End-User Q&A series, featuring Iris Dyrmishi of Farfetch.
 
 - [Creating a Kubernetes Cluster with Runtime Observability](/blog/2023/k8s-runtime-observability/)
-discusses how to use recent tracing features in Kubernetes components to better
-understand your k8s clusters.
+  discusses how to use recent tracing features in Kubernetes components to
+  better understand your k8s clusters.
 
 ## News and Upcoming Events
 
