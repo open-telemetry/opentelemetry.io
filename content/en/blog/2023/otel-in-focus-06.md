@@ -134,7 +134,7 @@ has been released, as well as 1.5.0. 1.5.1 is a fix for issues introduced in
 
 ### OTLP 1.0 is here!
 
-OTLP 1.0 has (or will be soon) released! We'll publish more details about what
+OTLP 1.0 is out (or will soon be)! We'll publish more details about what
 this means on the blog at some later point. Keep in mind that just because the
 specification and protocol are 1.0, this does not mean all OpenTelemetry SIGs
 have adopted or released it. Please keep an eye out for future information.
