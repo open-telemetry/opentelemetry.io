@@ -126,7 +126,7 @@ has been released, as well as 1.5.0. 1.5.1 is a fix for issues introduced in
 - The ASP.NET Core instrumentation has been updated to fix an issue where
   baggage was cleared when the Activity stopped and to add a direct reference to
   System.Text.Encodings.Web.
-- The Http instrumentation has been updated to fix an issue with missing metric
+- The HTTP instrumentation has been updated to fix an issue with missing metric
   data in network failures and to improve performance by avoiding boxing of
   common status code values.
 
