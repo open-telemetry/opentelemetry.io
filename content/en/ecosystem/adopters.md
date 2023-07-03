@@ -1,6 +1,6 @@
 ---
 title: Adopters
-description: End-user organizations that have adopted OpenTelemetry
+description: Organizations that use OpenTelemetry
 # prettier-ignore
 spelling: cSpell:ignore Dapr Datenrettungsdienste Globale Logicmonitor Logz Wandera Zocdoc
 # All spelling entries must be on a single line
