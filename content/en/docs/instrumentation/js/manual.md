@@ -148,9 +148,6 @@ app.listen(PORT, () => {
   console.log(`Listening for requests on http://localhost:${PORT}`);
 });
 
-app.listen(PORT, () => {
-  console.log(`Listening for requests on http://localhost:${PORT}`);
-});
 {{< /tab >}}
 
 {{< /tabpane>}}
@@ -252,7 +249,7 @@ your node invocation, for example:
 {{< tabpane lang=shell persistLang=false >}}
 
 {{< tab TypeScript >}}
-ts-node --require ./instrumentation.ts app.ts
+npx ts-node --require ./instrumentation.ts app.ts
 {{< /tab >}}
 
 {{< tab JavaScript >}}
