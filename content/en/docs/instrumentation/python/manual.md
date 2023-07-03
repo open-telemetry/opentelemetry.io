@@ -3,6 +3,7 @@ title: Manual Instrumentation
 linkTitle: Manual
 weight: 20
 description: Manual instrumentation for OpenTelemetry Python
+spelling: cSpell:ignore ottrace textmap millis
 ---
 
 {{% docs/instrumentation/manual-intro %}}
