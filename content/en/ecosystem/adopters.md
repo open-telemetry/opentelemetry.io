@@ -8,8 +8,7 @@ spelling: cSpell:ignore Dapr Datenrettungsdienste Globale Logicmonitor Logz Wand
 
 A non-exhaustive, alphabetized list of
 [end user organizations](https://community.cncf.io/end-user-community/) that
-have adopted OpenTelemetry. Note that to be an end user for OpenTelemetry, an
-organization cannot sell an Observability product.
+have adopted OpenTelemetry. Also see [Vendors](../vendors/).
 
 <!-- prettier-ignore-start -->
 Organization                                      | Components                      |  Learn more
