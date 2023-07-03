@@ -6,7 +6,10 @@ spelling: cSpell:ignore Dapr Datenrettungsdienste Globale Logicmonitor Logz Wand
 # All spelling entries must be on a single line
 ---
 
-A non-exhaustive, alphabetized list of [end user organizations](https://community.cncf.io/end-user-community/) that have adopted OpenTelemetry. Note that to be an end user for OpenTelemetry, an organization cannot sell an Observability product.
+A non-exhaustive, alphabetized list of
+[end user organizations](https://community.cncf.io/end-user-community/) that
+have adopted OpenTelemetry. Note that to be an end user for OpenTelemetry, an
+organization cannot sell an Observability product.
 
 <!-- prettier-ignore-start -->
 Organization                                      | Components                      |  Learn more
