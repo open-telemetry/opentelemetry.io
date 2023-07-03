@@ -857,16 +857,41 @@ const span = opentelemetry.trace.getSpan(ctx);
 pairs to a [`Span`](/docs/concepts/signals/traces/#spans) so it carries more
 information about the current operation that it's tracking.
 
-```javascript
-tracer.startActiveSpan('app.new-span', (span) => {
-  // do some work...
+<!-- prettier-ignore-start -->
+{{< tabpane langEqualsHeader=true >}}
 
-  // Add an attribute to the span
-  span.setAttribute('attribute1', 'value1');
+{{< tab TypeScript >}}
+function rollOnce(i: number, min: number, max: number) {
+  return tracer.startActiveSpan(`rollOnce:${i}`, (span: Span) => {
+    const result = Math.floor(Math.random() * (max - min) + min);
 
-  span.end();
-});
-```
+    // Add an attribute to the span
+    span.setAttribute('dicelib.rolled', result.toString());
+
+    span.end()
+    return result
+  })
+}
+
+{{< /tab >}}
+
+{{< tab JavaScript >}}
+function rollOnce(i, min, max) {
+  return tracer.startActiveSpan(`rollOnce:${i}`, (span) => {
+    const result = Math.floor(Math.random() * (max - min) + min);
+
+    // Add an attribute to the span
+    span.setAttribute('dicelib.rolled', result.toString());
+
+    span.end()
+    return result
+  })
+}
+
+{{< /tab >}}
+
+{{< /tabpane >}}
+<!-- prettier-ignore-end -->
 
 You can also add attributes to a span as it's created:
 
@@ -881,6 +906,36 @@ tracer.startActiveSpan(
   }
 );
 ```
+
+<!-- prettier-ignore-start -->
+
+{{< tabpane langEqualsHeader=true >}}
+
+{{< tab TypeScript >}}
+function rollTheDice(rolls: number, min: number, max: number) {
+  return tracer.startActiveSpan(
+    'rollTheDice',
+    { attributes: { 'dicelib.rolls': rolls.toString() } },
+    (span: Span) => {
+    /* ... */
+  })
+}
+{{< /tab >}}
+
+{{< tab JavaScript >}}
+function rollTheDice(rolls, min, max) {
+  return tracer.startActiveSpan(
+    'rollTheDice',
+    { attributes: { 'dicelib.rolls': rolls.toString() } },
+    (span) => {
+    /* ... */
+  })
+}
+{{< /tab >}}
+
+{{< /tabpane>}}
+
+<!-- prettier-ignore-end -->
 
 #### Semantic Attributes
 
