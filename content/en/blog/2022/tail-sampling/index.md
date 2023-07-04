@@ -6,11 +6,12 @@ linkTitle: Tail Sampling
 date: 2022-09-26
 author: '[Reese Lee](https://github.com/reese-lee)'
 canonical_url: https://newrelic.com/blog/best-practices/open-telemetry-tail-sampling
+spelling: cSpell:ignore unsampled
 ---
 
 Tail sampling is useful for identifying issues in your distributed system while
 saving on observability costs. In this post, you’ll learn how to implement tail
-sampling using the OpenTelemetry collector. I will also share some general and
+sampling using the OpenTelemetry Collector. I will also share some general and
 OpenTelemetry-specific concerns to consider as you develop your sampling
 strategy.
 
@@ -56,7 +57,7 @@ lower data ingest and storage costs because you’re only exporting a
 predetermined subset of your traces. For instance, as an app developer, I may
 only be interested in traces with errors or latency for debugging.
 
-## How to implement tail sampling in the OpenTelemetry collector
+## How to implement tail sampling in the OpenTelemetry Collector
 
 To use tail sampling in OpenTelemetry, you need to implement a component called
 the

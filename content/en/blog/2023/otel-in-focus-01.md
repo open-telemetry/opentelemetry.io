@@ -59,7 +59,7 @@ more of a guide to our priorities and prioritization.
 
 Interested in AWS Lambda, or other Functions-as-a-Service workloads, and how to
 emit OpenTelemetry data from them? Our
-[FAAS Working Group](https://github.com/open-telemetry/community#implementation-sigs)
+[FaaS Working Group](https://github.com/open-telemetry/community#implementation-sigs)
 has restarted in order to work on this problem. Join a meeting, or
 [check out their notes](https://docs.google.com/document/d/187XYoQcXQ9JxS_5v2wvZ0NEysaJ02xoOYNXj08pT0zc/),
 for more information.

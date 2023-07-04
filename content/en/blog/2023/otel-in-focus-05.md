@@ -3,6 +3,7 @@ title: OpenTelemetry in Focus, May 2023
 linkTitle: OTel in Focus 2023/05
 date: 2023-05-31
 author: '[Austin Parker](https://github.com/austinlparker)'
+spelling: cSpell:ignore vertx Dyrmishi Farfetch
 ---
 
 Welcome back to **OpenTelemetry in Focus** for May, 2023! The sun is shining,
@@ -43,7 +44,7 @@ In addition,
 has been updated with several changes and enhancements. The
 [Operator](https://github.com/open-telemetry/opentelemetry-operator/releases/tag/v0.77.0)
 now supports Golang & Apache HTTP server auto-instrumentation in addition to
-Python, Java, Node.JS, and .NET.
+Python, Java, Node.js, and .NET.
 
 ##### [Go](/docs/instrumentation/go/)
 
