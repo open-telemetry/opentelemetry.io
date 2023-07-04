@@ -4,17 +4,35 @@ aliases:
   - /docs/instrumentation/js/api/tracing
   - /docs/instrumentation/js/instrumentation
 weight: 30
-spelling: cSpell:ignore Millis
+spelling: cSpell:ignore Millis rolldice dicelib
 description: Manual instrumentation for OpenTelemetry JavaScript
 ---
 
 {{% docs/instrumentation/manual-intro %}}
 
+{{% alert title="Note" color="info" %}}
+
+On this page you will learn, how you can add traces, metrics and logs to your
+code _manually_. But, you are not limited to only use one kind of
+instrumentation: use
+[automatic instrumentation](/docs/instrumentation/js/automatic/) to get started
+and then enrich your code with manual instrumentation as needed.
+
+Also, for libraries your code depends on, you don't have to write
+instrumentation code yourself, since they might come with OpenTelemetry built-in
+_natively_ or you can make use of
+[instrumentation libraries](/docs/instrumentation/js/libraries/).
+
+{{% /alert %}}
+
 ## Example app preparation {#example-app}
 
-This page uses a modified version of the example app from [Getting Started](/docs/instrumentation/js/getting-started/nodejs/) to help you learn about manual instrumentation.
+This page uses a modified version of the example app from
+[Getting Started](/docs/instrumentation/js/getting-started/nodejs/) to help you
+learn about manual instrumentation.
 
-You don't have to use the example app: if you want to instrument your own app or library, follow the instructions here to adapt the process to your own code.
+You don't have to use the example app: if you want to instrument your own app or
+library, follow the instructions here to adapt the process to your own code.
 
 ### Dependencies
 
@@ -47,10 +65,10 @@ npm install express
 ### Create and launch an HTTP Server
 
 To highlight the difference between instrumenting a _library_ and a standalone
-_app_, split out the dice rolling into a _library
-file_, which then will be imported as a dependency by the _app file_.
+_app_, split out the dice rolling into a _library file_, which then will be
+imported as a dependency by the _app file_.
 
-Create the _library file_ named `dice.ts` (or `dice.js` if you are not using
+Create the _library file_ named `dice.ts` (or `dice.js`) if you are not using
 typescript) and add the following code to it:
 
 <!-- prettier-ignore-start -->
@@ -94,8 +112,8 @@ module.exports = { rollTheDice }
 
 <!-- prettier-ignore-end -->
 
-Create the _app file_ named `app.ts` (or `app.js` if not using
-typescript) and add the following code to it:
+Create the _app file_ named `app.ts` (or `app.js`) if not using typescript) and
+add the following code to it:
 
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
@@ -182,18 +200,23 @@ npm install \
 
 ### Set SDK default attributes
 
-{{% alert title="Note" color="info" %}}  If you’re instrumenting a library, **skip this step**.
+{{% alert title="Note" color="info" %}} If you’re instrumenting a library,
+**skip this step**.
 
-Alternative methods exist for setting up resource attributes. For more information, see [Resources](/docs/instrumentation/js/resources/).
+Alternative methods exist for setting up resource attributes. For more
+information, see [Resources](/docs/instrumentation/js/resources/).
 {{% /alert %}}
 
-When using the OpenTelemetry SDK, certain [resource attributes](/docs/instrumentation/js/resources/) are necessary, and beneficial, to provide:
+When using the OpenTelemetry SDK, certain
+[resource attributes](/docs/instrumentation/js/resources/) are necessary, and
+beneficial, to provide:
 
 - `service.name` (required): logical name of the service
 - `service.version` (optional): version of the service API or implementation.
 
-To set these attributes for the example app, create a file named `instrumentation.ts` (or
-`instrumentation.js` if not using typescript) and add the following code to it:
+To set these attributes for the example app, create a file named
+`instrumentation.ts` (or `instrumentation.js` if not using typescript) and add
+the following code to it:
 
 <!-- prettier-ignore-start -->
 
@@ -247,8 +270,8 @@ node --require ./instrumentation.js app.js
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
-This basic setup has no effect on your app yet. You need to 
-add code for [traces](#traces), [metrics](#metrics), and/or [logs](#logs).
+This basic setup has no effect on your app yet. You need to add code for
+[traces](#traces), [metrics](#metrics), and/or [logs](#logs).
 
 ## Traces
 
@@ -257,14 +280,15 @@ add code for [traces](#traces), [metrics](#metrics), and/or [logs](#logs).
 {{% alert color="info" %}} If you’re instrumenting a library, skip this step.
 {{% /alert %}}
 
-To enable [tracing](/docs/concepts/signals/traces/) in your app, you'll need
-to have an initialized
+To enable [tracing](/docs/concepts/signals/traces/) in your app, you'll need to
+have an initialized
 [`TracerProvider`](/docs/concepts/signals/traces/#tracer-provider) that will let
 you create a [`Tracer`](/docs/concepts/signals/traces/#tracer).
 
 If a `TracerProvider` is not created, the OpenTelemetry APIs for tracing will
-use a no-op implementation and fail to generate data.
-As explained next, modify the `instrumentation.*` file to include all the SDK initialization code in Node and the browser.
+use a no-op implementation and fail to generate data. As explained next, modify
+the `instrumentation.*` file to include all the SDK initialization code in Node
+and the browser.
 
 #### Node.js
 
@@ -431,10 +455,10 @@ In most cases, stick with `BatchSpanProcessor` over `SimpleSpanProcessor`.
 #### Configure an exporter
 
 The `ConsoleSpanExporter` will write spans to the console. After you have
-finished setting up manual instrumentation, you need to configure
-an appropriate exporter to
-[export the app's telemetry data](/docs/instrumentation/js/exporters/)
-to one or more telemetry backends.
+finished setting up manual instrumentation, you need to configure an appropriate
+exporter to
+[export the app's telemetry data](/docs/instrumentation/js/exporters/) to one or
+more telemetry backends.
 
 ### Acquiring a tracer
 
@@ -479,8 +503,8 @@ rather than exporting the `tracer` instance to the rest of your app. This helps
 avoid trickier application load issues when other required dependencies are
 involved.
 
-In the case of the [example app](#example-app), there are two
-places where a tracer may be acquired with an appropriate instrumentation scope:
+In the case of the [example app](#example-app), there are two places where a
+tracer may be acquired with an appropriate instrumentation scope:
 
 First, in the _application file_ `app.ts` (or `app.js`):
 
@@ -605,8 +629,8 @@ module.exports = { rollTheDice }
 
 ### Create spans
 
-Now that you have [tracers](/docs/concepts/signals/traces/#tracer)
-initialized, you can create [spans](/docs/concepts/signals/traces/#spans).
+Now that you have [tracers](/docs/concepts/signals/traces/#tracer) initialized,
+you can create [spans](/docs/concepts/signals/traces/#spans).
 
 The code below illustrates how to create an active span, which is the most
 common kind of span.
@@ -653,13 +677,12 @@ function rollTheDice(rolls, min, max) {
 
 <!-- prettier-ignore-end -->
 
-If you followed the instructions using the
-[example app](#example-app) up to this point, you can copy the
-code above in your library file `dice.ts` (or `dice.js`). You should now be
-able to see spans emitted from your app.
+If you followed the instructions using the [example app](#example-app) up to
+this point, you can copy the code above in your library file `dice.ts` (or
+`dice.js`). You should now be able to see spans emitted from your app.
 
-Start your app as follows, and then send it requests by
-visiting <http://localhost:8080/rolldice?rolls=12> with your browser or `curl`.
+Start your app as follows, and then send it requests by visiting
+<http://localhost:8080/rolldice?rolls=12> with your browser or `curl`.
 
 <!-- prettier-ignore-start -->
 {{< tabpane lang=shell persistLang=false >}}
@@ -697,8 +720,9 @@ After a while, you should see the spans printed in the console by the
 ### Create nested spans
 
 Nested [spans](/docs/concepts/signals/traces/#spans) let you track work that's
-nested in nature. For example, the `rollOnce()` function below represents a nested
-operation. The following sample creates a nested span that tracks `rollOnce()`:
+nested in nature. For example, the `rollOnce()` function below represents a
+nested operation. The following sample creates a nested span that tracks
+`rollOnce()`:
 
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
@@ -752,8 +776,8 @@ function rollTheDice(rolls, min, max) {
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
-This code creates a child span for each _roll_ that has `parentSpan`'s
-ID as their parent ID:
+This code creates a child span for each _roll_ that has `parentSpan`'s ID as
+their parent ID:
 
 ```json
 {
@@ -1239,8 +1263,8 @@ npm install \
   @opentelemetry/instrumentation
 ```
 
-Next, create a separate `instrumentation.js|ts` file that has all the SDK
-initialization code in it:
+Next, create a separate `instrumentation.ts` (or `instrumentation.js`) file that
+has all the SDK initialization code in it:
 
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
@@ -1322,11 +1346,11 @@ You'll need to `--require` this file when you run your app, such as:
 {{< tabpane lang=shell persistLang=false >}}
 
 {{< tab TypeScript >}}
-ts-node --require ./instrumentation.ts <app-file.ts>
+ts-node --require ./instrumentation.ts app.ts
 {{< /tab >}}
 
 {{< tab JavaScript >}}
-node --require ./instrumentation.js <app-file.js>
+node --require ./instrumentation.js app.js
 {{< /tab >}}
 
 {{< /tabpane >}}
