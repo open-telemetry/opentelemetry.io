@@ -3,6 +3,7 @@ title: Instrumenting Apache Kafka clients with OpenTelemetry
 linkTitle: Instrumenting Apache Kafka clients
 date: 2022-09-06
 author: '[Paolo Patierno](https://github.com/ppatierno)'
+spelling: cSpell:ignore Paolo Patierno Strimzi -Dotel autoconfigure classpath
 ---
 
 Nowadays, [Apache Kafka](https://kafka.apache.org/) is chosen as the nervous

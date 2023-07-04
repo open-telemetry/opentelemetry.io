@@ -3,6 +3,7 @@ title: OpenTelemetry Updates Lambda Support
 linkTitle: OTel Lambda Updates
 date: 2023-05-25
 author: '[Carter Socha](https://github.com/cartersocha) (Lightstep)'
+spelling: cSpell:ignore socha adot otel-faas
 ---
 
 The
