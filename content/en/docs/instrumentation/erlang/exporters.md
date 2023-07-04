@@ -1,7 +1,7 @@
 ---
 title: Exporters
 weight: 50
-spelling: cSpell:ignore ostream jaegertracing millis chrono
+spelling: cSpell:ignore ostream jaegertracing millis chrono rebar relx
 ---
 
 In order to visualize and analyze your [traces](/docs/concepts/signals/traces/)
