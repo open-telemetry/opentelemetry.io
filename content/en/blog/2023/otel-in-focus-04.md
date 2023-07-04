@@ -3,6 +3,7 @@ title: OpenTelemetry in Focus, April 2023
 linkTitle: OTel in Focus 2023/04
 date: 2023-05-01
 author: '[Austin Parker](https://github.com/austinlparker)'
+spelling: cSpell:ignore confmap renamings
 ---
 
 Welcome to this month’s edition of **OpenTelemetry in Focus**! It's been another
