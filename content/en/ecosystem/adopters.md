@@ -7,7 +7,7 @@ spelling: cSpell:ignore Dapr Datenrettungsdienste Globale Logicmonitor Logz Wand
 ---
 
 A non-exhaustive, alphabetized list of
-[end user organizations](https://community.cncf.io/end-user-community/) that
+[end-user organizations](https://community.cncf.io/end-user-community/) that
 have adopted OpenTelemetry. Also see [Vendors](../vendors/).
 
 <!-- prettier-ignore-start -->
