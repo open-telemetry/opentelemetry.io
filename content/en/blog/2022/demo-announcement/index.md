@@ -26,7 +26,7 @@ Your command line output should look like this:
 
 ![Screenshot of the console output.](otel-webstore-app-output.png 'Screenshot of the console output')
 
-- Once the images are built you can access the Webstore at:
+- Once the images are built you can access the web store at:
   <http://localhost:8080>
 
 - And the Jaeger UI at: <http://localhost:8080/jaeger/ui>
@@ -125,7 +125,7 @@ ourselves to just the items listed here.
 - [Service Level Objective](https://github.com/OpenSLO/OpenSLO#slo) (SLO)
   definition and tracking
 - Additional instrumentation libraries introduced where needed
-- Demonstratations of the ability to add
+- Demonstrations of the ability to add
   [Baggage](https://github.com/open-telemetry/opentelemetry-demo/issues/100) and
   other custom tags
 - Continue to build on other cloud-native technologies like:
@@ -134,7 +134,7 @@ ourselves to just the items listed here.
   - [OpenFeature](https://github.com/open-feature)
   - [OpenSLO](https://github.com/OpenSLO/OpenSLO)
   - etc.
-- An enhanced OpenTelemetry collector gateway capabilities for ingestion,
+- An enhanced OpenTelemetry Collector gateway capabilities for ingestion,
   transformation, and export
 - Probability based sampling
 - Feature flag service to demonstrate various scenarios like fault injection and

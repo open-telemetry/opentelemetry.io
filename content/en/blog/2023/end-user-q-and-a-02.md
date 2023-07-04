@@ -4,6 +4,7 @@ linkTitle: 'End-User Q&A: OTel at Uplight'
 date: 2023-03-20
 author: '[Adriana Villela](https://github.com/avillela) (Lightstep)'
 body_class: otel-with-contributions-from
+spelling: cSpell:ignore Uplight hackathons
 ---
 
 With contributions from [Rynn Mancuso](https://github.com/musingvirtual)
