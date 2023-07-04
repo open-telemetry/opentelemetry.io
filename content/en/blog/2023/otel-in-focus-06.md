@@ -3,6 +3,8 @@ title: OpenTelemetry in Focus, June 2023
 linkTitle: OTel in Focus 2023/06
 date: 2023-07-01
 author: '[Austin Parker](https://github.com/austinlparker)'
+spelling: cSpell:ignore scraperhelper Skywalking autoconfigure Logback Quarkus 
+spelling: cSpell:ignore Ktor Farfetch Dyrmishi Inet
 ---
 
 Welcome back to **OpenTelemetry in Focus** for June, 2023! It's officially
@@ -60,7 +62,7 @@ There were three releases of the
 in June. The latest, release v0.80.0, introduces enhancements such as adding a
 Skywalking parser and populating credentials for Prometheus CR scrape configs.
 Bug fixes include a fix for the upgrade mechanism and empty global scrape
-interval, and a new component was added for Nginx auto-instrumentation in the
+interval, and a new component was added for NGINX auto-instrumentation in the
 operator.
 
 0.79.0 of the Operator includes enhancements such as Prometheus metric exporter
@@ -74,7 +76,7 @@ scaling on Pod custom metrics, and improved config validation. Bug fixes include
 addressing issues related to prometheus relabel configs and setting the default
 go auto-instrumentation version correctly. Components that were updated include
 the OpenTelemetry Collector, OpenTelemetry Contrib, Java auto-instrumentation,
-.NET auto-instrumentation, Node.JS, Python, Go, and ApacheHTTPD.
+.NET auto-instrumentation, Node.js, Python, Go, and Apache HTTP Server.
 
 ##### [Java](/docs/instrumentation/java/)
 
@@ -101,7 +103,7 @@ has been released, requiring some migrations to be performed.
 - Enhancements including improvements in Micrometer bridge, Ktor
   instrumentations, AWS SDK support, OkHttp 3, Jetty 11, Spring Boot, AWS Lambda
   tracing, and type matching.
-- Bug fixes related to logback MDC instrumentation, kafka metrics reporter,
+- Bug fixes related to Logback MDC instrumentation, kafka metrics reporter,
   jetty context leak, filtering scalar Mono/Flux instances, and others.
 
 #### [Javascript](/docs/instrumentation/js/)
@@ -151,7 +153,7 @@ Here's the latest blog posts. Want to contribute? Get in touch!
 
 - [Creating a Kubernetes Cluster with Runtime Observability](/blog/2023/k8s-runtime-observability/)
   discusses how to use recent tracing features in Kubernetes components to
-  better understand your k8s clusters.
+  better understand your K8s clusters.
 
 ## News and Upcoming Events
 

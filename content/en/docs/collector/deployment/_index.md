@@ -4,7 +4,7 @@ description: Patterns you can apply to deploy the OpenTelemetry collector
 weight: 2
 ---
 
-The OpenTelemetry collector consists of a single binary which you can use in
+The OpenTelemetry Collector consists of a single binary which you can use in
 different ways, for different use cases. This section describes deployment
 patterns, their use cases along with pros and cons and best practices for
 collector configurations for cross-environment and multi-backend deployments.

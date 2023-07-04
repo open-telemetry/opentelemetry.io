@@ -4,7 +4,7 @@ description: Vendors who natively support OpenTelemetry
 aliases: [/vendors]
 # Note: the keywords after 'cSpell:ignore' must be on the same line, no wrapping, hence the Prettier ignore directive
 # prettier-ignore
-spelling: cSpell:ignore appdynamics aria aspecto bution coralogix daocloud datadoghq distri dynatrace gethelios grafana humio Instana kloudfuse lightstep logz logicmonitor lumigo observiq promscale sentrysoftware signoz solarwinds splunk sumologic uptrace vmware wavefront
+spelling: cSpell:ignore appdynamics aria aspecto bution coralogix daocloud datadoghq distri dynatrace gethelios grafana humio Instana kloudfuse lightstep logz logicmonitor lumigo observiq promscale sentrysoftware signoz solarwinds splunk sumologic uptrace vmware wavefront ITRS itrsgroup geneos Crowdstrike observeinc servicepilot telemetryhub teletrace thousandeyes
 ---
 
 [Distributions](/docs/concepts/distributions/) and vendors who natively support
