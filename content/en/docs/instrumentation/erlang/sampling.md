@@ -1,7 +1,9 @@
 ---
 title: Sampling
 weight: 80
-spelling: cSpell:ignore defmodule healthcheck
+# For the writing of behaviour, see
+# https://www.erlang.org/doc/reference_manual/modules.html#behaviour-module-attribute
+spelling: cSpell:ignore defmodule healthcheck behaviour
 ---
 
 [Sampling](/docs/concepts/sampling/) is a process that restricts the amount of
@@ -131,7 +133,7 @@ sampler: {:parent_based, %{root: :always_on,
 ## Custom Sampler
 
 Custom samplers can be created by implementing the
-[`otel_sampler` behavior](https://hexdocs.pm/opentelemetry/1.3.0/otel_sampler.html#callbacks).
+[`otel_sampler behaviour`](https://hexdocs.pm/opentelemetry/1.3.0/otel_sampler.html#callbacks).
 This example sampler:
 
 <!-- prettier-ignore-start -->
