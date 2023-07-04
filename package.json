@@ -67,11 +67,13 @@
   "devDependencies": {
     "autoprefixer": "^10.4.14",
     "cspell": "^6.31.1",
+    "gulp": "^4.0.2",
     "hugo-extended": "0.113.0",
     "netlify-cli": "^15.0.1",
     "npm-run-all": "^4.1.5",
     "postcss-cli": "^10.1.0",
     "prettier": "^2.8.4",
+    "require-dir": "^1.2.0",
     "textlint": "^13.1.4",
     "textlint-filter-rule-allowlist": "^4.0.0",
     "textlint-filter-rule-comments": "^1.2.2",
@@ -97,76 +99,5 @@
   "prettier": {
     "proseWrap": "always",
     "singleQuote": true
-  },
-  "textlint": {
-    "plugins": {
-      "@textlint/text": {
-        "extensions": [
-          ".yml"
-        ]
-      }
-    },
-    "filters": {
-      "comments": {
-        "disablingComment": "prettier-ignore-start",
-        "enablingComment": "prettier-ignore-end"
-      },
-      "allowlist": {
-        "allow": [
-          "/{{%.*%}}/",
-          "/<http://.*>/",
-          "medium.com/opentelemetry",
-          "github.com/open-telemetry",
-          "#opentelemetry"
-        ]
-      }
-    },
-    "rules": {
-      "terminology": {
-        "defaultTerms": false,
-        "skip": [],
-        "terms": [
-          ".NET",
-          "Apache",
-          "CNCF",
-          "eBPF",
-          "gRPC",
-          "HTTP",
-          "Jaeger",
-          "K8s",
-          "KubeCon",
-          "Kubernetes",
-          "MySQL",
-          "NGINX",
-          "OpenTelemetry Collector",
-          "OTel",
-          "OTEP",
-          "PHP",
-          "PostgreSQL",
-          "protobuf",
-          "Zipkin",
-          [
-            "[^\\.]json",
-            "JSON"
-          ],
-          [
-            "[Nn]ode\\.?[Jj][sS]",
-            "Node.js"
-          ],
-          [
-            "open-source",
-            "open source"
-          ],
-          [
-            "[Oo]pen[- ][Tt]elemetry",
-            "OpenTelemetry"
-          ],
-          [
-            "regexes",
-            "regular expressions"
-          ]
-        ]
-      }
-    }
   }
 }

@@ -18,8 +18,12 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^https?://127\.0\.0\.1\b
   - ^https?://(otel-demo|traefik)\.localhost
 
-  - ^https://(www\.)?linkedin\.com\b # Always yields 999 Request Denied
-  - ^https://(www\.)?mvnrepository\.com # Always yields 403 Forbidden
+  # Sites that deny access, always yielding 403 Forbidden (unless mentioned otherwise)
+  - ^https://(www\.)?linkedin\.com\b # 999 Request Denied
+  - ^https://(www\.)?mvnrepository\.com
+  - ^https://twitter.com
+  - ^https://www.chathamhouse.org
+  - ^https://www.zocdoc.com
 
   # Ignore Docsy-generated GitHub links:
   - ^https?://github\.com/.*?/.*?/(new|edit)/ # view-page, edit-source etc

@@ -34,7 +34,7 @@ can come in the form of [traces](/docs/concepts/signals/traces/),
 **Reliability** answers the question: "Is the service doing what users expect it
 to be doing?” A system could be up 100% of the time, but if, when a user clicks
 "Add to Cart” to add a black pair of pants to their shopping cart, and instead,
-the system keeps adding a red pair of pants, then the system would be said to be
+the system doesn't always add black pants, then the system would be said to be
 **un**reliable.
 
 **Metrics** are aggregations over a period of time of numeric data about your
