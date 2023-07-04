@@ -131,6 +131,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-28T13:37:52.400412-04:00"
   },
+  "https://aws.amazon.com/otel/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-06-30T16:24:16.249298-04:00"
+  },
   "https://azure.microsoft.com/": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T12:27:53.526561-04:00"
@@ -274,6 +278,10 @@
   "https://cloud-native.slack.com/team/U03UARAJ405": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T15:55:19.306529-04:00"
+  },
+  "https://cloud.google.com": {
+    "StatusCode": 200,
+    "LastSeen": "2023-06-30T16:25:08.965079-04:00"
   },
   "https://cloud.google.com/": {
     "StatusCode": 200,
@@ -691,6 +699,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-30T08:31:32.381869-04:00"
   },
+  "https://docs.dapr.io/operations/monitoring/tracing/otel-collector/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-06-30T16:26:17.455495-04:00"
+  },
   "https://docs.datadoghq.com/tracing/connect_logs_and_traces/java/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T15:52:27.851719-04:00"
@@ -938,6 +950,10 @@
   "https://docs.openfeature.dev/docs/specification/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T15:49:22.900644-04:00"
+  },
+  "https://docs.openshift.com/container-platform/4.12/distr_tracing/distr_tracing_arch/distr-tracing-architecture.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-06-30T16:26:49.19116-04:00"
   },
   "https://docs.oracle.com/cd/E12058_01/doc/doc.1014/e12030/cron_expressions.htm": {
     "StatusCode": 200,
@@ -1478,6 +1494,10 @@
   "https://ghcr.io/open-telemetry/demo": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T16:04:43.002783-04:00"
+  },
+  "https://github.blog/2021-05-26-why-and-how-github-is-adopting-opentelemetry/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-06-30T16:26:22.927158-04:00"
   },
   "https://github.com": {
     "StatusCode": 200,
@@ -3151,6 +3171,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-30T11:44:18.091171-04:00"
   },
+  "https://honeycomb.io": {
+    "StatusCode": 206,
+    "LastSeen": "2023-06-30T16:25:19.194146-04:00"
+  },
   "https://httpd.apache.org/docs/2.4/mod/core.html#servername": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:06:36.540216-04:00"
@@ -3319,6 +3343,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:03:33.467924-04:00"
   },
+  "https://lightstep.com": {
+    "StatusCode": 206,
+    "LastSeen": "2023-06-30T16:25:45.294509-04:00"
+  },
   "https://lightstep.com/blog/apm-is-dying-and-thats-okay": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:13:44.74498-04:00"
@@ -3338,6 +3366,14 @@
   "https://locust.io/": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T16:04:26.285813-04:00"
+  },
+  "https://logz.io": {
+    "StatusCode": 206,
+    "LastSeen": "2023-06-30T16:25:55.562848-04:00"
+  },
+  "https://logz.io/learn/opentelemetry-guide/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-06-30T16:26:00.622007-04:00"
   },
   "https://loom.com": {
     "StatusCode": 206,
@@ -3382,6 +3418,10 @@
   "https://medium.com/jaegertracing/introducing-native-support-for-opentelemetry-in-jaeger-eb661be8183c": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T16:14:37.278284-04:00"
+  },
+  "https://medium.com/jaegertracing/jaeger-embraces-opentelemetry-collector-90a545cbc24": {
+    "StatusCode": 200,
+    "LastSeen": "2023-06-30T16:25:40.114411-04:00"
   },
   "https://medium.com/opentelemetry": {
     "StatusCode": 200,
@@ -3871,6 +3911,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:48:07.197849-04:00"
   },
+  "https://redhat.com/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-06-30T16:26:43.920023-04:00"
+  },
   "https://redis.io/commands/hmset": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:39:33.193535-04:00"
@@ -3955,6 +3999,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:42:56.97152-04:00"
   },
+  "https://sentrysoftware.com": {
+    "StatusCode": 206,
+    "LastSeen": "2023-06-30T16:27:00.258988-04:00"
+  },
   "https://sessionize.com/": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:53:30.32448-04:00"
@@ -4022,6 +4070,10 @@
   "https://tech.ebayinc.com/engineering/why-and-how-ebay-pivoted-to-opentelemetry/": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:52:46.505579-04:00"
+  },
+  "https://techcommunity.microsoft.com/t5/azure-monitor/opentelemetry-azure-monitor/ba-p/2737823": {
+    "StatusCode": 200,
+    "LastSeen": "2023-06-30T16:26:12.028821-04:00"
   },
   "https://tinygo.org/": {
     "StatusCode": 206,
@@ -4106,6 +4158,10 @@
   "https://traefik.io": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:51:12.996932-04:00"
+  },
+  "https://transitapp.com/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-06-30T16:27:21.65157-04:00"
   },
   "https://ucum.org/ucum.html#para-curly": {
     "StatusCode": 200,
@@ -4203,6 +4259,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-30T08:52:35.762134-04:00"
   },
+  "https://www.appdirect.com/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-06-30T16:24:22.508993-04:00"
+  },
   "https://www.aspecto.io": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:36:34.908141-04:00"
@@ -4226,6 +4286,14 @@
   "https://www.bmc.com/blogs/opentracing-opencensus-openmetrics/": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:49:13.886191-04:00"
+  },
+  "https://www.care.com": {
+    "StatusCode": 200,
+    "LastSeen": "2023-06-30T16:24:29.109001-04:00"
+  },
+  "https://www.cloudscaleinc.com": {
+    "StatusCode": 200,
+    "LastSeen": "2023-06-30T16:24:41.542459-04:00"
   },
   "https://www.cncf.io": {
     "StatusCode": 206,
@@ -4259,6 +4327,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:48:50.359313-04:00"
   },
+  "https://www.dynatrace.com/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-06-30T16:24:46.847829-04:00"
+  },
   "https://www.dynatrace.com/news/blog/what-is-opentelemetry-2/": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:49:07.911428-04:00"
@@ -4266,6 +4338,10 @@
   "https://www.dynatrace.com/support/help/how-to-use-dynatrace/transactions-and-services/service-monitoring-settings/opentelemetry/": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:36:40.168763-04:00"
+  },
+  "https://www.ecobee.com/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-06-30T16:24:52.090886-04:00"
   },
   "https://www.elastic.co/": {
     "StatusCode": 200,
@@ -4307,6 +4383,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:50:28.127161-04:00"
   },
+  "https://www.f5.com/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-06-30T16:25:02.638926-04:00"
+  },
   "https://www.farfetch.com": {
     "StatusCode": 200,
     "LastSeen": "2023-06-01T15:55:17.477011-04:00"
@@ -4335,6 +4415,14 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:49:19.170295-04:00"
   },
+  "https://www.honeycomb.io/blog/bees-working-together-how-ecobees-engineers-adopted-honeycomb-for-visibility-into-system-optimization-and-customer-experience": {
+    "StatusCode": 206,
+    "LastSeen": "2023-06-30T16:24:57.42137-04:00"
+  },
+  "https://www.honeycomb.io/blog/interview-with-honeycomb-engineer-chris-toshok-dogfooding-opentelemetry/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-06-30T16:25:24.536216-04:00"
+  },
   "https://www.ibm.com/docs/api/v1/content/SSYKE2_8.0.0/openj9/api/jdk8/jre/management/extension/com/ibm/lang/management/OperatingSystemMXBean.html": {
     "StatusCode": 206,
     "LastSeen": "2023-06-27T17:17:49.452299-04:00"
@@ -4358,6 +4446,10 @@
   "https://www.ibm.com/docs/en/obi/current": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:36:51.442819-04:00"
+  },
+  "https://www.instana.com": {
+    "StatusCode": 206,
+    "LastSeen": "2023-06-30T16:25:35.002614-04:00"
   },
   "https://www.investopedia.com/terms/p/personally-identifiable-information-pii.asp": {
     "StatusCode": 200,
@@ -4487,6 +4579,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:53:04.661984-04:00"
   },
+  "https://www.logicmonitor.com/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-06-30T16:25:50.506591-04:00"
+  },
   "https://www.logicmonitor.com/support/tracing/getting-started-with-tracing": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:36:56.666522-04:00"
@@ -4498,6 +4594,10 @@
   "https://www.meetup.com/opentelemetry-in-practice-meetup-group/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T07:52:48.670372-04:00"
+  },
+  "https://www.microsoft.com/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-06-30T16:26:05.762975-04:00"
   },
   "https://www.nomadproject.io": {
     "StatusCode": 206,
@@ -4562,6 +4662,10 @@
   "https://www.oracle.com/technical-resources/articles/javase/jmx.html": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:52:25.052421-04:00"
+  },
+  "https://www.ordermygear.com/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-06-30T16:26:28.214741-04:00"
   },
   "https://www.outreachy.org/": {
     "StatusCode": 200,
@@ -4634,6 +4738,10 @@
   "https://www.php.net/manual/en/opcache.preloading.php": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:21:27.021514-04:00"
+  },
+  "https://www.pitsdatenrettung.de/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-06-30T16:26:33.667663-04:00"
   },
   "https://www.python.org/": {
     "StatusCode": 206,
@@ -4715,6 +4823,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:22:30.159811-04:00"
   },
+  "https://www.sentrysoftware.com/blog/2022-07-19/why-sentry-software-chose-opentelemetry-for-hardware-sentry.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-06-30T16:27:05.369241-04:00"
+  },
   "https://www.sentrysoftware.com/products/hardware-sentry-opentelemetry-collector.html": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:37:12.947892-04:00"
@@ -4727,6 +4839,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:15:03.129713-04:00"
   },
+  "https://www.shopify.com/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-06-30T16:27:10.638395-04:00"
+  },
   "https://www.slideshare.net/Altinity/osa-con-2022-signal-correlation-the-ho11y-grail-michael-hausenblas-awspdf": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T08:52:57.864498-04:00"
@@ -4734,6 +4850,10 @@
   "https://www.slimframework.com/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T11:44:59.127635-04:00"
+  },
+  "https://www.splunk.com/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-06-30T16:27:16.308404-04:00"
   },
   "https://www.splunk.com/en_us/blog/conf-splunklive/announcing-native-opentelemetry-support-in-splunk-apm.html": {
     "StatusCode": 200,
@@ -4823,6 +4943,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-30T08:42:56.893218-04:00"
   },
+  "https://www.wandera.com/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-06-30T16:27:26.938977-04:00"
+  },
   "https://www.youtube.com/channel/UCHZDBZTIfdy94xMjMKz-_MA": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:36:19.001379-04:00"
@@ -4830,6 +4954,10 @@
   "https://www.youtube.com/watch": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:43:02.782058-04:00"
+  },
+  "https://www.zocdoc.com/": {
+    "StatusCode": 403,
+    "LastSeen": "2023-06-30T16:27:32.038092-04:00"
   },
   "https://youtu.be/9iaGG-YZw5I": {
     "StatusCode": 200,

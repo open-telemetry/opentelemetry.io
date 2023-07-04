@@ -23,6 +23,7 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^https://(www\.)?mvnrepository\.com
   - ^https://twitter.com
   - ^https://www.chathamhouse.org
+  - ^https://www.zocdoc.com
 
   # Ignore Docsy-generated GitHub links:
   - ^https?://github\.com/.*?/.*?/(new|edit)/ # view-page, edit-source etc
