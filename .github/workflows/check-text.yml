@@ -16,4 +16,4 @@ jobs:
       - run: |
           jq 'del(.dependencies) | .scripts |= with_entries(select(.key | contains("check:"))) | .devDependencies |= with_entries( select(.key | startswith("textlint")))' package.json > package2.json && mv package2.json package.json
       - run: npm ci
-      - run: npm run check:textlint
+      - run: npm run check:text
