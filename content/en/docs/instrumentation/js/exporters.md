@@ -32,7 +32,7 @@ following:
 
 {{< tabpane langEqualsHeader=true >}}
 {{< tab Typescript >}}
-/*tracing.ts*/
+/*instrumentation.ts*/
 import * as opentelemetry from "@opentelemetry/sdk-node";
 import {
   getNodeAutoInstrumentations,
@@ -66,7 +66,7 @@ sdk.start();
 {{< /tab >}}
 
 {{< tab JavaScript >}}
-/*tracing.js*/
+/*instrumentation.js*/
 const opentelemetry = require("@opentelemetry/sdk-node");
 const {
   getNodeAutoInstrumentations,
