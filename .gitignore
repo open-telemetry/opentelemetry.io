@@ -5,7 +5,7 @@ resources/
 
 # npm assets
 node_modules/
-# package-lock.json
+package-lock.json
 
 # Link checker
 tmp/
