@@ -12,5 +12,5 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           cache: 'npm'
-      - run: npm install
+      - run: npm ci
       - run: npm run check:textlint

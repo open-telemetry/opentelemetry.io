@@ -9,8 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          cache: 'npm'
-      - run: npm install
+      # cspell has no dependencies that need to be installed so we can skip this step
+      # - run: npm install
       - run: npm run check:spelling
