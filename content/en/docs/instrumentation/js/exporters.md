@@ -32,7 +32,7 @@ following:
 
 {{< tabpane langEqualsHeader=true >}}
 {{< tab Typescript >}}
-/*tracing.ts*/
+/*instrumentation.ts*/
 import * as opentelemetry from "@opentelemetry/sdk-node";
 import {
   getNodeAutoInstrumentations,
@@ -66,7 +66,7 @@ sdk.start();
 {{< /tab >}}
 
 {{< tab JavaScript >}}
-/*tracing.js*/
+/*instrumentation.js*/
 const opentelemetry = require("@opentelemetry/sdk-node");
 const {
   getNodeAutoInstrumentations,
@@ -168,7 +168,7 @@ If your website and collector are hosted at a different origin, your browser
 might block the requests going out to your collector. You need to configure
 special headers for Cross-Origin Resource Sharing (CORS).
 
-The OpenTelemetry collector provides [a feature][] for http-based receivers to
+The OpenTelemetry Collector provides [a feature][] for http-based receivers to
 add the required headers to allow the receiver to accept traces from a web
 browser:
 
