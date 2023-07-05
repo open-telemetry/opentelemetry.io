@@ -1,0 +1,14 @@
+name: Check spelling # cSpell:ignore refcache
+
+on:
+  pull_request:
+
+jobs:
+  check-formatting:
+    name: Check spelling
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - run: npm install
+      - run: npm run check:spelling
