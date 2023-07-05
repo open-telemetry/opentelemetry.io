@@ -10,7 +10,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - run: npm install
+      # prettier has no dependencies that need to be installed so we can skip this step
+      # - run: npm install
 
       - name: Check file format
         run: npm run check:format
