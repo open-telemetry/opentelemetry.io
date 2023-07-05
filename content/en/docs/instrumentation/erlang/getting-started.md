@@ -1,8 +1,8 @@
 ---
 title: Getting Started
 weight: 10
-spelling: cSpell:ignore rebar relx stdlib bogons
-spelling: cSpell:ignore defmodule erts hipe Eshell erlang
+spelling: cSpell:ignore rebar relx stdlib bogons defp rolldice
+spelling: cSpell:ignore defmodule erts hipe Eshell postgres ecto elixirc KHTML
 ---
 
 Welcome to the OpenTelemetry for Erlang/Elixir getting started guide! This guide

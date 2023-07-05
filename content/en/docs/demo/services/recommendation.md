@@ -2,7 +2,7 @@
 title: Recommendation Service
 linkTitle: Recommendation
 aliases: [/docs/demo/services/recommendationservice]
-spelling: cSpell:ignore instrumentor cpython
+spelling: cSpell:ignore instrumentor cpython NOTSET
 ---
 
 This service is responsible to get a list of recommended products for the user

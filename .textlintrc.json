@@ -1,0 +1,56 @@
+{
+  "plugins": {
+    "@textlint/text": {
+      "extensions": [".yml"]
+    }
+  },
+  "filters": {
+    "comments": {
+      "disablingComment": "prettier-ignore-start",
+      "enablingComment": "prettier-ignore-end"
+    },
+    "allowlist": {
+      "allow": [
+        "/{{%.*%}}/",
+        "/<http://.*>/",
+        "medium.com/opentelemetry",
+        "github.com/open-telemetry",
+        "#opentelemetry"
+      ]
+    }
+  },
+  "rules": {
+    "terminology": {
+      "defaultTerms": false,
+      "skip": [],
+      "terms": [
+        ".NET",
+        "Apache",
+        "CNCF",
+        "eBPF",
+        "gRPC",
+        "HTTP",
+        "Jaeger",
+        "K8s",
+        "KubeCon",
+        "Kubernetes",
+        "MySQL",
+        "NGINX",
+        "OpenTelemetry Collector",
+        "OTel",
+        "OTEP",
+        "PHP",
+        "PostgreSQL",
+        "protobuf",
+        "Thanos",
+        "Traefik",
+        "Zipkin",
+        ["[^\\.]json", "JSON"],
+        ["[Nn]ode\\.?[Jj][sS]", "Node.js"],
+        ["open-source", "open source"],
+        ["[Oo]pen[- ][Tt]elemetry", "OpenTelemetry"],
+        ["regexes", "regular expressions"]
+      ]
+    }
+  }
+}

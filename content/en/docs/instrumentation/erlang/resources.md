@@ -1,6 +1,9 @@
 ---
 title: Resources
 weight: 70
+# For the writing of behaviour, see
+# https://www.erlang.org/doc/reference_manual/modules.html#behaviour-module-attribute
+spelling: cSpell:ignore behaviour
 ---
 
 A [resource](/docs/specs/otel/overview/#resources) represents an entity

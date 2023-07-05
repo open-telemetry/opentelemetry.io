@@ -14,7 +14,7 @@ looking to get started, it configures:
 
 - the SDK TracerProvider
 - a BatchSpanProcessor
-- the OTLP `SpanExporter` to send data to an OpenTelemetry collector
+- the OTLP `SpanExporter` to send data to an OpenTelemetry Collector
 
 The package also provides a starting point for anyone interested in producing an
 alternative distro. The interfaces implemented by the package are loaded by the

@@ -168,7 +168,7 @@ If your website and collector are hosted at a different origin, your browser
 might block the requests going out to your collector. You need to configure
 special headers for Cross-Origin Resource Sharing (CORS).
 
-The OpenTelemetry collector provides [a feature][] for http-based receivers to
+The OpenTelemetry Collector provides [a feature][] for http-based receivers to
 add the required headers to allow the receiver to accept traces from a web
 browser:
 

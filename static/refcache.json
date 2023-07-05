@@ -387,6 +387,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:18:57.115479-04:00"
   },
+  "https://community.cncf.io/end-user-community/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-03T17:44:06.5954165Z"
+  },
   "https://communityinviter.com/apps/cloud-native/cncf": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T15:55:08.258786-04:00"
