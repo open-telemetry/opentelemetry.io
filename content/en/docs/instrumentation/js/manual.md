@@ -496,7 +496,7 @@ The values of `instrumentation-scope-name` and `instrumentation-scope-version`
 should uniquely identify the
 [instrumentation scope](/docs/specs/otel/glossary/#instrumentation-scope), such
 as the package, module or class name. While the name is required, the version is
-optional.
+still recommended despite being optional.
 
 It's generally recommended to call `getTracer` in your app when you need it
 rather than exporting the `tracer` instance to the rest of your app. This helps
