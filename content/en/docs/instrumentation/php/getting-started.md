@@ -102,7 +102,7 @@ Next, you’ll use the OpenTelemetry PHP extension to
 1. Since the extension is built from source, you need to install some build
    tools
 
-   {{< tabpane lang=shell persistLang=false >}}
+   {{< tabpane lang=shell >}}
 
    {{< tab "Linux (apt)" >}}sudo apt-get install gcc make autoconf{{< /tab >}}
 

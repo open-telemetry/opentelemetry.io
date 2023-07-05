@@ -113,7 +113,7 @@ shown below:
 
 <!-- prettier-ignore-start -->
 
-{{< tabpane lang=yaml persistLang=false >}}
+{{< tabpane lang=yaml >}}
 {{< tab Static >}}
 receivers:
   otlp:

@@ -112,7 +112,7 @@ Next, ensure that `tracing.js|ts` is required in your node invocation. This is
 also required if you're registering instrumentation libraries. For example:
 
 <!-- prettier-ignore-start -->
-{{< tabpane lang=shell persistLang=false >}}
+{{< tabpane lang=shell >}}
 
 {{< tab TypeScript >}}
 ts-node --require ./tracing.ts <app-file.ts>
@@ -798,7 +798,7 @@ opentelemetry.metrics.setGlobalMeterProvider(myServiceMeterProvider)
 You'll need to `--require` this file when you run your app, such as:
 
 <!-- prettier-ignore-start -->
-{{< tabpane lang=shell persistLang=false >}}
+{{< tabpane lang=shell >}}
 
 {{< tab TypeScript >}}
 ts-node --require ./instrumentation.ts <app-file.ts>
