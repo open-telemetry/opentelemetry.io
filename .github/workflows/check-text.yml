@@ -1,5 +1,5 @@
 name: Check text linter rules
-# cSpell:ignore refcache startswith
+# cSpell:ignore startswith
 
 on:
   pull_request:

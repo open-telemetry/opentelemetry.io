@@ -1,5 +1,4 @@
 name: Check spelling
-# cSpell:ignore refcache
 
 on:
   pull_request:
