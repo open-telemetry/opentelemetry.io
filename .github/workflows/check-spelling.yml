@@ -13,5 +13,4 @@ jobs:
         with:
           files: |
             content/**/*
-          config:
-            .vscode/cspell.json
+          config: .vscode/cspell.json
