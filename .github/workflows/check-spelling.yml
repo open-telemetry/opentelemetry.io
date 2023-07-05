@@ -1,10 +1,11 @@
-name: Check spelling # cSpell:ignore refcache
+name: Check spelling
+# cSpell:ignore refcache
 
 on:
   pull_request:
 
 jobs:
-  check-formatting:
+  main:
     name: Check spelling
     runs-on: ubuntu-latest
     steps:

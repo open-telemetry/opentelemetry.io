@@ -1,10 +1,11 @@
-name: Check text linter rules # cSpell:ignore refcache startswith
+name: Check text linter rules
+# cSpell:ignore refcache startswith
 
 on:
   pull_request:
 
 jobs:
-  check-formatting:
+  main:
     name: Check text linter rules
     runs-on: ubuntu-latest
     steps:
