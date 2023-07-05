@@ -1,5 +1,6 @@
 ---
 title: Building a Trace Receiver
+weight: 98
 spelling: cSpell:ignore struct tailtracer otlpreceiver rquedas devs mapstructure
 spelling: cSpell:ignore Errorf structs loggingexporter jaegerexporter amzn
 spelling: cSpell:ignore batchprocessor Rcvr uber atmxph comcast chicago
