@@ -37,7 +37,7 @@ The collector serving at `collector.example.com:4318` would then be configured
 like so:
 
 <!-- prettier-ignore-start -->
-{{< tabpane lang=yaml persistLang=false >}}
+{{< tabpane lang=yaml >}}
 {{< tab Traces >}}
 receivers:
   otlp: # the OTLP receiver the app is sending traces to

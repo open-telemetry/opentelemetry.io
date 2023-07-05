@@ -22,7 +22,7 @@ install some dependencies:
 
 <!-- prettier-ignore-start -->
 
-{{< tabpane lang=shell persistLang=false >}}
+{{< tabpane lang=shell >}}
 
 {{< tab "Linux (apt)" >}}
 sudo apt-get install git cmake g++ libcurl4-openssl-dev
