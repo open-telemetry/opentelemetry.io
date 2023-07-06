@@ -1343,7 +1343,7 @@ opentelemetry.metrics.setGlobalMeterProvider(myServiceMeterProvider)
 You'll need to `--require` this file when you run your app, such as:
 
 <!-- prettier-ignore-start -->
-{{< tabpane lang=shell persistLang=false >}}
+{{< tabpane lang=shell >}}
 
 {{< tab TypeScript >}}
 ts-node --require ./instrumentation.ts app.ts

@@ -338,7 +338,7 @@ The OpenTelemetry SDK provides four samplers:
   sampled. The root sampler can be any of the other samplers.
 
 <!-- prettier-ignore-start -->
-{{< tabpane lang=php persistLang=false >}}
+{{< tabpane lang=php >}}
 {{< tab "TraceId ratio-based" >}}
 //trace 50% of requests
 $sampler = new TraceIdRatioBasedSampler(0.5);

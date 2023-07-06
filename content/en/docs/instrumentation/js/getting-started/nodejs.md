@@ -40,7 +40,7 @@ npm init -y
 Next, install Express dependencies.
 
 <!-- prettier-ignore-start -->
-{{< tabpane lang=shell persistLang=false >}}
+{{< tabpane lang=shell >}}
 
 {{< tab TypeScript >}}
 npm install typescript \
@@ -112,7 +112,7 @@ Run the application with the following command and open
 <http://localhost:8080/rolldice> in your web browser to ensure it is working.
 
 <!-- prettier-ignore-start -->
-{{< tabpane lang=console persistLang=false >}}
+{{< tabpane lang=console >}}
 
 {{< tab TypeScript >}}
 $ npx ts-node app.ts
@@ -215,7 +215,7 @@ Now you can run your application as you normally would, but you can use the
 `--require` flag to load the instrumentation before the application code.
 
 <!-- prettier-ignore-start -->
-{{< tabpane lang=console persistLang=false >}}
+{{< tabpane lang=console >}}
 
 {{< tab TypeScript >}}
 $ npx ts-node --require ./instrumentation.ts app.ts

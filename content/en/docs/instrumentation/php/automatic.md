@@ -78,7 +78,7 @@ The extension can be installed via pecl,
 1. Setup development environment. Installing from source requires proper
    development environment and some dependencies:
 
-   {{< tabpane lang=shell persistLang=false >}}
+   {{< tabpane lang=shell >}}
 
    {{< tab "Linux (apt)" >}}sudo apt-get install gcc make autoconf{{< /tab >}}
 
@@ -89,7 +89,7 @@ The extension can be installed via pecl,
 2. Build/install the extension. With your environment set up you can install the
    extension:
 
-   {{< tabpane lang=shell persistLang=false >}}
+   {{< tabpane lang=shell >}}
 
    {{< tab pecl >}}pecl install opentelemetry-beta{{< /tab >}}
 
