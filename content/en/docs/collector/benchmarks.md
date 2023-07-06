@@ -2,14 +2,8 @@
 title: Benchmarks
 weight: 99
 ---
-  <style>
 
-    header {
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      background-color: rgb(79, 98, 173);
-    }
+  <style>
 
     main {
       margin: 8px;
@@ -45,10 +39,6 @@ weight: 99
       align-items: center;
     }
 
-    .header-label {
-      margin-right: 4px;
-    }
-
     .benchmark-set {
       margin: 8px 0;
       width: 100%;
@@ -76,15 +66,6 @@ weight: 99
       max-width: 1000px;
     }
 
-    .logo svg {
-      height: 48px;
-      margin-left: 30px;
-    }
-
-    .header-item {
-      flex: 1;
-    }
-
     div.container {
       max-width: 1012px;
       margin-right: auto;
@@ -92,15 +73,17 @@ weight: 99
     }
   </style>
 
+The OpenTelemetry Collector runs load tests on every commit to the
+[opentelemetry-collector-contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/)
+repository. These load tests run the binary of collector with various
+configuration options per test and send traffic through the collector.
+Additional information regarding the testing environment can be found in the
+[repository](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/testbed#opentelemetry-collector-testbed).
+
+A subset of the results are shown below, the full results are available
+[here](https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/).
+
   <div class="container">
-    <div>
-      <strong>Last Update:</strong>
-      <span id="last-update"></span>
-    </div>
-    <div>
-      <strong>Repository:</strong>
-      <a id="repository-link" rel="noopener"></a>
-    </div>
     <main id="main"></main>
   </div>
 
@@ -112,7 +95,7 @@ weight: 99
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.2/dist/Chart.min.js"></script>
-  <script src="https://mwear.github.io/opentelemetry-collector-contrib/loadtest/data.js"></script>
+  <script src="https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/data.js"></script>
   <script id="main-script">
     'use strict';
     (function () {
@@ -140,16 +123,25 @@ weight: 99
             commitIds.push(commitId);
             for (const bench of benches) {
               const result = { commit, date, tool, bench };
-              let byName = byGroup.get(bench.extra);
+              if (!bench.extra.includes("10kDPS") && !bench.extra.includes("10kSPS")){
+                continue
+              }
+              const extraParts = bench.extra.split("/");
+              let benchmarkName = extraParts[0] + " - " + bench.name;
+              let byName = byGroup.get(benchmarkName);
               if (byName === undefined) {
                 byName = new Map();
-                byGroup.set(bench.extra, byName);
+                byGroup.set(benchmarkName, byName);
               }
-              let byCommitId = byName.get(bench.name);
+              let extraName = bench.extra
+              if (extraParts.length > 1) {
+                extraName = extraParts[1].split(" - ")[0]
+              }
+              let byCommitId = byName.get(extraName);
               if (byCommitId === undefined) {
                 byCommitId = new Map();
                 byCommitId.set(commitId, result)
-                byName.set(bench.name, byCommitId);
+                byName.set(extraName, byCommitId);
               } else {
                 byCommitId.set(commitId, result);
               }
@@ -162,12 +154,6 @@ weight: 99
         }
 
         const data = window.BENCHMARK_DATA;
-
-        // Render header
-        document.getElementById('last-update').textContent = new Date(data.lastUpdate).toString();
-        const repoLink = document.getElementById('repository-link');
-        repoLink.href = data.repoUrl;
-        repoLink.textContent = data.repoUrl;
 
         // Render footer
         document.getElementById('dl-button').onclick = () => {
@@ -263,7 +249,8 @@ weight: 99
               }
             },
             legend: {
-              display: true
+              display: true,
+              position: "right"
             }
           };
 
