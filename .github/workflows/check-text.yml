@@ -12,5 +12,5 @@ jobs:
       # Make sure that we only install the dependencies for textlint to speed up install
       - run: |
           jq 'del(.dependencies) | .devDependencies |= with_entries( select(.key | startswith("textlint")))' package.json > package2.json && mv package2.json package.json
-      - run: npm install
+      - run: npm install --ignore-scripts
       - run: npm run check:text
