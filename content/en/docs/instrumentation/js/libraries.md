@@ -1,11 +1,56 @@
 ---
-title: Using instrumentation libraries
+title: Instrumenting libraries
 linkTitle: Libraries
 weight: 40
-spelling: cSpell:ignore autoinstrumentation metapackage
+description: How to instrument libraries an app depends on
+spelling: cSpell:ignore autoinstrumentation metapackage metapackages
 ---
 
-You can use
+When you develop an app, you make use of 3rd party libraries and frameworks, to
+accelerate your work and to not reinvent the wheel. If you now instrument your
+app with OpenTelemetry, you don't want to spend additional time on manually
+adding traces, logs and metrics to those libraries and frameworks. Gladly, you
+don't have to reinvent the wheel for those either: libraies might come with
+OpenTelemetry support natively or you can use an **Instrumentation Library** in
+order to generate telemetry data for a library or framework.
+
+If you are instrumenting an app, you can learn on this page how to make use of
+natively instrumented libraries and Instrumentation Libraries for your
+dependencies.
+
+If you want to instrument a library, you can learn on this page, what you need
+to do to natively instrument your own library or how you can create an
+Instrumentation Library for a 3rd party library if none is available.
+
+{{% alert title="Note" color="info" %}}
+
+You can use natively instrumented libraries and Instrumentation Libraries with
+automatic and with manual instrumentation.
+
+Opentelemetry
+
+{{% /alert %}}
+
+## Use natively instrumented libraries
+
+If a library comes with OpenTelemetry out of the box, you get the traces,
+metrics and logs emitted from that library, by simply adding and setting up the
+OpenTelemetry SDK with your app.
+
+The library may provide some additional configuration for the instrumentation.
+Go to the documentation of that library to learn more.
+
+{{% alert title="Help wanted" color="warning" %}}
+
+As of today, we don't know about any JavaScript library, that has OpenTelemetry
+integrated. If you know about such a library,
+[please let us know](https://github.com/open-telemetry/opentelemetry.io/issues/new).
+
+{{% /alert %}}
+
+## Use Instrumentation Libraries
+
+If a library does not come with OpenTelemetry out of the box, you can use
 [instrumentation libraries](/docs/specs/otel/glossary/#instrumentation-library)
 in order to generate telemetry data for a library or framework.
 
@@ -14,7 +59,7 @@ For example,
 will automatically create [spans](/docs/concepts/signals/traces/#spans) based on
 the inbound HTTP requests.
 
-## Setup
+### Setup
 
 Each instrumentation library is an NPM package, and installation is typically
 done like so:
@@ -23,12 +68,27 @@ done like so:
 npm install <name-of-package>
 ```
 
-It is typically then registered at application startup time, such as when
-creating a [TracerProvider](/docs/concepts/signals/traces/#tracer-provider).
+For example, here’s how you can install and the
+[instrumentation-express](https://www.npmjs.com/package/@opentelemetry/instrumentation-express)
+and
+[instrumentation-http](https://www.npmjs.com/package/@opentelemetry/instrumentation-http)
+instrumentation libraries to instrument inbound and outbound HTTP traffic:
 
-## Node.js
+```sh
+npm install --save @opentelemetry/instrumentation-http @opentelemetry/instrumentation-express
+```
 
-### Node autoinstrumentation package
+OpenTelemetry JavaScript also defines metapackages
+[auto-instrumentation-node](https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-node)
+and
+[auto-instrumentation-web](https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-web),
+that bundle all Node.js- or web-based instrumentation libraries into a single
+package. It’s a convenient way to add automatically-generated telemetry for all
+your libraries with minimal effort.
+
+### Registration
+
+#### Node autoinstrumentation package
 
 OpenTelemetry also defines the
 [auto-instrumentations-node](https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-node)
@@ -127,8 +187,6 @@ provider.register();
 <!-- prettier-ignore-end -->
 
 <!-- textlint-enable -->
-
-### Using individual instrumentation packages
 
 If you don't wish to use a metapackage, perhaps to decrease your dependency
 graph size, you can install and register individual instrumentation packages.
@@ -231,34 +289,23 @@ provider.register();
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
-## Configuring instrumentation libraries
+### Configuation
 
 Some instrumentation libraries offer additional configuration options.
 
 For example,
 [Express instrumentation](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-express#express-instrumentation-options)
-offers ways to ignore specified middleware or enrich spans created automatically
+offers ways to ignore speciied middleware or enrich spans created automatically
 with a request hook.
 
 You'll need to refer to each instrumentation library's documentation for
 advanced configuration.
 
-## Available instrumentation libraries
+### Available instrumentation libraries
 
-A full list of instrumentation libraries produced by OpenTelemetry is available
-from the
-[opentelemetry-js-contrib](https://github.com/open-telemetry/opentelemetry-js-contrib)
-repository.
-
-You can also find more instrumentations available in the
+You can find a list of available instrumentation in the
 [registry](/ecosystem/registry/?language=js&component=instrumentation).
 
-## Next steps
+## Instrument a library natively
 
-After you have set up instrumentation libraries, you may want to add
-[manual instrumentation](/docs/instrumentation/js/manual) to collect custom
-telemetry data.
-
-You'll also want to configure an appropriate exporter to
-[export your telemetry data](/docs/instrumentation/js/exporters) to one or more
-telemetry backends.
+## Create an instrumetation library
