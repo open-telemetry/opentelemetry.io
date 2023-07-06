@@ -17,8 +17,7 @@
         "github.com/open-telemetry",
         "#opentelemetry",
         "/  - .*/",
-        "/(?:language|repo): .*/",
-        "net/http"
+        "^/(?:language|repo): .*/",
       ]
     }
   },
