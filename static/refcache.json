@@ -3583,6 +3583,14 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:46:24.613888-04:00"
   },
+  "https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api.Tracer.html#startActiveSpan": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-06T12:30:08.536334+02:00"
+  },
+  "https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api.Tracer.html#startSpan": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-06T12:30:08.47481+02:00"
+  },
   "https://opencensus.io": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:41:25.613303-04:00"
