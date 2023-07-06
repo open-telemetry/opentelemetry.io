@@ -68,8 +68,8 @@ echo "COMMUNITY pages: copied and processed"
 
 ## Semantic Conventions
 
-SRC=content-modules/semantic-conventions/specification
-DEST=$DEST_BASE/semconv/specification
+SRC=content-modules/semantic-conventions/docs
+DEST=$DEST_BASE/semconv/docs
 
 rm -Rf $DEST
 mkdir -p $DEST

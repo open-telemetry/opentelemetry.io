@@ -97,6 +97,13 @@ while(<>) {
     next;
   }
 
+  ## Semconv
+
+  if ($ARGV =~ /\/semconv/) {
+    s|(\]\()/docs/|$1$specBasePath/semconv/|g;
+    s|(\]:\s*)/docs/|$1$specBasePath/semconv/|;
+  }
+
   # SPECIFICATION custom processing
 
   s|\(https://github.com/open-telemetry/opentelemetry-specification\)|($specBasePath/otel/)|;
