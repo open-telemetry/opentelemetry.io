@@ -50,7 +50,7 @@ cascade:
   github_project_repo: *repo
 path_base_for_github_subdir:
   from: content/en/docs/specs/semconv/_index.md
-  to: docs/README.md
+  to: README.md
 EOS
 
 sub printTitleAndFrontMatter() {
