@@ -11,6 +11,6 @@ tags:
 repo: https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/otel-webserver-module
 license: Apache 2.0
 description:
-  The OTEL webserver module comprises of both Apache and Nginx instrumentation.
+  The OTel web server module comprises of both Apache HTTP Server and NGINX instrumentation.
 authors: OpenTelemetry Authors
 otVersion: latest
