@@ -14,6 +14,7 @@ my $gD = 0;
 my $otelSpecRepoUrl = 'https://github.com/open-telemetry/opentelemetry-specification';
 my $otlpSpecRepoUrl = 'https://github.com/open-telemetry/opentelemetry-proto';
 my $opAmpSpecRepoUrl = 'https://github.com/open-telemetry/opamp-spec';
+my $semconvSpecRepoUrl = 'https://github.com/open-telemetry/semantic-conventions';
 my $semConvRef = "$otelSpecRepoUrl/blob/main/semantic_conventions/README.md";
 my $specBasePath = '/docs/specs';
 my $path_base_for_github_subdir = "content/en$specBasePath";
@@ -24,6 +25,7 @@ my %versions = qw(
 my $otelSpecVers = $versions{'spec:'};
 my $otlpSpecVers = $versions{'otlp:'};
 my $unused;
+
 # TODO: remove once OpAMP spec has been updated
 my $opampFrontMatter = << "EOS";
 title: Open Agent Management Protocol
@@ -34,6 +36,21 @@ github_project_repo: *repo
 path_base_for_github_subdir:
   from: content/en/docs/specs/opamp/index.md
   to: specification.md
+EOS
+
+# TODO: remove once Semconv spec has been updated
+my $semconvFrontMatter = << "EOS";
+linkTitle: Semantic Conventions
+no_list: true
+cascade:
+  body_class: otel-docs-spec
+  github_repo: &repo $semconvSpecRepoUrl
+  github_subdir: docs
+  path_base_for_github_subdir: content/en/docs/specs/semconv/
+  github_project_repo: *repo
+path_base_for_github_subdir:
+  from: content/en/docs/specs/semconv/_index.md
+  to: docs/README.md
 EOS
 
 sub printTitleAndFrontMatter() {
@@ -49,6 +66,8 @@ sub printTitleAndFrontMatter() {
     $frontMatterFromFile .= "weight: 20\n" if $frontMatterFromFile !~ /^\s*weight/;
   } elsif ($title eq 'OpAMP: Open Agent Management Protocol') {
     $frontMatterFromFile = $opampFrontMatter unless $frontMatterFromFile;
+  } elsif ($title eq 'OpenTelemetry Semantic Conventions') {
+    $frontMatterFromFile = $semconvFrontMatter unless $frontMatterFromFile;
   }
   my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
   print "title: $titleMaybeQuoted\n" if $frontMatterFromFile !~ /title: /;
