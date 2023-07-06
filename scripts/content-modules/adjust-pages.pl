@@ -48,9 +48,6 @@ cascade:
   github_subdir: docs
   path_base_for_github_subdir: content/en/docs/specs/semconv/
   github_project_repo: *repo
-path_base_for_github_subdir:
-  from: content/en/docs/specs/semconv/_index.md
-  to: README.md
 EOS
 
 sub printTitleAndFrontMatter() {
@@ -79,6 +76,10 @@ sub printTitleAndFrontMatter() {
   if ($ARGV =~ /otel\/specification\/(.*?)_index.md$/) {
     print "path_base_for_github_subdir:\n";
     print "  from: $path_base_for_github_subdir/otel/$1_index.md\n";
+    print "  to: $1README.md\n";
+  } elsif ($ARGV =~ /tmp\/semconv\/docs\/(.*?)_index.md$/) {
+    print "path_base_for_github_subdir:\n";
+    print "  from: $path_base_for_github_subdir/semconv/$1_index.md\n";
     print "  to: $1README.md\n";
   }
   print "---\n";
