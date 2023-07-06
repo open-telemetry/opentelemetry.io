@@ -24,7 +24,6 @@ my %versions = qw(
 );
 my $otelSpecVers = $versions{'spec:'};
 my $otlpSpecVers = $versions{'otlp:'};
-my $unused;
 
 # TODO: remove once OpAMP spec has been updated
 my $opampFrontMatter = << "EOS";
@@ -50,6 +49,29 @@ cascade:
   github_project_repo: *repo
 EOS
 
+# Adjust semconv title capitalization
+sub toTitleCase($) {
+    my $str = shift;
+    my @specialCaseWords = qw(
+        CouchDB
+        DynamoDB
+        GraphQL
+        gRPC
+        HBase
+        MongoDB
+    );
+    my %specialCases = map { lc($_) => $_ } @specialCaseWords;
+    while ($str =~ /(\b[A-Z]+\b)/g) {
+        $specialCases{lc $1} = $1;
+    }
+    $str =~ s/(\w+)/\u\L$1/g;
+    while (my ($key, $value) = each %specialCases) {
+        $str =~ s/\b\u\L$key\b/$value/g;
+    }
+    $str =~ s/\b(A|And|For|In|On)\b/\L$1/g;
+    return $str;
+}
+
 sub printTitleAndFrontMatter() {
   print "---\n";
   if ($title eq 'OpenTelemetry Specification') {
@@ -65,10 +87,22 @@ sub printTitleAndFrontMatter() {
     $frontMatterFromFile = $opampFrontMatter unless $frontMatterFromFile;
   } elsif ($title eq 'OpenTelemetry Semantic Conventions') {
     $frontMatterFromFile = $semconvFrontMatter unless $frontMatterFromFile;
+  } elsif ($ARGV =~ /tmp\/semconv\/docs/) {
+    $title = toTitleCase($title);
   }
   my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
   print "title: $titleMaybeQuoted\n" if $frontMatterFromFile !~ /title: /;
-  ($unused, $linkTitle) = $title =~ /^OpenTelemetry (Protocol )?(.*)/;
+  if ($title =~ /^OpenTelemetry (Protocol )?(.*)/) {
+    $linkTitle = $2;
+  } elsif ($title =~ /^(\w+) Semantic Conventions?$/i) {
+    $linkTitle = toTitleCase($1);
+  } elsif ($title =~ /^Semantic Conventions? for (.*)$/i) {
+    $linkTitle = toTitleCase($1);
+  } elsif ($title =~ /^(System) semantic conventions$/i) {
+    $linkTitle = $1;
+  } elsif ($title =~ /^Function as a Service$/i) {
+    $linkTitle = 'FaaS';
+  }
   # TODO: add to front matter of OTel spec file and drop next line:
   $linkTitle = 'Design Goals' if $title eq 'Design Goals for OpenTelemetry Wire Protocol';
   print "linkTitle: $linkTitle\n" if $linkTitle and $frontMatterFromFile !~ /linkTitle: /;
@@ -104,6 +138,7 @@ while(<>) {
   }
   if(! $title) {
     ($title) = /^#\s+(.*)/;
+    $linkTitle = '';
     printTitleAndFrontMatter() if $title;
     next;
   }
