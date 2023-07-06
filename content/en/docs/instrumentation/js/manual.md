@@ -45,7 +45,7 @@ npm init -y
 Next, install Express dependencies.
 
 <!-- prettier-ignore-start -->
-{{< tabpane lang=shell persistLang=false >}}
+{{< tabpane lang=shell >}}
 
 {{< tab TypeScript >}}
 npm install typescript \
@@ -170,7 +170,7 @@ To ensure that it is working, run the application with the following command and
 open <http://localhost:8080/rolldice?rolls=12> in your web browser.
 
 <!-- prettier-ignore-start -->
-{{< tabpane lang=console persistLang=false >}}
+{{< tabpane lang=console >}}
 
 {{< tab TypeScript >}}
 $ npx ts-node app.ts
@@ -257,7 +257,7 @@ const resource =
 Now run the app by requiring the library:
 
 <!-- prettier-ignore-start -->
-{{< tabpane lang=shell persistLang=false >}}
+{{< tabpane lang=shell  >}}
 
 {{< tab TypeScript >}}
 npx ts-node --require ./instrumentation.ts app.ts
@@ -632,8 +632,20 @@ module.exports = { rollTheDice }
 Now that you have [tracers](/docs/concepts/signals/traces/#tracer) initialized,
 you can create [spans](/docs/concepts/signals/traces/#spans).
 
-The code below illustrates how to create an active span, which is the most
-common kind of span.
+The API of OpenTelemetry JavaScript exposes two methods, that allow you to
+create spans:
+
+- [`tracer.startSpan`](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api.Tracer.html#startSpan):
+  Starts a new span without setting it on context.
+- [`tracer.startActiveSpan`](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api.Tracer.html#startActiveSpan):
+  Starts a new span and calls the given callback function passing it the created
+  span as first argument. The new span gets set in context and this context is
+  activated for the duration of the function call.
+
+In most cases you want to use the latter (`tracer.startActiveSpan`), as it takes
+care of setting the span and it's context active.
+
+The code below illustrates how to create an active span.
 
 <!-- prettier-ignore-start -->
 
@@ -685,7 +697,7 @@ Start your app as follows, and then send it requests by visiting
 <http://localhost:8080/rolldice?rolls=12> with your browser or `curl`.
 
 <!-- prettier-ignore-start -->
-{{< tabpane lang=shell persistLang=false >}}
+{{< tabpane lang=shell >}}
 
 {{< tab TypeScript >}}
 ts-node --require ./instrumentation.ts app.ts
