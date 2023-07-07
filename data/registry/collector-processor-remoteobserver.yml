@@ -13,4 +13,4 @@ description:
   allows data to pass through to the next component.
 authors: OpenTelemetry Authors
 otVersion: latest
-spelling: cSpell:ignore remoteobserver
+# cSpell:ignore remoteobserver
