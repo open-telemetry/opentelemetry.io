@@ -1,14 +1,15 @@
-title: Nginx Instrumentation
+title: NGINX Instrumentation
 registryType: instrumentation
 isThirdParty: true
 language: cpp
 tags:
   - c++
+  - nginx
   - instrumentation
 repo: https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/nginx
 license: Apache 2.0
 description:
-  Nginx OpenTelemetry module to add OpenTelemetry distributed tracing support to
-  nginx.
+  NGINX OpenTelemetry module to add OpenTelemetry distributed tracing support to
+  NGINX.
 authors: OpenTelemetry Authors
 otVersion: latest

@@ -14,6 +14,7 @@ my $gD = 0;
 my $otelSpecRepoUrl = 'https://github.com/open-telemetry/opentelemetry-specification';
 my $otlpSpecRepoUrl = 'https://github.com/open-telemetry/opentelemetry-proto';
 my $opAmpSpecRepoUrl = 'https://github.com/open-telemetry/opamp-spec';
+my $semconvSpecRepoUrl = 'https://github.com/open-telemetry/semantic-conventions';
 my $semConvRef = "$otelSpecRepoUrl/blob/main/semantic_conventions/README.md";
 my $specBasePath = '/docs/specs';
 my $path_base_for_github_subdir = "content/en$specBasePath";
@@ -23,7 +24,7 @@ my %versions = qw(
 );
 my $otelSpecVers = $versions{'spec:'};
 my $otlpSpecVers = $versions{'otlp:'};
-my $unused;
+
 # TODO: remove once OpAMP spec has been updated
 my $opampFrontMatter = << "EOS";
 title: Open Agent Management Protocol
@@ -52,9 +53,13 @@ sub printTitleAndFrontMatter() {
   }
   my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
   print "title: $titleMaybeQuoted\n" if $frontMatterFromFile !~ /title: /;
-  ($unused, $linkTitle) = $title =~ /^OpenTelemetry (Protocol )?(.*)/;
+  if ($title =~ /^OpenTelemetry (Protocol )?(.*)/) {
+    $linkTitle = $2;
+  }
   # TODO: add to front matter of OTel spec file and drop next line:
   $linkTitle = 'Design Goals' if $title eq 'Design Goals for OpenTelemetry Wire Protocol';
+
+  # printf STDOUT "> $title -> $linkTitle\n";
   print "linkTitle: $linkTitle\n" if $linkTitle and $frontMatterFromFile !~ /linkTitle: /;
   print "$frontMatterFromFile" if $frontMatterFromFile;
   if ($ARGV =~ /otel\/specification\/(.*?)_index.md$/) {
@@ -84,6 +89,7 @@ while(<>) {
   }
   if(! $title) {
     ($title) = /^#\s+(.*)/;
+    $linkTitle = '';
     printTitleAndFrontMatter() if $title;
     next;
   }
@@ -95,6 +101,16 @@ while(<>) {
   if(/<!-- toc -->/) {
     while(<>) { last if/<!-- tocstop -->/; }
     next;
+  }
+
+  ## Semconv
+
+  if ($ARGV =~ /\/semconv/) {
+    s|(\]\()/docs/|$1$specBasePath/semconv/|g;
+    s|(\]:\s*)/docs/|$1$specBasePath/semconv/|;
+
+    # TODO: drop once semconv pages are fixed:
+    s|(/resource/faas\.md)#function-as-a-service|$1|;
   }
 
   # SPECIFICATION custom processing
