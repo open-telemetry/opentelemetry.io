@@ -17,8 +17,7 @@
         "github.com/open-telemetry",
         "#opentelemetry",
         "/^(?:language|repo): .*$/m",
-        "/tags:([\\n\\r\\s]*-[\\s\\S]*?[\\n\\r]+)*/m",
-        "Instrumentation for net/http"
+        "/tags:([\\n\\r\\s]*-[\\s\\S]*?[\\n\\r]+)*/m"
       ]
     }
   },
