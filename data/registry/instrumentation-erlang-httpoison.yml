@@ -11,4 +11,4 @@ license: Apache 2.0
 description: OpentelemetryHTTPoison is an Instrumentation Library for HTTPoison.
 authors: OpenTelemetry Authors
 otVersion: latest
-spelling: cSpell:ignore httpoison
+# cSpell:ignore httpoison
