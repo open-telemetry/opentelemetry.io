@@ -137,7 +137,7 @@ sub printTitleAndFrontMatter() {
 
   $frontMatter .= "linkTitle: $linkTitle\n" if $linkTitle and $frontMatterFromFile !~ /linkTitle: /;
   $frontMatter .= $frontMatterFromFile if $frontMatterFromFile;
-  if ($ARGV =~ /docs\/(.*?)README.md$/) {
+  if ($ARGV =~ /docs\/(.*?)(README|_index).md$/) {
     $frontMatter .= "path_base_for_github_subdir:\n";
     $frontMatter .= "  from: $path_base_for_github_subdir/semconv/$1_index.md\n";
     $frontMatter .= "  to: $1README.md\n";
