@@ -5,8 +5,9 @@ language: rust
 tags:
   - rust
   - instrumentation
-repo: https://github.com/tokio-rs/tracing/tree/master/tracing-opentelemetry
+repo: https://github.com/tokio-rs/tracing-opentelemetry
 license: MIT
 description: Utilities for adding OpenTelemetry interoperability to tracing.
 authors: Julian Tescher
 otVersion: latest
+spelling: cSpell:ignore Tescher

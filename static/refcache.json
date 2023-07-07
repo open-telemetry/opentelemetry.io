@@ -2947,6 +2947,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:32:29.291416-04:00"
   },
+  "https://github.com/tokio-rs/tracing-opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-07T17:32:13.388771+02:00"
+  },
   "https://github.com/tonglil/opentelemetry-go-datadog-propagator": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:36:56.210179-04:00"
