@@ -13,4 +13,4 @@ description:
   Logs
 authors: OpenTelemetry Authors
 otVersion: latest
-spelling: cSpell:ignore awscloudwatchmetrics
+# cSpell:ignore awscloudwatchmetrics
