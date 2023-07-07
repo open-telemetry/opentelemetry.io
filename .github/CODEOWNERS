@@ -16,6 +16,10 @@
 * @open-telemetry/docs-approvers
 
 # content owners
+content-modules/opamp-spec               @open-telemetry/docs-approvers @open-telemetry/opamp-spec-approvers
+content-modules/opentelemetry-proto      @open-telemetry/docs-approvers @open-telemetry/specs-approvers
+content-modules/opentelemetry-specification  @open-telemetry/docs-approvers @open-telemetry/specs-approvers
+content-modules/semantic-conventions     @open-telemetry/docs-approvers @open-telemetry/specs-semconv-approvers
 content/en/blog/                         @open-telemetry/docs-approvers @open-telemetry/blog-approvers
 content/en/community/end-user/           @open-telemetry/docs-approvers @open-telemetry/end-user-wg
 content/en/docs/collector                @open-telemetry/docs-approvers @open-telemetry/collector-approvers
@@ -32,5 +36,5 @@ content/en/docs/instrumentation/ruby/    @open-telemetry/docs-approvers @open-te
 content/en/docs/instrumentation/rust/    @open-telemetry/docs-approvers @open-telemetry/rust-approvers
 content/en/docs/instrumentation/swift/   @open-telemetry/docs-approvers @open-telemetry/swift-approvers
 content/en/docs/k8s-operator             @open-telemetry/docs-approvers @open-telemetry/operator-approvers
-content/en/ecosystem/demo/               @open-telemetry/demo-approvers @open-telemetry/demo-approvers
 content/en/docs/specs/                   @open-telemetry/docs-approvers @open-telemetry/specs-approvers
+content/en/ecosystem/demo/               @open-telemetry/demo-approvers @open-telemetry/demo-approvers
