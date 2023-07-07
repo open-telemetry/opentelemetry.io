@@ -53,12 +53,17 @@ EOS
 sub toTitleCase($) {
     my $str = shift;
     my @specialCaseWords = qw(
+        CloudEvents
         CouchDB
         DynamoDB
+        FaaS
         GraphQL
         gRPC
         HBase
         MongoDB
+        OpenTelemetry
+        RabbitMQ
+        RocketMQ
     );
     my %specialCases = map { lc($_) => $_ } @specialCaseWords;
     while ($str =~ /(\b[A-Z]+\b)/g) {
@@ -68,7 +73,7 @@ sub toTitleCase($) {
     while (my ($key, $value) = each %specialCases) {
         $str =~ s/\b\u\L$key\b/$value/g;
     }
-    $str =~ s/\b(A|And|For|In|On)\b/\L$1/g;
+    $str =~ s/\b(A|And|As|For|In|On)\b/\L$1/g;
     return $str;
 }
 
@@ -89,18 +94,48 @@ sub printTitleAndFrontMatter() {
     $frontMatterFromFile = $semconvFrontMatter unless $frontMatterFromFile;
   } elsif ($ARGV =~ /tmp\/semconv\/docs/) {
     $title = toTitleCase($title);
+    $linkTitle = 'Database' if $title =~ /Database Calls and Systems$/i;
+    if ($linkTitle =~ /^Database (.*)$/i) {
+      $linkTitle = "$1";
+    } elsif ($linkTitle =~ /^FaaS (.*)$/i) {
+      $linkTitle = "$1";
+    } elsif ($linkTitle =~ /^HTTP (.*)$/i) {
+      $linkTitle = "$1";
+    } elsif ($linkTitle =~ /^Microsoft (.*)$/i) {
+      $linkTitle = "$1";
+    } elsif ($linkTitle =~ /^RPC (.*)$/i) {
+      $linkTitle = "$1";
+    } elsif ($linkTitle =~ /^(Exceptions|Feature Flags) .. (.*)$/i) {
+      $linkTitle = "$2";
+    }
+    if ($linkTitle =~ /^(.*) Attributes$/i && $title ne 'General Attributes') {
+      $linkTitle = "$1";
+    }
+    $linkTitle = 'Attributes' if $title eq 'General Attributes';
+    $linkTitle = 'Events' if $linkTitle eq 'Event';
+    $linkTitle = 'Logs' if $title =~ /Logs Attributes$/;
+    $linkTitle = 'Connect' if $title =~ /Connect RPC$/;
+    $linkTitle = 'SQL' if $title =~ /SQL Databases$/;
+    $title = 'Semantic Conventions for Function-as-a-Service' if $title eq 'Semantic Conventions for FaaS';
+    $linkTitle = 'Tracing Compatibility' if $linkTitle eq 'Tracing Compatibility Components';
+    if ($title =~ /Semantic Convention\b/) {
+      $title =~ s/Semantic Convention\b/$&s/g;
+    }
   }
   my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
   print "title: $titleMaybeQuoted\n" if $frontMatterFromFile !~ /title: /;
+  printf STDOUT ">1 $title -> $linkTitle\n" if $title =~ /Function/;
   if ($title =~ /^OpenTelemetry (Protocol )?(.*)/) {
     $linkTitle = $2;
-  } elsif ($title =~ /^(.*?) Semantic Conventions?$/i) {
-    $linkTitle = toTitleCase($1);
-  } elsif ($title =~ /^Semantic Conventions? for (.*)$/i) {
-    $linkTitle = toTitleCase($1);
-  } elsif ($title =~ /^Function as a Service$/i) {
+  } elsif ($title =~ /^(.*?) Semantic Conventions?$/i && !$linkTitle) {
+    $linkTitle = $1;
+  } elsif ($title =~ /^Semantic Conventions? for (.*)$/i && !$linkTitle) {
+    $linkTitle = $1;
+  }
+  if ($linkTitle =~ /^Function.as.a.Service$/i) {
     $linkTitle = 'FaaS';
   }
+  printf STDOUT ">2 $title -> $linkTitle\n" if $title =~ /Function/;
   # TODO: add to front matter of OTel spec file and drop next line:
   $linkTitle = 'Design Goals' if $title eq 'Design Goals for OpenTelemetry Wire Protocol';
   print "linkTitle: $linkTitle\n" if $linkTitle and $frontMatterFromFile !~ /linkTitle: /;
