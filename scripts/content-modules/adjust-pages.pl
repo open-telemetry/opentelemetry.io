@@ -115,6 +115,9 @@ sub printTitleAndFrontMatter() {
     print "path_base_for_github_subdir:\n";
     print "  from: $path_base_for_github_subdir/semconv/$1_index.md\n";
     print "  to: $1README.md\n";
+    if ($linkTitle eq 'General') {
+      print "weight: -1\n";
+    }
   }
   print "---\n";
 }
