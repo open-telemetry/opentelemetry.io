@@ -94,12 +94,10 @@ sub printTitleAndFrontMatter() {
   print "title: $titleMaybeQuoted\n" if $frontMatterFromFile !~ /title: /;
   if ($title =~ /^OpenTelemetry (Protocol )?(.*)/) {
     $linkTitle = $2;
-  } elsif ($title =~ /^(\w+) Semantic Conventions?$/i) {
+  } elsif ($title =~ /^(.*?) Semantic Conventions?$/i) {
     $linkTitle = toTitleCase($1);
   } elsif ($title =~ /^Semantic Conventions? for (.*)$/i) {
     $linkTitle = toTitleCase($1);
-  } elsif ($title =~ /^(System) semantic conventions$/i) {
-    $linkTitle = $1;
   } elsif ($title =~ /^Function as a Service$/i) {
     $linkTitle = 'FaaS';
   }
