@@ -192,31 +192,25 @@ Listening for requests on http://localhost:8080
 Install OpenTelemetry API packages:
 
 ```shell
-npm install \
-  @opentelemetry/api \
-  @opentelemetry/resources \
-  @opentelemetry/semantic-conventions
+npm install @opentelemetry/api @opentelemetry/resources @opentelemetry/semantic-conventions
 ```
 
-### Set SDK default attributes
+### Initialize the SDK
 
 {{% alert title="Note" color="info" %}} If you’re instrumenting a library,
-**skip this step**.
+**skip this step**. {{% /alert %}}
 
-Alternative methods exist for setting up resource attributes. For more
-information, see [Resources](/docs/instrumentation/js/resources/).
-{{% /alert %}}
+If you instrument a Node.js application install the
+[OpenTelemetry SDK for Node.js](https://www.npmjs.com/package/@opentelemetry/sdk-node):
 
-When using the OpenTelemetry SDK, certain
-[resource attributes](/docs/instrumentation/js/resources/) are necessary, and
-beneficial, to provide:
+```shell
+npm install @opentelemetry/sdk-node
+```
 
-- `service.name` (required): logical name of the service
-- `service.version` (optional): version of the service API or implementation.
-
-To set these attributes for the example app, create a file named
-`instrumentation.ts` (or `instrumentation.js` if not using typescript) and add
-the following code to it:
+Before any other module in your application is loaded, you must initialize the
+SDK. If you fail to initialize the SDK or initialize it too late, no-op
+implementations will be provided to any library which acquires a tracer or meter
+from the API.
 
 <!-- prettier-ignore-start -->
 
@@ -224,37 +218,70 @@ the following code to it:
 
 {{< tab TypeScript >}}
 /*instrumentation.ts*/
-import { Resource } from "@opentelemetry/resources";
-import { SemanticResourceAttributes } from "@opentelemetry/semantic-conventions";
+import { NodeSDK } from '@opentelemetry/sdk-node';
+import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace-node';
+import { PeriodicExportingMetricReader, ConsoleMetricExporter } from '@opentelemetry/sdk-metrics';
+const { Resource } = require('@opentelemetry/resources');
+const { SemanticResourceAttributes } = require('@opentelemetry/semantic-conventions');
 
-const resource =
-  Resource.default().merge(
-    new Resource({
-      [SemanticResourceAttributes.SERVICE_NAME]: "dice-server",
-      [SemanticResourceAttributes.SERVICE_VERSION]: "0.1.0",
-    })
-  );
+const sdk = new NodeSDK({
+  resource: new Resource({
+    [ SemanticResourceAttributes.SERVICE_NAME ]: "yourServiceName",
+    [ SemanticResourceAttributes.SERVICE_VERSION ]: "1.0",
+  }),
+  traceExporter: new ConsoleSpanExporter(),
+  metricReader: new PeriodicExportingMetricReader({
+    exporter: new ConsoleMetricExporter()
+  })
+});
+
+sdk
+  .start()
 {{< /tab >}}
 
 {{< tab JavaScript >}}
-/*instrumentation.js*/
-const { Resource } = require("@opentelemetry/resources");
-const { SemanticResourceAttributes } = require("@opentelemetry/semantic-conventions");
+/*instrumentation.ts*/
+import { NodeSDK } from '@opentelemetry/sdk-node';
+import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace-node';
+import { PeriodicExportingMetricReader, ConsoleMetricExporter } from '@opentelemetry/sdk-metrics';
+const { Resource } = require('@opentelemetry/resources');
+const { SemanticResourceAttributes } = require('@opentelemetry/semantic-conventions');
 
-const resource =
-  Resource.default().merge(
-    new Resource({
-      [SemanticResourceAttributes.SERVICE_NAME]: "dice-server",
-      [SemanticResourceAttributes.SERVICE_VERSION]: "0.1.0",
-    })
-  );
+const sdk = new NodeSDK({
+  resource: new Resource({
+    [ SemanticResourceAttributes.SERVICE_NAME ]: "dice-server",
+    [ SemanticResourceAttributes.SERVICE_VERSION ]: "0.1.0",
+  }),
+  traceExporter: new ConsoleSpanExporter(),
+  metricReader: new PeriodicExportingMetricReader({
+    exporter: new ConsoleMetricExporter()
+  })
+});
+
+sdk
+  .start()
 {{< /tab >}}
 
 {{< /tabpane>}}
 
 <!-- prettier-ignore-end -->
 
-Now run the app by requiring the library:
+For debugging and local development purpose, the following example exports
+telemetry to the console. After you have finished setting up manual
+instrumentation, you need to configure an appropriate exporter to
+[export the app's telemetry data](/docs/instrumentation/js/exporters/) to one or
+more telemetry backends.
+
+The example also sets up SDK default attributes, which are necessary, and
+beneficial to provide:
+
+- `service.name` (required): logical name of the service
+- `service.version` (optional): version of the service API or implementation.
+
+Alternative methods exist for setting up resource attributes. For more
+information, see [Resources](/docs/instrumentation/js/resources/).
+
+To verify your code, run the app by requiring the library:
 
 <!-- prettier-ignore-start -->
 {{< tabpane lang=shell  >}}
@@ -273,6 +300,10 @@ node --require ./instrumentation.js app.js
 This basic setup has no effect on your app yet. You need to add code for
 [traces](#traces), [metrics](#metrics), and/or [logs](#logs).
 
+You can register instrumentation libraries with the OpenTelemetry SDK for
+Node.js in order to generate telemetry data for your dependencies. For more
+information, see [Libraries](/docs/instrumentation/js/libraries/).
+
 ## Traces
 
 ### Initialize Tracing
@@ -287,20 +318,28 @@ you create a [`Tracer`](/docs/concepts/signals/traces/#tracer).
 
 If a `TracerProvider` is not created, the OpenTelemetry APIs for tracing will
 use a no-op implementation and fail to generate data. As explained next, modify
-the `instrumentation.*` file to include all the SDK initialization code in Node
-and the browser.
+the `instrumentation.ts` (or `instrumentation.js`) file to include all the SDK
+initialization code in Node and the browser.
 
 #### Node.js
 
-To initialize tracing with the Node.js SDK, first ensure you have the SDK
-package and OpenTelemetry API installed:
+If you followed the instructions to [initialize the SDK](#initialize-the-sdk)
+above, you have a `TracerProvider` setup for you already. You can continue with
+[acquiring a tracer](#acquiring-a-tracer).
+
+##### Initializing tracing with `sdk-trace-node`
+
+In some cases you may not be able or may not want to use the
+[full OpenTelemetry SDK for Node.js](https://www.npmjs.com/package/@opentelemetry/sdk-node)
+If so, you can initialize tracing with the `@opentelemetry/sdk-trace-node`
+package:
 
 ```shell
 npm install @opentelemetry/sdk-trace-node
 ```
 
-Next, update `instrumentation.ts` (or `instrumentation.js`) to contain all the
-SDK initialization code in it:
+Create `instrumentation.ts` (or `instrumentation.js`) to contain all the SDK
+initialization code in it:
 
 <!-- prettier-ignore-start -->
 
@@ -451,14 +490,6 @@ create a span is made, it would be processed and sent over a network before your
 app's execution could continue.
 
 In most cases, stick with `BatchSpanProcessor` over `SimpleSpanProcessor`.
-
-#### Configure an exporter
-
-The `ConsoleSpanExporter` will write spans to the console. After you have
-finished setting up manual instrumentation, you need to configure an appropriate
-exporter to
-[export the app's telemetry data](/docs/instrumentation/js/exporters/) to one or
-more telemetry backends.
 
 ### Acquiring a tracer
 
@@ -1264,19 +1295,40 @@ to generate data.
 
 ### Initialize Metrics
 
-To initialize metrics, make sure you have the right packages installed:
+{{% alert color="info" %}} If you’re instrumenting a library, skip this step.
+{{% /alert %}}
+
+To enable [metrics](/docs/concepts/signals/metrics/) in your app, you'll need to
+have an initialized
+[`MeterProvider`](/docs/concepts/signals/metrics/#meter-provider) that will let
+you create a [`Meter`](/docs/concepts/signals/metrics/#meter).
+
+If a `MeterProvider` is not created, the OpenTelemetry APIs for metrics will use
+a no-op implementation and fail to generate data. As explained next, modify the
+`instrumentation.ts` (or `instrumentation.js`) file to include all the SDK
+initialization code in Node and the browser.
+
+#### Node.js
+
+If you followed the instructions to [initialize the SDK](#initialize-the-sdk)
+above, you have a `MeterProvider` setup for you already. You can continue with
+[acquiring a meter](#acquiring-a-meter).
+
+##### Initializing tracing with `sdk-metrics`
+
+In some cases you may not be able or may not want to use the
+[full OpenTelemetry SDK for Node.js](https://www.npmjs.com/package/@opentelemetry/sdk-node).
+This is also true if you want to use OpenTelemetry JavaScript in the browser.
+
+If so, you can initialize tracing with the `@opentelemetry/sdk-metrics` package:
 
 ```shell
-npm install \
-  @opentelemetry/api \
-  @opentelemetry/resources \
-  @opentelemetry/semantic-conventions \
-  @opentelemetry/sdk-metrics \
-  @opentelemetry/instrumentation
+npm install @opentelemetry/sdk-metrics
 ```
 
-Next, create a separate `instrumentation.ts` (or `instrumentation.js`) file that
-has all the SDK initialization code in it:
+If you have not created it for tracing already, create a separate
+`instrumentation.ts` (or `instrumentation.js`) file that has all the SDK
+initialization code in it:
 
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
@@ -1293,7 +1345,7 @@ import { SemanticResourceAttributes } from "@opentelemetry/semantic-conventions"
 const resource =
   Resource.default().merge(
     new Resource({
-      [SemanticResourceAttributes.SERVICE_NAME]: "service-name-here",
+      [SemanticResourceAttributes.SERVICE_NAME]: "dice-server",
       [SemanticResourceAttributes.SERVICE_VERSION]: "0.1.0",
     })
   );
