@@ -9,7 +9,7 @@ tags:
 repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-tortoiseorm
 license: Apache 2.0
 description:
-  This library allows tracing queries made by tortoise ORM backends, mysql,
-  postgres and sqlite.
+  This library allows tracing queries made by tortoise ORM backends, MySQL,
+  PostgreSQL and SQLite.
 authors: OpenTelemetry Authors
 otVersion: latest

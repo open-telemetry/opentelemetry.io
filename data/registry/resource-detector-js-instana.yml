@@ -10,6 +10,6 @@ repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detec
 license: Apache 2.0
 description:
   This resource detector will detect the Instana agent to register the
-  Opentelemetry as a Node.js process
+  OpenTelemetry as a Node.js process
 authors: OpenTelemetry Authors
 otVersion: latest

@@ -14,7 +14,7 @@
     "_check:links:internal": "npm run __check:links",
     "_check:links--warn": "npm run _check:links || (echo; echo 'WARNING: see link-checker output for issues.'; echo)",
     "_check:spelling": "npx cspell --no-progress -c .vscode/cspell.json content",
-    "_check:text": "npx textlint content",
+    "_check:text": "npx textlint content data",
     "_get:no": "echo SKIPPING get operation",
     "_get:submodule:non-lang": "npm run _get:submodule -- content-modules/opentelemetry-specification themes/docsy",
     "_get:submodule": "set -x && git submodule update --init ${DEPTH:- --depth 1}",
