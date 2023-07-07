@@ -2,9 +2,9 @@
 title: Testing
 weight: 100
 spelling: cSpell:ignore defmodule stdlib defrecordp testcase
-versions: 
-    otelSdk: 1.3
-    otelApi: 1.2
+versions:
+  otelSdk: 1.3
+  otelApi: 1.2
 ---
 
 When relying on OpenTelemetry for your Observability needs, it can be important
