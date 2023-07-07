@@ -125,18 +125,18 @@ sub printTitleAndFrontMatter() {
   }
   my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
   print "title: $titleMaybeQuoted\n" if $frontMatterFromFile !~ /title: /;
-  printf STDOUT ">1 $title -> $linkTitle\n" if $title =~ /Function/;
   if ($title =~ /^OpenTelemetry (Protocol )?(.*)/) {
     $linkTitle = $2;
-  } elsif ($title =~ /^(.*?) Semantic Conventions?$/i && !$linkTitle) {
+  } elsif ($ARGV =~ /tmp\/semconv\/docs/ && $title =~ /^(.*?) Semantic Conventions?$/i && !$linkTitle) {
     $linkTitle = $1;
-  } elsif ($title =~ /^Semantic Conventions? for (.*)$/i && !$linkTitle) {
+  } elsif ($ARGV =~ /tmp\/semconv\/docs/ && $title =~ /^Semantic Conventions? for (.*)$/i && !$linkTitle) {
     $linkTitle = $1;
   }
   if ($linkTitle =~ /^Function.as.a.Service$/i) {
     $linkTitle = 'FaaS';
   }
-  printf STDOUT ">2 $title -> $linkTitle\n" if $title =~ /Function/;
+  # printf STDOUT "> $title -> $linkTitle\n";
+
   # TODO: add to front matter of OTel spec file and drop next line:
   $linkTitle = 'Design Goals' if $title eq 'Design Goals for OpenTelemetry Wire Protocol';
   print "linkTitle: $linkTitle\n" if $linkTitle and $frontMatterFromFile !~ /linkTitle: /;
