@@ -3,6 +3,7 @@ title: Lambda Collector Configuration
 linkTitle: Lambda Collector Config
 weight: 11
 description: Add and configure the Collector Lambda layer to your Lambda
+spelling: cSpell:ignore ADOT regionalized confmap loglevel awsxray configmap
 ---
 
 The OpenTelemetry community offers the Collector in a separate Lambda layer from
@@ -15,12 +16,15 @@ bundles instrumentation and the Collector together.
 Once you've instrumented your application you should add the Collector Lambda
 layer to collect and submit your data to your chosen backend.
 
+Find the
+[most recent Collector layer release](https://github.com/open-telemetry/opentelemetry-lambda/releases)
+and use it's ARN after changing the `<region>` tag to the region your Lambda is
+in.
+
 Note: Lambda layers are a regionalized resource, meaning that they can only be
 used in the Region in which they are published. Make sure to use the layer in
-the same region as your Lambda functions.
-
-Find the supported regions and amd64(x86_64)/arm64 layer ARN in the table below
-for the ARNs to consume.
+the same region as your Lambda functions. The community publishes layers in all
+available regions.
 
 ### Configure the OTel Collector
 

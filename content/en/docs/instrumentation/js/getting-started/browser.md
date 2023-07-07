@@ -35,7 +35,7 @@ Copy the following file into an empty directory and call it `index.html`.
       dynamically generated server side to have the server's request trace Id,
       a parent span Id that was set on the server's request span, and the trace
       flags to indicate the server's sampling decision
-      (01 = sampled, 00 = notsampled).
+      (01 = sampled, 00 = not sampled).
       '{version}-{traceId}-{spanId}-{sampleDecision}'
     -->
     <meta
@@ -84,7 +84,7 @@ as appropriate, based on the language you've chosen to write your app in. Add
 the following code to your HTML right before the `</body>` closing tag:
 
 <!-- prettier-ignore-start -->
-{{< tabpane lang=html persistLang=false >}}
+{{< tabpane lang=html >}}
 {{< tab TypeScript >}}
 <script type="module" src="document-load.ts"></script>
 {{< /tab >}}
@@ -128,7 +128,7 @@ Now build the app with parcel:
 npx parcel index.html
 ```
 
-and open the development webserver (e.g. at `http://localhost:1234`) to see if
+and open the development web server (e.g. at `http://localhost:1234`) to see if
 your code works.
 
 There will be no output of traces yet, for this we need to add an exporter.

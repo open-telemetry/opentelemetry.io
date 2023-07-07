@@ -1,6 +1,7 @@
 ---
 title: SDK
 weight: 100
+spelling: cSpell:ignore ndjson autoloading autoload autoloader
 ---
 
 The OpenTelemetry SDK provides a working implementation of the API, and can be
@@ -22,7 +23,7 @@ $tracerProvider =  new TracerProvider(
         2048, //max queue size
         5000, //export timeout
         1024, //max batch size
-        true, //autoflush
+        true, //auto flush
         $meterProvider
     )
 );
@@ -39,7 +40,7 @@ However, it doesn't support all of the features that manual setup does.
 $spanExporter = new InMemoryExporter(); //mock exporter for demonstration purposes
 
 $meterProvider = MeterProvider::builder()
-    ->registerMetricReader(
+    ->addReader(
         new ExportingReader(new MetricExporter((new StreamTransportFactory())->create(STDOUT, 'application/x-ndjson'), /*Temporality::CUMULATIVE*/))
     )
     ->build();

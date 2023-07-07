@@ -24,13 +24,11 @@ attributes is performed through environment variables.
 ```cs
 Action<ResourceBuilder> appResourceBuilder =
     resource => resource
-        .AddTelemetrySdk()
-        .AddEnvironmentVariableDetector()
         .AddDetector(new ContainerResourceDetector());
 
 builder.Services.AddOpenTelemetry()
     .ConfigureResource(appResourceBuilder)
-    .WithTracing(builder => builder
+    .WithTracing(tracerBuilder => tracerBuilder
         .AddRedisInstrumentation(
             cartStore.GetConnection(),
             options => options.SetVerboseDatabaseStatements = true)
@@ -81,13 +79,11 @@ libraries, exporters, etc.
 ```cs
 Action<ResourceBuilder> appResourceBuilder =
     resource => resource
-        .AddTelemetrySdk()
-        .AddEnvironmentVariableDetector()
         .AddDetector(new ContainerResourceDetector());
 
 builder.Services.AddOpenTelemetry()
     .ConfigureResource(appResourceBuilder)
-    .WithMetrics(builder => builder
+    .WithMetrics(meterBuilder => meterBuilder
         .AddRuntimeInstrumentation()
         .AddAspNetCoreInstrumentation()
         .AddOtlpExporter());

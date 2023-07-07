@@ -87,7 +87,6 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script>
 {{ partial "script.html" (dict "src" "js/registrySearch.js") -}}
-</div>
 
 {{- define "registry-entry" -}}
 {{ $href := printf "href=%q" .repo | safeHTMLAttr -}}
@@ -95,7 +94,7 @@
   <div class="registry-entry-body">
     <div class="h5">
       <a {{ $href }} target="_blank" rel="noopener">
-        {{- .title -}}
+        {{- .title | markdownify -}}
       </a>
     </div>
     <span class="me-auto">

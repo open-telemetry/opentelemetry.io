@@ -1,12 +1,13 @@
 ---
 title: PHP
 description: >-
-  <img width="35" class="img-initial" src="/img/logos/32x32/PHP.svg"
-  alt="PHP"></img> A language-specific implementation of OpenTelemetry in PHP.
+  <img width="35" class="img-initial" src="/img/logos/32x32/PHP.svg" alt="PHP">
+  A language-specific implementation of OpenTelemetry in PHP.
 weight: 21
+spelling: cSpell:ignore packagist mbstring symfony zend opcache autoload
 ---
 
-{{% lang_instrumentation_index_head php /%}}
+{{% docs/instrumentation/index-intro php /%}}
 
 ## Further Reading
 

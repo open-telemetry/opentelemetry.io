@@ -3,6 +3,7 @@ title: Sunsetting OpenCensus
 linkTitle: Sunsetting OpenCensus
 date: 2023-05-01
 author: '[Aaron Abbott](https://github.com/aabmass) (Google)'
+spelling: cSpell:ignore sunsetting
 ---
 
 In 2019, we announced that OpenTracing and OpenCensus would be merging to form

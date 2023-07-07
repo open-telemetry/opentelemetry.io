@@ -7,7 +7,7 @@ show_banner: true
 developer_note:
   The blocks/cover shortcode (used below) will use as a background image any
   image file containing "background" in its name.
-spelling: cSpell:ignore shortcode
+spelling: cSpell:ignore shortcode Quarkus
 ---
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
@@ -42,7 +42,7 @@ spelling: cSpell:ignore shortcode
 
 {{% blocks/lead color="white" %}}
 
-OpenTelemetry is a collection of tools, APIs, and SDKs. Use it to instrument,
+OpenTelemetry is a collection of APIs, SDKs, and tools. Use it to instrument,
 generate, collect, and export telemetry data (metrics, logs, and traces) to help
 you analyze your software's performance and behavior.
 

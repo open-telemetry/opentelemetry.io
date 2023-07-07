@@ -1,6 +1,7 @@
 ---
 title: Getting Started
 weight: 10
+spelling: cSpell:ignore KHTML nameof loglevel
 ---
 
 OpenTelemetry for .NET is unique among OpenTelemetry implementations, as it is

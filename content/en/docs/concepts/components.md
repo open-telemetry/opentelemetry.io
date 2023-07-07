@@ -1,17 +1,23 @@
 ---
 title: Components
 description: The main components that make up OpenTelemetry
+aliases: [/docs/concepts/data-collection]
 weight: 20
 ---
 
 OpenTelemetry is currently made up of several main components:
 
-- [Cross-language specification](/docs/specs/otel/)
-- [OpenTelemetry Collector](/docs/collector/)
-- [Per-language SDKs](/docs/instrumentation/)
-- [Per-language instrumentation libraries](/docs/concepts/instrumentation/libraries/)
-- [Per-language automatic instrumentation](/docs/concepts/instrumentation/automatic/)
-- [K8s Operator](/docs/k8s-operator/)
+- [Specification](#specification)
+- [Collector](#collector)
+- [Language-specific API \& SDK implementations](#language-specific-api--sdk-implementations)
+  - [Instrumentation Libraries](#instrumentation-libraries)
+  - [Exporters](#exporters)
+  - [Automatic Instrumentation](#automatic-instrumentation)
+  - [Resource Detectors](#resource-detectors)
+  - [Cross Service Propagators](#cross-service-propagators)
+  - [Sampler](#sampler)
+- [K8s operator](#k8s-operator)
+- [Function as a Service assets](#function-as-a-service-assets)
 
 OpenTelemetry lets you replace the need for vendor-specific SDKs and tools for
 generating and exporting telemetry data.
@@ -30,11 +36,7 @@ following:
 - **Data:** Defines the OpenTelemetry Protocol (OTLP) and vendor-agnostic
   semantic conventions that a telemetry backend can provide support for.
 
-For more information, see the [specification](/docs/specs/otel/).
-
-Additionally, extensively-commented protobuf interface files for API concepts
-can be found in the
-[proto repository](https://github.com/open-telemetry/opentelemetry-proto).
+For more information, see the [specifications](/docs/specs/).
 
 ## Collector
 
@@ -43,12 +45,10 @@ process, and export telemetry data. It supports receiving telemetry data in
 multiple formats (for example, OTLP, Jaeger, Prometheus, as well as many
 commercial/proprietary tools) and sending data to one or more backends. It also
 supports processing and filtering telemetry data before it gets exported.
-Collector contrib packages bring support for more data formats and vendor
-backends.
 
 For more information, see [Collector](/docs/collector/).
 
-## Language SDKs
+## Language-specific API & SDK implementations
 
 OpenTelemetry also has language SDKs that let you use the OpenTelemetry API to
 generate telemetry data with your language of choice and export that data to a
@@ -58,7 +58,7 @@ instrumentation in your application.
 
 For more information, see [Instrumenting](/docs/concepts/instrumentation/).
 
-## Instrumentation Libraries
+### Instrumentation Libraries
 
 OpenTelemetry supports a broad number of components that generate relevant
 telemetry data from popular libraries and frameworks for supported languages.
@@ -71,7 +71,17 @@ of the box, such that pulling in a separate component is not required.
 For more information, see
 [Instrumenting Libraries](/docs/concepts/instrumentation/libraries/).
 
-## Automatic Instrumentation
+### Exporters
+
+In order to visualize and analyze your telemetry, you will need to export your
+data to a Collector or a backend such as Jaeger, Zipkin, Prometheus or a
+[vendor-specific](/ecosystem/vendors/) one.
+
+As part of the language specific implementations you will find many Exporters
+being available. Among them, [OTLP](/docs/specs/otlp/) Exporters provide the
+best experience for you as an end-user.
+
+### Automatic Instrumentation
 
 If applicable a language specific implementation of OpenTelemetry will provide a
 way to instrument your application without touching your source code. While the
@@ -82,6 +92,37 @@ may add a set of Instrumentation Libraries and exporter dependencies.
 For more information, see
 [Instrumenting](/docs/concepts/instrumentation/automatic/).
 
+### Resource Detectors
+
+A resource represents the entity producing telemetry as resource attributes. For
+example, a process producing telemetry that is running in a container on
+Kubernetes has a Pod name, a namespace, and possibly a deployment name. All
+three of these attributes can be included in the resource.
+
+The language specific implementations of OpenTelemetry provide resource
+detection from the environment variable OTEL_RESOURCE_DETECTION and for many
+common entities, like process runtime, service, host or operating system.
+
+### Cross Service Propagators
+
+Propagation is the mechanism that moves data between services and processes.
+Although not limited to tracing, it is what allows traces to build causal
+information about a system across services that are arbitrarily distributed
+across process and network boundaries.
+
+For the vast majority of the use cases, context propagation is done for you
+through Instrumentation Libraries. But, if needed you can use `Propagators`
+yourself to serialize and deserialize cross-cutting concerns such as the context
+of a span and [baggage](/docs/concepts/signals/baggage/).
+
+### Sampler
+
+Sampling is a process that restricts the amount of traces that are generated by
+a system. The language-specific implementations offer several
+[head samplers](/docs/concepts/sampling/#head-sampling)
+
+For more information, see [Sampling](/docs/concepts/sampling).
+
 ## K8s operator
 
 The OpenTelemetry Operator is an implementation of a Kubernetes Operator. The
@@ -89,3 +130,13 @@ operator manages the OpenTelemetry Collector and auto-instrumentation of the
 workloads using OpenTelemetry.
 
 For more information, see [K8s Operator](/docs/k8s-operator/).
+
+## Function as a Service assets
+
+OpenTelemetry supports various methods of monitoring Function-as-a-Service
+provided by different cloud vendors The OpenTelemetry community currently
+provides pre-built Lambda layers able to auto-instrument your application as
+well as a the option of standalone Collector Lambda layer that can be used when
+instrumenting applications manually or automatically.
+
+For more information, see [Functions as a Service](/docs/faas/).

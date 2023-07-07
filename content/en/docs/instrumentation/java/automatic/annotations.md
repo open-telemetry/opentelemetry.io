@@ -3,7 +3,8 @@ title: Annotations
 description: Using instrumentation annotations with a Java agent.
 aliases: [/docs/instrumentation/java/annotations]
 weight: 20
-javaInstrumentationVersion: 1.26.0
+javaInstrumentationVersion: 1.27.0
+spelling: cSpell:ignore reactivestreams reactivex Flowable javac
 ---
 
 For most users, the out-of-the-box instrumentation is completely sufficient and
@@ -66,8 +67,8 @@ types listed below, then the span will not be ended until the future completes.
 - [java.util.concurrent.CompletionStage](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletionStage.html)
 - [com.google.common.util.concurrent.ListenableFuture](https://guava.dev/releases/10.0/api/docs/com/google/common/util/concurrent/ListenableFuture.html)
 - [org.reactivestreams.Publisher](https://www.reactive-streams.org/reactive-streams-1.0.1-javadoc/org/reactivestreams/Publisher.html)
-- [reactor.core.publisher.Mono](https://projectreactor.io/docs/core/3.1.0.RELEASE/api/reactor/core/publisher/Mono.html)
-- [reactor.core.publisher.Flux](https://projectreactor.io/docs/core/3.1.0.RELEASE/api/reactor/core/publisher/Flux.html)
+- [reactor.core.publisher.Mono](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html)
+- [reactor.core.publisher.Flux](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html)
 - [io.reactivex.Completable](https://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Completable.html)
 - [io.reactivex.Maybe](https://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Maybe.html)
 - [io.reactivex.Single](https://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Single.html)

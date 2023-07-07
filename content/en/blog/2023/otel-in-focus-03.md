@@ -3,6 +3,8 @@ title: OpenTelemetry in Focus, March 2023
 linkTitle: OTel in Focus 2023/03
 date: 2023-03-31
 author: '[Austin Parker](https://github.com/austinlparker)'
+spelling: cSpell:ignore spanmetricsconnector spanmetricsprocessor 
+spelling: cSpell:ignore Jodd Ktor Webflux
 ---
 
 Welcome to this month’s edition of **OpenTelemetry in Focus**! It's been another
@@ -23,7 +25,7 @@ Here are the latest updates from our core repositories.
 ##### [Specification](/docs/specs/otel/)
 
 [Version 1.19](https://github.com/open-telemetry/opentelemetry-specification/releases/tag/v1.19.0)
-has been released with a number of important udates.
+has been released with a number of important updates.
 
 - OTLP/JSON has been declared stable.
 - To clarify its purpose, the Logs API has been renamed to the Logs Bridge API.

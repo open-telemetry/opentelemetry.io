@@ -1,4 +1,4 @@
-title: splunkmysql -- Instrumentation for github.com/go-sql-driver/mysql
+title: splunkmysql -- Instrumentation for the MySQL Driver Package
 registryType: instrumentation
 isThirdParty: true
 language: go

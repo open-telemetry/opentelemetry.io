@@ -1,66 +1,77 @@
 languages:
   cpp:
     name: C++
+    urlName: cpp
     status:
       traces: stable
       metrics: stable
       logs: experimental
   dotnet:
     name: .NET
+    urlName: dotnet
     status:
       traces: stable
       metrics: stable
       logs: mixed*
   erlang:
     name: Erlang/Elixir
+    urlName: erlang
     status:
       traces: stable
       metrics: experimental
       logs: experimental
   go:
     name: Go
+    urlName: go
     status:
       traces: stable
       metrics: beta
       logs: not yet implemented
   java:
     name: Java
+    urlName: java
     status:
       traces: stable
       metrics: stable
       logs: stable
   php:
     name: PHP
+    urlName: php
     status:
       traces: beta
       metrics: beta
       logs: alpha
   python:
     name: Python
+    urlName: python
     status:
       traces: stable
       metrics: stable
       logs: experimental
   ruby:
     name: Ruby
+    urlName: ruby
     status:
       traces: stable
       metrics: not yet implemented
       logs: not yet implemented
   js:
     name: JavaScript
+    urlName: js
     status:
       traces: stable
       metrics: stable
       logs: Development
   rust:
     name: Rust
+    urlName: rust
     status:
       traces: beta
       metrics: alpha
       logs: not yet implemented
   swift:
     name: Swift
+    urlName: swift
     status:
       traces: stable
       metrics: experimental

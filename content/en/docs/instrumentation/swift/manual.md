@@ -2,8 +2,10 @@
 title: Manual Instrumentation
 linkTitle: Manual
 weight: 30
-description: Manual instrumentation for opentelemetry-swift
+description: Manual instrumentation for OpenTelemetry Swift
 ---
+
+{{% docs/instrumentation/manual-intro %}}
 
 ## Setup
 
@@ -57,7 +59,9 @@ OpenTelemetry.registerMeterProvider(meterProvider: MeterProviderBuilder()
 After configuring the MeterProvider & TracerProvider all subsequently
 initialized instrumentation will be exporting using this OTLP exporter.
 
-## Acquiring a Tracer
+## Traces
+
+### Acquiring a Tracer
 
 To do tracing, you will need a tracer. A tracer is acquired through the tracer
 provider and is responsible for creating spans. The OpenTelemetry manages the
@@ -209,6 +213,16 @@ do {
 span.end()
 ```
 
+## Metrics
+
+The documentation for the metrics API & SDK is missing, you can help make it
+available by
+[editing this page](https://github.com/open-telemetry/opentelemetry.io/edit/main/content/en/docs/instrumentation/swift/manual.md).
+
+## Logs
+
+The logs API & SDK are currently under development.
+
 ## SDK Configuration
 
 ### Processors
@@ -218,7 +232,7 @@ Different Span processors are offered by OpenTelemetry-swift. The
 the `BatchSpanProcessor` batches them and sends them in bulk. Multiple Span
 processors can be configured to be active at the same time using the
 `MultiSpanProcessor`. For example, you may create a `SimpleSpanProcessor` that
-exports to a logger, and a `BatchSpanProcesssor` that exports to a OpenTelemetry
+exports to a logger, and a `BatchSpanProcessor` that exports to a OpenTelemetry
 Collector:
 
 ```swift

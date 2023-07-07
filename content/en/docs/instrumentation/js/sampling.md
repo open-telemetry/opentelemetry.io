@@ -35,7 +35,7 @@ You can also configure the TraceIdRatioBasedSampler in code. Here's an example
 for Node.js:
 
 <!-- prettier-ignore-start -->
-{{< tabpane lang=shell persistLang=false >}}
+{{< tabpane lang=shell >}}
 
 {{< tab TypeScript >}}
 import { TraceIdRatioBasedSampler } from '@opentelemetry/sdk-trace-node';
@@ -68,7 +68,7 @@ You can also configure the TraceIdRatioBasedSampler in code. Here's an example
 for browser apps:
 
 <!-- prettier-ignore-start -->
-{{< tabpane lang=shell persistLang=false >}}
+{{< tabpane lang=shell >}}
 
 {{< tab TypeScript >}}
 import { WebTracerProvider, TraceIdRatioBasedSampler } from '@opentelemetry/sdk-trace-web';

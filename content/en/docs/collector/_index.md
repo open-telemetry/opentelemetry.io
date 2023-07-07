@@ -1,11 +1,9 @@
 ---
 title: Collector
 description: Vendor-agnostic way to receive, process and export telemetry data.
-aliases:
-  - /docs/collector/about
-  - /docs/concepts/data-collection
+aliases: [/docs/collector/about]
 cascade:
-  collectorVersion: 0.79.0
+  collectorVersion: 0.81.0
 weight: 10
 ---
 
@@ -63,7 +61,7 @@ currently have mixed [stability levels][].
 to ensure that every component has its stability documented. To track the
 progress of this effort, see `opentelemetry-collector-contrib` [issue #10116][].
 
-{{% latest_release "collector-releases" /%}}
+{{% docs/latest-release collector-releases /%}}
 
 [issue #10116]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/10116

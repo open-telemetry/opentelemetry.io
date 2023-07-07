@@ -2,7 +2,7 @@
 title: Specification Status Summary
 linkTitle: Status
 aliases: [/docs/specs/otel/status]
-weight: 10
+weight: -10
 ---
 
 OpenTelemetry is developed on a signal by signal basis. Tracing, metrics,

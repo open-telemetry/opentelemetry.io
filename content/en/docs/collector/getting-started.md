@@ -2,7 +2,7 @@
 title: Getting Started
 spelling:
   - cSpell:ignore darwin dpkg GOARCH journalctl kubectl linux otelcorecol pprof
-  - cSpell:ignore zpages
+  - cSpell:ignore zpages tlsv
 weight: 1
 ---
 
@@ -31,7 +31,7 @@ Pull a docker image and run the collector in a container. Replace
 run.
 
 <!-- prettier-ignore-start -->
-{{< tabpane lang=shell persistLang=false >}}
+{{< tabpane lang=shell >}}
 {{< tab DockerHub >}}
 docker pull otel/opentelemetry-collector-contrib:{{% param collectorVersion %}}
 docker run otel/opentelemetry-collector-contrib:{{% param collectorVersion %}}
@@ -48,7 +48,7 @@ To load your custom configuration `config.yaml` from your current working
 directory, mount that file as a volume:
 
 <!-- prettier-ignore-start -->
-{{< tabpane lang=shell persistLang=false >}}
+{{< tabpane lang=shell >}}
 {{< tab DockerHub >}}
 docker run -v $(pwd)/config.yaml:/etc/otelcol-contrib/config.yaml otel/opentelemetry-collector-contrib:{{% param collectorVersion %}}
 {{< /tab >}}
@@ -61,7 +61,7 @@ docker run -v $(pwd)/config.yaml:/etc/otelcol-contrib/config.yaml ghcr.io/open-t
 
 ## Docker Compose
 
-You can add OpenTelemetry collector to your existing `docker-compose.yaml` like
+You can add OpenTelemetry Collector to your existing `docker-compose.yaml` like
 the following:
 
 ```yaml
@@ -116,7 +116,7 @@ To get started on alpine systems run the following replacing
 run.
 
 <!-- prettier-ignore-start -->
-{{< tabpane lang=shell persistLang=false >}}
+{{< tabpane lang=shell >}}
 {{< tab AMD64 >}}
 apk update
 apk add wget shadow
@@ -147,7 +147,7 @@ To get started on Debian systems run the following replacing
 run and `amd64` with the appropriate architecture.
 
 <!-- prettier-ignore-start -->
-{{< tabpane lang=shell persistLang=false >}}
+{{< tabpane lang=shell >}}
 {{< tab AMD64 >}}
 sudo apt-get update
 sudo apt-get -y install wget systemctl
@@ -178,7 +178,7 @@ To get started on Red Hat systems run the following replacing
 run and `x86_64` with the appropriate architecture.
 
 <!-- prettier-ignore-start -->
-{{< tabpane lang=shell persistLang=false >}}
+{{< tabpane lang=shell >}}
 {{< tab AMD64 >}}
 sudo yum update
 sudo yum -y install wget systemctl
@@ -209,7 +209,7 @@ download the archive containing the binary and install it on your machine
 manually:
 
 <!-- prettier-ignore-start -->
-{{< tabpane lang=shell persistLang=false >}}
+{{< tabpane lang=shell >}}
 {{< tab AMD64 >}}
 curl --proto '=https' --tlsv1.2 -fOL https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_linux_amd64.tar.gz
 tar -xvf otelcol_{{% param collectorVersion %}}_linux_amd64.tar.gz
@@ -262,7 +262,7 @@ packaged as gzipped tarballs (`.tar.gz`) and will need to be unpacked with a
 tool that supports this compression format:
 
 <!-- prettier-ignore-start -->
-{{< tabpane lang=shell persistLang=false >}}
+{{< tabpane lang=shell >}}
 {{< tab Intel >}}
 curl --proto '=https' --tlsv1.2 -fOL https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_darwin_amd64.tar.gz
 tar -xvf otelcol_{{% param collectorVersion %}}_darwin_amd64.tar.gz
@@ -320,7 +320,7 @@ terminal window as well.
 **Note:** The commands shown above demonstrate the process in a bash shell.
 These commands may vary slightly for other shells.
 
-[data collection]: ../
+[data collection]: /docs/concepts/components/#collector
 [deployment methods]: ../deployment/
 [readme.md]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/examples/demo

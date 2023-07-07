@@ -2,29 +2,52 @@
 title: Automatic Instrumentation
 linkTitle: Automatic
 weight: 20
-spelling: cSpell:ignore userland phar AUTOLOAD tracecontext myapp configurator
-spelling: cSpell:ignore packagist pecl shortcode unindented
+spelling: cSpell:ignore userland phar autoload tracecontext myapp configurator
+spelling: cSpell:ignore packagist pecl shortcode unindented democlass
 ---
 
-Automatic instrumentation with PHP requires at least PHP 8.0, and
-[the OpenTelemetry PHP extension](https://github.com/open-telemetry/opentelemetry-php-instrumentation).
-The extension allows developers code to hook into classes and methods, and
-execute userland code before and after the hooked method runs.
+Automatic instrumentation with PHP requires at least PHP 8.0, and the
+[OpenTelemetry PHP extension](https://github.com/open-telemetry/opentelemetry-php-instrumentation).
+The extension enables registering observer functions (as PHP code) against
+classes and methods, and executing those functions before and after the observed
+method runs.
+
+{{% alert title="Important" color="warning" %}}Installing the OpenTelemetry
+extension by itself will not generate traces. You must also install one or more
+[packages](/ecosystem/registry/?component=instrumentation&language=php) for the
+frameworks and libraries that you are using, or alternatively write your
+own.{{% /alert %}}
 
 ## Example
 
 ```php
 <?php
+
+use OpenTelemetry\API\Common\Instrumentation\CachedInstrumentation;
+use OpenTelemetry\API\Trace\Span;
+use OpenTelemetry\API\Trace\StatusCode;
+use OpenTelemetry\Context\Context;
+
+require 'vendor/autoload.php';
+
+class DemoClass
+{
+    public function run(): void
+    {
+        echo 'Hello, world';
+    }
+}
+
 OpenTelemetry\Instrumentation\hook(
-    'class': DemoClass::class,
-    'function': 'run',
-    'pre': static function (DemoClass $demo, array $params, string $class, string $function, ?string $filename, ?int $lineno) {
+    class: DemoClass::class,
+    function: 'run',
+    pre: static function (DemoClass $demo, array $params, string $class, string $function, ?string $filename, ?int $lineno) {
         static $instrumentation;
         $instrumentation ??= new CachedInstrumentation('example');
-        $span = $instrumentation->tracer()->spanBuilder($class)->startSpan();
+        $span = $instrumentation->tracer()->spanBuilder('democlass-run')->startSpan();
         Context::storage()->attach($span->storeInContext(Context::getCurrent()));
     },
-    'post': static function (DemoClass $demo, array $params, $returnValue, ?Throwable $exception) {
+    post: static function (DemoClass $demo, array $params, $returnValue, ?Throwable $exception) {
         $scope = Context::storage()->scope();
         $scope->detach();
         $span = Span::fromContext($scope->context());
@@ -55,7 +78,7 @@ The extension can be installed via pecl,
 1. Setup development environment. Installing from source requires proper
    development environment and some dependencies:
 
-   {{< tabpane lang=shell persistLang=false >}}
+   {{< tabpane lang=shell >}}
 
    {{< tab "Linux (apt)" >}}sudo apt-get install gcc make autoconf{{< /tab >}}
 
@@ -66,7 +89,7 @@ The extension can be installed via pecl,
 2. Build/install the extension. With your environment set up you can install the
    extension:
 
-   {{< tabpane lang=shell persistLang=false >}}
+   {{< tabpane lang=shell >}}
 
    {{< tab pecl >}}pecl install opentelemetry-beta{{< /tab >}}
 
@@ -132,7 +155,7 @@ OpenTelemetry\API\Common\Instrumentation\Globals::registerInitializer(function (
 
 //instrumentation libraries can access the configured providers (or a no-op implementation) via `Globals`
 $tracer = Globals::tracerProvider()->getTracer('example');
-//or, via CachedInstrumentation
+//or, via CachedInstrumentation which uses `Globals` internally
 $instrumentation = new CachedInstrumentation('example');
 $tracerProvider = $instrumentation->tracer();
 ```

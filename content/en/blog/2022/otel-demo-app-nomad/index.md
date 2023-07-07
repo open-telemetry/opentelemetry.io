@@ -4,6 +4,9 @@ linkTitle: OTel Demo App on Nomad
 date: 2022-12-12
 author: >-
   [Adriana Villela](https://github.com/avillela) (Lightstep)
+spelling: cSpell:ignore Villela hashi qube Daniela servian hashiqube macbook
+spelling: cSpell:ignore jobspec ffspostgres loadgenerator mozy lookin
+spelling: cSpell:ignore entrypoints jobspecs shoutout Luiz Aoqui Riaan
 ---
 
 Y’all… I’m so excited, because I finally got to work on an item on my tech
@@ -232,7 +235,7 @@ services are lookin’ good!
 #### 5- Access the OTel Demo App
 
 The OTel Demo App uses [Envoy](https://www.envoyproxy.io) to expose a number of
-front-end services: the Webstore, [Jaeger](https://www.jaegertracing.io/),
+front-end services: the web store, [Jaeger](https://www.jaegertracing.io/),
 [Grafana](https://grafana.com/), Load Generator, and Feature Flag. These are all
 managed by the
 [frontendproxy](https://github.com/avillela/nomad-conversions/blob/main/otel-demo-app/jobspec/frontendproxy.nomad)
@@ -255,9 +258,9 @@ Note that the `Host` is set to `otel-demo.localhost`.
 
 The services are accessed via the URLs below.
 
-**Webstore:** <http://otel-demo.localhost/>
+**Web store:** <http://otel-demo.localhost/>
 
-![Screen capture of the Demo App Webstore UI](otel-demo-app-ui.jpg 'Screen capture of the Demo App Webstore UI')
+![Screen capture of the Demo App Web Store UI](otel-demo-app-ui.jpg 'Screen capture of the Demo App Web Store UI')
 
 Go ahead and explore the amazing selection of telescopes and accessories, and
 buy a few. 😉🔭
@@ -336,7 +339,7 @@ highlights:
 - We saw the OTel Demo App in action, by accessing the following services
   exposed through the
   [frontendproxy](https://github.com/avillela/nomad-conversions/blob/cefe9b9b12d84fb47be8aa5fc67b1b221b7b599b/otel-demo-app/jobspec/frontendproxy.nomad):
-  [Webstore](http://otel-demo.localhost/),
+  [Web store](http://otel-demo.localhost/),
   [Grafana](http://otel-demo.localhost/grafana/),
   [Jaeger](http://otel-demo.localhost/jaeger/ui),
   [Feature Flags UI](http://otel-demo.localhost/feature/),and the

@@ -6,15 +6,12 @@ aliases:
   - /docs/java/manual_instrumentation
   - /docs/instrumentation/java/manual_instrumentation
 weight: 30
+description: Manual instrumentation for OpenTelemetry Java
+spelling: cSpell:ignore logback multivalued autoconfigure classpath 
+spelling: cSpell:ignore customizer loggable
 ---
 
-**Libraries** that want to export telemetry data using OpenTelemetry MUST only
-depend on the `opentelemetry-api` package and should never configure or depend
-on the OpenTelemetry SDK. The SDK configuration must be provided by
-**Applications** which should also depend on the `opentelemetry-sdk` package, or
-any other implementation of the OpenTelemetry API. This way, libraries will
-obtain a real implementation only if the user application is configured for it.
-For more details, check out the [Library Guidelines].
+{{% docs/instrumentation/manual-intro %}}
 
 ## Setup
 
@@ -143,7 +140,9 @@ reason, you can fall back to using an instance from the `GlobalOpenTelemetry`
 class. Note that you can't force end-users to configure the global, so this is
 the most brittle option for library instrumentation.
 
-## Acquiring a Tracer
+## Traces
+
+### Acquiring a Tracer
 
 To do [Tracing](/docs/concepts/signals/traces/) you'll need to acquire a
 [`Tracer`](/docs/concepts/signals/traces/#tracer).

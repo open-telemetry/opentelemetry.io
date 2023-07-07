@@ -9,7 +9,7 @@ spelling: cSpell:ignore oidc cfssl genkey initca cfssljson gencert
 
 Familiarity with the following pages is assumed:
 
-- [Data Collection concepts](../) in order to understand the repositories
+- [Data collection concepts][dcc] in order to understand the repositories
   applicable to the OpenTelemetry Collector.
 - [Security guidance](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md)
 
@@ -17,14 +17,14 @@ Familiarity with the following pages is assumed:
 
 The Collector consists of four components that access telemetry data:
 
-- <img width="32" class="img-initial" src="/img/logos/32x32/Receivers.svg"></img>
-  [Receivers](#receivers)
-- <img width="32" class="img-initial" src="/img/logos/32x32/Processors.svg"></img>
-  [Processors](#processors)
-- <img width="32" class="img-initial" src="/img/logos/32x32/Exporters.svg"></img>
-  [Exporters](#exporters)
-- <img width="32" class="img-initial" src="/img/logos/32x32/Load_Balancer.svg"></img>
-  [Connectors](#connectors)
+- [Receivers](#receivers)
+  <img width="32" class="img-initial" src="/img/logos/32x32/Receivers.svg">
+- [Processors](#processors)
+  <img width="32" class="img-initial" src="/img/logos/32x32/Processors.svg">
+- [Exporters](#exporters)
+  <img width="32" class="img-initial" src="/img/logos/32x32/Exporters.svg">
+- [Connectors](#connectors)
+  <img width="32" class="img-initial" src="/img/logos/32x32/Load_Balancer.svg">
 
 These components once configured must be enabled via pipelines within the
 [service](#service) section.
@@ -172,9 +172,7 @@ service:
       exporters: [otlp]
 ```
 
-## Receivers
-
-<img width="35" class="img-initial" src="/img/logos/32x32/Receivers.svg"></img>
+## Receivers <img width="35" class="img-initial" src="/img/logos/32x32/Receivers.svg"> {#receivers}
 
 A receiver, which can be push or pull based, is how data gets into the
 Collector. Receivers may support one or more
@@ -193,8 +191,8 @@ receiver provides a default configuration are overridden.
 One or more receivers must be configured. By default, no receivers are
 configured. A basic example of receivers is provided below.
 
-> For detailed receiver configuration, please see the
-> [receiver README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md).
+> For detailed receiver configuration, see the
+> [receiver README](https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md).
 
 ```yaml
 receivers:
@@ -249,9 +247,7 @@ receivers:
   zipkin:
 ```
 
-## Processors
-
-<img width="35" class="img-initial" src="/img/logos/32x32/Processors.svg"></img>
+## Processors <img width="35" class="img-initial" src="/img/logos/32x32/Processors.svg"> {#processors}
 
 Processors are run on data between being received and being exported. Processors
 are optional though
@@ -271,8 +267,8 @@ processors can be found by combining the list found
 and
 [here](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor).
 
-> For detailed processor configuration, please see the
-> [processor README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md).
+> For detailed processor configuration, see the
+> [processor README](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md).
 
 ```yaml
 processors:
@@ -332,9 +328,7 @@ processors:
       separator: '::'
 ```
 
-## Exporters
-
-<img width="35" class="img-initial" src="/img/logos/32x32/Exporters.svg"></img>
+## Exporters <img width="35" class="img-initial" src="/img/logos/32x32/Exporters.svg"> {#exporters}
 
 An exporter, which can be push or pull based, is how you send data to one or
 more backends/destinations. Exporters may support one or more
@@ -411,7 +405,7 @@ exporters:
     endpoint: http://localhost:9411/api/v2/spans
 ```
 
-## Connectors
+## Connectors <img width="32" class="img-initial" src="/img/logos/32x32/Load_Balancer.svg"> {#connectors}
 
 A connector is both an exporter and receiver. As the name suggests a Connector
 connects two pipelines: It consumes data as an exporter at the end of one
@@ -428,8 +422,8 @@ The `connectors:` section is how connectors are configured.
 One or more connectors may be configured. By default, no connectors are
 configured. A basic example of connectors is provided below.
 
-> For detailed connector configuration, please see the
-> [connector README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/connector/README.md).
+> For detailed connector configuration, see the
+> [connector README](https://github.com/open-telemetry/opentelemetry-collector/blob/main/connector/README.md).
 
 ```yaml
 connectors:
@@ -483,8 +477,8 @@ extension provides a default configuration are overridden.
 By default, no extensions are configured. A basic example of extensions is
 provided below.
 
-> For detailed extension configuration, please see the
-> [extension README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/extension/README.md).
+> For detailed extension configuration, see the
+> [extension README](https://github.com/open-telemetry/opentelemetry-collector/blob/main/extension/README.md).
 
 ```yaml
 extensions:
@@ -746,3 +740,5 @@ This will create two certificates; first, an "OpenTelemetry Example" Certificate
 Authority (CA) in `ca.pem` and the associated key in `ca-key.pem`, and second a
 client certificate in `cert.pem` (signed by the OpenTelemetry Example CA) and
 the associated key in `cert-key.pem`.
+
+[dcc]: /docs/concepts/components/#collector

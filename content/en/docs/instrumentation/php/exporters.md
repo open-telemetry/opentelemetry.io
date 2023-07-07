@@ -1,36 +1,43 @@
 ---
 title: Exporters
 weight: 50
-spelling: cSpell:ignore fastcgi jaegertracing openzipkin ndjson zipkin
+spelling: cSpell:ignore fastcgi ndjson autoload pecl
 ---
 
 In order to visualize and analyze your telemetry, you will need to export it to
-a backend. OpenTelemetry PHP provides exporters for some common open source
-backends.
+a backend. OpenTelemetry PHP provides exporters for some common protocols, which
+you can send to a number of open source backends.
 
 ## OTLP
 
 To send trace data to a OTLP endpoint (like the [collector](/docs/collector) or
-Jaeger) you'll need to use the `open-telemetry/exporter-otlp` package:
+Jaeger) you'll need to use the `open-telemetry/exporter-otlp` package and an
+HTTP client that satisfied `psr/http-client-implementation`:
 
 ```shell
-composer require open-telemetry/exporter-otlp
+composer require \
+  open-telemetry/exporter-otlp \
+  php-http/guzzle7-adapter
 ```
 
-If you use gRPC, you will also need to install the
-`open-telemetry/transport-grpc` package:
+To use the [gRPC](https://grpc.io/) exporter, you will also need to install the
+`open-telemetry/transport-grpc` package, and the `grpc` extension:
 
 ```shell
+pecl install grpc
 composer require open-telemetry/transport-grpc
 ```
 
-Next, configure the exporter with an OTLP endpoint. For example, you can update
-`GettingStarted.php` from [Getting Started](../getting-started/) like the
-following:
+Next, configure an exporter with an OTLP endpoint. For example:
 
 <!-- prettier-ignore-start -->
-{{< tabpane >}}
-{{< tab gRPC >}}
+
+{{< tabpane >}} {{< tab gRPC >}}
+
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
 use OpenTelemetry\API\Common\Signal\Signals;
 use OpenTelemetry\Contrib\Grpc\GrpcTransportFactory;
 use OpenTelemetry\Contrib\Otlp\OtlpUtil;
@@ -38,50 +45,82 @@ use OpenTelemetry\Contrib\Otlp\SpanExporter;
 use OpenTelemetry\SDK\Trace\SpanProcessor\SimpleSpanProcessor;
 use OpenTelemetry\SDK\Trace\TracerProvider;
 
-$transport = (new GrpcTransportFactory())->create('http://collector:4317' . OtlpUtil::method(Signals::TRACE));
+$transport = (new GrpcTransportFactory())->create('http://jaeger:4317' . OtlpUtil::method(Signals::TRACE));
 $exporter = new SpanExporter($transport);
+
+$tracerProvider =  new TracerProvider(
+    new SimpleSpanProcessor($exporter)
+);
 {{< /tab >}}
 {{< tab protobuf >}}
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
 use OpenTelemetry\Contrib\Otlp\OtlpHttpTransportFactory;
 use OpenTelemetry\Contrib\Otlp\SpanExporter;
 use OpenTelemetry\SDK\Trace\SpanProcessor\SimpleSpanProcessor;
 use OpenTelemetry\SDK\Trace\TracerProvider;
 
-$transport = (new OtlpHttpTransportFactory())->create('http://collector:4318/v1/traces', 'application/x-protobuf');
+$transport = (new OtlpHttpTransportFactory())->create('http://jaeger:4318/v1/traces', 'application/x-protobuf');
 $exporter = new SpanExporter($transport);
+
+$tracerProvider =  new TracerProvider(
+    new SimpleSpanProcessor($exporter)
+);
 {{< /tab>}}
 {{< tab json >}}
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
 use OpenTelemetry\Contrib\Otlp\OtlpHttpTransportFactory;
 use OpenTelemetry\Contrib\Otlp\SpanExporter;
 use OpenTelemetry\SDK\Trace\SpanProcessor\SimpleSpanProcessor;
 use OpenTelemetry\SDK\Trace\TracerProvider;
 
-$transport = (new OtlpHttpTransportFactory())->create('http://collector:4318/v1/traces', 'application/json');
+$transport = (new OtlpHttpTransportFactory())->create('http://jaeger:4318/v1/traces', 'application/json');
 $exporter = new SpanExporter($transport);
+
+$tracerProvider =  new TracerProvider(
+    new SimpleSpanProcessor($exporter)
+);
+$tracer = $tracerProvider->getTracer('io.opentelemetry.contrib.php');
+$tracer->spanBuilder('example')->startSpan()->end();
 {{< /tab >}}
 {{< tab nd-json >}}
-/* newline-delimited JSON */
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
 use OpenTelemetry\Contrib\Otlp\OtlpHttpTransportFactory;
 use OpenTelemetry\Contrib\Otlp\SpanExporter;
 use OpenTelemetry\SDK\Trace\SpanProcessor\SimpleSpanProcessor;
 use OpenTelemetry\SDK\Trace\TracerProvider;
 
-$transport = (new OtlpHttpTransportFactory())->create('http://collector:4318/v1/traces', 'application/x-ndjson');
+$transport = (new OtlpHttpTransportFactory())->create('http://jaeger:4318/v1/traces', 'application/x-ndjson');
 $exporter = new SpanExporter($transport);
+
+$tracerProvider =  new TracerProvider(
+    new SimpleSpanProcessor($exporter)
+);
+$tracer = $tracerProvider->getTracer('io.opentelemetry.contrib.php');
+$tracer->spanBuilder('example')->startSpan()->end();
 {{< /tab >}}
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
-Then, register the exporter in a tracer provider:
+Then, append the following code to generate a span:
 
 ```php
-$tracerProvider =  new TracerProvider(
-   new SimpleSpanProcessor($exporter)
-);
 $tracer = $tracerProvider->getTracer('io.opentelemetry.contrib.php');
+$tracer
+  ->spanBuilder('example')
+  ->startSpan()
+  ->end();
 ```
 
-To try out the example locally, you can run
+To try out the example above, you can run
 [Jaeger](https://www.jaegertracing.io/) in a docker container:
 
 ```shell
@@ -120,7 +159,8 @@ Update the example to use the Zipkin exporter and to send data to your zipkin
 backend:
 
 ```php
-$transport = PsrTransportFactory::discover()->create('http://zipkin:9411/api/v2/spans', 'application/json');
+$transport = \OpenTelemetry\SDK\Common\Export\Http\PsrTransportFactory::discover()
+    ->create('http://zipkin:9411/api/v2/spans', 'application/json');
 $zipkinExporter = new ZipkinExporter($transport);
 $tracerProvider =  new TracerProvider(
     new SimpleSpanProcessor($zipkinExporter)
@@ -139,7 +179,6 @@ after sending a user response, which means that delays in sending telemetry data
 will not hold up request processing.
 
 To minimize the impact of slow transport of telemetry data, particularly for
-external or cloud-based backends, you should consider using a local
-[OpenTelemetry Collector](/docs/collector/). A local collector can quickly
-accept, then batch and send all of your telemetry to the backend. Such a setup
-will make your system more robust and scalable.
+external or cloud-based backends, you should consider using the
+[OpenTelemetry Collector](/docs/collector/) as an [agent](/docs/collector/deployment/agent/). The agent can quickly
+accept, then batch send telemetry data to the backend.

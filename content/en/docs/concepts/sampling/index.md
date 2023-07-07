@@ -16,7 +16,7 @@ without unacceptable latency or errors, do you really need all that data? Here�
 the thing—you don’t always need a ton of data to find the right insights. _You
 just need the right sampling of data._
 
-![Illustration shows that not all data needs to be traced, and that a sample of data is sufficient.](traces_venn_diagram.png)
+![Illustration shows that not all data needs to be traced, and that a sample of data is sufficient.](traces-venn-diagram.svg)
 
 The idea behind sampling is to control the spans you send to your observability
 backend, resulting in lower ingest costs. Different organizations will have
@@ -79,7 +79,7 @@ all or most of the spans within the trace. Tail Sampling gives you the option to
 sample your traces based on specific criteria derived from different parts of a
 trace, which isn’t an option with Head Sampling.
 
-![Illustration shows how spans originate from a root span. After the spans are complete, the tail sampling processor makes a sampling decision.](tail_sampling_process.png)
+![Illustration shows how spans originate from a root span. After the spans are complete, the tail sampling processor makes a sampling decision.](tail-sampling-process.svg)
 
 Some examples of how you can use Tail Sampling include:
 
@@ -121,3 +121,19 @@ of trace data may first use head sampling to only sample a small percentage of
 traces, and then later in the telemetry pipeline use tail sampling to make more
 sophisticated sampling decisions before exporting to a backend. This is often
 done in the interest of protecting the telemetry pipeline from being overloaded.
+
+## Support
+
+### Collector
+
+The OpenTelemetry Collector includes the following sampling processors:
+
+- [Probabilistic Sampling Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/probabilisticsamplerprocessor)
+- [Tail Sampling Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor)
+
+### Language SDKs
+
+For the individual language specific implementations of the OpenTelemetry API &
+SDK you will find support for sampling at the respective documentation pages:
+
+{{% sampling-support-list " " %}}

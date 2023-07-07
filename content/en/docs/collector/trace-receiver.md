@@ -1,6 +1,12 @@
 ---
 title: Building a Trace Receiver
-spelling: cSpell:ignore struct tailtracer
+spelling: cSpell:ignore struct tailtracer otlpreceiver rquedas devs mapstructure
+spelling: cSpell:ignore Errorf structs loggingexporter jaegerexporter amzn
+spelling: cSpell:ignore batchprocessor Rcvr uber atmxph comcast chicago
+spelling: cSpell:ignore sanfrancisco ptrace pdata protogen pcommon stateid
+spelling: cSpell:ignore ispnetwork serialnumber mcrsft gogl wndws slrs
+spelling: cSpell:ignore backendsystem crand linux Intn semconv
+spelling: cSpell:ignore 
 ---
 
 If you are reading this tutorial, you probably already have an idea of the
@@ -1576,7 +1582,7 @@ import (
 	"time"
 	"go.opentelemetry.io/collector/pdata/pcommon"
 	"go.opentelemetry.io/collector/pdata/ptrace"
-	conventions "go.opentelemetry.io/collector/semconv/v1.9.0""
+	conventions "go.opentelemetry.io/collector/semconv/v1.9.0"
 )
 
 type Atm struct {
@@ -1810,7 +1816,7 @@ initializing them with the `appendAtmSystemInstrScopeSpans()`. Here is what
 
 ```go
 func generateTraces(numberOfTraces int) ptrace.Traces{
-	traces := ptraces.NewTraces()
+	traces := ptrace.NewTraces()
 
 	for i := 0; i <= numberOfTraces; i++{
 		newAtm := generateAtm()

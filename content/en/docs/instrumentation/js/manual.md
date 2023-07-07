@@ -5,12 +5,12 @@ aliases:
   - /docs/instrumentation/js/instrumentation
 weight: 30
 spelling: cSpell:ignore Millis
+description: Manual instrumentation for OpenTelemetry JavaScript
 ---
 
-Manual instrumentation is the process of adding observability code to your
-application.
+{{% docs/instrumentation/manual-intro %}}
 
-## Tracing
+## Traces
 
 ### Initialize Tracing
 
@@ -112,7 +112,7 @@ Next, ensure that `tracing.js|ts` is required in your node invocation. This is
 also required if you're registering instrumentation libraries. For example:
 
 <!-- prettier-ignore-start -->
-{{< tabpane lang=shell persistLang=false >}}
+{{< tabpane lang=shell >}}
 
 {{< tab TypeScript >}}
 ts-node --require ./tracing.ts <app-file.ts>
@@ -798,7 +798,7 @@ opentelemetry.metrics.setGlobalMeterProvider(myServiceMeterProvider)
 You'll need to `--require` this file when you run your app, such as:
 
 <!-- prettier-ignore-start -->
-{{< tabpane lang=shell persistLang=false >}}
+{{< tabpane lang=shell >}}
 
 {{< tab TypeScript >}}
 ts-node --require ./instrumentation.ts <app-file.ts>
@@ -1116,6 +1116,10 @@ const meterProvider = new MeterProvider({
   views: [limitAttributesView, dropView, histogramView],
 });
 ```
+
+## Logs
+
+The logs API & SDK are currently under development.
 
 ## Next steps
 

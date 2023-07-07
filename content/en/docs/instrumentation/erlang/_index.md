@@ -3,12 +3,12 @@ title: Erlang/Elixir
 weight: 14
 description: >
   <img width="35" class="img-initial" src="/img/logos/32x32/Erlang_SDK.svg"
-  alt="Erlang/Elixir"></img> A language-specific implementation of OpenTelemetry
-  in Erlang/Elixir.
-spelling: cSpell:ignore erlang
+  alt="Erlang/Elixir"> A language-specific implementation of OpenTelemetry in
+  Erlang/Elixir.
+spelling: cSpell:ignore ecto
 ---
 
-{{% lang_instrumentation_index_head erlang %}}
+{{% docs/instrumentation/index-intro erlang %}}
 
 Packages of the API, SDK and OTLP exporter are published to
 [`hex.pm`](https://hex.pm) as
@@ -29,4 +29,4 @@ OpenTelemetry Erlang supports Erlang 23+ and Elixir 1.13+.
   like [Phoenix](https://www.phoenixframework.org/) and
   [Ecto](https://hexdocs.pm/ecto/Ecto.html)
 
-{{% /lang_instrumentation_index_head %}}
+{{% /docs/instrumentation/index-intro %}}

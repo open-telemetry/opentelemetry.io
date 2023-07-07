@@ -65,3 +65,39 @@ FILES=$(find $DEST -name mission-vision-values.md -o -name roadmap.md)
 $SCRIPT_DIR/adjust-pages.pl $FILES
 
 echo "COMMUNITY pages: copied and processed"
+
+## Semantic Conventions
+
+SRC=content-modules/semantic-conventions/docs
+DEST=$DEST_BASE/semconv/docs
+
+rm -Rf $DEST
+mkdir -p $DEST
+cp -R $SRC/* $DEST/
+
+find $DEST/ -name "README.md" -exec sh -c 'f="{}"; mv -- "$f" "${f%README.md}_index.md"' \;
+
+# To exclude a file use, e.g.: -not -path '*/specification/_index.md'
+FILES=$(find $DEST -name "*.md")
+
+$SCRIPT_DIR/normalize-titles.pl $FILES
+$SCRIPT_DIR/adjust-pages.pl $FILES
+
+echo "SEM CONV  pages: copied and processed"
+
+## OpAMP spec
+
+SRC=content-modules/opamp-spec
+DEST=$DEST_BASE/opamp
+
+rm -Rf $DEST
+mkdir -p $DEST
+# Note: in contrast to other projects, we're copying a single file here
+cp $SRC/specification.md $DEST/index.md
+
+# To exclude a file use, e.g.: -not -path '*/specification/_index.md'
+FILES=$(find $DEST -name "*.md")
+
+$SCRIPT_DIR/adjust-pages.pl $FILES
+
+echo "OpAMP SPEC page: copied and processed"

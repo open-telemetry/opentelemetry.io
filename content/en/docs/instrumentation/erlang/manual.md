@@ -2,14 +2,32 @@
 title: Manual
 aliases: [/docs/instrumentation/erlang/instrumentation]
 weight: 30
+description: Manual instrumentation for OpenTelemetry Erlang/Elixir
 ---
 
-Instrumentation is the act of adding observability code to your application.
-This can be done with direct calls to the OpenTelemetry API within your code or
-including a dependency which calls the API and hooks into your project, like a
-middleware for an HTTP server.
+{{% docs/instrumentation/manual-intro %}}
 
-## Tracing
+## Setup
+
+Add the following dependencies to your project:
+
+- `opentelemetry_api`: contains the interfaces you'll use to instrument your
+  code. Things like `Tracer.with_span` and `Tracer.set_attribute` are defined
+  here.
+- `opentelemetry`: contains the SDK that implements the interfaces defined in
+  the API. Without it, all the functions in the API are no-ops.
+
+```elixir
+# mix.exs
+def deps do
+  [
+    {:opentelemetry, "~> 1.3"},
+    {:opentelemetry_api, "~> 1.2"},
+  ]
+end
+```
+
+## Traces
 
 ### Initialize Tracing
 
@@ -355,11 +373,23 @@ Tracer.set_status(:error, "this is not ok")
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
 
-## Creating Metrics
+## Metrics
 
 The metrics API, found in `apps/opentelemetry_experimental_api` of the
 [opentelemetry-erlang](https://github.com/open-telemetry/opentelemetry-erlang)
 repository, is currently unstable, documentation TBA.
+
+## Logs
+
+The logs API, found in `apps/opentelemetry_experimental_api` of the
+[opentelemetry-erlang](https://github.com/open-telemetry/opentelemetry-erlang)
+repository, is currently unstable, documentation TBA.
+
+## Next Steps
+
+You’ll also want to configure an appropriate exporter to
+[export your telemetry data](/docs/instrumentation/erlang/exporters) to one or
+more telemetry backends.
 
 [opentelemetry specification]: /docs/specs/otel/
 [trace semantic conventions]: /docs/specs/otel/trace/semantic_conventions/

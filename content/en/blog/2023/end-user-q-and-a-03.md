@@ -4,6 +4,7 @@ linkTitle: 'End-User Q&A: OTel at Farfetch'
 date: 2023-06-07
 author: '[Adriana Villela](https://github.com/avillela) (Lightstep)'
 body_class: otel-with-contributions-from
+spelling: cSpell:ignore Farfetch Dyrmishi Thanos
 ---
 
 With contributions from [Rynn Mancuso](https://github.com/musingvirtual)
@@ -141,7 +142,7 @@ They are not fully there yet:
 In spite of that, Iris and her team are leveraging the power of the
 [OpenTelemetry Collector](/docs/collector/) to gather and send metrics and
 traces to various Observability back-ends. Since she and her team started using
-OpenTelemetery, they started instrumenting more traces. In fact, with their
+OpenTelemetry, they started instrumenting more traces. In fact, with their
 current setup, Iris has happily reported that they went from processing 1,000
 spans per second, to processing 40,000 spans per second!
 
@@ -157,7 +158,7 @@ others are still instrumented using the [legacy OpenTracing
 The OpenTelemetry Operator is being implemented to auto-instrument Java and .NET
 code. Among other things, the [OTel Operator](/docs/k8s-operator/) supports
 injecting and
-[configuring auto-instrumentation](/docs/k8s-operator/automatic/#configure-autoinstrumentation)
+[configuring auto-instrumentation](/docs/k8s-operator/automatic/#configure-automatic-instrumentation)
 in .NET, Java, Python, and Node.js. Iris hopes that Go auto-instrumentation will
 be available in the near-future. To track progress of auto-instrumentation in
 Go, see
@@ -230,7 +231,7 @@ Prometheus is also still currently used for metrics collection in other areas,
 and will probably remain this way, especially when collecting metrics from
 virtual machines.
 
-### How many Kubenetes clusters are you observing?
+### How many Kubernetes clusters are you observing?
 
 There are 100 Kubernetes clusters being observed, and thousands of virtual
 machines. Iris and her team are responsible for managing the OTel Operator

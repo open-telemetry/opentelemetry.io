@@ -10,7 +10,7 @@ spelling: cSpell:ignore clusterlocal filereloadreceiver Premendra Aishwarya
 spelling: cSpell:ignore Yandapalli Santanu Bhattacharya Feldmeier Rami Charif
 spelling: cSpell:ignore Sarbu Golubenco Ruflin Steffen Siering Pérez Aradros 
 spelling: cSpell:ignore Kroh Christos Markou Soriano Tigran Nigaryan Bogdan
-spelling: cSpell:ignore Drutu Ashpole Mirabella Juraci Paixão Kröhling Teoh
+spelling: cSpell:ignore Drutu Ashpole Mirabella Teoh
 ---
 
 eBay makes a crucial pivot to OpenTelemetry to better align with industry
