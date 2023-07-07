@@ -2,6 +2,9 @@
 title: Testing
 weight: 100
 spelling: cSpell:ignore defmodule stdlib defrecordp testcase
+versions: 
+    otelSdk: 1.3
+    otelApi: 1.2
 ---
 
 When relying on OpenTelemetry for your Observability needs, it can be important
@@ -19,15 +22,15 @@ testing in Elixir/Erlang:
 {{< tabpane langEqualsHeader=true >}}
 
 {{< tab Erlang >}}
-{deps, [{opentelemetry_api, "~> 1.0"},
-        {opentelemetry, "~> 1.0"}]}.
+{deps, [{opentelemetry_api, "~> {{% param versions.otelApi %}}"},
+        {opentelemetry, "~> {{% param versions.otelSdk %}}"}]}.
 {{< /tab >}}
 
 {{< tab Elixir >}}
 def deps do
   [
-    {:opentelemetry_api, "~> 1.0"},
-    {:opentelemetry, "~> 1.0"}
+    {:opentelemetry_api, "~> {{% param versions.otelApi %}}"},
+    {:opentelemetry, "~> {{% param versions.otelSdk %}}"}
   ]
 end
 {{< /tab >}}

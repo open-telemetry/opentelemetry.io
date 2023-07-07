@@ -2,6 +2,12 @@
 title: Exporters
 weight: 50
 spelling: cSpell:ignore ostream jaegertracing millis chrono rebar relx
+versions: 
+    otelSdk: 1.3
+    otelApi: 1.2
+    otelExporter: 1.6
+    otelPhoenix: 1.1
+    otelCowboy: 0.2
 ---
 
 In order to visualize and analyze your [traces](/docs/concepts/signals/traces/)
@@ -32,17 +38,17 @@ added to the project's dependencies:
 {{< tabpane langEqualsHeader=true >}}
 
 {{< tab Erlang >}}
-{deps, [{opentelemetry_api, "~> 1.3"},
-        {opentelemetry, "~> 1.3"},
-        {opentelemetry_exporter, "~> 1.4"}]}.
+{deps, [{opentelemetry_api, "~> {{% param versions.otelApi %}}"},
+        {opentelemetry, "~> {{% param versions.otelSdk %}}"},
+        {opentelemetry_exporter, "~> {{% param versions.otelExporter %}}"}]}.
 {{< /tab >}}
 
 {{< tab Elixir >}}
 def deps do
   [
-    {:opentelemetry_api, "~> 1.3"},
-    {:opentelemetry, "~> 1.3"},
-    {:opentelemetry_exporter, "~> 1.4"}
+    {:opentelemetry_api, "~> {{% param versions.otelApi %}}"},
+    {:opentelemetry, "~> {{% param versions.otelSdk %}}"},
+    {:opentelemetry_exporter, "~> {{% param versions.otelExporter %}}"}
   ]
 end
 {{< /tab >}}
