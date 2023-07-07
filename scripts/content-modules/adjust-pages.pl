@@ -47,6 +47,7 @@ cascade:
   github_subdir: docs
   path_base_for_github_subdir: content/en/docs/specs/semconv/
   github_project_repo: *repo
+  draft: true
 EOS
 
 # Adjust semconv title capitalization
