@@ -33,7 +33,7 @@ jobs:
 
       - run: npm install --ignore-scripts
       - run: |
-          npm run prettier:write
+          npm run format
           git status
           git branch -v
 

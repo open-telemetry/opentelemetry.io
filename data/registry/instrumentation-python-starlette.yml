@@ -9,7 +9,7 @@ repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/i
 license: Apache 2.0
 description:
   This library provides automatic and manual instrumentation of Starlette web
-  frameworks, instrumenting http requests served by applications utilizing the
+  frameworks, instrumenting HTTP requests served by applications utilizing the
   framework.
 authors: OpenTelemetry Authors
 otVersion: latest

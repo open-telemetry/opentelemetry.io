@@ -15,7 +15,9 @@
         "/<http://.*>/",
         "medium.com/opentelemetry",
         "github.com/open-telemetry",
-        "#opentelemetry"
+        "#opentelemetry",
+        "/^(?:language|repo): .*$/m",
+        "/tags:([\\n\\r\\s]*-[\\s\\S]*?[\\n\\r]+)*/m"
       ]
     }
   },
@@ -42,13 +44,15 @@
         "PHP",
         "PostgreSQL",
         "protobuf",
+        "SQLite",
         "Thanos",
         "Traefik",
+        "Zend",
         "Zipkin",
         ["[^\\.]json", "JSON"],
         ["[Nn]ode\\.?[Jj][sS]", "Node.js"],
         ["open-source", "open source"],
-        ["[Oo]pen[- ][Tt]elemetry", "OpenTelemetry"],
+        ["[Oo]pen[- ]?[Tt]elemetry", "OpenTelemetry"],
         ["regexes", "regular expressions"]
       ]
     }
