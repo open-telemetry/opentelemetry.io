@@ -96,7 +96,7 @@ The extension can be installed via pecl,
 <!-- The remaining shortcode lines must be unindented so that tab content is unindented in the generated page -->
 <!-- prettier-ignore-start -->
 {{< tab pickle >}}
-php pickle.phar install --source https://github.com/open-telemetry/opentelemetry-php-instrumentation.git#1.0.0beta2
+php pickle.phar install opentelemetry
 {{< /tab >}}
 
 {{< tab "php-extension-installer (docker)" >}}
@@ -128,6 +128,7 @@ variables or `php.ini` to configure auto-instrumentation:
 OTEL_PHP_AUTOLOAD_ENABLED=true \
 OTEL_SERVICE_NAME=your-service-name \
 OTEL_TRACES_EXPORTER=otlp \
+OTEL_METRICS_EXPORTER=none \
 OTEL_EXPORTER_OTLP_PROTOCOL=grpc \
 OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317 \
 OTEL_PROPAGATORS=baggage,tracecontext \

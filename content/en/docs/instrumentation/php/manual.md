@@ -3,7 +3,7 @@ title: Manual Instrumentation
 linkTitle: Manual
 weight: 30
 description: Manual instrumentation for OpenTelemetry PHP
-spelling: cSpell:ignore myapp autoload
+spelling: cSpell:ignore myapp autoload guzzlehttp
 ---
 
 {{% docs/instrumentation/manual-intro %}}
@@ -16,11 +16,10 @@ console.
 
 To use the OpenTelemetry SDK for PHP you need packages that satisfy the
 dependencies for `psr/http-client-implementation` and
-`psr/http-factory-implementation`. Here we will use the Guzzle 7 HTTP Adapter
-which satisfies both:
+`psr/http-factory-implementation`. Here we will use Guzzle, which provides both:
 
 ```sh
-composer require php-http/guzzle7-adapter
+composer require guzzlehttp/guzzle
 ```
 
 Now you can install the OpenTelemetry SDK, and OTLP exporter:
