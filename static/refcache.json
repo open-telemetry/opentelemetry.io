@@ -4215,6 +4215,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-30T09:37:36.11784-04:00"
   },
+  "https://uplight.com/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-07T17:13:24.95734+02:00"
+  },
   "https://uptrace.dev": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:37:28.48076-04:00"
@@ -4438,6 +4442,10 @@
   "https://www.farfetch.com": {
     "StatusCode": 200,
     "LastSeen": "2023-06-01T15:55:17.477011-04:00"
+  },
+  "https://www.farfetch.com/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-07T17:13:23.688913+02:00"
   },
   "https://www.fulcrumapp.com": {
     "StatusCode": 206,
