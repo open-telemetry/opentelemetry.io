@@ -9,6 +9,6 @@ tags:
 repo: https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_ecto
 license: Apache 2.0
 description:
-  Telemetry handler that creates Opentelemetry spans from Ecto query events.
+  Telemetry handler that creates OpenTelemetry spans from Ecto query events.
 authors: OpenTelemetry Authors
 otVersion: latest
