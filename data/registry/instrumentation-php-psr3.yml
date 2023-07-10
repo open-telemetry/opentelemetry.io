@@ -10,6 +10,6 @@ repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/
 license: Apache 2.0
 description:
   Auto-instrumentation hooks are registered via composer, and automatically
-  inject trace id and span id into log message context of any PSR-3 logger.
+  inject trace ID and span ID into log message context of any PSR-3 logger.
 authors: OpenTelemetry Authors
 otVersion: latest
