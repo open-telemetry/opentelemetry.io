@@ -23,7 +23,7 @@ auto-instrumentation requires version 8.0+.
 ### Dependencies
 
 Some of the `SDK` and `Contrib` packages have a dependency on both a
-[HTTP Factories (PSR17)](https://www.php-fig.org/psr/psr-17/) and a
+[HTTP Factories (PSR-17)](https://www.php-fig.org/psr/psr-17/) and a
 [php-http/async-client](https://docs.php-http.org/en/latest/clients.html)
 implementation. You can find appropriate composer packages implementing given
 standards on [packagist.org](https://packagist.org/).
