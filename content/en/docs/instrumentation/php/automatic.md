@@ -96,7 +96,7 @@ The extension can be installed via pecl,
 <!-- The remaining shortcode lines must be unindented so that tab content is unindented in the generated page -->
 <!-- prettier-ignore-start -->
 {{< tab pickle >}}
-php pickle.phar install --source https://github.com/open-telemetry/opentelemetry-php-instrumentation.git#1.0.0beta2
+php pickle.phar install opentelemetry
 {{< /tab >}}
 
 {{< tab "php-extension-installer (docker)" >}}
