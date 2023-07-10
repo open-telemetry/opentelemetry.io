@@ -30,7 +30,7 @@ standards on [packagist.org](https://packagist.org/).
 
 See
 [http-factory-implementations](https://packagist.org/providers/psr/http-factory-implementation)
-to find a `PSR17 (HTTP factories)` implementation, and
+to find a `PSR-17 (HTTP factories)` implementation, and
 [async-client-implementations](https://packagist.org/providers/php-http/async-client-implementation)
 to find a `php-http/async-client` implementation.
 
