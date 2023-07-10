@@ -34,8 +34,8 @@ Go to the documentation of that library to learn more.
 
 {{% alert title="Help wanted" color="warning" %}}
 
-As of today, we don't know about any JavaScript library, that has OpenTelemetry
-integrated. If you know about such a library,
+As of today, we don't know about any JavaScript library that has OpenTelemetry
+natively integrated. If you know about such a library,
 [please let us know](https://github.com/open-telemetry/opentelemetry.io/issues/new).
 
 {{% /alert %}}
@@ -115,8 +115,7 @@ const sdk = new NodeSDK({
   instrumentations: [getNodeAutoInstrumentations()]
 });
 
-sdk
-  .start()
+sdk.start()
 
 {{< /tab >}}
 
@@ -159,8 +158,7 @@ const sdk = new NodeSDK({
   ]
 });
 
-sdk
-  .start()
+sdk.start()
 
 {{< /tab >}}
 
