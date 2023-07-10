@@ -380,7 +380,7 @@ $tracerProvider = TracerProvider::builder()
 All exporters require a `Transport`, which is responsible for the sending of
 telemetry data:
 
-- `PsrTransport` - uses a PSR18 client to send data over HTTP
+- `PsrTransport` - uses a PSR-18 client to send data over HTTP
 - `StreamTransport` - uses a stream to send data (eg to file or `stdout`)
 - `GrpcTransport` - uses gRPC to send protobuf-encoded data
 
