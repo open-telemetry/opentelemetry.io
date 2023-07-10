@@ -103,16 +103,15 @@ Zipkin backend. The following steps are required to be done.
   the following text
 
   ```html
-  <!DOCTYPE html>
+  <!doctype html>
   <html>
     <head>
       <title>PHP Test Page</title>
     </head>
 
     <body>
-      <?php
-        echo date('h:i:s') . "<br>"; echo "Introduce delay of 1 seconds" . "<br />";
-      sleep(1); echo date('h:i:s'); ?>
+      <?php echo date('h:i:s') . "<br />"; echo "Introduce delay of 1 seconds" .
+      "<br />"; sleep(1); echo date('h:i:s'); ?>
     </body>
   </html>
   ```

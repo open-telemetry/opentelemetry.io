@@ -397,7 +397,7 @@ tracer.startActiveSpan(
     // do some work...
 
     span.end();
-  }
+  },
 );
 ```
 
@@ -660,7 +660,7 @@ const doWork = (parent, i) => {
   // in the context, then use the resulting context to create a child span.
   const ctx = opentelemetry.trace.setSpan(
     opentelemetry.context.active(),
-    parent
+    parent,
   );
   const span = tracer.startSpan(`doWork:${i}`, undefined, ctx);
 
@@ -1028,7 +1028,7 @@ const httpServerResponseDuration = myMeter.createHistogram(
     description: 'A distribution of the HTTP server response times',
     unit: 'milliseconds',
     valueType: ValueType.INT,
-  }
+  },
 );
 ```
 
