@@ -112,12 +112,12 @@ to the specification is listed in the
 
 There are also a number of PHP-specific configurations:
 
-| Name                               | Default value | Values                                                                | Example        | Description                                         |
-| ---------------------------------- | ------------- | --------------------------------------------------------------------- | -------------- | --------------------------------------------------- |
-| `OTEL_PHP_TRACES_PROCESSOR`          | `batch`         | `batch`, simple                                                         | `simple`         | Span processor selection                            |
-| `OTEL_PHP_DETECTORS`                 | `all`           | `env`, `host`, `os`, `process`, `process_runtime`, `sdk`, `sdk_provided`, `container` | `env,os,process` | Resource detector selection                         |
-| `OTEL_PHP_AUTOLOAD_ENABLED`          | `false`         | `true`, `false`                                                           | `true`           | Enable/disable SDK autoloading                      |
-| `OTEL_PHP_DISABLED_INSTRUMENTATIONS` | `[]`            | Instrumentation name(s)                                               | `psr15,psr18`  | Disable one or more installed auto-instrumentations |
+| Name                                 | Default value | Values                                                                                | Example          | Description                                         |
+| ------------------------------------ | ------------- | ------------------------------------------------------------------------------------- | ---------------- | --------------------------------------------------- |
+| `OTEL_PHP_TRACES_PROCESSOR`          | `batch`       | `batch`, simple                                                                       | `simple`         | Span processor selection                            |
+| `OTEL_PHP_DETECTORS`                 | `all`         | `env`, `host`, `os`, `process`, `process_runtime`, `sdk`, `sdk_provided`, `container` | `env,os,process` | Resource detector selection                         |
+| `OTEL_PHP_AUTOLOAD_ENABLED`          | `false`       | `true`, `false`                                                                       | `true`           | Enable/disable SDK autoloading                      |
+| `OTEL_PHP_DISABLED_INSTRUMENTATIONS` | `[]`          | Instrumentation name(s)                                                               | `psr15,psr18`    | Disable one or more installed auto-instrumentations |
 
 Configurations can be provided as environment variables, or via `php.ini` (or a
 file included by `php.ini`)
