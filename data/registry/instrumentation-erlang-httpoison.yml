@@ -1,0 +1,14 @@
+title: OpentelemetryHTTPoison
+registryType: instrumentation
+isThirdParty: false
+language: erlang
+tags:
+  - httpoison
+  - instrumentation
+  - erlang
+repo: https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_httpoison
+license: Apache 2.0
+description: OpentelemetryHTTPoison is an Instrumentation Library for HTTPoison.
+authors: OpenTelemetry Authors
+otVersion: latest
+# cSpell:ignore httpoison

@@ -44,6 +44,7 @@ const ignoreList = [
   'instrumentation-java-internal.yml',
   'instrumentation-java-methods.yml',
   'instrumentation-java-resources.yml',
+  'exporter-python-otlpprotocommon.yml',
 ];
 
 if (process.argv.length < 3) {
