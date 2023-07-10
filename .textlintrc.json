@@ -53,6 +53,7 @@
         ["[Nn]ode\\.?[Jj][sS]", "Node.js"],
         ["open-source", "open source"],
         ["[Oo]pen[- ]?[Tt]elemetry", "OpenTelemetry"],
+	["psr[ -]?([0-9]+)", "PSR-$1"],
         ["regexes", "regular expressions"]
       ]
     }

@@ -3,13 +3,13 @@ registryType: instrumentation
 isThirdParty: false
 language: php
 tags:
-  - psr3
+  - psr-3
   - instrumentation
   - php
 repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/Psr3
 license: Apache 2.0
 description:
   Auto-instrumentation hooks are registered via composer, and automatically
-  inject trace id and span id into log message context of any psr3 logger.
+  inject trace id and span id into log message context of any PSR-3 logger.
 authors: OpenTelemetry Authors
 otVersion: latest
