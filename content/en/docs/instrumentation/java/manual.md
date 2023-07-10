@@ -137,7 +137,7 @@ As an aside, if you are writing library instrumentation, it is strongly
 recommended that you provide your users the ability to inject an instance of
 `OpenTelemetry` into your instrumentation code. If this is not possible for some
 reason, you can fall back to using an instance from the `GlobalOpenTelemetry`
-class. Note that you can't force end-users to configure the global, so this is
+class. Note that you can't force end users to configure the global, so this is
 the most brittle option for library instrumentation.
 
 ## Traces
@@ -870,7 +870,7 @@ Views provide a mechanism for controlling how measurements are aggregated into
 metrics. They consist of an `InstrumentSelector` and a `View`. The instrument
 selector consists of a series of options for selecting which instruments the
 view applies to. Instruments can be selected by a combination of name, type,
-meter name, meter version, and meter schema url. The view describes how
+meter name, meter version, and meter schema URL. The view describes how
 measurement should be aggregated. The view can change the name, description, the
 aggregation, and define the set of attribute keys that should be retained.
 

@@ -58,7 +58,7 @@ and writing specifications.
 
 The Governance Committee, alongside the CNCF, also holds keys for project
 resources and assets like artifact repositories, build and test infrastructure,
-web sites and their domains, blogs, social-media accounts, etc. It is also
+sites and their domains, blogs, social-media accounts, etc. It is also
 responsible for ensuring that releases of components and artifacts are aligned
 with the OpenTelemetry agenda, and with the project’s advocacy and marketing
 needs.

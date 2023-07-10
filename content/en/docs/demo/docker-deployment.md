@@ -36,7 +36,7 @@ spelling: cSpell:ignore otelcollector otlphttp
     >
     > - The `--no-build` flag is used to fetch released docker images from
     >   [ghcr](https://ghcr.io/open-telemetry/demo) instead of building from
-    >   source. Removing the `--no-build` command line option will rebuild all
+    >   source. Removing the `--no-build` command-line option will rebuild all
     >   images from source. It may take more than 20 minutes to build if the
     >   flag is omitted.
     > - If you're running on Apple Silicon, run `docker compose build`[^1] in

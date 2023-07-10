@@ -30,7 +30,7 @@ Sharma, Apple Thursday October 27, 2022 5:25pm - 6:00pm EDT
 **[Tips And Tricks To Successfully Migrate From Jaeger To OpenTelemetry](https://sched.co/182Ib)**
 by Vineeth Pothulapati, Timescale Inc Friday, October 28 • 4:55pm - 5:30pm
 
-## Other Co-located Events
+## Other colocated Events
 
 [OTel Unplugged](../otel-unplugged-kubecon-na/) is a one-day OpenTelemetry
 unconference event held at Colony Club Detroit on Tuesday, Oct 25, 2022. Join in
@@ -42,12 +42,12 @@ committee members. For details, check out the
 [Open Observability Day](https://events.linuxfoundation.org/open-observability-day-north-america/)
 has several OpenTelemetry sessions including panel discussions, workshops,
 individual talks and lightning talks. This event will be on Monday Oct 24, 2022
-and is co-located with KubeCon NA. For talk details, see the
+and is colocated with KubeCon NA. For talk details, see the
 [schedule](https://events.linuxfoundation.org/open-observability-day-north-america/program/schedule/).
 
 [eBPF Day](https://events.linuxfoundation.org/cloud-native-ebpf-day-north-america/)
 also has some OpenTelemetry talks focused on profiling and tracing using eBPF
-events. This event will be held on Monday, Oct 24 2022 and is co-located with
+events. This event will be held on Monday, Oct 24 2022 and is colocated with
 KubeCon NA. For details, check out the
 [schedule](https://events.linuxfoundation.org/cloud-native-ebpf-day-north-america/program/schedule/).
 

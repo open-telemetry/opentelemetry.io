@@ -10,5 +10,5 @@ date: 2022-06-30
 ---
 
 The content of this post has moved to
-[End-user Resources](/community/end-user/), where it will be kept up-to-date as
-more end-user resources become available.
+[End user Resources](/community/end-user/), where it will be kept up-to-date as
+more end user resources become available.

@@ -96,8 +96,8 @@ auto new_context = propagator->Extract(carrier, current_ctx);
 auto remote_span = opentelemetry::trace::propagation::GetSpan(new_context);
 ```
 
-`Context` contains the meta-data of the currently active Span including Span Id,
-Trace Id, and flags. Context Propagation is an important mechanism in
+`Context` contains the metadata of the currently active Span including Span Id,
+Trace ID, and flags. Context Propagation is an important mechanism in
 distributed tracing to transfer this Context across service boundary often
 through HTTP headers. OpenTelemetry provides a text-based approach to propagate
 context to remote services using the W3C Trace Context HTTP headers.

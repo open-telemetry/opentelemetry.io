@@ -10,7 +10,7 @@ spelling: cSpell:ignore Jodd Ktor Webflux
 Welcome to this month’s edition of **OpenTelemetry in Focus**! It's been another
 busy month in the OpenTelemetry community, with some big announcements and new
 releases from our core repositories. I've also put together an overview of some
-[blog, website, and project highlights](https://arc.net/e/18897C6F-3A57-4769-A929-902A18AB1B04) -
+[blog, site, and project highlights](https://arc.net/e/18897C6F-3A57-4769-A929-902A18AB1B04) -
 give it a look, and tell me what you think.
 
 Are you a maintainer with something you’d like featured here? Get in touch with

@@ -28,8 +28,8 @@ OpenTelemetry with [GraphQL](https://graphql.org/).
 
 J and his team embarked on their OpenTelemetry journey for two main reasons:
 
-- J’s company uses a few different observability back-ends. His team had
-  switched to a vendor back-end that was different from the back-end used by
+- J’s company uses a few different observability backends. His team had
+  switched to a vendor backend that was different from the backend used by
   other teams that they interfaced with. OpenTelemetry allowed them to continue
   to get end-to-end Traces in spite of using different vendors.
 - His team was using GraphQL, and needed to be able to better understand what
@@ -58,9 +58,9 @@ Across the organization, different teams have chosen to use different
 observability platforms to suit their needs, resulting in a mix of both open
 source and proprietary observability tools.
 
-J’s team had recently migrated from one observability back-end to another. After
+J’s team had recently migrated from one observability backend to another. After
 this migration, they started seeing gaps in trace data, because other teams that
-they integrated with were still using a different observability back-end. As a
+they integrated with were still using a different observability backend. As a
 result, they no longer had an end-to-end picture of their traces. The solution
 was to use a standard, vendor-neutral way to emit telemetry: OpenTelemetry.
 
@@ -99,7 +99,7 @@ The team is currently in the early stages of planning to use Amazon’s
 to deploy to Kubernetes, and Flagger to manage those deployments (including
 [Canary deployments](https://martinfowler.com/bliki/CanaryRelease.html)).
 
-### How are queries built in GraphQL?
+### How are queries built-in GraphQL?
 
 There are two systems for building gateways in GraphQL. One is using
 [Apollo Federation](https://www.apollographql.com/docs/federation/), and the
@@ -134,7 +134,7 @@ is currently discouraging teams from creating their own custom spans. Since they
 do a lot of asynchronous programming, it can be very difficult for developers to
 understand how the context is going to behave across asynchronous processes.
 
-Traces are sent to their observability back-end using that vendor’s agent, which
+Traces are sent to their observability backend using that vendor’s agent, which
 is installed on all of their nodes.
 
 ### Besides traces, do you use other signals?
@@ -143,7 +143,7 @@ The team has implemented a custom Node.js plugin for getting certain
 [metrics](/docs/concepts/signals/metrics/) data about GraphQL, such as
 deprecated field usage and overall query usage, which is something that they
 can’t get from their traces. These metrics are being sent to the observability
-back-end through the
+backend through the
 [OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector#-opentelemetry-collector)’s
 [OTLP metrics receiver](https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/otlpreceiver/README.md).
 
@@ -159,7 +159,7 @@ The team uses
 [Amazon Elasticache](https://en.wikipedia.org/wiki/Amazon_ElastiCache) and the
 [ELK stack](https://www.techtarget.com/searchitoperations/definition/Elastic-Stack)
 for logging. They are currently doing a proof-of-concept (POC) of migrating .NET
-logs to their observability back-end. The ultimate goal is to have
+logs to their observability backend. The ultimate goal is to have
 [metrics](/docs/concepts/signals/metrics/),
 [logs](/docs/concepts/signals/logs/), and
 [traces](/docs/concepts/signals/traces/) under one roof.
@@ -172,7 +172,7 @@ link traces and metrics.
 
 ### How is the organization sending telemetry data to various observability back-ends?
 
-J’s team uses a combination of the proprietary back-end agent and the
+J’s team uses a combination of the proprietary backend agent and the
 OpenTelemetry Collector (for metrics). They are one of the primary users of
 OpenTelemetry at J’s company, and he hopes to help get more teams to make the
 switch.
@@ -246,7 +246,7 @@ which they intend to give back to the OpenTelemetry community.
 
 ### Are you planning on instrumenting mainframe code?
 
-The observability back-end used by J’s team provided native instrumentation for
+The observability backend used by J’s team provided native instrumentation for
 the mainframe. J and his team would have loved to instrument mainframe code
 using OpenTelemetry. Unfortunately, there is currently no OpenTelemetry SDK for
 PL/I (and other mainframe languages such as
@@ -282,15 +282,15 @@ as Java, that is not the case for other languages, such as Node.js.
 
 JavaScript environments are akin to the Wild West of Development due to:
 
-- Multiple facets: web side vs server side
+- Multiple facets: web side vs server-side
 - Multiple languages: JavaScript, TypeScript, Elm
 - Two similar, but different server-side runtimes: Node.js and
   [Deno](https://deno.land)
 
-One of J’s suggestions is to treat OTel Javascript as a hierarchy, which starts
-with a Core JavaScript team that splits into two subgroups: front-end web group,
-and back-end group. Front-end and back-end would in turn split. For example, for
-the back-end, have a separate Deno and Node.js group.
+One of J’s suggestions is to treat OTel JavaScript as a hierarchy, which starts
+with a Core JavaScript team that splits into two subgroups: frontend web group,
+and backend group. Frontend and backend would in turn split. For example, for
+the backend, have a separate Deno and Node.js group.
 
 Another suggestion is to have a contrib maintainers group, separate from core
 SDK and API maintainers group.

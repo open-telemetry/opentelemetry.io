@@ -32,7 +32,7 @@ Since January, we’ve delivered:
 
 The community also continues to grow substantially.
 [We now have over 800 monthly-active developers on GitHub, from 150 different organizations](https://opentelemetry.devstats.cncf.io/d/7/companies-contributing-in-repository-groups?orgId=1&from=now-4y&to=now).
-More and more of these contributors are end-users -
+More and more of these contributors are end users -
 [10 out of our top 25 contributing orgs](https://opentelemetry.devstats.cncf.io/d/5/companies-table?orgId=1) -
 which is a very healthy signal for the project. People and companies are getting
 so much usefulness out of OpenTelemetry that they’re contributing back and

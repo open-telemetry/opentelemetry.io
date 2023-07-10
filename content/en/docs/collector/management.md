@@ -61,9 +61,9 @@ WebSockets:
 
 - The **OpAMP server** is part of the control plane and acts as the
   orchestrator, managing a fleet of telemetry agents.
-- The **OpAMP client** is part of the data plane. The client side of OpAMP can
+- The **OpAMP client** is part of the data plane. The client-side of OpAMP can
   be implemented in-process, for example, as the case in [OpAMP support in the
-  OpenTelemetry Collector][opamp-in-otel-collector]. The client side of OpAMP
+  OpenTelemetry Collector][opamp-in-otel-collector]. The client-side of OpAMP
   could alternatively be implemented out-of-process. For this latter option, you
   can use a supervisor that takes care of the OpAMP specific communication with
   the OpAMP server and at the same time controls the telemetry agent, for

@@ -73,7 +73,7 @@ tsc --init
 ```
 
 Then acquire [parcel](https://parceljs.org/), which will (among other things)
-let you work in Typescript.
+let you work in TypeScript.
 
 ```shell
 npm install --save-dev parcel
@@ -231,7 +231,7 @@ developer toolbar you should see some traces being exported:
 
 ### Add Instrumentations
 
-If you want to instrument AJAX requests, User Interactions and others, you can
+If you want to instrument Ajax requests, User Interactions and others, you can
 register additional instrumentations for those:
 
 ```javascript

@@ -309,7 +309,7 @@ Status will be tagged as one of the following values:
 
 When an exception is handled, a Span status can be set to Error. Otherwise, a
 Span status is in the Unset state. By setting a Span status to Unset, the
-back-end that processes spans can now assign a final status.
+backend that processes spans can now assign a final status.
 
 ### Span Kind
 

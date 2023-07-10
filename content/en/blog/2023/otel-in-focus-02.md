@@ -40,7 +40,7 @@ have been released with several major changes to be aware of:
   have been added! These are components that act as exporters and receivers,
   allowing you to route data through pipelines. Please see the component docs
   for more information.
-- Many bug fixes and enhancements.
+- Many bugfixes and enhancements.
 
 ##### [Go](/docs/instrumentation/go/)
 
@@ -72,7 +72,7 @@ planning a release of new documentation for PHP soon.
 
 [v1.16](https://github.com/open-telemetry/opentelemetry-python/releases/tag/v1.16.0)
 has been released with deprecations to Jaeger exporters, several performance
-improvements and bug fixes, and changes to Prometheus export.
+improvements and bugfixes, and changes to Prometheus export.
 
 ##### [.NET](/docs/instrumentation/net/)
 
@@ -95,7 +95,7 @@ The
 [Collector SIG will be starting new APAC-friendly meetings](/blog/2023/new-apac-meetings/)
 to support contributors and maintainers worldwide.
 
-Our End-User Working Group has written up a
+Our end user Working Group has written up a
 [Q&A about using OpenTelemetry with GraphQL](/blog/2023/end-user-q-and-a-01/).
 
 ## News and Upcoming Events

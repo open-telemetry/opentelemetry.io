@@ -173,6 +173,6 @@ processors:
 
 More advanced attribute transformations are also available in the
 [transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor).
-The transform processor allows end-users to specify transformations on metrics,
+The transform processor allows end users to specify transformations on metrics,
 logs, and traces using the
 [OpenTelemetry Transformation Language](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl).

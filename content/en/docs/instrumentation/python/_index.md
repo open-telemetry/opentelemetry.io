@@ -48,7 +48,7 @@ implementations, etc., visit the [Registry](/ecosystem/registry/?s=python).
 ### Installing Cutting-edge Packages
 
 There is some functionality that has not yet been released to PyPI. In that
-situation, you may want to install the packages directly from the repo. This can
+situation, you may want to install the packages directly from the repository. This can
 be done by cloning the repository and doing an
 [editable install](https://pip.pypa.io/en/stable/reference/pip_install/#editable-installs):
 

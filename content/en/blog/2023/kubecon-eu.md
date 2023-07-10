@@ -36,7 +36,7 @@ Read on to learn about all the things related OpenTelemetry during KubeCon.
   Neumann, Cisco & Kristina Pathak, LightStep<br> Friday, April 21 • 16:00 -
   17:30
 
-## Co-located Events
+## Colocated Events
 
 Come network with OpenTelemetry maintainers and core contributors during the
 [OpenTelemetry project meeting](https://sched.co/1JWS7), on Tuesday April 18,

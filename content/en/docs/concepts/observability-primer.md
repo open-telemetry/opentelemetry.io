@@ -114,7 +114,7 @@ For more on spans and how they pertain to OTel, see
 ### Distributed Traces
 
 A **distributed trace**, more commonly known as a **trace**, records the paths
-taken by requests (made by an application or end-user) as they propagate through
+taken by requests (made by an application or end user) as they propagate through
 multi-service architectures, like microservice and serverless applications.
 
 Without tracing, it is challenging to pinpoint the cause of performance problems
@@ -134,7 +134,7 @@ Each root span represents a request from start to finish. The spans underneath
 the parent provide a more in-depth context of what occurs during a request (or
 what steps make up a request).
 
-Many Observability back-ends visualize traces as waterfall diagrams that may
+Many Observability backends visualize traces as waterfall diagrams that may
 look something like this:
 
 ![Sample Trace](/img/waterfall-trace.svg 'Trace waterfall diagram')

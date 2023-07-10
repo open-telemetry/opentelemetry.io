@@ -17,13 +17,14 @@
         "github.com/open-telemetry",
         "#opentelemetry",
         "/^(?:language|repo): .*$/m",
-        "/tags:([\\n\\r\\s]*-[\\s\\S]*?[\\n\\r]+)*/m"
+        "/tags:([\\n\\r\\s]*-[\\s\\S]*?[\\n\\r]+)*/m",
+        "end-user organizations"
       ]
     }
   },
   "rules": {
     "terminology": {
-      "defaultTerms": false,
+      "defaultTerms": true,
       "skip": [],
       "terms": [
         ".NET",
@@ -50,8 +51,6 @@
         "Zend",
         "Zipkin",
         ["[^\\.]json", "JSON"],
-        ["[Nn]ode\\.?[Jj][sS]", "Node.js"],
-        ["open-source", "open source"],
         ["[Oo]pen[- ]?[Tt]elemetry", "OpenTelemetry"],
         ["psr[ -]?([0-9]+)", "PSR-$1"],
         ["regexes", "regular expressions"]

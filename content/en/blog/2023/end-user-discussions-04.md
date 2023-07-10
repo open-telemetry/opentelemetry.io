@@ -5,7 +5,7 @@ date: 2023-05-11
 author: '[Pranay Prateek](https://github.com/pranay01) (SigNoz)'
 ---
 
-For the month of April 2023, the OpenTelemetry end-user group meet took place
+For the month of April 2023, the OpenTelemetry end user group meet took place
 for users in the Asia-Pacific (APAC) region. Due to KubeCon EU, the AMER and
 EMEA sessions did not take place; however, we will have meetings for all 3
 regions again in May.
@@ -26,7 +26,7 @@ and also discussed how to optimize observability data at scale.
 Below is the summary of this month's discussion.
 
 <i>Note: The answers are provided by a mix of OTel community members and
-end-users to the best of their knowledge. The answers are not official
+end users to the best of their knowledge. The answers are not official
 recommendations by OpenTelemetry.</i>
 
 ### Evangelizing adoption of OpenTelemetry in a big organization
@@ -80,7 +80,7 @@ confidence in the team to go deeper into OpenTelemetry adoption.
 
 There are also several OpenTelemetry receivers
 [available](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver).
-These receivers help to collect the telemetry end-users already have. For
+These receivers help to collect the telemetry end users already have. For
 example,
 [Prometheus receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/README.md)
 can help you receive metrics data in Prometheus format. Using these receivers,
@@ -102,7 +102,7 @@ organization, we’d love to hear from you! Ways to share:
 - Join the [#otel-endusers channel](/community/end-user/slack-channel/) on the
   [CNCF Community Slack](https://communityinviter.com/apps/cloud-native/cncf)
 - Join our monthly
-  [End-User Discussion Group calls](/community/end-user/discussion-group/)
+  [End user Discussion Group calls](/community/end-user/discussion-group/)
 - Join our [OTel in Practice](/community/end-user/otel-in-practice/) sessions
 - Share your stories on the
   [OpenTelemetry blog](https://github.com/open-telemetry/opentelemetry.io/blob/954103a7444d691db3967121f0f1cb194af1dccb/README.md#submitting-a-blog-post)

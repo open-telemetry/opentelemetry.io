@@ -17,7 +17,7 @@ collector, which can then export Spans to a self-hosted service like Zipkin or
 Jaeger, as well as commercial services. For a full list of available exporters,
 see the [registry](/ecosystem/registry/?component=exporter).
 
-For testing purposes the `opentelemetry-erlang` repo has a Collector
+For testing purposes the `opentelemetry-erlang` repository has a Collector
 configuration,
 [config/otel-collector-config.yaml](https://github.com/open-telemetry/opentelemetry-erlang/blob/main/config/otel-collector-config.yaml)
 that can be used as a starting point. This configuration is used in

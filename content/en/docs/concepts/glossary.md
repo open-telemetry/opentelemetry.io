@@ -42,7 +42,7 @@ spec][attribute].
 
 ### **Automatic Instrumentation**
 
-Refers to telemetry collection methods that do not require the end-user to
+Refers to telemetry collection methods that do not require the end user to
 modify application's source code. Methods vary by programming language, and
 examples include bytecode injection or monkey patching.
 
@@ -58,7 +58,7 @@ See [`Instrumented Library`](#instrumented-library).
 ### **Client-side App**
 
 A component of an [`Application`](#application) that is not running inside a
-private infrastructure and is typically used directly by end-users. Examples of
+private infrastructure and is typically used directly by end users. Examples of
 client-side apps are browser apps, mobile apps, and apps running on IoT devices.
 
 ### **Collector**

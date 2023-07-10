@@ -1462,7 +1462,7 @@ functions to create attribute values using the supported formats in the
 param collectorVersion %}}/pdata/pcommon/common.go) file within the Otel
 Collector's GitHub project.
 
-Key/value pairs provide a lot of flexibility to help model your `Resource` data,
+Key-value pairs provide a lot of flexibility to help model your `Resource` data,
 so the OTel specification has some guidelines in place to help organize and
 minimize the conflicts across all the different types of telemetry generation
 entities that it may need to represent.
@@ -1953,7 +1953,7 @@ func appendTraceSpans(backend *BackendSystem, backendScopeSpans *ptrace.ScopeSpa
 > #### Check your work
 >
 > - Added `traceId` and `backendSpanId` variables to respectively represent the
->   trace and the span id and initialized them with the helper functions created
+>   trace and the span ID and initialized them with the helper functions created
 >   previously
 > - Added `backendSpanStartTime` and `backendSpanFinishTime` to represent the
 >   start and the end time of the operation. For the tutorial, any

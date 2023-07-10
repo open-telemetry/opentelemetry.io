@@ -634,7 +634,7 @@ $eventLogger->logEvent('foo', $record);
 
 </details>
 
-### Integrations for 3rd-party logging libraries
+### Integrations for third-party logging libraries
 
 #### Monolog
 

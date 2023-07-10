@@ -8,7 +8,7 @@ spelling: cSpell:ignore instrumentor Referer Starlette WSGI MSIE
 
 This page demonstrates how to use Python auto-instrumentation in OpenTelemetry.
 The example is based on an [OpenTracing example][]. You can download or view the
-[source files][] used in this page from the `opentelemetry-python` repo.
+[source files][] used in this page from the `opentelemetry-python` repository.
 
 This example uses three different scripts. The main difference between them is
 how they are instrumented:
@@ -111,7 +111,7 @@ about installing and configuring the
 other destinations, like an OpenTelemetry Collector.
 
 > **Note**: To use automatic instrumentation through `opentelemetry-instrument`,
-> you must configure it via environment variables or the command line. The agent
+> you must configure it via environment variables or the command-line. The agent
 > creates a telemetry pipeline that cannot be modified other than through these
 > means. If you need more customization for your telemetry pipelines, then you
 > need to forego the agent and import the OpenTelemetry SDK and instrumentation

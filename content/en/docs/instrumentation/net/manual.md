@@ -285,7 +285,7 @@ Note that `using` is not used in the prior example. Doing so will end current
 
 Tags (the equivalent of
 [`Attributes`](/docs/concepts/signals/traces/#attributes) in OpenTelemetry) let
-you attach key/value pairs to an `Activity` so it carries more information about
+you attach key-value pairs to an `Activity` so it carries more information about
 the current operation that it's tracking.
 
 ```csharp

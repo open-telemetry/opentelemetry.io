@@ -57,14 +57,14 @@ marks the stable release of the OpenTelemetry Metric API in Go.
 is the Release Candidate for the Log Bridge. This release enables log appenders
 to bridge logs from existing log frameworks, allowing users to configure the Log
 SDK and dictate how logs are processed and exported. In addition,
-opentelemetry-opentracing-shim is now stable, as well as other bug fixes and
+opentelemetry-opentracing-shim is now stable, as well as other bugfixes and
 improvements.
 
 [Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/tag/v1.26.0)
 includes instrumentation support for vertx-sql-client, as well as several bug
 fixes.
 
-#### [Javascript](/docs/instrumentation/js/)
+#### [JavaScript](/docs/instrumentation/js/)
 
 [Version 1.13](https://github.com/open-telemetry/opentelemetry-js/releases/tag/v1.13.0)
 has been released, adding support for gRPC log export. In addition, a couple
@@ -74,7 +74,7 @@ bugs have been fixed.
 
 [Version 1.18](https://github.com/open-telemetry/opentelemetry-python/releases/tag/v1.18.0)
 adds a new feature that allows histogram aggregation to be set using an
-environment variable, as well as various bug fixes related to resource
+environment variable, as well as various bugfixes related to resource
 detection, exporting, and suppressing instrumentation.
 
 - Add ability to select histogram aggregation with an environment variable
@@ -87,7 +87,7 @@ detection, exporting, and suppressing instrumentation.
 #### [.NET](/docs/instrumentation/net/)
 
 [Version 1.5.0-rc1](https://github.com/open-telemetry/opentelemetry-dotnet/releases/tag/core-1.5.0-rc.1)
-includes many bug fixes across a variety of packages.
+includes many bugfixes across a variety of packages.
 
 ## Project and Community Updates
 
@@ -100,7 +100,7 @@ Please see [this issue](https://github.com/open-telemetry/community/pull/1431)
 for more information.
 
 We'll be publishing more curated content on the OpenTelemetry channel starting
-in June, including interviews with end-users and more. Please keep an eye on the
+in June, including interviews with end users and more. Please keep an eye on the
 OpenTelemetry Blog for updates.
 
 ### From the blog...

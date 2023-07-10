@@ -623,7 +623,7 @@ authentication extension for a list of its capabilities, but in general, an
 authentication extension would only implement one of those traits. For a list of
 known authenticators, use the
 [Registry](/ecosystem/registry/?s=authenticator&component=extension) available
-in this website.
+in this site.
 
 To add a server authenticator to a receiver in your collector, make sure to:
 

@@ -79,7 +79,7 @@ data to a Collector or a backend such as Jaeger, Zipkin, Prometheus or a
 
 As part of the language specific implementations you will find many Exporters
 being available. Among them, [OTLP](/docs/specs/otlp/) Exporters provide the
-best experience for you as an end-user.
+best experience for you as an end user.
 
 ### Automatic Instrumentation
 

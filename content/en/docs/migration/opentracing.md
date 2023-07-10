@@ -25,7 +25,7 @@ of the OpenTracing and OpenTelemetry APIs are listed in the table below.
 | [Go][]         | 1.13            | 1.16              |
 | [Java][]       | 7               | 8                 |
 | [Python][]     | 2.7             | 3.6               |
-| [Javascript][] | 6               | 8.5               |
+| [JavaScript][] | 6               | 8.5               |
 | [.NET][]       | 1.3             | 1.4               |
 | [C++][]        | 11              | 11                |
 
@@ -157,9 +157,9 @@ be switched to OpenTelemetry at the same time. Be sure to check that any
 critical baggage items are still being propagated before rolling these changes
 into production.
 
-### Context management in Javascript
+### Context management in JavaScript
 
-In Javascript, the OpenTelemetry API makes use of commonly available context
+In JavaScript, the OpenTelemetry API makes use of commonly available context
 managers, such as `async_hooks` for Node.js and `Zones.js` for the browser.
 These context managers make tracing instrumentation a much less invasive and
 onerous task, compared to adding a span as a parameter to every method which

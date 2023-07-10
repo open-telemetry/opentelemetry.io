@@ -17,7 +17,7 @@ to capture
 and send them off to the collector via OTLP.
 
 The agent is passed into the process using the `-javaagent` command line
-argument. Command line arguments are added through the `KAFKA_OPTS` in the
+argument. Command-line arguments are added through the `KAFKA_OPTS` in the
 `Dockerfile`.
 
 ```dockerfile

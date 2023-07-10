@@ -39,7 +39,7 @@ article
 [How TLS provides identification, authentication, confidentiality, and integrity](https://www.ibm.com/docs/en/ibm-mq/9.1?topic=tls-how-provides-identification-authentication-confidentiality-integrity)
 and the Collector
 [TLS-Config](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.58.0/config/configtls/README.md)
-description on Github.
+description on GitHub.
 
 If you are interested in using an external authentication provider, I advise you
 to have a look at the article
@@ -72,7 +72,7 @@ Authorization: Basic dXNlci0xOjEyMzQK
 ```
 
 You can easily create your own user password combination using the
-[base64 cli tool](https://linux.die.net/man/1/base64).
+[base64 command-line tool](https://linux.die.net/man/1/base64).
 
 ```bash
 # encode
@@ -416,12 +416,12 @@ Forwarding from 127.0.0.1:16686 -> 16686
 ## Conclusion
 
 Configurations like `Ingress`, `ClusterIssuer` and `OpenTelemetryCollector` on
-client and server side have to be configured manually. Depending on installed
+client and server-side have to be configured manually. Depending on installed
 Kubernetes components, the configurations differ a lot. Overall the
 configuration is very error-prone. In the future the exposing of the collector
 should be simplified with the help of the OpenTelemetry operator. If you are
 interested in the development, you can follow
-[Github issue #902](https://github.com/open-telemetry/opentelemetry-operator/issues/902)
+[GitHub issue #902](https://github.com/open-telemetry/opentelemetry-operator/issues/902)
 to stay updated.
 
 ## References

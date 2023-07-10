@@ -24,7 +24,7 @@ aliases: [/docs/demo/demo_features]
 - **[Jaeger](https://www.jaegertracing.io/)**: all generated traces are being
   sent to Jaeger.
 - **Synthetic Load Generation**: the application demo comes with a background
-  job that creates realistic usage patterns on the website using
+  job that creates realistic usage patterns on the site using
   [Locust](https://locust.io/) load generator.
 - **[Prometheus](https://prometheus.io/)**: all generated metrics and exemplars
   are scraped by Prometheus.

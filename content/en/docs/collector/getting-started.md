@@ -13,7 +13,7 @@ and [Deployment Methods][] page.
 ## Demo
 
 Deploys a load generator, agent and gateway as well as Jaeger, Zipkin and
-Prometheus back-ends. More information can be found on the demo [README.md][].
+Prometheus backends. More information can be found on the demo [README.md][].
 
 ```sh
 git clone git@github.com:open-telemetry/opentelemetry-collector-contrib.git --depth 1; \

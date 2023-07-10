@@ -32,7 +32,7 @@ game, and there’ll be plenty of maintainers and contributors on-hand to join i
 on the discussions!
 
 We’ll be presenting a panel discussion with our maintainers and a group of
-end-users as well, which promises to be extremely informative and enlightening!
+end users as well, which promises to be extremely informative and enlightening!
 It wouldn’t be an OpenTelemetry event without a few surprises that we can’t wait
 to tell you about, too. Regardless of if you’ll be in Detroit this October 25th
 for KubeCon NA 2022, this is sure to be the can’t-miss OpenTelemetry event of

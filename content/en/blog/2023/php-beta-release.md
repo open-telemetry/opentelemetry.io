@@ -19,7 +19,7 @@ if you’d like to see a bug squashed or a new feature added.
 
 There are many ways you can get started with our project:
 
-- There are [examples](/docs/instrumentation/php/examples/) in the repo to get
+- There are [examples](/docs/instrumentation/php/examples/) in the repository to get
   you started.
 - The [getting started guide](/docs/instrumentation/php/getting-started/) can
   help you to instrument a sample PHP file.

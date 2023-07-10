@@ -17,7 +17,7 @@ The 1.0 metrics release includes the following:
 - Metrics functionality included in the OpenTelemetry language-specific APIs,
   which provide language-specific interfaces that can create and manipulate
   metrics, and associate metadata and attributes to each. These are useful for:
-  - Developers of shared libraries that are distributed to end-users, so that
+  - Developers of shared libraries that are distributed to end users, so that
     these end users can natively use OpenTelemetry to capture metrics from
     these. For example, gRPC uses these APIs to produce latency, throughput, and
     error rate metrics for each RPC method on a given service.

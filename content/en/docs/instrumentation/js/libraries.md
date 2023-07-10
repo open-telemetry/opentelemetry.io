@@ -16,7 +16,7 @@ the inbound HTTP requests.
 
 ## Setup
 
-Each instrumentation library is an NPM package, and installation is typically
+Each instrumentation library is an npm package, and installation is typically
 done like so:
 
 ```console

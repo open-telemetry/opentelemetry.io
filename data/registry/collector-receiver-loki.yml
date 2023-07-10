@@ -8,6 +8,6 @@ tags:
   - collector
 repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/lokireceiver
 license: Apache 2.0
-description: The Loki receiver implements the Loki push api
+description: The Loki receiver implements the Loki push API
 authors: OpenTelemetry Authors
 otVersion: latest

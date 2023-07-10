@@ -12,7 +12,7 @@ With contributions from [Henrik Rexed](https://github.com/henrikrexed)
 [Reese Lee](https://github.com/reese-lee) (New Relic), and
 [Adriana Villela](https://github.com/avillela) (Lightstep).
 
-The OpenTelemetry end-user group meet takes place every month for users in the
+The OpenTelemetry end user group meet takes place every month for users in the
 Americas (AMER), Europe Middle-East & Africa (EMEA), and Asia-Pacific (APAC).
 
 The discussions take place using a
@@ -218,7 +218,7 @@ organization, we’d love to hear from you! Ways to share:
 - Join the [#otel-endusers channel](/community/end-user/slack-channel/) on the
   [CNCF Community Slack](https://communityinviter.com/apps/cloud-native/cncf)
 - Join our monthly
-  [End-User Discussion Group calls](/community/end-user/discussion-group/)
+  [End user Discussion Group calls](/community/end-user/discussion-group/)
 - [Join our OTel in Practice sessions](/community/end-user/otel-in-practice/)
 - Share your stories on the
   [OpenTelemetry blog](https://github.com/open-telemetry/opentelemetry.io/blob/954103a7444d691db3967121f0f1cb194af1dccb/README.md#submitting-a-blog-post)

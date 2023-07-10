@@ -4,7 +4,7 @@ linkTitle: Marketing Guidelines
 spelling: cSpell:ignore devstats
 ---
 
-OpenTelemetry (aka OTel) is a collaboration among end-users, adjacent OSS
+OpenTelemetry (aka OTel) is a collaboration among end users, adjacent OSS
 projects, and vendors who ultimately sell products and services built upon OTel
 data or components. Like many standards-oriented projects, the vendors that
 partner on OTel also compete in the marketplace, and for this reason it’s
@@ -70,7 +70,7 @@ There are three high-level focus areas for these goals and guidelines.
     understand what they can do with OTel data, the better
   - Emphasize the vendor-neutrality and portability of any OTel integration
 - Don’ts:
-  - Imply that an end-user isn’t “Using OTel” unless they’re using some specific
+  - Imply that an end user isn’t “Using OTel” unless they’re using some specific
     set of components within OTel (OTel is a “wide” project with many decoupled
     components)
   - Publicly denigrate the OTel support of another provider, particularly

@@ -12,7 +12,7 @@ The OpenTelemetry Community Demo application is intended to be a 'showcase' for
 OpenTelemetry API, SDK, and tools in a production-lite cloud native application.
 The overall goal of this application is not only to provide a canonical 'demo'
 of OpenTelemetry components, but also to act as a framework for further
-customization by end-users, vendors, and other stakeholders.
+customization by end users, vendors, and other stakeholders.
 
 ### Requirements
 

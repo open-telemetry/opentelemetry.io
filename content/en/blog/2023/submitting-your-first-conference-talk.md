@@ -105,7 +105,7 @@ by a local meetup group, which makes it very easy to get connected with the
 organizers and ask them exactly what kind of talks they are looking for.
 
 Don’t be afraid to submit the same talk to multiple conferences (unless the
-conferences disallow this, but most don’t). Here are some websites I use to find
+conferences disallow this, but most don’t). Here are some sites I use to find
 conferences:
 
 - [GitHub - scraly/developers-conferences-agenda](https://github.com/scraly/developers-conferences-agenda)

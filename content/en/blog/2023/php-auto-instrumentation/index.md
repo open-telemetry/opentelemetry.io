@@ -9,7 +9,7 @@ spelling: cSpell:ignore Przemek Delewski zend classname functionname laravel
 Automatic Instrumentation is a process of adding tracing capabilities into user
 application without modifying its source code. There are several techniques to
 do that, but all of them more or less work in the same way by injecting
-additional code into original one during compile time, link time, run-time or by
+additional code into original one during compile time, link time, runtime or by
 extending the operating system in case of [eBPF](https://ebpf.io/). This blog
 post presents method used by OpenTelemetry PHP auto-instrumentation.
 
@@ -78,11 +78,11 @@ function helloWorld() {
 In the same way, we have implemented tracing support for some of the most
 important `interfaces/libraries/frameworks` that are parts of
 [Contrib](https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation)
-repo. Each `auto-instrumentation` package uses above `hook` function in order to
+repository. Each `auto-instrumentation` package uses above `hook` function in order to
 register and provide tracing functionality. One missing thing, not mentioned yet
 is an `API` `SDK` used to create traces and other necessary components. This is
 the responsibility of the opentelemetry-php
-[main](https://github.com/open-telemetry/opentelemetry-php) repo which is
+[main](https://github.com/open-telemetry/opentelemetry-php) repository which is
 foundation for everything.
 
 ![php-rel](php-rel.png)

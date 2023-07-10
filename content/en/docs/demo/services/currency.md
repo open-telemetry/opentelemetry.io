@@ -78,7 +78,7 @@ Adding span events is accomplished using `Span->AddEvent(name)`.
 
 ### Set span status
 
-Make sure to set your span status to Ok, or Error accordingly. You can do this
+Make sure to set your span status to OK, or Error accordingly. You can do this
 using `Span->SetStatus(status)`
 
 ```cpp

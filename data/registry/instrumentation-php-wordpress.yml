@@ -1,4 +1,4 @@
-title: OpenTelemetry Wordpress auto-instrumentation
+title: OpenTelemetry WordPress auto-instrumentation
 registryType: instrumentation
 isThirdParty: false
 language: php
@@ -8,6 +8,6 @@ tags:
   - php
 repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/Wordpress
 license: Apache 2.0
-description: Instrumentation Library for Wordpress
+description: Instrumentation Library for WordPress
 authors: OpenTelemetry Authors
 otVersion: latest

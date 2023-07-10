@@ -40,7 +40,7 @@ without the user's input or configuration.
 If you have any feedback or want to add a new convention - please come and
 contribute!
 [Instrumentation Slack](https://cloud-native.slack.com/archives/C01QZFGMLQ7) or
-[Specification repo](https://github.com/open-telemetry/opentelemetry-specification)
+[Specification repository](https://github.com/open-telemetry/opentelemetry-specification)
 are a good places to start!
 
 ## When **not** to instrument
@@ -88,13 +88,13 @@ considerations to help you decide how to minimize dependency hell:
   avoid updating it unless you have to use new features.
 - While your instrumentation stabilizes, consider shipping it as a separate
   package, so that will never cause issues for users who don't use it. You can
-  keep it in your repo, or
+  keep it in your repository, or
   [add it to OpenTelemetry](https://github.com/open-telemetry/oteps/blob/main/text/0155-external-modules.md#contrib-components),
   so it will ship with other instrumentation packages.
 - Semantic Conventions are [stable, but subject to evolution][]: while this does
   not cause any functional issues, you may need to update your instrumentation
   every once in a while. Having it in a preview plugin or in OpenTelemetry
-  contrib repo may help keeping conventions up-to-date without breaking changes
+  contrib repository may help keeping conventions up-to-date without breaking changes
   for your users.
 
   [stable, but subject to evolution]:
@@ -308,7 +308,7 @@ There might be some exceptions:
 - downstream service supports custom correlation protocol.
   - best effort with custom propagator: use OpenTelemetry trace context if
     compatible.
-  - or generate and stamp custom correlation ids on the span.
+  - or generate and stamp custom correlation IDs on the span.
 
 ### In-process
 

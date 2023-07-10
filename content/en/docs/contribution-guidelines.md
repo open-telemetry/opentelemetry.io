@@ -12,12 +12,12 @@ information on getting started.
 
 Individual SIGs may maintain documentation above and beyond what is offered
 here, but we strive for accurate general guidance on using the project from our
-main website.
+main site.
 
 The per-language API, SDK, and "Getting Started" documentation is hosted in each
 language's GitHub repository. For more information,
 [see the Mirrored Documentation section](https://github.com/open-telemetry/opentelemetry.io/blob/main/CONTRIBUTING.md#mirrored-documentation)
-of the website repository's CONTRIBUTING.md file.
+of the site repository's CONTRIBUTING.md file.
 
 ### Contributor License Agreement (CLA)
 

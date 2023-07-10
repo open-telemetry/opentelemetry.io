@@ -9,7 +9,7 @@ spelling: cSpell:ignore Tracetest architecting Olly Babiak
 
 One of the OpenTelemetry Project's many Special Interest Groups (SIG) is the
 [OpenTelemetry Community demo SIG](https://github.com/open-telemetry/opentelemetry-demo).
-The SIG supports a set of instrumented microservices and a front-end web app
+The SIG supports a set of instrumented microservices and a frontend web app
 which are used to show how to instrument a distributed system with
 OpenTelemetry.
 
@@ -32,7 +32,7 @@ The first thing we did was to get in contact with
 SIG. Carter was really welcoming and helped us identify where our contributions
 could be the most impactful. We started looking at
 [the issue created by Austin Parker](https://github.com/open-telemetry/opentelemetry-demo/issues/39)
-referencing a complete front-end overhaul that would involve moving the
+referencing a complete frontend overhaul that would involve moving the
 application away from Go server-side render (SSR) to an architecture that
 included a browser-side client (client-side render or CSR), as well as improving
 the overall style, theme, and user experience.
@@ -41,7 +41,7 @@ A fun aspect of the work was the request to move the store from a "normal" store
 to an astronomy store to match the OpenTelemetry project’s overall branding.
 
 Once we got the green light from the rest of the OTel demo SIG, then we started
-working on the different changes that were part of the front-end architecture
+working on the different changes that were part of the frontend architecture
 overhaul.
 
 ## OpenTelemetry Demo Application Description and Tech Stack
@@ -68,22 +68,22 @@ Every microservice has a specific goal and can communicate with others by using
 a global gRPC definition. Persistent information is saved into a PostgreSQL
 database and there are outbound services that connect with third-party services
 to trigger events (such as confirmation emails). All of the microservices,
-including the front-end, are connected to the same OpenTelemetry collector
+including the frontend, are connected to the same OpenTelemetry collector
 instance, which uses Jaeger as one of the data stores for the tracing data.
 
 ![OpenTelemetry Demo System Diagram](diagram.png)
 ![OpenTelemetry Demo Technology List](technologies.png)
 
-Prior to re-architecting, the front-end consisted of a Golang SSR app, which
+Prior to re-architecting, the frontend consisted of a Golang SSR app, which
 sent complete HTML to the browser for display. Every request and call redirected
 to the server so new information was shown.
 
 ## Web App Styling Improvements, Theme Updates, and User Experience Redesign
 
-Before starting the development process, the front-end application wasn’t
+Before starting the development process, the frontend application wasn’t
 matching the theme that OpenTelemetry had been using in terms of colors,
 products, and overall user experience. In addition, the demo lacked a real
-front-end (browser side) application as the current implementation was a Go
+frontend (browser side) application as the current implementation was a Go
 application.
 
 ![OpenTelemetry Demo Old Front-end](old-design.png)
@@ -98,9 +98,9 @@ application.
 ![OpenTelemetry Demo New Front-end](new-design.png)
 
 Now we had an application design that would match the rest of the OpenTelemetry
-themes and colors and look more like the OpenTelemetry.io website.
+themes and colors and look more like the OpenTelemetry.io site.
 
-## Front-end Application Architecture Overhaul
+## Frontend Application Architecture Overhaul
 
 We worked on an initial proposal that included the following:
 
@@ -113,8 +113,8 @@ We worked on an initial proposal that included the following:
 This proposal was presented to the OpenTelemetry demo SIG during one of the
 weekly Monday meetings and we were given the green light to move ahead. As part
 of the changes, we decided to use [Next.js](https://nextjs.org/) to not only
-work as the primary front-end application but also to work as an aggregation
-layer between the front-end and the gRPC back-end services.
+work as the primary frontend application but also to work as an aggregation
+layer between the frontend and the gRPC backend services.
 
 ![New Front-end Data Flow](data-flow.png)
 
@@ -129,7 +129,7 @@ The next big thing we worked was a way to instrument both sides of the Next.js
 app. To do this we had to connect the app twice to the same collector used by
 all the microservices.
 
-A simple back-end solution was designed using the
+A simple backend solution was designed using the
 [official gRPC exporter](https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-grpc)
 in combination with the
 [Node.js SDK](https://www.npmjs.com/package/@opentelemetry/sdk-node).
@@ -144,23 +144,23 @@ form of route middleware was added. This would catch the incoming HTTP request
 and create a span based on it, including the context propagation. The
 [implementation can be found here](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/frontend/utils/telemetry/InstrumentationMiddleware.ts).
 
-The front-end was a little trickier, as the
+The frontend was a little trickier, as the
 [initial rendering is server-side](https://nextjs.org/learn/foundations/how-nextjs-works/rendering).
 We had to make sure to load the tracer from the browser side when the JavaScript
 code is executed.
 
 After adding validations to check the browser side, we then loaded the custom
-front-end tracing module, which included creating the
+frontend tracing module, which included creating the
 [web tracer provider and the automatic web instrumentations](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/frontend/utils/telemetry/FrontendTracer.ts).
 
-The automatic front-end instrumentation captures the most common user actions
+The automatic frontend instrumentation captures the most common user actions
 such as clicks, fetch requests, and page loads. In order to allow the browser
 side to interact with the collector, a config change is needed: enable incoming
 CORS requests from the web app.
 
 Once the setup is complete, by loading the application from Docker and
 interacting with the different features, we can start looking at the full traces
-that begin from the front-end user events all the way to the back-end gRPC
+that begin from the frontend user events all the way to the backend gRPC
 services.
 
 ![Front-end Trace Jaeger Visualization](jaeger.png)

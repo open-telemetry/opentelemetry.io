@@ -80,7 +80,7 @@ const sdk = new opentelemetry.NodeSDK({
 sdk.start();
 ```
 
-Node required modules are loaded using the `--require` command line argument.
+Node required modules are loaded using the `--require` command-line argument.
 This can be done in the `scripts.start` section of `package.json` and starting
 the application using `npm start`.
 
@@ -114,7 +114,7 @@ how the span can be created.
 - `root: true` will create a new trace, setting this span as the root.
 - `links` are used to specify links to other spans (even within another trace)
   that should be referenced.
-- `attributes` are key/value pairs added to a span, typically used for
+- `attributes` are key-value pairs added to a span, typically used for
   application context.
 
 ```typescript

@@ -17,7 +17,7 @@ Services (AWS) Lambdas.
 If you've been monitoring Lambdas using OTel for a while now, you may be
 slightly confused by this announcement. You might think something like: OTel has
 had a
-[repo for Lambda layers](https://github.com/open-telemetry/opentelemetry-lambda)
+[repository for Lambda layers](https://github.com/open-telemetry/opentelemetry-lambda)
 and they've been available on AWS for years.
 
 You're totally correct. Rest assured, we're not reinventing the wheel. However,
@@ -35,13 +35,13 @@ there are some pre-existing problems that may impact users:
 
 The FaaS SIG has addressed the above-mentioned shortcomings:
 
-- We have written new Github Actions to release the Lambda layers ourselves,
+- We have written new GitHub Actions to release the Lambda layers ourselves,
   thus empowering the community to make its own release decisions.
 - Separated the Collector and instrumentation layers to give users options when
   instrumenting their Lambdas. We now offer a standalone Lambda layer for the
   Collector alongside auto-instrumentation layers for JavaScript, Java, and
   Python.
-- Added official community Lambda documentation to the OTel website under the
+- Added official community Lambda documentation to the OTel site under the
   new [FaaS section](/docs/faas/).
 
 ## What next

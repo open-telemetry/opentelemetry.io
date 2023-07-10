@@ -20,7 +20,7 @@ Ensure that you have the following installed locally:
 ## Example Application
 
 The following example uses a basic [Flask](https://flask.palletsprojects.com/)
-application. If you are not using Flask, that's ok — you can use OpenTelemetry
+application. If you are not using Flask, that's OK — you can use OpenTelemetry
 Python with other web frameworks as well, such as Django and FastAPI. For a
 complete list of libraries for supported frameworks, see the
 [registry](/ecosystem/registry/?component=instrumentation&language=python).

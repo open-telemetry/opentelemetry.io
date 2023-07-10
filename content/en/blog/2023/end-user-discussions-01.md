@@ -82,7 +82,7 @@ you will have to send the spans to a centralized service.
 #### 3- Bifurcating data in a pipeline
 
 **Q:** If I want to use the Collector to send different sets of data to
-different back-ends, what’s the best way to go about it?
+different backends, what’s the best way to go about it?
 
 **A:**
 [Connectors](https://github.com/open-telemetry/opentelemetry-collector/pull/6140)
@@ -206,7 +206,7 @@ at the log level, whereby every log will have its own associated trace.
 **A:** There is an OTel proposal on profiling, which has been accepted and is
 being actively being worked on and discussed. The current focus is on finalizing
 the protocol, before SDK work can start. You can check out the
-[profiling repo on GitHub](https://github.com/open-telemetry/opentelemetry-profiling),
+[profiling repository on GitHub](https://github.com/open-telemetry/opentelemetry-profiling),
 as well as the
 [Profiling Vision pull request on GitHub](https://github.com/open-telemetry/oteps/pull/212).
 
@@ -233,7 +233,7 @@ For a deeper dive on the above topics, check out the following:
 - [APAC](https://docs.google.com/document/d/1eDYC97LfvE428cpIf3A_hSGirdNzglPurlxgKCmw8o4/edit?usp=sharing)
   meeting notes
 
-Going forward, we will be recording all End-User Discussion meetings.
+Going forward, we will be recording all end user Discussion meetings.
 
 ## Join us!
 
@@ -243,7 +243,7 @@ organization, we’d love to hear from you! Ways to share:
 - Join the [#otel-endusers channel](/community/end-user/slack-channel/) on the
   [CNCF Community Slack](https://communityinviter.com/apps/cloud-native/cncf)
 - Join our monthly
-  [End-User Discussion Group calls](/community/end-user/discussion-group/)
+  [End user Discussion Group calls](/community/end-user/discussion-group/)
 - [Join our OTel in Practice sessions](/community/end-user/otel-in-practice/)
 - Share your stories on the
   [OpenTelemetry blog](https://github.com/open-telemetry/opentelemetry.io/blob/954103a7444d691db3967121f0f1cb194af1dccb/README.md#submitting-a-blog-post)

@@ -163,7 +163,7 @@ The main environment variables to be set are the following:
 
 Instead of using the above environment variables, it is also possible to use
 corresponding system properties to be set programmatically in the code or on the
-command line when launching the application They are `otel.service.name` and
+command-line when launching the application They are `otel.service.name` and
 `otel.traces.exporter`.
 
 #### Using the SDK builders
@@ -261,13 +261,13 @@ cluster.
 In order to practice with the instrumentation of Kafka clients by using the
 provided examples, first of all you need an Apache Kafka cluster. The easiest
 way is to download it from the
-[official website](https://kafka.apache.org/downloads) and running just one
+[official site](https://kafka.apache.org/downloads) and running just one
 ZooKeeper node together with one Kafka broker. You can follow the
 [quick start](https://kafka.apache.org/documentation/#quickstart) to have such a
 cluster up and running in a few minutes. Analyzing tracing information is also
 simpler if using a Web UI, for example the one provided by Jaeger. Even in this
 case downloading it from the
-[official website](https://www.jaegertracing.io/download/) and running it
+[official site](https://www.jaegertracing.io/download/) and running it
 locally is really simple.
 
 When the environment is ready, the first try is about running the producer and
@@ -314,7 +314,7 @@ of each message from one end to the other. So ... what else? Give it a try!
 
 - [Apache Kafka](https://kafka.apache.org/)
 - Strimzi
-  - [Website](https://strimzi.io/)
+  - [Site](https://strimzi.io/)
   - [GitHub](https://github.com/strimzi)
   - [Bridge](https://github.com/strimzi/strimzi-kafka-bridge)
 - [Kubernetes](https://kubernetes.io/)

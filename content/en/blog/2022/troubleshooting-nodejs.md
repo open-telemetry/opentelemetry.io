@@ -88,7 +88,7 @@ registerInstrumentations({
 });
 ```
 
-For advanced users who choose to use the low-level api instead of calling
+For advanced users who choose to use the low-level API instead of calling
 `registerInstrumentations`, make sure your instrumentation is set to use the
 right tracer provider and that you call `enable()` if appropriate.
 
@@ -367,7 +367,7 @@ channels:
 
 ### Resources
 
-- [Opentelemetry-js GitHub repo](https://github.com/open-telemetry/opentelemetry-js)
+- [Opentelemetry-js GitHub repository](https://github.com/open-telemetry/opentelemetry-js)
 - [The OpenTelemetry Bootcamp](https://www.aspecto.io/opentelemetry-bootcamp/)
 - [OpenTelemetry docs](/docs/)
 

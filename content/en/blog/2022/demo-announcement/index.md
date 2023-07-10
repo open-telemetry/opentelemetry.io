@@ -14,15 +14,15 @@ represented, demo support will be extended to Metrics and Logs, and canonical
 scenarios will be documented for each signal, with fault injection, and more!
 
 If you want to skip the details then clone our
-[repo](https://github.com/open-telemetry/opentelemetry-demo) then run
-`docker compose up`[^1] from the command line. There are a couple
+[repository](https://github.com/open-telemetry/opentelemetry-demo) then run
+`docker compose up`[^1] from the command-line. There are a couple
 [technology requirements](https://github.com/open-telemetry/opentelemetry-demo-webstore#local-quickstart)
 so be sure to check those out too.
 
 The demo takes 15-20 minutes to build the first time so we encourage you to do
 some stretching and take a water break in the meantime.
 
-Your command line output should look like this:
+Your command-line output should look like this:
 
 ![Screenshot of the console output.](otel-webstore-app-output.png 'Screenshot of the console output')
 
@@ -148,7 +148,7 @@ ourselves to just the items listed here.
 
 We’re still at the beginning of our journey but there’s great momentum behind
 this project. If you’re interested in contributing we’d love your support. There
-are links in our GitHub repo on how to get involved and you can
+are links in our GitHub repository on how to get involved and you can
 [track our overall progress](https://github.com/open-telemetry/opentelemetry-demo/issues)
 from there.
 

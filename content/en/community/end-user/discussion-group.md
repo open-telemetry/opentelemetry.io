@@ -18,7 +18,7 @@ and changes to the project.
 
 - Sessions are now available for all regions!
 - You can now find summaries of past discussions every month! Search the blog
-  for "End-User Discussions".
+  for "end user Discussions".
 - A project maintainer and/or a Governance Committee member will be in
   attendance at each session to provide additional context, insight, and plans
   to user questions and feedback.

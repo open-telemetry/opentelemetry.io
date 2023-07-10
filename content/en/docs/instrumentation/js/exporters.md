@@ -130,7 +130,7 @@ When you use the OTLP exporter in a browser-based application, you need to note
 that:
 
 1. Using gRPC & http/proto for exporting is not supported
-2. [Content Security Policies][] (CSPs) of your website might block your exports
+2. [Content Security Policies][] (CSPs) of your site might block your exports
 3. [Cross-Origin Resource Sharing][] (CORS) headers might not allow your exports
    to be sent
 4. You might need to expose your collector to the public internet
@@ -151,7 +151,7 @@ right endpoint, i.e., make sure that your port is set to `4318`.
 
 #### Configure CSPs
 
-If your website is making use of Content Security Policies (CSPs), make sure
+If your site is making use of Content Security Policies (CSPs), make sure
 that the domain of your OTLP endpoint is included. If your collector endpoint is
 `https://collector.example.com:4318/v1/traces`, add the following directive:
 
@@ -164,7 +164,7 @@ stating that the request to your endpoint is violating the CSP directive.
 
 #### Configure CORS headers
 
-If your website and collector are hosted at a different origin, your browser
+If your site and collector are hosted at a different origin, your browser
 might block the requests going out to your collector. You need to configure
 special headers for Cross-Origin Resource Sharing (CORS).
 
@@ -190,7 +190,7 @@ receivers:
 #### Securely expose your collector
 
 To receive telemetry from a web application you need to allow the browsers of
-your end-users to send data to your collector. If your web application is
+your end users to send data to your collector. If your web application is
 accessible from the public internet, you also have to make your collector
 accessible for everyone.
 

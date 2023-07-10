@@ -91,9 +91,9 @@ created by her team. On the open source tooling front:
 
 - [Grafana](https://grafana.com) is used for dashboards
 - OpenTelemetry is used for emitting traces, and
-  [Grafana Tempo](https://grafana.com/oss/tempo/) is used as a tracing back-end
+  [Grafana Tempo](https://grafana.com/oss/tempo/) is used as a tracing backend
 - [Jaeger](https://jaegertracing.io) is still used in some cases for emitting
-  traces and as a tracing back-end, because some teams have not yet completely
+  traces and as a tracing backend, because some teams have not yet completely
   moved to OpenTelemetry for instrumenting traces
   ([via Jaeger’s implementation of the OpenTracing API](https://medium.com/velotio-perspectives/a-comprehensive-tutorial-to-implementing-opentracing-with-jaeger-a01752e1a8ce)).
 - [Prometheus Thanos](https://github.com/thanos-io/thanos) (highly-available
@@ -141,7 +141,7 @@ They are not fully there yet:
 
 In spite of that, Iris and her team are leveraging the power of the
 [OpenTelemetry Collector](/docs/collector/) to gather and send metrics and
-traces to various Observability back-ends. Since she and her team started using
+traces to various Observability backends. Since she and her team started using
 OpenTelemetry, they started instrumenting more traces. In fact, with their
 current setup, Iris has happily reported that they went from processing 1,000
 spans per second, to processing 40,000 spans per second!
@@ -302,7 +302,7 @@ Are you currently using any processors on the OTel Collector? \
 The team is currently experimenting with processors, namely for data masking ([transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor),
 or [redaction processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/redactionprocessor)),
 especially as they move to using OTel Logs, which will contain sensitive data that
-they won’t want to transmit to their Observability back-end. They currently, however,
+they won’t want to transmit to their Observability backend. They currently, however,
 are only using the [batch processor](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/batchprocessor/README.md).
 
 ### Are you aware of any teams using span events?
@@ -345,7 +345,7 @@ instances of the Collector, using around 8GB memory.
 This is something that is currently being explored. The team is exploring
 [traces/metrics correlation (exemplars)](/docs/specs/otel/metrics/data-model/#exemplars)
 through OpenTelemetry; however, they found that this correlation is accomplished
-more easily through their tracing back-end, Tempo.
+more easily through their tracing backend, Tempo.
 
 ### Are you concerned about the amount of data that you end up producing, transporting, and collecting? How do you ensure data quality?
 

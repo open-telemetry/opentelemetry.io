@@ -33,7 +33,7 @@ Deprecated, Removed.
 - **Draft** components are under design, and have not been added to the
   specification.
 - **Experimental** components are released and available for beta testing.
-- **Stable** components are backwards compatible and covered under long term
+- **Stable** components are backward compatible and covered under long term
   support.
 - **Deprecated** components are stable but may eventually be removed.
 
@@ -47,7 +47,7 @@ Note that while the OpenTelemetry clients conform to a shared specification,
 they are developed independently.
 
 Checking the current status for each client in the README of its
-[github repo](https://github.com/open-telemetry) is recommended. Client support
+[GitHub repository](https://github.com/open-telemetry) is recommended. Client support
 for specific features can be found in the
 [specification compliance tables](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md).
 

@@ -22,7 +22,7 @@ Ensure that you have the following installed locally:
 ## Example Application
 
 The following example uses a basic [Express](https://expressjs.com/)
-application. If you are not using Express, that's ok — you can use OpenTelemetry
+application. If you are not using Express, that's OK — you can use OpenTelemetry
 JavaScript with other web frameworks as well, such as Koa and Nest.JS. For a
 complete list of libraries for supported frameworks, see the
 [registry](/ecosystem/registry/?component=instrumentation&language=js).
@@ -59,7 +59,7 @@ npm install express
 
 ### Create and launch an HTTP Server
 
-Create a file named `app.ts` (or `app.js` if not using typescript) and add the
+Create a file named `app.ts` (or `app.js` if not using TypeScript) and add the
 following code to it:
 
 <!-- prettier-ignore-start -->
@@ -161,7 +161,7 @@ application code. One tool commonly used for this task is the
 [--require](https://nodejs.org/api/cli.html#-r---require-module) flag.
 
 Create a file named `instrumentation.ts` (or `instrumentation.js` if not using
-typescript) , which will contain your instrumentation setup code.
+TypeScript) , which will contain your instrumentation setup code.
 
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}

@@ -10,6 +10,6 @@ repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/s
 license: Apache 2.0
 description:
   The OneCollectorExporter is designed for Microsoft products to send data to
-  public-facing end-points which route to Microsoft's internal data pipeline.
+  public-facing endpoints which route to Microsoft's internal data pipeline.
 authors: OpenTelemetry Authors
 otVersion: latest

@@ -13,7 +13,7 @@ The ads will be for products available in the store.
 
 This service relies on the OpenTelemetry Java Agent to automatically instrument
 libraries such as gRPC, and to configure the OpenTelemetry SDK. The agent is
-passed into the process using the `-javaagent` command line argument. Command
+passed into the process using the `-javaagent` command-line argument. Command
 line arguments are added through the `JAVA_TOOL_OPTIONS` in the `Dockerfile`,
 and leveraged during the automatically generated Gradle startup script.
 

@@ -30,8 +30,8 @@ and sends it to OpenTelemetry Collector through HTTP protocol. Apache APISIX
 starts to support this feature in v2.13.0.
 
 One of OpenTelemetry's special features is that the Agent/SDK of OpenTelemetry
-is not locked with back-end implementation, which gives users flexibilities on
-choosing their own back-end services. In other words, users can choose the
+is not locked with backend implementation, which gives users flexibilities on
+choosing their own backend services. In other words, users can choose the
 backend services they want, such as Zipkin and Jaeger, without affecting the
 application side.
 

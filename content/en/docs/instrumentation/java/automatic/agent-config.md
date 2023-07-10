@@ -121,7 +121,7 @@ local service.
 
 {{% config_option name="otel.instrumentation.common.peer-service-mapping" %}}
 
-Used to specify a mapping from host names or IP addresses to peer services, as a
+Used to specify a mapping from hostnames or IP addresses to peer services, as a
 comma-separated list of `<host_or_ip>=<user_assigned_name>` pairs. The peer
 service is added as an attribute to a span whose host or IP address match the
 mapping.
