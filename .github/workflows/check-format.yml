@@ -10,7 +10,15 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - run: npm install
+      - name: Create NPM cache-hash input file
+        run: |
+          jq '{devDependencies, dependencies, engines}' package.json > package-ci.json
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: package-ci.json
 
       - name: Check file format
-        run: npm run check:format
+        run: npm run check:format --ignore-scripts
