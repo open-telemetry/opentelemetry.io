@@ -25,18 +25,6 @@ my %versions = qw(
 my $otelSpecVers = $versions{'spec:'};
 my $otlpSpecVers = $versions{'otlp:'};
 
-# TODO: remove once OpAMP spec has been updated
-my $opampFrontMatter = << "EOS";
-title: Open Agent Management Protocol
-linkTitle: OpAMP
-body_class: otel-docs-spec
-github_repo: &repo $opAmpSpecRepoUrl
-github_project_repo: *repo
-path_base_for_github_subdir:
-  from: content/en/docs/specs/opamp/index.md
-  to: specification.md
-EOS
-
 sub printTitleAndFrontMatter() {
   print "---\n";
   if ($title eq 'OpenTelemetry Specification') {
@@ -48,8 +36,6 @@ sub printTitleAndFrontMatter() {
     $frontMatterFromFile =~ s/(title|linkTitle): .*/$& $otlpSpecVers/g;
     # TODO: add to spec landing page
     $frontMatterFromFile .= "weight: 20\n" if $frontMatterFromFile !~ /^\s*weight/;
-  } elsif ($title eq 'OpAMP: Open Agent Management Protocol') {
-    $frontMatterFromFile = $opampFrontMatter unless $frontMatterFromFile;
   }
   my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
   print "title: $titleMaybeQuoted\n" if $frontMatterFromFile !~ /title: /;
@@ -165,8 +151,6 @@ while(<>) {
   ## OpAMP
 
   s|\]\((proto/opamp.proto)\)|]($opAmpSpecRepoUrl/blob/main/$1)|;
-  # TODO: drop once OpAMP spec has been updated
-  s|^#+|#$&| if $ARGV =~ /\/opamp/;
 
   print;
 }
