@@ -175,6 +175,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-07-06T17:58:07.715816-04:00"
   },
+  "https://cdn.jsdelivr.net/npm/chart.js@2.9.2/dist/Chart.min.js": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-07T13:54:44.619063-07:00"
+  },
   "https://cdn.jsdelivr.net/npm/mermaid@9.3.0/dist/mermaid.min.js": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T09:16:02.918744-04:00"
@@ -1939,6 +1943,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:15:29.922451-04:00"
   },
+  "https://github.com/marketplace/actions/continuous-benchmark": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-06T11:55:26.882609-07:00"
+  },
   "https://github.com/mhausenblas": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:39:03.127776-04:00"
@@ -2090,6 +2098,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib#opentelemetry-collector-contrib": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:24:24.785634-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-07T13:45:50.007391-07:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/10116": {
     "StatusCode": 200,
@@ -3607,6 +3619,14 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:51:28.754694-04:00"
   },
+  "https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-07T13:45:50.219326-07:00"
+  },
+  "https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/data.js": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-06T12:14:49.802412-07:00"
+  },
   "https://open-telemetry.github.io/opentelemetry-js": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:46:19.489479-04:00"
@@ -3947,6 +3967,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-07-06T17:58:33.547228-04:00"
   },
+  "https://raw.githubusercontent.com/open-telemetry/opentelemetry-collector-contrib/benchmarks/docs/benchmarks/loadtests/data.js": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-07T13:54:44.920311-07:00"
+  },
   "https://reactivex.io/RxJava/2.x/javadoc/index.html": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:48:07.197849-04:00"
@@ -4219,6 +4243,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-30T09:37:36.11784-04:00"
   },
+  "https://uplight.com/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-07T17:13:24.95734+02:00"
+  },
   "https://uptrace.dev": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:37:28.48076-04:00"
@@ -4442,6 +4470,10 @@
   "https://www.farfetch.com": {
     "StatusCode": 200,
     "LastSeen": "2023-06-01T15:55:17.477011-04:00"
+  },
+  "https://www.farfetch.com/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-07T17:13:23.688913+02:00"
   },
   "https://www.fulcrumapp.com": {
     "StatusCode": 206,
