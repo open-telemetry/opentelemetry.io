@@ -263,7 +263,7 @@ body.td-page--draft .td-content {
   position: relative;
 
   &::after {
-    content: 'PREVIEW-ONLY';
+    content: 'Draft';
     position: absolute;
     top: 80px;
     left: 50%;
