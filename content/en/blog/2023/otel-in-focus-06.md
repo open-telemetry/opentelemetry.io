@@ -40,11 +40,11 @@ is the `service.PipelineConfig` in favor of the `pipelines.Config`. Enhancements
 include the addition of a dry run flag, allowing TLS settings to be provided in
 memory, updates to the connector nodes, and updates to various modules.
 
-0.79.0 includes deprecations, enhancements, and bug fixes. The release
-deprecates the `Host.GetExporters` function, adds connectors to the output of
-the components command, improves the behavior of the scraperhelper, optimizes
-the multiBatcher to avoid a global lock, and fixes a bug related to data
-replication in connectors.
+0.79.0 includes deprecations, enhancements, and bugfixes. The release deprecates
+the `Host.GetExporters` function, adds connectors to the output of the
+components command, improves the behavior of the scraperhelper, optimizes the
+multiBatcher to avoid a global lock, and fixes a bug related to data replication
+in connectors.
 
 In addition,
 [collector-contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.80.0)
@@ -52,7 +52,7 @@ has been released. Some notable changes include the addition of the WebSocket
 processor, updates to metric units in various receivers, and deprecation of
 options in the SumoLogic exporter. Check the release notes for more details.
 
-0.79.0 included a number of bug fixes and enhancements, including breaking
+0.79.0 included a number of bugfixes and enhancements, including breaking
 changes to hashing algorithms and changes to endpoint requirements. Enhancements
 include improved metric retrieval and new configuration options, while bug fixes
 address issues with subprocess cancellation and incorrect log stream filtering.
@@ -61,18 +61,18 @@ There were three releases of the
 [Operator](https://github.com/open-telemetry/opentelemetry-operator/releases/tag/v0.80.0)
 in June. The latest, release v0.80.0, introduces enhancements such as adding a
 Skywalking parser and populating credentials for Prometheus CR scrape configs.
-Bug fixes include a fix for the upgrade mechanism and empty global scrape
+Bugfixes include a fix for the upgrade mechanism and empty global scrape
 interval, and a new component was added for NGINX auto-instrumentation in the
 operator.
 
 0.79.0 of the Operator includes enhancements such as Prometheus metric exporter
 support for Node.js auto-instrumentation and the ability to inject the service
 version into the environment of the instrumented application. There is also a
-bug fix regarding the OpenTelemetry Collector version not displaying properly in
+bugfix regarding the OpenTelemetry Collector version not displaying properly in
 the status field.
 
 0.78.0 includes enhancements such as updating various packages, support for
-scaling on Pod custom metrics, and improved config validation. Bug fixes include
+scaling on Pod custom metrics, and improved config validation. Bugfixes include
 addressing issues related to prometheus relabel configs and setting the default
 go auto-instrumentation version correctly. Components that were updated include
 the OpenTelemetry Collector, OpenTelemetry Contrib, Java auto-instrumentation,
@@ -88,7 +88,7 @@ opentelemetry-sdk-extension-autoconfigure. The release also includes various bug
 fixes and improvements for the API, SDK, metrics, exporters, testing, SDK
 extensions, and semantic conventions.
 
-Remember - the Log Bridge API is not intended for end-users. It is used to
+Remember - the Log Bridge API is not intended for end users. It is used to
 bridge existing appenders (e.g., Log4j, SLf4J, Logback, JUL) into OpenTelemetry.
 
 [Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/tag/v1.27.0)
@@ -103,10 +103,10 @@ has been released, requiring some migrations to be performed.
 - Enhancements including improvements in Micrometer bridge, Ktor
   instrumentations, AWS SDK support, OkHttp 3, Jetty 11, Spring Boot, AWS Lambda
   tracing, and type matching.
-- Bug fixes related to Logback MDC instrumentation, kafka metrics reporter,
-  jetty context leak, filtering scalar Mono/Flux instances, and others.
+- Bugfixes related to Logback MDC instrumentation, kafka metrics reporter, jetty
+  context leak, filtering scalar Mono/Flux instances, and others.
 
-#### [Javascript](/docs/instrumentation/js/)
+#### [JavaScript](/docs/instrumentation/js/)
 
 [Version 1.14](https://github.com/open-telemetry/opentelemetry-js/releases/tag/v1.14.0)
 includes an optional `forceFlush` method to the `SpanExporter` interface.

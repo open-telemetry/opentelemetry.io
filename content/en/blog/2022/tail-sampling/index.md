@@ -134,8 +134,8 @@ You also have the flexibility to add other policies. Here are a few examples:
 - `latency`: Sample based on the duration of the trace. For example, you could
   sample all traces that take longer than 5 seconds.
 - `string_attribute`: Sample based on string attribute values, both exact and
-  regex value matches are supported. For example, you could sample based on
-  specific custom attribute values.
+  regular expression value matches are supported. For example, you could sample
+  based on specific custom attribute values.
 
 ## Potential issues with tail sampling
 
@@ -215,7 +215,7 @@ under active development, including the tail sampling processor and the
 collector. For the tail sampling processor, there is currently an
 [open issue](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/1797)
 in the
-[collector-contrib repo](https://github.com/open-telemetry/opentelemetry-collector-contrib)
+[collector-contrib repository](https://github.com/open-telemetry/opentelemetry-collector-contrib)
 to discuss the future of this processor that centers around replacing it with
 separate processors, so that the chain of events is well-defined and understood.
 One of the main issues the community is trying to figure out is whether using

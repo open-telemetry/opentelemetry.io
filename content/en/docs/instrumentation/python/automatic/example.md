@@ -8,7 +8,7 @@ spelling: cSpell:ignore instrumentor Referer Starlette WSGI MSIE
 
 This page demonstrates how to use Python auto-instrumentation in OpenTelemetry.
 The example is based on an [OpenTracing example][]. You can download or view the
-[source files][] used in this page from the `opentelemetry-python` repo.
+[source files][] used in this page from the `opentelemetry-python` repository.
 
 This example uses three different scripts. The main difference between them is
 how they are instrumented:

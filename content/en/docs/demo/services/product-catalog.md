@@ -85,7 +85,7 @@ context.
 ```
 
 Adding attributes to a span is accomplished using `SetAttributes` on the span
-object. In the `GetProduct` function an attribute for the product id is added to
+object. In the `GetProduct` function an attribute for the product ID is added to
 the span.
 
 ```go

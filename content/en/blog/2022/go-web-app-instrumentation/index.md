@@ -15,7 +15,7 @@ with OpenTelemetry Go without prior knowledge.
 We will start with creating a simple to-do app that uses Mongo and the Gin
 framework. Then, we will send tracing data to Jaeger Tracing for visualization.
 You can find all the relevant files in this
-[Github repository](https://github.com/aspecto-io/opentelemetry-examples/tree/master/go).
+[GitHub repository](https://github.com/aspecto-io/opentelemetry-examples/tree/master/go).
 
 ![OpenTelemetry Go - The Mandalorian](OpenTelemetry-Go-The-Mandalorian-2048x1406.png)
 

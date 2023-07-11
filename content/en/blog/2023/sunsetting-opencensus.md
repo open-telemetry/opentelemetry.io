@@ -65,11 +65,11 @@ vulnerabilities that are found will not be patched.
 However, the OpenCensus repositories will remain archived on GitHub. This means
 users will still be able to download the OpenCensus code and use it in their
 projects. Existing releases of OpenCensus will remain available in public
-package repositories like NPM and PyPI. **We encourage all OpenCensus users to
+package repositories like npm and PyPI. **We encourage all OpenCensus users to
 begin planning their project's migration to OpenTelemetry now.**
 
 One exception to this is the [census-instrumentation/opencensus-python][]
-repo[^python-timeline].
+repository[^python-timeline].
 
 [go shim]:
   https://github.com/open-telemetry/opentelemetry-go/tree/main/bridge/opencensus
@@ -86,7 +86,8 @@ repo[^python-timeline].
     A number of projects within the `opencensus-python` repository are still
     being used as recommended production solutions. These projects will continue
     to be maintained. For details regarding maintenance timeline, next steps for
-    migration, and general support questions, reach out to repo maintainers.
+    migration, and general support questions, reach out to repository
+    maintainers.
 
 [^shim-next-release]: Python and JavaScript shim packages will be released soon.
 [^shim-support]:

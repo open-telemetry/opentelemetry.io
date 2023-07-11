@@ -196,8 +196,8 @@ Please also check out
 **A:** Implementing correlation takes time and is a work in progress.
 Correlation work is more mature for some languages (e.g. Java, Go) than for
 others. The best approach is to raise this issue in one of the language-specific
-repos that pertains to your situation. A possible work-around is to start traces
-at the log level, whereby every log will have its own associated trace.
+repositories that pertains to your situation. A possible work-around is to start
+traces at the log level, whereby every log will have its own associated trace.
 
 #### 3- Profiling
 
@@ -206,7 +206,7 @@ at the log level, whereby every log will have its own associated trace.
 **A:** There is an OTel proposal on profiling, which has been accepted and is
 being actively being worked on and discussed. The current focus is on finalizing
 the protocol, before SDK work can start. You can check out the
-[profiling repo on GitHub](https://github.com/open-telemetry/opentelemetry-profiling),
+[profiling repository on GitHub](https://github.com/open-telemetry/opentelemetry-profiling),
 as well as the
 [Profiling Vision pull request on GitHub](https://github.com/open-telemetry/oteps/pull/212).
 

@@ -23,7 +23,7 @@ Ensure that you have the following installed locally:
 
 The following example uses a basic
 [Spring Boot](https://spring.io/guides/gs/spring-boot/) application. If you are
-not using Spring Boot, that's ok — you can use OpenTelemetry Java with other web
+not using Spring Boot, that's OK — you can use OpenTelemetry Java with other web
 frameworks as well, such as Apache Wicket and Play. For a complete list of
 libraries for supported frameworks, see the
 [registry](/ecosystem/registry/?component=instrumentation&language=java).
@@ -131,8 +131,8 @@ application at launch time. While you can [configure the Java agent][] in a
 number of ways, the steps below use environment variables.
 
 1. Download [opentelemetry-javaagent.jar][] from [Releases][] of the
-   `opentelemetry-java-instrumentation` repo. The JAR file contains the agent
-   and all automatic instrumentation packages:
+   `opentelemetry-java-instrumentation` repository. The JAR file contains the
+   agent and all automatic instrumentation packages:
 
    ```console
    curl -L -O https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar

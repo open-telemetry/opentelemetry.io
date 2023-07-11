@@ -467,7 +467,7 @@ The
 [example sources](https://github.com/kubeshop/tracetest/tree/main/examples/tracetesting-kubernetes/kubetracing)
 used in this article, and
 [setup instructions](https://github.com/kubeshop/tracetest/blob/main/examples/tracetesting-kubernetes/setup-k8s-with-k3d.md)
-are available from the Tracetest repo.
+are available from the Tracetest repository.
 
 ## References
 
