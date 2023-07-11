@@ -73,7 +73,7 @@ Otherwise the pre-existing feature set from the GCP demo remains the same:
   Node.js, Python, and Ruby)
   - Ruby support was added within the last 2 weeks of publishing date
 - Designed to work on docker locally
-- Uses redis cache
+- Uses Redis cache
 - Auto-instrumentation using instrumentation libraries Tracing support for the
   gRPC, Redis, and HTTP libraries
 - Jaeger visualizations for distributed traces, forwarded by OpenTelemetry

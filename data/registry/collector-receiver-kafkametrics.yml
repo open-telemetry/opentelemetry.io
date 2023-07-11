@@ -9,7 +9,7 @@ tags:
 repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/kafkametricsreceiver
 license: Apache 2.0
 description:
-  Kafka metrics receiver collects kafka metrics (brokers, topics, partitions,
-  consumer groups) from kafka server,
+  Kafka metrics receiver collects Kafka metrics (brokers, topics, partitions,
+  consumer groups) from Kafka server,
 authors: OpenTelemetry Authors
 otVersion: latest

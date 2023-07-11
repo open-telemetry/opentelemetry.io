@@ -12,20 +12,20 @@ projects.
 
 OpenTelemetry provides integration with the following open source projects.
 
-| External Project\*                                        | OpenTelemetry Supported Components                       |
-| --------------------------------------------------------- | -------------------------------------------------------- |
-| [Apache Kafka](https://kafka.apache.org/)                 | Collector                                                |
-| [Apache SkyWalking](https://skywalking.apache.org)        | Collector                                                |
-| [Elasticsearch](https://github.com/elastic/elasticsearch) | Collector, C++, Java, Python                             |
-| [Fluent Bit](https://fluentbit.io/)                       | Collector                                                |
-| [Graphite](https://graphiteapp.org/)                      | Collector                                                |
-| [Jaeger](https://www.jaegertracing.io/)                   | Collector, DotNet, Go, Java, JS, PHP, Python, Ruby, Rust |
-| [OpenCensus](https://opencensus.io/)                      | Collector, Python                                        |
-| [OpenTracing](https://opentracing.io/)                    | DotNet, Go, Java, JS, Python, Ruby                       |
-| [OpenMetrics](https://openmetrics.io/) [^partial-support] | Collector                                                |
-| [Prometheus](https://prometheus.io/) [^partial-support]   | Collector, C++, Go, Java, JS, Rust                       |
-| [Zipkin](https://zipkin.io/)                              | Collector, DotNet, Go, Java, JS, PHP, Python, Rust       |
-| [W3C trace-context](https://www.w3.org/TR/trace-context/) | DotNet, Go, Java, JS, Python, Ruby                       |
+| External Project\*                                        | OpenTelemetry Supported Components                     |
+| --------------------------------------------------------- | ------------------------------------------------------ |
+| [Apache Kafka](https://kafka.apache.org/)                 | Collector                                              |
+| [Apache SkyWalking](https://skywalking.apache.org)        | Collector                                              |
+| [Elasticsearch](https://github.com/elastic/elasticsearch) | Collector, C++, Java, Python                           |
+| [Fluent Bit](https://fluentbit.io/)                       | Collector                                              |
+| [Graphite](https://graphiteapp.org/)                      | Collector                                              |
+| [Jaeger](https://www.jaegertracing.io/)                   | Collector, .NET, Go, Java, JS, PHP, Python, Ruby, Rust |
+| [OpenCensus](https://opencensus.io/)                      | Collector, Python                                      |
+| [OpenTracing](https://opentracing.io/)                    | .NET, Go, Java, JS, Python, Ruby                       |
+| [OpenMetrics](https://openmetrics.io/) [^partial-support] | Collector                                              |
+| [Prometheus](https://prometheus.io/) [^partial-support]   | Collector, C++, Go, Java, JS, Rust                     |
+| [Zipkin](https://zipkin.io/)                              | Collector, .NET, Go, Java, JS, PHP, Python, Rust       |
+| [W3C trace-context](https://www.w3.org/TR/trace-context/) | .NET, Go, Java, JS, Python, Ruby                       |
 
 \* _Projects are listed alphabetically_.
 

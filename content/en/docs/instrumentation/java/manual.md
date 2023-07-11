@@ -658,7 +658,7 @@ To use this workflow:
 
 A log appender bridges logs from a log framework into the OpenTelemetry
 [Log SDK](#logs-sdk) using the [Logs Bridge API][logs bridge API]. Log appenders
-are available for various popular java log frameworks:
+are available for various popular Java log frameworks:
 
 - [Log4j2 Appender][log4j2 appender]
 - [Logback Appender][logback appender]
@@ -700,7 +700,7 @@ Log correlation with traces is available by installing
 #### Log context instrumentation
 
 OpenTelemetry provides components which enrich log context with trace context
-for various popular java log frameworks:
+for various popular Java log frameworks:
 
 - [Log4j context data instrumentation][log4j context instrumentation]
 - [Logback MDC instrumentation][logback context instrumentation]

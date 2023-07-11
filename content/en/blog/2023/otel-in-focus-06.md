@@ -103,7 +103,7 @@ has been released, requiring some migrations to be performed.
 - Enhancements including improvements in Micrometer bridge, Ktor
   instrumentations, AWS SDK support, OkHttp 3, Jetty 11, Spring Boot, AWS Lambda
   tracing, and type matching.
-- Bugfixes related to Logback MDC instrumentation, kafka metrics reporter, jetty
+- Bugfixes related to Logback MDC instrumentation, Kafka metrics reporter, jetty
   context leak, filtering scalar Mono/Flux instances, and others.
 
 #### [JavaScript](/docs/instrumentation/js/)

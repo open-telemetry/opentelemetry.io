@@ -13,10 +13,10 @@ Shipping service is built primarily with Tonic, Reqwest, and OpenTelemetry
 Libraries/Components. Other sub-dependencies are included in `Cargo.toml`.
 
 Depending on your framework and runtime, you may consider consulting
-[rust docs](/docs/instrumentation/rust/) to supplement. You'll find examples of
+[Rust docs](/docs/instrumentation/rust/) to supplement. You'll find examples of
 async and sync spans in quote requests and tracking IDs respectively.
 
-The `build.rs` supports development outside docker, given a rust installation.
+The `build.rs` supports development outside docker, given a Rust installation.
 Otherwise, consider building with `docker compose` to edit / assess changes as
 needed.
 

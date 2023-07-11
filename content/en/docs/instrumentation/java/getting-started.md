@@ -8,7 +8,7 @@ weight: 10
 
 This page will show you how to get started with OpenTelemetry in Java.
 
-You will learn how you can instrument a simple java application automatically,
+You will learn how you can instrument a simple Java application automatically,
 in such a way that [traces][], [metrics][] and [logs][] are emitted to the
 console.
 
