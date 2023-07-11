@@ -258,3 +258,23 @@
     }
   }
 }
+
+body.td-page--draft .td-content {
+  position: relative;
+
+  &::after {
+    content: 'Draft';
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translate(-50%, 0) rotate(-45deg);
+    color: rgba(255, 0, 0, 0.3);
+    font-size: 18vw;
+    z-index: 9999;
+    pointer-events: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+    max-width: max-content;
+  }
+}
