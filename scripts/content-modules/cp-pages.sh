@@ -19,6 +19,9 @@ FILES=$(find $DEST -name "*.md")
 
 $SCRIPT_DIR/otel-spec-fix.pl $SRC/configuration/sdk-environment-variables.md
 $SCRIPT_DIR/adjust-pages.pl $FILES
+if [[ -n $NO_GIT_RESTORE ]]; then
+  (cd $SRC/.. && git restore .)
+fi
 
 echo "OTEL SPEC pages: copied and processed"
 

@@ -26,6 +26,10 @@
 /docs/reference/specification/*  /docs/specs/otel/:splat
 /docs/specification/otel/*       /docs/specs/otel/:splat
 
+# Specify that the /ecosystem/registry/* catch-all rule
+# not apply to the index page:
+/ecosystem/registry/ /ecosystem/registry/ 200!
+
 {{/*
   Social-media image redirects. As mentioned in
   https://developers.facebook.com/docs/sharing/webmasters/images, we need to
