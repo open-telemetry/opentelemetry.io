@@ -26,10 +26,6 @@
 /docs/reference/specification/*  /docs/specs/otel/:splat
 /docs/specification/otel/*       /docs/specs/otel/:splat
 
-# Catch-all for old registry entries (we no longer publish entry pages)
-/ecosystem/registry/*  /ecosystem/registry
-/registry/*  /ecosystem/registry/:splat
-
 {{/*
   Social-media image redirects. As mentioned in
   https://developers.facebook.com/docs/sharing/webmasters/images, we need to
