@@ -36,6 +36,9 @@ sub printTitleAndFrontMatter() {
     $frontMatterFromFile =~ s/(title|linkTitle): .*/$& $otlpSpecVers/g;
     # TODO: add to spec landing page
     $frontMatterFromFile .= "weight: 20\n" if $frontMatterFromFile !~ /^\s*weight/;
+  } elsif ($ARGV =~ /semconv\/docs\/_index.md$/) {
+    $frontMatterFromFile =~ s/body_class: .*/$& td-page--draft/;
+    $frontMatterFromFile =~ s/cascade:\n/$&  draft: true\n/;
   }
   my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
   print "title: $titleMaybeQuoted\n" if $frontMatterFromFile !~ /title: /;
