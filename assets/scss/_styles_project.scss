@@ -265,7 +265,7 @@ body.td-page--draft .td-content {
   &::after {
     content: 'Draft';
     position: absolute;
-    top: 80px;
+    top: 10vw;
     left: 50%;
     transform: translate(-50%, 0) rotate(-45deg);
     color: rgba(255, 0, 0, 0.3);
