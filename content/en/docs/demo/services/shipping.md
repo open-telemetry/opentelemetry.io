@@ -14,7 +14,7 @@ Libraries/Components. Other sub-dependencies are included in `Cargo.toml`.
 
 Depending on your framework and runtime, you may consider consulting
 [rust docs](/docs/instrumentation/rust/) to supplement. You'll find examples of
-async and sync spans in quote requests and tracking ID's respectively.
+async and sync spans in quote requests and tracking IDs respectively.
 
 The `build.rs` supports development outside docker, given a rust installation.
 Otherwise, consider building with `docker compose` to edit / assess changes as
