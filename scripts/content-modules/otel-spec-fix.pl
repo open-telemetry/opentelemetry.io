@@ -49,7 +49,7 @@ sub printTitleAndFrontMatter() {
   if ($title =~ /^(.*?) Compatibility$/) {
     $linkTitle = "$1";
   }
-  if ($ARGV =~ /\/configuration\/sdk-environment-variables.md$/) {
+  if ($ARGV =~ /\/configuration\/sdk-environment-variables.md$/ && $frontMatterFromFile !~ /- \/docs/) {
     $frontMatterFromFile =~ s/aliases:.*$/$sdkEnvVarAliases/;
     $frontMatterFromFile =~ s/\n$//;
   }
@@ -58,7 +58,7 @@ sub printTitleAndFrontMatter() {
   $frontMatter .= $frontMatterFromFile if $frontMatterFromFile;
 
   if ($ARGV =~ /prometheus_and_openmetrics.md$/) {
-    $frontMatter .= $openmetricsAliases;
+    $frontMatter .= $openmetricsAliases unless $frontMatter =~ /aliases/;
   }
 
   if ($frontMatter) {
