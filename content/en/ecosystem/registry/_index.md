@@ -6,7 +6,6 @@ description: >-
 aliases:
   # Catch-all for old registry entries; we don't publish individual entry pages anymore.
   - /registry/*
-  - /ecosystem/registry/*
 type: default
 layout: registry
 outputs: [html, json]
