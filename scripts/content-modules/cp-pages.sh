@@ -16,8 +16,13 @@ find $DEST/ -name "README.md" -exec sh -c 'f="{}"; mv -- "$f" "${f%README.md}_in
 
 # To exclude a file use, e.g.: -not -path '*/specification/_index.md'
 FILES=$(find $DEST -name "*.md")
+FIX_FILES=$(find $SRC -name "*.md" -not -path '*/semantic_conventions/*')
 
+$SCRIPT_DIR/otel-spec-fix.pl $FIX_FILES
 $SCRIPT_DIR/adjust-pages.pl $FILES
+if [[ -z $NO_GIT_RESTORE ]]; then
+  (cd $SRC/.. && git restore .)
+fi
 
 echo "OTEL SPEC pages: copied and processed"
 
