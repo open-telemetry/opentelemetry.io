@@ -17,6 +17,7 @@ find $DEST/ -name "README.md" -exec sh -c 'f="{}"; mv -- "$f" "${f%README.md}_in
 # To exclude a file use, e.g.: -not -path '*/specification/_index.md'
 FILES=$(find $DEST -name "*.md")
 
+$SCRIPT_DIR/otel-spec-fix.pl $SRC/configuration/sdk-environment-variables.md
 $SCRIPT_DIR/adjust-pages.pl $FILES
 
 echo "OTEL SPEC pages: copied and processed"
