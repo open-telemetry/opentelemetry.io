@@ -28,11 +28,18 @@ my %versions = qw(
 my $otelSpecVers = $versions{'spec:'};
 my $otlpSpecVers = $versions{'otlp:'};
 
+my $sdkEnvVarAliases = << 'EOS';
+aliases:
+  - /docs/reference/specification/sdk-environment-variables
+  - /docs/specs/otel/sdk-environment-variables
+EOS
+
 my $openmetricsAliases = << 'EOS';
 aliases:
   - /docs/reference/specification/compatibility/openmetrics
   - /docs/specs/otel/compatibility/openmetrics
 EOS
+
 sub printTitleAndFrontMatter() {
   my $frontMatter = '';
   my $originalTitle = $title;
@@ -41,6 +48,10 @@ sub printTitleAndFrontMatter() {
   $frontMatter .= "title: $titleMaybeQuoted\n" if $frontMatterFromFile !~ /title: / && $title ne $originalTitle;
   if ($title =~ /^(.*?) Compatibility$/) {
     $linkTitle = "$1";
+  }
+  if ($ARGV =~ /\/configuration\/sdk-environment-variables.md$/) {
+    $frontMatterFromFile =~ s/aliases:.*$/$sdkEnvVarAliases/;
+    $frontMatterFromFile =~ s/\n$//;
   }
   $frontMatterFromFile =~ s/^(linkTitle:) noop$/$1 No-Op/;
   $frontMatter .= "linkTitle: $linkTitle\n" if $linkTitle and $frontMatterFromFile !~ /linkTitle: /;
