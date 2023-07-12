@@ -1,13 +1,13 @@
 ---
 title: OpenTelemetry Operator for Kubernetes
 linkTitle: K8s Operator
-weight: 11
+weight: 2
 description:
   An implementation of a Kubernetes Operator, that manages collectors and
   auto-instrumentation of the workload using OpenTelemetry instrumentation
   libraries.
 spelling: cSpell:ignore Otel
-aliases: [/docs/operator]
+aliases: [/docs/kubernetes/operator]
 ---
 
 ## Introduction
