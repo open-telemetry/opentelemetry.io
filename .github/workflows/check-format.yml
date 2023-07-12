@@ -1,9 +1,16 @@
-name: Check file format
+name: Check filenames and file format
 
 on:
   pull_request:
 
 jobs:
+  check-file-names:
+    name: Check filenames
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - run: npm run check:filenames --ignore-scripts 
+
   check-formatting:
     name: Check file format
     runs-on: ubuntu-latest
@@ -12,13 +19,14 @@ jobs:
 
       - name: Create NPM cache-hash input file
         run: |
-          jq '{devDependencies, dependencies, engines}' package.json > package-ci.json
+          mkdir -p tmp
+          jq '{devDependencies, dependencies, engines}' package.json > tmp/package-ci.json
 
       - uses: actions/setup-node@v3
         with:
           node-version-file: .nvmrc
           cache: npm
-          cache-dependency-path: package-ci.json
+          cache-dependency-path: tmp/package-ci.json
 
       - name: Check file format
         run: npm run check:format --ignore-scripts
