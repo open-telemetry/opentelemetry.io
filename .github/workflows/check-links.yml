@@ -22,7 +22,7 @@ jobs:
           cache: npm
           cache-dependency-path: tmp/package-ci.json
 
-      - run: npm install
+      - run: npm run prepare
       - run: npm run build | tee tmp/build-log.txt
 
       - run: npm run _check:links
