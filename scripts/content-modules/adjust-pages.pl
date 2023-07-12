@@ -121,7 +121,7 @@ while(<>) {
   s|(\]:\s+\|\()https://github.com/open-telemetry/opentelemetry-specification/\w+/(main\|v$otelSpecVers)/specification(.*?\)?)|$1$specBasePath/otel$3|;
 
   # Match links to OTLP
-  s|(\]:\s+\|\()?https://github.com/open-telemetry/opentelemetry-proto/(\w+/.*?/)?docs/specification.md(\))?|$1$specBasePath/otlp/$3|g;
+  s|(\]:\s+\|\()?https://github.com/open-telemetry/opentelemetry-proto/(\w+/.*?/)?docs/specification.md(\)?)|$1$specBasePath/otlp/$3|g;
   s|github.com/open-telemetry/opentelemetry-proto/docs/specification.md|OTLP|g;
 
   # Images

@@ -5,8 +5,8 @@ description: >-
   OpenTelemetry.
 aliases:
   # Catch-all for old registry entries; we don't publish individual entry pages anymore.
-  - /registry/*
   - /ecosystem/registry/*
+  - /registry/*
 type: default
 layout: registry
 outputs: [html, json]
