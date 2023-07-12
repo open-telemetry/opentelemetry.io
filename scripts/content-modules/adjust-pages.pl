@@ -109,15 +109,16 @@ while(<>) {
   s|\.\./semantic_conventions/README.md|$semConvRef| if $ARGV =~ /overview/;
   s|\.\./specification/(.*?\))|../otel/$1)|g if $ARGV =~ /otel\/specification/;
 
+  # TODO: drop the following warning once the checks are enabled in the spec repos
   if (
-    /\((https:\/\/github.com\/open-telemetry\/opentelemetry-specification\/\w+\/\w+\/specification([^\)]*))\)/ &&
-    $ARGV !~ /tmp\/(opamp|otlp\/docs)|semantic_conventions/
+    /\((https:\/\/github.com\/open-telemetry\/opentelemetry-specification\/\w+\/.*?\/specification([^\)]*))\)/ &&
+    $ARGV !~ /tmp\/(opamp|otlp\/docs|semconv)|semantic_conventions/
     ) {
     printf STDOUT "WARNING: link to spec page encoded as an external URL, but should be a local path, fix this upstream;\n  File: $ARGV \n  Link: $1\n";
   }
-  s|\(https://github.com/open-telemetry/opentelemetry-specification/\w+/\w+/specification([^\)]*)\)|($specBasePath/otel$1)|;
+  s|\(https://github.com/open-telemetry/opentelemetry-specification/\w+/(main\|v$otelSpecVers)/specification(.*?)\)|($specBasePath/otel$2)|;
 
-  s|(https://)?github.com/open-telemetry/opentelemetry-proto/(blob/main/)?docs/specification.md|$specBasePath/otlp/|g;
+  s|(https://)?github.com/open-telemetry/opentelemetry-proto/((blob\|tree)/.*?/)?docs/specification.md|$specBasePath/otlp/|g;
 
   # Images
   s|(\.\./)?internal(/img/[-\w]+\.png)|$2|g;
@@ -132,15 +133,15 @@ while(<>) {
   s|\.\.\/README.md\b|$otelSpecRepoUrl/|g if $ARGV =~ /specification._index/;
   s|\.\.\/README.md\b|..| if $ARGV =~ /specification.library-guidelines.md/;
 
-  s|\.\./(opentelemetry/proto/?.*)|$otlpSpecRepoUrl/tree/$otlpSpecVers/$1|g if $ARGV =~ /\/tmp\/otlp/;
+  s|\.\./(opentelemetry/proto/?.*)|$otlpSpecRepoUrl/tree/v$otlpSpecVers/$1|g if $ARGV =~ /\/tmp\/otlp/;
   s|\.\./README.md\b|$otlpSpecRepoUrl/|g if $ARGV =~ /\/tmp\/otlp/;
-  s|\.\./examples/README.md\b|$otlpSpecRepoUrl/tree/$otlpSpecVers/examples/|g if $ARGV =~ /\/tmp\/otlp/;
+  s|\.\./examples/README.md\b|$otlpSpecRepoUrl/tree/v$otlpSpecVers/examples/|g if $ARGV =~ /\/tmp\/otlp/;
 
   s|\bREADME.md\b|_index.md|g if $ARGV !~ /otel\/specification\/protocol\/_index.md/;
 
   # Rewrite paths that are outside of the main spec folder as external links
-  s|(\.\.\/)+(experimental\/[^)]+)|$otelSpecRepoUrl/tree/$otelSpecVers/$2|g;
-  s|(\.\.\/)+(supplementary-guidelines\/compatibility\/[^)]+)|$otelSpecRepoUrl/tree/$otelSpecVers/$2|g;
+  s|(\.\.\/)+(experimental\/[^)]+)|$otelSpecRepoUrl/tree/v$otelSpecVers/$2|g;
+  s|(\.\.\/)+(supplementary-guidelines\/compatibility\/[^)]+)|$otelSpecRepoUrl/tree/v$otelSpecVers/$2|g;
 
   # Rewrite inline links
   s|\]\(([^:\)]*?\.md(#.*?)?)\)|]({{% relref "$1" %}})|g;
