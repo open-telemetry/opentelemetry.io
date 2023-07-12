@@ -156,9 +156,9 @@ others are still instrumented using the [legacy OpenTracing
 [using shims](/docs/migration/opentracing/).
 
 The OpenTelemetry Operator is being implemented to auto-instrument Java and .NET
-code. Among other things, the [OTel Operator](/docs/k8s-operator/) supports
+code. Among other things, the [OTel Operator](/docs/kubernetes/k8s-operator/) supports
 injecting and
-[configuring auto-instrumentation](/docs/k8s-operator/automatic/#configure-automatic-instrumentation)
+[configuring auto-instrumentation](/docs/kubernetes/k8s-operator/automatic/#configure-automatic-instrumentation)
 in .NET, Java, Python, and Node.js. Iris hopes that Go auto-instrumentation will
 be available in the near-future. To track progress of auto-instrumentation in
 Go, see
@@ -255,7 +255,7 @@ would be a bottleneck in terms of load and single point of failure. The team
 currently has one
 [OpenTelemetry Collector agent](/docs/collector/deployment/agent/) per
 Kubernetes cluster. The end goal is to replace those agents with the
-[OTel Operator](/docs/k8s-operator/) instead, which allows you to deploy and
+[OTel Operator](/docs/kubernetes/k8s-operator/) instead, which allows you to deploy and
 configure the OTel Collector and inject and configure auto-instrumentation.
 
 Everything is then sent to a central OTel Collector (i.e. an
