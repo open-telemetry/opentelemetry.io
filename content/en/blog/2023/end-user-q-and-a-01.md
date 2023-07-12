@@ -269,9 +269,9 @@ OpenTelemetry has a small number of language maintainers, and as a result, they
 don’t necessarily have enough cycles to work on all the things. Thus, they
 currently focus on keeping up with spec changes to update the SDK and API. This
 means that they often don’t have time (and sometimes not even the expertise) to
-manage the contrib repos (e.g. GraphQL). This is a known problem, and there is
-currently no solution in place. The OpenTelemetry Community welcomes any
-suggestions for improvement!
+manage the contrib repositories (e.g. GraphQL). This is a known problem, and
+there is currently no solution in place. The OpenTelemetry Community welcomes
+any suggestions for improvement!
 
 There is also a huge focus on
 [stabilizing semantic conventions](https://docs.google.com/document/d/1ghvajKaipiNZso3fDtyNxU7x1zx0_Eyd02OGpMGEpLE/edit#),
@@ -287,7 +287,7 @@ JavaScript environments are akin to the Wild West of Development due to:
 - Two similar, but different server-side runtimes: Node.js and
   [Deno](https://deno.land)
 
-One of J’s suggestions is to treat OTel Javascript as a hierarchy, which starts
+One of J’s suggestions is to treat OTel JavaScript as a hierarchy, which starts
 with a Core JavaScript team that splits into two subgroups: front-end web group,
 and back-end group. Front-end and back-end would in turn split. For example, for
 the back-end, have a separate Deno and Node.js group.

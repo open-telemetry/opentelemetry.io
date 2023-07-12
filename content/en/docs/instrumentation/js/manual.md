@@ -447,7 +447,7 @@ const doWork = () => {
 
 A [Span Event](/docs/concepts/signals/traces/#span-events) is a human-readable
 message on an [`Span`](/docs/concepts/signals/traces/#spans) that represents a
-discrete event with no duration that can be tracked by a single time stamp. You
+discrete event with no duration that can be tracked by a single timestamp. You
 can think of it like a primitive log.
 
 ```js

@@ -248,7 +248,7 @@ CNCF’s Slack instance.
 **Q:** Where do you go to find documentation and answers to your questions?
 
 **A:** We have many resources, including official documentation and Github
-repos.
+repositories.
 
 To help us improve our resources, it would be helpful to gather feedback from
 you as an end user – what is your process for finding OTel information? Do you

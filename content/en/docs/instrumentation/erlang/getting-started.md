@@ -16,8 +16,8 @@ the Phoenix Web Framework.
 
 ### Prerequisites
 
-Ensure that you have erlang, elixir, postgres (or the database of your choice),
-and phoenix installed locally. The phoenix
+Ensure that you have Erlang, Elixir, PostgreSQL (or the database of your
+choice), and Phoenix installed locally. The phoenix
 [installation guide](https://hexdocs.pm/phoenix/installation.html) will help you
 get set up with everything you need.
 
@@ -279,8 +279,8 @@ name because it does not have an `http.route`.
 This is the custom span we added to our private method. You'll notice it only
 has the one attribute that we set, `roll => 2`. You should also note that it is
 part of the same trace as our `<<"/api/rolldice">>` span,
-`224439009126930788594246993907621543552` and has a parent span id of
-`5581431573601075988` which is the span id of the `<<"/api/rolldice">>` span.
+`224439009126930788594246993907621543552` and has a parent span ID of
+`5581431573601075988` which is the span ID of the `<<"/api/rolldice">>` span.
 That means that this span is a child of that one, and will be shown below it
 when rendered in your tracing tool of choice.
 

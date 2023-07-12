@@ -14,7 +14,7 @@ represented, demo support will be extended to Metrics and Logs, and canonical
 scenarios will be documented for each signal, with fault injection, and more!
 
 If you want to skip the details then clone our
-[repo](https://github.com/open-telemetry/opentelemetry-demo) then run
+[repository](https://github.com/open-telemetry/opentelemetry-demo) then run
 `docker compose up`[^1] from the command line. There are a couple
 [technology requirements](https://github.com/open-telemetry/opentelemetry-demo-webstore#local-quickstart)
 so be sure to check those out too.
@@ -73,7 +73,7 @@ Otherwise the pre-existing feature set from the GCP demo remains the same:
   Node.js, Python, and Ruby)
   - Ruby support was added within the last 2 weeks of publishing date
 - Designed to work on docker locally
-- Uses redis cache
+- Uses Redis cache
 - Auto-instrumentation using instrumentation libraries Tracing support for the
   gRPC, Redis, and HTTP libraries
 - Jaeger visualizations for distributed traces, forwarded by OpenTelemetry
@@ -148,7 +148,7 @@ ourselves to just the items listed here.
 
 We’re still at the beginning of our journey but there’s great momentum behind
 this project. If you’re interested in contributing we’d love your support. There
-are links in our GitHub repo on how to get involved and you can
+are links in our GitHub repository on how to get involved and you can
 [track our overall progress](https://github.com/open-telemetry/opentelemetry-demo/issues)
 from there.
 

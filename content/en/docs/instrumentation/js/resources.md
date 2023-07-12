@@ -139,7 +139,7 @@ process.on('SIGINT', function () {
 });
 ```
 
-To get the id of your container detected automatically for you, install the
+To get the ID of your container detected automatically for you, install the
 following additional dependency:
 
 ```sh

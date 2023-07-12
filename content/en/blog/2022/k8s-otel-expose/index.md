@@ -39,7 +39,7 @@ article
 [How TLS provides identification, authentication, confidentiality, and integrity](https://www.ibm.com/docs/en/ibm-mq/9.1?topic=tls-how-provides-identification-authentication-confidentiality-integrity)
 and the Collector
 [TLS-Config](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.58.0/config/configtls/README.md)
-description on Github.
+description on GitHub.
 
 If you are interested in using an external authentication provider, I advise you
 to have a look at the article
@@ -421,7 +421,7 @@ Kubernetes components, the configurations differ a lot. Overall the
 configuration is very error-prone. In the future the exposing of the collector
 should be simplified with the help of the OpenTelemetry operator. If you are
 interested in the development, you can follow
-[Github issue #902](https://github.com/open-telemetry/opentelemetry-operator/issues/902)
+[GitHub issue #902](https://github.com/open-telemetry/opentelemetry-operator/issues/902)
 to stay updated.
 
 ## References

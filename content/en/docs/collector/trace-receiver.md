@@ -1953,7 +1953,7 @@ func appendTraceSpans(backend *BackendSystem, backendScopeSpans *ptrace.ScopeSpa
 > #### Check your work
 >
 > - Added `traceId` and `backendSpanId` variables to respectively represent the
->   trace and the span id and initialized them with the helper functions created
+>   trace and the span ID and initialized them with the helper functions created
 >   previously
 > - Added `backendSpanStartTime` and `backendSpanFinishTime` to represent the
 >   start and the end time of the operation. For the tutorial, any

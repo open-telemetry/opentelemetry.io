@@ -53,7 +53,7 @@ library. There may not be an instrumentation library that matches a library
 you're using to have services communicate with one another. Or you many have
 requirements that instrumentation libraries cannot fulfill, even if they exist.
 
-When you must propagate context manually, you can use the context api.
+When you must propagate context manually, you can use the context API.
 
 The following presents an example of an outgoing HTTP request:
 

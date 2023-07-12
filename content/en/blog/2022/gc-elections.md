@@ -61,8 +61,8 @@ the community.
 ## Questions?
 
 For any election related questions, please file an issue on the
-[community repo](https://github.com/open-telemetry/community/issues) here and
-tag [@jpkrohling](https://github.com/jpkrohling),
+[community repository](https://github.com/open-telemetry/community/issues) here
+and tag [@jpkrohling](https://github.com/jpkrohling),
 [@bogdandrutu](https://github.com/bogdandrutu), and
 [@bhs](https://github.com/bhs). Or send us a message on
 [CNCF Slack](https://slack.cncf.io/) in

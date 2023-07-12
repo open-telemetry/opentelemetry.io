@@ -15,7 +15,7 @@ since we declared general availability with our
 ### Project Milestones
 
 The demo has achieved remarkable milestones in its first year, with more than
-**70 contributors, 20 official vendor forks, 780 Github stars, and 180K Docker
+**70 contributors, 20 official vendor forks, 780 GitHub stars, and 180K Docker
 pulls**. The project team has been hard at work adding new capabilities and
 improving on existing ones with more than _460 merged PRs, 5 re-written services
 in new languages, and 7 brand new components / services_.
@@ -33,7 +33,7 @@ changed between our 1.0.0 and 1.4.0 releases? Quite a lot actually.
   Helm_
 - **More out of the box dashboards like our
   [Collector Data Flow Dashboard](/docs/demo/collector-data-flow-dashboard/)**
-- **A myriad of frontend bug fixes**
+- **A myriad of frontend bugfixes**
 - _Our first
   [Connector](https://github.com/open-telemetry/opentelemetry-collector/blob/main/connector/README.md)
   in the Collector to demonstrate how telemetry pipelines can be linked_

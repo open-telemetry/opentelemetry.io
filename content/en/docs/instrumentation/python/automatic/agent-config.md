@@ -65,7 +65,7 @@ For example, `exporter_otlp_endpoint` would convert to
 
 ## Python-specific Configuration
 
-There are some python specific configuration options you can set by prefixing
+There are some Python specific configuration options you can set by prefixing
 environment variables with `OTEL_PYTHON_`.
 
 ### Excluded URLs
@@ -152,7 +152,7 @@ export OTEL_PYTHON_INSTRUMENTATION_SANITIZE_REDIS=true
 
 ## Disabling Specific Instrumentations
 
-The Python agent by default will detect a python program's packages and
+The Python agent by default will detect a Python program's packages and
 instrument any packages it can. This makes instrumentation easy, but can result
 in too much or unwanted data.
 

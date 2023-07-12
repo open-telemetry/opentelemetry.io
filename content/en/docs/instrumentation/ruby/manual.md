@@ -37,7 +37,7 @@ TracerProvider. If you are using
 Rails app, then one will be registered for you.
 
 ```ruby
-# If in a rails app, this lives in config/initializers/opentelemetry.rb
+# If in a Rails app, this lives in config/initializers/opentelemetry.rb
 require "opentelemetry/sdk"
 
 OpenTelemetry::SDK.configure do |c|
