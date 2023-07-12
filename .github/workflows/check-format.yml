@@ -4,12 +4,12 @@ on:
   pull_request:
 
 jobs:
-  check-file-names:
+  check-filenames:
     name: Check filenames
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - run: npm run check:filenames --ignore-scripts 
+      - uses: actions/checkout@v2
+      - run: npm run check:filenames --ignore-scripts
 
   check-formatting:
     name: Check file format
