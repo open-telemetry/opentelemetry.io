@@ -14,7 +14,7 @@ It is an opinion, not the formal definition. The primary role of the Governance
 Committee is not to centralize power, but to enable and empower the broader
 community by establishing processes. Let me explain.
 
-![a watering can](1_BLJQ9hMyIyKcvGebCBuQ8w.jpeg)
+![Watering can](watering-can.jpeg)
 
 The main objective of the OpenTelemetry project is to make robust, portable
 telemetry a built-in feature of cloud-native software. The most effective way to
