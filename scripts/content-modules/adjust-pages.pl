@@ -116,9 +116,13 @@ while(<>) {
     ) {
     printf STDOUT "WARNING: link to spec page encoded as an external URL, but should be a local path, fix this upstream;\n  File: $ARGV \n  Link: $1\n";
   }
-  s|\(https://github.com/open-telemetry/opentelemetry-specification/\w+/(main\|v$otelSpecVers)/specification(.*?)\)|($specBasePath/otel$2)|;
 
-  s|(https://)?github.com/open-telemetry/opentelemetry-proto/((blob\|tree)/.*?/)?docs/specification.md|$specBasePath/otlp/|g;
+  # Match markdown inline links or link definitions to OTel spec pages: "[...](URL)" or "[...]: URL"
+  s|(\]:\s+\|\()https://github.com/open-telemetry/opentelemetry-specification/\w+/(main\|v$otelSpecVers)/specification(.*?\)?)|$1$specBasePath/otel$3|;
+
+  # Match links to OTLP
+  s|(\]:\s+\|\()?https://github.com/open-telemetry/opentelemetry-proto/(\w+/.*?/)?docs/specification.md(\))?|$1$specBasePath/otlp/$3|g;
+  s|github.com/open-telemetry/opentelemetry-proto/docs/specification.md|OTLP|g;
 
   # Images
   s|(\.\./)?internal(/img/[-\w]+\.png)|$2|g;
