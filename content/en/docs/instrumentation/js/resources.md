@@ -70,12 +70,11 @@ resource you need. In that case you can use the environment
 following script adds [Service][], [Host][] and [OS][] resource attributes:
 
 ```console
-$ env OTEL_RESOURCE_ATTRIBUTES="service.name=app.js,service.namespace=tutorial,service.version=1.0,service.instance.id=`uuidgen`,host.name=${HOSTNAME:},host.type=`uname -m`,os.name=`uname -s`,os.version=`uname -r`" \
+$ env OTEL_RESOURCE_ATTRIBUTES="service.namespace=tutorial,service.version=1.0,service.instance.id=`uuidgen`,host.name=${HOSTNAME:},host.type=`uname -m`,os.name=`uname -s`,os.version=`uname -r`" \
   node --require ./tracing.js app.js
 ...
 EnvDetector found resource. Resource {
   attributes: {
-    'service.name': 'app.js',
     'service.namespace': 'tutorial',
     'service.version': '1.0',
     'service.instance.id': '46D99F44-27AB-4006-9F57-3B7C9032827B',
@@ -87,6 +86,9 @@ EnvDetector found resource. Resource {
 }
 ...
 ```
+
+You can use the environment variable `OTEL_SERVICE_NAME` to set value of
+the `service.name` resource attribute.
 
 ## Adding resources in code
 
