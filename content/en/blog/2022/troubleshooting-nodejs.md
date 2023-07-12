@@ -77,7 +77,7 @@ To use an auto instrumentation library in your service, you’ll need to:
 For most users, the following should cover it:
 
 ```js
-// First run `npm install @opentelemetry/instrumentation-foo @opentelemetry/instrumentation-bar
+// First run: npm install @opentelemetry/instrumentation-foo @opentelemetry/instrumentation-bar
 // Replace foo and bar with the actual packages you need to instrument (HTTP/mySQL/Redis etc)
 import { FooInstrumentation } from '@opentelemetry/instrumentation-foo';
 import { BarInstrumentation } from '@opentelemetry/instrumentation-bar';
