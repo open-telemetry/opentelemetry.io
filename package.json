@@ -25,7 +25,6 @@
     "_prebuild": "run-s get:submodule cp:spec",
     "_prepare:docsy": "cd themes/docsy && npm install",
     "_prettier:any": "npx prettier --ignore-path ''",
-    "_refcache-restore": "make refcache-restore",
     "_rename-to-kebab-case": "find assets content static -name '*_*' ! -name '_*' -exec sh -c 'mv \"$1\" \"${1//_/-}\"' _ {} \\;",
     "_serve:hugo": "hugo server -DFE --minify",
     "_serve:netlify": "netlify dev -c \"npm run _serve:hugo\"",

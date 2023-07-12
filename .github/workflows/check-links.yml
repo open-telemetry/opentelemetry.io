@@ -5,7 +5,7 @@ on:
 
 jobs:
   build-and-check-links:
-    name: Build and check links
+    name: BUILD and CHECK LINKS
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:
@@ -39,11 +39,13 @@ jobs:
             tmp/.htmltest/refcache.json
 
   check-refcache:
-    name: Check for refcache updates
+    name: REFCACHE updates?
     needs: build-and-check-links
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:
+      - uses: actions/checkout@v3
+
       - name: Download build log
         uses: actions/download-artifact@v2
         with:
@@ -52,11 +54,11 @@ jobs:
 
       - name: Fail on uncommitted refcache changes
         run: |
-          npm run _refcache-restore
+          make refcache-restore
           npm run diff:fail
 
   check-build-log-for-issues:
-    name: Check for build warnings
+    name: WARNINGS in build log?
     needs: build-and-check-links
     runs-on: ubuntu-latest
     continue-on-error: true
