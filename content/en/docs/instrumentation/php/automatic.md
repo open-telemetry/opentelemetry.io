@@ -3,7 +3,7 @@ title: Automatic Instrumentation
 linkTitle: Automatic
 weight: 20
 spelling: cSpell:ignore userland phar autoload tracecontext myapp configurator
-spelling: cSpell:ignore packagist pecl shortcode unindented democlass
+spelling: cSpell:ignore packagist pecl shortcode unindented democlass autoloading
 ---
 
 Automatic instrumentation with PHP requires at least PHP 8.0, and the
@@ -15,8 +15,12 @@ method runs.
 {{% alert title="Important" color="warning" %}}Installing the OpenTelemetry
 extension by itself will not generate traces. You must also install one or more
 [packages](/ecosystem/registry/?component=instrumentation&language=php) for the
-frameworks and libraries that you are using, or alternatively write your
-own.{{% /alert %}}
+frameworks and libraries that you are using, or alternatively write your own.
+
+You also _must_ use
+[composer autoloading](https://getcomposer.org/doc/01-basic-usage.md#autoloading),
+as this is the mechanism all auto-instrumentation packages use to register
+themselves. {{% /alert %}}
 
 ## Example
 
