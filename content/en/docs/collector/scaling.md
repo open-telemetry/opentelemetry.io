@@ -139,9 +139,10 @@ load balancer. Using a Sidecar also makes sense to avoid bringing down a crucial
 component for all pods in a node when one DaemonSet pod fails.
 
 The sidecar pattern consists in adding a container into the workload pod. The
-[OpenTelemetry Operator](/docs/kubernetes/k8s-operator/) can automatically add that for
-you. To accomplish that, you’ll need an OpenTelemetry Collector CR and you’ll
-need to annotate your PodSpec or Pod telling the operator to inject a sidecar:
+[OpenTelemetry Operator](/docs/kubernetes/k8s-operator/) can automatically add
+that for you. To accomplish that, you’ll need an OpenTelemetry Collector CR and
+you’ll need to annotate your PodSpec or Pod telling the operator to inject a
+sidecar:
 
 ```yaml
 ---
