@@ -66,8 +66,12 @@ jobs:
           path: tmp
 
       - name: Check for warnings or errors in build log
+        # Don't fail until the following are fixed:
+        # https://github.com/open-telemetry/opamp-spec/issues/150
+        # https://github.com/open-telemetry/opentelemetry.io/issues/2721
         run: |
           if grep -E -ie 'warn(ing)?|error' tmp/build-log.txt; then
-            echo "Warning or error found in build log."
-            exit 1
+            echo
+            echo "WARNING or ERROR found in build log."
+            exit 0
           fi
