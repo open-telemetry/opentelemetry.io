@@ -7,7 +7,6 @@ jobs:
   build-and-check-links:
     name: BUILD and CHECK LINKS
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - uses: actions/checkout@v3
 
@@ -24,8 +23,7 @@ jobs:
 
       - name: Minimal install and prep
         run: |
-          npm install npm-run-all --ignore-scripts
-          npm run prepare
+          npm install npm-run-all
 
       - run: npm run build | tee tmp/build-log.txt
       - run: npm run _check:links
@@ -42,7 +40,6 @@ jobs:
     name: REFCACHE updates?
     needs: build-and-check-links
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - uses: actions/checkout@v3
 
@@ -61,7 +58,6 @@ jobs:
     name: WARNINGS in build log?
     needs: build-and-check-links
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - name: Download build log
         uses: actions/download-artifact@v2
