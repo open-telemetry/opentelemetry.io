@@ -52,11 +52,11 @@ jobs:
 
       - name: Fail on uncommitted refcache changes
         run: |
-          make refcache-restore
+          npm run _refcache-restore
           npm run diff:fail
 
   check-build-log-for-issues:
-    name: Check build for issues
+    name: Check for build warnings
     needs: build-and-check-links
     runs-on: ubuntu-latest
     continue-on-error: true
