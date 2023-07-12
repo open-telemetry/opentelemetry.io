@@ -211,9 +211,8 @@ stable.
 
 ### How are you collecting the metrics signal?
 
-Auto-instrumentation emits some
-[OTLP](https://github.com/open-telemetry/opentelemetry-proto/blob/main/docs/specification.md)
-metrics; however, the majority of metrics still come from Prometheus.
+Auto-instrumentation emits some [OTLP](/docs/specs/otlp/) metrics; however, the
+majority of metrics still come from Prometheus.
 
 The team currently uses the
 [Prometheus Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/README.md)
