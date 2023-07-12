@@ -86,7 +86,8 @@ repository[^python-timeline].
     A number of projects within the `opencensus-python` repository are still
     being used as recommended production solutions. These projects will continue
     to be maintained. For details regarding maintenance timeline, next steps for
-    migration, and general support questions, reach out to repository maintainers.
+    migration, and general support questions, reach out to repository
+    maintainers.
 
 [^shim-next-release]: Python and JavaScript shim packages will be released soon.
 [^shim-support]:
