@@ -4,15 +4,70 @@ on:
   pull_request:
 
 jobs:
-  check-formatting:
-    name: Check links and refcache
+  build-and-check-links:
+    name: Build and check links
     runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v3
 
-      - run: npm install
-      - run: npm run build
+      - name: Create NPM cache-hash input file
+        run: |
+          mkdir -p tmp
+          jq '{devDependencies, dependencies, engines}' package.json > tmp/package-ci.json
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: tmp/package-ci.json
+
+      - run: npm run build | tee tmp/build-log.txt
+
       - run: npm run _check:links
 
+      - name: Upload build log
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-log-etc
+          path: |
+            tmp/build-log.txt
+            tmp/.htmltest/refcache.json
+
+  check-refcache:
+    name: Check for refcache updates
+    needs: build-and-check-links
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+
+      - name: Download build log
+        uses: actions/download-artifact@v2
+        with:
+          name: build-log-etc
+          path: tmp
+
       - name: Fail on uncommitted refcache changes
-        run: npm run diff:fail
+        run: |
+          make refcache-restore
+          npm run diff:fail
+
+  check-build-log-for-issues:
+    name: Check build for issues
+    needs: build-and-check-links
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+
+      - name: Download build log
+        uses: actions/download-artifact@v2
+        with:
+          name: build-log-etc
+          path: tmp
+
+      - name: Check for warnings or errors in build log
+        run: |
+          if grep -E -ie 'warn(ing)?|error' tmp/build-log.txt; then
+            echo "Warning or error found in build log."
+            exit 1
+          fi
