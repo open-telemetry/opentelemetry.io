@@ -22,9 +22,12 @@ jobs:
           cache: npm
           cache-dependency-path: tmp/package-ci.json
 
-      - run: npm run prepare
-      - run: npm run build | tee tmp/build-log.txt
+      - name: Minimal install and prep
+        run: |
+          npm install npm-run-all --ignore-scripts
+          npm run prepare
 
+      - run: npm run build | tee tmp/build-log.txt
       - run: npm run _check:links
 
       - name: Upload build log
