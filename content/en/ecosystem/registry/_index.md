@@ -3,7 +3,10 @@ title: Registry
 description: >-
   Find libraries, plugins, integrations, and other useful tools for extending
   OpenTelemetry.
-aliases: [/registry/*]
+aliases:
+  # Catch-all for old registry entries; we don't publish individual entry pages anymore.
+  - /registry/*
+  - /ecosystem/registry/*
 type: default
 layout: registry
 outputs: [html, json]

@@ -24,6 +24,7 @@
 
 /docs/reference/specification    /docs/specs/otel
 /docs/reference/specification/*  /docs/specs/otel/:splat
+/docs/specification/otel/*       /docs/specs/otel/:splat
 
 {{/*
   Social-media image redirects. As mentioned in

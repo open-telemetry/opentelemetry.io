@@ -10,6 +10,8 @@ DEST=$DEST_BASE/otel/specification
 
 rm -Rf $DEST
 mkdir -p $DEST
+FIX_FILES=$(find $SRC -name "*.md" -not -path '*/semantic_conventions/*')
+$SCRIPT_DIR/otel-spec-fix.pl $FIX_FILES
 cp -R $SRC/* $DEST/
 
 find $DEST/ -name "README.md" -exec sh -c 'f="{}"; mv -- "$f" "${f%README.md}_index.md"' \;
@@ -18,6 +20,9 @@ find $DEST/ -name "README.md" -exec sh -c 'f="{}"; mv -- "$f" "${f%README.md}_in
 FILES=$(find $DEST -name "*.md")
 
 $SCRIPT_DIR/adjust-pages.pl $FILES
+if [[ -z $NO_GIT_RESTORE ]]; then
+  (cd $SRC/.. && git restore .)
+fi
 
 echo "OTEL SPEC pages: copied and processed"
 
