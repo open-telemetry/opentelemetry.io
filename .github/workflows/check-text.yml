@@ -1,11 +1,11 @@
-name: Check text linter rules # cSpell:ignore refcache startswith
+name: Check linter rules
 
 on:
   pull_request:
 
 jobs:
-  check-formatting:
-    name: Check text linter rules
+  text-linter:
+    name: TEXT linter
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -14,3 +14,21 @@ jobs:
           jq 'del(.dependencies) | .devDependencies |= with_entries( select(.key | startswith("textlint")))' package.json > package2.json && mv package2.json package.json
       - run: npm install --ignore-scripts
       - run: npm run check:text
+
+  markdown-linter:
+    name: MARKDOWN linter
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Create and use reduced-dependencies package.json
+        run: |
+          mkdir -p tmp
+          jq '.devDependencies |= with_entries(
+                  select(.key | test("gulp|markdown|through|require"))
+                )
+                | del(.dependencies)' \
+            package.json > tmp/package-min.json
+          cp tmp/package-min.json package.json
+      - run: npm install --ignore-scripts
+      - run: npm run check:markdown

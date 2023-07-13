@@ -6,6 +6,8 @@ description: Manual instrumentation for OpenTelemetry C++
 spelling: cSpell:ignore nostd labelkv decltype nullptr
 ---
 
+<!-- markdownlint-disable no-duplicate-heading -->
+
 {{% docs/instrumentation/manual-intro %}}
 
 ## Setup

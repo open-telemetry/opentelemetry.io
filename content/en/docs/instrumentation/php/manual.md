@@ -6,6 +6,8 @@ description: Manual instrumentation for OpenTelemetry PHP
 spelling: cSpell:ignore myapp autoload guzzlehttp
 ---
 
+<!-- markdownlint-disable no-duplicate-heading -->
+
 {{% docs/instrumentation/manual-intro %}}
 
 ## Installation

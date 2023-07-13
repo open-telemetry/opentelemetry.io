@@ -145,8 +145,8 @@ number of ways, the steps below use environment variables.
    exporter][], using a notation suitable for your shell/terminal environment
    &mdash; we illustrate a notation for bash-like shells:
 
-   ```console
-   $ export JAVA_TOOL_OPTIONS="-javaagent:PATH/TO/opentelemetry-javaagent.jar" \
+   ```sh
+   export JAVA_TOOL_OPTIONS="-javaagent:PATH/TO/opentelemetry-javaagent.jar" \
      OTEL_TRACES_EXPORTER=logging \
      OTEL_METRICS_EXPORTER=logging \
      OTEL_LOGS_EXPORTER=logging
@@ -166,8 +166,8 @@ number of ways, the steps below use environment variables.
 
 4. From _another_ terminal, send a request using `curl`:
 
-   ```console
-   $ curl localhost:8080/rolldice
+   ```sh
+   curl localhost:8080/rolldice
    ```
 
 5. Stop the server process.

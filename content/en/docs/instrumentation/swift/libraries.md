@@ -6,6 +6,8 @@ weight: 40
 spelling: cSpell:ignore iphone darwin NSURL inout wifi
 ---
 
+<!-- markdownlint-disable no-duplicate-heading -->
+
 OpenTelemetry-Swift provides several instrumentation libraries that generate
 instrumentation for you when they're installed and initialized.
 

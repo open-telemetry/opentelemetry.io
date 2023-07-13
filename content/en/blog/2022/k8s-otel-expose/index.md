@@ -3,9 +3,9 @@ title: Exposing a Collector for cross cluster communication
 linkTitle: Exposing a Collector
 date: 2022-09-08
 author: '[Benedikt Bongartz](https://github.com/frzifus)'
-spelling: cSpell:ignore k8sattributes k8sattributesprocessor K8sattributes 
+spelling: cSpell:ignore k8sattributes k8sattributesprocessor K8sattributes
 spelling: cSpell:ignore K8sprocessor Benedikt Bongartz Keycloak k8sprocessor
-spelling: cSpell:ignore dXNlci0xOjEyMzQK basicauth htpasswd llczt 
+spelling: cSpell:ignore dXNlci0xOjEyMzQK basicauth htpasswd llczt
 spelling: cSpell:ignore oidc rolebinding letsencrypt frzifus
 ---
 
@@ -103,17 +103,16 @@ transmitted traces are stored in a
 Interfaces and behavior may change in the future. Therefore, the versions used
 in this setup are mentioned in brackets.
 
-- A Kubernetes[v1.23.3] cluster with a public address with
-  [ingress-nginx-controller](https://docs.nginx.com/nginx-ingress-controller/)[v1.2.1]
-  installed.
-- A Kubernetes[v1.23.3] edge cluster to create a test cluster. Using
+- A Kubernetes [v1.23.3] cluster with a public address with
+  [ingress-nginx-controller](https://docs.nginx.com/nginx-ingress-controller/)
+  [v1.2.1] installed.
+- A Kubernetes [v1.23.3] edge cluster to create a test cluster. Using
   [Kind](https://kind.sigs.k8s.io/) is recommended.
-- Installed [OpenTelemetry Operator](/docs/collector/getting-started)[v0.58.0]
+- Installed [OpenTelemetry Operator](/docs/collector/getting-started) [v0.58.0]
   on both ends.
-- Installed
-  [Jaeger Operator](https://www.jaegertracing.io/docs/1.37/operator/)[v1.37.0]
-  on your public cluster.
-- Installed [cert-manager](https://cert-manager.io/)[v1.9.1] on your public
+- Installed [Jaeger Operator](https://www.jaegertracing.io/docs/1.37/operator/)
+  [v1.37.0] on your public cluster.
+- Installed [cert-manager](https://cert-manager.io/) [v1.9.1] on your public
   cluster.
 
 ## Remote cluster configuration

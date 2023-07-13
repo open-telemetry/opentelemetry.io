@@ -6,6 +6,9 @@ weight: 70
 spelling: cSpell:ignore behaviour
 ---
 
+<!-- markdownlint-disable no-duplicate-heading -->
+<!-- markdownlint-capture -->
+
 A [resource](/docs/specs/otel/overview/#resources) represents an entity
 producing telemetry as attributes. For example, an OTP Release producing
 telemetry that is running in a container on Kubernetes has an OTP Release name,
@@ -26,6 +29,7 @@ detectors use the OS environment variable `OTEL_RESOURCE_ATTRIBUTES` and the
 The detectors to use is a list of module names and can be configured in the
 Application configuration:
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 
@@ -41,6 +45,7 @@ resource_detectors: [:otel_resource_env_var, :otel_resource_app_env]
 
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 Or through the environment variable `OTEL_RESOURCE_DETECTORS`:
 
@@ -67,6 +72,7 @@ OTEL_RESOURCE_ATTRIBUTES="deployment.environment=development"
 Alternatively, use the `resource` Application environment under the
 `opentelemetry` Application configuration of `sys.config` or `runtime.exs`:
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 
@@ -82,6 +88,7 @@ resource: %{deployment: %{environment: "development" }}
 
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 Resource attributes in the `resource` Application environment variable are
 flattened and combined with `.`, so

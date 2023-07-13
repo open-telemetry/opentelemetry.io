@@ -20,8 +20,8 @@ application (a HTTP server & HTTP client). For more details read
 You can build OpenTelemetry C++ on Windows, macOS or Linux. First you need to
 install some dependencies:
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
-
 {{< tabpane lang=shell >}}
 
 {{< tab "Linux (apt)" >}}
@@ -43,8 +43,8 @@ brew install git cmake
 {{< /tab >}}
 
 {{< /tabpane >}}
-
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 ## Building
 

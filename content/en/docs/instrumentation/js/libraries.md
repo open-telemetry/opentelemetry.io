@@ -45,7 +45,7 @@ npm install @opentelemetry/auto-instrumentations-node
 Then in your tracing initialization code, use `registerInstrumentations`:
 
 <!-- textlint-disable -->
-
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 
@@ -125,7 +125,7 @@ provider.register();
 
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
-
+<!-- markdownlint-restore -->
 <!-- textlint-enable -->
 
 ### Using individual instrumentation packages
@@ -145,6 +145,7 @@ npm install --save @opentelemetry/instrumentation-http @opentelemetry/instrument
 
 And then register each instrumentation library:
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 
@@ -230,6 +231,7 @@ provider.register();
 
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 ## Configuring instrumentation libraries
 

@@ -26,13 +26,13 @@ To install the operator in an existing cluster, make sure you have cert-manager
 installed and run:
 
 ```bash
-$ kubectl apply -f https://github.com/open-telemetry/opentelemetry-operator/releases/latest/download/opentelemetry-operator.yaml
+kubectl apply -f https://github.com/open-telemetry/opentelemetry-operator/releases/latest/download/opentelemetry-operator.yaml
 ```
 
 Once the `opentelemetry-operator` deployment is ready, create an OpenTelemetry
 Collector (otelcol) instance, like:
 
-```bash
+```console
 $ kubectl apply -f - <<EOF
 apiVersion: opentelemetry.io/v1alpha1
 kind: OpenTelemetryCollector
