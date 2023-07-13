@@ -21,10 +21,7 @@ jobs:
           cache: npm
           cache-dependency-path: tmp/package-ci.json
 
-      - name: Minimal install and prep
-        run: |
-          npm install hugo-extended npm-run-all postcss-cli postcss autoprefixer
-
+      - run: npm install
       - run: npm run build | tee tmp/build-log.txt
       - run: npm run _check:links
 
