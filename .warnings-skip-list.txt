@@ -1,0 +1,1 @@
+WARN  docs/specs/opamp/index.md:.*semantic-conventions/tree/main/docs/resource
