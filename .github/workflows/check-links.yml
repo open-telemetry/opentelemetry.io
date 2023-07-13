@@ -23,7 +23,7 @@ jobs:
 
       - name: Minimal install and prep
         run: |
-          npm install npm-run-all postcss-cli
+          npm install npm-run-all postcss-cli postcss autoprefixer
 
       - run: npm run build | tee tmp/build-log.txt
       - run: npm run _check:links
