@@ -61,7 +61,7 @@ desired configuration property:
 - Prefix environment variable with `OTEL_`
 
 For example, `exporter_otlp_endpoint` would convert to
-`OTEL_EXPORTER_OTLP_TRACES_ENDPOINT`.
+`OTEL_EXPORTER_OTLP_ENDPOINT`.
 
 ## Python-specific Configuration
 
