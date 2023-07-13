@@ -32,7 +32,7 @@
     "build:preview": "set -x && npm run _build -- --minify --baseURL \"${DEPLOY_PRIME_URL:-/}\"",
     "build:production": "hugo --cleanDestinationDir --minify",
     "build": "npm run _build",
-    "build+log": "npm run _build | tee tmp/build-log.txt",
+    "build+log": "npm run build | tee tmp/build-log.txt",
     "cd:public": "cd public &&",
     "check": "npm run all -- check:*",
     "check:filenames": "test -z \"$(npm run -s _ls-bad-filenames)\" || npm run -s _filename-error",
@@ -101,7 +101,7 @@
     "@opentelemetry/sdk-trace-web": "^1.8.0",
     "@opentelemetry/semantic-conventions": "^1.8.0"
   },
-  "engines-comment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
+  "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
   "engines": {
     "node": "18.x"
   },

@@ -10,13 +10,19 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name:
-          Create NPM cache-hash input file and reduced-dependencies package.json
+      - name: Create NPM cache-hash input file
         run: |
           mkdir -p tmp
-          jq '{devDependencies, dependencies, engines, gitHubActionCacheCounter}' package.json > tmp/package-ci.json
-          jq 'del(.devDependencies[] | select(test("spell|gulp|netlify|prettier|require|text")))' package.json > tmp/package-min.json
-          mv tmp/package-min.json package.json
+          jq '{devDependencies, dependencies, engines, gitHubActionCacheKey}' package.json > tmp/package-ci.json
+
+      - name: Create and use reduced-dependencies package.json
+        run: |
+          jq '.devDependencies |= with_entries(
+                select(.key | test("spell|gulp|netlify|prettier|require|text") | not)
+              )
+              | del(.dependencies)' \
+            package.json > tmp/package-min.json
+          cp tmp/package-min.json package.json
 
       - uses: actions/setup-node@v3
         with:
@@ -29,11 +35,12 @@ jobs:
       - run: npm run _check:links
 
       - name: Upload build log
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: build-log-etc
           path: |
             tmp/build-log.txt
+            tmp/package*.json
             tmp/.htmltest/refcache.json
 
   check-refcache:
@@ -44,7 +51,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Download build log
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: build-log-etc
           path: tmp
@@ -62,10 +69,10 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Download build log
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: build-log-etc
           path: tmp
 
       - name: Check for warnings or errors in build log
-        run: make check-build-log;
+        run: scripts/check-build-log.sh
