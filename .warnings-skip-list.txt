@@ -1,1 +1,1 @@
-xWARN  docs/specs/opamp/index.md:.*semantic-conventions/tree/main/docs/resource
+WARN  docs/specs/opamp/index.md:.*semantic-conventions/tree/main/docs/resource

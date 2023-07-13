@@ -23,7 +23,7 @@ jobs:
 
       - name: Minimal install and prep
         run: |
-          npm install npm-run-all
+          npm install npm-run-all postcss-cli
 
       - run: npm run build | tee tmp/build-log.txt
       - run: npm run _check:links
