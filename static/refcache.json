@@ -1775,6 +1775,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:42:03.977077-04:00"
   },
+  "https://github.com/dubonzi/otelresty": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-13T13:50:57.586915289-03:00"
+  },
   "https://github.com/dyladan": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:26:03.711736-04:00"
