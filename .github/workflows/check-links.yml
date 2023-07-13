@@ -18,9 +18,9 @@ jobs:
       - name: Create and use reduced-dependencies package.json
         run: |
           jq '.devDependencies |= with_entries(
-                select(.key | test("spell|gulp|netlify|prettier|require|text") | not)
-              )
-              | del(.dependencies)' \
+                  select(.key | test("prefix|hugo|run|css"))
+                )
+                | del(.dependencies)' \
             package.json > tmp/package-min.json
           cp tmp/package-min.json package.json
 
@@ -33,16 +33,12 @@ jobs:
       - run: npm install --no-optional
       - run: npm run build+log
       - run: npm run _check:links
-      - run: ls -l tmp/.htmltest
-
-      - name: Upload build log
-        uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v3
         with:
           name: build-log-etc
           path: |
             tmp/build-log.txt
             tmp/package*.json
-            tmp/.htmltest/refcache.json
             static/refcache.json
 
   check-refcache:
@@ -51,16 +47,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
-      - name: Download build log
-        uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v3
         with: { name: build-log-etc }
-
-      - run: ls -l tmp/.htmltest
-      - name: Fail on uncommitted refcache changes
-        run: |
-          make refcache-restore
-          npm run diff:fail
+      - run: npm run diff:fail
 
   check-build-log-for-issues:
     name: WARNINGS in build log?
@@ -68,10 +57,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
-      - name: Download build log
-        uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v3
         with: { name: build-log-etc }
-
-      - name: Check for warnings or errors in build log
-        run: scripts/check-build-log.sh
+      - run: scripts/check-build-log.sh
