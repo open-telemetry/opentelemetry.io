@@ -1,4 +1,5 @@
 # Set REFCACHE to another value to disable htmltest refcache-file manipulation
+BUILD_LOG?=tmp/build-log.txt
 REFCACHE?=refcache
 HTMLTEST_DIR=tmp
 HTMLTEST?=htmltest # Specify as make arg if different
@@ -7,6 +8,7 @@ LINK_CACHE_FILE?=refcache.json
 LINK_CACHE_FILE_DEST_DIR?=static
 LINK_CACHE_FILE_SRC_DIR?=$(HTMLTEST_DIR)/.htmltest
 OTEL_GEN_REPO?=../$(shell basename $(shell pwd)).g
+WARNINGS_SKIP_LIST?=.warnings-skip-list.txt
 
 # Use $(HTMLTEST) in PATH, if available; otherwise, we'll get a copy
 ifeq (, $(shell which $(HTMLTEST)))
@@ -37,6 +39,20 @@ ifeq (refcache, $(REFCACHE))
 else
 	@echo "SKIPPING refcache-save"
 endif
+
+# Add warning skip patterns, one per line to WARNINGS_SKIP_LIST to
+# temporarily skip known warnings or errors.
+check-build-log:
+	@if [ -e $(BUILD_LOG) ]; then \
+		WARNINGS=`grep -E -ie 'warn(ing)?|error' $(BUILD_LOG) | grep -v -f $(WARNINGS_SKIP_LIST)`; \
+		if [ -n "$$WARNINGS" ]; then \
+			echo "WARNINGs or ERRORs found in build log:\n"; \
+			echo "$$WARNINGS\n"; \
+			exit 1; \
+		fi \
+	else \
+		echo "INFO: $(BUILD_LOG) file not found."; \
+	fi
 
 check-links: $(GET_LINK_CHECKER_IF_NEEDED) \
 	refcache-restore check-links-only refcache-save
