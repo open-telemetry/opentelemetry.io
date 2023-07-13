@@ -15,8 +15,8 @@ jobs:
         run: |
           mkdir -p tmp
           jq '{devDependencies, dependencies, engines, gitHubActionCacheCounter}' package.json > tmp/package-ci.json
-          jq 'del(.devDependencies[] | select(test("spell|gulp|netlify|prettier|require|text")))' package.json > tmp/package2.json
-          mv tmp/package2.json package.json
+          jq 'del(.devDependencies[] | select(test("spell|gulp|netlify|prettier|require|text")))' package.json > tmp/package-min.json
+          mv tmp/package-min.json package.json
 
       - uses: actions/setup-node@v3
         with:
@@ -24,9 +24,8 @@ jobs:
           cache: npm
           cache-dependency-path: tmp/package-ci.json
 
-      - run: npm install
-      - run: git restore package.json
-      - run: npm run build | tee tmp/build-log.txt
+      - run: npm install --no-optional
+      - run: npm run build+log
       - run: npm run _check:links
 
       - name: Upload build log

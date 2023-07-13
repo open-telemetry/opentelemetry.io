@@ -32,6 +32,7 @@
     "build:preview": "set -x && npm run _build -- --minify --baseURL \"${DEPLOY_PRIME_URL:-/}\"",
     "build:production": "hugo --cleanDestinationDir --minify",
     "build": "npm run _build",
+    "build+log": "npm run _build | tee tmp/build-log.txt",
     "cd:public": "cd public &&",
     "check": "npm run all -- check:*",
     "check:filenames": "test -z \"$(npm run -s _ls-bad-filenames)\" || npm run -s _filename-error",
@@ -104,7 +105,7 @@
   "engines": {
     "node": "18.x"
   },
-  "gitHubActionCacheKey": "2023-07-12 22:03 ET - change key to clear the cache",
+  "gitHubActionCacheKey": "2023-07-13 - change this key to force cache refresh",
   "private": true,
   "prettier": {
     "proseWrap": "always",
