@@ -31,16 +31,42 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
 
-      - run: npm install --ignore-scripts
+      - name: Create NPM cache-hash input file
+        run: |
+          mkdir -p tmp
+          jq '{devDependencies, dependencies, engines, gitHubActionCacheKey}' package.json > tmp/package-ci.json
+
+      # - name: Create and use reduced-dependencies package.json
+      #   run: |
+      #     jq '.devDependencies |= with_entries(
+      #             select(.key | test("prefix|hugo|run|css|prettier"))
+      #           )
+      #           | del(.dependencies)' \
+      #       package.json > tmp/package-min.json
+      #     cp tmp/package-min.json package.json
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: tmp/package-ci.json
+
+      # - run: npm install --no-optional --ignore-scripts
       - run: |
           npm run format
           git status
           git branch -v
 
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: 'Results from /fix:format'
-          commit_user_name: opentelemetrybot
-          commit_user_email: 107717825+opentelemetrybot@users.noreply.github.com
+      - name: Commit and push changes, if any
+        run: |
+          git config --local user.email "107717825+opentelemetrybot@users.noreply.github.com"
+          git config --local user.name "opentelemetrybot"
+          git add -A
+          if [[ $(git status --porcelain) ]]; then
+            git commit -m 'Results from /fix:format'
+            git push
+          else
+            echo "No changes to commit"
+          fi
         env:
           GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
