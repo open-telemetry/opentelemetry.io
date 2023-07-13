@@ -33,6 +33,7 @@ jobs:
       - run: npm install --no-optional
       - run: npm run build+log
       - run: npm run _check:links
+      - run: ls -l tmp/.htmltest
 
       - name: Upload build log
         uses: actions/upload-artifact@v3
@@ -42,6 +43,7 @@ jobs:
             tmp/build-log.txt
             tmp/package*.json
             tmp/.htmltest/refcache.json
+            static/refcache.json
 
   check-refcache:
     name: REFCACHE updates?
@@ -52,10 +54,9 @@ jobs:
 
       - name: Download build log
         uses: actions/download-artifact@v3
-        with:
-          name: build-log-etc
-          path: tmp
+        with: { name: build-log-etc }
 
+      - run: ls -l tmp/.htmltest
       - name: Fail on uncommitted refcache changes
         run: |
           make refcache-restore
@@ -70,9 +71,7 @@ jobs:
 
       - name: Download build log
         uses: actions/download-artifact@v3
-        with:
-          name: build-log-etc
-          path: tmp
+        with: { name: build-log-etc }
 
       - name: Check for warnings or errors in build log
         run: scripts/check-build-log.sh
