@@ -232,8 +232,8 @@ Event Broker the Solace 'Try-Me!' client:
    Try-Me! client.
 
    o This persistent queue is different than the '#telemtry-trace' queue which
-   the Solace PubSub+ Event Broker uses for publishing all OpenTelemetry
-   traces. It is the #telemetry-trace queue that the Contrib distribution of the
+   the Solace PubSub+ Event Broker uses for publishing all OpenTelemetry traces.
+   It is the #telemetry-trace queue that the Contrib distribution of the
    OpenTelemetry Collector is authenticated to and listens to for trace
    telemetry data.
 
@@ -245,7 +245,7 @@ Solace PubSub+ Event Broker.
 
 Now let's step back and see how this plays out with even the most illustrative
 scenario: an Event-Driven global e-commerce system. This e-commerce system is
-powered by an Event Mesh based on three, globally distrbuted Solace PubSub+
+powered by an Event Mesh based on three, globally distributed Solace PubSub+
 Event Brokers.
 
 This scenario is described in great detail in the article
@@ -289,5 +289,5 @@ enabled on Solace PubSub+ Event Mesh.
 - [Solace on Dockerhub](https://hub.docker.com/u/solace/#!)
 - [Solace APIs Samples](https://github.com/SolaceSamples)
 - [Solace Community](https://solace.community/?utm_source=web&utm_medium=referral&utm_id=cncf_2023&utm_content=blog)
-- [Solace OpenTelemtry Receiver (Otel collector project)](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/solacereceiver)
+- [Solace OpenTelemtry Receiver (OTel collector project)](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/solacereceiver)
 - [Jaeger: Open Source, End-to-End Distributed Tracing](https://www.jaegertracing.io/)
