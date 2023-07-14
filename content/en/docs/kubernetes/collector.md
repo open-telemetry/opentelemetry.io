@@ -4,6 +4,7 @@ linkTitle: Collector
 spelling:
   cSpell:ignore filelogreceiver hostmetricsreceiver kubeletstatsreceiver
   cSpell:ignore k8sobjectsreceiver k8sclusterreceiver k8sattributesprocessor
+  cSpell:ignore kubelets
 ---
 
 ## Introduction
