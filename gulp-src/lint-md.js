@@ -2,7 +2,6 @@ const gulp = require('gulp');
 const through2 = require('through2');
 const markdownlint = require('markdownlint');
 const { taskArgs } = require('./_util');
-const fs = require('fs');
 
 const defaultGlob = '**/*.md';
 const markdownFiles = [
@@ -14,12 +13,11 @@ const markdownFiles = [
   '!tmp/**',
 ];
 
-let fileCounter = 0,
+let fileCount = 0,
   issueCount = 0;
 
 function markdownLintFile(file, encoding, callback) {
-  // const config = require('../.markdownlint.json');
-  const config = JSON.parse(fs.readFileSync('./.markdownlint.json'));
+  const config = require('../.markdownlint.json');
   const placeholder = 'lint-md';
   const options = {
     // We would normally just pass in the file like this:
@@ -58,7 +56,7 @@ function markdownLintFile(file, encoding, callback) {
       console.log(resultString);
       issueCount++;
     }
-    fileCounter++;
+    fileCount++;
     callback(null, file);
   });
 }
@@ -83,8 +81,8 @@ function lintMarkdown() {
     .pipe(through2.obj(markdownLintFile))
     .on('end', () => {
       console.log(
-        `Processed ${fileCounter} file${
-          fileCounter == 1 ? '' : 's'
+        `Processed ${fileCount} file${
+          fileCount == 1 ? '' : 's'
         }, ${issueCount} had issues.`,
       );
     });
