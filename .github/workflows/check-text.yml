@@ -25,7 +25,7 @@ jobs:
         run: |
           mkdir -p tmp
           jq '.devDependencies |= with_entries(
-                  select(.key | test("gulp|markdown|through|require"))
+                  select(.key | test("gulp|markdown|through|require|yargs"))
                 )
                 | del(.dependencies)' \
             package.json > tmp/package-min.json
