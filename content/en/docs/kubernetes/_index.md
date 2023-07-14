@@ -3,8 +3,6 @@ title: OpenTelemetry with Kubernetes
 linkTitle: Kubernetes
 weight: 11
 description: Using OpenTelemetry with Kubernetes
-spelling: cSpell:ignore Otel
-aliases: [/docs/kubernetes]
 ---
 
 ## Introduction
