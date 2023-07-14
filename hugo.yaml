@@ -197,10 +197,6 @@ module:
       target: static
     - source: content-modules/semantic-conventions/schemas
       target: static/schemas
-      # TODO: drop the excludeFiles line once
-      # https://github.com/open-telemetry/opentelemetry.io/issues/2721
-      # is fully resolved.
-      excludeFiles: [1.21.0]
     - source: static/img
       target: static/img
     - source: content-modules/opentelemetry-specification/internal/img
