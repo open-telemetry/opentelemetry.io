@@ -131,7 +131,7 @@ subgraph tdf[Telemetry Data Flow]
     subgraph subgraph_padding [ ]
         style subgraph_padding fill:none,stroke:none;
         %% padding to stop the titles clashing
-        subgraph od[Open Telemetry Demo]
+        subgraph od[OpenTelemetry Demo]
         ms(Microservice)
         end
 
