@@ -6,6 +6,8 @@ description: Manual instrumentation for OpenTelemetry Python
 spelling: cSpell:ignore ottrace textmap millis
 ---
 
+<!-- markdownlint-disable no-duplicate-heading -->
+
 {{% docs/instrumentation/manual-intro %}}
 
 ## Setup

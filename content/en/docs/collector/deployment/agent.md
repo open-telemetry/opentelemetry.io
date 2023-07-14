@@ -36,6 +36,7 @@ export OTEL_EXPORTER_OTLP_ENDPOINT=http://collector.example.com:4318
 The collector serving at `collector.example.com:4318` would then be configured
 like so:
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane lang=yaml >}}
 {{< tab Traces >}}
@@ -104,6 +105,7 @@ service:
 {{< /tab >}}
 {{< /tabpane>}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 If you want to try it out for yourself, you can have a look at the end-to-end
 [Java][java-otlp-example] or [Python][py-otlp-example] examples.

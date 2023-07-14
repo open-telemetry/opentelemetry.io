@@ -65,7 +65,7 @@ that you incur less cost.
 
 ## Other Important discussion points
 
-#### Maturity model for OpenTelemetry
+### Maturity model for OpenTelemetry
 
 **Q:** Is there some literature available around understanding steps to reach a
 certain maturity level in adopting OTel in your organization? For example, I

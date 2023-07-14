@@ -7,8 +7,10 @@ spelling: cSpell:ignore batchprocessor Rcvr uber atmxph comcast chicago
 spelling: cSpell:ignore sanfrancisco ptrace pdata protogen pcommon stateid
 spelling: cSpell:ignore ispnetwork serialnumber mcrsft gogl wndws slrs
 spelling: cSpell:ignore backendsystem crand linux Intn semconv
-spelling: cSpell:ignore 
+spelling: cSpell:ignore
 ---
+
+<!-- markdownlint-disable heading-increment no-duplicate-heading -->
 
 If you are reading this tutorial, you probably already have an idea of the
 OpenTelemetry concepts behind distributed tracing, but if you don't you can

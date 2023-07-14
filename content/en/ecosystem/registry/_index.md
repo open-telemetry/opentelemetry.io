@@ -16,6 +16,8 @@ weight: 20
 
 {{% blocks/lead color="white" %}}
 
+<!-- markdownlint-disable single-h1 -->
+
 # {{% param title %}}
 
 {{% param description %}}

@@ -1,4 +1,4 @@
-name: Check links and refcache # cSpell:ignore refcache
+name: Check links and refcache
 
 on:
   pull_request:

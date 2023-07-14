@@ -19,6 +19,8 @@ channel.
 
 Here are the latest updates from some of our core repositories.
 
+<!-- markdownlint-disable heading-increment -->
+
 ##### [Specification](/docs/specs/otel/)
 
 [Version 1.21](https://github.com/open-telemetry/opentelemetry-specification/releases/tag/v1.21.0)

@@ -7,9 +7,11 @@ aliases:
   - /docs/instrumentation/java/manual_instrumentation
 weight: 30
 description: Manual instrumentation for OpenTelemetry Java
-spelling: cSpell:ignore logback multivalued autoconfigure classpath 
+spelling: cSpell:ignore logback multivalued autoconfigure classpath
 spelling: cSpell:ignore customizer loggable
 ---
+
+<!-- markdownlint-disable no-duplicate-heading -->
 
 {{% docs/instrumentation/manual-intro %}}
 
@@ -1083,7 +1085,6 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
   https://docs.oracle.com/javase/8/docs/jre/api/net/httpserver/spec/com/sun/net/httpserver/HttpExchange.html
 [instrumentation library]: /docs/specs/otel/glossary/#instrumentation-library
 [instrumented library]: /docs/specs/otel/glossary/#instrumented-library
-[library guidelines]: /docs/specs/otel/library-guidelines
 [logs bridge API]: /docs/specs/otel/logs/bridge-api
 [log data model]: /docs/specs/otel/logs/data-model
 [log4j2 appender]:
@@ -1103,6 +1104,5 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
 [parentbased]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/ParentBasedSampler.java
 [releases]: https://github.com/open-telemetry/opentelemetry-java#releases
-[semantic conventions]: /docs/specs/otel/trace/semantic_conventions
 [traceidratiobased]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/TraceIdRatioBasedSampler.java

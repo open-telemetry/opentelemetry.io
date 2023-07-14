@@ -30,6 +30,7 @@ Pull a docker image and run the collector in a container. Replace
 `{{% param collectorVersion %}}` with the version of the Collector you wish to
 run.
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane lang=shell >}}
 {{< tab DockerHub >}}
@@ -43,10 +44,12 @@ docker run ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry
 {{< /tab >}}
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 To load your custom configuration `config.yaml` from your current working
 directory, mount that file as a volume:
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane lang=shell >}}
 {{< tab DockerHub >}}
@@ -58,6 +61,7 @@ docker run -v $(pwd)/config.yaml:/etc/otelcol-contrib/config.yaml ghcr.io/open-t
 {{< /tab >}}
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 ## Docker Compose
 
@@ -115,6 +119,7 @@ To get started on alpine systems run the following replacing
 `v{{% param collectorVersion %}}` with the version of the Collector you wish to
 run.
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane lang=shell >}}
 {{< tab AMD64 >}}
@@ -139,6 +144,7 @@ apk add --allow-untrusted otelcol_{{% param collectorVersion %}}_linux_386.apk
 {{< /tab >}}
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 ### DEB Installation
 
@@ -146,6 +152,7 @@ To get started on Debian systems run the following replacing
 `v{{% param collectorVersion %}}` with the version of the Collector you wish to
 run and `amd64` with the appropriate architecture.
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane lang=shell >}}
 {{< tab AMD64 >}}
@@ -170,6 +177,7 @@ sudo dpkg -i otelcol_{{% param collectorVersion %}}_linux_386.deb
 {{< /tab >}}
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 ### RPM Installation
 
@@ -177,6 +185,7 @@ To get started on Red Hat systems run the following replacing
 `v{{% param collectorVersion %}}` with the version of the Collector you wish to
 run and `x86_64` with the appropriate architecture.
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane lang=shell >}}
 {{< tab AMD64 >}}
@@ -201,6 +210,7 @@ sudo rpm -ivh otelcol_{{% param collectorVersion %}}_linux_386.rpm
 {{< /tab >}}
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 ### Manual Installation
 
@@ -208,6 +218,7 @@ Linux [releases][] are available for various architectures. It's possible to
 download the archive containing the binary and install it on your machine
 manually:
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane lang=shell >}}
 {{< tab AMD64 >}}
@@ -231,6 +242,7 @@ tar -xvf otelcol_{{% param collectorVersion %}}_linux_ppc64le.tar.gz
 {{< /tab >}}
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 ### Automatic Service Configuration
 
@@ -261,6 +273,7 @@ MacOS [releases][] are available for Intel- & ARM-based systems. They are
 packaged as gzipped tarballs (`.tar.gz`) and will need to be unpacked with a
 tool that supports this compression format:
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane lang=shell >}}
 {{< tab Intel >}}
@@ -274,6 +287,7 @@ tar -xvf otelcol_{{% param collectorVersion %}}_darwin_arm64.tar.gz
 {{< /tab >}}
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 Every Collector release includes an `otelcol` executable that you can run after
 unpacking.
