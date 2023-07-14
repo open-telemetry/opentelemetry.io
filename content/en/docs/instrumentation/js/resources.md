@@ -65,11 +65,11 @@ In the above example, the SDK detected the process and also added the
 
 Below you will find instructions to get resources detected automatically for
 you. However, you might run into the situation that no detector exists for the
-resource you need. In that case you can use the environment
-`OTEL_RESOURCE_ATTRIBUTES` to inject whatever you need. You can use the
-environment variable `OTEL_SERVICE_NAME` to set value of the `service.name`
-resource attribute. For example the following script adds [Service][], [Host][]
-and [OS][] resource attributes:
+resource you need. In that case, use the environment variable
+`OTEL_RESOURCE_ATTRIBUTES` to inject whatever you need. Additionally, you can
+use the environment variable `OTEL_SERVICE_NAME` to set value of the
+`service.name` resource attribute. For example, the following script adds
+[Service][], [Host][] and [OS][] resource attributes:
 
 ```console
 $ env OTEL_SERVICE_NAME="app.js" OTEL_RESOURCE_ATTRIBUTES="service.namespace=tutorial,service.version=1.0,service.instance.id=`uuidgen`,host.name=${HOSTNAME},host.type=`uname -m`,os.name=`uname -s`,os.version=`uname -r`" \
