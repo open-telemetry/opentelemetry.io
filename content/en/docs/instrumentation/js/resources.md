@@ -72,7 +72,7 @@ resource attribute. For example the following script adds [Service][], [Host][]
 and [OS][] resource attributes:
 
 ```console
-$ env OTEL_SERVICE_NAME="app.js" OTEL_RESOURCE_ATTRIBUTES="service.namespace=tutorial,service.version=1.0,service.instance.id=`uuidgen`,host.name=${HOSTNAME:},host.type=`uname -m`,os.name=`uname -s`,os.version=`uname -r`" \
+$ env OTEL_SERVICE_NAME="app.js" OTEL_RESOURCE_ATTRIBUTES="service.namespace=tutorial,service.version=1.0,service.instance.id=`uuidgen`,host.name=${HOSTNAME},host.type=`uname -m`,os.name=`uname -s`,os.version=`uname -r`" \
   node --require ./tracing.js app.js
 ...
 EnvDetector found resource. Resource {
