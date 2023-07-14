@@ -21,9 +21,11 @@ my $path_base_for_github_subdir = "content/en$specBasePath";
 my %versions = qw(
   spec: 1.23.0
   otlp: 1.0.0
+  semconv: 1.21.0
 );
 my $otelSpecVers = $versions{'spec:'};
 my $otlpSpecVers = $versions{'otlp:'};
+my $semconvVers = $versions{'semconv:'};
 
 sub printTitleAndFrontMatter() {
   print "---\n";
@@ -37,8 +39,10 @@ sub printTitleAndFrontMatter() {
     # TODO: add to spec landing page
     $frontMatterFromFile .= "weight: 20\n" if $frontMatterFromFile !~ /^\s*weight/;
   } elsif ($ARGV =~ /semconv\/docs\/_index.md$/) {
-    $frontMatterFromFile =~ s/body_class: .*/$& td-page--draft/;
-    $frontMatterFromFile =~ s/cascade:\n/$&  draft: true\n/;
+    $title .= " $semconvVers";
+    $frontMatterFromFile =~ s/linkTitle: .*/$& $semconvVers/;
+    # $frontMatterFromFile =~ s/body_class: .*/$& td-page--draft/;
+    # $frontMatterFromFile =~ s/cascade:\n/$&  draft: true\n/;
   }
   my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
   print "title: $titleMaybeQuoted\n" if $frontMatterFromFile !~ /title: /;
