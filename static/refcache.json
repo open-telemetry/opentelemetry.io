@@ -3143,6 +3143,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:04:48.516571-04:00"
   },
+  "https://helm.sh/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-14T11:35:07.553343-06:00"
+  },
   "https://helm.sh/docs/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:04:53.616666-04:00"
