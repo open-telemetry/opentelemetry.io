@@ -15,6 +15,7 @@
     "_check:links--warn": "npm run _check:links || (echo; echo 'WARNING: see link-checker output for issues.'; echo)",
     "_check:spelling": "npx cspell --no-progress -c .vscode/cspell.json content",
     "_check:text": "npx textlint content data",
+    "_check:text--gh": "npx textlint -f json content/en/*.md | jq -r  '.[] | ( .filePath | sub(env.PWD + \"/\"; \"\")  ) as $fp | .messages[] | .message as $message |{line, file: $fp, column, endLine: .loc.end.line, endColumn: .loc.end.column, title: \"textlint terminology error\" } | . as $in | keys | map(\"\\(.)=\\($in[.])\") | join(\",\") | \"\\r::error \\(.)::\\($message)\" | @sh' | xargs echo",
     "_diff:check": "git diff --name-only --exit-code",
     "_diff:fail": "git diff --name-only --exit-code || exit 1",
     "_filename-error": "echo 'ERROR: the following files violate naming conventions; fix using: `npm run fix:filenames`'; echo; npm run -s _ls-bad-filenames; exit 1",
