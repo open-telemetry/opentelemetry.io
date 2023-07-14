@@ -3,7 +3,7 @@ title: OpenTelemetry Collector and Kubernetes
 linkTitle: Collector
 spelling:
   cSpell:ignore filelogreceiver hostmetricsreceiver kubeletstatsreceiver
-  k8sobjectsreceiver k8sclusterreceiver k8sattributesprocessor
+  cSpell:ignore k8sobjectsreceiver k8sclusterreceiver k8sattributesprocessor
 ---
 
 ## Introduction
