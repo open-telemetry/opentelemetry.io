@@ -13,7 +13,7 @@ jobs:
       - run: |
           jq 'del(.dependencies) | .devDependencies |= with_entries( select(.key | startswith("textlint")))' package.json > package2.json && mv package2.json package.json
       - run: npm install --ignore-scripts
-      - run: npm run _check:text--gh
+      - run: .github/workflows/scripts/textlint.sh
 
   markdown-linter:
     name: MARKDOWN linter
