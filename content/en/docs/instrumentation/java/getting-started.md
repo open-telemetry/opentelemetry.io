@@ -143,14 +143,14 @@ gradle run
 
 From _another_ terminal, send a request using `curl`:
 
-   ```sh
-   curl localhost:8080/rolldice
-   ```
+```sh
+curl localhost:8080/rolldice
+```
 
 Stop the server process.
 
-You should have seen trace & log output from the server and client
-that looks something like this (trace output is line-wrapped for convenience):
+You should have seen trace & log output from the server and client that looks
+something like this (trace output is line-wrapped for convenience):
 
 ```sh
 [otel.javaagent 2023-04-24 17:33:54:567 +0200] [http-nio-8080-exec-1] INFO
@@ -172,8 +172,8 @@ io.opentelemetry.tomcat-10.0:1.25.0-alpha] AttributesMap{
   net.host.port=8080, http.method=GET}, capacity=128, totalAddedValues=17}
 ```
 
-When stopping the server, you should see an output of all the metrics
-collected (metrics output is line-wrapped and shortened for convenience):
+When stopping the server, you should see an output of all the metrics collected
+(metrics output is line-wrapped and shortened for convenience):
 
 ```sh
 [otel.javaagent 2023-04-24 17:34:25:347 +0200] [PeriodicMetricReader-1] INFO
