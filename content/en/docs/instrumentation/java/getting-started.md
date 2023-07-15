@@ -40,6 +40,8 @@ content:
 ```kotlin
 plugins {
   id("java")
+  id("application")
+  id("com.ryandens.javaagent-application") version "0.4.2"
   id("org.springframework.boot") version "3.0.6"
   id("io.spring.dependency-management") version "1.1.0"
 }
@@ -50,12 +52,26 @@ sourceSets {
   }
 }
 
+application {
+  mainClass.set("otel.DiceApplication")
+}
+
 repositories {
   mavenCentral()
 }
 
 dependencies {
   implementation("org.springframework.boot:spring-boot-starter-web")
+  javaagent("io.opentelemetry.javaagent:opentelemetry-javaagent:1.28.0")
+}
+
+tasks.withType<JavaExec> {
+  environment(
+    "OTEL_SERVICE_NAME" to "demo",
+    "OTEL_TRACES_EXPORTER" to "logging",
+    "OTEL_METRICS_EXPORTER" to "logging",
+    "OTEL_LOGS_EXPORTER" to "logging"
+  )
 }
 ```
 
@@ -120,59 +136,20 @@ Build and run the application with the following command, then open
 <http://localhost:8080/rolldice> in your web browser to ensure it is working.
 
 ```sh
-gradle assemble
-java -jar ./build/libs/java-simple.jar
+gradle run
 ```
 
-## Instrumentation
+## Test the application
 
-Next, you'll use a [Java agent to automatically instrument](../automatic) the
-application at launch time. While you can [configure the Java agent][] in a
-number of ways, the steps below use environment variables.
-
-1. Download [opentelemetry-javaagent.jar][] from [Releases][] of the
-   `opentelemetry-java-instrumentation` repository. The JAR file contains the
-   agent and all automatic instrumentation packages:
-
-   ```console
-   curl -L -O https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
-   ```
-
-   {{% alert color="info" %}}<i class="fas fa-edit"></i> Take note of the path
-   to the JAR file.{{% /alert %}}
-
-2. Set and export variables that specify the Java agent JAR and a [console
-   exporter][], using a notation suitable for your shell/terminal environment
-   &mdash; we illustrate a notation for bash-like shells:
-
-   ```sh
-   export JAVA_TOOL_OPTIONS="-javaagent:PATH/TO/opentelemetry-javaagent.jar" \
-     OTEL_TRACES_EXPORTER=logging \
-     OTEL_METRICS_EXPORTER=logging \
-     OTEL_LOGS_EXPORTER=logging
-   ```
-
-   {{% alert title="Important" color="warning" %}}Replace `PATH/TO` above, with
-   your path to the JAR.{{% /alert %}}
-
-3. Run your **application** once again:
-
-   ```console
-   $ java -jar ./build/libs/java-simple.jar
-   ...
-   ```
-
-   Note the output from the `otel.javaagent`.
-
-4. From _another_ terminal, send a request using `curl`:
+From _another_ terminal, send a request using `curl`:
 
    ```sh
    curl localhost:8080/rolldice
    ```
 
-5. Stop the server process.
+Stop the server process.
 
-At step 4, you should have seen trace & log output from the server and client
+You should have seen trace & log output from the server and client
 that looks something like this (trace output is line-wrapped for convenience):
 
 ```sh
@@ -195,7 +172,7 @@ io.opentelemetry.tomcat-10.0:1.25.0-alpha] AttributesMap{
   net.host.port=8080, http.method=GET}, capacity=128, totalAddedValues=17}
 ```
 
-At step 5, when stopping the server, you should see an output of all the metrics
+When stopping the server, you should see an output of all the metrics
 collected (metrics output is line-wrapped and shortened for convenience):
 
 ```sh
