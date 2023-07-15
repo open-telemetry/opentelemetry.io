@@ -41,7 +41,7 @@ OpenTelemetry in their commercial products.
 | observIQ                   | Yes               | Yes         | [observiq.com/...](https://docs.bindplane.observiq.com)
 | Oracle                     | No                | Yes         | [docs.oracle.com/...](https://docs.oracle.com/en-us/iaas/application-performance-monitoring/doc/configure-open-source-tracing-systems.html#GUID-4D941163-F357-4839-8B06-688876D4C61F)
 | Promscale                  | No                | Yes         | [timescale.com/promscale](https://www.timescale.com/promscale)
-| Sentry                     | Yes               | No          | [sentry.io/for/opentelemetry](https://develop.sentry.dev/sdk/performance/opentelemetry/)
+| Sentry                     | Yes               | No          | [sentry.io/...](https://sentry.io/for/opentelemetry/)
 | Sentry Software            | Yes               | Yes         | [sentrysoftware.com/...](https://www.sentrysoftware.com/products/hardware-sentry-opentelemetry-collector.html)
 | ServicePilot               | No                | Yes         | [servicepilot.com/...](https://www.servicepilot.com/en/doc/apm#opentelemetry)
 | SigNoz                     | Yes               | Yes         | [signoz.io](https://signoz.io)
