@@ -35,8 +35,8 @@ The Collector chart requires that `mode` is set. `mode` can be either
 `daemonset`, `deployment`, or `statefulset` depending on which kind of
 Kubernetes deployment your use case requires.
 
-When installed, the chart provides a few default collector components to get
-you started. By default, the collector's config will look like:
+When installed, the chart provides a few default collector components to get you
+started. By default, the collector's config will look like:
 
 ```yaml
 exporters:
@@ -366,9 +366,9 @@ and will add a `hostmetricsreceiver` to the metrics pipeline. By default metrics
 will be scrapped every 10 seconds and the following scrappers are enabled:
 
 - cpu
-- load:
-- memory:
-- disk:
+- load
+- memory
+- disk
 - filesystem\*
 - network
 
