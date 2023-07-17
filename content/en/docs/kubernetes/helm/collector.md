@@ -25,17 +25,18 @@ the following commands:
 
 ```console
 helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
-helm install my-opentelemetry-collector open-telemetry/opentelemetry-collector --set mode=<daemonset|deployment|statefulset>
+helm install my-opentelemetry-collector open-telemetry/opentelemetry-collector \
+   --set mode=<daemonset|deployment|statefulset>
 ```
 
 ### Configuration
 
-The Collector chart requires that `mode` be set. `mode` can be either
+The Collector chart requires that `mode` is set. `mode` can be either
 `daemonset`, `deployment`, or `statefulset` depending on which kind of
 Kubernetes deployment your use case requires.
 
 When installed, the chart provides a few default collector components to get
-your started. By default, the collector's config will look like:
+you started. By default, the collector's config will look like:
 
 ```yaml
 exporters:
@@ -232,7 +233,7 @@ config:
 #### Kubernetes Attributes Preset
 
 The collector can be configured to add Kubernetes metadata, such as
-k8s.pod.name, k8s,namespace.name, and k8s.node.name, to logs, metrics and
+`k8s.pod.name`, `k8s,namespace.name`, and `k8s.node.name`, to logs, metrics and
 traces. It is highly recommended to use the preset, or enable the
 k8sattributesprocessor manually.
 
