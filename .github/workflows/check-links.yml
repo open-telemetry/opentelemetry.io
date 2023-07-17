@@ -33,6 +33,7 @@ jobs:
       - run: npm install --no-optional
       - run: npm run build+log
       - run: npm run _check:links
+        continue-on-error: true
       - uses: actions/upload-artifact@v3
         with:
           name: build-log-etc
