@@ -91,6 +91,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T12:27:30.178352-04:00"
   },
+  "https://avajs.dev/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-18T14:38:02.687502+02:00"
+  },
   "https://aws-otel.github.io": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T12:27:13.017869-04:00"
@@ -2354,6 +2358,22 @@
   "https://github.com/open-telemetry/opentelemetry-demo/issues/44": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:23:34.5691-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/issues/873": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-18T14:38:00.524443+02:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/pull/877": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-18T14:38:01.810575+02:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/pull/905#discussion_r1207101535": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-18T14:38:05.072723+02:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/pull/950": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-18T14:38:03.839749+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-demo/releases": {
     "StatusCode": 200,
