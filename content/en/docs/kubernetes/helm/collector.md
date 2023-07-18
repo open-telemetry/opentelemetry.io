@@ -12,18 +12,18 @@ spelling:
 
 The [OpenTelemetry Collector](/docs/collector) is an important tool for
 monitoring a Kubernetes cluster and all the services that in within. To
-facilitate installation and management of a Collector deployment in a Kubernetes
+facilitate installation and management of a collector deployment in a Kubernetes
 the OpenTelemetry community created the
 [OpenTelemetry Collector Helm Chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-collector).
-This helm chart can be used to install a Collector as a Deployment, Daemonset,
+This helm chart can be used to install a collector as a Deployment, Daemonset,
 or Statefulset.
 
 ### Installing the Chart
 
-To install the chart with the release name `my-opentelemetry-collector``, run
+To install the chart with the release name `my-opentelemetry-collector`, run
 the following commands:
 
-```console
+```sh
 helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
 helm install my-opentelemetry-collector open-telemetry/opentelemetry-collector \
    --set mode=<daemonset|deployment|statefulset>
@@ -31,7 +31,7 @@ helm install my-opentelemetry-collector open-telemetry/opentelemetry-collector \
 
 ### Configuration
 
-The Collector chart requires that `mode` is set. `mode` can be either
+The OpenTelemetry Collector Chart requires that `mode` is set. `mode` can be either
 `daemonset`, `deployment`, or `statefulset` depending on which kind of
 Kubernetes deployment your use case requires.
 
@@ -153,9 +153,9 @@ in its
 
 ### Presets
 
-Many of the important components the Collector uses to monitor Kubernetes
+Many of the important components the OpenTelemetry Collector uses to monitor Kubernetes
 require special setup in the Collector's own Kuberenetes deployment. In order to
-make using these components easier, the Collector chart comes with some presets
+make using these components easier, the OpenTelemetry Collector Chart comes with some presets
 that, when enabled, handle the complex setup for these important components.
 
 Presets should be used as a starting point. They configure basic, but rich,
@@ -166,7 +166,7 @@ RBAC, etc.).
 
 #### Logs Collection Preset
 
-The collector can be used to collect logs sent to standard output by Kubernetes
+The OpenTelemetry Collector can be used to collect logs sent to standard output by Kubernetes
 containers.
 
 This feature is disabled by default. It has the following requirements in order
@@ -198,10 +198,10 @@ presets:
 
 The chart's default logs pipeline uses the `loggingexporter`. Paired with the
 `logsCollection` preset's `filelogreceiver` it is easy to accidentally feed the
-exported logs back into the Collector, which can cause a "log explosion".
+exported logs back into the collector, which can cause a "log explosion".
 
 To prevent the looping, the default configuration of the receiver excludes the
-Collector's own logs. If you want to include the collector's logs, make sure to
+collector's own logs. If you want to include the collector's logs, make sure to
 replace the `logging` exporter with an exporter that does not send logs to
 collector's standard output.
 
@@ -209,7 +209,7 @@ Here's an example `values.yaml` that replaces the default `logging` exporter on
 the `logs` pipeline with an `otlphttp` exporter that sends the container logs to
 `https://example.com:55681` endpoint. It also uses
 `presets.logsCollection.includeCollectorLogs` to tell the preset to enable
-collection of the Collector's logs.
+collection of the collector's logs.
 
 ```yaml
 mode: daemonset
@@ -232,10 +232,10 @@ config:
 
 #### Kubernetes Attributes Preset
 
-The collector can be configured to add Kubernetes metadata, such as
-`k8s.pod.name`, `k8s,namespace.name`, and `k8s.node.name`, to logs, metrics and
+The OpenTelemetry Collector can be configured to add Kubernetes metadata, such as
+`k8s.pod.name`, `k8s.namespace.name`, and `k8s.node.name`, to logs, metrics and
 traces. It is highly recommended to use the preset, or enable the
-k8sattributesprocessor manually.
+`k8sattributesprocessor` manually.
 
 Due to RBAC considerations, this feature is disabled by default. It has the
 following requirements:
@@ -260,7 +260,7 @@ presets:
 
 #### Kubelet Metrics Preset
 
-The Collector can be configured to collect Kubelet metrics.
+The OpenTelemetry Collector can be configured to collect Kubelet metrics.
 
 This feature is disabled by default. It has the following requirements:
 
@@ -288,7 +288,7 @@ presets:
 
 #### Cluster Metrics Preset
 
-The collector can be configured to collect cluster-level metrics from the
+The OpenTelemetry Collector can be configured to collect cluster-level metrics from the
 Kubernetes API server. These metrics include many of the metrics collected by
 Kube State Metrics.
 
@@ -318,7 +318,7 @@ presets:
 
 #### Kubernetes Events Preset
 
-The collector can be configured to collect Kubernetes events.
+The OpenTelemetry Collector can be configured to collect Kubernetes events.
 
 This feature is disabled by default. It has the following requirements:
 
@@ -347,7 +347,7 @@ presets:
 
 #### Host Metrics Preset
 
-The collector can be configured to collect host metrics from Kubernetes nodes.
+The OpenTelemetry Collector can be configured to collect host metrics from Kubernetes nodes.
 
 This feature is disabled by default. It has the following requirements:
 

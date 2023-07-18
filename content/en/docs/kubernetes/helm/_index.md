@@ -15,6 +15,6 @@ to manage installs of the [OpenTelemetry Collector](/docs/collector),
 
 Add the OpenTelemetry Helm repository with:
 
-```
+```sh
 helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
 ```
