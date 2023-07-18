@@ -369,11 +369,8 @@ will be scrapped every 10 seconds and the following scrappers are enabled:
 - load
 - memory
 - disk
-- filesystem\*
+- filesystem[^1]
 - network
-
-\*due to some overlap with the kubeletMetrics preset some filesystem types and
-mount points are excluded by default.
 
 Here is an example `values.yaml`:
 
@@ -383,3 +380,6 @@ presets:
   hostMetrics:
     enabled: true
 ```
+
+[^1] due to some overlap with the kubeletMetrics preset some filesystem types and
+mount points are excluded by default.
