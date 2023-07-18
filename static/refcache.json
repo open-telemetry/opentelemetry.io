@@ -4087,6 +4087,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:42:56.97152-04:00"
   },
+  "https://sentry.io/for/opentelemetry/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-17T19:34:01.098567-06:00"
+  },
   "https://sentrysoftware.com": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T16:27:00.258988-04:00"
