@@ -392,7 +392,7 @@ We should pass them as `snake_case`, which the Checkout service does correctly:
 By doing that, we have a successful call to the service, and it evaluates
 correctly as seen here:
 
-![email-success-formatted.png](./email-success-formatted.png)
+![email-success-formatted.png](./email-success-formatted-2.png)
 
 This type of case is interesting because it could happen in other real-world
 scenarios, and with the help of the tests and telemetry data, we were able to
