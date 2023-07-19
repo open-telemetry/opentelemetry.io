@@ -2163,6 +2163,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-07-01T14:29:53.746821-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-contrib": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-17T15:32:21.480243-06:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-releases/releases": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:44:01.99613-04:00"
