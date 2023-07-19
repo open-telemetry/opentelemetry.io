@@ -128,7 +128,7 @@ spec:
   specs:
   - name: It converts from USD to CAD
     selector: span[name="CurrencyService/Convert" rpc.system="grpc"
-			rpc.method="Convert" rpc.service="CurrencyService"]
+            rpc.method="Convert" rpc.service="CurrencyService"]
     assertions:
     - attr:app.currency.conversion.from = "USD"
     - attr:app.currency.conversion.to = "CAD"
@@ -277,25 +277,25 @@ spec:
     assertions:
     - attr:response.status = 200
   - selector: span[name="oteldemo.CheckoutService/PlaceOrder" rpc.system="grpc"
-			rpc.method="PlaceOrder" rpc.service="oteldemo.CheckoutService"]
+            rpc.method="PlaceOrder" rpc.service="oteldemo.CheckoutService"]
     name: "The order was placed"
     assertions:
     - attr:app.user.id = "2491f868-88f1-4345-8836-d5d8511a9f83"
     - attr:app.order.items.count = 1
   - selector: span[name="oteldemo.PaymentService/Charge" rpc.system="grpc"
-			rpc.method="Charge" rpc.service="oteldemo.PaymentService"]
+            rpc.method="Charge" rpc.service="oteldemo.PaymentService"]
     name: "The user was charged"
     assertions:
     - attr:rpc.grpc.status_code  =  0
     - attr:selected_spans.count >= 1
   - selector: span[name="oteldemo.ShippingService/ShipOrder" rpc.system="grpc"
-			rpc.method="ShipOrder" rpc.service="oteldemo.ShippingService"]
+            rpc.method="ShipOrder" rpc.service="oteldemo.ShippingService"]
     name: "The product was shipped"
     assertions:
     - attr:rpc.grpc.status_code = 0
     - attr:selected_spans.count >= 1
   - selector: span[name="oteldemo.CartService/EmptyCart" rpc.system="grpc"
-			rpc.method="EmptyCart" rpc.service="oteldemo.CartService"]
+            rpc.method="EmptyCart" rpc.service="oteldemo.CartService"]
     name: "The cart was emptied"
     assertions:
     - attr:rpc.grpc.status_code = 0
@@ -371,7 +371,7 @@ order details as `pascalCase` in `JSON`:
     "shippingCost": {
       "currencyCode": "USD",
     },
-	  // ...
+        // ...
 }
 ```
 
