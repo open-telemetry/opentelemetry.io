@@ -11,7 +11,9 @@ auto-instrumentation of workloads. One of the ways to install the OpenTelemetry
 Operator is via the
 [OpenTelemetry Operator Helm Chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-operator).
 
-For detailed use of the OpenTelemetry Operator visit its [docs](/docs/kubernetes/operator).
+For detailed use of the OpenTelemetry Operator visit its
+[docs](/docs/kubernetes/operator).
+
 ### Installing the Chart
 
 To install the chart with the release name `my-opentelemetry-operator`, run the
