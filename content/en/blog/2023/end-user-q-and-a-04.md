@@ -151,7 +151,7 @@ type of thing." Once he resolved the problem, he upstreamed it so that it was
 available to the community. 
 
 "A lot of the metrics work resulted in big performance boosts for OTel metrics," 
-he says. "Like OTel Go metrics. It also has given the Stats folks some ideas 
+he says. "Like OTel Go metrics. It also has given the Statsd folks some ideas 
 about how descriptive the API should be for various features. 
 So things like Views and the use of Views is something we used heavily early in 
 the migration."
