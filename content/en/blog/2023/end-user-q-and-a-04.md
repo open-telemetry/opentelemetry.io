@@ -247,7 +247,7 @@ targets amongst a pool of scrapers," shares Jacob. Using the Target Allocator
 requires running a Prometheus instance. 
 
 He goes on to explain that while Prometheus has some experimental function for 
-sharding, you still have a problem for querying, since Prometheus is also a 
+[sharding](https://www.techtarget.com/searchoracle/definition/sharding), you still have a problem for querying, since Prometheus is also a 
 database and not just a scraper. You have to do some amount of coordination 
 within these Prometheus instances, which can get expensive, or use a Prometheus 
 scaling solution such as Thanos or Cortex -- however, this would involve running 
