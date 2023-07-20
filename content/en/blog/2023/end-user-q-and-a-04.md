@@ -233,7 +233,7 @@ these natively.
 the Target Allocator to distribute those targets, which is a pretty efficient way 
 of getting all that data," says Jacob. 
 
-"We also use daemonsets that we run in our clusters to get that data in 
+"We also use [daemonsets](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) that we run in our clusters to get that data in 
 addition, so that works pretty effectively. The thing that's frustrating is just 
 Prometheus. Prometheus scrape values can be a super common problem and it gets 
 really annoying when you have to worry about metrics cardinality as well because 
