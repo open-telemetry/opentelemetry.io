@@ -340,7 +340,7 @@ of all the hashes you've assigned.
 
 Whereas with StatefulSets, this isn't necessary, since you get a consistent ID 
 range. "So when you do 1-down 1 up, it keeps the same targets each time. So like 
-a placeholder for it – you don’t have to recalculate the ring," he exaplins. 
+a placeholder for it – you don’t have to recalculate the ring," he explains. 
 
 He notes that this is really only useful as a  metrics use case, where you're 
 scraping Prometheus. He notes that they'd probably run it as a Deployment for 
