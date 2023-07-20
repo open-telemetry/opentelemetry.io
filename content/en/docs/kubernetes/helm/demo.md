@@ -1,8 +1,7 @@
 ---
 title: OpenTelemetry Demo Chart
 linkTitle: Demo Chart
-spelling:
-  cSpell:ignore Webstore
+spelling: cSpell:ignore Webstore
 ---
 
 ## Introduction
@@ -11,7 +10,7 @@ The [OpenTelemetry Demo](/docs/demo) is a microservice-based distributed system
 intended to illustrate the implementation of OpenTelemetry in a near real-world
 environment. As part of that effort, the OpenTelemetry community create the
 [OpenTelemetry Demo Helm Chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-demo)
-so that it can be easily installed in kubernetes.
+so that it can be easily installed in Kubernetes.
 
 ### Installing the Chart
 
