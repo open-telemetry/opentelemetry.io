@@ -117,13 +117,13 @@ spec:
       method: oteldemo.CurrencyService.Convert
       request: |-
         {
-            "from": {
-              "currencyCode": "USD",
-              "units": 330,
-              "nanos": 750000000
-            },
-            "toCode": "CAD"
-          }
+          "from": {
+            "currencyCode": "USD",
+            "units": 330,
+            "nanos": 750000000
+          },
+          "toCode": "CAD"
+        }
   specs:
     - name: It converts from USD to CAD
       selector:
