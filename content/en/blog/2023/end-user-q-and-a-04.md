@@ -228,7 +228,7 @@ ubiquitous way in the observability community since Kubernetes already emits
 these natively.  
 
 "That's what we do right now, and I use an OTel component that I work on called 
-the target allocator to distribute those targets, which is a pretty efficient way 
+the Target Allocator to distribute those targets, which is a pretty efficient way 
 of getting all that data," says Jacob. 
 
 "We also use daemonsets that we run in our clusters to get that data in 
