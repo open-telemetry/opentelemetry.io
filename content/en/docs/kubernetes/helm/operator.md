@@ -21,7 +21,9 @@ following commands:
 
 ```console
 helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
-helm install my-opentelemetry-operator open-telemetry/opentelemetry-operator --set admissionWebhooks.certManager.enabled=false --set admissionWebhooks.certManager.autoGenerateCert=true
+helm install my-opentelemetry-operator open-telemetry/opentelemetry-operator \
+  --set admissionWebhooks.certManager.enabled=false \
+  --set admissionWebhooks.certManager.autoGenerateCert=true
 ```
 
 This will install an OpenTelemetry Operator with a self-signed certificate and
@@ -30,7 +32,7 @@ secret.
 ### Configuration
 
 The Operator helm chart's default `values.yaml` is ready to be installed, but it
-does expect Cert Manager is already present on the Cluster.
+expects that Cert Manager is already present on the Cluster.
 
 In Kubernetes, in order for the API server to communicate with the webhook
 component, the webhook requires a TLS certificate that the API server is
