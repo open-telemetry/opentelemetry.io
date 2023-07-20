@@ -43,7 +43,7 @@ When he joined the team, he says "we were still on OpenTracing for tracing, and
 a mix of OpenCensus and some hand-rolled Statsd stuff for metrics." This meant 
 they had to run a proxy on every single Kubernetes pod (where a proxy sits as a 
 sidecar on every pod, which means that you have to run another application that's 
-going to read from Statsd and then forward the metrics). 
+going to read from [Statsd](https://github.com/statsd/statsd) and then forward the metrics). 
 
 This was around the time OpenTelemetry metrics release candidates were just 
 announced, and he saw it as an opportunity: "We have an internal OTel team that 
