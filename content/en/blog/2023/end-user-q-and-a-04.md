@@ -145,8 +145,8 @@ now in Go contrib) and found an issue with propagation.
 
 "I was trying to understand what’s going wrong here. When I looked at the code –
 this tells you how early I was doing this migration – where there was supposed
-to be a propagator, there was just a 'TODO' from Alex Boten," he shares. "It
-just took down our entire services’ traces in staging."
+to be a propagator, there was just a 'TODO'," he shares. "It just took down our
+entire services’ traces in staging."
 
 He spent some time working on it, but they in turn were waiting on something
 else, and so on and so forth -- Jacob says there are "endless cycles of that
@@ -173,13 +173,13 @@ temporality or aggregation of your metrics. Temporality refers to whether a
 metric incorporates the previous measurement or not (cumulative and delta), and
 aggregation refers to how you send off the metrics.
 
-"It’s most useful for histograms," says Jacob. "When you record histograms,
-there are a few different kinds – DataDog and Statsd histograms are not true
-histograms because what they’re recording is like aggregation samples. They give
-you a min, max, count, average, and P95 or something. The problem with that is,
-in distributed computing, if you have multiple applications that are reporting a
-P95, there’s no way you can get a true P95 from that observation with that
-aggregation," he continues.
+"It’s most useful for [our] histograms," says Jacob. "When you record
+histograms, there are a few different kinds – DataDog and Statsd histograms are
+not true histograms because what they’re recording is like aggregation samples.
+They give you a min, max, count, average, and P95 or something. The problem with
+that is, in distributed computing, if you have multiple applications that are
+reporting a P95, there’s no way you can get a true P95 from that observation
+with that aggregation," he continues.
 
 "The reason for that is, if you have five P95 observations, there’s not an
 aggregation to say, give me the overall P95 from that. You need to have
