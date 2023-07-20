@@ -353,7 +353,7 @@ as a Deployment."
 For per-node scraping, DaemonSets come in handy. "This allows you to scrape the 
 kubelet that’s run on every node, it allows you to scrape the node exporter 
 that’s also run on every node, which is another Prometheus daemonset that most 
-people run," he expalins.
+people run," he explains.
 
 DaemonSets are useful for scaling out, since they guarantee that you've got pods 
 running on every node that matches its selector. "If you have a cluster of 800+ 
