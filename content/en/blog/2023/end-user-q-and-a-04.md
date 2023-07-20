@@ -311,7 +311,7 @@ as how you like to run applications for reliability.
 industry if I had to make a bet," Jacob says. "They’re expensive. If you don’t 
 really need them, then you shouldn’t use them." An example of something run as a 
 sidecar is Istio, "which makes a lot of sense to run as a sidecar because it 
-does traffic proxy and it hooks into your container network to change how it 
+does proxy traffic and it hooks into your container network to change how it 
 all does its thing."
 
 You will get a cost hit if you sidecar your Collectors for all your services, 
