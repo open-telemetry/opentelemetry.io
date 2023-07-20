@@ -376,7 +376,7 @@ order details as `pascalCase` in `JSON`:
     "shippingCost": {
       "currencyCode": "USD",
     },
-        // ...
+    // ...
 }
 ```
 
