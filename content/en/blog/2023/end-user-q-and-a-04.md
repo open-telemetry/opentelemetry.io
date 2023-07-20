@@ -4,6 +4,7 @@ linkTitle: 'End-User Q&A: Migrating to OTel at Lightstep'
 date: 2023-07-14
 author: '[Reese Lee](https://github.com/reese-lee) (New Relic)'
 body_class: otel-with-contributions-from
+spelling: cSpell:ignore Aronoff codepath Boten fluentbit autoscaler kubelet
 ---
 
 With contributions from [Adriana Villela](https://github.com/avillela) 
