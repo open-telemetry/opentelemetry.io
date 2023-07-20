@@ -306,7 +306,7 @@ generated? One of a bunch of things."
 
 ### Kubernetes modes on OTel
 
-There are four deployment modes for running Kubernetes on OTel: 
+The OTel Operator supports four [deployment modes](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspec) for the OTel Collector in Kubernetes: 
 [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/), 
 [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), 
 [StatefulSet](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/), 
