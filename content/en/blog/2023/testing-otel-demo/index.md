@@ -112,8 +112,8 @@ spec:
   trigger:
     type: grpc
     grpc:
-      protobufFile: {{ protobuf file with CurrencyService definition }}
-      address: {{ currency service address }}
+      protobufFile: { { protobuf file with CurrencyService definition } }
+      address: { { currency service address } }
       method: oteldemo.CurrencyService.Convert
       request: |-
         {
@@ -190,15 +190,16 @@ that defines the tests that will be run:
 type: Transaction
 spec:
   name: 'Frontend Service'
-  description: Run all Frontend tests enabled in sequence,
-    simulating a process of a user purchasing products on the Astronomy store
+  description:
+    Run all Frontend tests enabled in sequence, simulating a process of a user
+    purchasing products on the Astronomy store
   steps:
-  - ./01-see-ads.yaml
-  - ./02-get-product-recommendation.yaml
-  - ./03-browse-product.yaml
-  - ./04-add-product-to-cart.yaml
-  - ./05-view-cart.yaml
-  - ./06-checking-out-cart.yaml
+    - ./01-see-ads.yaml
+    - ./02-get-product-recommendation.yaml
+    - ./03-browse-product.yaml
+    - ./04-add-product-to-cart.yaml
+    - ./05-view-cart.yaml
+    - ./06-checking-out-cart.yaml
 ```
 
 In this sequence of tests, the last step, where the user does a checkout, is
