@@ -27,8 +27,7 @@ challenges, so that we can help improve OpenTelemetry together.
 In this session, Jacob shared:
 
 - How he approached migrating to OpenTelemetry from OpenTracing and OpenCensus
-- What the [`TargetAllocator`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/cmd/otel-allocator/README.md) 
-- is, and how he's using it today
+- What the [`TargetAllocator`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/cmd/otel-allocator/README.md) is, and how he's using it today
 - Why you might not want to deploy your Collector as a sidecar 
 
 ## The interview 
@@ -307,10 +306,12 @@ generated? One of a bunch of things."
 ### Kubernetes modes on OTel
 
 The OTel Operator supports four [deployment modes](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspec) for the OTel Collector in Kubernetes: 
-[Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) - see example [here](https://github.com/open-telemetry/opentelemetry-operator/blob/main/tests/e2e/ingress/00-install.yaml), 
-[DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) - see example [here](https://github.com/open-telemetry/opentelemetry-operator/blob/main/tests/e2e/daemonset-features/01-install.yaml), 
-[StatefulSet](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/) - see example [here](https://github.com/open-telemetry/opentelemetry-operator/blob/main/tests/e2e/smoke-statefulset/00-install.yaml), 
-and [Sidecar](https://www.techtarget.com/searchapparchitecture/tip/The-reasons-to-use-or-not-use-sidecars-in-Kubernetes) - see example [here](https://github.com/open-telemetry/opentelemetry-operator/blob/main/tests/e2e/instrumentation-python/00-install-collector.yaml). Which ones you should use depends on what you need to do, such 
+* [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) - see example [here](https://github.com/open-telemetry/opentelemetry-operator/blob/main/tests/e2e/ingress/00-install.yaml)
+* [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) - see example [here](https://github.com/open-telemetry/opentelemetry-operator/blob/main/tests/e2e/daemonset-features/01-install.yaml)
+* [StatefulSet](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/) - see example [here](https://github.com/open-telemetry/opentelemetry-operator/blob/main/tests/e2e/smoke-statefulset/00-install.yaml) 
+* [Sidecar](https://www.techtarget.com/searchapparchitecture/tip/The-reasons-to-use-or-not-use-sidecars-in-Kubernetes) - see example [here](https://github.com/open-telemetry/opentelemetry-operator/blob/main/tests/e2e/instrumentation-python/00-install-collector.yaml)
+
+Which ones you should use depends on what you need to do, such 
 as how you like to run applications for reliability. 
 
 "Sidecar is the one we use the least and is probably used the least across the 
@@ -390,7 +391,7 @@ means you don’t have to reach outside of the network so if you have really
 strict proxy requirements to send data, local dev is much easier for that. That's 
 why OTel now has a really good Prometheus exporter, so it can do both." 
 
-### The centralized OTel Collector Gateway
+### The centralized OTel Collector gateway
 
 There is a [centralized gateway](https://opentelemetry.io/docs/collector/deployment/gateway/) in-flight, which is part of the Collector chain 
 Jacob mentioned earlier. The effort is centered around [Arrow](https://arrow.apache.org/). 
@@ -421,33 +422,26 @@ is my recommendation."
 
 ## Additional Resources
 
-You can catch this conversation in full on the [OTel YouTube Channel](https://youtu.be/dpXhgZL9tzU).
+* Catch this conversation in full on the [OTel YouTube Channel](https://youtu.be/dpXhgZL9tzU)
+* To learn more about the OTel Operator, reach out on [CNCF Slack](https://communityinviter.com/apps/cloud-native/cncf) in the [#OTel-operator channel](https://cloud-native.slack.com/archives/C033BJ8BASU)
+* Jacob will be back to speak with the EUWG at [OTel in Practice](https://opentelemetry.io/community/end-user/otel-in-practice/) on *August 17th at 13:00 ET/10:00 PT*. Be sure to [mark your calendars](https://shorturl.at/cIJT2)!
 
-If you'd like to learn more about the OTel Operator, reach out on [CNCF Slack](https://communityinviter.com/apps/cloud-native/cncf) on the [#OTel-opereator channel](https://cloud-native.slack.com/archives/C033BJ8BASU)
-
-Jacob will be back to speak with the EUWG for [OTel in Practice](https://opentelemetry.io/community/end-user/otel-in-practice/) on *August 17th at 13:00 ET/10:00 PT*. Be sure to [mark your calendars](https://shorturl.at/cIJT2)!
 ## Final Thoughts
 
 OpenTelemetry is all about community, and we wouldn’t be where we are without
-our contributors, maintainers, and users. Sharing stories of how OpenTelemetry
-is being implemented in real life is only part of the picture. We value user
-feedback, and encourage all of our users to share your experiences with us, so
-that we can continue to improve OpenTelemetry. ❣️
+our contributors, maintainers, and users. We value user
+feedback -- please share your experiences and help us improve OpenTelemetry. 
 
-If you have a story to share about how you use OpenTelemetry at your
-organization, we’d love to hear from you! Ways to share:
+Here's how to connect with us:
 
-- Join the [#otel-endusers channel](/community/end-user/slack-channel/) on the
+- The [#otel-endusers channel](/community/end-user/slack-channel/) on the
   [CNCF Community Slack](https://communityinviter.com/apps/cloud-native/cncf)
-- Join our monthly
-  [End Users Discussion Group calls](/community/end-user/discussion-group/)
-- Join our [OTel in Practice sessions](/community/end-user/otel-in-practice/)
-- Sign up for one of our
-  [monthly interview/feedback sessions](/community/end-user/interviews-feedback/)
-- Join the
-  [OpenTelemetry group on LinkedIn](https://www.linkedin.com/groups/14081251)
-- Share your stories on the
-  [OpenTelemetry blog](https://github.com/open-telemetry/opentelemetry.io/blob/main/README.md#submitting-a-blog-post)
+- Monthly
+  [End Users Discussion Group meetings](/community/end-user/discussion-group/)
+- [OTel in Practice sessions](/community/end-user/otel-in-practice/)
+- [Monthly interview/feedback sessions](/community/end-user/interviews-feedback/)
+- [OpenTelemetry on LinkedIn](https://www.linkedin.com/groups/14081251)
+- [OpenTelemetry blog](https://github.com/open-telemetry/opentelemetry.io/blob/main/README.md#submitting-a-blog-post)
 
 Be sure to follow OpenTelemetry on
 [Mastodon](https://fosstodon.org/@opentelemetry) and
