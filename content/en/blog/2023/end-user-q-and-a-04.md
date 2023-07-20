@@ -241,7 +241,7 @@ it can explode."
 
 ### The Target Allocator
 
-"The Target Allocator is a component that's part of the Kubernetes operator in 
+"The Target Allocator is a component that's part of the [Kubernetes operator in 
 OTel that does something that Prometheus can't do, which is: dynamically shard 
 targets amongst a pool of scrapers," shares Jacob. Using the Target Allocator 
 requires running a Prometheus instance. 
