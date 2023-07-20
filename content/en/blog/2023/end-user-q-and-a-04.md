@@ -337,7 +337,7 @@ which is why it's required. Another thing that StatefulSets guarantee is
 something called in-place deployment, which is also available with DaemonSets; 
 this is where you take the pod down before you create a new one. 
 
-"In a deployment you usually do a 1-up, 1-down, or what’s called a rolling 
+"In a deployment you usually do a 1-up, 1-down, or what’s called a [rolling 
 deployment, or rolling update," Jacob says. If you were doing this with the 
 Target Allocator, you are likely to get much more unreliable scrapes. This is 
 because you have to redistribute all the targets when a new replica comes up, 
