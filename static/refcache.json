@@ -191,9 +191,17 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T13:45:46.681919-04:00"
   },
+  "https://cert-manager.io/docs/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-17T19:31:48.606865-06:00"
+  },
   "https://cert-manager.io/docs/installation/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T13:45:41.481947-04:00"
+  },
+  "https://cert-manager.io/docs/installation/kubernetes/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-17T19:31:48.745126-06:00"
   },
   "https://circleci.com": {
     "StatusCode": 206,
