@@ -324,7 +324,7 @@ You will get a cost hit if you sidecar your Collectors for all your services,
 and you also have limited capabilities. He says, "If you’re making Kubernetes 
 APIs calls or attribute enrichment, that’s the thing that would get exponentially 
 expensive if you’re running as a sidecar." He shares an example: "...if you have 
-sidecar on 10k pods, then that’s 10k API calls made to the K8s API. That's 
+sidecar [Collector using the [k8sattributesprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor)] on 10k pods, then that’s 10k API calls made to the K8s API. That's 
 expensive."
 
 On the other hand, if you have five pods deployed on StatefulSets, "that's not 
