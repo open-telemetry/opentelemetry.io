@@ -266,7 +266,7 @@ them evenly among the set of collectors that’s running."
 
 That's the main thing this component does, and it also helps with job discovery. 
 If you're using Prometheus service monitors, which is part of the Prometheus 
-operator, a popular way of running Prometheus in your cluster, "the Target 
+operator](https://github.com/prometheus-operator/prometheus-operator), a popular way of running Prometheus in your cluster, "the Target 
 Allocator can also pull those service monitors and pop monitors and update the 
 monitors and scrape configurations to do that." 
 
