@@ -257,7 +257,7 @@ within these Prometheus instances, which can get expensive, or use a Prometheus
 scaling solution such as Thanos or Cortex -- however, this would involve running 
 more components that you'll need to monitor. 
 
-"In OTel, we tack on this Prometheus receiver to get all this data, but because 
+"In OTel, we tack on this [Prometheus receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/README.md) to get all this data, but because 
 we want to be more efficient than Prometheus, because we don’t need to store the 
 data, we have this component called the Target Allocator, which goes to do the 
 service discovery from Prometheus," says Jacob. "It says give me all the targets 
