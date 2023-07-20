@@ -345,7 +345,7 @@ a placeholder for it – you don’t have to recalculate the ring," he explains.
 He notes that this is really only useful as a metrics use case, where you're 
 scraping Prometheus. He notes that they'd probably run it as a Deployment for 
 anything else, since that mode gives you most everything you would need. 
-Collectors are stateless, so there is no need for them to hold on to anything, 
+Collectors are usually stateless, so there is no need for them to hold on to anything, 
 and Deployments are leaner as a result. "You can just run and roll out and 
 everyone’s happy," he says. "That’s how we run most of our collectors, is just 
 as a Deployment."
