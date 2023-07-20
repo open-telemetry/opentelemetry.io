@@ -244,7 +244,11 @@ it can explode."
 "The Target Allocator is a component that's part of the [Kubernetes operator in 
 OTel that does something that Prometheus can't do, which is: dynamically shard 
 targets amongst a pool of scrapers," shares Jacob. Using the Target Allocator 
-requires running a Prometheus instance. 
+does not require running a Prometheus instance; however, Prometheus CRDs need to exist in order for the Target Allocator to pick them up.
+
+From the [docs](https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/otel-allocator#prometheuscr-specifics):
+
+> The Prometheus CRDs also have to exist for the Allocator to pick them up. The best place to get them is from prometheus-operator: [Releases](https://github.com/prometheus-operator/prometheus-operator/releases). Only the CRDs for CRs that the Allocator watches for need to be deployed. They can be picked out from the bundle.yaml file.
 
 He goes on to explain that while Prometheus has some experimental function for 
 [sharding](https://www.techtarget.com/searchoracle/definition/sharding), you still have a problem for querying, since Prometheus is also a 
