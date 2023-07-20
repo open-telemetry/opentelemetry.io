@@ -219,7 +219,9 @@ like logging for local development, and tracing for distributed development."
 
 Kubernetes now has the ability to emit OTel traces natively, and Jacob is 
 interested in seeing if the traces they get from those are sufficient for 
-generating better Kubernetes metrics using the span-to-metrics processor. 
+generating better Kubernetes metrics using the [spanmetrics processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/spanmetricsprocessor).
+
+>**NOTE:** The spanmetrics processor is deprecated, and the [spanmetrics connector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/spanmetricsprocessor) should be used instead. 
 
 "I'm very focused on infrastructure metrics, like Kubernetes infrastructure 
 metrics, and I find them to be very painful in their current form," he says. 
