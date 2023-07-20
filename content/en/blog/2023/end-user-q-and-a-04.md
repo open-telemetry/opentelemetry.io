@@ -338,7 +338,7 @@ something called in-place deployment, which is also available with DaemonSets;
 this is where you take the pod down before you create a new one. 
 
 "In a deployment you usually do a 1-up, 1-down, or what’s called a [rolling 
-deployment, or rolling update," Jacob says. If you were doing this with the 
+deployment](https://www.techtarget.com/searchitoperations/definition/rolling-deployment), or rolling update," Jacob says. If you were doing this with the 
 Target Allocator, you are likely to get much more unreliable scrapes. This is 
 because you have to redistribute all the targets when a new replica comes up, 
 because the hash ring you place these on has changed, requiring a recalculation 
