@@ -366,7 +366,7 @@ this cardinality stuff, that’s a lot of memory. So if you’re doing a Statefu
 scraping all these nodes, that’s a lot of targets, that’s a lot of memory, it 
 can go down much more easily and you can lose more data." 
 
-If a Collector goes down, it comes back up quickly, since it is stateless, which 
+If a Collector goes down, it comes back up quickly, since it is usually stateless, which 
 means "usually the blip is low," says Jacob. However, if you're past the point of 
 saturation, the blip "is more flappy, where it could go up and down pretty 
 quickly." Thus, it's a good idea to have a horizontal pod autoscaler, or HPA.
