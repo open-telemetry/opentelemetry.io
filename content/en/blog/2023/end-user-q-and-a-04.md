@@ -310,7 +310,7 @@ The OTel Operator supports four [deployment modes](https://github.com/open-telem
 [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/), 
 [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), 
 [StatefulSet](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/), 
-and [Sidecar](). Which ones you should use depends on what you need to do, such 
+and [Sidecar](https://www.techtarget.com/searchapparchitecture/tip/The-reasons-to-use-or-not-use-sidecars-in-Kubernetes) - see example [here](https://github.com/open-telemetry/opentelemetry-operator/blob/main/tests/e2e/instrumentation-python/00-install-collector.yaml). Which ones you should use depends on what you need to do, such 
 as how you like to run applications for reliability. 
 
 "Sidecar is the one we use the least and is probably used the least across the 
