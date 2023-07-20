@@ -419,6 +419,13 @@ you're not staying up to date with vulnerability fixes then you’re opening
 yourself up to security attacks, which you don’t want. 'Do something about it' 
 is my recommendation."
 
+## Additional Resources
+
+You can catch this conversation in full on the [OTel YouTube Channel](https://youtu.be/dpXhgZL9tzU).
+
+If you'd like to learn more about the OTel Operator, reach out on [CNCF Slack](https://communityinviter.com/apps/cloud-native/cncf) on the [#OTel-opereator channel](https://cloud-native.slack.com/archives/C033BJ8BASU)
+
+Jacob will be back to speak with the EUWG for [OTel in Practice](https://opentelemetry.io/community/end-user/otel-in-practice/) on *August 17th at 13:00 ET/10:00 PT*. Be sure to [mark your calendars](https://shorturl.at/cIJT2)!
 ## Final Thoughts
 
 OpenTelemetry is all about community, and we wouldn’t be where we are without
