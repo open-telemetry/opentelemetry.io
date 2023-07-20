@@ -390,7 +390,7 @@ means you don’t have to reach outside of the network so if you have really
 strict proxy requirements to send data, local dev is much easier for that. That's 
 why OTel now has a really good Prometheus exporter, so it can do both." 
 
-### The centralized gateway
+### The centralized OTel Collector Gateway
 
 There is a [centralized gateway](https://opentelemetry.io/docs/collector/deployment/gateway/) in-flight, which is part of the Collector chain 
 Jacob mentioned earlier. The effort is centered around [Arrow](https://arrow.apache.org/). 
