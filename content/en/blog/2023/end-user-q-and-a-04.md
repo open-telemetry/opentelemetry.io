@@ -137,7 +137,7 @@ Sometimes, it's as simple as forgetting "to add something somewhere," but other
 times, there could be an upstream library that doesn't emit what you expected 
 for OTel. 
 
-He tells a story about the time he  migrated their grpc util package (which is 
+He tells a story about the time he  migrated their gRPC util package (which is 
 now in Go contrib) and found an issue with propagation. 
 
 "I was trying to understand what’s going wrong here. When I looked at the code – 
