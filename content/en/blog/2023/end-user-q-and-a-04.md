@@ -242,7 +242,7 @@ it can explode."
 ### The Target Allocator
 
 "The Target Allocator is a component that's part of the [Kubernetes operator in 
-OTel that does something that Prometheus can't do, which is: dynamically shard 
+OTel](https://github.com/open-telemetry/opentelemetry-operator) that does something that Prometheus can't do, which is: dynamically shard 
 targets amongst a pool of scrapers," shares Jacob. Using the Target Allocator 
 does not require running a Prometheus instance; however, Prometheus CRDs need to exist in order for the Target Allocator to pick them up.
 
