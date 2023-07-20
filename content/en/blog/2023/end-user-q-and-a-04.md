@@ -204,7 +204,7 @@ components, which was really neat."
 
 When Jacob started the OTel migration, it was still too early for logs. 
 "The thing we would change," he says, "is how we collect those logs, potentially; 
-we previously did it using Google’s log agent, basically running fluentbit on 
+we previously did it using Google’s log agent, basically running [fluentbit](https://fluentbit.io) on 
 every node in a GKE cluster and then they send it off to GCP and we tail it 
 there." He notes that there may have been recent changes to this that he's not 
 aware of at this time. 
