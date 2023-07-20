@@ -308,7 +308,7 @@ generated? One of a bunch of things."
 
 The OTel Operator supports four [deployment modes](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspec) for the OTel Collector in Kubernetes: 
 [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) - see example [here](https://github.com/open-telemetry/opentelemetry-operator/blob/main/tests/e2e/ingress/00-install.yaml), 
-[DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), 
+[DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) - see example [here](https://github.com/open-telemetry/opentelemetry-operator/blob/main/tests/e2e/daemonset-features/01-install.yaml), 
 [StatefulSet](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/) - see example [here](https://github.com/open-telemetry/opentelemetry-operator/blob/main/tests/e2e/smoke-statefulset/00-install.yaml), 
 and [Sidecar](https://www.techtarget.com/searchapparchitecture/tip/The-reasons-to-use-or-not-use-sidecars-in-Kubernetes) - see example [here](https://github.com/open-telemetry/opentelemetry-operator/blob/main/tests/e2e/instrumentation-python/00-install-collector.yaml). Which ones you should use depends on what you need to do, such 
 as how you like to run applications for reliability. 
