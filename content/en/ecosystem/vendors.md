@@ -4,54 +4,40 @@ description: Vendors who natively support OpenTelemetry
 aliases: [/vendors]
 # Note: the keywords after 'cSpell:ignore' must be on the same line, no wrapping, hence the Prettier ignore directive
 # prettier-ignore
-spelling: cSpell:ignore appdynamics aria aspecto bution coralogix daocloud datadoghq distri dynatrace gethelios grafana humio Instana kloudfuse lightstep logz logicmonitor lumigo observiq promscale sentrysoftware signoz solarwinds splunk sumologic uptrace vmware wavefront ITRS itrsgroup geneos Crowdstrike observeinc servicepilot telemetryhub teletrace thousandeyes
 ---
 
-[Distributions](/docs/concepts/distributions/) and vendors who natively support
-OpenTelemetry in their commercial products.
+A non-exhaustive list of organizations that provide solutions which consume
+OpenTelemetry natively via [OTLP](/docs/specs/otlp/) e.g. observability backends
+or observability pipelines.
 
-<!-- prettier-ignore -->
-| Company\*                  | Distri&shy;bution | Native OTLP | Learn more
-| -------------------------- | ----------------- | ----------- | -----------
-| AppDynamics (Cisco)        | Yes               | Yes         | [docs.appdynamics.com/...](https://docs.appdynamics.com/latest/en/application-monitoring/appdynamics-for-opentelemetry)
-| Aria by VMware (Wavefront) | No                | Yes         | [docs.wavefront.com/...](https://docs.wavefront.com/opentelemetry_tracing.html)
-| Aspecto                    | Yes               | Yes         | [aspecto.io](https://www.aspecto.io)
-| AWS                        | Yes               | No          | [aws-otel.github.io](https://aws-otel.github.io)
-| Azure                      | Yes               | No          | [docs.microsoft.com/...](https://docs.microsoft.com/azure/azure-monitor/app/opentelemetry-overview)
-| Coralogix                  | Yes               | Yes         | [coralogix.com/...](https://coralogix.com/docs/opentelemetry/)
-| DaoCloud                   | Yes               | Yes         | [docs.daocloud.io/...](https://docs.daocloud.io/en/insight/06UserGuide/01quickstart/otel/otel/)
-| Datadog                    | Yes               | Yes         | [docs.datadoghq.com/...](https://docs.datadoghq.com/tracing/setup_overview/open_standards)
-| Dynatrace                  | Yes               | Yes         | [dynatrace.com/...](https://www.dynatrace.com/support/help/how-to-use-dynatrace/transactions-and-services/service-monitoring-settings/opentelemetry/)
-| Elastic                    | Yes               | Yes         | [elastic.co/...](https://www.elastic.co/guide/en/apm/get-started/current/open-telemetry-elastic.html)
-| F5                         | No                | Yes         | [opentelemetry-collector-contrib/...](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/f5cloudexporter)
-| Google Cloud Platform      | No                | Yes         | [opentelemetry-collector-contrib/...](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/googlecloudexporter)
-| Grafana Labs               | No                | Yes         | [grafana.com/...](https://grafana.com/oss/opentelemetry/)
-| Helios                     | Yes               | Yes         | [gethelios.dev](https://gethelios.dev/)
-| Honeycomb                  | Yes               | Yes         | [docs.honeycomb.io/...](https://docs.honeycomb.io/getting-data-in/)
-| Instana                    | No                | Yes         | [ibm.com/docs/...](https://www.ibm.com/docs/en/obi/current?topic=apis-opentelemetry)
-| ITRS                       | Yes               | Yes         | [docs.itrsgroup.com/docs/geneos/...](https://docs.itrsgroup.com/docs/geneos/data-collection/opentelemetry/current/opentelemetry.html)
-| KloudFuse                  | No                | Yes         | [kloudfuse.com](https://kloudfuse.atlassian.net/wiki/spaces/EX/pages/753860609/APM#Sending-traces-to-Kloudfuse-data-plane%3A)
-| Lightstep                  | Yes               | Yes         | [github.com/lightstep](https://github.com/lightstep?q=launcher)
-| LogicMonitor               | Yes               | Yes         | [logicmonitor.com/...](https://www.logicmonitor.com/support/tracing/getting-started-with-tracing)
-| Logz.io                    | Yes               | No          | [docs.logz.io/...](https://docs.logz.io/shipping/tracing-sources/opentelemetry.html#overview)
-| LogScale by Crowdstrike (Humio)| No            | Yes         | [library.humio.com/...](https://library.humio.com/falcon-logscale/log-shippers-opentelemetry.html)
-| Lumigo                     | Yes               | Yes         | [lumigo.io](https://docs.lumigo.io/docs/opentelemetry)
-| New Relic                  | No                | Yes         | [newrelic.com/...](https://newrelic.com/solutions/opentelemetry)
-| Observe, Inc.              | Yes               | Yes         | [observeinc.com](https://docs.observeinc.com/en/latest/content/integrations/otel/opentelemetry.html)
-| observIQ                   | Yes               | Yes         | [observiq.com/...](https://docs.bindplane.observiq.com)
-| Oracle                     | No                | Yes         | [docs.oracle.com/...](https://docs.oracle.com/en-us/iaas/application-performance-monitoring/doc/configure-open-source-tracing-systems.html#GUID-4D941163-F357-4839-8B06-688876D4C61F)
-| Promscale                  | No                | Yes         | [timescale.com/promscale](https://www.timescale.com/promscale)
-| Sentry                     | Yes               | No          | [sentry.io/...](https://sentry.io/for/opentelemetry/)
-| Sentry Software            | Yes               | Yes         | [sentrysoftware.com/...](https://www.sentrysoftware.com/products/hardware-sentry-opentelemetry-collector.html)
-| ServicePilot               | No                | Yes         | [servicepilot.com/...](https://www.servicepilot.com/en/doc/apm#opentelemetry)
-| SigNoz                     | Yes               | Yes         | [signoz.io](https://signoz.io)
-| SolarWinds                 | Yes               | Yes         | [documentation.solarwinds.com/...](https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=third-otel-integration)
-| Splunk                     | Yes               | Yes         | [splunk.com/blog/...](https://www.splunk.com/en_us/blog/conf-splunklive/announcing-native-opentelemetry-support-in-splunk-apm.html)
-| Sumo Logic                 | Yes               | Yes         | [help.sumologic.com/](https://help.sumologic.com/docs/apm/traces/quickstart/)
-| TelemetryHub               | No                | Yes         | [telemetryhub.com](https://app.telemetryhub.com/docs)
-| Teletrace                  | Yes               | Yes         | [docs.teletrace.io](https://docs.teletrace.io/)
-| ThousandEyes (Cisco)       | No                | Yes         | [docs.thousandeyes.com](https://docs.thousandeyes.com/product-documentation/api/opentelemetry)
-| Traceloop                  | No                | Yes         | [traceloop.com](https://www.traceloop.com)
-| Uptrace                    | Yes               | Yes         | [uptrace.dev](https://uptrace.dev)
+Those offerings may be open source, commercial or both. Some organizations
+provide a [distribution](/docs/concepts/distributions/) (a customized version of
+OpenTelemetry components), that provide additional capabilities or ease of use.
 
-\* _Vendors are listed alphabetically_.
+{{% ecosystem/vendor-table %}}
+
+To have your organization included,
+[add an entry to the list](https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/vendors.yaml)
+and submit a PR.
+
+You will need to include[^existing-entries]:
+
+- a link to the documentation on how your offering consumes OpenTelemetry
+  natively via [OTLP](http://localhost:1313/docs/specs/otlp/).
+- if applicable, a link to your distribution.
+- if applicable, a link that proves that your offering is open source. An open
+  source distribution does not qualify your offering to be marked "open source".
+- a point of contact (GitHub handle or email address), we can reach out for
+  future inquiries.
+
+Note, that this list is for organizations that consume OpenTelemetry to offer
+Observability to end users.
+
+If you adopt OpenTelemetry for Observability as an end user and do not provide
+any kind of services around OpenTelemetry, see [Adopters](/ecosystem/adopters). <br /> If
+you provide a library, service or app made observable through OpenTelemetry, see
+[Integrators](/ecosystem/integrations).
+
+[^existing-entries]:
+    Organizations that have been part of this list before July 2023 are exempted
+    from these requirements until January, 1th 2024.
