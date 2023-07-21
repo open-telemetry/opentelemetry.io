@@ -31,18 +31,21 @@ Once the proxy is exposed, you can also visit the following paths
 
 | Component         | Path                             |
 | ----------------- | -------------------------------- |
-| Web store          | http://localhost:8080/           |
+| Web store         | http://localhost:8080/           |
 | Grafana           | http://localhost:8080/grafana/   |
 | Feature Flags UI  | http://localhost:8080/feature/   |
 | Load Generator UI | http://localhost:8080/loadgen/   |
 | Jaeger UI         | http://localhost:8080/jaeger/ui/ |
 
-In order for spans from the Webstore to be collected you must expose the
+In order for spans from the Web store to be collected you must expose the
 OpenTelemetry Collector OTLP/HTTP receiver:
 
 ```sh
 kubectl port-forward svc/my-otel-demo-otelcol 4318:4318
 ```
+
+For more details on using the demo in Kubernetes see the
+[Demo documentation](/docs/demo/kubernetes-deployment/).
 
 ### Configuration
 
