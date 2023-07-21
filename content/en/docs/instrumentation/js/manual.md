@@ -327,84 +327,17 @@ If you followed the instructions to [initialize the SDK](#initialize-the-sdk)
 above, you have a `TracerProvider` setup for you already. You can continue with
 [acquiring a tracer](#acquiring-a-tracer).
 
-##### Initializing tracing with `sdk-trace-node`
-
-In some cases you may not be able or may not want to use the
-[full OpenTelemetry SDK for Node.js](https://www.npmjs.com/package/@opentelemetry/sdk-node)
-If so, you can initialize tracing with the `@opentelemetry/sdk-trace-node`
-package:
-
-```shell
-npm install @opentelemetry/sdk-trace-node
-```
-
-Create `instrumentation.ts` (or `instrumentation.js`) to contain all the SDK
-initialization code in it:
-
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-
-{{< tabpane langEqualsHeader=true >}}
-
-{{< tab TypeScript >}}
-/*instrumentation.ts*/
-import { BatchSpanProcessor, ConsoleSpanExporter } from "@opentelemetry/sdk-trace-base";
-import { Resource } from "@opentelemetry/resources";
-import { SemanticResourceAttributes } from "@opentelemetry/semantic-conventions";
-import { NodeTracerProvider } from "@opentelemetry/sdk-trace-node";
-
-const resource =
-  Resource.default().merge(
-    new Resource({
-      [SemanticResourceAttributes.SERVICE_NAME]: "dice-server",
-      [SemanticResourceAttributes.SERVICE_VERSION]: "0.1.0",
-    })
-  );
-
-const provider = new NodeTracerProvider({
-    resource: resource,
-});
-const exporter = new ConsoleSpanExporter();
-const processor = new BatchSpanProcessor(exporter);
-provider.addSpanProcessor(processor);
-
-provider.register();
-{{< /tab >}}
-
-{{< tab JavaScript >}}
-/*instrumentation.js*/
-const { Resource } = require("@opentelemetry/resources");
-const { SemanticResourceAttributes } = require("@opentelemetry/semantic-conventions");
-const { NodeTracerProvider } = require("@opentelemetry/sdk-trace-node");
-const { ConsoleSpanExporter, BatchSpanProcessor } = require("@opentelemetry/sdk-trace-base");
-
-const resource =
-  Resource.default().merge(
-    new Resource({
-      [SemanticResourceAttributes.SERVICE_NAME]: "dice-server",
-      [SemanticResourceAttributes.SERVICE_VERSION]: "0.1.0",
-    })
-  );
-
-const provider = new NodeTracerProvider({
-    resource: resource,
-});
-const exporter = new ConsoleSpanExporter();
-const processor = new BatchSpanProcessor(exporter);
-provider.addSpanProcessor(processor);
-
-provider.register();
-{{< /tab >}}
-
-{{< /tabpane>}}
-
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
-
-This will have no effect on your app yet: you need to
-[create spans](#create-spans) to have telemetry emitted by your app.
-
 #### Browser
+
+{{% alert title="Warning" color="warning" %}}
+
+Instrumentation for the browser is experimental and this is mostly unspecified:
+this may break in the future. If you want to help changing that, you can join
+the Client Instrumentation SIG on CNCF Slack channel
+[#otel-client-side-telemetry](otel-client-side-telemetry) or by attending
+[their meetings](https://docs.google.com/document/d/16Vsdh-DM72AfMg_FIt9yT9ExEWF4A_vRbQ3jRNBe09w/edit)
+
+{{% /alert %}}
 
 First, ensure you've got the right packages:
 
