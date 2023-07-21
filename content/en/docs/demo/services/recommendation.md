@@ -6,7 +6,7 @@ spelling: cSpell:ignore instrumentor cpython NOTSET
 ---
 
 This service is responsible to get a list of recommended products for the user
-based on existing product ids the user is browsing.
+based on existing product IDs the user is browsing.
 
 [Recommendation service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/recommendationservice/)
 

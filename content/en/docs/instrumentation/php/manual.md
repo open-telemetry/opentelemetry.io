@@ -3,8 +3,10 @@ title: Manual Instrumentation
 linkTitle: Manual
 weight: 30
 description: Manual instrumentation for OpenTelemetry PHP
-spelling: cSpell:ignore myapp autoload
+spelling: cSpell:ignore myapp autoload guzzlehttp
 ---
+
+<!-- markdownlint-disable no-duplicate-heading -->
 
 {{% docs/instrumentation/manual-intro %}}
 
@@ -16,11 +18,10 @@ console.
 
 To use the OpenTelemetry SDK for PHP you need packages that satisfy the
 dependencies for `psr/http-client-implementation` and
-`psr/http-factory-implementation`. Here we will use the Guzzle 7 HTTP Adapter
-which satisfies both:
+`psr/http-factory-implementation`. Here we will use Guzzle, which provides both:
 
 ```sh
-composer require php-http/guzzle7-adapter
+composer require guzzlehttp/guzzle
 ```
 
 Now you can install the OpenTelemetry SDK, and OTLP exporter:
@@ -338,7 +339,7 @@ The OpenTelemetry SDK provides four samplers:
   sampled. The root sampler can be any of the other samplers.
 
 <!-- prettier-ignore-start -->
-{{< tabpane lang=php persistLang=false >}}
+{{< tabpane lang=php >}}
 {{< tab "TraceId ratio-based" >}}
 //trace 50% of requests
 $sampler = new TraceIdRatioBasedSampler(0.5);
@@ -381,7 +382,7 @@ $tracerProvider = TracerProvider::builder()
 All exporters require a `Transport`, which is responsible for the sending of
 telemetry data:
 
-- `PsrTransport` - uses a PSR18 client to send data over HTTP
+- `PsrTransport` - uses a PSR-18 client to send data over HTTP
 - `StreamTransport` - uses a stream to send data (eg to file or `stdout`)
 - `GrpcTransport` - uses gRPC to send protobuf-encoded data
 
@@ -635,7 +636,7 @@ $eventLogger->logEvent('foo', $record);
 
 </details>
 
-### Integrations for 3rd-party logging libraries
+### Integrations for third-party logging libraries
 
 #### Monolog
 

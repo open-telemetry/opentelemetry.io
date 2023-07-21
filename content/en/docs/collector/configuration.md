@@ -7,6 +7,8 @@ spelling: cSpell:ignore prometheusremotewrite prodevent spanmetrics servicegraph
 spelling: cSpell:ignore oidc cfssl genkey initca cfssljson gencert
 ---
 
+<!-- markdownlint-disable link-fragments -->
+
 Familiarity with the following pages is assumed:
 
 - [Data collection concepts][dcc] in order to understand the repositories

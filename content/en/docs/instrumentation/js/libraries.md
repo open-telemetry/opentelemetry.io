@@ -140,6 +140,7 @@ const sdk = new NodeSDK({
 To only load individual instrumentation libraries, replace
 `[getNodeAutoInstrumentations()]` with the list of those you need:
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 
@@ -176,6 +177,7 @@ const sdk = new NodeSDK({
 
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 ### Configuration
 

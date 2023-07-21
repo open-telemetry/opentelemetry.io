@@ -10,7 +10,7 @@ repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/mai
 license: Apache 2.0
 description:
   This receiver can fetch stats from a SAP HANA instance. It leverages the
-  driver written by SAP for connecting to SAP HANA with the golang sql module to
+  driver written by SAP for connecting to SAP HANA with the golang SQL module to
   execute several monitoring queries.
 authors: OpenTelemetry Authors
 otVersion: latest

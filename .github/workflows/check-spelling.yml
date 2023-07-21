@@ -1,0 +1,16 @@
+name: Check spelling
+
+on:
+  pull_request:
+
+jobs:
+  main:
+    name: Check spelling
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: streetsidesoftware/cspell-action@v2
+        with:
+          files: |
+            content/**/*
+          config: .vscode/cspell.json

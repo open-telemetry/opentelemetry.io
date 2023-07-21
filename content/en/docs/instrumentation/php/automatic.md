@@ -3,7 +3,7 @@ title: Automatic Instrumentation
 linkTitle: Automatic
 weight: 20
 spelling: cSpell:ignore userland phar autoload tracecontext myapp configurator
-spelling: cSpell:ignore packagist pecl shortcode unindented democlass
+spelling: cSpell:ignore packagist pecl shortcode unindented democlass autoloading
 ---
 
 Automatic instrumentation with PHP requires at least PHP 8.0, and the
@@ -15,8 +15,12 @@ method runs.
 {{% alert title="Important" color="warning" %}}Installing the OpenTelemetry
 extension by itself will not generate traces. You must also install one or more
 [packages](/ecosystem/registry/?component=instrumentation&language=php) for the
-frameworks and libraries that you are using, or alternatively write your
-own.{{% /alert %}}
+frameworks and libraries that you are using, or alternatively write your own.
+
+You also _must_ use
+[composer autoloading](https://getcomposer.org/doc/01-basic-usage.md#autoloading),
+as this is the mechanism all auto-instrumentation packages use to register
+themselves. {{% /alert %}}
 
 ## Example
 
@@ -78,25 +82,25 @@ The extension can be installed via pecl,
 1. Setup development environment. Installing from source requires proper
    development environment and some dependencies:
 
-   {{< tabpane lang=shell persistLang=false >}}
+   {{< tabpane lang=shell >}}
 
    {{< tab "Linux (apt)" >}}sudo apt-get install gcc make autoconf{{< /tab >}}
 
-   {{< tab "MacOS (homebrew)" >}}brew install gcc make autoconf{{< /tab >}}
+   {{< tab "macOS (homebrew)" >}}brew install gcc make autoconf{{< /tab >}}
 
    {{< /tabpane >}}
 
 2. Build/install the extension. With your environment set up you can install the
    extension:
 
-   {{< tabpane lang=shell persistLang=false >}}
+   {{< tabpane lang=shell >}}
 
    {{< tab pecl >}}pecl install opentelemetry-beta{{< /tab >}}
 
 <!-- The remaining shortcode lines must be unindented so that tab content is unindented in the generated page -->
 <!-- prettier-ignore-start -->
 {{< tab pickle >}}
-php pickle.phar install --source https://github.com/open-telemetry/opentelemetry-php-instrumentation.git#1.0.0beta2
+php pickle.phar install opentelemetry
 {{< /tab >}}
 
 {{< tab "php-extension-installer (docker)" >}}

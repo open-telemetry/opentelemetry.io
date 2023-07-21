@@ -3,7 +3,7 @@ title: OpenTelemetry in Focus, March 2023
 linkTitle: OTel in Focus 2023/03
 date: 2023-03-31
 author: '[Austin Parker](https://github.com/austinlparker)'
-spelling: cSpell:ignore spanmetricsconnector spanmetricsprocessor 
+spelling: cSpell:ignore spanmetricsconnector spanmetricsprocessor
 spelling: cSpell:ignore Jodd Ktor Webflux
 ---
 
@@ -21,6 +21,8 @@ channel.
 ## Releases and Updates
 
 Here are the latest updates from our core repositories.
+
+<!-- markdownlint-disable heading-increment -->
 
 ##### [Specification](/docs/specs/otel/)
 

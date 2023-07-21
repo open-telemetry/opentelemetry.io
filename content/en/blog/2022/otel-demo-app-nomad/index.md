@@ -42,15 +42,16 @@ In order to run the example in this tutorial, you’ll need the following:
 - [Docker](https://docker.com) (version 20.10.21 at the time of this writing)
 - [Vagrant](https://vagrantup.com) (version 2.3.1 at the time of this writing)
 
-### Tutorial Repos
+### Tutorial Repositories
 
-Below are the repos that we’ll be using for today’s tutorial:
+Below are the repositories that we’ll be using for today’s tutorial:
 
-- My modified [HashiQube Repo](https://github.com/avillela/hashiqube) (fork of
-  [servian/hashiqube](https://github.com/servian/hashiqube)). If you’re curious,
-  you can see what modifications I’ve made
+- My modified [HashiQube Repository](https://github.com/avillela/hashiqube)
+  (fork of [servian/hashiqube](https://github.com/servian/hashiqube)). If you’re
+  curious, you can see what modifications I’ve made
   [here](https://github.com/avillela/hashiqube).
-- My [Nomad Conversions](https://github.com/avillela/nomad-conversions) repo
+- My [Nomad Conversions](https://github.com/avillela/nomad-conversions)
+  repository
 
 ### HashiQube Setup
 
@@ -59,7 +60,7 @@ Before you start, just a friendly reminder that HashiQube by default runs
 on Docker. In addition, we’ll be deploying 21 job specs to Nomad. This means
 that we’ll need a decent amount of CPU and RAM, so please make sure that you
 have enough resources allocated in your Docker desktop. For reference, I’m
-running an M1 Macbook Pro with 8 cores and 32 GB RAM. My Docker Desktop Resource
+running an M1 MacBook Pro with 8 cores and 32 GB RAM. My Docker Desktop Resource
 settings are as follows:
 
 - **CPUs:** 3
@@ -125,7 +126,7 @@ vagrant ssh
 
 We’re finally ready to deploy the OTel Demo App!
 
-First, let’s clone the repo, and go to our working directory:
+First, let’s clone the repository, and go to our working directory:
 
 ```shell
 git clone https://github.com/avillela/nomad-conversions.git
@@ -229,7 +230,7 @@ of the services:
 ![Screen capture of Consul service health. All services healthy.](consul-service-health.png 'Screen capture of Consul service health. All services healthy.')
 
 By default, unhealthy services show up at the top, with a red “x” next to them.
-Since we don’t see any nasty red “x”s in the above screen shot, we know that our
+Since we don’t see any nasty red “x”s in the above screenshot, we know that our
 services are lookin’ good!
 
 #### 5- Access the OTel Demo App

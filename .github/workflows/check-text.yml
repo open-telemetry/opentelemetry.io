@@ -1,0 +1,34 @@
+name: Check linter rules
+
+on:
+  pull_request:
+
+jobs:
+  text-linter:
+    name: TEXT linter
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      # Make sure that we only install the dependencies for textlint to speed up install
+      - run: |
+          jq 'del(.dependencies) | .devDependencies |= with_entries( select(.key | startswith("textlint")))' package.json > package2.json && mv package2.json package.json
+      - run: npm install --ignore-scripts
+      - run: npm run check:text
+
+  markdown-linter:
+    name: MARKDOWN linter
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Create and use reduced-dependencies package.json
+        run: |
+          mkdir -p tmp
+          jq '.devDependencies |= with_entries(
+                  select(.key | test("gulp|markdown|through|require|yargs"))
+                )
+                | del(.dependencies)' \
+            package.json > tmp/package-min.json
+          cp tmp/package-min.json package.json
+      - run: npm install --ignore-scripts
+      - run: npm run check:markdown

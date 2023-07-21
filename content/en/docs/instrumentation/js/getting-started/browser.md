@@ -23,7 +23,7 @@ This is a very simple guide, if you'd like to see more complex examples go to
 Copy the following file into an empty directory and call it `index.html`.
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -73,7 +73,7 @@ tsc --init
 ```
 
 Then acquire [parcel](https://parceljs.org/), which will (among other things)
-let you work in Typescript.
+let you work in TypeScript.
 
 ```shell
 npm install --save-dev parcel
@@ -84,7 +84,7 @@ as appropriate, based on the language you've chosen to write your app in. Add
 the following code to your HTML right before the `</body>` closing tag:
 
 <!-- prettier-ignore-start -->
-{{< tabpane lang=html persistLang=false >}}
+{{< tabpane lang=html >}}
 {{< tab TypeScript >}}
 <script type="module" src="document-load.ts"></script>
 {{< /tab >}}
@@ -231,7 +231,7 @@ developer toolbar you should see some traces being exported:
 
 ### Add Instrumentations
 
-If you want to instrument AJAX requests, User Interactions and others, you can
+If you want to instrument Ajax requests, User Interactions and others, you can
 register additional instrumentations for those:
 
 ```javascript

@@ -156,9 +156,9 @@ others are still instrumented using the [legacy OpenTracing
 [using shims](/docs/migration/opentracing/).
 
 The OpenTelemetry Operator is being implemented to auto-instrument Java and .NET
-code. Among other things, the [OTel Operator](/docs/k8s-operator/) supports
-injecting and
-[configuring auto-instrumentation](/docs/k8s-operator/automatic/#configure-automatic-instrumentation)
+code. Among other things, the [OTel Operator](/docs/kubernetes/operator/)
+supports injecting and
+[configuring auto-instrumentation](/docs/kubernetes/operator/automatic/#configure-automatic-instrumentation)
 in .NET, Java, Python, and Node.js. Iris hopes that Go auto-instrumentation will
 be available in the near-future. To track progress of auto-instrumentation in
 Go, see
@@ -211,9 +211,8 @@ stable.
 
 ### How are you collecting the metrics signal?
 
-Auto-instrumentation emits some
-[OTLP](https://github.com/open-telemetry/opentelemetry-proto/blob/main/docs/specification.md)
-metrics; however, the majority of metrics still come from Prometheus.
+Auto-instrumentation emits some [OTLP](/docs/specs/otlp/) metrics; however, the
+majority of metrics still come from Prometheus.
 
 The team currently uses the
 [Prometheus Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/README.md)
@@ -256,8 +255,8 @@ would be a bottleneck in terms of load and single point of failure. The team
 currently has one
 [OpenTelemetry Collector agent](/docs/collector/deployment/agent/) per
 Kubernetes cluster. The end goal is to replace those agents with the
-[OTel Operator](/docs/k8s-operator/) instead, which allows you to deploy and
-configure the OTel Collector and inject and configure auto-instrumentation.
+[OTel Operator](/docs/kubernetes/operator/) instead, which allows you to deploy
+and configure the OTel Collector and inject and configure auto-instrumentation.
 
 Everything is then sent to a central OTel Collector (i.e. an
 [OTel Collector gateway](/docs/collector/deployment/gateway/)) per data center,

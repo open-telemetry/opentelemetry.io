@@ -21,6 +21,8 @@ channel.
 
 Here are the latest updates from some of our core repositories.
 
+<!-- markdownlint-disable heading-increment -->
+
 ##### [Specification](/docs/specs/otel/)
 
 [Version 1.20](https://github.com/open-telemetry/opentelemetry-specification/releases/tag/v1.20.0)
@@ -48,7 +50,7 @@ has been released for the collector. The
 [operator](https://github.com/open-telemetry/opentelemetry-operator/releases/tag/v0.75.0)
 has been updated to v0.75.0, adding support for feature gates in the operator.
 
-This release includes several bug fixes and improvements to connectors, along
+This release includes several bugfixes and improvements to connectors, along
 with a breaking change to the `confmap` component.
 
 ##### [Go](/docs/instrumentation/go/)

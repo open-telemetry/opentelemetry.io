@@ -187,14 +187,8 @@ module:
       target: content/docs/specs/otlp/_index.md
     - source: tmp/otlp/docs/img
       target: content/docs/specs/otlp/img
-    - source: tmp/semconv/specification/logs
-      target: content/docs/specs/semconv/logs
-    - source: tmp/semconv/specification/metrics
-      target: content/docs/specs/semconv/metrics
-    - source: tmp/semconv/specification/resource
-      target: content/docs/specs/semconv/resource
-    - source: tmp/semconv/specification/trace
-      target: content/docs/specs/semconv/trace
+    - source: tmp/semconv/docs
+      target: content/docs/specs/semconv
     - source: tmp/community/mission-vision-values.md
       target: content/community/mission.md
     - source: tmp/community/roadmap.md
@@ -203,10 +197,6 @@ module:
       target: static
     - source: content-modules/semantic-conventions/schemas
       target: static/schemas
-      # TODO: drop the excludeFiles line once
-      # https://github.com/open-telemetry/opentelemetry.io/issues/2721
-      # is fully resolved.
-      excludeFiles: [1.21.0]
     - source: static/img
       target: static/img
     - source: content-modules/opentelemetry-specification/internal/img

@@ -18,7 +18,7 @@ service or app code, see [Manual instrumentation](../manual).
 ## Setup
 
 1.  Download [opentelemetry-javaagent.jar][] from [Releases][] of the
-    `opentelemetry-java-instrumentation` repo and place the JAR in your
+    `opentelemetry-java-instrumentation` repository and place the JAR in your
     preferred directory. The JAR file contains the agent and instrumentation
     libraries.
 2.  Add `-javaagent:path/to/opentelemetry-javaagent.jar` and other config to

@@ -64,12 +64,12 @@ async function pruneTask() {
       .map((url) => [url, entries[url].LastSeen, entries[url].StatusCode])
       .filter(
         (
-          [url, date, statusCode] // True for prune candidates:
+          [url, date, statusCode], // True for prune candidates:
         ) =>
           // Include entry if pruning 4xx and status code is in 4xx
           (prune4xx && 400 <= statusCode && statusCode <= 499) ||
           // Or if it is before the given date
-          (beforeDate ? new Date(date) < beforeDate : true)
+          (beforeDate ? new Date(date) < beforeDate : true),
       )
       .sort((a, b) => new Date(a[1]) - new Date(b[1]));
 
@@ -78,13 +78,13 @@ async function pruneTask() {
       return;
     } else {
       console.log(
-        `INFO: ${sortedEntriesOfPruneCandidates.length} entries as prune candidates under given options.`
+        `INFO: ${sortedEntriesOfPruneCandidates.length} entries as prune candidates under given options.`,
       );
     }
 
     if (!n) {
       console.log(
-        `WARN: num is ${n} so nothing will be pruned. Specify number of entries to prune as --num <n>.`
+        `WARN: num is ${n} so nothing will be pruned. Specify number of entries to prune as --num <n>.`,
       );
       return;
     }

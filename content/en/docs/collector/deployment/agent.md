@@ -15,7 +15,7 @@ the same host as the application (such as a sidecar or a daemonset).
 Each client-side SDK or downstream collector is configured with a collector
 location:
 
-![Decentralized collector deployment concept](../../img/otel_agent_sdk_v2.svg)
+![Decentralized collector deployment concept](../../img/otel-agent-sdk.svg)
 
 1. In the app, the SDK is configured to send OTLP data to a collector.
 1. The collector is configured to send telemetry data to one or more backends.
@@ -36,8 +36,9 @@ export OTEL_EXPORTER_OTLP_ENDPOINT=http://collector.example.com:4318
 The collector serving at `collector.example.com:4318` would then be configured
 like so:
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
-{{< tabpane lang=yaml persistLang=false >}}
+{{< tabpane lang=yaml >}}
 {{< tab Traces >}}
 receivers:
   otlp: # the OTLP receiver the app is sending traces to
@@ -104,6 +105,7 @@ service:
 {{< /tab >}}
 {{< /tabpane>}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 If you want to try it out for yourself, you can have a look at the end-to-end
 [Java][java-otlp-example] or [Python][py-otlp-example] examples.

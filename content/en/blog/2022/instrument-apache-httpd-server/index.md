@@ -22,7 +22,7 @@ quick guide to get started with the module.
 
 Getting started with the OpenTelemetry module for Apache HTTP Server is pretty
 simple, all you need is a docker engine and git. Download the source code from
-github and then build the docker image on CentOS7[^1]:
+GitHub and then build the docker image on CentOS7[^1]:
 
 ```sh
 git clone https://github.com/open-telemetry/opentelemetry-cpp-contrib
@@ -99,20 +99,19 @@ Zipkin backend. The following steps are required to be done.
 
   ![Php-Config](php-config.png)
 
-- Create a file named as `index.html` in the **/var/www/html** directory and add
-  the following text
+- Create a file named as `index.html` in the `**/var/www/html**` directory and
+  add the following text
 
   ```html
-  <!DOCTYPE html>
+  <!doctype html>
   <html>
     <head>
       <title>PHP Test Page</title>
     </head>
 
     <body>
-      <?php
-        echo date('h:i:s') . "<br>"; echo "Introduce delay of 1 seconds" . "<br />";
-      sleep(1); echo date('h:i:s'); ?>
+      <?php echo date('h:i:s') . "<br />"; echo "Introduce delay of 1 seconds" .
+      "<br />"; sleep(1); echo date('h:i:s'); ?>
     </body>
   </html>
   ```

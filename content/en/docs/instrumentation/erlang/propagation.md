@@ -26,6 +26,7 @@ propagators. By default the global propagators used are the W3C
 These global propagators can be configured by the Application environment
 variable `text_map_propagators`:
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 
@@ -46,6 +47,7 @@ text_map_propagators: [:baggage, :trace_context],
 
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 Or through a comma separated list with the environment variable
 `OTEL_PROPAGATORS`. Both forms of configuration accept the values
@@ -55,6 +57,7 @@ and `b3multi`.
 To manually inject or extract context the `otel_propagator_text_map` module can
 be used:
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 
@@ -76,6 +79,7 @@ headers = :otel_propagator_text_map.inject([])
 
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 `otel_propagator_text_map:inject/1` and `otel_propagator_text_map:extract/1` use
 globally registered propagators. To use a specific propagator
