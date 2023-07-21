@@ -13,8 +13,8 @@ to manage installs of the [OpenTelemetry Collector](/docs/collector),
 [OpenTelemetry Operator](/docs/kubernetes/operator), and
 [OpenTelemetry Demo](/docs/demo).
 
-Add OpenTelemetry Helm repository:
+Add the OpenTelemetry Helm repository with:
 
-```
+```sh
 helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
 ```

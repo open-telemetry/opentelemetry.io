@@ -35,6 +35,7 @@ content/en/docs/instrumentation/python/  @open-telemetry/docs-approvers @open-te
 content/en/docs/instrumentation/ruby/    @open-telemetry/docs-approvers @open-telemetry/ruby-approvers @open-telemetry/ruby-contrib-approvers
 content/en/docs/instrumentation/rust/    @open-telemetry/docs-approvers @open-telemetry/rust-approvers
 content/en/docs/instrumentation/swift/   @open-telemetry/docs-approvers @open-telemetry/swift-approvers
-content/en/docs/k8s-operator             @open-telemetry/docs-approvers @open-telemetry/operator-approvers
+content/en/docs/kubernetes/operator/     @open-telemetry/docs-approvers @open-telemetry/operator-approvers
+content/en/docs/kubernetes/helm/         @open-telemetry/docs-approvers @open-telemetry/helm-approvers
 content/en/docs/specs/                   @open-telemetry/docs-approvers @open-telemetry/specs-approvers
 content/en/ecosystem/demo/               @open-telemetry/demo-approvers @open-telemetry/demo-approvers

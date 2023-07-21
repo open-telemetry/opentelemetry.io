@@ -191,9 +191,17 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T13:45:46.681919-04:00"
   },
+  "https://cert-manager.io/docs/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-17T19:31:48.606865-06:00"
+  },
   "https://cert-manager.io/docs/installation/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T13:45:41.481947-04:00"
+  },
+  "https://cert-manager.io/docs/installation/kubernetes/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-17T19:31:48.745126-06:00"
   },
   "https://circleci.com": {
     "StatusCode": 206,
@@ -2163,6 +2171,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-07-01T14:29:53.746821-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-contrib": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-17T15:32:21.480243-06:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-releases/releases": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:44:01.99613-04:00"
@@ -4082,6 +4094,10 @@
   "https://semver.org/spec/v2.0.0.html": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:42:56.97152-04:00"
+  },
+  "https://sentry.io/for/opentelemetry/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-18T01:02:48.0440025Z"
   },
   "https://sentrysoftware.com": {
     "StatusCode": 206,
