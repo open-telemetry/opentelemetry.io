@@ -1,7 +1,6 @@
 ---
 title: OpenTelemetry Demo Chart
 linkTitle: Demo Chart
-spelling: cSpell:ignore Webstore
 ---
 
 ## Introduction
@@ -14,7 +13,7 @@ so that it can be easily installed in Kubernetes.
 
 ### Installing the Chart
 
-To install the chart with the release name my-otel-demo, run the following
+To install the chart with the release name `my-otel-demo`, run the following
 command:
 
 ```sh
@@ -32,7 +31,7 @@ Once the proxy is exposed, you can also visit the following paths
 
 | Component         | Path                             |
 | ----------------- | -------------------------------- |
-| Webstore          | http://localhost:8080/           |
+| Web store          | http://localhost:8080/           |
 | Grafana           | http://localhost:8080/grafana/   |
 | Feature Flags UI  | http://localhost:8080/feature/   |
 | Load Generator UI | http://localhost:8080/loadgen/   |
@@ -50,7 +49,7 @@ kubectl port-forward svc/my-otel-demo-otelcol 4318:4318
 The Demo helm chart's default `values.yaml` is ready to be installed. All
 components have had their memory limits tuned to optimize performance, which may
 cause issues if your cluster is not large enough. The entire installation is
-restricted to ~3.5 Gi of memory, but may use less.
+restricted to ~3.5 Gigabytes of memory, but may use less.
 
 All the configuration options (with comments) available in the chart can be
 viewed in its
