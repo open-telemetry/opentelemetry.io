@@ -2,12 +2,6 @@
 title: Exporters
 weight: 50
 spelling: cSpell:ignore ostream jaegertracing millis chrono rebar relx
-versions:
-  otelSdk: 1.3
-  otelApi: 1.2
-  otelExporter: 1.6
-  otelPhoenix: 1.1
-  otelCowboy: 0.2
 ---
 
 In order to visualize and analyze your [traces](/docs/concepts/signals/traces/)

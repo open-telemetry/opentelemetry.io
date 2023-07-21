@@ -3,12 +3,6 @@ title: Getting Started
 weight: 10
 spelling: cSpell:ignore rebar relx stdlib bogons defp rolldice
 spelling: cSpell:ignore defmodule erts hipe Eshell postgres ecto elixirc KHTML
-versions: 
-    otelSdk: 1.3
-    otelApi: 1.2
-    otelExporter: 1.6
-    otelPhoenix: 1.1
-    otelCowboy: 0.2
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
