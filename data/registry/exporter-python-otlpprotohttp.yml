@@ -10,6 +10,6 @@ repo: https://github.com/open-telemetry/opentelemetry-python/tree/main/exporter/
 license: Apache 2.0
 description:
   This library allows to export data to the OpenTelemetry Collector using the
-  OpenTelemetry Protocol using Protobuf over HTTP.
+  OpenTelemetry Protocol using protobuf over HTTP.
 authors: OpenTelemetry Authors
 otVersion: latest

@@ -167,14 +167,14 @@ startup.
 
 Get everything up and running[^1]:
 
-```console
-$ docker compose up
+```sh
+docker compose up
 ```
 
 In another shell, create some traffic:
 
-```console
-$ curl localhost:8080
+```sh
+curl localhost:8080
 ```
 
 In your browser open [localhost:16686][] and search for traces from
@@ -195,7 +195,7 @@ might be a service calling NGINX to reach that down stream service.
 Add two more services to the running example:
 
 - A Node.js service called `frontend` that sits at the front and calls the NGINX
-- A java service called `backend` that sits behind the NGINX
+- A Java service called `backend` that sits behind the NGINX
 
 Update the `docker-compose` file to contain those 2 services and to overwrite
 the `default.conf` in NGINX:
@@ -331,8 +331,8 @@ You should now have the following files in your top level directory:
 
 With everything in place, you can now start the demo environment[^1]:
 
-```console
-$ docker compose up
+```sh
+docker compose up
 ```
 
 Within a few moments you should have five docker containers up and running:

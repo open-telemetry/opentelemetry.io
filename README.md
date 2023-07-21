@@ -13,7 +13,7 @@ missing [let us know][]!
 
 Read on to learn about other ways on how you can help.
 
-## Adding a project to the OpenTelemetry Registry
+## Adding a project to the OpenTelemetry [Registry]
 
 For details, see [Adding to the registry][].
 

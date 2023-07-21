@@ -94,7 +94,7 @@
   <div class="registry-entry-body">
     <div class="h5">
       <a {{ $href }} target="_blank" rel="noopener">
-        {{- .title -}}
+        {{- .title | markdownify -}}
       </a>
     </div>
     <span class="me-auto">

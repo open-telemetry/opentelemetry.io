@@ -1,13 +1,16 @@
 ---
 title: Building a Trace Receiver
+weight: 98
 spelling: cSpell:ignore struct tailtracer otlpreceiver rquedas devs mapstructure
 spelling: cSpell:ignore Errorf structs loggingexporter jaegerexporter amzn
 spelling: cSpell:ignore batchprocessor Rcvr uber atmxph comcast chicago
 spelling: cSpell:ignore sanfrancisco ptrace pdata protogen pcommon stateid
 spelling: cSpell:ignore ispnetwork serialnumber mcrsft gogl wndws slrs
 spelling: cSpell:ignore backendsystem crand linux Intn semconv
-spelling: cSpell:ignore 
+spelling: cSpell:ignore
 ---
+
+<!-- markdownlint-disable heading-increment no-duplicate-heading -->
 
 If you are reading this tutorial, you probably already have an idea of the
 OpenTelemetry concepts behind distributed tracing, but if you don't you can
@@ -1952,7 +1955,7 @@ func appendTraceSpans(backend *BackendSystem, backendScopeSpans *ptrace.ScopeSpa
 > #### Check your work
 >
 > - Added `traceId` and `backendSpanId` variables to respectively represent the
->   trace and the span id and initialized them with the helper functions created
+>   trace and the span ID and initialized them with the helper functions created
 >   previously
 > - Added `backendSpanStartTime` and `backendSpanFinishTime` to represent the
 >   start and the end time of the operation. For the tutorial, any

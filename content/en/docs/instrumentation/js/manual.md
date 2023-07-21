@@ -38,6 +38,7 @@ npm install \
 Next, create a separate `tracing.js|ts` file that has all the SDK initialization
 code in it:
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 
 {{< tabpane langEqualsHeader=true >}}
@@ -107,10 +108,12 @@ provider.register();
 {{< /tabpane>}}
 
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 Next, ensure that `tracing.js|ts` is required in your node invocation. This is
 also required if you're registering instrumentation libraries. For example:
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane lang=shell >}}
 
@@ -124,6 +127,7 @@ node --require ./tracing.js <app-file.js>
 
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 #### Browser
 
@@ -141,6 +145,7 @@ npm install \
 Create a `tracing.js|ts` file that initialized the Web SDK, creates a
 `TracerProvider`, and exports a `Tracer`.
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 {{< tab TypeScript >}}
@@ -206,6 +211,7 @@ provider.register();
 
 {{< /tabpane>}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 You'll need to bundle this file with your web application to be able to use
 tracing throughout the rest of your web application.
@@ -233,6 +239,7 @@ In most cases, stick with `BatchSpanProcessor` over `SimpleSpanProcessor`.
 Anywhere in your application where you write manual tracing code should call
 `getTracer` to acquire a tracer. For example:
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 {{< tab TypeScript >}}
@@ -257,6 +264,7 @@ const tracer = opentelemetry.trace.getTracer(
 {{< /tab >}}
 {{< /tabpane>}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 It's generally recommended to call `getTracer` in your app when you need it
 rather than exporting the `tracer` instance to the rest of your app. This helps
@@ -397,7 +405,7 @@ tracer.startActiveSpan(
     // do some work...
 
     span.end();
-  }
+  },
 );
 ```
 
@@ -417,6 +425,7 @@ npm install --save @opentelemetry/semantic-conventions
 
 Add the following to the top of your application file:
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 {{< tab TypeScript >}}
@@ -427,6 +436,7 @@ const { SemanticAttributes } = require('@opentelemetry/semantic-conventions');
 {{< /tab >}}
 {{< /tabpane>}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 Finally, you can update your file to include semantic attributes:
 
@@ -447,7 +457,7 @@ const doWork = () => {
 
 A [Span Event](/docs/concepts/signals/traces/#span-events) is a human-readable
 message on an [`Span`](/docs/concepts/signals/traces/#spans) that represents a
-discrete event with no duration that can be tracked by a single time stamp. You
+discrete event with no duration that can be tracked by a single timestamp. You
 can think of it like a primitive log.
 
 ```js
@@ -500,6 +510,7 @@ typically used to specify that a span has not completed successfully -
 
 The status can be set at any time before the span is finished:
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 {{< tab TypeScript >}}
@@ -540,6 +551,7 @@ tracer.startActiveSpan('app.doWork', span => {
 {{< /tab >}}
 {{< /tabpane>}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 By default, the status for all spans is `Unset` rather than `Ok`. It is
 typically the job of another component in your telemetry pipeline to interpret
@@ -551,6 +563,7 @@ explicitly tracking an error.
 It can be a good idea to record exceptions when they happen. It's recommended to
 do this in conjunction with setting [span status](#span-status).
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 {{< tab TypeScript >}}
@@ -579,6 +592,7 @@ try {
 {{< /tab >}}
 {{< /tabpane>}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 ### Using `sdk-trace-base` and manually propagating span context
 
@@ -591,6 +605,7 @@ nested spans.
 
 Initializing tracing is similar to how you'd do it with Node.js or the Web SDK.
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 {{< tab TypeScript >}}
@@ -633,6 +648,7 @@ const tracer = opentelemetry.trace.getTracer(
 {{< /tab >}}
 {{< /tabpane>}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 Like the other examples in this document, this exports a tracer you can use
 throughout the app.
@@ -660,7 +676,7 @@ const doWork = (parent, i) => {
   // in the context, then use the resulting context to create a child span.
   const ctx = opentelemetry.trace.setSpan(
     opentelemetry.context.active(),
-    parent
+    parent,
   );
   const span = tracer.startSpan(`doWork:${i}`, undefined, ctx);
 
@@ -721,6 +737,7 @@ npm install \
 Next, create a separate `instrumentation.js|ts` file that has all the SDK
 initialization code in it:
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 {{< tab TypeScript >}}
@@ -794,9 +811,11 @@ opentelemetry.metrics.setGlobalMeterProvider(myServiceMeterProvider)
 {{< /tab >}}
 {{< /tabpane>}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 You'll need to `--require` this file when you run your app, such as:
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane lang=shell >}}
 
@@ -810,6 +829,7 @@ node --require ./instrumentation.js <app-file.js>
 
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 Now that a `MeterProvider` is configured, you can acquire a `Meter`.
 
@@ -818,6 +838,7 @@ Now that a `MeterProvider` is configured, you can acquire a `Meter`.
 Anywhere in your application where you have manually instrumented code you can
 call `getMeter` to acquire a meter. For example:
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 {{< tab TypeScript >}}
@@ -841,6 +862,7 @@ const myMeter = opentelemetry.metrics.getMeter(
 {{< /tab >}}
 {{< /tabpane>}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 It’s generally recommended to call `getMeter` in your app when you need it
 rather than exporting the meter instance to the rest of your app. This helps
@@ -912,6 +934,7 @@ Histograms are used to measure a distribution of values over time.
 For example, here's how you might report a distribution of response times for an
 API route with Express:
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 {{< tab TypeScript >}}
@@ -953,6 +976,7 @@ app.get('/', (_req, _res) => {
 {{< /tab >}}
 {{< /tabpane>}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 ### Using Observable (Async) Counters
 
@@ -1028,7 +1052,7 @@ const httpServerResponseDuration = myMeter.createHistogram(
     description: 'A distribution of the HTTP server response times',
     unit: 'milliseconds',
     valueType: ValueType.INT,
-  }
+  },
 );
 ```
 

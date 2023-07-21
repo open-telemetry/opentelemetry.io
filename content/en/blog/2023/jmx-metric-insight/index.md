@@ -58,9 +58,9 @@ To start Zookeeper:
 zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties
 ```
 
-### Attach the OpenTelemetry java instrumentation agent
+### Attach the OpenTelemetry Java instrumentation agent
 
-Before starting the kafka broker, attach the OpenTelemetry java instrumentation
+Before starting the Kafka broker, attach the OpenTelemetry Java instrumentation
 agent to Kafka Broker by providing options in the KAFKA_OPTS environment
 variable. You can download the latest release of the agent from
 [here](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases).

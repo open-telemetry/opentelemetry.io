@@ -1,0 +1,16 @@
+title: CloudWatch Metrics Receiver
+registryType: receiver
+isThirdParty: false
+language: collector
+tags:
+  - awscloudwatchmetrics
+  - receiver
+  - collector
+repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/awscloudwatchmetricsreceiver
+license: Apache 2.0
+description:
+  Receives Cloudwatch metrics from AWS Cloudwatch via the AWS SDK for Cloudwatch
+  Logs
+authors: OpenTelemetry Authors
+otVersion: latest
+# cSpell:ignore awscloudwatchmetrics

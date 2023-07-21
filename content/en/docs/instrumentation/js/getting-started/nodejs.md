@@ -22,7 +22,7 @@ Ensure that you have the following installed locally:
 ## Example Application
 
 The following example uses a basic [Express](https://expressjs.com/)
-application. If you are not using Express, that's ok — you can use OpenTelemetry
+application. If you are not using Express, that's OK — you can use OpenTelemetry
 JavaScript with other web frameworks as well, such as Koa and Nest.JS. For a
 complete list of libraries for supported frameworks, see the
 [registry](/ecosystem/registry/?component=instrumentation&language=js).
@@ -39,6 +39,7 @@ npm init -y
 
 Next, install Express dependencies.
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane lang=shell >}}
 
@@ -56,12 +57,14 @@ npm install express
 
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 ### Create and launch an HTTP Server
 
-Create a file named `app.ts` (or `app.js` if not using typescript) and add the
+Create a file named `app.ts` (or `app.js` if not using TypeScript) and add the
 following code to it:
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 
@@ -107,10 +110,12 @@ app.listen(PORT, () => {
 
 {{< /tabpane>}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 Run the application with the following command and open
 <http://localhost:8080/rolldice> in your web browser to ensure it is working.
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane lang=console >}}
 
@@ -126,13 +131,14 @@ Listening for requests on http://localhost:8080
 
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 ## Instrumentation
 
 The following shows how to install, initialize, and run an application
 instrumented with OpenTelemetry.
 
-### Dependencies
+### More Dependencies
 
 First, install the Node SDK and autoinstrumentations package.
 
@@ -161,8 +167,9 @@ application code. One tool commonly used for this task is the
 [--require](https://nodejs.org/api/cli.html#-r---require-module) flag.
 
 Create a file named `instrumentation.ts` (or `instrumentation.js` if not using
-typescript) , which will contain your instrumentation setup code.
+TypeScript) , which will contain your instrumentation setup code.
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 
@@ -208,12 +215,14 @@ sdk
 
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 ## Run the instrumented app
 
 Now you can run your application as you normally would, but you can use the
 `--require` flag to load the instrumentation before the application code.
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane lang=console >}}
 
@@ -229,6 +238,7 @@ Listening for requests on http://localhost:8080
 
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 Open <http://localhost:8080/rolldice> in your web browser and reload the page a
 few times. After a while you should see the spans printed in the console by the
@@ -466,6 +476,7 @@ telemetry backends.
 Did something go wrong? You can enable diagnostic logging to validate that
 OpenTelemetry is initialized correctly:
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 
@@ -492,6 +503,7 @@ diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
 
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 [traces]: /docs/concepts/signals/traces/
 [metrics]: /docs/concepts/signals/metrics/

@@ -339,7 +339,7 @@ HTTP request or remote procedure call.
 #### Internal
 
 Internal spans represent operations which do not cross a process boundary.
-Things like instrumenting a function call or an express middleware may use
+Things like instrumenting a function call or an Express middleware may use
 internal spans.
 
 #### Producer

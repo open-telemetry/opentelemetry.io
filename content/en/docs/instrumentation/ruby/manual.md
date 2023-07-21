@@ -37,7 +37,7 @@ TracerProvider. If you are using
 Rails app, then one will be registered for you.
 
 ```ruby
-# If in a rails app, this lives in config/initializers/opentelemetry.rb
+# If in a Rails app, this lives in config/initializers/opentelemetry.rb
 require "opentelemetry/sdk"
 
 OpenTelemetry::SDK.configure do |c|
@@ -368,7 +368,4 @@ more telemetry backends.
   https://github.com/open-telemetry/opentelemetry-ruby/tree/main/propagator
 [auto-instrumentation]:
   https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation
-[semconv-gem]:
-  https://github.com/open-telemetry/opentelemetry-ruby/tree/main/semantic_conventions
 [semconv-spec]: /docs/specs/otel/trace/semantic_conventions/
-[opentelemetry specification]: /docs/specs/otel/

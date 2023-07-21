@@ -74,8 +74,8 @@ npm run serve
 
 The site will be served at [localhost:1313][].
 
-If you need to test Netlify redirects, use the following command, and visit the
-site at [localhost:8888][]:
+If you need to test [Netlify] redirects, use the following command, and visit
+the site at [localhost:8888][]:
 
 ```sh
 npm run serve:netlify

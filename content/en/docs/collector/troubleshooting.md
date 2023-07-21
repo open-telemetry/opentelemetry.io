@@ -35,4 +35,4 @@ following:
 
 For detailed recommendations, including common problems, see
 [Troubleshooting](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/troubleshooting.md)
-from the Collector repo.
+from the Collector repository.

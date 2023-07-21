@@ -25,8 +25,8 @@ any other code is executed.
 In order to automatically export data from OpenTelemetry to the OpenTelemetry
 collector, installing the package will set up all the required entry points.
 
-```console
-$ pip install opentelemetry-distro[otlp] opentelemetry-instrumentation
+```sh
+pip install opentelemetry-distro[otlp] opentelemetry-instrumentation
 ```
 
 Start the Collector locally to see data being exported. Write the following
@@ -74,8 +74,8 @@ with trace.get_tracer("my.tracer").start_as_current_span("foo"):
 
 Lastly, run the `no_configuration.py` with the auto-instrumentation:
 
-```console
-$ opentelemetry-instrument python no_configuration.py
+```sh
+opentelemetry-instrument python no_configuration.py
 ```
 
 The resulting span will appear in the output from the collector and look similar
