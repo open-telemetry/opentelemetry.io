@@ -463,7 +463,7 @@ is my recommendation."
 - To learn more about the OTel Operator, reach out on
   [CNCF Slack](https://communityinviter.com/apps/cloud-native/cncf) in the
   [#OTel-operator channel](https://cloud-native.slack.com/archives/C033BJ8BASU)
-- Jacob will be back to speak with the end-user working group at
+- Jacob will be back to speak with the End User Working Group at
   [OTel in Practice](https://opentelemetry.io/community/end-user/otel-in-practice/)
   on _August 17th at 13:00 ET/10:00 PT_. Be sure to
   [mark your calendars](https://shorturl.at/cIJT2)!
