@@ -1,5 +1,5 @@
 ---
-title: Instrumenting libraries
+title: Using instrumentation libraries
 linkTitle: Libraries
 weight: 40
 description: How to instrument libraries an app depends on
@@ -53,14 +53,8 @@ the inbound HTTP requests.
 
 ### Setup
 
-Each instrumentation library is an NPM package, and installation is typically
-done like so:
-
-```console
-npm install <name-of-package>
-```
-
-For example, here’s how you can install and the
+Each instrumentation library is an NPM package. For example, here’s how you can
+install and the
 [instrumentation-express](https://www.npmjs.com/package/@opentelemetry/instrumentation-express)
 and
 [instrumentation-http](https://www.npmjs.com/package/@opentelemetry/instrumentation-http)
