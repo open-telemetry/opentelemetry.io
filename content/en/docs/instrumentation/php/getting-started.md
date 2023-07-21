@@ -42,8 +42,8 @@ packages.{{% /alert %}}
 
 The following example uses a basic
 [Slim Framework](https://www.slimframework.com/) application. If you are not
-using Slim, that's ok — you can use OpenTelemetry PHP with other web frameworks
-as well, such as Wordpress, Symfony and Laravel. For a complete list of
+using Slim, that's OK — you can use OpenTelemetry PHP with other web frameworks
+as well, such as WordPress, Symfony and Laravel. For a complete list of
 libraries for supported frameworks, see the
 [registry](/ecosystem/registry/?component=instrumentation&language=php).
 
@@ -106,7 +106,7 @@ Next, you’ll use the OpenTelemetry PHP extension to
 
    {{< tab "Linux (apt)" >}}sudo apt-get install gcc make autoconf{{< /tab >}}
 
-   {{< tab "MacOS (homebrew)" >}}brew install gcc make autoconf{{< /tab >}}
+   {{< tab "macOS (homebrew)" >}}brew install gcc make autoconf{{< /tab >}}
 
    {{< /tabpane >}}
 

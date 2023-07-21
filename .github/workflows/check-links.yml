@@ -1,18 +1,63 @@
-name: Check links and refcache # cSpell:ignore refcache
+name: Check links and refcache
 
 on:
   pull_request:
 
 jobs:
-  check-formatting:
-    name: Check links and refcache
+  build-and-check-links:
+    name: BUILD and CHECK LINKS
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
-      - run: npm install
-      - run: npm run build
-      - run: npm run _check:links
+      - name: Create NPM cache-hash input file
+        run: |
+          mkdir -p tmp
+          jq '{devDependencies, dependencies, engines, gitHubActionCacheKey}' package.json > tmp/package-ci.json
 
-      - name: Fail on uncommitted refcache changes
-        run: npm run diff:fail
+      - name: Create and use reduced-dependencies package.json
+        run: |
+          jq '.devDependencies |= with_entries(
+                  select(.key | test("prefix|hugo|run|css"))
+                )
+                | del(.dependencies)' \
+            package.json > tmp/package-min.json
+          cp tmp/package-min.json package.json
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: tmp/package-ci.json
+
+      - run: npm install --no-optional
+      - run: npm run build+log
+      - run: npm run _check:links
+        continue-on-error: true
+      - uses: actions/upload-artifact@v3
+        with:
+          name: build-log-etc
+          path: |
+            tmp/build-log.txt
+            tmp/package*.json
+            static/refcache.json
+
+  check-refcache:
+    name: REFCACHE updates?
+    needs: build-and-check-links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        with: { name: build-log-etc }
+      - run: npm run diff:fail
+
+  check-build-log-for-issues:
+    name: WARNINGS in build log?
+    needs: build-and-check-links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        with: { name: build-log-etc }
+      - run: scripts/check-build-log.sh

@@ -86,7 +86,7 @@ concerns.
 Here is how we handle such circumstances:
 
 1. Whomever notices the relevant public (marketing) content should write an
-   email to cncf-opentelemetry-governance@lists.cncf.io and include an
+   email to <cncf-opentelemetry-governance@lists.cncf.io> and include an
    explanation of why the content is problematic, ideally referencing the
    [relevant guidelines above](#goals-and-guidelines).
 1. The OTel Governance Committee (GC) will discuss the case during its next

@@ -13,10 +13,10 @@ Shipping service is built primarily with Tonic, Reqwest, and OpenTelemetry
 Libraries/Components. Other sub-dependencies are included in `Cargo.toml`.
 
 Depending on your framework and runtime, you may consider consulting
-[rust docs](/docs/instrumentation/rust/) to supplement. You'll find examples of
-async and sync spans in quote requests and tracking ID's respectively.
+[Rust docs](/docs/instrumentation/rust/) to supplement. You'll find examples of
+async and sync spans in quote requests and tracking IDs respectively.
 
-The `build.rs` supports development outside docker, given a rust installation.
+The `build.rs` supports development outside docker, given a Rust installation.
 Otherwise, consider building with `docker compose` to edit / assess changes as
 needed.
 
@@ -35,6 +35,7 @@ fn init_tracer() -> Result<sdktrace::Tracer, TraceError> {
     let process_resource = ProcessResourceDetector.detect(Duration::from_secs(0));
     let sdk_resource = SdkProvidedResourceDetector.detect(Duration::from_secs(0));
     let env_resource = EnvResourceDetector::new().detect(Duration::from_secs(0));
+    let telemetry_resource = TelemetryResourceDetector.detect(Duration::from_secs(0));
     opentelemetry_otlp::new_pipeline()
         .tracing()
         .with_exporter(
@@ -50,7 +51,7 @@ fn init_tracer() -> Result<sdktrace::Tracer, TraceError> {
         )
         .with_trace_config(
             sdktrace::config()
-                .with_resource(os_resource.merge(&process_resource).merge(&sdk_resource).merge(&env_resource)),
+                .with_resource(os_resource.merge(&process_resource).merge(&sdk_resource).merge(&env_resource).merge(&telemetry_resource)),
         )
         .install_batch(opentelemetry::runtime::Tokio)
 }

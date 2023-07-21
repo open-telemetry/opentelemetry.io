@@ -69,7 +69,7 @@ package repositories like NPM and PyPI. **We encourage all OpenCensus users to
 begin planning their project's migration to OpenTelemetry now.**
 
 One exception to this is the [census-instrumentation/opencensus-python][]
-repo[^python-timeline].
+repository[^python-timeline].
 
 [go shim]:
   https://github.com/open-telemetry/opentelemetry-go/tree/main/bridge/opencensus
@@ -78,7 +78,7 @@ repo[^python-timeline].
 [python shim]:
   https://github.com/open-telemetry/opentelemetry-python/tree/main/shim/opentelemetry-opencensus-shim
 [js shim]:
-  https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-shim-opencensus
+  https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/shim-opencensus
 [census-instrumentation/opencensus-python]:
   https://github.com/census-instrumentation/opencensus-python
 
@@ -86,7 +86,8 @@ repo[^python-timeline].
     A number of projects within the `opencensus-python` repository are still
     being used as recommended production solutions. These projects will continue
     to be maintained. For details regarding maintenance timeline, next steps for
-    migration, and general support questions, reach out to repo maintainers.
+    migration, and general support questions, reach out to repository
+    maintainers.
 
 [^shim-next-release]: Python and JavaScript shim packages will be released soon.
 [^shim-support]:

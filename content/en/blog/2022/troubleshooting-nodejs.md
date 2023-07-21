@@ -77,8 +77,8 @@ To use an auto instrumentation library in your service, you’ll need to:
 For most users, the following should cover it:
 
 ```js
-// First run `npm install @opentelemetry/instrumentation-foo @opentelemetry/instrumentation-bar
-// Replace foo and bar with the actual packages you need to instrument (http/mysql/redis etc)
+// First run: npm install @opentelemetry/instrumentation-foo @opentelemetry/instrumentation-bar
+// Replace foo and bar with the actual packages you need to instrument (HTTP/mySQL/Redis etc)
 import { FooInstrumentation } from '@opentelemetry/instrumentation-foo';
 import { BarInstrumentation } from '@opentelemetry/instrumentation-bar';
 import { registerInstrumentations } from '@opentelemetry/instrumentation';
@@ -88,7 +88,7 @@ registerInstrumentations({
 });
 ```
 
-For advanced users who choose to use the low-level api instead of calling
+For advanced users who choose to use the low-level API instead of calling
 `registerInstrumentations`, make sure your instrumentation is set to use the
 right tracer provider and that you call `enable()` if appropriate.
 
@@ -152,9 +152,9 @@ might not be supported and thus no spans will be created.
 
 Consult the documentation of the library you are using to verify if your version
 is compatible. This data is usually found in the README for the instrumentation,
-for example see the [redis README][].
+for example see the [Redis README][].
 
-[redis readme]:
+[Redis readme]:
   https://www.npmjs.com/package/@opentelemetry/instrumentation-redis
 
 ## No Recording and Non-Sampled Spans
@@ -367,7 +367,7 @@ channels:
 
 ### Resources
 
-- [Opentelemetry-js GitHub repo](https://github.com/open-telemetry/opentelemetry-js)
+- [Opentelemetry-js GitHub repository](https://github.com/open-telemetry/opentelemetry-js)
 - [The OpenTelemetry Bootcamp](https://www.aspecto.io/opentelemetry-bootcamp/)
 - [OpenTelemetry docs](/docs/)
 

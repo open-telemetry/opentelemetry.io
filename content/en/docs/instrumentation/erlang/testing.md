@@ -15,6 +15,7 @@ validation.
 Only the `opentelemetry` and `opentelemetry_api` libraries are required for
 testing in Elixir/Erlang:
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 
@@ -34,11 +35,13 @@ end
 
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 Set your `exporter` to `:none` and the span processor to
 `:otel_simple_processor`. This ensure that your tests don't actually export data
 to a destination, and that spans can be analyzed after they are processed.
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 
@@ -64,11 +67,13 @@ config :opentelemetry, :processors, [
 
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 A modified version of the `hello` function from the
 [Getting Started](/docs/instrumentation/erlang/getting-started/) guide will
 serve as our test case:
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 
@@ -105,9 +110,11 @@ end
 
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 ## Testing
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 
@@ -199,3 +206,4 @@ end
 
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->

@@ -7,9 +7,11 @@ aliases:
   - /docs/instrumentation/java/manual_instrumentation
 weight: 30
 description: Manual instrumentation for OpenTelemetry Java
-spelling: cSpell:ignore logback multivalued autoconfigure classpath 
+spelling: cSpell:ignore logback multivalued autoconfigure classpath
 spelling: cSpell:ignore customizer loggable
 ---
+
+<!-- markdownlint-disable no-duplicate-heading -->
 
 {{% docs/instrumentation/manual-intro %}}
 
@@ -137,7 +139,7 @@ As an aside, if you are writing library instrumentation, it is strongly
 recommended that you provide your users the ability to inject an instance of
 `OpenTelemetry` into your instrumentation code. If this is not possible for some
 reason, you can fall back to using an instance from the `GlobalOpenTelemetry`
-class. Note that you can't force end-users to configure the global, so this is
+class. Note that you can't force end users to configure the global, so this is
 the most brittle option for library instrumentation.
 
 ## Traces
@@ -658,7 +660,7 @@ To use this workflow:
 
 A log appender bridges logs from a log framework into the OpenTelemetry
 [Log SDK](#logs-sdk) using the [Logs Bridge API][logs bridge API]. Log appenders
-are available for various popular java log frameworks:
+are available for various popular Java log frameworks:
 
 - [Log4j2 Appender][log4j2 appender]
 - [Logback Appender][logback appender]
@@ -700,7 +702,7 @@ Log correlation with traces is available by installing
 #### Log context instrumentation
 
 OpenTelemetry provides components which enrich log context with trace context
-for various popular java log frameworks:
+for various popular Java log frameworks:
 
 - [Log4j context data instrumentation][log4j context instrumentation]
 - [Logback MDC instrumentation][logback context instrumentation]
@@ -870,7 +872,7 @@ Views provide a mechanism for controlling how measurements are aggregated into
 metrics. They consist of an `InstrumentSelector` and a `View`. The instrument
 selector consists of a series of options for selecting which instruments the
 view applies to. Instruments can be selected by a combination of name, type,
-meter name, meter version, and meter schema url. The view describes how
+meter name, meter version, and meter schema URL. The view describes how
 measurement should be aggregated. The view can change the name, description, the
 aggregation, and define the set of attribute keys that should be retained.
 
@@ -1083,7 +1085,6 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
   https://docs.oracle.com/javase/8/docs/jre/api/net/httpserver/spec/com/sun/net/httpserver/HttpExchange.html
 [instrumentation library]: /docs/specs/otel/glossary/#instrumentation-library
 [instrumented library]: /docs/specs/otel/glossary/#instrumented-library
-[library guidelines]: /docs/specs/otel/library-guidelines
 [logs bridge API]: /docs/specs/otel/logs/bridge-api
 [log data model]: /docs/specs/otel/logs/data-model
 [log4j2 appender]:
@@ -1103,6 +1104,5 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
 [parentbased]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/ParentBasedSampler.java
 [releases]: https://github.com/open-telemetry/opentelemetry-java#releases
-[semantic conventions]: /docs/specs/otel/trace/semantic_conventions
 [traceidratiobased]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/TraceIdRatioBasedSampler.java

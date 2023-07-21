@@ -17,7 +17,7 @@ collector, which can then export Spans to a self-hosted service like Zipkin or
 Jaeger, as well as commercial services. For a full list of available exporters,
 see the [registry](/ecosystem/registry/?component=exporter).
 
-For testing purposes the `opentelemetry-erlang` repo has a Collector
+For testing purposes the `opentelemetry-erlang` repository has a Collector
 configuration,
 [config/otel-collector-config.yaml](https://github.com/open-telemetry/opentelemetry-erlang/blob/main/config/otel-collector-config.yaml)
 that can be used as a starting point. This configuration is used in
@@ -28,6 +28,7 @@ Zipkin also run by [docker-compose](https://docs.docker.com/compose/).
 To export to the running Collector the `opentelemetry_exporter` package must be
 added to the project's dependencies:
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 
@@ -49,6 +50,7 @@ end
 
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 It should then be added to the configuration of the Release before the SDK
 Application to ensure the exporter's dependencies are started before the SDK
@@ -57,6 +59,7 @@ attempts to initialize and use the exporter.
 Example of Release configuration in `rebar.config` and for
 [mix's Release task](https://hexdocs.pm/mix/Mix.Tasks.Release.html):
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 
@@ -87,6 +90,7 @@ end
 
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 Finally, the runtime configuration of the `opentelemetry` and
 `opentelemetry_exporter` Applications are set to export to the Collector. The
@@ -95,6 +99,7 @@ the HTTP protocol with endpoint of `localhost` on port `4318`. If using `grpc`
 for the `otlp_protocol` the endpoint should be changed to
 `http://localhost:4317`.
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 
@@ -124,3 +129,4 @@ config :opentelemetry_exporter,
 
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->

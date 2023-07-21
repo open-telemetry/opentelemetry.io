@@ -297,7 +297,7 @@ spec:
 EOF
 ```
 
-By default, the Instrumentation resource that auto-instruments python services
+By default, the Instrumentation resource that auto-instruments Python services
 uses `otlp` with the `http/protobuf` protocol. This means that the configured
 endpoint must be able to receive OTLP over `http/protobuf`. Therefore, the
 example uses `http://demo-collector:4318`, which will connect to the `http` port

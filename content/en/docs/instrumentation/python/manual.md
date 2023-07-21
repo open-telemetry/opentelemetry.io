@@ -6,6 +6,8 @@ description: Manual instrumentation for OpenTelemetry Python
 spelling: cSpell:ignore ottrace textmap millis
 ---
 
+<!-- markdownlint-disable no-duplicate-heading -->
+
 {{% docs/instrumentation/manual-intro %}}
 
 ## Setup
@@ -42,28 +44,6 @@ trace.set_tracer_provider(provider)
 
 # Creates a tracer from the global tracer provider
 tracer = trace.get_tracer("my.tracer.name")
-```
-
-To start collecting metrics, you'll need to initialize a
-[`MeterProvider`](/docs/specs/otel/metrics/api/#meterprovider) and optionally
-set it as the global default.
-
-```python
-from opentelemetry import metrics
-from opentelemetry.sdk.metrics import MeterProvider
-from opentelemetry.sdk.metrics.export import (
-    ConsoleMetricExporter,
-    PeriodicExportingMetricReader,
-)
-
-metric_reader = PeriodicExportingMetricReader(ConsoleMetricExporter())
-provider = MeterProvider(metric_readers=[metric_reader])
-
-# Sets the global default meter provider
-metrics.set_meter_provider(provider)
-
-# Creates a meter from the global meter provider
-meter = metrics.get_meter("my.meter.name")
 ```
 
 ### Creating spans
@@ -324,6 +304,28 @@ Note that environment variables will override what's configured in code.
 - [Python Trace SDK Documentation](https://opentelemetry-python.readthedocs.io/en/latest/sdk/trace.html)
 
 ## Metrics
+
+To start collecting metrics, you'll need to initialize a
+[`MeterProvider`](/docs/specs/otel/metrics/api/#meterprovider) and optionally
+set it as the global default.
+
+```python
+from opentelemetry import metrics
+from opentelemetry.sdk.metrics import MeterProvider
+from opentelemetry.sdk.metrics.export import (
+    ConsoleMetricExporter,
+    PeriodicExportingMetricReader,
+)
+
+metric_reader = PeriodicExportingMetricReader(ConsoleMetricExporter())
+provider = MeterProvider(metric_readers=[metric_reader])
+
+# Sets the global default meter provider
+metrics.set_meter_provider(provider)
+
+# Creates a meter from the global meter provider
+meter = metrics.get_meter("my.meter.name")
+```
 
 ### Creating and using synchronous instruments
 

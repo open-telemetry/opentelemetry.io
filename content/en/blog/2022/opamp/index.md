@@ -189,7 +189,7 @@ go run .
 Visit <http://localhost:4321> to verify that the server is running. Notice that
 no agent is displayed:
 
-![No agents display on opamp server demo UI](opamp_server_no_agents.png)
+![No agents display on opamp server demo UI](opamp-server-no-agents.png)
 
 Next, edit internal/examples/supervisor/bin/supervisor.yaml to point at our
 agent. It should look like this:
@@ -211,12 +211,12 @@ go build -o ./supervisor ../main.go
 
 We have now a system consisting of OpAMP server supervisor and our server
 
-![OpAMP server, supervisor and agent relations](opamp_server_supervisor_agent_relations.png)
+![OpAMP server, supervisor and agent relations](opamp-server-supervisor-agent-relations.png)
 
 Via the supervisor we can now see our agent running at <http://localhost:4321>.
 Select it and pass `instrument: true` to its configurations.
 
-![Our service configurations over opamp server](opamp_server_agent_config.png)
+![Our service configurations over opamp server](opamp-server-agent-config.png)
 
 You can see the changes over the supervisor console log:
 

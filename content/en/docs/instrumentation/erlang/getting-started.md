@@ -5,6 +5,9 @@ spelling: cSpell:ignore rebar relx stdlib bogons defp rolldice
 spelling: cSpell:ignore defmodule erts hipe Eshell postgres ecto elixirc KHTML
 ---
 
+<!-- markdownlint-disable no-duplicate-heading -->
+<!-- markdownlint-capture -->
+
 Welcome to the OpenTelemetry for Erlang/Elixir getting started guide! This guide
 will walk you through the basic steps in installing, configuring, and exporting
 data from OpenTelemetry.
@@ -16,8 +19,8 @@ the Phoenix Web Framework.
 
 ### Prerequisites
 
-Ensure that you have erlang, elixir, postgres (or the database of your choice),
-and phoenix installed locally. The phoenix
+Ensure that you have Erlang, Elixir, PostgreSQL (or the database of your
+choice), and Phoenix installed locally. The phoenix
 [installation guide](https://hexdocs.pm/phoenix/installation.html) will help you
 get set up with everything you need.
 
@@ -251,6 +254,7 @@ get a random number in response, and 3 spans in your console.
 ```
 
 </details>
+<!-- markdownlint-disable heading-increment -->
 
 ##### `<<"/api/rolldice">>`
 
@@ -279,8 +283,8 @@ name because it does not have an `http.route`.
 This is the custom span we added to our private method. You'll notice it only
 has the one attribute that we set, `roll => 2`. You should also note that it is
 part of the same trace as our `<<"/api/rolldice">>` span,
-`224439009126930788594246993907621543552` and has a parent span id of
-`5581431573601075988` which is the span id of the `<<"/api/rolldice">>` span.
+`224439009126930788594246993907621543552` and has a parent span ID of
+`5581431573601075988` which is the span ID of the `<<"/api/rolldice">>` span.
 That means that this span is a child of that one, and will be shown below it
 when rendered in your tracing tool of choice.
 
@@ -299,6 +303,7 @@ more telemetry backends.
 
 To get started with this guide, create a new project with `rebar3` or `mix`:
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 
@@ -312,11 +317,13 @@ mix new --sup otel_getting_started
 
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 Then, in the project you just created, add both `opentelemetry_api` and
 `opentelemetry` as dependencies. We add both because this is a project we will
 run as a Release and export spans from.
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 
@@ -336,11 +343,13 @@ end
 
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 In the case of Erlang, the API Application will also need to be added to
 `src/otel_getting_started.app.src` and a `relx` section to `rebar.config`. In an
 Elixir project, a `releases` section needs to be added to `mix.exs`:
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 
@@ -372,6 +381,7 @@ releases: [
 
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 The SDK `opentelemetry` should be added as early as possible in the Release boot
 process to ensure it is available before any telemetry is produced. Here it is
@@ -408,6 +418,7 @@ To configure OpenTelemetry to use a particular exporter, in this case
 the `exporter` for the span processor `otel_batch_processor`, a type of span
 processor that batches up multiple spans over a period of time:
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 
@@ -429,12 +440,14 @@ config :opentelemetry,
 
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 ## Working with Spans
 
 Now that the dependencies and configuration are set up, we can create a module
 with a function `hello/0` that starts some spans:
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 
@@ -483,6 +496,7 @@ end
 
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 In this example, we're using macros that use the process dictionary for context
 propagation and for getting the tracer.
@@ -507,6 +521,7 @@ To test out this project and see the spans created, you can run with
 `rebar3 shell` or `iex -S mix`, each will pick up the corresponding
 configuration for the release, resulting in the tracer and exporter to started.
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 
@@ -560,6 +575,7 @@ iex(2)>
 
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 ## Next Steps
 

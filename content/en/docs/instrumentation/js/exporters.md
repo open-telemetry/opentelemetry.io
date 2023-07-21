@@ -28,6 +28,7 @@ update `instrumentation.ts|js` from the
 [Getting Started](/docs/instrumentation/js/getting-started/nodejs/) like the
 following:
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 
 {{< tabpane langEqualsHeader=true >}}
@@ -103,6 +104,7 @@ sdk.start();
 {{< /tabpane>}}
 
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 To try out the `OTLPTraceExporter` quickly, you can run Jaeger in a docker
 container:
@@ -247,6 +249,7 @@ npm install --save @opentelemetry/exporter-zipkin
 Update your OpenTelemetry configuration to use the exporter and to send data to
 your Zipkin backend:
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 {{< tab Typescript >}}
@@ -264,6 +267,7 @@ provider.addSpanProcessor(new BatchSpanProcessor(new ZipkinExporter()));
 {{< /tab >}}
 {{< /tabpane>}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 [content security policies]:
   https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/

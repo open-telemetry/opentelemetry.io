@@ -1,4 +1,4 @@
-title: Go package net/http instrumentation
+title: Go package `net/http` instrumentation
 registryType: instrumentation
 isThirdParty: false
 language: go
@@ -10,7 +10,7 @@ tags:
 repo: https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/instrumentation/net/http
 license: Apache 2.0
 description:
-  Go contrib plugin for trace instrumentation of net/http handlers, http
-  transports and http trace events
+  Go contrib plugin for trace instrumentation of `net/http` handlers, HTTP
+  transports and HTTP trace events
 authors: OpenTelemetry Authors
 otVersion: latest
