@@ -78,7 +78,7 @@ repository[^python-timeline].
 [python shim]:
   https://github.com/open-telemetry/opentelemetry-python/tree/main/shim/opentelemetry-opencensus-shim
 [js shim]:
-  https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-shim-opencensus
+  https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/shim-opencensus
 [census-instrumentation/opencensus-python]:
   https://github.com/census-instrumentation/opencensus-python
 
