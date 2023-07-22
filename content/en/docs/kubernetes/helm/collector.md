@@ -147,8 +147,8 @@ ports:
     enabled: false
 ```
 
-All the configuration options (with comments) available in the chart can be view
-in its
+All the configuration options (with comments) available in the chart can be
+viewed in its
 [values.yaml file](https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-collector/values.yaml).
 
 ### Presets
