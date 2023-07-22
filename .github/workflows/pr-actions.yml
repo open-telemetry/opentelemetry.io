@@ -119,7 +119,7 @@ jobs:
           git config --local user.name "opentelemetrybot"
           git add -A
           if [[ $(git status --porcelain) ]]; then
-            git commit -m 'Results from /fix:format'
+            git commit -m 'Results from /fix:recache'
             git push
           else
             echo "No changes to commit"
