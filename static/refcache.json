@@ -3783,6 +3783,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T11:44:37.307484-04:00"
   },
+  "https://packagist.org/packages/open-telemetry/sdk": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-22T15:46:26.9606521Z"
+  },
   "https://packagist.org/providers/php-http/async-client-implementation": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:20:58.580599-04:00"
