@@ -13,10 +13,11 @@ classes and methods, and executing those functions before and after the observed
 method runs.
 
 {{% alert title="Important" color="warning" %}}Installing the OpenTelemetry
-extension by itself will not generate traces. You must also install 
-the [SDK](https://packagist.org/packages/open-telemetry/sdk) **and**
-one or more [instrumentation packages](/ecosystem/registry/?component=instrumentation&language=php) 
-for the frameworks and libraries that you are using, or alternatively write your own.
+extension by itself will not generate traces. You must also install the
+[SDK](https://packagist.org/packages/open-telemetry/sdk) **and** one or more
+[instrumentation packages](/ecosystem/registry/?component=instrumentation&language=php)
+for the frameworks and libraries that you are using, or alternatively write your
+own.
 
 You also _must_ use
 [composer autoloading](https://getcomposer.org/doc/01-basic-usage.md#autoloading),
