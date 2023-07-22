@@ -6,6 +6,13 @@ description: >
   alt="Erlang/Elixir"> A language-specific implementation of OpenTelemetry in
   Erlang/Elixir.
 spelling: cSpell:ignore ecto
+cascade:
+  versions:
+    otelSdk: 1.3
+    otelApi: 1.2
+    otelExporter: 1.6
+    otelPhoenix: 1.1
+    otelCowboy: 0.2
 ---
 
 {{% docs/instrumentation/index-intro erlang %}}
