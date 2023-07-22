@@ -70,3 +70,59 @@ jobs:
           fi
         env:
           GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+
+  fix-refcache:
+    name: /fix:refcache
+    runs-on: ubuntu-latest
+
+    if: |
+      github.event.issue.pull_request &&
+      contains(github.event.comment.body, '/fix:refcache')
+    permissions:
+      contents: write
+
+    env:
+      PR_NUM: ${{ github.event.issue.number }}
+      COMMENT: ${{ github.event.comment.body }}
+
+    steps:
+      - name: Context info
+        run: |
+          echo $PR_NUM
+          echo $COMMENT
+
+      - uses: actions/checkout@v3
+
+      - run: gh pr checkout $PR_NUM
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Create NPM cache-hash input file
+        run: |
+          mkdir -p tmp
+          jq '{devDependencies, dependencies, engines, gitHubActionCacheKey}' package.json > tmp/package-ci.json
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: tmp/package-ci.json
+
+      - run: |
+          npm run test
+          git status
+          git branch -v
+
+      - name: Commit and push changes, if any
+        run: |
+          git config --local user.email "107717825+opentelemetrybot@users.noreply.github.com"
+          git config --local user.name "opentelemetrybot"
+          git add -A
+          if [[ $(git status --porcelain) ]]; then
+            git commit -m 'Results from /fix:format'
+            git push
+          else
+            echo "No changes to commit"
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
