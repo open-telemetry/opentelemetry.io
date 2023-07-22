@@ -33,17 +33,17 @@ added to the project's dependencies:
 {{< tabpane langEqualsHeader=true >}}
 
 {{< tab Erlang >}}
-{deps, [{opentelemetry_api, "~> 1.3"},
-        {opentelemetry, "~> 1.3"},
-        {opentelemetry_exporter, "~> 1.4"}]}.
+{deps, [{opentelemetry_api, "~> {{% param versions.otelApi %}}"},
+        {opentelemetry, "~> {{% param versions.otelSdk %}}"},
+        {opentelemetry_exporter, "~> {{% param versions.otelExporter %}}"}]}.
 {{< /tab >}}
 
 {{< tab Elixir >}}
 def deps do
   [
-    {:opentelemetry_api, "~> 1.3"},
-    {:opentelemetry, "~> 1.3"},
-    {:opentelemetry_exporter, "~> 1.4"}
+    {:opentelemetry_api, "~> {{% param versions.otelApi %}}"},
+    {:opentelemetry, "~> {{% param versions.otelSdk %}}"},
+    {:opentelemetry_exporter, "~> {{% param versions.otelExporter %}}"}
   ]
 end
 {{< /tab >}}

@@ -20,15 +20,15 @@ testing in Elixir/Erlang:
 {{< tabpane langEqualsHeader=true >}}
 
 {{< tab Erlang >}}
-{deps, [{opentelemetry_api, "~> 1.0"},
-        {opentelemetry, "~> 1.0"}]}.
+{deps, [{opentelemetry_api, "~> {{% param versions.otelApi %}}"},
+        {opentelemetry, "~> {{% param versions.otelSdk %}}"}]}.
 {{< /tab >}}
 
 {{< tab Elixir >}}
 def deps do
   [
-    {:opentelemetry_api, "~> 1.0"},
-    {:opentelemetry, "~> 1.0"}
+    {:opentelemetry_api, "~> {{% param versions.otelApi %}}"},
+    {:opentelemetry, "~> {{% param versions.otelSdk %}}"}
   ]
 end
 {{< /tab >}}
