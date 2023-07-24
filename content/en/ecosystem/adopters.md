@@ -32,8 +32,9 @@ Observability as an end user and do not provide any kind of services around
 OpenTelemetry themselves.
 
 If you provide a library or service made observable through OpenTelemetry, see
-[Integrators](/ecosystem/integrations). <br /> If you provide a solution that consumes
-OpenTelemetry to offer Observability to end users, see [Vendors](/ecosystem/vendors).
+[Integrators](/ecosystem/integrations). <br /> If you provide a solution that
+consumes OpenTelemetry to offer Observability to end users, see
+[Vendors](/ecosystem/vendors).
 
 [^existing-entries]:
     Organizations that have been part of this list before July 2023 are exempted

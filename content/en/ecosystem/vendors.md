@@ -34,9 +34,9 @@ Note, that this list is for organizations that consume OpenTelemetry to offer
 Observability to end users.
 
 If you adopt OpenTelemetry for Observability as an end user and do not provide
-any kind of services around OpenTelemetry, see [Adopters](/ecosystem/adopters). <br /> If
-you provide a library, service or app made observable through OpenTelemetry, see
-[Integrators](/ecosystem/integrations).
+any kind of services around OpenTelemetry, see [Adopters](/ecosystem/adopters).
+<br /> If you provide a library, service or app made observable through
+OpenTelemetry, see [Integrators](/ecosystem/integrations).
 
 [^existing-entries]:
     Organizations that have been part of this list before July 2023 are exempted

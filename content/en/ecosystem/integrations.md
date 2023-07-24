@@ -21,8 +21,8 @@ Note, that this list is for libraries, services or apps which integrate
 OpenTelemetry **natively**.
 
 If you provide external integration of OpenTelemetry for any kind of library,
-service or app, [add it to the registry](/ecosystem/registry/adding) <br /> If you adopt
-OpenTelemetry for Observability as an end user and do not provide any kind of
-services around OpenTelemetry, see [Adopters](/ecosystem/adopters). <br /> If you provide
-a solution that consumes OpenTelemetry to offer Observability to end users, see
-[Vendors](/ecosystem/vendors).
+service or app, [add it to the registry](/ecosystem/registry/adding) <br /> If
+you adopt OpenTelemetry for Observability as an end user and do not provide any
+kind of services around OpenTelemetry, see [Adopters](/ecosystem/adopters).
+<br /> If you provide a solution that consumes OpenTelemetry to offer
+Observability to end users, see [Vendors](/ecosystem/vendors).
