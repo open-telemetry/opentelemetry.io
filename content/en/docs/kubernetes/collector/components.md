@@ -3,7 +3,7 @@ title: Important Components for Kubernetes
 linkTitle: Components
 spelling:
   cSpell:ignore filelog crio containerd logtag gotime iostream varlogpods
-  cSpell:ignore varlibdockercontainers
+  cSpell:ignore varlibdockercontainers UIDs sattributes replicasets
 ---
 
 The [OpenTelemetry Collector](/docs/collector/) supports many different
@@ -13,12 +13,147 @@ enhancing it.
 
 Important Components:
 
+- [Kubernetes Attributes Processor](#kubernetes-attributes-processor) - used to
+  add Kubernetes metadata to incoming telemetry.
 - [Filelog Receiver](#filelog-receiver) - used to collect Kubernetes logs and
   application logs written to stdout/stderr.
 
 For application traces, metrics, or logs, we recommend the
 [OTLP receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver),
 but any receiver that fits your data is appropriate.
+
+## Kubernetes Attributes Processor
+
+The Kubernetes Attributes Processor automatically discovers Kubernetes resources
+(pods), extracts their metadata, and adds the extracted metadata to the relevant
+spans, metrics and logs as resource attributes.
+
+**It is one of the most important components for a collector running in
+Kubernetes; any collector receiving application data should use it.** This is
+the processor that adds Kubernetes context to your application traces, metrics,
+and logs. It enables you to correlate your application's traces, metrics, and
+logs with other Kubernetes telemetry such as pod metrics and events.
+
+The Kubernetes Attributes Processor uses the Kubernetes API to discover all pods
+running in a cluster, keeps a record of their IP addresses, pod UIDs and
+interesting metadata. By default data passing through the processor is
+associated to a pod via the incoming request's IP address, but different rules
+can be configured. Since the processor uses the Kubernetes API it requires
+special permissions. If you're using the
+[OpenTelemetry Collector Helm chart](../../helm/collector/) you can use the
+[`kubernetesAttributes` preset](../../helm/collector/#kubernetes-attributes-preset)
+to get started.
+
+The following attributes are added by default:
+
+- k8s.namespace.name
+- k8s.pod.name
+- k8s.pod.uid
+- k8s.pod.start_time
+- k8s.deployment.name
+- k8s.node.name
+
+The Kubernetes Attributes Processor can also set resource attributes from labels
+and annotations of pods and namespaces.
+
+```yaml
+k8sattributes:
+  auth_type: 'serviceAccount'
+  extract:
+    metadata: # metadata to extra from the pod
+      - k8s.namespace.name
+      - k8s.pod.name
+      - k8s.pod.start_time
+      - k8s.pod.uid
+      - k8s.deployment.name
+      - k8s.node.name
+    annotations:
+      - tag_name: a1 # extracts value of annotation from pods with key `annotation-one` and inserts it as a tag with key `a1`
+        key: annotation-one
+        from: pod
+      - tag_name: a2 # extracts value of annotation from namespaces with key `annotation-two` with regexp and inserts it as a tag with key `a2`
+        key: annotation-two
+        regex: field=(?P<value>.+)
+        from: namespace
+    labels:
+      - tag_name: l1 # extracts value of label from namespaces with key `label1` and inserts it as a tag with key `l1`
+        key: label1
+        from: namespace
+      - tag_name: l2 # extracts value of label from pods with key `label2` with regexp and inserts it as a tag with key `l2`
+        key: label2
+        regex: field=(?P<value>.+)
+        from: pod
+  pod_association: # how to associate the data to a pod (order matters)
+    - sources: # First try to use the value of the resource attribute k8s.pod.ip
+        - from: resource_attribute
+          name: k8s.pod.ip
+    - sources: # Then try to use the value of the resource attribute k8s.pod.uid
+        - from: resource_attribute
+          name: k8s.pod.uid
+    - sources: # If neither of those work, use the request's connection to get the pod IP.
+        - from: connection
+```
+
+There are also special configuration options for when the collector is deployed
+as a Daemonset or as a Deployment. For Kubernetes Attributes Processor
+configuration details, see
+[Kubernetes Attributes Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor).
+
+Since the processor uses the Kubernetes API it needs the correct permission to
+work correctly. For most use cases you should give the service account running
+the Collector the following permissions via a ClusterRole.
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: collector
+  namespace: <OTEL_COL_NAMESPACE>
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: otel-collector
+rules:
+  - apiGroups:
+      - ''
+    resources:
+      - 'pods'
+      - 'namespaces'
+    verbs:
+      - 'get'
+      - 'watch'
+      - 'list'
+  - apiGroups:
+      - 'apps'
+    resources:
+      - 'replicasets'
+    verbs:
+      - 'get'
+      - 'list'
+      - 'watch'
+  - apiGroups:
+      - 'extensions'
+    resources:
+      - 'replicasets'
+    verbs:
+      - 'get'
+      - 'list'
+      - 'watch'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: otel-collector
+subjects:
+  - kind: ServiceAccount
+    name: collector
+    namespace: <OTEL_COL_NAMESPACE>
+roleRef:
+  kind: ClusterRole
+  name: otel-collector
+  apiGroup: rbac.authorization.k8s.io
+```
 
 ## Filelog Receiver
 
