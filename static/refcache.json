@@ -83,6 +83,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-30T09:34:23.548939-04:00"
   },
+  "https://arrow.apache.org/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-24T11:52:40.018743+02:00"
+  },
   "https://avajs.dev": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T12:27:30.178352-04:00"
@@ -191,9 +195,17 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T13:45:46.681919-04:00"
   },
+  "https://cert-manager.io/docs/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-17T19:31:48.606865-06:00"
+  },
   "https://cert-manager.io/docs/installation/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T13:45:41.481947-04:00"
+  },
+  "https://cert-manager.io/docs/installation/kubernetes/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-17T19:31:48.745126-06:00"
   },
   "https://circleci.com": {
     "StatusCode": 206,
@@ -250,6 +262,10 @@
   "https://cloud-native.slack.com/archives/C031SAMGV2A": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T15:55:35.172728-04:00"
+  },
+  "https://cloud-native.slack.com/archives/C033BJ8BASU": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-24T11:52:41.414595+02:00"
   },
   "https://cloud-native.slack.com/archives/C03B4CWV4DA": {
     "StatusCode": 200,
@@ -426,6 +442,10 @@
   "https://coralogix.com/docs/opentelemetry/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T13:38:26.570786-04:00"
+  },
+  "https://cortexmetrics.io": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-24T11:52:37.09875+02:00"
   },
   "https://couchdb.apache.org/": {
     "StatusCode": 206,
@@ -1487,6 +1507,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T11:44:01.171326-04:00"
   },
+  "https://fluentbit.io": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-24T11:52:34.551687+02:00"
+  },
   "https://fluentbit.io/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:03:49.117652-04:00"
@@ -2162,6 +2186,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.80.0": {
     "StatusCode": 200,
     "LastSeen": "2023-07-01T14:29:53.746821-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-contrib": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-17T15:32:21.480243-06:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-releases/releases": {
     "StatusCode": 200,
@@ -2915,6 +2943,14 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:32:12.255849-04:00"
   },
+  "https://github.com/prometheus-operator/prometheus-operator": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-24T11:52:37.680843+02:00"
+  },
+  "https://github.com/prometheus-operator/prometheus-operator/releases": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-24T11:52:36.143396+02:00"
+  },
   "https://github.com/prometheus/prometheus/commit/d9d51c565c622cdc7d626d3e7569652bc28abe15#diff-bdaf80ebc5fa26365f45db53435b960ce623ea6f86747fb8870ad1abc355f64fR76-R83": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:39:51.523828-04:00"
@@ -3143,6 +3179,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:04:48.516571-04:00"
   },
+  "https://helm.sh/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-14T11:35:07.553343-06:00"
+  },
   "https://helm.sh/docs/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:04:53.616666-04:00"
@@ -3355,6 +3395,18 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:07:14.3411-04:00"
   },
+  "https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-24T11:52:34.849748+02:00"
+  },
+  "https://kubernetes.io/docs/concepts/workloads/controllers/deployment/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-24T11:52:38.332136+02:00"
+  },
+  "https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-24T11:52:38.508245+02:00"
+  },
   "https://kubernetes.io/docs/concepts/workloads/pods/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:07:09.207767-04:00"
@@ -3402,6 +3454,10 @@
   "https://lightstep.com": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T16:25:45.294509-04:00"
+  },
+  "https://lightstep.com/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-24T11:52:34.329746+02:00"
   },
   "https://lightstep.com/blog/apm-is-dying-and-thats-okay": {
     "StatusCode": 206,
@@ -3767,6 +3823,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T11:44:37.307484-04:00"
   },
+  "https://packagist.org/packages/open-telemetry/sdk": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-22T15:46:26.9606521Z"
+  },
   "https://packagist.org/providers/php-http/async-client-implementation": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:20:58.580599-04:00"
@@ -4079,6 +4139,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:42:56.97152-04:00"
   },
+  "https://sentry.io/for/opentelemetry/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-18T01:02:48.0440025Z"
+  },
   "https://sentrysoftware.com": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T16:27:00.258988-04:00"
@@ -4094,6 +4158,10 @@
   "https://shorturl.at/bqtxO": {
     "StatusCode": 200,
     "LastSeen": "2023-06-01T17:06:18.570048-04:00"
+  },
+  "https://shorturl.at/cIJT2": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-24T11:52:43.111795+02:00"
   },
   "https://signoz.io": {
     "StatusCode": 206,
@@ -4963,9 +5031,21 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:22:14.019714-04:00"
   },
+  "https://www.techtarget.com/searchapparchitecture/tip/The-reasons-to-use-or-not-use-sidecars-in-Kubernetes": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-24T11:52:39.043398+02:00"
+  },
   "https://www.techtarget.com/searchitoperations/definition/Elastic-Stack": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:52:40.932598-04:00"
+  },
+  "https://www.techtarget.com/searchitoperations/definition/rolling-deployment": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-24T11:52:39.433961+02:00"
+  },
+  "https://www.techtarget.com/searchoracle/definition/sharding": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-24T11:52:36.660941+02:00"
   },
   "https://www.tencentcloud.com/": {
     "StatusCode": 200,
@@ -5062,6 +5142,10 @@
   "https://youtu.be/9iaGG-YZw5I": {
     "StatusCode": 200,
     "LastSeen": "2023-06-01T17:03:14.742262-04:00"
+  },
+  "https://youtu.be/dpXhgZL9tzU": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-24T11:52:40.581959+02:00"
   },
   "https://zipkin.io/": {
     "StatusCode": 206,
