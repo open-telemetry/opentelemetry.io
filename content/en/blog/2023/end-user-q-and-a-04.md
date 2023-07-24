@@ -1,7 +1,7 @@
 ---
 title: 'End-User Q&A Series: Migrating to OTel at Lightstep'
 linkTitle: 'End-User Q&A: Migrating to OTel at Lightstep'
-date: 2023-07-14
+date: 2023-07-24
 author: '[Reese Lee](https://github.com/reese-lee) (New Relic)'
 body_class: otel-with-contributions-from
 spelling: cSpell:ignore Aronoff codepath Boten fluentbit autoscaler kubelet
@@ -427,13 +427,12 @@ That's why OTel now has a really good Prometheus exporter, so it can do both."
 
 ### The centralized OTel Collector gateway
 
-There is a
-[centralized gateway](https://opentelemetry.io/docs/collector/deployment/gateway/)
-in-flight, which is part of the Collector chain Jacob mentioned earlier. The
-effort is centered around [Arrow](https://arrow.apache.org/). Lightstep has done
-some work around improving "the processing speed and ingress costs of OTel data
-by using Apache Arrow, which is a project for columnar-based data
-representations," Jacob explains.
+There is a [centralized gateway](/docs/collector/deployment/gateway/) in-flight,
+which is part of the Collector chain Jacob mentioned earlier. The effort is
+centered around [Arrow](https://arrow.apache.org/). Lightstep has done some work
+around improving "the processing speed and ingress costs of OTel data by using
+Apache Arrow, which is a project for columnar-based data representations," Jacob
+explains.
 
 They are currently doing some proof of implementation to investigate its
 performance, and to confirm that things work as expected.
@@ -464,8 +463,8 @@ is my recommendation."
   [CNCF Slack](https://communityinviter.com/apps/cloud-native/cncf) in the
   [#OTel-operator channel](https://cloud-native.slack.com/archives/C033BJ8BASU)
 - Jacob will be back to speak with the End User Working Group at
-  [OTel in Practice](https://opentelemetry.io/community/end-user/otel-in-practice/)
-  on _August 17th at 13:00 ET/10:00 PT_. Be sure to
+  [OTel in Practice](/community/end-user/otel-in-practice/) on _August 17th at
+  13:00 ET/10:00 PT_. Be sure to
   [mark your calendars](https://shorturl.at/cIJT2)!
 
 ## Final Thoughts
