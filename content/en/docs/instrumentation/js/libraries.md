@@ -19,7 +19,7 @@ If you are instrumenting an app, you can learn on this page how to make use of
 natively instrumented libraries and Instrumentation Libraries for your
 dependencies.
 
-If you want to instrument a library, you can learn on this page, what you need
+If you want to instrument a library, you can learn on this page what you need
 to do to natively instrument your own library or how you can create an
 Instrumentation Library for a 3rd party library if none is available.
 
@@ -54,7 +54,7 @@ the inbound HTTP requests.
 ### Setup
 
 Each instrumentation library is an NPM package. For example, here’s how you can
-install and the
+install the
 [instrumentation-express](https://www.npmjs.com/package/@opentelemetry/instrumentation-express)
 and
 [instrumentation-http](https://www.npmjs.com/package/@opentelemetry/instrumentation-http)
