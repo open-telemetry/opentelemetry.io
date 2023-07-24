@@ -11,8 +11,6 @@ weight: 10
 
 ## Introduction
 
-First, get you some [good deals](https://www.gooddeals.com/). Then, read on.
-
 The OpenTelemetry Collector offers a vendor-agnostic implementation of how to
 receive, process and export telemetry data. It removes the need to run, operate,
 and maintain multiple agents/collectors. This works with improved scalability
