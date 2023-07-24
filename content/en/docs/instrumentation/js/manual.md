@@ -12,7 +12,7 @@ description: Manual instrumentation for OpenTelemetry JavaScript
 
 {{% alert title="Note" color="info" %}}
 
-On this page you will learn, how you can add traces, metrics and logs to your
+On this page you will learn how you can add traces, metrics and logs to your
 code _manually_. But, you are not limited to only use one kind of
 instrumentation: use
 [automatic instrumentation](/docs/instrumentation/js/automatic/) to get started
@@ -68,8 +68,8 @@ To highlight the difference between instrumenting a _library_ and a standalone
 _app_, split out the dice rolling into a _library file_, which then will be
 imported as a dependency by the _app file_.
 
-Create the _library file_ named `dice.ts` (or `dice.js`) if you are not using
-typescript) and add the following code to it:
+Create the _library file_ named `dice.ts` (or `dice.js` if you are not using
+TypeScript) and add the following code to it:
 
 <!-- prettier-ignore-start -->
 
@@ -112,7 +112,7 @@ module.exports = { rollTheDice }
 
 <!-- prettier-ignore-end -->
 
-Create the _app file_ named `app.ts` (or `app.js`) if not using typescript) and
+Create the _app file_ named `app.ts` (or `app.js` if not using TypeScript) and
 add the following code to it:
 
 <!-- prettier-ignore-start -->
@@ -209,7 +209,7 @@ npm install @opentelemetry/sdk-node
 
 Before any other module in your application is loaded, you must initialize the
 SDK. If you fail to initialize the SDK or initialize it too late, no-op
-implementations will be provided to any library which acquires a tracer or meter
+implementations will be provided to any library that acquires a tracer or meter
 from the API.
 
 <!-- prettier-ignore-start -->
@@ -266,7 +266,7 @@ sdk
 
 <!-- prettier-ignore-end -->
 
-For debugging and local development purpose, the following example exports
+For debugging and local development purposes, the following example exports
 telemetry to the console. After you have finished setting up manual
 instrumentation, you need to configure an appropriate exporter to
 [export the app's telemetry data](/docs/instrumentation/js/exporters/) to one or
@@ -308,7 +308,7 @@ information, see [Libraries](/docs/instrumentation/js/libraries/).
 
 ### Initialize Tracing
 
-{{% alert color="info" %}} If you’re instrumenting a library, skip this step.
+{{% alert title="Note" color="info" %}} If you’re instrumenting a library, **skip this step**.
 {{% /alert %}}
 
 To enable [tracing](/docs/concepts/signals/traces/) in your app, you'll need to
@@ -602,7 +602,7 @@ module.exports = { rollTheDice }
 Now that you have [tracers](/docs/concepts/signals/traces/#tracer) initialized,
 you can create [spans](/docs/concepts/signals/traces/#spans).
 
-The API of OpenTelemetry JavaScript exposes two methods, that allow you to
+The API of OpenTelemetry JavaScript exposes two methods that allow you to
 create spans:
 
 - [`tracer.startSpan`](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api.Tracer.html#startSpan):
@@ -613,7 +613,7 @@ create spans:
   activated for the duration of the function call.
 
 In most cases you want to use the latter (`tracer.startActiveSpan`), as it takes
-care of setting the span and it's context active.
+care of setting the span and its context active.
 
 The code below illustrates how to create an active span.
 
@@ -1261,7 +1261,7 @@ If you followed the instructions to [initialize the SDK](#initialize-the-sdk)
 above, you have a `MeterProvider` setup for you already. You can continue with
 [acquiring a meter](#acquiring-a-meter).
 
-##### Initializing tracing with `sdk-metrics`
+##### Initializing metrics with `sdk-metrics`
 
 In some cases you may not be able or may not want to use the
 [full OpenTelemetry SDK for Node.js](https://www.npmjs.com/package/@opentelemetry/sdk-node).
