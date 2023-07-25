@@ -13,8 +13,8 @@ const markdownFiles = [
   '!tmp/**',
 ];
 
-let fileCount = 0,
-  issueCount = 0;
+let numFilesProcessed = 0,
+  numFilesWithIssues = 0;
 
 function markdownLintFile(file, encoding, callback) {
   const config = require('../.markdownlint.json');
@@ -54,9 +54,11 @@ function markdownLintFile(file, encoding, callback) {
       .join('\n');
     if (resultString) {
       console.log(resultString);
-      issueCount++;
+      numFilesWithIssues++;
+      // Don't report an error yet so that other files can be checked:
+      // callback(new Error('...'));
     }
-    fileCount++;
+    numFilesProcessed++;
     callback(null, file);
   });
 }
@@ -80,11 +82,13 @@ function lintMarkdown() {
     .src([argv.glob, ...markdownFiles])
     .pipe(through2.obj(markdownLintFile))
     .on('end', () => {
-      console.log(
-        `Processed ${fileCount} file${
-          fileCount == 1 ? '' : 's'
-        }, ${issueCount} had issues.`,
-      );
+      const fileOrFiles = 'file' + (numFilesProcessed == 1 ? '' : 's');
+      const msg = `Processed ${numFilesProcessed} ${fileOrFiles}, ${numFilesWithIssues} had issues.`;
+      if (numFilesWithIssues > 0) {
+        throw new Error(msg);
+      } else {
+        console.log(msg);
+      }
     });
 }
 
