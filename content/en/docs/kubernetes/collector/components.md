@@ -24,6 +24,12 @@ but any receiver that fits your data is appropriate.
 
 ## Kubernetes Attributes Processor
 
+| Deployment Pattern   | Usable |
+| -------------------- | ------ |
+| DaemonSet (Agent)    | Yes    |
+| Deployment (Gateway) | Yes    |
+| Sidear               | No     |
+
 The Kubernetes Attributes Processor automatically discovers Kubernetes pods,
 extracts their metadata, and adds the extracted metadata to spans, metrics, and
 logs as resource attributes.
@@ -161,6 +167,12 @@ roleRef:
 ```
 
 ## Filelog Receiver
+
+| Deployment Pattern   | Usable                                                          |
+| -------------------- | --------------------------------------------------------------- |
+| DaemonSet (Agent)    | Preferred                                                       |
+| Deployment (Gateway) | Yes, but will only collect logs from the node it is deployed on |
+| Sidear               | Yes, but this would be considered advanced configuration        |
 
 The Filelog Receiver tails and parses logs from files. Although it's not a
 Kubernetes-specific receiver, it is still the de facto solution for collecting
