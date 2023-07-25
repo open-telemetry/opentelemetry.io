@@ -6,9 +6,7 @@ spelling:
   cSpell:ignore varlibdockercontainers
 ---
 
-## Introduction
-
-The [OpenTelemetry Collector](/docs/collector) supports many different receivers
+The [OpenTelemetry Collector](/docs/collector/) supports many different receivers
 and processors to facilitate monitoring Kubernetes. This section covers the
 components that are most important for collecting Kubernetes data and enhancing
 it.
@@ -31,7 +29,7 @@ any logs from Kubernetes.
 The Filelog Receiver is composed of Operators that are chained together to
 process a log. Each Operator performs a simple responsibility, such as parsing a
 timestamp or JSON. Configuring a Filelog Receiver is not trivial. If you're
-using the [OpenTelemetry Collector Helm chart](/docs/kubernetes/helm/collector/)
+using the [OpenTelemetry Collector Helm chart](../../helm/collector/)
 you can use the
 [`logsCollection` preset](/docs/kubernetes/helm/collector/#logs-collection-preset)
 to get started.
@@ -119,8 +117,8 @@ filelog:
       to: resource["k8s.pod.uid"]
 ```
 
-For in-depth details of how to configure a Filelog Receiver, visit its
-[documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver).
+For Filelog Receiver configuration details, see 
+[Filelog Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver).
 
 In addition to the Filelog Receiver configuration, your OpenTelemetry Collector
 installation in Kubernetes will need access to the logs it wants to collect.
