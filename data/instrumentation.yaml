@@ -25,7 +25,7 @@ languages:
     urlName: go
     status:
       traces: stable
-      metrics: beta
+      metrics: mixed (beta SDK & stable API)
       logs: not yet implemented
   java:
     name: Java
