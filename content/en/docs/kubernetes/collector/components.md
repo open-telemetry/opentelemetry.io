@@ -24,22 +24,23 @@ but any receiver that fits your data is appropriate.
 
 ## Kubernetes Attributes Processor
 
-The Kubernetes Attributes Processor automatically discovers Kubernetes resources
-(pods), extracts their metadata, and adds the extracted metadata to the relevant
-spans, metrics and logs as resource attributes.
+The Kubernetes Attributes Processor automatically discovers Kubernetes pods,
+extracts their metadata, and adds the extracted metadata to
+spans, metrics, and logs as resource attributes.
 
-**It is one of the most important components for a collector running in
-Kubernetes; any collector receiving application data should use it.** This is
-the processor that adds Kubernetes context to your application traces, metrics,
-and logs. It enables you to correlate your application's traces, metrics, and
-logs with other Kubernetes telemetry such as pod metrics and events.
+**The Kubernetes Attributes Processor is one of the most important
+components for a collector running in Kubernetes. Any collector receiving
+application data should use it.** Because it adds Kubernetes context to your
+telemetry, the Kubernetes Attributes Processor lets you correlate your
+application's traces, metrics, and logs signals with our Kubernetes telemetry,
+such as pod metrics and traces.
 
 The Kubernetes Attributes Processor uses the Kubernetes API to discover all pods
-running in a cluster, keeps a record of their IP addresses, pod UIDs and
-interesting metadata. By default data passing through the processor is
+running in a cluster and keeps a record of their IP addresses, pod UIDs, and
+interesting metadata. By default, data passing through the processor is
 associated to a pod via the incoming request's IP address, but different rules
-can be configured. Since the processor uses the Kubernetes API it requires
-special permissions. If you're using the
+can be configured. Since the processor uses the Kubernetes API, it requires
+special permissions (see example below). If you're using the
 [OpenTelemetry Collector Helm chart](../../helm/collector/) you can use the
 [`kubernetesAttributes` preset](../../helm/collector/#kubernetes-attributes-preset)
 to get started.
@@ -99,8 +100,8 @@ as a Daemonset or as a Deployment. For Kubernetes Attributes Processor
 configuration details, see
 [Kubernetes Attributes Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor).
 
-Since the processor uses the Kubernetes API it needs the correct permission to
-work correctly. For most use cases you should give the service account running
+Since the processor uses the Kubernetes API, it needs the correct permission to
+work correctly. For most use cases, you should give the service account running
 the Collector the following permissions via a ClusterRole.
 
 ```yaml
