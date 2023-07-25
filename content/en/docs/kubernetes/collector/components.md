@@ -25,15 +25,15 @@ but any receiver that fits your data is appropriate.
 ## Kubernetes Attributes Processor
 
 The Kubernetes Attributes Processor automatically discovers Kubernetes pods,
-extracts their metadata, and adds the extracted metadata to
-spans, metrics, and logs as resource attributes.
+extracts their metadata, and adds the extracted metadata to spans, metrics, and
+logs as resource attributes.
 
-**The Kubernetes Attributes Processor is one of the most important
-components for a collector running in Kubernetes. Any collector receiving
-application data should use it.** Because it adds Kubernetes context to your
-telemetry, the Kubernetes Attributes Processor lets you correlate your
-application's traces, metrics, and logs signals with our Kubernetes telemetry,
-such as pod metrics and traces.
+**The Kubernetes Attributes Processor is one of the most important components
+for a collector running in Kubernetes. Any collector receiving application data
+should use it.** Because it adds Kubernetes context to your telemetry, the
+Kubernetes Attributes Processor lets you correlate your application's traces,
+metrics, and logs signals with our Kubernetes telemetry, such as pod metrics and
+traces.
 
 The Kubernetes Attributes Processor uses the Kubernetes API to discover all pods
 running in a cluster and keeps a record of their IP addresses, pod UIDs, and
@@ -54,8 +54,9 @@ The following attributes are added by default:
 - k8s.deployment.name
 - k8s.node.name
 
-The Kubernetes Attributes Processor can also set resource attributes from labels
-and annotations of pods and namespaces.
+The Kubernetes Attributes Processor can also set custom resource attributes for
+traces, metrics, and logs using the Kubernetes labels and Kubernetes annotations
+you've added to your pods and namespaces.
 
 ```yaml
 k8sattributes:
@@ -69,18 +70,18 @@ k8sattributes:
       - k8s.deployment.name
       - k8s.node.name
     annotations:
-      - tag_name: a1 # extracts value of annotation from pods with key `annotation-one` and inserts it as a tag with key `a1`
+      - tag_name: a1 # extracts the value of a pod annotation with key `annotation-one` and inserts it as a resource attribute with key `a1`
         key: annotation-one
         from: pod
-      - tag_name: a2 # extracts value of annotation from namespaces with key `annotation-two` with regexp and inserts it as a tag with key `a2`
+      - tag_name: a2 # extracts the value of a namespaces annotation with key `annotation-two` with regexp and inserts it as a resource  with key `a2`
         key: annotation-two
         regex: field=(?P<value>.+)
         from: namespace
     labels:
-      - tag_name: l1 # extracts value of label from namespaces with key `label1` and inserts it as a tag with key `l1`
+      - tag_name: l1 # extracts the value of a namespaces label with key `label1` and inserts it as a resource attribute with key `l1`
         key: label1
         from: namespace
-      - tag_name: l2 # extracts value of label from pods with key `label2` with regexp and inserts it as a tag with key `l2`
+      - tag_name: l2 # extracts the value of a pod label with key `label2` with regexp and inserts it as a resource attribute with key `l2`
         key: label2
         regex: field=(?P<value>.+)
         from: pod
@@ -96,8 +97,11 @@ k8sattributes:
 ```
 
 There are also special configuration options for when the collector is deployed
-as a Daemonset or as a Deployment. For Kubernetes Attributes Processor
-configuration details, see
+as a Kubernetes DaemonSet (agent) or as a Kubernetes Deployment (gateway). For
+details, see
+[Deployment Scenarios](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor#deployment-scenarios)
+
+For Kubernetes Attributes Processor configuration details, see
 [Kubernetes Attributes Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor).
 
 Since the processor uses the Kubernetes API, it needs the correct permission to
