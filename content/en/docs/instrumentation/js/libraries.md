@@ -19,8 +19,8 @@ If you are instrumenting an app, you can learn on this page how to make use of
 natively instrumented libraries and Instrumentation Libraries for your
 dependencies.
 
-If you want to instrument a library, you can learn on this page what you need
-to do to natively instrument your own library or how you can create an
+If you want to instrument a library, you can learn on this page what you need to
+do to natively instrument your own library or how you can create an
 Instrumentation Library for a 3rd party library if none is available.
 
 ## Use natively instrumented libraries
