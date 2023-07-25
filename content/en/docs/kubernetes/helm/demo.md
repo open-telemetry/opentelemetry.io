@@ -9,7 +9,7 @@ environment. As part of that effort, the OpenTelemetry community create the
 [OpenTelemetry Demo Helm Chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-demo)
 so that it can be easily installed in Kubernetes.
 
-## Installing the Chart
+## Installation
 
 To install the chart with the release name `my-otel-demo`, run the following
 command:
