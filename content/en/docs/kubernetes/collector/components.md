@@ -8,10 +8,10 @@ spelling:
 
 ## Introduction
 
-The [OpenTelemetry Collector](/docs/collector) supports many different
-receivers and processors to facilitate monitoring Kubernetes. This section
-covers the components that are most important for collecting Kubernetes data
-and enhancing it.
+The [OpenTelemetry Collector](/docs/collector) supports many different receivers
+and processors to facilitate monitoring Kubernetes. This section covers the
+components that are most important for collecting Kubernetes data and enhancing
+it.
 
 Important Components:
 
@@ -30,8 +30,14 @@ any logs from Kubernetes.
 
 The Filelog Receiver is composed of Operators that are chained together to
 process a log. Each Operator performs a simple responsibility, such as parsing a
-timestamp or JSON. Since Kubernetes logs normally fit a set of standard formats,
-a typical Filelog Receiver configuration for Kubernetes looks like:
+timestamp or JSON. Configuring a Filelog Receiver is not trivial. If you're
+using the [OpenTelemetry Collector Helm chart](/docs/kubernetes/helm/collector/)
+you can use the
+[`logsCollection` preset](/docs/kubernetes/helm/collector/#logs-collection-preset)
+to get started.
+
+Since Kubernetes logs normally fit a set of standard formats, a typical Filelog
+Receiver configuration for Kubernetes looks like:
 
 ```yaml
 filelog:
@@ -156,9 +162,3 @@ spec:
             path: /var/lib/docker/containers
         ...
 ```
-
-Configuring a Filelog Receiver is not trivial. If you're using the
-[OpenTelemetry Collector Helm chart](/docs/kubernetes/helm/collector/) you can
-use the
-[`logsCollection` preset](/docs/kubernetes/helm/collector/#logs-collection-preset)
-to get started.
