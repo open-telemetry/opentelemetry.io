@@ -108,8 +108,9 @@ jobs:
           cache: npm
           cache-dependency-path: tmp/package-ci.json
 
+      - run: npm install
       - run: |
-          npm run test
+          npm run check:links
           git status
           git branch -v
 
