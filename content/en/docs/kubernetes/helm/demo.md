@@ -42,7 +42,7 @@ OpenTelemetry Collector OTLP/HTTP receiver:
 kubectl port-forward svc/my-otel-demo-otelcol 4318:4318
 ```
 
-For more details on using the demo in Kubernetes see
+For more details on using the demo in Kubernetes, see
 [Kubernetes deployment](/docs/demo/kubernetes-deployment/).
 
 ## Configuration
