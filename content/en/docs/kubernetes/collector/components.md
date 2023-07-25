@@ -8,14 +8,14 @@ spelling:
 
 ## Introduction
 
-The [OpenTelemetry Collector](/docs/collector) community support many different
-receivers and processors to facilitate monitoring Kubernetes. This section will
-cover the components that are most important for collecting Kubernetes data as
-well as enhancing is.
+The [OpenTelemetry Collector](/docs/collector) supports many different
+receivers and processors to facilitate monitoring Kubernetes. This section
+covers the components that are most important for collecting Kubernetes data
+and enhancing it.
 
 Important Components:
 
-- [Filelog Receiver](#filelog-receiver) - used to collector Kubernetes logs and
+- [Filelog Receiver](#filelog-receiver) - used to collect Kubernetes logs and
   application logs written to stdout/stderr.
 
 For application traces, metrics, or logs, we recommend the
@@ -24,8 +24,8 @@ but any receiver that fits your data is appropriate.
 
 ## Filelog Receiver
 
-The Filelog Receiver tails and parses logs from files. Although not a
-Kubernetes-specific receiver, it is still the defacto solution for collecting
+The Filelog Receiver tails and parses logs from files. Although it's not a
+Kubernetes-specific receiver, it is still the de facto solution for collecting
 any logs from Kubernetes.
 
 The Filelog Receiver is composed of Operators that are chained together to
@@ -113,7 +113,7 @@ filelog:
       to: resource["k8s.pod.uid"]
 ```
 
-For in-depth details of how to configure a Filelog Receiver visit its
+For in-depth details of how to configure a Filelog Receiver, visit its
 [documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver).
 
 In addition to the Filelog Receiver configuration, your OpenTelemetry Collector
