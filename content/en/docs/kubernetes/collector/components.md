@@ -30,8 +30,7 @@ The Filelog Receiver is composed of Operators that are chained together to
 process a log. Each Operator performs a simple responsibility, such as parsing a
 timestamp or JSON. Configuring a Filelog Receiver is not trivial. If you're
 using the [OpenTelemetry Collector Helm chart](../../helm/collector/) you can
-use the
-[`logsCollection` preset](../../helm/collector/#logs-collection-preset)
+use the [`logsCollection` preset](../../helm/collector/#logs-collection-preset)
 to get started.
 
 Since Kubernetes logs normally fit a set of standard formats, a typical Filelog
@@ -123,7 +122,7 @@ For Filelog Receiver configuration details, see
 In addition to the Filelog Receiver configuration, your OpenTelemetry Collector
 installation in Kubernetes will need access to the logs it wants to collect.
 Typically this means adding some volumes and volumeMounts to your collector
-manifest
+manifest:
 
 ```yaml
 ---
