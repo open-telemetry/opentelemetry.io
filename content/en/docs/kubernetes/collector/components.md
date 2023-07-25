@@ -13,9 +13,9 @@ enhancing it.
 
 Important Components:
 
-- [Kubernetes Attributes Processor](#kubernetes-attributes-processor) - used to
-  add Kubernetes metadata to incoming telemetry.
-- [Filelog Receiver](#filelog-receiver) - used to collect Kubernetes logs and
+- [Kubernetes Attributes Processor](#kubernetes-attributes-processor) - adds
+  Kubernetes metadata to incoming telemetry.
+- [Filelog Receiver](#filelog-receiver) - collects Kubernetes logs and
   application logs written to stdout/stderr.
 
 For application traces, metrics, or logs, we recommend the
