@@ -6,20 +6,20 @@ aliases: [/vendors]
 # prettier-ignore
 ---
 
-A non-exhaustive list of organizations, offering solutions that consume OpenTelemetry natively via
-via [OTLP](/docs/specs/otlp/), such as observability backends and observability pipelines.
+A non-exhaustive list of organizations, offering solutions that consume
+OpenTelemetry natively via via [OTLP](/docs/specs/otlp/), such as observability
+backends and observability pipelines.
 
 These solutions may be open source, commercial, or both. Some organizations
 provide a [distribution](/docs/concepts/distributions/) (of customized
-OpenTelemetry components), that provides additional capabilities or for improved ease of use.
+OpenTelemetry components), that provides additional capabilities or for improved
+ease of use.
 
 {{% ecosystem/vendor-table %}}
 
-To have your organization included,
-[add an entry to the list](https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/vendors.yaml)
-and submit a PR.
-
-You will need to include[^existing-entries]:
+To have your organization listed, submit a PR with an entry added to the
+[vendors list](https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/vendors.yaml).
+The entry must include the following[^grace-period-2024-01-01]:
 
 - a link to the documentation on how your offering consumes OpenTelemetry
   natively via [OTLP](http://localhost:1313/docs/specs/otlp/).
@@ -30,13 +30,13 @@ You will need to include[^existing-entries]:
   future inquiries.
 
 Note, that this list is for organizations that consume OpenTelemetry to offer
-Observability to end users.
+Observability to [end users](https://community.cncf.io/end-user-community/).
 
 If you adopt OpenTelemetry for Observability as an end user and do not provide
 any kind of services around OpenTelemetry, see [Adopters](/ecosystem/adopters).
 <br /> If you provide a library, service or app made observable through
-OpenTelemetry, see [Integrators](/ecosystem/integrations).
+OpenTelemetry, see [Integrations](/ecosystem/integrations).
 
-[^existing-entries]:
-    Organizations that have been part of this list before July 2023 are exempted
-    from these requirements until January, 1th 2024.
+[^grace-period-2024-01-01]:
+    Organizations listed before July 2023 are exempt from these requirements
+    until January 1, 2024, after which they will be removed unless updated.

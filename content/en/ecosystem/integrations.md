@@ -10,12 +10,14 @@ OpenTelemetry **natively** to emit traces, metrics and logs.
 
 {{% ecosystem/integrations-table %}}
 
-To have a library, service or app listed,
-[add an entry to the list](https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/integrations.yaml)
-and submit a PR.
+To have your library, service or app listed, submit a PR with an entry added to
+the
+[integrations list](https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/integrations.yaml).
+The entry must include the following:
 
-You will need to include a link to the documentation that explains how
-OpenTelemetry is used to enable observability.
+- a link to the main page of your library, service or app.
+- a link to the documentation that explains how OpenTelemetry is used to enable
+  observability.
 
 Note, that this list is for libraries, services or apps which integrate
 OpenTelemetry **natively**.
