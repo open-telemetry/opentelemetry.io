@@ -6,13 +6,12 @@ aliases: [/vendors]
 # prettier-ignore
 ---
 
-A non-exhaustive list of organizations that provide solutions which consume
-OpenTelemetry natively via [OTLP](/docs/specs/otlp/) e.g. observability backends
-or observability pipelines.
+A non-exhaustive list of organizations, offering solutions that consume OpenTelemetry natively via
+via [OTLP](/docs/specs/otlp/), such as observability backends and observability pipelines.
 
-Those offerings may be open source, commercial or both. Some organizations
-provide a [distribution](/docs/concepts/distributions/) (a customized version of
-OpenTelemetry components), that provide additional capabilities or ease of use.
+These solutions may be open source, commercial, or both. Some organizations
+provide a [distribution](/docs/concepts/distributions/) (of customized
+OpenTelemetry components), that provides additional capabilities or for improved ease of use.
 
 {{% ecosystem/vendor-table %}}
 

@@ -7,35 +7,31 @@ spelling: cSpell:ignore Dapr Datenrettungsdienste Globale Logicmonitor Logz Wand
 ---
 
 OpenTelemetry's mission is to to enable effective observability for all its
-end-users. If you thinking about adopting OpenTelemetry for your organization,
-you may be curious how other adoption journeys looked like. On this page you can
-find a non-exhaustive list of
+end-users. If you are thinking about adopting OpenTelemetry for your organization,
+you may be curious about other adoption journeys. The table below is a non-exhaustive list of
 [end-user organizations](https://community.cncf.io/end-user-community/) that
 have adopted OpenTelemetry for
 [Observability](/docs/concepts/observability-primer/).
 
 {{% ecosystem/adopters-table %}}
 
-To have your organization included,
-[add an entry to the list](https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/adopters.yaml)
-and submit a PR.
+To have your organization listed, submit a PR with an
+entry added to the [adopters list](https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/adopters.yaml).
+The entry must include the following[^grace-period-2024-01-01]:
 
-You will need to include[^existing-entries]:
+- Link to a blog post that describes how your organization makes use of
+  OpenTelemetry
+- GitHub handle or email address as a point of contact so that we can reach out in case we have questions
 
-- a link to a blog post that describes how your organization makes use of
-  OpenTelemetry.
-- a point of contact (GitHub handle or email address), we can reach out for
-  future inquiries.
+Note that this list is for [_end-user_ organizations](https://community.cncf.io/end-user-community/) that  do not provide any OpenTelemetry-related services.
 
-Note, that this list is for organizations that adopt OpenTelemetry for
-Observability as an end user and do not provide any kind of services around
-OpenTelemetry themselves.
+If your organization provides a **library** or **service** made observable through OpenTelemetry, see
+[Integrators](/ecosystem/integrations/).
 
-If you provide a library or service made observable through OpenTelemetry, see
-[Integrators](/ecosystem/integrations). <br /> If you provide a solution that
-consumes OpenTelemetry to offer Observability to end users, see
+If your organization provides a solution that
+consumes OpenTelemetry to offer **Observability to end users**, see
 [Vendors](/ecosystem/vendors).
 
-[^existing-entries]:
-    Organizations that have been part of this list before July 2023 are exempted
-    from these requirements until January, 1th 2024.
+[^grace-period-2024-01-01]:
+    Organizations listed before July 2023 are exempt
+    from these requirements until January 1, 2024, after which they will be removed unless updated.

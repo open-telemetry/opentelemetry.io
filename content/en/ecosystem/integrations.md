@@ -5,7 +5,7 @@ aliases: [/integrations]
 spelling: cSpell:ignore containerd buildx quarkus
 ---
 
-A non-exhaustive list of libraries, services or apps which integrate
+A non-exhaustive list of libraries, services and apps that integrate
 OpenTelemetry **natively** to emit traces, metrics and logs.
 
 {{% ecosystem/integrations-table %}}
