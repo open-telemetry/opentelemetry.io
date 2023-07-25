@@ -233,7 +233,7 @@
 - name: Splunk
   distribution: true
   nativeOTLP: true
-  url: 'https://www.splunk.com/en_us/blog/conf-splunklive/announcing-native-opentelemetry-support-in-splunk-apm.html'
+  url: 'https://docs.splunk.com/Observability/gdi/opentelemetry/opentelemetry.html'
   contact: ''
   oss: false
   commercial: true
