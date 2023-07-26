@@ -49,6 +49,7 @@
     "fix:filenames": "npm run _rename-to-kebab-case",
     "format": "npm run _check:format -- --write",
     "get:submodule": "npm run _get:${GET:-submodule}",
+    "install:netlify-cli": "npm list netlify-cli || npm install netlify-cli",
     "make:public": "make public ls-public",
     "postbuild:preview": "npm run _check:links--warn",
     "postbuild:production": "npm run _check:links--warn",
@@ -60,7 +61,7 @@
     "precheck:links:internal": "npm run build",
     "prepare": "run-s get:submodule _prepare:docsy",
     "preserve:hugo": "npm run _prebuild",
-    "preserve:netlify": "npm run _prebuild",
+    "preserve:netlify": "run-s _prebuild install:netlify-cli",
     "s": "run-s",
     "schemas:update": "npm run update:submodule content-modules/opentelemetry-specification",
     "serve:hugo": "npm run _serve:hugo",
@@ -70,7 +71,7 @@
     "update:pkg:docsy-dep": "npm install --save-dev autoprefixer@latest postcss-cli@latest",
     "update:pkg:hugo": "npm install --save-dev --save-exact hugo-extended@latest",
     "update:pkg:hugo+": "npm run update:pkg:hugo && npm run update:pkg:docsy-dep",
-    "update:pkg:netlify": "npm install --save-dev netlify-cli@latest",
+    "update:pkg:netlify": "npm install --save-optional netlify-cli@latest",
     "update:pkg:other": "npm install --save-dev npm-run-all@latest gulp@latest",
     "update:submodule:lang": "run-s update:submodule _get:submodule:non-lang",
     "update:submodule": "set -x && git submodule update --remote ${DEPTH:- --depth 1}"
@@ -81,7 +82,6 @@
     "gulp": "^4.0.2",
     "hugo-extended": "0.115.4",
     "markdownlint": "^0.29.0",
-    "netlify-cli": "^15.9.1",
     "npm-run-all": "^4.1.5",
     "postcss-cli": "^10.1.0",
     "prettier": "^3.0.0",
@@ -104,6 +104,9 @@
     "@opentelemetry/sdk-trace-base": "^1.8.0",
     "@opentelemetry/sdk-trace-web": "^1.8.0",
     "@opentelemetry/semantic-conventions": "^1.8.0"
+  },
+  "optionalDependencies": {
+    "netlify-cli": "^15.9.1"
   },
   "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
   "engines": {

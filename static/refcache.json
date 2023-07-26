@@ -439,6 +439,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T13:46:40.656541-04:00"
   },
+  "https://containerd.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-21T16:51:53.411018+02:00"
+  },
   "https://coralogix.com/docs/opentelemetry/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T13:38:26.570786-04:00"
@@ -450,6 +454,10 @@
   "https://couchdb.apache.org/": {
     "StatusCode": 206,
     "LastSeen": "2023-07-06T17:57:36.620937-04:00"
+  },
+  "https://cri-o.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-21T16:51:54.102328+02:00"
   },
   "https://danielabaron.me": {
     "StatusCode": 206,
@@ -763,6 +771,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T15:47:01.30768-04:00"
   },
+  "https://docs.docker.com/build/building/opentelemetry/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-21T16:51:55.386364+02:00"
+  },
   "https://docs.docker.com/compose/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T15:54:11.204968-04:00"
@@ -798,6 +810,10 @@
   "https://docs.docker.com/engine/reference/run/#container-identification": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:07:35.082785-04:00"
+  },
+  "https://docs.fluentbit.io/manual/pipeline/inputs/opentelemetry/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-21T16:51:51.751459+02:00"
   },
   "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request": {
     "StatusCode": 206,
@@ -1210,6 +1226,10 @@
   "https://docs.splunk.com/Documentation/Splunk/8.2.2/Updating/Aboutdeploymentserver": {
     "StatusCode": 200,
     "LastSeen": "2023-06-28T13:36:40.606057-04:00"
+  },
+  "https://docs.splunk.com/Observability/gdi/opentelemetry/opentelemetry.html": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-26T16:17:33.996008+02:00"
   },
   "https://docs.teletrace.io/": {
     "StatusCode": 206,
@@ -1798,6 +1818,10 @@
   "https://github.com/dmsolr": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:25:39.41743-04:00"
+  },
+  "https://github.com/docker/buildx": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-21T16:51:54.909705+02:00"
   },
   "https://github.com/dotansimha/graphql-yoga": {
     "StatusCode": 200,
@@ -4031,6 +4055,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:38:25.768525-04:00"
   },
+  "https://quarkus.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-21T16:51:55.743644+02:00"
+  },
   "https://quarkus.io/guides/opentelemetry": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:38:09.870827-04:00"
@@ -4174,6 +4202,10 @@
   "https://skywalking.apache.org": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T09:15:13.581024-04:00"
+  },
+  "https://skywalking.apache.org/docs/main/v9.0.0/en/setup/backend/opentelemetry-receiver/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-21T16:51:51.332088+02:00"
   },
   "https://slack.cncf.io": {
     "StatusCode": 200,
@@ -4670,6 +4702,10 @@
   "https://www.jaegertracing.io/docs/1.42/getting-started/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T09:35:57.526288-04:00"
+  },
+  "https://www.jaegertracing.io/docs/1.47/getting-started/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-21T16:51:52.779783+02:00"
   },
   "https://www.jaegertracing.io/docs/latest/apis/": {
     "StatusCode": 206,

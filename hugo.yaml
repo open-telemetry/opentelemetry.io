@@ -96,10 +96,10 @@ params:
         url: https://stackoverflow.com/questions/tagged/open-telemetry
         icon: fab fa-stack-overflow
         desc: Practical questions and curated answers
-      - name: CNCF branding
-        url: https://cncf-branding.netlify.app/projects/opentelemetry/
+      - name: OTel logos
+        url: https://github.com/cncf/artwork/tree/master/projects/opentelemetry
         icon: fas fa-image
-        desc: Check out the CNCF logo page for OpenTelemetry
+        desc: Official OpenTelemetry logos
       - name: Meeting Recordings
         url: https://docs.google.com/spreadsheets/d/1SYKfjYhZdm2Wh2Cl6KVQalKg_m4NhTPZqq-8SzEVO6s
         icon: fas fa-video
