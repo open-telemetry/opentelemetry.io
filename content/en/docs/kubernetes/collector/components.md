@@ -3,7 +3,7 @@ title: Important Components for Kubernetes
 linkTitle: Components
 spelling:
   cSpell:ignore filelog crio containerd logtag gotime iostream varlogpods
-  cSpell:ignore varlibdockercontainers UIDs sattributes replicasets
+  cSpell:ignore varlibdockercontainers UIDs k8sattributes replicasets
 ---
 
 The [OpenTelemetry Collector](/docs/collector/) supports many different
@@ -112,7 +112,7 @@ For Kubernetes Attributes Processor configuration details, see
 
 Since the processor uses the Kubernetes API, it needs the correct permission to
 work correctly. For most use cases, you should give the service account running
-the Collector the following permissions via a ClusterRole.
+the collector the following permissions via a ClusterRole.
 
 ```yaml
 apiVersion: v1
