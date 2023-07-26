@@ -4,6 +4,8 @@ linkTitle: Components
 spelling:
   cSpell:ignore filelog crio containerd logtag gotime iostream varlogpods
   cSpell:ignore varlibdockercontainers UIDs k8sattributes replicasets
+  cSpell:ignore replicationcontrollers resourcequotas horizontalpodautoscalers
+  cSpell:ignore statefulsets
 ---
 
 The [OpenTelemetry Collector](/docs/collector/) supports many different
@@ -17,6 +19,8 @@ Components covered in this page:
   Kubernetes metadata to incoming telemetry.
 - [Filelog Receiver](#filelog-receiver): collects Kubernetes logs and
   application logs written to stdout/stderr.
+- [Kubernetes Cluster Receiver](#kubernetes-cluster-receiver): collects
+  cluster-level metrics and entity events.
 
 For application traces, metrics, or logs, we recommend the
 [OTLP receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver),
@@ -314,4 +318,131 @@ spec:
           hostPath:
             path: /var/lib/docker/containers
         ...
+```
+
+## Kubernetes Cluster Receiver
+
+| Deployment Pattern   | Usable                                                      |
+| -------------------- | ----------------------------------------------------------- |
+| DaemonSet (Agent)    | Yes, but will result in duplicate data                      |
+| Deployment (Gateway) | Yes, but more than 1 replicas will result in duplicate data |
+| Sidecar              | No                                                          |
+
+The Kubernetes Cluster Receiver collects metrics and entity events about the
+cluster as a whole using the Kubernetes API server. Use this receiver to answer
+questions about pod phases, node conditions, and other cluster-wide questions.
+Since the receiver is gathering telemetry for the cluster as a whole, only one
+instance of the receiver is needed across the cluster in order to collect all
+the data.
+
+There are different methods for authentication, but typically a service account
+is used. The service account will also need proper permissions to pull data from
+the Kubernetes API server (see below). If you're using the
+[OpenTelemetry Collector Helm chart](../../helm/collector/) you can use the
+[`clusterMetrics` preset](../../helm/collector/#cluster-metrics-preset) to get
+started.
+
+For node conditions, the receiver will only collect `Ready` by default, but can
+be configured to collect more. The receiver can also be configured to report a
+set of allocatable resources, such as `cpu` and `memory`:
+
+```yaml
+k8s_cluster:
+  auth_type: serviceAccount
+  node_conditions_to_report:
+    - Ready
+    - MemoryPressure
+  allocatable_types_to_report:
+    - cpu
+    - memory
+```
+
+For specific configuration details, see
+[Kubernetes Cluster Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8sclusterreceiver).
+
+Since the processor uses the Kubernetes API, it needs the correct permission to
+work correctly. For most use cases, you should give the service account running
+the Collector the following permissions via a ClusterRole.
+
+```yaml
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: otel-collector-opentelemetry-collector
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: otel-collector-opentelemetry-collector
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - events
+      - namespaces
+      - namespaces/status
+      - nodes
+      - nodes/spec
+      - pods
+      - pods/status
+      - replicationcontrollers
+      - replicationcontrollers/status
+      - resourcequotas
+      - services
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - apps
+    resources:
+      - daemonsets
+      - deployments
+      - replicasets
+      - statefulsets
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+  - extensions
+    resources:
+    - daemonsets
+    - deployments
+    - replicasets
+    verbs:
+    - get
+    - list
+    - watch
+  - apiGroups:
+    - batch
+    resources:
+      - jobs
+      - cronjobs
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - autoscaling
+    resources:
+      - horizontalpodautoscalers
+    verbs:
+      - get
+      - list
+      - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: otel-collector-opentelemetry-collector
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: otel-collector-opentelemetry-collector
+subjects:
+  - kind: ServiceAccount
+    name: otel-collector-opentelemetry-collector
+    namespace: default
 ```
