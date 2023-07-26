@@ -97,7 +97,7 @@ params:
         icon: fab fa-stack-overflow
         desc: Practical questions and curated answers
       - name: CNCF branding
-        url: https://cncf-branding.netlify.app/projects/opentelemetry/
+        url: https://github.com/cncf/artwork/tree/master/projects/opentelemetry
         icon: fas fa-image
         desc: Check out the CNCF logo page for OpenTelemetry
       - name: Meeting Recordings
