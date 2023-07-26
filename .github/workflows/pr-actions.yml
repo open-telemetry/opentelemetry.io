@@ -36,22 +36,12 @@ jobs:
           mkdir -p tmp
           jq '{devDependencies, dependencies, engines, gitHubActionCacheKey}' package.json > tmp/package-ci.json
 
-      # - name: Create and use reduced-dependencies package.json
-      #   run: |
-      #     jq '.devDependencies |= with_entries(
-      #             select(.key | test("prefix|hugo|run|css|prettier"))
-      #           )
-      #           | del(.dependencies)' \
-      #       package.json > tmp/package-min.json
-      #     cp tmp/package-min.json package.json
-
       - uses: actions/setup-node@v3
         with:
           node-version-file: .nvmrc
           cache: npm
           cache-dependency-path: tmp/package-ci.json
 
-      # - run: npm install --no-optional --ignore-scripts
       - run: |
           npm run format
           git status
@@ -108,7 +98,7 @@ jobs:
           cache: npm
           cache-dependency-path: tmp/package-ci.json
 
-      - run: npm install
+      - run: npm install --omit=optional
       - run: |
           npm run check:links
           git status
