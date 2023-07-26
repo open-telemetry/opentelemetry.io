@@ -21,20 +21,21 @@ To have your organization listed, submit a PR with an entry added to the
 [vendors list](https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/vendors.yaml).
 The entry must include the following[^grace-period-2024-01-01]:
 
-- a link to the documentation on how your offering consumes OpenTelemetry
+- Link to the documentation that details how your offering consumes OpenTelemetry
   natively via [OTLP](http://localhost:1313/docs/specs/otlp/).
-- if applicable, a link to your distribution.
-- if applicable, a link that proves that your offering is open source. An open
+- Link to your distribution, if applicable
+- Link that proves that your offering is open source, if applicable. An open
   source distribution does not qualify your offering to be marked "open source".
-- a point of contact (GitHub handle or email address), we can reach out for
-  future inquiries.
+- GitHub handle or email address as a point of contact so that we can reach out
+  in case we have questions
 
-Note, that this list is for organizations that consume OpenTelemetry to offer
+Note that this list is for organizations that consume OpenTelemetry and offer
 Observability to [end users](https://community.cncf.io/end-user-community/).
 
-If you adopt OpenTelemetry for Observability as an end user and do not provide
+If you adopt OpenTelemetry for Observability as an end-user organization, and you do not provide
 any kind of services around OpenTelemetry, see [Adopters](/ecosystem/adopters).
-<br /> If you provide a library, service or app made observable through
+
+If you provide a library, service, or app that is made observable through
 OpenTelemetry, see [Integrations](/ecosystem/integrations).
 
 [^grace-period-2024-01-01]:
