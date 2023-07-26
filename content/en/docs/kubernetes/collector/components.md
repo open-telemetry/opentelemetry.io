@@ -181,7 +181,7 @@ roleRef:
 | Deployment (Gateway) | Yes, but will only collect metrics from the node it is deployed on |
 | Sidecar              | No                                                                 |
 
-Each Kubernetes node runs a kubelet which includes an API server. The Kubernetes
+Each Kubernetes node runs a kubelet that includes an API server. The Kubernetes
 Receiver connects to that kubelet via the API server to collect metrics about
 the node and the workloads running on the node.
 
@@ -192,7 +192,7 @@ the Kubelet (see below). If you're using the
 [`kubeletMetrics` preset](../../helm/collector/#kubelet-metrics-preset) to get
 started.
 
-By default metrics will be collected for pods and nodes, but you can configure
+By default, metrics will be collected for pods and nodes, but you can configure
 the receiver to collect container and volume metrics as well. The receiver also
 allows configuring how often the metrics are collected:
 
