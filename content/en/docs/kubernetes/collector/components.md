@@ -77,18 +77,21 @@ k8sattributes:
       - k8s.node.name
     annotations:
       # Extracts the value of a pod annotation with key `annotation-one` and inserts it as a resource attribute with key `a1`
-      - tag_name: a1 
+      - tag_name: a1
         key: annotation-one
         from: pod
-      - tag_name: a2 # extracts the value of a namespaces annotation with key `annotation-two` with regexp and inserts it as a resource  with key `a2`
+      # Extracts the value of a namespaces annotation with key `annotation-two` with regexp and inserts it as a resource  with key `a2`
+      - tag_name: a2
         key: annotation-two
         regex: field=(?P<value>.+)
         from: namespace
     labels:
-      - tag_name: l1 # extracts the value of a namespaces label with key `label1` and inserts it as a resource attribute with key `l1`
+      # Extracts the value of a namespaces label with key `label1` and inserts it as a resource attribute with key `l1`
+      - tag_name: l1
         key: label1
         from: namespace
-      - tag_name: l2 # extracts the value of a pod label with key `label2` with regexp and inserts it as a resource attribute with key `l2`
+      # Extracts the value of a pod label with key `label2` with regexp and inserts it as a resource attribute with key `l2`
+      - tag_name: l2
         key: label2
         regex: field=(?P<value>.+)
         from: pod
