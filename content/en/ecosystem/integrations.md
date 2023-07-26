@@ -16,7 +16,8 @@ the
 The entry must include the following:
 
 - Link to the main page of your library, service, or app
-- Link to the documentation that explains how enable observability using OpenTelemetry
+- Link to the documentation that explains how enable observability using
+  OpenTelemetry
 
 Note that this list is for libraries, services, and apps that integrate
 OpenTelemetry **natively**.
@@ -24,8 +25,8 @@ OpenTelemetry **natively**.
 If you provide external integration of OpenTelemetry for any kind of library,
 service, or app, then [add it to the registry](/ecosystem/registry/adding).
 
-If you adopt OpenTelemetry for Observability as an end user and do not provide any
-kind of services around OpenTelemetry, see [Adopters](/ecosystem/adopters).
+If you adopt OpenTelemetry for Observability as an end user and do not provide
+any kind of services around OpenTelemetry, see [Adopters](/ecosystem/adopters).
 
-If you provide a solution that consumes OpenTelemetry to offer
-Observability to end users, see [Vendors](/ecosystem/vendors).
+If you provide a solution that consumes OpenTelemetry to offer Observability to
+end users, see [Vendors](/ecosystem/vendors).

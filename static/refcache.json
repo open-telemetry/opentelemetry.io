@@ -1227,6 +1227,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-28T13:36:40.606057-04:00"
   },
+  "https://docs.splunk.com/Observability/gdi/opentelemetry/opentelemetry.html": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-26T16:17:33.996008+02:00"
+  },
   "https://docs.teletrace.io/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T09:15:08.305928-04:00"
