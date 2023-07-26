@@ -1,7 +1,7 @@
 ---
 title: Trace-based Testing the OpenTelemetry Demo
 linkTitle: Testing the OTel Demo
-date: 2023-07-18
+date: 2023-07-27
 author: '[Daniel Dias](https://github.com/danielbdias) (Tracetest)'
 body_class: otel-with-contributions-from
 spelling: cSpell:ignore apiserver choren tracetest kube kubelet containerd
