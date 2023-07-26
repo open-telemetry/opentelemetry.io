@@ -11,11 +11,11 @@ receivers and processors to facilitate monitoring Kubernetes. This section
 covers the components that are most important for collecting Kubernetes data and
 enhancing it.
 
-Important Components:
+Components covered in this page:
 
-- [Kubernetes Attributes Processor](#kubernetes-attributes-processor) - adds
+- [Kubernetes Attributes Processor](#kubernetes-attributes-processor): adds
   Kubernetes metadata to incoming telemetry.
-- [Filelog Receiver](#filelog-receiver) - collects Kubernetes logs and
+- [Filelog Receiver](#filelog-receiver): collects Kubernetes logs and
   application logs written to stdout/stderr.
 
 For application traces, metrics, or logs, we recommend the
@@ -53,12 +53,12 @@ to get started.
 
 The following attributes are added by default:
 
-- k8s.namespace.name
-- k8s.pod.name
-- k8s.pod.uid
-- k8s.pod.start_time
-- k8s.deployment.name
-- k8s.node.name
+- `k8s.namespace.name`
+- `k8s.pod.name`
+- `k8s.pod.uid`
+- `k8s.pod.start_time`
+- `k8s.deployment.name`
+- `k8s.node.name`
 
 The Kubernetes Attributes Processor can also set custom resource attributes for
 traces, metrics, and logs using the Kubernetes labels and Kubernetes annotations
@@ -68,7 +68,7 @@ you've added to your pods and namespaces.
 k8sattributes:
   auth_type: 'serviceAccount'
   extract:
-    metadata: # metadata to extra from the pod
+    metadata: # extracted from the pod
       - k8s.namespace.name
       - k8s.pod.name
       - k8s.pod.start_time
@@ -76,7 +76,8 @@ k8sattributes:
       - k8s.deployment.name
       - k8s.node.name
     annotations:
-      - tag_name: a1 # extracts the value of a pod annotation with key `annotation-one` and inserts it as a resource attribute with key `a1`
+      # Extracts the value of a pod annotation with key `annotation-one` and inserts it as a resource attribute with key `a1`
+      - tag_name: a1 
         key: annotation-one
         from: pod
       - tag_name: a2 # extracts the value of a namespaces annotation with key `annotation-two` with regexp and inserts it as a resource  with key `a2`
@@ -91,7 +92,7 @@ k8sattributes:
         key: label2
         regex: field=(?P<value>.+)
         from: pod
-  pod_association: # how to associate the data to a pod (order matters)
+  pod_association: # How to associate the data to a pod (order matters)
     - sources: # First try to use the value of the resource attribute k8s.pod.ip
         - from: resource_attribute
           name: k8s.pod.ip
