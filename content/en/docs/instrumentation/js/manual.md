@@ -272,11 +272,10 @@ instrumentation, you need to configure an appropriate exporter to
 [export the app's telemetry data](/docs/instrumentation/js/exporters/) to one or
 more telemetry backends.
 
-The example also sets up SDK default attributes, which are necessary, and
-beneficial to provide:
-
-- `service.name` (required): logical name of the service
-- `service.version` (optional): version of the service API or implementation.
+The example also sets up the mandatory SDK default attribute `service.name`,
+which holds the logical name of the service, and the optional (but highly
+encouraged!) attribute `service.version`, which holds the version of the service
+API or implementation.
 
 Alternative methods exist for setting up resource attributes. For more
 information, see [Resources](/docs/instrumentation/js/resources/).
@@ -308,8 +307,8 @@ information, see [Libraries](/docs/instrumentation/js/libraries/).
 
 ### Initialize Tracing
 
-{{% alert title="Note" color="info" %}} If you’re instrumenting a library, **skip this step**.
-{{% /alert %}}
+{{% alert title="Note" color="info" %}} If you’re instrumenting a library,
+**skip this step**. {{% /alert %}}
 
 To enable [tracing](/docs/concepts/signals/traces/) in your app, you'll need to
 have an initialized
@@ -602,8 +601,8 @@ module.exports = { rollTheDice }
 Now that you have [tracers](/docs/concepts/signals/traces/#tracer) initialized,
 you can create [spans](/docs/concepts/signals/traces/#spans).
 
-The API of OpenTelemetry JavaScript exposes two methods that allow you to
-create spans:
+The API of OpenTelemetry JavaScript exposes two methods that allow you to create
+spans:
 
 - [`tracer.startSpan`](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api.Tracer.html#startSpan):
   Starts a new span without setting it on context.
