@@ -325,24 +325,24 @@ spec:
 | Deployment Pattern   | Usable                                                      |
 | -------------------- | ----------------------------------------------------------- |
 | DaemonSet (Agent)    | Yes, but will result in duplicate data                      |
-| Deployment (Gateway) | Yes, but more than 1 replicas will result in duplicate data |
+| Deployment (Gateway) | Yes, but more than 1 replicas results in duplicate data |
 | Sidecar              | No                                                          |
 
 The Kubernetes Cluster Receiver collects metrics and entity events about the
 cluster as a whole using the Kubernetes API server. Use this receiver to answer
 questions about pod phases, node conditions, and other cluster-wide questions.
-Since the receiver is gathering telemetry for the cluster as a whole, only one
+Since the receiver gathers telemetry for the cluster as a whole, only one
 instance of the receiver is needed across the cluster in order to collect all
 the data.
 
 There are different methods for authentication, but typically a service account
-is used. The service account will also need proper permissions to pull data from
+is used. The service account also needs proper permissions to pull data from
 the Kubernetes API server (see below). If you're using the
 [OpenTelemetry Collector Helm chart](../../helm/collector/) you can use the
 [`clusterMetrics` preset](../../helm/collector/#cluster-metrics-preset) to get
 started.
 
-For node conditions, the receiver will only collect `Ready` by default, but can
+For node conditions, the receiver onlys collect `Ready` by default, but it can
 be configured to collect more. The receiver can also be configured to report a
 set of allocatable resources, such as `cpu` and `memory`:
 
