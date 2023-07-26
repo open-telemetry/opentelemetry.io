@@ -3,8 +3,8 @@ title: Important Components for Kubernetes
 linkTitle: Components
 spelling:
   cSpell:ignore filelog crio containerd logtag gotime iostream varlogpods
-  cSpell:ignore varlibdockercontainers UIDs k8sattributes replicasets kubeletstats
-  cSpell:ignore kubelet
+  cSpell:ignore varlibdockercontainers UIDs k8sattributes replicasets
+  cSpell:ignore kubeletstats kubelet
 ---
 
 The [OpenTelemetry Collector](/docs/collector/) supports many different
