@@ -1,4 +1,4 @@
-{{ $data := $.Site.Data.instrumentation.languages }}
+{{ $data := $.Site.Data.instrumentation }}
 
 Language | Logs |
 | --- | --- |
