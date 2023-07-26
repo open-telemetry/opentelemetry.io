@@ -6,10 +6,10 @@ description: How to instrument libraries an app depends on
 spelling: cSpell:ignore autoinstrumentation metapackage metapackages
 ---
 
-When you develop an app, you make use of 3rd party libraries and frameworks, to
+When you develop an app, you make use of third-party libraries and frameworks to
 accelerate your work and to not reinvent the wheel. If you now instrument your
 app with OpenTelemetry, you don't want to spend additional time on manually
-adding traces, logs and metrics to those libraries and frameworks. Gladly, you
+adding traces, logs and metrics to those libraries and frameworks. Fortunately, you
 don't have to reinvent the wheel for those either: libraries might come with
 OpenTelemetry support natively or you can use an
 [Instrumentation Library](/docs/concepts/instrumentation/libraries/) in order to
@@ -85,11 +85,11 @@ npm install --save @opentelemetry/auto-instrumentations-web
 <!-- prettier-ignore-end -->
 
 Note, that using those metapackages increases your dependency graph size. Use
-individual instrumentation packages, if you know exactly which ones you need.
+individual instrumentation packages if you know exactly which ones you need.
 
 ### Registration
 
-After installing the instrumentation libraries you need, you can register them
+After installing the instrumentation libraries you need, register them
 with the OpenTelemetry SDK for Node.js. If you followed the
 [Getting Started](/docs/instrumentation/js/getting-started/nodejs/) you already
 use the metapackages. If you followed the instructions
@@ -186,7 +186,7 @@ with a request hook:
 {{< tabpane langEqualsHeader=true >}}
 
 {{< tab TypeScript >}}
-const { SemanticResourceAttributes } = require("@opentelemetry/semantic-conventions");
+import { SemanticResourceAttributes } from "@opentelemetry/semantic-conventions";
 import { ExpressInstrumentation, ExpressLayerType } from "@opentelemetry/instrumentation-express"
 
 const expressInstrumentation = new ExpressInstrumentation({
