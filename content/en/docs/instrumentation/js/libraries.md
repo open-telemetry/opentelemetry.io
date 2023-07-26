@@ -9,8 +9,8 @@ spelling: cSpell:ignore autoinstrumentation metapackage metapackages
 When you develop an app, you make use of third-party libraries and frameworks to
 accelerate your work and to not reinvent the wheel. If you now instrument your
 app with OpenTelemetry, you don't want to spend additional time on manually
-adding traces, logs and metrics to those libraries and frameworks. Fortunately, you
-don't have to reinvent the wheel for those either: libraries might come with
+adding traces, logs and metrics to those libraries and frameworks. Fortunately,
+you don't have to reinvent the wheel for those either: libraries might come with
 OpenTelemetry support natively or you can use an
 [Instrumentation Library](/docs/concepts/instrumentation/libraries/) in order to
 generate telemetry data for a library or framework.
@@ -89,8 +89,8 @@ individual instrumentation packages if you know exactly which ones you need.
 
 ### Registration
 
-After installing the instrumentation libraries you need, register them
-with the OpenTelemetry SDK for Node.js. If you followed the
+After installing the instrumentation libraries you need, register them with the
+OpenTelemetry SDK for Node.js. If you followed the
 [Getting Started](/docs/instrumentation/js/getting-started/nodejs/) you already
 use the metapackages. If you followed the instructions
 [to initialize the SDK for manual instrumentation](/docs/instrumentation/js/manual/#initialize-tracing),
@@ -106,6 +106,7 @@ import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentation
 
 const sdk = new NodeSDK({
   ...
+  // This registers all instrumentation packages
   instrumentations: [getNodeAutoInstrumentations()]
 });
 
@@ -120,11 +121,7 @@ const { getNodeAutoInstrumentations } = require('@opentelemetry/auto-instrumenta
 const sdk = new NodeSDK({
   ...
   // This registers all instrumentation packages
-  instrumentations: [
-    // Express instrumentation expects HTTP layer to be instrumented
-    new HttpInstrumentation(),
-    new ExpressInstrumentation(),
-  ]
+  instrumentations: [getNodeAutoInstrumentations()]
 });
 {{< /tab >}}
 
@@ -164,8 +161,11 @@ const { ExpressInstrumentation } = require("@opentelemetry/instrumentation-expre
 
 const sdk = new NodeSDK({
   ...
-  // This registers all instrumentation packages
-  instrumentations: [getNodeAutoInstrumentations()]
+  instrumentations: [
+    // Express instrumentation expects HTTP layer to be instrumented
+    new HttpInstrumentation(),
+    new ExpressInstrumentation(),
+  ]
 });
 {{< /tab >}}
 
