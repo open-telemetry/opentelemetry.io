@@ -65,6 +65,6 @@ generate/configure the required TLS certificate.
   `.Values.admissionWebhooks.create` and setting env var to
   `ENABLE_WEBHOOKS: "false"`
 
-All the configuration options (with comments) available in the chart can be view
-in its
+All the configuration options (with comments) available in the chart can be
+viewed in its
 [values.yaml file](https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-operator/values.yaml).

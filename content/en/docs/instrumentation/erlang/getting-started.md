@@ -55,11 +55,11 @@ We'll need a few other dependencies that Phoenix doesn't come with.
 # mix.exs
 def deps do
   [
-    {:opentelemetry, "~> 1.3"},
-    {:opentelemetry_api, "~> 1.2"},
-    {:opentelemetry_exporter, "~> 1.4"},
-    {:opentelemetry_phoenix, "~> 1.1"},
-    {:opentelemetry_cowboy, "~> 0.2"}
+    {:opentelemetry, "~> {{% param versions.otelSdk %}}"},
+    {:opentelemetry_api, "~> {{% param versions.otelApi %}}"},
+    {:opentelemetry_exporter, "~> {{% param versions.otelExporter %}}"},
+    {:opentelemetry_phoenix, "~> {{% param versions.otelPhoenix %}}"},
+    {:opentelemetry_cowboy, "~> {{% param versions.otelCowboy %}}"},
   ]
 end
 ```
@@ -328,15 +328,15 @@ run as a Release and export spans from.
 {{< tabpane langEqualsHeader=true >}}
 
 {{< tab Erlang >}}
-{deps, [{opentelemetry_api, "~> 1.2"},
-        {opentelemetry, "~> 1.3"}]}.
+{deps, [{opentelemetry_api, "~> {{% param versions.otelApi %}}"},
+        {opentelemetry, "~> {{% param versions.otelSdk %}}"}]}.
 {{< /tab >}}
 
 {{< tab Elixir >}}
 def deps do
   [
-    {:opentelemetry_api, "~> 1.2"},
-    {:opentelemetry, "~> 1.3"}
+    {:opentelemetry_api, "~> {{% param versions.otelApi %}}"},
+    {:opentelemetry, "~> {{% param versions.otelSdk %}}"}
   ]
 end
 {{< /tab >}}
