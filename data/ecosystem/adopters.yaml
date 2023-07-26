@@ -3,62 +3,62 @@
   url: https://www.appdirect.com/
   components: [Collector]
   reference: ''
-  contact: ''
+  contact: 'https://github.com/flands'
 - name: Care.com
   url: https://www.care.com
   components: [Collector, Go, Java, Node.JS, .NET]
   reference: ''
-  contact: ''
+  contact: 'https://github.com/seanschade'
 - name: Cloud Scale
   url: https://www.cloudscaleinc.com
   components: [Collector, Python]
   reference: ''
-  contact: ''
+  contact: 'https://github.com/nandita-cloudscaleinc'
 - name: EcoBee
   url: https://www.ecobee.com/
   components: [Collector, Java]
   reference: https://www.honeycomb.io/blog/bees-working-together-how-ecobees-engineers-adopted-honeycomb-for-visibility-into-system-optimization-and-customer-experience
   referenceTitle: blog post
-  contact: ''
+  contact: 'https://github.com/lizthegrey'
 - name: Farfetch
   url: https://www.farfetch.com/
   components: [Collector, Java, .NET, Node.JS, Python, Operator]
   reference: /blog/2023/end-user-q-and-a-03/
   referenceTitle: blog post
-  contact: ''
+  contact: 'https://github.com/avillela'
 - name: OrderMyGear
   url: https://www.ordermygear.com/
   components: []
   reference: ''
-  contact: ''
+  contact: 'https://github.com/MDrollette'
 - name: PITS Globale Datenrettungsdienste
   url: https://www.pitsdatenrettung.de/
   components: [Python]
   reference: ''
-  contact: ''
+  contact: 'https://github.com/arnoldberlin'
 - name: Shopify
   url: https://www.shopify.com/
   components: [Collector, Go, Ruby]
   reference: ''
-  contact: ''
+  contact: 'https://github.com/sveiss'
 - name: Transit
   url: https://transitapp.com/
   components: []
   reference: ''
-  contact: ''
+  contact: 'https://github.com/naseemkullah'
 - name: Uplight
   url: https://uplight.com/
   components: [Collector, Ruby, Java, Python, .NET]
   reference: /blog/2023/end-user-q-and-a-02/
   referenceTitle: blog post
-  contact: ''
+  contact: 'https://github.com/avillela'
 - name: Wandera
   url: https://www.wandera.com/
   components: [Collector]
   reference: ''
-  contact: ''
+  contact: 'https://github.com/dkatona'
 - name: Zocdoc
   url: https://www.zocdoc.com/
   components: []
   reference: ''
-  contact: ''
+  contact: 'https://github.com/chris-smith-zocdoc'
