@@ -38,8 +38,8 @@ logs as resource attributes.
 for a collector running in Kubernetes. Any collector receiving application data
 should use it.** Because it adds Kubernetes context to your telemetry, the
 Kubernetes Attributes Processor lets you correlate your application's traces,
-metrics, and logs signals with your Kubernetes telemetry, such as pod metrics and
-traces.
+metrics, and logs signals with your Kubernetes telemetry, such as pod metrics
+and traces.
 
 The Kubernetes Attributes Processor uses the Kubernetes API to discover all pods
 running in a cluster and keeps a record of their IP addresses, pod UIDs, and
