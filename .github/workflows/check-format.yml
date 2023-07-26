@@ -20,7 +20,7 @@ jobs:
       - name: Create NPM cache-hash input file
         run: |
           mkdir -p tmp
-          jq '{devDependencies, dependencies, engines}' package.json > tmp/package-ci.json
+          jq '{devDependencies, dependencies, engines, gitHubActionCacheKey}' package.json > tmp/package-ci.json
 
       - uses: actions/setup-node@v3
         with:
