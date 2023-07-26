@@ -36,7 +36,7 @@ Go to the documentation of that library to learn more.
 
 As of today, we don't know about any JavaScript library that has OpenTelemetry
 natively integrated. If you know about such a library,
-[please let us know](https://github.com/open-telemetry/opentelemetry.io/issues/new).
+[let us know](https://github.com/open-telemetry/opentelemetry.io/issues/new).
 
 {{% /alert %}}
 
