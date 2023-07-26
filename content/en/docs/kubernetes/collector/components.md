@@ -3,7 +3,7 @@ title: Important Components for Kubernetes
 linkTitle: Components
 spelling:
   cSpell:ignore filelog crio containerd logtag gotime iostream varlogpods
-  cSpell:ignore varlibdockercontainers UIDs k8sattributes replicasets
+  cSpell:ignore varlibdockercontainers k8sattributes replicasets
   cSpell:ignore kubeletstats kubelet cSpell:ignore replicationcontrollers
   resourcequotas horizontalpodautoscalers cSpell:ignore statefulsets
 ---
