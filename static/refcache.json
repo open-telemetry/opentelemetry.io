@@ -3111,6 +3111,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T16:08:23.852746-04:00"
   },
+  "https://go.dev/ref/mod#go-mod-file-replace": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-26T16:44:54.45764-04:00"
+  },
   "https://go.opentelemetry.io/contrib/instrumentation/github.com/aws/aws-lambda-go/otellambda": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T16:04:04.854224-04:00"
@@ -3699,6 +3703,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-30T09:40:17.386682-04:00"
   },
+  "https://observiq.com/blog/what-are-connectors-in-opentelemetry/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-26T16:44:43.994677-04:00"
+  },
   "https://oncallmemaybe.com": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:51:38.930796-04:00"
@@ -3878,6 +3886,10 @@
   "https://pip.pypa.io/en/stable/reference/pip_install/#editable-installs": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:45:36.801594-04:00"
+  },
+  "https://pkg.go.dev/github.com/mitchellh/mapstructure": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-26T16:44:49.203638-04:00"
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/k8sattributesprocessor": {
     "StatusCode": 200,
