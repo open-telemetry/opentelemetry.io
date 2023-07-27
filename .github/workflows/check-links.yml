@@ -1,4 +1,4 @@
-name: Check links and refcache
+name: Links
 
 on:
   pull_request:
