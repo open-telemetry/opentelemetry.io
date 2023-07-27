@@ -4,9 +4,8 @@ linkTitle: Components
 spelling:
   cSpell:ignore filelog crio containerd logtag gotime iostream varlogpods
   cSpell:ignore varlibdockercontainers UIDs k8sattributes replicasets
-  cSpell:ignore kubeletstats kubelet
-  cSpell:ignore replicationcontrollers resourcequotas horizontalpodautoscalers
-  cSpell:ignore statefulsets
+  cSpell:ignore kubeletstats kubelet cSpell:ignore replicationcontrollers
+  resourcequotas horizontalpodautoscalers cSpell:ignore statefulsets
 ---
 
 The [OpenTelemetry Collector](/docs/collector/) supports many different
