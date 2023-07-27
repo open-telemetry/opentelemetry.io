@@ -4,7 +4,7 @@ description: >-
   <img width="35" class="img-initial" src="/img/logos/32x32/PHP.svg" alt="PHP">
   A language-specific implementation of OpenTelemetry in PHP.
 weight: 21
-spelling: cSpell:ignore packagist mbstring symfony zend opcache autoload
+cSpell:ignore: autoload mbstring opcache packagist symfony zend
 ---
 
 {{% docs/instrumentation/index-intro php /%}}

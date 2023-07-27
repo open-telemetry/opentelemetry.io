@@ -2,7 +2,7 @@
 title: Kubernetes deployment
 linkTitle: Kubernetes
 aliases: [/docs/demo/kubernetes_deployment]
-spelling: cSpell:ignore loadgen otlphttp
+cSpell:ignore: loadgen otlphttp
 ---
 
 We provide a

@@ -2,7 +2,7 @@
 title: Adopters
 description: Organizations that use OpenTelemetry
 # prettier-ignore
-spelling: cSpell:ignore Dapr Datenrettungsdienste Globale Logicmonitor Logz Wandera Zocdoc Farfetch Uplight
+cSpell:ignore: Dapr Datenrettungsdienste Farfetch Globale Logicmonitor Logz Uplight Wandera Zocdoc
 # All spelling entries must be on a single line
 ---
 

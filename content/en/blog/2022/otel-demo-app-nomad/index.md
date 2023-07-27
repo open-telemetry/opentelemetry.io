@@ -4,9 +4,8 @@ linkTitle: OTel Demo App on Nomad
 date: 2022-12-12
 author: >-
   [Adriana Villela](https://github.com/avillela) (Lightstep)
-spelling: cSpell:ignore Villela hashi qube Daniela servian hashiqube macbook
-spelling: cSpell:ignore jobspec ffspostgres loadgenerator mozy lookin
-spelling: cSpell:ignore entrypoints jobspecs shoutout Luiz Aoqui Riaan
+# prettier-ignore
+cSpell:ignore: Aoqui Daniela entrypoints ffspostgres hashi hashiqube jobspec jobspecs loadgenerator lookin Luiz macbook mozy qube Riaan servian shoutout Villela
 ---
 
 Y’all… I’m so excited, because I finally got to work on an item on my tech

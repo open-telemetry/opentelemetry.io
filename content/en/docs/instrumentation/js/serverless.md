@@ -1,7 +1,7 @@
 ---
 title: Serverless
 weight: 100
-spelling: cSpell:ignore otelwrapper
+cSpell:ignore: otelwrapper
 ---
 
 This guide shows how to get started with tracing serverless functions using

@@ -46,6 +46,7 @@
     "cp:spec": "./scripts/content-modules/cp-pages.sh",
     "diff:check": "npm run _diff:check || (echo; echo 'WARNING: the files above have not been committed'; echo)",
     "diff:fail": "npm run _diff:check || (echo; echo 'ERROR: the files above have changed. Locally rerun `npm run test` and commit changes'; echo; exit 1)",
+    "fix:dict": "find ./content -name \"*.md\" -print0 | xargs -0 ./scripts/normalize-cspell-front-matter.pl",
     "fix:filenames": "npm run _rename-to-kebab-case",
     "format": "npm run _check:format -- --write",
     "get:submodule": "npm run _get:${GET:-submodule}",

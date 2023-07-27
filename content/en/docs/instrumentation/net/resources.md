@@ -1,7 +1,7 @@
 ---
 title: Resources
 weight: 70
-spelling: cSpell:ignore uuidgen myhost pcarter
+cSpell:ignore: myhost pcarter uuidgen
 ---
 
 A [resource][] represents the entity producing telemetry as resource attributes.

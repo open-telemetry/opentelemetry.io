@@ -4,7 +4,7 @@ linkTitle: End-User Discussions Mar 2023
 date: 2023-03-30
 author: '[Reese Lee](https://github.com/reese-lee) (New Relic)'
 body_class: otel-with-contributions-from
-spelling: cSpell:ignore distro firehosing distros telecommand
+cSpell:ignore: distro distros firehosing telecommand
 ---
 
 With contributions from [Henrik Rexed](https://github.com/henrikrexed)

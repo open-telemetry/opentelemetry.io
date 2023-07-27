@@ -3,7 +3,7 @@ title: OpenTelemetry in Focus, May 2023
 linkTitle: OTel in Focus 2023/05
 date: 2023-05-31
 author: '[Austin Parker](https://github.com/austinlparker)'
-spelling: cSpell:ignore vertx Dyrmishi Farfetch
+cSpell:ignore: Dyrmishi Farfetch vertx
 ---
 
 Welcome back to **OpenTelemetry in Focus** for May, 2023! The sun is shining,
