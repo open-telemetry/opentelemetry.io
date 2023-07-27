@@ -38,7 +38,7 @@ servicegraph processor. The spanmetrics processor generates aggregate requests,
 error and duration metrics from span data. T​he servicegraph processor analyzes
 trace data and generates metrics that describe the relationship between the
 services. Both these processors ingest trace data and convert them to metrics
-data. Since pipelines in the OpenTelemetry collector are for only one type of
+data. Since pipelines in the OpenTelemetry Collector are for only one type of
 data, it is necessary to convert the trace data from the processor in the traces
 pipeline and send it to the metrics pipeline. Historically, some processors
 transmitted data by making use of a work-around that follows a bad practice
@@ -77,7 +77,7 @@ count of these occurrences are stored in the connector.
 
 ### Setting up Collector Config:
 
-Setup the configuration you will use for the OpenTelemetry collector in the
+Setup the configuration you will use for the OpenTelemetry Collector in the
 `config.yaml` file. This file defines how your data will be routed, processed
 and exported. The configurations defined in the file, detail how you want your
 data pipeline to behave. You can define the components and how the data moves
@@ -86,7 +86,7 @@ how to configure a collector at
 [Collector Configurations](/docs/collector/configuration).
 
 Use the following code for the example connector we will build. The code is an
-example of a basic valid OpenTelemetry collector configuration file.
+example of a basic valid OpenTelemetry Collector configuration file.
 
 ```yaml
 receivers:
@@ -124,7 +124,9 @@ connector we will create in this tutorial.
     a folder called `exampleconnector`.
 2.  Navigate to the folder and run
 
-        sh go mod init github.com/gord02/exampleconnector
+    ```sh
+    go mod init github.com/gord02/exampleconnector
+    ```
 
 3.  Run `go mod tidy`
 
@@ -235,7 +237,7 @@ function. The `connector.NewFactory` function instantiates and returns a
     defines several of these functions for traces to metrics, logs to metrics
     and metrics to metrics.
 
-    #### Parameters for the `createTracesToMetricsConnector`:
+    Parameters for the `createTracesToMetricsConnector`: {.h4}
 
     - `context.Context`: the reference to the collector’s `context.Context` so
       your trace receiver can properly manage its execution context.
@@ -478,7 +480,7 @@ func (c *connectorImp) ConsumeTraces(ctx context.Context, td ptrace.Traces) erro
 You can use the
 [OpenTelemetry Collector Builder](/docs/collector/custom-collector/) to build
 your code and run it. The collector builder is a tool that enables you to build
-your own OpenTelemetry collector binary. You can add or remove components
+your own OpenTelemetry Collector binary. You can add or remove components
 (receivers, processors, connectors and exporters) to suit your needs.
 
 1.  Follow the OpenTelemetry Collector Builder
@@ -493,37 +495,39 @@ your own OpenTelemetry collector binary. You can add or remove components
     Here is an example of the configuration file you can use featuring your new
     connector component:
 
-        dist:
-            name: otelcol-dev-bin
-            description: Basic OpenTelemetry collector distribution for Developers
-            output_path: ./otelcol-dev
-            otelcol_version: 0.81.0
+    ```yaml
+    dist:
+        name: otelcol-dev-bin
+        description: Basic OpenTelemetry collector distribution for Developers
+        output_path: ./otelcol-dev
+        otelcol_version: 0.81.0
 
 
-        exporters:
-            - gomod:
-            go.opentelemetry.io/collector/exporter/loggingexporter v0.81.0
+    exporters:
+        - gomod:
+        go.opentelemetry.io/collector/exporter/loggingexporter v0.81.0
 
 
-        processors:
-            - gomod:
-            go.opentelemetry.io/collector/processor/batchprocessor v0.81.0
+    processors:
+        - gomod:
+        go.opentelemetry.io/collector/processor/batchprocessor v0.81.0
 
 
-        receivers:
-            - gomod:
-        go.opentelemetry.io/collector/receiver/otlpreceiver v0.81.0
+    receivers:
+        - gomod:
+    go.opentelemetry.io/collector/receiver/otlpreceiver v0.81.0
 
 
-        connectors:
-            - gomod: github.com/gord02/exampleconnector v0.81.0
+    connectors:
+        - gomod: github.com/gord02/exampleconnector v0.81.0
 
 
-        replaces:
-        # a list of "replaces" directives that will be part of the resulting go.mod
+    replaces:
+    # a list of "replaces" directives that will be part of the resulting go.mod
 
-        # This replace statement is necessary since the newly added component is not found/published to GitHub yet. Replace references to GitHub path with the local path
-        - github.com/gord02/exampleconnector => [PATH-TO-COMPONENT-CODE]/exampleconnector
+    # This replace statement is necessary since the newly added component is not found/published to GitHub yet. Replace references to GitHub path with the local path
+    - github.com/gord02/exampleconnector => [PATH-TO-COMPONENT-CODE]/exampleconnector
+    ```
 
     It is necessary to include a replace statement. The replace section since
     your newly created component is not published to GitHub yet. The references
@@ -539,7 +543,9 @@ your own OpenTelemetry collector binary. You can add or remove components
     included connector component which will then build the custom collector
     binary:
 
+    ```sh
         builder --config [PATH-TO-CONFIG]/builder-config.yaml
+    ```
 
     This will generate the collector binary in the specified output path
     directory that was in your config file.
