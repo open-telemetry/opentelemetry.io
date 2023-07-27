@@ -46,14 +46,8 @@ where a processor directly exports data after processing. The connector
 component solves the need for this work-around and the processors that used the
 work around have been deprecated.
 
-The connector is beneficial at merging, routing and replicating data streams.
-Along with sequential pipelining, which is to connect pipelines together, the
-connector component is capable of conditional data flow and generated data
-streams. Conditional data flow means sending data to the highest priority
-pipeline and has error detection to route to alternative pipeline if need be.
-Generated data streams means that the component generates and emits its own data
-based on the received data. Additional details about the connector's full
-capabilities can be found at the following links:
+Additional details about the connector's full capabilities can be found at the
+following links:
 [what are connectors in OpenTelemetry](https://observiq.com/blog/what-are-connectors-in-opentelemetry/),
 [OpenTelemetry Connector Configurations](/docs/collector/configuration/#connectors)
 
