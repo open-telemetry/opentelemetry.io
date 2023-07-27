@@ -2,19 +2,19 @@
 title: Vendors
 description: Vendors who natively support OpenTelemetry
 aliases: [/vendors]
-# Note: the keywords after 'cSpell:ignore' must be on the same line, no wrapping, hence the Prettier ignore directive
 ---
 
-A non-exhaustive list of organizations, offering solutions that consume
-OpenTelemetry natively via via [OTLP](/docs/specs/otlp/), such as observability
+A non-exhaustive list of organizations offering solutions that consume
+OpenTelemetry natively via [OTLP](/docs/specs/otlp/), such as observability
 backends and observability pipelines.
 
-These solutions may be open source, commercial, or both. Some organizations
-provide a [distribution](/docs/concepts/distributions/) (of customized
-OpenTelemetry components), that provides additional capabilities or for improved
-ease of use.
+Some organizations provide a [distribution](/docs/concepts/distributions/) (of
+customized OpenTelemetry components), that provides additional capabilities or
+for improved ease of use.
 
 {{% ecosystem/vendor-table %}}
+
+## Add your organization
 
 To have your organization listed, submit a PR with an entry added to the
 [vendors list](https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/vendors.yaml).
