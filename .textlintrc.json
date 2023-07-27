@@ -106,7 +106,8 @@
         ["repo\\b", "repository"],
         ["repos", "repositories"],
         ["screen[- ]shot(s)?", "screenshot$1"],
-        ["time[- ]stamp(s)?", "timestamp$1"]
+        ["time[- ]stamp(s)?", "timestamp$1"],
+        ["uid['’]?s", "UIDs"]
       ]
     }
   }
