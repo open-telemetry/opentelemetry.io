@@ -62,3 +62,33 @@
   components: []
   reference: ''
   contact: ''
+- name: Heroku
+  url: https://heroku.com
+  components: [Ruby]
+  reference: ''
+  contact: ''
+- name: GitHub
+  url: https://github.com
+  components: [Ruby]
+  reference: ''
+  contact: ''
+- name: Fulcrum
+  url: https://www.fulcrumapp.com/
+  components: [Ruby]
+  reference: ''
+  contact: ''
+- name: Puppet
+  url: https://puppet.com/
+  components: [Ruby]
+  reference: ''
+  contact: ''
+- name: TableCheck
+  url: https://www.tablecheck.com/
+  components: [Ruby]
+  reference: ''
+  contact: ''
+- name: Dropbox DocSend
+  url: https://www.docsend.com/
+  components: [Ruby]
+  reference: ''
+  contact: ''
