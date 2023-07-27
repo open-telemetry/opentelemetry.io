@@ -2,7 +2,7 @@
 title: Docker deployment
 linkTitle: Docker
 aliases: [/docs/demo/docker_deployment]
-spelling: cSpell:ignore otelcollector otlphttp
+cSpell:ignore: otelcollector otlphttp
 ---
 
 ## Prerequisites

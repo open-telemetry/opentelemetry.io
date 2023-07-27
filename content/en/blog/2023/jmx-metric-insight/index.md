@@ -3,7 +3,7 @@ title: Gaining JMX Metric Insights with the OpenTelemetry Java Agent
 linkTitle: JMX Metric Insight
 date: 2023-01-17
 author: '[Samudraneel Dasgupta](https://github.com/Samudraneel24) (Cisco)'
-spelling: cSpell:ignore Samudraneel Dasgupta -Dotel -Dapplication Singlestat
+cSpell:ignore: -Dapplication -Dotel Dasgupta Samudraneel Singlestat
 ---
 
 [JMX](https://www.oracle.com/technical-resources/articles/javase/jmx.html) (Java

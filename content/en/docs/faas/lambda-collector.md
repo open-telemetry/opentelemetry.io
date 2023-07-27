@@ -3,7 +3,7 @@ title: Lambda Collector Configuration
 linkTitle: Lambda Collector Config
 weight: 11
 description: Add and configure the Collector Lambda layer to your Lambda
-spelling: cSpell:ignore ADOT regionalized confmap loglevel awsxray configmap
+cSpell:ignore: ADOT awsxray configmap confmap loglevel regionalized
 ---
 
 The OpenTelemetry community offers the Collector in a separate Lambda layer from

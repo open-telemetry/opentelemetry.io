@@ -1,6 +1,6 @@
 ---
 title: Frontend
-spelling: cSpell:ignore typeof
+cSpell:ignore: typeof
 ---
 
 The frontend is responsible to provide a UI for users, as well as an API

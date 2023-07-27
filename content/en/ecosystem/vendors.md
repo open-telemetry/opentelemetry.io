@@ -3,7 +3,6 @@ title: Vendors
 description: Vendors who natively support OpenTelemetry
 aliases: [/vendors]
 # Note: the keywords after 'cSpell:ignore' must be on the same line, no wrapping, hence the Prettier ignore directive
-# prettier-ignore
 ---
 
 A non-exhaustive list of organizations, offering solutions that consume

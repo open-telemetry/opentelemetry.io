@@ -2,8 +2,8 @@
 title: Agent Configuration
 linkTitle: Configuration
 weight: 10
-spelling: cSpell:ignore distro mkdir myapp uninstrumented virtualenv
-spelling: cSpell:ignore Starlette urllib healthcheck
+# prettier-ignore
+cSpell:ignore: distro healthcheck mkdir myapp Starlette uninstrumented urllib virtualenv
 ---
 
 The agent is highly configurable, either by:

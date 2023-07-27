@@ -4,10 +4,8 @@ linkTitle: K8s Runtime Observability
 date: 2023-06-05
 author: '[Daniel Dias](https://github.com/danielbdias) (Tracetest)'
 body_class: otel-with-contributions-from
-spelling: cSpell:ignore apiserver choren tracetest kube kubelet containerd
-spelling: cSpell:ignore Adnan Rahić Hamric kubetracing healthcheck apparmor
-spelling: cSpell:ignore snapshotter stargz keychain identitytoken runc
-spelling: cSpell:ignore tracingcluster
+# prettier-ignore
+cSpell:ignore: Adnan apiserver apparmor choren containerd Hamric healthcheck identitytoken keychain kube kubelet kubetracing Rahić runc snapshotter stargz tracetest tracingcluster
 ---
 
 With contributions from [Sebastian Choren](https://github.com/schoren),

@@ -2,8 +2,7 @@
 title: Shipping Service
 linkTitle: Shipping
 aliases: [/docs/demo/services/shippingservice]
-spelling: cSpell:ignore reqwest sdktrace tokio
-spelling: cSpell:ignore hipstershop semcov itemct shiporder
+cSpell:ignore: hipstershop itemct reqwest sdktrace semcov shiporder tokio
 ---
 
 This service is responsible for providing shipping information including pricing

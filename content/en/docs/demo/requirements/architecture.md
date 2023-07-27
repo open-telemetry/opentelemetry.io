@@ -2,8 +2,8 @@
 title: Architecture Requirements
 linkTitle: Architecture
 aliases: [/docs/demo/requirements/architecture_requirements]
-spelling: cSpell:ignore shippingservice currencyservice
-spelling: cSpell:ignore emailservice dockerstatsreceiver
+# prettier-ignore
+cSpell:ignore: currencyservice dockerstatsreceiver emailservice shippingservice
 ---
 
 ## Summary

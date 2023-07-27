@@ -4,7 +4,7 @@ linkTitle: Automatic
 aliases:
   - /docs/java/automatic_instrumentation
   - /docs/instrumentation/java/automatic_instrumentation
-spelling: cSpell:ignore javaagent myapp Dotel
+cSpell:ignore: Dotel javaagent myapp
 weight: 20
 ---
 

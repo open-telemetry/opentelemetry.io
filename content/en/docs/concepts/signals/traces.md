@@ -1,7 +1,7 @@
 ---
 title: Traces
 weight: 1
-spelling: cSpell:ignore Guten
+cSpell:ignore: Guten
 ---
 
 **Traces** give us the big picture of what happens when a request is made to an

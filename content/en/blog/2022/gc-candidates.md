@@ -4,7 +4,7 @@ linkTitle: 2022 GC Candidates
 date: 2022-10-13
 author: OpenTelemetry Governance Committee
 aliases: [/blog/2022/gc-elections-2022-list-of-candidates]
-spelling: cSpell:ignore Finnigan Reiley Marciniak Yahn Vijay
+cSpell:ignore: Finnigan Marciniak Reiley Vijay Yahn
 ---
 
 The OpenTelemetry election committee is pleased to announce the final list of

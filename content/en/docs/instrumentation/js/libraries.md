@@ -2,7 +2,7 @@
 title: Using instrumentation libraries
 linkTitle: Libraries
 weight: 40
-spelling: cSpell:ignore autoinstrumentation metapackage
+cSpell:ignore: autoinstrumentation metapackage
 ---
 
 You can use

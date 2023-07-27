@@ -2,7 +2,7 @@
 title: Payment Service
 linkTitle: Payment
 aliases: [/docs/demo/services/paymentservice]
-spelling: cSpell:ignore nanos
+cSpell:ignore: nanos
 ---
 
 This service is responsible to process credit card payments for orders. It will

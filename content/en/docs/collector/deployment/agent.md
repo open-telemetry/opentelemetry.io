@@ -3,7 +3,7 @@ title: Agent
 description:
   Why and how to send signals to collectors and from there to backends
 weight: 2
-spelling: cSpell:ignore prometheusremotewrite
+cSpell:ignore: prometheusremotewrite
 ---
 
 The agent collector deployment pattern consists of applications —

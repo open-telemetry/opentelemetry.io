@@ -2,9 +2,8 @@
 title: Distributed tracing in Knative
 linkTitle: Tracing in Knative
 date: 2022-04-12
-spelling: cSpell:ignore Cloudevents istio pavolloffay 
-spelling: cSpell:ignore spanid traceid webp apng khtml specversion
-spelling: cSpell:ignore httpbody datacontenttype knativearrivaltime
+# prettier-ignore
+cSpell:ignore: apng Cloudevents datacontenttype httpbody istio khtml knativearrivaltime pavolloffay spanid specversion traceid webp
 author: '[Pavol Loffay](https://github.com/pavolloffay)'
 ---
 
