@@ -4,8 +4,8 @@ linkTitle: Components
 spelling:
   cSpell:ignore filelog crio containerd logtag gotime iostream varlogpods
   cSpell:ignore varlibdockercontainers UIDs k8sattributes replicasets
-  cSpell:ignore replicationcontrollers resourcequotas horizontalpodautoscalers
-  cSpell:ignore statefulsets
+  cSpell:ignore kubeletstats kubelet cSpell:ignore replicationcontrollers
+  resourcequotas horizontalpodautoscalers cSpell:ignore statefulsets
 ---
 
 The [OpenTelemetry Collector](/docs/collector/) supports many different
@@ -17,6 +17,8 @@ Components covered in this page:
 
 - [Kubernetes Attributes Processor](#kubernetes-attributes-processor): adds
   Kubernetes metadata to incoming telemetry.
+- [Kubeletstats Receiver](#kubeletstats-receiver): pulls pod metrics from the
+  API server on a kubelet.
 - [Filelog Receiver](#filelog-receiver): collects Kubernetes logs and
   application logs written to stdout/stderr.
 - [Kubernetes Cluster Receiver](#kubernetes-cluster-receiver): collects
@@ -172,6 +174,81 @@ roleRef:
   kind: ClusterRole
   name: otel-collector
   apiGroup: rbac.authorization.k8s.io
+```
+
+## Kubeletstats Receiver
+
+| Deployment Pattern   | Usable                                                             |
+| -------------------- | ------------------------------------------------------------------ |
+| DaemonSet (Agent)    | Preferred                                                          |
+| Deployment (Gateway) | Yes, but will only collect metrics from the node it is deployed on |
+| Sidecar              | No                                                                 |
+
+Each Kubernetes node runs a kubelet that includes an API server. The Kubernetes
+Receiver connects to that kubelet via the API server to collect metrics about
+the node and the workloads running on the node.
+
+There are different methods for authentication, but typically a service account
+is used. The service account will also need proper permissions to pull data from
+the Kubelet (see below). If you're using the
+[OpenTelemetry Collector Helm chart](../../helm/collector/) you can use the
+[`kubeletMetrics` preset](../../helm/collector/#kubelet-metrics-preset) to get
+started.
+
+By default, metrics will be collected for pods and nodes, but you can configure
+the receiver to collect container and volume metrics as well. The receiver also
+allows configuring how often the metrics are collected:
+
+```yaml
+receivers:
+  kubeletstats:
+    collection_interval: 10s
+    auth_type: 'serviceAccount'
+    endpoint: '${env:K8S_NODE_NAME}:10250'
+    insecure_skip_verify: true
+    metric_groups:
+      - node
+      - pod
+      - container
+```
+
+For specific details about which metrics are collected, see
+[Default Metrics](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/kubeletstatsreceiver/documentation.md).
+For specific configuration details, see
+[Kubeletstats Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/kubeletstatsreceiver).
+
+Since the processor uses the Kubernetes API, it needs the correct permission to
+work correctly. For most use cases, you should give the service account running
+the Collector the following permissions via a ClusterRole.
+
+```yaml
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: otel-collector
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: otel-collector
+rules:
+  - apiGroups: ['']
+    resources: ['nodes/stats']
+    verbs: ['get', 'watch', 'list']
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: otel-collector
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: otel-collector
+subjects:
+  - kind: ServiceAccount
+    name: otel-collector
+    namespace: default
 ```
 
 ## Filelog Receiver
