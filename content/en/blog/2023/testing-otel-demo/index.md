@@ -4,9 +4,8 @@ linkTitle: Testing the OTel Demo
 date: 2023-07-27
 author: '[Daniel Dias](https://github.com/danielbdias) (Tracetest)'
 body_class: otel-with-contributions-from
-spelling: cSpell:ignore apiserver choren tracetest kube kubelet containerd
-spelling: cSpell:ignore Adnan Rahić Hamric kubetracing healthcheck apparmor
-spelling: cSpell:ignore tracetesting oteldemo nanos
+# prettier-ignore
+cSpell:ignore: Adnan apiserver apparmor choren containerd Hamric healthcheck kube kubelet kubetracing nanos oteldemo Rahić tracetest tracetesting
 ---
 
 With contributions from [Adnan Rahić](https://github.com/adnanrahic) and
