@@ -544,7 +544,7 @@ your own OpenTelemetry Collector binary. You can add or remove components
     binary:
 
     ```sh
-        builder --config [PATH-TO-CONFIG]/builder-config.yaml
+builder --config [PATH-TO-CONFIG]/builder-config.yaml
     ```
 
     This will generate the collector binary in the specified output path
