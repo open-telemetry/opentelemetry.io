@@ -126,7 +126,7 @@ params:
           CNCF works in close association with Linux Foundation. Read the
           privacy policy here
       - name: Marketing Guidelines
-        url: https://github.com/open-telemetry/community/blob/main/marketing-guidelines.md
+        url: /community/marketing-guidelines/
         icon: fas fa-bullhorn
         desc: >-
           Important information on how to represent your personal or corporate
