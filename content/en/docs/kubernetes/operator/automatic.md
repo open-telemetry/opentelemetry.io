@@ -297,12 +297,12 @@ spec:
 EOF
 ```
 
-By default, the `Instrumentation` resource that auto-instruments Python
-services uses `otlp` with the `http/protobuf` protocol (gRPC is not supported at
-this time). This means that the configured endpoint must be able to receive OTLP
-over `http/protobuf`. Therefore, the example uses `http://demo-collector:4318`,
-which will connect to the `http` port of the `otlpreceiver` of the Collector
-created in the previous step.
+By default, the `Instrumentation` resource that auto-instruments Python services
+uses `otlp` with the `http/protobuf` protocol (gRPC is not supported at this
+time). This means that the configured endpoint must be able to receive OTLP over
+`http/protobuf`. Therefore, the example uses `http://demo-collector:4318`, which
+will connect to the `http` port of the `otlpreceiver` of the Collector created
+in the previous step.
 
 > As of operator v0.67.0, the Instrumentation resource automatically sets
 > `OTEL_EXPORTER_OTLP_TRACES_PROTOCOL` and `OTEL_EXPORTER_OTLP_METRICS_PROTOCOL`
@@ -437,7 +437,7 @@ Spec:
 Events:  <none>
 ```
 
-### **2- Do the OTel Operator logs show any auto-instrumentation errors?**
+### Do the OTel Operator logs show any auto-instrumentation errors?
 
 Check the OTel Operator logs for any errors pertaining to auto-instrumentation
 by running this command:
@@ -446,7 +446,7 @@ by running this command:
 kubectl logs -l app.kubernetes.io/name=opentelemetry-operator --container manager -n opentelemetry-operator-system --follow
 ```
 
-### **3- Were the resources deployed in the right order?**
+### Were the resources deployed in the right order?
 
 Order matters! The `Instrumentation` resource needs to be deployed before before
 deploying the application, otherwise the auto-instrumentation won’t work.
@@ -519,7 +519,7 @@ Here are a few things to check for:
   auto-instrumentation annotation needs to be added to
   `spec.template.metadata.annotations`, otherwise it won’t work.
 
-### **5- Was the auto-instrumentation endpoint configured correctly?**
+### Was the auto-instrumentation endpoint configured correctly?
 
 The `spec.exporter.endpoint` attribute of the `Instrumentation` resource defines
 where to send data to. This can be an [OTel Collector](/docs/collector/), or any
