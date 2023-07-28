@@ -1,4 +1,4 @@
-name: Check linter rules
+name: Linter
 
 on:
   pull_request:

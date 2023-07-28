@@ -4,7 +4,7 @@ linkTitle: Demo
 cascade:
   repo: https://github.com/open-telemetry/opentelemetry-demo
 weight: 2
-spelling: cSpell:ignore OLJCESPC
+cSpell:ignore: OLJCESPC
 ---
 
 Welcome to the [OpenTelemetry Demo](/ecosystem/demo/) documentation, which

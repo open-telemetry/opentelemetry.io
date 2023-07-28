@@ -1,7 +1,7 @@
 ---
 title: Service Roles
 aliases: [/docs/demo/service_table]
-spelling: cSpell:ignore loadgenerator
+cSpell:ignore: loadgenerator
 ---
 
 View [Service Graph](../architecture/) to visualize request flows.

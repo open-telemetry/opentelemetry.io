@@ -1,7 +1,7 @@
 ---
 title: Resources
 weight: 70
-spelling: cSpell:ignore SIGINT WORKDIR myhost uuidgen
+cSpell:ignore: myhost SIGINT uuidgen WORKDIR
 ---
 
 A [resource][] represents the entity producing telemetry as resource attributes.

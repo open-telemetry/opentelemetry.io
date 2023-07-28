@@ -1,8 +1,8 @@
 ---
 title: Getting Started
 description: Get telemetry for your app in less than 5 minutes!
-spelling: cSpell:ignore venv distro rolldice randint diceroller
-spelling: cSpell:ignore rollspan loglevel loggingexporter
+# prettier-ignore
+cSpell:ignore: diceroller distro loggingexporter loglevel randint rolldice rollspan venv
 weight: 10
 ---
 

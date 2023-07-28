@@ -7,8 +7,7 @@ aliases:
   - /docs/instrumentation/java/manual_instrumentation
 weight: 30
 description: Manual instrumentation for OpenTelemetry Java
-spelling: cSpell:ignore logback multivalued autoconfigure classpath
-spelling: cSpell:ignore customizer loggable
+cSpell:ignore: autoconfigure classpath customizer logback loggable multivalued
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->

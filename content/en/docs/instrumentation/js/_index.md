@@ -5,7 +5,7 @@ description: >-
   alt="JavaScript"> A language-specific implementation of OpenTelemetry in
   JavaScript (for Node.js & the browser).
 aliases: [/js, /js/metrics, /js/tracing]
-spelling: cSpell:ignore Roadmap
+cSpell:ignore: Roadmap
 weight: 20
 ---
 
