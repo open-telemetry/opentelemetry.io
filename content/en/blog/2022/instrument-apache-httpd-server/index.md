@@ -3,7 +3,7 @@ title: Learn how to instrument Apache Http Server with OpenTelemetry
 linkTitle: Instrument Apache Http Server
 date: 2022-05-27
 # prettier-ignore
-cSpell:ignore: Centos centos7 Debajit debuggability libmod linux uncompress webserver
+cSpell:ignore: Centos centos7 Debajit debuggability libmod uncompress webserver
 author: '[Debajit Das](https://github.com/DebajitDas) (Cisco)'
 ---
 

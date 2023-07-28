@@ -4,7 +4,7 @@ description: >-
   <img width="35" class="img-initial" src="/img/logos/32x32/Rust.svg"
   alt="Rust"> A language-specific implementation of OpenTelemetry in Rust.
 weight: 26
-cSpell:ignore: datadog dynatrace stackdriver
+cSpell:ignore: stackdriver
 ---
 
 {{% docs/instrumentation/index-intro rust /%}}
