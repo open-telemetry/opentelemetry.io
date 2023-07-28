@@ -4,7 +4,7 @@ aliases:
   - /docs/instrumentation/js/api/tracing
   - /docs/instrumentation/js/instrumentation
 weight: 30
-cSpell:ignore: Millis
+cSpell:ignore: Millis rolldice dicelib
 description: Manual instrumentation for OpenTelemetry JavaScript
 ---
 
@@ -34,7 +34,7 @@ learn about manual instrumentation.
 You don't have to use the example app: if you want to instrument your own app or
 library, follow the instructions here to adapt the process to your own code.
 
-### Dependencies
+### Dependencies {#example-app-dependencies}
 
 Create an empty NPM `package.json` file in a new directory:
 
@@ -333,7 +333,8 @@ above, you have a `TracerProvider` setup for you already. You can continue with
 Instrumentation for the browser is experimental and this is mostly unspecified:
 this may break in the future. If you want to help changing that, you can join
 the Client Instrumentation SIG on CNCF Slack channel
-[#otel-client-side-telemetry](otel-client-side-telemetry) or by attending
+[#otel-client-side-telemetry](https://cloud-native.slack.com/archives/C0239SYARD2)
+or by attending
 [their meetings](https://docs.google.com/document/d/16Vsdh-DM72AfMg_FIt9yT9ExEWF4A_vRbQ3jRNBe09w/edit)
 
 {{% /alert %}}
@@ -1254,7 +1255,7 @@ a no-op implementation and fail to generate data. As explained next, modify the
 `instrumentation.ts` (or `instrumentation.js`) file to include all the SDK
 initialization code in Node and the browser.
 
-#### Node.js
+#### Node.js {#initialize-metrics-nodejs}
 
 If you followed the instructions to [initialize the SDK](#initialize-the-sdk)
 above, you have a `MeterProvider` setup for you already. You can continue with
