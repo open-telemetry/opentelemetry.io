@@ -2,7 +2,9 @@
 title: Important Components for Kubernetes
 linkTitle: Components
 # prettier-ignore
-cSpell:ignore: containerd crio filelog gotime horizontalpodautoscalers iostream k8sattributes kubelet kubeletstats logtag replicasets replicationcontrollers resourcequotas statefulsets varlibdockercontainers varlogpods
+spelling: 
+  cSpell:ignore containerd crio filelog gotime horizontalpodautoscalers iostream k8sattributes kubelet kubeletstats logtag replicasets replicationcontrollers resourcequotas statefulsets varlibdockercontainers varlogpods flowschemas flowcontrol apiserver prioritylevelconfigurations 
+  cSpell:ignore ingressclasses networkpolicies netpol runtimeclasses poddisruptionbudgets clusterrolebindings clusterroles rolebindings priorityclasses csidrivers csinodes csistoragecapacities storageclasses volumeattachments
 ---
 
 The [OpenTelemetry Collector](/docs/collector/) supports many different
@@ -20,6 +22,8 @@ Components covered in this page:
   application logs written to stdout/stderr.
 - [Kubernetes Cluster Receiver](#kubernetes-cluster-receiver): collects
   cluster-level metrics and entity events.
+- [Kubernetes Objects Receiver](#kubernetes-objects-receiver): collects objects,
+  such as events, from the Kubernetes API server.
 
 For application traces, metrics, or logs, we recommend the
 [OTLP receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver),
@@ -502,6 +506,141 @@ rules:
       - autoscaling
     resources:
       - horizontalpodautoscalers
+    verbs:
+      - get
+      - list
+      - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: otel-collector-opentelemetry-collector
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: otel-collector-opentelemetry-collector
+subjects:
+  - kind: ServiceAccount
+    name: otel-collector-opentelemetry-collector
+    namespace: default
+```
+
+## Kubernetes Objects Receiver
+
+| Deployment Pattern   | Usable                                                   |
+| -------------------- | -------------------------------------------------------- |
+| DaemonSet (Agent)    | Yes, but will result in duplicate data                   |
+| Deployment (Gateway) | Yes, but more than one replica results in duplicate data |
+| Sidecar              | No                                                       |
+
+The kubernetes Objects receiver collects, either by pulling or watching, objects
+from the Kubernetes API server. The most common use case for this receiver is
+watching Kubernetes events, but it can be used to collect any type of Kubernetes
+object. Since the receiver gathers telemetry for the cluster as a whole, only
+one instance of the receiver is needed across the cluster in order to collect
+all the data.
+
+Currenty only a service account can be used for authentication. The service
+account also needs proper permissions to pull data from the Kubernetes API
+server (see below). If you're using the
+[OpenTelemetry Collector Helm chart](../../helm/collector/) and you want to
+ingest events, you can use the
+[`kubernetesEvents` preset](../../helm/collector/#cluster-metrics-preset) to get
+started.
+
+For objects configuring for pulling, the receiver will use the Kubernetes API to
+periodically list all the objects in the Cluster. Each object will be converted
+to its own log. For objects configured for watching, the receiver creates a a
+stream with the Kubernetes API and which receives updates as the objects change.
+
+To see which objects are available for collection run in your cluster run
+`kubectl api-resources`:
+
+```sh
+❯ k api-resources
+NAME                              SHORTNAMES   APIVERSION                             NAMESPACED   KIND
+bindings                                       v1                                     true         Binding
+componentstatuses                 cs           v1                                     false        ComponentStatus
+configmaps                        cm           v1                                     true         ConfigMap
+endpoints                         ep           v1                                     true         Endpoints
+events                            ev           v1                                     true         Event
+limitranges                       limits       v1                                     true         LimitRange
+namespaces                        ns           v1                                     false        Namespace
+nodes                             no           v1                                     false        Node
+persistentvolumeclaims            pvc          v1                                     true         PersistentVolumeClaim
+persistentvolumes                 pv           v1                                     false        PersistentVolume
+pods                              po           v1                                     true         Pod
+podtemplates                                   v1                                     true         PodTemplate
+replicationcontrollers            rc           v1                                     true         ReplicationController
+resourcequotas                    quota        v1                                     true         ResourceQuota
+secrets                                        v1                                     true         Secret
+serviceaccounts                   sa           v1                                     true         ServiceAccount
+services                          svc          v1                                     true         Service
+mutatingwebhookconfigurations                  admissionregistration.k8s.io/v1        false        MutatingWebhookConfiguration
+validatingwebhookconfigurations                admissionregistration.k8s.io/v1        false        ValidatingWebhookConfiguration
+customresourcedefinitions         crd,crds     apiextensions.k8s.io/v1                false        CustomResourceDefinition
+apiservices                                    apiregistration.k8s.io/v1              false        APIService
+controllerrevisions                            apps/v1                                true         ControllerRevision
+daemonsets                        ds           apps/v1                                true         DaemonSet
+deployments                       deploy       apps/v1                                true         Deployment
+replicasets                       rs           apps/v1                                true         ReplicaSet
+statefulsets                      sts          apps/v1                                true         StatefulSet
+tokenreviews                                   authentication.k8s.io/v1               false        TokenReview
+localsubjectaccessreviews                      authorization.k8s.io/v1                true         LocalSubjectAccessReview
+selfsubjectaccessreviews                       authorization.k8s.io/v1                false        SelfSubjectAccessReview
+selfsubjectrulesreviews                        authorization.k8s.io/v1                false        SelfSubjectRulesReview
+subjectaccessreviews                           authorization.k8s.io/v1                false        SubjectAccessReview
+horizontalpodautoscalers          hpa          autoscaling/v2                         true         HorizontalPodAutoscaler
+cronjobs                          cj           batch/v1                               true         CronJob
+jobs                                           batch/v1                               true         Job
+certificatesigningrequests        csr          certificates.k8s.io/v1                 false        CertificateSigningRequest
+leases                                         coordination.k8s.io/v1                 true         Lease
+endpointslices                                 discovery.k8s.io/v1                    true         EndpointSlice
+events                            ev           events.k8s.io/v1                       true         Event
+flowschemas                                    flowcontrol.apiserver.k8s.io/v1beta2   false        FlowSchema
+prioritylevelconfigurations                    flowcontrol.apiserver.k8s.io/v1beta2   false        PriorityLevelConfiguration
+ingressclasses                                 networking.k8s.io/v1                   false        IngressClass
+ingresses                         ing          networking.k8s.io/v1                   true         Ingress
+networkpolicies                   netpol       networking.k8s.io/v1                   true         NetworkPolicy
+runtimeclasses                                 node.k8s.io/v1                         false        RuntimeClass
+poddisruptionbudgets              pdb          policy/v1                              true         PodDisruptionBudget
+clusterrolebindings                            rbac.authorization.k8s.io/v1           false        ClusterRoleBinding
+clusterroles                                   rbac.authorization.k8s.io/v1           false        ClusterRole
+rolebindings                                   rbac.authorization.k8s.io/v1           true         RoleBinding
+roles                                          rbac.authorization.k8s.io/v1           true         Role
+priorityclasses                   pc           scheduling.k8s.io/v1                   false        PriorityClass
+csidrivers                                     storage.k8s.io/v1                      false        CSIDriver
+csinodes                                       storage.k8s.io/v1                      false        CSINode
+csistoragecapacities                           storage.k8s.io/v1                      true         CSIStorageCapacity
+storageclasses                    sc           storage.k8s.io/v1                      false        StorageClass
+volumeattachments                              storage.k8s.io/v1                      false        VolumeAttachment
+```
+
+For specific configuration details, see
+[Kubernetes Objects Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8sobjectsreceiver).
+
+Since the processor uses the Kubernetes API, it needs the correct permission to
+work correctly. Since service accounts are the only authentication option you
+must give the service account the proper access. For any object you want to
+collect you need to ensure the name is added to the cluster role. For example,
+if you wanted to collect pods then the cluster role would look like:
+
+```yaml
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: otel-collector-opentelemetry-collector
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: otel-collector-opentelemetry-collector
+rules:
+  - apiGroups:
+      - ''
+    resources:
+      - pods
     verbs:
       - get
       - list
