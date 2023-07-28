@@ -169,6 +169,7 @@ app.listen(PORT, () => {
 To ensure that it is working, run the application with the following command and
 open <http://localhost:8080/rolldice?rolls=12> in your web browser.
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane lang=console >}}
 
@@ -184,6 +185,7 @@ Listening for requests on http://localhost:8080
 
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 ## Manual instrumentation setup
 
@@ -617,6 +619,7 @@ care of setting the span and its context active.
 
 The code below illustrates how to create an active span.
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 
 {{< tabpane langEqualsHeader=true >}}
@@ -658,6 +661,7 @@ function rollTheDice(rolls, min, max) {
 {{< /tabpane>}}
 
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 If you followed the instructions using the [example app](#example-app) up to
 this point, you can copy the code above in your library file `dice.ts` (or
@@ -848,6 +852,7 @@ const span = opentelemetry.trace.getSpan(ctx);
 pairs to a [`Span`](/docs/concepts/signals/traces/#spans) so it carries more
 information about the current operation that it's tracking.
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 {{< tabpane langEqualsHeader=true >}}
 
@@ -883,6 +888,7 @@ function rollOnce(i, min, max) {
 
 {{< /tabpane >}}
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 You can also add attributes to a span as it's created:
 
@@ -898,6 +904,7 @@ tracer.startActiveSpan(
 );
 ```
 
+<!-- markdownlint-disable -->
 <!-- prettier-ignore-start -->
 
 {{< tabpane langEqualsHeader=true >}}
@@ -927,6 +934,7 @@ function rollTheDice(rolls, min, max) {
 {{< /tabpane>}}
 
 <!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
 
 #### Semantic Attributes
 
