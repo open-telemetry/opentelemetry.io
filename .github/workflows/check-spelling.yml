@@ -16,7 +16,7 @@ jobs:
             content/**/*.md
             layouts/**/*.md
             data/**/*
-            !data/registry
+            !data/registry/**/*
           config: .vscode/cspell.json
 
   dict-check:
