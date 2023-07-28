@@ -74,6 +74,7 @@ jobs:
     env:
       PR_NUM: ${{ github.event.issue.number }}
       COMMENT: ${{ github.event.comment.body }}
+      DEPTH: 100 # submodule clone depth
 
     steps:
       - name: Context info
