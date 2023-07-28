@@ -2,9 +2,7 @@
 title: Important Components for Kubernetes
 linkTitle: Components
 # prettier-ignore
-spelling: 
-  cSpell:ignore containerd crio filelog gotime horizontalpodautoscalers iostream k8sattributes kubelet kubeletstats logtag replicasets replicationcontrollers resourcequotas statefulsets varlibdockercontainers varlogpods flowschemas flowcontrol apiserver prioritylevelconfigurations 
-  cSpell:ignore ingressclasses networkpolicies netpol runtimeclasses poddisruptionbudgets clusterrolebindings clusterroles rolebindings priorityclasses csidrivers csinodes csistoragecapacities storageclasses volumeattachments
+spelling: containerd crio filelog gotime horizontalpodautoscalers iostream k8sattributes kubelet kubeletstats logtag replicasets replicationcontrollers resourcequotas statefulsets varlibdockercontainers varlogpods
 ---
 
 The [OpenTelemetry Collector](/docs/collector/) supports many different
@@ -533,14 +531,14 @@ subjects:
 | Deployment (Gateway) | Yes, but more than one replica results in duplicate data |
 | Sidecar              | No                                                       |
 
-The kubernetes Objects receiver collects, either by pulling or watching, objects
+The Kubernetes Objects receiver collects, either by pulling or watching, objects
 from the Kubernetes API server. The most common use case for this receiver is
 watching Kubernetes events, but it can be used to collect any type of Kubernetes
 object. Since the receiver gathers telemetry for the cluster as a whole, only
 one instance of the receiver is needed across the cluster in order to collect
 all the data.
 
-Currenty only a service account can be used for authentication. The service
+Currently only a service account can be used for authentication. The service
 account also needs proper permissions to pull data from the Kubernetes API
 server (see below). If you're using the
 [OpenTelemetry Collector Helm chart](../../helm/collector/) and you want to
@@ -556,7 +554,9 @@ stream with the Kubernetes API and which receives updates as the objects change.
 To see which objects are available for collection run in your cluster run
 `kubectl api-resources`:
 
-```sh
+<!-- cspell:disable -->
+
+```console
 ❯ k api-resources
 NAME                              SHORTNAMES   APIVERSION                             NAMESPACED   KIND
 bindings                                       v1                                     true         Binding
@@ -615,7 +615,7 @@ csistoragecapacities                           storage.k8s.io/v1                
 storageclasses                    sc           storage.k8s.io/v1                      false        StorageClass
 volumeattachments                              storage.k8s.io/v1                      false        VolumeAttachment
 ```
-
+<!-- cspell:enable -->
 For specific configuration details, see
 [Kubernetes Objects Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8sobjectsreceiver).
 
