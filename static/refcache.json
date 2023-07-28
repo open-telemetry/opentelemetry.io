@@ -4091,6 +4091,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:22:04.273071-04:00"
   },
+  "https://puppet.com/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-27T11:39:59.329638+02:00"
+  },
   "https://pwn.recipes/posts/roll-your-own-e2ee-protocol/": {
     "StatusCode": 200,
     "LastSeen": "2023-06-28T13:37:36.342515-04:00"
@@ -4563,6 +4567,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:48:50.359313-04:00"
   },
+  "https://www.docsend.com/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-27T11:40:03.470355+02:00"
+  },
   "https://www.dynatrace.com/": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T16:24:46.847829-04:00"
@@ -4638,6 +4646,10 @@
   "https://www.fulcrumapp.com": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T09:21:53.962879-04:00"
+  },
+  "https://www.fulcrumapp.com/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-27T11:39:58.642572+02:00"
   },
   "https://www.gnupg.org/gph/en/manual/x135.html#AEN160": {
     "StatusCode": 206,
@@ -5118,6 +5130,10 @@
   "https://www.tablecheck.com": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:22:14.019714-04:00"
+  },
+  "https://www.tablecheck.com/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-27T11:40:02.004206+02:00"
   },
   "https://www.techtarget.com/searchapparchitecture/tip/The-reasons-to-use-or-not-use-sidecars-in-Kubernetes": {
     "StatusCode": 200,
