@@ -458,7 +458,7 @@ annotations:
   instrumentation.opentelemetry.io/inject-python: 'true'
 ```
 
-The above annotation tells the OTel Operator to look for an `Instrumentation`
+The annotation above tells the OTel Operator to look for an `Instrumentation`
 object in the pod’s namespace. It also tells the Operator to inject Python
 auto-instrumentation into the pod.
 
