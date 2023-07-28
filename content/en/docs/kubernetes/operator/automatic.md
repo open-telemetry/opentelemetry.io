@@ -6,7 +6,7 @@ description:
   An implementation of auto-instrumentation using the OpenTelemetry Operator.
 spelling:
   cSpell:ignore otlpreceiver k8sattributesprocessor GRPCNETCLIENT REDISCALA
-  autoinstrumentation
+  autoinstrumentation otelinst
 ---
 
 The OpenTelemetry Operator supports injecting and configuring
