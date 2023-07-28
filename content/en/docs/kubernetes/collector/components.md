@@ -557,7 +557,7 @@ To see which objects are available for collection run in your cluster run
 <!-- cspell:disable -->
 
 ```console
-❯ k api-resources
+kubeclt api-resources
 NAME                              SHORTNAMES   APIVERSION                             NAMESPACED   KIND
 bindings                                       v1                                     true         Binding
 componentstatuses                 cs           v1                                     false        ComponentStatus
