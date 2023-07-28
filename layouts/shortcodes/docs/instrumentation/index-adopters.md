@@ -1,15 +1,18 @@
-{{ $lang := .Get 0 | humanize -}}
-{{ $data := $.Site.Data.ecosystem.adopters }}
+<!-- prettier-ignore -->
+{{ $lang := .Get 0 -}}
+{{ $Lang := $lang | humanize -}}
+{{ $howMany := .Get 1 | default 10 -}}
+{{ $adopters := where $.Site.Data.ecosystem.adopters ".components" "intersect" (slice $Lang) -}}
 
-## Who's using OpenTelemetry {{ $lang }}?
+## Who's using OpenTelemetry {{ $Lang }}?
 
-OpenTelemetry {{ $lang }} is in use by a number of organizations, including:
+OpenTelemetry {{ $Lang }} is in use by a number of organizations, including:
 
-{{- range $data }} 
-    {{- if in .components $lang }}
-- [{{ .name }}]({{ .url }}) 
-    {{- end }}
+{{ range first $howMany (sort $adopters "name") -}}
+
+<!-- prettier-ignore -->
+- [{{ .name }}]({{ .url }})
 {{- end }}
 
-To have your organisation listed, follow the
-[instructions given at the bottom of the Adopters page](/ecosystem/adopters/).
+For the complete list, and instructions for adding your organization, see
+[Adopters](/ecosystem/adopters/).
