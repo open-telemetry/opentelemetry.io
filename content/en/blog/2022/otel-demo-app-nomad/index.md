@@ -5,7 +5,7 @@ date: 2022-12-12
 author: >-
   [Adriana Villela](https://github.com/avillela) (Lightstep)
 # prettier-ignore
-cSpell:ignore: Aoqui Daniela entrypoints ffspostgres hashi hashiqube jobspec jobspecs loadgenerator lookin Luiz macbook mozy qube Riaan servian shoutout Villela
+cSpell:ignore: Aoqui Daniela entrypoints ffspostgres hashi hashiqube jobspec jobspecs loadgenerator lookin Luiz macbook mozy qube Riaan servian shoutout
 ---
 
 Y’all… I’m so excited, because I finally got to work on an item on my tech
