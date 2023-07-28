@@ -3451,6 +3451,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:06:58.962765-04:00"
   },
+  "https://kubernetes.io/docs/concepts/services-networking/service/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-28T12:17:39.379917-04:00"
+  },
   "https://kubernetes.io/docs/concepts/workloads/controllers/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:07:14.3411-04:00"
@@ -3478,6 +3482,10 @@
   "https://kubernetes.io/docs/concepts/workloads/pods/downward-api/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:14:26.894177-04:00"
+  },
+  "https://kubernetes.io/docs/concepts/workloads/pods/init-containers/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-28T12:17:39.145108-04:00"
   },
   "https://kubernetes.io/docs/reference/kubectl/": {
     "StatusCode": 206,
