@@ -113,26 +113,20 @@ request an enhancement, [create an issue][new-issue].
 
 Enhancements and fixes to the website are most welcome! Before submitting a
 [pull request][pr] (PR) to the repo, run the following command and address any
-reported issues:
+reported issues. Also commit any files changed by the `fix` script:
 
 ```sh
-npm run test
+npm run s fix test
 ```
 
-If you only want to check the format of files, run:
-
-```console
-$ npm run check:format
-...
-Checking formatting...
-All matched files use Prettier code style!
-```
-
-To _fix_ the format of files, run:
+To separately test and fix issues with your files, run:
 
 ```sh
-npm run format
+npm run test # checks but does not update any files
+npm run fix  # may update files
 ```
+
+To list available NPM scripts, run `npm run`.
 
 ### Submodule changes
 
