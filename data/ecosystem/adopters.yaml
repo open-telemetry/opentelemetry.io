@@ -17,7 +17,7 @@
 - name: eBay
   url: https://www.ebay.com
   components: [Collector]
-  reference: /blog/2022/why-and-how-ebay-pivoted-to-opentelemetry/
+  reference: /blog/2022/why-and-how-ebay-pivoted-to-opentelemetry/ # cspell:disable-line
   contact: https://github.com/vjsamuel
 - name: EcoBee
   url: https://www.ecobee.com/
