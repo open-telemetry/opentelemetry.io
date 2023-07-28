@@ -615,7 +615,9 @@ csistoragecapacities                           storage.k8s.io/v1                
 storageclasses                    sc           storage.k8s.io/v1                      false        StorageClass
 volumeattachments                              storage.k8s.io/v1                      false        VolumeAttachment
 ```
+
 <!-- cspell:enable -->
+
 For specific configuration details, see
 [Kubernetes Objects Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8sobjectsreceiver).
 
