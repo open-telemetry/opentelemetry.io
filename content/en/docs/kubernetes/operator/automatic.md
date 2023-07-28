@@ -531,7 +531,7 @@ cluster, `spec.exporter.endpoint` should reference the name of the OTel
 Collector
 [`Service`](https://kubernetes.io/docs/concepts/services-networking/service/).
 
-For examples:
+For example:
 
 ```yaml
 spec:
