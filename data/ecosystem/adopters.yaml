@@ -18,7 +18,7 @@
   url: https://www.ebay.com
   components: [Collector]
   reference: /blog/2022/why-and-how-ebay-pivoted-to-opentelemetry/
-  contact: 'https://github.com/vjsamuel'
+  contact: https://github.com/vjsamuel
 - name: EcoBee
   url: https://www.ecobee.com/
   components: [Collector, Java]
