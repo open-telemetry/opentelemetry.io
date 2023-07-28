@@ -6,6 +6,7 @@ description:
   An implementation of auto-instrumentation using the OpenTelemetry Operator.
 spelling:
   cSpell:ignore otlpreceiver k8sattributesprocessor GRPCNETCLIENT REDISCALA
+  autoinstrumentation
 ---
 
 The OpenTelemetry Operator supports injecting and configuring
@@ -383,8 +384,8 @@ things that you can try.
 ### **1- Did the Instrumentation resource install?**
 
 After installing the `Instrumentation` resource, verify that it installed
-correctly by running this command, where `<namespace>` is the namespace in which the `Instrumentation` resource is
-deployed:
+correctly by running this command, where `<namespace>` is the namespace in which
+the `Instrumentation` resource is deployed:
 
 ```
 kubectl describe otelinst -n <namespace>
@@ -458,13 +459,13 @@ annotations:
   instrumentation.opentelemetry.io/inject-python: 'true'
 ```
 
-The above annotation tells the OTel Operator to look for an `Instrumentation` object in the
-pod’s namespace. It also tells the Operator to inject Python
+The above annotation tells the OTel Operator to look for an `Instrumentation`
+object in the pod’s namespace. It also tells the Operator to inject Python
 auto-instrumentation into the pod.
 
 When the pod starts up, the annotation tells the Operator to look for an
-Instrumentation object in the pod’s namespace, and to inject auto-istrumentation
-into the pod. It adds an
+Instrumentation object in the pod’s namespace, and to inject
+auto-instrumentation into the pod. It adds an
 [init-container](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/)
 to the application's pod, called `opentelemetry-auto-instrumentation`, which is
 then used to injects the auto-instrumentation into the app container.
@@ -510,7 +511,7 @@ auto-instrumentation annotation.
 Here are a few things to check for:
 
 - **Is the auto-instrumentation for the right language?** For example, when
-  instrumenting a Python application, make sure that the annotaton doesn't
+  instrumenting a Python application, make sure that the annotation doesn't
   incorrectly say `instrumentation.opentelemetry.io/inject-java: "true"`
   instead.
 - **Is the auto-instrumentation annotation in the correct location?** When
