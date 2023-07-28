@@ -297,11 +297,12 @@ spec:
 EOF
 ```
 
-By default, the Instrumentation resource that auto-instruments Python services
-uses `otlp` with the `http/protobuf` protocol. This means that the configured
-endpoint must be able to receive OTLP over `http/protobuf`. Therefore, the
-example uses `http://demo-collector:4318`, which will connect to the `http` port
-of the `otlpreceiver` of the Collector created in the previous step.
+🚨 By default, the `Instrumentation` resource that auto-instruments Python
+services uses `otlp` with the `http/protobuf` protocol (gRPC is not supported at
+this time). This means that the configured endpoint must be able to receive OTLP
+over `http/protobuf`. Therefore, the example uses `http://demo-collector:4318`,
+which will connect to the `http` port of the `otlpreceiver` of the Collector
+created in the previous step.
 
 > As of operator v0.67.0, the Instrumentation resource automatically sets
 > `OTEL_EXPORTER_OTLP_TRACES_PROTOCOL` and `OTEL_EXPORTER_OTLP_METRICS_PROTOCOL`
@@ -373,3 +374,175 @@ Alternatively, the annotation can be added to a namespace, which will result in
 all services in that namespace to opt-in to automatic instrumentation. See the
 [Operators auto-instrumentation documentation](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md#opentelemetry-auto-instrumentation-injection)
 for more details.
+
+## Troubleshooting
+
+If you run into problems trying to auto-instrument your code, here are a few
+things that you can try.
+
+### **1- Did the Instrumentation resource install?**
+
+After installing the `Instrumentation` resource, verify that it installed
+correctly by running this command, where `<namespace>` is the namespace in which the `Instrumentation` resource is
+deployed:
+
+```
+kubectl describe otelinst -n <namespace>
+```
+
+Sample output:
+
+```
+Name:         python-instrumentation
+Namespace:    application
+Labels:       app.kubernetes.io/managed-by=opentelemetry-operator
+Annotations:  instrumentation.opentelemetry.io/default-auto-instrumentation-apache-httpd-image:
+               ghcr.io/open-telemetry/opentelemetry-operator/autoinstrumentation-apache-httpd:1.0.3
+             instrumentation.opentelemetry.io/default-auto-instrumentation-dotnet-image:
+               ghcr.io/open-telemetry/opentelemetry-operator/autoinstrumentation-dotnet:0.7.0
+             instrumentation.opentelemetry.io/default-auto-instrumentation-go-image:
+               ghcr.io/open-telemetry/opentelemetry-go-instrumentation/autoinstrumentation-go:v0.2.1-alpha
+             instrumentation.opentelemetry.io/default-auto-instrumentation-java-image:
+               ghcr.io/open-telemetry/opentelemetry-operator/autoinstrumentation-java:1.26.0
+             instrumentation.opentelemetry.io/default-auto-instrumentation-nodejs-image:
+               ghcr.io/open-telemetry/opentelemetry-operator/autoinstrumentation-nodejs:0.40.0
+             instrumentation.opentelemetry.io/default-auto-instrumentation-python-image:
+               ghcr.io/open-telemetry/opentelemetry-operator/autoinstrumentation-python:0.39b0
+API Version:  opentelemetry.io/v1alpha1
+Kind:         Instrumentation
+Metadata:
+ Creation Timestamp:  2023-07-28T03:42:12Z
+ Generation:          1
+ Resource Version:    3385
+ UID:                 646661d5-a8fc-4b64-80b7-8587c9865f53
+Spec:
+...
+ Exporter:
+   Endpoint:  http://otel-collector-collector.opentelemetry.svc.cluster.local:4318
+...
+ Propagators:
+   tracecontext
+   baggage
+ Python:
+   Image:  ghcr.io/open-telemetry/opentelemetry-operator/autoinstrumentation-python:0.39b0
+   Resource Requirements:
+     Limits:
+       Cpu:     500m
+       Memory:  32Mi
+     Requests:
+       Cpu:     50m
+       Memory:  32Mi
+ Resource:
+ Sampler:
+Events:  <none>
+```
+
+### **2- Do the OTel Operator logs show any auto-instrumentation errors?**
+
+Check the OTel Operator logs for any errors pertaining to auto-instrumentation
+by running this command:
+
+```
+kubectl logs -l app.kubernetes.io/name=opentelemetry-operator --container manager -n opentelemetry-operator-system --follow
+```
+
+### **3- Were the resources deployed in the right order?**
+
+Order matters! The `Instrumentation` resource needs to be deployed before before
+deploying the application, otherwise the auto-instrumentation won’t work.
+
+Recall the auto-instrumentation annotation:
+
+```yaml
+annotations:
+  instrumentation.opentelemetry.io/inject-python: 'true'
+```
+
+The above annotation tells the OTel Operator to look for an `Instrumentation` object in the
+pod’s namespace. It also tells the Operator to inject Python
+auto-instrumentation into the pod.
+
+When the pod starts up, the annotation tells the Operator to look for an
+Instrumentation object in the pod’s namespace, and to inject auto-istrumentation
+into the pod. It adds an
+[init-container](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/)
+to the application's pod, called `opentelemetry-auto-instrumentation`, which is
+then used to injects the auto-instrumentation into the app container.
+
+If the `Instrumentation` resource isn’t present by the time the application is
+deployed, however, the init-container can’t be created. Therefore, if the
+application is deployed _before_ deploying the `Instrumentation` resource, the
+auto-instrumentation will fail.
+
+To make sure that the `opentelemetry-auto-instrumentation` init-container has
+started up correctly (or has even started up at all), run the following command:
+
+```
+kubectl get events -n <your_app_namespace>
+```
+
+Which should output something like this:
+
+```
+53s         Normal   Created             pod/py-otel-server-7f54bf4cbc-p8wmj    Created container opentelemetry-auto-instrumentation
+53s         Normal   Started             pod/py-otel-server-7f54bf4cbc-p8wmj    Started container opentelemetry-auto-instrumentation
+```
+
+If the output is missing `Created` and/or `Started` entries for
+`opentelemetry-auto-instrumentation`, then it means that there is an issue with
+your auto-instrumentation. This can be the result of any of the following:
+
+- The `Instrumentation` resource wasn’t installed (or wasn’t installed
+  properly).
+- The `Instrumentation` resource was installed _after_ the application was
+  deployed.
+- There’s an error in the auto-instrumentation annotation, or the annotation in
+  the wrong spot — see #4 below.
+
+Be sure to check the output of `kubectl get events` for any errors, as these
+might help point to the issue.
+
+### **4- Is the auto-instrumentation annotation correct?**
+
+Sometimes auto-instrumentation can fail due to errors in the
+auto-instrumentation annotation.
+
+Here are a few things to check for:
+
+- **Is the auto-instrumentation for the right language?** For example, when
+  instrumenting a Python application, make sure that the annotaton doesn't
+  incorrectly say `instrumentation.opentelemetry.io/inject-java: "true"`
+  instead.
+- **Is the auto-instrumentation annotation in the correct location?** When
+  defining a `Deployment`, annotations can be added in one of two locations:
+  `spec.metadata.annotations`, and `spec.template.metadata.annotations`. The
+  auto-instrumentation annotation needs to be added to
+  `spec.template.metadata.annotations`, otherwise it won’t work.
+
+### **5- Was the auto-instrumentation endpoint configured correctly?**
+
+The `spec.exporter.endpoint` attribute of the `Instrumentation` resource defines
+where to send data to. This can be an [OTel Collector](/docs/collector/), or any
+OTLP endpoint. If this attribute is left out, it defaults to
+`http://localhost:4317`, which, most likely won't send telemetry data anywhere.
+
+When sending telemetry to an OTel Collector located in the same Kubernetes
+cluster, `spec.exporter.endpoint` should reference the name of the OTel
+Collector
+[`Service`](https://kubernetes.io/docs/concepts/services-networking/service/).
+
+For examples:
+
+```yaml
+spec:
+  exporter:
+    endpoint: http://otel-collector-collector.opentelemetry.svc.cluster.local:4317
+```
+
+Here, the Collector endpoint is set to
+`http://otel-collector.opentelemetry.svc.cluster.local:4317`, where
+`otel-collector` is the name of the OTel Collector Kubernetes `Service`. In the
+above example, the Collector is running in a different namespace from the
+application, which means that `opentelemetry.svc.cluster.local` must be appended
+to the Collector’s service name, where `opentelemetry` is the namespace in which
+the Collector resides.
