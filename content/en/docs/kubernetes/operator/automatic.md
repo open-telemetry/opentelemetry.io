@@ -477,7 +477,7 @@ auto-instrumentation will fail.
 To make sure that the `opentelemetry-auto-instrumentation` init-container has
 started up correctly (or has even started up at all), run the following command:
 
-```
+```sh
 kubectl get events -n <your_app_namespace>
 ```
 
