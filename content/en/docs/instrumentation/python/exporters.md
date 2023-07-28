@@ -1,7 +1,7 @@
 ---
 title: Exporters
 weight: 50
-cSpell:ignore: LOWMEMORY proto
+cSpell:ignore: LOWMEMORY
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->

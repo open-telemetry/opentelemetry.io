@@ -1,8 +1,7 @@
 ---
 title: Getting Started
-spelling:
-  - cSpell:ignore darwin dpkg GOARCH journalctl kubectl linux otelcorecol pprof
-  - cSpell:ignore zpages tlsv
+# prettier-ignore
+cSpell:ignore: darwin dpkg GOARCH journalctl kubectl otelcorecol pprof tlsv zpages
 weight: 1
 ---
 

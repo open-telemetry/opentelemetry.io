@@ -1,7 +1,7 @@
 ---
 title: Getting Started
 weight: 10
-cSpell:ignore: chan codebases errorf fscanf println stdouttrace strconv struct
+cSpell:ignore: chan codebases fscanf println stdouttrace strconv struct
 ---
 
 Welcome to the OpenTelemetry for Go getting started guide! This guide will walk
