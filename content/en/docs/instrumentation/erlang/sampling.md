@@ -3,7 +3,7 @@ title: Sampling
 weight: 80
 # For the writing of behaviour, see
 # https://www.erlang.org/doc/reference_manual/modules.html#behaviour-module-attribute
-spelling: cSpell:ignore defmodule healthcheck behaviour
+cSpell:ignore: behaviour defmodule healthcheck
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->

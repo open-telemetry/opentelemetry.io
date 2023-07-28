@@ -2,8 +2,8 @@
 title: Auto-Instrumentation Example
 linkTitle: Example
 weight: 20
-spelling: cSpell:ignore distro mkdir uninstrumented virtualenv
-spelling: cSpell:ignore instrumentor Referer Starlette WSGI MSIE
+# prettier-ignore
+cSpell:ignore: distro instrumentor mkdir MSIE Referer Starlette uninstrumented virtualenv WSGI
 ---
 
 This page demonstrates how to use Python auto-instrumentation in OpenTelemetry.

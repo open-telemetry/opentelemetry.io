@@ -1,7 +1,7 @@
 ---
 title: Exporters
 weight: 50
-spelling: cSpell:ignore fastcgi ndjson autoload pecl
+cSpell:ignore: autoload fastcgi ndjson pecl
 ---
 
 In order to visualize and analyze your telemetry, you will need to export it to

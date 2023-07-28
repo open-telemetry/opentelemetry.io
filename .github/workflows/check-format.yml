@@ -1,18 +1,18 @@
-name: Check filenames and file format
+name: Files
 
 on:
   pull_request:
 
 jobs:
   check-filenames:
-    name: Check filenames
+    name: FILENAME check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: npm run check:filenames --ignore-scripts
+      - run: npm run check:filenames
 
   check-formatting:
-    name: Check file format
+    name: FILE FORMAT
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -20,7 +20,7 @@ jobs:
       - name: Create NPM cache-hash input file
         run: |
           mkdir -p tmp
-          jq '{devDependencies, dependencies, engines}' package.json > tmp/package-ci.json
+          jq '{devDependencies, dependencies, engines, gitHubActionCacheKey}' package.json > tmp/package-ci.json
 
       - uses: actions/setup-node@v3
         with:

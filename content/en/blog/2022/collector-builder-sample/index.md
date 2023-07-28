@@ -4,9 +4,8 @@ linkTitle: Collector builder with GCP
 date: 2022-10-17
 author: >-
   [Mike Dame](https://github.com/damemi) (Google)
-spelling: cSpell:ignore customizability otlpreceiver loggingexporter rollouts
-spelling: cSpell:ignore configmap otlpexporter batchprocessor zipkinexporter 
-spelling: cSpell:ignore gomod
+# prettier-ignore
+cSpell:ignore: batchprocessor configmap customizability gomod loggingexporter otlpexporter otlpreceiver rollouts zipkinexporter
 ---
 
 The [OpenTelemetry Collector](/docs/collector/) is a versatile tool for

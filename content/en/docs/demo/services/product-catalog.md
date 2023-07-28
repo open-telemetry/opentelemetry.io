@@ -2,8 +2,8 @@
 title: Product Catalog Service
 linkTitle: Product Catalog
 aliases: [/docs/demo/services/productcatalogservice]
-spelling: cSpell:ignore sdktrace otlptracegrpc fatalf otelgrpc sprintf otelcodes
-spelling: cSpell:ignore otlpmetricgrpc sdkmetric
+# prettier-ignore
+cSpell:ignore: fatalf otelcodes otelgrpc otlpmetricgrpc otlptracegrpc sdkmetric sdktrace sprintf
 ---
 
 This service is responsible to return information about products. The service

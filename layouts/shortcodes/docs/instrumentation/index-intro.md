@@ -3,7 +3,7 @@
 <!-- prettier-ignore -->
 ` -}}
 {{ $lang := .Get 0 -}}
-{{ $data := index $.Site.Data.instrumentation.languages $lang }}
+{{ $data := index $.Site.Data.instrumentation $lang }}
 {{ $name := $data.name -}}
 {{ $tracesStatus := $data.status.traces | humanize -}}
 {{ $metricsStatus := $data.status.metrics | humanize -}}

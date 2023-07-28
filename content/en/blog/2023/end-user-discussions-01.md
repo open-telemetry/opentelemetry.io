@@ -5,7 +5,7 @@ date: 2023-01-27
 author: '[Adriana Villela](https://github.com/avillela) (Lightstep)'
 aliases: [/blog/2023/otel-end-user-discussions-january-2023]
 body_class: otel-with-contributions-from
-spelling: cSpell:ignore OTTL january
+cSpell:ignore: january OTTL
 ---
 
 With contributions from [Henrik Rexed](https://github.com/henrikrexed)

@@ -3,7 +3,7 @@ title: General SDK Configuration
 description: >-
   General-purpose environment variables for configuring an OpenTelemetry SDK.
 weight: 1
-spelling: cSpell:ignore ottrace
+cSpell:ignore: ottrace
 ---
 
 ## `OTEL_SERVICE_NAME`

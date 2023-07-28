@@ -1,4 +1,4 @@
-name: Check links and refcache
+name: Links
 
 on:
   pull_request:
@@ -20,7 +20,7 @@ jobs:
           jq '.devDependencies |= with_entries(
                   select(.key | test("prefix|hugo|run|css"))
                 )
-                | del(.dependencies)' \
+                | del(.dependencies, .optionalDependencies)' \
             package.json > tmp/package-min.json
           cp tmp/package-min.json package.json
 
@@ -30,7 +30,7 @@ jobs:
           cache: npm
           cache-dependency-path: tmp/package-ci.json
 
-      - run: npm install --no-optional
+      - run: npm install --omit=optional
       - run: npm run build+log
       - run: npm run _check:links
         continue-on-error: true

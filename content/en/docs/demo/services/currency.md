@@ -2,7 +2,7 @@
 title: Currency Service
 linkTitle: Currency
 aliases: [/docs/demo/services/currencyservice]
-spelling: cSpell:ignore nostd noexcept millis chrono labelkv decltype
+cSpell:ignore: chrono decltype labelkv millis noexcept nostd
 ---
 
 This service provides functionality to convert amounts between different

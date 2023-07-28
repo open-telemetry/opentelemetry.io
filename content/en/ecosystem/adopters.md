@@ -2,32 +2,39 @@
 title: Adopters
 description: Organizations that use OpenTelemetry
 # prettier-ignore
-spelling: cSpell:ignore Dapr Datenrettungsdienste Globale Logicmonitor Logz Wandera Zocdoc Farfetch Uplight
+cSpell:ignore: Dapr Datenrettungsdienste Farfetch Globale Logicmonitor Logz Uplight Wandera Zocdoc
 # All spelling entries must be on a single line
 ---
 
-A non-exhaustive, alphabetized list of
+OpenTelemetry's mission is to to enable effective observability for all its
+end-users. If you are thinking about adopting OpenTelemetry for your
+organization, you may be curious about other adoption journeys. The table below
+is a non-exhaustive list of
 [end-user organizations](https://community.cncf.io/end-user-community/) that
-have adopted OpenTelemetry. Also see [Vendors](../vendors/).
+have adopted OpenTelemetry for
+[Observability](/docs/concepts/observability-primer/).
 
-<!-- prettier-ignore-start -->
-Organization                                      | Components                      |  Learn more
-------------------------------------------------  | ------------------------------- |  ----------
-[AppDirect](https://www.appdirect.com/)           | Collector                       |
-[Care.com](https://www.care.com)                  | Collector, Go, Java, JS, .NET   |
-[Cloud Scale](https://www.cloudscaleinc.com)      | Collector, Python    |
-[EcoBee](https://www.ecobee.com/)                 | Collector, Java                 |  [blog post](https://www.honeycomb.io/blog/bees-working-together-how-ecobees-engineers-adopted-honeycomb-for-visibility-into-system-optimization-and-customer-experience)
-[Farfetch](https://www.farfetch.com/)             | Collector, Java, .NET, Node.js, Python, Operator | [blog post](/blog/2023/end-user-q-and-a-03/)
-[F5](https://www.f5.com/)                         | Collector.                      |
-[OrderMyGear](https://www.ordermygear.com/)       |                                 |
-[PITS Globale Datenrettungsdienste](https://www.pitsdatenrettung.de/) | Python      |
-[Shopify](https://www.shopify.com/)               | Collector, Go, Ruby             |
-[Transit](https://transitapp.com/)                |                                 |
-[Uplight](https://uplight.com/)                   | Collector, Ruby, Java, Python, .NET | [blog post](/blog/2023/end-user-q-and-a-02/)
-[Wandera](https://www.wandera.com/)               | Collector                       |
-[Zocdoc](https://www.zocdoc.com/)                 |                                 |
-<!-- prettier-ignore-end -->
+{{% ecosystem/adopters-table %}}
 
-To add your organization, edit this page and submit a PR. You will need to
-include a link to a blog post that describes how your organization makes use of
-OTel.
+To have your organization listed, submit a PR with an entry added to the
+[adopters list](https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/adopters.yaml).
+The entry must include the following[^grace-period-2024-01-01]:
+
+- Link to a blog post that describes how your organization makes use of
+  OpenTelemetry
+- GitHub handle or email address as a point of contact so that we can reach out
+  in case we have questions
+
+Note that this list is for
+[_end-user_ organizations](https://community.cncf.io/end-user-community/) that
+do not provide any OpenTelemetry-related services.
+
+If your organization provides a **library** or **service** made observable
+through OpenTelemetry, see [Integrations](/ecosystem/integrations/).
+
+If your organization provides a solution that consumes OpenTelemetry to offer
+**Observability to end users**, see [Vendors](/ecosystem/vendors).
+
+[^grace-period-2024-01-01]:
+    Organizations listed before July 2023 are exempt from these requirements
+    until January 1, 2024, after which they will be removed unless updated.

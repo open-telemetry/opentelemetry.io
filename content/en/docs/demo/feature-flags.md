@@ -1,7 +1,7 @@
 ---
 title: Feature Flags
 aliases: [/docs/demo/feature_flags]
-spelling: cSpell:ignore OLJCESPC7Z
+cSpell:ignore: OLJCESPC7Z
 ---
 
 This demo comes with several feature flags which can control failure conditions
