@@ -442,7 +442,7 @@ Events:  <none>
 Check the OTel Operator logs for any errors pertaining to auto-instrumentation
 by running this command:
 
-```
+```sh
 kubectl logs -l app.kubernetes.io/name=opentelemetry-operator --container manager -n opentelemetry-operator-system --follow
 ```
 
