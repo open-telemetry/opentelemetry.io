@@ -380,7 +380,7 @@ for more details.
 If you run into problems trying to auto-instrument your code, here are a few
 things that you can try.
 
-### **1- Did the Instrumentation resource install?**
+### Did the Instrumentation resource install?
 
 After installing the `Instrumentation` resource, verify that it installed
 correctly by running this command, where `<namespace>` is the namespace in which
