@@ -3,7 +3,6 @@ title: Manual Instrumentation
 linkTitle: Manual
 weight: 30
 description: Manual instrumentation for OpenTelemetry .NET
-cSpell:ignore: discoverability
 ---
 
 {{% docs/instrumentation/manual-intro %}}

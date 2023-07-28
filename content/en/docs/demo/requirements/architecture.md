@@ -2,8 +2,7 @@
 title: Architecture Requirements
 linkTitle: Architecture
 aliases: [/docs/demo/requirements/architecture_requirements]
-# prettier-ignore
-cSpell:ignore: currencyservice dockerstatsreceiver emailservice shippingservice
+cSpell:ignore: dockerstatsreceiver
 ---
 
 ## Summary

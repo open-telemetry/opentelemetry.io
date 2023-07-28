@@ -2,7 +2,7 @@
 title: Exporters
 aliases: [/docs/instrumentation/go/exporting_data]
 weight: 50
-cSpell:ignore: errorf otlptrace otlptracehttp
+cSpell:ignore: otlptrace otlptracehttp
 ---
 
 In order to visualize and analyze your [traces](/docs/concepts/signals/traces/)
