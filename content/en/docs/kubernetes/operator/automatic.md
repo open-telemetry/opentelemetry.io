@@ -386,7 +386,7 @@ After installing the `Instrumentation` resource, verify that it installed
 correctly by running this command, where `<namespace>` is the namespace in which
 the `Instrumentation` resource is deployed:
 
-```
+```sh
 kubectl describe otelinst -n <namespace>
 ```
 
