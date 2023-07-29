@@ -502,7 +502,7 @@ your auto-instrumentation. This can be the result of any of the following:
 Be sure to check the output of `kubectl get events` for any errors, as these
 might help point to the issue.
 
-### **4- Is the auto-instrumentation annotation correct?**
+### Is the auto-instrumentation annotation correct?
 
 Sometimes auto-instrumentation can fail due to errors in the
 auto-instrumentation annotation.
