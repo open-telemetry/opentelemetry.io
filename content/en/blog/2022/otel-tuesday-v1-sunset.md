@@ -2,7 +2,6 @@
 title: OpenTelemetry Tuesdays, Signing Off!
 date: 2022-03-21
 author: '[Austin Parker](https://github.com/austinlparker)'
-cSpell:ignore: discoverability otel-comms
 ---
 
 When we started running OpenTelemetry Tuesday live streams back in 2019, the

@@ -1,11 +1,8 @@
 ---
 title: OpenTelemetry Collector Chart
 linkTitle: Collector Chart
-spelling:
-  cSpell:ignore statefulset kuberenetes filelogreceiver loggingexporter
-  cSpell:ignore filelogreceiver otlphttp sattributesprocessor kubelet
-  cSpell:ignore kubeletstatsreceiver sclusterreceiver sobjectsreceiver
-  cSpell:ignore hostmetricsreceiver
+# prettier-ignore
+cSpell:ignore: filelogreceiver filelogreceiver hostmetricsreceiver kubelet kubeletstatsreceiver kuberenetes loggingexporter otlphttp sattributesprocessor sclusterreceiver sobjectsreceiver statefulset
 ---
 
 ## Introduction

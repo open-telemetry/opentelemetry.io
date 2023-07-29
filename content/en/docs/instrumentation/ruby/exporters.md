@@ -1,7 +1,6 @@
 ---
 title: Exporters
 weight: 50
-cSpell:ignore: jaegertracing openzipkin Zipkin zipkin
 ---
 
 In order to visualize and analyze your traces, you will need to export them to a

@@ -3,9 +3,8 @@ title: Improved troubleshooting using k8s metadata
 linkTitle: Kubernetes metadata
 date: 2022-06-29
 author: '[Ruben Vargas](https://github.com/rubenvp8510)'
-spelling:
-  cSpell:ignore k8sattributes k8sattributesprocessor K8sattributes k8sprocessor
-  cSpell:ignore K8sprocessor KUBE resourcedetection replicaset
+# prettier-ignore
+cSpell:ignore: k8sattributes k8sattributesprocessor k8sprocessor KUBE replicaset resourcedetection
 ---
 
 Attaching Kubernetes resource metadata to OpenTelemetry traces is useful to

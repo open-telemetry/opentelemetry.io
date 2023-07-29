@@ -1,7 +1,6 @@
 ---
 title: Acknowledgements
 description: Acknowledgements for sources for content on this site
-cSpell:ignore: otel
 aliases: [/acknowledgements]
 weight: 200
 cSpell:ignore: Pigram
