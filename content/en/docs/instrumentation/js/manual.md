@@ -4,7 +4,7 @@ aliases:
   - /docs/instrumentation/js/api/tracing
   - /docs/instrumentation/js/instrumentation
 weight: 30
-spelling: cSpell:ignore Millis
+cSpell:ignore: Millis
 description: Manual instrumentation for OpenTelemetry JavaScript
 ---
 

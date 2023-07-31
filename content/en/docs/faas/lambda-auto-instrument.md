@@ -2,7 +2,7 @@
 title: Lambda Auto-Instrumentation
 weight: 11
 description: Automatically instrument your Lambdas with OpenTelemetry
-spelling: cSpell:ignore Corretto regionalized
+cSpell:ignore: Corretto regionalized
 ---
 
 The OpenTelemetry community provides standalone instrumentation Lambda layers

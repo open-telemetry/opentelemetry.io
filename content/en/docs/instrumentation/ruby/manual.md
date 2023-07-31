@@ -7,7 +7,7 @@ aliases:
   - /docs/instrumentation/ruby/context-propagation
 weight: 20
 description: Manual instrumentation for OpenTelemetry Ruby
-spelling: cSpell:ignore SIGHUP
+cSpell:ignore: SIGHUP
 ---
 
 {{% docs/instrumentation/manual-intro %}}

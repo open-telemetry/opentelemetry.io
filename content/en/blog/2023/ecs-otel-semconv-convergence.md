@@ -4,7 +4,7 @@ title:
   Convention Convergence
 linkTitle: ECS and OTel SemConv Convergence
 date: 2023-04-17
-spelling: cSpell:ignore ECS Reiley SemConv Yang
+cSpell:ignore: ECS Reiley SemConv Yang
 author: '[Reiley Yang](https://github.com/reyang)'
 ---
 

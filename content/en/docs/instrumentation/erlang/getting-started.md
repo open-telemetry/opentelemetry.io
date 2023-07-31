@@ -1,8 +1,8 @@
 ---
 title: Getting Started
 weight: 10
-spelling: cSpell:ignore rebar relx stdlib bogons defp rolldice
-spelling: cSpell:ignore defmodule erts hipe Eshell postgres ecto elixirc KHTML
+# prettier-ignore
+cSpell:ignore: bogons defmodule defp ecto elixirc erts Eshell hipe KHTML postgres rebar relx rolldice stdlib
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->

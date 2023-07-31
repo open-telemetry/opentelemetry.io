@@ -2,7 +2,7 @@
 title: Using the OpenTelemetry Operator to Inject Auto-Instrumentation
 linkTitle: Operator
 weight: 30
-spelling: cSpell:ignore distro mkdir uninstrumented virtualenv
+cSpell:ignore: distro mkdir uninstrumented virtualenv
 ---
 
 If you run your Python service in Kubernetes, you can take advantage of the

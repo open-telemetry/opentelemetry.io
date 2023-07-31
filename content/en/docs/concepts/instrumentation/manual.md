@@ -3,7 +3,7 @@ title: Manual
 description: >-
   Learn about the essential steps to manually instrument your application.
 weight: 20
-spelling: cSpell:ignore proxying legitimatebusiness
+cSpell:ignore: legitimatebusiness proxying
 ---
 
 ## Import the OpenTelemetry API and SDK

@@ -5,7 +5,7 @@ aliases:
   - /docs/instrumentation/go/using_instrumentation_libraries
   - /docs/instrumentation/go/automatic_instrumentation
 weight: 40
-spelling: cSpell:ignore otelhttp mypkg fprintf
+cSpell:ignore: fprintf mypkg otelhttp
 ---
 
 Go does not support truly automatic instrumentation like other languages today.

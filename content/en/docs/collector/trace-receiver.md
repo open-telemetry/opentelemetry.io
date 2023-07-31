@@ -1,13 +1,8 @@
 ---
 title: Building a Trace Receiver
 weight: 98
-spelling: cSpell:ignore struct tailtracer otlpreceiver rquedas devs mapstructure
-spelling: cSpell:ignore Errorf structs loggingexporter jaegerexporter amzn
-spelling: cSpell:ignore batchprocessor Rcvr uber atmxph comcast chicago
-spelling: cSpell:ignore sanfrancisco ptrace pdata protogen pcommon stateid
-spelling: cSpell:ignore ispnetwork serialnumber mcrsft gogl wndws slrs
-spelling: cSpell:ignore backendsystem crand linux Intn semconv
-spelling: cSpell:ignore
+# prettier-ignore
+cSpell:ignore: amzn atmxph backendsystem batchprocessor chicago comcast crand devs Errorf gogl Intn ispnetwork jaegerexporter loggingexporter mapstructure mcrsft otlpreceiver pcommon pdata protogen ptrace Rcvr rquedas sanfrancisco serialnumber slrs stateid struct structs tailtracer uber wndws
 ---
 
 <!-- markdownlint-disable heading-increment no-duplicate-heading -->

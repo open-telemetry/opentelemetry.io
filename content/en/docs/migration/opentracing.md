@@ -1,7 +1,7 @@
 ---
 title: Migrating from OpenTracing
 linkTitle: OpenTracing
-spelling: cSpell:ignore codebases opentracing
+cSpell:ignore: codebases
 weight: 2
 ---
 

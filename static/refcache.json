@@ -91,6 +91,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T12:27:30.178352-04:00"
   },
+  "https://avajs.dev/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-18T14:38:02.687502+02:00"
+  },
   "https://aws-otel.github.io": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T12:27:13.017869-04:00"
@@ -2355,6 +2359,22 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:23:34.5691-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-demo/issues/873": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-18T14:38:00.524443+02:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/pull/877": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-18T14:38:01.810575+02:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/pull/905#discussion_r1207101535": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-18T14:38:05.072723+02:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/pull/950": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-18T14:38:03.839749+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-demo/releases": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:42:09.866812-04:00"
@@ -3419,6 +3439,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:06:58.962765-04:00"
   },
+  "https://kubernetes.io/docs/concepts/services-networking/service/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-28T12:17:39.379917-04:00"
+  },
   "https://kubernetes.io/docs/concepts/workloads/controllers/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:07:14.3411-04:00"
@@ -3446,6 +3470,10 @@
   "https://kubernetes.io/docs/concepts/workloads/pods/downward-api/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:14:26.894177-04:00"
+  },
+  "https://kubernetes.io/docs/concepts/workloads/pods/init-containers/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-28T12:17:39.145108-04:00"
   },
   "https://kubernetes.io/docs/reference/kubectl/": {
     "StatusCode": 206,
@@ -4043,6 +4071,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:22:04.273071-04:00"
   },
+  "https://puppet.com/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-27T11:39:59.329638+02:00"
+  },
   "https://pwn.recipes/posts/roll-your-own-e2ee-protocol/": {
     "StatusCode": 200,
     "LastSeen": "2023-06-28T13:37:36.342515-04:00"
@@ -4515,6 +4547,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:48:50.359313-04:00"
   },
+  "https://www.docsend.com/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-27T11:40:03.470355+02:00"
+  },
   "https://www.dynatrace.com/": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T16:24:46.847829-04:00"
@@ -4590,6 +4626,10 @@
   "https://www.fulcrumapp.com": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T09:21:53.962879-04:00"
+  },
+  "https://www.fulcrumapp.com/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-27T11:39:58.642572+02:00"
   },
   "https://www.gnupg.org/gph/en/manual/x135.html#AEN160": {
     "StatusCode": 206,
@@ -5070,6 +5110,10 @@
   "https://www.tablecheck.com": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:22:14.019714-04:00"
+  },
+  "https://www.tablecheck.com/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-27T11:40:02.004206+02:00"
   },
   "https://www.techtarget.com/searchapparchitecture/tip/The-reasons-to-use-or-not-use-sidecars-in-Kubernetes": {
     "StatusCode": 200,

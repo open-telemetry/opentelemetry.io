@@ -1,7 +1,7 @@
 ---
 title: Testing
 weight: 100
-spelling: cSpell:ignore defmodule stdlib defrecordp testcase
+cSpell:ignore: defmodule defrecordp stdlib testcase
 ---
 
 When relying on OpenTelemetry for your Observability needs, it can be important
