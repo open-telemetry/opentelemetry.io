@@ -1,3 +1,4 @@
+# cSpell:ignore docsy goldmark netlify wordmark
 baseURL: https://opentelemetry.io
 title: &title OpenTelemetry
 description: &desc The OpenTelemetry Project Site
@@ -15,7 +16,7 @@ languages:
       title: *title
       description: *desc
 imaging:
-  resampleFilter: CatmullRom
+  resampleFilter: CatmullRom # cspell:disable-line
   quality: 75
   anchor: smart
 
@@ -131,6 +132,9 @@ params:
         desc: >-
           Important information on how to represent your personal or corporate
           contributions or participation in the OpenTelemetry project.
+      - name: Site-build info
+        url: /site/
+        icon: fa-solid fa-hammer
 
   logos:
     hero: opentelemetry-horizontal-color.png
@@ -159,7 +163,7 @@ params:
       icon: far fa-envelope
 
   fonts:
-    - name: Noto Sans
+    - name: Noto Sans # cspell:disable-line
       sizes: [300, 400, 600, 700]
       type: sans_serif
 
@@ -174,6 +178,12 @@ services:
     # real ID is set in the Netlify config. For details, see
     # https://github.com/open-telemetry/opentelemetry.io/issues/1626.
     id: UA-00000000-0 # TODO: switch to G-0000000000 once we get confirmation that it's ok to do so
+
+security:
+  funcs: # cspell:disable-line
+    getenv: # cspell:disable-line
+      # Netlify build env var
+      - ^(BRANCH|BUILD_ID|COMMIT_REF|CONTEXT|DEPLOY_ID|NETLIFY|PULL_REQUEST|REVIEW_ID)$
 
 module:
   mounts:
