@@ -164,7 +164,7 @@ end
 > mutated. You should therefore avoid calling `set_attribute` multiple times and
 > instead assign attributes in bulk with a Hash, either during span creation or
 > with `add_attributes` on an existing span.
-
+>
 > &#9888; Sampling decisions happen at the moment of span creation. If your
 > sampler considers span attributes when deciding to sample a span, then you
 > _must_ pass those attributes as part of span creation. Any attributes added

@@ -323,7 +323,7 @@ that helps show a computation path through a system. Based on what you
 instrumented above and this understanding of span relationships you should
 expect a trace for each execution of the run loop to look like this.
 
-```
+```text
 Run
 ├── Poll
 └── Write

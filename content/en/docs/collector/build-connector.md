@@ -244,6 +244,7 @@ function. The `connector.NewFactory` function instantiates and returns a
 
 4.  Write a `NewFactory` function that instantiates your custom factory for your
     connector(component).
+
     ```go
     // NewFactory creates a factory for example connector.
     func NewFactory() connector.Factory {
@@ -254,10 +255,11 @@ function. The `connector.NewFactory` function instantiates and returns a
         connector.WithTracesToMetrics(createTracesToMetricsConnector, component.StabilityLevelAlpha))
     }
     ```
+
     It should be noted that connectors can support multiple ordered combinations
     of data types.
 
-`factory.go` file once finished:
+Once finished, here is `factory.go`:
 
 ```go
 package exampleconnector
