@@ -23,3 +23,7 @@
   url: https://quarkus.io/
   docsUrl: https://quarkus.io/guides/opentelemetry
   components: [Java]
+- name: RoadRunner
+  url: https://roadrunner.dev/
+  docsUrl: https://roadrunner.dev/docs/lab-otel/current/en
+  components: [Go, PHP]
