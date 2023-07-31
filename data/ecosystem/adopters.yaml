@@ -76,7 +76,8 @@
 - name: GitHub
   url: https://github.com
   components: [Ruby]
-  reference: ''
+  reference: 'https://github.blog/2021-05-26-why-and-how-github-is-adopting-opentelemetry/'
+  referenceTitle: blog post
   contact: ''
 - name: Fulcrum
   url: https://www.fulcrumapp.com/
