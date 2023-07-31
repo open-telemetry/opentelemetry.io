@@ -3,6 +3,7 @@
 {{ $branch := os.Getenv "BRANCH" -}}
 {{ $buildID := os.Getenv "BUILD_ID" -}}
 {{ $commitRef := os.Getenv "COMMIT_REF" -}}
+{{ $deployID := os.Getenv "DEPLOY_ID" -}}
 {{ $isNetlifyBuilt := os.Getenv "NETLIFY" | default false -}}
 {{ $isPR := os.Getenv "PULL_REQUEST" -}}
 {{ $reviewID := os.Getenv "REVIEW_ID" -}}
@@ -22,7 +23,11 @@ Netlify built | `{{ $isNetlifyBuilt }}`
 
 {{ with $buildID -}}
   ID | `{{.}}`
-  Log | [build log](https://app.netlify.com/teams/opentelemetry/builds/{{ . }})
+{{ end -}}
+{{/* */ -}}
+
+{{ with $deployID -}}
+  Deploy log | [{{ . }}](https://app.netlify.com/teams/opentelemetry/builds/{{ . }})
 {{ end -}}
 {{/* */ -}}
 

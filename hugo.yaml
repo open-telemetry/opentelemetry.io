@@ -183,7 +183,7 @@ security:
   funcs: # cspell:disable-line
     getenv: # cspell:disable-line
       # Netlify build env var
-      - ^(BRANCH|BUILD_ID|CONTEXT|COMMIT_REF|NETLIFY|PULL_REQUEST|REVIEW_ID)$
+      - ^(BRANCH|BUILD_ID|COMMIT_REF|CONTEXT|DEPLOY_ID|NETLIFY|PULL_REQUEST|REVIEW_ID)$
 
 module:
   mounts:
