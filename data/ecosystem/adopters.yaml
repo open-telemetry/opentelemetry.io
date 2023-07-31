@@ -6,7 +6,7 @@
   contact: ''
 - name: Care.com
   url: https://www.care.com
-  components: [Collector, Go, Java, Node.JS, .NET]
+  components: [Collector, Go, Java, JavaScript, .NET]
   reference: ''
   contact: ''
 - name: Cloud Scale
@@ -16,8 +16,9 @@
   contact: ''
 - name: eBay
   url: https://www.ebay.com
-  components: [Collector, Java, Javascript, Go]
+  components: [Collector, Java, JavaScript, Go]
   reference: /blog/2022/why-and-how-ebay-pivoted-to-opentelemetry/ # cspell:disable-line
+  referenceTitle: blog post
   contact: https://github.com/vjsamuel
 - name: EcoBee
   url: https://www.ecobee.com/
@@ -27,7 +28,7 @@
   contact: ''
 - name: Farfetch
   url: https://www.farfetch.com/
-  components: [Collector, Java, .NET, Node.JS, Python, Operator]
+  components: [Collector, Java, .NET, JavaScript, Python, Operator]
   reference: /blog/2023/end-user-q-and-a-03/
   referenceTitle: blog post
   contact: ''
