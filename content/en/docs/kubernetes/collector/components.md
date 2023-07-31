@@ -22,6 +22,7 @@ Components covered in this page:
   cluster-level metrics and entity events.
 - [Kubernetes Objects Receiver](#kubernetes-objects-receiver): collects objects,
   such as events, from the Kubernetes API server.
+- [Host Metrics Receiver](#host-metrics-receiver): scrapes host metrics from Kubernetes nodes.
 
 For application traces, metrics, or logs, we recommend the
 [OTLP receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver),
@@ -661,3 +662,11 @@ subjects:
     name: otel-collector-opentelemetry-collector
     namespace: default
 ```
+
+## Host Metrics Receiver
+
+| Deployment Pattern   | Usable                                                   |
+| -------------------- | -------------------------------------------------------- |
+| DaemonSet (Agent)    | Preferred                   |
+| Deployment (Gateway) | but will only collect metrics from the node it is deployed on  |
+| Sidecar              | No                                                       |
