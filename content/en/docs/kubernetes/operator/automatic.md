@@ -392,7 +392,7 @@ kubectl describe otelinst -n <namespace>
 
 Sample output:
 
-```
+```yaml
 Name:         python-instrumentation
 Namespace:    application
 Labels:       app.kubernetes.io/managed-by=opentelemetry-operator
@@ -483,7 +483,7 @@ kubectl get events -n <your_app_namespace>
 
 Which should output something like this:
 
-```
+```text
 53s         Normal   Created             pod/py-otel-server-7f54bf4cbc-p8wmj    Created container opentelemetry-auto-instrumentation
 53s         Normal   Started             pod/py-otel-server-7f54bf4cbc-p8wmj    Started container opentelemetry-auto-instrumentation
 ```

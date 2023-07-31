@@ -116,7 +116,7 @@ by the bucket midpoint. Because the relative error is the same across all
 buckets, we can use the first bucket with the upper bound of the base to make
 the math easy. An example is shown below using a scale of 3.
 
-```
+```bash
 scale = 3
 # For base calculation, see above
 base  = 1.090508
