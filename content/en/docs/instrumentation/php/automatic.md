@@ -99,18 +99,12 @@ The extension can be installed via pecl,
 
    {{< tab pecl >}}pecl install opentelemetry-beta{{< /tab >}}
 
-<!-- The remaining shortcode lines must be unindented so that tab content is unindented in the generated page -->
-<!-- prettier-ignore-start -->
-{{< tab pickle >}}
-php pickle.phar install opentelemetry
-{{< /tab >}}
+   {{< tab pickle >}}php pickle.phar install opentelemetry{{< /tab >}}
 
-{{< tab "php-extension-installer (docker)" >}}
-install-php-extensions opentelemetry
-{{< /tab >}}
+   <!-- prettier-ignore -->
+   {{< tab "php-extension-installer (docker)" >}}install-php-extensions opentelemetry{{< /tab >}}
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
+   {{< /tabpane >}}
 
 3. Add the extension to your `php.ini` file:
 

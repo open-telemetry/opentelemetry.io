@@ -1,9 +1,7 @@
 ---
 title: Building a Connector
-spelling:
-  cSpell:ignore spanmetrics servicegraph exampleconnector struct Errorf
-  cSpell:ignore mapstructure pdata mapstructure pmetric ptrace uber gord
-  cSpell:ignore gomod loggingexporter batchprocessor otlpreceiver Jaglowski
+# prettier-ignore
+cSpell:ignore: batchprocessor Errorf exampleconnector gomod gord Jaglowski loggingexporter mapstructure mapstructure otlpreceiver pdata pmetric ptrace servicegraph spanmetrics struct uber
 ---
 
 ## Connectors in OpenTelemetry
@@ -246,6 +244,7 @@ function. The `connector.NewFactory` function instantiates and returns a
 
 4.  Write a `NewFactory` function that instantiates your custom factory for your
     connector(component).
+
     ```go
     // NewFactory creates a factory for example connector.
     func NewFactory() connector.Factory {
@@ -256,10 +255,11 @@ function. The `connector.NewFactory` function instantiates and returns a
         connector.WithTracesToMetrics(createTracesToMetricsConnector, component.StabilityLevelAlpha))
     }
     ```
+
     It should be noted that connectors can support multiple ordered combinations
     of data types.
 
-`factory.go` file once finished:
+Once finished, here is `factory.go`:
 
 ```go
 package exampleconnector

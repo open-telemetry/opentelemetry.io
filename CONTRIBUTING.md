@@ -47,6 +47,7 @@ files.
     ```
 
 4.  Get npm packages and other prerequisites:
+
     ```sh
     npm install
     ```
