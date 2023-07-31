@@ -1,4 +1,4 @@
-{{ $data := $.Site.Data.ecosystem.adopters }}
+{{ $data := sort $.Site.Data.ecosystem.adopters "name" }}
 Organization[^1] | Components |  Learn more
 ------------ | ---------- |  ----------
 {{- range $data }}
