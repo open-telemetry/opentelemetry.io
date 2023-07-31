@@ -22,7 +22,7 @@ Components covered in this page:
   cluster-level metrics and entity events.
 - [Kubernetes Objects Receiver](#kubernetes-objects-receiver): collects objects,
   such as events, from the Kubernetes API server.
-- [Prometheus Receiver](#kubernetes-objects-receiver): receives metrics in
+- [Prometheus Receiver](#prometheus-receiver): receives metrics in
   [Prometheus](https://prometheus.io/) format.
 
 For application traces, metrics, or logs, we recommend the
@@ -669,17 +669,17 @@ subjects:
 Prometheus is a common metrics format for both Kubernetes and services running
 on Kubernetes. The Prometheus receiver is meant to be a minimal drop-in
 replacement for the collection of those metrics. It supports the full set of
-Prometheus scrape_config options.
+Prometheus `scrape_config` options.
 
 There are a few advanced Prometheus features that the receiver does not support.
 The receiver will return an error if the configuration YAML/code contains any of
 the following:
 
-- alert_config.alertmanagers
-- alert_config.relabel_configs
-- remote_read
-- remote_write
-- rule_files
+- `alert_config.alertmanagers`
+- `alert_config.relabel_configs`
+- `remote_read`
+- `remote_write`
+- `rule_files`
 
 For specific configuration details, see
 [Prometheus Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver).
