@@ -666,6 +666,12 @@ subjects:
 
 ## Prometheus Receiver
 
+| Deployment Pattern   | Usable |
+| -------------------- | ------ |
+| DaemonSet (Agent)    | Yes    |
+| Deployment (Gateway) | Yes    |
+| Sidecar              | No     |
+
 Prometheus is a common metrics format for both Kubernetes and services running
 on Kubernetes. The Prometheus receiver is meant to be a minimal drop-in
 replacement for the collection of those metrics. It supports the full set of
