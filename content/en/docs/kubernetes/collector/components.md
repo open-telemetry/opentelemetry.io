@@ -666,9 +666,10 @@ subjects:
 
 ## Prometheus Receiver
 
-Prometheus is a common format for Kubernetes metrics. The Prometheus receiver is
-meant to be a minimal drop-in replacement for the collection of those metrics.
-It supports the full set of Prometheus scrape_config options.
+Prometheus is a common metrics format for both Kubernetes and services running
+on Kubernetes. The Prometheus receiver is meant to be a minimal drop-in
+replacement for the collection of those metrics. It supports the full set of
+Prometheus scrape_config options.
 
 There are a few advanced Prometheus features that the receiver does not support.
 The receiver will return an error if the configuration YAML/code contains any of
