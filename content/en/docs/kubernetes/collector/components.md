@@ -2,7 +2,7 @@
 title: Important Components for Kubernetes
 linkTitle: Components
 # prettier-ignore
-cSpell:ignore: containerd crio filelog gotime horizontalpodautoscalers iostream k8sattributes kubelet kubeletstats logtag replicasets replicationcontrollers resourcequotas statefulsets varlibdockercontainers varlogpods alertmanagers
+cSpell:ignore: alertmanagers containerd crio filelog gotime horizontalpodautoscalers iostream k8sattributes kubelet kubeletstats logtag replicasets replicationcontrollers resourcequotas statefulsets varlibdockercontainers varlogpods
 ---
 
 The [OpenTelemetry Collector](/docs/collector/) supports many different
