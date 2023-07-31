@@ -1,4 +1,4 @@
-{{ $data := $.Site.Data.ecosystem.integrations -}}
+{{ $data := sort $.Site.Data.ecosystem.integrations "name" -}}
 Name[^1] | Components |  Learn more
 ------------ | ---------- |  ----------
 {{- range $data }}
