@@ -4,7 +4,7 @@ linkTitle: 'End-User Q&A: OTel at Farfetch'
 date: 2023-06-07
 author: '[Adriana Villela](https://github.com/avillela) (Lightstep)'
 body_class: otel-with-contributions-from
-cSpell:ignore: Dyrmishi Farfetch Thanos
+cSpell:ignore: Dyrmishi Farfetch
 ---
 
 With contributions from [Rynn Mancuso](https://github.com/musingvirtual)

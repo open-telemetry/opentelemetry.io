@@ -2,7 +2,7 @@
 title: Configuration
 weight: 20
 # prettier-ignore
-cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca loglevel OIDC oidc opencensus otlphttp pprof prodevent prometheus prometheusremotewrite servicegraph spanevents spanmetrics upsert zipkin zpages
+cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca loglevel OIDC oidc otlphttp pprof prodevent prometheusremotewrite servicegraph spanevents spanmetrics upsert zpages
 ---
 
 <!-- markdownlint-disable link-fragments -->

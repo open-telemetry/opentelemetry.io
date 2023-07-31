@@ -4,9 +4,8 @@ linkTitle: Go App Instrumentation
 date: 2022-08-23
 author: '[Naveh Mevorach](https://github.com/NavehMevorach) (Aspecto)'
 canonical_url: https://www.aspecto.io/blog/opentelemetry-go-getting-started/
-spelling: >-
-  cSpell:ignore Naveh Mevorach Mandalorian bson gonic otelgin otelmongo
-  cSpell:ignore sdktrace semconv todos dogz aspecto
+# prettier-ignore
+cSpell:ignore: bson dogz gonic Mandalorian Mevorach Naveh otelgin otelmongo sdktrace todos
 ---
 
 In this blog post, you will learn hands-on how to create and visualize traces
