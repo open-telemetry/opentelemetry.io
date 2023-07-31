@@ -17,7 +17,7 @@ Netlify built | `{{ $isNetlifyBuilt }}`
 
 {{/* Don't show timestamp for local builds to avoid affecting site diffs. */ -}}
 {{ with $isNetlifyBuilt -}}
-  Date/time[^date] | {{ now.Format "2006-01-02 15:04" }}
+  Date/time[^date] | {{ now.Format "2006-01-02 15:04 MST" }}
 {{ end -}}
 {{/* */ -}}
 
