@@ -7,6 +7,7 @@
 {{ $isNetlifyBuilt := os.Getenv "NETLIFY" | default false -}}
 {{ $isPR := os.Getenv "PULL_REQUEST" -}}
 {{ $reviewID := os.Getenv "REVIEW_ID" -}}
+{{ $now := now -}}
 
 Netlify build information:
 
@@ -17,7 +18,7 @@ Netlify built | `{{ $isNetlifyBuilt }}`
 
 {{/* Don't show timestamp for local builds to avoid affecting site diffs. */ -}}
 {{ with $isNetlifyBuilt -}}
-  Date/time[^date] | {{ now.Format "2006-01-02 15:04 MST" }}
+  Date/time[^date] | {{ $now.Format "2006-01-02 15:04 MST" }}[^local-time]
 {{ end -}}
 {{/* */ -}}
 
@@ -55,3 +56,12 @@ Deploy context | {{ os.Getenv "CONTEXT" | default "local" }}
 {{/* End of table */}}
 
 [^date]: Approximate build timestamp.
+[^local-time]: In your timezone: <span id="local-time">unknown</span>.
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var options = { hour: '2-digit', hour12: false, minute: '2-digit', timeZoneName: 'short' };
+  var buildDate = new Date("{{ $now.Format "2006-01-02T15:04:05Z07:00" }}");
+  document.getElementById("local-time").innerText = buildDate.toLocaleString(undefined, options);
+});
+</script>
