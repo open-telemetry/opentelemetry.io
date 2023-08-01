@@ -4083,6 +4083,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:39:10.996228-04:00"
   },
+  "https://prometheus.io/docs/prometheus/1.8/configuration/configuration/#scrape_config": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-31T15:39:51.143898-06:00"
+  },
   "https://prometheus.io/docs/prometheus/latest/configuration/configuration/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-01T15:55:26.349478-04:00"
