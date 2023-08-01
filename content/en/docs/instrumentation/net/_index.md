@@ -17,7 +17,7 @@ stable, the [OTLP Log Exporter][] is still non-stable.
 ## Version Support
 
 OpenTelemetry for .NET supports all officially supported versions of
-[.NET Core](https://dotnet.microsoft.com/download/dotnet-core) and
+[.NET](https://dotnet.microsoft.com/download/dotnet-core) and
 [.NET Framework](https://dotnet.microsoft.com/download/dotnet-framework) except
 for .NET Framework 3.5 SP1.
 
