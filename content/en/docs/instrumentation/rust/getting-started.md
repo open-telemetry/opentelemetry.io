@@ -1,15 +1,13 @@
 ---
 title: Getting Started
-# prettier-ignore
-cSpell:ignore: Actix tokio rolldice println eprintln
+cSpell:ignore: Actix eprintln println rolldice tokio
 weight: 10
 ---
 
 This page will show you how to get started with OpenTelemetry in Rust.
 
-You will learn how you can instrument a simple Rust application,
-in such a way that [traces][] are emitted to the
-console.
+You will learn how you can instrument a simple Rust application, in such a way
+that [traces][] are emitted to the console.
 
 ## Prerequisites
 
@@ -20,10 +18,9 @@ Ensure that you have the following installed locally:
 
 ## Example Application
 
-The following example uses a basic
-[hyper](https://hyper.rs/) application. If you are
-not using hyper, that's OK — you can use OpenTelemetry Rust with other HTTP
-implementations as well, such as Actix Web and Tide. For a complete list of
+The following example uses a basic [hyper](https://hyper.rs/) application. If
+you are not using hyper, that's OK — you can use OpenTelemetry Rust with other
+HTTP implementations as well, such as Actix Web and Tide. For a complete list of
 libraries for supported frameworks, see the
 [registry](/ecosystem/registry/?component=instrumentation&language=rust).
 
@@ -55,8 +52,8 @@ rand = { version = "0.8" }
 
 ### Create and launch an HTTP Server
 
-In that same folder, create a file called `dice_server.rs` and add the
-following code to the file:
+In that same folder, create a file called `dice_server.rs` and add the following
+code to the file:
 
 ```rust
 use hyper::service::{make_service_fn, service_fn};
@@ -135,7 +132,7 @@ async fn handle(req: Request<Body>) -> Result<Response<Body>, Infallible> {
     let _span = tracer
         .span_builder(format!("{} {}", req.method(), req.uri().path()))
         .with_kind(SpanKind::Server)
-        .start(&tracer);    
+        .start(&tracer);
 
     match (req.method(), req.uri().path()) {
         (&Method::GET, "/rolldice") => {
@@ -146,7 +143,7 @@ async fn handle(req: Request<Body>) -> Result<Response<Body>, Infallible> {
             *response.status_mut() = StatusCode::NOT_FOUND;
         }
     };
-    
+
     Ok(response)
 }
 
@@ -165,7 +162,7 @@ async fn main() {
 
     let make_svc = make_service_fn(|_conn| async { Ok::<_, Infallible>(service_fn(handle)) });
 
-    let server = 
+    let server =
         Server::bind(&addr).serve(make_svc);
 
     println!("Listening on {addr}");
@@ -183,13 +180,46 @@ $ cargo run --bin dice_server
 Listening on 127.0.0.1:8080
 ```
 
-When you send a request to the server at <http://localhost:8080/rolldice>, you'll see a span being emitted
-to the console:
+When you send a request to the server at <http://localhost:8080/rolldice>,
+you'll see a span being emitted to the console:
 
 ```json
-{"resourceSpans":[{"resource":{"attributes":[{"key":"service.name","value":{"stringValue":"unknown_service"}}]},"scopeSpans":[{"scope":{"name":"dice_server"},"spans":[{"traceId":"43398bc750417e7098d574f7508be544","spanId":"74e883a54af009b9","parentSpanId":"","name":"GET /rolldice","kind":2,"startTimeUnixNano":1690884166561479000,"endTimeUnixNano":1690884166561488000,"attributes":[],"droppedAttributesCount":0,"droppedEventsCount":0,"droppedLinksCount":0,"status":{}}]}]}]}
+{
+  "resourceSpans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": { "stringValue": "unknown_service" }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": { "name": "dice_server" },
+          "spans": [
+            {
+              "traceId": "43398bc750417e7098d574f7508be544",
+              "spanId": "74e883a54af009b9",
+              "parentSpanId": "",
+              "name": "GET /rolldice",
+              "kind": 2,
+              "startTimeUnixNano": 1690884166561479000,
+              "endTimeUnixNano": 1690884166561488000,
+              "attributes": [],
+              "droppedAttributesCount": 0,
+              "droppedEventsCount": 0,
+              "droppedLinksCount": 0,
+              "status": {}
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
 ```
-
 
 ## What next?
 
