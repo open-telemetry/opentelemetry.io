@@ -98,9 +98,10 @@ The extension can be installed via pecl,
    {{< tabpane lang=shell >}}
 
    {{< tab pecl >}}pecl install opentelemetry-beta{{< /tab >}}
+   <!-- prettier-ignore-start -->
 
    {{< tab pickle >}}php pickle.phar install opentelemetry{{< /tab >}}
-
+   <!-- prettier-ignore-end -->
    <!-- prettier-ignore -->
    {{< tab "php-extension-installer (docker)" >}}install-php-extensions opentelemetry{{< /tab >}}
 
