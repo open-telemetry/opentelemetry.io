@@ -673,13 +673,13 @@ subjects:
 | Sidecar              | No     |
 
 Prometheus is a common metrics format for both Kubernetes and services running
-on Kubernetes. The Prometheus receiver is meant to be a minimal drop-in
+on Kubernetes. The Prometheus receiver is a minimal drop-in
 replacement for the collection of those metrics. It supports the full set of
 Prometheus
 [`scrape_config` options](https://prometheus.io/docs/prometheus/1.8/configuration/configuration/#scrape_config).
 
 There are a few advanced Prometheus features that the receiver does not support.
-The receiver will return an error if the configuration YAML/code contains any of
+The receiver returns an error if the configuration YAML/code contains any of
 the following:
 
 - `alert_config.alertmanagers`
@@ -695,14 +695,14 @@ The Prometheus receiver is
 [Stateful](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/standard-warnings.md#statefulness),
 which means there are important details to consider when using it:
 
-- The collector cannot auto-scale the scraping when multiple replicas of the
-  collector are run.
+- The collector cannot auto-scale the scraping process when multiple replicas
+   of the collector are run.
 - When running multiple replicas of the collector with the same config, it will
   scrape the targets multiple times.
-- Users need to configure each replica with different scraping configuration if
-  they want to manually shard the scraping.
+- Users need to configure each replica with a different scraping configuration if
+  they want to manually shard the scraping process.
 
-To make configuring the Prometheus receiver easier the OpenTelemetry Operator
+To make configuring the Prometheus receiver easier, the OpenTelemetry Operator
 includes an optional component called the
 [Target Allocator](../../operator/target-allocator). This component can be used
 to tell a collector which Prometheus endpoints it should scrape.
