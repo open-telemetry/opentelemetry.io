@@ -2,7 +2,7 @@
 title: Important Components for Kubernetes
 linkTitle: Components
 # prettier-ignore
-cSpell:ignore: containerd crio filelog gotime horizontalpodautoscalers hostfs hostmetrics iostream k8sattributes kubelet kubeletstats logtag replicasets replicationcontrollers resourcequotas statefulsets varlibdockercontainers varlogpods
+cSpell:ignore: alertmanagers containerd crio filelog gotime horizontalpodautoscalers hostfs hostmetrics iostream k8sattributes kubelet kubeletstats logtag replicasets replicationcontrollers resourcequotas statefulsets varlibdockercontainers varlogpods
 ---
 
 The [OpenTelemetry Collector](/docs/collector/) supports many different
@@ -22,6 +22,8 @@ Components covered in this page:
   cluster-level metrics and entity events.
 - [Kubernetes Objects Receiver](#kubernetes-objects-receiver): collects objects,
   such as events, from the Kubernetes API server.
+- [Prometheus Receiver](#prometheus-receiver): receives metrics in
+  [Prometheus](https://prometheus.io/) format.
 - [Host Metrics Receiver](#host-metrics-receiver): scrapes host metrics from
   Kubernetes nodes.
 
@@ -663,6 +665,51 @@ subjects:
     name: otel-collector-opentelemetry-collector
     namespace: default
 ```
+
+## Prometheus Receiver
+
+| Deployment Pattern   | Usable |
+| -------------------- | ------ |
+| DaemonSet (Agent)    | Yes    |
+| Deployment (Gateway) | Yes    |
+| Sidecar              | No     |
+
+Prometheus is a common metrics format for both Kubernetes and services running
+on Kubernetes. The Prometheus receiver is a minimal drop-in replacement for the
+collection of those metrics. It supports the full set of Prometheus
+[`scrape_config` options](https://prometheus.io/docs/prometheus/1.8/configuration/configuration/#scrape_config).
+
+There are a few advanced Prometheus features that the receiver does not support.
+The receiver returns an error if the configuration YAML/code contains any of the
+following:
+
+- `alert_config.alertmanagers`
+- `alert_config.relabel_configs`
+- `remote_read`
+- `remote_write`
+- `rule_files`
+
+For specific configuration details, see
+[Prometheus Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver).
+
+The Prometheus receiver is
+[Stateful](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/standard-warnings.md#statefulness),
+which means there are important details to consider when using it:
+
+- The collector cannot auto-scale the scraping process when multiple replicas of
+  the collector are run.
+- When running multiple replicas of the collector with the same config, it will
+  scrape the targets multiple times.
+- Users need to configure each replica with a different scraping configuration
+  if they want to manually shard the scraping process.
+
+To make configuring the Prometheus receiver easier, the OpenTelemetry Operator
+includes an optional component called the
+[Target Allocator](../../operator/target-allocator). This component can be used
+to tell a collector which Prometheus endpoints it should scrape.
+
+For more information on the design of the receiver, see
+[Design](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/DESIGN.md).
 
 ## Host Metrics Receiver
 
