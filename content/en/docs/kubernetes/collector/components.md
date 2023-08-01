@@ -669,15 +669,15 @@ subjects:
 | Deployment Pattern   | Usable                                                        |
 | -------------------- | ------------------------------------------------------------- |
 | DaemonSet (Agent)    | Preferred                                                     |
-| Deployment (Gateway) | but will only collect metrics from the node it is deployed on |
+| Deployment (Gateway) | Only collects metrics from the node it is deployed on |
 | Sidecar              | No                                                            |
 
 The Host Metrics Receiver collects metrics from a host using a variety of
-scrappers. There is some overlap with the
-[Kubeletstats Receiver](#kubeletstats-receiver) so if you decide to use both it
-may be worth it to disable these duplicate metrics.
+scrapers. There is some overlap with the
+[Kubeletstats Receiver](#kubeletstats-receiver) so if you decide to use both,
+it may be worth it to disable these duplicate metrics.
 
-In Kubernetes the receiver needs access to the `hostfs` volume to work properly.
+In Kubernetes, the receiver needs access to the `hostfs` volume to work properly.
 If you're using the [OpenTelemetry Collector Helm chart](../../helm/collector/)
 you can use the
 [`hostMetrics` preset](../../helm/collector/#host-metrics-preset) to get
