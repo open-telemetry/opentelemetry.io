@@ -471,6 +471,11 @@ You'll also want to configure an appropriate exporter to
 [export your telemetry data](/docs/instrumentation/js/exporters) to one or more
 telemetry backends.
 
+If you'd like to explore a more complex example, take a look at the
+[OpenTelemetry Demo](/docs/demo/), which includes the JavaScript based
+[Payment Service](/docs/demo/services/payment/) and the TypeScript based
+[Frontend Service](/docs/demo/services/frontend/).
+
 ## Troubleshooting
 
 Did something go wrong? You can enable diagnostic logging to validate that

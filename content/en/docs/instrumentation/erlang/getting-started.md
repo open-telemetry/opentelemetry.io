@@ -585,3 +585,7 @@ Enrich your instrumentation with more
 You'll also want to configure an appropriate exporter to
 [export your telemetry data](/docs/instrumentation/erlang/exporters) to one or
 more telemetry backends.
+
+If you'd like to explore a more complex example, take a look at the
+[OpenTelemetry Demo](/docs/demo/), which includes the Erlang/Elixir based
+[Feature Flag Service](/docs/demo/services/feature-flag/).
