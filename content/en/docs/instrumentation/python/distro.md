@@ -1,5 +1,5 @@
 ---
-spelling: cSpell:ignore configurator distro distros loglevel
+cSpell:ignore: configurator distro distros loglevel
 title: OpenTelemetry Distro
 linkTitle: Distro
 weight: 110

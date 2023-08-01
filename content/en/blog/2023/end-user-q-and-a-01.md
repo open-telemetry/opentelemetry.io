@@ -7,7 +7,7 @@ aliases:
   - /blog/2023/end-user-q-and-a-series-otel-and-graphql
   - /blog/2023/otel-end-user-q-and-a-series-otel-and-graphql
 body_class: otel-with-contributions-from
-spelling: cSpell:ignore Deno
+cSpell:ignore: Deno
 ---
 
 With contributions from [Rynn Mancuso](https://github.com/musingvirtual)

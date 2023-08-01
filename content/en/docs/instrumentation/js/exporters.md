@@ -1,7 +1,6 @@
 ---
 title: Exporters
 weight: 50
-spelling: cSpell:ignore proto nginx openzipkin
 ---
 
 In order to visualize and analyze your traces, you will need to export them to a

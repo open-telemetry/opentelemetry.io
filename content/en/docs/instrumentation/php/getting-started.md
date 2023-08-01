@@ -3,8 +3,8 @@ title: Getting Started
 description: Get up and running with OpenTelemetry for PHP.
 aliases: [/docs/instrumentation/php/getting_started]
 weight: 10
-spelling: cSpell:ignore Wordpress Symfony Laravel rolldice autoload strval PECL
-spelling: cSpell:ignore darwin pecl autoloaded myapp
+# prettier-ignore
+cSpell:ignore: autoload autoloaded darwin Laravel myapp PECL pecl rolldice strval Symfony Wordpress
 ---
 
 OpenTelemetry for PHP can be used to generate and export [traces][], [metrics][]

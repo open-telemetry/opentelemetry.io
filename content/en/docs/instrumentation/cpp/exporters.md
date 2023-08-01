@@ -1,7 +1,7 @@
 ---
 title: Exporters
 weight: 50
-spelling: cSpell:ignore ostream jaegertracing millis chrono
+cSpell:ignore: chrono millis ostream
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->

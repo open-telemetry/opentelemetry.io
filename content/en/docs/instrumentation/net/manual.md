@@ -3,7 +3,6 @@ title: Manual Instrumentation
 linkTitle: Manual
 weight: 30
 description: Manual instrumentation for OpenTelemetry .NET
-spelling: cSpell:ignore discoverability
 ---
 
 {{% docs/instrumentation/manual-intro %}}
@@ -79,7 +78,7 @@ for ASP.NET Core setup.
 
 First, ensure that you have the right packages:
 
-```
+```sh
 dotnet add package OpenTelemetry
 dotnet add package OpenTelemetry.Extensions.Hosting
 dotnet add package OpenTelemetry.Exporter.Console
@@ -87,7 +86,7 @@ dotnet add package OpenTelemetry.Exporter.Console
 
 Then you can install the Instrumentation package
 
-```
+```sh
 dotnet add package OpenTelemetry.Instrumentation.AspNetCore --prerelease
 ```
 

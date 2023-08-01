@@ -4,7 +4,7 @@ linkTitle: Outreachy Call for participation '23
 date: 2023-02-02
 author: >-
   [Juraci Paixão Kröhling](https://twitter.com/jpkrohling) (Grafana Labs)
-spelling: cSpell:ignore outreachy
+cSpell:ignore: outreachy
 ---
 
 It's almost time for the next Outreachy cohort and I

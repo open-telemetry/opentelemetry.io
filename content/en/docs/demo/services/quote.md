@@ -2,7 +2,7 @@
 title: Quote Service
 linkTitle: Quote
 aliases: [/docs/demo/services/quoteservice]
-spelling: cSpell:ignore autoloading autoload getquote
+cSpell:ignore: autoload autoloading getquote
 ---
 
 This service is responsible for calculating shipping costs, based on the number

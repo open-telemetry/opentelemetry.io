@@ -3,7 +3,7 @@ title: OpenTelemetry PHP Auto-Instrumentation
 linkTitle: PHP Auto-Instrumentation
 date: 2023-03-21
 author: '[Przemek Delewski](https://github.com/pdelewski/) (Sumo Logic)'
-spelling: cSpell:ignore Przemek Delewski zend classname functionname laravel
+cSpell:ignore: classname Delewski functionname laravel Przemek
 ---
 
 Automatic Instrumentation is a process of adding tracing capabilities into user

@@ -2,7 +2,7 @@
 title: Automatic instrumentation
 linkTitle: Automatic
 aliases: [/docs/instrumentation/ruby/configuring_automatic_instrumentation]
-spelling: cSpell:ignore faraday sinatra
+cSpell:ignore: faraday sinatra
 weight: 20
 ---
 

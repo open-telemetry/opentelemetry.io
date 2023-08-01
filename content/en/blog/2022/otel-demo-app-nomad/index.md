@@ -4,9 +4,8 @@ linkTitle: OTel Demo App on Nomad
 date: 2022-12-12
 author: >-
   [Adriana Villela](https://github.com/avillela) (Lightstep)
-spelling: cSpell:ignore Villela hashi qube Daniela servian hashiqube macbook
-spelling: cSpell:ignore jobspec ffspostgres loadgenerator mozy lookin
-spelling: cSpell:ignore entrypoints jobspecs shoutout Luiz Aoqui Riaan
+# prettier-ignore
+cSpell:ignore: Aoqui Daniela entrypoints ffspostgres hashi hashiqube jobspec jobspecs loadgenerator lookin Luiz macbook mozy qube Riaan servian shoutout
 ---
 
 Y’all… I’m so excited, because I finally got to work on an item on my tech
@@ -84,7 +83,7 @@ which we access as subdomains of localhost. In order ensure that we can access
 our Traefik-exposed services (and also the Traefik dashboard itself, you’ll need
 to add the following entries to `/etc/hosts` on your host machine:
 
-```
+```properties
 127.0.0.1   traefik.localhost
 127.0.0.1   otel-demo.localhost
 ```
@@ -190,7 +189,7 @@ Since we’re running the jobs in
 Nomad won’t wait to start the next job until the current one has deployed
 successfully. This means that your output will look something like this:
 
-```
+```yaml
 Job registration successful
 Evaluation ID: d3eaa396-954e-241f-148d-6720c35f34bf
 Job registration successful

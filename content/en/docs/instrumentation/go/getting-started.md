@@ -1,8 +1,7 @@
 ---
 title: Getting Started
 weight: 10
-spelling: cSpell:ignore struct fscanf chan println strconv stdouttrace
-spelling: cSpell:ignore codebases errorf
+cSpell:ignore: chan codebases fscanf println stdouttrace strconv struct
 ---
 
 Welcome to the OpenTelemetry for Go getting started guide! This guide will walk
@@ -324,7 +323,7 @@ that helps show a computation path through a system. Based on what you
 instrumented above and this understanding of span relationships you should
 expect a trace for each execution of the run loop to look like this.
 
-```
+```text
 Run
 ├── Poll
 └── Write

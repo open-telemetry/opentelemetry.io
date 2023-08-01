@@ -4,10 +4,8 @@ linkTitle: K8s Runtime Observability
 date: 2023-06-05
 author: '[Daniel Dias](https://github.com/danielbdias) (Tracetest)'
 body_class: otel-with-contributions-from
-spelling: cSpell:ignore apiserver choren tracetest kube kubelet containerd
-spelling: cSpell:ignore Adnan Rahić Hamric kubetracing healthcheck apparmor
-spelling: cSpell:ignore snapshotter stargz keychain identitytoken runc
-spelling: cSpell:ignore tracingcluster
+# prettier-ignore
+cSpell:ignore: Adnan apiserver apparmor choren containerd Hamric healthcheck identitytoken keychain kube kubelet kubetracing Rahić runc snapshotter stargz tracetest tracingcluster
 ---
 
 With contributions from [Sebastian Choren](https://github.com/schoren),
@@ -361,7 +359,7 @@ This command will create a Kubernetes cluster with version `v1.17.1`, and set up
 in three docker containers on your machine. If you run the command
 `kubectl cluster-info` now, you will see this output:
 
-```
+```text
 Kubernetes control plane is running at https://0.0.0.0:60503
 CoreDNS is running at https://0.0.0.0:60503/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
 Metrics-server is running at https://0.0.0.0:60503/api/v1/namespaces/kube-system/services/https:metrics-server:https/proxy
@@ -371,7 +369,7 @@ Going back to the logs of the observability environment, you should see some
 spans of internal Kubernetes operations being published in OpenTelemetry
 Collector, like this:
 
-```
+```text
 Span #90
     Trace ID       : 03a7bf9008d54f02bcd4f14aa5438202
     Parent ID      :

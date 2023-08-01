@@ -1,9 +1,8 @@
 ---
 title: Important Components for Kubernetes
 linkTitle: Components
-spelling:
-  cSpell:ignore filelog crio containerd logtag gotime iostream varlogpods
-  cSpell:ignore varlibdockercontainers
+# prettier-ignore
+cSpell:ignore: alertmanagers containerd crio filelog gotime horizontalpodautoscalers iostream k8sattributes kubelet kubeletstats logtag replicasets replicationcontrollers resourcequotas statefulsets varlibdockercontainers varlogpods
 ---
 
 The [OpenTelemetry Collector](/docs/collector/) supports many different
@@ -11,16 +10,255 @@ receivers and processors to facilitate monitoring Kubernetes. This section
 covers the components that are most important for collecting Kubernetes data and
 enhancing it.
 
-Important Components:
+Components covered in this page:
 
-- [Filelog Receiver](#filelog-receiver) - used to collect Kubernetes logs and
+- [Kubernetes Attributes Processor](#kubernetes-attributes-processor): adds
+  Kubernetes metadata to incoming telemetry.
+- [Kubeletstats Receiver](#kubeletstats-receiver): pulls pod metrics from the
+  API server on a kubelet.
+- [Filelog Receiver](#filelog-receiver): collects Kubernetes logs and
   application logs written to stdout/stderr.
+- [Kubernetes Cluster Receiver](#kubernetes-cluster-receiver): collects
+  cluster-level metrics and entity events.
+- [Kubernetes Objects Receiver](#kubernetes-objects-receiver): collects objects,
+  such as events, from the Kubernetes API server.
+- [Prometheus Receiver](#prometheus-receiver): receives metrics in
+  [Prometheus](https://prometheus.io/) format.
 
 For application traces, metrics, or logs, we recommend the
 [OTLP receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver),
 but any receiver that fits your data is appropriate.
 
+## Kubernetes Attributes Processor
+
+| Deployment Pattern   | Usable |
+| -------------------- | ------ |
+| DaemonSet (Agent)    | Yes    |
+| Deployment (Gateway) | Yes    |
+| Sidecar              | No     |
+
+The Kubernetes Attributes Processor automatically discovers Kubernetes pods,
+extracts their metadata, and adds the extracted metadata to spans, metrics, and
+logs as resource attributes.
+
+**The Kubernetes Attributes Processor is one of the most important components
+for a collector running in Kubernetes. Any collector receiving application data
+should use it.** Because it adds Kubernetes context to your telemetry, the
+Kubernetes Attributes Processor lets you correlate your application's traces,
+metrics, and logs signals with your Kubernetes telemetry, such as pod metrics
+and traces.
+
+The Kubernetes Attributes Processor uses the Kubernetes API to discover all pods
+running in a cluster and keeps a record of their IP addresses, pod UIDs, and
+interesting metadata. By default, data passing through the processor is
+associated to a pod via the incoming request's IP address, but different rules
+can be configured. Since the processor uses the Kubernetes API, it requires
+special permissions (see example below). If you're using the
+[OpenTelemetry Collector Helm chart](../../helm/collector/) you can use the
+[`kubernetesAttributes` preset](../../helm/collector/#kubernetes-attributes-preset)
+to get started.
+
+The following attributes are added by default:
+
+- `k8s.namespace.name`
+- `k8s.pod.name`
+- `k8s.pod.uid`
+- `k8s.pod.start_time`
+- `k8s.deployment.name`
+- `k8s.node.name`
+
+The Kubernetes Attributes Processor can also set custom resource attributes for
+traces, metrics, and logs using the Kubernetes labels and Kubernetes annotations
+you've added to your pods and namespaces.
+
+```yaml
+k8sattributes:
+  auth_type: 'serviceAccount'
+  extract:
+    metadata: # extracted from the pod
+      - k8s.namespace.name
+      - k8s.pod.name
+      - k8s.pod.start_time
+      - k8s.pod.uid
+      - k8s.deployment.name
+      - k8s.node.name
+    annotations:
+      # Extracts the value of a pod annotation with key `annotation-one` and inserts it as a resource attribute with key `a1`
+      - tag_name: a1
+        key: annotation-one
+        from: pod
+      # Extracts the value of a namespaces annotation with key `annotation-two` with regexp and inserts it as a resource  with key `a2`
+      - tag_name: a2
+        key: annotation-two
+        regex: field=(?P<value>.+)
+        from: namespace
+    labels:
+      # Extracts the value of a namespaces label with key `label1` and inserts it as a resource attribute with key `l1`
+      - tag_name: l1
+        key: label1
+        from: namespace
+      # Extracts the value of a pod label with key `label2` with regexp and inserts it as a resource attribute with key `l2`
+      - tag_name: l2
+        key: label2
+        regex: field=(?P<value>.+)
+        from: pod
+  pod_association: # How to associate the data to a pod (order matters)
+    - sources: # First try to use the value of the resource attribute k8s.pod.ip
+        - from: resource_attribute
+          name: k8s.pod.ip
+    - sources: # Then try to use the value of the resource attribute k8s.pod.uid
+        - from: resource_attribute
+          name: k8s.pod.uid
+    - sources: # If neither of those work, use the request's connection to get the pod IP.
+        - from: connection
+```
+
+There are also special configuration options for when the collector is deployed
+as a Kubernetes DaemonSet (agent) or as a Kubernetes Deployment (gateway). For
+details, see
+[Deployment Scenarios](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor#deployment-scenarios)
+
+For Kubernetes Attributes Processor configuration details, see
+[Kubernetes Attributes Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor).
+
+Since the processor uses the Kubernetes API, it needs the correct permission to
+work correctly. For most use cases, you should give the service account running
+the collector the following permissions via a ClusterRole.
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: collector
+  namespace: <OTEL_COL_NAMESPACE>
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: otel-collector
+rules:
+  - apiGroups:
+      - ''
+    resources:
+      - 'pods'
+      - 'namespaces'
+    verbs:
+      - 'get'
+      - 'watch'
+      - 'list'
+  - apiGroups:
+      - 'apps'
+    resources:
+      - 'replicasets'
+    verbs:
+      - 'get'
+      - 'list'
+      - 'watch'
+  - apiGroups:
+      - 'extensions'
+    resources:
+      - 'replicasets'
+    verbs:
+      - 'get'
+      - 'list'
+      - 'watch'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: otel-collector
+subjects:
+  - kind: ServiceAccount
+    name: collector
+    namespace: <OTEL_COL_NAMESPACE>
+roleRef:
+  kind: ClusterRole
+  name: otel-collector
+  apiGroup: rbac.authorization.k8s.io
+```
+
+## Kubeletstats Receiver
+
+| Deployment Pattern   | Usable                                                             |
+| -------------------- | ------------------------------------------------------------------ |
+| DaemonSet (Agent)    | Preferred                                                          |
+| Deployment (Gateway) | Yes, but will only collect metrics from the node it is deployed on |
+| Sidecar              | No                                                                 |
+
+Each Kubernetes node runs a kubelet that includes an API server. The Kubernetes
+Receiver connects to that kubelet via the API server to collect metrics about
+the node and the workloads running on the node.
+
+There are different methods for authentication, but typically a service account
+is used. The service account will also need proper permissions to pull data from
+the Kubelet (see below). If you're using the
+[OpenTelemetry Collector Helm chart](../../helm/collector/) you can use the
+[`kubeletMetrics` preset](../../helm/collector/#kubelet-metrics-preset) to get
+started.
+
+By default, metrics will be collected for pods and nodes, but you can configure
+the receiver to collect container and volume metrics as well. The receiver also
+allows configuring how often the metrics are collected:
+
+```yaml
+receivers:
+  kubeletstats:
+    collection_interval: 10s
+    auth_type: 'serviceAccount'
+    endpoint: '${env:K8S_NODE_NAME}:10250'
+    insecure_skip_verify: true
+    metric_groups:
+      - node
+      - pod
+      - container
+```
+
+For specific details about which metrics are collected, see
+[Default Metrics](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/kubeletstatsreceiver/documentation.md).
+For specific configuration details, see
+[Kubeletstats Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/kubeletstatsreceiver).
+
+Since the processor uses the Kubernetes API, it needs the correct permission to
+work correctly. For most use cases, you should give the service account running
+the Collector the following permissions via a ClusterRole.
+
+```yaml
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: otel-collector
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: otel-collector
+rules:
+  - apiGroups: ['']
+    resources: ['nodes/stats']
+    verbs: ['get', 'watch', 'list']
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: otel-collector
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: otel-collector
+subjects:
+  - kind: ServiceAccount
+    name: otel-collector
+    namespace: default
+```
+
 ## Filelog Receiver
+
+| Deployment Pattern   | Usable                                                          |
+| -------------------- | --------------------------------------------------------------- |
+| DaemonSet (Agent)    | Preferred                                                       |
+| Deployment (Gateway) | Yes, but will only collect logs from the node it is deployed on |
+| Sidecar              | Yes, but this would be considered advanced configuration        |
 
 The Filelog Receiver tails and parses logs from files. Although it's not a
 Kubernetes-specific receiver, it is still the de facto solution for collecting
@@ -159,3 +397,314 @@ spec:
             path: /var/lib/docker/containers
         ...
 ```
+
+## Kubernetes Cluster Receiver
+
+| Deployment Pattern   | Usable                                                   |
+| -------------------- | -------------------------------------------------------- |
+| DaemonSet (Agent)    | Yes, but will result in duplicate data                   |
+| Deployment (Gateway) | Yes, but more than one replica results in duplicate data |
+| Sidecar              | No                                                       |
+
+The Kubernetes Cluster Receiver collects metrics and entity events about the
+cluster as a whole using the Kubernetes API server. Use this receiver to answer
+questions about pod phases, node conditions, and other cluster-wide questions.
+Since the receiver gathers telemetry for the cluster as a whole, only one
+instance of the receiver is needed across the cluster in order to collect all
+the data.
+
+There are different methods for authentication, but typically a service account
+is used. The service account also needs proper permissions to pull data from the
+Kubernetes API server (see below). If you're using the
+[OpenTelemetry Collector Helm chart](../../helm/collector/) you can use the
+[`clusterMetrics` preset](../../helm/collector/#cluster-metrics-preset) to get
+started.
+
+For node conditions, the receiver only collects `Ready` by default, but it can
+be configured to collect more. The receiver can also be configured to report a
+set of allocatable resources, such as `cpu` and `memory`:
+
+```yaml
+k8s_cluster:
+  auth_type: serviceAccount
+  node_conditions_to_report:
+    - Ready
+    - MemoryPressure
+  allocatable_types_to_report:
+    - cpu
+    - memory
+```
+
+For specific configuration details, see
+[Kubernetes Cluster Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8sclusterreceiver).
+
+Since the processor uses the Kubernetes API, it needs the correct permission to
+work correctly. For most use cases, you should give the service account running
+the Collector the following permissions via a ClusterRole.
+
+```yaml
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: otel-collector-opentelemetry-collector
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: otel-collector-opentelemetry-collector
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - events
+      - namespaces
+      - namespaces/status
+      - nodes
+      - nodes/spec
+      - pods
+      - pods/status
+      - replicationcontrollers
+      - replicationcontrollers/status
+      - resourcequotas
+      - services
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - apps
+    resources:
+      - daemonsets
+      - deployments
+      - replicasets
+      - statefulsets
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+  - extensions
+    resources:
+    - daemonsets
+    - deployments
+    - replicasets
+    verbs:
+    - get
+    - list
+    - watch
+  - apiGroups:
+    - batch
+    resources:
+      - jobs
+      - cronjobs
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - autoscaling
+    resources:
+      - horizontalpodautoscalers
+    verbs:
+      - get
+      - list
+      - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: otel-collector-opentelemetry-collector
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: otel-collector-opentelemetry-collector
+subjects:
+  - kind: ServiceAccount
+    name: otel-collector-opentelemetry-collector
+    namespace: default
+```
+
+## Kubernetes Objects Receiver
+
+| Deployment Pattern   | Usable                                                   |
+| -------------------- | -------------------------------------------------------- |
+| DaemonSet (Agent)    | Yes, but will result in duplicate data                   |
+| Deployment (Gateway) | Yes, but more than one replica results in duplicate data |
+| Sidecar              | No                                                       |
+
+The Kubernetes Objects receiver collects, either by pulling or watching, objects
+from the Kubernetes API server. The most common use case for this receiver is
+watching Kubernetes events, but it can be used to collect any type of Kubernetes
+object. Since the receiver gathers telemetry for the cluster as a whole, only
+one instance of the receiver is needed across the cluster in order to collect
+all the data.
+
+Currently only a service account can be used for authentication. The service
+account also needs proper permissions to pull data from the Kubernetes API
+server (see below). If you're using the
+[OpenTelemetry Collector Helm chart](../../helm/collector/) and you want to
+ingest events, you can use the
+[`kubernetesEvents` preset](../../helm/collector/#cluster-metrics-preset) to get
+started.
+
+For objects configuring for pulling, the receiver will use the Kubernetes API to
+periodically list all the objects in the Cluster. Each object will be converted
+to its own log. For objects configured for watching, the receiver creates a a
+stream with the Kubernetes API and which receives updates as the objects change.
+
+To see which objects are available for collection run in your cluster run
+`kubectl api-resources`:
+
+<!-- cspell:disable -->
+
+```console
+kubeclt api-resources
+NAME                              SHORTNAMES   APIVERSION                             NAMESPACED   KIND
+bindings                                       v1                                     true         Binding
+componentstatuses                 cs           v1                                     false        ComponentStatus
+configmaps                        cm           v1                                     true         ConfigMap
+endpoints                         ep           v1                                     true         Endpoints
+events                            ev           v1                                     true         Event
+limitranges                       limits       v1                                     true         LimitRange
+namespaces                        ns           v1                                     false        Namespace
+nodes                             no           v1                                     false        Node
+persistentvolumeclaims            pvc          v1                                     true         PersistentVolumeClaim
+persistentvolumes                 pv           v1                                     false        PersistentVolume
+pods                              po           v1                                     true         Pod
+podtemplates                                   v1                                     true         PodTemplate
+replicationcontrollers            rc           v1                                     true         ReplicationController
+resourcequotas                    quota        v1                                     true         ResourceQuota
+secrets                                        v1                                     true         Secret
+serviceaccounts                   sa           v1                                     true         ServiceAccount
+services                          svc          v1                                     true         Service
+mutatingwebhookconfigurations                  admissionregistration.k8s.io/v1        false        MutatingWebhookConfiguration
+validatingwebhookconfigurations                admissionregistration.k8s.io/v1        false        ValidatingWebhookConfiguration
+customresourcedefinitions         crd,crds     apiextensions.k8s.io/v1                false        CustomResourceDefinition
+apiservices                                    apiregistration.k8s.io/v1              false        APIService
+controllerrevisions                            apps/v1                                true         ControllerRevision
+daemonsets                        ds           apps/v1                                true         DaemonSet
+deployments                       deploy       apps/v1                                true         Deployment
+replicasets                       rs           apps/v1                                true         ReplicaSet
+statefulsets                      sts          apps/v1                                true         StatefulSet
+tokenreviews                                   authentication.k8s.io/v1               false        TokenReview
+localsubjectaccessreviews                      authorization.k8s.io/v1                true         LocalSubjectAccessReview
+selfsubjectaccessreviews                       authorization.k8s.io/v1                false        SelfSubjectAccessReview
+selfsubjectrulesreviews                        authorization.k8s.io/v1                false        SelfSubjectRulesReview
+subjectaccessreviews                           authorization.k8s.io/v1                false        SubjectAccessReview
+horizontalpodautoscalers          hpa          autoscaling/v2                         true         HorizontalPodAutoscaler
+cronjobs                          cj           batch/v1                               true         CronJob
+jobs                                           batch/v1                               true         Job
+certificatesigningrequests        csr          certificates.k8s.io/v1                 false        CertificateSigningRequest
+leases                                         coordination.k8s.io/v1                 true         Lease
+endpointslices                                 discovery.k8s.io/v1                    true         EndpointSlice
+events                            ev           events.k8s.io/v1                       true         Event
+flowschemas                                    flowcontrol.apiserver.k8s.io/v1beta2   false        FlowSchema
+prioritylevelconfigurations                    flowcontrol.apiserver.k8s.io/v1beta2   false        PriorityLevelConfiguration
+ingressclasses                                 networking.k8s.io/v1                   false        IngressClass
+ingresses                         ing          networking.k8s.io/v1                   true         Ingress
+networkpolicies                   netpol       networking.k8s.io/v1                   true         NetworkPolicy
+runtimeclasses                                 node.k8s.io/v1                         false        RuntimeClass
+poddisruptionbudgets              pdb          policy/v1                              true         PodDisruptionBudget
+clusterrolebindings                            rbac.authorization.k8s.io/v1           false        ClusterRoleBinding
+clusterroles                                   rbac.authorization.k8s.io/v1           false        ClusterRole
+rolebindings                                   rbac.authorization.k8s.io/v1           true         RoleBinding
+roles                                          rbac.authorization.k8s.io/v1           true         Role
+priorityclasses                   pc           scheduling.k8s.io/v1                   false        PriorityClass
+csidrivers                                     storage.k8s.io/v1                      false        CSIDriver
+csinodes                                       storage.k8s.io/v1                      false        CSINode
+csistoragecapacities                           storage.k8s.io/v1                      true         CSIStorageCapacity
+storageclasses                    sc           storage.k8s.io/v1                      false        StorageClass
+volumeattachments                              storage.k8s.io/v1                      false        VolumeAttachment
+```
+
+<!-- cspell:enable -->
+
+For specific configuration details, see
+[Kubernetes Objects Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8sobjectsreceiver).
+
+Since the processor uses the Kubernetes API, it needs the correct permission to
+work correctly. Since service accounts are the only authentication option you
+must give the service account the proper access. For any object you want to
+collect you need to ensure the name is added to the cluster role. For example,
+if you wanted to collect pods then the cluster role would look like:
+
+```yaml
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: otel-collector-opentelemetry-collector
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: otel-collector-opentelemetry-collector
+rules:
+  - apiGroups:
+      - ''
+    resources:
+      - pods
+    verbs:
+      - get
+      - list
+      - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: otel-collector-opentelemetry-collector
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: otel-collector-opentelemetry-collector
+subjects:
+  - kind: ServiceAccount
+    name: otel-collector-opentelemetry-collector
+    namespace: default
+```
+
+## Prometheus Receiver
+
+| Deployment Pattern   | Usable |
+| -------------------- | ------ |
+| DaemonSet (Agent)    | Yes    |
+| Deployment (Gateway) | Yes    |
+| Sidecar              | No     |
+
+Prometheus is a common metrics format for both Kubernetes and services running
+on Kubernetes. The Prometheus receiver is a minimal drop-in replacement for the
+collection of those metrics. It supports the full set of Prometheus
+[`scrape_config` options](https://prometheus.io/docs/prometheus/1.8/configuration/configuration/#scrape_config).
+
+There are a few advanced Prometheus features that the receiver does not support.
+The receiver returns an error if the configuration YAML/code contains any of the
+following:
+
+- `alert_config.alertmanagers`
+- `alert_config.relabel_configs`
+- `remote_read`
+- `remote_write`
+- `rule_files`
+
+For specific configuration details, see
+[Prometheus Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver).
+
+The Prometheus receiver is
+[Stateful](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/standard-warnings.md#statefulness),
+which means there are important details to consider when using it:
+
+- The collector cannot auto-scale the scraping process when multiple replicas of
+  the collector are run.
+- When running multiple replicas of the collector with the same config, it will
+  scrape the targets multiple times.
+- Users need to configure each replica with a different scraping configuration
+  if they want to manually shard the scraping process.
+
+To make configuring the Prometheus receiver easier, the OpenTelemetry Operator
+includes an optional component called the
+[Target Allocator](../../operator/target-allocator). This component can be used
+to tell a collector which Prometheus endpoints it should scrape.
+
+For more information on the design of the receiver, see
+[Design](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/DESIGN.md).

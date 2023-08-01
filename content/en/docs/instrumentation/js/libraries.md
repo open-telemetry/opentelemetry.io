@@ -3,7 +3,7 @@ title: Using instrumentation libraries
 linkTitle: Libraries
 weight: 40
 description: How to instrument libraries an app depends on
-spelling: cSpell:ignore autoinstrumentation metapackage metapackages
+cSpell:ignore: autoinstrumentation metapackage metapackages
 ---
 
 When you develop an app, you make use of third-party libraries and frameworks to

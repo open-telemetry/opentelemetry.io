@@ -1,7 +1,7 @@
 ---
 title: Getting Started
 weight: 10
-spelling: cSpell:ignore KHTML nameof loglevel
+cSpell:ignore: KHTML loglevel nameof
 ---
 
 OpenTelemetry for .NET is unique among OpenTelemetry implementations, as it is
@@ -81,7 +81,7 @@ Note: an `Activity` in .NET is analogous to a Span in OpenTelemetry terminology
 <details>
 <summary>View example output</summary>
 
-```
+```properties
 Activity.TraceId:            54d084eba205a7a39398df4642be8f4a
 Activity.SpanId:             aca5e39a86a17d59
 Activity.TraceFlags:         Recorded
@@ -188,7 +188,7 @@ console. like this.
 <details>
 <summary>View example output</summary>
 
-```
+```text
 Export http.server.duration, Measures the duration of inbound HTTP requests., Unit: ms, Meter: OpenTelemetry.Instrumentation.AspNetCore/1.0.0.0
 (2023-02-21T12:38:57.0187781Z, 2023-02-21T12:44:16.9651349Z] http.flavor: 1.1 http.method: GET http.route: {controller=Home}/{action=Index}/{id?} http.scheme: http http.status_code: 200 net.host.name: localhost net.host.port: 5123 Histogram
 Value: Sum: 373.4504 Count: 1 Min: 373.4504 Max: 373.4504
@@ -266,7 +266,7 @@ output like this.
 <details>
 <summary>View example output</summary>
 
-```
+```text
 Export app.request_counter, Meter: MyService
 (2023-02-21T13:11:28.7265324Z, 2023-02-21T13:11:48.7074259Z] Action: Index Controller: HomeController LongSum
 Value: 1

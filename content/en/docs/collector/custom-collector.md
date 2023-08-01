@@ -1,8 +1,8 @@
 ---
 title: Building a custom collector
 weight: 29
-spelling: cSpell:ignore chipset darwin wyrtw gomod loggingexporter
-spelling: cSpell:ignore batchprocessor jaegerexporter otlpreceiver
+# prettier-ignore
+cSpell:ignore: batchprocessor chipset darwin gomod jaegerexporter loggingexporter otlpreceiver wyrtw
 ---
 
 If you are planning to build and debug custom collector receivers, processors,

@@ -1,8 +1,8 @@
 ---
 title: Getting Started
 description: Get telemetry for your app in less than 5 minutes!
-spelling: cSpell:ignore helloworld javaagent springframework autoreconfigure
-spelling: cSpell:ignore rolldice aarch Nanos darwin autoconfigure webmvc kotlin
+# prettier-ignore
+cSpell:ignore: aarch autoconfigure autoreconfigure darwin helloworld Nanos rolldice springframework webmvc
 weight: 10
 ---
 

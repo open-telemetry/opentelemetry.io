@@ -2,7 +2,6 @@
 title: Automatic Instrumentation Configuration
 linkTitle: Configuration
 weight: 10
-spelling: cSpell:ignore alibaba
 ---
 
 This module is highly configurable by setting

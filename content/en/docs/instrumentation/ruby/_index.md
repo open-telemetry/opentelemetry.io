@@ -9,19 +9,7 @@ weight: 24
 
 {{% docs/instrumentation/index-intro ruby /%}}
 
-## Who's using OpenTelemetry Ruby?
-
-OpenTelemetry Ruby is in use by a number of companies, including:
-
-- [Heroku](https://heroku.com)
-- [GitHub](https://github.com)
-- [Fulcrum](https://www.fulcrumapp.com)
-- [Puppet](https://puppet.com)
-- [Shopify](https://shopify.com)
-- [TableCheck](https://www.tablecheck.com)
-- [Dropbox DocSend](https://www.docsend.com)
-
-If you would like to add your name to this list, submit a pull request.
+{{% docs/instrumentation/index-adopters ruby %}}
 
 ## Repository
 

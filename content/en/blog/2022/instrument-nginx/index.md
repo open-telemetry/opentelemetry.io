@@ -7,8 +7,8 @@ author: >-
   Pratyus](https://github.com/kpratyus),
 
   [Severin Neumann](https://github.com/svrnm) (Cisco)
-spelling: cSpell:ignore Debajit Kumar Pratyus webserver xvfz tracestate
-spelling: cSpell:ignore catalina WORKDIR realip
+# prettier-ignore
+cSpell:ignore: catalina Debajit Kumar Pratyus realip tracestate webserver WORKDIR xvfz
 ---
 
 Apache HTTP Server and NGINX are the most popular web servers. It's most likely
@@ -114,7 +114,7 @@ the collector and Jaeger:
 Create a file called `docker-compose.yml` and add the following content:
 
 ```yaml
-version: '2'
+version: '3.8'
 services:
   jaeger:
     image: jaegertracing/all-in-one:latest
@@ -201,7 +201,7 @@ Update the `docker-compose` file to contain those 2 services and to overwrite
 the `default.conf` in NGINX:
 
 ```yaml
-version: '2'
+version: '3.8'
 services:
   jaeger:
     image: jaegertracing/all-in-one:latest
@@ -262,34 +262,46 @@ const {
   OTLPTraceExporter,
 } = require('@opentelemetry/exporter-trace-otlp-http');
 
-const sdk = new opentelemetry.NodeSDK({
-  traceExporter: new OTLPTraceExporter(),
-  instrumentations: [getNodeAutoInstrumentations()],
-});
+const initAndStartSDK = async () => {
+  const sdk = new opentelemetry.NodeSDK({
+    traceExporter: new OTLPTraceExporter(),
+    instrumentations: [getNodeAutoInstrumentations()],
+  });
 
-sdk.start().then(() => {
-  const express = require('express');
-  const http = require('http');
-  const app = express();
-  app.get('/', (_, response) => {
-    const options = {
-      hostname: 'nginx',
-      port: 80,
-      path: '/',
-      method: 'GET',
-    };
-    const req = http.request(options, (res) => {
-      console.log(`statusCode: ${res.statusCode}`);
-      res.on('data', (d) => {
-        response.send('Hello World');
+  await sdk.start();
+  return sdk;
+};
+
+const main = async () => {
+  try {
+    const sdk = await initAndStartSDK();
+    const express = require('express');
+    const http = require('http');
+    const app = express();
+    app.get('/', (_, response) => {
+      const options = {
+        hostname: 'nginx',
+        port: 80,
+        path: '/',
+        method: 'GET',
+      };
+      const req = http.request(options, (res) => {
+        console.log(`statusCode: ${res.statusCode}`);
+        res.on('data', (d) => {
+          response.send('Hello World');
+        });
       });
+      req.end();
     });
-    req.end();
-  });
-  app.listen(parseInt(8000, 10), () => {
-    console.log('Listening for requests');
-  });
-});
+    app.listen(8000, () => {
+      console.log('Listening for requests');
+    });
+  } catch (error) {
+    console.error('Error occurred:', error);
+  }
+};
+
+main();
 ```
 
 To finalize the frontend service, create an empty `Dockerfile` with the

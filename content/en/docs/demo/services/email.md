@@ -2,7 +2,7 @@
 title: Email Service
 linkTitle: Email
 aliases: [/docs/demo/services/emailservice]
-spelling: cSpell:ignore sinatra
+cSpell:ignore: sinatra
 ---
 
 This service will send a confirmation email to the user when an order is placed.

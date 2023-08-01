@@ -3,8 +3,8 @@ title: OpenTelemetry in Focus, June 2023
 linkTitle: OTel in Focus 2023/06
 date: 2023-07-01
 author: '[Austin Parker](https://github.com/austinlparker)'
-spelling: cSpell:ignore scraperhelper Skywalking autoconfigure Logback Quarkus
-spelling: cSpell:ignore Ktor Farfetch Dyrmishi Inet
+# prettier-ignore
+cSpell:ignore: autoconfigure Dyrmishi Farfetch Inet Ktor Logback Quarkus scraperhelper Skywalking
 ---
 
 Welcome back to **OpenTelemetry in Focus** for June, 2023! It's officially

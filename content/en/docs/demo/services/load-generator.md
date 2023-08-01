@@ -1,8 +1,7 @@
 ---
 title: Load Generator
 aliases: [/docs/demo/services/loadgenerator]
-spelling: cSpell:ignore loadgenerator locustfile instrumentor instrumentors
-spelling: cSpell:ignore urllib
+cSpell:ignore: instrumentor instrumentors loadgenerator locustfile urllib
 ---
 
 The load generator is based on the Python load testing framework

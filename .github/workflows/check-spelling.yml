@@ -1,16 +1,37 @@
-name: Check spelling
+name: Spelling
 
 on:
   pull_request:
 
 jobs:
-  main:
-    name: Check spelling
+  spelling-check:
+    name: SPELLING check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: streetsidesoftware/cspell-action@v2
         with:
+          # Files should be consistent with check:spelling files
           files: |
-            content/**/*
+            content/**/*.md
+            layouts/**/*.md
+            data/**/*
+            !data/registry/**/*
           config: .vscode/cspell.json
+
+  dict-check:
+    name: CSPELL:IGNORE check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm run fix:dict
+      - name: Any changed files?
+        run: |
+          CHANGES=`git status --porcelain`
+          if [[ $CHANGES ]]; then
+            echo "Locally run `npm run fix:dict` and commit the changes:"
+            echo "$CHANGES"
+            exit 1
+          else
+            echo "All page-local dictionaries are well formatted."
+          fi

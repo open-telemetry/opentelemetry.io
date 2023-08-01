@@ -2,7 +2,7 @@
 title: Exponential Histograms
 date: 2023-05-22
 author: '[Daniel Dyla](https://github.com/dyladan)'
-spelling: cSpell:ignore subsetting Ruslan Vovalov Ganesh Vernekar
+cSpell:ignore: Ganesh Ruslan subsetting Vernekar Vovalov
 canonical_url: https://dyladan.me/histograms/2023/05/04/exponential-histograms/
 ---
 
@@ -116,7 +116,7 @@ by the bucket midpoint. Because the relative error is the same across all
 buckets, we can use the first bucket with the upper bound of the base to make
 the math easy. An example is shown below using a scale of 3.
 
-```
+```bash
 scale = 3
 # For base calculation, see above
 base  = 1.090508
