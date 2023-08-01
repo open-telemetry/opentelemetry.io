@@ -666,36 +666,39 @@ subjects:
 
 ## Host Metrics Receiver
 
-| Deployment Pattern   | Usable                                                        |
-| -------------------- | ------------------------------------------------------------- |
-| DaemonSet (Agent)    | Preferred                                                     |
-| Deployment (Gateway) | Only collects metrics from the node it is deployed on |
-| Sidecar              | No                                                            |
+| Deployment Pattern   | Usable                                                         |
+| -------------------- | -------------------------------------------------------------- |
+| DaemonSet (Agent)    | Preferred                                                      |
+| Deployment (Gateway) | Yes, but only collects metrics from the node it is deployed on |
+| Sidecar              | No                                                             |
 
 The Host Metrics Receiver collects metrics from a host using a variety of
 scrapers. There is some overlap with the
-[Kubeletstats Receiver](#kubeletstats-receiver) so if you decide to use both,
-it may be worth it to disable these duplicate metrics.
+[Kubeletstats Receiver](#kubeletstats-receiver) so if you decide to use both, it
+may be worth it to disable these duplicate metrics.
 
-In Kubernetes, the receiver needs access to the `hostfs` volume to work properly.
-If you're using the [OpenTelemetry Collector Helm chart](../../helm/collector/)
-you can use the
+In Kubernetes, the receiver needs access to the `hostfs` volume to work
+properly. If you're using the
+[OpenTelemetry Collector Helm chart](../../helm/collector/) you can use the
 [`hostMetrics` preset](../../helm/collector/#host-metrics-preset) to get
 started.
 
 The available scrapers are:
 
-| Scraper      | Supported OSs                | Description                                            |
-| ------------ | ---------------------------- | ------------------------------------------------------ |
-| [cpu]        | All except Mac<sup>[1]</sup> | CPU utilization metrics                                |
-| [disk]       | All except Mac<sup>[1]</sup> | Disk I/O metrics                                       |
-| [load]       | All                          | CPU load metrics                                       |
-| [filesystem] | All                          | File System utilization metrics                        |
-| [memory]     | All                          | Memory utilization metrics                             |
-| [network]    | All                          | Network interface I/O metrics & TCP connection metrics |
-| [paging]     | All                          | Paging/Swap space utilization and I/O metrics          |
-| [processes]  | Linux, Mac                   | Process count metrics                                  |
-| [process]    | Linux, Windows, Mac          | Per process CPU, Memory, and Disk I/O metrics          |
+| Scraper    | Supported OSs       | Description                                            |
+| ---------- | ------------------- | ------------------------------------------------------ |
+| cpu        | All except Mac[^1]  | CPU utilization metrics                                |
+| disk       | All except Mac[^1]  | Disk I/O metrics                                       |
+| load       | All                 | CPU load metrics                                       |
+| filesystem | All                 | File System utilization metrics                        |
+| memory     | All                 | Memory utilization metrics                             |
+| network    | All                 | Network interface I/O metrics & TCP connection metrics |
+| paging     | All                 | Paging/Swap space utilization and I/O metrics          |
+| processes  | Linux, Mac          | Process count metrics                                  |
+| process    | Linux, Windows, Mac | Per process CPU, Memory, and Disk I/O metrics          |
+
+[^1] Not supported on Mac when compiled without cgo, which is the default for
+the images released by the Collector SIG.
 
 For specific details about which metrics are collected and specific
 configuration details, see
