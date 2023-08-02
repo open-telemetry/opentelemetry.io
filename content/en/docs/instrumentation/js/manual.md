@@ -119,6 +119,7 @@ add the following code to it:
 {{< tabpane langEqualsHeader=true >}}
 
 {{< tab TypeScript >}}
+/*app.ts*/
 import express, { Request, Express } from "express";
 import { rollTheDice } from "./dice";
 
