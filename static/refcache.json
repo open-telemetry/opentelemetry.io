@@ -259,6 +259,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T15:54:46.832264-04:00"
   },
+  "https://cloud-native.slack.com/archives/C0239SYARD2": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-28T14:05:23.624776+02:00"
+  },
   "https://cloud-native.slack.com/archives/C02UN96HZH6": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T13:45:57.466093-04:00"
@@ -611,6 +615,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:16:13.965986-04:00"
   },
+  "https://docs.ansible.com/ansible/latest/collections/community/general/opentelemetry_callback.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-28T14:02:37.534517+02:00"
+  },
   "https://docs.appdynamics.com/latest/en/application-monitoring/appdynamics-for-opentelemetry": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T15:45:56.613628-04:00"
@@ -826,6 +834,10 @@
   "https://docs.google.com/document/d/15vR7D1x2tKd7u3zaTF0yH1WaHkUr2T4hhr7OyiZgmBg/edit#heading=h.4xuru5ljcups": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T15:52:33.514228-04:00"
+  },
+  "https://docs.google.com/document/d/16Vsdh-DM72AfMg_FIt9yT9ExEWF4A_vRbQ3jRNBe09w/edit": {
+    "StatusCode": 200,
+    "LastSeen": "2023-07-28T14:02:53.623615+02:00"
   },
   "https://docs.google.com/document/d/187XYoQcXQ9JxS_5v2wvZ0NEysaJ02xoOYNXj08pT0zc": {
     "StatusCode": 200,
@@ -3766,6 +3778,14 @@
   "https://open-telemetry.github.io/opentelemetry-js/classes/_opentelemetry_api.ContextAPI.html": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:46:24.613888-04:00"
+  },
+  "https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api.Tracer.html#startActiveSpan": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-06T12:30:08.536334+02:00"
+  },
+  "https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api.Tracer.html#startSpan": {
+    "StatusCode": 206,
+    "LastSeen": "2023-07-06T12:30:08.47481+02:00"
   },
   "https://opencensus.io": {
     "StatusCode": 206,
