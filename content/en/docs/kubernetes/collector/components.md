@@ -734,8 +734,8 @@ The available scrapers are:
 
 | Scraper    | Supported OSs       | Description                                            |
 | ---------- | ------------------- | ------------------------------------------------------ |
-| cpu        | All except Mac\*    | CPU utilization metrics                                |
-| disk       | All except Mac\*    | Disk I/O metrics                                       |
+| cpu        | All except Mac[^1]  | CPU utilization metrics                                |
+| disk       | All except Mac[^1]  | Disk I/O metrics                                       |
 | load       | All                 | CPU load metrics                                       |
 | filesystem | All                 | File System utilization metrics                        |
 | memory     | All                 | Memory utilization metrics                             |
@@ -744,8 +744,9 @@ The available scrapers are:
 | processes  | Linux, Mac          | Process count metrics                                  |
 | process    | Linux, Windows, Mac | Per process CPU, Memory, and Disk I/O metrics          |
 
-\* Not supported on Mac when compiled without cgo, which is the default for the
-images released by the Collector SIG.
+[^1]:
+    Not supported on Mac when compiled without cgo, which is the default for the
+    images released by the Collector SIG.
 
 For specific details about which metrics are collected and specific
 configuration details, see
