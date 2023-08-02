@@ -4,6 +4,17 @@ aliases: [/docs/js/getting_started/browser]
 weight: 20
 ---
 
+{{% alert title="Warning" color="warning" %}}
+
+Instrumentation for the browser is experimental and this is mostly unspecified:
+this may break in the future. If you want to help changing that, you can join
+the Client Instrumentation SIG on CNCF Slack channel
+[#otel-client-side-telemetry](https://cloud-native.slack.com/archives/C0239SYARD2)
+or by attending
+[their meetings](https://docs.google.com/document/d/16Vsdh-DM72AfMg_FIt9yT9ExEWF4A_vRbQ3jRNBe09w/edit)
+
+{{% /alert %}}
+
 While this guide uses the example application presented below, the steps to
 instrument your own application should be similar.
 
