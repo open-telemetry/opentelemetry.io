@@ -2,16 +2,16 @@
 
 # Run textlint and translate the JSON output into a format that provides file annotations for github PRs
 # https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-error-message
-ERRORS=$(npx textlint -f json content/en/*.md | jq -r  '
-    .[] | 
-    ( .filePath | sub(env.PWD + "/"; "")  ) as $fp | 
-    .messages[] | 
+ERRORS=$(npm run --silent _check:text -- -f json | jq -r  '
+    .[] |
+    ( .filePath | sub(env.PWD + "/"; "")  ) as $fp |
+    .messages[] |
     .message as $message |
-    {line, file: $fp, column, endLine: .loc.end.line, endColumn: .loc.end.column, title: "textlint terminology error" } 
-    | . as $in 
-    | keys 
-    | map("\(.)=\($in[.])") 
-    | join(",") 
+    {line, file: $fp, column, endLine: .loc.end.line, endColumn: .loc.end.column, title: "textlint terminology error" }
+    | . as $in
+    | keys
+    | map("\(.)=\($in[.])")
+    | join(",")
     | "::error \(.)::\($message)" '
 )
 
