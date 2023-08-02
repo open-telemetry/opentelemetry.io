@@ -223,8 +223,8 @@ from the API.
 import { NodeSDK } from '@opentelemetry/sdk-node';
 import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace-node';
 import { PeriodicExportingMetricReader, ConsoleMetricExporter } from '@opentelemetry/sdk-metrics';
-const { Resource } = require('@opentelemetry/resources');
-const { SemanticResourceAttributes } = require('@opentelemetry/semantic-conventions');
+import { Resource } from '@opentelemetry/resources';
+import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions';
 
 const sdk = new NodeSDK({
   resource: new Resource({
@@ -242,10 +242,10 @@ sdk
 {{< /tab >}}
 
 {{< tab JavaScript >}}
-/*instrumentation.ts*/
-import { NodeSDK } from '@opentelemetry/sdk-node';
-import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace-node';
-import { PeriodicExportingMetricReader, ConsoleMetricExporter } from '@opentelemetry/sdk-metrics';
+/*instrumentation.js*/
+const { NodeSDK } = require('@opentelemetry/sdk-node');
+const { ConsoleSpanExporter } = require('@opentelemetry/sdk-trace-node');
+const { PeriodicExportingMetricReader, ConsoleMetricExporter } = require('@opentelemetry/sdk-metrics');
 const { Resource } = require('@opentelemetry/resources');
 const { SemanticResourceAttributes } = require('@opentelemetry/semantic-conventions');
 
@@ -444,7 +444,7 @@ import opentelemetry from "@opentelemetry/api";
 
 const tracer = opentelemetry.trace.getTracer(
   'instrumentation-scope-name',
-  'instrumentation-scope-version
+  'instrumentation-scope-version'
 );
 
 // You can now use a 'tracer' to do tracing!
@@ -455,7 +455,7 @@ const opentelemetry = require("@opentelemetry/api");
 
 const tracer = opentelemetry.trace.getTracer(
   'instrumentation-scope-name',
-  'instrumentation-scope-version
+  'instrumentation-scope-version'
 );
 
 // You can now use a 'tracer' to do tracing!
@@ -485,11 +485,11 @@ First, in the _application file_ `app.ts` (or `app.js`):
 
 {{< tab TypeScript >}}
 /*app.ts*/
-const opentelemetry = require("@opentelemetry/api");
+import { trace } from "@opentelemetry/api";
 import express, { Express } from "express";
 import { rollTheDice } from "./dice";
 
-const tracer = opentelemetry.trace.getTracer(
+const tracer = trace.getTracer(
   'dice-server',
   '0.1.0'
 );
@@ -514,11 +514,11 @@ app.listen(PORT, () => {
 
 {{< tab JavaScript >}}
 /*app.js*/
-const opentelemetry = require("@opentelemetry/api");
+const { trace } = require("@opentelemetry/api");
 const express = require("express");
 const { rollTheDice } = require("./dice.js");
 
-const tracer = opentelemetry.trace.getTracer(
+const tracer = trace.getTracer(
   'dice-server',
   '0.1.0'
 );
