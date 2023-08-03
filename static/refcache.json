@@ -611,6 +611,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:21:23.471592-04:00"
   },
+  "https://doc.rust-lang.org/cargo/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-08-03T17:44:09.893503+02:00"
+  },
   "https://docker.com": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:16:13.965986-04:00"
@@ -3391,6 +3395,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T16:15:09.230771-04:00"
   },
+  "https://hyper.rs/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-08-03T17:44:10.601039+02:00"
+  },
   "https://jaegertracing.io": {
     "StatusCode": 206,
     "LastSeen": "2023-06-01T15:55:20.985886-04:00"
@@ -5154,6 +5162,10 @@
   "https://www.rubydoc.info/gems/opentelemetry-sdk/OpenTelemetry/SDK/Trace/Samplers/TraceIdRatioBased": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:22:30.159811-04:00"
+  },
+  "https://www.rust-lang.org/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-08-03T17:44:09.160658+02:00"
   },
   "https://www.sentrysoftware.com/blog/2022-07-19/why-sentry-software-chose-opentelemetry-for-hardware-sentry.html": {
     "StatusCode": 206,
