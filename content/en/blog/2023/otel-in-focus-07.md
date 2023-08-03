@@ -63,7 +63,7 @@ updates.
 #### [Python](/docs/instrumentation/python/)
 
 [Version 1.19](https://github.com/open-telemetry/opentelemetry-python/releases/tag/v1.19.0)
-includes updates to OTLP and Log support.
+includes updates to OTLP and log support.
 
 #### [JavaScript](/docs/instrumentation/js/)
 
