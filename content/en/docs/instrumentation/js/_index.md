@@ -11,6 +11,9 @@ weight: 20
 
 {{% docs/instrumentation/index-intro js /%}}
 
+{{% alert title="Warning" color="warning" %}}
+{{% _param notes.browser-instrumentation %}} {{% /alert %}}
+
 ## Further Reading
 
 - [OpenTelemetry for JavaScript on GitHub](https://github.com/open-telemetry/opentelemetry-js)

@@ -4,6 +4,9 @@ aliases: [/docs/js/getting_started/browser]
 weight: 20
 ---
 
+{{% alert title="Warning" color="warning" %}}
+{{% _param notes.browser-instrumentation %}} {{% /alert %}}
+
 While this guide uses the example application presented below, the steps to
 instrument your own application should be similar.
 
