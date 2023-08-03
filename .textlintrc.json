@@ -86,7 +86,7 @@
         [".net", ".NET"],
         ["3rd[- ]party", "third-party"],
         ["cpp", "C++"],
-        ["dotnet", ".NET"],
+        ["(\\.|dot)net", ".NET"],
         ["ebpf", "eBPF"],
         ["[^\\.]json", "JSON"],
         ["[^\\.]html", "HTML"],
