@@ -119,7 +119,8 @@ use hyper::service::{make_service_fn, service_fn};
 use hyper::{Body, Method, Request, Response, Server, StatusCode};
 use rand::Rng;
 use std::{convert::Infallible, net::SocketAddr};
-use opentelemetry::trace::SpanKind;
+use opentelemetry::global::ObjectSafeSpan;
+use opentelemetry::trace::{SpanKind, Status};
 use opentelemetry::sdk::trace::TracerProvider;
 use opentelemetry::{global, sdk::propagation::TraceContextPropagator, trace::Tracer};
 use opentelemetry_stdout::SpanExporter;
@@ -129,18 +130,20 @@ async fn handle(req: Request<Body>) -> Result<Response<Body>, Infallible> {
 
     let tracer = global::tracer("dice_server");
 
-    let _span = tracer
+    let mut span = tracer
         .span_builder(format!("{} {}", req.method(), req.uri().path()))
         .with_kind(SpanKind::Server)
-        .start(&tracer);
+        .start(&tracer);    
 
     match (req.method(), req.uri().path()) {
         (&Method::GET, "/rolldice") => {
             let random_number = rand::thread_rng().gen_range(1..7);
             *response.body_mut() = Body::from(random_number.to_string());
+            span.set_status(Status::Ok);
         }
         _ => {
             *response.status_mut() = StatusCode::NOT_FOUND;
+            span.set_status(Status::error("Not Found"));
         }
     };
 
@@ -184,41 +187,7 @@ When you send a request to the server at <http://localhost:8080/rolldice>,
 you'll see a span being emitted to the console:
 
 ```json
-{
-  "resourceSpans": [
-    {
-      "resource": {
-        "attributes": [
-          {
-            "key": "service.name",
-            "value": { "stringValue": "unknown_service" }
-          }
-        ]
-      },
-      "scopeSpans": [
-        {
-          "scope": { "name": "dice_server" },
-          "spans": [
-            {
-              "traceId": "43398bc750417e7098d574f7508be544",
-              "spanId": "74e883a54af009b9",
-              "parentSpanId": "",
-              "name": "GET /rolldice",
-              "kind": 2,
-              "startTimeUnixNano": 1690884166561479000,
-              "endTimeUnixNano": 1690884166561488000,
-              "attributes": [],
-              "droppedAttributesCount": 0,
-              "droppedEventsCount": 0,
-              "droppedLinksCount": 0,
-              "status": {}
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
+{"resourceSpans":[{"resource":{"attributes":[{"key":"service.name","value":{"stringValue":"unknown_service"}}]},"scopeSpans":[{"scope":{"name":"dice_server"},"spans":[{"traceId":"d77a477e02a76455b38077d67f955589","spanId":"8bf4ecb5d0a7d429","parentSpanId":"","name":"GET /rolldice2","kind":2,"startTimeUnixNano":1691074020952963000,"endTimeUnixNano":1691074020952968000,"attributes":[],"droppedAttributesCount":0,"droppedEventsCount":0,"droppedLinksCount":0,"status":{"message":"Not Found","code":1}}]}]}]}
 ```
 
 ## What next?
