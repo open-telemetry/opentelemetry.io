@@ -40,8 +40,8 @@ the release notes for more details.
 has been released, along with 0.81.
 
 The major addition in 0.82 is the ability to export collector telemetry via
-OTLP. This is an experimental feature, please see the release notes for more
-details. 0.81 removes the connectors feature gate, as connectors are no longer
+OTLP. Note that this is an experimental feature. 0.81 removes the connectors
+feature gate, as connectors are no longer
 experimental. Both releases include a variety of enhancements and bug fixes, as
 well. Please see the release notes for more details.
 
