@@ -3,6 +3,7 @@ title: OpenTelemetry in Focus, July 2023
 linkTitle: OTel in Focus 2023/07
 date: 2023-08-03
 author: '[Austin Parker](https://github.com/austinlparker)'
+cSpell:ignore: exceptionsconnector opensearchexporter
 ---
 
 Welcome back to **OpenTelemetry in Focus** for July, 2023! I hope you're all
