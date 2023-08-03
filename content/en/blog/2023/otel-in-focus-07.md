@@ -39,7 +39,7 @@ the release notes for more details.
 [Version 0.82.0](https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.82.0)
 has been released, along with 0.81.
 
-The major addition in 0.82 is the ability to export Collector telemetry via
+The major addition in 0.82 is the ability to export collector telemetry via
 OTLP. This is an experimental feature, please see the release notes for more
 details. 0.81 removes the connectors feature gate, as connectors are no longer
 experimental. Both releases include a variety of enhancements and bug fixes, as
