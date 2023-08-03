@@ -29,38 +29,38 @@ Pull a docker image and run the collector in a container. Replace
 `{{% param collectorVersion %}}` with the version of the Collector you wish to
 run.
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane lang=shell >}}
-{{< tab DockerHub >}}
+{{% tabpane text=true %}} {{% tab DockerHub %}}
+
+```sh
 docker pull otel/opentelemetry-collector-contrib:{{% param collectorVersion %}}
 docker run otel/opentelemetry-collector-contrib:{{% param collectorVersion %}}
-{{< /tab >}}
+```
 
-{{< tab ghcr.io >}}
+{{% /tab %}} {{% tab ghcr.io %}}
+
+```sh
 docker pull ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:{{% param collectorVersion %}}
 docker run ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:{{% param collectorVersion %}}
-{{< /tab >}}
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+```
+
+{{% /tab %}} {{% /tabpane %}}
 
 To load your custom configuration `config.yaml` from your current working
 directory, mount that file as a volume:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane lang=shell >}}
-{{< tab DockerHub >}}
-docker run -v $(pwd)/config.yaml:/etc/otelcol-contrib/config.yaml otel/opentelemetry-collector-contrib:{{% param collectorVersion %}}
-{{< /tab >}}
+{{% tabpane text=true %}} {{% tab DockerHub %}}
 
-{{< tab ghcr.io >}}
+```sh
+docker run -v $(pwd)/config.yaml:/etc/otelcol-contrib/config.yaml otel/opentelemetry-collector-contrib:{{% param collectorVersion %}}
+```
+
+{{% /tab %}} {{% tab ghcr.io %}}
+
+```sh
 docker run -v $(pwd)/config.yaml:/etc/otelcol-contrib/config.yaml ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:{{% param collectorVersion %}}
-{{< /tab >}}
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+```
+
+{{% /tab %}} {{% /tabpane %}}
 
 ## Docker Compose
 
