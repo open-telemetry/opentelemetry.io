@@ -699,9 +699,14 @@ There's a lot more to manual instrumentation than just creating a child span. To
 learn details about initializing manual instrumentation and many more parts of
 the OpenTelemetry API you can use, see [Manual Instrumentation](../manual/).
 
-Finally, there are several options for exporting your telemetry data with
-OpenTelemetry. To learn how to export your data to a preferred backend, see
+There are several options for exporting your telemetry data with OpenTelemetry.
+To learn how to export your data to a preferred backend, see
 [Exporters](../exporters/).
+
+If you'd like to explore a more complex example, take a look at the
+[OpenTelemetry Demo](/docs/demo/), which includes the Python based
+[Recommendation Service](/docs/demo/services/recommendation/) and
+[Load Generator](/docs/demo/services/load-generator/).
 
 [traces]: /docs/concepts/signals/traces/
 [metrics]: /docs/concepts/signals/metrics/

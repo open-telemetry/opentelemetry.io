@@ -177,3 +177,7 @@ customized observability data.
 You'll also want to configure an appropriate exporter to
 [export your telemetry data](/docs/instrumentation/cpp/exporters) to one or more
 telemetry backends.
+
+If you'd like to explore a more complex example, take a look at the
+[OpenTelemetry Demo](/docs/demo/), which includes the C++ based
+[Currency Service](/docs/demo/services/currency/).
