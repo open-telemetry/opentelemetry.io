@@ -6,12 +6,7 @@ weight: 20
 
 {{% alert title="Warning" color="warning" %}}
 
-Instrumentation for the browser is experimental and this is mostly unspecified:
-this may break in the future. If you want to help changing that, you can join
-the Client Instrumentation SIG on CNCF Slack channel
-[#otel-client-side-telemetry](https://cloud-native.slack.com/archives/C0239SYARD2)
-or by attending
-[their meetings](https://docs.google.com/document/d/16Vsdh-DM72AfMg_FIt9yT9ExEWF4A_vRbQ3jRNBe09w/edit)
+Browser instrumentation **experimental**. If you are interested in helping out, see [Contributing](https://github.com/open-telemetry/opentelemetry-js#contributing).
 
 {{% /alert %}}
 
