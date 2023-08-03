@@ -24,7 +24,7 @@ Here are the latest updates from some of our core repositories.
 
 [Version 1.23](https://github.com/open-telemetry/opentelemetry-specification/releases/tag/v1.23.0)
 does not include any significant changes, but some refinements have been made to
-the configuration of TracerProvider and MeterProvider.
+the configuration of  `TracerProvider` and `MeterProvider`.
 
 ##### [Semantic Conventions](/docs/specs/semantic-conventions/)
 
