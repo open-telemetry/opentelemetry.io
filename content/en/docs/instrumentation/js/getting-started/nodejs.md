@@ -64,11 +64,9 @@ npm install express
 Create a file named `app.ts` (or `app.js` if not using TypeScript) and add the
 following code to it:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
-{{< tab TypeScript >}}
+```TypeScript
 /*app.ts*/
 import express, { Express } from "express";
 
@@ -86,9 +84,11 @@ app.get("/rolldice", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Listening for requests on http://localhost:${PORT}`);
 });
-{{< /tab >}}
+```
 
-{{< tab JavaScript >}}
+{{% /tab %}} {{% tab JavaScript %}}
+
+```JavaScript
 /*app.js*/
 const express = require("express");
 
@@ -106,11 +106,9 @@ app.get("/rolldice", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Listening for requests on http://localhost:${PORT}`);
 });
-{{< /tab >}}
+```
 
-{{< /tabpane>}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{% /tabpane%}}
 
 Run the application with the following command and open
 <http://localhost:8080/rolldice> in your web browser to ensure it is working.
