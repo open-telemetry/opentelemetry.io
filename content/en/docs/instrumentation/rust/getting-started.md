@@ -133,7 +133,7 @@ async fn handle(req: Request<Body>) -> Result<Response<Body>, Infallible> {
     let mut span = tracer
         .span_builder(format!("{} {}", req.method(), req.uri().path()))
         .with_kind(SpanKind::Server)
-        .start(&tracer);    
+        .start(&tracer);
 
     match (req.method(), req.uri().path()) {
         (&Method::GET, "/rolldice") => {
@@ -184,10 +184,51 @@ Listening on 127.0.0.1:8080
 ```
 
 When you send a request to the server at <http://localhost:8080/rolldice>,
-you'll see a span being emitted to the console:
+you'll see a span being emitted to the console (output is pretty printed for
+convenience):
 
 ```json
-{"resourceSpans":[{"resource":{"attributes":[{"key":"service.name","value":{"stringValue":"unknown_service"}}]},"scopeSpans":[{"scope":{"name":"dice_server"},"spans":[{"traceId":"d77a477e02a76455b38077d67f955589","spanId":"8bf4ecb5d0a7d429","parentSpanId":"","name":"GET /rolldice2","kind":2,"startTimeUnixNano":1691074020952963000,"endTimeUnixNano":1691074020952968000,"attributes":[],"droppedAttributesCount":0,"droppedEventsCount":0,"droppedLinksCount":0,"status":{"message":"Not Found","code":1}}]}]}]}
+{
+  "resourceSpans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "unknown_service"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "dice_server"
+          },
+          "spans": [
+            {
+              "attributes": [],
+              "droppedAttributesCount": 0,
+              "droppedEventsCount": 0,
+              "droppedLinksCount": 0,
+              "endTimeUnixNano": 1691076354768034000,
+              "kind": 2,
+              "name": "GET /rolldice",
+              "parentSpanId": "",
+              "spanId": "27e1d7d8e44a63c5",
+              "startTimeUnixNano": 1691076354768025000,
+              "status": {
+                "code": 2
+              },
+              "traceId": "adfe9d364ee19610adde517d722167ca"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
 ```
 
 ## What next?
