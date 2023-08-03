@@ -24,15 +24,15 @@ Here are the latest updates from some of our core repositories.
 
 [Version 1.23](https://github.com/open-telemetry/opentelemetry-specification/releases/tag/v1.23.0)
 does not include any significant changes, but some refinements have been made to
-the configuration of  `TracerProvider` and `MeterProvider`.
+the configuration of `TracerProvider` and `MeterProvider`.
 
 ##### [Semantic Conventions](/docs/specs/semantic-conventions/)
 
 [Version 1.21](https://github.com/open-telemetry/semantic-conventions/releases/tag/v1.21.0)
 is the first standalone release of the semantic conventions, separate from the
-specification. This release is a substantial one, with several notable **breaking
-changes** to `messaging`, `http`, and `net` namespaces. For more details, 
-see the release notes.
+specification. This release is a substantial one, with several notable
+**breaking changes** to `messaging`, `http`, and `net` namespaces. For more
+details, see the release notes.
 
 ##### [Collector](/docs/collector/)
 
@@ -41,9 +41,9 @@ has been released, along with 0.81.
 
 The major addition in 0.82 is the ability to export collector telemetry via
 OTLP. Note that this is an experimental feature. 0.81 removes the connectors
-feature gate, as connectors are no longer
-experimental. Both releases include a variety of enhancements and bug fixes, as
-well. Please see the release notes for more details.
+feature gate, as connectors are no longer experimental. Both releases include a
+variety of enhancements and bug fixes, as well. Please see the release notes for
+more details.
 
 [collector-contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.82.0)
 has also seen many updates, enhancements, and bug fixes. Notably, many receivers
