@@ -30,9 +30,9 @@ the configuration of  `TracerProvider` and `MeterProvider`.
 
 [Version 1.21](https://github.com/open-telemetry/semantic-conventions/releases/tag/v1.21.0)
 is the first standalone release of the semantic conventions, separate from the
-specification. This release is a substantial one, with several notable breaking
-changes to `messaging`, `http`, and `net` namespaces. Please carefully review
-the release notes for more details.
+specification. This release is a substantial one, with several notable **breaking
+changes** to `messaging`, `http`, and `net` namespaces. For more details, 
+see the release notes.
 
 ##### [Collector](/docs/collector/)
 
