@@ -5,10 +5,7 @@ weight: 20
 ---
 
 {{% alert title="Warning" color="warning" %}}
-
-Browser instrumentation **experimental**. If you are interested in helping out, see [Contributing](https://github.com/open-telemetry/opentelemetry-js#contributing).
-
-{{% /alert %}}
+{{% _param notes.browser-instrumentation %}} {{% /alert %}}
 
 While this guide uses the example application presented below, the steps to
 instrument your own application should be similar.
