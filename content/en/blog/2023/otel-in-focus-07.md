@@ -26,7 +26,7 @@ Here are the latest updates from some of our core repositories.
 does not include any significant changes, but some refinements have been made to
 the configuration of `TracerProvider` and `MeterProvider`.
 
-##### [Semantic Conventions](/docs/specs/semantic-conventions/)
+##### [Semantic Conventions](/docs/specs/semconv/)
 
 [Version 1.21](https://github.com/open-telemetry/semantic-conventions/releases/tag/v1.21.0)
 is the first standalone release of the semantic conventions, separate from the
