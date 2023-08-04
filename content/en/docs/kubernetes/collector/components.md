@@ -13,9 +13,9 @@ enhancing it.
 Components covered in this page:
 
 - [Kubernetes Attributes Processor](#kubernetes-attributes-processor): adds
-  Kubernetes metadata to incoming telemetry.
-- [Kubeletstats Receiver](#kubeletstats-receiver): pulls pod metrics from the
-  API server on a kubelet.
+  Kubernetes metadata to application incoming telemetry.
+- [Kubeletstats Receiver](#kubeletstats-receiver): pulls node, pod, and
+  container metrics from the API server on a kubelet.
 - [Filelog Receiver](#filelog-receiver): collects Kubernetes logs and
   application logs written to stdout/stderr.
 - [Kubernetes Cluster Receiver](#kubernetes-cluster-receiver): collects
@@ -437,6 +437,8 @@ k8s_cluster:
     - memory
 ```
 
+For specific details about which metrics are collected, see
+[Default Metrics](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/k8sclusterreceiver/documentation.md)
 For specific configuration details, see
 [Kubernetes Cluster Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8sclusterreceiver).
 
