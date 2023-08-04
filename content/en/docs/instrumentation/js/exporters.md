@@ -130,7 +130,7 @@ docker run -d --name jaeger \
 When you use the OTLP exporter in a browser-based application, you need to note
 that:
 
-1. Using gRPC & http/proto for exporting is not supported
+1. Using gRPC for exporting is not supported
 2. [Content Security Policies][] (CSPs) of your website might block your exports
 3. [Cross-Origin Resource Sharing][] (CORS) headers might not allow your exports
    to be sent
@@ -140,15 +140,16 @@ Below you will find instructions to use the right exporter, to configure your
 CSPs and CORS headers and what precautions you have to take when exposing your
 collector.
 
-#### Use OTLP exporter with HTTP/JSON
+#### Use OTLP exporter with HTTP/JSON or HTTP/Protobuf
 
-[OpenTelemetry Collector Exporter with gRPC][] and [OpenTelemetry Collector
-Exporter with protobuf][] do only work with Node.js, therefore you are limited
-to use the [OpenTelemetry Collector Exporter with HTTP][].
+[OpenTelemetry Collector Exporter with gRPC][] works only with Node.js,
+therefore you are limited to use the [OpenTelemetry Collector Exporter with HTTP/JSON][]
+or [OpenTelemetry Collector Exporter with HTTP/Protobuf][]
 
 Make sure that the receiving end of your exporter (collector or observability
-backend) does support `http/json`, and that you are exporting your data to the
-right endpoint, i.e., make sure that your port is set to `4318`.
+backend) does accept `http/json` if you are using [OpenTelemetry Collector Exporter with HTTP/JSON][],
+and that you are exporting your data to the right endpoint, i.e., make sure that
+your port is set to `4318`.
 
 #### Configure CSPs
 
@@ -274,9 +275,9 @@ provider.addSpanProcessor(new BatchSpanProcessor(new ZipkinExporter()));
   https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 [opentelemetry collector exporter with grpc]:
   https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-grpc
-[opentelemetry collector exporter with protobuf]:
+[opentelemetry collector exporter with http/protobuf]:
   https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-proto
-[opentelemetry collector exporter with http]:
+[opentelemetry collector exporter with http/json]:
   https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-http
 [a feature]:
   https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/confighttp/README.md
