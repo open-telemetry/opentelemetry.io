@@ -31,12 +31,44 @@ _natively_ or you can make use of
 
 ## Example app preparation {#example-app}
 
-This page uses the example app from
+This page uses a modified version of the example app from
 [Getting Started](/docs/instrumentation/java/getting-started/) to help you
 learn about manual instrumentation.
 
 You don't have to use the example app: if you want to instrument your own app or
 library, follow the instructions here to adapt the process to your own code.
+
+### Dependencies {#example-app-dependencies}
+
+To begin, set up an environment in a new directory called `java-simple`. Within
+that directory, create a file called `build.gradle.kts` with the following
+content:
+
+```kotlin
+plugins {
+  id("java")
+  id("org.springframework.boot") version "3.0.6"
+  id("io.spring.dependency-management") version "1.1.0"
+}
+
+sourceSets {
+  main {
+    java.setSrcDirs(setOf("."))
+  }
+}
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  implementation("org.springframework.boot:spring-boot-starter-web")
+}
+```
+
+### Create and launch an HTTP Server
+
+
 
 ## Manual instrumentation setup
 
