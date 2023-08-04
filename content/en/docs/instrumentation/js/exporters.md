@@ -140,16 +140,16 @@ Below you will find instructions to use the right exporter, to configure your
 CSPs and CORS headers and what precautions you have to take when exposing your
 collector.
 
-#### Use OTLP exporter with HTTP/JSON or HTTP/Protobuf
+#### Use OTLP exporter with HTTP/JSON or HTTP/protobuf
 
 [OpenTelemetry Collector Exporter with gRPC][] works only with Node.js,
-therefore you are limited to use the [OpenTelemetry Collector Exporter with HTTP/JSON][]
-or [OpenTelemetry Collector Exporter with HTTP/Protobuf][]
+therefore you are limited to use the [OpenTelemetry Collector Exporter with
+HTTP/JSON][] or [OpenTelemetry Collector Exporrer with HTTP/protobuf][]
 
 Make sure that the receiving end of your exporter (collector or observability
-backend) does accept `http/json` if you are using [OpenTelemetry Collector Exporter with HTTP/JSON][],
-and that you are exporting your data to the right endpoint, i.e., make sure that
-your port is set to `4318`.
+backend) does accept `http/json` if you are using [OpenTelemetry Collector
+Exporter with HTTP/JSON][], and that you are exporting your data to the right
+endpoint, i.e., make sure that your port is set to `4318`.
 
 #### Configure CSPs
 
