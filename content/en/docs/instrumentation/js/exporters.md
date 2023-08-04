@@ -149,7 +149,7 @@ HTTP/JSON][] or [OpenTelemetry Collector Exporter with HTTP/protobuf][].
 Make sure that the receiving end of your exporter (collector or observability
 backend) accepts `http/json` if you are using [OpenTelemetry Collector
 Exporter with HTTP/JSON][], and that you are exporting your data to the right
-endpoint, i.e., make sure that your port is set to `4318`.
+endpoint with your port set to 4318.
 
 #### Configure CSPs
 
