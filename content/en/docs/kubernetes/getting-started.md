@@ -2,7 +2,7 @@
 title: Getting Started
 weight: 1
 # prettier-ignore
-cSpell:ignore: kubeletstats kubelet filelog sattributes sattributesprocessor kubeletstatsreceiver filelogreceiver loggingexporter otlpexporter sclusterreceiver sobjectsreceiver
+cSpell:ignore: filelog filelogreceiver kubelet kubeletstats kubeletstatsreceiver loggingexporter otlpexporter sattributes sattributesprocessor sclusterreceiver sobjectsreceiver
 ---
 
 This section will walk you through the fasted way to get started monitoring your
