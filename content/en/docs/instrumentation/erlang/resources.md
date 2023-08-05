@@ -29,23 +29,21 @@ detectors use the OS environment variable `OTEL_RESOURCE_ATTRIBUTES` and the
 The detectors to use is a list of module names and can be configured in the
 Application configuration:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
 
-{{< tab Erlang >}}
+```erlang
 %% sys.config
 {resource_detectors, [otel_resource_env_var, otel_resource_app_env]}
-{{< /tab >}}
+```
 
-{{< tab Elixir >}}
+{{% /tab %}} {{% tab Elixir %}}
+
+```elixir
 ## runtime.exs
 resource_detectors: [:otel_resource_env_var, :otel_resource_app_env]
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 Or through the environment variable `OTEL_RESOURCE_DETECTORS`:
 
@@ -72,23 +70,21 @@ OTEL_RESOURCE_ATTRIBUTES="deployment.environment=development"
 Alternatively, use the `resource` Application environment under the
 `opentelemetry` Application configuration of `sys.config` or `runtime.exs`:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
 
-{{< tab Erlang >}}
+```erlang
 %% sys.config
 {resource, #{deployment => #{environment => <<"development">>}}
-{{< /tab >}}
+```
 
-{{< tab Elixir >}}
+{{% /tab %}} {{% tab Elixir %}}
+
+```elixir
 ## runtime.exs
 resource: %{deployment: %{environment: "development" }}
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 Resource attributes in the `resource` Application environment variable are
 flattened and combined with `.`, so

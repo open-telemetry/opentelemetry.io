@@ -163,53 +163,56 @@ application code. One tool commonly used for this task is the
 Create a file named `instrumentation.ts` (or `instrumentation.js` if not using
 TypeScript) , which will contain your instrumentation setup code.
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
 
-{{< tab TypeScript >}}
+```ts
 /*instrumentation.ts*/
 import { NodeSDK } from '@opentelemetry/sdk-node';
 import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace-node';
 import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
-import { PeriodicExportingMetricReader, ConsoleMetricExporter } from '@opentelemetry/sdk-metrics';
+import {
+  PeriodicExportingMetricReader,
+  ConsoleMetricExporter,
+} from '@opentelemetry/sdk-metrics';
 
 const sdk = new NodeSDK({
   traceExporter: new ConsoleSpanExporter(),
   metricReader: new PeriodicExportingMetricReader({
-    exporter: new ConsoleMetricExporter()
+    exporter: new ConsoleMetricExporter(),
   }),
-  instrumentations: [getNodeAutoInstrumentations()]
+  instrumentations: [getNodeAutoInstrumentations()],
 });
 
-sdk
-  .start()
+sdk.start();
+```
 
-{{< /tab >}}
+{{% /tab %}} {{% tab JavaScript %}}
 
-{{< tab JavaScript >}}
+```js
 /*instrumentation.js*/
 // Require dependencies
 const { NodeSDK } = require('@opentelemetry/sdk-node');
 const { ConsoleSpanExporter } = require('@opentelemetry/sdk-trace-node');
-const { getNodeAutoInstrumentations } = require('@opentelemetry/auto-instrumentations-node');
-const { PeriodicExportingMetricReader, ConsoleMetricExporter } = require('@opentelemetry/sdk-metrics');
+const {
+  getNodeAutoInstrumentations,
+} = require('@opentelemetry/auto-instrumentations-node');
+const {
+  PeriodicExportingMetricReader,
+  ConsoleMetricExporter,
+} = require('@opentelemetry/sdk-metrics');
 
 const sdk = new NodeSDK({
   traceExporter: new ConsoleSpanExporter(),
   metricReader: new PeriodicExportingMetricReader({
-    exporter: new ConsoleMetricExporter()
+    exporter: new ConsoleMetricExporter(),
   }),
-  instrumentations: [getNodeAutoInstrumentations()]
+  instrumentations: [getNodeAutoInstrumentations()],
 });
 
-sdk
-  .start()
-{{< /tab >}}
+sdk.start();
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 ## Run the instrumented app
 
@@ -473,11 +476,9 @@ If you'd like to explore a more complex example, take a look at the
 Did something go wrong? You can enable diagnostic logging to validate that
 OpenTelemetry is initialized correctly:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
 
-{{< tab TypeScript >}}
+```ts
 /*instrumentation.ts*/
 import { diag, DiagConsoleLogger, DiagLogLevel } from '@opentelemetry/api';
 
@@ -485,9 +486,11 @@ import { diag, DiagConsoleLogger, DiagLogLevel } from '@opentelemetry/api';
 diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
 
 // const sdk = new NodeSDK({...
-{{< /tab >}}
+```
 
-{{< tab JavaScript >}}
+{{% /tab %}} {{% tab JavaScript %}}
+
+```js
 /*instrumentation.js*/
 // Require dependencies
 const { diag, DiagConsoleLogger, DiagLogLevel } = require('@opentelemetry/api');
@@ -496,11 +499,9 @@ const { diag, DiagConsoleLogger, DiagLogLevel } = require('@opentelemetry/api');
 diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
 
 // const sdk = new NodeSDK({...
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 [traces]: /docs/concepts/signals/traces/
 [metrics]: /docs/concepts/signals/metrics/

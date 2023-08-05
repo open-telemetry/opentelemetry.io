@@ -53,21 +53,19 @@ interactive shell, a `Tracer` with a blank name and version is used.
 The created `Tracer`'s record can be looked up by the name of a module in the
 OTP Application:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
 
-{{< tab Erlang >}}
+```erlang
 opentelemetry:get_application_tracer(?MODULE)
-{{< /tab >}}
+```
 
-{{< tab Elixir >}}
+{{% /tab %}} {{% tab Elixir %}}
+
+```elixir
 :opentelemetry.get_application_tracer(__MODULE__)
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 This is how the Erlang and Elixir macros for starting and updating `Spans` get a
 `Tracer` automatically without need for you to pass the variable in each call.
@@ -77,19 +75,19 @@ This is how the Erlang and Elixir macros for starting and updating `Spans` get a
 Now that you have [Tracer](/docs/concepts/signals/traces/#tracer)s initialized,
 you can create [Spans](/docs/concepts/signals/traces/#spans).
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
 
-{{< tab Erlang >}}
+```erlang
 ?with_span(main, #{}, fun() ->
                         %% do work here.
                         %% when this function returns the Span ends
                       end).
 
-{{< /tab >}}
+```
 
-{{< tab Elixir >}}
+{{% /tab %}} {{% tab Elixir %}}
+
+```elixir
 require OpenTelemetry.Tracer
 
 ...
@@ -98,23 +96,18 @@ OpenTelemetry.Tracer.with_span :main do
   # do work here
   # when the block ends the Span ends
 end
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
-<!-- markdownlint-disable heading-increment -->
+{{% /tab %}} {{< /tabpane >}}
 
 The above code sample shows how to create an active Span, which is the most
 common kind of Span to create.
 
 ### Create Nested Spans
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
 
-{{< tab Erlang >}}
+```erlang
 parent_function() ->
     ?with_span(parent, #{}, fun child_function/0).
 
@@ -126,9 +119,11 @@ child_function() ->
                    %% do work here. when this function returns, child will complete.
                end).
 
-{{< /tab >}}
+```
 
-{{< tab Elixir >}}
+{{% /tab %}} {{% tab Elixir %}}
+
+```elixir
 require OpenTelemetry.Tracer
 
 def parent_function() do
@@ -144,11 +139,9 @@ def child_function() do
         ## do work here. when this function returns, :child will complete.
     end
 end
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 ### Spans in Separate Processes
 
@@ -169,11 +162,9 @@ attaching the context and setting the new span as currently active in the
 process. The whole context should be attached in order to not lose other
 telemetry data like [baggage](/docs/specs/otel/baggage/api/).
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
 
-{{< tab Erlang >}}
+```erlang
 SpanCtx = ?start_span(child),
 
 Ctx = otel_ctx:get_current(),
@@ -186,9 +177,11 @@ proc_lib:spawn_link(fun() ->
 
                         ?end_span(SpanCtx)
                     end),
-{{< /tab >}}
+```
 
-{{< tab Elixir >}}
+{{% /tab %}} {{% tab Elixir %}}
+
+```elixir
 span_ctx = OpenTelemetry.Tracer.start_span(:child)
 ctx = OpenTelemetry.Ctx.get_current()
 
@@ -202,11 +195,9 @@ task = Task.async(fn ->
                   end)
 
 _ = Task.await(task)
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 ### Linking the New Span
 
@@ -215,11 +206,9 @@ Span Links that causally link it to another Span. A
 [Link](/docs/concepts/signals/traces/#span-links) needs a Span context to be
 created.
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
 
-{{< tab Erlang >}}
+```erlang
 Parent = ?current_span_ctx,
 proc_lib:spawn_link(fun() ->
                         %% a new process has a new context so the span created
@@ -228,9 +217,11 @@ proc_lib:spawn_link(fun() ->
                         ?with_span('other-process', #{links => [Link]},
                                    fun() -> ok end)
                     end),
-{{< /tab >}}
+```
 
-{{< tab Elixir >}}
+{{% /tab %}} {{% tab Elixir %}}
+
+```elixir
 parent = OpenTelemetry.current_span_ctx()
 task = Task.async(fn ->
                     # a new process has a new context so the span created
@@ -240,11 +231,9 @@ task = Task.async(fn ->
                       :hello
                     end
                  end)
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 ### Adding Attributes to a Span
 
@@ -256,28 +245,26 @@ The following example shows the two ways of setting attributes on a span by both
 setting an attribute in the start options and then again with `set_attributes`
 in the body of the span operation:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
 
-{{< tab Erlang >}}
+```erlang
 ?with_span(my_span, #{attributes => [{'start-opts-attr', <<"start-opts-value">>}]},
            fun() ->
                ?set_attributes([{'my-attribute', <<"my-value">>},
                                 {another_attribute, <<"value-of-attribute">>}])
            end)
-{{< /tab >}}
+```
 
-{{< tab Elixir >}}
+{{% /tab %}} {{% tab Elixir %}}
+
+```elixir
 Tracer.with_span :span_1, %{attributes: [{:"start-opts-attr", <<"start-opts-value">>}]} do
   Tracer.set_attributes([{:"my-attributes", "my-value"},
                          {:another_attribute, "value-of-attributes"}])
 end
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 ### Semantic Attributes
 
@@ -291,79 +278,73 @@ from the specification and provided in
 For example, an instrumentation for an HTTP client or server would need to
 include semantic attributes like the scheme of the URL:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
 
-{{< tab Erlang >}}
+```erlang
 -include_lib("opentelemetry_semantic_conventions/include/trace.hrl").
 
 ?with_span(my_span, #{attributes => [{?HTTP_SCHEME, <<"https">>}]},
            fun() ->
              ...
            end)
-{{< /tab >}}
+```
 
-{{< tab Elixir >}}
+{{% /tab %}} {{% tab Elixir %}}
+
+```elixir
 alias OpenTelemetry.SemanticConventions.Trace, as: Trace
 
 Tracer.with_span :span_1, %{attributes: [{Trace.http_scheme(), <<"https">>}]} do
 
 end
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
+{{% /tab %}} {{< /tabpane >}}
 
 ### Adding Events
 
-A [Span
-Event](/docs/concepts/signals/traces/#span-events) is a
-human-readable message on an
-[Span](/docs/concepts/signals/traces/#spans)
-that represents a discrete event with no duration that can be tracked by a
-single time stamp. You can think of it like a primitive log.
+A [Span Event](/docs/concepts/signals/traces/#span-events) is a human-readable
+message on an [Span](/docs/concepts/signals/traces/#spans) that represents a
+discrete event with no duration that can be tracked by a single timestamp. You
+can think of it like a primitive log.
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
 
-{{< tab Erlang >}}
+```erlang
 ?add_event(<<"Gonna try it">>),
 
 %% Do the thing
 
 ?add_event(<<"Did it!">>),
-{{< /tab >}}
+```
 
-{{< tab Elixir >}}
+{{% /tab %}} {{% tab Elixir %}}
+
+```elixir
 Tracer.add_event("Gonna try it")
 
 %% Do the thing
 
 Tracer.add_event("Did it!")
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 Events can also have attributes of their own:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
 
-{{< tab Erlang >}}
+```erlang
 ?add_event(<<"Process exited with reason">>, [{pid, Pid)}, {reason, Reason}]))
-{{< /tab >}}
+```
 
-{{< tab Elixir >}}
+{{% /tab %}} {{% tab Elixir %}}
+
+```elixir
 Tracer.add_event("Process exited with reason", pid: pid, reason: Reason)
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 ### Set Span Status
 
@@ -375,23 +356,21 @@ could override the Error status with `StatusCode.OK`, but don’t set
 
 The status can be set at any time before the span is finished:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
 
-{{< tab Erlang >}}
+```erlang
 -include_lib("opentelemetry_api/include/opentelemetry.hrl").
 
 ?set_status(?OTEL_STATUS_ERROR, <<"this is not ok">>)
-{{< /tab >}}
+```
 
-{{< tab Elixir >}}
+{{% /tab %}} {{% tab Elixir %}}
+
+```elixir
 Tracer.set_status(:error, "this is not ok")
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 ## Metrics
 
