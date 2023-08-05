@@ -44,23 +44,23 @@ npm init -y
 
 Next, install Express dependencies.
 
-<!-- prettier-ignore-start -->
-{{< tabpane lang=shell >}}
+{{< tabpane text=true >}} {{% tab TypeScript  %}}
 
-{{< tab TypeScript >}}
+```sh
 npm install typescript \
   ts-node \
   @types/node \
   express \
   @types/express
-{{< /tab >}}
+```
 
-{{< tab JavaScript >}}
+{{% /tab %}} {{% tab JavaScript  %}}
+
+```sh
 npm install express
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
+{{% /tab %}} {{< /tabpane >}}
 
 ### Create and launch an HTTP Server
 
@@ -170,23 +170,21 @@ app.listen(PORT, () => {
 To ensure that it is working, run the application with the following command and
 open <http://localhost:8080/rolldice?rolls=12> in your web browser.
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane lang=console >}}
+{{< tabpane text=true >}} {{% tab TypeScript  %}}
 
-{{< tab TypeScript >}}
+```console
 $ npx ts-node app.ts
 Listening for requests on http://localhost:8080
-{{< /tab >}}
+```
 
-{{< tab JavaScript >}}
+{{% /tab %}} {{% tab JavaScript  %}}
+
+```console
 $ node app.js
 Listening for requests on http://localhost:8080
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 ## Manual instrumentation setup
 
@@ -285,19 +283,19 @@ information, see [Resources](/docs/instrumentation/js/resources/).
 
 To verify your code, run the app by requiring the library:
 
-<!-- prettier-ignore-start -->
-{{< tabpane lang=shell  >}}
+{{< tabpane text=true  >}} {{% tab TypeScript  %}}
 
-{{< tab TypeScript >}}
+```sh
 npx ts-node --require ./instrumentation.ts app.ts
-{{< /tab >}}
+```
 
-{{< tab JavaScript >}}
+{{% /tab %}} {{% tab JavaScript  %}}
+
+```sh
 node --require ./instrumentation.js app.js
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
+{{% /tab %}} {{< /tabpane >}}
 
 This basic setup has no effect on your app yet. You need to add code for
 [traces](#traces), [metrics](#metrics), and/or [logs](#logs).
@@ -663,19 +661,19 @@ this point, you can copy the code above in your library file `dice.ts` (or
 Start your app as follows, and then send it requests by visiting
 <http://localhost:8080/rolldice?rolls=12> with your browser or `curl`.
 
-<!-- prettier-ignore-start -->
-{{< tabpane lang=shell >}}
+{{< tabpane text=true >}} {{% tab TypeScript  %}}
 
-{{< tab TypeScript >}}
+```sh
 ts-node --require ./instrumentation.ts app.ts
-{{< /tab >}}
+```
 
-{{< tab JavaScript >}}
+{{% /tab %}} {{% tab JavaScript  %}}
+
+```sh
 node --require ./instrumentation.js app.js
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
+{{% /tab %}} {{< /tabpane >}}
 
 After a while, you should see the spans printed in the console by the
 `ConsoleSpanExporter`, something like this:
@@ -1356,21 +1354,19 @@ opentelemetry.metrics.setGlobalMeterProvider(myServiceMeterProvider)
 
 You'll need to `--require` this file when you run your app, such as:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane lang=shell >}}
+{{< tabpane text=true >}} {{% tab TypeScript  %}}
 
-{{< tab TypeScript >}}
+```sh
 ts-node --require ./instrumentation.ts app.ts
-{{< /tab >}}
+```
 
-{{< tab JavaScript >}}
+{{% /tab %}} {{% tab JavaScript  %}}
+
+```sh
 node --require ./instrumentation.js app.js
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 Now that a `MeterProvider` is configured, you can acquire a `Meter`.
 

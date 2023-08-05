@@ -104,9 +104,13 @@ Next, you’ll use the OpenTelemetry PHP extension to
 
    {{< tabpane lang=shell >}}
 
-   {{< tab "Linux (apt)" >}}sudo apt-get install gcc make autoconf{{< /tab >}}
+   {{< tab "Linux (apt)" >}}
+   sudo apt-get install gcc make autoconf
+   {{< /tab >}}
 
-   {{< tab "macOS (homebrew)" >}}brew install gcc make autoconf{{< /tab >}}
+   {{< tab "macOS (homebrew)" >}}
+   brew install gcc make autoconf
+   {{< /tab >}}
 
    {{< /tabpane >}}
 

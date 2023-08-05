@@ -19,9 +19,13 @@ Jaeger) you'll want to use an exporter package, such as
 
 {{< tabpane lang=shell >}}
 
-{{< tab bundler >}} bundle add opentelemetry-exporter-otlp {{< /tab >}}
+{{< tab bundler >}}
+bundle add opentelemetry-exporter-otlp
+{{< /tab >}}
 
-{{< tab gem >}} gem install opentelemetry-exporter-otlp {{< /tab >}}
+{{< tab gem >}}
+gem install opentelemetry-exporter-otlp
+{{< /tab >}}
 
 {{< /tabpane>}}
 
@@ -87,9 +91,13 @@ Install the exporter package as a dependency for your application:
 
 {{< tabpane lang=shell >}}
 
-{{< tab bundle >}} bundle add opentelemetry-exporter-zipkin {{< /tab >}}
+{{< tab bundle >}}
+bundle add opentelemetry-exporter-zipkin
+{{< /tab >}}
 
-{{< tab gem >}} gem install opentelemetry-exporter-zipkin {{< /tab >}}
+{{< tab gem >}}
+gem install opentelemetry-exporter-zipkin
+{{< /tab >}}
 
 {{< /tabpane>}}
 

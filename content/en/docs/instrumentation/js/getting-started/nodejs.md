@@ -39,25 +39,23 @@ npm init -y
 
 Next, install Express dependencies.
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane lang=shell >}}
+{{< tabpane text=true >}} {{% tab TypeScript  %}}
 
-{{< tab TypeScript >}}
+```sh
 npm install typescript \
   ts-node \
   @types/node \
   express \
   @types/express
-{{< /tab >}}
+```
 
-{{< tab JavaScript >}}
+{{% /tab %}} {{% tab JavaScript  %}}
+
+```sh
 npm install express
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 ### Create and launch an HTTP Server
 
@@ -113,23 +111,21 @@ app.listen(PORT, () => {
 Run the application with the following command and open
 <http://localhost:8080/rolldice> in your web browser to ensure it is working.
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane lang=console >}}
+{{< tabpane text=true >}} {{% tab TypeScript  %}}
 
-{{< tab TypeScript >}}
+```console
 $ npx ts-node app.ts
 Listening for requests on http://localhost:8080
-{{< /tab >}}
+```
 
-{{< tab JavaScript >}}
+{{% /tab %}} {{% tab JavaScript  %}}
+
+```console
 $ node app.js
 Listening for requests on http://localhost:8080
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 ## Instrumentation
 
@@ -220,23 +216,21 @@ sdk
 Now you can run your application as you normally would, but you can use the
 `--require` flag to load the instrumentation before the application code.
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane lang=console >}}
+{{< tabpane text=true >}} {{% tab TypeScript  %}}
 
-{{< tab TypeScript >}}
+```console
 $ npx ts-node --require ./instrumentation.ts app.ts
 Listening for requests on http://localhost:8080
-{{< /tab >}}
+```
 
-{{< tab JavaScript >}}
+{{% /tab %}} {{% tab JavaScript  %}}
+
+```console
 $ node --require ./instrumentation.js app.js
 Listening for requests on http://localhost:8080
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 Open <http://localhost:8080/rolldice> in your web browser and reload the page a
 few times. After a while you should see the spans printed in the console by the

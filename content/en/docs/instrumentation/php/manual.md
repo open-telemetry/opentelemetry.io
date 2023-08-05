@@ -338,22 +338,28 @@ The OpenTelemetry SDK provides four samplers:
   which is used to determine if a root span (a span without a parent) should be
   sampled. The root sampler can be any of the other samplers.
 
-<!-- prettier-ignore-start -->
-{{< tabpane lang=php >}}
-{{< tab "TraceId ratio-based" >}}
-//trace 50% of requests
+{{< tabpane text=true >}} {{% tab "TraceId ratio-based"  %}}
+
+```php
+// Trace 50% of requests
 $sampler = new TraceIdRatioBasedSampler(0.5);
-{{< /tab >}}
-{{< tab "Always On" >}}
-//always trace
+```
+
+{{% /tab %}} {{% tab "Always On"  %}}
+
+```php
+// Always trace
 $sampler = new AlwaysOnSampler();
-{{< /tab >}}
-{{< tab "Parent-based + ratio-based" >}}
-//always sample if the parent is sampled, otherwise only sample 10% of spans
+```
+
+{{% /tab %}} {{% tab "Parent-based + ratio-based"  %}}
+
+```php
+// Always sample if the parent is sampled, otherwise only sample 10% of spans
 $sampler = new ParentBased(new TraceIdRatioBasedSampler(0.1));
-{{< /tab >}}
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 ```php
 $tracerProvider = TracerProvider::builder()

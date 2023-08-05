@@ -30,10 +30,9 @@ composer require open-telemetry/transport-grpc
 
 Next, configure an exporter with an OTLP endpoint. For example:
 
-<!-- prettier-ignore-start -->
+{{< tabpane text=true >}} {{% tab gRPC %}}
 
-{{< tabpane >}} {{< tab gRPC >}}
-
+```php
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
@@ -51,8 +50,11 @@ $exporter = new SpanExporter($transport);
 $tracerProvider =  new TracerProvider(
     new SimpleSpanProcessor($exporter)
 );
-{{< /tab >}}
-{{< tab protobuf >}}
+```
+
+{{% /tab %}} {{% tab protobuf %}}
+
+```php
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
@@ -68,8 +70,11 @@ $exporter = new SpanExporter($transport);
 $tracerProvider =  new TracerProvider(
     new SimpleSpanProcessor($exporter)
 );
-{{< /tab>}}
-{{< tab json >}}
+```
+
+{{% /tab %}} {{% tab json %}}
+
+```php
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
@@ -87,8 +92,11 @@ $tracerProvider =  new TracerProvider(
 );
 $tracer = $tracerProvider->getTracer('io.opentelemetry.contrib.php');
 $tracer->spanBuilder('example')->startSpan()->end();
-{{< /tab >}}
-{{< tab nd-json >}}
+```
+{{% /tab %}}
+{{% tab nd-json %}}
+
+```php
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
@@ -106,9 +114,10 @@ $tracerProvider =  new TracerProvider(
 );
 $tracer = $tracerProvider->getTracer('io.opentelemetry.contrib.php');
 $tracer->spanBuilder('example')->startSpan()->end();
-{{< /tab >}}
+```
+
+{{% /tab %}}
 {{< /tabpane >}}
-<!-- prettier-ignore-end -->
 
 Then, append the following code to generate a span:
 
