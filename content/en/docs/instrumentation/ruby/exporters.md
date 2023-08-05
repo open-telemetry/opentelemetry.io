@@ -29,7 +29,7 @@ bundle add opentelemetry-exporter-otlp
 gem install opentelemetry-exporter-otlp
 ```
 
-{{% /tab %}} {{< /tabpane>}}
+{{% /tab %}} {{< /tabpane >}}
 
 Next, configure the exporter to point at an OTLP endpoint. For example you can
 update `config/initializers/opentelemetry.rb` from the
@@ -103,7 +103,7 @@ bundle add opentelemetry-exporter-zipkin
 gem install opentelemetry-exporter-zipkin
 ```
 
-{{% /tab %}} {{< /tabpane>}}
+{{% /tab %}} {{< /tabpane >}}
 
 Update your OpenTelemetry configuration to use the exporter and to send data to
 your Zipkin backend:

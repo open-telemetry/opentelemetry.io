@@ -189,7 +189,7 @@ service:
       exporters: [loadbalancing]
 ```
 
-{{% /tab %}} {{< /tabpane>}}
+{{% /tab %}} {{< /tabpane >}}
 
 The load-balancing exporter emits metrics including
 `otelcol_loadbalancer_num_backends` and `otelcol_loadbalancer_backend_latency`

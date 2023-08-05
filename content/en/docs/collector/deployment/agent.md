@@ -108,7 +108,7 @@ service:
       exporters: [file]
 ```
 
-{{% /tab %}} {{< /tabpane>}}
+{{% /tab %}} {{< /tabpane >}}
 
 If you want to try it out for yourself, you can have a look at the end-to-end
 [Java][java-otlp-example] or [Python][py-otlp-example] examples.

@@ -90,7 +90,7 @@ const sdk = new opentelemetry.NodeSDK({
 sdk.start();
 ```
 
-{{% /tab %}} {{< /tabpane>}}
+{{% /tab %}} {{< /tabpane >}}
 
 To try out the `OTLPTraceExporter` quickly, you can run Jaeger in a docker
 container:
@@ -253,7 +253,7 @@ const { BatchSpanProcessor } = require('@opentelemetry/sdk-trace-base');
 provider.addSpanProcessor(new BatchSpanProcessor(new ZipkinExporter()));
 ```
 
-{{% /tab %}} {{< /tabpane>}}
+{{% /tab %}} {{< /tabpane >}}
 
 [content security policies]:
   https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/

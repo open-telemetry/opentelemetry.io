@@ -107,7 +107,7 @@ function rollTheDice(rolls, min, max) {
 module.exports = { rollTheDice };
 ```
 
-{{% /tab %}} {{< /tabpane>}}
+{{% /tab %}} {{< /tabpane >}}
 
 Create the _app file_ named `app.ts` (or `app.js` if not using TypeScript) and
 add the following code to it:
@@ -164,7 +164,7 @@ app.listen(PORT, () => {
 });
 ```
 
-{{% /tab %}} {{< /tabpane>}}
+{{% /tab %}} {{< /tabpane >}}
 
 To ensure that it is working, run the application with the following command and
 open <http://localhost:8080/rolldice?rolls=12> in your web browser.
@@ -268,7 +268,7 @@ const sdk = new NodeSDK({
 sdk.start();
 ```
 
-{{% /tab %}} {{< /tabpane>}}
+{{% /tab %}} {{< /tabpane >}}
 
 For debugging and local development purposes, the following example exports
 telemetry to the console. After you have finished setting up manual
@@ -403,7 +403,7 @@ provider.addSpanProcessor(processor);
 provider.register();
 ```
 
-{{% /tab %}} {{< /tabpane>}}
+{{% /tab %}} {{< /tabpane >}}
 
 You'll need to bundle this file with your web application to be able to use
 tracing throughout the rest of your web application.
@@ -462,7 +462,7 @@ const tracer = opentelemetry.trace.getTracer(
 // You can now use a 'tracer' to do tracing!
 ```
 
-{{% /tab %}} {{< /tabpane>}}
+{{% /tab %}} {{< /tabpane >}}
 
 The values of `instrumentation-scope-name` and `instrumentation-scope-version`
 should uniquely identify the
@@ -538,7 +538,7 @@ app.listen(PORT, () => {
 });
 ```
 
-{{% /tab %}} {{< /tabpane>}}
+{{% /tab %}} {{< /tabpane >}}
 
 And second, in the _library file_ `dice.ts` (or `dice.js`):
 
@@ -586,7 +586,7 @@ function rollTheDice(rolls, min, max) {
 module.exports = { rollTheDice };
 ```
 
-{{% /tab %}} {{< /tabpane>}}
+{{% /tab %}} {{< /tabpane >}}
 
 ### Create spans
 
@@ -646,7 +646,7 @@ function rollTheDice(rolls, min, max) {
 }
 ```
 
-{{% /tab %}} {{< /tabpane>}}
+{{% /tab %}} {{< /tabpane >}}
 
 If you followed the instructions using the [example app](#example-app) up to
 this point, you can copy the code above in your library file `dice.ts` (or
@@ -913,7 +913,7 @@ function rollTheDice(rolls, min, max) {
 }
 ```
 
-{{% /tab %}} {{< /tabpane>}}
+{{% /tab %}} {{< /tabpane >}}
 
 #### Semantic Attributes
 
@@ -943,7 +943,7 @@ import { SemanticAttributes } from '@opentelemetry/semantic-conventions';
 const { SemanticAttributes } = require('@opentelemetry/semantic-conventions');
 ```
 
-{{% /tab %}} {{< /tabpane>}}
+{{% /tab %}} {{< /tabpane >}}
 
 Finally, you can update your file to include semantic attributes:
 
@@ -1059,7 +1059,7 @@ tracer.startActiveSpan('app.doWork', (span) => {
 });
 ```
 
-{{% /tab %}} {{< /tabpane>}}
+{{% /tab %}} {{< /tabpane >}}
 
 By default, the status for all spans is `Unset` rather than `Ok`. It is
 typically the job of another component in your telemetry pipeline to interpret
@@ -1101,7 +1101,7 @@ try {
 }
 ```
 
-{{% /tab %}} {{< /tabpane>}}
+{{% /tab %}} {{< /tabpane >}}
 
 ### Using `sdk-trace-base` and manually propagating span context
 
@@ -1154,7 +1154,7 @@ provider.register();
 const tracer = opentelemetry.trace.getTracer('example-basic-tracer-node');
 ```
 
-{{% /tab %}} {{< /tabpane>}}
+{{% /tab %}} {{< /tabpane >}}
 
 Like the other examples in this document, this exports a tracer you can use
 throughout the app.
@@ -1338,7 +1338,7 @@ myServiceMeterProvider.addMetricReader(metricReader);
 opentelemetry.metrics.setGlobalMeterProvider(myServiceMeterProvider);
 ```
 
-{{% /tab %}} {{< /tabpane>}}
+{{% /tab %}} {{< /tabpane >}}
 
 You'll need to `--require` this file when you run your app, such as:
 
@@ -1383,7 +1383,7 @@ const myMeter = opentelemetry.metrics.getMeter('my-service-meter');
 // You can now use a 'meter' to create instruments!
 ```
 
-{{% /tab %}} {{< /tabpane>}}
+{{% /tab %}} {{< /tabpane >}}
 
 It’s generally recommended to call `getMeter` in your app when you need it
 rather than exporting the meter instance to the rest of your app. This helps
@@ -1497,7 +1497,7 @@ app.get('/', (_req, _res) => {
 });
 ```
 
-{{% /tab %}} {{< /tabpane>}}
+{{% /tab %}} {{< /tabpane >}}
 
 ### Using Observable (Async) Counters
 

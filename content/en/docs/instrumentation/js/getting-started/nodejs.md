@@ -106,7 +106,7 @@ app.listen(PORT, () => {
 });
 ```
 
-{{% /tab %}} {{% /tabpane%}}
+{{% /tab %}} {{% /tabpane %}}
 
 Run the application with the following command and open
 <http://localhost:8080/rolldice> in your web browser to ensure it is working.
