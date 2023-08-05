@@ -93,8 +93,8 @@ $tracerProvider =  new TracerProvider(
 $tracer = $tracerProvider->getTracer('io.opentelemetry.contrib.php');
 $tracer->spanBuilder('example')->startSpan()->end();
 ```
-{{% /tab %}}
-{{% tab nd-json %}}
+
+{{% /tab %}} {{% tab nd-json %}}
 
 ```php
 <?php
@@ -116,8 +116,7 @@ $tracer = $tracerProvider->getTracer('io.opentelemetry.contrib.php');
 $tracer->spanBuilder('example')->startSpan()->end();
 ```
 
-{{% /tab %}}
-{{< /tabpane >}}
+{{% /tab %}} {{< /tabpane >}}
 
 Then, append the following code to generate a span:
 
@@ -189,5 +188,6 @@ will not hold up request processing.
 
 To minimize the impact of slow transport of telemetry data, particularly for
 external or cloud-based backends, you should consider using the
-[OpenTelemetry Collector](/docs/collector/) as an [agent](/docs/collector/deployment/agent/). The agent can quickly
-accept, then batch send telemetry data to the backend.
+[OpenTelemetry Collector](/docs/collector/) as an
+[agent](/docs/collector/deployment/agent/). The agent can quickly accept, then
+batch send telemetry data to the backend.
