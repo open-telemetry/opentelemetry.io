@@ -233,6 +233,6 @@ To determine if a Baggage item is set, you can leverage the `propagation` API to
 parse the Baggage header, and leverage the `baggage` API to get or set entries.
 
 ```typescript
-    const baggage = propagation.getBaggage(context.active());
-    if (baggage?.getEntry("synthetic_request")?.value == "true") {...}
+const baggage = propagation.getBaggage(context.active());
+if (baggage?.getEntry("synthetic_request")?.value == "true") {...}
 ```

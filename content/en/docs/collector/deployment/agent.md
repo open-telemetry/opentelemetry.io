@@ -36,7 +36,7 @@ export OTEL_EXPORTER_OTLP_ENDPOINT=http://collector.example.com:4318
 The collector serving at `collector.example.com:4318` would then be configured
 like so:
 
-{{< tabpane text=true >}} {{% tab Traces  %}}
+{{< tabpane text=true >}} {{% tab Traces %}}
 
 ```yaml
 receivers:
@@ -61,7 +61,7 @@ service:
       exporters: [jaeger]
 ```
 
-{{% /tab %}} {{% tab Metrics  %}}
+{{% /tab %}} {{% tab Metrics %}}
 
 ```yaml
 receivers:
@@ -84,7 +84,7 @@ service:
       exporters: [prometheusremotewrite]
 ```
 
-{{% /tab %}} {{% tab Logs  %}}
+{{% /tab %}} {{% tab Logs %}}
 
 ```yaml
 receivers:

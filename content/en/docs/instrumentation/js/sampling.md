@@ -34,7 +34,7 @@ This tells the SDK to sample spans such that only 10% of traces get created.
 You can also configure the TraceIdRatioBasedSampler in code. Here's an example
 for Node.js:
 
-{{< tabpane text=true >}} {{% tab TypeScript  %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 import { TraceIdRatioBasedSampler } from '@opentelemetry/sdk-trace-node';
@@ -47,7 +47,7 @@ const sdk = new NodeSDK({
 });
 ```
 
-{{% /tab %}} {{% tab JavaScript  %}}
+{{% /tab %}} {{% tab JavaScript %}}
 
 ```js
 const { TraceIdRatioBasedSampler } = require('@opentelemetry/sdk-trace-node');
@@ -67,7 +67,7 @@ const sdk = new NodeSDK({
 You can also configure the TraceIdRatioBasedSampler in code. Here's an example
 for browser apps:
 
-{{< tabpane text=true >}} {{% tab TypeScript  %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 import {
@@ -82,7 +82,7 @@ const provider = new WebTracerProvider({
 });
 ```
 
-{{% /tab %}} {{% tab JavaScript  %}}
+{{% /tab %}} {{% tab JavaScript %}}
 
 ```js
 const {

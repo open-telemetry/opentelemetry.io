@@ -39,7 +39,7 @@ npm init -y
 
 Next, install Express dependencies.
 
-{{< tabpane text=true >}} {{% tab TypeScript  %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```sh
 npm install typescript \
@@ -49,7 +49,7 @@ npm install typescript \
   @types/express
 ```
 
-{{% /tab %}} {{% tab JavaScript  %}}
+{{% /tab %}} {{% tab JavaScript %}}
 
 ```sh
 npm install express
@@ -62,20 +62,20 @@ npm install express
 Create a file named `app.ts` (or `app.js` if not using TypeScript) and add the
 following code to it:
 
-{{% tabpane text=true %}} {{% tab TypeScript %}}
+{{% tabpane text=true langEqualsHeader=true %}} {{% tab TypeScript %}}
 
-```TypeScript
+```ts
 /*app.ts*/
-import express, { Express } from "express";
+import express, { Express } from 'express';
 
-const PORT: number = parseInt(process.env.PORT || "8080");
+const PORT: number = parseInt(process.env.PORT || '8080');
 const app: Express = express();
 
 function getRandomNumber(min: number, max: number) {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
-app.get("/rolldice", (req, res) => {
+app.get('/rolldice', (req, res) => {
   res.send(getRandomNumber(1, 6).toString());
 });
 
@@ -86,18 +86,18 @@ app.listen(PORT, () => {
 
 {{% /tab %}} {{% tab JavaScript %}}
 
-```JavaScript
+```js
 /*app.js*/
-const express = require("express");
+const express = require('express');
 
-const PORT = parseInt(process.env.PORT || "8080");
+const PORT = parseInt(process.env.PORT || '8080');
 const app = express();
 
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
-app.get("/rolldice", (req, res) => {
+app.get('/rolldice', (req, res) => {
   res.send(getRandomNumber(1, 6).toString());
 });
 
@@ -111,14 +111,14 @@ app.listen(PORT, () => {
 Run the application with the following command and open
 <http://localhost:8080/rolldice> in your web browser to ensure it is working.
 
-{{< tabpane text=true >}} {{% tab TypeScript  %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```console
 $ npx ts-node app.ts
 Listening for requests on http://localhost:8080
 ```
 
-{{% /tab %}} {{% tab JavaScript  %}}
+{{% /tab %}} {{% tab JavaScript %}}
 
 ```console
 $ node app.js
@@ -219,14 +219,14 @@ sdk.start();
 Now you can run your application as you normally would, but you can use the
 `--require` flag to load the instrumentation before the application code.
 
-{{< tabpane text=true >}} {{% tab TypeScript  %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```console
 $ npx ts-node --require ./instrumentation.ts app.ts
 Listening for requests on http://localhost:8080
 ```
 
-{{% /tab %}} {{% tab JavaScript  %}}
+{{% /tab %}} {{% tab JavaScript %}}
 
 ```console
 $ node --require ./instrumentation.js app.js

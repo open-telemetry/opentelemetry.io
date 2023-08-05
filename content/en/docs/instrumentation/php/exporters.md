@@ -72,7 +72,7 @@ $tracerProvider =  new TracerProvider(
 );
 ```
 
-{{% /tab %}} {{% tab json %}}
+{{% /tab %}} {{% tab JSON %}}
 
 ```php
 <?php
@@ -94,7 +94,7 @@ $tracer = $tracerProvider->getTracer('io.opentelemetry.contrib.php');
 $tracer->spanBuilder('example')->startSpan()->end();
 ```
 
-{{% /tab %}} {{% tab nd-json %}}
+{{% /tab %}} {{% tab NDJSON %}}
 
 ```php
 <?php

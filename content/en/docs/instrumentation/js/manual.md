@@ -44,7 +44,7 @@ npm init -y
 
 Next, install Express dependencies.
 
-{{< tabpane text=true >}} {{% tab TypeScript  %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```sh
 npm install typescript \
@@ -54,7 +54,7 @@ npm install typescript \
   @types/express
 ```
 
-{{% /tab %}} {{% tab JavaScript  %}}
+{{% /tab %}} {{% tab JavaScript %}}
 
 ```sh
 npm install express
@@ -169,14 +169,14 @@ app.listen(PORT, () => {
 To ensure that it is working, run the application with the following command and
 open <http://localhost:8080/rolldice?rolls=12> in your web browser.
 
-{{< tabpane text=true >}} {{% tab TypeScript  %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```console
 $ npx ts-node app.ts
 Listening for requests on http://localhost:8080
 ```
 
-{{% /tab %}} {{% tab JavaScript  %}}
+{{% /tab %}} {{% tab JavaScript %}}
 
 ```console
 $ node app.js
@@ -286,13 +286,13 @@ information, see [Resources](/docs/instrumentation/js/resources/).
 
 To verify your code, run the app by requiring the library:
 
-{{< tabpane text=true  >}} {{% tab TypeScript  %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```sh
 npx ts-node --require ./instrumentation.ts app.ts
 ```
 
-{{% /tab %}} {{% tab JavaScript  %}}
+{{% /tab %}} {{% tab JavaScript %}}
 
 ```sh
 node --require ./instrumentation.js app.js
@@ -655,13 +655,13 @@ this point, you can copy the code above in your library file `dice.ts` (or
 Start your app as follows, and then send it requests by visiting
 <http://localhost:8080/rolldice?rolls=12> with your browser or `curl`.
 
-{{< tabpane text=true >}} {{% tab TypeScript  %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```sh
 ts-node --require ./instrumentation.ts app.ts
 ```
 
-{{% /tab %}} {{% tab JavaScript  %}}
+{{% /tab %}} {{% tab JavaScript %}}
 
 ```sh
 node --require ./instrumentation.js app.js
@@ -1342,13 +1342,13 @@ opentelemetry.metrics.setGlobalMeterProvider(myServiceMeterProvider);
 
 You'll need to `--require` this file when you run your app, such as:
 
-{{< tabpane text=true >}} {{% tab TypeScript  %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```sh
 ts-node --require ./instrumentation.ts app.ts
 ```
 
-{{% /tab %}} {{% tab JavaScript  %}}
+{{% /tab %}} {{% tab JavaScript %}}
 
 ```sh
 node --require ./instrumentation.js app.js

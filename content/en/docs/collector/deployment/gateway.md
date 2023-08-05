@@ -111,7 +111,7 @@ configuration fields:
 The first-tier collector servicing the OTLP endpoint would be configured as
 shown below:
 
-{{< tabpane text=true >}} {{% tab Static  %}}
+{{< tabpane text=true >}} {{% tab Static %}}
 
 ```yaml
 receivers:
@@ -139,7 +139,7 @@ service:
       exporters: [loadbalancing]
 ```
 
-{{% /tab %}} {{% tab DNS  %}}
+{{% /tab %}} {{% tab DNS %}}
 
 ```yaml
 receivers:
@@ -163,7 +163,7 @@ service:
       exporters: [loadbalancing]
 ```
 
-{{% /tab %}} {{% tab "DNS with service"  %}}
+{{% /tab %}} {{% tab "DNS with service" %}}
 
 ```yaml
 receivers:
@@ -173,7 +173,7 @@ receivers:
 
 exporters:
   loadbalancing:
-    routing_key: 'service'
+    routing_key: service
     protocol:
       otlp:
         insecure: true

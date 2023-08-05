@@ -29,7 +29,7 @@ following:
 
 {{< tabpane text=true langEqualsHeader=true >}} {{% tab Typescript %}}
 
-```typescript
+```ts
 /*instrumentation.ts*/
 import * as opentelemetry from '@opentelemetry/sdk-node';
 import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
@@ -237,7 +237,7 @@ your Zipkin backend:
 
 {{< tabpane text=true langEqualsHeader=true >}} {{% tab Typescript %}}
 
-```typescript
+```ts
 import { ZipkinExporter } from '@opentelemetry/exporter-zipkin';
 import { BatchSpanProcessor } from '@opentelemetry/sdk-trace-base';
 

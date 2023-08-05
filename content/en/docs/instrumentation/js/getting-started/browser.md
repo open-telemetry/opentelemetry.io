@@ -86,13 +86,13 @@ Create an empty code file named `document-load` with a `.ts` or `.js` extension,
 as appropriate, based on the language you've chosen to write your app in. Add
 the following code to your HTML right before the `</body>` closing tag:
 
-{{< tabpane text=true >}} {{% tab TypeScript  %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```html
 <script type="module" src="document-load.ts"></script>
 ```
 
-{{% /tab %}} {{% tab JavaScript  %}}
+{{% /tab %}} {{% tab JavaScript %}}
 
 ```html
 <script type="module" src="document-load.js"></script>

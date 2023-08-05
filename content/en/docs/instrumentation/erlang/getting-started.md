@@ -511,9 +511,9 @@ To test out this project and see the spans created, you can run with
 `rebar3 shell` or `iex -S mix`, each will pick up the corresponding
 configuration for the release, resulting in the tracer and exporter to started.
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
+{{< tabpane text=true >}} {{% tab Erlang %}}
 
-```erlang
+```console
 $ rebar3 shell
 ===> Compiling otel_getting_started
 Erlang/OTP 23 [erts-11.1] [source] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:1] [hipe]
@@ -539,7 +539,7 @@ true
 
 {{% /tab %}} {{% tab Elixir %}}
 
-```elixir
+```console
 $ iex -S mix
 Erlang/OTP 23 [erts-11.1] [source] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:1] [hipe]
 

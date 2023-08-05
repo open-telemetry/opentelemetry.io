@@ -20,25 +20,25 @@ application (a HTTP server & HTTP client). For more details read
 You can build OpenTelemetry C++ on Windows, macOS or Linux. First you need to
 install some dependencies:
 
-{{< tabpane text=true >}} {{% tab "Linux (apt)"  %}}
+{{< tabpane text=true >}} {{% tab "Linux (apt)" %}}
 
 ```sh
 sudo apt-get install git cmake g++ libcurl4-openssl-dev
 ```
 
-{{% /tab %}} {{% tab "Linux (yum)"  %}}
+{{% /tab %}} {{% tab "Linux (yum)" %}}
 
 ```sh
 sudo yum install git cmake g++ libcurl-devel
 ```
 
-{{% /tab %}} {{% tab "Linux (alpine)"  %}}
+{{% /tab %}} {{% tab "Linux (alpine)" %}}
 
 ```sh
 sudo apk add git cmake g++ make curl-dev
 ```
 
-{{% /tab %}} {{% tab "MacOS (homebrew)"  %}}
+{{% /tab %}} {{% tab "MacOS (homebrew)" %}}
 
 ```sh
 xcode-select —install
