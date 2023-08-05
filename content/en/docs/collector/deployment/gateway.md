@@ -111,10 +111,9 @@ configuration fields:
 The first-tier collector servicing the OTLP endpoint would be configured as
 shown below:
 
-<!-- prettier-ignore-start -->
+{{< tabpane text=true >}} {{% tab Static  %}}
 
-{{< tabpane lang=yaml >}}
-{{< tab Static >}}
+```yaml
 receivers:
   otlp:
     protocols:
@@ -138,8 +137,11 @@ service:
     traces:
       receivers: [otlp]
       exporters: [loadbalancing]
-{{< /tab >}}
-{{< tab DNS >}}
+```
+
+{{% /tab %}} {{% tab DNS  %}}
+
+```yaml
 receivers:
   otlp:
     protocols:
@@ -159,8 +161,11 @@ service:
     traces:
       receivers: [otlp]
       exporters: [loadbalancing]
-{{< /tab >}}
-{{< tab "DNS with service" >}}
+```
+
+{{% /tab %}} {{% tab "DNS with service"  %}}
+
+```yaml
 receivers:
   otlp:
     protocols:
@@ -168,7 +173,7 @@ receivers:
 
 exporters:
   loadbalancing:
-    routing_key: "service"
+    routing_key: 'service'
     protocol:
       otlp:
         insecure: true
@@ -182,10 +187,9 @@ service:
     traces:
       receivers: [otlp]
       exporters: [loadbalancing]
-{{< /tab >}}
-{{< /tabpane>}}
+```
 
-<!-- prettier-ignore-end -->
+{{% /tab %}} {{< /tabpane>}}
 
 The load-balancing exporter emits metrics including
 `otelcol_loadbalancer_num_backends` and `otelcol_loadbalancer_backend_latency`
