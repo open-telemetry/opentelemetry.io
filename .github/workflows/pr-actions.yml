@@ -18,6 +18,8 @@ jobs:
     env:
       PR_NUM: ${{ github.event.issue.number }}
       COMMENT: ${{ github.event.comment.body }}
+      USER_EMAIL: 107717825+opentelemetrybot@users.noreply.github.com
+      USER_NAME: opentelemetrybot
 
     steps:
       - name: Context info
@@ -49,12 +51,14 @@ jobs:
 
       - name: Commit and push changes, if any
         run: |
-          git config --local user.email "107717825+opentelemetrybot@users.noreply.github.com"
-          git config --local user.name "opentelemetrybot"
-          git add -A
           if [[ $(git status --porcelain) ]]; then
+            git add -A
+            git config --local user.email "$USER_EMAIL"
+            git config --local user.name "$USER_NAME"
+            current_branch=$(git rev-parse --abbrev-ref HEAD)
+            echo current_branch=$current_branch
             git commit -m 'Results from /fix:format'
-            git push
+            git push origin $current_branch
           else
             echo "No changes to commit"
           fi
@@ -107,12 +111,14 @@ jobs:
 
       - name: Commit and push changes, if any
         run: |
-          git config --local user.email "107717825+opentelemetrybot@users.noreply.github.com"
-          git config --local user.name "opentelemetrybot"
-          git add -A
           if [[ $(git status --porcelain) ]]; then
+            git add -A
+            git config --local user.email "$USER_EMAIL"
+            git config --local user.name "$USER_NAME"
+            current_branch=$(git rev-parse --abbrev-ref HEAD)
+            echo current_branch=$current_branch
             git commit -m 'Results from /fix:recache'
-            git push
+            git push origin $current_branch
           else
             echo "No changes to commit"
           fi
