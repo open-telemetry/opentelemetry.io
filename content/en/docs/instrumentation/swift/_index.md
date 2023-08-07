@@ -12,4 +12,3 @@ weight: 28
 
 - [OpenTelemetry for Swift on GitHub](https://github.com/open-telemetry/opentelemetry-swift)
 - [Installation](https://github.com/open-telemetry/opentelemetry-swift#installation)
-- [Examples](https://github.com/open-telemetry/opentelemetry-swift/tree/main/Examples)
