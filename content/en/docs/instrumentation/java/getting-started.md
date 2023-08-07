@@ -239,6 +239,9 @@ For more:
 - For light-weight customized telemetry, try [annotations][].
 - Learn about [manual instrumentation][] and try out more
   [examples](/docs/instrumentation/java/examples/).
+- Take a look at the [OpenTelemetry Demo](/docs/demo/), which includes Java
+  based [Ad Service](/docs/demo/services/ad/) and Kotlin based
+  [Fraud Detection Service](/docs/demo/services/fraud-detection/)
 
 [traces]: /docs/concepts/signals/traces/
 [metrics]: /docs/concepts/signals/metrics/

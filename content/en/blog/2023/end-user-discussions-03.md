@@ -39,10 +39,10 @@ Below is the summary of this month's discussions.
 HTTP is supported (for running in Azure App Service). What are the risks
 associated with losing gRPC capability?
 
-**A:** If HTTP2 is supported in Azure, gRPC might work there, since gRPC is HTTP
-under the hood with extra complications built on top of HTTP2. One suggestion is
-to follow up with Microsoft about gRPC support, as it may have very long-running
-connections.
+**A:** If HTTP/2 is supported in Azure, gRPC might work there, since gRPC is
+HTTP under the hood with extra complications built on top of HTTP/2. One
+suggestion is to follow up with Microsoft about gRPC support, as it may have
+very long-running connections.
 
 #### 2 - Uptime monitoring/synthetics
 

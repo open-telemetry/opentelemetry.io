@@ -492,6 +492,8 @@ For more:
 - Try [automatic instrumentation](../automatic/) on one of your own apps.
 - Learn more about [manual instrumentation][] and try out some
   [examples](/docs/instrumentation/php/examples/).
+- Take a look at the [OpenTelemetry Demo](/docs/demo/), which includes the PHP
+  based [Quote Service](/docs/demo/services/quote/).
 
 [traces]: /docs/concepts/signals/traces/
 [metrics]: /docs/concepts/signals/metrics/

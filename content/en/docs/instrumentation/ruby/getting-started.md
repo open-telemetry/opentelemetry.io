@@ -192,6 +192,8 @@ a few more features that will allow you gain even deeper insights!
   represents "something happening" during its lifetime.
 - [Manual instrumentation][manual] will give provide you the ability to enrich
   your traces with domain specific data.
+- [The OpenTelemetry Demo](/docs/demo/) includes the Ruby based
+  [Email Service](/docs/demo/services/email/).
 
 [traces]: /docs/concepts/signals/traces/
 [metrics]: /docs/concepts/signals/metrics/

@@ -681,6 +681,12 @@ You'll also want to configure an appropriate exporter to
 [export your telemetry data](/docs/instrumentation/go/exporters/) to one or more
 telemetry backends.
 
+If you'd like to explore a more complex example, take a look at the
+[OpenTelemetry Demo](/docs/demo/), which includes the Go based
+[Checkout Service](/docs/demo/services/feature-flag/),
+[Product Catalog Service](/docs/demo/services/product-catalog/) and
+[Accounting Service](/docs/demo/services/accounting/)
+
 [`go.opentelemetry.io/otel/trace`]:
   https://pkg.go.dev/go.opentelemetry.io/otel/trace
 [`go.opentelemetry.io/otel/sdk`]:
