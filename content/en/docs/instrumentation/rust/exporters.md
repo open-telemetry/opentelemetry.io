@@ -17,7 +17,7 @@ matching exporters.
 To send trace data to a OTLP endpoint (like the [collector](/docs/collector) or
 Jaeger) you'll want to use an exporter crate, such as `opentelemetry_otlp`:
 
-```shell
+```toml
 [dependencies]
 opentelemetry-otlp = { version = "0.13", features = ["default"] }
 ```
