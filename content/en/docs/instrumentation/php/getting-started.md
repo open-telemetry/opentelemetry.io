@@ -102,13 +102,19 @@ Next, you’ll use the OpenTelemetry PHP extension to
 1. Since the extension is built from source, you need to install some build
    tools
 
-   {{< tabpane lang=shell >}}
+   {{< tabpane text=true >}} {{% tab "Linux (apt)" %}}
 
-   {{< tab "Linux (apt)" >}}sudo apt-get install gcc make autoconf{{< /tab >}}
+   ```sh
+   sudo apt-get install gcc make autoconf
+   ```
 
-   {{< tab "macOS (homebrew)" >}}brew install gcc make autoconf{{< /tab >}}
+   {{% /tab %}} {{% tab "macOS (homebrew)" %}}
 
-   {{< /tabpane >}}
+   ```sh
+   brew install gcc make autoconf
+   ```
+
+   {{% /tab %}} {{< /tabpane >}}
 
 2. Build the extension with `PECL`:
 

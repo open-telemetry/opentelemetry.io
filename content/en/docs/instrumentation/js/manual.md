@@ -44,23 +44,23 @@ npm init -y
 
 Next, install Express dependencies.
 
-<!-- prettier-ignore-start -->
-{{< tabpane lang=shell >}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
-{{< tab TypeScript >}}
+```sh
 npm install typescript \
   ts-node \
   @types/node \
   express \
   @types/express
-{{< /tab >}}
+```
 
-{{< tab JavaScript >}}
+{{% /tab %}} {{% tab JavaScript %}}
+
+```sh
 npm install express
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
+{{% /tab %}} {{< /tabpane >}}
 
 ### Create and launch an HTTP Server
 
@@ -71,66 +71,64 @@ imported as a dependency by the _app file_.
 Create the _library file_ named `dice.ts` (or `dice.js` if you are not using
 TypeScript) and add the following code to it:
 
-<!-- prettier-ignore-start -->
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
 
-{{< tabpane langEqualsHeader=true >}}
-
-{{< tab TypeScript >}}
+```ts
 /*dice.ts*/
 function rollOnce(min: number, max: number) {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
 export function rollTheDice(rolls: number, min: number, max: number) {
-  const result: number[] = []
-  for(let i = 0; i < rolls; i++) {
+  const result: number[] = [];
+  for (let i = 0; i < rolls; i++) {
     result.push(rollOnce(min, max));
   }
-  return result
+  return result;
 }
+```
 
-{{< /tab >}}
+{{% /tab %}} {{% tab JavaScript %}}
 
-{{< tab JavaScript >}}
+```js
 /*dice.js*/
 function rollOnce(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
 function rollTheDice(rolls, min, max) {
-  const result = []
+  const result = [];
   for (let i = 0; i < rolls; i++) {
     result.push(rollOnce(min, max));
   }
-  return result
+  return result;
 }
 
-module.exports = { rollTheDice }
-{{< /tab >}}
+module.exports = { rollTheDice };
+```
 
-{{< /tabpane>}}
-
-<!-- prettier-ignore-end -->
+{{% /tab %}} {{< /tabpane >}}
 
 Create the _app file_ named `app.ts` (or `app.js` if not using TypeScript) and
 add the following code to it:
 
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
 
-{{< tab TypeScript >}}
+```ts
 /*app.ts*/
-import express, { Request, Express } from "express";
-import { rollTheDice } from "./dice";
+import express, { Request, Express } from 'express';
+import { rollTheDice } from './dice';
 
-const PORT: number = parseInt(process.env.PORT || "8080");
+const PORT: number = parseInt(process.env.PORT || '8080');
 const app: Express = express();
 
-app.get("/rolldice", (req, res) => {
-  const rolls = req.query.rolls ? parseInt(req.query.rolls.toString()) : NaN
-  if(isNaN(rolls)) {
-    res.status(400).send("Request parameter 'rolls' is missing or not a number.")
-    return
+app.get('/rolldice', (req, res) => {
+  const rolls = req.query.rolls ? parseInt(req.query.rolls.toString()) : NaN;
+  if (isNaN(rolls)) {
+    res
+      .status(400)
+      .send("Request parameter 'rolls' is missing or not a number.");
+    return;
   }
   res.send(JSON.stringify(rollTheDice(rolls, 1, 6)));
 });
@@ -138,22 +136,25 @@ app.get("/rolldice", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Listening for requests on http://localhost:${PORT}`);
 });
+```
 
-{{< /tab >}}
+{{% /tab %}} {{% tab JavaScript %}}
 
-{{< tab JavaScript >}}
+```js
 /*app.js*/
-const express = require("express");
-const { rollTheDice } = require("./dice.js");
+const express = require('express');
+const { rollTheDice } = require('./dice.js');
 
-const PORT = parseInt(process.env.PORT || "8080");
+const PORT = parseInt(process.env.PORT || '8080');
 const app = express();
 
-app.get("/rolldice", (req, res) => {
-  const rolls = req.query.rolls ? parseInt(req.query.rolls.toString()) : NaN
-  if(isNaN(rolls)) {
-    res.status(400).send("Request parameter 'rolls' is missing or not a number.")
-    return
+app.get('/rolldice', (req, res) => {
+  const rolls = req.query.rolls ? parseInt(req.query.rolls.toString()) : NaN;
+  if (isNaN(rolls)) {
+    res
+      .status(400)
+      .send("Request parameter 'rolls' is missing or not a number.");
+    return;
   }
   res.send(JSON.stringify(rollTheDice(rolls, 1, 6)));
 });
@@ -161,32 +162,28 @@ app.get("/rolldice", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Listening for requests on http://localhost:${PORT}`);
 });
+```
 
-{{< /tab >}}
-
-{{< /tabpane>}}
-<!-- prettier-ignore-end -->
+{{% /tab %}} {{< /tabpane >}}
 
 To ensure that it is working, run the application with the following command and
 open <http://localhost:8080/rolldice?rolls=12> in your web browser.
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane lang=console >}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
-{{< tab TypeScript >}}
+```console
 $ npx ts-node app.ts
 Listening for requests on http://localhost:8080
-{{< /tab >}}
+```
 
-{{< tab JavaScript >}}
+{{% /tab %}} {{% tab JavaScript %}}
+
+```console
 $ node app.js
 Listening for requests on http://localhost:8080
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 ## Manual instrumentation setup
 
@@ -215,59 +212,63 @@ SDK. If you fail to initialize the SDK or initialize it too late, no-op
 implementations will be provided to any library that acquires a tracer or meter
 from the API.
 
-<!-- prettier-ignore-start -->
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
 
-{{< tabpane langEqualsHeader=true >}}
-
-{{< tab TypeScript >}}
+```ts
 /*instrumentation.ts*/
 import { NodeSDK } from '@opentelemetry/sdk-node';
 import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace-node';
-import { PeriodicExportingMetricReader, ConsoleMetricExporter } from '@opentelemetry/sdk-metrics';
+import {
+  PeriodicExportingMetricReader,
+  ConsoleMetricExporter,
+} from '@opentelemetry/sdk-metrics';
 import { Resource } from '@opentelemetry/resources';
 import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions';
 
 const sdk = new NodeSDK({
   resource: new Resource({
-    [ SemanticResourceAttributes.SERVICE_NAME ]: "yourServiceName",
-    [ SemanticResourceAttributes.SERVICE_VERSION ]: "1.0",
+    [SemanticResourceAttributes.SERVICE_NAME]: 'yourServiceName',
+    [SemanticResourceAttributes.SERVICE_VERSION]: '1.0',
   }),
   traceExporter: new ConsoleSpanExporter(),
   metricReader: new PeriodicExportingMetricReader({
-    exporter: new ConsoleMetricExporter()
-  })
+    exporter: new ConsoleMetricExporter(),
+  }),
 });
 
-sdk
-  .start()
-{{< /tab >}}
+sdk.start();
+```
 
-{{< tab JavaScript >}}
+{{% /tab %}} {{% tab JavaScript %}}
+
+```js
 /*instrumentation.js*/
 const { NodeSDK } = require('@opentelemetry/sdk-node');
 const { ConsoleSpanExporter } = require('@opentelemetry/sdk-trace-node');
-const { PeriodicExportingMetricReader, ConsoleMetricExporter } = require('@opentelemetry/sdk-metrics');
+const {
+  PeriodicExportingMetricReader,
+  ConsoleMetricExporter,
+} = require('@opentelemetry/sdk-metrics');
 const { Resource } = require('@opentelemetry/resources');
-const { SemanticResourceAttributes } = require('@opentelemetry/semantic-conventions');
+const {
+  SemanticResourceAttributes,
+} = require('@opentelemetry/semantic-conventions');
 
 const sdk = new NodeSDK({
   resource: new Resource({
-    [ SemanticResourceAttributes.SERVICE_NAME ]: "dice-server",
-    [ SemanticResourceAttributes.SERVICE_VERSION ]: "0.1.0",
+    [SemanticResourceAttributes.SERVICE_NAME]: 'dice-server',
+    [SemanticResourceAttributes.SERVICE_VERSION]: '0.1.0',
   }),
   traceExporter: new ConsoleSpanExporter(),
   metricReader: new PeriodicExportingMetricReader({
-    exporter: new ConsoleMetricExporter()
-  })
+    exporter: new ConsoleMetricExporter(),
+  }),
 });
 
-sdk
-  .start()
-{{< /tab >}}
+sdk.start();
+```
 
-{{< /tabpane>}}
-
-<!-- prettier-ignore-end -->
+{{% /tab %}} {{< /tabpane >}}
 
 For debugging and local development purposes, the following example exports
 telemetry to the console. After you have finished setting up manual
@@ -285,19 +286,19 @@ information, see [Resources](/docs/instrumentation/js/resources/).
 
 To verify your code, run the app by requiring the library:
 
-<!-- prettier-ignore-start -->
-{{< tabpane lang=shell  >}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
-{{< tab TypeScript >}}
+```sh
 npx ts-node --require ./instrumentation.ts app.ts
-{{< /tab >}}
+```
 
-{{< tab JavaScript >}}
+{{% /tab %}} {{% tab JavaScript %}}
+
+```sh
 node --require ./instrumentation.js app.js
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
+{{% /tab %}} {{< /tabpane >}}
 
 This basic setup has no effect on your app yet. You need to add code for
 [traces](#traces), [metrics](#metrics), and/or [logs](#logs).
@@ -343,61 +344,66 @@ npm install @opentelemetry/sdk-trace-web
 Next, update `instrumentation.ts` (or `instrumentation.js`) to contain all the
 SDK initialization code in it:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
-{{< tab TypeScript >}}
-import { Resource } from "@opentelemetry/resources";
-import { SemanticResourceAttributes } from "@opentelemetry/semantic-conventions";
-import { WebTracerProvider } from "@opentelemetry/sdk-trace-web";
-import { BatchSpanProcessor, ConsoleSpanExporter } from "@opentelemetry/sdk-trace-base";
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
 
-const resource =
-  Resource.default().merge(
-    new Resource({
-      [SemanticResourceAttributes.SERVICE_NAME]: "service-name-here",
-      [SemanticResourceAttributes.SERVICE_VERSION]: "0.1.0",
-    })
-  );
+```ts
+import { Resource } from '@opentelemetry/resources';
+import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions';
+import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
+import {
+  BatchSpanProcessor,
+  ConsoleSpanExporter,
+} from '@opentelemetry/sdk-trace-base';
+
+const resource = Resource.default().merge(
+  new Resource({
+    [SemanticResourceAttributes.SERVICE_NAME]: 'service-name-here',
+    [SemanticResourceAttributes.SERVICE_VERSION]: '0.1.0',
+  }),
+);
 
 const provider = new WebTracerProvider({
-    resource: resource,
+  resource: resource,
 });
 const exporter = new ConsoleSpanExporter();
 const processor = new BatchSpanProcessor(exporter);
 provider.addSpanProcessor(processor);
 
 provider.register();
-{{< /tab >}}
+```
 
-{{< tab JavaScript >}}
-const opentelemetry = require("@opentelemetry/api");
-const { Resource } = require("@opentelemetry/resources");
-const { SemanticResourceAttributes } = require("@opentelemetry/semantic-conventions");
-const { WebTracerProvider } = require("@opentelemetry/sdk-trace-web");
-const { ConsoleSpanExporter, BatchSpanProcessor } = require("@opentelemetry/sdk-trace-base");
+{{% /tab %}} {{% tab JavaScript %}}
 
-const resource =
-  Resource.default().merge(
-    new Resource({
-      [SemanticResourceAttributes.SERVICE_NAME]: "service-name-here",
-      [SemanticResourceAttributes.SERVICE_VERSION]: "0.1.0",
-    })
-  );
+```js
+const opentelemetry = require('@opentelemetry/api');
+const { Resource } = require('@opentelemetry/resources');
+const {
+  SemanticResourceAttributes,
+} = require('@opentelemetry/semantic-conventions');
+const { WebTracerProvider } = require('@opentelemetry/sdk-trace-web');
+const {
+  ConsoleSpanExporter,
+  BatchSpanProcessor,
+} = require('@opentelemetry/sdk-trace-base');
+
+const resource = Resource.default().merge(
+  new Resource({
+    [SemanticResourceAttributes.SERVICE_NAME]: 'service-name-here',
+    [SemanticResourceAttributes.SERVICE_VERSION]: '0.1.0',
+  }),
+);
 
 const provider = new WebTracerProvider({
-    resource: resource,
+  resource: resource,
 });
 const exporter = new ConsoleSpanExporter();
 const processor = new BatchSpanProcessor(exporter);
 provider.addSpanProcessor(processor);
 
 provider.register();
-{{< /tab >}}
+```
 
-{{< /tabpane>}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 You'll need to bundle this file with your web application to be able to use
 tracing throughout the rest of your web application.
@@ -428,34 +434,35 @@ In most cases, stick with `BatchSpanProcessor` over `SimpleSpanProcessor`.
 Anywhere in your application where you write manual tracing code should call
 `getTracer` to acquire a tracer. For example:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
-{{< tab TypeScript >}}
-import opentelemetry from "@opentelemetry/api";
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
+
+```ts
+import opentelemetry from '@opentelemetry/api';
 //...
 
 const tracer = opentelemetry.trace.getTracer(
   'instrumentation-scope-name',
-  'instrumentation-scope-version'
+  'instrumentation-scope-version',
 );
 
 // You can now use a 'tracer' to do tracing!
-{{< /tab >}}
-{{< tab JavaScript >}}
-const opentelemetry = require("@opentelemetry/api");
+```
+
+{{% /tab %}} {{% tab JavaScript %}}
+
+```js
+const opentelemetry = require('@opentelemetry/api');
 //...
 
 const tracer = opentelemetry.trace.getTracer(
   'instrumentation-scope-name',
-  'instrumentation-scope-version'
+  'instrumentation-scope-version',
 );
 
 // You can now use a 'tracer' to do tracing!
-{{< /tab >}}
-{{< /tabpane>}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 The values of `instrumentation-scope-name` and `instrumentation-scope-version`
 should uniquely identify the
@@ -473,28 +480,26 @@ tracer may be acquired with an appropriate instrumentation scope:
 
 First, in the _application file_ `app.ts` (or `app.js`):
 
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
 
-{{< tab TypeScript >}}
+```ts
 /*app.ts*/
-import { trace } from "@opentelemetry/api";
-import express, { Express } from "express";
-import { rollTheDice } from "./dice";
+import { trace } from '@opentelemetry/api';
+import express, { Express } from 'express';
+import { rollTheDice } from './dice';
 
-const tracer = trace.getTracer(
-  'dice-server',
-  '0.1.0'
-);
+const tracer = trace.getTracer('dice-server', '0.1.0');
 
-const PORT: number = parseInt(process.env.PORT || "8080");
+const PORT: number = parseInt(process.env.PORT || '8080');
 const app: Express = express();
 
-app.get("/rolldice", (req, res) => {
-  const rolls = req.query.rolls ? parseInt(req.query.rolls.toString()) : NaN
-  if(isNaN(rolls)) {
-    res.status(400).send("Request parameter 'rolls' is missing or not a number.")
-    return
+app.get('/rolldice', (req, res) => {
+  const rolls = req.query.rolls ? parseInt(req.query.rolls.toString()) : NaN;
+  if (isNaN(rolls)) {
+    res
+      .status(400)
+      .send("Request parameter 'rolls' is missing or not a number.");
+    return;
   }
   res.send(JSON.stringify(rollTheDice(rolls, 1, 6)));
 });
@@ -502,28 +507,28 @@ app.get("/rolldice", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Listening for requests on http://localhost:${PORT}`);
 });
+```
 
-{{< /tab >}}
+{{% /tab %}} {{% tab JavaScript %}}
 
-{{< tab JavaScript >}}
+```js
 /*app.js*/
-const { trace } = require("@opentelemetry/api");
-const express = require("express");
-const { rollTheDice } = require("./dice.js");
+const { trace } = require('@opentelemetry/api');
+const express = require('express');
+const { rollTheDice } = require('./dice.js');
 
-const tracer = trace.getTracer(
-  'dice-server',
-  '0.1.0'
-);
+const tracer = trace.getTracer('dice-server', '0.1.0');
 
-const PORT = parseInt(process.env.PORT || "8080");
+const PORT = parseInt(process.env.PORT || '8080');
 const app = express();
 
-app.get("/rolldice", (req, res) => {
-  const rolls = req.query.rolls ? parseInt(req.query.rolls.toString()) : NaN
-  if(isNaN(rolls)) {
-    res.status(400).send("Request parameter 'rolls' is missing or not a number.")
-    return
+app.get('/rolldice', (req, res) => {
+  const rolls = req.query.rolls ? parseInt(req.query.rolls.toString()) : NaN;
+  if (isNaN(rolls)) {
+    res
+      .status(400)
+      .send("Request parameter 'rolls' is missing or not a number.");
+    return;
   }
   res.send(JSON.stringify(rollTheDice(rolls, 1, 6)));
 });
@@ -531,66 +536,57 @@ app.get("/rolldice", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Listening for requests on http://localhost:${PORT}`);
 });
+```
 
-{{< /tab >}}
-
-{{< /tabpane>}}
-<!-- prettier-ignore-end -->
+{{% /tab %}} {{< /tabpane >}}
 
 And second, in the _library file_ `dice.ts` (or `dice.js`):
 
-<!-- prettier-ignore-start -->
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
 
-{{< tabpane langEqualsHeader=true >}}
-
-{{< tab TypeScript >}}
+```ts
 /*dice.ts*/
-import { trace } from "@opentelemetry/api";
+import { trace } from '@opentelemetry/api';
 
-const tracer = trace.getTracer(
-  'dice-lib',
-);
+const tracer = trace.getTracer('dice-lib');
 
 function rollOnce(min: number, max: number) {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
 export function rollTheDice(rolls: number, min: number, max: number) {
-  const result: number[] = []
-  for(let i = 0; i < rolls; i++) {
+  const result: number[] = [];
+  for (let i = 0; i < rolls; i++) {
     result.push(rollOnce(min, max));
   }
-  return result
+  return result;
 }
+```
 
-{{< /tab >}}
+{{% /tab %}} {{% tab JavaScript %}}
 
-{{< tab JavaScript >}}
+```js
 /*dice.js*/
-const { trace } = require("@opentelemetry/api");
+const { trace } = require('@opentelemetry/api');
 
-const tracer = trace.getTracer(
-  'dice-lib',
-);
+const tracer = trace.getTracer('dice-lib');
 
 function rollOnce(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
 function rollTheDice(rolls, min, max) {
-  const result = []
+  const result = [];
   for (let i = 0; i < rolls; i++) {
     result.push(rollOnce(min, max));
   }
-  return result
+  return result;
 }
 
-module.exports = { rollTheDice }
-{{< /tab >}}
+module.exports = { rollTheDice };
+```
 
-{{< /tabpane>}}
-
-<!-- prettier-ignore-end -->
+{{% /tab %}} {{< /tabpane >}}
 
 ### Create spans
 
@@ -612,49 +608,45 @@ care of setting the span and its context active.
 
 The code below illustrates how to create an active span.
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
 
-{{< tabpane langEqualsHeader=true >}}
-
-{{< tab TypeScript >}}
-import { trace, Span } from "@opentelemetry/api";
+```ts
+import { trace, Span } from '@opentelemetry/api';
 
 /* ... */
 
 export function rollTheDice(rolls: number, min: number, max: number) {
   // Create a span. A span must be closed.
   return tracer.startActiveSpan('rollTheDice', (span: Span) => {
-    const result: number[] = []
-    for(let i = 0; i < rolls; i++) {
-      result.push(rollOnce(min, max));
-    }
-    // Be sure to end the span!
-    span.end();
-    return result
-  })
-}
-{{< /tab >}}
-
-{{< tab JavaScript >}}
-function rollTheDice(rolls, min, max) {
-  // Create a span. A span must be closed.
-  return tracer.startActiveSpan('rollTheDice', (span) => {
-    const result = []
+    const result: number[] = [];
     for (let i = 0; i < rolls; i++) {
       result.push(rollOnce(min, max));
     }
     // Be sure to end the span!
     span.end();
-    return result
-  })
+    return result;
+  });
 }
-{{< /tab >}}
+```
 
-{{< /tabpane>}}
+{{% /tab %}} {{% tab JavaScript %}}
 
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+```js
+function rollTheDice(rolls, min, max) {
+  // Create a span. A span must be closed.
+  return tracer.startActiveSpan('rollTheDice', (span) => {
+    const result = [];
+    for (let i = 0; i < rolls; i++) {
+      result.push(rollOnce(min, max));
+    }
+    // Be sure to end the span!
+    span.end();
+    return result;
+  });
+}
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 If you followed the instructions using the [example app](#example-app) up to
 this point, you can copy the code above in your library file `dice.ts` (or
@@ -663,19 +655,19 @@ this point, you can copy the code above in your library file `dice.ts` (or
 Start your app as follows, and then send it requests by visiting
 <http://localhost:8080/rolldice?rolls=12> with your browser or `curl`.
 
-<!-- prettier-ignore-start -->
-{{< tabpane lang=shell >}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
-{{< tab TypeScript >}}
+```sh
 ts-node --require ./instrumentation.ts app.ts
-{{< /tab >}}
+```
 
-{{< tab JavaScript >}}
+{{% /tab %}} {{% tab JavaScript %}}
+
+```sh
 node --require ./instrumentation.js app.js
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
+{{% /tab %}} {{< /tabpane >}}
 
 After a while, you should see the spans printed in the console by the
 `ConsoleSpanExporter`, something like this:
@@ -703,57 +695,57 @@ nested in nature. For example, the `rollOnce()` function below represents a
 nested operation. The following sample creates a nested span that tracks
 `rollOnce()`:
 
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
 
-{{< tab TypeScript >}}
+```ts
 function rollOnce(i: number, min: number, max: number) {
   return tracer.startActiveSpan(`rollOnce:${i}`, (span: Span) => {
     const result = Math.floor(Math.random() * (max - min) + min);
-    span.end()
-    return result
-  })
+    span.end();
+    return result;
+  });
 }
 
 export function rollTheDice(rolls: number, min: number, max: number) {
   // Create a span. A span must be closed.
   return tracer.startActiveSpan('rollTheDice', (parentSpan: Span) => {
-    const result: number[] = []
-    for(let i = 0; i < rolls; i++) {
+    const result: number[] = [];
+    for (let i = 0; i < rolls; i++) {
       result.push(rollOnce(i, min, max));
     }
     // Be sure to end the span!
     parentSpan.end();
-    return result
-  })
+    return result;
+  });
 }
-{{< /tab >}}
+```
 
-{{< tab JavaScript >}}
+{{% /tab %}} {{% tab JavaScript %}}
+
+```js
 function rollOnce(i, min, max) {
   return tracer.startActiveSpan(`rollOnce:${i}`, (span) => {
     const result = Math.floor(Math.random() * (max - min) + min);
-    span.end()
-    return result
-  })
+    span.end();
+    return result;
+  });
 }
 
 function rollTheDice(rolls, min, max) {
   // Create a span. A span must be closed.
   return tracer.startActiveSpan('rollTheDice', (parentSpan) => {
-    const result = []
-    for(let i = 0; i < rolls; i++) {
+    const result = [];
+    for (let i = 0; i < rolls; i++) {
       result.push(rollOnce(i, min, max));
     }
     // Be sure to end the span!
     parentSpan.end();
-    return result
-  })
+    return result;
+  });
 }
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
+{{% /tab %}} {{< /tabpane >}}
 
 This code creates a child span for each _roll_ that has `parentSpan`'s ID as
 their parent ID:
@@ -845,11 +837,9 @@ const span = opentelemetry.trace.getSpan(ctx);
 pairs to a [`Span`](/docs/concepts/signals/traces/#spans) so it carries more
 information about the current operation that it's tracking.
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
 
-{{< tab TypeScript >}}
+```ts
 function rollOnce(i: number, min: number, max: number) {
   return tracer.startActiveSpan(`rollOnce:${i}`, (span: Span) => {
     const result = Math.floor(Math.random() * (max - min) + min);
@@ -857,14 +847,15 @@ function rollOnce(i: number, min: number, max: number) {
     // Add an attribute to the span
     span.setAttribute('dicelib.rolled', result.toString());
 
-    span.end()
-    return result
-  })
+    span.end();
+    return result;
+  });
 }
+```
 
-{{< /tab >}}
+{{% /tab %}} {{% tab JavaScript %}}
 
-{{< tab JavaScript >}}
+```js
 function rollOnce(i, min, max) {
   return tracer.startActiveSpan(`rollOnce:${i}`, (span) => {
     const result = Math.floor(Math.random() * (max - min) + min);
@@ -872,16 +863,13 @@ function rollOnce(i, min, max) {
     // Add an attribute to the span
     span.setAttribute('dicelib.rolled', result.toString());
 
-    span.end()
-    return result
-  })
+    span.end();
+    return result;
+  });
 }
+```
 
-{{< /tab >}}
-
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 You can also add attributes to a span as it's created:
 
@@ -897,37 +885,35 @@ tracer.startActiveSpan(
 );
 ```
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
 
-{{< tabpane langEqualsHeader=true >}}
-
-{{< tab TypeScript >}}
+```ts
 function rollTheDice(rolls: number, min: number, max: number) {
   return tracer.startActiveSpan(
     'rollTheDice',
     { attributes: { 'dicelib.rolls': rolls.toString() } },
     (span: Span) => {
-    /* ... */
-  })
+      /* ... */
+    },
+  );
 }
-{{< /tab >}}
+```
 
-{{< tab JavaScript >}}
+{{% /tab %}} {{% tab JavaScript %}}
+
+```js
 function rollTheDice(rolls, min, max) {
   return tracer.startActiveSpan(
     'rollTheDice',
     { attributes: { 'dicelib.rolls': rolls.toString() } },
     (span) => {
-    /* ... */
-  })
+      /* ... */
+    },
+  );
 }
-{{< /tab >}}
+```
 
-{{< /tabpane>}}
-
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 #### Semantic Attributes
 
@@ -945,18 +931,19 @@ npm install --save @opentelemetry/semantic-conventions
 
 Add the following to the top of your application file:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
-{{< tab TypeScript >}}
-import { SemanticAttributes } from "@opentelemetry/semantic-conventions";
-{{< /tab >}}
-{{< tab JavaScript >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
+
+```ts
+import { SemanticAttributes } from '@opentelemetry/semantic-conventions';
+```
+
+{{% /tab %}} {{% tab JavaScript %}}
+
+```js
 const { SemanticAttributes } = require('@opentelemetry/semantic-conventions');
-{{< /tab >}}
-{{< /tabpane>}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 Finally, you can update your file to include semantic attributes:
 
@@ -1030,48 +1017,49 @@ typically used to specify that a span has not completed successfully -
 
 The status can be set at any time before the span is finished:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
-{{< tab TypeScript >}}
-import opentelemetry, { SpanStatusCode } from "@opentelemetry/api";
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
+
+```ts
+import opentelemetry, { SpanStatusCode } from '@opentelemetry/api';
 
 // ...
 
-tracer.startActiveSpan('app.doWork', span => {
+tracer.startActiveSpan('app.doWork', (span) => {
   for (let i = 0; i <= Math.floor(Math.random() * 40000000); i += 1) {
     if (i > 10000) {
       span.setStatus({
         code: SpanStatusCode.ERROR,
-        message: 'Error'
+        message: 'Error',
       });
     }
   }
 
   span.end();
 });
-{{< /tab >}}
-{{< tab JavaScript >}}
-const opentelemetry = require("@opentelemetry/api");
+```
+
+{{% /tab %}} {{% tab JavaScript %}}
+
+```js
+const opentelemetry = require('@opentelemetry/api');
 
 // ...
 
-tracer.startActiveSpan('app.doWork', span => {
+tracer.startActiveSpan('app.doWork', (span) => {
   for (let i = 0; i <= Math.floor(Math.random() * 40000000); i += 1) {
     if (i > 10000) {
       span.setStatus({
         code: opentelemetry.SpanStatusCode.ERROR,
-        message: 'Error'
+        message: 'Error',
       });
     }
   }
 
   span.end();
 });
-{{< /tab >}}
-{{< /tabpane>}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 By default, the status for all spans is `Unset` rather than `Ok`. It is
 typically the job of another component in your telemetry pipeline to interpret
@@ -1083,11 +1071,10 @@ explicitly tracking an error.
 It can be a good idea to record exceptions when they happen. It's recommended to
 do this in conjunction with setting [span status](#span-status).
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
-{{< tab TypeScript >}}
-import opentelemetry, { SpanStatusCode } from "@opentelemetry/api";
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
+
+```ts
+import opentelemetry, { SpanStatusCode } from '@opentelemetry/api';
 
 // ...
 
@@ -1097,9 +1084,12 @@ try {
   span.recordException(ex);
   span.setStatus({ code: SpanStatusCode.ERROR });
 }
-{{< /tab >}}
-{{< tab JavaScript >}}
-const opentelemetry = require("@opentelemetry/api");
+```
+
+{{% /tab %}} {{% tab JavaScript %}}
+
+```js
+const opentelemetry = require('@opentelemetry/api');
 
 // ...
 
@@ -1109,10 +1099,9 @@ try {
   span.recordException(ex);
   span.setStatus({ code: opentelemetry.SpanStatusCode.ERROR });
 }
-{{< /tab >}}
-{{< /tabpane>}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 ### Using `sdk-trace-base` and manually propagating span context
 
@@ -1125,16 +1114,15 @@ nested spans.
 
 Initializing tracing is similar to how you'd do it with Node.js or the Web SDK.
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
-{{< tab TypeScript >}}
-import opentelemetry from "@opentelemetry/api";
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
+
+```ts
+import opentelemetry from '@opentelemetry/api';
 import {
   BasicTracerProvider,
   BatchSpanProcessor,
-  ConsoleSpanExporter
-} from "@opentelemetry/sdk-trace-base";
+  ConsoleSpanExporter,
+} from '@opentelemetry/sdk-trace-base';
 
 const provider = new BasicTracerProvider();
 
@@ -1143,17 +1131,18 @@ provider.addSpanProcessor(new BatchSpanProcessor(new ConsoleSpanExporter()));
 provider.register();
 
 // This is what we'll access in all instrumentation code
-const tracer = opentelemetry.trace.getTracer(
-  'example-basic-tracer-node'
-);
-{{< /tab >}}
-{{< tab JavaScript >}}
-const opentelemetry = require("@opentelemetry/api");
+const tracer = opentelemetry.trace.getTracer('example-basic-tracer-node');
+```
+
+{{% /tab %}} {{% tab JavaScript %}}
+
+```js
+const opentelemetry = require('@opentelemetry/api');
 const {
   BasicTracerProvider,
   ConsoleSpanExporter,
   BatchSpanProcessor,
-} = require("@opentelemetry/sdk-trace-base");
+} = require('@opentelemetry/sdk-trace-base');
 
 const provider = new BasicTracerProvider();
 
@@ -1162,13 +1151,10 @@ provider.addSpanProcessor(new BatchSpanProcessor(new ConsoleSpanExporter()));
 provider.register();
 
 // This is what we'll access in all instrumentation code
-const tracer = opentelemetry.trace.getTracer(
-    'example-basic-tracer-node'
-);
-{{< /tab >}}
-{{< /tabpane>}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+const tracer = opentelemetry.trace.getTracer('example-basic-tracer-node');
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 Like the other examples in this document, this exports a tracer you can use
 throughout the app.
@@ -1278,32 +1264,30 @@ If you have not created it for tracing already, create a separate
 `instrumentation.ts` (or `instrumentation.js`) file that has all the SDK
 initialization code in it:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
-{{< tab TypeScript >}}
-import opentelemetry from "@opentelemetry/api";
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
+
+```ts
+import opentelemetry from '@opentelemetry/api';
 import {
   ConsoleMetricExporter,
   MeterProvider,
-  PeriodicExportingMetricReader
-} from "@opentelemetry/sdk-metrics";
-import { Resource } from "@opentelemetry/resources";
-import { SemanticResourceAttributes } from "@opentelemetry/semantic-conventions";
+  PeriodicExportingMetricReader,
+} from '@opentelemetry/sdk-metrics';
+import { Resource } from '@opentelemetry/resources';
+import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions';
 
-const resource =
-  Resource.default().merge(
-    new Resource({
-      [SemanticResourceAttributes.SERVICE_NAME]: "dice-server",
-      [SemanticResourceAttributes.SERVICE_VERSION]: "0.1.0",
-    })
-  );
+const resource = Resource.default().merge(
+  new Resource({
+    [SemanticResourceAttributes.SERVICE_NAME]: 'dice-server',
+    [SemanticResourceAttributes.SERVICE_VERSION]: '0.1.0',
+  }),
+);
 
 const metricReader = new PeriodicExportingMetricReader({
-    exporter: new ConsoleMetricExporter(),
+  exporter: new ConsoleMetricExporter(),
 
-    // Default is 60000ms (60 seconds). Set to 3 seconds for demonstrative purposes only.
-    exportIntervalMillis: 3000,
+  // Default is 60000ms (60 seconds). Set to 3 seconds for demonstrative purposes only.
+  exportIntervalMillis: 3000,
 });
 
 const myServiceMeterProvider = new MeterProvider({
@@ -1313,32 +1297,35 @@ const myServiceMeterProvider = new MeterProvider({
 myServiceMeterProvider.addMetricReader(metricReader);
 
 // Set this MeterProvider to be global to the app being instrumented.
-opentelemetry.metrics.setGlobalMeterProvider(myServiceMeterProvider)
-{{< /tab >}}
+opentelemetry.metrics.setGlobalMeterProvider(myServiceMeterProvider);
+```
 
-{{< tab JavaScript >}}
-const opentelemetry = require('@opentelemetry/api')
+{{% /tab %}} {{% tab JavaScript %}}
+
+```js
+const opentelemetry = require('@opentelemetry/api');
 const {
-    MeterProvider,
-    PeriodicExportingMetricReader,
-    ConsoleMetricExporter
-  } = require('@opentelemetry/sdk-metrics');
+  MeterProvider,
+  PeriodicExportingMetricReader,
+  ConsoleMetricExporter,
+} = require('@opentelemetry/sdk-metrics');
 const { Resource } = require('@opentelemetry/resources');
-const { SemanticResourceAttributes } = require('@opentelemetry/semantic-conventions');
+const {
+  SemanticResourceAttributes,
+} = require('@opentelemetry/semantic-conventions');
 
-const resource =
-  Resource.default().merge(
-    new Resource({
-      [SemanticResourceAttributes.SERVICE_NAME]: "service-name-here",
-      [SemanticResourceAttributes.SERVICE_VERSION]: "0.1.0",
-    })
-  );
+const resource = Resource.default().merge(
+  new Resource({
+    [SemanticResourceAttributes.SERVICE_NAME]: 'service-name-here',
+    [SemanticResourceAttributes.SERVICE_VERSION]: '0.1.0',
+  }),
+);
 
 const metricReader = new PeriodicExportingMetricReader({
-    exporter: new ConsoleMetricExporter(),
+  exporter: new ConsoleMetricExporter(),
 
-    // Default is 60000ms (60 seconds). Set to 3 seconds for demonstrative purposes only.
-    exportIntervalMillis: 3000,
+  // Default is 60000ms (60 seconds). Set to 3 seconds for demonstrative purposes only.
+  exportIntervalMillis: 3000,
 });
 
 const myServiceMeterProvider = new MeterProvider({
@@ -1348,29 +1335,26 @@ const myServiceMeterProvider = new MeterProvider({
 myServiceMeterProvider.addMetricReader(metricReader);
 
 // Set this MeterProvider to be global to the app being instrumented.
-opentelemetry.metrics.setGlobalMeterProvider(myServiceMeterProvider)
-{{< /tab >}}
-{{< /tabpane>}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+opentelemetry.metrics.setGlobalMeterProvider(myServiceMeterProvider);
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 You'll need to `--require` this file when you run your app, such as:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane lang=shell >}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
-{{< tab TypeScript >}}
+```sh
 ts-node --require ./instrumentation.ts app.ts
-{{< /tab >}}
+```
 
-{{< tab JavaScript >}}
+{{% /tab %}} {{% tab JavaScript %}}
+
+```sh
 node --require ./instrumentation.js app.js
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 Now that a `MeterProvider` is configured, you can acquire a `Meter`.
 
@@ -1379,31 +1363,27 @@ Now that a `MeterProvider` is configured, you can acquire a `Meter`.
 Anywhere in your application where you have manually instrumented code you can
 call `getMeter` to acquire a meter. For example:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
-{{< tab TypeScript >}}
-import opentelemetry from "@opentelemetry/api";
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
 
-const myMeter = opentelemetry.metrics.getMeter(
-  'my-service-meter'
-);
+```ts
+import opentelemetry from '@opentelemetry/api';
+
+const myMeter = opentelemetry.metrics.getMeter('my-service-meter');
 
 // You can now use a 'meter' to create instruments!
-{{< /tab >}}
+```
 
-{{< tab JavaScript >}}
-const opentelemetry = require('@opentelemetry/api')
+{{% /tab %}} {{% tab JavaScript %}}
 
-const myMeter = opentelemetry.metrics.getMeter(
-  'my-service-meter'
-);
+```js
+const opentelemetry = require('@opentelemetry/api');
+
+const myMeter = opentelemetry.metrics.getMeter('my-service-meter');
 
 // You can now use a 'meter' to create instruments!
-{{< /tab >}}
-{{< /tabpane>}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 It’s generally recommended to call `getMeter` in your app when you need it
 rather than exporting the meter instance to the rest of your app. This helps
@@ -1475,49 +1455,49 @@ Histograms are used to measure a distribution of values over time.
 For example, here's how you might report a distribution of response times for an
 API route with Express:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
-{{< tab TypeScript >}}
-import express from "express";
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
+
+```ts
+import express from 'express';
 
 const app = express();
 
 app.get('/', (_req, _res) => {
-  const histogram = myMeter.createHistogram("task.duration");
-  const startTime = new Date().getTime()
+  const histogram = myMeter.createHistogram('task.duration');
+  const startTime = new Date().getTime();
 
   // do some work in an API call
 
-  const endTime = new Date().getTime()
-  const executionTime = endTime - startTime
+  const endTime = new Date().getTime();
+  const executionTime = endTime - startTime;
 
   // Record the duration of the task operation
-  histogram.record(executionTime)
+  histogram.record(executionTime);
 });
-{{< /tab >}}
+```
 
-{{< tab JavaScript >}}
+{{% /tab %}} {{% tab JavaScript %}}
+
+```js
 const express = require('express');
 
 const app = express();
 
 app.get('/', (_req, _res) => {
-  const histogram = myMeter.createHistogram("task.duration");
-  const startTime = new Date().getTime()
+  const histogram = myMeter.createHistogram('task.duration');
+  const startTime = new Date().getTime();
 
   // do some work in an API call
 
-  const endTime = new Date().getTime()
-  const executionTime = endTime - startTime
+  const endTime = new Date().getTime();
+  const executionTime = endTime - startTime;
 
   // Record the duration of the task operation
-  histogram.record(executionTime)
+  histogram.record(executionTime);
 });
-{{< /tab >}}
-{{< /tabpane>}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 ### Using Observable (Async) Counters
 
