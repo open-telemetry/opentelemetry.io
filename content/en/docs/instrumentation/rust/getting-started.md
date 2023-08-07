@@ -25,7 +25,7 @@ libraries for supported frameworks, see the
 [registry](/ecosystem/registry/?component=instrumentation&language=rust).
 
 For more elaborate examples, see
-[examples](/docs/instrumentation/rust/examples/).
+[examples](../examples/).
 
 ### Dependencies
 
@@ -235,7 +235,7 @@ convenience):
 
 For more:
 
-- Read the [documentation for Rust API & SDK](/docs/instrumentation/rust/api)
-- try out more [examples](/docs/instrumentation/rust/examples/).
+- Consult the [API & SDK](../api/) reference
+- Try other [examples](../examples/).
 
 [traces]: /docs/concepts/signals/traces/

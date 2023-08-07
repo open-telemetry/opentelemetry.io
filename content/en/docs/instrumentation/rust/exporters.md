@@ -15,7 +15,7 @@ matching exporters.
 ## OTLP endpoint
 
 To send trace data to a OTLP endpoint (like the [collector](/docs/collector) or
-Jaeger) you'll want to use an exporter crate, such as `opentelemetry_otlp`, e.g.
+Jaeger) you'll want to use an exporter crate, such as `opentelemetry_otlp`:
 
 ```shell
 [dependencies]
@@ -24,7 +24,7 @@ opentelemetry-otlp = { version = "0.13", features = ["default"] }
 
 Next, configure the exporter to point at an OTLP endpoint. For example you can
 update `init_tracer` in `dice_server.rs` from the
-[Getting Started](/docs/instrumentation/rust/getting-started/) like the
+[Getting Started](../getting-started/) like the
 following:
 
 ```rust
