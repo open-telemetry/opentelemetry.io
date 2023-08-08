@@ -7,7 +7,8 @@ aliases:
   - /docs/instrumentation/java/manual_instrumentation
 weight: 30
 description: Manual instrumentation for OpenTelemetry Java
-cSpell:ignore: autoconfigure classpath customizer logback loggable multivalued
+# prettier-ignore
+cSpell:ignore: autoconfigure Autowired classpath customizer logback loggable multivalued rolldice springframework
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
@@ -504,7 +505,7 @@ API or implementation.
 Alternative methods exist for setting up resource attributes. For more
 information, see [Resources](/docs/instrumentation/java/resources/).
 
-To verify your code, buld and run the app:
+To verify your code, build and run the app:
 
 ```sh
 gradle assemble
@@ -1661,6 +1662,5 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
 [opentelemetry registry]: /ecosystem/registry/?component=exporter&language=java
 [parentbased]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/ParentBasedSampler.java
-[releases]: https://github.com/open-telemetry/opentelemetry-java#releases
 [traceidratiobased]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/TraceIdRatioBasedSampler.java
