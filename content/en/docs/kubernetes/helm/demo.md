@@ -18,7 +18,7 @@ restricted to ~4 Gigabytes of memory, but may use less.
 
 All the configuration options (with comments) available in the chart can be
 viewed in its
-[values.yaml file](https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-operator/values.yaml),
+[`values.yaml` file](https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-operator/values.yaml),
 and detailed descriptions can be found in the
 [chart's README](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-demo#chart-parameters).
 
