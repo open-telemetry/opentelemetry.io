@@ -5,17 +5,17 @@ weight: 1
 cSpell:ignore: filelog filelogreceiver kubelet kubeletstats kubeletstatsreceiver loggingexporter otlpexporter sattributes sattributesprocessor sclusterreceiver sobjectsreceiver
 ---
 
-This section will walk you through the fastest way to get started monitoring your
-Kubernetes cluster using OpenTelemetry. It will focus on collecting metrics and
-logs for Kubernetes clusters, nodes, pods, and containers, as well as enabling
-the cluster to support services emitting OTLP data.
+This section will walk you through the fastest way to get started monitoring
+your Kubernetes cluster using OpenTelemetry. It will focus on collecting metrics
+and logs for Kubernetes clusters, nodes, pods, and containers, as well as
+enabling the cluster to support services emitting OTLP data.
 
-If you're looking to see OpenTelemetry in action with Kubernetes, the best place to
-start is the [OpenTelemetry Demo](../../demo/kubernetes-deployment). The demo is
-intended to illustrate the implementation of OpenTelemetry, but it is not
+If you're looking to see OpenTelemetry in action with Kubernetes, the best place
+to start is the [OpenTelemetry Demo](../../demo/kubernetes-deployment). The demo
+is intended to illustrate the implementation of OpenTelemetry, but it is not
 intended to be an example of how to monitor Kubernetes itself. Once you finish
-with this walkthrough, it can be a fun experiment to install the demo and see how
-all the monitoring responds to an active workload.
+with this walkthrough, it can be a fun experiment to install the demo and see
+how all the monitoring responds to an active workload.
 
 If you're looking to start migrating from Prometheus to OpenTelemetry, or if
 you're interested in using the OpenTelemetry Collector to collect Prometheus
@@ -42,9 +42,10 @@ collector will be used to collect metrics for the cluster and events.
 To install the collector, we'll use the
 [OpenTelemetry Collector Helm chart](../helm/collector), which comes with a few
 configuration options that will make configure the collector easier. If you're
-unfamiliar with Helm, check out [the Helm project site](https://helm.sh/). If you're interested in
-using a Kubernetes operator, see [OpenTelemetry Operator](../operator/), but
-this guide will focus on the Helm chart.
+unfamiliar with Helm, check out [the Helm project site](https://helm.sh/). If
+you're interested in using a Kubernetes operator, see
+[OpenTelemetry Operator](../operator/), but this guide will focus on the Helm
+chart.
 
 ## Preparation
 
@@ -69,10 +70,11 @@ helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm
 ## Daemonset Collector
 
 The first step to collecting Kubernetes telemetry is to deploy a daemonset
-instance of the OpenTelemetry Collector to gather telemetry related to nodes and workloads
-running on those node. A daemonset is used to guarantee that this instance of
-the collector is installed on all nodes. Each instance of the collector in the
-daemonset will collect data only from the node on which it is running.
+instance of the OpenTelemetry Collector to gather telemetry related to nodes and
+workloads running on those node. A daemonset is used to guarantee that this
+instance of the collector is installed on all nodes. Each instance of the
+collector in the daemonset will collect data only from the node on which it is
+running.
 
 This instance of the collector will use the following components:
 
@@ -80,8 +82,8 @@ This instance of the collector will use the following components:
   to collect application traces, metrics and logs.
 - [Kubernetes Attributes Processor](../collector/components#kubernetes-attributes-processor):
   to add Kubernetes metadata to incoming application telemetry.
-- [Kubeletstats Receiver](../collector/components#kubeletstats-receiver): to pull
-  node, pod, and container metrics from the API server on a kubelet.
+- [Kubeletstats Receiver](../collector/components#kubeletstats-receiver): to
+  pull node, pod, and container metrics from the API server on a kubelet.
 - [Filelog Receiver](../collector/components#filelog-receiver): to collect
   Kubernetes logs and application logs written to stdout/stderr.
 
@@ -99,9 +101,8 @@ but for this tutorial we'll assume the telemetry is formatted in OTLP.
 
 Although not a requirement, it is a common practice for applications running on
 a node to emit their traces, metrics, and logs to a collector running on the
-same node, normally by using the . This keeps network interactions simple and
-allows easy correlation of Kubernetes metadata using the `k8sattributes`
-processor.
+same node. This keeps network interactions simple and allows easy correlation of
+Kubernetes metadata using the `k8sattributes` processor.
 
 **Kubernetes Attributes Processor**
 
@@ -181,15 +182,15 @@ presets:
 #       exporters: [ otlp ]
 ```
 
-To use this `values.yaml` with the chart, save it to your preferred file location
-and then run the following command to install the chart
+To use this `values.yaml` with the chart, save it to your preferred file
+location and then run the following command to install the chart
 
 ```sh
 helm install otel-collector open-telemetry/opentelemetry-collector --values <path where you saved the chart>
 ```
 
-You should now have a daemonset installation of the OpenTelemetry Collector running in your
-cluster collecting telemetry from each node!
+You should now have a daemonset installation of the OpenTelemetry Collector
+running in your cluster collecting telemetry from each node!
 
 ## Deployment Collector
 
@@ -225,13 +226,13 @@ Kubernetes events.
 
 ---
 
-The OpenTelemetry Collector Helm chart streamlines the configuration for all of these components
-in a deployment installation of the Collector. It will also take care of
-all of the Kubernetes-specific details, such as RBAC and mounts.
+The OpenTelemetry Collector Helm chart streamlines the configuration for all of
+these components in a deployment installation of the Collector. It will also
+take care of all of the Kubernetes-specific details, such as RBAC and mounts.
 
 One caveat - the chart doesn't send the data to any backend by default. If you
-want to actually use your data in your preferred backend, you'll need to configure
-an exporter yourself.
+want to actually use your data in your preferred backend, you'll need to
+configure an exporter yourself.
 
 The following `values.yaml` is what we'll use:
 
@@ -265,8 +266,8 @@ presets:
 #       exporters: [ otlp ]
 ```
 
-To use this `values.yaml` with the chart, save it to your preferred file location
-and then run the following command to install the chart:
+To use this `values.yaml` with the chart, save it to your preferred file
+location and then run the following command to install the chart:
 
 ```sh
 helm install otel-collector-cluster open-telemetry/opentelemetry-collector --values <path where you saved the chart>
