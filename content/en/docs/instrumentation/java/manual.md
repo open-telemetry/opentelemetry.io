@@ -19,8 +19,8 @@ cSpell:ignore: autoconfigure classpath customizer logback loggable multivalued
 On this page you will learn how you can add traces, metrics and logs to your
 code _manually_. But, you are not limited to only use one kind of
 instrumentation: use
-[automatic instrumentation](/docs/instrumentation/java/automatic/) to get started
-and then enrich your code with manual instrumentation as needed.
+[automatic instrumentation](/docs/instrumentation/java/automatic/) to get
+started and then enrich your code with manual instrumentation as needed.
 
 Also, for libraries your code depends on, you don't have to write
 instrumentation code yourself, since they might come with OpenTelemetry built-in
@@ -32,8 +32,8 @@ _natively_ or you can make use of
 ## Example app preparation {#example-app}
 
 This page uses a modified version of the example app from
-[Getting Started](/docs/instrumentation/java/getting-started/) to help you
-learn about manual instrumentation.
+[Getting Started](/docs/instrumentation/java/getting-started/) to help you learn
+about manual instrumentation.
 
 You don't have to use the example app: if you want to instrument your own app or
 library, follow the instructions here to adapt the process to your own code.
@@ -68,21 +68,138 @@ dependencies {
 
 ### Create and launch an HTTP Server
 
+To highlight the difference between instrumenting a _library_ and a standalone
+_app_, split out the dice rolling into a _library_ class, which then will be
+imported as a dependency by the app.
 
+Create the _library file_ name `Dice.java` and add the following code to it:
+
+```Java
+package otel;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
+
+public class Dice {
+
+  private int min;
+  private int max;
+
+  public Dice(int min, int max) {
+    this.min = min;
+    this.max = max;
+  }
+
+  public List<Integer> rollTheDice(int rolls) {
+    List<Integer> results = new ArrayList<Integer>();
+    for (int i = 0; i < rolls; i++) {
+      results.add(this.rollOnce());
+    }
+    return results;
+  }
+
+  private int rollOnce() {
+    return ThreadLocalRandom.current().nextInt(this.min, this.max + 1);
+  }
+}
+```
+
+Create the app files `DiceApplication.java` and `RollController.java` and add
+the following code to them:
+
+```java
+// DiceApplication.java
+package otel;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.Banner;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class DiceApplication {
+  public static void main(String[] args) {
+
+    SpringApplication app = new SpringApplication(DiceApplication.class);
+    app.setBannerMode(Banner.Mode.OFF);
+    app.run(args);
+  }
+}
+```
+
+```java
+// RollController.java
+package otel;
+
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
+
+import otel.Dice;
+
+@RestController
+public class RollController {
+  private static final Logger logger = LoggerFactory.getLogger(RollController.class);
+
+  @GetMapping("/rolldice")
+  public List<Integer> index(@RequestParam("player") Optional<String> player,
+      @RequestParam("rolls") Optional<Integer> rolls) {
+
+    if (!rolls.isPresent()) {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Missing rolls parameter", null);
+    }
+
+    List<Integer> result = new Dice(1, 6).rollTheDice(rolls.get());
+
+    if (player.isPresent()) {
+      logger.info("{} is rolling the dice: {}", player.get(), result);
+    } else {
+      logger.info("Anonymous player is rolling the dice: {}", result);
+    }
+    return result;
+  }
+}
+```
+
+To ensure that it is working, run the application with the following command and
+open <http://localhost:8080/rolldice?rolls=12> in your web browser:
+
+```shell
+java -jar ./build/libs/java-simple.jar
+```
+
+You should get a list of 12 numbers in your browser window, for example:
+
+```text
+[5,6,5,3,6,1,2,5,4,4,2,4]
+```
 
 ## Manual instrumentation setup
 
-The first step is to install the dependencies for the OpenTelemetry API.
+For both library and app instrumentation, the first step is to install the
+dependencies for the OpenTelemetry API.
 
 <!-- prettier-ignore-start -->
 
-{{< tabpane >}}
-{{< tab Gradle >}}
+{{< tabpane text=true >}}
+{{% tab Gradle %}}
+
+```kotlin
 dependencies {
     implementation 'io.opentelemetry:opentelemetry-api:{{% param javaVersion %}}'
 }
-{{< /tab >}}
-{{< tab Maven >}}
+```
+
+{{% /tab %}}
+{{% tab Maven %}}
+
+```xml
 <project>
     <dependencyManagement>
         <dependencies>
@@ -102,8 +219,10 @@ dependencies {
         </dependency>
     </dependencies>
 </project>
-{{< /tab >}}
-{{< /tabpane>}}
+```
+
+{{% /tab %}}
+{{% /tabpane %}}
 
 <!-- prettier-ignore-end -->
 
@@ -112,20 +231,25 @@ dependencies {
 {{% alert title="Note" color="info" %}} If you’re instrumenting a library,
 **skip this step**. {{% /alert %}}
 
-If you instrument a Java app, install the dependencies for the OpenTelemetry SDK.
+If you instrument a Java app, install the dependencies for the OpenTelemetry
+SDK.
 
-<!-- prettier-ignore-start -->
+{{< tabpane text=true >}} {{% tab Gradle %}}
 
-{{< tabpane >}}
-{{< tab Gradle >}}
+```kotlin
 dependencies {
     implementation 'io.opentelemetry:opentelemetry-api:{{% param javaVersion %}}'
     implementation 'io.opentelemetry:opentelemetry-sdk:{{% param javaVersion %}}'
+    implementation 'io.opentelemetry:opentelemetry-sdk-metrics:{{% param javaVersion %}}'
     implementation 'io.opentelemetry:opentelemetry-exporter-logging:{{% param javaVersion %}}'
     implementation 'io.opentelemetry:opentelemetry-semconv:{{% param javaVersion %}}-alpha'
+    implementation 'opentelemetry-sdk-extension-autoconfigure:{{% param javaVersion %}}'
 }
-{{< /tab >}}
-{{< tab Maven >}}
+```
+
+{{% /tab %}} {{% tab Maven %}}
+
+```xml
 <project>
     <dependencyManagement>
         <dependencies>
@@ -147,6 +271,10 @@ dependencies {
             <groupId>io.opentelemetry</groupId>
             <artifactId>opentelemetry-sdk</artifactId>
         </dependency>
+                <dependency>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-sdk-metrics</artifactId>
+        </dependency>
         <dependency>
             <groupId>io.opentelemetry</groupId>
             <artifactId>opentelemetry-exporter-logging</artifactId>
@@ -156,24 +284,92 @@ dependencies {
             <artifactId>opentelemetry-semconv</artifactId>
             <version>{{% param javaVersion %}}-alpha</version>
         </dependency>
+        <dependency>
+          <groupId>io.opentelemetry</groupId>
+          <artifactId>opentelemetry-sdk-extension-autoconfigure</artifactId>
+        </dependency>
     </dependencies>
 </project>
-{{< /tab >}}
-{{< /tabpane>}}
+```
+
+{{% /tab %}} {{< /tabpane>}}
 
 <!-- prettier-ignore-end -->
 
 If you are an application developer, you need to configure an instance of the
-`OpenTelemetrySdk` as early as possible in your application. This can be done
-using the `OpenTelemetrySdk.builder()` method. The returned
-`OpenTelemetrySdkBuilder` instance gets the providers related to the signals,
-tracing and metrics, in order to build the `OpenTelemetry` instance.
+`OpenTelemetrySdk` as early as possible in your application. This can either be
+done manually by using the `OpenTelemetrySdk.builder()` or by using the SDK
+auto-configuration extension through the
+`opentelemetry-sdk-extension-autoconfigure` module. It is recommended to use
+auto-configuration, as it is easier to use and comes with various additional
+capabilities.
 
-You can build the providers by using the `SdkTracerProvider.builder()` and
-`SdkMeterProvider.builder()` methods.
+#### Automatic Configuration
 
-In the case of the [Getting Started](/docs/instrumentation/java/getting-started) example app
-the `main` method of the `DiceApplication` gets updated as follows:
+To use auto-configuration add the following dependency to your application:
+
+{{< tabpane text=true >}} {{% tab Gradle %}}
+
+```kotlin
+dependencies {
+    implementation 'opentelemetry-sdk-extension-autoconfigure:{{% param javaVersion %}}'
+    implementation 'opentelemetry-sdk-extension-autoconfigure-spi:{{% param javaVersion %}}'
+}
+```
+
+{{% /tab %}} {{% tab Maven %}}
+
+```xml
+<project>
+    <dependencies>
+        <dependency>
+          <groupId>io.opentelemetry</groupId>
+          <artifactId>opentelemetry-sdk-extension-autoconfigure</artifactId>
+        </dependency>
+        <dependency>
+          <groupId>io.opentelemetry</groupId>
+          <artifactId>opentelemetry-sdk-extension-autoconfigure-spi</artifactId>
+        </dependency>
+    </dependencies>
+</project>
+```
+
+{{% /tab %}} {{< /tabpane>}}
+
+It allows you to auto-configure the OpenTelemetry SDK based on a standard set of
+supported environment variables and system properties. Each environment variable
+has a corresponding system property named the same way but as lower case and
+using the `.` (dot) character instead of the `_` (underscore) as separator.
+
+The logical service name can be specified via the `OTEL_SERVICE_NAME`
+environment variable (or `otel.service.name` system property).
+
+The traces, metrics or logs exporters can be set via the `OTEL_TRACES_EXPORTER`,
+`OTEL_METRICS_EXPORTER` and `OTEL_LOGS_EXPORTER` environment variables. For
+example `OTEL_TRACES_EXPORTER=logging` configures your application to use an
+exporter that writes all traces to the console. The corresponding exporter
+library has to be provided in the classpath of the application as well.
+
+For debugging and local development purposes, use the `logging` exporter. After
+you have finished setting up manual instrumentation, provide an appropriate
+exporter library in the classpath of the application to
+[export the app's telemetry data](/docs/instrumentation/java/exporters/) to one
+or more telemetry backends.
+
+The SDK auto-configuration has to be initialized from your code in order to
+allow the module to go through the provided environment variables (or system
+properties) and set up the `OpenTelemetry` instance by using the builders
+internally.
+
+```java
+import io.opentelemetry.sdk.autoconfigure.AutoConfiguredOpenTelemetrySdk;
+
+OpenTelemetrySdk sdk = AutoConfiguredOpenTelemetrySdk.initialize()
+    .getOpenTelemetrySdk();
+```
+
+In the case of the [example app](#example-app) the the `DiceApplication` class
+gets updated as follows:
 
 ```java
 package otel;
@@ -181,6 +377,60 @@ package otel;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.Banner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.sdk.autoconfigure.AutoConfiguredOpenTelemetrySdk;
+
+@SpringBootApplication
+public class DiceApplication {
+  public static void main(String[] args) {
+    SpringApplication app = new SpringApplication(DiceApplication.class);
+    app.setBannerMode(Banner.Mode.OFF);
+    app.run(args);
+  }
+
+  @Bean
+  public OpenTelemetry openTelemetry() {
+    return AutoConfiguredOpenTelemetrySdk.initialize().getOpenTelemetrySdk();
+  }
+}
+```
+
+To verify your code, build and run the app:
+
+```sh
+gradle assemble
+env \
+OTEL_SERVICE_NAME=dice-server \
+OTEL_TRACES_EXPORTER=logging \
+OTEL_METRICS_EXPORTER=logging \
+OTEL_LOGS_EXPORTER=logging \
+java -jar ./build/libs/java-simple.jar
+```
+
+This basic setup has no effect on your app yet. You need to add code for
+[traces](#traces), [metrics](#metrics), and/or [logs](#logs).
+
+#### Manual Configuration
+
+`OpenTelemetrySdk.builder()` returns an instance of `OpenTelemetrySdkBuilder`,
+which gets the providers related to the signals, tracing and metrics, in order
+to build the `OpenTelemetry` instance.
+
+You can build the providers by using the `SdkTracerProvider.builder()` and
+`SdkMeterProvider.builder()` methods.
+
+In the case of the [example app](#example-app) the the `DiceApplication` class
+gets updated as follows:
+
+```java
+package otel;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.Banner;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 import io.opentelemetry.api.OpenTelemetry;
 import io.opentelemetry.api.common.Attributes;
@@ -203,7 +453,13 @@ import io.opentelemetry.semconv.resource.attributes.ResourceAttributes;
 @SpringBootApplication
 public class DiceApplication {
   public static void main(String[] args) {
+    SpringApplication app = new SpringApplication(DiceApplication.class);
+    app.setBannerMode(Banner.Mode.OFF);
+    app.run(args);
+  }
 
+  @Bean
+  public OpenTelemetry openTelemetry() {
     Resource resource = Resource.getDefault()
         .merge(Resource.create(Attributes.of(ResourceAttributes.SERVICE_NAME, "dice-server", ResourceAttributes.SERVICE_VERSION, "0.1.0")));
 
@@ -229,18 +485,16 @@ public class DiceApplication {
         .setPropagators(ContextPropagators.create(W3CTraceContextPropagator.getInstance()))
         .buildAndRegisterGlobal();
 
-    SpringApplication app = new SpringApplication(DiceApplication.class);
-    app.setBannerMode(Banner.Mode.OFF);
-    app.run(args);
+    return openTelemetry;
   }
 }
 ```
 
-For debugging and local development purposes, the example exports
-telemetry to the console. After you have finished setting up manual
-instrumentation, you need to configure an appropriate exporter to
-[export the app's telemetry data](/docs/instrumentation/java/exporters/) to one or
-more telemetry backends.
+For debugging and local development purposes, the example exports telemetry to
+the console. After you have finished setting up manual instrumentation, you need
+to configure an appropriate exporter to
+[export the app's telemetry data](/docs/instrumentation/java/exporters/) to one
+or more telemetry backends.
 
 The example also sets up the mandatory SDK default attribute `service.name`,
 which holds the logical name of the service, and the optional (but highly
@@ -250,18 +504,15 @@ API or implementation.
 Alternative methods exist for setting up resource attributes. For more
 information, see [Resources](/docs/instrumentation/java/resources/).
 
-To verify your code, run the app:
+To verify your code, buld and run the app:
 
 ```sh
+gradle assemble
 java -jar ./build/libs/java-simple.jar
 ```
 
 This basic setup has no effect on your app yet. You need to add code for
 [traces](#traces), [metrics](#metrics), and/or [logs](#logs).
-
-You can register instrumentation libraries with the OpenTelemetry SDK for
-Node.js in order to generate telemetry data for your dependencies. For more
-information, see [Libraries](/docs/instrumentation/java/libraries/).
 
 ## Traces
 
@@ -311,59 +562,75 @@ Anywhere in your application where you write manual tracing code should call
 ```java
 import io.opentelemetry.api.trace.Tracer;
 
-Tracer tracer = openTelemetry.getTracer("roll-controller", "0.1.0");
+Tracer tracer = openTelemetry.getTracer("instrumentation-scope-name", "instrumentation-scope-version");
 ```
 
 The values of `instrumentation-scope-name` and `instrumentation-scope-version`
 should uniquely identify the
 [instrumentation scope](/docs/specs/otel/glossary/#instrumentation-scope), such
 as the package, module or class name. While the name is required, the version is
-still recommended despite being optional. Note, that all `Tracer`s that are created by a single `OpenTelemetry`
-instance will interoperate, regardless of name.
+still recommended despite being optional. Note, that all `Tracer`s that are
+created by a single `OpenTelemetry` instance will interoperate, regardless of
+name.
 
 It's generally recommended to call `getTracer` in your app when you need it
 rather than exporting the `tracer` instance to the rest of your app. This helps
 avoid trickier application load issues when other required dependencies are
 involved.
 
-In the case of the [example app](#example-app) a `Tracer` can be acquired in the
-`index` method of the `RollController` as follows:
+In the case of the [example app](#example-app), there are two places where a
+tracer may be acquired with an appropriate instrumentation scope:
+
+First, in the `index` method of the `RollController` as follows:
 
 ```java
 package otel;
 
-import java.util.Optional;
-import java.util.concurrent.ThreadLocalRandom;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import io.opentelemetry.api.GlobalOpenTelemetry;
+// ...
+import org.springframework.beans.factory.annotation.Autowired;
+import io.opentelemetry.api.OpenTelemetry;
 import io.opentelemetry.api.trace.Tracer;
 
 @RestController
 public class RollController {
   private static final Logger logger = LoggerFactory.getLogger(RollController.class);
+  private final Tracer tracer;
 
-  @GetMapping("/rolldice")
-  public String index(@RequestParam("player") Optional<String> player) {
+  @Autowired
+  RollController(OpenTelemetry openTelemetry) {
+    tracer = openTelemetry.getTracer(RollController.class.getName(), "0.1.0");
+  }
+  // ...
+}
+```
 
-    Tracer tracer = GlobalOpenTelemetry.getTracer("roll-controller", "0.1.0");
+And second, in the _library file_ `Dice.java`:
 
-    int result = this.getRandomNumber(1, 6);
-    if (player.isPresent()) {
-      logger.info("{} is rolling the dice: {}", player.get(), result);
-    } else {
-      logger.info("Anonymous player is rolling the dice: {}", result);
-    }
-    return Integer.toString(result);
+```java
+// ...
+import io.opentelemetry.api.GlobalOpenTelemetry;
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.api.trace.Tracer;
+
+public class Dice {
+
+  private int min;
+  private int max;
+  private Tracer tracer;
+
+  public Dice(int min, int max, OpenTelemetry openTelemetry) {
+    this.min = min;
+    this.max = max;
+    this.tracer = openTelemetry.getTracer(Dice.class.getName(), "0.1.0");
   }
 
-  public int getRandomNumber(int min, int max) {
-    return ThreadLocalRandom.current().nextInt(min, max + 1);
+  public Dice(int min, int max) {
+    this.min = min;
+    this.max = max;
+    this.tracer = OpenTelemetry.noop().getTracer(Dice.class.getName(), "0.1.0");
   }
+
+  // ...
 }
 ```
 
@@ -371,8 +638,16 @@ As an aside, if you are writing library instrumentation, it is strongly
 recommended that you provide your users the ability to inject an instance of
 `OpenTelemetry` into your instrumentation code. If this is not possible for some
 reason, you can fall back to using an instance from the `GlobalOpenTelemetry`
-class. Note that you can't force end users to configure the global, so this is
-the most brittle option for library instrumentation.
+class:
+
+```java
+import io.opentelemetry.api.GlobalOpenTelemetry;
+
+Tracer tracer = GlobalOpenTelemetry.getTracer("instrumentation-scope-name", "instrumentation-scope-version");
+```
+
+Note that you can't force end users to configure the global, so this is the most
+brittle option for library instrumentation.
 
 ### Create Spans
 
@@ -394,7 +669,7 @@ import io.opentelemetry.context.Scope;
     Span span = tracer.spanBuilder("rollTheDice").startSpan();
 
     // Make the span the current span
-    try (Scope ss = span.makeCurrent()) {      
+    try (Scope scope = span.makeCurrent()) {
       int result = this.getRandomNumber(1, 6);
       if (player.isPresent()) {
         logger.info("{} is rolling the dice: {}", player.get(), result);
@@ -410,13 +685,19 @@ import io.opentelemetry.context.Scope;
 It's required to call `end()` to end the span when you want it to end.
 
 If you followed the instructions using the [example app](#example-app) up to
-this point, you can copy the code above into the `index` method of the `RollController`.
-You should now be able to see spans emitted from your app.
+this point, you can copy the code above into the `index` method of the
+`RollController`. You should now be able to see spans emitted from your app.
 
 Start your app as follows, and then send it requests by visiting
 <http://localhost:8080/rolldice> with your browser or `curl`:
 
 ```shell
+gradle assemble
+env \
+OTEL_SERVICE_NAME=dice-server \
+OTEL_TRACES_EXPORTER=logging \
+OTEL_METRICS_EXPORTER=logging \
+OTEL_LOGS_EXPORTER=logging \
 java -jar ./build/libs/java-simple.jar
 ```
 
@@ -424,7 +705,7 @@ After a while, you should see the spans printed in the console by the
 `LoggingSpanExporter`, something like this:
 
 ```log
-2023-08-02T17:22:22.658+02:00  INFO 2313 --- [nio-8080-exec-1] i.o.e.logging.LoggingSpanExporter        : 'rollTheDice' : 565232b11b9933fa6be8d6c4a1307fe2 6e1e011e2e8c020b INTERNAL [tracer: roll-controller:0.1.0] {}
+2023-08-02T17:22:22.658+02:00  INFO 2313 --- [nio-8080-exec-1] i.o.e.logging.LoggingSpanExporter        : 'rollTheDice' : 565232b11b9933fa6be8d6c4a1307fe2 6e1e011e2e8c020b INTERNAL [tracer: otel.RollController:0.1.0] {}
 ```
 
 ### Create nested Spans
@@ -440,7 +721,7 @@ following way:
 
 ```java
 void parentOne() {
-  Span parentSpan = tracer.spanBuilder("parent").startSpan();
+
   try {
     childOne(parentSpan);
   } finally {
@@ -460,27 +741,65 @@ void childOne(Span parentSpan) {
 }
 ```
 
+```java
+import io.opentelemetry.api.trace.Span;
+import io.opentelemetry.context.Context;
+
+  public List<Integer> rollTheDice(int rolls) {
+    Span parentSpan = tracer.spanBuilder("parent").startSpan();
+    List<Integer> results = new ArrayList<Integer>();
+    try {
+      for (int i = 0; i < rolls; i++) {
+        results.add(this.rollOnce(parentSpan));
+      }
+      return results;
+    } finally {
+      parentSpan.end();
+    }
+  }
+
+  private int rollOnce(Span parentSpan) {
+    Span childSpan = tracer.spanBuilder("child")
+        .setParent(Context.current().with(parentSpan))
+        .startSpan();
+    try {
+      return ThreadLocalRandom.current().nextInt(this.min, this.max + 1);
+    } finally {
+      childSpan.end();
+    }
+  }
+```
+
 The OpenTelemetry API offers also an automated way to propagate the parent span
 on the current thread:
 
 ```java
-void parentTwo() {
-  Span parentSpan = tracer.spanBuilder("parent").startSpan();
-  try(Scope scope = parentSpan.makeCurrent()) {
-    childTwo();
-  } finally {
-    parentSpan.end();
+import io.opentelemetry.api.trace.Span;
+import io.opentelemetry.context.Scope;
+
+  public List<Integer> rollTheDice(int rolls) {
+    Span parentSpan = tracer.spanBuilder("parent").startSpan();
+    try(Scope scope = parentSpan.makeCurrent()) {
+    List<Integer> results = new ArrayList<Integer>();
+    for (int i = 0; i < rolls; i++) {
+      results.add(this.rollOnce());
+    }
+    return results;
+    } finally {
+      parentSpan.end();
+    }
   }
-}
-void childTwo() {
-  Span childSpan = tracer.spanBuilder("child")
+
+  private int rollOnce() {
+    Span childSpan = tracer.spanBuilder("child")
     // NOTE: setParent(...) is not required;
     // `Span.current()` is automatically added as the parent
     .startSpan();
-  try(Scope scope = childSpan.makeCurrent()) {
-    // do stuff
-  } finally {
-    childSpan.end();
+    try(Scope scope = childSpan.makeCurrent()) {
+      return ThreadLocalRandom.current().nextInt(this.min, this.max + 1);
+    } finally {
+      childSpan.end();
+    }
   }
 }
 ```
@@ -532,7 +851,15 @@ defined in the specification at
 
 First add the semantic conventions as a dependency to your application:
 
-#### Maven
+{{< tabpane text=true >}} {{% tab Gradle %}}
+
+```kotlin
+dependencies {
+  implementation("io.opentelemetry:opentelemetry-semconv")
+}
+```
+
+{{% /tab %}} {{% tab Maven %}}
 
 ```xml
 <dependency>
@@ -541,13 +868,7 @@ First add the semantic conventions as a dependency to your application:
 </dependency>
 ```
 
-#### Gradle
-
-```kotlin
-dependencies {
-  implementation("io.opentelemetry:opentelemetry-semconv")
-}
-```
+{{% /tab %}} {{< /tabpane>}}
 
 Finally, you can update your file to include semantic attributes:
 
