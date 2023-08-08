@@ -25,13 +25,16 @@ Jaeger) you'll want to use `opentelemetry-exporter-otlp`:
 
 {{< tabpane text=true >}}
 {{% tab Gradle %}}
+
 ```kotlin
 dependencies {
     implementation 'io.opentelemetry:opentelemetry-exporter-otlp:{{% param javaVersion %}}'
 }
 ```
+
 {{% /tab %}}
 {{% tab Maven %}}
+
 ```xml
 <project>
     <dependencies>
@@ -42,6 +45,7 @@ dependencies {
     </dependencies>
 </project>
 ```
+
 {{< /tab >}}
 {{< /tabpane>}}
 
