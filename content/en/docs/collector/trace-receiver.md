@@ -1945,7 +1945,7 @@ func NewSpanID() pcommon.SpanID {
 
 > #### Check your work
 >
-> - Imported the `crypto/rand` package as `crand` to avoid name conflict with 
+> - Imported the `crypto/rand` package as `crand` to avoid name conflict with
 >   math/rand.
 
 Now that you have a way to properly identify the spans, you can start creating
