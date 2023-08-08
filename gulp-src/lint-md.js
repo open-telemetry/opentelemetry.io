@@ -9,6 +9,7 @@ const markdownFiles = [
   '!content-modules/**',
   '!layouts/**',
   '!node_modules/**',
+  '!scripts/registry-scanner/node_modules/**',
   '!themes/**',
   '!tmp/**',
 ];

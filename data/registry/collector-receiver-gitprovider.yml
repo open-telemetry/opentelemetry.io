@@ -1,0 +1,13 @@
+title: Git Provider Receiver
+registryType: receiver
+isThirdParty: false
+language: collector
+tags:
+  - git
+  - receiver
+  - collector
+repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/gitproviderreceiver
+license: Apache 2.0
+description: The Git Provider receiver scrapes data from Git vendors.
+authors: OpenTelemetry Authors
+otVersion: latest
