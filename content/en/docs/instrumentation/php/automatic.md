@@ -84,28 +84,42 @@ The extension can be installed via pecl,
 1. Setup development environment. Installing from source requires proper
    development environment and some dependencies:
 
-   {{< tabpane lang=shell >}}
+   {{< tabpane text=true >}} {{% tab "Linux (apt)" %}}
 
-   {{< tab "Linux (apt)" >}}sudo apt-get install gcc make autoconf{{< /tab >}}
+   ```sh
+   sudo apt-get install gcc make autoconf
+   ```
 
-   {{< tab "macOS (homebrew)" >}}brew install gcc make autoconf{{< /tab >}}
+   {{% /tab %}} {{% tab "macOS (homebrew)" %}}
 
-   {{< /tabpane >}}
+   ```sh
+   brew install gcc make autoconf
+   ```
+
+   {{% /tab %}} {{< /tabpane >}}
 
 2. Build/install the extension. With your environment set up you can install the
    extension:
 
-   {{< tabpane lang=shell >}}
+   {{< tabpane text=true >}} {{% tab pecl %}}
 
-   {{< tab pecl >}}pecl install opentelemetry-beta{{< /tab >}}
-   <!-- prettier-ignore-start -->
+   ```sh
+   pecl install opentelemetry-beta
+   ```
 
-   {{< tab pickle >}}php pickle.phar install opentelemetry{{< /tab >}}
-   <!-- prettier-ignore-end -->
-   <!-- prettier-ignore -->
-   {{< tab "php-extension-installer (docker)" >}}install-php-extensions opentelemetry{{< /tab >}}
+   {{% /tab %}} {{% tab pickle %}}
 
-   {{< /tabpane >}}
+   ```sh
+   php pickle.phar install opentelemetry
+   ```
+
+   {{% /tab %}} {{% tab "php-extension-installer (docker)" %}}
+
+   ```sh
+   install-php-extensions opentelemetry
+   ```
+
+   {{% /tab %}} {{< /tabpane >}}
 
 3. Add the extension to your `php.ini` file:
 

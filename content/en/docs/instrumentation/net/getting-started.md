@@ -385,3 +385,7 @@ telemetry backends.
 You can also check the
 [automatic instrumentation for .NET](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation),
 which is currently in beta.
+
+If you'd like to explore a more complex example, take a look at the
+[OpenTelemetry Demo](/docs/demo/), which includes the .NET based
+[Cart Service](/docs/demo/services/cart/).

@@ -20,31 +20,33 @@ application (a HTTP server & HTTP client). For more details read
 You can build OpenTelemetry C++ on Windows, macOS or Linux. First you need to
 install some dependencies:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane lang=shell >}}
+{{< tabpane text=true >}} {{% tab "Linux (apt)" %}}
 
-{{< tab "Linux (apt)" >}}
+```sh
 sudo apt-get install git cmake g++ libcurl4-openssl-dev
-{{< /tab >}}
+```
 
-{{< tab "Linux (yum)" >}}
+{{% /tab %}} {{% tab "Linux (yum)" %}}
+
+```sh
 sudo yum install git cmake g++ libcurl-devel
-{{< /tab >}}
+```
 
-{{< tab "Linux (alpine)" >}}
+{{% /tab %}} {{% tab "Linux (alpine)" %}}
+
+```sh
 sudo apk add git cmake g++ make curl-dev
-{{< /tab >}}
+```
 
-{{< tab "MacOS (homebrew)" >}}
+{{% /tab %}} {{% tab "MacOS (homebrew)" %}}
+
+```sh
 xcode-select —install
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew install git cmake
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 ## Building
 
@@ -177,3 +179,7 @@ customized observability data.
 You'll also want to configure an appropriate exporter to
 [export your telemetry data](/docs/instrumentation/cpp/exporters) to one or more
 telemetry backends.
+
+If you'd like to explore a more complex example, take a look at the
+[OpenTelemetry Demo](/docs/demo/), which includes the C++ based
+[Currency Service](/docs/demo/services/currency/).

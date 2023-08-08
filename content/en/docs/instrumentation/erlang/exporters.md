@@ -28,17 +28,17 @@ Zipkin also run by [docker-compose](https://docs.docker.com/compose/).
 To export to the running Collector the `opentelemetry_exporter` package must be
 added to the project's dependencies:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
 
-{{< tab Erlang >}}
+```erlang
 {deps, [{opentelemetry_api, "~> {{% param versions.otelApi %}}"},
         {opentelemetry, "~> {{% param versions.otelSdk %}}"},
         {opentelemetry_exporter, "~> {{% param versions.otelExporter %}}"}]}.
-{{< /tab >}}
+```
 
-{{< tab Elixir >}}
+{{% /tab %}} {{% tab Elixir %}}
+
+```elixir
 def deps do
   [
     {:opentelemetry_api, "~> {{% param versions.otelApi %}}"},
@@ -46,11 +46,9 @@ def deps do
     {:opentelemetry_exporter, "~> {{% param versions.otelExporter %}}"}
   ]
 end
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 It should then be added to the configuration of the Release before the SDK
 Application to ensure the exporter's dependencies are started before the SDK
@@ -59,11 +57,9 @@ attempts to initialize and use the exporter.
 Example of Release configuration in `rebar.config` and for
 [mix's Release task](https://hexdocs.pm/mix/Mix.Tasks.Release.html):
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
 
-{{< tab Erlang >}}
+```erlang
 %% rebar.config
 {relx, [{release, {my_instrumented_release, "0.1.0"},
          [opentelemetry_exporter,
@@ -71,9 +67,11 @@ Example of Release configuration in `rebar.config` and for
           my_instrumented_app]},
 
        ...]}.
-{{< /tab >}}
+```
 
-{{< tab Elixir >}}
+{{% /tab %}} {{% tab Elixir %}}
+
+```elixir
 # mix.exs
 def project do
   [
@@ -86,11 +84,9 @@ def project do
     ]
   ]
 end
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 Finally, the runtime configuration of the `opentelemetry` and
 `opentelemetry_exporter` Applications are set to export to the Collector. The
@@ -99,11 +95,9 @@ the HTTP protocol with endpoint of `localhost` on port `4318`. If using `grpc`
 for the `otlp_protocol` the endpoint should be changed to
 `http://localhost:4317`.
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
 
-{{< tab Erlang >}}
+```erlang
 %% config/sys.config.src
 [
  {opentelemetry,
@@ -114,9 +108,11 @@ for the `otlp_protocol` the endpoint should be changed to
   [{otlp_protocol, http_protobuf},
    {otlp_endpoint, "http://localhost:4318"}]}]}
 ].
-{{< /tab >}}
+```
 
-{{< tab Elixir >}}
+{{% /tab %}} {{% tab Elixir %}}
+
+```elixir
 # config/runtime.exs
 config :opentelemetry,
   span_processor: :batch,
@@ -125,8 +121,6 @@ config :opentelemetry,
 config :opentelemetry_exporter,
   otlp_protocol: :http_protobuf,
   otlp_endpoint: "http://localhost:4318"
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}

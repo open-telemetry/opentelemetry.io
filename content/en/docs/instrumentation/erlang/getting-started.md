@@ -303,57 +303,51 @@ more telemetry backends.
 
 To get started with this guide, create a new project with `rebar3` or `mix`:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
 
-{{< tab Erlang >}}
+```erlang
 rebar3 new release otel_getting_started
-{{< /tab >}}
+```
 
-{{< tab Elixir >}}
+{{% /tab %}} {{% tab Elixir %}}
+
+```elixir
 mix new --sup otel_getting_started
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 Then, in the project you just created, add both `opentelemetry_api` and
 `opentelemetry` as dependencies. We add both because this is a project we will
 run as a Release and export spans from.
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
 
-{{< tab Erlang >}}
+```erlang
 {deps, [{opentelemetry_api, "~> {{% param versions.otelApi %}}"},
         {opentelemetry, "~> {{% param versions.otelSdk %}}"}]}.
-{{< /tab >}}
+```
 
-{{< tab Elixir >}}
+{{% /tab %}} {{% tab Elixir %}}
+
+```elixir
 def deps do
   [
     {:opentelemetry_api, "~> {{% param versions.otelApi %}}"},
     {:opentelemetry, "~> {{% param versions.otelSdk %}}"}
   ]
 end
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 In the case of Erlang, the API Application will also need to be added to
 `src/otel_getting_started.app.src` and a `relx` section to `rebar.config`. In an
 Elixir project, a `releases` section needs to be added to `mix.exs`:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
 
-{{< tab Erlang >}}
+```erlang
 %% src/otel_getting_started.app.src
 ...
 {applications, [kernel,
@@ -367,9 +361,11 @@ Elixir project, a `releases` section needs to be added to `mix.exs`:
           otel_getting_started]},
 
        ...]}.
-{{< /tab >}}
+```
 
-{{< tab Elixir >}}
+{{% /tab %}} {{% tab Elixir %}}
+
+```elixir
 # mix.exs
 releases: [
   otel_getting_started: [
@@ -377,11 +373,9 @@ releases: [
     applications: [opentelemetry: :temporary, otel_getting_started: :permanent]
   ]
 ]
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 The SDK `opentelemetry` should be added as early as possible in the Release boot
 process to ensure it is available before any telemetry is produced. Here it is
@@ -418,40 +412,36 @@ To configure OpenTelemetry to use a particular exporter, in this case
 the `exporter` for the span processor `otel_batch_processor`, a type of span
 processor that batches up multiple spans over a period of time:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
 
-{{< tab Erlang >}}
+```erlang
 %% config/sys.config.src
 [
  {opentelemetry,
   [{span_processor, batch},
    {traces_exporter, {otel_exporter_stdout, []}}]}
 ].
-{{< /tab >}}
+```
 
-{{< tab Elixir >}}
+{{% /tab %}} {{% tab Elixir %}}
+
+```elixir
 # config/runtime.exs
 config :opentelemetry,
   span_processor: :batch,
   traces_exporter: {:otel_exporter_stdout, []}
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 ## Working with Spans
 
 Now that the dependencies and configuration are set up, we can create a module
 with a function `hello/0` that starts some spans:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
 
-{{< tab Erlang >}}
+```erlang
 %% apps/otel_getting_started/src/otel_getting_started.erl
 -module(otel_getting_started).
 
@@ -473,9 +463,11 @@ nice_operation(_SpanCtx) ->
                        ?set_attributes([{lemons_key, <<"five">>}]),
                        ?add_event(<<"Sub span event!">>, [])
                end).
-{{< /tab >}}
+```
 
-{{< tab Elixir >}}
+{{% /tab %}} {{% tab Elixir %}}
+
+```elixir
 # lib/otel_getting_started.ex
 defmodule OtelGettingStarted do
   require OpenTelemetry.Tracer, as: Tracer
@@ -492,11 +484,9 @@ defmodule OtelGettingStarted do
     end
   end
 end
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 In this example, we're using macros that use the process dictionary for context
 propagation and for getting the tracer.
@@ -521,11 +511,9 @@ To test out this project and see the spans created, you can run with
 `rebar3 shell` or `iex -S mix`, each will pick up the corresponding
 configuration for the release, resulting in the tracer and exporter to started.
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true >}} {{% tab Erlang %}}
 
-{{< tab Erlang >}}
+```console
 $ rebar3 shell
 ===> Compiling otel_getting_started
 Erlang/OTP 23 [erts-11.1] [source] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:1] [hipe]
@@ -547,9 +535,11 @@ true
       [{another_key,<<"yes">>}],
       [{event,-576460750077877345,<<"Nice operation!">>,[{<<"bogons">>,100}]}],
       [],undefined,1,false,undefined}
-{{< /tab >}}
+```
 
-{{< tab Elixir >}}
+{{% /tab %}} {{% tab Elixir %}}
+
+```console
 $ iex -S mix
 Erlang/OTP 23 [erts-11.1] [source] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:1] [hipe]
 
@@ -571,11 +561,9 @@ iex(2)>
       [{another_key,<<"yes">>}],
       [{event,-576460741349446725,<<"Nice operation!">>,[{<<"bogons">>,100}]}],
       [],undefined,1,false,undefined}
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 ## Next Steps
 
@@ -585,3 +573,7 @@ Enrich your instrumentation with more
 You'll also want to configure an appropriate exporter to
 [export your telemetry data](/docs/instrumentation/erlang/exporters) to one or
 more telemetry backends.
+
+If you'd like to explore a more complex example, take a look at the
+[OpenTelemetry Demo](/docs/demo/), which includes the Erlang/Elixir based
+[Feature Flag Service](/docs/demo/services/feature-flag/).
