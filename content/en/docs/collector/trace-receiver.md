@@ -1942,6 +1942,9 @@ func NewSpanID() pcommon.SpanID {
 	return spanID
 }
 ```
+> #### Check your work
+>
+> - Importing crypto/rand package as crand because name is duplicated with math/rand. 
 
 Now that you have a way to properly identify the spans, you can start creating
 them to represent the operations within and across the entities in your system.
