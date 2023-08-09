@@ -94,8 +94,8 @@ Lets break these down.
 The
 [OTLP Receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver)
 is the best solution for collecting traces, metrics, and logs in the
-[OTLP format](/docs/specs/otel/protocol/). If you are
-emitting application telemetry in another format, there is a good chance that
+[OTLP format](/docs/specs/otel/protocol/). If you are emitting application
+telemetry in another format, there is a good chance that
 [the Collector has a receiver for it](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver),
 but for this tutorial we'll assume the telemetry is formatted in OTLP.
 
