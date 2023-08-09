@@ -437,9 +437,9 @@ k8s_cluster:
     - memory
 ```
 
-For specific details about which metrics are collected, see
+To learn more about the metrics that are collected, see
 [Default Metrics](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/k8sclusterreceiver/documentation.md)
-For specific configuration details, see
+For configuration details, see
 [Kubernetes Cluster Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8sclusterreceiver).
 
 Since the processor uses the Kubernetes API, it needs the correct permission to
