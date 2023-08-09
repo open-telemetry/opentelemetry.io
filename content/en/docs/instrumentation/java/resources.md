@@ -17,8 +17,8 @@ pod, or Kubernetes deployment.
 
 If you use the Javaagent for
 [automatic instrumentation](/docs/instrumentation/java/automatic) you can learn
-how to setup resource detection following the [Agent Configuration
-Guide]/docs/instrumentation/java/automatic/agent-config)
+how to setup resource detection following the
+[Agent Configuration Guide](/docs/instrumentation/java/automatic/agent-config).
 
 For manual instrumentation, you will find some introductions on how to set up
 resource detection below.

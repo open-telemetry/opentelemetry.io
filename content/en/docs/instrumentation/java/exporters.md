@@ -1,6 +1,7 @@
 ---
 title: Exporters
 weight: 50
+cSpell:ignore: autoconfigure springframework
 ---
 
 In order to visualize and analyze your traces, you will need to export them to a
@@ -55,37 +56,81 @@ If you use [SDK auto-configuration](/docs/instrumentation/java/manual/#automatic
 all you need to do is update your environment variables:
 
 ```shell
-env OTEL_TRACES_EXPORTER=otlp OTEL_METRICS_EXPORTER=otlp OTEL_LOGS_EXPORTER=otlp java -jar ./build/libs/java-simple.jar
+env OTEL_EXPORTER_OTLP_ENDPOINT=http://example:4317 java -jar ./build/libs/java-simple.jar
 ```
+
+Note, that in the case of exporting via OTLP you do not need to set `OTEL_TRACES_EXPORTER`, `OTEL_METRICS_EXPORTER` and `OTEL_LOGS_EXPORTER`
+since `otlp` is their default value
 
 In the case of [manual configuration] you can update the [example app](/docs/instrumentation/java/manual#example-app) like the
 following:
 
 <!-- prettier-ignore-end -->
 
-```java
+```java { hl_lines=["12-14",21,"39-53"] }
+package otel;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.Banner;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.api.common.Attributes;
+import io.opentelemetry.api.trace.propagation.W3CTraceContextPropagator;
+import io.opentelemetry.context.propagation.ContextPropagators;
 import io.opentelemetry.exporter.otlp.metrics.OtlpGrpcMetricExporter;
 import io.opentelemetry.exporter.otlp.trace.OtlpGrpcSpanExporter;
 import io.opentelemetry.exporter.otlp.logs.OtlpGrpcLogRecordExporter;
+import io.opentelemetry.sdk.OpenTelemetrySdk;
+import io.opentelemetry.sdk.metrics.SdkMeterProvider;
 import io.opentelemetry.sdk.metrics.export.PeriodicMetricReader;
+import io.opentelemetry.sdk.resources.Resource;
+import io.opentelemetry.sdk.trace.SdkTracerProvider;
 import io.opentelemetry.sdk.trace.export.BatchSpanProcessor;
 import io.opentelemetry.sdk.logs.export.BatchLogRecordProcessor;
+import io.opentelemetry.sdk.logs.SdkLoggerProvider;
+import io.opentelemetry.sdk.logs.export.LogRecordExporter;
+import io.opentelemetry.semconv.resource.attributes.ResourceAttributes;
 
-        SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder()
-                .addSpanProcessor(BatchSpanProcessor.builder(OtlpGrpcSpanExporter.builder().build()).build())
-                .setResource(resource)
-                .build();
+@SpringBootApplication
+public class DiceApplication {
+  public static void main(String[] args) {
+    SpringApplication app = new SpringApplication(DiceApplication.class);
+    app.setBannerMode(Banner.Mode.OFF);
+    app.run(args);
+  }
 
-        SdkMeterProvider sdkMeterProvider = SdkMeterProvider.builder()
-                .registerMetricReader(PeriodicMetricReader.builder(OtlpGrpcMetricExporter.builder().build()).build())
-                .setResource(resource)
-                .build();
+  @Bean
+  public OpenTelemetry openTelemetry() {
+    Resource resource = Resource.getDefault().toBuilder().put(SERVICE_NAME, "dice-server").put(SERVICE_VERSION, "0.1.0").build()
 
-        SdkLoggerProvider sdkLoggerProvider = SdkLoggerProvider.builder()
-                .addLogRecordProcessor(
-                        BatchLogRecordProcessor.builder(OtlpGrpcLogRecordExporter.builder().build()).build())
-                .setResource(resource)
-                .build();
+    SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder()
+            .addSpanProcessor(BatchSpanProcessor.builder(OtlpGrpcSpanExporter.builder().build()).build())
+            .setResource(resource)
+            .build();
+
+    SdkMeterProvider sdkMeterProvider = SdkMeterProvider.builder()
+            .registerMetricReader(PeriodicMetricReader.builder(OtlpGrpcMetricExporter.builder().build()).build())
+            .setResource(resource)
+            .build();
+
+    SdkLoggerProvider sdkLoggerProvider = SdkLoggerProvider.builder()
+            .addLogRecordProcessor(
+                    BatchLogRecordProcessor.builder(OtlpGrpcLogRecordExporter.builder().build()).build())
+            .setResource(resource)
+            .build();
+
+    OpenTelemetry openTelemetry = OpenTelemetrySdk.builder()
+        .setTracerProvider(sdkTracerProvider)
+        .setMeterProvider(sdkMeterProvider)
+        .setLoggerProvider(sdkLoggerProvider)
+        .setPropagators(ContextPropagators.create(W3CTraceContextPropagator.getInstance()))
+        .buildAndRegisterGlobal();
+
+    return openTelemetry;
+  }
+}
 ```
 
 To try out the exporters quickly, you can run Jaeger with OTLP enabled in a
@@ -93,17 +138,9 @@ docker container:
 
 ```shell
 docker run -d --name jaeger \
-  -e COLLECTOR_ZIPKIN_HOST_PORT=:9411 \
   -e COLLECTOR_OTLP_ENABLED=true \
-  -p 6831:6831/udp \
-  -p 6832:6832/udp \
-  -p 5778:5778 \
   -p 16686:16686 \
   -p 4317:4317 \
   -p 4318:4318 \
-  -p 14250:14250 \
-  -p 14268:14268 \
-  -p 14269:14269 \
-  -p 9411:9411 \
   jaegertracing/all-in-one:latest
 ```

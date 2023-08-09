@@ -23,6 +23,9 @@ instrumentation: use
 [automatic instrumentation](/docs/instrumentation/java/automatic/) to get
 started and then enrich your code with manual instrumentation as needed.
 
+Note, that especially if you cannot modify the source code of your app, you can
+skip manual instrumentation and only use automatic instrumentation.
+
 Also, for libraries your code depends on, you don't have to write
 instrumentation code yourself, since they might come with OpenTelemetry built-in
 _natively_ or you can make use of
@@ -186,19 +189,16 @@ You should get a list of 12 numbers in your browser window, for example:
 For both library and app instrumentation, the first step is to install the
 dependencies for the OpenTelemetry API.
 
-<!-- prettier-ignore-start -->
+{{< tabpane text=true >}} {{% tab Gradle %}}
 
-{{< tabpane text=true >}}
-{{% tab Gradle %}}
-
-```kotlin
+```kotlin { hl_lines=3 }
 dependencies {
-    implementation 'io.opentelemetry:opentelemetry-api:{{% param javaVersion %}}'
+    implementation("org.springframework.boot:spring-boot-starter-web");
+    implementation("io.opentelemetry:opentelemetry-api:{{% param javaVersion %}}");
 }
 ```
 
-{{% /tab %}}
-{{% tab Maven %}}
+{{% /tab %}} {{% tab Maven %}}
 
 ```xml
 <project>
@@ -222,10 +222,7 @@ dependencies {
 </project>
 ```
 
-{{% /tab %}}
-{{% /tabpane %}}
-
-<!-- prettier-ignore-end -->
+{{% /tab %}} {{% /tabpane %}}
 
 ### Initialize the SDK
 
@@ -237,14 +234,15 @@ SDK.
 
 {{< tabpane text=true >}} {{% tab Gradle %}}
 
-```kotlin
+```kotlin { hl_lines="4-8" }
 dependencies {
-    implementation 'io.opentelemetry:opentelemetry-api:{{% param javaVersion %}}'
-    implementation 'io.opentelemetry:opentelemetry-sdk:{{% param javaVersion %}}'
-    implementation 'io.opentelemetry:opentelemetry-sdk-metrics:{{% param javaVersion %}}'
-    implementation 'io.opentelemetry:opentelemetry-exporter-logging:{{% param javaVersion %}}'
-    implementation 'io.opentelemetry:opentelemetry-semconv:{{% param javaVersion %}}-alpha'
-    implementation 'opentelemetry-sdk-extension-autoconfigure:{{% param javaVersion %}}'
+    implementation("org.springframework.boot:spring-boot-starter-web");
+    implementation("io.opentelemetry:opentelemetry-api:{{% param javaVersion %}}");
+    implementation("io.opentelemetry:opentelemetry-sdk:{{% param javaVersion %}}");
+    implementation("io.opentelemetry:opentelemetry-sdk-metrics:{{% param javaVersion %}}");
+    implementation("io.opentelemetry:opentelemetry-exporter-logging:{{% param javaVersion %}}");
+    implementation("io.opentelemetry:opentelemetry-semconv:{{% param javaVersion %}}-alpha");
+    implementation("opentelemetry-sdk-extension-autoconfigure:{{% param javaVersion %}}");
 }
 ```
 
@@ -295,8 +293,6 @@ dependencies {
 
 {{% /tab %}} {{< /tabpane>}}
 
-<!-- prettier-ignore-end -->
-
 If you are an application developer, you need to configure an instance of the
 `OpenTelemetrySdk` as early as possible in your application. This can either be
 done manually by using the `OpenTelemetrySdk.builder()` or by using the SDK
@@ -311,10 +307,17 @@ To use auto-configuration add the following dependency to your application:
 
 {{< tabpane text=true >}} {{% tab Gradle %}}
 
-```kotlin
+```kotlin { hl_lines="9-10" }
 dependencies {
-    implementation 'opentelemetry-sdk-extension-autoconfigure:{{% param javaVersion %}}'
-    implementation 'opentelemetry-sdk-extension-autoconfigure-spi:{{% param javaVersion %}}'
+    implementation("org.springframework.boot:spring-boot-starter-web");
+    implementation("io.opentelemetry:opentelemetry-api:{{% param javaVersion %}}");
+    implementation("io.opentelemetry:opentelemetry-sdk:{{% param javaVersion %}}");
+    implementation("io.opentelemetry:opentelemetry-sdk-metrics:{{% param javaVersion %}}");
+    implementation("io.opentelemetry:opentelemetry-exporter-logging:{{% param javaVersion %}}");
+    implementation("io.opentelemetry:opentelemetry-semconv:{{% param javaVersion %}}-alpha");
+    implementation("opentelemetry-sdk-extension-autoconfigure:{{% param javaVersion %}}");
+    implementation("opentelemetry-sdk-extension-autoconfigure:{{% param javaVersion %}}");
+    implementation("opentelemetry-sdk-extension-autoconfigure-spi:{{% param javaVersion %}}");
 }
 ```
 
@@ -357,10 +360,10 @@ exporter library in the classpath of the application to
 [export the app's telemetry data](/docs/instrumentation/java/exporters/) to one
 or more telemetry backends.
 
-The SDK auto-configuration has to be initialized from your code in order to
-allow the module to go through the provided environment variables (or system
-properties) and set up the `OpenTelemetry` instance by using the builders
-internally.
+The SDK auto-configuration has to be initialized as early as possible in the
+application lifecycle in order to allow the module to go through the provided
+environment variables (or system properties) and set up the `OpenTelemetry`
+instance by using the builders internally.
 
 ```java
 import io.opentelemetry.sdk.autoconfigure.AutoConfiguredOpenTelemetrySdk;
@@ -369,10 +372,10 @@ OpenTelemetrySdk sdk = AutoConfiguredOpenTelemetrySdk.initialize()
     .getOpenTelemetrySdk();
 ```
 
-In the case of the [example app](#example-app) the the `DiceApplication` class
-gets updated as follows:
+In the case of the [example app](#example-app) the `DiceApplication` class gets
+updated as follows:
 
-```java
+```java { hl_lines=["6-9","19-22"] }
 package otel;
 
 import org.springframework.boot.SpringApplication;
@@ -425,7 +428,7 @@ You can build the providers by using the `SdkTracerProvider.builder()` and
 In the case of the [example app](#example-app) the the `DiceApplication` class
 gets updated as follows:
 
-```java
+```java { hl_lines=["6-24","34-62"] }
 package otel;
 
 import org.springframework.boot.SpringApplication;
@@ -461,8 +464,7 @@ public class DiceApplication {
 
   @Bean
   public OpenTelemetry openTelemetry() {
-    Resource resource = Resource.getDefault()
-        .merge(Resource.create(Attributes.of(ResourceAttributes.SERVICE_NAME, "dice-server", ResourceAttributes.SERVICE_VERSION, "0.1.0")));
+    Resource resource = Resource.getDefault().toBuilder().put(SERVICE_NAME, "dice-server").put(SERVICE_VERSION, "0.1.0").build()
 
     SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder()
         .addSpanProcessor(SimpleSpanProcessor.create(LoggingSpanExporter.create()))
@@ -584,7 +586,7 @@ tracer may be acquired with an appropriate instrumentation scope:
 
 First, in the `index` method of the `RollController` as follows:
 
-```java
+```java { hl_lines=["4-6",11,"13-16"] }
 package otel;
 
 // ...
@@ -607,9 +609,8 @@ public class RollController {
 
 And second, in the _library file_ `Dice.java`:
 
-```java
+```java { hl_lines=["2-3","9-19"]}
 // ...
-import io.opentelemetry.api.GlobalOpenTelemetry;
 import io.opentelemetry.api.OpenTelemetry;
 import io.opentelemetry.api.trace.Tracer;
 
@@ -626,9 +627,7 @@ public class Dice {
   }
 
   public Dice(int min, int max) {
-    this.min = min;
-    this.max = max;
-    this.tracer = OpenTelemetry.noop().getTracer(Dice.class.getName(), "0.1.0");
+    this(min, max, OpenTelemetry.noop())
   }
 
   // ...
@@ -661,12 +660,14 @@ automatically set by the OpenTelemetry SDK.
 
 The code below illustrates how to create a span:
 
-```java
+```java { hl_lines=["1-2","8-11","19-21"] }
 import io.opentelemetry.api.trace.Span;
 import io.opentelemetry.context.Scope;
 
-...
-
+// ...
+  @GetMapping("/rolldice")
+  public List<Integer> index(@RequestParam("player") Optional<String> player,
+      @RequestParam("rolls") Optional<Integer> rolls) {
     Span span = tracer.spanBuilder("rollTheDice").startSpan();
 
     // Make the span the current span
@@ -681,6 +682,7 @@ import io.opentelemetry.context.Scope;
     } finally {
         span.end();
     }
+  }
 ```
 
 It's required to call `end()` to end the span when you want it to end.
@@ -717,35 +719,13 @@ OpenTelemetry supports tracing within processes and across remote processes. For
 more details how to share context between remote processes, see
 [Context Propagation](#context-propagation).
 
-For a method `a` calling a method `b`, the spans could be manually linked in the
-following way:
+For example in the `Dice` class method `rollTheDice` calling method `rollOnce`,
+the spans could be manually linked in the following way:
 
-```java
-void parentOne() {
-
-  try {
-    childOne(parentSpan);
-  } finally {
-    parentSpan.end();
-  }
-}
-
-void childOne(Span parentSpan) {
-  Span childSpan = tracer.spanBuilder("child")
-        .setParent(Context.current().with(parentSpan))
-        .startSpan();
-  try {
-    // do stuff
-  } finally {
-    childSpan.end();
-  }
-}
-```
-
-```java
+```java { hl_lines=["1-2","5","7","9","12-14","17-21","23-25"]}
 import io.opentelemetry.api.trace.Span;
 import io.opentelemetry.context.Context;
-
+// ...
   public List<Integer> rollTheDice(int rolls) {
     Span parentSpan = tracer.spanBuilder("parent").startSpan();
     List<Integer> results = new ArrayList<Integer>();
@@ -774,10 +754,10 @@ import io.opentelemetry.context.Context;
 The OpenTelemetry API offers also an automated way to propagate the parent span
 on the current thread:
 
-```java
+```java { hl_lines=["1-2","5-6","12-14","18-22","24-26"]}
 import io.opentelemetry.api.trace.Span;
 import io.opentelemetry.context.Scope;
-
+// ...
   public List<Integer> rollTheDice(int rolls) {
     Span parentSpan = tracer.spanBuilder("parent").startSpan();
     try(Scope scope = parentSpan.makeCurrent()) {
