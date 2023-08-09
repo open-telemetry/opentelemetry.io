@@ -209,7 +209,7 @@ created.
 {{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
 
 ```erlang
-Parent = otel_tracer.current_span_ctx(),
+Parent = ?current_span_ctx,
 proc_lib:spawn_link(fun() ->
                         %% a new process has a new context so the span created
                         %% by the following `with_span` will have no parent
