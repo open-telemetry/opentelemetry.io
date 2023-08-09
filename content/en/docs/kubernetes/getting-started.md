@@ -108,12 +108,12 @@ Kubernetes metadata using the `k8sattributes` processor.
 
 The
 [Kubernetes Attributes Processor](../collector/components#kubernetes-attributes-processor)
-is a must have component in any collector receive telemetry from kubernetes
-pods. This processor automatically discovers Kubernetes pods, extracts their
-metadata such as pod name or node name, and adds the extracted metadata to
-spans, metrics, and logs as resource attributes. Because it adds Kubernetes
-context to your telemetry, the Kubernetes Attributes Processor lets you
-correlate your application's traces, metrics, and logs signals with your
+is a highly recomended component in any collector receive telemetry from
+kubernetes pods. This processor automatically discovers Kubernetes pods,
+extracts their metadata such as pod name or node name, and adds the extracted
+metadata to spans, metrics, and logs as resource attributes. Because it adds
+Kubernetes context to your telemetry, the Kubernetes Attributes Processor lets
+you correlate your application's traces, metrics, and logs signals with your
 Kubernetes telemetry, such as pod metrics and traces.
 
 **Kubeletstats Receiver**
