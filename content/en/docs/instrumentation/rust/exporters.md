@@ -24,8 +24,7 @@ opentelemetry-otlp = { version = "0.13", features = ["default"] }
 
 Next, configure the exporter to point at an OTLP endpoint. For example you can
 update `init_tracer` in `dice_server.rs` from the
-[Getting Started](../getting-started/) like the
-following:
+[Getting Started](../getting-started/) like the following:
 
 ```rust
 fn init_tracer() {
