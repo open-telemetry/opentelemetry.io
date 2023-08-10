@@ -222,7 +222,7 @@ proc_lib:spawn_link(fun() ->
 {{% /tab %}} {{% tab Elixir %}}
 
 ```elixir
-parent = OpenTelemetry.current_span_ctx()
+parent = OpenTelemetry.Tracer.current_span_ctx()
 task = Task.async(fn ->
                     # a new process has a new context so the span created
                     # by the following `with_span` will have no parent
