@@ -21,7 +21,7 @@ dependencies.
 
 If you want to instrument a library, you can learn on this page what you need to
 do to natively instrument your own library or how you can create an
-Instrumentation Library for a 3rd party library if none is available.
+Instrumentation Library for a third-party library if none is available.
 
 ## Use natively instrumented libraries
 
@@ -72,17 +72,23 @@ that bundle all Node.js- or web-based instrumentation libraries into a single
 package. It’s a convenient way to add automatically-generated telemetry for all
 your libraries with minimal effort:
 
-<!-- prettier-ignore-start -->
-{{< tabpane lang=shell persist=false >}}
-{{< tab Node.js >}}
-npm install --save @opentelemetry/auto-instrumentations-node
-{{< /tab>}}
+{{< tabpane text=true >}}
 
-{{< tab Browser >}}
+{{% tab Node.js %}}
+
+```shell
+npm install --save @opentelemetry/auto-instrumentations-node
+```
+
+{{% /tab %}}
+
+{{% tab Browser %}}
+
+```shell
 npm install --save @opentelemetry/auto-instrumentations-web
-{{< /tab >}}
-{{< /tabpane>}}
-<!-- prettier-ignore-end -->
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 Note, that using those metapackages increases your dependency graph size. Use
 individual instrumentation packages if you know exactly which ones you need.
@@ -96,10 +102,11 @@ use the metapackages. If you followed the instructions
 [to initialize the SDK for manual instrumentation](/docs/instrumentation/js/manual/#initialize-tracing),
 update your `instrumentation.ts` (or `instrumentation.js`) as follows:
 
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true >}}
 
-{{< tab TypeScript >}}
+{{% tab TypeScript %}}
+
+```typescript
 /*instrumentation.ts*/
 ...
 import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
@@ -111,10 +118,13 @@ const sdk = new NodeSDK({
 });
 
 sdk.start()
+```
 
-{{< /tab >}}
+{{% /tab %}}
 
-{{< tab JavaScript >}}
+{{% tab JavaScript %}}
+
+```javascript
 /*instrumentation.js*/
 const { getNodeAutoInstrumentations } = require('@opentelemetry/auto-instrumentations-node');
 
@@ -123,19 +133,72 @@ const sdk = new NodeSDK({
   // This registers all instrumentation packages
   instrumentations: [getNodeAutoInstrumentations()]
 });
-{{< /tab >}}
+```
+
+{{% /tab %}}
 
 {{< /tabpane >}}
-<!-- prettier-ignore-end -->
+
+To disable individual instrumentation libraries you can apply the following
+change:
+
+{{< tabpane text=true >}}
+
+{{% tab TypeScript %}}
+
+```typescript
+/*instrumentation.ts*/
+...
+import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
+
+const sdk = new NodeSDK({
+  ...
+  // This registers all instrumentation packages
+  instrumentations: [
+    getNodeAutoInstrumentations({
+      '@opentelemetry/instrumentation-fs': {
+        enabled: false,
+      },
+    }),
+  ],
+});
+
+sdk.start()
+```
+
+{{% /tab %}}
+
+{{% tab JavaScript %}}
+
+```javascript
+/*instrumentation.js*/
+const { getNodeAutoInstrumentations } = require('@opentelemetry/auto-instrumentations-node');
+
+const sdk = new NodeSDK({
+  ...
+  // This registers all instrumentation packages
+  instrumentations: [
+    getNodeAutoInstrumentations({
+      '@opentelemetry/instrumentation-fs': {
+        enabled: false,
+      },
+    }),
+  ],
+});
+```
+
+{{% /tab %}}
+
+{{< /tabpane >}}
 
 To only load individual instrumentation libraries, replace
 `[getNodeAutoInstrumentations()]` with the list of those you need:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true >}}
 
-{{< tab TypeScript >}}
+{{% tab TypeScript %}}
+
+```typescript
 /*instrumentation.ts*/
 ...
 import { HttpInstrumentation } from "@opentelemetry/instrumentation-http";
@@ -151,10 +214,11 @@ const sdk = new NodeSDK({
 });
 
 sdk.start()
+```
 
-{{< /tab >}}
+{{% /tab %}} {{% tab JavaScript %}}
 
-{{< tab JavaScript >}}
+```javascript
 /*instrumentation.js*/
 const { HttpInstrumentation } = require("@opentelemetry/instrumentation-http");
 const { ExpressInstrumentation } = require("@opentelemetry/instrumentation-express");
@@ -167,11 +231,11 @@ const sdk = new NodeSDK({
     new ExpressInstrumentation(),
   ]
 });
-{{< /tab >}}
+```
+
+{{% /tab %}}
 
 {{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
 
 ### Configuration
 
@@ -182,58 +246,52 @@ For example,
 offers ways to ignore specified middleware or enrich spans created automatically
 with a request hook:
 
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true >}}
 
-{{< tab TypeScript >}}
-import { SemanticResourceAttributes } from "@opentelemetry/semantic-conventions";
-import { ExpressInstrumentation, ExpressLayerType } from "@opentelemetry/instrumentation-express"
+{{% tab TypeScript %}}
+
+```typescript
+import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions';
+import {
+  ExpressInstrumentation,
+  ExpressLayerType,
+} from '@opentelemetry/instrumentation-express';
 
 const expressInstrumentation = new ExpressInstrumentation({
-  requestHook: function (
-    span: Span,
-    info: ExpressRequestInfo,
-  ) {
+  requestHook: function (span: Span, info: ExpressRequestInfo) {
     if (info.layerType === ExpressLayerType.REQUEST_HANDLER) {
-      span.setAttribute(
-        [SemanticAttributes.HTTP_METHOD],
-        info.request.method
-      );
-      span.setAttribute(
-        [SemanticAttributes.HTTP_URL],
-        info.request.baseUrl
-      );
+      span.setAttribute([SemanticAttributes.HTTP_METHOD], info.request.method);
+      span.setAttribute([SemanticAttributes.HTTP_URL], info.request.baseUrl);
     }
-  }
+  },
 });
-{{< /tab >}}
+```
 
-{{< tab JavaScript >}}
+{{% /tab %}}
+
+{{% tab JavaScript %}}
+
+```javascript
 /*instrumentation.js*/
-const { SemanticAttributes } = require("@opentelemetry/semantic-conventions");
-const { ExpressInstrumentation, ExpressLayerType } = require("@opentelemetry/instrumentation-express");
+const { SemanticAttributes } = require('@opentelemetry/semantic-conventions');
+const {
+  ExpressInstrumentation,
+  ExpressLayerType,
+} = require('@opentelemetry/instrumentation-express');
 
 const expressInstrumentation = new ExpressInstrumentation({
-  requestHook: function (
-    span,
-    info,
-  ) {
+  requestHook: function (span, info) {
     if (info.layerType === ExpressLayerType.REQUEST_HANDLER) {
-      span.setAttribute(
-        [SemanticAttributes.HTTP_METHOD],
-        info.request.method
-      );
-      span.setAttribute(
-        [SemanticAttributes.HTTP_URL],
-        info.request.baseUrl
-      );
+      span.setAttribute([SemanticAttributes.HTTP_METHOD], info.request.method);
+      span.setAttribute([SemanticAttributes.HTTP_URL], info.request.baseUrl);
     }
-  }
+  },
 });
-{{< /tab >}}
+```
+
+{{% /tab %}}
 
 {{< /tabpane >}}
-<!-- prettier-ignore-end -->
 
 You'll need to refer to each instrumentation library's documentation for
 advanced configuration.
