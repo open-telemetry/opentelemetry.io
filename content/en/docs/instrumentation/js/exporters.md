@@ -27,30 +27,20 @@ update `instrumentation.ts|js` from the
 [Getting Started](/docs/instrumentation/js/getting-started/nodejs/) like the
 following:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Typescript %}}
 
-{{< tabpane langEqualsHeader=true >}}
-{{< tab Typescript >}}
+```ts
 /*instrumentation.ts*/
-import * as opentelemetry from "@opentelemetry/sdk-node";
-import {
-  getNodeAutoInstrumentations,
-} from "@opentelemetry/auto-instrumentations-node";
-import {
-  OTLPTraceExporter,
-} from "@opentelemetry/exporter-trace-otlp-proto";
-import {
-  OTLPMetricExporter
-} from "@opentelemetry/exporter-metrics-otlp-proto";
-import {
-  PeriodicExportingMetricReader
-} from "@opentelemetry/sdk-metrics";
+import * as opentelemetry from '@opentelemetry/sdk-node';
+import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
+import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-proto';
+import { OTLPMetricExporter } from '@opentelemetry/exporter-metrics-otlp-proto';
+import { PeriodicExportingMetricReader } from '@opentelemetry/sdk-metrics';
 
 const sdk = new opentelemetry.NodeSDK({
   traceExporter: new OTLPTraceExporter({
     // optional - default url is http://localhost:4318/v1/traces
-    url: "<your-otlp-endpoint>/v1/traces",
+    url: '<your-otlp-endpoint>/v1/traces',
     // optional - collection of custom headers to be sent with each request, empty by default
     headers: {},
   }),
@@ -63,28 +53,28 @@ const sdk = new opentelemetry.NodeSDK({
   instrumentations: [getNodeAutoInstrumentations()],
 });
 sdk.start();
-{{< /tab >}}
+```
 
-{{< tab JavaScript >}}
+{{% /tab %}} {{% tab JavaScript %}}
+
+```js
 /*instrumentation.js*/
-const opentelemetry = require("@opentelemetry/sdk-node");
+const opentelemetry = require('@opentelemetry/sdk-node');
 const {
   getNodeAutoInstrumentations,
-} = require("@opentelemetry/auto-instrumentations-node");
+} = require('@opentelemetry/auto-instrumentations-node');
 const {
   OTLPTraceExporter,
-} = require("@opentelemetry/exporter-trace-otlp-proto");
+} = require('@opentelemetry/exporter-trace-otlp-proto');
 const {
-  OTLPMetricExporter
-} = require("@opentelemetry/exporter-metrics-otlp-proto");
-const {
-  PeriodicExportingMetricReader
-} = require('@opentelemetry/sdk-metrics');
+  OTLPMetricExporter,
+} = require('@opentelemetry/exporter-metrics-otlp-proto');
+const { PeriodicExportingMetricReader } = require('@opentelemetry/sdk-metrics');
 
 const sdk = new opentelemetry.NodeSDK({
   traceExporter: new OTLPTraceExporter({
     // optional - default url is http://localhost:4318/v1/traces
-    url: "<your-otlp-endpoint>/v1/traces",
+    url: '<your-otlp-endpoint>/v1/traces',
     // optional - collection of custom headers to be sent with each request, empty by default
     headers: {},
   }),
@@ -98,12 +88,9 @@ const sdk = new opentelemetry.NodeSDK({
   instrumentations: [getNodeAutoInstrumentations()],
 });
 sdk.start();
-{{< /tab >}}
+```
 
-{{< /tabpane>}}
-
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 To try out the `OTLPTraceExporter` quickly, you can run Jaeger in a docker
 container:
@@ -249,25 +236,25 @@ npm install --save @opentelemetry/exporter-zipkin
 Update your OpenTelemetry configuration to use the exporter and to send data to
 your Zipkin backend:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
-{{< tab Typescript >}}
-import { ZipkinExporter } from "@opentelemetry/exporter-zipkin";
-import { BatchSpanProcessor } from "@opentelemetry/sdk-trace-base";
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Typescript %}}
+
+```ts
+import { ZipkinExporter } from '@opentelemetry/exporter-zipkin';
+import { BatchSpanProcessor } from '@opentelemetry/sdk-trace-base';
 
 provider.addSpanProcessor(new BatchSpanProcessor(new ZipkinExporter()));
-{{< /tab>}}
+```
 
-{{< tab JavaScript >}}
-const { ZipkinExporter } = require("@opentelemetry/exporter-zipkin");
-const { BatchSpanProcessor } = require("@opentelemetry/sdk-trace-base");
+{{% /tab %}} {{% tab JavaScript %}}
+
+```js
+const { ZipkinExporter } = require('@opentelemetry/exporter-zipkin');
+const { BatchSpanProcessor } = require('@opentelemetry/sdk-trace-base');
 
 provider.addSpanProcessor(new BatchSpanProcessor(new ZipkinExporter()));
-{{< /tab >}}
-{{< /tabpane>}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 [content security policies]:
   https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/

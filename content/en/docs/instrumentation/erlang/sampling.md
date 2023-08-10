@@ -58,20 +58,20 @@ This tells the SDK to sample spans such that only 10% of Traces get created.
 Example in the Application configuration with a root sampler for sampling 10% of
 Traces and using the parent decision in the other cases:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
 
-{{< tab Erlang >}}
+```erlang
 %% config/sys.config.src
 {sampler, {parent_based, #{root => {trace_id_ratio_based, 0.10},
                            remote_parent_sampled => always_on,
                            remote_parent_not_sampled => always_off,
                            local_parent_sampled => always_on,
                            local_parent_not_sampled => always_off}}}
-{{< /tab >}}
+```
 
-{{< tab Elixir >}}
+{{% /tab %}} {{% tab Elixir %}}
+
+```elixir
 # config/runtime.exs
 sampler: {:parent_based, %{root: {:trace_id_ratio_based, 0.10},
                            remote_parent_sampled: :always_on,
@@ -79,12 +79,9 @@ sampler: {:parent_based, %{root: {:trace_id_ratio_based, 0.10},
                            local_parent_sampled: :always_on,
                            local_parent_not_sampled: :always_off}}
 
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
-<!-- markdownlint-disable heading-increment -->
+{{% /tab %}} {{< /tabpane >}}
 
 ### AlwaysOn and AlwaysOff Sampler
 
@@ -111,20 +108,20 @@ export OTEL_TRACES_SAMPLER="parentbased_always_off"
 Here's an example in the Application configuration with a root sampler that
 always samples and using the parent decision in the other cases:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
 
-{{< tab Erlang >}}
+```erlang
 %% config/sys.config.src
 {sampler, {parent_based, #{root => always_on,
                            remote_parent_sampled => always_on,
                            remote_parent_not_sampled => always_off,
                            local_parent_sampled => always_on,
                            local_parent_not_sampled => always_off}}}
-{{< /tab >}}
+```
 
-{{< tab Elixir >}}
+{{% /tab %}} {{% tab Elixir %}}
+
+```elixir
 # config/runtime.exs
 sampler: {:parent_based, %{root: :always_on,
                            remote_parent_sampled: :always_on,
@@ -132,11 +129,9 @@ sampler: {:parent_based, %{root: :always_on,
                            local_parent_sampled: :always_on,
                            local_parent_not_sampled: :always_off}}
 
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 ## Custom Sampler
 
@@ -144,11 +139,9 @@ Custom samplers can be created by implementing the
 [`otel_sampler` behaviour](https://hexdocs.pm/opentelemetry/1.3.0/otel_sampler.html#callbacks).
 This example sampler:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
 
-{{< tab Erlang >}}
+```erlang
 -module(attribute_sampler).
 
 -behavior(otel_sampler).
@@ -174,9 +167,11 @@ should_sample(_Ctx, _TraceId, _Links, _SpanName, _SpanKind, Attributes, ConfigAt
         _ ->
             {?RECORD_AND_SAMPLE, [], []}
     end.
-{{< /tab >}}
+```
 
-{{< tab Elixir >}}
+{{% /tab %}} {{% tab Elixir %}}
+
+```elixir
 defmodule AttributesSampler do
   def setup(attributes) when is_map(attributes) do
     attributes
@@ -199,11 +194,9 @@ defmodule AttributesSampler do
     end
   end
 end
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 Will sample Spans that do not have any attributes that match the attributes
 passed as the sampler's configuration.
@@ -211,18 +204,16 @@ passed as the sampler's configuration.
 Example configuration to not sample any Span with an attribute specifying the
 URL requested is `/healthcheck`:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
 
-{{< tab Erlang >}}
+```erlang
 {sampler, {attributes_sampler, #{'http.target' => <<"/healthcheck">>}}}
-{{< /tab >}}
+```
 
-{{< tab Elixir >}}
+{{% /tab %}} {{% tab Elixir %}}
+
+```elixir
 sampler: {AttributesSampler, %{"http.target": "/healthcheck"}}
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}

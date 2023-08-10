@@ -144,7 +144,7 @@ gin.Context.Request.Context.
 cur, findErr := collection.Find(c.Request.Context(), bson.D{})
 ```
 
-So make sure that you pass the Context to the mongodb operation. Check out this
+So make sure that you pass the Context to the MongoDB operation. Check out this
 issue for more info.
 
 We now have our todo app ready and instrumented. It’s time to utilize
