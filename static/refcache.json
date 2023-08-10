@@ -3399,6 +3399,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:06:31.115927-04:00"
   },
+  "https://javadoc.io/doc/org.apache.logging.log4j/log4j-api/latest/org.apache.logging.log4j/org/apache/logging/log4j/Logger.html": {
+    "StatusCode": 200,
+    "LastSeen": "2023-08-10T19:39:55.351559+02:00"
+  },
   "https://jcp.org/aboutJava/communityprocess/maintenance/jsr053/index2.html": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:06:42.58227-04:00"
