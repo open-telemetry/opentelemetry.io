@@ -75,8 +75,8 @@ To learn all the settings available, see the [full list of directives][].
 With the `Dockerfile` and NGINX config in place, build your docker image and run
 the container:
 
-```console
-docker build . -t nginx-otel --platform linux/amd64 .
+```sh
+docker build -t nginx-otel --platform linux/amd64 .
 docker run --platform linux/amd64 --rm -p 8080:80 nginx-otel
 ...
 2022/08/12 09:26:42 [error] 69#69: mod_opentelemetry: ngx_http_opentelemetry_init_worker: Initializing Nginx Worker for process with PID: 69
