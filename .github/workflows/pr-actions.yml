@@ -111,10 +111,10 @@ jobs:
 
       - name: Commit and push changes, if any
         run: |
+          git config --local user.email "$USER_EMAIL"
+          git config --local user.name "$USER_NAME"
           if [[ $(git status --porcelain) ]]; then
             git add -A
-            git config --local user.email "$USER_EMAIL"
-            git config --local user.name "$USER_NAME"
             current_branch=$(git rev-parse --abbrev-ref HEAD)
             echo current_branch=$current_branch
             git commit -m 'Results from /fix:recache'
