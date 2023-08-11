@@ -10,8 +10,8 @@ WARNINGS=`grep -E -ie 'warn(ing)?|error' $BUILD_LOG | grep -v -f $WARNINGS_SKIP_
 
 if [ -e $BUILD_LOG ]; then
   if [ -n "$WARNINGS" ]; then
-    echo "WARNINGs or ERRORs found in build log:\n"
-    echo "$WARNINGS\n"
+    echo "WARNINGs or ERRORs found in build log:"
+    echo "$WARNINGS"
     exit 1
   fi
 else
