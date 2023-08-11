@@ -300,3 +300,10 @@
   contact: ''
   oss: true
   commercial: false
+- name: ObserveAny
+  distribution: false
+  nativeOTLP: true
+  url: https://www.observeany.com/learn/opentelemetry-receiver
+  contact: 'contact@observeany.com'
+  oss: false
+  commercial: true
