@@ -24,7 +24,8 @@ HTTP implementations as well, such as Actix Web and Tide. For a complete list of
 libraries for supported frameworks, see the
 [registry](/ecosystem/registry/?component=instrumentation&language=rust).
 
-For more elaborate examples, see [examples](../examples/).
+For more elaborate examples, see
+[examples](/docs/instrumentation/rust/examples/).
 
 ### Dependencies
 
@@ -234,7 +235,7 @@ convenience):
 
 For more:
 
-- Consult the [API & SDK](../api/) reference
-- Try other [examples](../examples/).
+- Consult the [API & SDK](/docs/instrumentation/rust/api/) reference
+- Try other [examples](/docs/instrumentation/rust/examples/).
 
 [traces]: /docs/concepts/signals/traces/
