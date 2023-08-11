@@ -25,7 +25,7 @@ libraries for supported frameworks, see the
 [registry](/ecosystem/registry/?component=instrumentation&language=rust).
 
 For more elaborate examples, see
-[examples](/docs/instrumentation/rust/examples/).
+[examples](../examples/).
 
 ### Dependencies
 
