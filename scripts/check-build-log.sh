@@ -12,6 +12,9 @@ if [ -e $BUILD_LOG ]; then
   if [ -n "$WARNINGS" ]; then
     echo "WARNINGs or ERRORs found in build log:"
     echo "$WARNINGS"
+    echo
+    echo "INFO: if this is run in the context of a GitHub job, you can see"
+    echo "      the full build log output from the previous step."
     exit 1
   fi
 else
