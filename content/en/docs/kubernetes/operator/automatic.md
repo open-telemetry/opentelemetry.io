@@ -272,7 +272,7 @@ image you must either supply your own image that includes only the packages you
 want or use manual instrumentation.
 
 For more details, see
-[Node.js auto-instrumentation](/docs/instrumentation/js/libraries/#node-autoinstrumentation-package).
+[Node.js auto-instrumentation](/docs/instrumentation/js/libraries/#registration).
 
 ### Python
 
