@@ -192,7 +192,7 @@ agent to the host metrics receiver for infrastructure monitoring.
   that are used by applications. Auto-instrumentation is also available for
   [Python](/docs/instrumentation/python/automatic/),
   [.NET](/docs/instrumentation/net/automatic/), and
-  [Node.js](/docs/instrumentation/js/libraries/#node-autoinstrumentation-package).
+  [Node.js](/docs/instrumentation/js/automatic).
 - If you’re using Kubernetes, they can use the
   [OTel operator](https://github.com/open-telemetry/opentelemetry-operator),
   which takes care of instrumentations for applications deployed on K8s. The

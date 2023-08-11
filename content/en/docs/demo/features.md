@@ -20,7 +20,7 @@ aliases: [/docs/demo/demo_features]
 - **[OpenTelemetry Collector](/docs/collector/)**: all services are instrumented
   and sending the generated traces and metrics to the OpenTelemetry Collector
   via gRPC. The received traces are then exported to the logs and to Jaeger;
-  received metrics and exemplars[^1] are exported to logs and Prometheus.
+  received metrics and exemplars are exported to logs and Prometheus.
 - **[Jaeger](https://www.jaegertracing.io/)**: all generated traces are being
   sent to Jaeger.
 - **Synthetic Load Generation**: the application demo comes with a background
@@ -33,10 +33,3 @@ aliases: [/docs/demo/demo_features]
 - **[Envoy](https://www.envoyproxy.io/)**: Envoy is used as a reverse proxy for
   user-facing web interfaces such as the frontend, load generator, and feature
   flag service.
-
-[^1]:
-    Only exemplars attached to histograms are currently exported to Prometheus.
-    For details, see [Collector issue #18201][].
-
-[Collector issue #18201]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/18201
