@@ -48,15 +48,15 @@ you need to start and put it into active context using
 function.
 
 ```cpp
-    std::string span_name = "CurrencyService/Convert";
-    auto span =
-        get_tracer("currencyservice")->StartSpan(span_name,
-                                      {{SemanticConventions::kRpcSystem, "grpc"},
-                                       {SemanticConventions::kRpcService, "CurrencyService"},
-                                       {SemanticConventions::kRpcMethod, "Convert"},
-                                       {SemanticConventions::kRpcGrpcStatusCode, 0}},
-                                      options);
-    auto scope = get_tracer("currencyservice")->WithActiveSpan(span);
+std::string span_name = "CurrencyService/Convert";
+auto span =
+    get_tracer("currencyservice")->StartSpan(span_name,
+                                  {{SemanticConventions::kRpcSystem, "grpc"},
+                                   {SemanticConventions::kRpcService, "CurrencyService"},
+                                   {SemanticConventions::kRpcMethod, "Convert"},
+                                   {SemanticConventions::kRpcGrpcStatusCode, 0}},
+                                  options);
+auto scope = get_tracer("currencyservice")->WithActiveSpan(span);
 ```
 
 ### Adding attributes to spans
@@ -64,8 +64,8 @@ function.
 You can add an attribute to a span using `Span->SetAttribute(key, value)`.
 
 ```cpp
-    span->SetAttribute("app.currency.conversion.from", from_code);
-    span->SetAttribute("app.currency.conversion.to", to_code);
+span->SetAttribute("app.currency.conversion.from", from_code);
+span->SetAttribute("app.currency.conversion.to", to_code);
 ```
 
 ### Add span events
@@ -73,7 +73,7 @@ You can add an attribute to a span using `Span->SetAttribute(key, value)`.
 Adding span events is accomplished using `Span->AddEvent(name)`.
 
 ```cpp
-    span->AddEvent("Conversion successful, response sent back");
+span->AddEvent("Conversion successful, response sent back");
 ```
 
 ### Set span status
@@ -82,7 +82,7 @@ Make sure to set your span status to `Ok`, or `Error` accordingly. You can do
 this using `Span->SetStatus(status)`
 
 ```cpp
-    span->SetStatus(StatusCode::kOk);
+span->SetStatus(StatusCode::kOk);
 ```
 
 ### Tracing context propagation
@@ -126,14 +126,14 @@ This class is leveraged in the `Convert` method to extract context and create a
 creating new spans.
 
 ```cpp
-    StartSpanOptions options;
-    options.kind = SpanKind::kServer;
-    GrpcServerCarrier carrier(context);
+StartSpanOptions options;
+options.kind = SpanKind::kServer;
+GrpcServerCarrier carrier(context);
 
-    auto prop        = context::propagation::GlobalTextMapPropagator::GetGlobalPropagator();
-    auto current_ctx = context::RuntimeContext::GetCurrent();
-    auto new_context = prop->Extract(carrier, current_ctx);
-    options.parent   = GetSpan(new_context)->GetContext();
+auto prop        = context::propagation::GlobalTextMapPropagator::GetGlobalPropagator();
+auto current_ctx = context::RuntimeContext::GetCurrent();
+auto new_context = prop->Extract(carrier, current_ctx);
+options.parent   = GetSpan(new_context)->GetContext();
 ```
 
 ## Metrics

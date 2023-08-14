@@ -40,15 +40,15 @@ ensure all spans are exported. This service makes that call as part of a
 deferred function in main
 
 ```go
-    tp, err := initTracerProvider()
-    if err != nil {
-        log.Fatal(err)
+tp, err := initTracerProvider()
+if err != nil {
+    log.Fatal(err)
+}
+defer func() {
+    if err := tp.Shutdown(context.Background()); err != nil {
+        log.Printf("Error shutting down tracer provider: %v", err)
     }
-    defer func() {
-        if err := tp.Shutdown(context.Background()); err != nil {
-            log.Printf("Error shutting down tracer provider: %v", err)
-        }
-    }()
+}()
 ```
 
 ### Adding Kafka ( Sarama ) auto-instrumentation
@@ -58,6 +58,6 @@ Kafka topic. To instrument the Kafka client the ConsumerHandler implemented by
 the developer has to be wrapped.
 
 ```go
-    handler := groupHandler{} // implements sarama.ConsumerGroupHandler
-    wrappedHandler := otelsarama.WrapConsumerGroupHandler(&handler)
+handler := groupHandler{} // implements sarama.ConsumerGroupHandler
+wrappedHandler := otelsarama.WrapConsumerGroupHandler(&handler)
 ```

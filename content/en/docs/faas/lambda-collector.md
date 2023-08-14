@@ -162,11 +162,11 @@ Loading configuration from S3 will require that the IAM role attached to your
 function includes read access to the relevant bucket.
 
 ```yaml
-  Function:
-    Type: AWS::Serverless::Function
-    Properties:
-      ...
-      Environment:
-        Variables:
-          OPENTELEMETRY_COLLECTOR_CONFIG_FILE: s3://<bucket_name>.s3.<region>.amazonaws.com/collector_config.yaml
+Function:
+  Type: AWS::Serverless::Function
+  Properties:
+    ...
+    Environment:
+      Variables:
+        OPENTELEMETRY_COLLECTOR_CONFIG_FILE: s3://<bucket_name>.s3.<region>.amazonaws.com/collector_config.yaml
 ```

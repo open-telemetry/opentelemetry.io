@@ -31,7 +31,7 @@ endpoints, resource attributes, and service name are automatically set by the
 OpenTelemetry auto instrumentor based on environment variables.
 
 ```python
-    tracer = trace.get_tracer_provider().get_tracer("recommendationservice")
+tracer = trace.get_tracer_provider().get_tracer("recommendationservice")
 ```
 
 ### Add attributes to auto-instrumented spans
@@ -40,14 +40,14 @@ Within the execution of auto-instrumented code you can get current span from
 context.
 
 ```python
-    span = trace.get_current_span()
+span = trace.get_current_span()
 ```
 
 Adding attributes to a span is accomplished using `set_attribute` on the span
 object. In the `ListRecommendations` function an attribute is added to the span.
 
 ```python
-    span.set_attribute("app.products_recommended.count", len(prod_list))
+span.set_attribute("app.products_recommended.count", len(prod_list))
 ```
 
 ### Create new spans
@@ -58,7 +58,7 @@ conjunction with a `with` block, the span will automatically be ended when the
 block ends execution. This is done in the `get_product_list` function.
 
 ```python
-    with tracer.start_as_current_span("get_product_list") as span:
+with tracer.start_as_current_span("get_product_list") as span:
 ```
 
 ## Metrics
@@ -71,7 +71,7 @@ name are automatically set by the OpenTelemetry auto instrumentor based on
 environment variables.
 
 ```python
-    meter = metrics.get_meter_provider().get_meter("recommendationservice")
+meter = metrics.get_meter_provider().get_meter("recommendationservice")
 ```
 
 ### Custom metrics
@@ -101,20 +101,20 @@ a logging handler. Finally, it creates a logger for use throughout the
 application.
 
 ```python
-    logger_provider = LoggerProvider(
-        resource=Resource.create(
-            {
-                'service.name': service_name,
-            }
-        ),
-    )
-    set_logger_provider(logger_provider)
-    log_exporter = OTLPLogExporter(insecure=True)
-    logger_provider.add_log_record_processor(BatchLogRecordProcessor(log_exporter))
-    handler = LoggingHandler(level=logging.NOTSET, logger_provider=logger_provider)
+logger_provider = LoggerProvider(
+    resource=Resource.create(
+        {
+            'service.name': service_name,
+        }
+    ),
+)
+set_logger_provider(logger_provider)
+log_exporter = OTLPLogExporter(insecure=True)
+logger_provider.add_log_record_processor(BatchLogRecordProcessor(log_exporter))
+handler = LoggingHandler(level=logging.NOTSET, logger_provider=logger_provider)
 
-    logger = logging.getLogger('main')
-    logger.addHandler(handler)
+logger = logging.getLogger('main')
+logger.addHandler(handler)
 ```
 
 ### Create log records
@@ -123,7 +123,7 @@ Create logs using the logger. Examples can be found in `ListRecommendations` and
 `get_product_list` functions.
 
 ```python
-    logger.info(f"Receive ListRecommendations for product ids:{prod_list}")
+logger.info(f"Receive ListRecommendations for product ids:{prod_list}")
 ```
 
 As you can see, after the initialization, log records can be created in the same

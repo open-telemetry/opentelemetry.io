@@ -282,34 +282,34 @@ After the reconciliation, the OpenTelemetry Operator will convert the
 Collector’s configuration into the following:
 
 ```yaml
-   exporters:
-      logging: null
-    receivers:
-      prometheus:
-        config:
-          global:
-            scrape_interval: 1m
-            scrape_timeout: 10s
-            evaluation_interval: 1m
-          scrape_configs:
-          - job_name: otel-collector
-            honor_timestamps: true
-            scrape_interval: 10s
-            scrape_timeout: 10s
-            metrics_path: /metrics
-            scheme: http
-            follow_redirects: true
-            http_sd_configs:
-            - follow_redirects: false
-              url: http://collector-with-ta-targetallocator:80/jobs/otel-collector/targets?collector_id=$POD_NAME
-    service:
-      pipelines:
-        traces:
-          exporters:
-          - logging
-          processors: []
-          receivers:
-          - prometheus
+exporters:
+   logging: null
+ receivers:
+   prometheus:
+     config:
+       global:
+         scrape_interval: 1m
+         scrape_timeout: 10s
+         evaluation_interval: 1m
+       scrape_configs:
+       - job_name: otel-collector
+         honor_timestamps: true
+         scrape_interval: 10s
+         scrape_timeout: 10s
+         metrics_path: /metrics
+         scheme: http
+         follow_redirects: true
+         http_sd_configs:
+         - follow_redirects: false
+           url: http://collector-with-ta-targetallocator:80/jobs/otel-collector/targets?collector_id=$POD_NAME
+ service:
+   pipelines:
+     traces:
+       exporters:
+       - logging
+       processors: []
+       receivers:
+       - prometheus
 ```
 
 Note how the Operator added a `global` section and a `new http_sd_configs` to
