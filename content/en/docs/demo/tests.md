@@ -19,7 +19,7 @@ commands for each type of test[^1]:
   - Integration: `docker compose run integrationTests`
   - Trace-based: `docker compose run traceBasedTests`
 
-To learn more these tests, see
+To learn more about these tests, see
 [Service Testing](https://github.com/open-telemetry/opentelemetry-demo/tree/main/test).
 
 [^1]: {{% _param notes.docker-compose-v2 %}}
