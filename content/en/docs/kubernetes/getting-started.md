@@ -5,21 +5,22 @@ weight: 1
 cSpell:ignore: filelog filelogreceiver kubelet kubeletstats kubeletstatsreceiver loggingexporter otlpexporter sattributes sattributesprocessor sclusterreceiver sobjectsreceiver
 ---
 
-This page will walk you through the fastest way to get started monitoring
-your Kubernetes cluster using OpenTelemetry. It will focus on collecting metrics
-and logs for Kubernetes clusters, nodes, pods, and containers, as well as
-enabling the cluster to support services emitting OTLP data.
+This page will walk you through the fastest way to get started monitoring your
+Kubernetes cluster using OpenTelemetry. It will focus on collecting metrics and
+logs for Kubernetes clusters, nodes, pods, and containers, as well as enabling
+the cluster to support services emitting OTLP data.
 
 If you're looking to see OpenTelemetry in action with Kubernetes, the best place
-to start is the [OpenTelemetry Demo](/docs/demo/kubernetes-deployment/). The demo
-is intended to illustrate the implementation of OpenTelemetry, but it is not
-intended to be an example of how to monitor Kubernetes itself. Once you finish
-with this walkthrough, it can be a fun experiment to install the demo and see
-how all the monitoring responds to an active workload.
+to start is the [OpenTelemetry Demo](/docs/demo/kubernetes-deployment/). The
+demo is intended to illustrate the implementation of OpenTelemetry, but it is
+not intended to be an example of how to monitor Kubernetes itself. Once you
+finish with this walkthrough, it can be a fun experiment to install the demo and
+see how all the monitoring responds to an active workload.
 
 If you're looking to start migrating from Prometheus to OpenTelemetry, or if
 you're interested in using the OpenTelemetry Collector to collect Prometheus
-metrics, see [Prometheus Receiver](../collector/components#prometheus-receiver/).
+metrics, see
+[Prometheus Receiver](../collector/components/#prometheus-receiver).
 
 ## Overview
 
