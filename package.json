@@ -109,7 +109,7 @@
     "@opentelemetry/semantic-conventions": "^1.8.0"
   },
   "optionalDependencies": {
-    "netlify-cli": "^15.9.1"
+    "netlify-cli": "^16.0.2"
   },
   "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
   "engines": {
