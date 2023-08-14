@@ -30,6 +30,4 @@ OpenTelemetry for Rust publishes the following crates:
 
 ## Further Reading
 
-- [Docs for Rust API & SDK](https://docs.rs/opentelemetry)
-- [Examples](https://github.com/open-telemetry/opentelemetry-rust/tree/main/examples)
 - [Ecosystem](https://github.com/open-telemetry/opentelemetry-rust#ecosystem)
