@@ -66,7 +66,7 @@ function markdownLintFile(file, encoding, callback) {
     }
     numFilesProcessed++;
 
-    if(fix) {
+    if (fix) {
       applyCustomRuleFixesHack(result);
     }
 
@@ -81,7 +81,7 @@ function applyCustomRuleFixesHack(result) {
     // Sort issues by lineNumber in descending order
     const sortedIssues = issues.sort((a, b) => b.lineNumber - a.lineNumber);
 
-    sortedIssues.forEach(issue => {
+    sortedIssues.forEach((issue) => {
       if (issue.fixInfo) {
         fileContent = applyFixesToFileContent(fileContent, issue);
       }
@@ -95,8 +95,9 @@ function applyFixesToFileContent(content, issue) {
   // console.log(JSON.stringify(issue, null, 2));
 
   const startLineNum = issue.lineNumber - 1;
-  const endLineNum = issue.ruleNames.includes("trim-code-block-and-unindent") ?
-    issue.fixInfo.lineNumber : startLineNum + 1;
+  const endLineNum = issue.ruleNames.includes('trim-code-block-and-unindent')
+    ? issue.fixInfo.lineNumber
+    : startLineNum + 1;
   const fixedLines = issue.fixInfo.insertText.split('\n');
 
   // Remove lines that need fixing

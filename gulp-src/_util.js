@@ -20,4 +20,4 @@ exports.trimBlankLinesFromArray = (lines) => {
   }
 
   return lines;
-}
+};
