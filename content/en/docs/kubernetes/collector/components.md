@@ -13,7 +13,7 @@ enhancing it.
 Components covered in this page:
 
 - [Kubernetes Attributes Processor](#kubernetes-attributes-processor): adds
-  Kubernetes metadata to application incoming telemetry.
+  Kubernetes metadata to incoming application telemetry.
 - [Kubeletstats Receiver](#kubeletstats-receiver): pulls node, pod, and
   container metrics from the API server on a kubelet.
 - [Filelog Receiver](#filelog-receiver): collects Kubernetes logs and
