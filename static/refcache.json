@@ -1271,6 +1271,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T15:46:44.824874-04:00"
   },
+  "https://dotnet.microsoft.com/download": {
+    "StatusCode": 200,
+    "LastSeen": "2023-08-14T07:27:50.575755318Z"
+  },
   "https://dotnet.microsoft.com/download/dotnet": {
     "StatusCode": 200,
     "LastSeen": "2023-08-01T12:16:39.990619752Z"
@@ -2427,9 +2431,17 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:25:10.121533-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases": {
+    "StatusCode": 200,
+    "LastSeen": "2023-08-14T07:27:52.35566079Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/latest": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:44:58.585689-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/latest/download/otel-dotnet-auto-install.sh": {
+    "StatusCode": 206,
+    "LastSeen": "2023-08-14T07:27:51.68749521Z"
   },
   "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/tag/v0.1.0-beta.1": {
     "StatusCode": 200,
@@ -3558,6 +3570,10 @@
   "https://leancoffee.org": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:21:28.969704-04:00"
+  },
+  "https://learn.microsoft.com/aspnet/core/tutorials/min-web-api": {
+    "StatusCode": 200,
+    "LastSeen": "2023-08-14T07:27:51.174082501Z"
   },
   "https://learn.microsoft.com/en-us/rest/api/resources/resources/get-by-id": {
     "StatusCode": 200,

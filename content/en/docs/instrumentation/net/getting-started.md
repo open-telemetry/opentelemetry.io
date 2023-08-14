@@ -1,206 +1,257 @@
 ---
 title: Getting Started
+description: Get telemetry for your app in less than 5 minutes!
+cSpell:ignore: ASPNETCORE rolldice
 weight: 10
-cSpell:ignore: KHTML loglevel nameof
 ---
 
-OpenTelemetry for .NET is unique among OpenTelemetry implementations, as it is
-integrated with the .NET `System.Diagnostics` library. At a high level, you can
-think of OpenTelemetry for .NET as a bridge between the telemetry available
-through `System.Diagnostics` and the greater OpenTelemetry ecosystem, such as
-OpenTelemetry Protocol (OTLP) and the OpenTelemetry Collector.
+This page will show you how to get started with OpenTelemetry in .NET.
 
-## ASP.NET Core
+You will learn how you can instrument a simple .NET application automatically,
+in such a way that [traces][], [metrics][] and [logs][] are emitted to the
+console.
 
-The following example demonstrates using Instrumentation Libraries and manual
-instrumentation via an ASP.NET Core app.
+## Prerequisites
 
-First, create your basic ASP.NET Core site:
+Ensure that you have the following installed locally:
 
-```shell
-dotnet new mvc
+- [.NET SDK](https://dotnet.microsoft.com/download/dotnet) 6+
+
+## Example Application
+
+The following example uses a basic
+[Minimal API with ASP.NET Core](https://learn.microsoft.com/aspnet/core/tutorials/min-web-api)
+application. If you are not using ASP.NET Core, that's OK — you can still use
+OpenTelemetry .NET Automatic Instrumentation.
+
+For more elaborate examples, see
+[examples](/docs/instrumentation/net/examples/).
+
+### Dependencies
+
+To begin, set up an environment in a new directory called `dotnet-simple`.
+Within that directory, execute following command:
+
+```sh
+dotnet new web
 ```
 
-Next, Add the Core OpenTelemetry packages
+### Create and launch an HTTP Server
 
-```shell
-dotnet add package OpenTelemetry.Exporter.Console
-dotnet add package OpenTelemetry.Extensions.Hosting
-```
-
-Now let's add the instrumentation packages for ASP.NET Core. This will give us
-some automatic spans for each HTTP request to our app.
-
-```shell
-dotnet add package OpenTelemetry.Instrumentation.AspNetCore --prerelease
-```
-
-_Note that as the Semantic Conventions for attribute names are not currently
-stable the instrumentation package is currently not in a released state. That
-doesn't mean that the functionality itself is not stable. This means that you
-need to use the `--prerelease` flag, or install a specific version of the
-package_
-
-### Setup
-
-Next, we need to add OpenTelemetry to our Service Collection in `Program.cs` so
-that its listening correctly.
+In that same directory, modify a file called `Program.cs` and replace existing
+content by the following code:
 
 ```csharp
-using System.Diagnostics;
-using OpenTelemetry.Resources;
-using OpenTelemetry.Trace;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
+var app = builder.Build();
 
-// .. other setup
+var logger = app.Logger;
+var random = new Random();
 
-builder.Services.AddOpenTelemetry()
-    .WithTracing(tracerProviderBuilder =>
-        tracerProviderBuilder
-            .AddSource(DiagnosticsConfig.ActivitySource.Name)
-            .ConfigureResource(resource => resource
-                .AddService(DiagnosticsConfig.ServiceName))
-            .AddAspNetCoreInstrumentation()
-            .AddConsoleExporter());
+app.MapGet("/rolldice/{player?}", HandleRollDice);
 
-// ... other setup
+app.Run();
+return;
 
-public static class DiagnosticsConfig
+int RollDice()
 {
-    public const string ServiceName = "MyService";
-    public static ActivitySource ActivitySource = new ActivitySource(ServiceName);
+    return random.Next(1, 7);
+}
+
+string HandleRollDice(string? player)
+{
+    var result = RollDice();
+
+    if (string.IsNullOrEmpty(player))
+    {
+        logger.LogInformation("Anonymous player is rolling the dice: {result}", result);
+    }
+    else
+    {
+        logger.LogInformation("{player} is rolling the dice: {result}", player, result);
+    }
+
+    return result.ToString(CultureInfo.InvariantCulture);
+}
+
+```
+
+In the `Properties` subdirectory, modify a file called `launchSettings.json` and
+replace existing content by the following code:
+
+```json
+{
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "http": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "applicationUrl": "http://localhost:8080",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
 }
 ```
 
-At this stage, you should be able to run your site, and see a Console output
-similar to this:
+Build and run the application with the following command, then open
+<http://localhost:8080/rolldice> in your web browser to ensure it is working.
 
-Note: an `Activity` in .NET is analogous to a Span in OpenTelemetry terminology
+```sh
+dotnet build
+dotnet run
+```
 
-<details>
-<summary>View example output</summary>
+## Instrumentation
 
-```properties
-Activity.TraceId:            54d084eba205a7a39398df4642be8f4a
-Activity.SpanId:             aca5e39a86a17d59
+Next, you'll use a [OpenTelemetry .NET Automatic Instrumentation](../automatic)
+to instrument the application at launch time. While you can [configure .NET
+Automatic Instrumentation][] in a number of ways, the steps below uses shell
+scripts.
+
+1. Download [otel-dotnet-auto-install.sh][] from [Releases][] of the
+   `opentelemetry-dotnet-instrumentation/releases` repository. The file contains
+   the script which detect system and download appropriate instrumentation
+   version:
+
+   ```sh
+   curl -L -O https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/latest/download/otel-dotnet-auto-install.sh
+   ```
+
+2. Execute `otel-dotnet-auto-install.sh` script to download automatic
+   instrumentation:
+
+   ```sh
+   ./otel-dotnet-auto-install.sh
+   ```
+
+3. Set and export variables that specify a [console exporter][], then execute
+   shell script configuring other necessary environmental variables using a
+   notation suitable for your shell/terminal environment &mdash; we illustrate a
+   notation for bash-like shells:
+
+   ```sh
+   export OTEL_TRACES_EXPORTER=none \
+     OTEL_METRICS_EXPORTER=none \
+     OTEL_LOGS_EXPORTER=none \
+     OTEL_DOTNET_AUTO_TRACES_CONSOLE_EXPORTER_ENABLED=true \
+     OTEL_DOTNET_AUTO_METRICS_CONSOLE_EXPORTER_ENABLED=true \
+     OTEL_DOTNET_AUTO_LOGS_CONSOLE_EXPORTER_ENABLED=true
+   . $HOME/.otel-dotnet-auto/instrument.sh
+   ```
+
+4. Run your **application** once again:
+
+   ```sh
+   dotnet run
+   ```
+
+   Note the output from the `dotnet run`.
+
+5. From _another_ terminal, send a request using `curl`:
+
+   ```sh
+   curl localhost:8080/rolldice
+   ```
+
+6. Stop the server process.
+
+At step 6, you should have seen trace & log output from the server and client
+that looks something like this (trace output is line-wrapped for convenience):
+
+```log
+LogRecord.Timestamp:               2023-08-14T06:44:53.9279186Z
+LogRecord.TraceId:                 3961d22b5f90bf7662ad4933318743fe
+LogRecord.SpanId:                  93d5fcea422ff0ac
+LogRecord.TraceFlags:              Recorded
+LogRecord.CategoryName:            simple-dotnet
+LogRecord.LogLevel:                Information
+LogRecord.StateValues (Key:Value):
+    result: 1
+    OriginalFormat (a.k.a Body): Anonymous player is rolling the dice: {result}
+
+Resource associated with LogRecord:
+service.name: simple-dotnet
+telemetry.auto.version: 0.7.0
+telemetry.sdk.name: opentelemetry
+telemetry.sdk.language: dotnet
+telemetry.sdk.version: 1.4.0.802
+
+LogRecord.Timestamp:               2023-08-14T06:44:53.9279186Z
+LogRecord.TraceId:                 3961d22b5f90bf7662ad4933318743fe
+LogRecord.SpanId:                  93d5fcea422ff0ac
+LogRecord.TraceFlags:              Recorded
+LogRecord.CategoryName:            simple-dotnet
+LogRecord.LogLevel:                Information
+LogRecord.StateValues (Key:Value):
+    result: 1
+    OriginalFormat (a.k.a Body): Anonymous player is rolling the dice: {result}
+
+Resource associated with LogRecord:
+service.name: simple-dotnet
+telemetry.auto.version: 0.7.0
+telemetry.sdk.name: opentelemetry
+telemetry.sdk.language: dotnet
+telemetry.sdk.version: 1.4.0.802
+
+info: simple-dotnet[0]
+      Anonymous player is rolling the dice: 1
+Activity.TraceId:            3961d22b5f90bf7662ad4933318743fe
+Activity.SpanId:             93d5fcea422ff0ac
 Activity.TraceFlags:         Recorded
-Activity.ActivitySourceName: Microsoft.AspNetCore
-Activity.DisplayName:        /
+Activity.ActivitySourceName: OpenTelemetry.Instrumentation.AspNetCore
+Activity.DisplayName:        /rolldice
 Activity.Kind:               Server
-Activity.StartTime:          2023-02-21T12:19:28.2499974Z
-Activity.Duration:           00:00:00.3106744
+Activity.StartTime:          2023-08-14T06:44:53.9278162Z
+Activity.Duration:           00:00:00.0049754
 Activity.Tags:
     net.host.name: localhost
-    net.host.port: 5123
+    net.host.port: 8080
     http.method: GET
     http.scheme: http
-    http.target: /
-    http.url: http://localhost:5123/
+    http.target: /rolldice
+    http.url: http://localhost:8080/rolldice
     http.flavor: 1.1
-    http.user_agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.50
+    http.user_agent: curl/8.0.1
     http.status_code: 200
 Resource associated with Activity:
-    service.name: MyService
-    service.instance.id: 2c7ca153-e460-4643-b550-7c08487a4c0c
+    service.name: simple-dotnet
+    telemetry.auto.version: 0.7.0
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.4.0.802
 ```
 
-</details>
+At step 6, when stopping the server, you should see an output of all the metrics
+collected (metrics output is shortened for convenience):
 
-### Manual Instrumentation
+```log
+Export process.runtime.dotnet.gc.collections.count, Number of garbage collections that have occurred since process start., Meter: OpenTelemetry.Instrumentation.Runtime/1.1.0.2
+(2023-08-14T06:12:05.8500776Z, 2023-08-14T06:12:23.7750288Z] generation: gen2 LongSum
+Value: 2
+(2023-08-14T06:12:05.8500776Z, 2023-08-14T06:12:23.7750288Z] generation: gen1 LongSum
+Value: 2
+(2023-08-14T06:12:05.8500776Z, 2023-08-14T06:12:23.7750288Z] generation: gen0 LongSum
+Value: 6
 
-Next, add [tracing](/docs/concepts/signals/traces/) via the `System.Diagnostics`
-API.
+...
 
-Paste the following code into your `HomeController`'s `Index` action:
-
-```csharp
-public IActionResult Index()
-{
-    // Track work inside of the request
-    using var activity = DiagnosticsConfig.ActivitySource.StartActivity("SayHello");
-    activity?.SetTag("foo", 1);
-    activity?.SetTag("bar", "Hello, World!");
-    activity?.SetTag("baz", new int[] { 1, 2, 3 });
-
-    return View();
-}
-```
-
-When you run the app and navigate to the `/` route, you'll see output about
-[spans](/docs/concepts/signals/traces/#spans) similar to the following:
-
-<details>
-<summary>View example output</summary>
-
-```text
-Activity.TraceId:            47d25efc8b5e9184ce57e692f5f65465
-Activity.SpanId:             bb864adcf4592f54
-Activity.TraceFlags:         Recorded
-Activity.ParentSpanId:       acbff23f5ad721ff
-Activity.ActivitySourceName: MyService
-Activity.DisplayName:        SayHello
-Activity.Kind:               Internal
-Activity.StartTime:          2023-02-21T12:27:41.9596458Z
-Activity.Duration:           00:00:00.0005683
-Activity.Tags:
-    foo: 1
-    bar: Hello, World!
-    baz: [1,2,3]
-Resource associated with Activity:
-    service.name: MyService
-    service.instance.id: 2b07a9ca-29c4-4e01-b0ed-929184b32192
-```
-
-</details>
-
-You'll notice the `Activity` objects from ASP.NET Core alongside the `Activity`
-we created manually in our controller action.
-
-### Metrics
-
-Next we'll add the ASP.NET Core automatically generated metrics to the app.
-
-```csharp
-using OpenTelemetry.Resources;
-using OpenTelemetry.Trace;
-using OpenTelemetry.Metrics;
-
-var builder = WebApplication.CreateBuilder(args);
-
-// .. other setup
-
-builder.Services.AddOpenTelemetry()
-    .WithTracing(/*  .. tracing setup */ )
-    .WithMetrics(metricsProviderBuilder =>
-        metricsProviderBuilder
-            .ConfigureResource(resource => resource
-                .AddService(DiagnosticsConfig.ServiceName))
-            .AddAspNetCoreInstrumentation()
-            .AddConsoleExporter());
-
-// .. other setup
-```
-
-If you run your application now, you'll see a series of metrics output to the
-console. like this.
-
-<details>
-<summary>View example output</summary>
-
-```text
-Export http.server.duration, Measures the duration of inbound HTTP requests., Unit: ms, Meter: OpenTelemetry.Instrumentation.AspNetCore/1.0.0.0
-(2023-02-21T12:38:57.0187781Z, 2023-02-21T12:44:16.9651349Z] http.flavor: 1.1 http.method: GET http.route: {controller=Home}/{action=Index}/{id?} http.scheme: http http.status_code: 200 net.host.name: localhost net.host.port: 5123 Histogram
-Value: Sum: 373.4504 Count: 1 Min: 373.4504 Max: 373.4504
+Export http.client.duration, Measures the duration of outbound HTTP requests., Unit: ms, Meter: OpenTelemetry.Instrumentation.Http/1.0.0.0
+(2023-08-14T06:12:06.2661140Z, 2023-08-14T06:12:23.7750388Z] http.flavor: 1.1 http.method: POST http.scheme: https http.status_code: 200 net.peer.name: dc.services.visualstudio.com Histogram
+Value: Sum: 1330.4766000000002 Count: 5 Min: 50.0333 Max: 465.7936
 (-Infinity,0]:0
 (0,5]:0
 (5,10]:0
 (10,25]:0
 (25,50]:0
-(50,75]:0
+(50,75]:2
 (75,100]:0
 (100,250]:0
-(250,500]:1
+(250,500]:3
 (500,750]:0
 (750,1000]:0
 (1000,2500]:0
@@ -208,184 +259,29 @@ Value: Sum: 373.4504 Count: 1 Min: 373.4504 Max: 373.4504
 (5000,7500]:0
 (7500,10000]:0
 (10000,+Infinity]:0
-
 ```
 
-</details>
+## What next?
 
-### Manual Metrics
+For more:
 
-Next, add some manual metrics to the app. This will initialize a
-[Meter](/docs/concepts/signals/metrics) to create a counter in code.
+- Run this example with another [exporter][] for telemetry data.
+- Try [automatic instrumentation](../automatic/) on one of your own apps.
+- Learn about [manual instrumentation][] and try out more
+  [examples](/docs/instrumentation/java/examples/).
+- Take a look at the [OpenTelemetry Demo](/docs/demo/), which includes .NET
+  based [Cart Service](/docs/demo/services/cart/).
 
-```csharp
-var builder = WebApplication.CreateBuilder(args);
-
-// .. other setup
-
-builder.Services.AddOpenTelemetry()
-    .WithTracing(/*  .. tracing setup */ )
-    .WithMetrics(metricsProviderBuilder =>
-        metricsProviderBuilder
-            .AddMeter(DiagnosticsConfig.Meter.Name)
-			// .. more metrics
-             );
-
-public static class DiagnosticsConfig
-{
-    public const string ServiceName = "MyService";
-
-    // .. other config
-
-    public static Meter Meter = new(ServiceName);
-    public static Counter<long> RequestCounter =
-        Meter.CreateCounter<long>("app.request_counter");
-}
-
-```
-
-Now we can increment the counter in our `Index` action.
-
-```csharp
-    public IActionResult Index()
-    {
-        // do other stuff
-
-        DiagnosticsConfig.RequestCounter.Add(1,
-            new("Action", nameof(Index)),
-            new("Controller", nameof(HomeController)));
-
-        return View();
-    }
-```
-
-You'll notice here that we're also adding Tags (OpenTelemetry Attributes) to our
-request counter that distinguishes it from other requests. You should now see an
-output like this.
-
-<details>
-<summary>View example output</summary>
-
-```text
-Export app.request_counter, Meter: MyService
-(2023-02-21T13:11:28.7265324Z, 2023-02-21T13:11:48.7074259Z] Action: Index Controller: HomeController LongSum
-Value: 1
-```
-
-</details>
-
-Tip: if you comment out the `.AddAspNetCoreInstrumentation()` line in
-`Program.cs` you'll be able to see the output better.
-
-## Send data to a collector
-
-The [OpenTelemetry Collector](/docs/collector/getting-started/) is a vital
-component of most production deployments. A collector is most beneficial in the
-following situations, among others:
-
-- A single telemetry sink shared by multiple services, to reduce overhead of
-  switching exporters
-- Aggregate traces across multiple services, running on multiple hosts
-- A central place to process traces prior to exporting them to a backend
-
-### Configure and run a local collector
-
-First, save the following collector configuration code to a file in the `/tmp/`
-directory:
-
-```yaml
-# /tmp/otel-collector-config.yaml
-receivers:
-  otlp:
-    protocols:
-      http:
-      grpc:
-exporters:
-  logging:
-    loglevel: debug
-processors:
-  batch:
-service:
-  pipelines:
-    traces:
-      receivers: [otlp]
-      exporters: [logging]
-      processors: [batch]
-    metrics:
-      receivers: [otlp]
-      exporters: [logging]
-      processors: [batch]
-```
-
-Then run the docker command to acquire and run the collector based on this
-configuration:
-
-```shell
-docker run -p 4317:4317 \
-    -v /tmp/otel-collector-config.yaml:/etc/otel-collector-config.yaml \
-    otel/opentelemetry-collector:latest \
-    --config=/etc/otel-collector-config.yaml
-```
-
-You will now have an collector instance running locally.
-
-### Modify the code to export spans via OTLP
-
-The next step is to modify the code to send spans to the collector via OTLP
-instead of the console.
-
-First, add the following package:
-
-```shell
-dotnet add package OpenTelemetry.Exporter.OpenTelemetryProtocol
-```
-
-Next, using the ASP.NET Core code from earlier, replace the console exporter
-with an OTLP exporter:
-
-```csharp
-builder.Services.AddOpenTelemetry()
-    .WithTracing(tracerProviderBuilder =>
-        tracerProviderBuilder
-             // .. other config
-            .AddOtlpExporter())
-    .WithMetrics(metricsProviderBuilder =>
-        metricsProviderBuilder
-            // .. other config
-            .AddOtlpExporter());
-```
-
-By default, it will send spans to `localhost:4317`, which is what the collector
-is listening on if you've followed the step above.
-
-### Run the application
-
-Run the application like before:
-
-```shell
-dotnet run
-```
-
-Now, telemetry will be output by the collector process.
-
-## Next steps
-
-To ensure you're getting the most data as easily as possible, install
-[instrumentation libraries](/docs/instrumentation/net/libraries) to generate
-observability data.
-
-Additionally, enriching your codebase with
-[manual instrumentation](/docs/instrumentation/net/manual) gives you customized
-observability data.
-
-You'll also want to configure an appropriate exporter to
-[export your telemetry data](/docs/instrumentation/net/exporters) to one or more
-telemetry backends.
-
-You can also check the
-[automatic instrumentation for .NET](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation),
-which is currently in beta.
-
-If you'd like to explore a more complex example, take a look at the
-[OpenTelemetry Demo](/docs/demo/), which includes the .NET based
-[Cart Service](/docs/demo/services/cart/).
+[traces]: /docs/concepts/signals/traces/
+[metrics]: /docs/concepts/signals/metrics/
+[logs]: /docs/concepts/signals/logs/
+[configure .NET Automatic Instrumentation]: ../automatic
+[console exporter]:
+  https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/config.md#internal-logs
+[exporter]:
+  https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/config.md#exporters
+[manual instrumentation]: ../manual
+[otel-dotnet-auto-install.sh]:
+  https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/latest/download/otel-dotnet-auto-install.sh
+[releases]:
+  https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases
