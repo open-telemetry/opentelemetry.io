@@ -9,18 +9,17 @@ execute the different flows in the web store. While the backend services use
 [AVA](https://avajs.dev) as the main testing framework for integration tests and
 [Tracetest](https://tracetest.io/) for trace-based tests.
 
-To run all the tests you can simply run `make run-tests` at the root directory.
+To run all the tests, execute `make run-tests` from the root directory.
 
 Otherwise, if you want to run a specific suite of tests you can execute specific
-commands for each type of test:
+commands for each type of test[^1]:
 
-- **Frontend tests**: `docker compose run frontendTests`[^1]
-- **Backend tests (integration)**: `docker compose run integrationTests`[^1]
-- **Backend tests (trace-based tests)**:
-  `docker compose run traceBasedTests`[^1]
+- **Frontend tests**: `docker compose run frontendTests`
+- **Backend tests**:
+  - Integration: `docker compose run integrationTests`
+  - Trace-based: `docker compose run traceBasedTests`
 
-To know more details about these tests you can see them on the official
-repository,
-[here](https://github.com/open-telemetry/opentelemetry-demo/tree/main/test).
+To learn more these tests, see 
+[Service Testing](https://github.com/open-telemetry/opentelemetry-demo/tree/main/test).
 
 [^1]: {{% _param notes.docker-compose-v2 %}}
