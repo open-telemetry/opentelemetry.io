@@ -4471,6 +4471,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:42:20.913106-04:00"
   },
+  "https://tracetest.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-08-14T12:06:16.100357-03:00"
+  },
   "https://tracetest.io/blog/frontend-overhaul-opentelemetry-demo": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:51:50.19809-04:00"
