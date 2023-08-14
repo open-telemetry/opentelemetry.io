@@ -5,7 +5,7 @@ aliases: [/docs/demo/kubernetes_deployment]
 cSpell:ignore: loadgen otlphttp
 ---
 
-We provide a [OpenTelemetry Demo Helm chart](../../kubernetes/helm/demo) to help
+We provide a [OpenTelemetry Demo Helm chart](/docs/kubernetes/helm/demo/) to help
 deploy the demo to an existing Kubernetes cluster.
 
 [Helm](https://helm.sh) must be installed to use the charts. Please refer to

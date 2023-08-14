@@ -100,7 +100,7 @@ handling, `Service` configuration based on the OpenTelemetry configuration,
 automatic sidecar injection into deployments, among others.
 
 For a comprehensive guide to using the collector with Kubernetes, see
-[Kubernetes Getting Started](../../kubernetes/getting-started).
+[Kubernetes Getting Started](/docs/kubernetes/getting-started/).
 
 ## Nomad
 
