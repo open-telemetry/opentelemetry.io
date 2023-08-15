@@ -1,4 +1,5 @@
-const trimCodeBlockRule = require('./_md-rules/trim-code-block-and-unindent');
+const tcb_rule_name = 'trim-code-block-and-unindent';
+const trimCodeBlockRule = require('./_md-rules/' + tcb_rule_name);
 const gulp = require('gulp');
 const through2 = require('through2');
 const markdownlint = require('markdownlint');
@@ -38,7 +39,6 @@ function markdownLintFile(file, encoding, callback) {
     },
     config: config,
     customRules: [trimCodeBlockRule],
-    // resultVersion: 3,
   };
 
   markdownlint(options, function (err, result) {
@@ -75,6 +75,10 @@ function markdownLintFile(file, encoding, callback) {
 }
 
 function applyCustomRuleFixesHack(result) {
+  // What is hacky about the current implementation is that we're
+  // handling the fixing ourselves and writing out to the affected files
+  // instead of using mdl's fix mechanism.
+
   Object.entries(result).forEach(([filePath, issues]) => {
     let fileContent = fs.readFileSync(filePath, 'utf8');
 
@@ -82,8 +86,15 @@ function applyCustomRuleFixesHack(result) {
     const sortedIssues = issues.sort((a, b) => b.lineNumber - a.lineNumber);
 
     sortedIssues.forEach((issue) => {
-      if (issue.fixInfo) {
+      if (
+        issue.fixInfo &&
+        issue.ruleNames.length == 1 &&
+        issue.ruleNames.includes(tcb_rule_name)
+      ) {
         fileContent = applyFixesToFileContent(fileContent, issue);
+      } else {
+        // console.log(`[NOTE] We currently only fix solo ${tcb_rule_name} rules, not: ${issue.ruleNames}`);
+        // console.log(JSON.stringify(issue, null, 2));
       }
     });
 
@@ -95,7 +106,7 @@ function applyFixesToFileContent(content, issue) {
   // console.log(JSON.stringify(issue, null, 2));
 
   const startLineNum = issue.lineNumber - 1;
-  const endLineNum = issue.ruleNames.includes('trim-code-block-and-unindent')
+  const endLineNum = issue.ruleNames.includes(tcb_rule_name)
     ? issue.fixInfo.lineNumber
     : startLineNum + 1;
   const fixedLines = issue.fixInfo.insertText.split('\n');
@@ -120,7 +131,7 @@ function lintMarkdown() {
     },
     fix: {
       type: 'boolean',
-      description: 'Automatically fix problems.',
+      description: 'Fix trim-code-block-and-unindent issues.',
       default: false,
     },
   }).argv;
