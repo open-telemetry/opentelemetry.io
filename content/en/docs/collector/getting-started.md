@@ -99,6 +99,9 @@ OpenTelemetry Collector instance, with features such as automatic upgrade
 handling, `Service` configuration based on the OpenTelemetry configuration,
 automatic sidecar injection into deployments, among others.
 
+For a comprehensive guide to using the collector with Kubernetes, see
+[Kubernetes Getting Started](/docs/kubernetes/getting-started/).
+
 ## Nomad
 
 Reference job files to deploy the Collector as an agent, gateway and in the full

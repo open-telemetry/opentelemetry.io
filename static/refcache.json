@@ -3295,6 +3295,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:04:53.616666-04:00"
   },
+  "https://helm.sh/docs/intro/install/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-08-04T15:01:28.513871-06:00"
+  },
   "https://help.github.com/articles/about-pull-requests/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:13:01.956826-04:00"
@@ -3450,6 +3454,10 @@
   "https://kind.sigs.k8s.io/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:14:16.4324-04:00"
+  },
+  "https://kind.sigs.k8s.io/#installation-and-usage": {
+    "StatusCode": 206,
+    "LastSeen": "2023-08-04T15:01:28.031106-06:00"
   },
   "https://kloudfuse.atlassian.net/wiki/spaces/EX/pages/753860609/APM#Sending-traces-to-Kloudfuse-data-plane%3A": {
     "StatusCode": 200,
