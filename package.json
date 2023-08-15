@@ -48,6 +48,7 @@
     "fix:dict": "find content layouts -name \"*.md\" -print0 | xargs -0 ./scripts/normalize-cspell-front-matter.pl",
     "fix:filenames": "npm run _rename-to-kebab-case",
     "fix:format": "npm run format",
+    "fix:markdown": "npm run check:markdown -- --fix",
     "fix": "run-s fix:*",
     "format": "npm run _check:format -- --write",
     "get:submodule": "npm run _get:${GET:-submodule}",

@@ -208,7 +208,6 @@ Value: Sum: 373.4504 Count: 1 Min: 373.4504 Max: 373.4504
 (5000,7500]:0
 (7500,10000]:0
 (10000,+Infinity]:0
-
 ```
 
 </details>
@@ -241,22 +240,21 @@ public static class DiagnosticsConfig
     public static Counter<long> RequestCounter =
         Meter.CreateCounter<long>("app.request_counter");
 }
-
 ```
 
 Now we can increment the counter in our `Index` action.
 
 ```csharp
-    public IActionResult Index()
-    {
-        // do other stuff
+public IActionResult Index()
+{
+    // do other stuff
 
-        DiagnosticsConfig.RequestCounter.Add(1,
-            new("Action", nameof(Index)),
-            new("Controller", nameof(HomeController)));
+    DiagnosticsConfig.RequestCounter.Add(1,
+        new("Action", nameof(Index)),
+        new("Controller", nameof(HomeController)));
 
-        return View();
-    }
+    return View();
+}
 ```
 
 You'll notice here that we're also adding Tags (OpenTelemetry Attributes) to our
