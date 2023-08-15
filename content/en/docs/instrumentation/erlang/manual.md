@@ -82,7 +82,6 @@ you can create [Spans](/docs/concepts/signals/traces/#spans).
                         %% do work here.
                         %% when this function returns the Span ends
                       end).
-
 ```
 
 {{% /tab %}} {{% tab Elixir %}}
@@ -118,7 +117,6 @@ child_function() ->
                fun() ->
                    %% do work here. when this function returns, child will complete.
                end).
-
 ```
 
 {{% /tab %}} {{% tab Elixir %}}

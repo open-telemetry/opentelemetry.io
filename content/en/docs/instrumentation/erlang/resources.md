@@ -33,14 +33,14 @@ Application configuration:
 
 ```erlang
 %% sys.config
-{resource_detectors, [otel_resource_env_var, otel_resource_app_env]}
+{opentelemetry, {resource_detectors, [otel_resource_env_var, otel_resource_app_env]}}
 ```
 
 {{% /tab %}} {{% tab Elixir %}}
 
 ```elixir
 ## runtime.exs
-resource_detectors: [:otel_resource_env_var, :otel_resource_app_env]
+config :opentelemetry, resource_detectors: [:otel_resource_env_var, :otel_resource_app_env]
 ```
 
 {{% /tab %}} {{< /tabpane >}}
@@ -74,14 +74,14 @@ Alternatively, use the `resource` Application environment under the
 
 ```erlang
 %% sys.config
-{resource, #{deployment => #{environment => <<"development">>}}
+{opentelemetry, {resource, #{deployment => #{environment => <<"development">>}}}}
 ```
 
 {{% /tab %}} {{% tab Elixir %}}
 
 ```elixir
 ## runtime.exs
-resource: %{deployment: %{environment: "development" }}
+config :opentelemetry, resource: %{deployment: %{environment: "development" }}
 ```
 
 {{% /tab %}} {{< /tabpane >}}
