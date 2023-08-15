@@ -3,7 +3,6 @@ title: Target Allocator
 description:
   A tool to distribute targets of the PrometheusReceiver on all deployed
   Collector instances
-# prettier-ignore
 cSpell:ignore: labeldrop labelmap statefulset
 ---
 
