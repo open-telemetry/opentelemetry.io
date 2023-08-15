@@ -70,7 +70,7 @@
     "serve:netlify": "npm run _serve:netlify",
     "serve": "npm run serve:hugo",
     "test": "npm run check",
-    "test+": "run-s check fix:dict fix:filenames",
+    "test-and-fix": "run-s check fix:dict fix:filenames",
     "update:pkg:docsy-dep": "npm install --save-dev autoprefixer@latest postcss-cli@latest",
     "update:pkg:hugo": "npm install --save-dev --save-exact hugo-extended@latest",
     "update:pkg:hugo+": "npm run update:pkg:hugo && npm run update:pkg:docsy-dep",
@@ -80,19 +80,19 @@
     "update:submodule": "set -x && git submodule update --remote ${DEPTH:- --depth 1}"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.14",
-    "cspell": "^6.31.1",
+    "autoprefixer": "^10.4.15",
+    "cspell": "^7.0.0",
     "gulp": "^4.0.2",
     "hugo-extended": "0.117.0",
-    "markdownlint": "^0.29.0",
+    "markdownlint": "^0.30.0",
     "npm-run-all": "^4.1.5",
     "postcss-cli": "^10.1.0",
-    "prettier": "^3.0.0",
+    "prettier": "^3.0.1",
     "require-dir": "^1.2.0",
-    "textlint": "^13.1.4",
+    "textlint": "^13.3.3",
     "textlint-filter-rule-allowlist": "^4.0.0",
     "textlint-filter-rule-comments": "^1.2.2",
-    "textlint-rule-terminology": "^3.0.4",
+    "textlint-rule-terminology": "^3.0.5",
     "through2": "^4.0.2",
     "yargs": "^17.7.2"
   },
@@ -109,7 +109,7 @@
     "@opentelemetry/semantic-conventions": "^1.8.0"
   },
   "optionalDependencies": {
-    "netlify-cli": "^15.9.1"
+    "netlify-cli": "^16.0.3"
   },
   "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
   "engines": {
