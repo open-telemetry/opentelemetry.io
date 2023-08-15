@@ -32,18 +32,17 @@ Here are upcoming sessions, or you can view them on the
 [OpenTelemetry calendar](https://github.com/open-telemetry/community#calendar):
 
 - **EMEA (Europe, Middle East, and Africa)**: every third Tuesday of the month
-  at 11AM GMT, join [here](https://us06web.zoom.us/j/85691064809?pwd=c0VCejh)
+  at 11AM GMT ([Zoom link](https://us06web.zoom.us/j/85691064809?pwd=c0VCejh))
   - August 15
   - September 19
   - October 17
 - **APAC (Asia Pacific)**: every third Wednesday of the month at 11AM India ST
-  (GMT +5.5), register [here](https://lu.ma/1w129wgu) to get the Zoom link
+  (GMT +5.5), [register](https://lu.ma/1w129wgu) to get the Zoom link
   - August 16
   - September 20
   - October 18
 - **AMER (Americas)**: every third Thursday of the month at 9AM PST (GMT -8),
-  join
-  [here](https://us06web.zoom.us/j/87037874951?pwd=WGo3eUZpeWFZTlhJQXhJeXZhQmwvUT09)
+  ([Zoom link](https://us06web.zoom.us/j/87037874951?pwd=WGo3eUZpeWFZTlhJQXhJeXZhQmwvUT09))
   - August 17
   - September 21
   - October 19
