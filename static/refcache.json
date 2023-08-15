@@ -4159,6 +4159,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-30T09:18:50.514833-04:00"
   },
+  "https://prometheus.io/docs/prometheus/latest/http_sd/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-08-15T11:49:51.507243-06:00"
+  },
   "https://prometheus.io/docs/prometheus/latest/installation/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:53:03.335095-04:00"
