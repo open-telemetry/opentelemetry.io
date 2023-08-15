@@ -82,7 +82,6 @@ $app->get('/rolldice', function (Request $request, Response $response) {
 });
 
 $app->run();
-
 ```
 
 Run the application using the PHP built-in web server:

@@ -78,7 +78,6 @@ config :opentelemetry, sampler: {:parent_based, %{root: {:trace_id_ratio_based, 
                                                   remote_parent_not_sampled: :always_off,
                                                   local_parent_sampled: :always_on,
                                                   local_parent_not_sampled: :always_off}}
-
 ```
 
 {{% /tab %}} {{< /tabpane >}}
@@ -128,7 +127,6 @@ config :opentelemetry, sampler: {:parent_based, %{root: :always_on,
                                                   remote_parent_not_sampled: :always_off,
                                                   local_parent_sampled: :always_on,
                                                   local_parent_not_sampled: :always_off}}
-
 ```
 
 {{% /tab %}} {{< /tabpane >}}
