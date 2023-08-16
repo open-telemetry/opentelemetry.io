@@ -37,7 +37,8 @@ Within that directory, execute following command:
 dotnet new web
 ```
 
-In the same directory, replace the content of `Program.cs` with the following code:
+In the same directory, replace the content of `Program.cs` with the following
+code:
 
 ```csharp
 using System.Globalization;
@@ -73,10 +74,10 @@ string HandleRollDice(string? player)
 
     return result.ToString(CultureInfo.InvariantCulture);
 }
-
 ```
 
-In the `Properties` subdirectory, replace the content of `launchSettings.json` with the following:
+In the `Properties` subdirectory, replace the content of `launchSettings.json`
+with the following:
 
 ```json
 {
