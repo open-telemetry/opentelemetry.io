@@ -59,6 +59,7 @@
         "MongoDB",
         "MySQL",
         "NGINX",
+        "NDJSON",
         "OK",
         "OpenSearch",
         "OpenTelemetry Collector",

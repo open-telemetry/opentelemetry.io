@@ -2,7 +2,9 @@
 {
   "version": "0.2",
   "caseSensitive": true,
-  "ignorePaths": ["*.svg"],
+  "ignorePaths": [
+    "*.svg"
+  ],
   // words here are only listed for their spelling, if there is a certain way
   // to write a word (e.g. OpenTelemetry vs Opentelemetry or cloud native vs
   // cloud-native), edit the text-lint rules in .textlintrc.json
@@ -16,6 +18,9 @@
     "appender",
     "appenders",
     "aspecto",
+    "autoload",
+    "autoloader",
+    "autoloading",
     "backoff",
     "bytecode",
     "cartservice",
@@ -63,6 +68,7 @@
     "microservices",
     "mongodb",
     "mysql",
+    "ndjson",
     "Neumann",
     "nginx",
     "opamp",
