@@ -70,7 +70,7 @@ another closure where we call `quoteservice`.
 
 ```rust
     let tracer = global::tracer("shippingservice");
-    let mut span = tracer.span_builder("hipstershop.ShippingService/GetQuote").with_kind(SpanKind::Server).start_with_context(&tracer, &parent_cx);
+    let mut span = tracer.span_builder("oteldemo.ShippingService/GetQuote").with_kind(SpanKind::Server).start_with_context(&tracer, &parent_cx);
     span.set_attribute(semcov::trace::RPC_SYSTEM.string(RPC_SYSTEM_GRPC));
 
     span.add_event("Processing get quote request".to_string(), vec![]);
@@ -146,7 +146,7 @@ This is appropriate in our case of a sync runtime.
     // we'll create a span and associated events all in this function.
     let tracer = global::tracer("shippingservice");
     let mut span = tracer
-        .span_builder("hipstershop.ShippingService/ShipOrder").with_kind(SpanKind::Server).start_with_context(&tracer, &parent_cx);
+        .span_builder("oteldemo.ShippingService/ShipOrder").with_kind(SpanKind::Server).start_with_context(&tracer, &parent_cx);
 ```
 
 You must add attributes to a span in context with `set_attribute`, followed by a
