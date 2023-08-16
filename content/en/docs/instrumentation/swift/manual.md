@@ -41,13 +41,11 @@ OpenTelemetry.registerTracerProvider(tracerProvider: TracerProviderBuilder()
                                                       .add(spanProcessor:SimpleSpanProcessor(spanExporter: traceExporter))
                                                       .with(resource: Resource())
                                                       .build())
-
 ```
 
 A similar pattern is used for the OtlpMetricExporter:
 
 ```swift
-
 // otlpConfiguration & grpcChannel can be reused
 OpenTelemetry.registerMeterProvider(meterProvider: MeterProviderBuilder()
             .with(processor: MetricProcessorSdk())
@@ -108,7 +106,6 @@ let childSpan = someTracer.spanBuilder(spanName: "child span")
   // do work
   childSpan.end()
 }
-
 ```
 
 The parent-child relationship will be automatically linked if `activeSpan` is
@@ -129,7 +126,6 @@ func child() {
   // do work
   childSpan.end()
 }
-
 ```
 
 ### Getting the Current Span
@@ -138,7 +134,7 @@ Sometimes it's useful to do something with the current/active span. Here's how
 to access the current span from an arbitrary point in your code.
 
 ```swift
-  let currentSpan = OpenTelemetry.instance.contextProvider.activeSpan
+let currentSpan = OpenTelemetry.instance.contextProvider.activeSpan
 ```
 
 ### Span Attributes
@@ -163,11 +159,11 @@ Span, typically used to denote a meaningful, singular point in time during the
 Span’s duration.
 
 ```swift
-            let attributes = [
-                "key" : AttributeValue.string("value"),
-                "result" : AttributeValue.int(100)
-            ]
-            span.addEvent(name: "computation complete", attributes: attributes)
+let attributes = [
+    "key" : AttributeValue.string("value"),
+    "result" : AttributeValue.int(100)
+]
+span.addEvent(name: "computation complete", attributes: attributes)
 ```
 
 ### Setting Span Status
@@ -250,7 +246,6 @@ OpenTelemetry.registerTracerProvider(tracerProvider: TracerProviderBuilder()
                                                       .add(spanProcessor:SimpleSpanProcessor(spanExporter: StdoutExporter))
                                                       .with(resource: Resource())
                                                       .build())
-
 ```
 
 The batch span processor allows for a variety of parameters for customization

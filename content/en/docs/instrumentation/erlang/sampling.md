@@ -62,23 +62,22 @@ Traces and using the parent decision in the other cases:
 
 ```erlang
 %% config/sys.config.src
-{sampler, {parent_based, #{root => {trace_id_ratio_based, 0.10},
-                           remote_parent_sampled => always_on,
-                           remote_parent_not_sampled => always_off,
-                           local_parent_sampled => always_on,
-                           local_parent_not_sampled => always_off}}}
+{opentelemetry, {sampler, {parent_based, #{root => {trace_id_ratio_based, 0.10},
+                                          remote_parent_sampled => always_on,
+                                          remote_parent_not_sampled => always_off,
+                                          local_parent_sampled => always_on,
+                                          local_parent_not_sampled => always_off}}}}
 ```
 
 {{% /tab %}} {{% tab Elixir %}}
 
 ```elixir
 # config/runtime.exs
-sampler: {:parent_based, %{root: {:trace_id_ratio_based, 0.10},
-                           remote_parent_sampled: :always_on,
-                           remote_parent_not_sampled: :always_off,
-                           local_parent_sampled: :always_on,
-                           local_parent_not_sampled: :always_off}}
-
+config :opentelemetry, sampler: {:parent_based, %{root: {:trace_id_ratio_based, 0.10},
+                                                  remote_parent_sampled: :always_on,
+                                                  remote_parent_not_sampled: :always_off,
+                                                  local_parent_sampled: :always_on,
+                                                  local_parent_not_sampled: :always_off}}
 ```
 
 {{% /tab %}} {{< /tabpane >}}
@@ -112,23 +111,22 @@ always samples and using the parent decision in the other cases:
 
 ```erlang
 %% config/sys.config.src
-{sampler, {parent_based, #{root => always_on,
-                           remote_parent_sampled => always_on,
-                           remote_parent_not_sampled => always_off,
-                           local_parent_sampled => always_on,
-                           local_parent_not_sampled => always_off}}}
+{opentelemetry, {sampler, {parent_based, #{root => always_on,
+                                          remote_parent_sampled => always_on,
+                                          remote_parent_not_sampled => always_off,
+                                          local_parent_sampled => always_on,
+                                          local_parent_not_sampled => always_off}}}}
 ```
 
 {{% /tab %}} {{% tab Elixir %}}
 
 ```elixir
 # config/runtime.exs
-sampler: {:parent_based, %{root: :always_on,
-                           remote_parent_sampled: :always_on,
-                           remote_parent_not_sampled: :always_off,
-                           local_parent_sampled: :always_on,
-                           local_parent_not_sampled: :always_off}}
-
+config :opentelemetry, sampler: {:parent_based, %{root: :always_on,
+                                                  remote_parent_sampled: :always_on,
+                                                  remote_parent_not_sampled: :always_off,
+                                                  local_parent_sampled: :always_on,
+                                                  local_parent_not_sampled: :always_off}}
 ```
 
 {{% /tab %}} {{< /tabpane >}}
@@ -207,13 +205,13 @@ URL requested is `/healthcheck`:
 {{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
 
 ```erlang
-{sampler, {attributes_sampler, #{'http.target' => <<"/healthcheck">>}}}
+{opentelemetry, {sampler, {attributes_sampler, #{'http.target' => <<"/healthcheck">>}}}}
 ```
 
 {{% /tab %}} {{% tab Elixir %}}
 
 ```elixir
-sampler: {AttributesSampler, %{"http.target": "/healthcheck"}}
+config :opentelemetry, sampler: {AttributesSampler, %{"http.target": "/healthcheck"}}
 ```
 
 {{% /tab %}} {{< /tabpane >}}
