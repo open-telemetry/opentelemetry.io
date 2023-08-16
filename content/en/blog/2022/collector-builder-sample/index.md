@@ -4,6 +4,8 @@ linkTitle: Collector builder with GCP
 date: 2022-10-17
 author: >-
   [Mike Dame](https://github.com/damemi) (Google)
+# prettier-ignore
+cSpell:ignore: batchprocessor configmap customizability gomod loggingexporter otlpexporter otlpreceiver rollouts zipkinexporter
 ---
 
 The [OpenTelemetry Collector](/docs/collector/) is a versatile tool for
@@ -281,12 +283,12 @@ config changes and new components as compiled into the updated image.
 ## Automate builds for secure, up-to-date images
 
 Building your own Collector allows you to control updates and rollouts of the
-Collector image. In this repo, we have some samples of how you can own your
-Collector build on GCP.
+Collector image. In this repository, we have some samples of how you can own
+your Collector build on GCP.
 
 Using a [Cloud Build](https://cloud.google.com/build) configuration supports
 serverless, automated builds for your Collector. By doing so you can benefit
-from new releases, features, and bug fixes in Collector components with minimal
+from new releases, features, and bugfixes in Collector components with minimal
 delay. Combined with
 [Artifact Registry](https://cloud.google.com/artifact-registry), these builds
 can be pushed as Docker images in your GCP project. This provides portability

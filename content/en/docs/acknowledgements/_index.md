@@ -1,9 +1,9 @@
 ---
 title: Acknowledgements
 description: Acknowledgements for sources for content on this site
-spelling: cSpell:ignore otel
 aliases: [/acknowledgements]
 weight: 200
+cSpell:ignore: Pigram
 ---
 
 We would like to acknowledge the following sources for some of the content on

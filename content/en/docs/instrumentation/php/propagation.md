@@ -1,7 +1,8 @@
 ---
 title: Propagation
 description: Context propagation for the PHP API
-weight: 7
+weight: 60
+cSpell:ignore: Laravel Symfony
 ---
 
 Propagation is the mechanism that moves data between services and processes.
@@ -15,7 +16,7 @@ HTTP headers.
 
 ## Context propagation with frameworks and libraries
 
-Auto-instrumentation exists for some popular PHP frameworks (eg Symfony,
+Auto-instrumentation exists for some popular PHP frameworks (eg. Symfony,
 Laravel, Slim) and HTTP libraries propagate context for incoming and outgoing
 HTTP requests.
 
@@ -52,7 +53,7 @@ library. There may not be an instrumentation library that matches a library
 you're using to have services communicate with one another. Or you many have
 requirements that instrumentation libraries cannot fulfill, even if they exist.
 
-When you must propagate context manually, you can use the context api.
+When you must propagate context manually, you can use the context API.
 
 The following presents an example of an outgoing HTTP request:
 

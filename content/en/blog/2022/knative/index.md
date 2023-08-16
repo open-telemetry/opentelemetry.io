@@ -2,7 +2,8 @@
 title: Distributed tracing in Knative
 linkTitle: Tracing in Knative
 date: 2022-04-12
-spelling: cSpell:ignore Cloudevents istio Loffay Pavol pavolloffay
+# prettier-ignore
+cSpell:ignore: apng Cloudevents datacontenttype httpbody khtml knativearrivaltime pavolloffay spanid specversion traceid webp
 author: '[Pavol Loffay](https://github.com/pavolloffay)'
 ---
 
@@ -161,7 +162,7 @@ might not have an immediate impact on the user, however, it will enable users to
 start natively reporting data in OpenTelemetry format (OTLP).
 
 Another recently merged change is the addition of
-[Cloudevents semantic attributes into the OpenTelemetry specification](/docs/reference/specification/trace/semantic_conventions/cloudevents).
+[Cloudevents semantic attributes into the OpenTelemetry specification](/docs/specs/otel/trace/semantic_conventions/cloudevents).
 The document standardizes attributes related to CloudEvents. The screenshot
 below is from the demo application that is still not using the standardized
 attribute names:
@@ -175,7 +176,7 @@ Tracing in Knative can be easily enabled. Please follow the
 Let's briefly describe the process here:
 
 1. Deploy a tracing system that can ingest tracing data in Zipkin format -
-   Zipkin, Jaeger, or OpenTelemetry collector
+   Zipkin, Jaeger, or OpenTelemetry Collector
 2. Enable tracing in
    [Knative eventing](https://knative.dev/docs/eventing/accessing-traces/)
 3. Enable tracing in
@@ -209,5 +210,5 @@ instrumentation libraries explicitly in the code or even
 - [Zipkin B3](https://github.com/openzipkin/b3-propagation)
 - [W3C Trace-Context](https://www.w3.org/TR/trace-context/)
 - [OpenTelemetry instrumentation for Cloudevents Golang SDK](https://github.com/cloudevents/sdk-go/tree/main/observability/opentelemetry/v2)
-- [Cloudevents OpenTelemetry attributes](/docs/reference/specification/trace/semantic_conventions/cloudevents/)
+- [Cloudevents OpenTelemetry attributes](/docs/specs/otel/trace/semantic_conventions/cloudevents/)
 - [Knative tracing demo](https://github.com/pavolloffay/knative-tracing)

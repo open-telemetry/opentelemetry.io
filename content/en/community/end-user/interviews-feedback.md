@@ -1,6 +1,7 @@
 ---
 title: Interviews or Feedback Sessions
 description: Help improve OpenTelemetry - share your feedback directly with us!
+weight: 10
 ---
 
 One of the core functions of the OpenTelemetry End User Working Group is to
@@ -23,11 +24,11 @@ We will then take the feedback you shared and turn them into actionable tasks
 for the relevant SIGs, as well as provide context and insight for you during the
 session as appropriate.
 
-We schedule these sessions once a month, usually during one of the EUWG's
-meetings (alternating Thursdays at 10AM Pacific Time), but can set up a
-different time if that does not work for you. The sessions are typically
-attended by a few project maintainers and/or Governance Committee members, as
-well as some curious general members of the Community.
+We schedule these sessions once a month, usually during one of the end-user
+working group's meetings (alternating Thursdays at 10AM Pacific Time), but can
+set up a different time if that does not work for you. The sessions are
+typically attended by a few project maintainers and/or Governance Committee
+members, as well as some curious general members of the Community.
 
 Things to keep in mind:
 

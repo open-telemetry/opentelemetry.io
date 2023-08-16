@@ -1,31 +1,59 @@
 ---
 title: Automatic Instrumentation
 linkTitle: Automatic
-weight: 2
-spelling:
-  cSpell:ignore userland phar AUTOLOAD tracecontext myapp configurator packagist
+weight: 20
+# prettier-ignore
+cSpell:ignore: autoload autoloading configurator democlass myapp packagist pecl phar unindented userland
 ---
 
-Automatic instrumentation with PHP requires at least PHP 8.0, and
-[the OpenTelemetry PHP extension](https://github.com/open-telemetry/opentelemetry-php-instrumentation).
-The extension allows developers code to hook into classes and methods, and
-execute userland code before and after.
+Automatic instrumentation with PHP requires at least PHP 8.0, and the
+[OpenTelemetry PHP extension](https://github.com/open-telemetry/opentelemetry-php-instrumentation).
+The extension enables registering observer functions (as PHP code) against
+classes and methods, and executing those functions before and after the observed
+method runs.
+
+{{% alert title="Important" color="warning" %}}Installing the OpenTelemetry
+extension by itself will not generate traces. You must also install the
+[SDK](https://packagist.org/packages/open-telemetry/sdk) **and** one or more
+[instrumentation packages](/ecosystem/registry/?component=instrumentation&language=php)
+for the frameworks and libraries that you are using, or alternatively write your
+own.
+
+You also _must_ use
+[composer autoloading](https://getcomposer.org/doc/01-basic-usage.md#autoloading),
+as this is the mechanism all auto-instrumentation packages use to register
+themselves. {{% /alert %}}
 
 ## Example
 
 ```php
 <?php
+
+use OpenTelemetry\API\Common\Instrumentation\CachedInstrumentation;
+use OpenTelemetry\API\Trace\Span;
+use OpenTelemetry\API\Trace\StatusCode;
+use OpenTelemetry\Context\Context;
+
+require 'vendor/autoload.php';
+
+class DemoClass
+{
+    public function run(): void
+    {
+        echo 'Hello, world';
+    }
+}
+
 OpenTelemetry\Instrumentation\hook(
-    'class': DemoClass::class,
-    'function': 'run',
-    'pre': static function (DemoClass $demo, array $params, string $class, string $function, ?string $filename, ?int $lineno) use ($tracer) {
+    class: DemoClass::class,
+    function: 'run',
+    pre: static function (DemoClass $demo, array $params, string $class, string $function, ?string $filename, ?int $lineno) {
         static $instrumentation;
         $instrumentation ??= new CachedInstrumentation('example');
-        $instrumentation->tracer()->spanBuilder($class)
-            ->startSpan()
-            ->activate();
+        $span = $instrumentation->tracer()->spanBuilder('democlass-run')->startSpan();
+        Context::storage()->attach($span->storeInContext(Context::getCurrent()));
     },
-    'post': static function (DemoClass $demo, array $params, $returnValue, ?Throwable $exception) use ($tracer) {
+    post: static function (DemoClass $demo, array $params, $returnValue, ?Throwable $exception) {
         $scope = Context::storage()->scope();
         $scope->detach();
         $span = Span::fromContext($scope->context());
@@ -43,57 +71,67 @@ $demo->run();
 
 Here, we provide `pre` and `post` functions, which are executed before and after
 `DemoClass::run`. The `pre` function starts and activates a span, and the `post`
-function ends it.
+function ends it. If an exception was thrown by `DemoClass::run()`, the `post`
+function will record it, without affecting exception propagation.
 
-## Setup
+## Installation
 
-1. Install the extension via [pickle](https://github.com/FriendsOfPHP/pickle) or
-   [php-extension-installer](https://github.com/mlocati/docker-php-extension-installer)
-   (docker specific):
+The extension can be installed via pecl,
+[pickle](https://github.com/FriendsOfPHP/pickle) or
+[php-extension-installer](https://github.com/mlocati/docker-php-extension-installer)
+(docker specific).
 
-   - **pickle** can be used to install extensions that are available via
-     <http://pecl.php.net>, however that's not the case for
-     opentelemetry-php-instrumentation yet, so the only way for it is to install
-     directly from source code. The following command line shows you how to do
-     that using a specific version of the extension (1.0.0beta2 in this case):
+1. Setup development environment. Installing from source requires proper
+   development environment and some dependencies:
 
-     Installing from source requires proper development environment and few
-     dependencies:
-
-     <!-- prettier-ignore-start -->
-
-     {{< tabpane lang=shell persistLang=false >}}
-
-     {{< tab "Linux (apt)" >}}sudo apt-get install gcc make autoconf{{< /tab >}}
-
-     {{< tab "MacOS (homebrew)" >}}brew install gcc make autoconf{{< /tab >}}
-
-     {{< /tabpane >}}
-     <!-- prettier-ignore-end -->
-
-     With your environment setup you can install the extension:
-
-     ```sh
-     php pickle.phar install --source https://github.com/open-telemetry/opentelemetry-php-instrumentation.git#1.0.0beta2
-     ```
-
-     Add the extension to your `php.ini` file:
-
-     ```ini
-     [Otel instrumentation]
-     extension=otel_instrumentation.so
-     ```
-
-   - **php-extension-installer**
-
-     ```sh
-     install-php-extensions open-telemetry/opentelemetry-php-instrumentation@main
-     ```
-
-2. Verify that the extension is installed and enabled:
+   {{< tabpane text=true >}} {{% tab "Linux (apt)" %}}
 
    ```sh
-   php -m | grep  otel_instrumentation
+   sudo apt-get install gcc make autoconf
+   ```
+
+   {{% /tab %}} {{% tab "macOS (homebrew)" %}}
+
+   ```sh
+   brew install gcc make autoconf
+   ```
+
+   {{% /tab %}} {{< /tabpane >}}
+
+2. Build/install the extension. With your environment set up you can install the
+   extension:
+
+   {{< tabpane text=true >}} {{% tab pecl %}}
+
+   ```sh
+   pecl install opentelemetry-beta
+   ```
+
+   {{% /tab %}} {{% tab pickle %}}
+
+   ```sh
+   php pickle.phar install opentelemetry
+   ```
+
+   {{% /tab %}} {{% tab "php-extension-installer (docker)" %}}
+
+   ```sh
+   install-php-extensions opentelemetry
+   ```
+
+   {{% /tab %}} {{< /tabpane >}}
+
+3. Add the extension to your `php.ini` file:
+
+   ```ini
+   [opentelemetry]
+   extension=opentelemetry.so
+   ```
+
+4. Verify that the extension is installed and enabled:
+
+   ```sh
+   php -m | grep opentelemetry
    ```
 
 ## Zero-code configuration for automatic instrumentation
@@ -116,11 +154,11 @@ php myapp.php
 ```php
 <?php
 OpenTelemetry\API\Common\Instrumentation\Globals::registerInitializer(function (Configurator $configurator) {
-    $propagator = TextMapPropagator::getInstance();
+    $propagator = TraceContextPropagator::getInstance();
     $spanProcessor = new BatchSpanProcessor(/*params*/);
     $tracerProvider = (new TracerProviderBuilder())
         ->addSpanProcessor($spanProcessor)
-        ->setSampler(new ParentBased(new AlwaysOnSampler());)
+        ->setSampler(new ParentBased(new AlwaysOnSampler()))
         ->build();
 
     ShutdownHandler::register([$tracerProvider, 'shutdown']);
@@ -132,7 +170,7 @@ OpenTelemetry\API\Common\Instrumentation\Globals::registerInitializer(function (
 
 //instrumentation libraries can access the configured providers (or a no-op implementation) via `Globals`
 $tracer = Globals::tracerProvider()->getTracer('example');
-//or, via CachedInstrumentation
+//or, via CachedInstrumentation which uses `Globals` internally
 $instrumentation = new CachedInstrumentation('example');
 $tracerProvider = $instrumentation->tracer();
 ```

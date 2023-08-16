@@ -1,20 +1,27 @@
 ---
 title: Manual Instrumentation
 linkTitle: Manual
-weight: 3
+weight: 20
+description: Manual instrumentation for OpenTelemetry Python
+cSpell:ignore: millis ottrace textmap
 ---
 
-Manual instrumentation is the process of adding observability code to your
-application.
+<!-- markdownlint-disable no-duplicate-heading -->
 
-## Initializing the SDK
+{{% docs/instrumentation/manual-intro %}}
+
+## Setup
 
 First, ensure you have the API and SDK packages:
 
-```
+```shell
 pip install opentelemetry-api
 pip install opentelemetry-sdk
 ```
+
+## Traces
+
+### Acquire Tracer
 
 To start tracing, you'll need to initialize a
 [`TracerProvider`](/docs/concepts/signals/traces/#tracer-provider) and
@@ -36,32 +43,8 @@ provider.add_span_processor(processor)
 trace.set_tracer_provider(provider)
 
 # Creates a tracer from the global tracer provider
-tracer = trace.get_tracer(__name__)
+tracer = trace.get_tracer("my.tracer.name")
 ```
-
-To start collecting metrics, you'll need to initialize a
-[`MeterProvider`](/docs/reference/specification/metrics/api/#meterprovider) and
-optionally set it as the global default.
-
-```python
-from opentelemetry import metrics
-from opentelemetry.sdk.metrics import MeterProvider
-from opentelemetry.sdk.metrics.export import (
-    ConsoleMetricExporter,
-    PeriodicExportingMetricReader,
-)
-
-metric_reader = PeriodicExportingMetricReader(ConsoleMetricExporter())
-provider = MeterProvider(metric_readers=[metric_reader])
-
-# Sets the global default meter provider
-metrics.set_meter_provider(provider)
-
-# Creates a meter from the global meter provider
-meter = metrics.get_meter(__name__)
-```
-
-## Tracing
 
 ### Creating spans
 
@@ -155,8 +138,8 @@ current_span.set_attribute("operation.other-stuff", [1, 2, 3])
 
 ### Add semantic attributes
 
-[Semantic Attributes](/docs/reference/specification/trace/semantic_conventions/)
-are pre-defined [Attributes](/docs/concepts/signals/traces/#attributes) that are
+[Semantic Attributes](/docs/specs/otel/trace/semantic_conventions/) are
+pre-defined [Attributes](/docs/concepts/signals/traces/#attributes) that are
 well-known naming conventions for common kinds of data. Using Semantic
 Attributes lets you normalize this kind of information across your systems.
 
@@ -217,7 +200,7 @@ with tracer.start_as_current_span("span-1"):
 
 with tracer.start_as_current_span("span-2", links=[link_from_span_1]):
     # Do something that 'span-2' tracks.
-    # The link in 'span-2' is casually associated it with the 'span-1',
+    # The link in 'span-2' is causally associated it with the 'span-1',
     # but it is not a child span.
     pass
 ```
@@ -313,19 +296,48 @@ set_global_textmap(B3Format())
 
 Note that environment variables will override what's configured in code.
 
+### Further Reading
+
+- [Trace Concepts](/docs/concepts/signals/traces/)
+- [Trace Specification](/docs/specs/otel/overview/#tracing-signal)
+- [Python Trace API Documentation](https://opentelemetry-python.readthedocs.io/en/latest/api/trace.html)
+- [Python Trace SDK Documentation](https://opentelemetry-python.readthedocs.io/en/latest/sdk/trace.html)
+
 ## Metrics
+
+To start collecting metrics, you'll need to initialize a
+[`MeterProvider`](/docs/specs/otel/metrics/api/#meterprovider) and optionally
+set it as the global default.
+
+```python
+from opentelemetry import metrics
+from opentelemetry.sdk.metrics import MeterProvider
+from opentelemetry.sdk.metrics.export import (
+    ConsoleMetricExporter,
+    PeriodicExportingMetricReader,
+)
+
+metric_reader = PeriodicExportingMetricReader(ConsoleMetricExporter())
+provider = MeterProvider(metric_readers=[metric_reader])
+
+# Sets the global default meter provider
+metrics.set_meter_provider(provider)
+
+# Creates a meter from the global meter provider
+meter = metrics.get_meter("my.meter.name")
+```
 
 ### Creating and using synchronous instruments
 
 Instruments are used to make measurements of your application.
-[Synchronous instruments](/docs/reference/specification/metrics/api/#synchronous-and-asynchronous-instruments)
+[Synchronous instruments](/docs/specs/otel/metrics/api/#synchronous-and-asynchronous-instruments)
 are used inline with application/business processing logic, like when handling a
 request or calling another service.
 
 First, create your instrument. Instruments are generally created once at the
 module or class level and then used inline with business logic. This example
-uses a [Counter](/docs/reference/specification/metrics/api/#counter) instrument
-to count the number of work items completed:
+uses a [Counter](/docs/specs/otel/metrics/api/#counter) instrument to count the
+number of work items completed:
 
 ```python
 work_counter = meter.create_counter(
@@ -333,9 +345,8 @@ work_counter = meter.create_counter(
 )
 ```
 
-Using the Counter's
-[add operation](/docs/reference/specification/metrics/api/#add), the code below
-increments the count by one, using the work item's type as an attribute.
+Using the Counter's [add operation](/docs/specs/otel/metrics/api/#add), the code
+below increments the count by one, using the work item's type as an attribute.
 
 ```python
 def do_work(work_item):
@@ -346,7 +357,7 @@ def do_work(work_item):
 
 ### Creating and using asynchronous instruments
 
-[Asynchronous instruments](/docs/reference/specification/metrics/api/#synchronous-and-asynchronous-instruments)
+[Asynchronous instruments](/docs/specs/otel/metrics/api/#synchronous-and-asynchronous-instruments)
 give the user a way to register callback functions, which are invoked on demand
 to make measurements. This is useful to periodically measure a value that cannot
 be instrumented directly. Async instruments are created with zero or more
@@ -354,7 +365,7 @@ callbacks which will be invoked during metric collection. Each callback accepts
 options from the SDK and returns its observations.
 
 This example uses an
-[Asynchronous Gauge](/docs/reference/specification/metrics/api/#asynchronous-gauge)
+[Asynchronous Gauge](/docs/specs/otel/metrics/api/#asynchronous-gauge)
 instrument to report the current config version provided by a configuration
 server by scraping an HTTP endpoint. First, write a callback to make
 observations:
@@ -386,15 +397,19 @@ meter.create_observable_gauge(
 )
 ```
 
-## Additional References
+### Further Reading
 
-- Trace
-  - [Trace Concepts](/docs/concepts/signals/traces/)
-  - [Trace Specification](/docs/reference/specification/overview/#tracing-signal)
-  - [Python Trace API Documentation](https://opentelemetry-python.readthedocs.io/en/latest/api/trace.html)
-  - [Python Trace SDK Documentation](https://opentelemetry-python.readthedocs.io/en/latest/sdk/trace.html)
-- Metrics
-  - [Metrics Concepts](/docs/concepts/signals/metrics/)
-  - [Metrics Specification](/docs/reference/specification/metrics/)
-  - [Python Metrics API Documentation](https://opentelemetry-python.readthedocs.io/en/latest/api/metrics.html)
-  - [Python Metrics SDK Documentation](https://opentelemetry-python.readthedocs.io/en/latest/sdk/metrics.html)
+- [Metrics Concepts](/docs/concepts/signals/metrics/)
+- [Metrics Specification](/docs/specs/otel/metrics/)
+- [Python Metrics API Documentation](https://opentelemetry-python.readthedocs.io/en/latest/api/metrics.html)
+- [Python Metrics SDK Documentation](https://opentelemetry-python.readthedocs.io/en/latest/sdk/metrics.html)
+
+## Logs
+
+The logs API & SDK are currently under development.
+
+## Next Steps
+
+You’ll also want to configure an appropriate exporter to
+[export your telemetry data](/docs/instrumentation/python/exporters) to one or
+more telemetry backends.

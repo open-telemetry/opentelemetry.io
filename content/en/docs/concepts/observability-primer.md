@@ -2,6 +2,7 @@
 title: Observability Primer
 description: Core observability concepts.
 weight: 9
+cSpell:ignore: KHTML
 ---
 
 ## What is Observability?
@@ -14,11 +15,11 @@ unknowns”), and helps us answer the question, "Why is this happening?"
 In order to be able to ask those questions of a system, the application must be
 properly instrumented. That is, the application code must emit
 [signals](/docs/concepts/signals/) such as
-[traces](/docs/concepts/observability-primer/#distributed-traces),
-[metrics](/docs/concepts/observability-primer/#reliability--metrics), and
-[logs](/docs/concepts/observability-primer/#logs). An application is properly
-instrumented when developers don't need to add more instrumentation to
-troubleshoot an issue, because they have all of the information they need.
+[traces](/docs/concepts/signals/traces/),
+[metrics](/docs/concepts/signals/metrics/), and
+[logs](/docs/concepts/signals/logs/). An application is properly instrumented
+when developers don't need to add more instrumentation to troubleshoot an issue,
+because they have all of the information they need.
 
 [OpenTelemetry](/docs/what-is-opentelemetry/) is the mechanism by which
 application code is instrumented, to help make a system observable.
@@ -26,18 +27,20 @@ application code is instrumented, to help make a system observable.
 ## Reliability & Metrics
 
 **Telemetry** refers to data emitted from a system, about its behavior. The data
-can come in the form of [traces](#distributed-traces),
-[metrics](#reliability--metrics), and [logs](#logs).
+can come in the form of [traces](/docs/concepts/signals/traces/),
+[metrics](/docs/concepts/signals/metrics/), and
+[logs](/docs/concepts/signals/logs/).
 
 **Reliability** answers the question: "Is the service doing what users expect it
 to be doing?” A system could be up 100% of the time, but if, when a user clicks
 "Add to Cart” to add a black pair of pants to their shopping cart, and instead,
-the system keeps adding a red pair of pants, then the system would be said to be
+the system doesn't always add black pants, then the system would be said to be
 **un**reliable.
 
 **Metrics** are aggregations over a period of time of numeric data about your
 infrastructure or application. Examples include: system error rate, CPU
-utilization, request rate for a given service.
+utilization, request rate for a given service. For more on metrics and how they
+pertain to OTel, see [Metrics](/docs/concepts/signals/metrics/).
 
 **SLI**, or Service Level Indicator, represents a measurement of a service's
 behavior. A good SLI measures your service from the perspective of your users.
@@ -68,7 +71,11 @@ I, [2021-02-23T13:26:23.505892 #22473]  INFO -- : [6459ffe1-ea53-4044-aaa3-bf902
 Unfortunately, logs aren't extremely useful for tracking code execution, as they
 typically lack contextual information, such as where they were called from.
 
-They become far more useful when they are included as part of a [span](#spans).
+They become far more useful when they are included as part of a [span](#spans),
+or when they are correlated with a trace and a span.
+
+For more on logs and how they pertain to OTel, see
+[Logs](/docs/concepts/signals/logs/).
 
 ### Spans
 
@@ -85,21 +92,21 @@ to provide information about the operation it tracks.
 
 The following table contains examples of span attributes:
 
-| Key              | Value                                                                                                                 |
-| ---------------- | --------------------------------------------------------------------------------------------------------------------- |
-| net.transport    | IP.TCP                                                                                                                |
-| net.peer.ip      | 10.244.0.1                                                                                                            |
-| net.peer.port    | 10243                                                                                                                 |
-| net.host.name    | localhost                                                                                                             |
-| http.method      | GET                                                                                                                   |
-| http.target      | /cart                                                                                                                 |
-| http.server_name | frontend                                                                                                              |
-| http.route       | /cart                                                                                                                 |
-| http.scheme      | http                                                                                                                  |
-| http.host        | localhost                                                                                                             |
-| http.flavor      | 1.1                                                                                                                   |
-| http.status_code | 200                                                                                                                   |
-| http.user_agent  | Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 |
+| Key              | Value                                                                                                                   |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| net.transport    | `IP.TCP`                                                                                                                |
+| net.peer.ip      | `10.244.0.1`                                                                                                            |
+| net.peer.port    | `10243`                                                                                                                 |
+| net.host.name    | `localhost`                                                                                                             |
+| http.method      | `GET`                                                                                                                   |
+| http.target      | `/cart`                                                                                                                 |
+| http.server_name | `frontend`                                                                                                              |
+| http.route       | `/cart`                                                                                                                 |
+| http.scheme      | `http`                                                                                                                  |
+| http.host        | `localhost`                                                                                                             |
+| http.flavor      | `1.1`                                                                                                                   |
+| http.status_code | `200`                                                                                                                   |
+| http.user_agent  | `Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36` |
 
 For more on spans and how they pertain to OTel, see
 [Spans](/docs/concepts/signals/traces/#spans).
@@ -130,7 +137,7 @@ what steps make up a request).
 Many Observability back-ends visualize traces as waterfall diagrams that may
 look something like this:
 
-![Sample Trace](/img/waterfall_trace.png 'Trace waterfall diagram')
+![Sample Trace](/img/waterfall-trace.svg 'Trace waterfall diagram')
 
 Waterfall diagrams show the parent-child relationship between a root span and
 its child spans. When a span encapsulates another span, this also represents a

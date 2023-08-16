@@ -15,9 +15,9 @@ applications without touching their code, we recommend that you learn the
 following:
 
 - [What is OpenTelemetry?](/docs/what-is-opentelemetry/)
-- [How can I instrument applications without touching their code?](/docs/concepts/instrumenting/#automatic-instrumentation)
+- [How can I instrument applications without touching their code?](/docs/concepts/instrumentation/automatic/)
 - [How can I set up a collector?](/docs/collector/)
-- [How can I get automation for Kubernetes with the OpenTelemetry Operator?](/docs/k8s-operator/)
+- [How can I get automation for Kubernetes with the OpenTelemetry Operator?](/docs/kubernetes/operator/)
 
 If you are looking for a set of applications to try things out, you will find
 our official [OpenTelemetry demo](/ecosystem/demo/) useful!

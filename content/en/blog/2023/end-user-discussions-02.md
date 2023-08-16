@@ -71,7 +71,7 @@ that is currently under development to support buffering and data persistence.
 performance on an ongoing basis?
 
 **A:** There is a GitHub action that runs load test on OpenTelemetry Collector,
-but noone is working to improve it.
+but no one is working to improve it.
 
 ### OpenTelemetry Language API & SDKs
 
@@ -169,7 +169,7 @@ landing on a particular page which can be tracked with a counter.
 
 The community also discussed these important points:
 
-#### Auto-discovery of sources to collect telemetry data
+### Auto-discovery of sources to collect telemetry data
 
 **Q:** Can OTel Collector automatically discover known sources and collect
 telemetry from them?
@@ -189,7 +189,7 @@ Using
 users should be able to detect and report Kubernetes pod, port, and node
 endpoints via the Kubernetes API.
 
-#### Hosting pattern suggestion of the OTel Collector within Azure
+### Hosting pattern suggestion of the OTel Collector within Azure
 
 **Q:** Are there any suggestions for hosting pattern of the Collector within
 Azure to collect telemetry from Azure App Services and Azure functions?

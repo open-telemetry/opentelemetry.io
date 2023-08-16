@@ -4,6 +4,7 @@ linkTitle: Front-end Overhaul Demo
 date: 2022-11-16
 author: '[Oscar Reyes](https://github.com/xoscar) (Tracetest)'
 canonical_url: https://tracetest.io/blog/frontend-overhaul-opentelemetry-demo
+cSpell:ignore: architecting Babiak Olly Tracetest
 ---
 
 One of the OpenTelemetry Project's many Special Interest Groups (SIG) is the
@@ -64,7 +65,7 @@ covering each of the following OTel-supported languages:
 - [Rust](/docs/instrumentation/rust/)
 
 Every microservice has a specific goal and can communicate with others by using
-a global gRPC definition. Persistent information is saved into a PostgresSQL
+a global gRPC definition. Persistent information is saved into a PostgreSQL
 database and there are outbound services that connect with third-party services
 to trigger events (such as confirmation emails). All of the microservices,
 including the front-end, are connected to the same OpenTelemetry collector

@@ -4,6 +4,12 @@ on:
   issue_comment:
     types: [created]
 
+env:
+  COMMENT: ${{ github.event.comment.body }}
+  PR_NUM: ${{ github.event.issue.number }}
+  USER_EMAIL: 107717825+opentelemetrybot@users.noreply.github.com
+  USER_NAME: opentelemetrybot
+
 jobs:
   fix-format:
     name: /fix:format
@@ -14,10 +20,6 @@ jobs:
       contains(github.event.comment.body, '/fix:format')
     permissions:
       contents: write
-
-    env:
-      PR_NUM: ${{ github.event.issue.number }}
-      COMMENT: ${{ github.event.comment.body }}
 
     steps:
       - name: Context info
@@ -31,16 +33,92 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
 
-      - run: npm install --ignore-scripts
+      - name: Create NPM cache-hash input file
+        run: |
+          mkdir -p tmp
+          jq '{devDependencies, dependencies, engines, gitHubActionCacheKey}' package.json > tmp/package-ci.json
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: tmp/package-ci.json
+
       - run: |
-          npm run prettier:write
+          npm run format
           git status
           git branch -v
 
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - name: Commit and push changes, if any
+        run: |
+          git config --local user.email "$USER_EMAIL"
+          git config --local user.name "$USER_NAME"
+          if [[ $(git status --porcelain) ]]; then
+            git add -A
+            current_branch=$(git rev-parse --abbrev-ref HEAD)
+            echo current_branch=$current_branch
+            git commit -m 'Results from /fix:format'
+            git push origin $current_branch
+          else
+            echo "No changes to commit"
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+
+  fix-refcache:
+    name: /fix:refcache
+    runs-on: ubuntu-latest
+
+    if: |
+      github.event.issue.pull_request &&
+      contains(github.event.comment.body, '/fix:refcache')
+    permissions:
+      contents: write
+
+    env:
+      DEPTH: --depth 100 # submodule clone depth
+
+    steps:
+      - name: Context info
+        run: |
+          echo $PR_NUM
+          echo $COMMENT
+
+      - uses: actions/checkout@v3
+
+      - run: gh pr checkout $PR_NUM
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Create NPM cache-hash input file
+        run: |
+          mkdir -p tmp
+          jq '{devDependencies, dependencies, engines, gitHubActionCacheKey}' package.json > tmp/package-ci.json
+
+      - uses: actions/setup-node@v3
         with:
-          commit_message: 'Results from /fix:format'
-          commit_user_name: opentelemetrybot
-          commit_user_email: 107717825+opentelemetrybot@users.noreply.github.com
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: tmp/package-ci.json
+
+      - run: npm install --omit=optional
+      - run: |
+          npm run check:links
+          git status
+          git branch -v
+
+      - name: Commit and push changes, if any
+        run: |
+          git config --local user.email "$USER_EMAIL"
+          git config --local user.name "$USER_NAME"
+          if [[ $(git status --porcelain) ]]; then
+            git add -A
+            current_branch=$(git rev-parse --abbrev-ref HEAD)
+            echo current_branch=$current_branch
+            git commit -m 'Results from /fix:recache'
+            git push origin $current_branch
+          else
+            echo "No changes to commit"
+          fi
         env:
           GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}

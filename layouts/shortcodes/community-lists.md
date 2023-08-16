@@ -22,6 +22,6 @@
 
 {{ define "community-links-list" -}}
 {{ range . }}
-- <a href="{{ .url }}" target="_blank" rel="noopener"><i class="{{ .icon }}"></i> {{ .name }}:</a> {{ .desc -}}
+- [<i class="{{ .icon }}"></i> {{ .name }}]({{ .url }}): {{ .desc -}}
 {{ end -}}
 {{ end }}

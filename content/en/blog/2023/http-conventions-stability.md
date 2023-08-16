@@ -3,12 +3,13 @@ title: Final push to HTTP semantic convention stability
 linkTitle: HTTP semantic conventions
 date: 2023-01-30
 author: '[Trask Stalnaker](https://github.com/trask) (Microsoft)'
+cSpell:ignore: stalnaker trask
 ---
 
 The OpenTelemetry community is beginning the final push to declare HTTP
-[tracing](/docs/reference/specification/trace/semantic_conventions/http/) and
-[metrics](/docs/reference/specification/metrics/semantic_conventions/http-metrics/)
-semantic conventions stable!
+[tracing](/docs/specs/otel/trace/semantic_conventions/http/) and
+[metrics](/docs/specs/otel/metrics/semantic_conventions/http-metrics/) semantic
+conventions stable!
 
 Following the recently proposed
 [Semantic Convention Process](https://docs.google.com/document/d/1ghvajKaipiNZso3fDtyNxU7x1zx0_Eyd02OGpMGEpLE),

@@ -1,9 +1,8 @@
 ---
 title: Getting Started
-weight: 2
-spelling:
-  cSpell:ignore Bazel libcurl openssl xcode DBUILD DWITH helloworld tracestate
-  traceparent devel
+weight: 10
+# prettier-ignore
+cSpell:ignore: Bazel DBUILD devel DWITH helloworld libcurl openssl tracestate xcode
 ---
 
 Welcome to the OpenTelemetry C++ getting started guide! This guide will walk you
@@ -13,7 +12,7 @@ exporting data from OpenTelemetry.
 You can use [CMake](https://cmake.org/) or [Bazel](https://bazel.build/) for
 building OpenTelemetry C++. The following getting started guide will make use of
 CMake and only provide you the most essential steps to have a working example
-application (a http server & http client). For more details read
+application (a HTTP server & HTTP client). For more details read
 [these instructions](https://github.com/open-telemetry/opentelemetry-cpp/blob/main/INSTALL.md).
 
 ## Prerequisites
@@ -21,29 +20,33 @@ application (a http server & http client). For more details read
 You can build OpenTelemetry C++ on Windows, macOS or Linux. First you need to
 install some dependencies:
 
-<!-- prettier-ignore-start -->
-{{< tabpane lang=shell persistLang=false >}}
+{{< tabpane text=true >}} {{% tab "Linux (apt)" %}}
 
-{{< tab "Linux (apt)" >}}
+```sh
 sudo apt-get install git cmake g++ libcurl4-openssl-dev
-{{< /tab >}}
+```
 
-{{< tab "Linux (yum)" >}}
+{{% /tab %}} {{% tab "Linux (yum)" %}}
+
+```sh
 sudo yum install git cmake g++ libcurl-devel
-{{< /tab >}}
+```
 
-{{< tab "Linux (alpine)" >}}
+{{% /tab %}} {{% tab "Linux (alpine)" %}}
+
+```sh
 sudo apk add git cmake g++ make curl-dev
-{{< /tab >}}
+```
 
-{{< tab "MacOS (homebrew)" >}}
+{{% /tab %}} {{% tab "MacOS (homebrew)" %}}
+
+```sh
 xcode-select —install
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew install git cmake
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
+{{% /tab %}} {{< /tabpane >}}
 
 ## Building
 
@@ -79,17 +82,22 @@ CMakeFiles  Makefile  cmake_install.cmake  http_client  http_server
 
 ## Run Application
 
-Open two terminals, in the first terminal, start the http server:
+Open two terminals, in the first terminal, start the HTTP server:
 
 ```console
 $ ./examples/http/http_server
 Server is running..Press ctrl-c to exit..
 ```
 
-In the other terminal, run the http client:
+In the other terminal, run the HTTP client:
 
-```console
-$ ./examples/http/http_client
+```sh
+./examples/http/http_client
+```
+
+You should see client output similar to this:
+
+```properties
 {
   name          : /helloworld
   trace_id      : 05eec7a55d3544434265dad89d7fe96f
@@ -171,3 +179,7 @@ customized observability data.
 You'll also want to configure an appropriate exporter to
 [export your telemetry data](/docs/instrumentation/cpp/exporters) to one or more
 telemetry backends.
+
+If you'd like to explore a more complex example, take a look at the
+[OpenTelemetry Demo](/docs/demo/), which includes the C++ based
+[Currency Service](/docs/demo/services/currency/).

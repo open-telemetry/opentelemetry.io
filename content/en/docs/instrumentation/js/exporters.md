@@ -1,6 +1,6 @@
 ---
 title: Exporters
-weight: 5
+weight: 50
 ---
 
 In order to visualize and analyze your traces, you will need to export them to a
@@ -19,7 +19,7 @@ Jaeger) you'll want to use an exporter package, such as
 
 ```shell
 npm install --save @opentelemetry/exporter-trace-otlp-proto \
-  opentelemetry/exporter-metrics-otlp-proto
+  @opentelemetry/exporter-metrics-otlp-proto
 ```
 
 Next, configure the exporter to point at an OTLP endpoint. For example you can
@@ -27,28 +27,20 @@ update `instrumentation.ts|js` from the
 [Getting Started](/docs/instrumentation/js/getting-started/nodejs/) like the
 following:
 
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
-{{< tab Typescript >}}
-/*tracing.ts*/
-import * as opentelemetry from "@opentelemetry/sdk-node";
-import {
-  getNodeAutoInstrumentations,
-} from "@opentelemetry/auto-instrumentations-node";
-import {
-  OTLPTraceExporter,
-} from "@opentelemetry/exporter-trace-otlp-proto";
-import {
-  OTLPMetricExporter
-} from "@opentelemetry/exporter-metrics-otlp-proto";
-import {
-  PeriodicExportingMetricReader
-} from "@opentelemetry/sdk-metrics";
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Typescript %}}
+
+```ts
+/*instrumentation.ts*/
+import * as opentelemetry from '@opentelemetry/sdk-node';
+import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
+import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-proto';
+import { OTLPMetricExporter } from '@opentelemetry/exporter-metrics-otlp-proto';
+import { PeriodicExportingMetricReader } from '@opentelemetry/sdk-metrics';
 
 const sdk = new opentelemetry.NodeSDK({
   traceExporter: new OTLPTraceExporter({
     // optional - default url is http://localhost:4318/v1/traces
-    url: "<your-otlp-endpoint>/v1/traces",
+    url: '<your-otlp-endpoint>/v1/traces',
     // optional - collection of custom headers to be sent with each request, empty by default
     headers: {},
   }),
@@ -61,25 +53,28 @@ const sdk = new opentelemetry.NodeSDK({
   instrumentations: [getNodeAutoInstrumentations()],
 });
 sdk.start();
-{{< /tab >}}
+```
 
-{{< tab JavaScript >}}
-/*tracing.js*/
-const opentelemetry = require("@opentelemetry/sdk-node");
+{{% /tab %}} {{% tab JavaScript %}}
+
+```js
+/*instrumentation.js*/
+const opentelemetry = require('@opentelemetry/sdk-node');
 const {
   getNodeAutoInstrumentations,
-} = require("@opentelemetry/auto-instrumentations-node");
+} = require('@opentelemetry/auto-instrumentations-node');
 const {
   OTLPTraceExporter,
-} = require("@opentelemetry/exporter-trace-otlp-proto");
+} = require('@opentelemetry/exporter-trace-otlp-proto');
 const {
-  OTLPMetricExporter
-} = require("@opentelemetry/exporter-metrics-otlp-proto");
+  OTLPMetricExporter,
+} = require('@opentelemetry/exporter-metrics-otlp-proto');
+const { PeriodicExportingMetricReader } = require('@opentelemetry/sdk-metrics');
 
 const sdk = new opentelemetry.NodeSDK({
   traceExporter: new OTLPTraceExporter({
     // optional - default url is http://localhost:4318/v1/traces
-    url: "<your-otlp-endpoint>/v1/traces",
+    url: '<your-otlp-endpoint>/v1/traces',
     // optional - collection of custom headers to be sent with each request, empty by default
     headers: {},
   }),
@@ -93,10 +88,9 @@ const sdk = new opentelemetry.NodeSDK({
   instrumentations: [getNodeAutoInstrumentations()],
 });
 sdk.start();
-{{< /tab >}}
+```
 
-{{< /tabpane>}}
-<!-- prettier-ignore-end -->
+{{% /tab %}} {{< /tabpane >}}
 
 To try out the `OTLPTraceExporter` quickly, you can run Jaeger in a docker
 container:
@@ -123,7 +117,7 @@ docker run -d --name jaeger \
 When you use the OTLP exporter in a browser-based application, you need to note
 that:
 
-1. Using grpc & http/proto for exporting is not supported
+1. Using gRPC for exporting is not supported
 2. [Content Security Policies][] (CSPs) of your website might block your exports
 3. [Cross-Origin Resource Sharing][] (CORS) headers might not allow your exports
    to be sent
@@ -133,15 +127,16 @@ Below you will find instructions to use the right exporter, to configure your
 CSPs and CORS headers and what precautions you have to take when exposing your
 collector.
 
-#### Use OTLP exporter with HTTP/JSON
+#### Use OTLP exporter with HTTP/JSON or HTTP/protobuf
 
-[OpenTelemetry Collector Exporter with grpc][] and [OpenTelemetry Collector
-Exporter with protobuf][] do only work with Node.JS, therefore you are limited
-to use the [OpenTelemetry Collector Exporter with http][].
+[OpenTelemetry Collector Exporter with gRPC][] works only with Node.js,
+therefore you are limited to use the [OpenTelemetry Collector Exporter with
+HTTP/JSON][] or [OpenTelemetry Collector Exporter with HTTP/protobuf][].
 
 Make sure that the receiving end of your exporter (collector or observability
-backend) does support `http/json`, and that you are exporting your data to the
-right endpoint, i.e., make sure that your port is set to `4318`.
+backend) accepts `http/json` if you are using [OpenTelemetry Collector Exporter
+with HTTP/JSON][], and that you are exporting your data to the right endpoint
+with your port set to 4318.
 
 #### Configure CSPs
 
@@ -162,7 +157,7 @@ If your website and collector are hosted at a different origin, your browser
 might block the requests going out to your collector. You need to configure
 special headers for Cross-Origin Resource Sharing (CORS).
 
-The OpenTelemetry collector provides [a feature][] for http-based receivers to
+The OpenTelemetry Collector provides [a feature][] for http-based receivers to
 add the required headers to allow the receiver to accept traces from a web
 browser:
 
@@ -189,11 +184,11 @@ accessible from the public internet, you also have to make your collector
 accessible for everyone.
 
 It is recommended that you do not expose your collector directly, but that you
-put a reverse proxy (nginx, apache, ...) in front of it. The reverse proxy can
-take care of SSL-offloading, setting the right CORS headers, and many other
-features specific to web applications.
+put a reverse proxy (NGINX, Apache HTTP Server, ...) in front of it. The reverse
+proxy can take care of SSL-offloading, setting the right CORS headers, and many
+other features specific to web applications.
 
-Below you will find a configuration for the popular nginx webserver to get you
+Below you will find a configuration for the popular NGINX web server to get you
 started:
 
 ```nginx
@@ -238,26 +233,28 @@ Install the exporter package as a dependency for your application:
 npm install --save @opentelemetry/exporter-zipkin
 ```
 
-Update your opentelemetry configuration to use the exporter and to send data to
-your zipkin backend:
+Update your OpenTelemetry configuration to use the exporter and to send data to
+your Zipkin backend:
 
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
-{{< tab Typescript >}}
-import { ZipkinExporter } from "@opentelemetry/exporter-zipkin";
-import { BatchSpanProcessor } from "@opentelemetry/sdk-trace-base";
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Typescript %}}
 
-provider.addSpanProcessor(new BatchSpanProcessor(new ZipkinExporter()));
-{{< /tab>}}
-
-{{< tab JavaScript >}}
-const { ZipkinExporter } = require("@opentelemetry/exporter-zipkin");
-const { BatchSpanProcessor } = require("@opentelemetry/sdk-trace-base");
+```ts
+import { ZipkinExporter } from '@opentelemetry/exporter-zipkin';
+import { BatchSpanProcessor } from '@opentelemetry/sdk-trace-base';
 
 provider.addSpanProcessor(new BatchSpanProcessor(new ZipkinExporter()));
-{{< /tab >}}
-{{< /tabpane>}}
-<!-- prettier-ignore-end -->
+```
+
+{{% /tab %}} {{% tab JavaScript %}}
+
+```js
+const { ZipkinExporter } = require('@opentelemetry/exporter-zipkin');
+const { BatchSpanProcessor } = require('@opentelemetry/sdk-trace-base');
+
+provider.addSpanProcessor(new BatchSpanProcessor(new ZipkinExporter()));
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 [content security policies]:
   https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/
@@ -265,9 +262,9 @@ provider.addSpanProcessor(new BatchSpanProcessor(new ZipkinExporter()));
   https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 [opentelemetry collector exporter with grpc]:
   https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-grpc
-[opentelemetry collector exporter with protobuf]:
+[opentelemetry collector exporter with http/protobuf]:
   https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-proto
-[opentelemetry collector exporter with http]:
+[opentelemetry collector exporter with http/json]:
   https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-http
 [a feature]:
   https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/confighttp/README.md

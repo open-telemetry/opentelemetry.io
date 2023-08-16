@@ -2,11 +2,11 @@
 title: Kubernetes deployment
 linkTitle: Kubernetes
 aliases: [/docs/demo/kubernetes_deployment]
+cSpell:ignore: loadgen otlphttp
 ---
 
-We provide a
-[OpenTelemetry Demo Helm chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-demo)
-to help deploy the demo to an existing Kubernetes cluster.
+We provide a [OpenTelemetry Demo Helm chart](/docs/kubernetes/helm/demo/) to
+help deploy the demo to an existing Kubernetes cluster.
 
 [Helm](https://helm.sh) must be installed to use the charts. Please refer to
 Helm's [documentation](https://helm.sh/docs/) to get started.
@@ -41,7 +41,8 @@ The following command will install the demo application to your Kubernetes
 cluster.
 
 ```shell
-kubectl apply -f https://raw.githubusercontent.com/open-telemetry/opentelemetry-demo/main/kubernetes/opentelemetry-demo.yaml
+kubectl create namespace otel-demo
+kubectl apply --namespace otel-demo -f https://raw.githubusercontent.com/open-telemetry/opentelemetry-demo/main/kubernetes/opentelemetry-demo.yaml
 ```
 
 > **Note** These manifests are generated from the Helm chart and are provided
@@ -78,7 +79,7 @@ kubectl port-forward svc/my-otel-demo-otelcol 4318:4318
 
 With the frontendproxy and Collector port-forward set up, you can access:
 
-- Webstore: <http://localhost:8080/>
+- Web store: <http://localhost:8080/>
 - Grafana: <http://localhost:8080/grafana/>
 - Feature Flags UI: <http://localhost:8080/feature/>
 - Load Generator UI: <http://localhost:8080/loadgen/>
@@ -138,7 +139,7 @@ With the frontendproxy and Collector exposed, you can access the demo UI at the
 base path for the frontendproxy. Other demo components can be accessed at the
 following sub-paths:
 
-- Webstore: `/` (base)
+- Web store: `/` (base)
 - Grafana: `/grafana`
 - Feature Flags UI: `/feature`
 - Load Generator UI: `/loadgen/` (must include trailing slash)
@@ -146,7 +147,7 @@ following sub-paths:
 
 ## Bring your own backend
 
-Likely you want to use the Webstore as a demo application for an observability
+Likely you want to use the web store as a demo application for an observability
 backend you already have (e.g. an existing instance of Jaeger, Zipkin, or one of
 the [vendor of your choice](/ecosystem/vendors/).
 

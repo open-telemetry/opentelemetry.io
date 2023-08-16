@@ -3,12 +3,13 @@ title: General SDK Configuration
 description: >-
   General-purpose environment variables for configuring an OpenTelemetry SDK.
 weight: 1
+cSpell:ignore: ottrace
 ---
 
 ## `OTEL_SERVICE_NAME`
 
 Sets the value of the
-[`service.name`](/docs/reference/specification/resource/semantic_conventions/#service)
+[`service.name`](/docs/specs/otel/resource/semantic_conventions/#service)
 resource attribute.
 
 **Default value:** `"unknown_service"`
@@ -23,13 +24,13 @@ If `service.name` is also provided in `OTEL_RESOURCE_ATTRIBUTES`, then
 ## `OTEL_RESOURCE_ATTRIBUTES`
 
 Key-value pairs to be used as resource attributes. See
-[Resource SDK](/docs/reference/specification/resource/sdk#specifying-resource-information-via-an-environment-variable)
+[Resource SDK](/docs/specs/otel/resource/sdk#specifying-resource-information-via-an-environment-variable)
 for more details.
 
 **Default value:** Empty.
 
 See
-[Resource semantic conventions](/docs/reference/specification/resource/semantic_conventions/#semantic-attributes-with-sdk-provided-default-value)
+[Resource semantic conventions](/docs/specs/otel/resource/semantic_conventions/#semantic-attributes-with-sdk-provided-default-value)
 for semantic conventions to follow for common resource types.
 
 **Example:**
@@ -88,7 +89,7 @@ be set as follows:
     `"endpoint=http://localhost:14250,pollingIntervalMs=5000,initialSamplingRate=0.25"`
   - `endpoint`: the endpoint in form of `scheme://host:port` of gRPC server that
     serves the sampling strategy for the service
-    ([sampling.proto](https://github.com/jaegertracing/jaeger-idl/blob/master/proto/api_v2/sampling.proto)).
+    ([sampling.proto](https://github.com/jaegertracing/jaeger-idl/blob/main/proto/api_v2/sampling.proto)).
   - `pollingIntervalMs`: in milliseconds indicating how often the sampler will
     poll the backend for updates to sampling strategy.
   - `initialSamplingRate`: in the [0..1] range, which is used as the sampling
@@ -111,10 +112,9 @@ Accepted values for `OTEL_PROPAGATORS` are:
 
 - `"tracecontext"`: [W3C Trace Context](https://www.w3.org/TR/trace-context/)
 - `"baggage"`: [W3C Baggage](https://www.w3.org/TR/baggage/)
-- `"b3"`:
-  [B3 Single](/docs/reference/specification/context/api-propagators#configuration)
+- `"b3"`: [B3 Single](/docs/specs/otel/context/api-propagators#configuration)
 - `"b3multi"`:
-  [B3 Multi](/docs/reference/specification/context/api-propagators#configuration)
+  [B3 Multi](/docs/specs/otel/context/api-propagators#configuration)
 - `"jaeger"`:
   [Jaeger](https://www.jaegertracing.io/docs/1.21/client-libraries/#propagation-format)
 - `"xray"`:
@@ -137,7 +137,7 @@ Specifies which exporter is used for traces.
 
 Accepted values for are:
 
-- `"otlp"`: [OTLP][spec-otlp]
+- `"otlp"`: [OTLP][]
 - `"jaeger"`: export in Jaeger data model
 - `"zipkin"`: [Zipkin](https://zipkin.io/zipkin-api/)
 - `"none"`: No automatically configured exporter for traces.
@@ -154,9 +154,9 @@ Specifies which exporter is used for metrics.
 
 Accepted values for `OTEL_METRICS_EXPORTER` are:
 
-- `"otlp"`: [OTLP][spec-otlp]
+- `"otlp"`: [OTLP][]
 - `"prometheus"`:
-  [Prometheus](https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exposition_formats.md)
+  [Prometheus](https://github.com/prometheus/docs/blob/main/content/docs/instrumenting/exposition_formats.md)
 - `"none"`: No automatically configured exporter for metrics.
 
 ## `OTEL_LOGS_EXPORTER`
@@ -171,7 +171,7 @@ Specifies which exporter is used for logs.
 
 Accepted values for `OTEL_LOGS_EXPORTER` are:
 
-- `"otlp"`: [OTLP][spec-otlp]
+- `"otlp"`: [OTLP][]
 - `"none"`: No automatically configured exporter for logs.
 
-[spec-otlp]: /docs/reference/specification/protocol/otlp
+[otlp]: /docs/specs/otlp/

@@ -2,12 +2,18 @@
 	path = themes/docsy
 	url = https://github.com/cncf/docsy.git
 	branch = opentelemetry.io
-[submodule "content-modules/opentelemetry-go"]
-	path = content-modules/opentelemetry-go
-	url = https://github.com/open-telemetry/opentelemetry-go
 [submodule "content-modules/opentelemetry-specification"]
 	path = content-modules/opentelemetry-specification
 	url = https://github.com/open-telemetry/opentelemetry-specification.git
 [submodule "content-modules/community"]
 	path = content-modules/community
 	url = https://github.com/open-telemetry/community
+[submodule "content-modules/opentelemetry-proto"]
+	path = content-modules/opentelemetry-proto
+	url = https://github.com/open-telemetry/opentelemetry-proto
+[submodule "content-modules/semantic-conventions"]
+	path = content-modules/semantic-conventions
+	url = https://github.com/open-telemetry/semantic-conventions
+[submodule "content-modules/opamp-spec"]
+	path = content-modules/opamp-spec
+	url = https://github.com/open-telemetry/opamp-spec

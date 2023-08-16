@@ -2,6 +2,7 @@
 title: Architecture Requirements
 linkTitle: Architecture
 aliases: [/docs/demo/requirements/architecture_requirements]
+cSpell:ignore: dockerstatsreceiver
 ---
 
 ## Summary
@@ -42,7 +43,7 @@ HTTP and runs on Kubernetes (or Docker, locally).
 Each service shall be instrumented with OpenTelemetry for traces, metrics, and
 logs (as applicable/available).
 
-Each service should be 'swappable' with a service that performs the same
+Each service should be interchangeable with a service that performs the same
 business logic, implementing the same gRPC endpoints, but written in a different
 language/implementation. For the initial implementation of the demo, we should
 focus on adding as many missing languages as possible by swapping out existing
@@ -83,12 +84,12 @@ service. The catalog of feature flags should be stored in a Database.
 All services should run on Kubernetes. The OpenTelemetry Collector should be
 deployed via the OpenTelemetry Operator, and run in a sidecar + gateway mode.
 Telemetry from each pod should be routed from agents to a gateway, and the
-gateway should export telemetry by default to an open-source trace + metrics
+gateway should export telemetry by default to an open source trace + metrics
 visualizer.
 
-For local/non-kubernetes deployment, the Collector should be deployed via
+For local/non-Kubernetes deployment, the Collector should be deployed via
 compose file and monitor not only traces/metrics from applications, but also the
-docker containers via dockerstatsreceiver.
+docker containers via `dockerstatsreceiver`.
 
 A design goal of this project is to include a CI/CD pipeline for self-deployment
 into cloud environments. This could be skipped for local development.

@@ -4,6 +4,8 @@ linkTitle: OTel Demo App on Nomad
 date: 2022-12-12
 author: >-
   [Adriana Villela](https://github.com/avillela) (Lightstep)
+# prettier-ignore
+cSpell:ignore: Aoqui Daniela entrypoints ffspostgres hashi hashiqube jobspec jobspecs loadgenerator lookin Luiz macbook mozy qube Riaan servian shoutout
 ---
 
 Y’all… I’m so excited, because I finally got to work on an item on my tech
@@ -39,15 +41,16 @@ In order to run the example in this tutorial, you’ll need the following:
 - [Docker](https://docker.com) (version 20.10.21 at the time of this writing)
 - [Vagrant](https://vagrantup.com) (version 2.3.1 at the time of this writing)
 
-### Tutorial Repos
+### Tutorial Repositories
 
-Below are the repos that we’ll be using for today’s tutorial:
+Below are the repositories that we’ll be using for today’s tutorial:
 
-- My modified [HashiQube Repo](https://github.com/avillela/hashiqube) (fork of
-  [servian/hashiqube](https://github.com/servian/hashiqube)). If you’re curious,
-  you can see what modifications I’ve made
+- My modified [HashiQube Repository](https://github.com/avillela/hashiqube)
+  (fork of [servian/hashiqube](https://github.com/servian/hashiqube)). If you’re
+  curious, you can see what modifications I’ve made
   [here](https://github.com/avillela/hashiqube).
-- My [Nomad Conversions](https://github.com/avillela/nomad-conversions) repo
+- My [Nomad Conversions](https://github.com/avillela/nomad-conversions)
+  repository
 
 ### HashiQube Setup
 
@@ -56,7 +59,7 @@ Before you start, just a friendly reminder that HashiQube by default runs
 on Docker. In addition, we’ll be deploying 21 job specs to Nomad. This means
 that we’ll need a decent amount of CPU and RAM, so please make sure that you
 have enough resources allocated in your Docker desktop. For reference, I’m
-running an M1 Macbook Pro with 8 cores and 32 GB RAM. My Docker Desktop Resource
+running an M1 MacBook Pro with 8 cores and 32 GB RAM. My Docker Desktop Resource
 settings are as follows:
 
 - **CPUs:** 3
@@ -80,7 +83,7 @@ which we access as subdomains of localhost. In order ensure that we can access
 our Traefik-exposed services (and also the Traefik dashboard itself, you’ll need
 to add the following entries to `/etc/hosts` on your host machine:
 
-```
+```properties
 127.0.0.1   traefik.localhost
 127.0.0.1   otel-demo.localhost
 ```
@@ -122,7 +125,7 @@ vagrant ssh
 
 We’re finally ready to deploy the OTel Demo App!
 
-First, let’s clone the repo, and go to our working directory:
+First, let’s clone the repository, and go to our working directory:
 
 ```shell
 git clone https://github.com/avillela/nomad-conversions.git
@@ -186,7 +189,7 @@ Since we’re running the jobs in
 Nomad won’t wait to start the next job until the current one has deployed
 successfully. This means that your output will look something like this:
 
-```
+```yaml
 Job registration successful
 Evaluation ID: d3eaa396-954e-241f-148d-6720c35f34bf
 Job registration successful
@@ -226,13 +229,13 @@ of the services:
 ![Screen capture of Consul service health. All services healthy.](consul-service-health.png 'Screen capture of Consul service health. All services healthy.')
 
 By default, unhealthy services show up at the top, with a red “x” next to them.
-Since we don’t see any nasty red “x”s in the above screen shot, we know that our
+Since we don’t see any nasty red “x”s in the above screenshot, we know that our
 services are lookin’ good!
 
 #### 5- Access the OTel Demo App
 
 The OTel Demo App uses [Envoy](https://www.envoyproxy.io) to expose a number of
-front-end services: the Webstore, [Jaeger](https://www.jaegertracing.io/),
+front-end services: the web store, [Jaeger](https://www.jaegertracing.io/),
 [Grafana](https://grafana.com/), Load Generator, and Feature Flag. These are all
 managed by the
 [frontendproxy](https://github.com/avillela/nomad-conversions/blob/main/otel-demo-app/jobspec/frontendproxy.nomad)
@@ -255,9 +258,9 @@ Note that the `Host` is set to `otel-demo.localhost`.
 
 The services are accessed via the URLs below.
 
-**Webstore:** <http://otel-demo.localhost/>
+**Web store:** <http://otel-demo.localhost/>
 
-![Screen capture of the Demo App Webstore UI](otel-demo-app-ui.jpg 'Screen capture of the Demo App Webstore UI')
+![Screen capture of the Demo App Web Store UI](otel-demo-app-ui.jpg 'Screen capture of the Demo App Web Store UI')
 
 Go ahead and explore the amazing selection of telescopes and accessories, and
 buy a few. 😉🔭
@@ -336,7 +339,7 @@ highlights:
 - We saw the OTel Demo App in action, by accessing the following services
   exposed through the
   [frontendproxy](https://github.com/avillela/nomad-conversions/blob/cefe9b9b12d84fb47be8aa5fc67b1b221b7b599b/otel-demo-app/jobspec/frontendproxy.nomad):
-  [Webstore](http://otel-demo.localhost/),
+  [Web store](http://otel-demo.localhost/),
   [Grafana](http://otel-demo.localhost/grafana/),
   [Jaeger](http://otel-demo.localhost/jaeger/ui),
   [Feature Flags UI](http://otel-demo.localhost/feature/),and the

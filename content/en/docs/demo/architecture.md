@@ -2,6 +2,9 @@
 title: Demo Architecture
 linkTitle: Architecture
 aliases: [/docs/demo/current_architecture]
+body_class: otel-mermaid-max-width
+# prettier-ignore
+cSpell:ignore: cppsvc dotnetsvc erlangsvc featureflagstore golangsvc javascriptsvc javasvc kotlinsvc loadgenerator phpsvc pythonsvc rubysvc rustsvc tsdb typescriptsvc
 ---
 
 **OpenTelemetry Demo** is composed of microservices written in different
@@ -34,9 +37,11 @@ queue[(queue<br/>&#40Kafka&#41)]
 Internet -->|HTTP| frontendproxy
 frontendproxy -->|HTTP| frontend
 frontendproxy -->|HTTP| featureflagservice
-loadgenerator -->|HTTP| frontend
+loadgenerator -->|HTTP| frontendproxy
 
 accountingservice -->|TCP| queue
+
+cartservice --->|gRPC| featureflagservice
 
 checkoutservice --->|gRPC| cartservice --> cache
 checkoutservice --->|gRPC| productcatalogservice
@@ -44,7 +49,7 @@ checkoutservice --->|gRPC| currencyservice
 checkoutservice --->|HTTP| emailservice
 checkoutservice --->|gRPC| paymentservice
 checkoutservice -->|gRPC| shippingservice
-checkoutservice ---->|TCP| queue
+checkoutservice --->|TCP| queue
 
 frontend -->|gRPC| adservice
 frontend -->|gRPC| cartservice
@@ -56,7 +61,7 @@ frontend -->|gRPC| shippingservice -->|HTTP| quoteservice
 
 frauddetectionservice -->|TCP| queue
 
-adservice -->|gRPC| featureflagservice
+adservice --->|gRPC| featureflagservice
 
 productcatalogservice -->|gRPC| featureflagservice
 
@@ -127,7 +132,7 @@ subgraph tdf[Telemetry Data Flow]
     subgraph subgraph_padding [ ]
         style subgraph_padding fill:none,stroke:none;
         %% padding to stop the titles clashing
-        subgraph od[Open Telemetry Demo]
+        subgraph od[OpenTelemetry Demo]
         ms(Microservice)
         end
 
@@ -140,17 +145,17 @@ subgraph tdf[Telemetry Data Flow]
             oc-http[/"OTLP Receiver<br/>listening on <br/>http://localhost:4318/<br/>https://localhost:4318/"/]
             oc-proc(Processors)
             oc-prom[/"Prometheus Exporter<br/>listening on<br/>http://localhost:9464/"/]
-            oc-jag[/"Jaeger Exporter"/]
+            oc-otlp[/"OTLP Exporter"/]
 
             oc-grpc --> oc-proc
             oc-http --> oc-proc
 
             oc-proc --> oc-prom
-            oc-proc --> oc-jag
+            oc-proc --> oc-otlp
         end
 
         oc-prom -->|"http://localhost:9464/metrics"| pr-sc
-        oc-jag -->|gRPC| ja-col
+        oc-otlp -->|gRPC| ja-col
 
         subgraph pr[Prometheus]
             style pr fill:#e75128,color:black;

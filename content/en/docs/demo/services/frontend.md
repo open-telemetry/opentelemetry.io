@@ -1,5 +1,6 @@
 ---
 title: Frontend
+cSpell:ignore: typeof
 ---
 
 The frontend is responsible to provide a UI for users, as well as an API
@@ -12,12 +13,12 @@ leveraged by the UI or other clients. The application is based on
 
 It is recommended to use a Node required module when starting your NodeJS
 application to initialize the SDK and auto-instrumentation. When initializing
-the OpenTelemetry NodeJS SDK, you optionally specify which auto-instrumentation
+the OpenTelemetry Node.js SDK, you optionally specify which auto-instrumentation
 libraries to leverage, or make use of the `getNodeAutoInstrumentations()`
 function which includes most popular frameworks. The
 `utils/telemetry/Instrumentation.js` file contains all code required to
 initialize the SDK and auto-instrumentation based on standard
-[OpenTelemetry environment variables](/docs/reference/specification/sdk-environment-variables/)
+[OpenTelemetry environment variables](/docs/specs/otel/configuration/sdk-environment-variables/)
 for OTLP export, resource attributes, and service name.
 
 ```javascript
@@ -28,6 +29,10 @@ const {
 const {
   OTLPTraceExporter,
 } = require('@opentelemetry/exporter-trace-otlp-grpc');
+const {
+  OTLPMetricExporter,
+} = require('@opentelemetry/exporter-metrics-otlp-grpc');
+const { PeriodicExportingMetricReader } = require('@opentelemetry/sdk-metrics');
 const {
   alibabaCloudEcsDetector,
 } = require('@opentelemetry/resource-detector-alibaba-cloud');
@@ -48,7 +53,17 @@ const {
 
 const sdk = new opentelemetry.NodeSDK({
   traceExporter: new OTLPTraceExporter(),
-  instrumentations: [getNodeAutoInstrumentations()],
+  instrumentations: [
+    getNodeAutoInstrumentations({
+      // only instrument fs if it is part of another trace
+      '@opentelemetry/instrumentation-fs': {
+        requireParentSpan: true,
+      },
+    }),
+  ],
+  metricReader: new PeriodicExportingMetricReader({
+    exporter: new OTLPMetricExporter(),
+  }),
   resourceDetectors: [
     containerDetector,
     envDetector,
@@ -70,9 +85,9 @@ This can be done in the `scripts.start` section of `package.json` and starting
 the application using `npm start`.
 
 ```json
-  "scripts": {
-    "start": "node --require ./Instrumentation.js server.js",
-  },
+"scripts": {
+  "start": "node --require ./Instrumentation.js server.js",
+},
 ```
 
 ## Traces
@@ -131,10 +146,10 @@ import FrontendTracer from '../utils/telemetry/FrontendTracer';
 if (typeof window !== 'undefined') FrontendTracer();
 ```
 
-The `utils/telemetry/FrontendTracer.ts` file contains code to intialize a
+The `utils/telemetry/FrontendTracer.ts` file contains code to initialize a
 TracerProvider, establish an OTLP export, register trace context propagators,
 and register web specific auto-instrumentation libraries. Since the browser will
-send data to an OpenTelemetry collector that will likely be on a separate
+send data to an OpenTelemetry Collector that will likely be on a separate
 domain, CORS headers are also setup accordingly.
 
 As part of the changes to carry over the `synthetic_request` attribute flag for
@@ -218,6 +233,6 @@ To determine if a Baggage item is set, you can leverage the `propagation` API to
 parse the Baggage header, and leverage the `baggage` API to get or set entries.
 
 ```typescript
-    const baggage = propagation.getBaggage(context.active());
-    if (baggage?.getEntry("synthetic_request")?.value == "true") {...}
+const baggage = propagation.getBaggage(context.active());
+if (baggage?.getEntry("synthetic_request")?.value == "true") {...}
 ```

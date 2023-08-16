@@ -1,10 +1,9 @@
 ---
 title: Collector
 description: Vendor-agnostic way to receive, process and export telemetry data.
-spelling: cSpell:ignore Otel
 aliases: [/docs/collector/about]
 cascade:
-  collectorVersion: 0.75.0
+  collectorVersion: 0.83.0
 weight: 10
 ---
 
@@ -15,8 +14,8 @@ weight: 10
 The OpenTelemetry Collector offers a vendor-agnostic implementation of how to
 receive, process and export telemetry data. It removes the need to run, operate,
 and maintain multiple agents/collectors. This works with improved scalability
-and supports open-source observability data formats (e.g. Jaeger, Prometheus,
-Fluent Bit, etc.) sending to one or more open-source or commercial back-ends.
+and supports open source observability data formats (e.g. Jaeger, Prometheus,
+Fluent Bit, etc.) sending to one or more open source or commercial back-ends.
 The local Collector agent is the default location to which instrumentation
 libraries export their telemetry data.
 
@@ -62,10 +61,10 @@ currently have mixed [stability levels][].
 to ensure that every component has its stability documented. To track the
 progress of this effort, see `opentelemetry-collector-contrib` [issue #10116][].
 
-{{% latest_release "collector-releases" /%}}
+{{% docs/latest-release collector-releases /%}}
 
 [issue #10116]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/10116
-[mixed]: /docs/reference/specification/document-status/#mixed
+[mixed]: /docs/specs/otel/document-status/#mixed
 [stability levels]:
   https://github.com/open-telemetry/opentelemetry-collector#stability-levels

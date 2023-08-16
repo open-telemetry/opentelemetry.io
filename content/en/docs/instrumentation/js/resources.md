@@ -1,6 +1,7 @@
 ---
 title: Resources
-weight: 6
+weight: 70
+cSpell:ignore: myhost SIGINT uuidgen WORKDIR
 ---
 
 A [resource][] represents the entity producing telemetry as resource attributes.
@@ -14,7 +15,7 @@ indicate latency in your system, you can narrow it down to a specific container,
 pod, or Kubernetes deployment.
 
 Below you will find some introductions on how to set up resource detection with
-the Node.JS SDK.
+the Node.js SDK.
 
 ## Setup
 
@@ -23,7 +24,7 @@ the files `package.json`, `app.js` and `tracing.js`.
 
 ## Process & Environment Resource Detection
 
-Out of the box, the Node.JS SDK detects [process and process runtime
+Out of the box, the Node.js SDK detects [process and process runtime
 resources][] and takes attributes from the environment variable
 `OTEL_RESOURCE_ATTRIBUTES`. You can verify what it detects by turning on
 diagnostic logging in `tracing.js`:
@@ -64,12 +65,14 @@ In the above example, the SDK detected the process and also added the
 
 Below you will find instructions to get resources detected automatically for
 you. However, you might run into the situation that no detector exists for the
-resource you need. In that case you can use the environment
-`OTEL_RESOURCE_ATTRIBUTES` to inject whatever you need. For example the
-following script adds [Service][], [Host][] and [OS][] resource attributes:
+resource you need. In that case, use the environment variable
+`OTEL_RESOURCE_ATTRIBUTES` to inject whatever you need. Additionally, you can
+use the environment variable `OTEL_SERVICE_NAME` to set value of the
+`service.name` resource attribute. For example, the following script adds
+[Service][], [Host][] and [OS][] resource attributes:
 
 ```console
-$ env OTEL_RESOURCE_ATTRIBUTES="service.name=app.js,service.namespace=tutorial,service.version=1.0,service.instance.id=`uuidgen`,host.name=${HOSTNAME:},host.type=`uname -m`,os.name=`uname -s`,os.version=`uname -r`" \
+$ env OTEL_SERVICE_NAME="app.js" OTEL_RESOURCE_ATTRIBUTES="service.namespace=tutorial,service.version=1.0,service.instance.id=`uuidgen`,host.name=${HOSTNAME},host.type=`uname -m`,os.name=`uname -s`,os.version=`uname -r`" \
   node --require ./tracing.js app.js
 ...
 EnvDetector found resource. Resource {
@@ -138,7 +141,7 @@ process.on('SIGINT', function () {
 });
 ```
 
-To get the id of your container detected automatically for you, install the
+To get the ID of your container detected automatically for you, install the
 following additional dependency:
 
 ```sh
@@ -253,14 +256,13 @@ to get details about your [Cloud] environment or [Deployment][]. You will find a
 list
 [here](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node).
 
-[resource]: /docs/reference/specification/resource/sdk/
+[resource]: /docs/specs/otel/resource/sdk/
 [getting started - node.js]: /docs/instrumentation/js/getting-started/nodejs/
 [process and process runtime resources]:
-  /docs/reference/specification/resource/semantic_conventions/process/
-[host]: /docs/reference/specification/resource/semantic_conventions/host/
-[otlp exporter]: /docs/instrumentation/js/exporters/#otlp-endpoint
-[cloud]: /docs/reference/specification/resource/semantic_conventions/cloud/
+  /docs/specs/otel/resource/semantic_conventions/process/
+[host]: /docs/specs/otel/resource/semantic_conventions/host/
+[cloud]: /docs/specs/otel/resource/semantic_conventions/cloud/
 [deployment]:
-  /docs/reference/specification/resource/semantic_conventions/deployment_environment/
-[service]: /docs/reference/specification/resource/semantic_conventions/#service
-[os]: /docs/reference/specification/resource/semantic_conventions/os/
+  /docs/specs/otel/resource/semantic_conventions/deployment_environment/
+[service]: /docs/specs/otel/resource/semantic_conventions/#service
+[os]: /docs/specs/otel/resource/semantic_conventions/os/

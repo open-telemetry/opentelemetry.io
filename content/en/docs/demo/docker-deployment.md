@@ -2,6 +2,7 @@
 title: Docker deployment
 linkTitle: Docker
 aliases: [/docs/demo/docker_deployment]
+cSpell:ignore: otelcollector otlphttp
 ---
 
 ## Prerequisites
@@ -13,7 +14,7 @@ aliases: [/docs/demo/docker_deployment]
 
 ## Get and run the demo
 
-1.  Clone the Webstore Demo repository:
+1.  Clone the Demo repository:
 
     ```shell
     git clone https://github.com/open-telemetry/opentelemetry-demo.git
@@ -25,7 +26,7 @@ aliases: [/docs/demo/docker_deployment]
     cd opentelemetry-demo/
     ```
 
-3.  Run docker compose to start the demo:
+3.  Run docker compose[^1] to start the demo:
 
     ```shell
     docker compose up --no-build
@@ -38,14 +39,14 @@ aliases: [/docs/demo/docker_deployment]
     >   source. Removing the `--no-build` command line option will rebuild all
     >   images from source. It may take more than 20 minutes to build if the
     >   flag is omitted.
-    > - If you're running on Apple Silicon, run `docker compose build` in order
-    >   to create local images vs. pulling them from the repository.
+    > - If you're running on Apple Silicon, run `docker compose build`[^1] in
+    >   order to create local images vs. pulling them from the repository.
 
-## Verify the Webstore and Telemetry
+## Verify the web store and Telemetry
 
 Once the images are built and containers are started you can access:
 
-- Webstore: <http://localhost:8080/>
+- Web store: <http://localhost:8080/>
 - Grafana: <http://localhost:8080/grafana/>
 - Feature Flags UI: <http://localhost:8080/feature/>
 - Load Generator UI: <http://localhost:8080/loadgen/>
@@ -53,7 +54,7 @@ Once the images are built and containers are started you can access:
 
 ## Bring your own backend
 
-Likely you want to use the Webstore as a demo application for an observability
+Likely you want to use the web store as a demo application for an observability
 backend you already have (e.g., an existing instance of Jaeger, Zipkin, or one
 of the [vendor of your choice](/ecosystem/vendors/).
 
@@ -94,5 +95,7 @@ different exporters, you may find them and their documentation available at
 [opentelemetry-collector-contrib/exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter).
 
 After updating the `otelcol-config-extras.yml`, start the demo by running
-`docker compose up`. After a while, you should see the traces flowing into your
-backend as well.
+`docker compose up`[^1]. After a while, you should see the traces flowing into
+your backend as well.
+
+[^1]: {{% _param notes.docker-compose-v2 %}}

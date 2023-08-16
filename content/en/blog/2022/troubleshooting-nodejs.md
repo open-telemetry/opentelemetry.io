@@ -4,6 +4,7 @@ linkTitle: TroublesShooting Node.js Tracing Issues
 date: 2022-02-22
 canonical_url: https://www.aspecto.io/blog/checklist-for-troubleshooting-opentelemetry-nodejs-tracing-issues
 author: '[Amir Blum](https://github.com/blumamir) (Aspecto)'
+cSpell:ignore: bootcamp Parentfor Preconfigured
 ---
 
 I’ll try to make this one short and to the point. You are probably here because
@@ -45,7 +46,7 @@ Pro tip: You can use the `OTEL_LOG_LEVEL` environment variable to set
 
 Many users choose to use auto Instrumentation libraries, which automatically
 create spans for interesting operations in popular and widely used packages (DB
-drivers, http frameworks, cloud services SDKs, etc)
+drivers, HTTP frameworks, cloud services SDKs, etc)
 
 Some initialization patterns and configuration options can cause your service to
 fail to create spans, to begin with.
@@ -67,17 +68,17 @@ trace
 
 To use an auto instrumentation library in your service, you’ll need to:
 
-1.  Install it: `npm install @opentelemetry/instrumentation-foo`. You can search
-    the OpenTelemetry Registry to find available instrumentations
-2.  Create the instrumentation object: `new FooInstrumentation(config)`
-3.  Make sure instrumentation is enabled: call `registerInstrumentations(...)`
-4.  Verify you are using the right TracerProvider
+1. Install it: `npm install @opentelemetry/instrumentation-foo`. You can search
+   the OpenTelemetry Registry to find available instrumentations
+2. Create the instrumentation object: `new FooInstrumentation(config)`
+3. Make sure instrumentation is enabled: call `registerInstrumentations(...)`
+4. Verify you are using the right TracerProvider
 
 For most users, the following should cover it:
 
 ```js
-// First run `npm install @opentelemetry/instrumentation-foo @opentelemetry/instrumentation-bar
-// Replace foo and bar with the actual packages you need to instrument (http/mysql/redis etc)
+// First run: npm install @opentelemetry/instrumentation-foo @opentelemetry/instrumentation-bar
+// Replace foo and bar with the actual packages you need to instrument (HTTP/mySQL/Redis etc)
 import { FooInstrumentation } from '@opentelemetry/instrumentation-foo';
 import { BarInstrumentation } from '@opentelemetry/instrumentation-bar';
 import { registerInstrumentations } from '@opentelemetry/instrumentation';
@@ -87,7 +88,7 @@ registerInstrumentations({
 });
 ```
 
-For advanced users who choose to use the low-level api instead of calling
+For advanced users who choose to use the low-level API instead of calling
 `registerInstrumentations`, make sure your instrumentation is set to use the
 right tracer provider and that you call `enable()` if appropriate.
 
@@ -132,7 +133,7 @@ If missing, chances are your auto instrumentation library is not being applied.
 ### Library Configuration
 
 Some auto instrumentation libraries include a custom configuration that controls
-when **instrumentation is skipped**. For example, http instrumentation has
+when **instrumentation is skipped**. For example, HTTP instrumentation has
 options such as `ignoreIncomingRequestHook` and `requireParentforOutgoingSpans`
 
 In specific cases, some libraries are **not instrumenting by default**, and you
@@ -151,9 +152,9 @@ might not be supported and thus no spans will be created.
 
 Consult the documentation of the library you are using to verify if your version
 is compatible. This data is usually found in the README for the instrumentation,
-for example see the [redis README][].
+for example see the [Redis README][].
 
-[redis readme]:
+[Redis readme]:
   https://www.npmjs.com/package/@opentelemetry/instrumentation-redis
 
 ## No Recording and Non-Sampled Spans
@@ -274,14 +275,14 @@ A a few common configuration errors are covered in the following subsections.
 - **Format** — OTLP supports `http/json`, `http/proto`, and `grpc` formats. You
   need to choose an exporter package that matches the format your OTLP collector
   support.
-- **Path** — If you set http collector endpoint (via config in code or
+- **Path** — If you set HTTP collector endpoint (via config in code or
   environment variables), **you must also set the path**:
-  “http://my-collector-host:4318/v1/traces”. If you forget the path, the export
+  `http://my-collector-host:4318/v1/traces`. If you forget the path, the export
   will fail. In gRPC, you must not add path: “grpc://localhost:4317”. This can
   be a bit confusing to get right at first.
 - **Secure Connection** — Check if your collector expects a secure or insecure
-  connection. In http, this is determined by the URL scheme (`http:` /
-  `https:`). In grpc, the scheme has no effect and the connection security is
+  connection. In HTTP, this is determined by the URL scheme (`http:` /
+  `https:`). In gRPC, the scheme has no effect and the connection security is
   set exclusively by the credentials parameter: `grpc.credentials.createSsl()`,
   `grpc.credentials.createInsecure()`, etc. The default security for both HTTP
   and gRPC is **Insecure**.
@@ -366,13 +367,13 @@ channels:
 
 ### Resources
 
-- [Opentelemetry-js GitHub repo](https://github.com/open-telemetry/opentelemetry-js)
+- [Opentelemetry-js GitHub repository](https://github.com/open-telemetry/opentelemetry-js)
 - [The OpenTelemetry Bootcamp](https://www.aspecto.io/opentelemetry-bootcamp/)
-- [Opentelemetry docs](/docs/)
+- [OpenTelemetry docs](/docs/)
 
 ### Should I Use a Vendor?
 
-Another alternative is to use a vendor’s distribution of opentelemetry. These
+Another alternative is to use a vendor’s distribution of OpenTelemetry. These
 distributions can save you time and effort:
 
 - Technical support

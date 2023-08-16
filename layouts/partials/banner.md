@@ -2,7 +2,7 @@
 
 <div class="o-banner">
 
-Join us at [KubeCon + CloudNativeCon EU, April 18-21](/blog/2023/kubecon-eu/)!
+[Discover what's new](/blog/2023/otel-in-focus-06/) in our latest releases!
 
 </div>
 {{ end -}}

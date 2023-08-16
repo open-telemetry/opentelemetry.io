@@ -1,9 +1,11 @@
 ---
 title: Manual Instrumentation
 linkTitle: Manual
-weight: 5
-description: Manual instrumentation for opentelemetry-swift
+weight: 30
+description: Manual instrumentation for OpenTelemetry Swift
 ---
+
+{{% docs/instrumentation/manual-intro %}}
 
 ## Setup
 
@@ -39,13 +41,11 @@ OpenTelemetry.registerTracerProvider(tracerProvider: TracerProviderBuilder()
                                                       .add(spanProcessor:SimpleSpanProcessor(spanExporter: traceExporter))
                                                       .with(resource: Resource())
                                                       .build())
-
 ```
 
 A similar pattern is used for the OtlpMetricExporter:
 
 ```swift
-
 // otlpConfiguration & grpcChannel can be reused
 OpenTelemetry.registerMeterProvider(meterProvider: MeterProviderBuilder()
             .with(processor: MetricProcessorSdk())
@@ -57,7 +57,9 @@ OpenTelemetry.registerMeterProvider(meterProvider: MeterProviderBuilder()
 After configuring the MeterProvider & TracerProvider all subsequently
 initialized instrumentation will be exporting using this OTLP exporter.
 
-## Acquiring a Tracer
+## Traces
+
+### Acquiring a Tracer
 
 To do tracing, you will need a tracer. A tracer is acquired through the tracer
 provider and is responsible for creating spans. The OpenTelemetry manages the
@@ -104,7 +106,6 @@ let childSpan = someTracer.spanBuilder(spanName: "child span")
   // do work
   childSpan.end()
 }
-
 ```
 
 The parent-child relationship will be automatically linked if `activeSpan` is
@@ -125,7 +126,6 @@ func child() {
   // do work
   childSpan.end()
 }
-
 ```
 
 ### Getting the Current Span
@@ -134,17 +134,17 @@ Sometimes it's useful to do something with the current/active span. Here's how
 to access the current span from an arbitrary point in your code.
 
 ```swift
-  let currentSpan = OpenTelemetry.instance.contextProvider.activeSpan
+let currentSpan = OpenTelemetry.instance.contextProvider.activeSpan
 ```
 
 ### Span Attributes
 
 Spans can also be annotated with additional attributes. All spans will be
 automatically annotated with the `Resource` attributes attached to the tracer
-provider. The Opentelemetry-swift sdk already provides instrumentation of common
+provider. The Opentelemetry-swift SDK already provides instrumentation of common
 attributes in the `SDKResourceExtension` instrumentation. In this example a span
 for a network request capturing details about that request using existing
-[semantic conventions](/docs/reference/specification/trace/semantic_conventions/).
+[semantic conventions](/docs/specs/otel/trace/semantic_conventions/).
 
 ```swift
 let span = tracer.spanBuilder("/resource/path").startSpan()
@@ -159,11 +159,11 @@ Span, typically used to denote a meaningful, singular point in time during the
 Span’s duration.
 
 ```swift
-            let attributes = [
-                "key" : AttributeValue.string("value"),
-                "result" : AttributeValue.int(100)
-            ]
-            span.addEvent(name: "computation complete", attributes: attributes)
+let attributes = [
+    "key" : AttributeValue.string("value"),
+    "result" : AttributeValue.int(100)
+]
+span.addEvent(name: "computation complete", attributes: attributes)
 ```
 
 ### Setting Span Status
@@ -209,6 +209,16 @@ do {
 span.end()
 ```
 
+## Metrics
+
+The documentation for the metrics API & SDK is missing, you can help make it
+available by
+[editing this page](https://github.com/open-telemetry/opentelemetry.io/edit/main/content/en/docs/instrumentation/swift/manual.md).
+
+## Logs
+
+The logs API & SDK are currently under development.
+
 ## SDK Configuration
 
 ### Processors
@@ -218,8 +228,8 @@ Different Span processors are offered by OpenTelemetry-swift. The
 the `BatchSpanProcessor` batches them and sends them in bulk. Multiple Span
 processors can be configured to be active at the same time using the
 `MultiSpanProcessor`. For example, you may create a `SimpleSpanProcessor` that
-exports to a logger, and a `BatchSpanProcesssor` that exports to a
-OpenTelementry-Collector:
+exports to a logger, and a `BatchSpanProcessor` that exports to a OpenTelemetry
+Collector:
 
 ```swift
 let otlpConfiguration = OtlpConfiguration(timeout: OtlpConfiguration.DefaultTimeoutInterval)
@@ -236,7 +246,6 @@ OpenTelemetry.registerTracerProvider(tracerProvider: TracerProviderBuilder()
                                                       .add(spanProcessor:SimpleSpanProcessor(spanExporter: StdoutExporter))
                                                       .with(resource: Resource())
                                                       .build())
-
 ```
 
 The batch span processor allows for a variety of parameters for customization

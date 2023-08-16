@@ -1,7 +1,19 @@
 # Netlify redirects. See https://www.netlify.com/docs/redirects/
-{{/* cSpell:ignore wordmark */ -}}
+{{/* cSpell:ignore cond wordmark */ -}}
 
 {{ range $p := .Site.Pages -}}
+
+{{ range $p.Params.redirects -}}
+  {{ $permaLink := $p.RelPermalink | strings.TrimSuffix "/" -}}
+  {{ $from := cond
+      (strings.HasPrefix .from "./")
+      (print $permaLink (strings.TrimPrefix "./" .from))
+      .from -}}
+  {{ $to := cond (strings.HasPrefix .to "/")
+      .to
+      (print $permaLink .to) -}}
+  {{ $from | printf "%-35s" }} {{ $to }}
+{{ end -}}
 
 {{ range $p.Aliases -}}
   {{ . | printf "%-35s" }} {{ $p.RelPermalink }}
@@ -21,6 +33,10 @@
 /docs/{{ $lang }}/*  /docs/instrumentation/{{ $lang }}/:splat
 {{ end -}}
 {{ end -}}
+
+/docs/reference/specification    /docs/specs/otel
+/docs/reference/specification/*  /docs/specs/otel/:splat
+/docs/specification/otel/*       /docs/specs/otel/:splat
 
 {{/*
   Social-media image redirects. As mentioned in

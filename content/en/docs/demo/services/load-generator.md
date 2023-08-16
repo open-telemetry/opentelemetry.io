@@ -1,6 +1,7 @@
 ---
 title: Load Generator
 aliases: [/docs/demo/services/loadgenerator]
+cSpell:ignore: instrumentor instrumentors loadgenerator locustfile urllib
 ---
 
 The load generator is based on the Python load testing framework
@@ -18,7 +19,7 @@ Since this service is a
 OpenTelemetry SDK is initialized after the import statements. This code will
 create a tracer provider, and establish a Span Processor to use. Export
 endpoints, resource attributes, and service name are automatically set using
-[OpenTelemetry environment variables](/docs/reference/specification/sdk-environment-variables/).
+[OpenTelemetry environment variables](/docs/specs/otel/configuration/sdk-environment-variables/).
 
 ```python
 tracer_provider = TracerProvider()
@@ -64,6 +65,6 @@ a context object containing the baggage item, and associating that context for
 all tasks by the load generator.
 
 ```python
-    ctx = baggage.set_baggage("synthetic_request", "true")
-    context.attach(ctx)
+ctx = baggage.set_baggage("synthetic_request", "true")
+context.attach(ctx)
 ```

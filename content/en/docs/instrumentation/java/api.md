@@ -4,5 +4,5 @@ linkTitle: API
 redirect: https://javadoc.io/doc/io.opentelemetry
 manualLinkTarget: _blank
 _build: { render: link }
-weight: 50
+weight: 210
 ---

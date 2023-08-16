@@ -1,15 +1,32 @@
 ---
 title: Getting Started
-weight: 1
+description: Get telemetry for your app in less than 5 minutes!
+# prettier-ignore
+cSpell:ignore: diceroller distro loggingexporter loglevel randint rolldice rollspan venv
+weight: 10
 ---
 
-In this page, you'll learn how to set up and get tracing telemetry from an HTTP
-server with Flask. If you're not using Flask, that's fine - this guide will also
-work with Django, FastAPI,
-[and more](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation).
+This page will show you how to get started with OpenTelemetry in Python.
+
+You will learn how you can instrument a simple application automatically, in
+such a way that [traces][], [metrics][] and [logs][] are emitted to the console.
+
+## Prerequisites
+
+Ensure that you have the following installed locally:
+
+- [Python 3](https://www.python.org/)
+
+## Example Application
+
+The following example uses a basic [Flask](https://flask.palletsprojects.com/)
+application. If you are not using Flask, that's OK — you can use OpenTelemetry
+Python with other web frameworks as well, such as Django and FastAPI. For a
+complete list of libraries for supported frameworks, see the
+[registry](/ecosystem/registry/?component=instrumentation&language=python).
 
 For more elaborate examples, see
-[examples](https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/).
+[examples](/docs/instrumentation/python/examples/).
 
 ## Installation
 
@@ -22,24 +39,19 @@ python3 -m venv .
 source ./bin/activate
 ```
 
-Now install Flask and OpenTelemetry:
+Now install Flask:
 
 ```shell
 pip install flask
-pip install opentelemetry-distro
 ```
 
-The `opentelemetry-distro` package installs the API, SDK, and the
-`opentelemetry-bootstrap` and `opentelemetry-instrument` tools that you'll use
-soon.
+### Create and launch an HTTP Server
 
-## Create the sample HTTP Server
-
-Create a file `app.py`:
+Create a file `app.py` and add the following code to it:
 
 ```python
 from random import randint
-from flask import Flask, request
+from flask import Flask
 
 app = Flask(__name__)
 
@@ -51,14 +63,27 @@ def do_roll():
     return randint(1, 6)
 ```
 
-When run, this will launch an HTTP server with a `/rolldice` route.
+Run the application with the following command and open
+<http://localhost:8080/rolldice> in your web browser to ensure it is working.
 
-## Add automatic instrumentation
+```sh
+flask run -p 8080
+```
+
+## Instrumentation
 
 Automatic instrumentation will generate telemetry data on your behalf. There are
 several options you can take, covered in more detail in
 [Automatic Instrumentation](../automatic/). Here we'll use the
 `opentelemetry-instrument` agent.
+
+Install the `opentelemetry-distro` package, which contains the OpenTelemetry
+API, SDK and also the tools `opentelemetry-bootstrap` and
+`opentelemetry-instrument` you will use below.
+
+```shell
+pip install opentelemetry-distro
+```
 
 Run the `opentelemetry-bootstrap` command:
 
@@ -77,11 +102,13 @@ it print to the console for now:
 opentelemetry-instrument \
     --traces_exporter console \
     --metrics_exporter console \
-    flask run
+    --logs_exporter console \
+    flask run -p 8080
 ```
 
-When you send a request to the server, you'll get a result in a trace with a
-single span printed to the console, such as the following:
+Open <http://localhost:8080/rolldice> in your web browser and reload the page a
+few times. After a while you should see the spans printed in the console, such
+as the following:
 
 <details>
 <summary>View example output</summary>
@@ -132,12 +159,11 @@ single span printed to the console, such as the following:
 
 </details>
 
-The span generated for you tracks the lifetime of a request to the `/rolldice`
-route.
+The generated span tracks the lifetime of a request to the `/rolldice` route.
 
 Send a few more requests to the endpoint, and then either wait for a little bit
-or terminate the app and you'll get metrics printed out to the console, such as
-the following
+or terminate the app and you'll see metrics in the console output, such as the
+following:
 
 <details>
 <summary>View example output</summary>
@@ -248,10 +274,10 @@ create a trace that's a child of the one that's automatically generated:
 from opentelemetry import trace
 
 from random import randint
-from flask import Flask, request
+from flask import Flask
 
 # Acquire a tracer
-tracer = trace.get_tracer(__name__)
+tracer = trace.get_tracer("diceroller.tracer")
 
 app = Flask(__name__)
 
@@ -273,7 +299,7 @@ Now run the app again:
 opentelemetry-instrument \
     --traces_exporter console \
     --metrics_exporter console \
-    flask run
+    flask run -p 8080
 ```
 
 When you send a request to the server, you'll see two spans in the trace emitted
@@ -374,11 +400,11 @@ from opentelemetry import trace
 from opentelemetry import metrics
 
 from random import randint
-from flask import Flask, request
+from flask import Flask
 
-tracer = trace.get_tracer(__name__)
+tracer = trace.get_tracer("diceroller.tracer")
 # Acquire a meter.
-meter = metrics.get_meter(__name__)
+meter = metrics.get_meter("diceroller.meter")
 
 # Now create a counter instrument to make measurements with
 roll_counter = meter.create_counter(
@@ -407,7 +433,7 @@ Now run the app again:
 opentelemetry-instrument \
     --traces_exporter console \
     --metrics_exporter console \
-    flask run
+    flask run -p 8080
 ```
 
 When you send a request to the server, you'll see the roll counter metric
@@ -562,7 +588,7 @@ collector via OTLP instead of the console.
 
 To do this, install the OTLP exporter package:
 
-```
+```shell
 pip install opentelemetry-exporter-otlp
 ```
 
@@ -573,8 +599,8 @@ and default to OTLP export when it's run next.
 
 Run the application like before, but don't export to the console:
 
-```
-opentelemetry-instrument flask run
+```shell
+opentelemetry-instrument flask run -p 8080
 ```
 
 By default, `opentelemetry-instrument` exports traces and metrics over OTLP/gRPC
@@ -587,7 +613,7 @@ process instead of the flask process, which should look something like this:
 <details>
 <summary>View example output</summary>
 
-```
+```text
 2022-06-09T20:43:39.915Z        DEBUG   loggingexporter/logging_exporter.go:51  ResourceSpans #0
 Resource labels:
      -> telemetry.sdk.language: STRING(python)
@@ -673,6 +699,15 @@ There's a lot more to manual instrumentation than just creating a child span. To
 learn details about initializing manual instrumentation and many more parts of
 the OpenTelemetry API you can use, see [Manual Instrumentation](../manual/).
 
-Finally, there are several options for exporting your telemetry data with
-OpenTelemetry. To learn how to export your data to a preferred backend, see
+There are several options for exporting your telemetry data with OpenTelemetry.
+To learn how to export your data to a preferred backend, see
 [Exporters](../exporters/).
+
+If you'd like to explore a more complex example, take a look at the
+[OpenTelemetry Demo](/docs/demo/), which includes the Python based
+[Recommendation Service](/docs/demo/services/recommendation/) and
+[Load Generator](/docs/demo/services/load-generator/).
+
+[traces]: /docs/concepts/signals/traces/
+[metrics]: /docs/concepts/signals/metrics/
+[logs]: /docs/concepts/signals/logs/

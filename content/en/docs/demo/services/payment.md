@@ -2,6 +2,7 @@
 title: Payment Service
 linkTitle: Payment
 aliases: [/docs/demo/services/paymentservice]
+cSpell:ignore: nanos
 ---
 
 This service is responsible to process credit card payments for orders. It will
@@ -14,10 +15,10 @@ processed.
 
 It is recommended to `require` Node.js app using an initializer file that
 initializes the SDK and auto-instrumentation. When initializing the
-OpenTelemetry NodeJS SDK in that module, you optionally specify which
+OpenTelemetry Node.js SDK in that module, you optionally specify which
 auto-instrumentation libraries to leverage, or make use of the
 `getNodeAutoInstrumentations()` function which includes most popular frameworks.
-The below example of an intiailizer file (`opentelemetry.js`) contains all code
+The below example of an initializer file (`opentelemetry.js`) contains all code
 required to initialize the SDK and auto-instrumentation based on standard
 OpenTelemetry environment variables for OTLP export, resource attributes, and
 service name. It then `require`s your app at `./index.js` to start it up once
@@ -55,7 +56,14 @@ const {
 
 const sdk = new opentelemetry.NodeSDK({
   traceExporter: new OTLPTraceExporter(),
-  instrumentations: [getNodeAutoInstrumentations()],
+  instrumentations: [
+    getNodeAutoInstrumentations({
+      // only instrument fs if it is part of another trace
+      '@opentelemetry/instrumentation-fs': {
+        requireParentSpan: true,
+      },
+    }),
+  ],
   metricReader: new PeriodicExportingMetricReader({
     exporter: new OTLPMetricExporter(),
   }),
@@ -72,7 +80,7 @@ const sdk = new opentelemetry.NodeSDK({
   ],
 });
 
-sdk.start().then(() => require('./index'));
+sdk.start();
 ```
 
 You can then use `opentelemetry.js` to start your app. This can be done in the

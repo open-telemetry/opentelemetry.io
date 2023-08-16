@@ -3,6 +3,7 @@ title: Slack Channel
 linkTitle: Slack
 description: >-
   Join a private slack channel to discuss OpenTelemetry with other end users.
+weight: 40
 ---
 
 - Confirm your agreement with channel [Code of Conduct][] and reach out to Reese

@@ -1,6 +1,6 @@
 ---
 title: Cookbook
-weight: 47
+weight: 100
 ---
 
 This page is a cookbook for common scenarios.
@@ -10,7 +10,7 @@ This page is a cookbook for common scenarios.
 ```python
 from opentelemetry import trace
 
-tracer = trace.get_tracer(__name__)
+tracer = trace.get_tracer("my.tracer")
 with tracer.start_as_current_span("print") as span:
     print("foo")
     span.set_attribute("printed_string", "foo")
@@ -22,7 +22,7 @@ with tracer.start_as_current_span("print") as span:
 from opentelemetry import trace
 
 current_span = trace.get_current_span()
-current_span.set_attribute("hometown", "seattle")
+current_span.set_attribute("hometown", "Seattle")
 ```
 
 ## Create a nested span
@@ -31,7 +31,7 @@ current_span.set_attribute("hometown", "seattle")
 from opentelemetry import trace
 import time
 
-tracer = trace.get_tracer(__name__)
+tracer = trace.get_tracer("my.tracer")
 
 # Create a new span to track some work
 with tracer.start_as_current_span("parent"):
@@ -53,7 +53,7 @@ with tracer.start_as_current_span("parent"):
 ```python
 from opentelemetry import trace, baggage
 
-tracer = trace.get_tracer(__name__)
+tracer = trace.get_tracer("my.tracer")
 with tracer.start_as_current_span(name="root span") as root_span:
     parent_ctx = baggage.set_baggage("context", "parent")
     with tracer.start_as_current_span(
@@ -82,7 +82,7 @@ from opentelemetry.trace.propagation.tracecontext import TraceContextTextMapProp
 trace.set_tracer_provider(TracerProvider())
 trace.get_tracer_provider().add_span_processor(BatchSpanProcessor(ConsoleSpanExporter()))
 
-tracer = trace.get_tracer(__name__)
+tracer = trace.get_tracer("my.tracer")
 
 # A TextMapPropagator works with any dict-like object as its Carrier by default. You can also implement custom getters and setters.
 with tracer.start_as_current_span('first-trace'):
@@ -140,7 +140,7 @@ trace.set_tracer_provider(
 )
 trace.get_tracer_provider().add_span_processor(BatchSpanProcessor(ConsoleSpanExporter()))
 
-tracer = trace.get_tracer(__name__)
+tracer = trace.get_tracer("tracer.one")
 with tracer.start_as_current_span("some-name") as span:
     span.set_attribute("key", "value")
 
@@ -151,7 +151,7 @@ another_tracer_provider = TracerProvider(
 )
 another_tracer_provider.add_span_processor(BatchSpanProcessor(ConsoleSpanExporter()))
 
-another_tracer = trace.get_tracer(__name__, tracer_provider=another_tracer_provider)
+another_tracer = trace.get_tracer("tracer.two", tracer_provider=another_tracer_provider)
 with another_tracer.start_as_current_span("name-here") as span:
     span.set_attribute("another-key", "another-value")
 ```

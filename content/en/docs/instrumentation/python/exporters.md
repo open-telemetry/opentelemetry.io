@@ -1,7 +1,10 @@
 ---
 title: Exporters
-weight: 4
+weight: 50
+cSpell:ignore: LOWMEMORY
 ---
+
+<!-- markdownlint-disable no-duplicate-heading -->
 
 In order to visualize and analyze your telemetry you will need to use an
 exporter.
@@ -39,9 +42,8 @@ trace.set_tracer_provider(provider)
 Use a [`PeriodicExportingMetricReader`][pemr] to periodically print metrics to
 the console. `PeriodicExportingMetricReader` can be configured to export at a
 different interval, change the
-[temporality](/docs/reference/specification/metrics/data-model/#temporality) for
-each instrument kind, or change the default aggregation for each instrument
-kind.
+[temporality](/docs/specs/otel/metrics/data-model/#temporality) for each
+instrument kind, or change the default aggregation for each instrument kind.
 
 #### Temporality Presets
 
@@ -49,8 +51,8 @@ There are temporality presets for each instrumentation kind. These presets can
 be set with the environment variable
 `OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE`, for example:
 
-```console
-$ export OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE="DELTA"
+```sh
+export OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE="DELTA"
 ```
 
 The default value for `OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE` is
@@ -115,8 +117,8 @@ configure an OTLP exporter that sends to your endpoint.
 
 First, install an OTLP exporter:
 
-```console
-$ pip install opentelemetry-exporter-otlp-proto-grpc
+```sh
+pip install opentelemetry-exporter-otlp-proto-grpc
 ```
 
 ### Trace
@@ -164,12 +166,11 @@ metrics.set_meter_provider(provider)
 
 ### Using HTTP
 
-If you'd prefer to use
-[OTLP/HTTP](/docs/reference/specification/protocol/otlp/#otlphttp) with the
-binary-encoded Protobuf format, you can install the package:
+If you'd prefer to use [OTLP/HTTP](/docs/specs/otlp/#otlphttp) with the
+binary-encoded protobuf format, you can install the package:
 
-```console
-$ pip install opentelemetry-exporter-otlp-proto-http
+```sh
+pip install opentelemetry-exporter-otlp-proto-http
 ```
 
 Next, replace the import declarations with the following:
@@ -192,8 +193,8 @@ If you are using [Jaeger](https://www.jaegertracing.io/) to visualize trace
 data, you'll need to set it up first. This is how to run it in a docker
 container:
 
-```console
-$ docker run -d --name jaeger \
+```sh
+docker run -d --name jaeger \
   -e COLLECTOR_ZIPKIN_HOST_PORT=:9411 \
   -p 5775:5775/udp \
   -p 6831:6831/udp \
@@ -208,8 +209,8 @@ $ docker run -d --name jaeger \
 
 Next, install the Jaeger exporter package:
 
-```console
-$ pip install opentelemetry-exporter-jaeger
+```sh
+pip install opentelemetry-exporter-jaeger
 ```
 
 This will install packages for both:
@@ -258,14 +259,14 @@ from opentelemetry.exporter.jaeger.proto.grpc import JaegerExporter
 If you are using [Zipkin](https://zipkin.io/) to visualize trace data, you'll
 need to set it up first. This is how to run it in a docker container:
 
-```console
-$ docker run --rm -d -p 9411:9411 --name zipkin openzipkin/zipkin
+```sh
+docker run --rm -d -p 9411:9411 --name zipkin openzipkin/zipkin
 ```
 
 Next, install the Zipkin exporter package:
 
-```console
-$ pip install opentelemetry-exporter-zipkin-proto-http
+```sh
+pip install opentelemetry-exporter-zipkin-proto-http
 ```
 
 Then you can configure the exporter when initializing tracing:
@@ -295,8 +296,8 @@ trace.set_tracer_provider(provider)
 
 If you'd prefer to use Thrift as the protocol, you can install the package:
 
-```console
-$ pip install opentelemetry-exporter-zipkin-json
+```sh
+pip install opentelemetry-exporter-zipkin-json
 ```
 
 And replace the `ZipkinExporter` import declaration with the following:
@@ -312,8 +313,8 @@ you'll need to set it up first.
 
 First create a config file:
 
-```console
-$ cat > prometheus.yml <<EOF
+```bash
+cat > prometheus.yml <<EOF
 scrape_configs:
   - job_name: 'otel-python-demo'
     scrape_interval: 5s
@@ -324,8 +325,8 @@ EOF
 
 Then start the Prometheus server in Docker:
 
-```console
-$ docker run -d --rm \
+```sh
+docker run -d --rm \
     --network=host \
     -v $(pwd)/prometheus.yml:/etc/prometheus/prometheus.yml \
     prom/prometheus
@@ -333,8 +334,8 @@ $ docker run -d --rm \
 
 Next, install the Prometheus exporter package:
 
-```console
-$ pip install opentelemetry-exporter-prometheus
+```sh
+pip install opentelemetry-exporter-prometheus
 ```
 
 Then you can configure the exporter when initializing metrics:

@@ -1,11 +1,11 @@
 ---
 title: Manual Instrumentation
 linkTitle: Manual
-weight: 3
+weight: 30
+description: Manual instrumentation for OpenTelemetry .NET
 ---
 
-Manual instrumentation is the process of adding observability code to your
-application.
+{{% docs/instrumentation/manual-intro %}}
 
 ## A note on terminology
 
@@ -22,19 +22,21 @@ are covered here as well as the `System.Diagnostics` API.
 If you prefer to use OpenTelemetry APIs instead of `System.Diagnostics` APIs,
 you can refer to the [OpenTelemetry API Shim docs for tracing](../shim).
 
-## Initializing tracing
+## Traces
+
+### Initializing tracing
 
 There are two main ways to initialize [tracing](/docs/concepts/signals/traces/),
 depending on whether you're using a console app or something that's ASP.NET
 Core-based.
 
-### Console app
+#### Console app
 
 To start tracing in a console app, you need to create a tracer provider.
 
 First, ensure that you have the right packages:
 
-```
+```sh
 dotnet add package OpenTelemetry
 dotnet add package OpenTelemetry.Exporter.Console
 ```
@@ -69,14 +71,14 @@ This is also where you can configure instrumentation libraries.
 Note that this sample uses the Console Exporter. If you are exporting to another
 endpoint, you'll have to use a different exporter.
 
-### ASP.NET Core
+#### ASP.NET Core
 
 To start tracing in an ASP.NET Core-based app, use the OpenTelemetry extensions
 for ASP.NET Core setup.
 
 First, ensure that you have the right packages:
 
-```
+```sh
 dotnet add package OpenTelemetry
 dotnet add package OpenTelemetry.Extensions.Hosting
 dotnet add package OpenTelemetry.Exporter.Console
@@ -84,7 +86,7 @@ dotnet add package OpenTelemetry.Exporter.Console
 
 Then you can install the Instrumentation package
 
-```
+```sh
 dotnet add package OpenTelemetry.Instrumentation.AspNetCore --prerelease
 ```
 
@@ -126,11 +128,12 @@ This is also where you can configure instrumentation libraries.
 Note that this sample uses the Console Exporter. If you are exporting to another
 endpoint, you'll have to use a different exporter.
 
-## Setting up an ActivitySource
+### Setting up an ActivitySource
 
 Once tracing is initialized, you can configure an
 [`ActivitySource`](/docs/concepts/signals/traces/#tracer), which will be how you
-trace operations with [`Activity`s](/docs/concepts/signals/traces/#spans).
+trace operations with [`Activity`](/docs/concepts/signals/traces/#spans)
+elements.
 
 Typically, an `ActivitySource` is instantiated once per app/service that is
 being instrumented, so it's a good idea to instantiate it once in a shared
@@ -154,7 +157,7 @@ public static class Telemetry
 You can instantiate several `ActivitySource`s if that suits your scenario,
 although it is generally sufficient to just have one defined per service.
 
-## Creating Activities
+### Creating Activities
 
 To create an [`Activity`](/docs/concepts/signals/traces/#spans), give it a name
 and create it from your
@@ -166,7 +169,7 @@ using var myActivity = MyActivitySource.StartActivity("SayHello");
 // do work that 'myActivity' will now track
 ```
 
-## Creating nested Activities
+### Creating nested Activities
 
 If you have a distinct sub-operation you'd like to track as a part of another
 one, you can create activities to represent the relationship.
@@ -220,7 +223,7 @@ In the preceding example, `childActivity` is ended because the scope of the
 `using` block is explicitly defined, rather than scoped to `DoWork` itself like
 `parentActivity`.
 
-## Creating independent Activities
+### Creating independent Activities
 
 The previous examples showed how to create Activities that follow a nested
 hierarchy. In some cases, you'll want to create independent Activities that are
@@ -246,7 +249,7 @@ public static void DoWork()
 }
 ```
 
-## Creating new root Activities
+### Creating new root Activities
 
 If you wish to create a new root Activity, you'll need to "de-parent" from the
 current activity.
@@ -264,7 +267,7 @@ public static void DoWork()
 }
 ```
 
-## Get the current Activity
+### Get the current Activity
 
 Sometimes it's helpful to access whatever the current `Activity` is at a point
 in time so you can enrich it with more information.
@@ -277,7 +280,7 @@ var activity = Activity.Current;
 Note that `using` is not used in the prior example. Doing so will end current
 `Activity`, which is not likely to be desired.
 
-## Add tags to an Activity
+### Add tags to an Activity
 
 Tags (the equivalent of
 [`Attributes`](/docs/concepts/signals/traces/#attributes) in OpenTelemetry) let
@@ -295,7 +298,7 @@ activity?.SetTag("operation.other-stuff", new int[] { 1, 2, 3 });
 We recommend that all Tag names are defined in constants rather than defined
 inline as this provides both consistency and also discoverability.
 
-## Adding events
+### Adding events
 
 An [event](/docs/concepts/signals/traces/#span-events) is a human-readable
 message on an `Activity` that represents "something happening" during its
@@ -334,7 +337,7 @@ var eventTags = new Dictionary<string, object?>
 myActivity?.AddEvent(new("Gonna try it!", DateTimeOffset.Now, new(eventTags)));
 ```
 
-## Adding links
+### Adding links
 
 An `Activity` can be created with zero or more
 [`ActivityLink`s](/docs/concepts/signals/traces/#span-links) that are causally
@@ -358,7 +361,7 @@ using var anotherActivity =
 // do some work
 ```
 
-## Set Activity status
+### Set Activity status
 
 A [status](/docs/concepts/signals/traces/#span-status) can be set on an
 activity, typically used to specify that an activity has not completed
@@ -380,6 +383,16 @@ catch (Exception ex)
     myActivity.SetStatus(ActivityStatusCode.Error, "Something bad happened!");
 }
 ```
+
+## Metrics
+
+The documentation for the metrics API & SDK is missing, you can help make it
+available by
+[editing this page](https://github.com/open-telemetry/opentelemetry.io/edit/main/content/en/docs/instrumentation/net/manual.md).
+
+## Logs
+
+The logs API & SDK are currently under development.
 
 ## Next steps
 

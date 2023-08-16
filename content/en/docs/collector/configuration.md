@@ -1,24 +1,30 @@
 ---
 title: Configuration
 weight: 20
+# prettier-ignore
+cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca loglevel OIDC oidc otlphttp pprof prodevent prometheusremotewrite servicegraph spanevents spanmetrics upsert zpages
 ---
+
+<!-- markdownlint-disable link-fragments -->
 
 Familiarity with the following pages is assumed:
 
-- [Data Collection concepts](/docs/concepts/data-collection/) in order to
-  understand the repositories applicable to the OpenTelemetry Collector.
+- [Data collection concepts][dcc] in order to understand the repositories
+  applicable to the OpenTelemetry Collector.
 - [Security guidance](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md)
 
 ## Basics
 
-The Collector consists of three components that access telemetry data:
+The Collector consists of four components that access telemetry data:
 
-- <img width="32" class="img-initial" src="/img/logos/32x32/Receivers.svg"></img>
-  [Receivers](#receivers)
-- <img width="32" class="img-initial" src="/img/logos/32x32/Processors.svg"></img>
-  [Processors](#processors)
-- <img width="32" class="img-initial" src="/img/logos/32x32/Exporters.svg"></img>
-  [Exporters](#exporters)
+- [Receivers](#receivers)
+  <img width="32" class="img-initial" src="/img/logos/32x32/Receivers.svg">
+- [Processors](#processors)
+  <img width="32" class="img-initial" src="/img/logos/32x32/Processors.svg">
+- [Exporters](#exporters)
+  <img width="32" class="img-initial" src="/img/logos/32x32/Exporters.svg">
+- [Connectors](#connectors)
+  <img width="32" class="img-initial" src="/img/logos/32x32/Load_Balancer.svg">
 
 These components once configured must be enabled via pipelines within the
 [service](#service) section.
@@ -166,9 +172,7 @@ service:
       exporters: [otlp]
 ```
 
-## Receivers
-
-<img width="35" class="img-initial" src="/img/logos/32x32/Receivers.svg"></img>
+## Receivers <img width="35" class="img-initial" src="/img/logos/32x32/Receivers.svg"> {#receivers}
 
 A receiver, which can be push or pull based, is how data gets into the
 Collector. Receivers may support one or more
@@ -185,10 +189,10 @@ receiver provides a default configuration are overridden.
 > within the [service](#service) section.
 
 One or more receivers must be configured. By default, no receivers are
-configured. A basic example of all available receivers is provided below.
+configured. A basic example of receivers is provided below.
 
-> For detailed receiver configuration, please see the
-> [receiver README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md).
+> For detailed receiver configuration, see the
+> [receiver README](https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md).
 
 ```yaml
 receivers:
@@ -243,9 +247,7 @@ receivers:
   zipkin:
 ```
 
-## Processors
-
-<img width="35" class="img-initial" src="/img/logos/32x32/Processors.svg"></img>
+## Processors <img width="35" class="img-initial" src="/img/logos/32x32/Processors.svg"> {#processors}
 
 Processors are run on data between being received and being exported. Processors
 are optional though
@@ -259,12 +261,14 @@ which the processor provides a default configuration are overridden.
 > Configuring a processor does not enable it. Processors are enabled via
 > pipelines within the [service](#service) section.
 
-A basic example of the default processors is provided below. A full list of
-processors can be found
+A basic example of the default processors is provided below. The full list of
+processors can be found by combining the list found
 [here](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor)
+and
+[here](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor).
 
-> For detailed processor configuration, please see the
-> [processor README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md).
+> For detailed processor configuration, see the
+> [processor README](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md).
 
 ```yaml
 processors:
@@ -324,9 +328,7 @@ processors:
       separator: '::'
 ```
 
-## Exporters
-
-<img width="35" class="img-initial" src="/img/logos/32x32/Exporters.svg"></img>
+## Exporters <img width="35" class="img-initial" src="/img/logos/32x32/Exporters.svg"> {#exporters}
 
 An exporter, which can be push or pull based, is how you send data to one or
 more backends/destinations. Exporters may support one or more
@@ -342,10 +344,9 @@ provides a default configuration are overridden.
 > pipelines within the [service](#service) section.
 
 One or more exporters must be configured. By default, no exporters are
-configured. A basic example of all available exporters is provided below.
-Certain exporter configurations require x.509 certificates to be created in
-order to be secure, as described in
-[setting up certificates](#setting-up-certificates).
+configured. A basic example of exporters is provided below. Certain exporter
+configurations require x.509 certificates to be created in order to be secure,
+as described in [setting up certificates](#setting-up-certificates).
 
 > For detailed exporter configuration, see the
 > [exporter README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md).
@@ -404,6 +405,59 @@ exporters:
     endpoint: http://localhost:9411/api/v2/spans
 ```
 
+## Connectors <img width="32" class="img-initial" src="/img/logos/32x32/Load_Balancer.svg"> {#connectors}
+
+A connector is both an exporter and receiver. As the name suggests a Connector
+connects two pipelines: It consumes data as an exporter at the end of one
+pipeline and emits data as a receiver at the start of another pipeline. It may
+consume and emit data of the same data type, or of different data types. A
+connector may generate and emit data to summarize the consumed data, or it may
+simply replicate or route data.
+
+The `connectors:` section is how connectors are configured.
+
+> Configuring a connectors does not enable it. Connectors are enabled via
+> pipelines within the [service](#service) section.
+
+One or more connectors may be configured. By default, no connectors are
+configured. A basic example of connectors is provided below.
+
+> For detailed connector configuration, see the
+> [connector README](https://github.com/open-telemetry/opentelemetry-collector/blob/main/connector/README.md).
+
+```yaml
+connectors:
+  forward:
+
+  count:
+    spanevents:
+      my.prod.event.count:
+        description: The number of span events from my prod environment.
+        conditions:
+          - 'attributes["env"] == "prod"'
+          - 'name == "prodevent"'
+
+  spanmetrics:
+    histogram:
+      explicit:
+        buckets: [100us, 1ms, 2ms, 6ms, 10ms, 100ms, 250ms]
+    dimensions:
+      - name: http.method
+        default: GET
+      - name: http.status_code
+    dimensions_cache_size: 1000
+    aggregation_temporality: 'AGGREGATION_TEMPORALITY_CUMULATIVE'
+
+  servicegraph:
+    latency_histogram_buckets: [1, 2, 3, 4, 5]
+    dimensions:
+      - dimension-1
+      - dimension-2
+    store:
+      ttl: 1s
+      max_items: 10
+```
+
 ## Extensions
 
 Extensions are available primarily for tasks that do not involve processing
@@ -420,11 +474,11 @@ extension provides a default configuration are overridden.
 > Configuring an extension does not enable it. Extensions are enabled within the
 > [service](#service) section.
 
-By default, no extensions are configured. A basic example of all available
-extensions is provided below.
+By default, no extensions are configured. A basic example of extensions is
+provided below.
 
-> For detailed extension configuration, please see the
-> [extension README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/extension/README.md).
+> For detailed extension configuration, see the
+> [extension README](https://github.com/open-telemetry/opentelemetry-collector/blob/main/extension/README.md).
 
 ```yaml
 extensions:
@@ -541,7 +595,7 @@ exporters:
 
 ### Proxy Support
 
-Exporters that leverage the net/http package (all do today) respect the
+Exporters that leverage the `net/http` package (all do today) respect the
 following proxy environment variables:
 
 - HTTP_PROXY
@@ -686,3 +740,5 @@ This will create two certificates; first, an "OpenTelemetry Example" Certificate
 Authority (CA) in `ca.pem` and the associated key in `ca-key.pem`, and second a
 client certificate in `cert.pem` (signed by the OpenTelemetry Example CA) and
 the associated key in `cert-key.pem`.
+
+[dcc]: /docs/concepts/components/#collector

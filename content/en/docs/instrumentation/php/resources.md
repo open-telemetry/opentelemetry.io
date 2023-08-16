@@ -1,6 +1,6 @@
 ---
 title: Resources
-weight: 6
+weight: 70
 ---
 
 A resource represents the entity producing telemetry as resource attributes. For
@@ -47,6 +47,22 @@ env OTEL_PHP_RESOURCE_DETECTORS=env,host,sdk \
 php example.php
 ```
 
+## Custom resource detectors
+
+Resource detectors for generic platforms or vendor-specific environments can be
+installed as composer packages.
+
+For example, to install and enable the `container` resource detector:
+
+```shell
+composer require open-telemetry/detector-container
+env OTEL_PHP_RESOURCE_DETECTORS=container \
+php example.php
+```
+
+Note that installed detectors are automatically included in the default `all`
+resource detector list.
+
 ## Adding resources with environment variables
 
 If there is not an SDK detector for the resource you need, you can add arbitrary
@@ -67,13 +83,13 @@ resources are then passed to the tracer provider, where they will be associated
 with all generated spans.
 
 ```php
-$resource = ResourceInfoFactory::merge(ResourceInfo::create(Attributes::create([
+$resource = ResourceInfoFactory::defaultResource()->merge(ResourceInfo::create(Attributes::create([
     ResourceAttributes::SERVICE_NAMESPACE => 'foo',
     ResourceAttributes::SERVICE_NAME => 'bar',
     ResourceAttributes::SERVICE_INSTANCE_ID => 1,
     ResourceAttributes::SERVICE_VERSION => '0.1',
     ResourceAttributes::DEPLOYMENT_ENVIRONMENT => 'development',
-])), ResourceInfoFactory::defaultResource());
+])));
 
 $tracerProvider =  new TracerProvider(
     new SimpleSpanProcessor(

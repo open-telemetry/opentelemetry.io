@@ -1,6 +1,6 @@
 ---
 title: Sampling
-weight: 6
+weight: 80
 ---
 
 [Sampling](/docs/concepts/sampling/) is a process that restricts the amount of

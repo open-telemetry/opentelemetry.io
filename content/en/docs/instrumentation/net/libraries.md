@@ -1,11 +1,11 @@
 ---
 title: Using instrumentation libraries
 linkTitle: Libraries
-weight: 3
+weight: 40
 ---
 
 You can use
-[instrumentation libraries](/docs/reference/specification/glossary/#instrumentation-library)
+[instrumentation libraries](/docs/specs/otel/glossary/#instrumentation-library)
 in order to generate telemetry data for a particular instrumented library.
 
 For example,
@@ -18,7 +18,7 @@ will automatically create [spans](/docs/concepts/signals/traces/#spans) and
 Each instrumentation library is a NuGet package, and installing them is
 typically done like so:
 
-```
+```sh
 dotnet add package OpenTelemetry.Instrumentation.{library-name-or-type}
 ```
 
@@ -41,7 +41,7 @@ ASP.NET Core app.
 
 First, get the appropriate packages of OpenTelemetry Core:
 
-```
+```sh
 dotnet add package OpenTelemetry
 dotnet add package OpenTelemetry.Extensions.Hosting
 dotnet add package OpenTelemetry.Exporter.Console
@@ -49,7 +49,7 @@ dotnet add package OpenTelemetry.Exporter.Console
 
 Then you can install the Instrumentation packages
 
-```
+```sh
 dotnet add package OpenTelemetry.Instrumentation.AspNetCore --prerelease
 dotnet add package OpenTelemetry.Instrumentation.Http --prerelease
 ```

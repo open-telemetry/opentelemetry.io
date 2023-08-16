@@ -2,11 +2,11 @@
 title: Automatic instrumentation
 linkTitle: Automatic
 aliases: [/docs/instrumentation/ruby/configuring_automatic_instrumentation]
-spelling: cSpell:ignore faraday sinatra
-weight: 2
+cSpell:ignore: faraday sinatra
+weight: 20
 ---
 
-Automatic instrumentation in ruby is done via instrumentation packages, and most
+Automatic instrumentation in Ruby is done via instrumentation packages, and most
 commonly, the `opentelemetry-instrumentation-all` package. These are called
 Instrumentation Libraries.
 
@@ -93,7 +93,7 @@ end
 ### Next steps
 
 Instrumentation libraries are the easiest way to generate lots of useful
-telemetry data about your ruby apps. But they don't generate data specific to
+telemetry data about your Ruby apps. But they don't generate data specific to
 your application's logic! To do that, you'll need to enrich the automatic
 instrumentation from instrumentation libraries with
 [manual instrumentation](../manual).

@@ -22,19 +22,20 @@ exporters, and set other options. Configuration of the exporter and resource
 attributes is performed through environment variables.
 
 ```cs
-services.AddOpenTelemetry().WithTracing(builder => builder
-    .ConfigureResource(r => r
-        .AddTelemetrySdk()
-        .AddEnvironmentVariableDetector()
-        .AddDetector(new DockerResourceDetector())
-    )
-    .AddRedisInstrumentation(
-        cartStore.GetConnection(),
-        options => options.SetVerboseDatabaseStatements = true)
-    .AddAspNetCoreInstrumentation()
-    .AddGrpcClientInstrumentation()
-    .AddHttpClientInstrumentation()
-    .AddOtlpExporter());
+Action<ResourceBuilder> appResourceBuilder =
+    resource => resource
+        .AddDetector(new ContainerResourceDetector());
+
+builder.Services.AddOpenTelemetry()
+    .ConfigureResource(appResourceBuilder)
+    .WithTracing(tracerBuilder => tracerBuilder
+        .AddRedisInstrumentation(
+            cartStore.GetConnection(),
+            options => options.SetVerboseDatabaseStatements = true)
+        .AddAspNetCoreInstrumentation()
+        .AddGrpcClientInstrumentation()
+        .AddHttpClientInstrumentation()
+        .AddOtlpExporter());
 ```
 
 ### Add attributes to auto-instrumented spans
@@ -43,7 +44,7 @@ Within the execution of auto-instrumented code you can get current span
 (activity) from context.
 
 ```cs
-    var activity = Activity.Current;
+var activity = Activity.Current;
 ```
 
 Adding attributes (tags in .NET) to a span (activity) is accomplished using
@@ -52,9 +53,9 @@ Adding attributes (tags in .NET) to a span (activity) is accomplished using
 span.
 
 ```cs
-    activity?.SetTag("app.user.id", request.UserId);
-    activity?.SetTag("app.product.quantity", request.Item.Quantity);
-    activity?.SetTag("app.product.id", request.Item.ProductId);
+activity?.SetTag("app.user.id", request.UserId);
+activity?.SetTag("app.product.quantity", request.Item.Quantity);
+activity?.SetTag("app.product.id", request.Item.ProductId);
 ```
 
 ### Add span events
@@ -64,7 +65,7 @@ object. In the `GetCart` function from `services/CartService.cs` a span event is
 added.
 
 ```cs
-    activity?.AddEvent(new("Fetch cart"));
+activity?.AddEvent(new("Fetch cart"));
 ```
 
 ## Metrics
@@ -76,15 +77,16 @@ call to `AddOpenTelemetry()`. This builder configures desired instrumentation
 libraries, exporters, etc.
 
 ```cs
-services.AddOpenTelemetry().WithMetrics(builder => builder
-    .ConfigureResource(r => r
-        .AddTelemetrySdk()
-        .AddEnvironmentVariableDetector()
-        .AddDetector(new DockerResourceDetector())
-    )
-    .AddRuntimeInstrumentation()
-    .AddAspNetCoreInstrumentation()
-    .AddOtlpExporter());
+Action<ResourceBuilder> appResourceBuilder =
+    resource => resource
+        .AddDetector(new ContainerResourceDetector());
+
+builder.Services.AddOpenTelemetry()
+    .ConfigureResource(appResourceBuilder)
+    .WithMetrics(meterBuilder => meterBuilder
+        .AddRuntimeInstrumentation()
+        .AddAspNetCoreInstrumentation()
+        .AddOtlpExporter());
 ```
 
 ## Logs

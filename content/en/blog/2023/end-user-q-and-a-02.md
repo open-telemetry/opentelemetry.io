@@ -4,6 +4,7 @@ linkTitle: 'End-User Q&A: OTel at Uplight'
 date: 2023-03-20
 author: '[Adriana Villela](https://github.com/avillela) (Lightstep)'
 body_class: otel-with-contributions-from
+cSpell:ignore: hackathons Uplight
 ---
 
 With contributions from [Rynn Mancuso](https://github.com/musingvirtual)
@@ -81,9 +82,9 @@ The ultimate goal was to get folks to understand OpenTelemetry and the long-term
 vision around observability. Most developers are familiar and comfortable with
 logs – they just want to be able to write a log and see what happens. So, Doug
 started by getting developers to add
-[OpenTelemetry (structured) logs](/docs/reference/specification/logs/) to all of
-the services across their various platforms. In order to leverage OTel logs,
-developers had to add the
+[OpenTelemetry (structured) logs](/docs/specs/otel/logs/) to all of the services
+across their various platforms. In order to leverage OTel logs, developers had
+to add the
 [OpenTelemetry language-specific SDKs](/docs/concepts/sdk-configuration/) into
 their code. Once they got past that initial hump and got the SDKs into their
 code, it then became easier for developers to add
@@ -110,8 +111,7 @@ processing for deploying to the cloud.
 
 ### OTel logs are relatively new. Why use something so new?
 
-As one of the
-[newer OpenTelemetry signals](/docs/reference/specification/logs/), there was a
+As one of the [newer OpenTelemetry signals](/docs/specs/otel/logs/), there was a
 lot of concern around the maturity of logs. There were also many concerns about
 whether OTel itself would go away, or whether logs would be eliminated from the
 spec. All of that unease was put to rest once the folks at Uplight began
@@ -198,7 +198,7 @@ Uplight currently has a few different Collector configurations:
 
 Doug’s ultimate goal is for any deployment in any environment to be able to
 easily send telemetry to an
-[OTel Collector gateway](/docs/collector/deployment/#gateway).
+[OTel Collector gateway](/docs/collector/deployment/gateway/).
 
 Collectors at Uplight are typically run and maintained by the infrastructure
 team, unless individual teams decide to take ownership of their own Collectors.
@@ -246,8 +246,8 @@ World” program to send data to the Collector, and nothing is showing up, and
 need some guidance around this. How do we help folks who aren’t super familiar
 with Docker and aren’t super familiar with OpenTelemetry? Can we have some super
 simple reference implementations to hold folks’ hands as they get started? For
-example, for a Ruby developer, clone X repo, run `docker-compose up`, and
-everything should be up and running. That way, they can focus on learning
+example, for a Ruby developer, clone X repository, run `docker compose up`[^1],
+and everything should be up and running. That way, they can focus on learning
 OpenTelemetry, rather than mess around with Docker networking and other
 distracting things.
 
@@ -303,3 +303,5 @@ Be sure to follow OpenTelemetry on
 [Mastodon](https://fosstodon.org/@opentelemetry) and
 [Twitter](https://twitter.com/opentelemetry), and share your stories using the
 **#OpenTelemetry** hashtag!
+
+[^1]: {{% _param notes.docker-compose-v2 %}}

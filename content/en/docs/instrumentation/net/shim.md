@@ -1,7 +1,7 @@
 ---
 title: OpenTelemetry Tracing Shim
 linkTitle: Tracing Shim
-weight: 5
+weight: 110
 ---
 
 .NET is different from other languages/runtimes that support OpenTelemetry.
@@ -29,7 +29,7 @@ create a tracer provider.
 
 First, ensure that you have the right packages:
 
-```
+```sh
 dotnet add package OpenTelemetry
 dotnet add package OpenTelemetry.Exporter.Console
 ```
@@ -70,7 +70,7 @@ use the OpenTelemetry extensions for ASP.NET Core setup.
 
 First, ensure that you have the right packages:
 
-```
+```sh
 dotnet add package OpenTelemetry --prerelease
 dotnet add package OpenTelemetry.Instrumentation.AspNetCore --prerelease
 dotnet add package OpenTelemetry.Extensions.Hosting --prerelease
@@ -158,7 +158,7 @@ app.MapGet("/hello", (Tracer tracer) =>
 ### Acquiring a tracer from a TracerProvider
 
 If you're not using ASP.NET Core or would rather not inject an instance of a
-`Tracer`, create one from your instantialized
+`Tracer`, create one from your instantiated
 [`TracerProvider`](/docs/concepts/signals/traces/#tracer-provider):
 
 ```csharp
@@ -218,7 +218,7 @@ as a nested operation under `parent-span"`.
 
 ### Nested Spans in the same scope
 
-You may wish to create a parent-child relationsip in the same scope. Although
+You may wish to create a parent-child relationship in the same scope. Although
 possible, this is generally not recommended because you need to be careful to
 end any nested `TelemetrySpan` when you expect it to end.
 
@@ -245,7 +245,7 @@ block is explicitly defined, rather than scoped to `DoWork` itself like
 ## Creating independent Spans
 
 The previous examples showed how to create
-[Spans](/docs/concepts/signals/traces/#spans) that follow a nested heirarchy. In
+[Spans](/docs/concepts/signals/traces/#spans) that follow a nested hierarchy. In
 some cases, you'll want to create independent Spans that are siblings of the
 same root rather than being nested.
 

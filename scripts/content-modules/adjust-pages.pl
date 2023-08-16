@@ -11,31 +11,53 @@ my $frontMatterFromFile = '';
 my $title = '';
 my $linkTitle = '';
 my $gD = 0;
-my $specRepoUrl = 'https://github.com/open-telemetry/opentelemetry-specification';
-my $semConvRef = "$specRepoUrl/blob/main/semantic_conventions/README.md";
-my $spec_base_path = '/docs/reference/specification';
-my $path_base_for_github_subdir = "content/en$spec_base_path";
-
-my $rootFrontMatterExtra = <<"EOS";
-no_list: true
-cascade:
-  body_class: otel-docs-spec
-  github_repo: &repo $specRepoUrl
-  github_subdir: specification
-  path_base_for_github_subdir: $path_base_for_github_subdir/
-  github_project_repo: *repo
-EOS
+my $otelSpecRepoUrl = 'https://github.com/open-telemetry/opentelemetry-specification';
+my $otlpSpecRepoUrl = 'https://github.com/open-telemetry/opentelemetry-proto';
+my $opAmpSpecRepoUrl = 'https://github.com/open-telemetry/opamp-spec';
+my $semconvSpecRepoUrl = 'https://github.com/open-telemetry/semantic-conventions';
+my $semConvRef = "$otelSpecRepoUrl/blob/main/semantic_conventions/README.md";
+my $specBasePath = '/docs/specs';
+my $path_base_for_github_subdir = "content/en$specBasePath";
+my %versions = qw(
+  spec: 1.24.0
+  otlp: 1.0.0
+  semconv: 1.21.0
+);
+my $otelSpecVers = $versions{'spec:'};
+my $otlpSpecVers = $versions{'otlp:'};
+my $semconvVers = $versions{'semconv:'};
 
 sub printTitleAndFrontMatter() {
   print "---\n";
+  if ($title eq 'OpenTelemetry Specification') {
+    $title .= " $otelSpecVers";
+    $frontMatterFromFile =~ s/(linkTitle:) .*/$1 OTel $otelSpecVers/;
+    # TODO: add to spec landing page
+    $frontMatterFromFile .= "weight: 10\n" if $frontMatterFromFile !~ /^\s*weight/;
+  } elsif ($title eq 'OpenTelemetry Protocol Specification') {
+    $frontMatterFromFile =~ s/(title|linkTitle): .*/$& $otlpSpecVers/g;
+    # TODO: add to spec landing page
+    $frontMatterFromFile .= "weight: 20\n" if $frontMatterFromFile !~ /^\s*weight/;
+  } elsif ($ARGV =~ /semconv\/docs\/_index.md$/) {
+    $title .= " $semconvVers";
+    $frontMatterFromFile =~ s/linkTitle: .*/$& $semconvVers/;
+    # $frontMatterFromFile =~ s/body_class: .*/$& td-page--draft/;
+    # $frontMatterFromFile =~ s/cascade:\n/$&  draft: true\n/;
+  }
   my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
-  print "title: $titleMaybeQuoted\n";
-  ($linkTitle) = $title =~ /^OpenTelemetry (.*)/;
+  print "title: $titleMaybeQuoted\n" if $frontMatterFromFile !~ /title: /;
+  if ($title =~ /^OpenTelemetry (Protocol )?(.*)/) {
+    $linkTitle = $2;
+  }
+  # TODO: add to front matter of OTel spec file and drop next line:
+  $linkTitle = 'Design Goals' if $title eq 'Design Goals for OpenTelemetry Wire Protocol';
+
+  # printf STDOUT "> $title -> $linkTitle\n";
   print "linkTitle: $linkTitle\n" if $linkTitle and $frontMatterFromFile !~ /linkTitle: /;
   print "$frontMatterFromFile" if $frontMatterFromFile;
-  if ($ARGV =~ /specification.(.*?)_index.md$/) {
+  if ($ARGV =~ /otel\/specification\/(.*?)_index.md$/) {
     print "path_base_for_github_subdir:\n";
-    print "  from: $path_base_for_github_subdir/$1_index.md\n";
+    print "  from: $path_base_for_github_subdir/otel/$1_index.md\n";
     print "  to: $1README.md\n";
   }
   print "---\n";
@@ -60,6 +82,7 @@ while(<>) {
   }
   if(! $title) {
     ($title) = /^#\s+(.*)/;
+    $linkTitle = '';
     printTitleAndFrontMatter() if $title;
     next;
   }
@@ -73,38 +96,63 @@ while(<>) {
     next;
   }
 
+  ## Semconv
+
+  if ($ARGV =~ /\/semconv/) {
+    s|(\]\()/docs/|$1$specBasePath/semconv/|g;
+    s|(\]:\s*)/docs/|$1$specBasePath/semconv/|;
+
+    # TODO: drop once semconv pages are fixed:
+    s|(/resource/faas\.md)#function-as-a-service|$1|;
+  }
+
   # SPECIFICATION custom processing
 
-  s|\(https://github.com/open-telemetry/opentelemetry-specification\)|($spec_base_path/)|;
-  s|(\]\()/specification/|$1$spec_base_path/)|;
+  s|\(https://github.com/open-telemetry/opentelemetry-specification\)|($specBasePath/otel/)|;
+  s|(\]\()/specification/|$1$specBasePath/otel/)|;
   s|\.\./semantic_conventions/README.md|$semConvRef| if $ARGV =~ /overview/;
+  s|\.\./specification/(.*?\))|../otel/$1)|g if $ARGV =~ /otel\/specification/;
 
-  if (/\((https:\/\/github.com\/open-telemetry\/opentelemetry-specification\/\w+\/\w+\/specification([^\)]*))\)/) {
+  # TODO: drop the following warning once the checks are enabled in the spec repos
+  if (
+    /\((https:\/\/github.com\/open-telemetry\/opentelemetry-specification\/\w+\/.*?\/specification([^\)]*))\)/ &&
+    $ARGV !~ /tmp\/(opamp|otlp\/docs|semconv)|semantic_conventions/
+    ) {
     printf STDOUT "WARNING: link to spec page encoded as an external URL, but should be a local path, fix this upstream;\n  File: $ARGV \n  Link: $1\n";
   }
-  s|\(https://github.com/open-telemetry/opentelemetry-specification/\w+/\w+/specification([^\)]*)\)|($spec_base_path$1)|;
 
-  # Bug fix from original source
-  # TODO drop on fix lands for https://github.com/open-telemetry/opentelemetry-specification/pull/3310
-  s|/docs/reference/specification/metrics/data-model.md#metric-metadata-1|prometheus_and_openmetrics.md#metric-metadata-1|;
+  # Match markdown inline links or link definitions to OTel spec pages: "[...](URL)" or "[...]: URL"
+  s|(\]:\s+\|\()https://github.com/open-telemetry/opentelemetry-specification/\w+/(main\|v$otelSpecVers)/specification(.*?\)?)|$1$specBasePath/otel$3|;
+
+  # Match links to OTLP
+  s|(\]:\s+\|\()?https://github.com/open-telemetry/opentelemetry-proto/(\w+/.*?/)?docs/specification.md(\)?)|$1$specBasePath/otlp/$3|g;
+  s|github.com/open-telemetry/opentelemetry-proto/docs/specification.md|OTLP|g;
+
+  # Match links to semconv
+  s|(\]:\s+\|\()https://github.com/open-telemetry/semantic-conventions/\w+/(main\|v$semconvVers)/docs(.*?\)?)|$1$specBasePath/semconv$3|;
 
   # Images
   s|(\.\./)?internal(/img/[-\w]+\.png)|$2|g;
-  s|(\]\()(img/.*?\))|$1../$2|g if $ARGV !~ /(logs|schemas)._index/;
+  s|(\]\()(img/.*?\))|$1../$2|g if $ARGV !~ /(logs|schemas)._index/ && $ARGV !~ /otlp\/docs/;
 
   # Fix links that are to the title of the .md page
   # TODO: fix these in the spec
   s|(/context/api-propagators.md)#propagators-api|$1|g;
   s|(/semantic_conventions/faas.md)#function-as-a-service|$1|g;
   s|(/resource/sdk.md)#resource-sdk|$1|g;
-  s/#log-data-model/./;
 
-  s|\.\.\/README.md\b|$specRepoUrl/|g if $ARGV =~ /specification._index/;
+  s|\.\.\/README.md\b|$otelSpecRepoUrl/|g if $ARGV =~ /specification._index/;
   s|\.\.\/README.md\b|..| if $ARGV =~ /specification.library-guidelines.md/;
-  s|\bREADME.md\b|_index.md|g;
 
-  # Rewrite paths into experimental directory as external links
-  s|(\.\.\/)+(experimental\/[^)]+)|https://github.com/open-telemetry/opentelemetry-specification/tree/main/$1|g;
+  s|\.\./(opentelemetry/proto/?.*)|$otlpSpecRepoUrl/tree/v$otlpSpecVers/$1|g if $ARGV =~ /\/tmp\/otlp/;
+  s|\.\./README.md\b|$otlpSpecRepoUrl/|g if $ARGV =~ /\/tmp\/otlp/;
+  s|\.\./examples/README.md\b|$otlpSpecRepoUrl/tree/v$otlpSpecVers/examples/|g if $ARGV =~ /\/tmp\/otlp/;
+
+  s|\bREADME.md\b|_index.md|g if $ARGV !~ /otel\/specification\/protocol\/_index.md/;
+
+  # Rewrite paths that are outside of the main spec folder as external links
+  s|(\.\.\/)+(experimental\/[^)]+)|$otelSpecRepoUrl/tree/v$otelSpecVers/$2|g;
+  s|(\.\.\/)+(supplementary-guidelines\/compatibility\/[^)]+)|$otelSpecRepoUrl/tree/v$otelSpecVers/$2|g;
 
   # Rewrite inline links
   s|\]\(([^:\)]*?\.md(#.*?)?)\)|]({{% relref "$1" %}})|g;
@@ -114,6 +162,10 @@ while(<>) {
 
   # Make website-local page references local:
   s|https://opentelemetry.io/|/|g;
+
+  ## OpAMP
+
+  s|\]\((proto/opamp.proto)\)|]($opAmpSpecRepoUrl/blob/main/$1)|;
 
   print;
 }

@@ -3,15 +3,14 @@ title: Exposing a Collector for cross cluster communication
 linkTitle: Exposing a Collector
 date: 2022-09-08
 author: '[Benedikt Bongartz](https://github.com/frzifus)'
-spelling:
-  cSpell:ignore k8sattributes k8sattributesprocessor K8sattributes k8sprocessor
-  cSpell:ignore K8sprocessor KUBE
+# prettier-ignore
+cSpell:ignore: basicauth Benedikt Bongartz dXNlci0xOjEyMzQK frzifus htpasswd k8sattributes K8sattributes k8sattributesprocessor K8sprocessor k8sprocessor Keycloak letsencrypt llczt oidc rolebinding
 ---
 
 Exposing an [OpenTelemetry Collector](/docs/collector/) currently requires a
 number of configuration steps. The goal of this blog post is to demonstrate
 `how to establish a secure communication` between two collectors in different
-kubernetes clusters.
+Kubernetes clusters.
 
 Details of CRDs and dependency installations are not covered by this post.
 
@@ -25,7 +24,7 @@ services from sending data.
 The OpenTelemetry Collector supports different authentication methods. The most
 used are probably:
 
-1. TLS Authentification
+1. TLS Authentication
 2. OpenID Connect (OIDC-Authentication)
 3. HTTP Basic Authentication
 
@@ -38,7 +37,7 @@ article
 [How TLS provides identification, authentication, confidentiality, and integrity](https://www.ibm.com/docs/en/ibm-mq/9.1?topic=tls-how-provides-identification-authentication-confidentiality-integrity)
 and the Collector
 [TLS-Config](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.58.0/config/configtls/README.md)
-description on Github.
+description on GitHub.
 
 If you are interested in using an external authentication provider, I advise you
 to have a look at the article
@@ -56,7 +55,7 @@ The HTTP Basic Authentication mechanism is quite simple. An HTTP user agent
 request. Transmitted credentials are included in the HTTP header by the key
 `Authorization` when the connection is established. As a value the
 authentication method `basic` is mentioned first, followed by the encoded
-crendentials. Note that the credential form is `username:password`.
+credentials. Note that the credential form is `username:password`.
 
 In the following example, `dXNlci0xOjEyMzQK` is the encoding for a combination
 of `username=user-1` and `password=1234`. Note to encode or decode base64
@@ -102,17 +101,16 @@ transmitted traces are stored in a
 Interfaces and behavior may change in the future. Therefore, the versions used
 in this setup are mentioned in brackets.
 
-- A Kubernetes[v1.23.3] cluster with a public address with
-  [ingress-nginx-controller](https://docs.nginx.com/nginx-ingress-controller/)[v1.2.1]
-  installed.
-- A Kubernetes[v1.23.3] edge cluster to create a test cluster. Using
+- A Kubernetes [v1.23.3] cluster with a public address with
+  [ingress-nginx-controller](https://docs.nginx.com/nginx-ingress-controller/)
+  [v1.2.1] installed.
+- A Kubernetes [v1.23.3] edge cluster to create a test cluster. Using
   [Kind](https://kind.sigs.k8s.io/) is recommended.
-- Installed [OpenTelemetry Operator](/docs/collector/getting-started)[v0.58.0]
+- Installed [OpenTelemetry Operator](/docs/collector/getting-started) [v0.58.0]
   on both ends.
-- Installed
-  [Jaeger Operator](https://www.jaegertracing.io/docs/1.37/operator/)[v1.37.0]
-  on your public cluster.
-- Installed [cert-manager](https://cert-manager.io/)[v1.9.1] on your public
+- Installed [Jaeger Operator](https://www.jaegertracing.io/docs/1.37/operator/)
+  [v1.37.0] on your public cluster.
+- Installed [cert-manager](https://cert-manager.io/) [v1.9.1] on your public
   cluster.
 
 ## Remote cluster configuration
@@ -141,7 +139,7 @@ not contain the
 extension. This extension was configured with the name `basicauth/server` and
 registered in `otlp/basicauth`. As
 [otlp exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/v0.58.0/exporter/otlpexporter)
-endpoint the jaeger inmemory service was configured.
+endpoint the Jaeger in-memory service was configured.
 
 ```yaml
 apiVersion: opentelemetry.io/v1alpha1
@@ -181,7 +179,7 @@ spec:
 ```
 
 After a successful installation, a pod for the Jaeger backend and the
-OpenTelemetry collector should be created in the selected namespace.
+OpenTelemetry Collector should be created in the selected namespace.
 
 ```bash
 NAME                                            READY   STATUS    RESTARTS   AGE
@@ -200,11 +198,10 @@ my-in-memory-query                        ClusterIP   10.245.91.239   <none>    
 otel-collector-app-collector              ClusterIP   10.245.5.134    <none>        4317/TCP                                                    5m
 otel-collector-app-collector-headless     ClusterIP   None            <none>        4317/TCP                                                    5m
 otel-collector-app-collector-monitoring   ClusterIP   10.245.116.38   <none>        8888/TCP                                                    5m
-
 ```
 
 Finally, cert-manager is configured to automatically request TLS certificates
-from [lets encrypt](https://letsencrypt.org/) and make it available to the
+from [Let’s Encrypt](https://letsencrypt.org/) and make it available to the
 Ingress TLS configuration. The following `ClusterIssuer` and `Ingress` entries
 expose the `otel-collector-app-collector` service. Note that you'll need to
 replace values for the `email` and `host` fields.
@@ -257,10 +254,10 @@ spec:
 In order to be able to determine the origin of the transmitted traces, the
 span-tags are extended by identifying metadata with the help of the
 [k8sattributes processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.58.0/processor/k8sattributesprocessor).
-K8sattribute processor is available in the OpenTelemetry Collector contrib
-version. In the next step we create a service account with the necessary
-permissions. If you want to learn more about the k8s metadata, you can read this
-post "[Improved troubleshooting using k8s metadata](/blog/2022/k8s-metadata)".
+It is available in the OpenTelemetry Collector contrib version. In the next step
+we create a service account with the necessary permissions. If you want to learn
+more about the K8s metadata, you can read this post
+"[Improved troubleshooting using K8s metadata](/blog/2022/k8s-metadata)".
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -301,7 +298,7 @@ node exists. The `basicauth` extension contains `username` and `password` to
 identify itself to the exposed remote collector. More container and node
 specific information are provided by the `k8sattributes` processor via the
 kubernetes
-[kubernetes downward-api](https://kubernetes.io/docs/concepts/workloads/pods/downward-api/).
+[Kubernetes downward-api](https://kubernetes.io/docs/concepts/workloads/pods/downward-api/).
 What is not covered is the cluster availability zone and the cluster name. To be
 able to identify the reported spans later, they are inserted manually with the
 help of the `resource` processor. Last, the OTLP exporter endpoint has also been
@@ -416,11 +413,11 @@ Forwarding from 127.0.0.1:16686 -> 16686
 
 Configurations like `Ingress`, `ClusterIssuer` and `OpenTelemetryCollector` on
 client and server side have to be configured manually. Depending on installed
-kubernetes components, the configurations differ a lot. Overall the
+Kubernetes components, the configurations differ a lot. Overall the
 configuration is very error-prone. In the future the exposing of the collector
 should be simplified with the help of the OpenTelemetry operator. If you are
 interested in the development, you can follow
-[Github issue #902](https://github.com/open-telemetry/opentelemetry-operator/issues/902)
+[GitHub issue #902](https://github.com/open-telemetry/opentelemetry-operator/issues/902)
 to stay updated.
 
 ## References
@@ -444,6 +441,6 @@ to stay updated.
 - [Basic HTTP Authentication](https://datatracker.ietf.org/doc/html/rfc7617)
 - [Kubernetes Downward-API](https://kubernetes.io/docs/concepts/workloads/pods/downward-api/)
 - [Let’s Encrypt](https://letsencrypt.org/)
-- [Ingress nginx gRPC example](https://kubernetes.github.io/ingress-nginx/examples/grpc/)
+- [Ingress NGINX gRPC example](https://kubernetes.github.io/ingress-nginx/examples/grpc/)
 - [OpenTelemetry-Collector TLS-Config](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.58.0/config/configtls/README.md)
 - [How TLS provides identification, authentication, confidentiality, and integrity](https://www.ibm.com/docs/en/ibm-mq/9.1?topic=tls-how-provides-identification-authentication-confidentiality-integrity)

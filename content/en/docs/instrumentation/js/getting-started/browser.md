@@ -1,8 +1,11 @@
 ---
 title: Browser
 aliases: [/docs/js/getting_started/browser]
-weight: 3
+weight: 20
 ---
+
+{{% alert title="Warning" color="warning" %}}
+{{% _param notes.browser-instrumentation %}} {{% /alert %}}
 
 While this guide uses the example application presented below, the steps to
 instrument your own application should be similar.
@@ -23,7 +26,7 @@ This is a very simple guide, if you'd like to see more complex examples go to
 Copy the following file into an empty directory and call it `index.html`.
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -35,7 +38,7 @@ Copy the following file into an empty directory and call it `index.html`.
       dynamically generated server side to have the server's request trace Id,
       a parent span Id that was set on the server's request span, and the trace
       flags to indicate the server's sampling decision
-      (01 = sampled, 00 = notsampled).
+      (01 = sampled, 00 = not sampled).
       '{version}-{traceId}-{spanId}-{sampleDecision}'
     -->
     <meta
@@ -73,7 +76,7 @@ tsc --init
 ```
 
 Then acquire [parcel](https://parceljs.org/), which will (among other things)
-let you work in Typescript.
+let you work in TypeScript.
 
 ```shell
 npm install --save-dev parcel
@@ -83,16 +86,19 @@ Create an empty code file named `document-load` with a `.ts` or `.js` extension,
 as appropriate, based on the language you've chosen to write your app in. Add
 the following code to your HTML right before the `</body>` closing tag:
 
-<!-- prettier-ignore-start -->
-{{< tabpane lang=html persistLang=false >}}
-{{< tab TypeScript >}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
+
+```html
 <script type="module" src="document-load.ts"></script>
-{{< /tab >}}
-{{< tab JavaScript >}}
+```
+
+{{% /tab %}} {{% tab JavaScript %}}
+
+```html
 <script type="module" src="document-load.js"></script>
-{{< /tab >}}
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 We will add some code that will trace the document load timings and output those
 as OpenTelemetry Spans.
@@ -128,7 +134,7 @@ Now build the app with parcel:
 npx parcel index.html
 ```
 
-and open the development webserver (e.g. at `http://localhost:1234`) to see if
+and open the development web server (e.g. at `http://localhost:1234`) to see if
 your code works.
 
 There will be no output of traces yet, for this we need to add an exporter.
@@ -231,7 +237,7 @@ developer toolbar you should see some traces being exported:
 
 ### Add Instrumentations
 
-If you want to instrument AJAX requests, User Interactions and others, you can
+If you want to instrument Ajax requests, User Interactions and others, you can
 register additional instrumentations for those:
 
 ```javascript

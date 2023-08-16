@@ -1,6 +1,7 @@
 ---
 title: Getting Started
-weight: 2
+weight: 10
+cSpell:ignore: KHTML loglevel nameof
 ---
 
 OpenTelemetry for .NET is unique among OpenTelemetry implementations, as it is
@@ -80,7 +81,7 @@ Note: an `Activity` in .NET is analogous to a Span in OpenTelemetry terminology
 <details>
 <summary>View example output</summary>
 
-```
+```properties
 Activity.TraceId:            54d084eba205a7a39398df4642be8f4a
 Activity.SpanId:             aca5e39a86a17d59
 Activity.TraceFlags:         Recorded
@@ -187,7 +188,7 @@ console. like this.
 <details>
 <summary>View example output</summary>
 
-```
+```text
 Export http.server.duration, Measures the duration of inbound HTTP requests., Unit: ms, Meter: OpenTelemetry.Instrumentation.AspNetCore/1.0.0.0
 (2023-02-21T12:38:57.0187781Z, 2023-02-21T12:44:16.9651349Z] http.flavor: 1.1 http.method: GET http.route: {controller=Home}/{action=Index}/{id?} http.scheme: http http.status_code: 200 net.host.name: localhost net.host.port: 5123 Histogram
 Value: Sum: 373.4504 Count: 1 Min: 373.4504 Max: 373.4504
@@ -207,7 +208,6 @@ Value: Sum: 373.4504 Count: 1 Min: 373.4504 Max: 373.4504
 (5000,7500]:0
 (7500,10000]:0
 (10000,+Infinity]:0
-
 ```
 
 </details>
@@ -240,22 +240,21 @@ public static class DiagnosticsConfig
     public static Counter<long> RequestCounter =
         Meter.CreateCounter<long>("app.request_counter");
 }
-
 ```
 
 Now we can increment the counter in our `Index` action.
 
 ```csharp
-    public IActionResult Index()
-    {
-        // do other stuff
+public IActionResult Index()
+{
+    // do other stuff
 
-        DiagnosticsConfig.RequestCounter.Add(1,
-            new("Action", nameof(Index)),
-            new("Controller", nameof(HomeController)));
+    DiagnosticsConfig.RequestCounter.Add(1,
+        new("Action", nameof(Index)),
+        new("Controller", nameof(HomeController)));
 
-        return View();
-    }
+    return View();
+}
 ```
 
 You'll notice here that we're also adding Tags (OpenTelemetry Attributes) to our
@@ -265,7 +264,7 @@ output like this.
 <details>
 <summary>View example output</summary>
 
-```
+```text
 Export app.request_counter, Meter: MyService
 (2023-02-21T13:11:28.7265324Z, 2023-02-21T13:11:48.7074259Z] Action: Index Controller: HomeController LongSum
 Value: 1
@@ -384,3 +383,7 @@ telemetry backends.
 You can also check the
 [automatic instrumentation for .NET](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation),
 which is currently in beta.
+
+If you'd like to explore a more complex example, take a look at the
+[OpenTelemetry Demo](/docs/demo/), which includes the .NET based
+[Cart Service](/docs/demo/services/cart/).

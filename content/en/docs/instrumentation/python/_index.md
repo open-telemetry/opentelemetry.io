@@ -2,13 +2,12 @@
 title: Python
 description: >-
   <img width="35" class="img-initial" src="/img/logos/32x32/Python_SDK.svg"
-  alt="Python"></img> A language-specific implementation of OpenTelemetry in
-  Python.
+  alt="Python"> A language-specific implementation of OpenTelemetry in Python.
 aliases: [/python, /python/metrics, /python/tracing]
 weight: 22
 ---
 
-{{% lang_instrumentation_index_head python /%}}
+{{% docs/instrumentation/index-intro python /%}}
 
 ## Version support
 
@@ -49,8 +48,8 @@ implementations, etc., visit the [Registry](/ecosystem/registry/?s=python).
 ### Installing Cutting-edge Packages
 
 There is some functionality that has not yet been released to PyPI. In that
-situation, you may want to install the packages directly from the repo. This can
-be done by cloning the repository and doing an
+situation, you may want to install the packages directly from the repository.
+This can be done by cloning the repository and doing an
 [editable install](https://pip.pypa.io/en/stable/reference/pip_install/#editable-installs):
 
 ```sh

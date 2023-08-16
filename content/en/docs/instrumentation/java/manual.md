@@ -5,16 +5,14 @@ aliases:
   - /docs/java/getting_started
   - /docs/java/manual_instrumentation
   - /docs/instrumentation/java/manual_instrumentation
-weight: 5
+weight: 30
+description: Manual instrumentation for OpenTelemetry Java
+cSpell:ignore: autoconfigure classpath customizer logback loggable multivalued
 ---
 
-**Libraries** that want to export telemetry data using OpenTelemetry MUST only
-depend on the `opentelemetry-api` package and should never configure or depend
-on the OpenTelemetry SDK. The SDK configuration must be provided by
-**Applications** which should also depend on the `opentelemetry-sdk` package, or
-any other implementation of the OpenTelemetry API. This way, libraries will
-obtain a real implementation only if the user application is configured for it.
-For more details, check out the [Library Guidelines].
+<!-- markdownlint-disable no-duplicate-heading -->
+
+{{% docs/instrumentation/manual-intro %}}
 
 ## Setup
 
@@ -71,6 +69,8 @@ telemetry source-identifying info.
 </project>
 ```
 
+See [releases][releases] for a full list of artifact coordinates.
+
 ### Gradle
 
 ```kotlin
@@ -82,6 +82,8 @@ dependencies {
 }
 ```
 
+See [releases][releases] for a full list of artifact coordinates.
+
 ### Imports
 
 ```java
@@ -91,12 +93,15 @@ import io.opentelemetry.api.trace.propagation.W3CTraceContextPropagator;
 import io.opentelemetry.context.propagation.ContextPropagators;
 import io.opentelemetry.exporter.otlp.metrics.OtlpGrpcMetricExporter;
 import io.opentelemetry.exporter.otlp.trace.OtlpGrpcSpanExporter;
+import io.opentelemetry.exporter.otlp.logs.OtlpGrpcLogRecordExporter;
 import io.opentelemetry.sdk.OpenTelemetrySdk;
 import io.opentelemetry.sdk.metrics.SdkMeterProvider;
 import io.opentelemetry.sdk.metrics.export.PeriodicMetricReader;
 import io.opentelemetry.sdk.resources.Resource;
 import io.opentelemetry.sdk.trace.SdkTracerProvider;
 import io.opentelemetry.sdk.trace.export.BatchSpanProcessor;
+import io.opentelemetry.sdk.logs.SdkLoggerProvider;
+import io.opentelemetry.sdk.logs.export.BatchLogRecordProcessor;
 import io.opentelemetry.semconv.resource.attributes.ResourceAttributes;
 ```
 
@@ -116,9 +121,15 @@ SdkMeterProvider sdkMeterProvider = SdkMeterProvider.builder()
   .setResource(resource)
   .build();
 
+SdkLoggerProvider sdkLoggerProvider = SdkLoggerProvider.builder()
+  .addLogRecordProcessor(BatchLogRecordProcessor.builder(OtlpGrpcLogRecordExporter.builder().build()).build())
+  .setResource(resource)
+  .build();
+
 OpenTelemetry openTelemetry = OpenTelemetrySdk.builder()
   .setTracerProvider(sdkTracerProvider)
   .setMeterProvider(sdkMeterProvider)
+  .setLoggerProvider(sdkLoggerProvider)
   .setPropagators(ContextPropagators.create(W3CTraceContextPropagator.getInstance()))
   .buildAndRegisterGlobal();
 ```
@@ -127,10 +138,12 @@ As an aside, if you are writing library instrumentation, it is strongly
 recommended that you provide your users the ability to inject an instance of
 `OpenTelemetry` into your instrumentation code. If this is not possible for some
 reason, you can fall back to using an instance from the `GlobalOpenTelemetry`
-class. Note that you can't force end-users to configure the global, so this is
+class. Note that you can't force end users to configure the global, so this is
 the most brittle option for library instrumentation.
 
-## Acquiring a Tracer
+## Traces
+
+### Acquiring a Tracer
 
 To do [Tracing](/docs/concepts/signals/traces/) you'll need to acquire a
 [`Tracer`](/docs/concepts/signals/traces/#tracer).
@@ -277,7 +290,7 @@ span.setAttribute("http.url", url.toString());
 There are semantic conventions for spans representing operations in well-known
 protocols like HTTP or database calls. Semantic conventions for these spans are
 defined in the specification at
-[Trace Semantic Conventions](/docs/reference/specification/trace/semantic_conventions/).
+[Trace Semantic Conventions](/docs/specs/otel/trace/semantic_conventions/).
 
 First add the semantic conventions as a dependency to your application:
 
@@ -382,7 +395,7 @@ try (Scope scope = span.makeCurrent()) {
 	// do something
 } catch (Throwable throwable) {
   span.setStatus(StatusCode.ERROR, "Something bad happened!");
-  span.recordException(throwable)
+  span.recordException(throwable);
 } finally {
   span.end(); // Cannot set a span after this call
 }
@@ -616,6 +629,90 @@ meter
   });
 ```
 
+## Logs
+
+Logs are distinct from Metrics and Tracing in that there is no user-facing logs
+API. Instead, there is tooling to bridge logs from existing popular log
+frameworks (e.g. SLF4j, JUL, Logback, Log4j) into the OpenTelemetry ecosystem.
+
+The two typical workflows discussed below each cater to different application
+requirements.
+
+### Direct to collector
+
+In the direct to collector workflow, logs are emitted directly from an
+application to a collector using a network protocol (e.g. OTLP). This workflow
+is simple to set up as it doesn't require any additional log forwarding
+components, and allows an application to easily emit structured logs that
+conform to the [log data model][log data model]. However, the overhead required
+for applications to queue and export logs to a network location may not be
+suitable for all applications.
+
+To use this workflow:
+
+- Install appropriate [Log Appender](#log-appenders).
+- Configure the OpenTelemetry [Log SDK](#logs-sdk) to export log records to
+  desired target destination (the [collector][opentelemetry collector] or
+  other).
+
+#### Log appenders
+
+A log appender bridges logs from a log framework into the OpenTelemetry
+[Log SDK](#logs-sdk) using the [Logs Bridge API][logs bridge API]. Log appenders
+are available for various popular Java log frameworks:
+
+- [Log4j2 Appender][log4j2 appender]
+- [Logback Appender][logback appender]
+
+The links above contain full usage and installation documentation, but
+installation is generally as follows:
+
+- Add required dependency via gradle or maven.
+- Extend the application's log configuration (i.e. `logback.xml`, `log4j.xml`,
+  etc) to include a reference to the OpenTelemetry log appender.
+  - Optionally configure the log framework to determine which logs (i.e. filter
+    by severity or logger name) are passed to the appender.
+  - Optionally configure the appender to indicate how logs are mapped to
+    OpenTelemetry Log Records (i.e. capture thread information, context data,
+    markers, etc).
+
+Log appenders automatically include the trace context in log records, enabling
+log correlation with traces.
+
+The [Log Appender example][log appender example] demonstrates setup for a
+variety of scenarios.
+
+### Via file or stdout
+
+In the file or stdout workflow, logs are written to files or standout output.
+Another component (e.g. FluentBit) is responsible for reading / tailing the
+logs, parsing them to more structured format, and forwarding them a target, such
+as the collector. This workflow may be preferable in situations where
+application requirements do not permit additional overhead from
+[direct to collector](#direct-to-collector). However, it requires that all log
+fields required down stream are encoded into the logs, and that the component
+reading the logs parse the data into the [log data model][log data model]. The
+installation and configuration of log forwarding components is outside the scope
+of this document.
+
+Log correlation with traces is available by installing
+[log context instrumentation](#log-context-instrumentation).
+
+#### Log context instrumentation
+
+OpenTelemetry provides components which enrich log context with trace context
+for various popular Java log frameworks:
+
+- [Log4j context data instrumentation][log4j context instrumentation]
+- [Logback MDC instrumentation][logback context instrumentation]
+
+This links above contain full usage and installation documentation, but
+installation is generally as follows:
+
+- Add required dependency via gradle or maven.
+- Extend the application's log configuration (i.e. `logback.xml` or `log4j.xml`,
+  etc) to reference the trace context fields in the log pattern.
+
 ## SDK Configuration
 
 The configuration examples reported in this document only apply to the SDK
@@ -774,7 +871,7 @@ Views provide a mechanism for controlling how measurements are aggregated into
 metrics. They consist of an `InstrumentSelector` and a `View`. The instrument
 selector consists of a series of options for selecting which instruments the
 view applies to. Instruments can be selected by a combination of name, type,
-meter name, meter version, and meter schema url. The view describes how
+meter name, meter version, and meter schema URL. The view describes how
 measurement should be aggregated. The view can change the name, description, the
 aggregation, and define the set of attribute keys that should be retained.
 
@@ -797,6 +894,66 @@ type of instrument. When a registered view matches an instrument, the default
 view is replaced by the registered view. Additional registered views that match
 the instrument are additive, and result in multiple exported metrics for the
 instrument.
+
+### Logs SDK
+
+The logs SDK dictates how logs are processed when using the
+[direct to collector](#direct-to-collector) workflow. No log SDK is needed when
+using the [log forwarding](#via-file-or-stdout) workflow.
+
+The typical log SDK configuration installs a log record processor and exporter.
+For example, the following installs the
+[BatchLogRecordProcessor](#logrecord-processor), which periodically exports to a
+network location via the [OtlpGrpcLogRecordExporter](#logrecord-exporter):
+
+```java
+SdkLoggerProvider loggerProvider = SdkLoggerProvider.builder()
+  .addLogRecordProcessor(
+    BatchLogRecordProcessor.builder(
+      OtlpGrpcLogRecordExporter.builder()
+          .setEndpoint("http://localhost:4317")
+          .build())
+      .build())
+  .build();
+```
+
+#### LogRecord Processor
+
+LogRecord processors process LogRecords emitted by
+[log appenders](#log-appenders).
+
+OpenTelemetry provides the following LogRecord processors out of the box:
+
+- `BatchLogRecordProcessor`: periodically sends batches of LogRecords to a
+  [LogRecordExporter](#logrecord-exporter).
+- `SimpleLogRecordProcessor`: immediately sends each LogRecord to a
+  [LogRecordExporter](#logrecord-exporter).
+
+Custom LogRecord processors are supported by implementing the
+`LogRecordProcessor` interface. Common use cases include enriching the
+LogRecords with contextual data like baggage, or filtering / obfuscating
+sensitive data.
+
+#### LogRecord Exporter
+
+`BatchLogRecordProcessor` and `SimpleLogRecordProcessor` are paired with
+`LogRecordExporter`, which is responsible for sending telemetry data to a
+particular backend. OpenTelemetry provides the following exporters out of the
+box:
+
+- OpenTelemetry Protocol Exporter: sends the data in OTLP to the [OpenTelemetry
+  Collector] or other OTLP receivers. Varieties include
+  `OtlpGrpcLogRecordExporter` and `OtlpHttpLogRecordExporter`.
+- `InMemoryLogRecordExporter`: keeps the data in memory, useful for testing and
+  debugging.
+- Logging Exporter: saves the telemetry data into log streams. Varieties include
+  `SystemOutLogRecordExporter` and `OtlpJsonLoggingLogRecordExporter`. Note:
+  `OtlpJsonLoggingLogRecordExporter` logs to JUL, and may cause infinite loops
+  (i.e. JUL -> SLF4J -> Logback -> OpenTelemetry Appender -> OpenTelemetry Log
+  SDK -> JUL) if not carefully configured.
+
+Custom exporters are supported by implementing the `LogRecordExporter`
+interface.
 
 ### Auto Configuration
 
@@ -863,7 +1020,7 @@ AutoConfiguredOpenTelemetrySdk.builder()
         .build();
 ```
 
-## Logging and Error Handling
+## SDK Logging and Error Handling
 
 OpenTelemetry uses
 [java.util.logging](https://docs.oracle.com/javase/7/docs/api/java/util/logging/package-summary.html)
@@ -925,17 +1082,26 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/AlwaysOnSampler.java
 [httpexchange]:
   https://docs.oracle.com/javase/8/docs/jre/api/net/httpserver/spec/com/sun/net/httpserver/HttpExchange.html
-[instrumentation library]:
-  /docs/reference/specification/glossary/#instrumentation-library
-[instrumented library]:
-  /docs/reference/specification/glossary/#instrumented-library
-[library guidelines]: /docs/reference/specification/library-guidelines
-[obtaining a tracer]: /docs/reference/specification/trace/api/#get-a-tracer
+[instrumentation library]: /docs/specs/otel/glossary/#instrumentation-library
+[instrumented library]: /docs/specs/otel/glossary/#instrumented-library
+[logs bridge API]: /docs/specs/otel/logs/bridge-api
+[log data model]: /docs/specs/otel/logs/data-model
+[log4j2 appender]:
+  https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/log4j/log4j-appender-2.17/library
+[logback appender]:
+  https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/logback/logback-appender-1.0/library
+[log appender example]:
+  https://github.com/open-telemetry/opentelemetry-java-docs/tree/main/log-appender
+[log4j context instrumentation]:
+  https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/log4j/log4j-context-data/log4j-context-data-2.17/library-autoconfigure
+[logback context instrumentation]:
+  https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/logback/logback-mdc-1.0/library
+[obtaining a tracer]: /docs/specs/otel/trace/api/#get-a-tracer
 [opentelemetry collector]:
   https://github.com/open-telemetry/opentelemetry-collector
 [opentelemetry registry]: /ecosystem/registry/?component=exporter&language=java
 [parentbased]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/ParentBasedSampler.java
-[semantic conventions]: /docs/reference/specification/trace/semantic_conventions
+[releases]: https://github.com/open-telemetry/opentelemetry-java#releases
 [traceidratiobased]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/TraceIdRatioBasedSampler.java

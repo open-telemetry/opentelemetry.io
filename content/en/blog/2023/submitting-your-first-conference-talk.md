@@ -4,6 +4,7 @@ linkTitle: Submitting a CFP
 date: 2023-02-10
 author: '[Josh Lee](https://github.com/joshleecreates/) (IBM)'
 canonical_url: https://joshuamlee.com/submitting-your-first-conference-talk/
+cSpell:ignore: scraly Sessionize
 ---
 
 Submitting a conference talk in the tech industry can be a thrilling and

@@ -4,9 +4,8 @@ linkTitle: Go App Instrumentation
 date: 2022-08-23
 author: '[Naveh Mevorach](https://github.com/NavehMevorach) (Aspecto)'
 canonical_url: https://www.aspecto.io/blog/opentelemetry-go-getting-started/
-spelling: >-
-  cSpell:ignore Naveh Mevorach Mandalorian bson gonic otelgin otelmongo
-  cSpell:ignore sdktrace semconv todos dogz aspecto
+# prettier-ignore
+cSpell:ignore: bson dogz gonic Mandalorian Mevorach Naveh otelgin otelmongo sdktrace todos
 ---
 
 In this blog post, you will learn hands-on how to create and visualize traces
@@ -15,7 +14,7 @@ with OpenTelemetry Go without prior knowledge.
 We will start with creating a simple to-do app that uses Mongo and the Gin
 framework. Then, we will send tracing data to Jaeger Tracing for visualization.
 You can find all the relevant files in this
-[Github repository](https://github.com/aspecto-io/opentelemetry-examples/tree/master/go).
+[GitHub repository](https://github.com/aspecto-io/opentelemetry-examples/tree/master/go).
 
 ![OpenTelemetry Go - The Mandalorian](OpenTelemetry-Go-The-Mandalorian-2048x1406.png)
 
@@ -145,14 +144,14 @@ gin.Context.Request.Context.
 cur, findErr := collection.Find(c.Request.Context(), bson.D{})
 ```
 
-So make sure that you pass the Context to the mongodb operation. Check out this
+So make sure that you pass the Context to the MongoDB operation. Check out this
 issue for more info.
 
 We now have our todo app ready and instrumented. It’s time to utilize
 OpenTelemetry to its full potential. Our ability to visualize traces is where
 the true troubleshooting power of this technology comes into play.
 
-For visualization, we’ll be using the open-source Jaeger Tracing.
+For visualization, we’ll be using the open source Jaeger Tracing.
 
 ## Visualization with Jaeger
 
@@ -160,8 +159,8 @@ For visualization, we’ll be using the open-source Jaeger Tracing.
 
 [Jaeger Tracing](https://www.aspecto.io/blog/jaeger-tracing-the-ultimate-guide/)
 is a suite of open source projects managing the entire distributed tracing
-“stack”: client, collector, and UI. Jaeger UI is the most commonly used
-open-source to visualize traces.
+“stack”: client, collector, and UI. Jaeger UI is the most commonly used open
+source to visualize traces.
 
 Here’s what the setup looks like:
 
@@ -402,7 +401,7 @@ should see your trace on the right:
 
 ![Jaeger UI displays opentelemetry traces in go for our todo-service](jaeger-otel-todo.png)
 
-Jaeger UI displays opentelemetry traces in go for our todo-service By clicking
+Jaeger UI displays OpenTelemetry traces in go for our todo-service By clicking
 the trace, you can drill down and see more details about it that allow you to
 further investigate on your own:
 

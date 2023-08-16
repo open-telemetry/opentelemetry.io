@@ -1,7 +1,10 @@
 ---
 title: Exporters
-weight: 4
+weight: 50
+cSpell:ignore: chrono millis ostream
 ---
+
+<!-- markdownlint-disable no-duplicate-heading -->
 
 In order to visualize and analyze your [traces](/docs/concepts/signals/traces/)
 and metrics, you will need to export them to a backend.
@@ -40,7 +43,7 @@ opts.url = "http://localhost:4318/v1/traces";
 auto exporter = otlp::OtlpHttpExporterFactory::Create(opts);
 ```
 
-#### OTLP GRPC Exporter
+#### OTLP gRPC Exporter
 
 ```cpp
 #include "opentelemetry/exporters/otlp/otlp_grpc_exporter_factory.h"
@@ -84,7 +87,7 @@ docker run -d --name jaeger \
 
 ### Zipkin
 
-To send trace data to a zipkin endpoint you'll want to configure a zipkin
+To send trace data to a Zipkin endpoint you'll want to configure a Zipkin
 exporter that sends to your endpoint.
 
 ```cpp
@@ -179,7 +182,7 @@ std::unique_ptr<opentelemetry::sdk::metrics::MetricReader> reader{
 
 ### Prometheus
 
-To send metrics to a prometheus endpoint you'll want to configure a prometheus
+To send metrics to a Prometheus endpoint you'll want to configure a prometheus
 exporter
 
 ```cpp

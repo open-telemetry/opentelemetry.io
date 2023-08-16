@@ -1,14 +1,13 @@
 ---
 title: Join us for OpenTelemetry Talks and Activities at Kubecon NA 2022
 linkTitle: Kubecon NA '22
-date: 2022-10-10
-spelling:
-  cSpell:ignore Alolita Sharma unconference Kowall Logz Dyla Vineeth Pothulapati
 author: '[Alolita Sharma](https://github.com/alolita)'
+date: 2022-10-10
+cSpell:ignore: Kowall Logz Pothulapati unconference Vineeth
 ---
 
 The OpenTelemetry project maintainers, and members of the governance committee
-and technical committee are excited to be at [Kubecon NA][] in a few weeks! Join
+and technical committee are excited to be at [KubeCon NA][] in a few weeks! Join
 in to meet up in person or virtually for [OpenTelemetry](/) activities in
 Detroit from October 24 - 28, 2022.
 
@@ -18,7 +17,7 @@ OpenTelemetry or contributing to the project.
 
 The talks, maintainer sessions and other project activities are listed below.
 
-## Kubecon Talks and Maintainer Sessions
+## KubeCon Talks and Maintainer Sessions
 
 **[Jaeger: The Future with OpenTelemetry and Metrics](https://sched.co/182O7)**
 by Jonah Kowall, Logz.io & Joe Elliott, Grafana Wednesday, October 26 • 4:30pm -
@@ -43,13 +42,13 @@ committee members. For details, check out the
 [Open Observability Day](https://events.linuxfoundation.org/open-observability-day-north-america/)
 has several OpenTelemetry sessions including panel discussions, workshops,
 individual talks and lightning talks. This event will be on Monday Oct 24, 2022
-and is co-located with Kubecon NA. For talk details, see the
+and is co-located with KubeCon NA. For talk details, see the
 [schedule](https://events.linuxfoundation.org/open-observability-day-north-america/program/schedule/).
 
 [eBPF Day](https://events.linuxfoundation.org/cloud-native-ebpf-day-north-america/)
 also has some OpenTelemetry talks focused on profiling and tracing using eBPF
 events. This event will be held on Monday, Oct 24 2022 and is co-located with
-Kubecon NA. For details, check out the
+KubeCon NA. For details, check out the
 [schedule](https://events.linuxfoundation.org/cloud-native-ebpf-day-north-america/program/schedule/).
 
 The **OpenTelemetry project meeting** is to meet and network with the
@@ -60,7 +59,7 @@ Huntington Place.
 
 ## Come Visit the OpenTelemetry Project Booth
 
-Drop by and say Hi! at the OpenTelemetry project booth in the Kubecon NA Project
+Drop by and say Hi! at the OpenTelemetry project booth in the KubeCon NA Project
 Pavilion. If you’re lucky, you may even pick up some OpenTelemetry swag!
 
 The pavilion hours are:
@@ -77,5 +76,5 @@ Come join us to listen, learn and get involved in OpenTelemetry.
 
 See you in Detroit!
 
-[kubecon na]:
+[KubeCon NA]:
   https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/

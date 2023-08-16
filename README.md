@@ -13,7 +13,7 @@ missing [let us know][]!
 
 Read on to learn about other ways on how you can help.
 
-## Adding a project to the OpenTelemetry Registry
+## Adding a project to the OpenTelemetry [Registry]
 
 For details, see [Adding to the registry][].
 
@@ -67,7 +67,7 @@ See [CONTRIBUTING.md][].
 We have curated some issues with the tags [help wanted][] and [good first
 issue][]. This should allow you to quickly find a place to contribute
 
-We (OTel Comms SIG) meet every two weeks on Thursdays at 10:30 PT. Check out the
+We (OTel Comms SIG) meet every two weeks on Monday at 9:00 PT. Check out the
 [OpenTelemetry community calendar][] for the Zoom link and any updates to this
 schedule.
 

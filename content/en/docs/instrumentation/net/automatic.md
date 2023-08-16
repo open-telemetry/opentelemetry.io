@@ -1,14 +1,14 @@
 ---
 title: Automatic Instrumentation
 linkTitle: Automatic
-weight: 3
+weight: 20
 ---
 
 You can use
-[automatic instrumentation](/docs/reference/specification/glossary/#automatic-instrumentation)
-to initialize [signal](/docs/reference/specification/glossary/#signals)
-providers and generate telemetry data for supported
-[instrumented libraries](/docs/reference/specification/glossary/#instrumented-library)
+[automatic instrumentation](/docs/specs/otel/glossary/#automatic-instrumentation)
+to initialize [signal](/docs/specs/otel/glossary/#signals) providers and
+generate telemetry data for supported
+[instrumented libraries](/docs/specs/otel/glossary/#instrumented-library)
 without modifying the application's source code.
 
 [Here][release] you can find the latest release of OpenTelemetry .NET Automatic

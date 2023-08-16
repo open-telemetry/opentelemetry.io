@@ -3,7 +3,11 @@
   {{ if findRE "^https://opentelemetry.io/\\w" .Destination -}}
     {{ warnf "%s: use a local path, not an external URL, for the following reference to a site local page: %s"
         .Page.File.Path .Destination -}}
-  {{ else if findRE "^https://github.com/open-telemetry/opentelemetry-specification/(blob|tree)/main/specification/\\w" .Destination -}}
+  {{ else if or
+    (findRE "^https://github.com/open-telemetry/opentelemetry-specification/(blob|tree)/main/specification/\\w" .Destination)
+    (findRE "^https://github.com/open-telemetry/opentelemetry-proto/(blob|tree)/main/docs/specification" .Destination)
+    (findRE "^https://github.com/open-telemetry/semantic-conventions/(blob|tree)/main/docs" .Destination)
+    -}}
     {{ warnf "%s: use a local path, not an external URL, for the following reference to a local specification page: %s"
     .Page.File.Path .Destination -}}
   {{ end -}}
