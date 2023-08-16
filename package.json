@@ -44,7 +44,7 @@
     "clean": "make clean",
     "cp:spec": "./scripts/content-modules/cp-pages.sh",
     "diff:check": "npm run _diff:check || (echo; echo 'WARNING: the files above have not been committed'; echo)",
-    "diff:fail": "npm run _diff:check || (echo; echo 'ERROR: the files above have changed. Locally rerun `npm run s test fix` and commit changes'; echo; exit 1)",
+    "diff:fail": "npm run _diff:check || (echo; echo 'ERROR: the files above have changed. Locally rerun `npm run test-and-fix` and commit changes'; echo; exit 1)",
     "fix:dict": "find content layouts -name \"*.md\" -print0 | xargs -0 ./scripts/normalize-cspell-front-matter.pl",
     "fix:filenames": "npm run _rename-to-kebab-case",
     "fix:format": "npm run format",
