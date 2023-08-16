@@ -153,9 +153,9 @@ scripts.
    curl localhost:8080/rolldice
    ```
 
-6. Stop the server process.
+6. After about 30 sec, stop the server process.
 
-At step 6, you should have seen trace and log output from the server and client
+At this point, you should see trace and log output from the server and client
 that looks something like this (output is line-wrapped for readability):
 
 ```log
