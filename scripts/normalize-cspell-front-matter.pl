@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use JSON;
+use JSON::PP;
 use FileHandle;
 
 my @words;
@@ -48,7 +48,7 @@ sub getSiteWideDictWords {
   # Remove JSON comments
   $json_text =~ s/^\s*\/\/.*$//mg;
 
-  my $json = JSON->new;
+  my $json = JSON::PP->new;
   my $data = $json->decode($json_text);
   my %dictionary = map { $_ => 1 } @{ $data->{words} };
 
