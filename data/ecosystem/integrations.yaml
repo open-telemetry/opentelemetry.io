@@ -1,0 +1,29 @@
+# cSpell:ignore containerd buildx Quarkus
+- name: containerd
+  url: https://containerd.io/
+  docsUrl: https://github.com/containerd/containerd/blob/main/docs/tracing.md
+  components: [Go]
+- name: CRI-O
+  url: https://cri-o.io/
+  docsUrl: https://github.com/cri-o/cri-o/blob/main/docs/crio.conf.5.md#criotracing-table
+  components: [Go]
+- name: Docker buildx
+  url: https://github.com/docker/buildx
+  docsUrl: https://docs.docker.com/build/building/opentelemetry/
+  components: [Go]
+- name: Kubernetes
+  url: https://kubernetes.io/
+  docsUrl: https://kubernetes.io/docs/concepts/cluster-administration/system-traces/
+  components: [Go]
+- name: Micrometer
+  url: https://micrometer.io/
+  docsUrl: https://micrometer.io/docs/tracing#_micrometer_tracing_opentelemetry_setup
+  components: [Java]
+- name: Quarkus
+  url: https://quarkus.io/
+  docsUrl: https://quarkus.io/guides/opentelemetry
+  components: [Java]
+- name: RoadRunner
+  url: https://roadrunner.dev/
+  docsUrl: https://roadrunner.dev/docs/lab-otel/current/en
+  components: [Go, PHP]

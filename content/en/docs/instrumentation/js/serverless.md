@@ -1,7 +1,7 @@
 ---
 title: Serverless
-weight: 8
-spelling: cSpell:ignore otelwrapper
+weight: 100
+cSpell:ignore: otelwrapper
 ---
 
 This guide shows how to get started with tracing serverless functions using
@@ -62,7 +62,7 @@ const collectorOptions = {
 };
 
 const spanProcessor = new BatchSpanProcessor(
-  new OTLPTraceExporter(collectorOptions)
+  new OTLPTraceExporter(collectorOptions),
 );
 
 provider.addSpanProcessor(spanProcessor);
@@ -247,7 +247,7 @@ const collectorOptions = {
 };
 
 const spanProcessor = new BatchSpanProcessor(
-  new OTLPTraceExporter(collectorOptions)
+  new OTLPTraceExporter(collectorOptions),
 );
 
 provider.addSpanProcessor(spanProcessor);

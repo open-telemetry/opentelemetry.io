@@ -2,7 +2,7 @@
 title: Histograms vs Summaries
 date: 2023-05-15
 author: '[Daniel Dyla](https://github.com/dyladan)'
-spelling: cSpell:ignore Dyla quantile quantiles timeseries aggregatable
+cSpell:ignore: aggregatable Björn Ganesh Kovalov Rabenstein Ruslan Vernekar
 canonical_url: https://dyladan.me/histograms/2023/05/03/histograms-vs-summaries/
 ---
 
@@ -58,10 +58,10 @@ advance.
 Given these disadvantages, summaries do have some advantages. First, they trade
 off a small performance penalty on the client for a significant reduction in
 transmission, storage, and server processing cost. In our histogram example
-above, the distribution is represented as 12 separate timeseries: 1 counter for
+above, the distribution is represented as 12 separate time series: 1 counter for
 each bucket + 1 bucket for out of range values + a total sum of all values. That
 is for a single, relatively modest, histogram with no attributes to multiply
-cardinality. By comparison, the summary is only a single timeseries for the
+cardinality. By comparison, the summary is only a single time series for the
 precomputed `p99` value. Second, they have very low and configurable relative
 error rates. In the histogram example above, we had a potential relative error
 of 17% where our summary is guaranteed to be within ± 0.5% accuracy.
@@ -90,7 +90,7 @@ specification as of v1.17.0. Exponential histograms come with several
 advantages:
 
 - Very efficient data collection and transmission
-- A constant number of timeseries created (and fewer of them) per histogram
+- A constant number of time series created (and fewer of them) per histogram
 - Very low relative error rates
 - Automatic bucket boundaries, making them simpler to configure and use
 

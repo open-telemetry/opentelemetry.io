@@ -27,10 +27,10 @@ release notes.
   other changes.
 - [Go v1.12.0/v0.35.0](https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.12.0)
   celebrates an important release of updated semantic conventions and metric
-  instruments, along with a handful of bug fixes and other important changes.
+  instruments, along with a handful of bugfixes and other important changes.
 - [JavaScript](https://github.com/open-telemetry/opentelemetry-js/releases) has
   released v1.4.0 of the API, v.1.9.0 of core, and v0.35.0 of experimental
-  packages! These releases include important bug fixes in tracing around clock
+  packages! These releases include important bugfixes in tracing around clock
   drift, as well as other deprecations and enhancements.
 - [Java v1.22.0](https://github.com/open-telemetry/opentelemetry-java/releases/tag/v1.22.0)
   includes several fixes and enhancements for exporters, as well as other
@@ -40,7 +40,7 @@ release notes.
   instrumentations for Spring Web MVC, JMS 3.0 (Jakarta), and Spring JMS 6.0.
 - [Operator v0.68.0](https://github.com/open-telemetry/opentelemetry-operator/releases/tag/v0.68.0)
   brings with it a new OpAMP Bridge service,and a fix to allow for deployment to
-  OpenShift clusters, along with other bug fixes.
+  OpenShift clusters, along with other bugfixes.
 - [Collector v1.0.0 (RC4)](https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.70.0)
   and
   [Collector Contrib v0.70.0](https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.70.0)
@@ -59,7 +59,7 @@ more of a guide to our priorities and prioritization.
 
 Interested in AWS Lambda, or other Functions-as-a-Service workloads, and how to
 emit OpenTelemetry data from them? Our
-[FAAS Working Group](https://github.com/open-telemetry/community#implementation-sigs)
+[FaaS Working Group](https://github.com/open-telemetry/community#implementation-sigs)
 has restarted in order to work on this problem. Join a meeting, or
 [check out their notes](https://docs.google.com/document/d/187XYoQcXQ9JxS_5v2wvZ0NEysaJ02xoOYNXj08pT0zc/),
 for more information.

@@ -33,4 +33,4 @@ If you find yourself asking questions like:
 For more information, see:
 
 - [Demo documentation](/docs/demo/)
-- [Demo repo](https://github.com/open-telemetry/opentelemetry-demo)
+- [Demo repository](https://github.com/open-telemetry/opentelemetry-demo)

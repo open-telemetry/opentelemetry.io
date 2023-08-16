@@ -18,7 +18,7 @@ OpenTelemetry maintainers? Check out the
 We organize the community into Special Interest Groups (SIGs) in order to
 improve our workflow and more easily manage a community project.
 [Read more](https://github.com/open-telemetry/community#special-interest-groups)
-from our [community repo](https://github.com/open-telemetry/community).
+from our [community repository](https://github.com/open-telemetry/community).
 
 ## Ecosystem
 

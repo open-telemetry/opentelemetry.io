@@ -2,6 +2,8 @@
 title: Checkout Service
 linkTitle: Checkout
 aliases: [/docs/demo/services/checkoutservice]
+# prettier-ignore
+cSpell:ignore: fatalf otelgrpc otelsarama otlpmetricgrpc otlptracegrpc sarama sdkmetric sdktrace
 ---
 
 This service is responsible to process a checkout order from the user. The
@@ -39,12 +41,12 @@ ensure all spans are exported. This service makes that call as part of a
 deferred function in main
 
 ```go
-    tp := initTracerProvider()
-    defer func() {
-        if err := tp.Shutdown(context.Background()); err != nil {
-            log.Printf("Error shutting down tracer provider: %v", err)
-        }
-    }()
+tp := initTracerProvider()
+defer func() {
+    if err := tp.Shutdown(context.Background()); err != nil {
+        log.Printf("Error shutting down tracer provider: %v", err)
+    }
+}()
 ```
 
 ### Adding gRPC auto-instrumentation
@@ -53,10 +55,10 @@ This service receives gRPC requests, which are instrumented in the main function
 as part of the gRPC server creation.
 
 ```go
-    var srv = grpc.NewServer(
-        grpc.UnaryInterceptor(otelgrpc.UnaryServerInterceptor()),
-        grpc.StreamInterceptor(otelgrpc.StreamServerInterceptor()),
-    )
+var srv = grpc.NewServer(
+    grpc.UnaryInterceptor(otelgrpc.UnaryServerInterceptor()),
+    grpc.StreamInterceptor(otelgrpc.StreamServerInterceptor()),
+)
 ```
 
 This service will issue several outgoing gRPC calls, which are all instrumented
@@ -79,12 +81,12 @@ be in turn be processed by other microservices. To instrument the Kafka client
 the Producer has to be wrapped after it has been created.
 
 ```go
-    saramaConfig := sarama.NewConfig()
-    producer, err := sarama.NewAsyncProducer(brokers, saramaConfig)
-    if err != nil {
-        return nil, err
-    }
-    producer = otelsarama.WrapAsyncProducer(saramaConfig, producer)
+saramaConfig := sarama.NewConfig()
+producer, err := sarama.NewAsyncProducer(brokers, saramaConfig)
+if err != nil {
+    return nil, err
+}
+producer = otelsarama.WrapAsyncProducer(saramaConfig, producer)
 ```
 
 ### Add attributes to auto-instrumented spans
@@ -93,19 +95,19 @@ Within the execution of auto-instrumented code you can get current span from
 context.
 
 ```go
-    span := trace.SpanFromContext(ctx)
+span := trace.SpanFromContext(ctx)
 ```
 
 Adding attributes to a span is accomplished using `SetAttributes` on the span
 object. In the `PlaceOrder` function several attributes are added to the span.
 
 ```go
-    span.SetAttributes(
-        attribute.String("app.order.id", orderID.String()), shippingTrackingAttribute,
-        attribute.Float64("app.shipping.amount", shippingCostFloat),
-        attribute.Float64("app.order.amount", totalPriceFloat),
-        attribute.Int("app.order.items.count", len(prep.orderItems)),
-    )
+span.SetAttributes(
+    attribute.String("app.order.id", orderID.String()), shippingTrackingAttribute,
+    attribute.Float64("app.shipping.amount", shippingCostFloat),
+    attribute.Float64("app.order.amount", totalPriceFloat),
+    attribute.Int("app.order.items.count", len(prep.orderItems)),
+)
 ```
 
 ### Add span events
@@ -117,14 +119,14 @@ attributes, others do not.
 Adding a span event without attributes:
 
 ```go
-    span.AddEvent("prepared")
+span.AddEvent("prepared")
 ```
 
 Adding a span event with additional attributes:
 
 ```go
-    span.AddEvent("charged",
-        trace.WithAttributes(attribute.String("app.payment.transaction.id", txID)))
+span.AddEvent("charged",
+    trace.WithAttributes(attribute.String("app.payment.transaction.id", txID)))
 ```
 
 ## Metrics
@@ -154,12 +156,12 @@ ensure all records are exported. This service makes that call as part of a
 deferred function in main
 
 ```go
-    mp := initMeterProvider()
-    defer func() {
-        if err := mp.Shutdown(context.Background()); err != nil {
-            log.Printf("Error shutting down meter provider: %v", err)
-        }
-    }()
+mp := initMeterProvider()
+defer func() {
+    if err := mp.Shutdown(context.Background()); err != nil {
+        log.Printf("Error shutting down meter provider: %v", err)
+    }
+}()
 ```
 
 ### Adding golang runtime auto-instrumentation
@@ -167,10 +169,10 @@ deferred function in main
 Golang runtime are instrumented in the main function
 
 ```go
-    err := runtime.Start(runtime.WithMinimumReadMemStatsInterval(time.Second))
-    if err != nil {
-        log.Fatal(err)
-    }
+err := runtime.Start(runtime.WithMinimumReadMemStatsInterval(time.Second))
+if err != nil {
+    log.Fatal(err)
+}
 ```
 
 ## Logs

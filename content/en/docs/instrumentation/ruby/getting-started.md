@@ -2,9 +2,9 @@
 title: Getting Started
 description: Get telemetry from your app in less than 5 minutes!
 aliases: [/docs/instrumentation/ruby/getting_started]
-spelling: cSpell:ignore truffleruby sinatra rolldice struct darwin Tracestate
-spelling: cSpell:ignore tracestate
-weight: 1
+# prettier-ignore
+cSpell:ignore: darwin rolldice sinatra struct Tracestate tracestate truffleruby
+weight: 10
 ---
 
 This page will show you how to get started with OpenTelemetry in Ruby.
@@ -31,7 +31,7 @@ While tested, support for `truffleruby` is on a best-effort basis at this time.
 ## Example Application
 
 The following example uses a basic [Rails](https://rubyonrails.org/)
-application. If you are not using Rails, that's ok — you can use OpenTelemetry
+application. If you are not using Rails, that's OK — you can use OpenTelemetry
 Ruby with other web frameworks as well, such as Sinatra and Rack. For a complete
 list of libraries for supported frameworks, see the
 [registry](/ecosystem/registry/?component=instrumentation&language=ruby).
@@ -192,6 +192,8 @@ a few more features that will allow you gain even deeper insights!
   represents "something happening" during its lifetime.
 - [Manual instrumentation][manual] will give provide you the ability to enrich
   your traces with domain specific data.
+- [The OpenTelemetry Demo](/docs/demo/) includes the Ruby based
+  [Email Service](/docs/demo/services/email/).
 
 [traces]: /docs/concepts/signals/traces/
 [metrics]: /docs/concepts/signals/metrics/

@@ -5,16 +5,14 @@ aliases:
   - /docs/instrumentation/ruby/manual_instrumentation
   - /docs/instrumentation/ruby/events
   - /docs/instrumentation/ruby/context-propagation
-weight: 4
+weight: 20
+description: Manual instrumentation for OpenTelemetry Ruby
+cSpell:ignore: SIGHUP
 ---
 
-Auto-instrumentation is the easiest way to get started with instrumenting your
-code, but in order to get the most insight into your system, you should add
-manual instrumentation where appropriate. To do this, use the OpenTelemetry SDK
-to access the currently executing span and add attributes to it, and/or to
-create new spans.
+{{% docs/instrumentation/manual-intro %}}
 
-## Initializing the SDK
+## Setup
 
 First, ensure you have the SDK package installed:
 
@@ -24,6 +22,8 @@ gem install opentelemetry-sdk
 
 Then include configuration code that runs when your program initializes. Make
 sure that `service.name` is set by configuring a service name.
+
+## Traces
 
 ### Acquiring a Tracer
 
@@ -37,7 +37,7 @@ TracerProvider. If you are using
 Rails app, then one will be registered for you.
 
 ```ruby
-# If in a rails app, this lives in config/initializers/opentelemetry.rb
+# If in a Rails app, this lives in config/initializers/opentelemetry.rb
 require "opentelemetry/sdk"
 
 OpenTelemetry::SDK.configure do |c|
@@ -49,8 +49,6 @@ MyAppTracer = OpenTelemetry.tracer_provider.tracer('<YOUR_TRACER_NAME>')
 ```
 
 With a `Tracer` acquired, you can manually trace code.
-
-## Tracing
 
 ### Get the current span
 
@@ -166,7 +164,7 @@ end
 > mutated. You should therefore avoid calling `set_attribute` multiple times and
 > instead assign attributes in bulk with a Hash, either during span creation or
 > with `add_attributes` on an existing span.
-
+>
 > &#9888; Sampling decisions happen at the moment of span creation. If your
 > sampler considers span attributes when deciding to sample a span, then you
 > _must_ pass those attributes as part of span creation. Any attributes added
@@ -319,7 +317,7 @@ Exceptions can also be recorded with additional attributes:
 current_span.record_exception(ex, attributes: { "some.attribute" => 12 })
 ```
 
-## Context Propagation
+### Context Propagation
 
 > Distributed Tracing tracks the progression of a single Request, called a
 > Trace, as it is handled by Services that make up an Application. A Distributed
@@ -351,12 +349,23 @@ dependencies to your Gemfile, e.g.:
 gem 'opentelemetry-propagator-b3'
 ```
 
+## Metrics
+
+The metrics API & SDK are currently under development.
+
+## Logs
+
+The logs API & SDK are currently under development.
+
+## Next Steps
+
+You’ll also want to configure an appropriate exporter to
+[export your telemetry data](/docs/instrumentation/ruby/exporters) to one or
+more telemetry backends.
+
 [glossary]: /docs/concepts/glossary/
 [propagators]:
   https://github.com/open-telemetry/opentelemetry-ruby/tree/main/propagator
 [auto-instrumentation]:
   https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation
-[semconv-gem]:
-  https://github.com/open-telemetry/opentelemetry-ruby/tree/main/semantic_conventions
 [semconv-spec]: /docs/specs/otel/trace/semantic_conventions/
-[opentelemetry specification]: /docs/specs/otel/

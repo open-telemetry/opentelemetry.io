@@ -2,6 +2,7 @@
 title: Lambda Auto-Instrumentation
 weight: 11
 description: Automatically instrument your Lambdas with OpenTelemetry
+cSpell:ignore: Corretto regionalized
 ---
 
 The OpenTelemetry community provides standalone instrumentation Lambda layers
@@ -24,13 +25,10 @@ first.
 
 ### Language Requirements
 
-<!-- prettier-ignore -->
-{{< tabpane text=true >}}
-{{% tab Java %}}
+{{< tabpane text=true >}} {{% tab Java %}}
 
-The Lambda layer supports the Java 11 (Corretto) Lambda runtime. It does not
-support the Java 8 Lambda runtimes. For more information about supported Java
-versions, see the
+The Lambda layer supports the Java 8, 11, and 17 (Corretto) Lambda runtimes. For
+more information about supported Java versions, see the
 [OpenTelemetry Java documentation](/docs/instrumentation/java/).
 
 **Note:** The Java Auto-instrumentation Agent is in the Lambda layer - Automatic
@@ -46,42 +44,51 @@ startup time.
 We recommend that you only enable auto-instrumentation for the
 libraries/frameworks that are used by your application.
 
-To enable only specific instrumentations you can use the following environment
+To enable only specific instrumentations, you can use the following environment
 variables:
 
-    * OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED - When set to false, disables auto-instrumentation in the Layer, requiring each instrumentation to be enabled individually.
-    * OTEL_INSTRUMENTATION_[NAME]_ENABLED - Set to true to enable auto-instrumentation for a specific library or framework. [NAME] should be replaced by the instrumentation that you want to enable. The full list of available instrumentations can be found in this link.
+- `OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED`: when set to false, disables
+  auto-instrumentation in the Layer, requiring each instrumentation to be
+  enabled individually.
+- `OTEL_INSTRUMENTATION_<NAME>_ENABLED`: set to true to enable
+  auto-instrumentation for a specific library or framework. Replace `<NAME>` by
+  the instrumentation that you want to enable. For the list of available
+  instrumentations, see [Suppressing specific agent instrumentation][1].
+
+  [1]:
+    /docs/instrumentation/java/automatic/agent-config/#suppressing-specific-agent-instrumentation
 
 For example, to only enable auto-instrumentation for Lambda and the AWS SDK, you
-would have to set the following environment variables:
+would set the following environment variables:
 
-    ```bash
-    Copy
-    OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED=false
-    OTEL_INSTRUMENTATION_AWS_LAMBDA_ENABLED=true
-    OTEL_INSTRUMENTATION_AWS_SDK_ENABLED=true
-    ```
+```sh
+OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED=false
+OTEL_INSTRUMENTATION_AWS_LAMBDA_ENABLED=true
+OTEL_INSTRUMENTATION_AWS_SDK_ENABLED=true
+```
 
-<!-- prettier-ignore -->
-{{% /tab %}}
-{{% tab JavaScript %}}
+{{% /tab %}} {{% tab JavaScript %}}
 
 The Lambda layer supports Node.js v14+ Lambda runtimes. For more information
 about supported JavaScript and Node.js versions, see the
 [OpenTelemetry JavaScript documentation](https://github.com/open-telemetry/opentelemetry-js).
 
-<!-- prettier-ignore -->
-{{% /tab %}}
-{{% tab Python %}}
+{{% /tab %}} {{% tab Python %}}
 
 The Lambda layer supports Python 3.8 and Python 3.9 Lambda runtimes. For more
 information about supported Python versions, see the
-[OpenTelemetry Python documentation](https://github.com/open-telemetry/opentelemetry-python/blob/master/README.md#supported-runtimes)
+[OpenTelemetry Python documentation](https://github.com/open-telemetry/opentelemetry-python/blob/main/README.md#supported-runtimes)
 and the package on [PyPi](https://pypi.org/project/opentelemetry-api/).
 
-<!-- prettier-ignore -->
-{{% /tab %}}
-{{< /tabpane >}}
+{{% /tab %}} {{< /tabpane >}}
+
+### Configure `AWS_LAMBDA_EXEC_WRAPPER`
+
+Change the entry point of your application by setting
+`AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-handler` for Node.js or Java, and
+`AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-instrument` for Python. These wrapper scripts
+will invoke your Lambda application with the auto instrumentation package
+applied.
 
 ### Add the ARN of Instrumentation Lambda Layer
 
@@ -92,6 +99,16 @@ and configure the instrumentation and Collector layers, and then enable tracing.
 2. In the Layers in Designer section, choose Add a layer.
 3. Under specify an ARN, paste the layer ARN, and then choose Add.
 
+Find the
+[most recent instrumentation layer release](https://github.com/open-telemetry/opentelemetry-lambda/releases)
+for your language and use it's ARN after changing the `<region>` tag to the
+region your Lambda is in.
+
+Note: Lambda layers are a regionalized resource, meaning that they can only be
+used in the Region in which they are published. Make sure to use the layer in
+the same region as your Lambda functions. The community publishes layers in all
+available regions.
+
 ### Configure your SDK exporters
 
 The default exporters used by the Lambda layers will work without any changes if
@@ -99,31 +116,23 @@ there is an embedded Collector with gRPC / HTTP receivers. The environment
 variables do not need to be updated. However, there are varying levels of
 protocol support and default values by language which are documented below.
 
-<!-- prettier-ignore -->
-{{< tabpane text=true >}}
-{{% tab Java %}}
+{{< tabpane text=true >}} {{% tab Java %}}
 
-`OTEL_EXPORTER_OTLP_PROTOCOL=grpc` Supports: `grpc`, `http/protobuf` and
+`OTEL_EXPORTER_OTLP_PROTOCOL=grpc` supports: `grpc`, `http/protobuf` and
 `http/json` `OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317`
 
-<!-- prettier-ignore -->
-{{% /tab %}}
-{{% tab Python %}}
-
-`OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf` Supports: `http/protobuf` and
-`http/json` `OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318`
-
-<!-- prettier-ignore -->
-{{% /tab %}}
-{{% tab JavaScript %}}
+{{% /tab %}} {{% tab JavaScript %}}
 
 `OTEL_EXPORTER_OTLP_PROTOCOL` env var is not supported The hard coded exporter
 uses the protocol `http/protobuf`
 `OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318`
 
-<!-- prettier-ignore -->
-{{% /tab %}}
-{{< /tabpane >}}
+{{% /tab %}} {{% tab Python %}}
+
+`OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf` supports: `http/protobuf` and
+`http/json` `OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318`
+
+{{% /tab %}} {{< /tabpane >}}
 
 ### Publish your Lambda
 

@@ -1,6 +1,7 @@
 ---
 title: SDK
-weight: 8
+weight: 100
+cSpell:ignore: autoload autoloader autoloading ndjson
 ---
 
 The OpenTelemetry SDK provides a working implementation of the API, and can be
@@ -22,7 +23,7 @@ $tracerProvider =  new TracerProvider(
         2048, //max queue size
         5000, //export timeout
         1024, //max batch size
-        true, //autoflush
+        true, //auto flush
         $meterProvider
     )
 );
@@ -38,6 +39,12 @@ However, it doesn't support all of the features that manual setup does.
 
 $spanExporter = new InMemoryExporter(); //mock exporter for demonstration purposes
 
+$meterProvider = MeterProvider::builder()
+    ->addReader(
+        new ExportingReader(new MetricExporter((new StreamTransportFactory())->create(STDOUT, 'application/x-ndjson'), /*Temporality::CUMULATIVE*/))
+    )
+    ->build();
+
 $tracerProvider = TracerProvider::builder()
     ->addSpanProcessor(
         (new BatchSpanProcessorBuilder($spanExporter))
@@ -46,8 +53,18 @@ $tracerProvider = TracerProvider::builder()
     )
     ->build();
 
+$loggerProvider = LoggerProvider::builder()
+    ->addLogRecordProcessor(
+        new SimpleLogsProcessor(
+            (new ConsoleExporterFactory())->create()
+        )
+    )
+    ->setResource(ResourceInfo::create(Attributes::create(['foo' => 'bar'])))
+    ->build();
+
 Sdk::builder()
     ->setTracerProvider($tracerProvider)
+    ->setLoggerProvider($loggerProvider)
     ->setMeterProvider($meterProvider)
     ->setPropagator(TraceContextPropagator::getInstance())
     ->setAutoShutdown(true)
@@ -95,12 +112,12 @@ to the specification is listed in the
 
 There are also a number of PHP-specific configurations:
 
-| Name                               | Default value | Values                                                                | Example        | Description                                         |
-| ---------------------------------- | ------------- | --------------------------------------------------------------------- | -------------- | --------------------------------------------------- |
-| OTEL_PHP_TRACES_PROCESSOR          | batch         | batch, simple                                                         | simple         | Span processor selection                            |
-| OTEL_PHP_DETECTORS                 | all           | env, host, os, process, process_runtime, sdk, sdk_provided, container | env,os,process | Resource detector selection                         |
-| OTEL_PHP_AUTOLOAD_ENABLED          | false         | true, false                                                           | true           | Enable/disable SDK autoloading                      |
-| OTEL_PHP_DISABLED_INSTRUMENTATIONS | []            | Instrumentation name(s)                                               | psr15,psr18    | Disable one or more installed auto-instrumentations |
+| Name                                 | Default value | Values                                                                                | Example          | Description                                         |
+| ------------------------------------ | ------------- | ------------------------------------------------------------------------------------- | ---------------- | --------------------------------------------------- |
+| `OTEL_PHP_TRACES_PROCESSOR`          | `batch`       | `batch`, simple                                                                       | `simple`         | Span processor selection                            |
+| `OTEL_PHP_DETECTORS`                 | `all`         | `env`, `host`, `os`, `process`, `process_runtime`, `sdk`, `sdk_provided`, `container` | `env,os,process` | Resource detector selection                         |
+| `OTEL_PHP_AUTOLOAD_ENABLED`          | `false`       | `true`, `false`                                                                       | `true`           | Enable/disable SDK autoloading                      |
+| `OTEL_PHP_DISABLED_INSTRUMENTATIONS` | `[]`          | Instrumentation name(s)                                                               | `psr15,psr18`    | Disable one or more installed auto-instrumentations |
 
 Configurations can be provided as environment variables, or via `php.ini` (or a
 file included by `php.ini`)

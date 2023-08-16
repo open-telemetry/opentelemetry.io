@@ -1,8 +1,8 @@
 ---
-spelling: cSpell:ignore configurator distro distros loglevel
+cSpell:ignore: configurator distro distros loglevel
 title: OpenTelemetry Distro
 linkTitle: Distro
-weight: 48
+weight: 110
 ---
 
 In order to make using OpenTelemetry and auto-instrumentation as quick as
@@ -14,7 +14,7 @@ looking to get started, it configures:
 
 - the SDK TracerProvider
 - a BatchSpanProcessor
-- the OTLP `SpanExporter` to send data to an OpenTelemetry collector
+- the OTLP `SpanExporter` to send data to an OpenTelemetry Collector
 
 The package also provides a starting point for anyone interested in producing an
 alternative distro. The interfaces implemented by the package are loaded by the
@@ -25,8 +25,8 @@ any other code is executed.
 In order to automatically export data from OpenTelemetry to the OpenTelemetry
 collector, installing the package will set up all the required entry points.
 
-```console
-$ pip install opentelemetry-distro[otlp] opentelemetry-instrumentation
+```sh
+pip install opentelemetry-distro[otlp] opentelemetry-instrumentation
 ```
 
 Start the Collector locally to see data being exported. Write the following
@@ -74,8 +74,8 @@ with trace.get_tracer("my.tracer").start_as_current_span("foo"):
 
 Lastly, run the `no_configuration.py` with the auto-instrumentation:
 
-```console
-$ opentelemetry-instrument python no_configuration.py
+```sh
+opentelemetry-instrument python no_configuration.py
 ```
 
 The resulting span will appear in the output from the collector and look similar

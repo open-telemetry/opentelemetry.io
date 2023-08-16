@@ -4,6 +4,7 @@ linkTitle: Front-end Overhaul Demo
 date: 2022-11-16
 author: '[Oscar Reyes](https://github.com/xoscar) (Tracetest)'
 canonical_url: https://tracetest.io/blog/frontend-overhaul-opentelemetry-demo
+cSpell:ignore: architecting Babiak Olly Tracetest
 ---
 
 One of the OpenTelemetry Project's many Special Interest Groups (SIG) is the

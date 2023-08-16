@@ -2,7 +2,7 @@
 title: Exponential Histograms
 date: 2023-05-22
 author: '[Daniel Dyla](https://github.com/dyladan)'
-spelling: cSpell:ignore Dyla quantiles subsetting Ruslan Vovalov Ganesh Vernekar
+cSpell:ignore: Ganesh Ruslan subsetting Vernekar Vovalov
 canonical_url: https://dyladan.me/histograms/2023/05/04/exponential-histograms/
 ---
 
@@ -116,7 +116,7 @@ by the bucket midpoint. Because the relative error is the same across all
 buckets, we can use the first bucket with the upper bound of the base to make
 the math easy. An example is shown below using a scale of 3.
 
-```
+```bash
 scale = 3
 # For base calculation, see above
 base  = 1.090508
@@ -191,12 +191,11 @@ OpenTelemetry’s Exponential Histograms in Prometheus][]
 _A version of this article was [originally posted][] to the author's blog._
 
 <!-- prettier-ignore-start -->
-[Why Histograms?]: {{% relref "why-histograms" %}}
-[Histograms vs Summaries]: {{% relref "histograms-vs-summaries" %}}
 [Using OpenTelemetry’s Exponential Histograms in Prometheus]:
   https://www.youtube.com/watch?v=W2_TpDcess8
 [OTEP 149]: https://github.com/open-telemetry/oteps/blob/976c9395e4cbb3ea933d3b51589eba94b87a17bd/text/0149-exponential-histogram.md
 [specification for exponential histogram aggregations]: /docs/specs/otel/metrics/sdk/#base2-exponential-bucket-histogram-aggregation
-
+[Why Histograms?]: {{% relref "why-histograms" %}}
+[Histograms vs Summaries]: {{% relref "histograms-vs-summaries" %}}
 [originally posted]: {{% param canonical_url %}}
 <!-- prettier-ignore-end -->

@@ -24,13 +24,11 @@ attributes is performed through environment variables.
 ```cs
 Action<ResourceBuilder> appResourceBuilder =
     resource => resource
-        .AddTelemetrySdk()
-        .AddEnvironmentVariableDetector()
         .AddDetector(new ContainerResourceDetector());
 
 builder.Services.AddOpenTelemetry()
     .ConfigureResource(appResourceBuilder)
-    .WithTracing(builder => builder
+    .WithTracing(tracerBuilder => tracerBuilder
         .AddRedisInstrumentation(
             cartStore.GetConnection(),
             options => options.SetVerboseDatabaseStatements = true)
@@ -46,7 +44,7 @@ Within the execution of auto-instrumented code you can get current span
 (activity) from context.
 
 ```cs
-    var activity = Activity.Current;
+var activity = Activity.Current;
 ```
 
 Adding attributes (tags in .NET) to a span (activity) is accomplished using
@@ -55,9 +53,9 @@ Adding attributes (tags in .NET) to a span (activity) is accomplished using
 span.
 
 ```cs
-    activity?.SetTag("app.user.id", request.UserId);
-    activity?.SetTag("app.product.quantity", request.Item.Quantity);
-    activity?.SetTag("app.product.id", request.Item.ProductId);
+activity?.SetTag("app.user.id", request.UserId);
+activity?.SetTag("app.product.quantity", request.Item.Quantity);
+activity?.SetTag("app.product.id", request.Item.ProductId);
 ```
 
 ### Add span events
@@ -67,7 +65,7 @@ object. In the `GetCart` function from `services/CartService.cs` a span event is
 added.
 
 ```cs
-    activity?.AddEvent(new("Fetch cart"));
+activity?.AddEvent(new("Fetch cart"));
 ```
 
 ## Metrics
@@ -81,13 +79,11 @@ libraries, exporters, etc.
 ```cs
 Action<ResourceBuilder> appResourceBuilder =
     resource => resource
-        .AddTelemetrySdk()
-        .AddEnvironmentVariableDetector()
         .AddDetector(new ContainerResourceDetector());
 
 builder.Services.AddOpenTelemetry()
     .ConfigureResource(appResourceBuilder)
-    .WithMetrics(builder => builder
+    .WithMetrics(meterBuilder => meterBuilder
         .AddRuntimeInstrumentation()
         .AddAspNetCoreInstrumentation()
         .AddOtlpExporter());

@@ -5,11 +5,12 @@ date: 2023-01-27
 author: '[Adriana Villela](https://github.com/avillela) (Lightstep)'
 aliases: [/blog/2023/otel-end-user-discussions-january-2023]
 body_class: otel-with-contributions-from
+cSpell:ignore: january OTTL
 ---
 
 With contributions from [Henrik Rexed](https://github.com/henrikrexed)
 (Dynatrace), [Michael Hausenblas](https://github.com/mhausenblas) (AWS),
-[Pranay Prateek](https://github.com/pranay01) (Signoz),
+[Pranay Prateek](https://github.com/pranay01) (SigNoz),
 [Rynn Mancuso](https://github.com/musingvirtual) (Honeycomb), and
 [Reese Lee](https://github.com/reese-lee) (New Relic).
 
@@ -169,7 +170,7 @@ experience of folks working with OpenTelemetry Python?
 using OTel Python in production, so it likely won’t cause any issues in prod. As
 a SIG, OTel Python tries to minimize shipping breaking changes, but as with
 everything, there is no guarantee that there will be no breaking changes. There
-is no firm timeframe on when Python instrumentation will be marked as stable.
+is no firm time frame on when Python instrumentation will be marked as stable.
 
 ### Misc Items
 
@@ -184,7 +185,7 @@ OpenTelemetry [metrics](/docs/concepts/signals/metrics/) to
 [traces](/docs/concepts/signals/traces/). Exemplars are currently in the early
 stages of development, and more work still needs to be done. For more on the
 state of exemplars, check out the
-[#otel-metrics channel on CNCF ](https://cloud-native.slack.com/archives/C01NP3BV26R)Slack.
+[#otel-metrics channel on CNCF](https://cloud-native.slack.com/archives/C01NP3BV26R)Slack.
 Please also check out
 [Michael Hausenblas’ recent talk on this topic](https://www.slideshare.net/Altinity/osa-con-2022-signal-correlation-the-ho11y-grail-michael-hausenblas-awspdf).
 
@@ -195,8 +196,8 @@ Please also check out
 **A:** Implementing correlation takes time and is a work in progress.
 Correlation work is more mature for some languages (e.g. Java, Go) than for
 others. The best approach is to raise this issue in one of the language-specific
-repos that pertains to your situation. A possible work-around is to start traces
-at the log level, whereby every log will have its own associated trace.
+repositories that pertains to your situation. A possible work-around is to start
+traces at the log level, whereby every log will have its own associated trace.
 
 #### 3- Profiling
 
@@ -205,7 +206,7 @@ at the log level, whereby every log will have its own associated trace.
 **A:** There is an OTel proposal on profiling, which has been accepted and is
 being actively being worked on and discussed. The current focus is on finalizing
 the protocol, before SDK work can start. You can check out the
-[profiling repo on GitHub](https://github.com/open-telemetry/opentelemetry-profiling),
+[profiling repository on GitHub](https://github.com/open-telemetry/opentelemetry-profiling),
 as well as the
 [Profiling Vision pull request on GitHub](https://github.com/open-telemetry/oteps/pull/212).
 

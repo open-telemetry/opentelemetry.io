@@ -36,8 +36,8 @@ files.
     installation. Under Linux, run the following command (which will
     install/upgrade to the version specified in [.nvmrc][]):
 
-    ```console
-    $ nvm install
+    ```sh
+    nvm install
     ```
 
     To [install under Windows][nodejs-win], use [nvm-windows][]:
@@ -47,8 +47,9 @@ files.
     ```
 
 4.  Get npm packages and other prerequisites:
-    ```console
-    $ npm install
+
+    ```sh
+    npm install
     ```
 
 You're now ready to [build](#build), [serve](#serve) and/or make updates to the
@@ -58,8 +59,8 @@ website files.
 
 To **build** the site run:
 
-```console
-$ npm run build
+```sh
+npm run build
 ```
 
 You'll find the generated site files under `public`.
@@ -68,17 +69,17 @@ You'll find the generated site files under `public`.
 
 To **serve** the site run:
 
-```console
-$ npm run serve
+```sh
+npm run serve
 ```
 
 The site will be served at [localhost:1313][].
 
-If you need to test Netlify redirects, use the following command, and visit the
-site at [localhost:8888][]:
+If you need to test [Netlify] redirects, use the following command, and visit
+the site at [localhost:8888][]:
 
-```console
-$ npm run serve:netlify
+```sh
+npm run serve:netlify
 ```
 
 > **Note 1**: The serve command serves files from memory, not from disk.
@@ -92,11 +93,9 @@ $ npm run serve:netlify
 The website is built from the following content:
 
 - Files under `content/`, `static/`, etc. per [Hugo][] defaults.
-- Mount points, defined in [hugo.yaml][] under `mounts`.
-- Content from git submodules under [content-modules][].
-
-Note that nonstandard mount points and symlinked sections under `content/` refer
-to directories under [content-modules][], and no where else.
+- Mount points, defined in [hugo.yaml][] under `mounts`. Mounts are either
+  directly from git submodules under [content-modules][], or preprocessed
+  content from `content-modules` (placed under `tmp/`), and no where else.
 
 [hugo.yaml]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/hugo.yaml
@@ -115,26 +114,20 @@ request an enhancement, [create an issue][new-issue].
 
 Enhancements and fixes to the website are most welcome! Before submitting a
 [pull request][pr] (PR) to the repo, run the following command and address any
-reported issues:
+reported issues. Also commit any files changed by the `fix` script:
 
-```console
-$ npm run test
+```sh
+npm run s fix test
 ```
 
-If you only want to check the format of files, run:
+To separately test and fix issues with your files, run:
 
-```console
-$ npm run check:format
-...
-Checking formatting...
-All matched files use Prettier code style!
+```sh
+npm run test # checks but does not update any files
+npm run fix  # may update files
 ```
 
-To _fix_ the format of files, run:
-
-```console
-$ npm run format
-```
+To list available NPM scripts, run `npm run`.
 
 ### Submodule changes
 
@@ -150,9 +143,9 @@ itself.
 > **For expert contributors**, you can work directly in the submodule. You'll
 > then be able to directly build and serve your (submodule) changes. By default,
 > the CI scripts get submodules on every invocation. To prevent this behavior
-> while you work within a submodule, set the environment variable `GET="no"`.
+> while you work within a submodule, set the environment variable `GET=no`.
 > You'll also need to `git fetch --unshallow` the submodule before you can
-> submit a PR. Alternatively, set `DEPTH="100"` and re-fetch submodules.
+> submit a PR. Alternatively, set `DEPTH=100` and re-fetch submodules.
 
 ## Site deploys and PR previews
 

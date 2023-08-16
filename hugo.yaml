@@ -1,5 +1,8 @@
+# cSpell:ignore docsy goldmark netlify wordmark
 baseURL: https://opentelemetry.io
-disableKinds: [taxonomy, taxonomyTerm]
+title: &title OpenTelemetry
+description: &desc The OpenTelemetry Project Site
+disableKinds: [taxonomy]
 theme: [docsy]
 disableAliases: true # We do redirects via Netlify's _redirects file
 enableGitInfo: true
@@ -8,13 +11,12 @@ enableGitInfo: true
 enableMissingTranslationPlaceholders: true
 languages:
   en:
-    title: OpenTelemetry
-    description: The OpenTelemetry Project Site
     languageName: English
-    weight: 1
-
+    params:
+      title: *title
+      description: *desc
 imaging:
-  resampleFilter: CatmullRom
+  resampleFilter: CatmullRom # cspell:disable-line
   quality: 75
   anchor: smart
 
@@ -95,14 +97,14 @@ params:
         url: https://stackoverflow.com/questions/tagged/open-telemetry
         icon: fab fa-stack-overflow
         desc: Practical questions and curated answers
-      - name: CNCF branding
-        url: https://cncf-branding.netlify.app/projects/opentelemetry/
+      - name: OTel logos
+        url: https://github.com/cncf/artwork/tree/master/projects/opentelemetry
         icon: fas fa-image
-        desc: Check out the CNCF logo page for OpenTelemetry
+        desc: Official OpenTelemetry logos
       - name: Meeting Recordings
-        url: https://www.youtube.com/channel/UCHZDBZTIfdy94xMjMKz-_MA
-        icon: fab fa-youtube
-        desc: Watch our meeting recordings on YouTube
+        url: https://docs.google.com/spreadsheets/d/1SYKfjYhZdm2Wh2Cl6KVQalKg_m4NhTPZqq-8SzEVO6s
+        icon: fas fa-video
+        desc: Watch our meeting recordings on Zoom Cloud
     developer:
       - name: GitHub
         url: https://github.com/open-telemetry
@@ -125,11 +127,14 @@ params:
           CNCF works in close association with Linux Foundation. Read the
           privacy policy here
       - name: Marketing Guidelines
-        url: https://github.com/open-telemetry/community/blob/main/marketing-guidelines.md
+        url: /community/marketing-guidelines/
         icon: fas fa-bullhorn
         desc: >-
           Important information on how to represent your personal or corporate
           contributions or participation in the OpenTelemetry project.
+      - name: Site-build info
+        url: /site/
+        icon: fa-solid fa-hammer
 
   logos:
     hero: opentelemetry-horizontal-color.png
@@ -158,7 +163,7 @@ params:
       icon: far fa-envelope
 
   fonts:
-    - name: Noto Sans
+    - name: Noto Sans # cspell:disable-line
       sizes: [300, 400, 600, 700]
       type: sans_serif
 
@@ -166,6 +171,10 @@ params:
     docker-compose-v2: |
       `docker-compose` is deprecated. For details, see
       [Migrate to Compose V2](https://docs.docker.com/compose/migrate/).
+    browser-instrumentation: |
+      Client instrumentation for the browser is **experimental** and mostly **unspecified**.
+      If you are interested in helping out, get in touch with the
+      [Client Instrumentation SIG](https://docs.google.com/document/d/16Vsdh-DM72AfMg_FIt9yT9ExEWF4A_vRbQ3jRNBe09w).
 
 services:
   googleAnalytics:
@@ -174,25 +183,33 @@ services:
     # https://github.com/open-telemetry/opentelemetry.io/issues/1626.
     id: UA-00000000-0 # TODO: switch to G-0000000000 once we get confirmation that it's ok to do so
 
+security:
+  funcs: # cspell:disable-line
+    getenv: # cspell:disable-line
+      # Netlify build env var
+      - ^(BRANCH|BUILD_ID|COMMIT_REF|CONTEXT|DEPLOY_ID|NETLIFY|PULL_REQUEST|REVIEW_ID)$
+
 module:
   mounts:
     - source: content/en
       target: content
-    - source: content-modules/opentelemetry-go/website_docs
-      target: content/docs/instrumentation/go
     - source: tmp/otel/specification
       target: content/docs/specs/otel
+    - source: tmp/opamp
+      target: content/docs/specs/opamp
     - source: tmp/otlp/docs/specification.md
       target: content/docs/specs/otlp/_index.md
     - source: tmp/otlp/docs/img
       target: content/docs/specs/otlp/img
+    - source: tmp/semconv/docs
+      target: content/docs/specs/semconv
     - source: tmp/community/mission-vision-values.md
       target: content/community/mission.md
     - source: tmp/community/roadmap.md
       target: content/community/roadmap.md
     - source: static
       target: static
-    - source: content-modules/opentelemetry-specification/schemas
+    - source: content-modules/semantic-conventions/schemas
       target: static/schemas
     - source: static/img
       target: static/img

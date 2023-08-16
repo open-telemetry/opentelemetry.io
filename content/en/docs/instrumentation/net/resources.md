@@ -1,6 +1,7 @@
 ---
 title: Resources
-weight: 6
+weight: 70
+cSpell:ignore: myhost pcarter uuidgen
 ---
 
 A [resource][] represents the entity producing telemetry as resource attributes.
@@ -146,8 +147,6 @@ to get details about your [Cloud] environment or [Deployment][].
 
 [resource]: /docs/specs/otel/resource/sdk/
 [getting started]: /docs/instrumentation/net/getting-started/
-[process and process runtime resources]:
-  /docs/specs/otel/resource/semantic_conventions/process/
 [host]: /docs/specs/otel/resource/semantic_conventions/host/
 [cloud]: /docs/specs/otel/resource/semantic_conventions/cloud/
 [deployment]:

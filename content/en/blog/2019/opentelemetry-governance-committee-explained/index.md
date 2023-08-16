@@ -4,17 +4,17 @@ linkTitle: Governance Committee Explained
 date: 2019-11-06
 canonical_url: https://medium.com/opentelemetry/opentelemetry-governance-committee-explained-860353baba0
 author: '[Sergey Kanzhelev](https://github.com/SergeyKanzhelev)'
-spelling: cSpell:ignore Sergey Kanzhelev
+cSpell:ignore: Kanzhelev Novotny Sergey
 ---
 
 This article describes the functions and responsibilities of the OpenTelemetry
 Governance Committee, based on the charter document found
-[here](https://github.com/open-telemetry/community/blob/master/governance-charter.md).
+[here](https://github.com/open-telemetry/community/blob/main/governance-charter.md).
 It is an opinion, not the formal definition. The primary role of the Governance
 Committee is not to centralize power, but to enable and empower the broader
 community by establishing processes. Let me explain.
 
-![a watering can](1_BLJQ9hMyIyKcvGebCBuQ8w.jpeg)
+![Watering can](watering-can.jpeg)
 
 The main objective of the OpenTelemetry project is to make robust, portable
 telemetry a built-in feature of cloud-native software. The most effective way to

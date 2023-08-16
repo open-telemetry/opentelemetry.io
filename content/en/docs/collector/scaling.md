@@ -1,6 +1,8 @@
 ---
 title: Scaling the Collector
 weight: 26
+# prettier-ignore
+cSpell:ignore: fluentd hostmetrics loadbalancer loadbalancing sharded statefulset
 ---
 
 When planning your observability pipeline with the OpenTelemetry Collector, you
@@ -137,9 +139,10 @@ load balancer. Using a Sidecar also makes sense to avoid bringing down a crucial
 component for all pods in a node when one DaemonSet pod fails.
 
 The sidecar pattern consists in adding a container into the workload pod. The
-[OpenTelemetry Operator](/docs/k8s-operator/) can automatically add that for
-you. To accomplish that, you’ll need an OpenTelemetry Collector CR and you’ll
-need to annotate your PodSpec or Pod telling the operator to inject a sidecar:
+[OpenTelemetry Operator](/docs/kubernetes/operator/) can automatically add that
+for you. To accomplish that, you’ll need an OpenTelemetry Collector CR and
+you’ll need to annotate your PodSpec or Pod telling the operator to inject a
+sidecar:
 
 ```yaml
 ---
@@ -279,34 +282,34 @@ After the reconciliation, the OpenTelemetry Operator will convert the
 Collector’s configuration into the following:
 
 ```yaml
-   exporters:
-      logging: null
-    receivers:
-      prometheus:
-        config:
-          global:
-            scrape_interval: 1m
-            scrape_timeout: 10s
-            evaluation_interval: 1m
-          scrape_configs:
-          - job_name: otel-collector
-            honor_timestamps: true
-            scrape_interval: 10s
-            scrape_timeout: 10s
-            metrics_path: /metrics
-            scheme: http
-            follow_redirects: true
-            http_sd_configs:
-            - follow_redirects: false
-              url: http://collector-with-ta-targetallocator:80/jobs/otel-collector/targets?collector_id=$POD_NAME
-    service:
-      pipelines:
-        traces:
-          exporters:
-          - logging
-          processors: []
-          receivers:
-          - prometheus
+exporters:
+   logging: null
+ receivers:
+   prometheus:
+     config:
+       global:
+         scrape_interval: 1m
+         scrape_timeout: 10s
+         evaluation_interval: 1m
+       scrape_configs:
+       - job_name: otel-collector
+         honor_timestamps: true
+         scrape_interval: 10s
+         scrape_timeout: 10s
+         metrics_path: /metrics
+         scheme: http
+         follow_redirects: true
+         http_sd_configs:
+         - follow_redirects: false
+           url: http://collector-with-ta-targetallocator:80/jobs/otel-collector/targets?collector_id=$POD_NAME
+ service:
+   pipelines:
+     traces:
+       exporters:
+       - logging
+       processors: []
+       receivers:
+       - prometheus
 ```
 
 Note how the Operator added a `global` section and a `new http_sd_configs` to

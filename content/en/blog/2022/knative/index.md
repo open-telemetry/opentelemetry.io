@@ -2,7 +2,8 @@
 title: Distributed tracing in Knative
 linkTitle: Tracing in Knative
 date: 2022-04-12
-spelling: cSpell:ignore Cloudevents istio Loffay Pavol pavolloffay
+# prettier-ignore
+cSpell:ignore: apng Cloudevents datacontenttype httpbody khtml knativearrivaltime pavolloffay spanid specversion traceid webp
 author: '[Pavol Loffay](https://github.com/pavolloffay)'
 ---
 
@@ -175,7 +176,7 @@ Tracing in Knative can be easily enabled. Please follow the
 Let's briefly describe the process here:
 
 1. Deploy a tracing system that can ingest tracing data in Zipkin format -
-   Zipkin, Jaeger, or OpenTelemetry collector
+   Zipkin, Jaeger, or OpenTelemetry Collector
 2. Enable tracing in
    [Knative eventing](https://knative.dev/docs/eventing/accessing-traces/)
 3. Enable tracing in

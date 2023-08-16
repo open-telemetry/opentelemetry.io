@@ -2,6 +2,7 @@
 title: Shipping Service
 linkTitle: Shipping
 aliases: [/docs/demo/services/shippingservice]
+cSpell:ignore: itemct oteldemo reqwest sdktrace semcov shiporder tokio
 ---
 
 This service is responsible for providing shipping information including pricing
@@ -11,10 +12,10 @@ Shipping service is built primarily with Tonic, Reqwest, and OpenTelemetry
 Libraries/Components. Other sub-dependencies are included in `Cargo.toml`.
 
 Depending on your framework and runtime, you may consider consulting
-[rust docs](/docs/instrumentation/rust/) to supplement. You'll find examples of
-async and sync spans in quote requests and tracking ID's respectively.
+[Rust docs](/docs/instrumentation/rust/) to supplement. You'll find examples of
+async and sync spans in quote requests and tracking IDs respectively.
 
-The `build.rs` supports development outside docker, given a rust installation.
+The `build.rs` supports development outside docker, given a Rust installation.
 Otherwise, consider building with `docker compose` to edit / assess changes as
 needed.
 
@@ -33,6 +34,7 @@ fn init_tracer() -> Result<sdktrace::Tracer, TraceError> {
     let process_resource = ProcessResourceDetector.detect(Duration::from_secs(0));
     let sdk_resource = SdkProvidedResourceDetector.detect(Duration::from_secs(0));
     let env_resource = EnvResourceDetector::new().detect(Duration::from_secs(0));
+    let telemetry_resource = TelemetryResourceDetector.detect(Duration::from_secs(0));
     opentelemetry_otlp::new_pipeline()
         .tracing()
         .with_exporter(
@@ -48,7 +50,7 @@ fn init_tracer() -> Result<sdktrace::Tracer, TraceError> {
         )
         .with_trace_config(
             sdktrace::config()
-                .with_resource(os_resource.merge(&process_resource).merge(&sdk_resource).merge(&env_resource)),
+                .with_resource(os_resource.merge(&process_resource).merge(&sdk_resource).merge(&env_resource).merge(&telemetry_resource)),
         )
         .install_batch(opentelemetry::runtime::Tokio)
 }
@@ -70,7 +72,7 @@ another closure where we call `quoteservice`.
 
 ```rust
     let tracer = global::tracer("shippingservice");
-    let mut span = tracer.span_builder("hipstershop.ShippingService/GetQuote").with_kind(SpanKind::Server).start_with_context(&tracer, &parent_cx);
+    let mut span = tracer.span_builder("oteldemo.ShippingService/GetQuote").with_kind(SpanKind::Server).start_with_context(&tracer, &parent_cx);
     span.set_attribute(semcov::trace::RPC_SYSTEM.string(RPC_SYSTEM_GRPC));
 
     span.add_event("Processing get quote request".to_string(), vec![]);
@@ -118,13 +120,13 @@ A child _client_ span is also produced for the outgoing HTTP call to
 `quoteservice` via the `reqwest` client. This span pairs up with the
 corresponding `quoteservice` _server_ span. The tracing instrumentation is
 implemented in the client middleware making use of the available
-`reqwest-middleware`, `reqwest-tracing` and `tracing-opentelementry` libraries:
+`reqwest-middleware`, `reqwest-tracing` and `tracing-opentelemetry` libraries:
 
 ```rust
-    let reqwest_client = reqwest::Client::new();
-    let client = ClientBuilder::new(reqwest_client)
-        .with(TracingMiddleware::<SpanBackendWithUrl>::new())
-        .build();
+let reqwest_client = reqwest::Client::new();
+let client = ClientBuilder::new(reqwest_client)
+    .with(TracingMiddleware::<SpanBackendWithUrl>::new())
+    .build();
 ```
 
 ### Add span attributes
@@ -140,22 +142,22 @@ See below for a snippet from `shiporder` that holds context and a span in scope.
 This is appropriate in our case of a sync runtime.
 
 ```rust
-    let parent_cx =
-    global::get_text_map_propagator(|prop| prop.extract(&MetadataMap(request.metadata())));
-    // in this case, generating a tracking ID is trivial
-    // we'll create a span and associated events all in this function.
-    let tracer = global::tracer("shippingservice");
-    let mut span = tracer
-        .span_builder("hipstershop.ShippingService/ShipOrder").with_kind(SpanKind::Server).start_with_context(&tracer, &parent_cx);
+let parent_cx =
+global::get_text_map_propagator(|prop| prop.extract(&MetadataMap(request.metadata())));
+// in this case, generating a tracking ID is trivial
+// we'll create a span and associated events all in this function.
+let tracer = global::tracer("shippingservice");
+let mut span = tracer
+    .span_builder("oteldemo.ShippingService/ShipOrder").with_kind(SpanKind::Server).start_with_context(&tracer, &parent_cx);
 ```
 
 You must add attributes to a span in context with `set_attribute`, followed by a
 `KeyValue` object, containing a key, and value.
 
 ```rust
-    let tid = create_tracking_id();
-    span.set_attribute(KeyValue::new("app.shipping.tracking.id", tid.clone()));
-    info!("Tracking ID Created: {}", tid);
+let tid = create_tracking_id();
+span.set_attribute(KeyValue::new("app.shipping.tracking.id", tid.clone()));
+info!("Tracking ID Created: {}", tid);
 ```
 
 ### Add span events
@@ -168,9 +170,9 @@ events on spans. Attributes are not included here, but are
 Adding a span event:
 
 ```rust
-    let tid = create_tracking_id();
-    span.set_attribute(KeyValue::new("app.shipping.tracking.id", tid.clone()));
-    info!("Tracking ID Created: {}", tid);
+let tid = create_tracking_id();
+span.set_attribute(KeyValue::new("app.shipping.tracking.id", tid.clone()));
+info!("Tracking ID Created: {}", tid);
 ```
 
 ## Metrics

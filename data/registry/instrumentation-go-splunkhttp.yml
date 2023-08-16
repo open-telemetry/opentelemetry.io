@@ -1,4 +1,4 @@
-title: splunkhttp -- Instrumentation for net/http
+title: splunkhttp -- Instrumentation for `net/http`
 registryType: instrumentation
 isThirdParty: true
 language: go

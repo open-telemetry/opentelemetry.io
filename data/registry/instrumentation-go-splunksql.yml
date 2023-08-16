@@ -1,4 +1,4 @@
-title: splunksql -- Instrumentation for database/sql
+title: splunksql -- Instrumentation for `database/sql`
 registryType: instrumentation
 isThirdParty: true
 language: go

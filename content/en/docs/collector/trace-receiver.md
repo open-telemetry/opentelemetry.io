@@ -1,7 +1,11 @@
 ---
 title: Building a Trace Receiver
-spelling: cSpell:ignore struct tailtracer
+weight: 98
+# prettier-ignore
+cSpell:ignore: amzn atmxph backendsystem batchprocessor chicago comcast crand devs Errorf gogl Intn ispnetwork jaegerexporter loggingexporter mapstructure mcrsft otlpreceiver pcommon pdata protogen ptrace Rcvr rquedas sanfrancisco serialnumber slrs stateid struct structs tailtracer uber wndws
 ---
+
+<!-- markdownlint-disable heading-increment no-duplicate-heading -->
 
 If you are reading this tutorial, you probably already have an idea of the
 OpenTelemetry concepts behind distributed tracing, but if you don't you can
@@ -1576,7 +1580,7 @@ import (
 	"time"
 	"go.opentelemetry.io/collector/pdata/pcommon"
 	"go.opentelemetry.io/collector/pdata/ptrace"
-	conventions "go.opentelemetry.io/collector/semconv/v1.9.0""
+	conventions "go.opentelemetry.io/collector/semconv/v1.9.0"
 )
 
 type Atm struct {
@@ -1810,7 +1814,7 @@ initializing them with the `appendAtmSystemInstrScopeSpans()`. Here is what
 
 ```go
 func generateTraces(numberOfTraces int) ptrace.Traces{
-	traces := ptraces.NewTraces()
+	traces := ptrace.NewTraces()
 
 	for i := 0; i <= numberOfTraces; i++{
 		newAtm := generateAtm()
@@ -1946,7 +1950,7 @@ func appendTraceSpans(backend *BackendSystem, backendScopeSpans *ptrace.ScopeSpa
 > #### Check your work
 >
 > - Added `traceId` and `backendSpanId` variables to respectively represent the
->   trace and the span id and initialized them with the helper functions created
+>   trace and the span ID and initialized them with the helper functions created
 >   previously
 > - Added `backendSpanStartTime` and `backendSpanFinishTime` to represent the
 >   start and the end time of the operation. For the tutorial, any

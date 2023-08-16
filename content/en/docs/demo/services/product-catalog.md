@@ -2,6 +2,8 @@
 title: Product Catalog Service
 linkTitle: Product Catalog
 aliases: [/docs/demo/services/productcatalogservice]
+# prettier-ignore
+cSpell:ignore: fatalf otelcodes otelgrpc otlpmetricgrpc otlptracegrpc sdkmetric sdktrace sprintf
 ---
 
 This service is responsible to return information about products. The service
@@ -40,12 +42,12 @@ ensure all spans are exported. This service makes that call as part of a
 deferred function in main
 
 ```go
-    tp := InitTracerProvider()
-    defer func() {
-        if err := tp.Shutdown(context.Background()); err != nil {
-            log.Fatalf("Tracer Provider Shutdown: %v", err)
-        }
-    }()
+tp := InitTracerProvider()
+defer func() {
+    if err := tp.Shutdown(context.Background()); err != nil {
+        log.Fatalf("Tracer Provider Shutdown: %v", err)
+    }
+}()
 ```
 
 ### Adding gRPC auto-instrumentation
@@ -54,10 +56,10 @@ This service receives gRPC requests, which are instrumented in the main function
 as part of the gRPC server creation.
 
 ```go
-    srv := grpc.NewServer(
-        grpc.UnaryInterceptor(otelgrpc.UnaryServerInterceptor()),
-        grpc.StreamInterceptor(otelgrpc.StreamServerInterceptor()),
-    )
+srv := grpc.NewServer(
+    grpc.UnaryInterceptor(otelgrpc.UnaryServerInterceptor()),
+    grpc.StreamInterceptor(otelgrpc.StreamServerInterceptor()),
+)
 ```
 
 This service will issue outgoing gRPC calls, which are all instrumented by
@@ -79,17 +81,17 @@ Within the execution of auto-instrumented code you can get current span from
 context.
 
 ```go
-    span := trace.SpanFromContext(ctx)
+span := trace.SpanFromContext(ctx)
 ```
 
 Adding attributes to a span is accomplished using `SetAttributes` on the span
-object. In the `GetProduct` function an attribute for the product id is added to
+object. In the `GetProduct` function an attribute for the product ID is added to
 the span.
 
 ```go
-    span.SetAttributes(
-        attribute.String("app.product.id", req.Id),
-    )
+span.SetAttributes(
+    attribute.String("app.product.id", req.Id),
+)
 ```
 
 ### Setting span status
@@ -99,8 +101,8 @@ an error condition, the span status is set accordingly using `SetStatus` on the
 span object. You can see this in the `GetProduct` function.
 
 ```go
-    msg := fmt.Sprintf("Error: ProductCatalogService Fail Feature Flag Enabled")
-    span.SetStatus(otelcodes.Error, msg)
+msg := fmt.Sprintf("Error: ProductCatalogService Fail Feature Flag Enabled")
+span.SetStatus(otelcodes.Error, msg)
 ```
 
 ### Add span events
@@ -110,7 +112,7 @@ Adding span events is accomplished using `AddEvent` on the span object. In the
 or when a product is successfully found.
 
 ```go
-    span.AddEvent(msg)
+span.AddEvent(msg)
 ```
 
 ## Metrics
@@ -140,12 +142,12 @@ ensure all records are exported. This service makes that call as part of a
 deferred function in main.
 
 ```go
-    mp := initMeterProvider()
-    defer func() {
-        if err := mp.Shutdown(context.Background()); err != nil {
-            log.Fatalf("Error shutting down meter provider: %v", err)
-        }
-    }()
+mp := initMeterProvider()
+defer func() {
+    if err := mp.Shutdown(context.Background()); err != nil {
+        log.Fatalf("Error shutting down meter provider: %v", err)
+    }
+}()
 ```
 
 ### Adding golang runtime auto-instrumentation
@@ -153,10 +155,10 @@ deferred function in main.
 Golang runtime is instrumented in the main function
 
 ```go
-    err := runtime.Start(runtime.WithMinimumReadMemStatsInterval(time.Second))
-    if err != nil {
-        log.Fatal(err)
-    }
+err := runtime.Start(runtime.WithMinimumReadMemStatsInterval(time.Second))
+if err != nil {
+    log.Fatal(err)
+}
 ```
 
 ## Logs

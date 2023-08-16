@@ -1,7 +1,6 @@
 ---
 title: Exporters
-weight: 4
-spelling: cSpell:ignore dotnet openzipkin
+weight: 50
 ---
 
 In order to visualize and analyze your [traces](/docs/concepts/signals/traces/)

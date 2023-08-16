@@ -1,5 +1,7 @@
 ---
 title: Development
+# prettier-ignore
+cSpell:ignore: grpcio intellij libcurl libprotobuf nlohmann openssl protoc rebar
 ---
 
 Development for this demo requires tooling in several programming languages.

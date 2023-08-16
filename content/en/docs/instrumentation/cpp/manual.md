@@ -1,13 +1,22 @@
 ---
 title: Manual Instrumentation
 linkTitle: Manual
-weight: 3
+weight: 30
+description: Manual instrumentation for OpenTelemetry C++
+cSpell:ignore: decltype labelkv nostd nullptr
 ---
 
-Manual instrumentation is the process of adding observability code to your
-application.
+<!-- markdownlint-disable no-duplicate-heading -->
 
-## Tracing
+{{% docs/instrumentation/manual-intro %}}
+
+## Setup
+
+Follow the instructions in the
+[Getting Started Guide](/docs/instrumentation/cpp/getting-started/) to build
+OpenTelemetry C++.
+
+## Traces
 
 ### Initializing tracing
 
@@ -89,8 +98,8 @@ auto new_context = propagator->Extract(carrier, current_ctx);
 auto remote_span = opentelemetry::trace::propagation::GetSpan(new_context);
 ```
 
-`Context` contains the meta-data of the currently active Span including Span Id,
-Trace Id, and flags. Context Propagation is an important mechanism in
+`Context` contains the metadata of the currently active Span including Span ID,
+Trace ID, and flags. Context Propagation is an important mechanism in
 distributed tracing to transfer this Context across service boundary often
 through HTTP headers. OpenTelemetry provides a text-based approach to propagate
 context to remote services using the W3C Trace Context HTTP headers.
@@ -215,3 +224,13 @@ p->AddView(std::move(observable_instrument_selector), std::move(observable_meter
 - [Metrics API](https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/namespace_opentelemetry__metrics.html#)
 - [Metrics SDK](https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/namespace_opentelemetry__sdk__metrics.html)
 - [Simple Metrics Example](https://github.com/open-telemetry/opentelemetry-cpp/tree/main/examples/metrics_simple)
+
+## Logs
+
+The logs API & SDK are currently under development.
+
+## Next Steps
+
+You’ll also want to configure an appropriate exporter to
+[export your telemetry data](/docs/instrumentation/cpp/exporters) to one or more
+telemetry backends.

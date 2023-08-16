@@ -18,7 +18,7 @@ pass Baggage around, and each of the different library implementations has
 propagators that parse and make that Baggage available without you needing to
 explicitly implement it.
 
-![OTel Baggage](/img/otel_baggage.png)
+![OTel Baggage](/img/otel-baggage.svg)
 
 ## Why does OTel Baggage exist?
 
@@ -38,7 +38,7 @@ headers alongside the current context. If your relevant network traffic is
 entirely within your own network, then this caveat may not apply.
 
 Common use cases include information that’s only accessible further up a stack.
-This can include things like Account Identification, User Ids, Product Ids, and
+This can include things like Account Identification, User IDs, Product IDs, and
 origin IPs, for example. Passing these down your stack allows you to then add
 them to your Spans in downstream services to make it easier to filter when
 you’re searching in your Observability back-end.
@@ -46,7 +46,7 @@ you’re searching in your Observability back-end.
 There are no built-in integrity checks to ensure that the Baggage items are
 yours, so exercise caution when retrieving them.
 
-![OTel Baggage](/img/otel_baggage-2.png)
+![OTel Baggage](/img/otel-baggage-2.svg)
 
 ## Baggage is not the same as Span attributes
 

@@ -1,20 +1,27 @@
 ---
 title: Manual Instrumentation
 linkTitle: Manual
-weight: 3
+weight: 20
+description: Manual instrumentation for OpenTelemetry Python
+cSpell:ignore: millis ottrace textmap
 ---
 
-Manual instrumentation is the process of adding observability code to your
-application.
+<!-- markdownlint-disable no-duplicate-heading -->
 
-## Initializing the SDK
+{{% docs/instrumentation/manual-intro %}}
+
+## Setup
 
 First, ensure you have the API and SDK packages:
 
-```
+```shell
 pip install opentelemetry-api
 pip install opentelemetry-sdk
 ```
+
+## Traces
+
+### Acquire Tracer
 
 To start tracing, you'll need to initialize a
 [`TracerProvider`](/docs/concepts/signals/traces/#tracer-provider) and
@@ -38,30 +45,6 @@ trace.set_tracer_provider(provider)
 # Creates a tracer from the global tracer provider
 tracer = trace.get_tracer("my.tracer.name")
 ```
-
-To start collecting metrics, you'll need to initialize a
-[`MeterProvider`](/docs/specs/otel/metrics/api/#meterprovider) and optionally
-set it as the global default.
-
-```python
-from opentelemetry import metrics
-from opentelemetry.sdk.metrics import MeterProvider
-from opentelemetry.sdk.metrics.export import (
-    ConsoleMetricExporter,
-    PeriodicExportingMetricReader,
-)
-
-metric_reader = PeriodicExportingMetricReader(ConsoleMetricExporter())
-provider = MeterProvider(metric_readers=[metric_reader])
-
-# Sets the global default meter provider
-metrics.set_meter_provider(provider)
-
-# Creates a meter from the global meter provider
-meter = metrics.get_meter("my.meter.name")
-```
-
-## Tracing
 
 ### Creating spans
 
@@ -217,7 +200,7 @@ with tracer.start_as_current_span("span-1"):
 
 with tracer.start_as_current_span("span-2", links=[link_from_span_1]):
     # Do something that 'span-2' tracks.
-    # The link in 'span-2' is casually associated it with the 'span-1',
+    # The link in 'span-2' is causally associated it with the 'span-1',
     # but it is not a child span.
     pass
 ```
@@ -313,7 +296,36 @@ set_global_textmap(B3Format())
 
 Note that environment variables will override what's configured in code.
 
+### Further Reading
+
+- [Trace Concepts](/docs/concepts/signals/traces/)
+- [Trace Specification](/docs/specs/otel/overview/#tracing-signal)
+- [Python Trace API Documentation](https://opentelemetry-python.readthedocs.io/en/latest/api/trace.html)
+- [Python Trace SDK Documentation](https://opentelemetry-python.readthedocs.io/en/latest/sdk/trace.html)
+
 ## Metrics
+
+To start collecting metrics, you'll need to initialize a
+[`MeterProvider`](/docs/specs/otel/metrics/api/#meterprovider) and optionally
+set it as the global default.
+
+```python
+from opentelemetry import metrics
+from opentelemetry.sdk.metrics import MeterProvider
+from opentelemetry.sdk.metrics.export import (
+    ConsoleMetricExporter,
+    PeriodicExportingMetricReader,
+)
+
+metric_reader = PeriodicExportingMetricReader(ConsoleMetricExporter())
+provider = MeterProvider(metric_readers=[metric_reader])
+
+# Sets the global default meter provider
+metrics.set_meter_provider(provider)
+
+# Creates a meter from the global meter provider
+meter = metrics.get_meter("my.meter.name")
+```
 
 ### Creating and using synchronous instruments
 
@@ -385,15 +397,19 @@ meter.create_observable_gauge(
 )
 ```
 
-## Additional References
+### Further Reading
 
-- Trace
-  - [Trace Concepts](/docs/concepts/signals/traces/)
-  - [Trace Specification](/docs/specs/otel/overview/#tracing-signal)
-  - [Python Trace API Documentation](https://opentelemetry-python.readthedocs.io/en/latest/api/trace.html)
-  - [Python Trace SDK Documentation](https://opentelemetry-python.readthedocs.io/en/latest/sdk/trace.html)
-- Metrics
-  - [Metrics Concepts](/docs/concepts/signals/metrics/)
-  - [Metrics Specification](/docs/specs/otel/metrics/)
-  - [Python Metrics API Documentation](https://opentelemetry-python.readthedocs.io/en/latest/api/metrics.html)
-  - [Python Metrics SDK Documentation](https://opentelemetry-python.readthedocs.io/en/latest/sdk/metrics.html)
+- [Metrics Concepts](/docs/concepts/signals/metrics/)
+- [Metrics Specification](/docs/specs/otel/metrics/)
+- [Python Metrics API Documentation](https://opentelemetry-python.readthedocs.io/en/latest/api/metrics.html)
+- [Python Metrics SDK Documentation](https://opentelemetry-python.readthedocs.io/en/latest/sdk/metrics.html)
+
+## Logs
+
+The logs API & SDK are currently under development.
+
+## Next Steps
+
+You’ll also want to configure an appropriate exporter to
+[export your telemetry data](/docs/instrumentation/python/exporters) to one or
+more telemetry backends.

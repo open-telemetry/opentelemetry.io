@@ -1,8 +1,10 @@
 ---
 title: Exporters
-weight: 4
-spelling: cSpell:ignore ostream jaegertracing millis chrono
+weight: 50
+cSpell:ignore: chrono millis ostream
 ---
+
+<!-- markdownlint-disable no-duplicate-heading -->
 
 In order to visualize and analyze your [traces](/docs/concepts/signals/traces/)
 and metrics, you will need to export them to a backend.

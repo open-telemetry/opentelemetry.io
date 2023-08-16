@@ -3,6 +3,7 @@ title: OpenTelemetry PHP Auto-Instrumentation
 linkTitle: PHP Auto-Instrumentation
 date: 2023-03-21
 author: '[Przemek Delewski](https://github.com/pdelewski/) (Sumo Logic)'
+cSpell:ignore: classname Delewski functionname laravel Przemek
 ---
 
 Automatic Instrumentation is a process of adding tracing capabilities into user
@@ -55,7 +56,7 @@ function hook(
 
 This function can be used from user application in order to add additional
 functionality executed before and after the observed function. The below code
-snippet shows how to instrument dummy `helloworld` function:
+snippet shows how to instrument a `helloWorld` function:
 
 ```php
 function helloWorld() {
@@ -77,11 +78,11 @@ function helloWorld() {
 In the same way, we have implemented tracing support for some of the most
 important `interfaces/libraries/frameworks` that are parts of
 [Contrib](https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation)
-repo. Each `auto-instrumentation` package uses above `hook` function in order to
-register and provide tracing functionality. One missing thing, not mentioned yet
-is an `API` `SDK` used to create traces and other necessary components. This is
-the responsibility of the opentelemetry-php
-[main](https://github.com/open-telemetry/opentelemetry-php) repo which is
+repository. Each `auto-instrumentation` package uses above `hook` function in
+order to register and provide tracing functionality. One missing thing, not
+mentioned yet is an `API` `SDK` used to create traces and other necessary
+components. This is the responsibility of the opentelemetry-php
+[main](https://github.com/open-telemetry/opentelemetry-php) repository which is
 foundation for everything.
 
 ![php-rel](php-rel.png)
@@ -94,7 +95,7 @@ installer that can do that for you. This section will show how auto-instrument a
 simple PHP `laravel` application created from scratch.
 
 The first step is to create a demo application. Here we use the popular
-[laravel](https://laravel.com/docs/10.x/installation) framework:
+[Laravel](https://laravel.com/docs/10.x/installation) framework:
 
 ```sh
 composer create-project laravel/laravel example-app

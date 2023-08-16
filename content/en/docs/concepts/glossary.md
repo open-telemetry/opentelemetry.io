@@ -196,13 +196,13 @@ Short form for [`OpenCensus`](#opencensus).
 A set of libraries for various languages that allow you to collect application
 metrics and distributed traces, then transfer the data to a backend of your
 choice in real time.
-[Precursor to OpenTelemetry](/docs/what-is-opentelemetry/#so-what). See
+[Precursor to OpenTelemetry](/docs/what-is-opentelemetry/#history). See
 [more][opencensus].
 
 ### **OpenTracing**
 
 Vendor-neutral APIs and instrumentation for distributed tracing.
-[Precursor to OpenTelemetry](/docs/what-is-opentelemetry/#so-what). See
+[Precursor to OpenTelemetry](/docs/what-is-opentelemetry/#history). See
 [more][opentracing].
 
 ### **OT**
@@ -384,7 +384,6 @@ on web pages when requested. See [more][zpages].
 [sampling]: /docs/specs/otel/trace/sdk#sampling
 [signals]: /docs/concepts/signals/
 [span]: /docs/specs/otel/trace/api#span
-[spans]: /docs/specs/otel/trace/api#add-events
 [spec-exporter-lib]: /docs/specs/otel/glossary/#exporter-library
 [spec-instrumentation-lib]: /docs/specs/otel/glossary/#instrumentation-library
 [spec-instrumented-lib]: /docs/specs/otel/glossary/#instrumented-library

@@ -1,8 +1,9 @@
 ---
 title: Agent Configuration
 linkTitle: Configuration
-weight: 45
-spelling: cSpell:ignore distro mkdir myapp uninstrumented virtualenv
+weight: 10
+# prettier-ignore
+cSpell:ignore: distro healthcheck mkdir myapp Starlette uninstrumented urllib virtualenv
 ---
 
 The agent is highly configurable, either by:
@@ -60,17 +61,17 @@ desired configuration property:
 - Prefix environment variable with `OTEL_`
 
 For example, `exporter_otlp_endpoint` would convert to
-`OTEL_EXPORTER_OTLP_TRACES_ENDPOINT`.
+`OTEL_EXPORTER_OTLP_ENDPOINT`.
 
 ## Python-specific Configuration
 
-There are some python specific configuration options you can set by prefixing
+There are some Python specific configuration options you can set by prefixing
 environment variables with `OTEL_PYTHON_`.
 
 ### Excluded URLs
 
-Comma-separated regexes representing which URLs to exclude across all
-instrumentations:
+Comma-separated regular expressions representing which URLs to exclude across
+all instrumentations:
 
 - `OTEL_PYTHON_EXCLUDED_URLS`
 
@@ -151,7 +152,7 @@ export OTEL_PYTHON_INSTRUMENTATION_SANITIZE_REDIS=true
 
 ## Disabling Specific Instrumentations
 
-The Python agent by default will detect a python program's packages and
+The Python agent by default will detect a Python program's packages and
 instrument any packages it can. This makes instrumentation easy, but can result
 in too much or unwanted data.
 

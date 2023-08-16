@@ -25,6 +25,8 @@ jobs:
           .github/workflows/scripts/auto-update-version.sh opentelemetry-java javaVersion content/en/docs/instrumentation/java/_index.md
           .github/workflows/scripts/auto-update-version.sh opentelemetry-java-instrumentation javaInstrumentationVersion content/en/docs/instrumentation/java/automatic/annotations.md
           .github/workflows/scripts/auto-update-version.sh opentelemetry-specification spec scripts/content-modules/adjust-pages.pl
+          .github/workflows/scripts/auto-update-version.sh opentelemetry-proto otlp scripts/content-modules/adjust-pages.pl
+          .github/workflows/scripts/auto-update-version.sh semantic-conventions semconv scripts/content-modules/adjust-pages.pl
         env:
           # change this to secrets.GITHUB_TOKEN when testing against a fork
           GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}

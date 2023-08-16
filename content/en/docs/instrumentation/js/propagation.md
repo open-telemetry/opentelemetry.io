@@ -2,8 +2,8 @@
 title: Propagation
 description: Context propagation for the JS SDK
 aliases: [/docs/instrumentation/js/api/propagation]
-weight: 7
-spelling: cSpell:ignore traceparent tracestate
+weight: 65
+cSpell:ignore: tracestate
 ---
 
 Propagation is the mechanism that moves data between services and processes.
@@ -39,7 +39,7 @@ you're using to have services communicate with one another. Or you many have
 requirements that instrumentation libraries cannot fulfill, even if they exist.
 
 When you must propagate context manually, you can use the
-[context api](/docs/instrumentation/js/context).
+[context API](/docs/instrumentation/js/context).
 
 The following generic example demonstrates how you can propagate trace context
 manually.
@@ -87,7 +87,7 @@ let span = tracer.startSpan(
   {
     attributes: {},
   },
-  activeContext
+  activeContext,
 );
 
 // Set the created span as active in the deserialized context.

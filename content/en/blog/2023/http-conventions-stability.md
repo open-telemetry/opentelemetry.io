@@ -3,6 +3,7 @@ title: Final push to HTTP semantic convention stability
 linkTitle: HTTP semantic conventions
 date: 2023-01-30
 author: '[Trask Stalnaker](https://github.com/trask) (Microsoft)'
+cSpell:ignore: stalnaker trask
 ---
 
 The OpenTelemetry community is beginning the final push to declare HTTP

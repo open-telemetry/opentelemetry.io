@@ -2,6 +2,7 @@
 title: Email Service
 linkTitle: Email
 aliases: [/docs/demo/services/emailservice]
+cSpell:ignore: sinatra
 ---
 
 This service will send a confirmation email to the user when an order is placed.
@@ -39,23 +40,23 @@ Within the execution of auto-instrumented code you can get current span from
 context.
 
 ```ruby
-  current_span = OpenTelemetry::Trace.current_span
+current_span = OpenTelemetry::Trace.current_span
 ```
 
 Adding multiple attributes to a span is accomplished using `add_attributes` on
 the span object.
 
 ```ruby
-  current_span.add_attributes({
-    "app.order.id" => data.order.order_id,
-  })
+current_span.add_attributes({
+  "app.order.id" => data.order.order_id,
+})
 ```
 
 Adding only a single attribute can be accomplished using `set_attribute` on the
 span object.
 
 ```ruby
-    span.set_attribute("app.email.recipient", data.email)
+span.set_attribute("app.email.recipient", data.email)
 ```
 
 ### Create new spans
@@ -65,10 +66,10 @@ OpenTelemetry Tracer object. When used in conjunction with a `do..end` block,
 the span will automatically be ended when the block ends execution.
 
 ```ruby
-  tracer = OpenTelemetry.tracer_provider.tracer('emailservice')
-  tracer.in_span("send_email") do |span|
-    # logic in context of span here
-  end
+tracer = OpenTelemetry.tracer_provider.tracer('emailservice')
+tracer.in_span("send_email") do |span|
+  # logic in context of span here
+end
 ```
 
 ## Metrics

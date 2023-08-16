@@ -1,14 +1,14 @@
 ---
 title: Getting Started
 description: Get telemetry for your app in less than 5 minutes!
-spelling: cSpell:ignore helloworld javaagent springframework autoreconfigure
-spelling: cSpell:ignore rolldice aarch Nanos darwin autoconfigure webmvc kotlin
-weight: 1
+# prettier-ignore
+cSpell:ignore: aarch autoconfigure autoreconfigure darwin helloworld Nanos rolldice springframework webmvc
+weight: 10
 ---
 
 This page will show you how to get started with OpenTelemetry in Java.
 
-You will learn how you can instrument a simple java application automatically,
+You will learn how you can instrument a simple Java application automatically,
 in such a way that [traces][], [metrics][] and [logs][] are emitted to the
 console.
 
@@ -23,7 +23,7 @@ Ensure that you have the following installed locally:
 
 The following example uses a basic
 [Spring Boot](https://spring.io/guides/gs/spring-boot/) application. If you are
-not using Spring Boot, that's ok — you can use OpenTelemetry Java with other web
+not using Spring Boot, that's OK — you can use OpenTelemetry Java with other web
 frameworks as well, such as Apache Wicket and Play. For a complete list of
 libraries for supported frameworks, see the
 [registry](/ecosystem/registry/?component=instrumentation&language=java).
@@ -131,8 +131,8 @@ application at launch time. While you can [configure the Java agent][] in a
 number of ways, the steps below use environment variables.
 
 1. Download [opentelemetry-javaagent.jar][] from [Releases][] of the
-   `opentelemetry-java-instrumentation` repo. The JAR file contains the agent
-   and all automatic instrumentation packages:
+   `opentelemetry-java-instrumentation` repository. The JAR file contains the
+   agent and all automatic instrumentation packages:
 
    ```console
    curl -L -O https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
@@ -145,8 +145,8 @@ number of ways, the steps below use environment variables.
    exporter][], using a notation suitable for your shell/terminal environment
    &mdash; we illustrate a notation for bash-like shells:
 
-   ```console
-   $ export JAVA_TOOL_OPTIONS="-javaagent:PATH/TO/opentelemetry-javaagent.jar" \
+   ```sh
+   export JAVA_TOOL_OPTIONS="-javaagent:PATH/TO/opentelemetry-javaagent.jar" \
      OTEL_TRACES_EXPORTER=logging \
      OTEL_METRICS_EXPORTER=logging \
      OTEL_LOGS_EXPORTER=logging
@@ -166,8 +166,8 @@ number of ways, the steps below use environment variables.
 
 4. From _another_ terminal, send a request using `curl`:
 
-   ```console
-   $ curl localhost:8080/rolldice
+   ```sh
+   curl localhost:8080/rolldice
    ```
 
 5. Stop the server process.
@@ -239,6 +239,9 @@ For more:
 - For light-weight customized telemetry, try [annotations][].
 - Learn about [manual instrumentation][] and try out more
   [examples](/docs/instrumentation/java/examples/).
+- Take a look at the [OpenTelemetry Demo](/docs/demo/), which includes Java
+  based [Ad Service](/docs/demo/services/ad/) and Kotlin based
+  [Fraud Detection Service](/docs/demo/services/fraud-detection/)
 
 [traces]: /docs/concepts/signals/traces/
 [metrics]: /docs/concepts/signals/metrics/

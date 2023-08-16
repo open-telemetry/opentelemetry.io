@@ -3,11 +3,8 @@ title: Exposing a Collector for cross cluster communication
 linkTitle: Exposing a Collector
 date: 2022-09-08
 author: '[Benedikt Bongartz](https://github.com/frzifus)'
-spelling:
-  cSpell:ignore k8sattributes k8sattributesprocessor K8sattributes k8sprocessor
-  cSpell:ignore K8sprocessor KUBE Benedikt Bongartz OIDC Juraci Paixão Kröhling
-  cSpell:ignore Keycloak dXNlci0xOjEyMzQK nginx basicauth htpasswd llczt
-  cSpell:ignore letsencrypt kubernetes frzifus oidc rolebinding
+# prettier-ignore
+cSpell:ignore: basicauth Benedikt Bongartz dXNlci0xOjEyMzQK frzifus htpasswd k8sattributes K8sattributes k8sattributesprocessor K8sprocessor k8sprocessor Keycloak letsencrypt llczt oidc rolebinding
 ---
 
 Exposing an [OpenTelemetry Collector](/docs/collector/) currently requires a
@@ -40,7 +37,7 @@ article
 [How TLS provides identification, authentication, confidentiality, and integrity](https://www.ibm.com/docs/en/ibm-mq/9.1?topic=tls-how-provides-identification-authentication-confidentiality-integrity)
 and the Collector
 [TLS-Config](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.58.0/config/configtls/README.md)
-description on Github.
+description on GitHub.
 
 If you are interested in using an external authentication provider, I advise you
 to have a look at the article
@@ -104,17 +101,16 @@ transmitted traces are stored in a
 Interfaces and behavior may change in the future. Therefore, the versions used
 in this setup are mentioned in brackets.
 
-- A Kubernetes[v1.23.3] cluster with a public address with
-  [ingress-nginx-controller](https://docs.nginx.com/nginx-ingress-controller/)[v1.2.1]
-  installed.
-- A Kubernetes[v1.23.3] edge cluster to create a test cluster. Using
+- A Kubernetes [v1.23.3] cluster with a public address with
+  [ingress-nginx-controller](https://docs.nginx.com/nginx-ingress-controller/)
+  [v1.2.1] installed.
+- A Kubernetes [v1.23.3] edge cluster to create a test cluster. Using
   [Kind](https://kind.sigs.k8s.io/) is recommended.
-- Installed [OpenTelemetry Operator](/docs/collector/getting-started)[v0.58.0]
+- Installed [OpenTelemetry Operator](/docs/collector/getting-started) [v0.58.0]
   on both ends.
-- Installed
-  [Jaeger Operator](https://www.jaegertracing.io/docs/1.37/operator/)[v1.37.0]
-  on your public cluster.
-- Installed [cert-manager](https://cert-manager.io/)[v1.9.1] on your public
+- Installed [Jaeger Operator](https://www.jaegertracing.io/docs/1.37/operator/)
+  [v1.37.0] on your public cluster.
+- Installed [cert-manager](https://cert-manager.io/) [v1.9.1] on your public
   cluster.
 
 ## Remote cluster configuration
@@ -183,7 +179,7 @@ spec:
 ```
 
 After a successful installation, a pod for the Jaeger backend and the
-OpenTelemetry collector should be created in the selected namespace.
+OpenTelemetry Collector should be created in the selected namespace.
 
 ```bash
 NAME                                            READY   STATUS    RESTARTS   AGE
@@ -202,7 +198,6 @@ my-in-memory-query                        ClusterIP   10.245.91.239   <none>    
 otel-collector-app-collector              ClusterIP   10.245.5.134    <none>        4317/TCP                                                    5m
 otel-collector-app-collector-headless     ClusterIP   None            <none>        4317/TCP                                                    5m
 otel-collector-app-collector-monitoring   ClusterIP   10.245.116.38   <none>        8888/TCP                                                    5m
-
 ```
 
 Finally, cert-manager is configured to automatically request TLS certificates
@@ -422,7 +417,7 @@ Kubernetes components, the configurations differ a lot. Overall the
 configuration is very error-prone. In the future the exposing of the collector
 should be simplified with the help of the OpenTelemetry operator. If you are
 interested in the development, you can follow
-[Github issue #902](https://github.com/open-telemetry/opentelemetry-operator/issues/902)
+[GitHub issue #902](https://github.com/open-telemetry/opentelemetry-operator/issues/902)
 to stay updated.
 
 ## References

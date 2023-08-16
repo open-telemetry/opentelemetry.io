@@ -2,8 +2,11 @@
 title: Instrumentation Libraries
 linkTitle: Libraries
 description: How to use Swift instrumentation libraries
-weight: 5
+weight: 40
+cSpell:ignore: darwin inout iphone NSURL wifi
 ---
+
+<!-- markdownlint-disable no-duplicate-heading -->
 
 OpenTelemetry-Swift provides several instrumentation libraries that generate
 instrumentation for you when they're installed and initialized.

@@ -1,8 +1,8 @@
 ---
 title: .NET Framework instrumentation configuration
 linkTitle: .NET Framework
-weight: 5
-spelling: cSpell:ignore asax LINQ
+weight: 100
+cSpell:ignore: asax LINQ
 ---
 
 OpenTelemetry supports both

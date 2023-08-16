@@ -2,12 +2,12 @@
 title: Rust
 description: >-
   <img width="35" class="img-initial" src="/img/logos/32x32/Rust.svg"
-  alt="Rust"></img> A language-specific implementation of OpenTelemetry in Rust.
+  alt="Rust"> A language-specific implementation of OpenTelemetry in Rust.
 weight: 26
-spelling: cSpell:ignore datadog dynatrace stackdriver
+cSpell:ignore: stackdriver
 ---
 
-{{% lang_instrumentation_index_head rust /%}}
+{{% docs/instrumentation/index-intro rust /%}}
 
 ## Crates
 
@@ -30,6 +30,4 @@ OpenTelemetry for Rust publishes the following crates:
 
 ## Further Reading
 
-- [Docs for Rust API & SDK](https://docs.rs/opentelemetry)
-- [Examples](https://github.com/open-telemetry/opentelemetry-rust/tree/main/examples)
 - [Ecosystem](https://github.com/open-telemetry/opentelemetry-rust#ecosystem)

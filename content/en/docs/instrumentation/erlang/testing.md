@@ -1,6 +1,7 @@
 ---
 title: Testing
-weight: 40
+weight: 100
+cSpell:ignore: defmodule defrecordp stdlib testcase
 ---
 
 When relying on OpenTelemetry for your Observability needs, it can be important
@@ -14,42 +15,43 @@ validation.
 Only the `opentelemetry` and `opentelemetry_api` libraries are required for
 testing in Elixir/Erlang:
 
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
 
-{{< tab Erlang >}}
-{deps, [{opentelemetry_api, "~> 1.0"},
-        {opentelemetry, "~> 1.0"}]}.
-{{< /tab >}}
+```erlang
+{deps, [{opentelemetry_api, "~> {{% param versions.otelApi %}}"},
+        {opentelemetry, "~> {{% param versions.otelSdk %}}"}]}.
+```
 
-{{< tab Elixir >}}
+{{% /tab %}} {{% tab Elixir %}}
+
+```elixir
 def deps do
   [
-    {:opentelemetry_api, "~> 1.0"},
-    {:opentelemetry, "~> 1.0"}
+    {:opentelemetry_api, "~> {{% param versions.otelApi %}}"},
+    {:opentelemetry, "~> {{% param versions.otelSdk %}}"}
   ]
 end
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
+{{% /tab %}} {{< /tabpane >}}
 
 Set your `exporter` to `:none` and the span processor to
 `:otel_simple_processor`. This ensure that your tests don't actually export data
 to a destination, and that spans can be analyzed after they are processed.
 
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
 
-{{< tab Erlang >}}
+```erlang
 %% config/sys.config.src
 {opentelemetry,
   [{traces_exporter, none},
    {processors,
      [{otel_simple_processor, #{}}]}]}
-{{< /tab >}}
+```
 
-{{< tab Elixir >}}
+{{% /tab %}} {{% tab Elixir %}}
+
+```elixir
 # config/test.exs
 import Config
 
@@ -59,19 +61,17 @@ config :opentelemetry,
 config :opentelemetry, :processors, [
   {:otel_simple_processor, %{}}
 ]
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
+{{% /tab %}} {{< /tabpane >}}
 
 A modified version of the `hello` function from the
 [Getting Started](/docs/instrumentation/erlang/getting-started/) guide will
 serve as our test case:
 
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
 
-{{< tab Erlang >}}
+```erlang
 %% apps/otel_getting_started/src/otel_getting_started.erl
 -module(otel_getting_started).
 
@@ -86,9 +86,11 @@ hello() ->
 nice_operation(_SpanCtx) ->
     ?set_attributes([{a_key, <<"a value">>}]),
     world
-{{< /tab >}}
+```
 
-{{< tab Elixir >}}
+{{% /tab %}} {{% tab Elixir %}}
+
+```elixir
 # lib/otel_getting_started.ex
 defmodule OtelGettingStarted do
   require OpenTelemetry.Tracer, as: Tracer
@@ -100,17 +102,15 @@ defmodule OtelGettingStarted do
     end
   end
 end
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
+{{% /tab %}} {{< /tabpane >}}
 
 ## Testing
 
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
 
-{{< tab Erlang >}}
+```erlang
 -module(otel_getting_started_SUITE).
 
 -compile(export_all).
@@ -162,9 +162,11 @@ greets_the_world(_Config) ->
     ?assertMatch(ReceivedAttributes, ExpectedAttributes),
 
     ok.
-{{< /tab >}}
+```
 
-{{< tab Elixir >}}
+{{% /tab %}} {{% tab Elixir %}}
+
+```elixir
 defmodule OtelGettingStartedTest do
   use ExUnit.Case
 
@@ -194,7 +196,6 @@ defmodule OtelGettingStartedTest do
                     )}
   end
 end
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
+{{% /tab %}} {{< /tabpane >}}

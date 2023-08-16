@@ -1,7 +1,7 @@
 ---
 title: OpenTelemetry Tracing Shim
 linkTitle: Tracing Shim
-weight: 5
+weight: 110
 ---
 
 .NET is different from other languages/runtimes that support OpenTelemetry.
@@ -29,7 +29,7 @@ create a tracer provider.
 
 First, ensure that you have the right packages:
 
-```
+```sh
 dotnet add package OpenTelemetry
 dotnet add package OpenTelemetry.Exporter.Console
 ```
@@ -70,7 +70,7 @@ use the OpenTelemetry extensions for ASP.NET Core setup.
 
 First, ensure that you have the right packages:
 
-```
+```sh
 dotnet add package OpenTelemetry --prerelease
 dotnet add package OpenTelemetry.Instrumentation.AspNetCore --prerelease
 dotnet add package OpenTelemetry.Extensions.Hosting --prerelease

@@ -1,7 +1,13 @@
 ---
 title: Resources
-weight: 36
+weight: 70
+# For the writing of behaviour, see
+# https://www.erlang.org/doc/reference_manual/modules.html#behaviour-module-attribute
+cSpell:ignore: behaviour
 ---
+
+<!-- markdownlint-disable no-duplicate-heading -->
+<!-- markdownlint-capture -->
 
 A [resource](/docs/specs/otel/overview/#resources) represents an entity
 producing telemetry as attributes. For example, an OTP Release producing
@@ -23,21 +29,21 @@ detectors use the OS environment variable `OTEL_RESOURCE_ATTRIBUTES` and the
 The detectors to use is a list of module names and can be configured in the
 Application configuration:
 
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
 
-{{< tab Erlang >}}
+```erlang
 %% sys.config
-{resource_detectors, [otel_resource_env_var, otel_resource_app_env]}
-{{< /tab >}}
+{opentelemetry, {resource_detectors, [otel_resource_env_var, otel_resource_app_env]}}
+```
 
-{{< tab Elixir >}}
+{{% /tab %}} {{% tab Elixir %}}
+
+```elixir
 ## runtime.exs
-resource_detectors: [:otel_resource_env_var, :otel_resource_app_env]
-{{< /tab >}}
+config :opentelemetry, resource_detectors: [:otel_resource_env_var, :otel_resource_app_env]
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
+{{% /tab %}} {{< /tabpane >}}
 
 Or through the environment variable `OTEL_RESOURCE_DETECTORS`:
 
@@ -64,21 +70,21 @@ OTEL_RESOURCE_ATTRIBUTES="deployment.environment=development"
 Alternatively, use the `resource` Application environment under the
 `opentelemetry` Application configuration of `sys.config` or `runtime.exs`:
 
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
 
-{{< tab Erlang >}}
+```erlang
 %% sys.config
-{resource, #{deployment => #{environment => <<"development">>}}
-{{< /tab >}}
+{opentelemetry, {resource, #{deployment => #{environment => <<"development">>}}}}
+```
 
-{{< tab Elixir >}}
+{{% /tab %}} {{% tab Elixir %}}
+
+```elixir
 ## runtime.exs
-resource: %{deployment: %{environment: "development" }}
-{{< /tab >}}
+config :opentelemetry, resource: %{deployment: %{environment: "development" }}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
+{{% /tab %}} {{< /tabpane >}}
 
 Resource attributes in the `resource` Application environment variable are
 flattened and combined with `.`, so

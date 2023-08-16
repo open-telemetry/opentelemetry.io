@@ -2,6 +2,7 @@
 title: Feature Flag Service
 linkTitle: Feature Flag
 aliases: [/docs/demo/services/featureflagservice]
+cSpell:ignore: ecto featureflag grpcbox nanos oteldemo protos struct
 ---
 
 This service is written in Erlang/Elixir and it is responsible for creating,
@@ -60,7 +61,7 @@ config :grpcbox,
       :grpc_opts => %{
         :service_protos => [:ffs_demo_pb],
         :unary_interceptor => {:otel_grpcbox_interceptor, :unary},
-        :services => %{:"hipstershop.FeatureFlagService" => :ffs_service}
+        :services => %{:"oteldemo.FeatureFlagService" => :ffs_service}
       },
       :listen_opts => %{:port => grpc_port}
     }

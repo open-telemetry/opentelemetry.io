@@ -3,6 +3,7 @@ title: Gaining JMX Metric Insights with the OpenTelemetry Java Agent
 linkTitle: JMX Metric Insight
 date: 2023-01-17
 author: '[Samudraneel Dasgupta](https://github.com/Samudraneel24) (Cisco)'
+cSpell:ignore: -Dapplication -Dotel Dasgupta Samudraneel Singlestat
 ---
 
 [JMX](https://www.oracle.com/technical-resources/articles/javase/jmx.html) (Java
@@ -34,7 +35,7 @@ servers or frameworks, such as:
 - [Jetty](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/jetty.md)
 - [Kafka Broker](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/kafka-broker.md)
 - [Tomcat](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/tomcat.md)
-- [Wildfly](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/wildfly.md)
+- [WildFly](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/wildfly.md)
 
 You can also provide your own metric definitions, through one or more YAML
 files. The YAML file syntax documentation is available
@@ -57,9 +58,9 @@ To start Zookeeper:
 zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties
 ```
 
-### Attach the OpenTelemetry java instrumentation agent
+### Attach the OpenTelemetry Java instrumentation agent
 
-Before starting the kafka broker, attach the OpenTelemetry java instrumentation
+Before starting the Kafka broker, attach the OpenTelemetry Java instrumentation
 agent to Kafka Broker by providing options in the KAFKA_OPTS environment
 variable. You can download the latest release of the agent from
 [here](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases).
@@ -118,7 +119,7 @@ exporter, perform some processing and then consume the metrics on a backend of
 your choice. In this example for the sake of simplicity, we are directly
 exporting the metrics to Prometheus.
 
-We will visualise the metrics on a Grafana dashboard using Prometheus as the
+We will visualize the metrics on a Grafana dashboard using Prometheus as the
 data source. In this demo, we’ll deploy Prometheus on Docker. We can create a
 `prometheus.yml` file containing this minimal configuration:
 
@@ -154,7 +155,7 @@ More installation options for Prometheus can be found
 
 ### View the metrics on a Grafana Dashboard
 
-Now, we are going to visualise the Prometheus metrics in a Grafana dashboard. To
+Now, we are going to visualize the Prometheus metrics in a Grafana dashboard. To
 do that, first, pull the Grafana docker image using the following command:
 
 ```shell
@@ -164,7 +165,7 @@ docker run -d -p 3000:3000 grafana/grafana
 You can now navigate to <http://localhost:3000> and explore the Grafana home
 page. Click on Add Data Source and select Prometheus. Add the HTTP URL, default
 is <http://localhost:9090>. After that we can create new Dashboards, with
-multiple options of visualisations to choose from (Graph, Singlestat, Gauge,
+multiple options of visualizations to choose from (Graph, Singlestat, Gauge,
 Table, Text, etc). We can then create new panels and add any metric we would
 like to observe. Here is an example dashboard consisting of 6 panels, we are
 observing a metric in each panel. We can observe the health of our Kafka Broker
@@ -179,7 +180,7 @@ You can also explore the official
 The
 [message queue service](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/kafka)
 which connects the checkout service with the accounting and fraud detection
-services is based on Kafka and utilises the JMX Metric Insight module to export
+services is based on Kafka and utilizes the JMX Metric Insight module to export
 Kafka broker metrics out of the box. You can head to the
 [documentation](/docs/demo/services/kafka/).
 

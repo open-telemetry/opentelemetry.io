@@ -6,11 +6,12 @@ linkTitle: Tail Sampling
 date: 2022-09-26
 author: '[Reese Lee](https://github.com/reese-lee)'
 canonical_url: https://newrelic.com/blog/best-practices/open-telemetry-tail-sampling
+cSpell:ignore: unsampled
 ---
 
 Tail sampling is useful for identifying issues in your distributed system while
 saving on observability costs. In this post, you’ll learn how to implement tail
-sampling using the OpenTelemetry collector. I will also share some general and
+sampling using the OpenTelemetry Collector. I will also share some general and
 OpenTelemetry-specific concerns to consider as you develop your sampling
 strategy.
 
@@ -27,7 +28,7 @@ without latency or errors, do you really need all that data? Here’s the
 thing—you don’t always need a ton of data to find the right insights. _You just
 need the right sampling of data._
 
-![Illustration shows that not all data needs to be traced, and that a sample of data is sufficient.](traces_venn_diagram.png)
+![Illustration shows that not all data needs to be traced, and that a sample of data is sufficient.](traces-venn-diagram.png)
 
 The idea behind sampling is to control the spans you send to your observability
 backend, resulting in lower ingest costs. Different organizations will have
@@ -49,14 +50,14 @@ root span begins processing. Tail-based sampling gives you the option to filter
 your traces based on specific criteria, which isn’t an option with head-based
 sampling.
 
-![Illustration shows how spans originate from a root span. After the spans are complete, the tail sampling processor makes a sampling decision.](tail_sampling_process.png)
+![Illustration shows how spans originate from a root span. After the spans are complete, the tail sampling processor makes a sampling decision.](tail-sampling-process.png)
 
 Tail sampling lets you see only the traces that are of interest to you. You also
 lower data ingest and storage costs because you’re only exporting a
 predetermined subset of your traces. For instance, as an app developer, I may
 only be interested in traces with errors or latency for debugging.
 
-## How to implement tail sampling in the OpenTelemetry collector
+## How to implement tail sampling in the OpenTelemetry Collector
 
 To use tail sampling in OpenTelemetry, you need to implement a component called
 the
@@ -110,7 +111,7 @@ processors:
 The next image is an example of what you might see in your backend if you
 implement this sample configuration.
 
-![Illustration shows sampling based on both traces that have errors as well as randomly selected traces.](backend_visual_errors_and_random.png)
+![Illustration shows sampling based on both traces that have errors as well as randomly selected traces.](backend-visual-errors-and-random.png)
 
 The blue dots and rectangle on the right side indicate that the sampling
 decision occurs at the end of a trace when all the spans for a given request
@@ -125,7 +126,7 @@ traces can help surface other issues and give you a broader view of your
 software’s performance and behavior. Here’s what you'll see with only the status
 code policy defined.
 
-![Illustration shows an example of tail sampling based on errors only, and not including random traces.](backend_visual_errors_only.png)
+![Illustration shows an example of tail sampling based on errors only, and not including random traces.](backend-visual-errors-only.png)
 
 You also have the flexibility to add other policies. Here are a few examples:
 
@@ -133,8 +134,8 @@ You also have the flexibility to add other policies. Here are a few examples:
 - `latency`: Sample based on the duration of the trace. For example, you could
   sample all traces that take longer than 5 seconds.
 - `string_attribute`: Sample based on string attribute values, both exact and
-  regex value matches are supported. For example, you could sample based on
-  specific custom attribute values.
+  regular expression value matches are supported. For example, you could sample
+  based on specific custom attribute values.
 
 ## Potential issues with tail sampling
 
@@ -214,7 +215,7 @@ under active development, including the tail sampling processor and the
 collector. For the tail sampling processor, there is currently an
 [open issue](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/1797)
 in the
-[collector-contrib repo](https://github.com/open-telemetry/opentelemetry-collector-contrib)
+[collector-contrib repository](https://github.com/open-telemetry/opentelemetry-collector-contrib)
 to discuss the future of this processor that centers around replacing it with
 separate processors, so that the chain of events is well-defined and understood.
 One of the main issues the community is trying to figure out is whether using

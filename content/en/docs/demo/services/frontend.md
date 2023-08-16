@@ -1,5 +1,6 @@
 ---
 title: Frontend
+cSpell:ignore: typeof
 ---
 
 The frontend is responsible to provide a UI for users, as well as an API
@@ -84,9 +85,9 @@ This can be done in the `scripts.start` section of `package.json` and starting
 the application using `npm start`.
 
 ```json
-  "scripts": {
-    "start": "node --require ./Instrumentation.js server.js",
-  },
+"scripts": {
+  "start": "node --require ./Instrumentation.js server.js",
+},
 ```
 
 ## Traces
@@ -148,7 +149,7 @@ if (typeof window !== 'undefined') FrontendTracer();
 The `utils/telemetry/FrontendTracer.ts` file contains code to initialize a
 TracerProvider, establish an OTLP export, register trace context propagators,
 and register web specific auto-instrumentation libraries. Since the browser will
-send data to an OpenTelemetry collector that will likely be on a separate
+send data to an OpenTelemetry Collector that will likely be on a separate
 domain, CORS headers are also setup accordingly.
 
 As part of the changes to carry over the `synthetic_request` attribute flag for
@@ -232,6 +233,6 @@ To determine if a Baggage item is set, you can leverage the `propagation` API to
 parse the Baggage header, and leverage the `baggage` API to get or set entries.
 
 ```typescript
-    const baggage = propagation.getBaggage(context.active());
-    if (baggage?.getEntry("synthetic_request")?.value == "true") {...}
+const baggage = propagation.getBaggage(context.active());
+if (baggage?.getEntry("synthetic_request")?.value == "true") {...}
 ```

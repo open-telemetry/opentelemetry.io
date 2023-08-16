@@ -1,10 +1,9 @@
 ---
 title: Agent Configuration
 linkTitle: Configuration
-weight: 2
-spelling:
-  cSpell:ignore akka autoconfiguration Autoconfiguration Dotel HSET javaagent
-  cSpell:ignore serverlessapis Servlet servlet
+weight: 10
+# prettier-ignore
+cSpell:ignore: akka armeria autoconfiguration Autoconfiguration cassandra classloaders couchbase Customizer datasource dbcp Dotel dropwizard dubbo finatra hikari hikaricp HSET httpasyncclient httpclient hystrix jaxrs jaxws jboss jedis jodd kotlinx logback logmanager mojarra myfaces okhttp oshi rabbitmq ratpack rediscala redisson restlet rocketmq serverlessapis servlet spymemcached twilio vaadin vertx vibur webflux webmvc
 ---
 
 ## SDK Autoconfiguration

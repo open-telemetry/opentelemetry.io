@@ -3,6 +3,7 @@ title: OpenTelemetry .NET Automatic Instrumentation Releases its first Beta
 linkTitle: .NET Auto-instrumentation Beta
 date: 2022-05-12
 author: OpenTelemetry .NET Automatic Instrumentation Team
+cSpell:ignore: devopsnote librarysupport
 ---
 
 We're excited to announce the

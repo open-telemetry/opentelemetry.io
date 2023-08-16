@@ -6,8 +6,8 @@ author: >-
   [Kumar Pratyush](https://github.com/kpratyus),  [Sanket
   Mehta](https://github.com/sanketmehta28), [Severin
   Neumann](https://github.com/svrnm) (Cisco)
-spelling: cSpell:ignore Kumar Pratyush Sanket Mehta Neumann nginx webserver
-spelling: cSpell:ignore WORKDIR linux proto distro traceparent tracestate xvfz
+# prettier-ignore
+cSpell:ignore: distro Kumar Mehta Pratyush Sanket tracestate webserver WORKDIR xvfz
 ---
 
 OpenTelemetry is here to help us find the root cause of issues in our software
@@ -17,7 +17,7 @@ of OpenTelemetry to identify the root cause of bug in another feature.
 In this blog post, we want to share this interesting experience with you. By
 that, you will learn that minor differences in the language-specific
 implementations can have interesting implications and that you have a feature
-for java & python, which is here to help you to debug context propagation
+for Java and Python, which is here to help you to debug context propagation
 issues.
 
 ## The issue
@@ -27,14 +27,14 @@ issues.
 For the blog post [Learn how to instrument NGINX with OpenTelemetry][] we
 created a small sample app that had a frontend application in Node.js, that
 called an NGINX, which acted as a reverse proxy for a backend application in
-python.
+Python.
 
 Our goal was to create a re-usable `docker-compose` that would not only show
 people how to instrument NGINX with OpenTelemetry, but also how a distributed
 trace crossing the web server would look like.
 
 While Jaeger showed us a trace flowing from the frontend application down to the
-NGINX, the connection between NGINX and python app was not visible: we had two
+NGINX, the connection between NGINX and Python app was not visible: we had two
 disconnected traces.
 
 This came as a surprise, because in a prior test with a Java application as
@@ -44,7 +44,7 @@ application.
 ### Steps to reproduce
 
 Follow the instructions on how you can [put NGINX between two services][].
-Replace the java-based application with a python application, e.g. put following
+Replace the java-based application with a Python application, e.g. put following
 three files into the `backend` folder instead:
 
 - `app.py`:
@@ -156,21 +156,21 @@ the `frontend` down to NGINX, and another one only for the `python-app`.
 
 ### The hints
 
-Since the setup worked with a java application in the backend, we knew that the
-problem was either caused by the python application or by the combination of the
-NGINX instrumentation and the python application.
+Since the setup worked with a Java application in the backend, we knew that the
+problem was either caused by the Python application or by the combination of the
+NGINX instrumentation and the Python application.
 
-We could quickly rule out that the python application alone was the issue:
+We could quickly rule out that the Python application alone was the issue:
 trying out a simple Node.js application as backend, we got the same result: two
 traces, one from frontend to NGINX, another one for the Node.js application
 alone.
 
 With that, we knew that we had a propagation issue: the trace context was not
-transferred successfully from NGINX down to the python and Node.js application.
+transferred successfully from NGINX down to the Python and Node.js application.
 
 ### The analysis
 
-Knowing that the issue does not occur with java and that it is likely a broken
+Knowing that the issue does not occur with Java and that it is likely a broken
 propagation, we knew what we had to do: we needed to see the trace headers.
 
 Gladly, the instrumentations for [Java][] and [Python][] have a feature that

@@ -3,6 +3,7 @@ title: OpenTelemetry in Focus, February 2023
 linkTitle: OTel in Focus 2023/02
 date: 2023-02-28
 author: '[Austin Parker](https://github.com/austinlparker)'
+cSpell:ignore: Outreachy promtail
 ---
 
 Welcome to this month’s edition of OpenTelemetry in Focus! It might be cold and
@@ -18,6 +19,8 @@ channel.
 ## Releases and Updates
 
 Here are the latest updates from our core repositories.
+
+<!-- markdownlint-disable heading-increment -->
 
 ##### [Specification](/docs/specs/otel/)
 
@@ -39,7 +42,7 @@ have been released with several major changes to be aware of:
   have been added! These are components that act as exporters and receivers,
   allowing you to route data through pipelines. Please see the component docs
   for more information.
-- Many bug fixes and enhancements.
+- Many bugfixes and enhancements.
 
 ##### [Go](/docs/instrumentation/go/)
 
@@ -71,7 +74,7 @@ planning a release of new documentation for PHP soon.
 
 [v1.16](https://github.com/open-telemetry/opentelemetry-python/releases/tag/v1.16.0)
 has been released with deprecations to Jaeger exporters, several performance
-improvements and bug fixes, and changes to Prometheus export.
+improvements and bugfixes, and changes to Prometheus export.
 
 ##### [.NET](/docs/instrumentation/net/)
 

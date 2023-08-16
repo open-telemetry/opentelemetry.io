@@ -1,9 +1,9 @@
 ---
 title: Getting Started
 description: Get telemetry for your app in less than 5 minutes!
-spelling: cSpell:ignore venv distro rolldice randint 
-spelling: cSpell:ignore rollspan loglevel loggingexporter
-weight: 1
+# prettier-ignore
+cSpell:ignore: diceroller distro loggingexporter loglevel randint rolldice rollspan venv
+weight: 10
 ---
 
 This page will show you how to get started with OpenTelemetry in Python.
@@ -20,7 +20,7 @@ Ensure that you have the following installed locally:
 ## Example Application
 
 The following example uses a basic [Flask](https://flask.palletsprojects.com/)
-application. If you are not using Flask, that's ok — you can use OpenTelemetry
+application. If you are not using Flask, that's OK — you can use OpenTelemetry
 Python with other web frameworks as well, such as Django and FastAPI. For a
 complete list of libraries for supported frameworks, see the
 [registry](/ecosystem/registry/?component=instrumentation&language=python).
@@ -81,7 +81,7 @@ Install the `opentelemetry-distro` package, which contains the OpenTelemetry
 API, SDK and also the tools `opentelemetry-bootstrap` and
 `opentelemetry-instrument` you will use below.
 
-```
+```shell
 pip install opentelemetry-distro
 ```
 
@@ -588,7 +588,7 @@ collector via OTLP instead of the console.
 
 To do this, install the OTLP exporter package:
 
-```
+```shell
 pip install opentelemetry-exporter-otlp
 ```
 
@@ -599,7 +599,7 @@ and default to OTLP export when it's run next.
 
 Run the application like before, but don't export to the console:
 
-```
+```shell
 opentelemetry-instrument flask run -p 8080
 ```
 
@@ -613,7 +613,7 @@ process instead of the flask process, which should look something like this:
 <details>
 <summary>View example output</summary>
 
-```
+```text
 2022-06-09T20:43:39.915Z        DEBUG   loggingexporter/logging_exporter.go:51  ResourceSpans #0
 Resource labels:
      -> telemetry.sdk.language: STRING(python)
@@ -699,9 +699,14 @@ There's a lot more to manual instrumentation than just creating a child span. To
 learn details about initializing manual instrumentation and many more parts of
 the OpenTelemetry API you can use, see [Manual Instrumentation](../manual/).
 
-Finally, there are several options for exporting your telemetry data with
-OpenTelemetry. To learn how to export your data to a preferred backend, see
+There are several options for exporting your telemetry data with OpenTelemetry.
+To learn how to export your data to a preferred backend, see
 [Exporters](../exporters/).
+
+If you'd like to explore a more complex example, take a look at the
+[OpenTelemetry Demo](/docs/demo/), which includes the Python based
+[Recommendation Service](/docs/demo/services/recommendation/) and
+[Load Generator](/docs/demo/services/load-generator/).
 
 [traces]: /docs/concepts/signals/traces/
 [metrics]: /docs/concepts/signals/metrics/

@@ -4,6 +4,7 @@ linkTitle: 2022 GC Election
 date: 2022-09-15
 author: OpenTelemetry Governance Committee
 aliases: [/blog/2022/gc-elections-2022]
+cSpell:ignore: bogdandrutu Fong jpkrohling
 ---
 
 The OpenTelemetry project is excited to announce the 2022 OpenTelemetry
@@ -44,7 +45,7 @@ running for a seat on the Governance Committee. You can read about the
 Governance Committee's role in
 [this blog](/blog/2019/opentelemetry-governance-committee-explained/) post or
 refer to the
-[charter document](https://github.com/open-telemetry/community/blob/master/governance-charter.md).
+[charter document](https://github.com/open-telemetry/community/blob/main/governance-charter.md).
 You may nominate yourself (or others!) by submitting a Pull Request against the
 [list of candidates](https://github.com/open-telemetry/community/blob/main/elections/2022/governance-committee-candidates.md)
 by 7 October 2022 23:59 UTC — more detailed requirements about the nomination
@@ -60,8 +61,8 @@ the community.
 ## Questions?
 
 For any election related questions, please file an issue on the
-[community repo](https://github.com/open-telemetry/community/issues) here and
-tag [@jpkrohling](https://github.com/jpkrohling),
+[community repository](https://github.com/open-telemetry/community/issues) here
+and tag [@jpkrohling](https://github.com/jpkrohling),
 [@bogdandrutu](https://github.com/bogdandrutu), and
 [@bhs](https://github.com/bhs). Or send us a message on
 [CNCF Slack](https://slack.cncf.io/) in
