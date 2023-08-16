@@ -3,7 +3,7 @@ title: Automatic Instrumentation
 linkTitle: Automatic
 weight: 20
 # prettier-ignore
-cSpell:ignore: autoload autoloading configurator democlass myapp packagist pecl phar unindented userland
+cSpell:ignore: configurator democlass myapp packagist pecl phar unindented userland
 ---
 
 Automatic instrumentation with PHP requires at least PHP 8.0, and the

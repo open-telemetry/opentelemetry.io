@@ -3,7 +3,7 @@ title: Manual Instrumentation
 linkTitle: Manual
 weight: 30
 description: Manual instrumentation for OpenTelemetry PHP
-cSpell:ignore: autoload guzzlehttp myapp
+cSpell:ignore: guzzlehttp myapp
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
