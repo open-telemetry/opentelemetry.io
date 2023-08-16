@@ -158,6 +158,9 @@ scripts.
 At this point, you should see trace and log output from the server and client
 that looks something like this (output is line-wrapped for readability):
 
+<details>
+<summary>Traces and logs</summary>
+
 ```log
 LogRecord.Timestamp:               2023-08-14T06:44:53.9279186Z
 LogRecord.TraceId:                 3961d22b5f90bf7662ad4933318743fe
@@ -221,8 +224,13 @@ Resource associated with Activity:
     telemetry.sdk.version: 1.4.0.802
 ```
 
+</details>
+
 Also when stopping the server, you should see an output of all the metrics
 collected (sample excerpt shown):
+
+<details>
+<summary>Metrics</summary>
 
 ```log
 Export process.runtime.dotnet.gc.collections.count, Number of garbage collections that have occurred since process start., Meter: OpenTelemetry.Instrumentation.Runtime/1.1.0.2
@@ -255,6 +263,8 @@ Value: Sum: 1330.4766000000002 Count: 5 Min: 50.0333 Max: 465.7936
 (7500,10000]:0
 (10000,+Infinity]:0
 ```
+
+</details>
 
 ## What next?
 
