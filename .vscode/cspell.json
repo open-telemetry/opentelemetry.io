@@ -19,6 +19,7 @@
     "appenders",
     "aspecto",
     "autoload",
+    "autoloaded",
     "autoloader",
     "autoloading",
     "backoff",
