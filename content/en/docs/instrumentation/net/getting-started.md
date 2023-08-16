@@ -3,6 +3,7 @@ title: Getting Started
 description: Get telemetry for your app in less than 5 minutes!
 cSpell:ignore: ASPNETCORE rolldice
 weight: 10
+dotnet-auto-install-URL: https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/latest/download/otel-dotnet-auto-install.sh
 ---
 
 This page will show you how to get started with OpenTelemetry in .NET.
@@ -38,8 +39,7 @@ dotnet new web
 
 ### Create and launch an HTTP Server
 
-In that same directory, modify a file called `Program.cs` and replace existing
-content by the following code:
+In the same directory, replace the content of `Program.cs` with the following code:
 
 ```csharp
 using System.Globalization;
@@ -78,8 +78,7 @@ string HandleRollDice(string? player)
 
 ```
 
-In the `Properties` subdirectory, modify a file called `launchSettings.json` and
-replace existing content by the following code:
+In the `Properties` subdirectory, replace the content of `launchSettings.json` with the following:
 
 ```json
 {
@@ -113,17 +112,15 @@ to instrument the application at launch time. While you can [configure .NET
 Automatic Instrumentation][] in a number of ways, the steps below uses shell
 scripts.
 
-1. Download [otel-dotnet-auto-install.sh][] from [Releases][] of the
-   `opentelemetry-dotnet-instrumentation/releases` repository. The file contains
-   the script which detect system and download appropriate instrumentation
-   version:
+1. Download [otel-dotnet-auto-install.sh]({{% _param dotnet-auto-install-URL
+   %}}) from [Releases][] of the `opentelemetry-dotnet-instrumentation` repository:
 
    ```sh
-   curl -L -O https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/latest/download/otel-dotnet-auto-install.sh
+   curl -L -O {{% _param dotnet-auto-install-URL %}}
    ```
 
 2. Execute `otel-dotnet-auto-install.sh` script to download automatic
-   instrumentation:
+   instrumentation for your development environment:
 
    ```sh
    ./otel-dotnet-auto-install.sh
@@ -160,8 +157,8 @@ scripts.
 
 6. Stop the server process.
 
-At step 6, you should have seen trace & log output from the server and client
-that looks something like this (trace output is line-wrapped for convenience):
+At step 6, you should have seen trace and log output from the server and client
+that looks something like this (output is line-wrapped for readability):
 
 ```log
 LogRecord.Timestamp:               2023-08-14T06:44:53.9279186Z
@@ -226,8 +223,8 @@ Resource associated with Activity:
     telemetry.sdk.version: 1.4.0.802
 ```
 
-At step 6, when stopping the server, you should see an output of all the metrics
-collected (metrics output is shortened for convenience):
+Also when stopping the server, you should see an output of all the metrics
+collected (sample excerpt shown):
 
 ```log
 Export process.runtime.dotnet.gc.collections.count, Number of garbage collections that have occurred since process start., Meter: OpenTelemetry.Instrumentation.Runtime/1.1.0.2
@@ -268,7 +265,7 @@ For more:
 - Run this example with another [exporter][] for telemetry data.
 - Try [automatic instrumentation](../automatic/) on one of your own apps.
 - Learn about [manual instrumentation][] and try out more
-  [examples](/docs/instrumentation/java/examples/).
+  [examples](/docs/instrumentation/net/examples/).
 - Take a look at the [OpenTelemetry Demo](/docs/demo/), which includes .NET
   based [Cart Service](/docs/demo/services/cart/).
 
@@ -281,7 +278,5 @@ For more:
 [exporter]:
   https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/config.md#exporters
 [manual instrumentation]: ../manual
-[otel-dotnet-auto-install.sh]:
-  https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/latest/download/otel-dotnet-auto-install.sh
 [releases]:
   https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases
