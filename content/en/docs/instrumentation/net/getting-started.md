@@ -28,7 +28,7 @@ OpenTelemetry .NET Automatic Instrumentation.
 For more elaborate examples, see
 [examples](/docs/instrumentation/net/examples/).
 
-### Dependencies
+### Create and launch an HTTP Server
 
 To begin, set up an environment in a new directory called `dotnet-simple`.
 Within that directory, execute following command:
@@ -36,8 +36,6 @@ Within that directory, execute following command:
 ```sh
 dotnet new web
 ```
-
-### Create and launch an HTTP Server
 
 In the same directory, replace the content of `Program.cs` with the following code:
 
