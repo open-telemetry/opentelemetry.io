@@ -2,7 +2,7 @@
 title: Shipping Service
 linkTitle: Shipping
 aliases: [/docs/demo/services/shippingservice]
-cSpell:ignore: oteldemo itemct reqwest sdktrace semcov shiporder tokio
+cSpell:ignore: itemct oteldemo reqwest sdktrace semcov shiporder tokio
 ---
 
 This service is responsible for providing shipping information including pricing
