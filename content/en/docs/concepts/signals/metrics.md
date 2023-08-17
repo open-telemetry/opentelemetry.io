@@ -39,9 +39,9 @@ open source or vendor backend of your choice.
 
 ## Metric Instruments
 
-In OpenTelemetry measurements are captured by **metric instruments**. Such an
+In OpenTelemetry measurements are captured by **metric instruments**. Such a
 metric instrument is defined by a name, a kind, an optional unit and an optional
-description. The name, unit and description of such an instrument is chosen by
+description. The name, unit and description of such an instrument are chosen by
 the developer or defined via
 [semantic conventions](/docs/specs/otel/metrics/semantic_conventions/) for
 common ones like request or process metrics.
