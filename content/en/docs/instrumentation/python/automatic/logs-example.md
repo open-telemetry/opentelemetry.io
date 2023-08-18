@@ -8,7 +8,7 @@ cSpell:ignore: distro instrumentor mkdir MSIE Referer Starlette uninstrumented v
 
 This page demonstrates how to use Python logs auto-instrumentation in
 OpenTelemetry. The example is based on
-[this example from the OpenTelemetry Python repo](https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/logs).
+[this example from the OpenTelemetry Python repository](https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/logs).
 
 Start by creating the examples directory and creating the example Python file:
 
@@ -34,7 +34,6 @@ with tracer.start_as_current_span("foo"):
     current_span = trace.get_current_span()
     current_span.add_event("This is a span event")
     logging.getLogger().error("This is a log message")
-
 ```
 
 Grab a copy of the OTel Collector configuration from

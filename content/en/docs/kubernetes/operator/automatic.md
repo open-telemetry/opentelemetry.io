@@ -238,7 +238,7 @@ spec:
         value: false
 ```
 
-#### Further reading
+#### Learn more
 
 For more details, see
 [Java Agent Configuration](/docs/instrumentation/java/automatic/agent-config/).
@@ -281,7 +281,7 @@ specific packages. If you don't want to use a package included by the default
 image you must either supply your own image that includes only the packages you
 want or use manual instrumentation.
 
-#### Further reading
+#### Learn more
 
 For more details, see
 [Node.js auto-instrumentation](/docs/instrumentation/js/libraries/#registration).
@@ -383,7 +383,7 @@ spec:
           instrumentation>
 ```
 
-#### Further reading
+#### Learn more
 
 [See the Python Agent Configuration docs for more details.](/docs/instrumentation/python/automatic/agent-config/#disabling-specific-instrumentations)
 
