@@ -130,7 +130,7 @@ Unix-shell or PowerShell scripts.
    Invoke-WebRequest -Uri $module_url -OutFile $download_path -UseBasicParsing
    ```
 
-   {% /tab %}} {{< /tabpane >}}
+   {{% /tab %}} {{< /tabpane >}}
 
 2. Execute following script to download automatic instrumentation for your
    development environment:
@@ -148,7 +148,7 @@ Unix-shell or PowerShell scripts.
    Install-OpenTelemetryCore
    ```
 
-   {% /tab %}} {{< /tabpane >}}
+   {{% /tab %}} {{< /tabpane >}}
 
 3. Set and export variables that specify a [console exporter][], then execute
    script configuring other necessary environmental variables using a notation
@@ -180,7 +180,7 @@ Unix-shell or PowerShell scripts.
    Register-OpenTelemetryForCurrentSession -OTelServiceName "RollDiceService"
    ```
 
-   {% /tab %}} {{< /tabpane >}}
+   {{% /tab %}} {{< /tabpane >}}
 
 4. Run your **application** once again:
 
