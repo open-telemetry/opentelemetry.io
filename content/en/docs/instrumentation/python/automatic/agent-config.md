@@ -117,7 +117,8 @@ outputted.
 - `OTEL_PYTHON_LOG_LEVEL`: to set a custom log level (info, error, debug,
   warning)
 - `OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED`: to enable
-  auto-instrumentation of logs. Attaches OTLP handler to Python root logger.
+  auto-instrumentation of logs. Attaches OTLP handler to Python root logger. See
+  example [here](/docs/instrumentation/python/automatic/logs-example)
 
 Examples:
 
