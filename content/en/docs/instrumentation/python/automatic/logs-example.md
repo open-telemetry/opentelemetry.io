@@ -9,15 +9,21 @@ cSpell:ignore: distro instrumentor mkdir MSIE Referer Starlette uninstrumented v
 This page demonstrates how to use Python logs auto-instrumentation in
 OpenTelemetry.
 
-Unlike Traces and Metrics, there is no Logs API. There is only an SDK. For
-Python, you use the Python `logger` library, and then the OTel SDK attaches an
-OTLP handler to the root logger, turning the Python logger into an OTLP logger.
-One way to accomplish this is documented in the logs example in [OpenTelemetry
-Python repository][].
+Unlike Traces and Metrics, there is no equivalent Logs API. There is only an
+SDK. For Python, you use the Python `logger` library, and then the OTel SDK
+attaches an OTLP handler to the root logger, turning the Python logger into an
+OTLP logger. One way to accomplish this is documented in the logs example in
+[OpenTelemetry Python repository][].
 
 Another way this is accomplished is through Python's support for
 auto-instrumentation of logs. The example below is based on the logs example in
 [OpenTelemetry Python repository][].
+
+> There is a logs bridge API; however, it is different from the Traces and
+> Metrics API, because it's not used by application developers to create logs.
+> Instead, they would use this bridge API to setup log appenders in the standard
+> language-specific logging libraries. More information can be found
+> [here](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/bridge-api.md).
 
 Start by creating the examples directory and the example Python file:
 
@@ -51,8 +57,8 @@ and save it to `python-logs-example/otel-collector-config.yaml`
 
 ## Prepare
 
-Execute the following example, we recommend using a virtual environment to do so. Run the
-following commands to prepare for logs auto-instrumentation:
+Execute the following example, we recommend using a virtual environment to do
+so. Run the following commands to prepare for logs auto-instrumentation:
 
 ```sh
 mkdir python_logs_example
@@ -159,8 +165,8 @@ Span ID: f318281c4654edc5
 ```
 
 Note that the Span Event and the Log both have the same SpanID
-(`f318281c4654edc5`). The logging SDK appends the SpanID of the current Span
-to any logged events to improve the ability to correlate telemetry.
+(`f318281c4654edc5`). The logging SDK appends the SpanID of the current Span to
+any logged events to improve the ability to correlate telemetry.
 
 [api reference]:
   https://opentelemetry-python.readthedocs.io/en/latest/index.html
