@@ -117,7 +117,7 @@ Enhancements and fixes to the website are most welcome! Before submitting a
 reported issues. Also commit any files changed by the `fix` script:
 
 ```sh
-npm run s fix test
+npm run test-and-fix
 ```
 
 To separately test and fix issues with your files, run:

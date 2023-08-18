@@ -23,7 +23,7 @@ jobs:
     name: CSPELL:IGNORE check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - run: npm run fix:dict
       - name: Any changed files?
         run: |
