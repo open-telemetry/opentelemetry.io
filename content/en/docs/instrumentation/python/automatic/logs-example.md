@@ -150,8 +150,8 @@ Span ID: f318281c4654edc5
 ...
 ```
 
-Note how in the sample output, the Span Event and the Log both have the same
-SpanID: `f318281c4654edc5`, since they're included under the same Span.
+Note that the Span Event and the Log both have the same
+SpanID (`f318281c4654edc5`). This is because they're a part of the same Span.
 
 [semantic convention]:
   /docs/specs/otel/trace/semantic_conventions/http/#http-request-and-response-headers
