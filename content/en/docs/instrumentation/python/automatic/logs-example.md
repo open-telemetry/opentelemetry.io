@@ -62,7 +62,7 @@ source python_logs_example/bin/activate
 
 ## Install
 
-Run the following commands to install the appropriate packages. The
+The following commands install the appropriate packages. The
 `opentelemetry-distro` package depends on a few others, like `opentelemetry-sdk`
 for custom instrumentation of your own code and `opentelemetry-instrumentation`
 which provides several commands that help automatically instrument a program.
