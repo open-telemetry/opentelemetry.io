@@ -108,8 +108,8 @@ dotnet run
 
 Next, you'll use a [OpenTelemetry .NET Automatic Instrumentation](../automatic)
 to instrument the application at launch time. While you can [configure .NET
-Automatic Instrumentation][] in a number of ways, the steps below uses
-Unix-shell or PowerShell scripts.
+Automatic Instrumentation][] in a number of ways, the steps below use Unix-shell
+or PowerShell scripts.
 
 > **Note**: PowerShell commands require elevated (administrator) privileges.
 
