@@ -19,7 +19,7 @@ Another way this is accomplished is through Python's support for
 auto-instrumentation of logs. The example below is based on the logs example in
 [OpenTelemetry Python repository][].
 
-Start by creating the examples directory and creating the example Python file:
+Start by creating the examples directory and the example Python file:
 
 ```sh
 mkdir python-logs-example
