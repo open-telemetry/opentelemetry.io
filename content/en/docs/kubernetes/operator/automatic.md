@@ -168,7 +168,7 @@ spec:
         value: false
 ```
 
-#### Further reading
+#### Learn more
 
 For more details, see
 [.NET Auto Instrumentation docs](/docs/instrumentation/net/automatic/).
