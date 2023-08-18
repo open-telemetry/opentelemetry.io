@@ -7,8 +7,17 @@ cSpell:ignore: distro instrumentor mkdir MSIE Referer Starlette uninstrumented v
 ---
 
 This page demonstrates how to use Python logs auto-instrumentation in
-OpenTelemetry. The example is based on
-[this example from the OpenTelemetry Python repository](https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/logs).
+OpenTelemetry.
+
+Unlike Traces and Metrics, there is no Logs API. There is only an SDK. For
+Python, you use the Python `logger` library, and then the OTel SDK attaches an
+OTLP handler to the root logger, turning the Python logger into an OTLP logger.
+One way to accomplish this is documented in the logs example in [OpenTelemetry
+Python repository][].
+
+Another way this is accomplished is through Python's support for
+auto-instrumentation of logs. The example below is based on the logs example in
+[OpenTelemetry Python repository][].
 
 Start by creating the examples directory and creating the example Python file:
 
@@ -154,3 +163,5 @@ Note that the Span Event and the Log both have the same SpanID
 
 [api reference]:
   https://opentelemetry-python.readthedocs.io/en/latest/index.html
+[OpenTelemetry Python repository]:
+  https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/logs
