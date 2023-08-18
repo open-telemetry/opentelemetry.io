@@ -222,23 +222,6 @@ telemetry.sdk.name: opentelemetry
 telemetry.sdk.language: dotnet
 telemetry.sdk.version: 1.4.0.802
 
-LogRecord.Timestamp:               2023-08-14T06:44:53.9279186Z
-LogRecord.TraceId:                 3961d22b5f90bf7662ad4933318743fe
-LogRecord.SpanId:                  93d5fcea422ff0ac
-LogRecord.TraceFlags:              Recorded
-LogRecord.CategoryName:            simple-dotnet
-LogRecord.LogLevel:                Information
-LogRecord.StateValues (Key:Value):
-    result: 1
-    OriginalFormat (a.k.a Body): Anonymous player is rolling the dice: {result}
-
-Resource associated with LogRecord:
-service.name: simple-dotnet
-telemetry.auto.version: 0.7.0
-telemetry.sdk.name: opentelemetry
-telemetry.sdk.language: dotnet
-telemetry.sdk.version: 1.4.0.802
-
 info: simple-dotnet[0]
       Anonymous player is rolling the dice: 1
 Activity.TraceId:            3961d22b5f90bf7662ad4933318743fe
