@@ -51,7 +51,7 @@ and save it to `python-logs-example/otel-collector-config.yaml`
 
 ## Prepare
 
-Execute the following example in a separate virtual environment. Run the
+Execute the following example, we recommend using a virtual environment to do so. Run the
 following commands to prepare for logs auto-instrumentation:
 
 ```sh
