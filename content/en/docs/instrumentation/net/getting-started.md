@@ -50,11 +50,6 @@ var app = builder.Build();
 var logger = app.Logger;
 var random = new Random();
 
-app.MapGet("/rolldice/{player?}", HandleRollDice);
-
-app.Run();
-return;
-
 int RollDice()
 {
     return random.Next(1, 7);
@@ -75,6 +70,10 @@ string HandleRollDice(string? player)
 
     return result.ToString(CultureInfo.InvariantCulture);
 }
+
+app.MapGet("/rolldice/{player?}", HandleRollDice);
+
+app.Run();
 ```
 
 In the `Properties` subdirectory, replace the content of `launchSettings.json`
