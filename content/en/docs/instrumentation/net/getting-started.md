@@ -122,7 +122,7 @@ Unix-shell or PowerShell scripts.
    curl -L -O {{% _param dotnet-auto-install-sh-URL %}}
    ```
 
-   {{% /tab %}} {{% tab PowerShell (Windows) %}}
+   {{% /tab %}} {{% tab PowerShell - Windows %}}
 
    ```powershell
    $module_url = "{{% _param dotnet-auto-install-ps-URL %}}"
@@ -141,7 +141,7 @@ Unix-shell or PowerShell scripts.
    ./otel-dotnet-auto-install.sh
    ```
 
-   {{% /tab %}} {{% tab PowerShell (Windows) %}}
+   {{% /tab %}} {{% tab PowerShell - Windows %}}
 
    ```powershell
    Import-Module $download_path
@@ -168,7 +168,7 @@ Unix-shell or PowerShell scripts.
    . $HOME/.otel-dotnet-auto/instrument.sh
    ```
 
-   {{% /tab %}} {{% tab PowerShell (Windows) %}}
+   {{% /tab %}} {{% tab PowerShell - Windows %}}
 
    ```powershell
    $env:OTEL_TRACES_EXPORTER="none"
