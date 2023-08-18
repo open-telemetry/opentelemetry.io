@@ -27,7 +27,7 @@ cd python-logs-example
 touch example.py
 ```
 
-Paste the following contents into `example.py`
+Paste the following contents into `example.py`:
 
 ```python
 import logging
