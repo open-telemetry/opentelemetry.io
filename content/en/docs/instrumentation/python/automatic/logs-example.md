@@ -152,15 +152,5 @@ Span ID: f318281c4654edc5
 Note that the Span Event and the Log both have the same SpanID
 (`f318281c4654edc5`). This is because they're a part of the same Span.
 
-[semantic convention]:
-  /docs/specs/otel/trace/semantic_conventions/http/#http-request-and-response-headers
 [api reference]:
   https://opentelemetry-python.readthedocs.io/en/latest/index.html
-[instrumentation]:
-  https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-instrumentation
-[monkey-patching]:
-  https://stackoverflow.com/questions/5626193/what-is-monkey-patching
-[opentracing example]:
-  https://github.com/yurishkuro/opentracing-tutorial/tree/master/python
-[source files]:
-  https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/auto-instrumentation
