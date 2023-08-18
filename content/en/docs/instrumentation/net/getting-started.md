@@ -3,7 +3,8 @@ title: Getting Started
 description: Get telemetry for your app in less than 5 minutes!
 cSpell:ignore: ASPNETCORE rolldice
 weight: 10
-dotnet-auto-install-URL: https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/latest/download/otel-dotnet-auto-install.sh
+dotnet-auto-install-sh-URL: https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/latest/download/otel-dotnet-auto-install.sh
+dotnet-auto-install-ps-URL: https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/latest/download/OpenTelemetry.DotNet.Auto.psm1
 ---
 
 This page will show you how to get started with OpenTelemetry in .NET.
@@ -108,27 +109,53 @@ dotnet run
 
 Next, you'll use a [OpenTelemetry .NET Automatic Instrumentation](../automatic)
 to instrument the application at launch time. While you can [configure .NET
-Automatic Instrumentation][] in a number of ways, the steps below uses shell
-scripts.
+Automatic Instrumentation][] in a number of ways, the steps below uses Unix-shell
+or PowerShell scripts.
 
-1. Download [otel-dotnet-auto-install.sh]({{% _param dotnet-auto-install-URL
-   %}}) from [Releases][] of the `opentelemetry-dotnet-instrumentation` repository:
+> **Note**: PowerShell commands require elevated (administrator) privileges.
+
+1. Download installation scripts from [Releases][] of the `opentelemetry-dotnet-instrumentation` repository:
+
+   {{< tabpane text=true >}} {{% tab Unix-shell %}}
 
    ```sh
-   curl -L -O {{% _param dotnet-auto-install-URL %}}
+   curl -L -O {{% _param dotnet-auto-install-sh-URL %}}
    ```
 
-2. Execute `otel-dotnet-auto-install.sh` script to download automatic
+   {{% /tab %}} {{% tab PowerShell (Windows) %}}
+
+   ```powershell
+   $module_url = "{{% _param dotnet-auto-install-ps-URL %}}"
+   $download_path = Join-Path $env:temp "OpenTelemetry.DotNet.Auto.psm1"
+   Invoke-WebRequest -Uri $module_url -OutFile $download_path -UseBasicParsing
+   ```
+
+   {% /tab %}} {{< /tabpane >}}
+
+2. Execute following script to download automatic
    instrumentation for your development environment:
+
+   {{< tabpane text=true >}} {{% tab Unix-shell %}}
 
    ```sh
    ./otel-dotnet-auto-install.sh
    ```
 
+   {{% /tab %}} {{% tab PowerShell (Windows) %}}
+
+   ```powershell
+   Import-Module $download_path
+   Install-OpenTelemetryCore
+   ```
+
+   {% /tab %}} {{< /tabpane >}}
+
 3. Set and export variables that specify a [console exporter][], then execute
-   shell script configuring other necessary environmental variables using a
+   script configuring other necessary environmental variables using a
    notation suitable for your shell/terminal environment &mdash; we illustrate a
-   notation for bash-like shells:
+   notation for bash-like shells and PowerShell:
+
+   {{< tabpane text=true >}} {{% tab Unix-shell %}}
 
    ```sh
    export OTEL_TRACES_EXPORTER=none \
@@ -137,8 +164,23 @@ scripts.
      OTEL_DOTNET_AUTO_TRACES_CONSOLE_EXPORTER_ENABLED=true \
      OTEL_DOTNET_AUTO_METRICS_CONSOLE_EXPORTER_ENABLED=true \
      OTEL_DOTNET_AUTO_LOGS_CONSOLE_EXPORTER_ENABLED=true
+     OTEL_SERVICE_NAME=RollDiceService
    . $HOME/.otel-dotnet-auto/instrument.sh
    ```
+
+   {{% /tab %}} {{% tab PowerShell (Windows) %}}
+
+   ```powershell
+   $env:OTEL_TRACES_EXPORTER="none"
+   $env:OTEL_METRICS_EXPORTER="none"
+   $env:OTEL_LOGS_EXPORTER="none"
+   $env:OTEL_DOTNET_AUTO_TRACES_CONSOLE_EXPORTER_ENABLED="true"
+   $env:OTEL_DOTNET_AUTO_METRICS_CONSOLE_EXPORTER_ENABLED="true"
+   $env:OTEL_DOTNET_AUTO_LOGS_CONSOLE_EXPORTER_ENABLED="true"
+   Register-OpenTelemetryForCurrentSession -OTelServiceName "RollDiceService"
+   ```
+
+   {% /tab %}} {{< /tabpane >}}
 
 4. Run your **application** once again:
 
