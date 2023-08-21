@@ -3,8 +3,6 @@ title: Getting Started
 description: Get telemetry for your app in less than 5 minutes!
 cSpell:ignore: ASPNETCORE rolldice
 weight: 10
-dotnet-auto-install-sh-URL: https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/latest/download/otel-dotnet-auto-install.sh
-dotnet-auto-install-ps-URL: https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/latest/download/OpenTelemetry.DotNet.Auto.psm1
 ---
 
 This page will show you how to get started with OpenTelemetry in .NET.
@@ -48,11 +46,10 @@ var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
 var logger = app.Logger;
-var random = new Random();
 
 int RollDice()
 {
-    return random.Next(1, 7);
+    return Random.Shared.Next(1, 7);
 }
 
 string HandleRollDice(string? player)
@@ -119,13 +116,13 @@ or PowerShell scripts.
    {{< tabpane text=true >}} {{% tab Unix-shell %}}
 
    ```sh
-   curl -L -O {{% _param dotnet-auto-install-sh-URL %}}
+   curl -L -O https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/latest/download/otel-dotnet-auto-install.sh
    ```
 
    {{% /tab %}} {{% tab PowerShell - Windows %}}
 
    ```powershell
-   $module_url = "{{% _param dotnet-auto-install-ps-URL %}}"
+   $module_url = "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/latest/download/OpenTelemetry.DotNet.Auto.psm1"
    $download_path = Join-Path $env:temp "OpenTelemetry.DotNet.Auto.psm1"
    Invoke-WebRequest -Uri $module_url -OutFile $download_path -UseBasicParsing
    ```
@@ -151,7 +148,7 @@ or PowerShell scripts.
    {{% /tab %}} {{< /tabpane >}}
 
 3. Set and export variables that specify a [console exporter][], then execute
-   script configuring other necessary environmental variables using a notation
+   script configuring other necessary environment variables using a notation
    suitable for your shell/terminal environment &mdash; we illustrate a notation
    for bash-like shells and PowerShell:
 
@@ -202,7 +199,7 @@ At this point, you should see trace and log output from the server and client
 that looks something like this (output is line-wrapped for readability):
 
 <details>
-<summary>Traces and logs</summary>
+<summary>Traces and Logs</summary>
 
 ```log
 LogRecord.Timestamp:               2023-08-14T06:44:53.9279186Z
