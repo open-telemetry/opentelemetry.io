@@ -5031,6 +5031,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:44:11.930561-04:00"
   },
+  "https://www.observeany.com/learn/opentelemetry-receiver": {
+    "StatusCode": 200,
+    "LastSeen": "2023-08-17T09:39:20.114053+08:00"
+  },
   "https://www.oracle.com/technical-resources/articles/javase/jmx.html": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:52:25.052421-04:00"
