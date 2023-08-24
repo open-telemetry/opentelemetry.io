@@ -3,10 +3,10 @@ title: Metrics
 weight: 2
 ---
 
-A **metric** is a **measurement** about a service, captured at runtime.
-Logically, the moment of capturing one of these measurements is known as a
-**metric event** which consists not only of the measurement itself, but the time
-that it was captured and associated metadata.
+A **metric** is a **measurement** of a service captured at runtime. The moment
+of capturing a measurements is known as a **metric event**, which consists not
+only of the measurement itself, but also the time at which it was captured and
+associated metadata.
 
 Application and request metrics are important indicators of availability and
 performance. Custom metrics can provide insights into how availability
@@ -28,8 +28,9 @@ initialized for you.
 
 ## Meter
 
-A Meter creates _metric instruments_, capturing measurements about a service at
-runtime. Meters are created from Meter Providers.
+A Meter creates [metric instruments](#metric-instruments), capturing
+measurements about a service at runtime. Meters are created from Meter
+Providers.
 
 ## Metric Exporter
 
@@ -39,14 +40,19 @@ open source or vendor backend of your choice.
 
 ## Metric Instruments
 
-In OpenTelemetry measurements are captured by **metric instruments**. Such an
-metric instrument is defined by a name, a kind, an optional unit and an optional
-description. The name, unit and description of such an instrument is chosen by
-the developer or defined via
-[semantic conventions](/docs/specs/otel/metrics/semantic_conventions/) for
-common ones like request or process metrics.
+In OpenTelemetry measurements are captured by **metric instruments**. A metric
+instrument is defined by:
 
-The instrument type is one of the following six:
+- Name
+- Kind
+- Unit (optional)
+- Description (optional)
+
+The name, unit, and description are chosen by the developer or defined via
+[semantic conventions](/docs/specs/otel/metrics/semantic_conventions/) for
+common ones like request and process metrics.
+
+The instrument kind is one of the following:
 
 - **Counter**: A value that accumulates over time -- you can think of this like
   an odometer on a car; it only ever goes up.
@@ -60,13 +66,11 @@ The instrument type is one of the following six:
   collected once for each export. Could be used if you don't have access to the
   continuous changes, but only to the aggregated value (e.g., current queue
   size).
-- **(Asynchronous) Gauge**: Measures a current value at the time it is read. An
-  example would be the fuel gauge in a vehicle. Gauges are _always_
-  asynchronous.
-- **Histogram**: A histogram is a client-side aggregation of values, e.g.,
-  request latencies. A histogram is likely a good choice if you have a lot of
-  values, and are not interested in every individual value, but a statistic
-  about these values (e.g., How many requests take fewer than 1s?)
+- **Gauge**: Measures a current value at the time it is read. An example would
+  be the fuel gauge in a vehicle. Gauges are asynchronous.
+- **Histogram**: A client-side aggregation of values, such as request latencies.
+  A histogram is a good choice if you are interested value statistics. For
+  example: How many requests take fewer than 1s?
 
 ## Aggregation
 

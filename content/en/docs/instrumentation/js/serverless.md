@@ -209,7 +209,7 @@ value:
 
 On the next screen (_Code_), select Node.js version 16 for your runtime.
 
-### Establish OTel wrapper
+### Create OTel wrapper
 
 Create a new file called `otelwrapper.js`, that will be used to instrument your
 service. Please make sure that you provide a `SERVICE_NAME` and that you set the
@@ -258,9 +258,9 @@ registerInstrumentations({
 });
 ```
 
-### Establish package.json
+### Add package dependencies
 
-Add the following content to your package.json:
+Add the following to your `package.json`:
 
 ```json
 {
