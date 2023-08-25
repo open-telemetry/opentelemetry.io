@@ -307,3 +307,10 @@
   contact: 'contact@observeany.com'
   oss: false
   commercial: true
+- name: GreptimeDB
+  distribution: true
+  nativeOTLP: true
+  url: https://docs.greptime.com/user-guide/clients/otlp
+  contact: ''
+  oss: true
+  commercial: true
