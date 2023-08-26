@@ -9,7 +9,36 @@ application. Whether your application is a monolith with a single database or a
 sophisticated mesh of services, traces are essential to understanding the full
 "path" a request takes in your application.
 
-Three units of work, represented as [Spans](#spans):
+Let's explore this with three units of work, represented as [Spans](#spans):
+
+
+`hello` span:
+
+```json
+{
+  "name": "hello",
+  "context": {
+    "trace_id": "0x5b8aa5a2d2c872e8321cf37308d69df2",
+    "span_id": "0x051581bf3cb55c13"
+  },
+  "parent_id": null,
+  "start_time": "2022-04-29T18:52:58.114201Z",
+  "end_time": "2022-04-29T18:52:58.114687Z",
+  "attributes": {
+    "http.route": "some_route1"
+  },
+  "events": [
+    {
+      "name": "Guten Tag!",
+      "timestamp": "2022-04-29T18:52:58.114561Z",
+      "attributes": {
+        "event_attributes": 1
+      }
+    }
+  ]
+}
+```
+This is the root Span, denoting the beginning and end of the entire operation. It holds the context for the trace.
 
 `hello-greetings` span:
 
@@ -24,7 +53,7 @@ Three units of work, represented as [Spans](#spans):
   "start_time": "2022-04-29T18:52:58.114304Z",
   "end_time": "2022-04-29T22:52:58.114561Z",
   "attributes": {
-    "http.route": "some_route1"
+    "http.route": "some_route2"
   },
   "events": [
     {
@@ -44,6 +73,7 @@ Three units of work, represented as [Spans](#spans):
   ]
 }
 ```
+This Span encapsulates specific tasks, like saying greetings, and its parent is the 'hello' Span.
 
 `hello-salutations` span:
 
@@ -58,7 +88,7 @@ Three units of work, represented as [Spans](#spans):
   "start_time": "2022-04-29T18:52:58.114492Z",
   "end_time": "2022-04-29T18:52:58.114631Z",
   "attributes": {
-    "http.route": "some_route2"
+    "http.route": "some_route3"
   },
   "events": [
     {
@@ -71,33 +101,7 @@ Three units of work, represented as [Spans](#spans):
   ]
 }
 ```
-
-`hello` span:
-
-```json
-{
-  "name": "hello",
-  "context": {
-    "trace_id": "0x5b8aa5a2d2c872e8321cf37308d69df2",
-    "span_id": "0x051581bf3cb55c13"
-  },
-  "parent_id": null,
-  "start_time": "2022-04-29T18:52:58.114201Z",
-  "end_time": "2022-04-29T18:52:58.114687Z",
-  "attributes": {
-    "http.route": "some_route3"
-  },
-  "events": [
-    {
-      "name": "Guten Tag!",
-      "timestamp": "2022-04-29T18:52:58.114561Z",
-      "attributes": {
-        "event_attributes": 1
-      }
-    }
-  ]
-}
-```
+This Span represents salutations and, like the previous one, it's a child of the 'hello' Span.
 
 These three blocks of JSON all share the same `trace_id`, and the `parent_id`
 field represents a hierarchy. That makes it a Trace!
