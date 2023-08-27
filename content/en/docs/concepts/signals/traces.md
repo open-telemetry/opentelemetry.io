@@ -38,7 +38,7 @@ Let's explore this with three units of work, represented as [Spans](#spans):
   ]
 }
 ```
-This is the root Span, denoting the beginning and end of the entire operation. It holds the context for the trace.
+This is the root span, denoting the beginning and end of the entire operation. Note that it has a `trace_id` field indicating the trace, but has no `parent_id`. That's how you know it's the root span.
 
 `hello-greetings` span:
 
