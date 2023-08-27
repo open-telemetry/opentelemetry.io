@@ -73,7 +73,7 @@ This is the root span, denoting the beginning and end of the entire operation. N
   ]
 }
 ```
-This Span encapsulates specific tasks, like saying greetings, and its parent is the 'hello' Span.
+This span encapsulates specific tasks, like saying greetings, and its parent is the `hello` span. Note that it shares the same `trace_id` as the root span, indicating it's a part of the same trace. Additionally, it has a `parent_id` that matches the `span_id` of the `hello` span.
 
 `hello-salutations` span:
 
