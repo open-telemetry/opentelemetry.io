@@ -101,7 +101,7 @@ This span encapsulates specific tasks, like saying greetings, and its parent is 
   ]
 }
 ```
-This Span represents salutations and, like the previous one, it's a child of the 'hello' Span.
+This span represents the third operation in this trace and, like the previous one, it's a child of the 'hello' Span. That also makes it a sibling of the `hello-greetings` span.
 
 These three blocks of JSON all share the same `trace_id`, and the `parent_id`
 field represents a hierarchy. That makes it a Trace!
