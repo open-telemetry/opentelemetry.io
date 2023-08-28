@@ -11,7 +11,6 @@ sophisticated mesh of services, traces are essential to understanding the full
 
 Let's explore this with three units of work, represented as [Spans](#spans):
 
-
 `hello` span:
 
 ```json
@@ -38,7 +37,10 @@ Let's explore this with three units of work, represented as [Spans](#spans):
   ]
 }
 ```
-This is the root span, denoting the beginning and end of the entire operation. Note that it has a `trace_id` field indicating the trace, but has no `parent_id`. That's how you know it's the root span.
+
+This is the root span, denoting the beginning and end of the entire operation.
+Note that it has a `trace_id` field indicating the trace, but has no
+`parent_id`. That's how you know it's the root span.
 
 `hello-greetings` span:
 
@@ -73,7 +75,11 @@ This is the root span, denoting the beginning and end of the entire operation. N
   ]
 }
 ```
-This span encapsulates specific tasks, like saying greetings, and its parent is the `hello` span. Note that it shares the same `trace_id` as the root span, indicating it's a part of the same trace. Additionally, it has a `parent_id` that matches the `span_id` of the `hello` span.
+
+This span encapsulates specific tasks, like saying greetings, and its parent is
+the `hello` span. Note that it shares the same `trace_id` as the root span,
+indicating it's a part of the same trace. Additionally, it has a `parent_id`
+that matches the `span_id` of the `hello` span.
 
 `hello-salutations` span:
 
@@ -101,7 +107,10 @@ This span encapsulates specific tasks, like saying greetings, and its parent is 
   ]
 }
 ```
-This span represents the third operation in this trace and, like the previous one, it's a child of the 'hello' Span. That also makes it a sibling of the `hello-greetings` span.
+
+This span represents the third operation in this trace and, like the previous
+one, it's a child of the 'hello' Span. That also makes it a sibling of the
+`hello-greetings` span.
 
 These three blocks of JSON all share the same `trace_id`, and the `parent_id`
 field represents a hierarchy. That makes it a Trace!
