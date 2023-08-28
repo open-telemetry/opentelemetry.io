@@ -23,7 +23,7 @@ auto-instrumentation of logs. The example below is based on the logs example in
 > Metrics API, because it's not used by application developers to create logs.
 > Instead, they would use this bridge API to setup log appenders in the standard
 > language-specific logging libraries. More information can be found
-> [here](/content-modules/opentelemetry-specification/specification//logs/bridge-api.md).
+> [here](/content-modules/opentelemetry-specification/specification/logs/bridge-api.md).
 
 Start by creating the examples directory and the example Python file:
 
