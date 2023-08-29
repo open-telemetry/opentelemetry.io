@@ -231,8 +231,8 @@ type Config struct {
 
 {{% alert title="Check your work" color="primary" %}}
 
-- I added the `Interval` and the `NumberOfTraces` fields so I can properly have
-  access to their values from the config.yaml.
+- Added the `Interval` and the `NumberOfTraces` fields to properly have access
+  to their values from the config.yaml.
 
 {{% /alert %}}
 
@@ -279,14 +279,13 @@ func (cfg *Config) Validate() error {
 
 {{% alert title="Check your work" color="primary" %}}
 
-- I imported the `fmt` package, so I can properly format print my error
-  messages.
+- Imported the `fmt` package to properly format print error messages.
 
-- I added the `Validate` method to my Config struct where I am checking if the
-  `interval` setting value is at least 1 minute (1m) and if the
-  `number_of_traces` setting value is greater or equal to 1. If that is not true
-  the Collector will generate an error during its startup process and display
-  the message accordingly.
+- Added the `Validate` method to the Config struct to check if the `interval`
+  setting value is at least 1 minute (1m) and if the `number_of_traces` setting
+  value is greater or equal to 1. If that is not true the Collector will
+  generate an error during its startup process and display the message
+  accordingly.
 
 {{% /alert %}}
 
