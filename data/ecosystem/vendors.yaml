@@ -125,7 +125,7 @@
   contact: ''
   oss: false
   commercial: true
-- name: Lightstep
+- name: ServiceNow Cloud Observability (Lightstep)
   distribution: true
   nativeOTLP: true
   url: 'https://github.com/lightstep?q=launcher'
