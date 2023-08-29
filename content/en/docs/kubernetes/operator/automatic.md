@@ -27,7 +27,7 @@ In most cases, you will need to install
 [cert-manager](https://cert-manager.io/docs/installation/). If you use the helm
 chart, there is an option to generate a self-signed cert instead.
 
-> If you want to use Go auto-instrumentation you need to enable the feature
+> If you want to use Go auto-instrumentation, you need to enable the feature
 > gate. See
 > [Controlling Instrumentation Capabilities](https://github.com/open-telemetry/opentelemetry-operator#controlling-instrumentation-capabilities)
 > for details.
@@ -347,7 +347,7 @@ spec:
 
 ### Go
 
-The following command will create a basic Instrumentation resource that is
+The following command creates a basic Instrumentation resource that is
 configured specifically for instrumenting Go services.
 
 ```bash
@@ -438,8 +438,8 @@ the annotation taking precedence. Since Go auto-instrumentation requires
 the annotation or the Instrumentation resource. Failure to set this value causes
 instrumentation injection to abort, leaving the original pod unchanged.
 
-Since Go auto-instrumentation uses eBPF it also requires elevated permissions.
-When you opt in, the sidecar the Operator injects will enjoy the following
+Since Go auto-instrumentation uses eBPF, it also requires elevated permissions.
+When you opt in, the sidecar the Operator injects will require the following
 permissions:
 
 ```yaml
