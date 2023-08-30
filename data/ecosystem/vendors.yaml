@@ -1,4 +1,4 @@
-# cSpell:ignore Coralogix ITRS Kloud Logz Crowdstrike Humio Lumigo observ Promscale Teletrace Uptrace
+# cSpell:ignore Coralogix ITRS Kloud Logz Crowdstrike Humio Lumigo observ Promscale Teletrace Uptrace Greptime
 - name: AppDynamics (Cisco)
   distribution: true
   nativeOTLP: true
