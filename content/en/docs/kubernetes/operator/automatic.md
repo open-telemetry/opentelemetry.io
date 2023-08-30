@@ -5,7 +5,7 @@ weight: 11
 description:
   An implementation of auto-instrumentation using the OpenTelemetry Operator.
 # prettier-ignore
-cSpell:ignore: autoinstrumentation GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver REDISCALA
+cSpell:ignore: autoinstrumentation GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver PTRACE REDISCALA
 ---
 
 The OpenTelemetry Operator supports injecting and configuring
@@ -26,6 +26,11 @@ or with [Operator Hub](https://operatorhub.io/operator/opentelemetry-operator).
 In most cases, you will need to install
 [cert-manager](https://cert-manager.io/docs/installation/). If you use the helm
 chart, there is an option to generate a self-signed cert instead.
+
+> If you want to use Go auto-instrumentation, you need to enable the feature
+> gate. See
+> [Controlling Instrumentation Capabilities](https://github.com/open-telemetry/opentelemetry-operator#controlling-instrumentation-capabilities)
+> for details.
 
 ## Create an OpenTelemetry Collector (Optional)
 
@@ -387,6 +392,42 @@ spec:
 
 [See the Python Agent Configuration docs for more details.](/docs/instrumentation/python/automatic/agent-config/#disabling-specific-instrumentations)
 
+### Go
+
+The following command creates a basic Instrumentation resource that is
+configured specifically for instrumenting Go services.
+
+```bash
+kubectl apply -f - <<EOF
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: demo-instrumentation
+spec:
+  exporter:
+    endpoint: http://demo-collector:4317
+  propagators:
+    - tracecontext
+    - baggage
+  sampler:
+    type: parentbased_traceidratio
+    argument: "1"
+EOF
+```
+
+By default, the Instrumentation resource that auto-instruments Go services uses
+`otlp` with the `grpc` protocol. This means that the configured endpoint must be
+able to receive OTLP over `grpc`. Therefore, the example uses
+`http://demo-collector:4317`, which connects to the `grpc` port of the
+`otlpreceiver` of the Collector created in the previous step.
+
+> Go auto-instrumentation only supports exporting via gRPC. Setting the protocol
+> or exporter to any other value via environment variables will result in silent
+> failure.
+
+The Go auto-instrumentation does not support disabling any instrumentation.
+[See the Go Auto-Instrumentation repository for me details.](https://github.com/open-telemetry/opentelemetry-go-instrumentation)
+
 ---
 
 Now that your Instrumentation object is created, your cluster has the ability to
@@ -402,6 +443,7 @@ done by updating your service’s `spec.template.metadata.annotations` to includ
 a language-specific annotation:
 
 - .NET: `instrumentation.opentelemetry.io/inject-dotnet: "true"`
+- Go: `instrumentation.opentelemetry.io/inject-go: "true"`
 - Java: `instrumentation.opentelemetry.io/inject-java: "true"`
 - Node.js: `instrumentation.opentelemetry.io/inject-nodejs: "true"`
 - Python: `instrumentation.opentelemetry.io/inject-python: "true"`
@@ -421,6 +463,40 @@ Alternatively, the annotation can be added to a namespace, which will result in
 all services in that namespace to opt-in to automatic instrumentation. See the
 [Operators auto-instrumentation documentation](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md#opentelemetry-auto-instrumentation-injection)
 for more details.
+
+### Opt-in a Go Service
+
+Unlike other languages' auto-instrumentation, Go works via an eBPF agent running
+via a sidecar. When opted in, the Operator will inject this sidecar into your
+pod. In addition to the `instrumentation.opentelemetry.io/inject-go` annotation
+mentioned above, you must also supply a value for the
+[`OTEL_GO_AUTO_TARGET_EXE` environment variable](https://github.com/open-telemetry/opentelemetry-go-instrumentation/blob/main/docs/how-it-works.md).
+You can set this environment variable via the
+`instrumentation.opentelemetry.io/otel-go-auto-target-exe` annotation.
+
+```yaml
+instrumentation.opentelemetry.io/inject-go: 'true'
+instrumentation.opentelemetry.io/otel-go-auto-target-exe: '/path/to/container/executable'
+```
+
+This environment variable can also be set via the Instrumentation resource, with
+the annotation taking precedence. Since Go auto-instrumentation requires
+`OTEL_GO_AUTO_TARGET_EXE` to be set, you must supply a valid executable path via
+the annotation or the Instrumentation resource. Failure to set this value causes
+instrumentation injection to abort, leaving the original pod unchanged.
+
+Since Go auto-instrumentation uses eBPF, it also requires elevated permissions.
+When you opt in, the sidecar the Operator injects will require the following
+permissions:
+
+```yaml
+securityContext:
+  capabilities:
+    add:
+      - SYS_PTRACE
+  privileged: true
+  runAsUser: 0
+```
 
 ## Troubleshooting
 

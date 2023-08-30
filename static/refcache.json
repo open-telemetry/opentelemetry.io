@@ -915,6 +915,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-07-12T05:31:35.569358-04:00"
   },
+  "https://docs.greptime.com/user-guide/clients/otlp": {
+    "StatusCode": 200,
+    "LastSeen": "2023-08-30T23:00:58.002196+08:00"
+  },
   "https://docs.honeycomb.io/getting-data-in/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T15:46:23.100526-04:00"
@@ -2698,6 +2702,10 @@
   "https://github.com/open-telemetry/opentelemetry-operator": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:35:39.708683-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator#controlling-instrumentation-capabilities": {
+    "StatusCode": 200,
+    "LastSeen": "2023-08-28T19:08:27.997056-06:00"
   },
   "https://github.com/open-telemetry/opentelemetry-operator#deployment-modes": {
     "StatusCode": 200,
