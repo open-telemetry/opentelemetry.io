@@ -116,6 +116,9 @@ outputted.
   logging format
 - `OTEL_PYTHON_LOG_LEVEL`: to set a custom log level (info, error, debug,
   warning)
+- `OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED`: to enable
+  auto-instrumentation of logs. Attaches OTLP handler to Python root logger. See
+  example [here](/docs/instrumentation/python/automatic/logs-example)
 
 Examples:
 
@@ -123,6 +126,7 @@ Examples:
 export OTEL_PYTHON_LOG_CORRELATION=true
 export OTEL_PYTHON_LOG_FORMAT="%(msg)s [span_id=%(span_id)s]"
 export OTEL_PYTHON_LOG_LEVEL=debug
+export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
 ```
 
 ### Other

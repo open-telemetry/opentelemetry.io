@@ -141,6 +141,8 @@ endpoint must be able to receive OTLP over `http/protobuf`. Therefore, the
 example uses `http://demo-collector:4318`, which will connect to the `http` port
 of the `otlpreceiver` of the Collector created in the previous step.
 
+**Excluding auto-instrumentation**
+
 By default, the .NET auto-instrumentation ships with
 [many instrumentation libraries](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/config.md#instrumentations).
 This makes instrumentation easy, but could result in too much or unwanted data.
@@ -170,6 +172,8 @@ spec:
       - name: OTEL_DOTNET_AUTO_METRICS_PROCESS_INSTRUMENTATION_ENABLED
         value: false
 ```
+
+**Learn more**
 
 For more details, see
 [.NET Auto Instrumentation docs](/docs/instrumentation/net/automatic/).
@@ -202,6 +206,8 @@ uses `otlp` with the `grpc` protocol. This means that the configured endpoint
 must be able to receive OTLP over `grpc`. Therefore, the example uses
 `http://demo-collector:4317`, which connects to the `grpc` port of the
 otlpreceiver of the Collector created in the previous step.
+
+**Excluding auto-instrumentation**
 
 By default, the Java auto-instrumentation ships with
 [many instrumentation libraries](/docs/instrumentation/java/automatic/#supported-libraries-frameworks-application-services-and-jvms).
@@ -237,6 +243,8 @@ spec:
         value: false
 ```
 
+**Learn more**
+
 For more details, see
 [Java Agent Configuration](/docs/instrumentation/java/automatic/agent-config/).
 
@@ -269,12 +277,16 @@ must be able to receive OTLP over `grpc`. Therefore, the example uses
 `http://demo-collector:4317`, which connects to the `grpc` port of the
 `otlpreceiver` of the Collector created in the previous step.
 
+**Excluding auto-instrumentation**
+
 By default, the Node.js auto-instrumentation ships with
 [many instrumentation libraries](https://github.com/open-telemetry/opentelemetry-js-contrib/blob/main/metapackages/auto-instrumentations-node/README.md#supported-instrumentations).
 At the moment, there is no way to opt-in to only specific packages or disable
 specific packages. If you don't want to use a package included by the default
 image you must either supply your own image that includes only the packages you
 want or use manual instrumentation.
+
+**Learn more**
 
 For more details, see
 [Node.js auto-instrumentation](/docs/instrumentation/js/libraries/#registration).
@@ -315,6 +327,39 @@ in the previous step.
 > Operator you **MUST** set these env variables to `http/protobuf`, or python
 > auto-instrumentation will not work.
 
+**Auto-instrumenting Python logs**
+
+By default, Python logs auto-instrumentation is disabled. If you would like to
+enable this feature, you must to set the `OTEL_LOGS_EXPORTER` and
+`OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED` environment variables as
+follows:
+
+```yaml
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: python-instrumentation
+  namespace: application
+spec:
+  exporter:
+    endpoint: http://demo-collector:4318
+  env:
+  propagators:
+    - tracecontext
+    - baggage
+  python:
+    env:
+      - name: OTEL_LOGS_EXPORTER
+        value: otlp_proto_http
+      - name: OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED
+        value: 'true'
+```
+
+> Note that `OTEL_LOGS_EXPORTER` must be explicitly set to `otlp_proto_http`,
+> otherwise it defaults to gRPC.
+
+**Excluding auto-instrumentation**
+
 By default the Python auto-instrumentation will detect the packages in your
 Python service and instrument anything it can. This makes instrumentation easy,
 but can result in too much or unwanted data. If there are any packages you do
@@ -342,6 +387,8 @@ spec:
           <comma-separated list of package names to exclude from
           instrumentation>
 ```
+
+**Learn more**
 
 [See the Python Agent Configuration docs for more details.](/docs/instrumentation/python/automatic/agent-config/#disabling-specific-instrumentations)
 
