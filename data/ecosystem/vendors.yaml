@@ -131,7 +131,7 @@
   url: 'https://docs.kloudmate.com/using-opentelemetry-collector'
   contact: 'hello@kloudmate.com'
   oss: false
-  commercial: true  
+  commercial: true
 - name: ServiceNow Cloud Observability (Lightstep)
   distribution: true
   nativeOTLP: true
