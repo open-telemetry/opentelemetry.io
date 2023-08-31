@@ -92,7 +92,7 @@ builder.Services.AddOpenTelemetry()
 
 ## Logs
 
-Logs should be configured in .NET dependency injection container on
+Logs are configured in the .NET dependency injection container on
 `LoggingBuilder` level by calling `AddOpenTelemetry()`. This builder configures
 desired options, exporters, etc.
 
