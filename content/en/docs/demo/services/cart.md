@@ -17,10 +17,10 @@ with a Redis caching service for fast access to shopping cart data.
 
 ### Initializing Tracing
 
-OpenTelemetry is configured in the .NET DI container. The `AddOpenTelemetry()`
-builder method is used to configure desired instrumentation libraries, add
-exporters, and set other options. Configuration of the exporter and resource
-attributes is performed through environment variables.
+OpenTelemetry is configured in the .NET dependency injection container. The
+`AddOpenTelemetry()` builder method is used to configure desired instrumentation
+libraries, add exporters, and set other options. Configuration of the exporter
+and resource attributes is performed through environment variables.
 
 ```cs
 Action<ResourceBuilder> appResourceBuilder =
@@ -73,9 +73,9 @@ activity?.AddEvent(new("Fetch cart"));
 
 ### Initializing Metrics
 
-Similar to configuring OpenTelemetry Traces, the .NET DI container requires a
-call to `AddOpenTelemetry()`. This builder configures desired instrumentation
-libraries, exporters, etc.
+Similar to configuring OpenTelemetry Traces, the .NET dependency injection
+container requires a call to `AddOpenTelemetry()`. This builder configures
+desired instrumentation libraries, exporters, etc.
 
 ```cs
 Action<ResourceBuilder> appResourceBuilder =
@@ -92,9 +92,9 @@ builder.Services.AddOpenTelemetry()
 
 ## Logs
 
-Logs should be configured in .NET DI container on `LoggingBuilder` level by
-calling `AddOpenTelemetry()`. This builder configures desired options,
-exporters, etc.
+Logs should be configured in .NET dependency injection container on
+`LoggingBuilder` level by calling `AddOpenTelemetry()`. This builder configures
+desired options, exporters, etc.
 
 ```cs
 builder.Logging
