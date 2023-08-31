@@ -1926,6 +1926,12 @@ the `crypto/rand` package to randomly generate the `pcommon.SpanID`. Open the
 after that, add the following functions to help generate both IDs:
 
 ```go
+import (
+	crand "crypto/rand"
+	"math/rand"
+  	...
+)
+
 func NewTraceID() pcommon.TraceID {
 	return pcommon.TraceID(uuid.New())
 }
