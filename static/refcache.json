@@ -931,6 +931,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T15:50:52.866106-04:00"
   },
+  "https://docs.kloudmate.com/using-opentelemetry-collector": {
+    "StatusCode": 200,
+    "LastSeen": "2023-08-31T11:09:01.973245767Z"
+  },
   "https://docs.locust.io/en/stable/writing-a-locustfile.html": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T15:47:17.793642-04:00"
