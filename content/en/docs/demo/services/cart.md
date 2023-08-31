@@ -9,8 +9,9 @@ with a Redis caching service for fast access to shopping cart data.
 
 [Cart service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/cartservice/)
 
-> **Note** OpenTelemetry for .NET uses the `System.Diagnostic` library as its
-> API in lieu of the standard OpenTelemetry API.
+> **Note** OpenTelemetry for .NET uses the `System.Diagnostic.DiagnosticSource`
+> library as its API in lieu of the standard OpenTelemetry API for Traces and
+> Metrics. `Microsoft.Extensions.Logging.Abstractions` library is used for Logs.
 
 ## Traces
 
@@ -91,4 +92,11 @@ builder.Services.AddOpenTelemetry()
 
 ## Logs
 
-TBD
+Logs should be configured in .NET DI container on `LoggingBuilder` level by
+calling `AddOpenTelemetry()`. This builder configures desired options,
+exporters, etc.
+
+```cs
+builder.Logging
+    .AddOpenTelemetry(options => options.AddOtlpExporter());
+```
