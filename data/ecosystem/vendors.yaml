@@ -1,4 +1,4 @@
-# cSpell:ignore Coralogix ITRS Kloud Logz Crowdstrike Humio Lumigo observ Promscale Teletrace Uptrace Greptime
+# cSpell:ignore Coralogix ITRS Kloud Logz Crowdstrike Humio Lumigo observ Promscale Teletrace Uptrace Greptime KloudMate
 - name: AppDynamics (Cisco)
   distribution: true
   nativeOTLP: true
@@ -123,6 +123,13 @@
   nativeOTLP: true
   url: 'https://kloudfuse.atlassian.net/wiki/spaces/EX/pages/753860609/APM#Sending-traces-to-Kloudfuse-data-plane%3A'
   contact: ''
+  oss: false
+  commercial: true
+- name: KloudMate
+  distribution: false
+  nativeOTLP: true
+  url: 'https://docs.kloudmate.com/using-opentelemetry-collector'
+  contact: 'hello@kloudmate.com'
   oss: false
   commercial: true
 - name: ServiceNow Cloud Observability (Lightstep)
