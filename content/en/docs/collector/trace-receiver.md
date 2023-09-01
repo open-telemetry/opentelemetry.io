@@ -1949,9 +1949,11 @@ func NewSpanID() pcommon.SpanID {
 }
 ```
 
-> #### Check your work
->
-> - Imported `crypto/rand` as `crand` (to avoid conflicts with `math/rand`).
+{{% alert title="Check your work" color="primary" %}}
+
+- Imported `crypto/rand` as `crand` (to avoid conflicts with `math/rand`).
+
+{{% /alert %}}
 
 Now that you have a way to properly identify the spans, you can start creating
 them to represent the operations within and across the entities in your system.
