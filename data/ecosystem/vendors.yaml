@@ -41,6 +41,13 @@
   contact: ''
   oss: false
   commercial: true
+- name: Cribl
+  distribution: false
+  nativeOTLP: true
+  url: 'https://docs.cribl.io/stream/sources-otel'
+  contact: ''
+  oss: false
+  commercial: true
 - name: DaoCloud
   distribution: true
   nativeOTLP: true
