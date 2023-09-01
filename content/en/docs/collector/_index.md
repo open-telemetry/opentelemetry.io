@@ -53,6 +53,10 @@ think: the default OTLP exporters in each language assume a local collector
 endpoint, so if you launch a collector it will automatically start receiving
 telemetry.
 
+If you need to monitor something which doesn't provide a native otlp interface,
+or programmatic hooks to implement such via our SDKs, you could consider
+creating a [receiver](./receivers)
+
 ## Status and releases
 
 The **collector** status is: [mixed][], since core collector components
