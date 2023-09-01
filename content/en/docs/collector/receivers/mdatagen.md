@@ -2,22 +2,18 @@
 title: Metrics Data Generator [mdatagen]
 ---
 
-To use
-[`mdatagen`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/mdatagen),
-the typical convention is to include a `go:generate` directive in a file named
-`doc.go`, and the configuration in `metadata.yaml`. While this is not strictly
-speaking necessary, following these conventions makes it easier for the rest of
-the opentelemetry community to review, maintain, and reason with your code.
 
 ## Generative configuration files
+To use [`mdatagen`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/mdatagen), include a `go:generate` directive in a file named
+`doc.go`, and the configuration in `metadata.yaml`.
 
 Let's say we're making the `receivers/foobar` receiver. This directory
 should have a
-[`doc.go`](https://github.com/search?q=repo%3Aopen-telemetry%2Fopentelemetry-collector-contrib%20path%3A*doc.go&type=code)
-and
-[`metadata.yaml`](https://github.com/search?q=repo%3Aopen-telemetry%2Fopentelemetry-collector-contrib%20path%3A*metadata.yaml&type=code)
+[`doc.go`](https://github.com/search?q=repo%3Aopen-telemetry%2Fopentelemetry-collector-contrib%20path%3A*doc.go&type=code) and [`metadata.yaml`](https://github.com/search?q=repo%3Aopen-telemetry%2Fopentelemetry-collector-contrib%20path%3A*metadata.yaml&type=code)
 file inside here. You can find examples of what these may look like in the
 `cmd/mdatagen` folder. At the time of writing this document, they look like so
+
+
 
 ### metadata.yaml
 

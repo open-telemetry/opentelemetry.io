@@ -1,16 +1,17 @@
 ---
 title: Creating a custom receiver
 ---
-# Requirements Gathering
-### Push or pull
 
-Decide if you want a `Scraper` or a `Listener` style receiver. Some current
-examples of such for metric receivers are
+Why do I, the reader, care?  Why should I read this document?  What's in here for me?
 
-- `Scraper`:
-  [redisreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/redisreceiver)
-- `Listener`:
-  [statsd](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/statsdreceiver)
+## Requirements Gathering
+### When do I collect?
+
+The first step is to decide if you want a scraping or listening receiver.
+Some current examples of such for metric receivers are
+
+- `Scraper`: [redisreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/redisreceiver)
+- `Listener`: [statsd](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/statsdreceiver)
 
 ### Default metrics and attributes
 
@@ -23,7 +24,11 @@ which allows overrides of any default setting in `metadata.yaml`. We'll look
 into this more when it comes time to code your `config.go` and `scraper.go` or
 `listener.go`
 
-While we encourage contributions from everyone, getting a receiver upstreamed
+### Contributing your receiver to the opentelemetry project
+
+While we encourage contributions from everyone, understand that getting your
+component accepted into upstream is a serious endeavour.
+getting a receiver upstreamed
 into `opentelemetry-collector-contrib` can have a wide effect on our customers.
 As such, the standards for ongoing maintenance are non-negligible, and we
 encourage you to find a sponsor for your code should you not have the capacity
@@ -32,7 +37,7 @@ to maintain it for yourself. We can and do remove "orphaned" receivers from the
 
 
 
-# Testing
+# Implementing functionality
 
 ### Factories
 [`scraperhelper`](https://github.com/open-telemetry/opentelemetry-collector/blob/6542100317582afe3f730471244ccc9a8c331908/receiver/scraperhelper/doc.go#L13)
@@ -81,7 +86,7 @@ scraperhelper.NewScraperControllerReceiver(
 	)
 
 ```
-## Testing your receiver
+# Implementing testing
 When to use build end-to-end/other suites?
 
 To find many test suites,
@@ -107,3 +112,4 @@ Also, `grep -Rh "//go:build" **/*.go | sort | uniq`
 
 
 
+# Documenting

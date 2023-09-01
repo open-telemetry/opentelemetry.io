@@ -22,15 +22,10 @@ repository of such third party support, in addition to some useful common
 tooling and a (more or less) weekly release of said components.
 
 If you wish to build your own collector components, the docs herein will give
-instructions and guidance on how to do so.  We'll also target adoption into `opentelemetry-collector-contrib`, in case you wish to share your work with the world at large.
+instructions and guidance on how to do so.  We'll also discuss adoption into
+[`opentelemetry-collector-contrib`](https://github.com/open-telemetry/opentelemetry-collector-contrib), in case you wish to share your work with the world at large.
+*Note* Be forewarned that upstreaming is an endevour.  You may wish to create your own fork or [bespoke distribution](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/cmd/mdatagen/statusdata.go#L21) instead.
 
-This intends to be a comprehensive, living guide to creating your _own_ receiver
-in open-telemetry. While this guide is geared for inclusion in
-[opentelemetry-collector-contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib),
-all of the tips and tricks herein should work for you if you'd prefer to include
-it in your
-[own distribution](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/cmd/mdatagen/statusdata.go#L21)
-or personal fork.
 
 ## Specify your requirements
 
@@ -46,7 +41,7 @@ tracing receiver)
 
 Are you trying to instrument the detailed call behavior of your functions?  Are you trying to monitor the health of your system for use in autoscaling or operational excellence?
 
-OTLP has example of traces + logs + metrics
+* hughesjj@ OTLP has example of traces + logs + metrics*
 
 ### [Semantic conventions](https://github.com/open-telemetry/semantic-conventions)
 
@@ -73,7 +68,7 @@ distributed open-source project, of which opentelemetry is.
 ### [mdatagen](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/mdatagen)
 
 You may have noticed -- we have a lot of contributed receivers! Rather than
-making every single person put up with boring boiler plate and the hassle of
+making every single person put up with boring boilerplate and the hassle of
 learning every convention, we invested in tooling to make creating, maintaining,
 and instrumenting receivers easier and less bug prone.
 [`mdatagen`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/mdatagen)
