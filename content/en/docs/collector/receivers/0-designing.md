@@ -39,14 +39,17 @@ If you cannot modify the code of the resource, or if you have a lot of frequentl
 If your paradigm is more "data-flow" or "stream" programming, you may want a serving-style receiver.
 If your paradigm is more like an "ETL" or "snapshot", you may want a scraping-style receiver.
 
-
 - `Scraper`: [redisreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/redisreceiver)
 - `Listener`: [statsd](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/statsdreceiver)
 
 
-
 # Data model
-### [Semantic conventions](https://github.com/open-telemetry/semantic-conventions)
+## Resource
+
+## Attributes
+
+## Signals
+## [Semantic conventions](https://github.com/open-telemetry/semantic-conventions)
 
 As of March 2023, the ability to do metric translation and any "view layer"
 changes in opentelemetry is still being developed. Consumers of opentelemetry
@@ -65,7 +68,3 @@ release of your receiver, getting the ball rolling on semantic conventions is
 wise, especially given how arduous it can be to gather consensus in a
 distributed open-source project, of which opentelemetry is.
 
-
-## Attributes
-
-## Signals

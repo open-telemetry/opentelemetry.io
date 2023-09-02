@@ -24,4 +24,9 @@ tooling and a (more or less) weekly release of said components.
 If you wish to build your own collector components, the docs herein will give
 instructions and guidance on how to do so.  We'll also discuss adoption into
 [`opentelemetry-collector-contrib`](https://github.com/open-telemetry/opentelemetry-collector-contrib), in case you wish to share your work with the world at large.
-*Note* Be forewarned that upstreaming is an endevour.  You may wish to create your own fork or [bespoke distribution](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/cmd/mdatagen/statusdata.go#L21) instead.
+
+{{% alert title="Upstreaming is a commitment!" color="primary" %}}
+Be forewarned that upstreaming is an endeavour.  
+If you and any team you may be apart of are unable to provide maintenance or domain expertise for your receiver, consider
+creating your own fork, [collector](../custom-collector.md), or even a [bespoke distribution](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/cmd/mdatagen/statusdata.go#L21) instead.
+{{% /alert %}}
