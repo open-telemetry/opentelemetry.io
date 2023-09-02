@@ -6,7 +6,8 @@ From here, the implementation will differ depending on if you need a metrics or 
 
 
 ### `config.go`
-
+Before you start, you should know that there exist common utilities for configuration which you may want to reuse.
+both scraping and serving receivers have their own reccomended utlities, which are scraperhelper and httphelper
 
 ### `factory.go`
 
