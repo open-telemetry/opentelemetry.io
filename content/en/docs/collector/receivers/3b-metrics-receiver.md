@@ -46,14 +46,6 @@ to maintain it for yourself. We can and do remove "orphaned" receivers from the
 ### Boilerplate
 Since we're doing a listener, our `metadata.yaml` will be fairly simple
 
-
-```yaml
-type: "myawesomereceiver"
-status:
-	
-    # TODO they're completing this revisit once stable
-```
-
 ### Near-standard conventions
 - `factory.go`
 - `client.go`

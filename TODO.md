@@ -6,3 +6,10 @@
 - [ ] Note about contributing to -contrib and what that entails
 - [ ] dual component receiver
 - [ ] glossary
+
+# References
+- [ ] 
+
+# Style
+- [ ] figure out note callout boxes if available
+- [ ] delete any "as the reader comments"
