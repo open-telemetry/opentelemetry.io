@@ -105,7 +105,7 @@ for more information.
 
 ## Configuring the agent
 
-To see the full range of configuration options, see [Agent Configuration](agent-config.md).
+To see the full range of configuration options, see [Configuration and settings](config.md).
 
 ## Log to trace correlation
 
