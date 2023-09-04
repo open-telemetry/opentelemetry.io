@@ -97,11 +97,120 @@ To instrument a .NET application automatically, download and run the installer s
     Get-Help Install-OpenTelemetryCore -Detailed
   ```
 
+### Instrument a Windows Service running a .NET application
+
+Use the `OpenTelemetry.DotNet.Auto.psm1"` PowerShell module
+to set up automatic instrumentation for a Windows Service:
+
+```powershell
+# Import the module
+Import-Module "OpenTelemetry.DotNet.Auto.psm1"
+
+# Install core files
+Install-OpenTelemetryCore
+
+# Set up your Windows Service instrumentation
+Register-OpenTelemetryForWindowsService -WindowsServiceName "WindowsServiceName" -OTelServiceName "MyServiceDisplayName"
+```
+
+> **Warning** `Register-OpenTelemetryForWindowsService` performs a service restart.
+
+#### Configuration
+
+> **Note**
+> Remember to restart the Windows Service after making configuration changes.
+> You can do it by running
+> `Restart-Service -Name $WindowsServiceName -Force` in PowerShell.
+
+For .NET Framework applications you can configure the most common `OTEL_` settings
+(like `OTEL_RESOURCE_ATTRIBUTES`) via `appSettings` in `App.config`.
+
+The alternative is to set environment variables for the Windows Service
+in the Windows Registry.
+
+The registry key of a given Windows Service (named `$svcName`) is located under:
+
+```powershell
+HKLM\SYSTEM\CurrentControlSet\Services\$svcName
+```
+
+The environment variables are defined
+in a `REG_MULTI_SZ` (multiline registry value) called `Environment`
+in the following format:
+
+```env
+Var1=Value1
+Var2=Value2
+```
+
+### Instrument an ASP.NET application deployed on IIS
+
+Use the `OpenTelemetry.DotNet.Auto.psm1` PowerShell module
+to set up automatic instrumentation for IIS:
+
+```powershell
+# Import the module
+Import-Module "OpenTelemetry.DotNet.Auto.psm1"
+
+# Install core files
+Install-OpenTelemetryCore
+
+# Setup IIS instrumentation
+Register-OpenTelemetryForIIS
+```
+
+> **Warning**
+> `Register-OpenTelemetryForIIS` performs IIS restart.
+
+#### Configuration
+
+> **Note**
+> Remember to restart IIS after making configuration changes.
+> You can do it by executing `iisreset.exe`.
+
+For ASP.NET application you can configure the most common `OTEL_` settings
+(like `OTEL_SERVICE_NAME`) via `appSettings` in `Web.config`.
+
+If a service name is not explicitly configured, one will be generated for you.
+If the application is hosted on IIS in .NET Framework this will use
+`SiteName\VirtualDirectoryPath` ex: `MySite\MyApp`
+
+For ASP.NET Core application you can use
+the [`<environmentVariable>`](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/iis/web-config#set-environment-variables)
+elements inside the `<aspNetCore>` block of your `Web.config` file
+to set configuration via environment variables.
+
+#### Advanced configuration
+
+You can add the [`<environmentVariables>`](https://docs.microsoft.com/en-us/iis/configuration/system.applicationhost/applicationpools/add/environmentvariables/)
+in `applicationHost.config`
+to set environment variables for given application pools.
+
+> For IIS versions older than 10.0, you can consider creating a distinct user,
+  set its environment variables
+  and use it as the application pool user.
+
+Consider setting common environment variables,
+for all applications deployed to IIS
+by setting the environment variables for
+`W3SVC` and `WAS` Windows Services as described in [windows-service-instrumentation.md](windows-service-instrumentation.md).
+
+
 ### NuGet package
 
 You can instrument [`self-contained`](https://learn.microsoft.com/en-us/dotnet/core/deploying/#publish-self-contained)
 applications using the NuGet packages. See [NuGet packages](nuget-packages.md) 
 for more information.
+
+### Instrument a container
+
+For an example of Docker container instrumentation, see
+[the example](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/tree/main/examples/demo)
+on GitHub.
+
+You can also use
+the [Kubernetes Operator for OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-operator).
+
 
 ## Configuring the agent
 
