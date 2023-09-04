@@ -1,22 +1,15 @@
 ---
 title: Automatic Instrumentation
+description: Use the OpenTelemetry .NET Automatic Instrumentation to send traces
+and metrics from .NET applications and services to observability back ends
+without having to modify their source code.
 linkTitle: Automatic
 weight: 20
 ---
 
-This project adds
-[OpenTelemetry instrumentation](https://opentelemetry.io/docs/concepts/instrumenting/#automatic-instrumentation)
-to .NET applications without having to modify their source code.
-
-To see the telemetry from your application directly on the standard output, set
-the following environment variables to `true` before launching your application:
-
-- `OTEL_DOTNET_AUTO_LOGS_CONSOLE_EXPORTER_ENABLED`
-- `OTEL_DOTNET_AUTO_METRICS_CONSOLE_EXPORTER_ENABLED`
-- `OTEL_DOTNET_AUTO_TRACES_CONSOLE_EXPORTER_ENABLED`
-
-For a demo using `docker compose`, clone this repository and follow the
-[examples/demo/README.md](../examples/demo/README.md).
+Use the OpenTelemetry .NET Automatic Instrumentation to send traces and metrics
+from .NET applications and services to observability back ends without having to
+modify their source code.
 
 To learn how to manually instrument your service or app code, see
 [Manual instrumentation](../manual).
@@ -188,13 +181,11 @@ You can add the
 in `applicationHost.config` to set environment variables for given application
 pools.
 
+Consider setting common environment variables, for all applications deployed to
+IIS by setting the environment variables for `W3SVC` and `WAS` Windows Services.
+
 > For IIS versions older than 10.0, you can consider creating a distinct user,
 > set its environment variables and use it as the application pool user.
-
-Consider setting common environment variables, for all applications deployed to
-IIS by setting the environment variables for `W3SVC` and `WAS` Windows Services
-as described in
-[windows-service-instrumentation.md](windows-service-instrumentation.md).
 
 ### NuGet package
 
@@ -215,7 +206,7 @@ You can also use the
 ## Configuring the agent
 
 To see the full range of configuration options, see
-[Configuration and settings](config.md).
+[Configuration and settings](./config).
 
 ## Log to trace correlation
 
@@ -223,15 +214,14 @@ To see the full range of configuration options, see
 > Automatic Instrumentation currently works only for .NET applications using
 > `Microsoft.Extensions.Logging`. See
 > [#2310](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2310)
-> and [config](./config.md#logs-instrumentations) for more details.
+> for more details.
 
 OpenTelemetry .NET SDK automatically correlates logs to trace data. When logs
 are emitted in the context of an active trace, trace context
 [fields](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#trace-context-fields)
 `TraceId`, `SpanId`, `TraceState` are automatically populated.
 
-The following are logs produced by the sample console
-[application](../examples/demo/Service/Program.cs):
+The following are logs produced by the sample console application:
 
 ```json
 "logRecords": [
@@ -254,18 +244,25 @@ For more information, see:
 - [OpenTelemetry .NET SDK](https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/docs/logs/correlation)
 - [OpenTelemetry Specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#trace-context-fields)
 
-## Supported libraries, frameworks, application services, and JVMs
+## Supported libraries and frameworks
 
 The OpenTelemetry .NET Automatic Instrumentation supports a wide variety of
-libraries. For a complete list, see [Instrumentations](instrumentations.md).
+libraries. For a complete list, see [Instrumentations](./instrumentations).
 
 ## Troubleshooting
 
+To see the telemetry from your application directly on the standard output, set
+the following environment variables to `true` before launching your application:
+
+- `OTEL_DOTNET_AUTO_LOGS_CONSOLE_EXPORTER_ENABLED`
+- `OTEL_DOTNET_AUTO_METRICS_CONSOLE_EXPORTER_ENABLED`
+- `OTEL_DOTNET_AUTO_TRACES_CONSOLE_EXPORTER_ENABLED`
+
 For general troubleshooting steps and solutions to specific issues, see
-[Troubleshooting](troubleshooting.md).
+[Troubleshooting](./troubleshooting).
 
 ## Next steps
 
 After you have automatic instrumentation configured for your app or service, you
-might want to [annotate](annotations.md) selected methods or add
+might want to [send custom traces and metrics](./custom) or add
 [manual instrumentation](../manual) to collect custom telemetry data.
