@@ -148,7 +148,7 @@ For more information, see:
 ## Supported libraries, frameworks, application services, and JVMs
 
 The OpenTelemetry .NET Automatic Instrumentation supports a wide variety of 
-libraries. For a complete list, see [Instrumentations](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/config.md#instrumentations).
+libraries. For a complete list, see [Instrumentations](instrumentations.md).
 
 ## Troubleshooting
 
