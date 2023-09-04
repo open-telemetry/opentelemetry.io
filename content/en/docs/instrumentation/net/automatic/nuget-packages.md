@@ -1,6 +1,6 @@
 ---
 title: Using the OpenTelemetry.AutoInstrumentation NuGet packages
-linkTitle: Nuget
+linkTitle: NuGet
 weight: 20
 ---
 

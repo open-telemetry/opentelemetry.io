@@ -103,7 +103,7 @@ script for your operating system.
 
 ### Instrument a Windows Service running a .NET application
 
-Use the `OpenTelemetry.DotNet.Auto.psm1"` PowerShell module to set up automatic
+Use the `OpenTelemetry.DotNet.Auto.psm1` PowerShell module to set up automatic
 instrumentation for a Windows Service:
 
 ```powershell
@@ -200,7 +200,7 @@ as described in
 
 You can instrument
 [`self-contained`](https://learn.microsoft.com/en-us/dotnet/core/deploying/#publish-self-contained)
-applications using the NuGet packages. See [NuGet packages](nuget-packages.md)
+applications using the NuGet packages. See [NuGet packages](./nuget-packages)
 for more information.
 
 ### Instrument a container
