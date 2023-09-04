@@ -1,6 +1,6 @@
 ---
-title: Annotations
-description: Using annotations with .NET automatic instrumentation.
+title: Create custom traces and metrics
+description: Create custom traces and metrics using .NET automatic instrumentation.
 weight: 20
 ---
 
@@ -44,7 +44,7 @@ To create your custom traces manually, follow these steps:
 You can see a sample console application with manual instrumentation
 [here](../examples/demo/Service/Program.cs).
 
-> Note that an `Activity` created for `NonRegistered.ManualInstrumentations`
+> Note that an `Activity` created for `NonRegistered.ManualInstrumentations` >
 > `ActivitySource` is not handled by the OpenTelemetry Automatic
 > Instrumentation.
 
