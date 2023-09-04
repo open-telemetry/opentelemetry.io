@@ -2,6 +2,7 @@
 title: Configuration and settings
 linkTitle: Configuration
 weight: 20
+cSpell:ignore: NETFX AZUREAPPSERVICE UNHANDLEDEXCEPTION CORECLR CLSID dylib Bitness
 ---
 
 ## Configuration methods

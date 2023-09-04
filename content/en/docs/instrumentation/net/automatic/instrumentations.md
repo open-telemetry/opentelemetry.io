@@ -3,6 +3,7 @@ title: Available instrumentations
 description: The OpenTelemetry .NET Automatic Instrumentation supports a wide variety of
 libraries.
 weight: 20
+cSpell:ignore: ASPNET ASPNETCORE ENTITYFRAMEWORKCORE GRCPNETCLIENT HTTPCLIENT MASSTRANSIT MYSQLCONNECTOR MYSQLDATA NPGSQL Npgsql NSERVICEBUS SQLCLIENT STACKEXCHANGEREDIS WCFCLIENT WCFSERVICE NETRUNTIME ILOGGER HOSTINGSTARTUPASSEMBLIES Bootstrapper
 ---
 
 The OpenTelemetry .NET Automatic Instrumentation supports a wide variety of
