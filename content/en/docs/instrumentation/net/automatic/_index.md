@@ -215,7 +215,7 @@ You can also use the
 ## Configuring the agent
 
 To see the full range of configuration options, see
-[Configuration and settings](config.md).
+[Configuration and settings](./config).
 
 ## Log to trace correlation
 
