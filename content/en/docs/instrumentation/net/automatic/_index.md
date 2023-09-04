@@ -4,6 +4,19 @@ linkTitle: Automatic
 weight: 20
 ---
 
+This project adds [OpenTelemetry instrumentation](https://opentelemetry.io/docs/concepts/instrumenting/#automatic-instrumentation)
+to .NET applications without having to modify their source code.
+
+To see the telemetry from your application directly on the standard output, set
+the following environment variables to `true` before launching your application:
+
+- `OTEL_DOTNET_AUTO_LOGS_CONSOLE_EXPORTER_ENABLED`
+- `OTEL_DOTNET_AUTO_METRICS_CONSOLE_EXPORTER_ENABLED`
+- `OTEL_DOTNET_AUTO_TRACES_CONSOLE_EXPORTER_ENABLED`
+
+For a demo using `docker compose`, clone this repository and
+follow the [examples/demo/README.md](../examples/demo/README.md).
+
 To learn how to manually instrument your
 service or app code, see [Manual instrumentation](../manual).
 
