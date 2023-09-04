@@ -7,92 +7,143 @@ weight: 20
 To learn how to manually instrument your
 service or app code, see [Manual instrumentation](../manual).
 
+## Compatibility
+
+OpenTelemetry .NET Automatic Instrumentation should work with all officially
+supported operating systems and versions of
+[.NET](https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core).
+
+The minimal supported version of
+[.NET Framework](https://dotnet.microsoft.com/download/dotnet-framework)
+is `4.6.2`.
+
+CI tests run against the following operating systems:
+
+- [Alpine](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docker/alpine.dockerfile)
+- [CentOS 7](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docker/centos-build.dockerfile)
+- [macOS Big Sur 11](https://github.com/actions/runner-images/blob/main/images/macos/macos-11-Readme.md)
+- [Microsoft Windows Server 2022](https://github.com/actions/runner-images/blob/main/images/win/Windows2022-Readme.md)
+- [Ubuntu 20.04 LTS](https://github.com/actions/runner-images/blob/main/images/linux/Ubuntu2004-Readme.md)
+
+> **Note** ARM architectures are not supported. See [#2181](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2181)
+> for more information.
+
 ## Setup
 
-1.  Download [opentelemetry-javaagent.jar][] from [Releases][] of the
-    `opentelemetry-java-instrumentation` repository and place the JAR in your
-    preferred directory. The JAR file contains the agent and instrumentation
-    libraries.
-2.  Add `-javaagent:path/to/opentelemetry-javaagent.jar` and other config to
-    your JVM startup arguments and launch your app:
+To instrument a .NET application automatically, download and run the installer script for your operating system.
 
-    - Directly on the startup command:
+- On Linux and macOS, download and run the `.sh` script:
 
-      ```shell
-      java -javaagent:path/to/opentelemetry-javaagent.jar -Dotel.service.name=your-service-name -jar myapp.jar
-      ```
+  ```sh
+    # Download the bash script
+    curl -sSfL https://raw.githubusercontent.com/open-telemetry/opentelemetry-dotnet-instrumentation/v1.0.0-rc.2/otel-dotnet-auto-install.sh -O
 
-    - Via the `JAVA_TOOL_OPTIONS` and other environment variables:
+    # Install core files
+    sh ./otel-dotnet-auto-install.sh
 
-      ```shell
-      export JAVA_TOOL_OPTIONS="-javaagent:path/to/opentelemetry-javaagent.jar"
-      export OTEL_SERVICE_NAME="your-service-name"
-      java -jar myapp.jar
-      ```
+    # Enable execution for the instrumentation script
+    chmod +x $HOME/.otel-dotnet-auto/instrument.sh
+
+    # Setup the instrumentation for the current shell session
+    . $HOME/.otel-dotnet-auto/instrument.sh
+
+    # Run your application with instrumentation
+    OTEL_SERVICE_NAME=myapp OTEL_RESOURCE_ATTRIBUTES=deployment.environment=staging,service.version=1.0.0 ./MyNetApp
+  ```
+
+  > **Note** On macOS [`coreutils`](https://formulae.brew.sh/formula/coreutils) is required.
+
+- On Windows, use the PowerShell module as an Administrator:
+
+  ```powershell
+    # PowerShell 5.1 or higher is required
+    # Download the module
+    $module_url = "https://raw.githubusercontent.com/open-telemetry/opentelemetry-dotnet-instrumentation/v1.0.0-rc.2/OpenTelemetry.DotNet.Auto.psm1"
+    $download_path = Join-Path $env:temp "OpenTelemetry.DotNet.Auto.psm1"
+    Invoke-WebRequest -Uri $module_url -OutFile $download_path -UseBasicParsing
+
+    # Import the module to use its functions
+    Import-Module $download_path
+
+    # Install core files (online vs offline method)
+    Install-OpenTelemetryCore
+    Install-OpenTelemetryCore -LocalPath "C:\Path\To\OpenTelemetry.zip" 
+
+    # Set up the instrumentation for the current PowerShell session
+    Register-OpenTelemetryForCurrentSession -OTelServiceName "MyServiceDisplayName"
+
+    # Run your application with instrumentation
+    .\MyNetApp.exe
+
+    # You can get usage information by calling the following commands
+
+    # List all available commands
+    Get-Command -Module OpenTelemetry.DotNet.Auto
+
+    # Get command's usage information
+    Get-Help Install-OpenTelemetryCore -Detailed
+  ```
+
+### NuGet package
+
+You can instrument [`self-contained`](https://learn.microsoft.com/en-us/dotnet/core/deploying/#publish-self-contained)
+applications using the NuGet packages. See [NuGet packages](nuget-packages.md) 
+for more information.
 
 ## Configuring the agent
 
-The agent is highly configurable.
+To see the full range of configuration options, see [Agent Configuration](agent-config.md).
 
-One option is to pass configuration properties via the `-D` flag. In this
-example, a service name and Zipkin exporter for traces are configured:
+## Log to trace correlation
 
-```sh
-java -javaagent:path/to/opentelemetry-javaagent.jar \
-     -Dotel.service.name=your-service-name \
-     -Dotel.traces.exporter=zipkin \
-     -jar myapp.jar
+> **Note**
+> Automatic log to trace correlation provided by OpenTelemetry .NET Automatic Instrumentation
+> currently works only for .NET applications using `Microsoft.Extensions.Logging`.
+> See [#2310](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2310)
+> and [config](./config.md#logs-instrumentations) for more details.
+
+OpenTelemetry .NET SDK automatically correlates logs to trace data.
+When logs are emitted in the context of an active trace, trace context
+[fields](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#trace-context-fields)
+`TraceId`, `SpanId`, `TraceState` are automatically populated.
+
+The following are logs produced by the sample console
+[application](../examples/demo/Service/Program.cs):
+
+```json
+"logRecords": [
+    {
+        "timeUnixNano": "1679392614538226700",
+        "severityNumber": 9,
+        "severityText": "Information",
+        "body": {
+            "stringValue": "Success! Today is: {Date:MMMM dd, yyyy}"
+        },
+        "flags": 1,
+        "traceId": "21df288eada1ce4ace6c40f39a6d7ce1",
+        "spanId": "a80119e5a05fed5a"
+    }
+]
 ```
 
-You can also use environment variables to configure the agent:
+For more information, see:
 
-```sh
-OTEL_SERVICE_NAME=your-service-name \
-OTEL_TRACES_EXPORTER=zipkin \
-java -javaagent:path/to/opentelemetry-javaagent.jar \
-     -jar myapp.jar
-```
+- [OpenTelemetry .NET SDK](https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/docs/logs/correlation)
+- [OpenTelemetry Specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#trace-context-fields)
 
-You can also supply a Java properties file and load configuration values from
-there:
-
-```sh
-java -javaagent:path/to/opentelemetry-javaagent.jar \
-     -Dotel.javaagent.configuration-file=path/to/properties/file.properties \
-     -jar myapp.jar
-```
-
-or
-
-```sh
-OTEL_JAVAAGENT_CONFIGURATION_FILE=path/to/properties/file.properties \
-java -javaagent:path/to/opentelemetry-javaagent.jar \
-     -jar myapp.jar
-```
-
-To see the full range of configuration options, see [Agent Configuration][].
 
 ## Supported libraries, frameworks, application services, and JVMs
 
-The Java agent ships with instrumentation libraries for many popular components.
-For the full list, see [Supported libraries, frameworks, application services,
-and JVMs][support].
+The OpenTelemetry .NET Automatic Instrumentation supports a wide variety of 
+libraries. For a complete list, see [Instrumentations](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/config.md#instrumentations).
 
 ## Troubleshooting
 
-You can pass the `-Dotel.javaagent.debug=true` parameter to the agent to see
-debug logs. Note that these are quite verbose.
+For general troubleshooting steps and solutions to specific issues, see
+[Troubleshooting](troubleshooting.md).
 
 ## Next steps
 
 After you have automatic instrumentation configured for your app or service, you
-might want to [annotate](annotations) selected methods or add
+might want to [annotate](annotations.md) selected methods or add
 [manual instrumentation](../manual) to collect custom telemetry data.
-
-[agent configuration]: agent-config
-[opentelemetry-javaagent.jar]:
-  https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
-[releases]:
-  https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases
-[support]:
-  https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md
