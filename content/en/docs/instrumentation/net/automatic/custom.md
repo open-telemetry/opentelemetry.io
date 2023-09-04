@@ -1,6 +1,7 @@
 ---
 title: Create custom traces and metrics
-description: Create custom traces and metrics using .NET automatic instrumentation.
+description:
+  Create custom traces and metrics using .NET automatic instrumentation.
 weight: 20
 ---
 
@@ -41,12 +42,9 @@ To create your custom traces manually, follow these steps:
    `Examples.ManualInstrumentations.Registered` or to
    `Examples.ManualInstrumentations.*`, which registers the entire prefix.
 
-You can see a sample console application with manual instrumentation
-[here](../examples/demo/Service/Program.cs).
-
-> Note that an `Activity` created for `NonRegistered.ManualInstrumentations` >
-> `ActivitySource` is not handled by the OpenTelemetry Automatic
-> Instrumentation.
+{{% alert title="Note" color="note" %}} An `Activity` created for
+`NonRegistered.ManualInstrumentations` `ActivitySource` is not handled by the
+OpenTelemetry Automatic Instrumentation. {{% /alert %}}
 
 ## Metrics
 
@@ -85,9 +83,6 @@ To create your custom metrics manually, follow these steps:
 
    You can set the value to either `Examples.Service` or to `Examples.*`, which
    registers the entire prefix.
-
-You can see a sample console application with manual metric instrumentation
-[here](../examples/demo/Service/Program.cs).
 
 ## Further reading
 

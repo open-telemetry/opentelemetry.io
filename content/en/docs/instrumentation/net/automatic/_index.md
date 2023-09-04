@@ -32,9 +32,9 @@ CI tests run against the following operating systems:
 - [Microsoft Windows Server 2022](https://github.com/actions/runner-images/blob/main/images/win/Windows2022-Readme.md)
 - [Ubuntu 20.04 LTS](https://github.com/actions/runner-images/blob/main/images/linux/Ubuntu2004-Readme.md)
 
-> **Note** ARM architectures are not supported. See
-> [#2181](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2181)
-> for more information.
+{{% alert title="Note" color="note" %}} ARM architectures are not supported. See
+[#2181](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2181)
+for more information. {{% /alert %}}
 
 ## Setup
 
@@ -60,8 +60,9 @@ script for your operating system.
     OTEL_SERVICE_NAME=myapp OTEL_RESOURCE_ATTRIBUTES=deployment.environment=staging,service.version=1.0.0 ./MyNetApp
   ```
 
-  > **Note** On macOS [`coreutils`](https://formulae.brew.sh/formula/coreutils)
-  > is required.
+  {{% alert title="Note" color="note" %}} On macOS
+  [`coreutils`](https://formulae.brew.sh/formula/coreutils) is required.
+  {{% /alert %}}
 
 - On Windows, use the PowerShell module as an Administrator:
 
@@ -110,14 +111,15 @@ Install-OpenTelemetryCore
 Register-OpenTelemetryForWindowsService -WindowsServiceName "WindowsServiceName" -OTelServiceName "MyServiceDisplayName"
 ```
 
-> **Warning** `Register-OpenTelemetryForWindowsService` performs a service
-> restart.
+{{% alert title="Note" color="note" %}}
+`Register-OpenTelemetryForWindowsService` performs a service restart.
+{{% /alert %}}
 
 #### Configuration
 
-> **Note** Remember to restart the Windows Service after making configuration
-> changes. You can do it by running
-> `Restart-Service -Name $WindowsServiceName -Force` in PowerShell.
+{{% alert title="Note" color="note" %}} Remember to restart the Windows Service
+after making configuration changes. You can do it by running
+`Restart-Service -Name $WindowsServiceName -Force` in PowerShell. {{% /alert %}}
 
 For .NET Framework applications you can configure the most common `OTEL_`
 settings (like `OTEL_RESOURCE_ATTRIBUTES`) via `appSettings` in `App.config`.
@@ -155,12 +157,13 @@ Install-OpenTelemetryCore
 Register-OpenTelemetryForIIS
 ```
 
-> **Warning** > `Register-OpenTelemetryForIIS` performs IIS restart.
+{{% alert title="Note" color="note" %}} `Register-OpenTelemetryForIIS` performs
+an IIS restart. {{% /alert %}}
 
 #### Configuration
 
-> **Note** Remember to restart IIS after making configuration changes. You can
-> do it by executing `iisreset.exe`.
+{{% alert title="Note" color="note" %}} Remember to restart IIS after making
+configuration changes. You can do it by executing `iisreset.exe`. {{% /alert %}}
 
 For ASP.NET application you can configure the most common `OTEL_` settings (like
 `OTEL_SERVICE_NAME`) via `appSettings` in `Web.config`.
@@ -184,8 +187,9 @@ pools.
 Consider setting common environment variables, for all applications deployed to
 IIS by setting the environment variables for `W3SVC` and `WAS` Windows Services.
 
-> For IIS versions older than 10.0, you can consider creating a distinct user,
-> set its environment variables and use it as the application pool user.
+{{% alert title="Note" color="note" %}} For IIS versions older than 10.0, you
+can consider creating a distinct user, set its environment variables and use it
+as the application pool user. {{% /alert %}}
 
 ### NuGet package
 
@@ -210,11 +214,11 @@ To see the full range of configuration options, see
 
 ## Log to trace correlation
 
-> **Note** Automatic log to trace correlation provided by OpenTelemetry .NET
-> Automatic Instrumentation currently works only for .NET applications using
-> `Microsoft.Extensions.Logging`. See
-> [#2310](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2310)
-> for more details.
+{{% alert title="Note" color="note" %}} Automatic log to trace correlation
+provided by OpenTelemetry .NET Automatic Instrumentation currently works only
+for .NET applications using `Microsoft.Extensions.Logging`. See
+[#2310](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2310)
+for more details. {{% /alert %}}
 
 OpenTelemetry .NET SDK automatically correlates logs to trace data. When logs
 are emitted in the context of an active trace, trace context

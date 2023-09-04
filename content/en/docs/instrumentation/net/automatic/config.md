@@ -4,6 +4,8 @@ linkTitle: Configuration
 weight: 20
 ---
 
+## Configuration methods
+
 You can apply or edit configuration settings in the following ways, with
 environment variables taking precedence over `App.config` or `Web.config` file:
 
@@ -208,15 +210,16 @@ Important environment variables include:
 **Status**:
 [Experimental](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/versioning-and-stability.md)
 
-> **Warning** > **Do NOT use in production.**
->
-> Prometheus exporter is intended for the inner dev loop. Production
-> environments can use a combination of OTLP exporter with
-> [OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector-releases)
-> having
-> [`otlp` receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/v0.61.0/receiver/otlpreceiver)
-> and
-> [`prometheus` exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.61.0/exporter/prometheusexporter).
+{{% alert title="Warning" color="warning" %}} **Do NOT use in production.**
+
+Prometheus exporter is intended for the inner dev loop. Production environments
+can use a combination of OTLP exporter with
+[OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector-releases)
+having
+[`otlp` receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/v0.61.0/receiver/otlpreceiver)
+and
+[`prometheus` exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.61.0/exporter/prometheusexporter).
+{{% /alert %}}
 
 To enable the Prometheus exporter, set the `OTEL_METRICS_EXPORTER` environment
 variable to `prometheus`.

@@ -15,12 +15,12 @@ Detailed debug logs can help you troubleshoot instrumentation issues, and can be
 attached to issues in this project to facilitate investigation.
 
 To get the detailed logs from the OpenTelemetry .NET Automatic Instrumentation,
-set the [`OTEL_LOG_LEVEL`](./config.md#internal-logs) environment variable to
+set the [`OTEL_LOG_LEVEL`](./config#internal-logs) environment variable to
 `debug` before the instrumented process starts.
 
 By default, the library writes the log files under predefined
-[locations](./config.md#internal-logs). If needed, change the default location
-by updating the `OTEL_DOTNET_AUTO_LOG_DIRECTORY` environment variable.
+[locations](./config#internal-logs). If needed, change the default location by
+updating the `OTEL_DOTNET_AUTO_LOG_DIRECTORY` environment variable.
 
 After obtaining the logs, remove the `OTEL_LOG_LEVEL` environment variable, or
 set it to less verbose level to avoid unnecessary overhead.
@@ -46,7 +46,7 @@ Then restart the application to collect the logs.
 #### Symptoms
 
 There is no telemetry generated. There are no logs in OpenTelemetry .NET
-Automatic Instrumentation internal logs [location](./config.md#internal-logs).
+Automatic Instrumentation internal logs [location](./config#internal-logs).
 
 It might occur that the .NET Profiler is unable to attach and therefore no logs
 would be emitted.
@@ -70,8 +70,7 @@ Could not install package 'OpenTelemetry.AutoInstrumentation.Runtime.Native 1.0.
 #### Solution
 
 The NuGet packages don't support old-style `csproj` projects. Either deploy the
-automatic instrumentation to the
-[machine instead of using NuGet packages](./README.md###powershell-module), or
+automatic instrumentation to the machine instead of using NuGet packages, or
 migrate your project to the SDK style `csproj`.
 
 ### Performance issues
@@ -86,7 +85,7 @@ Make sure that you have not enabled the automatic instrumentation globally by
 setting the environment variables at system or user scope.
 
 If the usage of system or user scope is intentional, use the
-[`OTEL_DOTNET_AUTO_EXCLUDE_PROCESSES`](./config.md#global-settings) environment
+[`OTEL_DOTNET_AUTO_EXCLUDE_PROCESSES`](./config#global-settings) environment
 variables to exclude applications from the automatic instrumentation.
 
 ### `dotnet` CLI tool is crashing
@@ -117,8 +116,6 @@ With version `v0.6.0-beta.1` and lower, there were issues when instrumenting the
 Therefore, if you are using one of these versions, we advise executing
 `dotnet build` before instrumenting the terminal session or calling it in a
 separate terminal session.
-
-See the [Get started](./README.md#get-started) section for more information.
 
 ### Assembly version conflicts
 
@@ -152,8 +149,7 @@ Instrumentation.
 A simple way to ensure that no such conflicts happen is to add the
 `OpenTelemetry.AutoInstrumentation` package to your application. For
 instructions about how to add it to your application, see
-[Using the OpenTelemetry.AutoInstrumentation NuGet packages](./using-the-nuget-packages.md#using-the-opentelemetryautoinstrumentation-nuget-packages)
-.
+[Using the OpenTelemetry.AutoInstrumentation NuGet packages](./nuget-packages) .
 
 Alternatively add only the conflicting packages to your project. The following
 dependencies are used by OpenTelemetry .NET Automatic Instrumentation:
@@ -170,7 +166,7 @@ Find their versions in the following locations:
 By default, assembly references for .NET Framework applications are redirected
 during runtime to the versions used by the automatic instrumentation. This
 behavior can be controlled through the
-[`OTEL_DOTNET_AUTO_NETFX_REDIRECT_ENABLED`](./config.md#additional-settings)
+[`OTEL_DOTNET_AUTO_NETFX_REDIRECT_ENABLED`](./config#additional-settings)
 setting.
 
 If the application already ships binding redirection for assemblies used by
@@ -178,7 +174,7 @@ automatic instrumentation this automatic redirection may fail, see
 [#2833](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2833).
 Check if any existing binding redirect prevent redirection to the versions
 listed at
-[netfx_assembly_redirection.h](../src/OpenTelemetry.AutoInstrumentation.Native/netfx_assembly_redirection.h).
+[netfx_assembly_redirection.h](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/src/OpenTelemetry.AutoInstrumentation.Native/netfx_assembly_redirection.h).
 
 For the automatic redirection above to work there are two specific scenarios
 that require the assemblies used to instrument .NET Framework applications, the
@@ -191,9 +187,8 @@ installed into the Global Assembly Cache (GAC):
    different versions of some assemblies also shipped in the `netfx` folder.
 
 If you are having problems in one of the scenarios above run again the
-`Install-OpenTelemetryCore` command from the
-[PowerShell installation module](../OpenTelemetry.DotNet.Auto.psm1) to ensure
-that the required GAC installations are updated.
+`Install-OpenTelemetryCore` command from the PowerShell installation module to
+ensure that the required GAC installations are updated.
 
 For more information about the GAC usage by the automatic instrumentation, see
 [here](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/1906#issuecomment-1376292814).

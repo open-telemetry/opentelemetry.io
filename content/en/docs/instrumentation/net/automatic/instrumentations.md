@@ -1,3 +1,13 @@
+---
+title: Available instrumentations
+description: The OpenTelemetry .NET Automatic Instrumentation supports a wide variety of
+libraries.
+weight: 20
+---
+
+The OpenTelemetry .NET Automatic Instrumentation supports a wide variety of
+libraries.
+
 ## Instrumentations
 
 All instrumentations are enabled by default for all signal types (traces,
@@ -86,12 +96,12 @@ instrumentation is also enabled.
 **Status**:
 [Experimental](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/versioning-and-stability.md).
 
-| ID      | Instrumented library                                                                                                            | Supported versions | Instrumentation type   | Status                                                                                                                            |
-| ------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| ILOGGER | [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging) **Not supported on .NET Framework** | ≥6.0.0             | bytecode or source [1] | [Experimental](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/versioning-and-stability.md) |
+| ID      | Instrumented library                                                                                                            | Supported versions | Instrumentation type | Status                                                                                                                            |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------ | -------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| ILOGGER | [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging) **Not supported on .NET Framework** | ≥6.0.0             | bytecode or source   | [Experimental](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/versioning-and-stability.md) |
 
-**[1]**: For ASP.NET Core applications, the `LoggingBuilder` instrumentation can
-be enabled without using the .NET CLR Profiler by setting the
+For ASP.NET Core applications, the `LoggingBuilder` instrumentation can be
+enabled without using the .NET CLR Profiler by setting the
 `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES` environment variable to
 `OpenTelemetry.AutoInstrumentation.AspNetCoreBootstrapper`.
 
