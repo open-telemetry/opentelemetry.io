@@ -1,7 +1,6 @@
 ---
 title: Create custom traces and metrics
-description:
-  Create custom traces and metrics using .NET automatic instrumentation.
+description: Custom traces and metrics using .NET automatic instrumentation.
 weight: 20
 ---
 
