@@ -2,7 +2,7 @@
 title: Create custom traces and metrics
 linkTitle: Custom instrumentation
 description: Custom traces and metrics using .NET automatic instrumentation.
-weight: 20
+weight: 30
 ---
 
 The automatic instrumentation provides a base you can build on by adding your

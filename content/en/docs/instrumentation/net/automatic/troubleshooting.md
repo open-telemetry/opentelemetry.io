@@ -1,7 +1,7 @@
 ---
 title: Troubleshooting .NET automatic instrumentation issues
 linkTitle: Troubleshooting
-weight: 10
+weight: 50
 cSpell:ignore: COREHOST corehost NETFX netfx TRACEFILE
 ---
 
