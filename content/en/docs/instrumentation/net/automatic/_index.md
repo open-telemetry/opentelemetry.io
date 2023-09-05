@@ -1,8 +1,9 @@
 ---
 title: Automatic Instrumentation
-description: Use the OpenTelemetry .NET Automatic Instrumentation to send traces
-and metrics from .NET applications and services to observability back ends
-without having to modify their source code.
+description: |
+  Use the OpenTelemetry .NET Automatic Instrumentation to send traces
+  and metrics from .NET applications and services to observability back ends
+  without having to modify their source code.
 linkTitle: Automatic
 cSpell:ignore: coreutils HKLM iisreset myapp
 weight: 20
