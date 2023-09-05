@@ -50,16 +50,17 @@ filtering.
 
 It is also easier to [setup a collector](./getting-started) than you might
 think: the default OTLP exporters in each language assume a local collector
-endpoint, so if you launch a collector it will automatically start receiving telemetry.
+endpoint, so if you launch a collector it will automatically start receiving
+telemetry.
 
 ## Status and releases
 
 The **collector** status is: [mixed][], since core collector components
 currently have mixed [stability levels][].
 
-**Collector components** differ in their maturity levels. Each component has
-its stability documented in its `README.md`. You can find a list of
-all available collector components in the [registry][].
+**Collector components** differ in their maturity levels. Each component has its
+stability documented in its `README.md`. You can find a list of all available
+collector components in the [registry][].
 
 {{% docs/latest-release collector-releases /%}}
 
