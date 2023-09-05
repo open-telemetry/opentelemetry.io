@@ -62,7 +62,7 @@ rust:
   status:
     traces: beta
     metrics: alpha
-    logs: not yet implemented
+    logs: alpha
 swift:
   name: Swift
   status:

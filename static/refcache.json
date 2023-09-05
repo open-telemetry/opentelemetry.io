@@ -611,6 +611,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:21:23.471592-04:00"
   },
+  "https://doc.rust-lang.org/cargo/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-08-03T17:44:09.893503+02:00"
+  },
   "https://docker.com": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:16:13.965986-04:00"
@@ -911,6 +915,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-07-12T05:31:35.569358-04:00"
   },
+  "https://docs.greptime.com/user-guide/clients/otlp": {
+    "StatusCode": 200,
+    "LastSeen": "2023-08-30T23:00:58.002196+08:00"
+  },
   "https://docs.honeycomb.io/getting-data-in/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T15:46:23.100526-04:00"
@@ -922,6 +930,10 @@
   "https://docs.jboss.org/jbossas/guides/webguide/r2/en/html/ch06.html": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T15:50:52.866106-04:00"
+  },
+  "https://docs.kloudmate.com/using-opentelemetry-collector": {
+    "StatusCode": 200,
+    "LastSeen": "2023-08-31T11:09:01.973245767Z"
   },
   "https://docs.locust.io/en/stable/writing-a-locustfile.html": {
     "StatusCode": 200,
@@ -1266,6 +1278,10 @@
   "https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=third-otel-integration": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T15:46:44.824874-04:00"
+  },
+  "https://dotnet.microsoft.com/download": {
+    "StatusCode": 200,
+    "LastSeen": "2023-08-14T07:27:50.575755318Z"
   },
   "https://dotnet.microsoft.com/download/dotnet": {
     "StatusCode": 200,
@@ -2423,9 +2439,17 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:25:10.121533-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases": {
+    "StatusCode": 200,
+    "LastSeen": "2023-08-14T07:27:52.35566079Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/latest": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:44:58.585689-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/latest/download/otel-dotnet-auto-install.sh": {
+    "StatusCode": 206,
+    "LastSeen": "2023-08-14T07:27:51.68749521Z"
   },
   "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/tag/v0.1.0-beta.1": {
     "StatusCode": 200,
@@ -2682,6 +2706,10 @@
   "https://github.com/open-telemetry/opentelemetry-operator": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:35:39.708683-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator#controlling-instrumentation-capabilities": {
+    "StatusCode": 200,
+    "LastSeen": "2023-08-28T19:08:27.997056-06:00"
   },
   "https://github.com/open-telemetry/opentelemetry-operator#deployment-modes": {
     "StatusCode": 200,
@@ -3291,6 +3319,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:04:53.616666-04:00"
   },
+  "https://helm.sh/docs/intro/install/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-08-04T15:01:28.513871-06:00"
+  },
   "https://help.github.com/articles/about-pull-requests/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:13:01.956826-04:00"
@@ -3391,6 +3423,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T16:15:09.230771-04:00"
   },
+  "https://hyper.rs/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-08-03T17:44:10.601039+02:00"
+  },
   "https://jaegertracing.io": {
     "StatusCode": 206,
     "LastSeen": "2023-06-01T15:55:20.985886-04:00"
@@ -3398,6 +3434,10 @@
   "https://jakarta.ee/specifications/platform/8/apidocs/javax/servlet/http/HttpServletRequest.html": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:06:31.115927-04:00"
+  },
+  "https://javadoc.io/doc/org.apache.logging.log4j/log4j-api/latest/org.apache.logging.log4j/org/apache/logging/log4j/Logger.html": {
+    "StatusCode": 200,
+    "LastSeen": "2023-08-10T19:39:55.351559+02:00"
   },
   "https://jcp.org/aboutJava/communityprocess/maintenance/jsr053/index2.html": {
     "StatusCode": 206,
@@ -3438,6 +3478,10 @@
   "https://kind.sigs.k8s.io/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:14:16.4324-04:00"
+  },
+  "https://kind.sigs.k8s.io/#installation-and-usage": {
+    "StatusCode": 206,
+    "LastSeen": "2023-08-04T15:01:28.031106-06:00"
   },
   "https://kloudfuse.atlassian.net/wiki/spaces/EX/pages/753860609/APM#Sending-traces-to-Kloudfuse-data-plane%3A": {
     "StatusCode": 200,
@@ -3546,6 +3590,10 @@
   "https://leancoffee.org": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:21:28.969704-04:00"
+  },
+  "https://learn.microsoft.com/aspnet/core/tutorials/min-web-api": {
+    "StatusCode": 200,
+    "LastSeen": "2023-08-14T07:27:51.174082501Z"
   },
   "https://learn.microsoft.com/en-us/rest/api/resources/resources/get-by-id": {
     "StatusCode": 200,
@@ -4139,6 +4187,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-30T09:18:50.514833-04:00"
   },
+  "https://prometheus.io/docs/prometheus/latest/http_sd/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-08-15T11:49:51.507243-06:00"
+  },
   "https://prometheus.io/docs/prometheus/latest/installation/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:53:03.335095-04:00"
@@ -4450,6 +4502,10 @@
   "https://tools.ietf.org/html/rfc8174": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:42:20.913106-04:00"
+  },
+  "https://tracetest.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-08-14T12:06:16.100357-03:00"
   },
   "https://tracetest.io/blog/frontend-overhaul-opentelemetry-demo": {
     "StatusCode": 206,
@@ -4987,6 +5043,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:44:11.930561-04:00"
   },
+  "https://www.observeany.com/learn/opentelemetry-receiver": {
+    "StatusCode": 200,
+    "LastSeen": "2023-08-17T09:39:20.114053+08:00"
+  },
   "https://www.oracle.com/technical-resources/articles/javase/jmx.html": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:52:25.052421-04:00"
@@ -5154,6 +5214,10 @@
   "https://www.rubydoc.info/gems/opentelemetry-sdk/OpenTelemetry/SDK/Trace/Samplers/TraceIdRatioBased": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:22:30.159811-04:00"
+  },
+  "https://www.rust-lang.org/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-08-03T17:44:09.160658+02:00"
   },
   "https://www.sentrysoftware.com/blog/2022-07-19/why-sentry-software-chose-opentelemetry-for-hardware-sentry.html": {
     "StatusCode": 206,

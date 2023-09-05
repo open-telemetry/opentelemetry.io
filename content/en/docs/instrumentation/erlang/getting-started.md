@@ -166,26 +166,26 @@ random number. This seems like a pretty important operation, so in order to
 capture it in our trace we'll need to wrap it in a span.
 
 ```elixir
-  defp dice_roll do
-    Tracer.with_span("dice_roll") do
-      to_string(Enum.random(1..6))
-    end
+defp dice_roll do
+  Tracer.with_span("dice_roll") do
+    to_string(Enum.random(1..6))
   end
+end
 ```
 
 It would also be nice to know what number it generated, so we can extract it as
 a local variable and add it as an attribute on the span.
 
 ```elixir
-  defp dice_roll do
-    Tracer.with_span("dice_roll") do
-      roll = Enum.random(1..6)
+defp dice_roll do
+  Tracer.with_span("dice_roll") do
+    roll = Enum.random(1..6)
 
-      Tracer.set_attribute(:roll, roll)
+    Tracer.set_attribute(:roll, roll)
 
-      to_string(roll)
-    end
+    to_string(roll)
   end
+end
 ```
 
 Now if you point your browser/curl/etc. to

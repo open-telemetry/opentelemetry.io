@@ -464,7 +464,6 @@ func (c *connectorImp) ConsumeTraces(ctx context.Context, td ptrace.Traces) erro
     }
     return nil
 }
-
 ```
 
 ## Using the Component

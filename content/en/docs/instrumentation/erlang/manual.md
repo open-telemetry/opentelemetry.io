@@ -82,7 +82,6 @@ you can create [Spans](/docs/concepts/signals/traces/#spans).
                         %% do work here.
                         %% when this function returns the Span ends
                       end).
-
 ```
 
 {{% /tab %}} {{% tab Elixir %}}
@@ -118,7 +117,6 @@ child_function() ->
                fun() ->
                    %% do work here. when this function returns, child will complete.
                end).
-
 ```
 
 {{% /tab %}} {{% tab Elixir %}}
@@ -222,7 +220,7 @@ proc_lib:spawn_link(fun() ->
 {{% /tab %}} {{% tab Elixir %}}
 
 ```elixir
-parent = OpenTelemetry.current_span_ctx()
+parent = OpenTelemetry.Tracer.current_span_ctx()
 task = Task.async(fn ->
                     # a new process has a new context so the span created
                     # by the following `with_span` will have no parent
