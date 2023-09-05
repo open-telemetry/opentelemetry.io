@@ -2,7 +2,8 @@
 title: Configuration and settings
 linkTitle: Configuration
 weight: 20
-cSpell:ignore: NETFX AZUREAPPSERVICE UNHANDLEDEXCEPTION CORECLR CLSID dylib Bitness
+cSpell:ignore:
+  NETFX AZUREAPPSERVICE UNHANDLEDEXCEPTION CORECLR CLSID dylib Bitness
 ---
 
 ## Configuration methods
@@ -91,7 +92,7 @@ for more details.
 | Environment variable                             | Description                                                                                                                                                                                           | Default value | Status                                                                                                                            |
 | ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | `OTEL_DOTNET_AUTO_RESOURCE_DETECTOR_ENABLED`     | Enables all resource detectors.                                                                                                                                                                       | `true`        | [Experimental](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/versioning-and-stability.md) |
-| `OTEL_DOTNET_AUTO_{0}_RESOURCE_DETECTOR_ENABLED` | Configuration pattern for enabling a specific resource detector, where `{0}` is the uppercase id of the resource detector you want to enable. Overrides `OTEL_DOTNET_AUTO_RESOURCE_DETECTOR_ENABLED`. | `true`        | [Experimental](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/versioning-and-stability.md) |
+| `OTEL_DOTNET_AUTO_{0}_RESOURCE_DETECTOR_ENABLED` | Configuration pattern for enabling a specific resource detector, where `{0}` is the uppercase ID of the resource detector you want to enable. Overrides `OTEL_DOTNET_AUTO_RESOURCE_DETECTOR_ENABLED`. | `true`        | [Experimental](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/versioning-and-stability.md) |
 
 The following resource detectors are included and enabled by default:
 

@@ -54,16 +54,16 @@ the instrumentation of the listed package by adding it to the
 `SkippedInstrumentation` property, example:
 
 ```csproj
-  <PropertyGroup>
-    <SkippedInstrumentations>MongoDB.Driver.Core;StackExchange.Redis</SkippedInstrumentations>
-  </PropertyGroup>
+<PropertyGroup>
+   <SkippedInstrumentations>MongoDB.Driver.Core;StackExchange.Redis</SkippedInstrumentations>
+</PropertyGroup>
 ```
 
 The same property can be also specified directly via the CLI, notice that the
 separator, `;`, needs to be properly escaped as '%3B':
 
 ```powershell
-  dotnet build -p:SkippedInstrumentations=StackExchange.Redis%3BMongoDB.Driver.Core
+dotnet build -p:SkippedInstrumentations=StackExchange.Redis%3BMongoDB.Driver.Core
 ```
 
 To distribute the appropriate native runtime components with your .NET

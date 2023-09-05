@@ -44,21 +44,21 @@ script for your operating system.
 
 - On Linux and macOS, download and run the `.sh` script:
 
-  ```sh
-    # Download the bash script
-    curl -sSfL https://raw.githubusercontent.com/open-telemetry/opentelemetry-dotnet-instrumentation/v1.0.0-rc.2/otel-dotnet-auto-install.sh -O
+  ```shell
+  # Download the bash script
+  curl -sSfL https://raw.githubusercontent.com/open-telemetry/opentelemetry-dotnet-instrumentation/v1.0.0-rc.2/otel-dotnet-auto-install.sh -O
 
-    # Install core files
-    sh ./otel-dotnet-auto-install.sh
+  # Install core files
+  sh ./otel-dotnet-auto-install.sh
 
-    # Enable execution for the instrumentation script
-    chmod +x $HOME/.otel-dotnet-auto/instrument.sh
+  # Enable execution for the instrumentation script
+  chmod +x $HOME/.otel-dotnet-auto/instrument.sh
 
-    # Setup the instrumentation for the current shell session
-    . $HOME/.otel-dotnet-auto/instrument.sh
+  # Setup the instrumentation for the current shell session
+  . $HOME/.otel-dotnet-auto/instrument.sh
 
-    # Run your application with instrumentation
-    OTEL_SERVICE_NAME=myapp OTEL_RESOURCE_ATTRIBUTES=deployment.environment=staging,service.version=1.0.0 ./MyNetApp
+  # Run your application with instrumentation
+  OTEL_SERVICE_NAME=myapp OTEL_RESOURCE_ATTRIBUTES=deployment.environment=staging,service.version=1.0.0 ./MyNetApp
   ```
 
   {{% alert title="Note" color="note" %}} On macOS
@@ -68,32 +68,32 @@ script for your operating system.
 - On Windows, use the PowerShell module as an Administrator:
 
   ```powershell
-    # PowerShell 5.1 or higher is required
-    # Download the module
-    $module_url = "https://raw.githubusercontent.com/open-telemetry/opentelemetry-dotnet-instrumentation/v1.0.0-rc.2/OpenTelemetry.DotNet.Auto.psm1"
-    $download_path = Join-Path $env:temp "OpenTelemetry.DotNet.Auto.psm1"
-    Invoke-WebRequest -Uri $module_url -OutFile $download_path -UseBasicParsing
+  # PowerShell 5.1 or higher is required
+  # Download the module
+  $module_url = "https://raw.githubusercontent.com/open-telemetry/opentelemetry-dotnet-instrumentation/v1.0.0-rc.2/OpenTelemetry.DotNet.Auto.psm1"
+  $download_path = Join-Path $env:temp "OpenTelemetry.DotNet.Auto.psm1"
+  Invoke-WebRequest -Uri $module_url -OutFile $download_path -UseBasicParsing
 
-    # Import the module to use its functions
-    Import-Module $download_path
+  # Import the module to use its functions
+  Import-Module $download_path
 
-    # Install core files (online vs offline method)
-    Install-OpenTelemetryCore
-    Install-OpenTelemetryCore -LocalPath "C:\Path\To\OpenTelemetry.zip"
+  # Install core files (online vs offline method)
+  Install-OpenTelemetryCore
+  Install-OpenTelemetryCore -LocalPath "C:\Path\To\OpenTelemetry.zip"
 
-    # Set up the instrumentation for the current PowerShell session
-    Register-OpenTelemetryForCurrentSession -OTelServiceName "MyServiceDisplayName"
+  # Set up the instrumentation for the current PowerShell session
+  Register-OpenTelemetryForCurrentSession -OTelServiceName "MyServiceDisplayName"
 
-    # Run your application with instrumentation
-    .\MyNetApp.exe
+  # Run your application with instrumentation
+  .\MyNetApp.exe
 
-    # You can get usage information by calling the following commands
+  # You can get usage information by calling the following commands
 
-    # List all available commands
-    Get-Command -Module OpenTelemetry.DotNet.Auto
+  # List all available commands
+  Get-Command -Module OpenTelemetry.DotNet.Auto
 
-    # Get command's usage information
-    Get-Help Install-OpenTelemetryCore -Detailed
+  # Get command's usage information
+  Get-Help Install-OpenTelemetryCore -Detailed
   ```
 
 ### Instrument a Windows Service running a .NET application
@@ -116,7 +116,7 @@ Register-OpenTelemetryForWindowsService -WindowsServiceName "WindowsServiceName"
 `Register-OpenTelemetryForWindowsService` performs a service restart.
 {{% /alert %}}
 
-#### Configuration
+#### Configuration for Windows Service
 
 {{% alert title="Note" color="note" %}} Remember to restart the Windows Service
 after making configuration changes. You can do it by running
@@ -161,7 +161,7 @@ Register-OpenTelemetryForIIS
 {{% alert title="Note" color="note" %}} `Register-OpenTelemetryForIIS` performs
 an IIS restart. {{% /alert %}}
 
-#### Configuration
+#### Configuration for ASP.NET applications
 
 {{% alert title="Note" color="note" %}} Remember to restart IIS after making
 configuration changes. You can do it by executing `iisreset.exe`. {{% /alert %}}

@@ -23,17 +23,17 @@ To create your custom traces manually, follow these steps:
 2. Create an `ActivitySource` instance:
 
    ```csharp
-       private static readonly ActivitySource RegisteredActivity = new ActivitySource("Examples.ManualInstrumentations.Registered");
+   private static readonly ActivitySource RegisteredActivity = new ActivitySource("Examples.ManualInstrumentations.Registered");
    ```
 
 3. Create an `Activity`. Optionally, set tags:
 
    ```csharp
-           using (var activity = RegisteredActivity.StartActivity("Main"))
-           {
-               activity?.SetTag("foo", "bar1");
-               // your logic for Main activity
-           }
+   using (var activity = RegisteredActivity.StartActivity("Main"))
+   {
+      activity?.SetTag("foo", "bar1");
+      // your logic for Main activity
+   }
    ```
 
 4. Register your `ActivitySource` in OpenTelemetry.AutoInstrumentation by

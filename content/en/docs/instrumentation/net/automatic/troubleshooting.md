@@ -2,7 +2,7 @@
 title: Troubleshooting .NET automatic instrumentation issues
 linkTitle: Troubleshooting
 weight: 20
-cSpell:ignore: COREHOST TRACEFILE corehost NETFX netfx 
+cSpell:ignore: COREHOST TRACEFILE corehost NETFX netfx
 ---
 
 ## General steps
@@ -44,22 +44,16 @@ Then restart the application to collect the logs.
 
 ### No telemetry is produced
 
-#### Symptoms
-
 There is no telemetry generated. There are no logs in OpenTelemetry .NET
 Automatic Instrumentation internal logs [location](./config#internal-logs).
 
 It might occur that the .NET Profiler is unable to attach and therefore no logs
 would be emitted.
 
-#### Solution
-
 The most common reason is that the instrumented application has no permissions
 to load the OpenTelemetry .NET Automatic Instrumentation assemblies.
 
 ### Could not install package 'OpenTelemetry.AutoInstrumentation.Runtime.Native'
-
-#### Symptoms
 
 When adding the NuGet packages to your project you get an error message similar
 to:
@@ -68,30 +62,21 @@ to:
 Could not install package 'OpenTelemetry.AutoInstrumentation.Runtime.Native 1.0.0-rc.1'. You are trying to install this package into a project that targets '.NETFramework,Version=v4.7.2', but the package does not contain any assembly references or content files that are compatible with that framework. For more information, contact the package author.
 ```
 
-#### Solution
-
 The NuGet packages don't support old-style `csproj` projects. Either deploy the
 automatic instrumentation to the machine instead of using NuGet packages, or
 migrate your project to the SDK style `csproj`.
 
 ### Performance issues
 
-#### Symptoms
-
-High CPU usage.
-
-#### Solution
-
-Make sure that you have not enabled the automatic instrumentation globally by
-setting the environment variables at system or user scope.
+If high CPU usage occurs, make sure that you have not enabled the automatic
+instrumentation globally by setting the environment variables at system or user
+scope.
 
 If the usage of system or user scope is intentional, use the
 [`OTEL_DOTNET_AUTO_EXCLUDE_PROCESSES`](./config#global-settings) environment
 variables to exclude applications from the automatic instrumentation.
 
 ### `dotnet` CLI tool is crashing
-
-#### Symptoms
 
 You get error messages similar to the one below when running an app, for example
 with `dotnet run`:
@@ -105,12 +90,6 @@ Unhandled exception. System.Reflection.TargetInvocationException: Exception has 
 ---> System.IO.FileNotFoundException: Could not load file or assembly 'Microsoft.Extensions.Configuration.Abstractions, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60'. The system cannot find the file specified.
 ```
 
-#### Related issues
-
-- [#1744](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/1744)
-
-#### Solution
-
 With version `v0.6.0-beta.1` and lower, there were issues when instrumenting the
 `dotnet` CLI tool.
 
@@ -118,9 +97,11 @@ Therefore, if you are using one of these versions, we advise executing
 `dotnet build` before instrumenting the terminal session or calling it in a
 separate terminal session.
 
-### Assembly version conflicts
+See
+[#1744](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/1744)
+for more information.
 
-#### Symptoms
+### Assembly version conflicts
 
 Error message similar to the one below:
 
@@ -132,13 +113,6 @@ File name: 'Microsoft.Extensions.DependencyInjection.Abstractions, Version=7.0.0
    at Microsoft.AspNetCore.Builder.WebApplication.CreateBuilder(String[] args)
    at Program.<Main>$(String[] args) in /Blog.Core/Blog.Core.Api/Program.cs:line 26
 ```
-
-#### Related issues
-
-- [#2269](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2269)
-- [#2296](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2296)
-
-#### Solution
 
 OpenTelemetry .NET NuGet packages and its dependencies are deployed with the
 OpenTelemetry .NET Automatic Instrumentation.
@@ -194,6 +168,12 @@ ensure that the required GAC installations are updated.
 For more information about the GAC usage by the automatic instrumentation, see
 [here](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/1906#issuecomment-1376292814).
 
+See
+[#2269](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2269)
+and
+[#2296](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2296)
+for more information.
+
 ### Assembly in AdditionalDeps was not found
 
 #### Symptoms
@@ -204,12 +184,12 @@ You get an error message similar to the following:
 An assembly specified in the application dependencies manifest (OpenTelemetry.AutoInstrumentation.AdditionalDeps.deps.json) was not found
 ```
 
-#### Related issues
+This might be related to the following issues:
 
 - [#1744](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/1744)
 - [#2181](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2181)
 
-#### Solution
+## Other issues
 
 If you encounter an issue not listed on this page, see
 [General steps](#general-steps) to collect additional diagnostic information.
