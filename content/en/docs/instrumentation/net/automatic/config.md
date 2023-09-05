@@ -3,7 +3,7 @@ title: Configuration and settings
 linkTitle: Configuration
 weight: 20
 # prettier-ignore
-cSpell:ignore: AZUREAPPSERVICE Bitness bitness BITNESS CLSID CORECLR dylib NETFX UNHANDLEDEXCEPTION
+cSpell:ignore: AZUREAPPSERVICE Bitness CLSID CORECLR dylib NETFX UNHANDLEDEXCEPTION
 ---
 
 ## Configuration methods
@@ -61,8 +61,8 @@ if given setting supports it, then:
 
 ## Global settings
 
-| Environment variable                 | Description                                                                                                                                                                                                                             | Default value | Status                                                                                                                            |
-| ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| Environment variable                 | Description                                                                                                                                                                                                                             | Default value | Status                                                    |
+| ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | --------------------------------------------------------- |
 | `OTEL_DOTNET_AUTO_HOME`              | Installation location.                                                                                                                                                                                                                  |               | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_DOTNET_AUTO_EXCLUDE_PROCESSES` | Names of the executable files that the profiler cannot instrument. Supports multiple comma-separated values, for example: `ReservedProcess.exe,powershell.exe`. If unset, the profiler attaches to all processes by default. \[1\]\[2\] |               | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_DOTNET_AUTO_FAIL_FAST_ENABLED` | Enables possibility to fail process when automatic instrumentation cannot be executed. It is designed for debugging purposes. It should not be used in production environment. \[1\]                                                    | `false`       | [Experimental](/docs/specs/otel/versioning-and-stability) |
@@ -82,30 +82,30 @@ for more details.
 
 ### Resource attributes
 
-| Environment variable       | Description                                                                                                                                                                                                                                                                                                       | Default value                                                                                                                                                                                                                       | Status                                                                                                                      |
-| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Environment variable       | Description                                                                                                                                                                                                                                  | Default value                                                                                                                                                  | Status                                              |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
 | `OTEL_RESOURCE_ATTRIBUTES` | Key-value pairs to be used as resource attributes. See [Resource SDK](/docs/specs/otel/resource/sdk.md#specifying-resource-information-via-an-environment-variable) for more details.                                                        | See [Resource semantic conventions](/docs/specs/otel/resource/semantic_conventions/README.md#semantic-attributes-with-sdk-provided-default-value) for details. | [Stable](/docs/specs/otel/versioning-and-stability) |
-| `OTEL_SERVICE_NAME`        | Sets the value of the [`service.name`](/docs/specs/otel/resource/semantic_conventions/README.md#service) resource attribute. If `service.name` is provided in `OTEL_RESOURCE_ATTRIBUTES`, the value of `OTEL_SERVICE_NAME` takes precedence. | See [Service name automatic detection](#configuration-methods) under Configuration method section.                                                                                                                                  | [Stable](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_SERVICE_NAME`        | Sets the value of the [`service.name`](/docs/specs/otel/resource/semantic_conventions/README.md#service) resource attribute. If `service.name` is provided in `OTEL_RESOURCE_ATTRIBUTES`, the value of `OTEL_SERVICE_NAME` takes precedence. | See [Service name automatic detection](#configuration-methods) under Configuration method section.                                                             | [Stable](/docs/specs/otel/versioning-and-stability) |
 
 ### Resource detectors
 
-| Environment variable                             | Description                                                                                                                                                                                           | Default value | Status                                                                                                                            |
-| ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| Environment variable                             | Description                                                                                                                                                                                           | Default value | Status                                                    |
+| ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | --------------------------------------------------------- |
 | `OTEL_DOTNET_AUTO_RESOURCE_DETECTOR_ENABLED`     | Enables all resource detectors.                                                                                                                                                                       | `true`        | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_DOTNET_AUTO_{0}_RESOURCE_DETECTOR_ENABLED` | Configuration pattern for enabling a specific resource detector, where `{0}` is the uppercase ID of the resource detector you want to enable. Overrides `OTEL_DOTNET_AUTO_RESOURCE_DETECTOR_ENABLED`. | `true`        | [Experimental](/docs/specs/otel/versioning-and-stability) |
 
 The following resource detectors are included and enabled by default:
 
-| ID                | Description                | Documentation                                                                                                                                                                                                     | Status                                                                                                                            |
-| ----------------- | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| ID                | Description                | Documentation                                                                                                                                                                                                     | Status                                                    |
+| ----------------- | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
 | `CONTAINER`       | Container detector         | [Container resource detector documentation](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/ResourceDetectors.Container-1.0.0-beta.3/src/OpenTelemetry.ResourceDetectors.Container/README.md) | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `AZUREAPPSERVICE` | Azure App Service detector | [Azure resource detector documentation](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/ResourceDetectors.Azure-1.0.0-beta.2/src/OpenTelemetry.ResourceDetectors.Azure/README.md)             | [Experimental](/docs/specs/otel/versioning-and-stability) |
 
 ## Propagators
 
 Propagators allow applications to share context. See
-[the OpenTelemetry specification](/docs/specs/otel/context/api-propagators)
-for more details.
+[the OpenTelemetry specification](/docs/specs/otel/context/api-propagators) for
+more details.
 
 | Environment variable | Description                                                                                                                                                                                                                                                                                                  | Default value          |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------- |
@@ -119,8 +119,8 @@ export. See
 [the OpenTelemetry specification](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.15.0/specification/sdk-environment-variables.md?plain=1#L45-L80)
 for more details.
 
-| Environment variable      | Description                                           | Default value           | Status                                                                                                                      |
-| ------------------------- | ----------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Environment variable      | Description                                           | Default value           | Status                                              |
+| ------------------------- | ----------------------------------------------------- | ----------------------- | --------------------------------------------------- |
 | `OTEL_TRACES_SAMPLER`     | Sampler to be used for traces \[1\]                   | `parentbased_always_on` | [Stable](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_TRACES_SAMPLER_ARG` | String value to be used as the sampler argument \[2\] |                         | [Stable](/docs/specs/otel/versioning-and-stability) |
 
@@ -140,16 +140,16 @@ probability, a number in the [0..1] range, e.g. "0.25". Default is 1.0.
 
 Exporters output the telemetry.
 
-| Environment variable    | Description                                                                                       | Default value | Status                                                                                                                      |
-| ----------------------- | ------------------------------------------------------------------------------------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Environment variable    | Description                                                                                       | Default value | Status                                              |
+| ----------------------- | ------------------------------------------------------------------------------------------------- | ------------- | --------------------------------------------------- |
 | `OTEL_TRACES_EXPORTER`  | Traces exporter to be used. The value can be one of the following: `zipkin`, `otlp`, `none`.      | `otlp`        | [Stable](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_METRICS_EXPORTER` | Metrics exporter to be used. The value can be one of the following: `otlp`, `prometheus`, `none`. | `otlp`        | [Stable](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_LOGS_EXPORTER`    | Logs exporter to be used. The value can be one of the following: `otlp`, `none`.                  | `otlp`        | [Stable](/docs/specs/otel/versioning-and-stability) |
 
 ### Traces exporter
 
-| Environment variable             | Description                                                                  | Default value | Status                                                                                                                      |
-| -------------------------------- | ---------------------------------------------------------------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Environment variable             | Description                                                                  | Default value | Status                                              |
+| -------------------------------- | ---------------------------------------------------------------------------- | ------------- | --------------------------------------------------- |
 | `OTEL_BSP_SCHEDULE_DELAY`        | Delay interval (in milliseconds) between two consecutive exports.            | `5000`        | [Stable](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_BSP_EXPORT_TIMEOUT`        | Maximum allowed time (in milliseconds) to export data                        | `30000`       | [Stable](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_BSP_MAX_QUEUE_SIZE`        | Maximum queue size.                                                          | `2048`        | [Stable](/docs/specs/otel/versioning-and-stability) |
@@ -157,21 +157,20 @@ Exporters output the telemetry.
 
 ### Metrics exporter
 
-| Environment variable          | Description                                                                   | Default value                                           | Status                                                                                                                      |
-| ----------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Environment variable          | Description                                                                   | Default value                                           | Status                                              |
+| ----------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------- | --------------------------------------------------- |
 | `OTEL_METRIC_EXPORT_INTERVAL` | The time interval (in milliseconds) between the start of two export attempts. | `60000` for OTLP exporter, `10000` for console exporter | [Stable](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_METRIC_EXPORT_TIMEOUT`  | Maximum allowed time (in milliseconds) to export data.                        | `30000` for OTLP exporter, none for console exporter    | [Stable](/docs/specs/otel/versioning-and-stability) |
 
 ### Logs exporter
 
-| Environment variable                              | Description                                             | Default value | Status                                                                                                                            |
-| ------------------------------------------------- | ------------------------------------------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| Environment variable                              | Description                                             | Default value | Status                                                    |
+| ------------------------------------------------- | ------------------------------------------------------- | ------------- | --------------------------------------------------------- |
 | `OTEL_DOTNET_AUTO_LOGS_INCLUDE_FORMATTED_MESSAGE` | Whether the formatted log message should be set or not. | `false`       | [Experimental](/docs/specs/otel/versioning-and-stability) |
 
 ### OTLP
 
-**Status**:
-[Stable](/docs/specs/otel/versioning-and-stability)
+**Status**: [Stable](/docs/specs/otel/versioning-and-stability)
 
 To enable the OTLP exporter, set the
 `OTEL_TRACES_EXPORTER`/`OTEL_METRICS_EXPORTER`/`OTEL_LOGS_EXPORTER` environment
@@ -181,20 +180,20 @@ To customize the OTLP exporter using environment variables, see the
 [OTLP exporter documentation](https://github.com/open-telemetry/opentelemetry-dotnet/tree/core-1.5.1/src/OpenTelemetry.Exporter.OpenTelemetryProtocol#environment-variables).
 Important environment variables include:
 
-| Environment variable                     | Description                                                                                                                                                                                                | Default value                                                                                             | Status                                                                                                                      |
-| ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `OTEL_EXPORTER_OTLP_ENDPOINT`            | Target endpoint for the OTLP exporter. See [the OpenTelemetry specification](/docs/specs/otel/protocol/exporter.md) for more details. | `http://localhost:4318` for the `http/protobuf` protocol, `http://localhost:4317` for the `grpc` protocol | [Stable](/docs/specs/otel/versioning-and-stability) |
-| `OTEL_EXPORTER_OTLP_PROTOCOL`            | OTLP exporter transport protocol. Supported values are `grpc`, `http/protobuf`. [1]                                                                                                                        | `http/protobuf`                                                                                           | [Stable](/docs/specs/otel/versioning-and-stability) |
-| `OTEL_EXPORTER_OTLP_TIMEOUT`             | The max waiting time (in milliseconds) for the backend to process each batch.                                                                                                                              | `10000`                                                                                                   | [Stable](/docs/specs/otel/versioning-and-stability) |
-| `OTEL_EXPORTER_OTLP_HEADERS`             | Comma-separated list of additional HTTP headers sent with each export, for example: `Authorization=secret,X-Key=Value`.                                                                                    |                                                                                                           | [Stable](/docs/specs/otel/versioning-and-stability) |
-| `OTEL_ATTRIBUTE_VALUE_LENGTH_LIMIT`      | Maximum allowed attribute value size.                                                                                                                                                                      | none                                                                                                      | [Stable](/docs/specs/otel/versioning-and-stability) |
-| `OTEL_ATTRIBUTE_COUNT_LIMIT`             | Maximum allowed span attribute count.                                                                                                                                                                      | 128                                                                                                       | [Stable](/docs/specs/otel/versioning-and-stability) |
-| `OTEL_SPAN_ATTRIBUTE_VALUE_LENGTH_LIMIT` | Maximum allowed attribute value size. [Not applicable for metrics.](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.15.0/specification/metrics/sdk.md#attribute-limits).             | none                                                                                                      | [Stable](/docs/specs/otel/versioning-and-stability) |
-| `OTEL_SPAN_ATTRIBUTE_COUNT_LIMIT`        | Maximum allowed span attribute count. [Not applicable for metrics.](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.15.0/specification/metrics/sdk.md#attribute-limits).             | 128                                                                                                       | [Stable](/docs/specs/otel/versioning-and-stability) |
-| `OTEL_SPAN_EVENT_COUNT_LIMIT`            | Maximum allowed span event count.                                                                                                                                                                          | 128                                                                                                       | [Stable](/docs/specs/otel/versioning-and-stability) |
-| `OTEL_SPAN_LINK_COUNT_LIMIT`             | Maximum allowed span link count.                                                                                                                                                                           | 128                                                                                                       | [Stable](/docs/specs/otel/versioning-and-stability) |
-| `OTEL_EVENT_ATTRIBUTE_COUNT_LIMIT`       | Maximum allowed attribute per span event count.                                                                                                                                                            | 128                                                                                                       | [Stable](/docs/specs/otel/versioning-and-stability) |
-| `OTEL_LINK_ATTRIBUTE_COUNT_LIMIT`        | Maximum allowed attribute per span link count.                                                                                                                                                             | 128                                                                                                       | [Stable](/docs/specs/otel/versioning-and-stability) |
+| Environment variable                     | Description                                                                                                                                                                                    | Default value                                                                                             | Status                                              |
+| ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
+| `OTEL_EXPORTER_OTLP_ENDPOINT`            | Target endpoint for the OTLP exporter. See [the OpenTelemetry specification](/docs/specs/otel/protocol/exporter.md) for more details.                                                          | `http://localhost:4318` for the `http/protobuf` protocol, `http://localhost:4317` for the `grpc` protocol | [Stable](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_EXPORTER_OTLP_PROTOCOL`            | OTLP exporter transport protocol. Supported values are `grpc`, `http/protobuf`. [1]                                                                                                            | `http/protobuf`                                                                                           | [Stable](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_EXPORTER_OTLP_TIMEOUT`             | The max waiting time (in milliseconds) for the backend to process each batch.                                                                                                                  | `10000`                                                                                                   | [Stable](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_EXPORTER_OTLP_HEADERS`             | Comma-separated list of additional HTTP headers sent with each export, for example: `Authorization=secret,X-Key=Value`.                                                                        |                                                                                                           | [Stable](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_ATTRIBUTE_VALUE_LENGTH_LIMIT`      | Maximum allowed attribute value size.                                                                                                                                                          | none                                                                                                      | [Stable](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_ATTRIBUTE_COUNT_LIMIT`             | Maximum allowed span attribute count.                                                                                                                                                          | 128                                                                                                       | [Stable](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_SPAN_ATTRIBUTE_VALUE_LENGTH_LIMIT` | Maximum allowed attribute value size. [Not applicable for metrics.](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.15.0/specification/metrics/sdk.md#attribute-limits). | none                                                                                                      | [Stable](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_SPAN_ATTRIBUTE_COUNT_LIMIT`        | Maximum allowed span attribute count. [Not applicable for metrics.](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.15.0/specification/metrics/sdk.md#attribute-limits). | 128                                                                                                       | [Stable](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_SPAN_EVENT_COUNT_LIMIT`            | Maximum allowed span event count.                                                                                                                                                              | 128                                                                                                       | [Stable](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_SPAN_LINK_COUNT_LIMIT`             | Maximum allowed span link count.                                                                                                                                                               | 128                                                                                                       | [Stable](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_EVENT_ATTRIBUTE_COUNT_LIMIT`       | Maximum allowed attribute per span event count.                                                                                                                                                | 128                                                                                                       | [Stable](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_LINK_ATTRIBUTE_COUNT_LIMIT`        | Maximum allowed attribute per span link count.                                                                                                                                                 | 128                                                                                                       | [Stable](/docs/specs/otel/versioning-and-stability) |
 
 **[1]**: Considerations on the `OTEL_EXPORTER_OTLP_PROTOCOL`:
 
@@ -209,8 +208,7 @@ Important environment variables include:
 
 ### Prometheus
 
-**Status**:
-[Experimental](/docs/specs/otel/versioning-and-stability)
+**Status**: [Experimental](/docs/specs/otel/versioning-and-stability)
 
 {{% alert title="Warning" color="warning" %}} **Do NOT use in production.**
 
@@ -236,8 +234,7 @@ to learn more.
 
 ### Zipkin
 
-**Status**:
-[Stable](/docs/specs/otel/versioning-and-stability)
+**Status**: [Stable](/docs/specs/otel/versioning-and-stability)
 
 To enable the Zipkin exporter, set the `OTEL_TRACES_EXPORTER` environment
 variable to `zipkin`.
@@ -246,14 +243,14 @@ To customize the Zipkin exporter using environment variables, see the
 [Zipkin exporter documentation](https://github.com/open-telemetry/opentelemetry-dotnet/tree/core-1.5.1/src/OpenTelemetry.Exporter.Zipkin#configuration-using-environment-variables).
 Important environment variables include:
 
-| Environment variable            | Description | Default value                        | Status                                                                                                                      |
-| ------------------------------- | ----------- | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
+| Environment variable            | Description | Default value                        | Status                                              |
+| ------------------------------- | ----------- | ------------------------------------ | --------------------------------------------------- |
 | `OTEL_EXPORTER_ZIPKIN_ENDPOINT` | Zipkin URL  | `http://localhost:9411/api/v2/spans` | [Stable](/docs/specs/otel/versioning-and-stability) |
 
 ## Additional settings
 
-| Environment variable                                | Description                                                                                                                                                                                                                                                                                                                                                                                        | Default value | Status                                                                                                                            |
-| --------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| Environment variable                                | Description                                                                                                                                                                                                                                                                                                                                                                                        | Default value | Status                                                    |
+| --------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | --------------------------------------------------------- |
 | `OTEL_DOTNET_AUTO_TRACES_ENABLED`                   | Enables traces.                                                                                                                                                                                                                                                                                                                                                                                    | `true`        | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_DOTNET_AUTO_OPENTRACING_ENABLED`              | Enables OpenTracing tracer.                                                                                                                                                                                                                                                                                                                                                                        | `false`       | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_DOTNET_AUTO_LOGS_ENABLED`                     | Enables logs.                                                                                                                                                                                                                                                                                                                                                                                      | `true`        | [Experimental](/docs/specs/otel/versioning-and-stability) |
@@ -277,8 +274,8 @@ deployment changes or the Automatic Instrumentation library is upgraded. Once
 validated, there's no need to revalidate the rules when the application
 restarts.
 
-| Environment variable                   | Description         | Default value | Status                                                                                                                            |
-| -------------------------------------- | ------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| Environment variable                   | Description         | Default value | Status                                                    |
+| -------------------------------------- | ------------------- | ------------- | --------------------------------------------------------- |
 | `OTEL_DOTNET_AUTO_RULE_ENGINE_ENABLED` | Enables RuleEngine. | `true`        | [Experimental](/docs/specs/otel/versioning-and-stability) |
 
 ## .NET CLR Profiler
@@ -287,8 +284,8 @@ The CLR uses the following environment variables to set up the profiler. See
 [.NET Runtime Profiler Loading](https://github.com/dotnet/runtime/blob/main/docs/design/coreclr/profiling/Profiler%20Loading.md)
 for more information.
 
-| .NET Framework environment variable | .NET environment variable  | Description                                                                             | Required value                                                                                                                                                                                                                                                  | Status                                                                                                                            |
-| ----------------------------------- | -------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| .NET Framework environment variable | .NET environment variable  | Description                                                                             | Required value                                                                                                                                                                                                                                                  | Status                                                    |
+| ----------------------------------- | -------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
 | `COR_ENABLE_PROFILING`              | `CORECLR_ENABLE_PROFILING` | Enables the profiler.                                                                   | `1`                                                                                                                                                                                                                                                             | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `COR_PROFILER`                      | `CORECLR_PROFILER`         | CLSID of the profiler.                                                                  | `{918728DD-259F-4A6A-AC2B-B85E1B658318}`                                                                                                                                                                                                                        | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `COR_PROFILER_PATH`                 | `CORECLR_PROFILER_PATH`    | Path to the profiler.                                                                   | `$INSTALL_DIR/linux-x64/OpenTelemetry.AutoInstrumentation.Native.so` for Linux glibc, `$INSTALL_DIR/linux-musl-x64/OpenTelemetry.AutoInstrumentation.Native.so` for Linux musl, `$INSTALL_DIR/osx-x64/OpenTelemetry.AutoInstrumentation.Native.dylib` for macOS | [Experimental](/docs/specs/otel/versioning-and-stability) |
@@ -326,8 +323,8 @@ and
 [`DOTNET_SHARED_STORE`](https://docs.microsoft.com/en-us/dotnet/core/deploying/runtime-store)
 environment variable are used to mitigate assembly version conflicts in .NET.
 
-| Environment variable     | Required value                                                       | Status                                                                                                                            |
-| ------------------------ | -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| Environment variable     | Required value                                                       | Status                                                    |
+| ------------------------ | -------------------------------------------------------------------- | --------------------------------------------------------- |
 | `DOTNET_STARTUP_HOOKS`   | `$INSTALL_DIR/net/OpenTelemetry.AutoInstrumentation.StartupHook.dll` | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `DOTNET_ADDITIONAL_DEPS` | `$INSTALL_DIR/AdditionalDeps`                                        | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `DOTNET_SHARED_STORE`    | `$INSTALL_DIR/store`                                                 | [Experimental](/docs/specs/otel/versioning-and-stability) |
@@ -345,8 +342,8 @@ path of the current user's
 [temporary folder](https://docs.microsoft.com/en-us/dotnet/api/System.IO.Path.GetTempPath?view=net-6.0)
 instead.
 
-| Environment variable                                | Description                                                             | Default value                            | Status                                                                                                                            |
-| --------------------------------------------------- | ----------------------------------------------------------------------- | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| Environment variable                                | Description                                                             | Default value                            | Status                                                    |
+| --------------------------------------------------- | ----------------------------------------------------------------------- | ---------------------------------------- | --------------------------------------------------------- |
 | `OTEL_DOTNET_AUTO_LOG_DIRECTORY`                    | Directory of the .NET Tracer logs.                                      | _See the previous note on default paths_ | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_LOG_LEVEL`                                    | SDK log level. (supported values: `none`,`error`,`warn`,`info`,`debug`) | `info`                                   | [Stable](/docs/specs/otel/versioning-and-stability)       |
 | `OTEL_DOTNET_AUTO_TRACES_CONSOLE_EXPORTER_ENABLED`  | Whether the traces console exporter is enabled or not.                  | `false`                                  | [Experimental](/docs/specs/otel/versioning-and-stability) |

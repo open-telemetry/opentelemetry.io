@@ -225,8 +225,8 @@ for more details. {{% /alert %}}
 
 OpenTelemetry .NET SDK automatically correlates logs to trace data. When logs
 are emitted in the context of an active trace, trace context
-[fields](/docs/specs/otel/logs/data-model#trace-context-fields)
-`TraceId`, `SpanId`, `TraceState` are automatically populated.
+[fields](/docs/specs/otel/logs/data-model#trace-context-fields) `TraceId`,
+`SpanId`, `TraceState` are automatically populated.
 
 The following are logs produced by the sample console application:
 

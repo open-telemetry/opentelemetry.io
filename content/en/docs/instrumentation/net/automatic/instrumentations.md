@@ -25,8 +25,8 @@ given signal type by setting the
 `false`, where `{SIGNAL}` is the type of signal, for example `TRACES`, and `{0}`
 is the case-sensitive name of the instrumentation.
 
-| Environment variable                                   | Description                                                                                                                                                                                                    | Default value                                                                          | Status                                                                                                                            |
-| ------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| Environment variable                                   | Description                                                                                                                                                                                                    | Default value                                                                          | Status                                                    |
+| ------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | --------------------------------------------------------- |
 | `OTEL_DOTNET_AUTO_INSTRUMENTATION_ENABLED`             | Enables all instrumentations.                                                                                                                                                                                  | `true`                                                                                 | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_DOTNET_AUTO_TRACES_INSTRUMENTATION_ENABLED`      | Enables all trace instrumentations. Overrides `OTEL_DOTNET_AUTO_INSTRUMENTATION_ENABLED`.                                                                                                                      | Inherited from the current value of `OTEL_DOTNET_AUTO_INSTRUMENTATION_ENABLED`         | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_DOTNET_AUTO_TRACES_{0}_INSTRUMENTATION_ENABLED`  | Configuration pattern for enabling a specific trace instrumentation, where `{0}` is the uppercase ID of the instrumentation you want to enable. Overrides `OTEL_DOTNET_AUTO_TRACES_INSTRUMENTATION_ENABLED`.   | Inherited from the current value of `OTEL_DOTNET_AUTO_TRACES_INSTRUMENTATION_ENABLED`  | [Experimental](/docs/specs/otel/versioning-and-stability) |
@@ -37,13 +37,12 @@ is the case-sensitive name of the instrumentation.
 
 ## Traces instrumentations
 
-**Status**:
-[Mixed](/docs/specs/otel/versioning-and-stability).
-Traces are stable, but particular instrumentation are in Experimental status due
-to lack of stable semantic convention.
+**Status**: [Mixed](/docs/specs/otel/versioning-and-stability). Traces are
+stable, but particular instrumentation are in Experimental status due to lack of
+stable semantic convention.
 
-| ID                    | Instrumented library                                                                                                                                                                            | Supported versions | Instrumentation type | Status                                                                                                                            |
-| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | -------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| ID                    | Instrumented library                                                                                                                                                                            | Supported versions | Instrumentation type | Status                                                    |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | -------------------- | --------------------------------------------------------- |
 | `ASPNET`              | ASP.NET (.NET Framework) MVC / WebApi \[1\] **Not supported on .NET**                                                                                                                           | \*                 | source & bytecode    | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `ASPNETCORE`          | ASP.NET Core **Not supported on .NET Framework**                                                                                                                                                | \*                 | source               | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `AZURE`               | [Azure SDK](https://azure.github.io/azure-sdk/releases/latest/index.html)                                                                                                                       | \[2\]              | source               | [Experimental](/docs/specs/otel/versioning-and-stability) |
@@ -73,13 +72,12 @@ to lack of stable semantic convention.
 
 ## Metrics instrumentations
 
-**Status**:
-[Mixed](/docs/specs/otel/versioning-and-stability).
-Metrics are stable, but particular instrumentation are in Experimental status
-due to lack of stable semantic convention.
+**Status**: [Mixed](/docs/specs/otel/versioning-and-stability). Metrics are
+stable, but particular instrumentation are in Experimental status due to lack of
+stable semantic convention.
 
-| ID            | Instrumented library                                                                                                                                                                            | Documentation                                                                                                                                                                                         | Supported versions | Instrumentation type | Status                                                                                                                            |
-| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | -------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| ID            | Instrumented library                                                                                                                                                                            | Documentation                                                                                                                                                                                         | Supported versions | Instrumentation type | Status                                                    |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | -------------------- | --------------------------------------------------------- |
 | `ASPNET`      | ASP.NET Framework \[1\] **Not supported on .NET**                                                                                                                                               | [ASP.NET metrics](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Instrumentation.AspNet-1.0.0-rc9.9/src/OpenTelemetry.Instrumentation.AspNet/README.md#list-of-metrics-produced) | \*                 | source & bytecode    | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `ASPNETCORE`  | ASP.NET Core \[2\] **Not supported on .NET Framework**                                                                                                                                          | [ASP.NET Core metrics](https://github.com/open-telemetry/opentelemetry-dotnet/blob/core-1.5.0/src/OpenTelemetry.Instrumentation.AspNetCore/README.md#list-of-metrics-produced)                        | \*                 | source               | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `HTTPCLIENT`  | [System.Net.Http.HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) and [System.Net.HttpWebRequest](https://docs.microsoft.com/dotnet/api/system.net.httpwebrequest) | [HttpClient metrics](https://github.com/open-telemetry/opentelemetry-dotnet/blob/core-1.5.0/src/OpenTelemetry.Instrumentation.Http/README.md#list-of-metrics-produced)                                | \*                 | source               | [Experimental](/docs/specs/otel/versioning-and-stability) |
@@ -95,11 +93,10 @@ instrumentation is also enabled.
 
 ## Logs instrumentations
 
-**Status**:
-[Experimental](/docs/specs/otel/versioning-and-stability).
+**Status**: [Experimental](/docs/specs/otel/versioning-and-stability).
 
-| ID      | Instrumented library                                                                                                            | Supported versions | Instrumentation type | Status                                                                                                                            |
-| ------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------ | -------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| ID      | Instrumented library                                                                                                            | Supported versions | Instrumentation type | Status                                                    |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------ | -------------------- | --------------------------------------------------------- |
 | ILOGGER | [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging) **Not supported on .NET Framework** | ≥6.0.0             | bytecode or source   | [Experimental](/docs/specs/otel/versioning-and-stability) |
 
 For ASP.NET Core applications, the `LoggingBuilder` instrumentation can be
@@ -109,6 +106,6 @@ enabled without using the .NET CLR Profiler by setting the
 
 ### Instrumentation options
 
-| Environment variable                    | Description                                                                                                                                                        | Default value | Status                                                                                                                            |
-| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| Environment variable                    | Description                                                                                                                                                        | Default value | Status                                                    |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------- | --------------------------------------------------------- |
 | `OTEL_DOTNET_AUTO_GRAPHQL_SET_DOCUMENT` | Whether GraphQL instrumentation can pass raw queries as `graphql.document` attribute. This may contain sensitive information and therefore is disabled by default. | `false`       | [Experimental](/docs/specs/otel/versioning-and-stability) |
