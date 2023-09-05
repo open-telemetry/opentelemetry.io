@@ -40,61 +40,65 @@ for more information. {{% /alert %}}
 To instrument a .NET application automatically, download and run the installer
 script for your operating system.
 
-- On Linux and macOS, download and run the `.sh` script:
+### Linux and macOS
 
-  ```shell
-  # Download the bash script
-  curl -sSfL https://raw.githubusercontent.com/open-telemetry/opentelemetry-dotnet-instrumentation/v1.0.0-rc.2/otel-dotnet-auto-install.sh -O
+Download and run the `.sh` script:
 
-  # Install core files
-  sh ./otel-dotnet-auto-install.sh
+```shell
+# Download the bash script
+curl -sSfL https://raw.githubusercontent.com/open-telemetry/opentelemetry-dotnet-instrumentation/v1.0.0-rc.2/otel-dotnet-auto-install.sh -O
 
-  # Enable execution for the instrumentation script
-  chmod +x $HOME/.otel-dotnet-auto/instrument.sh
+# Install core files
+sh ./otel-dotnet-auto-install.sh
 
-  # Setup the instrumentation for the current shell session
-  . $HOME/.otel-dotnet-auto/instrument.sh
+# Enable execution for the instrumentation script
+chmod +x $HOME/.otel-dotnet-auto/instrument.sh
 
-  # Run your application with instrumentation
-  OTEL_SERVICE_NAME=myapp OTEL_RESOURCE_ATTRIBUTES=deployment.environment=staging,service.version=1.0.0 ./MyNetApp
-  ```
+# Setup the instrumentation for the current shell session
+. $HOME/.otel-dotnet-auto/instrument.sh
 
-  {{% alert title="Note" color="note" %}} On macOS
-  [`coreutils`](https://formulae.brew.sh/formula/coreutils) is required.
-  {{% /alert %}}
+# Run your application with instrumentation
+OTEL_SERVICE_NAME=myapp OTEL_RESOURCE_ATTRIBUTES=deployment.environment=staging,service.version=1.0.0 ./MyNetApp
+```
 
-- On Windows, use the PowerShell module as an Administrator:
+{{% alert title="Note" color="note" %}} On macOS
+[`coreutils`](https://formulae.brew.sh/formula/coreutils) is required.
+{{% /alert %}}
 
-  ```powershell
-  # PowerShell 5.1 or higher is required
-  # Download the module
-  $module_url = "https://raw.githubusercontent.com/open-telemetry/opentelemetry-dotnet-instrumentation/v1.0.0-rc.2/OpenTelemetry.DotNet.Auto.psm1"
-  $download_path = Join-Path $env:temp "OpenTelemetry.DotNet.Auto.psm1"
-  Invoke-WebRequest -Uri $module_url -OutFile $download_path -UseBasicParsing
+### Windows (PowerShell)
 
-  # Import the module to use its functions
-  Import-Module $download_path
+On Windows, use the PowerShell module as an Administrator:
 
-  # Install core files (online vs offline method)
-  Install-OpenTelemetryCore
-  Install-OpenTelemetryCore -LocalPath "C:\Path\To\OpenTelemetry.zip"
+```powershell
+# PowerShell 5.1 or higher is required
+# Download the module
+$module_url = "https://raw.githubusercontent.com/open-telemetry/opentelemetry-dotnet-instrumentation/v1.0.0-rc.2/OpenTelemetry.DotNet.Auto.psm1"
+$download_path = Join-Path $env:temp "OpenTelemetry.DotNet.Auto.psm1"
+Invoke-WebRequest -Uri $module_url -OutFile $download_path -UseBasicParsing
 
-  # Set up the instrumentation for the current PowerShell session
-  Register-OpenTelemetryForCurrentSession -OTelServiceName "MyServiceDisplayName"
+# Import the module to use its functions
+Import-Module $download_path
 
-  # Run your application with instrumentation
-  .\MyNetApp.exe
+# Install core files (online vs offline method)
+Install-OpenTelemetryCore
+Install-OpenTelemetryCore -LocalPath "C:\Path\To\OpenTelemetry.zip"
 
-  # You can get usage information by calling the following commands
+# Set up the instrumentation for the current PowerShell session
+Register-OpenTelemetryForCurrentSession -OTelServiceName "MyServiceDisplayName"
 
-  # List all available commands
-  Get-Command -Module OpenTelemetry.DotNet.Auto
+# Run your application with instrumentation
+.\MyNetApp.exe
 
-  # Get command's usage information
-  Get-Help Install-OpenTelemetryCore -Detailed
-  ```
+# You can get usage information by calling the following commands
 
-### Instrument a Windows Service running a .NET application
+# List all available commands
+Get-Command -Module OpenTelemetry.DotNet.Auto
+
+# Get command's usage information
+Get-Help Install-OpenTelemetryCore -Detailed
+```
+
+## Instrument a Windows Service running a .NET application
 
 Use the `OpenTelemetry.DotNet.Auto.psm1` PowerShell module to set up automatic
 instrumentation for a Windows Service:
@@ -114,7 +118,7 @@ Register-OpenTelemetryForWindowsService -WindowsServiceName "WindowsServiceName"
 `Register-OpenTelemetryForWindowsService` performs a service restart.
 {{% /alert %}}
 
-#### Configuration for Windows Service
+### Configuration for Windows Service
 
 {{% alert title="Note" color="note" %}} Remember to restart the Windows Service
 after making configuration changes. You can do it by running
@@ -140,7 +144,7 @@ Var1=Value1
 Var2=Value2
 ```
 
-### Instrument an ASP.NET application deployed on IIS
+## Instrument an ASP.NET application deployed on IIS
 
 Use the `OpenTelemetry.DotNet.Auto.psm1` PowerShell module to set up automatic
 instrumentation for IIS:
@@ -159,7 +163,7 @@ Register-OpenTelemetryForIIS
 {{% alert title="Note" color="note" %}} `Register-OpenTelemetryForIIS` performs
 an IIS restart. {{% /alert %}}
 
-#### Configuration for ASP.NET applications
+### Configuration for ASP.NET applications
 
 {{% alert title="Note" color="note" %}} Remember to restart IIS after making
 configuration changes. You can do it by executing `iisreset.exe`. {{% /alert %}}
@@ -176,7 +180,7 @@ For ASP.NET Core application you can use the
 elements inside the `<aspNetCore>` block of your `Web.config` file to set
 configuration via environment variables.
 
-#### Advanced configuration
+### Advanced configuration
 
 You can add the
 [`<environmentVariables>`](https://docs.microsoft.com/en-us/iis/configuration/system.applicationhost/applicationpools/add/environmentvariables/)
@@ -190,14 +194,14 @@ IIS by setting the environment variables for `W3SVC` and `WAS` Windows Services.
 can consider creating a distinct user, set its environment variables and use it
 as the application pool user. {{% /alert %}}
 
-### NuGet package
+## NuGet package
 
 You can instrument
 [`self-contained`](https://learn.microsoft.com/en-us/dotnet/core/deploying/#publish-self-contained)
 applications using the NuGet packages. See [NuGet packages](./nuget-packages)
 for more information.
 
-### Instrument a container
+## Instrument a container
 
 For an example of Docker container instrumentation, see
 [the example](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/tree/main/examples/demo)

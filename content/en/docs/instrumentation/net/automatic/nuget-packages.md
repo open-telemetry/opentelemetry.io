@@ -1,6 +1,6 @@
 ---
 title: Using the OpenTelemetry.AutoInstrumentation NuGet packages
-linkTitle: NuGet
+linkTitle: NuGet Packages
 weight: 20
 cSpell:ignore: autoinstrumentation buildtasks
 ---

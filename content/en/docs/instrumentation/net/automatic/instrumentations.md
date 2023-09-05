@@ -1,5 +1,6 @@
 ---
 title: Available instrumentations
+linkTitle: Instrumentations
 description: OpenTelemetry .NET Automatic Instrumentation supported libraries.
 weight: 20
 # prettier-ignore
