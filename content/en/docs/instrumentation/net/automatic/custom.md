@@ -2,7 +2,7 @@
 title: Create custom traces and metrics
 linkTitle: Custom instrumentation
 description: Custom traces and metrics using .NET automatic instrumentation.
-cSpell:ignore: tracerprovider meterprovider
+cSpell:ignore: meterprovider tracerprovider
 weight: 30
 ---
 
