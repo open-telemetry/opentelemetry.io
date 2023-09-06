@@ -66,7 +66,7 @@ OTEL_SERVICE_NAME=myapp OTEL_RESOURCE_ATTRIBUTES=deployment.environment=staging,
 [`coreutils`](https://formulae.brew.sh/formula/coreutils) is required. If you
 have [homebrew](https://brew.sh/) installed, you can simply get it by running
 
-```
+```shell
 brew install coreutils
 ```
 
