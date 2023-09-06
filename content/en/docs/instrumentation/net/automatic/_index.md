@@ -31,7 +31,7 @@ CI tests run against the following operating systems:
 - [Microsoft Windows Server 2022](https://github.com/actions/runner-images/blob/main/images/win/Windows2022-Readme.md)
 - [Ubuntu 20.04 LTS](https://github.com/actions/runner-images/blob/main/images/linux/Ubuntu2004-Readme.md)
 
-{{% alert title="Note" color="note" %}} ARM architectures are not supported. See
+{{% alert title="Note" color="warning" %}} ARM architectures are not supported. See
 [#2181](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2181)
 for more information. {{% /alert %}}
 
@@ -61,7 +61,7 @@ chmod +x $HOME/.otel-dotnet-auto/instrument.sh
 OTEL_SERVICE_NAME=myapp OTEL_RESOURCE_ATTRIBUTES=deployment.environment=staging,service.version=1.0.0 ./MyNetApp
 ```
 
-{{% alert title="Note" color="note" %}} On macOS
+{{% alert title="Note" color="warning" %}} On macOS
 [`coreutils`](https://formulae.brew.sh/formula/coreutils) is required. If you have [homebrew](https://brew.sh/) installed, you can simply get it by running
 
 ```
@@ -118,13 +118,13 @@ Install-OpenTelemetryCore
 Register-OpenTelemetryForWindowsService -WindowsServiceName "WindowsServiceName" -OTelServiceName "MyServiceDisplayName"
 ```
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Note" color="warning" %}}
 `Register-OpenTelemetryForWindowsService` performs a service restart.
 {{% /alert %}}
 
 ### Configuration for Windows Service
 
-{{% alert title="Note" color="note" %}} Remember to restart the Windows Service
+{{% alert title="Note" color="warning" %}} Remember to restart the Windows Service
 after making configuration changes. You can do it by running
 `Restart-Service -Name $WindowsServiceName -Force` in PowerShell. {{% /alert %}}
 
@@ -150,7 +150,7 @@ Var2=Value2
 
 ## Instrument an ASP.NET application deployed on IIS
 
-{{% alert title="Note" color="note" %}} The following instructions apply to .NET
+{{% alert title="Note" color="warning" %}} The following instructions apply to .NET
 Framework applications. {{% /alert %}}
 
 Use the `OpenTelemetry.DotNet.Auto.psm1` PowerShell module to set up automatic
@@ -167,12 +167,12 @@ Install-OpenTelemetryCore
 Register-OpenTelemetryForIIS
 ```
 
-{{% alert title="Note" color="note" %}} `Register-OpenTelemetryForIIS` performs
+{{% alert title="Note" color="warning" %}} `Register-OpenTelemetryForIIS` performs
 an IIS restart. {{% /alert %}}
 
 ### Configuration for ASP.NET applications
 
-{{% alert title="Note" color="note" %}} The following instructions apply to .NET
+{{% alert title="Note" color="warning" %}} The following instructions apply to .NET
 Framework applications. {{% /alert %}}
 
 For ASP.NET application you can configure the most common `OTEL_` settings (like
@@ -187,7 +187,7 @@ For ASP.NET Core application you can use the
 elements inside the `<aspNetCore>` block of your `Web.config` file to set
 configuration via environment variables.
 
-{{% alert title="Note" color="note" %}} Remember to restart IIS after making
+{{% alert title="Note" color="warning" %}} Remember to restart IIS after making
 configuration changes. You can do it by executing `iisreset.exe`. {{% /alert %}}
 
 ### Advanced configuration
@@ -200,7 +200,7 @@ pools.
 Consider setting common environment variables, for all applications deployed to
 IIS by setting the environment variables for `W3SVC` and `WAS` Windows Services.
 
-{{% alert title="Note" color="note" %}} For IIS versions older than 10.0, you
+{{% alert title="Note" color="warning" %}} For IIS versions older than 10.0, you
 can consider creating a distinct user, set its environment variables and use it
 as the application pool user. {{% /alert %}}
 
@@ -227,7 +227,7 @@ To see the full range of configuration options, see
 
 ## Log to trace correlation
 
-{{% alert title="Note" color="note" %}} Automatic log to trace correlation
+{{% alert title="Note" color="warning" %}} Automatic log to trace correlation
 provided by OpenTelemetry .NET Automatic Instrumentation currently works only
 for .NET applications using `Microsoft.Extensions.Logging`. See
 [#2310](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2310)
