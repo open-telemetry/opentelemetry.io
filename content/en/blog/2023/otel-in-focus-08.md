@@ -3,7 +3,7 @@ title: OpenTelemetry in Focus, August 2023
 linkTitle: OTel in Focus 2023/08
 date: 2023-09-06
 author: '[Austin Parker](https://github.com/austinlparker)'
-cSpell:ignore: exceptionsconnector opensearchexporter
+cSpell:ignore: loggingexporter configgrpc jaegerreceiver googlecloudexporter Tanzu redisreceiver postgresqlreceiver azuremonitor zpages Ktor
 ---
 
 Welcome back to **OpenTelemetry in Focus** for August, 2023! It's been a busy
@@ -32,11 +32,11 @@ has been released, along with 0.83.
 
 Notable user-facing changes include:
 
-- loggingexporter now supports exemplars logging when the verbosity level is set
+- `loggingexporter` now supports exemplars logging when the verbosity level is set
   to detailed.
-- configgrpc now allows the use of any registered gRPC load balancer name.
-- service has added OTLP export for internal traces.
-- configgrpc now supports the :authority pseudo-header in gRPC client.
+- `configgrpc` now allows the use of any registered gRPC load balancer name.
+- Internal traces can now be exported via OTLP.
+- `configgrpc` now supports the `:authority` pseudo-header in gRPC client.
 
 In addition, there's a variety of bug fixes and changes in the Collector API for
 exporters.
@@ -46,25 +46,25 @@ includes many updates -- be sure to check the release notes.
 
 There are several user-facing changes, including breaking changes:
 
-- The jaegerreceiver has deprecated the remote_sampling config. It will now fail
+- The `jaegerreceiver` has deprecated the remote_sampling config. It will now fail
   to start if the config is specified. In a future version, this feature will be
   removed and the receiver will always fail when the config is specified.
-- The googlecloudexporter has removed the retry_on_failure config, as it caused
+- The `googlecloudexporter` has removed the retry_on_failure config, as it caused
   issues when handling retries.
 - The Datadog processor has been deprecated in favor of the Datadog connector.
 - The Tanzu Observability (Wavefront) Exporter has been deprecated in favor of
   native OTLP ingestion.
 - The redisreceiver now supports adding a username parameter for connecting to
   Redis.
-- The postgresqlreceiver has added the postgresql.temp_files metric.
-- The receiver/azuremonitor has added new attributes to metrics like name, type,
+- The `postgresqlreceiver` has added the postgresql.temp_files metric.
+- The `receiver/azuremonitor` has added new attributes to metrics like name, type,
   and resource_group.
 
 ##### [Java](/docs/instrumentation/java/)
 
 [Version 1.29](https://github.com/open-telemetry/opentelemetry-java/releases/tag/v1.29.0)
 includes updates to the API and SDK for tracing and metrics. Please note that
-the zpages extension has been removed.
+the `zpages` extension has been removed.
 
 [Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/tag/v1.29.0)
 includes support for Ktor and ElasticSearch Rest Client.
