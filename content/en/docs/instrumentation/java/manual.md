@@ -760,12 +760,12 @@ import io.opentelemetry.context.Scope;
 // ...
   public List<Integer> rollTheDice(int rolls) {
     Span parentSpan = tracer.spanBuilder("parent").startSpan();
-    try(Scope scope = parentSpan.makeCurrent()) {
-    List<Integer> results = new ArrayList<Integer>();
-    for (int i = 0; i < rolls; i++) {
-      results.add(this.rollOnce());
-    }
-    return results;
+    try (Scope scope = parentSpan.makeCurrent()) {
+      List<Integer> results = new ArrayList<Integer>();
+      for (int i = 0; i < rolls; i++) {
+        results.add(this.rollOnce());
+      }
+      return results;
     } finally {
       parentSpan.end();
     }
