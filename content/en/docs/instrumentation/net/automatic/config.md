@@ -116,7 +116,7 @@ more details.
 Samplers let you control potential noise and overhead introduced by
 OpenTelemetry instrumentation by selecting which traces you want to collect and
 export. See
-[the OpenTelemetry specification](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.15.0/specification/sdk-environment-variables.md?plain=1#L45-L80)
+[the OpenTelemetry specification](/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration)
 for more details.
 
 | Environment variable      | Description                                           | Default value           | Status                                              |
