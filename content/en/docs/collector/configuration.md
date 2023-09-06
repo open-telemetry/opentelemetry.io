@@ -18,13 +18,13 @@ Familiarity with the following pages is assumed:
 The Collector consists of four components that access telemetry data:
 
 - [Receivers](#receivers)
-  <img width="32" class="img-initial" src="/img/logos/32x32/Receivers.svg">
+  <img width="32" class="img-initial" src="/img/logos/32x32/Receivers.svg" alt="">
 - [Processors](#processors)
-  <img width="32" class="img-initial" src="/img/logos/32x32/Processors.svg">
+  <img width="32" class="img-initial" src="/img/logos/32x32/Processors.svg" alt="">
 - [Exporters](#exporters)
-  <img width="32" class="img-initial" src="/img/logos/32x32/Exporters.svg">
+  <img width="32" class="img-initial" src="/img/logos/32x32/Exporters.svg" alt="">
 - [Connectors](#connectors)
-  <img width="32" class="img-initial" src="/img/logos/32x32/Load_Balancer.svg">
+  <img width="32" class="img-initial" src="/img/logos/32x32/Load_Balancer.svg" alt="">
 
 These components once configured must be enabled via pipelines within the
 [service](#service) section.
@@ -172,7 +172,7 @@ service:
       exporters: [otlp]
 ```
 
-## Receivers <img width="35" class="img-initial" src="/img/logos/32x32/Receivers.svg"> {#receivers}
+## Receivers <img width="32" class="img-initial" src="/img/logos/32x32/Receivers.svg" alt=""> {#receivers}
 
 A receiver, which can be push or pull based, is how data gets into the
 Collector. Receivers may support one or more
@@ -247,7 +247,7 @@ receivers:
   zipkin:
 ```
 
-## Processors <img width="35" class="img-initial" src="/img/logos/32x32/Processors.svg"> {#processors}
+## Processors <img width="32" class="img-initial" src="/img/logos/32x32/Processors.svg" alt=""> {#processors}
 
 Processors are run on data between being received and being exported. Processors
 are optional though
@@ -328,7 +328,7 @@ processors:
       separator: '::'
 ```
 
-## Exporters <img width="35" class="img-initial" src="/img/logos/32x32/Exporters.svg"> {#exporters}
+## Exporters <img width="32" class="img-initial" src="/img/logos/32x32/Exporters.svg" alt=""> {#exporters}
 
 An exporter, which can be push or pull based, is how you send data to one or
 more backends/destinations. Exporters may support one or more
@@ -405,7 +405,7 @@ exporters:
     endpoint: http://localhost:9411/api/v2/spans
 ```
 
-## Connectors <img width="32" class="img-initial" src="/img/logos/32x32/Load_Balancer.svg"> {#connectors}
+## Connectors <img width="32" class="img-initial" src="/img/logos/32x32/Load_Balancer.svg" alt=""> {#connectors}
 
 A connector is both an exporter and receiver. As the name suggests a Connector
 connects two pipelines: It consumes data as an exporter at the end of one
