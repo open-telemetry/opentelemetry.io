@@ -62,7 +62,11 @@ OTEL_SERVICE_NAME=myapp OTEL_RESOURCE_ATTRIBUTES=deployment.environment=staging,
 ```
 
 {{% alert title="Note" color="note" %}} On macOS
-[`coreutils`](https://formulae.brew.sh/formula/coreutils) is required.
+[`coreutils`](https://formulae.brew.sh/formula/coreutils) is required. If you have [homebrew](https://brew.sh/) installed, you can simply get it by running
+
+```
+brew install coreutils
+```
 {{% /alert %}}
 
 ### Windows (PowerShell)
