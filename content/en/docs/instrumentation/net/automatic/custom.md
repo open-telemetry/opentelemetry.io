@@ -2,6 +2,7 @@
 title: Create custom traces and metrics
 linkTitle: Custom instrumentation
 description: Custom traces and metrics using .NET automatic instrumentation.
+cSpell:ignore: tracerprovider meterprovider
 weight: 30
 ---
 
@@ -86,4 +87,4 @@ To create your custom metrics manually, follow these steps:
 
 ## Further reading
 
-- [OpenTelemetry.io documentation for .NET Manual Instrumentation](https://opentelemetry.io/docs/instrumentation/net/manual/#setting-up-an-activitysource)
+- [OpenTelemetry.io documentation for .NET Manual Instrumentation](../../manual#setting-up-an-activitysource)
