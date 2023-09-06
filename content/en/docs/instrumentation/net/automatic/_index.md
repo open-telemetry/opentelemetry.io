@@ -146,6 +146,10 @@ Var2=Value2
 
 ## Instrument an ASP.NET application deployed on IIS
 
+{{% alert title="Note" color="note" %}}
+The following instructions apply to .NET Framework applications.
+{{% /alert %}}
+
 Use the `OpenTelemetry.DotNet.Auto.psm1` PowerShell module to set up automatic
 instrumentation for IIS:
 
@@ -164,9 +168,9 @@ Register-OpenTelemetryForIIS
 an IIS restart. {{% /alert %}}
 
 ### Configuration for ASP.NET applications
-
-{{% alert title="Note" color="note" %}} Remember to restart IIS after making
-configuration changes. You can do it by executing `iisreset.exe`. {{% /alert %}}
+{{% alert title="Note" color="note" %}}
+The following instructions apply to .NET Framework applications.
+{{% /alert %}}
 
 For ASP.NET application you can configure the most common `OTEL_` settings (like
 `OTEL_SERVICE_NAME`) via `appSettings` in `Web.config`.
@@ -179,6 +183,10 @@ For ASP.NET Core application you can use the
 [`<environmentVariable>`](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/iis/web-config#set-environment-variables)
 elements inside the `<aspNetCore>` block of your `Web.config` file to set
 configuration via environment variables.
+
+{{% alert title="Note" color="note" %}} Remember to restart IIS after making
+configuration changes. You can do it by executing `iisreset.exe`. {{% /alert %}}
+
 
 ### Advanced configuration
 
