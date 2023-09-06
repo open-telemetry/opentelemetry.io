@@ -29,7 +29,7 @@ packages include the following:
    case you can use a single deployment for all .NET applications running on the
    machine.
 1. A legacy application that can't be migrated to the
-   [SDK-style project](https://learn.microsoft.com/en-us/nuget/resources/check-project-format#check-the-project-format).#
+   [SDK-style project](https://learn.microsoft.com/en-us/nuget/resources/check-project-format#check-the-project-format).
 
 ## Using the NuGet packages
 
