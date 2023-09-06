@@ -175,6 +175,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T13:40:18.37311-04:00"
   },
+  "https://brew.sh/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-09-06T18:09:47.863432+02:00"
+  },
   "https://bundler.io/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T11:45:05.202661-04:00"
