@@ -31,7 +31,8 @@ CI tests run against the following operating systems:
 - [Microsoft Windows Server 2022](https://github.com/actions/runner-images/blob/main/images/win/Windows2022-Readme.md)
 - [Ubuntu 20.04 LTS](https://github.com/actions/runner-images/blob/main/images/linux/Ubuntu2004-Readme.md)
 
-{{% alert title="Note" color="warning" %}} ARM architectures are not supported. See
+{{% alert title="Note" color="warning" %}} ARM architectures are not supported.
+See
 [#2181](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2181)
 for more information. {{% /alert %}}
 
@@ -62,11 +63,13 @@ OTEL_SERVICE_NAME=myapp OTEL_RESOURCE_ATTRIBUTES=deployment.environment=staging,
 ```
 
 {{% alert title="Note" color="warning" %}} On macOS
-[`coreutils`](https://formulae.brew.sh/formula/coreutils) is required. If you have [homebrew](https://brew.sh/) installed, you can simply get it by running
+[`coreutils`](https://formulae.brew.sh/formula/coreutils) is required. If you
+have [homebrew](https://brew.sh/) installed, you can simply get it by running
 
 ```
 brew install coreutils
 ```
+
 {{% /alert %}}
 
 ### Windows (PowerShell)
@@ -124,8 +127,8 @@ Register-OpenTelemetryForWindowsService -WindowsServiceName "WindowsServiceName"
 
 ### Configuration for Windows Service
 
-{{% alert title="Note" color="warning" %}} Remember to restart the Windows Service
-after making configuration changes. You can do it by running
+{{% alert title="Note" color="warning" %}} Remember to restart the Windows
+Service after making configuration changes. You can do it by running
 `Restart-Service -Name $WindowsServiceName -Force` in PowerShell. {{% /alert %}}
 
 For .NET Framework applications you can configure the most common `OTEL_`
@@ -150,8 +153,8 @@ Var2=Value2
 
 ## Instrument an ASP.NET application deployed on IIS
 
-{{% alert title="Note" color="warning" %}} The following instructions apply to .NET
-Framework applications. {{% /alert %}}
+{{% alert title="Note" color="warning" %}} The following instructions apply to
+.NET Framework applications. {{% /alert %}}
 
 Use the `OpenTelemetry.DotNet.Auto.psm1` PowerShell module to set up automatic
 instrumentation for IIS:
@@ -167,13 +170,13 @@ Install-OpenTelemetryCore
 Register-OpenTelemetryForIIS
 ```
 
-{{% alert title="Note" color="warning" %}} `Register-OpenTelemetryForIIS` performs
-an IIS restart. {{% /alert %}}
+{{% alert title="Note" color="warning" %}} `Register-OpenTelemetryForIIS`
+performs an IIS restart. {{% /alert %}}
 
 ### Configuration for ASP.NET applications
 
-{{% alert title="Note" color="warning" %}} The following instructions apply to .NET
-Framework applications. {{% /alert %}}
+{{% alert title="Note" color="warning" %}} The following instructions apply to
+.NET Framework applications. {{% /alert %}}
 
 For ASP.NET application you can configure the most common `OTEL_` settings (like
 `OTEL_SERVICE_NAME`) via `appSettings` in `Web.config`.
