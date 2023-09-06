@@ -5,10 +5,10 @@ description: Custom traces and metrics using .NET automatic instrumentation.
 weight: 30
 ---
 
-The automatic instrumentation provides a base you can build on by adding your
-own manual instrumentation. By using both automatic and manual instrumentation,
-you can better instrument the logic and functionality of your applications,
-clients, and frameworks.
+The automatic instrumentation configures a tracerprovider and a meterprovider so
+that you can add your own manual instrumentation. By using both automatic and
+manual instrumentation, you can better instrument the logic and functionality of
+your applications, clients, and frameworks.
 
 ## Traces
 
