@@ -49,15 +49,15 @@ Put assets, if any, like images into the folder created.
 
 Once your post is ready, submit it through a [pull request][].
 
-### Using the Github UI
+### Using the GitHub UI
 
 - Go to the [blog post template](archetypes/blog.md) and click on
-  `Copy raw content` at the top right of the menu
-- [Create a new file](https://github.com/open-telemetry/opentelemetry.io/new/main)
-- Paste the content from the template
+  `Copy raw content` at the top right of the menu.
+- [Create a new file](https://github.com/open-telemetry/opentelemetry.io/new/main).
+- Paste the content from the template.
 - Name your file, e.g.
   `content/en/blog/2022/short-name-for-your-blog-post/index.md`
-- Start editing the markdown file
+- Start editing the markdown file.
 - Once your post is ready click on `Propose changes` at the bottom.
 
 ## Contributing
