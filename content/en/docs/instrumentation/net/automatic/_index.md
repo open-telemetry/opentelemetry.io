@@ -7,7 +7,7 @@ weight: 20
 ---
 
 Use the OpenTelemetry .NET Automatic Instrumentation to send traces and metrics
-from .NET applications and services to observability back ends without having to
+from .NET applications and services to observability backends without having to
 modify their source code.
 
 To learn how to manually instrument your service or app code, see
