@@ -6,7 +6,7 @@ cSpell:ignore: meterprovider tracerprovider
 weight: 30
 ---
 
-The automatic instrumentation configures a tracerprovider and a meterprovider so
+The automatic instrumentation configures a `TracerProvider` and a `MeterProvider` so
 that you can add your own manual instrumentation. By using both automatic and
 manual instrumentation, you can better instrument the logic and functionality of
 your applications, clients, and frameworks.
