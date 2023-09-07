@@ -247,7 +247,7 @@ CNCF’s Slack instance.
 
 **Q:** Where do you go to find documentation and answers to your questions?
 
-**A:** We have many resources, including official documentation and Github
+**A:** We have many resources, including official documentation and GitHub
 repositories.
 
 To help us improve our resources, it would be helpful to gather feedback from
