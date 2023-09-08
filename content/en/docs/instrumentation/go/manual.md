@@ -324,8 +324,8 @@ to generate data.
 
 Here you can find more detailed package documentation for:
 
-- Metrics API: [`go.opentelemetry.io/otel/metric`](https://pkg.go.dev/go.opentelemetry.io/otel/metric)
-- Metrics SDK: [`go.opentelemetry.io/otel/sdk/metric`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric)
+- Metrics API: [`go.opentelemetry.io/otel/metric`][]
+- Metrics SDK: [`go.opentelemetry.io/otel/sdk/metric`][]
 
 ### Initialize Metrics
 
@@ -338,157 +338,98 @@ have an initialized
 you create a [`Meter`](/docs/concepts/signals/metrics/#meter).
 
 If a `MeterProvider` is not created, the OpenTelemetry APIs for metrics will use
-a no-op implementation and fail to generate data. As explained next, modify the
-`instrumentation.ts` (or `instrumentation.js`) file to include all the SDK
-initialization code in Node and the browser.
+a no-op implementation and fail to generate data. Therefore, you have modify the
+source code to include the SDK initialization code using [`go.opentelemetry.io/otel`][],
+[`go.opentelemetry.io/otel/sdk/metric`][], [`go.opentelemetry.io/otel/sdk/resource`][],
+[`go.opentelemetry.io/otel/exporters/stdout/stdoutmetric`][] packages.
 
-#### Node.js {#initialize-metrics-nodejs}
-
-If you followed the instructions to [initialize the SDK](#initialize-the-sdk)
-above, you have a `MeterProvider` setup for you already. You can continue with
-[acquiring a meter](#acquiring-a-meter).
-
-##### Initializing metrics with `sdk-metrics`
-
-In some cases you may not be able or may not want to use the
-[full OpenTelemetry SDK for Node.js](https://www.npmjs.com/package/@opentelemetry/sdk-node).
-This is also true if you want to use OpenTelemetry JavaScript in the browser.
-
-If so, you can initialize tracing with the `@opentelemetry/sdk-metrics` package:
-
-```shell
-npm install @opentelemetry/sdk-metrics
-```
-
-If you have not created it for tracing already, create a separate
-`instrumentation.ts` (or `instrumentation.js`) file that has all the SDK
-initialization code in it:
-
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
-
-```ts
-import opentelemetry from '@opentelemetry/api';
-import {
-  ConsoleMetricExporter,
-  MeterProvider,
-  PeriodicExportingMetricReader,
-} from '@opentelemetry/sdk-metrics';
-import { Resource } from '@opentelemetry/resources';
-import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions';
-
-const resource = Resource.default().merge(
-  new Resource({
-    [SemanticResourceAttributes.SERVICE_NAME]: 'dice-server',
-    [SemanticResourceAttributes.SERVICE_VERSION]: '0.1.0',
-  }),
-);
-
-const metricReader = new PeriodicExportingMetricReader({
-  exporter: new ConsoleMetricExporter(),
-
-  // Default is 60000ms (60 seconds). Set to 3 seconds for demonstrative purposes only.
-  exportIntervalMillis: 3000,
-});
-
-const myServiceMeterProvider = new MeterProvider({
-  resource: resource,
-});
-
-myServiceMeterProvider.addMetricReader(metricReader);
-
-// Set this MeterProvider to be global to the app being instrumented.
-opentelemetry.metrics.setGlobalMeterProvider(myServiceMeterProvider);
-```
-
-{{% /tab %}} {{% tab JavaScript %}}
-
-```js
-const opentelemetry = require('@opentelemetry/api');
-const {
-  MeterProvider,
-  PeriodicExportingMetricReader,
-  ConsoleMetricExporter,
-} = require('@opentelemetry/sdk-metrics');
-const { Resource } = require('@opentelemetry/resources');
-const {
-  SemanticResourceAttributes,
-} = require('@opentelemetry/semantic-conventions');
-
-const resource = Resource.default().merge(
-  new Resource({
-    [SemanticResourceAttributes.SERVICE_NAME]: 'service-name-here',
-    [SemanticResourceAttributes.SERVICE_VERSION]: '0.1.0',
-  }),
-);
-
-const metricReader = new PeriodicExportingMetricReader({
-  exporter: new ConsoleMetricExporter(),
-
-  // Default is 60000ms (60 seconds). Set to 3 seconds for demonstrative purposes only.
-  exportIntervalMillis: 3000,
-});
-
-const myServiceMeterProvider = new MeterProvider({
-  resource: resource,
-});
-
-myServiceMeterProvider.addMetricReader(metricReader);
-
-// Set this MeterProvider to be global to the app being instrumented.
-opentelemetry.metrics.setGlobalMeterProvider(myServiceMeterProvider);
-```
-
-{{% /tab %}} {{< /tabpane >}}
-
-You'll need to `--require` this file when you run your app, such as:
-
-{{< tabpane text=true >}} {{% tab TypeScript %}}
+Ensure you have the right Go modules installed:
 
 ```sh
-ts-node --require ./instrumentation.ts app.ts
+go get go.opentelemetry.io/otel \
+  go.opentelemetry.io/otel/exporters/stdout/stdoutmetric \
+  go.opentelemetry.io/otel/metric\
+  go.opentelemetry.io/otel/sdk \
+  go.opentelemetry.io/otel/sdk/metric
+  
 ```
 
-{{% /tab %}} {{% tab JavaScript %}}
+Then initialize a resources, metrics exporter and provider:
 
-```sh
-node --require ./instrumentation.js app.js
+```go
+package main
+
+import (
+	"context"
+	"log"
+	"time"
+
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/exporters/stdout/stdoutmetric"
+	"go.opentelemetry.io/otel/sdk/metric"
+	"go.opentelemetry.io/otel/sdk/resource"
+	semconv "go.opentelemetry.io/otel/semconv/v1.21.0"
+)
+
+func main() {
+	res, err := newResource()
+	if err != nil {
+		panic(err)
+	}
+
+	meterProvider, err := newMeterProvider(res)
+	if err != nil {
+		panic(err)
+	}
+
+	// Set the global meter provider.
+	otel.SetMeterProvider(meterProvider)
+
+	// Handle shutdown properly so nothing leaks.
+	defer func() {
+		if err := meterProvider.Shutdown(context.Background()); err != nil {
+			log.Println(err)
+		}
+	}()
+}
+
+func newResource() (*resource.Resource, error) {
+	return resource.Merge(resource.Default(),
+		resource.NewWithAttributes(semconv.SchemaURL,
+			semconv.ServiceName("dice"),
+			semconv.ServiceVersion("0.1.0"),
+		))
+}
+
+func newMeterProvider(res *resource.Resource) (*metric.MeterProvider, error) {
+	metricExporter, err := stdoutmetric.New()
+	if err != nil {
+		return nil, err
+	}
+
+	meterProvider := metric.NewMeterProvider(
+		metric.WithResource(res),
+		metric.WithReader(metric.NewPeriodicReader(metricExporter,
+			// Default is 1m. Set to 3s for demonstrative purposes.
+			metric.WithInterval(3*time.Second))),
+	)
+	return meterProvider, nil
+}
 ```
-
-{{% /tab %}} {{< /tabpane >}}
 
 Now that a `MeterProvider` is configured, you can acquire a `Meter`.
 
 ### Acquiring a Meter
 
 Anywhere in your application where you have manually instrumented code you can
-call `getMeter` to acquire a meter. For example:
+call [`otel.Meter`](https://pkg.go.dev/go.opentelemetry.io/otel#Meter) to acquire
+a meter. For example:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
+```go
+import "go.opentelemetry.io/otel"
 
-```ts
-import opentelemetry from '@opentelemetry/api';
-
-const myMeter = opentelemetry.metrics.getMeter('my-service-meter');
-
-// You can now use a 'meter' to create instruments!
+var meter = otel.Meter("my-service-meter")
 ```
-
-{{% /tab %}} {{% tab JavaScript %}}
-
-```js
-const opentelemetry = require('@opentelemetry/api');
-
-const myMeter = opentelemetry.metrics.getMeter('my-service-meter');
-
-// You can now use a 'meter' to create instruments!
-```
-
-{{% /tab %}} {{< /tabpane >}}
-
-It’s generally recommended to call `getMeter` in your app when you need it
-rather than exporting the meter instance to the rest of your app. This helps
-avoid trickier application load issues when other required dependencies are
-involved.
 
 ### Synchronous and asynchronous instruments
 
@@ -516,19 +457,21 @@ Asynchronous instruments are useful in several circumstances, such as:
 
 In cases like these, it's often better to observe a cumulative value directly,
 rather than aggregate a series of deltas in post-processing (the synchronous
-example). Take note of the use of `observe` rather than `add` in the appropriate
-code examples below.
+example).
 
 ### Using Counters
 
 Counters can by used to measure a non-negative, increasing value.
 
-```js
-const counter = myMeter.createCounter('events.counter');
+```go
+counter, err := meter.Int64Counter("events.counter")
+if err != nil {
+	panic(err)
+}
 
-//...
+// ...
 
-counter.add(1);
+counter.Add(context.Background(), 1)
 ```
 
 ### Using UpDown Counters
@@ -536,16 +479,19 @@ counter.add(1);
 UpDown counters can increment and decrement, allowing you to observe a
 cumulative value that goes up or down.
 
-```js
-const counter = myMeter.createUpDownCounter('events.counter');
+```go
+counter, err := meter.Int64UpDownCounter("events.counter")
+if err != nil {
+	panic(err)
+}
 
-//...
+// ...
 
-counter.add(1);
+counter.Add(context.Background(), 1)
 
-//...
+// ...
 
-counter.add(-1);
+counter.Add(context.Background(), -1)
 ```
 
 ### Using Histograms
@@ -554,8 +500,6 @@ Histograms are used to measure a distribution of values over time.
 
 For example, here's how you might report a distribution of response times for an
 API route with Express:
-
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
 
 ```ts
 import express from 'express';
@@ -575,29 +519,6 @@ app.get('/', (_req, _res) => {
   histogram.record(executionTime);
 });
 ```
-
-{{% /tab %}} {{% tab JavaScript %}}
-
-```js
-const express = require('express');
-
-const app = express();
-
-app.get('/', (_req, _res) => {
-  const histogram = myMeter.createHistogram('task.duration');
-  const startTime = new Date().getTime();
-
-  // do some work in an API call
-
-  const endTime = new Date().getTime();
-  const executionTime = endTime - startTime;
-
-  // Record the duration of the task operation
-  histogram.record(executionTime);
-});
-```
-
-{{% /tab %}} {{< /tabpane >}}
 
 ### Using Observable (Async) Counters
 
@@ -775,3 +696,8 @@ telemetry backends.
 [opentelemetry specification]: /docs/specs/otel/
 [trace semantic conventions]: /docs/specs/otel/trace/semantic_conventions/
 [instrumentation library]: ../libraries/
+[`go.opentelemetry.io/otel`]: https://pkg.go.dev/go.opentelemetry.io/otel
+[`go.opentelemetry.io/otel/exporters/stdout/stdoutmetric`]: https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdoutmetric
+[`go.opentelemetry.io/otel/metric`]: https://pkg.go.dev/go.opentelemetry.io/otel/metric
+[`go.opentelemetry.io/otel/sdk/metric`]: https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric
+[`go.opentelemetry.io/otel/sdk/resource`]: https://pkg.go.dev/go.opentelemetry.io/otel/sdk/resource
