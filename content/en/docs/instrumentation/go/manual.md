@@ -297,7 +297,465 @@ serializing the context.
 
 ## Metrics
 
-The metrics API is currently unstable, documentation TBA.
+To start [metrics](/docs/concepts/signals/metrics), you'll need to have an
+initialized `MeterProvider` that lets you create a `Meter`. `Meter`s let you
+create `Instrument`s that you can use to create different kinds of metrics.
+OpenTelemetry JavaScript currently supports the following `Instrument`s:
+
+- Counter, a synchronous instrument which supports non-negative increments
+- Asynchronous Counter, a asynchronous instrument which supports non-negative
+  increments
+- Histogram, a synchronous instrument which supports arbitrary values that are
+  statistically meaningful, such as histograms, summaries or percentile
+- Asynchronous Gauge, an asynchronous instrument which supports non-additive
+  values, such as room temperature
+- UpDownCounter, a synchronous instrument which supports increments and
+  decrements, such as number of active requests
+- Asynchronous UpDownCounter, an asynchronous instrument which supports
+  increments and decrements
+
+For more on synchronous and asynchronous instruments, and which kind is best
+suited for your use case, see
+[Supplementary Guidelines](/docs/specs/otel/metrics/supplementary-guidelines/).
+
+If a `MeterProvider` is not created either by an instrumentation library or
+manually, the OpenTelemetry Metrics API will use a no-op implementation and fail
+to generate data.
+
+### Initialize Metrics
+
+{{% alert color="info" %}} If you’re instrumenting a library, skip this step.
+{{% /alert %}}
+
+To enable [metrics](/docs/concepts/signals/metrics/) in your app, you'll need to
+have an initialized
+[`MeterProvider`](/docs/concepts/signals/metrics/#meter-provider) that will let
+you create a [`Meter`](/docs/concepts/signals/metrics/#meter).
+
+If a `MeterProvider` is not created, the OpenTelemetry APIs for metrics will use
+a no-op implementation and fail to generate data. As explained next, modify the
+`instrumentation.ts` (or `instrumentation.js`) file to include all the SDK
+initialization code in Node and the browser.
+
+#### Node.js {#initialize-metrics-nodejs}
+
+If you followed the instructions to [initialize the SDK](#initialize-the-sdk)
+above, you have a `MeterProvider` setup for you already. You can continue with
+[acquiring a meter](#acquiring-a-meter).
+
+##### Initializing metrics with `sdk-metrics`
+
+In some cases you may not be able or may not want to use the
+[full OpenTelemetry SDK for Node.js](https://www.npmjs.com/package/@opentelemetry/sdk-node).
+This is also true if you want to use OpenTelemetry JavaScript in the browser.
+
+If so, you can initialize tracing with the `@opentelemetry/sdk-metrics` package:
+
+```shell
+npm install @opentelemetry/sdk-metrics
+```
+
+If you have not created it for tracing already, create a separate
+`instrumentation.ts` (or `instrumentation.js`) file that has all the SDK
+initialization code in it:
+
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
+
+```ts
+import opentelemetry from '@opentelemetry/api';
+import {
+  ConsoleMetricExporter,
+  MeterProvider,
+  PeriodicExportingMetricReader,
+} from '@opentelemetry/sdk-metrics';
+import { Resource } from '@opentelemetry/resources';
+import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions';
+
+const resource = Resource.default().merge(
+  new Resource({
+    [SemanticResourceAttributes.SERVICE_NAME]: 'dice-server',
+    [SemanticResourceAttributes.SERVICE_VERSION]: '0.1.0',
+  }),
+);
+
+const metricReader = new PeriodicExportingMetricReader({
+  exporter: new ConsoleMetricExporter(),
+
+  // Default is 60000ms (60 seconds). Set to 3 seconds for demonstrative purposes only.
+  exportIntervalMillis: 3000,
+});
+
+const myServiceMeterProvider = new MeterProvider({
+  resource: resource,
+});
+
+myServiceMeterProvider.addMetricReader(metricReader);
+
+// Set this MeterProvider to be global to the app being instrumented.
+opentelemetry.metrics.setGlobalMeterProvider(myServiceMeterProvider);
+```
+
+{{% /tab %}} {{% tab JavaScript %}}
+
+```js
+const opentelemetry = require('@opentelemetry/api');
+const {
+  MeterProvider,
+  PeriodicExportingMetricReader,
+  ConsoleMetricExporter,
+} = require('@opentelemetry/sdk-metrics');
+const { Resource } = require('@opentelemetry/resources');
+const {
+  SemanticResourceAttributes,
+} = require('@opentelemetry/semantic-conventions');
+
+const resource = Resource.default().merge(
+  new Resource({
+    [SemanticResourceAttributes.SERVICE_NAME]: 'service-name-here',
+    [SemanticResourceAttributes.SERVICE_VERSION]: '0.1.0',
+  }),
+);
+
+const metricReader = new PeriodicExportingMetricReader({
+  exporter: new ConsoleMetricExporter(),
+
+  // Default is 60000ms (60 seconds). Set to 3 seconds for demonstrative purposes only.
+  exportIntervalMillis: 3000,
+});
+
+const myServiceMeterProvider = new MeterProvider({
+  resource: resource,
+});
+
+myServiceMeterProvider.addMetricReader(metricReader);
+
+// Set this MeterProvider to be global to the app being instrumented.
+opentelemetry.metrics.setGlobalMeterProvider(myServiceMeterProvider);
+```
+
+{{% /tab %}} {{< /tabpane >}}
+
+You'll need to `--require` this file when you run your app, such as:
+
+{{< tabpane text=true >}} {{% tab TypeScript %}}
+
+```sh
+ts-node --require ./instrumentation.ts app.ts
+```
+
+{{% /tab %}} {{% tab JavaScript %}}
+
+```sh
+node --require ./instrumentation.js app.js
+```
+
+{{% /tab %}} {{< /tabpane >}}
+
+Now that a `MeterProvider` is configured, you can acquire a `Meter`.
+
+### Acquiring a Meter
+
+Anywhere in your application where you have manually instrumented code you can
+call `getMeter` to acquire a meter. For example:
+
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
+
+```ts
+import opentelemetry from '@opentelemetry/api';
+
+const myMeter = opentelemetry.metrics.getMeter('my-service-meter');
+
+// You can now use a 'meter' to create instruments!
+```
+
+{{% /tab %}} {{% tab JavaScript %}}
+
+```js
+const opentelemetry = require('@opentelemetry/api');
+
+const myMeter = opentelemetry.metrics.getMeter('my-service-meter');
+
+// You can now use a 'meter' to create instruments!
+```
+
+{{% /tab %}} {{< /tabpane >}}
+
+It’s generally recommended to call `getMeter` in your app when you need it
+rather than exporting the meter instance to the rest of your app. This helps
+avoid trickier application load issues when other required dependencies are
+involved.
+
+### Synchronous and asynchronous instruments
+
+OpenTelemetry instruments are either synchronous or asynchronous (observable).
+
+Synchronous instruments take a measurement when they are called. The measurement
+is done as another call during program execution, just like any other function
+call. Periodically, the aggregation of these measurements is exported by a
+configured exporter. Because measurements are decoupled from exporting values,
+an export cycle may contain zero or multiple aggregated measurements.
+
+Asynchronous instruments, on the other hand, provide a measurement at the
+request of the SDK. When the SDK exports, a callback that was provided to the
+instrument on creation is invoked. This callback provides the SDK with a
+measurement that is immediately exported. All measurements on asynchronous
+instruments are performed once per export cycle.
+
+Asynchronous instruments are useful in several circumstances, such as:
+
+- When updating a counter is not computationally cheap, and thus you don't want
+  the currently executing thread to have to wait for that measurement
+- Observations need to happen at frequencies unrelated to program execution
+  (i.e., they cannot be accurately measured when tied to a request lifecycle)
+- There is no value from knowing the precise timestamp of increments
+
+In cases like these, it's often better to observe a cumulative value directly,
+rather than aggregate a series of deltas in post-processing (the synchronous
+example). Take note of the use of `observe` rather than `add` in the appropriate
+code examples below.
+
+### Using Counters
+
+Counters can by used to measure a non-negative, increasing value.
+
+```js
+const counter = myMeter.createCounter('events.counter');
+
+//...
+
+counter.add(1);
+```
+
+### Using UpDown Counters
+
+UpDown counters can increment and decrement, allowing you to observe a
+cumulative value that goes up or down.
+
+```js
+const counter = myMeter.createUpDownCounter('events.counter');
+
+//...
+
+counter.add(1);
+
+//...
+
+counter.add(-1);
+```
+
+### Using Histograms
+
+Histograms are used to measure a distribution of values over time.
+
+For example, here's how you might report a distribution of response times for an
+API route with Express:
+
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
+
+```ts
+import express from 'express';
+
+const app = express();
+
+app.get('/', (_req, _res) => {
+  const histogram = myMeter.createHistogram('task.duration');
+  const startTime = new Date().getTime();
+
+  // do some work in an API call
+
+  const endTime = new Date().getTime();
+  const executionTime = endTime - startTime;
+
+  // Record the duration of the task operation
+  histogram.record(executionTime);
+});
+```
+
+{{% /tab %}} {{% tab JavaScript %}}
+
+```js
+const express = require('express');
+
+const app = express();
+
+app.get('/', (_req, _res) => {
+  const histogram = myMeter.createHistogram('task.duration');
+  const startTime = new Date().getTime();
+
+  // do some work in an API call
+
+  const endTime = new Date().getTime();
+  const executionTime = endTime - startTime;
+
+  // Record the duration of the task operation
+  histogram.record(executionTime);
+});
+```
+
+{{% /tab %}} {{< /tabpane >}}
+
+### Using Observable (Async) Counters
+
+Observable counters can be used to measure an additive, non-negative,
+monotonically increasing value.
+
+```js
+let events = [];
+
+const addEvent = (name) => {
+  events = append(events, name);
+};
+
+const counter = myMeter.createObservableCounter('events.counter');
+
+counter.addCallback((result) => {
+  result.observe(len(events));
+});
+
+//... calls to addEvent
+```
+
+### Using Observable (Async) UpDown Counters
+
+Observable UpDown counters can increment and decrement, allowing you to measure
+an additive, non-negative, non-monotonically increasing cumulative value.
+
+```js
+let events = [];
+
+const addEvent = (name) => {
+  events = append(events, name);
+};
+
+const removeEvent = () => {
+  events.pop();
+};
+
+const counter = myMeter.createObservableUpDownCounter('events.counter');
+
+counter.addCallback((result) => {
+  result.observe(len(events));
+});
+
+//... calls to addEvent and removeEvent
+```
+
+### Using Observable (Async) Gauges
+
+Observable Gauges should be used to measure non-additive values.
+
+```js
+let temperature = 32;
+
+const gauge = myMeter.createObservableGauge('temperature.gauge');
+
+gauge.addCallback((result) => {
+  result.observe(temperature);
+});
+
+//... temperature variable is modified by a sensor
+```
+
+### Describing instruments
+
+When you create instruments like counters, histograms, etc. you can give them a
+description.
+
+```js
+const httpServerResponseDuration = myMeter.createHistogram(
+  'http.server.duration',
+  {
+    description: 'A distribution of the HTTP server response times',
+    unit: 'milliseconds',
+    valueType: ValueType.INT,
+  },
+);
+```
+
+In JavaScript, each configuration type means the following:
+
+- `description` - a human-readable description for the instrument
+- `unit` - The description of the unit of measure that the value is intended to
+  represent. For example, `milliseconds` to measure duration, or `bytes` to
+  count number of bytes.
+- `valueType` - The kind of numeric value used in measurements.
+
+It's generally recommended to describe each instrument you create.
+
+### Adding attributes
+
+You can add Attributes to metrics when they are generated.
+
+```js
+const counter = myMeter.createCounter('my.counter');
+
+counter.add(1, { 'some.optional.attribute': 'some value' });
+```
+
+### Configure Metric Views
+
+A Metric View provides developers with the ability to customize metrics exposed
+by the Metrics SDK.
+
+#### Selectors
+
+To instantiate a view, one must first select a target instrument. The following
+are valid selectors for metrics:
+
+- `instrumentType`
+- `instrumentName`
+- `meterName`
+- `meterVersion`
+- `meterSchemaUrl`
+
+Selecting by `instrumentName` (of type string) has support for wildcards, so you
+can select all instruments using `*` or select all instruments whose name starts
+with `http` by using `http*`.
+
+#### Examples
+
+Filter attributes on all metric types:
+
+```js
+const limitAttributesView = new View({
+  // only export the attribute 'environment'
+  attributeKeys: ['environment'],
+  // apply the view to all instruments
+  instrumentName: '*',
+});
+```
+
+Drop all instruments with the meter name `pubsub`:
+
+```js
+const dropView = new View({
+  aggregation: new DropAggregation(),
+  meterName: 'pubsub',
+});
+```
+
+Define explicit bucket sizes for the Histogram named `http.server.duration`:
+
+```js
+const histogramView = new View({
+  aggregation: new ExplicitBucketHistogramAggregation([
+    0, 1, 5, 10, 15, 20, 25, 30,
+  ]),
+  instrumentName: 'http.server.duration',
+  instrumentType: InstrumentType.HISTOGRAM,
+});
+```
+
+#### Attach to meter provider
+
+Once views have been configured, attach them to the corresponding meter
+provider:
+
+```js
+const meterProvider = new MeterProvider({
+  views: [limitAttributesView, dropView, histogramView],
+});
+```
 
 ## Logs
 
