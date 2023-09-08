@@ -300,7 +300,7 @@ serializing the context.
 To start [metrics](/docs/concepts/signals/metrics), you'll need to have an
 initialized `MeterProvider` that lets you create a `Meter`. `Meter`s let you
 create `Instrument`s that you can use to create different kinds of metrics.
-OpenTelemetry JavaScript currently supports the following `Instrument`s:
+OpenTelemetry Go currently supports the following `Instrument`s:
 
 - Counter, a synchronous instrument which supports non-negative increments
 - Asynchronous Counter, a asynchronous instrument which supports non-negative
@@ -321,6 +321,11 @@ suited for your use case, see
 If a `MeterProvider` is not created either by an instrumentation library or
 manually, the OpenTelemetry Metrics API will use a no-op implementation and fail
 to generate data.
+
+Here you can find more detailed package documentation for:
+
+- Metrics API: [`go.opentelemetry.io/otel/metric`](https://pkg.go.dev/go.opentelemetry.io/otel/metric)
+- Metrics SDK: [`go.opentelemetry.io/otel/sdk/metric`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric)
 
 ### Initialize Metrics
 
