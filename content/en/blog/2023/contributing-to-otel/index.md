@@ -6,7 +6,7 @@ author:
   >- # If you have only one author, then add the single name on this line in quotes.
   [Adriana Villela](https://github.com/avillela) (Lightstep),
 canonical_url: https://medium.com/cloud-native-daily/how-to-contribute-to-opentelemetry-5962e8b2447e
-cSpell:ignore: EUWG, sayin
+cSpell:ignore: EUWG, nolan, riaan, sayin, servian
 ---
 
 ![Sunset over the water over an orange sky, with long grass in the foreground.](turks-sunset.jpg)
@@ -27,7 +27,7 @@ of contributing to open source was just plain _scary_!! I mean, when you open up
 a
 [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
 (PR),
-_[you are putting yourself out there](https://oncallmemaybe.com/episodes/adventures-in-open source-software-with-riaan-nolan-of-servian)_,
+_[you are putting yourself out there](https://oncallmemaybe.com/episodes/adventures-in-open-source-software-with-riaan-nolan-of-servian)_,
 to be judged by those little GitHub avatars that make up the approvers list for
 the repository you're contributing to. YIKES!
 
