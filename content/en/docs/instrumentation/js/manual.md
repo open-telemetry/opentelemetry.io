@@ -1254,7 +1254,7 @@ In some cases you may not be able or may not want to use the
 [full OpenTelemetry SDK for Node.js](https://www.npmjs.com/package/@opentelemetry/sdk-node).
 This is also true if you want to use OpenTelemetry JavaScript in the browser.
 
-If so, you can initialize tracing with the `@opentelemetry/sdk-metrics` package:
+If so, you can initialize metrics with the `@opentelemetry/sdk-metrics` package:
 
 ```shell
 npm install @opentelemetry/sdk-metrics
