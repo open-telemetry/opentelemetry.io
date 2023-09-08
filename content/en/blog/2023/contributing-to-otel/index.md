@@ -8,7 +8,7 @@ author:
 canonical_url: https://medium.com/cloud-native-daily/how-to-contribute-to-opentelemetry-5962e8b2447e
 ---
 
-![Sunset over the water over an orange sky, with long grass in the foreground.](turks_sunset.jpg)
+![Sunset over the water over an orange sky, with long grass in the foreground.](turks-sunset.jpg)
 
 Are you an [OpenTelemetry](/) (OTel) practitioner? Have you ever wanted to
 contribute back to OpenTelemetry, but didn’t know where to begin? Well, my
