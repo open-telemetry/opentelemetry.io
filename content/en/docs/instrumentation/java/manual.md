@@ -175,6 +175,7 @@ To ensure that it is working, run the application with the following command and
 open <http://localhost:8080/rolldice?rolls=12> in your web browser:
 
 ```shell
+gradle assemble
 java -jar ./build/libs/java-simple.jar
 ```
 
@@ -242,7 +243,6 @@ dependencies {
     implementation("io.opentelemetry:opentelemetry-sdk-metrics:{{% param javaVersion %}}");
     implementation("io.opentelemetry:opentelemetry-exporter-logging:{{% param javaVersion %}}");
     implementation("io.opentelemetry:opentelemetry-semconv:{{% param javaVersion %}}-alpha");
-    implementation("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure:{{% param javaVersion %}}");
 }
 ```
 
@@ -283,10 +283,6 @@ dependencies {
             <artifactId>opentelemetry-semconv</artifactId>
             <version>{{% param javaVersion %}}-alpha</version>
         </dependency>
-        <dependency>
-          <groupId>io.opentelemetry</groupId>
-          <artifactId>opentelemetry-sdk-extension-autoconfigure</artifactId>
-        </dependency>
     </dependencies>
 </project>
 ```
@@ -315,7 +311,6 @@ dependencies {
     implementation("io.opentelemetry:opentelemetry-sdk-metrics:{{% param javaVersion %}}");
     implementation("io.opentelemetry:opentelemetry-exporter-logging:{{% param javaVersion %}}");
     implementation("io.opentelemetry:opentelemetry-semconv:{{% param javaVersion %}}-alpha");
-    implementation("opentelemetry-sdk-extension-autoconfigure:{{% param javaVersion %}}");
     implementation("opentelemetry-sdk-extension-autoconfigure:{{% param javaVersion %}}");
     implementation("opentelemetry-sdk-extension-autoconfigure-spi:{{% param javaVersion %}}");
 }
@@ -464,7 +459,7 @@ public class DiceApplication {
 
   @Bean
   public OpenTelemetry openTelemetry() {
-    Resource resource = Resource.getDefault().toBuilder().put(SERVICE_NAME, "dice-server").put(SERVICE_VERSION, "0.1.0").build()
+    Resource resource = Resource.getDefault().toBuilder().put(ResourceAttributes.SERVICE_NAME, "dice-server").put(ResourceAttributes.SERVICE_VERSION, "0.1.0").build();
 
     SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder()
         .addSpanProcessor(SimpleSpanProcessor.create(LoggingSpanExporter.create()))
@@ -486,6 +481,7 @@ public class DiceApplication {
         .setMeterProvider(sdkMeterProvider)
         .setLoggerProvider(sdkLoggerProvider)
         .setPropagators(ContextPropagators.create(W3CTraceContextPropagator.getInstance()))
+        .setPropagators(ContextPropagators.create(W3CBaggagePropagator.getInstance()))
         .buildAndRegisterGlobal();
 
     return openTelemetry;
@@ -571,10 +567,10 @@ Tracer tracer = openTelemetry.getTracer("instrumentation-scope-name", "instrumen
 The values of `instrumentation-scope-name` and `instrumentation-scope-version`
 should uniquely identify the
 [instrumentation scope](/docs/specs/otel/glossary/#instrumentation-scope), such
-as the package, module or class name. While the name is required, the version is
-still recommended despite being optional. Note, that all `Tracer`s that are
-created by a single `OpenTelemetry` instance will interoperate, regardless of
-name.
+as the package, module or class name. This will help later help determining what
+the source of telemetry is. While the name is required, the version is still
+recommended despite being optional. Note, that all `Tracer`s that are created by
+a single `OpenTelemetry` instance will interoperate, regardless of name.
 
 It's generally recommended to call `getTracer` in your app when you need it
 rather than exporting the `tracer` instance to the rest of your app. This helps
@@ -672,15 +668,24 @@ import io.opentelemetry.context.Scope;
 
     // Make the span the current span
     try (Scope scope = span.makeCurrent()) {
-      int result = this.getRandomNumber(1, 6);
+
+      if (!rolls.isPresent()) {
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Missing rolls parameter", null);
+      }
+
+      List<Integer> result = new Dice(1, 6).rollTheDice(rolls.get());
+
       if (player.isPresent()) {
         logger.info("{} is rolling the dice: {}", player.get(), result);
       } else {
         logger.info("Anonymous player is rolling the dice: {}", result);
       }
-      return Integer.toString(result);
+      return result;
+    } catch(Throwable t) {
+      span.recordException(t);
+      throw t;
     } finally {
-        span.end();
+      span.end();
     }
   }
 ```

@@ -23,6 +23,63 @@ how to setup resource detection following the
 For manual instrumentation, you will find some introductions on how to set up
 resource detection below.
 
+## Detecting resources from common environments
+
+You can use `ResourceProvider`s for filling in attributes related to common
+environments, like docs/specs/otel/resource/semantic_conventions/container/,
+[Host](/docs/specs/otel/resource/semantic_conventions/host/) or
+[Operating System](/docs/specs/otel/resource/semantic_conventions/os/). These
+can be used with or without
+[auto-configuration](/docs/instrumentation/java/manual/#automatic-configuration).
+
+To use those providers, add the following dependency:
+
+{{< tabpane text=true >}} {{% tab Gradle %}}
+
+```kotlin
+dependencies {
+    implementation("io.opentelemetry.instrumentation:opentelemetry-resources:{{% param javaVersion %}}-alpha");
+}
+```
+
+{{% /tab %}} {{% tab Maven %}}
+
+```xml
+<project>
+    <dependencies>
+        <dependency>
+            <groupId>io.opentelemetry.instrumentation</groupId>
+            <artifactId>opentelemetry-resources</artifactId>
+        </dependency>
+    </dependencies>
+</project>
+```
+
+{{< /tab >}} {{< /tabpane>}}
+
+Next you can use them like the following in your code:
+
+```java
+import io.opentelemetry.instrumentation.resources.ContainerResource;
+import io.opentelemetry.instrumentation.resources.HostResource;
+import io.opentelemetry.instrumentation.resources.OsResource;
+import io.opentelemetry.instrumentation.resources.ProcessResource;
+import io.opentelemetry.instrumentation.resources.ProcessRuntimeResource;
+
+...
+    Resource resource = Resource.getDefault()
+    .merge(ContainerResource.get())
+    .merge(HostResource.get())
+    .merge(OsResource.get())
+    .merge(ProcessResource.get())
+    .merge(ProcessRuntimeResource.get())
+    .merge(Resource.create(Attributes.builder()
+        .put(ResourceAttributes.SERVICE_NAME, "dice-service")
+        ...
+        .build()));
+...
+```
+
 ## Adding resources in code
 
 Custom resources can be configured in your code like the following:
@@ -36,9 +93,6 @@ Custom resources can be configured in your code like the following:
             .put(ResourceAttributes.HOST_NAME, System.getenv("HOSTNAME"))
             .put(ResourceAttributes.PROCESS_PID, ProcessHandle.current().pid())
             .build()));
-
-    Resource resource = Resource.getDefault()
-        .merge(Resource.create(attributes));
 
     SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder()
         .setResource(resource)

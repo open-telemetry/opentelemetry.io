@@ -9,7 +9,7 @@ backend such as [Jaeger](https://www.jaegertracing.io/) or
 [Zipkin](https://zipkin.io/). OpenTelemetry Java provides exporters for some
 common open source backends.
 
-If you use the Javaagent for
+If you use the Java agent for
 [automatic instrumentation](/docs/instrumentation/java/automatic) you can learn
 how to setup exporters following the
 [Agent Configuration Guide](/docs/instrumentation/java/automatic/agent-config)
@@ -22,10 +22,7 @@ some introductions below on how to set up backends and the matching exporters.
 To send trace data to a OTLP endpoint (like the [collector](/docs/collector) or
 Jaeger) you'll want to use `opentelemetry-exporter-otlp`:
 
-<!-- prettier-ignore-start -->
-
-{{< tabpane text=true >}}
-{{% tab Gradle %}}
+{{< tabpane text=true >}} {{% tab Gradle %}}
 
 ```kotlin
 dependencies {
@@ -33,8 +30,7 @@ dependencies {
 }
 ```
 
-{{% /tab %}}
-{{% tab Maven %}}
+{{% /tab %}} {{% tab Maven %}}
 
 ```xml
 <project>
@@ -47,25 +43,24 @@ dependencies {
 </project>
 ```
 
-{{< /tab >}}
-{{< /tabpane>}}
+{{< /tab >}} {{< /tabpane>}}
 
 Next, configure the exporter to point at an OTLP endpoint.
 
-If you use [SDK auto-configuration](/docs/instrumentation/java/manual/#automatic-configuration)
+If you use
+[SDK auto-configuration](/docs/instrumentation/java/manual/#automatic-configuration)
 all you need to do is update your environment variables:
 
 ```shell
 env OTEL_EXPORTER_OTLP_ENDPOINT=http://example:4317 java -jar ./build/libs/java-simple.jar
 ```
 
-Note, that in the case of exporting via OTLP you do not need to set `OTEL_TRACES_EXPORTER`, `OTEL_METRICS_EXPORTER` and `OTEL_LOGS_EXPORTER`
-since `otlp` is their default value
+Note, that in the case of exporting via OTLP you do not need to set
+`OTEL_TRACES_EXPORTER`, `OTEL_METRICS_EXPORTER` and `OTEL_LOGS_EXPORTER` since
+`otlp` is their default value
 
-In the case of [manual configuration] you can update the [example app](/docs/instrumentation/java/manual#example-app) like the
-following:
-
-<!-- prettier-ignore-end -->
+In the case of [manual configuration] you can update the
+[example app](/docs/instrumentation/java/manual#example-app) like the following:
 
 ```java { hl_lines=["12-14",21,"39-53"] }
 package otel;
