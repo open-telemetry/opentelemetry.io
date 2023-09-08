@@ -104,6 +104,7 @@ jobs:
       - run: npm install --omit=optional
       - run: |
           npm run check:links
+          npm run test-and-fix
           git status
           git branch -v
 
