@@ -15,7 +15,7 @@ contribute back to OpenTelemetry, but didn’t know where to begin? Well, my
 friend, you’ve come to the right place!
 
 Today, I’ll share some ways in which you can contribute to this vibrant and
-welcoming open-source community!
+welcoming open-source community, based on my personal experience.
 
 ## **Contributing to open source can be SCARY!**
 
