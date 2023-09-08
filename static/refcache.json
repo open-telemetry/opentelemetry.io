@@ -839,6 +839,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-07-21T16:51:51.751459+02:00"
   },
+  "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests": {
+    "StatusCode": 206,
+    "LastSeen": "2023-09-08T10:57:00.851277-04:00"
+  },
   "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T15:46:50.059623-04:00"
@@ -1522,6 +1526,10 @@
   "https://en.wikipedia.org/wiki/S.M.A.R.T.": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T16:05:15.796393-04:00"
+  },
+  "https://en.wikipedia.org/wiki/Special_interest_group": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-08T10:57:02.340092-04:00"
   },
   "https://en.wikipedia.org/wiki/Subnormal_number": {
     "StatusCode": 200,
@@ -2435,6 +2443,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:30:40.580337-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-demo#welcome-to-the-opentelemetry-astronomy-shop-demo": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-08T10:57:02.070547-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-demo-webstore#local-quickstart": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:23:00.788095-04:00"
@@ -3090,6 +3102,10 @@
   "https://github.com/open-telemetry/opentelemetry.io#readme": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:49:14.039654-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io#submitting-a-blog-post": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-08T10:57:01.381266-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry.io/issues/new": {
     "StatusCode": 200,
@@ -3835,6 +3851,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:19:11.338797-04:00"
   },
+  "https://medium.com/cloud-native-daily/how-to-contribute-to-opentelemetry-5962e8b2447e": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-08T10:56:59.495178-04:00"
+  },
   "https://medium.com/jaegertracing/introducing-native-support-for-opentelemetry-in-jaeger-eb661be8183c": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T16:14:37.278284-04:00"
@@ -4098,6 +4118,10 @@
   "https://opentelemetry.devstats.cncf.io/d/8/dashboards": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:36:24.487952-04:00"
+  },
+  "https://opentelemetry.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-09-08T10:56:59.732967-04:00"
   },
   "https://opentracing.io": {
     "StatusCode": 206,
