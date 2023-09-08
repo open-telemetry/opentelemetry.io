@@ -348,10 +348,8 @@ Ensure you have the right Go modules installed:
 ```sh
 go get go.opentelemetry.io/otel \
   go.opentelemetry.io/otel/exporters/stdout/stdoutmetric \
-  go.opentelemetry.io/otel/metric\
   go.opentelemetry.io/otel/sdk \
   go.opentelemetry.io/otel/sdk/metric
-  
 ```
 
 Then initialize a resources, metrics exporter and provider:
