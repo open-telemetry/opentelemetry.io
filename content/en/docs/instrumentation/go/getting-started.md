@@ -4,159 +4,78 @@ weight: 10
 cSpell:ignore: chan codebases fscanf println stdouttrace strconv struct
 ---
 
-Welcome to the OpenTelemetry for Go getting started guide! This guide will walk
-you through the basic steps in installing, instrumenting with, configuring, and
-exporting data from OpenTelemetry. Before you get started, be sure to have Go
-1.16 or newer installed.
+This page will show you how to get started with OpenTelemetry in Golang.
 
-Understanding how a system is functioning when it is failing or having issues is
-critical to resolving those issues. One strategy to understand this is with
-tracing. This guide shows how the OpenTelemetry Go project can be used to trace
-an example application. You will start with an application that computes
-Fibonacci numbers for users, and from there you will add instrumentation to
-produce tracing telemetry with OpenTelemetry Go.
+You will learn how you can instrument a simple Go application automatically,
+in such a way that [traces][], [metrics][] and [logs][] are emitted to the
+console.
 
-For reference, a complete example of the code you will build can be found
-[here](https://github.com/open-telemetry/opentelemetry-go/tree/main/example/fib).
+## Prerequisites
 
-To start building the application, make a new directory named `fib` to house our
-Fibonacci project. Next, add the following to a new file named `fib.go` in that
-directory[^1].
+Ensure that you have the following installed locally:
 
-[^1]:
-    The `Fibonacci()` function intentionally produces invalid results for
-    sufficiently large values of `n`. This is addressed in
-    [Error handling](#error-handling).
+- Golang JDK 1.18+
+
+## Example Application
+
+The following example uses a basic
+[Gin Web Framework](https://gin-gonic.com/docs/introduction/). If you are
+not using Gin, that's OK — you can use OpenTelemetry Golang with other web
+frameworks as well, such as Goframe and Beego. 
+
+For a complete list of
+libraries for supported frameworks, see the
+[registry](/ecosystem/registry/?component=instrumentation&language=java).
+
+For more elaborate examples, see
+[examples](/docs/instrumentation/java/examples/).
+
+### Dependencies
+
+To begin, set up an environment in a new directory called `go-simple`. Within
+that directory, create a file called `build.gradle.kts` with the following
+content:
 
 ```go
-package main
-
-// Fibonacci returns the n-th Fibonacci number.
-func Fibonacci(n uint) (uint64, error) {
-	if n <= 1 {
-		return uint64(n), nil
-	}
-
-	var n2, n1 uint64 = 0, 1
-	for i := uint(2); i < n; i++ {
-		n2, n1 = n1, n1+n2
-	}
-
-	return n2 + n1, nil
-}
+go mod init
+go get github.com/gin-gonic/gin
+go mod vendor
 ```
 
-With your core logic added, you can now build your application around it. Add a
-new `app.go` file with the following application logic.
+### Create and launch an HTTP Server
+
+In that same folder, create a file called `main.go` and add the
+following code to the file:
+
 
 ```go
 package main
 
 import (
-	"context"
-	"fmt"
-	"io"
-	"log"
-)
-
-// App is a Fibonacci computation application.
-type App struct {
-	r io.Reader
-	l *log.Logger
-}
-
-// NewApp returns a new App.
-func NewApp(r io.Reader, l *log.Logger) *App {
-	return &App{r: r, l: l}
-}
-
-// Run starts polling users for Fibonacci number requests and writes results.
-func (a *App) Run(ctx context.Context) error {
-	for {
-		n, err := a.Poll(ctx)
-		if err != nil {
-			return err
-		}
-
-		a.Write(ctx, n)
-	}
-}
-
-// Poll asks a user for input and returns the request.
-func (a *App) Poll(ctx context.Context) (uint, error) {
-	a.l.Print("What Fibonacci number would you like to know: ")
-
-	var n uint
-	_, err := fmt.Fscanf(a.r, "%d\n", &n)
-	return n, err
-}
-
-// Write writes the n-th Fibonacci number back to the user.
-func (a *App) Write(ctx context.Context, n uint) {
-	f, err := Fibonacci(n)
-	if err != nil {
-		a.l.Printf("Fibonacci(%d): %v\n", n, err)
-	} else {
-		a.l.Printf("Fibonacci(%d) = %d\n", n, f)
-	}
-}
-```
-
-With your application fully composed, you need a `main()` function to actually
-run the application. In a new `main.go` file add the following run logic.
-
-```go
-package main
-
-import (
-	"context"
-	"log"
-	"os"
-	"os/signal"
+	"github.com/gin-gonic/gin"
+	"math/rand"
+	"net/http"
 )
 
 func main() {
-	l := log.New(os.Stdout, "", 0)
+	r := gin.Default()
 
-	sigCh := make(chan os.Signal, 1)
-	signal.Notify(sigCh, os.Interrupt)
+	r.GET("/rolldice", func(c *gin.Context) {
+		c.AsciiJSON(http.StatusOK, rand.Intn(5)+1)
+	})
 
-	errCh := make(chan error)
-	app := NewApp(os.Stdin, l)
-	go func() {
-		errCh <- app.Run(context.Background())
-	}()
-
-	select {
-	case <-sigCh:
-		l.Println("\ngoodbye")
-		return
-	case err := <-errCh:
-		if err != nil {
-			l.Fatal(err)
-		}
-	}
+	r.Run()
 }
+
 ```
 
-With the code complete it is almost time to run the application. Before you can
-do that you need to initialize this directory as a Go module. From your
-terminal, run the command `go mod init fib` in the `fib` directory. This will
-create a `go.mod` file, which is used by Go to manage imports. Now you should be
-able to run the application!
+Build and run the application with the following command, then open
+<http://localhost:8080/rolldice> in your web browser to ensure it is working.
+
 
 ```console
-$ go run .
-What Fibonacci number would you like to know:
-42
-Fibonacci(42) = 267914296
-What Fibonacci number would you like to know:
-^C
-goodbye
+$ go run ./main.go
 ```
-
-The application can be exited with <kbd>Ctrl+C</kbd>. You should see a similar
-output as above, if not make sure to go back and fix any errors.
 
 ## Trace Instrumentation
 
