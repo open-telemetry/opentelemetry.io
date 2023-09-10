@@ -438,7 +438,7 @@ file:
 ```go
 func createDefaultConfig() component.Config {
 	return &Config{
-		Interval: string(defaultInterval),
+		Interval: defaultInterval.String(),
 	}
 }
 ```
@@ -465,7 +465,7 @@ const (
 
 func createDefaultConfig() component.Config {
 	return &Config{
-		Interval: string(defaultInterval),
+		Interval: defaultInterval.String(),
 	}
 }
 
@@ -578,7 +578,7 @@ const (
 
 func createDefaultConfig() component.Config {
 	return &Config{
-		Interval: string(defaultInterval),
+		Interval: defaultInterval.String(),
 	}
 }
 
@@ -1052,7 +1052,7 @@ const (
 
 func createDefaultConfig() component.Config {
 	return &Config{
-		Interval: string(defaultInterval),
+		Interval: defaultInterval.String(),
 	}
 }
 
