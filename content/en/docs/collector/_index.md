@@ -50,21 +50,21 @@ filtering.
 
 It is also easier to [setup a collector](./getting-started) than you might
 think: the default OTLP exporters in each language assume a local collector
-endpoint, so you'd start up a collector and you'd just start getting telemetry.
+endpoint, so if you launch a collector it will automatically start receiving
+telemetry.
 
 ## Status and releases
 
 The **collector** status is: [mixed][], since core collector components
 currently have mixed [stability levels][].
 
-**Collector components** differ in their maturity levels. An effort is underway
-to ensure that every component has its stability documented. To track the
-progress of this effort, see `opentelemetry-collector-contrib` [issue #10116][].
+**Collector components** differ in their maturity levels. Each component has its
+stability documented in its `README.md`. You can find a list of all available
+collector components in the [registry][].
 
 {{% docs/latest-release collector-releases /%}}
 
-[issue #10116]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/10116
+[registry]: /ecosystem/registry/?language=collector
 [mixed]: /docs/specs/otel/document-status/#mixed
 [stability levels]:
   https://github.com/open-telemetry/opentelemetry-collector#stability-levels

@@ -318,6 +318,6 @@
   distribution: true
   nativeOTLP: true
   url: https://docs.greptime.com/user-guide/clients/otlp
-  contact: ''
+  contact: 'info@greptime.com'
   oss: true
   commercial: true
