@@ -122,7 +122,7 @@ language-specific instrumentation. In short, there's always work to be done!
 Learn more about how to contribute to the OTel Demo
 [here](https://github.com/open-telemetry/opentelemetry-demo/blob/main/CONTRIBUTING.md).
 
-### **Join a Special Interest Group**
+### Join a Special Interest Group
 
 Feeling a little more adventurous? Then why not join one of the other OTel
 [special interest groups](https://en.wikipedia.org/wiki/Special_interest_group)
