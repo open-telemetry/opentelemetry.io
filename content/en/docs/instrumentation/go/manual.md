@@ -551,7 +551,7 @@ import (
 func init() {
 	histogram, err := meter.Float64Histogram(
 		"task.duration",
-		metric.WithDescription("The duration of task execuction."),
+		metric.WithDescription("The duration of task execution."),
 		metric.WithUnit("s"),
 	)
 	if err != nil {
@@ -615,7 +615,7 @@ import (
 )
 
 // registerDBMetrics registers asynchronous metics for the provided db.
-// Make sure to unregister metric.Registration before closing the provdided db.
+// Make sure to unregister metric.Registration before closing the provided db.
 func registerDBMetrics(db *sql.DB, meter metric.Meter, poolName string) (metric.Registration, error) {
 	max, err := meter.Int64ObservableUpDownCounter(
 		"db.client.connections.max",
