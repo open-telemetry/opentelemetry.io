@@ -18,7 +18,7 @@ friend, you've come to the right place!
 Today, I'll share some ways in which you can contribute to this vibrant and
 welcoming open source community, based on my personal experience.
 
-## **Contributing to open source can be SCARY!**
+## Contributing to open source can be SCARY!
 
 Let's face it. Most of us use open source projects in our day-to-day tech jobs.
 (Or maybe side hustles?) But what about _contributing_ to these open source
