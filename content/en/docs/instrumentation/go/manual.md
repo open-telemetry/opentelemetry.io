@@ -339,9 +339,12 @@ you create a [`Meter`](/docs/concepts/signals/metrics/#meter).
 
 If a `MeterProvider` is not created, the OpenTelemetry APIs for metrics will use
 a no-op implementation and fail to generate data. Therefore, you have modify the
-source code to include the SDK initialization code using [`go.opentelemetry.io/otel`][],
-[`go.opentelemetry.io/otel/sdk/metric`][], [`go.opentelemetry.io/otel/sdk/resource`][],
-[`go.opentelemetry.io/otel/exporters/stdout/stdoutmetric`][] packages.
+source code to include the SDK initialization code using the following packages:
+
+- [`go.opentelemetry.io/otel`][]
+- [`go.opentelemetry.io/otel/sdk/metric`][]
+- [`go.opentelemetry.io/otel/sdk/resource`][]
+- [`go.opentelemetry.io/otel/exporters/stdout/stdoutmetric`][]
 
 Ensure you have the right Go modules installed:
 
