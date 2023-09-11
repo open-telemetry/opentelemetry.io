@@ -72,7 +72,8 @@ telemetry source-identifying info.
 
 See [releases][releases] for a full list of artifact coordinates.
 
-See [semantic-conventions-java][semantic-conventions-java] for semantic conventions releases.
+See [semantic-conventions-java][semantic-conventions-java] for semantic
+conventions releases.
 
 ### Gradle
 
@@ -87,7 +88,8 @@ dependencies {
 
 See [releases][releases] for a full list of artifact coordinates.
 
-See [semantic-conventions-java][semantic-conventions-java] for semantic conventions releases.
+See [semantic-conventions-java][semantic-conventions-java] for semantic
+conventions releases.
 
 ### Imports
 
@@ -1108,6 +1110,7 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
 [parentbased]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/ParentBasedSampler.java
 [releases]: https://github.com/open-telemetry/opentelemetry-java#releases
-[semantic-conventions-java]: https://github.com/open-telemetry/semantic-conventions-java/releases
+[semantic-conventions-java]:
+  https://github.com/open-telemetry/semantic-conventions-java/releases
 [traceidratiobased]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/TraceIdRatioBasedSampler.java
