@@ -26,7 +26,7 @@ resource detection below.
 ## Detecting resources from common environments
 
 You can use `ResourceProvider`s for filling in attributes related to common
-environments, like docs/specs/otel/resource/semantic_conventions/container/,
+environments, like [Container](/docs/specs/otel/resource/semantic_conventions/container/),
 [Host](/docs/specs/otel/resource/semantic_conventions/host/) or
 [Operating System](/docs/specs/otel/resource/semantic_conventions/os/). These
 can be used with or without
@@ -68,12 +68,12 @@ import io.opentelemetry.instrumentation.resources.ProcessRuntimeResource;
 
 ...
     Resource resource = Resource.getDefault()
-    .merge(ContainerResource.get())
-    .merge(HostResource.get())
-    .merge(OsResource.get())
-    .merge(ProcessResource.get())
-    .merge(ProcessRuntimeResource.get())
-    .merge(Resource.create(Attributes.builder()
+      .merge(ContainerResource.get())
+      .merge(HostResource.get())
+      .merge(OsResource.get())
+      .merge(ProcessResource.get())
+      .merge(ProcessRuntimeResource.get())
+      .merge(Resource.create(Attributes.builder()
         .put(ResourceAttributes.SERVICE_NAME, "dice-service")
         ...
         .build()));
