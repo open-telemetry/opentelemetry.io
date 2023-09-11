@@ -142,7 +142,7 @@ I've found folks within OTel to be nothing but helpful and welcoming.
 
 Learn more about the OTel SIGs [here](/community/#special-interest-groups).
 
-### **Final thoughts**
+### Final thoughts
 
 As we've seen, there are many ways to contribute to OpenTelemetry, whether it's
 through docs contributions, blogging, joining the End User Working Group,
