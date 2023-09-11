@@ -20,8 +20,8 @@ welcoming open source community, based on my personal experience.
 
 ## Contributing to open source can be SCARY!
 
-Let's face it. Most of us use open source projects in our day-to-day tech jobs.
-(Or maybe side hustles?) But what about _contributing_ to these open source
+Let's face it. Most of us use open source projects in our day-to-day tech jobs
+(Or maybe side hustles?). But what about _contributing_ to these open source
 projects? I don't know about you, but for me, up until last year, the prospect
 of contributing to open source was just plain _scary_!! I mean, when you open up
 a
