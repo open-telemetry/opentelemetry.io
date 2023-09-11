@@ -35,7 +35,7 @@ But as scary as the thought of opening a PR might be, it's also SO VERY
 SATISFYING to see your contributions merged into a codebase. And most
 importantly, your contributions can help others!! How cool is that?
 
-## **Ways to contribute to OTel**
+## Ways to contribute to OTel
 
 Okay. Are you feeling pumped now? Awesome. Let's look at some of the ways to
 contribute to OTel.
