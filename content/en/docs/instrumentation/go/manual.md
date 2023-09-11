@@ -423,8 +423,8 @@ Now that a `MeterProvider` is configured, you can acquire a `Meter`.
 ### Acquiring a Meter
 
 Anywhere in your application where you have manually instrumented code you can
-call [`otel.Meter`](https://pkg.go.dev/go.opentelemetry.io/otel#Meter) to acquire
-a meter. For example:
+call [`otel.Meter`](https://pkg.go.dev/go.opentelemetry.io/otel#Meter) to
+acquire a meter. For example:
 
 ```go
 import "go.opentelemetry.io/otel"
@@ -464,8 +464,7 @@ example).
 
 Counters can by used to measure a non-negative, increasing value.
 
-For example, here's how you might report a number of calls for an
-HTTP handler:
+For example, here's how you might report a number of calls for an HTTP handler:
 
 ```go
 import (
@@ -489,7 +488,6 @@ func init() {
 		// do some work in an API call
 	})
 }
-
 ```
 
 ### Using UpDown Counters
@@ -656,7 +654,8 @@ func registerDBMetrics(db *sql.DB, meter metric.Meter, poolName string) (metric.
 
 Observable Gauges should be used to measure non-additive values.
 
-For example, here's how you might report memory usage of the heap objects used in application:
+For example, here's how you might report memory usage of the heap objects used
+in application:
 
 ```go
 import (
@@ -687,8 +686,11 @@ func init() {
 
 ### Adding attributes
 
-You can add Attributes to using [`WithAttributeSet`](https://pkg.go.dev/go.opentelemetry.io/otel/metric#WithAttributeSet)
-or [`WithAttributes`](https://pkg.go.dev/go.opentelemetry.io/otel/metric#WithAttributes) option.
+You can add Attributes to using
+[`WithAttributeSet`](https://pkg.go.dev/go.opentelemetry.io/otel/metric#WithAttributeSet)
+or
+[`WithAttributes`](https://pkg.go.dev/go.opentelemetry.io/otel/metric#WithAttributes)
+option.
 
 ```go
 import (
@@ -730,7 +732,11 @@ telemetry backends.
 [trace semantic conventions]: /docs/specs/otel/trace/semantic_conventions/
 [instrumentation library]: ../libraries/
 [`go.opentelemetry.io/otel`]: https://pkg.go.dev/go.opentelemetry.io/otel
-[`go.opentelemetry.io/otel/exporters/stdout/stdoutmetric`]: https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdoutmetric
-[`go.opentelemetry.io/otel/metric`]: https://pkg.go.dev/go.opentelemetry.io/otel/metric
-[`go.opentelemetry.io/otel/sdk/metric`]: https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric
-[`go.opentelemetry.io/otel/sdk/resource`]: https://pkg.go.dev/go.opentelemetry.io/otel/sdk/resource
+[`go.opentelemetry.io/otel/exporters/stdout/stdoutmetric`]:
+  https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdoutmetric
+[`go.opentelemetry.io/otel/metric`]:
+  https://pkg.go.dev/go.opentelemetry.io/otel/metric
+[`go.opentelemetry.io/otel/sdk/metric`]:
+  https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric
+[`go.opentelemetry.io/otel/sdk/resource`]:
+  https://pkg.go.dev/go.opentelemetry.io/otel/sdk/resource
