@@ -26,7 +26,7 @@ content/en/docs/collector                @open-telemetry/docs-approvers @open-te
 content/en/docs/demo                     @open-telemetry/docs-approvers @open-telemetry/demo-approvers
 content/en/docs/instrumentation/cpp/     @open-telemetry/docs-approvers @open-telemetry/cpp-approvers
 content/en/docs/instrumentation/erlang/  @open-telemetry/docs-approvers @open-telemetry/erlang-approvers
-content/en/docs/instrumentation/go/      @open-telemetry/docs-approvers @open-telemetry/go-instrumentation-approvers
+content/en/docs/instrumentation/go/      @open-telemetry/docs-approvers @open-telemetry/go-approvers @open-telemetry/go-instrumentation-approvers
 content/en/docs/instrumentation/java/    @open-telemetry/docs-approvers @open-telemetry/java-approvers @open-telemetry/java-instrumentation-approvers
 content/en/docs/instrumentation/js/      @open-telemetry/docs-approvers @open-telemetry/javascript-approvers
 content/en/docs/instrumentation/net/     @open-telemetry/docs-approvers @open-telemetry/dotnet-approvers @open-telemetry/dotnet-instrumentation-approvers
