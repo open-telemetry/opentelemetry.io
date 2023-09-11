@@ -480,7 +480,7 @@ public class DiceApplication {
         .setTracerProvider(sdkTracerProvider)
         .setMeterProvider(sdkMeterProvider)
         .setLoggerProvider(sdkLoggerProvider)
-       .setPropagators(ContextPropagators.create(TextMapPropagator.composite(W3CTraceContextPropagator.getInstance(), W3CBaggagePropagator.getInstance())))
+        .setPropagators(ContextPropagators.create(TextMapPropagator.composite(W3CTraceContextPropagator.getInstance(), W3CBaggagePropagator.getInstance())))
         .buildAndRegisterGlobal();
 
     return openTelemetry;
