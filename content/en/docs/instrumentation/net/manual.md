@@ -260,7 +260,7 @@ public static void DoWork()
     var previous = Activity.Current;
     Activity.Current = null;
 
-    var newRoot = source.StartActivity("NewRoot");
+    var newRoot = MyActivitySource.StartActivity("NewRoot");
 
     // Re-set the previous Current Activity so the trace isn't messed up
     Activity.Current = previous;
