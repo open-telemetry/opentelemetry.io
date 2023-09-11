@@ -41,7 +41,7 @@ import (
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace"
 	"go.opentelemetry.io/otel/sdk/resource"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
-	semconv "go.opentelemetry.io/otel/semconv/v1.17.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.21.0"
 	"go.opentelemetry.io/otel/trace"
 )
 
@@ -190,7 +190,7 @@ Semantic Attributes are attributes that are defined by the [OpenTelemetry
 Specification][] in order to provide a shared set of attribute keys across
 multiple languages, frameworks, and runtimes for common concepts like HTTP
 methods, status codes, user agents, and more. These attributes are available in
-the `go.opentelemetry.io/otel/semconv/v1.12.0` package.
+the `go.opentelemetry.io/otel/semconv/v1.21.0` package.
 
 For details, see [Trace semantic conventions][].
 
@@ -464,15 +464,32 @@ example).
 
 Counters can by used to measure a non-negative, increasing value.
 
+For example, here's how you might report a number of calls for an
+HTTP handler:
+
 ```go
-counter, err := meter.Int64Counter("events.counter")
-if err != nil {
-	panic(err)
+import (
+	"net/http"
+
+	"go.opentelemetry.io/otel/metric"
+)
+
+func init() {
+	apiCounter, err := meter.Int64UpDownCounter(
+		"api.counter",
+		metric.WithDescription("Number of API calls."),
+		metric.WithUnit("{call}"),
+	)
+	if err != nil {
+		panic(err)
+	}
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		apiCounter.Add(r.Context(), 1)
+
+		// do some work in an API call
+	})
 }
 
-// ...
-
-counter.Add(context.Background(), 1)
 ```
 
 ### Using UpDown Counters
@@ -480,19 +497,40 @@ counter.Add(context.Background(), 1)
 UpDown counters can increment and decrement, allowing you to observe a
 cumulative value that goes up or down.
 
+For example, here's how you might report a number of items of some collection:
+
 ```go
-counter, err := meter.Int64UpDownCounter("events.counter")
-if err != nil {
-	panic(err)
+import (
+	"context"
+
+	"go.opentelemetry.io/otel/metric"
+)
+
+var itemsCounter metric.Int64UpDownCounter
+
+func init() {
+	var err error
+	itemsCounter, err = meter.Int64UpDownCounter(
+		"events.counter",
+		metric.WithDescription("Number of events."),
+		metric.WithUnit("{event}"),
+	)
+	if err != nil {
+		panic(err)
+	}
 }
 
-// ...
+func addItem() {
+	// code that adds an item to the collection
 
-counter.Add(context.Background(), 1)
+	itemsCounter.Add(context.Background(), 1)
+}
 
-// ...
+func removeItem() {
+	// code that removes an item from the collection
 
-counter.Add(context.Background(), -1)
+	itemsCounter.Add(context.Background(), -1)
+}
 ```
 
 ### Using Histograms
@@ -503,18 +541,31 @@ For example, here's how you might report a distribution of response times for an
 HTTP handler:
 
 ```go
-histogram, err := meter.Float64Histogram("task.duration")
-if err != nil {
-	panic(err)
+import (
+	"net/http"
+	"time"
+
+	"go.opentelemetry.io/otel/metric"
+)
+
+func init() {
+	histogram, err := meter.Float64Histogram(
+		"task.duration",
+		metric.WithDescription("The duration of task execuction."),
+		metric.WithUnit("s"),
+	)
+	if err != nil {
+		panic(err)
+	}
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		start := time.Now()
+
+		// do some work in an API call
+
+		duration := time.Since(start)
+		histogram.Record(r.Context(), duration.Seconds())
+	})
 }
-http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-	start := time.Now()
-
-	// do some work in an API call
-
-	duration := time.Since(start)
-	histogram.Record(r.Context(), duration.Seconds())
-})
 ```
 
 ### Using Observable (Async) Counters
@@ -522,20 +573,30 @@ http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 Observable counters can be used to measure an additive, non-negative,
 monotonically increasing value.
 
-```js
-let events = [];
+For example, here's how you might report time since the application started:
 
-const addEvent = (name) => {
-  events = append(events, name);
-};
+```go
+import (
+	"context"
+	"time"
 
-const counter = myMeter.createObservableCounter('events.counter');
+	"go.opentelemetry.io/otel/metric"
+)
 
-counter.addCallback((result) => {
-  result.observe(len(events));
-});
-
-//... calls to addEvent
+func init() {
+	start := time.Now()
+	if _, err := meter.Float64ObservableCounter(
+		"uptime",
+		metric.WithDescription("The duration since the application started."),
+		metric.WithUnit("s"),
+		metric.WithFloat64Callback(func(_ context.Context, o metric.Float64Observer) error {
+			o.Observe(float64(time.Since(start).Seconds()))
+			return nil
+		}),
+	); err != nil {
+		panic(err)
+	}
+}
 ```
 
 ### Using Observable (Async) UpDown Counters
@@ -543,141 +604,116 @@ counter.addCallback((result) => {
 Observable UpDown counters can increment and decrement, allowing you to measure
 an additive, non-negative, non-monotonically increasing cumulative value.
 
+For example, here's how you might report some database metrics:
+
 ```js
-let events = [];
+import (
+	"context"
+	"database/sql"
 
-const addEvent = (name) => {
-  events = append(events, name);
-};
+	"go.opentelemetry.io/otel/metric"
+)
 
-const removeEvent = () => {
-  events.pop();
-};
+// registerDBMetrics registers asynchronous metics for the provided db.
+// Make sure to unregister metric.Registration before closing the provdided db.
+func registerDBMetrics(db *sql.DB, meter metric.Meter, poolName string) (metric.Registration, error) {
+	max, err := meter.Int64ObservableUpDownCounter(
+		"db.client.connections.max",
+		metric.WithDescription("The maximum number of open connections allowed."),
+		metric.WithUnit("{connection}"),
+	)
+	if err != nil {
+		return nil, err
+	}
 
-const counter = myMeter.createObservableUpDownCounter('events.counter');
+	waitTime, err := meter.Int64ObservableUpDownCounter(
+		"db.client.connections.wait_time",
+		metric.WithDescription("The time it took to obtain an open connection from the pool."),
+		metric.WithUnit("ms"),
+	)
+	if err != nil {
+		return nil, err
+	}
 
-counter.addCallback((result) => {
-  result.observe(len(events));
-});
-
-//... calls to addEvent and removeEvent
+	reg, err := meter.RegisterCallback(
+		func(_ context.Context, o metric.Observer) error {
+			stats := db.Stats()
+			o.ObserveInt64(max, int64(stats.MaxOpenConnections))
+			o.ObserveInt64(waitTime, int64(stats.WaitDuration))
+			return nil
+		},
+		max,
+		waitTime,
+	)
+	if err != nil {
+		return nil, err
+	}
+	return reg, nil
+}
 ```
 
 ### Using Observable (Async) Gauges
 
 Observable Gauges should be used to measure non-additive values.
 
-```js
-let temperature = 32;
+For example, here's how you might report memory usage of the heap objects used in application:
 
-const gauge = myMeter.createObservableGauge('temperature.gauge');
+```go
+import (
+	"context"
+	"runtime"
 
-gauge.addCallback((result) => {
-  result.observe(temperature);
-});
+	"go.opentelemetry.io/otel/metric"
+)
 
-//... temperature variable is modified by a sensor
+func init() {
+	if _, err := meter.Int64ObservableGauge(
+		"memory.heap",
+		metric.WithDescription(
+			"Memory usage of the allocated heap objects.",
+		),
+		metric.WithUnit("By"),
+		metric.WithInt64Callback(func(_ context.Context, o metric.Int64Observer) error {
+			var m runtime.MemStats
+			runtime.ReadMemStats(&m)
+			o.Observe(int64(m.HeapAlloc))
+			return nil
+		}),
+	); err != nil {
+		panic(err)
+	}
+}
 ```
-
-### Describing instruments
-
-When you create instruments like counters, histograms, etc. you can give them a
-description.
-
-```js
-const httpServerResponseDuration = myMeter.createHistogram(
-  'http.server.duration',
-  {
-    description: 'A distribution of the HTTP server response times',
-    unit: 'milliseconds',
-    valueType: ValueType.INT,
-  },
-);
-```
-
-In JavaScript, each configuration type means the following:
-
-- `description` - a human-readable description for the instrument
-- `unit` - The description of the unit of measure that the value is intended to
-  represent. For example, `milliseconds` to measure duration, or `bytes` to
-  count number of bytes.
-- `valueType` - The kind of numeric value used in measurements.
-
-It's generally recommended to describe each instrument you create.
 
 ### Adding attributes
 
-You can add Attributes to metrics when they are generated.
+You can add Attributes to using [`WithAttributeSet`](https://pkg.go.dev/go.opentelemetry.io/otel/metric#WithAttributeSet)
+or [`WithAttributes`](https://pkg.go.dev/go.opentelemetry.io/otel/metric#WithAttributes) option.
 
-```js
-const counter = myMeter.createCounter('my.counter');
+```go
+import (
+	"net/http"
 
-counter.add(1, { 'some.optional.attribute': 'some value' });
-```
+	"go.opentelemetry.io/otel/metric"
+	semconv "go.opentelemetry.io/otel/semconv/v1.21.0"
+)
 
-### Configure Metric Views
+func init() {
+	apiCounter, err := meter.Int64UpDownCounter(
+		"api.finished.counter",
+		metric.WithDescription("Number of finished API calls."),
+		metric.WithUnit("{call}"),
+	)
+	if err != nil {
+		panic(err)
+	}
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		// do some work in an API call and set the response HTTP status code
 
-A Metric View provides developers with the ability to customize metrics exposed
-by the Metrics SDK.
-
-#### Selectors
-
-To instantiate a view, one must first select a target instrument. The following
-are valid selectors for metrics:
-
-- `instrumentType`
-- `instrumentName`
-- `meterName`
-- `meterVersion`
-- `meterSchemaUrl`
-
-Selecting by `instrumentName` (of type string) has support for wildcards, so you
-can select all instruments using `*` or select all instruments whose name starts
-with `http` by using `http*`.
-
-#### Examples
-
-Filter attributes on all metric types:
-
-```js
-const limitAttributesView = new View({
-  // only export the attribute 'environment'
-  attributeKeys: ['environment'],
-  // apply the view to all instruments
-  instrumentName: '*',
-});
-```
-
-Drop all instruments with the meter name `pubsub`:
-
-```js
-const dropView = new View({
-  aggregation: new DropAggregation(),
-  meterName: 'pubsub',
-});
-```
-
-Define explicit bucket sizes for the Histogram named `http.server.duration`:
-
-```js
-const histogramView = new View({
-  aggregation: new ExplicitBucketHistogramAggregation([
-    0, 1, 5, 10, 15, 20, 25, 30,
-  ]),
-  instrumentName: 'http.server.duration',
-  instrumentType: InstrumentType.HISTOGRAM,
-});
-```
-
-#### Attach to meter provider
-
-Once views have been configured, attach them to the corresponding meter
-provider:
-
-```js
-const meterProvider = new MeterProvider({
-  views: [limitAttributesView, dropView, histogramView],
-});
+		apiCounter.Add(r.Context(), 1,
+			metric.WithAttributes(semconv.HTTPStatusCode(statusCode)))
+	})
+}
 ```
 
 ## Logs
