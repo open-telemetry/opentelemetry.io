@@ -82,7 +82,7 @@ dependencies {
     implementation 'io.opentelemetry:opentelemetry-api:{{% param javaVersion %}}'
     implementation 'io.opentelemetry:opentelemetry-sdk:{{% param javaVersion %}}'
     implementation 'io.opentelemetry:opentelemetry-exporter-otlp:{{% param javaVersion %}}'
-    implementation 'io.opentelemetry.semconv:opentelemetry-semconv:{{% param semconvJavaVersion %}}"-alpha'
+    implementation 'io.opentelemetry.semconv:opentelemetry-semconv:{{% param semconvJavaVersion %}}-alpha'
 }
 ```
 
