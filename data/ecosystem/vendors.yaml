@@ -1,4 +1,4 @@
-# cSpell:ignore Coralogix ITRS Kloud Logz Crowdstrike Humio Lumigo observ Promscale Teletrace Uptrace
+# cSpell:ignore Coralogix ITRS Kloud Logz Crowdstrike Humio Lumigo observ Promscale Teletrace Uptrace Greptime KloudMate
 - name: AppDynamics (Cisco)
   distribution: true
   nativeOTLP: true
@@ -125,7 +125,14 @@
   contact: ''
   oss: false
   commercial: true
-- name: Lightstep
+- name: KloudMate
+  distribution: false
+  nativeOTLP: true
+  url: 'https://docs.kloudmate.com/using-opentelemetry-collector'
+  contact: 'hello@kloudmate.com'
+  oss: false
+  commercial: true
+- name: ServiceNow Cloud Observability (Lightstep)
   distribution: true
   nativeOTLP: true
   url: 'https://github.com/lightstep?q=launcher'
@@ -300,3 +307,17 @@
   contact: ''
   oss: true
   commercial: false
+- name: ObserveAny
+  distribution: false
+  nativeOTLP: true
+  url: https://www.observeany.com/learn/opentelemetry-receiver
+  contact: 'contact@observeany.com'
+  oss: false
+  commercial: true
+- name: GreptimeDB
+  distribution: true
+  nativeOTLP: true
+  url: https://docs.greptime.com/user-guide/clients/otlp
+  contact: 'info@greptime.com'
+  oss: true
+  commercial: true

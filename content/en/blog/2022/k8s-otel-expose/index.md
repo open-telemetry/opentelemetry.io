@@ -198,7 +198,6 @@ my-in-memory-query                        ClusterIP   10.245.91.239   <none>    
 otel-collector-app-collector              ClusterIP   10.245.5.134    <none>        4317/TCP                                                    5m
 otel-collector-app-collector-headless     ClusterIP   None            <none>        4317/TCP                                                    5m
 otel-collector-app-collector-monitoring   ClusterIP   10.245.116.38   <none>        8888/TCP                                                    5m
-
 ```
 
 Finally, cert-manager is configured to automatically request TLS certificates

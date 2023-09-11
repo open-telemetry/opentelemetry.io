@@ -41,13 +41,15 @@ loadgenerator -->|HTTP| frontendproxy
 
 accountingservice -->|TCP| queue
 
+cartservice --->|gRPC| featureflagservice
+
 checkoutservice --->|gRPC| cartservice --> cache
 checkoutservice --->|gRPC| productcatalogservice
 checkoutservice --->|gRPC| currencyservice
 checkoutservice --->|HTTP| emailservice
 checkoutservice --->|gRPC| paymentservice
 checkoutservice -->|gRPC| shippingservice
-checkoutservice ---->|TCP| queue
+checkoutservice --->|TCP| queue
 
 frontend -->|gRPC| adservice
 frontend -->|gRPC| cartservice
@@ -59,7 +61,7 @@ frontend -->|gRPC| shippingservice -->|HTTP| quoteservice
 
 frauddetectionservice -->|TCP| queue
 
-adservice -->|gRPC| featureflagservice
+adservice --->|gRPC| featureflagservice
 
 productcatalogservice -->|gRPC| featureflagservice
 

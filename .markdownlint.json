@@ -6,5 +6,8 @@
   "no-emphasis-as-header": false,
   "no-hard-tabs": false,
   "no-inline-html": false,
-  "no-trailing-punctuation": false
+  "no-trailing-punctuation": false,
+  "no-trailing-spaces": true,
+  "custom-rules-below-this-point": false,
+  "trim-code-block-and-unindent": true
 }

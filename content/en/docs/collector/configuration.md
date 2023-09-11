@@ -221,7 +221,7 @@ receivers:
       thrift_compact:
       thrift_http:
 
-  # Data sources: traces
+  # Data sources: traces, metrics, logs
   kafka:
     protocol_version: 2.0.0
 
@@ -364,7 +364,7 @@ exporters:
       cert_file: cert.pem
       key_file: cert-key.pem
 
-  # Data sources: traces
+  # Data sources: traces, metrics, logs
   kafka:
     protocol_version: 2.0.0
 

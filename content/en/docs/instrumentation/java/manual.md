@@ -1155,7 +1155,7 @@ LongCounter counter = meter
       .build();
 
 // It is recommended that the API user keep a reference to Attributes they will record against
-Attributes attributes = Attributes.of(stringKey("Key"), "SomeWork");
+Attributes attributes = Attributes.of(AttributeKey.stringKey("Key"), "SomeWork");
 
 // Record data
 counter.add(123, attributes);
@@ -1170,7 +1170,7 @@ meter
   .setDescription("CPU Usage")
   .setUnit("ms")
   .buildWithCallback(measurement -> {
-    measurement.record(getCpuUsage(), Attributes.of(stringKey("Key"), "SomeWork"));
+    measurement.record(getCpuUsage(), Attributes.of(AttributeKey.stringKey("Key"), "SomeWork"));
   });
 ```
 

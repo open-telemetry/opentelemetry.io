@@ -1,9 +1,9 @@
 [build]
 publish = "public"
-command = "npm run s build:preview diff:check"
+command = "npm run seq -- build:preview diff:check"
 
 [context.production]
-command = "npm run s build:production diff:check"
+command = "npm run seq -- build:production diff:check"
 
 [[redirects]]
 from = "https://docs.opentelemetry.io/*"
