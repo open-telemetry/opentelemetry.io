@@ -500,25 +500,21 @@ counter.Add(context.Background(), -1)
 Histograms are used to measure a distribution of values over time.
 
 For example, here's how you might report a distribution of response times for an
-API route with Express:
+HTTP handler:
 
-```ts
-import express from 'express';
+```go
+histogram, err := meter.Float64Histogram("task.duration")
+if err != nil {
+	panic(err)
+}
+http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+	start := time.Now()
 
-const app = express();
+	// do some work in an API call
 
-app.get('/', (_req, _res) => {
-  const histogram = myMeter.createHistogram('task.duration');
-  const startTime = new Date().getTime();
-
-  // do some work in an API call
-
-  const endTime = new Date().getTime();
-  const executionTime = endTime - startTime;
-
-  // Record the duration of the task operation
-  histogram.record(executionTime);
-});
+	duration := time.Since(start)
+	histogram.Record(r.Context(), duration.Seconds())
+})
 ```
 
 ### Using Observable (Async) Counters
