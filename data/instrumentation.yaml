@@ -14,7 +14,7 @@ dotnet:
   status:
     traces: stable
     metrics: stable
-    logs: mixed*
+    logs: stable
 erlang:
   name: Erlang/Elixir
   status:
@@ -62,7 +62,7 @@ rust:
   status:
     traces: beta
     metrics: alpha
-    logs: not yet implemented
+    logs: alpha
 swift:
   name: Swift
   status:

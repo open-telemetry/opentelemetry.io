@@ -3,7 +3,7 @@ title: Manual Instrumentation
 linkTitle: Manual
 weight: 30
 description: Manual instrumentation for OpenTelemetry PHP
-cSpell:ignore: autoload guzzlehttp myapp
+cSpell:ignore: guzzlehttp myapp
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
@@ -206,16 +206,15 @@ For a method `parent` calling a method `child`, we can relate the spans by
 making the parent span active before creating the child span:
 
 ```php
-
-  $parent = $tracer->spanBuilder("parent")->startSpan();
-  $scope = $parent->activate();
-  try {
-    $child = $tracer->spanBuilder("child")->startSpan();
-    $child->end();
-  } finally {
-    $parent->end();
-    $scope->detach();
-  }
+$parent = $tracer->spanBuilder("parent")->startSpan();
+$scope = $parent->activate();
+try {
+  $child = $tracer->spanBuilder("child")->startSpan();
+  $child->end();
+} finally {
+  $parent->end();
+  $scope->detach();
+}
 ```
 
 You _must_ `detach` the active scope if you have activated it.

@@ -9,17 +9,18 @@ with a Redis caching service for fast access to shopping cart data.
 
 [Cart service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/cartservice/)
 
-> **Note** OpenTelemetry for .NET uses the `System.Diagnostic` library as its
-> API in lieu of the standard OpenTelemetry API.
+> **Note** OpenTelemetry for .NET uses the `System.Diagnostic.DiagnosticSource`
+> library as its API instead of the standard OpenTelemetry API for Traces and
+> Metrics. `Microsoft.Extensions.Logging.Abstractions` library is used for Logs.
 
 ## Traces
 
 ### Initializing Tracing
 
-OpenTelemetry is configured in the .NET DI container. The `AddOpenTelemetry()`
-builder method is used to configure desired instrumentation libraries, add
-exporters, and set other options. Configuration of the exporter and resource
-attributes is performed through environment variables.
+OpenTelemetry is configured in the .NET dependency injection container. The
+`AddOpenTelemetry()` builder method is used to configure desired instrumentation
+libraries, add exporters, and set other options. Configuration of the exporter
+and resource attributes is performed through environment variables.
 
 ```cs
 Action<ResourceBuilder> appResourceBuilder =
@@ -44,7 +45,7 @@ Within the execution of auto-instrumented code you can get current span
 (activity) from context.
 
 ```cs
-    var activity = Activity.Current;
+var activity = Activity.Current;
 ```
 
 Adding attributes (tags in .NET) to a span (activity) is accomplished using
@@ -53,9 +54,9 @@ Adding attributes (tags in .NET) to a span (activity) is accomplished using
 span.
 
 ```cs
-    activity?.SetTag("app.user.id", request.UserId);
-    activity?.SetTag("app.product.quantity", request.Item.Quantity);
-    activity?.SetTag("app.product.id", request.Item.ProductId);
+activity?.SetTag("app.user.id", request.UserId);
+activity?.SetTag("app.product.quantity", request.Item.Quantity);
+activity?.SetTag("app.product.id", request.Item.ProductId);
 ```
 
 ### Add span events
@@ -65,16 +66,16 @@ object. In the `GetCart` function from `services/CartService.cs` a span event is
 added.
 
 ```cs
-    activity?.AddEvent(new("Fetch cart"));
+activity?.AddEvent(new("Fetch cart"));
 ```
 
 ## Metrics
 
 ### Initializing Metrics
 
-Similar to configuring OpenTelemetry Traces, the .NET DI container requires a
-call to `AddOpenTelemetry()`. This builder configures desired instrumentation
-libraries, exporters, etc.
+Similar to configuring OpenTelemetry Traces, the .NET dependency injection
+container requires a call to `AddOpenTelemetry()`. This builder configures
+desired instrumentation libraries, exporters, etc.
 
 ```cs
 Action<ResourceBuilder> appResourceBuilder =
@@ -91,4 +92,11 @@ builder.Services.AddOpenTelemetry()
 
 ## Logs
 
-TBD
+Logs are configured in the .NET dependency injection container on
+`LoggingBuilder` level by calling `AddOpenTelemetry()`. This builder configures
+desired options, exporters, etc.
+
+```cs
+builder.Logging
+    .AddOpenTelemetry(options => options.AddOtlpExporter());
+```

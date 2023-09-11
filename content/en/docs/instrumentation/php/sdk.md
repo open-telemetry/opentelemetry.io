@@ -1,7 +1,6 @@
 ---
 title: SDK
 weight: 100
-cSpell:ignore: autoload autoloader autoloading ndjson
 ---
 
 The OpenTelemetry SDK provides a working implementation of the API, and can be

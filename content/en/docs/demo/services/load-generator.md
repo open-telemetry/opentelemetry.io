@@ -65,6 +65,6 @@ a context object containing the baggage item, and associating that context for
 all tasks by the load generator.
 
 ```python
-    ctx = baggage.set_baggage("synthetic_request", "true")
-    context.attach(ctx)
+ctx = baggage.set_baggage("synthetic_request", "true")
+context.attach(ctx)
 ```

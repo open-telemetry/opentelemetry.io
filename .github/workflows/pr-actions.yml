@@ -4,6 +4,12 @@ on:
   issue_comment:
     types: [created]
 
+env:
+  COMMENT: ${{ github.event.comment.body }}
+  PR_NUM: ${{ github.event.issue.number }}
+  USER_EMAIL: 107717825+opentelemetrybot@users.noreply.github.com
+  USER_NAME: opentelemetrybot
+
 jobs:
   fix-format:
     name: /fix:format
@@ -14,12 +20,6 @@ jobs:
       contains(github.event.comment.body, '/fix:format')
     permissions:
       contents: write
-
-    env:
-      PR_NUM: ${{ github.event.issue.number }}
-      COMMENT: ${{ github.event.comment.body }}
-      USER_EMAIL: 107717825+opentelemetrybot@users.noreply.github.com
-      USER_NAME: opentelemetrybot
 
     steps:
       - name: Context info
@@ -51,10 +51,10 @@ jobs:
 
       - name: Commit and push changes, if any
         run: |
+          git config --local user.email "$USER_EMAIL"
+          git config --local user.name "$USER_NAME"
           if [[ $(git status --porcelain) ]]; then
             git add -A
-            git config --local user.email "$USER_EMAIL"
-            git config --local user.name "$USER_NAME"
             current_branch=$(git rev-parse --abbrev-ref HEAD)
             echo current_branch=$current_branch
             git commit -m 'Results from /fix:format'
@@ -76,8 +76,6 @@ jobs:
       contents: write
 
     env:
-      PR_NUM: ${{ github.event.issue.number }}
-      COMMENT: ${{ github.event.comment.body }}
       DEPTH: --depth 100 # submodule clone depth
 
     steps:
@@ -111,10 +109,10 @@ jobs:
 
       - name: Commit and push changes, if any
         run: |
+          git config --local user.email "$USER_EMAIL"
+          git config --local user.name "$USER_NAME"
           if [[ $(git status --porcelain) ]]; then
             git add -A
-            git config --local user.email "$USER_EMAIL"
-            git config --local user.name "$USER_NAME"
             current_branch=$(git rev-parse --abbrev-ref HEAD)
             echo current_branch=$current_branch
             git commit -m 'Results from /fix:recache'

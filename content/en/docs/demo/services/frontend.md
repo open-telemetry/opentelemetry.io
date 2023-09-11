@@ -85,9 +85,9 @@ This can be done in the `scripts.start` section of `package.json` and starting
 the application using `npm start`.
 
 ```json
-  "scripts": {
-    "start": "node --require ./Instrumentation.js server.js",
-  },
+"scripts": {
+  "start": "node --require ./Instrumentation.js server.js",
+},
 ```
 
 ## Traces
