@@ -86,7 +86,7 @@
     "cspell": "^7.0.0",
     "gulp": "^4.0.2",
     "hugo-extended": "0.117.0",
-    "markdownlint": "^0.30.0",
+    "markdownlint": "^0.31.0",
     "postcss-cli": "^10.1.0",
     "prettier": "^3.0.1",
     "require-dir": "^1.2.0",
