@@ -35,8 +35,8 @@ and logs, the following URLs are constructed from the example above:
 
 ### `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT`
 
-Endpoint URL for trace data only, with an optionally-specified port number. Typically
-ends with `v1/traces` when using OTLP/HTTP.
+Endpoint URL for trace data only, with an optionally-specified port number.
+Typically ends with `v1/traces` when using OTLP/HTTP.
 
 **Default value:**
 
@@ -69,8 +69,8 @@ Typically ends with `v1/metrics` when using OTLP/HTTP.
 
 ### `OTEL_EXPORTER_OTLP_LOGS_ENDPOINT`
 
-Endpoint URL for log data only, with an optionally-specified port number. Typically
-ends with `v1/logs` when using OTLP/HTTP.
+Endpoint URL for log data only, with an optionally-specified port number.
+Typically ends with `v1/logs` when using OTLP/HTTP.
 
 **Default value:**
 
