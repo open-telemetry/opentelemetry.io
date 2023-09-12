@@ -771,6 +771,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T15:46:39.593412-04:00"
   },
+  "https://docs.cribl.io/stream/sources-otel": {
+    "StatusCode": 206,
+    "LastSeen": "2023-09-08T11:50:59.486005+02:00"
+  },
   "https://docs.daocloud.io/en/insight/06UserGuide/01quickstart/otel/otel/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T08:31:32.381869-04:00"
