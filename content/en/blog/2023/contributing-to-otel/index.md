@@ -46,7 +46,9 @@ contribute to OTel.
 Are you new to OTel? Are you a bit apprehensive about contributing code to an
 open source project? No sweat! One of the best and easiest ways to contribute to
 OpenTelemetry (or to any open source project, for that matter) is to contribute
-to the docs!
+to the docs! Remember that being new is not a disadvantage. In fact, it's an
+asset for the docs: by not being too deep into the OTel world, a newcomer is the
+perfect person assess OTel documentation!
 
 Whenever I need to dig into a new OTel concept, I always turn to the docs for
 guidance. Sometimes they have all of the info that I need, and sometimes they
@@ -54,8 +56,15 @@ don't. This usually means that I have to do a bit more digging beyond the docs,
 by seeking out external blog posts, bugging techie friends, etc. Once I'm able
 to fill that knowledge gap, I do two things:
 
-1. I blog about it
-2. I contribute to the OTel docs.
+1. I blog about it (see examples
+   [here](https://medium.com/cloud-native-daily/lets-learn-about-otel-python-logging-auto-instrumentation-with-the-otel-operator-663247666570),
+   [here](https://medium.com/@adri-v/running-the-opentelemetry-demo-app-on-hashicorp-nomad-a3e21e35369d),
+   and
+   [here](https://medium.com/@adri-v/lets-learn-about-the-otel-operator-s-target-allocator-47a2b1f07562))
+2. I contribute to the OTel docs (see examples
+   [here](https://github.com/open-telemetry/opentelemetry.io/pull/3195),
+   [here](https://github.com/open-telemetry/opentelemetry.io/pull/3098), and
+   [here](https://github.com/open-telemetry/opentelemetry.io/pull/2130))
 
 > ✨ **NOTE:** ✨ Number two is _especially_ important, because the best way for
 > the OTel docs to be the Source of Truth for All Things OTel<sup>TM</sup> is to
@@ -64,13 +73,22 @@ to fill that knowledge gap, I do two things:
 Learn more about contributing to the OTel docs
 [here](https://github.com/open-telemetry/opentelemetry.io/blob/main/CONTRIBUTING.md).
 
+> ✨ **NOTE:** ✨ If you find the contribution guidelines for the OTel Docs to
+> be confusing or have a mistake, improving them is a great way to contribute!
+> 😉
+
 ### Write a post on the OTel Blog
 
 Another great way to contribute to OTel is to write blog posts on the
 [OpenTelemetry blog](/blog). If you've done something interesting in
 OpenTelemetry, or have worked on a complex OTel implementation within your
 organization, the OpenTelemetry blog is a great way to share that with the
-community at large.
+community at large. As long as your work isn't promoting a product you're
+selling or requires readers to make a purchase in order to replicate your work,
+your blog post is most welcome!
+
+You can check out an example of one of my previous blog posts
+[here](/blog/2022/otel-demo-app-nomad/).
 
 Learn more about submitting a post to the OTel blog
 [here](https://github.com/open-telemetry/opentelemetry.io#submitting-a-blog-post).
@@ -120,7 +138,7 @@ must also evolve alongside it, to ensure that it is utilizing the latest and
 greatest versions of things like the [OTel Collector](/docs/collector/) and
 language-specific instrumentation. In short, there's always work to be done!
 
-As an example, you can check out one of my own contributions
+You can check out an example of one of my contributions
 [here](https://github.com/open-telemetry/opentelemetry-demo/pull/432).
 
 Learn more about how to contribute to the OTel Demo
@@ -154,6 +172,9 @@ Far from it. If you do end up contributing code, one way to alleviate the
 stress/learning curve of doing it solo would be to pair with a willing OTel
 community member to implement these types of code changes. I've found folks
 within OTel to be nothing but helpful and welcoming.
+
+You can check out an example of one of my contributions
+[here](https://github.com/open-telemetry/opentelemetry-helm-charts/pull/531).
 
 Learn more about the OTel SIGs [here](/community/#special-interest-groups).
 
