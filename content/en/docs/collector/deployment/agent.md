@@ -48,17 +48,15 @@ processors:
   batch:
 
 exporters:
-  jaeger: # the Jaeger exporter, to ingest traces to backend
-    endpoint: https://jaeger.example.com:14250
-    tls:
-      insecure: true
+  otlp/jaeger: # Jaeger supports OTLP directly
+    endpoint: https://jaeger.example.com:4317
 
 service:
   pipelines:
     traces/dev:
       receivers: [otlp]
       processors: [batch]
-      exporters: [jaeger]
+      exporters: [otlp/jaeger]
 ```
 
 {{% /tab %}} {{% tab Metrics %}}
