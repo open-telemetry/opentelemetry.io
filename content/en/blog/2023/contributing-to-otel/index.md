@@ -17,7 +17,7 @@ friend, you've come to the right place!
 
 Drawing from my own personal journey, I'd like to offer some valuable insights
 into effective ways I've discovered for initiating involvement in this thriving
-and inclusive open-source community.
+and inclusive open source community.
 
 ## Contributing to open source can be SCARY!
 
@@ -142,7 +142,7 @@ implementing it?
 Now, before you go off writing code, you should make sure that you:
 
 1. Raise an issue in the
-   [appropriate GitHub repo](https://github.com/open-telemetry)
+   [appropriate GitHub repository](https://github.com/open-telemetry)
 2. Check with folks on
    [Slack](https://communityinviter.com/apps/cloud-native/cncf) to see if this
    feature is needed/wanted

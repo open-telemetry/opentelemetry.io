@@ -2487,6 +2487,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-07-18T14:38:00.524443+02:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-demo/pull/432": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-12T11:14:54.891852-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-demo/pull/877": {
     "StatusCode": 200,
     "LastSeen": "2023-07-18T14:38:01.810575+02:00"
@@ -4526,6 +4530,10 @@
   "https://shopify.com": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:48:45.046029-04:00"
+  },
+  "https://shorturl.at/beJ09": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-12T11:14:56.238346-04:00"
   },
   "https://shorturl.at/bqtxO": {
     "StatusCode": 200,
