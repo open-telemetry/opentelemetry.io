@@ -86,8 +86,8 @@ touch config.yaml
 ```
 
 For now, you just need a basic traces pipeline with the `otlp` receiver, the
-`otlp` and `logging` exporters, here is what your `config.yaml` file should
-look like:
+`otlp` and `logging` exporters, here is what your `config.yaml` file should look
+like:
 
 > config.yaml
 
@@ -118,8 +118,8 @@ service:
       level: debug
 ```
 
-Notice that I am only using the `insecure` flag in my `otlp` exporter config
-to make my local development setup easier; you should not use this flag when
+Notice that I am only using the `insecure` flag in my `otlp` exporter config to
+make my local development setup easier; you should not use this flag when
 running your collector in production.
 
 In order to verify that your initial pipeline is properly set up, you should
@@ -154,8 +154,8 @@ $ ./otelcol-dev --config config.yaml
 ```
 
 Make sure you see the last line, that will confirm that the OTLP exporter has
-successfully established a gRPC connection to your local Jaeger instance. Now that we
-have our environment ready, let's start writing your receiver's code.
+successfully established a gRPC connection to your local Jaeger instance. Now
+that we have our environment ready, let's start writing your receiver's code.
 
 Now, create another folder called `tailtracer` so we can have a place to host
 all of our receiver code.
