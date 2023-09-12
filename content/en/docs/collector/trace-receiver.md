@@ -1926,6 +1926,12 @@ the `crypto/rand` package to randomly generate the `pcommon.SpanID`. Open the
 after that, add the following functions to help generate both IDs:
 
 ```go
+import (
+	crand "crypto/rand"
+	"math/rand"
+  	...
+)
+
 func NewTraceID() pcommon.TraceID {
 	return pcommon.TraceID(uuid.New())
 }
@@ -1942,6 +1948,12 @@ func NewSpanID() pcommon.SpanID {
 	return spanID
 }
 ```
+
+{{% alert title="Check your work" color="primary" %}}
+
+- Imported `crypto/rand` as `crand` (to avoid conflicts with `math/rand`).
+
+{{% /alert %}}
 
 Now that you have a way to properly identify the spans, you can start creating
 them to represent the operations within and across the entities in your system.
