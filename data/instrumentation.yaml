@@ -14,7 +14,7 @@ dotnet:
   status:
     traces: stable
     metrics: stable
-    logs: mixed*
+    logs: stable
 erlang:
   name: Erlang/Elixir
   status:
