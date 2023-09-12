@@ -104,7 +104,7 @@ The extension can be installed via pecl,
    {{< tabpane text=true >}} {{% tab pecl %}}
 
    ```sh
-   pecl install opentelemetry-beta
+   pecl install opentelemetry
    ```
 
    {{% /tab %}} {{% tab pickle %}}
