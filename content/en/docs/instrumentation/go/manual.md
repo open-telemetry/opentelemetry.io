@@ -297,21 +297,21 @@ serializing the context.
 
 ## Metrics
 
-To start [metrics](/docs/concepts/signals/metrics), you'll need to have an
+To start producing [metrics](/docs/concepts/signals/metrics), you'll need to have an
 initialized `MeterProvider` that lets you create a `Meter`. `Meter`s let you
 create `Instrument`s that you can use to create different kinds of metrics.
 OpenTelemetry Go currently supports the following `Instrument`s:
 
-- Counter, a synchronous instrument which supports non-negative increments
-- Asynchronous Counter, a asynchronous instrument which supports non-negative
+- Counter, a synchronous instrument that supports non-negative increments
+- Asynchronous Counter, an asynchronous instrument which supports non-negative
   increments
 - Histogram, a synchronous instrument which supports arbitrary values that are
-  statistically meaningful, such as histograms, summaries or percentile
-- Asynchronous Gauge, an asynchronous instrument which supports non-additive
+  statistically meaningful, such as histograms, summaries, or percentile
+- Asynchronous Gauge, an asynchronous instrument that supports non-additive
   values, such as room temperature
-- UpDownCounter, a synchronous instrument which supports increments and
-  decrements, such as number of active requests
-- Asynchronous UpDownCounter, an asynchronous instrument which supports
+- UpDownCounter, a synchronous instrument that supports increments and
+  decrements, such as the number of active requests
+- Asynchronous UpDownCounter, an asynchronous instrument that supports
   increments and decrements
 
 For more on synchronous and asynchronous instruments, and which kind is best
@@ -338,7 +338,7 @@ have an initialized
 you create a [`Meter`](/docs/concepts/signals/metrics/#meter).
 
 If a `MeterProvider` is not created, the OpenTelemetry APIs for metrics will use
-a no-op implementation and fail to generate data. Therefore, you have modify the
+a no-op implementation and fail to generate data. Therefore, you have to modify the
 source code to include the SDK initialization code using the following packages:
 
 - [`go.opentelemetry.io/otel`][]
@@ -355,7 +355,7 @@ go get go.opentelemetry.io/otel \
   go.opentelemetry.io/otel/sdk/metric
 ```
 
-Then initialize a resources, metrics exporter and provider:
+Then initialize a resources, metrics exporter, and metrics provider:
 
 ```go
 package main
@@ -450,11 +450,11 @@ instruments are performed once per export cycle.
 
 Asynchronous instruments are useful in several circumstances, such as:
 
-- When updating a counter is not computationally cheap, and thus you don't want
-  the currently executing thread to have to wait for that measurement
+- When updating a counter is not computationally cheap, and you don't want
+  the current executing thread to wait for the measurement
 - Observations need to happen at frequencies unrelated to program execution
   (i.e., they cannot be accurately measured when tied to a request lifecycle)
-- There is no value from knowing the precise timestamp of increments
+- There is no known timestamp for a measurement value
 
 In cases like these, it's often better to observe a cumulative value directly,
 rather than aggregate a series of deltas in post-processing (the synchronous
@@ -462,7 +462,7 @@ example).
 
 ### Using Counters
 
-Counters can by used to measure a non-negative, increasing value.
+Counters can be used to measure a non-negative, increasing value.
 
 For example, here's how you might report the number of calls for an HTTP handler:
 
