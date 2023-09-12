@@ -1859,6 +1859,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:25:15.885907-04:00"
   },
+  "https://github.com/brettmc/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-12T10:33:56.166498179Z"
+  },
   "https://github.com/bufbuild/connect-opentelemetry-go": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:32:38.100673-04:00"
@@ -2887,9 +2891,17 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:48:00.348194-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-php-contrib": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-12T10:34:00.748754957Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-php-instrumentation": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:36:07.002918-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-php/issues": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-12T10:34:00.300283393Z"
   },
   "https://github.com/open-telemetry/opentelemetry-php/releases": {
     "StatusCode": 200,
@@ -4170,6 +4182,10 @@
   "https://pecl.php.net/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T11:44:48.796197-04:00"
+  },
+  "https://pecl.php.net/package/opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-12T10:33:59.774290104Z"
   },
   "https://pip.pypa.io/en/stable/reference/pip_install/#editable-installs": {
     "StatusCode": 200,

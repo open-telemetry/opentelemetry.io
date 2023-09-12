@@ -3,7 +3,7 @@ title: Opentelemetry PHP Release Candidate
 linkTitle: PHP Release Candidate
 date: 2023-09-13
 author: '[Brett McBride](https://github.com/brettmc/) (Deakin University)'
-cSpell:ignore: McBride
+cSpell:ignore: McBride PECL codebases Przemek Delewski Strecansky Mailchimp
 ---
 
 The OpenTelemetry PHP team is pleased to announce that the opentelemetry-php
@@ -32,7 +32,7 @@ feedback from the community.
 ## How can you help?
 
 If you are new to OpenTelemetry for PHP, the best place to start is with the
-[getting started documentation](https://opentelemetry.io/docs/instrumentation/php/getting-started/).
+[getting started documentation](/docs/instrumentation/php/getting-started/).
 
 We are looking for developers to test this instrumentation in their PHP
 codebases. We are happy to triage any issues that might come up - please feel
@@ -40,9 +40,9 @@ free to open an issue in our repository’s
 [GitHub issues](https://github.com/open-telemetry/opentelemetry-php/issues).
 Pull requests are also always welcome in any of our repositories:
 
-- [API/SDK repo](https://github.com/open-telemetry/opentelemetry-php)
-- [Contrib repo](https://github.com/open-telemetry/opentelemetry-php-contrib)
-- [Instrumentation Repo](https://github.com/open-telemetry/opentelemetry-php-instrumentation)
+- [API/SDK](https://github.com/open-telemetry/opentelemetry-php)
+- [Contrib](https://github.com/open-telemetry/opentelemetry-php-contrib)
+- [Instrumentation](https://github.com/open-telemetry/opentelemetry-php-instrumentation)
 
 Thanks!
 
