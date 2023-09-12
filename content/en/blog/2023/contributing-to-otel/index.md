@@ -1,5 +1,5 @@
 ---
-title: How Can I Contribute to OpenTelemetry?
+title: Thinking about contributing to OpenTelemetry? Here's how I did it.
 linkTitle: Contributing to OTel
 date: 2023-09-08
 author:
@@ -15,8 +15,9 @@ Are you an [OpenTelemetry](/) (OTel) practitioner? Have you ever wanted to
 contribute back to OpenTelemetry, but didn't know where to begin? Well, my
 friend, you've come to the right place!
 
-Today, I'll share some ways in which you can contribute to this vibrant and
-welcoming open source community, based on my personal experience.
+Drawing from my own personal journey, I'd like to offer some valuable insights
+into effective ways I've discovered for initiating involvement in this thriving
+and inclusive open-source community.
 
 ## Contributing to open source can be SCARY!
 
@@ -119,6 +120,9 @@ must also evolve alongside it, to ensure that it is utilizing the latest and
 greatest versions of things like the [OTel Collector](/docs/collector/) and
 language-specific instrumentation. In short, there's always work to be done!
 
+As an example, you can check out one of my own contributions
+[here](https://github.com/open-telemetry/opentelemetry-demo/pull/432).
+
 Learn more about how to contribute to the OTel Demo
 [here](https://github.com/open-telemetry/opentelemetry-demo/blob/main/CONTRIBUTING.md).
 
@@ -135,10 +139,21 @@ found a bug in the Collector. Why not take a stab at fixing it? Or maybe there's
 a feature that you and your team desperately need. Again, why not take a stab at
 implementing it?
 
-I'm under no illusion that either of these is a trivial task. Far from it. One
-way to alleviate the stress/learning curve of doing it solo would be to pair
-with a willing OTel community member to implement these types of code changes.
-I've found folks within OTel to be nothing but helpful and welcoming.
+Now, before you go off writing code, you should make sure that you:
+
+1. Raise an issue in the
+   [appropriate GitHub repo](https://github.com/open-telemetry)
+2. Check with folks on
+   [Slack](https://communityinviter.com/apps/cloud-native/cncf) to see if this
+   feature is needed/wanted
+3. Pop into one of the [SIG calls](https://shorturl.at/beJ09) and share your
+   specific interests and needs
+
+I'm under no illusion that any contributing code to OTel is is a trivial task.
+Far from it. If you do end up contributing code, one way to alleviate the
+stress/learning curve of doing it solo would be to pair with a willing OTel
+community member to implement these types of code changes. I've found folks
+within OTel to be nothing but helpful and welcoming.
 
 Learn more about the OTel SIGs [here](/community/#special-interest-groups).
 
