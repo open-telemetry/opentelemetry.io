@@ -64,7 +64,7 @@ to fill that knowledge gap, I do two things:
 Learn more about contributing to the OTel docs
 [here](https://github.com/open-telemetry/opentelemetry.io/blob/main/CONTRIBUTING.md).
 
-### **Write a post on the OTel Blog**
+### Write a post on the OTel Blog
 
 Another great way to contribute to OTel is to write blog posts on the
 [OpenTelemetry blog](/blog). If you've done something interesting in
