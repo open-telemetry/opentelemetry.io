@@ -84,16 +84,16 @@ The agent's logging output can be configured by setting the following property:
 
 {{% config_option name="otel.javaagent.logging" %}}
 
-The java agent logging mode. The following 3 modes are supported:
+The Java agent logging mode. The following 3 modes are supported:
 
 - `simple`: The agent will print out its logs using the standard error stream.
-  Only `INFO` or higher logs will be printed. This is the default java agent
+  Only `INFO` or higher logs will be printed. This is the default Java agent
   logging mode.
 - `none`: The agent will not log anything - not even its own version.
 - `application`: The agent will attempt to redirect its own logs to the
   instrumented application's slf4j logger. This works the best for simple
   one-jar applications that do not use multiple classloaders; Spring Boot apps
-  are supported as well. The java agent output logs can be further configured
+  are supported as well. The Java agent output logs can be further configured
   using the instrumented application's logging configuration (e.g. `logback.xml`
   or `log4j2.xml`). **Make sure to test that this mode works for your
   application before running it in a production environment.**
@@ -418,17 +418,17 @@ containing duplicate telemetry data. For example:
 - Spans produced by the Tomcat instrumentation would have duplicate HTTP server
   spans produced by the generic Servlet API instrumentation.
 
-The java agent prevents these situations by detecting and suppressing nested
+The Java agent prevents these situations by detecting and suppressing nested
 spans that duplicate telemetry data. The suppression behavior can be configured
 using the following configuration option:
 
 {{% config_option name="otel.instrumentation.experimental.span-suppression-strategy" %}}
 
-The java agent span suppression strategy. The following 3 strategies are
+The Java agent span suppression strategy. The following 3 strategies are
 supported:
 
 - `semconv`: The agent will suppress duplicate semantic conventions. This is the
-  default behavior of the java agent.
+  default behavior of the Java agent.
 - `span-kind`: The agent will suppress spans with the same kind (except
   `INTERNAL`).
 - `none`: The agent will not suppress anything at all. **We do not recommend
