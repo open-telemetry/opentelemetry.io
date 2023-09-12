@@ -604,7 +604,7 @@ an additive, non-negative, non-monotonically increasing cumulative value.
 
 For example, here's how you might report some database metrics:
 
-```js
+```go
 import (
 	"context"
 	"database/sql"
@@ -612,7 +612,7 @@ import (
 	"go.opentelemetry.io/otel/metric"
 )
 
-// registerDBMetrics registers asynchronous metics for the provided db.
+// registerDBMetrics registers asynchronous metrics for the provided db.
 // Make sure to unregister metric.Registration before closing the provided db.
 func registerDBMetrics(db *sql.DB, meter metric.Meter, poolName string) (metric.Registration, error) {
 	max, err := meter.Int64ObservableUpDownCounter(
