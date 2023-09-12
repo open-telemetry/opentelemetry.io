@@ -118,7 +118,7 @@ Next, you’ll use the OpenTelemetry PHP extension to
 2. Build the extension with `PECL`:
 
    ```sh
-   pecl install opentelemetry-rc
+   pecl install opentelemetry
    ```
 
    {{% alert title="Note" color="warning" %}}Alternative methods of installing
