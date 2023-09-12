@@ -16,9 +16,9 @@ at large.
 This is the first release candidate we are publishing to garner further input
 from the community. This release offers support for tracing, metrics, and logs
 for PHP applications, as well as auto-instrumentation via a
-[PECL extension](https://pecl.php.net/package/opentelemetry). We will continue to
-refine the library as we receive bug reports, as well as moving towards a general
-availability release.
+[PECL extension](https://pecl.php.net/package/opentelemetry). We will continue
+to refine the library as we receive bug reports, as well as moving towards a
+general availability release.
 
 ## What happens next?
 
