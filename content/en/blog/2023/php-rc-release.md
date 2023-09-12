@@ -10,12 +10,12 @@ cSpell:ignore: codebases Delewski Mailchimp McBride PECL Przemek Strecansky
 ---
 
 The OpenTelemetry PHP team is pleased to announce that the
-[opentelemetry-php](https://github.com/open-telemetry/opentelemetry-php/) library
-has progressed to Release Candidate stability. This release is the culmination
-of years of work from the OpenTelemetry PHP team. Thank you to all of the
-contributors, testers, and integrators that made this release happen. We most
-certainly couldn’t have made this release without the help of the community at
-large.
+[opentelemetry-php](https://github.com/open-telemetry/opentelemetry-php/)
+library has progressed to Release Candidate stability. This release is the
+culmination of years of work from the OpenTelemetry PHP team. Thank you to all
+of the contributors, testers, and integrators that made this release happen. We
+most certainly couldn’t have made this release without the help of the community
+at large.
 
 This is the first release candidate we are publishing to garner further input
 from the community. This release offers support for tracing, metrics, and logs
