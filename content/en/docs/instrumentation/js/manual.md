@@ -1202,9 +1202,9 @@ Node.js or Web SDKs.
 
 ## Metrics
 
-To start producing [metrics](/docs/concepts/signals/metrics), you'll need to have an
-initialized `MeterProvider` that lets you create a `Meter`. `Meter`s let you
-create `Instrument`s that you can use to create different kinds of metrics.
+To start producing [metrics](/docs/concepts/signals/metrics), you'll need to
+have an initialized `MeterProvider` that lets you create a `Meter`. `Meter`s let
+you create `Instrument`s that you can use to create different kinds of metrics.
 OpenTelemetry JavaScript currently supports the following `Instrument`s:
 
 - Counter, a synchronous instrument that supports non-negative increments
@@ -1408,8 +1408,8 @@ instruments are performed once per export cycle.
 
 Asynchronous instruments are useful in several circumstances, such as:
 
-- When updating a counter is not computationally cheap, and you don't want
-  the current executing thread to wait for the measurement
+- When updating a counter is not computationally cheap, and you don't want the
+  current executing thread to wait for the measurement
 - Observations need to happen at frequencies unrelated to program execution
   (i.e., they cannot be accurately measured when tied to a request lifecycle)
 - There is no known timestamp for a measurement value

@@ -297,9 +297,9 @@ serializing the context.
 
 ## Metrics
 
-To start producing [metrics](/docs/concepts/signals/metrics), you'll need to have an
-initialized `MeterProvider` that lets you create a `Meter`. `Meter`s let you
-create `Instrument`s that you can use to create different kinds of metrics.
+To start producing [metrics](/docs/concepts/signals/metrics), you'll need to
+have an initialized `MeterProvider` that lets you create a `Meter`. `Meter`s let
+you create `Instrument`s that you can use to create different kinds of metrics.
 OpenTelemetry Go currently supports the following `Instrument`s:
 
 - Counter, a synchronous instrument that supports non-negative increments
@@ -338,8 +338,9 @@ have an initialized
 you create a [`Meter`](/docs/concepts/signals/metrics/#meter).
 
 If a `MeterProvider` is not created, the OpenTelemetry APIs for metrics will use
-a no-op implementation and fail to generate data. Therefore, you have to modify the
-source code to include the SDK initialization code using the following packages:
+a no-op implementation and fail to generate data. Therefore, you have to modify
+the source code to include the SDK initialization code using the following
+packages:
 
 - [`go.opentelemetry.io/otel`][]
 - [`go.opentelemetry.io/otel/sdk/metric`][]
@@ -450,8 +451,8 @@ instruments are performed once per export cycle.
 
 Asynchronous instruments are useful in several circumstances, such as:
 
-- When updating a counter is not computationally cheap, and you don't want
-  the current executing thread to wait for the measurement
+- When updating a counter is not computationally cheap, and you don't want the
+  current executing thread to wait for the measurement
 - Observations need to happen at frequencies unrelated to program execution
   (i.e., they cannot be accurately measured when tied to a request lifecycle)
 - There is no known timestamp for a measurement value
@@ -464,7 +465,8 @@ example).
 
 Counters can be used to measure a non-negative, increasing value.
 
-For example, here's how you might report the number of calls for an HTTP handler:
+For example, here's how you might report the number of calls for an HTTP
+handler:
 
 ```go
 import (
