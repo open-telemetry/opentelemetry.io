@@ -95,7 +95,7 @@ As an added bonus, I'm one of the co-chairs. Just sayin'… 😉
 
 Learn more about the OTel EUWG [here](/community/end-user/).
 
-### **Contribute to the OpenTelemetry Demo**
+### Contribute to the OpenTelemetry Demo
 
 If you'd like to contribute code, but aren't quite ready to contribute to core
 OTel code, then perhaps you might want to check out the
