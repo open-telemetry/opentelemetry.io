@@ -476,7 +476,7 @@ import (
 )
 
 func init() {
-	apiCounter, err := meter.Int64UpDownCounter(
+	apiCounter, err := meter.Int64Counter(
 		"api.counter",
 		metric.WithDescription("Number of API calls."),
 		metric.WithUnit("{call}"),
@@ -688,11 +688,11 @@ func init() {
 
 ### Adding attributes
 
-You can add Attributes to using
+You can add Attributes by using the
 [`WithAttributeSet`](https://pkg.go.dev/go.opentelemetry.io/otel/metric#WithAttributeSet)
 or
 [`WithAttributes`](https://pkg.go.dev/go.opentelemetry.io/otel/metric#WithAttributes)
-option.
+options.
 
 ```go
 import (
