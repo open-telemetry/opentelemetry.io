@@ -2895,13 +2895,29 @@
     "StatusCode": 200,
     "LastSeen": "2023-09-12T10:34:00.748754957Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-php-contrib/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-12T17:21:56.853351123Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-php-instrumentation": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:36:07.002918-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-php-instrumentation/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-12T17:21:58.240075768Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-php/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-12T17:21:57.859077407Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-php/issues": {
     "StatusCode": 200,
     "LastSeen": "2023-09-12T10:34:00.300283393Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-php/issues/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-12T17:21:57.410272057Z"
   },
   "https://github.com/open-telemetry/opentelemetry-php/releases": {
     "StatusCode": 200,
