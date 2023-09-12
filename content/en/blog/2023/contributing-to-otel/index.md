@@ -75,7 +75,7 @@ community at large.
 Learn more about submitting a post to the OTel blog
 [here](https://github.com/open-telemetry/opentelemetry.io#submitting-a-blog-post).
 
-### **Join the OTel End User Working Group**
+### Join the OTel End User Working Group
 
 Are you just getting started with OTel and want to connect with other OTel
 practitioners? Do you have feedback that you wish to share with the greater OTel
