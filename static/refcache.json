@@ -4215,9 +4215,17 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:43:29.368185-04:00"
   },
+  "https://pkg.go.dev/go.opentelemetry.io/otel": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-11T14:33:25.55139188Z"
+  },
   "https://pkg.go.dev/go.opentelemetry.io/otel#GetTracerProvider": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:44:38.92155-04:00"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/otel#Meter": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-11T14:33:26.091012084Z"
   },
   "https://pkg.go.dev/go.opentelemetry.io/otel/bridge/opentracing": {
     "StatusCode": 200,
@@ -4235,13 +4243,37 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:45:05.539864-04:00"
   },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdoutmetric": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-11T14:33:25.954024386Z"
+  },
   "https://pkg.go.dev/go.opentelemetry.io/otel/exporters/zipkin": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:45:00.287054-04:00"
   },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/metric": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-11T14:33:25.28571455Z"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/metric#WithAttributeSet": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-11T14:33:26.225649719Z"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/metric#WithAttributes": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-11T14:33:26.416861936Z"
+  },
   "https://pkg.go.dev/go.opentelemetry.io/otel/sdk": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:44:49.352453-04:00"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-11T14:33:25.420952095Z"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/sdk/resource": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-11T14:33:25.721659015Z"
   },
   "https://pkg.go.dev/go.opentelemetry.io/otel/sdk/resource#Resource": {
     "StatusCode": 200,
