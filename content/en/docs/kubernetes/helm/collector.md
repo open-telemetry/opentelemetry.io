@@ -2,7 +2,7 @@
 title: OpenTelemetry Collector Chart
 linkTitle: Collector Chart
 # prettier-ignore
-cSpell:ignore: filelog filelogreceiver filelogreceiver hostmetricsreceiver kubelet kubeletstats kubeletstatsreceiver kuberenetes loggingexporter otlphttp sattributesprocessor sclusterreceiver sobjectsreceiver statefulset
+cSpell:ignore: filelog filelogreceiver filelogreceiver hostmetricsreceiver kubelet kubeletstats kubeletstatsreceiver loggingexporter otlphttp sattributesprocessor sclusterreceiver sobjectsreceiver statefulset
 ---
 
 ## Introduction
@@ -151,7 +151,7 @@ viewed in its
 ### Presets
 
 Many of the important components the OpenTelemetry Collector uses to monitor
-Kubernetes require special setup in the Collector's own Kuberenetes deployment.
+Kubernetes require special setup in the Collector's own Kubernetes deployment.
 In order to make using these components easier, the OpenTelemetry Collector
 Chart comes with some presets that, when enabled, handle the complex setup for
 these important components.
@@ -381,5 +381,5 @@ presets:
     enabled: true
 ```
 
-[^1] due to some overlap with the kubeletMetrics preset some filesystem types
+[^1] due to some overlap with the `kubeletMetrics` preset some filesystem types
 and mount points are excluded by default.
