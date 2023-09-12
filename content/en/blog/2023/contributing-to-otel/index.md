@@ -56,15 +56,12 @@ don't. This usually means that I have to do a bit more digging beyond the docs,
 by seeking out external blog posts, bugging techie friends, etc. Once I'm able
 to fill that knowledge gap, I do two things:
 
-1. I blog about it (see examples
-   [here](https://shorturl.at/vLYZ0),
-   [here](https://shorturl.at/hlqtE),
-   and
-   [here](https://shorturl.at/czHST))
-2. I contribute to the OTel docs (see examples
+1. I blog about it. See examples [here](https://shorturl.at/vLYZ0),
+   [here](https://shorturl.at/hlqtE), and [here](https://shorturl.at/czHST).
+2. I contribute to the OTel docs. See examples
    [here](https://github.com/open-telemetry/opentelemetry.io/pull/3195),
    [here](https://github.com/open-telemetry/opentelemetry.io/pull/3098), and
-   [here](https://github.com/open-telemetry/opentelemetry.io/pull/2130))
+   [here](https://github.com/open-telemetry/opentelemetry.io/pull/2130).
 
 > ✨ **NOTE:** ✨ Number two is _especially_ important, because the best way for
 > the OTel docs to be the Source of Truth for All Things OTel<sup>TM</sup> is to
