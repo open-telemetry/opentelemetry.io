@@ -3,7 +3,7 @@ title: Opentelemetry PHP Release Candidate
 linkTitle: PHP Release Candidate
 date: 2023-09-13
 author: '[Brett McBride](https://github.com/brettmc/) (Deakin University)'
-cSpell:ignore: McBride PECL codebases Przemek Delewski Strecansky Mailchimp
+cSpell:ignore: codebases Delewski Mailchimp McBride PECL Przemek Strecansky
 ---
 
 The OpenTelemetry PHP team is pleased to announce that the opentelemetry-php
