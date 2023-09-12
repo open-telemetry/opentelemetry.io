@@ -2687,6 +2687,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:44:18.695574-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-helm-charts/pull/531": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-12T11:57:08.111198-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-helm-charts/pull/760": {
     "StatusCode": 200,
     "LastSeen": "2023-06-01T15:55:25.600351-04:00"
@@ -3114,6 +3118,18 @@
   "https://github.com/open-telemetry/opentelemetry.io/issues/new": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:31:06.342368-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/pull/2130": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-12T11:57:07.17132-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/pull/3098": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-12T11:57:05.910172-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/pull/3195": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-12T11:57:04.702626-04:00"
   },
   "https://github.com/open-telemetry/oteps/issues/197": {
     "StatusCode": 200,
@@ -3855,9 +3871,21 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:19:11.338797-04:00"
   },
+  "https://medium.com/@adri-v/lets-learn-about-the-otel-operator-s-target-allocator-47a2b1f07562": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-12T11:57:02.842574-04:00"
+  },
+  "https://medium.com/@adri-v/running-the-opentelemetry-demo-app-on-hashicorp-nomad-a3e21e35369d": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-12T11:57:02.21315-04:00"
+  },
   "https://medium.com/cloud-native-daily/how-to-contribute-to-opentelemetry-5962e8b2447e": {
     "StatusCode": 200,
     "LastSeen": "2023-09-08T10:56:59.495178-04:00"
+  },
+  "https://medium.com/cloud-native-daily/lets-learn-about-otel-python-logging-auto-instrumentation-with-the-otel-operator-663247666570": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-12T11:57:01.212859-04:00"
   },
   "https://medium.com/jaegertracing/introducing-native-support-for-opentelemetry-in-jaeger-eb661be8183c": {
     "StatusCode": 200,
