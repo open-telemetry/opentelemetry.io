@@ -464,7 +464,7 @@ example).
 
 Counters can by used to measure a non-negative, increasing value.
 
-For example, here's how you might report a number of calls for an HTTP handler:
+For example, here's how you might report the number of calls for an HTTP handler:
 
 ```go
 import (
@@ -495,7 +495,7 @@ func init() {
 UpDown counters can increment and decrement, allowing you to observe a
 cumulative value that goes up or down.
 
-For example, here's how you might report a number of items of some collection:
+For example, here's how you might report the number of items of some collection:
 
 ```go
 import (
@@ -509,9 +509,9 @@ var itemsCounter metric.Int64UpDownCounter
 func init() {
 	var err error
 	itemsCounter, err = meter.Int64UpDownCounter(
-		"events.counter",
-		metric.WithDescription("Number of events."),
-		metric.WithUnit("{event}"),
+		"items.counter",
+		metric.WithDescription("Number of items."),
+		metric.WithUnit("{item}"),
 	)
 	if err != nil {
 		panic(err)
