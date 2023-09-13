@@ -34,7 +34,7 @@ composer -v
 ```
 
 {{% alert title="Important" color="warning" %}}While OpenTelemetry PHP is in a
-pre-GA state, please ensure you set `minimum-stability` to `beta` in
+pre-GA state, please ensure you set `minimum-stability` to `beta` or `dev` in
 `composer.json`, otherwise you will get the early `0.x` versions of many of our
 packages.{{% /alert %}}
 
@@ -118,7 +118,7 @@ Next, you’ll use the OpenTelemetry PHP extension to
 2. Build the extension with `PECL`:
 
    ```sh
-   pecl install opentelemetry-beta
+   pecl install opentelemetry
    ```
 
    {{% alert title="Note" color="warning" %}}Alternative methods of installing

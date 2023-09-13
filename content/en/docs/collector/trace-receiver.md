@@ -2,7 +2,7 @@
 title: Building a Trace Receiver
 weight: 98
 # prettier-ignore
-cSpell:ignore: amzn atmxph backendsystem batchprocessor chicago comcast crand devs Errorf gogl Intn ispnetwork jaegerexporter loggingexporter mapstructure mcrsft otlpreceiver pcommon pdata protogen ptrace Rcvr rquedas sanfrancisco serialnumber slrs stateid struct structs tailtracer uber wndws
+cSpell:ignore: amzn atmxph backendsystem batchprocessor chicago comcast crand devs Errorf gogl Intn ispnetwork jaegerexporter loggingexporter mapstructure mcrsft otelcontribcol otlpreceiver pcommon pdata protogen ptrace Rcvr rquedas sanfrancisco serialnumber slrs stateid struct structs Subchannel tailtracer uber wndws zapgrpc
 ---
 
 <!-- markdownlint-disable heading-increment no-duplicate-heading -->
@@ -71,9 +71,10 @@ with the following command:
 
 ```sh
 docker run -d --name jaeger \
+  -e COLLECTOR_OTLP_ENABLED=true \
   -p 16686:16686 \
-  -p 14268:14268 \
-  -p 14250:14250 \
+  -p 14317:4317 \
+  -p 14318:4318 \
   jaegertracing/all-in-one:1.29
 ```
 
@@ -85,8 +86,8 @@ touch config.yaml
 ```
 
 For now, you just need a basic traces pipeline with the `otlp` receiver, the
-`jaeger` and `logging` exporters, here is what your `config.yaml` file should
-look like:
+`otlp` and `logging` exporters, here is what your `config.yaml` file should look
+like:
 
 > config.yaml
 
@@ -101,8 +102,8 @@ processors:
 exporters:
   logging:
     verbosity: detailed
-  jaeger:
-    endpoint: localhost:14250
+  otlp/jaeger:
+    endpoint: localhost:14317
     tls:
       insecure: true
 
@@ -111,14 +112,14 @@ service:
     traces:
       receivers: [otlp]
       processors: []
-      exporters: [jaeger, logging]
+      exporters: [otlp/jaeger, logging]
   telemetry:
     logs:
       level: debug
 ```
 
-Notice that I am only using the `insecure` flag in my `jaeger` receiver config
-to make my local development setup easier; you should not use this flag when
+Notice that I am only using the `insecure` flag in my `otlp` exporter config to
+make my local development setup easier; you should not use this flag when
 running your collector in production.
 
 In order to verify that your initial pipeline is properly set up, you should
@@ -126,34 +127,35 @@ have the following output after running your `otelcol-dev` command:
 
 ```console
 $ ./otelcol-dev --config config.yaml
-2022-06-21T13:02:09.253-0500    info    builder/exporters_builder.go:255        Exporter was built.     {"kind": "exporter", "name": "jaeger"}
-2022-06-21T13:02:09.254-0500    info    builder/exporters_builder.go:255        Exporter was built.     {"kind": "exporter", "name": "logging"}
-2022-06-21T13:02:09.254-0500    info    builder/pipelines_builder.go:224        Pipeline was built.     {"kind": "pipeline", "name": "traces"}
-2022-06-21T13:02:09.254-0500    info    builder/receivers_builder.go:225        Receiver was built.     {"kind": "receiver", "name": "otlp", "datatype": "traces"}
-2022-06-21T13:02:09.254-0500    info    service/telemetry.go:102        Setting up own telemetry...
-2022-06-21T13:02:09.255-0500    info    service/telemetry.go:141        Serving Prometheus metrics      {"address": ":8888", "level": "basic"}
-2022-06-21T13:02:09.255-0500    info    service/service.go:93   Starting extensions...
-2022-06-21T13:02:09.255-0500    info    service/service.go:98   Starting exporters...
-2022-06-21T13:02:09.255-0500    info    builder/exporters_builder.go:40 Exporter is starting... {"kind": "exporter", "name": "jaeger"}
-2022-06-21T13:02:09.258-0500    info    builder/exporters_builder.go:48 Exporter started.       {"kind": "exporter", "name": "jaeger"}
-2022-06-21T13:02:09.258-0500    info    jaegerexporter@v0.53.0/exporter.go:186  State of the connection with the Jaeger Collector backend       {"kind": "exporter", "name": "jaeger", "state": "IDLE"}
-2022-06-21T13:02:09.258-0500    info    builder/exporters_builder.go:40 Exporter is starting... {"kind": "exporter", "name": "logging"}
-2022-06-21T13:02:09.258-0500    info    builder/exporters_builder.go:48 Exporter started.       {"kind": "exporter", "name": "logging"}
-2022-06-21T13:02:09.258-0500    info    service/service.go:103  Starting processors...
-2022-06-21T13:02:09.258-0500    info    builder/pipelines_builder.go:54 Pipeline is starting... {"kind": "pipeline", "name": "traces"}
-2022-06-21T13:02:09.258-0500    info    builder/pipelines_builder.go:65 Pipeline is started.    {"kind": "pipeline", "name": "traces"}
-2022-06-21T13:02:09.258-0500    info    service/service.go:108  Starting receivers...
-2022-06-21T13:02:09.258-0500    info    builder/receivers_builder.go:67 Receiver is starting... {"kind": "receiver", "name": "otlp"}
-2022-06-21T13:02:09.258-0500    info    otlpreceiver/otlp.go:70 Starting GRPC server on endpoint localhost:55690        {"kind": "receiver", "name": "otlp"}
-2022-06-21T13:02:09.261-0500    info    builder/receivers_builder.go:72 Receiver started.       {"kind": "receiver", "name": "otlp"}
-2022-06-21T13:02:09.262-0500    info    service/collector.go:226        Starting otelcol-dev... {"Version": "1.0.0", "NumCPU": 12}
-2022-06-21T13:02:09.262-0500    info    service/collector.go:134        Everything is ready. Begin running and processing data.
-2022-06-21T13:02:10.258-0500    info    jaegerexporter@v0.53.0/exporter.go:186  State of the connection with the Jaeger Collector backend       {"kind": "exporter", "name": "jaeger", "state": "READY"}
+2023-09-12T15:22:18.652-0700    info    service/telemetry.go:84 Setting up own telemetry...
+2023-09-12T15:22:18.652-0700    info    service/telemetry.go:201        Serving Prometheus metrics      {"address": ":8888", "level": "Basic"}
+2023-09-12T15:22:18.652-0700    debug   exporter@v0.85.0/exporter.go:273        Stable component.       {"kind": "exporter", "data_type": "traces", "name": "otlp/jaeger"}
+2023-09-12T15:22:18.652-0700    info    exporter@v0.85.0/exporter.go:275        Development component. May change in the future.        {"kind": "exporter", "data_type": "traces", "name": "logging"}
+2023-09-12T15:22:18.652-0700    debug   receiver@v0.85.0/receiver.go:294        Stable component.       {"kind": "receiver", "name": "otlp", "data_type": "traces"}
+2023-09-12T15:22:18.652-0700    info    service/service.go:138  Starting otelcontribcol...      {"Version": "0.85.0", "NumCPU": 10}
+2023-09-12T15:22:18.652-0700    info    extensions/extensions.go:31     Starting extensions...
+2023-09-12T15:22:18.652-0700    info    zapgrpc/zapgrpc.go:178  [core] [Channel #1] Channel created     {"grpc_log": true}
+2023-09-12T15:22:18.652-0700    info    zapgrpc/zapgrpc.go:178  [core] [Channel #1] original dial target is: "localhost:14317"  {"grpc_log": true}
+2023-09-12T15:22:18.652-0700    info    zapgrpc/zapgrpc.go:178  [core] [Channel #1] parsed dial target is: {URL:{Scheme:localhost Opaque:14317 User: Host: Path: RawPath: OmitHost:false ForceQuery:false RawQuery: Fragment: RawFragment:}}   {"grpc_log": true}
+2023-09-12T15:22:18.652-0700    info    zapgrpc/zapgrpc.go:178  [core] [Channel #1] fallback to scheme "passthrough"    {"grpc_log": true}
+2023-09-12T15:22:18.652-0700    info    zapgrpc/zapgrpc.go:178  [core] [Channel #1] parsed dial target is: {URL:{Scheme:passthrough Opaque: User: Host: Path:/localhost:14317 RawPath: OmitHost:false ForceQuery:false RawQuery: Fragment: RawFragment:}}      {"grpc_log": true}
+2023-09-12T15:22:18.652-0700    info    zapgrpc/zapgrpc.go:178  [core] [Channel #1] Channel authority set to "localhost:14317"  {"grpc_log": true}
+2023-09-12T15:22:18.652-0700    info    zapgrpc/zapgrpc.go:178  [core] [Channel #1] Channel switches to new LB policy "pick_first"      {"grpc_log": true}
+2023-09-12T15:22:18.652-0700    info    zapgrpc/zapgrpc.go:178  [core] [Channel #1 SubChannel #2] Subchannel created    {"grpc_log": true}
+2023-09-12T15:22:18.652-0700    info    zapgrpc/zapgrpc.go:178  [core] [Channel #1] Channel Connectivity change to CONNECTING   {"grpc_log": true}
+2023-09-12T15:22:18.652-0700    info    zapgrpc/zapgrpc.go:178  [core] [Channel #1 SubChannel #2] Subchannel Connectivity change to CONNECTING  {"grpc_log": true}
+2023-09-12T15:22:18.652-0700    info    zapgrpc/zapgrpc.go:178  [core] [Server #3] Server created       {"grpc_log": true}
+2023-09-12T15:22:18.652-0700    info    zapgrpc/zapgrpc.go:178  [core] [pick-first-lb 0x140027d9b30] Received SubConn state update: 0x140027d9ce0, {ConnectivityState:CONNECTING ConnectionError:<nil>}        {"grpc_log": true}
+2023-09-12T15:22:18.652-0700    info    zapgrpc/zapgrpc.go:178  [core] [Channel #1 SubChannel #2] Subchannel picks a new address "localhost:14317" to connect   {"grpc_log": true}
+2023-09-12T15:22:18.652-0700    info    otlpreceiver@v0.85.0/otlp.go:83 Starting GRPC server    {"kind": "receiver", "name": "otlp", "data_type": "traces", "endpoint": "0.0.0.0:4317"}
+2023-09-12T15:22:18.652-0700    info    service/service.go:161  Everything is ready. Begin running and processing data.
+2023-09-12T15:22:18.652-0700    info    zapgrpc/zapgrpc.go:178  [core] [Server #3 ListenSocket #4] ListenSocket created {"grpc_log": true}
+2023-09-12T15:22:18.662-0700    info    zapgrpc/zapgrpc.go:178  [core] [Channel #1 SubChannel #2] Subchannel Connectivity change to READY       {"grpc_log": true}
 ```
 
-Make sure you see the last line, that will confirm that the Jaeger exporter has
-successfully established a connection to your local Jaeger instance. Now that we
-have our environment ready, let's start writing your receiver's code.
+Make sure you see the last line, that will confirm that the OTLP exporter has
+successfully established a gRPC connection to your local Jaeger instance. Now
+that we have our environment ready, let's start writing your receiver's code.
 
 Now, create another folder called `tailtracer` so we can have a place to host
 all of our receiver code.
@@ -1926,6 +1928,12 @@ the `crypto/rand` package to randomly generate the `pcommon.SpanID`. Open the
 after that, add the following functions to help generate both IDs:
 
 ```go
+import (
+	crand "crypto/rand"
+	"math/rand"
+  	...
+)
+
 func NewTraceID() pcommon.TraceID {
 	return pcommon.TraceID(uuid.New())
 }
@@ -1942,6 +1950,12 @@ func NewSpanID() pcommon.SpanID {
 	return spanID
 }
 ```
+
+{{% alert title="Check your work" color="primary" %}}
+
+- Imported `crypto/rand` as `crand` (to avoid conflicts with `math/rand`).
+
+{{% /alert %}}
 
 Now that you have a way to properly identify the spans, you can start creating
 them to represent the operations within and across the entities in your system.
