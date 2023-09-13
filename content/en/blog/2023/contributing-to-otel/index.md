@@ -1,7 +1,7 @@
 ---
 title: Thinking about contributing to OpenTelemetry? Here's how I did it.
 linkTitle: Contributing to OTel
-date: 2023-09-08
+date: 2023-09-18
 author:
   >- # If you have only one author, then add the single name on this line in quotes.
   [Adriana Villela](https://github.com/avillela) (Lightstep),
