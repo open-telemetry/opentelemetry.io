@@ -128,7 +128,7 @@ public class DiceApplication {
 }
 ```
 
-To try out the exporters quickly, you can run Jaeger with OTLP enabled in a
+To see the traces exported quickly, you can run Jaeger with OTLP enabled in a
 docker container:
 
 ```shell

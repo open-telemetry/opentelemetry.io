@@ -26,7 +26,8 @@ resource detection below.
 ## Detecting resources from common environments
 
 You can use `ResourceProvider`s for filling in attributes related to common
-environments, like [Container](/docs/specs/otel/resource/semantic_conventions/container/),
+environments, like
+[Container](/docs/specs/otel/resource/semantic_conventions/container/),
 [Host](/docs/specs/otel/resource/semantic_conventions/host/) or
 [Operating System](/docs/specs/otel/resource/semantic_conventions/os/). These
 can be used with or without

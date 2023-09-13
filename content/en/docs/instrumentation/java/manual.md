@@ -199,8 +199,9 @@ dependencies {
 }
 ```
 
-Throughout this documentation you will add additional dependencies. For a full list of artificat coordinates see [releases][releases] and for semantic convention releases 
-see [semantic-conventions-java][semantic-conventions-java].
+Throughout this documentation you will add additional dependencies. For a full
+list of artificat coordinates see [releases][releases] and for semantic
+convention releases see [semantic-conventions-java][semantic-conventions-java].
 
 {{% /tab %}} {{% tab Maven %}}
 
@@ -225,6 +226,7 @@ see [semantic-conventions-java][semantic-conventions-java].
     </dependencies>
 </project>
 ```
+
 {{% /tab %}} {{% /tabpane %}}
 
 ### Initialize the SDK
