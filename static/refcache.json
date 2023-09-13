@@ -2043,6 +2043,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:25:33.752011-04:00"
   },
+  "https://github.com/jaegertracing/jaeger-client-java#via-http-headers": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-13T20:22:01.799413+02:00"
+  },
   "https://github.com/jaegertracing/vertx-create-span": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:30:28.750747-04:00"
