@@ -86,27 +86,27 @@ import io.opentelemetry.instrumentation.resources.ProcessRuntimeResource;
 Custom resources can be configured in your code like the following:
 
 ```java
-    Resource resource = Resource.getDefault()
-        .merge(Resource.create(Attributes.builder()
-            .put(ResourceAttributes.SERVICE_NAME, "dice-service")
-            .put(ResourceAttributes.SERVICE_VERSION, "0.1.0")
-            .put(ResourceAttributes.SERVICE_INSTANCE_ID, "dice-service-1")
-            .put(ResourceAttributes.HOST_NAME, System.getenv("HOSTNAME"))
-            .put(ResourceAttributes.PROCESS_PID, ProcessHandle.current().pid())
-            .build()));
+Resource resource = Resource.getDefault()
+    .merge(Resource.create(Attributes.builder()
+        .put(ResourceAttributes.SERVICE_NAME, "dice-service")
+        .put(ResourceAttributes.SERVICE_VERSION, "0.1.0")
+        .put(ResourceAttributes.SERVICE_INSTANCE_ID, "dice-service-1")
+        .put(ResourceAttributes.HOST_NAME, System.getenv("HOSTNAME"))
+        .put(ResourceAttributes.PROCESS_PID, ProcessHandle.current().pid())
+        .build()));
 
-    SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder()
-        .setResource(resource)
-        ...
-        .build();
+SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder()
+    .setResource(resource)
+    ...
+    .build();
 
-    SdkMeterProvider sdkMeterProvider = SdkMeterProvider.builder()
-        .setResource(resource)
-        ...
-        .build();
+SdkMeterProvider sdkMeterProvider = SdkMeterProvider.builder()
+    .setResource(resource)
+    ...
+    .build();
 
-    SdkLoggerProvider sdkLoggerProvider = SdkLoggerProvider.builder()
-        .setResource(resource)
-        ...
-        .build();
+SdkLoggerProvider sdkLoggerProvider = SdkLoggerProvider.builder()
+    .setResource(resource)
+    ...
+    .build();
 ```
