@@ -41,7 +41,7 @@ importantly, your contributions can help others!! How cool is that?
 Okay. Are you feeling pumped now? Awesome. Let's look at some of the ways to
 contribute to OTel.
 
-###Contribute to the OTel Docs
+### Contribute to the OTel Docs
 
 Are you new to OTel? Are you a bit apprehensive about contributing code to an
 open source project? No sweat! One of the best and easiest ways to contribute to
@@ -179,7 +179,12 @@ Learn more about the OTel SIGs [here](/community/#special-interest-groups).
 
 As we've seen, there are many ways to contribute to OpenTelemetry, whether it's
 through docs contributions, blogging, joining the End User Working Group,
-contributing to the OTel Demo, or joining a SIG. Anything helps!
+contributing to the OTel Demo, or joining a SIG.
+
+But wait...there's more! You can also contribute to OpenTelemetry outside of the
+"official" OpenTelemetry channels (i.e. GitHub and Slack). These include giving
+talks about OpenTelemetry, going on podcasts to promote OpenTelemetry, telling
+your friends and family about OpenTelemetry...and so much more! Anything helps!
 
 There's no such thing as a small contribution, because every little bit adds up,
 and helps make OpenTelemetry awesome.
