@@ -1879,6 +1879,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:39:40.494545-04:00"
   },
+  "https://github.com/cerbos/cerbos-sdk-javascript/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-13T14:29:23.953529+02:00"
+  },
   "https://github.com/cloudflare/cfssl": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:43:38.289125-04:00"
