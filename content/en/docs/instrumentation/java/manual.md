@@ -199,6 +199,9 @@ dependencies {
 }
 ```
 
+Throughout this documentation you will add additional dependencies. For a full list of artificat coordinates see [releases][releases] and for semantic convention releases 
+see [semantic-conventions-java][semantic-conventions-java].
+
 {{% /tab %}} {{% tab Maven %}}
 
 ```xml
@@ -222,7 +225,6 @@ dependencies {
     </dependencies>
 </project>
 ```
-
 {{% /tab %}} {{% /tabpane %}}
 
 ### Initialize the SDK
@@ -279,9 +281,10 @@ dependencies {
             <artifactId>opentelemetry-exporter-logging</artifactId>
         </dependency>
         <dependency>
-            <groupId>io.opentelemetry</groupId>
+            <!-- Not managed by opentelemetry-bom -->
+            <groupId>io.opentelemetry.semconv</groupId>
             <artifactId>opentelemetry-semconv</artifactId>
-            <version>{{% param javaVersion %}}-alpha</version>
+            <version>{{% param semconvJavaVersion %}}-alpha</version>
         </dependency>
     </dependencies>
 </project>
@@ -310,7 +313,7 @@ dependencies {
     implementation("io.opentelemetry:opentelemetry-sdk:{{% param javaVersion %}}");
     implementation("io.opentelemetry:opentelemetry-sdk-metrics:{{% param javaVersion %}}");
     implementation("io.opentelemetry:opentelemetry-exporter-logging:{{% param javaVersion %}}");
-    implementation("io.opentelemetry:opentelemetry-semconv:{{% param javaVersion %}}-alpha");
+    implementation 'io.opentelemetry.semconv:opentelemetry-semconv:{{% param semconvJavaVersion %}}-alpha'
     implementation("opentelemetry-sdk-extension-autoconfigure:{{% param javaVersion %}}");
     implementation("opentelemetry-sdk-extension-autoconfigure-spi:{{% param javaVersion %}}");
 }
@@ -447,7 +450,7 @@ import io.opentelemetry.sdk.trace.export.SimpleSpanProcessor;
 import io.opentelemetry.sdk.logs.SdkLoggerProvider;
 import io.opentelemetry.sdk.logs.export.BatchLogRecordProcessor;
 import io.opentelemetry.sdk.logs.export.LogRecordExporter;
-import io.opentelemetry.semconv.resource.attributes.ResourceAttributes;
+import io.opentelemetry.semconv.ResourceAttributes;
 
 @SpringBootApplication
 public class DiceApplication {
@@ -840,7 +843,7 @@ First add the semantic conventions as a dependency to your application:
 
 ```kotlin
 dependencies {
-  implementation("io.opentelemetry:opentelemetry-semconv")
+  implementation("io.opentelemetry.semconv:opentelemetry-semconv:{{% param semconvJavaVersion %}}-alpha")
 }
 ```
 
@@ -848,8 +851,9 @@ dependencies {
 
 ```xml
 <dependency>
-    <groupId>io.opentelemetry</groupId>
+    <groupId>io.opentelemetry.semconv</groupId>
     <artifactId>opentelemetry-semconv</artifactId>
+    <version>{{% param semconvJavaVersion %}}-alpha</version>
 </dependency>
 ```
 
@@ -1646,5 +1650,8 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
 [opentelemetry registry]: /ecosystem/registry/?component=exporter&language=java
 [parentbased]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/ParentBasedSampler.java
+[releases]: https://github.com/open-telemetry/opentelemetry-java#releases
+[semantic-conventions-java]:
+  https://github.com/open-telemetry/semantic-conventions-java/releases
 [traceidratiobased]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/TraceIdRatioBasedSampler.java
