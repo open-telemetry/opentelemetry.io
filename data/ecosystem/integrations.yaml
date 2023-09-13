@@ -11,6 +11,10 @@
   url: https://github.com/docker/buildx
   docsUrl: https://docs.docker.com/build/building/opentelemetry/
   components: [Go]
+- name: Elasticsearch Java API Client
+  url: https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/index.html
+  docsUrl: https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/opentelemetry.html
+  components: [Java]
 - name: Kubernetes
   url: https://kubernetes.io/
   docsUrl: https://kubernetes.io/docs/concepts/cluster-administration/system-traces/
