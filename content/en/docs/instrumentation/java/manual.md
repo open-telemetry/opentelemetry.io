@@ -61,15 +61,19 @@ telemetry source-identifying info.
             <artifactId>opentelemetry-exporter-otlp</artifactId>
         </dependency>
         <dependency>
-            <groupId>io.opentelemetry</groupId>
+            <!-- Not managed by opentelemetry-bom -->
+            <groupId>io.opentelemetry.semconv</groupId>
             <artifactId>opentelemetry-semconv</artifactId>
-            <version>{{% param javaVersion %}}-alpha</version>
+            <version>{{% param semconvJavaVersion %}}-alpha</version>
         </dependency>
     </dependencies>
 </project>
 ```
 
 See [releases][releases] for a full list of artifact coordinates.
+
+See [semantic-conventions-java][semantic-conventions-java] for semantic
+conventions releases.
 
 ### Gradle
 
@@ -78,11 +82,14 @@ dependencies {
     implementation 'io.opentelemetry:opentelemetry-api:{{% param javaVersion %}}'
     implementation 'io.opentelemetry:opentelemetry-sdk:{{% param javaVersion %}}'
     implementation 'io.opentelemetry:opentelemetry-exporter-otlp:{{% param javaVersion %}}'
-    implementation 'io.opentelemetry:opentelemetry-semconv:{{% param javaVersion %}}-alpha'
+    implementation 'io.opentelemetry.semconv:opentelemetry-semconv:{{% param semconvJavaVersion %}}-alpha'
 }
 ```
 
 See [releases][releases] for a full list of artifact coordinates.
+
+See [semantic-conventions-java][semantic-conventions-java] for semantic
+conventions releases.
 
 ### Imports
 
@@ -102,7 +109,7 @@ import io.opentelemetry.sdk.trace.SdkTracerProvider;
 import io.opentelemetry.sdk.trace.export.BatchSpanProcessor;
 import io.opentelemetry.sdk.logs.SdkLoggerProvider;
 import io.opentelemetry.sdk.logs.export.BatchLogRecordProcessor;
-import io.opentelemetry.semconv.resource.attributes.ResourceAttributes;
+import io.opentelemetry.semconv.ResourceAttributes;
 ```
 
 ### Example
@@ -298,8 +305,9 @@ First add the semantic conventions as a dependency to your application:
 
 ```xml
 <dependency>
-    <groupId>io.opentelemetry</groupId>
+    <groupId>io.opentelemetry.semconv</groupId>
     <artifactId>opentelemetry-semconv</artifactId>
+    <version>{{% param semconvJavaVersion %}}-alpha</version>
 </dependency>
 ```
 
@@ -307,7 +315,7 @@ First add the semantic conventions as a dependency to your application:
 
 ```kotlin
 dependencies {
-  implementation("io.opentelemetry:opentelemetry-semconv")
+  implementation("io.opentelemetry.semconv:opentelemetry-semconv:{{% param semconvJavaVersion %}}-alpha")
 }
 ```
 
@@ -1103,5 +1111,7 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
 [parentbased]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/ParentBasedSampler.java
 [releases]: https://github.com/open-telemetry/opentelemetry-java#releases
+[semantic-conventions-java]:
+  https://github.com/open-telemetry/semantic-conventions-java/releases
 [traceidratiobased]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/TraceIdRatioBasedSampler.java

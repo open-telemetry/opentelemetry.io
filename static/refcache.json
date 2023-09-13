@@ -3167,6 +3167,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T11:43:23.38558-04:00"
   },
+  "https://github.com/open-telemetry/semantic-conventions-java/releases": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-13T09:15:50.916636+02:00"
+  },
   "https://github.com/open-telemetry/semantic-conventions/issues/new": {
     "StatusCode": 200,
     "LastSeen": "2023-07-06T18:29:34.673526-04:00"
