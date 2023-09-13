@@ -41,7 +41,7 @@ importantly, your contributions can help others!! How cool is that?
 Okay. Are you feeling pumped now? Awesome. Let's look at some of the ways to
 contribute to OTel.
 
-### **Contribute to the OTel Docs**
+###Contribute to the OTel Docs
 
 Are you new to OTel? Are you a bit apprehensive about contributing code to an
 open source project? No sweat! One of the best and easiest ways to contribute to
