@@ -4947,6 +4947,14 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-30T09:33:47.364453-04:00"
   },
+  "https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/index.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-09-13T08:18:13.777841+02:00"
+  },
+  "https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/opentelemetry.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-09-13T08:18:14.600801+02:00"
+  },
   "https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html": {
     "StatusCode": 206,
     "LastSeen": "2023-07-06T17:58:38.92195-04:00"
