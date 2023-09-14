@@ -1,7 +1,7 @@
 ---
 title: Exporters
 weight: 50
-cSpell:ignore: autoconfigure springframework
+cSpell:ignore: autoconfigure springframework classpath okhttp
 ---
 
 In order to visualize and analyze your traces, you will need to export them to a
@@ -61,7 +61,7 @@ Under the hood, there are two protocol options supported, each with different
 
 A sender is an abstraction which allows different gRPC / HTTP client
 implementations to fulfill the OTLP contract. Regardless of the sender
-implementation, the same exporter classes are used. A sender implementations is
+implementation, the same exporter classes are used. A sender implementation is
 automatically used when it is detected on the classpath. The sender
 implementations are described in detail below:
 
@@ -77,7 +77,7 @@ implementations are described in detail below:
   JDK 11+
   [HttpClient](https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpClient.html)
   based implementation for the `http/protobuf` version of the protocol. It
-  requires zero additional dependencies, but requires java 11+. To use, include
+  requires zero additional dependencies, but requires Java 11+. To use, include
   the artifact and explicitly exclude the default
   `io.opentelemetry:opentelemetry-exporter-sender-okhttp` dependency.
 - `io.opentelemetry:opentelemetry-exporter-sender-grpc-managed-channel` - This
@@ -86,7 +86,7 @@ implementations are described in detail below:
   artifact, explicitly exclude the default
   `io.opentelemetry:opentelemetry-exporter-sender-okhttp` dependency, and
   include one of the
-  [grpc transport implementations](https://github.com/grpc/grpc-java#transport).
+  [gRPC transport implementations](https://github.com/grpc/grpc-java#transport).
 
 ### Usage
 
