@@ -208,3 +208,10 @@ We would like to express our gratitude to our employers, F5 and ServiceNow Cloud
 Observability, for allowing us to spearhead and execute this project. 
 Additionally, our thanks extend to the numerous OTel technical leaders for their
 invaluable assistance.
+
+## Links
+
+- OTel Arrow Protocol Specification - [OTEP 0156](https://github.com/open-telemetry/oteps/blob/main/text/0156-columnar-encoding.md)
+- OTel Arrow Receiver [documentation](https://github.com/open-telemetry/otel-arrow/blob/main/collector/receiver/otelarrowreceiver/README.md).
+- OTel Arrow Exporter [documentation](https://github.com/open-telemetry/otel-arrow/blob/main/collector/exporter/otelarrowexporter/README.md).
+- OTel Arrow (encoder/decoder) [repository](https://github.com/open-telemetry/otel-arrow).
