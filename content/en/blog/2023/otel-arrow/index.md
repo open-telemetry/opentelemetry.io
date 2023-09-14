@@ -5,9 +5,6 @@ date: 2023-09-14
 author: >-
   [Laurent Quérel](https://github.com/lquerel) (F5),
   [Joshua MacDonald](https://github.com/jmacd) (ServiceNow)
-draft: true # TODO: remove this line once your post is ready to be published
-# canonical_url: http://somewhere.else/ # TODO: if this blog post has been posted somewhere else already, uncomment & provide the canonical URL here.
-body_class: otel-with-contributions-from # TODO: remove this line if there are no secondary contributing authors
 ---
 
 We are thrilled to unveil the OTel Arrow Protocol and to announce the release of
@@ -56,10 +53,10 @@ representation throughout the pipeline streamlines the interface between
 telemetry transport and backend. Additionally, it reduces the network bandwidth
 required for telemetry data transmission. The OTel Arrow Protocol utilizes this
 columnar representation for metrics, logs, and traces, leading to significant
-savings in network expenses.
+savings in network expenses (refer to the diagram below for a comparison between
+row and columnar memory representations).
 
 ![Row vs Columnar](./row_vs_columnar.png)
-Fig 1: Memory representations: row vs columnar data.
 
 To further optimize the transmission of batches of OTel entities, this new
 protocol uses gRPC streams to efficiently leverage dictionary encoding. Much of
