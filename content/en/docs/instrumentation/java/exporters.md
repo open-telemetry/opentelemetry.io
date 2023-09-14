@@ -1,7 +1,7 @@
 ---
 title: Exporters
 weight: 50
-cSpell:ignore: autoconfigure springframework classpath okhttp
+cSpell:ignore: autoconfigure classpath okhttp springframework
 ---
 
 In order to visualize and analyze your traces, you will need to export them to a
