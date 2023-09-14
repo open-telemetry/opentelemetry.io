@@ -2,8 +2,8 @@
 title: OpenTelemetry .NET Automatic Instrumentation reaches version 1.0.0
 linkTitle: .NET Automatic Instrumentation v1.0.0
 date: 2023-09-14
-author: [Fabrizio Ferri-Benedetti](https://github.com/theletterf/) (Splunk)'
-cSpell:ignore: devopsnote librarysupport
+author: '[Fabrizio Ferri-Benedetti](https://github.com/theletterf/) (Splunk)'
+cSpell:ignore: Benedetti Fabrizio Ferri
 ---
 
 The OpenTelemetry .NET SIG is happy to announce the
