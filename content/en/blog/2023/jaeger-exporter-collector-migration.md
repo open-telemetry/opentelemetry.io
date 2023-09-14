@@ -44,8 +44,8 @@ service:
     exporters: [otlp/jaeger]
 ```
 
-Depending on your version of Jaeger, you may need to set the following
-environment variable `COLLECTOR_OTLP_ENABLED=true`.
+Versions of Jaeger until v1.46.0, need the following environment
+variable set `COLLECTOR_OTLP_ENABLED=true`.
 
 ## Build a custom Collector
 
