@@ -10,10 +10,10 @@ The OpenTelemetry .NET SIG is happy to announce the
 [first stable release](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/tag/v1.0.0)
 of the OpenTelemetry .NET Automatic Instrumentation.
 
-You can use the OpenTelemetry .NET Automatic Instrumentation to send traces and
-metrics from .NET applications and services to observability backends without
-having to modify their source code, including ASP.NET applications deployed on
-IIS and Windows services running .NET applications.
+You can use the OpenTelemetry .NET Automatic Instrumentation to send traces,
+metrics, and logs from .NET applications and services to observability backends
+without having to modify their source code, including ASP.NET applications
+deployed on IIS and Windows services running .NET applications.
 
 The automatic instrumentation for .NET includes installer scripts and a NuGet
 package that simplify the task of deploying and configuring the collection of
