@@ -3,7 +3,7 @@ title: Migrating away from the Jaeger exporter in the Collector
 linkTitle: Jaeger Collector Exporter Migration
 date: 2023-09-14
 author: >-
-  [Alex Boten](https://twitter.com/codeboten) (Lightstep)
+  [Alex Boten](https://github.com/codeboten) (Lightstep)
 cSpell:ignore:
 ---
 
