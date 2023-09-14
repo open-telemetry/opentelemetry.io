@@ -2,15 +2,13 @@
 title: Reduce Telemetry Traffic by Up to 2 Times Using OTel Arrow Protocol
 linkTitle: OTel Arrow
 date: 2023-09-14 
-author: '[Laurent Quérel](https://github.com/lquerel) (F5)'
+author: >-
+  [Laurent Quérel](https://github.com/lquerel) (F5),
+  [Joshua MacDonald](https://github.com/jmacd) (ServiceNow)
 draft: true # TODO: remove this line once your post is ready to be published
 # canonical_url: http://somewhere.else/ # TODO: if this blog post has been posted somewhere else already, uncomment & provide the canonical URL here.
 body_class: otel-with-contributions-from # TODO: remove this line if there are no secondary contributing authors
 ---
-
-<!-- If your post doesn't have secondary authors, then delete the following paragraph: -->
-
-With contributions from [Joshua MacDonald](https://github.com/jmacd) (ServiceNow).
 
 We are thrilled to unveil the OTel Arrow Protocol and to announce the release of
 a new pair of receiver/exporter in the OTel contrib repo that supports it. This
