@@ -36,8 +36,10 @@ technologies. As telemetry data becomes increasingly distributed, workloads
 become location-agnostic, spanning data centers, clouds, and the edge. This
 distribution amplifies the urgency to optimize telemetry transport across the
 internet. As the ecosystem transforms, the imperative to optimize and align the
-components of a telemetry pipeline end-to-end becomes more pronounced. Enter the
-OTel Arrow Protocol, a pivotal solution crafted to meet this growing demand.
+components of a telemetry pipeline end-to-end becomes more pronounced. 
+
+Enter the OTel Arrow Protocol, a pivotal solution crafted to meet this growing
+demand.
 
 ![OTel Arrow](./otel_arrow.png)
 
@@ -56,10 +58,10 @@ representation throughout the pipeline streamlines the interface between
 telemetry transport and backend. Additionally, it reduces the network bandwidth
 required for telemetry data transmission. The OTel Arrow Protocol utilizes this
 columnar representation for metrics, logs, and traces, leading to significant
-savings in network expenses (refer to the diagram below for a comparison between
-row and columnar memory representations).
+savings in network expenses.
 
 ![Row vs Columnar](./row_vs_columnar.png)
+Fig 1: Memory representations: row vs columnar data.
 
 To further optimize the transmission of batches of OTel entities, this new
 protocol uses gRPC streams to efficiently leverage dictionary encoding. Much of
@@ -97,7 +99,7 @@ Parquet bridges to query engines such as DataFusion. Such resources can expedite
 the introduction of innovative features, aligning OpenTelemetry more closely
 with modern data pipelines that are increasingly pivoting towards Apache Arrow.
 
-A specification for this protocol can be found [here](https://github.com/open-telemetry/oteps/blob/main/text/0156-columnar-encoding.md). 
+A specification for this protocol (OTEP 0156) can be found [here](https://github.com/open-telemetry/oteps/blob/main/text/0156-columnar-encoding.md). 
 A reference implementation of the encoding/decoding function can be accessed
 [here](https://github.com/open-telemetry/otel-arrow). Additionally, the new pair
 of OTel receiver/exporter that supports this protocol is available in the
