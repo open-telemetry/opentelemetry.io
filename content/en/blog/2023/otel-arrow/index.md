@@ -7,19 +7,22 @@ author: >-
   [Joshua MacDonald](https://github.com/jmacd) (ServiceNow)
 ---
 
-We are thrilled to unveil the OTel Arrow Protocol and to announce the release of
+We are thrilled to unveil the **OTel Arrow Protocol** and to announce the release of
 a new pair of receiver/exporter in the OTel contrib repo that supports it. This
 protocol, designed to complement the OTLP protocol in situations with
 substantial telemetry data volumes, has been under discussion and development
-for two years. It represents a collaborative effort between F5, ServiceNow Cloud
-Observability, and numerous OTel technical leaders (see [donation](https://github.com/open-telemetry/community/issues/1332)). 
-The compression benefits are significant, demonstrating a 2x improvement for the
+for two years. It represents a collaborative effort between [F5](https://f5.com),
+[ServiceNow Cloud Observability](https://www.servicenow.com/products/observability.html)
+, and numerous OTel technical leaders (see [donation](https://github.com/open-telemetry/community/issues/1332)). 
+The compression benefits are significant, demonstrating a **2x improvement** for the
 majority of workloads and even greater enhancements for workloads that contain
 multivariate metrics, which share attributes. One of the highlights of the OTel
 Arrow integration is its seamless adaptability. In a typical deployment,
 incorporating OTel Arrow doesn't necessitate any substantial changes. Users
 simply need to redeploy a new version of the collector with a slightly tweaked
-configuration.This new protocol will serve as the cornerstone for future
+configuration.
+
+This new protocol will serve as the cornerstone for future
 advancements in telemetry data processing and will generally foster enhanced
 integration with modern telemetry backends.
 
@@ -34,7 +37,7 @@ become location-agnostic, spanning data centers, clouds, and the edge. This
 distribution amplifies the urgency to optimize telemetry transport across the
 internet. As the ecosystem transforms, the imperative to optimize and align the
 components of a telemetry pipeline end-to-end becomes more pronounced. Enter the
-OTel Arrow Protocol - a pivotal solution crafted to meet this growing demand.
+OTel Arrow Protocol, a pivotal solution crafted to meet this growing demand.
 
 ![OTel Arrow](./otel_arrow.png)
 
