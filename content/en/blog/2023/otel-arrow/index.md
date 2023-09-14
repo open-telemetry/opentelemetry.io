@@ -1,6 +1,6 @@
 ---
 title: Reduce Telemetry Traffic by Up to 2 Times Using OTel Arrow Protocol
-linkTitle: OTel Arrow
+linkTitle: OTel Arrow Protocol
 date: 2023-09-14 
 author: >-
   [Laurent Quérel](https://github.com/lquerel) (F5),
