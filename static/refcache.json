@@ -1119,6 +1119,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T15:47:40.319503-04:00"
   },
+  "https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpClient.html": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-14T09:36:38.052527-05:00"
+  },
   "https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpHeaders.html": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T15:54:32.716302-04:00"
@@ -2006,6 +2010,14 @@
   "https://github.com/gosnmp/gosnmp": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:15:19.257742-04:00"
+  },
+  "https://github.com/grpc/grpc-java": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-14T09:36:39.160279-05:00"
+  },
+  "https://github.com/grpc/grpc-java#transport": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-14T09:36:39.672623-05:00"
   },
   "https://github.com/hashicorp/nomad-open-telemetry-getting-started": {
     "StatusCode": 200,
@@ -4690,6 +4702,10 @@
   "https://spring.io/guides/gs/spring-boot/": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T11:44:31.406627-04:00"
+  },
+  "https://square.github.io/okhttp/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-09-14T09:36:37.578867-05:00"
   },
   "https://stackoverflow.com/questions/5626193/what-is-monkey-patching": {
     "StatusCode": 200,
