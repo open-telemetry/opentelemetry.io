@@ -1,6 +1,6 @@
 ---
 title: Migrating away from the Jaeger exporter in the Collector
-linkTitle: Migrating away from the Jaeger exporter in the Collector
+linkTitle: Jaeger Collector Exporter Migration
 date: 2023-09-14
 author: >-
   [Alex Boten](https://twitter.com/codeboten) (Lightstep)
@@ -36,7 +36,7 @@ And replace it with the OTLP configuration:
 
 ```yaml
 exporters:
-  otlp/jaeger: # Jaeger supports OTLP directly
+  otlp/jaeger: # Jaeger supports OTLP directly. The default port for OTLP/gRPC is 4317
     endpoint: https://jaeger.example.com:4317
 
 service:
@@ -68,6 +68,6 @@ found in the
 repository.
 
 If either of these options do not work for your use-case, please reach out to
-the #otel-collector community via [CNCF Slack](https://slack.cncf.io) or open an
+the [#otel-collector](https://cloud-native.slack.com/archives/C01N6P7KR6W) community via [CNCF Slack](https://slack.cncf.io) or open an
 issue in the
-[repository](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues).
+[repository](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/new/choose).
