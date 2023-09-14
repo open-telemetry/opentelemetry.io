@@ -2603,6 +2603,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:28:55.179603-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/tag/v1.0.0": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-14T12:03:28.110678+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet/issues/1281": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:18:34.435235-04:00"
@@ -3370,6 +3374,10 @@
   "https://github.com/thanos-io/thanos": {
     "StatusCode": 200,
     "LastSeen": "2023-06-01T15:55:22.327398-04:00"
+  },
+  "https://github.com/theletterf/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-14T12:03:27.555281+02:00"
   },
   "https://github.com/tigrannajaryan": {
     "StatusCode": 200,
