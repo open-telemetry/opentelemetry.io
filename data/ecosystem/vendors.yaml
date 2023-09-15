@@ -272,13 +272,6 @@
   contact: ''
   oss: true
   commercial: false
-- name: ThousandEyes (Cisco)
-  distribution: false
-  nativeOTLP: true
-  url: 'https://docs.thousandeyes.com/product-documentation/api/opentelemetry'
-  contact: ''
-  oss: false
-  commercial: true
 - name: Traceloop
   distribution: false
   nativeOTLP: true

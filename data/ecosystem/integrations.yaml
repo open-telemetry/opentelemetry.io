@@ -1,33 +1,71 @@
-# cSpell:ignore containerd buildx Quarkus
+# cSpell:ignore containerd buildx Quarkus Cerbos
 - name: containerd
   url: https://containerd.io/
   docsUrl: https://github.com/containerd/containerd/blob/main/docs/tracing.md
   components: [Go]
+  oss: true
 - name: CRI-O
   url: https://cri-o.io/
   docsUrl: https://github.com/cri-o/cri-o/blob/main/docs/crio.conf.5.md#criotracing-table
   components: [Go]
-- name: Docker buildx
-  url: https://github.com/docker/buildx
+  oss: true
+- name: Docker Buildx and BuildKit
+  url: https://www.docker.com/
   docsUrl: https://docs.docker.com/build/building/opentelemetry/
   components: [Go]
+  oss: true
 - name: Elasticsearch Java API Client
   url: https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/index.html
   docsUrl: https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/opentelemetry.html
   components: [Java]
+  oss: true
 - name: Kubernetes
   url: https://kubernetes.io/
   docsUrl: https://kubernetes.io/docs/concepts/cluster-administration/system-traces/
   components: [Go]
+  oss: true
 - name: Micrometer
   url: https://micrometer.io/
   docsUrl: https://micrometer.io/docs/tracing#_micrometer_tracing_opentelemetry_setup
   components: [Java]
+  oss: true
 - name: Quarkus
   url: https://quarkus.io/
   docsUrl: https://quarkus.io/guides/opentelemetry
   components: [Java]
+  oss: true
 - name: RoadRunner
   url: https://roadrunner.dev/
   docsUrl: https://roadrunner.dev/docs/lab-otel/current/en
   components: [Go, PHP]
+  oss: true
+- name: Kong API Gateway
+  url: http://www.konghq.com/
+  docsUrl: https://docs.konghq.com/hub/kong-inc/opentelemetry/
+  components: []
+  oss: false
+- name: NGINX Web Server
+  url: https://nginx.org/
+  docsUrl: https://github.com/nginxinc/nginx-otel
+  components: [C++]
+  oss: true
+- name: Cisco NSO
+  url: https://www.cisco.com/c/en/us/products/cloud-systems-management/network-services-orchestrator/index.html
+  docsUrl: https://developer.cisco.com/docs/nso/#!observability-exporter/
+  components: [Python]
+  oss: false
+- name: Next.js
+  url: https://nextjs.org/
+  docsUrl: https://nextjs.org/docs/app/building-your-application/optimizing/open-telemetry
+  components: [JavaScript]
+  oss: true
+- name: ThousandEyes (Cisco)
+  url: https://www.thousandeyes.com/
+  docsUrl: 'https://docs.thousandeyes.com/product-documentation/api/opentelemetry'
+  components: [Collector]
+  oss: false
+- name: Cerbos JS SDK
+  url: https://cerbos.dev/
+  docsUrl: https://github.com/cerbos/cerbos-sdk-javascript/tree/main/packages/opentelemetry
+  components: [JavaScript]
+  oss: true
