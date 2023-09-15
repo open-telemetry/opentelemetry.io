@@ -147,14 +147,14 @@ receivers:
       network:
 
 exporters:
-  logging:
+  debug:
     verbosity: detailed
 
 service:
   pipelines:
     metrics:
       receivers: [hostmetrics, prometheus/own_metrics]
-      exporters: [logging]
+      exporters: [debug]
 ```
 
 Now it's time to launch the supervisor (which in turn will launch your

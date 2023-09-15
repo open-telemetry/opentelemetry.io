@@ -369,8 +369,8 @@ exporters:
     protocol_version: 2.0.0
 
   # Data sources: traces, metrics, logs
-  logging:
-    loglevel: debug
+  debug:
+    verbosity: detailed
 
   # Data sources: traces, metrics
   opencensus:
@@ -653,7 +653,7 @@ receivers:
 processors:
 
 exporters:
-  logging:
+  debug:
 
 service:
   extensions:
@@ -664,7 +664,7 @@ service:
         - otlp/auth
       processors: []
       exporters:
-        - logging
+        - debug
 ```
 
 On the agent side, this is an example that makes the OTLP exporter obtain OIDC

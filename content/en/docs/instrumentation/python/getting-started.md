@@ -2,7 +2,7 @@
 title: Getting Started
 description: Get telemetry for your app in less than 5 minutes!
 # prettier-ignore
-cSpell:ignore: diceroller distro loggingexporter loglevel randint rolldice rollspan venv
+cSpell:ignore: diceroller distro debugexporter loglevel randint rolldice rollspan venv
 weight: 10
 ---
 
@@ -553,19 +553,19 @@ receivers:
     protocols:
       grpc:
 exporters:
-  logging:
-    loglevel: debug
+  debug:
+    verbosity: detailed
 processors:
   batch:
 service:
   pipelines:
     traces:
       receivers: [otlp]
-      exporters: [logging]
+      exporters: [debug]
       processors: [batch]
     metrics:
       receivers: [otlp]
-      exporters: [logging]
+      exporters: [debug]
       processors: [batch]
 ```
 
@@ -614,7 +614,7 @@ process instead of the flask process, which should look something like this:
 <summary>View example output</summary>
 
 ```text
-2022-06-09T20:43:39.915Z        DEBUG   loggingexporter/logging_exporter.go:51  ResourceSpans #0
+2022-06-09T20:43:39.915Z        DEBUG   debugexporter/debug_exporter.go:51  ResourceSpans #0
 Resource labels:
      -> telemetry.sdk.language: STRING(python)
      -> telemetry.sdk.name: STRING(opentelemetry)
@@ -661,8 +661,8 @@ Attributes:
      -> http.route: STRING(/rolldice)
      -> http.status_code: INT(200)
 
-2022-06-09T20:43:40.025Z        INFO    loggingexporter/logging_exporter.go:56  MetricsExporter {"#metrics": 1}
-2022-06-09T20:43:40.025Z        DEBUG   loggingexporter/logging_exporter.go:66  ResourceMetrics #0
+2022-06-09T20:43:40.025Z        INFO    debugexporter/debug_exporter.go:56  MetricsExporter {"#metrics": 1}
+2022-06-09T20:43:40.025Z        DEBUG   debugexporter/debug_exporter.go:66  ResourceMetrics #0
 Resource labels:
      -> telemetry.sdk.language: STRING(python)
      -> telemetry.sdk.name: STRING(opentelemetry)

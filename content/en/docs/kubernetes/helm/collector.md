@@ -2,7 +2,7 @@
 title: OpenTelemetry Collector Chart
 linkTitle: Collector Chart
 # prettier-ignore
-cSpell:ignore: filelog filelogreceiver filelogreceiver hostmetricsreceiver kubelet kubeletstats kubeletstatsreceiver loggingexporter otlphttp sattributesprocessor sclusterreceiver sobjectsreceiver statefulset
+cSpell:ignore: filelog filelogreceiver filelogreceiver hostmetricsreceiver kubelet kubeletstats kubeletstatsreceiver debugexporter otlphttp sattributesprocessor sclusterreceiver sobjectsreceiver statefulset
 ---
 
 ## Introduction
@@ -37,7 +37,7 @@ started. By default, the collector's config will look like:
 
 ```yaml
 exporters:
-  logging: {}
+  debug: {}
 extensions:
   health_check: {}
   memory_ballast:
@@ -80,7 +80,7 @@ service:
   pipelines:
     logs:
       exporters:
-        - logging
+        - debug
       processors:
         - memory_limiter
         - batch
@@ -88,7 +88,7 @@ service:
         - otlp
     metrics:
       exporters:
-        - logging
+        - debug
       processors:
         - memory_limiter
         - batch
@@ -97,7 +97,7 @@ service:
         - prometheus
     traces:
       exporters:
-        - logging
+        - debug
       processors:
         - memory_limiter
         - batch
@@ -194,16 +194,16 @@ presets:
     enabled: true
 ```
 
-The chart's default logs pipeline uses the `loggingexporter`. Paired with the
+The chart's default logs pipeline uses the `debugexporter`. Paired with the
 `logsCollection` preset's `filelogreceiver` it is easy to accidentally feed the
 exported logs back into the collector, which can cause a "log explosion".
 
 To prevent the looping, the default configuration of the receiver excludes the
 collector's own logs. If you want to include the collector's logs, make sure to
-replace the `logging` exporter with an exporter that does not send logs to
+replace the `debug` exporter with an exporter that does not send logs to
 collector's standard output.
 
-Here's an example `values.yaml` that replaces the default `logging` exporter on
+Here's an example `values.yaml` that replaces the default `debug` exporter on
 the `logs` pipeline with an `otlphttp` exporter that sends the container logs to
 `https://example.com:55681` endpoint. It also uses
 `presets.logsCollection.includeCollectorLogs` to tell the preset to enable
