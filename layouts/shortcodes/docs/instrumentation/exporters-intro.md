@@ -1,3 +1,4 @@
+<!-- cspell:ignore isset cond -->
 {{ $lang := .Get 0 -}} {{ $data := index $.Site.Data.instrumentation $lang }}
 {{ $name := cond (isset $.Site.Data.instrumentation $lang) (printf "OpenTelemetry %s" $data.name) "the language specific implementations" -}}
 
