@@ -738,7 +738,7 @@ You can use [`NewView`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#N
 function to create a view and register it using
 [`WithView`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#With) option.
 
-For example, here's how you might ceate a view that renames the `latency`
+For example, here's how you might create a view that renames the `latency`
 instrument from the `v0.34.0` version of the `http` instrumentation library
 to `request.latency`.
 
