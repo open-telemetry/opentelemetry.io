@@ -465,8 +465,7 @@ example).
 
 Counters can be used to measure a non-negative, increasing value.
 
-For example, here's how you report the number of calls for an HTTP
-handler:
+For example, here's how you report the number of calls for an HTTP handler:
 
 ```go
 import (
@@ -537,8 +536,8 @@ func removeItem() {
 
 Histograms are used to measure a distribution of values over time.
 
-For example, here's how you report a distribution of response times for an
-HTTP handler:
+For example, here's how you report a distribution of response times for an HTTP
+handler:
 
 ```go
 import (
@@ -656,8 +655,8 @@ func registerDBMetrics(db *sql.DB, meter metric.Meter, poolName string) (metric.
 
 Observable Gauges should be used to measure non-additive values.
 
-For example, here's how you report memory usage of the heap objects used
-in application:
+For example, here's how you report memory usage of the heap objects used in
+application:
 
 ```go
 import (
@@ -740,8 +739,8 @@ function to create a view and register it using the
 [`WithView`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#With)
 option.
 
-For example, here's how you create a view that renames the `latency`
-instrument from the `v0.34.0` version of the `http` instrumentation library to
+For example, here's how you create a view that renames the `latency` instrument
+from the `v0.34.0` version of the `http` instrumentation library to
 `request.latency`.
 
 ```go
@@ -758,11 +757,9 @@ meterProvider := metric.NewMeterProvider(
 )
 ```
 
-The `NewView` function provides a convenient way of creating views.
-If `NewView` can't provide the functionalities you need, you can create
-a custom
-[`View`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#View)
-directly.
+The `NewView` function provides a convenient way of creating views. If `NewView`
+can't provide the functionalities you need, you can create a custom
+[`View`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#View) directly.
 
 ## Logs
 
