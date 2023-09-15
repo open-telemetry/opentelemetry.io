@@ -1,7 +1,7 @@
 ---
 title: Exporters
 weight: 50
-cSpell:ignore: autoconfigure springframework
+cSpell:ignore: autoconfigure classpath okhttp springframework
 ---
 
 In order to visualize and analyze your traces, you will need to export them to a
@@ -17,10 +17,15 @@ how to setup exporters following the
 For [manual instrumentation](/docs/instrumentation/java/manual), you will find
 some introductions below on how to set up backends and the matching exporters.
 
-## OTLP endpoint
+## OTLP
 
 To send trace data to a OTLP endpoint (like the [collector](/docs/collector) or
-Jaeger) you'll want to use `opentelemetry-exporter-otlp`:
+Jaeger) you'll want to use `opentelemetry-exporter-otlp`.
+
+### OTLP Artifacts
+
+There are multiple OTLP options available, each catering to different use cases.
+For most users, the default artifact will suffice and be the most simple:
 
 {{< tabpane text=true >}} {{% tab Gradle %}}
 
@@ -44,6 +49,46 @@ dependencies {
 ```
 
 {{< /tab >}} {{< /tabpane>}}
+
+Under the hood, there are two protocol options supported, each with different
+"sender" implementations.
+
+- `grpc` - gRPC implementation of OTLP exporters, represented by
+  `OtlpGrpcSpanExporter`, `OtlpGrpcMetricExporter`, `OtlpGrpcLogRecordExporter`.
+- `http/protobuf` - HTTP with protobuf encoded payload implementation of OTLP
+  exporters, represented by `OtlpHttpSpanExporter`, `OtlpHttpMetricExporter`,
+  `OtlpHttpLogRecordExporter`.
+
+A sender is an abstraction which allows different gRPC / HTTP client
+implementations to fulfill the OTLP contract. Regardless of the sender
+implementation, the same exporter classes are used. A sender implementation is
+automatically used when it is detected on the classpath. The sender
+implementations are described in detail below:
+
+- `{groupId}:{artifactId}` - Sender description.
+- `io.opentelemetry:opentelemetry-exporter-sender-okhttp` - The default sender,
+  included automatically with `opentelemetry-exporter-otlp` and bundled with the
+  OpenTelemetry Java agent. This includes an
+  [OkHttp](https://square.github.io/okhttp/) based implementation for both the
+  `grpc` and `http/protobuf` versions of the protocol, and will be suitable for
+  most users. However, OkHttp has a transitive dependency on kotlin which is
+  problematic in some environments.
+- `io.opentelemetry:opentelemetry-exporter-sender-jdk` - This sender includes a
+  JDK 11+
+  [HttpClient](https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpClient.html)
+  based implementation for the `http/protobuf` version of the protocol. It
+  requires zero additional dependencies, but requires Java 11+. To use, include
+  the artifact and explicitly exclude the default
+  `io.opentelemetry:opentelemetry-exporter-sender-okhttp` dependency.
+- `io.opentelemetry:opentelemetry-exporter-sender-grpc-managed-channel` - This
+  sender includes a [grpc-java](https://github.com/grpc/grpc-java) based
+  implementation for the `grpc` version of the protocol. To use, include the
+  artifact, explicitly exclude the default
+  `io.opentelemetry:opentelemetry-exporter-sender-okhttp` dependency, and
+  include one of the
+  [gRPC transport implementations](https://github.com/grpc/grpc-java#transport).
+
+### Usage
 
 Next, configure the exporter to point at an OTLP endpoint.
 
