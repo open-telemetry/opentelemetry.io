@@ -741,7 +741,7 @@ option.
 
 For example, here's how you create a view that renames the `latency` instrument
 from the `v0.34.0` version of the `http` instrumentation library to
-`request.latency`.
+`request.latency`:
 
 ```go
 view := metric.NewView(metric.Instrument{
@@ -760,6 +760,34 @@ meterProvider := metric.NewMeterProvider(
 The `NewView` function provides a convenient way of creating views. If `NewView`
 can't provide the functionalities you need, you can create a custom
 [`View`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#View) directly.
+
+For example, here's how you create a view that uses regular expression matching
+to ensure all data stream names have a suffix of the units it uses:
+
+```go
+re := regexp.MustCompile(`[._](ms|byte)$`)
+var view View = func(i Instrument) (Stream, bool) {
+	s := Stream{Name: i.Name, Description: i.Description, Unit: i.Unit}
+	// Any instrument that does not have a unit suffix defined, but has a
+	// dimensional unit defined, update the name with a unit suffix.
+	if re.MatchString(i.Name) {
+		return s, false
+	}
+	switch i.Unit {
+	case "ms":
+		s.Name += ".ms"
+	case "By":
+		s.Name += ".byte"
+	default:
+		return s, false
+	}
+	return s, true
+}
+
+meterProvider := metric.NewMeterProvider(
+	metric.WithView(view),
+)
+```
 
 ## Logs
 
