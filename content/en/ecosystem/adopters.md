@@ -6,11 +6,11 @@ cSpell:ignore: Dapr Datenrettungsdienste Farfetch Globale Logicmonitor Logz Upli
 # All spelling entries must be on a single line
 ---
 
-OpenTelemetry's mission is to to enable effective observability for all its
+OpenTelemetry's mission is to enable effective observability for all its
 end-users. If you are thinking about adopting OpenTelemetry for your
 organization, you may be curious about other adoption journeys. The table below
 is a non-exhaustive list of
-[end-user organizations](https://community.cncf.io/end-user-community/) that
+[_end-user_ organizations](https://community.cncf.io/end-user-community/) that
 have adopted OpenTelemetry for
 [Observability](/docs/concepts/observability-primer/).
 
