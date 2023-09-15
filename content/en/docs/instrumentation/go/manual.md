@@ -766,8 +766,9 @@ to ensure all data stream names have a suffix of the units it uses:
 
 ```go
 re := regexp.MustCompile(`[._](ms|byte)$`)
-var view View = func(i Instrument) (Stream, bool) {
-	s := Stream{Name: i.Name, Description: i.Description, Unit: i.Unit}
+var view metric.View = func(i metric.Instrument) (metric.Stream, bool) {
+	// In a custom View function, you need to explicitly copy the name, description, and unit.
+	s := metric.Stream{Name: i.Name, Description: i.Description, Unit: i.Unit}
 	// Any instrument that does not have a unit suffix defined, but has a
 	// dimensional unit defined, update the name with a unit suffix.
 	if re.MatchString(i.Name) {
