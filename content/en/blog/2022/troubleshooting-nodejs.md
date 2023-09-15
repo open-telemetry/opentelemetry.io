@@ -268,7 +268,7 @@ are other exporters to choose from, and each one has a few configuration
 options. An error in one of these options will fail to export, which is silently
 ignored by default.
 
-A a few common configuration errors are covered in the following subsections.
+A few common configuration errors are covered in the following subsections.
 
 ### OTLP exporters
 
