@@ -465,7 +465,7 @@ example).
 
 Counters can be used to measure a non-negative, increasing value.
 
-For example, here's how you might report the number of calls for an HTTP
+For example, here's how you report the number of calls for an HTTP
 handler:
 
 ```go
@@ -497,7 +497,7 @@ func init() {
 UpDown counters can increment and decrement, allowing you to observe a
 cumulative value that goes up or down.
 
-For example, here's how you might report the number of items of some collection:
+For example, here's how you report the number of items of some collection:
 
 ```go
 import (
@@ -537,7 +537,7 @@ func removeItem() {
 
 Histograms are used to measure a distribution of values over time.
 
-For example, here's how you might report a distribution of response times for an
+For example, here's how you report a distribution of response times for an
 HTTP handler:
 
 ```go
@@ -573,7 +573,7 @@ func init() {
 Observable counters can be used to measure an additive, non-negative,
 monotonically increasing value.
 
-For example, here's how you might report time since the application started:
+For example, here's how you report time since the application started:
 
 ```go
 import (
@@ -604,7 +604,7 @@ func init() {
 Observable UpDown counters can increment and decrement, allowing you to measure
 an additive, non-negative, non-monotonically increasing cumulative value.
 
-For example, here's how you might report some database metrics:
+For example, here's how you report some database metrics:
 
 ```go
 import (
@@ -656,7 +656,7 @@ func registerDBMetrics(db *sql.DB, meter metric.Meter, poolName string) (metric.
 
 Observable Gauges should be used to measure non-additive values.
 
-For example, here's how you might report memory usage of the heap objects used
+For example, here's how you report memory usage of the heap objects used
 in application:
 
 ```go
