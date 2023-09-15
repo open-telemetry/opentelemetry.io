@@ -29,11 +29,14 @@ integration with modern telemetry backends.
 ## Why a new protocol?
 
 The growth in telemetry data is undeniable and swift. This surge is attributed
-to several factors: the proliferation of devices and sensors, the shift from
-monolithic application deployment to more granular forms like containers and
-serverless functions, and the increasing reliance on data-driven and AI-driven
-technologies. As telemetry data becomes increasingly distributed, workloads
-become location-agnostic, spanning data centers, clouds, and the edge. This
+to several factors: 
+- the proliferation of devices and sensors,
+- the shift from monolithic application deployment to more granular forms like
+containers and serverless functions, 
+- and the increasing reliance on data-driven and AI-driven technologies. 
+
+As telemetry data becomes increasingly distributed, workloads become
+location-agnostic, spanning data centers, clouds, and the edge. This 
 distribution amplifies the urgency to optimize telemetry transport across the
 internet. As the ecosystem transforms, the imperative to optimize and align the
 components of a telemetry pipeline end-to-end becomes more pronounced. 
@@ -50,15 +53,16 @@ recently, OpenTelemetry primarily supported either JSON or, more commonly, a
 Protobuf-based binary format for metrics, logs, and traces. This choice,
 particularly with Protobuf, offers a good balance between simplicity, data
 representation efficiency, and performance, especially when transmitting low to
-medium volumes of complex telemetry objects across the network. On the backend,
-this data is typically stored in a columnar format to optimize compression
-ratio, data retrieval, and processing efficiency (see fig 1 to compare row vs
-columnar data representation). Transitioning to an end-to-end columnar
-representation throughout the pipeline streamlines the interface between
-telemetry transport and backend. Additionally, it reduces the network bandwidth
-required for telemetry data transmission. The OTel Arrow Protocol utilizes this
-columnar representation for metrics, logs, and traces, leading to significant
-savings in network expenses.
+medium volumes of complex telemetry objects across the network. 
+
+On the backend, however, this data is typically stored in a columnar format to
+optimize compression ratio, data retrieval, and processing efficiency (see fig 1
+to compare row vs columnar data representation). Transitioning to an end-to-end
+columnar representation throughout the pipeline streamlines the interface
+between telemetry transport and backend. Additionally, it reduces the network
+bandwidth required for telemetry data transmission. The OTel Arrow Protocol
+utilizes this columnar representation for metrics, logs, and traces, leading to
+significant savings in network expenses.
 
 ![Row vs Columnar](./row_vs_columnar.png)
 Fig 1: Memory representations: row vs columnar data.
@@ -66,8 +70,8 @@ Fig 1: Memory representations: row vs columnar data.
 To further optimize the transmission of batches of OTel entities, this new
 protocol uses gRPC streams to efficiently leverage dictionary encoding. Much of
 the textual data between batches is redundant; attribute names and values are
-frequently repeated. Apache Arrow supports dictionary encoding, and with a
-stream-oriented protocol, we can send only the deltas of those dictionaries
+frequently repeated. Apache Arrow supports dictionary encoding and a
+stream-oriented protocol allows us to send only the deltas of those dictionaries
 between consecutive batches. These techniques enhance the protocol's
 compressibility.
 
