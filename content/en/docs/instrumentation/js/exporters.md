@@ -7,7 +7,7 @@ weight: 50
 
 {{% alert title="Note" color="info" %}}
 
-If you use [automatic instrumentation](/docs/instrumentation/java/automatic) you
+If you use [automatic instrumentation](/docs/instrumentation/js/automatic) you
 can learn how to setup exporters following the
 [Configuration Guide](/docs/instrumentation/js/automatic/module-config/)
 

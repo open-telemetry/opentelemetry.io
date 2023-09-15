@@ -10,7 +10,7 @@ weight: 50
 If you use the OpenTelemetry .NET Automatic Instrumentation for
 [automatic instrumentation](/docs/instrumentation/net/automatic) you can learn
 how to setup exporters following the
-[Configuration Guide](http://localhost:1313/docs/instrumentation/net/automatic/config)
+[Configuration Guide](/docs/instrumentation/net/automatic/config)
 
 {{% /alert %}}
 
