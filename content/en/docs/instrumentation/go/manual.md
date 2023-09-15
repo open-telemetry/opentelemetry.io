@@ -720,6 +720,48 @@ func init() {
 }
 ```
 
+### Registering Views
+
+A View provides SDK users with the flexibility to customize the metrics that are
+output by the SDK. They can customize which metric instruments are to be
+processed or ignored. They can customize aggregation and what attributes are to
+be reported on metrics.
+
+Every instrument has a default view, which retains the original name,
+description, and attributes, and has a default aggregation that is based on the
+type of instrument. When a registered view matches an instrument, the default
+view is replaced by the registered view. Additional registered views that match
+the instrument are additive, and result in multiple exported metrics for the
+instrument.
+
+You can use [`NewView`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#NewView)
+function to create a view and register it using
+[`WithView`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#With) option.
+
+For example, here's how you might ceate a view that renames the `latency`
+instrument from the `v0.34.0` version of the `http` instrumentation library
+to `request.latency`.
+
+```go
+view := metric.NewView(metric.Instrument{
+	Name: "latency",
+	Scope: instrumentation.Scope{
+		Name:    "http",
+		Version: "0.34.0",
+	},
+}, metric.Stream{Name: "request.latency"})
+
+meterProvider := metric.NewMeterProvider(
+	metric.WithView(view),
+)
+```
+
+The `NewView` function provides convenient creation of common Views
+construction. However, it is limited in what it can create. When `NewView` is
+not able to provide the functionally needed, a custom
+[`View`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#View) can
+be constructed directly.
+
 ## Logs
 
 The logs API is currently unstable, documentation TBA.
