@@ -734,13 +734,15 @@ view is replaced by the registered view. Additional registered views that match
 the instrument are additive, and result in multiple exported metrics for the
 instrument.
 
-You can use [`NewView`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#NewView)
+You can use
+[`NewView`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#NewView)
 function to create a view and register it using
-[`WithView`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#With) option.
+[`WithView`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#With)
+option.
 
 For example, here's how you might create a view that renames the `latency`
-instrument from the `v0.34.0` version of the `http` instrumentation library
-to `request.latency`.
+instrument from the `v0.34.0` version of the `http` instrumentation library to
+`request.latency`.
 
 ```go
 view := metric.NewView(metric.Instrument{
@@ -759,8 +761,8 @@ meterProvider := metric.NewMeterProvider(
 The `NewView` function provides convenient creation of common Views
 construction. However, it is limited in what it can create. When `NewView` is
 not able to provide the functionally needed, a custom
-[`View`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#View) can
-be constructed directly.
+[`View`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#View) can be
+constructed directly.
 
 ## Logs
 
