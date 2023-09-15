@@ -4,7 +4,7 @@ linkTitle: Jaeger Collector Exporter Migration
 date: 2023-09-14
 author: >-
   [Alex Boten](https://github.com/codeboten) (Lightstep)
-cSpell:ignore:
+cSpell:ignore: Boten gomod jaegerexporter jaegerthrifthttpexporter
 ---
 
 The
@@ -44,8 +44,8 @@ service:
     exporters: [otlp/jaeger]
 ```
 
-Versions of Jaeger until v1.46.0, need the following environment
-variable set `COLLECTOR_OTLP_ENABLED=true`.
+Versions of Jaeger until v1.46.0, need the following environment variable set
+`COLLECTOR_OTLP_ENABLED=true`.
 
 ## Build a custom Collector
 
@@ -68,6 +68,6 @@ found in the
 repository.
 
 If either of these options do not work for your use-case, please reach out to
-the [#otel-collector](https://cloud-native.slack.com/archives/C01N6P7KR6W) community via [CNCF Slack](https://slack.cncf.io) or open an
-issue in the
+the [#otel-collector](https://cloud-native.slack.com/archives/C01N6P7KR6W)
+community via [CNCF Slack](https://slack.cncf.io) or open an issue in the
 [repository](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/new/choose).
