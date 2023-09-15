@@ -4379,6 +4379,18 @@
     "StatusCode": 200,
     "LastSeen": "2023-09-11T14:33:25.420952095Z"
   },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#NewView": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-15T09:41:38.164411819Z"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#View": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-15T09:41:38.432556144Z"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#With": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-15T09:41:38.295762202Z"
+  },
   "https://pkg.go.dev/go.opentelemetry.io/otel/sdk/resource": {
     "StatusCode": 200,
     "LastSeen": "2023-09-11T14:33:25.721659015Z"
