@@ -722,10 +722,10 @@ func init() {
 
 ### Registering Views
 
-A View provides SDK users with the flexibility to customize the metrics that are
-output by the SDK. They can customize which metric instruments are to be
-processed or ignored. They can customize aggregation and what attributes are to
-be reported on metrics.
+A view provides SDK users with the flexibility to customize the metrics output
+by the SDK. You can customize which metric instruments are to be processed or
+ignored. You can also customize aggregation and what attributes you want to
+report on metrics.
 
 Every instrument has a default view, which retains the original name,
 description, and attributes, and has a default aggregation that is based on the
