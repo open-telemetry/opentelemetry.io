@@ -98,10 +98,10 @@ Some examples of use cases for metrics include:
 
 ## Views
 
-A View provides SDK users with the flexibility to customize the metrics that are
-output by the SDK. They can customize which metric instruments are to be
-processed or ignored. They can customize aggregation and what attributes are to
-be reported on metrics.
+A view provides SDK users with the flexibility to customize the metrics output
+by the SDK. You can customize which metric instruments are to be processed or
+ignored. You can also customize aggregation and what attributes you want to
+report on metrics.
 
 ## Language Support
 
