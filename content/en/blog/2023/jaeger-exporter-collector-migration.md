@@ -51,8 +51,8 @@ Versions of Jaeger until v1.46.0, need the following environment variable set
 
 If switching to the OTLP exporter isn't an option, an alternative is to build a
 custom Collector that includes the Jaeger exporter. The process to build is
-documented [here](/docs/collector/custom-collector/). Your manifest file
-will need to include the following line to add the Jaeger exporter:
+documented [here](/docs/collector/custom-collector/). Your manifest file will
+need to include the following line to add the Jaeger exporter:
 
 ```yaml
 exporters:
