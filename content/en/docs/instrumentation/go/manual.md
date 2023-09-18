@@ -757,8 +757,8 @@ meterProvider := metric.NewMeterProvider(
 )
 ```
 
-For example, here's how you create a view that makes the `latency` instrument
-of the `http` instrumentation library to be reported as an exponential histogram:
+For example, here's how you create a view that makes the `latency` instrument of
+the `http` instrumentation library to be reported as an exponential histogram:
 
 ```go
 	view := metric.NewView(
