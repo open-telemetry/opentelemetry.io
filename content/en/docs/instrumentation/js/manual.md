@@ -1452,8 +1452,8 @@ counter.add(-1);
 
 Histograms are used to measure a distribution of values over time.
 
-For example, here's how you might report a distribution of response times for an
-API route with Express:
+For example, here's how you report a distribution of response times for an API
+route with Express:
 
 {{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
 
