@@ -757,6 +757,9 @@ meterProvider := metric.NewMeterProvider(
 )
 ```
 
+You can find more usage examples in
+[`NewView` documentation](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#NewView)
+
 The `NewView` function provides a convenient way of creating views. If `NewView`
 can't provide the functionalities you need, you can create a custom
 [`View`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#View) directly.
@@ -790,9 +793,6 @@ meterProvider := metric.NewMeterProvider(
 	metric.WithView(view),
 )
 ```
-
-You can find more examples in
-[the metrics SDK package documentation](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#pkg-examples).
 
 ## Logs
 
