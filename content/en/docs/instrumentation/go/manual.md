@@ -791,6 +791,9 @@ meterProvider := metric.NewMeterProvider(
 )
 ```
 
+You can find more examples in
+[the metrics SDK package documentation](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#pkg-examples).
+
 ## Logs
 
 The logs API is currently unstable, documentation TBA.
