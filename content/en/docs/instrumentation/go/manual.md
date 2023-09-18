@@ -757,8 +757,27 @@ meterProvider := metric.NewMeterProvider(
 )
 ```
 
-You can find more usage examples in
-[`NewView` documentation](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#NewView)
+For example, here's how you create a view that makes the `latency` instrument
+of the `http` instrumentation library to be reported as an exponential histogram:
+
+```go
+	view := metric.NewView(
+		metric.Instrument{
+			Name:  "latency",
+			Scope: instrumentation.Scope{Name: "http"},
+		},
+		metric.Stream{
+			Aggregation: metric.AggregationBase2ExponentialHistogram{
+				MaxSize:  160,
+				MaxScale: 20,
+			},
+		},
+	)
+
+	meterProvider := metric.NewMeterProvider(
+		metric.WithView(view),
+	)
+```
 
 The `NewView` function provides a convenient way of creating views. If `NewView`
 can't provide the functionalities you need, you can create a custom
