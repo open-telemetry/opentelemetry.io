@@ -1,3 +1,4 @@
+# cSpell:ignore resty dubonzi
 title: Go-Resty Instrumentation
 registryType: instrumentation
 isThirdParty: true

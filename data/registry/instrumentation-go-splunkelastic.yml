@@ -1,3 +1,4 @@
+# cSpell:ignore splunkelastic gopkg olivere
 title: splunkelastic -- Instrumentation for gopkg.in/olivere/elastic
 registryType: instrumentation
 isThirdParty: true

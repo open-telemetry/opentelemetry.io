@@ -3,7 +3,8 @@ registryType: instrumentation
 isThirdParty: false
 language: dotnet
 tags:
-  - aspnetcore
+  - asp
+  - core
   - instrumentation
   - dotnet
 repo: https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/src/OpenTelemetry.Instrumentation.AspNetCore

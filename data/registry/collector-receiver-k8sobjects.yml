@@ -1,3 +1,4 @@
+# cSpell:ignore k8sobjects
 title: Kubernetes Objects Receiver
 registryType: receiver
 isThirdParty: false

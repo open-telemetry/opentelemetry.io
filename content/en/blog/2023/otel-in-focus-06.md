@@ -4,7 +4,7 @@ linkTitle: OTel in Focus 2023/06
 date: 2023-07-01
 author: '[Austin Parker](https://github.com/austinlparker)'
 # prettier-ignore
-cSpell:ignore: autoconfigure Dyrmishi Farfetch Inet Ktor Logback Quarkus scraperhelper Skywalking
+cSpell:ignore: autoconfigure Dyrmishi Farfetch Inet Ktor Logback scraperhelper Skywalking
 ---
 
 Welcome back to **OpenTelemetry in Focus** for June, 2023! It's officially

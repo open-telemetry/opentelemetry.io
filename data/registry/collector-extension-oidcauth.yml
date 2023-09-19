@@ -1,3 +1,4 @@
+# cSpell:ignore oidc
 title: OIDC authenticator extension
 registryType: extension
 isThirdParty: false
@@ -6,6 +7,7 @@ tags:
   - go
   - extension
   - collector
+  - oidc
 repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/oidcauthextension
 license: Apache 2.0
 description:

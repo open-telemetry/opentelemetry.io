@@ -1,3 +1,4 @@
+# cSpell:ignore flink jobmanager taskmanager
 title: FlinkMetrics Receiver
 registryType: receiver
 isThirdParty: false

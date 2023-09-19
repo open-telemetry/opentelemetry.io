@@ -1,3 +1,4 @@
+# cSpell:ignore mahboubi
 title: Go gRPC metric instrumentation
 registryType: instrumentation
 isThirdParty: true

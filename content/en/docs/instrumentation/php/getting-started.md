@@ -3,8 +3,7 @@ title: Getting Started
 description: Get up and running with OpenTelemetry for PHP.
 aliases: [/docs/instrumentation/php/getting_started]
 weight: 10
-# prettier-ignore
-cSpell:ignore: darwin Laravel myapp PECL pecl rolldice strval Symfony Wordpress
+cSpell:ignore: darwin myapp PECL pecl rolldice strval
 ---
 
 OpenTelemetry for PHP can be used to generate and export [traces][], [metrics][]
@@ -34,7 +33,7 @@ composer -v
 ```
 
 {{% alert title="Important" color="warning" %}}While OpenTelemetry PHP is in a
-pre-GA state, please ensure you set `minimum-stability` to `beta` in
+pre-GA state, please ensure you set `minimum-stability` to `beta` or `dev` in
 `composer.json`, otherwise you will get the early `0.x` versions of many of our
 packages.{{% /alert %}}
 
@@ -118,7 +117,7 @@ Next, you’ll use the OpenTelemetry PHP extension to
 2. Build the extension with `PECL`:
 
    ```sh
-   pecl install opentelemetry-beta
+   pecl install opentelemetry
    ```
 
    {{% alert title="Note" color="warning" %}}Alternative methods of installing

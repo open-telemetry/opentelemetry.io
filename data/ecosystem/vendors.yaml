@@ -1,4 +1,4 @@
-# cSpell:ignore Coralogix ITRS Kloud Logz Crowdstrike Humio Lumigo observ Promscale Teletrace Uptrace Greptime KloudMate
+# cSpell:ignore Coralogix Cribl ITRS Kloud Logz Crowdstrike Humio Lumigo observ Teletrace Uptrace Greptime KloudMate
 - name: AppDynamics (Cisco)
   distribution: true
   nativeOTLP: true
@@ -39,6 +39,13 @@
   nativeOTLP: true
   url: 'https://coralogix.com/docs/opentelemetry/'
   contact: ''
+  oss: false
+  commercial: true
+- name: Cribl
+  distribution: false
+  nativeOTLP: true
+  url: 'https://docs.cribl.io/stream/sources-otel'
+  contact: 'hello@cribl.io'
   oss: false
   commercial: true
 - name: DaoCloud
@@ -192,13 +199,6 @@
   distribution: false
   nativeOTLP: true
   url: 'https://docs.oracle.com/en-us/iaas/application-performance-monitoring/doc/configure-open-source-tracing-systems.html#GUID-4D941163-F357-4839-8B06-688876D4C61F'
-  contact: ''
-  oss: false
-  commercial: true
-- name: Promscale
-  distribution: false
-  nativeOTLP: true
-  url: 'https://www.timescale.com/promscale'
   contact: ''
   oss: false
   commercial: true

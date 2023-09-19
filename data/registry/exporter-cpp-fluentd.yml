@@ -1,3 +1,4 @@
+# cSpell:ignore fluentd
 title: Fluentd Exporter
 registryType: exporter
 isThirdParty: true

@@ -1,9 +1,10 @@
-title: opentelemetry-exporter-otlp-grpc
+title: OTLP exporter over gRPC for Ruby
 registryType: exporter
 isThirdParty: false
 language: ruby
 tags:
-  - otlpgrpc
+  - otlp
+  - grpc
   - exporter
   - ruby
 repo: https://github.com/open-telemetry/opentelemetry-ruby/tree/main/exporter/otlp-grpc

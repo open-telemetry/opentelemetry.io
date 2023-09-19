@@ -1,9 +1,10 @@
-title: opencensusshim
+title: OpenCensus Shim
 registryType: instrumentation
 isThirdParty: false
 language: java
 tags:
-  - opencensusshim
+  - opencensus
+  - shim
   - instrumentation
   - java
 repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/opencensus-shim

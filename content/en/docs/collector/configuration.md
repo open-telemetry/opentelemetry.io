@@ -358,8 +358,8 @@ exporters:
     path: ./filename.json
 
   # Data sources: traces
-  jaeger:
-    endpoint: jaeger-all-in-one:14250
+  otlp/jaeger:
+    endpoint: jaeger-all-in-one:4317
     tls:
       cert_file: cert.pem
       key_file: cert-key.pem
