@@ -1,4 +1,3 @@
-# cSpell:ignore wordpress
 title: OpenTelemetry WordPress auto-instrumentation
 registryType: instrumentation
 isThirdParty: false

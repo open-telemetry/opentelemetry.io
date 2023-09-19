@@ -1,4 +1,4 @@
-title: OpenTelemetry Collector Protobuf over HTTP Exporter
+title: OpenTelemetry Collector protobuf over HTTP Exporter
 registryType: exporter
 isThirdParty: false
 language: python

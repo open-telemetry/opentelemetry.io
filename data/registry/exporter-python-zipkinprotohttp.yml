@@ -1,4 +1,4 @@
-title: OpenTelemetry Zipkin Protobuf Exporter
+title: OpenTelemetry Zipkin protobuf Exporter
 registryType: exporter
 isThirdParty: false
 language: python

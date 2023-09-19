@@ -1,5 +1,5 @@
 # cSpell:ignore
-title: OpenTelemetry Jaeger Protobuf Exporter
+title: OpenTelemetry Jaeger protobuf Exporter
 registryType: exporter
 isThirdParty: false
 language: python

@@ -1,4 +1,4 @@
-title: OTLP over HTTP exporter for ruby
+title: OTLP over HTTP exporter for Ruby
 registryType: exporter
 isThirdParty: false
 language: ruby
