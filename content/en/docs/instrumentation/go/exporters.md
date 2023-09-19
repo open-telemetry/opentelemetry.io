@@ -5,8 +5,7 @@ weight: 50
 cSpell:ignore: otlptrace otlptracehttp
 ---
 
-In order to visualize and analyze your [traces](/docs/concepts/signals/traces/)
-and metrics, you will need to export them to a backend.
+{{% docs/instrumentation/exporters-intro go %}}
 
 ## OTLP endpoint
 
