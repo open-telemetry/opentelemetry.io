@@ -3,8 +3,16 @@ title: Exporters
 weight: 50
 ---
 
-In order to visualize and analyze your [traces](/docs/concepts/signals/traces/)
-and metrics, you will need to export them to a backend.
+{{% docs/instrumentation/exporters-intro dotnet %}}
+
+{{% alert title="Note" color="info" %}}
+
+If you use the OpenTelemetry .NET Automatic Instrumentation for
+[automatic instrumentation](/docs/instrumentation/net/automatic) you can learn
+how to setup exporters following the
+[Configuration Guide](/docs/instrumentation/net/automatic/config)
+
+{{% /alert %}}
 
 ## Console exporter
 

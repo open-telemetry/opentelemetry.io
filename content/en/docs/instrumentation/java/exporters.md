@@ -4,18 +4,16 @@ weight: 50
 cSpell:ignore: autoconfigure classpath okhttp springframework
 ---
 
-In order to visualize and analyze your traces, you will need to export them to a
-backend such as [Jaeger](https://www.jaegertracing.io/) or
-[Zipkin](https://zipkin.io/). OpenTelemetry Java provides exporters for some
-common open source backends.
+{{% docs/instrumentation/exporters-intro java %}}
+
+{{% alert title="Note" color="info" %}}
 
 If you use the Java agent for
 [automatic instrumentation](/docs/instrumentation/java/automatic) you can learn
 how to setup exporters following the
 [Agent Configuration Guide](/docs/instrumentation/java/automatic/agent-config)
 
-For [manual instrumentation](/docs/instrumentation/java/manual), you will find
-some introductions below on how to set up backends and the matching exporters.
+{{% /alert %}}
 
 ## OTLP
 

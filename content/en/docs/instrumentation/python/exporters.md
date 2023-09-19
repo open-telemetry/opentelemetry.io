@@ -6,8 +6,16 @@ cSpell:ignore: LOWMEMORY
 
 <!-- markdownlint-disable no-duplicate-heading -->
 
-In order to visualize and analyze your telemetry you will need to use an
-exporter.
+{{% docs/instrumentation/exporters-intro python %}}
+
+{{% alert title="Note" color="info" %}}
+
+If you use the Python agent for
+[automatic instrumentation](/docs/instrumentation/python/automatic) you can
+learn how to setup exporters following the
+[Agent Configuration Guide](/docs/instrumentation/python/automatic/agent-config/)
+
+{{% /alert %}}
 
 ## Console exporter
 
