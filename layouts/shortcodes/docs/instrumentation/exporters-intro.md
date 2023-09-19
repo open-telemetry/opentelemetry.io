@@ -11,15 +11,8 @@ one.
 
 As part of {{ $name }} you will find many exporters being available. Among them,
 the OpenTelemetry Protocol (OTLP) exporters provide the best experience for you
-as an end-user:
-
-- it is suitable to be used between instrumented applications, collectors and
-  backends.
-- it has high reliability, low CPU usage and imposes minimal pressure on memory
-  managers.
-- it supports to efficiently modify deserialized data.
-- it ensures high throughput, allows back pressure signalling and is
-  load-balancer friendly
+as an end-user, since it is a general-purpose telemetry data delivery protocol
+designed in the scope of the OpenTelemetry project.
 
 To learn more about the OTLP protocol, you can read the
 [OTLP Specification](/docs/specs/otlp/).
