@@ -465,8 +465,7 @@ example).
 
 Counters can be used to measure a non-negative, increasing value.
 
-For example, here's how you might report the number of calls for an HTTP
-handler:
+For example, here's how you report the number of calls for an HTTP handler:
 
 ```go
 import (
@@ -497,7 +496,7 @@ func init() {
 UpDown counters can increment and decrement, allowing you to observe a
 cumulative value that goes up or down.
 
-For example, here's how you might report the number of items of some collection:
+For example, here's how you report the number of items of some collection:
 
 ```go
 import (
@@ -537,8 +536,8 @@ func removeItem() {
 
 Histograms are used to measure a distribution of values over time.
 
-For example, here's how you might report a distribution of response times for an
-HTTP handler:
+For example, here's how you report a distribution of response times for an HTTP
+handler:
 
 ```go
 import (
@@ -573,7 +572,7 @@ func init() {
 Observable counters can be used to measure an additive, non-negative,
 monotonically increasing value.
 
-For example, here's how you might report time since the application started:
+For example, here's how you report time since the application started:
 
 ```go
 import (
@@ -604,7 +603,7 @@ func init() {
 Observable UpDown counters can increment and decrement, allowing you to measure
 an additive, non-negative, non-monotonically increasing cumulative value.
 
-For example, here's how you might report some database metrics:
+For example, here's how you report some database metrics:
 
 ```go
 import (
@@ -656,8 +655,8 @@ func registerDBMetrics(db *sql.DB, meter metric.Meter, poolName string) (metric.
 
 Observable Gauges should be used to measure non-additive values.
 
-For example, here's how you might report memory usage of the heap objects used
-in application:
+For example, here's how you report memory usage of the heap objects used in
+application:
 
 ```go
 import (
@@ -718,6 +717,158 @@ func init() {
 			metric.WithAttributes(semconv.HTTPStatusCode(statusCode)))
 	})
 }
+```
+
+### Registering Views
+
+A view provides SDK users with the flexibility to customize the metrics output
+by the SDK. You can customize which metric instruments are to be processed or
+ignored. You can also customize aggregation and what attributes you want to
+report on metrics.
+
+Every instrument has a default view, which retains the original name,
+description, and attributes, and has a default aggregation that is based on the
+type of instrument. When a registered view matches an instrument, the default
+view is replaced by the registered view. Additional registered views that match
+the instrument are additive, and result in multiple exported metrics for the
+instrument.
+
+You can use the
+[`NewView`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#NewView)
+function to create a view and register it using the
+[`WithView`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#WithView)
+option.
+
+For example, here's how you create a view that renames the `latency` instrument
+from the `v0.34.0` version of the `http` instrumentation library to
+`request.latency`:
+
+```go
+view := metric.NewView(metric.Instrument{
+	Name: "latency",
+	Scope: instrumentation.Scope{
+		Name:    "http",
+		Version: "0.34.0",
+	},
+}, metric.Stream{Name: "request.latency"})
+
+meterProvider := metric.NewMeterProvider(
+	metric.WithView(view),
+)
+```
+
+For example, here's how you create a view that makes the `latency` instrument
+from the `http` instrumentation library to be reported as an exponential
+histogram:
+
+```go
+view := metric.NewView(
+	metric.Instrument{
+		Name:  "latency",
+		Scope: instrumentation.Scope{Name: "http"},
+	},
+	metric.Stream{
+		Aggregation: metric.AggregationBase2ExponentialHistogram{
+			MaxSize:  160,
+			MaxScale: 20,
+		},
+	},
+)
+
+meterProvider := metric.NewMeterProvider(
+	metric.WithView(view),
+)
+```
+
+The SDK filters metrics and attributes before exporting metrics. For example,
+you can use views to reduce memory usage of high cardinality metrics or drop
+attributes that might contain sensitive data.
+
+Here's how you create a view that drops the `latency` instrument from the `http`
+instrumentation library:
+
+```go
+view := metric.NewView(
+  metric.Instrument{
+    Name:  "latency",
+    Scope: instrumentation.Scope{Name: "http"},
+  },
+  metric.Stream{Aggregation: metric.AggregationDrop{}},
+)
+
+meterProvider := metric.NewMeterProvider(
+	metric.WithView(view),
+)
+```
+
+Here's how you create a view that removes the `http.request.method` attribute
+recorded by the `latency` instrument from the `http` instrumentation library:
+
+```go
+view := metric.NewView(
+  metric.Instrument{
+    Name:  "latency",
+    Scope: instrumentation.Scope{Name: "http"},
+  },
+  metric.Stream{AttributeFilter: attribute.NewDenyKeysFilter("http.request.method")},
+)
+
+meterProvider := metric.NewMeterProvider(
+	metric.WithView(view),
+)
+```
+
+The `Name` field of criteria supports wildcard pattern matching. The `*`
+wildcard is recognized as matching zero or more characters, and `?` is
+recognized as matching exactly one character. For example, a pattern of `*`
+matches all instrument names.
+
+The following example shows how you create a view that sets unit to milliseconds
+for any instrument with a name suffix of `.ms`:
+
+```go
+view := metric.NewView(
+  metric.Instrument{Name: "*.ms"},
+  metric.Stream{Unit: "ms"},
+)
+
+meterProvider := metric.NewMeterProvider(
+	metric.WithView(view),
+)
+```
+
+The `NewView` function provides a convenient way of creating views. If `NewView`
+can't provide the functionalities you need, you can create a custom
+[`View`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#View) directly.
+
+For example, here's how you create a view that uses regular expression matching
+to ensure all data stream names have a suffix of the units it uses:
+
+```go
+re := regexp.MustCompile(`[._](ms|byte)$`)
+var view metric.View = func(i metric.Instrument) (metric.Stream, bool) {
+	// In a custom View function, you need to explicitly copy
+	// the name, description, and unit.
+	s := metric.Stream{Name: i.Name, Description: i.Description, Unit: i.Unit}
+	// Any instrument that does not have a unit suffix defined, but has a
+	// dimensional unit defined, update the name with a unit suffix.
+	if re.MatchString(i.Name) {
+		return s, false
+	}
+	switch i.Unit {
+	case "ms":
+		s.Name += ".ms"
+	case "By":
+		s.Name += ".byte"
+	default:
+		return s, false
+	}
+	return s, true
+}
+
+meterProvider := metric.NewMeterProvider(
+	metric.WithView(view),
+)
 ```
 
 ## Logs
