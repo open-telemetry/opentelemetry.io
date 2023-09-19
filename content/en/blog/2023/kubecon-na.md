@@ -4,7 +4,7 @@ linkTitle: KubeCon NA '23
 date: 2023-09-11
 # prettier-ignore
 cSpell:ignore: Anusha Aronoff Benedikt Bongartz Broadbridge Chronosphere Contribfest Coralogix Danielson Endo Flamegraphs Hrabovcak Itiel Itoh Jaglowski Kanal Komodor Kota Masanori Matej Mirabella Narapureddy observ Ohly Pivotto Purvi Reddy Sharone Shishi Shivanshu Shrivastava Shwartz Zitzman
-author: '[Severin Neumann](https://github.com/svrnm)'
+author: '[Severin Neumann](https://github.com/svrnm) (Cisco)'
 ---
 
 The OpenTelemetry project maintainers, members of the governance committee, and
@@ -86,8 +86,6 @@ of cloud-native observability projects_. This event will be held on November 6,
 
 Drop by and say _"Hi!"_ at the OpenTelemetry project booth in the KubeCon NA
 Project Pavilion. If you’re lucky, you may even pick up some OpenTelemetry swag.
-
-You will find us **TODO**
 
 [Pavilion hours][] are as follows:
 
