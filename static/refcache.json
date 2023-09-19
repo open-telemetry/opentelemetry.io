@@ -3679,6 +3679,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-01T15:55:20.985886-04:00"
   },
+  "https://jaegertracing.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-09-15T12:25:23.145551+02:00"
+  },
   "https://jakarta.ee/specifications/platform/8/apidocs/javax/servlet/http/HttpServletRequest.html": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:06:31.115927-04:00"
@@ -4418,6 +4422,22 @@
   "https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric": {
     "StatusCode": 200,
     "LastSeen": "2023-09-11T14:33:25.420952095Z"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#NewView": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-15T09:41:38.164411819Z"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#View": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-15T09:41:38.432556144Z"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#With": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-15T09:41:38.295762202Z"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#WithView": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-15T16:34:14.034832295Z"
   },
   "https://pkg.go.dev/go.opentelemetry.io/otel/sdk/resource": {
     "StatusCode": 200,

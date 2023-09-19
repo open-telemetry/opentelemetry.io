@@ -4,8 +4,7 @@ weight: 50
 cSpell:ignore: chrono millis ostream rebar relx
 ---
 
-In order to visualize and analyze your [traces](/docs/concepts/signals/traces/)
-and metrics, you will need to export them to a backend.
+{{% docs/instrumentation/exporters-intro erlang %}}
 
 ## Exporting to the OpenTelemetry Collector
 

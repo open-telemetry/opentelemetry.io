@@ -4,9 +4,15 @@ weight: 50
 cSpell:ignore: fastcgi pecl
 ---
 
-In order to visualize and analyze your telemetry, you will need to export it to
-a backend. OpenTelemetry PHP provides exporters for some common protocols, which
-you can send to a number of open source backends.
+{{% docs/instrumentation/exporters-intro php %}}
+
+{{% alert title="Note" color="info" %}}
+
+If you use [automatic instrumentation](/docs/instrumentation/php/automatic/) you
+can setup exporters with
+[zero-code configuration to setup exporters](/docs/instrumentation/php/automatic/#zero-code-configuration-for-automatic-instrumentation).
+
+{{% /alert %}}
 
 ## OTLP
 
