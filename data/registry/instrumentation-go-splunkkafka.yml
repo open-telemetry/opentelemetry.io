@@ -1,3 +1,4 @@
+# cSpell:ignore splunkkafka confluentinc
 title:
   splunkkafka -- Instrumentation for
   github.com/confluentinc/confluent-kafka-go/kafka/splunkkafka

@@ -1,3 +1,4 @@
+# cSpell:ignore inmemory
 title: In-memory Exporter for OpenTelemetry .NET
 registryType: exporter
 isThirdParty: false

@@ -1,4 +1,5 @@
-title: OpenTelemetry for haskell
+# cSpell:ignore ethercrow
+title: OpenTelemetry for Haskell
 registryType: instrumentation
 isThirdParty: true
 language: haskell
@@ -7,6 +8,6 @@ tags:
   - instrumentation
 repo: https://github.com/ethercrow/opentelemetry-haskell
 license: Apache-2.0
-description: An unofficial implementation of OpenTelemetry in haskell.
+description: An unofficial implementation of OpenTelemetry in Haskell.
 authors: ethercrow
 otVersion: latest

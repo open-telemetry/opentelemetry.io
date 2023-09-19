@@ -1,4 +1,4 @@
-title: Honeycomb OpenTelemetry Distro for Java
+title: Honeycomb OpenTelemetry Distribution for Java
 registryType: instrumentation
 isThirdParty: true
 language: java
