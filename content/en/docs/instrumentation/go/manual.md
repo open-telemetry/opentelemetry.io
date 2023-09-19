@@ -801,7 +801,7 @@ meterProvider := metric.NewMeterProvider(
 )
 ```
 
-For example, here's how you create a view removes the `http.request.method`
+For example, here's how you create a view that removes the `http.request.method`
 attribute recorded by the `latency` instrument from the `http` instrumentation
 library:
 
