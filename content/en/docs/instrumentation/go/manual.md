@@ -780,6 +780,63 @@ meterProvider := metric.NewMeterProvider(
 )
 ```
 
+The SDK filters metrics and attributes before exporting metrics. For example,
+you can use views to reduce memory usage of high cardinality metrics or drop
+attributes that might contain sensitive data.
+
+Here's how you create a view that drops the `latency` instrument from the `http`
+instrumentation library:
+
+```go
+view := metric.NewView(
+  metric.Instrument{
+    Name:  "latency",
+    Scope: instrumentation.Scope{Name: "http"},
+  },
+  metric.Stream{Aggregation: metric.AggregationDrop{}},
+)
+
+meterProvider := metric.NewMeterProvider(
+	metric.WithView(view),
+)
+```
+
+Here's how you create a view that removes the `http.request.method` attribute
+recorded by the `latency` instrument from the `http` instrumentation library:
+
+```go
+view := metric.NewView(
+  metric.Instrument{
+    Name:  "latency",
+    Scope: instrumentation.Scope{Name: "http"},
+  },
+  metric.Stream{AttributeFilter: attribute.NewDenyKeysFilter("http.request.method")},
+)
+
+meterProvider := metric.NewMeterProvider(
+	metric.WithView(view),
+)
+```
+
+The `Name` field of criteria supports wildcard pattern matching. The `*`
+wildcard is recognized as matching zero or more characters, and `?` is
+recognized as matching exactly one character. For example, a pattern of `*`
+matches all instrument names.
+
+The following example shows how you create a view that sets unit to milliseconds
+for any instrument with a name suffix of `.ms`:
+
+```go
+view := metric.NewView(
+  metric.Instrument{Name: "*.ms"},
+  metric.Stream{Unit: "ms"},
+)
+
+meterProvider := metric.NewMeterProvider(
+	metric.WithView(view),
+)
+```
+
 The `NewView` function provides a convenient way of creating views. If `NewView`
 can't provide the functionalities you need, you can create a custom
 [`View`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#View) directly.
