@@ -3,22 +3,22 @@ title: Join us for OpenTelemetry Talks and Activities at KubeCon NA 2023
 linkTitle: KubeCon NA '23
 date: 2023-09-11
 # prettier-ignore
-cSpell:ignore: Contribfest Pivotto Purvi Kanal Flamegraphs Sharone Zitzman Itiel Shwartz Komodor Ohly Shivanshu Shrivastava Kota Endo Masanori Itoh Danielson Benedikt Bongartz Mirabella Matej Coralogix Anusha Reddy Narapureddy Jaglowski observ Chronosphere Aronoff Broadbridge Hrabovcak Shishi
+cSpell:ignore: Anusha Aronoff Benedikt Bongartz Broadbridge Chronosphere Contribfest Coralogix Danielson Endo Flamegraphs Hrabovcak Itiel Itoh Jaglowski Kanal Komodor Kota Masanori Matej Mirabella Narapureddy observ Ohly Pivotto Purvi Reddy Sharone Shishi Shivanshu Shrivastava Shwartz Zitzman
 author: '[Severin Neumann](https://github.com/svrnm)'
 ---
 
 The OpenTelemetry project maintainers, members of the governance committee, and
-technical committee are excited to be at [KubeCon NA][] in Chicago from November
-6 - 9, 2023!
+technical committee are thrilled to be at [KubeCon NA][] in Chicago from
+November 6 - 9, 2023.
 
 Read on to learn about all the things related OpenTelemetry during KubeCon.
 
 ## OpenTelemetry Contribfest
 
-We are excited to announce, that for the first time, you can join the
+We are happy to announce, that for the first time, you can join the
 OpenTelemetry maintainers in making OpenTelemetry better for everyone during the
 [OpenTelemetry Contribfest](https://sched.co/1JWS7), on Wednesday November 8,
-2023 from 2:30pm - 3:55pm! There will be several opportunities to contribute:
+2023 from 2:30pm - 3:55pm. There will be several opportunities to contribute:
 
 - Join the Collector maintainers and help fix bugs, add new features, and add
   new transformation functions.
@@ -84,8 +84,8 @@ of cloud-native observability projects_. This event will be held on November 6,
 
 ## OpenTelemetry Project Booth
 
-Drop by and say Hi! at the OpenTelemetry project booth in the KubeCon NA Project
-Pavilion. If you’re lucky, you may even pick up some OpenTelemetry swag!
+Drop by and say _"Hi!"_ at the OpenTelemetry project booth in the KubeCon NA
+Project Pavilion. If you’re lucky, you may even pick up some OpenTelemetry swag.
 
 You will find us **TODO**
 
@@ -97,7 +97,7 @@ You will find us **TODO**
 - Thursday, November 9: 10:30am – 2:30pm
 
 You can help us improve the project by sharing your thoughts and feedback about
-your OpenTelemetry adoption, implementation, and usage! We also invite you to
+your OpenTelemetry adoption, implementation, and usage. We also invite you to
 fill out our [community survey][]. We will create action items from your
 comments as appropriate. Check [#otel-user-research][] in CNCF's Slack instance
 for survey results and action item updates to come after KubeCon NA.

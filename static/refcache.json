@@ -1591,12 +1591,13 @@
     "StatusCode": 206,
     "LastSeen": "2023-09-11T17:29:46.070686+02:00"
   },
-  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/register/": {
-    "StatusCode": 206,
-    "LastSeen": "2023-09-11T17:29:46.304917+02:00"
   "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/program/schedule/": {
     "StatusCode": 206,
     "LastSeen": "2023-09-06T23:25:00.17696-04:00"
+  },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/register/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-09-11T17:29:46.304917+02:00"
   },
   "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/venue-travel/": {
     "StatusCode": 206,
