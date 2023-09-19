@@ -781,8 +781,8 @@ meterProvider := metric.NewMeterProvider(
 ```
 
 The SDK filters metrics and attributes before exporting metrics. This allows
-views to be used to e.g. reduce memory usage of high cardinality metrics or
-drop attributes that can contain sensitive data.
+views to be used to e.g. reduce memory usage of high cardinality metrics or drop
+attributes that can contain sensitive data.
 
 For example, here's how you create a view that drops the `latency` instrument
 from the `http` instrumentation library:
@@ -820,12 +820,12 @@ meterProvider := metric.NewMeterProvider(
 ```
 
 The `Name` field of criteria supports wildcard pattern matching. The wildcard
-`*` is recognized as matching zero or more characters, and `?` is recognized
-as matching exactly one character. For example, a pattern of `*` will match
-all instrument names.
+`*` is recognized as matching zero or more characters, and `?` is recognized as
+matching exactly one character. For example, a pattern of `*` will match all
+instrument names.
 
-For example, here's how you create a view that sets unit to milliseconds for
-any instrument with a name suffix of `.ms`:
+For example, here's how you create a view that sets unit to milliseconds for any
+instrument with a name suffix of `.ms`:
 
 ```go
 view := metric.NewView(
