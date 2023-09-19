@@ -447,6 +447,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T13:38:32.244963-04:00"
   },
+  "https://conan.io/center/recipes/opentelemetry-cpp": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-19T17:13:13.020744+02:00"
+  },
   "https://connect.build/docs/protocol/#error-codes": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T09:16:20.401704-04:00"

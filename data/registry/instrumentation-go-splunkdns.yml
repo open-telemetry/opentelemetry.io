@@ -1,3 +1,4 @@
+# cSpell:ignore splunkdns miekg
 title: splunkdns -- Instrumentation for github.com/miekg/dns
 registryType: instrumentation
 isThirdParty: true

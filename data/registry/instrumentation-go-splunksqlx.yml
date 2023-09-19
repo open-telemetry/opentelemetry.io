@@ -1,3 +1,4 @@
+# cSpell:ignore splunksqlx jmoiron sqlx
 title: splunksqlx -- Instrumentation for github.com/jmoiron/sqlx
 registryType: instrumentation
 isThirdParty: true

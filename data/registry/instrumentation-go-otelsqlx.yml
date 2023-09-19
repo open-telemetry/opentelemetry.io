@@ -1,3 +1,4 @@
+# cSpell:ignore jmoiron sqlx mihailenco
 title: jmoiron/sqlx instrumentation
 registryType: instrumentation
 isThirdParty: true

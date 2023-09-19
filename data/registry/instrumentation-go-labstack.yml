@@ -1,3 +1,4 @@
+# cSpell:ignore labstack
 title: Labstack Echo instrumentation
 registryType: instrumentation
 isThirdParty: false

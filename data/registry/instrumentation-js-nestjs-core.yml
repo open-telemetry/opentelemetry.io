@@ -1,3 +1,4 @@
+# cSpell:ignore nestjs
 title: OpenTelemetry NestJS Instrumentation for Node.js
 registryType: instrumentation
 isThirdParty: false

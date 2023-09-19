@@ -1,3 +1,4 @@
+# cSpell:ignore mennes
 title: Golang OpenTelemetry Neo4j Instrumentation
 registryType: instrumentation
 isThirdParty: true

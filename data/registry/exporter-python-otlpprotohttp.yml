@@ -1,9 +1,11 @@
-title: otlpprotohttp
+title: OpenTelemetry Collector Protobuf over HTTP Exporter
 registryType: exporter
 isThirdParty: false
 language: python
 tags:
-  - otlpprotohttp
+  - otlp
+  - protobuf
+  - grpc
   - exporter
   - python
 repo: https://github.com/open-telemetry/opentelemetry-python/tree/main/exporter/opentelemetry-exporter-otlp-proto-http

@@ -1,3 +1,4 @@
+# cSpell:ignore sqlserver
 title: Microsoft SQL Server Receiver
 registryType: receiver
 isThirdParty: false
