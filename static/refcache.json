@@ -4903,6 +4903,14 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T16:27:21.65157-04:00"
   },
+  "https://tyk.io": {
+    "StatusCode": 206,
+    "LastSeen": "2023-09-20T10:45:05.852778+02:00"
+  },
+  "https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-09-19T18:15:55.842511+02:00"
+  },
   "https://ucum.org/ucum.html#para-curly": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:39:26.73908-04:00"

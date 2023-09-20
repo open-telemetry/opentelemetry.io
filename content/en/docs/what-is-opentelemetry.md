@@ -39,7 +39,7 @@ OpenTelemetry consists of the following major components:
 - Various other tools, such as the
   [OpenTelemetry Operator for Kubernetes](/docs/kubernetes/operator/)
 
-OpenTelemetry is compatible with a wide variety of open source
+OpenTelemetry is compatible with a wide variety of
 [ecosystem integrations](/ecosystem/integrations/).
 
 OpenTelemetry is supported by a vast number of [vendors](/ecosystem/vendors/),

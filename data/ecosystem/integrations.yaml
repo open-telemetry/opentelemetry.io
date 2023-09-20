@@ -70,6 +70,7 @@
   components: [JavaScript]
   oss: true
 - name: Tyk API Gateway
+  url: https://tyk.io
   docsUrl: https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview/
   components: [Go]
   oss: true
