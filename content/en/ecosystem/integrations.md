@@ -7,13 +7,11 @@ aliases: [/integrations]
 
 The mission of OpenTelemetry is
 [to enable effective observability by making high-quality, portable telemetry ubiquitous](/community/mission/).
-In other words, observability should be built in into the software
-you develop.
+In other words, observability should be built in into the software you develop.
 
-The following list contains a sample of libraries, services, and apps
-that have either integrated OpenTelemetry APIs and SDKs directly for
-native telemetry or provide a first-party plugin that fits into their own
-extensibility ecosystem.
+The following list contains a sample of libraries, services, and apps that have
+either integrated OpenTelemetry APIs and SDKs directly for native telemetry or
+provide a first-party plugin that fits into their own extensibility ecosystem.
 
 {{% ecosystem/integrations-table %}}
 
@@ -29,7 +27,8 @@ The entry must include the following:
 {{% alert title="Note" color="info" %}}
 
 If you provide external integration of OpenTelemetry for any kind of library,
-service, or app, then [consider adding it to the registry](/ecosystem/registry/adding).
+service, or app, then
+[consider adding it to the registry](/ecosystem/registry/adding).
 
 If you adopt OpenTelemetry for Observability as an end user and do not provide
 any kind of services around OpenTelemetry, see [Adopters](/ecosystem/adopters).
