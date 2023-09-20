@@ -1,9 +1,10 @@
-title: opentelemetry-exporter-otlp-http
+title: OTLP over HTTP exporter for Ruby
 registryType: exporter
 isThirdParty: false
 language: ruby
 tags:
-  - otlphttp
+  - otlp
+  - http
   - exporter
   - ruby
 repo: https://github.com/open-telemetry/opentelemetry-ruby/tree/main/exporter/otlp-http

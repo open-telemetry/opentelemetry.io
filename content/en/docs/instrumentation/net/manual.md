@@ -119,7 +119,7 @@ builder.Services.AddOpenTelemetry()
       .ConfigureResource(resource =>
           resource.AddService(
             serviceName: serviceName,
-            serviceVersion: serviceVersion))
+            serviceVersion: serviceVersion));
   });
 ```
 

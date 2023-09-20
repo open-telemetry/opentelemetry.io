@@ -1,3 +1,4 @@
+# cSpell:ignore logrus mihailenco
 title: logrus instrumentation
 registryType: instrumentation
 isThirdParty: true

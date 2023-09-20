@@ -3,13 +3,7 @@ title: Exporters
 weight: 50
 ---
 
-In order to visualize and analyze your traces, you will need to export them to a
-backend such as [Jaeger](https://www.jaegertracing.io/) or
-[Zipkin](https://zipkin.io/). OpenTelemetry Ruby provides exporters for some
-common open source backends.
-
-Below you will find some introductions on how to set up backends and the
-matching exporters.
+{{% docs/instrumentation/exporters-intro ruby %}}
 
 ## OTLP endpoint
 

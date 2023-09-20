@@ -3,7 +3,10 @@ registryType: instrumentation
 isThirdParty: false
 language: dotnet
 tags:
-  - aspnet-telemetryhttpmodule
+  - asp
+  - telemetry
+  - http
+  - module
   - instrumentation
   - dotnet
 repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.AspNet.TelemetryHttpModule

@@ -1,4 +1,4 @@
-# cSpell:ignore Coralogix Cribl ITRS Kloud Logz Crowdstrike Humio Lumigo observ Promscale Teletrace Uptrace Greptime KloudMate
+# cSpell:ignore Coralogix Cribl ITRS Kloud Logz Crowdstrike Humio Lumigo observ Teletrace Uptrace Greptime KloudMate
 - name: AppDynamics (Cisco)
   distribution: true
   nativeOTLP: true
@@ -104,6 +104,13 @@
   contact: ''
   oss: false
   commercial: true
+- name: Highlight
+  distribution: true
+  nativeOTLP: true
+  url: 'https://www.highlight.io/docs/general/company/open-source/contributing/adding-an-sdk/'
+  contact: 'support@highlight.io'
+  oss: true
+  commercial: true
 - name: Honeycomb
   distribution: true
   nativeOTLP: true
@@ -199,13 +206,6 @@
   distribution: false
   nativeOTLP: true
   url: 'https://docs.oracle.com/en-us/iaas/application-performance-monitoring/doc/configure-open-source-tracing-systems.html#GUID-4D941163-F357-4839-8B06-688876D4C61F'
-  contact: ''
-  oss: false
-  commercial: true
-- name: Promscale
-  distribution: false
-  nativeOTLP: true
-  url: 'https://www.timescale.com/promscale'
   contact: ''
   oss: false
   commercial: true

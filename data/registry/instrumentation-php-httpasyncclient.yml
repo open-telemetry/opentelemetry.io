@@ -1,3 +1,4 @@
+# cSpell:ignore httpasyncclient
 title: OpenTelemetry HTTPlug async auto-instrumentation
 registryType: instrumentation
 isThirdParty: false

@@ -1,3 +1,4 @@
+# cSpell:ignore boto
 title: Boto Instrumentation
 registryType: instrumentation
 isThirdParty: true

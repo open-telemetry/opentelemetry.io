@@ -1,3 +1,4 @@
+# cSpell:ignore boto
 title: OpenTelemetry Boto3 SQS Instrumentation
 registryType: instrumentation
 isThirdParty: false

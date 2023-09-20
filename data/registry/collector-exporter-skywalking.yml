@@ -1,3 +1,4 @@
+# cSpell:ignore skywalking
 title: SkyWalking gRPC Exporter
 registryType: exporter
 isThirdParty: false

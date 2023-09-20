@@ -2,7 +2,6 @@
 title: Propagation
 description: Context propagation for the PHP API
 weight: 60
-cSpell:ignore: Laravel Symfony
 ---
 
 Propagation is the mechanism that moves data between services and processes.
