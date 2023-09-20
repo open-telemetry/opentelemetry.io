@@ -1,21 +1,19 @@
 ---
 title: Integrations
 description:
-  Libraries, services and apps with first-party support of OpenTelemetry.
+  Libraries, services, and apps with first-party support for OpenTelemetry.
 aliases: [/integrations]
 ---
 
-OpenTelemetry's mission is
+The mission of OpenTelemetry is
 [to enable effective observability by making high-quality, portable telemetry ubiquitous](/community/mission/).
-This means, that we not only want you to get observability for the applications
-you develop, but that observability should be built in to all the software you
-use!
+In other words, observability should be built in into the software
+you develop.
 
-On this page we showcase a non-exhaustive list of libraries, services and apps,
-that provide you with easy-to-use observability powered by OpenTelemetry. Those
-libraries, services and apps have either integrated OpenTelemetry APIs & SDKs
-directly for **native** out of the box telemetry or they provide a first-party
-plugin that nicely fits into their own extensibility ecosystem.
+The following list contains a sample of libraries, services, and apps
+that have either integrated OpenTelemetry APIs and SDKs directly for
+native telemetry or provide a first-party plugin that fits into their own
+extensibility ecosystem.
 
 {{% ecosystem/integrations-table %}}
 
