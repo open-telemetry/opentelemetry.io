@@ -14,12 +14,12 @@ Use libraries that come with OpenTelemetry support natively or an
 telemetry data for a library or framework.
 
 The Java agent for automatic instrumentation includes instrumentation libraries
-for many common Java frameworks. Most are turned on by default.
-If you need to turn off certain instrumentation libraries, you can
+for many common Java frameworks. Most are turned on by default. If you need to
+turn off certain instrumentation libraries, you can
 [suppress them](../automatic/agent-config/#suppressing-specific-auto-instrumentation).
 
 If you use [manual instrumentation](../manual) for your code, you can leverage
-some instrumentation libraries for your dependencies standalone. To find out,
+some instrumentation libraries for your dependencies standalone. To find out
 which standalone instrumentation libraries are available, take a look at
 [this list](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks).
 Follow the instructions of each instrumentation library to set them up.
