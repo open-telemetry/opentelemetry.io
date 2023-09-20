@@ -243,9 +243,10 @@ namespace or specific labels on the workloads.
 
 Another way of scaling the Prometheus receiver is to use the
 [Target Allocator](/docs/kubernetes/operator/target-allocator/): it’s an extra
-binary that can be deployed as part of the OpenTelemetry Operator and will distribute Prometheus scrape targets for a given configuration across the cluster of
-Collectors. You can use a Custom Resource
-(CR) like the following to make use of the Target Allocator:
+binary that can be deployed as part of the OpenTelemetry Operator and will
+distribute Prometheus scrape targets for a given configuration across the
+cluster of Collectors. You can use a Custom Resource (CR) like the following to
+make use of the Target Allocator:
 
 ```yaml
 apiVersion: opentelemetry.io/v1alpha1
