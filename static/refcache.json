@@ -1559,6 +1559,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T16:15:42.859025-04:00"
   },
+  "https://erinmeyer.com/books/the-culture-map/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-20T20:38:10.039508+02:00"
+  },
   "https://erlang.org/doc/design_principles/applications.html#configuring-an-application": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:12:07.863918-04:00"
