@@ -221,7 +221,7 @@ For an example of Docker container instrumentation, see
 on GitHub.
 
 You can also use the
-[Kubernetes Operator for OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-operator).
+[OpenTelemetry Operator for Kubernetes](/docs/kubernetes/operator/).
 
 ## Configuring the agent
 
