@@ -1,3 +1,4 @@
+# cSpell:ignore splunkgorm jinzhu gorm
 title: splunkgorm -- Instrumentation for github.com/jinzhu/gorm
 registryType: instrumentation
 isThirdParty: true

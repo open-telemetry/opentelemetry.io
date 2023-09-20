@@ -1,3 +1,4 @@
+# cSpell:ignore lmdb
 title: LMDB Instrumentation
 registryType: instrumentation
 isThirdParty: false

@@ -355,7 +355,7 @@ k3d cluster create tracingcluster \
   --k3s-arg '--kubelet-arg=config=/etc/kube-tracing/kubelet-tracing.yaml@server:*'
 ```
 
-This command will create a Kubernetes cluster with version `v1.17.1`, and set up
+This command will create a Kubernetes cluster with version `v1.27.1`, and set up
 in three docker containers on your machine. If you run the command
 `kubectl cluster-info` now, you will see this output:
 
