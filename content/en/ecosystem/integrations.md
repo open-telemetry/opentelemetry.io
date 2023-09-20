@@ -29,12 +29,12 @@ The entry must include the following:
 {{% alert title="Note" color="info" %}}
 
 If you provide external integration of OpenTelemetry for any kind of library,
-service, or app, then [add it to the registry](/ecosystem/registry/adding).
+service, or app, then [consider adding it to the registry](/ecosystem/registry/adding).
 
 If you adopt OpenTelemetry for Observability as an end user and do not provide
 any kind of services around OpenTelemetry, see [Adopters](/ecosystem/adopters).
 
-If you provide a solution that consumes OpenTelemetry to offer Observability to
+If you provide a solution that consumes OpenTelemetry to offer observability to
 end users, see [Vendors](/ecosystem/vendors).
 
 {{% /alert %}}

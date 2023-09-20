@@ -42,7 +42,7 @@ OpenTelemetry consists of the following major components:
 OpenTelemetry is compatible with a wide variety of
 [ecosystem integrations](/ecosystem/integrations/).
 
-OpenTelemetry is supported by a vast number of [vendors](/ecosystem/vendors/),
+OpenTelemetry is supported by 40+ [vendors](/ecosystem/vendors/),
 many of whom provide commercial support for OpenTelemetry and contribute to the
 project directly.
 
