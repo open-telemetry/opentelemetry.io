@@ -57,6 +57,11 @@ npm install typescript \
   @types/express
 ```
 
+```sh
+#initialise typescript
+npx tsc --init
+```
+
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```sh
