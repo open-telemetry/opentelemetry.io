@@ -47,6 +47,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:39:21.434606-04:00"
   },
+  "http://www.konghq.com/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-09-15T16:58:35.304923+02:00"
+  },
   "http://www.watersprings.org/pub/id/draft-moriarty-acme-client-01.html": {
     "StatusCode": 206,
     "LastSeen": "2023-06-28T13:37:47.265343-04:00"
@@ -202,6 +206,10 @@
   "https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T13:38:37.508148-04:00"
+  },
+  "https://cerbos.dev/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-09-15T16:58:31.234644+02:00"
   },
   "https://cert-manager.io/": {
     "StatusCode": 206,
@@ -558,6 +566,10 @@
   "https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T16:08:06.985321-04:00"
+  },
+  "https://developer.cisco.com/docs/nso/#!observability-exporter/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-09-15T16:58:33.549843+02:00"
   },
   "https://developer.confluent.io/learn-kafka/apache-kafka/topics/": {
     "StatusCode": 206,
@@ -954,6 +966,10 @@
   "https://docs.kloudmate.com/using-opentelemetry-collector": {
     "StatusCode": 200,
     "LastSeen": "2023-08-31T11:09:01.973245767Z"
+  },
+  "https://docs.konghq.com/hub/kong-inc/opentelemetry/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-09-15T16:58:35.759747+02:00"
   },
   "https://docs.locust.io/en/stable/writing-a-locustfile.html": {
     "StatusCode": 200,
@@ -2186,6 +2202,10 @@
   "https://github.com/newly12": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:32:17.878463-04:00"
+  },
+  "https://github.com/nginxinc/nginx-otel": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-15T16:58:32.138615+02:00"
   },
   "https://github.com/nhatthm/otelsql": {
     "StatusCode": 200,
@@ -4083,9 +4103,17 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:38:54.51211-04:00"
   },
+  "https://nextjs.org/docs/app/building-your-application/optimizing/open-telemetry": {
+    "StatusCode": 206,
+    "LastSeen": "2023-09-15T16:58:31.662231+02:00"
+  },
   "https://nextjs.org/learn/foundations/how-nextjs-works/rendering": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:51:55.377168-04:00"
+  },
+  "https://nginx.org/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-09-15T17:00:40.902027+02:00"
   },
   "https://nodejs.org/api/async_context.html#async_context_class_asynclocalstorage": {
     "StatusCode": 200,
@@ -4883,6 +4911,14 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T16:27:21.65157-04:00"
   },
+  "https://tyk.io": {
+    "StatusCode": 206,
+    "LastSeen": "2023-09-20T10:45:05.852778+02:00"
+  },
+  "https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-09-19T18:15:55.842511+02:00"
+  },
   "https://ucum.org/ucum.html#para-curly": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:39:26.73908-04:00"
@@ -5014,6 +5050,10 @@
   "https://www.care.com": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T16:24:29.109001-04:00"
+  },
+  "https://www.cisco.com/c/en/us/products/cloud-systems-management/network-services-orchestrator/index.html": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-15T16:58:32.417789+02:00"
   },
   "https://www.cloudscaleinc.com": {
     "StatusCode": 200,
@@ -5734,6 +5774,10 @@
   "https://www.tencentcloud.com/document/product/213/6091": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:18:22.897316-04:00"
+  },
+  "https://www.thousandeyes.com/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-15T16:58:35.892267+02:00"
   },
   "https://www.timescale.com/promscale": {
     "StatusCode": 206,
