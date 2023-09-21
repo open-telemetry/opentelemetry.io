@@ -374,18 +374,19 @@ import (
 )
 
 func main() {
+  // Create resource.
 	res, err := newResource()
 	if err != nil {
 		panic(err)
 	}
 
+	// Create a meter provider.
+	// You can pass this instance directly to your instrumented code if it
+	// accepts a MeterProvider instance.
 	meterProvider, err := newMeterProvider(res)
 	if err != nil {
 		panic(err)
 	}
-
-	// Set the global meter provider.
-	otel.SetMeterProvider(meterProvider)
 
 	// Handle shutdown properly so nothing leaks.
 	defer func() {
@@ -393,12 +394,19 @@ func main() {
 			log.Println(err)
 		}
 	}()
+
+	// Register as global meter provider so that it can
+	// that can used via otel.Meter and accessed using otel.GetMeterProvider.
+	// Most instrumentation libraries use the global meter provider as default.
+	// If the global meter provider is not set then a no-op implementation
+	// is used and which fails to generate data.
+	otel.SetMeterProvider(meterProvider)
 }
 
 func newResource() (*resource.Resource, error) {
 	return resource.Merge(resource.Default(),
 		resource.NewWithAttributes(semconv.SchemaURL,
-			semconv.ServiceName("dice"),
+			semconv.ServiceName("my-service"),
 			semconv.ServiceVersion("0.1.0"),
 		))
 }
