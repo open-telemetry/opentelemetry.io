@@ -1,6 +1,7 @@
 ---
 title: Exporters
 weight: 50
+description: Process and export your telemetry data
 ---
 
 {{% docs/instrumentation/exporters-intro js %}}

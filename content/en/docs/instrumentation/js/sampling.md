@@ -1,6 +1,7 @@
 ---
 title: Sampling
 weight: 80
+description: Reduce the amount of telemetry created
 ---
 
 [Sampling](/docs/concepts/sampling/) is a process that restricts the amount of
