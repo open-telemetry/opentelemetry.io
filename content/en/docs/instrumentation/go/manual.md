@@ -374,7 +374,7 @@ import (
 )
 
 func main() {
-  // Create resource.
+  	// Create resource.
 	res, err := newResource()
 	if err != nil {
 		panic(err)
