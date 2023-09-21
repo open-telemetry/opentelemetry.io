@@ -25,6 +25,7 @@ developer_note:
 
 - [Learn more](/docs/what-is-opentelemetry/)
 - [Try the demo](/docs/demo/)
+- [Project integrations](/ecosystem/integrations)
 
 </div>
 
