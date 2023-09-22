@@ -37,18 +37,51 @@ for a wide variety of technologies (e.g. databases or messaging systems). When
 libraries follow conventions, many scenarios may be enabled out of the box
 without the user's input or configuration.
 
+Semantic conventions are always evolving and new ones are constantly added.
+If some don't exist for your library, then please consider adding them.
+Pay special attention to span names; strive to use meaningful names and
+consider cardinality when defining them.
+
+There is a `schema_url` attribute that can be used to record what version of
+the semantic conventions are being used. Please set this attribute, when
+possible.
+
 If you have any feedback or want to add a new convention - please come and
 contribute!
 [Instrumentation Slack](https://cloud-native.slack.com/archives/C01QZFGMLQ7) or
 [Specification repository](https://github.com/open-telemetry/opentelemetry-specification)
 are a good places to start!
 
+### Defining spans
+
+Think of your library from the perspective of a library user and what the user
+might be interested in knowing about the behavior and activity of the library.
+As the library maintainer, you know the internals but the user will most likely
+be less interested in the inner-workings of the library and more interested in
+the functionality of their application. Think about what information
+can be helpful in analyzing the usage of your library, then think about an
+appropriate way to model that data. Some things to consider are:
+- Spans and span hierarchies
+- Numerical attributes on spans (as an alternative to aggregated metrics)
+- Span events
+- Aggregated Metrics
+
+Follow the semantic conventions to instrument the library. In some conventions,
+the data assigned to an attribute could contain PII (Personally Identifiable
+Information). As a general guideline, do **not** collect this data by default.
+The three options for handling this data are:
+- Don't collect it at all
+- Provide opt-in features to collect possibly PII for users who need it
+- If you’re confident about the possibility of obfuscating / redacting
+PII data, it's possible to collect it but with a configuration option
+
 ## When **not** to instrument
 
 Some libraries are thin clients wrapping network calls. Chances are that
 OpenTelemetry has an instrumentation library for the underlying RPC client
 (check out the [registry](/ecosystem/registry/)). In this case, instrumenting
-the wrapper library may not be necessary.
+the wrapper library may not be necessary. As a general guideline, only
+instrument your library at its own level.
 
 Don't instrument if:
 
