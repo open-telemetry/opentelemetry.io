@@ -403,7 +403,7 @@ TODO
 The `parent_id` of `do_roll` is the same is the `span_id` for `/rolldice`,
 indicating a parent-child relationship!
 
-Moreover, you'll see the roll counter metric emitted to the console, with
+Moreover, you'll see the `roll_counter` metric emitted to the console, with
 separate counts for each roll value:
 
 <details>
