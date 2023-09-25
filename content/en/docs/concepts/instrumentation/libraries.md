@@ -61,6 +61,7 @@ be less interested in the inner-workings of the library and more interested in
 the functionality of their application. Think about what information
 can be helpful in analyzing the usage of your library, then think about an
 appropriate way to model that data. Some things to consider are:
+
 - Spans and span hierarchies
 - Numerical attributes on spans (as an alternative to aggregated metrics)
 - Span events
@@ -99,6 +100,7 @@ In some semantic conventions, the data collected as a span attribute could
 contain PII (Personally Identifiable Information). As a general guideline,
 do **not** collect this data by default.
 A few other options for handling this data are:
+
 - Don't collect it at all
 - Provide opt-in features to collect potentially PII for users who need it
 - Collect it but with a configuration option to obfuscate / redact the PII,
