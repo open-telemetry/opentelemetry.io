@@ -3471,6 +3471,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:35:45.218357-04:00"
   },
+  "https://go.dev/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-25T10:17:08.450210292Z"
+  },
   "https://go.dev/doc/install/gccgo": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T16:08:23.852746-04:00"
@@ -4494,6 +4498,10 @@
   "https://pkg.go.dev/google.golang.org/grpc/credentials#PerRPCCredentials": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:43:55.129635-04:00"
+  },
+  "https://pkg.go.dev/net/http": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-25T10:17:08.593410057Z"
   },
   "https://pkg.go.dev/net/http#RoundTripper": {
     "StatusCode": 200,
