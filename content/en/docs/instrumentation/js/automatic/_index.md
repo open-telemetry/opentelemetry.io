@@ -48,7 +48,7 @@ node app.js
 
 By default, all SDK [resource detectors](/docs/instrumentation/js/resources/)
 are used. You can use the environment variable `OTEL_NODE_RESOURCE_DETECTORS` to
-enable only certain detectors, or completely disable them.
+enable only certain detectors, or to completely disable them.
 
 To see the full range of configuration options, see
 [Module Configuration](module-config).
