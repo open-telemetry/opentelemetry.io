@@ -2,7 +2,7 @@
 title: Getting Started
 weight: 10
 # prettier-ignore
-cSpell:ignore: chan fatalln funcs intn itoa otelhttp rolldice stdouttrace strconv
+cSpell:ignore: chan fatalln funcs intn itoa khtml otelhttp rolldice stdouttrace strconv
 ---
 
 This page will show you how to get started with OpenTelemetry in Go.
