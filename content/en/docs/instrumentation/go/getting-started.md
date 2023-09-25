@@ -28,7 +28,7 @@ For more elaborate examples, see [examples](/docs/instrumentation/go/examples/).
 
 ## Installation
 
-To begin, set up an `go.mod` in a new directory:
+To begin, set up a `go.mod` in a new directory:
 
 ```shell
 go mod init dice
