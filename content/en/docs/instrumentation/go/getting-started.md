@@ -17,15 +17,13 @@ Ensure that you have the following installed locally:
 
 ## Example application
 
-The following example uses a basic
-[`net/http`](https://pkg.go.dev/net/http) application. If you are
-not using `net/http`, that's OK — you can use OpenTelemetry Go with other web
-frameworks as well, such as Gin and Echo. For a complete list of
-libraries for supported frameworks, see the
+The following example uses a basic [`net/http`](https://pkg.go.dev/net/http)
+application. If you are not using `net/http`, that's OK — you can use
+OpenTelemetry Go with other web frameworks as well, such as Gin and Echo. For a
+complete list of libraries for supported frameworks, see the
 [registry](/ecosystem/registry/?component=instrumentation&language=go).
 
-For more elaborate examples, see
-[examples](/docs/instrumentation/go/examples/).
+For more elaborate examples, see [examples](/docs/instrumentation/go/examples/).
 
 ## Installation
 
@@ -37,8 +35,8 @@ go mod init dice
 
 ### Create and launch an HTTP server
 
-In that same folder, create a file called `main.go` and add the
-following code to the file:
+In that same folder, create a file called `main.go` and add the following code
+to the file:
 
 ```go
 package main
@@ -56,8 +54,7 @@ func main() {
 
 ```
 
-Create another file called `rolldice.go` and add the following code to
-the file:
+Create another file called `rolldice.go` and add the following code to the file:
 
 ```go
 package main
