@@ -9,8 +9,8 @@ weight: 10
 
 This page will show you how to get started with OpenTelemetry in Ruby.
 
-You will learn how you can instrument a simple application, in
-such a way that [traces][] are emitted to the console.
+You will learn how you can instrument a simple application, in such a way that
+[traces][] are emitted to the console.
 
 ## Prerequisites
 
@@ -190,7 +190,8 @@ a few more features that will allow you gain even deeper insights!
   [Email Service](/docs/demo/services/email/).
 
 [traces]: /docs/concepts/signals/traces/
-[instrumentations]: https://github.com/open-telemetry/opentelemetry-ruby#instrumentation-libraries
+[instrumentations]:
+  https://github.com/open-telemetry/opentelemetry-ruby#instrumentation-libraries
 [config]: ../automatic/#configuring-specific-instrumentation-libraries
 [exporters]: ../exporters/
 [context propagation]: ../manual/#context-propagation

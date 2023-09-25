@@ -8,8 +8,8 @@ weight: 10
 
 This page will show you how to get started with OpenTelemetry in Node.js.
 
-You will learn how you can instrument a simple application, in
-such a way that [traces][] and [metrics][] are emitted to the console.
+You will learn how you can instrument a simple application, in such a way that
+[traces][] and [metrics][] are emitted to the console.
 
 ## Prerequisites
 
