@@ -83,11 +83,16 @@ with an editor.
   ```yaml
   service:
     pipelines:
-      traces:
-        receivers: [otlp]
-        processors: [batch]
+      traces/example:
+        receivers: [forward]
+        processors: [] # optional
         exporters: [otlphttp/example]
   ```
+
+> **Note** The `forward` connector is defined in
+> [src/otelcollector/otelcol-config.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otelcollector/otelcol-config.yml)
+> and can be used in `otelcol-config-extras.yml` to subscribe to the data
+> received by the collector.
 
 Vendor backends might require you to add additional parameters for
 authentication, please check their documentation. Some backends require
