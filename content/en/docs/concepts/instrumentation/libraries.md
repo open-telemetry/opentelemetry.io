@@ -66,14 +66,7 @@ appropriate way to model that data. Some things to consider are:
 - Span events
 - Aggregated Metrics
 
-Follow the semantic conventions to instrument the library. In some conventions,
-the data assigned to an attribute could contain PII (Personally Identifiable
-Information). As a general guideline, do **not** collect this data by default.
-The three options for handling this data are:
-- Don't collect it at all
-- Provide opt-in features to collect possibly PII for users who need it
-- If you’re confident about the possibility of obfuscating / redacting
-PII data, it's possible to collect it but with a configuration option
+Follow the semantic conventions when setting span attributes.
 
 ## When **not** to instrument
 
@@ -99,6 +92,26 @@ still useful in others.
 
 The rest of this document gives guidance on what and how to instrument if you
 decide to do it.
+
+## Personally Identifiable Information (PII)
+
+In some semantic conventions, the data collected as a span attribute could
+contain PII (Personally Identifiable Information). As a general guideline,
+do **not** collect this data by default.
+A few other options for handling this data are:
+- Don't collect it at all
+- Provide opt-in features to collect potentially PII for users who need it
+- Collect it but with a configuration option to obfuscate / redact the PII,
+if you’re confident about being able to implement the obfuscation / redaction
+effectively and with little overhead
+
+PII is data like email addresses, passwords, usernames, custom data
+in database queries, etc. For example, this is a Elasticsearch query with PII
+redacted that would be a span's `db.statement` attribute:
+
+```json
+{ query: { match: { username: 'REDACTED' } } }
+```
 
 ## OpenTelemetry API
 
