@@ -37,14 +37,13 @@ for a wide variety of technologies (e.g. databases or messaging systems). When
 libraries follow conventions, many scenarios may be enabled out of the box
 without the user's input or configuration.
 
-Semantic conventions are always evolving and new ones are constantly added.
-If some don't exist for your library, then please consider adding them.
-Pay special attention to span names; strive to use meaningful names and
-consider cardinality when defining them.
+Semantic conventions are always evolving and new ones are constantly added. If
+some don't exist for your library, then please consider adding them. Pay special
+attention to span names; strive to use meaningful names and consider cardinality
+when defining them.
 
-There is a `schema_url` attribute that can be used to record what version of
-the semantic conventions are being used. Please set this attribute, when
-possible.
+There is a `schema_url` attribute that can be used to record what version of the
+semantic conventions are being used. Please set this attribute, when possible.
 
 If you have any feedback or want to add a new convention - please come and
 contribute!
@@ -58,9 +57,9 @@ Think of your library from the perspective of a library user and what the user
 might be interested in knowing about the behavior and activity of the library.
 As the library maintainer, you know the internals but the user will most likely
 be less interested in the inner-workings of the library and more interested in
-the functionality of their application. Think about what information
-can be helpful in analyzing the usage of your library, then think about an
-appropriate way to model that data. Some things to consider are:
+the functionality of their application. Think about what information can be
+helpful in analyzing the usage of your library, then think about an appropriate
+way to model that data. Some things to consider are:
 
 - Spans and span hierarchies
 - Numerical attributes on spans (as an alternative to aggregated metrics)
@@ -97,19 +96,19 @@ decide to do it.
 ## Personally Identifiable Information (PII)
 
 In some semantic conventions, the data collected as a span attribute could
-contain PII (Personally Identifiable Information). As a general guideline,
-do **not** collect this data by default.
-A few other options for handling this data are:
+contain PII (Personally Identifiable Information). As a general guideline, do
+**not** collect this data by default. A few other options for handling this data
+are:
 
 - Don't collect it at all
 - Provide opt-in features to collect potentially PII for users who need it
-- Collect it but with a configuration option to obfuscate / redact the PII,
-if you’re confident about being able to implement the obfuscation / redaction
-effectively and with little overhead
+- Collect it but with a configuration option to obfuscate / redact the PII, if
+  you’re confident about being able to implement the obfuscation / redaction
+  effectively and with little overhead
 
-PII is data like email addresses, passwords, usernames, custom data
-in database queries, etc. For example, this is a Elasticsearch query with PII
-redacted that would be a span's `db.statement` attribute:
+PII is data like email addresses, passwords, usernames, custom data in database
+queries, etc. For example, this is a Elasticsearch query with PII redacted that
+would be a span's `db.statement` attribute:
 
 ```json
 { "query": { "match": { "username": "REDACTED" } } }
