@@ -304,155 +304,155 @@ as the following:
 
 ```json
 {
-	"Name": "/",
-	"SpanContext": {
-		"TraceID": "d897cefa10361c2c182fbb9766b6bd2d",
-		"SpanID": "134984d3851ab7a5",
-		"TraceFlags": "01",
-		"TraceState": "",
-		"Remote": false
-	},
-	"Parent": {
-		"TraceID": "00000000000000000000000000000000",
-		"SpanID": "0000000000000000",
-		"TraceFlags": "00",
-		"TraceState": "",
-		"Remote": false
-	},
-	"SpanKind": 2,
-	"StartTime": "2023-09-25T12:45:13.438800632+02:00",
-	"EndTime": "2023-09-25T12:45:13.438837378+02:00",
-	"Attributes": [
-		{
-			"Key": "http.method",
-			"Value": {
-				"Type": "STRING",
-				"Value": "GET"
-			}
-		},
-		{
-			"Key": "http.scheme",
-			"Value": {
-				"Type": "STRING",
-				"Value": "http"
-			}
-		},
-		{
-			"Key": "http.flavor",
-			"Value": {
-				"Type": "STRING",
-				"Value": "1.1"
-			}
-		},
-		{
-			"Key": "net.host.name",
-			"Value": {
-				"Type": "STRING",
-				"Value": "localhost"
-			}
-		},
-		{
-			"Key": "net.host.port",
-			"Value": {
-				"Type": "INT64",
-				"Value": 8080
-			}
-		},
-		{
-			"Key": "net.sock.peer.addr",
-			"Value": {
-				"Type": "STRING",
-				"Value": "::1"
-			}
-		},
-		{
-			"Key": "net.sock.peer.port",
-			"Value": {
-				"Type": "INT64",
-				"Value": 57974
-			}
-		},
-		{
-			"Key": "http.user_agent",
-			"Value": {
-				"Type": "STRING",
-				"Value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"
-			}
-		},
-		{
-			"Key": "http.route",
-			"Value": {
-				"Type": "STRING",
-				"Value": "/rolldice"
-			}
-		},
-		{
-			"Key": "http.wrote_bytes",
-			"Value": {
-				"Type": "INT64",
-				"Value": 2
-			}
-		},
-		{
-			"Key": "http.status_code",
-			"Value": {
-				"Type": "INT64",
-				"Value": 200
-			}
-		}
-	],
-	"Events": null,
-	"Links": null,
-	"Status": {
-		"Code": "Unset",
-		"Description": ""
-	},
-	"DroppedAttributes": 0,
-	"DroppedEvents": 0,
-	"DroppedLinks": 0,
-	"ChildSpanCount": 0,
-	"Resource": [
-		{
-			"Key": "service.name",
-			"Value": {
-				"Type": "STRING",
-				"Value": "dice"
-			}
-		},
-		{
-			"Key": "service.version",
-			"Value": {
-				"Type": "STRING",
-				"Value": "0.1.0"
-			}
-		},
-		{
-			"Key": "telemetry.sdk.language",
-			"Value": {
-				"Type": "STRING",
-				"Value": "go"
-			}
-		},
-		{
-			"Key": "telemetry.sdk.name",
-			"Value": {
-				"Type": "STRING",
-				"Value": "opentelemetry"
-			}
-		},
-		{
-			"Key": "telemetry.sdk.version",
-			"Value": {
-				"Type": "STRING",
-				"Value": "1.19.0-rc.1"
-			}
-		}
-	],
-	"InstrumentationLibrary": {
-		"Name": "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp",
-		"Version": "0.44.0",
-		"SchemaURL": ""
-	}
+  "Name": "/",
+  "SpanContext": {
+    "TraceID": "d897cefa10361c2c182fbb9766b6bd2d",
+    "SpanID": "134984d3851ab7a5",
+    "TraceFlags": "01",
+    "TraceState": "",
+    "Remote": false
+  },
+  "Parent": {
+    "TraceID": "00000000000000000000000000000000",
+    "SpanID": "0000000000000000",
+    "TraceFlags": "00",
+    "TraceState": "",
+    "Remote": false
+  },
+  "SpanKind": 2,
+  "StartTime": "2023-09-25T12:45:13.438800632+02:00",
+  "EndTime": "2023-09-25T12:45:13.438837378+02:00",
+  "Attributes": [
+    {
+      "Key": "http.method",
+      "Value": {
+        "Type": "STRING",
+        "Value": "GET"
+      }
+    },
+    {
+      "Key": "http.scheme",
+      "Value": {
+        "Type": "STRING",
+        "Value": "http"
+      }
+    },
+    {
+      "Key": "http.flavor",
+      "Value": {
+        "Type": "STRING",
+        "Value": "1.1"
+      }
+    },
+    {
+      "Key": "net.host.name",
+      "Value": {
+        "Type": "STRING",
+        "Value": "localhost"
+      }
+    },
+    {
+      "Key": "net.host.port",
+      "Value": {
+        "Type": "INT64",
+        "Value": 8080
+      }
+    },
+    {
+      "Key": "net.sock.peer.addr",
+      "Value": {
+        "Type": "STRING",
+        "Value": "::1"
+      }
+    },
+    {
+      "Key": "net.sock.peer.port",
+      "Value": {
+        "Type": "INT64",
+        "Value": 57974
+      }
+    },
+    {
+      "Key": "http.user_agent",
+      "Value": {
+        "Type": "STRING",
+        "Value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "Key": "http.route",
+      "Value": {
+        "Type": "STRING",
+        "Value": "/rolldice"
+      }
+    },
+    {
+      "Key": "http.wrote_bytes",
+      "Value": {
+        "Type": "INT64",
+        "Value": 2
+      }
+    },
+    {
+      "Key": "http.status_code",
+      "Value": {
+        "Type": "INT64",
+        "Value": 200
+      }
+    }
+  ],
+  "Events": null,
+  "Links": null,
+  "Status": {
+    "Code": "Unset",
+    "Description": ""
+  },
+  "DroppedAttributes": 0,
+  "DroppedEvents": 0,
+  "DroppedLinks": 0,
+  "ChildSpanCount": 0,
+  "Resource": [
+    {
+      "Key": "service.name",
+      "Value": {
+        "Type": "STRING",
+        "Value": "dice"
+      }
+    },
+    {
+      "Key": "service.version",
+      "Value": {
+        "Type": "STRING",
+        "Value": "0.1.0"
+      }
+    },
+    {
+      "Key": "telemetry.sdk.language",
+      "Value": {
+        "Type": "STRING",
+        "Value": "go"
+      }
+    },
+    {
+      "Key": "telemetry.sdk.name",
+      "Value": {
+        "Type": "STRING",
+        "Value": "opentelemetry"
+      }
+    },
+    {
+      "Key": "telemetry.sdk.version",
+      "Value": {
+        "Type": "STRING",
+        "Value": "1.19.0-rc.1"
+      }
+    }
+  ],
+  "InstrumentationLibrary": {
+    "Name": "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp",
+    "Version": "0.44.0",
+    "SchemaURL": ""
+  }
 }
 ```
 
@@ -469,292 +469,264 @@ following:
 
 ```json
 {
-	"Resource": [
-		{
-			"Key": "service.name",
-			"Value": {
-				"Type": "STRING",
-				"Value": "dice"
-			}
-		},
-		{
-			"Key": "service.version",
-			"Value": {
-				"Type": "STRING",
-				"Value": "0.1.0"
-			}
-		},
-		{
-			"Key": "telemetry.sdk.language",
-			"Value": {
-				"Type": "STRING",
-				"Value": "go"
-			}
-		},
-		{
-			"Key": "telemetry.sdk.name",
-			"Value": {
-				"Type": "STRING",
-				"Value": "opentelemetry"
-			}
-		},
-		{
-			"Key": "telemetry.sdk.version",
-			"Value": {
-				"Type": "STRING",
-				"Value": "1.19.0-rc.1"
-			}
-		}
-	],
-	"ScopeMetrics": [
-		{
-			"Scope": {
-				"Name": "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp",
-				"Version": "0.44.0",
-				"SchemaURL": ""
-			},
-			"Metrics": [
-				{
-					"Name": "http.server.request_content_length",
-					"Description": "",
-					"Unit": "",
-					"Data": {
-						"DataPoints": [
-							{
-								"Attributes": [
-									{
-										"Key": "http.flavor",
-										"Value": {
-											"Type": "STRING",
-											"Value": "1.1"
-										}
-									},
-									{
-										"Key": "http.method",
-										"Value": {
-											"Type": "STRING",
-											"Value": "GET"
-										}
-									},
-									{
-										"Key": "http.route",
-										"Value": {
-											"Type": "STRING",
-											"Value": "/rolldice"
-										}
-									},
-									{
-										"Key": "http.scheme",
-										"Value": {
-											"Type": "STRING",
-											"Value": "http"
-										}
-									},
-									{
-										"Key": "http.status_code",
-										"Value": {
-											"Type": "INT64",
-											"Value": 200
-										}
-									},
-									{
-										"Key": "net.host.name",
-										"Value": {
-											"Type": "STRING",
-											"Value": "localhost"
-										}
-									},
-									{
-										"Key": "net.host.port",
-										"Value": {
-											"Type": "INT64",
-											"Value": 8080
-										}
-									}
-								],
-								"StartTime": "2023-09-25T12:45:08.184171399+02:00",
-								"Time": "2023-09-25T12:46:59.26311043+02:00",
-								"Value": 0
-							}
-						],
-						"Temporality": "CumulativeTemporality",
-						"IsMonotonic": true
-					}
-				},
-				{
-					"Name": "http.server.response_content_length",
-					"Description": "",
-					"Unit": "",
-					"Data": {
-						"DataPoints": [
-							{
-								"Attributes": [
-									{
-										"Key": "http.flavor",
-										"Value": {
-											"Type": "STRING",
-											"Value": "1.1"
-										}
-									},
-									{
-										"Key": "http.method",
-										"Value": {
-											"Type": "STRING",
-											"Value": "GET"
-										}
-									},
-									{
-										"Key": "http.route",
-										"Value": {
-											"Type": "STRING",
-											"Value": "/rolldice"
-										}
-									},
-									{
-										"Key": "http.scheme",
-										"Value": {
-											"Type": "STRING",
-											"Value": "http"
-										}
-									},
-									{
-										"Key": "http.status_code",
-										"Value": {
-											"Type": "INT64",
-											"Value": 200
-										}
-									},
-									{
-										"Key": "net.host.name",
-										"Value": {
-											"Type": "STRING",
-											"Value": "localhost"
-										}
-									},
-									{
-										"Key": "net.host.port",
-										"Value": {
-											"Type": "INT64",
-											"Value": 8080
-										}
-									}
-								],
-								"StartTime": "2023-09-25T12:45:08.184177091+02:00",
-								"Time": "2023-09-25T12:46:59.26311453+02:00",
-								"Value": 2
-							}
-						],
-						"Temporality": "CumulativeTemporality",
-						"IsMonotonic": true
-					}
-				},
-				{
-					"Name": "http.server.duration",
-					"Description": "",
-					"Unit": "",
-					"Data": {
-						"DataPoints": [
-							{
-								"Attributes": [
-									{
-										"Key": "http.flavor",
-										"Value": {
-											"Type": "STRING",
-											"Value": "1.1"
-										}
-									},
-									{
-										"Key": "http.method",
-										"Value": {
-											"Type": "STRING",
-											"Value": "GET"
-										}
-									},
-									{
-										"Key": "http.route",
-										"Value": {
-											"Type": "STRING",
-											"Value": "/rolldice"
-										}
-									},
-									{
-										"Key": "http.scheme",
-										"Value": {
-											"Type": "STRING",
-											"Value": "http"
-										}
-									},
-									{
-										"Key": "http.status_code",
-										"Value": {
-											"Type": "INT64",
-											"Value": 200
-										}
-									},
-									{
-										"Key": "net.host.name",
-										"Value": {
-											"Type": "STRING",
-											"Value": "localhost"
-										}
-									},
-									{
-										"Key": "net.host.port",
-										"Value": {
-											"Type": "INT64",
-											"Value": 8080
-										}
-									}
-								],
-								"StartTime": "2023-09-25T12:45:08.184181584+02:00",
-								"Time": "2023-09-25T12:46:59.26311613+02:00",
-								"Count": 1,
-								"Bounds": [
-									0,
-									5,
-									10,
-									25,
-									50,
-									75,
-									100,
-									250,
-									500,
-									750,
-									1000,
-									2500,
-									5000,
-									7500,
-									10000
-								],
-								"BucketCounts": [
-									0,
-									1,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0
-								],
-								"Min": {},
-								"Max": {},
-								"Sum": 0.056117
-							}
-						],
-						"Temporality": "CumulativeTemporality"
-					}
-				}
-			]
-		}
-	]
+  "Resource": [
+    {
+      "Key": "service.name",
+      "Value": {
+        "Type": "STRING",
+        "Value": "dice"
+      }
+    },
+    {
+      "Key": "service.version",
+      "Value": {
+        "Type": "STRING",
+        "Value": "0.1.0"
+      }
+    },
+    {
+      "Key": "telemetry.sdk.language",
+      "Value": {
+        "Type": "STRING",
+        "Value": "go"
+      }
+    },
+    {
+      "Key": "telemetry.sdk.name",
+      "Value": {
+        "Type": "STRING",
+        "Value": "opentelemetry"
+      }
+    },
+    {
+      "Key": "telemetry.sdk.version",
+      "Value": {
+        "Type": "STRING",
+        "Value": "1.19.0-rc.1"
+      }
+    }
+  ],
+  "ScopeMetrics": [
+    {
+      "Scope": {
+        "Name": "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp",
+        "Version": "0.44.0",
+        "SchemaURL": ""
+      },
+      "Metrics": [
+        {
+          "Name": "http.server.request_content_length",
+          "Description": "",
+          "Unit": "",
+          "Data": {
+            "DataPoints": [
+              {
+                "Attributes": [
+                  {
+                    "Key": "http.flavor",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "1.1"
+                    }
+                  },
+                  {
+                    "Key": "http.method",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "GET"
+                    }
+                  },
+                  {
+                    "Key": "http.route",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "/rolldice"
+                    }
+                  },
+                  {
+                    "Key": "http.scheme",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "http"
+                    }
+                  },
+                  {
+                    "Key": "http.status_code",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 200
+                    }
+                  },
+                  {
+                    "Key": "net.host.name",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "localhost"
+                    }
+                  },
+                  {
+                    "Key": "net.host.port",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 8080
+                    }
+                  }
+                ],
+                "StartTime": "2023-09-25T12:45:08.184171399+02:00",
+                "Time": "2023-09-25T12:46:59.26311043+02:00",
+                "Value": 0
+              }
+            ],
+            "Temporality": "CumulativeTemporality",
+            "IsMonotonic": true
+          }
+        },
+        {
+          "Name": "http.server.response_content_length",
+          "Description": "",
+          "Unit": "",
+          "Data": {
+            "DataPoints": [
+              {
+                "Attributes": [
+                  {
+                    "Key": "http.flavor",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "1.1"
+                    }
+                  },
+                  {
+                    "Key": "http.method",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "GET"
+                    }
+                  },
+                  {
+                    "Key": "http.route",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "/rolldice"
+                    }
+                  },
+                  {
+                    "Key": "http.scheme",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "http"
+                    }
+                  },
+                  {
+                    "Key": "http.status_code",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 200
+                    }
+                  },
+                  {
+                    "Key": "net.host.name",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "localhost"
+                    }
+                  },
+                  {
+                    "Key": "net.host.port",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 8080
+                    }
+                  }
+                ],
+                "StartTime": "2023-09-25T12:45:08.184177091+02:00",
+                "Time": "2023-09-25T12:46:59.26311453+02:00",
+                "Value": 2
+              }
+            ],
+            "Temporality": "CumulativeTemporality",
+            "IsMonotonic": true
+          }
+        },
+        {
+          "Name": "http.server.duration",
+          "Description": "",
+          "Unit": "",
+          "Data": {
+            "DataPoints": [
+              {
+                "Attributes": [
+                  {
+                    "Key": "http.flavor",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "1.1"
+                    }
+                  },
+                  {
+                    "Key": "http.method",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "GET"
+                    }
+                  },
+                  {
+                    "Key": "http.route",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "/rolldice"
+                    }
+                  },
+                  {
+                    "Key": "http.scheme",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "http"
+                    }
+                  },
+                  {
+                    "Key": "http.status_code",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 200
+                    }
+                  },
+                  {
+                    "Key": "net.host.name",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "localhost"
+                    }
+                  },
+                  {
+                    "Key": "net.host.port",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 8080
+                    }
+                  }
+                ],
+                "StartTime": "2023-09-25T12:45:08.184181584+02:00",
+                "Time": "2023-09-25T12:46:59.26311613+02:00",
+                "Count": 1,
+                "Bounds": [
+                  0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000,
+                  7500, 10000
+                ],
+                "BucketCounts": [
+                  0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+                ],
+                "Min": {},
+                "Max": {},
+                "Sum": 0.056117
+              }
+            ],
+            "Temporality": "CumulativeTemporality"
+          }
+        }
+      ]
+    }
+  ]
 }
 ```
 
@@ -1079,398 +1051,369 @@ separate counts for each roll value:
 
 ```json
 {
-	"Resource": [
-		{
-			"Key": "service.name",
-			"Value": {
-				"Type": "STRING",
-				"Value": "dice"
-			}
-		},
-		{
-			"Key": "service.version",
-			"Value": {
-				"Type": "STRING",
-				"Value": "0.1.0"
-			}
-		},
-		{
-			"Key": "telemetry.sdk.language",
-			"Value": {
-				"Type": "STRING",
-				"Value": "go"
-			}
-		},
-		{
-			"Key": "telemetry.sdk.name",
-			"Value": {
-				"Type": "STRING",
-				"Value": "opentelemetry"
-			}
-		},
-		{
-			"Key": "telemetry.sdk.version",
-			"Value": {
-				"Type": "STRING",
-				"Value": "1.19.0-rc.1"
-			}
-		}
-	],
-	"ScopeMetrics": [
-		{
-			"Scope": {
-				"Name": "rolldice",
-				"Version": "",
-				"SchemaURL": ""
-			},
-			"Metrics": [
-				{
-					"Name": "roll_counter",
-					"Description": "The number of rolls by roll value",
-					"Unit": "{roll}",
-					"Data": {
-						"DataPoints": [
-							{
-								"Attributes": [
-									{
-										"Key": "roll.value",
-										"Value": {
-											"Type": "INT64",
-											"Value": 1
-										}
-									}
-								],
-								"StartTime": "2023-09-25T12:42:04.279204638+02:00",
-								"Time": "2023-09-25T12:42:15.482694258+02:00",
-								"Value": 4
-							},
-							{
-								"Attributes": [
-									{
-										"Key": "roll.value",
-										"Value": {
-											"Type": "INT64",
-											"Value": 5
-										}
-									}
-								],
-								"StartTime": "2023-09-25T12:42:04.279204638+02:00",
-								"Time": "2023-09-25T12:42:15.482694258+02:00",
-								"Value": 3
-							},
-							{
-								"Attributes": [
-									{
-										"Key": "roll.value",
-										"Value": {
-											"Type": "INT64",
-											"Value": 3
-										}
-									}
-								],
-								"StartTime": "2023-09-25T12:42:04.279204638+02:00",
-								"Time": "2023-09-25T12:42:15.482694258+02:00",
-								"Value": 4
-							},
-							{
-								"Attributes": [
-									{
-										"Key": "roll.value",
-										"Value": {
-											"Type": "INT64",
-											"Value": 2
-										}
-									}
-								],
-								"StartTime": "2023-09-25T12:42:04.279204638+02:00",
-								"Time": "2023-09-25T12:42:15.482694258+02:00",
-								"Value": 2
-							},
-							{
-								"Attributes": [
-									{
-										"Key": "roll.value",
-										"Value": {
-											"Type": "INT64",
-											"Value": 6
-										}
-									}
-								],
-								"StartTime": "2023-09-25T12:42:04.279204638+02:00",
-								"Time": "2023-09-25T12:42:15.482694258+02:00",
-								"Value": 5
-							},
-							{
-								"Attributes": [
-									{
-										"Key": "roll.value",
-										"Value": {
-											"Type": "INT64",
-											"Value": 4
-										}
-									}
-								],
-								"StartTime": "2023-09-25T12:42:04.279204638+02:00",
-								"Time": "2023-09-25T12:42:15.482694258+02:00",
-								"Value": 9
-							}
-						],
-						"Temporality": "CumulativeTemporality",
-						"IsMonotonic": true
-					}
-				}
-			]
-		},
-		{
-			"Scope": {
-				"Name": "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp",
-				"Version": "0.44.0",
-				"SchemaURL": ""
-			},
-			"Metrics": [
-				{
-					"Name": "http.server.request_content_length",
-					"Description": "",
-					"Unit": "",
-					"Data": {
-						"DataPoints": [
-							{
-								"Attributes": [
-									{
-										"Key": "http.flavor",
-										"Value": {
-											"Type": "STRING",
-											"Value": "1.1"
-										}
-									},
-									{
-										"Key": "http.method",
-										"Value": {
-											"Type": "STRING",
-											"Value": "GET"
-										}
-									},
-									{
-										"Key": "http.route",
-										"Value": {
-											"Type": "STRING",
-											"Value": "/rolldice"
-										}
-									},
-									{
-										"Key": "http.scheme",
-										"Value": {
-											"Type": "STRING",
-											"Value": "http"
-										}
-									},
-									{
-										"Key": "http.status_code",
-										"Value": {
-											"Type": "INT64",
-											"Value": 200
-										}
-									},
-									{
-										"Key": "net.host.name",
-										"Value": {
-											"Type": "STRING",
-											"Value": "localhost"
-										}
-									},
-									{
-										"Key": "net.host.port",
-										"Value": {
-											"Type": "INT64",
-											"Value": 8080
-										}
-									}
-								],
-								"StartTime": "2023-09-25T12:42:04.279212238+02:00",
-								"Time": "2023-09-25T12:42:15.482695758+02:00",
-								"Value": 0
-							}
-						],
-						"Temporality": "CumulativeTemporality",
-						"IsMonotonic": true
-					}
-				},
-				{
-					"Name": "http.server.response_content_length",
-					"Description": "",
-					"Unit": "",
-					"Data": {
-						"DataPoints": [
-							{
-								"Attributes": [
-									{
-										"Key": "http.flavor",
-										"Value": {
-											"Type": "STRING",
-											"Value": "1.1"
-										}
-									},
-									{
-										"Key": "http.method",
-										"Value": {
-											"Type": "STRING",
-											"Value": "GET"
-										}
-									},
-									{
-										"Key": "http.route",
-										"Value": {
-											"Type": "STRING",
-											"Value": "/rolldice"
-										}
-									},
-									{
-										"Key": "http.scheme",
-										"Value": {
-											"Type": "STRING",
-											"Value": "http"
-										}
-									},
-									{
-										"Key": "http.status_code",
-										"Value": {
-											"Type": "INT64",
-											"Value": 200
-										}
-									},
-									{
-										"Key": "net.host.name",
-										"Value": {
-											"Type": "STRING",
-											"Value": "localhost"
-										}
-									},
-									{
-										"Key": "net.host.port",
-										"Value": {
-											"Type": "INT64",
-											"Value": 8080
-										}
-									}
-								],
-								"StartTime": "2023-09-25T12:42:04.279214438+02:00",
-								"Time": "2023-09-25T12:42:15.482696158+02:00",
-								"Value": 54
-							}
-						],
-						"Temporality": "CumulativeTemporality",
-						"IsMonotonic": true
-					}
-				},
-				{
-					"Name": "http.server.duration",
-					"Description": "",
-					"Unit": "",
-					"Data": {
-						"DataPoints": [
-							{
-								"Attributes": [
-									{
-										"Key": "http.flavor",
-										"Value": {
-											"Type": "STRING",
-											"Value": "1.1"
-										}
-									},
-									{
-										"Key": "http.method",
-										"Value": {
-											"Type": "STRING",
-											"Value": "GET"
-										}
-									},
-									{
-										"Key": "http.route",
-										"Value": {
-											"Type": "STRING",
-											"Value": "/rolldice"
-										}
-									},
-									{
-										"Key": "http.scheme",
-										"Value": {
-											"Type": "STRING",
-											"Value": "http"
-										}
-									},
-									{
-										"Key": "http.status_code",
-										"Value": {
-											"Type": "INT64",
-											"Value": 200
-										}
-									},
-									{
-										"Key": "net.host.name",
-										"Value": {
-											"Type": "STRING",
-											"Value": "localhost"
-										}
-									},
-									{
-										"Key": "net.host.port",
-										"Value": {
-											"Type": "INT64",
-											"Value": 8080
-										}
-									}
-								],
-								"StartTime": "2023-09-25T12:42:04.279219438+02:00",
-								"Time": "2023-09-25T12:42:15.482697158+02:00",
-								"Count": 27,
-								"Bounds": [
-									0,
-									5,
-									10,
-									25,
-									50,
-									75,
-									100,
-									250,
-									500,
-									750,
-									1000,
-									2500,
-									5000,
-									7500,
-									10000
-								],
-								"BucketCounts": [
-									0,
-									27,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0
-								],
-								"Min": {},
-								"Max": {},
-								"Sum": 2.1752759999999993
-							}
-						],
-						"Temporality": "CumulativeTemporality"
-					}
-				}
-			]
-		}
-	]
+  "Resource": [
+    {
+      "Key": "service.name",
+      "Value": {
+        "Type": "STRING",
+        "Value": "dice"
+      }
+    },
+    {
+      "Key": "service.version",
+      "Value": {
+        "Type": "STRING",
+        "Value": "0.1.0"
+      }
+    },
+    {
+      "Key": "telemetry.sdk.language",
+      "Value": {
+        "Type": "STRING",
+        "Value": "go"
+      }
+    },
+    {
+      "Key": "telemetry.sdk.name",
+      "Value": {
+        "Type": "STRING",
+        "Value": "opentelemetry"
+      }
+    },
+    {
+      "Key": "telemetry.sdk.version",
+      "Value": {
+        "Type": "STRING",
+        "Value": "1.19.0-rc.1"
+      }
+    }
+  ],
+  "ScopeMetrics": [
+    {
+      "Scope": {
+        "Name": "rolldice",
+        "Version": "",
+        "SchemaURL": ""
+      },
+      "Metrics": [
+        {
+          "Name": "roll_counter",
+          "Description": "The number of rolls by roll value",
+          "Unit": "{roll}",
+          "Data": {
+            "DataPoints": [
+              {
+                "Attributes": [
+                  {
+                    "Key": "roll.value",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 1
+                    }
+                  }
+                ],
+                "StartTime": "2023-09-25T12:42:04.279204638+02:00",
+                "Time": "2023-09-25T12:42:15.482694258+02:00",
+                "Value": 4
+              },
+              {
+                "Attributes": [
+                  {
+                    "Key": "roll.value",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 5
+                    }
+                  }
+                ],
+                "StartTime": "2023-09-25T12:42:04.279204638+02:00",
+                "Time": "2023-09-25T12:42:15.482694258+02:00",
+                "Value": 3
+              },
+              {
+                "Attributes": [
+                  {
+                    "Key": "roll.value",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 3
+                    }
+                  }
+                ],
+                "StartTime": "2023-09-25T12:42:04.279204638+02:00",
+                "Time": "2023-09-25T12:42:15.482694258+02:00",
+                "Value": 4
+              },
+              {
+                "Attributes": [
+                  {
+                    "Key": "roll.value",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 2
+                    }
+                  }
+                ],
+                "StartTime": "2023-09-25T12:42:04.279204638+02:00",
+                "Time": "2023-09-25T12:42:15.482694258+02:00",
+                "Value": 2
+              },
+              {
+                "Attributes": [
+                  {
+                    "Key": "roll.value",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 6
+                    }
+                  }
+                ],
+                "StartTime": "2023-09-25T12:42:04.279204638+02:00",
+                "Time": "2023-09-25T12:42:15.482694258+02:00",
+                "Value": 5
+              },
+              {
+                "Attributes": [
+                  {
+                    "Key": "roll.value",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 4
+                    }
+                  }
+                ],
+                "StartTime": "2023-09-25T12:42:04.279204638+02:00",
+                "Time": "2023-09-25T12:42:15.482694258+02:00",
+                "Value": 9
+              }
+            ],
+            "Temporality": "CumulativeTemporality",
+            "IsMonotonic": true
+          }
+        }
+      ]
+    },
+    {
+      "Scope": {
+        "Name": "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp",
+        "Version": "0.44.0",
+        "SchemaURL": ""
+      },
+      "Metrics": [
+        {
+          "Name": "http.server.request_content_length",
+          "Description": "",
+          "Unit": "",
+          "Data": {
+            "DataPoints": [
+              {
+                "Attributes": [
+                  {
+                    "Key": "http.flavor",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "1.1"
+                    }
+                  },
+                  {
+                    "Key": "http.method",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "GET"
+                    }
+                  },
+                  {
+                    "Key": "http.route",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "/rolldice"
+                    }
+                  },
+                  {
+                    "Key": "http.scheme",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "http"
+                    }
+                  },
+                  {
+                    "Key": "http.status_code",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 200
+                    }
+                  },
+                  {
+                    "Key": "net.host.name",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "localhost"
+                    }
+                  },
+                  {
+                    "Key": "net.host.port",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 8080
+                    }
+                  }
+                ],
+                "StartTime": "2023-09-25T12:42:04.279212238+02:00",
+                "Time": "2023-09-25T12:42:15.482695758+02:00",
+                "Value": 0
+              }
+            ],
+            "Temporality": "CumulativeTemporality",
+            "IsMonotonic": true
+          }
+        },
+        {
+          "Name": "http.server.response_content_length",
+          "Description": "",
+          "Unit": "",
+          "Data": {
+            "DataPoints": [
+              {
+                "Attributes": [
+                  {
+                    "Key": "http.flavor",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "1.1"
+                    }
+                  },
+                  {
+                    "Key": "http.method",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "GET"
+                    }
+                  },
+                  {
+                    "Key": "http.route",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "/rolldice"
+                    }
+                  },
+                  {
+                    "Key": "http.scheme",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "http"
+                    }
+                  },
+                  {
+                    "Key": "http.status_code",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 200
+                    }
+                  },
+                  {
+                    "Key": "net.host.name",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "localhost"
+                    }
+                  },
+                  {
+                    "Key": "net.host.port",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 8080
+                    }
+                  }
+                ],
+                "StartTime": "2023-09-25T12:42:04.279214438+02:00",
+                "Time": "2023-09-25T12:42:15.482696158+02:00",
+                "Value": 54
+              }
+            ],
+            "Temporality": "CumulativeTemporality",
+            "IsMonotonic": true
+          }
+        },
+        {
+          "Name": "http.server.duration",
+          "Description": "",
+          "Unit": "",
+          "Data": {
+            "DataPoints": [
+              {
+                "Attributes": [
+                  {
+                    "Key": "http.flavor",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "1.1"
+                    }
+                  },
+                  {
+                    "Key": "http.method",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "GET"
+                    }
+                  },
+                  {
+                    "Key": "http.route",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "/rolldice"
+                    }
+                  },
+                  {
+                    "Key": "http.scheme",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "http"
+                    }
+                  },
+                  {
+                    "Key": "http.status_code",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 200
+                    }
+                  },
+                  {
+                    "Key": "net.host.name",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "localhost"
+                    }
+                  },
+                  {
+                    "Key": "net.host.port",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 8080
+                    }
+                  }
+                ],
+                "StartTime": "2023-09-25T12:42:04.279219438+02:00",
+                "Time": "2023-09-25T12:42:15.482697158+02:00",
+                "Count": 27,
+                "Bounds": [
+                  0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000,
+                  7500, 10000
+                ],
+                "BucketCounts": [
+                  0, 27, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+                ],
+                "Min": {},
+                "Max": {},
+                "Sum": 2.1752759999999993
+              }
+            ],
+            "Temporality": "CumulativeTemporality"
+          }
+        }
+      ]
+    }
+  ]
 }
-
 ```
 
 ## Next steps
