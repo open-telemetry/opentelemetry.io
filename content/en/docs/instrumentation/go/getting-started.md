@@ -1416,6 +1416,8 @@ separate counts for each roll value:
 }
 ```
 
+</details>
+
 ## Next steps
 
 For more information about instrumenting your code, refer to the
