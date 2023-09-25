@@ -77,12 +77,14 @@ func rolldice(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
-Build and run the application with the following command, then open
-<http://localhost:8080/rolldice> in your web browser to ensure it is working.
+Build and run the application with the following command:
 
 ```sh
 go run .
 ```
+
+Open <http://localhost:8080/rolldice> in your web browser to ensure it is
+working.
 
 ## Instrumentation
 
@@ -321,7 +323,7 @@ TODO
 
 </details>
 
-## Add custom instrumentation
+## Custom instrumentation
 
 Instrumentation libraries captures telemetry at the edges of your systems, such
 as inbound and outbound HTTP requests, but it doesn't capture what's going on in
