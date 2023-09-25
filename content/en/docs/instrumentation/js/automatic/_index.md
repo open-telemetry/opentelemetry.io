@@ -77,7 +77,7 @@ The default level is `info`.
 {{% alert title="Notes" color="info" %}}
 
 - In a production environment, it is recommended to set `OTEL_LOG_LEVEL` to
-  `info``.
+  `info`.
 - Logs are always sent to `console`, no matter the environment, or debug level.
 - Debug logs are extremely verbose and can negatively impact the performance of
   your application. Enable debug logging only when needed.
