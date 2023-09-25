@@ -1,7 +1,7 @@
 ---
 title: Getting Started
 weight: 10
-cSpell:ignore:
+cSpell:ignore: funcs intn itoa rolldice stdouttrace strconv
 ---
 
 This page will show you how to get started with OpenTelemetry in Go.
