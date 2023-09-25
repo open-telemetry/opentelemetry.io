@@ -92,7 +92,7 @@ php example.php
 require 'vendor/autoload.php'; //sdk autoloading happens as part of composer initialization
 
 $tracer = OpenTelemetry\API\Common\Instrumentation\Globals::tracerProvider()->getTracer('name', 'version', 'schema.url', [/*attributes*/]);
-$meter = OpenTelemetry\API\Common\Instrumentation\Globals::meterProvider()->getTracer('name', 'version', 'schema.url', [/*attributes*/]);
+$meter = OpenTelemetry\API\Common\Instrumentation\Globals::meterProvider()->getMeter('name', 'version', 'schema.url', [/*attributes*/]);
 ```
 
 SDK autoloading happens as part of the composer autoloader.
