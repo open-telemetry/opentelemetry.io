@@ -7,8 +7,8 @@ cSpell:ignore: chan fatalln funcs intn itoa khtml otelhttp rolldice stdouttrace 
 
 This page will show you how to get started with OpenTelemetry in Go.
 
-You will learn how you can instrument a simple application manually, in
-such a way that [traces][] and [metrics][] are emitted to the console.
+You will learn how you can instrument a simple application manually, in such a
+way that [traces][] and [metrics][] are emitted to the console.
 
 ## Prerequisites
 
