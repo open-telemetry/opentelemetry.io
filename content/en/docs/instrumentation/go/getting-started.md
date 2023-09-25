@@ -1,6 +1,7 @@
 ---
 title: Getting Started
 weight: 10
+# prettier-ignore
 cSpell:ignore: chan fatalln funcs intn itoa otelhttp rolldice stdouttrace strconv
 ---
 
