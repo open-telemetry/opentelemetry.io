@@ -109,7 +109,7 @@ PII is data like email addresses, passwords, usernames, custom data
 in database queries, etc. For example, this is a Elasticsearch query with PII
 redacted that would be a span's `db.statement` attribute:
 
-```json
+```javascript
 { query: { match: { username: 'REDACTED' } } }
 ```
 
