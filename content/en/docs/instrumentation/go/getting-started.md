@@ -764,7 +764,7 @@ var (
 
 func init() {
 	var err error
-	rollCnt, err = meter.Int64Counter("roll_counter",
+	rollCnt, err = meter.Int64Counter("dice.rolls",
 		metric.WithDescription("The number of rolls by roll value"),
 		metric.WithUnit("{roll}"))
 	if err != nil {
@@ -773,7 +773,7 @@ func init() {
 }
 
 func rolldice(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "do_roll")
+	ctx, span := tracer.Start(r.Context(), "roll")
 	defer span.End()
 
 	roll := 1 + rand.Intn(6)
@@ -797,7 +797,7 @@ go run .
 ```
 
 When you send a request to the server, you'll see two spans in the trace emitted
-to the console, and the one called `do_roll` registers its parent as the
+to the console, and the one called `roll` registers its parent as the
 automatically created one:
 
 <details>
@@ -805,7 +805,7 @@ automatically created one:
 
 ```json
 {
-	"Name": "do_roll",
+	"Name": "roll",
 	"SpanContext": {
 		"TraceID": "829fb7ceb787403c96eac3caf285c965",
 		"SpanID": "8b6b408b6c1a35e5",
@@ -1040,10 +1040,10 @@ automatically created one:
 
 </details>
 
-The `parent_id` of `do_roll` is the same is the `span_id` for `/rolldice`,
+The `parent_id` of `roll` is the same is the `span_id` for `/rolldice`,
 indicating a parent-child relationship!
 
-Moreover, you'll see the `roll_counter` metric emitted to the console, with
+Moreover, you'll see the `dice.rolls` metric emitted to the console, with
 separate counts for each roll value:
 
 <details>
@@ -1097,7 +1097,7 @@ separate counts for each roll value:
       },
       "Metrics": [
         {
-          "Name": "roll_counter",
+          "Name": "dice.rolls",
           "Description": "The number of rolls by roll value",
           "Unit": "{roll}",
           "Data": {
