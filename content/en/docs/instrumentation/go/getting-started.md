@@ -1,681 +1,1427 @@
 ---
 title: Getting Started
 weight: 10
-cSpell:ignore: chan codebases fscanf println stdouttrace strconv struct
+# prettier-ignore
+cSpell:ignore: chan fatalln funcs intn itoa khtml otelhttp rolldice stdouttrace strconv
 ---
 
-Welcome to the OpenTelemetry for Go getting started guide! This guide will walk
-you through the basic steps in installing, instrumenting with, configuring, and
-exporting data from OpenTelemetry. Before you get started, be sure to have Go
-1.16 or newer installed.
+This page will show you how to get started with OpenTelemetry in Go.
 
-Understanding how a system is functioning when it is failing or having issues is
-critical to resolving those issues. One strategy to understand this is with
-tracing. This guide shows how the OpenTelemetry Go project can be used to trace
-an example application. You will start with an application that computes
-Fibonacci numbers for users, and from there you will add instrumentation to
-produce tracing telemetry with OpenTelemetry Go.
+You will learn how you can instrument a simple application manually, in such a
+way that [traces][] and [metrics][] are emitted to the console.
 
-For reference, a complete example of the code you will build can be found
-[here](https://github.com/open-telemetry/opentelemetry-go/tree/main/example/fib).
+## Prerequisites
 
-To start building the application, make a new directory named `fib` to house our
-Fibonacci project. Next, add the following to a new file named `fib.go` in that
-directory[^1].
+Ensure that you have the following installed locally:
 
-[^1]:
-    The `Fibonacci()` function intentionally produces invalid results for
-    sufficiently large values of `n`. This is addressed in
-    [Error handling](#error-handling).
+- [Go](https://go.dev/)
 
-```go
-package main
+## Example application
 
-// Fibonacci returns the n-th Fibonacci number.
-func Fibonacci(n uint) (uint64, error) {
-	if n <= 1 {
-		return uint64(n), nil
-	}
+The following example uses a basic [`net/http`](https://pkg.go.dev/net/http)
+application. If you are not using `net/http`, that's OK — you can use
+OpenTelemetry Go with other web frameworks as well, such as Gin and Echo. For a
+complete list of libraries for supported frameworks, see the
+[registry](/ecosystem/registry/?component=instrumentation&language=go).
 
-	var n2, n1 uint64 = 0, 1
-	for i := uint(2); i < n; i++ {
-		n2, n1 = n1, n1+n2
-	}
+For more elaborate examples, see [examples](/docs/instrumentation/go/examples/).
 
-	return n2 + n1, nil
-}
+## Installation
+
+To begin, set up a `go.mod` in a new directory:
+
+```shell
+go mod init dice
 ```
 
-With your core logic added, you can now build your application around it. Add a
-new `app.go` file with the following application logic.
+### Create and launch an HTTP server
+
+In that same folder, create a file called `main.go` and add the following code
+to the file:
 
 ```go
 package main
 
 import (
-	"context"
-	"fmt"
-	"io"
 	"log"
-)
-
-// App is a Fibonacci computation application.
-type App struct {
-	r io.Reader
-	l *log.Logger
-}
-
-// NewApp returns a new App.
-func NewApp(r io.Reader, l *log.Logger) *App {
-	return &App{r: r, l: l}
-}
-
-// Run starts polling users for Fibonacci number requests and writes results.
-func (a *App) Run(ctx context.Context) error {
-	for {
-		n, err := a.Poll(ctx)
-		if err != nil {
-			return err
-		}
-
-		a.Write(ctx, n)
-	}
-}
-
-// Poll asks a user for input and returns the request.
-func (a *App) Poll(ctx context.Context) (uint, error) {
-	a.l.Print("What Fibonacci number would you like to know: ")
-
-	var n uint
-	_, err := fmt.Fscanf(a.r, "%d\n", &n)
-	return n, err
-}
-
-// Write writes the n-th Fibonacci number back to the user.
-func (a *App) Write(ctx context.Context, n uint) {
-	f, err := Fibonacci(n)
-	if err != nil {
-		a.l.Printf("Fibonacci(%d): %v\n", n, err)
-	} else {
-		a.l.Printf("Fibonacci(%d) = %d\n", n, f)
-	}
-}
-```
-
-With your application fully composed, you need a `main()` function to actually
-run the application. In a new `main.go` file add the following run logic.
-
-```go
-package main
-
-import (
-	"context"
-	"log"
-	"os"
-	"os/signal"
+	"net/http"
 )
 
 func main() {
-	l := log.New(os.Stdout, "", 0)
+	http.HandleFunc("/rolldice", rolldice)
 
-	sigCh := make(chan os.Signal, 1)
-	signal.Notify(sigCh, os.Interrupt)
-
-	errCh := make(chan error)
-	app := NewApp(os.Stdin, l)
-	go func() {
-		errCh <- app.Run(context.Background())
-	}()
-
-	select {
-	case <-sigCh:
-		l.Println("\ngoodbye")
-		return
-	case err := <-errCh:
-		if err != nil {
-			l.Fatal(err)
-		}
-	}
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 ```
 
-With the code complete it is almost time to run the application. Before you can
-do that you need to initialize this directory as a Go module. From your
-terminal, run the command `go mod init fib` in the `fib` directory. This will
-create a `go.mod` file, which is used by Go to manage imports. Now you should be
-able to run the application!
-
-```console
-$ go run .
-What Fibonacci number would you like to know:
-42
-Fibonacci(42) = 267914296
-What Fibonacci number would you like to know:
-^C
-goodbye
-```
-
-The application can be exited with <kbd>Ctrl+C</kbd>. You should see a similar
-output as above, if not make sure to go back and fix any errors.
-
-## Trace Instrumentation
-
-OpenTelemetry is split into two parts: an API to instrument code with, and SDKs
-that implement the API. To start integrating OpenTelemetry into any project, the
-API is used to define how telemetry is generated. To generate tracing telemetry
-in your application you will use the OpenTelemetry Trace API from the
-[`go.opentelemetry.io/otel/trace`] package.
-
-First, you need to install the necessary packages for the Trace API. Run the
-following command in your working directory.
-
-```sh
-go get go.opentelemetry.io/otel \
-       go.opentelemetry.io/otel/trace
-```
-
-Now that the packages installed you can start updating your application with
-imports you will use in the `app.go` file.
+Create another file called `rolldice.go` and add the following code to the file:
 
 ```go
+package main
+
 import (
-	"context"
-	"fmt"
 	"io"
 	"log"
+	"math/rand"
+	"net/http"
 	"strconv"
-
-	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/trace"
 )
-```
 
-With the imports added, you can start instrumenting.
+func rolldice(w http.ResponseWriter, r *http.Request) {
+	roll := 1 + rand.Intn(6)
 
-The OpenTelemetry Tracing API provides a [`Tracer`] to create traces. These
-[`Tracer`]s are designed to be associated with one instrumentation library. That
-way telemetry they produce can be understood to come from that part of a code
-base. To uniquely identify your application to the [`Tracer`] you will create a
-constant with the package name in `app.go`.
-
-```go
-// name is the Tracer name used to identify this instrumentation library.
-const name = "fib"
-```
-
-Using the full-qualified package name, something that should be unique for Go
-packages, is the standard way to identify a [`Tracer`]. If your example package
-name differs, be sure to update the name you use here to match.
-
-Everything should be in place now to start tracing your application. But first,
-what is a trace? And, how exactly should you build them for your application?
-
-To back up a bit, a trace is a type of telemetry that represents work being done
-by a service. A trace is a record of the connection(s) between participants
-processing a transaction, often through client/server requests processing and
-other forms of communication.
-
-Each part of the work that a service performs is represented in the trace by a
-span. Those spans are not just an unordered collection. Like the call stack of
-our application, those spans are defined with relationships to one another. The
-"root" span is the only span without a parent, it represents how a service
-request is started. All other spans have a parent relationship to another span
-in the same trace.
-
-If this last part about span relationships doesn't make complete sense now,
-don't worry. The most important takeaway is that each part of your code, which
-does some work, should be represented as a span. You will have a better
-understanding of these span relationships after you instrument your code, so
-let's get started.
-
-Start by instrumenting the `Run` method.
-
-```go
-// Run starts polling users for Fibonacci number requests and writes results.
-func (a *App) Run(ctx context.Context) error {
-	for {
-		// Each execution of the run loop, we should get a new "root" span and context.
-		newCtx, span := otel.Tracer(name).Start(ctx, "Run")
-
-		n, err := a.Poll(newCtx)
-		if err != nil {
-			span.End()
-			return err
-		}
-
-		a.Write(newCtx, n)
-		span.End()
+	resp := strconv.Itoa(roll) + "\n"
+	if _, err := io.WriteString(w, resp); err != nil {
+		log.Printf("Write failed: %v\n", err)
 	}
 }
 ```
 
-The above code creates a span for every iteration of the for loop. The span is
-created using a [`Tracer`] from the
-[global `TracerProvider`](https://pkg.go.dev/go.opentelemetry.io/otel#GetTracerProvider).
-You will learn more about [`TracerProvider`]s and handle the other side of
-setting up a global [`TracerProvider`] when you install an SDK in a later
-section. For now, as an instrumentation author, all you need to worry about is
-that you are using an appropriately named [`Tracer`] from a [`TracerProvider`]
-when you write `otel.Tracer(name)`.
-
-Next, instrument the `Poll` method.
-
-```go
-// Poll asks a user for input and returns the request.
-func (a *App) Poll(ctx context.Context) (uint, error) {
-	_, span := otel.Tracer(name).Start(ctx, "Poll")
-	defer span.End()
-
-	a.l.Print("What Fibonacci number would you like to know: ")
-
-	var n uint
-	_, err := fmt.Fscanf(a.r, "%d\n", &n)
-
-	// Store n as a string to not overflow an int64.
-	nStr := strconv.FormatUint(uint64(n), 10)
-	span.SetAttributes(attribute.String("request.n", nStr))
-
-	return n, err
-}
-```
-
-Similar to the `Run` method instrumentation, this adds a span to the method to
-track the computation performed. However, it also adds an attribute to annotate
-the span. This annotation is something you can add when you think a user of your
-application will want to see the state or details about the run environment when
-looking at telemetry.
-
-Finally, instrument the `Write` method.
-
-```go
-// Write writes the n-th Fibonacci number back to the user.
-func (a *App) Write(ctx context.Context, n uint) {
-	var span trace.Span
-	ctx, span = otel.Tracer(name).Start(ctx, "Write")
-	defer span.End()
-
-	f, err := func(ctx context.Context) (uint64, error) {
-		_, span := otel.Tracer(name).Start(ctx, "Fibonacci")
-		defer span.End()
-		return Fibonacci(n)
-	}(ctx)
-	if err != nil {
-		a.l.Printf("Fibonacci(%d): %v\n", n, err)
-	} else {
-		a.l.Printf("Fibonacci(%d) = %d\n", n, f)
-	}
-}
-```
-
-This method is instrumented with two spans. One to track the `Write` method
-itself, and another to track the call to the core logic with the `Fibonacci`
-function. Do you see how context is passed through the spans? Do you see how
-this also defines the relationship between spans?
-
-In OpenTelemetry Go the span relationships are defined explicitly with a
-`context.Context`. When a span is created a context is returned alongside the
-span. That context will contain a reference to the created span. If that context
-is used when creating another span the two spans will be related. The original
-span will become the new span's parent, and as a corollary, the new span is said
-to be a child of the original. This hierarchy gives traces structure, structure
-that helps show a computation path through a system. Based on what you
-instrumented above and this understanding of span relationships you should
-expect a trace for each execution of the run loop to look like this.
-
-```text
-Run
-├── Poll
-└── Write
-    └── Fibonacci
-```
-
-A `Run` span will be a parent to both a `Poll` and `Write` span, and the `Write`
-span will be a parent to a `Fibonacci` span.
-
-Now how do you actually see the produced spans? To do this you will need to
-configure and install an SDK.
-
-## SDK Installation
-
-OpenTelemetry is designed to be modular in its implementation of the
-OpenTelemetry API. The OpenTelemetry Go project offers an SDK package,
-[`go.opentelemetry.io/otel/sdk`], that implements this API and adheres to the
-OpenTelemetry specification. To start using this SDK you will first need to
-create an exporter, but before anything can happen we need to install some
-packages. Run the following in the `fib` directory to install the trace STDOUT
-exporter and the SDK.
+Build and run the application with the following command:
 
 ```sh
-go get go.opentelemetry.io/otel/sdk \
-       go.opentelemetry.io/otel/exporters/stdout/stdouttrace
+go run .
 ```
 
-Now add the needed imports to `main.go`.
+Open <http://localhost:8080/rolldice> in your web browser to ensure it is
+working.
+
+## Instrumentation
+
+Create `otel.go` with OpenTelemetry SDK bootstrapping code:
 
 ```go
+package main
+
 import (
 	"context"
-	"io"
-	"log"
-	"os"
-	"os/signal"
+	"errors"
+	"time"
 
 	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/exporters/stdout/stdoutmetric"
 	"go.opentelemetry.io/otel/exporters/stdout/stdouttrace"
+	"go.opentelemetry.io/otel/sdk/metric"
 	"go.opentelemetry.io/otel/sdk/resource"
 	"go.opentelemetry.io/otel/sdk/trace"
-	semconv "go.opentelemetry.io/otel/semconv/v1.17.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.21.0"
 )
-```
 
-### Creating a Console Exporter
+// setupOTelSDK bootstraps the OpenTelemetry pipeline.
+// If it does not return an error, make sure to call shutdown for proper cleanup.
+func setupOTelSDK(ctx context.Context, serviceName, serviceVersion string) (shutdown func(context.Context) error, err error) {
+	var shutdownFuncs []func(context.Context) error
 
-The SDK connects telemetry from the OpenTelemetry API to exporters. Exporters
-are packages that allow telemetry data to be emitted somewhere - either to the
-console (which is what we're doing here), or to a remote system or collector for
-further analysis and/or enrichment. OpenTelemetry supports a variety of
-exporters through its ecosystem including popular open source tools like
-[Jaeger](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/jaeger),
-[Zipkin](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/zipkin), and
-[Prometheus](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/prometheus).
-
-To initialize the console exporter, add the following function to the `main.go`
-file:
-
-```go
-// newExporter returns a console exporter.
-func newExporter(w io.Writer) (trace.SpanExporter, error) {
-	return stdouttrace.New(
-		stdouttrace.WithWriter(w),
-		// Use human-readable output.
-		stdouttrace.WithPrettyPrint(),
-		// Do not print timestamps for the demo.
-		stdouttrace.WithoutTimestamps(),
-	)
-}
-```
-
-This creates a new console exporter with basic options. You will use this
-function later when you configure the SDK to send telemetry data to it, but
-first you need to make sure that data is identifiable.
-
-### Creating a Resource
-
-Telemetry data can be crucial to solving issues with a service. The catch is,
-you need a way to identify what service, or even what service instance, that
-data is coming from. OpenTelemetry uses a [`Resource`] to represent the entity
-producing telemetry. Add the following function to the `main.go` file to create
-an appropriate [`Resource`] for the application.
-
-```go
-// newResource returns a resource describing this application.
-func newResource() *resource.Resource {
-	r, _ := resource.Merge(
-		resource.Default(),
-		resource.NewWithAttributes(
-			semconv.SchemaURL,
-			semconv.ServiceName("fib"),
-			semconv.ServiceVersion("v0.1.0"),
-			attribute.String("environment", "demo"),
-		),
-	)
-	return r
-}
-```
-
-Any information you would like to associate with all telemetry data the SDK
-handles can be added to the returned [`Resource`]. This is done by registering
-the [`Resource`] with the [`TracerProvider`]. Something you can now create!
-
-### Installing a Tracer Provider
-
-You have your application instrumented to produce telemetry data and you have an
-exporter to send that data to the console, but how are they connected? This is
-where the [`TracerProvider`] is used. It is a centralized point where
-instrumentation will get a [`Tracer`] from and funnels the telemetry data from
-these [`Tracer`]s to export pipelines.
-
-The pipelines that receive and ultimately transmit data to exporters are called
-[`SpanProcessor`]s. A [`TracerProvider`] can be configured to have multiple span
-processors, but for this example you will only need to configure only one.
-Update your `main` function in `main.go` with the following.
-
-```go
-func main() {
-	l := log.New(os.Stdout, "", 0)
-
-	// Write telemetry data to a file.
-	f, err := os.Create("traces.txt")
-	if err != nil {
-		l.Fatal(err)
-	}
-	defer f.Close()
-
-	exp, err := newExporter(f)
-	if err != nil {
-		l.Fatal(err)
-	}
-
-	tp := trace.NewTracerProvider(
-		trace.WithBatcher(exp),
-		trace.WithResource(newResource()),
-	)
-	defer func() {
-		if err := tp.Shutdown(context.Background()); err != nil {
-			l.Fatal(err)
+	// shutdown calls cleanup functions registered via shutdownFuncs.
+	// The errors from the calls are joined.
+	// Each registered cleanup will be invoked once.
+	shutdown = func(ctx context.Context) error {
+		var err error
+		for _, fn := range shutdownFuncs {
+			err = errors.Join(err, fn(ctx))
 		}
-	}()
-	otel.SetTracerProvider(tp)
-
-    /* … */
-}
-```
-
-There's a fair amount going on here. First you are creating a console exporter
-that will export to a file. You are then registering the exporter with a new
-[`TracerProvider`]. This is done with a [`BatchSpanProcessor`] when it is passed
-to the [`trace.WithBatcher`] option. Batching data is a good practice and will
-help not overload systems downstream. Finally, with the [`TracerProvider`]
-created, you are deferring a function to flush and stop it, and registering it
-as the global OpenTelemetry [`TracerProvider`].
-
-Do you remember in the previous instrumentation section when we used the global
-[`TracerProvider`] to get a [`Tracer`]? This last step, registering the
-[`TracerProvider`] globally, is what will connect that instrumentation's
-[`Tracer`] with this [`TracerProvider`]. This pattern, using a global
-[`TracerProvider`], is convenient, but not always appropriate.
-[`TracerProvider`]s can be explicitly passed to instrumentation or inferred from
-a context that contains a span. For this simple example using a global provider
-makes sense, but for more complex or distributed codebases these other ways of
-passing [`TracerProvider`]s may make more sense.
-
-## Putting It All Together
-
-You should now have a working application that produces trace telemetry data!
-Give it a try.
-
-```console
-$ go run .
-What Fibonacci number would you like to know:
-42
-Fibonacci(42) = 267914296
-What Fibonacci number would you like to know:
-^C
-goodbye
-```
-
-A new file named `traces.txt` should be created in your working directory. All
-the traces created from running your application should be in there!
-
-## Error handling
-
-At this point, you have a working application and it is producing tracing
-telemetry data. Unfortunately, there is an error in the core functionality of
-the `fib` module.
-
-```console
-$ go run .
-What Fibonacci number would you like to know:
-100
-Fibonacci(100) = 3736710778780434371
-# …
-```
-
-The 100-th Fibonacci number is `354224848179261915075`, not
-`3736710778780434371`! This application is only meant as a demo, but it
-shouldn't return incorrect values. Update the `Fibonacci` function to return an
-error instead of an incorrect value:
-
-```go
-// Fibonacci returns the n-th Fibonacci number. An error is returned if the
-// Fibonacci number cannot be represented as a uint64.
-func Fibonacci(n uint) (uint64, error) {
-	if n <= 1 {
-		return uint64(n), nil
+		shutdownFuncs = nil
+		return err
 	}
 
-	if n > 93 {
-		return 0, fmt.Errorf("unsupported Fibonacci number %d: too large", n)
+	// handleErr calls shutdown for cleanup and makes sure that all errors are returned.
+	handleErr := func(inErr error) {
+		err = errors.Join(inErr, shutdown(ctx))
 	}
 
-	var n2, n1 uint64 = 0, 1
-	for i := uint(2); i < n; i++ {
-		n2, n1 = n1, n1+n2
-	}
-
-	return n2 + n1, nil
-}
-```
-
-Great, you have fixed the code, but it would be ideal to include errors returned
-to a user in the telemetry data. Luckily, spans can be configured to communicate
-such information. Update the `Write` method in `app.go` with the following code.
-
-```go
-// Write writes the n-th Fibonacci number back to the user.
-func (a *App) Write(ctx context.Context, n uint) {
-	var span trace.Span
-	ctx, span = otel.Tracer(name).Start(ctx, "Write")
-	defer span.End()
-
-	f, err := func(ctx context.Context) (uint64, error) {
-		_, span := otel.Tracer(name).Start(ctx, "Fibonacci")
-		defer span.End()
-		f, err := Fibonacci(n)
-		if err != nil {
-			span.RecordError(err)
-			span.SetStatus(codes.Error, err.Error())
-		}
-		return f, err
-	}(ctx)
-    /* … */
-}
-```
-
-With this change any error returned from the `Fibonacci` function will mark that
-span as an error and record an event describing the error.
-
-This is a great start, but it is not the only error returned in from the
-application. If a user makes a request for a non unsigned integer value the
-application will fail. Update the `Poll` method with a similar fix to capture
-this error in the telemetry data.
-
-```go
-// Poll asks a user for input and returns the request.
-func (a *App) Poll(ctx context.Context) (uint, error) {
-	_, span := otel.Tracer(name).Start(ctx, "Poll")
-	defer span.End()
-
-	a.l.Print("What Fibonacci number would you like to know: ")
-
-	var n uint
-	_, err := fmt.Fscanf(a.r, "%d\n", &n)
+	// Setup resource.
+	res, err := newResource(serviceName, serviceVersion)
 	if err != nil {
-		span.RecordError(err)
-		span.SetStatus(codes.Error, err.Error())
-		return 0, err
+		handleErr(err)
+		return
 	}
 
-	// Store n as a string to not overflow an int64.
-	nStr := strconv.FormatUint(uint64(n), 10)
-	span.SetAttributes(attribute.String("request.n", nStr))
+	// Setup trace provider.
+	tracerProvider, err := newTraceProvider(res)
+	if err != nil {
+		handleErr(err)
+		return
+	}
+	shutdownFuncs = append(shutdownFuncs, tracerProvider.Shutdown)
+	otel.SetTracerProvider(tracerProvider)
 
-	return n, nil
+	// Setup meter provider.
+	meterProvider, err := newMeterProvider(res)
+	if err != nil {
+		handleErr(err)
+		return
+	}
+	shutdownFuncs = append(shutdownFuncs, meterProvider.Shutdown)
+	otel.SetMeterProvider(meterProvider)
+
+	return
+}
+
+func newResource(serviceName, serviceVersion string) (*resource.Resource, error) {
+	return resource.Merge(resource.Default(),
+		resource.NewWithAttributes(semconv.SchemaURL,
+			semconv.ServiceName(serviceName),
+			semconv.ServiceVersion(serviceVersion),
+		))
+}
+
+func newTraceProvider(res *resource.Resource) (*trace.TracerProvider, error) {
+	traceExporter, err := stdouttrace.New(
+		stdouttrace.WithPrettyPrint())
+	if err != nil {
+		return nil, err
+	}
+
+	traceProvider := trace.NewTracerProvider(
+		trace.WithBatcher(traceExporter,
+			// Default is 5s. Set to 1s for demonstrative purposes.
+			trace.WithBatchTimeout(time.Second)),
+		trace.WithResource(res),
+	)
+	return traceProvider, nil
+}
+
+func newMeterProvider(res *resource.Resource) (*metric.MeterProvider, error) {
+	metricExporter, err := stdoutmetric.New()
+	if err != nil {
+		return nil, err
+	}
+
+	meterProvider := metric.NewMeterProvider(
+		metric.WithResource(res),
+		metric.WithReader(metric.NewPeriodicReader(metricExporter,
+			// Default is 1m. Set to 3s for demonstrative purposes.
+			metric.WithInterval(3*time.Second))),
+	)
+	return meterProvider, nil
 }
 ```
 
-All that is left is updating imports for the `app.go` file to include the
-[`go.opentelemetry.io/otel/codes`] package.
+Modify `main.go` to include code that sets up OpenTelemetry SDK and instruments
+the HTTP server using the `otelhttp` instrumentation library:
 
 ```go
+package main
+
 import (
 	"context"
-	"fmt"
+	"errors"
+	"log"
+	"net"
+	"net/http"
+	"os"
+	"os/signal"
+	"time"
+
+	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
+)
+
+func main() {
+	if err := run(); err != nil {
+		log.Fatalln(err)
+	}
+}
+
+func run() (err error) {
+	// Handle SIGINT (CTRL+C) gracefully.
+	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt)
+	defer stop()
+
+	// Set up OpenTelemetry.
+	serviceName := "dice"
+	serviceVersion := "0.1.0"
+	otelShutdown, err := setupOTelSDK(ctx, serviceName, serviceVersion)
+	if err != nil {
+		return
+	}
+	// Handle shutdown properly so nothing leaks.
+	defer func() {
+		err = errors.Join(err, otelShutdown(context.Background()))
+	}()
+
+	// Start HTTP server.
+	srv := &http.Server{
+		Addr:         ":8080",
+		BaseContext:  func(_ net.Listener) context.Context { return ctx },
+		ReadTimeout:  time.Second,
+		WriteTimeout: 10 * time.Second,
+		Handler:      newHTTPHandler(),
+	}
+	srvErr := make(chan error, 1)
+	go func() {
+		srvErr <- srv.ListenAndServe()
+	}()
+
+	// Wait for interruption.
+	select {
+	case err = <-srvErr:
+		// Error when starting HTTP server.
+		return
+	case <-ctx.Done():
+		// Wait for first CTRL+C.
+		// Stop receiving signal notifications as soon as possible.
+		stop()
+	}
+
+	// When Shutdown is called, ListenAndServe immediately returns ErrServerClosed.
+	err = srv.Shutdown(context.Background())
+	return
+}
+
+func newHTTPHandler() http.Handler {
+	mux := http.NewServeMux()
+
+	// handleFunc is a replacement for mux.HandleFunc
+	// which enriches the handler's HTTP instrumentation with the pattern as the http.route.
+	handleFunc := func(pattern string, handlerFunc func(http.ResponseWriter, *http.Request)) {
+		// Configure the "http.route" for the HTTP instrumentation.
+		handler := otelhttp.WithRouteTag(pattern, http.HandlerFunc(handlerFunc))
+		mux.Handle(pattern, handler)
+	}
+
+	// Register handlers.
+	handleFunc("/rolldice", rolldice)
+
+	// Add HTTP instrumentation for the whole server.
+	handler := otelhttp.NewHandler(mux, "/")
+	return handler
+}
+```
+
+Build and run the application with the following command:
+
+```sh
+go mod tidy
+go run .
+```
+
+Open <http://localhost:8080/rolldice> in your web browser and reload the page a
+few times. After a while you should see the spans printed in the console, such
+as the following:
+
+<details>
+<summary>View example output</summary>
+
+```json
+{
+  "Name": "/",
+  "SpanContext": {
+    "TraceID": "d897cefa10361c2c182fbb9766b6bd2d",
+    "SpanID": "134984d3851ab7a5",
+    "TraceFlags": "01",
+    "TraceState": "",
+    "Remote": false
+  },
+  "Parent": {
+    "TraceID": "00000000000000000000000000000000",
+    "SpanID": "0000000000000000",
+    "TraceFlags": "00",
+    "TraceState": "",
+    "Remote": false
+  },
+  "SpanKind": 2,
+  "StartTime": "2023-09-25T12:45:13.438800632+02:00",
+  "EndTime": "2023-09-25T12:45:13.438837378+02:00",
+  "Attributes": [
+    {
+      "Key": "http.method",
+      "Value": {
+        "Type": "STRING",
+        "Value": "GET"
+      }
+    },
+    {
+      "Key": "http.scheme",
+      "Value": {
+        "Type": "STRING",
+        "Value": "http"
+      }
+    },
+    {
+      "Key": "http.flavor",
+      "Value": {
+        "Type": "STRING",
+        "Value": "1.1"
+      }
+    },
+    {
+      "Key": "net.host.name",
+      "Value": {
+        "Type": "STRING",
+        "Value": "localhost"
+      }
+    },
+    {
+      "Key": "net.host.port",
+      "Value": {
+        "Type": "INT64",
+        "Value": 8080
+      }
+    },
+    {
+      "Key": "net.sock.peer.addr",
+      "Value": {
+        "Type": "STRING",
+        "Value": "::1"
+      }
+    },
+    {
+      "Key": "net.sock.peer.port",
+      "Value": {
+        "Type": "INT64",
+        "Value": 57974
+      }
+    },
+    {
+      "Key": "http.user_agent",
+      "Value": {
+        "Type": "STRING",
+        "Value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "Key": "http.route",
+      "Value": {
+        "Type": "STRING",
+        "Value": "/rolldice"
+      }
+    },
+    {
+      "Key": "http.wrote_bytes",
+      "Value": {
+        "Type": "INT64",
+        "Value": 2
+      }
+    },
+    {
+      "Key": "http.status_code",
+      "Value": {
+        "Type": "INT64",
+        "Value": 200
+      }
+    }
+  ],
+  "Events": null,
+  "Links": null,
+  "Status": {
+    "Code": "Unset",
+    "Description": ""
+  },
+  "DroppedAttributes": 0,
+  "DroppedEvents": 0,
+  "DroppedLinks": 0,
+  "ChildSpanCount": 0,
+  "Resource": [
+    {
+      "Key": "service.name",
+      "Value": {
+        "Type": "STRING",
+        "Value": "dice"
+      }
+    },
+    {
+      "Key": "service.version",
+      "Value": {
+        "Type": "STRING",
+        "Value": "0.1.0"
+      }
+    },
+    {
+      "Key": "telemetry.sdk.language",
+      "Value": {
+        "Type": "STRING",
+        "Value": "go"
+      }
+    },
+    {
+      "Key": "telemetry.sdk.name",
+      "Value": {
+        "Type": "STRING",
+        "Value": "opentelemetry"
+      }
+    },
+    {
+      "Key": "telemetry.sdk.version",
+      "Value": {
+        "Type": "STRING",
+        "Value": "1.19.0-rc.1"
+      }
+    }
+  ],
+  "InstrumentationLibrary": {
+    "Name": "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp",
+    "Version": "0.44.0",
+    "SchemaURL": ""
+  }
+}
+```
+
+</details>
+
+The generated span tracks the lifetime of a request to the `/rolldice` route.
+
+Send a few more requests to the endpoint, and then either wait for a little bit
+or terminate the app and you'll see metrics in the console output, such as the
+following:
+
+<details>
+<summary>View example output</summary>
+
+```json
+{
+  "Resource": [
+    {
+      "Key": "service.name",
+      "Value": {
+        "Type": "STRING",
+        "Value": "dice"
+      }
+    },
+    {
+      "Key": "service.version",
+      "Value": {
+        "Type": "STRING",
+        "Value": "0.1.0"
+      }
+    },
+    {
+      "Key": "telemetry.sdk.language",
+      "Value": {
+        "Type": "STRING",
+        "Value": "go"
+      }
+    },
+    {
+      "Key": "telemetry.sdk.name",
+      "Value": {
+        "Type": "STRING",
+        "Value": "opentelemetry"
+      }
+    },
+    {
+      "Key": "telemetry.sdk.version",
+      "Value": {
+        "Type": "STRING",
+        "Value": "1.19.0-rc.1"
+      }
+    }
+  ],
+  "ScopeMetrics": [
+    {
+      "Scope": {
+        "Name": "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp",
+        "Version": "0.44.0",
+        "SchemaURL": ""
+      },
+      "Metrics": [
+        {
+          "Name": "http.server.request_content_length",
+          "Description": "",
+          "Unit": "",
+          "Data": {
+            "DataPoints": [
+              {
+                "Attributes": [
+                  {
+                    "Key": "http.flavor",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "1.1"
+                    }
+                  },
+                  {
+                    "Key": "http.method",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "GET"
+                    }
+                  },
+                  {
+                    "Key": "http.route",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "/rolldice"
+                    }
+                  },
+                  {
+                    "Key": "http.scheme",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "http"
+                    }
+                  },
+                  {
+                    "Key": "http.status_code",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 200
+                    }
+                  },
+                  {
+                    "Key": "net.host.name",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "localhost"
+                    }
+                  },
+                  {
+                    "Key": "net.host.port",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 8080
+                    }
+                  }
+                ],
+                "StartTime": "2023-09-25T12:45:08.184171399+02:00",
+                "Time": "2023-09-25T12:46:59.26311043+02:00",
+                "Value": 0
+              }
+            ],
+            "Temporality": "CumulativeTemporality",
+            "IsMonotonic": true
+          }
+        },
+        {
+          "Name": "http.server.response_content_length",
+          "Description": "",
+          "Unit": "",
+          "Data": {
+            "DataPoints": [
+              {
+                "Attributes": [
+                  {
+                    "Key": "http.flavor",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "1.1"
+                    }
+                  },
+                  {
+                    "Key": "http.method",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "GET"
+                    }
+                  },
+                  {
+                    "Key": "http.route",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "/rolldice"
+                    }
+                  },
+                  {
+                    "Key": "http.scheme",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "http"
+                    }
+                  },
+                  {
+                    "Key": "http.status_code",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 200
+                    }
+                  },
+                  {
+                    "Key": "net.host.name",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "localhost"
+                    }
+                  },
+                  {
+                    "Key": "net.host.port",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 8080
+                    }
+                  }
+                ],
+                "StartTime": "2023-09-25T12:45:08.184177091+02:00",
+                "Time": "2023-09-25T12:46:59.26311453+02:00",
+                "Value": 2
+              }
+            ],
+            "Temporality": "CumulativeTemporality",
+            "IsMonotonic": true
+          }
+        },
+        {
+          "Name": "http.server.duration",
+          "Description": "",
+          "Unit": "",
+          "Data": {
+            "DataPoints": [
+              {
+                "Attributes": [
+                  {
+                    "Key": "http.flavor",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "1.1"
+                    }
+                  },
+                  {
+                    "Key": "http.method",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "GET"
+                    }
+                  },
+                  {
+                    "Key": "http.route",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "/rolldice"
+                    }
+                  },
+                  {
+                    "Key": "http.scheme",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "http"
+                    }
+                  },
+                  {
+                    "Key": "http.status_code",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 200
+                    }
+                  },
+                  {
+                    "Key": "net.host.name",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "localhost"
+                    }
+                  },
+                  {
+                    "Key": "net.host.port",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 8080
+                    }
+                  }
+                ],
+                "StartTime": "2023-09-25T12:45:08.184181584+02:00",
+                "Time": "2023-09-25T12:46:59.26311613+02:00",
+                "Count": 1,
+                "Bounds": [
+                  0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000,
+                  7500, 10000
+                ],
+                "BucketCounts": [
+                  0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+                ],
+                "Min": {},
+                "Max": {},
+                "Sum": 0.056117
+              }
+            ],
+            "Temporality": "CumulativeTemporality"
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+</details>
+
+## Custom instrumentation
+
+Instrumentation libraries captures telemetry at the edges of your systems, such
+as inbound and outbound HTTP requests, but it doesn't capture what's going on in
+your application. For that you'll need to write some custom
+[manual instrumentation](../manual/).
+
+Modify `rolldice.go` to include custom instrumentation using OpenTelemetry API:
+
+```go
+package main
+
+import (
 	"io"
 	"log"
+	"math/rand"
+	"net/http"
 	"strconv"
 
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
-	"go.opentelemetry.io/otel/codes"
-	"go.opentelemetry.io/otel/trace"
+	"go.opentelemetry.io/otel/metric"
 )
+
+var (
+	tracer  = otel.Tracer("rolldice")
+	meter   = otel.Meter("rolldice")
+	rollCnt metric.Int64Counter
+)
+
+func init() {
+	var err error
+	rollCnt, err = meter.Int64Counter("dice.rolls",
+		metric.WithDescription("The number of rolls by roll value"),
+		metric.WithUnit("{roll}"))
+	if err != nil {
+		panic(err)
+	}
+}
+
+func rolldice(w http.ResponseWriter, r *http.Request) {
+	ctx, span := tracer.Start(r.Context(), "roll")
+	defer span.End()
+
+	roll := 1 + rand.Intn(6)
+
+	rollValueAttr := attribute.Int("roll.value", roll)
+	span.SetAttributes(rollValueAttr)
+	rollCnt.Add(ctx, 1, metric.WithAttributes(rollValueAttr))
+
+	resp := strconv.Itoa(roll) + "\n"
+	if _, err := io.WriteString(w, resp); err != nil {
+		log.Printf("Write failed: %v\n", err)
+	}
+}
 ```
 
-With these fixes in place and the instrumentation updated, re-trigger the bug.
+Build and run the application with the following command:
 
-```console
-$ go run .
-What Fibonacci number would you like to know:
-100
-Fibonacci(100): unsupported Fibonacci number 100: too large
-What Fibonacci number would you like to know:
-^C
-goodbye
+```sh
+go mod tidy
+go run .
 ```
 
-Excellent! The application no longer returns wrong values, and looking at the
-telemetry data in the `traces.txt` file you should see the error captured as an
-event.
+When you send a request to the server, you'll see two spans in the trace emitted
+to the console, and the one called `roll` registers its parent as the
+automatically created one:
+
+<details>
+<summary>View example output</summary>
 
 ```json
-"Events": [
-	{
-		"Name": "exception",
-		"Attributes": [
-			{
-				"Key": "exception.type",
-				"Value": {
-					"Type": "STRING",
-					"Value": "*errors.errorString"
-				}
-			},
-			{
-				"Key": "exception.message",
-				"Value": {
-					"Type": "STRING",
-					"Value": "unsupported Fibonacci number 100: too large"
-				}
+{
+	"Name": "roll",
+	"SpanContext": {
+		"TraceID": "829fb7ceb787403c96eac3caf285c965",
+		"SpanID": "8b6b408b6c1a35e5",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "829fb7ceb787403c96eac3caf285c965",
+		"SpanID": "612be4bbdf450de6",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "2023-09-25T12:42:06.177119576+02:00",
+	"EndTime": "2023-09-25T12:42:06.177136776+02:00",
+	"Attributes": [
+		{
+			"Key": "roll.value",
+			"Value": {
+				"Type": "INT64",
+				"Value": 6
 			}
-		],
-        ...
-    }
-]
+		}
+	],
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": [
+		{
+			"Key": "service.name",
+			"Value": {
+				"Type": "STRING",
+				"Value": "dice"
+			}
+		},
+		{
+			"Key": "service.version",
+			"Value": {
+				"Type": "STRING",
+				"Value": "0.1.0"
+			}
+		},
+		{
+			"Key": "telemetry.sdk.language",
+			"Value": {
+				"Type": "STRING",
+				"Value": "go"
+			}
+		},
+		{
+			"Key": "telemetry.sdk.name",
+			"Value": {
+				"Type": "STRING",
+				"Value": "opentelemetry"
+			}
+		},
+		{
+			"Key": "telemetry.sdk.version",
+			"Value": {
+				"Type": "STRING",
+				"Value": "1.19.0-rc.1"
+			}
+		}
+	],
+	"InstrumentationLibrary": {
+		"Name": "rolldice",
+		"Version": "",
+		"SchemaURL": ""
+	}
+}
+{
+	"Name": "/",
+	"SpanContext": {
+		"TraceID": "829fb7ceb787403c96eac3caf285c965",
+		"SpanID": "612be4bbdf450de6",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "00000000000000000000000000000000",
+		"SpanID": "0000000000000000",
+		"TraceFlags": "00",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 2,
+	"StartTime": "2023-09-25T12:42:06.177071077+02:00",
+	"EndTime": "2023-09-25T12:42:06.177158076+02:00",
+	"Attributes": [
+		{
+			"Key": "http.method",
+			"Value": {
+				"Type": "STRING",
+				"Value": "GET"
+			}
+		},
+		{
+			"Key": "http.scheme",
+			"Value": {
+				"Type": "STRING",
+				"Value": "http"
+			}
+		},
+		{
+			"Key": "http.flavor",
+			"Value": {
+				"Type": "STRING",
+				"Value": "1.1"
+			}
+		},
+		{
+			"Key": "net.host.name",
+			"Value": {
+				"Type": "STRING",
+				"Value": "localhost"
+			}
+		},
+		{
+			"Key": "net.host.port",
+			"Value": {
+				"Type": "INT64",
+				"Value": 8080
+			}
+		},
+		{
+			"Key": "net.sock.peer.addr",
+			"Value": {
+				"Type": "STRING",
+				"Value": "::1"
+			}
+		},
+		{
+			"Key": "net.sock.peer.port",
+			"Value": {
+				"Type": "INT64",
+				"Value": 49046
+			}
+		},
+		{
+			"Key": "http.user_agent",
+			"Value": {
+				"Type": "STRING",
+				"Value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"
+			}
+		},
+		{
+			"Key": "http.route",
+			"Value": {
+				"Type": "STRING",
+				"Value": "/rolldice"
+			}
+		},
+		{
+			"Key": "http.wrote_bytes",
+			"Value": {
+				"Type": "INT64",
+				"Value": 2
+			}
+		},
+		{
+			"Key": "http.status_code",
+			"Value": {
+				"Type": "INT64",
+				"Value": 200
+			}
+		}
+	],
+	"Events": null,
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 1,
+	"Resource": [
+		{
+			"Key": "service.name",
+			"Value": {
+				"Type": "STRING",
+				"Value": "dice"
+			}
+		},
+		{
+			"Key": "service.version",
+			"Value": {
+				"Type": "STRING",
+				"Value": "0.1.0"
+			}
+		},
+		{
+			"Key": "telemetry.sdk.language",
+			"Value": {
+				"Type": "STRING",
+				"Value": "go"
+			}
+		},
+		{
+			"Key": "telemetry.sdk.name",
+			"Value": {
+				"Type": "STRING",
+				"Value": "opentelemetry"
+			}
+		},
+		{
+			"Key": "telemetry.sdk.version",
+			"Value": {
+				"Type": "STRING",
+				"Value": "1.19.0-rc.1"
+			}
+		}
+	],
+	"InstrumentationLibrary": {
+		"Name": "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp",
+		"Version": "0.44.0",
+		"SchemaURL": ""
+	}
+}
 ```
 
-## What's Next
+</details>
 
-This guide has walked you through adding tracing instrumentation to an
-application and using a console exporter to send telemetry data to a file. There
-are many other topics to cover in OpenTelemetry, but you should be ready to
-start adding OpenTelemetry Go to your projects at this point. Go instrument your
-code!
+The `parent_id` of `roll` is the same is the `span_id` for `/rolldice`,
+indicating a parent-child relationship!
 
-For more information about instrumenting your code and things you can do with
-spans, refer to the [manual instrumentation](/docs/instrumentation/go/manual/)
-documentation.
+Moreover, you'll see the `dice.rolls` metric emitted to the console, with
+separate counts for each roll value:
+
+<details>
+<summary>View example output</summary>
+
+```json
+{
+  "Resource": [
+    {
+      "Key": "service.name",
+      "Value": {
+        "Type": "STRING",
+        "Value": "dice"
+      }
+    },
+    {
+      "Key": "service.version",
+      "Value": {
+        "Type": "STRING",
+        "Value": "0.1.0"
+      }
+    },
+    {
+      "Key": "telemetry.sdk.language",
+      "Value": {
+        "Type": "STRING",
+        "Value": "go"
+      }
+    },
+    {
+      "Key": "telemetry.sdk.name",
+      "Value": {
+        "Type": "STRING",
+        "Value": "opentelemetry"
+      }
+    },
+    {
+      "Key": "telemetry.sdk.version",
+      "Value": {
+        "Type": "STRING",
+        "Value": "1.19.0-rc.1"
+      }
+    }
+  ],
+  "ScopeMetrics": [
+    {
+      "Scope": {
+        "Name": "rolldice",
+        "Version": "",
+        "SchemaURL": ""
+      },
+      "Metrics": [
+        {
+          "Name": "dice.rolls",
+          "Description": "The number of rolls by roll value",
+          "Unit": "{roll}",
+          "Data": {
+            "DataPoints": [
+              {
+                "Attributes": [
+                  {
+                    "Key": "roll.value",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 1
+                    }
+                  }
+                ],
+                "StartTime": "2023-09-25T12:42:04.279204638+02:00",
+                "Time": "2023-09-25T12:42:15.482694258+02:00",
+                "Value": 4
+              },
+              {
+                "Attributes": [
+                  {
+                    "Key": "roll.value",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 5
+                    }
+                  }
+                ],
+                "StartTime": "2023-09-25T12:42:04.279204638+02:00",
+                "Time": "2023-09-25T12:42:15.482694258+02:00",
+                "Value": 3
+              },
+              {
+                "Attributes": [
+                  {
+                    "Key": "roll.value",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 3
+                    }
+                  }
+                ],
+                "StartTime": "2023-09-25T12:42:04.279204638+02:00",
+                "Time": "2023-09-25T12:42:15.482694258+02:00",
+                "Value": 4
+              },
+              {
+                "Attributes": [
+                  {
+                    "Key": "roll.value",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 2
+                    }
+                  }
+                ],
+                "StartTime": "2023-09-25T12:42:04.279204638+02:00",
+                "Time": "2023-09-25T12:42:15.482694258+02:00",
+                "Value": 2
+              },
+              {
+                "Attributes": [
+                  {
+                    "Key": "roll.value",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 6
+                    }
+                  }
+                ],
+                "StartTime": "2023-09-25T12:42:04.279204638+02:00",
+                "Time": "2023-09-25T12:42:15.482694258+02:00",
+                "Value": 5
+              },
+              {
+                "Attributes": [
+                  {
+                    "Key": "roll.value",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 4
+                    }
+                  }
+                ],
+                "StartTime": "2023-09-25T12:42:04.279204638+02:00",
+                "Time": "2023-09-25T12:42:15.482694258+02:00",
+                "Value": 9
+              }
+            ],
+            "Temporality": "CumulativeTemporality",
+            "IsMonotonic": true
+          }
+        }
+      ]
+    },
+    {
+      "Scope": {
+        "Name": "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp",
+        "Version": "0.44.0",
+        "SchemaURL": ""
+      },
+      "Metrics": [
+        {
+          "Name": "http.server.request_content_length",
+          "Description": "",
+          "Unit": "",
+          "Data": {
+            "DataPoints": [
+              {
+                "Attributes": [
+                  {
+                    "Key": "http.flavor",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "1.1"
+                    }
+                  },
+                  {
+                    "Key": "http.method",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "GET"
+                    }
+                  },
+                  {
+                    "Key": "http.route",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "/rolldice"
+                    }
+                  },
+                  {
+                    "Key": "http.scheme",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "http"
+                    }
+                  },
+                  {
+                    "Key": "http.status_code",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 200
+                    }
+                  },
+                  {
+                    "Key": "net.host.name",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "localhost"
+                    }
+                  },
+                  {
+                    "Key": "net.host.port",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 8080
+                    }
+                  }
+                ],
+                "StartTime": "2023-09-25T12:42:04.279212238+02:00",
+                "Time": "2023-09-25T12:42:15.482695758+02:00",
+                "Value": 0
+              }
+            ],
+            "Temporality": "CumulativeTemporality",
+            "IsMonotonic": true
+          }
+        },
+        {
+          "Name": "http.server.response_content_length",
+          "Description": "",
+          "Unit": "",
+          "Data": {
+            "DataPoints": [
+              {
+                "Attributes": [
+                  {
+                    "Key": "http.flavor",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "1.1"
+                    }
+                  },
+                  {
+                    "Key": "http.method",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "GET"
+                    }
+                  },
+                  {
+                    "Key": "http.route",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "/rolldice"
+                    }
+                  },
+                  {
+                    "Key": "http.scheme",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "http"
+                    }
+                  },
+                  {
+                    "Key": "http.status_code",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 200
+                    }
+                  },
+                  {
+                    "Key": "net.host.name",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "localhost"
+                    }
+                  },
+                  {
+                    "Key": "net.host.port",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 8080
+                    }
+                  }
+                ],
+                "StartTime": "2023-09-25T12:42:04.279214438+02:00",
+                "Time": "2023-09-25T12:42:15.482696158+02:00",
+                "Value": 54
+              }
+            ],
+            "Temporality": "CumulativeTemporality",
+            "IsMonotonic": true
+          }
+        },
+        {
+          "Name": "http.server.duration",
+          "Description": "",
+          "Unit": "",
+          "Data": {
+            "DataPoints": [
+              {
+                "Attributes": [
+                  {
+                    "Key": "http.flavor",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "1.1"
+                    }
+                  },
+                  {
+                    "Key": "http.method",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "GET"
+                    }
+                  },
+                  {
+                    "Key": "http.route",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "/rolldice"
+                    }
+                  },
+                  {
+                    "Key": "http.scheme",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "http"
+                    }
+                  },
+                  {
+                    "Key": "http.status_code",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 200
+                    }
+                  },
+                  {
+                    "Key": "net.host.name",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "localhost"
+                    }
+                  },
+                  {
+                    "Key": "net.host.port",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 8080
+                    }
+                  }
+                ],
+                "StartTime": "2023-09-25T12:42:04.279219438+02:00",
+                "Time": "2023-09-25T12:42:15.482697158+02:00",
+                "Count": 27,
+                "Bounds": [
+                  0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000,
+                  7500, 10000
+                ],
+                "BucketCounts": [
+                  0, 27, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+                ],
+                "Min": {},
+                "Max": {},
+                "Sum": 2.1752759999999993
+              }
+            ],
+            "Temporality": "CumulativeTemporality"
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+</details>
+
+## Next steps
+
+For more information about instrumenting your code, refer to the
+[manual instrumentation](/docs/instrumentation/go/manual/) documentation.
 
 You'll also want to configure an appropriate exporter to
 [export your telemetry data](/docs/instrumentation/go/exporters/) to one or more
@@ -687,19 +1433,5 @@ If you'd like to explore a more complex example, take a look at the
 [Product Catalog Service](/docs/demo/services/product-catalog/) and
 [Accounting Service](/docs/demo/services/accounting/)
 
-[`go.opentelemetry.io/otel/trace`]:
-  https://pkg.go.dev/go.opentelemetry.io/otel/trace
-[`go.opentelemetry.io/otel/sdk`]:
-  https://pkg.go.dev/go.opentelemetry.io/otel/sdk
-[`go.opentelemetry.io/otel/codes`]:
-  https://pkg.go.dev/go.opentelemetry.io/otel/codes
-[`tracer`]: https://pkg.go.dev/go.opentelemetry.io/otel/trace#Tracer
-[`tracerprovider`]:
-  https://pkg.go.dev/go.opentelemetry.io/otel/trace#TracerProvider
-[`resource`]: https://pkg.go.dev/go.opentelemetry.io/otel/sdk/resource#Resource
-[`spanprocessor`]:
-  https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#SpanProcessor
-[`batchspanprocessor`]:
-  https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#NewBatchSpanProcessor
-[`trace.withbatcher`]:
-  https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#WithBatcher
+[traces]: /docs/concepts/signals/traces/
+[metrics]: /docs/concepts/signals/metrics/
