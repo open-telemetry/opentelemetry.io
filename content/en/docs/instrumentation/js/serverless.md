@@ -1,6 +1,7 @@
 ---
 title: Serverless
 weight: 100
+description: Instrument your serverless functions with OpenTelemetry JavaScript
 cSpell:ignore: otelwrapper
 ---
 
@@ -9,8 +10,15 @@ OpenTelemetry instrumentation libraries.
 
 ## AWS Lambda
 
+{{% alert title="Note" color="info" %}}
+
+You can also automatically instrument your AWS Lambda functions by using the
+[community provided Lambda layers](/docs/faas/lambda-auto-instrument/).
+
+{{% /alert %}}
+
 The following show how to use Lambda wrappers with OpenTelemetry to instrument
-AWS Lambda functions and send traces to a configured backend.
+AWS Lambda functions manually and send traces to a configured backend.
 
 If you are interested in a plug and play user experience, see
 [OpenTelemetry Lambda Layers](https://github.com/open-telemetry/opentelemetry-lambda).
