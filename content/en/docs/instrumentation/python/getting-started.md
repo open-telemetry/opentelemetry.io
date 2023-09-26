@@ -57,9 +57,9 @@ app = Flask(__name__)
 
 @app.route("/rolldice")
 def roll_dice():
-    return str(do_roll())
+    return str(roll())
 
-def do_roll():
+def roll():
     return randint(1, 6)
 ```
 
@@ -283,11 +283,11 @@ app = Flask(__name__)
 
 @app.route("/rolldice")
 def roll_dice():
-    return str(do_roll())
+    return str(roll())
 
-def do_roll():
+def roll():
     # This creates a new span that's the child of the current one
-    with tracer.start_as_current_span("do_roll") as rollspan:
+    with tracer.start_as_current_span("roll") as rollspan:
         res = randint(1, 6)
         rollspan.set_attribute("roll.value", res)
         return res
@@ -303,7 +303,7 @@ opentelemetry-instrument \
 ```
 
 When you send a request to the server, you'll see two spans in the trace emitted
-to the console, and the one called `do_roll` registers its parent as the
+to the console, and the one called `roll` registers its parent as the
 automatically created one:
 
 <details>
@@ -311,7 +311,7 @@ automatically created one:
 
 ```json
 {
-    "name": "do_roll",
+    "name": "roll",
     "context": {
         "trace_id": "0x48da59d77e13beadd1a961dc8fcaa74e",
         "span_id": "0x40c38b50bc8da6b7",
@@ -385,7 +385,7 @@ automatically created one:
 
 </details>
 
-The `parent_id` of `do_roll` is the same is the `span_id` for `/rolldice`,
+The `parent_id` of `roll` is the same is the `span_id` for `/rolldice`,
 indicating a parent-child relationship!
 
 ### Metrics
@@ -408,7 +408,7 @@ meter = metrics.get_meter("diceroller.meter")
 
 # Now create a counter instrument to make measurements with
 roll_counter = meter.create_counter(
-    "roll_counter",
+    "dice.rolls",
     description="The number of rolls by roll value",
 )
 
@@ -416,10 +416,10 @@ app = Flask(__name__)
 
 @app.route("/rolldice")
 def roll_dice():
-    return str(do_roll())
+    return str(roll())
 
-def do_roll():
-    with tracer.start_as_current_span("do_roll") as rollspan:
+def roll():
+    with tracer.start_as_current_span("roll") as rollspan:
         res = randint(1, 6)
         rollspan.set_attribute("roll.value", res)
         # This adds 1 to the counter for the given roll value
@@ -465,7 +465,7 @@ emitted to the console, with separate counts for each roll value:
           },
           "metrics": [
             {
-              "name": "roll_counter",
+              "name": "dice.rolls",
               "description": "The number of rolls by roll value",
               "unit": "",
               "data": {
@@ -627,7 +627,7 @@ Span #0
     Trace ID       : 7d4047189ac3d5f96d590f974bbec20a
     Parent ID      : 0b21630539446c31
     ID             : 4d18cee9463a79ba
-    Name           : do_roll
+    Name           : roll
     Kind           : SPAN_KIND_INTERNAL
     Start time     : 2022-06-09 20:43:37.390134089 +0000 UTC
     End time       : 2022-06-09 20:43:37.390327687 +0000 UTC
