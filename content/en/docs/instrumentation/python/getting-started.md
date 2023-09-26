@@ -2,7 +2,7 @@
 title: Getting Started
 description: Get telemetry for your app in less than 5 minutes!
 # prettier-ignore
-cSpell:ignore: diceroller distro debugexporter loglevel randint rolldice rollspan venv
+cSpell:ignore: debugexporter diceroller distro loglevel randint rolldice rollspan venv
 weight: 10
 ---
 

@@ -2,7 +2,7 @@
 title: OpenTelemetry Collector Chart
 linkTitle: Collector Chart
 # prettier-ignore
-cSpell:ignore: filelog filelogreceiver filelogreceiver hostmetricsreceiver kubelet kubeletstats kubeletstatsreceiver debugexporter otlphttp sattributesprocessor sclusterreceiver sobjectsreceiver statefulset
+cSpell:ignore: debugexporter filelog filelogreceiver filelogreceiver hostmetricsreceiver kubelet kubeletstats kubeletstatsreceiver otlphttp sattributesprocessor sclusterreceiver sobjectsreceiver statefulset
 ---
 
 ## Introduction
