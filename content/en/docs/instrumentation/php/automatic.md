@@ -3,8 +3,7 @@ title: Automatic Instrumentation
 linkTitle: Automatic
 weight: 20
 # prettier-ignore
-cSpell:ignore: configurator democlass myapp packagist pecl phar unindented userland
-cSpell:ignore: centos epel remi
+cSpell:ignore: centos configurator democlass epel myapp packagist pecl phar remi unindented userland
 ---
 
 Automatic instrumentation with PHP requires at least PHP 8.0, and the
@@ -87,7 +86,8 @@ for some Linux package managers.
 
 RPM and APK packages are provided by the following:
 
-- [Remi repository](https://blog.remirepo.net/pages/PECL-extensions-RPM-status) - RPM
+- [Remi repository](https://blog.remirepo.net/pages/PECL-extensions-RPM-status) -
+  RPM
 - [Alpine linux](https://pkgs.alpinelinux.org/packages?name=*pecl-opentelemetry) -
   APK (currently in the
   [_testing_ branch](https://wiki.alpinelinux.org/wiki/Repositories#Testing))
