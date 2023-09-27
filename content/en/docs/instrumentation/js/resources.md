@@ -2,6 +2,7 @@
 title: Resources
 weight: 70
 cSpell:ignore: myhost SIGINT uuidgen WORKDIR
+description: Add details about your applications' environment to your telemetry
 ---
 
 A [resource][] represents the entity producing telemetry as resource attributes.
@@ -114,8 +115,12 @@ const sdk = new opentelemetry.NodeSDK({
 ...
 ```
 
-**Note**: If you set your resource attributes via environment variable and code,
-the values set via the environment variable take precedence.
+{{% alert title="Note" class="info" %}}
+
+If you set your resource attributes via environment variable and code, the
+values set via the environment variable take precedence.
+
+{{% /alert %}}
 
 ## Container Resource Detection
 

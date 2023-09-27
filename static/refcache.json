@@ -2871,6 +2871,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:35:23.378554-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-js#supported-runtimes": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-21T09:40:56.039903+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-js-contrib": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:46:07.079949-04:00"
