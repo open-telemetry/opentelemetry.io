@@ -9,7 +9,7 @@ in general you should make a decision at the start of a trace, and allow the
 sampling decision to propagate to other services.
 
 A [`Sampler`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#Sampler) can
-to be set on the tracer provider when register it using the
+be set on the tracer provider using the
 [`WithSampler`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#WithSampler)
 option, as follows:
 
