@@ -39,7 +39,7 @@ without the user's input or configuration.
 
 Semantic conventions are always evolving and new ones are constantly added. If
 some don't exist for your library, then please consider [adding them]
-(https://github.com/open-telemetry/semantic-conventions/issues. Pay special
+(https://github.com/open-telemetry/semantic-conventions/issues). Pay special
 attention to span names; strive to use meaningful names and consider cardinality
 when defining them.
 
