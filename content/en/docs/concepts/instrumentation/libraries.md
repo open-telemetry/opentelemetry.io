@@ -101,9 +101,9 @@ contain PII (Personally Identifiable Information). As a general guideline, do
 are:
 
 - Provide opt-in features to collect potentially PII for users who need it
-- Collect it but with a configuration option to obfuscate / redact the PII, if
+- Collect it but obfuscate / redact the PII, if
   you’re confident about being able to implement the obfuscation / redaction
-  effectively and with little overhead
+  effectively, non-reversible and with little overhead
 
 PII is data like email addresses, passwords, usernames, custom data in database
 queries, etc. For example, this is a Elasticsearch query with PII redacted that
