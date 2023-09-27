@@ -179,6 +179,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T13:40:18.37311-04:00"
   },
+  "https://blog.remirepo.net/pages/PECL-extensions-RPM-status": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-27T06:45:35.961013628Z"
+  },
   "https://brew.sh/": {
     "StatusCode": 206,
     "LastSeen": "2023-09-06T18:09:47.863432+02:00"
@@ -4419,6 +4423,22 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:44:54.85629-04:00"
   },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-27T11:12:33.788950402Z"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-27T11:12:33.662712825Z"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-27T11:12:33.534988445Z"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-27T11:12:33.40195469Z"
+  },
   "https://pkg.go.dev/go.opentelemetry.io/otel/exporters/prometheus": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:45:05.539864-04:00"
@@ -4426,6 +4446,10 @@
   "https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdoutmetric": {
     "StatusCode": 200,
     "LastSeen": "2023-09-11T14:33:25.954024386Z"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdouttrace": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-27T11:12:33.278510097Z"
   },
   "https://pkg.go.dev/go.opentelemetry.io/otel/exporters/zipkin": {
     "StatusCode": 200,
@@ -5002,6 +5026,10 @@
   "https://wicg.github.io/ua-client-hints/#sec-ch-ua-platform": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T08:39:11.081756-04:00"
+  },
+  "https://wiki.alpinelinux.org/wiki/Repositories#Testing": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-27T06:45:36.696402804Z"
   },
   "https://wiki.python.org/moin/PythonImplementations": {
     "StatusCode": 200,
