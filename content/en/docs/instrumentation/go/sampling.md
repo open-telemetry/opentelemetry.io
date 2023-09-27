@@ -22,9 +22,10 @@ provider := trace.NewTracerProvider(
 [`AlwaysSample`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#AlwaysSample)
 and
 [`NeverSample`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#NeverSample)
-are fairly self-explanatory. Always means that every trace will be sampled, the
-converse holds as true for Never. When you're getting started, or in a
-development environment, you'll almost always want to use `AlwaysSample`.
+are self-explanatory values. `AlwaysSample` means that every trace is
+sampled, while `NeverSample` means that no trace is sampled. When
+you're getting started, or in a development environment, use
+`AlwaysSample`.
 
 Other samplers include:
 
