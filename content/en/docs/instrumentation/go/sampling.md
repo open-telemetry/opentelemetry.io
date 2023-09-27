@@ -38,7 +38,7 @@ Other samplers include:
   whose parents were not sampled.
 
 By default, the tracer provider uses a `ParentBased` sampler with the
-`AlwaysSample`.
+`AlwaysSample` sampler.
 
 When you're in production, you should consider using the `ParentBased` sampler
 with the `TraceIDRatioBased` sampler.
