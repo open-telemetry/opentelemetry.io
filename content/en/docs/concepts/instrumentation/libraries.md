@@ -100,7 +100,6 @@ contain PII (Personally Identifiable Information). As a general guideline, do
 **not** collect this data by default. A few other options for handling this data
 are:
 
-- Don't collect it at all
 - Provide opt-in features to collect potentially PII for users who need it
 - Collect it but with a configuration option to obfuscate / redact the PII, if
   you’re confident about being able to implement the obfuscation / redaction
