@@ -22,10 +22,9 @@ provider := trace.NewTracerProvider(
 [`AlwaysSample`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#AlwaysSample)
 and
 [`NeverSample`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#NeverSample)
-are self-explanatory values. `AlwaysSample` means that every trace is
-sampled, while `NeverSample` means that no trace is sampled. When
-you're getting started, or in a development environment, use
-`AlwaysSample`.
+are self-explanatory values. `AlwaysSample` means that every trace is sampled,
+while `NeverSample` means that no trace is sampled. When you're getting started,
+or in a development environment, use `AlwaysSample`.
 
 Other samplers include:
 
@@ -33,12 +32,12 @@ Other samplers include:
   which samples a fraction of traces, based on the fraction given to the
   sampler. If you set .5, half of all the traces are sampled.
 - [`ParentBased`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#ParentBased),
-  which behaves differently based on the incoming sampling decision. `ParentBased`
-  samples spans that have parents that were sampled, and doesn't sample spans
-  whose parents were not sampled.
+  which behaves differently based on the incoming sampling decision.
+  `ParentBased` samples spans that have parents that were sampled, and doesn't
+  sample spans whose parents were not sampled.
 
 By default, the tracer provider uses a `ParentBased` sampler with the
 `AlwaysSample` sampler.
 
-When in a production environment, consider using the `ParentBased` sampler
-with the `TraceIDRatioBased` sampler.
+When in a production environment, consider using the `ParentBased` sampler with
+the `TraceIDRatioBased` sampler.
