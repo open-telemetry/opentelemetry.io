@@ -95,11 +95,12 @@ RPM and APK packages are provided by the following:
 {{< tabpane text=true >}} {{% tab "RPM" %}}
 
 ```sh
-#this example is for CentOS 7
+#this example is for CentOS 7. The PHP version can be changed by
+#enabling remi-<version>, eg "yum config-manager --enable remi-php83"
 yum update -y
 yum install -y epel-release yum-utils
 yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm
-yum-config-manager --enable remi-php82
+yum-config-manager --enable remi-php81
 yum install -y php php-pecl-opentelemetry
 
 php --ri opentelemetry
@@ -108,6 +109,9 @@ php --ri opentelemetry
 {{% /tab %}} {{% tab "APK" %}}
 
 ```sh
+#At the time of writing, PHP 8.1 was the default PHP version. You may need to
+#change "php81" if the default changes. You can alternatively choose a PHP
+#version with "apk add php<version>", eg "apk add php83".
 echo "@testing https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
 apk add php php81-pecl-opentelemetry@testing
 php --ri opentelemetry
