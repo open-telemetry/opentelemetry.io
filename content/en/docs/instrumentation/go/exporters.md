@@ -19,8 +19,8 @@ Here's how you can create an exporter with default configuration:
 
 ```go
 import (
-  	"go.opentelemetry.io/otel/exporters/stdout/stdouttrace"
-    "go.opentelemetry.io/otel/sdk/trace"
+	"go.opentelemetry.io/otel/exporters/stdout/stdouttrace"
+	"go.opentelemetry.io/otel/sdk/trace"
 )
 
 func newExporter() (trace.SpanExporter, error) {
@@ -37,8 +37,8 @@ Here's how you can create an exporter with default configuration:
 
 ```go
 import (
-  	"go.opentelemetry.io/otel/exporters/stdout/stdoutmetric"
-    "go.opentelemetry.io/otel/sdk/metric"
+	"go.opentelemetry.io/otel/exporters/stdout/stdoutmetric"
+	"go.opentelemetry.io/otel/sdk/metric"
 )
 
 func newExporter() (metric.Exporter, error) {
@@ -65,9 +65,9 @@ Here's how you can create an exporter with default configuration:
 
 ```go
 import (
-  	"go.opentelemetry.io/otel/exporters/otlp/otlptrace"
-  	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp"
-    "go.opentelemetry.io/otel/sdk/trace"
+	"go.opentelemetry.io/otel/exporters/otlp/otlptrace"
+	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp"
+	"go.opentelemetry.io/otel/sdk/trace"
 )
 
 func newExporter(ctx context.Context) (trace.SpanExporter, error) {
@@ -85,9 +85,9 @@ Here's how you can create an exporter with default configuration:
 
 ```go
 import (
-  	"go.opentelemetry.io/otel/exporters/otlp/otlptrace"
-  	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"
-    "go.opentelemetry.io/otel/sdk/trace"
+	"go.opentelemetry.io/otel/exporters/otlp/otlptrace"
+	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"
+	"go.opentelemetry.io/otel/sdk/trace"
 )
 
 func newExporter(ctx context.Context) (trace.SpanExporter, error) {
@@ -121,8 +121,8 @@ Here's how you can create an exporter with default configuration:
 
 ```go
 import (
-  	"go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp"
-    "go.opentelemetry.io/otel/sdk/metric"
+	"go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp"
+	"go.opentelemetry.io/otel/sdk/metric"
 )
 
 func newExporter(ctx context.Context) (metric.Exporter, error) {
@@ -139,8 +139,8 @@ Here's how you can create an exporter with default configuration:
 
 ```go
 import (
-  	"go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc"
-    "go.opentelemetry.io/otel/sdk/trace"
+	"go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc"
+	"go.opentelemetry.io/otel/sdk/trace"
 )
 
 func newExporter(ctx context.Context) (metric.Exporter, error) {
@@ -158,16 +158,15 @@ default configuration:
 
 ```go
 import (
-  	"go.opentelemetry.io/otel/exporters/otlp/otlptrace"
-  	"go.opentelemetry.io/otel/exporters/prometheus"
-    "go.opentelemetry.io/otel/sdk/metric"
+	"go.opentelemetry.io/otel/exporters/otlp/otlptrace"
+	"go.opentelemetry.io/otel/exporters/prometheus"
+	"go.opentelemetry.io/otel/sdk/metric"
 )
 
 func newExporter(ctx context.Context) (metric.Reader, error) {
-	client := otlptracegrpc.NewClient()
-  // prometheus.DefaultRegisterer is used by default
-  // so that metrics are available via promhttp.Handler.
-	return prometheus.New(ctx, client)
+	// prometheus.DefaultRegisterer is used by default
+	// so that metrics are available via promhttp.Handler.
+	return prometheus.New()
 }
 ```
 
