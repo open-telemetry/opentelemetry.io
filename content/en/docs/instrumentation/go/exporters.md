@@ -13,7 +13,7 @@ cSpell:ignore: otlpmetric otlpmetricgrpc otlpmetrichttp otlptrace otlptracegrpc 
 ### Console traces
 
 [`go.opentelemetry.io/otel/exporters/stdout/stdouttrace`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdouttrace)
-contains an implementation of console trace exporter.
+contains an implementation of the console trace exporter.
 
 Here's how you can create an exporter with default configuration:
 
@@ -31,7 +31,7 @@ func newExporter() (trace.SpanExporter, error) {
 ### Console metrics (Experimental)
 
 [`go.opentelemetry.io/otel/exporters/stdout/stdoutmetric`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdoutmetric)
-contains an implementation of console metrics exporter.
+contains an implementation of the console metrics exporter.
 
 Here's how you can create an exporter with default configuration:
 
@@ -52,13 +52,13 @@ To send trace data to an OTLP endpoint (like the [collector](/docs/collector) or
 Jaeger >= v1.35.0) you'll want to configure an OTLP exporter that sends to your
 endpoint.
 
-To learn more on how to use the OTLP HTTP exporter, try out the
+To learn more on how to use the OTLP HTTP exporter, try the
 [otel-collector example](https://github.com/open-telemetry/opentelemetry-go/tree/main/example/otel-collector)
 
 ### OTLP traces over HTTP
 
 [`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp)
-contains an implementation of OTLP trace exporter using HTTP with binary
+contains an implementation of the OTLP trace exporter using HTTP with binary
 protobuf payloads.
 
 Here's how you can create an exporter with default configuration:
@@ -171,10 +171,10 @@ func newExporter(ctx context.Context) (metric.Reader, error) {
 }
 ```
 
-To learn more on how to use the Prometheus exporter, try out the
+To learn more on how to use the Prometheus exporter, try the
 [prometheus example](https://github.com/open-telemetry/opentelemetry-go/tree/main/example/prometheus)
 
 ## Available packages
 
-A full list of exporters available can be found in the
+You can find a full list of available exporters in the
 [OpenTelemetry registry](/ecosystem/registry/?language=go&component=exporter).
