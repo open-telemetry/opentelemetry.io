@@ -57,8 +57,8 @@ To learn more on how to use the OTLP HTTP exporter, try out the
 ### OTLP traces over HTTP
 
 [`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp)
-contains an implementation of OTLP trace exporter using HTTP with binary protobuf
-payloads.
+contains an implementation of OTLP trace exporter using HTTP with binary
+protobuf payloads.
 
 Here's how you can create an exporter with default configuration:
 
@@ -114,8 +114,8 @@ docker run -d --name jaeger \
 ### OTLP metrics over HTTP (Experimental)
 
 [`go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp)
-contains an implementation of OTLP metrics exporter using HTTP with binary protobuf
-payloads.
+contains an implementation of OTLP metrics exporter using HTTP with binary
+protobuf payloads.
 
 Here's how you can create an exporter with default configuration:
 
