@@ -30,12 +30,12 @@ you're getting started, or in a development environment, use
 Other samplers include:
 
 - [`TraceIDRatioBased`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#TraceIDRatioBased),
-  which will sample a fraction of traces, based on the fraction given to the
-  sampler. Thus, if you set this to .5, half of traces will be sampled.
+  which samples a fraction of traces, based on the fraction given to the
+  sampler. If you set .5, half of all the traces are sampled.
 - [`ParentBased`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#ParentBased),
-  which behaves differently based on the incoming sampling decision. In general,
-  this will sample spans that have parents that were sampled, and will not
-  sample spans whose parents were _not_ sampled.
+  which behaves differently based on the incoming sampling decision. `ParentBased`
+  samples spans that have parents that were sampled, and doesn't sample spans
+  whose parents were not sampled.
 
 By default, the tracer provider uses a `ParentBased` sampler with the
 `AlwaysSample`.
