@@ -17,10 +17,10 @@ track inbound and outbound requests once you configure it in your code.
 ## Setup
 
 Each instrumentation library is a package. In general, this means you need to
-`go get` the appropriate package. For example, for the instrumentation libraries
+`go get` the appropriate package. For example, to get the instrumentation libraries
 maintained in the
 [Contrib repository](https://github.com/open-telemetry/opentelemetry-go-contrib)
-this means:
+run the following:
 
 ```sh
 go get go.opentelemetry.io/contrib/instrumentation/{import-path}/otel{package-name}
@@ -29,7 +29,7 @@ go get go.opentelemetry.io/contrib/instrumentation/{import-path}/otel{package-na
 Then configure it in your code based on what the library requires to be
 activated.
 
-[Getting Started](../manual/) provides an example, how you can set up
+[Getting Started](../manual/) provides an example showing how to set up
 instrumentation for a `net/http` server.
 
 ## Available packages
