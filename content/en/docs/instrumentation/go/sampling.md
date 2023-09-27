@@ -40,5 +40,5 @@ Other samplers include:
 By default, the tracer provider uses a `ParentBased` sampler with the
 `AlwaysSample` sampler.
 
-When you're in production, you should consider using the `ParentBased` sampler
+When in a production environment, consider using the `ParentBased` sampler
 with the `TraceIDRatioBased` sampler.
