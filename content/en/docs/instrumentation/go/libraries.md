@@ -18,7 +18,8 @@ track inbound and outbound requests once you configure it in your code.
 
 Each instrumentation library is a package. In general, this means you need to
 `go get` the appropriate package. For example, for the instrumentation libraires
-maintained in the [Contrib repository](https://github.com/open-telemetry/opentelemetry-go-contrib)
+maintained in the
+[Contrib repository](https://github.com/open-telemetry/opentelemetry-go-contrib)
 this means:
 
 ```sh
