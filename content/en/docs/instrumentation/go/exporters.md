@@ -10,6 +10,9 @@ cSpell:ignore: otlpmetric otlpmetricgrpc otlpmetrichttp otlptrace otlptracegrpc 
 
 ## Console
 
+The console exporter is useful for development and debugging tasks, and is the
+simplest to set up.
+
 ### Console traces
 
 [`go.opentelemetry.io/otel/exporters/stdout/stdouttrace`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdouttrace)
@@ -145,6 +148,9 @@ func newExporter(ctx context.Context) (metric.Exporter, error) {
 ```
 
 ## Prometheus (Experimental)
+
+A Prometheus exporter is used to report metrics via Prometheus scrape HTTP
+endpoint.
 
 [`go.opentelemetry.io/otel/exporters/prometheus`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/prometheus)
 contains an implementation of Prometheus metrics exporter.
