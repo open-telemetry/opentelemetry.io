@@ -3,7 +3,8 @@ registryType: instrumentation
 isThirdParty: false
 language: dotnet
 tags:
-  - eventcounters
+  - event
+  - counters
   - instrumentation
   - dotnet
 repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.EventCounters

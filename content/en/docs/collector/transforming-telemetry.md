@@ -9,7 +9,7 @@ The OpenTelemetry Collector is a convenient place to transform data before
 sending it to a vendor or other systems. This is frequently done for data
 quality, governance, cost, and security reasons.
 
-Processors available from the the
+Processors available from the
 [Collector Contrib repository](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor)
 support dozens of different transformations on metric, span and log data. The
 following sections provide some basic examples on getting started with a few

@@ -8,7 +8,7 @@ cpp:
   status:
     traces: stable
     metrics: stable
-    logs: experimental
+    logs: stable
 dotnet:
   name: .NET
   status:
@@ -36,9 +36,9 @@ java:
 php:
   name: PHP
   status:
-    traces: beta
-    metrics: beta
-    logs: alpha
+    traces: release candidate
+    metrics: release candidate
+    logs: release candidate
 python:
   name: Python
   status:

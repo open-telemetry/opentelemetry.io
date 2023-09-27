@@ -1,3 +1,4 @@
+# cSpell:ignore scikit sklearn
 title: OpenTelemetry Scikit-Learn Instrumentation
 registryType: instrumentation
 isThirdParty: false

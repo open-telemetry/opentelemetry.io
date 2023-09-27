@@ -1,3 +1,4 @@
+# cSpell:ignore fastify
 title: Fastify OpenTelemetry
 registryType: instrumentation
 isThirdParty: true

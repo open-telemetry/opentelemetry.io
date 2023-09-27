@@ -15,8 +15,8 @@ following:
 - Exporting data
 
 If you are using Kubernetes, you can use the [OpenTelemetry Operator for
-Kubernetes][otel-op] to [inject auto-instrumentation libraries][auto] for Java,
-Node.js and Python into your application.
+Kubernetes][otel-op] to [inject auto-instrumentation libraries][auto] for .NET,
+Java, Node.js, Python, Go into your application.
 
 ## Status and Releases
 
@@ -25,7 +25,6 @@ follows:
 
 {{% telemetry-support-table " " %}}
 
-[auto]:
-  https://github.com/open-telemetry/opentelemetry-operator#opentelemetry-auto-instrumentation-injection
+[auto]: /docs/kubernetes/operator/automatic/
 [instrumentation]: /docs/concepts/instrumentation/
-[otel-op]: https://github.com/open-telemetry/opentelemetry-operator
+[otel-op]: /docs/kubernetes/operator/

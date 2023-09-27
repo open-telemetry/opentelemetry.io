@@ -1,3 +1,4 @@
+# cSpell:ignore nestjs
 title: NestJS OpenTelemetry
 registryType: instrumentation
 isThirdParty: false

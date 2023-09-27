@@ -3,7 +3,7 @@ title: Logs Auto-Instrumentation Example
 linkTitle: Logs Example
 weight: 20
 # prettier-ignore
-cSpell:ignore: distro instrumentor mkdir MSIE Referer Starlette uninstrumented virtualenv WSGI
+cSpell:ignore: distro instrumentor mkdir MSIE Referer Starlette uninstrumented virtualenv
 ---
 
 This page demonstrates how to use Python logs auto-instrumentation in

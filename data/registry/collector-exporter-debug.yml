@@ -1,0 +1,13 @@
+title: Debug Exporter
+registryType: exporter
+isThirdParty: false
+language: collector
+tags:
+  - debug
+  - exporter
+  - collector
+repo: https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/debugexporter
+license: Apache 2.0
+description: Exports data to the console via zap.Logger.
+authors: OpenTelemetry Authors
+otVersion: latest

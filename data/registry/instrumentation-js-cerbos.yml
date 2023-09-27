@@ -1,0 +1,14 @@
+# cSpell:ignore cerbos
+title: Instrumentation Library for Cerbos JavaScript SDK
+registryType: instrumentation
+language: js
+tags:
+  - js
+  - cerbos
+  - instrumentation
+repo: https://github.com/cerbos/cerbos-sdk-javascript/
+license: Apache 2.0
+description:
+  OpenTelemetry instrumentation for the [Cerbos JavaScript
+  SDK](https://github.com/cerbos/cerbos-sdk-javascript/)
+authors: Cerbos Authors

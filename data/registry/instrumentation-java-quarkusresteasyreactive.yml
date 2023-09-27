@@ -1,4 +1,5 @@
-title: quarkusresteasyreactive
+# cSpell:ignore resteasy
+title: Quarkus RESTeasy Reactive Instrumentation
 registryType: instrumentation
 isThirdParty: false
 language: java

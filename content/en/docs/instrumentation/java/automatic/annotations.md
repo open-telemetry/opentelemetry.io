@@ -3,7 +3,7 @@ title: Annotations
 description: Using instrumentation annotations with a Java agent.
 aliases: [/docs/instrumentation/java/annotations]
 weight: 20
-javaInstrumentationVersion: 1.29.0
+javaInstrumentationVersion: 1.30.0
 cSpell:ignore: Flowable javac reactivestreams reactivex
 ---
 
@@ -115,7 +115,7 @@ Suppress `@WithSpan` instrumentation for specific methods. Format is `my.package
 ## Creating spans around methods with `otel.instrumentation.methods.include`
 
 In cases where you are unable to modify the code, you can still configure the
-javaagent to capture spans around specific methods.
+Java agent to capture spans around specific methods.
 
 {{% config_option name="otel.instrumentation.methods.include" %}} Add
 instrumentation for specific methods in lieu of `@WithSpan`. Format is

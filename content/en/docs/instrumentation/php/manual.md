@@ -749,10 +749,10 @@ By default, OpenTelemetry will log errors and warnings via PHP's
 [`error_log`](https://www.php.net/manual/en/function.error-log.php) function.
 The verbosity can be controlled or disabled via the `OTEL_LOG_LEVEL` setting.
 
-Messages sent to `error_log` will be at a level no higher than `E_USER_WARNING`,
-to avoid breaking applications.
-
-You can optionally configure OpenTelemetry to instead log via a PSR-3 logger:
+The `OTEL_PHP_LOG_DESTINATION` variable can be used to control log destination
+or disable error logging completely. Valid values are `default`, `error_log`,
+`stderr`, `stdout`, `psr3`, or `none`. `default` (or if the variable is not
+set), will use `error_log` unless a PSR-3 logger is configured:
 
 ```php
 $logger = new \Example\Psr3Logger(LogLevel::INFO);
@@ -760,7 +760,7 @@ $logger = new \Example\Psr3Logger(LogLevel::INFO);
 ```
 
 For more fine-grained control and special case handling, custom handlers and
-filters can be applied to the logger (if the logger offers this ability).
+filters can be applied to the PSR-3 logger (if the logger offers this ability).
 
 ## Next steps
 

@@ -1,15 +1,17 @@
-title: Authenticator - Sigv4
+# cSpell:ignore sigv4
+title: Authenticator - SigV4
 registryType: extension
 isThirdParty: false
 language: collector
 tags:
-  - sigv4auth
+  - sigv4
+  - auth
   - extension
   - collector
 repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/sigv4authextension
 license: Apache 2.0
 description:
-  This extension provides Sigv4 authentication for making requests to AWS
+  This extension provides SigV4 authentication for making requests to AWS
   services.
 authors: OpenTelemetry Authors
 otVersion: latest

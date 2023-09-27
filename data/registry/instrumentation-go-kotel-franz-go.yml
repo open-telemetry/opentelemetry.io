@@ -1,3 +1,4 @@
+# cSpell:ignore kotel franz gerassimou
 title: Kotel - Instrumentation plugin for franz-go
 registryType: instrumentation
 isThirdParty: true
