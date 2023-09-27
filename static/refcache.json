@@ -4423,6 +4423,22 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:44:54.85629-04:00"
   },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-27T11:12:33.788950402Z"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-27T11:12:33.662712825Z"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-27T11:12:33.534988445Z"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-27T11:12:33.40195469Z"
+  },
   "https://pkg.go.dev/go.opentelemetry.io/otel/exporters/prometheus": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:45:05.539864-04:00"
@@ -4430,6 +4446,10 @@
   "https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdoutmetric": {
     "StatusCode": 200,
     "LastSeen": "2023-09-11T14:33:25.954024386Z"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdouttrace": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-27T11:12:33.278510097Z"
   },
   "https://pkg.go.dev/go.opentelemetry.io/otel/exporters/zipkin": {
     "StatusCode": 200,
