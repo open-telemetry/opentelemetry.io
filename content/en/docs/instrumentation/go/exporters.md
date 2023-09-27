@@ -2,7 +2,8 @@
 title: Exporters
 aliases: [/docs/instrumentation/go/exporting_data]
 weight: 50
-cSpell:ignore: otlpmetric otlpmetrichttp otlpmetricgrpc otlptrace otlptracehttp otlptracegrpc promhttp stdoutmetric stdouttrace
+# prettier-ignore
+cSpell:ignore: otlpmetric otlpmetricgrpc otlpmetrichttp otlptrace otlptracegrpc otlptracehttp promhttp stdouttrace
 ---
 
 {{% docs/instrumentation/exporters-intro go %}}
