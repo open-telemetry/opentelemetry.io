@@ -130,7 +130,7 @@ func newExporter(ctx context.Context) (metric.Exporter, error) {
 }
 ```
 
-### OTLP metroics over gRPC (Experimental)
+### OTLP metrics over gRPC (Experimental)
 
 [`go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc)
 contains an implementation of OTLP trace exporter using gRPC.
