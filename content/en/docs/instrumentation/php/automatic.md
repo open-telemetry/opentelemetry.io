@@ -88,14 +88,14 @@ RPM and APK packages are provided by the following:
 
 - [Remi repository](https://blog.remirepo.net/pages/PECL-extensions-RPM-status) -
   RPM
-- [Alpine linux](https://pkgs.alpinelinux.org/packages?name=*pecl-opentelemetry) -
+- [Alpine Linux](https://pkgs.alpinelinux.org/packages?name=*pecl-opentelemetry) -
   APK (currently in the
   [_testing_ branch](https://wiki.alpinelinux.org/wiki/Repositories#Testing))
 
 {{< tabpane text=true >}} {{% tab "RPM" %}}
 
 ```sh
-#this example is from centos 7
+#this example is for CentOS 7
 yum update -y
 yum install -y epel-release yum-utils
 yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm
