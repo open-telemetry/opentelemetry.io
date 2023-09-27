@@ -43,8 +43,9 @@ some don't exist for your library, then please consider [adding them]
 attention to span names; strive to use meaningful names and consider cardinality
 when defining them.
 
-There is a `schema_url` attribute that can be used to record what version of the
-semantic conventions are being used. Please set this attribute, when possible.
+There is a [`schema_url`](https://opentelemetry.io/docs/specs/otel/schemas/#schema-url)
+attribute that can be used to record what version of the semantic conventions are
+being used. Please set this attribute, when possible.
 
 If you have any feedback or want to add a new convention - please come and
 contribute!
