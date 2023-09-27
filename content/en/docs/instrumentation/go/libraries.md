@@ -5,7 +5,6 @@ aliases:
   - /docs/instrumentation/go/using_instrumentation_libraries
   - /docs/instrumentation/go/automatic_instrumentation
 weight: 40
-cSpell:ignore: fprintf mypkg otelhttp
 ---
 
 Go does not support truly automatic instrumentation like other languages today.
@@ -18,87 +17,19 @@ track inbound and outbound requests once you configure it in your code.
 ## Setup
 
 Each instrumentation library is a package. In general, this means you need to
-`go get` the appropriate package:
+`go get` the appropriate package. For example, for the instrumentation libraires
+maintained in the [Contrib repository](https://github.com/open-telemetry/opentelemetry-go-contrib)
+this means:
 
 ```sh
 go get go.opentelemetry.io/contrib/instrumentation/{import-path}/otel{package-name}
 ```
 
-And then configure it in your code based on what the library requires to be
+Then configure it in your code based on what the library requires to be
 activated.
 
-## Example with `net/http`
-
-As an example, here's how you can set up automatic instrumentation for inbound
-HTTP requests for `net/http`:
-
-First, get the `net/http` instrumentation library:
-
-```sh
-go get go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp
-```
-
-Next, use the library to wrap an HTTP handler in your code:
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"log"
-	"net/http"
-	"time"
-
-	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
-	"go.opentelemetry.io/otel"
-	"go.opentelemetry.io/otel/attribute"
-)
-
-// Package-level tracer.
-// This should be configured in your code setup instead of here.
-var tracer = otel.Tracer("github.com/full/path/to/mypkg")
-
-// sleepy mocks work that your application does.
-func sleepy(ctx context.Context) {
-	_, span := tracer.Start(ctx, "sleep")
-	defer span.End()
-
-	sleepTime := 1 * time.Second
-	time.Sleep(sleepTime)
-	span.SetAttributes(attribute.Int("sleep.duration", int(sleepTime)))
-}
-
-// httpHandler is an HTTP handler function that is going to be instrumented.
-func httpHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello, World! I am instrumented automatically!")
-	ctx := r.Context()
-	sleepy(ctx)
-}
-
-func main() {
-	// Wrap your httpHandler function.
-	handler := http.HandlerFunc(httpHandler)
-	wrappedHandler := otelhttp.NewHandler(handler, "hello-instrumented")
-	http.Handle("/hello-instrumented", wrappedHandler)
-
-	// And start the HTTP serve.
-	log.Fatal(http.ListenAndServe(":3030", nil))
-}
-```
-
-Assuming that you have a `Tracer` and [exporter](../exporters/) configured, this
-code will:
-
-- Start an HTTP server on port `3030`
-- Automatically generate a span for each inbound HTTP request to
-  `/hello-instrumented`
-- Create a child span of the automatically-generated one that tracks the work
-  done in `sleepy`
-
-Connecting manual instrumentation you write in your app with instrumentation
-generated from a library is essential to get good observability into your apps
-and services.
+[Getting Started](../manual/) provides an example, how you can set up
+instrumentation for a `net/http` server.
 
 ## Available packages
 
