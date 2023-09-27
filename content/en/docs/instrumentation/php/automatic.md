@@ -79,7 +79,42 @@ function will record it, without affecting exception propagation.
 The extension can be installed via pecl,
 [pickle](https://github.com/FriendsOfPHP/pickle) or
 [php-extension-installer](https://github.com/mlocati/docker-php-extension-installer)
-(docker specific).
+(docker specific). There are also packaged versions of the extension available
+for some Linux package managers.
+
+### Linux packages
+
+RPM and APK packages are provided by the following:
+
+- [Remi repo](https://blog.remirepo.net/pages/PECL-extensions-RPM-status) - RPM
+- [Alpine linux](https://pkgs.alpinelinux.org/packages?name=*pecl-opentelemetry) -
+  APK (currently in the
+  [_testing_ branch](https://wiki.alpinelinux.org/wiki/Repositories#Testing))
+
+{{< tabpane text=true >}} {{% tab "RPM" %}}
+
+```sh
+#this example is from centos 7
+yum update -y
+yum install -y epel-release yum-utils
+yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+yum-config-manager --enable remi-php82
+yum install -y php php-pecl-opentelemetry
+
+php --ri opentelemetry
+```
+
+{{% /tab %}} {{% tab "APK" %}}
+
+```sh
+echo "@testing https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
+apk add php php81-pecl-opentelemetry@testing
+php --ri opentelemetry
+```
+
+{{% /tab %}} {{< /tabpane >}}
+
+### PECL
 
 1. Setup development environment. Installing from source requires proper
    development environment and some dependencies:
