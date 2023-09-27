@@ -9,28 +9,34 @@ a system. The exact sampler you should use depends on your specific needs, but
 in general you should make a decision at the start of a trace, and allow the
 sampling decision to propagate to other services.
 
-A sampler needs to be set on the tracer provider when its configured, as
-follows:
+A [`Sampler`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#Sampler)
+can to be set on the tracer provider when register it using the
+[`WithSampler`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#WithSampler)
+option, as follows:
 
 ```go
-provider := sdktrace.NewTracerProvider(
-    sdktrace.WithSampler(sdktrace.AlwaysSample()),
+provider := trace.NewTracerProvider(
+    trace.WithSampler(trace.AlwaysSample()),
 )
 ```
 
-`AlwaysSample` and `NeverSample` are fairly self-explanatory. Always means that
-every trace will be sampled, the converse holds as true for Never. When you're
-getting started, or in a development environment, you'll almost always want to
-use `AlwaysSample`.
+[`AlwaysSample`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#AlwaysSample)
+and [`NeverSample`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#NeverSample)
+are fairly self-explanatory. Always means that every trace will be sampled, the
+converse holds as true for Never. When you're getting started, or in
+a development environment, you'll almost always want to use `AlwaysSample`.
 
 Other samplers include:
 
-- `TraceIDRatioBased`, which will sample a fraction of traces, based on the
-  fraction given to the sampler. Thus, if you set this to .5, half of traces
-  will be sampled.
-- `ParentBased`, which behaves differently based on the incoming sampling
-  decision. In general, this will sample spans that have parents that were
-  sampled, and will not sample spans whose parents were _not_ sampled.
+- [`TraceIDRatioBased`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#TraceIDRatioBased),
+  which will sample a fraction of traces, based on the fraction given to the
+  sampler. Thus, if you set this to .5, half of traces will be sampled.
+- [`ParentBased`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#ParentBased),
+  which behaves differently based on the incoming sampling decision. In
+  general, this will sample spans that have parents that were sampled, and will
+  not sample spans whose parents were _not_ sampled.
 
-When you're in production, you should consider using the `TraceIDRatioBased`
-sampler with the `ParentBased` sampler.
+By default, the tracer provider uses a `ParentBased` sampler with the `AlwaysSample`.
+
+When you're in production, you should consider using the `ParentBased`
+sampler with the `TraceIDRatioBased` sampler.
