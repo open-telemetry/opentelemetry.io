@@ -84,7 +84,6 @@ contains an implementation of OTLP trace exporter using gRPC.
 Here's how you can create an exporter with default configuration:
 
 ```go
-
 import (
   	"go.opentelemetry.io/otel/exporters/otlp/otlptrace"
   	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"
@@ -158,7 +157,6 @@ Here's how you can create an exporter (which is also a metric reader) with
 default configuration:
 
 ```go
-
 import (
   	"go.opentelemetry.io/otel/exporters/otlp/otlptrace"
   	"go.opentelemetry.io/otel/exporters/prometheus"
