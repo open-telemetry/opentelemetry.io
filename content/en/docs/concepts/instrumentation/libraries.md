@@ -68,6 +68,12 @@ way to model that data. Some things to consider are:
 - Span events
 - Aggregated Metrics
 
+For example, if your library is making requests to a database, create spans
+only for the logical request to the database. The physical requests over
+the network should be instrumented within the libraries implementing that
+functionality. You should also favor capturing other activities, like
+object/data serialization as span events, rather than as additional spans.
+
 Follow the semantic conventions when setting span attributes.
 
 ## When **not** to instrument
