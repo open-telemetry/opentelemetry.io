@@ -4479,17 +4479,41 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:45:10.781059-04:00"
   },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#AlwaysSample": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-27T09:39:52.203079253Z"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#NeverSample": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-27T09:39:52.327351275Z"
+  },
   "https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#NewBatchSpanProcessor": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:45:21.093114-04:00"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#ParentBased": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-27T09:39:52.578080474Z"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#Sampler": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-27T09:39:51.939566324Z"
   },
   "https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#SpanProcessor": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:45:15.990524-04:00"
   },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#TraceIDRatioBased": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-27T09:39:52.452582667Z"
+  },
   "https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#WithBatcher": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:45:26.188308-04:00"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#WithSampler": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-27T09:39:52.070515192Z"
   },
   "https://pkg.go.dev/go.opentelemetry.io/otel/trace": {
     "StatusCode": 200,
