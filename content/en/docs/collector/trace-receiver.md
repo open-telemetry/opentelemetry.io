@@ -2,7 +2,7 @@
 title: Building a Trace Receiver
 weight: 98
 # prettier-ignore
-cSpell:ignore: amzn atmxph backendsystem batchprocessor chicago comcast crand devs Errorf gogl Intn ispnetwork jaegerexporter loggingexporter mapstructure mcrsft otelcontribcol otlpreceiver pcommon pdata protogen ptrace Rcvr rquedas sanfrancisco serialnumber slrs stateid struct structs Subchannel tailtracer uber wndws zapgrpc
+cSpell:ignore: amzn atmxph backendsystem batchprocessor chicago comcast crand debugexporter devs Errorf gogl Intn ispnetwork jaegerexporter mapstructure mcrsft otelcontribcol otlpreceiver pcommon pdata protogen ptrace Rcvr rquedas sanfrancisco serialnumber slrs stateid struct structs Subchannel tailtracer uber wndws zapgrpc
 ---
 
 <!-- markdownlint-disable heading-increment no-duplicate-heading -->
@@ -86,7 +86,7 @@ touch config.yaml
 ```
 
 For now, you just need a basic traces pipeline with the `otlp` receiver, the
-`otlp` and `logging` exporters, here is what your `config.yaml` file should look
+`otlp` and `debug` exporters, here is what your `config.yaml` file should look
 like:
 
 > config.yaml
@@ -100,7 +100,7 @@ receivers:
 processors:
 
 exporters:
-  logging:
+  debug:
     verbosity: detailed
   otlp/jaeger:
     endpoint: localhost:14317
@@ -112,7 +112,7 @@ service:
     traces:
       receivers: [otlp]
       processors: []
-      exporters: [otlp/jaeger, logging]
+      exporters: [otlp/jaeger, debug]
   telemetry:
     logs:
       level: debug
@@ -130,7 +130,7 @@ $ ./otelcol-dev --config config.yaml
 2023-09-12T15:22:18.652-0700    info    service/telemetry.go:84 Setting up own telemetry...
 2023-09-12T15:22:18.652-0700    info    service/telemetry.go:201        Serving Prometheus metrics      {"address": ":8888", "level": "Basic"}
 2023-09-12T15:22:18.652-0700    debug   exporter@v0.85.0/exporter.go:273        Stable component.       {"kind": "exporter", "data_type": "traces", "name": "otlp/jaeger"}
-2023-09-12T15:22:18.652-0700    info    exporter@v0.85.0/exporter.go:275        Development component. May change in the future.        {"kind": "exporter", "data_type": "traces", "name": "logging"}
+2023-09-12T15:22:18.652-0700    info    exporter@v0.85.0/exporter.go:275        Development component. May change in the future.        {"kind": "exporter", "data_type": "traces", "name": "debug"}
 2023-09-12T15:22:18.652-0700    debug   receiver@v0.85.0/receiver.go:294        Stable component.       {"kind": "receiver", "name": "otlp", "data_type": "traces"}
 2023-09-12T15:22:18.652-0700    info    service/service.go:138  Starting otelcontribcol...      {"Version": "0.85.0", "NumCPU": 10}
 2023-09-12T15:22:18.652-0700    info    extensions/extensions.go:31     Starting extensions...
@@ -303,7 +303,7 @@ which is bootstrapped with the following components:
 
 - Receivers: OTLP Receiver
 - Processors: Batch Processor
-- Exporters: Logging and Jaeger Exporters
+- Exporters: Debug and Jaeger Exporters
 
 Go ahead and open the `components.go` file under the `otelcol-dev` folder, and
 let's take a look at the `components()` function.
@@ -327,7 +327,7 @@ func components() (otelcol.Factories, error) {
 	}
 
 	factories.Exporters, err = exporter.MakeFactoryMap(
-		loggingexporter.NewFactory(),
+		debugexporter.NewFactory(),
 		jaegerexporter.NewFactory(),
 	)
 	if err != nil {
@@ -641,7 +641,7 @@ import (
 	"go.opentelemetry.io/collector/otelcol"
 	"go.opentelemetry.io/collector/processor"
 	"go.opentelemetry.io/collector/receiver"
-	loggingexporter "go.opentelemetry.io/collector/exporter/loggingexporter"
+	debugexporter "go.opentelemetry.io/collector/exporter/debugexporter"
 	jaegerexporter "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/jaegerexporter"
 	batchprocessor "go.opentelemetry.io/collector/processor/batchprocessor"
 	otlpreceiver "go.opentelemetry.io/collector/receiver/otlpreceiver"
@@ -667,7 +667,7 @@ func components() (otelcol.Factories, error) {
 	}
 
 	factories.Exporters, err = exporter.MakeFactoryMap(
-		loggingexporter.NewFactory(),
+		debugexporter.NewFactory(),
 		jaegerexporter.NewFactory(),
 	)
 	if err != nil {
@@ -704,7 +704,7 @@ codebase:
 ```console
 $ ./otelcol-dev --config config.yaml
 2022-02-24T12:17:41.454-0600    info    service/collector.go:190        Applying configuration...
-2022-02-24T12:17:41.454-0600    info    builder/exporters_builder.go:254        Exporter was built.     {"kind": "exporter", "name": "logging"}
+2022-02-24T12:17:41.454-0600    info    builder/exporters_builder.go:254        Exporter was built.     {"kind": "exporter", "name": "debug"}
 2022-02-24T12:17:41.454-0600    info    builder/exporters_builder.go:254        Exporter was built.     {"kind": "exporter", "name": "jaeger"}
 2022-02-24T12:17:41.454-0600    info    builder/pipelines_builder.go:222        Pipeline was built.     {"name": "pipeline", "name": "traces"}
 2022-02-24T12:17:41.454-0600    info    builder/receivers_builder.go:111        Ignoring receiver as it is not used by any pipeline      {"kind": "receiver", "name": "tailtracer"}
@@ -989,7 +989,7 @@ func (tailtracerRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
 - Importing the `go.opentelemetry.io/collector/consumer` which is where the
   pipeline's consumer types and interfaces are declared.
 - Importing the `go.uber.org/zap` package, which is what the Collector uses for
-  its logging capabilities.
+  its debugging capabilities.
 - Added a `zap.Logger` field named `logger` so we can have access to the
   Collector's logger reference from within the receiver.
 - Added a `consumer.Traces` field named `nextConsumer` so we can push the traces
@@ -1111,7 +1111,7 @@ service:
     traces:
       receivers: [otlp, tailtracer]
       processors: []
-      exporters: [jaeger, logging]
+      exporters: [jaeger, debug]
 ```
 
 Here is what the output for running your Collector with `otelcol-dev` command
@@ -1121,7 +1121,7 @@ should look like after you updated the `traces` pipeline:
 $ ./otelcol-dev --config config.yaml
 2022-03-03T11:19:50.779-0600    info    service/collector.go:190        Applying configuration...
 2022-03-03T11:19:50.780-0600    info    builder/exporters_builder.go:254        Exporter was built.     {"kind": "exporter", "name": "jaeger"}
-2022-03-03T11:19:50.780-0600    info    builder/exporters_builder.go:254        Exporter was built.     {"kind": "exporter", "name": "logging"}
+2022-03-03T11:19:50.780-0600    info    builder/exporters_builder.go:254        Exporter was built.     {"kind": "exporter", "name": "debug"}
 2022-03-03T11:19:50.780-0600    info    builder/pipelines_builder.go:222        Pipeline was built.     {"name": "pipeline", "name": "traces"}
 2022-03-03T11:19:50.780-0600    info    builder/receivers_builder.go:224        Receiver was built.     {"kind": "receiver", "name": "otlp", "datatype": "traces"}
 2022-03-03T11:19:50.780-0600    info    builder/receivers_builder.go:224        Receiver was built.     {"kind": "receiver", "name": "tailtracer", "datatype": "traces"}
@@ -1130,8 +1130,8 @@ $ ./otelcol-dev --config config.yaml
 2022-03-03T11:19:50.780-0600    info    builder/exporters_builder.go:40 Exporter is starting... {"kind": "exporter", "name": "jaeger"}
 2022-03-03T11:19:50.781-0600    info    builder/exporters_builder.go:48 Exporter started.       {"kind": "exporter", "name": "jaeger"}
 2022-03-03T11:19:50.781-0600    info    jaegerexporter@v0.41.0/exporter.go:186  State of the connection with the Jaeger Collector backend       {"kind": "exporter", "name": "jaeger", "state": "IDLE"}
-2022-03-03T11:19:50.781-0600    info    builder/exporters_builder.go:40 Exporter is starting... {"kind": "exporter", "name": "logging"}
-2022-03-03T11:19:50.781-0600    info    builder/exporters_builder.go:48 Exporter started.       {"kind": "exporter", "name": "logging"}
+2022-03-03T11:19:50.781-0600    info    builder/exporters_builder.go:40 Exporter is starting... {"kind": "exporter", "name": "debug"}
+2022-03-03T11:19:50.781-0600    info    builder/exporters_builder.go:48 Exporter started.       {"kind": "exporter", "name": "debug"}
 2022-03-03T11:19:50.781-0600    info    service/service.go:96   Starting processors...
 2022-03-03T11:19:50.781-0600    info    builder/pipelines_builder.go:54 Pipeline is starting... {"name": "pipeline", "name": "traces"}
 2022-03-03T11:19:50.781-0600    info    builder/pipelines_builder.go:65 Pipeline is started.    {"name": "pipeline", "name": "traces"}
@@ -2095,15 +2095,15 @@ minutes running:
 ```cmd
 Starting: /Users/rquedas/go/bin/dlv dap --check-go-version=false --listen=127.0.0.1:54625 --log-dest=3 from /Users/rquedas/Documents/vscode-workspace/otel4devs/collector/receiver/trace-receiver/otelcol-dev
 DAP server listening at: 127.0.0.1:54625
-2022-03-21T15:44:22.737-0500	info	builder/exporters_builder.go:255	Exporter was built.	{"kind": "exporter", "name": "logging"}
+2022-03-21T15:44:22.737-0500	info	builder/exporters_builder.go:255	Exporter was built.	{"kind": "exporter", "name": "debug"}
 2022-03-21T15:44:22.737-0500	info	builder/exporters_builder.go:255	Exporter was built.	{"kind": "exporter", "name": "jaeger"}
 2022-03-21T15:44:22.737-0500	info	builder/pipelines_builder.go:223	Pipeline was built.	{"name": "pipeline", "name": "traces"}
 2022-03-21T15:44:22.738-0500	info	builder/receivers_builder.go:226	Receiver was built.	{"kind": "receiver", "name": "otlp", "datatype": "traces"}
 2022-03-21T15:44:22.738-0500	info	builder/receivers_builder.go:226	Receiver was built.	{"kind": "receiver", "name": "tailtracer", "datatype": "traces"}
 2022-03-21T15:44:22.738-0500	info	service/service.go:82	Starting extensions...
 2022-03-21T15:44:22.738-0500	info	service/service.go:87	Starting exporters...
-2022-03-21T15:44:22.738-0500	info	builder/exporters_builder.go:40	Exporter is starting...	{"kind": "exporter", "name": "logging"}
-2022-03-21T15:44:22.738-0500	info	builder/exporters_builder.go:48	Exporter started.	{"kind": "exporter", "name": "logging"}
+2022-03-21T15:44:22.738-0500	info	builder/exporters_builder.go:40	Exporter is starting...	{"kind": "exporter", "name": "debug"}
+2022-03-21T15:44:22.738-0500	info	builder/exporters_builder.go:48	Exporter started.	{"kind": "exporter", "name": "debug"}
 2022-03-21T15:44:22.738-0500	info	builder/exporters_builder.go:40	Exporter is starting...	{"kind": "exporter", "name": "jaeger"}
 2022-03-21T15:44:22.738-0500	info	builder/exporters_builder.go:48	Exporter started.	{"kind": "exporter", "name": "jaeger"}
 2022-03-21T15:44:22.738-0500	info	service/service.go:92	Starting processors...
@@ -2122,8 +2122,8 @@ DAP server listening at: 127.0.0.1:54625
 2022-03-21T15:44:22.742-0500	info	service/collector.go:144	Everything is ready. Begin running and processing data.
 2022-03-21T15:44:23.739-0500	info	jaegerexporter@v0.46.0/exporter.go:186	State of the connection with the Jaeger Collector backend	{"kind": "exporter", "name": "jaeger", "state": "READY"}
 2022-03-21T15:45:22.743-0500	info	tailtracer/trace-receiver.go:33	I should start processing traces now!	{"kind": "receiver", "name": "tailtracer"}
-2022-03-21T15:45:22.743-0500	INFO	loggingexporter/logging_exporter.go:40	TracesExporter	{"#spans": 1}
-2022-03-21T15:45:22.743-0500	DEBUG	loggingexporter/logging_exporter.go:49	ResourceSpans #0
+2022-03-21T15:45:22.743-0500	INFO	debugexporter/debug_exporter.go:40	TracesExporter	{"#spans": 1}
+2022-03-21T15:45:22.743-0500	DEBUG	debugexporter/debug_exporter.go:49	ResourceSpans #0
 Resource SchemaURL:
 Resource labels:
      -> atm.id: INT(222)
@@ -2158,8 +2158,8 @@ Span #0
     Status code    : STATUS_CODE_OK
     Status message :
 2022-03-21T15:46:22.743-0500	info	tailtracer/trace-receiver.go:33	I should start processing traces now!	{"kind": "receiver", "name": "tailtracer"}
-2022-03-21T15:46:22.744-0500	INFO	loggingexporter/logging_exporter.go:40	TracesExporter	{"#spans": 1}
-2022-03-21T15:46:22.744-0500	DEBUG	loggingexporter/logging_exporter.go:49	ResourceSpans #0
+2022-03-21T15:46:22.744-0500	INFO	debugexporter/debug_exporter.go:40	TracesExporter	{"#spans": 1}
+2022-03-21T15:46:22.744-0500	DEBUG	debugexporter/debug_exporter.go:49	ResourceSpans #0
 Resource SchemaURL:
 Resource labels:
      -> atm.id: INT(111)

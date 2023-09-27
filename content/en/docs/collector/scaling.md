@@ -160,14 +160,14 @@ spec:
     processors:
 
     exporters:
-      logging:
+      debug:
 
     service:
       pipelines:
         traces:
           receivers: [otlp]
           processors: []
-          exporters: [logging]
+          exporters: [debug]
 ---
 apiVersion: v1
 kind: Pod
@@ -268,14 +268,14 @@ spec:
             - targets: [ '0.0.0.0:8888' ]
 
     exporters:
-      logging:
+      debug:
 
     service:
       pipelines:
         traces:
           receivers: [prometheus]
           processors: []
-          exporters: [logging]
+          exporters: [debug]
 ```
 
 After the reconciliation, the OpenTelemetry Operator will convert the
@@ -283,7 +283,7 @@ Collector’s configuration into the following:
 
 ```yaml
 exporters:
-   logging: null
+   debug: null
  receivers:
    prometheus:
      config:
@@ -306,7 +306,7 @@ exporters:
    pipelines:
      traces:
        exporters:
-       - logging
+       - debug
        processors: []
        receivers:
        - prometheus
