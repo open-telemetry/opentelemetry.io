@@ -45,7 +45,7 @@ already present. Configure your exporter(s) using the environment variables you
 set for your access tokens in the previous step.
 
 **Without an environment variable being set for your exporters the default
-configuration only supports emitting data using the logging exporter.** Here is
+configuration only supports emitting data using the debug exporter.** Here is
 the default configuration:
 
 ```yaml
@@ -58,17 +58,17 @@ receivers:
         endpoint: 'localhost:4318'
 
 exporters:
-  logging:
-    loglevel: debug
+  debug:
+    verbosity: detailed
 
 service:
   pipelines:
     traces:
       receivers: [otlp]
-      exporters: [logging]
+      exporters: [debug]
     metrics:
       receivers: [otlp]
-      exporters: [logging]
+      exporters: [debug]
   telemetry:
     metrics:
       address: localhost:8888
@@ -109,7 +109,7 @@ receivers:
         endpoint: 'localhost:4318'
 
 exporters:
-  logging:
+  debug:
   awsxray:
 
 service:
@@ -119,7 +119,7 @@ service:
       exporters: [awsxray]
     metrics:
       receivers: [otlp]
-      exporters: [logging]
+      exporters: [debug]
   telemetry:
     metrics:
       address: localhost:8888
