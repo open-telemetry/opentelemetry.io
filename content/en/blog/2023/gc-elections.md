@@ -53,7 +53,7 @@ Ben Sigelman, Bogdan Drutu, Juraci Paxão Kröhling, Ted Young, and Yuri Shkuro.
 ## Questions?
 
 For any election related questions, please file an issue on the
-[community repo](https://github.com/open-telemetry/community/issues) here and
+[community repository](https://github.com/open-telemetry/community/issues) here and
 tag [@dyladan](https://github.com/dyladan),
 [@mtwo](https://github.com/mtwo), and
 [@trask](https://github.com/trask). Or send us a message on
