@@ -8,7 +8,7 @@ Currently, this is defined in a `config.go` file which lives in your `receiver/f
 
 For receivers specifically, there exist community and [core](https://github.com/open-telemetry/opentelemetry-collector/tree/589488839f582632f53d84526207e733475ccc21/config) contributed standards for common options.
 
-While you are encouraged to check out the latest released version of said collector providede offerings, at the time of writing these are the available common utilities.
+While you are encouraged to check out the latest released version of said collector provided offerings, at the time of writing these are the available common utilities.
 
 For scraping receivers, [`scraperhelper`](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/scraperhelper) is [all but](https://github.com/search?q=repo%3Aopen-telemetry%2Fopentelemetry-collector-contrib+scraperhelper.NewScraper&type=code) a requirement.
 

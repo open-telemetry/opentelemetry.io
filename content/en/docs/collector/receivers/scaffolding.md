@@ -69,7 +69,7 @@ metrics:
 
 ## Generate files
 
-Run `make generate` to generate some boilerplate conventions in `recievers/foobar/internal/metadata`.
+Run `make generate` to generate some boilerplate conventions in `receivers/foobar/internal/metadata`.
 
 After you've written your `mdatagen.yaml` and ran `make generate` on the repo,
 you should see a handful of files in a directory named `internal/metadata`
