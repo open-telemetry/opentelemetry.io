@@ -20,6 +20,7 @@ For all receivers, below exist at time of writing this doc.
 - [`configcompression`](https://github.com/open-telemetry/opentelemetry-collector/tree/589488839f582632f53d84526207e733475ccc21/config/configcompression) defined some common compression options
 - [`httpconfig`](https://github.com/open-telemetry/opentelemetry-collector/tree/589488839f582632f53d84526207e733475ccc21/config/confighttp) defines some common http configuration options
 - [`configtls`](https://github.com/open-telemetry/opentelemetry-collector/tree/589488839f582632f53d84526207e733475ccc21/config/configtls)
+- [`confignet`](https://github.com/open-telemetry/opentelemetry-collector/blob/2a1bf715db31dc907857232f97441c1d7ad0b380/config/confignet/README.md)
 - [`configrpc`](https://github.com/open-telemetry/opentelemetry-collector/tree/589488839f582632f53d84526207e733475ccc21/config/configgrpc) defines some common rpc configuration options
 - [`configauth`](https://github.com/open-telemetry/opentelemetry-collector/tree/589488839f582632f53d84526207e733475ccc21/config/configauth) defines some common authentication/authorization configuration options
 - [`configopaque`](https://github.com/open-telemetry/opentelemetry-collector/tree/589488839f582632f53d84526207e733475ccc21/config/configopaque) allows for opaque strings (credentials, secrets, etc) to be loaded
@@ -29,16 +30,15 @@ If you're following along with the `foobar` receiver, for the given configuratio
 
 ```yaml
 receivers:
-  foobar/1:
-
+  foobar/optional_instance:
+    collection_interval: 10s
+    initial_delay: 1s
 
 ```
 
 our `config.go` will look like
 
 ```go
-pass
-
 import (
 	"go.opentelemetry.io/collector/config/confignet"
 	"go.opentelemetry.io/collector/config/configopaque"
