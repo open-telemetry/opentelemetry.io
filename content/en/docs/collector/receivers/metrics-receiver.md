@@ -1,5 +1,5 @@
 ---
-title: Creating a custom receiver
+title: Creating a custom Metrics receiver
 weight: 42
 ---
 

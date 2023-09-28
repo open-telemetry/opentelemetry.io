@@ -1,5 +1,5 @@
 ---
-title: Designing a receiver
+title: Designing
 weight: 1
 ---
 

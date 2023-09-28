@@ -1,5 +1,5 @@
 ---
-title: Building a Trace Receiver
+title: Creating a custom Trace receiver
 weight: 41
 # prettier-ignore
 cSpell:ignore: amzn atmxph backendsystem batchprocessor chicago comcast crand debugexporter devs Errorf gogl Intn ispnetwork loggingexporter loglevel mapstructure mcrsft otelcontribcol otlpexporter otlpreceiver pcommon pdata protogen ptrace Rcvr rquedas sanfrancisco serialnumber slrs stateid struct structs Subchannel tailtracer telemetrygen uber wndws zapgrpc

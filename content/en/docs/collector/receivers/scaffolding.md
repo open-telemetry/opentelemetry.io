@@ -1,5 +1,5 @@
 ---
-title: Scaffolding a receiver
+title: Scaffolding
 weight: 2
 ---
 

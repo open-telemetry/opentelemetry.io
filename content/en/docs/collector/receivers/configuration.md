@@ -1,5 +1,5 @@
 ---
-title: Receiver Configuration
+title: Configuration
 weight: 3
 ---
 Currently, this is defined in a `config.go` file which lives in your `receiver/foobar` directory
@@ -10,6 +10,11 @@ For receivers specifically, there exist community and [core](https://github.com/
 
 While you are encouraged to check out the latest released version of said collector providede offerings, at the time of writing these are the available common utilities.
 
+For scraping receivers, [`scraperhelper`](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/scraperhelper) is [all but](https://github.com/search?q=repo%3Aopen-telemetry%2Fopentelemetry-collector-contrib+scraperhelper.NewScraper&type=code) a requirement.
+
+Note that it is possible to use a non-local provider via [`confmap`](https://github.com/open-telemetry/opentelemetry-collector/tree/589488839f582632f53d84526207e733475ccc21/confmap)
+
+For all receivers, below exist at time of writing this doc.
 - [`configcompression`](https://github.com/open-telemetry/opentelemetry-collector/tree/589488839f582632f53d84526207e733475ccc21/config/configcompression) defined some common compression options
 - [`httpconfig`](https://github.com/open-telemetry/opentelemetry-collector/tree/589488839f582632f53d84526207e733475ccc21/config/confighttp) defines some common http configuration options
 - [`configtls`](https://github.com/open-telemetry/opentelemetry-collector/tree/589488839f582632f53d84526207e733475ccc21/config/configtls)
@@ -17,10 +22,7 @@ While you are encouraged to check out the latest released version of said collec
 - [`configauth`](https://github.com/open-telemetry/opentelemetry-collector/tree/589488839f582632f53d84526207e733475ccc21/config/configauth) defines some common authentication/authorization configuration options
 - [`configopaque`](https://github.com/open-telemetry/opentelemetry-collector/tree/589488839f582632f53d84526207e733475ccc21/config/configopaque) allows for opaque strings (credentials, secrets, etc) to be loaded
 
-For scraping receivers, [`scraperhelper`](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/scraperhelper) is [all but](https://github.com/search?q=repo%3Aopen-telemetry%2Fopentelemetry-collector-contrib+scraperhelper.NewScraper&type=code) a requirement.
 
-
-Also note that it is possible to use a non-local provider via [`confmap`](https://github.com/open-telemetry/opentelemetry-collector/tree/589488839f582632f53d84526207e733475ccc21/confmap)
 
 *talk about the various configuration you may need*
 *talk about the commands this is used in*
