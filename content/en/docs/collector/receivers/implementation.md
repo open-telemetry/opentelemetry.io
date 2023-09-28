@@ -1,5 +1,6 @@
 ---
 title: Implementation
+weight: 40
 ---
 
 From here, the implementation will differ depending on if you need a metrics or tracing receiver.

@@ -1,12 +1,14 @@
 ---
 title: Scaffolding a receiver
-weight: 58
+weight: 2
 ---
 
 Let's assume you're experimenting in a [fork](https://github.com/open-telemetry/opentelemetry-collector-contrib/fork) of [`opentelemetry-collector-contrib`](https://github.com/open-telemetry/opentelemetry-collector-contrib), and you wish to make a new receiver named `foobar`.
 Once you've forked, cloned, and `cd`'d into the directory, set up some more assumed defaults if you wish to follow along.  However, it's recommended you either [maintain your own collector](../custom-collector.md) if you want to use your custom receiver in production, or even contribute it upstream.
 
 {{% alert title="Upstream contributions" color="primary" %}}
+Note that [becoming a codeowner](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/CONTRIBUTING.md#becoming-a-code-owner) is a commitment.  As with many open source projects, resourcing and funding is, in general, tight.  The `-contrib` repo is the basis for the most popular custom distributions, and is used by customers in production environments.  The OpenTelemetry maintainers reserve and exercise the right to remove any "abandoned" components in `-contrib`.
+That said, if you or your company are willing to own any given component, we absolutely welcome new contributors to the project.
 {{% /alert %}}
 
 ```bash

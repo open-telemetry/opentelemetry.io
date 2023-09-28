@@ -1,5 +1,6 @@
 ---
 title: Creating a custom receiver
+weight: 42
 ---
 
 Why do I, the reader, care?  Why should I read this document?  What's in here for me?

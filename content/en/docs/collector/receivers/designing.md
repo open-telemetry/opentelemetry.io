@@ -1,5 +1,6 @@
 ---
 title: Designing a receiver
+weight: 1
 ---
 
 As with all tasks, the first step is to figure out what you want to build.

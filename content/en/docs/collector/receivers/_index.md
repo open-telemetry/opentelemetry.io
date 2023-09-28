@@ -3,7 +3,7 @@ title: Creating Custom Receivers
 description:
 aliases: [/docs/collector/receivers/about]
 cascade:
-  collectorVersion: 0.84.0
+  collectorVersion: 0.85.0
 weight: 15
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Receiver Configuration
+weight: 3
 ---
 Currently, this is defined in a `config.go` file which lives in your `receiver/foobar` directory
 
