@@ -45,14 +45,16 @@ If your paradigm is more like an "ETL" or "snapshot", you may want a scraping-st
 
 
 # Data model
-## Resource
+## Resource attributes
 [Resources](https://opentelemetry.io/docs/specs/otel/resource/) are a coarse, high level concept which in the context of receivers typically describe a particular instance of whatever your receiver monitors.  For example, if you're implementing a redis receiver, a particular redis cluster/database would be one *resource*.  If you're monitoring a particular path for a filelogreceiver, that particular path is a single resource.
 The class of resources is the same as the class of receivers, and a particular instance of a receiver is a particular instance of a resource.
 There is a bijective mapping between resources and configured receivers.
 <!-- TODO hey so we should take the intro from this and put it on the main page https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/resource/sdk.md -->
 
-## Attributes
+Thus, for a given resource, the associated attributes
 
+## Attributes
+Attributes apply to a given
 ## Signals
 ## [Semantic conventions](https://github.com/open-telemetry/semantic-conventions)
 

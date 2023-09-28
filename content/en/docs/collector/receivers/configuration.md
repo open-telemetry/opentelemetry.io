@@ -6,6 +6,8 @@ Currently, this is defined in a `config.go` file which lives in your `receiver/f
 
 `config.go` will read from the provided `otel-config.yaml`.  [Receiver configuration](https://github.com/open-telemetry/opentelemetry-collector/blob/589488839f582632f53d84526207e733475ccc21/otelcol/config.go#L22) accepts any valid yaml document, and the parsing is defined via the [otel collector config interface](https://github.com/open-telemetry/opentelemetry-collector/blob/main/component/config.go).  Maintainers are encouraged to implement their own `ValidateConfig` function specific to their component.
 
+When you run `mdatagen`, it should create a config file in `receivers/$MYRECEIVER/internal/metadata/generated_config.go`, which implements a `MetricsBuilderConfig` specific to your receiver.  It's recommended to allow overrides to this in your receiver's configuration, with a `,squash` directive to [mapstructure](https://pkg.go.dev/github.com/mitchellh/mapstructure).
+
 For receivers specifically, there exist community and [core](https://github.com/open-telemetry/opentelemetry-collector/tree/589488839f582632f53d84526207e733475ccc21/config) contributed standards for common options.
 
 While you are encouraged to check out the latest released version of said collector provided offerings, at the time of writing these are the available common utilities.
@@ -23,6 +25,37 @@ For all receivers, below exist at time of writing this doc.
 - [`configopaque`](https://github.com/open-telemetry/opentelemetry-collector/tree/589488839f582632f53d84526207e733475ccc21/config/configopaque) allows for opaque strings (credentials, secrets, etc) to be loaded
 
 
+If you're following along with the `foobar` receiver, for the given configuration
+
+```yaml
+receivers:
+  foobar/1:
+
+
+```
+
+our `config.go` will look like
+
+```go
+pass
+
+import (
+	"go.opentelemetry.io/collector/config/confignet"
+	"go.opentelemetry.io/collector/config/configopaque"
+	"go.opentelemetry.io/collector/config/configtls"
+	"go.opentelemetry.io/collector/receiver/scraperhelper"
+
+	"github.com/open-telemetry/opentelemetry-collector-contrib/receiver/redisreceiver/internal/metadata"
+)
+
+type Config struct {
+	scraperhelper.ScraperControllerSettings `mapstructure:",squash"`
+	confignet.NetAddr `mapstructure:",squash"`
+	Secret configopaque.String `mapstructure:"password"`
+	TLS configtls.TLSClientSetting `mapstructure:"tls,omitempty"`
+	MetricsBuilderConfig metadata.MetricsBuilderConfig `mapstructure:",squash"`
+}
+```
 
 *talk about the various configuration you may need*
 *talk about the commands this is used in*
