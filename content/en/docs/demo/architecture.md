@@ -144,7 +144,7 @@ subgraph tdf[Telemetry Data Flow]
             oc-grpc[/"OTLP Receiver<br/>listening on<br/>grpc://localhost:4317/"/]
             oc-http[/"OTLP Receiver<br/>listening on <br/>http://localhost:4318/<br/>https://localhost:4318/"/]
             oc-proc(Processors)
-            oc-prom[/"Prometheus Exporter<br/>listening on<br/>http://localhost:9464/"/]
+            oc-prom[/"OTLP HTTP Exporter/"/]
             oc-otlp[/"OTLP Exporter"/]
 
             oc-grpc --> oc-proc
@@ -154,12 +154,12 @@ subgraph tdf[Telemetry Data Flow]
             oc-proc --> oc-otlp
         end
 
-        oc-prom -->|"http://localhost:9464/metrics"| pr-sc
+        oc-prom -->|"http://localhost:9090/api/v1/otlp"| pr-sc
         oc-otlp -->|gRPC| ja-col
 
         subgraph pr[Prometheus]
             style pr fill:#e75128,color:black;
-            pr-sc[/"Prometheus Scraper<br/>polling every 5 seconds"/]
+            pr-sc[/"Prometheus OTLP Write Receiver"/]
             pr-tsdb[(Prometheus TSDB)]
             pr-http[/"Prometheus HTTP<br/>listening on<br/>http://localhost:9090"/]
 
