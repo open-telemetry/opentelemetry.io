@@ -3,7 +3,7 @@ title: Agent Configuration
 linkTitle: Configuration
 weight: 10
 # prettier-ignore
-cSpell:ignore: akka armeria autoconfiguration Autoconfiguration cassandra classloaders couchbase Customizer datasource dbcp Dotel dropwizard dubbo finatra hikari hikaricp HSET httpasyncclient httpclient hystrix jaxrs jaxws jboss jedis jodd kotlinx logback logmanager mojarra myfaces okhttp oshi rabbitmq ratpack rediscala redisson restlet rocketmq serverlessapis servlet spymemcached twilio vaadin vertx vibur webflux webmvc
+cSpell:ignore: akka armeria autoconfiguration Autoconfiguration classloaders couchbase Customizer datasource dbcp Dotel dropwizard dubbo finatra hikari hikaricp HSET httpasyncclient httpclient hystrix jaxrs jaxws jedis jodd kotlinx logback logmanager mojarra myfaces okhttp oshi rabbitmq ratpack rediscala redisson restlet rocketmq serverlessapis spymemcached twilio vaadin vertx vibur webflux webmvc
 ---
 
 ## SDK Autoconfiguration
@@ -162,22 +162,22 @@ attributes, according to the
 [semantic convention](/docs/specs/otel/trace/semantic_conventions/http/#http-request-and-response-headers).
 Use the following properties to define which HTTP headers you want to capture:
 
-{{% config_option name="otel.instrumentation.http.capture-headers.client.request" %}}
+{{% config_option name="otel.instrumentation.http.client.capture-request-headers" %}}
 A comma-separated list of HTTP header names. HTTP client instrumentations will
 capture HTTP request header values for all configured header names.
 {{% /config_option %}}
 
-{{% config_option name="otel.instrumentation.http.capture-headers.client.response" %}}
+{{% config_option name="otel.instrumentation.http.client.capture-response-headers" %}}
 A comma-separated list of HTTP header names. HTTP client instrumentations will
 capture HTTP response header values for all configured header names.
 {{% /config_option %}}
 
-{{% config_option name="otel.instrumentation.http.capture-headers.server.request" %}}
+{{% config_option name="otel.instrumentation.http.server.capture-request-headers" %}}
 A comma-separated list of HTTP header names. HTTP server instrumentations will
 capture HTTP request header values for all configured header names.
 {{% /config_option %}}
 
-{{% config_option name="otel.instrumentation.http.capture-headers.server.response" %}}
+{{% config_option name="otel.instrumentation.http.server.capture-response-headers" %}}
 A comma-separated list of HTTP header names. HTTP server instrumentations will
 capture HTTP response header values for all configured header names.
 {{% /config_option %}}

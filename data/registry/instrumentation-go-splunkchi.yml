@@ -1,3 +1,4 @@
+# cSpell:ignore splunkchi
 title: splunkchi -- Instrumentation for github.com/go-chi/chi
 registryType: instrumentation
 isThirdParty: true

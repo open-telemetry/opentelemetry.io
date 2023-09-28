@@ -1,3 +1,4 @@
+# cSpell:ignore pino
 title: OpenTelemetry Instrumentation for pino
 registryType: instrumentation
 isThirdParty: false

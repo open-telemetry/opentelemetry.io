@@ -1,4 +1,5 @@
-title: dropwizard
+# cSpell:ignore dropwizard
+title: Dropwizard Instrumentation Library
 registryType: instrumentation
 isThirdParty: false
 language: java
@@ -8,6 +9,6 @@ tags:
   - java
 repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/dropwizard
 license: Apache 2.0
-description: This library provides dropwizard instrumentation.
+description: This library provides Dropwizard instrumentation.
 authors: OpenTelemetry Authors
 otVersion: latest

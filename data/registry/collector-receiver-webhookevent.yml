@@ -1,3 +1,4 @@
+# cSpell:ignore webhookevent
 title: Webhook Event Receiver
 registryType: receiver
 isThirdParty: false

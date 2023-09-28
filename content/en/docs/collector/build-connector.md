@@ -1,7 +1,7 @@
 ---
 title: Building a Connector
 # prettier-ignore
-cSpell:ignore: batchprocessor Errorf exampleconnector gomod gord Jaglowski loggingexporter mapstructure mapstructure otlpreceiver pdata pmetric ptrace servicegraph spanmetrics struct uber
+cSpell:ignore: batchprocessor debugexporter Errorf exampleconnector gomod gord Jaglowski mapstructure mapstructure otlpreceiver pdata pmetric ptrace servicegraph spanmetrics struct uber
 ---
 
 ## Connectors in OpenTelemetry
@@ -90,7 +90,7 @@ receivers:
         endpoint: localhost:4318
 
 exporters:
-  logging:
+  debug:
 
 connectors:
   example:
@@ -103,7 +103,7 @@ service:
       exporters: [example]
     metrics:
       receivers: [example]
-      exporters: [logging]
+      exporters: [debug]
 ```
 
 In the connectors portion of the above code, you need to declare the names of
@@ -493,26 +493,26 @@ your own OpenTelemetry Collector binary. You can add or remove components
         name: otelcol-dev-bin
         description: Basic OpenTelemetry collector distribution for Developers
         output_path: ./otelcol-dev
-        otelcol_version: 0.81.0
+        otelcol_version: 0.86.0
 
 
     exporters:
         - gomod:
-        go.opentelemetry.io/collector/exporter/loggingexporter v0.81.0
+        go.opentelemetry.io/collector/exporter/debugexporter v0.86.0
 
 
     processors:
         - gomod:
-        go.opentelemetry.io/collector/processor/batchprocessor v0.81.0
+        go.opentelemetry.io/collector/processor/batchprocessor v0.86.0
 
 
     receivers:
         - gomod:
-    go.opentelemetry.io/collector/receiver/otlpreceiver v0.81.0
+    go.opentelemetry.io/collector/receiver/otlpreceiver v0.86.0
 
 
     connectors:
-        - gomod: github.com/gord02/exampleconnector v0.81.0
+        - gomod: github.com/gord02/exampleconnector v0.86.0
 
 
     replaces:

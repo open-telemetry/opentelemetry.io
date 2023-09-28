@@ -1,3 +1,4 @@
+# cSpell:ignore splunkbuntdb tidwall buntdb
 title: splunkbuntdb -- Instrumentation for github.com/tidwall/buntdb
 registryType: instrumentation
 isThirdParty: true

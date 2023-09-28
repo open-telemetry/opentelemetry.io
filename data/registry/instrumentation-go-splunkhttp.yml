@@ -1,3 +1,4 @@
+# cSpell:ignore splunkhttp
 title: splunkhttp -- Instrumentation for `net/http`
 registryType: instrumentation
 isThirdParty: true

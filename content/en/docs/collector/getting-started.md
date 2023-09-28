@@ -350,10 +350,8 @@ These commands may vary slightly for other shells.
 [deployment methods]: ../deployment/
 [readme.md]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/examples/demo
-[opentelemetry helm charts]:
-  https://github.com/open-telemetry/opentelemetry-helm-charts
-[opentelemetry operator]:
-  https://github.com/open-telemetry/opentelemetry-operator
+[opentelemetry helm charts]: /docs/kubernetes/helm/
+[opentelemetry operator]: /docs/kubernetes/operator/
 [getting started with opentelemetry on hashicorp nomad]:
   https://github.com/hashicorp/nomad-open-telemetry-getting-started
 [releases]:
