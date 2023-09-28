@@ -4,6 +4,7 @@ linkTitle: 2023 GC Election
 date: 2023-09-29
 author: OpenTelemetry Governance Committee
 aliases: [/blog/2023/gc-elections-2023]
+cSpell:ignore: Sigelman Bogdan Drutu Paxão Shkuro dyladan mtwo trask
 ---
 
 The OpenTelemetry project is excited to announce the 2023 OpenTelemetry Governance Committee (GC) election. Nominations are due by end-of-day on 13 October 2023. The list of eligible candidates will be shared on 16 October 2023. Voting will take place between 23 October 2023 and 25 October 2023, and the final election results will be announced 27 October 2023.
