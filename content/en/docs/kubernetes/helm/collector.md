@@ -37,6 +37,7 @@ started. By default, the collector's config will look like:
 
 ```yaml
 exporters:
+  # NOTE: Prior to v0.86.0 use `logging` instead of `debug`
   debug: {}
 extensions:
   health_check: {}

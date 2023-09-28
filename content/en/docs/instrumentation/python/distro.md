@@ -40,6 +40,8 @@ receivers:
       grpc:
       http:
 exporters:
+  # NOTE: Prior to v0.86.0 use `logging` and `loglevel: debug`
+  #       instead of `debug` and `verbosity: detailed`
   debug:
     verbosity: detailed
 processors:

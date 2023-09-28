@@ -369,6 +369,8 @@ exporters:
     protocol_version: 2.0.0
 
   # Data sources: traces, metrics, logs
+  # NOTE: Prior to v0.86.0 use `logging` and `loglevel: debug`
+  #       instead of `debug` and `verbosity: detailed`
   debug:
     verbosity: detailed
 
@@ -653,6 +655,7 @@ receivers:
 processors:
 
 exporters:
+  # NOTE: Prior to v0.86.0 use `logging` instead of `debug`:
   debug:
 
 service:

@@ -2,7 +2,7 @@
 title: Building a Trace Receiver
 weight: 98
 # prettier-ignore
-cSpell:ignore: amzn atmxph backendsystem batchprocessor chicago comcast crand debugexporter devs Errorf gogl Intn ispnetwork jaegerexporter mapstructure mcrsft otelcontribcol otlpreceiver pcommon pdata protogen ptrace Rcvr rquedas sanfrancisco serialnumber slrs stateid struct structs Subchannel tailtracer uber wndws zapgrpc
+cSpell:ignore: amzn atmxph backendsystem batchprocessor chicago comcast crand debugexporter devs Errorf gogl Intn ispnetwork jaegerexporter mapstructure mcrsft otelcontribcol otlpreceiver pcommon pdata protogen ptrace Rcvr rquedas sanfrancisco serialnumber slrs stateid struct structs Subchannel tailtracer uber wndws zapgrpc loggingexporter loglevel
 ---
 
 <!-- markdownlint-disable heading-increment no-duplicate-heading -->
@@ -86,8 +86,8 @@ touch config.yaml
 ```
 
 For now, you just need a basic traces pipeline with the `otlp` receiver, the
-`otlp` and `debug` exporters, here is what your `config.yaml` file should look
-like:
+`otlp` and `debug`[^1] exporters, here is what your `config.yaml` file should
+look like:
 
 > config.yaml
 
@@ -100,6 +100,8 @@ receivers:
 processors:
 
 exporters:
+  # NOTE: Prior to v0.86.0 use `logging` and `loglevel: debug`
+  #       instead of `debug` and `verbosity: detailed`
   debug:
     verbosity: detailed
   otlp/jaeger:
@@ -303,7 +305,7 @@ which is bootstrapped with the following components:
 
 - Receivers: OTLP Receiver
 - Processors: Batch Processor
-- Exporters: Debug and Jaeger Exporters
+- Exporters: Debug[^1] and Jaeger Exporters
 
 Go ahead and open the `components.go` file under the `otelcol-dev` folder, and
 let's take a look at the `components()` function.
@@ -2280,3 +2282,5 @@ Here is the detailed view of one of those traces in Jaeger:
 
 That's it! You have now reached the end of this tutorial and successfully
 implemented a trace receiver, congratulations!
+
+[^1]: Prior to v0.86.0 use the `loggingexporter` instead of `debugexporter`.
