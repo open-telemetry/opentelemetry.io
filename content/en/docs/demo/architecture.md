@@ -144,7 +144,7 @@ subgraph tdf[Telemetry Data Flow]
             oc-grpc[/"OTLP Receiver<br/>listening on<br/>grpc://localhost:4317/"/]
             oc-http[/"OTLP Receiver<br/>listening on <br/>http://localhost:4318/<br/>https://localhost:4318/"/]
             oc-proc(Processors)
-            oc-prom[/"OTLP HTTP Exporter/"/]
+            oc-prom[/"OTLP HTTP Exporter"/]
             oc-otlp[/"OTLP Exporter"/]
 
             oc-grpc --> oc-proc
