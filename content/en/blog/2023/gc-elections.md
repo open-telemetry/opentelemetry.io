@@ -7,7 +7,11 @@ aliases: [/blog/2023/gc-elections-2023]
 cSpell:ignore: Sigelman Bogdan Drutu Paxão Shkuro dyladan mtwo trask
 ---
 
-The OpenTelemetry project is excited to announce the 2023 OpenTelemetry Governance Committee (GC) election. Nominations are due by end-of-day on 13 October 2023. The list of eligible candidates will be shared on 16 October 2023. Voting will take place between 23 October 2023 and 25 October 2023, and the final election results will be announced 27 October 2023.
+The OpenTelemetry project is excited to announce the 2023 OpenTelemetry
+Governance Committee (GC) election. Nominations are due by end-of-day on 13
+October 2023. The list of eligible candidates will be shared on 16 October 2023.
+Voting will take place between 23 October 2023 and 25 October 2023, and the
+final election results will be announced 27 October 2023.
 
 ## Vote!
 
@@ -21,8 +25,8 @@ If you have made contributions to our ecosystem not measured by the automatic
 process, you can request
 [an exception](https://github.com/open-telemetry/community/blob/main/governance-charter.md#members-of-standing)
 to participate in the election before 23:59 UTC on 20 October 2023. The voter
-roll with all members of standing and approved exceptions will be published
-by 6 October 2023 and continuously updated until the exception deadline.
+roll with all members of standing and approved exceptions will be published by 6
+October 2023 and continuously updated until the exception deadline.
 
 Voting will be open between 00:00 UTC on 23 October 2023 00:00 UTC and 25
 October 2023 23:59 UTC on
@@ -47,17 +51,17 @@ by 13 October 2023 23:59 UTC — more detailed requirements about the nomination
 and ratification process can be found
 [here](https://github.com/open-telemetry/community/blob/main/elections/2023/governance-committee-election.md).
 
-We would like to thank the GC members who have helped grow OpenTelemetry, and invite them to run for re-election if they so choose:
-Ben Sigelman, Bogdan Drutu, Juraci Paxão Kröhling, Ted Young, and Yuri Shkuro.
+We would like to thank the GC members who have helped grow OpenTelemetry, and
+invite them to run for re-election if they so choose: Ben Sigelman, Bogdan
+Drutu, Juraci Paxão Kröhling, Ted Young, and Yuri Shkuro.
 
 ## Questions?
 
 For any election related questions, please file an issue on the
-[community repository](https://github.com/open-telemetry/community/issues) here and
-tag [@dyladan](https://github.com/dyladan),
-[@mtwo](https://github.com/mtwo), and
-[@trask](https://github.com/trask). Or send us a message on
-[CNCF Slack](https://slack.cncf.io/) in
+[community repository](https://github.com/open-telemetry/community/issues) here
+and tag [@dyladan](https://github.com/dyladan),
+[@mtwo](https://github.com/mtwo), and [@trask](https://github.com/trask). Or
+send us a message on [CNCF Slack](https://slack.cncf.io/) in
 [#opentelemetry](https://cloud-native.slack.com/archives/CJFCJHG4Q) if you have
 an urgent access issue during voting.
 
