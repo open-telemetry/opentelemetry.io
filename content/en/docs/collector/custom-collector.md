@@ -2,7 +2,7 @@
 title: Building a custom collector
 weight: 29
 # prettier-ignore
-cSpell:ignore: batchprocessor chipset darwin debugexporter gomod jaegerexporter otlpreceiver wyrtw
+cSpell:ignore: batchprocessor chipset darwin debugexporter gomod otlpexporter otlpreceiver wyrtw
 ---
 
 If you are planning to build and debug custom collector receivers, processors,
@@ -98,7 +98,7 @@ to understand the different modules and how to add the components.
 We will be adding the following components to our development and testing
 collector distribution:
 
-- Exporters: Jaeger and Debug
+- Exporters: OTLP and Debug
 - Receivers: OTLP
 - Processors: Batch
 
@@ -117,8 +117,7 @@ exporters:
   - gomod:
       go.opentelemetry.io/collector/exporter/debugexporter v{{% param collectorVersion %}}
   - gomod:
-      github.com/open-telemetry/opentelemetry-collector-contrib/exporter/jaegerexporter
-      v{{% param collectorVersion %}}
+      go.opentelemetry.io/collector/exporter/otlpexporter v{{% param collectorVersion %}}
 
 processors:
   - gomod:
