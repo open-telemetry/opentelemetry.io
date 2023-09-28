@@ -51,9 +51,10 @@ above in order to create the receiver, so let's get started.
 
 First use the [Building a Custom Collector](/docs/collector/custom-collector)
 tutorial to create a Collector instance named `otelcol-dev`; all you need is to
-copy the `builder-config.yaml` described on [Step 2](/docs/collector/custom-collector#step-2---create-a-builder-manifest-file)
-and run the builder. As an outcome you should now have a `otelcol-dev` folder with
-your Collector's development instance ready to go.
+copy the `builder-config.yaml` described on
+[Step 2](/docs/collector/custom-collector#step-2---create-a-builder-manifest-file)
+and run the builder. As an outcome you should now have a `otelcol-dev` folder
+with your Collector's development instance ready to go.
 
 In order to properly test your trace receiver, you will need a distributed
 tracing backend so the Collector can send the telemetry to it. We will be using
