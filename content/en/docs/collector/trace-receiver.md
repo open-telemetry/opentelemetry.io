@@ -100,8 +100,7 @@ receivers:
 processors:
 
 exporters:
-  # NOTE: Prior to v0.86.0 use `logging` and `loglevel: debug`
-  #       instead of `debug` and `verbosity: detailed`
+  # NOTE: Prior to v0.86.0 use `logging` instead of `debug`
   debug:
     verbosity: detailed
   otlp/jaeger:

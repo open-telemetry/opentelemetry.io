@@ -58,7 +58,7 @@ receivers:
         endpoint: 'localhost:4318'
 
 exporters:
-  # NOTE: Prior to v0.86.0 use `logging` and `loglevel: debug` instead of `debug` and `verbosity`
+  # NOTE: Prior to v0.86.0 use `logging` instead of `debug`
   debug:
     verbosity: detailed
 
