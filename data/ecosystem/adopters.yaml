@@ -99,3 +99,9 @@
   components: [Ruby]
   reference: ''
   contact: ''
+- name: Practico Framework
+  url: https://practico.org/
+  components: [Collector, PHP]
+  reference: https://www.practico.org/documentaci%C3%B3n
+  referenceTitle: Manual
+  contact: 'john@practico.org'
