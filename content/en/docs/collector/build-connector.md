@@ -1,7 +1,7 @@
 ---
 title: Building a Connector
 # prettier-ignore
-cSpell:ignore: batchprocessor debugexporter Errorf exampleconnector gomod gord Jaglowski mapstructure mapstructure otlpreceiver pdata pmetric ptrace servicegraph spanmetrics struct uber loggingexporter
+cSpell:ignore: batchprocessor debugexporter Errorf exampleconnector gomod gord Jaglowski loggingexporter mapstructure mapstructure otlpreceiver pdata pmetric ptrace servicegraph spanmetrics struct uber
 ---
 
 ## Connectors in OpenTelemetry
