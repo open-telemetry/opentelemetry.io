@@ -17,7 +17,7 @@ Read on to learn about all the things related OpenTelemetry during KubeCon.
 
 We are happy to announce, that for the first time, you can join the
 OpenTelemetry maintainers in making OpenTelemetry better for everyone during the
-[OpenTelemetry Contribfest](https://sched.co/1JWS7), on Wednesday November 8,
+[OpenTelemetry Contribfest](https://sched.co/1R2rQ), on Wednesday November 8,
 2023 from 2:30pm - 3:55pm. There will be several opportunities to contribute:
 
 - Join the Collector maintainers and help fix bugs, add new features, and add
