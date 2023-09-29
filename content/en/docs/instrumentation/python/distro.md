@@ -40,15 +40,15 @@ receivers:
       grpc:
       http:
 exporters:
-  logging:
-    loglevel: debug
+  debug:
+    verbosity: detailed
 processors:
   batch:
 service:
   pipelines:
     traces:
       receivers: [otlp]
-      exporters: [logging]
+      exporters: [debug]
       processors: [batch]
 ```
 
