@@ -56,7 +56,7 @@ OpenTelemetry maintainers in making OpenTelemetry better for everyone during the
   2:30pm - 3:05pm
 - **[Jaeger the Future with OpenTelemetry and Metrics](https://sched.co/1R2q1)**<br>
   by Pavol Loffay, Red Hat<br> Wednesday, November 8 • 3:25pm - 4:00pm
-- **[Tutorial: OpenTelemetry 101: Let's Instrument!](https://sched.co/1R2s9)**<br>
+- **[Tutorial: OpenTelemetry 101: Let's Instrument!](https://sched.co/1R2sI)**<br>
   by Paige Cruz, Chronosphere<br> Wednesday, November 8 • 4:30pm - 6:00pm
 - **[Remote Control for Observability Using the Open Agent Management Protocol](https://sched.co/1R2sr)**<br>
   by Jacob Aronoff, Lightstep from ServiceNow & Andy Keller, observIQ<br>
