@@ -5015,6 +5015,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:51:07.853836-04:00"
   },
+  "https://vote.heliosvoting.org/helios/elections/1ee70ee4-11ce-11ee-aaf8-0a8c9aac83f9/view": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-28T17:11:11.729958-04:00"
+  },
   "https://vote.heliosvoting.org/helios/elections/76558134-3384-11ed-8688-02871af94755/view": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:50:14.320613-04:00"

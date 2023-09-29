@@ -160,6 +160,7 @@ spec:
     processors:
 
     exporters:
+      # Note: Prior to v0.86.0 use the `logging` instead of `debug`.
       debug:
 
     service:
@@ -268,6 +269,7 @@ spec:
             - targets: [ '0.0.0.0:8888' ]
 
     exporters:
+      # Note: Prior to v0.86.0 use the `logging` instead of `debug`.
       debug:
 
     service:
@@ -283,6 +285,7 @@ Collector’s configuration into the following:
 
 ```yaml
 exporters:
+   # Note: Prior to v0.86.0 use the `logging` instead of `debug`.
    debug: null
  receivers:
    prometheus:
