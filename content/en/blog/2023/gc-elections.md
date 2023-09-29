@@ -19,7 +19,7 @@ If you are a
 [member of standing](https://github.com/open-telemetry/community/blob/main/governance-charter.md#members-of-standing)
 in the OpenTelemetry community, we invite you to participate in this election to
 ensure that the community is well-represented in the Governance Committee. In
-this election four people must be elected, each with two-year terms.
+this election five people must be elected, each with two-year terms.
 
 If you have made contributions to our ecosystem not measured by the automatic
 process, you can request
