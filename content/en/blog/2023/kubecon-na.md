@@ -23,7 +23,7 @@ OpenTelemetry maintainers in making OpenTelemetry better for everyone during the
 - Join the Collector maintainers and help fix bugs, add new features, and add
   new transformation functions.
 - Help the OTel JS maintainers update the instrumentation libraries and ensure
-  they are outputting semantic convention-compliant telemetry data.
+  they are outputting [semantic convention-compliant](https://opentelemetry.io/docs/specs/semconv/) telemetry data.
 
 ## KubeCon Talks and Maintainer Sessions
 
