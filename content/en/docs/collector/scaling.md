@@ -160,7 +160,7 @@ spec:
     processors:
 
     exporters:
-      # Note: Prior to v0.86.0 use the `logging` instead of `debug`
+      # Note: Prior to v0.86.0 use the `logging` instead of `debug`.
       debug:
 
     service:

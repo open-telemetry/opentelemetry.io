@@ -58,7 +58,7 @@ receivers:
         endpoint: 'localhost:4318'
 
 exporters:
-  # NOTE: Prior to v0.86.0 use `logging` instead of `debug`
+  # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
   debug:
     verbosity: detailed
 
@@ -110,7 +110,7 @@ receivers:
         endpoint: 'localhost:4318'
 
 exporters:
-  # NOTE: Prior to v0.86.0 use `logging` instead of `debug`
+  # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
   debug:
   awsxray:
 

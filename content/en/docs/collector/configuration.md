@@ -654,7 +654,7 @@ receivers:
 processors:
 
 exporters:
-  # NOTE: Prior to v0.86.0 use `logging` instead of `debug`:
+  # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
   debug:
 
 service:
