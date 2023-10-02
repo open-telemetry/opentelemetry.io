@@ -447,6 +447,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:18:57.115479-04:00"
   },
+  "https://colocatedeventsna2023.sched.com/overview/type/Observability+Day": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-01T12:48:08.791661-04:00"
+  },
   "https://community.cncf.io/end-user-community/": {
     "StatusCode": 200,
     "LastSeen": "2023-07-03T17:44:06.5954165Z"
@@ -2403,6 +2407,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-09-06T23:24:57.917147-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.86.0": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-01T12:48:05.307263-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-releases": {
     "StatusCode": 200,
     "LastSeen": "2023-09-06T15:04:15.511399+02:00"
@@ -2430,6 +2438,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.85.0": {
     "StatusCode": 200,
     "LastSeen": "2023-09-19T15:39:47.556871528Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.86.0": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-01T12:48:04.831958-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/": {
     "StatusCode": 200,
@@ -2687,6 +2699,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-07-01T14:29:56.612297-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet/releases/tag/core-1.6.0": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-01T12:48:08.321994-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet/releases/tag/core-1.6.0-alpha.1": {
     "StatusCode": 200,
     "LastSeen": "2023-08-03T12:58:31.402565-04:00"
@@ -2731,6 +2747,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-07T16:32:38.79601-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-go/compare/v1.18.0...v1.19.0": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-01T12:48:07.452046-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-go/projects": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:39:30.156671-04:00"
@@ -2766,6 +2786,10 @@
   "https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.17.0": {
     "StatusCode": 200,
     "LastSeen": "2023-09-06T23:24:59.667769-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.19.0": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-01T12:48:06.997625-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-helm-charts": {
     "StatusCode": 200,
@@ -2843,6 +2867,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-09-06T23:24:58.846736-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/tag/v1.30.0": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-01T12:48:06.579275-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-java/releases": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:47:15.179862-04:00"
@@ -2883,6 +2911,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-09-06T23:24:58.360584-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-java/releases/tag/v1.30.1": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-01T12:48:06.126841-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-js": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:35:23.378554-04:00"
@@ -2922,6 +2954,10 @@
   "https://github.com/open-telemetry/opentelemetry-js/releases/tag/v1.15.1": {
     "StatusCode": 200,
     "LastSeen": "2023-08-03T12:58:26.063534-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-js/releases/tag/v1.17.0": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-01T12:48:07.83784-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-lambda": {
     "StatusCode": 200,
@@ -2982,6 +3018,10 @@
   "https://github.com/open-telemetry/opentelemetry-operator/releases/tag/v0.80.0": {
     "StatusCode": 200,
     "LastSeen": "2023-07-01T14:29:54.237227-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/releases/tag/v0.85.0": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-01T12:48:05.717569-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-php": {
     "StatusCode": 200,
@@ -3134,6 +3174,10 @@
   "https://github.com/open-telemetry/opentelemetry-specification/#versioning-the-specification": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:41:31.704925-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/compare/v1.24.0...v1.25.0": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-01T12:48:04.394314-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/discussions/2695": {
     "StatusCode": 200,
@@ -3770,6 +3814,10 @@
   "https://kafka.apache.org/downloads": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:17:23.226167-04:00"
+  },
+  "https://kccncna2023.sched.com/event/1R2rQ": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-01T12:48:09.135563-04:00"
   },
   "https://kind.sigs.k8s.io/": {
     "StatusCode": 206,
@@ -5090,6 +5138,10 @@
   "https://vagrantup.com": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:51:07.853836-04:00"
+  },
+  "https://vote.heliosvoting.org/helios/elections/1ee70ee4-11ce-11ee-aaf8-0a8c9aac83f9/view": {
+    "StatusCode": 200,
+    "LastSeen": "2023-09-28T17:11:11.729958-04:00"
   },
   "https://vote.heliosvoting.org/helios/elections/76558134-3384-11ed-8688-02871af94755/view": {
     "StatusCode": 200,
