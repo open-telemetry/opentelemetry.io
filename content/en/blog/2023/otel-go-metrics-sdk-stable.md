@@ -9,7 +9,7 @@ cSpell:ignore: Benedetti Fabrizio Ferri
 The Go metrics SDK has finally reached stable status with version 1.19.0 of
 OpenTelemetry Go. Project stability guarantees now apply to the
 [go.opentelemetry.io/otel/sdk/metric](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric)
-package.
+module.
 
 To get started with OTel Go metrics,
 [read the documentation](/docs/instrumentation/go/manual) or browse the
