@@ -6,8 +6,9 @@ author: '[Fabrizio Ferri-Benedetti](https://github.com/theletterf/) (Splunk)'
 cSpell:ignore: Benedetti Fabrizio Ferri
 ---
 
-The Go metrics SDK has finally reached stable status with version 1.19.0 of
-OpenTelemetry Go. Project stability guarantees now apply to the
+The Go metrics SDK has finally reached stable status with
+[version 1.19.0](https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.19.0)
+of OpenTelemetry Go. Project stability guarantees now apply to the
 [go.opentelemetry.io/otel/sdk/metric](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric)
 module.
 
