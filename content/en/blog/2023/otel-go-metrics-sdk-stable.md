@@ -1,7 +1,7 @@
 ---
 title: First stable release of OTel Go metric SDK
 linkTitle: Go Metric SDK is Stable
-date: 2023-09-29
+date: 2023-10-02
 author: '[Fabrizio Ferri-Benedetti](https://github.com/theletterf/) (Splunk)'
 cSpell:ignore: Benedetti Fabrizio Ferri
 ---
