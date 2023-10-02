@@ -101,26 +101,6 @@ still useful in others.
 The rest of this document gives guidance on what and how to instrument if you
 decide to do it.
 
-## Personally Identifiable Information (PII)
-
-In some semantic conventions, the data collected as a span attribute could
-contain PII (Personally Identifiable Information). As a general guideline, do
-**not** collect this data by default. A few other options for handling this data
-are:
-
-- Provide opt-in features to collect potentially PII for users who need it
-- Collect it but obfuscate / redact the PII, if
-  you’re confident about being able to implement the obfuscation / redaction
-  effectively, non-reversible and with little overhead
-
-PII is data like email addresses, passwords, usernames, custom data in database
-queries, etc. For example, this is a Elasticsearch query with PII redacted that
-would be a span's `db.statement` attribute:
-
-```json
-{ "query": { "match": { "username": "REDACTED" } } }
-```
-
 ## OpenTelemetry API
 
 The first step is to take dependency on the OpenTelemetry API package.
