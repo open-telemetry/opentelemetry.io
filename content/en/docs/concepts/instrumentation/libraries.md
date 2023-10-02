@@ -38,10 +38,10 @@ libraries follow conventions, many scenarios may be enabled out of the box
 without the user's input or configuration.
 
 Semantic conventions are always evolving and new ones are constantly added. If
-some don't exist for your library, then please consider [adding them]
-(https://github.com/open-telemetry/semantic-conventions/issues). Pay special
-attention to span names; strive to use meaningful names and consider cardinality
-when defining them.
+some don't exist for your library, then please consider
+[adding them](https://github.com/open-telemetry/semantic-conventions/issues).
+Pay special attention to span names; strive to use meaningful names and consider
+cardinality when defining them.
 
 There is a [`schema_url`](/docs/specs/otel/schemas/#schema-url) attribute that
 can be used to record what version of the semantic conventions are being used.
