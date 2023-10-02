@@ -2,7 +2,7 @@
 
 <div class="o-banner">
 
-[Discover what's new](/blog/2023/otel-in-focus-08/) in our latest releases!
+[Meet us at KubeCon NA in Chicago from November 6 - 9, 2023.](/blog/2023/kubecon-na)
 
 </div>
 {{ end -}}
