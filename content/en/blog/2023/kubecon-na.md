@@ -1,7 +1,7 @@
 ---
 title: Join us for OpenTelemetry Talks and Activities at KubeCon NA 2023
 linkTitle: KubeCon NA '23
-date: 2023-09-11
+date: 2023-10-02
 # prettier-ignore
 cSpell:ignore: Anusha Aronoff Benedikt Bongartz Broadbridge Chronosphere Contribfest Coralogix Danielson Endo Flamegraphs Hrabovcak Itiel Itoh Jaglowski Kanal Komodor Kota Masanori Matej Mirabella Narapureddy observ Ohly Pivotto Purvi Reddy Sharone Shishi Shivanshu Shrivastava Shwartz Zitzman
 author: '[Severin Neumann](https://github.com/svrnm) (Cisco)'
@@ -23,7 +23,8 @@ OpenTelemetry maintainers in making OpenTelemetry better for everyone during the
 - Join the Collector maintainers and help fix bugs, add new features, and add
   new transformation functions.
 - Help the OTel JS maintainers update the instrumentation libraries and ensure
-  they are outputting [semantic convention-compliant](https://opentelemetry.io/docs/specs/semconv/) telemetry data.
+  they are outputting [semantic convention-compliant](/docs/specs/semconv/)
+  telemetry data.
 
 ## KubeCon Talks and Maintainer Sessions
 
@@ -99,6 +100,16 @@ your OpenTelemetry adoption, implementation, and usage. We also invite you to
 fill out our [community survey][]. We will create action items from your
 comments as appropriate. Check [#otel-user-research][] in CNCF's Slack instance
 for survey results and action item updates to come after KubeCon NA.
+
+## OpenTelemetry Observatory
+
+In addition to our booth at the Project Pavilion, please visit the OpenTelemetry
+Observatory presented by Splunk in the Expo Hall! This will be a place for
+informal chats, meetups, and other discussions led by OpenTelemetry community
+members and maintainers. If you’d like to participate and lead a discussion or
+short presentation,
+[please fill out the content application form](https://forms.gle/ajNv8jGs12coDUjG8)
+to indicate your interest.
 
 Come join us to listen, learn, and get involved in OpenTelemetry.
 
