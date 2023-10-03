@@ -21,7 +21,7 @@ investments without the need to continually recreate the same capabilities.
 The community is excited to continually improve the project's capabilities and
 OTel has now expanded our coverage to Synthetics. As of the v0.63.0 release, the
 OTel Collector supports synthetic HTTP checks via a receiver called the HTTP
-Check receiver. This component sends a request via http or https and produces
+Check receiver. This component sends a request via HTTP or HTTPS and produces
 metrics to capture the duration of the request and record the returned status
 code. You can now deploy an agent to your preferred environment to test public
 OR private endpoints without the need to whitelist IPs in your firewall and
