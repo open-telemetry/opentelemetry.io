@@ -1,6 +1,7 @@
 ---
 title: Benchmarks
 weight: 99
+cSpell:ignore: Elems rrggbbaa
 ---
 
  <style>
