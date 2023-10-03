@@ -3,6 +3,7 @@ title: Portable Synthetic Ping Testing with OpenTelemetry
 linkTitle: Synthetic ping testing with OTel
 date: 2023-10-05
 author: '[Carter Socha](https://github.com/cartersocha) (Lightstep)'
+cSpell:ignore: httpcheck
 ---
 
 Synthetic tests are an essential part of the Observability toolkit. They can be
