@@ -87,7 +87,7 @@ let span = tracer.startSpan(
   {
     attributes: {},
   },
-  activeContext
+  activeContext,
 );
 
 // Set the created span as active in the deserialized context.

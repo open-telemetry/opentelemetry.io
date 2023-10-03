@@ -50,7 +50,7 @@ const ignoreList = [
 if (process.argv.length < 3) {
   console.log(
     `USAGE: ${path.basename(process.argv[0])} ${path.basename(
-      process.argv[1]
+      process.argv[1],
     )} <list>
     <list> is a comma separated list of the following options: 
         - collector
@@ -65,8 +65,8 @@ if (process.argv.length < 3) {
     Use 'all' if you want to run all of them (except go).
     
     Example: ${path.basename(process.argv[0])} ${path.basename(
-      process.argv[1]
-    )} python,ruby,erlang`
+      process.argv[1],
+    )} python,ruby,erlang`,
   );
   process.exit();
 }
@@ -76,7 +76,7 @@ const selection = process.argv[2].split(',').map((x) => x.trim());
 const scanners = {
   collector: () => {
     ['receiver', 'exporter', 'processor', 'extension'].forEach(
-      async (component) => scanCollectorComponent(component)
+      async (component) => scanCollectorComponent(component),
     );
   },
   js: () => {
@@ -85,7 +85,7 @@ const scanners = {
       'resource-detector',
       'js',
       'detectors/node',
-      'resource-detector'
+      'resource-detector',
     );
   },
   java: () => {
@@ -94,7 +94,7 @@ const scanners = {
       'java',
       'instrumentation',
       'md',
-      'opentelemetry-java-instrumentation'
+      'opentelemetry-java-instrumentation',
     );
   },
   ruby: () => {
@@ -111,7 +111,7 @@ const scanners = {
       'python',
       'exporter',
       'rst',
-      'opentelemetry-python'
+      'opentelemetry-python',
     );
   },
   dotnet: () => {
@@ -128,7 +128,7 @@ const scanners = {
         'md',
         repo,
         (item) => item.name.toLowerCase().includes(registryType),
-        (name) => name.split('.').splice(2, 3).join('').toLowerCase()
+        (name) => name.split('.').splice(2, 3).join('').toLowerCase(),
       );
     });
   },
@@ -143,7 +143,7 @@ const scanners = {
       'md',
       'opentelemetry-php-contrib',
       () => true,
-      (name) => name.toLowerCase()
+      (name) => name.toLowerCase(),
     );
   },
   all: () => {
@@ -167,7 +167,7 @@ async function scanForNew(
   repo,
   filter = () => true,
   keyMapper = (x) => x,
-  owner = 'open-telemetry'
+  owner = 'open-telemetry',
 ) {
   const result = await octokit.request(
     'GET /repos/{owner}/{repo}/contents/{path}',
@@ -175,7 +175,7 @@ async function scanForNew(
       owner,
       repo,
       path,
-    }
+    },
   );
   return result.data.reduce((carry, current) => {
     if (filter(current) && current.type === 'dir') {
@@ -188,7 +188,7 @@ async function scanForNew(
 
 async function scanForExisting(type, noDash = false) {
   const result = await octokit.request(
-    'GET /repos/open-telemetry/opentelemetry.io/contents/data/registry'
+    'GET /repos/open-telemetry/opentelemetry.io/contents/data/registry',
   );
   return result.data.reduce((carry, current) => {
     if (current.name.startsWith(type)) {
@@ -207,7 +207,7 @@ function createYaml(
   language,
   registryType,
   repo,
-  description
+  description,
 ) {
   return `title: ${title}
 registryType: ${registryType}
@@ -261,15 +261,15 @@ async function createFilesFromScanResult(existing, found, settings) {
       };
       try {
         const result = await octokit.request(
-          `GET ${new URL(current.url).pathname}/README.${readmeFormat}`
+          `GET ${new URL(current.url).pathname}/README.${readmeFormat}`,
         );
         parsedReadme = parseReadme(
           Buffer.from(result.data.content, 'base64').toString(),
-          readmeFormat
+          readmeFormat,
         );
       } catch (e) {
         console.warn(
-          `Request error while fetching README.md for ${currentKey}: ${e.message}`
+          `Request error while fetching README.md for ${currentKey}: ${e.message}`,
         );
       }
       const yaml = createYaml(
@@ -278,7 +278,7 @@ async function createFilesFromScanResult(existing, found, settings) {
         language,
         registryType,
         current.html_url,
-        parsedReadme.description
+        parsedReadme.description,
       );
       // collector entries are named reverse (collector-{registryTpe}) compared to languages ({registryTpe}-{language}), we fix this here.
       const fileName = (
@@ -306,9 +306,9 @@ async function scanByLanguage(
       .filter(
         (y) =>
           !['opentelemetry', registryType].includes(y) &&
-          !y.match(/^[0-9]+.[0-9]+$/)
+          !y.match(/^[0-9]+.[0-9]+$/),
       )
-      .join('')
+      .join(''),
 ) {
   // https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/
   const found = await scanForNew(path, repo, filter, keyMapper);
@@ -329,8 +329,8 @@ async function scanCollectorComponent(component) {
       component,
       'opentelemetry-collector-contrib',
       filter,
-      keyMapper
-    )
+      keyMapper,
+    ),
   );
   const existing = await scanForExisting(`collector-${component}`, true);
   createFilesFromScanResult(existing, found, {
@@ -343,7 +343,7 @@ async function scanCollectorComponent(component) {
 async function scanForGo() {
   const response = await (
     await fetch(
-      'https://pkg.go.dev/search?limit=100&m=package&q=go.opentelemetry.io%2Fcontrib%2Finstrumentation'
+      'https://pkg.go.dev/search?limit=100&m=package&q=go.opentelemetry.io%2Fcontrib%2Finstrumentation',
     )
   ).text();
   const $ = cheerioLoad(response);
@@ -387,7 +387,7 @@ async function scanForGo() {
         language,
         registryType,
         current.url,
-        current.description
+        current.description,
       );
       const fileName = `${registryType}-${language}-${current.title}.yml`;
       if (!ignoreList.includes(fileName)) {
