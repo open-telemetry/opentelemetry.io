@@ -47,7 +47,7 @@ receivers:
       - endpoint: https://httpbin.org/post
         method: POST
         headers:
-          test-key: "test-123"
+          test-key: 'test-123'
     collection_interval: 10s
 
 exporters:
@@ -59,9 +59,9 @@ processors:
 service:
   pipelines:
     metrics:
-        receivers: [httpcheck]
-        processors: [batch]
-        #exporters: [your-exporter]
+      receivers: [httpcheck]
+      processors: [batch]
+      #exporters: [your-exporter]
 ```
 
 ### Synthetic Test Output
@@ -88,8 +88,8 @@ Synthetic capabilities feel free to open an issue in the Collector-Contrib repo
 for the HTTP Check receiver or open a PR and add the capabilities yourself. All
 contributions and feedback are welcome and appreciated.
 
-For more complex browser based tests the [Selenium
-project](https://www.selenium.dev/documentation/grid/advanced_features/observability/)
+For more complex browser based tests the
+[Selenium project](https://www.selenium.dev/documentation/grid/advanced_features/observability/)
 has a native OpenTelemetry integration available. I'm hoping to write a follow
 up blog on how to leverage this data.
 

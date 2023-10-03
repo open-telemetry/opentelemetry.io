@@ -41,13 +41,13 @@ if (pathName.includes('registry')) {
     if (selectedLanguage !== 'all') {
       document.getElementById('languageDropdown').textContent =
         document.getElementById(
-          `language-item-${selectedLanguage}`,
+          `language-item-${selectedLanguage}`
         ).textContent;
     }
     if (selectedComponent !== 'all') {
       document.getElementById('componentDropdown').textContent =
         document.getElementById(
-          `component-item-${selectedComponent}`,
+          `component-item-${selectedComponent}`
         ).textContent;
     }
     updateFilters();
@@ -97,8 +97,8 @@ function populateResults(results) {
           snippetHighlights.push(
             match.value.substring(
               match.indices[0][0],
-              match.indices[0][1] - mvalue.indices[0][0] + 1,
-            ),
+              match.indices[0][1] - mvalue.indices[0][0] + 1
+            )
           );
         }
       });
@@ -110,7 +110,7 @@ function populateResults(results) {
 
     // Pull template from hugo template definition
     let templateDefinition = document.querySelector(
-      '#search-result-template',
+      '#search-result-template'
     ).innerHTML;
 
     // Replace values from template with search results
@@ -176,7 +176,7 @@ if (pathName.includes('registry')) {
           evt.target.textContent;
         setInput('language', val);
         updateFilters();
-      }),
+      })
     );
     typeList.forEach((element) =>
       element.addEventListener('click', function (evt) {
@@ -186,7 +186,7 @@ if (pathName.includes('registry')) {
           evt.target.textContent;
         setInput('component', val);
         updateFilters();
-      }),
+      })
     );
   });
 }

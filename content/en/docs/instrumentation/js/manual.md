@@ -359,7 +359,7 @@ const resource = Resource.default().merge(
   new Resource({
     [SemanticResourceAttributes.SERVICE_NAME]: 'service-name-here',
     [SemanticResourceAttributes.SERVICE_VERSION]: '0.1.0',
-  }),
+  })
 );
 
 const provider = new WebTracerProvider({
@@ -390,7 +390,7 @@ const resource = Resource.default().merge(
   new Resource({
     [SemanticResourceAttributes.SERVICE_NAME]: 'service-name-here',
     [SemanticResourceAttributes.SERVICE_VERSION]: '0.1.0',
-  }),
+  })
 );
 
 const provider = new WebTracerProvider({
@@ -442,7 +442,7 @@ import opentelemetry from '@opentelemetry/api';
 
 const tracer = opentelemetry.trace.getTracer(
   'instrumentation-scope-name',
-  'instrumentation-scope-version',
+  'instrumentation-scope-version'
 );
 
 // You can now use a 'tracer' to do tracing!
@@ -456,7 +456,7 @@ const opentelemetry = require('@opentelemetry/api');
 
 const tracer = opentelemetry.trace.getTracer(
   'instrumentation-scope-name',
-  'instrumentation-scope-version',
+  'instrumentation-scope-version'
 );
 
 // You can now use a 'tracer' to do tracing!
@@ -881,7 +881,7 @@ tracer.startActiveSpan(
     // do some work...
 
     span.end();
-  },
+  }
 );
 ```
 
@@ -894,7 +894,7 @@ function rollTheDice(rolls: number, min: number, max: number) {
     { attributes: { 'dicelib.rolls': rolls.toString() } },
     (span: Span) => {
       /* ... */
-    },
+    }
   );
 }
 ```
@@ -908,7 +908,7 @@ function rollTheDice(rolls, min, max) {
     { attributes: { 'dicelib.rolls': rolls.toString() } },
     (span) => {
       /* ... */
-    },
+    }
   );
 }
 ```
@@ -1182,7 +1182,7 @@ const doWork = (parent, i) => {
   // in the context, then use the resulting context to create a child span.
   const ctx = opentelemetry.trace.setSpan(
     opentelemetry.context.active(),
-    parent,
+    parent
   );
   const span = tracer.startSpan(`doWork:${i}`, undefined, ctx);
 
@@ -1280,7 +1280,7 @@ const resource = Resource.default().merge(
   new Resource({
     [SemanticResourceAttributes.SERVICE_NAME]: 'dice-server',
     [SemanticResourceAttributes.SERVICE_VERSION]: '0.1.0',
-  }),
+  })
 );
 
 const metricReader = new PeriodicExportingMetricReader({
@@ -1318,7 +1318,7 @@ const resource = Resource.default().merge(
   new Resource({
     [SemanticResourceAttributes.SERVICE_NAME]: 'service-name-here',
     [SemanticResourceAttributes.SERVICE_VERSION]: '0.1.0',
-  }),
+  })
 );
 
 const metricReader = new PeriodicExportingMetricReader({
@@ -1573,7 +1573,7 @@ const httpServerResponseDuration = myMeter.createHistogram(
     description: 'A distribution of the HTTP server response times',
     unit: 'milliseconds',
     valueType: ValueType.INT,
-  },
+  }
 );
 ```
 

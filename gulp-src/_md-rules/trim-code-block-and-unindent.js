@@ -32,7 +32,7 @@ function processToken(token) {
     (line) =>
       line.trim().length === 0
         ? '' // Blank-only lines
-        : line.substring(minIndent), // Unindent
+        : line.substring(minIndent) // Unindent
   );
   fixedLines = trimBlankLinesFromArray(fixedLines);
   const fixedContent = fixedLines.join('\n');
