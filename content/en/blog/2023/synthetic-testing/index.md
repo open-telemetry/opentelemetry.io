@@ -71,8 +71,8 @@ service:
 The receiver generates 3 metrics by default [httpcheck.duration /
 httpcheck.status / httpcheck.error]. The metrics can be used in visualizations
 or to define alerts. If no errors occur then the `httpcheck.error` chart won’t be
-populated. Here are some example screenshots from the httpcheck.duration and
-httpcheck.status metrics.
+populated. Here are some example screenshots from the `httpcheck.duration` and
+`httpcheck.status` metrics.
 
 #### Duration Check
 
