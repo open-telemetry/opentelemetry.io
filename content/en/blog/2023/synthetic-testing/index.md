@@ -1,6 +1,6 @@
 ---
-title: Portable Synthetic Ping Testing with OpenTelemetry
-linkTitle: Synthetic ping testing with OTel
+title: Portable Synthetic HTTP Testing with OpenTelemetry
+linkTitle: Synthetic HTTP testing with OTel
 date: 2023-10-05
 author: '[Carter Socha](https://github.com/cartersocha) (Lightstep)'
 cSpell:ignore: httpcheck
@@ -11,7 +11,7 @@ used to measure application SLAs, monitor endpoints in various geographies,
 navigate a web page like a user, or identify post deployment errors before your
 customers encounter them.
 
-This blog is going to focus on ping based Synthetic testing. Many vendors offer
+This blog is going to focus on HTTP based synthetic availability testing. Many vendors offer
 various ping test options with generous free tiers but monitoring endpoints at
 enterprise scale can quickly spiral into 1000s of ping tests that can’t be
 easily transferred when migrating Observability vendors. OpenTelemetry (OTel) is
@@ -20,18 +20,19 @@ visibility into their services and get the most out of their Observability
 investments without the need to continually recreate the same capabilities.
 
 The community is excited to continually improve the project's capabilities and
-OTel has now expanded our coverage to Synthetics. As of the v0.63.0 release, the
-OTel Collector supports synthetic HTTP checks via a receiver called the HTTP
-Check receiver. This component sends a request via HTTP or HTTPS and produces
-metrics to capture the duration of the request and record the returned status
-code. You can now deploy an agent to your preferred environment to test public
-OR private endpoints without the need to whitelist IPs in your firewall and
-transfer the tests between your preferred destination like any other piece of
-OTel data.
+OTel has now expanded our coverage to synthetics. As of the [v0.63.0
+release](https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.63.0),
+the [OTel Collector](https://opentelemetry.io/docs/collector/) supports
+synthetic HTTP checks via a receiver called the HTTP Check receiver. This
+component sends a request via HTTP or HTTPS and produces metrics to capture the
+duration of the request and record the returned status code. You can now deploy
+an agent to your preferred environment to test public OR private endpoints
+without the need to whitelist IPs in your firewall and transfer the tests
+between your preferred destination like any other piece of OTel data.
 
 ### Deploy your first OTel Synthetic ping test(s)
 
-Getting started with OTel Synthetics is simple. You configure your Collector
+Getting started with OTel synthetics is simple. You configure your Collector
 like usual and add the HTTP Check receiver with your chosen endpoints, HTTP
 verb, and collection interval. Here’s a basic Collector configuration to get you
 started. Sending a request body is not supported yet but you can still send
