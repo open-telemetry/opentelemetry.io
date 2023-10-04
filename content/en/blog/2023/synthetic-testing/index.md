@@ -20,10 +20,10 @@ help users maximize their visibility into their services and get the most out of
 their Observability investments without the need to continually recreate the
 same capabilities.
 
-The community is excited to continually improve the project's capabilities and
-OTel has now expanded our coverage to synthetics. As of the
+The community is continually improving the project's capabilities and it can be
+easy to miss new features. In the
 [v0.63.0 release](https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.63.0),
-the [OTel Collector](https://opentelemetry.io/docs/collector/) supports
+the [OTel Collector](https://opentelemetry.io/docs/collector/) added support for
 synthetic HTTP checks via a receiver called the
 [HTTP Check Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/httpcheckreceiver).
 This component sends a request via HTTP or HTTPS and produces metrics to capture
