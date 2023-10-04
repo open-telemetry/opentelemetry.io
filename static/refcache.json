@@ -3319,6 +3319,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-09-13T09:15:50.916636+02:00"
   },
+  "https://github.com/open-telemetry/semantic-conventions/issues": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-04T16:21:02.354732+02:00"
+  },
   "https://github.com/open-telemetry/semantic-conventions/issues/new": {
     "StatusCode": 200,
     "LastSeen": "2023-07-06T18:29:34.673526-04:00"
