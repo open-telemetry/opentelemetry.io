@@ -23,7 +23,7 @@ The community is excited to continually improve the project's capabilities and
 OTel has now expanded our coverage to synthetics. As of the [v0.63.0
 release](https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.63.0),
 the [OTel Collector](https://opentelemetry.io/docs/collector/) supports
-synthetic HTTP checks via a receiver called the HTTP Check receiver. This
+synthetic HTTP checks via a receiver called the [HTTP Check Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/httpcheckreceiver). This
 component sends a request via HTTP or HTTPS and produces metrics to capture the
 duration of the request and record the returned status code. You can now deploy
 an agent to your preferred environment to test public OR private endpoints
