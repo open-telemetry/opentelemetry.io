@@ -12,7 +12,7 @@ navigate a web page like a user, or identify post deployment errors before your
 customers encounter them.
 
 This blog is going to focus on HTTP based synthetic availability testing. Many vendors offer
-various ping test options with generous free tiers but monitoring endpoints at
+various options for availability testing with generous free tiers but monitoring endpoints at
 enterprise scale can quickly spiral into 1000s of ping tests that can’t be
 easily transferred when migrating Observability vendors. OpenTelemetry (OTel) is
 committed to the portability of Observability data to help users maximize their
