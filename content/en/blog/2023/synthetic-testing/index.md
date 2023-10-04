@@ -1,6 +1,6 @@
 ---
 title: Portable Synthetic HTTP Testing with OpenTelemetry
-linkTitle: Synthetic HTTP testing with OTel
+linkTitle: Synthetic HTTP testing
 date: 2023-10-05
 author: '[Carter Socha](https://github.com/cartersocha) (Lightstep)'
 cSpell:ignore: httpcheck
