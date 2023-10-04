@@ -37,18 +37,52 @@ for a wide variety of technologies (e.g. databases or messaging systems). When
 libraries follow conventions, many scenarios may be enabled out of the box
 without the user's input or configuration.
 
+Semantic conventions are always evolving and new ones are constantly added. If
+some don't exist for your library, then please consider
+[adding them](https://github.com/open-telemetry/semantic-conventions/issues).
+Pay special attention to span names; strive to use meaningful names and consider
+cardinality when defining them.
+
+There is a [`schema_url`](/docs/specs/otel/schemas/#schema-url) attribute that
+can be used to record what version of the semantic conventions are being used.
+Please set this attribute, when possible.
+
 If you have any feedback or want to add a new convention - please come and
 contribute!
 [Instrumentation Slack](https://cloud-native.slack.com/archives/C01QZFGMLQ7) or
 [Specification repository](https://github.com/open-telemetry/opentelemetry-specification)
 are a good places to start!
 
+### Defining spans
+
+Think of your library from the perspective of a library user and what the user
+might be interested in knowing about the behavior and activity of the library.
+As the library maintainer, you know the internals but the user will most likely
+be less interested in the inner-workings of the library and more interested in
+the functionality of their application. Think about what information can be
+helpful in analyzing the usage of your library, then think about an appropriate
+way to model that data. Some things to consider are:
+
+- Spans and span hierarchies
+- Numerical attributes on spans (as an alternative to aggregated metrics)
+- Span events
+- Aggregated Metrics
+
+For example, if your library is making requests to a database, create spans only
+for the logical request to the database. The physical requests over the network
+should be instrumented within the libraries implementing that functionality. You
+should also favor capturing other activities, like object/data serialization as
+span events, rather than as additional spans.
+
+Follow the semantic conventions when setting span attributes.
+
 ## When **not** to instrument
 
 Some libraries are thin clients wrapping network calls. Chances are that
 OpenTelemetry has an instrumentation library for the underlying RPC client
 (check out the [registry](/ecosystem/registry/)). In this case, instrumenting
-the wrapper library may not be necessary.
+the wrapper library may not be necessary. As a general guideline, only
+instrument your library at its own level.
 
 Don't instrument if:
 
