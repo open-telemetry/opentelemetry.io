@@ -86,7 +86,7 @@ populated. Here are some example screenshots from the `httpcheck.duration` and
 
 Synthetic testing is an exciting new capability for OTel that the community
 hopes to evolve over time. If you have any specific requests around new
-Synthetic capabilities feel free to open an issue in the Collector-Contrib repo
+Synthetic capabilities feel free to open an issue in the [opentelemetry-collector-contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/) repository
 for the HTTP Check receiver or open a PR and add the capabilities yourself. All
 contributions and feedback are welcome and appreciated.
 
