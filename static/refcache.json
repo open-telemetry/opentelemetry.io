@@ -5143,6 +5143,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:51:07.853836-04:00"
   },
+  "https://vapor.codes": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-04T17:37:06.474654+02:00"
+  },
   "https://vote.heliosvoting.org/helios/elections/1ee70ee4-11ce-11ee-aaf8-0a8c9aac83f9/view": {
     "StatusCode": 200,
     "LastSeen": "2023-09-28T17:11:11.729958-04:00"
@@ -5938,6 +5942,10 @@
   "https://www.splunk.com/en_us/blog/conf-splunklive/announcing-native-opentelemetry-support-in-splunk-apm.html": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:37:23.395802-04:00"
+  },
+  "https://www.swift.org/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-04T17:37:06.111313+02:00"
   },
   "https://www.tablecheck.com": {
     "StatusCode": 200,
