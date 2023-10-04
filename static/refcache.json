@@ -2459,6 +2459,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:44:30.36936-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.63.0": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-04T14:20:47.0749-07:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.70.0": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:41:22.878105-04:00"
@@ -4643,6 +4647,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:38:15.529629-04:00"
   },
+  "https://playwright.dev/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-04T14:20:47.298107-07:00"
+  },
   "https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T07:49:47.370691-04:00"
@@ -4898,6 +4906,10 @@
   "https://seecfp.com/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:53:24.456273-04:00"
+  },
+  "https://selenium.dev": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-04T14:20:25.373481-07:00"
   },
   "https://semver.org/#spec-item-11": {
     "StatusCode": 206,
@@ -5914,6 +5926,10 @@
   "https://www.rust-lang.org/": {
     "StatusCode": 206,
     "LastSeen": "2023-08-03T17:44:09.160658+02:00"
+  },
+  "https://www.selenium.dev/documentation/grid/advanced_features/observability/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-04T14:20:25.600432-07:00"
   },
   "https://www.sentrysoftware.com/blog/2022-07-19/why-sentry-software-chose-opentelemetry-for-hardware-sentry.html": {
     "StatusCode": 206,
