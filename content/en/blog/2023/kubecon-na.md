@@ -56,8 +56,8 @@ OpenTelemetry maintainers in making OpenTelemetry better for everyone during the
   by Morgan McLean, Splunk & Dan Jaglowski, observIQ<br> Wednesday, November 8 •
   2:30pm - 3:05pm
 - **[Empowering Users Through Platform Engineering: Unleashing the Potential of Self-Service Tooling](https://sched.co/1R2rW)**<br>
-  by Ana Margarita Medina & Adriana Villela, Lightstep<br> Wednesday, November 8 •
-  2:30pm - 3:05pm
+  by Ana Margarita Medina & Adriana Villela, Lightstep<br> Wednesday, November 8
+  • 2:30pm - 3:05pm
 - **[Jaeger the Future with OpenTelemetry and Metrics](https://sched.co/1R2q1)**<br>
   by Pavol Loffay, Red Hat<br> Wednesday, November 8 • 3:25pm - 4:00pm
 - **[Tutorial: OpenTelemetry 101: Let's Instrument!](https://sched.co/1R2sI)**<br>
