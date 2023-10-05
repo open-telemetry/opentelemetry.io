@@ -1,4 +1,4 @@
-# cSpell:ignore containerd buildx Quarkus Cerbos
+# cSpell:ignore containerd buildx Quarkus Cerbos flagd flipt
 - name: containerd
   url: https://containerd.io/
   docsUrl: https://github.com/containerd/containerd/blob/main/docs/tracing.md
