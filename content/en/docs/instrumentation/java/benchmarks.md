@@ -53,8 +53,8 @@ performance testing.
           for (const bench of benches) {
             const result = {commit, date, tool, bench};
             let index = bench.name.lastIndexOf(".");
-            const benchName = bench.name.substring(0, index)
-            const testName = bench.name.substring(index + 1) + ` (${bench.extra})`;
+            const benchName = bench.name.substring(0, index);
+            const testName = `${bench.name.substring(index + 1)} (${bench.extra})`;
             let byName = byGroup.get(benchName);
             if (byName === undefined) {
               byName = new Map();
