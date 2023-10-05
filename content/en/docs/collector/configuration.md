@@ -502,7 +502,7 @@ consists of three sub-sections:
 - pipelines
 - telemetry
 
-### Extensions  {#service-extensions}
+### Extensions {#service-extensions}
 
 Extensions consist of a list of all extensions to enable. For example:
 
