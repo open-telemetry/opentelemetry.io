@@ -488,7 +488,7 @@ rules:
       - list
       - watch
   - apiGroups:
-  - extensions
+    - extensions
     resources:
     - daemonsets
     - deployments
