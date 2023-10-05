@@ -459,7 +459,7 @@ metadata:
   name: otel-collector-opentelemetry-collector
 rules:
   - apiGroups:
-      - ""
+      - ''
     resources:
       - events
       - namespaces
@@ -488,17 +488,17 @@ rules:
       - list
       - watch
   - apiGroups:
-    - extensions
+      - extensions
     resources:
-    - daemonsets
-    - deployments
-    - replicasets
+      - daemonsets
+      - deployments
+      - replicasets
     verbs:
-    - get
-    - list
-    - watch
+      - get
+      - list
+      - watch
   - apiGroups:
-    - batch
+      - batch
     resources:
       - jobs
       - cronjobs
