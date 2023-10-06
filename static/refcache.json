@@ -4427,6 +4427,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-07-06T12:30:08.47481+02:00"
   },
+  "https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk_trace_base.SpanExporter.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-06T17:09:40.662318+02:00"
+  },
   "https://opencensus.io": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:41:25.613303-04:00"
@@ -4858,6 +4862,10 @@
   "https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:41:47.580871-04:00"
+  },
+  "https://prometheus.io/docs/prometheus/latest/feature_flags/#otlp-receiver": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-06T17:09:40.323028+02:00"
   },
   "https://prometheus.io/docs/prometheus/latest/federation/": {
     "StatusCode": 206,
