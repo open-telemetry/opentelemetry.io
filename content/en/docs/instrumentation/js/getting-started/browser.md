@@ -1,6 +1,7 @@
 ---
 title: Browser
 aliases: [/docs/js/getting_started/browser]
+description: Learn how to add OpenTelemetry to your browser app
 weight: 20
 ---
 

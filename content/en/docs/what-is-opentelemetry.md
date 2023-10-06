@@ -41,12 +41,12 @@ OpenTelemetry consists of the following major components:
   [OpenTelemetry Helm Charts](/docs/kubernetes/helm/), and
   [community assets for FaaS](/docs/faas/)
 
-OpenTelemetry is compatible with a wide variety of open source
+OpenTelemetry is compatible with a wide variety of
 [ecosystem integrations](/ecosystem/integrations/).
 
-OpenTelemetry is supported by a vast number of [vendors](/ecosystem/vendors/),
-many of whom provide commercial support for OpenTelemetry and contribute to the
-project directly.
+OpenTelemetry is supported by 40+ [vendors](/ecosystem/vendors/), many of whom
+provide commercial support for OpenTelemetry and contribute to the project
+directly.
 
 ## Extensibility
 

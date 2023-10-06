@@ -49,14 +49,15 @@ spec:
     processors:
 
     exporters:
-      logging:
+      # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
+      debug:
 
     service:
       pipelines:
         traces:
           receivers: [otlp]
           processors: []
-          exporters: [logging]
+          exporters: [debug]
 EOF
 ```
 

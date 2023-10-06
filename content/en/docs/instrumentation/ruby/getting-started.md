@@ -9,8 +9,8 @@ weight: 10
 
 This page will show you how to get started with OpenTelemetry in Ruby.
 
-You will learn how you can instrument a simple application automatically, in
-such a way that [traces][], [metrics][] and [logs][] are emitted to the console.
+You will learn how you can instrument a simple application, in such a way that
+[traces][] are emitted to the console.
 
 ## Prerequisites
 
@@ -96,7 +96,7 @@ bundle add opentelemetry-sdk opentelemetry-instrumentation-all
 ```
 
 The inclusion of `opentelemetry-instrumentation-all` provides
-[instrumentations][auto] for Rails, Sinatra, several HTTP libraries, and more.
+[instrumentations][] for Rails, Sinatra, several HTTP libraries, and more.
 
 For Rails applications, the usual way to initialize OpenTelemetry is in a Rails
 initializer. For other Ruby services, perform this initialization as early as
@@ -190,9 +190,7 @@ a few more features that will allow you gain even deeper insights!
   [Email Service](/docs/demo/services/email/).
 
 [traces]: /docs/concepts/signals/traces/
-[metrics]: /docs/concepts/signals/metrics/
-[logs]: /docs/concepts/signals/logs/
-[auto]:
+[instrumentations]:
   https://github.com/open-telemetry/opentelemetry-ruby#instrumentation-libraries
 [config]: ../automatic/#configuring-specific-instrumentation-libraries
 [exporters]: ../exporters/

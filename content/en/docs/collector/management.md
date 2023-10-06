@@ -2,7 +2,7 @@
 title: Management
 description: How to manage your OpenTelemetry collector deployment at scale
 weight: 23
-cSpell:ignore: AFVGQT backpressure distro GRRKNBJE hostmetrics
+cSpell:ignore: AFVGQT backpressure distro GRRKNBJE hostmetrics loglevel
 ---
 
 This document describes how you can manage your OpenTelemetry collector
@@ -147,14 +147,15 @@ receivers:
       network:
 
 exporters:
-  logging:
+  # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
+  debug:
     verbosity: detailed
 
 service:
   pipelines:
     metrics:
       receivers: [hostmetrics, prometheus/own_metrics]
-      exporters: [logging]
+      exporters: [debug]
 ```
 
 Now it's time to launch the supervisor (which in turn will launch your

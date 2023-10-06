@@ -79,22 +79,23 @@ spec:
         timeout: 10s
 
     exporters:
-      logging:
+      # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
+      debug:
 
     service:
       pipelines:
         traces:
           receivers: [otlp]
           processors: [memory_limiter, batch]
-          exporters: [logging]
+          exporters: [debug]
         metrics:
           receivers: [otlp]
           processors: [memory_limiter, batch]
-          exporters: [logging]
+          exporters: [debug]
         logs:
           receivers: [otlp]
           processors: [memory_limiter, batch]
-          exporters: [logging]
+          exporters: [debug]
 EOF
 ```
 

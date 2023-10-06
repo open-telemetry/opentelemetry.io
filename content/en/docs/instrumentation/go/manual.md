@@ -298,9 +298,9 @@ serializing the context.
 ## Metrics
 
 To start producing [metrics](/docs/concepts/signals/metrics), you'll need to
-have an initialized `MeterProvider` that lets you create a `Meter`. `Meter`s let
-you create `Instrument`s that you can use to create different kinds of metrics.
-OpenTelemetry Go currently supports the following `Instrument`s:
+have an initialized `MeterProvider` that lets you create a `Meter`. Meters let
+you create instruments that you can use to create different kinds of metrics.
+OpenTelemetry Go currently supports the following instruments:
 
 - Counter, a synchronous instrument that supports non-negative increments
 - Asynchronous Counter, an asynchronous instrument which supports non-negative
@@ -374,18 +374,19 @@ import (
 )
 
 func main() {
+	// Create resource.
 	res, err := newResource()
 	if err != nil {
 		panic(err)
 	}
 
+	// Create a meter provider.
+	// You can pass this instance directly to your instrumented code if it
+	// accepts a MeterProvider instance.
 	meterProvider, err := newMeterProvider(res)
 	if err != nil {
 		panic(err)
 	}
-
-	// Set the global meter provider.
-	otel.SetMeterProvider(meterProvider)
 
 	// Handle shutdown properly so nothing leaks.
 	defer func() {
@@ -393,12 +394,19 @@ func main() {
 			log.Println(err)
 		}
 	}()
+
+	// Register as global meter provider so that it can be used via otel.Meter
+	// and accessed using otel.GetMeterProvider.
+	// Most instrumentation libraries use the global meter provider as default.
+	// If the global meter provider is not set then a no-op implementation
+	// is used, which fails to generate data.
+	otel.SetMeterProvider(meterProvider)
 }
 
 func newResource() (*resource.Resource, error) {
 	return resource.Merge(resource.Default(),
 		resource.NewWithAttributes(semconv.SchemaURL,
-			semconv.ServiceName("dice"),
+			semconv.ServiceName("my-service"),
 			semconv.ServiceVersion("0.1.0"),
 		))
 }
