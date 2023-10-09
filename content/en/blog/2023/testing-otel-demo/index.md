@@ -376,6 +376,7 @@ order details as `pascalCase` in `JSON`:
       "currencyCode": "USD",
     },
     // ...
+  }
 }
 ```
 
@@ -390,6 +391,7 @@ We should pass them as `snake_case`, which the Checkout service does correctly:
       "currency_code": "USD",
     },
     // ...
+  }
 }
 ```
 

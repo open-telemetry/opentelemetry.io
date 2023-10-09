@@ -1001,7 +1001,7 @@ const someFunction = (spanToLinkFrom) => {
     ]
   };
 
-  tracer.startActiveSpan('app.someFunction', options: options, span => {
+  tracer.startActiveSpan('app.someFunction', options, span => {
     // Do some work...
 
     span.end();

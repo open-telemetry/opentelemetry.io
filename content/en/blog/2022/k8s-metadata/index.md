@@ -4,7 +4,7 @@ linkTitle: Kubernetes metadata
 date: 2022-06-29
 author: '[Ruben Vargas](https://github.com/rubenvp8510)'
 # prettier-ignore
-cSpell:ignore: k8sattributes k8sattributesprocessor k8sprocessor KUBE replicaset resourcedetection
+cSpell:ignore: k8sattributes k8sattributesprocessor k8sprocessor KUBE replicaset resourcedetection replicasetname
 ---
 
 {{% alert title="Note" color="info" %}} The most up to date information for how
@@ -230,10 +230,7 @@ Here's an example of the value of the environment variable:
 
 ```yaml
 - name: OTEL_RESOURCE_ATTRIBUTES
-  value: k8s.deployment.name=dep-vert-x,k8s.deployment.uid=ef3fe26b-a690-4746-9119-d2dbd94b469f,
-  k8s.namespace.name=default,k8s.node.name=$(OTEL_RESOURCE_ATTRIBUTES_NODE_NAME),k8s.pod.name=
-  (OTEL_RESOURCE_ATTRIBUTES_POD_NAME),k8s.pod.uid=$(OTEL_RESOURCE_ATTRIBUTES_POD_UID),k8s.replicaset
-  name=dep-vert-x-59b6f76585,k8s.replicaset.uid=5127bc38-e298-40e1-95df-f4a777e3176c
+  value: k8s.deployment.name=dep-vert-x,k8s.deployment.uid=ef3fe26b-a690-4746-9119-d2dbd94b469f,k8s.namespace.name=default,k8s.node.name=$(OTEL_RESOURCE_ATTRIBUTES_NODE_NAME),k8s.pod.name=(OTEL_RESOURCE_ATTRIBUTES_POD_NAME),k8s.pod.uid=$(OTEL_RESOURCE_ATTRIBUTES_POD_UID),k8s.replicasetname=dep-vert-x-59b6f76585,k8s.replicaset.uid=5127bc38-e298-40e1-95df-f4a777e3176c
 ```
 
 ## Learn more

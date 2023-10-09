@@ -60,7 +60,7 @@ related fields, see the
 A typical configuration might look like this:
 
 ```yaml
-plugins
+plugins:
   ... # Other plugins that have been enabled
   - opentelemetry
 plugin_attr:
