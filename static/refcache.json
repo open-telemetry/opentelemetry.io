@@ -1675,9 +1675,17 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-30T09:37:41.317466-04:00"
   },
+  "https://flagd.dev/reference/monitoring/#opentelemetry": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-05T19:46:14.848958+02:00"
+  },
   "https://flask.palletsprojects.com/": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T11:44:01.171326-04:00"
+  },
+  "https://flipt.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-05T19:46:12.612166+02:00"
   },
   "https://fluentbit.io": {
     "StatusCode": 206,
@@ -2458,6 +2466,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector/releases": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:44:30.36936-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.63.0": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-04T17:14:46.78217-07:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.70.0": {
     "StatusCode": 200,
@@ -4279,6 +4291,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:37:38.705465-04:00"
   },
+  "https://openfeature.dev/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-05T19:47:00.973306+02:00"
+  },
   "https://openid.net/specs/openid-connect-core-1_0.html#IDToken": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:40:26.543854-04:00"
@@ -4642,6 +4658,14 @@
   "https://pkgs.alpinelinux.org/packages": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:38:15.529629-04:00"
+  },
+  "https://playwright.dev/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-04T17:14:47.324713-07:00"
+  },
+  "https://plugins.jenkins.io/opentelemetry/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-05T19:46:14.084327+02:00"
   },
   "https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html": {
     "StatusCode": 200,
@@ -5387,6 +5411,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-07-07T17:13:23.688913+02:00"
   },
+  "https://www.flipt.io/docs/configuration/observability#tracing": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-05T19:46:12.968304+02:00"
+  },
   "https://www.fulcrumapp.com": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T09:21:53.962879-04:00"
@@ -5566,6 +5594,10 @@
   "https://www.jenkins.io": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T09:37:51.737601-04:00"
+  },
+  "https://www.jenkins.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-05T19:46:13.272129+02:00"
   },
   "https://www.jsonrpc.org/": {
     "StatusCode": 206,
@@ -5918,6 +5950,10 @@
   "https://www.rust-lang.org/": {
     "StatusCode": 206,
     "LastSeen": "2023-08-03T17:44:09.160658+02:00"
+  },
+  "https://www.selenium.dev/documentation/grid/advanced_features/observability/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-04T17:14:47.106022-07:00"
   },
   "https://www.sentrysoftware.com/blog/2022-07-19/why-sentry-software-chose-opentelemetry-for-hardware-sentry.html": {
     "StatusCode": 206,

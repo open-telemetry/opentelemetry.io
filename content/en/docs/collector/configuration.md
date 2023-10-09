@@ -502,12 +502,16 @@ consists of three sub-sections:
 - pipelines
 - telemetry
 
+### Extensions {#service-extensions}
+
 Extensions consist of a list of all extensions to enable. For example:
 
 ```yaml
 service:
   extensions: [health_check, pprof, zpages]
 ```
+
+### Pipelines
 
 Pipelines can be of the following types:
 
@@ -539,6 +543,8 @@ service:
       processors: [batch]
       exporters: [opencensus, zipkin]
 ```
+
+### Telemetry
 
 Telemetry is where the telemetry for the collector itself can be configured. It
 has two subsections: `logs` and `metrics`.
