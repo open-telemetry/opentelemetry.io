@@ -157,7 +157,7 @@ Before spinning up the containers, update line 3 in `opentelemetry_module.conf`
 to have the right exporter endpoint:
 
 ```nginx
-NginxModuleEnabled ON; 
+NginxModuleEnabled ON;
 NginxModuleOtelSpanExporter otlp;
 NginxModuleOtelExporterEndpoint collector:4317;
 ```

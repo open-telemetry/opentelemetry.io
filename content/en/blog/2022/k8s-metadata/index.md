@@ -4,7 +4,7 @@ linkTitle: Kubernetes metadata
 date: 2022-06-29
 author: '[Ruben Vargas](https://github.com/rubenvp8510)'
 # prettier-ignore
-cSpell:ignore: k8sattributes k8sattributesprocessor k8sprocessor KUBE replicaset resourcedetection replicasetname
+cSpell:ignore: k8sattributes k8sattributesprocessor k8sprocessor KUBE replicaset replicasetname resourcedetection
 ---
 
 {{% alert title="Note" color="info" %}} The most up to date information for how

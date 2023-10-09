@@ -996,17 +996,17 @@ const someFunction = (spanToLinkFrom) => {
   const options = {
     links: [
       {
-         context: spanToLinkFrom.spanContext()
-      }
-    ]
+        context: spanToLinkFrom.spanContext(),
+      },
+    ],
   };
 
-  tracer.startActiveSpan('app.someFunction', options, span => {
+  tracer.startActiveSpan('app.someFunction', options, (span) => {
     // Do some work...
 
     span.end();
   });
-}
+};
 ```
 
 ### Span Status
