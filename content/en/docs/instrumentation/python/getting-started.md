@@ -9,7 +9,7 @@ weight: 10
 This page will show you how to get started with OpenTelemetry in Python.
 
 You will learn how you can instrument a simple application automatically, in
-such a way that [traces][] and [metrics][] are emitted to the console.
+such a way that [traces][], [metrics][], and [logs][] are emitted to the console.
 
 ## Prerequisites
 
@@ -42,7 +42,7 @@ source ./bin/activate
 Now install Flask:
 
 ```shell
-pip install flask
+pip install "flask<3"
 ```
 
 ### Create and launch an HTTP Server
@@ -102,6 +102,8 @@ it print to the console for now:
 opentelemetry-instrument \
     --traces_exporter console \
     --metrics_exporter console \
+    --logs_exporter console \
+    --service_name dice-server \
     flask run -p 8080
 ```
 
@@ -710,3 +712,4 @@ If you'd like to explore a more complex example, take a look at the
 
 [traces]: /docs/concepts/signals/traces/
 [metrics]: /docs/concepts/signals/metrics/
+[logs]: /docs/concepts/signals/logs/
