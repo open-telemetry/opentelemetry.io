@@ -255,7 +255,7 @@
   distribution: true
   nativeOTLP: true
   url: 'https://help.sumologic.com/docs/send-data/opentelemetry-collector/'
-  contact: ''
+  contact: 'https://github.com/astencel-sumo'
   oss: false
   commercial: true
 - name: TelemetryHub
