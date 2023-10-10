@@ -3687,6 +3687,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:03:38.709294-04:00"
   },
+  "https://help.sumologic.com/docs/send-data/opentelemetry-collector/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-09T19:36:59.126993+02:00"
+  },
   "https://heroku.com": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:12:39.965089-04:00"
@@ -4870,6 +4874,10 @@
   "https://sched.co/1R2nO": {
     "StatusCode": 200,
     "LastSeen": "2023-09-11T17:29:33.640586+02:00"
+  },
+  "https://sched.co/1R2oA": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-10T17:29:25.395063132Z"
   },
   "https://sched.co/1R2oQ": {
     "StatusCode": 200,

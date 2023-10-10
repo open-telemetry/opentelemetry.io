@@ -78,7 +78,7 @@ imported as a dependency by the app.
 
 Create the _library file_ name `Dice.java` and add the following code to it:
 
-```Java
+```java
 package otel;
 
 import java.util.ArrayList;
