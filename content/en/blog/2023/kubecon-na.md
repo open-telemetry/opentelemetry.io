@@ -40,6 +40,8 @@ OpenTelemetry maintainers in making OpenTelemetry better for everyone during the
 - **[Leverage Contextual and Structured Logging in K8s for Enhanced Monitoring](https://sched.co/1R2oQ)**<br>
   by Patrick Ohly, Intel & Shivanshu Raj Shrivastava, Independent<br> Tuesday,
   November 7 • 3:25pm - 4:00pm
+- **[Build in Observability While Developing](https://sched.co/1R2oA)**<br>
+  by Jamie Danielson, Honeycomb.io<br> Tuesday, November 7 • 3:25pm - 4:00pm
 - **[E2E Observability for Connected Vehicle Service via Distributed Tracing](https://sched.co/1R2oh)**<br>
   by Kota Endo, KDDI Corporation & Masanori Itoh, Toyota Motor Corporation<br>
   Tuesday, November 7 • 4:30pm - 5:05pm
