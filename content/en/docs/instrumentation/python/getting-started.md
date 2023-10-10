@@ -2,14 +2,15 @@
 title: Getting Started
 description: Get telemetry for your app in less than 5 minutes!
 # prettier-ignore
-cSpell:ignore: debugexporter diceroller distro loglevel randint rolldice rollspan venv
+cSpell:ignore: debugexporter diceroller distro loglevel maxlen randint rolldice rollspan venv
 weight: 10
 ---
 
 This page will show you how to get started with OpenTelemetry in Python.
 
 You will learn how you can instrument a simple application automatically, in
-such a way that [traces][], [metrics][], and [logs][] are emitted to the console.
+such a way that [traces][], [metrics][], and [logs][] are emitted to the
+console.
 
 ## Prerequisites
 
@@ -51,13 +52,22 @@ Create a file `app.py` and add the following code to it:
 
 ```python
 from random import randint
-from flask import Flask
+from flask import Flask, request
+import logging
 
 app = Flask(__name__)
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 @app.route("/rolldice")
 def roll_dice():
-    return str(roll())
+    player = request.args.get('player', default = None, type = str)
+    result = str(roll())
+    if player:
+        logger.warn("{} is rolling the dice: {}", player, result)
+    else:
+        logger.warn("Anonymous player is rolling the dice: %s", result)
+    return result
 
 def roll():
     return randint(1, 6)
@@ -99,6 +109,7 @@ You can now run your instrumented app with `opentelemetry-instrument` and have
 it print to the console for now:
 
 ```shell
+export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
 opentelemetry-instrument \
     --traces_exporter console \
     --metrics_exporter console \
@@ -116,51 +127,69 @@ as the following:
 
 ```json
 {
-  "name": "/rolldice",
-  "context": {
-    "trace_id": "0xdcd253b9501348b63369d83219da0b14",
-    "span_id": "0x886c05bc23d2250e",
-    "trace_state": "[]"
-  },
-  "kind": "SpanKind.SERVER",
-  "parent_id": null,
-  "start_time": "2022-04-27T23:53:11.533109Z",
-  "end_time": "2022-04-27T23:53:11.534097Z",
-  "status": {
-    "status_code": "UNSET"
-  },
-  "attributes": {
-    "http.method": "GET",
-    "http.server_name": "127.0.0.1",
-    "http.scheme": "http",
-    "net.host.port": 5000,
-    "http.host": "localhost:5000",
-    "http.target": "/rolldice",
-    "net.peer.ip": "127.0.0.1",
-    "http.user_agent": "curl/7.68.0",
-    "net.peer.port": 52538,
-    "http.flavor": "1.1",
-    "http.route": "/rolldice",
-    "http.status_code": 200
-  },
-  "events": [],
-  "links": [],
-  "resource": {
-    "attributes": {
-      "telemetry.sdk.language": "python",
-      "telemetry.sdk.name": "opentelemetry",
-      "telemetry.sdk.version": "1.14.0",
-      "telemetry.auto.version": "0.35b0",
-      "service.name": "unknown_service"
+    "name": "/rolldice",
+    "context": {
+        "trace_id": "0xdb1fc322141e64eb84f5bd8a8b1c6d1f",
+        "span_id": "0x5c2b0f851030d17d",
+        "trace_state": "[]"
     },
-    "schema_url": ""
-  }
+    "kind": "SpanKind.SERVER",
+    "parent_id": null,
+    "start_time": "2023-10-10T08:14:32.630332Z",
+    "end_time": "2023-10-10T08:14:32.631523Z",
+    "status": {
+        "status_code": "UNSET"
+    },
+    "attributes": {
+        "http.method": "GET",
+        "http.server_name": "127.0.0.1",
+        "http.scheme": "http",
+        "net.host.port": 8080,
+        "http.host": "localhost:8080",
+        "http.target": "/rolldice?rolls=12",
+        "net.peer.ip": "127.0.0.1",
+        "http.user_agent": "curl/8.1.2",
+        "net.peer.port": 58419,
+        "http.flavor": "1.1",
+        "http.route": "/rolldice",
+        "http.status_code": 200
+    },
+    "events": [],
+    "links": [],
+    "resource": {
+        "attributes": {
+            "telemetry.sdk.language": "python",
+            "telemetry.sdk.name": "opentelemetry",
+            "telemetry.sdk.version": "1.17.0",
+            "service.name": "dice-server",
+            "telemetry.auto.version": "0.38b0"
+        },
+        "schema_url": ""
+    }
+}
+{
+    "body": "Anonymous player is rolling the dice: 3",
+    "severity_number": "<SeverityNumber.WARN: 13>",
+    "severity_text": "WARNING",
+    "attributes": {
+        "otelSpanID": "5c2b0f851030d17d",
+        "otelTraceID": "db1fc322141e64eb84f5bd8a8b1c6d1f",
+        "otelServiceName": "dice-server"
+    },
+    "timestamp": "2023-10-10T08:14:32.631195Z",
+    "trace_id": "0xdb1fc322141e64eb84f5bd8a8b1c6d1f",
+    "span_id": "0x5c2b0f851030d17d",
+    "trace_flags": 1,
+    "resource": "BoundedAttributes({'telemetry.sdk.language': 'python', 'telemetry.sdk.name': 'opentelemetry', 'telemetry.sdk.version': '1.17.0', 'service.name': 'dice-server', 'telemetry.auto.version': '0.38b0'}, maxlen=None)"
 }
 ```
 
 </details>
 
 The generated span tracks the lifetime of a request to the `/rolldice` route.
+
+The log line emitted during the request contains the same trace ID and span ID
+and is exported to the console via the log exporter.
 
 Send a few more requests to the endpoint, and then either wait for a little bit
 or terminate the app and you'll see metrics in the console output, such as the
@@ -271,9 +300,6 @@ First, modify `app.py` to include code that initializes a tracer and uses it to
 create a trace that's a child of the one that's automatically generated:
 
 ```python
-# These are the necessary import declarations
-from opentelemetry import trace
-
 from random import randint
 from flask import Flask
 
@@ -297,9 +323,12 @@ def roll():
 Now run the app again:
 
 ```shell
+export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
 opentelemetry-instrument \
     --traces_exporter console \
     --metrics_exporter console \
+    --logs_exporter console \
+    --service_name dice-server \
     flask run -p 8080
 ```
 
@@ -314,19 +343,19 @@ automatically created one:
 {
     "name": "roll",
     "context": {
-        "trace_id": "0x48da59d77e13beadd1a961dc8fcaa74e",
-        "span_id": "0x40c38b50bc8da6b7",
+        "trace_id": "0x6f781c83394ed2f33120370a11fced47",
+        "span_id": "0x623321c35b8fa837",
         "trace_state": "[]"
     },
     "kind": "SpanKind.INTERNAL",
-    "parent_id": "0x84f8c5d92970d94f",
-    "start_time": "2022-04-28T00:07:55.892307Z",
-    "end_time": "2022-04-28T00:07:55.892331Z",
+    "parent_id": "0x09abe52faf1d80d5",
+    "start_time": "2023-10-10T08:18:28.679261Z",
+    "end_time": "2023-10-10T08:18:28.679560Z",
     "status": {
         "status_code": "UNSET"
     },
     "attributes": {
-        "roll.value": 4
+        "roll.value": "6"
     },
     "events": [],
     "links": [],
@@ -334,9 +363,9 @@ automatically created one:
         "attributes": {
             "telemetry.sdk.language": "python",
             "telemetry.sdk.name": "opentelemetry",
-            "telemetry.sdk.version": "1.14.0",
-            "telemetry.auto.version": "0.35b0",
-            "service.name": "unknown_service"
+            "telemetry.sdk.version": "1.17.0",
+            "service.name": "dice-server",
+            "telemetry.auto.version": "0.38b0"
         },
         "schema_url": ""
     }
@@ -344,14 +373,14 @@ automatically created one:
 {
     "name": "/rolldice",
     "context": {
-        "trace_id": "0x48da59d77e13beadd1a961dc8fcaa74e",
-        "span_id": "0x84f8c5d92970d94f",
+        "trace_id": "0x6f781c83394ed2f33120370a11fced47",
+        "span_id": "0x09abe52faf1d80d5",
         "trace_state": "[]"
     },
     "kind": "SpanKind.SERVER",
     "parent_id": null,
-    "start_time": "2022-04-28T00:07:55.891500Z",
-    "end_time": "2022-04-28T00:07:55.892552Z",
+    "start_time": "2023-10-10T08:18:28.678348Z",
+    "end_time": "2023-10-10T08:18:28.679677Z",
     "status": {
         "status_code": "UNSET"
     },
@@ -359,12 +388,12 @@ automatically created one:
         "http.method": "GET",
         "http.server_name": "127.0.0.1",
         "http.scheme": "http",
-        "net.host.port": 5000,
-        "http.host": "localhost:5000",
-        "http.target": "/rolldice",
+        "net.host.port": 8080,
+        "http.host": "localhost:8080",
+        "http.target": "/rolldice?rolls=12",
         "net.peer.ip": "127.0.0.1",
-        "http.user_agent": "curl/7.68.0",
-        "net.peer.port": 53824,
+        "http.user_agent": "curl/8.1.2",
+        "net.peer.port": 58485,
         "http.flavor": "1.1",
         "http.route": "/rolldice",
         "http.status_code": 200
@@ -375,9 +404,9 @@ automatically created one:
         "attributes": {
             "telemetry.sdk.language": "python",
             "telemetry.sdk.name": "opentelemetry",
-            "telemetry.sdk.version": "1.14.0",
-            "telemetry.auto.version": "0.35b0",
-            "service.name": "unknown_service"
+            "telemetry.sdk.version": "1.17.0",
+            "service.name": "dice-server",
+            "telemetry.auto.version": "0.38b0"
         },
         "schema_url": ""
     }
@@ -401,8 +430,10 @@ from opentelemetry import trace
 from opentelemetry import metrics
 
 from random import randint
-from flask import Flask
+from flask import Flask, request
+import logging
 
+# Acquire a tracer
 tracer = trace.get_tracer("diceroller.tracer")
 # Acquire a meter.
 meter = metrics.get_meter("diceroller.meter")
@@ -414,26 +445,37 @@ roll_counter = meter.create_counter(
 )
 
 app = Flask(__name__)
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 @app.route("/rolldice")
 def roll_dice():
-    return str(roll())
+    # This creates a new span that's the child of the current one
+    with tracer.start_as_current_span("roll") as roll_span:
+        player = request.args.get('player', default = None, type = str)
+        result = str(roll())
+        roll_span.set_attribute("roll.value", result)
+        # This adds 1 to the counter for the given roll value
+        roll_counter.add(1, {"roll.value": result})
+        if player:
+            logger.warn("{} is rolling the dice: {}", player, result)
+        else:
+            logger.warn("Anonymous player is rolling the dice: %s", result)
+        return result
 
 def roll():
-    with tracer.start_as_current_span("roll") as rollspan:
-        res = randint(1, 6)
-        rollspan.set_attribute("roll.value", res)
-        # This adds 1 to the counter for the given roll value
-        roll_counter.add(1, {"roll.value": res})
-        return res
+    return randint(1, 6)
 ```
 
 Now run the app again:
 
 ```shell
+export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
 opentelemetry-instrument \
     --traces_exporter console \
     --metrics_exporter console \
+    --logs_exporter console \
+    --service_name dice-server \
     flask run -p 8080
 ```
 
@@ -451,18 +493,85 @@ emitted to the console, with separate counts for each roll value:
         "attributes": {
           "telemetry.sdk.language": "python",
           "telemetry.sdk.name": "opentelemetry",
-          "telemetry.sdk.version": "1.12.0rc1",
-          "telemetry.auto.version": "0.31b0",
-          "service.name": "unknown_service"
+          "telemetry.sdk.version": "1.17.0",
+          "service.name": "dice-server",
+          "telemetry.auto.version": "0.38b0"
         },
         "schema_url": ""
       },
       "scope_metrics": [
         {
           "scope": {
-            "name": "app",
+            "name": "opentelemetry.instrumentation.flask",
+            "version": "0.38b0",
+            "schema_url": ""
+          },
+          "metrics": [
+            {
+              "name": "http.server.active_requests",
+              "description": "measures the number of concurrent HTTP requests that are currently in-flight",
+              "unit": "requests",
+              "data": {
+                "data_points": [
+                  {
+                    "attributes": {
+                      "http.method": "GET",
+                      "http.host": "localhost:8080",
+                      "http.scheme": "http",
+                      "http.flavor": "1.1",
+                      "http.server_name": "127.0.0.1"
+                    },
+                    "start_time_unix_nano": 1696926005694857000,
+                    "time_unix_nano": 1696926063549782000,
+                    "value": 0
+                  }
+                ],
+                "aggregation_temporality": 2,
+                "is_monotonic": false
+              }
+            },
+            {
+              "name": "http.server.duration",
+              "description": "measures the duration of the inbound HTTP request",
+              "unit": "ms",
+              "data": {
+                "data_points": [
+                  {
+                    "attributes": {
+                      "http.method": "GET",
+                      "http.host": "localhost:8080",
+                      "http.scheme": "http",
+                      "http.flavor": "1.1",
+                      "http.server_name": "127.0.0.1",
+                      "net.host.port": 8080,
+                      "http.status_code": 200
+                    },
+                    "start_time_unix_nano": 1696926005695798000,
+                    "time_unix_nano": 1696926063549782000,
+                    "count": 7,
+                    "sum": 6,
+                    "bucket_counts": [
+                      1, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+                    ],
+                    "explicit_bounds": [
+                      0.0, 5.0, 10.0, 25.0, 50.0, 75.0, 100.0, 250.0, 500.0,
+                      750.0, 1000.0, 2500.0, 5000.0, 7500.0, 10000.0
+                    ],
+                    "min": 0,
+                    "max": 1
+                  }
+                ],
+                "aggregation_temporality": 2
+              }
+            }
+          ],
+          "schema_url": ""
+        },
+        {
+          "scope": {
+            "name": "diceroller.meter",
             "version": "",
-            "schema_url": null
+            "schema_url": ""
           },
           "metrics": [
             {
@@ -473,42 +582,42 @@ emitted to the console, with separate counts for each roll value:
                 "data_points": [
                   {
                     "attributes": {
-                      "roll.value": 4
+                      "roll.value": "5"
                     },
-                    "start_time_unix_nano": 1654790325350232600,
-                    "time_unix_nano": 1654790332211598800,
+                    "start_time_unix_nano": 1696926005695491000,
+                    "time_unix_nano": 1696926063549782000,
                     "value": 3
                   },
                   {
                     "attributes": {
-                      "roll.value": 6
+                      "roll.value": "6"
                     },
-                    "start_time_unix_nano": 1654790325350232600,
-                    "time_unix_nano": 1654790332211598800,
-                    "value": 4
-                  },
-                  {
-                    "attributes": {
-                      "roll.value": 5
-                    },
-                    "start_time_unix_nano": 1654790325350232600,
-                    "time_unix_nano": 1654790332211598800,
+                    "start_time_unix_nano": 1696926005695491000,
+                    "time_unix_nano": 1696926063549782000,
                     "value": 1
                   },
                   {
                     "attributes": {
-                      "roll.value": 1
+                      "roll.value": "1"
                     },
-                    "start_time_unix_nano": 1654790325350232600,
-                    "time_unix_nano": 1654790332211598800,
-                    "value": 2
+                    "start_time_unix_nano": 1696926005695491000,
+                    "time_unix_nano": 1696926063549782000,
+                    "value": 1
                   },
                   {
                     "attributes": {
-                      "roll.value": 3
+                      "roll.value": "3"
                     },
-                    "start_time_unix_nano": 1654790325350232600,
-                    "time_unix_nano": 1654790332211598800,
+                    "start_time_unix_nano": 1696926005695491000,
+                    "time_unix_nano": 1696926063549782000,
+                    "value": 1
+                  },
+                  {
+                    "attributes": {
+                      "roll.value": "4"
+                    },
+                    "start_time_unix_nano": 1696926005695491000,
+                    "time_unix_nano": 1696926063549782000,
                     "value": 1
                   }
                 ],
@@ -517,7 +626,7 @@ emitted to the console, with separate counts for each roll value:
               }
             }
           ],
-          "schema_url": null
+          "schema_url": ""
         }
       ],
       "schema_url": ""
@@ -569,6 +678,10 @@ service:
       receivers: [otlp]
       exporters: [debug]
       processors: [batch]
+    logs:
+      receivers: [otlp]
+      exporters: [debug]
+      processors: [batch]
 ```
 
 Then run the docker command to acquire and run the collector based on this
@@ -602,12 +715,13 @@ and default to OTLP export when it's run next.
 Run the application like before, but don't export to the console:
 
 ```shell
-opentelemetry-instrument flask run -p 8080
+export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
+opentelemetry-instrument --logs_exporter otlp flask run -p 8080
 ```
 
 By default, `opentelemetry-instrument` exports traces and metrics over OTLP/gRPC
 and will send them to `localhost:4317`, which is what the collector is listening
-on.
+on
 
 When you access the `/rolldice` route now, you'll see output in the collector
 process instead of the flask process, which should look something like this:
