@@ -254,8 +254,8 @@
 - name: Sumo Logic
   distribution: true
   nativeOTLP: true
-  url: 'https://help.sumologic.com/docs/apm/traces/quickstart/'
-  contact: ''
+  url: 'https://help.sumologic.com/docs/send-data/opentelemetry-collector/'
+  contact: 'https://github.com/astencel-sumo'
   oss: false
   commercial: true
 - name: TelemetryHub
