@@ -16,7 +16,7 @@ touching the application code.
 > The logging library for OpenTelemetry for Node.js is still under development
 > hence an example for it is not provided below. 
 > Look [here](https://opentelemetry.io/docs/instrumentation/js)
-> for more info about the status of OpenTelemetry in Javascript.
+> for more info about the status of OpenTelemetry in JavaScript.
 
 ## Prerequisites
 
