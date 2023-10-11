@@ -43,7 +43,7 @@ source ./bin/activate
 Now install Flask:
 
 ```shell
-pip install "flask<3"
+pip install 'flask<3'
 ```
 
 ### Create and launch an HTTP Server
