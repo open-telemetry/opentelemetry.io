@@ -54,9 +54,7 @@ npm install typescript \
   @types/node \
   express \
   @types/express
-```
 
-```sh
 #initialise typescript
 npx tsc --init
 ```
