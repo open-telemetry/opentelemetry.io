@@ -228,7 +228,7 @@ func newMeterProvider(res *resource.Resource) (*metric.MeterProvider, error) {
 ```
 
 If you're only using tracing or metrics, you can omit the code the corresponding
-TracerProvider or MeterProvider intialization code.
+TracerProvider or MeterProvider initialization code.
 
 ### Instrument the HTTP server
 
