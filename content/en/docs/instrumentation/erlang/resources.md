@@ -9,16 +9,7 @@ cSpell:ignore: behaviour
 <!-- markdownlint-disable no-duplicate-heading -->
 <!-- markdownlint-capture -->
 
-A [resource](/docs/specs/otel/overview/#resources) represents an entity
-producing telemetry as attributes. For example, an OTP Release producing
-telemetry that is running in a container on Kubernetes has an OTP Release name,
-a Pod name, a namespace, and possibly a deployment name. All four of these
-attributes can be included in the resource.
-
-In your observability backend, you can use resource information to better
-investigate interesting behavior. For example, if your trace or metrics data
-indicate latency in your system, you can narrow it down to a specific container,
-pod, or Kubernetes deployment.
+{{% docs/instrumentation/resources-intro erlang %}}
 
 ## Using resource detectors
 
