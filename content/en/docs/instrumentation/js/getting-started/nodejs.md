@@ -13,10 +13,12 @@ You will learn how to automatically instrument both [traces][] and [metrics][] a
 instrumenting means that the application is made observable without 
 touching the application code.
 
-> The logging library for OpenTelemetry for Node.js is still under development
-> hence an example for it is not provided below. 
-> Look [here](https://opentelemetry.io/docs/instrumentation/js)
-> for more info about the status of OpenTelemetry in JavaScript.
+{{% alert title="Note" color="info" %}}
+The logging library for OpenTelemetry for Node.js is still under development
+hence an example for it is not provided below. 
+Look [here](https://opentelemetry.io/docs/instrumentation/js)
+for more info about the status of OpenTelemetry in JavaScript.
+{{% /alert %}}
 
 ## Prerequisites
 
