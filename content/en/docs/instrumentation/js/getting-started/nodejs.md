@@ -8,10 +8,8 @@ weight: 10
 
 This page will show you how to get started with OpenTelemetry in Node.js.
 
-You will learn how to automatically instrument both [traces][] and [metrics][] and log them to the console.
- [Automatically](https://opentelemetry.io/docs/concepts/instrumentation/automatic/) 
-instrumenting means that the application is made observable without 
-touching the application code.
+You will learn how to [automatically instrument](https://opentelemetry.io/docs/concepts/instrumentation/automatic/) 
+both [traces][] and [metrics][] and log them to the console.
 
 {{% alert title="Note" color="info" %}}
 The logging library for OpenTelemetry for Node.js is still under development
