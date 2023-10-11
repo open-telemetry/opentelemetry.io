@@ -77,7 +77,7 @@ three files into the `backend` folder instead:
 
 - `Dockerfile`:
 
-  ```Dockerfile
+  ```dockerfile
   FROM python:3.10-alpine
   WORKDIR /code
   ENV FLASK_APP=app.py
@@ -236,7 +236,7 @@ This fix is contained in the [v1.0.1 release of the otel-webserver-module][].
 This means you can update the `Dockerfile` to install the NGINX module like the
 following:
 
-```Dockerfile
+```dockerfile
 FROM nginx:1.18
 ADD https://github.com/open-telemetry/opentelemetry-cpp-contrib/releases/download/webserver%2Fv1.0.1/opentelemetry-webserver-sdk-x64-linux.tgz /opt
 RUN cd /opt ; tar xvfz opentelemetry-webserver-sdk-x64-linux.tgz
