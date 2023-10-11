@@ -26,7 +26,7 @@ complete list of libraries for supported frameworks, see the
 
 For more elaborate examples, see [examples](/docs/instrumentation/go/examples/).
 
-## Installation
+### Setup
 
 To begin, set up a `go.mod` in a new directory:
 
@@ -79,14 +79,41 @@ func rolldice(w http.ResponseWriter, r *http.Request) {
 
 Build and run the application with the following command:
 
-```sh
+```shell
 go run .
 ```
 
 Open <http://localhost:8080/rolldice> in your web browser to ensure it is
 working.
 
-## Instrumentation
+## Add OpenTelemetry Instrumentation
+
+Now we'll show how to add OpenTelemetry instrumentation to the sample app.
+If you are using your own application, you can follow along, just note that
+your code may be slightly different.
+
+### Add Dependencies
+
+Install the following packages:
+
+```shell
+go get "go.opentelemetry.io/otel" \
+  "go.opentelemetry.io/otel/exporters/stdout/stdoutmetric" \
+  "go.opentelemetry.io/otel/exporters/stdout/stdouttrace" \
+  "go.opentelemetry.io/otel/sdk/metric" \
+  "go.opentelemetry.io/otel/sdk/resource" \
+  "go.opentelemetry.io/otel/sdk/trace" \
+  "go.opentelemetry.io/otel/semconv/v1.21.0" \
+  "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
+```
+
+This installs OpenTelemetry SDK components and `net/http` instrumentation.
+
+If you're instrumenting a different library for network requests, you'll need to install the appropriate instrumentation library. See [libraries](/docs/instrumentation/go/libraries/) for more info.
+
+### Initialize the OpenTelemetry SDK
+
+First, we'll initialize the OpenTelemetry SDK. This is *required* for any application that exports telemetry.
 
 Create `otel.go` with OpenTelemetry SDK bootstrapping code:
 
@@ -197,6 +224,12 @@ func newMeterProvider(res *resource.Resource) (*metric.MeterProvider, error) {
 }
 ```
 
+If you're only using tracing or metrics, you can omit the code the corresponding TracerProvider or MeterProvider intialization code.
+
+### Instrument the HTTP server
+
+Now that we have the OpenTelemetry SDK initialized, we can instrument the HTTP server.
+
 Modify `main.go` to include code that sets up OpenTelemetry SDK and instruments
 the HTTP server using the `otelhttp` instrumentation library:
 
@@ -288,8 +321,10 @@ func newHTTPHandler() http.Handler {
 }
 ```
 
-Instrumentation libraries captures telemetry at the edges of your systems, such
-as inbound and outbound HTTP requests, but it doesn't capture what's going on in
+### Add Custom Instrumentation
+
+Instrumentation libraries capture telemetry at the edges of your systems, such
+as inbound and outbound HTTP requests, but they don't capture what's going on in
 your application. For that you'll need to write some custom
 [manual instrumentation](../manual/).
 
@@ -332,6 +367,7 @@ func rolldice(w http.ResponseWriter, r *http.Request) {
 
 	roll := 1 + rand.Intn(6)
 
+	// Add the custom attribute to the span and counter.
 	rollValueAttr := attribute.Int("roll.value", roll)
 	span.SetAttributes(rollValueAttr)
 	rollCnt.Add(ctx, 1, metric.WithAttributes(rollValueAttr))
@@ -342,6 +378,10 @@ func rolldice(w http.ResponseWriter, r *http.Request) {
 	}
 }
 ```
+
+Note that if you're only using tracing or metrics, you can omit the corresponding code that instruments the other telemetry type.
+
+### Run the Application
 
 Build and run the application with the following command:
 
