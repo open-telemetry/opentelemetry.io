@@ -8,7 +8,7 @@ weight: 10
 
 This page will show you how to get started with OpenTelemetry in Node.js.
 
-You will learn how to [automatically instrument](https://opentelemetry.io/docs/concepts/instrumentation/automatic/) 
+You will learn how to instrument
 both [traces][] and [metrics][] and log them to the console.
 
 {{% alert title="Note" color="info" %}}
