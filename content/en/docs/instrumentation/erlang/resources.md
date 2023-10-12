@@ -9,7 +9,7 @@ cSpell:ignore: behaviour
 <!-- markdownlint-disable no-duplicate-heading -->
 <!-- markdownlint-capture -->
 
-{{% docs/instrumentation/resources-intro erlang %}}
+{{% docs/instrumentation/resources-intro "an OTP Release" %}}
 
 ## Using resource detectors
 

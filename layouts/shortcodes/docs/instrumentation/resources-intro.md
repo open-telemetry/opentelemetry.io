@@ -1,7 +1,5 @@
-{{ $lang := .Get 0 -}} {{ $processWord := "a process" -}}
+{{ $processWord := default ("a process") (.Get 0)  -}}
 {{ $resourceHRef := "/docs/concepts/resources/" }}
-
-{{ if eq $lang "erlang" -}} {{ $processWord = "an OTP Release" }} {{ end -}}
 
 {{ if eq .Page.RelPermalink $resourceHRef }}
 {{ $resourceHRef = "/docs/specs/otel/resource/sdk/" }} {{ end -}}
