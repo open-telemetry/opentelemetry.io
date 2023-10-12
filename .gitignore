@@ -1,7 +1,7 @@
 # Hugo-generated assets
 .hugo_build.lock
 /public
-resources/
+/resources
 
 # npm assets
 node_modules/
