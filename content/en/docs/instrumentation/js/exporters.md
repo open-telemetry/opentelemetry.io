@@ -27,10 +27,9 @@ and [Prometheus](https://prometheus.io) to quickly get started.
 
 #### OpenTelemetry Collector
 
-We recommend that setup an [OpenTelemetry Collector](/docs/collector/) to
-receive your telemetry. To try out and verify your instrumentation quickly, you
-can run the collector in a docker container and with a basic configuration, that
-will write all received telemetry to the console.
+We recommend that you setup an [OpenTelemetry Collector](/docs/collector/) to
+export your telemetry to. To try out and verify your instrumentation quickly, you
+can run the collector in a docker container that writes telemetry directly to the console.
 
 In an empty directory, create a file called `collector-config.yaml` with the
 following content:
