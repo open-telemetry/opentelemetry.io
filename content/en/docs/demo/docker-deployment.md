@@ -75,8 +75,8 @@ with an editor.
       endpoint: <your-endpoint-url>
   ```
 
-- Then override the `exporters` for telemetry pipelines that you want to use
-  for your backend.
+- Then override the `exporters` for telemetry pipelines that you want to use for
+  your backend.
 
   ```yaml
   service:
@@ -87,7 +87,7 @@ with an editor.
 
 > **Note:** When merging YAML values with the Collector, objects are merged and
 > arrays are replaced. The `spanmetrics` exporter must be included in the array
-> of exporters for the `traces` pipeline if overriden. Not including this
+> of exporters for the `traces` pipeline if overridden. Not including this
 > exporter will result in an error.
 
 Vendor backends might require you to add additional parameters for
@@ -96,5 +96,5 @@ different exporters, you may find them and their documentation available at
 [opentelemetry-collector-contrib/exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter).
 
 After updating the `otelcol-config-extras.yml`, start the demo by running
-`make start`. After a while, you should see the traces flowing into
-your backend as well.
+`make start`. After a while, you should see the traces flowing into your backend
+as well.

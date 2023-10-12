@@ -82,11 +82,11 @@ With the frontendproxy port-forward set up, you can access:
 > **Note** It is recommended to use a values file when installing the Helm chart
 > in order to specify additional configuration options.
 
+#### Configure ingress resources
+
 > **Note** Kubernetes clusters may not have the proper infrastructure components
 > to enable LoadBalancer service types or ingress resources. Verify your cluster
 > has the proper support before using these configuration options.
-
-#### Configure ingress resources
 
 Each demo component (ie: frontendproxy) offers a way to have its Kubernetes
 service type configured. By default, these will not be created, but you can
@@ -102,15 +102,15 @@ components:
       enabled: true
       annotations: {}
       hosts:
-        - host: otel-demo.mydomain.com
+        - host: otel-demo.my-domain.com
           paths:
             - path: /
               pathType: Prefix
               port: 8080
 ```
 
-Some ingress controllers require special annotations or service types. Refer
-to the documentation from your ingress controller for more information.
+Some ingress controllers require special annotations or service types. Refer to
+the documentation from your ingress controller for more information.
 
 #### Configure service types
 
@@ -141,7 +141,7 @@ components:
   frontend:
     env:
       - name: PUBLIC_OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
-        value: http://otel-demo.mydomain.com/otlp-http/v1/traces
+        value: http://otel-demo.my-domain.com/otlp-http/v1/traces
 ```
 
 #### Installation with a values file
@@ -185,10 +185,10 @@ opentelemetry-collector:
           exporters: [spanmetrics, otlphttp/example]
 ```
 
-> **Note:** When merging YAML values with Helm, objects are merged and
-> arrays are replaced. The `spanmetrics` exporter must be included in the array
-> of exporters for the `traces` pipeline if overriden. Not including this
-> exporter will result in an error.
+> **Note:** When merging YAML values with Helm, objects are merged and arrays
+> are replaced. The `spanmetrics` exporter must be included in the array of
+> exporters for the `traces` pipeline if overridden. Not including this exporter
+> will result in an error.
 
 Vendor backends might require you to add additional parameters for
 authentication, please check their documentation. Some backends require
