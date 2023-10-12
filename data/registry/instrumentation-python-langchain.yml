@@ -1,0 +1,13 @@
+title: Langchain Instrumentation
+registryType: instrumentation
+isThirdParty: true
+language: python
+tags:
+  - python
+  - instrumentation
+  - langchain
+repo: https://github.com/traceloop/openllmetry/tree/main/packages/opentelemetry-instrumentation-langchain
+license: Apache 2.0
+description: Instrumentation for Langchain Framework
+authors: Traceloop <dev@traceloop.com>
+otVersion: latest
