@@ -1,4 +1,4 @@
-# cSpell:ignore containerd buildx Quarkus Cerbos
+# cSpell:ignore containerd buildx Quarkus Cerbos flagd flipt
 - name: containerd
   url: https://containerd.io/
   docsUrl: https://github.com/containerd/containerd/blob/main/docs/tracing.md
@@ -72,5 +72,20 @@
 - name: Tyk API Gateway
   url: https://tyk.io
   docsUrl: https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview/
+  components: [Go]
+  oss: true
+- name: OpenFeature flagd
+  url: https://openfeature.dev/
+  docsUrl: https://flagd.dev/reference/monitoring/#opentelemetry
+  components: [Go]
+  oss: true
+- name: Jenkins
+  url: https://www.jenkins.io/
+  docsUrl: https://plugins.jenkins.io/opentelemetry/
+  components: [Java]
+  oss: true
+- name: Flipt
+  url: https://flipt.io/
+  docsUrl: https://www.flipt.io/docs/configuration/observability#tracing
   components: [Go]
   oss: true
