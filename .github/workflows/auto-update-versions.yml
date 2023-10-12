@@ -9,7 +9,6 @@ on:
 jobs:
   auto-update-versions:
     name: Auto-update versions
-    if: github.repository == 'open-telemetry/opentelemetry.io'
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
