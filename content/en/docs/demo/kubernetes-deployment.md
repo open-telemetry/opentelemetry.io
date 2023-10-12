@@ -2,7 +2,7 @@
 title: Kubernetes deployment
 linkTitle: Kubernetes
 aliases: [/docs/demo/kubernetes_deployment]
-cSpell:ignore: loadgen otlphttp
+cSpell:ignore: loadgen otlphttp spanmetrics
 ---
 
 We provide a [OpenTelemetry Demo Helm chart](/docs/kubernetes/helm/demo/) to
