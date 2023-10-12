@@ -319,7 +319,7 @@ server {
 
 ## Console
 
-To debug your instrumentation, you can use exporters writing telemetry data to
+To debug your instrumentation or see the values locally in development, you can use exporters writing telemetry data to
 the console (stdout).
 
 If you followed the
