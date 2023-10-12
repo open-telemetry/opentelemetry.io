@@ -513,4 +513,3 @@ diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
 
 [traces]: /docs/concepts/signals/traces/
 [metrics]: /docs/concepts/signals/metrics/
-[logs]: /docs/concepts/signals/logs/
