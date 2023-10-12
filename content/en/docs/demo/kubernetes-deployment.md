@@ -13,8 +13,8 @@ Helm's [documentation](https://helm.sh/docs/) to get started.
 
 ## Prerequisites
 
-- Kubernetes 1.23+
-- 4 GB of free RAM for the application
+- Kubernetes 1.24+
+- 6 GB of free RAM for the application
 - Helm 3.9+ (for Helm installation method only
 
 ## Install using Helm (recommended)
@@ -64,20 +64,12 @@ To expose the frontendproxy service use the following command (replace
 kubectl port-forward svc/my-otel-demo-frontendproxy 8080:8080
 ```
 
-In order for spans from the browser to be properly collected, you will also need
-to expose the OpenTelemetry Collector's OTLP/HTTP port (replace `my-otel-demo`
-with your Helm chart release name accordingly):
-
-```shell
-kubectl port-forward svc/my-otel-demo-otelcol 4318:4318
-```
-
 > **Note**: `kubectl port-forward` will proxy the port until the process
 > terminates. You may need to create separate terminal sessions for each use of
 > `kubectl port-forward`, and use <kbd>Ctrl-C</kbd> to terminate the process
 > when done.
 
-With the frontendproxy and Collector port-forward set up, you can access:
+With the frontendproxy port-forward set up, you can access:
 
 - Web store: <http://localhost:8080/>
 - Grafana: <http://localhost:8080/grafana/>
@@ -85,17 +77,48 @@ With the frontendproxy and Collector port-forward set up, you can access:
 - Load Generator UI: <http://localhost:8080/loadgen/>
 - Jaeger UI: <http://localhost:8080/jaeger/ui/>
 
-### Expose services using service type configurations
+### Expose Demo components using service or ingress configurations
+
+> **Note** It is recommended to use a values file when installing the Helm chart
+> in order to specify additional configuration options.
 
 > **Note** Kubernetes clusters may not have the proper infrastructure components
 > to enable LoadBalancer service types or ingress resources. Verify your cluster
 > has the proper support before using these configuration options.
 
-Each demo service (ie: frontendproxy) offers a way to have its Kubernetes
-service type configured. By default these will be `ClusterIP` but you can change
-each one using the `serviceType` property for each service.
+#### Configure ingress resources
 
-To configure the frontendproxy service to use a LoadBalancer service type you
+Each demo component (ie: frontendproxy) offers a way to have its Kubernetes
+service type configured. By default, these will not be created, but you can
+enable and configure them through the `ingress` property of each component.
+
+To configure the frontendproxy component to use an ingress resource you would
+specify the following in your values file:
+
+```yaml
+components:
+  frontendProxy:
+    ingress:
+      enabled: true
+      annotations: {}
+      hosts:
+        - host: otel-demo.mydomain.com
+          paths:
+            - path: /
+              pathType: Prefix
+              port: 8080
+```
+
+Some ingress controllers require special annotations or service types. Refer
+to the documentation from your ingress controller for more information.
+
+#### Configure service types
+
+Each demo component (ie: frontendproxy) offers a way to have its Kubernetes
+service type configured. By default, these will be `ClusterIP` but you can
+change each one using the `service.type` property of each component.
+
+To configure the frontendproxy component to use a LoadBalancer service type you
 would specify the following in your values file:
 
 ```yaml
@@ -105,29 +128,23 @@ components:
       type: LoadBalancer
 ```
 
-> **Note** It is recommended to use a values file when installing the Helm chart
-> in order to specify additional configuration options.
-
-The Helm chart does not provide facilities to create ingress resources. If
-required these would need to be created manually after installing the Helm
-chart. Some Kubernetes providers require specific service types in order to be
-used by ingress resources (ie: EKS ALB ingress, requires a NodePort service
-type).
+#### Configure browser telemetry
 
 In order for spans from the browser to be properly collected, you will also need
-to expose the OpenTelemetry Collector's OTLP/HTTP port to be accessible to user
-web browsers. The location where the OpenTelemetry Collector is exposed must
-also be passed into the frontend service using the
-`PUBLIC_OTEL_EXPORTER_OTLP_TRACES_ENDPOINT` environment variable. You can do
-this using the following in your values file:
+to specify the location where the OpenTelemetry Collector is exposed. The
+frontendproxy defines a route for the collector with a path prefix of
+`/otlp-http`. You can configure the collector endpoint by setting the following
+environment variable on the frontend component:
 
 ```yaml
 components:
   frontend:
     env:
       - name: PUBLIC_OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
-        value: http://otel-demo-collector.mydomain.com:4318/v1/traces
+        value: http://otel-demo.mydomain.com/otlp-http/v1/traces
 ```
+
+#### Installation with a values file
 
 To install the Helm chart with a custom `my-values-file.yaml` values file use:
 
@@ -165,13 +182,13 @@ opentelemetry-collector:
     service:
       pipelines:
         traces:
-          receivers: [otlp]
-          processors: [batch]
-          exporters: [otlphttp/example]
+          exporters: [spanmetrics, otlphttp/example]
 ```
 
-> **Note** When merging YAML values with Helm, objects are merged and arrays are
-> replaced.
+> **Note:** When merging YAML values with Helm, objects are merged and
+> arrays are replaced. The `spanmetrics` exporter must be included in the array
+> of exporters for the `traces` pipeline if overriden. Not including this
+> exporter will result in an error.
 
 Vendor backends might require you to add additional parameters for
 authentication, please check their documentation. Some backends require
