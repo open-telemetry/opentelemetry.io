@@ -85,12 +85,10 @@ with an editor.
         exporters: [spanmetrics, otlphttp/example]
   ```
 
-{{% alert title="Note" color="info" %}}
-When merging YAML values with the Collector, objects are merged and
-arrays are replaced. The `spanmetrics` exporter must be included in the array
-of exporters for the `traces` pipeline if overridden. Not including this
-exporter will result in an error.
-{{% /alert %}}
+{{% alert title="Note" color="info" %}} When merging YAML values with the
+Collector, objects are merged and arrays are replaced. The `spanmetrics`
+exporter must be included in the array of exporters for the `traces` pipeline if
+overridden. Not including this exporter will result in an error. {{% /alert %}}
 
 Vendor backends might require you to add additional parameters for
 authentication, please check their documentation. Some backends require

@@ -79,10 +79,9 @@ With the frontendproxy port-forward set up, you can access:
 
 ### Expose Demo components using service or ingress configurations
 
-{{% alert title="Note" color="info" %}}
-It is recommended to use a values file when installing the Helm chart
-in order to specify additional configuration options.
-{{% /alert %}}
+{{% alert title="Note" color="info" %}} It is recommended to use a values file
+when installing the Helm chart in order to specify additional configuration
+options. {{% /alert %}}
 
 #### Configure ingress resources
 
@@ -187,12 +186,10 @@ opentelemetry-collector:
           exporters: [spanmetrics, otlphttp/example]
 ```
 
-{{% alert title="Note" color="info" %}}
-When merging YAML values with Helm, objects are merged and arrays
-are replaced. The `spanmetrics` exporter must be included in the array of
-exporters for the `traces` pipeline if overridden. Not including this exporter
-will result in an error.
-{{% /alert %}}
+{{% alert title="Note" color="info" %}} When merging YAML values with Helm,
+objects are merged and arrays are replaced. The `spanmetrics` exporter must be
+included in the array of exporters for the `traces` pipeline if overridden. Not
+including this exporter will result in an error. {{% /alert %}}
 
 Vendor backends might require you to add additional parameters for
 authentication, please check their documentation. Some backends require
