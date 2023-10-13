@@ -78,7 +78,7 @@ public class DataSourceConfig {
 ```
 
 If your application does not declare `DataSource` bean, you can update your `application.properties` file to
-have the datasource URL starting with `jdbc:otel` and set the driver class to io.opentelemetry.instrumentation.jdbc.OpenTelemetryDriver
+have the data source URL starting with `jdbc:otel` and set the driver class to io.opentelemetry.instrumentation.jdbc.OpenTelemetryDriver
 
 ```properties
 spring.datasource.url=jdbc:otel:h2:mem:db
