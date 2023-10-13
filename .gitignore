@@ -24,3 +24,6 @@ assets/jsconfig.json
 # VS Code
 /.vscode/**
 !/.vscode/cspell.json
+
+# Webstorm
+/.idea/**
