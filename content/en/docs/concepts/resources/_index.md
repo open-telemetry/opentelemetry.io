@@ -12,22 +12,23 @@ backend, resource attributes are grouped under the **Process** tab:
 
 ![A screenshot from Jaeger showing an example output of resource attributes associated to a trace](screenshot-jaeger-resources.png)
 
-In practice a resource will be associated with the `TraceProvider` or
-`MetricProvider` when they are created. The association can not be changed
-later. When associated, all metrics and spans produced from a `Tracer` or
-`Meter` from the provider will have the resource associated with them.
+A resource is added to the `TraceProvider` or `MetricProvider`
+when they are created during initialization. This association can
+not be changed later. After a resource is added, all spans and
+metrics produced from a `Tracer` or `Meter` from the provider
+will have the resource associated with them.
 
 ## Semantic Attributes with SDK-provided Default Value
 
-There are attributes which must be provided by the OpenTelemetry SDK. One of
+There are attributes provided by the OpenTelemetry SDK. One of
 them is the `service.name`, which represents the logical name of the service.
-The SDK will provide a default value for this attribute, but it is recommended
-to set it explicitly, either in code or via populating the environment variable
-`OTEL_SERVICE_NAME`
+By default, SDKs will assign the value `unknown_service` for this value, so
+it is recommended to set it explicitly, either in code or via setting the
+environment variable `OTEL_SERVICE_NAME`.
 
-Additionally, the SDK will also provide a resource with attributes
-`telemetry.sdk.name`, `telemetry.sdk.language` and `telemetry.sdk.version` to
-identify itself.
+Additionally, the SDK will also provides the following resource attributes to
+identify itself: `telemetry.sdk.name`, `telemetry.sdk.language` and
+`telemetry.sdk.version`.
 
 ## Resource Detectors
 
