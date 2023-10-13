@@ -4,7 +4,7 @@ weight: 80
 ---
 
 The [Instrumentation Scope](/docs/specs/otel/glossary/#instrumentation-scope)
-represents a logical unit within the application code with with the emitted
+represents a logical unit within the application code with which the emitted
 telemetry can be associated.
 
 It is typically the developer’s choice to decide what denotes a reasonable
@@ -12,7 +12,7 @@ instrumentation scope, e.g. a module, a package or a class can be chosen as
 instrumentation scope. In the case of a library or framework, it is a common
 approach to use an identifier as scope that is unique to the library or
 framework, such as a fully qualified name and version of the library or
-framework. If the library itself has not built-in OpenTelemetry instrumentation,
+framework. If the library itself does not have built-in OpenTelemetry instrumentation,
 and an Instrumentation Library is used instead, it is recommended to use the
 name and version of the Instrumentation Library as the instrumentation scope.
 
