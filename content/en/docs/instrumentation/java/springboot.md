@@ -10,7 +10,7 @@ description: Spring instrumentation for OpenTelemetry Java
 # prettier-ignore
 ---
 
-You can instrument a Spring Boot application with the [OpenTelemetry java agent](automatic/_index).
+You can instrument a Spring Boot application with the [OpenTelemetry Java agent](automatic/_index).
 
 Another option is to use the OpenTelemetry Spring Boot starter. The rest of this page document it.
 
@@ -78,7 +78,7 @@ public class DataSourceConfig {
 ```
 
 If your application does not declare `DataSource` bean, you can update your `application.properties` file to
-have the datasource url starting with `jdbc:otel` and set the driver class to io.opentelemetry.instrumentation.jdbc.OpenTelemetryDriver
+have the datasource URL starting with `jdbc:otel` and set the driver class to io.opentelemetry.instrumentation.jdbc.OpenTelemetryDriver
 
 ```properties
 spring.datasource.url=jdbc:otel:h2:mem:db
