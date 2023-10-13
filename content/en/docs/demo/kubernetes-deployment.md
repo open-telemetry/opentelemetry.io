@@ -79,8 +79,10 @@ With the frontendproxy port-forward set up, you can access:
 
 ### Expose Demo components using service or ingress configurations
 
-> **Note** It is recommended to use a values file when installing the Helm chart
-> in order to specify additional configuration options.
+{{% alert title="Note" color="info" %}}
+It is recommended to use a values file when installing the Helm chart
+in order to specify additional configuration options.
+{{% /alert %}}
 
 #### Configure ingress resources
 
