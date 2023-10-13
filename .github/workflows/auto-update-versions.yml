@@ -9,6 +9,8 @@ on:
 jobs:
   auto-update-versions:
     name: Auto-update versions
+    # restrict forks from running this workflow
+    if: github.repository == 'open-telemetry/opentelemetry.io'
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
