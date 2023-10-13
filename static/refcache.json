@@ -5751,9 +5751,17 @@
     "StatusCode": 200,
     "LastSeen": "2023-09-06T15:04:40.72719+02:00"
   },
+  "https://www.nuget.org/packages/OpenTelemetry.Exporter.Console": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-13T09:34:45.811783+02:00"
+  },
   "https://www.nuget.org/packages/OpenTelemetry.Extensions.Hosting": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:44:22.963399-04:00"
+  },
+  "https://www.nuget.org/packages/OpenTelemetry.Instrumentation.AspNet": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-13T09:34:44.998116+02:00"
   },
   "https://www.nuget.org/packages/OpenTelemetry.Instrumentation.AspNet/": {
     "StatusCode": 200,
