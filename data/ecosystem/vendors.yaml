@@ -1,4 +1,4 @@
-# cSpell:ignore Coralogix Cribl ITRS Kloud Logz Crowdstrike Humio Lumigo observ Teletrace Uptrace Greptime KloudMate
+# cSpell:ignore Coralogix Cribl ITRS Kloud Logz Crowdstrike Humio Lumigo observ Teletrace Uptrace Greptime KloudMate ClickHouse
 - name: AppDynamics (Cisco)
   distribution: true
   nativeOTLP: true
@@ -319,5 +319,12 @@
   nativeOTLP: true
   url: https://docs.greptime.com/user-guide/clients/otlp
   contact: 'info@greptime.com'
+  oss: true
+  commercial: true
+name: ClickHouse
+  distribution: false
+  nativeOTLP: true
+  url: 'https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/clickhouseexporter'
+  contact: ''
   oss: true
   commercial: true
