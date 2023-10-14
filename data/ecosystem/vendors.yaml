@@ -209,6 +209,13 @@
   contact: ''
   oss: false
   commercial: true
+- name: qryn
+  distribution: true
+  nativeOTLP: true
+  url: 'https://qryn.cloud'
+  contact: ''
+  oss: true
+  commercial: true  
 - name: Sentry
   distribution: true
   nativeOTLP: false
