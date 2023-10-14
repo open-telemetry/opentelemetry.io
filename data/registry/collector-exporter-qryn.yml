@@ -1,0 +1,17 @@
+title: qryn exporter
+registryType: exporter
+isThirdParty: true
+language: collector
+tags:
+  - go
+  - exporter
+  - qryn
+  - loki
+  - prometheus
+  - tempo
+repo: https://github.com/metrico/qryn-collector
+license: Apache 2.0
+description:
+  This exporter supports sending OpenTelemetry logs, traces and metrics to ClickHouse using the qryn polyglot format.
+authors: akvlad@qxip.net, lorenzo@qxip.net
+otVersion: latest
