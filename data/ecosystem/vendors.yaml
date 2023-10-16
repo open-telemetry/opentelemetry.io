@@ -213,7 +213,7 @@
   distribution: true
   nativeOTLP: true
   url: 'https://qryn.cloud'
-  contact: ''
+  contact: 'https://github.com/lmangani'
   oss: true
   commercial: true  
 - name: Sentry
