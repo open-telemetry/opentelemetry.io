@@ -48,7 +48,7 @@ resource detectors include:
 You can also provide your own resource attributes. You can either provide them
 in code or via populating the environment variable `OTEL_RESOURCE_ATTRIBUTES`.
 If applicable, use the
-[semantic conventions for your resource attributes](/specs/semconv/resource).
+[semantic conventions for your resource attributes](/docs/specs/semconv/resource).
 For example, you can provide the name of your
 [deployment environment](/docs/specs/semconv/resource/deployment-environment/)
 using `deployment.environment`:
