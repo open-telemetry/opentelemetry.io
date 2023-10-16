@@ -1,6 +1,6 @@
 ---
 title: SDK Configuration
-weight: 51
+weight: 101
 ---
 
 OpenTelemetry SDKs support configuration in each language and with environment
