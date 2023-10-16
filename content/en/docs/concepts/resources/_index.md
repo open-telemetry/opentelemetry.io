@@ -12,19 +12,18 @@ backend, resource attributes are grouped under the **Process** tab:
 
 ![A screenshot from Jaeger showing an example output of resource attributes associated to a trace](screenshot-jaeger-resources.png)
 
-A resource is added to the `TraceProvider` or `MetricProvider`
-when they are created during initialization. This association can
-not be changed later. After a resource is added, all spans and
-metrics produced from a `Tracer` or `Meter` from the provider
-will have the resource associated with them.
+A resource is added to the `TraceProvider` or `MetricProvider` when they are
+created during initialization. This association can not be changed later. After
+a resource is added, all spans and metrics produced from a `Tracer` or `Meter`
+from the provider will have the resource associated with them.
 
 ## Semantic Attributes with SDK-provided Default Value
 
-There are attributes provided by the OpenTelemetry SDK. One of
-them is the `service.name`, which represents the logical name of the service.
-By default, SDKs will assign the value `unknown_service` for this value, so
-it is recommended to set it explicitly, either in code or via setting the
-environment variable `OTEL_SERVICE_NAME`.
+There are attributes provided by the OpenTelemetry SDK. One of them is the
+`service.name`, which represents the logical name of the service. By default,
+SDKs will assign the value `unknown_service` for this value, so it is
+recommended to set it explicitly, either in code or via setting the environment
+variable `OTEL_SERVICE_NAME`.
 
 Additionally, the SDK will also provides the following resource attributes to
 identify itself: `telemetry.sdk.name`, `telemetry.sdk.language` and
@@ -49,7 +48,7 @@ resource detectors include:
 You can also provide your own resource attributes. You can either provide them
 in code or via populating the environment variable `OTEL_RESOURCE_ATTRIBUTES`.
 If applicable, use the
-[semantic conventions for your resource attributes](https://opentelemetry.io/docs/specs/semconv/resource).
+[semantic conventions for your resource attributes](/specs/semconv/resource).
 For example, you can provide the name of your
 [deployment environment](/docs/specs/semconv/resource/deployment-environment/)
 using `deployment.environment`:
