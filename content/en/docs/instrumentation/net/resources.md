@@ -4,15 +4,7 @@ weight: 70
 cSpell:ignore: myhost pcarter uuidgen
 ---
 
-A [resource][] represents the entity producing telemetry as resource attributes.
-For example, a process producing telemetry that is running in a container on
-Kubernetes has a Pod name, a namespace, and possibly a deployment name. All
-three of these attributes can be included in the resource.
-
-In your observability backend, you can use resource information to better
-investigate interesting behavior. For example, if your trace or metrics data
-indicate latency in your system, you can narrow it down to a specific container,
-pod, or Kubernetes deployment.
+{{% docs/instrumentation/resources-intro %}}
 
 ## Setup
 
@@ -145,7 +137,6 @@ code, the values in code take precedence.
 There are more resource detectors you can add to your configuration, for example
 to get details about your [Cloud] environment or [Deployment][].
 
-[resource]: /docs/specs/otel/resource/sdk/
 [getting started]: /docs/instrumentation/net/getting-started/
 [host]: /docs/specs/otel/resource/semantic_conventions/host/
 [cloud]: /docs/specs/otel/resource/semantic_conventions/cloud/
