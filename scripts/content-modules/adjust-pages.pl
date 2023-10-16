@@ -155,7 +155,11 @@ while(<>) {
   s|(\.\.\/)+(supplementary-guidelines\/compatibility\/[^)]+)|$otelSpecRepoUrl/tree/v$otelSpecVers/$2|g;
 
   # Rewrite inline links
-  s|\]\(([^:\)]*?\.md(#.*?)?)\)|]({{% relref "$1" %}})|g;
+  if ($ARGV =~ /\/tmp\/opamp/) {
+    s|\]\(([^:\)]*?)\.md((#.*?)?)\)|]($1/$2)|g;
+  } else {
+    s|\]\(([^:\)]*?\.md(#.*?)?)\)|]({{% relref "$1" %}})|g;
+  }
 
   # Rewrite link defs
   s|^(\[[^\]]+\]:\s*)([^:\s]*)(\s*(\(.*\))?)$|$1\{{% relref "$2" %}}$3|g;
