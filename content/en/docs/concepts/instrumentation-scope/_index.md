@@ -12,9 +12,10 @@ instrumentation scope, e.g. a module, a package or a class can be chosen as
 instrumentation scope. In the case of a library or framework, it is a common
 approach to use an identifier as scope that is unique to the library or
 framework, such as a fully qualified name and version of the library or
-framework. If the library itself does not have built-in OpenTelemetry instrumentation,
-and an Instrumentation Library is used instead, it is recommended to use the
-name and version of the Instrumentation Library as the instrumentation scope.
+framework. If the library itself does not have built-in OpenTelemetry
+instrumentation, and an Instrumentation Library is used instead, it is
+recommended to use the name and version of the Instrumentation Library as the
+instrumentation scope.
 
 The Instrumentation Scope is defined by a name and version pair when a Tracer,
 Meter or Logger instance is obtained from a provider. Each span, metric or log
@@ -37,4 +38,4 @@ different scopes are represented by different colors:
 - The spans in orange (`Cache::find`) and light blue (`DB::query`) are library
   code, grouped by the library name and version.
 
-![This image illustrates a trace with multiple instrumentation scopes](spans_with_instrumentation_scope.svg)
+![This image illustrates a trace with multiple instrumentation scopes](spans-with-instrumentation-scope.svg)
