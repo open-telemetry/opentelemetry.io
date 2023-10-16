@@ -21,7 +21,7 @@ my $path_base_for_github_subdir = "content/en$specBasePath";
 my %versions = qw(
   spec: 1.25.0
   otlp: 1.0.0
-  semconv: 1.21.0
+  semconv: 1.22.0
 );
 my $otelSpecVers = $versions{'spec:'};
 my $otlpSpecVers = $versions{'otlp:'};
