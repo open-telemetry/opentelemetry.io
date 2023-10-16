@@ -51,36 +51,3 @@ implementation("io.opentelemetry.instrumentation:opentelemetry-spring-boot-start
 ## Additional instrumentations
 
 You can configure additional instrumentations with [OpenTelemetry instrumentations libraries](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks).
-
-### JDBC instrumentation
-
-To have JDBC instrumentation with the OpenTelemetry Spring start, add the dependency given on [this page](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jdbc/library).
-
-You have two ways to enable the JDBC instrumentation with the OpenTelemetry starter.
-
-You can wrap the `DataSource` bean in an `io.opentelemetry.instrumentation.jdbc.datasource.OpenTelemetryDataSource`:
-
-```java
-import io.opentelemetry.instrumentation.jdbc.datasource.OpenTelemetryDataSource;
-
-@Configuration
-public class DataSourceConfig {
-
-  @Bean
-  public DataSource dataSource(OpenTelemetry openTelemetry) {
-    DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
-    // Data source configurations
-    DataSource dataSource = dataSourceBuilder.build();
-    return new OpenTelemetryDataSource(dataSource, openTelemetry);
-  }
-
-}
-```
-
-If your application does not declare `DataSource` bean, you can update your `application.properties` file to
-have the data source URL starting with `jdbc:otel` and set the driver class to io.opentelemetry.instrumentation.jdbc.OpenTelemetryDriver
-
-```properties
-spring.datasource.url=jdbc:otel:h2:mem:db
-spring.datasource.driver-class-name=io.opentelemetry.instrumentation.jdbc.OpenTelemetryDriver
-```
