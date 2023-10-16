@@ -212,7 +212,7 @@
 - name: qryn
   distribution: true
   nativeOTLP: true
-  url: 'https://qryn.cloud'
+  url: 'https://qryn.metrico.in/#/support?id=tempo-api'
   contact: 'https://github.com/lmangani'
   oss: true
   commercial: true  
