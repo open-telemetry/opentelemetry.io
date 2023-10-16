@@ -325,6 +325,6 @@ name: ClickHouse
   distribution: false
   nativeOTLP: true
   url: 'https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/clickhouseexporter'
-  contact: ''
+  contact: 'https://github.com/tbragin'
   oss: true
   commercial: true
