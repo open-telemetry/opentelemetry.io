@@ -89,7 +89,6 @@ Custom resource detectors can be created by implementing the
 which contains a single callback `get_resource/1` that returns an
 [`otel_resource`](https://hexdocs.pm/opentelemetry/1.3.0/otel_resource.html).
 
-Note that there are
-[semantic conventions](/docs/specs/otel/resource/semantic_conventions/) defined
-for `resource` that should be followed if they apply when adding new resource
-attributes.
+Note that there are [semantic conventions](/docs/specs/semconv/resource/)
+defined for `resource` that should be followed if they apply when adding new
+resource attributes.

@@ -82,9 +82,9 @@ processors:
 ```
 
 The resource processor has an identical configuration, but applies only to
-[resource attributes](/docs/specs/otel/resource/semantic_conventions/). Use the
-resource processor to modify infrastructure metadata related to telemetry. For
-example, this inserts the Kubernetes cluster name:
+[resource attributes](/docs/specs/semconv/resource/). Use the resource processor
+to modify infrastructure metadata related to telemetry. For example, this
+inserts the Kubernetes cluster name:
 
 ```yaml
 processors:

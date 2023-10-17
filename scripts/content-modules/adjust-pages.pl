@@ -102,8 +102,8 @@ while(<>) {
     s|(\]\()/docs/|$1$specBasePath/semconv/|g;
     s|(\]:\s*)/docs/|$1$specBasePath/semconv/|;
 
-    # TODO: drop once semconv pages are fixed:
-    s|(/resource/faas\.md)#function-as-a-service|$1|;
+    # TODO: drop after fix of https://github.com/open-telemetry/semantic-conventions/issues/419
+    s|#instrument-advice\b|#instrument-advisory-parameters|g;
   }
 
   # SPECIFICATION custom processing
