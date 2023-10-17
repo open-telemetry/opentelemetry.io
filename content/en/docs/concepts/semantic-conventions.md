@@ -11,6 +11,6 @@ scheme that can be standardized across a codebase, libraries, and platforms.
 
 Currently, Semantic Conventions are available for traces, metrics and resources:
 
-- [Trace Semantic Conventions](/docs/specs/otel/trace/semantic_conventions/)
+- [Trace Semantic Conventions](/docs/specs/semconv/general/trace/)
 - [Metric Semantic Conventions](/docs/specs/otel/metrics/semantic_conventions/)
 - [Resource Semantic Conventions](/docs/specs/semconv/resource/)

@@ -23,7 +23,7 @@ difficult to track how messages are moved around. This is where OpenTelemetry
 comes into the picture. It provides multiple instrumentation libraries for
 adding tracing to messaging based applications. Of course, there is one for
 Apache Kafka clients. It also defines the specification of semantic conventions
-for [messaging systems](/docs/specs/otel/trace/semantic_conventions/messaging/).
+for [messaging systems](/docs/specs/semconv/general/trace/messaging/).
 
 But usually, the architecture can even be more complicated: having applications
 not able to connect directly to the Apache Kafka cluster and talking its own

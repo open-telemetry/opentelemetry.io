@@ -107,7 +107,7 @@ Common settings that apply to multiple instrumentations at once.
 ### Peer service name
 
 The
-[peer service name](/docs/specs/otel/trace/semantic_conventions/span-general/#general-remote-service-attributes)
+[peer service name](/docs/specs/semconv/general/attributes/#general-remote-service-attributes)
 is the name of a remote service to which a connection is made. It corresponds to
 `service.name` in the [resource](/docs/specs/semconv/resource/#service) for the
 local service.
@@ -158,7 +158,7 @@ following property to disable it:
 
 You can configure the agent to capture predefined HTTP headers as span
 attributes, according to the
-[semantic convention](/docs/specs/otel/trace/semantic_conventions/http/#http-request-and-response-headers).
+[semantic convention](/docs/specs/semconv/http/http-spans/#common-attributes).
 Use the following properties to define which HTTP headers you want to capture:
 
 {{% config_option name="otel.instrumentation.http.client.capture-request-headers" %}}

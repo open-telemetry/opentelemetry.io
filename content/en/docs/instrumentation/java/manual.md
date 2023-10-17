@@ -837,7 +837,7 @@ span.setAttribute("http.url", url.toString());
 There are semantic conventions for spans representing operations in well-known
 protocols like HTTP or database calls. Semantic conventions for these spans are
 defined in the specification at
-[Trace Semantic Conventions](/docs/specs/otel/trace/semantic_conventions/).
+[Trace Semantic Conventions](/docs/specs/semconv/general/trace/).
 
 First add the semantic conventions as a dependency to your application:
 
