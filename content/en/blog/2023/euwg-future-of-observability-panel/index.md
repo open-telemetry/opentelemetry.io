@@ -6,7 +6,7 @@ linkTitle: The Future of Observability Panel
 date: 2023-10-17
 author: >-
   [Adriana Villela](https://github.com/avillela) (Lightstep)
-cSpell:ignore: Nočnica Mellifera Vijay Samuel Iris Dyrmishi youtube Farfetch
+cSpell:ignore: Dyrmishi Farfetch Iris Mellifera Nočnica Samuel Vijay youtube
 ---
 
 ![The Evolution of Observability Practices, featuring Guests David Wynn, Austin Parker, Vijay Samuel, Nočnica Mellifera, and Iris Dyrmishi](evolution-o11y-practices-social-card.jpeg)
