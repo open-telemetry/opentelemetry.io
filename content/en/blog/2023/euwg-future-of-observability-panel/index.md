@@ -66,9 +66,11 @@ including leadership buy-in and developer acceptance.
 
 ## Video recording
 
-You can catch the
-[recording of this discussion on our YouTube Channel](https://youtu.be/zSeKL2-_sVg).
-Don't forget to subscribe for more great OpenTelemetry content!
+You can catch the recording of this discussion below:
+
+{{<youtube zSeKL2-_sVg>}}
+
+Don't forget to subscribe to our [YouTube channel](https://youtube.com/@otel-official) for more great OpenTelemetry content!
 
 ## Join us!
 
