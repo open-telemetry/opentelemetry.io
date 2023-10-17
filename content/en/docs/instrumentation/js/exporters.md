@@ -498,7 +498,7 @@ docker run --rm -d -p 9411:9411 --name zipkin openzipkin/zipkin
 
 There are many other exporters available. For a list of available exporters, see
 the
-[registry](https://opentelemetry.io/ecosystem/registry/?component=exporter&language=js).
+[registry](/ecosystem/registry/?component=exporter&language=js).
 
 Finally, you can also write your own exporter. For more information, see the
 [SpanExporter Interface in the API documentation](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk_trace_base.SpanExporter.html).
