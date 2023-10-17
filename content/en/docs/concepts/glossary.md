@@ -356,11 +356,11 @@ on web pages when requested. See [more][zpages].
 
 ### Semantic Conventions
 
-#### **[Resource Conventions](/docs/specs/otel/resource/semantic_conventions)**
+#### **[Resource Conventions](/docs/specs/semconv/resource/)**
 
-#### **[Span Conventions](/docs/specs/otel/trace/semantic_conventions)**
+#### **[Span Conventions](/docs/specs/semconv/general/trace/)**
 
-#### **[Metric Conventions](/docs/specs/otel/metrics/semantic_conventions)**
+#### **[Metric Conventions](/docs/specs/semconv/general/metrics/)**
 
 [baggage]: /docs/specs/otel/baggage/api/
 [attribute]: /docs/specs/otel/common/#attributes
