@@ -128,8 +128,8 @@ while(<>) {
   s|(\]:\s+\|\()?https://github.com/open-telemetry/opentelemetry-proto/(\w+/.*?/)?docs/specification.md(\)?)|$1$specBasePath/otlp/$3|g;
   s|github.com/open-telemetry/opentelemetry-proto/docs/specification.md|OTLP|g;
 
-  # Match links to semconv
-  s|(\]:\s+\|\()https://github.com/open-telemetry/semantic-conventions/\w+/(main\|v$semconvVers)/docs(.*?\)?)|$1$specBasePath/semconv$3|;
+  # Localize links to semconv
+  s|(\]:\s+\|\()https://github.com/open-telemetry/semantic-conventions/\w+/(main\|v$semconvVers)/docs(.*?\)?)|$1$specBasePath/semconv$3|g;
 
   # Images
   s|(\.\./)?internal(/img/[-\w]+\.png)|$2|g;
