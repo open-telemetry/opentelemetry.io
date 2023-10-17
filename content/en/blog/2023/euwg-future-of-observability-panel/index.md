@@ -5,7 +5,8 @@ title:
 linkTitle: The Future of Observability Panel
 date: 2023-10-17
 author: >-
-  [Adriana Villela](https://github.com/avillela) (Lightstep),
+  [Adriana Villela](https://github.com/avillela) (Lightstep)
+cSpell:ignore: Nočnica Mellifera Vijay Samuel Iris Dyrmishi youtube Farfetch
 ---
 
 ![The Evolution of Observability Practices, featuring Guests David Wynn, Austin Parker, Vijay Samuel, Nočnica Mellifera, and Iris Dyrmishi](evolution-o11y-practices-social-card.jpeg)
@@ -16,9 +17,10 @@ collection, what is actually improving the lives of Observability teams?
 
 Guests David Wynn, Austin Parker, Vijay Samuel, Nočnica Mellifera, and Iris
 Dyrmishi came together to share their experiences and insights on the evolution
-of Observability practices, in this panel hosted by the OpenTelemetry End User Working Group. The discussion centered around their journey with
-OpenTelemetry and how it has shaped their Observability practices. Below are
-some key takeaways from their discussion.
+of Observability practices, in this panel hosted by the OpenTelemetry End User
+Working Group. The discussion centered around their journey with OpenTelemetry
+and how it has shaped their Observability practices. Below are some key
+takeaways from their discussion.
 
 ### 1- Observability Before OpenTelemetry
 
@@ -70,7 +72,9 @@ You can catch the recording of this discussion below:
 
 {{<youtube zSeKL2-_sVg>}}
 
-Don't forget to subscribe to our [YouTube channel](https://youtube.com/@otel-official) for more great OpenTelemetry content!
+Don't forget to subscribe to our
+[YouTube channel](https://youtube.com/@otel-official) for more great
+OpenTelemetry content!
 
 ## Join us!
 
