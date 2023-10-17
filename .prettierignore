@@ -13,7 +13,5 @@
 /content-modules/*
 !/content-modules/community
 /content-modules/community/*
-# Temporary until the following is merged and integrated into this repo:
-#   https://github.com/open-telemetry/community/pull/1742
-# !/content-modules/community/mission-vision-values.md
+!/content-modules/community/mission-vision-values.md
 !/content-modules/community/roadmap.md
