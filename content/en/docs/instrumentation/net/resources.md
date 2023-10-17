@@ -138,9 +138,8 @@ There are more resource detectors you can add to your configuration, for example
 to get details about your [Cloud] environment or [Deployment][].
 
 [getting started]: /docs/instrumentation/net/getting-started/
-[host]: /docs/specs/otel/resource/semantic_conventions/host/
-[cloud]: /docs/specs/otel/resource/semantic_conventions/cloud/
-[deployment]:
-  /docs/specs/otel/resource/semantic_conventions/deployment_environment/
-[service]: /docs/specs/otel/resource/semantic_conventions/#service
-[os]: /docs/specs/otel/resource/semantic_conventions/os/
+[host]: /docs/specs/semconv/resource/host/
+[cloud]: /docs/specs/semconv/resource/cloud/
+[deployment]: /docs/specs/semconv/resource/deployment-environment/
+[service]: /docs/specs/semconv/resource/#service
+[os]: /docs/specs/semconv/resource/os/

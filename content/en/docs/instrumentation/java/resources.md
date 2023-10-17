@@ -17,11 +17,10 @@ resource detection below.
 ## Detecting resources from common environments
 
 You can use `ResourceProvider`s for filling in attributes related to common
-environments, like
-[Container](/docs/specs/otel/resource/semantic_conventions/container/),
-[Host](/docs/specs/otel/resource/semantic_conventions/host/) or
-[Operating System](/docs/specs/otel/resource/semantic_conventions/os/). These
-can be used with or without
+environments, like [Container](/docs/specs/semconv/resource/container/),
+[Host](/docs/specs/semconv/resource/host/) or
+[Operating System](/docs/specs/semconv/resource/os/). These can be used with or
+without
 [auto-configuration](/docs/instrumentation/java/manual/#automatic-configuration).
 
 To use those providers, add the following dependency:

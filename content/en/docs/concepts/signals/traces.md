@@ -268,10 +268,10 @@ Attributes have the following rules that each language SDK implements:
   an array of these values
 
 Additionally, there are
-[Semantic Attributes](/docs/specs/otel/trace/semantic_conventions/), which are
-known naming conventions for metadata that is typically present in common
-operations. It's helpful to use semantic attribute naming wherever possible so
-that common kinds of metadata are standardized across systems.
+[Semantic Attributes](/docs/specs/semconv/general/trace/), which are known
+naming conventions for metadata that is typically present in common operations.
+It's helpful to use semantic attribute naming wherever possible so that common
+kinds of metadata are standardized across systems.
 
 ### Span Events
 
