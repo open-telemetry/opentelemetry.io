@@ -2219,6 +2219,14 @@
     "StatusCode": 200,
     "LastSeen": "2023-07-06T11:55:26.882609-07:00"
   },
+  "https://github.com/metrico/otel-collector": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-17T15:13:11.067528+02:00"
+  },
+  "https://github.com/metrico/qryn-collector": {
+    "StatusCode": 404,
+    "LastSeen": "2023-10-17T15:10:07.758268+02:00"
+  },
   "https://github.com/mhausenblas": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:39:03.127776-04:00"
@@ -4778,6 +4786,10 @@
   "https://pypi.org/project/opentelemetry-api/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T11:43:42.332023-04:00"
+  },
+  "https://qryn.metrico.in/#/support": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-17T15:10:07.18892+02:00"
   },
   "https://quarkus.io": {
     "StatusCode": 206,

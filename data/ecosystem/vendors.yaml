@@ -1,4 +1,4 @@
-# cSpell:ignore Coralogix Cribl ITRS Kloud Logz Crowdstrike Humio Lumigo observ Teletrace Uptrace Greptime KloudMate
+# cSpell:ignore Coralogix Cribl ITRS Kloud Logz Crowdstrike Humio Lumigo observ Teletrace Uptrace Greptime KloudMate qryn
 - name: AppDynamics (Cisco)
   distribution: true
   nativeOTLP: true
@@ -208,6 +208,13 @@
   url: 'https://docs.oracle.com/en-us/iaas/application-performance-monitoring/doc/configure-open-source-tracing-systems.html#GUID-4D941163-F357-4839-8B06-688876D4C61F'
   contact: ''
   oss: false
+  commercial: true
+- name: qryn
+  distribution: true
+  nativeOTLP: true
+  url: 'https://qryn.metrico.in/#/support?id=tempo-api'
+  contact: 'https://github.com/lmangani'
+  oss: true
   commercial: true
 - name: Sentry
   distribution: true
