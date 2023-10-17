@@ -198,7 +198,7 @@ private Response selectWithTracing(Query query) {
 ```
 
 Follow conventions to populate attributes! If there is no applicable one, check
-out [general conventions](/docs/specs/semconv/general/trace/span-general/).
+out [general conventions](/docs/specs/semconv/general/attributes/).
 
 ### Nested network and other spans
 
@@ -296,7 +296,7 @@ In the case of a messaging system, you may receive more than one message at
 once. Received messages become
 [_links_](/docs/instrumentation/java/manual/#create-spans-with-links) on the
 span you create. Refer to
-[messaging conventions](/docs/specs/semconv/general/trace/messaging/) for
+[messaging conventions](/docs/specs/semconv/messaging/messaging-spans/) for
 details (WARNING: messaging conventions are
 [under constructions](https://github.com/open-telemetry/oteps/pull/173) 🚧).
 

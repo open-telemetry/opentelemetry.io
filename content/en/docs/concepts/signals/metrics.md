@@ -49,8 +49,8 @@ instrument is defined by:
 - Description (optional)
 
 The name, unit, and description are chosen by the developer or defined via
-[semantic conventions](/docs/specs/semconv/general/metrics/) for
-common ones like request and process metrics.
+[semantic conventions](/docs/specs/semconv/general/metrics/) for common ones
+like request and process metrics.
 
 The instrument kind is one of the following:
 

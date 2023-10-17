@@ -360,7 +360,7 @@ on web pages when requested. See [more][zpages].
 
 #### **[Span Conventions](/docs/specs/semconv/general/trace/)**
 
-#### **[Metric Conventions](/docs/specs/otel/metrics/semantic_conventions)**
+#### **[Metric Conventions](/docs/specs/semconv/general/metrics/)**
 
 [baggage]: /docs/specs/otel/baggage/api/
 [attribute]: /docs/specs/otel/common/#attributes
