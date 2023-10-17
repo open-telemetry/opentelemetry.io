@@ -215,7 +215,7 @@
   url: 'https://qryn.metrico.in/#/support?id=tempo-api'
   contact: 'https://github.com/lmangani'
   oss: true
-  commercial: true  
+  commercial: true
 - name: Sentry
   distribution: true
   nativeOTLP: false
