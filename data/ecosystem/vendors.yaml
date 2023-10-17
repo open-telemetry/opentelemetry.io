@@ -321,7 +321,7 @@
   contact: 'info@greptime.com'
   oss: true
   commercial: true
-name: ClickHouse
+- name: ClickHouse
   distribution: false
   nativeOTLP: false
   url: 'https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/clickhouseexporter'
