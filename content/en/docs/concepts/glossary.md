@@ -3,7 +3,7 @@ title: Glossary
 description: >-
   Terminology you may or may not be familiar with used by the OpenTelemetry
   project.
-weight: 100
+weight: 200
 ---
 
 The OpenTelemetry project uses terminology you may or may not be familiar with.
