@@ -6191,6 +6191,10 @@
     "StatusCode": 403,
     "LastSeen": "2023-06-30T16:27:32.038092-04:00"
   },
+  "https://x.com/opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-17T17:40:36.087461-04:00"
+  },
   "https://youtu.be/9iaGG-YZw5I": {
     "StatusCode": 200,
     "LastSeen": "2023-06-01T17:03:14.742262-04:00"
@@ -6198,6 +6202,10 @@
   "https://youtu.be/dpXhgZL9tzU": {
     "StatusCode": 200,
     "LastSeen": "2023-07-24T11:52:40.581959+02:00"
+  },
+  "https://youtu.be/zSeKL2-_sVg": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-17T17:40:35.689097-04:00"
   },
   "https://zipkin.io/": {
     "StatusCode": 206,
