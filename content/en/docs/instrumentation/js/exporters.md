@@ -14,22 +14,31 @@ can learn how to setup exporters following the
 
 {{% /alert %}}
 
-## OTLP
+## Example backend
 
-### Backend
+{{% alert title="Note" color="info" %}}
 
-There are many open source and commercial backends available that support OTLP
-to receive telemetry data. Take a look at this
-[non-exhaustive list](/ecosystem/vendors/), to find a backend that fits your
-needs. In this section you will find instructions to set up the
+If you have a backend already set up, you can skip this section and read the
+instructions for the exporter you want to use.
+
+{{% /alert %}}
+
+If you don't have a backend setup already, you will find instructions below to
+set up an [OpenTelemetry Collector](/docs/collector/) with a basic configuration
+to send your telemetry to the console.
+
+Additionally, you will find instructions to run
+[Jaeger](https://jaegertracing.io) to visualize your traces, or
+[Prometheus](https://prometheus.io) to visualize your metrics.
+
+In this section you will find instructions to set up the
 [OpenTelemetry Collector](/docs/collector/), [Jaeger](https://jaegertracing.io)
-and [Prometheus](https://prometheus.io) to quickly get started.
+and [Prometheus](https://prometheus.io) to get you started quickly.
 
-#### OpenTelemetry Collector
+### Collector (Traces, Metrics, Logs)
 
-We recommend that you setup an [OpenTelemetry Collector](/docs/collector/) to
-export your telemetry to. To try out and verify your instrumentation quickly, you
-can run the collector in a docker container that writes telemetry directly to the console.
+To try out and verify your instrumentation quickly, you can run the collector in
+a docker container that writes telemetry directly to the console.
 
 In an empty directory, create a file called `collector-config.yaml` with the
 following content:
@@ -40,21 +49,37 @@ receivers:
     protocols:
       grpc:
       http:
+  prometheus:
+    config:
+      scrape_configs:
+        - job_name: dice-service
+          scrape_interval: 5s
+          static_configs:
+            - targets: [host.docker.internal:9464]
+  zipkin:
 exporters:
   debug:
     verbosity: detailed
 service:
   pipelines:
     traces:
-      receivers: [otlp]
+      receivers: [otlp, zipkin]
       exporters: [debug]
     metrics:
-      receivers: [otlp]
+      receivers: [otlp, prometheus]
       exporters: [debug]
     logs:
       receivers: [otlp]
       exporters: [debug]
 ```
+
+{{% alert title="Note" color="note" %}}
+
+Not all docker environments support `host.docker.internal`. In some cases you
+may need to replace `host.docker.internal` with `localhost` or the IP address of
+your machine.
+
+{{% /alert %}}
 
 Now run the collector in a docker container:
 
@@ -62,11 +87,13 @@ Now run the collector in a docker container:
 docker run --rm -v $(pwd)/collector-config.yaml:/etc/otelcol-contrib/config.yaml otel/opentelemetry-collector-contrib
 ```
 
-You can now continue with [installing the OTLP exporter packages](#dependencies)
-. Later you may want to [configure the collector](/docs/collector/configuration)
+This collector is now able to except telemetry via [OTLP](#otlp),
+[Prometheus](#prometheus) and [Zipkin](#zipkin).
+
+Later you may want to [configure the collector](/docs/collector/configuration)
 to send your telemetry to your observability backend.
 
-#### Jaeger (Traces)
+### Jaeger (Traces)
 
 As an alternative and for a quick way to visualize your traces, we recommend
 using [Jaeger](https://jaegertracing.io). You can run Jaeger in a docker
@@ -82,14 +109,25 @@ docker run --rm \
   jaegertracing/all-in-one:latest
 ```
 
-#### Prometheus (Metrics)
+### Prometheus (Metrics)
 
 As an alternative and for a quick way to visualize your metrics, we recommend
-using [Prometheus](https://prometheus.io). You can run Prometheus in a docker
-container with the UI accessible on port 9090:
+using [Prometheus](https://prometheus.io).
+
+Create a file called `prometheus.yml` with the following content:
+
+```yaml
+scrape_configs:
+  - job_name: dice-service
+    scrape_interval: 5s
+    static_configs:
+      - targets: [host.docker.internal:9464]
+```
+
+You can run Prometheus in a docker container with the UI accessible on port
+9090:
 
 ```shell
-echo > prometheus.yml
 docker run --rm -v ${PWD}/prometheus.yml:/prometheus/prometheus.yml -p 9090:9090 prom/prometheus --enable-feature=otlp-write-receive
 ```
 
@@ -98,18 +136,24 @@ docker run --rm -v ${PWD}/prometheus.yml:/prometheus/prometheus.yml -p 9090:9090
 When using Prometheus' OTLP Receiver, make sure that you set the OTLP endpoint
 for metrics in your application to `http://localhost:9090/api/v1/otlp`.
 
+Not all docker environments support `host.docker.internal`. In some cases you
+may need to replace `host.docker.internal` with `localhost` or the IP address of
+your machine.
+
 {{% /alert %}}
+
+## OTLP
 
 ### Dependencies
 
 If you want to send telemetry data to an OTLP endpoint (like the
-[collector](/docs/collector), [Jaeger](https://www.jaegertracing.io/) or
-[Prometheus](https://prometheus.io/)), you can choose between three different
+[collector](#collector-traces-metrics-logs), [Jaeger](#jaeger-traces) or
+[Prometheus](#prometheus-metrics)), you can choose between three different
 protocols to transport your data:
 
-- HTTP/protobuf
-- HTTP/JSON
-- gRPC
+- [HTTP/protobuf](https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-proto)
+- [HTTP/JSON](https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-http)
+- [gRPC](https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-grpc)
 
 Start by installing the respective exporter packages as a dependency for your
 project:
@@ -319,17 +363,19 @@ server {
 
 ## Console
 
-To debug your instrumentation or see the values locally in development, you can use exporters writing telemetry data to
-the console (stdout).
+To debug your instrumentation or see the values locally in development, you can
+use exporters writing telemetry data to the console (stdout).
 
 If you followed the
 [Getting Started](/docs/instrumentation/js/getting-started/nodejs/) or
 [Manual Instrumentation](/docs/instrumentation/js/manual) guides, you already
 have the console exporter installed.
 
-The `ConsoleSpanExporter` is included in the `@opentelemetry/sdk-trace-node`
+The `ConsoleSpanExporter` is included in the
+[`@opentelemetry/sdk-trace-node`](https://www.npmjs.com/package/@opentelemetry/sdk-trace-node)
 package and the `ConsoleMetricExporter` is included in the
-`@opentelemetry/sdk-metrics` package:
+[`@opentelemetry/sdk-metrics`](https://www.npmjs.com/package/@opentelemetry/sdk-metrics)
+package:
 
 ## Jaeger
 
@@ -338,11 +384,13 @@ data, so you can use the same exporter as for the [OTLP backend](#otlp).
 
 ## Prometheus
 
-To send your metric data to [Prometheus](https://prometheus.io/), you can either
+To send your metric data to [Prometheus](#prometheus-metrics), you can either
 [enable Prometheus' OTLP Receiver](https://prometheus.io/docs/prometheus/latest/feature_flags/#otlp-receiver)
 and use the [OTLP exporter](#otlp) or you can use the `PrometheusExporter`.
 
-Install the exporter package as a dependency for your application:
+Install the
+[exporter package](https://www.npmjs.com/package/@opentelemetry/exporter-prometheus)
+as a dependency for your application:
 
 ```shell
 npm install --save @opentelemetry/exporter-prometheus
@@ -357,13 +405,10 @@ your Prometheus backend:
 import * as opentelemetry from '@opentelemetry/sdk-node';
 import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
 import { PrometheusExporter } from '@opentelemetry/exporter-prometheus';
-import { PeriodicExportingMetricReader } from '@opentelemetry/sdk-metrics';
 
 const sdk = new opentelemetry.NodeSDK({
-  metricReader: new PeriodicExportingMetricReader({
-    exporter: new PrometheusExporter({
-      port: 9464, // optional - default is 9464
-    }),
+  metricReader: new PrometheusExporter({
+    port: 9464, // optional - default is 9464
   }),
   instrumentations: [getNodeAutoInstrumentations()],
 });
@@ -380,31 +425,29 @@ const {
 const { PrometheusExporter } = require('@opentelemetry/exporter-prometheus');
 const { PeriodicExportingMetricReader } = require('@opentelemetry/sdk-metrics');
 const sdk = new opentelemetry.NodeSDK({
-  metricReader: new PeriodicExportingMetricReader({
-    exporter: new PrometheusExporter({
-      port: 9464, // optional - default is 9464
-    }),
+  metricReader: new PrometheusExporter({
+    port: 9464, // optional - default is 9464
   }),
   instrumentations: [getNodeAutoInstrumentations()],
 });
 sdk.start();
 ```
 
-You can run Zipkin on your local machine with Docker, by running the following
-command:
-
-```shell
-docker run --rm -d -p 9411:9411 --name zipkin openzipkin/zipkin
-```
-
 {{% /tab %}} {{< /tabpane >}}
+
+With the above you can access your metrics at <http://localhost:9464/metrics>.
+[Prometheus](#prometheus-metrics) or a
+[collector](#collector-traces-metrics-logs) with the Prometheus receiver can
+scrape the metrics from this endpoint.
 
 ## Zipkin
 
 To send your trace data to [Zipkin](https://zipkin.io/), you can use the
 `ZipkinExporter`.
 
-Install the exporter package as a dependency for your application:
+Install the
+[exporter package](https://www.npmjs.com/package/@opentelemetry/exporter-zipkin)
+as a dependency for your application:
 
 ```shell
 npm install --save @opentelemetry/exporter-zipkin
