@@ -102,10 +102,11 @@ and 4138:
 
 ```shell
 docker run --rm \
-  -e COLLECTOR_OTLP_ENABLED=true \
+  -e COLLECTOR_ZIPKIN_HOST_PORT=:9411 \
   -p 16686:16686 \
   -p 4317:4317 \
   -p 4318:4318 \
+  -p 9411:9411 \
   jaegertracing/all-in-one:latest
 ```
 
@@ -487,8 +488,12 @@ const sdk = new opentelemetry.NodeSDK({
 
 {{% /tab %}} {{< /tabpane >}}
 
-You can run Zipkin on your local machine with Docker, by running the following
-command:
+Both, the [OpenTelemetry Collector](#collector-traces-metrics-logs) and
+[Jaeger](#jaeger-traces), support the Zipkin protocol, so you can send your
+telemetry data to them.
+
+You can run [Zipkin](https://zipkin.io/) on your local machine with Docker, by
+executing the following command:
 
 ```shell
 docker run --rm -d -p 9411:9411 --name zipkin openzipkin/zipkin
@@ -497,8 +502,7 @@ docker run --rm -d -p 9411:9411 --name zipkin openzipkin/zipkin
 ## Other available exporters
 
 There are many other exporters available. For a list of available exporters, see
-the
-[registry](/ecosystem/registry/?component=exporter&language=js).
+the [registry](/ecosystem/registry/?component=exporter&language=js).
 
 Finally, you can also write your own exporter. For more information, see the
 [SpanExporter Interface in the API documentation](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk_trace_base.SpanExporter.html).
@@ -517,7 +521,7 @@ spans, you can use the `SimpleSpanProcessor` instead as follows:
 import * as opentelemetry from '@opentelemetry/sdk-node';
 import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
 
-const sdk = new opentelemetry.NodeSDK({
+const sdk = new NodeSDK({
   spanProcessor: new SimpleSpanProcessor(exporter),
   instrumentations: [getNodeAutoInstrumentations()],
 });
