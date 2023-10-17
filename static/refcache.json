@@ -563,6 +563,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:18:28.374093-04:00"
   },
+  "https://developer.android.com/guide/topics/manifest/uses-sdk-element#ApiLevels": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-16T14:13:38.873062-04:00"
+  },
   "https://developer.android.com/reference/android/os/Build#MANUFACTURER": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T16:08:18.483355-04:00"
@@ -859,9 +863,17 @@
     "StatusCode": 206,
     "LastSeen": "2023-07-06T17:58:46.994822-04:00"
   },
+  "https://docs.docker.com/engine/api/v1.43/#tag/Image/operation/ImageInspect": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-16T14:13:22.14114-04:00"
+  },
   "https://docs.docker.com/engine/reference/run/#container-identification": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:07:35.082785-04:00"
+  },
+  "https://docs.docker.com/registry/spec/manifest-v2-2/#example-image-manifest": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-16T14:13:33.061931-04:00"
   },
   "https://docs.fluentbit.io/manual/pipeline/inputs/opentelemetry/": {
     "StatusCode": 206,
@@ -1163,6 +1175,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T15:47:45.601398-04:00"
   },
+  "https://docs.oracle.com/en/java/javase/17/docs/api/java.management/java/lang/management/OperatingSystemMXBean.html#getSystemLoadAverage%28%29": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-16T14:12:45.788489-04:00"
+  },
   "https://docs.oracle.com/en/java/javase/17/docs/api/jdk.management/com/sun/management/OperatingSystemMXBean.html#getCpuLoad%28%29": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T11:41:27.635612-04:00"
@@ -1190,6 +1206,10 @@
   "https://docs.oracle.com/javase/7/docs/api/java/util/logging/package-summary.html": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T15:51:44.10099-04:00"
+  },
+  "https://docs.oracle.com/javase/8/docs/api/java/lang/Runtime.html#availableProcessors--": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-16T14:12:40.31885-04:00"
   },
   "https://docs.oracle.com/javase/8/docs/api/java/lang/management/BufferPoolMXBean.html#getCount--": {
     "StatusCode": 200,
@@ -2062,6 +2082,10 @@
   "https://github.com/frzifus/jaeger-otel-test/pkgs/container/jaeger-otel-test": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:24:19.23902-04:00"
+  },
+  "https://github.com/git-ecosystem/trace2receiver": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-16T20:37:05.720755+02:00"
   },
   "https://github.com/gosnmp/gosnmp": {
     "StatusCode": 200,
@@ -3963,6 +3987,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-08-14T07:27:51.174082501Z"
   },
+  "https://learn.microsoft.com/en-us/archive/blogs/askcore/windows-performance-monitor-disk-counters-explained#windows-performance-monitor-disk-counters-explained": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-16T14:12:52.488179-04:00"
+  },
   "https://learn.microsoft.com/en-us/dotnet/api/system.reflection.assembly.getentryassembly": {
     "StatusCode": 200,
     "LastSeen": "2023-09-06T15:04:13.518691+02:00"
@@ -4062,6 +4090,10 @@
   "https://man7.org/linux/man-pages/man2/getsockname.2.html": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:06:20.249047-04:00"
+  },
+  "https://man7.org/linux/man-pages/man5/proc.5.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-16T14:13:03.195663-04:00"
   },
   "https://man7.org/linux/man-pages/man7/ip.7.html": {
     "StatusCode": 206,
@@ -4294,6 +4326,10 @@
   "https://opencensus.io/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:37:38.705465-04:00"
+  },
+  "https://opencontainers.org/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-16T14:13:27.523763-04:00"
   },
   "https://openfeature.dev/": {
     "StatusCode": 206,
@@ -5035,6 +5071,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:53:19.161811-04:00"
   },
+  "https://superuser.com/a/980821": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-16T14:12:57.75446-04:00"
+  },
   "https://sysdig.com/blog/kubernetes-1-25-whats-new/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-01T15:55:25.047205-04:00"
@@ -5234,6 +5274,10 @@
   "https://wiki.alpinelinux.org/wiki/Repositories#Testing": {
     "StatusCode": 200,
     "LastSeen": "2023-09-27T06:45:36.696402804Z"
+  },
+  "https://wiki.osdev.org/CPUID": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-16T14:13:16.464459-04:00"
   },
   "https://wiki.python.org/moin/PythonImplementations": {
     "StatusCode": 200,
@@ -5751,9 +5795,17 @@
     "StatusCode": 200,
     "LastSeen": "2023-09-06T15:04:40.72719+02:00"
   },
+  "https://www.nuget.org/packages/OpenTelemetry.Exporter.Console": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-13T09:34:45.811783+02:00"
+  },
   "https://www.nuget.org/packages/OpenTelemetry.Extensions.Hosting": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:44:22.963399-04:00"
+  },
+  "https://www.nuget.org/packages/OpenTelemetry.Instrumentation.AspNet": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-13T09:34:44.998116+02:00"
   },
   "https://www.nuget.org/packages/OpenTelemetry.Instrumentation.AspNet/": {
     "StatusCode": 200,
@@ -5918,6 +5970,10 @@
   "https://www.rfc-editor.org/rfc/rfc5789.html": {
     "StatusCode": 200,
     "LastSeen": "2023-06-27T17:17:33.646508-04:00"
+  },
+  "https://www.rfc-editor.org/rfc/rfc5952.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-16T14:13:10.625503-04:00"
   },
   "https://www.rfc-editor.org/rfc/rfc9110.html": {
     "StatusCode": 200,

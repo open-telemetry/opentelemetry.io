@@ -3,7 +3,7 @@ title: Distributions
 description: >-
   A distribution, not to be confused with a fork, is customized version of an
   OpenTelemetry component.
-weight: 90
+weight: 190
 ---
 
 The OpenTelemetry projects consists of multiple [components](../components) that
