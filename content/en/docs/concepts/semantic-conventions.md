@@ -4,7 +4,7 @@ description: Common names for different kinds of operations and data.
 weight: 30
 ---
 
-OpenTelemetry defines [Semantic Conventions](/docs/specs/semconv/general/trace/)
+OpenTelemetry defines [Semantic Conventions](/docs/specs/semconv/)
 (sometimes called Semantic Attributes) that specify common names for different
 kinds of operations and data. The benefit to using Semantic Conventions is in
 following a common naming scheme that can be standardized across a codebase,
