@@ -109,8 +109,7 @@ Common settings that apply to multiple instrumentations at once.
 The
 [peer service name](/docs/specs/otel/trace/semantic_conventions/span-general/#general-remote-service-attributes)
 is the name of a remote service to which a connection is made. It corresponds to
-`service.name` in the
-[resource](/docs/specs/otel/resource/semantic_conventions/#service) for the
+`service.name` in the [resource](/docs/specs/semconv/resource/#service) for the
 local service.
 
 {{% config_option name="otel.instrumentation.common.peer-service-mapping" %}}

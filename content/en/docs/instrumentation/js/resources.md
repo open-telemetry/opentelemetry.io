@@ -254,11 +254,9 @@ list
 [here](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node).
 
 [getting started - node.js]: /docs/instrumentation/js/getting-started/nodejs/
-[process and process runtime resources]:
-  /docs/specs/otel/resource/semantic_conventions/process/
-[host]: /docs/specs/otel/resource/semantic_conventions/host/
-[cloud]: /docs/specs/otel/resource/semantic_conventions/cloud/
-[deployment]:
-  /docs/specs/otel/resource/semantic_conventions/deployment_environment/
-[service]: /docs/specs/otel/resource/semantic_conventions/#service
-[os]: /docs/specs/otel/resource/semantic_conventions/os/
+[process and process runtime resources]: /docs/specs/semconv/resource/process/
+[host]: /docs/specs/semconv/resource/host/
+[cloud]: /docs/specs/semconv/resource/cloud/
+[deployment]: /docs/specs/semconv/resource/deployment-environment/
+[service]: /docs/specs/semconv/resource/#service
+[os]: /docs/specs/semconv/resource/os/

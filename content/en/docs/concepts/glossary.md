@@ -356,7 +356,7 @@ on web pages when requested. See [more][zpages].
 
 ### Semantic Conventions
 
-#### **[Resource Conventions](/docs/specs/otel/resource/semantic_conventions)**
+#### **[Resource Conventions](/docs/specs/semconv/resource/)**
 
 #### **[Span Conventions](/docs/specs/otel/trace/semantic_conventions)**
 

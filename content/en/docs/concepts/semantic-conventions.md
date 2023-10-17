@@ -13,4 +13,4 @@ Currently, Semantic Conventions are available for traces, metrics and resources:
 
 - [Trace Semantic Conventions](/docs/specs/otel/trace/semantic_conventions/)
 - [Metric Semantic Conventions](/docs/specs/otel/metrics/semantic_conventions/)
-- [Resource Semantic Conventions](/docs/specs/otel/resource/semantic_conventions/)
+- [Resource Semantic Conventions](/docs/specs/semconv/resource/)
