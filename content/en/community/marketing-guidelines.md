@@ -31,7 +31,7 @@ There are three high-level focus areas for these goals and guidelines.
 - Do’s:
   - Use project collateral such as logo and name in line with the Linux
     Foundation’s branding and
-    [trademark usage guidelines](https://www.linuxfoundation.org/trademark-usage/)
+    [trademark usage guidelines](https://www.linuxfoundation.org/legal/trademark-usage)
   - Emphasize that OTel would not be possible without collaboration from many
     contributors who happen to work for competing vendors and providers
   - Cite names of the other contributors and vendors involved with OTel efforts
