@@ -5677,11 +5677,11 @@
   },
   "https://www.linuxfoundation.org/legal/privacy-policy": {
     "StatusCode": 200,
-    "LastSeen": "2023-06-29T18:36:29.596108-04:00"
+    "LastSeen": "2023-10-18T10:57:26.960512-04:00"
   },
-  "https://www.linuxfoundation.org/trademark-usage/": {
+  "https://www.linuxfoundation.org/legal/trademark-usage": {
     "StatusCode": 200,
-    "LastSeen": "2023-06-30T08:53:04.661984-04:00"
+    "LastSeen": "2023-10-18T10:57:32.375541-04:00"
   },
   "https://www.logicmonitor.com/": {
     "StatusCode": 206,
