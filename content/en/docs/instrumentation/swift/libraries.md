@@ -31,7 +31,7 @@ OpenTelemetry.registerTracerProvider(traceProvider: TracerProviderBuilder()
 `SDKResourceExtension` provides attributes in a resource object with details
 about the iOS device, OS details, and application details. It applies these
 values to the appropriate
-[semantic attributes](/docs/specs/otel/resource/semantic_conventions/#semantic-attributes-with-sdk-provided-default-value).
+[semantic attributes](/docs/specs/semconv/resource/#semantic-attributes-with-sdk-provided-default-value).
 
 #### Application Info
 
