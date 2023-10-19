@@ -487,6 +487,14 @@
     "StatusCode": 206,
     "LastSeen": "2023-07-24T11:52:37.09875+02:00"
   },
+  "https://cortexmetrics.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-16T20:09:46.197579+02:00"
+  },
+  "https://cortexmetrics.io/docs/guides/tracing/#opentelemetry": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-16T20:09:46.38714+02:00"
+  },
   "https://couchdb.apache.org/": {
     "StatusCode": 206,
     "LastSeen": "2023-07-06T17:57:36.620937-04:00"
@@ -502,6 +510,10 @@
   "https://danielabaron.me/blog/nomad-tips-and-tricks/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:15:58.495962-04:00"
+  },
+  "https://dapr.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-16T20:09:47.43077+02:00"
   },
   "https://dart.dev": {
     "StatusCode": 206,
@@ -558,6 +570,10 @@
   "https://deno.land": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T16:19:42.584991-04:00"
+  },
+  "https://dev.mysql.com/doc/refman/8.1/en/telemetry-trace.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-16T20:10:00.385651+02:00"
   },
   "https://devcenter.heroku.com/articles/dyno-metadata": {
     "StatusCode": 200,
@@ -810,6 +826,10 @@
   "https://docs.dapr.io/operations/monitoring/tracing/otel-collector/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T16:26:17.455495-04:00"
+  },
+  "https://docs.dapr.io/operations/observability/tracing/otel-collector/open-telemetry-collector/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-16T20:09:48.385662+02:00"
   },
   "https://docs.datadoghq.com/tracing/connect_logs_and_traces/java/": {
     "StatusCode": 206,
@@ -3615,6 +3635,14 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T16:08:55.124449-04:00"
   },
+  "https://goharbor.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-16T20:09:48.802546+02:00"
+  },
+  "https://goharbor.io/docs/edge/administration/distributed-tracing/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-16T20:09:49.097202+02:00"
+  },
   "https://golang.org/ref/spec#Slice_types": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T16:10:23.235648-04:00"
@@ -3875,6 +3903,14 @@
     "StatusCode": 200,
     "LastSeen": "2023-10-01T12:48:09.135563-04:00"
   },
+  "https://keda.sh/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-16T20:09:49.93756+02:00"
+  },
+  "https://keda.sh/docs/2.12/operate/opentelemetry/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-16T20:09:50.218385+02:00"
+  },
   "https://kind.sigs.k8s.io/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:14:16.4324-04:00"
@@ -3887,6 +3923,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T16:03:28.24078-04:00"
   },
+  "https://knative.dev/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-16T20:09:51.699957+02:00"
+  },
   "https://knative.dev/docs/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:15:14.445409-04:00"
@@ -3894,6 +3934,10 @@
   "https://knative.dev/docs/eventing/accessing-traces/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:15:19.812667-04:00"
+  },
+  "https://knative.dev/docs/eventing/observability/metrics/collecting-metrics/#about-opentelemetry": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-16T20:09:52.000286+02:00"
   },
   "https://knative.dev/docs/serving/accessing-traces/": {
     "StatusCode": 206,
@@ -3982,6 +4026,14 @@
   "https://kubernetes.io/docs/tasks/debug/debug-cluster/resource-usage-monitoring/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T11:48:06.399753-04:00"
+  },
+  "https://kyverno.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-16T20:09:52.67724+02:00"
+  },
+  "https://kyverno.io/docs/monitoring/opentelemetry/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-16T20:09:53.171107+02:00"
   },
   "https://laravel.com/docs/10.x/installation": {
     "StatusCode": 200,
@@ -4863,6 +4915,14 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-30T11:45:10.389335-04:00"
   },
+  "https://rust-lang.github.io/rustup/dev-guide/tracing.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-16T20:09:54.979837+02:00"
+  },
+  "https://rustup.rs/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-16T20:09:54.794436+02:00"
+  },
   "https://sched.co/182Ib": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:52:21.892154-04:00"
@@ -5102,6 +5162,14 @@
   "https://techcommunity.microsoft.com/t5/azure-monitor/opentelemetry-azure-monitor/ba-p/2737823": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T16:26:12.028821-04:00"
+  },
+  "https://thanos.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-16T20:09:56.672005+02:00"
+  },
+  "https://thanos.io/tip/thanos/tracing.md/#opentelemetry-otlp": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-16T20:09:56.874625+02:00"
   },
   "https://tinygo.org/": {
     "StatusCode": 206,
@@ -5695,6 +5763,14 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-30T08:52:52.358236-04:00"
   },
+  "https://www.mathworks.com/matlabcentral/fileexchange/130979-opentelemetry-matlab": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-16T20:09:58.703215+02:00"
+  },
+  "https://www.mathworks.com/products/matlab.html": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-16T20:09:57.720447+02:00"
+  },
   "https://www.meetup.com/opentelemetry-in-practice-meetup-group/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T07:52:48.670372-04:00"
@@ -5706,6 +5782,10 @@
   "https://www.mongodb.com/": {
     "StatusCode": 206,
     "LastSeen": "2023-07-06T17:57:52.359895-04:00"
+  },
+  "https://www.mysql.com/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-16T20:09:59.62173+02:00"
   },
   "https://www.nomadproject.io": {
     "StatusCode": 206,
@@ -5850,6 +5930,14 @@
   "https://www.observeany.com/learn/opentelemetry-receiver": {
     "StatusCode": 200,
     "LastSeen": "2023-08-17T09:39:20.114053+08:00"
+  },
+  "https://www.openpolicyagent.org/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-16T20:09:53.677301+02:00"
+  },
+  "https://www.openpolicyagent.org/docs/latest/monitoring/#opentelemetry": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-16T20:09:53.898397+02:00"
   },
   "https://www.oracle.com/technical-resources/articles/javase/jmx.html": {
     "StatusCode": 200,
