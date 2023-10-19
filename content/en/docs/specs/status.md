@@ -113,7 +113,7 @@ same as the **Protocol** status.
     active development.
 
 [baggage]: /docs/specs/otel/baggage/
-[event semantic conventions]: /docs/specs/semconv/general/logs/
+[event semantic conventions]: /docs/specs/semconv/general/events/
 [logging]: /docs/specs/otel/logs/
 [logs data model]: /docs/specs/otel/logs/data-model/
 [metrics]: /docs/specs/otel/metrics/
