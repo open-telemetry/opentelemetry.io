@@ -126,6 +126,10 @@ params:
         desc: >-
           CNCF works in close association with Linux Foundation. Read the
           privacy policy here
+      - name: Trademark Usage
+        url: https://www.linuxfoundation.org/legal/trademark-usage
+        icon: fa-solid fa-trademark
+        desc: Linux Foundation’s trademarks policy and guidelines.
       - name: Marketing Guidelines
         url: /community/marketing-guidelines/
         icon: fas fa-bullhorn
@@ -135,6 +139,7 @@ params:
       - name: Site-build info
         url: /site/
         icon: fa-solid fa-hammer
+        desc: Site-build information.
 
   logos:
     hero: opentelemetry-horizontal-color.png
