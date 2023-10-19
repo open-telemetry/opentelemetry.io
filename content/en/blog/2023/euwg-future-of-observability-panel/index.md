@@ -51,7 +51,7 @@ requirements using the
 they were able to include only the components that were applicable to their use
 case, including using custom processors.
 
-### 4- Surprising Aspects of OpenTelemetry Adoption
+## 4- Surprising Aspects of OpenTelemetry Adoption
 
 Challenges included convincing teams to adopt OpenTelemetry, especially when
 components like Logs were not yet stable. The evolving nature of OpenTelemetry
