@@ -1,7 +1,7 @@
 ---
 title: Getting Started
 description: Get up and running with OpenTelemetry for PHP.
-aliases: [/docs/instrumentation/php/getting_started]
+aliases: [getting_started]
 weight: 10
 cSpell:ignore: darwin myapp PECL pecl rolldice strval
 ---
