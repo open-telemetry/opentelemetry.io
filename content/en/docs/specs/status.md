@@ -1,7 +1,7 @@
 ---
 title: Specification Status Summary
 linkTitle: Status
-aliases: [/docs/specs/otel/status]
+aliases: [otel/status]
 weight: -10
 ---
 
