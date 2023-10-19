@@ -58,7 +58,7 @@ components like Logs were not yet stable. The evolving nature of OpenTelemetry
 made sometimes challenging to keep up with new features and updates while
 ensuring that teams did not lag behind.
 
-### 5- The People Problem of Observability
+## 5- The People Problem of Observability
 
 Observability, like so many issues in the tech industry is more of a people
 problem than a technical problem. Successful OpenTelemetry adoption and
