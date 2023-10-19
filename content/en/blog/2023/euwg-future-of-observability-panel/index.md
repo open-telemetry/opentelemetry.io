@@ -21,7 +21,7 @@ of Observability practices, in this panel hosted by the [OpenTelemetry End User 
 and how it has shaped their Observability practices. Below are some key
 takeaways from their discussion.
 
-### 1- Observability Before OpenTelemetry
+## 1- Observability Before OpenTelemetry
 
 The panelists started off by talking about their experiences before
 OpenTelemetry. Challenges included the lack of standardization, the use of
