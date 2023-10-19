@@ -14,15 +14,15 @@ the
 [candidates page](https://github.com/open-telemetry/community/blob/main/elections/2023/governance-committee-candidates.md),
 but here are their names:
 
-- Daniel Gomez Blanco
-- Steve Flanders
-- Juraci Paixão Kröhling
-- Severin Neumann
 - Austin Parker
-- Vijay Samuel
+- Daniel Gomez Blanco
 - Eric Sirianni
 - Johannes Tax
+- Juraci Paixão Kröhling
+- Severin Neumann
+- Steve Flanders
 - Ted Young
+- Vijay Samuel
 
 You can check your eligibility by reviewing
 [this GitHub issue](https://github.com/open-telemetry/community/issues/1561). If
