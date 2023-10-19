@@ -32,7 +32,7 @@ leading to fragmented solutions.
 Companies like eBay and Farfetch found value in adopting OpenTelemetry due to
 its standardization of telemetry data and its vendor-neutrality.
 
-### 2- OpenTelemetry as a Game Changer
+## 2- OpenTelemetry as a Game Changer
 
 OpenTelemetry emerged as a game-changing solution for enabling Observability. It
 provided a standardized approach to instrumenting applications. The adoption of
