@@ -100,6 +100,7 @@ Install the following packages:
 go get "go.opentelemetry.io/otel" \
   "go.opentelemetry.io/otel/exporters/stdout/stdoutmetric" \
   "go.opentelemetry.io/otel/exporters/stdout/stdouttrace" \
+  "go.opentelemetry.io/otel/propagation" \
   "go.opentelemetry.io/otel/sdk/metric" \
   "go.opentelemetry.io/otel/sdk/resource" \
   "go.opentelemetry.io/otel/sdk/trace" \
@@ -131,6 +132,7 @@ import (
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/exporters/stdout/stdoutmetric"
 	"go.opentelemetry.io/otel/exporters/stdout/stdouttrace"
+	"go.opentelemetry.io/otel/propagation"
 	"go.opentelemetry.io/otel/sdk/metric"
 	"go.opentelemetry.io/otel/sdk/resource"
 	"go.opentelemetry.io/otel/sdk/trace"
@@ -159,14 +161,18 @@ func setupOTelSDK(ctx context.Context, serviceName, serviceVersion string) (shut
 		err = errors.Join(inErr, shutdown(ctx))
 	}
 
-	// Setup resource.
+	// Set up resource.
 	res, err := newResource(serviceName, serviceVersion)
 	if err != nil {
 		handleErr(err)
 		return
 	}
 
-	// Setup trace provider.
+	// Set up propagator.
+	prop := newPropagator()
+	otel.SetTextMapPropagator(prop)
+
+	// Set up trace provider.
 	tracerProvider, err := newTraceProvider(res)
 	if err != nil {
 		handleErr(err)
@@ -175,7 +181,7 @@ func setupOTelSDK(ctx context.Context, serviceName, serviceVersion string) (shut
 	shutdownFuncs = append(shutdownFuncs, tracerProvider.Shutdown)
 	otel.SetTracerProvider(tracerProvider)
 
-	// Setup meter provider.
+	// Set up meter provider.
 	meterProvider, err := newMeterProvider(res)
 	if err != nil {
 		handleErr(err)
@@ -193,6 +199,13 @@ func newResource(serviceName, serviceVersion string) (*resource.Resource, error)
 			semconv.ServiceName(serviceName),
 			semconv.ServiceVersion(serviceVersion),
 		))
+}
+
+func newPropagator() propagation.TextMapPropagator {
+	return propagation.NewCompositeTextMapPropagator(
+		propagation.TraceContext{},
+		propagation.Baggage{},
+	)
 }
 
 func newTraceProvider(res *resource.Resource) (*trace.TracerProvider, error) {
