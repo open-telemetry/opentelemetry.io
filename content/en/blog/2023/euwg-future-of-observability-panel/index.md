@@ -17,8 +17,7 @@ collection, what is actually improving the lives of Observability teams?
 
 Guests David Wynn, Austin Parker, Vijay Samuel, Nočnica Mellifera, and Iris
 Dyrmishi came together to share their experiences and insights on the evolution
-of Observability practices, in this panel hosted by the OpenTelemetry End User
-Working Group. The discussion centered around their journey with OpenTelemetry
+of Observability practices, in this panel hosted by the [OpenTelemetry End User Working Group](/community/end-user/). The discussion centered around their journey with OpenTelemetry
 and how it has shaped their Observability practices. Below are some key
 takeaways from their discussion.
 
