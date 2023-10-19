@@ -207,7 +207,7 @@ sudo rpm -ivh otelcol_{{% param collectorVersion %}}_linux_386.rpm
 
 ### Manual Linux installation
 
-Linux [releases][] are available for various architectures. You can downloa the
+Linux [releases][] are available for various architectures. You can download the
 file containing the binary and install it on your machine manually:
 
 {{< tabpane text=true >}} {{% tab AMD64 %}}

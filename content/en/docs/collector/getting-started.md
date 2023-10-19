@@ -1,7 +1,7 @@
 ---
 title: Getting Started
 # prettier-ignore
-cSpell:ignore: otelcol telemetrygen docker jaeger zipkin prometheus
+cSpell:ignore: otelcol telemetrygen docker jaeger zipkin prometheus dpkg
 weight: 1
 ---
 
@@ -12,7 +12,7 @@ components. For a conceptual overview of the Collector, see [Collector][].
 The following tutorial shows how to deploy the Collector in agent mode and send
 telemetry to it using the default configuration and the telemetrygen utility.
 
-## Prequisites
+## Prerequisites
 
 To follow this tutorial you need the following Go 1.20 or higher.
 
