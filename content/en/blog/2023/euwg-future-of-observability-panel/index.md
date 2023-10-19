@@ -103,6 +103,5 @@ organization, we’d love to hear from you! Ways to share:
 
 Be sure to follow OpenTelemetry on
 [Mastodon](https://fosstodon.org/@opentelemetry) and
-[X](https://x.com/opentelemetry), and
 [LinkedIn](https://www.linkedin.com/company/opentelemetry/), and share your
 stories using the **#OpenTelemetry** hashtag!
