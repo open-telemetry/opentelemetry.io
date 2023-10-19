@@ -29,7 +29,7 @@ proprietary clients, and difficulties in monitoring large, complex systems.
 Observability practices were often driven by specific tools and technologies,
 leading to fragmented solutions.
 
-Companies like eBay and Farfetch found value in adopting OpenTelemetry due to
+Companies like [eBay](/blog/2022/why-and-how-ebay-pivoted-to-opentelemetry/) and [Farfetch](/blog/2023/end-user-q-and-a-03/) found value in adopting OpenTelemetry due to
 its standardization of telemetry data and its vendor-neutrality.
 
 ## 2- OpenTelemetry as a Game Changer
