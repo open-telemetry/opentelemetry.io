@@ -1,10 +1,16 @@
 ---
 title: Getting Started
 # prettier-ignore
-cSpell:ignore: darwin dpkg GOARCH journalctl kubectl otelcorecol pprof tlsv zpages
+cSpell:ignore: otelcol telemetrygen docker jaeger zipkin prometheus
 weight: 1
 ---
 
+The OpenTelemetry Collector listens to metrics, logs, and traces, processes the
+telemetry, and exports it to a wide variety of observability back-ends using its
+components. For a conceptual overview of the collector, see [Collector]().
+
+The following tutorial shows how to deploy the collector in agent mode and send
+telemetry to it using the default configuration and the telemetrygen utility.
 
 ## Prequisites
 
@@ -29,8 +35,8 @@ operating system and architecture. For example:
    docker run otel/opentelemetry-collector-contrib:{{% param collectorVersion %}}
    ```
 
-2. Download and install the `telemetrygen` utility from the OpenTelemetry
-Contrib repository:
+2. Download and install the telemetrygen utility from the
+[opentelemetry-collector-contrib] repository:
 
    ```sh
    go install github.com/open-telemetry/opentelemetry-collector-contrib/cmd/telemetrygen@latest
@@ -72,8 +78,9 @@ to it. As next steps, consider doing the following:
 - Learn about the different modes of the collector in [Deployment Methods][].
 - Familiarize yourself with the collector [configuration]() files and structure.
 - Try additional components using the [opentelemetry-collector-contrib]()
-project, such as the Prometheus receiver.
+project.
 
+[collector]: /docs/collector
 [configuration]: /docs/collector/configuration
 [data collection]: /docs/concepts/components/#collector
 [deployment methods]: ../deployment/
