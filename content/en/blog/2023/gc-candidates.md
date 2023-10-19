@@ -3,7 +3,6 @@ title: Final list of candidates for the 2023 OpenTelemetry Governance Committee
 linkTitle: 2023 GC Candidates
 date: 2023-10-19
 author: OpenTelemetry Governance Committee
-aliases: [/blog/2023/gc-elections-2023-list-of-candidates]
 cSpell:ignore: Blanco Sirianni Vijay
 ---
 
