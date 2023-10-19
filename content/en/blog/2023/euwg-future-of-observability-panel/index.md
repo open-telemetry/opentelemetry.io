@@ -11,7 +11,7 @@ cSpell:ignore: Dyrmishi Farfetch Iris Mellifera Nočnica Samuel Vijay youtube
 
 ![The Evolution of Observability Practices, featuring Guests David Wynn, Austin Parker, Vijay Samuel, Nočnica Mellifera, and Iris Dyrmishi](evolution-o11y-practices-social-card.jpeg)
 
-OpenTelemetry has greatly impacted the Observability landscape over the past few
+OpenTelemetry has greatly impacted the [Observability](/docs/concepts/observability-primer/) landscape over the past few
 years. While it introduces an open standard for telemetry generation and
 collection, what is actually improving the lives of Observability teams?
 
