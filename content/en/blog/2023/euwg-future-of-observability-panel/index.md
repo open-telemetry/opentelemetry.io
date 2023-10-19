@@ -3,7 +3,7 @@ title:
   'OTel End User Working Group Presents: The Future of Observability Panel
   Discussion'
 linkTitle: The Future of Observability Panel
-date: 2023-10-17
+date: 2023-10-21
 author: >-
   [Adriana Villela](https://github.com/avillela) (Lightstep)
 cSpell:ignore: Dyrmishi Farfetch Iris Mellifera Nočnica Samuel Vijay youtube
