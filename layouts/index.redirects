@@ -4,11 +4,10 @@
 {{ range $p := .Site.Pages -}}
 
 {{ range $p.Params.redirects -}}
-  {{ $permaLink := $p.RelPermalink | strings.TrimSuffix "/" -}}
-  {{ $from := cond
-      (strings.HasPrefix .from "./")
-      (print $permaLink (strings.TrimPrefix "./" .from))
-      .from -}}
+  {{ $permaLink := $p.RelPermalink -}}
+  {{ $from := cond (strings.HasPrefix .from "/")
+      .from
+      (print $permaLink .from) -}}
   {{ $to := cond (strings.HasPrefix .to "/")
       .to
       (print $permaLink .to) -}}
@@ -46,4 +45,4 @@
 
 {{ $og_image_current := `/img/social/logo-wordmark-001.png` -}}
 
-/featured-background.jpg  {{ $og_image_current }} {{/* homepage og:image used prior to 2022/08 */}}
+/featured-background.jpg  {{ $og_image_current }} {{- /* homepage og:image used prior to 2022/08 */}}
