@@ -3,7 +3,7 @@ title: Final list of candidates for the 2022 OpenTelemetry Governance Committee
 linkTitle: 2022 GC Candidates
 date: 2022-10-13
 author: OpenTelemetry Governance Committee
-aliases: [/blog/2022/gc-elections-2022-list-of-candidates]
+aliases: [gc-elections-2022-list-of-candidates]
 cSpell:ignore: Finnigan Marciniak Reiley Vijay Yahn
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Specifications
 linkTitle: Specs
-aliases: [/docs/reference, /docs/specification]
+aliases: [reference, specification]
 weight: 100
 # Temporary redirect rules until they are added to the spec pages
 redirects:

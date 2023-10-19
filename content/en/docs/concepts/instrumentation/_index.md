@@ -3,7 +3,7 @@ title: Instrumentation
 description: >-
   How OpenTelemetry facilitates automatic and manual instrumentation of
   applications.
-aliases: [/docs/concepts/instrumenting]
+aliases: [instrumenting]
 weight: 15
 ---
 
