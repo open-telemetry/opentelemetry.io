@@ -2,8 +2,12 @@
 title: Install the Collector
 # prettier-ignore
 cSpell:ignore: darwin dpkg GOARCH journalctl kubectl otelcorecol pprof tlsv zpages
-weight: 2
+weight: 18
 ---
+
+You can deploy the OpenTelemetry Collector on a wide variety of operating
+systems and architectures. The following instructions show how to download and
+install the latest stable version of the Collector.
 
 If you aren't familiar with the deployment models, components, and repositories
 applicable to the OpenTelemetry Collector, first review the [Data Collection][]
@@ -11,9 +15,9 @@ and [Deployment Methods][] page.
 
 ## Docker
 
-Pull a docker image and run the collector in a container. Replace
-`{{% param collectorVersion %}}` with the version of the Collector you wish to
-run.
+The following commands pull a Docker image and run the Collector in a container.
+Replace `{{% param collectorVersion %}}` with the version of the Collector you
+want to run.
 
 {{< tabpane text=true >}} {{% tab DockerHub %}}
 
@@ -31,8 +35,8 @@ docker run ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry
 
 {{% /tab %}} {{< /tabpane >}}
 
-To load your custom configuration `config.yaml` from your current working
-directory, mount that file as a volume:
+To load a custom configuration file from your working directory, mount that file
+as a volume:
 
 {{< tabpane text=true >}} {{% tab DockerHub %}}
 
@@ -50,8 +54,8 @@ docker run -v $(pwd)/config.yaml:/etc/otelcol-contrib/config.yaml ghcr.io/open-t
 
 ## Docker Compose
 
-You can add OpenTelemetry Collector to your existing `docker-compose.yaml` like
-the following:
+You can add OpenTelemetry Collector to your existing `docker-compose.yaml` file
+as in the following example:
 
 ```yaml
 otel-collector:
@@ -60,7 +64,7 @@ otel-collector:
     - ./otel-collector-config.yaml:/etc/otelcol-contrib/config.yaml
   ports:
     - 1888:1888 # pprof extension
-    - 8888:8888 # Prometheus metrics exposed by the collector
+    - 8888:8888 # Prometheus metrics exposed by the Collector
     - 8889:8889 # Prometheus exporter metrics
     - 13133:13133 # health_check extension
     - 4317:4317 # OTLP gRPC receiver
@@ -70,42 +74,41 @@ otel-collector:
 
 ## Kubernetes
 
-Deploys an agent as a daemonset and a single gateway instance.
+The following command deploys an agent as a daemonset and a single gateway
+instance:
 
 ```sh
 kubectl apply -f https://raw.githubusercontent.com/open-telemetry/opentelemetry-collector/main/examples/k8s/otel-config.yaml
 ```
 
-The example above is meant to serve as a starting point, to be extended and
+The previous example is meant to serve as a starting point, to be extended and
 customized before actual production usage. For production-ready customization
 and installation, see [OpenTelemetry Helm Charts][].
 
-The [OpenTelemetry Operator][] can also be used to provision and maintain an
+You can also use the [OpenTelemetry Operator][] to provision and maintain an
 OpenTelemetry Collector instance, with features such as automatic upgrade
 handling, `Service` configuration based on the OpenTelemetry configuration,
-automatic sidecar injection into deployments, among others.
+automatic sidecar injection into deployments, and more.
 
-For a comprehensive guide to using the collector with Kubernetes, see
+For guidance on how to use the Collector with Kubernetes, see
 [Kubernetes Getting Started](/docs/kubernetes/getting-started/).
 
 ## Nomad
 
-Reference job files to deploy the Collector as an agent, gateway and in the full
-demo can be found at [Getting Started with OpenTelemetry on HashiCorp Nomad][].
+You can find reference job files to deploy the Collector as an agent, gateway,
+and as full demo in [Getting Started with OpenTelemetry on HashiCorp Nomad][].
 
-## Linux Packaging
+## Linux
 
 Every Collector release includes APK, DEB and RPM packaging for Linux
-amd64/arm64/i386 systems. The packaging includes a default configuration that
-can be found at `/etc/otelcol/config.yaml` post-installation.
+amd64/arm64/i386 systems. You can find the default configuration in
+`/etc/otelcol/config.yaml` after installation.
 
 > Note: `systemd` is required for automatic service configuration.
 
 ### APK Installation
 
-To get started on alpine systems run the following replacing
-`v{{% param collectorVersion %}}` with the version of the Collector you wish to
-run.
+To get started on Alpine systems run the following commands:
 
 {{< tabpane text=true >}} {{% tab AMD64 %}}
 
@@ -138,9 +141,7 @@ apk add --allow-untrusted otelcol_{{% param collectorVersion %}}_linux_386.apk
 
 ### DEB Installation
 
-To get started on Debian systems run the following replacing
-`v{{% param collectorVersion %}}` with the version of the Collector you wish to
-run and `amd64` with the appropriate architecture.
+To get started on Debian systems run the following commands:
 
 {{< tabpane text=true >}} {{% tab AMD64 %}}
 
@@ -173,9 +174,7 @@ sudo dpkg -i otelcol_{{% param collectorVersion %}}_linux_386.deb
 
 ### RPM Installation
 
-To get started on Red Hat systems run the following replacing
-`v{{% param collectorVersion %}}` with the version of the Collector you wish to
-run and `x86_64` with the appropriate architecture.
+To get started on Red Hat systems run the following commands:
 
 {{< tabpane text=true >}} {{% tab AMD64 %}}
 
@@ -206,11 +205,10 @@ sudo rpm -ivh otelcol_{{% param collectorVersion %}}_linux_386.rpm
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Manual Installation
+### Manual Linux installation
 
-Linux [releases][] are available for various architectures. It's possible to
-download the archive containing the binary and install it on your machine
-manually:
+Linux [releases][] are available for various architectures. You can downloa the
+file containing the binary and install it on your machine manually:
 
 {{< tabpane text=true >}} {{% tab AMD64 %}}
 
@@ -245,15 +243,16 @@ tar -xvf otelcol_{{% param collectorVersion %}}_linux_ppc64le.tar.gz
 ### Automatic service configuration
 
 By default, the `otelcol` systemd service starts with the
-`--config=/etc/otelcol/config.yaml` option after installation. To customize
-these options, modify the `OTELCOL_OPTIONS` variable in the
-`/etc/otelcol/otelcol.conf` systemd environment file with the appropriate
-command-line options. You can run `/usr/bin/otelcol --help` to see all available
-options. Additional environment variables can also be passed to the `otelcol`
-service by adding them to this file.
+`--config=/etc/otelcol/config.yaml` option after installation.
 
-If the Collector configuration file or `/etc/otelcol/otelcol.conf` are
-modified, restart the `otelcol` service to apply the changes by running:
+To use a different settings, set the `OTELCOL_OPTIONS` variable in the
+`/etc/otelcol/otelcol.conf` systemd environment file to the appropriate
+command-line options. You can run `/usr/bin/otelcol --help` to see all available
+options. You can pass additional environment variables to the `otelcol` service
+by adding them to this file.
+
+If you modify the Collector configuration file or `/etc/otelcol/otelcol.conf`,
+restart the `otelcol` service to apply the changes by running:
 
 ```sh
 sudo systemctl restart otelcol
@@ -265,11 +264,11 @@ To check the output from the `otelcol` service, run:
 sudo journalctl -u otelcol
 ```
 
-## macOS Packaging
+## macOS
 
-macOS [releases][] are available for Intel- & ARM-based systems. They are
-packaged as gzipped tarballs (`.tar.gz`) and need to be unpacked with a
-tool that supports this compression format:
+macOS [releases][] are available for Intel and ARM systems. The releases are
+packaged as gzipped tarballs (`.tar.gz`). To unpack them, run the following
+commands:
 
 {{< tabpane text=true >}} {{% tab Intel %}}
 
@@ -290,17 +289,15 @@ tar -xvf otelcol_{{% param collectorVersion %}}_darwin_arm64.tar.gz
 Every Collector release includes an `otelcol` executable that you can run after
 unpacking.
 
-## Windows Packaging
+## Windows
 
-Windows [releases][] are packaged as gzipped tarballs (`.tar.gz`) and will need
-to be unpacked with a tool that supports this compression format.
-
-Every Collector release includes an `otelcol.exe` executable that you can run
-after unpacking.
+Windows [releases][] are packaged as gzipped tarballs (`.tar.gz`). Every
+Collector release includes an `otelcol.exe` executable that you can run after
+unpacking.
 
 ## Build from source
 
-You can build the latest version of the collector based on the local operating
+You can build the latest version of the Collector based on the local operating
 system using the following commands:
 
 ```sh

@@ -7,9 +7,9 @@ weight: 1
 
 The OpenTelemetry Collector listens to metrics, logs, and traces, processes the
 telemetry, and exports it to a wide variety of observability back-ends using its
-components. For a conceptual overview of the collector, see [Collector]().
+components. For a conceptual overview of the Collector, see [Collector][].
 
-The following tutorial shows how to deploy the collector in agent mode and send
+The following tutorial shows how to deploy the Collector in agent mode and send
 telemetry to it using the default configuration and the telemetrygen utility.
 
 ## Prequisites
@@ -18,8 +18,8 @@ To follow this tutorial you need the following Go 1.20 or higher.
 
 ## Test the OpenTelemetry Collector in five minutes
 
-1. [Download and install](installation.md) the collector for your
-operating system and architecture. For example:
+1. [Download and install](/docs/collector/installation) the Collector for your
+   operating system and architecture. For example:
 
    ```sh
    sudo apt-get update
@@ -36,21 +36,21 @@ operating system and architecture. For example:
    ```
 
 2. Download and install the telemetrygen utility from the
-[opentelemetry-collector-contrib] repository:
+   [opentelemetry-collector-contrib] repository:
 
    ```sh
    go install github.com/open-telemetry/opentelemetry-collector-contrib/cmd/telemetrygen@latest
    ```
 
 3. The telemetrygen command generates dummy telemetry for testing. Try sending
-some traces to the Collector:
+   some traces to the Collector:
 
    ```sh
    telemetrygen traces --otlp-insecure --duration 5s
    ```
 
 4. Open http://localhost:55679/debug/tracez in your browser and select one of
-the samples in the table to see the traces you've just generated.
+   the samples in the table to see the traces you've just generated.
 
 ## Collector demo
 
@@ -75,15 +75,16 @@ You can find more information about the demo in the [README.md][] file.
 In this tutorial you've started the OpenTelemetry Collector and sent telemetry
 to it. As next steps, consider doing the following:
 
-- Learn about the different modes of the collector in [Deployment Methods][].
-- Familiarize yourself with the collector [configuration]() files and structure.
-- Try additional components using the [opentelemetry-collector-contrib]()
-project.
+- Learn about the different modes of the Collector in [Deployment Methods][].
+- Familiarize yourself with the Collector [configuration][] files and structure.
+- Try additional components using the [opentelemetry-collector-contrib][]
+  project.
 
 [collector]: /docs/collector
 [configuration]: /docs/collector/configuration
-[data collection]: /docs/concepts/components/#collector
-[deployment methods]: ../deployment/
-[opentelemetry-collector-contrib]: https://github.com/open-telemetry/opentelemetry-collector-contrib
+[data-collection]: /docs/concepts/components/#collector
+[deployment-methods]: ../deployment/
+[opentelemetry-collector-contrib]:
+  https://github.com/open-telemetry/opentelemetry-collector-contrib
 [readme.md]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/examples/demo
