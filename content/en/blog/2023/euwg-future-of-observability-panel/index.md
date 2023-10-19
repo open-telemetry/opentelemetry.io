@@ -9,17 +9,25 @@ author: >-
 cSpell:ignore: Dyrmishi Farfetch Iris Mellifera Nočnica Samuel Vijay youtube
 ---
 
-![The Evolution of Observability Practices, featuring Guests David Wynn, Austin Parker, Vijay Samuel, Nočnica Mellifera, and Iris Dyrmishi](evolution-o11y-practices-social-card.jpeg)
-
-OpenTelemetry has greatly impacted the [Observability](/docs/concepts/observability-primer/) landscape over the past few
-years. While it introduces an open standard for telemetry generation and
+OpenTelemetry has greatly impacted the
+[Observability](/docs/concepts/observability-primer/) landscape over the past
+few years. While it introduces an open standard for telemetry generation and
 collection, what is actually improving the lives of Observability teams?
 
-Guests David Wynn, Austin Parker, Vijay Samuel, Nočnica Mellifera, and Iris
-Dyrmishi came together to share their experiences and insights on the evolution
-of Observability practices, in this panel hosted by the [OpenTelemetry End User Working Group](/community/end-user/). The discussion centered around their journey with OpenTelemetry
-and how it has shaped their Observability practices. Below are some key
-takeaways from their discussion.
+Guests [David Wynn](https://www.linkedin.com/in/davidbwynn/),
+[Austin Parker](https://www.linkedin.com/in/austinlparker/),
+[Vijay Samuel](https://www.linkedin.com/in/vjsamuel/),
+[Nočnica Mellifera](https://www.linkedin.com/in/otel-mom/), and
+[Iris Dyrmishi](https://www.linkedin.com/in/iris-dyrmishi-b15a9a164/) came
+together to share their experiences and insights on the evolution of
+Observability practices, in this panel hosted by the
+[OpenTelemetry End User Working Group](/community/end-user/). The discussion
+centered around their journey with OpenTelemetry and how it has shaped their
+Observability practices. Watch the full recording:
+
+{{<youtube zSeKL2-_sVg>}}
+
+You can also check out some of the key takeaways from their discussion.
 
 ## 1- Observability Before OpenTelemetry
 
@@ -29,8 +37,10 @@ proprietary clients, and difficulties in monitoring large, complex systems.
 Observability practices were often driven by specific tools and technologies,
 leading to fragmented solutions.
 
-Companies like [eBay](/blog/2022/why-and-how-ebay-pivoted-to-opentelemetry/) and [Farfetch](/blog/2023/end-user-q-and-a-03/) found value in adopting OpenTelemetry due to
-its standardization of telemetry data and its vendor-neutrality.
+Companies like [eBay](/blog/2022/why-and-how-ebay-pivoted-to-opentelemetry/) and
+[Farfetch](/blog/2023/end-user-q-and-a-03/) found value in adopting
+OpenTelemetry due to its standardization of telemetry data and its
+vendor-neutrality.
 
 ## 2- OpenTelemetry as a Game Changer
 
@@ -54,9 +64,9 @@ case, including using custom processors.
 ## 4- Surprising Aspects of OpenTelemetry Adoption
 
 Challenges included convincing teams to adopt OpenTelemetry, especially when
-components like [Logs](/docs/concepts/signals/logs/) were not yet stable. The evolving nature of OpenTelemetry
-made sometimes challenging to keep up with new features and updates while
-ensuring that teams did not lag behind.
+components like [Logs](/docs/concepts/signals/logs/) were not yet stable. The
+evolving nature of OpenTelemetry made sometimes challenging to keep up with new
+features and updates while ensuring that teams did not lag behind.
 
 ## 5- The People Problem of Observability
 
