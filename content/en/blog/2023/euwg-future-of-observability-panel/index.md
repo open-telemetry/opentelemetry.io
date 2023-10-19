@@ -41,7 +41,7 @@ languages. The community-driven and open source nature of OpenTelemetry appealed
 to many organizations, making Observability more accessible and
 developer-friendly.
 
-### 3- The OpenTelemetry Collector
+## 3- The OpenTelemetry Collector
 
 The panelists talked about the [OpenTelemetry Collector](/docs/collector/), and
 how they were able to use it to replace vendor-specific agents. Some
