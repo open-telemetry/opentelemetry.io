@@ -4,16 +4,7 @@ weight: 70
 cSpell:ignore: getenv myhost SIGINT uuidgen WORKDIR
 ---
 
-A [resource](/docs/specs/otel/resource/sdk/) represents the entity producing
-telemetry as resource attributes. For example, a process producing telemetry
-that is running in a container on Kubernetes has a Pod name, a namespace, and
-possibly a deployment name. All three of these attributes can be included in the
-resource.
-
-In your observability backend, you can use resource information to better
-investigate interesting behavior. For example, if your trace or metrics data
-indicate latency in your system, you can narrow it down to a specific container,
-pod, or Kubernetes deployment.
+{{% docs/instrumentation/resources-intro %}}
 
 If you use the Javaagent for
 [automatic instrumentation](/docs/instrumentation/java/automatic) you can learn
@@ -26,11 +17,10 @@ resource detection below.
 ## Detecting resources from common environments
 
 You can use `ResourceProvider`s for filling in attributes related to common
-environments, like
-[Container](/docs/specs/otel/resource/semantic_conventions/container/),
-[Host](/docs/specs/otel/resource/semantic_conventions/host/) or
-[Operating System](/docs/specs/otel/resource/semantic_conventions/os/). These
-can be used with or without
+environments, like [Container](/docs/specs/semconv/resource/container/),
+[Host](/docs/specs/semconv/resource/host/) or
+[Operating System](/docs/specs/semconv/resource/os/). These can be used with or
+without
 [auto-configuration](/docs/instrumentation/java/manual/#automatic-configuration).
 
 To use those providers, add the following dependency:

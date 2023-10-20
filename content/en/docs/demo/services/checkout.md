@@ -1,7 +1,7 @@
 ---
 title: Checkout Service
 linkTitle: Checkout
-aliases: [/docs/demo/services/checkoutservice]
+aliases: [checkoutservice]
 # prettier-ignore
 cSpell:ignore: fatalf otelgrpc otelsarama otlpmetricgrpc otlptracegrpc sarama sdkmetric sdktrace
 ---

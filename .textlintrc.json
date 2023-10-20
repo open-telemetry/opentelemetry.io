@@ -12,6 +12,7 @@
     "allowlist": {
       "allow": [
         "/{{%.*%}}/",
+        "/{{.*-}}/",
         "/<http://.*>/",
         "medium.com/opentelemetry",
         "github.com/open-telemetry",

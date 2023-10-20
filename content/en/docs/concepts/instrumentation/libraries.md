@@ -1,7 +1,7 @@
 ---
 title: Libraries
 description: Learn how to add native instrumentation to your library.
-aliases: [/docs/concepts/instrumenting-library]
+aliases: [../instrumenting-library]
 weight: 40
 ---
 
@@ -24,10 +24,9 @@ and document hooks:
 
 ## Semantic Conventions
 
-Check out available
-[semantic conventions](/docs/specs/otel/trace/semantic_conventions/) that cover
-web-frameworks, RPC clients, databases, messaging clients, infra pieces and
-more!
+Check out available [semantic conventions](/docs/specs/semconv/general/trace/)
+that cover web-frameworks, RPC clients, databases, messaging clients, infra
+pieces and more!
 
 If your library is one of those things - follow the conventions, they are the
 main source of truth and tell which information should be included on spans.
@@ -199,8 +198,7 @@ private Response selectWithTracing(Query query) {
 ```
 
 Follow conventions to populate attributes! If there is no applicable one, check
-out
-[general conventions](/docs/specs/otel/trace/semantic_conventions/span-general/).
+out [general conventions](/docs/specs/semconv/general/attributes/).
 
 ### Nested network and other spans
 
@@ -298,8 +296,8 @@ In the case of a messaging system, you may receive more than one message at
 once. Received messages become
 [_links_](/docs/instrumentation/java/manual/#create-spans-with-links) on the
 span you create. Refer to
-[messaging conventions](/docs/specs/otel/trace/semantic_conventions/messaging/)
-for details (WARNING: messaging conventions are
+[messaging conventions](/docs/specs/semconv/messaging/messaging-spans/) for
+details (WARNING: messaging conventions are
 [under constructions](https://github.com/open-telemetry/oteps/pull/173) 🚧).
 
 ### Injecting context
