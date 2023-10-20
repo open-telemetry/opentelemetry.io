@@ -1,7 +1,7 @@
 ---
 title: Ad Service
 linkTitle: Ad
-aliases: [/docs/demo/services/adservice]
+aliases: [adservice]
 ---
 
 This service determines appropriate ads to serve to users based on context keys.

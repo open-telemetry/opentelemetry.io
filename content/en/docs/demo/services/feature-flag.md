@@ -1,7 +1,7 @@
 ---
 title: Feature Flag Service
 linkTitle: Feature Flag
-aliases: [/docs/demo/services/featureflagservice]
+aliases: [featureflagservice]
 cSpell:ignore: ecto featureflag grpcbox nanos oteldemo protos struct
 ---
 
