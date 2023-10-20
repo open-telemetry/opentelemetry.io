@@ -24,7 +24,7 @@ OpenTelemetry JavaScript has no official supported list of browsers. It is aimed
 to work on currently supported versions of major browsers.
 
 For more details on runtime support see
-[ths overview](https://github.com/open-telemetry/opentelemetry-js#supported-runtimes).
+[this overview](https://github.com/open-telemetry/opentelemetry-js#supported-runtimes).
 
 ## Repositories
 

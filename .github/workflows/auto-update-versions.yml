@@ -10,6 +10,10 @@ jobs:
   auto-update-versions:
     name: Auto-update versions
     runs-on: ubuntu-20.04
+    if: github.repository == 'open-telemetry/opentelemetry.io'
+    env:
+      DEPTH: --depth 100 # submodule clone depth
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3

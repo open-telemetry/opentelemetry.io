@@ -570,9 +570,9 @@ Tracer tracer = openTelemetry.getTracer("instrumentation-scope-name", "instrumen
 
 The values of `instrumentation-scope-name` and `instrumentation-scope-version`
 should uniquely identify the
-[instrumentation scope](/docs/specs/otel/glossary/#instrumentation-scope), such
-as the package, module or class name. This will help later help determining what
-the source of telemetry is. While the name is required, the version is still
+[Instrumentation Scope](/docs/concepts/instrumentation-scope/), such as the
+package, module or class name. This will help later help determining what the
+source of telemetry is. While the name is required, the version is still
 recommended despite being optional. Note, that all `Tracer`s that are created by
 a single `OpenTelemetry` instance will interoperate, regardless of name.
 
@@ -582,7 +582,7 @@ avoid trickier application load issues when other required dependencies are
 involved.
 
 In the case of the [example app](#example-app), there are two places where a
-tracer may be acquired with an appropriate instrumentation scope:
+tracer may be acquired with an appropriate Instrumentation Scope:
 
 First, in the `index` method of the `RollController` as follows:
 
@@ -837,7 +837,7 @@ span.setAttribute("http.url", url.toString());
 There are semantic conventions for spans representing operations in well-known
 protocols like HTTP or database calls. Semantic conventions for these spans are
 defined in the specification at
-[Trace Semantic Conventions](/docs/specs/otel/trace/semantic_conventions/).
+[Trace Semantic Conventions](/docs/specs/semconv/general/trace/).
 
 First add the semantic conventions as a dependency to your application:
 
