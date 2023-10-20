@@ -36,7 +36,7 @@ cSpell:ignore: otelcollector otlphttp spanmetrics
     > **Notes:**
     >
     > If you do not have the make utility installed, you can also use
-    > `docker compose up --force-recreate --remove-orphans --detach` to start
+    > `docker compose up --force-recreate --remove-orphans --detach`[^1] to start
     > the demo.
 
 ## Verify the web store and Telemetry
@@ -98,3 +98,5 @@ different exporters, you may find them and their documentation available at
 After updating the `otelcol-config-extras.yml`, start the demo by running
 `make start`. After a while, you should see the traces flowing into your backend
 as well.
+
+[^1]: {{% _param notes.docker-compose-v2 %}}
