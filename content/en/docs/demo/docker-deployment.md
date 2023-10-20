@@ -36,8 +36,8 @@ cSpell:ignore: otelcollector otlphttp spanmetrics
     > **Notes:**
     >
     > If you do not have the make utility installed, you can also use
-    > `docker compose up --force-recreate --remove-orphans --detach`[^1] to start
-    > the demo.
+    > `docker compose up --force-recreate --remove-orphans --detach`[^1] to
+    > start the demo.
 
 ## Verify the web store and Telemetry
 
