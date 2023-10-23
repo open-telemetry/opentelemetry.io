@@ -627,7 +627,7 @@ public class Dice {
   }
 
   public Dice(int min, int max) {
-    this(min, max, OpenTelemetry.noop())
+    this(min, max, OpenTelemetry.noop());
   }
 
   // ...
