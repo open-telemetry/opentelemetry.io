@@ -935,6 +935,14 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T15:51:27.40951-04:00"
   },
+  "https://docs.google.com/document/d/1M8VLNe_sv1MIfu5bUR5OV_vrMBnAI7IJN-7-IAr37JY/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-23T22:46:49.329066+02:00"
+  },
+  "https://docs.google.com/document/d/1Unbs2qp_j5kp8FfL_lRH-ld7i5EOQpsq0I4djkOOSL4/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-23T22:46:50.70436+02:00"
+  },
   "https://docs.google.com/document/d/1WQDz1jF0yKBXe3OibXWfy3g6lor9SvjZ4xT-8uuDCiA/edit": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T15:52:50.25617-04:00"
@@ -1911,6 +1919,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:25:56.258221-04:00"
   },
+  "https://github.com/andykellr": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-23T22:46:46.531254+02:00"
+  },
   "https://github.com/apache/apisix/discussions": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:25:44.869863-04:00"
@@ -2091,6 +2103,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:35:06.824512-04:00"
   },
+  "https://github.com/evan-bradley": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-23T22:46:45.695277+02:00"
+  },
   "https://github.com/exaring/otelpgx": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:33:00.012244-04:00"
@@ -2174,6 +2190,10 @@
   "https://github.com/jaegertracing/vertx-create-span": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:30:28.750747-04:00"
+  },
+  "https://github.com/jaronoff97": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-23T22:46:44.940049+02:00"
   },
   "https://github.com/jenniferplusplus/opentelemetry-instrumentation-bullmq": {
     "StatusCode": 200,
@@ -2438,6 +2458,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/14158": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:31:52.640649-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/16594": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-23T22:46:48.280538+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/7112": {
     "StatusCode": 200,
