@@ -16,25 +16,15 @@ telemetry to it using the default configuration and the [telemetrygen](https://g
 
 To follow this tutorial you need the following
 
-*  Go >= 1.20
+*  Go 1.20 or higher
 
 ## Test the OpenTelemetry Collector in five minutes
 
-1. [Download and install](/docs/collector/installation) the Collector for your
-   operating system and architecture. For example:
+1. Download and run the OpenTelemetry Collector Docker container:
 
    ```sh
-   sudo apt-get update
-   sudo apt-get -y install wget systemctl
-   wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_linux_amd64.deb
-   sudo dpkg -i otelcol_{{% param collectorVersion %}}_linux_amd64.deb
-   ```
-
-   Alternatively, you can download and run the Docker container:
-
-   ```sh
-   docker pull otel/opentelemetry-collector-contrib:{{% param collectorVersion %}}
-   docker run otel/opentelemetry-collector-contrib:{{% param collectorVersion %}}
+   docker pull otel/opentelemetry-collector:{{% param collectorVersion %}}
+   docker run -p 127.0.0.1:4317:4317 -p 127.0.0.1:55679:55679 otel/opentelemetry-collector:{{% param collectorVersion %}}
    ```
 
 2. Download and install the telemetrygen utility from the
@@ -49,6 +39,30 @@ To follow this tutorial you need the following
 
    ```sh
    telemetrygen traces --otlp-insecure --duration 5s
+   ```
+
+   After five seconds, telemetrygen stops and shows the sends messages similar
+   to the following to the console:
+
+   ```text
+   2023-10-23T12:58:19.835+0200	INFO	traces/worker.go:88	traces generated	{"worker": 0, "traces": 994418}
+   2023-10-23T12:58:19.835+0200	INFO	traces/traces.go:79	stop the batch span processor
+   ```
+
+   The Collector container logs, on the other hand, should show activity related
+   to the logs ingest similar to this:
+
+   ```text
+   Span #434
+      Trace ID       : ba7ef95fce7499811ca72158350c907c
+      Parent ID      : 1d3c9f49b3f2cf47
+      ID             : 7609079dc6253034
+      Name           : okey-dokey
+      Kind           : Server
+      Start time     : 2023-10-23 11:01:29.53251 +0000 UTC
+      End time       : 2023-10-23 11:01:29.532634 +0000 UTC
+      Status code    : Unset
+      Status message :
    ```
 
 4. Open http://localhost:55679/debug/tracez in your browser and select one of
