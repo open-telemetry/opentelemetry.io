@@ -14,7 +14,9 @@ telemetry to it using the default configuration and the telemetrygen utility.
 
 ## Prerequisites
 
-To follow this tutorial you need the following Go 1.20 or higher.
+To follow this tutorial you need the following
+
+*  Go >= 1.20
 
 ## Test the OpenTelemetry Collector in five minutes
 
