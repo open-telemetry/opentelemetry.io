@@ -9,7 +9,7 @@ The OpenTelemetry Collector listens to metrics, logs, and traces, processes the
 telemetry, and exports it to a wide variety of observability back-ends using its
 components. For a conceptual overview of the Collector, read the [introduction][].
 
-The following tutorial shows how to deploy the Collector in agent mode and send
+The following tutorial shows how to deploy the Collector and send
 telemetry to it using the default configuration and the [telemetrygen](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/telemetrygen) utility.
 
 ## Prerequisites
