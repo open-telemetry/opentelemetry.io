@@ -1,6 +1,6 @@
 ---
 title: Load Generator
-aliases: [/docs/demo/services/loadgenerator]
+aliases: [loadgenerator]
 cSpell:ignore: instrumentor instrumentors loadgenerator locustfile urllib
 ---
 

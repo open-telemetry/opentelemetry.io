@@ -1,6 +1,6 @@
 ---
 title: Feature Flags
-aliases: [/docs/demo/feature_flags]
+aliases: [feature_flags]
 cSpell:ignore: OLJCESPC7Z
 ---
 

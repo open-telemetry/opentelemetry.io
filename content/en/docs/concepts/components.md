@@ -1,7 +1,7 @@
 ---
 title: Components
 description: The main components that make up OpenTelemetry
-aliases: [/docs/concepts/data-collection]
+aliases: [data-collection]
 weight: 20
 ---
 

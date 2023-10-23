@@ -36,9 +36,9 @@ java:
 php:
   name: PHP
   status:
-    traces: release candidate
-    metrics: release candidate
-    logs: release candidate
+    traces: stable
+    metrics: stable
+    logs: stable
 python:
   name: Python
   status:

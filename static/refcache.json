@@ -1735,6 +1735,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:03:49.117652-04:00"
   },
+  "https://forms.gle/GWuGZKku326pCLUo6": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-19T14:27:33.161684-04:00"
+  },
   "https://forms.gle/aUuJg5DQwNzncJ4s8": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T16:14:48.01551-04:00"
@@ -2350,6 +2354,10 @@
   "https://github.com/open-telemetry/community/issues/1400": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:35:07.219944-04:00"
+  },
+  "https://github.com/open-telemetry/community/issues/1561": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-19T14:27:28.755346-04:00"
   },
   "https://github.com/open-telemetry/community/issues/828": {
     "StatusCode": 200,
@@ -6271,6 +6279,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:36:19.001379-04:00"
   },
+  "https://www.youtube.com/embed/zSeKL2-_sVg": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-17T18:03:15.47096-04:00"
+  },
   "https://www.youtube.com/watch": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:43:02.782058-04:00"
@@ -6286,6 +6298,14 @@
   "https://youtu.be/dpXhgZL9tzU": {
     "StatusCode": 200,
     "LastSeen": "2023-07-24T11:52:40.581959+02:00"
+  },
+  "https://youtu.be/zSeKL2-_sVg": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-17T17:40:35.689097-04:00"
+  },
+  "https://youtube.com/@otel-official": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-17T18:03:15.882928-04:00"
   },
   "https://zipkin.io/": {
     "StatusCode": 206,

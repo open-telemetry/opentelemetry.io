@@ -3,7 +3,7 @@ title: Announcing the 2022 OpenTelemetry Governance Committee Election
 linkTitle: 2022 GC Election
 date: 2022-09-15
 author: OpenTelemetry Governance Committee
-aliases: [/blog/2022/gc-elections-2022]
+aliases: [gc-elections-2022]
 cSpell:ignore: bogdandrutu Fong jpkrohling
 ---
 
