@@ -7,7 +7,7 @@ aliases:
   - /docs/instrumentation/java/springboot
 weight: 30
 description: Spring instrumentation for OpenTelemetry Java
-# prettier-ignore
+cSpell:ignore: springboot autoconfigure 
 ---
 
 You can instrument a Spring Boot application with the [OpenTelemetry Java agent](automatic/_index).
