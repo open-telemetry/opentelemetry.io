@@ -68,24 +68,6 @@ To follow this tutorial you need the following
 4. Open http://localhost:55679/debug/tracez in your browser and select one of
    the samples in the table to see the traces you've just generated.
 
-## Collector demo
-
-The OpenTelemetry Collector demo deploys a load generator, agent, and gateway,
-as well as Jaeger, Zipkin and Prometheus back-ends.
-
-To try the demo, run the following commands:
-
-```sh
-git clone git@github.com:open-telemetry/opentelemetry-collector-contrib.git --depth 1; \
-  cd opentelemetry-collector-contrib/examples/demo; \
-  docker compose up -d
-```
-
-You can find more information about the demo in the [README.md][] file.
-
-{{% alert title="Note" color="info" %}} {{% _param notes.docker-compose-v2 %}}
-{{% /alert %}}
-
 ## Next steps
 
 In this tutorial you've started the OpenTelemetry Collector and sent telemetry
