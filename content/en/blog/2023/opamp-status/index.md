@@ -14,33 +14,34 @@ cSpell:ignore: Aronoff Najaryan observ Tigran
 
 [Open Agent Management Protocol (OpAMP)](/docs/collector/management/) is the
 emerging open standard to manage a fleet of telemetry agents at scale. In 2022,
-Splunk donated OpAMP to the OpenTelemetry (OTel) project, with initial feedback from observIQ,
-based on observIQ’s custom protocol used in BindPlane. The
+Splunk donated OpAMP to the OpenTelemetry (OTel) project, with initial feedback
+from observIQ, based on observIQ’s custom protocol used in BindPlane. The
 [OpAMP specification](https://github.com/open-telemetry/opamp-spec/blob/main/specification.md)
 defines a network protocol for remote management of fleets of agents. These
 agents can really be anything, from telemetry agents such as the
-[OpenTelemetry Collector](/docs/collector/) to [Fluent Bit](https://fluentbit.io/) to custom
-agents you might use in your environment.
+[OpenTelemetry Collector](/docs/collector/) to
+[Fluent Bit](https://fluentbit.io/) to custom agents you might use in your
+environment.
 
 In OpAMP, we distinguish between the server side, usually hosted in a control
 plane, and the client side, implemented in the respective agent you want to
-manage. For example, using OpAMP to manage a fleet of OpenTelemetry Collectors, may look
-something like shown in the following:
+manage. For example, using OpAMP to manage a fleet of OpenTelemetry Collectors,
+may look something like shown in the following:
 
 ![OpAMP high-level concept: control plane an agents](opamp-concept.svg)
 
-The collectors report their status to and receive configuration from an
-OpAMP control plane. The OpAMP protocol is vendor-agnostic and generic (not OTel
+The collectors report their status to and receive configuration from an OpAMP
+control plane. The OpAMP protocol is vendor-agnostic and generic (not OTel
 specific), so an OpAMP server can remotely monitor and manage a fleet of
 different agents. OpAMP currently supports, amongst other things:
 
-- Agents, such as the OpenTelemetry Collector, can report their properties, for example,
-  type and version, or also the host operating system details to the Server
-  (OpAMP control plane).
+- Agents, such as the OpenTelemetry Collector, can report their properties, for
+  example, type and version, or also the host operating system details to the
+  Server (OpAMP control plane).
 - The Server can push configurations to Agents and ensures that said
   configurations are applied, for example through reloading the Agent.
 - You can ingest the Agent's own telemetry (logs and metrics) into an
-  [OTLP](https://opentelemetry.io/docs/specs/otlp/)-compliant observability backend.
+  [OTLP](/docs/specs/otlp/)-compliant observability backend.
 - Secure auto-updating capabilities for both upgrading and downgrading of the
   Agents.
 - Built-in connection credentials management, including client-side TLS
@@ -50,9 +51,9 @@ Now that we have a rough idea of what OpAMP is and what it supports, let’s hav
 a look at how it is implemented in the OpenTelemetry Collector.
 
 In discussions with OTel end-users and collector contributors we found that they
-want to use OpAMP both as an collector extension, with limited
-functionality, as well as as an (collector-external) supervisor that
-implements a broader set of OpAMP capabilities.
+want to use OpAMP both as an collector extension, with limited functionality, as
+well as as an (collector-external) supervisor that implements a broader set of
+OpAMP capabilities.
 
 {{% alert title="Note" color="info" %}} If you want to dive deeper here, we
 suggest you read the
@@ -68,26 +69,26 @@ on top of what the extension implements:
 
 ![OpAMP Supervisor](opamp-supervisor.png)
 
-Let us start with a closer look at the collector OpAMP extension and then
-we move on to the OpAMP Supervisor.
+Let us start with a closer look at the collector OpAMP extension and then we
+move on to the OpAMP Supervisor.
 
 ## OpAMP extension
 
 The
 [OpenTelemetry Collector OpAMP extension](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/16594)
-will implement an OpAMP client within the collector and will be used in
-both the standalone and supervised models for managing a collector instance
-through OpAMP. The functionality for the OpAMP extension while working with the
+will implement an OpAMP client within the collector and will be used in both the
+standalone and supervised models for managing a collector instance through
+OpAMP. The functionality for the OpAMP extension while working with the
 Supervisor has been defined as part of the Supervisor's design document, where
 the extension will largely be tasked with providing bootstrapping information to
 the Supervisor and communicating the collector's effective configuration.
 
 ## OpAMP supervisor
 
-The OpAMP Supervisor will exist as a separate binary that runs an OpenTelemetry Collector
-instance and implements an OpAMP client to relay configuration from an OpAMP
-server to the collector by merging remote and local configuration sources into a
-file that the collector can then use on startup. The supervised model of
+The OpAMP Supervisor will exist as a separate binary that runs an OpenTelemetry
+Collector instance and implements an OpAMP client to relay configuration from an
+OpAMP server to the collector by merging remote and local configuration sources
+into a file that the collector can then use on startup. The supervised model of
 managing the collector will also allow for downloading additional binaries
 through the OpAMP protocol, allowing for downloading additional files as well as
 updating the collector.
