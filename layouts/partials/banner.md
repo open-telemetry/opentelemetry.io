@@ -2,7 +2,9 @@
 
 <div class="o-banner">
 
-[Meet us at KubeCon NA in Chicago from November 6 - 9, 2023.](/blog/2023/kubecon-na)
+[Vote](/blog/2023/gc-elections/) for
+OpenTelemetry Governance Committee [candidates](/blog/2023/gc-candidates/)
+starting October 23!
 
 </div>
 {{ end -}}
