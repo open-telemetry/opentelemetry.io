@@ -10,9 +10,7 @@ description: Spring instrumentation for OpenTelemetry Java
 cSpell:ignore: springboot autoconfigure 
 ---
 
-You can instrument a Spring Boot application with the [OpenTelemetry Java agent](automatic/_index).
-
-Another option is to use the OpenTelemetry Spring Boot starter. The rest of this page document it.
+You can automatically instrument a [Spring Boot](https://spring.io/projects/spring-boot) application using the [OpenTelemetry Java agent](automatic/_index), or you can use the OpenTelemetry Spring Boot starter, as outlined below.
 
 ## Getting Started
 
