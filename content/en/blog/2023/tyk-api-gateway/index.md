@@ -34,7 +34,7 @@ Edit Tyk Gateway configuration file to enable OpenTelemetry support, like this:
 
 You can also enable OpenTelemetry by setting the corresponding environment variable: TYK_GW_OPENTELEMETRY_ENABLED=TRUE.
 
-By default, OpenTelemetry spans are exported using the gRPC protocol to localhost:4317. For more configuration options and default values, refer to the [documentation](https://tyk.io/docs/tyk-oss-gateway/configuration/#opentelemetry).
+By default, OpenTelemetry spans are exported using the gRPC protocol to `localhost:4317`. For more configuration options and default values, refer to the [documentation](https://tyk.io/docs/tyk-oss-gateway/configuration/#opentelemetry).
 
 Tyk will export two spans: one for the total duration of the API call and one span for the call to the upstream service, as shown in the following screenshot from Jaeger. 
 
