@@ -43,8 +43,7 @@ To follow this tutorial you need the following
    telemetrygen traces --otlp-insecure --duration 5s
    ```
 
-   After five seconds, telemetrygen stops and shows the sends messages similar
-   to the following to the console:
+   After five seconds, `telemetrygen` stops and shows the sended messages in the console:
 
    ```text
    2023-10-23T12:58:19.835+0200	INFO	traces/worker.go:88	traces generated	{"worker": 0, "traces": 994418}
