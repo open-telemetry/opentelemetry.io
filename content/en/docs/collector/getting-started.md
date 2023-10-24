@@ -30,7 +30,7 @@ To follow this tutorial you need the following
    ```
 
 2. Download and install the telemetrygen utility from the
-   [opentelemetry-collector-contrib] repository:
+   [opentelemetry-collector-contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/) repository:
 
    ```sh
    go install github.com/open-telemetry/opentelemetry-collector-contrib/cmd/telemetrygen@latest
