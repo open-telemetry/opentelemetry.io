@@ -74,7 +74,8 @@ To follow this tutorial you need the following
 In this tutorial you've started the OpenTelemetry Collector and sent telemetry
 to it. As next steps, consider doing the following:
 
-- Learn about the different modes of the Collector in
+- Explore different ways to [install the collector](../install/).
+- Learn about the different modes of the collector in
   [Deployment Methods](../deployment/).
 - Familiarize yourself with the Collector
   [configuration](/docs/collector/configuration) files and structure.
