@@ -45,7 +45,7 @@ Tyk will export two spans: one for the total duration of the API call and one sp
 
 ### Detailed tracing per APIs
 
-Upon enabling OpenTelemetry at the gateway level, you gain the flexibility to activate detailed tracing for particular APIs. To do so, simply adjust the corresponding API definition and toggle the 'detailed_tracing' option to either 'true' or 'false.' The default value for this setting is 'false.'
+Upon enabling OpenTelemetry at the gateway level, you gain the flexibility to activate detailed tracing for particular APIs. To do so, simply adjust the corresponding API definition and toggle the `detailed_tracing` option to either `true` or `false`. The default value for this setting is `false`.
 With this configuration, Tyk will generate a span for every middleware operation carried out throughout the API request/response lifecycle. This includes actions like API version validation, authentication, authorization, rate limiting, and request and response transformation.
 
 Here you can quickly spot an issue reported by the rate limiting middleware: 
