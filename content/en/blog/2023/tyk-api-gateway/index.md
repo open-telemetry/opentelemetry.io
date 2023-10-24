@@ -54,7 +54,7 @@ Here you can quickly spot an issue reported by the rate limiting middleware:
 
 Tyk supports the use of custom plugins (also called custom middleware) to extend its functionality, making it a highly flexible and customizable API gateway solution. This extensibility allows developers to tailor Tyk to their specific needs, whether it's for enhancing security, adding new authentication methods, integrating with third-party services, or implementing custom request/response transformations.
 
-By instrumenting custom plugins with OpenTelemetry SDK or Tyk’s OpenTelemetry library implementation (wrapper of the OpenTelemetry SDK that all Tyk components are sharing for convenience), Tyk users can gain additional insights into their custom plugin behaviour for better monitoring and quicker troubleshooting. More information in Tyk’s documentation: [OpenTelemetry Instrumentation in Go Plugins](https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/plugins/otel-plugins/). 
+By instrumenting custom plugins with OpenTelemetry SDK or Tyk’s OpenTelemetry library implementation (wrapper of the OpenTelemetry SDK that all Tyk components are sharing for convenience), Tyk users can gain additional insights into their custom plugin behavior for better monitoring and quicker troubleshooting. More information in Tyk’s documentation: [OpenTelemetry Instrumentation in Go Plugins](https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/plugins/otel-plugins/). 
 
 ## What's next?
 
