@@ -14,31 +14,20 @@ can learn how to setup exporters following the
 
 {{% /alert %}}
 
-## Example backend
+## OTLP
+
+### Collector Setup
 
 {{% alert title="Note" color="info" %}}
 
-If you have a backend already set up, you can skip this section and read the
-instructions for the exporter you want to use.
+If you have a OTLP collector or backend already set up, you can skip this
+section and [setup the OTLP exporter dependencies](#otlp-dependencies) for your
+application.
 
 {{% /alert %}}
 
-If you don't have a backend setup already, you will find instructions below to
-set up an [OpenTelemetry Collector](/docs/collector/) with a basic configuration
-to send your telemetry to the console.
-
-Additionally, you will find instructions to run
-[Jaeger](https://jaegertracing.io) to visualize your traces, or
-[Prometheus](https://prometheus.io) to visualize your metrics.
-
-In this section you will find instructions to set up the
-[OpenTelemetry Collector](/docs/collector/), [Jaeger](https://jaegertracing.io)
-and [Prometheus](https://prometheus.io) to get you started quickly.
-
-### Collector (Traces, Metrics, Logs)
-
-To try out and verify your instrumentation quickly, you can run the collector in
-a docker container that writes telemetry directly to the console.
+To try out and verify your OTLP exporters, you can run the collector in a docker
+container that writes telemetry directly to the console.
 
 In an empty directory, create a file called `collector-config.yaml` with the
 following content:
@@ -49,108 +38,38 @@ receivers:
     protocols:
       grpc:
       http:
-  prometheus:
-    config:
-      scrape_configs:
-        - job_name: dice-service
-          scrape_interval: 5s
-          static_configs:
-            - targets: [host.docker.internal:9464]
-  zipkin:
 exporters:
   debug:
     verbosity: detailed
 service:
   pipelines:
     traces:
-      receivers: [otlp, zipkin]
+      receivers: [otlp]
       exporters: [debug]
     metrics:
-      receivers: [otlp, prometheus]
+      receivers: [otlp]
       exporters: [debug]
     logs:
       receivers: [otlp]
       exporters: [debug]
 ```
 
-{{% alert title="Note" color="note" %}}
-
-Not all docker environments support `host.docker.internal`. In some cases you
-may need to replace `host.docker.internal` with `localhost` or the IP address of
-your machine.
-
-{{% /alert %}}
-
 Now run the collector in a docker container:
 
 ```shell
-docker run --rm -v $(pwd)/collector-config.yaml:/etc/otelcol-contrib/config.yaml otel/opentelemetry-collector-contrib
+docker run -p 4317:4317 -p 4318:4318 --rm -v $(pwd)/collector-config.yaml:/etc/otelcol/config.yaml otel/opentelemetry-collector
 ```
 
-This collector is now able to except telemetry via [OTLP](#otlp),
-[Prometheus](#prometheus) and [Zipkin](#zipkin).
+This collector is now able to accept telemetry via OTLP. Later you may want to
+[configure the collector](/docs/collector/configuration) to send your telemetry
+to your observability backend.
 
-Later you may want to [configure the collector](/docs/collector/configuration)
-to send your telemetry to your observability backend.
-
-### Jaeger (Traces)
-
-As an alternative and for a quick way to visualize your traces, we recommend
-using [Jaeger](https://jaegertracing.io). You can run Jaeger in a docker
-container with the UI accessible on port 16686 and OTLP enabled on ports 4137
-and 4138:
-
-```shell
-docker run --rm \
-  -e COLLECTOR_ZIPKIN_HOST_PORT=:9411 \
-  -p 16686:16686 \
-  -p 4317:4317 \
-  -p 4318:4318 \
-  -p 9411:9411 \
-  jaegertracing/all-in-one:latest
-```
-
-### Prometheus (Metrics)
-
-As an alternative and for a quick way to visualize your metrics, we recommend
-using [Prometheus](https://prometheus.io).
-
-Create a file called `prometheus.yml` with the following content:
-
-```yaml
-scrape_configs:
-  - job_name: dice-service
-    scrape_interval: 5s
-    static_configs:
-      - targets: [host.docker.internal:9464]
-```
-
-You can run Prometheus in a docker container with the UI accessible on port
-9090:
-
-```shell
-docker run --rm -v ${PWD}/prometheus.yml:/prometheus/prometheus.yml -p 9090:9090 prom/prometheus --enable-feature=otlp-write-receive
-```
-
-{{% alert title="Note" color="info" %}}
-
-When using Prometheus' OTLP Receiver, make sure that you set the OTLP endpoint
-for metrics in your application to `http://localhost:9090/api/v1/otlp`.
-
-Not all docker environments support `host.docker.internal`. In some cases you
-may need to replace `host.docker.internal` with `localhost` or the IP address of
-your machine.
-
-{{% /alert %}}
-
-## OTLP
-
-### Dependencies
+### Dependencies {#otlp-dependencies}
 
 If you want to send telemetry data to an OTLP endpoint (like the
-[collector](#collector-traces-metrics-logs), [Jaeger](#jaeger-traces) or
-[Prometheus](#prometheus-metrics)), you can choose between three different
-protocols to transport your data:
+[OpenTelemetry Collector](#collector-setup), [Jaeger](#jaeger) or
+[Prometheus](#prometheus)), you can choose between three different protocols to
+transport your data:
 
 - [HTTP/protobuf](https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-proto)
 - [HTTP/JSON](https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-http)
@@ -381,13 +300,68 @@ package:
 ## Jaeger
 
 [Jaeger](https://www.jaegertracing.io/) natively supports OTLP to receive trace
-data, so you can use the same exporter as for the [OTLP backend](#otlp).
+data. You can run Jaeger in a docker container with the UI accessible on port
+16686 and OTLP enabled on ports 4137 and 4138:
+
+```shell
+docker run --rm \
+  -e COLLECTOR_ZIPKIN_HOST_PORT=:9411 \
+  -p 16686:16686 \
+  -p 4317:4317 \
+  -p 4318:4318 \
+  -p 9411:9411 \
+  jaegertracing/all-in-one:latest
+```
+
+Now following the instruction to setup the [OTLP exporters](#otlp-dependencies).
 
 ## Prometheus
 
-To send your metric data to [Prometheus](#prometheus-metrics), you can either
+To send your metric data to [Prometheus](https://prometheus.io/), you can either
 [enable Prometheus' OTLP Receiver](https://prometheus.io/docs/prometheus/latest/feature_flags/#otlp-receiver)
 and use the [OTLP exporter](#otlp) or you can use the `PrometheusExporter`.
+
+### Backend Setup {#prometheus-setup}
+
+{{% alert title="Note" color="info" %}}
+
+If you have Prometheus or a Prometheus-compatible backend already set up, you
+can skip this section and setup the [Prometheus](#prometheus-dependencies) or
+[OTLP](#otlp-dependencies) exporter dependencies for your application.
+
+{{% /alert %}}
+
+You can run [Prometheus](https://prometheus.io) in a docker container,
+accessible on port `9090` by following these instructions:
+
+Create a file called `prometheus.yml` with the following content:
+
+```yaml
+scrape_configs:
+  - job_name: dice-service
+    scrape_interval: 5s
+    static_configs:
+      - targets: [host.docker.internal:9464]
+```
+
+Run Prometheus in a docker container with the UI accessible on port `9090`:
+
+```shell
+docker run --rm -v ${PWD}/prometheus.yml:/prometheus/prometheus.yml -p 9090:9090 prom/prometheus --enable-feature=otlp-write-receive
+```
+
+{{% alert title="Note" color="info" %}}
+
+When using Prometheus' OTLP Receiver, make sure that you set the OTLP endpoint
+for metrics in your application to `http://localhost:9090/api/v1/otlp`.
+
+Not all docker environments support `host.docker.internal`. In some cases you
+may need to replace `host.docker.internal` with `localhost` or the IP address of
+your machine.
+
+{{% /alert %}}
+
+### Dependencies {#prometheus-dependencies}
 
 Install the
 [exporter package](https://www.npmjs.com/package/@opentelemetry/exporter-prometheus)
@@ -437,11 +411,29 @@ sdk.start();
 {{% /tab %}} {{< /tabpane >}}
 
 With the above you can access your metrics at <http://localhost:9464/metrics>.
-[Prometheus](#prometheus-metrics) or a
-[collector](#collector-traces-metrics-logs) with the Prometheus receiver can
-scrape the metrics from this endpoint.
+Prometheus or an OpenTelemetry Collector with the Prometheus receiver can scrape
+the metrics from this endpoint.
 
 ## Zipkin
+
+### Backend Setup {#zipkin-setup}
+
+{{% alert title="Note" color="info" %}}
+
+If you have Zipkin or a Zipkin-compatible backend already set up, you can skip
+this section and setup the [Zipkin exporter dependencies](#zipkin-dependencies)
+for your application.
+
+{{% /alert %}}
+
+You can run [Zipkin](https://zipkin.io/) on ina Docker container by executing
+the following command:
+
+```shell
+docker run --rm -d -p 9411:9411 --name zipkin openzipkin/zipkin
+```
+
+### Dependencies {#zipkin-dependencies}
 
 To send your trace data to [Zipkin](https://zipkin.io/), you can use the
 `ZipkinExporter`.
@@ -487,17 +479,6 @@ const sdk = new opentelemetry.NodeSDK({
 ```
 
 {{% /tab %}} {{< /tabpane >}}
-
-Both, the [OpenTelemetry Collector](#collector-traces-metrics-logs) and
-[Jaeger](#jaeger-traces), support the Zipkin protocol, so you can send your
-telemetry data to them.
-
-You can run [Zipkin](https://zipkin.io/) on your local machine with Docker, by
-executing the following command:
-
-```shell
-docker run --rm -d -p 9411:9411 --name zipkin openzipkin/zipkin
-```
 
 ## Other available exporters
 
