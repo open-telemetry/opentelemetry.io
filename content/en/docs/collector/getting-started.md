@@ -77,7 +77,7 @@ to it. As next steps, consider doing the following:
 - Explore different ways to [install the collector](../install/).
 - Learn about the different modes of the collector in
   [Deployment Methods](../deployment/).
-- Familiarize yourself with the Collector
+- Familiarize yourself with the collector
   [configuration](/docs/collector/configuration) files and structure.
 - Explore available components in the [registry](https://opentelemetry.io/ecosystem/registry/?language=collector)
 - Learn how to [build a custom collector with the OpenTelemetry Collector Builder (OCB)](/docs/collector/custom-collector/)
