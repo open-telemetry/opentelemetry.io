@@ -18,7 +18,7 @@ utility.
 
 To follow this tutorial you need the following
 
-- Go 1.20 or higher
+- [Go](https://go.dev/) 1.20 or higher
 
 ## Test the OpenTelemetry Collector in five minutes
 
