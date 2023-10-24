@@ -7,6 +7,7 @@ aliases:
   - /docs/instrumentation/java/springboot
 weight: 30
 description: Spring instrumentation for OpenTelemetry Java
+javaInstrumentationVersion: 1.31.0
 cSpell:ignore: springboot autoconfigure 
 ---
 
@@ -22,8 +23,6 @@ It is compatible with Spring Boot 2.0, Spring Boot 3.0 and Spring native.
 
 Add the dependency given below in your project to enable the OpenTelemetry Spring Starter.
 
-You have to replace`OPENTELEMETRY_VERSION` with the latest stable [release](https://search.maven.org/search?q=g:io.opentelemetry).
-
 ### Maven
 
 Add the following dependencies to your `pom.xml` file:
@@ -33,7 +32,7 @@ Add the following dependencies to your `pom.xml` file:
   <dependency>
     <groupId>io.opentelemetry.instrumentation</groupId>
     <artifactId>opentelemetry-spring-boot-starter</artifactId>
-    <version>OPENTELEMETRY_VERSION</version>
+    <version>{{% param javaInstrumentationVersion %}}</version>
   </dependency>
 </dependencies>
 ```
@@ -43,7 +42,7 @@ Add the following dependencies to your `pom.xml` file:
 Add the following dependencies to your gradle.build file:
 
 ```groovy
-implementation("io.opentelemetry.instrumentation:opentelemetry-spring-boot-starter:OPENTELEMETRY_VERSION")
+implementation("io.opentelemetry.instrumentation:opentelemetry-spring-boot-starter:{{% param javaInstrumentationVersion %}}")
 ```
 
 ## Additional instrumentations
