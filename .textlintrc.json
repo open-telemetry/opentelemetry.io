@@ -16,7 +16,10 @@
         "/<http://.*>/",
         "medium.com/opentelemetry",
         "github.com/open-telemetry",
+        "`javaagent`",
         "#opentelemetry",
+        "Open Agent Management Protocol",
+        "SignalFx Smart Agent",
         "/^(?:language|repo): .*$/m",
         "/tags:([\\n\\r\\s]*-[\\s\\S]*?[\\n\\r]+)*/m"
       ]
@@ -27,6 +30,7 @@
       "defaultTerms": false,
       "skip": [],
       "terms": [
+        "agent",
         "Ajax",
         "Apache",
         "API",
@@ -70,6 +74,7 @@
         "NDJSON",
         "OCaml",
         "OK",
+        "OpAMP",
         "OpenSearch",
         "OpenTelemetry Collector",
         "OTel",
@@ -111,6 +116,7 @@
         ["he/she", "they"],
         ["\\(s\\)he", "they"],
         ["id['’]?s", "IDs"],
+        ["java[- ]?agent", "Java agent"],
         ["mac ?os", "macOS"],
         ["meta[- ]data", "metadata"],
         ["nd-?json", "NDJSON"],

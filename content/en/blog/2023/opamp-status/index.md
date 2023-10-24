@@ -38,12 +38,12 @@ different agents. OpAMP currently supports, amongst other things:
 - Agents, such as the OpenTelemetry Collector, can report their properties, for
   example, type and version, or also the host operating system details to the
   Server (OpAMP control plane).
-- The Server can push configurations to Agents and ensures that said
-  configurations are applied, for example through reloading the Agent.
-- You can ingest the Agent's own telemetry (logs and metrics) into an
+- The Server can push configurations to agents and ensures that said
+  configurations are applied, for example through reloading the agent.
+- You can ingest the agent's own telemetry (logs and metrics) into an
   [OTLP](/docs/specs/otlp/)-compliant observability backend.
 - Secure auto-updating capabilities for both upgrading and downgrading of the
-  Agents.
+  agents.
 - Built-in connection credentials management, including client-side TLS
   certificate revocation and rotation.
 
