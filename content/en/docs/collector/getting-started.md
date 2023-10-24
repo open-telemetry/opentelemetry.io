@@ -4,7 +4,7 @@ cSpell:ignore: docker dokey dpkg okey telemetrygen
 weight: 1
 ---
 
-The OpenTelemetry Collector listens to metrics, logs, and traces, processes the
+The OpenTelemetry Collector listens to [traces](/docs/concepts/signals/traces/), [metrics](/docs/concepts/signals/metrics/) and [logs](/docs/concepts/signals/logs/), processes the
 telemetry, and exports it to a wide variety of observability back-ends using its
 components. For a conceptual overview of the Collector, read the
 [introduction](/docs/collector).
