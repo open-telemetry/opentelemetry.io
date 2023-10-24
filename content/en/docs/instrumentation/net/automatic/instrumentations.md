@@ -4,7 +4,7 @@ linkTitle: Instrumentations
 description: OpenTelemetry .NET Automatic Instrumentation supported libraries.
 weight: 10
 # prettier-ignore
-cSpell:ignore: ASPNET ASPNETCORE Bootstrapper ENTITYFRAMEWORKCORE GRCPNETCLIENT GRPCNETCLIENT HOSTINGSTARTUPASSEMBLIES HTTPCLIENT ILOGGER MASSTRANSIT MYSQLCONNECTOR MYSQLDATA NETRUNTIME NPGSQL Npgsql NSERVICEBUS SQLCLIENT STACKEXCHANGEREDIS WCFCLIENT WCFSERVICE
+cSpell:ignore: ASPNET ASPNETCORE Bootstrapper ELASTICTRANSPORT ENTITYFRAMEWORKCORE GRCPNETCLIENT GRPCNETCLIENT HOSTINGSTARTUPASSEMBLIES HTTPCLIENT ILOGGER MASSTRANSIT MYSQLCONNECTOR MYSQLDATA NETRUNTIME NPGSQL Npgsql NSERVICEBUS SQLCLIENT STACKEXCHANGEREDIS WCFCLIENT WCFSERVICE
 ---
 
 The OpenTelemetry .NET Automatic Instrumentation supports a wide variety of
@@ -46,7 +46,7 @@ stable semantic convention.
 | `ASPNET`              | ASP.NET (.NET Framework) MVC / WebApi \[1\] **Not supported on .NET**                                                                                                                           | \*                 | source & bytecode    | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `ASPNETCORE`          | ASP.NET Core **Not supported on .NET Framework**                                                                                                                                                | \*                 | source               | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `AZURE`               | [Azure SDK](https://azure.github.io/azure-sdk/releases/latest/index.html)                                                                                                                       | \[2\]              | source               | [Experimental](/docs/specs/otel/versioning-and-stability) |
-| `ELASTICSEARCH`       | [Elastic.Clients.Elasticsearch](https://www.nuget.org/packages/Elastic.Clients.Elasticsearch)                                                                                                   | ≥8.0.0 & < 8.10.0             | source               | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `ELASTICSEARCH`       | [Elastic.Clients.Elasticsearch](https://www.nuget.org/packages/Elastic.Clients.Elasticsearch)                                                                                                   | ≥8.0.0 & < 8.10.0  | source               | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `ELASTICTRANSPORT`    | [Elastic.Transport](https://www.nuget.org/packages/Elastic.Transport)                                                                                                                           | ≥0.4.16            | source               | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `ENTITYFRAMEWORKCORE` | [Microsoft.EntityFrameworkCore](https://www.nuget.org/packages/) **Not supported on .NET Framework**                                                                                            | ≥6.0.12            | source               | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `GRAPHQL`             | [GraphQL](https://www.nuget.org/packages/GraphQL) **Not supported on .NET Framework**                                                                                                           | ≥7.5.0             | source               | [Experimental](/docs/specs/otel/versioning-and-stability) |
@@ -96,8 +96,8 @@ instrumentation is also enabled.
 
 **Status**: [Experimental](/docs/specs/otel/versioning-and-stability).
 
-| ID      | Instrumented library                                                                                                            | Supported versions | Instrumentation type | Status                                                    |
-| ------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------ | -------------------- | --------------------------------------------------------- |
+| ID        | Instrumented library                                                                                                            | Supported versions | Instrumentation type | Status                                                    |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------ | -------------------- | --------------------------------------------------------- |
 | `ILOGGER` | [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging) **Not supported on .NET Framework** | ≥6.0.0             | bytecode or source   | [Experimental](/docs/specs/otel/versioning-and-stability) |
 
 For ASP.NET Core applications, the `LoggingBuilder` instrumentation can be
