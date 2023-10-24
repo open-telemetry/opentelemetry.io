@@ -6,7 +6,7 @@ weight: 1
 
 The OpenTelemetry Collector listens to [traces](/docs/concepts/signals/traces/), [metrics](/docs/concepts/signals/metrics/) and [logs](/docs/concepts/signals/logs/), processes the
 telemetry, and exports it to a wide variety of observability back-ends using its
-components. For a conceptual overview of the Collector, read the
+components. For a conceptual overview of the collector, read the
 [introduction](/docs/collector).
 
 The following tutorial shows how to deploy the Collector and send telemetry to
