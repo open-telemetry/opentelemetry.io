@@ -26,11 +26,13 @@ Starting with version 5.2, [Tyk API Gateway has native support for OpenTelemetry
 
 Edit Tyk Gateway configuration file to enable OpenTelemetry support, like this:
 
+```json
 {
   "opentelemetry": {
     "enabled": true
   }
 }
+```
 
 You can also enable OpenTelemetry by setting the corresponding environment variable: TYK_GW_OPENTELEMETRY_ENABLED=TRUE.
 
