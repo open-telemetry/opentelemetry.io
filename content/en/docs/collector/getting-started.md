@@ -83,6 +83,6 @@ to it. As next steps, consider doing the following:
 - Familiarize yourself with the Collector
   [configuration](/docs/collector/configuration) files and structure.
 - Explore available components in the
-  [registry](https://opentelemetry.io/ecosystem/registry/?language=collector)
+  [registry](../../ecosystem/registry/?language=collector)
 - Learn how to
   [build a custom Collector with the OpenTelemetry Collector Builder (OCB)](/docs/collector/custom-collector/)
