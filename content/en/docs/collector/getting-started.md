@@ -50,8 +50,8 @@ To follow this tutorial you need the following
    2023-10-23T12:58:19.835+0200	INFO	traces/traces.go:79	stop the batch span processor
    ```
 
-   The Collector container logs, on the other hand, should show activity related
-   to the logs ingest similar to this:
+   In the terminal window, running the collector container, logs should show activity related
+   to the trace ingest similar to this:
 
    ```text
    Span #434
