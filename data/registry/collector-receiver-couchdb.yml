@@ -1,4 +1,4 @@
-# cSpell:ignore couchdb
+# cSpell:ignore: couchdb
 title: CouchDB Receiver
 registryType: receiver
 isThirdParty: false

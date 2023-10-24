@@ -1,4 +1,4 @@
-# cSpell:ignore stackdriver
+# cSpell:ignore: stackdriver
 title: Stackdriver Exporter for OpenTelemetry .NET
 registryType: exporter
 isThirdParty: false

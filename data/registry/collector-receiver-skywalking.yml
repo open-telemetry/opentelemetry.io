@@ -1,4 +1,4 @@
-# cSpell:ignore skywalking
+# cSpell:ignore: skywalking
 title: Skywalking Receiver
 registryType: receiver
 isThirdParty: false

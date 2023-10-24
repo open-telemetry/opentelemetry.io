@@ -1,4 +1,4 @@
-# cSpell:ignore sapm
+# cSpell:ignore: sapm
 title: SAPM Collector Receiver
 registryType: receiver
 isThirdParty: true

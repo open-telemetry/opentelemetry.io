@@ -1,4 +1,4 @@
-# cSpell:ignore akka
+# cSpell:ignore: akka
 title: Akka Actor Fork Join Instrumentation
 registryType: instrumentation
 isThirdParty: false

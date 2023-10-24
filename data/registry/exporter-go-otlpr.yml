@@ -1,4 +1,4 @@
-# cSpell:ignore otlpr logr
+# cSpell:ignore: otlpr logr
 title: otlpr - A logr implementation backed by OTLP
 registryType: exporter
 isThirdParty: true

@@ -1,4 +1,4 @@
-# cspell:ignore pekko
+# cSpell:ignore: pekko
 title: Apache Pekko Actor Instrumentation
 registryType: instrumentation
 isThirdParty: false

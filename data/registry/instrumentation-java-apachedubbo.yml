@@ -1,4 +1,4 @@
-# cSpell:ignore dubbo
+# cSpell:ignore: dubbo
 title: Apache Dubbo Instrumentation
 registryType: instrumentation
 isThirdParty: false

@@ -1,4 +1,4 @@
-# cSpell:ignore otelpgx jackc exaring
+# cSpell:ignore: otelpgx jackc exaring
 title: otelpgx - tracing support for github.com/jackc/pgx
 registryType: instrumentation
 isThirdParty: true

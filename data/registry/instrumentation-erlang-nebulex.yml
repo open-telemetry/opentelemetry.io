@@ -1,4 +1,4 @@
-# cSpell:ignore nebulex
+# cSpell:ignore: nebulex
 title: OpentelemetryNebulex
 registryType: instrumentation
 isThirdParty: false

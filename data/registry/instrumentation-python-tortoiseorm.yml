@@ -1,4 +1,4 @@
-# cSpell:ignore tortoiseorm
+# cSpell:ignore: tortoiseorm
 title: OpenTelemetry Tortoise ORM Instrumentation
 registryType: instrumentation
 isThirdParty: false

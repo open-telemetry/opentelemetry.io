@@ -1,4 +1,4 @@
-# cSpell:ignore alibabacloud
+# cSpell:ignore: alibabacloud
 title: OpenTelemetry Resource Detector for Alibaba Cloud
 registryType: resource-detector
 isThirdParty: false

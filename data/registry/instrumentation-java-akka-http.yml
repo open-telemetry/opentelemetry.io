@@ -1,4 +1,4 @@
-# cSpell:ignore akka
+# cSpell:ignore: akka
 title: Akka HTTP Instrumentation
 registryType: instrumentation
 isThirdParty: false

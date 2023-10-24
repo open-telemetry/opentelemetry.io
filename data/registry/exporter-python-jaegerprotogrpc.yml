@@ -1,4 +1,4 @@
-# cSpell:ignore
+# cSpell:ignore:
 title: OpenTelemetry Jaeger protobuf Exporter
 registryType: exporter
 isThirdParty: false

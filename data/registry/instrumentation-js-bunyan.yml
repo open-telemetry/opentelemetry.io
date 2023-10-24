@@ -1,4 +1,4 @@
-# cSpell:ignore bunyan
+# cSpell:ignore: bunyan
 title: OpenTelemetry Instrumentation for bunyan
 registryType: instrumentation
 isThirdParty: false

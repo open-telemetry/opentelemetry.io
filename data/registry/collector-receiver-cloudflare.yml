@@ -1,4 +1,4 @@
-# cSpell:ignore cloudflare
+# cSpell:ignore: cloudflare
 title: Cloudflare Receiver
 registryType: receiver
 isThirdParty: false

@@ -1,4 +1,4 @@
-# cSpell:ignore mntr
+# cSpell:ignore: mntr
 title: Zookeeper Collector Receiver
 registryType: receiver
 isThirdParty: true

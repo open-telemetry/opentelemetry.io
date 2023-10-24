@@ -1,4 +1,4 @@
-# cSpell:ignore gofiber
+# cSpell:ignore: gofiber
 title: Fiber Instrumentation
 registryType: instrumentation
 isThirdParty: true

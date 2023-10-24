@@ -1,4 +1,4 @@
-# cSpell:ignore splunkgraphql
+# cSpell:ignore: splunkgraphql
 title: splunkgraphql -- Instrumentation for github.com/graph-gophers/graphql-go
 registryType: instrumentation
 isThirdParty: true

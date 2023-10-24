@@ -1,4 +1,4 @@
-# cSpell:ignore kafkajs
+# cSpell:ignore: kafkajs
 title: OpenTelemetry kafkajs Instrumentation
 registryType: instrumentation
 isThirdParty: false

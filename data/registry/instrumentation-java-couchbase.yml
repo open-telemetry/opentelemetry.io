@@ -1,4 +1,4 @@
-# cSpell:ignore couchbase
+# cSpell:ignore: couchbase
 title: Couchbase Instrumentation
 registryType: instrumentation
 isThirdParty: false

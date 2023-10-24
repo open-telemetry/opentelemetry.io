@@ -1,4 +1,4 @@
-# cSpell:ignore resteasy
+# cSpell:ignore: resteasy
 title: Quarkus RESTeasy Reactive Instrumentation
 registryType: instrumentation
 isThirdParty: false

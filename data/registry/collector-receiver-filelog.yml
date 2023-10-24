@@ -1,4 +1,4 @@
-# cSpell:ignore filelog
+# cSpell:ignore: filelog
 title: Filelog Collector Receiver
 registryType: receiver
 isThirdParty: false

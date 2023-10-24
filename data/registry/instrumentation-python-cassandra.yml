@@ -1,4 +1,4 @@
-# cSpell:ignore scylla
+# cSpell:ignore: scylla
 title: OpenTelemetry Cassandra Instrumentation
 registryType: instrumentation
 isThirdParty: false

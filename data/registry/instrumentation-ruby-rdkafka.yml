@@ -1,4 +1,4 @@
-# cSpell:ignore rdkafka
+# cSpell:ignore: rdkafka
 title: OpenTelemetry rdkafka Instrumentation
 registryType: instrumentation
 isThirdParty: false

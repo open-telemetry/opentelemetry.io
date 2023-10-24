@@ -1,4 +1,4 @@
-# cSpell:ignore owin katana
+# cSpell:ignore: owin katana
 title: OWIN Instrumentation for OpenTelemetry .NET
 registryType: instrumentation
 isThirdParty: false

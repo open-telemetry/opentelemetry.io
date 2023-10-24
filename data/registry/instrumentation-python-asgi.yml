@@ -1,4 +1,4 @@
-# cSpell:ignore ASGI
+# cSpell:ignore: ASGI
 title: ASGI Middleware Instrumentation
 registryType: instrumentation
 isThirdParty: false

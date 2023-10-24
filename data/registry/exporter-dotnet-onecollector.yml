@@ -1,4 +1,4 @@
-# cSpell:ignore onecollector
+# cSpell:ignore: onecollector
 title: OneCollector Exporter for OpenTelemetry .NET
 registryType: exporter
 isThirdParty: false

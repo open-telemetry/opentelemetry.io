@@ -1,4 +1,4 @@
-# cSpell:ignore tanzu
+# cSpell:ignore: tanzu
 title: Tanzu Observability Collector Traces Exporter
 registryType: exporter
 isThirdParty: true

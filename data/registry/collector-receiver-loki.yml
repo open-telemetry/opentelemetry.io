@@ -1,4 +1,4 @@
-# cSpell:ignore loki
+# cSpell:ignore: loki
 title: Loki Receiver
 registryType: receiver
 isThirdParty: false

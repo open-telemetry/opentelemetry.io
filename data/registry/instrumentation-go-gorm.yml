@@ -1,4 +1,4 @@
-# cSpell:ignore gorm mihailenco
+# cSpell:ignore: gorm mihailenco
 title: GORM instrumentation
 registryType: instrumentation
 isThirdParty: true

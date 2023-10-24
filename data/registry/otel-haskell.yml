@@ -1,4 +1,4 @@
-# cSpell:ignore ethercrow
+# cSpell:ignore: ethercrow
 title: OpenTelemetry for Haskell
 registryType: instrumentation
 isThirdParty: true

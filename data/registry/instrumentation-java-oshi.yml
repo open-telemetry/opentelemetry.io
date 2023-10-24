@@ -1,4 +1,4 @@
-# cSpell:ignore oshi
+# cSpell:ignore: oshi
 title: Oshi Instrumentation
 registryType: instrumentation
 isThirdParty: false

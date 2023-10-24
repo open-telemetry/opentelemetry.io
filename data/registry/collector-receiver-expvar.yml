@@ -1,4 +1,4 @@
-# cSpell:ignore expvar
+# cSpell:ignore: expvar
 title: Expvar Receiver
 registryType: receiver
 isThirdParty: false

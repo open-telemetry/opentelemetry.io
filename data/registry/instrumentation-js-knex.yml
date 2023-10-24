@@ -1,4 +1,4 @@
-# cSpell:ignore knex
+# cSpell:ignore: knex
 title: OpenTelemetry Instrumentation for knex
 registryType: instrumentation
 isThirdParty: false

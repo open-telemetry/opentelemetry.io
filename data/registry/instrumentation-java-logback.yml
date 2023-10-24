@@ -1,4 +1,4 @@
-# cSpell:ignore logback
+# cSpell:ignore: logback
 title: Logback Instrumentation
 registryType: instrumentation
 isThirdParty: false

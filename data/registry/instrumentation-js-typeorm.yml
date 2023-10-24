@@ -1,4 +1,4 @@
-# cSpell:ignore typeorm
+# cSpell:ignore: typeorm
 title: OpenTelemetry TypeORM Instrumentation
 registryType: instrumentation
 isThirdParty: false

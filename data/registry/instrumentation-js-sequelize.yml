@@ -1,4 +1,4 @@
-# cSpell:ignore sequelize
+# cSpell:ignore: sequelize
 title: OpenTelemetry Sequelize Instrumentation
 registryType: instrumentation
 isThirdParty: true

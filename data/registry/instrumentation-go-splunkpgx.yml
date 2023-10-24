@@ -1,4 +1,4 @@
-# cSpell:ignore splunkpgx jackc
+# cSpell:ignore: splunkpgx jackc
 title: splunkpgx -- Instrumentation for github.com/jackc/pgx
 registryType: instrumentation
 isThirdParty: true

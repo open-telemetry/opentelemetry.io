@@ -1,4 +1,4 @@
-# cSpell:ignore aspnetcore
+# cSpell:ignore: aspnetcore
 title: Prometheus Exporter ASP.NET Core for OpenTelemetry .NET
 registryType: exporter
 isThirdParty: false

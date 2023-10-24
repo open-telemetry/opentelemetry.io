@@ -1,4 +1,4 @@
-# cSpell:ignore jedis
+# cSpell:ignore: jedis
 title: Jedis Instrumentation
 registryType: instrumentation
 isThirdParty: false

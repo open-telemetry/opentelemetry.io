@@ -1,4 +1,4 @@
-# cSpell:ignore apiclarity
+# cSpell:ignore: apiclarity
 title: APIClarity HTTP Exporter
 registryType: exporter
 isThirdParty: true

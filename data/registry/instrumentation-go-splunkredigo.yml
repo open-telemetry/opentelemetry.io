@@ -1,4 +1,4 @@
-# cSpell:ignore redigo gomodule splunkredigo
+# cSpell:ignore: redigo gomodule splunkredigo
 title: splunkredigo -- Instrumentation for github.com/gomodule/redigo
 registryType: instrumentation
 isThirdParty: true

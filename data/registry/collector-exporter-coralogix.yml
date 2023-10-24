@@ -1,4 +1,4 @@
-# cSpell:ignore coralogix
+# cSpell:ignore: coralogix
 title: Coralogix Collector Exporter
 registryType: exporter
 isThirdParty: true

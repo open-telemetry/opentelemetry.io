@@ -1,4 +1,4 @@
-# cSpell:ignore otelchi riandy
+# cSpell:ignore: otelchi riandy
 title: otelchi --- Instrumentation for go-chi/chi
 registryType: instrumentation
 isThirdParty: true

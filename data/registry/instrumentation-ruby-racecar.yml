@@ -1,4 +1,4 @@
-# cSpell:ignore racecar
+# cSpell:ignore: racecar
 title: OpenTelemetry Racecar Instrumentation
 registryType: instrumentation
 isThirdParty: false

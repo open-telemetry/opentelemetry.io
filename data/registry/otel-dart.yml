@@ -1,4 +1,4 @@
-# cSpell:ignore Workiva
+# cSpell:ignore: Workiva
 title: OpenTelemetry for Dart
 registryType: instrumentation
 isThirdParty: true

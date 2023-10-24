@@ -1,4 +1,4 @@
-# cSpell:ignore hystrix
+# cSpell:ignore: hystrix
 title: Hystrix Instrumentation
 registryType: instrumentation
 isThirdParty: false

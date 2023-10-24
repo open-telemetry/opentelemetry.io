@@ -1,4 +1,4 @@
-# cSpell:ignore splunkpq
+# cSpell:ignore: splunkpq
 title: splunkpq -- Instrumentation for github.com/lib/pq
 registryType: instrumentation
 isThirdParty: true

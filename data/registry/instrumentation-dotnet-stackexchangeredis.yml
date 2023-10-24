@@ -1,4 +1,4 @@
-# cSpell:ignore stackexchange
+# cSpell:ignore: stackexchange
 title: StackExchange.Redis Instrumentation for OpenTelemetry
 registryType: instrumentation
 isThirdParty: false

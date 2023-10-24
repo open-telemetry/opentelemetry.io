@@ -1,4 +1,4 @@
-# cSpell:ignore pillarjs
+# cSpell:ignore: pillarjs
 title: OpenTelemetry pillarjs/Router Instrumentation for Node.js
 registryType: instrumentation
 isThirdParty: false

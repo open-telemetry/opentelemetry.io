@@ -1,4 +1,4 @@
-# cSpell:ignore webserver
+# cSpell:ignore: webserver
 title: OpenTelemetry Webserver Module
 registryType: instrumentation
 isThirdParty: false

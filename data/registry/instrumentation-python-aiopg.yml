@@ -1,4 +1,4 @@
-# cSpell:ignore AIOPG
+# cSpell:ignore: AIOPG
 title: AIOPG Middleware Instrumentation
 registryType: instrumentation
 isThirdParty: false

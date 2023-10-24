@@ -1,4 +1,4 @@
-# cSpell:ignore Steffan Westcott
+# cSpell:ignore: Steffan Westcott
 title: clj-otel - Idiomatic Clojure API for OpenTelemetry
 registryType: extension
 isThirdParty: true

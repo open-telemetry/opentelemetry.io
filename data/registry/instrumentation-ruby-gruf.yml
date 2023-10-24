@@ -1,4 +1,4 @@
-# cSpell:ignore gruf
+# cSpell:ignore: gruf
 title: OpenTelemetry gruf Instrumentation
 registryType: instrumentation
 isThirdParty: false

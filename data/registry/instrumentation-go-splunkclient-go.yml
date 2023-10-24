@@ -1,4 +1,4 @@
-# cSpell:ignore splunkclient
+# cSpell:ignore: splunkclient
 title: splunkclient-go -- Instrumentation for k8s.io/client-go
 registryType: instrumentation
 isThirdParty: true

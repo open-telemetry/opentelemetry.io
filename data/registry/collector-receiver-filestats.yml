@@ -1,4 +1,4 @@
-# cSpell:ignore filestats
+# cSpell:ignore: filestats
 title: File Stats Receiver
 registryType: receiver
 isThirdParty: false

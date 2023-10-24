@@ -1,4 +1,4 @@
-# cSpell:ignore splunkleveldb syndtr goleveldb leveldb
+# cSpell:ignore: splunkleveldb syndtr goleveldb leveldb
 title: splunkleveldb -- Instrumentation for github.com/syndtr/goleveldb/leveldb
 registryType: instrumentation
 isThirdParty: true

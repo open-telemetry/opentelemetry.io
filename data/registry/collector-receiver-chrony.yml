@@ -1,4 +1,4 @@
-# cSpell:ignore chrony chronyc
+# cSpell:ignore: chrony chronyc
 title: Chrony Receiver
 registryType: receiver
 isThirdParty: false

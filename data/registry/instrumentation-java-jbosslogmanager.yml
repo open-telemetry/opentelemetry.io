@@ -1,4 +1,4 @@
-# cSpell:ignore logmanager
+# cSpell:ignore: logmanager
 title: JBoss Log Manager Instrumentation
 registryType: instrumentation
 isThirdParty: false

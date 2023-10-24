@@ -1,4 +1,4 @@
-# cSpell:ignore nestjs metin seylan
+# cSpell:ignore: nestjs metin seylan
 title: OpenTelemetry Instrumentation for Nest
 registryType: instrumentation
 isThirdParty: true

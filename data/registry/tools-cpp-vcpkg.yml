@@ -1,4 +1,4 @@
-# cSpell:ignore vcpkg
+# cSpell:ignore: vcpkg
 title: vcpkg package for OpenTelemetry C++
 registryType: core
 isThirdParty: true

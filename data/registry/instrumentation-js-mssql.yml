@@ -1,4 +1,4 @@
-# cSpell:ignore mssql Nadeem
+# cSpell:ignore: mssql Nadeem
 title: OpenTelemetry MSSQL Instrumentation
 registryType: instrumentation
 isThirdParty: true

@@ -1,4 +1,4 @@
-# cSpell:ignore sapm
+# cSpell:ignore: sapm
 title: Splunk APM (SAPM) Exporter
 registryType: exporter
 isThirdParty: true

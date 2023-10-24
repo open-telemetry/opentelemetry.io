@@ -1,4 +1,4 @@
-# cSpell:ignore jodd
+# cSpell:ignore: jodd
 title: Jodd HTTP Instrumentation
 registryType: instrumentation
 isThirdParty: false

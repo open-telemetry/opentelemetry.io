@@ -1,4 +1,4 @@
-# cSpell:ignore dropwizard
+# cSpell:ignore: dropwizard
 title: Dropwizard Instrumentation Library
 registryType: instrumentation
 isThirdParty: false

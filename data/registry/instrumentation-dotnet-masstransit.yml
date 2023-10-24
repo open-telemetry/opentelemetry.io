@@ -1,4 +1,4 @@
-# cSpell:ignore masstransit
+# cSpell:ignore: masstransit
 title: MassTransit Instrumentation for OpenTelemetry .NET
 registryType: instrumentation
 isThirdParty: false

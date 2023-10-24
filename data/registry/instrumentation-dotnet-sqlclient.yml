@@ -1,4 +1,4 @@
-# cSpell:ignore sqlclient
+# cSpell:ignore: sqlclient
 title: SqlClient Instrumentation for OpenTelemetry
 registryType: instrumentation
 isThirdParty: false

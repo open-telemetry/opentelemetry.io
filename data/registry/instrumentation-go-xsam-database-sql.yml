@@ -1,4 +1,4 @@
-# cSpell:ignore otelsql xsam
+# cSpell:ignore: otelsql xsam
 title: otelsql -- Instrumentation for `database/sql`
 registryType: instrumentation
 isThirdParty: true

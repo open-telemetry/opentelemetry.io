@@ -1,4 +1,4 @@
-# cSpell:ignore pymemcache
+# cSpell:ignore: pymemcache
 title: Pymemcache Instrumentation
 registryType: instrumentation
 isThirdParty: false

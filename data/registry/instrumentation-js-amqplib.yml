@@ -1,4 +1,4 @@
-# cSpell:ignore amqplib
+# cSpell:ignore: amqplib
 title: OpenTelemetry amqplib Instrumentation (RabbitMQ)
 registryType: instrumentation
 isThirdParty: false

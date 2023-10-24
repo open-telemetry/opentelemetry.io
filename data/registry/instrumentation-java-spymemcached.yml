@@ -1,4 +1,4 @@
-# cSpell:ignore spymemcached
+# cSpell:ignore: spymemcached
 title: Spymemcached Instrumentation
 registryType: instrumentation
 isThirdParty: false

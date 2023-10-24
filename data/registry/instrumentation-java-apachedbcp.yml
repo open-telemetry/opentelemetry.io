@@ -1,4 +1,4 @@
-# cSpell:ignore dbcp
+# cSpell:ignore: dbcp
 title: Apache DBCP Instrumentation
 registryType: instrumentation
 isThirdParty: false

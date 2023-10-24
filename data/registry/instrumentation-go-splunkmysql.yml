@@ -1,4 +1,4 @@
-# cSpell:ignore splunkmysql
+# cSpell:ignore: splunkmysql
 title: splunkmysql -- Instrumentation for the MySQL Driver Package
 registryType: instrumentation
 isThirdParty: true

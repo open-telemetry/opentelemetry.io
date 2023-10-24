@@ -1,4 +1,4 @@
-# cSpell:ignore APISIX
+# cSpell:ignore: APISIX
 title: Apache APISIX Instrumentation
 registryType: instrumentation
 isThirdParty: false

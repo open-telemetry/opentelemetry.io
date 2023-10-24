@@ -1,4 +1,4 @@
-# cSpell:ignore httpx
+# cSpell:ignore: httpx
 title: OpenTelemetry HTTPX Instrumentation
 registryType: instrumentation
 isThirdParty: false

@@ -1,4 +1,4 @@
-# cSpell:ignore wyhaines
+# cSpell:ignore: wyhaines
 title: opentelemetry-api.cr
 registryType: instrumentation
 isThirdParty: true

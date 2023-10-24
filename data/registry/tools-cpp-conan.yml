@@ -1,4 +1,4 @@
-# cSpell:ignore conan
+# cSpell:ignore: conan
 title: Conan Package for OpenTelemetry C++
 registryType: core
 isThirdParty: true

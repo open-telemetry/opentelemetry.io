@@ -1,4 +1,4 @@
-# cSpell:ignore remoulade
+# cSpell:ignore: remoulade
 title: OpenTelemetry Remoulade Instrumentation
 registryType: instrumentation
 isThirdParty: false

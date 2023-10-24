@@ -1,4 +1,4 @@
-# cSpell:ignore httplistener
+# cSpell:ignore: httplistener
 title: Prometheus Exporter HttpListener for OpenTelemetry .NET
 registryType: exporter
 isThirdParty: false

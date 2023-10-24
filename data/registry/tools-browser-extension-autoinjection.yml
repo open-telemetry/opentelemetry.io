@@ -1,4 +1,4 @@
-# cSpell:ignore firefox autoinjection
+# cSpell:ignore: firefox autoinjection
 title: OpenTelemetry Browser Extension Autoinjection
 registryType: utilities
 isThirdParty: false

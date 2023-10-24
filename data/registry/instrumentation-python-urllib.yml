@@ -1,4 +1,4 @@
-# cSpell:ignore urllib
+# cSpell:ignore: urllib
 title: OpenTelemetry urllib Instrumentation
 registryType: instrumentation
 isThirdParty: false

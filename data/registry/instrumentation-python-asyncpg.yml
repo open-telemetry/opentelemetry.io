@@ -1,4 +1,4 @@
-# cSpell:ignore asyncpg
+# cSpell:ignore: asyncpg
 title: asyncpg Instrumentation
 registryType: instrumentation
 isThirdParty: true

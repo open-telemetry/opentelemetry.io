@@ -1,4 +1,4 @@
-# cSpell:ignore oidc
+# cSpell:ignore: oidc
 title: OIDC authenticator extension
 registryType: extension
 isThirdParty: false

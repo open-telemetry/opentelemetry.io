@@ -1,4 +1,4 @@
-# cSpell:ignore Sidekiq
+# cSpell:ignore: Sidekiq
 title: Sidekiq Instrumentation
 registryType: instrumentation
 isThirdParty: false

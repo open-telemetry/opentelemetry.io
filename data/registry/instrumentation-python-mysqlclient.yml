@@ -1,4 +1,4 @@
-# cSpell:ignore mysqlclient
+# cSpell:ignore: mysqlclient
 title: OpenTelemetry `mysqlclient` Instrumentation
 registryType: instrumentation
 isThirdParty: false
