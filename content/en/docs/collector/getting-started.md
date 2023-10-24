@@ -4,13 +4,14 @@ cSpell:ignore: docker dokey dpkg okey telemetrygen
 weight: 1
 ---
 
-The OpenTelemetry Collector listens to [traces](/docs/concepts/signals/traces/), [metrics](/docs/concepts/signals/metrics/) and [logs](/docs/concepts/signals/logs/), processes the
-telemetry, and exports it to a wide variety of observability back-ends using its
-components. For a conceptual overview of the collector, read the
-[introduction](/docs/collector).
+The OpenTelemetry Collector listens to [traces](/docs/concepts/signals/traces/),
+[metrics](/docs/concepts/signals/metrics/) and
+[logs](/docs/concepts/signals/logs/), processes the telemetry, and exports it to
+a wide variety of observability back-ends using its components. For a conceptual
+overview of the Collector, read the [introduction](/docs/collector).
 
-The following tutorial shows how to deploy the OpenTelemetry Collector and send telemetry to
-it using the default configuration and the
+The following tutorial shows how to deploy the OpenTelemetry Collector and send
+telemetry to it using the default configuration and the
 [telemetrygen](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/telemetrygen)
 utility.
 
@@ -30,7 +31,8 @@ To follow this tutorial you need the following
    ```
 
 2. Download and install the telemetrygen utility from the
-   [opentelemetry-collector-contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/) repository:
+   [opentelemetry-collector-contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/)
+   repository:
 
    ```sh
    go install github.com/open-telemetry/opentelemetry-collector-contrib/cmd/telemetrygen@latest
@@ -43,15 +45,16 @@ To follow this tutorial you need the following
    telemetrygen traces --otlp-insecure --duration 5s
    ```
 
-   After five seconds, `telemetrygen` stops and shows the sended messages in the console:
+   After five seconds, `telemetrygen` stops and shows the sended messages in the
+   console:
 
    ```text
    2023-10-23T12:58:19.835+0200	INFO	traces/worker.go:88	traces generated	{"worker": 0, "traces": 994418}
    2023-10-23T12:58:19.835+0200	INFO	traces/traces.go:79	stop the batch span processor
    ```
 
-   In the terminal window, running the collector container, logs should show activity related
-   to the trace ingest similar to this:
+   In the terminal window, running the Collector container, logs should show
+   activity related to the trace ingest similar to this:
 
    ```text
    Span #434
@@ -74,10 +77,12 @@ To follow this tutorial you need the following
 In this tutorial you've started the OpenTelemetry Collector and sent telemetry
 to it. As next steps, consider doing the following:
 
-- Explore different ways to [install the collector](../install/).
-- Learn about the different modes of the collector in
+- Explore different ways to [install the Collector](../installation/).
+- Learn about the different modes of the Collector in
   [Deployment Methods](../deployment/).
-- Familiarize yourself with the collector
+- Familiarize yourself with the Collector
   [configuration](/docs/collector/configuration) files and structure.
-- Explore available components in the [registry](https://opentelemetry.io/ecosystem/registry/?language=collector)
-- Learn how to [build a custom collector with the OpenTelemetry Collector Builder (OCB)](/docs/collector/custom-collector/)
+- Explore available components in the
+  [registry](https://opentelemetry.io/ecosystem/registry/?language=collector)
+- Learn how to
+  [build a custom Collector with the OpenTelemetry Collector Builder (OCB)](/docs/collector/custom-collector/)
