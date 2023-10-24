@@ -58,4 +58,4 @@ By instrumenting custom plugins with OpenTelemetry SDK or Tyk’s OpenTelemetry 
 
 ## What's next?
 
-Now that the [first stable release of OTel Go metric SDK has been announced](https://opentelemetry.io/blog/2023/otel-go-metrics-sdk-stable/), we will be investigating support for OpenTelemetry metrics. Stay tuned for updates and don't hesitate to reach out with any feedback.
+Now that the [first stable release of OTel Go metric SDK has been announced](https://opentelemetry.io/blog/2023/otel-go-metrics-sdk-stable/), we will be investigating support for OpenTelemetry metrics. Stay tuned for updates and don't hesitate to [reach out on Tyk's community with any feedback](https://community.tyk.io/).
