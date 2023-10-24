@@ -144,3 +144,8 @@
   docsUrl: https://www.mathworks.com/matlabcentral/fileexchange/130979-opentelemetry-matlab
   components: [C++]
   oss: false
+- name: Traefik Hub API Management
+  url: https://traefik.io/traefik-hub/
+  docsUrl: https://doc.traefik.io/traefik-hub/operations/telemetry/overview/
+  components: [Go]
+  oss: false
