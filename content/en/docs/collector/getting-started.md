@@ -30,7 +30,7 @@ To follow this tutorial you need the following
    docker run -p 127.0.0.1:4317:4317 -p 127.0.0.1:55679:55679 otel/opentelemetry-collector:{{% param collectorVersion %}}
    ```
 
-2. Download and install the telemetrygen utility from the
+2. Download and install the `telemetrygen` utility from the
    [opentelemetry-collector-contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/)
    repository:
 
