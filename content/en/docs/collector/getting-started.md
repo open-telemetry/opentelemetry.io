@@ -38,8 +38,7 @@ To follow this tutorial you need the following
    go install github.com/open-telemetry/opentelemetry-collector-contrib/cmd/telemetrygen@latest
    ```
 
-3. The telemetrygen command generates dummy telemetry for testing. Try sending
-   some traces to the Collector:
+3. The `telemetrygen` command generates dummy telemetry for testing. In a new terminal window, send some traces to the collector:
 
    ```sh
    telemetrygen traces --otlp-insecure --duration 5s
