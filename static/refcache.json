@@ -3611,6 +3611,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:36:28.793405-04:00"
   },
+  "https://github.com/udhos/opentelemetry-trace-sqs": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-25T09:39:37.545568+02:00"
+  },
   "https://github.com/ulid/spec": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:18:10.958286-04:00"
