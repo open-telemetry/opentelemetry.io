@@ -667,6 +667,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-08-03T17:44:09.893503+02:00"
   },
+  "https://doc.traefik.io/traefik-hub/operations/telemetry/overview/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-25T11:13:58.633523+02:00"
+  },
   "https://docker.com": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:16:13.965986-04:00"
@@ -5294,6 +5298,10 @@
   "https://traefik.io": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:51:12.996932-04:00"
+  },
+  "https://traefik.io/traefik-hub/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-25T11:13:58.185985+02:00"
   },
   "https://transitapp.com/": {
     "StatusCode": 200,
