@@ -23,7 +23,8 @@ To follow this tutorial you need the following
 
 ## Test the OpenTelemetry Collector in five minutes
 
-1. Pull the OpenTelemetry Collector Docker image and run the collector in a container:
+1. Pull the OpenTelemetry Collector Docker image and run the collector in a
+   container:
 
    ```sh
    docker pull otel/opentelemetry-collector:{{% param collectorVersion %}}
@@ -38,7 +39,11 @@ To follow this tutorial you need the following
    go install github.com/open-telemetry/opentelemetry-collector-contrib/cmd/telemetrygen@latest
    ```
 
-3. The `telemetrygen` command generates dummy telemetry for testing. In a new terminal window, send some traces to the collector:
+   The command should install `telemetrygen` inside the local `go/bin`
+   directory.
+
+3. The `telemetrygen` command generates dummy telemetry for testing. In a new
+   terminal window, send some traces to the collector:
 
    ```sh
    telemetrygen traces --otlp-insecure --duration 5s
