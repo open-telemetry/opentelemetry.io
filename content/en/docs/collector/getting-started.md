@@ -23,7 +23,7 @@ To follow this tutorial you need the following
 
 ## Test the OpenTelemetry Collector in five minutes
 
-1. Download and run the OpenTelemetry Collector Docker container:
+1. Pull the OpenTelemetry Collector Docker image and run the collector in a container:
 
    ```sh
    docker pull otel/opentelemetry-collector:{{% param collectorVersion %}}
