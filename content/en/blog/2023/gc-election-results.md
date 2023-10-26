@@ -3,6 +3,7 @@ title: Announcing the 2023 Governance Committee Election Results
 linkTitle: 2023 GC Election Results
 date: 2023-10-27
 author: OpenTelemetry Governance Committee
+cSpell:ignore: Blanco
 ---
 
 The OpenTelemetry project is proud to announce the winners of the 2023
@@ -16,9 +17,11 @@ similar year-over-year, but the number of eligible voters increased
 significantly indicating that the project continues to grow.
 
 With that out of the way, please join me in congratulating
-[Winner 1](https://github.com/handle), [Winner 2](https://github.com/handle),
-[Winner 3](https://github.com/handle), [Winner 4](https://github.com/handle),
-and [Winner 5](https://github.com/handle)! All will serve a two-year term.
+[Austin Parker](https://github.com/austinlparker),
+[Daniel Gomez Blanco](https://github.com/danielgblanco),
+[Juraci Paixão Kröhling](https://github.com/jpkrohling),
+[Severin Neumann](https://github.com/svrnm), and
+[Ted Young](https://github.com/tedsuo)! All will serve a two-year term.
 
 We'd like to thank everyone who participated -- candidates, voters, and the
 election organizers -- for their efforts. You can find the
