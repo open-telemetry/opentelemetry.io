@@ -1,6 +1,7 @@
 ---
 title: Configuration
 weight: 20
+description: Learn how to configure the Collector to suit your needs
 # prettier-ignore
 cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca loglevel OIDC oidc otlphttp pprof prodevent prometheusremotewrite servicegraph spanevents spanmetrics upsert zpages
 ---
@@ -330,25 +331,25 @@ processors:
 
 ## Exporters <img width="35" class="img-initial" src="/img/logos/32x32/Exporters.svg"> {#exporters}
 
-An exporter, which can be push or pull based, is how you send data to one or
-more backends/destinations. Exporters may support one or more
+Exporters send data to one or more backends or destinations. Exporters can be
+pull or push based, and may support one or more
 [data sources](/docs/concepts/signals/).
 
-The `exporters:` section is how exporters are configured. Exporters may come
-with default settings, but many require configuration to specify at least the
-destination and security settings. Any configuration for an exporter must be
-done in this section. Configuration parameters specified for which the exporter
-provides a default configuration are overridden.
+The `exporters:` section contains exporters configuration. Most exporters 
+require configuration to specify at least the destination, as well as
+security settings, like authentication tokens or TLS certificates. Any setting
+you specify overrides the default values, if present.
 
-> Configuring an exporter does not enable it. Exporters are enabled via
-> pipelines within the [service](#service) section.
+> Configuring an exporter does not enable it. Exporters are enabled by
+> adding them to the appropriate pipelines within the
+> [service](#service) section.
 
-One or more exporters must be configured. By default, no exporters are
-configured. A basic example of exporters is provided below. Certain exporter
-configurations require x.509 certificates to be created in order to be secure,
-as described in [setting up certificates](#setting-up-certificates).
+The Collector requires one or more exporters. The following example shows
+various exporters. Notice that some exporters require x.509 certificates in
+order to establish secure connections, as described in
+[setting up certificates](#setting-up-certificates).
 
-> For detailed exporter configuration, see the
+> For more information on exporter configuration, see the
 > [exporter README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md).
 
 ```yaml
@@ -359,7 +360,7 @@ exporters:
 
   # Data sources: traces
   otlp/jaeger:
-    endpoint: jaeger-all-in-one:4317
+    endpoint: jaeger.example.com:4317
     tls:
       cert_file: cert.pem
       key_file: cert-key.pem
@@ -386,24 +387,24 @@ exporters:
 
   # Data sources: traces, metrics
   otlphttp:
-    endpoint: https://example.com:4318
+    endpoint: https://otlp.example.com:4318
 
   # Data sources: metrics
   prometheus:
-    endpoint: prometheus:8889
+    endpoint: localhost:8889
     namespace: default
 
   # Data sources: metrics
   prometheusremotewrite:
-    endpoint: http://some.url:9411/api/prom/push
-    # For official Prometheus (e.g. running via Docker)
-    # endpoint: 'http://prometheus:9090/api/v1/write'
+    endpoint: http://prometheus.example.com:9411/api/prom/push
+    # When using the official Prometheus (running via Docker)
+    # endpoint: 'http://prometheus:9090/api/v1/write', add:
     # tls:
     #   insecure: true
 
   # Data sources: traces
   zipkin:
-    endpoint: http://localhost:9411/api/v2/spans
+    endpoint: http://zipkin.example.com:9411/api/v2/spans
 ```
 
 ## Connectors <img width="32" class="img-initial" src="/img/logos/32x32/Load_Balancer.svg"> {#connectors}
@@ -602,15 +603,15 @@ exporters:
 
 ### Proxy Support
 
-Exporters that leverage the `net/http` package (all do today) respect the
-following proxy environment variables:
+Exporters that leverage the [net/http](https://pkg.go.dev/net/http) package
+respect the following proxy environment variables:
 
 - HTTP_PROXY
 - HTTPS_PROXY
 - NO_PROXY
 
-If set at Collector start time then exporters, regardless of protocol, will or
-will not proxy traffic as defined by these environment variables.
+If set at Collector start time, exporters, regardless of protocol, will proxy
+traffic or bypass proxy traffic as defined by these environment variables.
 
 ### Authentication
 
