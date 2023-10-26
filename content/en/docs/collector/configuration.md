@@ -602,7 +602,7 @@ exporters:
 
 ### Proxy Support
 
-Exporters that leverage the [net/http](https://pkg.go.dev/net/http) package
+Exporters that leverage the [`net/http`](https://pkg.go.dev/net/http) package
 respect the following proxy environment variables:
 
 - HTTP_PROXY
