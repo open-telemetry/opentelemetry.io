@@ -335,14 +335,13 @@ Exporters send data to one or more backends or destinations. Exporters can be
 pull or push based, and may support one or more
 [data sources](/docs/concepts/signals/).
 
-The `exporters:` section contains exporters configuration. Most exporters 
-require configuration to specify at least the destination, as well as
-security settings, like authentication tokens or TLS certificates. Any setting
-you specify overrides the default values, if present.
+The `exporters:` section contains exporters configuration. Most exporters
+require configuration to specify at least the destination, as well as security
+settings, like authentication tokens or TLS certificates. Any setting you
+specify overrides the default values, if present.
 
-> Configuring an exporter does not enable it. Exporters are enabled by
-> adding them to the appropriate pipelines within the
-> [service](#service) section.
+> Configuring an exporter does not enable it. Exporters are enabled by adding
+> them to the appropriate pipelines within the [service](#service) section.
 
 The Collector requires one or more exporters. The following example shows
 various exporters. Notice that some exporters require x.509 certificates in
