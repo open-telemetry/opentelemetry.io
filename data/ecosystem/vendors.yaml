@@ -335,7 +335,7 @@
   contact: 'https://github.com/tbragin'
   oss: true
   commercial: true
-- name: TingYun
+- name: Ting Yun
   distribution: true
   nativeOTLP: true
   url: 'https://wukongdoc.tingyun.com/apm/userguide/deploy_manage/opentelemetry.html'
