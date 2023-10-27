@@ -1,0 +1,16 @@
+title: KafkaFlow Instrumentation for OpenTelemetry
+registryType: instrumentation
+isThirdParty: true
+language: dotnet
+tags:
+  - kafka
+  - kafkaflow
+  - instrumentation
+  - dotnet
+repo: https://github.com/Farfetch/kafkaflow/tree/master/src/KafkaFlow.OpenTelemetry
+license: MIT
+description:
+  This is an Instrumentation Library, which instruments KafkaFlow and collects
+  traces about kafka messaging.
+authors: Farfetch
+otVersion: latest
