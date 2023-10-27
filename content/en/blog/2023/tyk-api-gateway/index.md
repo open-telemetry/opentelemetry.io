@@ -7,9 +7,9 @@ author: >-
 draft: false
 ---
 
-{{% alert color="primary" %}} _It is part of
-[OpenTelemetry's vision](http://localhost:1313/community/mission/#telemetry-should-be-built-in),
-that we believe that high-quality telemetry can be built in to the entire
+{{% alert color="primary" %}}
+As part of [OpenTelemetry's vision](http://localhost:1313/community/mission/#telemetry-should-be-built-in),
+we believe that high-quality telemetry can be built in to the entire
 software stack. Therefore we are excited, that there are more and more
 [libraries, services and apps, that integrate OpenTelemetry](/ecosystem/integrations/)
 to provide built in observability to their users._
