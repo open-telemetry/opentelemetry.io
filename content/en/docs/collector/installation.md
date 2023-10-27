@@ -2,7 +2,7 @@
 title: Install the Collector
 # prettier-ignore
 cSpell:ignore: darwin dpkg GOARCH journalctl kubectl otelcorecol pprof tlsv zpages
-weight: 18
+weight: 2
 ---
 
 You can deploy the OpenTelemetry Collector on a wide variety of operating

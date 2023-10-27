@@ -1,6 +1,7 @@
 ---
 title: Getting Started
 cSpell:ignore: docker dokey dpkg okey telemetrygen
+description: Test the OpenTelemetry Collector in five minutes
 weight: 1
 ---
 

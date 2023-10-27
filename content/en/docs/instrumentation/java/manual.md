@@ -316,8 +316,8 @@ dependencies {
     implementation("io.opentelemetry:opentelemetry-sdk-metrics:{{% param javaVersion %}}");
     implementation("io.opentelemetry:opentelemetry-exporter-logging:{{% param javaVersion %}}");
     implementation("io.opentelemetry.semconv:opentelemetry-semconv:{{% param semconvJavaVersion %}}-alpha")
-    implementation("opentelemetry-sdk-extension-autoconfigure:{{% param javaVersion %}}");
-    implementation("opentelemetry-sdk-extension-autoconfigure-spi:{{% param javaVersion %}}");
+    implementation("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure:{{% param javaVersion %}}");
+    implementation("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi:{{% param javaVersion %}}");
 }
 ```
 
