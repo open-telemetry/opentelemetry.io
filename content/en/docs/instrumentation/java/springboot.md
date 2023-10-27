@@ -11,17 +11,20 @@ javaInstrumentationVersion: 1.31.0
 cSpell:ignore: springboot autoconfigure 
 ---
 
-You can automatically instrument a [Spring Boot](https://spring.io/projects/spring-boot) application using the [OpenTelemetry Java agent](automatic/_index), or you can use the OpenTelemetry Spring Boot starter, as outlined below.
+You can automatically instrument a [Spring Boot](https://spring.io/projects/spring-boot) application using the [OpenTelemetry Java agent](automatic/_index) that uses byte code instrumentation.
+
+The OpenTelemetry starter is another way to instrument your Spring Boot application. It is a [Spring Boot starter](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using.build-systems.starters).
+
+The OpenTelemetry starter is compatible with Spring Boot 2.0, Spring Boot 3.0 and Spring native.
 
 ## Getting Started
 
-OpenTelemetry Spring Starter is a starter package that allow you to setup distributed tracing.
+Add the dependency given below to enable the OpenTelemetry starter.
 
-Check out [opentelemetry-spring-boot-autoconfigure](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/README.md#features) for the full list of supported libraries and features.
+The OpenTelemetry starter uses OpenTelemetry [Spring Boot auto-configurations](https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.auto-configuration).
 
-It is compatible with Spring Boot 2.0, Spring Boot 3.0 and Spring native.
-
-Add the dependency given below in your project to enable the OpenTelemetry Spring Starter.
+Tou can look at [this](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/README.md#features) to know the supported
+libraries and features of the OpenTelemetry auto-configurations.
 
 ### Maven
 
