@@ -9,6 +9,10 @@
   components: [Collector, Go, Java, JavaScript, .NET]
   reference: ''
   contact: ''
+- name: DaoCloud
+  url: https://www.daocloud.io/
+  components: [Collector, Go, Java, JavaScript, .NET, Python, NodeJs]
+  contact: https://github.com/JaredTan95
 - name: Cloud Scale
   url: https://www.cloudscaleinc.com
   components: [Collector, Python]
