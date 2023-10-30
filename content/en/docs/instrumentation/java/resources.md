@@ -6,7 +6,7 @@ cSpell:ignore: getenv myhost SIGINT uuidgen WORKDIR
 
 {{% docs/instrumentation/resources-intro %}}
 
-If you use the Javaagent for
+If you use the Java agent for
 [automatic instrumentation](/docs/instrumentation/java/automatic) you can learn
 how to setup resource detection following the
 [Agent Configuration Guide](/docs/instrumentation/java/automatic/agent-config).

@@ -11,7 +11,7 @@ The ads will be for products available in the store.
 
 ## Auto-instrumentation
 
-This service relies on the OpenTelemetry Java Agent to automatically instrument
+This service relies on the OpenTelemetry Java agent to automatically instrument
 libraries such as gRPC, and to configure the OpenTelemetry SDK. The agent is
 passed into the process using the `-javaagent` command line argument. Command
 line arguments are added through the `JAVA_TOOL_OPTIONS` in the `Dockerfile`,
