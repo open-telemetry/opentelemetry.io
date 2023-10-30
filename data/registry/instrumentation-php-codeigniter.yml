@@ -1,3 +1,4 @@
+# cSpell:ignore CodeIgniter codeigniter
 title: OpenTelemetry CodeIgniter auto-instrumentation
 registryType: instrumentation
 isThirdParty: false
