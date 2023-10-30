@@ -2,9 +2,8 @@
 
 <div class="o-banner">
 
-[Vote](/blog/2023/gc-elections/) for
-OpenTelemetry Governance Committee [candidates](/blog/2023/gc-candidates/)
-starting October 23!
+[The results are in!](/blog/2023/gc-election-results/)
+Thanks to everyone who participated in the OpenTelemetry Governance Committee Election.
 
 </div>
 {{ end -}}

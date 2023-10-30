@@ -127,6 +127,18 @@ Then, requests to `1.2.3.4` will have a `peer.service` attribute of
 `cats-service` and requests to `dogs-abcdef123.serverlessapis.com` will have an
 attribute of `dogs-api`.
 
+Since Java agent version `1.31.0`, it is possible to provide a port and a path
+to define a `peer.service`.
+
+For example, if set to the following:
+
+    1.2.3.4:443=cats-service,dogs-abcdef123.serverlessapis.com:80/api=dogs-api
+
+Then, requests to `1.2.3.4` will have no override for `peer.service` attribute,
+while `1.2.3.4:443` will have have `peer.service` of `cats-service` and requests
+to `dogs-abcdef123.serverlessapis.com:80/api/v1` will have an attribute of
+`dogs-api`.
+
 {{% /config_option %}}
 
 ### DB statement sanitization

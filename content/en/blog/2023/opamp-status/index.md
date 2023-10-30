@@ -7,7 +7,7 @@ author: >-
   Bradley](https://github.com/evan-bradley) (Dynatrace), [Michael
   Hausenblas](https://github.com/mhausenblas) (AWS), [Andy
   Keller](https://github.com/andykellr) (observIQ, Inc), [Tigran
-  Najaryan](https://github.com/tigrannajaryan) Splunk)
+  Najaryan](https://github.com/tigrannajaryan) (Splunk)
 draft: false
 cSpell:ignore: Aronoff Najaryan observ Tigran
 ---
