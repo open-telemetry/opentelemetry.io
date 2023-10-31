@@ -2,8 +2,13 @@
 
 <div class="o-banner">
 
-[The results are in!](/blog/2023/gc-election-results/)
-Thanks to everyone who participated in the OpenTelemetry Governance Committee Election.
+<i class="fas fa-bullhorn"></i> Join us at
+[**KubeCon + CloudNativeCon NA**, Nov 6 - 9](/blog/2023/kubecon-na/)!
+
+<!-- prettier-ignore -->
+<i class="fas fa-bullhorn"></i> OTel Governance Committee
+[election results](/blog/2023/gc-election-results/) are in!
+{.pt-0}
 
 </div>
 {{ end -}}
