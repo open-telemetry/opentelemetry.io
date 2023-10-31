@@ -182,7 +182,7 @@ service:
 Receivers collect telemetry from one or more sources. They can be pull or push
 based, and may support one or more [data sources](/docs/concepts/signals/).
 
-Receivers are configured in the `receivers:` section. Many receivers come with
+Receivers are configured in the `receivers` section. Many receivers come with
 default settings, so that specifying the name of the receiver is enough to
 configure it. If you need to configure a receiver or want to change the default
 configuration, you can do so in this section. Any setting you specify overrides
