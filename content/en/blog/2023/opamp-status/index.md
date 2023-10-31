@@ -138,8 +138,8 @@ excited about the opportunities it promises to deliver. If you’re around at
 [KubeCon NA in Chicago, USA](/blog/2023/kubecon-na/) between Nov 6 and 9 2023,
 consider visiting us at the OpenTelemetry maintainers booth or find us at any of
 the many observability-related events such as the
-[Observability day](https://opentelemetry.io/blog/2023/kubecon-na/#co-located-events).
-We’re super interested to learn from you about non-OTel collectors use cases and
+[Observability day](/blog/2023/kubecon-na/#co-located-events). We’re super
+interested to learn from you about non-OTel collectors use cases and
 requirements as well. For now, if you’re a vendor and implementing the OpAMP
 spec please provide feedback and as an end-user you may wish to try out the
 reference implementation of the Server, Supervisor and a simple UI by following
