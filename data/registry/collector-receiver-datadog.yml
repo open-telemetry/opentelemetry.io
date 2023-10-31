@@ -8,7 +8,6 @@ tags:
   - collector
 repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/datadogreceiver
 license: Apache 2.0
-description:
-  The Datadog APM Receiver accepts traces in the Datadog Trace Agent Format
+description: The Datadog APM Receiver accepts traces in the Datadog APM format
 authors: OpenTelemetry Authors
 otVersion: latest

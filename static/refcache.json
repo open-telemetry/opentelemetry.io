@@ -2039,6 +2039,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T11:47:43.118209-04:00"
   },
+  "https://github.com/danielgblanco": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-26T15:30:24.247671-04:00"
+  },
   "https://github.com/dashpole": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:32:35.041502-04:00"
@@ -3578,6 +3582,10 @@
   "https://github.com/svrnm": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:28:38.28154-04:00"
+  },
+  "https://github.com/tedsuo": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-26T15:30:24.735802-04:00"
   },
   "https://github.com/thanos-io/thanos": {
     "StatusCode": 200,
