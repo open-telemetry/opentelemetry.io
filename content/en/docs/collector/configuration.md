@@ -340,10 +340,10 @@ Exporters send data to one or more backends or destinations. Exporters can be
 pull or push based, and may support one or more
 [data sources](/docs/concepts/signals/).
 
-The `exporters` section contains exporters configuration. Most exporters
-require configuration to specify at least the destination, as well as security
-settings, like authentication tokens or TLS certificates. Any setting you
-specify overrides the default values, if present.
+The `exporters` section contains exporters configuration. Most exporters require
+configuration to specify at least the destination, as well as security settings,
+like authentication tokens or TLS certificates. Any setting you specify
+overrides the default values, if present.
 
 > Configuring an exporter does not enable it. Exporters are enabled by adding
 > them to the appropriate pipelines within the [service](#service) section.
@@ -636,7 +636,8 @@ For a list of known authenticators, see the
 interested in developing a custom authenticator, check out the
 ["Building a custom authenticator"](../custom-auth) document.
 
-To add a server authenticator to a receiver in the Collector, follow these steps:
+To add a server authenticator to a receiver in the Collector, follow these
+steps:
 
 1. Add the authenticator extension and its configuration under `.extensions`.
 1. Add a reference to the authenticator to `.services.extensions`, so that it's
