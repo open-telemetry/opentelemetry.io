@@ -636,8 +636,7 @@ For a list of known authenticators, see the
 interested in developing a custom authenticator, check out the
 ["Building a custom authenticator"](../custom-auth) document.
 
-To add a server authenticator to a receiver in the Collector, follow these steps
-:
+To add a server authenticator to a receiver in the Collector, follow these steps:
 
 1. Add the authenticator extension and its configuration under `.extensions`.
 1. Add a reference to the authenticator to `.services.extensions`, so that it's
