@@ -16,7 +16,6 @@
         "/<http://.*>/",
         "medium.com/opentelemetry",
         "github.com/open-telemetry",
-        "`javaagent`",
         "#opentelemetry",
         "Open Agent Management Protocol",
         "SignalFx Smart Agent",
