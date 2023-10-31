@@ -85,7 +85,7 @@
     "autoprefixer": "^10.4.15",
     "cspell": "^7.0.0",
     "gulp": "^4.0.2",
-    "hugo-extended": "0.117.0",
+    "hugo-extended": "0.119.0",
     "markdownlint": "^0.31.0",
     "postcss-cli": "^10.1.0",
     "prettier": "^3.0.1",
