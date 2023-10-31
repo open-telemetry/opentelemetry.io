@@ -340,7 +340,7 @@ Exporters send data to one or more backends or destinations. Exporters can be
 pull or push based, and may support one or more
 [data sources](/docs/concepts/signals/).
 
-The `exporters:` section contains exporters configuration. Most exporters
+The `exporters` section contains exporters configuration. Most exporters
 require configuration to specify at least the destination, as well as security
 settings, like authentication tokens or TLS certificates. Any setting you
 specify overrides the default values, if present.
