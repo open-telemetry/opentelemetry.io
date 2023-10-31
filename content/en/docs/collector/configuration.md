@@ -16,7 +16,7 @@ content:
   applicable to the OpenTelemetry Collector.
 - [Security guidance](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md)
 
-## Configuration structure
+## Configuration structure {#basics}
 
 The structure of any Collector configuration file consists of four classes of
 pipeline components that access telemetry data:
@@ -359,7 +359,7 @@ exporters:
 
   # Data sources: traces
   otlp/jaeger:
-    endpoint: jaeger.example.com:4317
+    endpoint: jaeger-server:4317
     tls:
       cert_file: cert.pem
       key_file: cert-key.pem
@@ -492,7 +492,7 @@ extensions:
 > For detailed extension configuration, see the
 > [extension README](https://github.com/open-telemetry/opentelemetry-collector/blob/main/extension/README.md).
 
-## Service section
+## Service section {#service}
 
 The service section is used to configure what components are enabled in the
 Collector based on the configuration found in the receivers, processors,
@@ -716,7 +716,7 @@ service:
         - otlp/auth
 ```
 
-### Configuring certificates
+### Configuring certificates {#setting-up-certificates}
 
 In a production environment, use TLS certificates for secure communication or
 mTLS for mutual authentication. Follow these steps to generate self-signed
