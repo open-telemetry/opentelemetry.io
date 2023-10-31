@@ -5187,6 +5187,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:52:00.52366-04:00"
   },
+  "https://strimzi.io/docs/operators/latest/deploying#assembly-distributed-tracing-str": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-31T16:02:16.454105-04:00"
+  },
   "https://studio.apollographql.com": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:53:19.161811-04:00"
