@@ -8,7 +8,6 @@ author: >-
   Hausenblas](https://github.com/mhausenblas) (AWS), [Andy
   Keller](https://github.com/andykellr) (observIQ, Inc), [Tigran
   Najaryan](https://github.com/tigrannajaryan) (Splunk)
-draft: false
 cSpell:ignore: Aronoff Najaryan observ Tigran
 ---
 
@@ -16,10 +15,9 @@ cSpell:ignore: Aronoff Najaryan observ Tigran
 emerging open standard to manage a fleet of telemetry agents at scale. In 2022,
 Splunk donated OpAMP to the OpenTelemetry (OTel) project, with initial feedback
 from observIQ, based on observIQ’s custom protocol used in BindPlane. The
-[OpAMP specification](https://github.com/open-telemetry/opamp-spec/blob/main/specification.md)
-defines a network protocol for remote management of fleets of agents. These
-agents can really be anything, from telemetry agents such as the
-[OpenTelemetry Collector](/docs/collector/) to
+[OpAMP specification](/docs/specs/opamp/) defines a network protocol for remote
+management of fleets of agents. These agents can really be anything, from
+telemetry agents such as the [OpenTelemetry Collector](/docs/collector/) to
 [Fluent Bit](https://fluentbit.io/) to custom agents you might use in your
 environment.
 
@@ -38,12 +36,12 @@ different agents. OpAMP currently supports, amongst other things:
 - Agents, such as the OpenTelemetry Collector, can report their properties, for
   example, type and version, or also the host operating system details to the
   Server (OpAMP control plane).
-- The Server can push configurations to Agents and ensures that said
-  configurations are applied, for example through reloading the Agent.
-- You can ingest the Agent's own telemetry (logs and metrics) into an
+- The Server can push configurations to agents and ensures that said
+  configurations are applied, for example through reloading the agent.
+- You can ingest the agent's own telemetry (logs and metrics) into an
   [OTLP](/docs/specs/otlp/)-compliant observability backend.
 - Secure auto-updating capabilities for both upgrading and downgrading of the
-  Agents.
+  agents.
 - Built-in connection credentials management, including client-side TLS
   certificate revocation and rotation.
 
@@ -55,11 +53,10 @@ want to use OpAMP both as an collector extension, with limited functionality, as
 well as as an (collector-external) supervisor that implements a broader set of
 OpAMP capabilities.
 
-{{% alert title="Note" color="info" %}} If you want to dive deeper here, we
-suggest you read the
-[OpAMP for OpenTelemetry Collector document](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/opampsupervisor/specification)
-which describes how to implement both options while minimizing code
-duplication.{{% /alert %}}
+{{% alert title="Note" color="info" %}} For a deeper dive, see
+[OpAMP for OpenTelemetry Collector document](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/opampsupervisor/specification),
+which describes how to implement both options while minimizing code duplication.
+{{% /alert %}}
 
 The main idea to support both modes is to implement an extension in the
 collector with a minimal set of OpAMP capabilities. This collector extension can
@@ -138,11 +135,11 @@ which will enable you to easily deploy the bridge into a Kubernetes cluster.
 
 The community has been working on OpAMP now for more than a year and users are
 excited about the opportunities it promises to deliver. If you’re around at
-[KubeCon NA in Chicago, USA](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/)
-between Nov 6 and 9 2023, consider visiting us at the OpenTelemetry maintainers
-booth or find us at any of the many observability-related events such as the
-[Observability day](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/co-located-events/observability-day/).
-We’re super interested to learn from you about non-OTel collectors use cases and
+[KubeCon NA in Chicago, USA](/blog/2023/kubecon-na/) between Nov 6 and 9 2023,
+consider visiting us at the OpenTelemetry maintainers booth or find us at any of
+the many observability-related events such as the
+[Observability day](/blog/2023/kubecon-na/#co-located-events). We’re super
+interested to learn from you about non-OTel collectors use cases and
 requirements as well. For now, if you’re a vendor and implementing the OpAMP
 spec please provide feedback and as an end-user you may wish to try out the
 reference implementation of the Server, Supervisor and a simple UI by following

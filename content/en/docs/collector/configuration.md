@@ -182,7 +182,7 @@ service:
 Receivers collect telemetry from one or more sources. They can be pull or push
 based, and may support one or more [data sources](/docs/concepts/signals/).
 
-Receivers are configured in the `receivers:` section. Many receivers come with
+Receivers are configured in the `receivers` section. Many receivers come with
 default settings, so that specifying the name of the receiver is enough to
 configure it. If you need to configure a receiver or want to change the default
 configuration, you can do so in this section. Any setting you specify overrides
@@ -260,7 +260,7 @@ renaming, or recalculating telemetry, among other operations.
 Processors are optional, although some
 [are recommended](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor#recommended-processors).
 
-You can configure processors using the `processors:` section of the Collector
+You can configure processors using the `processors` section of the Collector
 configuration file. Some processors may require security settings. Any setting
 you specify overrides the default values, if present.
 
@@ -340,7 +340,7 @@ Exporters send data to one or more backends or destinations. Exporters can be
 pull or push based, and may support one or more
 [data sources](/docs/concepts/signals/).
 
-The `exporters:` section contains exporters configuration. Most exporters
+The `exporters` section contains exporters configuration. Most exporters
 require configuration to specify at least the destination, as well as security
 settings, like authentication tokens or TLS certificates. Any setting you
 specify overrides the default values, if present.
@@ -501,9 +501,9 @@ defined within the service section, then it's not enabled.
 
 The service section consists of three subsections:
 
-- `extensions:`
-- `pipelines:`
-- `telemetry:`
+- Extensions
+- Pipelines
+- Telemetry
 
 ### Extensions {#service-extensions}
 
@@ -636,8 +636,7 @@ For a list of known authenticators, see the
 interested in developing a custom authenticator, check out the
 ["Building a custom authenticator"](../custom-auth) document.
 
-To add a server authenticator to a receiver in the Collector, follow these steps
-:
+To add a server authenticator to a receiver in the Collector, follow these steps:
 
 1. Add the authenticator extension and its configuration under `.extensions`.
 1. Add a reference to the authenticator to `.services.extensions`, so that it's

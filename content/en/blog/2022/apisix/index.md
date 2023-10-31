@@ -28,14 +28,14 @@ The `opentelemetry` plugin of Apache APISIX implements Tracing data collection
 and sends it to OpenTelemetry Collector through HTTP protocol. Apache APISIX
 starts to support this feature in v2.13.0.
 
-One of OpenTelemetry's special features is that the Agent/SDK of OpenTelemetry
+One of OpenTelemetry's special features is that the agent/SDK of OpenTelemetry
 is not locked with back-end implementation, which gives users flexibilities on
 choosing their own back-end services. In other words, users can choose the
 backend services they want, such as Zipkin and Jaeger, without affecting the
 application side.
 
-The `opentelemetry` plugin is located on the Agent side. It integrates the
-OpenTelemetry Agent/SDK and adopts its features in Apache APISIX. It can collect
+The `opentelemetry` plugin is located on the agent side. It integrates the
+OpenTelemetry agent/SDK and adopts its features in Apache APISIX. It can collect
 traced requests, generate `trace`, and forward them to the OpenTelemetry
 Collector. It supports the `trace` protocol, and it will support the `logs` and
 `metrics` protocols of OpenTelemetry in the next version.

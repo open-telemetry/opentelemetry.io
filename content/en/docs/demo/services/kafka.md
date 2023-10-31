@@ -10,7 +10,7 @@ accounting and fraud detection services.
 
 ## Auto-instrumentation
 
-This service relies on the OpenTelemetry Java Agent and the built in
+This service relies on the OpenTelemetry Java agent and the built in
 [JMX Metric Insight Module](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jmx-metrics/javaagent)
 to capture
 [Kafka broker metrics](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/kafka-broker.md)
