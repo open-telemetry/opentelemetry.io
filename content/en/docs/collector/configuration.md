@@ -501,9 +501,9 @@ defined within the service section, then it's not enabled.
 
 The service section consists of three subsections:
 
-- `extensions:`
-- `pipelines:`
-- `telemetry:`
+- Extensions
+- Pipelines
+- Telemetry
 
 ### Extensions {#service-extensions}
 
