@@ -260,7 +260,7 @@ renaming, or recalculating telemetry, among other operations.
 Processors are optional, although some
 [are recommended](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor#recommended-processors).
 
-You can configure processors using the `processors:` section of the Collector
+You can configure processors using the `processors` section of the Collector
 configuration file. Some processors may require security settings. Any setting
 you specify overrides the default values, if present.
 
