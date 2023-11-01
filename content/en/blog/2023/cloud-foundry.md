@@ -8,6 +8,19 @@ author: >-
 cSpell:ignore: Kocher unscalable
 ---
 
+{{% alert color="primary" %}} As part of
+[OpenTelemetry's vision](http://localhost:1313/community/mission/#telemetry-should-be-built-in),
+we believe that high-quality telemetry can be built in to the entire software
+stack. Therefore we are excited, that there are more and more
+[libraries, services and apps, that integrate OpenTelemetry](/ecosystem/integrations/)
+to provide built in observability to their users.\_
+
+_In this and future blog post, we will spot light these integrations to you! If
+you want your integration to be listed and to be highlighted in a blog post as
+well,
+[reach out](https://github.com/open-telemetry/opentelemetry.io/issues/new)!_
+{{% /alert %}}
+
 [Cloud Foundry](https://www.cloudfoundry.org/) recently integrated the
 OpenTelemetry Collector for metrics egress and we learned a lot along the way.
 We're excited about what the integration offers today and all the possibilities
