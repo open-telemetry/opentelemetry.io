@@ -61,13 +61,15 @@ to the main branch, and the results are published for anyone to easily access.
 The tests are also run on community-owned bare metal machines, so that the
 results are as consistent as possible.
 
-Published
-[benchmark results for Java](https://open-telemetry.github.io/opentelemetry-java/benchmarks/)
-![Java benchmark results](java-benchmark-results.png 'Java benchmark results')
+{{% figure
+  src="java-benchmark-results.png"
+  caption="Sample [benchmark results for Java](https://open-telemetry.github.io/opentelemetry-java/benchmarks/)"
+%}}
 
-Published
-[benchmark results for JavaScript](https://open-telemetry.github.io/opentelemetry-js/benchmarks/)
-![JavaScript benchmark results](js-benchmark-results.png 'JavaScript benchmark results')
+{{% figure
+  src="js-benchmark-results.png"
+  caption="Sample [benchmark results for JavaScript](https://open-telemetry.github.io/opentelemetry-js/benchmarks/)"
+%}}
 
 There is work in progress to make the same updates for Python and Go.
 
