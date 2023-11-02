@@ -14,7 +14,7 @@ benchmarking. Measuring performance overhead Instrumentation is not free - it
 intercepts an application's operations and collects (often) a large amount of
 data, which takes additional CPU and memory. This can have a direct effect on
 throughput and response time, which can affect the end-user experience with the
-application. It can also have an impact on operational cost, e.g. increasing the
+application. It can also have an impact on operational cost, such as increasing the
 number of instances a service runs on.
 
 Providing general guidance about performance overhead is inherently difficult.
