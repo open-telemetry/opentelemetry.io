@@ -47,16 +47,13 @@ of the Collector repository.
 
 ### Language SDKs
 
-A number of OpenTelemetry SDKs already include existing micro-benchmark tests.
-These tests measure performance of smaller pieces of the OpenTelemetry SDK in
-isolation.
+A number of OpenTelemetry SDKs already include existing micro-benchmark tests,
+for example:
 
-Example benchmark tests:
-
-- [Java](https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/jmh/java/io/opentelemetry/sdk/trace/SpanBenchmark.java)
-- [Python](https://github.com/open-telemetry/opentelemetry-python/blob/main/opentelemetry-sdk/tests/performance/benchmarks/trace/test_benchmark_trace.py)
-- [Go](https://github.com/open-telemetry/opentelemetry-go/blob/main/sdk/trace/benchmark_test.go)
-- [JavaScript](https://github.com/open-telemetry/opentelemetry-js/blob/main/packages/opentelemetry-sdk-trace-base/test/performance/benchmark/span.js)
+- [SpanBenchmark.java](https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/jmh/java/io/opentelemetry/sdk/trace/SpanBenchmark.java)
+- [test_benchmark_trace.py](https://github.com/open-telemetry/opentelemetry-python/blob/main/opentelemetry-sdk/tests/performance/benchmarks/trace/test_benchmark_trace.py)
+- [benchmark_test.go](https://github.com/open-telemetry/opentelemetry-go/blob/main/sdk/trace/benchmark_test.go)
+- [benchmark/span.js](https://github.com/open-telemetry/opentelemetry-js/blob/main/packages/opentelemetry-sdk-trace-base/test/performance/benchmark/span.js)
 
 These tests were run only on demand in the past. With the recent tooling
 improvements, Java and JavaScript tests are now run automatically on every merge
