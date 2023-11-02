@@ -18,7 +18,7 @@ application. It can also have an impact on operational cost, e.g. increasing the
 number of instances a service runs on.
 
 Providing general guidance about performance overhead is inherently difficult.
-There are many factors that affect performance - the application throughput,
+There are many factors that affect performance: the application throughput,
 hardware the application runs on, what exactly is instrumented, how the
 OpenTelemetry SDK is configured, sampling etc. Ultimately the best way to
 measure performance is in the context of the specific application, e.g. by
