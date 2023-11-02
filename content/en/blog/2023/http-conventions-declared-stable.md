@@ -1,27 +1,26 @@
 ---
-title: HTTP semantic conventions are declared stable
-linkTitle: HTTP semantic conventions
+title: HTTP semantic conventions declared stable
+linkTitle: HTTP semconv are stable
 date: 2023-11-03
 author: '[Trask Stalnaker](https://github.com/trask) (Microsoft)'
 cSpell:ignore: stalnaker trask
 ---
 
 Earlier this year we embarked on a three month project to stabilize HTTP semantic conventions.
-
 We are proud to announce (nine months later), that the HTTP semantic conventions are now the first OpenTelemetry semantic convention to be declared stable!
-
 This stable version is a significant evolution over the previous unstable version.
 
 Because of the number of changes, and because of the number of users impacted by these changes, we have mapped out
-a transition plan for instrumentations to follow when updating to the stable version which prioritizes our users.
+a transition plan for instrumentations to follow when updating to the stable version, which prioritizes our users.
+
+## Rational for reworked HTTP semconv
 
 We also want to share some of the reasons behind these changes, as we think that the stable version brings many
-significant improvements which will make the pain of this upgrade worth it in the long run.
+significant improvements that make the upgrade worth it in the long run.
 
 ## Aligning with other open standards
 
-Earlier this year we announced [the merging of Elastic Common Schema into OpenTelemetry Semantic Conventions]([https://opentelemetry.io/blog/2023/ecs-otel-semconv-convergence/]).
-
+Earlier this year we announced [the merging of Elastic Common Schema into OpenTelemetry Semantic Conventions](/blog/2023/ecs-otel-semconv-convergence/).
 This merger brought several direct benefits to the HTTP semantic conventions.
 
 One was the transition from `net.host.*` and `net.peer.*`
@@ -72,7 +71,8 @@ spans and metrics).
 
 > **Warning**
 > Existing HTTP instrumentations that are using
-> [v1.20.0 of this document](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.20.0/specification/trace/semantic_conventions/http.md)
+> [v1.20.0](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.20.0/specification/trace/semantic_conventions/http.md)
+> of the [Semantic Conventions for HTTP](/docs/specs/semconv/http/)
 > (or prior):
 >
 > * SHOULD NOT change the version of the HTTP or networking conventions that they emit
