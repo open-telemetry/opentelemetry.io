@@ -33,17 +33,10 @@ performance characteristics.
 The OpenTelemetry Collector runs
 [end-to-end load tests](https://github.com/open-telemetry/opentelemetry-collector-contrib/actions/workflows/load-tests.yml)
 on every merge to the main branch. There have been two recent updates to the CI
-workflow.
+workflow:
 
-First, it has been updated to run on community-owned bare metal machines. This
-makes the test results more consistent.
-
-Secondly, the test results are now published automatically. A subset of the load
-test results is available on the
-[OpenTelemetry docs site](https://opentelemetry.io/docs/collector/benchmarks/).
-And all test results are available on
-[GitHub pages](https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/)
-of the Collector repository.
+1. Test run on community-owned bare metal machines, which has made test results more consistent.
+2. Test results are published automatically: for a subset of the load test results, see [Collector Benchmarks](/docs/collector/benchmarks/). The [complete test results](https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/) are available as well.
 
 ### Language SDKs
 
