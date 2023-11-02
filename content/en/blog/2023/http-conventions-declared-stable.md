@@ -18,7 +18,7 @@ a transition plan for instrumentations to follow when updating to the stable ver
 We also want to share some of the reasons behind these changes, as we think that the stable version brings many
 significant improvements that make the upgrade worth it in the long run.
 
-## Aligning with other open standards
+### Aligning with other open standards
 
 Earlier this year we announced [the merging of Elastic Common Schema into OpenTelemetry Semantic Conventions](/blog/2023/ecs-otel-semconv-convergence/).
 This merger brought several direct benefits to the HTTP semantic conventions.
@@ -40,19 +40,19 @@ which match the other `http.request.*` and `http.response.*` attributes.
 
 Better alignment with Prometheus by adopting seconds as the standard unit for metrics.
 
-## Telemetry has a cost
+### Telemetry has a cost
 
 Just because we can capture something, doesn't mean we should capture it by default.
 
 Capturing, processing, and storing telemetry has a cost, and we should consider this when deciding which attributes
 are recommended vs opt-in.
 
-## Default values can be problematic
+### Default values can be problematic
 
 Even though default values can help with cost, in some cases they can make it impossible for consumers of that
 telemetry to tell the difference between an uncaptured value and the default value.
 
-## Metric cardinality
+### Metric cardinality
 
 For example, in the previous version, `http.method` could be spammed by an attacker, causing an explosion in that
 one dimension. With the OpenTelemetry Metric SDK's (configurable) cardinality cap, this doesn't cause a memory
@@ -67,7 +67,7 @@ This allows the same definition of `http.request.method` to be used on both span
 (and also other use cases like span-to-metric pipelines, and instrumentations which unify attribute capture across both
 spans and metrics).
 
-# Transition plan
+## Transition plan
 
 > **Warning**
 > Existing HTTP instrumentations that are using
@@ -97,9 +97,9 @@ spans and metrics).
 > * SHOULD drop the environment variable in the next major version (stable
 >   next major version SHOULD NOT be released prior to October 1, 2023).
 
-# Summary of changes to HTTP semantic conventions since version `v1.20.0`.
+## Summary of changes to HTTP semantic conventions since version `v1.20.0`.
 
-## Common attributes across HTTP client and HTTP server spans:
+### Common attributes across HTTP client and HTTP server spans:
 
 [`v1.20.0`](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.20.0/specification/trace/semantic_conventions/http.md#common-attributes) -> [`v1.23.0` (stable)](https://github.com/open-telemetry/semantic-conventions/blob/v1.23.0/docs/http/http-spans.md#common-attributes)
 
@@ -135,7 +135,7 @@ spans and metrics).
 * New: `http.request.method_original`
 * New: `error.type`
 
-## HTTP client span attributes:
+### HTTP client span attributes:
 
 [`v1.20.0`](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.20.0/specification/trace/semantic_conventions/http.md#http-client) -> [`v1.23.0` (stable)](https://github.com/open-telemetry/semantic-conventions/blob/v1.23.0/docs/http/http-spans.md#http-client)
 
@@ -145,7 +145,7 @@ spans and metrics).
 * `net.peer.port` -> `server.port`
   * Now captured even when same as default port for scheme
 
-## HTTP server span attributes:
+### HTTP server span attributes:
 
 [`v1.20.0`](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.20.0/specification/trace/semantic_conventions/http.md#http-server) -> [`v1.23.0` (stable)](https://github.com/open-telemetry/semantic-conventions/blob/v1.23.0/docs/http/http-spans.md#http-server)
 
@@ -161,7 +161,7 @@ spans and metrics).
 * `net.host.port` -> `server.port`
   * Now based only on [`Host`][Host header], [:authority][HTTP/2 authority], [`X-Forwarded-Host`][X-Forwarded-Host], [`Forwarded#host`][Forwarded#host] headers)
 
-## HTTP client and server span names:
+### HTTP client and server span names:
 
 [`v1.20.0`](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.20.0/specification/trace/semantic_conventions/http.md#name) -> [`v1.23.0` (stable)](https://github.com/open-telemetry/semantic-conventions/blob/v1.23.0/docs/http/http-spans.md#name)
 
@@ -169,7 +169,7 @@ The `{http.method}` portion of span names is replace by `HTTP` when `{http.metho
 
 Note: see below if updating from version `v1.17.0` or earlier.
 
-## HTTP client duration metric
+### HTTP client duration metric
 
 [`v1.20.0`](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.20.0/specification/metrics/semantic_conventions/http-metrics.md#metric-httpclientduration) -> [`v1.23.0` (stable)](https://github.com/open-telemetry/semantic-conventions/blob/v1.22.0/docs/http/http-metrics.md#metric-httpclientrequestduration)
 
@@ -192,7 +192,7 @@ Note: see below if updating from version `v1.17.0` or earlier.
     * Note: see below if updating from version `v1.19.0` or earlier
   * New: `error.type`
 
-## HTTP server duration metric
+### HTTP server duration metric
 
 [`v1.20.0`](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.20.0/specification/metrics/semantic_conventions/http-metrics.md#metric-httpserverduration) -> [`v1.23.0` (stable)](https://github.com/open-telemetry/semantic-conventions/blob/v1.22.0/docs/http/http-metrics.md#metric-httpserverrequestduration)
 
@@ -220,20 +220,20 @@ Note: see below if updating from version `v1.17.0` or earlier.
     * Now based only on [`Host`][Host header], [:authority][HTTP/2 authority], [`X-Forwarded-Host`][X-Forwarded-Host], [`Forwarded#host`][Forwarded#host] headers)
   * New: `error.type`
 
-## If you are coming from an earlier semantic convention version:
+### If you are coming from an earlier semantic convention version:
 
-### If updating from version `v1.19.0` or earlier:
+#### If updating from version `v1.19.0` or earlier:
 
 * `http.flavor` -> `network.protocol.version`
   * Examples fixed: `2.0` -> `2` and `3.0` -> `3`
 
-### If updating from version `v1.18.0` or earlier:
+#### If updating from version `v1.18.0` or earlier:
 
 * `http.user_agent` -> `user_agent.original`
 
-### If updating from version `v1.17.0` or earlier:
+#### If updating from version `v1.17.0` or earlier:
 
-#### HTTP server span name:
+##### HTTP server span name:
 
 * when `http.route` is available
   * `{http.route}` -> `{summary} {http.route}`
@@ -242,7 +242,7 @@ Note: see below if updating from version `v1.17.0` or earlier.
 
 where `{summary}` is `{http.method}`, unless `{http.method}` is `_OTHER`, in which case `{summary}` is `HTTP`.
 
-#### HTTP client span name:
+##### HTTP client span name:
 
 * `HTTP {http.method}` -> `{summary}`
 
