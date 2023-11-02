@@ -11,7 +11,7 @@ We are proud to announce (nine months later), that the HTTP semantic conventions
 This stable version is a significant evolution over the previous unstable version.
 
 Because of the number of changes, and because of the number of users impacted by these changes, we have mapped out
-a transition plan for instrumentations to follow when updating to the stable version, which prioritizes our users.
+a transition plan ([see below](#transition-plan)) for instrumentations to follow when updating to the stable version, which prioritizes our users.
 
 ## Rational for reworked HTTP semconv
 
