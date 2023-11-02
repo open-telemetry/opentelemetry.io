@@ -10,8 +10,11 @@ As more and more users are looking to use OpenTelemetry instrumentation in their
 production deployments, one important consideration is the impact that
 OpenTelemetry will have on their application performance. In this blog post I
 will discuss a few recent improvements in tooling around performance
-benchmarking. Measuring performance overhead Instrumentation is not free - it
-intercepts an application's operations and collects (often) a large amount of
+benchmarking.
+
+### Measuring performance overhead
+
+Instrumentation is not free. It intercepts an application's operations and collects (often) a large amount of
 data, which takes additional CPU and memory. This can have a direct effect on
 throughput and response time, which can affect the end-user experience with the
 application. It can also have an impact on operational cost, such as increasing the
@@ -35,7 +38,7 @@ The OpenTelemetry Collector runs
 on every merge to the main branch. There have been two recent updates to the CI
 workflow:
 
-1. Test run on community-owned bare metal machines, which has made test results more consistent.
+1. Tests run on community-owned bare metal machines, which has made test results more consistent.
 2. Test results are published automatically: for a subset of the load test results, see [Collector Benchmarks](/docs/collector/benchmarks/). The [complete test results](https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/) are available as well.
 
 ### Language SDKs
