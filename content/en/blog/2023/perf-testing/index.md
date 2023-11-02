@@ -1,5 +1,5 @@
 ---
-title: Performance benchmark testing for OTel components
+title: OTel component performance benchmarks
 linkTitle: Performance benchmark testing
 date: 2023-11-01
 author: '[Martin Kuba](https://github.com/martinkuba) (Lightstep)'
