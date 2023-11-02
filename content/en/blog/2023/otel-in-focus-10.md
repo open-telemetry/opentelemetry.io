@@ -4,7 +4,7 @@ linkTitle: OTel in Focus 2023/10
 date: 2023-11-01
 author: '[Austin Parker](https://github.com/austinlparker)'
 # prettier-ignore
-cSpell:ignore: distro pdata k8sclusterreceiver splunkhecexporter signalfxexporter dockerstats receiver parquetexporter Pekko structs resourcetype dockerstatsreceiver Contribfest
+cSpell:ignore: Contribfest distro dockerstats dockerstatsreceiver k8sclusterreceiver parquetexporter pdata Pekko receiver resourcetype signalfxexporter splunkhecexporter structs
 ---
 
 Welcome back to **OpenTelemetry in Focus** for October, 2023! It's been another
