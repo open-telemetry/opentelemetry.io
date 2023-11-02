@@ -4,7 +4,7 @@ linkTitle: OTel in Focus 2023/10
 date: 2023-11-01
 author: '[Austin Parker](https://github.com/austinlparker)'
 # prettier-ignore
-cSpell:ignore: attributesprocessor Autoconfigure autoinstrumentation Autoscaler checkapi Contribfest coreinternal gopkg jaegerthrifthttp obsreport ottl resourcedetection resourceprocessor structs tailsampling ucum unmanaged
+cSpell:ignore: distro pdata k8sclusterreceiver splunkhecexporter signalfxexporter dockerstats receiver parquetexporter Pekko structs resourcetype dockerstatsreceiver Contribfest
 ---
 
 Welcome back to **OpenTelemetry in Focus** for October, 2023! It's been another
@@ -80,7 +80,7 @@ now been removed.
 also has seen multiple releases. Notable deprecations and breaking changes
 include:
 
-- `k8sclusterreceiver`: `opencensus.resourceytpe` attribute removed.
+- `k8sclusterreceiver`: `opencensus.resourcetype` attribute removed.
 - `splunkhecexporter` and `signalfxexporter`: `max_connections` configuration
   field removed, replaced by `max_idle_conns` or `max_idle_conns_per_host`.
 - `dockerstatsreceiver`: `cpu.container.percent` deprecated in favor of
@@ -93,7 +93,7 @@ processors, receivers, and exporters.
 The Operator has also been updated several times -- highlights include:
 
 - Minimum required version of Kubernetes is now 1.23.
-- Support for automatic instrumentation of nginx pods.
+- Support for automatic instrumentation of NGINX pods.
 - Improvements to the OpAMP bridge.
 - Instrumentation libraries have been updated across the board.
 
