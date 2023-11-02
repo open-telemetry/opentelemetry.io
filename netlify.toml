@@ -18,4 +18,4 @@ force = true
 [[headers]]
   for = "/schemas/:version"
   [headers.values]
-    content-type = "application/x-yaml"
+    content-type = "application/yaml"
