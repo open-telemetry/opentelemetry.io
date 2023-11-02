@@ -25,7 +25,7 @@ Earlier this year we announced [the merging of Elastic Common Schema into OpenTe
 This merger brought several direct benefits to the HTTP semantic conventions.
 
 One was the transition from `net.host.*` and `net.peer.*`
-to `client.*` and `server.*`, which has a number of benefits:
+to `client.*` and `server.*` attributes, which has a number of benefits:
 * works better for logs (where there's no span kind)
 * improves correlation across client and server telemetry (e.g. since you can join on `server.address` instead of joining where
 `net.peer.addr` == `net.host.addr`)
