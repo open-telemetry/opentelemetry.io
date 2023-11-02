@@ -14,18 +14,18 @@ benchmarking.
 
 ### Measuring performance overhead
 
-Instrumentation is not free. It intercepts an application's operations and collects (often) a large amount of
-data, which takes additional CPU and memory. This can have a direct effect on
-throughput and response time, which can affect the end-user experience with the
-application. It can also have an impact on operational cost, such as increasing the
-number of instances a service runs on.
+Instrumentation is not free. It intercepts an application's operations and
+collects (often) a large amount of data, which takes additional CPU and memory.
+This can have a direct effect on throughput and response time, which can affect
+the end-user experience with the application. It can also have an impact on
+operational cost, such as increasing the number of instances a service runs on.
 
 Providing general guidance about performance overhead is inherently difficult.
 There are many factors that affect performance: the application throughput,
 hardware the application runs on, what exactly is instrumented, how the
 OpenTelemetry SDK is configured, sampling, etc. Ultimately, the best way to
-measure performance is in the context of the specific application by
-running a load test.
+measure performance is in the context of the specific application by running a
+load test.
 
 With that said a number of OpenTelemetry components include performance tests
 that help catch regressions and can be used to provide some idea of their
@@ -38,8 +38,12 @@ The OpenTelemetry Collector runs
 on every merge to the main branch. There have been two recent updates to the CI
 workflow:
 
-1. Tests run on community-owned bare metal machines, which has made test results more consistent.
-2. Test results are published automatically: for a subset of the load test results, see [Collector Benchmarks](/docs/collector/benchmarks/). The [complete test results](https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/) are available as well.
+1. Tests run on community-owned bare metal machines, which has made test results
+   more consistent.
+2. Test results are published automatically: for a subset of the load test
+   results, see [Collector Benchmarks](/docs/collector/benchmarks/). The
+   [complete test results](https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/)
+   are available as well.
 
 ### Language SDKs
 
