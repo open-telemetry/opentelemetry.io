@@ -26,10 +26,10 @@ This merger brought several direct benefits to the HTTP semantic conventions.
 One was the transition from `net.host.*` and `net.peer.*`
 to `client.*` and `server.*` attributes, which has a number of benefits:
 * works better for logs (where there's no span kind)
-* improves correlation across client and server telemetry (e.g. since you can join on `server.address` instead of joining where
+* improves correlation across client and server telemetry (e.g. since you can join directly on `server.address` instead of joining where
 `net.peer.addr` == `net.host.addr`)
 * is generally more intuitive compared to `net.host.*` and `net.peer.*`
-* left open the `network.peer.*` and `network.local.*` namespace for low-level network instrumentation where peer and local concepts are more natural
+* leaves open the `network.peer.*` and `network.local.*` namespace for low-level network instrumentation where peer and local concepts are more natural
 
 Another was the `url.*` namespace, which allows these attributes to be reused in non-HTTP semantic conventions
 in the future.
