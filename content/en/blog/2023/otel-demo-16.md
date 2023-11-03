@@ -6,7 +6,7 @@ author: '[Austin Parker](https://github.com/austinlparker)'
 ---
 
 The OpenTelemetry Demo has been updated to version 1.6, and introduces alpha
-support for the OpenTelemetry Log signal!
+support for the OpenTelemetry [Log signal](/docs/concepts/signals/logs/)!
 
 ## Our thoughts on logs
 
