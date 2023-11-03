@@ -6,98 +6,46 @@ author: '[Trask Stalnaker](https://github.com/trask) (Microsoft)'
 cSpell:ignore: stalnaker trask
 ---
 
-Earlier this year we embarked on a three month project to stabilize HTTP semantic conventions.
+Early this year we embarked on a three month project to stabilize HTTP semantic conventions.
 We are proud to announce (nine months later), that the HTTP semantic conventions are now the first OpenTelemetry semantic convention to be declared stable!
-This stable version is a significant evolution over the previous unstable version.
+The stable version is a significant evolution over the previous unstable version:
 
-Because of the number of changes, and because of the number of users impacted by these changes, we have mapped out
-a transition plan ([see below](#transition-plan)) for instrumentations to follow when updating to the stable version, which prioritizes our users.
-
-## Rational for reworked HTTP semconv
-
-We also want to share some of the reasons behind these changes, as we think that the stable version brings many
-significant improvements that make the upgrade worth it in the long run.
-
-### Aligning with other open standards
-
-Earlier this year we announced [the merging of Elastic Common Schema into OpenTelemetry Semantic Conventions](/blog/2023/ecs-otel-semconv-convergence/).
-This merger brought several direct benefits to the HTTP semantic conventions.
-
-One was the transition from `net.host.*` and `net.peer.*`
-to `client.*` and `server.*` attributes, which has a number of benefits:
-* works better for logs (where there's no span kind)
-* improves correlation across client and server telemetry (e.g. since you can join directly on `server.address` instead of joining where
-`net.peer.addr` == `net.host.addr`)
-* is generally more intuitive compared to `net.host.*` and `net.peer.*`
-* leaves open the `network.peer.*` and `network.local.*` namespace for low-level network instrumentation where peer and local concepts are more natural
-
-Another was the `url.*` namespace, which allows these attributes to be reused in non-HTTP semantic conventions
-in the future.
-
-And another was improved consistency of namespaces,
-e.g. `http.request.method` instead of `http.method`, and `http.response.status_code` instead of `http.status_code`,
-which match the other `http.request.*` and `http.response.*` attributes.
-
-Better alignment with Prometheus by adopting seconds as the standard unit for metrics.
-
-### Telemetry has a cost
-
-Just because we can capture something, doesn't mean we should capture it by default.
-
-Capturing, processing, and storing telemetry has a cost, and we should consider this when deciding which attributes
-are recommended vs opt-in.
-
-### Default values can be problematic
-
-Even though default values can help with cost, in some cases they can make it impossible for consumers of that
-telemetry to tell the difference between an uncaptured value and the default value.
-
-### Metric cardinality
-
-For example, in the previous version, `http.method` could be spammed by an attacker, causing an explosion in that
-one dimension. With the OpenTelemetry Metric SDK's (configurable) cardinality cap, this doesn't cause a memory
-explosion, but it does cause a degradation in your observability of HTTP metrics since the cardinality cap is hit
-just with that one dimension.
-
-In the stable version, `http.request.method` is limited to a (configurable) set of known HTTP methods.
-
-When there is an unknown value, it is stored in `http.request.method_original`, and `http.request.method` is set to `_OTHER`.
-
-This allows the same definition of `http.request.method` to be used on both spans and metrics, which supports correlation between spans and metrics
-(and also other use cases like span-to-metric pipelines, and instrumentations which unify attribute capture across both
-spans and metrics).
+* Improvements brought over from the [alignment with Elastic Common Schema](/blog/2023/ecs-otel-semconv-convergence/)
+  * The `url.*` namespace, which can be reused in the future by non-HTTP semantic conventions
+  * The `client.*` and `server.*` namespaces, which are easier to reason about and work better on logs (where there is no span kind)
+  * More consistency around using the `http.request.*` and `http.response.*` namespaces
+* Further alignment with Prometheus by adopting seconds as the standard unit for metrics
+* Attributes which are less generally useful are no longer captured by default in order to reduce the cost of capturing, processing, and storing telemetry
+* Default values are now used carefully so that there's no ambiguity whether an attribute's absence represents the default value or not
+* Metric cardinality problems have been addressed
 
 ## Transition plan
 
+Because of the number of changes, and because of the number of users impacted by these changes, we are requiring
+instrumentations to implement a transition plan to help users manage the process of upgrading to the stable HTTP semantic conventions.
+We plan to use a similar transition plan when stabilizing other semantic conventions.
+
+A warning like this appears at the top of stable HTTP semantic convention pages:
+
 > **Warning**
-> Existing HTTP instrumentations that are using
-> [v1.20.0](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.20.0/specification/trace/semantic_conventions/http.md)
-> of the [Semantic Conventions for HTTP](/docs/specs/semconv/http/)
-> (or prior):
+> When adopting the stable HTTP semantic conventions, existing HTTP instrumentations
 >
-> * SHOULD NOT change the version of the HTTP or networking conventions that they emit
->   until the HTTP semantic conventions are marked stable (HTTP stabilization will
->   include stabilization of a core set of networking conventions which are also used
->   in HTTP instrumentations). Conventions include, but are not limited to, attributes,
->   metric and span names, and unit of measure.
 > * SHOULD introduce an environment variable `OTEL_SEMCONV_STABILITY_OPT_IN`
->   in the existing major version which is a comma-separated list of values.
->   The only values defined so far are:
+>   in their existing major version, which accepts:
 >   * `http` - emit the new, stable HTTP and networking conventions,
->     and stop emitting the old experimental HTTP and networking conventions
+>     and stop emitting the old HTTP and networking conventions
 >     that the instrumentation emitted previously.
 >   * `http/dup` - emit both the old and the stable HTTP and networking conventions,
 >     allowing for a seamless transition.
 >   * The default behavior (in the absence of one of these values) is to continue
->     emitting whatever version of the old experimental HTTP and networking conventions
+>     emitting whatever version of the old HTTP and networking conventions
 >     the instrumentation was emitting previously.
->   * Note: `http/dup` has higher precedence than `http` in case both values are present
 > * SHOULD maintain (security patching at a minimum) the existing major version
 >   for at least six months after it starts emitting both sets of conventions.
-> * SHOULD drop the environment variable in the next major version (stable
->   next major version SHOULD NOT be released prior to October 1, 2023).
+> * SHOULD drop the environment variable in the next major version and emit only
+>   the stable HTTP and networking conventions.
 
-## Summary of changes to HTTP semantic conventions since version `v1.20.0`.
+## Summary of changes to the HTTP semantic conventions since version `v1.20.0`.
 
 ### Common attributes across HTTP client and HTTP server spans:
 
@@ -132,7 +80,7 @@ spans and metrics).
 * `net.sock.peer.port` -> `network.peer.port`
   * Now captured even if same as `server.port`
 * `net.sock.peer.name` -> Removed
-* New: `http.request.method_original`
+* New: `http.request.method_original` (only captured when `http.request.method` is `_OTHER`)
 * New: `error.type`
 
 ### HTTP client span attributes:
@@ -186,7 +134,7 @@ Note: see below if updating from version `v1.17.0` or earlier.
     * Now captured even when same as default port for scheme
   * `net.sock.peer.addr` -> Removed
   * `net.protocol.name` -> `network.protocol.name`
-    * Recommended -> Opt-In
+    * Recommended -> Conditionally required if not `http` and `network.protocol.version` is set
   * `net.protocol.version` -> `network.protocol.version`
     * Examples fixed: `2.0` -> `2` and `3.0` -> `3`
     * Note: see below if updating from version `v1.19.0` or earlier
@@ -208,7 +156,7 @@ Note: see below if updating from version `v1.17.0` or earlier.
   * `http.scheme` -> `url.scheme`
     * Now factors in [`X-Forwarded-Proto`][X-Forwarded-Proto], [`Forwarded#proto`][Forwarded#proto] headers
   * `net.protocol.name` -> `network.protocol.name`
-    * Recommended -> Opt-In
+    * Recommended -> Conditionally required if not `http` and `network.protocol.version` is set
   * `net.protocol.version` -> `network.protocol.version`
     * Examples fixed: `2.0` -> `2` and `3.0` -> `3`
     * Note: see below if updating from version `v1.19.0` or earlier
