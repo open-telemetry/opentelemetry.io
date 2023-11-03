@@ -33,29 +33,25 @@ marks a substantial advancement from earlier versions, featuring:
 ## Migration plan
 
 Due to the significant number of modifications and the extensive user base
-affected by them, we require instrumentations to implement a migration plan that
+affected by them, we require existing HTTP instrumentations published by OpenTelemetry to implement a migration plan that
 will assist users in transitioning to the stable HTTP semantic conventions. We plan
 to use a similar migration plan when stabilizing other semantic conventions.
 
-A warning like this appears at the top of stable HTTP semantic convention pages:
-
-> **Warning** When adopting the stable HTTP semantic conventions, existing HTTP
-> instrumentations
->
-> - SHOULD introduce an environment variable `OTEL_SEMCONV_STABILITY_OPT_IN` in
->   their existing major version, which accepts:
->   - `http` - emit the stable HTTP and networking conventions, and stop
->     emitting the old HTTP and networking conventions that the instrumentation
->     emitted previously.
->   - `http/dup` - emit both the old and the stable HTTP and networking
->     conventions, allowing for a phased rollout of the stable semantic conventions.
->   - The default behavior (in the absence of one of these values) is to
->     continue emitting whatever version of the old HTTP and networking
->     conventions the instrumentation was emitting previously.
-> - SHOULD maintain (security patching at a minimum) the existing major version
->   for at least six months after it starts emitting both sets of conventions.
-> - SHOULD drop the environment variable in the next major version and emit only
->   the stable HTTP and networking conventions.
+Specifically, when existing HTTP instrumentations published by OpenTelemetry are upgraded to the stable HTTP semantic conventions, they:
+- Need to introduce an environment variable `OTEL_SEMCONV_STABILITY_OPT_IN`
+  in their existing major version, which accepts:
+  - `http` - emit the stable HTTP and networking conventions, and stop
+    emitting the old HTTP and networking conventions that the instrumentation
+    emitted previously.
+  - `http/dup` - emit both the old and the stable HTTP and networking
+    conventions, allowing for a phased rollout of the stable semantic conventions.
+  - The default behavior (in the absence of one of these values) is to
+    continue emitting whatever version of the old HTTP and networking
+    conventions the instrumentation was emitting previously.
+- Need to maintain (security patching at a minimum) the existing major version
+  for at least six months after it starts emitting both sets of conventions.
+- May drop the environment variable in the next major version and emit only
+  the stable HTTP and networking conventions.
 
 ## Summary of changes
 
