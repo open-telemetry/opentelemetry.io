@@ -51,9 +51,9 @@ Specifically, when existing HTTP instrumentations published by OpenTelemetry are
   - The default behavior (in the absence of one of these values) is to
     continue emitting whatever version of the old HTTP and networking
     conventions the instrumentation was emitting previously.
-- Need to maintain (security patching at a minimum) the existing major version
+- Need to maintain (security patching at a minimum) their existing major version
   for at least six months after it starts emitting both sets of conventions.
-- May drop the environment variable in the next major version and emit only
+- May drop the environment variable in their next major version and emit only
   the stable HTTP and networking conventions.
 
 ## Summary of changes
