@@ -17,8 +17,11 @@ marks a substantial advancement from earlier versions, featuring:
   such as:
   - The `url.*` namespace, which can be reused in the future by non-HTTP
     semantic conventions
-  - The `client.*` and `server.*` namespaces, which are easier to reason about
-    and work better on logs (where there is no span kind)
+  - Replacing the `net.peer.*` and `net.host.*` namespaces with `client.*` and `server.*`, which
+    - Works better for logs, where there's no span kind to indicate which side is peer and which side is host
+    - Simplifies correlation across client and server telemetry (e.g. since you can join directly on `server.address`
+      instead of joining where `net.peer.addr` == `net.host.addr`)
+    - Provides a clean separation from the `network.*` namespace which is now only for low-level network attributes
   - More consistency around using the `http.request.*` and `http.response.*`
     namespaces
 - Improved consistency with Prometheus through standardization on seconds for metric units.
