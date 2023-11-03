@@ -9,7 +9,7 @@ cSpell:ignore: chalin Liudmila Molkova
 Early this year, we launched an effort to stabilize HTTP semantic conventions.
 Today, we proudly announce that the HTTP semantic conventions are the _first_
 OpenTelemetry semantic conventions to be declared
-**[stable](/docs/specs/otel/document-status/)**! This inaugural stable release
+**[stable](/docs/specs/otel/document-status/)**! This inaugural stable [v1.23.0](https://github.com/open-telemetry/semantic-conventions/releases/tag/v1.23.0) release
 marks a substantial advancement from earlier versions, featuring:
 
 - Enhancements resulting from
@@ -58,7 +58,7 @@ Specifically, when existing HTTP instrumentations published by OpenTelemetry are
 
 ## Summary of changes
 
-In this section we summarize the changes made to the HTTP semantic conventions
+In this section, we summarize the changes made to the HTTP semantic conventions
 from
 [v1.20.0](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.20.0/specification/trace/semantic_conventions/http.md)
 to
