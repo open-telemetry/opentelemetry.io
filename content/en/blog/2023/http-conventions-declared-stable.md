@@ -123,7 +123,7 @@ References:
 | `http.route` | No change |
 | `http.target` &rarr; `url.path` and `url.query` | Split into two separate attributes |
 | `http.scheme` &rarr; `url.scheme` | Now factors in [X-Forwarded-Proto][], [Forwarded#proto][] headers |
-| `http.client_ip` &rarr; `client.address` | If `http.client_ip` was unknown (i.e., no [X-Forwarded-For][X-Forwarded-For], [Forwarded#for][Forwarded#for] headers), then `net.sock.peer.addr` &rarr; `client.address`; now must be provided to sampler |
+| `http.client_ip` &rarr; `client.address` | If `http.client_ip` was unknown (i.e., no [X-Forwarded-For][], [Forwarded#for][] headers), then `net.sock.peer.addr` &rarr; `client.address`; now must be provided to sampler |
 | `net.host.name` &rarr; `server.address` | Now based only on [Host][Host header], [:authority][HTTP/2 authority], [X-Forwarded-Host][], [Forwarded#host][] headers |
 | `net.host.port` &rarr; `server.port` | Now based only on [Host][Host header], [:authority][HTTP/2 authority], [X-Forwarded-Host][X-Forwarded-Host], [Forwarded#host][] headers |
 {.td-initial .table .table-responsive .ot-table-first-row-50}
@@ -229,12 +229,12 @@ References:
 
 #### HTTP server span name
 
-- when `http.route` is available
-  - `{http.route}` -> `{summary} {http.route}`
-- when `http.route` is not available
-  - `HTTP {http.method}` -> `{summary}`
+- When `http.route` is available:<br>
+  `{http.route}` -> `{summary} {http.route}`
+- When `http.route` is not available:<br>
+  `HTTP {http.method}` -> `{summary}`
 
-where `{summary}` is `{http.method}`, unless `{http.method}` is `_OTHER`, in
+Where `{summary}` is `{http.method}`, unless `{http.method}` is `_OTHER`, in
 which case `{summary}` is `HTTP`.
 
 #### HTTP client span name
