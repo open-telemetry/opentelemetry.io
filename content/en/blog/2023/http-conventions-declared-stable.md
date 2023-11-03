@@ -241,7 +241,7 @@ which case `{summary}` is `HTTP`.
 
 - `HTTP {http.method}` -> `{summary}`
 
-where `{summary}` is `{http.method}`, unless `{http.method}` is `_OTHER`, in
+Where `{summary}` is `{http.method}`, unless `{http.method}` is `_OTHER`, in
 which case `{summary}` is `HTTP`.
 
 [Host header]: https://tools.ietf.org/html/rfc7230#section-5.4
