@@ -95,15 +95,26 @@ References:
 
 ### HTTP client span attributes
 
-[`v1.20.0`](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.20.0/specification/trace/semantic_conventions/http.md#http-client)
-->
-[`v1.23.0` (stable)](https://github.com/open-telemetry/semantic-conventions/blob/v1.23.0/docs/http/http-spans.md#http-client)
+<!-- TODO(@chalin): I'll move this embedded style elsewhere in a followup PR -->
+<style>
+.ot-table-first-row-50 td:first-child { width: 50%; }
+.ot-table-first-row-60 td:first-child { width: 60%; }
+</style>
 
-- `http.url` -> `url.full`
-- `http.resend_count` -> `http.request.resend_count`
-- `net.peer.name` -> `server.address`
-- `net.peer.port` -> `server.port`
-  - Now captured even when same as default port for scheme
+<!-- prettier-ignore-start -->
+| Change | Comments |
+| --- | --- |
+| `http.url` &rarr; `url.full` | |
+| `http.resend_count` &rarr; `http.request.resend_count` | |
+| `net.peer.name` &rarr; `server.address` | |
+| `net.peer.port` &rarr; `server.port` | Now captured even when same as default port for scheme |
+{.td-initial .table .table-responsive .ot-table-first-row-60}
+<!-- prettier-ignore-end -->
+
+References:
+
+- [HTTP Client span attributes v1.20.0](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.20.0/specification/trace/semantic_conventions/http.md#http-client)
+- [HTTP Client span attributes v1.23.0 (stable)](https://github.com/open-telemetry/semantic-conventions/blob/v1.23.0/docs/http/http-spans.md#http-client)
 
 ### HTTP server span attributes
 
