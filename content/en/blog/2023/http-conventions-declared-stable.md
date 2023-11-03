@@ -107,28 +107,22 @@ References:
 
 ### HTTP server span attributes
 
-[`v1.20.0`](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.20.0/specification/trace/semantic_conventions/http.md#http-server)
-->
-[`v1.23.0` (stable)](https://github.com/open-telemetry/semantic-conventions/blob/v1.23.0/docs/http/http-spans.md#http-server)
+<!-- prettier-ignore-start -->
+| Change | Comments |
+| --- | --- |
+| `http.route` | No change |
+| `http.target` &rarr; `url.path` and `url.query` | Split into two separate attributes |
+| `http.scheme` &rarr; `url.scheme` | Now factors in [X-Forwarded-Proto][], [Forwarded#proto][] headers |
+| `http.client_ip` &rarr; `client.address` | If `http.client_ip` was unknown (i.e., no [X-Forwarded-For][X-Forwarded-For], [Forwarded#for][Forwarded#for] headers), then `net.sock.peer.addr` &rarr; `client.address`; now must be provided to sampler |
+| `net.host.name` &rarr; `server.address` | Now based only on [Host][Host header], [:authority][HTTP/2 authority], [X-Forwarded-Host][], [Forwarded#host][] headers |
+| `net.host.port` &rarr; `server.port` | Now based only on [Host][Host header], [:authority][HTTP/2 authority], [X-Forwarded-Host][X-Forwarded-Host], [Forwarded#host][] headers |
+{.td-initial .table .table-responsive .ot-table-first-row-50}
+<!-- prettier-ignore-end -->
 
-- `http.route` (No change)
-- `http.target` -> split into `url.path` and `url.query`
-- `http.scheme` -> `url.scheme`
-  - Now factors in [`X-Forwarded-Proto`][X-Forwarded-Proto],
-    [`Forwarded#proto`][Forwarded#proto] headers
-- `http.client_ip` -> `client.address`
-  - If `http.client_ip` was unknown (i.e. no
-    [`X-Forwarded-For`][X-Forwarded-For], [`Forwarded#for`][Forwarded#for]
-    headers), then `net.sock.peer.addr` -> `client.address`
-  - Now must be provided to sampler
-- `net.host.name` -> `server.address`
-  - Now based only on [`Host`][Host header], [:authority][HTTP/2 authority],
-    [`X-Forwarded-Host`][X-Forwarded-Host], [`Forwarded#host`][Forwarded#host]
-    headers)
-- `net.host.port` -> `server.port`
-  - Now based only on [`Host`][Host header], [:authority][HTTP/2 authority],
-    [`X-Forwarded-Host`][X-Forwarded-Host], [`Forwarded#host`][Forwarded#host]
-    headers)
+References:
+
+- [HTTP Server span attributes v1.20.0](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.20.0/specification/trace/semantic_conventions/http.md#http-server)
+- [HTTP Server span attributes v1.23.0 (stable)](https://github.com/open-telemetry/semantic-conventions/blob/v1.23.0/docs/http/http-spans.md#http-server)
 
 ### HTTP client and server span names
 
