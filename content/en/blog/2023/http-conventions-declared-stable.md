@@ -173,43 +173,29 @@ References:
 
 ### HTTP server duration metric
 
-[`v1.20.0`](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.20.0/specification/metrics/semantic_conventions/http-metrics.md#metric-httpserverduration)
-->
-[`v1.23.0` (stable)](https://github.com/open-telemetry/semantic-conventions/blob/v1.22.0/docs/http/http-metrics.md#metric-httpserverrequestduration)
+<!-- prettier-ignore-start -->
+| Change | Comments |
+| --- | --- |
+| Name: `http.server.duration` → `http.server.request.duration` |  |
+| Unit: `ms` → `s` |  |
+| Description | Updated from "_Measures the duration of inbound HTTP requests_" → "_Duration of HTTP server requests_" |  |
+| Histogram buckets | Boundaries updated to reflect change from milliseconds to seconds, and zero bucket boundary removed |
+| `http.route` | No change |
+| `http.method` → `http.request.method` | Now captures only 9 common HTTP methods by default plus `_OTHER` |
+| `http.status_code` → `http.response.status_code` |  |
+| `http.scheme` → `url.scheme` | Now factors in [`X-Forwarded-Proto` span][X-Forwarded-Proto], [`Forwarded#proto` span][Forwarded#proto] headers |
+| `net.protocol.name` → `network.protocol.name` | Recommended → Conditionally required if not `http` and `network.protocol.version` is set |
+| `net.protocol.version` → `network.protocol.version` | Examples fixed: `2.0` → `2` and `3.0` → `3`; see note if [migrating from `<= v1.19.0`](#migrating-from--v1190) |
+| `net.host.name` → `server.address` | &bullet; Recommended → Opt-In (due to high-cardinality vulnerability since based on HTTP headers)<br>&bullet; Now based only on [`Host` span][Host header], [`:authority` span][HTTP/2 authority], [`X-Forwarded-Host` span][X-Forwarded-Host], [`Forwarded#host` span][Forwarded#host] headers |
+| `net.host.port` → `server.port` | &bullet; Recommended → Opt-In (due to high-cardinality vulnerability since based on HTTP headers)<br>&bullet; Now based only on [`Host` span][Host header], [`:authority` span][HTTP/2 authority], [`X-Forwarded-Host` span][X-Forwarded-Host], [`Forwarded#host` span][Forwarded#host] headers |
+| New: `error.type` |  |
+{.td-initial .table .table-responsive .ot-table-first-row-50}
+<!-- prettier-ignore-end -->
 
-- Name `http.server.duration` -> `http.server.request.duration`
-- Unit: `ms` -> `s`
-- Description: `Measures the duration of inbound HTTP requests.` ->
-  `Duration of HTTP server requests.`
-- Histogram buckets: boundaries updated to reflect change from milliseconds to
-  seconds, and zero bucket boundary removed
-- Attribute changes:
-  - `http.route` (No change)
-  - `http.method` -> `http.request.method`
-    - Now captures only 9 common HTTP methods by default plus `_OTHER`
-  - `http.status_code` -> `http.response.status_code`
-  - `http.scheme` -> `url.scheme`
-    - Now factors in [`X-Forwarded-Proto`][X-Forwarded-Proto],
-      [`Forwarded#proto`][Forwarded#proto] headers
-  - `net.protocol.name` -> `network.protocol.name`
-    - Recommended -> Conditionally required if not `http` and
-      `network.protocol.version` is set
-  - `net.protocol.version` -> `network.protocol.version`
-    - Examples fixed: `2.0` -> `2` and `3.0` -> `3`
-    - Note: see below if updating from version `v1.19.0` or earlier
-  - `net.host.name` -> `server.address`
-    - Recommended -> Opt-In (due to high-cardinality vulnerability since based
-      on HTTP headers)
-    - Now based only on [`Host`][Host header], [:authority][HTTP/2 authority],
-      [`X-Forwarded-Host`][X-Forwarded-Host], [`Forwarded#host`][Forwarded#host]
-      headers)
-  - `net.host.port` -> `server.port`
-    - Recommended -> Opt-In (due to high-cardinality vulnerability since based
-      on HTTP headers)
-    - Now based only on [`Host`][Host header], [:authority][HTTP/2 authority],
-      [`X-Forwarded-Host`][X-Forwarded-Host], [`Forwarded#host`][Forwarded#host]
-      headers)
-  - New: `error.type`
+References:
+
+- [Metric `http.server.duration` v1.20.0](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.20.0/specification/metrics/semantic_conventions/http-metrics.md#metric-httpserverduration)
+- [Metric `http.server.request.duration` v1.23.0 (stable)](https://github.com/open-telemetry/semantic-conventions/blob/v1.22.0/docs/http/http-metrics.md#metric-httpserverrequestduration)
 
 ## Migrating from a version earlier than v1.20.0?
 
