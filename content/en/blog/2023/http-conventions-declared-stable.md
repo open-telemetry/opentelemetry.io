@@ -220,20 +220,20 @@ Note: see below if updating from version `v1.17.0` or earlier.
     * Now based only on [`Host`][Host header], [:authority][HTTP/2 authority], [`X-Forwarded-Host`][X-Forwarded-Host], [`Forwarded#host`][Forwarded#host] headers)
   * New: `error.type`
 
-### If you are coming from an earlier semantic convention version:
+## If you are coming from an earlier semantic convention version:
 
-#### If updating from version `v1.19.0` or earlier:
+### If updating from version `v1.19.0` or earlier:
 
 * `http.flavor` -> `network.protocol.version`
   * Examples fixed: `2.0` -> `2` and `3.0` -> `3`
 
-#### If updating from version `v1.18.0` or earlier:
+### If updating from version `v1.18.0` or earlier:
 
 * `http.user_agent` -> `user_agent.original`
 
-#### If updating from version `v1.17.0` or earlier:
+### If updating from version `v1.17.0` or earlier:
 
-##### HTTP server span name:
+#### HTTP server span name:
 
 * when `http.route` is available
   * `{http.route}` -> `{summary} {http.route}`
@@ -242,7 +242,7 @@ Note: see below if updating from version `v1.17.0` or earlier.
 
 where `{summary}` is `{http.method}`, unless `{http.method}` is `_OTHER`, in which case `{summary}` is `HTTP`.
 
-##### HTTP client span name:
+#### HTTP client span name:
 
 * `HTTP {http.method}` -> `{summary}`
 
