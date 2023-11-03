@@ -181,9 +181,9 @@ References:
 
 Metric changes:
 
-- **Name**: `http.server.duration` -> `http.server.request.duration`
-- **Unit**: `ms` -> `s`
-- **Description**: `Measures the duration of inbound HTTP requests.` ->
+- **Name**: `http.server.duration` &rarr; `http.server.request.duration`
+- **Unit**: `ms` &rarr; `s`
+- **Description**: `Measures the duration of inbound HTTP requests.` &rarr;
   `Duration of HTTP server requests.`
 - **Histogram buckets**: boundaries updated to reflect change from milliseconds to
   seconds, and zero bucket boundary removed
@@ -225,9 +225,9 @@ References:
 #### HTTP server span name
 
 - When `http.route` is available:<br>
-  `{http.route}` -> `{summary} {http.route}`
+  `{http.route}` &rarr; `{summary} {http.route}`
 - When `http.route` is not available:<br>
-  `HTTP {http.method}` -> `{summary}`
+  `HTTP {http.method}` &rarr; `{summary}`
 
 Where `{summary}` is `{http.method}`, unless `{http.method}` is `_OTHER`, in
 which case `{summary}` is `HTTP`.
