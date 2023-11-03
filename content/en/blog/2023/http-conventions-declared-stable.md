@@ -66,47 +66,31 @@ to
 
 ### Common attributes across HTTP client and HTTP server spans
 
-[`v1.20.0`](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.20.0/specification/trace/semantic_conventions/http.md#common-attributes)
-->
-[`v1.23.0` (stable)](https://github.com/open-telemetry/semantic-conventions/blob/v1.23.0/docs/http/http-spans.md#common-attributes)
+<!-- prettier-ignore-start -->
+| Change | Comments |
+| --- | --- |
+| `http.method` &rarr; `http.request.method` | Now captures only 9 common HTTP methods by default (configurable) plus `_OTHER` |
+| `http.status_code` &rarr; `http.response.status_code` |  |
+| `http.request.header.<key>` | &bullet; Dash (`"-"`) to underscore (`"_"`) normalization in `<key>` has been removed<br>&bullet; HTTP Server spans: now must be provided to sampler |
+| `http.response.header.<key>` | Dash (`"-"`) to underscore (`"_"`) normalization in `<key>` has been removed |
+| `http.request_content_length` &rarr; `http.request.body.size` | &bullet; Recommended &rarr; Opt-In<br>&bullet; _Not marked stable yet_ |
+| `http.response_content_length` &rarr; `http.response.body.size` | &bullet; Recommended &rarr; Opt-In<br>&bullet; _Not marked stable yet_ |
+| `user_agent.original` | &bullet; HTTP Client spans: Recommended &rarr; Opt-In<br>&bullet; HTTP Server spans: now must be provided to sampler<br>&bullet; See note if [migrating from <= v1.18.0](#migrating-from--v1180) |
+| `net.protocol.name` &rarr; `network.protocol.name` | Recommended &rarr; Conditionally required if not `http` and `network.protocol.version` is set |
+| `net.protocol.version` &rarr; `network.protocol.version` | &bullet; Examples fixed: `2.0` &rarr; `2` and `3.0` &rarr; `3`<br>&bullet; See note if [migrating from <= v1.19.0](#migrating-from--v1190) |
+| `net.sock.family` | Removed |
+| `net.sock.peer.addr` &rarr; `network.peer.address` | HTTP server spans: if `http.client_ip` was unknown, then also `net.sock.peer.addr` &rarr; `client.address`; `client.address` must be provided to sampler |
+| `net.sock.peer.port` &rarr; `network.peer.port` | Now captured even if same as `server.port` |
+| `net.sock.peer.name` | Removed |
+| New: `http.request.method_original` | Only captured when `http.request.method` is `_OTHER` |
+| New: `error.type` |  |
+{.td-initial .table .table-responsive}
+<!-- prettier-ignore-end -->
 
-- `http.method` -> `http.request.method`
-  - Now captures only 9 common HTTP methods by default (configurable) plus
-    `_OTHER`
-- `http.status_code` -> `http.response.status_code`
-- `http.request.header.<key>`
-  - Dash (`"-"`) to underscore (`"_"`) normalization in `<key>` has been removed
-  - HTTP Server spans: now must be provided to sampler
-- `http.response.header.<key>`
-  - Dash (`"-"`) to underscore (`"_"`) normalization in `<key>` has been removed
-- `http.request_content_length` -> `http.request.body.size`
-  - Recommended -> Opt-In
-  - _Not marked stable yet_
-- `http.response_content_length` -> `http.response.body.size`
-  - Recommended -> Opt-In
-  - _Not marked stable yet_
-- `user_agent.original`
-  - HTTP Client spans: Recommended -> Opt-In
-  - HTTP Server spans: now must be provided to sampler
-  - (see below if updating from version `v1.18.0` or earlier)
-- `net.protocol.name` -> `network.protocol.name`
-  - Recommended -> Conditionally required if not `http` and
-    `network.protocol.version` is set
-- `net.protocol.version` -> `network.protocol.version`
-  - Examples fixed: `2.0` -> `2` and `3.0` -> `3`
-  - (see below if updating from version `v1.19.0` or earlier)
-- `net.sock.family` -> Removed
-- `net.sock.peer.addr` -> `network.peer.address`
-  - HTTP server spans: if `http.client_ip` was unknown (i.e. no
-    [`X-Forwarded-For`][X-Forwarded-For], [`Forwarded#for`][Forwarded#for]
-    headers), then _also_ `net.sock.peer.addr` -> `client.address` (and note
-    `client.address` must be provided to sampler)
-- `net.sock.peer.port` -> `network.peer.port`
-  - Now captured even if same as `server.port`
-- `net.sock.peer.name` -> Removed
-- New: `http.request.method_original` (only captured when `http.request.method`
-  is `_OTHER`)
-- New: `error.type`
+References:
+
+- [Common attributes v1.20.0](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.20.0/specification/trace/semantic_conventions/http.md#common-attributes)
+- [Common attributes v1.23.0 (stable)](https://github.com/open-telemetry/semantic-conventions/blob/v1.23.0/docs/http/http-spans.md#common-attributes)
 
 ### HTTP client span attributes
 
