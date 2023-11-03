@@ -39,7 +39,7 @@ next months:
 
 - Increase the number of documented scenarios to demonstrate how OpenTelemetry
   can be used to solve real-world problems.
-- Ensure that the demo reflects the OpenTelemetry feature matrix, and that we're
+- Ensure that the demo reflects the OpenTelemetry feature matrix and that we're
   showing off everything you can do with the project.
 - Improve our dashboards, add alerts, SLOs, and other observability features to
   the demo.
