@@ -37,7 +37,7 @@ affected by them, we require existing HTTP instrumentations published by OpenTel
 will assist users in transitioning to the stable HTTP semantic conventions. We plan
 to use a similar migration plan when stabilizing other semantic conventions.
 
-Specifically, when existing HTTP instrumentations published by OpenTelemetry are upgraded to the stable HTTP semantic conventions, they:
+Specifically, when existing HTTP instrumentations published by OpenTelemetry are updated to the stable HTTP semantic conventions, they:
 - Need to introduce an environment variable `OTEL_SEMCONV_STABILITY_OPT_IN`
   in their existing major version, which accepts:
   - `http` - emit the stable HTTP and networking conventions, and stop
