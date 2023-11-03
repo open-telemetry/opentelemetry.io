@@ -71,11 +71,11 @@ to
 | --- | --- |
 | `http.method` &rarr; `http.request.method` | Now captures only 9 common HTTP methods by default (configurable) plus `_OTHER` |
 | `http.status_code` &rarr; `http.response.status_code` |  |
-| `http.request.header.<key>` | &bullet; Dash (`"-"`) to underscore (`"_"`) normalization in `<key>` has been removed<br>&bullet; HTTP Server spans: now must be provided to sampler |
+| `http.request.header.<key>` | &bullet; Dash (`"-"`) to underscore (`"_"`) normalization in `<key>` has been removed<br>&bullet; HTTP server spans: now must be provided to sampler |
 | `http.response.header.<key>` | Dash (`"-"`) to underscore (`"_"`) normalization in `<key>` has been removed |
 | `http.request_content_length` &rarr; `http.request.body.size` | &bullet; Recommended &rarr; Opt-In<br>&bullet; _Not marked stable yet_ |
 | `http.response_content_length` &rarr; `http.response.body.size` | &bullet; Recommended &rarr; Opt-In<br>&bullet; _Not marked stable yet_ |
-| `user_agent.original` | &bullet; HTTP Client spans: Recommended &rarr; Opt-In<br>&bullet; HTTP Server spans: now must be provided to sampler<br>&bullet; See note if [migrating from <= v1.18.0](#migrating-from--v1180) |
+| `user_agent.original` | &bullet; HTTP client spans: Recommended &rarr; Opt-In<br>&bullet; HTTP server spans: now must be provided to sampler<br>&bullet; See note if [migrating from <= v1.18.0](#migrating-from--v1180) |
 | `net.protocol.name` &rarr; `network.protocol.name` | Recommended &rarr; Conditionally required if not `http` and `network.protocol.version` is set |
 | `net.protocol.version` &rarr; `network.protocol.version` | &bullet; Examples fixed: `2.0` &rarr; `2` and `3.0` &rarr; `3`<br>&bullet; See note if [migrating from <= v1.19.0](#migrating-from--v1190) |
 | `net.sock.family` | Removed |
@@ -112,8 +112,8 @@ References:
 
 References:
 
-- [HTTP Client span attributes v1.20.0](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.20.0/specification/trace/semantic_conventions/http.md#http-client)
-- [HTTP Client span attributes v1.23.0 (stable)](https://github.com/open-telemetry/semantic-conventions/blob/v1.23.0/docs/http/http-spans.md#http-client)
+- [HTTP client span attributes v1.20.0](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.20.0/specification/trace/semantic_conventions/http.md#http-client)
+- [HTTP client span attributes v1.23.0 (stable)](https://github.com/open-telemetry/semantic-conventions/blob/v1.23.0/docs/http/http-spans.md#http-client)
 
 ### HTTP server span attributes
 
@@ -131,8 +131,8 @@ References:
 
 References:
 
-- [HTTP Server span attributes v1.20.0](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.20.0/specification/trace/semantic_conventions/http.md#http-server)
-- [HTTP Server span attributes v1.23.0 (stable)](https://github.com/open-telemetry/semantic-conventions/blob/v1.23.0/docs/http/http-spans.md#http-server)
+- [HTTP server span attributes v1.20.0](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.20.0/specification/trace/semantic_conventions/http.md#http-server)
+- [HTTP server span attributes v1.23.0 (stable)](https://github.com/open-telemetry/semantic-conventions/blob/v1.23.0/docs/http/http-spans.md#http-server)
 
 ### HTTP client and server span names
 
