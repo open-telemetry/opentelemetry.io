@@ -148,31 +148,28 @@ References:
 
 ### HTTP client duration metric
 
-[`v1.20.0`](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.20.0/specification/metrics/semantic_conventions/http-metrics.md#metric-httpclientduration)
-->
-[`v1.23.0` (stable)](https://github.com/open-telemetry/semantic-conventions/blob/v1.22.0/docs/http/http-metrics.md#metric-httpclientrequestduration)
+<!-- prettier-ignore-start -->
+| Change | Comments |
+| --- | --- |
+| Name: `http.client.duration` &rarr; `http.client.request.duration` | |
+| Unit: `ms` &rarr; `s` | Unit changed from milliseconds to seconds |
+| Description | Updated from "_measuring the duration of inbound HTTP requests_" &rarr; the "_duration of HTTP server requests_" |
+| Histogram buckets | Boundaries updated to reflect change from milliseconds to seconds, and zero bucket boundary removed |
+| `http.method` &rarr; `http.request.method` | Now captures only 9 common HTTP methods by default plus `_OTHER` |
+| `http.status_code` &rarr; `http.response.status_code` |  |
+| `net.peer.name` &rarr; `server.address` |  |
+| `net.peer.port` &rarr; `server.port` | Now captured even when same as default port for scheme |
+| `net.sock.peer.addr` | Removed |
+| `net.protocol.name` &rarr; `network.protocol.name` | Recommended &rarr; Conditionally required if not `http` and `network.protocol.version` is set |
+| `net.protocol.version` &rarr; `network.protocol.version` | Examples fixed: `2.0` &rarr; `2` and `3.0` &rarr; `3`; see note if [migrating from `<= v1.19.0`](#migrating-from--v1190) |
+| New: `error.type` |  |
+{.td-initial .table .table-responsive}
+<!-- prettier-ignore-end -->
 
-- Name: `http.client.duration` -> `http.client.request.duration`
-- Unit: `ms` -> `s`
-- Description: `Measures the duration of inbound HTTP requests.` ->
-  `Duration of HTTP server requests.`
-- Histogram buckets: boundaries updated to reflect change from milliseconds to
-  seconds, and zero bucket boundary removed
-- Attribute changes:
-  - `http.method` -> `http.request.method`
-    - Now captures only 9 common HTTP methods by default plus `_OTHER`
-  - `http.status_code` -> `http.response.status_code`
-  - `net.peer.name` -> `server.address`
-  - `net.peer.port` -> `server.port`
-    - Now captured even when same as default port for scheme
-  - `net.sock.peer.addr` -> Removed
-  - `net.protocol.name` -> `network.protocol.name`
-    - Recommended -> Conditionally required if not `http` and
-      `network.protocol.version` is set
-  - `net.protocol.version` -> `network.protocol.version`
-    - Examples fixed: `2.0` -> `2` and `3.0` -> `3`
-    - Note: see below if updating from version `v1.19.0` or earlier
-  - New: `error.type`
+References:
+
+- [Metric `http.client.duration` v1.20.0](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.20.0/specification/metrics/semantic_conventions/http-metrics.md#metric-httpclientduration)
+- [Metric `http.client.request.duration` v1.23.0 (stable)](https://github.com/open-telemetry/semantic-conventions/blob/v1.23.0/docs/http/http-metrics.md#metric-httpclientrequestduration)
 
 ### HTTP server duration metric
 
