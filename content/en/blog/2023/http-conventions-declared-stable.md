@@ -65,7 +65,7 @@ from
 to
 [v1.23.0 (stable)](https://github.com/open-telemetry/semantic-conventions/blob/v1.23.0/docs/http/).
 
-### Common attributes across HTTP client and HTTP server spans
+### Common attributes across HTTP client and server spans
 
 <!-- prettier-ignore-start -->
 | Change | Comments |
