@@ -14,9 +14,7 @@ Why are we considering logging support to be in alpha? There are a few reasons.
 The most important is that this is the first time we've shipped the demo with a
 logging database. We chose [OpenSearch](https://opensearch.org/) as the storage
 backend for logs because it's a popular option that aligns with the project's
-license. It's worthwhile to note, though, that the demo has been designed to not
-really need application-level logs -- everything you care about is available as
-a span.
+license. It's worth noting that the demo doesn't require application-level logs &mdash; everything you care about is available as a span.
 
 Where logs shine is in bridging the gap between application traces and
 infrastructure, and over the next few releases we plan to enhance this story by
