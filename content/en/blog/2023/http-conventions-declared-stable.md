@@ -26,7 +26,9 @@ marks a substantial advancement from earlier versions, featuring:
   telemetry capture, processing, and storage costs.
 - Clarified the definition of default values, eliminating ambiguities when
   attributes are absent.
-- Metric cardinality problems have been addressed
+- HTTP metrics are no longer vulnerable to cardinality explosion
+  - `http.request.method` is limited to a (configurable) set of known methods
+  - `server.address` and `server.port`, which are influenced by the `Host` header, are now Opt-In on HTTP metrics
 
 ## Transition plan
 
