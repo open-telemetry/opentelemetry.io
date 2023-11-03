@@ -179,13 +179,19 @@ References:
 
 ### HTTP server duration metric
 
+Metric changes:
+
+- **Name**: `http.server.duration` -> `http.server.request.duration`
+- **Unit**: `ms` -> `s`
+- **Description**: `Measures the duration of inbound HTTP requests.` ->
+  `Duration of HTTP server requests.`
+- **Histogram buckets**: boundaries updated to reflect change from milliseconds to
+  seconds, and zero bucket boundary removed
+- **Attributes**: see table below
+
 <!-- prettier-ignore-start -->
-| Change | Comments |
+| Attribute change | Comments |
 | --- | --- |
-| Name: `http.server.duration` → `http.server.request.duration` |  |
-| Unit: `ms` → `s` |  |
-| Description | Updated from "_Measures the duration of inbound HTTP requests_" → "_Duration of HTTP server requests_" |  |
-| Histogram buckets | Boundaries updated to reflect change from milliseconds to seconds, and zero bucket boundary removed |
 | `http.route` | No change |
 | `http.method` → `http.request.method` | Now captures only 9 common HTTP methods by default plus `_OTHER` |
 | `http.status_code` → `http.response.status_code` |  |
