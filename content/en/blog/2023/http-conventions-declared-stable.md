@@ -6,14 +6,13 @@ author: '[Trask Stalnaker](https://github.com/trask) (Microsoft)'
 cSpell:ignore: Liudmila Molkova
 ---
 
-Early this year we embarked on a three month project to stabilize HTTP semantic
-conventions. We are proud to announce (nine months later), that the HTTP
-semantic conventions are now the first OpenTelemetry semantic convention to be
-declared stable! The stable version is a significant evolution over the previous
-unstable version:
+Early this year, we launched an effort to stabilize HTTP semantic
+conventions. Today, we proudly announce that the HTTP
+semantic conventions are the _first_ OpenTelemetry semantic conventions to be
+declared **[stable](/docs/specs/otel/document-status/)**! This inaugural stable release marks a substantial advancement from earlier versions, featuring:
 
-- Improvements brought over from the
-  [alignment with Elastic Common Schema](/blog/2023/ecs-otel-semconv-convergence/)
+- Enhancements resulting from
+  [convergence with the Elastic Common Schema](/blog/2023/ecs-otel-semconv-convergence/), such as:
   - The `url.*` namespace, which can be reused in the future by non-HTTP
     semantic conventions
   - The `client.*` and `server.*` namespaces, which are easier to reason about
@@ -22,19 +21,13 @@ unstable version:
     namespaces
 - Further alignment with Prometheus by adopting seconds as the standard unit for
   metrics
-- Attributes which are less generally useful are no longer captured by default
-  in order to reduce the cost of capturing, processing, and storing telemetry
-- Default values are now used carefully so that there's no ambiguity whether an
-  attribute's absence represents the default value or not
+- Streamlined attribute capture by omitting less useful attributes, reducing telemetry capture, processing, and storage costs.
+- Clarified the definition of default values, eliminating ambiguities when attributes are absent.
 - Metric cardinality problems have been addressed
 
 ## Transition plan
 
-Because of the number of changes, and because of the number of users impacted by
-these changes, we are requiring instrumentations to implement a transition plan
-to help users manage the process of upgrading to the stable HTTP semantic
-conventions. We plan to use a similar transition plan when stabilizing other
-semantic conventions.
+Due to the significant number of modifications and the extensive user base affected by them, we require instrumentations to create a transition plan that will assist users in upgrading to the stable HTTP semantic conventions. We plan to use a similar transition plan when stabilizing other semantic conventions.
 
 A warning like this appears at the top of stable HTTP semantic convention pages:
 
@@ -56,9 +49,15 @@ A warning like this appears at the top of stable HTTP semantic convention pages:
 > - SHOULD drop the environment variable in the next major version and emit only
 >   the stable HTTP and networking conventions.
 
-## Summary of changes to the HTTP semantic conventions since version `v1.20.0`.
+## Summary of changes
 
-### Common attributes across HTTP client and HTTP server spans:
+In this section we summarize the changes made to the HTTP semantic conventions
+from
+[v1.20.0](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.20.0/specification/trace/semantic_conventions/http.md)
+to [v1.23.0
+(stable)](https://github.com/open-telemetry/semantic-conventions/blob/v1.23.0/docs/http/).
+
+### Common attributes across HTTP client and HTTP server spans
 
 [`v1.20.0`](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.20.0/specification/trace/semantic_conventions/http.md#common-attributes)
 ->
@@ -102,7 +101,7 @@ A warning like this appears at the top of stable HTTP semantic convention pages:
   is `_OTHER`)
 - New: `error.type`
 
-### HTTP client span attributes:
+### HTTP client span attributes
 
 [`v1.20.0`](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.20.0/specification/trace/semantic_conventions/http.md#http-client)
 ->
@@ -114,7 +113,7 @@ A warning like this appears at the top of stable HTTP semantic convention pages:
 - `net.peer.port` -> `server.port`
   - Now captured even when same as default port for scheme
 
-### HTTP server span attributes:
+### HTTP server span attributes
 
 [`v1.20.0`](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.20.0/specification/trace/semantic_conventions/http.md#http-server)
 ->
@@ -139,7 +138,7 @@ A warning like this appears at the top of stable HTTP semantic convention pages:
     [`X-Forwarded-Host`][X-Forwarded-Host], [`Forwarded#host`][Forwarded#host]
     headers)
 
-### HTTP client and server span names:
+### HTTP client and server span names
 
 [`v1.20.0`](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.20.0/specification/trace/semantic_conventions/http.md#name)
 ->
@@ -218,20 +217,20 @@ Note: see below if updating from version `v1.17.0` or earlier.
       headers)
   - New: `error.type`
 
-## If you are coming from an earlier semantic convention version:
+## Migrating from a version earlier than v1.20.0?
 
-### If updating from version `v1.19.0` or earlier:
+### Migrating from `<= v1.19.0`
 
 - `http.flavor` -> `network.protocol.version`
   - Examples fixed: `2.0` -> `2` and `3.0` -> `3`
 
-### If updating from version `v1.18.0` or earlier:
+### Migrating from `<= v1.18.0`
 
 - `http.user_agent` -> `user_agent.original`
 
-### If updating from version `v1.17.0` or earlier:
+### Migrating from `<= v1.17.0`
 
-#### HTTP server span name:
+#### HTTP server span name
 
 - when `http.route` is available
   - `{http.route}` -> `{summary} {http.route}`
@@ -241,7 +240,7 @@ Note: see below if updating from version `v1.17.0` or earlier.
 where `{summary}` is `{http.method}`, unless `{http.method}` is `_OTHER`, in
 which case `{summary}` is `HTTP`.
 
-#### HTTP client span name:
+#### HTTP client span name
 
 - `HTTP {http.method}` -> `{summary}`
 
@@ -263,9 +262,7 @@ which case `{summary}` is `HTTP`.
 [X-Forwarded-Host]:
   https://developer.mozilla.org/docs/Web/HTTP/Headers/X-Forwarded-Host
 
-## Thanks
+## Community Kudos
 
-This was a huge community effort that spanned many many people. Thank you to
-everyone who contributed! And special thanks to
-[Liudmila Molkova](https://github.com/lmolkova) for her HTTP domain expertise
-and for helping to drive this effort every step of the way.
+This was a massive community effort: thanks to all who got involved! A special thanks to
+[Liudmila Molkova](https://github.com/lmolkova) for sharing her HTTP domain expertise, which helped drive this effort every step of the way.
