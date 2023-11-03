@@ -148,13 +148,19 @@ References:
 
 ### HTTP client duration metric
 
+Metric changes:
+
+- **Name**: `http.client.duration` &rarr; `http.client.request.duration`
+- **Unit**: `ms` &rarr; `s`
+- **Description**: `Measures the duration of inbound HTTP requests.` &rarr;
+  `Duration of HTTP server requests.`
+- **Histogram buckets**: boundaries updated to reflect change from milliseconds
+  to seconds, and zero bucket boundary removed
+- **Attributes**: see table below
+
 <!-- prettier-ignore-start -->
-| Change | Comments |
+| Attribute change | Comments |
 | --- | --- |
-| Name: `http.client.duration` &rarr; `http.client.request.duration` | |
-| Unit: `ms` &rarr; `s` | Unit changed from milliseconds to seconds |
-| Description | Updated from "_measuring the duration of inbound HTTP requests_" &rarr; the "_duration of HTTP server requests_" |
-| Histogram buckets | Boundaries updated to reflect change from milliseconds to seconds, and zero bucket boundary removed |
 | `http.method` &rarr; `http.request.method` | Now captures only 9 common HTTP methods by default plus `_OTHER` |
 | `http.status_code` &rarr; `http.response.status_code` |  |
 | `net.peer.name` &rarr; `server.address` |  |
