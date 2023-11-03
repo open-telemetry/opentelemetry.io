@@ -18,7 +18,7 @@ license. It's worth noting that the demo doesn't require application-level logs 
 
 Where logs shine is in bridging the gap between application traces and
 infrastructure, and over the next few releases, we plan to enhance this story by
-collecting Kubernetes, Envoy, and other logs that are relevant to the demo.
+collecting Kubernetes, Envoy, and other logs relevant to the demo.
 
 If this sounds like an interesting problem to work on, we'd love to have you on
 board as a
