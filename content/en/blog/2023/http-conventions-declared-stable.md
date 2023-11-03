@@ -30,12 +30,12 @@ marks a substantial advancement from earlier versions, featuring:
   - `http.request.method` is limited to a (configurable) set of known methods
   - `server.address` and `server.port`, which are influenced by the `Host` header, are now Opt-In on HTTP metrics
 
-## Transition plan
+## Migration plan
 
 Due to the significant number of modifications and the extensive user base
-affected by them, we require instrumentations to create a transition plan that
-will assist users in upgrading to the stable HTTP semantic conventions. We plan
-to use a similar transition plan when stabilizing other semantic conventions.
+affected by them, we require instrumentations to implement a migration plan that
+will assist users in transitioning to the stable HTTP semantic conventions. We plan
+to use a similar migration plan when stabilizing other semantic conventions.
 
 A warning like this appears at the top of stable HTTP semantic convention pages:
 
@@ -44,11 +44,11 @@ A warning like this appears at the top of stable HTTP semantic convention pages:
 >
 > - SHOULD introduce an environment variable `OTEL_SEMCONV_STABILITY_OPT_IN` in
 >   their existing major version, which accepts:
->   - `http` - emit the new, stable HTTP and networking conventions, and stop
+>   - `http` - emit the stable HTTP and networking conventions, and stop
 >     emitting the old HTTP and networking conventions that the instrumentation
 >     emitted previously.
 >   - `http/dup` - emit both the old and the stable HTTP and networking
->     conventions, allowing for a seamless transition.
+>     conventions, allowing for a phased rollout of the stable semantic conventions.
 >   - The default behavior (in the absence of one of these values) is to
 >     continue emitting whatever version of the old HTTP and networking
 >     conventions the instrumentation was emitting previously.
