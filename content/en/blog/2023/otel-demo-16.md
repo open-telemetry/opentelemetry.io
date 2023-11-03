@@ -41,7 +41,7 @@ next months:
   can be used to solve real-world problems.
 - Ensure that the demo reflects the OpenTelemetry feature matrix and that we're
   showing off everything you can do with the project.
-- Improve our dashboards, add alerts, SLOs, and other observability features to
+- Improve our dashboards and add alerts, SLOs, and other observability features to
   the demo.
 - Support other clients and front-end RUM features as they're released.
 
