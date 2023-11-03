@@ -6,13 +6,15 @@ author: '[Trask Stalnaker](https://github.com/trask) (Microsoft)'
 cSpell:ignore: Liudmila Molkova
 ---
 
-Early this year, we launched an effort to stabilize HTTP semantic
-conventions. Today, we proudly announce that the HTTP
-semantic conventions are the _first_ OpenTelemetry semantic conventions to be
-declared **[stable](/docs/specs/otel/document-status/)**! This inaugural stable release marks a substantial advancement from earlier versions, featuring:
+Early this year, we launched an effort to stabilize HTTP semantic conventions.
+Today, we proudly announce that the HTTP semantic conventions are the _first_
+OpenTelemetry semantic conventions to be declared
+**[stable](/docs/specs/otel/document-status/)**! This inaugural stable release
+marks a substantial advancement from earlier versions, featuring:
 
 - Enhancements resulting from
-  [convergence with the Elastic Common Schema](/blog/2023/ecs-otel-semconv-convergence/), such as:
+  [convergence with the Elastic Common Schema](/blog/2023/ecs-otel-semconv-convergence/),
+  such as:
   - The `url.*` namespace, which can be reused in the future by non-HTTP
     semantic conventions
   - The `client.*` and `server.*` namespaces, which are easier to reason about
@@ -21,13 +23,18 @@ declared **[stable](/docs/specs/otel/document-status/)**! This inaugural stable 
     namespaces
 - Further alignment with Prometheus by adopting seconds as the standard unit for
   metrics
-- Streamlined attribute capture by omitting less useful attributes, reducing telemetry capture, processing, and storage costs.
-- Clarified the definition of default values, eliminating ambiguities when attributes are absent.
+- Streamlined attribute capture by omitting less useful attributes, reducing
+  telemetry capture, processing, and storage costs.
+- Clarified the definition of default values, eliminating ambiguities when
+  attributes are absent.
 - Metric cardinality problems have been addressed
 
 ## Transition plan
 
-Due to the significant number of modifications and the extensive user base affected by them, we require instrumentations to create a transition plan that will assist users in upgrading to the stable HTTP semantic conventions. We plan to use a similar transition plan when stabilizing other semantic conventions.
+Due to the significant number of modifications and the extensive user base
+affected by them, we require instrumentations to create a transition plan that
+will assist users in upgrading to the stable HTTP semantic conventions. We plan
+to use a similar transition plan when stabilizing other semantic conventions.
 
 A warning like this appears at the top of stable HTTP semantic convention pages:
 
@@ -54,8 +61,8 @@ A warning like this appears at the top of stable HTTP semantic convention pages:
 In this section we summarize the changes made to the HTTP semantic conventions
 from
 [v1.20.0](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.20.0/specification/trace/semantic_conventions/http.md)
-to [v1.23.0
-(stable)](https://github.com/open-telemetry/semantic-conventions/blob/v1.23.0/docs/http/).
+to
+[v1.23.0 (stable)](https://github.com/open-telemetry/semantic-conventions/blob/v1.23.0/docs/http/).
 
 ### Common attributes across HTTP client and HTTP server spans
 
@@ -264,5 +271,6 @@ which case `{summary}` is `HTTP`.
 
 ## Community Kudos
 
-This was a massive community effort: thanks to all who got involved! A special thanks to
-[Liudmila Molkova](https://github.com/lmolkova) for sharing her HTTP domain expertise, which helped drive this effort every step of the way.
+This was a massive community effort: thanks to all who got involved! A special
+thanks to [Liudmila Molkova](https://github.com/lmolkova) for sharing her HTTP
+domain expertise, which helped drive this effort every step of the way.
