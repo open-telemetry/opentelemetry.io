@@ -45,8 +45,8 @@ release marks a substantial advancement from earlier versions, featuring:
 Due to the significant number of modifications and the extensive user base
 affected by them, we require existing HTTP instrumentations published by
 OpenTelemetry to implement a migration plan that will assist users in
-transitioning to the stable HTTP semantic conventions. We plan to use a similar
-migration plan when stabilizing other semantic conventions.
+transitioning to stable HTTP semantic conventions. We intend to use a similar
+strategy when stabilizing other semantic conventions.
 
 Specifically, when existing HTTP instrumentations published by OpenTelemetry are
 updated to the stable HTTP semantic conventions, they:
