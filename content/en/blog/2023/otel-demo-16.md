@@ -10,7 +10,7 @@ support for the OpenTelemetry [Log signal](/docs/concepts/signals/logs/)!
 
 ## Our thoughts on logs
 
-Why are we considering logging support to be in alpha? There's a few reasons.
+Why are we considering logging support to be in alpha? There are a few reasons.
 The most important is that this is the first time we've shipped the demo with a
 logging database. We chose [OpenSearch](https://opensearch.org/) as the storage
 backend for logs because it's a popular option that aligns with the project's
