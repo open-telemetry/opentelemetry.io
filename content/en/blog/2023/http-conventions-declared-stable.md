@@ -213,12 +213,12 @@ References:
 
 ### Migrating from `<= v1.19.0`
 
-- `http.flavor` -> `network.protocol.version`
-  - Examples fixed: `2.0` -> `2` and `3.0` -> `3`
+- `http.flavor` &rarr; `network.protocol.version`
+  - Examples fixed: `2.0` &rarr; `2` and `3.0` &rarr; `3`
 
 ### Migrating from `<= v1.18.0`
 
-- `http.user_agent` -> `user_agent.original`
+- `http.user_agent` &rarr; `user_agent.original`
 
 ### Migrating from `<= v1.17.0`
 
@@ -234,7 +234,7 @@ which case `{summary}` is `HTTP`.
 
 #### HTTP client span name
 
-- `HTTP {http.method}` -> `{summary}`
+- `HTTP {http.method}` &rarr; `{summary}`
 
 Where `{summary}` is `{http.method}`, unless `{http.method}` is `_OTHER`, in
 which case `{summary}` is `HTTP`.
