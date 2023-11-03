@@ -37,7 +37,7 @@ With the addition of logging, the demo is mostly feature-complete. However,
 there's more that can be done, and we're looking at a few major areas over the
 next months:
 
-- Increase the number of documented scenarios, to demonstrate how OpenTelemetry
+- Increase the number of documented scenarios to demonstrate how OpenTelemetry
   can be used to solve real-world problems.
 - Ensure that the demo reflects the OpenTelemetry feature matrix, and that we're
   showing off everything you can do with the project.
