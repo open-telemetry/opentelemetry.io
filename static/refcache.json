@@ -4487,6 +4487,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:37:49.266869-04:00"
   },
+  "https://opensearch.org/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-03T10:07:17.047111-04:00"
+  },
   "https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/namespace_opentelemetry__metrics.html": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:48:28.97257-04:00"
