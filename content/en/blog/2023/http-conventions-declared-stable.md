@@ -21,8 +21,7 @@ marks a substantial advancement from earlier versions, featuring:
     and work better on logs (where there is no span kind)
   - More consistency around using the `http.request.*` and `http.response.*`
     namespaces
-- Further alignment with Prometheus by adopting seconds as the standard unit for
-  metrics
+- Improved consistency with Prometheus through standardization on seconds for metric units.
 - Streamlined attribute capture by omitting less useful attributes, reducing
   telemetry capture, processing, and storage costs.
 - Clarified the definition of default values, eliminating ambiguities when
