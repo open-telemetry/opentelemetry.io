@@ -9,48 +9,59 @@ cSpell:ignore: chalin Liudmila Molkova
 Early this year, we launched an effort to stabilize HTTP semantic conventions.
 Today, we proudly announce that the HTTP semantic conventions are the _first_
 OpenTelemetry semantic conventions to be declared
-**[stable](/docs/specs/otel/document-status/)**! This inaugural stable [v1.23.0](https://github.com/open-telemetry/semantic-conventions/releases/tag/v1.23.0) release
-marks a substantial advancement from earlier versions, featuring:
+**[stable](/docs/specs/otel/document-status/)**! This inaugural stable
+[v1.23.0](https://github.com/open-telemetry/semantic-conventions/releases/tag/v1.23.0)
+release marks a substantial advancement from earlier versions, featuring:
 
 - Enhancements resulting from
   [convergence with the Elastic Common Schema](/blog/2023/ecs-otel-semconv-convergence/),
   such as:
   - The `url.*` namespace, which can be reused in the future by non-HTTP
     semantic conventions
-  - Replacing the `net.peer.*` and `net.host.*` namespaces with `client.*` and `server.*`, which
-    - Works better for logs, where there's no span kind to indicate which side is peer and which side is host
-    - Simplifies correlation across client and server telemetry (e.g. since you can join directly on `server.address`
-      instead of joining where `net.peer.addr` == `net.host.addr`)
-    - Provides a clean separation from the `network.*` namespace which is now only for low-level network attributes
+  - Replacing the `net.peer.*` and `net.host.*` namespaces with `client.*` and
+    `server.*`, which
+    - Works better for logs, where there's no span kind to indicate which side
+      is peer and which side is host
+    - Simplifies correlation across client and server telemetry (e.g. since you
+      can join directly on `server.address` instead of joining where
+      `net.peer.addr` == `net.host.addr`)
+    - Provides a clean separation from the `network.*` namespace which is now
+      only for low-level network attributes
   - More consistency around using the `http.request.*` and `http.response.*`
     namespaces
-- Improved consistency with Prometheus through standardization on seconds for metric units.
+- Improved consistency with Prometheus through standardization on seconds for
+  metric units.
 - Streamlined attribute capture by omitting less useful attributes, reducing
   telemetry capture, processing, and storage costs.
 - Clarified the definition of default values, eliminating ambiguities when
   attributes are absent.
 - HTTP metrics are no longer vulnerable to cardinality explosion
   - `http.request.method` is limited to a (configurable) set of known methods
-  - `server.address` and `server.port`, which are influenced by the `Host` header, are now Opt-In on HTTP metrics
+  - `server.address` and `server.port`, which are influenced by the `Host`
+    header, are now Opt-In on HTTP metrics
 
 ## Migration plan
 
 Due to the significant number of modifications and the extensive user base
-affected by them, we require existing HTTP instrumentations published by OpenTelemetry to implement a migration plan that
-will assist users in transitioning to the stable HTTP semantic conventions. We plan
-to use a similar migration plan when stabilizing other semantic conventions.
+affected by them, we require existing HTTP instrumentations published by
+OpenTelemetry to implement a migration plan that will assist users in
+transitioning to the stable HTTP semantic conventions. We plan to use a similar
+migration plan when stabilizing other semantic conventions.
 
-Specifically, when existing HTTP instrumentations published by OpenTelemetry are updated to the stable HTTP semantic conventions, they:
-- Need to introduce an environment variable `OTEL_SEMCONV_STABILITY_OPT_IN`
-  in their existing major version, which accepts:
-  - `http` - emit the stable HTTP and networking conventions, and stop
-    emitting the old HTTP and networking conventions that the instrumentation
-    emitted previously.
+Specifically, when existing HTTP instrumentations published by OpenTelemetry are
+updated to the stable HTTP semantic conventions, they:
+
+- Need to introduce an environment variable `OTEL_SEMCONV_STABILITY_OPT_IN` in
+  their existing major version, which accepts:
+  - `http` - emit the stable HTTP and networking conventions, and stop emitting
+    the old HTTP and networking conventions that the instrumentation emitted
+    previously.
   - `http/dup` - emit both the old and the stable HTTP and networking
-    conventions, allowing for a phased rollout of the stable semantic conventions.
-  - The default behavior (in the absence of one of these values) is to
-    continue emitting whatever version of the old HTTP and networking
-    conventions the instrumentation was emitting previously.
+    conventions, allowing for a phased rollout of the stable semantic
+    conventions.
+  - The default behavior (in the absence of one of these values) is to continue
+    emitting whatever version of the old HTTP and networking conventions the
+    instrumentation was emitting previously.
 - Need to maintain (security patching at a minimum) their existing major version
   for at least six months after it starts emitting both sets of conventions.
 - May drop the environment variable in their next major version and emit only
@@ -185,8 +196,8 @@ Metric changes:
 - **Unit**: `ms` &rarr; `s`
 - **Description**: `Measures the duration of inbound HTTP requests.` &rarr;
   `Duration of HTTP server requests.`
-- **Histogram buckets**: boundaries updated to reflect change from milliseconds to
-  seconds, and zero bucket boundary removed
+- **Histogram buckets**: boundaries updated to reflect change from milliseconds
+  to seconds, and zero bucket boundary removed
 - **Attributes**: see table below
 
 <!-- prettier-ignore-start -->
@@ -224,10 +235,10 @@ References:
 
 #### HTTP server span name
 
-- When `http.route` is available:<br>
-  `{http.route}` &rarr; `{summary} {http.route}`
-- When `http.route` is not available:<br>
-  `HTTP {http.method}` &rarr; `{summary}`
+- When `http.route` is available:<br> `{http.route}` &rarr;
+  `{summary} {http.route}`
+- When `http.route` is not available:<br> `HTTP {http.method}` &rarr;
+  `{summary}`
 
 Where `{summary}` is `{http.method}`, unless `{http.method}` is `_OTHER`, in
 which case `{summary}` is `HTTP`.
