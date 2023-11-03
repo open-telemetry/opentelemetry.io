@@ -3,7 +3,7 @@ title: HTTP semantic conventions declared stable
 linkTitle: HTTP semconv are stable
 date: 2023-11-03
 author: '[Trask Stalnaker](https://github.com/trask) (Microsoft)'
-cSpell:ignore: Liudmila Molkova
+cSpell:ignore: chalin Liudmila Molkova
 ---
 
 Early this year, we launched an effort to stabilize HTTP semantic conventions.
