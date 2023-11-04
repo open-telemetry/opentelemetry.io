@@ -1,0 +1,13 @@
+{{/*
+  Returns an array of schema files, sorted with the latest first.
+
+  Each schema file name is a semver. Sorting semver can be tricky, so for now we
+  just sort by file size, descending, which gives us the same as a semver sort.
+  This works because each published schema contains the text of all previously
+  published schemas, and hence must be larger in size.
+
+*/ -}}
+
+{{ $schemaFiles := readDir "content-modules/semantic-conventions/schemas" -}}
+{{ $schemaFilesSortedLatestFirst := sort $schemaFiles "Size" "desc" -}}
+{{ return $schemaFilesSortedLatestFirst -}}

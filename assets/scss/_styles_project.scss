@@ -286,3 +286,7 @@ body.td-page--draft .td-content {
     max-width: calc(100% + 3rem);
   }
 }
+
+details {
+  margin-bottom: $paragraph-margin-bottom;
+}
