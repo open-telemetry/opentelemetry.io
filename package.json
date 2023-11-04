@@ -85,7 +85,7 @@
     "autoprefixer": "^10.4.16",
     "cspell": "^7.3.8",
     "gulp": "^4.0.2",
-    "hugo-extended": "0.119.0",
+    "hugo-extended": "0.120.3",
     "markdownlint": "^0.31.1",
     "postcss-cli": "^10.1.0",
     "prettier": "^3.0.3",
@@ -110,7 +110,7 @@
     "@opentelemetry/semantic-conventions": "^1.8.0"
   },
   "optionalDependencies": {
-    "netlify-cli": "^16.9.3"
+    "netlify-cli": "^17.0.1"
   },
   "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
   "engines": {
