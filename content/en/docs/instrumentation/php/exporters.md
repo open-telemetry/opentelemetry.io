@@ -43,7 +43,7 @@ Next, configure an exporter with an OTLP endpoint. For example:
 
 require __DIR__ . '/vendor/autoload.php';
 
-use OpenTelemetry\API\Common\Signal\Signals;
+use OpenTelemetry\API\Signals;
 use OpenTelemetry\Contrib\Grpc\GrpcTransportFactory;
 use OpenTelemetry\Contrib\Otlp\OtlpUtil;
 use OpenTelemetry\Contrib\Otlp\SpanExporter;
