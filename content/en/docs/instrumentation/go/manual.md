@@ -298,9 +298,9 @@ serializing the context.
 ## Metrics
 
 To start producing [metrics](/docs/concepts/signals/metrics), you'll need to
-have an initialized `MeterProvider` that lets you create a `Meter`. `Meter`s let
-you create `Instrument`s that you can use to create different kinds of metrics.
-OpenTelemetry Go currently supports the following `Instrument`s:
+have an initialized `MeterProvider` that lets you create a `Meter`. Meters let
+you create instruments that you can use to create different kinds of metrics.
+OpenTelemetry Go currently supports the following instruments:
 
 - Counter, a synchronous instrument that supports non-negative increments
 - Asynchronous Counter, an asynchronous instrument which supports non-negative
@@ -890,7 +890,7 @@ You’ll also want to configure an appropriate exporter to
 telemetry backends.
 
 [opentelemetry specification]: /docs/specs/otel/
-[trace semantic conventions]: /docs/specs/otel/trace/semantic_conventions/
+[trace semantic conventions]: /docs/specs/semconv/general/trace/
 [instrumentation library]: ../libraries/
 [`go.opentelemetry.io/otel`]: https://pkg.go.dev/go.opentelemetry.io/otel
 [`go.opentelemetry.io/otel/exporters/stdout/stdoutmetric`]:

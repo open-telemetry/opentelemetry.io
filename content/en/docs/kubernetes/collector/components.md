@@ -35,8 +35,8 @@ but any receiver that fits your data is appropriate.
 
 | Deployment Pattern   | Usable |
 | -------------------- | ------ |
-| DaemonSet (Agent)    | Yes    |
-| Deployment (Gateway) | Yes    |
+| DaemonSet (agent)    | Yes    |
+| Deployment (gateway) | Yes    |
 | Sidecar              | No     |
 
 The Kubernetes Attributes Processor automatically discovers Kubernetes pods,
@@ -183,8 +183,8 @@ roleRef:
 
 | Deployment Pattern   | Usable                                                             |
 | -------------------- | ------------------------------------------------------------------ |
-| DaemonSet (Agent)    | Preferred                                                          |
-| Deployment (Gateway) | Yes, but will only collect metrics from the node it is deployed on |
+| DaemonSet (agent)    | Preferred                                                          |
+| Deployment (gateway) | Yes, but will only collect metrics from the node it is deployed on |
 | Sidecar              | No                                                                 |
 
 Each Kubernetes node runs a kubelet that includes an API server. The Kubernetes
@@ -258,8 +258,8 @@ subjects:
 
 | Deployment Pattern   | Usable                                                          |
 | -------------------- | --------------------------------------------------------------- |
-| DaemonSet (Agent)    | Preferred                                                       |
-| Deployment (Gateway) | Yes, but will only collect logs from the node it is deployed on |
+| DaemonSet (agent)    | Preferred                                                       |
+| Deployment (gateway) | Yes, but will only collect logs from the node it is deployed on |
 | Sidecar              | Yes, but this would be considered advanced configuration        |
 
 The Filelog Receiver tails and parses logs from files. Although it's not a
@@ -404,8 +404,8 @@ spec:
 
 | Deployment Pattern   | Usable                                                   |
 | -------------------- | -------------------------------------------------------- |
-| DaemonSet (Agent)    | Yes, but will result in duplicate data                   |
-| Deployment (Gateway) | Yes, but more than one replica results in duplicate data |
+| DaemonSet (agent)    | Yes, but will result in duplicate data                   |
+| Deployment (gateway) | Yes, but more than one replica results in duplicate data |
 | Sidecar              | No                                                       |
 
 The Kubernetes Cluster Receiver collects metrics and entity events about the
@@ -459,7 +459,7 @@ metadata:
   name: otel-collector-opentelemetry-collector
 rules:
   - apiGroups:
-      - ""
+      - ''
     resources:
       - events
       - namespaces
@@ -488,17 +488,17 @@ rules:
       - list
       - watch
   - apiGroups:
-  - extensions
+      - extensions
     resources:
-    - daemonsets
-    - deployments
-    - replicasets
+      - daemonsets
+      - deployments
+      - replicasets
     verbs:
-    - get
-    - list
-    - watch
+      - get
+      - list
+      - watch
   - apiGroups:
-    - batch
+      - batch
     resources:
       - jobs
       - cronjobs
@@ -533,8 +533,8 @@ subjects:
 
 | Deployment Pattern   | Usable                                                   |
 | -------------------- | -------------------------------------------------------- |
-| DaemonSet (Agent)    | Yes, but will result in duplicate data                   |
-| Deployment (Gateway) | Yes, but more than one replica results in duplicate data |
+| DaemonSet (agent)    | Yes, but will result in duplicate data                   |
+| Deployment (gateway) | Yes, but more than one replica results in duplicate data |
 | Sidecar              | No                                                       |
 
 The Kubernetes Objects receiver collects, either by pulling or watching, objects
@@ -672,8 +672,8 @@ subjects:
 
 | Deployment Pattern   | Usable |
 | -------------------- | ------ |
-| DaemonSet (Agent)    | Yes    |
-| Deployment (Gateway) | Yes    |
+| DaemonSet (agent)    | Yes    |
+| Deployment (gateway) | Yes    |
 | Sidecar              | No     |
 
 Prometheus is a common metrics format for both Kubernetes and services running
@@ -717,8 +717,8 @@ For more information on the design of the receiver, see
 
 | Deployment Pattern   | Usable                                                         |
 | -------------------- | -------------------------------------------------------------- |
-| DaemonSet (Agent)    | Preferred                                                      |
-| Deployment (Gateway) | Yes, but only collects metrics from the node it is deployed on |
+| DaemonSet (agent)    | Preferred                                                      |
+| Deployment (gateway) | Yes, but only collects metrics from the node it is deployed on |
 | Sidecar              | No                                                             |
 
 The Host Metrics Receiver collects metrics from a host using a variety of

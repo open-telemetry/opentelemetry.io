@@ -1,6 +1,7 @@
 ---
 title: Automatic Instrumentation Configuration
 linkTitle: Configuration
+description: Learn how to configure Automatic Instrumentation for Node.js
 weight: 10
 ---
 

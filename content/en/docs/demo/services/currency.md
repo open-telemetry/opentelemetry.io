@@ -1,7 +1,7 @@
 ---
 title: Currency Service
 linkTitle: Currency
-aliases: [/docs/demo/services/currencyservice]
+aliases: [currencyservice]
 cSpell:ignore: chrono decltype labelkv millis noexcept nostd
 ---
 

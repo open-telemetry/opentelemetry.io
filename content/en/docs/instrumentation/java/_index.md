@@ -6,8 +6,8 @@ description: >-
 aliases: [/java, /java/metrics, /java/tracing]
 weight: 18
 cascade:
-  javaVersion: 1.30.1
-  semconvJavaVersion: 1.21.0
+  javaVersion: 1.31.0
+  semconvJavaVersion: 1.22.0
 ---
 
 {{% docs/instrumentation/index-intro java /%}}

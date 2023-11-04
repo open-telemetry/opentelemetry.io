@@ -369,8 +369,9 @@ exporters:
     protocol_version: 2.0.0
 
   # Data sources: traces, metrics, logs
-  logging:
-    loglevel: debug
+  # NOTE: Prior to v0.86.0 use `logging` instead of `debug`
+  debug:
+    verbosity: detailed
 
   # Data sources: traces, metrics
   opencensus:
@@ -501,12 +502,16 @@ consists of three sub-sections:
 - pipelines
 - telemetry
 
+### Extensions {#service-extensions}
+
 Extensions consist of a list of all extensions to enable. For example:
 
 ```yaml
 service:
   extensions: [health_check, pprof, zpages]
 ```
+
+### Pipelines
 
 Pipelines can be of the following types:
 
@@ -538,6 +543,8 @@ service:
       processors: [batch]
       exporters: [opencensus, zipkin]
 ```
+
+### Telemetry
 
 Telemetry is where the telemetry for the collector itself can be configured. It
 has two subsections: `logs` and `metrics`.
@@ -653,7 +660,8 @@ receivers:
 processors:
 
 exporters:
-  logging:
+  # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
+  debug:
 
 service:
   extensions:
@@ -664,7 +672,7 @@ service:
         - otlp/auth
       processors: []
       exporters:
-        - logging
+        - debug
 ```
 
 On the agent side, this is an example that makes the OTLP exporter obtain OIDC

@@ -35,7 +35,7 @@ release notes.
 - [Java v1.22.0](https://github.com/open-telemetry/opentelemetry-java/releases/tag/v1.22.0)
   includes several fixes and enhancements for exporters, as well as other
   ease-of-use and correctness issues. In addition,
-  [Java Agent v1.22.1](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/tag/v1.22.1)
+  [Java agent v1.22.1](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/tag/v1.22.1)
   has been released to align with the core API and SDK, in addition to new
   instrumentations for Spring Web MVC, JMS 3.0 (Jakarta), and Spring JMS 6.0.
 - [Operator v0.68.0](https://github.com/open-telemetry/opentelemetry-operator/releases/tag/v0.68.0)

@@ -1,0 +1,13 @@
+title: Pinecone Instrumentation
+registryType: instrumentation
+isThirdParty: true
+language: python
+tags:
+  - python
+  - instrumentation
+  - pinecone
+repo: https://github.com/traceloop/openllmetry/tree/main/packages/opentelemetry-instrumentation-pinecone
+license: Apache 2.0
+description: Instrumentation for Pinecone Vector DB
+authors: Traceloop <dev@traceloop.com>
+otVersion: latest

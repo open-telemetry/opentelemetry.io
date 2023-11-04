@@ -79,22 +79,23 @@ spec:
         timeout: 10s
 
     exporters:
-      logging:
+      # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
+      debug:
 
     service:
       pipelines:
         traces:
           receivers: [otlp]
           processors: [memory_limiter, batch]
-          exporters: [logging]
+          exporters: [debug]
         metrics:
           receivers: [otlp]
           processors: [memory_limiter, batch]
-          exporters: [logging]
+          exporters: [debug]
         logs:
           receivers: [otlp]
           processors: [memory_limiter, batch]
-          exporters: [logging]
+          exporters: [debug]
 EOF
 ```
 
@@ -246,7 +247,7 @@ spec:
 **Learn more**
 
 For more details, see
-[Java Agent Configuration](/docs/instrumentation/java/automatic/agent-config/).
+[Java agent Configuration](/docs/instrumentation/java/automatic/agent-config/).
 
 ### Node.js
 
@@ -390,7 +391,7 @@ spec:
 
 **Learn more**
 
-[See the Python Agent Configuration docs for more details.](/docs/instrumentation/python/automatic/agent-config/#disabling-specific-instrumentations)
+[See the Python agent Configuration docs for more details.](/docs/instrumentation/python/automatic/agent-config/#disabling-specific-instrumentations)
 
 ### Go
 

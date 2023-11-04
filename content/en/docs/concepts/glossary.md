@@ -3,7 +3,7 @@ title: Glossary
 description: >-
   Terminology you may or may not be familiar with used by the OpenTelemetry
   project.
-weight: 100
+weight: 200
 ---
 
 The OpenTelemetry project uses terminology you may or may not be familiar with.
@@ -331,36 +331,6 @@ See [`Distributed Tracing`](#distributed-tracing).
 An in-process alternative to external exporters. When included, they collect and
 aggregate tracing and metrics information in the background; this data is served
 on web pages when requested. See [more][zpages].
-
-## Additional Terminology
-
-### Traces
-
-#### **[Trace API Terminology](/docs/specs/otel/trace/api)**
-
-#### **[Trace SDK Terminology](/docs/specs/otel/trace/sdk)**
-
-### Metrics
-
-#### **[Metric API Terminology](/docs/specs/otel/metrics/api#overview)**
-
-#### **[Metric SDK Terminology](/docs/specs/otel/metrics#specifications)**
-
-### Logs
-
-#### **[Trace Context Fields](/docs/specs/otel/logs/data-model#trace-context-fields)**
-
-#### **[Severity Fields](/docs/specs/otel/logs/data-model#severity-fields)**
-
-#### **[Log Record Fields](/docs/specs/otel/logs/data-model#log-and-event-record-definition)**
-
-### Semantic Conventions
-
-#### **[Resource Conventions](/docs/specs/otel/resource/semantic_conventions)**
-
-#### **[Span Conventions](/docs/specs/otel/trace/semantic_conventions)**
-
-#### **[Metric Conventions](/docs/specs/otel/metrics/semantic_conventions)**
 
 [baggage]: /docs/specs/otel/baggage/api/
 [attribute]: /docs/specs/otel/common/#attributes
