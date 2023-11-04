@@ -335,3 +335,10 @@
   contact: 'https://github.com/tbragin'
   oss: true
   commercial: true
+- name: TingYun
+  distribution: false
+  nativeOTLP: true
+  url: 'https://wukongdoc.tingyun.com/apm/userguide/deploy_manage/opentelemetry.html'
+  contact: 'otel@tingyun.com'
+  oss: false
+  commercial: true
