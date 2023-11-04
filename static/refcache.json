@@ -2271,6 +2271,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-07-06T11:55:26.882609-07:00"
   },
+  "https://github.com/martinkuba": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-04T11:32:20.86746-04:00"
+  },
   "https://github.com/metrico/otel-collector": {
     "StatusCode": 200,
     "LastSeen": "2023-10-17T15:13:11.067528+02:00"
@@ -2442,6 +2446,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/": {
     "StatusCode": 200,
     "LastSeen": "2023-07-07T13:45:50.007391-07:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/actions/workflows/load-tests.yml": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-04T11:32:21.428206-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/10116": {
     "StatusCode": 200,
@@ -4443,9 +4451,17 @@
     "StatusCode": 206,
     "LastSeen": "2023-07-06T12:14:49.802412-07:00"
   },
+  "https://open-telemetry.github.io/opentelemetry-java/benchmarks/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-04T11:32:21.536067-04:00"
+  },
   "https://open-telemetry.github.io/opentelemetry-js": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:46:19.489479-04:00"
+  },
+  "https://open-telemetry.github.io/opentelemetry-js/benchmarks/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-04T11:32:21.613865-04:00"
   },
   "https://open-telemetry.github.io/opentelemetry-js/benchmarks/data.js": {
     "StatusCode": 206,
