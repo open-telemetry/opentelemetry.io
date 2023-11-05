@@ -583,8 +583,8 @@ service:
       address: 0.0.0.0:8888
 ```
 
-Please note that it's possible to scrape the Collector's metrics by using a
-[`Prometheus` receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver)
+Note that it's possible to scrape the Collector's metrics by using a
+[Prometheus receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver)
 within the Collector itself so that we can consume the Collector's metrics at
 the backend.
 
