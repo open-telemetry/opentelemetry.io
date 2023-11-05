@@ -111,7 +111,7 @@ ourselves to just the items listed here.
 
 - Language examples for
   [C++](https://github.com/open-telemetry/opentelemetry-demo/issues/36),
-  Erlang/elixir,
+  Erlang/Elixir,
   [PHP](https://github.com/open-telemetry/opentelemetry-demo/issues/34), and
   [Rust](https://github.com/open-telemetry/opentelemetry-demo/issues/35)
 - Extend support to

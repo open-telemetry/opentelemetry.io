@@ -297,7 +297,7 @@ Let's have a quick look on the most important edge collector settings. A
 node exists. The `basicauth` extension contains `username` and `password` to
 identify itself to the exposed remote collector. More container and node
 specific information are provided by the `k8sattributes` processor via the
-kubernetes
+Kubernetes
 [Kubernetes downward-api](https://kubernetes.io/docs/concepts/workloads/pods/downward-api/).
 What is not covered is the cluster availability zone and the cluster name. To be
 able to identify the reported spans later, they are inserted manually with the

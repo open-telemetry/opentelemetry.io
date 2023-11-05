@@ -169,7 +169,7 @@ Install the exporter package as a dependency for your application:
 composer require open-telemetry/exporter-zipkin
 ```
 
-Update the example to use the Zipkin exporter and to send data to your zipkin
+Update the example to use the Zipkin exporter and to send data to your Zipkin
 backend:
 
 ```php
