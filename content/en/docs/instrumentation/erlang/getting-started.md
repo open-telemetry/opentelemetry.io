@@ -108,7 +108,8 @@ the assets, and create and migrate the database.
 ### Try It Out
 
 We can ensure everything is working by setting the stdout exporter as
-opentelemetry's traces_exporter and then starting the app with `mix phx.server`.
+OpenTelemetry's `traces_exporter` and then starting the app with
+`mix phx.server`.
 
 ```elixir
 # config/dev.exs
