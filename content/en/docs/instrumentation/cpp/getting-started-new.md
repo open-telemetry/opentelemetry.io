@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-description: Get telemetry for your app in less than 10 minutes!
+description: Get telemetry for your app in less than 5 minutes!
 cSpell:ignore: rolldice
 weight: 10
 ---
