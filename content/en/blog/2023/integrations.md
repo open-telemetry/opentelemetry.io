@@ -16,8 +16,8 @@ date: 2023-11-03
   </span>
 </a>
 
-Embracing OpenTelemetry's [vision](/community/mission/#vision), we are committed
-to enabling high-quality telemetry throughout the entire software stack!
+Embracing OpenTelemetry's [vision], we are committed to enabling high-quality
+telemetry throughout the entire software stack!
 
 We're thrilled to see an expanding collection of
 [libraries, services, and apps integrating](/ecosystem/integrations/)
@@ -28,3 +28,10 @@ celebrate these integrations. This badge will also serve as a beacon, directing
 readers back to this announcement. If you're keen to have your OpenTelemetry
 integration spotlighted and featured in an upcoming blog, refer to
 [How to add your integration](/ecosystem/integrations/#how-to-add).
+
+<!--
+TODO Add #vision anchor to `/community/mission/` once the following lands:
+https://github.com/open-telemetry/community/pull/1776
+-->
+
+[vision]: /community/mission/
