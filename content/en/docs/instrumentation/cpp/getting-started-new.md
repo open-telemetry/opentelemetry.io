@@ -385,4 +385,4 @@ Take a look at available
 [Exporters](/docs/instrumentation/cpp/exporters/) that
 generate telemetry data for popular frameworks and libraries.
 
-[traces]: /docs/concepts/signals/traces/
+[traces]: /docs/concepts/signals/traces/ 
