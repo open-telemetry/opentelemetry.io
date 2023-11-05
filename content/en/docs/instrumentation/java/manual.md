@@ -199,9 +199,9 @@ dependencies {
 }
 ```
 
-Throughout this documentation you will add additional dependencies. For a full
-list of artifact coordinates, see [releases]. For semantic convention releases,
-see [semantic-conventions-java].
+Throughout this documentation you will add dependencies. For a full list of
+artifact coordinates, see [releases]. For semantic convention releases, see
+[semantic-conventions-java].
 
 [releases]: https://github.com/open-telemetry/opentelemetry-java#releases
 [semantic-conventions-java]:
