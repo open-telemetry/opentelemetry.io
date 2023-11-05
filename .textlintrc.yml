@@ -95,7 +95,7 @@ rules:
       - Zend
       - Zipkin
       #
-      # ADVANCED RULES given as [pattern, replacement], take as arguments to a
+      # ADVANCED RULES given as `[pattern, replacement]`, take as arguments to a
       # search-and-replace of the form /pattern/replacement/.
       #
       # If the regex pattern starts with `(?<` or `(?=` or `(?!`, the

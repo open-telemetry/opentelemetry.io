@@ -30,7 +30,7 @@ used are probably:
 
 This article focuses on **HTTP Basic Authentication** for simplicity. It is
 intended to show how a secure setup can be operated without key management or
-further third party services.
+further third-party services.
 
 For more information about TLS configuration I would like to refer to the
 article
