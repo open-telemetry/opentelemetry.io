@@ -44,7 +44,7 @@ application.
 ### Steps to reproduce
 
 Follow the instructions on how you can [put NGINX between two services][].
-Replace the java-based application with a Python application, e.g. put following
+Replace the Java-based application with a Python application, e.g. put following
 three files into the `backend` folder instead:
 
 - `app.py`:

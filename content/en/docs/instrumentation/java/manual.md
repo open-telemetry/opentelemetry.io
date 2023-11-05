@@ -200,8 +200,8 @@ dependencies {
 ```
 
 Throughout this documentation you will add additional dependencies. For a full
-list of artifact coordinates see [releases][releases] and for semantic
-convention releases see [semantic-conventions-java][semantic-conventions-java].
+list of artifact coordinates see [releases] and for semantic convention releases
+see [semantic-conventions-java].
 
 {{% /tab %}} {{% tab Maven %}}
 

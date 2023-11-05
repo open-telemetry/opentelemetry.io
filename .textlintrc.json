@@ -1,6 +1,6 @@
 {
   "plugins": {
-    "@textlint/text": {
+    "@textlint/markdown": {
       "extensions": [".yml"]
     }
   },
@@ -20,8 +20,7 @@
         "Open Agent Management Protocol",
         "SignalFx Smart Agent",
         "/^(?:language|repo): .*$/m",
-        "/tags:([\\n\\r\\s]*-[\\s\\S]*?[\\n\\r]+)*/m",
-        "/\\.java\\b/"
+        "/tags:([\\n\\r\\s]*-[\\s\\S]*?[\\n\\r]+)*/m"
       ]
     }
   },
@@ -54,7 +53,6 @@
         "HTTP",
         "HTTPS",
         "Jaeger",
-        "Java",
         "JavaScript",
         "JBoss",
         "Jetty",
@@ -115,6 +113,7 @@
         ["he/she", "they"],
         ["\\(s\\)he", "they"],
         ["id['’]?s", "IDs"],
+        ["(?<![.-])java\\b(?![.])", "Java"],
         ["java[- ]?agent", "Java agent"],
         ["mac ?os", "macOS"],
         ["meta[- ]data", "metadata"],
