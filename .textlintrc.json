@@ -20,7 +20,7 @@
         "Open Agent Management Protocol",
         "SignalFx Smart Agent",
         "/^(?:language|repo): .*$/m",
-        "/tags:([\\n\\r\\s]*-[\\s\\S]*?[\\n\\r]+)*/m"
+        "/^tags:(\\s*-.+$)*/m"
       ]
     }
   },
