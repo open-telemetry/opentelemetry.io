@@ -325,7 +325,7 @@ in the previous step.
 > As of operator v0.67.0, the Instrumentation resource automatically sets
 > `OTEL_EXPORTER_OTLP_TRACES_PROTOCOL` and `OTEL_EXPORTER_OTLP_METRICS_PROTOCOL`
 > to `http/protobuf` for Python services. If you use an older version of the
-> Operator you **MUST** set these env variables to `http/protobuf`, or python
+> Operator you **MUST** set these env variables to `http/protobuf`, or Python
 > auto-instrumentation will not work.
 
 **Auto-instrumenting Python logs**

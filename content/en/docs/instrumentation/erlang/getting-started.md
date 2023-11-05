@@ -20,7 +20,7 @@ the Phoenix Web Framework.
 ### Prerequisites
 
 Ensure that you have Erlang, Elixir, PostgreSQL (or the database of your
-choice), and Phoenix installed locally. The phoenix
+choice), and Phoenix installed locally. The Phoenix
 [installation guide](https://hexdocs.pm/phoenix/installation.html) will help you
 get set up with everything you need.
 
