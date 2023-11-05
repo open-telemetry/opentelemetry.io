@@ -39,7 +39,7 @@
     "check:links": "npm run _check:links",
     "check:markdown": "npx gulp lint-md",
     "check:spelling": "npx cspell --no-progress -c .vscode/cspell.json content data 'layouts/**/*.md'",
-    "check:text": "npm run _check:text",
+    "check:text": "npm run _check:text -- ",
     "check": "npm run seq -- $(npm run -s _list:check:*)",
     "clean": "make clean",
     "cp:spec": "./scripts/content-modules/cp-pages.sh",
