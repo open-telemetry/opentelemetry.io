@@ -469,7 +469,7 @@ to accomplish tasks not directly involved with processing telemetry data. For
 example, you can add extensions for Collector health monitoring, service
 discovery, or data forwarding, among others.
 
-You can configure extensions through the `extensions:` section of the Collector
+You can configure extensions through the `extensions` section of the Collector
 configuration file. Most extensions come with default settings, so you can
 configure them just by specifying the name of the extension. Any setting you
 specify overrides the default values, if present.
