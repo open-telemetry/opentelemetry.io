@@ -93,7 +93,7 @@ Add the path to the Java agent to your startup script:
 
 {{< tabpane text=true persist=lang >}}
 
-{{% tab header="Linux (\<tomcat_home\>/bin/setenv.sh)" lang=Linux %}}
+{{% tab header="Linux (`<tomcat_home>/bin/setenv.sh`)" lang=Linux %}}
 
 ```sh
 CATALINA_OPTS="$CATALINA_OPTS -javaagent:/path/to/opentelemetry-javaagent.jar"
