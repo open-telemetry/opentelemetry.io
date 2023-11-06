@@ -28,19 +28,19 @@ Start from an empty directory. Create a file called `Dockerfile` and copy the
 following content into it:
 
 ```dockerfile
-FROM nginx:1.18
+FROM nginx:1.23.1
 RUN apt-get update ; apt-get install unzip
-ADD https://github.com/open-telemetry/opentelemetry-cpp-contrib/releases/download/webserver%2Fv1.0.0/opentelemetry-webserver-sdk-x64-linux.tgz.zip /opt
+ADD https://github.com/open-telemetry/opentelemetry-cpp-contrib/releases/download/webserver%2Fv1.0.3/opentelemetry-webserver-sdk-x64-linux.tgz /opt
 RUN cd /opt ; unzip opentelemetry-webserver-sdk-x64-linux.tgz.zip; tar xvfz opentelemetry-webserver-sdk-x64-linux.tgz
 RUN cd /opt/opentelemetry-webserver-sdk; ./install.sh
 ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/opentelemetry-webserver-sdk/sdk_lib/lib
-RUN echo "load_module /opt/opentelemetry-webserver-sdk/WebServerModule/Nginx/ngx_http_opentelemetry_module.so;\n$(cat /etc/nginx/nginx.conf)" > /etc/nginx/nginx.conf
+RUN echo "load_module /opt/opentelemetry-webserver-sdk/WebServerModule/Nginx/1.23.1/ngx_http_opentelemetry_module.so;\n$(cat /etc/nginx/nginx.conf)" > /etc/nginx/nginx.conf
 COPY opentelemetry_module.conf /etc/nginx/conf.d
 ```
 
 What this `Dockerfile` does:
 
-- Pull a base image with NGINX 1.18 pre-installed
+- Pull a base image with NGINX 1.23.1 pre-installed
 - Install `unzip`
 - Download the [opentelemetry-webserver-sdk-x64-linux] package
 - Unpack the package, put it into `/opt` & run `./install.sh`

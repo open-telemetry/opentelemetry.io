@@ -619,6 +619,30 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:51:23.515285-04:00"
   },
+  "https://developer.mozilla.org/docs/Web/HTTP/Headers/Forwarded#for": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-03T03:04:16.900109-04:00"
+  },
+  "https://developer.mozilla.org/docs/Web/HTTP/Headers/Forwarded#host": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-03T03:04:48.340922-04:00"
+  },
+  "https://developer.mozilla.org/docs/Web/HTTP/Headers/Forwarded#proto": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-03T03:04:27.385988-04:00"
+  },
+  "https://developer.mozilla.org/docs/Web/HTTP/Headers/X-Forwarded-For": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-03T03:04:11.582225-04:00"
+  },
+  "https://developer.mozilla.org/docs/Web/HTTP/Headers/X-Forwarded-Host": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-03T03:04:43.193675-04:00"
+  },
+  "https://developer.mozilla.org/docs/Web/HTTP/Headers/X-Forwarded-Proto": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-03T03:04:22.148405-04:00"
+  },
   "https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T15:53:59.660121-04:00"
@@ -2263,6 +2287,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:32:10.766549-04:00"
   },
+  "https://github.com/lmolkova": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-03T03:04:54.119611-04:00"
+  },
   "https://github.com/mahboubii/grpcmetrics": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:15:29.922451-04:00"
@@ -2511,6 +2539,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-10-01T12:48:05.307263-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.88.0": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-01T21:52:01.79874-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-releases": {
     "StatusCode": 200,
     "LastSeen": "2023-09-06T15:04:15.511399+02:00"
@@ -2542,6 +2574,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.86.0": {
     "StatusCode": 200,
     "LastSeen": "2023-10-01T12:48:04.831958-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-releases/releases/tag/v0.88.0": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-01T21:52:01.329725-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/": {
     "StatusCode": 200,
@@ -2815,6 +2851,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-09-06T23:25:00.040812-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet/releases/tag/core-1.7.0-alpha.1": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-01T21:52:03.81232-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-erlang": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:34:54.783458-04:00"
@@ -2975,6 +3015,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-10-01T12:48:06.579275-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/tag/v1.31.0": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-01T21:52:02.990981-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-java/releases": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:47:15.179862-04:00"
@@ -3018,6 +3062,10 @@
   "https://github.com/open-telemetry/opentelemetry-java/releases/tag/v1.30.1": {
     "StatusCode": 200,
     "LastSeen": "2023-10-01T12:48:06.126841-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java/releases/tag/v1.31.0": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-01T21:52:02.56201-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-js": {
     "StatusCode": 200,
@@ -3066,6 +3114,10 @@
   "https://github.com/open-telemetry/opentelemetry-js/releases/tag/v1.17.0": {
     "StatusCode": 200,
     "LastSeen": "2023-10-01T12:48:07.83784-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-js/releases/tag/v1.17.1": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-01T21:52:03.390422-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-lambda": {
     "StatusCode": 200,
@@ -3130,6 +3182,10 @@
   "https://github.com/open-telemetry/opentelemetry-operator/releases/tag/v0.85.0": {
     "StatusCode": 200,
     "LastSeen": "2023-10-01T12:48:05.717569-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/releases/tag/v0.88.0": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-01T21:52:02.137465-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-php": {
     "StatusCode": 200,
@@ -3286,6 +3342,10 @@
   "https://github.com/open-telemetry/opentelemetry-specification/compare/v1.24.0...v1.25.0": {
     "StatusCode": 200,
     "LastSeen": "2023-10-01T12:48:04.394314-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/compare/v1.25.0...v1.26.0": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-01T21:52:00.483708-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/discussions/2695": {
     "StatusCode": 200,
@@ -3450,6 +3510,14 @@
   "https://github.com/open-telemetry/semantic-conventions/releases/tag/v1.21.0": {
     "StatusCode": 200,
     "LastSeen": "2023-08-03T12:57:53.46166-04:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/releases/tag/v1.22.0": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-01T21:52:00.884558-04:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/releases/tag/v1.23.0": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-03T20:22:42.689401141Z"
   },
   "https://github.com/opentracing": {
     "StatusCode": 200,
@@ -5187,6 +5255,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:52:00.52366-04:00"
   },
+  "https://strimzi.io/docs/operators/latest/deploying#assembly-distributed-tracing-str": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-31T16:02:16.454105-04:00"
+  },
   "https://studio.apollographql.com": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:53:19.161811-04:00"
@@ -5294,6 +5366,10 @@
   "https://tools.ietf.org/html/rfc8174": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:42:20.913106-04:00"
+  },
+  "https://tools.ietf.org/html/rfc9113#section-8.3.1": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-03T03:04:37.939785-04:00"
   },
   "https://tracetest.io/": {
     "StatusCode": 206,
@@ -5426,6 +5502,10 @@
   "https://wikipedia.org/wiki/Page_fault": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:40:22.997241-04:00"
+  },
+  "https://wukongdoc.tingyun.com/apm/userguide/deploy_manage/opentelemetry.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-01T09:14:51.938778+08:00"
   },
   "https://www.alibabacloud.com/": {
     "StatusCode": 200,

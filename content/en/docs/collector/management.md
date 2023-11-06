@@ -5,7 +5,7 @@ weight: 23
 cSpell:ignore: AFVGQT backpressure distro GRRKNBJE hostmetrics loglevel
 ---
 
-This document describes how you can manage your OpenTelemetry collector
+This document describes how you can manage your OpenTelemetry Collector
 deployment at scale.
 
 To get the most out of this page you should know how to install and configure
@@ -24,7 +24,7 @@ Typical agent management tasks include:
 1. Querying the agent information and configuration. The agent information can
    include its version, operating system related information, or capabilities.
    The configuration of the agent refers to its telemetry collection setup, for
-   example, the OpenTelemetry collector
+   example, the OpenTelemetry Collector
    [configuration][otel-collector-configuration].
 1. Upgrading/downgrading agents and management of agent-specific packages,
    including the base agent functionality and plugins.
