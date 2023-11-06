@@ -15,7 +15,8 @@ differs from server to server.
 To define the path to the Java agent, add the `javaagent` argument at the end of
 the standalone configuration file:
 
-{{< tabpane text=true >}} {{% tab header="Linux (standalone.conf)" lang=Linux %}}
+{{< tabpane text=true >}}
+{{% tab header="Linux (standalone.conf)" lang=Linux %}}
 
 ```sh
 JAVA_OPTS="$JAVA_OPTS -javaagent:/path/to/opentelemetry-javaagent.jar"
