@@ -4,17 +4,7 @@ linkTitle: Integrations Welcome!
 date: 2023-11-08
 ---
 
-<!-- prettier-ignore -->
-<a type="button"
-  href="/blog/2023/integrations/"
-  class="ot-integration-badge btn shadow float-end"
-  title="Learn more"
-  data-bs-toggle="tooltip" data-bs-title="Learn more">
-  <span class="fw-semibold">OTel integration!</span>
-  <span class="position-absolute top-0 start-100 translate-middle text-warning">
-    <i class="fa-solid fa-circle-info"></i>
-  </span>
-</a>
+{{< blog/integration-badge >}}
 
 Embracing OpenTelemetry's [vision], we are committed to enabling high-quality
 telemetry throughout the entire software stack!
