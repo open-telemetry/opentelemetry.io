@@ -63,8 +63,8 @@ See https://github.com/open-telemetry/$repo/releases/tag/v$latest_version."
 
 existing_pr_count=$(gh pr list --state all --search "in:title $message" | wc -l)
 if [ "$existing_pr_count" -gt 0 ]; then
-    echo "PR(s) for version $latest_version of $repo already exist:"
-    gh pr list --state all --search "in:title $message"
+    echo "PR(s) already exist for '$message'"
+    gh pr list --state all --search "\"$message\" in:title"
     echo "So we won't create another. Exiting."
     exit 0
 fi
