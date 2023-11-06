@@ -1,5 +1,6 @@
 ---
-title: Configuring application servers
+title: Application server configuration
+linkTitle: App server config
 description: Learn how to define agent paths for Java application servers
 weight: 15
 cSpell:ignore: asadmin binsetenv binstart Glassfish Payara setenv
@@ -12,15 +13,21 @@ differs from server to server.
 ## JBoss EAP / WildFly
 
 To define the path to the Java agent, add the `javaagent` argument at the end of
-the `standalone.conf` or the `standalone.conf.bat` configuration files:
+the standalone configuration file:
 
-```shell
-# Linux / standalone.conf
+{{< tabpane text=true >}} {{% tab header="Linux (standalone.conf)" lang=Linux %}}
+
+```sh
 JAVA_OPTS="$JAVA_OPTS -javaagent:/path/to/opentelemetry-javaagent.jar"
+```
 
-# Windows / standalone.conf.bat
+{{% /tab %}} {{% tab header="Windows (standalone.conf.bat)" lang=Windows %}}
+
+```bat
 set "JAVA_OPTS=%JAVA_OPTS% -javaagent:<Drive>:\path\to\opentelemetry-javaagent.jar"
 ```
+
+{{% /tab %}} {{< /tabpane >}}
 
 ## Jetty
 
@@ -40,7 +47,7 @@ JAVA_OPTIONS="${JAVA_OPTIONS} -javaagent:/path/to/opentelemetry-javaagent.jar"
 If you use the start.ini file to define JVM arguments, add the `javaagent`
 argument after the `--exec` option:
 
-```shell
+```ini
 #===========================================================
 # Sample Jetty start.ini file
 #-----------------------------------------------------------
@@ -52,13 +59,19 @@ argument after the `--exec` option:
 
 Add the path to the Java agent using the `asadmin` tool:
 
-```shell
-# Linux
-<server_install_dir>/bin/asadmin create-jvm-options "-javaagent\:/path/to/opentelemetry-javaagent.jar"
+{{< tabpane text=true >}} {{% tab Linux %}}
 
-# Windows
+```sh
+<server_install_dir>/bin/asadmin create-jvm-options "-javaagent\:/path/to/opentelemetry-javaagent.jar"
+```
+
+{{% /tab %}} {{% tab Windows %}}
+
+```powershell
 <server_install_dir>\bin\asadmin.bat create-jvm-options '-javaagent\:<Drive>\:\\path\\to\\opentelemetry-javaagent.jar'
 ```
+
+{{% /tab %}} {{< /tabpane >}}
 
 You can also add the `-javaagent` argument from the Admin Console. For example:
 
