@@ -114,7 +114,7 @@ Add the path to the Java agent to your domain startup script:
 
 {{< tabpane text=true persist=lang >}}
 
-{{% tab header="Linux (\<domain_home\>/bin/startWebLogic.sh)" lang=Linux %}}
+{{% tab header="Linux (`<domain_home>/bin/startWebLogic.sh`)" lang=Linux %}}
 
 ```sh
 export JAVA_OPTIONS="$JAVA_OPTIONS -javaagent:/path/to/opentelemetry-javaagent.jar"
