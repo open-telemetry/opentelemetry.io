@@ -25,21 +25,19 @@ first.
 
 ### Language Requirements
 
-<!-- prettier-ignore -->
-{{< tabpane text=true >}}
-{{% tab Java %}}
+{{< tabpane text=true >}} {{% tab Java %}}
 
 The Lambda layer supports the Java 8, 11, and 17 (Corretto) Lambda runtimes. For
 more information about supported Java versions, see the
 [OpenTelemetry Java documentation](/docs/instrumentation/java/).
 
-**Note:** The Java Auto-instrumentation Agent is in the Lambda layer - Automatic
+**Note:** The Java Auto-instrumentation agent is in the Lambda layer - Automatic
 instrumentation has a notable impact on startup time on AWS Lambda and you will
 generally need to use this along with provisioned concurrency and warmup
 requests to serve production requests without causing timeouts on initial
 requests while it initializes.
 
-By default, the OTel Java Agent in the Layer will try to auto-instrument all the
+By default, the OTel Java agent in the Layer will try to auto-instrument all the
 code in your application. This can have a negative impact on the Lambda cold
 startup time.
 
@@ -69,26 +67,20 @@ OTEL_INSTRUMENTATION_AWS_LAMBDA_ENABLED=true
 OTEL_INSTRUMENTATION_AWS_SDK_ENABLED=true
 ```
 
-<!-- prettier-ignore -->
-{{% /tab %}}
-{{% tab JavaScript %}}
+{{% /tab %}} {{% tab JavaScript %}}
 
 The Lambda layer supports Node.js v14+ Lambda runtimes. For more information
 about supported JavaScript and Node.js versions, see the
 [OpenTelemetry JavaScript documentation](https://github.com/open-telemetry/opentelemetry-js).
 
-<!-- prettier-ignore -->
-{{% /tab %}}
-{{% tab Python %}}
+{{% /tab %}} {{% tab Python %}}
 
 The Lambda layer supports Python 3.8 and Python 3.9 Lambda runtimes. For more
 information about supported Python versions, see the
 [OpenTelemetry Python documentation](https://github.com/open-telemetry/opentelemetry-python/blob/main/README.md#supported-runtimes)
 and the package on [PyPi](https://pypi.org/project/opentelemetry-api/).
 
-<!-- prettier-ignore -->
-{{% /tab %}}
-{{< /tabpane >}}
+{{% /tab %}} {{< /tabpane >}}
 
 ### Configure `AWS_LAMBDA_EXEC_WRAPPER`
 
@@ -124,31 +116,23 @@ there is an embedded Collector with gRPC / HTTP receivers. The environment
 variables do not need to be updated. However, there are varying levels of
 protocol support and default values by language which are documented below.
 
-<!-- prettier-ignore -->
-{{< tabpane text=true >}}
-{{% tab Java %}}
+{{< tabpane text=true >}} {{% tab Java %}}
 
-`OTEL_EXPORTER_OTLP_PROTOCOL=grpc` Supports: `grpc`, `http/protobuf` and
+`OTEL_EXPORTER_OTLP_PROTOCOL=grpc` supports: `grpc`, `http/protobuf` and
 `http/json` `OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317`
 
-<!-- prettier-ignore -->
-{{% /tab %}}
-{{% tab Python %}}
-
-`OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf` Supports: `http/protobuf` and
-`http/json` `OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318`
-
-<!-- prettier-ignore -->
-{{% /tab %}}
-{{% tab JavaScript %}}
+{{% /tab %}} {{% tab JavaScript %}}
 
 `OTEL_EXPORTER_OTLP_PROTOCOL` env var is not supported The hard coded exporter
 uses the protocol `http/protobuf`
 `OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318`
 
-<!-- prettier-ignore -->
-{{% /tab %}}
-{{< /tabpane >}}
+{{% /tab %}} {{% tab Python %}}
+
+`OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf` supports: `http/protobuf` and
+`http/json` `OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318`
+
+{{% /tab %}} {{< /tabpane >}}
 
 ### Publish your Lambda
 

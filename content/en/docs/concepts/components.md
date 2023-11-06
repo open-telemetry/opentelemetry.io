@@ -1,7 +1,7 @@
 ---
 title: Components
 description: The main components that make up OpenTelemetry
-aliases: [/docs/concepts/data-collection]
+aliases: [data-collection]
 weight: 20
 ---
 
@@ -73,13 +73,7 @@ For more information, see
 
 ### Exporters
 
-In order to visualize and analyze your telemetry, you will need to export your
-data to a Collector or a backend such as Jaeger, Zipkin, Prometheus or a
-[vendor-specific](/ecosystem/vendors/) one.
-
-As part of the language specific implementations you will find many Exporters
-being available. Among them, [OTLP](/docs/specs/otlp/) Exporters provide the
-best experience for you as an end-user.
+{{% docs/instrumentation/exporters-intro all %}}
 
 ### Automatic Instrumentation
 
@@ -94,14 +88,17 @@ For more information, see
 
 ### Resource Detectors
 
-A resource represents the entity producing telemetry as resource attributes. For
-example, a process producing telemetry that is running in a container on
-Kubernetes has a Pod name, a namespace, and possibly a deployment name. All
-three of these attributes can be included in the resource.
+A [resource](/docs/concepts/resources/) represents the entity producing
+telemetry as resource attributes. For example, a process producing telemetry
+that is running in a container on Kubernetes has a Pod name, a namespace, and
+possibly a deployment name. All three of these attributes can be included in the
+resource.
 
 The language specific implementations of OpenTelemetry provide resource
-detection from the environment variable OTEL_RESOURCE_DETECTION and for many
+detection from the environment variable `OTEL_RESOURCE_ATTRIBUTES` and for many
 common entities, like process runtime, service, host or operating system.
+
+For more information, see [Resources](/docs/concepts/resources/).
 
 ### Cross Service Propagators
 

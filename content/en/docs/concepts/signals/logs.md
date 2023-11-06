@@ -4,7 +4,7 @@ weight: 3
 ---
 
 A **log** is a timestamped text record, either structured (recommended) or
-unstructured, with metadata. Of all telemetry signals logs, have the biggest
+unstructured, with metadata. Of all telemetry signals, logs have the biggest
 legacy. Most programming languages have built-in logging capabilities or
 well-known, widely used logging libraries. Although logs are an independent data
 source, they may also be attached to spans. In OpenTelemetry, any data that is

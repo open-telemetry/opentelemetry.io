@@ -1,7 +1,8 @@
+# cSpell:ignore docsy goldmark netlify wordmark
 baseURL: https://opentelemetry.io
 title: &title OpenTelemetry
 description: &desc The OpenTelemetry Project Site
-disableKinds: [taxonomy, taxonomyTerm]
+disableKinds: [taxonomy]
 theme: [docsy]
 disableAliases: true # We do redirects via Netlify's _redirects file
 enableGitInfo: true
@@ -15,7 +16,7 @@ languages:
       title: *title
       description: *desc
 imaging:
-  resampleFilter: CatmullRom
+  resampleFilter: CatmullRom # cspell:disable-line
   quality: 75
   anchor: smart
 
@@ -125,12 +126,20 @@ params:
         desc: >-
           CNCF works in close association with Linux Foundation. Read the
           privacy policy here
+      - name: Trademark Usage
+        url: https://www.linuxfoundation.org/legal/trademark-usage
+        icon: fa-solid fa-trademark
+        desc: Linux Foundation’s trademarks policy and guidelines.
       - name: Marketing Guidelines
         url: /community/marketing-guidelines/
         icon: fas fa-bullhorn
         desc: >-
           Important information on how to represent your personal or corporate
           contributions or participation in the OpenTelemetry project.
+      - name: Site-build info
+        url: /site/
+        icon: fa-solid fa-hammer
+        desc: Site-build information.
 
   logos:
     hero: opentelemetry-horizontal-color.png
@@ -159,7 +168,7 @@ params:
       icon: far fa-envelope
 
   fonts:
-    - name: Noto Sans
+    - name: Noto Sans # cspell:disable-line
       sizes: [300, 400, 600, 700]
       type: sans_serif
 
@@ -167,6 +176,10 @@ params:
     docker-compose-v2: |
       `docker-compose` is deprecated. For details, see
       [Migrate to Compose V2](https://docs.docker.com/compose/migrate/).
+    browser-instrumentation: |
+      Client instrumentation for the browser is **experimental** and mostly **unspecified**.
+      If you are interested in helping out, get in touch with the
+      [Client Instrumentation SIG](https://docs.google.com/document/d/16Vsdh-DM72AfMg_FIt9yT9ExEWF4A_vRbQ3jRNBe09w).
 
 services:
   googleAnalytics:
@@ -174,6 +187,12 @@ services:
     # real ID is set in the Netlify config. For details, see
     # https://github.com/open-telemetry/opentelemetry.io/issues/1626.
     id: UA-00000000-0 # TODO: switch to G-0000000000 once we get confirmation that it's ok to do so
+
+security:
+  funcs: # cspell:disable-line
+    getenv: # cspell:disable-line
+      # Netlify build env var
+      - ^(BRANCH|BUILD_ID|COMMIT_REF|CONTEXT|DEPLOY_ID|NETLIFY|PULL_REQUEST|REVIEW_ID)$
 
 module:
   mounts:

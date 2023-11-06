@@ -78,7 +78,7 @@ for ASP.NET Core setup.
 
 First, ensure that you have the right packages:
 
-```
+```sh
 dotnet add package OpenTelemetry
 dotnet add package OpenTelemetry.Extensions.Hosting
 dotnet add package OpenTelemetry.Exporter.Console
@@ -86,7 +86,7 @@ dotnet add package OpenTelemetry.Exporter.Console
 
 Then you can install the Instrumentation package
 
-```
+```sh
 dotnet add package OpenTelemetry.Instrumentation.AspNetCore --prerelease
 ```
 
@@ -114,12 +114,13 @@ builder.Services.AddOpenTelemetry()
   .WithTracing(b =>
   {
       b
-      .AddConsoleExporter()
       .AddSource(serviceName)
       .ConfigureResource(resource =>
           resource.AddService(
             serviceName: serviceName,
             serviceVersion: serviceVersion))
+      .AddAspNetCoreInstrumentation()
+      .AddConsoleExporter();
   });
 ```
 
@@ -260,7 +261,7 @@ public static void DoWork()
     var previous = Activity.Current;
     Activity.Current = null;
 
-    var newRoot = source.StartActivity("NewRoot");
+    var newRoot = MyActivitySource.StartActivity("NewRoot");
 
     // Re-set the previous Current Activity so the trace isn't messed up
     Activity.Current = previous;

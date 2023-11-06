@@ -3,7 +3,8 @@ registryType: receiver
 isThirdParty: false
 language: collector
 tags:
-  - azuremonitor
+  - azure
+  - monitor
   - receiver
   - collector
 repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/azuremonitorreceiver

@@ -1,7 +1,7 @@
 ---
 title: Getting Started
 description: Get telemetry from your app in less than 5 minutes!
-aliases: [/docs/instrumentation/ruby/getting_started]
+aliases: [getting_started]
 # prettier-ignore
 cSpell:ignore: darwin rolldice sinatra struct Tracestate tracestate truffleruby
 weight: 10
@@ -9,8 +9,8 @@ weight: 10
 
 This page will show you how to get started with OpenTelemetry in Ruby.
 
-You will learn how you can instrument a simple application automatically, in
-such a way that [traces][], [metrics][] and [logs][] are emitted to the console.
+You will learn how you can instrument a simple application, in such a way that
+[traces][] are emitted to the console.
 
 ## Prerequisites
 
@@ -19,14 +19,8 @@ Ensure that you have the following installed locally:
 - MRI Ruby >= `3.0`, jruby >= `9.3.2.0`, or truffleruby >= 22.1
 - [Bundler](https://bundler.io/)
 
-{{% alert  title="Warning" color="warning" %}} `jruby` only targets
-compatibility with MRI Ruby 2.6.8, which is EOL. This project does not
-officially support MRI Ruby 2.6.8, and provides `jruby` support on a best-effort
-basis until the `jruby` project supports compatibility with more modern Ruby
-runtimes.
-
-While tested, support for `truffleruby` is on a best-effort basis at this time.
-{{% /alert %}}
+{{% alert  title="Warning" color="warning" %}} While tested, support for `jruby`
+and `truffleruby` are on a best-effort basis at this time. {{% /alert %}}
 
 ## Example Application
 
@@ -68,9 +62,9 @@ file in your preferred editor and update it with the following code:
 
 ```ruby
 class DiceController < ApplicationController
-    def roll
-        render json: (rand(6) + 1).to_s
-    end
+  def roll
+    render json: (rand(6) + 1).to_s
+  end
 end
 ```
 
@@ -102,7 +96,7 @@ bundle add opentelemetry-sdk opentelemetry-instrumentation-all
 ```
 
 The inclusion of `opentelemetry-instrumentation-all` provides
-[instrumentations][auto] for Rails, Sinatra, several HTTP libraries, and more.
+[instrumentations][] for Rails, Sinatra, several HTTP libraries, and more.
 
 For Rails applications, the usual way to initialize OpenTelemetry is in a Rails
 initializer. For other Ruby services, perform this initialization as early as
@@ -192,11 +186,11 @@ a few more features that will allow you gain even deeper insights!
   represents "something happening" during its lifetime.
 - [Manual instrumentation][manual] will give provide you the ability to enrich
   your traces with domain specific data.
+- [The OpenTelemetry Demo](/docs/demo/) includes the Ruby based
+  [Email Service](/docs/demo/services/email/).
 
 [traces]: /docs/concepts/signals/traces/
-[metrics]: /docs/concepts/signals/metrics/
-[logs]: /docs/concepts/signals/logs/
-[auto]:
+[instrumentations]:
   https://github.com/open-telemetry/opentelemetry-ruby#instrumentation-libraries
 [config]: ../automatic/#configuring-specific-instrumentation-libraries
 [exporters]: ../exporters/

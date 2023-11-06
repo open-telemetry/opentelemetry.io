@@ -1,0 +1,15 @@
+title: Encoding extension
+registryType: extension
+isThirdParty: false
+language: collector
+tags:
+  - encoding
+  - extension
+  - collector
+repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/encoding
+license: Apache 2.0
+description:
+  The encoding extension allows for other components to reference ingress/egress
+  data formats
+authors: OpenTelemetry Authors
+otVersion: latest

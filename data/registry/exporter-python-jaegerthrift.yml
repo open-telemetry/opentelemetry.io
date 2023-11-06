@@ -1,9 +1,10 @@
-title: jaegerthrift
+title: OpenTelemetry Jaeger Thrift Exporter
 registryType: exporter
 isThirdParty: false
 language: python
 tags:
-  - jaegerthrift
+  - jaeger
+  - thrift
   - exporter
   - python
 repo: https://github.com/open-telemetry/opentelemetry-python/tree/main/exporter/opentelemetry-exporter-jaeger-thrift

@@ -1,8 +1,8 @@
 # <img src="https://opentelemetry.io/img/logos/opentelemetry-logo-nav.png" alt="OTel logo" width="45"> OpenTelemetry.io
 
-This is the source repo for the [OpenTelemetry][] website, project documentation
-and blog. The site is [built][contributing.md] using [Hugo][] and hosted on
-[Netlify][].
+This is the source repository for the [OpenTelemetry][] website, project
+documentation and blog. The site is [built][contributing.md] using [Hugo][] and
+hosted on [Netlify][].
 
 ## Get involved
 
@@ -30,7 +30,7 @@ new issue/PR with your content to get it added to the docs.
 ### Fork & Write locally
 
 Follow the [setup instructions][contributing.md] then, to create a skeletal blog
-post, run the following command from the repo root:
+post, run the following command from the repository root:
 
 ```sh
 npx hugo new content/en/blog/2023/short-name-for-post.md
@@ -49,15 +49,15 @@ Put assets, if any, like images into the folder created.
 
 Once your post is ready, submit it through a [pull request][].
 
-### Using the Github UI
+### Using the GitHub UI
 
 - Go to the [blog post template](archetypes/blog.md) and click on
-  `Copy raw content` at the top right of the menu
-- [Create a new file](https://github.com/open-telemetry/opentelemetry.io/new/main)
-- Paste the content from the template
+  `Copy raw content` at the top right of the menu.
+- [Create a new file](https://github.com/open-telemetry/opentelemetry.io/new/main).
+- Paste the content from the template.
 - Name your file, e.g.
   `content/en/blog/2022/short-name-for-your-blog-post/index.md`
-- Start editing the markdown file
+- Start editing the markdown file.
 - Once your post is ready click on `Propose changes` at the bottom.
 
 ## Contributing

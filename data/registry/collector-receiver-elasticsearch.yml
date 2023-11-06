@@ -1,3 +1,4 @@
+# cSpell:ignore statsendpoints
 title: Elasticsearch Receiver
 registryType: receiver
 isThirdParty: false

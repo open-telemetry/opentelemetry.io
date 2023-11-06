@@ -1,9 +1,11 @@
-title: zipkinprotohttp
+title: OpenTelemetry Zipkin protobuf Exporter
 registryType: exporter
 isThirdParty: false
 language: python
 tags:
-  - zipkinprotohttp
+  - zipkin
+  - protobuf
+  - http
   - exporter
   - python
 repo: https://github.com/open-telemetry/opentelemetry-python/tree/main/exporter/opentelemetry-exporter-zipkin-proto-http

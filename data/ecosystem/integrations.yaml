@@ -1,25 +1,156 @@
-# cSpell:ignore containerd buildx Quarkus
+# cSpell:ignore containerd buildx Quarkus Cerbos flagd flipt KEDA Kyverno Dapr rustup
 - name: containerd
   url: https://containerd.io/
   docsUrl: https://github.com/containerd/containerd/blob/main/docs/tracing.md
   components: [Go]
+  oss: true
 - name: CRI-O
   url: https://cri-o.io/
   docsUrl: https://github.com/cri-o/cri-o/blob/main/docs/crio.conf.5.md#criotracing-table
   components: [Go]
-- name: Docker buildx
-  url: https://github.com/docker/buildx
+  oss: true
+- name: Docker Buildx and BuildKit
+  url: https://www.docker.com/
   docsUrl: https://docs.docker.com/build/building/opentelemetry/
   components: [Go]
+  oss: true
+- name: Elasticsearch Java API Client
+  url: https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/index.html
+  docsUrl: https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/opentelemetry.html
+  components: [Java]
+  oss: true
 - name: Kubernetes
   url: https://kubernetes.io/
   docsUrl: https://kubernetes.io/docs/concepts/cluster-administration/system-traces/
   components: [Go]
+  oss: true
 - name: Micrometer
   url: https://micrometer.io/
   docsUrl: https://micrometer.io/docs/tracing#_micrometer_tracing_opentelemetry_setup
   components: [Java]
+  oss: true
 - name: Quarkus
   url: https://quarkus.io/
   docsUrl: https://quarkus.io/guides/opentelemetry
   components: [Java]
+  oss: true
+- name: RoadRunner
+  url: https://roadrunner.dev/
+  docsUrl: https://roadrunner.dev/docs/lab-otel/current/en
+  components: [Go, PHP]
+  oss: true
+- name: Kong API Gateway
+  url: http://www.konghq.com/
+  docsUrl: https://docs.konghq.com/hub/kong-inc/opentelemetry/
+  components: []
+  oss: false
+- name: NGINX Web Server
+  url: https://nginx.org/
+  docsUrl: https://github.com/nginxinc/nginx-otel
+  components: [C++]
+  oss: true
+- name: Cisco NSO
+  url: https://www.cisco.com/c/en/us/products/cloud-systems-management/network-services-orchestrator/index.html
+  docsUrl: https://developer.cisco.com/docs/nso/#!observability-exporter/
+  components: [Python]
+  oss: false
+- name: Next.js
+  url: https://nextjs.org/
+  docsUrl: https://nextjs.org/docs/app/building-your-application/optimizing/open-telemetry
+  components: [JavaScript]
+  oss: true
+- name: ThousandEyes (Cisco)
+  url: https://www.thousandeyes.com/
+  docsUrl: 'https://docs.thousandeyes.com/product-documentation/api/opentelemetry'
+  components: [Collector]
+  oss: false
+- name: Cerbos JS SDK
+  url: https://cerbos.dev/
+  docsUrl: https://github.com/cerbos/cerbos-sdk-javascript/tree/main/packages/opentelemetry
+  components: [JavaScript]
+  oss: true
+- name: Tyk API Gateway
+  url: https://tyk.io
+  docsUrl: https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview/
+  components: [Go]
+  oss: true
+- name: OpenFeature flagd
+  url: https://openfeature.dev/
+  docsUrl: https://flagd.dev/reference/monitoring/#opentelemetry
+  components: [Go]
+  oss: true
+- name: Jenkins
+  url: https://www.jenkins.io/
+  docsUrl: https://plugins.jenkins.io/opentelemetry/
+  components: [Java]
+  oss: true
+- name: Flipt
+  url: https://flipt.io/
+  docsUrl: https://www.flipt.io/docs/configuration/observability#tracing
+  components: [Go]
+  oss: true
+- name: Harbor
+  url: https://goharbor.io/
+  docsUrl: https://goharbor.io/docs/edge/administration/distributed-tracing/
+  components: [Go]
+  oss: true
+- name: KEDA
+  url: https://keda.sh/
+  docsUrl: https://keda.sh/docs/2.12/operate/opentelemetry/
+  components: [Go]
+  oss: true
+- name: Open Policy Agent
+  url: https://www.openpolicyagent.org/
+  docsUrl: https://www.openpolicyagent.org/docs/latest/monitoring/#opentelemetry
+  components: [Go]
+  oss: true
+- name: cortex
+  url: https://cortexmetrics.io/
+  docsUrl: https://cortexmetrics.io/docs/guides/tracing/#opentelemetry
+  components: [Go]
+  oss: true
+- name: Thanos
+  url: https://thanos.io/
+  docsUrl: https://thanos.io/tip/thanos/tracing.md/#opentelemetry-otlp
+  components: [Go]
+  oss: true
+- name: Kyverno
+  url: https://kyverno.io/
+  docsUrl: https://kyverno.io/docs/monitoring/opentelemetry/
+  components: [Go]
+  oss: true
+- name: Knative
+  url: https://knative.dev/
+  docsUrl: https://knative.dev/docs/eventing/observability/metrics/collecting-metrics/#about-opentelemetry
+  components: [Go]
+  oss: true
+- name: Dapr
+  url: https://dapr.io/
+  docsUrl: https://docs.dapr.io/operations/observability/tracing/otel-collector/open-telemetry-collector/
+  components: [Go]
+  oss: true
+- name: MySQL Enterprise Server
+  url: https://www.mysql.com/
+  docsUrl: https://dev.mysql.com/doc/refman/8.1/en/telemetry-trace.html
+  components: [C++]
+  oss: false
+- name: rustup
+  url: https://rustup.rs/
+  docsUrl: https://rust-lang.github.io/rustup/dev-guide/tracing.html
+  components: [Rust]
+  oss: true
+- name: Matlab
+  url: https://www.mathworks.com/products/matlab.html
+  docsUrl: https://www.mathworks.com/matlabcentral/fileexchange/130979-opentelemetry-matlab
+  components: [C++]
+  oss: false
+- name: Traefik Hub API Management
+  url: https://traefik.io/traefik-hub/
+  docsUrl: https://doc.traefik.io/traefik-hub/operations/telemetry/overview/
+  components: [Go]
+  oss: false
+- name: Strimzi
+  url: https://strimzi.io/
+  docsUrl: https://strimzi.io/docs/operators/latest/deploying#assembly-distributed-tracing-str
+  components: [Java]
+  oss: true

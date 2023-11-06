@@ -36,10 +36,9 @@ export OTEL_EXPORTER_OTLP_ENDPOINT=http://collector.example.com:4318
 The collector serving at `collector.example.com:4318` would then be configured
 like so:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane lang=yaml >}}
-{{< tab Traces >}}
+{{< tabpane text=true >}} {{% tab Traces %}}
+
+```yaml
 receivers:
   otlp: # the OTLP receiver the app is sending traces to
     protocols:
@@ -49,19 +48,20 @@ processors:
   batch:
 
 exporters:
-  jaeger: # the Jaeger exporter, to ingest traces to backend
-    endpoint: "https://jaeger.example.com:14250"
-    tls:
-      insecure: true
+  otlp/jaeger: # Jaeger supports OTLP directly
+    endpoint: https://jaeger.example.com:4317
 
 service:
   pipelines:
     traces/dev:
       receivers: [otlp]
       processors: [batch]
-      exporters: [jaeger]
-{{< /tab >}}
-{{< tab Metrics >}}
+      exporters: [otlp/jaeger]
+```
+
+{{% /tab %}} {{% tab Metrics %}}
+
+```yaml
 receivers:
   otlp: # the OTLP receiver the app is sending metrics to
     protocols:
@@ -72,7 +72,7 @@ processors:
 
 exporters:
   prometheusremotewrite: # the PRW exporter, to ingest metrics to backend
-    endpoint: "https://prw.example.com/v1/api/remote_write"
+    endpoint: https://prw.example.com/v1/api/remote_write
 
 service:
   pipelines:
@@ -80,9 +80,11 @@ service:
       receivers: [otlp]
       processors: [batch]
       exporters: [prometheusremotewrite]
+```
 
-{{< /tab >}}
-{{< tab Logs >}}
+{{% /tab %}} {{% tab Logs %}}
+
+```yaml
 receivers:
   otlp: # the OTLP receiver the app is sending logs to
     protocols:
@@ -93,7 +95,7 @@ processors:
 
 exporters:
   file: # the File Exporter, to ingest logs to local file
-    path: "./app42_example.log"
+    path: ./app42_example.log
     rotation:
 
 service:
@@ -102,10 +104,9 @@ service:
       receivers: [otlp]
       processors: [batch]
       exporters: [file]
-{{< /tab >}}
-{{< /tabpane>}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 If you want to try it out for yourself, you can have a look at the end-to-end
 [Java][java-otlp-example] or [Python][py-otlp-example] examples.

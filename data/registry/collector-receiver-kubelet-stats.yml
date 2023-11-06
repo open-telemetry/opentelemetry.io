@@ -1,3 +1,4 @@
+# cSpell:ignore kubelet
 title: Kubelet Stats Collector Receiver
 registryType: receiver
 isThirdParty: true

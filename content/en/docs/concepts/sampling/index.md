@@ -3,7 +3,7 @@ title: Sampling
 description:
   Learn about sampling, and the different sampling options available in
   OpenTelemetry.
-weight: 50
+weight: 80
 ---
 
 With distributed tracing, you observe requests as they move from one service to

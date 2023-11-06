@@ -30,7 +30,7 @@ used are probably:
 
 This article focuses on **HTTP Basic Authentication** for simplicity. It is
 intended to show how a secure setup can be operated without key management or
-further third party services.
+further third-party services.
 
 For more information about TLS configuration I would like to refer to the
 article
@@ -198,7 +198,6 @@ my-in-memory-query                        ClusterIP   10.245.91.239   <none>    
 otel-collector-app-collector              ClusterIP   10.245.5.134    <none>        4317/TCP                                                    5m
 otel-collector-app-collector-headless     ClusterIP   None            <none>        4317/TCP                                                    5m
 otel-collector-app-collector-monitoring   ClusterIP   10.245.116.38   <none>        8888/TCP                                                    5m
-
 ```
 
 Finally, cert-manager is configured to automatically request TLS certificates
@@ -298,7 +297,7 @@ Let's have a quick look on the most important edge collector settings. A
 node exists. The `basicauth` extension contains `username` and `password` to
 identify itself to the exposed remote collector. More container and node
 specific information are provided by the `k8sattributes` processor via the
-kubernetes
+Kubernetes
 [Kubernetes downward-api](https://kubernetes.io/docs/concepts/workloads/pods/downward-api/).
 What is not covered is the cluster availability zone and the cluster name. To be
 able to identify the reported spans later, they are inserted manually with the

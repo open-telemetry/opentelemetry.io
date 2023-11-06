@@ -1,8 +1,8 @@
 ---
 title: Quote Service
 linkTitle: Quote
-aliases: [/docs/demo/services/quoteservice]
-cSpell:ignore: autoload autoloading getquote
+aliases: [quoteservice]
+cSpell:ignore: getquote
 ---
 
 This service is responsible for calculating shipping costs, based on the number
@@ -27,7 +27,7 @@ This is enabled by setting the environment variable
 `OTEL_PHP_AUTOLOAD_ENABLED=true`.
 
 ```php
-    require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 ```
 
 There are multiple ways to create or obtain a `Tracer`, in this example we
@@ -35,7 +35,7 @@ obtain one from the global tracer provider which was initialized above, as part
 of SDK autoloading:
 
 ```php
-    $tracer = Globals::tracerProvider()->getTracer('manual-instrumentation');
+$tracer = Globals::tracerProvider()->getTracer('manual-instrumentation');
 ```
 
 ### Manually creating spans
@@ -44,13 +44,13 @@ Creating a span manually can be done via a `Tracer`. The span will be default be
 a child of the active span in the current execution context:
 
 ```php
-    $span = Globals::tracerProvider()
-        ->getTracer('manual-instrumentation')
-        ->spanBuilder('calculate-quote')
-        ->setSpanKind(SpanKind::KIND_INTERNAL)
-        ->startSpan();
-    /* calculate quote */
-    $span->end();
+$span = Globals::tracerProvider()
+    ->getTracer('manual-instrumentation')
+    ->spanBuilder('calculate-quote')
+    ->setSpanKind(SpanKind::KIND_INTERNAL)
+    ->startSpan();
+/* calculate quote */
+$span->end();
 ```
 
 ### Add span attributes
@@ -58,7 +58,7 @@ a child of the active span in the current execution context:
 You can obtain the current span using `OpenTelemetry\API\Trace\Span`.
 
 ```php
-    $span = Span::getCurrent();
+$span = Span::getCurrent();
 ```
 
 Adding attributes to a span is accomplished using `setAttribute` on the span
@@ -66,8 +66,8 @@ object. In the `calculateQuote` function 2 attributes are added to the
 `childSpan`.
 
 ```php
-    $childSpan->setAttribute('app.quote.items.count', $numberOfItems);
-    $childSpan->setAttribute('app.quote.cost.total', $quote);
+$childSpan->setAttribute('app.quote.items.count', $numberOfItems);
+$childSpan->setAttribute('app.quote.cost.total', $quote);
 ```
 
 ### Add span events
@@ -79,15 +79,15 @@ others do not.
 Adding a span event without attributes:
 
 ```php
-    $span->addEvent('Received get quote request, processing it');
+$span->addEvent('Received get quote request, processing it');
 ```
 
 Adding a span event with additional attributes:
 
 ```php
-    $span->addEvent('Quote processed, response sent back', [
-        'app.quote.cost.total' => $payload
-    ]);
+$span->addEvent('Quote processed, response sent back', [
+    'app.quote.cost.total' => $payload
+]);
 ```
 
 ## Metrics

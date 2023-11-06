@@ -1,6 +1,6 @@
 ---
 title: Manual Span Attributes
-aliases: [/docs/demo/manual_span_attributes]
+aliases: [manual_span_attributes]
 cSpell:ignore: featureflag
 ---
 

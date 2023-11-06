@@ -5,7 +5,7 @@ weight: 11
 description:
   An implementation of auto-instrumentation using the OpenTelemetry Operator.
 # prettier-ignore
-cSpell:ignore: autoinstrumentation GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver REDISCALA
+cSpell:ignore: autoinstrumentation GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver PTRACE REDISCALA
 ---
 
 The OpenTelemetry Operator supports injecting and configuring
@@ -26,6 +26,11 @@ or with [Operator Hub](https://operatorhub.io/operator/opentelemetry-operator).
 In most cases, you will need to install
 [cert-manager](https://cert-manager.io/docs/installation/). If you use the helm
 chart, there is an option to generate a self-signed cert instead.
+
+> If you want to use Go auto-instrumentation, you need to enable the feature
+> gate. See
+> [Controlling Instrumentation Capabilities](https://github.com/open-telemetry/opentelemetry-operator#controlling-instrumentation-capabilities)
+> for details.
 
 ## Create an OpenTelemetry Collector (Optional)
 
@@ -74,22 +79,23 @@ spec:
         timeout: 10s
 
     exporters:
-      logging:
+      # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
+      debug:
 
     service:
       pipelines:
         traces:
           receivers: [otlp]
           processors: [memory_limiter, batch]
-          exporters: [logging]
+          exporters: [debug]
         metrics:
           receivers: [otlp]
           processors: [memory_limiter, batch]
-          exporters: [logging]
+          exporters: [debug]
         logs:
           receivers: [otlp]
           processors: [memory_limiter, batch]
-          exporters: [logging]
+          exporters: [debug]
 EOF
 ```
 
@@ -136,6 +142,8 @@ endpoint must be able to receive OTLP over `http/protobuf`. Therefore, the
 example uses `http://demo-collector:4318`, which will connect to the `http` port
 of the `otlpreceiver` of the Collector created in the previous step.
 
+**Excluding auto-instrumentation**
+
 By default, the .NET auto-instrumentation ships with
 [many instrumentation libraries](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/config.md#instrumentations).
 This makes instrumentation easy, but could result in too much or unwanted data.
@@ -165,6 +173,8 @@ spec:
       - name: OTEL_DOTNET_AUTO_METRICS_PROCESS_INSTRUMENTATION_ENABLED
         value: false
 ```
+
+**Learn more**
 
 For more details, see
 [.NET Auto Instrumentation docs](/docs/instrumentation/net/automatic/).
@@ -197,6 +207,8 @@ uses `otlp` with the `grpc` protocol. This means that the configured endpoint
 must be able to receive OTLP over `grpc`. Therefore, the example uses
 `http://demo-collector:4317`, which connects to the `grpc` port of the
 otlpreceiver of the Collector created in the previous step.
+
+**Excluding auto-instrumentation**
 
 By default, the Java auto-instrumentation ships with
 [many instrumentation libraries](/docs/instrumentation/java/automatic/#supported-libraries-frameworks-application-services-and-jvms).
@@ -232,8 +244,10 @@ spec:
         value: false
 ```
 
+**Learn more**
+
 For more details, see
-[Java Agent Configuration](/docs/instrumentation/java/automatic/agent-config/).
+[Java agent Configuration](/docs/instrumentation/java/automatic/agent-config/).
 
 ### Node.js
 
@@ -264,6 +278,8 @@ must be able to receive OTLP over `grpc`. Therefore, the example uses
 `http://demo-collector:4317`, which connects to the `grpc` port of the
 `otlpreceiver` of the Collector created in the previous step.
 
+**Excluding auto-instrumentation**
+
 By default, the Node.js auto-instrumentation ships with
 [many instrumentation libraries](https://github.com/open-telemetry/opentelemetry-js-contrib/blob/main/metapackages/auto-instrumentations-node/README.md#supported-instrumentations).
 At the moment, there is no way to opt-in to only specific packages or disable
@@ -271,8 +287,10 @@ specific packages. If you don't want to use a package included by the default
 image you must either supply your own image that includes only the packages you
 want or use manual instrumentation.
 
+**Learn more**
+
 For more details, see
-[Node.js auto-instrumentation](/docs/instrumentation/js/libraries/#node-autoinstrumentation-package).
+[Node.js auto-instrumentation](/docs/instrumentation/js/libraries/#registration).
 
 ### Python
 
@@ -307,8 +325,41 @@ in the previous step.
 > As of operator v0.67.0, the Instrumentation resource automatically sets
 > `OTEL_EXPORTER_OTLP_TRACES_PROTOCOL` and `OTEL_EXPORTER_OTLP_METRICS_PROTOCOL`
 > to `http/protobuf` for Python services. If you use an older version of the
-> Operator you **MUST** set these env variables to `http/protobuf`, or python
+> Operator you **MUST** set these env variables to `http/protobuf`, or Python
 > auto-instrumentation will not work.
+
+**Auto-instrumenting Python logs**
+
+By default, Python logs auto-instrumentation is disabled. If you would like to
+enable this feature, you must to set the `OTEL_LOGS_EXPORTER` and
+`OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED` environment variables as
+follows:
+
+```yaml
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: python-instrumentation
+  namespace: application
+spec:
+  exporter:
+    endpoint: http://demo-collector:4318
+  env:
+  propagators:
+    - tracecontext
+    - baggage
+  python:
+    env:
+      - name: OTEL_LOGS_EXPORTER
+        value: otlp_proto_http
+      - name: OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED
+        value: 'true'
+```
+
+> Note that `OTEL_LOGS_EXPORTER` must be explicitly set to `otlp_proto_http`,
+> otherwise it defaults to gRPC.
+
+**Excluding auto-instrumentation**
 
 By default the Python auto-instrumentation will detect the packages in your
 Python service and instrument anything it can. This makes instrumentation easy,
@@ -338,7 +389,45 @@ spec:
           instrumentation>
 ```
 
-[See the Python Agent Configuration docs for more details.](/docs/instrumentation/python/automatic/agent-config/#disabling-specific-instrumentations)
+**Learn more**
+
+[See the Python agent Configuration docs for more details.](/docs/instrumentation/python/automatic/agent-config/#disabling-specific-instrumentations)
+
+### Go
+
+The following command creates a basic Instrumentation resource that is
+configured specifically for instrumenting Go services.
+
+```bash
+kubectl apply -f - <<EOF
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: demo-instrumentation
+spec:
+  exporter:
+    endpoint: http://demo-collector:4317
+  propagators:
+    - tracecontext
+    - baggage
+  sampler:
+    type: parentbased_traceidratio
+    argument: "1"
+EOF
+```
+
+By default, the Instrumentation resource that auto-instruments Go services uses
+`otlp` with the `grpc` protocol. This means that the configured endpoint must be
+able to receive OTLP over `grpc`. Therefore, the example uses
+`http://demo-collector:4317`, which connects to the `grpc` port of the
+`otlpreceiver` of the Collector created in the previous step.
+
+> Go auto-instrumentation only supports exporting via gRPC. Setting the protocol
+> or exporter to any other value via environment variables will result in silent
+> failure.
+
+The Go auto-instrumentation does not support disabling any instrumentation.
+[See the Go Auto-Instrumentation repository for me details.](https://github.com/open-telemetry/opentelemetry-go-instrumentation)
 
 ---
 
@@ -355,6 +444,7 @@ done by updating your service’s `spec.template.metadata.annotations` to includ
 a language-specific annotation:
 
 - .NET: `instrumentation.opentelemetry.io/inject-dotnet: "true"`
+- Go: `instrumentation.opentelemetry.io/inject-go: "true"`
 - Java: `instrumentation.opentelemetry.io/inject-java: "true"`
 - Node.js: `instrumentation.opentelemetry.io/inject-nodejs: "true"`
 - Python: `instrumentation.opentelemetry.io/inject-python: "true"`
@@ -375,6 +465,40 @@ all services in that namespace to opt-in to automatic instrumentation. See the
 [Operators auto-instrumentation documentation](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md#opentelemetry-auto-instrumentation-injection)
 for more details.
 
+### Opt-in a Go Service
+
+Unlike other languages' auto-instrumentation, Go works via an eBPF agent running
+via a sidecar. When opted in, the Operator will inject this sidecar into your
+pod. In addition to the `instrumentation.opentelemetry.io/inject-go` annotation
+mentioned above, you must also supply a value for the
+[`OTEL_GO_AUTO_TARGET_EXE` environment variable](https://github.com/open-telemetry/opentelemetry-go-instrumentation/blob/main/docs/how-it-works.md).
+You can set this environment variable via the
+`instrumentation.opentelemetry.io/otel-go-auto-target-exe` annotation.
+
+```yaml
+instrumentation.opentelemetry.io/inject-go: 'true'
+instrumentation.opentelemetry.io/otel-go-auto-target-exe: '/path/to/container/executable'
+```
+
+This environment variable can also be set via the Instrumentation resource, with
+the annotation taking precedence. Since Go auto-instrumentation requires
+`OTEL_GO_AUTO_TARGET_EXE` to be set, you must supply a valid executable path via
+the annotation or the Instrumentation resource. Failure to set this value causes
+instrumentation injection to abort, leaving the original pod unchanged.
+
+Since Go auto-instrumentation uses eBPF, it also requires elevated permissions.
+When you opt in, the sidecar the Operator injects will require the following
+permissions:
+
+```yaml
+securityContext:
+  capabilities:
+    add:
+      - SYS_PTRACE
+  privileged: true
+  runAsUser: 0
+```
+
 ## Troubleshooting
 
 If you run into problems trying to auto-instrument your code, here are a few
@@ -392,7 +516,7 @@ kubectl describe otelinst -n <namespace>
 
 Sample output:
 
-```
+```yaml
 Name:         python-instrumentation
 Namespace:    application
 Labels:       app.kubernetes.io/managed-by=opentelemetry-operator
@@ -483,7 +607,7 @@ kubectl get events -n <your_app_namespace>
 
 Which should output something like this:
 
-```
+```text
 53s         Normal   Created             pod/py-otel-server-7f54bf4cbc-p8wmj    Created container opentelemetry-auto-instrumentation
 53s         Normal   Started             pod/py-otel-server-7f54bf4cbc-p8wmj    Started container opentelemetry-auto-instrumentation
 ```

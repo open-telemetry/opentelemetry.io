@@ -1,3 +1,4 @@
+# cSpell:ignore nhatthm otelsql
 title: nhatthm/otelsql -- OpenTelemetry SQL database driver wrapper for Go
 registryType: instrumentation
 isThirdParty: true

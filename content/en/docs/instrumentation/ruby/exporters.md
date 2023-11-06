@@ -3,13 +3,7 @@ title: Exporters
 weight: 50
 ---
 
-In order to visualize and analyze your traces, you will need to export them to a
-backend such as [Jaeger](https://www.jaegertracing.io/) or
-[Zipkin](https://zipkin.io/). OpenTelemetry Ruby provides exporters for some
-common open source backends.
-
-Below you will find some introductions on how to set up backends and the
-matching exporters.
+{{% docs/instrumentation/exporters-intro ruby %}}
 
 ## OTLP endpoint
 
@@ -17,13 +11,19 @@ To send trace data to a OTLP endpoint (like the [collector](/docs/collector) or
 Jaeger) you'll want to use an exporter package, such as
 `opentelemetry-exporter-otlp`:
 
-{{< tabpane lang=shell >}}
+{{< tabpane text=true >}} {{% tab bundler %}}
 
-{{< tab bundler >}} bundle add opentelemetry-exporter-otlp {{< /tab >}}
+```sh
+bundle add opentelemetry-exporter-otlp
+```
 
-{{< tab gem >}} gem install opentelemetry-exporter-otlp {{< /tab >}}
+{{% /tab %}} {{% tab gem %}}
 
-{{< /tabpane>}}
+```sh
+gem install opentelemetry-exporter-otlp
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 Next, configure the exporter to point at an OTLP endpoint. For example you can
 update `config/initializers/opentelemetry.rb` from the
@@ -85,13 +85,19 @@ docker run --rm -d -p 9411:9411 --name zipkin openzipkin/zipkin
 
 Install the exporter package as a dependency for your application:
 
-{{< tabpane lang=shell >}}
+{{< tabpane text=true >}} {{% tab bundle %}}
 
-{{< tab bundle >}} bundle add opentelemetry-exporter-zipkin {{< /tab >}}
+```sh
+bundle add opentelemetry-exporter-zipkin
+```
 
-{{< tab gem >}} gem install opentelemetry-exporter-zipkin {{< /tab >}}
+{{% /tab %}} {{% tab gem %}}
 
-{{< /tabpane>}}
+```sh
+gem install opentelemetry-exporter-zipkin
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 Update your OpenTelemetry configuration to use the exporter and to send data to
 your Zipkin backend:

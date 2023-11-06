@@ -1,7 +1,7 @@
 ---
 title: Specification Status Summary
 linkTitle: Status
-aliases: [/docs/specs/otel/status]
+aliases: [otel/status]
 weight: -10
 ---
 
@@ -113,7 +113,7 @@ same as the **Protocol** status.
     active development.
 
 [baggage]: /docs/specs/otel/baggage/
-[event semantic conventions]: /docs/specs/otel/logs/semantic_conventions/events/
+[event semantic conventions]: /docs/specs/semconv/general/events/
 [logging]: /docs/specs/otel/logs/
 [logs data model]: /docs/specs/otel/logs/data-model/
 [metrics]: /docs/specs/otel/metrics/

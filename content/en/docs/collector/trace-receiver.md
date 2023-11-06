@@ -2,7 +2,7 @@
 title: Building a Trace Receiver
 weight: 98
 # prettier-ignore
-cSpell:ignore: amzn atmxph backendsystem batchprocessor chicago comcast crand devs Errorf gogl Intn ispnetwork jaegerexporter loggingexporter mapstructure mcrsft otlpreceiver pcommon pdata protogen ptrace Rcvr rquedas sanfrancisco serialnumber slrs stateid struct structs tailtracer uber wndws
+cSpell:ignore: amzn atmxph backendsystem batchprocessor chicago comcast crand debugexporter devs Errorf gogl Intn ispnetwork loggingexporter loglevel mapstructure mcrsft otelcontribcol otlpexporter otlpreceiver pcommon pdata protogen ptrace Rcvr rquedas sanfrancisco serialnumber slrs stateid struct structs Subchannel tailtracer uber wndws zapgrpc
 ---
 
 <!-- markdownlint-disable heading-increment no-duplicate-heading -->
@@ -51,17 +51,10 @@ above in order to create the receiver, so let's get started.
 
 First use the [Building a Custom Collector](/docs/collector/custom-collector)
 tutorial to create a Collector instance named `otelcol-dev`; all you need is to
-copy the `builder-config.yaml` described on Step 2 and make the following
-changes:
-
-```yaml
-dist:
-  name: otelcol-dev # the binary name. Optional.
-  output_path: ./otelcol-dev # the path to write the output (sources and binary). Optional.
-```
-
-As an outcome you should now have a `otelcol-dev` folder with your Collector's
-development instance ready to go.
+copy the `builder-config.yaml` described on
+[Step 2](/docs/collector/custom-collector#step-2---create-a-builder-manifest-file)
+and run the builder. As an outcome you should now have a `otelcol-dev` folder
+with your Collector's development instance ready to go.
 
 In order to properly test your trace receiver, you will need a distributed
 tracing backend so the Collector can send the telemetry to it. We will be using
@@ -71,10 +64,11 @@ with the following command:
 
 ```sh
 docker run -d --name jaeger \
+  -e COLLECTOR_OTLP_ENABLED=true \
   -p 16686:16686 \
-  -p 14268:14268 \
-  -p 14250:14250 \
-  jaegertracing/all-in-one:1.29
+  -p 14317:4317 \
+  -p 14318:4318 \
+  jaegertracing/all-in-one:1.41
 ```
 
 Now, create a `config.yaml` file so you can set up your Collector's components.
@@ -85,7 +79,7 @@ touch config.yaml
 ```
 
 For now, you just need a basic traces pipeline with the `otlp` receiver, the
-`jaeger` and `logging` exporters, here is what your `config.yaml` file should
+`otlp` and `debug`[^1] exporters, here is what your `config.yaml` file should
 look like:
 
 > config.yaml
@@ -99,10 +93,11 @@ receivers:
 processors:
 
 exporters:
-  logging:
+  # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
+  debug:
     verbosity: detailed
-  jaeger:
-    endpoint: localhost:14250
+  otlp/jaeger:
+    endpoint: localhost:14317
     tls:
       insecure: true
 
@@ -111,14 +106,14 @@ service:
     traces:
       receivers: [otlp]
       processors: []
-      exporters: [jaeger, logging]
+      exporters: [otlp/jaeger, debug]
   telemetry:
     logs:
       level: debug
 ```
 
-Notice that I am only using the `insecure` flag in my `jaeger` receiver config
-to make my local development setup easier; you should not use this flag when
+Notice that I am only using the `insecure` flag in my `otlp` exporter config to
+make my local development setup easier; you should not use this flag when
 running your collector in production.
 
 In order to verify that your initial pipeline is properly set up, you should
@@ -126,34 +121,35 @@ have the following output after running your `otelcol-dev` command:
 
 ```console
 $ ./otelcol-dev --config config.yaml
-2022-06-21T13:02:09.253-0500    info    builder/exporters_builder.go:255        Exporter was built.     {"kind": "exporter", "name": "jaeger"}
-2022-06-21T13:02:09.254-0500    info    builder/exporters_builder.go:255        Exporter was built.     {"kind": "exporter", "name": "logging"}
-2022-06-21T13:02:09.254-0500    info    builder/pipelines_builder.go:224        Pipeline was built.     {"kind": "pipeline", "name": "traces"}
-2022-06-21T13:02:09.254-0500    info    builder/receivers_builder.go:225        Receiver was built.     {"kind": "receiver", "name": "otlp", "datatype": "traces"}
-2022-06-21T13:02:09.254-0500    info    service/telemetry.go:102        Setting up own telemetry...
-2022-06-21T13:02:09.255-0500    info    service/telemetry.go:141        Serving Prometheus metrics      {"address": ":8888", "level": "basic"}
-2022-06-21T13:02:09.255-0500    info    service/service.go:93   Starting extensions...
-2022-06-21T13:02:09.255-0500    info    service/service.go:98   Starting exporters...
-2022-06-21T13:02:09.255-0500    info    builder/exporters_builder.go:40 Exporter is starting... {"kind": "exporter", "name": "jaeger"}
-2022-06-21T13:02:09.258-0500    info    builder/exporters_builder.go:48 Exporter started.       {"kind": "exporter", "name": "jaeger"}
-2022-06-21T13:02:09.258-0500    info    jaegerexporter@v0.53.0/exporter.go:186  State of the connection with the Jaeger Collector backend       {"kind": "exporter", "name": "jaeger", "state": "IDLE"}
-2022-06-21T13:02:09.258-0500    info    builder/exporters_builder.go:40 Exporter is starting... {"kind": "exporter", "name": "logging"}
-2022-06-21T13:02:09.258-0500    info    builder/exporters_builder.go:48 Exporter started.       {"kind": "exporter", "name": "logging"}
-2022-06-21T13:02:09.258-0500    info    service/service.go:103  Starting processors...
-2022-06-21T13:02:09.258-0500    info    builder/pipelines_builder.go:54 Pipeline is starting... {"kind": "pipeline", "name": "traces"}
-2022-06-21T13:02:09.258-0500    info    builder/pipelines_builder.go:65 Pipeline is started.    {"kind": "pipeline", "name": "traces"}
-2022-06-21T13:02:09.258-0500    info    service/service.go:108  Starting receivers...
-2022-06-21T13:02:09.258-0500    info    builder/receivers_builder.go:67 Receiver is starting... {"kind": "receiver", "name": "otlp"}
-2022-06-21T13:02:09.258-0500    info    otlpreceiver/otlp.go:70 Starting GRPC server on endpoint localhost:55690        {"kind": "receiver", "name": "otlp"}
-2022-06-21T13:02:09.261-0500    info    builder/receivers_builder.go:72 Receiver started.       {"kind": "receiver", "name": "otlp"}
-2022-06-21T13:02:09.262-0500    info    service/collector.go:226        Starting otelcol-dev... {"Version": "1.0.0", "NumCPU": 12}
-2022-06-21T13:02:09.262-0500    info    service/collector.go:134        Everything is ready. Begin running and processing data.
-2022-06-21T13:02:10.258-0500    info    jaegerexporter@v0.53.0/exporter.go:186  State of the connection with the Jaeger Collector backend       {"kind": "exporter", "name": "jaeger", "state": "READY"}
+2023-09-12T15:22:18.652-0700    info    service/telemetry.go:84 Setting up own telemetry...
+2023-09-12T15:22:18.652-0700    info    service/telemetry.go:201        Serving Prometheus metrics      {"address": ":8888", "level": "Basic"}
+2023-09-12T15:22:18.652-0700    debug   exporter@v0.85.0/exporter.go:273        Stable component.       {"kind": "exporter", "data_type": "traces", "name": "otlp/jaeger"}
+2023-09-12T15:22:18.652-0700    info    exporter@v0.85.0/exporter.go:275        Development component. May change in the future.        {"kind": "exporter", "data_type": "traces", "name": "debug"}
+2023-09-12T15:22:18.652-0700    debug   receiver@v0.85.0/receiver.go:294        Stable component.       {"kind": "receiver", "name": "otlp", "data_type": "traces"}
+2023-09-12T15:22:18.652-0700    info    service/service.go:138  Starting otelcontribcol...      {"Version": "0.85.0", "NumCPU": 10}
+2023-09-12T15:22:18.652-0700    info    extensions/extensions.go:31     Starting extensions...
+2023-09-12T15:22:18.652-0700    info    zapgrpc/zapgrpc.go:178  [core] [Channel #1] Channel created     {"grpc_log": true}
+2023-09-12T15:22:18.652-0700    info    zapgrpc/zapgrpc.go:178  [core] [Channel #1] original dial target is: "localhost:14317"  {"grpc_log": true}
+2023-09-12T15:22:18.652-0700    info    zapgrpc/zapgrpc.go:178  [core] [Channel #1] parsed dial target is: {URL:{Scheme:localhost Opaque:14317 User: Host: Path: RawPath: OmitHost:false ForceQuery:false RawQuery: Fragment: RawFragment:}}   {"grpc_log": true}
+2023-09-12T15:22:18.652-0700    info    zapgrpc/zapgrpc.go:178  [core] [Channel #1] fallback to scheme "passthrough"    {"grpc_log": true}
+2023-09-12T15:22:18.652-0700    info    zapgrpc/zapgrpc.go:178  [core] [Channel #1] parsed dial target is: {URL:{Scheme:passthrough Opaque: User: Host: Path:/localhost:14317 RawPath: OmitHost:false ForceQuery:false RawQuery: Fragment: RawFragment:}}      {"grpc_log": true}
+2023-09-12T15:22:18.652-0700    info    zapgrpc/zapgrpc.go:178  [core] [Channel #1] Channel authority set to "localhost:14317"  {"grpc_log": true}
+2023-09-12T15:22:18.652-0700    info    zapgrpc/zapgrpc.go:178  [core] [Channel #1] Channel switches to new LB policy "pick_first"      {"grpc_log": true}
+2023-09-12T15:22:18.652-0700    info    zapgrpc/zapgrpc.go:178  [core] [Channel #1 SubChannel #2] Subchannel created    {"grpc_log": true}
+2023-09-12T15:22:18.652-0700    info    zapgrpc/zapgrpc.go:178  [core] [Channel #1] Channel Connectivity change to CONNECTING   {"grpc_log": true}
+2023-09-12T15:22:18.652-0700    info    zapgrpc/zapgrpc.go:178  [core] [Channel #1 SubChannel #2] Subchannel Connectivity change to CONNECTING  {"grpc_log": true}
+2023-09-12T15:22:18.652-0700    info    zapgrpc/zapgrpc.go:178  [core] [Server #3] Server created       {"grpc_log": true}
+2023-09-12T15:22:18.652-0700    info    zapgrpc/zapgrpc.go:178  [core] [pick-first-lb 0x140027d9b30] Received SubConn state update: 0x140027d9ce0, {ConnectivityState:CONNECTING ConnectionError:<nil>}        {"grpc_log": true}
+2023-09-12T15:22:18.652-0700    info    zapgrpc/zapgrpc.go:178  [core] [Channel #1 SubChannel #2] Subchannel picks a new address "localhost:14317" to connect   {"grpc_log": true}
+2023-09-12T15:22:18.652-0700    info    otlpreceiver@v0.85.0/otlp.go:83 Starting GRPC server    {"kind": "receiver", "name": "otlp", "data_type": "traces", "endpoint": "0.0.0.0:4317"}
+2023-09-12T15:22:18.652-0700    info    service/service.go:161  Everything is ready. Begin running and processing data.
+2023-09-12T15:22:18.652-0700    info    zapgrpc/zapgrpc.go:178  [core] [Server #3 ListenSocket #4] ListenSocket created {"grpc_log": true}
+2023-09-12T15:22:18.662-0700    info    zapgrpc/zapgrpc.go:178  [core] [Channel #1 SubChannel #2] Subchannel Connectivity change to READY       {"grpc_log": true}
 ```
 
-Make sure you see the last line, that will confirm that the Jaeger exporter has
-successfully established a connection to your local Jaeger instance. Now that we
-have our environment ready, let's start writing your receiver's code.
+Make sure you see the last line, that will confirm that the OTLP exporter has
+successfully established a gRPC connection to your local Jaeger instance. Now
+that we have our environment ready, let's start writing your receiver's code.
 
 Now, create another folder called `tailtracer` so we can have a place to host
 all of our receiver code.
@@ -229,10 +225,12 @@ type Config struct {
 }
 ```
 
-> #### Check your work
->
-> - I added the `Interval` and the `NumberOfTraces` fields so I can properly
->   have access to their values from the config.yaml.
+{{% alert title="Check your work" color="primary" %}}
+
+- Added the `Interval` and the `NumberOfTraces` fields to properly have access
+  to their values from the config.yaml.
+
+{{% /alert %}}
 
 Now that you have access to the settings, you can provide any kind of validation
 needed for those values by implementing the `Validate` method according to the
@@ -275,15 +273,16 @@ func (cfg *Config) Validate() error {
 }
 ```
 
-> #### Check your work
->
-> - I imported the `fmt` package, so I can properly format print my error
->   messages.
-> - I added the `Validate` method to my Config struct where I am checking if the
->   `interval` setting value is at least 1 minute (1m) and if the
->   `number_of_traces` setting value is greater or equal to 1. If that is not
->   true the Collector will generate an error during its startup process and
->   display the message accordingly.
+{{% alert title="Check your work" color="primary" %}}
+
+- Imported the `fmt` package to properly format print error messages.
+- Added the `Validate` method to the Config struct to check if the `interval`
+  setting value is at least 1 minute (1m) and if the `number_of_traces` setting
+  value is greater or equal to 1. If that is not true the Collector will
+  generate an error during its startup process and display the message
+  accordingly.
+
+{{% /alert %}}
 
 If you want to take a closer look at the structs and interfaces involved in the
 configuration aspects of a component, take a look at the
@@ -298,7 +297,7 @@ which is bootstrapped with the following components:
 
 - Receivers: OTLP Receiver
 - Processors: Batch Processor
-- Exporters: Logging and Jaeger Exporters
+- Exporters: Debug[^1] and OTLP Exporters
 
 Go ahead and open the `components.go` file under the `otelcol-dev` folder, and
 let's take a look at the `components()` function.
@@ -322,8 +321,8 @@ func components() (otelcol.Factories, error) {
 	}
 
 	factories.Exporters, err = exporter.MakeFactoryMap(
-		loggingexporter.NewFactory(),
-		jaegerexporter.NewFactory(),
+		debugexporter.NewFactory(),
+		otlpexporter.NewFactory(),
 	)
 	if err != nil {
 		return otelcol.Factories{}, err
@@ -472,23 +471,25 @@ func NewFactory() receiver.Factory {
 }
 ```
 
-> #### Check your work
->
-> - Importing the `time` package in order to support the time.Duration type for
->   the defaultInterval
-> - Importing the `go.opentelemetry.io/collector/component` package, which is
->   where `component.Config` is declared.
-> - Importing the `go.opentelemetry.io/collector/receiver` package, which is
->   where `receiver.Factory` is declared.
-> - Added a `time.Duration` constant called `defaultInterval` to represent the
->   default value for our receiver's `Interval` setting. We will be setting the
->   default value for 1 minute hence the assignment of `1 * time.Minute` as its
->   value.
-> - Added a function called `createDefaultConfig` which is responsible to return
->   a component.Config implementation, which in this case is going to be an
->   instance of our `tailtracer.Config` struct.
-> - The `tailtracer.Config.Interval` field was initialized with the
->   `defaultInterval` constant.
+{{% alert title="Check your work" color="primary" %}}
+
+- Importing the `time` package in order to support the time.Duration type for
+  the defaultInterval.
+- Importing the `go.opentelemetry.io/collector/component` package, which is
+  where `component.Config` is declared.
+- Importing the `go.opentelemetry.io/collector/receiver` package, which is where
+  `receiver.Factory` is declared.
+- Added a `time.Duration` constant called `defaultInterval` to represent the
+  default value for our receiver's `Interval` setting. We will be setting the
+  default value for 1 minute hence the assignment of `1 * time.Minute` as its
+  value.
+- Added a function called `createDefaultConfig` which is responsible to return a
+  component.Config implementation, which in this case is going to be an instance
+  of our `tailtracer.Config` struct.
+- The `tailtracer.Config.Interval` field was initialized with the
+  `defaultInterval` constant.
+
+{{% /alert %}}
 
 ### Enabling the factory to describe the receiver as capable of processing traces
 
@@ -590,18 +591,20 @@ func NewFactory() receiver.Factory {
 }
 ```
 
-> #### Check your work
->
-> - Importing the `context` package in order to support the `context.Context`
->   type referenced in the `createTracesReceiver` function
-> - Importing the `go.opentelemetry.io/collector/consumer` package in order to
->   support the `consumer.Traces` type referenced in the `createTracesReceiver`
->   function
-> - Updated the `NewFactory()` function so it returns the `receiver.Factory`
->   generated by the `receiver.NewFactory()` call with the required parameters.
->   The generated receiver factory will be capable of processing traces through
->   the call to
->   `receiver.WithTraces(createTracesReceiver, component.StabilityLevelAlpha)`
+{{% alert title="Check your work" color="primary" %}}
+
+- Importing the `context` package in order to support the `context.Context` type
+  referenced in the `createTracesReceiver` function.
+- Importing the `go.opentelemetry.io/collector/consumer` package in order to
+  support the `consumer.Traces` type referenced in the `createTracesReceiver`
+  function.
+- Updated the `NewFactory()` function so it returns the `receiver.Factory`
+  generated by the `receiver.NewFactory()` call with the required parameters.
+  The generated receiver factory will be capable of processing traces through
+  the call to
+  `receiver.WithTraces(createTracesReceiver, component.StabilityLevelAlpha)`
+
+{{% /alert %}}
 
 At this point, you have the `tailtracer` factory and config code needed for the
 Collector to validate the `tailtracer` receiver settings if they are defined
@@ -632,8 +635,8 @@ import (
 	"go.opentelemetry.io/collector/otelcol"
 	"go.opentelemetry.io/collector/processor"
 	"go.opentelemetry.io/collector/receiver"
-	loggingexporter "go.opentelemetry.io/collector/exporter/loggingexporter"
-	jaegerexporter "github.com/open-telemetry/opentelemetry-collector-contrib/exporter/jaegerexporter"
+	debugexporter "go.opentelemetry.io/collector/exporter/debugexporter"
+	otlpexporter "go.opentelemetry.io/collector/exporter/otlpexporter"
 	batchprocessor "go.opentelemetry.io/collector/processor/batchprocessor"
 	otlpreceiver "go.opentelemetry.io/collector/receiver/otlpreceiver"
 	tailtracer "github.com/rquedas/otel4devs/collector/receiver/trace-receiver/tailtracer"
@@ -658,8 +661,8 @@ func components() (otelcol.Factories, error) {
 	}
 
 	factories.Exporters, err = exporter.MakeFactoryMap(
-		loggingexporter.NewFactory(),
-		jaegerexporter.NewFactory(),
+		debugexporter.NewFactory(),
+		otlpexporter.NewFactory(),
 	)
 	if err != nil {
 		return otelcol.Factories{}, err
@@ -676,14 +679,16 @@ func components() (otelcol.Factories, error) {
 }
 ```
 
-> #### Check your work
->
-> - Importing the
->   `github.com/rquedas/otel4devs/collector/receiver/trace-receiver/tailtracer`
->   module which is where the receiver types and function are.
-> - Added a call to `tailtracer.NewFactory()` as a parameter of the
->   `receiver.MakeFactoryMap()` call so your `tailtracer` receiver factory is
->   properly added to the `factories` map.
+{{% alert title="Check your work" color="primary" %}}
+
+- Importing the
+  `github.com/rquedas/otel4devs/collector/receiver/trace-receiver/tailtracer`
+  module which is where the receiver types and function are.
+- Added a call to `tailtracer.NewFactory()` as a parameter of the
+  `receiver.MakeFactoryMap()` call so your `tailtracer` receiver factory is
+  properly added to the `factories` map.
+
+{{% /alert %}}
 
 We added the `tailtracer` receiver settings to the `config.yaml` previously, so
 here is what the beginning of the output for running your Collector with
@@ -692,14 +697,14 @@ codebase:
 
 ```console
 $ ./otelcol-dev --config config.yaml
-2022-02-24T12:17:41.454-0600    info    service/collector.go:190        Applying configuration...
-2022-02-24T12:17:41.454-0600    info    builder/exporters_builder.go:254        Exporter was built.     {"kind": "exporter", "name": "logging"}
-2022-02-24T12:17:41.454-0600    info    builder/exporters_builder.go:254        Exporter was built.     {"kind": "exporter", "name": "jaeger"}
-2022-02-24T12:17:41.454-0600    info    builder/pipelines_builder.go:222        Pipeline was built.     {"name": "pipeline", "name": "traces"}
-2022-02-24T12:17:41.454-0600    info    builder/receivers_builder.go:111        Ignoring receiver as it is not used by any pipeline      {"kind": "receiver", "name": "tailtracer"}
-2022-02-24T12:17:41.454-0600    info    builder/receivers_builder.go:224        Receiver was built.     {"kind": "receiver", "name": "otlp", "datatype": "traces"}
-2022-02-24T12:17:41.454-0600    info    service/service.go:86   Starting extensions...
-2022-02-24T12:17:41.454-0600    info    service/service.go:91   Starting exporters...
+2023-09-28T08:56:53.027-0700    info    service@v0.86.0/telemetry.go:84 Setting up own telemetry...
+2023-09-28T08:56:53.027-0700    info    service@v0.86.0/telemetry.go:201        Serving Prometheus metrics      {"address": ":8888", "level": "Basic"}
+2023-09-28T08:56:53.027-0700    debug   exporter@v0.86.0/exporter.go:273        Stable component.       {"kind": "exporter", "data_type": "traces", "name": "otlp/jaeger"}
+2023-09-28T08:56:53.027-0700    info    exporter@v0.86.0/exporter.go:275        Development component. May change in the future.        {"kind": "exporter", "data_type": "traces", "name": "debug"}
+2023-09-28T08:56:53.027-0700    debug   receiver@v0.86.0/receiver.go:294        Alpha component. May change in the future.      {"kind": "receiver", "name": "tailtracer", "data_type": "traces"}
+2023-09-28T08:56:53.027-0700    debug   receiver@v0.86.0/receiver.go:294        Stable component.       {"kind": "receiver", "name": "otlp", "data_type": "traces"}
+2023-09-28T08:56:53.027-0700    info    service@v0.86.0/service.go:138  Starting otelcol-dev... {"Version": "1.0.0", "NumCPU": 10}
+2023-09-28T08:56:53.027-0700    info    extensions/extensions.go:31     Starting extensions...
 ```
 
 Look for the log line for "builder/receivers_builder.go:111" (it's the 4th line
@@ -814,17 +819,19 @@ func (tailtracerRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
 }
 ```
 
-> #### Check your work
->
-> - Importing the `context` package which is where the `Context` type and
->   functions are declared
-> - Importing the `go.opentelemetry.io/collector/component` package which is
->   where the `Host` type is declared
-> - Added a bootstrap implementation of the
->   `Start(ctx context.Context, host component.Host)` method to comply with the
->   `receiver.Traces` interface.
-> - Added a bootstrap implementation of the `Shutdown(ctx context.Context)`
->   method to comply with the `receiver.Traces` interface.
+{{% alert title="Check your work" color="primary" %}}
+
+- Importing the `context` package which is where the `Context` type and
+  functions are declared.
+- Importing the `go.opentelemetry.io/collector/component` package which is where
+  the `Host` type is declared.
+- Added a bootstrap implementation of the
+  `Start(ctx context.Context, host component.Host)` method to comply with the
+  `receiver.Traces` interface.
+- Added a bootstrap implementation of the `Shutdown(ctx context.Context)` method
+  to comply with the `receiver.Traces` interface.
+
+{{% /alert %}}
 
 The `Start()` method is passing 2 references (`context.Context` and
 `component.Host`) that your receiver might need to keep so they can be used as
@@ -886,15 +893,17 @@ func (tailtracerRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
 }
 ```
 
-> #### Check your work
->
-> - Updated the `Start()` method by adding the initialization to the `host`
->   field with the `component.Host` reference passed by the Collector and the
->   `cancel` function field with the cancellation based on a new context created
->   with `context.Background()` (according the Collector's API documentation
->   suggestions).
-> - Updated the `Stop()` method by adding a call to the `cancel()` context
->   cancellation function.
+{{% alert title="Check your work" color="primary" %}}
+
+- Updated the `Start()` method by adding the initialization to the `host` field
+  with the `component.Host` reference passed by the Collector and the `cancel`
+  function field with the cancellation based on a new context created with
+  `context.Background()` (according the Collector's API documentation
+  suggestions).
+- Updated the `Stop()` method by adding a call to the `cancel()` context
+  cancellation function.
+
+{{% /alert %}}
 
 ### Keeping information passed by the receiver's factory
 
@@ -969,27 +978,29 @@ func (tailtracerRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
 }
 ```
 
-> #### Check your work
->
-> - Importing the `go.opentelemetry.io/collector/consumer` which is where the
->   pipeline's consumer types and interfaces are declared.
-> - Importing the `go.uber.org/zap` package, which is what the Collector uses
->   for its logging capabilities.
-> - Added a `zap.Logger` field named `logger` so we can have access to the
->   Collector's logger reference from within the receiver.
-> - Added a `consumer.Traces` field named `nextConsumer` so we can push the
->   traces generated by the `tailtracer` receiver to the next consumer declared
->   in the Collector's pipeline.
-> - Added a `Config` field named `config` so we can have access to receiver's
->   configuration settings defined within the Collector's config.
-> - Added a variable named `interval` that will be initialized as a
->   `time.Duration` based on the value of the `interval` settings of the
->   `tailtracer` receiver defined within the Collector's config.
-> - Added a `go func()` to implement the `ticker` mechanism so our receiver can
->   generate traces every time the `ticker` reaches the amount of time specified
->   by the `interval` variable and used the `tailtracerRcvr.logger` field to
->   generate a info message every time the receiver supposed to be generating
->   traces.
+{{% alert title="Check your work" color="primary" %}}
+
+- Importing the `go.opentelemetry.io/collector/consumer` which is where the
+  pipeline's consumer types and interfaces are declared.
+- Importing the `go.uber.org/zap` package, which is what the Collector uses for
+  its debugging capabilities.
+- Added a `zap.Logger` field named `logger` so we can have access to the
+  Collector's logger reference from within the receiver.
+- Added a `consumer.Traces` field named `nextConsumer` so we can push the traces
+  generated by the `tailtracer` receiver to the next consumer declared in the
+  Collector's pipeline.
+- Added a `Config` field named `config` so we can have access to receiver's
+  configuration settings defined within the Collector's config.
+- Added a variable named `interval` that will be initialized as a
+  `time.Duration` based on the value of the `interval` settings of the
+  `tailtracer` receiver defined within the Collector's config.
+- Added a `go func()` to implement the `ticker` mechanism so our receiver can
+  generate traces every time the `ticker` reaches the amount of time specified
+  by the `interval` variable and used the `tailtracerRcvr.logger` field to
+  generate a info message every time the receiver supposed to be generating
+  traces.
+
+{{% /alert %}}
 
 The `tailtracerReceiver` type is now ready to be instantiated and keep all
 meaningful information passed by its factory.
@@ -1067,19 +1078,21 @@ func NewFactory() receiver.Factory {
 }
 ```
 
-> #### Check your work
->
-> - Added a guard clause that verifies if the consumer is properly instantiated
->   and if not returns the `component.ErrNilNextConsumer`error.
-> - Added a variable called `logger` and initialized it with the Collector's
->   logger that is available as a field named `Logger` within the
->   `receiver.CreateSettings` reference.
-> - Added a variable called `tailtracerCfg` and initialized it by casting the
->   `component.Config` reference to the `tailtracer` receiver `Config`.
-> - Added a variable called `traceRcvr` and initialized it with the
->   `tailtracerReceiver` instance using the factory information stored within
->   the variables.
-> - Updated the return statement to now include the `traceRcvr` instance.
+{{% alert title="Check your work" color="primary" %}}
+
+- Added a guard clause that verifies if the consumer is properly instantiated
+  and if not returns the `component.ErrNilNextConsumer`error.
+- Added a variable called `logger` and initialized it with the Collector's
+  logger that is available as a field named `Logger` within the
+  `receiver.CreateSettings` reference.
+- Added a variable called `tailtracerCfg` and initialized it by casting the
+  `component.Config` reference to the `tailtracer` receiver `Config`.
+- Added a variable called `traceRcvr` and initialized it with the
+  `tailtracerReceiver` instance using the factory information stored within the
+  variables.
+- Updated the return statement to now include the `traceRcvr` instance.
+
+{{% /alert %}}
 
 With the factory fully implemented and instantiating the trace receiver
 component you are ready to test the receiver as part of a pipeline. Go ahead and
@@ -1092,7 +1105,7 @@ service:
     traces:
       receivers: [otlp, tailtracer]
       processors: []
-      exporters: [jaeger, logging]
+      exporters: [otlp/jaeger, debug]
 ```
 
 Here is what the output for running your Collector with `otelcol-dev` command
@@ -1100,34 +1113,17 @@ should look like after you updated the `traces` pipeline:
 
 ```console
 $ ./otelcol-dev --config config.yaml
-2022-03-03T11:19:50.779-0600    info    service/collector.go:190        Applying configuration...
-2022-03-03T11:19:50.780-0600    info    builder/exporters_builder.go:254        Exporter was built.     {"kind": "exporter", "name": "jaeger"}
-2022-03-03T11:19:50.780-0600    info    builder/exporters_builder.go:254        Exporter was built.     {"kind": "exporter", "name": "logging"}
-2022-03-03T11:19:50.780-0600    info    builder/pipelines_builder.go:222        Pipeline was built.     {"name": "pipeline", "name": "traces"}
-2022-03-03T11:19:50.780-0600    info    builder/receivers_builder.go:224        Receiver was built.     {"kind": "receiver", "name": "otlp", "datatype": "traces"}
-2022-03-03T11:19:50.780-0600    info    builder/receivers_builder.go:224        Receiver was built.     {"kind": "receiver", "name": "tailtracer", "datatype": "traces"}
-2022-03-03T11:19:50.780-0600    info    service/service.go:86   Starting extensions...
-2022-03-03T11:19:50.780-0600    info    service/service.go:91   Starting exporters...
-2022-03-03T11:19:50.780-0600    info    builder/exporters_builder.go:40 Exporter is starting... {"kind": "exporter", "name": "jaeger"}
-2022-03-03T11:19:50.781-0600    info    builder/exporters_builder.go:48 Exporter started.       {"kind": "exporter", "name": "jaeger"}
-2022-03-03T11:19:50.781-0600    info    jaegerexporter@v0.41.0/exporter.go:186  State of the connection with the Jaeger Collector backend       {"kind": "exporter", "name": "jaeger", "state": "IDLE"}
-2022-03-03T11:19:50.781-0600    info    builder/exporters_builder.go:40 Exporter is starting... {"kind": "exporter", "name": "logging"}
-2022-03-03T11:19:50.781-0600    info    builder/exporters_builder.go:48 Exporter started.       {"kind": "exporter", "name": "logging"}
-2022-03-03T11:19:50.781-0600    info    service/service.go:96   Starting processors...
-2022-03-03T11:19:50.781-0600    info    builder/pipelines_builder.go:54 Pipeline is starting... {"name": "pipeline", "name": "traces"}
-2022-03-03T11:19:50.781-0600    info    builder/pipelines_builder.go:65 Pipeline is started.    {"name": "pipeline", "name": "traces"}
-2022-03-03T11:19:50.781-0600    info    service/service.go:101  Starting receivers...
-2022-03-03T11:19:50.781-0600    info    builder/receivers_builder.go:68 Receiver is starting... {"kind": "receiver", "name": "otlp"}
-2022-03-03T11:19:50.781-0600    info    otlpreceiver/otlp.go:69 Starting GRPC server on endpoint localhost:55680        {"kind": "receiver", "name": "otlp"}
-2022-03-03T11:19:50.783-0600    info    builder/receivers_builder.go:73 Receiver started.       {"kind": "receiver", "name": "otlp"}
-2022-03-03T11:19:50.783-0600    info    builder/receivers_builder.go:68 Receiver is starting... {"kind": "receiver", "name": "tailtracer"}
-2022-03-03T11:19:50.783-0600    info    builder/receivers_builder.go:73 Receiver started.       {"kind": "receiver", "name": "tailtracer"}
-2022-03-03T11:19:50.783-0600    info    service/telemetry.go:92 Setting up own telemetry...
-2022-03-03T11:19:50.788-0600    info    service/telemetry.go:116        Serving Prometheus metrics      {"address": ":8888", "level": "basic", "service.instance.id": "0ca4907c-6fda-4fe1-b0e9-b73d789354a4", "service.version": "latest"}
-2022-03-03T11:19:50.788-0600    info    service/collector.go:239        Starting otelcol-dev... {"Version": "1.0.0", "NumCPU": 12}
-2022-03-03T11:19:50.788-0600    info    service/collector.go:135        Everything is ready. Begin running and processing data.
-2022-03-21T15:19:51.717-0500	info	jaegerexporter@v0.46.0/exporter.go:186	State of the connection with the Jaeger Collector backend	{"kind": "exporter", "name": "jaeger", "state": "READY"}
-2022-03-03T11:20:51.783-0600    info    tailtracer/trace-receiver.go:23  I should start processing traces now!   {"kind": "receiver", "name": "tailtracer"}
+2023-09-28T08:59:52.111-0700    info    service@v0.86.0/telemetry.go:84 Setting up own telemetry...
+2023-09-28T08:59:52.111-0700    info    service@v0.86.0/telemetry.go:201        Serving Prometheus metrics      {"address": ":8888", "level": "Basic"}
+2023-09-28T08:59:52.111-0700    debug   exporter@v0.86.0/exporter.go:273        Stable component.       {"kind": "exporter", "data_type": "traces", "name": "otlp/jaeger"}
+2023-09-28T08:59:52.112-0700    info    exporter@v0.86.0/exporter.go:275        Development component. May change in the future.        {"kind": "exporter", "data_type": "traces", "name": "debug"}
+2023-09-28T08:59:52.112-0700    debug   receiver@v0.86.0/receiver.go:294        Stable component.       {"kind": "receiver", "name": "otlp", "data_type": "traces"}
+2023-09-28T08:59:52.112-0700    debug   receiver@v0.86.0/receiver.go:294        Alpha component. May change in the future.      {"kind": "receiver", "name": "tailtracer", "data_type": "traces"}
+2023-09-28T08:59:52.112-0700    info    service@v0.86.0/service.go:138  Starting otelcol-dev... {"Version": "1.0.0", "NumCPU": 10}
+2023-09-28T08:59:52.112-0700    info    extensions/extensions.go:31     Starting extensions...
+2023-09-28T08:59:52.113-0700    info    otlpreceiver@v0.86.0/otlp.go:83 Starting GRPC server    {"kind": "receiver", "name": "otlp", "data_type": "traces", "endpoint": "0.0.0.0:4317"}
+2023-09-28T08:59:52.113-0700    info    service@v0.86.0/service.go:161  Everything is ready. Begin running and processing data.
+2023-09-28T09:00:52.113-0700    info    tailtracer/receiver.go:33       I should start processing traces now!   {"kind": "receiver", "name": "tailtracer", "data_type": "traces"}
 ```
 
 Look for the log line for "builder/receivers_builder.go:68 Receiver is
@@ -1142,16 +1138,18 @@ want watch the shutdown process happening. Here is what the output should look
 like:
 
 ```cmd
-^C2022-03-03T11:20:14.652-0600  info    service/collector.go:166        Received signal from OS {"signal": "interrupt"}
-2022-03-03T11:20:14.652-0600    info    service/collector.go:255        Starting shutdown...
-2022-03-03T11:20:14.652-0600    info    service/service.go:121  Stopping receivers...
-2022-03-03T11:20:14.653-0600    info    tailtracer/trace-receiver.go:29  I am done and ready to shutdown!        {"kind": "receiver", "name": "tailtracer"}
-2022-03-03T11:20:14.653-0600    info    service/service.go:126  Stopping processors...
-2022-03-03T11:20:14.653-0600    info    builder/pipelines_builder.go:73 Pipeline is shutting down...    {"name": "pipeline", "name": "traces"}
-2022-03-03T11:20:14.653-0600    info    builder/pipelines_builder.go:77 Pipeline is shutdown.   {"name": "pipeline", "name": "traces"}
-2022-03-03T11:20:14.653-0600    info    service/service.go:131  Stopping exporters...
-2022-03-03T11:20:14.653-0600    info    service/service.go:136  Stopping extensions...
-2022-03-03T11:20:14.653-0600    info    service/collector.go:273        Shutdown complete.
+^C2023-09-28T09:01:18.784-0700  info    otelcol@v0.86.0/collector.go:250        Received signal from OS {"signal": "interrupt"}
+2023-09-28T09:01:18.784-0700    info    service@v0.86.0/service.go:170  Starting shutdown...
+2023-09-28T09:01:18.784-0700    info    zapgrpc/zapgrpc.go:178  [core] [Server #3 ListenSocket #4] ListenSocket deleted {"grpc_log": true}
+2023-09-28T09:01:18.784-0700    info    zapgrpc/zapgrpc.go:178  [core] [Channel #1] Channel Connectivity change to SHUTDOWN     {"grpc_log": true}
+2023-09-28T09:01:18.784-0700    info    zapgrpc/zapgrpc.go:178  [core] [Channel #1] ccBalancerWrapper: closing  {"grpc_log": true}
+2023-09-28T09:01:18.785-0700    info    zapgrpc/zapgrpc.go:178  [core] [Channel #1] Closing the name resolver   {"grpc_log": true}
+2023-09-28T09:01:18.785-0700    info    zapgrpc/zapgrpc.go:178  [core] [Channel #1 SubChannel #2] Subchannel Connectivity change to SHUTDOWN    {"grpc_log": true}
+2023-09-28T09:01:18.785-0700    info    zapgrpc/zapgrpc.go:178  [core] [Channel #1 SubChannel #2] Subchannel deleted    {"grpc_log": true}
+2023-09-28T09:01:18.785-0700    info    zapgrpc/zapgrpc.go:178  [transport] [client-transport 0x140002c8000] Closing: rpc error: code = Canceled desc = grpc: the client connection is closing   {"grpc_log": true}
+2023-09-28T09:01:18.785-0700    info    zapgrpc/zapgrpc.go:178  [core] [Channel #1] Channel deleted     {"grpc_log": true}
+2023-09-28T09:01:18.785-0700    info    extensions/extensions.go:45     Stopping extensions...
+2023-09-28T09:01:18.785-0700    info    service@v0.86.0/service.go:184  Shutdown complete.
 ```
 
 As you can see there is an info log line for the `tailtracer` receiver which
@@ -1341,18 +1339,20 @@ func getRandomNumber(min int, max int) int {
 }
 ```
 
-> #### Check your work
->
-> - Imported the `math/rand` and `time` packages to support the implementation
->   of the `generateRandomNumber` function
-> - Added the `generateAtm` function that instantiates an `Atm` type and
->   randomly assign either Illinois or California as values for `StateID` and
->   the equivalent value for `ISPNetwork`
-> - Added the `generateBackendSystem` function that instantiates a
->   `BackendSystem`type and randomly assign service endpoint values for the
->   `Endpoint` field
-> - Added the `generateRandomNumber` function to help generating random numbers
->   between a desired range.
+{{% alert title="Check your work" color="primary" %}}
+
+- Imported the `math/rand` and `time` packages to support the implementation of
+  the `generateRandomNumber` function.
+- Added the `generateAtm` function that instantiates an `Atm` type and randomly
+  assign either Illinois or California as values for `StateID` and the
+  equivalent value for `ISPNetwork`.
+- Added the `generateBackendSystem` function that instantiates a
+  `BackendSystem`type and randomly assign service endpoint values for the
+  `Endpoint` field.
+- Added the `generateRandomNumber` function to help generating random numbers
+  between a desired range.
+
+{{% /alert %}}
 
 Now that you have the functions to generate object instances representing the
 entities generating telemetry, you are ready to represent those entities in the
@@ -1437,12 +1437,14 @@ func generateTraces(numberOfTraces int) ptrace.Traces{
 }
 ```
 
-> #### Check your work
->
-> - Added the `resourceSpan` variable and initialized it with the `ResourceSpan`
->   reference returned by the `traces.ResourceSpans().AppendEmpty()` call
-> - Added the `atmResource` variable and initialized it with the
->   `pcommon.Resource` reference returned by the `resourceSpan.Resource()` call
+{{% alert title="Check your work" color="primary" %}}
+
+- Added the `resourceSpan` variable and initialized it with the `ResourceSpan`
+  reference returned by the `traces.ResourceSpans().AppendEmpty()` call.
+- Added the `atmResource` variable and initialized it with the
+  `pcommon.Resource` reference returned by the `resourceSpan.Resource()` call.
+
+{{% /alert %}}
 
 ### Describing Resources through attributes
 
@@ -1456,7 +1458,7 @@ pair format represented by the `pcommon.Map` type.
 You can check the definition of the `pcommon.Map` type and the related helper
 functions to create attribute values using the supported formats in the
 [/pdata/pcommon/common.go](https://github.com/open-telemetry/opentelemetry-collector/blob/{{%
-param collectorVersion %}}/pdata/pcommon/common.go) file within the Otel
+param collectorVersion %}}/pdata/pcommon/common.go) file within the OTel
 Collector's GitHub project.
 
 Key/value pairs provide a lot of flexibility to help model your `Resource` data,
@@ -1465,7 +1467,7 @@ minimize the conflicts across all the different types of telemetry generation
 entities that it may need to represent.
 
 These guidelines are known as Resource Semantic Conventions and are
-[documented in the OTel specification](/docs/specs/otel/resource/semantic_conventions/).
+[documented in the OTel specification](/docs/specs/semconv/resource/).
 
 When creating your own attributes to represent your own telemetry generation
 entities, you should follow the guideline provided by the specification:
@@ -1493,27 +1495,28 @@ func fillResourceWithAtm(resource *pcommon.Resource, atm Atm){
 }
 ```
 
-> #### Check your work
->
-> - Declared a variable called `atmAttrs` and initialized it with the
->   `pcommon.Map` reference returned by the `resource.Attributes()` call
-> - Used the `PutInt()` and `PutStr()` methods from `pcommon.Map` to add int and
->   string attributes based on the equivalent `Atm` field types. Notice that
->   because those attributes are very specific and only represent the `Atm`
->   entity, they are all grouped within the "atm." prefix.
+{{% alert title="Check your work" color="primary" %}}
+
+- Declared a variable called `atmAttrs` and initialized it with the
+  `pcommon.Map` reference returned by the `resource.Attributes()` call.
+- Used the `PutInt()` and `PutStr()` methods from `pcommon.Map` to add int and
+  string attributes based on the equivalent `Atm` field types. Notice that
+  because those attributes are very specific and only represent the `Atm`
+  entity, they are all grouped within the "atm." prefix.
+
+{{% /alert %}}
 
 The resource semantic conventions also have prescriptive attribute names and
 well-known values to represent telemetry generation entities that are common and
 applicable across different domains like
-[compute unit](/docs/specs/otel/resource/semantic_conventions/#compute-unit),
-[environment](/docs/specs/otel/resource/semantic_conventions/#compute-unit) and
-others.
+[compute unit](/docs/specs/semconv/resource/#compute-unit),
+[environment](/docs/specs/semconv/resource/#compute-unit) and others.
 
 So, when you look at the `BackendSystem` entity, it has fields representing
-[OS](/docs/specs/otel/resource/semantic_conventions/os/) related information and
-[Cloud](/docs/specs/otel/resource/semantic_conventions/cloud/) related
-information, and we will use the attribute names and values prescribed by the
-resource semantic convention to represent that information on its `Resource`.
+[OS](/docs/specs/semconv/resource/os/) related information and
+[Cloud](/docs/specs/semconv/resource/cloud/) related information, and we will
+use the attribute names and values prescribed by the resource semantic
+convention to represent that information on its `Resource`.
 
 All the resource semantic convention attribute names and well known-values are
 kept within the
@@ -1724,21 +1727,23 @@ func fillResourceWithBackendSystem(resource *pcommon.Resource, backend BackendSy
 }
 ```
 
-> #### Check your work
->
-> - Imported the `go.opentelemetry.io/collector/semconv/v1.9.0` package as
->   `conventions`, in order to have access to all resource semantic conventions
->   attribute names and values.
-> - Updated the `fillResourceWithAtm()` function by adding lines to properly
->   assign the "service.name" and "service.version" attributes to the
->   `pcommon.Resource` representing the `Atm` entity
-> - Updated the `fillResourceWithBackendSystem()` function by adding lines to
->   properly assign the "service.name" and "service.version" attributes to the
->   `pcommon.Resource` representing the `BackendSystem` entity
-> - Updated the `generateTraces` function by adding lines to properly
->   instantiate a `pcommon.Resource` and fill in the attribute information for
->   both `Atm` and `BackendSystem` entities using the `fillResourceWithAtm()`
->   and `fillResourceWithBackendSystem()` functions
+{{% alert title="Check your work" color="primary" %}}
+
+- Imported the `go.opentelemetry.io/collector/semconv/v1.9.0` package as
+  `conventions`, in order to have access to all resource semantic conventions
+  attribute names and values.
+- Updated the `fillResourceWithAtm()` function by adding lines to properly
+  assign the "service.name" and "service.version" attributes to the
+  `pcommon.Resource` representing the `Atm` entity
+- Updated the `fillResourceWithBackendSystem()` function by adding lines to
+  properly assign the "service.name" and "service.version" attributes to the
+  `pcommon.Resource` representing the `BackendSystem` entity
+- Updated the `generateTraces` function by adding lines to properly instantiate
+  a `pcommon.Resource` and fill in the attribute information for both `Atm` and
+  `BackendSystem` entities using the `fillResourceWithAtm()` and
+  `fillResourceWithBackendSystem()` functions
+
+{{% /alert %}}
 
 ### Representing operations with spans
 
@@ -1901,6 +1906,12 @@ the `crypto/rand` package to randomly generate the `pcommon.SpanID`. Open the
 after that, add the following functions to help generate both IDs:
 
 ```go
+import (
+	crand "crypto/rand"
+	"math/rand"
+  	...
+)
+
 func NewTraceID() pcommon.TraceID {
 	return pcommon.TraceID(uuid.New())
 }
@@ -1917,6 +1928,12 @@ func NewSpanID() pcommon.SpanID {
 	return spanID
 }
 ```
+
+{{% alert title="Check your work" color="primary" %}}
+
+- Imported `crypto/rand` as `crand` (to avoid conflicts with `math/rand`).
+
+{{% /alert %}}
 
 Now that you have a way to properly identify the spans, you can start creating
 them to represent the operations within and across the entities in your system.
@@ -1947,23 +1964,25 @@ func appendTraceSpans(backend *BackendSystem, backendScopeSpans *ptrace.ScopeSpa
 }
 ```
 
-> #### Check your work
->
-> - Added `traceId` and `backendSpanId` variables to respectively represent the
->   trace and the span ID and initialized them with the helper functions created
->   previously
-> - Added `backendSpanStartTime` and `backendSpanFinishTime` to represent the
->   start and the end time of the operation. For the tutorial, any
->   `BackendSystem` operation will take 1 second.
-> - Added a variable called `backendSpan` which will hold the instance of the
->   `ptrace.Span` representing this operation.
-> - Setting the `Name` of the span with the `Endpoint` field value from the
->   `BackendSystem` instance
-> - Setting the `Kind` of the span as `ptrace.SpanKindServer`. Take a look at
->   [SpanKind section](/docs/specs/otel/trace/api/#spankind) within the trace
->   specification to understand how to properly define SpanKind.
-> - Used all the methods mentioned before to fill the `ptrace.Span` with the
->   proper values to represent the `BackendSystem` operation
+{{% alert title="Check your work" color="primary" %}}
+
+- Added `traceId` and `backendSpanId` variables to respectively represent the
+  trace and the span ID and initialized them with the helper functions created
+  previously.
+- Added `backendSpanStartTime` and `backendSpanFinishTime` to represent the
+  start and the end time of the operation. For the tutorial, any `BackendSystem`
+  operation will take 1 second.
+- Added a variable called `backendSpan` which will hold the instance of the
+  `ptrace.Span` representing this operation.
+- Setting the `Name` of the span with the `Endpoint` field value from the
+  `BackendSystem` instance.
+- Setting the `Kind` of the span as `ptrace.SpanKindServer`. Take a look at
+  [SpanKind section](/docs/specs/otel/trace/api/#spankind) within the trace
+  specification to understand how to properly define SpanKind.
+- Used all the methods mentioned before to fill the `ptrace.Span` with the
+  proper values to represent the `BackendSystem` operation.
+
+{{% /alert %}}
 
 You probably noticed that there are 2 references to `ptrace.ScopeSpans` as
 parameters in the `appendTraceSpans()` function, but we only used one of them.
@@ -2038,13 +2057,15 @@ func (tailtracerRcvr *tailtracerReceiver) Start(ctx context.Context, host compon
 }
 ```
 
-> #### Check your work
->
-> - Added a line under the `case <=ticker.C` condition calling the
->   `tailtracerRcvr.nextConsumer.ConsumeTraces()` method passing the new context
->   created within the `Start()` method (`ctx`) and a call to the
->   `generateTraces` function so the generated traces can be pushed to the next
->   consumer in the pipeline
+{{% alert title="Check your work" color="primary" %}}
+
+- Added a line under the `case <=ticker.C` condition calling the
+  `tailtracerRcvr.nextConsumer.ConsumeTraces()` method passing the new context
+  created within the `Start()` method (`ctx`) and a call to the `generateTraces`
+  function so the generated traces can be pushed to the next consumer in the
+  pipeline.
+
+{{% /alert %}}
 
 If you run your `otelcol-dev`, here is what the output should look like after 2
 minutes running:
@@ -2052,35 +2073,24 @@ minutes running:
 ```cmd
 Starting: /Users/rquedas/go/bin/dlv dap --check-go-version=false --listen=127.0.0.1:54625 --log-dest=3 from /Users/rquedas/Documents/vscode-workspace/otel4devs/collector/receiver/trace-receiver/otelcol-dev
 DAP server listening at: 127.0.0.1:54625
-2022-03-21T15:44:22.737-0500	info	builder/exporters_builder.go:255	Exporter was built.	{"kind": "exporter", "name": "logging"}
-2022-03-21T15:44:22.737-0500	info	builder/exporters_builder.go:255	Exporter was built.	{"kind": "exporter", "name": "jaeger"}
-2022-03-21T15:44:22.737-0500	info	builder/pipelines_builder.go:223	Pipeline was built.	{"name": "pipeline", "name": "traces"}
-2022-03-21T15:44:22.738-0500	info	builder/receivers_builder.go:226	Receiver was built.	{"kind": "receiver", "name": "otlp", "datatype": "traces"}
-2022-03-21T15:44:22.738-0500	info	builder/receivers_builder.go:226	Receiver was built.	{"kind": "receiver", "name": "tailtracer", "datatype": "traces"}
-2022-03-21T15:44:22.738-0500	info	service/service.go:82	Starting extensions...
-2022-03-21T15:44:22.738-0500	info	service/service.go:87	Starting exporters...
-2022-03-21T15:44:22.738-0500	info	builder/exporters_builder.go:40	Exporter is starting...	{"kind": "exporter", "name": "logging"}
-2022-03-21T15:44:22.738-0500	info	builder/exporters_builder.go:48	Exporter started.	{"kind": "exporter", "name": "logging"}
-2022-03-21T15:44:22.738-0500	info	builder/exporters_builder.go:40	Exporter is starting...	{"kind": "exporter", "name": "jaeger"}
-2022-03-21T15:44:22.738-0500	info	builder/exporters_builder.go:48	Exporter started.	{"kind": "exporter", "name": "jaeger"}
-2022-03-21T15:44:22.738-0500	info	service/service.go:92	Starting processors...
-2022-03-21T15:44:22.738-0500	info	jaegerexporter@v0.46.0/exporter.go:186	State of the connection with the Jaeger Collector backend	{"kind": "exporter", "name": "jaeger", "state": "IDLE"}
-2022-03-21T15:44:22.738-0500	info	builder/pipelines_builder.go:54	Pipeline is starting...	{"name": "pipeline", "name": "traces"}
-2022-03-21T15:44:22.738-0500	info	builder/pipelines_builder.go:65	Pipeline is started.	{"name": "pipeline", "name": "traces"}
-2022-03-21T15:44:22.738-0500	info	service/service.go:97	Starting receivers...
-2022-03-21T15:44:22.738-0500	info	builder/receivers_builder.go:68	Receiver is starting...	{"kind": "receiver", "name": "otlp"}
-2022-03-21T15:44:22.738-0500	info	otlpreceiver/otlp.go:69	Starting GRPC server on endpoint localhost:55680	{"kind": "receiver", "name": "otlp"}
-2022-03-21T15:44:22.741-0500	info	builder/receivers_builder.go:73	Receiver started.	{"kind": "receiver", "name": "otlp"}
-2022-03-21T15:44:22.741-0500	info	builder/receivers_builder.go:68	Receiver is starting...	{"kind": "receiver", "name": "tailtracer"}
-2022-03-21T15:44:22.741-0500	info	builder/receivers_builder.go:73	Receiver started.	{"kind": "receiver", "name": "tailtracer"}
-2022-03-21T15:44:22.741-0500	info	service/telemetry.go:109	Setting up own telemetry...
-2022-03-21T15:44:22.741-0500	info	service/telemetry.go:129	Serving Prometheus metrics	{"address": ":8888", "level": "basic", "service.instance.id": "4b134d3e-2822-4360-b2c6-7030bea0beec", "service.version": "latest"}
-2022-03-21T15:44:22.742-0500	info	service/collector.go:248	Starting otelcol-dev...	{"Version": "1.0.0", "NumCPU": 12}
-2022-03-21T15:44:22.742-0500	info	service/collector.go:144	Everything is ready. Begin running and processing data.
-2022-03-21T15:44:23.739-0500	info	jaegerexporter@v0.46.0/exporter.go:186	State of the connection with the Jaeger Collector backend	{"kind": "exporter", "name": "jaeger", "state": "READY"}
-2022-03-21T15:45:22.743-0500	info	tailtracer/trace-receiver.go:33	I should start processing traces now!	{"kind": "receiver", "name": "tailtracer"}
-2022-03-21T15:45:22.743-0500	INFO	loggingexporter/logging_exporter.go:40	TracesExporter	{"#spans": 1}
-2022-03-21T15:45:22.743-0500	DEBUG	loggingexporter/logging_exporter.go:49	ResourceSpans #0
+2023-09-28T08:59:52.111-0700    info    service@v0.86.0/telemetry.go:84 Setting up own telemetry...
+2023-09-28T08:59:52.111-0700    info    service@v0.86.0/telemetry.go:201        Serving Prometheus metrics      {"address": ":8888", "level": "Basic"}
+2023-09-28T08:59:52.111-0700    debug   exporter@v0.86.0/exporter.go:273        Stable component.       {"kind": "exporter", "data_type": "traces", "name": "otlp/jaeger"}
+2023-09-28T08:59:52.112-0700    info    exporter@v0.86.0/exporter.go:275        Development component. May change in the future.        {"kind": "exporter", "data_type": "traces", "name": "debug"}
+2023-09-28T08:59:52.112-0700    debug   receiver@v0.86.0/receiver.go:294        Stable component.       {"kind": "receiver", "name": "otlp", "data_type": "traces"}
+2023-09-28T08:59:52.112-0700    debug   receiver@v0.86.0/receiver.go:294        Alpha component. May change in the future.      {"kind": "receiver", "name": "tailtracer", "data_type": "traces"}
+2023-09-28T08:59:52.112-0700    info    service@v0.86.0/service.go:138  Starting otelcol-dev... {"Version": "1.0.0", "NumCPU": 10}
+2023-09-28T08:59:52.112-0700    info    extensions/extensions.go:31     Starting extensions...
+2023-09-28T08:59:52.113-0700    info    otlpreceiver@v0.86.0/otlp.go:83 Starting GRPC server    {"kind": "receiver", "name": "otlp", "data_type": "traces", "endpoint": "0.0.0.0:4317"}
+2023-09-28T08:59:52.113-0700    info    service@v0.86.0/service.go:161  Everything is ready. Begin running and processing data.
+2023-09-28T08:59:52.113-0700    info    zapgrpc/zapgrpc.go:178  [core] [Server #3 ListenSocket #4] ListenSocket created {"grpc_log": true}
+2023-09-28T08:59:52.124-0700    info    zapgrpc/zapgrpc.go:178  [core] [Channel #1 SubChannel #2] Subchannel Connectivity change to READY       {"grpc_log": true}
+2023-09-28T08:59:52.124-0700    info    zapgrpc/zapgrpc.go:178  [core] [pick-first-lb 0x1400054fd10] Received SubConn state update: 0x1400054fec0, {ConnectivityState:READY ConnectionError:<nil>}       {"grpc_log": true}
+2023-09-28T08:59:52.124-0700    info    zapgrpc/zapgrpc.go:178  [core] [Channel #1] Channel Connectivity change to READY        {"grpc_log": true}
+2023-09-28T09:00:52.113-0700    info    tailtracer/receiver.go:33       I should start processing traces now!   {"kind": "receiver", "name": "tailtracer", "data_type": "traces"}
+
+2023-09-28T09:00:52.743-0700	INFO	debugexporter/debug_exporter.go:40	TracesExporter	{"#spans": 1}
+2023-09-28T09:00:52.743-0700	DEBUG	debugexporter/debug_exporter.go:49	ResourceSpans #0
 Resource SchemaURL:
 Resource labels:
      -> atm.id: INT(222)
@@ -2110,13 +2120,13 @@ Span #0
     ID             : bb25c05c7fb13084
     Name           : api/v2.5/balance
     Kind           : SPAN_KIND_SERVER
-    Start time     : 2022-03-21 20:45:22.743385 +0000 UTC
-    End time       : 2022-03-21 20:45:23.743385 +0000 UTC
+    Start time     : 2023-09-28 09:00:52.743385 +0000 UTC
+    End time       : 2023-09-28 09:00:53.743385 +0000 UTC
     Status code    : STATUS_CODE_OK
     Status message :
-2022-03-21T15:46:22.743-0500	info	tailtracer/trace-receiver.go:33	I should start processing traces now!	{"kind": "receiver", "name": "tailtracer"}
-2022-03-21T15:46:22.744-0500	INFO	loggingexporter/logging_exporter.go:40	TracesExporter	{"#spans": 1}
-2022-03-21T15:46:22.744-0500	DEBUG	loggingexporter/logging_exporter.go:49	ResourceSpans #0
+2023-09-28T09:00:52.743-0500	info	tailtracer/trace-receiver.go:33	I should start processing traces now!	{"kind": "receiver", "name": "tailtracer"}
+2023-09-28T09:00:52.744-0500	INFO	debugexporter/debug_exporter.go:40	TracesExporter	{"#spans": 1}
+2023-09-28T09:00:52.744-0500	DEBUG	debugexporter/debug_exporter.go:49	ResourceSpans #0
 Resource SchemaURL:
 Resource labels:
      -> atm.id: INT(111)
@@ -2146,8 +2156,8 @@ Span #0
     ID             : 7cf668c1273ecee5
     Name           : api/v2.5/withdrawn
     Kind           : SPAN_KIND_SERVER
-    Start time     : 2022-03-21 20:46:22.74404 +0000 UTC
-    End time       : 2022-03-21 20:46:23.74404 +0000 UTC
+    Start time     : 2023-09-28 09:00:52.74404 +0000 UTC
+    End time       : 2023-09-28 09:00:53.74404 +0000 UTC
     Status code    : STATUS_CODE_OK
     Status message :
 ```
@@ -2237,3 +2247,5 @@ Here is the detailed view of one of those traces in Jaeger:
 
 That's it! You have now reached the end of this tutorial and successfully
 implemented a trace receiver, congratulations!
+
+[^1]: Prior to v0.86.0 use the `loggingexporter` instead of `debugexporter`.

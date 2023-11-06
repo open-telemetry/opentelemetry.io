@@ -3,11 +3,12 @@ registryType: exporter
 isThirdParty: false
 language: collector
 tags:
-  - awss3
+  - aws
+  - s3
   - exporter
   - collector
 repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/awss3exporter
 license: Apache 2.0
-description: This exporter targets to support proto/json and proto/binary format
+description: This exporter targets to support proto/JSON and proto/binary format
 authors: OpenTelemetry Authors
 otVersion: latest

@@ -1,9 +1,9 @@
 [build]
 publish = "public"
-command = "npm run s build:preview diff:check"
+command = "npm run seq -- build:preview diff:check"
 
 [context.production]
-command = "npm run s build:production diff:check"
+command = "npm run seq -- build:production diff:check"
 
 [[redirects]]
 from = "https://docs.opentelemetry.io/*"
@@ -14,3 +14,8 @@ force = true
 from = "https://blog.opentelemetry.io/*"
 to = "https://opentelemetry.io/blog/:splat"
 force = true
+
+[[headers]]
+  for = "/schemas/:version"
+  [headers.values]
+    content-type = "application/yaml"

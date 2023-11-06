@@ -2,7 +2,7 @@
 title: Important Components for Kubernetes
 linkTitle: Components
 # prettier-ignore
-cSpell:ignore: containerd crio filelog gotime horizontalpodautoscalers iostream k8sattributes kubelet kubeletstats logtag replicasets replicationcontrollers resourcequotas statefulsets varlibdockercontainers varlogpods
+cSpell:ignore: alertmanagers containerd crio filelog gotime horizontalpodautoscalers hostfs hostmetrics iostream k8sattributes kubelet kubeletstats logtag replicasets replicationcontrollers resourcequotas statefulsets varlibdockercontainers varlogpods
 ---
 
 The [OpenTelemetry Collector](/docs/collector/) supports many different
@@ -13,15 +13,19 @@ enhancing it.
 Components covered in this page:
 
 - [Kubernetes Attributes Processor](#kubernetes-attributes-processor): adds
-  Kubernetes metadata to incoming telemetry.
-- [Kubeletstats Receiver](#kubeletstats-receiver): pulls pod metrics from the
-  API server on a kubelet.
+  Kubernetes metadata to incoming application telemetry.
+- [Kubeletstats Receiver](#kubeletstats-receiver): pulls node, pod, and
+  container metrics from the API server on a kubelet.
 - [Filelog Receiver](#filelog-receiver): collects Kubernetes logs and
   application logs written to stdout/stderr.
 - [Kubernetes Cluster Receiver](#kubernetes-cluster-receiver): collects
   cluster-level metrics and entity events.
 - [Kubernetes Objects Receiver](#kubernetes-objects-receiver): collects objects,
   such as events, from the Kubernetes API server.
+- [Prometheus Receiver](#prometheus-receiver): receives metrics in
+  [Prometheus](https://prometheus.io/) format.
+- [Host Metrics Receiver](#host-metrics-receiver): scrapes host metrics from
+  Kubernetes nodes.
 
 For application traces, metrics, or logs, we recommend the
 [OTLP receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver),
@@ -31,8 +35,8 @@ but any receiver that fits your data is appropriate.
 
 | Deployment Pattern   | Usable |
 | -------------------- | ------ |
-| DaemonSet (Agent)    | Yes    |
-| Deployment (Gateway) | Yes    |
+| DaemonSet (agent)    | Yes    |
+| Deployment (gateway) | Yes    |
 | Sidecar              | No     |
 
 The Kubernetes Attributes Processor automatically discovers Kubernetes pods,
@@ -179,8 +183,8 @@ roleRef:
 
 | Deployment Pattern   | Usable                                                             |
 | -------------------- | ------------------------------------------------------------------ |
-| DaemonSet (Agent)    | Preferred                                                          |
-| Deployment (Gateway) | Yes, but will only collect metrics from the node it is deployed on |
+| DaemonSet (agent)    | Preferred                                                          |
+| Deployment (gateway) | Yes, but will only collect metrics from the node it is deployed on |
 | Sidecar              | No                                                                 |
 
 Each Kubernetes node runs a kubelet that includes an API server. The Kubernetes
@@ -254,8 +258,8 @@ subjects:
 
 | Deployment Pattern   | Usable                                                          |
 | -------------------- | --------------------------------------------------------------- |
-| DaemonSet (Agent)    | Preferred                                                       |
-| Deployment (Gateway) | Yes, but will only collect logs from the node it is deployed on |
+| DaemonSet (agent)    | Preferred                                                       |
+| Deployment (gateway) | Yes, but will only collect logs from the node it is deployed on |
 | Sidecar              | Yes, but this would be considered advanced configuration        |
 
 The Filelog Receiver tails and parses logs from files. Although it's not a
@@ -400,8 +404,8 @@ spec:
 
 | Deployment Pattern   | Usable                                                   |
 | -------------------- | -------------------------------------------------------- |
-| DaemonSet (Agent)    | Yes, but will result in duplicate data                   |
-| Deployment (Gateway) | Yes, but more than one replica results in duplicate data |
+| DaemonSet (agent)    | Yes, but will result in duplicate data                   |
+| Deployment (gateway) | Yes, but more than one replica results in duplicate data |
 | Sidecar              | No                                                       |
 
 The Kubernetes Cluster Receiver collects metrics and entity events about the
@@ -433,7 +437,9 @@ k8s_cluster:
     - memory
 ```
 
-For specific configuration details, see
+To learn more about the metrics that are collected, see
+[Default Metrics](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/k8sclusterreceiver/documentation.md)
+For configuration details, see
 [Kubernetes Cluster Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8sclusterreceiver).
 
 Since the processor uses the Kubernetes API, it needs the correct permission to
@@ -453,7 +459,7 @@ metadata:
   name: otel-collector-opentelemetry-collector
 rules:
   - apiGroups:
-      - ""
+      - ''
     resources:
       - events
       - namespaces
@@ -482,17 +488,17 @@ rules:
       - list
       - watch
   - apiGroups:
-  - extensions
+      - extensions
     resources:
-    - daemonsets
-    - deployments
-    - replicasets
+      - daemonsets
+      - deployments
+      - replicasets
     verbs:
-    - get
-    - list
-    - watch
+      - get
+      - list
+      - watch
   - apiGroups:
-    - batch
+      - batch
     resources:
       - jobs
       - cronjobs
@@ -527,8 +533,8 @@ subjects:
 
 | Deployment Pattern   | Usable                                                   |
 | -------------------- | -------------------------------------------------------- |
-| DaemonSet (Agent)    | Yes, but will result in duplicate data                   |
-| Deployment (Gateway) | Yes, but more than one replica results in duplicate data |
+| DaemonSet (agent)    | Yes, but will result in duplicate data                   |
+| Deployment (gateway) | Yes, but more than one replica results in duplicate data |
 | Sidecar              | No                                                       |
 
 The Kubernetes Objects receiver collects, either by pulling or watching, objects
@@ -661,3 +667,139 @@ subjects:
     name: otel-collector-opentelemetry-collector
     namespace: default
 ```
+
+## Prometheus Receiver
+
+| Deployment Pattern   | Usable |
+| -------------------- | ------ |
+| DaemonSet (agent)    | Yes    |
+| Deployment (gateway) | Yes    |
+| Sidecar              | No     |
+
+Prometheus is a common metrics format for both Kubernetes and services running
+on Kubernetes. The Prometheus receiver is a minimal drop-in replacement for the
+collection of those metrics. It supports the full set of Prometheus
+[`scrape_config` options](https://prometheus.io/docs/prometheus/1.8/configuration/configuration/#scrape_config).
+
+There are a few advanced Prometheus features that the receiver does not support.
+The receiver returns an error if the configuration YAML/code contains any of the
+following:
+
+- `alert_config.alertmanagers`
+- `alert_config.relabel_configs`
+- `remote_read`
+- `remote_write`
+- `rule_files`
+
+For specific configuration details, see
+[Prometheus Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver).
+
+The Prometheus receiver is
+[Stateful](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/standard-warnings.md#statefulness),
+which means there are important details to consider when using it:
+
+- The collector cannot auto-scale the scraping process when multiple replicas of
+  the collector are run.
+- When running multiple replicas of the collector with the same config, it will
+  scrape the targets multiple times.
+- Users need to configure each replica with a different scraping configuration
+  if they want to manually shard the scraping process.
+
+To make configuring the Prometheus receiver easier, the OpenTelemetry Operator
+includes an optional component called the
+[Target Allocator](../../operator/target-allocator). This component can be used
+to tell a collector which Prometheus endpoints it should scrape.
+
+For more information on the design of the receiver, see
+[Design](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/DESIGN.md).
+
+## Host Metrics Receiver
+
+| Deployment Pattern   | Usable                                                         |
+| -------------------- | -------------------------------------------------------------- |
+| DaemonSet (agent)    | Preferred                                                      |
+| Deployment (gateway) | Yes, but only collects metrics from the node it is deployed on |
+| Sidecar              | No                                                             |
+
+The Host Metrics Receiver collects metrics from a host using a variety of
+scrapers. There is some overlap with the
+[Kubeletstats Receiver](#kubeletstats-receiver) so if you decide to use both, it
+may be worth it to disable these duplicate metrics.
+
+In Kubernetes, the receiver needs access to the `hostfs` volume to work
+properly. If you're using the
+[OpenTelemetry Collector Helm chart](../../helm/collector/) you can use the
+[`hostMetrics` preset](../../helm/collector/#host-metrics-preset) to get
+started.
+
+The available scrapers are:
+
+| Scraper    | Supported OSs       | Description                                            |
+| ---------- | ------------------- | ------------------------------------------------------ |
+| cpu        | All except Mac[^1]  | CPU utilization metrics                                |
+| disk       | All except Mac[^1]  | Disk I/O metrics                                       |
+| load       | All                 | CPU load metrics                                       |
+| filesystem | All                 | File System utilization metrics                        |
+| memory     | All                 | Memory utilization metrics                             |
+| network    | All                 | Network interface I/O metrics & TCP connection metrics |
+| paging     | All                 | Paging/Swap space utilization and I/O metrics          |
+| processes  | Linux, Mac          | Process count metrics                                  |
+| process    | Linux, Windows, Mac | Per process CPU, Memory, and Disk I/O metrics          |
+
+[^1]:
+    Not supported on Mac when compiled without cgo, which is the default for the
+    images released by the Collector SIG.
+
+For specific details about which metrics are collected and specific
+configuration details, see
+[Host Metrics Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver).
+
+If you need to configure the component yourself, make sure to mount the `hostfs`
+volume if you want to collect the node's metrics and not the container's.
+
+```yaml
+---
+apiVersion: apps/v1
+kind: DaemonSet
+...
+spec:
+  ...
+  template:
+    ...
+    spec:
+      ...
+      containers:
+        - name: opentelemetry-collector
+          ...
+          volumeMounts:
+            ...
+            - name: hostfs
+              mountPath: /hostfs
+              readOnly: true
+              mountPropagation: HostToContainer
+      volumes:
+        ...
+        - name: hostfs
+          hostPath:
+            path: /
+      ...
+```
+
+and then configure the Host Metrics Receiver to use the `volumeMount`:
+
+```yaml
+receivers:
+  hostmetrics:
+    root_path: /hostfs
+    collection_interval: 10s
+    scrapers:
+      cpu:
+      load:
+      memory:
+      disk:
+      filesystem:
+      network:
+```
+
+For more details about using the receiver in a container, see
+[Collecting host metrics from inside a container (Linux only)](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver#collecting-host-metrics-from-inside-a-container-linux-only)

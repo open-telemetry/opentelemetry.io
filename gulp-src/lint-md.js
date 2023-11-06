@@ -1,7 +1,10 @@
+const tcb_rule_name = 'trim-code-block-and-unindent';
+const trimCodeBlockRule = require('./_md-rules/' + tcb_rule_name);
 const gulp = require('gulp');
 const through2 = require('through2');
 const markdownlint = require('markdownlint');
-const { taskArgs } = require('./_util');
+const { taskArgs, trimBlankLinesFromArray } = require('./_util');
+const fs = require('fs');
 
 const defaultGlob = '**/*.md';
 const markdownFiles = [
@@ -9,12 +12,14 @@ const markdownFiles = [
   '!content-modules/**',
   '!layouts/**',
   '!node_modules/**',
+  '!scripts/registry-scanner/node_modules/**',
   '!themes/**',
   '!tmp/**',
 ];
 
 let numFilesProcessed = 0,
   numFilesWithIssues = 0;
+let fix = false;
 
 function markdownLintFile(file, encoding, callback) {
   const config = require('../.markdownlint.json');
@@ -33,6 +38,7 @@ function markdownLintFile(file, encoding, callback) {
         .replace(/\{\{[^\}]+\}\}/g, placeholder),
     },
     config: config,
+    customRules: [trimCodeBlockRule],
   };
 
   markdownlint(options, function (err, result) {
@@ -59,8 +65,60 @@ function markdownLintFile(file, encoding, callback) {
       // callback(new Error('...'));
     }
     numFilesProcessed++;
+
+    if (fix) {
+      applyCustomRuleFixesHack(result);
+    }
+
     callback(null, file);
   });
+}
+
+function applyCustomRuleFixesHack(result) {
+  // What is hacky about the current implementation is that we're
+  // handling the fixing ourselves and writing out to the affected files
+  // instead of using mdl's fix mechanism.
+
+  Object.entries(result).forEach(([filePath, issues]) => {
+    let fileContent = fs.readFileSync(filePath, 'utf8');
+
+    // Sort issues by lineNumber in descending order
+    const sortedIssues = issues.sort((a, b) => b.lineNumber - a.lineNumber);
+
+    sortedIssues.forEach((issue) => {
+      if (
+        issue.fixInfo &&
+        issue.ruleNames.length == 1 &&
+        issue.ruleNames.includes(tcb_rule_name)
+      ) {
+        fileContent = applyFixesToFileContent(fileContent, issue);
+      } else {
+        // console.log(`[NOTE] We currently only fix solo ${tcb_rule_name} rules, not: ${issue.ruleNames}`);
+        // console.log(JSON.stringify(issue, null, 2));
+      }
+    });
+
+    fs.writeFileSync(filePath, fileContent, 'utf8');
+  });
+}
+
+function applyFixesToFileContent(content, issue) {
+  // console.log(JSON.stringify(issue, null, 2));
+
+  const startLineNum = issue.lineNumber - 1;
+  const endLineNum = issue.ruleNames.includes(tcb_rule_name)
+    ? issue.fixInfo.lineNumber
+    : startLineNum + 1;
+  const fixedLines = issue.fixInfo.insertText.split('\n');
+
+  // Remove lines that need fixing
+  const lines = content.split('\n');
+  lines.splice(startLineNum, endLineNum - startLineNum);
+
+  // Insert the fixed content
+  lines.splice(startLineNum, 0, ...fixedLines);
+
+  return lines.join('\n');
 }
 
 function lintMarkdown() {
@@ -71,12 +129,18 @@ function lintMarkdown() {
       description: 'Glob of files to run through markdownlint.',
       default: defaultGlob,
     },
+    fix: {
+      type: 'boolean',
+      description: 'Fix trim-code-block-and-unindent issues.',
+      default: false,
+    },
   }).argv;
 
   if (argv.info) {
     // Info about options was already displayed by yargs.help().
     return Promise.resolve();
   }
+  fix = argv.fix;
 
   return gulp
     .src([argv.glob, ...markdownFiles])

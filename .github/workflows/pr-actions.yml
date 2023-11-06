@@ -4,6 +4,12 @@ on:
   issue_comment:
     types: [created]
 
+env:
+  COMMENT: ${{ github.event.comment.body }}
+  PR_NUM: ${{ github.event.issue.number }}
+  USER_EMAIL: 107717825+opentelemetrybot@users.noreply.github.com
+  USER_NAME: opentelemetrybot
+
 jobs:
   fix-format:
     name: /fix:format
@@ -14,10 +20,6 @@ jobs:
       contains(github.event.comment.body, '/fix:format')
     permissions:
       contents: write
-
-    env:
-      PR_NUM: ${{ github.event.issue.number }}
-      COMMENT: ${{ github.event.comment.body }}
 
     steps:
       - name: Context info
@@ -49,12 +51,14 @@ jobs:
 
       - name: Commit and push changes, if any
         run: |
-          git config --local user.email "107717825+opentelemetrybot@users.noreply.github.com"
-          git config --local user.name "opentelemetrybot"
-          git add -A
+          git config --local user.email "$USER_EMAIL"
+          git config --local user.name "$USER_NAME"
           if [[ $(git status --porcelain) ]]; then
+            git add -A
+            current_branch=$(git rev-parse --abbrev-ref HEAD)
+            echo current_branch=$current_branch
             git commit -m 'Results from /fix:format'
-            git push
+            git push origin $current_branch
           else
             echo "No changes to commit"
           fi
@@ -72,9 +76,7 @@ jobs:
       contents: write
 
     env:
-      PR_NUM: ${{ github.event.issue.number }}
-      COMMENT: ${{ github.event.comment.body }}
-      DEPTH: 100 # submodule clone depth
+      DEPTH: --depth 100 # submodule clone depth
 
     steps:
       - name: Context info
@@ -107,12 +109,14 @@ jobs:
 
       - name: Commit and push changes, if any
         run: |
-          git config --local user.email "107717825+opentelemetrybot@users.noreply.github.com"
-          git config --local user.name "opentelemetrybot"
-          git add -A
+          git config --local user.email "$USER_EMAIL"
+          git config --local user.name "$USER_NAME"
           if [[ $(git status --porcelain) ]]; then
+            git add -A
+            current_branch=$(git rev-parse --abbrev-ref HEAD)
+            echo current_branch=$current_branch
             git commit -m 'Results from /fix:recache'
-            git push
+            git push origin $current_branch
           else
             echo "No changes to commit"
           fi

@@ -3,7 +3,7 @@ title: Automatic Instrumentation
 linkTitle: Automatic
 weight: 20
 # prettier-ignore
-cSpell:ignore: autoload autoloading configurator democlass myapp packagist pecl phar unindented userland
+cSpell:ignore: centos configurator democlass epel myapp packagist pecl phar remi unindented userland
 ---
 
 Automatic instrumentation with PHP requires at least PHP 8.0, and the
@@ -79,38 +79,87 @@ function will record it, without affecting exception propagation.
 The extension can be installed via pecl,
 [pickle](https://github.com/FriendsOfPHP/pickle) or
 [php-extension-installer](https://github.com/mlocati/docker-php-extension-installer)
-(docker specific).
+(docker specific). There are also packaged versions of the extension available
+for some Linux package managers.
+
+### Linux packages
+
+RPM and APK packages are provided by the following:
+
+- [Remi repository](https://blog.remirepo.net/pages/PECL-extensions-RPM-status) -
+  RPM
+- [Alpine Linux](https://pkgs.alpinelinux.org/packages?name=*pecl-opentelemetry) -
+  APK (currently in the
+  [_testing_ branch](https://wiki.alpinelinux.org/wiki/Repositories#Testing))
+
+{{< tabpane text=true >}} {{% tab "RPM" %}}
+
+```sh
+#this example is for CentOS 7. The PHP version can be changed by
+#enabling remi-<version>, eg "yum config-manager --enable remi-php83"
+yum update -y
+yum install -y epel-release yum-utils
+yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+yum-config-manager --enable remi-php81
+yum install -y php php-pecl-opentelemetry
+
+php --ri opentelemetry
+```
+
+{{% /tab %}} {{% tab "APK" %}}
+
+```sh
+#At the time of writing, PHP 8.1 was the default PHP version. You may need to
+#change "php81" if the default changes. You can alternatively choose a PHP
+#version with "apk add php<version>", eg "apk add php83".
+echo "@testing https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
+apk add php php81-pecl-opentelemetry@testing
+php --ri opentelemetry
+```
+
+{{% /tab %}} {{< /tabpane >}}
+
+### PECL
 
 1. Setup development environment. Installing from source requires proper
    development environment and some dependencies:
 
-   {{< tabpane lang=shell >}}
+   {{< tabpane text=true >}} {{% tab "Linux (apt)" %}}
 
-   {{< tab "Linux (apt)" >}}sudo apt-get install gcc make autoconf{{< /tab >}}
+   ```sh
+   sudo apt-get install gcc make autoconf
+   ```
 
-   {{< tab "macOS (homebrew)" >}}brew install gcc make autoconf{{< /tab >}}
+   {{% /tab %}} {{% tab "macOS (homebrew)" %}}
 
-   {{< /tabpane >}}
+   ```sh
+   brew install gcc make autoconf
+   ```
+
+   {{% /tab %}} {{< /tabpane >}}
 
 2. Build/install the extension. With your environment set up you can install the
    extension:
 
-   {{< tabpane lang=shell >}}
+   {{< tabpane text=true >}} {{% tab pecl %}}
 
-   {{< tab pecl >}}pecl install opentelemetry-beta{{< /tab >}}
+   ```sh
+   pecl install opentelemetry
+   ```
 
-<!-- The remaining shortcode lines must be unindented so that tab content is unindented in the generated page -->
-<!-- prettier-ignore-start -->
-{{< tab pickle >}}
-php pickle.phar install opentelemetry
-{{< /tab >}}
+   {{% /tab %}} {{% tab pickle %}}
 
-{{< tab "php-extension-installer (docker)" >}}
-install-php-extensions opentelemetry
-{{< /tab >}}
+   ```sh
+   php pickle.phar install opentelemetry
+   ```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
+   {{% /tab %}} {{% tab "php-extension-installer (docker)" %}}
+
+   ```sh
+   install-php-extensions opentelemetry
+   ```
+
+   {{% /tab %}} {{< /tabpane >}}
 
 3. Add the extension to your `php.ini` file:
 

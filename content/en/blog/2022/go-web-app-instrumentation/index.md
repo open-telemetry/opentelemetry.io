@@ -144,7 +144,7 @@ gin.Context.Request.Context.
 cur, findErr := collection.Find(c.Request.Context(), bson.D{})
 ```
 
-So make sure that you pass the Context to the mongodb operation. Check out this
+So make sure that you pass the Context to the MongoDB operation. Check out this
 issue for more info.
 
 We now have our todo app ready and instrumented. It’s time to utilize
@@ -410,7 +410,7 @@ further investigate on your own:
 ## Summary
 
 That’s all folks! We hope this guide was informative and easy to follow. You can
-find all files ready to use in our Github
+find all files ready to use in our GitHub
 [repository](https://github.com/aspecto-io/opentelemetry-examples/tree/master/go).
 
 _A version of this article was [originally posted][] on the Aspecto blog._

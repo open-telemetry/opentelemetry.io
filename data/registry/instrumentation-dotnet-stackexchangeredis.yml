@@ -1,9 +1,11 @@
+# cSpell:ignore stackexchange
 title: StackExchange.Redis Instrumentation for OpenTelemetry
 registryType: instrumentation
 isThirdParty: false
 language: dotnet
 tags:
-  - stackexchangeredis
+  - stackexchange
+  - redis
   - instrumentation
   - dotnet
 repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.StackExchangeRedis

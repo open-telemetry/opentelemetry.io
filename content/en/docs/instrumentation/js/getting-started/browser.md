@@ -1,8 +1,12 @@
 ---
 title: Browser
 aliases: [/docs/js/getting_started/browser]
+description: Learn how to add OpenTelemetry to your browser app
 weight: 20
 ---
+
+{{% alert title="Warning" color="warning" %}}
+{{% _param notes.browser-instrumentation %}} {{% /alert %}}
 
 While this guide uses the example application presented below, the steps to
 instrument your own application should be similar.
@@ -83,16 +87,19 @@ Create an empty code file named `document-load` with a `.ts` or `.js` extension,
 as appropriate, based on the language you've chosen to write your app in. Add
 the following code to your HTML right before the `</body>` closing tag:
 
-<!-- prettier-ignore-start -->
-{{< tabpane lang=html >}}
-{{< tab TypeScript >}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
+
+```html
 <script type="module" src="document-load.ts"></script>
-{{< /tab >}}
-{{< tab JavaScript >}}
+```
+
+{{% /tab %}} {{% tab JavaScript %}}
+
+```html
 <script type="module" src="document-load.js"></script>
-{{< /tab >}}
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 We will add some code that will trace the document load timings and output those
 as OpenTelemetry Spans.

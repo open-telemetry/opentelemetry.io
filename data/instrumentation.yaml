@@ -8,13 +8,13 @@ cpp:
   status:
     traces: stable
     metrics: stable
-    logs: experimental
+    logs: stable
 dotnet:
   name: .NET
   status:
     traces: stable
     metrics: stable
-    logs: mixed*
+    logs: stable
 erlang:
   name: Erlang/Elixir
   status:
@@ -25,7 +25,7 @@ go:
   name: Go
   status:
     traces: stable
-    metrics: mixed (beta SDK & stable API)
+    metrics: stable
     logs: not yet implemented
 java:
   name: Java
@@ -36,9 +36,9 @@ java:
 php:
   name: PHP
   status:
-    traces: beta
-    metrics: beta
-    logs: alpha
+    traces: stable
+    metrics: stable
+    logs: stable
 python:
   name: Python
   status:
@@ -62,7 +62,7 @@ rust:
   status:
     traces: beta
     metrics: alpha
-    logs: not yet implemented
+    logs: alpha
 swift:
   name: Swift
   status:

@@ -1,6 +1,7 @@
 ---
 title: Sampling
 weight: 80
+description: Reduce the amount of telemetry created
 ---
 
 [Sampling](/docs/concepts/sampling/) is a process that restricts the amount of
@@ -34,10 +35,9 @@ This tells the SDK to sample spans such that only 10% of traces get created.
 You can also configure the TraceIdRatioBasedSampler in code. Here's an example
 for Node.js:
 
-<!-- prettier-ignore-start -->
-{{< tabpane lang=shell >}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
-{{< tab TypeScript >}}
+```ts
 import { TraceIdRatioBasedSampler } from '@opentelemetry/sdk-trace-node';
 
 const samplePercentage = 0.1;
@@ -46,9 +46,11 @@ const sdk = new NodeSDK({
   // Other SDK configuration parameters go here
   sampler: new TraceIdRatioBasedSampler(samplePercentage),
 });
-{{< /tab >}}
+```
 
-{{< tab JavaScript >}}
+{{% /tab %}} {{% tab JavaScript %}}
+
+```js
 const { TraceIdRatioBasedSampler } = require('@opentelemetry/sdk-trace-node');
 
 const samplePercentage = 0.1;
@@ -57,38 +59,43 @@ const sdk = new NodeSDK({
   // Other SDK configuration parameters go here
   sampler: new TraceIdRatioBasedSampler(samplePercentage),
 });
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
+{{% /tab %}} {{< /tabpane >}}
 
 ### Browser
 
 You can also configure the TraceIdRatioBasedSampler in code. Here's an example
 for browser apps:
 
-<!-- prettier-ignore-start -->
-{{< tabpane lang=shell >}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
-{{< tab TypeScript >}}
-import { WebTracerProvider, TraceIdRatioBasedSampler } from '@opentelemetry/sdk-trace-web';
-
-const samplePercentage = 0.1;
-
-const provider = new WebTracerProvider({
-    sampler: new TraceIdRatioBasedSampler(samplePercentage),
-});
-{{< /tab >}}
-
-{{< tab JavaScript >}}
-const { WebTracerProvider, TraceIdRatioBasedSampler } = require('@opentelemetry/sdk-trace-web');
+```ts
+import {
+  WebTracerProvider,
+  TraceIdRatioBasedSampler,
+} from '@opentelemetry/sdk-trace-web';
 
 const samplePercentage = 0.1;
 
 const provider = new WebTracerProvider({
-    sampler: new TraceIdRatioBasedSampler(samplePercentage),
+  sampler: new TraceIdRatioBasedSampler(samplePercentage),
 });
-{{< /tab >}}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
+{{% /tab %}} {{% tab JavaScript %}}
+
+```js
+const {
+  WebTracerProvider,
+  TraceIdRatioBasedSampler,
+} = require('@opentelemetry/sdk-trace-web');
+
+const samplePercentage = 0.1;
+
+const provider = new WebTracerProvider({
+  sampler: new TraceIdRatioBasedSampler(samplePercentage),
+});
+```
+
+{{% /tab %}} {{< /tabpane >}}

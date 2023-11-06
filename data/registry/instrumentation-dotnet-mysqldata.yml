@@ -1,3 +1,4 @@
+# cSpell:ignore mysqldata
 title: MySqlData Instrumentation for OpenTelemetry
 registryType: instrumentation
 isThirdParty: false

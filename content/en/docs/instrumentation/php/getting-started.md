@@ -1,10 +1,9 @@
 ---
 title: Getting Started
 description: Get up and running with OpenTelemetry for PHP.
-aliases: [/docs/instrumentation/php/getting_started]
+aliases: [getting_started]
 weight: 10
-# prettier-ignore
-cSpell:ignore: autoload autoloaded darwin Laravel myapp PECL pecl rolldice strval Symfony Wordpress
+cSpell:ignore: darwin myapp PECL pecl rolldice strval
 ---
 
 OpenTelemetry for PHP can be used to generate and export [traces][], [metrics][]
@@ -33,11 +32,6 @@ php -v
 composer -v
 ```
 
-{{% alert title="Important" color="warning" %}}While OpenTelemetry PHP is in a
-pre-GA state, please ensure you set `minimum-stability` to `beta` in
-`composer.json`, otherwise you will get the early `0.x` versions of many of our
-packages.{{% /alert %}}
-
 ## Example Application
 
 The following example uses a basic
@@ -54,7 +48,6 @@ In an empty directory initialize a minimal `composer.json` file:
 ```sh
 composer init \
   --no-interaction \
-  --stability beta \
   --require slim/slim:"^4" \
   --require slim/psr7:"^1"
 composer update
@@ -82,7 +75,6 @@ $app->get('/rolldice', function (Request $request, Response $response) {
 });
 
 $app->run();
-
 ```
 
 Run the application using the PHP built-in web server:
@@ -102,18 +94,24 @@ Next, you’ll use the OpenTelemetry PHP extension to
 1. Since the extension is built from source, you need to install some build
    tools
 
-   {{< tabpane lang=shell >}}
+   {{< tabpane text=true >}} {{% tab "Linux (apt)" %}}
 
-   {{< tab "Linux (apt)" >}}sudo apt-get install gcc make autoconf{{< /tab >}}
+   ```sh
+   sudo apt-get install gcc make autoconf
+   ```
 
-   {{< tab "macOS (homebrew)" >}}brew install gcc make autoconf{{< /tab >}}
+   {{% /tab %}} {{% tab "macOS (homebrew)" %}}
 
-   {{< /tabpane >}}
+   ```sh
+   brew install gcc make autoconf
+   ```
+
+   {{% /tab %}} {{< /tabpane >}}
 
 2. Build the extension with `PECL`:
 
    ```sh
-   pecl install opentelemetry-beta
+   pecl install opentelemetry
    ```
 
    {{% alert title="Note" color="warning" %}}Alternative methods of installing
@@ -492,6 +490,8 @@ For more:
 - Try [automatic instrumentation](../automatic/) on one of your own apps.
 - Learn more about [manual instrumentation][] and try out some
   [examples](/docs/instrumentation/php/examples/).
+- Take a look at the [OpenTelemetry Demo](/docs/demo/), which includes the PHP
+  based [Quote Service](/docs/demo/services/quote/).
 
 [traces]: /docs/concepts/signals/traces/
 [metrics]: /docs/concepts/signals/metrics/

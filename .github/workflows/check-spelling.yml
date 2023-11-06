@@ -16,12 +16,21 @@ jobs:
             content/**/*.md
             layouts/**/*.md
             data/**/*
-            !data/registry/**/*
           config: .vscode/cspell.json
 
   dict-check:
     name: CSPELL:IGNORE check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - run: npm run fix:dict
+      - name: Any changed files?
+        run: |
+          CHANGES=`git status --porcelain`
+          if [[ $CHANGES ]]; then
+            echo "Locally run `npm run fix:dict` and commit the changes:"
+            echo "$CHANGES"
+            exit 1
+          else
+            echo "All page-local dictionaries are well formatted."
+          fi

@@ -9,16 +9,7 @@ cSpell:ignore: behaviour
 <!-- markdownlint-disable no-duplicate-heading -->
 <!-- markdownlint-capture -->
 
-A [resource](/docs/specs/otel/overview/#resources) represents an entity
-producing telemetry as attributes. For example, an OTP Release producing
-telemetry that is running in a container on Kubernetes has an OTP Release name,
-a Pod name, a namespace, and possibly a deployment name. All four of these
-attributes can be included in the resource.
-
-In your observability backend, you can use resource information to better
-investigate interesting behavior. For example, if your trace or metrics data
-indicate latency in your system, you can narrow it down to a specific container,
-pod, or Kubernetes deployment.
+{{% docs/instrumentation/resources-intro "an OTP Release" %}}
 
 ## Using resource detectors
 
@@ -29,23 +20,21 @@ detectors use the OS environment variable `OTEL_RESOURCE_ATTRIBUTES` and the
 The detectors to use is a list of module names and can be configured in the
 Application configuration:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
 
-{{< tab Erlang >}}
+```erlang
 %% sys.config
-{resource_detectors, [otel_resource_env_var, otel_resource_app_env]}
-{{< /tab >}}
+{opentelemetry, {resource_detectors, [otel_resource_env_var, otel_resource_app_env]}}
+```
 
-{{< tab Elixir >}}
+{{% /tab %}} {{% tab Elixir %}}
+
+```elixir
 ## runtime.exs
-resource_detectors: [:otel_resource_env_var, :otel_resource_app_env]
-{{< /tab >}}
+config :opentelemetry, resource_detectors: [:otel_resource_env_var, :otel_resource_app_env]
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 Or through the environment variable `OTEL_RESOURCE_DETECTORS`:
 
@@ -72,23 +61,21 @@ OTEL_RESOURCE_ATTRIBUTES="deployment.environment=development"
 Alternatively, use the `resource` Application environment under the
 `opentelemetry` Application configuration of `sys.config` or `runtime.exs`:
 
-<!-- markdownlint-disable -->
-<!-- prettier-ignore-start -->
-{{< tabpane langEqualsHeader=true >}}
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
 
-{{< tab Erlang >}}
+```erlang
 %% sys.config
-{resource, #{deployment => #{environment => <<"development">>}}
-{{< /tab >}}
+{opentelemetry, {resource, #{deployment => #{environment => <<"development">>}}}}
+```
 
-{{< tab Elixir >}}
+{{% /tab %}} {{% tab Elixir %}}
+
+```elixir
 ## runtime.exs
-resource: %{deployment: %{environment: "development" }}
-{{< /tab >}}
+config :opentelemetry, resource: %{deployment: %{environment: "development" }}
+```
 
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
-<!-- markdownlint-restore -->
+{{% /tab %}} {{< /tabpane >}}
 
 Resource attributes in the `resource` Application environment variable are
 flattened and combined with `.`, so
@@ -102,7 +89,6 @@ Custom resource detectors can be created by implementing the
 which contains a single callback `get_resource/1` that returns an
 [`otel_resource`](https://hexdocs.pm/opentelemetry/1.3.0/otel_resource.html).
 
-Note that there are
-[semantic conventions](/docs/specs/otel/resource/semantic_conventions/) defined
-for `resource` that should be followed if they apply when adding new resource
-attributes.
+Note that there are [semantic conventions](/docs/specs/semconv/resource/)
+defined for `resource` that should be followed if they apply when adding new
+resource attributes.

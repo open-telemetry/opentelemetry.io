@@ -1,12 +1,18 @@
 ---
 title: Exporters
 weight: 50
-cSpell:ignore: autoload fastcgi ndjson pecl
+cSpell:ignore: fastcgi pecl
 ---
 
-In order to visualize and analyze your telemetry, you will need to export it to
-a backend. OpenTelemetry PHP provides exporters for some common protocols, which
-you can send to a number of open source backends.
+{{% docs/instrumentation/exporters-intro php %}}
+
+{{% alert title="Note" color="info" %}}
+
+If you use [automatic instrumentation](/docs/instrumentation/php/automatic/) you
+can setup exporters with
+[zero-code configuration to setup exporters](/docs/instrumentation/php/automatic/#zero-code-configuration-for-automatic-instrumentation).
+
+{{% /alert %}}
 
 ## OTLP
 
@@ -30,15 +36,14 @@ composer require open-telemetry/transport-grpc
 
 Next, configure an exporter with an OTLP endpoint. For example:
 
-<!-- prettier-ignore-start -->
+{{< tabpane text=true >}} {{% tab gRPC %}}
 
-{{< tabpane >}} {{< tab gRPC >}}
-
+```php
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
 
-use OpenTelemetry\API\Common\Signal\Signals;
+use OpenTelemetry\API\Signals;
 use OpenTelemetry\Contrib\Grpc\GrpcTransportFactory;
 use OpenTelemetry\Contrib\Otlp\OtlpUtil;
 use OpenTelemetry\Contrib\Otlp\SpanExporter;
@@ -51,8 +56,11 @@ $exporter = new SpanExporter($transport);
 $tracerProvider =  new TracerProvider(
     new SimpleSpanProcessor($exporter)
 );
-{{< /tab >}}
-{{< tab protobuf >}}
+```
+
+{{% /tab %}} {{% tab protobuf %}}
+
+```php
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
@@ -68,8 +76,11 @@ $exporter = new SpanExporter($transport);
 $tracerProvider =  new TracerProvider(
     new SimpleSpanProcessor($exporter)
 );
-{{< /tab>}}
-{{< tab json >}}
+```
+
+{{% /tab %}} {{% tab JSON %}}
+
+```php
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
@@ -87,8 +98,11 @@ $tracerProvider =  new TracerProvider(
 );
 $tracer = $tracerProvider->getTracer('io.opentelemetry.contrib.php');
 $tracer->spanBuilder('example')->startSpan()->end();
-{{< /tab >}}
-{{< tab nd-json >}}
+```
+
+{{% /tab %}} {{% tab NDJSON %}}
+
+```php
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
@@ -106,9 +120,9 @@ $tracerProvider =  new TracerProvider(
 );
 $tracer = $tracerProvider->getTracer('io.opentelemetry.contrib.php');
 $tracer->spanBuilder('example')->startSpan()->end();
-{{< /tab >}}
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 Then, append the following code to generate a span:
 
@@ -155,7 +169,7 @@ Install the exporter package as a dependency for your application:
 composer require open-telemetry/exporter-zipkin
 ```
 
-Update the example to use the Zipkin exporter and to send data to your zipkin
+Update the example to use the Zipkin exporter and to send data to your Zipkin
 backend:
 
 ```php
@@ -180,5 +194,6 @@ will not hold up request processing.
 
 To minimize the impact of slow transport of telemetry data, particularly for
 external or cloud-based backends, you should consider using the
-[OpenTelemetry Collector](/docs/collector/) as an [agent](/docs/collector/deployment/agent/). The agent can quickly
-accept, then batch send telemetry data to the backend.
+[OpenTelemetry Collector](/docs/collector/) as an
+[agent](/docs/collector/deployment/agent/). The agent can quickly accept, then
+batch send telemetry data to the backend.

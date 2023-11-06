@@ -3,7 +3,7 @@ title: Auto-Instrumentation Example
 linkTitle: Example
 weight: 20
 # prettier-ignore
-cSpell:ignore: distro instrumentor mkdir MSIE Referer Starlette uninstrumented virtualenv WSGI
+cSpell:ignore: distro instrumentor mkdir MSIE Referer Starlette uninstrumented virtualenv
 ---
 
 This page demonstrates how to use Python auto-instrumentation in OpenTelemetry.
@@ -347,8 +347,7 @@ If those headers are available, they will be included in your span:
 }
 ```
 
-[semantic convention]:
-  /docs/specs/otel/trace/semantic_conventions/http/#http-request-and-response-headers
+[semantic convention]: /docs/specs/semconv/http/http-spans/
 [api reference]:
   https://opentelemetry-python.readthedocs.io/en/latest/index.html
 [instrumentation]:

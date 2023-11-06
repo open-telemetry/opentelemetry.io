@@ -1,9 +1,8 @@
 ---
 title: Annotations
 description: Using instrumentation annotations with a Java agent.
-aliases: [/docs/instrumentation/java/annotations]
+aliases: [../annotations]
 weight: 20
-javaInstrumentationVersion: 1.28.0
 cSpell:ignore: Flowable javac reactivestreams reactivex
 ---
 
@@ -25,7 +24,7 @@ annotation.
   <dependency>
     <groupId>io.opentelemetry.instrumentation</groupId>
     <artifactId>opentelemetry-instrumentation-annotations</artifactId>
-    <version>{{% param javaInstrumentationVersion %}}</version>
+    <version>{{% param vers.instrumentation %}}</version>
   </dependency>
 </dependencies>
 ```
@@ -34,7 +33,7 @@ annotation.
 
 ```groovy
 dependencies {
-    implementation('io.opentelemetry.instrumentation:opentelemetry-instrumentation-annotations:{{% param javaInstrumentationVersion %}}')
+    implementation('io.opentelemetry.instrumentation:opentelemetry-instrumentation-annotations:{{% param vers.instrumentation %}}')
 }
 ```
 
@@ -115,7 +114,7 @@ Suppress `@WithSpan` instrumentation for specific methods. Format is `my.package
 ## Creating spans around methods with `otel.instrumentation.methods.include`
 
 In cases where you are unable to modify the code, you can still configure the
-javaagent to capture spans around specific methods.
+Java agent to capture spans around specific methods.
 
 {{% config_option name="otel.instrumentation.methods.include" %}} Add
 instrumentation for specific methods in lieu of `@WithSpan`. Format is

@@ -39,10 +39,10 @@ Below is the summary of this month's discussions.
 HTTP is supported (for running in Azure App Service). What are the risks
 associated with losing gRPC capability?
 
-**A:** If HTTP2 is supported in Azure, gRPC might work there, since gRPC is HTTP
-under the hood with extra complications built on top of HTTP2. One suggestion is
-to follow up with Microsoft about gRPC support, as it may have very long-running
-connections.
+**A:** If HTTP/2 is supported in Azure, gRPC might work there, since gRPC is
+HTTP under the hood with extra complications built on top of HTTP/2. One
+suggestion is to follow up with Microsoft about gRPC support, as it may have
+very long-running connections.
 
 #### 2 - Uptime monitoring/synthetics
 
@@ -192,7 +192,7 @@ agent to the host metrics receiver for infrastructure monitoring.
   that are used by applications. Auto-instrumentation is also available for
   [Python](/docs/instrumentation/python/automatic/),
   [.NET](/docs/instrumentation/net/automatic/), and
-  [Node.js](/docs/instrumentation/js/libraries/#node-autoinstrumentation-package).
+  [Node.js](/docs/instrumentation/js/automatic).
 - If you’re using Kubernetes, they can use the
   [OTel operator](https://github.com/open-telemetry/opentelemetry-operator),
   which takes care of instrumentations for applications deployed on K8s. The
@@ -247,7 +247,7 @@ CNCF’s Slack instance.
 
 **Q:** Where do you go to find documentation and answers to your questions?
 
-**A:** We have many resources, including official documentation and Github
+**A:** We have many resources, including official documentation and GitHub
 repositories.
 
 To help us improve our resources, it would be helpful to gather feedback from

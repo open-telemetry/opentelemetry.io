@@ -3,7 +3,7 @@ title: Manual Instrumentation
 linkTitle: Manual
 weight: 30
 description: Manual instrumentation for OpenTelemetry PHP
-cSpell:ignore: autoload guzzlehttp myapp
+cSpell:ignore: guzzlehttp myapp
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
@@ -206,16 +206,15 @@ For a method `parent` calling a method `child`, we can relate the spans by
 making the parent span active before creating the child span:
 
 ```php
-
-  $parent = $tracer->spanBuilder("parent")->startSpan();
-  $scope = $parent->activate();
-  try {
-    $child = $tracer->spanBuilder("child")->startSpan();
-    $child->end();
-  } finally {
-    $parent->end();
-    $scope->detach();
-  }
+$parent = $tracer->spanBuilder("parent")->startSpan();
+$scope = $parent->activate();
+try {
+  $child = $tracer->spanBuilder("child")->startSpan();
+  $child->end();
+} finally {
+  $parent->end();
+  $scope->detach();
+}
 ```
 
 You _must_ `detach` the active scope if you have activated it.
@@ -338,22 +337,28 @@ The OpenTelemetry SDK provides four samplers:
   which is used to determine if a root span (a span without a parent) should be
   sampled. The root sampler can be any of the other samplers.
 
-<!-- prettier-ignore-start -->
-{{< tabpane lang=php >}}
-{{< tab "TraceId ratio-based" >}}
-//trace 50% of requests
+{{< tabpane text=true >}} {{% tab "TraceId ratio-based" %}}
+
+```php
+// Trace 50% of requests
 $sampler = new TraceIdRatioBasedSampler(0.5);
-{{< /tab >}}
-{{< tab "Always On" >}}
-//always trace
+```
+
+{{% /tab %}} {{% tab "Always On" %}}
+
+```php
+// Always trace
 $sampler = new AlwaysOnSampler();
-{{< /tab >}}
-{{< tab "Parent-based + ratio-based" >}}
-//always sample if the parent is sampled, otherwise only sample 10% of spans
+```
+
+{{% /tab %}} {{% tab "Parent-based + ratio-based" %}}
+
+```php
+// Always sample if the parent is sampled, otherwise only sample 10% of spans
 $sampler = new ParentBased(new TraceIdRatioBasedSampler(0.1));
-{{< /tab >}}
-{{< /tabpane >}}
-<!-- prettier-ignore-end -->
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 ```php
 $tracerProvider = TracerProvider::builder()
@@ -744,10 +749,10 @@ By default, OpenTelemetry will log errors and warnings via PHP's
 [`error_log`](https://www.php.net/manual/en/function.error-log.php) function.
 The verbosity can be controlled or disabled via the `OTEL_LOG_LEVEL` setting.
 
-Messages sent to `error_log` will be at a level no higher than `E_USER_WARNING`,
-to avoid breaking applications.
-
-You can optionally configure OpenTelemetry to instead log via a PSR-3 logger:
+The `OTEL_PHP_LOG_DESTINATION` variable can be used to control log destination
+or disable error logging completely. Valid values are `default`, `error_log`,
+`stderr`, `stdout`, `psr3`, or `none`. `default` (or if the variable is not
+set), will use `error_log` unless a PSR-3 logger is configured:
 
 ```php
 $logger = new \Example\Psr3Logger(LogLevel::INFO);
@@ -755,7 +760,7 @@ $logger = new \Example\Psr3Logger(LogLevel::INFO);
 ```
 
 For more fine-grained control and special case handling, custom handlers and
-filters can be applied to the logger (if the logger offers this ability).
+filters can be applied to the PSR-3 logger (if the logger offers this ability).
 
 ## Next steps
 

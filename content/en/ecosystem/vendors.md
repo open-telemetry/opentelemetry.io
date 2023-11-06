@@ -21,7 +21,7 @@ To have your organization listed, submit a PR with an entry added to the
 The entry must include the following[^grace-period-2024-01-01]:
 
 - Link to the documentation that details how your offering consumes
-  OpenTelemetry natively via [OTLP](http://localhost:1313/docs/specs/otlp/).
+  OpenTelemetry natively via [OTLP](/docs/specs/otlp/).
 - Link to your distribution, if applicable
 - Link that proves that your offering is open source, if applicable. An open
   source distribution does not qualify your offering to be marked "open source".

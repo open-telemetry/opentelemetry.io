@@ -11,7 +11,7 @@ leveraged by the UI or other clients. The application is based on
 
 ## Server Instrumentation
 
-It is recommended to use a Node required module when starting your NodeJS
+It is recommended to use a Node required module when starting your Node.js
 application to initialize the SDK and auto-instrumentation. When initializing
 the OpenTelemetry Node.js SDK, you optionally specify which auto-instrumentation
 libraries to leverage, or make use of the `getNodeAutoInstrumentations()`
@@ -85,9 +85,9 @@ This can be done in the `scripts.start` section of `package.json` and starting
 the application using `npm start`.
 
 ```json
-  "scripts": {
-    "start": "node --require ./Instrumentation.js server.js",
-  },
+"scripts": {
+  "start": "node --require ./Instrumentation.js server.js",
+},
 ```
 
 ## Traces
@@ -233,6 +233,6 @@ To determine if a Baggage item is set, you can leverage the `propagation` API to
 parse the Baggage header, and leverage the `baggage` API to get or set entries.
 
 ```typescript
-    const baggage = propagation.getBaggage(context.active());
-    if (baggage?.getEntry("synthetic_request")?.value == "true") {...}
+const baggage = propagation.getBaggage(context.active());
+if (baggage?.getEntry("synthetic_request")?.value == "true") {...}
 ```

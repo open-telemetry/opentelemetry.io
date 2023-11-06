@@ -39,4 +39,4 @@ current information.
 ## Code of conduct
 
 OpenTelemetry follows the
-[CNCF Code of Conduct](https://github.com/cncf/foundation/blob/master/code-of-conduct.md).
+[CNCF Community Code of Conduct](https://github.com/cncf/foundation/blob/main/code-of-conduct.md).

@@ -4,8 +4,13 @@ linkTitle: Kubernetes metadata
 date: 2022-06-29
 author: '[Ruben Vargas](https://github.com/rubenvp8510)'
 # prettier-ignore
-cSpell:ignore: k8sattributes k8sattributesprocessor k8sprocessor KUBE replicaset resourcedetection
+cSpell:ignore: k8sattributes k8sattributesprocessor k8sprocessor KUBE replicaset replicasetname resourcedetection
 ---
+
+{{% alert title="Note" color="info" %}} The most up to date information for how
+to enhance telemetry with Kubernetes metadata can be found in the docs. See
+[Getting Started with Kubernetes](/docs/kubernetes/getting-started/) for more
+info. {{% /alert %}}
 
 Attaching Kubernetes resource metadata to OpenTelemetry traces is useful to
 identify which resource (such as a pod) is failing or having performance
@@ -225,10 +230,7 @@ Here's an example of the value of the environment variable:
 
 ```yaml
 - name: OTEL_RESOURCE_ATTRIBUTES
-  value: k8s.deployment.name=dep-vert-x,k8s.deployment.uid=ef3fe26b-a690-4746-9119-d2dbd94b469f,
-  k8s.namespace.name=default,k8s.node.name=$(OTEL_RESOURCE_ATTRIBUTES_NODE_NAME),k8s.pod.name=
-  (OTEL_RESOURCE_ATTRIBUTES_POD_NAME),k8s.pod.uid=$(OTEL_RESOURCE_ATTRIBUTES_POD_UID),k8s.replicaset
-  name=dep-vert-x-59b6f76585,k8s.replicaset.uid=5127bc38-e298-40e1-95df-f4a777e3176c
+  value: k8s.deployment.name=dep-vert-x,k8s.deployment.uid=ef3fe26b-a690-4746-9119-d2dbd94b469f,k8s.namespace.name=default,k8s.node.name=$(OTEL_RESOURCE_ATTRIBUTES_NODE_NAME),k8s.pod.name=(OTEL_RESOURCE_ATTRIBUTES_POD_NAME),k8s.pod.uid=$(OTEL_RESOURCE_ATTRIBUTES_POD_UID),k8s.replicasetname=dep-vert-x-59b6f76585,k8s.replicaset.uid=5127bc38-e298-40e1-95df-f4a777e3176c
 ```
 
 ## Learn more
@@ -246,7 +248,7 @@ sidecar, or when one collector as an agent report to another collector.
 
 - [K8sattributes processor documentation][k8sattributesprocessor]
 - [K8sattributes processor RBAC](https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/k8sattributesprocessor#hdr-RBAC)
-- [OpenTelemetry Kubernetes attributes](/docs/specs/otel/resource/semantic_conventions/k8s)
+- [OpenTelemetry Kubernetes attributes](/docs/specs/semconv/resource/k8s)
 - [Resource detector processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/resourcedetectionprocessor/README.md)
 
 [pr#832]: https://github.com/open-telemetry/opentelemetry-operator/pull/832
@@ -254,6 +256,5 @@ sidecar, or when one collector as an agent report to another collector.
   https://github.com/open-telemetry/opentelemetry-operator
 [k8sattributesprocessor]:
   https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/k8sattributesprocessor
-[kubernetes resource semantic conventions]:
-  /docs/specs/otel/resource/semantic_conventions/k8s
+[kubernetes resource semantic conventions]: /docs/specs/semconv/resource/k8s
 [vert.x example app]: https://github.com/jaegertracing/vertx-create-span

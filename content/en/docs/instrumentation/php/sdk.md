@@ -1,7 +1,6 @@
 ---
 title: SDK
 weight: 100
-cSpell:ignore: autoload autoloader autoloading ndjson
 ---
 
 The OpenTelemetry SDK provides a working implementation of the API, and can be
@@ -93,15 +92,10 @@ php example.php
 require 'vendor/autoload.php'; //sdk autoloading happens as part of composer initialization
 
 $tracer = OpenTelemetry\API\Common\Instrumentation\Globals::tracerProvider()->getTracer('name', 'version', 'schema.url', [/*attributes*/]);
-$meter = OpenTelemetry\API\Common\Instrumentation\Globals::meterProvider()->getTracer('name', 'version', 'schema.url', [/*attributes*/]);
+$meter = OpenTelemetry\API\Common\Instrumentation\Globals::meterProvider()->getMeter('name', 'version', 'schema.url', [/*attributes*/]);
 ```
 
 SDK autoloading happens as part of the composer autoloader.
-
-{{% alert title="Important" color="warning" %}}The batch span and log processors
-emit metrics about their internal state, so ensure that you have a correctly
-configured metrics exporter. Alternatively, you can disable metrics by setting
-`OTEL_METRICS_EXPORTER=none`{{% /alert %}}
 
 ## Configuration
 
@@ -112,12 +106,14 @@ to the specification is listed in the
 
 There are also a number of PHP-specific configurations:
 
-| Name                                 | Default value | Values                                                                                | Example          | Description                                         |
-| ------------------------------------ | ------------- | ------------------------------------------------------------------------------------- | ---------------- | --------------------------------------------------- |
-| `OTEL_PHP_TRACES_PROCESSOR`          | `batch`       | `batch`, simple                                                                       | `simple`         | Span processor selection                            |
-| `OTEL_PHP_DETECTORS`                 | `all`         | `env`, `host`, `os`, `process`, `process_runtime`, `sdk`, `sdk_provided`, `container` | `env,os,process` | Resource detector selection                         |
-| `OTEL_PHP_AUTOLOAD_ENABLED`          | `false`       | `true`, `false`                                                                       | `true`           | Enable/disable SDK autoloading                      |
-| `OTEL_PHP_DISABLED_INSTRUMENTATIONS` | `[]`          | Instrumentation name(s)                                                               | `psr15,psr18`    | Disable one or more installed auto-instrumentations |
+| Name                                 | Default value | Values                                                                                | Example          | Description                                                                        |
+| ------------------------------------ | ------------- | ------------------------------------------------------------------------------------- | ---------------- | ---------------------------------------------------------------------------------- |
+| `OTEL_PHP_TRACES_PROCESSOR`          | `batch`       | `batch`, `simple`                                                                     | `simple`         | Span processor selection                                                           |
+| `OTEL_PHP_DETECTORS`                 | `all`         | `env`, `host`, `os`, `process`, `process_runtime`, `sdk`, `sdk_provided`, `container` | `env,os,process` | Resource detector selection                                                        |
+| `OTEL_PHP_AUTOLOAD_ENABLED`          | `false`       | `true`, `false`                                                                       | `true`           | Enable/disable SDK autoloading                                                     |
+| `OTEL_PHP_LOG_DESTINATION`           | `default`     | `error_log`, `stderr`, `stdout`, `psr3`, `none`                                       | `stderr`         | Where internal errors and warnings will be sent                                    |
+| `OTEL_PHP_INTERNAL_METRICS_ENABLED`  | `false`       | `true`, `false`                                                                       | `true`           | Whether the SDK should emit metrics about its internal state (eg batch processors) |
+| `OTEL_PHP_DISABLED_INSTRUMENTATIONS` | `[]`          | Instrumentation name(s)                                                               | `psr15,psr18`    | Disable one or more installed auto-instrumentations                                |
 
 Configurations can be provided as environment variables, or via `php.ini` (or a
 file included by `php.ini`)
