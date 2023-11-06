@@ -723,7 +723,7 @@ mTLS for mutual authentication. Follow these steps to generate self-signed
 certificates as in this example. You might want to use your current cert
 provisioning procedures to procure a certificate for production usage.
 
-Install [cfssl](https://github.com/cloudflare/cfssl) and create the following
+Install [`cfssl`](https://github.com/cloudflare/cfssl) and create the following
 `csr.json` file:
 
 ```json
