@@ -91,25 +91,44 @@ Make sure that the domain.xml file in your domain directory contains a
 
 Add the path to the Java agent to your startup script:
 
-```shell
-# Linux: Add the following line to \<tomcat_home\>/bin/setenv.sh
-CATALINA_OPTS="$CATALINA_OPTS -javaagent:/path/to/opentelemetry-javaagent.jar"
+{{< tabpane text=true persist=lang >}}
 
-# Windows: Add the following line to \<tomcat_home\>binsetenv.bat
+{{% tab header="\<tomcat_home\>/bin/setenv.sh" lang=Linux %}}
+
+```sh
+CATALINA_OPTS="$CATALINA_OPTS -javaagent:/path/to/opentelemetry-javaagent.jar"
+```
+
+{{% /tab %}}
+{{% tab header="Windows (\<tomcat_home\>binsetenv.bat)" lang=Windows %}}
+
+```bat
 set CATALINA_OPTS=%CATALINA_OPTS% -javaagent:"<Drive>:\path\to\opentelemetry-javaagent.jar"
 ```
+
+{{% /tab %}} {{< /tabpane >}}
 
 ## WebLogic
 
 Add the path to the Java agent to your domain startup script:
 
-```shell
-# Linux: Add the following line to \<domain_home\>/bin/startWebLogic.sh
-export JAVA_OPTIONS="$JAVA_OPTIONS -javaagent:/path/to/opentelemetry-javaagent.jar"
+{{< tabpane text=true persist=lang >}}
 
-# Linux: Add the following line to \<domain_home\>binstartWebLogic.cmd
+{{% tab header="\<domain_home\>/bin/startWebLogic.sh" lang=Linux %}}
+
+```sh
+# Linux: Add the following line to
+export JAVA_OPTIONS="$JAVA_OPTIONS -javaagent:/path/to/opentelemetry-javaagent.jar"
+```
+
+{{% /tab %}}
+{{% tab header="Windows (\<domain_home\>binstartWebLogic.cmd)" lang=Windows %}}
+
+```bat
 set JAVA_OPTIONS=%JAVA_OPTIONS% -javaagent:"<Drive>:\path\to\opentelemetry-javaagent.jar"
 ```
+
+{{% /tab %}} {{< /tabpane >}}
 
 For managed server instances, add the `-javaagent` argument using the admin
 console.
