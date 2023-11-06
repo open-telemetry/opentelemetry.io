@@ -149,3 +149,8 @@
   docsUrl: https://doc.traefik.io/traefik-hub/operations/telemetry/overview/
   components: [Go]
   oss: false
+- name: Strimzi
+  url: https://strimzi.io/
+  docsUrl: https://strimzi.io/docs/operators/latest/deploying#assembly-distributed-tracing-str
+  components: [Java]
+  oss: true

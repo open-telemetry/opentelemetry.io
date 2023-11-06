@@ -199,9 +199,13 @@ dependencies {
 }
 ```
 
-Throughout this documentation you will add additional dependencies. For a full
-list of artifact coordinates see [releases][releases] and for semantic
-convention releases see [semantic-conventions-java][semantic-conventions-java].
+Throughout this documentation you will add dependencies. For a full list of
+artifact coordinates, see [releases]. For semantic convention releases, see
+[semantic-conventions-java].
+
+[releases]: https://github.com/open-telemetry/opentelemetry-java#releases
+[semantic-conventions-java]:
+  https://github.com/open-telemetry/semantic-conventions-java/releases
 
 {{% /tab %}} {{% tab Maven %}}
 
@@ -1652,8 +1656,5 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
 [opentelemetry registry]: /ecosystem/registry/?component=exporter&language=java
 [parentbased]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/ParentBasedSampler.java
-[releases]: https://github.com/open-telemetry/opentelemetry-java#releases
-[semantic-conventions-java]:
-  https://github.com/open-telemetry/semantic-conventions-java/releases
 [traceidratiobased]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/TraceIdRatioBasedSampler.java

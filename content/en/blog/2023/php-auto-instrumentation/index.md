@@ -146,7 +146,7 @@ following result in
 
 We have all necessary components in place:
 
-- APIs and SDK as a foundation and implementation of opentelemetry
+- APIs and SDK as a foundation and implementation of OpenTelemetry
   specification.
 - C extension as a foundation for auto-instrumentation.
 - Auto Instrumentation support (WIP) for most important and popular libraries
