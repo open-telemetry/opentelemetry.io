@@ -1,7 +1,7 @@
 ---
 title: 'Experience Report: Adopting OpenTelemetry for Metrics in Cloud Foundry'
 linkTitle: OpenTelemetry in Cloud Foundry
-date: 2023-10-31
+date: 2023-11-08
 author: >-
   [Matthew Kocher](https://github.com/mkocher) (VMware) and [Carson
   Long](https://github.com/ctlong) (VMware)
