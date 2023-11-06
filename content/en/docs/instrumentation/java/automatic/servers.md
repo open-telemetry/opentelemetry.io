@@ -52,13 +52,19 @@ argument after the `--exec` option:
 
 Add the path to the Java agent using the `asadmin` tool:
 
-```shell
-# Linux
-<server_install_dir>/bin/asadmin create-jvm-options "-javaagent\:/path/to/opentelemetry-javaagent.jar"
+{{< tabpane text=true >}} {{% tab Linux %}}
 
-# Windows
+```sh
+<server_install_dir>/bin/asadmin create-jvm-options "-javaagent\:/path/to/opentelemetry-javaagent.jar"
+```
+
+{{% /tab %}} {{% tab Windows %}}
+
+```powershell
 <server_install_dir>\bin\asadmin.bat create-jvm-options '-javaagent\:<Drive>\:\\path\\to\\opentelemetry-javaagent.jar'
 ```
+
+{{% /tab %}} {{< /tabpane >}}
 
 You can also add the `-javaagent` argument from the Admin Console. For example:
 
