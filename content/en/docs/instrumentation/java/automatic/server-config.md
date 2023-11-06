@@ -77,16 +77,11 @@ Add the path to the Java agent using the `asadmin` tool:
 
 You can also add the `-javaagent` argument from the Admin Console. For example:
 
-1.  Open the GlassFish Admin Console at `http://localhost:4848`.
-
+1.  Open the GlassFish Admin Console at <http://localhost:4848>.
 2.  Go to **Configurations > server-config > JVM Settings**.
-
 3.  Select **JVM Options > Add JVM Option**.
-
 4.  Enter the path to the agent:
-
     `-javaagent:/path/to/opentelemetry-javaagent.jar`
-
 5.  **Save** and restart the server.
 
 Make sure that the domain.xml file in your domain directory contains a
