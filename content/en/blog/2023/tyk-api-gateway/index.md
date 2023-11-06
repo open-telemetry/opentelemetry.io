@@ -1,24 +1,12 @@
 ---
 title: Tyk API Gateway's Native OpenTelemetry Integration
 linkTitle: Tyk API Gateway's Native OpenTelemetry Integration
-date: 2023-10-24
+date: 2023-11-07
 author: >-
   [Sonja Chevre](https://github.com/SonjaChevre) (Tyk Technologies)
-draft: false
 ---
 
-{{% alert color="primary" %}}
-As part of [OpenTelemetry's vision](http://localhost:1313/community/mission/#telemetry-should-be-built-in),
-we believe that high-quality telemetry can be built in to the entire
-software stack. Therefore we are excited, that there are more and more
-[libraries, services and apps, that integrate OpenTelemetry](/ecosystem/integrations/)
-to provide built in observability to their users._
-
-_In this and future blog post, we will spot light these integrations to you! If
-you want your integration to be listed and to be highlighted in a blog post as
-well,
-[reach out](https://github.com/open-telemetry/opentelemetry.io/issues/new)!_
-{{% /alert %}}
+{{< blog/integration-badge >}}
 
 We're excited to announce that
 [Tyk API Gateway](https://github.com/TykTechnologies/tyk) has first-class
@@ -69,7 +57,7 @@ Edit Tyk Gateway configuration file to enable OpenTelemetry support, like this:
 ```
 
 You can also enable OpenTelemetry by setting the corresponding environment
-variable: TYK_GW_OPENTELEMETRY_ENABLED=TRUE.
+variable: `TYK_GW_OPENTELEMETRY_ENABLED=TRUE`.
 
 By default, OpenTelemetry spans are exported using the gRPC protocol to
 `localhost:4317`. For more configuration options and default values, refer to
