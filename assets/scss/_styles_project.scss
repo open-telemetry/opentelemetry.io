@@ -290,3 +290,20 @@ body.td-page--draft .td-content {
 details {
   margin-bottom: $paragraph-margin-bottom;
 }
+
+.ot-integration-badge {
+  border-radius: 0 !important;
+
+  position: relative;
+  transform: rotate(6deg);
+  background: hsl(60, 100%, 60%);
+  border-color: hsl(60, 100%, 60%);
+  padding: 1rem;
+  margin: 0 1rem 1rem 1rem;
+
+  &:hover {
+    background: hsl(60, 100%, 60%);
+    transform: rotate(4deg);
+    transition: transform 0.2s linear;
+  }
+}
