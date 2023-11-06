@@ -78,7 +78,7 @@ transport your data:
 Start by installing the respective exporter packages as a dependency for your
 project:
 
-{{< tabpane text=true langEqualsHeader=false >}} {{% tab "HTTP/Proto" %}}
+{{< tabpane text=true >}} {{% tab "HTTP/Proto" %}}
 
 ```shell
 npm install --save @opentelemetry/exporter-trace-otlp-proto \
@@ -92,7 +92,7 @@ npm install --save @opentelemetry/exporter-trace-otlp-http \
   @opentelemetry/exporter-metrics-otlp-http
 ```
 
-{{% /tab %}} {{% tab "gRPC" %}}
+{{% /tab %}} {{% tab gRPC %}}
 
 ```shell
 npm install --save @opentelemetry/exporter-trace-otlp-grpc \
