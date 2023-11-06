@@ -93,7 +93,7 @@ Add the path to the Java agent to your startup script:
 
 {{< tabpane text=true persist=lang >}}
 
-{{% tab header="\<tomcat_home\>/bin/setenv.sh" lang=Linux %}}
+{{% tab header="Linux (\<tomcat_home\>/bin/setenv.sh)" lang=Linux %}}
 
 ```sh
 CATALINA_OPTS="$CATALINA_OPTS -javaagent:/path/to/opentelemetry-javaagent.jar"
@@ -114,10 +114,9 @@ Add the path to the Java agent to your domain startup script:
 
 {{< tabpane text=true persist=lang >}}
 
-{{% tab header="\<domain_home\>/bin/startWebLogic.sh" lang=Linux %}}
+{{% tab header="Linux (\<domain_home\>/bin/startWebLogic.sh)" lang=Linux %}}
 
 ```sh
-# Linux: Add the following line to
 export JAVA_OPTIONS="$JAVA_OPTIONS -javaagent:/path/to/opentelemetry-javaagent.jar"
 ```
 
