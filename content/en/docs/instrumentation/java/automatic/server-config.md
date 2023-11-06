@@ -23,7 +23,7 @@ the standalone configuration file:
 JAVA_OPTS="$JAVA_OPTS -javaagent:/path/to/opentelemetry-javaagent.jar"
 ```
 
-{{% /tab %}} {{% tab header="Windows (standalone.conf.bat)" lang=Windows %}}
+{{% /tab %}} {{% tab header="Windows (`standalone.conf.bat`)" lang=Windows %}}
 
 ```bat
 set "JAVA_OPTS=%JAVA_OPTS% -javaagent:<Drive>:\path\to\opentelemetry-javaagent.jar"
