@@ -721,7 +721,7 @@ opentelemetry-instrument --logs_exporter otlp flask run -p 8080
 
 By default, `opentelemetry-instrument` exports traces and metrics over OTLP/gRPC
 and will send them to `localhost:4317`, which is what the collector is listening
-on
+on.
 
 When you access the `/rolldice` route now, you'll see output in the collector
 process instead of the flask process, which should look something like this:
