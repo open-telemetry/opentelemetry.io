@@ -3,7 +3,7 @@ title: Instrumenting Apache Kafka clients with OpenTelemetry
 linkTitle: Instrumenting Apache Kafka clients
 date: 2022-09-06
 author: '[Paolo Patierno](https://github.com/ppatierno)'
-cSpell:ignore: -Dotel autoconfigure classpath Paolo Patierno Strimzi
+cSpell:ignore: -Dotel autoconfigure classpath Paolo Patierno
 ---
 
 Nowadays, [Apache Kafka](https://kafka.apache.org/) is chosen as the nervous
@@ -23,7 +23,7 @@ difficult to track how messages are moved around. This is where OpenTelemetry
 comes into the picture. It provides multiple instrumentation libraries for
 adding tracing to messaging based applications. Of course, there is one for
 Apache Kafka clients. It also defines the specification of semantic conventions
-for [messaging systems](/docs/specs/otel/trace/semantic_conventions/messaging/).
+for [messaging systems](/docs/specs/semconv/messaging/messaging-spans/).
 
 But usually, the architecture can even be more complicated: having applications
 not able to connect directly to the Apache Kafka cluster and talking its own

@@ -5,18 +5,10 @@ cSpell:ignore: myhost SIGINT uuidgen WORKDIR
 description: Add details about your applications' environment to your telemetry
 ---
 
-A [resource][] represents the entity producing telemetry as resource attributes.
-For example, a process producing telemetry that is running in a container on
-Kubernetes has a Pod name, a namespace, and possibly a deployment name. All
-three of these attributes can be included in the resource.
+{{% docs/instrumentation/resources-intro %}}
 
-In your observability backend, you can use resource information to better
-investigate interesting behavior. For example, if your trace or metrics data
-indicate latency in your system, you can narrow it down to a specific container,
-pod, or Kubernetes deployment.
-
-Below you will find some introductions on how to set up resource detection with
-the Node.js SDK.
+Below you will find introductions on how to set up resource detection with the
+Node.js SDK.
 
 ## Setup
 
@@ -261,13 +253,10 @@ to get details about your [Cloud] environment or [Deployment][]. You will find a
 list
 [here](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node).
 
-[resource]: /docs/specs/otel/resource/sdk/
 [getting started - node.js]: /docs/instrumentation/js/getting-started/nodejs/
-[process and process runtime resources]:
-  /docs/specs/otel/resource/semantic_conventions/process/
-[host]: /docs/specs/otel/resource/semantic_conventions/host/
-[cloud]: /docs/specs/otel/resource/semantic_conventions/cloud/
-[deployment]:
-  /docs/specs/otel/resource/semantic_conventions/deployment_environment/
-[service]: /docs/specs/otel/resource/semantic_conventions/#service
-[os]: /docs/specs/otel/resource/semantic_conventions/os/
+[process and process runtime resources]: /docs/specs/semconv/resource/process/
+[host]: /docs/specs/semconv/resource/host/
+[cloud]: /docs/specs/semconv/resource/cloud/
+[deployment]: /docs/specs/semconv/resource/deployment-environment/
+[service]: /docs/specs/semconv/resource/#service
+[os]: /docs/specs/semconv/resource/os/

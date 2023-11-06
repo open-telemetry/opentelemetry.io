@@ -1,0 +1,11 @@
+title: PHP SemConv
+registryType: core
+isThirdParty: false
+language: php
+tags:
+  - php
+repo: https://github.com/open-telemetry/opentelemetry-php/tree/main/src/SemConv
+license: Apache 2.0
+description: OpenTelemetry Semantic Conventions for PHP.
+authors: OpenTelemetry Authors
+otVersion: latest

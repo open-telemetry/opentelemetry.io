@@ -101,11 +101,12 @@ has been released, requiring some migrations to be performed.
   of InetSocketAddressNetServerAttributesGetter and
   InetSocketAddressNetClientAttributesGetter, and introduction of new HTTP and
   network semantic conventions.
-- New javaagent instrumentation for Quarkus RESTEasy Reactive and Reactor Kafka.
+- New Java agent instrumentation for Quarkus RESTEasy Reactive and Reactor
+  Kafka.
 - Enhancements including improvements in Micrometer bridge, Ktor
   instrumentations, AWS SDK support, OkHttp 3, Jetty 11, Spring Boot, AWS Lambda
   tracing, and type matching.
-- Bugfixes related to Logback MDC instrumentation, Kafka metrics reporter, jetty
+- Bugfixes related to Logback MDC instrumentation, Kafka metrics reporter, Jetty
   context leak, filtering scalar Mono/Flux instances, and others.
 
 #### [JavaScript](/docs/instrumentation/js/)

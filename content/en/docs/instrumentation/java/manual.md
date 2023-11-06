@@ -199,9 +199,13 @@ dependencies {
 }
 ```
 
-Throughout this documentation you will add additional dependencies. For a full
-list of artifact coordinates see [releases][releases] and for semantic
-convention releases see [semantic-conventions-java][semantic-conventions-java].
+Throughout this documentation you will add dependencies. For a full list of
+artifact coordinates, see [releases]. For semantic convention releases, see
+[semantic-conventions-java].
+
+[releases]: https://github.com/open-telemetry/opentelemetry-java#releases
+[semantic-conventions-java]:
+  https://github.com/open-telemetry/semantic-conventions-java/releases
 
 {{% /tab %}} {{% tab Maven %}}
 
@@ -316,8 +320,8 @@ dependencies {
     implementation("io.opentelemetry:opentelemetry-sdk-metrics:{{% param javaVersion %}}");
     implementation("io.opentelemetry:opentelemetry-exporter-logging:{{% param javaVersion %}}");
     implementation("io.opentelemetry.semconv:opentelemetry-semconv:{{% param semconvJavaVersion %}}-alpha")
-    implementation("opentelemetry-sdk-extension-autoconfigure:{{% param javaVersion %}}");
-    implementation("opentelemetry-sdk-extension-autoconfigure-spi:{{% param javaVersion %}}");
+    implementation("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure:{{% param javaVersion %}}");
+    implementation("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi:{{% param javaVersion %}}");
 }
 ```
 
@@ -570,9 +574,9 @@ Tracer tracer = openTelemetry.getTracer("instrumentation-scope-name", "instrumen
 
 The values of `instrumentation-scope-name` and `instrumentation-scope-version`
 should uniquely identify the
-[instrumentation scope](/docs/specs/otel/glossary/#instrumentation-scope), such
-as the package, module or class name. This will help later help determining what
-the source of telemetry is. While the name is required, the version is still
+[Instrumentation Scope](/docs/concepts/instrumentation-scope/), such as the
+package, module or class name. This will help later help determining what the
+source of telemetry is. While the name is required, the version is still
 recommended despite being optional. Note, that all `Tracer`s that are created by
 a single `OpenTelemetry` instance will interoperate, regardless of name.
 
@@ -582,7 +586,7 @@ avoid trickier application load issues when other required dependencies are
 involved.
 
 In the case of the [example app](#example-app), there are two places where a
-tracer may be acquired with an appropriate instrumentation scope:
+tracer may be acquired with an appropriate Instrumentation Scope:
 
 First, in the `index` method of the `RollController` as follows:
 
@@ -837,7 +841,7 @@ span.setAttribute("http.url", url.toString());
 There are semantic conventions for spans representing operations in well-known
 protocols like HTTP or database calls. Semantic conventions for these spans are
 defined in the specification at
-[Trace Semantic Conventions](/docs/specs/otel/trace/semantic_conventions/).
+[Trace Semantic Conventions](/docs/specs/semconv/general/trace/).
 
 First add the semantic conventions as a dependency to your application:
 
@@ -1652,8 +1656,5 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
 [opentelemetry registry]: /ecosystem/registry/?component=exporter&language=java
 [parentbased]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/ParentBasedSampler.java
-[releases]: https://github.com/open-telemetry/opentelemetry-java#releases
-[semantic-conventions-java]:
-  https://github.com/open-telemetry/semantic-conventions-java/releases
 [traceidratiobased]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/TraceIdRatioBasedSampler.java

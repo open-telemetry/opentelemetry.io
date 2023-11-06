@@ -1,7 +1,7 @@
 ---
 title: Propagation
 description: Context propagation for the JS SDK
-aliases: [/docs/instrumentation/js/api/propagation]
+aliases: [api/propagation]
 weight: 65
 cSpell:ignore: tracestate
 ---

@@ -1,9 +1,9 @@
 ---
 title: Annotations
 description: Using instrumentation annotations with a Java agent.
-aliases: [/docs/instrumentation/java/annotations]
+aliases: [../annotations]
 weight: 20
-javaInstrumentationVersion: 1.30.0
+javaInstrumentationVersion: 1.31.0
 cSpell:ignore: Flowable javac reactivestreams reactivex
 ---
 

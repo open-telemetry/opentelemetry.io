@@ -1,4 +1,4 @@
-# cSpell:ignore Coralogix Cribl ITRS Kloud Logz Crowdstrike Humio Lumigo observ Teletrace Uptrace Greptime KloudMate
+# cSpell:ignore Coralogix Cribl ITRS Kloud Logz Crowdstrike Humio Lumigo observ Teletrace Uptrace Greptime KloudMate qryn ClickHouse
 - name: AppDynamics (Cisco)
   distribution: true
   nativeOTLP: true
@@ -209,6 +209,13 @@
   contact: ''
   oss: false
   commercial: true
+- name: qryn
+  distribution: true
+  nativeOTLP: true
+  url: 'https://qryn.metrico.in/#/support?id=tempo-api'
+  contact: 'https://github.com/lmangani'
+  oss: true
+  commercial: true
 - name: Sentry
   distribution: true
   nativeOTLP: false
@@ -320,4 +327,18 @@
   url: https://docs.greptime.com/user-guide/clients/otlp
   contact: 'info@greptime.com'
   oss: true
+  commercial: true
+- name: ClickHouse
+  distribution: false
+  nativeOTLP: false
+  url: 'https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/clickhouseexporter'
+  contact: 'https://github.com/tbragin'
+  oss: true
+  commercial: true
+- name: TingYun
+  distribution: false
+  nativeOTLP: true
+  url: 'https://wukongdoc.tingyun.com/apm/userguide/deploy_manage/opentelemetry.html'
+  contact: 'otel@tingyun.com'
+  oss: false
   commercial: true

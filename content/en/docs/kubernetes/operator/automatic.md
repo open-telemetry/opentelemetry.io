@@ -247,7 +247,7 @@ spec:
 **Learn more**
 
 For more details, see
-[Java Agent Configuration](/docs/instrumentation/java/automatic/agent-config/).
+[Java agent Configuration](/docs/instrumentation/java/automatic/agent-config/).
 
 ### Node.js
 
@@ -325,7 +325,7 @@ in the previous step.
 > As of operator v0.67.0, the Instrumentation resource automatically sets
 > `OTEL_EXPORTER_OTLP_TRACES_PROTOCOL` and `OTEL_EXPORTER_OTLP_METRICS_PROTOCOL`
 > to `http/protobuf` for Python services. If you use an older version of the
-> Operator you **MUST** set these env variables to `http/protobuf`, or python
+> Operator you **MUST** set these env variables to `http/protobuf`, or Python
 > auto-instrumentation will not work.
 
 **Auto-instrumenting Python logs**
@@ -391,7 +391,7 @@ spec:
 
 **Learn more**
 
-[See the Python Agent Configuration docs for more details.](/docs/instrumentation/python/automatic/agent-config/#disabling-specific-instrumentations)
+[See the Python agent Configuration docs for more details.](/docs/instrumentation/python/automatic/agent-config/#disabling-specific-instrumentations)
 
 ### Go
 

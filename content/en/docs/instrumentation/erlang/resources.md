@@ -9,16 +9,7 @@ cSpell:ignore: behaviour
 <!-- markdownlint-disable no-duplicate-heading -->
 <!-- markdownlint-capture -->
 
-A [resource](/docs/specs/otel/overview/#resources) represents an entity
-producing telemetry as attributes. For example, an OTP Release producing
-telemetry that is running in a container on Kubernetes has an OTP Release name,
-a Pod name, a namespace, and possibly a deployment name. All four of these
-attributes can be included in the resource.
-
-In your observability backend, you can use resource information to better
-investigate interesting behavior. For example, if your trace or metrics data
-indicate latency in your system, you can narrow it down to a specific container,
-pod, or Kubernetes deployment.
+{{% docs/instrumentation/resources-intro "an OTP Release" %}}
 
 ## Using resource detectors
 
@@ -98,7 +89,6 @@ Custom resource detectors can be created by implementing the
 which contains a single callback `get_resource/1` that returns an
 [`otel_resource`](https://hexdocs.pm/opentelemetry/1.3.0/otel_resource.html).
 
-Note that there are
-[semantic conventions](/docs/specs/otel/resource/semantic_conventions/) defined
-for `resource` that should be followed if they apply when adding new resource
-attributes.
+Note that there are [semantic conventions](/docs/specs/semconv/resource/)
+defined for `resource` that should be followed if they apply when adding new
+resource attributes.

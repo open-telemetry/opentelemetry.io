@@ -1,7 +1,7 @@
 ---
 title: Deployment
 description: Patterns you can apply to deploy the OpenTelemetry collector
-weight: 2
+weight: 3
 ---
 
 The OpenTelemetry Collector consists of a single binary which you can use in

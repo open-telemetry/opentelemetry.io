@@ -1,6 +1,6 @@
 ---
 title: Manual
-aliases: [/docs/instrumentation/erlang/instrumentation]
+aliases: [instrumentation]
 weight: 30
 description: Manual instrumentation for OpenTelemetry Erlang/Elixir
 ---

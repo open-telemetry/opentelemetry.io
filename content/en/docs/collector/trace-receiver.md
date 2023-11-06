@@ -1458,7 +1458,7 @@ pair format represented by the `pcommon.Map` type.
 You can check the definition of the `pcommon.Map` type and the related helper
 functions to create attribute values using the supported formats in the
 [/pdata/pcommon/common.go](https://github.com/open-telemetry/opentelemetry-collector/blob/{{%
-param collectorVersion %}}/pdata/pcommon/common.go) file within the Otel
+param collectorVersion %}}/pdata/pcommon/common.go) file within the OTel
 Collector's GitHub project.
 
 Key/value pairs provide a lot of flexibility to help model your `Resource` data,
@@ -1467,7 +1467,7 @@ minimize the conflicts across all the different types of telemetry generation
 entities that it may need to represent.
 
 These guidelines are known as Resource Semantic Conventions and are
-[documented in the OTel specification](/docs/specs/otel/resource/semantic_conventions/).
+[documented in the OTel specification](/docs/specs/semconv/resource/).
 
 When creating your own attributes to represent your own telemetry generation
 entities, you should follow the guideline provided by the specification:
@@ -1509,15 +1509,14 @@ func fillResourceWithAtm(resource *pcommon.Resource, atm Atm){
 The resource semantic conventions also have prescriptive attribute names and
 well-known values to represent telemetry generation entities that are common and
 applicable across different domains like
-[compute unit](/docs/specs/otel/resource/semantic_conventions/#compute-unit),
-[environment](/docs/specs/otel/resource/semantic_conventions/#compute-unit) and
-others.
+[compute unit](/docs/specs/semconv/resource/#compute-unit),
+[environment](/docs/specs/semconv/resource/#compute-unit) and others.
 
 So, when you look at the `BackendSystem` entity, it has fields representing
-[OS](/docs/specs/otel/resource/semantic_conventions/os/) related information and
-[Cloud](/docs/specs/otel/resource/semantic_conventions/cloud/) related
-information, and we will use the attribute names and values prescribed by the
-resource semantic convention to represent that information on its `Resource`.
+[OS](/docs/specs/semconv/resource/os/) related information and
+[Cloud](/docs/specs/semconv/resource/cloud/) related information, and we will
+use the attribute names and values prescribed by the resource semantic
+convention to represent that information on its `Resource`.
 
 All the resource semantic convention attribute names and well known-values are
 kept within the
