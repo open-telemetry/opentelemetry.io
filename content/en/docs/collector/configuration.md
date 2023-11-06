@@ -421,7 +421,7 @@ receiver at the beginning of another pipeline. The data consumed and emitted may
 be of the same type or of different data types. You can use connectors to
 summarize consumed data, replicate it, or route it.
 
-You can configure one or more connectors using the `connectors:` section of the
+You can configure one or more connectors using the `connectors` section of the
 Collector configuration file. By default, no connectors are configured. Each
 type of connector is designed to work with one or more pairs of data types and
 may only be used to connect pipelines accordingly.
