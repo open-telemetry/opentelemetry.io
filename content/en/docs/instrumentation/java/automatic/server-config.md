@@ -121,7 +121,7 @@ export JAVA_OPTIONS="$JAVA_OPTIONS -javaagent:/path/to/opentelemetry-javaagent.j
 ```
 
 {{% /tab %}}
-{{% tab header="Windows (\<domain_home\>binstartWebLogic.cmd)" lang=Windows %}}
+{{% tab header="Windows (`<domain_home>\bin\startWebLogic.cmd`)" lang=Windows %}}
 
 ```bat
 set JAVA_OPTIONS=%JAVA_OPTIONS% -javaagent:"<Drive>:\path\to\opentelemetry-javaagent.jar"
