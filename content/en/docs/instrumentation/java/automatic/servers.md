@@ -13,7 +13,7 @@ differs from server to server.
 ## JBoss EAP / WildFly
 
 To define the path to the Java agent, add the `javaagent` argument at the end of
-the `standalone.conf` or the `standalone.conf.bat` configuration files:
+the standalone configuration file:
 
 {{< tabpane text=true >}} {{% tab header="Linux (standalone.conf)" lang=Linux %}}
 
