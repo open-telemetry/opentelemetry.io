@@ -15,13 +15,19 @@ differs from server to server.
 To define the path to the Java agent, add the `javaagent` argument at the end of
 the `standalone.conf` or the `standalone.conf.bat` configuration files:
 
-```shell
-# Linux / standalone.conf
-JAVA_OPTS="$JAVA_OPTS -javaagent:/path/to/opentelemetry-javaagent.jar"
+{{< tabpane text=true >}} {{% tab header="Linux (standalone.conf)" lang=Linux %}}
 
-# Windows / standalone.conf.bat
+```sh
+JAVA_OPTS="$JAVA_OPTS -javaagent:/path/to/opentelemetry-javaagent.jar"
+```
+
+{{% /tab %}} {{% tab header="Windows (standalone.conf.bat)" lang=Windows %}}
+
+```bat
 set "JAVA_OPTS=%JAVA_OPTS% -javaagent:<Drive>:\path\to\opentelemetry-javaagent.jar"
 ```
+
+{{% /tab %}} {{< /tabpane >}}
 
 ## Jetty
 
