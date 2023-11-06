@@ -517,7 +517,7 @@ service:
 
 ### Pipelines
 
-Pipelines are defined in the `pipelines:` subsection and can be of the following
+Pipelines are defined in the `pipelines` subsection and can be of the following
 types:
 
 - `traces` collects and processes trace data.
