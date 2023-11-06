@@ -154,7 +154,9 @@ Open the WebSphere Admin Console and follow these steps:
 3.  Go to **Java and Process Management > Process Definition**.
 4.  Select **Java Virtual Machine**.
 5.  In **Generic JVM arguments**, enter the path to the agent:
+
     ```bash
     -javaagent:/path/to/opentelemetry-javaagent.jar
     ```
+
 6.  Save the configuration and restart the server.
