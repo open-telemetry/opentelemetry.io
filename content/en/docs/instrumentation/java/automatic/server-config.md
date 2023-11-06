@@ -17,7 +17,7 @@ the standalone configuration file:
 
 {{< tabpane text=true persist=lang >}}
 
-{{% tab header="Linux (standalone.conf)" lang=Linux %}}
+{{% tab header="Linux (`standalone.conf`)" lang=Linux %}}
 
 ```sh
 JAVA_OPTS="$JAVA_OPTS -javaagent:/path/to/opentelemetry-javaagent.jar"
