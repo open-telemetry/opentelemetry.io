@@ -100,7 +100,7 @@ CATALINA_OPTS="$CATALINA_OPTS -javaagent:/path/to/opentelemetry-javaagent.jar"
 ```
 
 {{% /tab %}}
-{{% tab header="Windows (\<tomcat_home\>binsetenv.bat)" lang=Windows %}}
+{{% tab header="Windows (`<tomcat_home>\bin\setenv.bat`)" lang=Windows %}}
 
 ```bat
 set CATALINA_OPTS=%CATALINA_OPTS% -javaagent:"<Drive>:\path\to\opentelemetry-javaagent.jar"
