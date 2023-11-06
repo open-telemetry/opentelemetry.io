@@ -116,11 +116,11 @@ console.
 
 ## WebSphere Liberty Profile
 
-Add the path to the Java agent to the `jvm.options` file:
+Add the path to the Java agent to the `jvm.options` file. For a single server,
+edit `${server.config.dir}/jvm.options`, and for all servers, edit
+`${wlp.install.dir}/etc/jvm.options`:
 
-```shell
-# Single server: Edit ${server.config.dir}/jvm.options
-# All servers: Edit ${wlp.install.dir}/etc/jvm.options
+```ini
 -javaagent:/path/to/opentelemetry-javaagent.jar
 ```
 
