@@ -47,7 +47,7 @@ JAVA_OPTIONS="${JAVA_OPTIONS} -javaagent:/path/to/opentelemetry-javaagent.jar"
 If you use the start.ini file to define JVM arguments, add the `javaagent`
 argument after the `--exec` option:
 
-```shell
+```ini
 #===========================================================
 # Sample Jetty start.ini file
 #-----------------------------------------------------------
