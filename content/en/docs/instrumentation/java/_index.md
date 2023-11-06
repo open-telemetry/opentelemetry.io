@@ -4,10 +4,12 @@ description: >-
   <img width="35" class="img-initial" src="/img/logos/32x32/Java_SDK.svg"
   alt="Java"> A language-specific implementation of OpenTelemetry in Java.
 aliases: [/java, /java/metrics, /java/tracing]
-weight: 18
 cascade:
-  javaVersion: 1.31.0
-  semconvJavaVersion: 1.22.0
+  vers:
+    instrumentation: 1.31.0
+    otel: 1.31.0
+    semconv: 1.22.0
+weight: 18
 ---
 
 {{% docs/instrumentation/index-intro java /%}}
@@ -47,7 +49,7 @@ using our BOM to keep the versions of the various components in sync.
       <dependency>
         <groupId>io.opentelemetry</groupId>
         <artifactId>opentelemetry-bom</artifactId>
-        <version>{{% param javaVersion %}}</version>
+        <version>{{% param vers.otel %}}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -66,7 +68,7 @@ using our BOM to keep the versions of the various components in sync.
 
 ```kotlin
 dependencies {
-  implementation(platform("io.opentelemetry:opentelemetry-bom:{{% param javaVersion %}}"))
+  implementation(platform("io.opentelemetry:opentelemetry-bom:{{% param vers.otel %}}"))
   implementation("io.opentelemetry:opentelemetry-api")
 }
 ```
