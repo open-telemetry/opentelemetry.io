@@ -430,7 +430,7 @@ may only be used to connect pipelines accordingly.
 > pipelines within the [service](#service) section.
 
 The following example shows the `count` connector and how it's configured in the
-`pipelines:` section. Notice that the connector acts as an exporter for traces
+`pipelines` section. Notice that the connector acts as an exporter for traces
 and as a receiver for metrics, connecting both pipelines:
 
 ```yaml
