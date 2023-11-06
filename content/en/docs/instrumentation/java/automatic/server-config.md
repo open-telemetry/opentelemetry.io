@@ -15,7 +15,8 @@ differs from server to server.
 To define the path to the Java agent, add the `javaagent` argument at the end of
 the standalone configuration file:
 
-{{< tabpane text=true >}}
+{{< tabpane text=true persist=lang >}}
+
 {{% tab header="Linux (standalone.conf)" lang=Linux %}}
 
 ```sh
