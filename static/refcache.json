@@ -2303,10 +2303,6 @@
     "StatusCode": 200,
     "LastSeen": "2023-10-17T15:13:11.067528+02:00"
   },
-  "https://github.com/metrico/qryn-collector": {
-    "StatusCode": 404,
-    "LastSeen": "2023-10-17T15:10:07.758268+02:00"
-  },
   "https://github.com/mhausenblas": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:39:03.127776-04:00"
@@ -6414,10 +6410,6 @@
   "https://www.youtube.com/watch": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:43:02.782058-04:00"
-  },
-  "https://www.zocdoc.com/": {
-    "StatusCode": 403,
-    "LastSeen": "2023-06-30T16:27:32.038092-04:00"
   },
   "https://youtu.be/9iaGG-YZw5I": {
     "StatusCode": 200,
