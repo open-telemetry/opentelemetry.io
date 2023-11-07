@@ -61,7 +61,7 @@ java -javaagent:/path/to/opentelemetry-javaagent.jar -jar start.jar
 ```
 
 If you use the `jetty.sh` file to start Jetty, add the following line to the
-\<jetty_home\>/bin/jetty.sh file:
+`\<jetty_home\>/bin/jetty.sh` file:
 
 ```shell
 JAVA_OPTIONS="${JAVA_OPTIONS} -javaagent:/path/to/opentelemetry-javaagent.jar"
