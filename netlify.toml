@@ -21,6 +21,16 @@ force = true
 # templating constructs.)
 
 [[headers]]
-  for = "/schemas/*.*.*"
+  for = "/schemas/1.*"
+  [headers.values]
+    content-type = "application/yaml"
+
+[[headers]]
+  for = "/schemas/2.*"
+  [headers.values]
+    content-type = "application/yaml"
+
+[[headers]]
+  for = "/schemas/3.*"
   [headers.values]
     content-type = "application/yaml"
