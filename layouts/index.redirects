@@ -50,7 +50,8 @@
 /schemas         /schemas/? 301
 /schemas/latest  /schemas/{{ $latestSchemaFile.Name }}
 /schemas/list    /schemas/list/ 200
-/schemas/*       /schemas/? 404
+/schemas/        /schemas/? 404! # Report /schemas/ as 404, override index.html
+/schemas/*       /schemas/? 404  # Report 404 for anything else that's missing
 
 {{/*
   Social-media image redirects. As mentioned in
