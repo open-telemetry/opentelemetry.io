@@ -76,7 +76,7 @@ implementation of OTLP.
 
 We
 [proposed adding the OpenTelemetry Collector to Cloud Foundry in an RFC](https://github.com/cloudfoundry/community/blob/0365df129e52ae7b784957a5569b16b7e133f97e/toc/rfc/rfc-0018-aggregate-metric-egress-with-opentelemetry-collector.md),
-and solicited our community's feedback. It was accepted on 07-07-2023 and we got
+and solicited our community's feedback. It was accepted on July 7, 2023 and we got
 to work.
 
 ## How we integrated OpenTelemetry with our current metric system
