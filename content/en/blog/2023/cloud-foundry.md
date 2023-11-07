@@ -11,7 +11,7 @@ cSpell:ignore: Kocher unscalable
 {{< blog/integration-badge >}}
 
 [Cloud Foundry](https://www.cloudfoundry.org/) recently integrated the
-OpenTelemetry Collector for metrics egress and we learned a lot along the way.
+[OpenTelemetry Collector](/docs/collector/) for metrics egress and we learned a lot along the way.
 We're excited about what the integration offers today and all the possibilities
 it opens up for us.
 
