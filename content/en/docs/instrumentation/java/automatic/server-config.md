@@ -148,6 +148,8 @@ Restart the server after saving the file.
 
 Open the WebSphere Admin Console and follow these steps:
 
+<!-- markdownlint-disable blanks-around-fences -->
+
 1.  Navigate to **Servers > Server type > WebSphere application servers**.
 2.  Select the server.
 3.  Go to **Java and Process Management > Process Definition**.
