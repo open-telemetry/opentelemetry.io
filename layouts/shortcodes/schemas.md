@@ -5,6 +5,6 @@
 {{ range $i, $schema := $schemaFiles -}}
 | [`{{ $schema.Name }}`](/schemas/{{ $schema.Name }})
 {{- if eq $i 0 -}}
-  ([latest](../latest))
+  ([latest](/schemas/latest))
 {{- end -}} |
 {{ end -}}

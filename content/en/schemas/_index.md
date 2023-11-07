@@ -10,7 +10,7 @@ The page or schema you requested doesn't exist. Maybe you're looking for one of
 these:
 
 - [List of schemas](list) hosted on this site
-- [Latest](latest) schema
+- [Latest](/schemas/latest) schema
 - More information about [Telemetry Schemas] in general, or [OpenTelemetry
   Schema] in particular.
 
