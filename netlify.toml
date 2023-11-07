@@ -21,6 +21,6 @@ force = true
     content-type = "text/html"
 
 [[headers]]
-  for = "/schemas/:version"
+  for = "/schemas/1.:version"
   [headers.values]
     content-type = "application/yaml"
