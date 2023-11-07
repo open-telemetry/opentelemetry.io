@@ -6,26 +6,47 @@ weight: 15
 cSpell:ignore: asadmin binsetenv binstart Glassfish Payara setenv
 ---
 
-When instrumenting an app running on an Java application server, you've to
-define the path to the OpenTelemetry Java agent. The way to define the path
-differs from server to server.
+When instrumenting an app that runs on a Java application server with a Java
+agent, you must add the `javaagent` path to the JVM arguments. The way to do
+this differs from server to server.
 
 ## JBoss EAP / WildFly
 
-To define the path to the Java agent, add the `javaagent` argument at the end of
-the standalone configuration file:
+You can define the path to the Java agent by adding the `javaagent` argument to
+the `JAVA_TOOL_OPTIONS` environment variable. For example:
 
 {{< tabpane text=true persist=lang >}}
 
-{{% tab header="Linux (`standalone.conf`)" lang=Linux %}}
+{{% tab header="Linux" lang=Linux %}}
 
 ```sh
+export JAVA_TOOL_OPTIONS="-javaagent:/path/to/opentelemetry-javaagent.jar"
+```
+
+{{% /tab %}} {{% tab header="Windows" lang=Windows %}}
+
+```bat
+set JAVA_TOOL_OPTIONS="-javaagent:<Drive>:\path\to\opentelemetry-javaagent.jar"
+```
+
+{{% /tab %}} {{< /tabpane >}}
+
+Alternatively, you can add the `javaagent` argument at the end of the standalone
+configuration file:
+
+{{< tabpane text=true persist=lang >}}
+
+{{% tab header="Linux" lang=Linux %}}
+
+```sh
+# Add to standalone.conf
 JAVA_OPTS="$JAVA_OPTS -javaagent:/path/to/opentelemetry-javaagent.jar"
 ```
 
-{{% /tab %}} {{% tab header="Windows (`standalone.conf.bat`)" lang=Windows %}}
+{{% /tab %}} {{% tab header="Windows" lang=Windows %}}
 
 ```bat
+rem Add to standalone.conf.bat
 set "JAVA_OPTS=%JAVA_OPTS% -javaagent:<Drive>:\path\to\opentelemetry-javaagent.jar"
 ```
 
@@ -93,16 +114,17 @@ Add the path to the Java agent to your startup script:
 
 {{< tabpane text=true persist=lang >}}
 
-{{% tab header="Linux (`<tomcat_home>/bin/setenv.sh`)" lang=Linux %}}
+{{% tab header="Linux" lang=Linux %}}
 
 ```sh
+# Add to <tomcat_home>/bin/setenv.sh
 CATALINA_OPTS="$CATALINA_OPTS -javaagent:/path/to/opentelemetry-javaagent.jar"
 ```
 
-{{% /tab %}}
-{{% tab header="Windows (`<tomcat_home>\bin\setenv.bat`)" lang=Windows %}}
+{{% /tab %}} {{% tab header="Windows" lang=Windows %}}
 
 ```bat
+rem Add to <tomcat_home>\bin\setenv.bat
 set CATALINA_OPTS=%CATALINA_OPTS% -javaagent:"<Drive>:\path\to\opentelemetry-javaagent.jar"
 ```
 
@@ -114,16 +136,17 @@ Add the path to the Java agent to your domain startup script:
 
 {{< tabpane text=true persist=lang >}}
 
-{{% tab header="Linux (`<domain_home>/bin/startWebLogic.sh`)" lang=Linux %}}
+{{% tab header="Linux" lang=Linux %}}
 
 ```sh
+# Add to <domain_home>/bin/startWebLogic.sh
 export JAVA_OPTIONS="$JAVA_OPTIONS -javaagent:/path/to/opentelemetry-javaagent.jar"
 ```
 
-{{% /tab %}}
-{{% tab header="Windows (`<domain_home>\bin\startWebLogic.cmd`)" lang=Windows %}}
+{{% /tab %}} {{% tab header="Windows" lang=Windows %}}
 
 ```bat
+rem Add to <domain_home>\bin\startWebLogic.cmd
 set JAVA_OPTIONS=%JAVA_OPTIONS% -javaagent:"<Drive>:\path\to\opentelemetry-javaagent.jar"
 ```
 
@@ -155,7 +178,5 @@ Open the WebSphere Admin Console and follow these steps:
 3.  Go to **Java and Process Management > Process Definition**.
 4.  Select **Java Virtual Machine**.
 5.  In **Generic JVM arguments**, enter the path to the agent:
-    ```bash
-    -javaagent:/path/to/opentelemetry-javaagent.jar
-    ```
+    `-javaagent:/path/to/opentelemetry-javaagent.jar`.
 6.  Save the configuration and restart the server.
