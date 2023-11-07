@@ -16,11 +16,6 @@ to = "https://opentelemetry.io/blog/:splat"
 force = true
 
 [[headers]]
-  for = "/schemas/list/"
-  [headers.values]
-    content-type = "text/html"
-
-[[headers]]
-  for = "/schemas/:version"
+  for = "/schemas/:major.:minor.:patch"
   [headers.values]
     content-type = "application/yaml"
