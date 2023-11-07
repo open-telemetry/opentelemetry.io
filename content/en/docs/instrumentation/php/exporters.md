@@ -43,7 +43,7 @@ Next, configure an exporter with an OTLP endpoint. For example:
 
 require __DIR__ . '/vendor/autoload.php';
 
-use OpenTelemetry\API\Common\Signal\Signals;
+use OpenTelemetry\API\Signals;
 use OpenTelemetry\Contrib\Grpc\GrpcTransportFactory;
 use OpenTelemetry\Contrib\Otlp\OtlpUtil;
 use OpenTelemetry\Contrib\Otlp\SpanExporter;
@@ -169,7 +169,7 @@ Install the exporter package as a dependency for your application:
 composer require open-telemetry/exporter-zipkin
 ```
 
-Update the example to use the Zipkin exporter and to send data to your zipkin
+Update the example to use the Zipkin exporter and to send data to your Zipkin
 backend:
 
 ```php

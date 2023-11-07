@@ -159,8 +159,8 @@ landing on a particular page which can be tracked with a counter.
 - Reach out to current OpenTelemetry maintainers and share the challenges
 - Create a list of maintainers from APAC region to whom people can reach to
 - Local in-person meetups for OpenTelemetry users
-- A good place to start would be `good first issues` in any of the OTel repos,
-  and ask for help in GitHub issues
+- A good place to start would be `good first issues` in any of the OTel
+  repositories, and ask for help in GitHub issues
 - Join
   [OTel slack community](https://communityinviter.com/apps/cloud-native/cncf)
   and ping in relevant channels

@@ -14,21 +14,100 @@ can learn how to setup exporters following the
 
 {{% /alert %}}
 
-## OTLP endpoint
+## OTLP
 
-To send trace data to a OTLP endpoint (like the [collector](/docs/collector) or
-Jaeger) you'll want to use an exporter package, such as
-`@opentelemetry/exporter-trace-otlp-proto`:
+### Collector Setup
+
+{{% alert title="Note" color="info" %}}
+
+If you have a OTLP collector or backend already set up, you can skip this
+section and [setup the OTLP exporter dependencies](#otlp-dependencies) for your
+application.
+
+{{% /alert %}}
+
+To try out and verify your OTLP exporters, you can run the collector in a docker
+container that writes telemetry directly to the console.
+
+In an empty directory, create a file called `collector-config.yaml` with the
+following content:
+
+```yaml
+receivers:
+  otlp:
+    protocols:
+      grpc:
+      http:
+exporters:
+  debug:
+    verbosity: detailed
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      exporters: [debug]
+    metrics:
+      receivers: [otlp]
+      exporters: [debug]
+    logs:
+      receivers: [otlp]
+      exporters: [debug]
+```
+
+Now run the collector in a docker container:
+
+```shell
+docker run -p 4317:4317 -p 4318:4318 --rm -v $(pwd)/collector-config.yaml:/etc/otelcol/config.yaml otel/opentelemetry-collector
+```
+
+This collector is now able to accept telemetry via OTLP. Later you may want to
+[configure the collector](/docs/collector/configuration) to send your telemetry
+to your observability backend.
+
+### Dependencies {#otlp-dependencies}
+
+If you want to send telemetry data to an OTLP endpoint (like the
+[OpenTelemetry Collector](#collector-setup), [Jaeger](#jaeger) or
+[Prometheus](#prometheus)), you can choose between three different protocols to
+transport your data:
+
+- [HTTP/protobuf](https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-proto)
+- [HTTP/JSON](https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-http)
+- [gRPC](https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-grpc)
+
+Start by installing the respective exporter packages as a dependency for your
+project:
+
+{{< tabpane text=true >}} {{% tab "HTTP/Proto" %}}
 
 ```shell
 npm install --save @opentelemetry/exporter-trace-otlp-proto \
   @opentelemetry/exporter-metrics-otlp-proto
 ```
 
+{{% /tab %}} {{% tab "HTTP/JSON" %}}
+
+```shell
+npm install --save @opentelemetry/exporter-trace-otlp-http \
+  @opentelemetry/exporter-metrics-otlp-http
+```
+
+{{% /tab %}} {{% tab gRPC %}}
+
+```shell
+npm install --save @opentelemetry/exporter-trace-otlp-grpc \
+  @opentelemetry/exporter-metrics-otlp-grpc
+```
+
+{{% /tab %}} {{< /tabpane >}}
+
+### Usage with Node.js
+
 Next, configure the exporter to point at an OTLP endpoint. For example you can
-update `instrumentation.ts|js` from the
+update the file `instrumentation.ts` (or `instrumentation.js` if you use
+JavaScript) from the
 [Getting Started](/docs/instrumentation/js/getting-started/nodejs/) like the
-following:
+following to export traces and metrics via OTLP (`http/protobuf`) :
 
 {{< tabpane text=true langEqualsHeader=true >}} {{% tab Typescript %}}
 
@@ -95,27 +174,7 @@ sdk.start();
 
 {{% /tab %}} {{< /tabpane >}}
 
-To try out the `OTLPTraceExporter` quickly, you can run Jaeger in a docker
-container:
-
-```shell
-docker run -d --name jaeger \
-  -e COLLECTOR_ZIPKIN_HOST_PORT=:9411 \
-  -e COLLECTOR_OTLP_ENABLED=true \
-  -p 6831:6831/udp \
-  -p 6832:6832/udp \
-  -p 5778:5778 \
-  -p 16686:16686 \
-  -p 4317:4317 \
-  -p 4318:4318 \
-  -p 14250:14250 \
-  -p 14268:14268 \
-  -p 14269:14269 \
-  -p 9411:9411 \
-  jaegertracing/all-in-one:latest
-```
-
-### Usage with the WebTracer
+### Usage in the Browser
 
 When you use the OTLP exporter in a browser-based application, you need to note
 that:
@@ -222,15 +281,166 @@ server {
 }
 ```
 
+## Console
+
+To debug your instrumentation or see the values locally in development, you can
+use exporters writing telemetry data to the console (stdout).
+
+If you followed the
+[Getting Started](/docs/instrumentation/js/getting-started/nodejs/) or
+[Manual Instrumentation](/docs/instrumentation/js/manual) guides, you already
+have the console exporter installed.
+
+The `ConsoleSpanExporter` is included in the
+[`@opentelemetry/sdk-trace-node`](https://www.npmjs.com/package/@opentelemetry/sdk-trace-node)
+package and the `ConsoleMetricExporter` is included in the
+[`@opentelemetry/sdk-metrics`](https://www.npmjs.com/package/@opentelemetry/sdk-metrics)
+package:
+
+## Jaeger
+
+[Jaeger](https://www.jaegertracing.io/) natively supports OTLP to receive trace
+data. You can run Jaeger in a docker container with the UI accessible on port
+16686 and OTLP enabled on ports 4137 and 4138:
+
+```shell
+docker run --rm \
+  -e COLLECTOR_ZIPKIN_HOST_PORT=:9411 \
+  -p 16686:16686 \
+  -p 4317:4317 \
+  -p 4318:4318 \
+  -p 9411:9411 \
+  jaegertracing/all-in-one:latest
+```
+
+Now following the instruction to setup the [OTLP exporters](#otlp-dependencies).
+
+## Prometheus
+
+To send your metric data to [Prometheus](https://prometheus.io/), you can either
+[enable Prometheus' OTLP Receiver](https://prometheus.io/docs/prometheus/latest/feature_flags/#otlp-receiver)
+and use the [OTLP exporter](#otlp) or you can use the `PrometheusExporter`.
+
+### Backend Setup {#prometheus-setup}
+
+{{% alert title="Note" color="info" %}}
+
+If you have Prometheus or a Prometheus-compatible backend already set up, you
+can skip this section and setup the [Prometheus](#prometheus-dependencies) or
+[OTLP](#otlp-dependencies) exporter dependencies for your application.
+
+{{% /alert %}}
+
+You can run [Prometheus](https://prometheus.io) in a docker container,
+accessible on port `9090` by following these instructions:
+
+Create a file called `prometheus.yml` with the following content:
+
+```yaml
+scrape_configs:
+  - job_name: dice-service
+    scrape_interval: 5s
+    static_configs:
+      - targets: [host.docker.internal:9464]
+```
+
+Run Prometheus in a docker container with the UI accessible on port `9090`:
+
+```shell
+docker run --rm -v ${PWD}/prometheus.yml:/prometheus/prometheus.yml -p 9090:9090 prom/prometheus --enable-feature=otlp-write-receive
+```
+
+{{% alert title="Note" color="info" %}}
+
+When using Prometheus' OTLP Receiver, make sure that you set the OTLP endpoint
+for metrics in your application to `http://localhost:9090/api/v1/otlp`.
+
+Not all docker environments support `host.docker.internal`. In some cases you
+may need to replace `host.docker.internal` with `localhost` or the IP address of
+your machine.
+
+{{% /alert %}}
+
+### Dependencies {#prometheus-dependencies}
+
+Install the
+[exporter package](https://www.npmjs.com/package/@opentelemetry/exporter-prometheus)
+as a dependency for your application:
+
+```shell
+npm install --save @opentelemetry/exporter-prometheus
+```
+
+Update your OpenTelemetry configuration to use the exporter and to send data to
+your Prometheus backend:
+
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Typescript %}}
+
+```ts
+import * as opentelemetry from '@opentelemetry/sdk-node';
+import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
+import { PrometheusExporter } from '@opentelemetry/exporter-prometheus';
+
+const sdk = new opentelemetry.NodeSDK({
+  metricReader: new PrometheusExporter({
+    port: 9464, // optional - default is 9464
+  }),
+  instrumentations: [getNodeAutoInstrumentations()],
+});
+sdk.start();
+```
+
+{{% /tab %}} {{% tab JavaScript %}}
+
+```js
+const opentelemetry = require('@opentelemetry/sdk-node');
+const {
+  getNodeAutoInstrumentations,
+} = require('@opentelemetry/auto-instrumentations-node');
+const { PrometheusExporter } = require('@opentelemetry/exporter-prometheus');
+const { PeriodicExportingMetricReader } = require('@opentelemetry/sdk-metrics');
+const sdk = new opentelemetry.NodeSDK({
+  metricReader: new PrometheusExporter({
+    port: 9464, // optional - default is 9464
+  }),
+  instrumentations: [getNodeAutoInstrumentations()],
+});
+sdk.start();
+```
+
+{{% /tab %}} {{< /tabpane >}}
+
+With the above you can access your metrics at <http://localhost:9464/metrics>.
+Prometheus or an OpenTelemetry Collector with the Prometheus receiver can scrape
+the metrics from this endpoint.
+
 ## Zipkin
 
-To set up Zipkin as quickly as possible, run it in a docker container:
+### Backend Setup {#zipkin-setup}
+
+{{% alert title="Note" color="info" %}}
+
+If you have Zipkin or a Zipkin-compatible backend already set up, you can skip
+this section and setup the [Zipkin exporter dependencies](#zipkin-dependencies)
+for your application.
+
+{{% /alert %}}
+
+You can run [Zipkin](https://zipkin.io/) on ina Docker container by executing
+the following command:
 
 ```shell
 docker run --rm -d -p 9411:9411 --name zipkin openzipkin/zipkin
 ```
 
-Install the exporter package as a dependency for your application:
+### Dependencies {#zipkin-dependencies}
+
+To send your trace data to [Zipkin](https://zipkin.io/), you can use the
+`ZipkinExporter`.
+
+Install the
+[exporter package](https://www.npmjs.com/package/@opentelemetry/exporter-zipkin)
+as a dependency for your application:
 
 ```shell
 npm install --save @opentelemetry/exporter-zipkin
@@ -242,19 +452,77 @@ your Zipkin backend:
 {{< tabpane text=true langEqualsHeader=true >}} {{% tab Typescript %}}
 
 ```ts
+import * as opentelemetry from '@opentelemetry/sdk-node';
+import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
 import { ZipkinExporter } from '@opentelemetry/exporter-zipkin';
-import { BatchSpanProcessor } from '@opentelemetry/sdk-trace-base';
 
-provider.addSpanProcessor(new BatchSpanProcessor(new ZipkinExporter()));
+const sdk = new opentelemetry.NodeSDK({
+  traceExporter: new ZipkinExporter({}),
+  instrumentations: [getNodeAutoInstrumentations()],
+});
+sdk.start();
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```js
+const opentelemetry = require('@opentelemetry/sdk-node');
+const {
+  getNodeAutoInstrumentations,
+} = require('@opentelemetry/auto-instrumentations-node');
 const { ZipkinExporter } = require('@opentelemetry/exporter-zipkin');
-const { BatchSpanProcessor } = require('@opentelemetry/sdk-trace-base');
 
-provider.addSpanProcessor(new BatchSpanProcessor(new ZipkinExporter()));
+const sdk = new opentelemetry.NodeSDK({
+  traceExporter: new ZipkinExporter({}),
+  instrumentations: [getNodeAutoInstrumentations()],
+});
+```
+
+{{% /tab %}} {{< /tabpane >}}
+
+## Other available exporters
+
+There are many other exporters available. For a list of available exporters, see
+the [registry](/ecosystem/registry/?component=exporter&language=js).
+
+Finally, you can also write your own exporter. For more information, see the
+[SpanExporter Interface in the API documentation](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk_trace_base.SpanExporter.html).
+
+## Batching spans
+
+For traces the OpenTelemetry SDK provides a set of default span processors, that
+allow you to either emit spans one-by-one or batched. If not specified otherwise
+the SDK will use the `BatchSpanProcessor`. If you do not want to batch your
+spans, you can use the `SimpleSpanProcessor` instead as follows:
+
+{{< tabpane text=true langEqualsHeader=true >}} {{% tab Typescript %}}
+
+```ts
+/*instrumentation.ts*/
+import * as opentelemetry from '@opentelemetry/sdk-node';
+import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
+
+const sdk = new NodeSDK({
+  spanProcessor: new SimpleSpanProcessor(exporter),
+  instrumentations: [getNodeAutoInstrumentations()],
+});
+sdk.start();
+```
+
+{{% /tab %}} {{% tab JavaScript %}}
+
+```js
+/*instrumentation.js*/
+const opentelemetry = require('@opentelemetry/sdk-node');
+const {
+  getNodeAutoInstrumentations,
+} = require('@opentelemetry/auto-instrumentations-node');
+
+const sdk = new opentelemetry.NodeSDK({
+  spanProcessor: new SimpleSpanProcessor(exporter)
+  instrumentations: [getNodeAutoInstrumentations()],
+});
+sdk.start();
 ```
 
 {{% /tab %}} {{< /tabpane >}}

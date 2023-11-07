@@ -1458,7 +1458,7 @@ pair format represented by the `pcommon.Map` type.
 You can check the definition of the `pcommon.Map` type and the related helper
 functions to create attribute values using the supported formats in the
 [/pdata/pcommon/common.go](https://github.com/open-telemetry/opentelemetry-collector/blob/{{%
-param collectorVersion %}}/pdata/pcommon/common.go) file within the Otel
+param collectorVersion %}}/pdata/pcommon/common.go) file within the OTel
 Collector's GitHub project.
 
 Key/value pairs provide a lot of flexibility to help model your `Resource` data,
