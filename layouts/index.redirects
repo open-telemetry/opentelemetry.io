@@ -49,8 +49,8 @@
 
 /schemas/latest  /schemas/{{ $latestSchemaFile.Name }}
 /schemas/list    /schemas/list/ 200
-/schemas/*       /schemas/ 404!
 /schemas         /schemas/ 301!
+/schemas/*       /schemas/ 404
 
 {{/*
   Social-media image redirects. As mentioned in

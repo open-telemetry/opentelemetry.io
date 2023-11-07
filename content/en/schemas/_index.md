@@ -4,12 +4,17 @@ linkTitle: Schemas
 type: docs
 no_list: true
 body_class: ot-schemas-404
+#
+# Note:
+#   This page can be served from either `/schemas` or `/schemas`.
+#   This is why the paths to sub-pages `list` and `latest` are absolute below.
+#
 ---
 
 The page or schema you requested doesn't exist. Maybe you're looking for one of
 these:
 
-- [List of schemas](list) hosted on this site
+- [List of schemas](/schemas/list/) hosted on this site
 - [Latest](/schemas/latest) schema
 - More information about [Telemetry Schemas] in general, or [OpenTelemetry
   Schema] in particular.
