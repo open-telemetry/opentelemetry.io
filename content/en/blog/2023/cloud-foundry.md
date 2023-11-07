@@ -92,7 +92,7 @@ with many of those lines simply closing curly brackets. In writing this code we
 had to think about how to take our existing data model and translate it into the
 OpenTelemetry protobuf data model. We found OpenTelemetry to have considered
 many edge cases we had encountered in the past, and plenty we had not yet
-encountered. Someday we hope to understand how to use Scopes and Resources
+encountered. Someday we hope to understand how to use [Scopes](/docs/concepts/instrumentation-scope/) and [Resources](/docs/concepts/resources/)
 effectively.
 
 Our implementation worked well, though we found the OpenTelemetry Collector to
