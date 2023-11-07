@@ -195,7 +195,7 @@ dependencies for the OpenTelemetry API.
 ```kotlin { hl_lines=3 }
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web");
-    implementation("io.opentelemetry:opentelemetry-api:{{% param javaVersion %}}");
+    implementation("io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}");
 }
 ```
 
@@ -216,7 +216,7 @@ artifact coordinates, see [releases]. For semantic convention releases, see
             <dependency>
                 <groupId>io.opentelemetry</groupId>
                 <artifactId>opentelemetry-bom</artifactId>
-                <version>{{% param javaVersion %}}</version>
+                <version>{{% param vers.otel %}}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -246,11 +246,11 @@ SDK.
 ```kotlin { hl_lines="4-8" }
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web");
-    implementation("io.opentelemetry:opentelemetry-api:{{% param javaVersion %}}");
-    implementation("io.opentelemetry:opentelemetry-sdk:{{% param javaVersion %}}");
-    implementation("io.opentelemetry:opentelemetry-sdk-metrics:{{% param javaVersion %}}");
-    implementation("io.opentelemetry:opentelemetry-exporter-logging:{{% param javaVersion %}}");
-    implementation("io.opentelemetry:opentelemetry-semconv:{{% param javaVersion %}}-alpha");
+    implementation("io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}");
+    implementation("io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}");
+    implementation("io.opentelemetry:opentelemetry-sdk-metrics:{{% param vers.otel %}}");
+    implementation("io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}");
+    implementation("io.opentelemetry:opentelemetry-semconv:{{% param vers.otel %}}-alpha");
 }
 ```
 
@@ -263,7 +263,7 @@ dependencies {
             <dependency>
                 <groupId>io.opentelemetry</groupId>
                 <artifactId>opentelemetry-bom</artifactId>
-                <version>{{% param javaVersion %}}</version>
+                <version>{{% param vers.otel %}}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -290,7 +290,7 @@ dependencies {
             <!-- Not managed by opentelemetry-bom -->
             <groupId>io.opentelemetry.semconv</groupId>
             <artifactId>opentelemetry-semconv</artifactId>
-            <version>{{% param semconvJavaVersion %}}-alpha</version>
+            <version>{{% param vers.semconv %}}-alpha</version>
         </dependency>
     </dependencies>
 </project>
@@ -315,13 +315,13 @@ To use auto-configuration add the following dependency to your application:
 ```kotlin { hl_lines="9-10" }
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web");
-    implementation("io.opentelemetry:opentelemetry-api:{{% param javaVersion %}}");
-    implementation("io.opentelemetry:opentelemetry-sdk:{{% param javaVersion %}}");
-    implementation("io.opentelemetry:opentelemetry-sdk-metrics:{{% param javaVersion %}}");
-    implementation("io.opentelemetry:opentelemetry-exporter-logging:{{% param javaVersion %}}");
-    implementation("io.opentelemetry.semconv:opentelemetry-semconv:{{% param semconvJavaVersion %}}-alpha")
-    implementation("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure:{{% param javaVersion %}}");
-    implementation("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi:{{% param javaVersion %}}");
+    implementation("io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}");
+    implementation("io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}");
+    implementation("io.opentelemetry:opentelemetry-sdk-metrics:{{% param vers.otel %}}");
+    implementation("io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}");
+    implementation("io.opentelemetry.semconv:opentelemetry-semconv:{{% param vers.semconv %}}-alpha")
+    implementation("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure:{{% param vers.otel %}}");
+    implementation("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi:{{% param vers.otel %}}");
 }
 ```
 
@@ -849,7 +849,7 @@ First add the semantic conventions as a dependency to your application:
 
 ```kotlin
 dependencies {
-  implementation("io.opentelemetry.semconv:opentelemetry-semconv:{{% param semconvJavaVersion %}}-alpha")
+  implementation("io.opentelemetry.semconv:opentelemetry-semconv:{{% param vers.semconv %}}-alpha")
 }
 ```
 
@@ -859,7 +859,7 @@ dependencies {
 <dependency>
     <groupId>io.opentelemetry.semconv</groupId>
     <artifactId>opentelemetry-semconv</artifactId>
-    <version>{{% param semconvJavaVersion %}}-alpha</version>
+    <version>{{% param vers.semconv %}}-alpha</version>
 </dependency>
 ```
 
