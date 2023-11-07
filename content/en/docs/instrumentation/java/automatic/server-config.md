@@ -6,7 +6,7 @@ weight: 15
 cSpell:ignore: asadmin binsetenv binstart Glassfish Payara setenv
 ---
 
-When instrumenting an application running on an application server, you've to
+When instrumenting an app running on an Java application server, you've to
 define the path to the OpenTelemetry Java agent. The way to define the path
 differs from server to server.
 
