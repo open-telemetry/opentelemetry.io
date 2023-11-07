@@ -1,5 +1,5 @@
 ---
-title: 404 Schema not found
+title: 404 - Schema not found
 linkTitle: Schemas
 type: docs
 no_list: true
