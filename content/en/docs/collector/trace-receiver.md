@@ -235,7 +235,7 @@ type Config struct {
 Now that you have access to the settings, you can provide any kind of validation
 needed for those values by implementing the `Validate` method according to the
 optional
-[ConfigValidator](https://github.com/open-telemetry/opentelemetry-collector/blob/{{%
+[ConfigValidator](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{%
 param collectorVersion %}}/component/config.go#L50) interface.
 
 In this case, the `interval` value will be optional (we will look at generating
@@ -286,7 +286,7 @@ func (cfg *Config) Validate() error {
 
 If you want to take a closer look at the structs and interfaces involved in the
 configuration aspects of a component, take a look at the
-[component/config.go](https://github.com/open-telemetry/opentelemetry-collector/blob/{{%
+[component/config.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{%
 param collectorVersion %}}/component/config.go) file inside the Collector's
 GitHub project.
 
@@ -343,7 +343,7 @@ As you can see, the `components()` function is responsible to provide the
 Collector the factories for all its components which is represented by a
 variable called `factories` of type `otelcol.Factories` (here is the declaration
 of the
-[otelcol.Factories](https://github.com/open-telemetry/opentelemetry-collector/blob/{{%
+[otelcol.Factories](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{%
 param collectorVersion %}}/otelcol/factories.go#L27) struct), which will then be
 used to instantiate the components that are configured and consumed by the
 Collector's pipelines.
@@ -356,7 +356,7 @@ factories (instances of `receiver.Factory`), and it currently has the
 The `tailtracer` receiver has to provide a `receiver.Factory` implementation,
 and although you will find a `receiver.Factory` interface (you can find its
 definition in the
-[receiver/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/{{%
+[receiver/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{%
 param collectorVersion %}}/receiver/receiver.go#L69) file within the Collector's
 project ), the right way to provide the implementation is by using the functions
 available within the `go.opentelemetry.io/collector/receiver` package.
@@ -739,7 +739,7 @@ accomplish that.
 
 All the receiver APIs responsible to enable the signals are currently declared
 in the
-[receiver/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/{{%
+[receiver/receiver.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{%
 param collectorVersion %}}/receiver/receiver.go) file within the OTel
 Collector's project in GitHub, open the file and take a minute to browse through
 all the interfaces declared in it.
@@ -1396,7 +1396,7 @@ creating a trace.
 You will start with a type called `ptrace.ResourceSpans` which represents the
 resource and all the operations that it either originated or received while
 participating in a trace. You can find its definition within the
-[/pdata/internal/data/protogen/trace/v1/trace.pb.go](https://github.com/open-telemetry/opentelemetry-collector/blob/{{%
+[/pdata/internal/data/protogen/trace/v1/trace.pb.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{%
 param collectorVersion %}}/pdata/internal/data/protogen/trace/v1/trace.pb.go).
 
 `ptrace.Traces` has a method named `ResourceSpans()` which returns an instance
@@ -1457,7 +1457,7 @@ pair format represented by the `pcommon.Map` type.
 
 You can check the definition of the `pcommon.Map` type and the related helper
 functions to create attribute values using the supported formats in the
-[/pdata/pcommon/common.go](https://github.com/open-telemetry/opentelemetry-collector/blob/{{%
+[/pdata/pcommon/common.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{%
 param collectorVersion %}}/pdata/pcommon/common.go) file within the OTel
 Collector's GitHub project.
 
@@ -1520,7 +1520,7 @@ convention to represent that information on its `Resource`.
 
 All the resource semantic convention attribute names and well known-values are
 kept within the
-[/semconv/v1.9.0/generated_resource.go](https://github.com/open-telemetry/opentelemetry-collector/blob/{{%
+[/semconv/v1.9.0/generated_resource.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{%
 param collectorVersion %}}/semconv/v1.9.0/generated_resource.go) file within the
 Collector's GitHub project.
 
