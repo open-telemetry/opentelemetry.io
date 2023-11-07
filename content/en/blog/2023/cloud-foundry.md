@@ -70,7 +70,7 @@ build a Collector with a curated selection of our own components and community
 components.
 
 Additionally, when looking at OpenTelemetry we found that many [tools](/ecosystem/integrations/) and [vendors](/ecosystem/vendors/)
-were adding native support for the OTLP protocol. This caused us to be confident
+were adding native support for the [OpenTelemetry Protocol](/docs/specs/otlp/) (OTLP). This caused us to be confident
 in adopting OpenTelemetry Collector as a widely adopted first-party
 implementation of the OTLP protocol.
 
