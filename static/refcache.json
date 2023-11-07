@@ -455,6 +455,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-07-03T17:44:06.5954165Z"
   },
+  "https://community.tyk.io/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-26T12:18:59.472082+02:00"
+  },
   "https://communityinviter.com/apps/cloud-native/cncf": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T15:55:08.258786-04:00"
@@ -1914,6 +1918,14 @@
   "https://github.com/SergeyKanzhelev": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:43:05.833301-04:00"
+  },
+  "https://github.com/SonjaChevre": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-26T12:18:57.59078+02:00"
+  },
+  "https://github.com/TykTechnologies/tyk": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-26T12:18:58.23681+02:00"
   },
   "https://github.com/Workiva/opentelemetry-dart": {
     "StatusCode": 200,
@@ -5402,6 +5414,14 @@
   "https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview/": {
     "StatusCode": 206,
     "LastSeen": "2023-09-19T18:15:55.842511+02:00"
+  },
+  "https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/plugins/otel-plugins/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-26T12:18:59.024513+02:00"
+  },
+  "https://tyk.io/docs/tyk-oss-gateway/configuration/#opentelemetry": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-26T12:18:58.666794+02:00"
   },
   "https://ucum.org/ucum.html#para-curly": {
     "StatusCode": 200,
