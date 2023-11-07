@@ -1,7 +1,7 @@
 ---
 title: OpenTelemetry Demo 1.6 released
 linkTitle: Demo 1.6 Released
-date: 2023-11-03
+date: 2023-11-07
 author: '[Austin Parker](https://github.com/austinlparker)'
 ---
 
