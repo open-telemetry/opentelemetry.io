@@ -14,7 +14,8 @@ Why are we considering logging support to be in alpha? There are a few reasons.
 The most important is that this is the first time we've shipped the demo with a
 logging database. We chose [OpenSearch](https://opensearch.org/) as the storage
 backend for logs because it's a popular option that aligns with the project's
-license. It's worth noting that the demo doesn't require application-level logs &mdash; everything you care about is available as a span.
+license. It's worth noting that the demo doesn't require application-level logs
+&mdash; everything you care about is available as a span.
 
 Where logs shine is in bridging the gap between application traces and
 infrastructure, and over the next few releases, we plan to enhance this story by
@@ -41,8 +42,8 @@ next months:
   can be used to solve real-world problems.
 - Ensure that the demo reflects the OpenTelemetry feature matrix and that we're
   showing off everything you can do with the project.
-- Improve our dashboards and add alerts, SLOs, and other observability features to
-  the demo.
+- Improve our dashboards and add alerts, SLOs, and other observability features
+  to the demo.
 - Support other clients and front-end RUM features as they're released.
 
 As always, we'd love to hear your feedback on the demo, and if you're looking
