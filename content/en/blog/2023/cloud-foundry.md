@@ -97,7 +97,7 @@ effectively.
 
 Our implementation worked well, though we found the OpenTelemetry Collector to
 be using large amounts of CPU. We had done the simplest thing to start with, and
-were only sending one metric per gRPC request. Our Collector's Resource
+were only sending one metric per gRPC request. Our Collector's resource
 utilization dropped drastically when we
 [added batching](https://github.com/cloudfoundry/loggregator-agent-release/pull/396).
 
