@@ -18,4 +18,4 @@ these:
 > serving a machine-readable list of schemas.
 
 [OpenTelemetry Schema]: /docs/specs/otel/schemas/#opentelemetry-schema
-[Telemetry Schemas]: /docs/specs/otel/schemas/#opentelemetry-schema
+[Telemetry Schemas]: /docs/specs/otel/schemas/
