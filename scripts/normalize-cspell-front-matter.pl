@@ -12,10 +12,10 @@ my $last_line = '';
 my %dictionary = getSiteWideDictWords('.vscode/cspell.json', '.textlintrc.yml');
 
 while (<>) {
-  if (/^\s*(spelling: |-\s*)?cSpell:ignore:?(.*)$/
+  if (/^\s*(spelling: |-\s*)?cSpell:ignore:?\s*(.*)$/
       || (/^(\s+)(\S.*)$/ && @words)
   ) {
-    push @words, split ' ', $2;
+    push @words, split /[,\s]+/, $2;
     next;
   }
 
