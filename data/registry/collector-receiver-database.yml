@@ -1,6 +1,6 @@
 title: OTel based Data Collector for Databases
 registryType: utilities
-isThirdParty: false
+isThirdParty: true
 language: java
 tags:
   - receiver
