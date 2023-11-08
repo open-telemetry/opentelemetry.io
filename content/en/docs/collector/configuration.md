@@ -507,7 +507,7 @@ The service section consists of three subsections:
 
 ### Extensions {#service-extensions}
 
-The `extensions:` subsection consists of a list of all extensions to enable. For
+The `extensions` subsection consists of a list of all extensions to enable. For
 example:
 
 ```yaml
