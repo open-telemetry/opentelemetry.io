@@ -4571,6 +4571,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:46:14.19804-04:00"
   },
+  "https://opentelemetry-python.readthedocs.io/en/latest/sdk/trace.export.html#opentelemetry.sdk.trace.export.SpanExporter": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-08T16:22:53.779771+01:00"
+  },
   "https://opentelemetry-python.readthedocs.io/en/latest/sdk/trace.html": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:46:03.591875-04:00"
@@ -4974,6 +4978,18 @@
   "https://pypi.org/project/opentelemetry-api/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T11:43:42.332023-04:00"
+  },
+  "https://pypi.org/project/opentelemetry-exporter-prometheus/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-08T16:22:52.2717+01:00"
+  },
+  "https://pypi.org/project/opentelemetry-exporter-zipkin-json/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-08T16:22:53.166698+01:00"
+  },
+  "https://pypi.org/project/opentelemetry-exporter-zipkin-proto-http/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-08T16:22:52.72657+01:00"
   },
   "https://qryn.metrico.in/#/support": {
     "StatusCode": 206,
