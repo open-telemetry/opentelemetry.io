@@ -2103,6 +2103,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:43:38.289125-04:00"
   },
+  "https://github.com/cloudfoundry/loggregator-agent-release/pull/396": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-31T22:49:01.880645499Z"
+  },
   "https://github.com/codeboten": {
     "StatusCode": 200,
     "LastSeen": "2023-09-19T15:39:47.072063934Z"
@@ -2122,6 +2126,10 @@
   "https://github.com/cri-o/cri-o/issues/4734": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T11:48:47.65097-04:00"
+  },
+  "https://github.com/ctlong": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-31T22:49:01.035555602Z"
   },
   "https://github.com/damemi": {
     "StatusCode": 200,
@@ -2378,6 +2386,10 @@
   "https://github.com/microsoft/opentelemetry-azure-monitor-js": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:31:59.846931-04:00"
+  },
+  "https://github.com/mkocher": {
+    "StatusCode": 200,
+    "LastSeen": "2023-10-31T22:49:00.168214153Z"
   },
   "https://github.com/mlocati/docker-php-extension-installer": {
     "StatusCode": 200,
@@ -5687,6 +5699,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-09-15T16:58:32.417789+02:00"
   },
+  "https://www.cloudfoundry.org/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-31T22:49:01.12971518Z"
+  },
   "https://www.cloudscaleinc.com": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T16:24:41.542459-04:00"
@@ -5874,6 +5890,10 @@
   "https://www.ibm.com/docs/en/obi/current": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:36:51.442819-04:00"
+  },
+  "https://www.influxdata.com/time-series-platform/telegraf/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-10-31T22:49:01.321162658Z"
   },
   "https://www.instana.com": {
     "StatusCode": 206,
