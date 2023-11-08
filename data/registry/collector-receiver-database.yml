@@ -1,0 +1,14 @@
+title: OTel based Data Collector for Databases
+registryType: receiver
+isThirdParty: false
+language: java
+tags:
+  - receiver
+  - database
+  - semantic convention 
+  - ODCD
+repo: https://github.com/instana/otel-database-dc
+license: MIT
+description: A tool or template to generate OpenTelemetry metrics for various databases.
+authors: OpenTelemetry Authors
+otVersion: latest
