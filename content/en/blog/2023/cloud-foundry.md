@@ -11,9 +11,9 @@ cSpell:ignore: Kocher unscalable
 {{< blog/integration-badge >}}
 
 [Cloud Foundry](https://www.cloudfoundry.org/) recently integrated the
-[OpenTelemetry Collector](/docs/collector/) for metrics egress and we learned a lot along the way.
-We're excited about what the integration offers today and all the possibilities
-it opens up for us.
+[OpenTelemetry Collector](/docs/collector/) for metrics egress and we learned a
+lot along the way. We're excited about what the integration offers today and all
+the possibilities it opens up for us.
 
 ## What we were looking for
 
@@ -66,18 +66,19 @@ minimal, which we worried would limit us in the future.
 We then looked more seriously at Telegraf and OpenTelemetry. Both are written in
 Go, so we were good there. Our main reason to go with OpenTelemetry, was the
 availability of a customizable build process: OpenTelemetry allows us to
-[build a Collector](/docs/collector/custom-collector/) with a curated selection of our own components and community
-components.
+[build a Collector](/docs/collector/custom-collector/) with a curated selection
+of our own components and community components.
 
-Additionally, when looking at OpenTelemetry we found that many [tools](/ecosystem/integrations/) and [vendors](/ecosystem/vendors/)
-were adding native support for the [OpenTelemetry Protocol](/docs/specs/otlp/) (OTLP). This caused us to be confident
-in adopting OpenTelemetry Collector as a widely adopted first-party
-implementation of OTLP.
+Additionally, when looking at OpenTelemetry we found that many
+[tools](/ecosystem/integrations/) and [vendors](/ecosystem/vendors/) were adding
+native support for the [OpenTelemetry Protocol](/docs/specs/otlp/) (OTLP). This
+caused us to be confident in adopting OpenTelemetry Collector as a widely
+adopted first-party implementation of OTLP.
 
 We
 [proposed adding the OpenTelemetry Collector to Cloud Foundry in an RFC](https://github.com/cloudfoundry/community/blob/0365df129e52ae7b784957a5569b16b7e133f97e/toc/rfc/rfc-0018-aggregate-metric-egress-with-opentelemetry-collector.md),
-and solicited our community's feedback. It was accepted on July 7, 2023 and we got
-to work.
+and solicited our community's feedback. It was accepted on July 7, 2023 and we
+got to work.
 
 ## How we integrated OpenTelemetry with our current metric system
 
@@ -92,8 +93,9 @@ with many of those lines simply closing curly brackets. In writing this code we
 had to think about how to take our existing data model and translate it into the
 OpenTelemetry protobuf data model. We found OpenTelemetry to have considered
 many edge cases we had encountered in the past, and plenty we had not yet
-encountered. Someday we hope to understand how to use [Scopes](/docs/concepts/instrumentation-scope/) and [Resources](/docs/concepts/resources/)
-effectively.
+encountered. Someday we hope to understand how to use
+[Scopes](/docs/concepts/instrumentation-scope/) and
+[Resources](/docs/concepts/resources/) effectively.
 
 Our implementation worked well, though we found the OpenTelemetry Collector to
 be using large amounts of CPU. We had done the simplest thing to start with, and
