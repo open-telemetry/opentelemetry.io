@@ -10,5 +10,5 @@ tags:
 repo: https://github.com/instana/otel-database-dc
 license: MIT
 description: A tool or template to generate OpenTelemetry metrics for various databases.
-authors: OpenTelemetry Authors
+authors: liurui@cn.ibm.com
 otVersion: latest
