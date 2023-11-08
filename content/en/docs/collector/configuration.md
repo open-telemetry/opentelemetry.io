@@ -633,8 +633,8 @@ Each authentication extension has two possible usages:
 
 For a list of known authenticators, see the
 [Registry](/ecosystem/registry/?s=authenticator&component=extension). If you're
-interested in developing a custom authenticator, check out the
-["Building a custom authenticator"](../custom-auth) document.
+interested in developing a custom authenticator, see 
+[Building a custom authenticator](../custom-auth).
 
 To add a server authenticator to a receiver in the Collector, follow these
 steps:
