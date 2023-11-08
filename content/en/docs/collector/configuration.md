@@ -520,9 +520,9 @@ service:
 Pipelines are defined in the `pipelines` subsection and can be of the following
 types:
 
-- `traces` collects and processes trace data.
-- `metrics` collects and processes metric data.
-- `logs` collects and processes log data.
+- `traces` collect and processes trace data.
+- `metrics` collect and processes metric data.
+- `logs` collect and processes log data.
 
 A pipeline consists of a set of receivers, processors and exporters. Before
 including a receiver, processor, or exporter in a pipeline, make sure to define
