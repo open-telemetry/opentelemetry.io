@@ -70,7 +70,8 @@ if [ "$existing_pr_count" -gt 0 ]; then
 fi
 
 if [[ "$repo" == "opentelemetry-specification"
-   || "$repo" == "opentelemetry-proto" ]]; then
+   || "$repo" == "opentelemetry-proto"
+   || "$repo" == "semantic-conventions" ]]; then
   echo "Switching to $repo at tag v$latest_version"
   ( set -x;
     npm run get:submodule -- content-modules/$repo &&
