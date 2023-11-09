@@ -131,7 +131,7 @@ cloud IDE:
     > repository, or just want to look around, open
     > <https://gitpod.io/#https://github.com/open-telemetry/opentelemetry.io>.
 
-GitPod will automatically install the repo-specific packages for you. You're now
+Gitpod will automatically install the repo-specific packages for you. You're now
 ready to [build](#build), [serve](#serve) and/or make updates to the website
 files.
 
