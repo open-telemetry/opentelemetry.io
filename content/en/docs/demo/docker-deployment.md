@@ -2,7 +2,7 @@
 title: Docker deployment
 linkTitle: Docker
 aliases: [docker_deployment]
-cSpell:ignore: otelcollector otlphttp spanmetrics
+cSpell:ignore: otelcollector otlphttp spanmetrics tracetest
 ---
 
 ## Prerequisites
@@ -39,7 +39,8 @@ cSpell:ignore: otelcollector otlphttp spanmetrics
     > `docker compose up --force-recreate --remove-orphans --detach`[^1] to
     > start the demo.
 
-4.  (Optional) Use make to enable API testing with observability-driven development (ODD):
+4.  (Optional) Use make to enable API testing with observability-driven
+    development (ODD):
 
     ```shell
     make start-odd
@@ -48,8 +49,8 @@ cSpell:ignore: otelcollector otlphttp spanmetrics
     > **Notes:**
     >
     > If you do not have the make utility installed, you can also use
-    > `docker compose --profile odd up --force-recreate --remove-orphans --detach`[^1] to
-    > start the demo and the. It uses the `odd` Docker Compose Profile.
+    > `docker compose --profile odd up --force-recreate --remove-orphans --detach`[^1]
+    > to start the demo and the. It uses the `odd` Docker Compose Profile.
 
 ## Verify the web store and Telemetry
 
