@@ -200,7 +200,7 @@ meterProvider = MeterProvider(resource=resource, metric_readers=[reader])
 metrics.set_meter_provider(meterProvider)
 ```
 
-{% alert title="Note" color="note" %}
+{{% alert title="Note" color="note" %}}
 
 There are temporality presets for each instrumentation kind. These presets can
 be set with the environment variable
@@ -246,7 +246,7 @@ Setting `OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE` to any other value than
 `CUMULATIVE`, `DELTA` or `LOWMEMORY` will log a warning and set this environment
 variable to `CUMULATIVE`.
 
-{% /alert %}
+{{% /alert %}}
 
 ## Jaeger
 
