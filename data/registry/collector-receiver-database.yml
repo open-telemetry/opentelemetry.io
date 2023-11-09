@@ -1,4 +1,5 @@
-title: OTel based Data Collector for Databases
+# cSpell:ignore ODCD
+title: OTel based Data Collector for Databases (ODCD)
 registryType: utilities
 isThirdParty: true
 language: java
