@@ -18,6 +18,34 @@ backends, including open source tools like
 OpenTelemetry is a
 [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io) project.
 
+## Why OpenTelemetry?
+
+With the rise of cloud computing, microservices architectures, and ever-more
+complex business requirements, the need for
+[Observability](/docs/concepts/observability-primer/#what-is-observability) has
+never been greater. Observability is the ability to understand the internal
+state of a system by examining its outputs. In the context of software, this
+means being able to understand the internal state of a system by examining its
+telemetry data, which includes traces, metrics, and logs.
+
+In order to make a system observable, it must be instrumented. That is, the code
+must emit [traces](/docs/concepts/observability-primer/#distributed-traces),
+[metrics](/docs/concepts/observability-primer/#reliability--metrics), and
+[logs](/docs/concepts/observability-primer/#logs). The instrumented data must
+then be sent to an Observability backend.
+
+OpenTelemetry does two important things:
+
+1. Allows **you to own the data that you generate** rather than be stuck with a
+   proprietary data format or tool.
+2. Allows you to learn a single set of APIs and conventions
+
+These two things combined enables teams and organizations the flexibility they
+need in today's modern computing world.
+
+If you want to learn more, take a look at OpenTelemetry's
+[mission, vision and values](/community/mission/).
+
 ## Major components
 
 OpenTelemetry consists of the following major components:
@@ -65,31 +93,6 @@ extended include:
 
 Although most users will not need to extend OpenTelemetry, the project is
 designed to make it possible at nearly every level.
-
-## Why OpenTelemetry?
-
-With the rise of cloud computing, microservices architectures, and ever-more
-complex business requirements, the need for
-[Observability](/docs/concepts/observability-primer/#what-is-observability) has
-never been greater. Observability is the ability to understand the internal
-state of a system by examining its outputs. In the context of software, this
-means being able to understand the internal state of a system by examining its
-telemetry data, which includes traces, metrics, and logs.
-
-In order to make a system observable, it must be instrumented. That is, the code
-must emit [traces](/docs/concepts/observability-primer/#distributed-traces),
-[metrics](/docs/concepts/observability-primer/#reliability--metrics), and
-[logs](/docs/concepts/observability-primer/#logs). The instrumented data must
-then be sent to an Observability backend.
-
-OpenTelemetry does two important things:
-
-1. Allows **you to own the data that you generate** rather than be stuck with a
-   proprietary data format or tool.
-2. Allows you to learn a single set of APIs and conventions
-
-These two things combined enables teams and organizations the flexibility they
-need in today's modern computing world.
 
 ### History
 
