@@ -5,7 +5,7 @@ language: java
 tags:
   - receiver
   - database
-  - semantic convention
+  - instana
   - ODCD
 repo: https://github.com/instana/otel-database-dc
 license: MIT
