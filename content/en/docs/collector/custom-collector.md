@@ -102,8 +102,10 @@ collector distribution:
 - Receivers: OTLP
 - Processors: Batch
 
-Here is what my `builder-config.yaml` manifest file looks after adding the
-modules for the components above:
+The `builder-config.yaml` manifest file will look like this after adding the
+components:
+
+> builder-config.yaml
 
 <!-- prettier-ignore -->
 ```yaml
@@ -155,9 +157,31 @@ As defined in the `dist` section of your config file, you now have a folder
 named `otelcol-dev` containing all the source code and the binary for your
 Collector's distribution.
 
+The folder structure should look like this:
+
+```
+.
+├── builder-config.yaml
+├── ocb
+└── otelcol-dev
+    ├── components.go
+    ├── components_test.go
+    ├── go.mod
+    ├── go.sum
+    ├── main.go
+    ├── main_others.go
+    ├── main_windows.go
+    └── otelcol-dev
+```
+
 You can now use the generated code to bootstrap your component development
 projects and easily build and distribute your own collector distribution with
 your components.
+
+Further readings:
+
+- [Building a Trace Receiver](/docs/collector/trace-receiver)
+- [Building a Connector](/docs/collector/trace-receiver)
 
 [ocb]:
   https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder
