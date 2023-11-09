@@ -10,14 +10,14 @@ helping you finalize your pull requests. In that spirit of mutual respect, we
 endeavor to review incoming issues and pull requests, and will close any
 lingering issues or pull requests after long times of inactivity.
 
-Please note that all of your interactions in the project are subject to our
+Note that all of your interactions in the project are subject to our
 [Code of Conduct](https://github.com/open-telemetry/community/blob/main/code-of-conduct.md).
 This includes creation of issues or pull requests, commenting on issues or pull
 requests, and extends to all interactions in any real-time space e.g., Slack,
 Discord, etc.
 
-Please also review the general
-[OpenTelemetry Contributor Guide](https://github.com/open-telemetry/community/blob/main/CONTRIBUTING.md#opentelemetry-contributor-guide),
+Also review the general
+[OpenTelemetry Contributor Guide](https://github.com/open-telemetry/community/blob/main/CONTRIBUTING.md),
 that will provide additional details, especially that you need to sign a
 Contributor License Agreement (CLA) before you can contribute.
 
@@ -30,7 +30,7 @@ Before reporting a new issue, please ensure that the issue was not already
 reported or fixed by searching through our
 [issues list](https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc).
 
-When creating a new issue, please be sure to include a title and clear
+When creating a new issue, include a short meaningful title and clear a
 description, as much relevant information as possible, and, if possible, a test
 case.
 
@@ -42,9 +42,9 @@ Instead, please see security procedures in our
 
 This is the best way how you can help us to make our documentation better! Take
 a look at issues tagged with
-[`help wanted`](https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22help+wanted%22)
+[help wanted](https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22help+wanted%22)
 and
-[`good first issue`](https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22good+first+issue%22)
+[good first issue](https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22good+first+issue%22)
 to find an opportunity to contribute and help us. The good first issue label
 indicates that members have committed to providing extra assistance for new
 contributors.
@@ -79,15 +79,16 @@ For everything else, follow the
 
 ### PR Guidelines
 
-To help us and yourself to get your PR merged, please follow these practices:
+Before a PR gets merged, it will sometimes require a few iterations of review-and-edit.
+To help us and yourself make this process as easy as possible, we ask that adhere to the following:
 
-- Work from a fork: Click the
+- If your PR isn't a [quick fix](#quick-fixes), then **work from a fork**: Click the
   [Fork](https://github.com/open-telemetry/opentelemetry.io/fork) button at the
   top of the repository and clone the fork locally. When you are ready, raise a
   PR with the upstream repository.
-- Do not work from the `main` branch of your fork, but create a PR-specific
+- **Do not work from the `main`** branch of your fork, but create a PR-specific
   branch.
-- Make sure that maintainers are
+- Ensure that maintainers are
   [allowed to apply changes to your pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork).
 
 ### Merge requirements
