@@ -36,6 +36,7 @@ rules:
       - Erlang
       - GCP
       - GitHub
+      - GitPod
       - GraphQL
       - gRPC
       - Haskell
@@ -60,6 +61,7 @@ rules:
       - MongoDB
       - MySQL
       - NDJSON
+      - Netlify
       - NGINX
       - OCaml
       - OK

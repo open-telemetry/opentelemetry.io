@@ -21,6 +21,12 @@ Also review the general
 that will provide additional details, especially that you need to sign a
 Contributor License Agreement (CLA) before you can contribute.
 
+## Found a security issue?
+
+If you discover a security issue, **do not** report it through GitHub. Instead,
+follow the steps in our
+[Security Policy](https://github.com/open-telemetry/opentelemetry.io/security/policy).
+
 ## Found a problem?
 
 If you find a problem with the content of this repository, or you would like to
@@ -33,10 +39,6 @@ reported or fixed by searching through our
 When creating a new issue, include a short meaningful title and clear a
 description, as much relevant information as possible, and, if possible, a test
 case.
-
-If you discover a security issue, please do not report it through GitHub.
-Instead, please see security procedures in our
-[Security Policy](https://github.com/open-telemetry/opentelemetry.io/security/policy).
 
 ## Want to work on an existing issue?
 
@@ -79,13 +81,14 @@ For everything else, follow the
 
 ### PR Guidelines
 
-Before a PR gets merged, it will sometimes require a few iterations of review-and-edit.
-To help us and yourself make this process as easy as possible, we ask that adhere to the following:
+Before a PR gets merged, it will sometimes require a few iterations of
+review-and-edit. To help us and yourself make this process as easy as possible,
+we ask that adhere to the following:
 
-- If your PR isn't a [quick fix](#quick-fixes), then **work from a fork**: Click the
-  [Fork](https://github.com/open-telemetry/opentelemetry.io/fork) button at the
-  top of the repository and clone the fork locally. When you are ready, raise a
-  PR with the upstream repository.
+- If your PR isn't a [quick fix](#quick-fixes), then **work from a fork**: Click
+  the [Fork](https://github.com/open-telemetry/opentelemetry.io/fork) button at
+  the top of the repository and clone the fork locally. When you are ready,
+  raise a PR with the upstream repository.
 - **Do not work from the `main`** branch of your fork, but create a PR-specific
   branch.
 - Ensure that maintainers are
@@ -128,7 +131,7 @@ cloud IDE:
     > repository, or just want to look around, open
     > <https://gitpod.io/#https://github.com/open-telemetry/opentelemetry.io>.
 
-Gitpod will automatically install the repo-specific packages for you. You're now
+GitPod will automatically install the repo-specific packages for you. You're now
 ready to [build](#build), [serve](#serve) and/or make updates to the website
 files.
 
