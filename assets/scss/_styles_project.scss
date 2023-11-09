@@ -103,10 +103,6 @@
   }
 }
 
-.foldable-nav {
-  padding-top: 0.5rem;
-} // TODO: propagate this fix to Docsy. Also class name should be prefixed with td
-
 // Adjust the spacing of page-meta and page-TOC (https://github.com/open-telemetry/opentelemetry.io/pull/354)
 // TODO: upstream
 .td-toc #TableOfContents {
