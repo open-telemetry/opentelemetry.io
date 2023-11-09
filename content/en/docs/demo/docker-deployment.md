@@ -39,6 +39,18 @@ cSpell:ignore: otelcollector otlphttp spanmetrics
     > `docker compose up --force-recreate --remove-orphans --detach`[^1] to
     > start the demo.
 
+4.  (Optional) Use make to enable API testing with observability-driven development (ODD):
+
+    ```shell
+    make start-odd
+    ```
+
+    > **Notes:**
+    >
+    > If you do not have the make utility installed, you can also use
+    > `docker compose --profile odd up --force-recreate --remove-orphans --detach`[^1] to
+    > start the demo and the. It uses the `odd` Docker Compose Profile.
+
 ## Verify the web store and Telemetry
 
 Once the images are built and containers are started you can access:
@@ -48,6 +60,7 @@ Once the images are built and containers are started you can access:
 - Feature Flags UI: <http://localhost:8080/feature/>
 - Load Generator UI: <http://localhost:8080/loadgen/>
 - Jaeger UI: <http://localhost:8080/jaeger/ui/>
+- Tracetest UI: <http://localhost:11633/> (Only when using `make start-odd`)
 
 ## Bring your own backend
 
