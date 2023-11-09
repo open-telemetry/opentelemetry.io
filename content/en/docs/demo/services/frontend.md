@@ -11,7 +11,7 @@ leveraged by the UI or other clients. The application is based on
 
 ## Server Instrumentation
 
-It is recommended to use a Node required module when starting your NodeJS
+It is recommended to use a Node required module when starting your Node.js
 application to initialize the SDK and auto-instrumentation. When initializing
 the OpenTelemetry Node.js SDK, you optionally specify which auto-instrumentation
 libraries to leverage, or make use of the `getNodeAutoInstrumentations()`

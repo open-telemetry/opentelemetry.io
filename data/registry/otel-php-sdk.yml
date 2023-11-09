@@ -1,0 +1,11 @@
+title: PHP SDK
+registryType: core
+isThirdParty: false
+language: php
+tags:
+  - php
+repo: https://github.com/open-telemetry/opentelemetry-php/tree/main/src/SDK
+license: Apache 2.0
+description: The OpenTelemetry SDK for PHP.
+authors: OpenTelemetry Authors
+otVersion: latest

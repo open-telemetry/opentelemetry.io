@@ -13,14 +13,14 @@ files][].
 These instructions are for [Gitpod.io][], adjust as needed for your favorite
 cloud IDE:
 
-1.  Fork this repo. For help, see [Fork a repo][fork].
+1.  Fork this repository. For help, see [Fork a repository][fork].
 2.  From [gitpod.io/workspaces][], create a new workspace (do this only once) or
     open an existing workspace over your fork. You can also visit a link of the
     form:
     <https://gitpod.io#https://github.com/YOUR_GITHUB_ID/opentelemetry.io>.
 
-    > **Note**: If you have the necessary permissions to work from this repo, or
-    > just want to look around, open
+    > **Note**: If you have the necessary permissions to work from this
+    > repository, or just want to look around, open
     > <https://gitpod.io/#https://github.com/open-telemetry/opentelemetry.io>.
 
 Gitpod will automatically install the repo-specific packages for you. You're now
@@ -29,8 +29,8 @@ files.
 
 ### Local setup
 
-1.  [Fork][] and then [clone][] this repo.
-2.  **Change** to the repo directory.
+1.  [Fork][] and then [clone][] this repository.
+2.  **Change** to the repository directory.
 3.  **Install or upgrade** to the [**active LTS** release][nodejs-rel] of
     **Node.js**. We recommend using **[nvm][]** to manage your Node
     installation. Under Linux, run the following command (which will
@@ -104,7 +104,7 @@ The website is built from the following content:
 
 ## Found a problem?
 
-If you find a problem with the content of this repo, or you would like to
+If you find a problem with the content of this repository, or you would like to
 request an enhancement, [create an issue][new-issue].
 
 > **NOTE**: As a general policy, we only _assign_ issues to community members
@@ -113,8 +113,8 @@ request an enhancement, [create an issue][new-issue].
 ## Submitting a change
 
 Enhancements and fixes to the website are most welcome! Before submitting a
-[pull request][pr] (PR) to the repo, run the following command and address any
-reported issues. Also commit any files changed by the `fix` script:
+[pull request][pr] (PR) to the repository, run the following command and address
+any reported issues. Also commit any files changed by the `fix` script:
 
 ```sh
 npm run test-and-fix
@@ -133,12 +133,12 @@ To list available NPM scripts, run `npm run`.
 
 If you change any content inside of a [content-modules][] submodule, then you'll
 need to **_first_** submit a PR (containing the submodule changes) to the
-submodule's repo. Only after the submodule PR has been accepted, can you update
-the submodule and have the changes appear in this website.
+submodule's repository. Only after the submodule PR has been accepted, can you
+update the submodule and have the changes appear in this website.
 
-It is easiest to manage your `content-modules` changes by working with the repo
-that the corresponding submodule is linked to, rather than inside the submodule
-itself.
+It is easiest to manage your `content-modules` changes by working with the
+repository that the corresponding submodule is linked to, rather than inside the
+submodule itself.
 
 > **For expert contributors**, you can work directly in the submodule. You'll
 > then be able to directly build and serve your (submodule) changes. By default,
@@ -175,7 +175,7 @@ required.
 [netlify]: https://netlify.com
 [new-issue]:
   https://github.com/open-telemetry/opentelemetry.io/issues/new/choose
-[nodejs-rel]: https://nodejs.org/en/about/releases/
+[nodejs-rel]: https://nodejs.org/en/about/previous-releases
 [nodejs-win]:
   https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
 [nvm]:

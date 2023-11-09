@@ -20,7 +20,7 @@ the Phoenix Web Framework.
 ### Prerequisites
 
 Ensure that you have Erlang, Elixir, PostgreSQL (or the database of your
-choice), and Phoenix installed locally. The phoenix
+choice), and Phoenix installed locally. The Phoenix
 [installation guide](https://hexdocs.pm/phoenix/installation.html) will help you
 get set up with everything you need.
 
@@ -108,7 +108,8 @@ the assets, and create and migrate the database.
 ### Try It Out
 
 We can ensure everything is working by setting the stdout exporter as
-opentelemetry's traces_exporter and then starting the app with `mix phx.server`.
+OpenTelemetry's `traces_exporter` and then starting the app with
+`mix phx.server`.
 
 ```elixir
 # config/dev.exs
