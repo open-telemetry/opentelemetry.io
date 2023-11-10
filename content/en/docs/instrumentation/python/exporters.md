@@ -200,7 +200,7 @@ meterProvider = MeterProvider(resource=resource, metric_readers=[reader])
 metrics.set_meter_provider(meterProvider)
 ```
 
-{{% alert title="Note" color="note" %}}
+{{% alert title="Note" color="info" %}}
 
 There are temporality presets for each instrumentation kind. These presets can
 be set with the environment variable
@@ -270,7 +270,7 @@ Now following the instruction to setup the [OTLP exporters](#otlp-dependencies).
 
 To send your metric data to [Prometheus](https://prometheus.io/), you can either
 [enable Prometheus' OTLP Receiver](https://prometheus.io/docs/prometheus/latest/feature_flags/#otlp-receiver)
-and use the [OTLP exporter](#otlp) or you can use the `PrometheusExporter`.
+and use the [OTLP exporter](#otlp), or you can use the `PrometheusExporter`.
 
 ### Backend Setup {#prometheus-setup}
 
@@ -282,7 +282,7 @@ can skip this section and setup the [Prometheus](#prometheus-dependencies) or
 
 {{% /alert %}}
 
-You can run [Prometheus](https://prometheus.io) in a docker container,
+You can run [Prometheus](https://prometheus.io/) in a docker container,
 accessible on port `9090` by following these instructions:
 
 Create a file called `prometheus.yml` with the following content:
