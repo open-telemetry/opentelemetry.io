@@ -6,7 +6,7 @@ author: '[Alex Boten](https://github.com/codeboten) (Lightstep)'
 cSpell:ignore: Boten Contribfest
 ---
 
-![OpenTelemetry Contribfest at KubeCon North America 2023](contribfest-1.png 'OpenTelemetry Contribfest at KubeCon North America 2023')
+![OpenTelemetry Contribfest at KubeCon North America 2023](contribfest-1.jpg 'OpenTelemetry Contribfest at KubeCon North America 2023')
 
 This year marked many milestones for the OpenTelemetry project. The project
 achieve the goals it had set in 2019 by announcing the general availability of
@@ -43,7 +43,7 @@ session to help answer them. The session began with 53 open issues, and by the
 end of the session, 2 pull requests had already been merged with another 11 pull
 requests having been opened.
 
-![Contributors typing furiously](contribfest-2.png 'Contributors typing furiously')
+![Contributors typing furiously](contribfest-2.jpg 'Contributors typing furiously')
 
 Even more importantly than the contributions themselves, many great
 conversations and much learning stemmed from the collaborations both for the
