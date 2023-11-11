@@ -201,7 +201,7 @@ Sample span:
   "name": "/v1/sys/health",
   "context": {
     "trace_id": "7bba9f33312b3dbb8b2c2c62bb7abe2d",
-    "span_id": "086e83747d0e381e",
+    "span_id": "086e83747d0e381e"
   },
   "parent_id": "",
   "start_time": "2021-10-22 16:04:01.209458162 +0000 UTC",
