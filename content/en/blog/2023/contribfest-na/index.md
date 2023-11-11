@@ -1,12 +1,12 @@
 ---
-title: OpenTelemetry Contribfest at Kubecon North America 2023
-linkTitle: OpenTelemetry Contribfest at Kubecon North America 2023
+title: OpenTelemetry Contribfest at KubeCon North America 2023
+linkTitle: OpenTelemetry Contribfest at KubeCon North America 2023
 date: 2023-11-09
 author: '[Alex Boten](https://github.com/codeboten) (Lightstep)'
 cSpell:ignore: Contribfest Boten
 ---
 
-![OpenTelemetry Contribfest at Kubecon North America 2023](contribfest-1.png 'OpenTelemetry Contribfest at Kubecon North America 2023')
+![OpenTelemetry Contribfest at KubeCon North America 2023](contribfest-1.png 'OpenTelemetry Contribfest at KubeCon North America 2023')
 
 This year marked many milestones for the OpenTelemetry project. The project
 achieve the goals it had set in 2019 by announcing the general availability of
@@ -18,7 +18,7 @@ Kubernetes.
 ### What's Contribfest?
 
 In an effort to bring more contributors to the table, OpenTelemetry maintainers
-hosted the project’s first [Contribfest](https://sched.co/1R2rQ) at Kubecon
+hosted the project’s first [Contribfest](https://sched.co/1R2rQ) at KubeCon
 North America 2023. The goal of a Contribfest is to bring people with all levels
 of experience together with community members to work through the steps needed
 to make a contribution to the project. This year,
