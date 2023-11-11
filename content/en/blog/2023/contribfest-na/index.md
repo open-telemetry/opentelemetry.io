@@ -3,6 +3,7 @@ title: OpenTelemetry Contribfest at Kubecon North America 2023
 linkTitle: OpenTelemetry Contribfest at Kubecon North America 2023
 date: 2023-11-09
 author: '[Alex Boten](https://github.com/codeboten) (Lightstep)'
+cSpell:ignore: Contribfest Boten
 ---
 
 ![OpenTelemetry Contribfest at Kubecon North America 2023](contribfest-1.png 'OpenTelemetry Contribfest at Kubecon North America 2023')
@@ -18,7 +19,7 @@ Kubernetes.
 
 In an effort to bring more contributors to the table, OpenTelemetry maintainers
 hosted the project’s first [Contribfest](https://sched.co/1R2rQ) at Kubecon
-North America 2023. The goal of a contribfest is to bring people with all levels
+North America 2023. The goal of a Contribfest is to bring people with all levels
 of experience together with community members to work through the steps needed
 to make a contribution to the project. This year,
 [Juraci](https://github.com/jpkrohling/),
@@ -26,7 +27,7 @@ to make a contribution to the project. This year,
 [Tyler](https://github.com/tylerhelmuth), [Daniel](https://github.com/dyladan),
 and [myself](https://github.com/codeboten) volunteered to host the event and
 guide newcomers. The hosts of the session prepared ahead of time by combing
-through various repositories and labelling issues with the `contribfest` label.
+through various repositories and labelling issues with the `Contribfest` label.
 Since the session is only 90 minutes long, it was important to try and find
 items that would be appropriate to tackle in that time. Some slides were also
 prepared, to give attendees an overview of the project, help them navigate the
@@ -47,5 +48,5 @@ requests having been opened.
 Even more importantly than the contributions themselves, many great
 conversations and much learning stemmed from the collaborations both for the
 hosts and the attendees. The planning has already started for the next
-contribfest. Thanks to all the participants for making this inaugural event such
+Contribfest. Thanks to all the participants for making this inaugural event such
 a success.
