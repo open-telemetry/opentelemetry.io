@@ -15,7 +15,7 @@ In an effort to bring more contributors to the table, OpenTelemetry maintainers 
 
 ### The event
 
-When the day of the event arrived, the room was completely full. After a few minutes to cover the content in the slides, contributors were ready to write some code, and questions came in fast. Questions from contributors ranged across all levels of expertise, and many OpenTelemetry community members came to the session to help answer them. The session began with 53 open issues, and by the end of the session, 2 pull requests had already been merged with another 4 pull requests having been opened.
+When the day of the event arrived, the room was completely full. After a few minutes to cover the content in the slides, contributors were ready to write some code, and questions came in fast. Questions from contributors ranged across all levels of expertise, and many OpenTelemetry community members came to the session to help answer them. The session began with 53 open issues, and by the end of the session, 2 pull requests had already been merged with another 7 pull requests having been opened.
 
 ![Contributors typing furiously](contribfest-2.png 'Contributors typing furiously')
 
