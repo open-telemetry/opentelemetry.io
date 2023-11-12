@@ -201,7 +201,7 @@ There is not currently an OTLP/HTTP metric exporter.
 instructions on
 [setting up the OTLP exporter above](#otlp-endpoint-or-collector). You can then
 run Jaeger in a docker container with the UI accessible on port 16686 and OTLP
-enabled on ports 4137 and 4138:
+enabled on ports 4317 and 4318:
 
 ```shell
 docker run --rm \
