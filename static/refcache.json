@@ -2287,6 +2287,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:31:48.871119-04:00"
   },
+  "https://github.com/instana/otel-database-dc": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-13T15:04:38.19765+01:00"
+  },
   "https://github.com/jack-berg": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:25:28.343626-04:00"
