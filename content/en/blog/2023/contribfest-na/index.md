@@ -1,7 +1,7 @@
 ---
 title: OpenTelemetry Contribfest at KubeCon North America 2023
 linkTitle: Contribfest at KubeCon NA
-date: 2023-11-09
+date: 2023-11-13
 author: '[Alex Boten](https://github.com/codeboten) (Lightstep)'
 cSpell:ignore: Boten Contribfest
 ---
