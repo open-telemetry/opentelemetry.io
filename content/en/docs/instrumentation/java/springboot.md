@@ -1,10 +1,6 @@
 ---
 title: Spring Boot
 linkTitle: Spring Boot
-aliases:
-  - /docs/java/getting_started
-  - /docs/java/springboot
-  - /docs/instrumentation/java/springboot
 weight: 30
 description: Spring instrumentation for OpenTelemetry Java
 javaInstrumentationVersion: 1.31.0
