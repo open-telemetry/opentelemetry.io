@@ -9,7 +9,7 @@ cSpell:ignore: Boten Contribfest
 ![OpenTelemetry Contribfest at KubeCon North America 2023](contribfest-1.jpg 'OpenTelemetry Contribfest at KubeCon North America 2023')
 
 This year marked many milestones for the OpenTelemetry project. The project
-achieve the goals it had set in 2019 by announcing the general availability of
+achieved the goals it had set in 2019 by announcing the general availability of
 of the logging signal, the last of the signals it had originally committed to.
 In addition, the project continued to grow the number of contributors, being the
 second most active project in the CNCF for a second year in a row, behind
