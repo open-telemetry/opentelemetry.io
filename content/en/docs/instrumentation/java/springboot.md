@@ -9,7 +9,7 @@ cSpell:ignore: springboot autoconfigure
 
 You can automatically instrument a [Spring Boot](https://spring.io/projects/spring-boot) application using the [OpenTelemetry Java agent](../automatic/) that uses byte code instrumentation.
 
-The OpenTelemetry starter is another way to instrument your Spring Boot application. It is a [Spring Boot starter](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using.build-systems.starters).
+The OpenTelemetry Spring Boot Starter is another way to instrument your Spring Boot application. It is a [Spring Boot starter](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using.build-systems.starters).
 
 The OpenTelemetry starter is compatible with Spring Boot 2.0, Spring Boot 3.0 and Spring native.
 
