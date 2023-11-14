@@ -84,7 +84,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.16",
-    "cspell": "^7.3.8",
+    "cspell": "^8.0.0",
     "gulp": "^4.0.2",
     "hugo-extended": "0.120.4",
     "markdown-link-check": "^3.11.2",
