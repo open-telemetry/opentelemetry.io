@@ -15,7 +15,29 @@ from = "https://blog.opentelemetry.io/*"
 to = "https://opentelemetry.io/blog/:splat"
 force = true
 
+# Schemas
+
 [[headers]]
-  for = "/schemas/:version"
+  for = "/schemas/"
+  [headers.values]
+    content-type = "text/yaml"
+
+# Ensure that there is a header entry for each major version of the published
+# schemas. (If this becomes too bothersome to update, we can automate the
+# creation of these schema header entries in a `_headers` file using Hugo
+# templating constructs.)
+
+[[headers]]
+  for = "/schemas/1.*"
+  [headers.values]
+    content-type = "application/yaml"
+
+[[headers]]
+  for = "/schemas/2.*"
+  [headers.values]
+    content-type = "application/yaml"
+
+[[headers]]
+  for = "/schemas/3.*"
   [headers.values]
     content-type = "application/yaml"

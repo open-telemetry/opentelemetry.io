@@ -5,6 +5,7 @@ IgnoreAltMissing: true
 IgnoreCanonicalBrokenLinks: false
 CheckMailto: false
 IgnoreInternalURLs: # list of paths
+  - /schemas/latest
 IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^/docs/instrumentation/\w+/(api|examples)/$
   - ^/docs/instrumentation/net/(metrics-api|traces-api)/

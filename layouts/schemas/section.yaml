@@ -1,0 +1,10 @@
+{{ $schemaFiles := partial "schema-file-list" . -}}
+{{ $latestSchemaFile := index $schemaFiles 0 -}}
+# OpenTelemetry Schemas
+#
+# https://github.com/open-telemetry/semantic-conventions/tree/v{{ $latestSchemaFile.Name }}/schemas
+#
+{{ $schemaFiles := partial "schema-file-list.html" . -}}
+{{- range $schemaFiles -}}
+- {{ .Name }}
+{{ end -}}

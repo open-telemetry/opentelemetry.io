@@ -32,15 +32,18 @@ markup:
     # noClasses: false
     style: tango
 
-# Netlify _redirects file
 mediaTypes:
-  text/netlify: {}
+  text/netlify: {} # Netlify _redirects file
+  text/yaml: {}
 
 outputFormats:
   REDIRECTS:
     mediaType: text/netlify
     baseName: _redirects
     notAlternative: true
+  YAML: # Yaml for Schemas index page
+    mediaType: text/yaml
+    baseName: index.yaml
 
 outputs:
   home: [HTML, REDIRECTS, RSS]
