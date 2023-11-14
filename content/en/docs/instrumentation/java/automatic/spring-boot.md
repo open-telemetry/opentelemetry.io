@@ -21,13 +21,14 @@ native.
 
 Add the dependency given below to enable the OpenTelemetry starter.
 
-The OpenTelemetry starter uses OpenTelemetry
-[Spring Boot auto-configurations](https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.auto-configuration).
+The OpenTelemetry starter uses OpenTelemetry Spring Boot [auto-configuration].
+For details concerning supported libraries and features of the OpenTelemetry
+auto-configuration, see the configuration [README].
 
-You can look at
-[this](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/README.md#features)
-to know the supported libraries and features of the OpenTelemetry
-auto-configurations.
+[auto-configuration]:
+  https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.auto-configuration
+[README]:
+  https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/README.md#features
 
 ### Maven
 
