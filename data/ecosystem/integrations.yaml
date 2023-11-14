@@ -154,3 +154,13 @@
   docsUrl: https://strimzi.io/docs/operators/latest/deploying#assembly-distributed-tracing-str
   components: [Java]
   oss: true
+- name: CloudWeGo
+  url: https://www.cloudwego.io/
+  docsUrl: https://www.cloudwego.io/docs/hertz/tutorials/observability/open-telemetry/
+  components: [Go]
+  oss: true
+- name: GORM
+  url: https://gorm.io/
+  docsUrl: https://github.com/go-gorm/opentelemetry
+  components: [Go]
+  oss: true

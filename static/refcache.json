@@ -2239,6 +2239,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-10-16T20:37:05.720755+02:00"
   },
+  "https://github.com/go-gorm/opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-14T12:26:21.00653-04:00"
+  },
   "https://github.com/gosnmp/gosnmp": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:15:19.257742-04:00"
@@ -3854,6 +3858,10 @@
   "https://golang.org/ref/spec#Slice_types": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T16:10:23.235648-04:00"
+  },
+  "https://gorm.io/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-14T12:26:21.00653-04:00"
   },
   "https://gradle.org/": {
     "StatusCode": 206,
@@ -5722,6 +5730,14 @@
   "https://www.cloudscaleinc.com": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T16:24:41.542459-04:00"
+  },
+  "https://www.cloudwego.io/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-14T12:26:21.00653-04:00"
+  },
+  "https://www.cloudwego.io/docs/hertz/tutorials/observability/open-telemetry/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-14T12:26:21.00653-04:00"
   },
   "https://www.cncf.io": {
     "StatusCode": 206,
