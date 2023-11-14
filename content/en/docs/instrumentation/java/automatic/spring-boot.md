@@ -17,7 +17,7 @@ instrument your application.
 The OpenTelemetry starter is compatible with Spring Boot 2.0 and 3.0, and Spring
 native.
 
-## Getting Started
+## Configuration
 
 Add the dependency given below to enable the OpenTelemetry starter.
 
