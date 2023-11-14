@@ -29,7 +29,7 @@ Add the following dependencies to your `pom.xml` file:
   <dependency>
     <groupId>io.opentelemetry.instrumentation</groupId>
     <artifactId>opentelemetry-spring-boot-starter</artifactId>
-    <version>{{% param javaInstrumentationVersion %}}</version>
+    <version>{{% param vers.instrumentation %}}</version>
   </dependency>
 </dependencies>
 ```
