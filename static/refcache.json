@@ -1491,6 +1491,14 @@
     "StatusCode": 200,
     "LastSeen": "2023-07-26T16:17:33.996008+02:00"
   },
+  "https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.auto-configuration": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-14T09:30:48.194902-05:00"
+  },
+  "https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using.build-systems.starters": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-14T09:30:42.69906-05:00"
+  },
   "https://docs.teletrace.io/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T09:15:08.305928-04:00"
@@ -5390,6 +5398,10 @@
   "https://spring.io/guides/gs/spring-boot/": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T11:44:31.406627-04:00"
+  },
+  "https://spring.io/projects/spring-boot": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-14T09:30:36.981189-05:00"
   },
   "https://square.github.io/okhttp/": {
     "StatusCode": 206,
