@@ -39,7 +39,9 @@ Add the following dependencies to your `pom.xml` file:
 Add the following dependencies to your gradle.build file:
 
 ```groovy
-implementation("io.opentelemetry.instrumentation:opentelemetry-spring-boot-starter:{{% param vers.instrumentation %}}")
+dependencies {
+    implementation('io.opentelemetry.instrumentation:opentelemetry-spring-boot-starter:{{% param vers.instrumentation %}}')
+}
 ```
 
 ## Additional instrumentations
