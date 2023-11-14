@@ -1922,7 +1922,7 @@ func NewSpanID() pcommon.SpanID {
 
 - Imported `crypto/rand` as `crand` (to avoid conflicts with `math/rand`).
 - Added new functions `NewTraceID()` and `NewSpanID()` to generate trace ID and
-  span id respectively.
+  span ID respectively.
 
 {{% /alert %}}
 
