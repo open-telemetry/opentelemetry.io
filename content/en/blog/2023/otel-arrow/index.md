@@ -142,9 +142,7 @@ increasingly pivoting towards Apache Arrow.
 A specification for this protocol (OTEP 0156) can be found
 [here](https://github.com/open-telemetry/oteps/blob/main/text/0156-columnar-encoding.md).
 A reference implementation of the encoding/decoding function can be accessed
-[here](https://github.com/open-telemetry/otel-arrow). Additionally, the new pair
-of OTel receiver/exporter that supports this protocol is available in the
-[contrib repository](https://github.com/open-telemetry/opentelemetry-collector-contrib).
+[here](https://github.com/open-telemetry/otel-arrow).
 
 ## How can I leverage the OpenTelemetry Protocol with Apache Arrow in my deployment?
 
@@ -159,8 +157,8 @@ SDKs, processors, receivers and exporters can continue to work seamlessly. Only
 the exporter and the receiver between the two collectors need to be
 reconfigured. The immediate benefit will be a reduction in network bandwidth,
 leading to direct savings on network costs (up to 7x for metrics, 2x for logs,
-and traces). For a comprehensive breakdown of this deployment, click here [add
-link].
+and traces). For a comprehensive breakdown of this deployment, click here
+[Building the collector](https://github.com/open-telemetry/otel-arrow/blob/main/collector/BUILDING.md).
 
 ![Internet Traffic Reduction](./traffic-reduction.png)
 
@@ -272,9 +270,9 @@ invaluable assistance.
 
 - OpenTelemetry Protocol with Apache Arrow Specification -
   [OTEP 0156](https://github.com/open-telemetry/oteps/blob/main/text/0156-columnar-encoding.md)
+- OpenTelemetry Protocol with Apache Arrow (encoder/decoder)
+  [repository](https://github.com/open-telemetry/otel-arrow).
 - Receiver
   [documentation](https://github.com/open-telemetry/otel-arrow/blob/main/collector/receiver/otelarrowreceiver/README.md).
 - Exporter
   [documentation](https://github.com/open-telemetry/otel-arrow/blob/main/collector/exporter/otelarrowexporter/README.md).
-- OpenTelemetry Protocol with Apache Arrow (encoder/decoder)
-  [repository](https://github.com/open-telemetry/otel-arrow).
