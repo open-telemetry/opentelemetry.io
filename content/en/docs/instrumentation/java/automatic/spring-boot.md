@@ -30,9 +30,7 @@ auto-configuration, see the configuration [README].
 [README]:
   https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/README.md#features
 
-### Maven
-
-Add the following dependencies to your `pom.xml` file:
+{{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
 
 ```xml
 <dependencies>
@@ -44,15 +42,15 @@ Add the following dependencies to your `pom.xml` file:
 </dependencies>
 ```
 
-### Gradle
-
-Add the following dependencies to your gradle.build file:
+{{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
 
 ```groovy
 dependencies {
 	implementation('io.opentelemetry.instrumentation:opentelemetry-spring-boot-starter:{{% param vers.instrumentation %}}')
 }
 ```
+
+{{% /tab %}} {{< /tabpane>}}
 
 ## Additional instrumentations
 
