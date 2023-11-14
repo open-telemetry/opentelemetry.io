@@ -16,21 +16,20 @@ and [Deployment Methods][] page.
 ## Docker
 
 The following commands pull a Docker image and run the Collector in a container.
-Replace `{{% param collectorVersion %}}` with the version of the Collector you
-want to run.
+Replace `{{% param vers %}}` with the version of the Collector you want to run.
 
 {{< tabpane text=true >}} {{% tab DockerHub %}}
 
 ```sh
-docker pull otel/opentelemetry-collector-contrib:{{% param collectorVersion %}}
-docker run otel/opentelemetry-collector-contrib:{{% param collectorVersion %}}
+docker pull otel/opentelemetry-collector-contrib:{{% param vers %}}
+docker run otel/opentelemetry-collector-contrib:{{% param vers %}}
 ```
 
 {{% /tab %}} {{% tab ghcr.io %}}
 
 ```sh
-docker pull ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:{{% param collectorVersion %}}
-docker run ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:{{% param collectorVersion %}}
+docker pull ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:{{% param vers %}}
+docker run ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:{{% param vers %}}
 ```
 
 {{% /tab %}} {{< /tabpane >}}
@@ -41,13 +40,13 @@ as a volume:
 {{< tabpane text=true >}} {{% tab DockerHub %}}
 
 ```sh
-docker run -v $(pwd)/config.yaml:/etc/otelcol-contrib/config.yaml otel/opentelemetry-collector-contrib:{{% param collectorVersion %}}
+docker run -v $(pwd)/config.yaml:/etc/otelcol-contrib/config.yaml otel/opentelemetry-collector-contrib:{{% param vers %}}
 ```
 
 {{% /tab %}} {{% tab ghcr.io %}}
 
 ```sh
-docker run -v $(pwd)/config.yaml:/etc/otelcol-contrib/config.yaml ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:{{% param collectorVersion %}}
+docker run -v $(pwd)/config.yaml:/etc/otelcol-contrib/config.yaml ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:{{% param vers %}}
 ```
 
 {{% /tab %}} {{< /tabpane >}}
@@ -115,8 +114,8 @@ To get started on Alpine systems run the following commands:
 ```sh
 apk update
 apk add wget shadow
-wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_linux_amd64.apk
-apk add --allow-untrusted otelcol_{{% param collectorVersion %}}_linux_amd64.apk
+wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_linux_amd64.apk
+apk add --allow-untrusted otelcol_{{% param vers %}}_linux_amd64.apk
 ```
 
 {{% /tab %}} {{% tab ARM64 %}}
@@ -124,8 +123,8 @@ apk add --allow-untrusted otelcol_{{% param collectorVersion %}}_linux_amd64.apk
 ```sh
 apk update
 apk add wget shadow
-wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_linux_arm64.apk
-apk add --allow-untrusted otelcol_{{% param collectorVersion %}}_linux_arm64.apk
+wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_linux_arm64.apk
+apk add --allow-untrusted otelcol_{{% param vers %}}_linux_arm64.apk
 ```
 
 {{% /tab %}} {{% tab i386 %}}
@@ -133,8 +132,8 @@ apk add --allow-untrusted otelcol_{{% param collectorVersion %}}_linux_arm64.apk
 ```sh
 apk update
 apk add wget shadow
-wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_linux_386.apk
-apk add --allow-untrusted otelcol_{{% param collectorVersion %}}_linux_386.apk
+wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_linux_386.apk
+apk add --allow-untrusted otelcol_{{% param vers %}}_linux_386.apk
 ```
 
 {{% /tab %}} {{< /tabpane >}}
@@ -148,8 +147,8 @@ To get started on Debian systems run the following commands:
 ```sh
 sudo apt-get update
 sudo apt-get -y install wget systemctl
-wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_linux_amd64.deb
-sudo dpkg -i otelcol_{{% param collectorVersion %}}_linux_amd64.deb
+wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_linux_amd64.deb
+sudo dpkg -i otelcol_{{% param vers %}}_linux_amd64.deb
 ```
 
 {{% /tab %}} {{% tab ARM64 %}}
@@ -157,8 +156,8 @@ sudo dpkg -i otelcol_{{% param collectorVersion %}}_linux_amd64.deb
 ```sh
 sudo apt-get update
 sudo apt-get -y install wget systemctl
-wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_linux_arm64.deb
-sudo dpkg -i otelcol_{{% param collectorVersion %}}_linux_arm64.deb
+wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_linux_arm64.deb
+sudo dpkg -i otelcol_{{% param vers %}}_linux_arm64.deb
 ```
 
 {{% /tab %}} {{% tab i386 %}}
@@ -166,8 +165,8 @@ sudo dpkg -i otelcol_{{% param collectorVersion %}}_linux_arm64.deb
 ```sh
 sudo apt-get update
 sudo apt-get -y install wget systemctl
-wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_linux_386.deb
-sudo dpkg -i otelcol_{{% param collectorVersion %}}_linux_386.deb
+wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_linux_386.deb
+sudo dpkg -i otelcol_{{% param vers %}}_linux_386.deb
 ```
 
 {{% /tab %}} {{< /tabpane >}}
@@ -181,8 +180,8 @@ To get started on Red Hat systems run the following commands:
 ```sh
 sudo yum update
 sudo yum -y install wget systemctl
-wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_linux_amd64.rpm
-sudo rpm -ivh otelcol_{{% param collectorVersion %}}_linux_amd64.rpm
+wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_linux_amd64.rpm
+sudo rpm -ivh otelcol_{{% param vers %}}_linux_amd64.rpm
 ```
 
 {{% /tab %}} {{% tab ARM64 %}}
@@ -190,8 +189,8 @@ sudo rpm -ivh otelcol_{{% param collectorVersion %}}_linux_amd64.rpm
 ```sh
 sudo yum update
 sudo yum -y install wget systemctl
-wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_linux_arm64.rpm
-sudo rpm -ivh otelcol_{{% param collectorVersion %}}_linux_arm64.rpm
+wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_linux_arm64.rpm
+sudo rpm -ivh otelcol_{{% param vers %}}_linux_arm64.rpm
 ```
 
 {{% /tab %}} {{% tab i386 %}}
@@ -199,8 +198,8 @@ sudo rpm -ivh otelcol_{{% param collectorVersion %}}_linux_arm64.rpm
 ```sh
 sudo yum update
 sudo yum -y install wget systemctl
-wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_linux_386.rpm
-sudo rpm -ivh otelcol_{{% param collectorVersion %}}_linux_386.rpm
+wget https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_linux_386.rpm
+sudo rpm -ivh otelcol_{{% param vers %}}_linux_386.rpm
 ```
 
 {{% /tab %}} {{< /tabpane >}}
@@ -213,29 +212,29 @@ file containing the binary and install it on your machine manually:
 {{< tabpane text=true >}} {{% tab AMD64 %}}
 
 ```sh
-curl --proto '=https' --tlsv1.2 -fOL https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_linux_amd64.tar.gz
-tar -xvf otelcol_{{% param collectorVersion %}}_linux_amd64.tar.gz
+curl --proto '=https' --tlsv1.2 -fOL https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_linux_amd64.tar.gz
+tar -xvf otelcol_{{% param vers %}}_linux_amd64.tar.gz
 ```
 
 {{% /tab %}} {{% tab ARM64 %}}
 
 ```sh
-curl --proto '=https' --tlsv1.2 -fOL https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_linux_arm64.tar.gz
-tar -xvf otelcol_{{% param collectorVersion %}}_linux_arm64.tar.gz
+curl --proto '=https' --tlsv1.2 -fOL https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_linux_arm64.tar.gz
+tar -xvf otelcol_{{% param vers %}}_linux_arm64.tar.gz
 ```
 
 {{% /tab %}} {{% tab i386 %}}
 
 ```sh
-curl --proto '=https' --tlsv1.2 -fOL https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_linux_386.tar.gz
-tar -xvf otelcol_{{% param collectorVersion %}}_linux_386.tar.gz
+curl --proto '=https' --tlsv1.2 -fOL https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_linux_386.tar.gz
+tar -xvf otelcol_{{% param vers %}}_linux_386.tar.gz
 ```
 
 {{% /tab %}} {{% tab ppc64le %}}
 
 ```sh
-curl --proto '=https' --tlsv1.2 -fOL https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_linux_ppc64le.tar.gz
-tar -xvf otelcol_{{% param collectorVersion %}}_linux_ppc64le.tar.gz
+curl --proto '=https' --tlsv1.2 -fOL https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_linux_ppc64le.tar.gz
+tar -xvf otelcol_{{% param vers %}}_linux_ppc64le.tar.gz
 ```
 
 {{% /tab %}} {{< /tabpane >}}
@@ -273,15 +272,15 @@ commands:
 {{< tabpane text=true >}} {{% tab Intel %}}
 
 ```sh
-curl --proto '=https' --tlsv1.2 -fOL https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_darwin_amd64.tar.gz
-tar -xvf otelcol_{{% param collectorVersion %}}_darwin_amd64.tar.gz
+curl --proto '=https' --tlsv1.2 -fOL https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_darwin_amd64.tar.gz
+tar -xvf otelcol_{{% param vers %}}_darwin_amd64.tar.gz
 ```
 
 {{% /tab %}} {{% tab ARM %}}
 
 ```sh
-curl --proto '=https' --tlsv1.2 -fOL https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param collectorVersion %}}/otelcol_{{% param collectorVersion %}}_darwin_arm64.tar.gz
-tar -xvf otelcol_{{% param collectorVersion %}}_darwin_arm64.tar.gz
+curl --proto '=https' --tlsv1.2 -fOL https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_darwin_arm64.tar.gz
+tar -xvf otelcol_{{% param vers %}}_darwin_arm64.tar.gz
 ```
 
 {{% /tab %}} {{< /tabpane >}}
