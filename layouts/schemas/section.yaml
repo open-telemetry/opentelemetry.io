@@ -1,9 +1,9 @@
 {{ $schemaFiles := partial "schema-file-list" . -}}
 {{ $latestSchemaFile := index $schemaFiles 0 -}}
-# OpenTelemetry Schemas
+# OpenTelemetry Schemas v{{ $latestSchemaFile.Name }}
 #
-# https://github.com/open-telemetry/semantic-conventions/tree/v{{ $latestSchemaFile.Name }}/schemas
-#
+# For details, see https://opentelemetry.io/schemas/list
+
 {{ $schemaFiles := partial "schema-file-list.html" . -}}
 {{- range $schemaFiles -}}
 - {{ .Name }}

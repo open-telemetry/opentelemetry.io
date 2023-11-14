@@ -18,7 +18,7 @@ force = true
 # Schemas
 
 [[headers]]
-  for = "/schemas/"
+  for = "/schemas/index.yaml"
   [headers.values]
     content-type = "text/yaml"
 
