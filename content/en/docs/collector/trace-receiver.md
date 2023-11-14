@@ -1097,7 +1097,7 @@ and every minute there will be one message, which is
 > Collector's terminal.
 
 Of course, you may use your IDE of choice to debug the receiver, just like how
-you normaly debug a Go project. Here is a simple `launch.json` file for
+you normally debug a Go project. Here is a simple `launch.json` file for
 [Visual Studio Code](https://code.visualstudio.com/) for your reference:
 
 ```json
