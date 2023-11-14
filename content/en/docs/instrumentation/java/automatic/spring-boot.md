@@ -3,7 +3,6 @@ title: Spring Boot
 linkTitle: Spring Boot
 weight: 30
 description: Spring instrumentation for OpenTelemetry Java
-javaInstrumentationVersion: 1.31.0
 cSpell:ignore: springboot autoconfigure 
 ---
 
