@@ -3,11 +3,11 @@ title:
   Achieve a 10x Reduction in Telemetry Traffic Using OpenTelemetry Protocol with
   Apache Arrow
 linkTitle: OpenTelemetry Protocol with Apache Arrow
-date: 2023-11-01
+date: 2023-11-14
 author: >-
   [Laurent Quérel](https://github.com/lquerel) (F5), [Joshua
   MacDonald](https://github.com/jmacd) (ServiceNow)
-cSpell:ignore: Quérel zstd
+cSpell:ignore: Quérel SIMD Zstandard zstd
 ---
 
 We are thrilled to unveil the **OpenTelemetry Protocol with Apache Arrow**,
