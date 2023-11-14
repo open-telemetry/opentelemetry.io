@@ -1,3 +1,4 @@
+# cSpell:ignore splunkhttprouter httprouter julienschmidt
 title:
   splunkhttprouter -- Instrumentation for github.com/julienschmidt/httprouter
 registryType: instrumentation

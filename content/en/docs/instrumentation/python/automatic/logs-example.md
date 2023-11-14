@@ -3,7 +3,7 @@ title: Logs Auto-Instrumentation Example
 linkTitle: Logs Example
 weight: 20
 # prettier-ignore
-cSpell:ignore: distro instrumentor mkdir MSIE Referer Starlette uninstrumented virtualenv WSGI
+cSpell:ignore: distro instrumentor mkdir MSIE Referer Starlette uninstrumented virtualenv
 ---
 
 This page demonstrates how to use Python logs auto-instrumentation in
@@ -39,7 +39,6 @@ Paste the following contents into `example.py`:
 import logging
 
 from opentelemetry import trace
-import logging
 
 tracer = trace.get_tracer_provider().get_tracer(__name__)
 

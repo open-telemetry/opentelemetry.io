@@ -4,9 +4,15 @@ weight: 50
 cSpell:ignore: fastcgi pecl
 ---
 
-In order to visualize and analyze your telemetry, you will need to export it to
-a backend. OpenTelemetry PHP provides exporters for some common protocols, which
-you can send to a number of open source backends.
+{{% docs/instrumentation/exporters-intro php %}}
+
+{{% alert title="Note" color="info" %}}
+
+If you use [automatic instrumentation](/docs/instrumentation/php/automatic/) you
+can setup exporters with
+[zero-code configuration to setup exporters](/docs/instrumentation/php/automatic/#zero-code-configuration-for-automatic-instrumentation).
+
+{{% /alert %}}
 
 ## OTLP
 
@@ -37,7 +43,7 @@ Next, configure an exporter with an OTLP endpoint. For example:
 
 require __DIR__ . '/vendor/autoload.php';
 
-use OpenTelemetry\API\Common\Signal\Signals;
+use OpenTelemetry\API\Signals;
 use OpenTelemetry\Contrib\Grpc\GrpcTransportFactory;
 use OpenTelemetry\Contrib\Otlp\OtlpUtil;
 use OpenTelemetry\Contrib\Otlp\SpanExporter;
@@ -163,7 +169,7 @@ Install the exporter package as a dependency for your application:
 composer require open-telemetry/exporter-zipkin
 ```
 
-Update the example to use the Zipkin exporter and to send data to your zipkin
+Update the example to use the Zipkin exporter and to send data to your Zipkin
 backend:
 
 ```php

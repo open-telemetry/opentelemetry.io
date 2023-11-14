@@ -1,3 +1,4 @@
+# cSpell:ignore psycopg
 title: Psycopg Instrumentation
 registryType: instrumentation
 isThirdParty: false

@@ -6,8 +6,16 @@ cSpell:ignore: LOWMEMORY
 
 <!-- markdownlint-disable no-duplicate-heading -->
 
-In order to visualize and analyze your telemetry you will need to use an
-exporter.
+{{% docs/instrumentation/exporters-intro python %}}
+
+{{% alert title="Note" color="info" %}}
+
+If you use the Python agent for
+[automatic instrumentation](/docs/instrumentation/python/automatic) you can
+learn how to setup exporters following the
+[Agent Configuration Guide](/docs/instrumentation/python/automatic/agent-config/)
+
+{{% /alert %}}
 
 ## Console exporter
 
@@ -189,69 +197,20 @@ There is not currently an OTLP/HTTP metric exporter.
 
 ## Jaeger
 
-If you are using [Jaeger](https://www.jaegertracing.io/) to visualize trace
-data, you'll need to set it up first. This is how to run it in a docker
-container:
+[Jaeger](https://jaegertracing.io) natively supports OTLP. Follow the
+instructions on
+[setting up the OTLP exporter above](#otlp-endpoint-or-collector). You can then
+run Jaeger in a docker container with the UI accessible on port 16686 and OTLP
+enabled on ports 4317 and 4318:
 
-```sh
-docker run -d --name jaeger \
+```shell
+docker run --rm \
   -e COLLECTOR_ZIPKIN_HOST_PORT=:9411 \
-  -p 5775:5775/udp \
-  -p 6831:6831/udp \
-  -p 6832:6832/udp \
-  -p 5778:5778 \
   -p 16686:16686 \
-  -p 14268:14268 \
-  -p 14250:14250 \
+  -p 4317:4317 \
+  -p 4318:4318 \
   -p 9411:9411 \
   jaegertracing/all-in-one:latest
-```
-
-Next, install the Jaeger exporter package:
-
-```sh
-pip install opentelemetry-exporter-jaeger
-```
-
-This will install packages for both:
-
-- `opentelemetry-exporter-jaeger-thrift`
-- `opentelemetry-exporter-jaeger-proto-grpc`
-
-You can use either to export your traces to Jaeger.
-
-Once the package is installed, you can configure the exporter when initializing
-tracing:
-
-```python
-from opentelemetry import trace
-from opentelemetry.exporter.jaeger.thrift import JaegerExporter
-from opentelemetry.sdk.resources import SERVICE_NAME, Resource
-from opentelemetry.sdk.trace import TracerProvider
-from opentelemetry.sdk.trace.export import BatchSpanProcessor
-
-resource = Resource(attributes={
-    SERVICE_NAME: "your-service-name"
-})
-
-jaeger_exporter = JaegerExporter(
-    agent_host_name="localhost",
-    agent_port=6831,
-)
-
-provider = TracerProvider(resource=resource)
-processor = BatchSpanProcessor(jaeger_exporter)
-provider.add_span_processor(processor)
-trace.set_tracer_provider(provider)
-
-# Merrily go about tracing!
-```
-
-The previous example uses thrift. To use protobuf, change the import declaration
-to:
-
-```python
-from opentelemetry.exporter.jaeger.proto.grpc import JaegerExporter
 ```
 
 ## Zipkin

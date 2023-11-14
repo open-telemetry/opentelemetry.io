@@ -3,7 +3,7 @@ title: OpenTelemetry PHP Auto-Instrumentation
 linkTitle: PHP Auto-Instrumentation
 date: 2023-03-21
 author: '[Przemek Delewski](https://github.com/pdelewski/) (Sumo Logic)'
-cSpell:ignore: classname Delewski functionname laravel Przemek
+cSpell:ignore: classname Delewski functionname Przemek
 ---
 
 Automatic Instrumentation is a process of adding tracing capabilities into user
@@ -146,7 +146,7 @@ following result in
 
 We have all necessary components in place:
 
-- APIs and SDK as a foundation and implementation of opentelemetry
+- APIs and SDK as a foundation and implementation of OpenTelemetry
   specification.
 - C extension as a foundation for auto-instrumentation.
 - Auto Instrumentation support (WIP) for most important and popular libraries

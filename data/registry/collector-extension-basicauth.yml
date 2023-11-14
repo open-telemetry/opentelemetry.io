@@ -1,3 +1,4 @@
+# cSpell:ignore basicauth configauth
 title: Basic Authenticator
 registryType: extension
 isThirdParty: false
@@ -9,7 +10,7 @@ tags:
 repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/basicauthextension
 license: Apache 2.0
 description:
-  This extension implements both configauth.ServerAuthenticato` and
+  This extension implements both configauth.ServerAuthenticator and
   configauth.ClientAuthenticator to authenticate clients and servers using Basic
   Authentication.
 authors: OpenTelemetry Authors

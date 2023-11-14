@@ -1,3 +1,4 @@
+# cSpell:ignore sapm
 title: Splunk SAPM Collector Exporter
 registryType: exporter
 isThirdParty: true

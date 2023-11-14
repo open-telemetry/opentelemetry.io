@@ -3,7 +3,7 @@ title: Agent Configuration
 linkTitle: Configuration
 weight: 10
 # prettier-ignore
-cSpell:ignore: akka armeria autoconfiguration Autoconfiguration cassandra classloaders couchbase Customizer datasource dbcp Dotel dropwizard dubbo finatra hikari hikaricp HSET httpasyncclient httpclient hystrix jaxrs jaxws jboss jedis jodd kotlinx logback logmanager mojarra myfaces okhttp oshi rabbitmq ratpack rediscala redisson restlet rocketmq serverlessapis servlet spymemcached twilio vaadin vertx vibur webflux webmvc
+cSpell:ignore: akka armeria autoconfiguration Autoconfiguration classloaders couchbase Customizer datasource dbcp Dotel dropwizard dubbo finatra hikari hikaricp HSET httpasyncclient httpclient hystrix jaxrs jaxws jedis jodd kotlinx logback logmanager mojarra myfaces okhttp oshi rabbitmq ratpack rediscala redisson restlet rocketmq serverlessapis spymemcached twilio vaadin vertx vibur webflux webmvc
 ---
 
 ## SDK Autoconfiguration
@@ -107,10 +107,9 @@ Common settings that apply to multiple instrumentations at once.
 ### Peer service name
 
 The
-[peer service name](/docs/specs/otel/trace/semantic_conventions/span-general/#general-remote-service-attributes)
+[peer service name](/docs/specs/semconv/general/attributes/#general-remote-service-attributes)
 is the name of a remote service to which a connection is made. It corresponds to
-`service.name` in the
-[resource](/docs/specs/otel/resource/semantic_conventions/#service) for the
+`service.name` in the [resource](/docs/specs/semconv/resource/#service) for the
 local service.
 
 {{% config_option name="otel.instrumentation.common.peer-service-mapping" %}}
@@ -127,6 +126,18 @@ For example, if set to the following:
 Then, requests to `1.2.3.4` will have a `peer.service` attribute of
 `cats-service` and requests to `dogs-abcdef123.serverlessapis.com` will have an
 attribute of `dogs-api`.
+
+Since Java agent version `1.31.0`, it is possible to provide a port and a path
+to define a `peer.service`.
+
+For example, if set to the following:
+
+    1.2.3.4:443=cats-service,dogs-abcdef123.serverlessapis.com:80/api=dogs-api
+
+Then, requests to `1.2.3.4` will have no override for `peer.service` attribute,
+while `1.2.3.4:443` will have have `peer.service` of `cats-service` and requests
+to `dogs-abcdef123.serverlessapis.com:80/api/v1` will have an attribute of
+`dogs-api`.
 
 {{% /config_option %}}
 
@@ -159,25 +170,25 @@ following property to disable it:
 
 You can configure the agent to capture predefined HTTP headers as span
 attributes, according to the
-[semantic convention](/docs/specs/otel/trace/semantic_conventions/http/#http-request-and-response-headers).
+[semantic convention](/docs/specs/semconv/http/http-spans/#common-attributes).
 Use the following properties to define which HTTP headers you want to capture:
 
-{{% config_option name="otel.instrumentation.http.capture-headers.client.request" %}}
+{{% config_option name="otel.instrumentation.http.client.capture-request-headers" %}}
 A comma-separated list of HTTP header names. HTTP client instrumentations will
 capture HTTP request header values for all configured header names.
 {{% /config_option %}}
 
-{{% config_option name="otel.instrumentation.http.capture-headers.client.response" %}}
+{{% config_option name="otel.instrumentation.http.client.capture-response-headers" %}}
 A comma-separated list of HTTP header names. HTTP client instrumentations will
 capture HTTP response header values for all configured header names.
 {{% /config_option %}}
 
-{{% config_option name="otel.instrumentation.http.capture-headers.server.request" %}}
+{{% config_option name="otel.instrumentation.http.server.capture-request-headers" %}}
 A comma-separated list of HTTP header names. HTTP server instrumentations will
 capture HTTP request header values for all configured header names.
 {{% /config_option %}}
 
-{{% config_option name="otel.instrumentation.http.capture-headers.server.response" %}}
+{{% config_option name="otel.instrumentation.http.server.capture-response-headers" %}}
 A comma-separated list of HTTP header names. HTTP server instrumentations will
 capture HTTP response header values for all configured header names.
 {{% /config_option %}}

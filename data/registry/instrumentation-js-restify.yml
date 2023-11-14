@@ -1,3 +1,4 @@
+# cSpell:ignore restify
 title: OpenTelemetry Instrumentation for restify
 registryType: instrumentation
 isThirdParty: false

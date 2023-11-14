@@ -1,3 +1,4 @@
+# cSpell:ignore aiohttp
 title: OpenTelemetry aiohttp client Integration
 registryType: instrumentation
 isThirdParty: false

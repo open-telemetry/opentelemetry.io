@@ -1,3 +1,4 @@
+# cSpell:ignore splunksql
 title: splunksql -- Instrumentation for `database/sql`
 registryType: instrumentation
 isThirdParty: true

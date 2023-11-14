@@ -1,3 +1,4 @@
+# cSpell:ignore winston
 title: OpenTelemetry Instrumentation for winston
 registryType: instrumentation
 isThirdParty: false

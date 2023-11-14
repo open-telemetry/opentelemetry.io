@@ -7,7 +7,6 @@ show_banner: true
 developer_note:
   The blocks/cover shortcode (used below) will use as a background image any
   image file containing "background" in its name.
-cSpell:ignore: Quarkus
 ---
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
@@ -26,6 +25,7 @@ cSpell:ignore: Quarkus
 
 - [Learn more](/docs/what-is-opentelemetry/)
 - [Try the demo](/docs/demo/)
+- [Explore integrations](/ecosystem/integrations)
 
 </div>
 

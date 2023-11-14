@@ -3,7 +3,8 @@ registryType: extension
 isThirdParty: false
 language: collector
 tags:
-  - headerssetter
+  - headers
+  - setter
   - extension
   - collector
 repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/headerssetterextension

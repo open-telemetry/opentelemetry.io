@@ -160,14 +160,15 @@ spec:
     processors:
 
     exporters:
-      logging:
+      # Note: Prior to v0.86.0 use the `logging` instead of `debug`.
+      debug:
 
     service:
       pipelines:
         traces:
           receivers: [otlp]
           processors: []
-          exporters: [logging]
+          exporters: [debug]
 ---
 apiVersion: v1
 kind: Pod
@@ -242,11 +243,11 @@ Collector. For instance, each Collector could be responsible for one Kubernetes
 namespace or specific labels on the workloads.
 
 Another way of scaling the Prometheus receiver is to use the
-[Target Allocator](https://github.com/open-telemetry/opentelemetry-operator#target-allocator):
-it’s an extra binary that can be deployed as part of the OpenTelemetry Operator
-and will split the share of Prometheus jobs for a given configuration across the
-cluster of Collectors using a consistent hashing algorithm. You can use a Custom
-Resource (CR) like the following to make use of the Target Allocator:
+[Target Allocator](/docs/kubernetes/operator/target-allocator/): it’s an extra
+binary that can be deployed as part of the OpenTelemetry Operator and will
+distribute Prometheus scrape targets for a given configuration across the
+cluster of Collectors. You can use a Custom Resource (CR) like the following to
+make use of the Target Allocator:
 
 ```yaml
 apiVersion: opentelemetry.io/v1alpha1
@@ -268,14 +269,15 @@ spec:
             - targets: [ '0.0.0.0:8888' ]
 
     exporters:
-      logging:
+      # Note: Prior to v0.86.0 use the `logging` instead of `debug`.
+      debug:
 
     service:
       pipelines:
         traces:
           receivers: [prometheus]
           processors: []
-          exporters: [logging]
+          exporters: [debug]
 ```
 
 After the reconciliation, the OpenTelemetry Operator will convert the
@@ -283,7 +285,8 @@ Collector’s configuration into the following:
 
 ```yaml
 exporters:
-   logging: null
+   # Note: Prior to v0.86.0 use the `logging` instead of `debug`.
+   debug: null
  receivers:
    prometheus:
      config:
@@ -302,11 +305,11 @@ exporters:
          http_sd_configs:
          - follow_redirects: false
            url: http://collector-with-ta-targetallocator:80/jobs/otel-collector/targets?collector_id=$POD_NAME
- service:
+service:
    pipelines:
      traces:
        exporters:
-       - logging
+       - debug
        processors: []
        receivers:
        - prometheus

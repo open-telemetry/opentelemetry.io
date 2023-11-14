@@ -198,10 +198,12 @@ Sample span:
 
 ```json
 {
-  "trace_id": "7bba9f33312b3dbb8b2c2c62bb7abe2d",
-  "parent_id": "",
-  "span_id": "086e83747d0e381e",
   "name": "/v1/sys/health",
+  "context": {
+    "trace_id": "7bba9f33312b3dbb8b2c2c62bb7abe2d",
+    "span_id": "086e83747d0e381e"
+  },
+  "parent_id": "",
   "start_time": "2021-10-22 16:04:01.209458162 +0000 UTC",
   "end_time": "2021-10-22 16:04:01.209514132 +0000 UTC",
   "status_code": "STATUS_CODE_OK",
@@ -268,10 +270,10 @@ Attributes have the following rules that each language SDK implements:
   an array of these values
 
 Additionally, there are
-[Semantic Attributes](/docs/specs/otel/trace/semantic_conventions/), which are
-known naming conventions for metadata that is typically present in common
-operations. It's helpful to use semantic attribute naming wherever possible so
-that common kinds of metadata are standardized across systems.
+[Semantic Attributes](/docs/specs/semconv/general/trace/), which are known
+naming conventions for metadata that is typically present in common operations.
+It's helpful to use semantic attribute naming wherever possible so that common
+kinds of metadata are standardized across systems.
 
 ### Span Events
 

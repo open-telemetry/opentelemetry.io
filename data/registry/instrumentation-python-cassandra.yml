@@ -1,3 +1,4 @@
+# cSpell:ignore scylla
 title: OpenTelemetry Cassandra Instrumentation
 registryType: instrumentation
 isThirdParty: false
@@ -9,6 +10,6 @@ tags:
 repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-cassandra
 license: Apache 2.0
 description:
-  Instrumentation for Cassandra (cassandra-driver and scylla-driver libraries).
+  Instrumentation for Cassandra (Cassandra-driver and scylla-driver libraries).
 authors: OpenTelemetry Authors
 otVersion: latest

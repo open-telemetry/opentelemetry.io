@@ -2,14 +2,14 @@
 title: Getting Started
 description: Get telemetry for your app in less than 5 minutes!
 # prettier-ignore
-cSpell:ignore: diceroller distro loggingexporter loglevel randint rolldice rollspan venv
+cSpell:ignore: debugexporter diceroller distro loglevel randint rolldice rollspan venv
 weight: 10
 ---
 
 This page will show you how to get started with OpenTelemetry in Python.
 
 You will learn how you can instrument a simple application automatically, in
-such a way that [traces][], [metrics][] and [logs][] are emitted to the console.
+such a way that [traces][] and [metrics][] are emitted to the console.
 
 ## Prerequisites
 
@@ -42,7 +42,7 @@ source ./bin/activate
 Now install Flask:
 
 ```shell
-pip install flask
+pip3 install 'flask<3'
 ```
 
 ### Create and launch an HTTP Server
@@ -57,9 +57,9 @@ app = Flask(__name__)
 
 @app.route("/rolldice")
 def roll_dice():
-    return str(do_roll())
+    return str(roll())
 
-def do_roll():
+def roll():
     return randint(1, 6)
 ```
 
@@ -102,7 +102,6 @@ it print to the console for now:
 opentelemetry-instrument \
     --traces_exporter console \
     --metrics_exporter console \
-    --logs_exporter console \
     flask run -p 8080
 ```
 
@@ -283,11 +282,11 @@ app = Flask(__name__)
 
 @app.route("/rolldice")
 def roll_dice():
-    return str(do_roll())
+    return str(roll())
 
-def do_roll():
+def roll():
     # This creates a new span that's the child of the current one
-    with tracer.start_as_current_span("do_roll") as rollspan:
+    with tracer.start_as_current_span("roll") as rollspan:
         res = randint(1, 6)
         rollspan.set_attribute("roll.value", res)
         return res
@@ -303,7 +302,7 @@ opentelemetry-instrument \
 ```
 
 When you send a request to the server, you'll see two spans in the trace emitted
-to the console, and the one called `do_roll` registers its parent as the
+to the console, and the one called `roll` registers its parent as the
 automatically created one:
 
 <details>
@@ -311,7 +310,7 @@ automatically created one:
 
 ```json
 {
-    "name": "do_roll",
+    "name": "roll",
     "context": {
         "trace_id": "0x48da59d77e13beadd1a961dc8fcaa74e",
         "span_id": "0x40c38b50bc8da6b7",
@@ -385,7 +384,7 @@ automatically created one:
 
 </details>
 
-The `parent_id` of `do_roll` is the same is the `span_id` for `/rolldice`,
+The `parent_id` of `roll` is the same is the `span_id` for `/rolldice`,
 indicating a parent-child relationship!
 
 ### Metrics
@@ -408,7 +407,7 @@ meter = metrics.get_meter("diceroller.meter")
 
 # Now create a counter instrument to make measurements with
 roll_counter = meter.create_counter(
-    "roll_counter",
+    "dice.rolls",
     description="The number of rolls by roll value",
 )
 
@@ -416,10 +415,10 @@ app = Flask(__name__)
 
 @app.route("/rolldice")
 def roll_dice():
-    return str(do_roll())
+    return str(roll())
 
-def do_roll():
-    with tracer.start_as_current_span("do_roll") as rollspan:
+def roll():
+    with tracer.start_as_current_span("roll") as rollspan:
         res = randint(1, 6)
         rollspan.set_attribute("roll.value", res)
         # This adds 1 to the counter for the given roll value
@@ -465,7 +464,7 @@ emitted to the console, with separate counts for each roll value:
           },
           "metrics": [
             {
-              "name": "roll_counter",
+              "name": "dice.rolls",
               "description": "The number of rolls by roll value",
               "unit": "",
               "data": {
@@ -553,19 +552,20 @@ receivers:
     protocols:
       grpc:
 exporters:
-  logging:
-    loglevel: debug
+  # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
+  debug:
+    verbosity: detailed
 processors:
   batch:
 service:
   pipelines:
     traces:
       receivers: [otlp]
-      exporters: [logging]
+      exporters: [debug]
       processors: [batch]
     metrics:
       receivers: [otlp]
-      exporters: [logging]
+      exporters: [debug]
       processors: [batch]
 ```
 
@@ -614,7 +614,7 @@ process instead of the flask process, which should look something like this:
 <summary>View example output</summary>
 
 ```text
-2022-06-09T20:43:39.915Z        DEBUG   loggingexporter/logging_exporter.go:51  ResourceSpans #0
+2022-06-09T20:43:39.915Z        DEBUG   debugexporter/debug_exporter.go:51  ResourceSpans #0
 Resource labels:
      -> telemetry.sdk.language: STRING(python)
      -> telemetry.sdk.name: STRING(opentelemetry)
@@ -627,7 +627,7 @@ Span #0
     Trace ID       : 7d4047189ac3d5f96d590f974bbec20a
     Parent ID      : 0b21630539446c31
     ID             : 4d18cee9463a79ba
-    Name           : do_roll
+    Name           : roll
     Kind           : SPAN_KIND_INTERNAL
     Start time     : 2022-06-09 20:43:37.390134089 +0000 UTC
     End time       : 2022-06-09 20:43:37.390327687 +0000 UTC
@@ -661,8 +661,8 @@ Attributes:
      -> http.route: STRING(/rolldice)
      -> http.status_code: INT(200)
 
-2022-06-09T20:43:40.025Z        INFO    loggingexporter/logging_exporter.go:56  MetricsExporter {"#metrics": 1}
-2022-06-09T20:43:40.025Z        DEBUG   loggingexporter/logging_exporter.go:66  ResourceMetrics #0
+2022-06-09T20:43:40.025Z        INFO    debugexporter/debug_exporter.go:56  MetricsExporter {"#metrics": 1}
+2022-06-09T20:43:40.025Z        DEBUG   debugexporter/debug_exporter.go:66  ResourceMetrics #0
 Resource labels:
      -> telemetry.sdk.language: STRING(python)
      -> telemetry.sdk.name: STRING(opentelemetry)
@@ -710,4 +710,3 @@ If you'd like to explore a more complex example, take a look at the
 
 [traces]: /docs/concepts/signals/traces/
 [metrics]: /docs/concepts/signals/metrics/
-[logs]: /docs/concepts/signals/logs/

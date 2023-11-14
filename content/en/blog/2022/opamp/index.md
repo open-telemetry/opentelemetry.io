@@ -178,7 +178,7 @@ go run .
 ```
 
 Open a browser and visit <http://localhost:8080>. Nothing special will be shown.
-It’s time to add some opamp. Git clone
+It’s time to add some OpAMP. Git clone
 [opamp-go](https://github.com/open-telemetry/opamp-go) and run the server with:
 
 ```shell

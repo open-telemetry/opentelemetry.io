@@ -56,14 +56,15 @@ spec:
               replacement: $$1 
 
     exporters:
-      logging:
+      # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
+      debug:
 
     service:
       pipelines:
         metrics:
           receivers: [prometheus]
           processors: []
-          exporters: [logging]
+          exporters: [debug]
 ```
 
 Behind the scenes, the OpenTelemetry Operator will convert the Collector’s
@@ -87,14 +88,14 @@ receivers:
               replacement: $$1
 
 exporters:
-  logging:
+  debug:
 
 service:
   pipelines:
     metrics:
       receivers: [prometheus]
       processors: []
-      exporters: [logging]
+      exporters: [debug]
 ```
 
 Note how the Operator removes any existing service discovery configurations

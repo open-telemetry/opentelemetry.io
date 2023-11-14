@@ -1,4 +1,5 @@
-title: ocaml-opentelemetry OpenTelemetry exporters and instrumentation for OCaml
+# cSpell:ignore Imandra
+title: OpenTelemetry exporters and instrumentation for OCaml
 registryType: instrumentation
 isThirdParty: true
 language: ocaml

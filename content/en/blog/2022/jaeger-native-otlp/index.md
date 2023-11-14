@@ -68,14 +68,14 @@ replacements, although it may require exposing ports 4317 and 4318 if they are
 not already accessible.
 
 Thrift over UDP implies the use of the
-[Jaeger Agent](https://www.jaegertracing.io/docs/1.24/architecture/#agent).
+[Jaeger agent](https://www.jaegertracing.io/docs/1.24/architecture/#agent).
 Users with this deployment configuration will need to make a slightly more
 complicated change, typically one of the following:
 
 1. Direct ingest. Applications will change from using Thrift+UDP to sending OTLP
    traces directly to their `jaeger-collector` instance. This may also have
    sampling implications.
-2. Replacing the Jaeger Agent with a sidecar
+2. Replacing the Jaeger agent with a sidecar
    [OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector)
    instance. This could have sampling implications and requires changes to your
    infrastructure deployment code.

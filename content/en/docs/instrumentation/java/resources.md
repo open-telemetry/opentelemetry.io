@@ -4,18 +4,9 @@ weight: 70
 cSpell:ignore: getenv myhost SIGINT uuidgen WORKDIR
 ---
 
-A [resource](/docs/specs/otel/resource/sdk/) represents the entity producing
-telemetry as resource attributes. For example, a process producing telemetry
-that is running in a container on Kubernetes has a Pod name, a namespace, and
-possibly a deployment name. All three of these attributes can be included in the
-resource.
+{{% docs/instrumentation/resources-intro %}}
 
-In your observability backend, you can use resource information to better
-investigate interesting behavior. For example, if your trace or metrics data
-indicate latency in your system, you can narrow it down to a specific container,
-pod, or Kubernetes deployment.
-
-If you use the Javaagent for
+If you use the Java agent for
 [automatic instrumentation](/docs/instrumentation/java/automatic) you can learn
 how to setup resource detection following the
 [Agent Configuration Guide](/docs/instrumentation/java/automatic/agent-config).
@@ -26,11 +17,10 @@ resource detection below.
 ## Detecting resources from common environments
 
 You can use `ResourceProvider`s for filling in attributes related to common
-environments, like
-[Container](/docs/specs/otel/resource/semantic_conventions/container/),
-[Host](/docs/specs/otel/resource/semantic_conventions/host/) or
-[Operating System](/docs/specs/otel/resource/semantic_conventions/os/). These
-can be used with or without
+environments, like [Container](/docs/specs/semconv/resource/container/),
+[Host](/docs/specs/semconv/resource/host/) or
+[Operating System](/docs/specs/semconv/resource/os/). These can be used with or
+without
 [auto-configuration](/docs/instrumentation/java/manual/#automatic-configuration).
 
 To use those providers, add the following dependency:
@@ -39,7 +29,7 @@ To use those providers, add the following dependency:
 
 ```kotlin
 dependencies {
-    implementation("io.opentelemetry.instrumentation:opentelemetry-resources:{{% param javaVersion %}}-alpha");
+    implementation("io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.otel %}}-alpha");
 }
 ```
 
