@@ -178,7 +178,7 @@ You can now use the generated code to bootstrap your component development
 projects and easily build and distribute your own collector distribution with
 your components.
 
-Further readings:
+Further reading:
 
 - [Building a Trace Receiver](/docs/collector/trace-receiver)
 - [Building a Connector](/docs/collector/trace-receiver)
