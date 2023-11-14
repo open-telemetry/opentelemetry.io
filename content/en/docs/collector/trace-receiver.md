@@ -937,7 +937,7 @@ func NewFactory() receiver.Factory {
 
 {{% /alert %}}
 
-Till now, the skeloton of the receiver has been fully implemented.
+Till now, the skeleton of the receiver has been fully implemented.
 
 ## Updating the Collector's initialization process with the receiver
 
