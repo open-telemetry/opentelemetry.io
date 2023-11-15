@@ -1,9 +1,10 @@
 ---
 title: "Adding OpenTelemetry support to the Otterize network mapper"
-linkTitle: "OTel and Otterize" # Mandatory, make sure that your short title.
+linkTitle: "Open Telemetry with Otterize" # Mandatory, make sure that your short title.
 date: 2023-11-15 # Put the current date, we will keep the date updated until your PR is merged
-author: "Ori Shoshan" >- # If you have only one author, then add the single name on this line in quotes.
+author: >- # If you have only one author, then add the single name on this line in quotes.
   [Ori Shoshan](https://github.com/orishoshan) (Otterize),
+  [David G. Simmons](https://github.com/davidgs) (Otterize)
 ---
 
 # A no-brainer integration: Adding OpenTelemetry support to the Otterize network mapper
