@@ -1,4 +1,4 @@
-# cSpell:ignore containerd buildx Quarkus Cerbos flagd flipt KEDA Kyverno Dapr rustup
+# cSpell:ignore containerd buildx Quarkus Cerbos flagd flipt KEDA Kyverno Dapr rustup GORM
 - name: containerd
   url: https://containerd.io/
   docsUrl: https://github.com/containerd/containerd/blob/main/docs/tracing.md
@@ -153,4 +153,14 @@
   url: https://strimzi.io/
   docsUrl: https://strimzi.io/docs/operators/latest/deploying#assembly-distributed-tracing-str
   components: [Java]
+  oss: true
+- name: CloudWeGo
+  url: https://www.cloudwego.io/
+  docsUrl: https://www.cloudwego.io/docs/hertz/tutorials/observability/open-telemetry/
+  components: [Go]
+  oss: true
+- name: GORM
+  url: https://gorm.io/
+  docsUrl: https://github.com/go-gorm/opentelemetry
+  components: [Go]
   oss: true
