@@ -17,7 +17,7 @@ With contributions from secondary-author-name-1, ..., and secondary-author-n.
 
 ## Top-level heading
 
-Top-level headings start at **level 2**, as shown above.
+Top-level headings start at **level 2**. Your post should not include `# headings` but should instead only use `## headings`.
 
 ## Paragraphs
 
@@ -33,7 +33,7 @@ directory. Put the images into the same directory.
 If you have an image stored at `content/en/{{ .File.Dir }}imagename.png`, you
 can reference them like the following:
 
-![Provide a good image description for improved accessibility](imagename.png)
+`![Provide a good image description for improved accessibility](imagename.png)`
 
 ## Markdown formatter
 
