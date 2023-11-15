@@ -10,6 +10,6 @@ tags:
   - visualization
 repo: https://github.com/dash0hq/otelbin
 license: Apache 2.0
-description: SaaS editor for OpenTelemetry collector configurations with visualization, validation and sharing support
+description: SaaS editor for OpenTelemetry Collector configurations with visualization, validation and sharing support
 authors: Dash0 <hi@dash0.com>
 otVersion: latest
