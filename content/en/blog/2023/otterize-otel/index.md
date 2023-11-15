@@ -7,7 +7,7 @@ author: >- # If you have only one author, then add the single name on this line 
   [David G. Simmons](https://github.com/davidgs) (Otterize)
 ---
 
-# A no-brainer integration: Adding OpenTelemetry support to the Otterize network mapper
+## A no-brainer integration: Adding OpenTelemetry support to the Otterize network mapper
 
 **By Otterize**
 
@@ -39,7 +39,7 @@ your cluster.
 This integration was simple: the OpenTelemetry SDK is easy to use and fits like
 a glove into the existing network mapper code.
 
-## How does OpenTelemetry work with the network mapper?
+### How does OpenTelemetry work with the network mapper?
 
 With the service graph, you'll be able to see what services are communicating
 with each other. You can then use that information for operational or security
@@ -61,7 +61,7 @@ OpenTelemetry metrics for each service in your infrastructure and to
 understanding how your services interact with each other, before committing to a
 more significant OpenTelemetry rollout.
 
-## The strength of open source in action!
+### The strength of open source in action!
 
 We never initially contemplated adding this feature because it didn't cross our
 minds, but its value is undeniable—particularly for those deploying the network
