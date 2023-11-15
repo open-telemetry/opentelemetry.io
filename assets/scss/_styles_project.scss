@@ -320,3 +320,13 @@ details {
     transition: transform 0.2s linear;
   }
 }
+
+// Workaround for iOS and macOS Safari 17+. For details see:
+// https://github.com/open-telemetry/opentelemetry.io/issues/3538
+
+.td-content .highlight > pre {
+  > .click-to-copy,
+  > code {
+    overflow-y: auto;
+  }
+}

@@ -55,6 +55,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-28T13:37:47.265343-04:00"
   },
+  "http://www.zstd.net/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-14T11:45:04.323681+01:00"
+  },
   "https://access.redhat.com/products/ansible-tower-red-hat": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T13:40:07.523402-04:00"
@@ -90,6 +94,14 @@
   "https://arrow.apache.org/": {
     "StatusCode": 206,
     "LastSeen": "2023-07-24T11:52:40.018743+02:00"
+  },
+  "https://arrow.apache.org/blog/2023/04/11/our-journey-at-f5-with-apache-arrow-part-1/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-14T11:45:10.344644+01:00"
+  },
+  "https://arrow.apache.org/blog/2023/06/26/our-journey-at-f5-with-apache-arrow-part-2/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-14T11:45:10.48389+01:00"
   },
   "https://avajs.dev": {
     "StatusCode": 200,
@@ -1479,6 +1491,14 @@
     "StatusCode": 200,
     "LastSeen": "2023-07-26T16:17:33.996008+02:00"
   },
+  "https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.auto-configuration": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-14T09:30:48.194902-05:00"
+  },
+  "https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using.build-systems.starters": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-14T09:30:42.69906-05:00"
+  },
   "https://docs.teletrace.io/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T09:15:08.305928-04:00"
@@ -1806,6 +1826,10 @@
   "https://expressjs.com/": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T11:44:07.111965-04:00"
+  },
+  "https://f5.com": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-14T11:45:06.021428+01:00"
   },
   "https://fastapi.tiangolo.com": {
     "StatusCode": 206,
@@ -2323,6 +2347,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:35:56.066523-04:00"
   },
+  "https://github.com/jmacd": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-14T11:45:03.706414+01:00"
+  },
   "https://github.com/joshleecreates/": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:42:48.334985-04:00"
@@ -2382,6 +2410,10 @@
   "https://github.com/lmolkova": {
     "StatusCode": 200,
     "LastSeen": "2023-11-03T03:04:54.119611-04:00"
+  },
+  "https://github.com/lquerel": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-14T11:45:02.674064+01:00"
   },
   "https://github.com/mahboubii/grpcmetrics": {
     "StatusCode": 200,
@@ -2498,6 +2530,10 @@
   "https://github.com/open-telemetry/community/issues/1276": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:46:40.801406-04:00"
+  },
+  "https://github.com/open-telemetry/community/issues/1332": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-14T11:45:07.905452+01:00"
   },
   "https://github.com/open-telemetry/community/issues/1400": {
     "StatusCode": 200,
@@ -3546,6 +3582,14 @@
   "https://github.com/open-telemetry/opentelemetry.io/pull/3195": {
     "StatusCode": 200,
     "LastSeen": "2023-09-12T11:57:04.702626-04:00"
+  },
+  "https://github.com/open-telemetry/otel-arrow": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-14T11:45:08.675719+01:00"
+  },
+  "https://github.com/open-telemetry/otel-arrow/pull/82": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-14T11:45:09.854807+01:00"
   },
   "https://github.com/open-telemetry/oteps/issues/197": {
     "StatusCode": 200,
@@ -4771,6 +4815,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:47:38.860669-04:00"
   },
+  "https://parquet.apache.org/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-14T11:45:10.104631+01:00"
+  },
   "https://pecl.php.net/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T11:44:48.796197-04:00"
@@ -5358,6 +5406,10 @@
   "https://spring.io/guides/gs/spring-boot/": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T11:44:31.406627-04:00"
+  },
+  "https://spring.io/projects/spring-boot": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-14T09:30:36.981189-05:00"
   },
   "https://square.github.io/okhttp/": {
     "StatusCode": 206,
@@ -6470,6 +6522,10 @@
   "https://www.serverless.com/framework/docs/getting-started": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:47:05.022636-04:00"
+  },
+  "https://www.servicenow.com/products/observability.html": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-14T11:45:06.343243+01:00"
   },
   "https://www.servicepilot.com/en/doc/apm#opentelemetry": {
     "StatusCode": 200,
