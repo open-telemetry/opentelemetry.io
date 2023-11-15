@@ -44,3 +44,7 @@ npm run format
 ```
 
 Happy writing!
+
+**Note:** You can safely ignore the warning at the top of this page.
+
+<img width="1024" alt="2023-11-15_10-32-38" src="https://github.com/davidgs/opentelemetry.io/assets/2071898/d7da3f54-64df-4120-b4f7-861134eb71d9">
