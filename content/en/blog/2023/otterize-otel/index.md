@@ -65,7 +65,7 @@ more significant OpenTelemetry rollout.
 ### The strength of open source in action!
 
 We never initially contemplated adding this feature because it didn't cross our
-minds, but its value is undeniable—particularly for those deploying the network
+minds, but its value is undeniable, particularly for those deploying the network
 mapper and utilizing Grafana Tempo, or individuals exploring OpenTelemetry.
 
 It's great that the ServiceNow Cloud Observability Team stumbled upon the
