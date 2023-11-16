@@ -53,7 +53,7 @@ make
 ```
 4. Install oatpp:
 
-This command will install the built oatpp library and headers on your system, making it accesible for development in your project. 
+This command will install the built oatpp library and headers on your system, making it accessible for development in your project. 
 
 ```bash
 make install
