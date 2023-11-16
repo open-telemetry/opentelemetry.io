@@ -91,7 +91,7 @@
   oss: false
   commercial: true
 - name: Grafana Labs
-  distribution: false
+  distribution: true
   nativeOTLP: true
   url: 'https://grafana.com/oss/opentelemetry/'
   contact: ''
