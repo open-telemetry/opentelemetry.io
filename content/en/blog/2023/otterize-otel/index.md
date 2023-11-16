@@ -3,8 +3,8 @@ title: Adding OpenTelemetry support to the Otterize network mapper
 linkTitle: OTel integration for Otterize network mapper
 date: 2023-11-15
 author: >-
-  [Ori Shoshan](https://github.com/orishoshan) (Otterize),
-  [David G. Simmons](https://github.com/davidgs) (Otterize)
+  [Ori Shoshan](https://github.com/orishoshan) (Otterize), [David G.
+  Simmons](https://github.com/davidgs) (Otterize)
 cSpell:ignore: brainer Otterize Shoshan
 ---
 
@@ -12,10 +12,9 @@ cSpell:ignore: brainer Otterize Shoshan
 
 ## A no-brainer integration: Adding OpenTelemetry support to the Otterize network mapper
 
-
-[Otterize](https://otterize.com/) automates workload Identity and Access Management (IAM) for zero-trust,
-automating policies like Kubernetes network policies, Istio policies, AWS IAM
-policies, and more, through a collection of
+[Otterize](https://otterize.com/) automates workload Identity and Access
+Management (IAM) for zero-trust, automating policies like Kubernetes network
+policies, Istio policies, AWS IAM policies, and more, through a collection of
 [open source projects](https://github.com/otterize). To enable that automation,
 Otterize built the [network mapper](https://github.com/otterize/network-mapper).
 Otterize network mapper is a standalone Kubernetes tool that builds a live
@@ -52,8 +51,8 @@ the integration of the OpenTelemetry SDK into your source code.
 
 While it was easy to use the OTel SDK for the network mapper, we can see why
 there's a bit of a chicken-and-egg problem here when you're looking into
-OpenTelemetry: to start seeing significant value with tracing, you really need to
-see a bunch of services together, and that can be a lot to do as your first
+OpenTelemetry: to start seeing significant value with tracing, you really need
+to see a bunch of services together, and that can be a lot to do as your first
 step.
 
 Since the network mapper doesn’t require you to change any of your existing
