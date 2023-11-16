@@ -17,7 +17,7 @@ automating policies like Kubernetes network policies, Istio policies, AWS IAM
 policies, and more, through a collection of
 [open source projects](https://github.com/otterize). To enable that automation,
 Otterize built the [network mapper](https://github.com/otterize/network-mapper).
-The Otterize network mapper is a standalone Kubernetes tool that builds a live
+Otterize network mapper is a standalone Kubernetes tool that builds a live
 network map of your infrastructure, and can visualize it into an image file, as
 an interactive graph on Otterize Cloud, or export it as ClientIntents, a custom
 Kubernetes resource that describes each workload’s required access, or their
