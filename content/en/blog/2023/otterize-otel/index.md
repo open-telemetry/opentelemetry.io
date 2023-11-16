@@ -7,6 +7,8 @@ author: >- # If you have only one author, then add the single name on this line 
   [David G. Simmons](https://github.com/davidgs) (Otterize)
 ---
 
+{{< blog/integration-badge >}}
+
 ## A no-brainer integration: Adding OpenTelemetry support to the Otterize network mapper
 
 **By Otterize**
