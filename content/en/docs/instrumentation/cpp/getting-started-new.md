@@ -1,7 +1,7 @@
 ---
 title: Getting Started
 description: Get telemetry for your app in less than 5 minutes!
-cSpell:ignore: rolldice
+cSpell:ignore: oatpp rolldice
 weight: 10
 ---
 
