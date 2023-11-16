@@ -17,7 +17,7 @@ With contributions from secondary-author-name-1, ..., and secondary-author-n.
 
 ## Top-level heading
 
-Top-level headings start at **level 2**. Your post should not include `# headings` but should instead only use `## headings`.
+Top-level headings start at **level 2**. This means, that your post should not include `# headings` for top-level headings but `## headings` instead.
 
 ## Paragraphs
 
