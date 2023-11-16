@@ -11,7 +11,6 @@ author: >-
 
 ## A no-brainer integration: Adding OpenTelemetry support to the Otterize network mapper
 
-**By Otterize**
 
 [Otterize](https://otterize.com/) automates workload IAM for zero-trust,
 automating policies like Kubernetes network policies, Istio policies, AWS IAM
