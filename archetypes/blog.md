@@ -33,7 +33,7 @@ directory. Put the images into the same directory.
 If you have an image stored at `content/en/{{ .File.Dir }}imagename.png`, you
 can reference them like the following:
 
-`![Provide a good image description for improved accessibility](imagename.png)`
+![Provide a good image description for improved accessibility](imagename.png)
 
 ## Markdown formatter
 
