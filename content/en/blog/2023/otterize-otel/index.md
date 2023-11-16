@@ -75,6 +75,4 @@ of open source collaboration!
 
 If you're interested in exploring or contributing to our project, head on over
 to
-[https://github.com/otterize/network-mapper](https://github.com/otterize/network-mapper),
-and perhaps, while you're there, drop us a star! Otterize proudly stands as a
-member of the CNCF.
+[https://github.com/otterize/network-mapper](https://github.com/otterize/network-mapper).
