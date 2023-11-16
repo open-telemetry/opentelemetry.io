@@ -22,7 +22,7 @@ Ensure that you have the following installed locally:
 ## Example Application 
 
 The following example uses a basic [Oat++](https://oatpp.io/) application. If you are 
-not using Oat++, that's OK - you can use OpenTelemetry C++ with any other web frameworks as well.
+not using Oat++, that's OK - you can use OpenTelemetry C++ with any other web framework as well.
 
 ## Dependencies 
 
