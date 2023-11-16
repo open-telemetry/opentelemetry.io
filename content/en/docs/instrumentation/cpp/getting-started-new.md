@@ -79,7 +79,7 @@ cd openTelemetry-cpp
 
 3. Create a build directory:
 
-It's a good practice to create a seperate directory for the build files to keep your source directory clean.
+It's a good practice to create a separate directory for the build files to keep your source directory clean.
 
 ```bash
 mkdir build
