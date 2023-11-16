@@ -30,7 +30,7 @@ not using Oat++, that's OK - you can use OpenTelemetry C++ with any other web fr
 
 1. Download oatpp source code:
 
-Obtain the oatpp source code. You can either download the source code from the oatpp Github repository or clone it using Git.
+Obtain the oatpp source code. You can either download the source code from the oatpp GitHub repository or clone it using Git.
 
 ```bash 
 git clone https://github.com/oatpp/oatpp.git
