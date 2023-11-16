@@ -257,7 +257,6 @@ include_directories(${OPENTELEMETRY_ROOT}/exporters/ostream/include)
 target_link_libraries(myapp PRIVATE ${OPENTELEMETRY_ROOT}/build/sdk/src/trace/libopentelemetry_trace.a
  ${OPENTELEMETRY_ROOT}/build/sdk/src/common/libopentelemetry_common.a
  ${OPENTELEMETRY_ROOT}/build/exporters/ostream/libopentelemetry_exporter_ostream_span.a
- ${OPENTELEMETRY_ROOT}/build/ext/src/http/client/curl/libopentelemetry_http_client_curl.a
  ${OPENTELEMETRY_ROOT}/build/sdk/src/resource/libopentelemetry_resources.a)
 ```
 Replace `/path/to/opentelemetry-cpp` with the actual path leading to the opentelemetry-cpp sdk within your local installation.
