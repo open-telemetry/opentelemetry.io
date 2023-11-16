@@ -259,7 +259,7 @@ target_link_libraries(myapp PRIVATE ${OPENTELEMETRY_ROOT}/build/sdk/src/trace/li
  ${OPENTELEMETRY_ROOT}/build/exporters/ostream/libopentelemetry_exporter_ostream_span.a
  ${OPENTELEMETRY_ROOT}/build/sdk/src/resource/libopentelemetry_resources.a)
 ```
-Replace `/path/to/opentelemetry-cpp` with the actual path leading to the opentelemetry-cpp sdk within your local installation.
+Replace `/path/to/opentelemetry-cpp` with the actual path leading to the opentelemetry-cpp SDK within your local installation.
 
 **OpenTelemetry tracing configuration:**
 
