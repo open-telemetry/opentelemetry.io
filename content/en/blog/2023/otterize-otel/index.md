@@ -5,6 +5,7 @@ date: 2023-11-15
 author: >-
   [Ori Shoshan](https://github.com/orishoshan) (Otterize),
   [David G. Simmons](https://github.com/davidgs) (Otterize)
+cSpell:ignore: brainer Otterize Shoshan
 ---
 
 {{< blog/integration-badge >}}
