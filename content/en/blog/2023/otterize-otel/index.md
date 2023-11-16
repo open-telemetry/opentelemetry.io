@@ -51,7 +51,7 @@ the integration of the OpenTelemetry SDK into your source code.
 
 While it was easy to use the OTel SDK for the network mapper, we can see why
 there's a bit of a chicken-and-egg problem here when you're looking into
-OpenTelemetry—to start seeing significant value with tracing, you really need to
+OpenTelemetry: to start seeing significant value with tracing, you really need to
 see a bunch of services together, and that can be a lot to do as your first
 step.
 
