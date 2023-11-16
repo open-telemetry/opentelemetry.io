@@ -22,6 +22,8 @@ First, install the following NuGet packages:
 - [OpenTelemetry.Instrumentation.AspNet](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.AspNet)
 - [OpenTelemetry.Exporter.Console](https://www.nuget.org/packages/OpenTelemetry.Exporter.Console)
 
+If you plan to use metrics, you need to add a reference to the ```System.Diagnostics.DiagnosticsSource``` package as well to get access to the backported System.Diagnostics.Metrics namespace.
+
 Next, modify your `Web.Config` file to add a required HttpModule:
 
 ```xml
