@@ -35,7 +35,7 @@ your infrastructure, and export OpenTelemetry data to a Grafana Tempo instance,
 to see a service graph without making any changes to the services deployed in
 your cluster.
 
-[Official screenshot of Grafana Tempo service graph](otterize-otel.png)
+[A screenshot showing a Grafana Tempo service graph](otterize-otel.png)
 
 This integration was simple: the OpenTelemetry SDK is easy to use and fits like
 a glove into the existing network mapper code.
