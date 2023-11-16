@@ -2171,6 +2171,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-10-26T15:30:24.247671-04:00"
   },
+  "https://github.com/dash0hq/otelbin": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-15T18:13:58.823155+01:00"
+  },
   "https://github.com/dashpole": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:32:35.041502-04:00"
