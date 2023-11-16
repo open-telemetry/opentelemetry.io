@@ -47,7 +47,7 @@ with each other. You can then use that information for operational or security
 needs, such as determining the blast radius of a downtime or security incident.
 You can use the service graph to figure out where to start rolling out
 OpenTelemetry tracing, as that deployment tends to be more involved and requires
-the integration of the OpenTelemetry SDK into your  source code.
+the integration of the OpenTelemetry SDK into your source code.
 
 While it was easy to use the OTel SDK for the network mapper, we can see why
 there's a bit of a chicken-and-egg problem here when you're looking into
