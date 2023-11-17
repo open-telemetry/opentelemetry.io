@@ -393,7 +393,9 @@ available by
 
 ## Logs
 
-The logs API & SDK are currently under development.
+The documentation for the logs API & SDK is missing, you can help make it
+available by
+[editing this page](https://github.com/open-telemetry/opentelemetry.io/edit/main/content/en/docs/instrumentation/net/manual.md).
 
 ## Next steps
 
