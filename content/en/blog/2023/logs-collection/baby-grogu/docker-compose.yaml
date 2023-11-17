@@ -1,0 +1,7 @@
+version: '3'
+services:
+  baby-grogu:
+    build: .
+    command: python main.py 2
+    volumes:
+      - .:/usr/src/app

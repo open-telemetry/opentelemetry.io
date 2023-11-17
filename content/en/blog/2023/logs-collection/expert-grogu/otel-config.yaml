@@ -1,0 +1,19 @@
+receivers:
+  filelog:
+    include: [/usr/src/app/*.log]
+    start_at: beginning
+    operators:
+      - type: json_parser
+        timestamp:
+          parse_from: attributes.asctime
+          layout: '%Y-%m-%dT%H:%M:%S'
+        severity:
+          parse_from: attributes.levelname
+exporters:
+  debug:
+    verbosity: detailed
+service:
+  pipelines:
+    logs:
+      receivers: [filelog]
+      exporters: [debug]
