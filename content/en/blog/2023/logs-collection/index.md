@@ -75,7 +75,7 @@ have Baby Grogu practice for 3 seconds, or you can use a containerized version
 
 For the containerized version, we're using the following `Dockerfile`:
 
-```
+```docker
 FROM python:3.11
 WORKDIR /usr/src/app
 COPY . .
@@ -125,7 +125,7 @@ Makes sense? Let's see it in action …
 
 Overall, we have the following setup:
 
-```
+```plain
 ( python main.py ) --> exgru.log --> ( OTel collector ) --> stdout
 ```
 
@@ -159,7 +159,8 @@ than `python main.py 5` since the former can't be parsed into an integer).
 We are using the following `Dockerfile` (installing the one dependency we have,
 `python-json-logger==2.0.7`):
 
-```
+
+```docker
 FROM python:3.11
 WORKDIR /usr/src/app
 COPY requirements.txt requirements.txt
@@ -304,7 +305,7 @@ file and have the collector read it off of it!
 
 Overall, we have the following setup Yoda is using:
 
-```
+```plain
 ( python main.py ) - OTLP -> ( OTel collector ) --> stdout
 ```
 
