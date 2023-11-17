@@ -418,8 +418,9 @@ extend Yoda's code to do the following:
    Grafana.
 1. Use auto-instrumentation to further enrich telemetry.
 
-The community is currently working on the [Events API Interface][otel-logs-events]
-which is a good place to continue your research and maybe provide feedback?
+The community is currently working on the [Events API
+Interface][otel-logs-events] which is a good place to continue your research and
+maybe provide feedback?
 
 ## Kudos and References
 
