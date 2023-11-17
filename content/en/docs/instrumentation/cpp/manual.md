@@ -227,7 +227,9 @@ p->AddView(std::move(observable_instrument_selector), std::move(observable_meter
 
 ## Logs
 
-The logs API & SDK are currently under development.
+The documentation for the metrics API & SDK is missing, you can help make it
+available by
+[editing this page](https://github.com/open-telemetry/opentelemetry.io/edit/main/content/en/docs/instrumentation/cpp/manual.md).
 
 ## Next Steps
 
