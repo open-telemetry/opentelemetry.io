@@ -159,7 +159,6 @@ than `python main.py 5` since the former can't be parsed into an integer).
 We are using the following `Dockerfile` (installing the one dependency we have,
 `python-json-logger==2.0.7`):
 
-
 ```docker
 FROM python:3.11
 WORKDIR /usr/src/app
