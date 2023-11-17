@@ -1423,6 +1423,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T16:18:12.959612-04:00"
   },
+  "https://docs.otterize.com/reference/configuration/network-mapper/helm-chart#opentelemetry-exporter-parameters": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-17T16:32:53.695431+01:00"
+  },
   "https://docs.particular.net/samples/open-telemetry/prometheus-grafana/#reporting-metric-values": {
     "StatusCode": 200,
     "LastSeen": "2023-09-06T15:04:50.067993+02:00"
