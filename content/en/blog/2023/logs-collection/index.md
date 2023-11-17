@@ -418,7 +418,7 @@ extend Yoda's code to do the following:
    Grafana.
 1. Use auto-instrumentation to further enrich telemetry.
 
-The community is currently working on the [Events API Interface][otel-logs-spec]
+The community is currently working on the [Events API Interface][otel-logs-events]
 which is a good place to continue your research and maybe provide feedback?
 
 ## Kudos and References
@@ -431,7 +431,7 @@ If you want to dive deeper into OTel log collection (especially with Python),
 check out the following resources:
 
 - [OpenTelemetry Logging][otel-logs-spec] (OTel docs)
-- [Events API Interface][otel-logs-spec] (OTel docs)
+- [Events API Interface][otel-logs-events] (OTel docs)
 - [General Logs Attributes][otel-semconv-logs] (semantic conventions)
 - [OpenTelemetry Python][otel-python-repo] (GitHub repository)
 - [A language-specific implementation of OpenTelemetry in Python][otel-python]
