@@ -32,21 +32,22 @@ retrieve information.
 
 ## What should OTel Baggage be used for?
 
-OTel Baggage should be used for data that you're okay with potentially exposing
-to anyone who inspects your network traffic. This is because it's stored in HTTP
-headers alongside the current context, and may be sent to external APIs by automatic instrumentation. If your relevant network traffic is
-entirely within your own network, then this caveat may not apply.
-
 Common use cases include information that’s only accessible further up a stack.
 This can include things like Account Identification, User IDs, Product IDs, and
 origin IPs, for example. Passing these down your stack allows you to then add
 them to your Spans in downstream services to make it easier to filter when
 you’re searching in your Observability back-end.
 
-There are no built-in integrity checks to ensure that the Baggage items are
-yours, so exercise caution when retrieving them.
-
 ![OTel Baggage](/img/otel-baggage-2.svg)
+
+## Baggage security considerations
+
+Sensitive Baggage items could be shared with unintended resources, like third-party APIs. 
+This is because automatic instrumentation includes Baggage in most of your service’s network requests. 
+Specifically, Baggage and other parts of trace context are sent in HTTP headers, making it visible to anyone inspecting your network traffic. 
+If traffic is restricted within your network, then this risk may not apply, but keep in mind that downstream services could propagate Baggage outside your network.
+
+Also, there are no built-in integrity checks to ensure that Baggage items are yours, so exercise caution when retrieving them.
 
 ## Baggage is not the same as Span attributes
 
