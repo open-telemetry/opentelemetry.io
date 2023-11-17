@@ -4147,6 +4147,18 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:06:31.115927-04:00"
   },
+  "https://javadoc.io/doc/io.opentelemetry/opentelemetry-exporter-prometheus/latest": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-17T12:19:45.412666+01:00"
+  },
+  "https://javadoc.io/doc/io.opentelemetry/opentelemetry-exporter-zipkin/latest": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-17T12:19:46.0091+01:00"
+  },
+  "https://javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/export/SpanExporter.html": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-17T12:19:46.216357+01:00"
+  },
   "https://javadoc.io/doc/org.apache.logging.log4j/log4j-api/latest/org.apache.logging.log4j/org/apache/logging/log4j/Logger.html": {
     "StatusCode": 200,
     "LastSeen": "2023-08-10T19:39:55.351559+02:00"

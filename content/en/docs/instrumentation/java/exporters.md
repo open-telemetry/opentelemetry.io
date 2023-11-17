@@ -17,13 +17,61 @@ how to setup exporters following the
 
 ## OTLP
 
-To send trace data to a OTLP endpoint (like the [collector](/docs/collector) or
-Jaeger) you'll want to use `opentelemetry-exporter-otlp`.
+### Collector Setup
 
-### OTLP Artifacts
+{{% alert title="Note" color="info" %}}
 
-There are multiple OTLP options available, each catering to different use cases.
-For most users, the default artifact will suffice and be the most simple:
+If you have a OTLP collector or backend already set up, you can skip this
+section and [setup the OTLP exporter dependencies](#otlp-dependencies) for your
+application.
+
+{{% /alert %}}
+
+To try out and verify your OTLP exporters, you can run the collector in a docker
+container that writes telemetry directly to the console.
+
+In an empty directory, create a file called `collector-config.yaml` with the
+following content:
+
+```yaml
+receivers:
+  otlp:
+    protocols:
+      grpc:
+      http:
+exporters:
+  debug:
+    verbosity: detailed
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      exporters: [debug]
+    metrics:
+      receivers: [otlp]
+      exporters: [debug]
+    logs:
+      receivers: [otlp]
+      exporters: [debug]
+```
+
+Now run the collector in a docker container:
+
+```shell
+docker run -p 4317:4317 -p 4318:4318 --rm -v $(pwd)/collector-config.yaml:/etc/otelcol/config.yaml otel/opentelemetry-collector
+```
+
+This collector is now able to accept telemetry via OTLP. Later you may want to
+[configure the collector](/docs/collector/configuration) to send your telemetry
+to your observability backend.
+
+### Dependencies {#otlp-dependencies}
+
+If you want to send telemetry data to an OTLP endpoint (like the
+[OpenTelemetry Collector](#collector-setup), [Jaeger](#jaeger) or
+[Prometheus](#prometheus)), there are multiple OTLP options available, each
+catering to different use cases. For most users, the default artifact will
+suffice and be the most simple:
 
 {{< tabpane text=true >}} {{% tab Gradle %}}
 
@@ -171,14 +219,240 @@ public class DiceApplication {
 }
 ```
 
-To see the traces exported quickly, you can run Jaeger with OTLP enabled in a
-docker container:
+## Console
+
+To debug your instrumentation or see the values locally in development, you can
+use exporters writing telemetry data to the console (stdout).
+
+If you followed the
+[Getting Started](/docs/instrumentation/java/getting-started/) or
+[Manual Instrumentation](/docs/instrumentation/java/manual/) guides, you already
+have the console exporter installed.
+
+The `LoggingSpanExporter`, the `LoggingMetricExporter` and the
+`SystemOutLogRecordExporter` are included in the
+`opentelemetry-exporter-logging` artifact.
+
+## Jaeger
+
+[Jaeger](https://www.jaegertracing.io/) natively supports OTLP to receive trace
+data. You can run Jaeger in a docker container with the UI accessible on port
+16686 and OTLP enabled on ports 4137 and 4138:
 
 ```shell
-docker run -d --name jaeger \
-  -e COLLECTOR_OTLP_ENABLED=true \
+docker run --rm \
+  -e COLLECTOR_ZIPKIN_HOST_PORT=:9411 \
   -p 16686:16686 \
   -p 4317:4317 \
   -p 4318:4318 \
+  -p 9411:9411 \
   jaegertracing/all-in-one:latest
 ```
+
+Now following the instruction to setup the [OTLP exporters](#otlp-dependencies).
+
+## Prometheus
+
+To send your metric data to [Prometheus](https://prometheus.io/), you can either
+[enable Prometheus' OTLP Receiver](https://prometheus.io/docs/prometheus/latest/feature_flags/#otlp-receiver)
+and use the [OTLP exporter](#otlp) or you can use the `PrometheusExporter`.
+
+### Backend Setup {#prometheus-setup}
+
+{{% alert title="Note" color="info" %}}
+
+If you have Prometheus or a Prometheus-compatible backend already set up, you
+can skip this section and setup the [Prometheus](#prometheus-dependencies) or
+[OTLP](#otlp-dependencies) exporter dependencies for your application.
+
+{{% /alert %}}
+
+You can run [Prometheus](https://prometheus.io) in a docker container,
+accessible on port `9090` by following these instructions:
+
+Create a file called `prometheus.yml` with the following content:
+
+```yaml
+scrape_configs:
+  - job_name: dice-service
+    scrape_interval: 5s
+    static_configs:
+      - targets: [host.docker.internal:9464]
+```
+
+Run Prometheus in a docker container with the UI accessible on port `9090`:
+
+```shell
+docker run --rm -v ${PWD}/prometheus.yml:/prometheus/prometheus.yml -p 9090:9090 prom/prometheus --enable-feature=otlp-write-receive
+```
+
+{{% alert title="Note" color="info" %}}
+
+When using Prometheus' OTLP Receiver, make sure that you set the OTLP endpoint
+for metrics in your application to `http://localhost:9090/api/v1/otlp`.
+
+Not all docker environments support `host.docker.internal`. In some cases you
+may need to replace `host.docker.internal` with `localhost` or the IP address of
+your machine.
+
+{{% /alert %}}
+
+### Dependencies {#prometheus-dependencies}
+
+Install the
+[`opentelemetry-exporter-prometheus`](https://javadoc.io/doc/io.opentelemetry/opentelemetry-exporter-prometheus/latest)
+artifact as a dependency for your application:
+
+{{< tabpane text=true >}} {{% tab Gradle %}}
+
+```kotlin
+dependencies {
+    implementation 'io.opentelemetry:opentelemetry-exporter-prometheus:{{% param vers.otel %}}-alpha'
+}
+```
+
+{{% /tab %}} {{% tab Maven %}}
+
+```xml
+<project>
+    <dependencies>
+        <dependency>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-exporter-prometheus</artifactId>
+        </dependency>
+    </dependencies>
+</project>
+```
+
+{{< /tab >}} {{< /tabpane>}}
+
+Update your OpenTelemetry configuration to use the exporter and to send data to
+your Prometheus backend:
+
+```java
+import io.opentelemetry.exporter.prometheus.PrometheusHttpServer;
+
+int prometheusPort = 9464;
+SdkMeterProvider sdkMeterProvider = SdkMeterProvider.builder()
+        .registerMetricReader(PrometheusHttpServer.builder().setPort(prometheusPort).build())
+        .setResource(resource)
+        .build();
+```
+
+With the above you can access your metrics at <http://localhost:9464/metrics>.
+Prometheus or an OpenTelemetry Collector with the Prometheus receiver can scrape
+the metrics from this endpoint.
+
+## Zipkin
+
+### Backend Setup {#zipkin-setup}
+
+{{% alert title="Note" color="info" %}}
+
+If you have Zipkin or a Zipkin-compatible backend already set up, you can skip
+this section and setup the [Zipkin exporter dependencies](#zipkin-dependencies)
+for your application.
+
+{{% /alert %}}
+
+You can run [Zipkin](https://zipkin.io/) on ina Docker container by executing
+the following command:
+
+```shell
+docker run --rm -d -p 9411:9411 --name zipkin openzipkin/zipkin
+```
+
+### Dependencies {#zipkin-dependencies}
+
+To send your trace data to [Zipkin](https://zipkin.io/), you can use the
+`ZipkinSpanExporter`.
+
+Install the
+[`opentelemetry-exporter-zipkin`](https://javadoc.io/doc/io.opentelemetry/opentelemetry-exporter-zipkin/latest)
+artifact as a dependency for your application:
+
+{{< tabpane text=true >}} {{% tab Gradle %}}
+
+```kotlin
+dependencies {
+    implementation 'io.opentelemetry:opentelemetry-exporter-zipkin:{{% param vers.otel %}}-alpha'
+}
+```
+
+{{% /tab %}} {{% tab Maven %}}
+
+```xml
+<project>
+    <dependencies>
+        <dependency>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-exporter-zipkin</artifactId>
+        </dependency>
+    </dependencies>
+</project>
+```
+
+{{< /tab >}} {{< /tabpane>}}
+
+Update your OpenTelemetry configuration to use the exporter and to send data to
+your Zipkin backend:
+
+```java
+import io.opentelemetry.exporter.zipkin.ZipkinSpanExporter;
+
+SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder()
+        .addSpanProcessor(BatchSpanProcessor.builder(OZipkinSpanExporter.builder().setEndpoint("http://localhost:9411/api/v2/spans").build()).build())
+        .setResource(resource)
+        .build();
+```
+
+## Other available exporters
+
+There are many other exporters available. For a list of available exporters, see
+the [registry](/ecosystem/registry/?component=exporter&language=java).
+
+Finally, you can also write your own exporter. For more information, see the
+[SpanExporter Interface in the API documentation](https://javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/export/SpanExporter.html).
+
+## Batching spans and log records
+
+For traces the OpenTelemetry SDK provides a set of default span and log record
+processors, that allow you to either emit them one-by-one ("simple") or batched:
+
+{{< tabpane text=true >}} {{% tab Batch %}}
+
+```java
+import io.opentelemetry.sdk.trace.export.BatchSpanProcessor;
+import io.opentelemetry.sdk.logs.export.BatchLogRecordProcessor;
+
+SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder()
+        .addSpanProcessor(BatchSpanProcessor.builder(...).build())
+        .setResource(resource)
+        .build();
+
+SdkLoggerProvider sdkLoggerProvider = SdkLoggerProvider.builder()
+        .addLogRecordProcessor(
+                BatchLogRecordProcessor.builder(...).build())
+        .setResource(resource)
+        .build();
+```
+
+{{% /tab %}} {{% tab Simple %}}
+
+```java
+import io.opentelemetry.sdk.trace.export.SimpleSpanProcessor;
+import io.opentelemetry.sdk.logs.export.SimpleLogRecordProcessor;
+
+SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder()
+        .addSpanProcessor(SimpleSpanProcessor.builder(...).build())
+        .setResource(resource)
+        .build();
+
+SdkLoggerProvider sdkLoggerProvider = SdkLoggerProvider.builder()
+        .addLogRecordProcessor(
+                SimpleLogRecordProcessor.builder(...).build())
+        .setResource(resource)
+        .build();
+```
+
+{{< /tab >}} {{< /tabpane>}}
