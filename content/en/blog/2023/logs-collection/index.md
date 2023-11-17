@@ -3,6 +3,7 @@ title: Logs Collection with OpenTelemetry
 linkTitle: Logs Collection
 date: 2023-11-17
 author: '[Michael Hausenblas](https://github.com/mhausenblas) (AWS)'
+# prettier-ignore
 cSpell:ignore: asctime Chehab dataprepper exgru fileconsumer filelog Grogu grogu Houssam hossko levelname otelbin Padawan Prepper svrnm yoda WORKDIR
 ---
 
@@ -74,7 +75,7 @@ have Baby Grogu practice for 3 seconds, or you can use a containerized version
 
 For the containerized version, we're using the following `Dockerfile`:
 
-```yaml
+```
 FROM python:3.11
 WORKDIR /usr/src/app
 COPY . .
