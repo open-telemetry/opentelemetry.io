@@ -6,8 +6,6 @@ author: '[Michael Hausenblas](https://github.com/mhausenblas) (AWS)'
 cSpell:ignore: asctime Chehab dataprepper exgru fileconsumer filelog Grogu grogu Houssam hossko levelname otelbin Padawan Prepper svrnm yoda WORKDIR
 ---
 
-## Logs collection with OpenTelemetry
-
 In the following, we will walk through how to do logs collection with
 OpenTelemetry (OTel). To keep things simple, we will use Python as the
 demonstration programming language, however note that at time of writing the
@@ -32,8 +30,7 @@ catching bad input. What will the code look like and how will Baby Grogu deal
 with communicating progress in the code execution and potential error cases to
 the outside world?
 
-To get started, first change into the [baby-grogu/][repo-baby-grogu]
-directory.
+To get started, first change into the [baby-grogu/][repo-baby-grogu] directory.
 
 We're using Baby Grogu's Python code in `baby-grogu/main.py` as an example, with
 the interesting part located in the `practice()` function:
@@ -78,7 +75,9 @@ have Baby Grogu practice for 3 seconds, or you can use a containerized version
 For the containerized version, we're using the following `Dockerfile`:
 
 ```yaml
-FROM python:3.11 WORKDIR /usr/src/app COPY . .
+FROM python:3.11
+WORKDIR /usr/src/app
+COPY . .
 ```
 
 Above Dockerfile, we use in the context of the following Docker Compose file
