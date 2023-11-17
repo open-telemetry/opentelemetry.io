@@ -4,7 +4,7 @@ linkTitle: Logs Collection
 date: 2023-11-17
 author: '[Michael Hausenblas](https://github.com/mhausenblas) (AWS)'
 # prettier-ignore
-cSpell:ignore: asctime Chehab dataprepper exgru fileconsumer filelog Grogu grogu Houssam hossko levelname otelbin Padawan Prepper svrnm yoda WORKDIR
+cSpell:ignore: asctime Chehab dataprepper exgru fileconsumer filelog Grogu grogu hossko Houssam levelname otelbin Padawan Prepper svrnm WORKDIR yoda
 ---
 
 In the following, we will walk through how to do logs collection with
