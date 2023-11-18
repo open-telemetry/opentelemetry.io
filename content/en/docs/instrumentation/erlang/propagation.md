@@ -26,7 +26,7 @@ propagators. By default the global propagators used are the W3C
 These global propagators can be configured by the Application environment
 variable `text_map_propagators`:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
+{{< tabpane text=true >}} {{% tab Erlang %}}
 
 ```erlang
 %% sys.config
@@ -55,7 +55,7 @@ and `b3multi`.
 To manually inject or extract context the `otel_propagator_text_map` module can
 be used:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
+{{< tabpane text=true >}} {{% tab Erlang %}}
 
 ```erlang
 %% uses the context from the process dictionary to add to an empty list of headers

@@ -71,7 +71,7 @@ imported as a dependency by the _app file_.
 Create the _library file_ named `dice.ts` (or `dice.js` if you are not using
 TypeScript) and add the following code to it:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 /*dice.ts*/
@@ -112,7 +112,7 @@ module.exports = { rollTheDice };
 Create the _app file_ named `app.ts` (or `app.js` if not using TypeScript) and
 add the following code to it:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 /*app.ts*/
@@ -212,7 +212,7 @@ SDK. If you fail to initialize the SDK or initialize it too late, no-op
 implementations will be provided to any library that acquires a tracer or meter
 from the API.
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 /*instrumentation.ts*/
@@ -344,7 +344,7 @@ npm install @opentelemetry/sdk-trace-web
 Next, update `instrumentation.ts` (or `instrumentation.js`) to contain all the
 SDK initialization code in it:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 import { Resource } from '@opentelemetry/resources';
@@ -434,7 +434,7 @@ In most cases, stick with `BatchSpanProcessor` over `SimpleSpanProcessor`.
 Anywhere in your application where you write manual tracing code should call
 `getTracer` to acquire a tracer. For example:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 import opentelemetry from '@opentelemetry/api';
@@ -480,7 +480,7 @@ tracer may be acquired with an appropriate Instrumentation Scope:
 
 First, in the _application file_ `app.ts` (or `app.js`):
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 /*app.ts*/
@@ -542,7 +542,7 @@ app.listen(PORT, () => {
 
 And second, in the _library file_ `dice.ts` (or `dice.js`):
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 /*dice.ts*/
@@ -608,7 +608,7 @@ care of setting the span and its context active.
 
 The code below illustrates how to create an active span.
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 import { trace, Span } from '@opentelemetry/api';
@@ -695,7 +695,7 @@ nested in nature. For example, the `rollOnce()` function below represents a
 nested operation. The following sample creates a nested span that tracks
 `rollOnce()`:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 function rollOnce(i: number, min: number, max: number) {
@@ -837,7 +837,7 @@ const span = opentelemetry.trace.getSpan(ctx);
 pairs to a [`Span`](/docs/concepts/signals/traces/#spans) so it carries more
 information about the current operation that it's tracking.
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 function rollOnce(i: number, min: number, max: number) {
@@ -885,7 +885,7 @@ tracer.startActiveSpan(
 );
 ```
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 function rollTheDice(rolls: number, min: number, max: number) {
@@ -931,7 +931,7 @@ npm install --save @opentelemetry/semantic-conventions
 
 Add the following to the top of your application file:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 import { SemanticAttributes } from '@opentelemetry/semantic-conventions';
@@ -1017,7 +1017,7 @@ typically used to specify that a span has not completed successfully -
 
 The status can be set at any time before the span is finished:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 import opentelemetry, { SpanStatusCode } from '@opentelemetry/api';
@@ -1071,7 +1071,7 @@ explicitly tracking an error.
 It can be a good idea to record exceptions when they happen. It's recommended to
 do this in conjunction with setting [span status](#span-status).
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 import opentelemetry, { SpanStatusCode } from '@opentelemetry/api';
@@ -1114,7 +1114,7 @@ nested spans.
 
 Initializing tracing is similar to how you'd do it with Node.js or the Web SDK.
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 import opentelemetry from '@opentelemetry/api';
@@ -1264,7 +1264,7 @@ If you have not created it for tracing already, create a separate
 `instrumentation.ts` (or `instrumentation.js`) file that has all the SDK
 initialization code in it:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 import opentelemetry from '@opentelemetry/api';
@@ -1363,7 +1363,7 @@ Now that a `MeterProvider` is configured, you can acquire a `Meter`.
 Anywhere in your application where you have manually instrumented code you can
 call `getMeter` to acquire a meter. For example:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 import opentelemetry from '@opentelemetry/api';
@@ -1455,7 +1455,7 @@ Histograms are used to measure a distribution of values over time.
 For example, here's how you report a distribution of response times for an API
 route with Express:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 import express from 'express';
