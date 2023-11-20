@@ -109,7 +109,7 @@ JavaScript) from the
 [Getting Started](/docs/instrumentation/js/getting-started/nodejs/) like the
 following to export traces and metrics via OTLP (`http/protobuf`) :
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Typescript %}}
+{{< tabpane text=true >}} {{% tab Typescript %}}
 
 ```ts
 /*instrumentation.ts*/
@@ -374,7 +374,7 @@ npm install --save @opentelemetry/exporter-prometheus
 Update your OpenTelemetry configuration to use the exporter and to send data to
 your Prometheus backend:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Typescript %}}
+{{< tabpane text=true >}} {{% tab Typescript %}}
 
 ```ts
 import * as opentelemetry from '@opentelemetry/sdk-node';
@@ -449,7 +449,7 @@ npm install --save @opentelemetry/exporter-zipkin
 Update your OpenTelemetry configuration to use the exporter and to send data to
 your Zipkin backend:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Typescript %}}
+{{< tabpane text=true >}} {{% tab Typescript %}}
 
 ```ts
 import * as opentelemetry from '@opentelemetry/sdk-node';
@@ -495,7 +495,7 @@ allow you to either emit spans one-by-one or batched. If not specified otherwise
 the SDK will use the `BatchSpanProcessor`. If you do not want to batch your
 spans, you can use the `SimpleSpanProcessor` instead as follows:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Typescript %}}
+{{< tabpane text=true >}} {{% tab Typescript %}}
 
 ```ts
 /*instrumentation.ts*/
