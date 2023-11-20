@@ -7,6 +7,9 @@ weight: 10
 
 This page will show you how to get started with OpenTelemetry in .NET.
 
+If you are looking for a way to automatically instrument your application, check
+out [this guide](/docs/instrumentation/net/automatic/getting-started/).
+
 You will learn how you can instrument a simple .NET application, in such a way
 that [traces][], [metrics][] and [logs][] are emitted to the console.
 
