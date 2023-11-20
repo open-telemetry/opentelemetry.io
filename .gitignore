@@ -12,7 +12,6 @@ tmp/
 
 # macOS
 .DS_Store
-.DS-Store
 
 # Misc
 scripts/collector.yaml
