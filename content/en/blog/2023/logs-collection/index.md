@@ -397,7 +397,7 @@ Fun, hu? You can play around with Yoda's source code to add more contextual
 information and add processors to manipulate the log records as they pass the
 collector, now.
 
-May The Telemetry be with you, young Padawan!
+May _The Telemetry_ be with you, young Padawan!
 
 ## What's next?
 
