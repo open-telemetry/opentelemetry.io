@@ -14,7 +14,7 @@ logs support there is still early days so things might need some updating.
 
 We will show the evolution from using print statements for logging (_Baby Grogu_
 level) to logging to a file along with the [OpenTelemetry Collector](/docs/collector/) (_Expert Grogu_ level)
-to using the OTel logs bridge API to directly ingest OTLP (_Yoda_ level) into
+to using the OTel logs bridge API to directly ingest [OTLP](/docs/specs/otlp/) (_Yoda_ level) into
 the collector.
 
 If you want to follow along, you need Docker installed and first off, go ahead
