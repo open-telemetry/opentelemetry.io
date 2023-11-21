@@ -439,9 +439,9 @@ check out the following resources:
 - [OpenTelemetry Logging Instrumentation][py-docs-logs] (Python docs)
 - [OpenTelemetry Logs SDK example][py-docs-logs-example] (Python docs)
 
-[repo-baby-grogu]: baby-grogu/
-[repo-expert-grogu]: expert-grogu/
-[repo-yoda]: yoda/
+[repo-baby-grogu]: https://github.com/mhausenblas/ref.otel.help/tree/main/how-to/logs-collection/baby-grogu/
+[repo-expert-grogu]: https://github.com/mhausenblas/ref.otel.help/tree/main/how-to/logs-collection/expert-grogu/
+[repo-yoda]: https://github.com/mhausenblas/ref.otel.help/tree/main/how-to/logs-collection/yoda/
 [filelog]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver
 [debug]:
