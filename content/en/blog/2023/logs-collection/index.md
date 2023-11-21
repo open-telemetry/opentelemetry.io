@@ -404,7 +404,7 @@ May _The Telemetry_ be with you, young Padawan!
 Now that you're familiar with _The Telemetry_ and its good practices, you could
 extend Yoda's code to do the following:
 
-1. Add more context. For example, try to use OTel resource attributes and the
+1. Add more context. For example, try to use [OTel resource attributes](/docs/concepts/resources/) and the
    [semantic conventions](/docs/concepts/semantic-conventions/) to make the context of the execution more explicit.
 1. Enrich the logs in the OTel Collector or filter certain severity levels,
    using processors such as the [transform or attributes processors](/docs/collector/transforming-telemetry/).
