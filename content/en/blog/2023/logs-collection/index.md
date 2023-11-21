@@ -408,7 +408,7 @@ extend Yoda's code to do the following:
    [semantic conventions](/docs/concepts/semantic-conventions/) to make the context of the execution more explicit.
 1. Enrich the logs in the OTel collector or filter certain severity levels,
    using processors such as the transform or attributes processors.
-1. Add tracing support by emitting spans, where it makes sense.
+1. Add [tracing](/docs/concepts/signals/traces/) support by emitting spans, where it makes sense.
 1. Add an o11y backend such as OpenSearch (along with [Data
    Prepper][dataprepper]) to the setup, allowing to ingest spans and logs in
    OTLP format.
