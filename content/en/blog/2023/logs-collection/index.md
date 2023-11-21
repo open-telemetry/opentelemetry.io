@@ -4,7 +4,7 @@ linkTitle: Python Logs Collection
 date: 2023-11-21
 author: '[Michael Hausenblas](https://github.com/mhausenblas) (AWS)'
 # prettier-ignore
-cSpell:ignore: asctime Chehab dataprepper exgru fileconsumer filelog Grogu grogu hossko Houssam levelname otelbin Padawan Prepper svrnm WORKDIR yoda
+cSpell:ignore: asctime Chehab dataprepper exgru fileconsumer filelog Grogu grogu hossko Houssam levelname logfile otelbin Padawan Prepper svrnm WORKDIR yoda
 ---
 
 In the following, we will walk through how to do [logs
@@ -127,8 +127,11 @@ exporter][debug]. Makes sense? Let's see it in action …
 
 Overall, we have the following setup:
 
-```plain
-( python main.py ) --> exgru.log --> ( OTel Collector ) --> stdout
+```mermaid
+flowchart LR
+    app["python main.py"] -->  logfile["exgru.log"]
+    logfile["exgru.log"] -->  otelcol["OTel collector"]
+    otelcol["OTel collector"] -->  stdout["stdout"]
 ```
 
 Let's first have a look at what Expert Grogu is doing in terms of logging (in
@@ -306,8 +309,10 @@ file and have the collector read it off of it!
 
 Overall, we have the following setup Yoda is using:
 
-```plain
-( python main.py ) - OTLP -> ( OTel collector ) --> stdout
+```mermaid
+flowchart LR
+    app["python main.py"]-- OTLP --> otelcol["OTel collector"]
+    otelcol["OTel collector"] -->  stdout["stdout"]
 ```
 
 With the following OTel collector config (visualize via
