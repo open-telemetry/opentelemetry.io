@@ -126,8 +126,7 @@ Makes sense? Let's see it in action …
 Overall, we have the following setup:
 
 ```plain
-( python main.py ) --> exgru.log --> ( OTel collector ) --> stdout
-```
+( python main.py ) --> exgru.log --> ( OTel Collector ) --> stdout
 
 Let's first have a look at what Expert Grogu is doing in terms of logging (in
 `expert-grogu/main.py`, in the `practice()` function):
