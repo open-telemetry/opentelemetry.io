@@ -1,7 +1,7 @@
 ---
 title: Collecting Logs with OpenTelemetry Python
 linkTitle: Python Logs Collection
-date: 2023-11-17
+date: 2023-11-21
 author: '[Michael Hausenblas](https://github.com/mhausenblas) (AWS)'
 # prettier-ignore
 cSpell:ignore: asctime Chehab dataprepper exgru fileconsumer filelog Grogu grogu hossko Houssam levelname otelbin Padawan Prepper svrnm WORKDIR yoda
@@ -18,8 +18,8 @@ to using the OTel logs bridge API to directly ingest [OTLP](/docs/specs/otlp/) (
 the Collector.
 
 If you want to follow along, you need Docker installed and first off, go ahead
-and `git clone https://github.com/open-telemetry/opentelemetry.io.git` and
-change into the `/content/en/blog/2023/logs-collection/` directory.
+and `git clone https://github.com/mhausenblas/ref.otel.help.git` and
+change into the `how-to/logs-collection/` directory.
 
 ## Baby Grogu level
 
@@ -210,7 +210,7 @@ services:
       - .:/usr/src/app
 ```
 
-Which you can run it with `docker-compose -f docker-compose.yaml` and you should
+Which you can run it with `docker compose -f docker-compose.yaml` and you should
 see something like:
 
 ```log
