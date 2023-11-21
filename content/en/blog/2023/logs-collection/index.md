@@ -409,7 +409,7 @@ extend Yoda's code to do the following:
 1. Enrich the logs in the OTel Collector or filter certain severity levels,
    using processors such as the [transform or attributes processors](/docs/collector/transforming-telemetry/).
 1. Add [tracing](/docs/concepts/signals/traces/) support by emitting spans, where it makes sense.
-1. Add an o11y backend such as OpenSearch (along with [Data
+1. Add an Observability backend such as OpenSearch (along with [Data
    Prepper][dataprepper]) to the setup, allowing to ingest spans and logs in
    OTLP format.
 1. Once you have traces and logs ingested in a backend, try to correlate these
