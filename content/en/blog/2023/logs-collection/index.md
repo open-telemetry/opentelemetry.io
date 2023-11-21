@@ -7,19 +7,21 @@ author: '[Michael Hausenblas](https://github.com/mhausenblas) (AWS)'
 cSpell:ignore: asctime Chehab dataprepper exgru fileconsumer filelog Grogu grogu hossko Houssam levelname otelbin Padawan Prepper svrnm WORKDIR yoda
 ---
 
-In the following, we will walk through how to do [logs collection])/docs/concepts/signals/logs/) with
-OpenTelemetry (OTel). To keep things simple, we will use Python as the
-demonstration programming language, however note that at time of writing the
-logs support there is still early days so things might need some updating.
+In the following, we will walk through how to do [logs
+collection])/docs/concepts/signals/logs/) with OpenTelemetry (OTel). To keep
+things simple, we will use Python as the demonstration programming language,
+however note that at time of writing the logs support there is still early days
+so things might need some updating.
 
 We will show the evolution from using print statements for logging (_Baby Grogu_
-level) to logging to a file along with the [OpenTelemetry Collector](/docs/collector/) (_Expert Grogu_ level)
-to using the OTel logs bridge API to directly ingest [OTLP](/docs/specs/otlp/) (_Yoda_ level) into
-the Collector.
+level) to logging to a file along with the
+[OpenTelemetry Collector](/docs/collector/) (_Expert Grogu_ level) to using the
+OTel logs bridge API to directly ingest [OTLP](/docs/specs/otlp/) (_Yoda_ level)
+into the Collector.
 
 If you want to follow along, you need Docker installed and first off, go ahead
-and `git clone https://github.com/mhausenblas/ref.otel.help.git` and
-change into the `how-to/logs-collection/` directory.
+and `git clone https://github.com/mhausenblas/ref.otel.help.git` and change into
+the `how-to/logs-collection/` directory.
 
 ## Baby Grogu level
 
@@ -118,14 +120,14 @@ me show you.
 First, change into the [expert-grogu/][repo-expert-grogu] directory.
 
 In this scenario Expert Grogu is logging into a file (in JSON format), from
-their Python app. Then, they are using the OpenTelemetry Collector to read that very log
-file, parse the log records using the [filelog receiver][filelog] in the OTel
-collector and finally output it to `stdout` using the [debug exporter][debug].
-Makes sense? Let's see it in action …
+their Python app. Then, they are using the OpenTelemetry Collector to read that
+very log file, parse the log records using the [filelog receiver][filelog] in
+the OTel collector and finally output it to `stdout` using the [debug
+exporter][debug]. Makes sense? Let's see it in action …
 
 Overall, we have the following setup:
 
-```plain
+````plain
 ( python main.py ) --> exgru.log --> ( OTel Collector ) --> stdout
 
 Let's first have a look at what Expert Grogu is doing in terms of logging (in
@@ -148,7 +150,7 @@ except Exception as e:
     logger.error("An unexpected error occurred: %s", e)
     return False
 return True
-```
+````
 
 So, in above function we see Expert Grogu using `logger.xxx()` functions to
 communicate status/progress as well as error conditions such as user providing
@@ -404,18 +406,23 @@ May _The Telemetry_ be with you, young Padawan!
 Now that you're familiar with _The Telemetry_ and its good practices, you could
 extend Yoda's code to do the following:
 
-1. Add more context. For example, try to use [OTel resource attributes](/docs/concepts/resources/) and the
-   [semantic conventions](/docs/concepts/semantic-conventions/) to make the context of the execution more explicit.
+1. Add more context. For example, try to use
+   [OTel resource attributes](/docs/concepts/resources/) and the
+   [semantic conventions](/docs/concepts/semantic-conventions/) to make the
+   context of the execution more explicit.
 1. Enrich the logs in the OTel Collector or filter certain severity levels,
-   using processors such as the [transform or attributes processors](/docs/collector/transforming-telemetry/).
-1. Add [tracing](/docs/concepts/signals/traces/) support by emitting spans, where it makes sense.
+   using processors such as the
+   [transform or attributes processors](/docs/collector/transforming-telemetry/).
+1. Add [tracing](/docs/concepts/signals/traces/) support by emitting spans,
+   where it makes sense.
 1. Add an Observability backend such as OpenSearch (along with [Data
    Prepper][dataprepper]) to the setup, allowing to ingest spans and logs in
    OTLP format.
 1. Once you have traces and logs ingested in a backend, try to correlate these
    two telemetry signal types in the backend along with a frontend such as
    Grafana.
-1. Use [Automatic Instrumentation](/docs/concepts/instrumentation/automatic/) to further enrich telemetry.
+1. Use [Automatic Instrumentation](/docs/concepts/instrumentation/automatic/) to
+   further enrich telemetry.
 
 The community is currently working on the [Events API
 Interface][otel-logs-events] which is a good place to continue your research and
@@ -439,9 +446,12 @@ check out the following resources:
 - [OpenTelemetry Logging Instrumentation][py-docs-logs] (Python docs)
 - [OpenTelemetry Logs SDK example][py-docs-logs-example] (Python docs)
 
-[repo-baby-grogu]: https://github.com/mhausenblas/ref.otel.help/tree/main/how-to/logs-collection/baby-grogu/
-[repo-expert-grogu]: https://github.com/mhausenblas/ref.otel.help/tree/main/how-to/logs-collection/expert-grogu/
-[repo-yoda]: https://github.com/mhausenblas/ref.otel.help/tree/main/how-to/logs-collection/yoda/
+[repo-baby-grogu]:
+  https://github.com/mhausenblas/ref.otel.help/tree/main/how-to/logs-collection/baby-grogu/
+[repo-expert-grogu]:
+  https://github.com/mhausenblas/ref.otel.help/tree/main/how-to/logs-collection/expert-grogu/
+[repo-yoda]:
+  https://github.com/mhausenblas/ref.otel.help/tree/main/how-to/logs-collection/yoda/
 [filelog]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver
 [debug]:
