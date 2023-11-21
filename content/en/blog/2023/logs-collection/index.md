@@ -401,7 +401,7 @@ yoda-collector-1   |    {"kind": "exporter", "data_type": "logs", "name": "loggi
 yoda-baby-grogu-1  | =`;*'+.|,+?):(*-<}~}
 ```
 
-Fun, hu? You can play around with Yoda's source code to add more contextual
+Fun, huh? You can play around with Yoda's source code to add more contextual
 information and add processors to manipulate the log records as they pass the
 collector, now.
 
