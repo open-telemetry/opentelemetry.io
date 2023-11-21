@@ -151,7 +151,7 @@ except Exception as e:
     logger.error("An unexpected error occurred: %s", e)
     return False
 return True
-````
+```
 
 So, in above function we see Expert Grogu using `logger.xxx()` functions to
 communicate status/progress as well as error conditions such as user providing
