@@ -13,7 +13,7 @@ demonstration programming language, however note that at time of writing the
 logs support there is still early days so things might need some updating.
 
 We will show the evolution from using print statements for logging (_Baby Grogu_
-level) to logging to a file along with the OTel collector (_Expert Grogu_ level)
+level) to logging to a file along with the [OpenTelemetry Collector](/docs/collector/) (_Expert Grogu_ level)
 to using the OTel logs bridge API to directly ingest OTLP (_Yoda_ level) into
 the collector.
 
