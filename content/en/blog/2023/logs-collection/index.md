@@ -213,7 +213,7 @@ services:
 Which you can run it with `docker-compose -f docker-compose.yaml` and you should
 see something like:
 
-```shell
+```log
 expert-grogu-collector-1   | 2023-11-15T17:21:32.811Z   info    service@v0.88.0/telemetry.go:84 Setting up own telemetry...
 expert-grogu-collector-1   | 2023-11-15T17:21:32.812Z   info    service@v0.88.0/telemetry.go:201        Serving Prometheus metrics      {"address": ":8888", "level": "Basic"}
 expert-grogu-collector-1   | 2023-11-15T17:21:32.812Z   info    exporter@v0.88.0/exporter.go:275        Deprecated component. Will be removed in future releases.       {"kind": "exporter", "data_type": "logs", "name": "logging"}
