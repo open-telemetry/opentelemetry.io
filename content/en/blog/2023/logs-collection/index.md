@@ -118,7 +118,7 @@ me show you.
 First, change into the [expert-grogu/][repo-expert-grogu] directory.
 
 In this scenario Expert Grogu is logging into a file (in JSON format), from
-their Python app. Then, they are using the OTel collector to read that very log
+their Python app. Then, they are using the OpenTelemetry Collector to read that very log
 file, parse the log records using the [filelog receiver][filelog] in the OTel
 collector and finally output it to `stdout` using the [debug exporter][debug].
 Makes sense? Let's see it in action …
