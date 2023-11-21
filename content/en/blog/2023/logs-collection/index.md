@@ -415,7 +415,7 @@ extend Yoda's code to do the following:
 1. Once you have traces and logs ingested in a backend, try to correlate these
    two telemetry signal types in the backend along with a frontend such as
    Grafana.
-1. Use auto-instrumentation to further enrich telemetry.
+1. Use [Automatic Instrumentation](/docs/concepts/instrumentation/automatic/) to further enrich telemetry.
 
 The community is currently working on the [Events API
 Interface][otel-logs-events] which is a good place to continue your research and
