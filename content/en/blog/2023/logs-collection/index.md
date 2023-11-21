@@ -401,7 +401,7 @@ May The Telemetry be with you, young Padawan!
 
 ## What's next?
 
-Now that you're familiar with The Telemetry and its good practices, you could
+Now that you're familiar with _The Telemetry_ and its good practices, you could
 extend Yoda's code to do the following:
 
 1. Add more context. For example, try to use OTel resource attributes and the
