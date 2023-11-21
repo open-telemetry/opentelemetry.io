@@ -20,7 +20,7 @@ detectors use the OS environment variable `OTEL_RESOURCE_ATTRIBUTES` and the
 The detectors to use is a list of module names and can be configured in the
 Application configuration:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
+{{< tabpane text=true >}} {{% tab Erlang %}}
 
 ```erlang
 %% sys.config
@@ -61,7 +61,7 @@ OTEL_RESOURCE_ATTRIBUTES="deployment.environment=development"
 Alternatively, use the `resource` Application environment under the
 `opentelemetry` Application configuration of `sys.config` or `runtime.exs`:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
+{{< tabpane text=true >}} {{% tab Erlang %}}
 
 ```erlang
 %% sys.config

@@ -2179,6 +2179,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:32:35.041502-04:00"
   },
+  "https://github.com/davidgs": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-16T15:02:09.869589-05:00"
+  },
   "https://github.com/dcxp/opentelemetry-kotlin": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:35:34.198403-04:00"
@@ -3683,6 +3687,22 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:42:42.642961-04:00"
   },
+  "https://github.com/orishoshan": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-16T15:02:08.644309-05:00"
+  },
+  "https://github.com/otterize": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-16T15:02:10.831177-05:00"
+  },
+  "https://github.com/otterize/network-mapper": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-16T15:02:12.356594-05:00"
+  },
+  "https://github.com/otterize/network-mapper/pull/141": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-16T15:02:13.899173-05:00"
+  },
   "https://github.com/pavolloffay": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:26:51.361548-04:00"
@@ -4778,6 +4798,10 @@
   "https://osi-model.com/transport-layer/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T11:41:53.83222-04:00"
+  },
+  "https://otterize.com/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-16T15:02:10.279947-05:00"
   },
   "https://packagist.org/": {
     "StatusCode": 200,
