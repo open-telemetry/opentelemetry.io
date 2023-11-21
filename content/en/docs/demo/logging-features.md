@@ -13,7 +13,7 @@ aliases: [log_service_features]
 | Currency        | C++             | 🚧        |
 | Email           | Ruby            | 🚧        |
 | Feature Flag    | Erlang / Elixir | 🚧        |
-| Fraud Detection | Kotlin          | 🚧        |
+| Fraud Detection | Kotlin          | ✅        |
 | Frontend        | TypeScript      | 🚧        |
 | Payment         | JavaScript      | 🚧        |
 | Product Catalog | Go              | 🚧        |
