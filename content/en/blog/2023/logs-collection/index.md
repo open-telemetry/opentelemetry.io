@@ -7,11 +7,11 @@ author: '[Michael Hausenblas](https://github.com/mhausenblas) (AWS)'
 cSpell:ignore: asctime Chehab dataprepper exgru fileconsumer filelog Grogu grogu hossko Houssam levelname logfile otelbin Padawan Prepper svrnm WORKDIR yoda
 ---
 
-In the following, we will walk through how to do [logs
-collection](/docs/concepts/signals/logs/) with OpenTelemetry (OTel). To keep
-things simple, we will use Python as the demonstration programming language,
-however note that at time of writing the logs support there is still early days
-so things might need some updating.
+In the following, we will walk through how to do
+[logs collection](/docs/concepts/signals/logs/) with OpenTelemetry (OTel). To
+keep things simple, we will use Python as the demonstration programming
+language, however note that at time of writing the logs support there is still
+early days so things might need some updating.
 
 We will show the evolution from using print statements for logging (_Baby Grogu_
 level) to logging to a file along with the
