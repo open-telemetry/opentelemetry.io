@@ -325,7 +325,7 @@ service:
       exporters: [debug]
 ```
 
-Now run Yoda's setup with `docker-compose -f docker-compose.yaml` and you should
+Now run Yoda's setup with `docker compose -f docker-compose.yaml` and you should
 see something akin to below:
 
 ```shell
