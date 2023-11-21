@@ -298,7 +298,7 @@ First, change into the [yoda/][repo-yoda] directory.
 
 In this scenario we see Yoda using the OTel logs bridge API in the Python app to
 directly ingest logs, in [OpenTelemetry Protocol][otlp] (OTLP) format, into the
-OTel collector. This is both faster and more reliable than first logging to a
+OTel Collector. This is both faster and more reliable than first logging to a
 file and have the collector read it off of it!
 
 Overall, we have the following setup Yoda is using:
