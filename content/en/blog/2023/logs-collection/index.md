@@ -1,6 +1,6 @@
 ---
 title: Logs Collection with OpenTelemetry
-linkTitle: Logs Collection
+linkTitle: Python Logs Collection
 date: 2023-11-17
 author: '[Michael Hausenblas](https://github.com/mhausenblas) (AWS)'
 # prettier-ignore
