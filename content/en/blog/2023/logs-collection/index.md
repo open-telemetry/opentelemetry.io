@@ -166,7 +166,7 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 COPY . .
 ```
 
-With the following OTel collector config (visualize via
+With the following OTel Collector config (visualize via
 [OTelBin][otelbin-expert-grogu]):
 
 ```yaml
