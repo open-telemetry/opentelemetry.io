@@ -95,7 +95,7 @@ services:
 ```
 
 At this point you can enjoy Baby Grogu's efforts by running it with
-`docker-compose -f docker-compose.yaml` and you should see an output akin to
+`docker compose -f docker-compose.yaml` and you should see an output akin to
 something shown in the following (note: edited to focus on the most important
 bits):
 
