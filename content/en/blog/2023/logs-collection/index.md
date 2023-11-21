@@ -406,7 +406,7 @@ extend Yoda's code to do the following:
 
 1. Add more context. For example, try to use OTel resource attributes and the
    [semantic conventions](/docs/concepts/semantic-conventions/) to make the context of the execution more explicit.
-1. Enrich the logs in the OTel collector or filter certain severity levels,
+1. Enrich the logs in the OTel Collector or filter certain severity levels,
    using processors such as the [transform or attributes processors](/docs/collector/transforming-telemetry/).
 1. Add [tracing](/docs/concepts/signals/traces/) support by emitting spans, where it makes sense.
 1. Add an o11y backend such as OpenSearch (along with [Data
