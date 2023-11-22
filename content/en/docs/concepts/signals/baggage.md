@@ -42,12 +42,16 @@ you’re searching in your Observability back-end.
 
 ## Baggage security considerations
 
-Sensitive Baggage items could be shared with unintended resources, like third-party APIs. 
-This is because automatic instrumentation includes Baggage in most of your service’s network requests. 
-Specifically, Baggage and other parts of trace context are sent in HTTP headers, making it visible to anyone inspecting your network traffic. 
-If traffic is restricted within your network, then this risk may not apply, but keep in mind that downstream services could propagate Baggage outside your network.
+Sensitive Baggage items could be shared with unintended resources, like
+third-party APIs. This is because automatic instrumentation includes Baggage in
+most of your service’s network requests. Specifically, Baggage and other parts
+of trace context are sent in HTTP headers, making it visible to anyone
+inspecting your network traffic. If traffic is restricted within your network,
+then this risk may not apply, but keep in mind that downstream services could
+propagate Baggage outside your network.
 
-Also, there are no built-in integrity checks to ensure that Baggage items are yours, so exercise caution when retrieving them.
+Also, there are no built-in integrity checks to ensure that Baggage items are
+yours, so exercise caution when retrieving them.
 
 ## Baggage is not the same as Span attributes
 
