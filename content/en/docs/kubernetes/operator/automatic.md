@@ -247,7 +247,7 @@ spec:
 **Learn more**
 
 For more details, see
-[Java Agent Configuration](/docs/instrumentation/java/automatic/agent-config/).
+[Java agent Configuration](/docs/instrumentation/java/automatic/agent-config/).
 
 ### Node.js
 
@@ -325,7 +325,7 @@ in the previous step.
 > As of operator v0.67.0, the Instrumentation resource automatically sets
 > `OTEL_EXPORTER_OTLP_TRACES_PROTOCOL` and `OTEL_EXPORTER_OTLP_METRICS_PROTOCOL`
 > to `http/protobuf` for Python services. If you use an older version of the
-> Operator you **MUST** set these env variables to `http/protobuf`, or python
+> Operator you **MUST** set these env variables to `http/protobuf`, or Python
 > auto-instrumentation will not work.
 
 **Auto-instrumenting Python logs**
@@ -391,7 +391,7 @@ spec:
 
 **Learn more**
 
-[See the Python Agent Configuration docs for more details.](/docs/instrumentation/python/automatic/agent-config/#disabling-specific-instrumentations)
+[See the Python agent Configuration docs for more details.](/docs/instrumentation/python/automatic/agent-config/#disabling-specific-instrumentations)
 
 ### Go
 
@@ -406,7 +406,7 @@ metadata:
   name: demo-instrumentation
 spec:
   exporter:
-    endpoint: http://demo-collector:4317
+    endpoint: http://demo-collector:4318
   propagators:
     - tracecontext
     - baggage
@@ -417,14 +417,10 @@ EOF
 ```
 
 By default, the Instrumentation resource that auto-instruments Go services uses
-`otlp` with the `grpc` protocol. This means that the configured endpoint must be
-able to receive OTLP over `grpc`. Therefore, the example uses
-`http://demo-collector:4317`, which connects to the `grpc` port of the
-`otlpreceiver` of the Collector created in the previous step.
-
-> Go auto-instrumentation only supports exporting via gRPC. Setting the protocol
-> or exporter to any other value via environment variables will result in silent
-> failure.
+`otlp` with the `http/protobuf` protocol. This means that the configured
+endpoint must be able to receive OTLP over `http/protobuf`. Therefore, the
+example uses `http://demo-collector:4318`, which connects to the `http/protobuf`
+port of the `otlpreceiver` of the Collector created in the previous step.
 
 The Go auto-instrumentation does not support disabling any instrumentation.
 [See the Go Auto-Instrumentation repository for me details.](https://github.com/open-telemetry/opentelemetry-go-instrumentation)

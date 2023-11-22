@@ -9,13 +9,13 @@ my @words;
 my $lineLenLimit = 79;
 my $last_file = '';
 my $last_line = '';
-my %dictionary = getSiteWideDictWords('.vscode/cspell.json', '.textlintrc.json');
+my %dictionary = getSiteWideDictWords('.vscode/cspell.json', '.textlintrc.yml');
 
 while (<>) {
-  if (/^\s*(spelling: |-\s*)?cSpell:ignore:?(.*)$/
+  if (/^\s*(spelling: |-\s*)?cSpell:ignore:?\s*(.*)$/
       || (/^(\s+)(\S.*)$/ && @words)
   ) {
-    push @words, split ' ', $2;
+    push @words, split /[,\s]+/, $2;
     next;
   }
 
@@ -52,18 +52,38 @@ sub getSiteWideDictWords {
   my $data = $json->decode($json_text);
   my %dictionary = map { $_ => 1 } @{ $data->{words} };
 
-  # Read the .textlintrc.json file
-  $fh = FileHandle->new($textlintrc_file, "r") or die "Could not open file '$textlintrc_file': $!";
-  $json_text = join "", $fh->getlines();
+  my %textlintDictionary = processTextlintRcYml($textlintrc_file);
 
-  # Remove JSON comments
-  $json_text =~ s/^\s*\/\/.*$//mg;
+  # Merge dictionaries
+  @dictionary{keys %textlintDictionary} = values %textlintDictionary;
 
-  $data = $json->decode($json_text);
+  return %dictionary;
+}
 
-  # Add terms from .textlintrc.json to dictionary
-  my @terms = @{ $data->{rules}->{terminology}->{terms} };
-  @dictionary{@terms} = (1) x @terms;
+sub processTextlintRcYml {
+  my $file_path = shift;
+  my $fh = FileHandle->new($file_path, "r") or die "Could not open file '$file_path': $!";
+  my @lines = $fh->getlines();
+  $fh->close();
+
+  my %dictionary;
+  my $indentation = '';
+  my $in_terms = 0;
+  foreach my $line (@lines) {
+    chomp $line;
+    if ($line =~ /^(\s*)terms:/) {
+      $indentation = $1 || '';
+      $in_terms = 1;
+      # print STDOUT "Found terms!";
+    } elsif ($line =~ /^$indentation  - (\w[^\s]*)$/ && $in_terms) {
+      my $term = $1;
+      $dictionary{$term} = 1 if $term;
+    } elsif ($line !~ /^ / && $in_terms) {
+      $in_terms = 0;
+    }
+  }
+
+  die "ERROR: no words read from '$file_path'!" unless %dictionary; # sanity check
 
   return %dictionary;
 }

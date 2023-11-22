@@ -69,7 +69,7 @@ The instrument kind is one of the following:
 - **Gauge**: Measures a current value at the time it is read. An example would
   be the fuel gauge in a vehicle. Gauges are asynchronous.
 - **Histogram**: A client-side aggregation of values, such as request latencies.
-  A histogram is a good choice if you are interested value statistics. For
+  A histogram is a good choice if you are interested in value statistics. For
   example: How many requests take fewer than 1s?
 
 ## Aggregation

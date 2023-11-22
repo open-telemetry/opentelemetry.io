@@ -1,6 +1,6 @@
 ---
 title: Manual
-aliases: [/docs/instrumentation/erlang/instrumentation]
+aliases: [instrumentation]
 weight: 30
 description: Manual instrumentation for OpenTelemetry Erlang/Elixir
 ---
@@ -53,7 +53,7 @@ interactive shell, a `Tracer` with a blank name and version is used.
 The created `Tracer`'s record can be looked up by the name of a module in the
 OTP Application:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
+{{< tabpane text=true >}} {{% tab Erlang %}}
 
 ```erlang
 opentelemetry:get_application_tracer(?MODULE)
@@ -75,7 +75,7 @@ This is how the Erlang and Elixir macros for starting and updating `Spans` get a
 Now that you have [Tracer](/docs/concepts/signals/traces/#tracer)s initialized,
 you can create [Spans](/docs/concepts/signals/traces/#spans).
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
+{{< tabpane text=true >}} {{% tab Erlang %}}
 
 ```erlang
 ?with_span(main, #{}, fun() ->
@@ -104,7 +104,7 @@ common kind of Span to create.
 
 ### Create Nested Spans
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
+{{< tabpane text=true >}} {{% tab Erlang %}}
 
 ```erlang
 parent_function() ->
@@ -160,7 +160,7 @@ attaching the context and setting the new span as currently active in the
 process. The whole context should be attached in order to not lose other
 telemetry data like [baggage](/docs/specs/otel/baggage/api/).
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
+{{< tabpane text=true >}} {{% tab Erlang %}}
 
 ```erlang
 SpanCtx = ?start_span(child),
@@ -204,7 +204,7 @@ Span Links that causally link it to another Span. A
 [Link](/docs/concepts/signals/traces/#span-links) needs a Span context to be
 created.
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
+{{< tabpane text=true >}} {{% tab Erlang %}}
 
 ```erlang
 Parent = ?current_span_ctx,
@@ -243,7 +243,7 @@ The following example shows the two ways of setting attributes on a span by both
 setting an attribute in the start options and then again with `set_attributes`
 in the body of the span operation:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
+{{< tabpane text=true >}} {{% tab Erlang %}}
 
 ```erlang
 ?with_span(my_span, #{attributes => [{'start-opts-attr', <<"start-opts-value">>}]},
@@ -276,7 +276,7 @@ from the specification and provided in
 For example, an instrumentation for an HTTP client or server would need to
 include semantic attributes like the scheme of the URL:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
+{{< tabpane text=true >}} {{% tab Erlang %}}
 
 ```erlang
 -include_lib("opentelemetry_semantic_conventions/include/trace.hrl").
@@ -306,7 +306,7 @@ message on an [Span](/docs/concepts/signals/traces/#spans) that represents a
 discrete event with no duration that can be tracked by a single timestamp. You
 can think of it like a primitive log.
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
+{{< tabpane text=true >}} {{% tab Erlang %}}
 
 ```erlang
 ?add_event(<<"Gonna try it">>),
@@ -330,7 +330,7 @@ Tracer.add_event("Did it!")
 
 Events can also have attributes of their own:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
+{{< tabpane text=true >}} {{% tab Erlang %}}
 
 ```erlang
 ?add_event(<<"Process exited with reason">>, [{pid, Pid)}, {reason, Reason}]))
@@ -354,7 +354,7 @@ could override the Error status with `StatusCode.OK`, but don’t set
 
 The status can be set at any time before the span is finished:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
+{{< tabpane text=true >}} {{% tab Erlang %}}
 
 ```erlang
 -include_lib("opentelemetry_api/include/opentelemetry.hrl").

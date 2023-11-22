@@ -34,7 +34,7 @@ These are for exporter and instrumentation packages respectively. The Jaeger,
 Zipkin, Prometheus, OTLP and OpenCensus Exporters can be found in the
 [exporter](https://github.com/open-telemetry/opentelemetry-python/blob/main/exporter/)
 directory of the repository. Instrumentations and additional exporters can be
-found in the contrib repo
+found in the contrib repository
 [instrumentation](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation)
 and
 [exporter](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/exporter)

@@ -1,7 +1,7 @@
 ---
 title: Getting Started
 description: Get telemetry for your app in less than 5 minutes!
-cSpell:ignore: rolldice
+cSpell:ignore: oatpp rolldice
 weight: 10
 ---
 
@@ -22,7 +22,7 @@ Ensure that you have the following installed locally:
 ## Example Application 
 
 The following example uses a basic [Oat++](https://oatpp.io/) application. If you are 
-not using Oat++, that's OK - you can use OpenTelemetry C++ with any other web frameworks as well.
+not using Oat++, that's OK - you can use OpenTelemetry C++ with any other web framework as well.
 
 ## Dependencies 
 
@@ -30,7 +30,7 @@ not using Oat++, that's OK - you can use OpenTelemetry C++ with any other web fr
 
 1. Download oatpp source code:
 
-Obtain the oatpp source code. You can either download the source code from the oatpp Github repository or clone it using Git.
+Obtain the oatpp source code. You can either download the source code from the oatpp GitHub repository or clone it using Git.
 
 ```bash 
 git clone https://github.com/oatpp/oatpp.git
@@ -53,7 +53,7 @@ make
 ```
 4. Install oatpp:
 
-This command will install the built oatpp library and headers on your system, making it accesible for development in your project. 
+This command will install the built oatpp library and headers on your system, making it accessible for development in your project. 
 
 ```bash
 make install
@@ -79,7 +79,7 @@ cd openTelemetry-cpp
 
 3. Create a build directory:
 
-It's a good practice to create a seperate directory for the build files to keep your source directory clean.
+It's a good practice to create a separate directory for the build files to keep your source directory clean.
 
 ```bash
 mkdir build
@@ -257,10 +257,9 @@ include_directories(${OPENTELEMETRY_ROOT}/exporters/ostream/include)
 target_link_libraries(myapp PRIVATE ${OPENTELEMETRY_ROOT}/build/sdk/src/trace/libopentelemetry_trace.a
  ${OPENTELEMETRY_ROOT}/build/sdk/src/common/libopentelemetry_common.a
  ${OPENTELEMETRY_ROOT}/build/exporters/ostream/libopentelemetry_exporter_ostream_span.a
- ${OPENTELEMETRY_ROOT}/build/ext/src/http/client/curl/libopentelemetry_http_client_curl.a
  ${OPENTELEMETRY_ROOT}/build/sdk/src/resource/libopentelemetry_resources.a)
 ```
-Replace `/path/to/opentelemetry-cpp` with the actual path leading to the opentelemetry-cpp sdk within your local installation.
+Replace `/path/to/opentelemetry-cpp` with the actual path leading to the opentelemetry-cpp SDK within your local installation.
 
 **OpenTelemetry tracing configuration:**
 
