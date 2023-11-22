@@ -16,6 +16,7 @@ filters:
       - /{{%.*?%}}/
       # Other
       - /<https?://.*?>/ # Raw URLs
+      - /src=".*?"/
 rules:
   terminology:
     defaultTerms: false
