@@ -102,7 +102,7 @@ jobs:
       - name: Write start comment
         run: |
           gh pr comment $PR_NUM -b "You triggered fix:refcache action run at $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-  
+
       - uses: actions/checkout@v4
       # By providing a branch name the checkout will not break if a branch with the
       # same name exists already upstream (e.g. patch-X)
