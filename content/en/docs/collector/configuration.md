@@ -255,14 +255,16 @@ receivers:
 Processors take the data collected by receivers and modify or transform it
 before sending it to the exporters. Data processing happens according to rules
 or settings defined for each processor, which might include filtering, dropping,
-renaming, or recalculating telemetry, among other operations.
+renaming, or recalculating telemetry, among other operations. The order of the
+processors in a pipeline determines the order of the processing operations that
+the Collector applies to the signal.
 
 Processors are optional, although some
 [are recommended](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor#recommended-processors).
 
 You can configure processors using the `processors` section of the Collector
-configuration file. Some processors may require security settings. Any setting
-you specify overrides the default values, if present.
+configuration file. Any setting you specify overrides the default values, if
+present.
 
 > Configuring a processor does not enable it. Processors are enabled by adding
 > them to the appropriate pipelines within the [service](#service) section.
