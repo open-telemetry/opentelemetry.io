@@ -17,7 +17,8 @@ With contributions from secondary-author-name-1, ..., and secondary-author-n.
 
 ## Top-level heading
 
-Top-level headings start at **level 2**, as shown above.
+Top-level headings start at **level 2**. This means, that your post should not
+include `# headings` for top-level headings but `## headings` instead.
 
 ## Paragraphs
 
@@ -44,3 +45,6 @@ npm run format
 ```
 
 Happy writing!
+
+**Note:** If you view this page with the GitHub file viewer, you can safely
+ignore the `Error in user YAML` at the top of this page.
