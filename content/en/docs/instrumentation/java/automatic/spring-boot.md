@@ -194,7 +194,7 @@ spring.datasource.url=jdbc:otel:h2:mem:db
 spring.datasource.driver-class-name=io.opentelemetry.instrumentation.jdbc.OpenTelemetryDriver
 ```
 
-### Logging instrumentation
+### Logging Instrumentation
 
 You can use the [Logback](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/logback/logback-appender-1.0/library/README.md) and [Log4j](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/log4j/log4j-appender-2.17/library/README.md) instrumentation libraries with the OpenTelemetry starter.
 
