@@ -29,7 +29,7 @@ To use those providers, add the following dependency:
 
 ```kotlin
 dependencies {
-    implementation("io.opentelemetry.instrumentation:opentelemetry-resources:{{% param javaVersion %}}-alpha");
+    implementation("io.opentelemetry.instrumentation:opentelemetry-resources:{{% param vers.otel %}}-alpha");
 }
 ```
 

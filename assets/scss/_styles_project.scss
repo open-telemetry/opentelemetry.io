@@ -103,10 +103,6 @@
   }
 }
 
-.foldable-nav {
-  padding-top: 0.5rem;
-} // TODO: propagate this fix to Docsy. Also class name should be prefixed with td
-
 // Adjust the spacing of page-meta and page-TOC (https://github.com/open-telemetry/opentelemetry.io/pull/354)
 // TODO: upstream
 .td-toc #TableOfContents {
@@ -279,14 +275,50 @@ body.td-page--draft .td-content {
   }
 }
 
-// TODO(@chalin): upstream
-.tab-body {
-  > .highlight:only-child {
-    margin: -1.5rem;
-    max-width: calc(100% + 3rem);
+details {
+  margin-bottom: $paragraph-margin-bottom;
+}
+
+.ot-integration-badge {
+  @extend .btn;
+  @extend .shadow;
+
+  border-radius: 0 !important;
+
+  position: relative;
+  float: right;
+  transform: rotate(6deg);
+  background: hsl(60, 100%, 60%);
+  border-color: hsl(60, 100%, 60%);
+  padding: 1rem;
+  margin: 0 1rem 1rem 1rem;
+
+  &__text {
+    font-weight: $font-weight-semibold;
+  }
+
+  &__info {
+    @extend .text-warning;
+    @extend .translate-middle;
+
+    position: absolute;
+    top: 0;
+    left: 100%;
+  }
+
+  &:hover {
+    background: hsl(60, 100%, 60%);
+    transform: rotate(4deg);
+    transition: transform 0.2s linear;
   }
 }
 
-details {
-  margin-bottom: $paragraph-margin-bottom;
+// Workaround for iOS and macOS Safari 17+. For details see:
+// https://github.com/open-telemetry/opentelemetry.io/issues/3538
+
+.td-content .highlight > pre {
+  > .click-to-copy,
+  > code {
+    overflow-y: auto;
+  }
 }

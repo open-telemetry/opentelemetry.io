@@ -6,7 +6,7 @@ author:
   >- # If you have only one author, then add the single name on this line in quotes.
   [Adriana Villela](https://github.com/avillela) (Lightstep),
 canonical_url: https://medium.com/cloud-native-daily/how-to-contribute-to-opentelemetry-5962e8b2447e
-cSpell:ignore: EUWG, nolan, riaan, sayin, servian
+cSpell:ignore: EUWG sayin
 ---
 
 ![Sunset over the water over an orange sky, with long grass in the foreground.](turks-sunset.jpg)

@@ -1,8 +1,8 @@
 ---
-cSpell:ignore: configurator distro distros loglevel
 title: OpenTelemetry Distro
 linkTitle: Distro
 weight: 110
+cSpell:ignore: configurator distro distros loglevel
 ---
 
 In order to make using OpenTelemetry and auto-instrumentation as quick as

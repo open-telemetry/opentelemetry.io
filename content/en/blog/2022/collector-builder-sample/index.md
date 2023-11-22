@@ -49,8 +49,8 @@ This repository will help you:
 
 - **Keep your Collector deployment up-to-date.** By incorporating custom
   Collectors into your CI/CD pipeline, you can automate builds to ensure your
-  Collector stays current with the latest features and fixes. In this repo,
-  we'll show one way to do that with Cloud Build.
+  Collector stays current with the latest features and fixes. In this
+  repository, we'll show one way to do that with Cloud Build.
 
 Each of these represents part of the “Getting Started” process with
 OpenTelemetry Collector, so by identifying and consolidating these steps we hope

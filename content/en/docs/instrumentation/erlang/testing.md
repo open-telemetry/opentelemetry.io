@@ -15,7 +15,7 @@ validation.
 Only the `opentelemetry` and `opentelemetry_api` libraries are required for
 testing in Elixir/Erlang:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
+{{< tabpane text=true >}} {{% tab Erlang %}}
 
 ```erlang
 {deps, [{opentelemetry_api, "~> {{% param versions.otelApi %}}"},
@@ -39,7 +39,7 @@ Set your `exporter` to `:none` and the span processor to
 `:otel_simple_processor`. This ensure that your tests don't actually export data
 to a destination, and that spans can be analyzed after they are processed.
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
+{{< tabpane text=true >}} {{% tab Erlang %}}
 
 ```erlang
 %% config/sys.config.src
@@ -69,7 +69,7 @@ A modified version of the `hello` function from the
 [Getting Started](/docs/instrumentation/erlang/getting-started/) guide will
 serve as our test case:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
+{{< tabpane text=true >}} {{% tab Erlang %}}
 
 ```erlang
 %% apps/otel_getting_started/src/otel_getting_started.erl
@@ -108,7 +108,7 @@ end
 
 ## Testing
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
+{{< tabpane text=true >}} {{% tab Erlang %}}
 
 ```erlang
 -module(otel_getting_started_SUITE).

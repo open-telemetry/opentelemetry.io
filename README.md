@@ -1,8 +1,8 @@
 # <img src="https://opentelemetry.io/img/logos/opentelemetry-logo-nav.png" alt="OTel logo" width="45"> OpenTelemetry.io
 
-This is the source repo for the [OpenTelemetry][] website, project documentation
-and blog. The site is [built][contributing.md] using [Hugo][] and hosted on
-[Netlify][].
+This is the source repository for the [OpenTelemetry][] website, project
+documentation and blog. The site is [built][contributing.md] using [Hugo][] and
+hosted on [Netlify][].
 
 ## Get involved
 
@@ -30,7 +30,7 @@ new issue/PR with your content to get it added to the docs.
 ### Fork & Write locally
 
 Follow the [setup instructions][contributing.md] then, to create a skeletal blog
-post, run the following command from the repo root:
+post, run the following command from the repository root:
 
 ```sh
 npx hugo new content/en/blog/2023/short-name-for-post.md

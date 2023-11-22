@@ -8,7 +8,7 @@ jobs:
     name: BUILD and CHECK LINKS
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Create NPM cache-hash input file
         run: |
@@ -24,7 +24,7 @@ jobs:
             package.json > tmp/package-min.json
           cp tmp/package-min.json package.json
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
           cache: npm
@@ -46,7 +46,7 @@ jobs:
     needs: build-and-check-links
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/download-artifact@v3
         with: { name: build-log-etc }
       - run: npm run diff:fail
@@ -56,7 +56,7 @@ jobs:
     needs: build-and-check-links
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/download-artifact@v3
         with: { name: build-log-etc }
       - run: cat tmp/build-log.txt
