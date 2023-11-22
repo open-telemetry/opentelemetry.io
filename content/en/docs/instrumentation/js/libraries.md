@@ -251,17 +251,19 @@ with a request hook:
 {{% tab TypeScript %}}
 
 ```typescript
+import { Span } from '@opentelemetry/api';
 import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions';
 import {
   ExpressInstrumentation,
   ExpressLayerType,
+  ExpressRequestInfo,
 } from '@opentelemetry/instrumentation-express';
 
 const expressInstrumentation = new ExpressInstrumentation({
   requestHook: function (span: Span, info: ExpressRequestInfo) {
     if (info.layerType === ExpressLayerType.REQUEST_HANDLER) {
-      span.setAttribute([SemanticAttributes.HTTP_METHOD], info.request.method);
-      span.setAttribute([SemanticAttributes.HTTP_URL], info.request.baseUrl);
+      span.setAttribute(SemanticAttributes.HTTP_METHOD, info.request.method);
+      span.setAttribute(SemanticAttributes.HTTP_URL, info.request.baseUrl);
     }
   },
 });
@@ -282,8 +284,8 @@ const {
 const expressInstrumentation = new ExpressInstrumentation({
   requestHook: function (span, info) {
     if (info.layerType === ExpressLayerType.REQUEST_HANDLER) {
-      span.setAttribute([SemanticAttributes.HTTP_METHOD], info.request.method);
-      span.setAttribute([SemanticAttributes.HTTP_URL], info.request.baseUrl);
+      span.setAttribute(SemanticAttributes.HTTP_METHOD, info.request.method);
+      span.setAttribute(SemanticAttributes.HTTP_URL, info.request.baseUrl);
     }
   },
 });

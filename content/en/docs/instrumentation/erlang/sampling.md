@@ -58,7 +58,7 @@ This tells the SDK to sample spans such that only 10% of Traces get created.
 Example in the Application configuration with a root sampler for sampling 10% of
 Traces and using the parent decision in the other cases:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
+{{< tabpane text=true >}} {{% tab Erlang %}}
 
 ```erlang
 %% config/sys.config.src
@@ -107,7 +107,7 @@ export OTEL_TRACES_SAMPLER="parentbased_always_off"
 Here's an example in the Application configuration with a root sampler that
 always samples and using the parent decision in the other cases:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
+{{< tabpane text=true >}} {{% tab Erlang %}}
 
 ```erlang
 %% config/sys.config.src
@@ -137,7 +137,7 @@ Custom samplers can be created by implementing the
 [`otel_sampler` behaviour](https://hexdocs.pm/opentelemetry/1.3.0/otel_sampler.html#callbacks).
 This example sampler:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
+{{< tabpane text=true >}} {{% tab Erlang %}}
 
 ```erlang
 -module(attribute_sampler).
@@ -202,7 +202,7 @@ passed as the sampler's configuration.
 Example configuration to not sample any Span with an attribute specifying the
 URL requested is `/healthcheck`:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
+{{< tabpane text=true >}} {{% tab Erlang %}}
 
 ```erlang
 {opentelemetry, {sampler, {attributes_sampler, #{'http.target' => <<"/healthcheck">>}}}}

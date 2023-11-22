@@ -8,7 +8,7 @@ jobs:
     name: TEXT linter
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       # Make sure that we only install the dependencies for textlint to speed up install
       - run: |
           mkdir -p tmp
@@ -23,7 +23,7 @@ jobs:
     name: MARKDOWN linter
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Create and use reduced-dependencies package.json
         run: |

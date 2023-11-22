@@ -8,7 +8,7 @@ jobs:
     name: SPELLING check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: streetsidesoftware/cspell-action@v2
         with:
           # Files should be consistent with check:spelling files
@@ -22,7 +22,7 @@ jobs:
     name: CSPELL:IGNORE check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - run: npm run fix:dict
       - name: Any changed files?
         run: |

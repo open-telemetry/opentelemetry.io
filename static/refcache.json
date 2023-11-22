@@ -1423,6 +1423,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T16:18:12.959612-04:00"
   },
+  "https://docs.otterize.com/reference/configuration/network-mapper/helm-chart#opentelemetry-exporter-parameters": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-17T16:32:53.695431+01:00"
+  },
   "https://docs.particular.net/samples/open-telemetry/prometheus-grafana/#reporting-metric-values": {
     "StatusCode": 200,
     "LastSeen": "2023-09-06T15:04:50.067993+02:00"
@@ -2179,6 +2183,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:32:35.041502-04:00"
   },
+  "https://github.com/davidgs": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-16T15:02:09.869589-05:00"
+  },
   "https://github.com/dcxp/opentelemetry-kotlin": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:35:34.198403-04:00"
@@ -2310,6 +2318,10 @@
   "https://github.com/honeycombio/honeycomb-opentelemetry-node": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:33:54.718117-04:00"
+  },
+  "https://github.com/hossko": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-17T10:59:22.431031Z"
   },
   "https://github.com/imandra-ai/ocaml-opentelemetry/": {
     "StatusCode": 200,
@@ -3683,6 +3695,22 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:42:42.642961-04:00"
   },
+  "https://github.com/orishoshan": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-16T15:02:08.644309-05:00"
+  },
+  "https://github.com/otterize": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-16T15:02:10.831177-05:00"
+  },
+  "https://github.com/otterize/network-mapper": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-16T15:02:12.356594-05:00"
+  },
+  "https://github.com/otterize/network-mapper/pull/141": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-16T15:02:13.899173-05:00"
+  },
   "https://github.com/pavolloffay": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:26:51.361548-04:00"
@@ -4687,6 +4715,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-11-03T10:07:17.047111-04:00"
   },
+  "https://opensearch.org/docs/latest/data-prepper/index/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-17T10:59:20.51098Z"
+  },
   "https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/namespace_opentelemetry__metrics.html": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:48:28.97257-04:00"
@@ -4703,6 +4735,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:48:18.447994-04:00"
   },
+  "https://opentelemetry-python-contrib.readthedocs.io/en/latest/instrumentation/logging/logging.html": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-17T10:59:23.029679Z"
+  },
   "https://opentelemetry-python.readthedocs.io/en/latest/api/metrics.html": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:46:08.928256-04:00"
@@ -4710,6 +4746,10 @@
   "https://opentelemetry-python.readthedocs.io/en/latest/api/trace.html": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:45:58.074821-04:00"
+  },
+  "https://opentelemetry-python.readthedocs.io/en/latest/examples/logs/README.html": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-17T10:59:24.626088Z"
   },
   "https://opentelemetry-python.readthedocs.io/en/latest/index.html": {
     "StatusCode": 200,
@@ -4778,6 +4818,10 @@
   "https://osi-model.com/transport-layer/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T11:41:53.83222-04:00"
+  },
+  "https://otterize.com/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-16T15:02:10.279947-05:00"
   },
   "https://packagist.org/": {
     "StatusCode": 200,
@@ -6342,6 +6386,10 @@
   "https://www.ordermygear.com/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T16:26:28.214741-04:00"
+  },
+  "https://www.otelbin.io/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-17T10:59:19.546115Z"
   },
   "https://www.outreachy.org/": {
     "StatusCode": 200,
