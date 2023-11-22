@@ -200,6 +200,6 @@ You can use the [Logback](https://github.com/open-telemetry/opentelemetry-java-i
 
 You don't have to do `OpenTelemetryAppender.install(openTelemetrySdk)` because the OpenTelemetry starter takes care of that.
 
-### Other instrumentation
+### Other Instrumentation
 
 You can configure other instrumentations with [OpenTelemetry instrumentations libraries](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks).
