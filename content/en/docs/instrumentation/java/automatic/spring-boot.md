@@ -88,7 +88,7 @@ spring.datasource.url=jdbc:otel:h2:mem:db
 spring.datasource.driver-class-name=io.opentelemetry.instrumentation.jdbc.OpenTelemetryDriver
 ```
 
-### Logging instrumentation
+### Logging Instrumentation
 
 You can use the [OpenTelemetry Java agent](..) with byte code instrumentation to
 automatically instrument a [Spring Boot](https://spring.io/projects/spring-boot)
