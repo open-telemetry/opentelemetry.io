@@ -33,7 +33,7 @@ performance characteristics.
 
 ### OpenTelemetry Collector
 
-The OpenTelemetry Collector runs
+The [OpenTelemetry Collector](/docs/collector/) runs
 [end-to-end load tests](https://github.com/open-telemetry/opentelemetry-collector-contrib/actions/workflows/load-tests.yml)
 on every merge to the main branch. There have been two recent updates to the CI
 workflow:
