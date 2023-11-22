@@ -28,8 +28,8 @@ To follow this tutorial you need the following
    container:
 
    ```sh
-   docker pull otel/opentelemetry-collector:{{% param collectorVersion %}}
-   docker run -p 127.0.0.1:4317:4317 -p 127.0.0.1:55679:55679 otel/opentelemetry-collector:{{% param collectorVersion %}}
+   docker pull otel/opentelemetry-collector:{{% param vers %}}
+   docker run -p 127.0.0.1:4317:4317 -p 127.0.0.1:55679:55679 otel/opentelemetry-collector:{{% param vers %}}
    ```
 
 2. Download and install the `telemetrygen` utility from the

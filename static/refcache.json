@@ -55,6 +55,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-28T13:37:47.265343-04:00"
   },
+  "http://www.zstd.net/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-14T11:45:04.323681+01:00"
+  },
   "https://access.redhat.com/products/ansible-tower-red-hat": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T13:40:07.523402-04:00"
@@ -90,6 +94,14 @@
   "https://arrow.apache.org/": {
     "StatusCode": 206,
     "LastSeen": "2023-07-24T11:52:40.018743+02:00"
+  },
+  "https://arrow.apache.org/blog/2023/04/11/our-journey-at-f5-with-apache-arrow-part-1/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-14T11:45:10.344644+01:00"
+  },
+  "https://arrow.apache.org/blog/2023/06/26/our-journey-at-f5-with-apache-arrow-part-2/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-14T11:45:10.48389+01:00"
   },
   "https://avajs.dev": {
     "StatusCode": 200,
@@ -1411,6 +1423,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T16:18:12.959612-04:00"
   },
+  "https://docs.otterize.com/reference/configuration/network-mapper/helm-chart#opentelemetry-exporter-parameters": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-17T16:32:53.695431+01:00"
+  },
   "https://docs.particular.net/samples/open-telemetry/prometheus-grafana/#reporting-metric-values": {
     "StatusCode": 200,
     "LastSeen": "2023-09-06T15:04:50.067993+02:00"
@@ -1478,6 +1494,14 @@
   "https://docs.splunk.com/Observability/gdi/opentelemetry/opentelemetry.html": {
     "StatusCode": 200,
     "LastSeen": "2023-07-26T16:17:33.996008+02:00"
+  },
+  "https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.auto-configuration": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-14T09:30:48.194902-05:00"
+  },
+  "https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using.build-systems.starters": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-14T09:30:42.69906-05:00"
   },
   "https://docs.teletrace.io/": {
     "StatusCode": 206,
@@ -1807,6 +1831,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T11:44:07.111965-04:00"
   },
+  "https://f5.com": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-14T11:45:06.021428+01:00"
+  },
   "https://fastapi.tiangolo.com": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T09:37:41.317466-04:00"
@@ -2019,6 +2047,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-10-23T22:46:46.531254+02:00"
   },
+  "https://github.com/aneurysm9/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-11T05:03:21.470685-08:00"
+  },
   "https://github.com/apache/apisix/discussions": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:25:44.869863-04:00"
@@ -2143,9 +2175,17 @@
     "StatusCode": 200,
     "LastSeen": "2023-10-26T15:30:24.247671-04:00"
   },
+  "https://github.com/dash0hq/otelbin": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-15T18:13:58.823155+01:00"
+  },
   "https://github.com/dashpole": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:32:35.041502-04:00"
+  },
+  "https://github.com/davidgs": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-16T15:02:09.869589-05:00"
   },
   "https://github.com/dcxp/opentelemetry-kotlin": {
     "StatusCode": 200,
@@ -2235,6 +2275,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-10-16T20:37:05.720755+02:00"
   },
+  "https://github.com/go-gorm/opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-14T12:26:21.00653-04:00"
+  },
   "https://github.com/gosnmp/gosnmp": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:15:19.257742-04:00"
@@ -2275,6 +2319,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:33:54.718117-04:00"
   },
+  "https://github.com/hossko": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-17T10:59:22.431031Z"
+  },
   "https://github.com/imandra-ai/ocaml-opentelemetry/": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:35:50.599272-04:00"
@@ -2282,6 +2330,10 @@
   "https://github.com/instana/go-otel-exporter": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:31:48.871119-04:00"
+  },
+  "https://github.com/instana/otel-database-dc": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-13T15:04:38.19765+01:00"
   },
   "https://github.com/jack-berg": {
     "StatusCode": 200,
@@ -2311,6 +2363,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:35:56.066523-04:00"
   },
+  "https://github.com/jmacd": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-14T11:45:03.706414+01:00"
+  },
   "https://github.com/joshleecreates/": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:42:48.334985-04:00"
@@ -2318,6 +2374,10 @@
   "https://github.com/jpkrohling": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:30:52.325535-04:00"
+  },
+  "https://github.com/jpkrohling/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-11T05:03:20.712823-08:00"
   },
   "https://github.com/jpkrohling/opentelemetry-collector-deployment-patterns/": {
     "StatusCode": 200,
@@ -2367,6 +2427,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-11-03T03:04:54.119611-04:00"
   },
+  "https://github.com/lquerel": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-14T11:45:02.674064+01:00"
+  },
   "https://github.com/mahboubii/grpcmetrics": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:15:29.922451-04:00"
@@ -2374,6 +2438,10 @@
   "https://github.com/marketplace/actions/continuous-benchmark": {
     "StatusCode": 200,
     "LastSeen": "2023-07-06T11:55:26.882609-07:00"
+  },
+  "https://github.com/martinkuba": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-04T11:32:20.86746-04:00"
   },
   "https://github.com/metrico/otel-collector": {
     "StatusCode": 200,
@@ -2483,6 +2551,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:46:40.801406-04:00"
   },
+  "https://github.com/open-telemetry/community/issues/1332": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-14T11:45:07.905452+01:00"
+  },
   "https://github.com/open-telemetry/community/issues/1400": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:35:07.219944-04:00"
@@ -2546,6 +2618,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/": {
     "StatusCode": 200,
     "LastSeen": "2023-07-07T13:45:50.007391-07:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/actions/workflows/load-tests.yml": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-04T11:32:21.428206-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/10116": {
     "StatusCode": 200,
@@ -3531,6 +3607,14 @@
     "StatusCode": 200,
     "LastSeen": "2023-09-12T11:57:04.702626-04:00"
   },
+  "https://github.com/open-telemetry/otel-arrow": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-14T11:45:08.675719+01:00"
+  },
+  "https://github.com/open-telemetry/otel-arrow/pull/82": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-14T11:45:09.854807+01:00"
+  },
   "https://github.com/open-telemetry/oteps/issues/197": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:34:03.795138-04:00"
@@ -3618,6 +3702,22 @@
   "https://github.com/orgs/open-telemetry/projects/41/views/1": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:42:42.642961-04:00"
+  },
+  "https://github.com/orishoshan": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-16T15:02:08.644309-05:00"
+  },
+  "https://github.com/otterize": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-16T15:02:10.831177-05:00"
+  },
+  "https://github.com/otterize/network-mapper": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-16T15:02:12.356594-05:00"
+  },
+  "https://github.com/otterize/network-mapper/pull/141": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-16T15:02:13.899173-05:00"
   },
   "https://github.com/pavolloffay": {
     "StatusCode": 200,
@@ -3763,6 +3863,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:37:09.214203-04:00"
   },
+  "https://github.com/tylerhelmuth": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-11T05:03:22.717836-08:00"
+  },
   "https://github.com/typelevel/otel4s": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:36:28.793405-04:00"
@@ -3838,6 +3942,10 @@
   "https://golang.org/ref/spec#Slice_types": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T16:10:23.235648-04:00"
+  },
+  "https://gorm.io/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-14T12:26:21.00653-04:00"
   },
   "https://gradle.org/": {
     "StatusCode": 206,
@@ -4563,9 +4671,17 @@
     "StatusCode": 206,
     "LastSeen": "2023-07-06T12:14:49.802412-07:00"
   },
+  "https://open-telemetry.github.io/opentelemetry-java/benchmarks/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-04T11:32:21.536067-04:00"
+  },
   "https://open-telemetry.github.io/opentelemetry-js": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:46:19.489479-04:00"
+  },
+  "https://open-telemetry.github.io/opentelemetry-js/benchmarks/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-04T11:32:21.613865-04:00"
   },
   "https://open-telemetry.github.io/opentelemetry-js/benchmarks/data.js": {
     "StatusCode": 206,
@@ -4615,6 +4731,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-11-03T10:07:17.047111-04:00"
   },
+  "https://opensearch.org/docs/latest/data-prepper/index/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-17T10:59:20.51098Z"
+  },
   "https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/namespace_opentelemetry__metrics.html": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:48:28.97257-04:00"
@@ -4631,6 +4751,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:48:18.447994-04:00"
   },
+  "https://opentelemetry-python-contrib.readthedocs.io/en/latest/instrumentation/logging/logging.html": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-17T10:59:23.029679Z"
+  },
   "https://opentelemetry-python.readthedocs.io/en/latest/api/metrics.html": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:46:08.928256-04:00"
@@ -4638,6 +4762,10 @@
   "https://opentelemetry-python.readthedocs.io/en/latest/api/trace.html": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:45:58.074821-04:00"
+  },
+  "https://opentelemetry-python.readthedocs.io/en/latest/examples/logs/README.html": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-17T10:59:24.626088Z"
   },
   "https://opentelemetry-python.readthedocs.io/en/latest/index.html": {
     "StatusCode": 200,
@@ -4707,6 +4835,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-30T11:41:53.83222-04:00"
   },
+  "https://otterize.com/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-16T15:02:10.279947-05:00"
+  },
   "https://packagist.org/": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:20:47.395106-04:00"
@@ -4746,6 +4878,10 @@
   "https://parceljs.org/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:47:38.860669-04:00"
+  },
+  "https://parquet.apache.org/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-14T11:45:10.104631+01:00"
   },
   "https://pecl.php.net/": {
     "StatusCode": 206,
@@ -5335,6 +5471,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T11:44:31.406627-04:00"
   },
+  "https://spring.io/projects/spring-boot": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-14T09:30:36.981189-05:00"
+  },
   "https://square.github.io/okhttp/": {
     "StatusCode": 206,
     "LastSeen": "2023-09-14T09:36:37.578867-05:00"
@@ -5706,6 +5846,14 @@
   "https://www.cloudscaleinc.com": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T16:24:41.542459-04:00"
+  },
+  "https://www.cloudwego.io/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-14T12:26:21.00653-04:00"
+  },
+  "https://www.cloudwego.io/docs/hertz/tutorials/observability/open-telemetry/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-14T12:26:21.00653-04:00"
   },
   "https://www.cncf.io": {
     "StatusCode": 206,
@@ -6255,6 +6403,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-30T16:26:28.214741-04:00"
   },
+  "https://www.otelbin.io/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-17T10:59:19.546115Z"
+  },
   "https://www.outreachy.org/": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:52:07.931813-04:00"
@@ -6438,6 +6590,10 @@
   "https://www.serverless.com/framework/docs/getting-started": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:47:05.022636-04:00"
+  },
+  "https://www.servicenow.com/products/observability.html": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-14T11:45:06.343243+01:00"
   },
   "https://www.servicepilot.com/en/doc/apm#opentelemetry": {
     "StatusCode": 200,
