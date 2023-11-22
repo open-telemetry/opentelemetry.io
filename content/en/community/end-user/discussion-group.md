@@ -14,7 +14,7 @@ Feedback that is shared and collected in these sessions will be routed back to
 the relevant project maintainers to help drive prioritization of improvements
 and changes to the project.
 
-**New for 2023!**
+## New for 2023
 
 - Sessions are now available for all regions!
 - You can now find summaries of past discussions every month! Search the blog
@@ -26,7 +26,7 @@ and changes to the project.
   recorded**. This will help make the feedback more discoverable by the
   community.
 
-**Upcoming sessions**
+## Upcoming sessions
 
 Here are upcoming sessions, or you can view them on the
 [OpenTelemetry calendar](https://github.com/open-telemetry/community#calendar):
