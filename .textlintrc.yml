@@ -14,9 +14,12 @@ filters:
       # Hugo template syntax:
       - /{{.*?}}/
       - /{{%.*?%}}/
-      # Other
-      - /<https?://.*?>/ # Raw URLs
+      # Custom header anchors in markdown headings:
+      - /{#.*?}/
+      # src attribute in figure Hugo template:
       - /src=".*?"/
+      # Other:
+      - /<https?://.*?>/ # Raw URLs
 rules:
   terminology:
     defaultTerms: false
