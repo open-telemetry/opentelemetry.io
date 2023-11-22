@@ -1,4 +1,4 @@
-# cSpell:ignore containerd buildx Quarkus Cerbos flagd flipt KEDA Kyverno Dapr rustup GORM
+# cSpell:ignore containerd buildx Quarkus Cerbos flagd flipt KEDA Kyverno Dapr rustup GORM Otterize
 - name: containerd
   url: https://containerd.io/
   docsUrl: https://github.com/containerd/containerd/blob/main/docs/tracing.md
@@ -162,5 +162,15 @@
 - name: GORM
   url: https://gorm.io/
   docsUrl: https://github.com/go-gorm/opentelemetry
+  components: [Go]
+  oss: true
+- name: Cloud Foundry
+  url: https://www.cloudfoundry.org/
+  docsUrl: https://github.com/cloudfoundry/cf-deployment/blob/main/operations/experimental/add-otel-collector.yml
+  components: [Collector]
+  oss: true
+- name: Otterize network mapper
+  url: https://github.com/otterize/network-mapper
+  docsUrl: https://docs.otterize.com/reference/configuration/network-mapper/helm-chart#opentelemetry-exporter-parameters
   components: [Go]
   oss: true

@@ -27,7 +27,7 @@ jobs:
           echo $PR_NUM
           echo $COMMENT
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - run: gh pr checkout $PR_NUM
         env:
@@ -38,7 +38,7 @@ jobs:
           mkdir -p tmp
           jq '{devDependencies, dependencies, engines, gitHubActionCacheKey}' package.json > tmp/package-ci.json
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
           cache: npm
@@ -84,7 +84,7 @@ jobs:
           echo $PR_NUM
           echo $COMMENT
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - run: gh pr checkout $PR_NUM
         env:
@@ -95,7 +95,7 @@ jobs:
           mkdir -p tmp
           jq '{devDependencies, dependencies, engines, gitHubActionCacheKey}' package.json > tmp/package-ci.json
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
           cache: npm
