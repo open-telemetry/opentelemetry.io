@@ -68,12 +68,12 @@ stable semantic convention.
 
 \[2\]: `Azure.` prefixed packages, released after October 1, 2021.
 
-\[3\]: `Elastic.Clients.Elasticsearch` version ≥8.0.0 and <8.10.0.
-        Version ≥8.10.0 is supported by `Elastic.Transport` instrumentation.
+\[3\]: `Elastic.Clients.Elasticsearch` version ≥8.0.0 and <8.10.0. Version
+≥8.10.0 is supported by `Elastic.Transport` instrumentation.
 
-\[4\]: `Microsoft.Data.SqlClient` v3.* is not supported on .NET Framework,
-        due to [issue](https://github.com/open-telemetry/opentelemetry-dotnet/issues/4243).
-       `System.Data.SqlClient` is supported from version 4.8.5.
+\[4\]: `Microsoft.Data.SqlClient` v3.\* is not supported on .NET Framework, due
+to [issue](https://github.com/open-telemetry/opentelemetry-dotnet/issues/4243).
+`System.Data.SqlClient` is supported from version 4.8.5.
 
 ## Metrics instrumentations
 
