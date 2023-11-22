@@ -29,7 +29,7 @@ For most users, the default artifact will suffice and be the most simple:
 
 ```kotlin
 dependencies {
-    implementation 'io.opentelemetry:opentelemetry-exporter-otlp:{{% param javaVersion %}}'
+    implementation 'io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}'
 }
 ```
 

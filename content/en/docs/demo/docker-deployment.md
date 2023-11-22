@@ -2,8 +2,10 @@
 title: Docker deployment
 linkTitle: Docker
 aliases: [docker_deployment]
-cSpell:ignore: otelcollector otlphttp spanmetrics
+cSpell:ignore: otelcollector otlphttp spanmetrics tracetest
 ---
+
+<!-- markdownlint-disable code-block-style ol-prefix -->
 
 ## Prerequisites
 
@@ -27,17 +29,37 @@ cSpell:ignore: otelcollector otlphttp spanmetrics
     cd opentelemetry-demo/
     ```
 
-3.  Use make to start the demo:
+3.  Start the demo[^1]:
 
-    ```shell
-    make start
-    ```
+    {{< tabpane text=true >}} {{% tab Make %}}
 
-    > **Notes:**
-    >
-    > If you do not have the make utility installed, you can also use
-    > `docker compose up --force-recreate --remove-orphans --detach`[^1] to
-    > start the demo.
+```shell
+make start
+```
+
+    {{% /tab %}} {{% tab Docker %}}
+
+```shell
+docker compose up --force-recreate --remove-orphans --detach
+```
+
+    {{% /tab %}} {{< /tabpane >}}
+
+4.  (Optional) Enable API observability-driven testing[^1]:
+
+    {{< tabpane text=true >}} {{% tab Make %}}
+
+```shell
+make start-odd
+```
+
+    {{% /tab %}} {{% tab Docker %}}
+
+```shell
+docker compose --profile odd up --force-recreate --remove-orphans --detach
+```
+
+    {{% /tab %}} {{< /tabpane >}}
 
 ## Verify the web store and Telemetry
 
@@ -48,6 +70,7 @@ Once the images are built and containers are started you can access:
 - Feature Flags UI: <http://localhost:8080/feature/>
 - Load Generator UI: <http://localhost:8080/loadgen/>
 - Jaeger UI: <http://localhost:8080/jaeger/ui/>
+- Tracetest UI: <http://localhost:11633/>, only when using `make start-odd`
 
 ## Bring your own backend
 
