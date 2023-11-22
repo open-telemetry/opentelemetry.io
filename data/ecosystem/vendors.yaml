@@ -34,6 +34,13 @@
   contact: ''
   oss: false
   commercial: true
+- name: Better Stack
+  distribution: false
+  nativeOTLP: true
+  url: 'https://betterstack.com/logs'
+  contact: 'hello@betterstack.com'
+  oss: false
+  commercial: true
 - name: Coralogix
   distribution: true
   nativeOTLP: true
