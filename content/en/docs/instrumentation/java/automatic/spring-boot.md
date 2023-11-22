@@ -52,7 +52,7 @@ dependencies {
 
 {{% /tab %}} {{< /tabpane>}}
 
-## Additional instrumentations
+## Additional Instrumentations
 
 
 ### JDBC instrumentation
