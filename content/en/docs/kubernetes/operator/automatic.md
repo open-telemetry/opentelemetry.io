@@ -406,7 +406,7 @@ metadata:
   name: demo-instrumentation
 spec:
   exporter:
-    endpoint: http://demo-collector:4317
+    endpoint: http://demo-collector:4318
   propagators:
     - tracecontext
     - baggage
@@ -417,14 +417,10 @@ EOF
 ```
 
 By default, the Instrumentation resource that auto-instruments Go services uses
-`otlp` with the `grpc` protocol. This means that the configured endpoint must be
-able to receive OTLP over `grpc`. Therefore, the example uses
-`http://demo-collector:4317`, which connects to the `grpc` port of the
-`otlpreceiver` of the Collector created in the previous step.
-
-> Go auto-instrumentation only supports exporting via gRPC. Setting the protocol
-> or exporter to any other value via environment variables will result in silent
-> failure.
+`otlp` with the `http/protobuf` protocol. This means that the configured
+endpoint must be able to receive OTLP over `http/protobuf`. Therefore, the
+example uses `http://demo-collector:4318`, which connects to the `http/protobuf`
+port of the `otlpreceiver` of the Collector created in the previous step.
 
 The Go auto-instrumentation does not support disabling any instrumentation.
 [See the Go Auto-Instrumentation repository for me details.](https://github.com/open-telemetry/opentelemetry-go-instrumentation)
