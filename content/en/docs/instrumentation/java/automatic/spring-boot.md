@@ -52,13 +52,11 @@ dependencies {
 
 {{% /tab %}} {{< /tabpane>}}
 
-
 ## Additional instrumentations
 
 ### JDBC Instrumentation
 
-To have JDBC instrumentation with the OpenTelemetry Spring start, add the follwing dependency:
-
+To have JDBC instrumentation with the OpenTelemetry Spring starter, add the following dependency:
 
 {{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
 ```xml
