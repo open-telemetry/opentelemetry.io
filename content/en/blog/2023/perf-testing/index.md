@@ -1,7 +1,7 @@
 ---
 title: OTel component performance benchmarks
 linkTitle: Performance benchmarks
-date: 2023-11-01
+date: 2023-11-27
 author: '[Martin Kuba](https://github.com/martinkuba) (Lightstep)'
 cSpell:ignore: Kuba
 ---
