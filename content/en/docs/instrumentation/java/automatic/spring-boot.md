@@ -55,7 +55,7 @@ dependencies {
 ## Additional Instrumentations
 
 
-### JDBC instrumentation
+### JDBC Instrumentation
 
 To have JDBC instrumentation with the OpenTelemetry Spring start, add the dependency given on [this page](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jdbc/library).
 
