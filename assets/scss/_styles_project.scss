@@ -275,14 +275,6 @@ body.td-page--draft .td-content {
   }
 }
 
-// TODO(@chalin): upstream
-.tab-body {
-  > .highlight:only-child {
-    margin: -1.5rem;
-    max-width: calc(100% + 3rem);
-  }
-}
-
 details {
   margin-bottom: $paragraph-margin-bottom;
 }
@@ -318,5 +310,15 @@ details {
     background: hsl(60, 100%, 60%);
     transform: rotate(4deg);
     transition: transform 0.2s linear;
+  }
+}
+
+// Workaround for iOS and macOS Safari 17+. For details see:
+// https://github.com/open-telemetry/opentelemetry.io/issues/3538
+
+.td-content .highlight > pre {
+  > .click-to-copy,
+  > code {
+    overflow-y: auto;
   }
 }

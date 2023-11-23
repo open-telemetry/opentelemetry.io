@@ -90,7 +90,7 @@ This instance of the collector will use the following components:
 
 Let's break these down.
 
-**OTLP Receiver**
+### OTLP Receiver
 
 The
 [OTLP Receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver)
@@ -105,7 +105,7 @@ a node to emit their traces, metrics, and logs to a collector running on the
 same node. This keeps network interactions simple and allows easy correlation of
 Kubernetes metadata using the `k8sattributes` processor.
 
-**Kubernetes Attributes Processor**
+### Kubernetes Attributes Processor
 
 The
 [Kubernetes Attributes Processor](../collector/components/#kubernetes-attributes-processor)
@@ -117,7 +117,7 @@ Kubernetes context to your telemetry, the Kubernetes Attributes Processor lets
 you correlate your application's traces, metrics, and logs signals with your
 Kubernetes telemetry, such as pod metrics and traces.
 
-**Kubeletstats Receiver**
+### Kubeletstats Receiver
 
 The [Kubeletstats Receiver](../collector/components/#kubeletstats-receiver) is
 the receiver that gathers metrics about the node. It will gather metrics like
@@ -127,7 +127,7 @@ using the Kubernetes Attributes Processor, we'll be able to correlate our
 application traces, metrics, and logs with the metrics produced by the
 Kubeletstats Receiver.
 
-**Filelog Receiver**
+### Filelog Receiver
 
 The [Filelog Receiver](../collector/components/#filelog-receiver) will collect
 logs written to stdout/stderr by tailing the logs Kubernetes writes to
@@ -209,7 +209,7 @@ This instance of the Collector will use the following components:
 
 Let's break these down.
 
-**Kubernetes Cluster Receiver**
+### Kubernetes Cluster Receiver
 
 The
 [Kubernetes Cluster Receiver](../collector/components/#kubernetes-cluster-receiver)
@@ -217,7 +217,7 @@ is the Collector's solution for collecting metrics about the state of the
 cluster as a whole. This receiver can gather metrics about node conditions, pod
 phases, container restarts, available and desired deployments, and more.
 
-**Kubernetes Objects Receiver**
+### Kubernetes Objects Receiver
 
 The
 [Kubernetes Objects Receiver](../collector/components/#kubernetes-objects-receiver)
