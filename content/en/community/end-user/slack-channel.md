@@ -6,9 +6,7 @@ description: >-
 weight: 40
 ---
 
-- Confirm your agreement with channel [Code of Conduct][] and reach out to Reese
-  Lee, Rynn Mancuso, or Adriana Villela on CNCF slack for an invite to
-  `#otel-endusers`.
+- Confirm your agreement with channel [Code of Conduct][] and reach out to Reese Lee, Rynn Mancuso, or Adriana Villela on CNCF slack for an invite to `#otel-endusers`.
 - Troubleshooting or tactical SDK specific questions are still best directed to
   individual SIG channels or the
   [#opentelemetry](https://cloud-native.slack.com/archives/CJFCJHG4Q) channel.
