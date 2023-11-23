@@ -76,7 +76,16 @@ For small changes to a single file, you can edit directly in GitHub by clicking
 **Edit this file** button. After forking the repository, follow the instructions
 in [Editing files][].
 
-For everything else, follow the
+However, formatting may still be needed, like reducing line lengths in the
+edited file. The options for fixing formatting are:
+
+- Checking out the project and running the CLI scripts mentioned in
+  [Submitting a change](#submitting-a-change).
+- Commenting `/fix:format` on your pull request to trigger an automated script.
+  This requires a unique branch name, which can be edited under _View all
+  branches_ in your fork.
+
+For larger fixes, follow the
 [instructions to setup a development environment](#development) below.
 
 ### PR Guidelines
@@ -212,8 +221,8 @@ The website is built from the following content:
 
 ### Submitting a change
 
-Before submitting a to the repository, run the following command and address any
-reported issues. Also commit any files changed by the `fix` script:
+Before submitting a change to the repository, run the following command and
+address any reported issues. Also commit any files changed by the `fix` script:
 
 ```sh
 npm run test-and-fix
