@@ -3,7 +3,7 @@ title: Spring Boot
 linkTitle: Spring Boot
 weight: 30
 description: Spring instrumentation for OpenTelemetry Java
-cSpell:ignore: autoconfigure springboot
+cSpell:ignore: autoconfigure datasource logback springboot
 ---
 
 You can use the [OpenTelemetry Java agent](..) with byte code instrumentation to
@@ -56,7 +56,8 @@ dependencies {
 
 ### JDBC Instrumentation
 
-To have JDBC instrumentation with the OpenTelemetry Spring starter, add the following dependency:
+To have JDBC instrumentation with the OpenTelemetry Spring starter, add the
+following dependency:
 
 {{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
 
@@ -80,9 +81,11 @@ dependencies {
 
 {{% /tab %}} {{< /tabpane>}}
 
-You have two ways to enable the JDBC instrumentation with the OpenTelemetry starter.
+You have two ways to enable the JDBC instrumentation with the OpenTelemetry
+starter.
 
-You can wrap the `DataSource` bean in an `io.opentelemetry.instrumentation.jdbc.datasource.OpenTelemetryDataSource`:
+You can wrap the `DataSource` bean in an
+`io.opentelemetry.instrumentation.jdbc.datasource.OpenTelemetryDataSource`:
 
 ```java
 import io.opentelemetry.instrumentation.jdbc.datasource.OpenTelemetryDataSource;
@@ -101,8 +104,10 @@ public class DataSourceConfig {
 }
 ```
 
-If your application does not declare `DataSource` bean, you can update your `application.properties` file to
-have the data source URL starting with `jdbc:otel` and set the driver class to io.opentelemetry.instrumentation.jdbc.OpenTelemetryDriver
+If your application does not declare `DataSource` bean, you can update your
+`application.properties` file to have the data source URL starting with
+`jdbc:otel` and set the driver class to
+io.opentelemetry.instrumentation.jdbc.OpenTelemetryDriver
 
 ```properties
 spring.datasource.url=jdbc:otel:h2:mem:db
@@ -111,10 +116,16 @@ spring.datasource.driver-class-name=io.opentelemetry.instrumentation.jdbc.OpenTe
 
 ### Logging Instrumentation
 
-You can use the [Logback](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/logback/logback-appender-1.0/library/README.md) and [Log4j](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/log4j/log4j-appender-2.17/library/README.md) instrumentation libraries with the OpenTelemetry starter.
+You can use the
+[Logback](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/logback/logback-appender-1.0/library/README.md)
+and
+[Log4j](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/log4j/log4j-appender-2.17/library/README.md)
+instrumentation libraries with the OpenTelemetry starter.
 
-You don't have to do `OpenTelemetryAppender.install(openTelemetrySdk)` because the OpenTelemetry starter takes care of that.
+You don't have to do `OpenTelemetryAppender.install(openTelemetrySdk)` because
+the OpenTelemetry starter takes care of that.
 
 ### Other Instrumentation
 
-You can configure other instrumentations with [OpenTelemetry instrumentations libraries](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks).
+You can configure other instrumentations with
+[OpenTelemetry instrumentations libraries](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks).
