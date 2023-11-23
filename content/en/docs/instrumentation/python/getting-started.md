@@ -303,6 +303,8 @@ create a trace that's a child of the one that's automatically generated:
 from random import randint
 from flask import Flask
 
+from opentelemetry import trace
+
 # Acquire a tracer
 tracer = trace.get_tracer("diceroller.tracer")
 
