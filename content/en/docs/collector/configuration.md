@@ -22,13 +22,13 @@ The structure of any Collector configuration file consists of four classes of
 pipeline components that access telemetry data:
 
 - [Receivers](#receivers)
-  <img width="32" class="img-initial" src="/img/logos/32x32/Receivers.svg">
+  <img width="32" alt="" class="img-initial" src="/img/logos/32x32/Receivers.svg">
 - [Processors](#processors)
-  <img width="32" class="img-initial" src="/img/logos/32x32/Processors.svg">
+  <img width="32" alt="" class="img-initial" src="/img/logos/32x32/Processors.svg">
 - [Exporters](#exporters)
-  <img width="32" class="img-initial" src="/img/logos/32x32/Exporters.svg">
+  <img width="32" alt="" class="img-initial" src="/img/logos/32x32/Exporters.svg">
 - [Connectors](#connectors)
-  <img width="32" class="img-initial" src="/img/logos/32x32/Load_Balancer.svg">
+  <img width="32" alt="" class="img-initial" src="/img/logos/32x32/Load_Balancer.svg">
 
 After each pipeline component is configured you must enable it using the
 pipelines within the [service](#service) section of the configuration file.
@@ -177,7 +177,7 @@ service:
       exporters: [otlp]
 ```
 
-## Receivers <img width="35" class="img-initial" src="/img/logos/32x32/Receivers.svg"> {#receivers}
+## Receivers <img width="35" class="img-initial" alt="" src="/img/logos/32x32/Receivers.svg"> {#receivers}
 
 Receivers collect telemetry from one or more sources. They can be pull or push
 based, and may support one or more [data sources](/docs/concepts/signals/).
@@ -250,7 +250,7 @@ receivers:
 > For detailed receiver configuration, see the
 > [receiver README](https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md).
 
-## Processors <img width="35" class="img-initial" src="/img/logos/32x32/Processors.svg"> {#processors}
+## Processors <img width="35" class="img-initial" alt="" src="/img/logos/32x32/Processors.svg"> {#processors}
 
 Processors take the data collected by receivers and modify or transform it
 before sending it to the exporters. Data processing happens according to rules
@@ -336,7 +336,7 @@ processors:
 > For detailed processor configuration, see the
 > [processor README](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md).
 
-## Exporters <img width="35" class="img-initial" src="/img/logos/32x32/Exporters.svg"> {#exporters}
+## Exporters <img width="35" class="img-initial" alt="" src="/img/logos/32x32/Exporters.svg"> {#exporters}
 
 Exporters send data to one or more backends or destinations. Exporters can be
 pull or push based, and may support one or more
@@ -415,7 +415,7 @@ secure connections, as described in
 > For more information on exporter configuration, see the
 > [exporter README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md).
 
-## Connectors <img width="32" class="img-initial" src="/img/logos/32x32/Load_Balancer.svg"> {#connectors}
+## Connectors <img width="32" class="img-initial" alt="" src="/img/logos/32x32/Load_Balancer.svg"> {#connectors}
 
 Connectors join two pipelines, acting as both exporter and receiver. A connector
 consumes data as an exporter at the end of one pipeline and emits data as a
