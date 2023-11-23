@@ -30,6 +30,8 @@ jobs:
       - name: Write start comment
         run: |
           gh pr comment $PR_NUM -b "You triggered fix:format action run at $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+        env:
+          GH_TOKEN: ${{ github.token }}
 
       - uses: actions/checkout@v4
 
@@ -79,6 +81,8 @@ jobs:
         if: ${{ failure() || cancelled() }}
         run: |
           gh pr comment $PR_NUM -b "fix:format run failed, please check $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID for details"
+        env:
+          GH_TOKEN: ${{ github.token }}
 
   fix-refcache:
     name: /fix:refcache
@@ -102,6 +106,8 @@ jobs:
       - name: Write start comment
         run: |
           gh pr comment $PR_NUM -b "You triggered fix:refcache action run at $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+        env:
+          GH_TOKEN: ${{ github.token }}
 
       - uses: actions/checkout@v4
       # By providing a branch name the checkout will not break if a branch with the
@@ -153,3 +159,5 @@ jobs:
         if: ${{ failure() || cancelled() }}
         run: |
           gh pr comment $PR_NUM -b "fix:recache run failed, please check $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID for details"
+        env:
+          GH_TOKEN: ${{ github.token }}
