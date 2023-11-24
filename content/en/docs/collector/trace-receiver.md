@@ -86,7 +86,7 @@ docker run -d --name jaeger \
   jaegertracing/all-in-one:1.41
 ```
 
-Once the Docker container is up and running, you can access Jaeger UI by:
+Once the container is up and running, you can access Jaeger UI by:
 <http://localhost:16686/>
 
 Now, create a Collector config file named `config.yaml` to set up the
