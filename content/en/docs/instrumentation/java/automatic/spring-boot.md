@@ -37,7 +37,7 @@ auto-configuration, see the configuration [README].
 	<dependency>
 		<groupId>io.opentelemetry.instrumentation</groupId>
 		<artifactId>opentelemetry-spring-boot-starter</artifactId>
-		<version>{{% param vers.instrumentation %}}</version>
+		<version>{{% param vers.instrumentation-alpha %}}</version>
 	</dependency>
 </dependencies>
 ```
@@ -46,7 +46,7 @@ auto-configuration, see the configuration [README].
 
 ```groovy
 dependencies {
-	implementation('io.opentelemetry.instrumentation:opentelemetry-spring-boot-starter:{{% param vers.instrumentation %}}')
+	implementation('io.opentelemetry.instrumentation:opentelemetry-spring-boot-starter:{{% param vers.instrumentation-alpha %}}')
 }
 ```
 
@@ -66,7 +66,7 @@ following dependency:
 	<dependency>
 		<groupId>io.opentelemetry.instrumentation</groupId>
 		<artifactId>opentelemetry-jdbc</artifactId>
-		<version>{{% param vers.instrumentation %}}</version>
+		<version>{{% param vers.instrumentation-alpha %}}</version>
 	</dependency>
 </dependencies>
 ```
@@ -75,7 +75,7 @@ following dependency:
 
 ```groovy
 dependencies {
-	implementation('io.opentelemetry.instrumentation:opentelemetry-jdbc:{{% param vers.instrumentation %}}')
+	implementation('io.opentelemetry.instrumentation:opentelemetry-jdbc:{{% param vers.instrumentation-alpha %}}')
 }
 ```
 
