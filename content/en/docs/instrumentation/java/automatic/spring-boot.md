@@ -56,31 +56,6 @@ dependencies {
 
 ### JDBC Instrumentation
 
-To have JDBC instrumentation with the OpenTelemetry Spring starter, add the
-following dependency:
-
-{{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
-
-```xml
-<dependencies>
-	<dependency>
-		<groupId>io.opentelemetry.instrumentation</groupId>
-		<artifactId>opentelemetry-jdbc</artifactId>
-		<version>{{% param vers.instrumentation-alpha %}}</version>
-	</dependency>
-</dependencies>
-```
-
-{{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
-
-```groovy
-dependencies {
-	implementation('io.opentelemetry.instrumentation:opentelemetry-jdbc:{{% param vers.instrumentation-alpha %}}')
-}
-```
-
-{{% /tab %}} {{< /tabpane>}}
-
 You have two ways to enable the JDBC instrumentation with the OpenTelemetry
 starter.
 
@@ -106,7 +81,7 @@ public class DataSourceConfig {
 
 If your application does not declare `DataSource` bean, you can update your
 `application.properties` file to have the data source URL starting with
-`jdbc:otel` and set the driver class to
+`jdbc:otel:` and set the driver class to
 io.opentelemetry.instrumentation.jdbc.OpenTelemetryDriver
 
 ```properties
@@ -116,14 +91,54 @@ spring.datasource.driver-class-name=io.opentelemetry.instrumentation.jdbc.OpenTe
 
 ### Logging Instrumentation
 
-You can use the
+To enable the logging instrumentation for Logback you have to add the OpenTelemetry appender in your `logback.xml` or `logback-spring.xml` file:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>
+				%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="OpenTelemetry"
+		class="io.opentelemetry.instrumentation.logback.appender.v1_0.OpenTelemetryAppender">
+	</appender>
+
+	<root level="INFO">
+		<appender-ref ref="console"/>
+		<appender-ref ref="OpenTelemetry"/>
+	</root>
+
+</configuration>
+```
+
+For Log4j 2, you have to add the OpenTelemetry appender to your `log4j2.xml` file:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" packages="io.opentelemetry.instrumentation.log4j.appender.v2_17">
+	<Appenders>
+		<OpenTelemetry name="OpenTelemetryAppender"/>
+	</Appenders>
+	<Loggers>
+		<Root>
+			<AppenderRef ref="OpenTelemetryAppender" level="All"/>
+		</Root>
+	</Loggers>
+</Configuration>
+```
+
+you can find more configuration options for the OpenTelemetry appender in the documentatioln of the 
 [Logback](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/logback/logback-appender-1.0/library/README.md)
 and
 [Log4j](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/log4j/log4j-appender-2.17/library/README.md)
-instrumentation libraries with the OpenTelemetry starter.
+instrumentation libraries.
 
-You don't have to do `OpenTelemetryAppender.install(openTelemetrySdk)` because
-the OpenTelemetry starter takes care of that.
 
 ### Other Instrumentation
 
