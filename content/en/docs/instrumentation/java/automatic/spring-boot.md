@@ -133,7 +133,7 @@ For Log4j 2, you have to add the OpenTelemetry appender to your `log4j2.xml` fil
 </Configuration>
 ```
 
-you can find more configuration options for the OpenTelemetry appender in the documentatioln of the 
+you can find more configuration options for the OpenTelemetry appender in the documentation of the 
 [Logback](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/logback/logback-appender-1.0/library/README.md)
 and
 [Log4j](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/log4j/log4j-appender-2.17/library/README.md)
