@@ -27,9 +27,13 @@ jobs:
           echo $PR_NUM
           echo $COMMENT
 
+      - name: Write start comment
+        run: |
+          gh pr comment $PR_NUM -b "You triggered fix:format action run at $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+
       - uses: actions/checkout@v4
 
-      - run: gh pr checkout $PR_NUM
+      - run: gh pr checkout $PR_NUM -b "pr-action-${RANDOM}"
         env:
           GH_TOKEN: ${{ github.token }}
 
@@ -57,13 +61,24 @@ jobs:
             git add -A
             current_branch=$(git rev-parse --abbrev-ref HEAD)
             echo current_branch=$current_branch
+            # gh pr checkout sets some git configs that we can use to make sure
+            # we push to the right repo & to the right branch
+            push_remote=$(git config --get branch.${current_branch}.pushremote)
+            echo push_remote=$push_remote
+            push_remote_branch=$(git config --get branch.${current_branch}.merge)
+            echo push_remote_branch=$push_remote_branch
             git commit -m 'Results from /fix:format'
-            git push origin $current_branch
+            git push ${push_remote} HEAD:${push_remote_branch}
           else
             echo "No changes to commit"
           fi
         env:
           GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+
+      - name: Report an error in the case of failure
+        if: ${{ failure() || cancelled() }}
+        run: |
+          gh pr comment $PR_NUM -b "fix:format run failed, please check $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID for details"
 
   fix-refcache:
     name: /fix:refcache
@@ -84,9 +99,14 @@ jobs:
           echo $PR_NUM
           echo $COMMENT
 
-      - uses: actions/checkout@v4
+      - name: Write start comment
+        run: |
+          gh pr comment $PR_NUM -b "You triggered fix:refcache action run at $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
 
-      - run: gh pr checkout $PR_NUM
+      - uses: actions/checkout@v4
+      # By providing a branch name the checkout will not break if a branch with the
+      # same name exists already upstream (e.g. patch-X)
+      - run: gh pr checkout $PR_NUM -b "pr-action-${RANDOM}"
         env:
           GH_TOKEN: ${{ github.token }}
 
@@ -115,10 +135,21 @@ jobs:
             git add -A
             current_branch=$(git rev-parse --abbrev-ref HEAD)
             echo current_branch=$current_branch
+            # gh pr checkout sets some git configs that we can use to make sure
+            # we push to the right repo & to the right branch
+            push_remote=$(git config --get branch.${current_branch}.pushremote)
+            echo push_remote=$push_remote
+            push_remote_branch=$(git config --get branch.${current_branch}.merge)
+            echo push_remote_branch=$push_remote_branch
             git commit -m 'Results from /fix:recache'
-            git push origin $current_branch
+            git push ${push_remote} HEAD:${push_remote_branch}
           else
             echo "No changes to commit"
           fi
         env:
           GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+
+      - name: Report an error in the case of failure
+        if: ${{ failure() || cancelled() }}
+        run: |
+          gh pr comment $PR_NUM -b "fix:recache run failed, please check $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID for details"
