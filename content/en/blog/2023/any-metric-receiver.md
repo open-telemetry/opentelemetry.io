@@ -51,7 +51,7 @@ is ideal for use with shell scripts. Its protocol is incredibly straightforward:
 
 ## Example script: Check certificate expiration
 
-Consider the shell script below, which accepts a host name as an argument, and
+Consider the following shell script, which accepts a host name as an argument, and
 uses
 [`openssl s_client`](https://www.openssl.org/docs/manmaster/man1/openssl-s_client.html)
 to retrieve the certificate and compute the remaining time until certificate
@@ -145,10 +145,10 @@ $ ./otelcol --config collector-config.yml
 
 {{% alert title="Note" color="secondary" %}}
 
-For testing, you can utilize the
+For testing, you can use the
 [OpenTelemetry Collector Contrib](https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol-contrib)
 distribution, which includes all available receivers. However, in a production
-setting, it's recommended to
+setting, you can
 [construct your own Collector](/docs/collector/custom-collector/) using the
 OpenTelemetry Collector Builder
 ([`ocb`](https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder)).
@@ -214,7 +214,7 @@ Value: 4356471
 That's it! You can implement the same technique with any other shell script you
 have that reports custom metrics.
 
-## Fine Tuning with the Transform Processor
+## Fine tuning with the Transform Processor
 
 While this approach is straightforward, it has a limitation: it only allows you
 to specify a metric name (`tls.server.not_after.time_left`) and data point
@@ -222,8 +222,9 @@ attributes (`unit: Str(s)`). It does not allow you to set additional details,
 like a [resource](/docs/concepts/resources/), a metric description, or
 particularly, a metric unit.
 
-However, a versatile tool exists that can assist you with this: the
-[Transform Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor)!
+However, the
+[Transform Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor)
+can help you with this.
 By incorporating OpenTelemetry Transformation Language (OTTL) statements into
 your `collector-config.yml`, you can convert the data point attribute `unit`
 into the metric's unit:
