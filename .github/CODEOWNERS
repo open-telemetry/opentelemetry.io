@@ -20,7 +20,7 @@ content-modules/opamp-spec               @open-telemetry/docs-approvers @open-te
 content-modules/opentelemetry-proto      @open-telemetry/docs-approvers @open-telemetry/specs-approvers
 content-modules/opentelemetry-specification  @open-telemetry/docs-approvers @open-telemetry/specs-approvers
 content-modules/semantic-conventions     @open-telemetry/docs-approvers @open-telemetry/specs-semconv-approvers
-content/en/blog/                         @open-telemetry/docs-approvers @open-telemetry/blog-approvers
+content/en/blog/                         @open-telemetry/docs-maintainers
 content/en/community/end-user/           @open-telemetry/docs-approvers @open-telemetry/end-user-wg
 content/en/docs/collector                @open-telemetry/docs-approvers @open-telemetry/collector-approvers
 content/en/docs/demo                     @open-telemetry/docs-approvers @open-telemetry/demo-approvers
