@@ -236,6 +236,7 @@ The `LoggingSpanExporter`, the `LoggingMetricExporter` and the
 If you use
 [SDK auto-configuration](/docs/instrumentation/java/manual/#automatic-configuration)
 all you need to do is update your environment variables:
+
 ```shell
 env OTEL_TRACES_EXPORTER=logging OTEL_METRICS_EXPORTER=logging OTEL_LOGS_EXPORTER=logging  java -jar ./build/libs/java-simple.jar
 ```
@@ -262,7 +263,10 @@ Now following the instruction to setup the [OTLP exporters](#otlp-dependencies).
 
 To send your metric data to [Prometheus](https://prometheus.io/), you can either
 [enable Prometheus' OTLP Receiver](https://prometheus.io/docs/prometheus/latest/feature_flags/#otlp-receiver)
-and use the [OTLP exporter](#otlp) or you can use the [`PrometheusHttpServer`](https://javadoc.io/doc/io.opentelemetry/opentelemetry-exporter-prometheus/latest/io/opentelemetry/exporter/prometheus/PrometheusHttpServer.html), a `MetricReader`, that starts an HTTP server that will collect metrics and serialize to Prometheus text format on request.
+and use the [OTLP exporter](#otlp) or you can use the
+[`PrometheusHttpServer`](https://javadoc.io/doc/io.opentelemetry/opentelemetry-exporter-prometheus/latest/io/opentelemetry/exporter/prometheus/PrometheusHttpServer.html),
+a `MetricReader`, that starts an HTTP server that will collect metrics and
+serialize to Prometheus text format on request.
 
 ### Backend Setup {#prometheus-setup}
 

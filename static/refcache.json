@@ -4167,6 +4167,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-11-17T12:19:45.412666+01:00"
   },
+  "https://javadoc.io/doc/io.opentelemetry/opentelemetry-exporter-prometheus/latest/io/opentelemetry/exporter/prometheus/PrometheusHttpServer.html": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-27T22:03:28.673499+01:00"
+  },
   "https://javadoc.io/doc/io.opentelemetry/opentelemetry-exporter-zipkin/latest": {
     "StatusCode": 200,
     "LastSeen": "2023-11-17T12:19:46.0091+01:00"
