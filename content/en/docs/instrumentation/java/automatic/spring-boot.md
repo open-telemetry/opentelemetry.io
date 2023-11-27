@@ -96,7 +96,6 @@ To enable the logging instrumentation for Logback you have to add the OpenTeleme
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-
 	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
 			<pattern>
@@ -104,16 +103,13 @@ To enable the logging instrumentation for Logback you have to add the OpenTeleme
 			</pattern>
 		</encoder>
 	</appender>
-	
 	<appender name="OpenTelemetry"
 		class="io.opentelemetry.instrumentation.logback.appender.v1_0.OpenTelemetryAppender">
 	</appender>
-
 	<root level="INFO">
 		<appender-ref ref="console"/>
 		<appender-ref ref="OpenTelemetry"/>
 	</root>
-
 </configuration>
 ```
 
@@ -138,7 +134,6 @@ You can find more configuration options for the OpenTelemetry appender in the do
 and
 [Log4j](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/log4j/log4j-appender-2.17/library/README.md)
 instrumentation libraries.
-
 
 ### Other Instrumentation
 
