@@ -59,11 +59,21 @@ dependencies {
 You have two ways to enable the JDBC instrumentation with the OpenTelemetry
 starter.
 
-You can wrap the `DataSource` bean in an
+If your application does not declare `DataSource` bean, you can update your
+`application.properties` file to have the data source URL starting with
+`jdbc:otel:` and set the driver class to
+`io.opentelemetry.instrumentation.jdbc.OpenTelemetryDriver`.
+
+```properties
+spring.datasource.url=jdbc:otel:h2:mem:db
+spring.datasource.driver-class-name=io.opentelemetry.instrumentation.jdbc.OpenTelemetryDriver
+```
+
+You can also wrap the `DataSource` bean in an
 `io.opentelemetry.instrumentation.jdbc.datasource.OpenTelemetryDataSource`:
 
 ```java
-import io.opentelemetry.instrumentation.jdbc.datasource.OpenTelemetryDataSource;
+import io.opentelemetry.instrumentation.jdbc.datasource.JdbcTelemetry;
 
 @Configuration
 public class DataSourceConfig {
@@ -73,20 +83,32 @@ public class DataSourceConfig {
 		DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
 		//Data source configurations
 		DataSource dataSource = dataSourceBuilder.build();
-		return new OpenTelemetryDataSource(dataSource, openTelemetry);
+		return JdbcTelemetry.create(openTelemetry).wrap(dataSource);
 	}
 
 }
 ```
 
-If your application does not declare `DataSource` bean, you can update your
-`application.properties` file to have the data source URL starting with
-`jdbc:otel:` and set the driver class to
-io.opentelemetry.instrumentation.jdbc.OpenTelemetryDriver
+With the datasource configuration, you need to add the following dependency:
 
-```properties
-spring.datasource.url=jdbc:otel:h2:mem:db
-spring.datasource.driver-class-name=io.opentelemetry.instrumentation.jdbc.OpenTelemetryDriver
+{{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
+
+```xml
+<dependencies>
+	<dependency>
+		<groupId>io.opentelemetry.instrumentation</groupId>
+		<artifactId>opentelemetry-jdbc</artifactId>
+		<version>{{% param vers.instrumentation-alpha %}}</version>
+	</dependency>
+</dependencies>
+```
+
+{{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
+
+```groovy
+dependencies {
+	implementation('io.opentelemetry.instrumentation:opentelemetry-jdbc:{{% param vers.instrumentation-alpha %}}')
+}
 ```
 
 ### Logging Instrumentation
