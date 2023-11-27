@@ -111,6 +111,8 @@ dependencies {
 }
 ```
 
+{{% /tab %}} {{< /tabpane>}}
+
 ### Logging Instrumentation
 
 To enable the logging instrumentation for Logback you have to add the OpenTelemetry appender in your `logback.xml` or `logback-spring.xml` file:
