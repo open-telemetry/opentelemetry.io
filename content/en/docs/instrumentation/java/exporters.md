@@ -408,7 +408,7 @@ your Zipkin backend:
 import io.opentelemetry.exporter.zipkin.ZipkinSpanExporter;
 
 SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder()
-        .addSpanProcessor(BatchSpanProcessor.builder(OZipkinSpanExporter.builder().setEndpoint("http://localhost:9411/api/v2/spans").build()).build())
+        .addSpanProcessor(BatchSpanProcessor.builder(ZipkinSpanExporter.builder().setEndpoint("http://localhost:9411/api/v2/spans").build()).build())
         .setResource(resource)
         .build();
 ```
