@@ -27,7 +27,7 @@ Zipkin also run by [docker-compose](https://docs.docker.com/compose/).
 To export to the running Collector the `opentelemetry_exporter` package must be
 added to the project's dependencies:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
+{{< tabpane text=true >}} {{% tab Erlang %}}
 
 ```erlang
 {deps, [{opentelemetry_api, "~> {{% param versions.otelApi %}}"},
@@ -56,7 +56,7 @@ attempts to initialize and use the exporter.
 Example of Release configuration in `rebar.config` and for
 [mix's Release task](https://hexdocs.pm/mix/Mix.Tasks.Release.html):
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
+{{< tabpane text=true >}} {{% tab Erlang %}}
 
 ```erlang
 %% rebar.config
@@ -94,7 +94,7 @@ the HTTP protocol with endpoint of `localhost` on port `4318`. If using `grpc`
 for the `otlp_protocol` the endpoint should be changed to
 `http://localhost:4317`.
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
+{{< tabpane text=true >}} {{% tab Erlang %}}
 
 ```erlang
 %% config/sys.config.src

@@ -1,7 +1,7 @@
 ---
 title: Adding OpenTelemetry support to the Otterize network mapper
 linkTitle: OTel integration for Otterize network mapper
-date: 2023-11-15
+date: 2023-11-17
 author: >-
   [Ori Shoshan](https://github.com/orishoshan) (Otterize), [David G.
   Simmons](https://github.com/davidgs) (Otterize)
@@ -35,7 +35,7 @@ your infrastructure, and export OpenTelemetry data to a Grafana Tempo instance,
 to see a service graph without making any changes to the services deployed in
 your cluster.
 
-[A screenshot showing a Grafana Tempo service graph](otterize-otel.png)
+![A screenshot showing a Grafana Tempo service graph](otterize-otel.png)
 
 This integration was simple: the OpenTelemetry SDK is easy to use and fits like
 a glove into the existing network mapper code.
