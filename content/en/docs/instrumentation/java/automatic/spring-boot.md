@@ -115,7 +115,8 @@ dependencies {
 
 ### Logging Instrumentation
 
-To enable the logging instrumentation for Logback you have to add the OpenTelemetry appender in your `logback.xml` or `logback-spring.xml` file:
+To enable the logging instrumentation for Logback you have to add the
+OpenTelemetry appender in your `logback.xml` or `logback-spring.xml` file:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -137,7 +138,8 @@ To enable the logging instrumentation for Logback you have to add the OpenTeleme
 </configuration>
 ```
 
-For Log4j 2, you have to add the OpenTelemetry appender to your `log4j2.xml` file:
+For Log4j 2, you have to add the OpenTelemetry appender to your `log4j2.xml`
+file:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -153,7 +155,8 @@ For Log4j 2, you have to add the OpenTelemetry appender to your `log4j2.xml` fil
 </Configuration>
 ```
 
-You can find more configuration options for the OpenTelemetry appender in the documentation of the
+You can find more configuration options for the OpenTelemetry appender in the
+documentation of the
 [Logback](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/logback/logback-appender-1.0/library/README.md)
 and
 [Log4j](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/log4j/log4j-appender-2.17/library/README.md)
