@@ -90,12 +90,12 @@ Here is a list of community roles with current and previous members:
 
 - Emeritus approvers:
 
-  - [Paul Bruce](https://github.com/paulsbruce), Tricentis
+  - [Paul Bruce](https://github.com/paulsbruce)
 
 - Emeritus maintainers:
 
-  - [Steve Flanders](https://github.com/flands), Splunk
-  - [Morgan McLean](https://github.com/mtwo), Splunk
+  - [Steve Flanders](https://github.com/flands)
+  - [Morgan McLean](https://github.com/mtwo)
   - [jparsana](https://github.com/jparsana)
 
 Learn more about roles in the [community repository][]. Thanks to [all who have
