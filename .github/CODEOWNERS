@@ -16,10 +16,11 @@
 * @open-telemetry/docs-approvers
 
 # content owners
-content-modules/opamp-spec               @open-telemetry/docs-approvers @open-telemetry/opamp-spec-approvers
-content-modules/opentelemetry-proto      @open-telemetry/docs-approvers @open-telemetry/specs-approvers
-content-modules/opentelemetry-specification  @open-telemetry/docs-approvers @open-telemetry/specs-approvers
-content-modules/semantic-conventions     @open-telemetry/docs-approvers @open-telemetry/specs-semconv-approvers
+content-modules/                         @open-telemetry/docs-maintainers
+content-modules/opamp-spec               @open-telemetry/docs-maintainers @open-telemetry/opamp-spec-approvers
+content-modules/opentelemetry-proto      @open-telemetry/docs-maintainers @open-telemetry/specs-approvers
+content-modules/opentelemetry-specification  @open-telemetry/docs-maintainers @open-telemetry/specs-approvers
+content-modules/semantic-conventions     @open-telemetry/docs-maintainers @open-telemetry/specs-semconv-approvers
 content/en/blog/                         @open-telemetry/docs-maintainers
 content/en/community/end-user/           @open-telemetry/docs-approvers @open-telemetry/end-user-wg
 content/en/docs/collector                @open-telemetry/docs-approvers @open-telemetry/collector-approvers
