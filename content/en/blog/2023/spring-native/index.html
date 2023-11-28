@@ -1,0 +1,17 @@
+---
+title: Observe your Spring native application with OpenTelemetry instrumentation
+linkTitle: OTel Spring native
+date: 2023-11-28
+author: >-
+[Jean Bisutti](https://github.com/jeanbisutti) (Microsoft)
+cSpell:ignore:
+---
+
+{{< blog/integration-badge >}}
+
+You have just built a [Spring Boot native image application)(https://docs.spring.io/spring-boot/docs/current/reference/html/native-image.html). But what about observability?
+
+You can enable OpenTelemetry instrumentation for your Spring Boot native image application with the _OpenTelemetry starter_. Just follow the instructions provided [here](https://opentelemetry.io/docs/instrumentation/java/automatic/spring-boot/#configuration).
+
+You can also play with [this Spring Boot native image application](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/spring-native#opentelemetry-spring-native-example)
+and look at the HTTP requests, logs, and SQL requests telemetry data.
