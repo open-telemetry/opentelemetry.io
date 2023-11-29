@@ -37,7 +37,7 @@
 - name: Better Stack
   distribution: false
   nativeOTLP: true
-  url: 'https://betterstack.com/logs'
+  url: https://betterstack.com/docs/logs/open-telemetry/#2-setup
   contact: 'hello@betterstack.com'
   oss: false
   commercial: true
