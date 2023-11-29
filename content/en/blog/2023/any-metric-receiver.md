@@ -50,11 +50,11 @@ expiration:
 
 ```shell
 #!/bin/bash
-URL=${1}
+HOST=${1}
 PORT=${2:-443}
 
 now=$(date +%s)
-str=$(echo q | openssl s_client -servername "${URL}" "${URL}:${PORT}" 2>/dev/null | openssl x509 -noout -enddate | awk -F"=" '{ print $2; }')
+str=$(echo q | openssl s_client -servername "${HOST}" "${HOST}:${PORT}" 2>/dev/null | openssl x509 -noout -enddate | awk -F"=" '{ print $2; }')
 notAfter=$(date -d "${str}" +%s)
 
 secondsLeft=$(($notAfter-$now))
@@ -76,22 +76,22 @@ the script's last few lines to output a metric in Carbon format:
 
 ```shell {hl_lines=[12]}
 #!/bin/bash
-URL=${1}
+HOST=${1}
 PORT=${2:-443}
 
 now=$(date +%s)
-str=$(echo q | openssl s_client -servername "${URL}" "${URL}:${PORT}" 2>/dev/null | openssl x509 -noout -enddate | awk -F"=" '{ print $2; }')
+str=$(echo q | openssl s_client -servername "${HOST}" "${HOST}:${PORT}" 2>/dev/null | openssl x509 -noout -enddate | awk -F"=" '{ print $2; }')
 notAfter=$(date -d "${str}" +%s)
 
 secondsLeft=$(($notAfter-$now))
 
-metricName="tls.server.not_after.time_left;unit=s"
-echo "${metricName} ${secondsLeft} ${now}"
+metricPath="tls.server.not_after.time_left;unit=s"
+echo "${metricPath} ${secondsLeft} ${now}"
 ```
 
-In doing so, the script will set the `metric path` to
-`tls.server.not_after.time_left;unit=s`, the `metric value` to `${secondsLeft}`,
-and the `metric timestamp` to `${now}`.
+In doing so, the script will output `<metric path>` as
+`tls.server.not_after.time_left;unit=s`, the `<metric value>` as `${secondsLeft}`,
+and the `<metric timestamp>` as `${now}`.
 
 That's all we need to do to send our metric to the OpenTelemetry Collector with
 the Carbon Receiver enabled.
@@ -207,7 +207,7 @@ have that reports custom metrics.
 
 ## Fine tuning with the Transform Processor
 
-The Carbon Receiver split the `metric path` and `;` as a delimiter to extract
+The Carbon Receiver split the `<metric path>` using `;` as a delimiter to extract
 the metric name (first item) and data point attributes (all other items). In our
 example, this means that the metric name will be
 `tls.server.not_after.time_left` and there will be the data point attribute
@@ -282,8 +282,8 @@ Value: 4356471
 ```
 
 If you wish to associate your metric with a
-[service](/docs/specs/semconv/resource/#service) that you've instrumented with
-OpenTelemetry, you can initially add them to your shell script as attributes:
+[service](/docs/specs/semconv/resource/#service) that you've instrumented using
+OpenTelemetry, you can initially add `service.name` and `service.namespace` to your shell script as data point attributes:
 
 ```shell
 metricName="tls.server.not_after.time_left;unit=s;service.name=otel-webserver;service.namespace=opentelemetry.io"
@@ -339,24 +339,26 @@ Value: 4349619
 	{"kind": "exporter", "data_type": "metrics", "name": "debug"}
 ```
 
-The Transform Processor and OTTL offer a wide range of capabilities. You can
-learn more by reviewing the
-[OTTL README.md](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/ottl/README.md)
-and watching the talk
-[OTTL Me Why Transforming Telemetry in the OpenTelemetry Collector Just Got Better](https://www.youtube.com/watch?v=uVs0oUV72CE)
-by [Tyler Helmuth](https://github.com/TylerHelmuth) and
-[Evan Bradley](https://github.com/evan-bradley). With this you are ready to
-receive any custom metric with the OpenTelemetry Collector!
+The Transform Processor and OTTL offer a wide range of capabilities. Learn more from:
+
+- [OTTL README.md](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/ottl/README.md)
+- [OTTL Me Why Transforming Telemetry in the OpenTelemetry Collector Just Got
+  Better](https://www.youtube.com/watch?v=uVs0oUV72CE), a talk by
+  [Tyler Helmuth](https://github.com/TylerHelmuth) and [Evan
+  Bradley](https://github.com/evan-bradley)
+
+With this, you are ready to receive any custom metric with the OpenTelemetry
+Collector!
 
 ## Bonus: Use OTLP!
 
 While the use of the Carbon Receiver and the Transform Processor is a dependable
 method to gather custom metrics, it may seem unconventional to use an external
 format to import metrics into OpenTelemetry, especially when the
-[OpenTelemetry Protocol](/docs/specs/otlp/) (OTLP) provides everything you need!
+[OpenTelemetry Protocol](/docs/specs/otlp/) (OTLP) provides everything you need.
 
-So, as an alternative to using the Carbon Receiver, you can also transmit a
-custom metric using
+As an alternative to using the Carbon Receiver, you can also transmit a
+custom metrics using
 [OTLP JSON](https://github.com/open-telemetry/opentelemetry-proto/tree/main/examples):
 
 ```shell
@@ -437,7 +439,7 @@ Execute your updated `ssl_check.sh`:
 This time, your metric will be presented with the correct unit set and the
 resource reported as defined in your JSON:
 
-```shell
+```
 2023-11-24T15:28:51.212+0100	info	ResourceMetrics #0
 Resource SchemaURL:
 Resource attributes:
@@ -465,15 +467,11 @@ or incorporate metrics (with gauge support) into your preferred OTel CLI tool!
 
 ## Summary
 
-In this blog post you learned how you can use a _catch-all_ receiver like the
-Carbon Receiver to feed any metric into your OpenTelemetry Collector. This
-approach is recommended, if none of the available receivers meets your needs,
-and if writing your own receiver is to time consuming to accomplish your goal,
-because you are not familiar with Go or you don't have the bandwidth to rewrite
-your existing solution (a shell script) to Go.
+In this post you learned how to use a _catch-all_ receiver like the
+Carbon Receiver to feed any metric into your OpenTelemetry Collector.
+Use this approach when none of the available receivers meet your needs and you don't want to write your won receiver in Go.
 
-As outlook, you learned about the possibility to send your metrics to the
-OpenTelemetry Collector directly using OTLP and `curl`. This approach is
-recommended, if you can not modify the pipelines of your OpenTelemetry
+You learned how to send your metrics to the
+OpenTelemetry Collector directly using OTLP and `curl`. Use this approach when you cannot modify the pipelines of your OpenTelemetry
 collector. It will also become a valid alternative to _catch-all_ receivers with
 the availability of command line tools that export metrics via OTLP.
