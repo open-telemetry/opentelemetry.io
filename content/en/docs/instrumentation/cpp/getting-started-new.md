@@ -24,83 +24,173 @@ Ensure that you have the following installed locally:
 The following example uses a basic [Oat++](https://oatpp.io/) application. If you are 
 not using Oat++, that's OK - you can use OpenTelemetry C++ with any other web framework as well.
 
+## Setup 
+- Create a folder named `Opentelemetry-Starter-Project`.
+- move into the newly created folder. This will serve as your working directory.
+- Directory Structure: 
+   ```plaintext 
+   Opentelemetry-Starter-Project
+   │
+   ├── oatpp
+   ├── opentelemetry-cpp
+   └── roll-dice
+
+   ```
+  
+
 ## Dependencies 
 
 **To begin, we will install Oatpp locally using the [source code](https://github.com/oatpp) and `make`, following these general steps:**
 
 1. Download oatpp source code:
 
-Obtain the oatpp source code. You can either download the source code from the oatpp GitHub repository or clone it using Git.
+   Obtain the oatpp source code. You can either download the source code from the oatpp GitHub repository or clone it using Git.
 
-```bash 
-git clone https://github.com/oatpp/oatpp.git
-```
+   ```bash 
+   git clone https://github.com/oatpp/oatpp.git
+   ```
 
 2. Navigate to the oatpp directory:
 
-Access the oatpp directory in your terminal.
+   Access the oatpp directory in your terminal.
 
-```bash 
-cd oatpp
-```
+   ```bash 
+   cd oatpp
+   ```
 
-3. Build oatpp:
+3. Navigate to the build subdirectory:
 
-Build oatpp using the `make` command. This command will trigger the build process specified in the Makefile included in the oatpp source code.
+   Access the build subdirectory in your terminal, where your `Makefile` is located.
 
-```bash
-make
-```
-4. Install oatpp:
+   ```bash
+   cd build
+   ```
 
-This command will install the built oatpp library and headers on your system, making it accessible for development in your project. 
+4. Build oatpp:
 
-```bash
-make install
-```
+   Build oatpp using the `make` command. This command will trigger the build process specified in the Makefile included in the oatpp source code.
+
+   ```bash
+   make
+   ```
+
+5. Install oatpp:
+
+   This command will install the built oatpp library and headers on your system, making it accessible for development in your project. 
+
+   ```bash
+   make install
+   ```
+
+oatpp directory structure should look something like this:
+```scss 
+   oatpp/
+   │
+   ├── CMakeLists.txt
+   ├── src/
+   |   ├── oatpp/
+   |   |   ├── network/
+   |   |   |   └── ... (network library headers and source files) 
+   |   |   ├── web/
+   |   |   |   └── ... (web library headers and source files) 
+   |   |   └── ... (other oatpp moduels) 
+   |   |    
+   |   ├── oatpp-test/
+   |   |
+   |   └── CMakeLists.txt (oatpp root CMake configuration file)  
+   ├── build/
+   |   ├── Makefile
+   |   ├── src/
+   |   ├── CMakeFiles/
+   |   |   └── ... (CMake build-related files) 
+   |   └── ... (other build-related files)
+   |   
+   ├── test/
+   ├── cmake/
+   └── ...(other oatpp subdirectories)
+
+``` 
 
 **Next, install and build [OpenTelemetry C++](https://github.com/open-telemetry/opentelemetry-cpp) locally using CMake, following these general steps:**
 
 1. Clone the OpenTelemetry C++ repository:
 
-Clone the OpenTelemetry C++ GitHub repository to your local machine.
+   Navigate back to the `Opentelemetry-Starter-Project` directory. Then, clone the OpenTelemetry C++ GitHub repository to your local machine.
 
-```bash
-git clone https://github.com/open-telemetry/opentelemetry-cpp.git
-```
+   ```bash
+   git clone https://github.com/open-telemetry/opentelemetry-cpp.git
+   ```
 
 2. Navigate to the OpenTelemetry C++ SDK directory:
 
-Change your working directory to the OpenTelemetry C++ SDK directory.
+   Change your working directory to the OpenTelemetry C++ SDK directory.
 
-```bash
-cd openTelemetry-cpp
-```
+   ```bash
+   cd openTelemetry-cpp
+   ```
 
 3. Create a build directory:
 
-It's a good practice to create a separate directory for the build files to keep your source directory clean.
+   It's a good practice to create a separate directory for the build files to keep your source directory clean.
 
-```bash
-mkdir build
-cd build 
-```
+   ```bash
+   mkdir build
+   cd build 
+   ```
 
 4. Configure and generate the build system:
 
-Run the CMake from the build directory to configure the build.
+   Run the CMake from the build directory to configure the build.
 
-```bash
-cmake ..
-```
+   ```bash
+   cmake ..
+   ```
+   or 
+   ```bash
+   cmake -DWITH_ABSEIL=ON ..
+   ```
 
 5. Build the project:
 
-After configuring the build system, execute the build process.
+   After configuring the build system, execute the build process.
 
-```bash
-cmake --build .
-```
+   ```bash
+   cmake --build .
+   ```
+
+OpenTelemetry C++ SDK directory structure should look something like this:
+```scss 
+   opentelemetry-cpp/
+   │
+   ├── CMakeLists.txt
+   ├── sdk/
+   |   ├── CMakeLists.txt (oatpp root CMake configuration file) 
+   |   ├── src/
+   |   |   └── ... (SDK source files) 
+   |   |    
+   |   ├── include/
+   |   |   └── opentelemetry/
+   |   |       └── sdk/
+   |   |           ├── ... (SDK headers)
+   |   |
+   |   └── ... (other SDK-related files or subsirectories)  
+   |   
+   ├── build/
+   |   ├── Makefile 
+   |   ├── CMakeFiles/
+   |   |   └── ... (CMake-generated files and configuration) 
+   |   └── ... (other build-related files)
+   |   
+   ├── api/
+   |   ├──CMakeLists.txt (CMake configuration file for the API)
+   |   ├── include/
+   |   |   └── opentelemetry/
+   |   |       └── ... (API headers) 
+   |   └── ... (other API-related files or subdirectories)
+   | 
+   └── ...(other opentelemetry-cpp file or subdirectories)
+
+``` 
 
 **Finally, create a new project directory called `roll-dice`.**
 
@@ -130,7 +220,7 @@ set(SOURCES
 # Create an executable target
 add_executable(myapp ${SOURCES})
 
-set(OATPP_ROOT /path/to/oatpp)
+set(OATPP_ROOT ../oatpp)
 set(OATPP_LIB /path/to/oatpp/lib)
 
 #set the path to the directory containing "oatpp" package configuration files 
@@ -138,7 +228,7 @@ include_directories(${OATPP_ROOT}/src)
 target_link_libraries(myapp PRIVATE ${OATPP_LIB}/liboatpp.a)
 
 ```
-Replace `/path/to/oatpp` and `/path/to/oatpp/lib` with the actual path leading to the oatpp and oatpp library header files within your local installation.
+Replace `/path/to/oatpp/lib` with the actual path leading to oatpp library header files within your local installation.
 
 **Note:**
 
@@ -241,9 +331,9 @@ set(SOURCES
 # Create an executable target
 add_executable(myapp ${SOURCES})
 
-set(OATPP_ROOT /path/to/oatpp)
+set(OATPP_ROOT ../oatpp)
 set(OATPP_LIB /path/to/oatpp/lib)
-set(OPENTELEMETRY_ROOT /path/to/opentelemetry-cpp)
+set(OPENTELEMETRY_ROOT ../opentelemetry-cpp)
 
 #set the path to the directory containing "oatpp" package configuration files 
 include_directories(${OATPP_ROOT}/src)
@@ -259,7 +349,6 @@ target_link_libraries(myapp PRIVATE ${OPENTELEMETRY_ROOT}/build/sdk/src/trace/li
  ${OPENTELEMETRY_ROOT}/build/exporters/ostream/libopentelemetry_exporter_ostream_span.a
  ${OPENTELEMETRY_ROOT}/build/sdk/src/resource/libopentelemetry_resources.a)
 ```
-Replace `/path/to/opentelemetry-cpp` with the actual path leading to the opentelemetry-cpp SDK within your local installation.
 
 **OpenTelemetry tracing configuration:**
 
