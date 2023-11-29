@@ -2,23 +2,15 @@
 title: Receive any custom metric with the OpenTelemetry Collector
 linkTitle: Any Metric Receiver
 date: 2023-11-28
-author: '[Severin Neumann](https://github.com/svrnm), Cisco'
+author: '[Severinq Neumann](https://github.com/svrnm), Cisco'
 # prettier-ignore
 cspell:ignore: openssl servername noout enddate gomod debugexporter otlpexporter otlphttpexporter transformprocessor otlpreceiver carbonreceiver ottl datapoint webserver Helmuth
 ---
 
-If you're a frequent user of OpenTelemetry (OTel) or have read the
-[Observability Primer](/docs/concepts/observability-primer/), you'll be well
-aware of how instrumental OpenTelemetry is _to easily troubleshoot and handle
-novel problems (i.e. “unknown unknowns”)_. However, there may be times when you
-need to address the familiar, mundane aspects, such as monitoring system
-metrics, or setting up alerts to draw your attention to potential issues. These
-metrics could range from host metrics like disk usage, server availability, or
-even the expiration date of your SSL certificates.
-
-The beauty of a solution like OpenTelemetry is that it doesn't just help with
-the _"unknown"_, but can also streamline the management of the _"known"_. This
-can be achieved by utilizing any one of the
+While OpenTelemetry (OTel) is here to help you with troubleshooting and handling
+the _"unknown unknowns"_, it is also instrumental for managing route tasks like
+monitoring system metrics, like disk usage, server availability or SSL
+certificate expiration dates. This can be achieved by utilizing any one of the
 [90+ receivers](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver)
 available for the [OpenTelemetry Collector](/docs/collector), such as the
 [Host Metrics Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver)
@@ -51,8 +43,8 @@ is ideal for use with shell scripts. Its protocol is incredibly straightforward:
 
 ## Example script: Check certificate expiration
 
-Consider the following shell script, which accepts a host name as an argument, and
-uses
+Consider the following shell script, which accepts a host name as an argument,
+and uses
 [`openssl s_client`](https://www.openssl.org/docs/manmaster/man1/openssl-s_client.html)
 to retrieve the certificate and compute the remaining time until certificate
 expiration:
@@ -216,18 +208,21 @@ have that reports custom metrics.
 
 ## Fine tuning with the Transform Processor
 
-While this approach is straightforward, it has a limitation: it only allows you
-to specify a metric name (`tls.server.not_after.time_left`) and data point
-attributes (`unit: Str(s)`). It does not allow you to set additional details,
-like a [resource](/docs/concepts/resources/), a metric description, or
+The Carbon Receiver split the `metric path` and `;` as a delimiter to extract
+the metric name (first item) and data point attributes (all other items). In our
+example, this means that the metric name will be
+`tls.server.not_after.time_left` and there will be the data point attribute
+`unit: Str(s)`.
+
+While being straightforward, this approach does not allow you to set any other
+details, like a [resource](/docs/concepts/resources/), a metric description, or
 particularly, a metric unit.
 
 However, the
 [Transform Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor)
-can help you with this.
-By incorporating OpenTelemetry Transformation Language (OTTL) statements into
-your `collector-config.yml`, you can convert the data point attribute `unit`
-into the metric's unit:
+can help you with this. By incorporating OpenTelemetry Transformation Language
+(OTTL) statements into your `collector-config.yml`, you can convert the data
+point attribute `unit` into the metric's unit:
 
 ```yaml {hl_lines=["13-19",24]}
 receivers:
@@ -359,8 +354,7 @@ receive any custom metric with the OpenTelemetry Collector!
 While the use of the Carbon Receiver and the Transform Processor is a dependable
 method to gather custom metrics, it may seem unconventional to use an external
 format to import metrics into OpenTelemetry, especially when the
-[OpenTelemetry Protocol](https://opentelemetry.io/docs/specs/otlp/) (OTLP)
-provides everything you need!
+[OpenTelemetry Protocol](/docs/specs/otlp/) (OTLP) provides everything you need!
 
 So, as an alternative to using the Carbon Receiver, you can also transmit a
 custom metric using
@@ -469,3 +463,18 @@ Working with JSON in shell scripts isn't particularly desirable, as this example
 clearly demonstrates! While there are methods for improvement, you may
 ultimately find it more efficient to use a language such as Python or Node.js,
 or incorporate metrics (with gauge support) into your preferred OTel CLI tool!
+
+## Summary
+
+In this blog post you learned how you can use a _catch-all_ receiver like the
+Carbon Receiver to feed any metric into your OpenTelemetry Collector. This
+approach is recommended, if none of the available receivers meets your needs,
+and if writing your own receiver is to time consuming to accomplish your goal,
+because you are not familiar with Go or you don't have the bandwidth to rewrite
+your existing solution (a shell script) to Go.
+
+As outlook, you learned about the possibility to send your metrics to the
+OpenTelemetry Collector directly using OTLP and `curl`. This approach is
+recommended, if you can not modify the pipelines of your OpenTelemetry
+collector. It will also become a valid alternative to _catch-all_ receivers with
+the availability of command line tools that export metrics via OTLP.
