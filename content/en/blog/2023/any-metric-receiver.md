@@ -2,7 +2,7 @@
 title: Receive any custom metric with the OpenTelemetry Collector
 linkTitle: Any Metric Receiver
 date: 2023-11-28
-author: '[Severinq Neumann](https://github.com/svrnm), Cisco'
+author: '[Severin Neumann](https://github.com/svrnm), Cisco'
 # prettier-ignore
 cspell:ignore: openssl servername noout enddate gomod debugexporter otlpexporter otlphttpexporter transformprocessor otlpreceiver carbonreceiver ottl datapoint webserver Helmuth
 ---
@@ -19,8 +19,7 @@ or the [HTTP Check Receiver](/blog/2023/synthetic-testing/).
 But what if the available receivers don't meet your specific needs? Suppose you
 have a collection of shell scripts that provide custom metrics, and you want to
 export these to the OpenTelemetry Collector. You could write your own receiver,
-but this would require proficiency in Go programming language and potentially
-converting your scripts to Go.
+but this would require proficiency in Go.
 
 Before embarking on this path, consider examining the available receivers more
 closely: Some of them are capable of assimilating metrics in different
@@ -28,7 +27,7 @@ formats—like
 [Carbon](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/carbonreceiver),
 [StatsD](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/statsdreceiver),
 [InfluxDB](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/influxdbreceiver),
-[Prometheus](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver)
+[Prometheus](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver),
 and even
 [SNMP](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/snmpreceiver)—and
 integrating them into the OpenTelemetry ecosystem. With minor tweaks to your
