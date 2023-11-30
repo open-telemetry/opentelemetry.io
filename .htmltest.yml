@@ -4,6 +4,7 @@ IgnoreDirectoryMissingTrailingSlash: true
 IgnoreAltMissing: true
 IgnoreCanonicalBrokenLinks: false
 CheckMailto: false
+TestFilesConcurrently: true
 IgnoreDirs:
   - ^blog/(\d+/)?page/\d+
 IgnoreInternalURLs: # list of paths
