@@ -191,6 +191,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T13:39:27.033525-04:00"
   },
+  "https://betterstack.com/docs/logs/open-telemetry/#2-setup": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-30T09:17:13.941735+01:00"
+  },
   "https://blog.logrocket.com/understanding-schema-stitching-graphql/": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T13:40:18.37311-04:00"
