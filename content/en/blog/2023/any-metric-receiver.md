@@ -4,7 +4,7 @@ linkTitle: Any Metric Receiver
 date: 2023-11-28
 author: '[Severin Neumann](https://github.com/svrnm), Cisco'
 # prettier-ignore
-cspell:ignore: openssl servername noout enddate gomod debugexporter otlpexporter otlphttpexporter transformprocessor otlpreceiver carbonreceiver ottl datapoint webserver Helmuth
+cSpell:ignore: carbonreceiver datapoint debugexporter enddate gomod helmuth noout openssl otlpexporter otlphttpexporter otlpreceiver ottl servername transformprocessor webserver
 ---
 
 While OpenTelemetry (OTel) is here to help you with troubleshooting and handling
