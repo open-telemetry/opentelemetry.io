@@ -3,7 +3,10 @@ title: Receive any custom metric with the OpenTelemetry Collector
 linkTitle: Any Metric Receiver
 date: 2023-11-28
 author: '[Severin Neumann](https://github.com/svrnm), Cisco'
-cspell:ignore: openssl servername noout enddate gomod debugexporter otlpexporter otlphttpexporter transformprocessor otlpreceiver carbonreceiver ottl datapoint webserver Helmuth
+cspell:ignore:
+  openssl servername noout enddate gomod debugexporter otlpexporter
+  otlphttpexporter transformprocessor otlpreceiver carbonreceiver ottl datapoint
+  webserver Helmuth
 ---
 
 While OpenTelemetry (OTel) is here to help you with troubleshooting and handling
