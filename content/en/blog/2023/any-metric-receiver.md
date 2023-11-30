@@ -1,7 +1,7 @@
 ---
 title: Receive any custom metric with the OpenTelemetry Collector
 linkTitle: Any Metric Receiver
-date: 2023-11-28
+date: 2023-11-30
 author: '[Severin Neumann](https://github.com/svrnm), Cisco'
 # prettier-ignore
 cSpell:ignore: carbonreceiver datapoint debugexporter enddate gomod helmuth noout openssl otlpexporter otlphttpexporter otlpreceiver ottl servername transformprocessor webserver
@@ -132,7 +132,7 @@ service:
 For instance, if you've saved this file as `collector-config.yml`, execute the
 following command:
 
-```shell
+```console
 $ ./otelcol --config collector-config.yml
 2023-11-24T12:52:51.340+0100	info	service@v0.89.0/telemetry.go:85	Setting up own telemetry...
 2023-11-24T12:52:51.341+0100	info	service@v0.89.0/telemetry.go:202	Serving Prometheus metrics	{"address": ":8888", "level": "Basic"}
