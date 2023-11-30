@@ -275,14 +275,6 @@ body.td-page--draft .td-content {
   }
 }
 
-// TODO(@chalin): upstream
-.tab-body {
-  > .highlight:only-child {
-    margin: -1.5rem;
-    max-width: calc(100% + 3rem);
-  }
-}
-
 details {
   margin-bottom: $paragraph-margin-bottom;
 }
