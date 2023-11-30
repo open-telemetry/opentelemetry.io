@@ -23,7 +23,7 @@ following commands:
 helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
 helm install my-opentelemetry-operator open-telemetry/opentelemetry-operator \
   --set admissionWebhooks.certManager.enabled=false \
-  --set admissionWebhooks.certManager.autoGenerateCert=true
+  --set admissionWebhooks.certManager.autoGenerateCert.enabled=true
 ```
 
 This will install an OpenTelemetry Operator with a self-signed certificate and
@@ -51,12 +51,12 @@ generate/configure the required TLS certificate.
   requires the installation of cert-manager.
 - You can use an automatically generated self-signed certificate by setting
   `admissionWebhooks.certManager.enabled` to `false` and
-  `admissionWebhooks.autoGenerateCert` to `true`. Helm will create a self-signed
-  cert and a secret for you.
+  `admissionWebhooks.autoGenerateCert.enabled` to `true`. Helm will create a
+  self-signed cert and a secret for you.
 - You can use your own generated self-signed certificate by setting both
   `admissionWebhooks.certManager.enabled` and
-  `admissionWebhooks.autoGenerateCert` to `false`. You should provide the
-  necessary values to `admissionWebhooks.cert_file`,
+  `admissionWebhooks.autoGenerateCert.enabled` to `false`. You should provide
+  the necessary values to `admissionWebhooks.cert_file`,
   `admissionWebhooks.key_file`, and `admissionWebhooks.ca_file`.
 - You can side-load custom webhooks and certificate by disabling
   `.Values.admissionWebhooks.create` and `admissionWebhooks.certManager.enabled`
