@@ -50,7 +50,7 @@ To follow this tutorial you need the following
    telemetrygen traces --otlp-insecure --duration 5s
    ```
 
-   After five seconds, `telemetrygen` stops and shows the sended messages in the
+   After five seconds, `telemetrygen` stops and shows the sent messages in the
    console:
 
    ```text
