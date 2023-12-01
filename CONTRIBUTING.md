@@ -266,6 +266,17 @@ the production server.
 To see deploy logs and more, visit project's [dashboard][] -- Netlify login
 required.
 
+## Approver and Maintainer practices
+
+This last section includes guidelines and some common practices used by approvers and maintainers while doing code reviews:
+
+* PRs with changes to documentation co-owned by a SIG (collector, demo, language-specific...) should aim for two approvals: one by a docs approver and one by a SIG approver:
+  * Doc approver label such PRs with `sig:<name>` and tag the SIG `-approvers` group on that PR
+  * If no SIG approval is given within a certain grace period, docs maintainer may use their own judgement to merge that PR
+* If the PR branch is `out-of-date with the base branch`, they do not need to be updated continously: every update triggers all the PR CI checks to be run! It's often enough to update them before merging.
+* A PR by non-maintainers should **never** update git sub modules. This happens by accident from time to time. Let the PR author know that they should not worry about it, we will fix this before merging, but in the future they should make sure that they work from an up-to-date fork.
+* Words unknown to cspell should be added to the cspell ignore list per page by PR authors. Only approvers and maintainers will add commonly used terms to the global list.
+
 [.nvmrc]: .nvmrc
 [clone]:
   https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
