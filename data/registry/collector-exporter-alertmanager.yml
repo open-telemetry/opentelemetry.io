@@ -1,0 +1,18 @@
+# cSpell:ignore alertmanager
+title: Alertmanager Exporter
+registryType: exporter
+isThirdParty: false
+language: collector
+tags:
+  - alertmanager
+  - prometheus
+  - exporter
+  - collector
+repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/alertmanagerexporter
+license: Apache 2.0
+description:
+  Exports OTEL Events (SpanEvent in Tracing added by AddEvent API) as Alerts to
+  [Alertmanager] (https://prometheus.io/docs/alerting/latest/alertmanager/)
+  back-end to notify Errors or Change events.
+authors: OpenTelemetry Authors
+otVersion: latest

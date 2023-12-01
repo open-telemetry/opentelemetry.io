@@ -3,11 +3,12 @@ registryType: instrumentation
 isThirdParty: false
 language: go
 tags:
-  - go
+  - mux
   - instrumentation
-  - http
-repo: https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/instrumentation/github.com/gorilla/mux
+  - go
+repo: https://go.opentelemetry.io/contrib/instrumentation/github.com/gorilla/mux
 license: Apache 2.0
-description: Go contrib plugin for the gorilla/mux package.
+description:
+  Package mux provides functions to trace the gorilla/mux package
 authors: OpenTelemetry Authors
 otVersion: latest
