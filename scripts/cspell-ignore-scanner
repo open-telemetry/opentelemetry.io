@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+# This script scans directories content, layouts, data for files with "cSpell:ignore" in them and then prints how often a certain word has been added to an ignore list
+# This helps to add new words to the .vscode/cspell.json file
+# 
+
+DIRECTOR=${1:-.}
+grep "cSpell:ignore" content layouts data -Ri ${DIRECTORY} | awk -F"cSpell:ignore" '{ print $2; }' | sed 's/^://; s/^[ \t]*//; s/[*\/}>-]//g'| tr ' ' '\n' | tr '[:upper:]' '[:lower:]' | sort | uniq -c | sort -n
