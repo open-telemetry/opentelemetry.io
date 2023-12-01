@@ -483,7 +483,7 @@ or incorporate metrics (with gauge support) into your preferred OTel CLI tool!
 In this post you learned how to use a _catch-all_ receiver like the Carbon
 Receiver to feed any metric into your OpenTelemetry Collector. Use this approach
 when none of the available receivers meet your needs and you don't want to write
-your won receiver in Go.
+your own receiver in Go.
 
 You learned how to send your metrics to the OpenTelemetry Collector directly
 using OTLP and `curl`. Use this approach when you cannot modify the pipelines of
