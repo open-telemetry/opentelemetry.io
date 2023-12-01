@@ -36,9 +36,8 @@ alerting and tooling for finding the root cause.
 
 ### **Attribute**
 
-A key-value pair. Used across telemetry signals - e.g. in [`Traces`](#trace) to
-attach data to a [`Span`](#span), or in [`Metrics`](#metric). See [attribute
-spec][attribute].
+See [`Metadata`](#metadata). Used across [`Signals`](#signal) and [`Resources`]
+(#resource). See [attributespec][attribute].
 
 ### **Automatic Instrumentation**
 
@@ -48,7 +47,7 @@ examples include bytecode injection or monkey patching.
 
 ### **Baggage**
 
-A mechanism for propagating name/value pairs to help establish a causal
+A mechanism for propagating [`Metadata`](#metadata) to help establish a causal
 relationship between events and services. See [baggage spec][baggage].
 
 ### **Client Library**
@@ -93,7 +92,7 @@ See [`Signal`](#signal)
 
 ### **Dimension**
 
-See [`Label`](#label).
+Term used specifically for [`Metrics`](#metric). See [`Attribute`](#attribute).
 
 ### **Distributed Tracing**
 
@@ -118,9 +117,8 @@ pull-based.
 
 ### **Field**
 
-Name/value pairs added to [`Log Records`](#log-record) (similar to
-[`Attributes`](#attribute) for [`Spans`](#span) and [`Labels`](#label) for
-[`Metrics`](#metric)). See [field spec][field].
+Term used specifically for [`Log Records`](#log-record). See [`Attribute`](#attribute)
+and the [field spec][field].
 
 ### **gRPC**
 
@@ -152,7 +150,7 @@ Short for [JavaScript Object Notation][json].
 
 ### **Label**
 
-See [Attribute](#attribute).
+Term used specifically for [`Metrics`](#metric). See [`Attribute`](#attribute).
 
 ### **Language**
 
@@ -178,9 +176,10 @@ describes what happened, where it happened, etc. See [more][log record].
 
 ### **Metadata**
 
-A name/value pair added to telemetry data. OpenTelemetry calls this
-[`Attributes`](#attribute) on [`Spans`](#span), [`Labels`](#label) on
-[`Metrics`](#metric) and [`Fields`](#field) on [`Logs`](#log).
+A name/value pair (e.g. `foo="bar"`) added to telemetry data. OpenTelemetry
+generally calls this [`Attributes`](#attribute) though [`Metrics`](#metric)
+have [`Dimensions`](#dimension) and [`Labels`](#label) while [`Logs](#log)
+have [`Fields`](#field).
 
 ### **Metric**
 
