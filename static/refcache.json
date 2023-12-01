@@ -2019,6 +2019,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-10-26T12:18:58.23681+02:00"
   },
+  "https://github.com/TylerHelmuth": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-24T16:20:25.682993+01:00"
+  },
   "https://github.com/Workiva/opentelemetry-dart": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:34:38.397928-04:00"
@@ -3982,6 +3986,10 @@
   "https://grafana.com/oss/tempo/": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T16:11:25.544037-04:00"
+  },
+  "https://graphite.readthedocs.io/en/stable/feeding-carbon.html#the-plaintext-protocol": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-24T16:20:23.626654+01:00"
   },
   "https://graphiteapp.org/": {
     "StatusCode": 200,
@@ -6422,6 +6430,10 @@
   "https://www.openpolicyagent.org/docs/latest/monitoring/#opentelemetry": {
     "StatusCode": 206,
     "LastSeen": "2023-10-16T20:09:53.898397+02:00"
+  },
+  "https://www.openssl.org/docs/manmaster/man1/openssl-s_client.html": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-24T16:20:23.86666+01:00"
   },
   "https://www.oracle.com/technical-resources/articles/javase/jmx.html": {
     "StatusCode": 200,
