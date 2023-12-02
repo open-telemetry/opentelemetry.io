@@ -19,7 +19,7 @@ In order to set up OpenTelemetry instrumentation for
 [Phoenix](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_phoenix/),
 and
 [Ecto](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_ecto/),
-, we need to call the setup methods of their instrumentation packages before
+we need to call the setup methods of their instrumentation packages before
 starting the Supervisor.
 
 This is done in the `application.ex` as follows:
