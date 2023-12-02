@@ -94,6 +94,7 @@ jobs:
       contains(github.event.comment.body, '/fix:refcache')
     permissions:
       contents: write
+      pull-requests: write
 
     env:
       DEPTH: --depth 100 # submodule clone depth

@@ -4,6 +4,9 @@ IgnoreDirectoryMissingTrailingSlash: true
 IgnoreAltMissing: true
 IgnoreCanonicalBrokenLinks: false
 CheckMailto: false
+TestFilesConcurrently: true
+IgnoreDirs:
+  - ^blog/(\d+/)?page/\d+
 IgnoreInternalURLs: # list of paths
 IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^/docs/instrumentation/\w+/(api|examples)/$
@@ -17,6 +20,9 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^https?://localhost\b
   - ^https?://127\.0\.0\.1\b
   - ^https?://(otel-demo|traefik)\.localhost
+
+  # OpAMP spec:
+  - ^https://pdf.sciencedirectassets.com/280203/1-s2.0-S1877050919X0006X/1-s2.0-S1877050919303576/main.pdf\?
 
   # Sites that deny access, always yielding 403 Forbidden (unless mentioned otherwise)
   - ^https://(www\.)?linkedin\.com\b # 999 Request Denied
@@ -41,13 +47,5 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^https://crates\.io/crates
   # TODO: drop after fix to https://github.com/micrometer-metrics/micrometer-docs/issues/239
   - ^https://micrometer\.io/docs
-  # TODO: drop after fix to https://github.com/google/docsy/issues/1337
-  - ^https://opentelemetry\.io/.
-  # TODO: drop after fix to https://github.com/open-telemetry/opentelemetry.io/issues/2354
-  - ^https://open-telemetry\.github\.io/opentelemetry-python/benchmarks/
-  # TODO: remove after merge of https://github.com/open-telemetry/opentelemetry.io/pull/2594
-  - ^https://elastic.co/blog/ecs-elastic-common-schema-otel-opentelemetry-announcement
-  # TODO: remove after OpAMP spec is fixed: https://github.com/open-telemetry/opamp-spec/issues/148
-  - ^https://example.com:4318/v1/metrics
-  - ^https://pdf.sciencedirectassets.com/280203/1-s2.0-S1877050919X0006X
-  - ^https://research.fb.com/wp-content/uploads/2016/11/holistic-configuration-management-at-facebook.pdf
+  # TODO: ensure .json isn't set as an alternate in ecosystem/registry/index.html and then drop:
+  - ^https://opentelemetry.io/ecosystem/registry/index.json
