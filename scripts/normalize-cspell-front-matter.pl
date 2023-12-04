@@ -3,13 +3,14 @@
 use strict;
 use warnings;
 use JSON::PP;
+use YAML::PP;
 use FileHandle;
 
 my @words;
 my $lineLenLimit = 79;
 my $last_file = '';
 my $last_line = '';
-my %dictionary = getSiteWideDictWords('.vscode/cspell.json', '.textlintrc.yml');
+my %dictionary = getSiteWideDictWords('.cspell.yml', '.textlintrc.yml');
 
 while (<>) {
   if (/^\s*(spelling: |-\s*)?cSpell:ignore:?\s*(.*)$/
@@ -41,15 +42,12 @@ sub getSiteWideDictWords {
   my $dictionary_file = shift;
   my $textlintrc_file = shift;
 
-  # Read the cspell.json file
+  # Read the cspell.yml file
   my $fh = FileHandle->new($dictionary_file, "r") or die "Could not open file '$dictionary_file': $!";
-  my $json_text = join "", $fh->getlines();
+  my $yaml_text = join "", $fh->getlines();
 
-  # Remove JSON comments
-  $json_text =~ s/^\s*\/\/.*$//mg;
-
-  my $json = JSON::PP->new;
-  my $data = $json->decode($json_text);
+  my $yaml = YAML::PP->new;
+  my $data = $yaml->load_string($yaml_text);
   my %dictionary = map { $_ => 1 } @{ $data->{words} };
 
   my %textlintDictionary = processTextlintRcYml($textlintrc_file);

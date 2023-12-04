@@ -16,7 +16,7 @@ jobs:
             content/**/*.md
             layouts/**/*.md
             data/**/*
-          config: .vscode/cspell.json
+          config: .cspell.yml
 
   dict-check:
     name: CSPELL:IGNORE check
