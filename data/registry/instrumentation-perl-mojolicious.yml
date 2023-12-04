@@ -1,0 +1,13 @@
+# cSpell:ignore jjatria
+title: Mojolicious Instrumentation
+registryType: instrumentation
+isThirdParty: true
+language: perl
+tags:
+  - perl
+  - instrumentation
+repo: https://github.com/jjatria/mojolicious-plugin-opentelemetry
+license: Artistic-1.0-Perl
+description: An OpenTelemetry plugin for Perl's Mojolicious.
+authors: jjatria
+otVersion: latest
