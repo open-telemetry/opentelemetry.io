@@ -14,7 +14,11 @@ filters:
       # Hugo template syntax:
       - /{{.*?}}/
       - /{{%.*?%}}/
-      # Other
+      # Custom header anchors in markdown headings:
+      - /{#.*?}/
+      # src attribute in figure Hugo template:
+      - /src=".*?"/
+      # Other:
       - /<https?://.*?>/ # Raw URLs
 rules:
   terminology:
@@ -36,6 +40,7 @@ rules:
       - Erlang
       - GCP
       - GitHub
+      - Gitpod
       - GraphQL
       - gRPC
       - Haskell
@@ -60,6 +65,7 @@ rules:
       - MongoDB
       - MySQL
       - NDJSON
+      - Netlify
       - NGINX
       - OCaml
       - OK

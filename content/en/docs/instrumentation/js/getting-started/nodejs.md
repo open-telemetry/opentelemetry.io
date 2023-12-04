@@ -70,7 +70,7 @@ npm install express
 Create a file named `app.ts` (or `app.js` if not using TypeScript) and add the
 following code to it:
 
-{{% tabpane text=true langEqualsHeader=true %}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```ts
 /*app.ts*/
@@ -171,7 +171,7 @@ application code. One tool commonly used for this task is the
 Create a file named `instrumentation.ts` (or `instrumentation.js` if not using
 TypeScript) , which will contain your instrumentation setup code.
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 /*instrumentation.ts*/
@@ -484,7 +484,7 @@ If you'd like to explore a more complex example, take a look at the
 Did something go wrong? You can enable diagnostic logging to validate that
 OpenTelemetry is initialized correctly:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 /*instrumentation.ts*/
