@@ -349,3 +349,10 @@
   contact: 'otel@tingyun.com'
   oss: false
   commercial: true
+- name: VictoriaMetrics
+  distribution: false
+  nativeOTLP: true
+  url: 'https://github.com/VictoriaMetrics/VictoriaMetrics/tree/master/docs#sending-data-via-opentelemetry'
+  contact: 'https://github.com/hagen1778'
+  oss: true
+  commercial: true
