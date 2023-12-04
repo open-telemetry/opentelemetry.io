@@ -2071,10 +2071,6 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:34:11.155334-04:00"
   },
-  "https://github.com/astaxie/beego%29": {
-    "StatusCode": 404,
-    "LastSeen": "2023-12-01T16:02:49.666565+01:00"
-  },
   "https://github.com/austinlparker": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:24:36.417494-04:00"
@@ -2118,10 +2114,6 @@
   "https://github.com/bogdandrutu": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:30:58.182772-04:00"
-  },
-  "https://github.com/bradfitz/gomemcache%29": {
-    "StatusCode": 404,
-    "LastSeen": "2023-12-01T16:02:50.836116+01:00"
   },
   "https://github.com/breedx-splk": {
     "StatusCode": 200,
@@ -2255,10 +2247,6 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:31:43.320081-04:00"
   },
-  "https://github.com/emicklei/go-restful%29": {
-    "StatusCode": 404,
-    "LastSeen": "2023-12-01T16:02:54.04811+01:00"
-  },
   "https://github.com/etcd-io/etcd": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T11:48:17.314631-04:00"
@@ -2302,14 +2290,6 @@
   "https://github.com/go-gorm/opentelemetry": {
     "StatusCode": 200,
     "LastSeen": "2023-11-14T12:26:21.00653-04:00"
-  },
-  "https://github.com/gocql/gocql%29": {
-    "StatusCode": 404,
-    "LastSeen": "2023-12-01T16:02:50.158469+01:00"
-  },
-  "https://github.com/gorilla/mux%29": {
-    "StatusCode": 404,
-    "LastSeen": "2023-12-01T16:02:52.418164+01:00"
   },
   "https://github.com/gosnmp/gosnmp": {
     "StatusCode": 200,

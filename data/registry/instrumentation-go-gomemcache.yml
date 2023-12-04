@@ -10,6 +10,7 @@ tags:
 repo: https://go.opentelemetry.io/contrib/instrumentation/github.com/bradfitz/gomemcache
 license: Apache 2.0
 description:
-  Package `gomemcache` provides tracing instrumentation for the memcached client.
+  Package `gomemcache` provides tracing instrumentation for the memcached
+  client.
 authors: OpenTelemetry Authors
 otVersion: latest
