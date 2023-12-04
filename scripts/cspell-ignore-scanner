@@ -4,5 +4,5 @@
 # This helps to add new words to the .vscode/cspell.json file
 # 
 
-DIRECTOR=${1:-.}
+DIRECTORY=${1:-.}
 grep "cSpell:ignore" content layouts data -Ri ${DIRECTORY} | awk -F"cSpell:ignore" '{ print $2; }' | sed 's/^://; s/^[ \t]*//; s/[*\/}>-]//g'| tr ' ' '\n' | tr '[:upper:]' '[:lower:]' | sort | uniq -c | sort -n
