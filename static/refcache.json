@@ -2035,6 +2035,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:36:03.927115-04:00"
   },
+  "https://github.com/abh/Plack-Middleware-OpenTelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-05T11:57:23.574007+01:00"
+  },
   "https://github.com/adnanrahic": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T11:47:55.037621-04:00"
@@ -2371,9 +2375,21 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:33:32.788394-04:00"
   },
+  "https://github.com/jjatria/mojolicious-plugin-opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-05T11:57:22.182586+01:00"
+  },
   "https://github.com/jjatria/perl-opentelemetry": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:35:56.066523-04:00"
+  },
+  "https://github.com/jjatria/perl-opentelemetry-exporter-otlp": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-05T11:57:20.083522+01:00"
+  },
+  "https://github.com/jjatria/perl-opentelemetry-sdk": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-05T11:57:24.494338+01:00"
   },
   "https://github.com/jmacd": {
     "StatusCode": 200,
