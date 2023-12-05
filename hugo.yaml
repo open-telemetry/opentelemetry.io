@@ -92,7 +92,7 @@ params:
       - name: X
         url: https://x.com/opentelemetry
         icon: fab fa-x-twitter
-        desc: Follow us on X to get the latest news!
+        desc: Follow us on X, previously known as Twitter, to get the latest news!
       - name: Stack Overflow
         url: https://stackoverflow.com/questions/tagged/open-telemetry
         icon: fab fa-stack-overflow
