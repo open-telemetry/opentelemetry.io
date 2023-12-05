@@ -37,7 +37,7 @@ alerting and tooling for finding the root cause.
 ### **Attribute**
 
 See [`Metadata`](#metadata). Used across [`Signals`](#signal) and [`Resources`]
-(#resource). See [attributespec][attribute].
+(#resource). See [attribute spec][attribute].
 
 ### **Automatic Instrumentation**
 
