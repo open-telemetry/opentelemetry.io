@@ -27,7 +27,7 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   # Sites that deny access, always yielding 403 Forbidden (unless mentioned otherwise)
   - ^https://(www\.)?linkedin\.com\b # 999 Request Denied
   - ^https://(www\.)?mvnrepository\.com
-  - ^https://twitter.com
+  - ^https://x.com
   - ^https://www.chathamhouse.org
   - ^https://www.zocdoc.com
 

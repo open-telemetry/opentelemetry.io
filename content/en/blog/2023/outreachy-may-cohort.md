@@ -3,12 +3,12 @@ title: Call for participation - Outreachy May 2023
 linkTitle: Outreachy Call for participation '23
 date: 2023-02-02
 author: >-
-  [Juraci Paixão Kröhling](https://twitter.com/jpkrohling) (Grafana Labs)
+  [Juraci Paixão Kröhling](https://x.com/jpkrohling) (Grafana Labs)
 cSpell:ignore: outreachy
 ---
 
 It's almost time for the next Outreachy cohort and I
-([Juraci Paixão Kröhling](https://twitter.com/jpkrohling)) want to get YOU
+([Juraci Paixão Kröhling](https://x.com/jpkrohling)) want to get YOU
 involved, even if you are not a maintainer.
 
 1. Perhaps you are NOT a maintainer, but there's a feature you dream on having

@@ -57,6 +57,7 @@ params:
     collector services to capture distributed traces and metrics from your
     application. You can analyze them using Prometheus, Jaeger, and other
     observability tools.
+  font_awesome_version: 6.5.1
   github_repo: https://github.com/open-telemetry/opentelemetry.io
   github_branch: main
   gcs_engine_id: bde3d634eca9cd335
@@ -88,10 +89,10 @@ params:
         url: https://fosstodon.org/@opentelemetry
         icon: fab fa-mastodon
         desc: Follow us on Mastodon to get the latest news!
-      - name: Twitter
-        url: https://twitter.com/opentelemetry
-        icon: fab fa-twitter
-        desc: Follow us on Twitter to get the latest news!
+      - name: X
+        url: https://x.com/opentelemetry
+        icon: fab fa-x-twitter
+        desc: Follow us on X to get the latest news!
       - name: Stack Overflow
         url: https://stackoverflow.com/questions/tagged/open-telemetry
         icon: fab fa-stack-overflow
@@ -149,10 +150,10 @@ params:
       url: https://github.com/open-telemetry/
       color: black
       icon: fab fa-github
-    - name: Twitter
-      url: https://twitter.com/opentelemetry
+    - name: X
+      url: https://x.com/opentelemetry
       color: twitter
-      icon: fab fa-twitter
+      icon: fab fa-x-twitter
     - name: Slack
       url: https://cloud-native.slack.com/archives/CJFCJHG4Q
       color: slack

@@ -71,7 +71,7 @@ Committee attention.
 Come meet the new members of Governance Committee November 14th 10:00 PT and ask
 your questions!
 
-Thanks [Sarah Novotny](https://twitter.com/sarahnovotny) for review and
+Thanks [Sarah Novotny](https://x.com/sarahnovotny) for review and
 feedback!
 
 _A version of this article was [originally posted][] on
