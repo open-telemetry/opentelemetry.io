@@ -10,8 +10,7 @@ operations and data. The benefit of using Semantic Conventions is in following a
 common naming scheme that can be standardized across a codebase, libraries, and
 platforms.
 
-Semantic Conventions are available for traces, metrics, logs, and
-resources:
+Semantic Conventions are available for traces, metrics, logs, and resources:
 
 - [Trace Semantic Conventions](/docs/specs/semconv/general/trace/)
 - [Metric Semantic Conventions](/docs/specs/semconv/general/metrics/)
