@@ -2483,6 +2483,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:33:43.877176-04:00"
   },
+  "https://github.com/mongodb/mongo-go-driver": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-01T16:02:51.932405+01:00"
+  },
   "https://github.com/mtwo": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:26:09.367602-04:00"
@@ -3927,9 +3931,53 @@
     "StatusCode": 200,
     "LastSeen": "2023-07-26T16:44:54.45764-04:00"
   },
+  "https://go.opentelemetry.io/contrib/instrumentation/github.com/Shopify/sarama": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-01T16:02:54.37261+01:00"
+  },
+  "https://go.opentelemetry.io/contrib/instrumentation/github.com/astaxie/beego": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-01T16:02:49.351999+01:00"
+  },
   "https://go.opentelemetry.io/contrib/instrumentation/github.com/aws/aws-lambda-go/otellambda": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T16:04:04.854224-04:00"
+  },
+  "https://go.opentelemetry.io/contrib/instrumentation/github.com/aws/aws-sdk-go-v2/otelaws": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-01T16:02:52.667303+01:00"
+  },
+  "https://go.opentelemetry.io/contrib/instrumentation/github.com/bradfitz/gomemcache": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-01T16:02:50.560804+01:00"
+  },
+  "https://go.opentelemetry.io/contrib/instrumentation/github.com/emicklei/go-restful": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-01T16:02:53.698206+01:00"
+  },
+  "https://go.opentelemetry.io/contrib/instrumentation/github.com/go-kit/kit/otelkit": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-01T16:02:52.997073+01:00"
+  },
+  "https://go.opentelemetry.io/contrib/instrumentation/github.com/gocql/gocql": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-01T16:02:49.910545+01:00"
+  },
+  "https://go.opentelemetry.io/contrib/instrumentation/github.com/gorilla/mux": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-01T16:02:52.172876+01:00"
+  },
+  "https://go.opentelemetry.io/contrib/instrumentation/go.mongodb.org/mongo-driver": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-01T16:02:51.363834+01:00"
+  },
+  "https://go.opentelemetry.io/contrib/instrumentation/gopkg.in/macaron.v1/otelmacaron": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-01T16:02:53.323307+01:00"
+  },
+  "https://go.opentelemetry.io/contrib/instrumentation/net/http": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-01T16:02:51.080037+01:00"
   },
   "https://godoc.org/google.golang.org/genproto/googleapis/rpc/status#Status": {
     "StatusCode": 200,
@@ -5166,6 +5214,10 @@
   "https://prometheus.io/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:37:54.454671-04:00"
+  },
+  "https://prometheus.io/docs/alerting/latest/alertmanager/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-12-01T16:02:43.039481+01:00"
   },
   "https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels": {
     "StatusCode": 206,
