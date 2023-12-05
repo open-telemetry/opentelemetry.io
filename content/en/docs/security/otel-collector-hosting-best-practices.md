@@ -1,10 +1,11 @@
 ---
-title:  OpenTelemetry Collector Hosting Best Practices
+title: OpenTelemetry Collector Hosting Best Practices
 description: Follow best practices to securely host OpenTelemetry Collector.
 weight: 10
 ---
 
-When setting up hosting for OpenTelemetry (OTel) Collector, consider the following practices to better secure your hosting instance.
+When setting up hosting for OpenTelemetry (OTel) Collector, consider the
+following practices to better secure your hosting instance.
 
 ## Storing Configuration Information Securely
 
@@ -21,19 +22,30 @@ When setting up hosting for OpenTelemetry (OTel) Collector, consider the followi
 
 ## Processors
 
-Processors sit between receivers and exporters. They are responsible for processing the data in some way. From a security perspective, they are useful in a few ways.
+Processors sit between receivers and exporters. They are responsible for
+processing the data in some way. From a security perspective, they are useful in
+a few ways.
 
 ### Safeguarding around resource utilization
 
 In addition, processors offer safeguards around resource utilization.
 
 <!-- start same page content in otel-collector-configuration-best-practices -->
-The `batch` and especially `memory_limiter` processor help ensure that the OpenTelemetry Collector is resource efficient and does not out of memory when overloaded. At least these two processors SHOULD be enabled on every defined pipeline.
 
-For more information on recommended processors and order, refer to the [OpenTelemetry Collector Processor](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor) documentation.
+The `batch` and especially `memory_limiter` processor help ensure that the
+OpenTelemetry Collector is resource efficient and does not out of memory when
+overloaded. At least these two processors SHOULD be enabled on every defined
+pipeline.
+
+For more information on recommended processors and order, refer to the
+[OpenTelemetry Collector Processor](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor)
+documentation.
+
 <!-- /end same page content in otel-collector-configuration-best-practices -->
 
-After installing resource utilization safeguards in your hosting, ensure your OpenTelemetery Collector configuration uses those [safeguards in its configuration](/security/otel-collector-configuration-best-practices/).
+After installing resource utilization safeguards in your hosting, ensure your
+OpenTelemetry Collector configuration uses those
+[safeguards in its configuration](/security/otel-collector-configuration-best-practices/).
 
 ### Another example
 
