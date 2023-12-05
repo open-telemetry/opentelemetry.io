@@ -333,12 +333,12 @@ community.
 
 Elastic community:
 
-- [Monica Sarbu](https://x.com/monicasarbu)
-- [Tudor Golubenco](https://x.com/tudor_g)
-- [Nicolas Ruflin](https://x.com/ruflin)
-- [Steffen Siering](https://x.com/ursobln)
-- [Carlos Pérez-Aradros](https://x.com/exekias)
-- [Andrew Kroh](https://x.com/Krohbird)
+- [Monica Sarbu](https://twitter.com/monicasarbu)
+- [Tudor Golubenco](https://twitter.com/tudor_g)
+- [Nicolas Ruflin](https://twitter.com/ruflin)
+- [Steffen Siering](https://twitter.com/ursobln)
+- [Carlos Pérez-Aradros](https://twitter.com/exekias)
+- [Andrew Kroh](https://twitter.com/Krohbird)
 - [Christos Markou](https://www.linkedin.com/in/christos-markou-a6542ab4)
 - [Jaime Soriano Pastor](https://www.linkedin.com/in/jaimesorianopastor/)
 

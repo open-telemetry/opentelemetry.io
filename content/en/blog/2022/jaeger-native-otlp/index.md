@@ -9,7 +9,7 @@ author: >-
 Back in May of 2022, the Jaeger project
 [announced native support for the OpenTelemetry Protocol](https://medium.com/jaegertracing/introducing-native-support-for-opentelemetry-in-jaeger-eb661be8183c)
 (OTLP). This followed a
-[generous deprecation cycle](https://x.com/YuriShkuro/status/1455170693197402119)
+[generous deprecation cycle](https://twitter.com/YuriShkuro/status/1455170693197402119)
 for the Jaeger client libraries across many languages. With these changes,
 OpenTelemetry users are now able to send traces into Jaeger with
 industry-standard OTLP, and the Jaeger client library repositories have been
