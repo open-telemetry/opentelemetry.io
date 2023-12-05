@@ -42,5 +42,5 @@ just limited to end-users of OpenTelemetry, either -- how can I help in
 improving the existing and new contributor experience? Please let me know!
 
 If you’d like to reach out in other ways, you can find me on
-[X](https://twitter.com/@austinlparker) or on the
+[Twitter](https://twitter.com/@austinlparker) or on the
 [Cloud Native Community Slack.](https://cloud-native.slack.com/archives/CJFCJHG4Q)
