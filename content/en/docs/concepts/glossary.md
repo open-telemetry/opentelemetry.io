@@ -178,7 +178,7 @@ describes what happened, where it happened, etc. See [more][log record].
 
 A name/value pair (e.g. `foo="bar"`) added to telemetry data. OpenTelemetry
 generally calls this [`Attributes`](#attribute) though [`Metrics`](#metric) have
-[`Dimensions`](#dimension) and [`Labels`](#label) while [`Logs](#log) have
+[`Dimensions`](#dimension) and [`Labels`](#label) while [`Logs`](#log) have
 [`Fields`](#field).
 
 ### **Metric**
