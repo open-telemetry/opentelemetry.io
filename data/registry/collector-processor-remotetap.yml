@@ -3,14 +3,15 @@ registryType: processor
 isThirdParty: false
 language: collector
 tags:
-  - remoteobserver
+  - websocket
+  - remote
+  - tap
   - processor
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/remoteobserverprocessor
+repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/remotetapprocessor
 license: Apache 2.0
 description:
   The WebSocket processor, which can be positioned anywhere in a pipeline,
-  allows data to pass through to the next component.
+  allows
 authors: OpenTelemetry Authors
 otVersion: latest
-# cSpell:ignore remoteobserver
