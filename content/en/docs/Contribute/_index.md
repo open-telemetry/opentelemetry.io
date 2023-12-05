@@ -182,7 +182,7 @@ class changes,changes2 white
 
 Figure 2. Working from a local fork to make your changes.
 
-#### Fork the kubernetes/website repository
+#### Fork the open-telemetry/opentelemetry.io repository
 
 1. Navigate to the [`open-telemetry/opentelemetry.io`](https://github.com/open-telemetry/opentelemetry.io/) repository.
 1. Select **Fork**.
@@ -447,7 +447,7 @@ create a merge conflict. You must resolve all merge conflicts in your PR.
 
 ## Contribute to other repos
 
-The [Kubernetes project](https://github.com/open-telemetry) contains many
+The [OpenTelemetry project](https://github.com/open-telemetry) contains many
 repositories. Many of these repositories contain documentation: user-facing help
 text, error messages, API references or code comments.
 
@@ -483,7 +483,7 @@ If you have an idea for new content, but you aren't sure where it should go,
 you can still file an issue. Either:
 
 - Choose an existing page in the section you think the content belongs in and click **Create documentation issue**.
-- Go to [GitHub](https://github.com/kubernetes/website/issues/new/) and file the issue directly.
+- Go to [GitHub](https://github.com/open-telemetry/opentelemetry.io/issues/new/) and file the issue directly.
 
 ## How to file great issues
 

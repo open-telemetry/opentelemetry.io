@@ -1,16 +1,17 @@
 ---
-title: Documentation Style Guide
+title: Documentation style guide
 linktitle: Style guide
-content_type: concept
 weight: 40
+cSpell:ignore:
+slug: style-guide
 ---
 
 <!-- overview -->
-This page gives writing style guidelines for the Kubernetes documentation.
+This page gives writing style guidelines for the OpenTelemetry documentation.
 These are guidelines, not rules. Use your best judgment, and feel free to
 propose changes to this document in a pull request.
 
-For additional information on creating new content for the Kubernetes
+For additional information on creating new content for the OpenTelemetry
 documentation, read the [Documentation Content Guide](/docs/contribute/style/content-guide/).
 
 Changes to the style guide are made by SIG Docs as a group. To propose a change
@@ -20,7 +21,7 @@ SIG Docs meeting, and attend the meeting to participate in the discussion.
 <!-- body -->
 
 {{< note >}}
-Kubernetes documentation uses
+OpenTelemetry documentation uses
 [Goldmark Markdown Renderer](https://github.com/yuin/goldmark)
 with some adjustments along with a few
 [Hugo Shortcodes](/docs/contribute/style/hugo-shortcodes/) to support
@@ -29,10 +30,10 @@ glossary entries, tabs, and representing feature state.
 
 ## Language
 
-Kubernetes documentation has been translated into multiple languages
-(see [Localization READMEs](https://github.com/kubernetes/website/blob/main/README.md#localization-readmemds)).
+OpenTelemetry documentation has been translated into multiple languages
+(see [Localization READMEs](https://github.com/open-telemetry/opentelemetry.io/blob/main/README.md#localization-readmemds)).
 
-The way of localizing the docs for a different language is described in [Localizing Kubernetes Documentation](/docs/contribute/localization/).
+The way of localizing the docs for a different language is described in [Localizing OpenTelemetry Documentation](/docs/contribute/localization/).
 
 The English-language documentation uses U.S. English spelling and grammar.
 
@@ -151,9 +152,9 @@ The value of the `exec` field is an ExecAction object. | The value of the "exec"
 Run the process as a DaemonSet in the `kube-system` namespace. | Run the process as a DaemonSet in the kube-system namespace.
 {{< /table >}}
 
-### Use code style for Kubernetes command tool and component names
+### Use code style for OpenTelemetry command tool and component names
 
-{{< table caption = "Do and Don't - Use code style for Kubernetes command tool and component names" >}}
+{{< table caption = "Do and Don't - Use code style for OpenTelemetry command tool and component names" >}}
 Do | Don't
 :--| :-----
 The kubelet preserves node stability. | The `kubelet` preserves node stability.
@@ -167,7 +168,7 @@ Run the process with the certificate, `kube-apiserver --client-ca-file=FILENAME`
 Do | Don't
 :--| :-----
 The `kubeadm` tool bootstraps and provisions machines in a cluster. | `kubeadm` tool bootstraps and provisions machines in a cluster.
-The kube-scheduler is the default scheduler for Kubernetes. | kube-scheduler is the default scheduler for Kubernetes.
+The kube-scheduler is the default scheduler for OpenTelemetry. | kube-scheduler is the default scheduler for OpenTelemetry.
 {{< /table >}}
 
 ### Use a general descriptor over a component name
@@ -175,7 +176,7 @@ The kube-scheduler is the default scheduler for Kubernetes. | kube-scheduler is 
 {{< table caption = "Do and Don't - Use a general descriptor over a component name" >}}
 Do | Don't
 :--| :-----
-The Kubernetes API server offers an OpenAPI spec. | The apiserver offers an OpenAPI spec.
+The OpenTelemetry API server offers an OpenAPI spec. | The apiserver offers an OpenAPI spec.
 Aggregated APIs are subordinate API servers. | Aggregated APIs are subordinate APIServers.
 {{< /table >}}
 
@@ -191,25 +192,25 @@ Set the value of `image` to nginx:1.16. | Set the value of `image` to `nginx:1.1
 Set the value of the `replicas` field to 2. | Set the value of the `replicas` field to `2`.
 {{< /table >}}
 
-## Referring to Kubernetes API resources
+## Referring to OpenTelemetry API resources
 
 This section talks about how we reference API resources in the documentation.
 
 ### Clarification about "resource"
 
-Kubernetes uses the word "resource" to refer to API resources, such as `pod`,
+OpenTelemetry uses the word "resource" to refer to API resources, such as `pod`,
 `deployment`, and so on. We also use "resource" to talk about CPU and memory
 requests and limits. Always refer to API resources as "API resources" to avoid
 confusion with CPU and memory resources.
 
-### When to use Kubernetes API terminologies
+### When to use OpenTelemetry API terminologies
 
-The different Kubernetes API terminologies are:
+The different OpenTelemetry API terminologies are:
 
 - Resource type: the name used in the API URL (such as `pods`, `namespaces`)
 - Resource: a single instance of a resource type (such as `pod`, `secret`)
 - Object: a resource that serves as a "record of intent". An object is a desired
-  state for a specific part of your cluster, which the Kubernetes control plane tries to maintain.
+  state for a specific part of your cluster, which the OpenTelemetry control plane tries to maintain.
 
 Always use "resource" or "object" when referring to an API resource in docs.
 For example, use "a `Secret` object" over just "a `Secret`".
@@ -227,8 +228,8 @@ For more information about PascalCase and code formatting, please review the rel
 [Use upper camel case for API objects](/docs/contribute/style/style-guide/#use-upper-camel-case-for-api-objects)
 and [Use code style for inline code, commands, and API objects](/docs/contribute/style/style-guide/#code-style-inline-code).
 
-For more information about Kubernetes API terminologies, please review the related
-guidance on [Kubernetes API terminology](/docs/reference/using-api/api-concepts/#standard-api-terminology).
+For more information about OpenTelemetry API terminologies, please review the related
+guidance on [OpenTelemetry API terminology](/docs/reference/using-api/api-concepts/#standard-api-terminology).
 
 ## Code snippet formatting
 
@@ -255,24 +256,24 @@ NAME     READY     STATUS    RESTARTS   AGE    IP           NODE
 nginx    1/1       Running   0          13s    10.200.0.4   worker0
 ```
 
-### Versioning Kubernetes examples
+### Versioning OpenTelemetry examples
 
 Code examples and configuration examples that include version information should
 be consistent with the accompanying text.
 
-If the information is version specific, the Kubernetes version needs to be defined
+If the information is version specific, the OpenTelemetry version needs to be defined
 in the `prerequisites` section of the [Task template](/docs/contribute/style/page-content-types/#task)
 or the [Tutorial template](/docs/contribute/style/page-content-types/#tutorial).
 Once the page is saved, the `prerequisites` section is shown as **Before you begin**.
 
-To specify the Kubernetes version for a task or tutorial page, include
+To specify the OpenTelemetry version for a task or tutorial page, include
 `min-kubernetes-server-version` in the front matter of the page.
 
 If the example YAML is in a standalone file, find and review the topics that include it as a reference.
 Verify that any topics using the standalone YAML have the appropriate version information defined.
 If a stand-alone YAML file is not referenced from any topics, consider deleting it instead of updating it.
 
-For example, if you are writing a tutorial that is relevant to Kubernetes version 1.8,
+For example, if you are writing a tutorial that is relevant to OpenTelemetry version 1.8,
 the front-matter of your markdown file should look something like:
 
 ```yaml
@@ -291,14 +292,14 @@ kind: Pod
 ...
 ```
 
-## Kubernetes.io word list
+## OpenTelemetry.io word list
 
-A list of Kubernetes-specific terms and words to be used consistently across the site.
+A list of OpenTelemetry-specific terms and words to be used consistently across the site.
 
-{{< table caption = "Kubernetes.io word list" >}}
+{{< table caption = "OpenTelemetry.io word list" >}}
 Term | Usage
 :--- | :----
-Kubernetes | Kubernetes should always be capitalized.
+OpenTelemetry | OpenTelemetry should always be capitalized.
 Docker | Docker should always be capitalized.
 SIG Docs | SIG Docs rather than SIG-DOCS or other variations.
 On-premises | On-premises or On-prem rather than On-premise or other variations.
@@ -481,7 +482,7 @@ Update the title in the front matter of the page or blog post. | Use first level
 Use ordered headings to provide a meaningful high-level outline of your content. | Use headings level 4 through 6, unless it is absolutely necessary. If your content is that detailed, it may need to be broken into separate articles.
 Use pound or hash signs (`#`) for non-blog post content. | Use underlines (`---` or `===`) to designate first-level headings.
 Use sentence case for headings in the page body. For example, **Extend kubectl with plugins** | Use title case for headings in the page body. For example, **Extend Kubectl With Plugins**
-Use title case for the page title in the front matter. For example, `title: Kubernetes API Server Bypass Risks` | Use sentence case for page titles in the front matter. For example, don't use `title: Kubernetes API server bypass risks`
+Use title case for the page title in the front matter. For example, `title: OpenTelemetry API Server Bypass Risks` | Use sentence case for page titles in the front matter. For example, don't use `title: OpenTelemetry API server bypass risks`
 {{< /table >}}
 
 ### Paragraphs
@@ -610,7 +611,7 @@ whether they're part of the "we" you're describing.
 Do | Don't
 :--| :-----
 Version 1.4 includes ... | In version 1.4, we have added ...
-Kubernetes provides a new feature for ... | We provide a new feature ...
+OpenTelemetry provides a new feature for ... | We provide a new feature ...
 This page teaches you how to use pods. | In this page, we are going to learn about pods.
 {{< /table >}}
 
@@ -661,10 +662,10 @@ These steps ... | These simple steps ...
 {{< /table >}}
 
 ### EditorConfig file
-The Kubernetes project maintains an EditorConfig file that sets common style preferences in text editors
+The OpenTelemetry project maintains an EditorConfig file that sets common style preferences in text editors
 such as VS Code. You can use this file if you want to ensure that your contributions are consistent with
 the rest of the project. To view the file, refer to
-[`.editorconfig`](https://github.com/kubernetes/website/blob/main/.editorconfig) in the repository root.
+[`.editorconfig`](https://github.com/open-telemetry/opentelemetry.io/blob/main/.editorconfig) in the repository root.
 
 ## {{% heading "whatsnext" %}}
 
