@@ -510,5 +510,5 @@ fellow contributors. For example, "The docs are terrible" is not
 
 - Visit the [OpenTelemetry community site](/community/).
 - Add your application to the [Registry](/ecosystem).
-- Submit a [blog post or case study](/docs/contribute/new-content/blogs-case-studies/).
+- Submit a [blog post or case study](/docs/contribute/blogs-case-studies/).
 
