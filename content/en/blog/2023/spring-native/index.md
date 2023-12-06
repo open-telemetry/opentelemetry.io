@@ -23,7 +23,6 @@ the starter dependency to your project, you will benefit from the
 instrumentation of HTTP requests:
 
 ```xml
-
 <dependencies>
   <dependency>
     <groupId>io.opentelemetry.instrumentation</groupId>
