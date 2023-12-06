@@ -36,8 +36,8 @@ To begin, set up an environment in a new directory:
 ```shell
 mkdir otel-getting-started
 cd otel-getting-started
-python3 -m venv .
-source ./bin/activate
+python3 -m venv venv
+source ./venv/bin/activate
 ```
 
 Now install Flask:
@@ -64,7 +64,7 @@ def roll_dice():
     player = request.args.get('player', default = None, type = str)
     result = str(roll())
     if player:
-        logger.warn("{} is rolling the dice: {}", player, result)
+        logger.warn("%s is rolling the dice: %s", player, result)
     else:
         logger.warn("Anonymous player is rolling the dice: %s", result)
     return result
