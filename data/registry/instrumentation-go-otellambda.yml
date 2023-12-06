@@ -1,10 +1,11 @@
-# cSpell:ignore otellambda
-title: otellambda
+# cspell:ignore otellambda
+title: aws-lambda-go Instrumentation
 registryType: instrumentation
 isThirdParty: false
 language: go
 tags:
-  - otellambda
+  - lambda
+  - aws
   - instrumentation
   - go
 repo: https://go.opentelemetry.io/contrib/instrumentation/github.com/aws/aws-lambda-go/otellambda
