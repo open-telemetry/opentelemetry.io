@@ -6,28 +6,25 @@ author: >-
   [Jean Bisutti](https://github.com/jeanbisutti) (Microsoft)
 ---
 
-You may know the [OpenTelemetry Java
-agent](https://opentelemetry.io/docs/instrumentation/java/automatic/). However,
-Java agents are [not officially
-supported](https://github.com/oracle/graal/issues/1065) with GraalVM native
-images today. This post presents an OpenTelemetry solution to get telemetry data
-with Spring Boot native image applications. ## Instrumentation of Spring Boot
-native image applications - A history of the last months The OpenTelemetry
-contributors have used the existing OpenTelemetry Spring Boot starter to
-instrument Spring Boot native image applications with OpenTelemetry without byte
-code instrumentation. They have improved the starter in the last months. For
-example, they have added the OTLP log export. The OpenTelemetry starter provides
-auto-instrumentation for Spring HTTP frameworks. So, by adding the starter
-dependency to your project, you will benefit from the instrumentation of HTTP
-requests: ```xml
-<dependencies>
-  <dependency>
-    <groupId>io.opentelemetry.instrumentation</groupId>
-    <artifactId>opentelemetry-spring-boot-starter</artifactId>
-    <version>1.32.0-alpha</version>
-  </dependency>
-</dependencies>
-``` In addition to the starter, [OpenTelemetry instrumentation
+You may know the
+[OpenTelemetry Java agent](https://opentelemetry.io/docs/instrumentation/java/automatic/).
+However, Java agents are
+[not officially supported](https://github.com/oracle/graal/issues/1065) with
+GraalVM native images today. This post presents an OpenTelemetry solution to get
+telemetry data with Spring Boot native image applications. ## Instrumentation of
+Spring Boot native image applications - A history of the last months The
+OpenTelemetry contributors have used the existing OpenTelemetry Spring Boot
+starter to instrument Spring Boot native image applications with OpenTelemetry
+without byte code instrumentation. They have improved the starter in the last
+months. For example, they have added the OTLP log export. The OpenTelemetry
+starter provides auto-instrumentation for Spring HTTP frameworks. So, by adding
+the starter dependency to your project, you will benefit from the
+instrumentation of HTTP requests: ```xml <dependencies> <dependency>
+<groupId>io.opentelemetry.instrumentation</groupId>
+<artifactId>opentelemetry-spring-boot-starter</artifactId>
+<version>1.32.0-alpha</version> </dependency> </dependencies>
+
+````In addition to the starter, [OpenTelemetry instrumentation
 libraries](https://opentelemetry.io/docs/instrumentation/java/manual/) can be
 used. The OpenTelemetry contributors have improved the JDBC (database) libraries
 and logging instrumentation libraries. For the Logback logging library, the
@@ -50,3 +47,4 @@ detect regressions related to the native mode execution. ##What’s next? The
 OpenTelemetry contributors expect to be able to configure the logging and the
 database instrumentation automatically. Please share your thoughts and
 experience about the OpenTelemetry starter and Spring Boot native applications.
+````
