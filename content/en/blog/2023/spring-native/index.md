@@ -1,5 +1,5 @@
 ---
-title: Observe your Spring Native application with OpenTelemetry instrumentation
+title: Observe your Spring Native application with OpenTelemetry
 linkTitle: OTel Spring Native
 date: 2023-11-28
 author: >-
