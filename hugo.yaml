@@ -57,7 +57,6 @@ params:
     collector services to capture distributed traces and metrics from your
     application. You can analyze them using Prometheus, Jaeger, and other
     observability tools.
-  font_awesome_version: 5.8.1
   github_repo: https://github.com/open-telemetry/opentelemetry.io
   github_branch: main
   gcs_engine_id: bde3d634eca9cd335
