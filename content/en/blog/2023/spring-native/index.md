@@ -12,9 +12,11 @@ You may know the
 However, Java agents are
 [not officially supported](https://github.com/oracle/graal/issues/1065) with
 GraalVM native images today. This post presents an OpenTelemetry solution to get
-telemetry data with Spring Boot native image applications. ## Instrumentation of
-Spring Boot native image applications - A history of the last months The
-OpenTelemetry contributors have used the existing OpenTelemetry Spring Boot
+telemetry data with Spring Boot native image applications. 
+
+## A history of the last months 
+
+The OpenTelemetry contributors have used the existing OpenTelemetry Spring Boot
 starter to instrument Spring Boot native image applications with OpenTelemetry
 without byte code instrumentation. They have improved the starter in the last
 months. For example, they have added the OTLP log export. The OpenTelemetry
