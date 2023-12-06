@@ -19,9 +19,11 @@ code instrumentation. They have improved the starter in the last months. For
 example, they have added the OTLP log export. The OpenTelemetry starter provides
 auto-instrumentation for Spring HTTP frameworks. So, by adding the starter
 dependency to your project, you will benefit from the instrumentation of HTTP
-requests. {{< tabpane text=true >}} {{% tab header="Maven (pom.xml)" lang=Maven
-%}}
+requests.
 
+{{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
+
+```xml
 <dependencies>
   <dependency>
     <groupId>io.opentelemetry.instrumentation</groupId>
@@ -29,10 +31,19 @@ requests. {{< tabpane text=true >}} {{% tab header="Maven (pom.xml)" lang=Maven
     <version>{{% param vers.instrumentation %}}-alpha</version>
   </dependency>
 </dependencies>
-{{% /tab %}} {{% tab header="Gradle (gradle.build)" lang=Gradle %}} dependencies
-{
-implementation('io.opentelemetry.instrumentation:opentelemetry-spring-boot-starter:{{%
-param vers.instrumentation %}}-alpha') } In addition to the starter,
+```
+
+{{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
+
+```groovy
+dependencies {
+implementation('io.opentelemetry.instrumentation:opentelemetry-spring-boot-starter:{{% param vers.instrumentation %}}-alpha')
+}
+```
+
+{{% /tab %}} {{< /tabpane>}}
+
+In addition to the starter,
 [OpenTelemetry instrumentation
 libraries](https://opentelemetry.io/docs/instrumentation/java/manual/) can be
 used. The OpenTelemetry contributors have improved the JDBC (database) libraries
