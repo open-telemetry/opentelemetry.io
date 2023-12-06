@@ -28,8 +28,8 @@ Follow the instructions of each instrumentation library to set them up.
 
 ## Example app
 
-We will instrument an HTTP client application using library instrumentation
-which will make a call to HTTP server.
+The following example instruments an HTTP client application using library
+instrumentation which calls an HTTP server.
 
 You can use the dice example app as HTTP server from
 [Getting Started](/docs/instrumentation/java/getting-started/) or you can create
@@ -37,9 +37,13 @@ your own HTTP server.
 
 ### Dependencies
 
-To begin, set up an environment in a new directory called
-`java-simple-http-client`. Within that directory, create a file called
-`build.gradle.kts` with the following content:
+Set up an environment in a new directory named `java-simple-http-client`. Inside
+the directory, create a file named `build.gradle.kts` with the following
+content:
+
+{{% alert color="info" %}} Please note that this example is built with Gradle,
+you might need to amend directory structure and pox.xml to run using Maven
+{{% /alert %}}
 
 {{< tabpane text=true >}} {{% tab Gradle %}}
 
@@ -88,8 +92,8 @@ dependencies {
 
 ### Setup
 
-As an example, here's how you can instrument external API calls using
-[Java HTTP client library](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/java-http-client/library).
+The following example shows how you can instrument external API calls using
+[Java HTTP client library](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/java-http-client/library):
 
 ```java
 // SampleHttpClient.java
@@ -143,12 +147,12 @@ public final class SampleHttpClient {
 
 ### Run
 
-Use `EXTERNAL_API_ENDPOINT` environment variable to change external API
-endpoint, by default it will point to `http://localhost:8080/rolldice` where
+Set the `EXTERNAL_API_ENDPOINT` environment variable to specify the external API
+endpoint. By default, it points to `http://localhost:8080/rolldice`, where
 [example dice app](/docs/instrumentation/java/getting-started/#example-application)
 is running.
 
-To verify your code, run the app:
+To check your code, run the app:
 
 ```sh
 env \
@@ -159,13 +163,13 @@ OTEL_LOGS_EXPORTER=logging \
 gradle run
 ```
 
-When you run the app, the instrumentation libraries will do the following:
+When you run the app, the instrumentation libraries do the following:
 
-- Start a new trace
-- Generate a span representing the request made to the external API endpoint
-- If you use an instrumented HTTP server (as in the
-  [dice app](/docs/instrumentation/java/getting-started/#example-application)),
-  then more trace spans will be generated having the same trace ID
+- Start a new trace.
+- Generate a span that represents the request made to the external API endpoint.
+- If you use an instrumented HTTP server, as in the
+  [dice app](/docs/instrumentation/java/getting-started/#example-application),
+  more trace spans are generated with the same trace ID.
 
 ## Available instrumentation libraries
 
@@ -174,15 +178,16 @@ For a full list of instrumentation libraries, see
 
 ## Next steps
 
-After you have set up instrumentation libraries, you may want to add
+After you've set up instrumentation libraries, you might want to add
 [manual instrumentation](/docs/instrumentation/java/manual) to collect custom
 telemetry data.
 
-You'll also want to configure an appropriate exporter to
+You might also want to configure an appropriate exporter to
 [export your telemetry data](/docs/instrumentation/java/exporters) to one or
 more telemetry backends.
 
 You can also check the
-[automatic instrumentation for Java](/docs/instrumentation/java/automatic).
+[automatic instrumentation for Java](/docs/instrumentation/java/automatic) for
+existing library instrumentations.
 
 [opentelemetry-java](https://github.com/open-telemetry/opentelemetry-java)
