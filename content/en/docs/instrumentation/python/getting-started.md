@@ -43,7 +43,7 @@ source ./venv/bin/activate
 Now install Flask:
 
 ```shell
-pip install 'flask<3' 'werkzeug==2.3.7'
+pip install 'flask<3' 'werkzeug<3'
 ```
 
 ### Create and launch an HTTP Server
