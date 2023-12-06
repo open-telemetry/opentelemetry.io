@@ -4,7 +4,7 @@ linkTitle: OTel Spring Native
 date: 2023-11-28
 author: >-
   [Jean Bisutti](https://github.com/jeanbisutti) (Microsoft)
-cSpell:ignore: datasource logback
+cSpell:ignore: datasource logback bisutti
 ---
 
 You may know the
