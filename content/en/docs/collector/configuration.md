@@ -567,7 +567,7 @@ param vers %}}/service/telemetry/config.go), the `logs` configuration options ar
 - `level`: sets the minimum enabled logging level, default `INFO`.
 - `development`: puts the logger in development mode, default `false`.
 - `encoding`: sets the logger's encoding, default `console`. Example values are
-  "json", "console".
+  `json`, `console`.
 - `disable_caller`: stops annotating logs with the calling function's file name
   and line number. By default `false`, all logs are annotated.
 - `disable_stacktrace`: disables automatic stacktrace capturing, default
