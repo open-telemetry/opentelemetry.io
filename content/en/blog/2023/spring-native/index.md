@@ -19,12 +19,20 @@ without byte code instrumentation. They have improved the starter in the last
 months. For example, they have added the OTLP log export. The OpenTelemetry
 starter provides auto-instrumentation for Spring HTTP frameworks. So, by adding
 the starter dependency to your project, you will benefit from the
-instrumentation of HTTP requests: ```xml <dependencies> <dependency>
-<groupId>io.opentelemetry.instrumentation</groupId>
-<artifactId>opentelemetry-spring-boot-starter</artifactId>
-<version>1.32.0-alpha</version> </dependency> </dependencies>
+instrumentation of HTTP requests:
 
-````In addition to the starter, [OpenTelemetry instrumentation
+```xml 
+
+<dependencies>
+  <dependency>
+    <groupId>io.opentelemetry.instrumentation</groupId>
+    <artifactId>opentelemetry-spring-boot-starter</artifactId>
+    <version>1.32.0-alpha</version>
+  </dependency>
+</dependencies>
+````
+
+In addition to the starter, [OpenTelemetry instrumentation
 libraries](https://opentelemetry.io/docs/instrumentation/java/manual/) can be
 used. The OpenTelemetry contributors have improved the JDBC (database) libraries
 and logging instrumentation libraries. For the Logback logging library, the
@@ -35,16 +43,22 @@ library](https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-with-Gr
 They have also worked to reduce the configuration to set up the logging and
 database instrumentation with the OpenTelemetry Starter. For example, if your
 application does not declare DataSource bean, you enable the database by simply
-adding two properties in the application.properties file: ```properties
+adding two properties in the application.properties file:
+
+```properties
 spring.datasource.url=jdbc:otel:h2:mem:db
 spring.datasource.driver-class-name=io.opentelemetry.instrumentation.jdbc.OpenTelemetryDriver
-``` Feel free to read the documentation of the OpenTelemetry starter to learn
+```
+
+Feel free to read the documentation of the OpenTelemetry starter to learn
 more. You can also use opentelemetry-java-examples/spring-native to run a Spring
 Boot native image application and look at the generated HTTP, log, and database
 telemetry data. Note that the OpenTelemetry developers have also added GraalVM
 native automatic tests to the OpenTelemetry Java instrumentation project to
-detect regressions related to the native mode execution. ##What’s next? The
-OpenTelemetry contributors expect to be able to configure the logging and the
+detect regressions related to the native mode execution.
+
+## What’s next?
+
+The OpenTelemetry contributors expect to be able to configure the logging and the
 database instrumentation automatically. Please share your thoughts and
 experience about the OpenTelemetry starter and Spring Boot native applications.
-````
