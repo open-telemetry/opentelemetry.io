@@ -34,6 +34,13 @@
   contact: ''
   oss: false
   commercial: true
+- name: Better Stack
+  distribution: false
+  nativeOTLP: true
+  url: https://betterstack.com/docs/logs/open-telemetry/#2-setup
+  contact: 'hello@betterstack.com'
+  oss: false
+  commercial: true
 - name: Coralogix
   distribution: true
   nativeOTLP: true
@@ -341,4 +348,11 @@
   url: 'https://wukongdoc.tingyun.com/apm/userguide/deploy_manage/opentelemetry.html'
   contact: 'otel@tingyun.com'
   oss: false
+  commercial: true
+- name: VictoriaMetrics
+  distribution: false
+  nativeOTLP: true
+  url: 'https://github.com/VictoriaMetrics/VictoriaMetrics/tree/master/docs#sending-data-via-opentelemetry'
+  contact: 'https://github.com/hagen1778'
+  oss: true
   commercial: true
