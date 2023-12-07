@@ -13,13 +13,11 @@ To provide you with an easy and seamless way for Spring Boot Native Image applic
 
 ## A history of the last months
 
-The OpenTelemetry contributors have used the existing OpenTelemetry Spring Boot
-starter to instrument Spring Boot native image applications with OpenTelemetry
-without byte code instrumentation. They have improved the starter in the last
-months. For example, they have added the OTLP log export. The OpenTelemetry
-starter provides auto-instrumentation for Spring HTTP frameworks. So, by adding
-the starter dependency to your project, you will benefit from the
-instrumentation of HTTP requests:
+The OpenTelemetry Spring Boot Starter allows to add OpenTelemetry to your application without byte code instrumentation.
+
+The OpenTelemetry Java contributors have used this to instrument Spring Boot Native Images.
+
+By adding the starter dependency to your project, you will benefit from an OTLP exports of logs (added the last months), spans and metrics with an auto-instrumentation for Spring HTTP frameworks out of the box:
 
 ```xml
 <dependencies>
