@@ -43,9 +43,7 @@ not using Oat++, that's OK - you can use OpenTelemetry C++ with any other web fr
 
 To begin, install  Oat++ locally using the [source code](https://github.com/oatpp) and `make`, following these steps:
 
-1. Download oatpp source code:
-
-   Obtain the oatpp source code. You can either download the source code from the oatpp GitHub repository or clone it using Git.
+1. Obtain the Oat++ source code by cloning from the [oatpp/oatpp](https://github.com/oatpp/oatpp) GitHub repository:
 
    ```bash 
    git clone https://github.com/oatpp/oatpp.git
