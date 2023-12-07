@@ -48,15 +48,13 @@ spring.datasource.url=jdbc:otel:h2:mem:db
 spring.datasource.driver-class-name=io.opentelemetry.instrumentation.jdbc.OpenTelemetryDriver
 ```
 
-Feel free to read the
+Read the
 [documentation](https://opentelemetry.io/docs/instrumentation/java/automatic/spring-boot/)
-of the OpenTelemetry starter to learn more. You can also use
+of the OpenTelemetry Spring Boot Starter to learn more. You can use
 [opentelemetry-java-examples/spring-native](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/spring-native)
-to run a Spring Boot native image application and look at the generated HTTP,
-log, and database telemetry data. Note that the OpenTelemetry developers have
-also added GraalVM native automatic tests to the OpenTelemetry Java
-instrumentation project to detect regressions related to the native mode
-execution.
+to run a Spring Boot Native Image application and look at the generated logs as well as HTTP and database telemetry data. 
+
+Finally, the OpenTelemetry Java contributors have added GraalVM Native automatic tests to the OpenTelemetry Java project to detect regressions related to the native mode execution.
 
 ## What’s next?
 
