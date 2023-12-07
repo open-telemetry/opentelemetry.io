@@ -27,7 +27,7 @@ The OpenTelemetry Java contributors have used this to instrument Spring Boot
 Native Images.
 
 By adding the starter dependency to your project, you will benefit from an OTLP
-exports of logs (added the last months), spans and metrics with an
+exports of logs (added the last months), spans and metrics, with an
 auto-instrumentation for Spring HTTP frameworks (updated the last months to make
 it work with Spring Boot 3) out of the box:
 
