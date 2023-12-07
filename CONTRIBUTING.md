@@ -275,6 +275,7 @@ This last section includes guidelines and some common practices used by approver
   * If no SIG approval is given within a certain grace period, docs maintainer may use their own judgement to merge that PR
 * If the PR branch is `out-of-date with the base branch`, they do not need to be updated continously: every update triggers all the PR CI checks to be run! It's often enough to update them before merging.
 * A PR by non-maintainers should **never** update git sub modules. This happens by accident from time to time. Let the PR author know that they should not worry about it, we will fix this before merging, but in the future they should make sure that they work from an up-to-date fork.
+* If the contributor is having trouble signing the CLA or used the wrong email by mistake in one of their commits, ask them to fix the issue or rebase the pull request. Worst case scenario, close and re-open the PR to trigger a new CLA check.
 * Words unknown to cspell should be added to the cspell ignore list per page by PR authors. Only approvers and maintainers will add commonly used terms to the global list.
 
 [.nvmrc]: .nvmrc
