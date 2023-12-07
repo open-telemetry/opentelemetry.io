@@ -12,9 +12,9 @@ You may know the
 However, Java agents are
 [not officially supported](https://github.com/oracle/graal/issues/1065) with
 GraalVM native images today. This post presents an OpenTelemetry solution to get
-telemetry data with Spring Boot native image applications. 
+telemetry data with Spring Boot native image applications.
 
-## A history of the last months 
+## A history of the last months
 
 The OpenTelemetry contributors have used the existing OpenTelemetry Spring Boot
 starter to instrument Spring Boot native image applications with OpenTelemetry
@@ -51,12 +51,15 @@ spring.datasource.url=jdbc:otel:h2:mem:db
 spring.datasource.driver-class-name=io.opentelemetry.instrumentation.jdbc.OpenTelemetryDriver
 ```
 
-Feel free to read the [documentation](https://opentelemetry.io/docs/instrumentation/java/automatic/spring-boot/) of the OpenTelemetry starter to learn more.
-You can also use [opentelemetry-java-examples/spring-native](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/spring-native) to run a Spring Boot
-native image application and look at the generated HTTP, log, and database
-telemetry data. Note that the OpenTelemetry developers have also added GraalVM
-native automatic tests to the OpenTelemetry Java instrumentation project to
-detect regressions related to the native mode execution.
+Feel free to read the
+[documentation](https://opentelemetry.io/docs/instrumentation/java/automatic/spring-boot/)
+of the OpenTelemetry starter to learn more. You can also use
+[opentelemetry-java-examples/spring-native](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/spring-native)
+to run a Spring Boot native image application and look at the generated HTTP,
+log, and database telemetry data. Note that the OpenTelemetry developers have
+also added GraalVM native automatic tests to the OpenTelemetry Java
+instrumentation project to detect regressions related to the native mode
+execution.
 
 ## What’s next?
 
