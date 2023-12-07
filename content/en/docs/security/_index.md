@@ -1,10 +1,8 @@
 ---
 title: Security
 description: How to use OpenTelemetry Collector securely.
-weight: 90
+weight: 10.1
 ---
-
-## Security
 
 When setting up the OpenTelemetry (OTel) Collector, consider implementing
 security best practices in both your hosting infrastructure and your OTel

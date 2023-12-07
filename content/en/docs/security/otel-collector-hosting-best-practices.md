@@ -1,5 +1,6 @@
 ---
 title: OpenTelemetry Collector Hosting Best Practices
+linkTitle: Collector hosting
 description: Follow best practices to securely host OpenTelemetry Collector.
 weight: 10
 ---

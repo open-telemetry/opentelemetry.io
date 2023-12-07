@@ -1,5 +1,6 @@
 ---
 title: OpenTelemetry Collector Configuration Best Practices
+linkTitle: Collector config
 description:
   Follow best practices to securely configure OpenTelemetry Collector.
 weight: 20
@@ -7,8 +8,6 @@ weight: 20
 
 When setting up configuration for OpenTelemetry (OTel) Collector, consider the
 following practices to better secure your OTel Collector instance.
-
-## Configuration
 
 <!--
 TODO: SHOULD only enable the minimum required components. What are those?
@@ -33,7 +32,7 @@ today this is not the case.
 ### Safeguards against denial of service attacks
 
 Users should bind receivers' servers to addresses that limit connections to
-authorized users. <!-- Why? -->
+authorized users, so that their Collectors aren't exposed to the public internet or to wider networks than necessary.
 
 For example, if the OTLP receiver OTLP/gRPC server only has local clients, the
 `endpoint` setting SHOULD be bound to `localhost`:
