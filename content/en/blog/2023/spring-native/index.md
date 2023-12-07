@@ -63,6 +63,5 @@ execution.
 
 ## What’s next?
 
-The OpenTelemetry contributors expect to be able to configure the logging and
-the database instrumentation automatically. Please share your thoughts and
+The OpenTelemetry contributors expect to be able to configure the logging and database instrumentations automatically. Please share your thoughts and
 experience about the OpenTelemetry starter and Spring Boot native applications.
