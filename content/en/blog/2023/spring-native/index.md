@@ -7,12 +7,9 @@ author: >-
 cSpell:ignore: datasource logback bisutti
 ---
 
-You may know the
-[OpenTelemetry Java agent](https://opentelemetry.io/docs/instrumentation/java/automatic/).
-However, Java agents are
-[not officially supported](https://github.com/oracle/graal/issues/1065) with
-GraalVM native images today. This post presents an OpenTelemetry solution to get
-telemetry data with Spring Boot native image applications.
+The [OpenTelemetry Java Agent]([/docs/instrumentation/java/automatic/](https://opentelemetry.io/docs/instrumentation/java/automatic/)) is a convenient and well-established way to instrument Java applications. However, as of today [it is not possible to use it with GraalVM Native Images](https://github.com/oracle/graal/issues/1065). 
+
+To provide you with an easy and seamless way for Spring Boot Native Image application nevertheless, the OpenTelemetry Java contributors have improved the existing OpenTelemetry Spring Boot Starter to work well with Spring Boot Native Image applications. Read on to learn more!
 
 ## A history of the last months
 
