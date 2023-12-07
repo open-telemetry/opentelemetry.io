@@ -382,6 +382,7 @@ between two different protocols to transport your data:
 Install the exporter package as a dependency for your application:
 
 {{< tabpane text=true >}} {{% tab "HTTP/Proto" %}}
+
 ```shell
 pip install opentelemetry-exporter-zipkin-proto-http
 ```
