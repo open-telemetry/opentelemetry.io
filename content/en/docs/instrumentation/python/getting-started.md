@@ -2,7 +2,7 @@
 title: Getting Started
 description: Get telemetry for your app in less than 5 minutes!
 # prettier-ignore
-cSpell:ignore: debugexporter diceroller distro loglevel maxlen randint rolldice rollspan venv
+cSpell:ignore: debugexporter diceroller distro loglevel maxlen randint rolldice rollspan venv werkzeug
 weight: 10
 ---
 
@@ -43,7 +43,7 @@ source ./venv/bin/activate
 Now install Flask:
 
 ```shell
-pip install 'flask<3'
+pip install 'flask<3' 'werkzeug<3'
 ```
 
 ### Create and launch an HTTP Server
