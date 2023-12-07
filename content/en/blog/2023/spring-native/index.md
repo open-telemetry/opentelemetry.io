@@ -58,6 +58,9 @@ Finally, the OpenTelemetry Java contributors have added GraalVM Native automatic
 
 ## What’s next?
 
-The OpenTelemetry contributors expect to be able to configure the logging and
-database instrumentations automatically. Please share your thoughts and
-experience about the OpenTelemetry starter and Spring Boot native applications.
+The OpenTelemetry Java contributors expect to be able to enable automatic logging and
+database instrumentation configuration. 
+
+If you try out the OpenTelemetry Spring Boot Starter, share your thoughts and experiences via [GitHub discussions](https://github.com/open-telemetry/opentelemetry-java/discussions) or the [#otel-java](https://cloud-native.slack.com/archives/C014L2KCTE3) [CNCF Slack](https://slack.cncf.io) channel.
+
+[^1]: Spring Boot Native Image applications [do not support Log4j2 logging library](https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-with-GraalVM).
