@@ -61,7 +61,7 @@ use OpenTelemetry\Contrib\Otlp\SpanExporter;
 use OpenTelemetry\SDK\Common\Attribute\Attributes;
 use OpenTelemetry\SDK\Common\Export\Stream\StreamTransportFactory;
 use OpenTelemetry\SDK\Logs\LoggerProvider;
-use OpenTelemetry\SDK\Logs\Processor\SimpleLogsProcessor;
+use OpenTelemetry\SDK\Logs\Processor\SimpleLogRecordProcessor;
 use OpenTelemetry\SDK\Metrics\MeterProvider;
 use OpenTelemetry\SDK\Metrics\MetricReader\ExportingReader;
 use OpenTelemetry\SDK\Resource\ResourceInfo;
@@ -111,7 +111,7 @@ $tracerProvider = TracerProvider::builder()
 $loggerProvider = LoggerProvider::builder()
     ->setResource($resource)
     ->addLogRecordProcessor(
-        new SimpleLogsProcessor($logExporter)
+        new SimpleLogRecordProcessor($logExporter)
     )
     ->build();
 
@@ -566,7 +566,7 @@ use OpenTelemetry\API\Logs\LogRecord;
 use OpenTelemetry\Contrib\Otlp\LogsExporter;
 use OpenTelemetry\SDK\Common\Export\Stream\StreamTransportFactory;
 use OpenTelemetry\SDK\Logs\LoggerProvider;
-use OpenTelemetry\SDK\Logs\Processor\SimpleLogsProcessor;
+use OpenTelemetry\SDK\Logs\Processor\SimpleLogRecordProcessor;
 use OpenTelemetry\SDK\Resource\ResourceInfoFactory;
 
 require 'vendor/autoload.php';
@@ -576,7 +576,7 @@ $exporter = new LogsExporter(
 );
 
 $loggerProvider = LoggerProvider::builder()
-    ->addLogRecordProcessor(new SimpleLogsProcessor($exporter))
+    ->addLogRecordProcessor(new SimpleLogRecordProcessor($exporter))
     ->setResource(ResourceInfoFactory::emptyResource())
     ->build();
 ```
