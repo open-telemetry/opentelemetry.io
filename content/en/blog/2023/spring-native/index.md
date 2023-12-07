@@ -31,17 +31,13 @@ instrumentation of HTTP requests:
 </dependencies>
 ```
 
-In addition to the starter,
-[OpenTelemetry instrumentation libraries](https://opentelemetry.io/docs/instrumentation/java/manual/)
-can be used. The OpenTelemetry contributors have improved the JDBC (database)
-libraries and logging instrumentation libraries. For the Logback logging
-library, the OpenTelemetry developers have added GraalVM configuration to make
-the library work in native mode.
-[Spring Boot native image applications do not support Log4j2 logging library](https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-with-GraalVM).
-They have also worked to reduce the configuration to set up the logging and
-database instrumentation with the OpenTelemetry Starter. For example, if your
-application does not declare DataSource bean, you enable the database by simply
-adding two properties in the application.properties file:
+To get even more visibility, the Starter can be combined with [instrumentation libraries](/docs/instrumentation/java/libraries/). For this purpose, the OpenTelemetry Java contributors have improved the JDBC (database)
+libraries and logging instrumentation libraries. For example, for the Logback logging library, they have added GraalVM configuration to make the library work in native mode[^1].
+
+Furthermore, they have worked to reduce the configuration to set up the logging and
+database instrumentation with the Starter. For example, if your
+application does not declare a DataSource bean, you can enable the database by simply
+adding two properties in the `application.properties` file:
 
 ```properties
 spring.datasource.url=jdbc:otel:h2:mem:db
