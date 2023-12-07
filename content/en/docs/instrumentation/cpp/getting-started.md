@@ -25,6 +25,7 @@ The following example uses a basic [Oat++](https://oatpp.io/) application. If yo
 not using Oat++, that's OK - you can use OpenTelemetry C++ with any other web framework as well.
 
 ## Setup 
+
 - Create a folder named `Opentelemetry-Starter-Project`.
 - move into the newly created folder. This will serve as your working directory.
 - Directory Structure: 
