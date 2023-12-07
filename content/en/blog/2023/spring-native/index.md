@@ -1,7 +1,7 @@
 ---
-title: Observe your Spring Native image application with OpenTelemetry
-linkTitle: Spring Native
-date: 2023-11-28
+title: Observe your Spring Native Image application with OpenTelemetry
+linkTitle: Observe Spring Native
+date: 2023-12-07
 author: >-
   [Jean Bisutti](https://github.com/jeanbisutti) (Microsoft)
 cSpell:ignore: datasource logback bisutti
