@@ -1,6 +1,7 @@
 ---
 title: Baggage
 weight: 4
+description: Contextual information that is passed between spans
 ---
 
 In OpenTelemetry, Baggage is contextual information that’s passed between spans.

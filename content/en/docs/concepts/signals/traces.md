@@ -2,6 +2,7 @@
 title: Traces
 weight: 1
 cSpell:ignore: Guten
+description: Understand the full path through your distributed application.
 ---
 
 **Traces** give us the big picture of what happens when a request is made to an
