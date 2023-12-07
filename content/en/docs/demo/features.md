@@ -33,3 +33,5 @@ aliases: [demo_features]
 - **[Envoy](https://www.envoyproxy.io/)**: Envoy is used as a reverse proxy for
   user-facing web interfaces such as the frontend, load generator, and feature
   flag service.
+- **[OpenSearch](https://opensearch.org/)**: OpenSearch is used to centralize
+  logging data from services.

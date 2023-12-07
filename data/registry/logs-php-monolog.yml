@@ -1,0 +1,12 @@
+title: Monolog Appender
+registryType: core
+isThirdParty: false
+language: php
+tags:
+  - php
+  - logs
+repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Logs/Monolog
+license: Apache 2.0
+description: MonoLog Log Appender for PHP.
+authors: OpenTelemetry Authors
+otVersion: latest

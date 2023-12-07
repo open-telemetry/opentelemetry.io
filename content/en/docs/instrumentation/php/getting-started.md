@@ -32,11 +32,6 @@ php -v
 composer -v
 ```
 
-{{% alert title="Important" color="warning" %}}While OpenTelemetry PHP is in a
-pre-GA state, please ensure you set `minimum-stability` to `beta` or `dev` in
-`composer.json`, otherwise you will get the early `0.x` versions of many of our
-packages.{{% /alert %}}
-
 ## Example Application
 
 The following example uses a basic
@@ -53,7 +48,6 @@ In an empty directory initialize a minimal `composer.json` file:
 ```sh
 composer init \
   --no-interaction \
-  --stability beta \
   --require slim/slim:"^4" \
   --require slim/psr7:"^1"
 composer update

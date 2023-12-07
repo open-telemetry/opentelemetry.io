@@ -132,7 +132,7 @@ func newExporter(ctx context.Context) (metric.Exporter, error) {
 ### OTLP metrics over gRPC (Experimental)
 
 [`go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc)
-contains an implementation of OTLP trace exporter using gRPC.
+contains an implementation of OTLP metrics exporter using gRPC.
 
 Here's how you can create an exporter with default configuration:
 

@@ -192,9 +192,9 @@ Uplight currently has a few different Collector configurations:
 - Collectors running standalone as some
   [sidecars](https://github.com/open-telemetry/opentelemetry-operator#deployment-modes)
 - For larger Kubernetes clusters, there’s a
-  [Collector running in each cluster](/docs/collector/getting-started/#kubernetes)
+  [Collector running in each cluster](/docs/collector/installation/#kubernetes)
 - Developers running their own Collectors
-  [locally with Docker](/docs/collector/getting-started/#docker)
+  [locally with Docker](/docs/collector/installation/#docker)
 
 Doug’s ultimate goal is for any deployment in any environment to be able to
 easily send telemetry to an

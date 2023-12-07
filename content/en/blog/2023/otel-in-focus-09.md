@@ -136,13 +136,13 @@ alternate `io.opentelemetry.semconv:opentelemetry-semconv:1.21.0-alpha` is now
 introduced from a new repository.
 
 [Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/tag/v1.30.0)
-brings significant changes including the addition of new JavaAgent
+brings significant changes including the addition of new Java agent
 instrumentation, enhancements, and bug fixes. Important changes include the
 splitting of experimental HTTP server metrics into a separate class, renaming of
 `HttpClientResend` and `HttpRouteHolder` to `HttpClientResendCount` and
 `HttpServerRoute`, and removal of a deprecated configuration.
 
-New Java Agent instrumentation has been added for hibernate reactive.
+New Java agent instrumentation has been added for hibernate reactive.
 Enhancements encompass support for AWS Secrets Manager JDBC URLs, improved
 support for semantic convention changes, addition of `javaagent` to
 instrumentation BOM, and more. Several bugs have also been fixed, such as issues

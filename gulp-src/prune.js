@@ -12,7 +12,7 @@ Prune entries from ${refcacheFile} file that meet one of following conditions:
 - Status 4XX, unless the --keep-4xx option is specified
 - The oldest entries, optionally before the date specified by --before <date>
 
-Use --num <n> to limit the number of pruned entries.
+Use --num <n> to limit the number of entries pruned by date.
 `;
 
 // The refcacheFile is a JSON map with each map entry of the form, e.g.:
@@ -43,11 +43,18 @@ async function pruneTask() {
         'Keep all refcache entries with StatusCode in the 400 range. Default is to prune them regardless of the last seen date.',
       default: false,
     },
+    list: {
+      type: 'boolean',
+      description: 'List the <num> + 1 oldest entries. No entries are pruned.',
+    },
   }).argv;
 
   const n = argv.num > 0 ? argv.num : n_default;
-  const beforeDate = argv.before ? new Date(argv.before) : null;
+  const beforeDate = argv.before
+    ? new Date(argv.before)
+    : new Date('9999-12-31');
   const prune4xx = !argv['keep-4xx'];
+  const list = argv['list'];
 
   if (argv.info) {
     // Info about options was already displayed by yargs.help().
@@ -55,42 +62,64 @@ async function pruneTask() {
     return;
   }
 
+  // Deletes (prunes) 4XX entries from `entries`.
+  // Returns the number of entries deleted.
+  function prune4xxEntriesAndReturnCount(entries) {
+    const entriesWith4xxStatus = Object.keys(entries)
+      .map((url) => [url, entries[url].LastSeen, entries[url].StatusCode])
+      .filter(
+        ([url, date, statusCode]) => 400 <= statusCode && statusCode <= 499,
+      );
+
+    var msg = `INFO: ${entriesWith4xxStatus.length} entries with 4XX status.`;
+    if (prune4xx && entriesWith4xxStatus.length > 0) {
+      msg += ' Pruning them.';
+      const keysToPrune = entriesWith4xxStatus.map((item) => item[0]);
+      keysToPrune.forEach((key) => delete entries[key]);
+    }
+    console.log(msg);
+    return entriesWith4xxStatus.length;
+  }
+
   try {
     const json = await fs.readFile(refcacheFile, 'utf8');
     const entries = JSON.parse(json);
 
-    // Create array of entries of prune candidates only, sorted by LastSeen:
-    const sortedEntriesOfPruneCandidates = Object.keys(entries)
+    if (list) {
+      listOldest(entries, n + 1);
+      return;
+    }
+
+    const numEntriesWith4xxStatus = prune4xxEntriesAndReturnCount(entries);
+
+    // Create array of entries of prune candidates by date, sorted by LastSeen:
+    const pruneCandidatesByDate__sorted = Object.keys(entries)
       .map((url) => [url, entries[url].LastSeen, entries[url].StatusCode])
-      .filter(
-        (
-          [url, date, statusCode], // True for prune candidates:
-        ) =>
-          // Include entry if pruning 4xx and status code is in 4xx
-          (prune4xx && 400 <= statusCode && statusCode <= 499) ||
-          // Or if it is before the given date
-          (beforeDate ? new Date(date) < beforeDate : true),
-      )
+      .filter(([url, date, statusCode]) => new Date(date) < beforeDate)
       .sort((a, b) => new Date(a[1]) - new Date(b[1]));
 
-    if (sortedEntriesOfPruneCandidates.length === 0) {
-      console.log('INFO: no entries to prune under given options.');
+    if (pruneCandidatesByDate__sorted.length === 0) {
+      console.log('INFO: no entries to prune for given date.');
       return;
     } else {
       console.log(
-        `INFO: ${sortedEntriesOfPruneCandidates.length} entries as prune candidates under given options.`,
+        `INFO: ${
+          pruneCandidatesByDate__sorted.length
+        } entries as prune candidates for before-date ${formattedDate(
+          beforeDate,
+        )}.`,
       );
     }
 
-    if (!n) {
+    if (n == 0) {
       console.log(
-        `WARN: num is ${n} so nothing will be pruned. Specify number of entries to prune as --num <n>.`,
+        `WARN: num is ${n} so no entries will be pruned by date. Specify number of entries to prune as --num <n>.`,
       );
-      return;
+      if (numEntriesWith4xxStatus == 0) return;
     }
 
     // Get keys of at most n entries to prune
-    const keysToPrune = sortedEntriesOfPruneCandidates
+    const keysToPrune = pruneCandidatesByDate__sorted
       .slice(0, n)
       .map((item) => item[0]);
     keysToPrune.forEach((key) => delete entries[key]);
@@ -103,6 +132,39 @@ async function pruneTask() {
   }
 }
 
+function listOldest(entries, numberOfEntries) {
+  const entriesArray = Object.keys(entries)
+    .map((url) => [url, entries[url].LastSeen, entries[url].StatusCode])
+    .sort((a, b) => new Date(a[1]) - new Date(b[1]));
+  const oldestEntries = entriesArray.slice(0, numberOfEntries);
+
+  if (oldestEntries.length > 0)
+    console.log(`Listing oldest ${numberOfEntries} entries:`);
+
+  oldestEntries.forEach((e) => {
+    const date = new Date(e[1]);
+    console.log(`  ${formattedDate(date)} ${formattedTime(date)} for ${e[0]}`);
+  });
+}
+
 pruneTask.description = `Prune --num <n> entries from ${refcacheFile} file. For details, use --info.`;
 
 gulp.task('prune', pruneTask);
+
+function formattedDate(date) {
+  return date
+    .toLocaleDateString('en-CA', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    })
+    .replace(/\//g, '-');
+}
+
+function formattedTime(date) {
+  return date.toLocaleTimeString('en-CA', {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+  });
+}

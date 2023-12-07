@@ -83,7 +83,7 @@ exporting, and suppressing instrumentation.
 - Move protobuf encoding to its own package
 - Add experimental feature to detect resource detectors in auto instrumentation
 - Fix exporting of ExponentialBucketHistogramAggregation from
-  opentelemetry.sdk.metrics.view
+  `opentelemetry.sdk.metrics.view`
 - Fix headers types mismatch for OTLP Exporters
 
 #### [.NET](/docs/instrumentation/net/)
