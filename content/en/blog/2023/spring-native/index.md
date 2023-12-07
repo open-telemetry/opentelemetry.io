@@ -1,6 +1,6 @@
 ---
-title: Observe your Spring Native application with OpenTelemetry
-linkTitle: OTel Spring Native
+title: Observe your Spring Native image application with OpenTelemetry
+linkTitle: Spring Native
 date: 2023-11-28
 author: >-
   [Jean Bisutti](https://github.com/jeanbisutti) (Microsoft)
