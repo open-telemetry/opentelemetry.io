@@ -2,14 +2,13 @@
 
 use strict;
 use warnings;
-use JSON::PP;
 use FileHandle;
 
 my @words;
 my $lineLenLimit = 79;
 my $last_file = '';
 my $last_line = '';
-my %dictionary = getSiteWideDictWords('.vscode/cspell.json', '.textlintrc.yml');
+my %dictionary = getSiteWideDictWords('.cspell.yml', '.textlintrc.yml');
 
 while (<>) {
   if (/^\s*(spelling: |-\s*)?cSpell:ignore:?\s*(.*)$/
@@ -41,26 +40,44 @@ sub getSiteWideDictWords {
   my $dictionary_file = shift;
   my $textlintrc_file = shift;
 
-  # Read the cspell.json file
-  my $fh = FileHandle->new($dictionary_file, "r") or die "Could not open file '$dictionary_file': $!";
-  my $json_text = join "", $fh->getlines();
-
-  # Remove JSON comments
-  $json_text =~ s/^\s*\/\/.*$//mg;
-
-  my $json = JSON::PP->new;
-  my $data = $json->decode($json_text);
-  my %dictionary = map { $_ => 1 } @{ $data->{words} };
-
-  my %textlintDictionary = processTextlintRcYml($textlintrc_file);
-
+  my %dictionary = readYmlListOfWords('words', $dictionary_file);
+  my %textlintDictionary = readYmlListOfWords('terms', $textlintrc_file);
   # Merge dictionaries
   @dictionary{keys %textlintDictionary} = values %textlintDictionary;
 
   return %dictionary;
 }
 
-sub processTextlintRcYml {
+sub readYmlListOfWords {
+  my $wordsFieldName = shift;
+  my $file_path = shift;
+  my $fh = FileHandle->new($file_path, "r") or die "Could not open file '$file_path': $!";
+  my @lines = $fh->getlines();
+  $fh->close();
+
+  my %dictionary;
+  my $indentation = '';
+  my $in_terms = 0;
+  foreach my $line (@lines) {
+    chomp $line;
+    if ($line =~ /^(\s*)$wordsFieldName:/) {
+      $indentation = $1 || '';
+      $in_terms = 1;
+      # print STDOUT "Found terms!";
+    } elsif ($line =~ /^$indentation  - (\w[^\s]*)$/ && $in_terms) {
+      my $term = $1;
+      $dictionary{$term} = 1 if $term;
+    } elsif ($line !~ /^ / && $in_terms) {
+      $in_terms = 0;
+    }
+  }
+
+  die "ERROR: no words read from '$file_path'!" unless %dictionary; # sanity check
+
+  return %dictionary;
+}
+
+sub processTextlintRc {
   my $file_path = shift;
   my $fh = FileHandle->new($file_path, "r") or die "Could not open file '$file_path': $!";
   my @lines = $fh->getlines();
