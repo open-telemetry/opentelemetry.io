@@ -40,7 +40,6 @@ it is refreshed daily.
     }
 
     function renderTable(data) {
-      console.log(data)
       var table = document.getElementById('cve-table').querySelector('tbody');
 
       data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
