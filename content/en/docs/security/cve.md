@@ -10,18 +10,18 @@ raw data is stored in the
 [sig-security](https://github.com/open-telemetry/sig-security) repository, and
 it is refreshed daily.
 
-  <table id="cve-table">
-    <thead>
-      <tr>
-        <th>CVE ID</th>
-        <th>Issue Summary</th>
-        <th>Severity</th>
-        <th>Repository</th>
-      </tr>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
+<table id="cve-table">
+  <thead>
+    <tr>
+      <th>CVE ID</th>
+      <th>Issue Summary</th>
+      <th>Severity</th>
+      <th>Repository</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
 
 <script id="main-script">
   'use strict';
