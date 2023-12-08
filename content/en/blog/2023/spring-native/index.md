@@ -1,7 +1,7 @@
 ---
 title: Observe your Spring Native Image application with OpenTelemetry
 linkTitle: Observe Spring Native
-date: 2023-12-07
+date: 2023-12-08
 author: >-
   [Jean Bisutti](https://github.com/jeanbisutti) (Microsoft)
 cSpell:ignore: bisutti datasource logback
@@ -55,7 +55,7 @@ spring.datasource.driver-class-name=io.opentelemetry.instrumentation.jdbc.OpenTe
 ```
 
 Read the
-[documentation](https://opentelemetry.io/docs/instrumentation/java/automatic/spring-boot/)
+[documentation](/docs/instrumentation/java/automatic/spring-boot/)
 of the OpenTelemetry Spring Boot Starter to learn more. You can use
 [opentelemetry-java-examples/spring-native](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/spring-native)
 to run a Spring Boot Native Image application and look at the generated logs as
