@@ -1,9 +1,6 @@
 ---
 title: OpenTelemetry Collector Configuration Best Practices
-<<<<<<< HEAD
 linkTitle: Collector config
-=======
->>>>>>> Incorporate linter feedback
 description:
   Follow best practices to securely configure OpenTelemetry Collector.
 weight: 20
@@ -11,11 +8,6 @@ weight: 20
 
 When setting up configuration for OpenTelemetry (OTel) Collector, consider the
 following practices to better secure your OTel Collector instance.
-<<<<<<< HEAD
-=======
-
-## Configuration
->>>>>>> Incorporate linter feedback
 
 <!--
 TODO: SHOULD only enable the minimum required components. What are those?
@@ -39,11 +31,7 @@ today this is not the case.
 ### Safeguards against denial of service attacks
 
 Users should bind receivers' servers to addresses that limit connections to
-<<<<<<< HEAD
 authorized users, so that their Collectors aren't exposed to the public internet or to wider networks than necessary.
-=======
-authorized users. <!-- Why? -->
->>>>>>> Incorporate linter feedback
 
 For example, if the OTLP receiver OTLP/gRPC server only has local clients, the
 `endpoint` setting SHOULD be bound to `localhost`:
@@ -63,7 +51,6 @@ definition.
 
 ### Encryption and Authentication
 
-<<<<<<< HEAD
 Your OTel Collector configuration should include encryption and authentication.
 
 - For communication encryption, refer to our
@@ -77,11 +64,6 @@ Your OTel Collector configuration should include encryption and authentication.
 
 **NOTE**: A security risk may present if configuration parameters are modified
 improperly.
-=======
-<!-- TODO: SHOULD use encryption and authentication. How do you configure that?
-
-  **NOTE**: MAY pose a security risk if configuration parameters are modified improperly -->
->>>>>>> Incorporate linter feedback
 
 ## Processors
 
@@ -112,16 +94,9 @@ ensure your OpenTelemetry Collector configuration uses these safeguards.
 
 <!-- start same page content in otel-collector-hosting-best-practices -->
 
-<<<<<<< HEAD
 The `batch` processor helps to ensure that the OpenTelemetry Collector is
 resource efficient and does not out of memory when overloaded. At least these
 two processors SHOULD be enabled on every defined pipeline.
-=======
-The `batch` and especially `memory_limiter` processor help ensure that the
-OpenTelemetry Collector is resource efficient and does not out of memory when
-overloaded. At least these two processors SHOULD be enabled on every defined
-pipeline.
->>>>>>> Incorporate linter feedback
 
 For more information on recommended processors and order, refer to the
 [OpenTelemetry Collector Processor](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor)
@@ -153,7 +128,6 @@ information may be exposed as a result.
 1. Remove configuration endpoints.
 -->
 
-<<<<<<< HEAD
 ### Observers
 
 An observer is capable of performing service discovery of endpoints. Other
@@ -162,29 +136,3 @@ these extensions to be notified of endpoints coming or going. Observers MAY
 require certain permissions in order to perform service discovery. For example,
 the `k8s_observer` requires certain RBAC permissions in Kubernetes, while the
 `host_observer` requires the OpenTelemetry Collector to run in privileged mode.
-=======
-### Forwarding [component developers?]
-
-A forwarding extension is typically used when some telemetry data not natively
-supported by the OpenTelemetry Collector needs to be collected. For example, the
-`http_forwarder` extension can receive and forward HTTP payloads. Forwarding
-extensions are similar to receivers and exporters so the same security
-considerations apply.
-
-### Observers [component developers?]
-
-An observer is capable of performing service discovery of endpoints. Other
-components of the OpenTelemetry Collector such as receivers MAY subscribe to
-these extensions to be notified of endpoints coming or going. Observers MAY
-require certain permissions in order to perform service discovery. For example,
-the `k8s_observer` requires certain RBAC permissions in Kubernetes, while the
-`host_observer` requires the OpenTelemetry Collector to run in privileged mode.
-
-### Subprocesses [component developers?]
-
-Extensions may also be used to run subprocesses. This can be useful when
-collection mechanisms that cannot natively be run by the Collector, such as
-FluentBit. Subprocesses expose a completely separate attack vector that would
-depend on the subprocess itself. In general, care should be taken before running
-any subprocesses alongside the OpenTelemetry Collector.
->>>>>>> Incorporate linter feedback
