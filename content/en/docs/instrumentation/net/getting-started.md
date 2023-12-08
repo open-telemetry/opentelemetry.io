@@ -69,8 +69,7 @@ string HandleRollDice([FromServices]ILogger<Program> logger, string? player)
 
 int RollDice()
 {
-    var rng = new Random();
-    return rng.Next(1, 6);
+    return Random.Shared.Next(1, 7);
 }
 
 app.MapGet("/rolldice/{player?}", HandleRollDice);
