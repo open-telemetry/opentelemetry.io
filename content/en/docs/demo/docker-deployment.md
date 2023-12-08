@@ -76,7 +76,7 @@ Once the images are built and containers are started you can access:
 
 Likely you want to use the web store as a demo application for an observability
 backend you already have (e.g., an existing instance of Jaeger, Zipkin, or one
-of the [vendor of your choice](/ecosystem/vendors/).
+of the [vendors of your choice](/ecosystem/vendors/)).
 
 OpenTelemetry Collector can be used to export telemetry data to multiple
 backends. By default, the collector in the demo application will merge the
