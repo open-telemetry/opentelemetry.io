@@ -2543,6 +2543,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:31:22.656334-04:00"
   },
+  "https://github.com/open-telemetry/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-08T15:19:55.887939-08:00"
+  },
   "https://github.com/open-telemetry/community": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:28:03.502113-04:00"
