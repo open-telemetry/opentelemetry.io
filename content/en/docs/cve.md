@@ -32,12 +32,7 @@ is refreshed daily.
       var url = 'https://raw.githubusercontent.com/open-telemetry/sig-security/data-source/published_output.json';
       return fetch(url)
         .then(function(response) {
-          return response.text();
-        })
-        .then(data => {
-          data = data.replace(/}\s*{/g, '},{');
-          var json = JSON.parse('[' + data + ']');
-          return json
+          return response.json();
         });
     }
 
