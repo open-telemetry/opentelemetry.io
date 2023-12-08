@@ -16,7 +16,8 @@ TODO: SHOULD only enable the minimum required components. What are those?
 
 ## Receivers and Exporters
 
-- Receivers and Exporters can be either push or pull-based. In either case, the connection established SHOULD be over a secure and authenticated channel.
+- Receivers and Exporters can be either push or pull-based. In either case, the
+  connection established SHOULD be over a secure and authenticated channel.
 - Unused receivers and exporters SHOULD be disabled to minimize the attack
   vector of the Collector.
 - Receivers and Exporters MAY expose buffer, queue, payload, and/or worker
@@ -54,11 +55,17 @@ definition.
 
 Your OTel Collector configuration should include encryption and authentication.
 
-- For communication encryption, refer to our [OTel Collector Configuring Certificates](/collector/configuration/#setting-up-certificates) documentation.
+- For communication encryption, refer to our
+  [OTel Collector Configuring Certificates](/collector/configuration/#setting-up-certificates)
+  documentation.
 
-- For authentication, use the OTel Collector's authentication mechanism, as described in our [OTel Collector Authentication](/collector/configuration/#authentication) documentation.
+- For authentication, use the OTel Collector's authentication mechanism, as
+  described in our
+  [OTel Collector Authentication](/collector/configuration/#authentication)
+  documentation.
 
-**NOTE**: A security risk may present if configuration parameters are modified improperly.
+**NOTE**: A security risk may present if configuration parameters are modified
+improperly.
 
 ## Processors
 
@@ -89,10 +96,9 @@ ensure your OpenTelemetry Collector configuration uses these safeguards.
 
 <!-- start same page content in otel-collector-hosting-best-practices -->
 
-The `batch` processor helps to ensure that the
-OpenTelemetry Collector is resource efficient and does not out of memory when
-overloaded. At least these two processors SHOULD be enabled on every defined
-pipeline.
+The `batch` processor helps to ensure that the OpenTelemetry Collector is
+resource efficient and does not out of memory when overloaded. At least these
+two processors SHOULD be enabled on every defined pipeline.
 
 For more information on recommended processors and order, refer to the
 [OpenTelemetry Collector Processor](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor)

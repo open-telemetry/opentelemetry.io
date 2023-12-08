@@ -20,7 +20,8 @@ following practices to better secure your hosting instance.
 
 To limit the exposure of servers to authorized users:
 
-- Enable authentication, using bearer token authentication extensions and basic authentication extensions.
+- Enable authentication, using bearer token authentication extensions and basic
+  authentication extensions.
 - Restrict the IPs that the OTel Collector runs on.
 
 ## Processors
