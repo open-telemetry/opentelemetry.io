@@ -18,7 +18,10 @@ following practices to better secure your hosting instance.
 
 ## Receivers and Exporters
 
-<!--- TODO: SHOULD limit exposure of servers to authorized users. How do you do that? -->
+To limit the exposure of servers to authorized users:
+
+- Enable authentication, using bearer token authentication extensions and basic authentication extensions.
+- Restrict the IPs that the OTel Collector runs on.
 
 ## Processors
 
