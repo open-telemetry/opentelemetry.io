@@ -15,7 +15,8 @@ TODO: SHOULD only enable the minimum required components. What are those?
 
 ## Receivers and Exporters
 
-- Receivers and Exporters can be either push or pull-based. In either case, the connection established SHOULD be over a secure and authenticated channel.
+- Receivers and Exporters can be either push or pull-based. In either case, the
+  connection established SHOULD be over a secure and authenticated channel.
 - Unused receivers and exporters SHOULD be disabled to minimize the attack
   vector of the Collector.
 - Receivers and Exporters MAY expose buffer, queue, payload, and/or worker
