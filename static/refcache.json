@@ -3711,6 +3711,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-11-03T20:22:42.689401141Z"
   },
+  "https://github.com/open-telemetry/sig-security": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-07T16:14:09.891942-08:00"
+  },
   "https://github.com/opentracing": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:40:39.909083-04:00"
