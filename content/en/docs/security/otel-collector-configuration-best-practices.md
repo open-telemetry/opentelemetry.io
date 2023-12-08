@@ -16,8 +16,7 @@ TODO: SHOULD only enable the minimum required components. What are those?
 
 ## Receivers and Exporters
 
-- Receivers and Exporters can be either push or pull-based. In either case, the
-  connection established SHOULD be over a secure and authenticated channel.
+- Receivers and Exporters can be either push or pull-based. In either case, the connection established SHOULD be over a secure and authenticated channel.
 - Unused receivers and exporters SHOULD be disabled to minimize the attack
   vector of the Collector.
 - Receivers and Exporters MAY expose buffer, queue, payload, and/or worker
@@ -53,9 +52,13 @@ definition.
 
 ### Encryption and Authentication
 
-<!-- TODO: SHOULD use encryption and authentication. How do you configure that?
+Your OTel Collector configuration should include encryption and authentication.
 
-  **NOTE**: MAY pose a security risk if configuration parameters are modified improperly -->
+- For communication encryption, refer to our [OTel Collector Configuring Certificates](/collector/configuration/#setting-up-certificates) documentation.
+
+- For authentication, use the OTel Collector's authentication mechanism, as described in our [OTel Collector Authentication](/collector/configuration/#authentication) documentation.
+
+**NOTE**: A security risk may present if configuration parameters are modified improperly.
 
 ## Processors
 
@@ -86,7 +89,7 @@ ensure your OpenTelemetry Collector configuration uses these safeguards.
 
 <!-- start same page content in otel-collector-hosting-best-practices -->
 
-The `batch` and especially `memory_limiter` processor help ensure that the
+The `batch` processor helps to ensure that the
 OpenTelemetry Collector is resource efficient and does not out of memory when
 overloaded. At least these two processors SHOULD be enabled on every defined
 pipeline.
@@ -121,15 +124,7 @@ information may be exposed as a result.
 1. Remove configuration endpoints.
 -->
 
-### Forwarding [component developers?]
-
-A forwarding extension is typically used when some telemetry data not natively
-supported by the OpenTelemetry Collector needs to be collected. For example, the
-`http_forwarder` extension can receive and forward HTTP payloads. Forwarding
-extensions are similar to receivers and exporters so the same security
-considerations apply.
-
-### Observers [component developers?]
+### Observers
 
 An observer is capable of performing service discovery of endpoints. Other
 components of the OpenTelemetry Collector such as receivers MAY subscribe to
@@ -137,11 +132,3 @@ these extensions to be notified of endpoints coming or going. Observers MAY
 require certain permissions in order to perform service discovery. For example,
 the `k8s_observer` requires certain RBAC permissions in Kubernetes, while the
 `host_observer` requires the OpenTelemetry Collector to run in privileged mode.
-
-### Subprocesses [component developers?]
-
-Extensions may also be used to run subprocesses. This can be useful when
-collection mechanisms that cannot natively be run by the Collector, such as
-FluentBit. Subprocesses expose a completely separate attack vector that would
-depend on the subprocess itself. In general, care should be taken before running
-any subprocesses alongside the OpenTelemetry Collector.
