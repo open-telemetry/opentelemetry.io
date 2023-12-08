@@ -8,7 +8,7 @@ cSpell:ignore: datasource logback bisutti
 ---
 
 The
-[OpenTelemetry Java agent](<[/docs/instrumentation/java/automatic/](https://opentelemetry.io/docs/instrumentation/java/automatic/)>)
+[OpenTelemetry Java agent](/docs/instrumentation/java/automatic)
 is a convenient and well-established way to instrument Java applications.
 However, as of today
 [it is not possible to use it with GraalVM Native Images](https://github.com/oracle/graal/issues/1065).
