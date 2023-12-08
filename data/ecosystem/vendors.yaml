@@ -356,3 +356,10 @@
   contact: 'https://github.com/hagen1778'
   oss: true
   commercial: true
+- name: Tracetest
+  distribution: false
+  nativeOTLP: true
+  url: 'https://tracetest.io/'
+  contact: 'https://tracetest.io/contact/'
+  oss: true
+  commercial: true
