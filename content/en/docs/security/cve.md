@@ -3,9 +3,12 @@ title: Common Vulnerabilities and Exposures
 weight: 102
 ---
 
-This is a list of reported Common Vulnerabilities and Exposures (CVEs) across all repositories in the [OpenTelemetry organization on GitHub](https://github.com/open-telemetry/). The raw data is stored in
-the [sig-security](https://github.com/open-telemetry/sig-security) repository, and it
-is refreshed daily.
+This is a list of reported Common Vulnerabilities and Exposures (CVEs) across
+all repositories in the
+[OpenTelemetry organization on GitHub](https://github.com/open-telemetry/). The
+raw data is stored in the
+[sig-security](https://github.com/open-telemetry/sig-security) repository, and
+it is refreshed daily.
 
   <table id="cve-table">
     <thead>
