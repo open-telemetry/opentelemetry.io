@@ -4,13 +4,12 @@ linkTitle: Observe Spring Native
 date: 2023-12-07
 author: >-
   [Jean Bisutti](https://github.com/jeanbisutti) (Microsoft)
-cSpell:ignore: datasource logback bisutti
+cSpell:ignore: bisutti datasource logback
 ---
 
-The
-[OpenTelemetry Java agent](/docs/instrumentation/java/automatic)
-is a convenient and well-established way to instrument Java applications.
-However, as of today
+The [OpenTelemetry Java agent](/docs/instrumentation/java/automatic) is a
+convenient and well-established way to instrument Java applications. However, as
+of today
 [it is not possible to use it with GraalVM Native Images](https://github.com/oracle/graal/issues/1065).
 
 To provide you with an easy and seamless way for Spring Boot Native Image
@@ -21,10 +20,12 @@ Image applications. Read on to learn more!
 ## A history of the last months
 
 The OpenTelemetry Spring Boot Starter allows to add OpenTelemetry to your
-application without byte code instrumentation. The OpenTelemetry Java contributors have used this to instrument Spring Boot Native Images. By adding the starter dependency to your project, you will benefit from an OTLP
-exports of logs (added the last months), spans and metrics, with an
-auto-instrumentation for Spring HTTP frameworks (updated the last months to make
-it work with Spring Boot 3) out of the box:
+application without byte code instrumentation. The OpenTelemetry Java
+contributors have used this to instrument Spring Boot Native Images. By adding
+the starter dependency to your project, you will benefit from an OTLP exports of
+logs (added the last months), spans and metrics, with an auto-instrumentation
+for Spring HTTP frameworks (updated the last months to make it work with Spring
+Boot 3) out of the box:
 
 ```xml
 <dependencies>
