@@ -255,6 +255,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-30T09:37:46.480932-04:00"
   },
+  "https://cloud-native.slack.com/archives/C014L2KCTE3": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-08T11:19:16.128163+01:00"
+  },
   "https://cloud-native.slack.com/archives/C01N5UCHTEH": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:38:12.370641-04:00"
@@ -2371,6 +2375,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-10-23T22:46:44.940049+02:00"
   },
+  "https://github.com/jeanbisutti": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-08T11:19:13.539577+01:00"
+  },
   "https://github.com/jenniferplusplus/opentelemetry-instrumentation-bullmq": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:33:32.788394-04:00"
@@ -3207,6 +3215,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-11-01T21:52:02.990981-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-java/discussions": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-08T11:19:15.572149+01:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-java/releases": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:47:15.179862-04:00"
@@ -3739,6 +3751,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:42:08.536962-04:00"
   },
+  "https://github.com/oracle/graal/issues/1065": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-08T11:19:14.694346+01:00"
+  },
   "https://github.com/orgs/open-telemetry/projects/41/views/1": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:42:42.642961-04:00"
@@ -3846,6 +3862,10 @@
   "https://github.com/servian/hashiqube": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:27:42.016103-04:00"
+  },
+  "https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-with-GraalVM": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-08T11:19:16.63837+01:00"
   },
   "https://github.com/statsd/statsd": {
     "StatusCode": 200,
@@ -4914,6 +4934,10 @@
   "https://opentelemetry.io/": {
     "StatusCode": 206,
     "LastSeen": "2023-09-08T10:56:59.732967-04:00"
+  },
+  "https://opentelemetry.io/docs/instrumentation/java/automatic/spring-boot/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-12-08T11:19:15.011115+01:00"
   },
   "https://opentracing.io": {
     "StatusCode": 206,
