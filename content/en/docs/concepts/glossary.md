@@ -343,7 +343,7 @@ on web pages when requested. See [more][zpages].
 [context propagation]: /docs/specs/otel/overview#context-propagation
 [dag]: https://en.wikipedia.org/wiki/Directed_acyclic_graph
 [distributed tracing]: /docs/concepts/signals/traces/
-[distribution]: docs/concepts/distributions/
+[distribution]: /docs/concepts/distributions/
 [field]: /docs/specs/otel/logs/data-model#field-kinds
 [http]: https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
 [json]: https://en.wikipedia.org/wiki/JSON
