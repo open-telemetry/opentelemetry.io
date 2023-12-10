@@ -118,7 +118,7 @@ pull-based.
 ### **Field**
 
 Term used specifically for [`Log Records`](#log-record). See
-[`Attribute`](#attribute) and the [field spec][field].
+[`Metadata`](#metadata) and the [field spec][field].
 
 ### **gRPC**
 
@@ -150,7 +150,7 @@ Short for [JavaScript Object Notation][json].
 
 ### **Label**
 
-Term used specifically for [`Metrics`](#metric). See [`Attribute`](#attribute).
+Term used specifically for [`Metrics`](#metric). See [`Metadata`](#metadata).
 
 ### **Language**
 
