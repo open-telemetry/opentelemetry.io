@@ -1519,6 +1519,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-30T11:39:40.231517-04:00"
   },
+  "https://docs.tracetest.io/configuration/connecting-to-data-stores/opentelemetry-collector": {
+    "StatusCode": 206,
+    "LastSeen": "2023-12-11T14:19:28.382469+01:00"
+  },
   "https://docs.vmware.com/en/vRealize-Log-Insight/8.4/com.vmware.log-insight.agent.admin.doc/GUID-40C13E10-1554-4F1B-B832-69CEBF85E7A0.html": {
     "StatusCode": 206,
     "LastSeen": "2023-06-28T13:36:46.411249-04:00"
