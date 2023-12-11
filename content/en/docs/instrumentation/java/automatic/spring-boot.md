@@ -3,7 +3,7 @@ title: Spring Boot
 linkTitle: Spring Boot
 weight: 30
 description: Spring instrumentation for OpenTelemetry Java
-cSpell:ignore: autoconfigure datasource logback springboot
+cSpell:ignore: autoconfigure datasource logback springboot springframework
 ---
 
 You can use the [OpenTelemetry Java agent](..) with byte code instrumentation to
