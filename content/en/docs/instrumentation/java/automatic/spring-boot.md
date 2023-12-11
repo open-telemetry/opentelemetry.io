@@ -25,8 +25,8 @@ Spring Boot starter, see
 
 ### OpenTelemetry BOM
 
-Import the `opentelemetry-bom` BOM and
-`opentelemetry-instrumentation-bom-alpha` before using
+Import the `opentelemetry-bom` and
+`opentelemetry-instrumentation-bom-alpha` BOMs before using
 the OpenTelemetry starter.
 
 The following example shows how to import both BOMs
