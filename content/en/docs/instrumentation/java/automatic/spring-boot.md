@@ -88,7 +88,8 @@ dependencyManagement {
 ```
 
 {{% alert title="Note" color="info" %}} Be careful not to mix up the different
-ways of configuring things with Gradle. {{% /alert %}}
+ways of configuring things with Gradle. For example, don't use `implementation(platform(SpringBootPlugin.BOM_COORDINATES))` with the `io.spring.dependency-management`
+plugin.{{% /alert %}}
 
 ### OpenTelemetry starter dependency
 
