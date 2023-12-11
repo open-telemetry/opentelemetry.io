@@ -86,6 +86,8 @@ dependencyManagement {
 }
 ```
 
+Please note that the `dependencyManagement` is updated with this second way, not the `dependencies` part.
+
 {{% alert title="Note" color="info" %}} Be careful not to mix up the different
 ways of configuring things with Gradle. For example, don't use
 `implementation(platform(SpringBootPlugin.BOM_COORDINATES))` with the
