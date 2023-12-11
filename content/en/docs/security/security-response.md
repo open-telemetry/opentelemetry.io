@@ -111,7 +111,7 @@ OTel relies on GitHub tooling to notify the affected repositories and publish a
 security advisory. GitHub will publish the CVE to the CVE List, broadcast the
 Security Advisory via the GitHub Advisory Database, and send security alerts to
 all repositories that use the package and have alerts on. The CVE will also be
-added to the [OTel website's CVE feed](security/cve/).
+added to the [OTel website's CVE feed](cve/).
 
 #### Fix Release Day
 
