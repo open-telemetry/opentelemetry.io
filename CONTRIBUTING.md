@@ -280,7 +280,7 @@ approvers and maintainers while doing code reviews:
     general, but may be less in urgent cases), docs maintainer may use their own
     judgement to merge that PR
 - If the PR branch is `out-of-date with the base branch`, they do not need to be
-  updated continously: every update triggers all the PR CI checks to be run!
+  updated continuously: every update triggers all the PR CI checks to be run!
   It's often enough to update them before merging.
 - A PR by non-maintainers should **never** update git sub modules. This happens
   by accident from time to time. Let the PR author know that they should not
@@ -298,31 +298,30 @@ approvers and maintainers while doing code reviews:
   in that period of time, they should communicate this using the
   [#otel-comms](https://cloud-native.slack.com/archives/C02UN96HZH6) channel and
   updating the GitHub status.
-- ```
-  [.nvmrc]: .nvmrc
-  [clone]:
-    https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
-  [dashboard]: https://app.netlify.com/sites/opentelemetry/overview
-  [deploy preview]:
-    https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/
-  [editing files]:
-    https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files
-  [fork]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
-  [gitpod.io]: https://gitpod.io
-  [gitpod.io/workspaces]: https://gitpod.io/workspaces
-  [hugo]: https://gohugo.io
-  [localhost:1313]: http://localhost:1313
-  [localhost:8888]: http://localhost:8888
-  [netlify]: https://netlify.com
-  [new-issue]:
-    https://github.com/open-telemetry/opentelemetry.io/issues/new/choose
-  [nodejs-rel]: https://nodejs.org/en/about/previous-releases
-  [nodejs-win]:
-    https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
-  [nvm]:
-    https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
-  [nvm-windows]: https://github.com/coreybutler/nvm-windows
-  [org]: https://github.com/open-telemetry
-  [pr]:
-    https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
-  ```
+
+[.nvmrc]: .nvmrc
+[clone]:
+  https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
+[dashboard]: https://app.netlify.com/sites/opentelemetry/overview
+[deploy preview]:
+  https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/
+[editing files]:
+  https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files
+[fork]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
+[gitpod.io]: https://gitpod.io
+[gitpod.io/workspaces]: https://gitpod.io/workspaces
+[hugo]: https://gohugo.io
+[localhost:1313]: http://localhost:1313
+[localhost:8888]: http://localhost:8888
+[netlify]: https://netlify.com
+[new-issue]:
+  https://github.com/open-telemetry/opentelemetry.io/issues/new/choose
+[nodejs-rel]: https://nodejs.org/en/about/previous-releases
+[nodejs-win]:
+  https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
+[nvm]:
+  https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
+[nvm-windows]: https://github.com/coreybutler/nvm-windows
+[org]: https://github.com/open-telemetry
+[pr]:
+  https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
