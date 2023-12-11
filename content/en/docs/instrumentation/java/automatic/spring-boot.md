@@ -53,7 +53,7 @@ With Gradle and Spring Boot, you have
 [two ways](https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/htmlsingle/)
 to import a BOM.
 
-You can Gradle’s native bom support:
+You can use the Gradle’s native bom support:
 
 ```kotlin
 plugins {
