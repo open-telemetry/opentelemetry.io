@@ -7,7 +7,7 @@ Security vulnerabilities should be handled quickly and sometimes privately. The
 primary goal of this process is to reduce the total time users are vulnerable to
 publicly known exploits.
 
-The OpenTelemetry Technical Committee (OTel TC) and relevant repo maintainers,
+The OpenTelemetry Technical Committee (OTel TC) and relevant repository maintainers,
 supported by tooling provided by the SIG-Security, are responsible for
 responding to the incident organizing the entire response including internal
 communication and external disclosure.
@@ -52,9 +52,9 @@ relevant information about current public exploitations of this vulnerability if
 known to help with scoring and prioritization.
 
 The TC should receive the message and re-direct it to the relevant repo
-maintainers for ownership. If possible the repo maintainers will engage and ask
+maintainers for ownership. If possible the repository maintainers will engage and ask
 the person making the public report if the issue can be handled via a private
-disclosure process. If the reporter denies the request, the repo maintainers
+disclosure process. If the reporter denies the request, the repository maintainers
 will move swiftly with the fix and release process. In extreme cases you can ask
 GitHub to delete the issue but this generally isn't necessary and is unlikely to
 make a public disclosure less damaging.
@@ -63,7 +63,7 @@ make a public disclosure less damaging.
 
 ### Fix Team Organization
 
-The Fix Team is made up of the relevant repo maintainers.
+The Fix Team is made up of the relevant repository maintainers.
 
 ### TC Role
 
@@ -78,7 +78,7 @@ that the report is accepted as valid.
 
 #### Initial Incident Response
 
-- The TC is notified of an incident and the relevant repo maintainers are added
+- The TC is notified of an incident and the relevant repository maintainers are added
   automatically using a Zapier workflow as the Fix Team to the issue.
 - The Fix Team acknowledges the incident to the reporter, asks for further
   details if necessary, and begins mitigation planning.
@@ -115,7 +115,7 @@ added to the [OTel website's CVE feed](security/cve/).
 
 #### Fix Release Day
 
-The Fix Team as repo owners will release an updated version and optionally
+The Fix Team as repository owners will release an updated version and optionally
 notify their communities via Slack.
 
 ## Severity
