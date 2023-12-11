@@ -31,50 +31,54 @@ Unsuitable content includes:
 
 To submit a blog post, follow these steps:
 
-1. [Sign the CLA](https://docs.linuxfoundation.org/lfx/easycla/contributors)
-   if you have not yet done so.
+1. [Sign the CLA](https://docs.linuxfoundation.org/lfx/easycla/contributors) if
+   you have not yet done so.
 
 1. Have a look at the Markdown format for existing blog posts in the
    [opentelemetry.io repository](https://github.com/open-telemetry/opentelemetry.io/tree/main/content/en/blog).
 
 1. Write out your blog post in a text editor of your choice.
 
-1. On the same link from step 2, select **Create new file**. Paste your content into the editor.
-   Name the file to match the proposed title of the blog post, but don’t put the date in the file name.
-   The blog reviewers will work with you on the final file name and the date the blog will be published.
+1. On the same link from step 2, select **Create new file**. Paste your content
+   into the editor. Name the file to match the proposed title of the blog post,
+   but don’t put the date in the file name. The blog reviewers will work with
+   you on the final file name and the date the blog will be published.
 
-1. When you save the file, GitHub will walk you through the pull request process.
+1. When you save the file, GitHub will walk you through the pull request
+   process.
 
-1. A blog post reviewer will review your submission and work with you on feedback and final details.
-   When the blog post is approved, the blog will be scheduled for publication.
+1. A blog post reviewer will review your submission and work with you on
+   feedback and final details. When the blog post is approved, the blog will be
+   scheduled for publication.
 
 ## Guidelines and expectations
 
-- Blog posts should not be vendor pitches. 
+- Blog posts should not be vendor pitches.
 
-  - Articles must contain content that applies broadly to the OpenTelemetry community. For example, a
-    submission should focus on upstream OpenTelemetry as opposed to vendor-specific configurations.
-    Check the [Documentation style guide](/docs/contribute/style/content-guide/#what-s-allowed) for
-    what is typically allowed on OpenTelemetry properties. 
-  - Links should primarily be to the official OpenTelemetry documentation. When using external
-    references, links should be diverse - For example a submission shouldn't contain only links
-    back to a single company's blog.
+  - Articles must contain content that applies broadly to the OpenTelemetry
+    community. For example, a submission should focus on upstream OpenTelemetry
+    as opposed to vendor-specific configurations.
+  - Links should primarily be to the official OpenTelemetry documentation. When
+    using external references, links should be diverse - For example a
+    submission shouldn't contain only links back to a single company's blog.
 
 - Blog posts are not published on specific dates.
 
-  - Articles are reviewed by community volunteers. We'll try our best to accommodate specific
-      timing, but we make no guarantees.
-  - Many core parts of the OpenTelemetry projects submit blog posts during release windows, delaying
-    publication times. Consider submitting during a quieter period of the release cycle.
-  - If you are looking for greater coordination on post release dates, coordinating with
-    [CNCF marketing](https://www.cncf.io/about/contact/) is a more appropriate choice than submitting a blog post.
+  - Articles are reviewed by community volunteers. We'll try our best to
+    accommodate specific timing, but we make no guarantees.
+  - Many core parts of the OpenTelemetry projects submit blog posts during
+    release windows, delaying publication times. Consider submitting during a
+    quieter period of the release cycle.
+  - If you are looking for greater coordination on post release dates,
+    coordinating with [CNCF marketing](https://www.cncf.io/about/contact/) is a
+    more appropriate choice than submitting a blog post.
 
 - Blog posts should be relevant to OpenTelemetry users.
 
-  - Topics related to participation in or results of OpenTelemetry SIGs activities are always on
-    topic.
-  - Posts about other CNCF projects may or may not be on topic. We recommend asking the blog team
-    before submitting a draft.
-  - Many CNCF projects have their own blog. These are often a better choice for posts. There are
-    times of major feature or milestone for a CNCF project that users would be interested in
-    reading on the OpenTelemetry blog.
+  - Topics related to participation in or results of OpenTelemetry SIGs
+    activities are always on topic.
+  - Posts about other CNCF projects may or may not be on topic. We recommend
+    asking the blog team before submitting a draft.
+  - Many CNCF projects have their own blog. These are often a better choice for
+    posts. There are times of major feature or milestone for a CNCF project that
+    users would be interested in reading on the OpenTelemetry blog.

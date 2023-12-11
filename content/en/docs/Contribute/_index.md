@@ -2,7 +2,7 @@
 title: Contribute
 description: Learn how to contribute to the OpenTelemetry documentation.
 weight: 200
-cSpell:ignore: 
+cSpell:ignore:
 ---
 
 You can open an issue about OpenTelemetry documentation, or contribute a change
@@ -25,10 +25,10 @@ Conduct.
 
 To contribute, you need to be familiar with the following techs and tools:
 
-* [git](https://git-scm.com/)
-* [GitHub](https://lab.github.com/)
-* Markdown (CommonMark)
-* YAML
+- [git](https://git-scm.com/)
+- [GitHub](https://lab.github.com/)
+- Markdown (CommonMark)
+- YAML
 
 For technical details concerning how the documentation is built and tested
 locally, see the
@@ -44,14 +44,14 @@ and
 .
 
 Pull requests from contributors who haven't signed the CLA fail the automated
-tests. The name and email you provide must match those found in
-your `git config`, and your git name and email must match those used for the
-CNCF CLA.
+tests. The name and email you provide must match those found in your
+`git config`, and your git name and email must match those used for the CNCF
+CLA.
 
 ## Contribute new content
 
-{{< mermaid >}}
-flowchart LR 
+```mermaid
+flowchart LR
     subgraph first[How to contribute]
     direction TB
        T[ ] -.-
@@ -66,9 +66,9 @@ classDef spacewhite fill:#ffffff,stroke:#fff,stroke-width:0px,color:#000
 class A,B,C,D,E,F,G,H grey
 class S,T spacewhite
 class first,second white
-{{</ mermaid >}}
+```
 
-***Figure - Contributing new content***
+**_Figure - Contributing new content_**
 
 The previous figure presents the basic steps for new docs contributions.
 
@@ -76,16 +76,16 @@ To contribute new content pages or improve existing content pages, open a pull
 request (PR):
 
 - If your change is small, or you're unfamiliar with Git, read
-[Changes using GitHub](#changes-using-github) to learn how to edit a page.
-- If your changes are large, read [Work from a local fork](#fork-the-repo) to learn how to make
-changes locally on your computer.
+  [Changes using GitHub](#changes-using-github) to learn how to edit a page.
+- If your changes are large, read [Work from a local fork](#fork-the-repo) to
+  learn how to make changes locally on your computer.
 
 ### Changes using GitHub {#changes-using-github}
 
 If you're less experienced with Git workflows, here's an easier method of
 opening a pull request. Figure 1 outlines the steps and the details follow.
 
-{{< mermaid >}}
+```mermaid
 flowchart LR
 A([fa:fa-user New<br>Contributor]) --- id1[(open-telemetry/opentelemetry.io<br>GitHub)]
 subgraph tasks[Changes using GitHub]
@@ -98,7 +98,7 @@ end
 subgraph tasks2[ ]
 direction TB
 4[4. select Propose file change] --> 5[5. select Create pull request] --> 6[6. fill in Open a pull request]
-6 --> 7[7. select Create pull request] 
+6 --> 7[7. select Create pull request]
 end
 
 id1 --> tasks --> tasks2
@@ -111,11 +111,12 @@ class A,1,2,3,4,5,6,7 grey
 class 0 spacewhite
 class tasks,tasks2 white
 class id1 k8s
-{{</ mermaid >}}
+```
 
 Figure 1. Steps for opening a PR using GitHub.
 
-1. On the page where you see the issue, select the **Edit this page** option in the right-hand side navigation panel.
+1. On the page where you see the issue, select the **Edit this page** option in
+   the right-hand side navigation panel.
 
 1. Make your changes in the GitHub editor.
 
@@ -125,7 +126,8 @@ Figure 1. Steps for opening a PR using GitHub.
 
 1. Select **Create pull request**.
 
-1. The **Open a pull request** screen appears. Your description helps reviewers understand your change.
+1. The **Open a pull request** screen appears. Your description helps reviewers
+   understand your change.
 
 1. Select **Create pull request**.
 
@@ -155,7 +157,7 @@ on your computer. You can also use a user interface for Git.
 Figure 2 shows the steps to follow when you work from a local fork. The details
 for each step follow.
 
-{{< mermaid >}}
+```mermaid
 flowchart LR
 1[Fork the open-telemetry/opentelemetry<br>repository] --> 2[Create local clone<br>and set upstream]
 subgraph changes[Your changes]
@@ -178,13 +180,15 @@ classDef spacewhite fill:#ffffff,stroke:#fff,stroke-width:0px,color:#000
 class 1,2,3,3a,4,5,6 grey
 class S,T spacewhite
 class changes,changes2 white
-{{</ mermaid >}}
+```
 
 Figure 2. Working from a local fork to make your changes.
 
 #### Fork the open-telemetry/opentelemetry.io repository
 
-1. Navigate to the [`open-telemetry/opentelemetry.io`](https://github.com/open-telemetry/opentelemetry.io/) repository.
+1. Navigate to the
+   [`open-telemetry/opentelemetry.io`](https://github.com/open-telemetry/opentelemetry.io/)
+   repository.
 1. Select **Fork**.
 
 #### Create a local clone and set the upstream
@@ -197,7 +201,8 @@ Figure 2. Working from a local fork to make your changes.
    npm install
    ```
 
-1. Set the `open-telemetry/opentelemetry.io` repository as the `upstream` remote:
+1. Set the `open-telemetry/opentelemetry.io` repository as the `upstream`
+   remote:
 
    ```shell
    git remote add upstream https://github.com/open-telemetry/opentelemetry.io.git
@@ -218,14 +223,16 @@ Figure 2. Working from a local fork to make your changes.
    upstream	https://github.com/open-telemetry/opentelemetry.io.git (push)
    ```
 
-1. Fetch commits from your fork's `origin/main` and `open-telemetry/opentelemetry.io`'s `upstream/main`:
+1. Fetch commits from your fork's `origin/main` and
+   `open-telemetry/opentelemetry.io`'s `upstream/main`:
 
    ```shell
    git fetch origin
    git fetch upstream
    ```
 
-   This makes sure your local repository is up to date before you start making changes.
+   This makes sure your local repository is up to date before you start making
+   changes.
 
 #### Create a branch
 
@@ -286,8 +293,8 @@ When you are ready to submit a pull request, commit your changes.
 
 #### Preview your changes locally {#preview-locally}
 
-Preview your changes locally before pushing them or opening a pull request.
-A preview lets you catch build errors or markdown formatting problems.
+Preview your changes locally before pushing them or opening a pull request. A
+preview lets you catch build errors or markdown formatting problems.
 
 To build and serve the site locally with Hugo, run the following command:
 
@@ -307,7 +314,7 @@ Figure 3 shows the steps to open a PR from your fork to the
 [open-telemetry/opentelemetry.io](https://github.com/open-telemetry/opentelemetry.io)
 .
 
-{{< mermaid >}}
+```mermaid
 flowchart LR
 subgraph first[ ]
 direction TB
@@ -328,12 +335,14 @@ classDef grey fill:#dddddd,stroke:#ffffff,stroke-width:px,color:#000000, font-si
 classDef white fill:#ffffff,stroke:#000,stroke-width:px,color:#000,font-weight:bold
 class 1,2,3,4,5,6,7,8 grey
 class first,second white
-{{</ mermaid >}}
+```
 
 Figure 3. Steps to open a PR from your fork to the
 [open-telemetry/opentelemetry.io](https://github.com/open-telemetry/opentelemetry.io).
 
-1. In a web browser, go to the [`open-telemetry/opentelemetry.io`](https://github.com/open-telemetry/opentelemetry.io) repository.
+1. In a web browser, go to the
+   [`open-telemetry/opentelemetry.io`](https://github.com/open-telemetry/opentelemetry.io)
+   repository.
 1. Select **New Pull Request**.
 1. Select **compare across forks**.
 1. From the **head repository** drop-down menu, select your fork.
@@ -341,32 +350,35 @@ Figure 3. Steps to open a PR from your fork to the
 1. Select **Create Pull Request**.
 1. Add a description for your pull request:
 
-    - **Title** (50 characters or less): Summarize the intent of the change.
-    - **Description**: Describe the change in more detail.
+   - **Title** (50 characters or less): Summarize the intent of the change.
+   - **Description**: Describe the change in more detail.
 
-      - If there is a related GitHub issue, include `Fixes #12345` or `Closes #12345` in the
-        description. GitHub's automation closes the mentioned issue after merging the PR if used.
-        If there are other related PRs, link those as well.
-      - If you want advice on something specific, include any questions you'd like reviewers to
-        think about in your description.
+     - If there is a related GitHub issue, include `Fixes #12345` or
+       `Closes #12345` in the description. GitHub's automation closes the
+       mentioned issue after merging the PR if used. If there are other related
+       PRs, link those as well.
+     - If you want advice on something specific, include any questions you'd
+       like reviewers to think about in your description.
 
 1. Select the **Create pull request** button.
 
 Your pull request is available in
 [Pull requests](https://github.com/open-telemetry/opentelemetry.io/pulls).
 
-After opening a PR, GitHub runs automated tests and tries to deploy a preview using
-[Netlify](https://www.netlify.com/).
+After opening a PR, GitHub runs automated tests and tries to deploy a preview
+using [Netlify](https://www.netlify.com/).
 
 - If the Netlify build fails, select **Details** for more information.
-- If the Netlify build succeeds, select **Details** opens a staged version of the OpenTelemetry
-  website with your changes applied. This is how reviewers check your changes.
+- If the Netlify build succeeds, select **Details** opens a staged version of
+  the OpenTelemetry website with your changes applied. This is how reviewers
+  check your changes.
 
 GitHub also automatically assigns labels to a PR to help reviewers.
 
 #### Changes from reviewers
 
-Sometimes reviewers commit to your pull request. Before making any other changes, fetch those commits.
+Sometimes reviewers commit to your pull request. Before making any other
+changes, fetch those commits.
 
 1. Fetch commits from your remote fork and rebase your working branch:
 
@@ -399,7 +411,8 @@ create a merge conflict. You must resolve all merge conflicts in your PR.
    git push --force-with-lease origin <your-branch-name>
    ```
 
-1. Fetch changes from `open-telemetry/opentelemetry.io`'s `upstream/main` and rebase your branch:
+1. Fetch changes from `open-telemetry/opentelemetry.io`'s `upstream/main` and
+   rebase your branch:
 
    ```shell
    git fetch upstream
@@ -414,11 +427,11 @@ create a merge conflict. You must resolve all merge conflicts in your PR.
 
    This results in a number of files marked as conflicted.
 
-1. Open each conflicted file and look for the conflict markers: `>>>`, `<<<`, and `===`.
-   Resolve the conflict and delete the conflict marker.
+1. Open each conflicted file and look for the conflict markers: `>>>`, `<<<`,
+   and `===`. Resolve the conflict and delete the conflict marker.
 
-   {{< note >}}
-   For more information, see [How conflicts are presented](https://git-scm.com/docs/git-merge#_how_conflicts_are_presented).
+   {{< note >}} For more information, see
+   [How conflicts are presented](https://git-scm.com/docs/git-merge#_how_conflicts_are_presented).
    {{< /note >}}
 
 1. Add the files to the changeset:
@@ -435,7 +448,8 @@ create a merge conflict. You must resolve all merge conflicts in your PR.
 
 1. Repeat steps 2 to 5 as needed.
 
-   After applying all commits, the `git status` command shows that the rebase is complete.
+   After applying all commits, the `git status` command shows that the rebase is
+   complete.
 
 1. Force-push the branch to your fork:
 
@@ -465,12 +479,13 @@ the templates with as much detail as possible when you file issues or PRs.
 
 ## Open an issue
 
-If you want to suggest improvements to existing content or notice an error, 
-open an issue.
+If you want to suggest improvements to existing content or notice an error, open
+an issue.
 
-1. Click the **Create documentation issue** link on the right sidebar. This redirects you
- to a GitHub issue page prepopulated with some headers.
-2. Describe the issue or suggestion for improvement. Provide as many details as you can.
+1. Click the **Create documentation issue** link on the right sidebar. This
+   redirects you to a GitHub issue page prepopulated with some headers.
+2. Describe the issue or suggestion for improvement. Provide as many details as
+   you can.
 3. Click **Submit new issue**.
 
 After submitting, check in on your issue occasionally or turn on GitHub
@@ -479,36 +494,37 @@ they can take action on your issue.
 
 ### Suggesting new content
 
-If you have an idea for new content, but you aren't sure where it should go,
-you can still file an issue. Either:
+If you have an idea for new content, but you aren't sure where it should go, you
+can still file an issue. Either:
 
-- Choose an existing page in the section you think the content belongs in and click **Create documentation issue**.
-- Go to [GitHub](https://github.com/open-telemetry/opentelemetry.io/issues/new/) and file the issue directly.
+- Choose an existing page in the section you think the content belongs in and
+  click **Create documentation issue**.
+- Go to [GitHub](https://github.com/open-telemetry/opentelemetry.io/issues/new/)
+  and file the issue directly.
 
 ## How to file great issues
 
 Keep the following in mind when filing an issue:
 
-- Provide a clear issue description. Describe what specifically is missing, out of date,
-  wrong, or needs improvement.
+- Provide a clear issue description. Describe what specifically is missing, out
+  of date, wrong, or needs improvement.
 - Explain the specific impact the issue has on users.
 - Limit the scope of a given issue to a reasonable unit of work. For problems
-  with a large scope, break them down into smaller issues. For example, "Fix the security docs"
-  is too broad, but "Add details to the 'Restricting network access' topic" is specific enough
-  to be actionable.
-- Search the existing issues to see if there's anything related or similar to the
-  new issue.
-- If the new issue relates to another issue or pull request, refer to it
-  either by its full URL or by the issue or pull request number prefixed
-  with a `#` character. For example, `Introduced by #987654`.
-- Follow the [Code of Conduct](https://github.com/open-telemetry/community/blob/main/code-of-conduct.md). Respect your
-fellow contributors. For example, "The docs are terrible" is not
+  with a large scope, break them down into smaller issues. For example, "Fix the
+  security docs" is too broad, but "Add details to the 'Restricting network
+  access' topic" is specific enough to be actionable.
+- Search the existing issues to see if there's anything related or similar to
+  the new issue.
+- If the new issue relates to another issue or pull request, refer to it either
+  by its full URL or by the issue or pull request number prefixed with a `#`
+  character. For example, `Introduced by #987654`.
+- Follow the
+  [Code of Conduct](https://github.com/open-telemetry/community/blob/main/code-of-conduct.md).
+  Respect your fellow contributors. For example, "The docs are terrible" is not
   helpful or polite feedback.
-
 
 ## Other ways to contribute
 
 - Visit the [OpenTelemetry community site](/community/).
 - Add your application to the [Registry](/ecosystem).
 - Submit a [blog post or case study](/docs/contribute/blogs-case-studies/).
-
