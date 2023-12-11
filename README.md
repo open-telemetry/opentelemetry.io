@@ -19,46 +19,12 @@ For details, see [Adding to the registry][].
 
 ## Submitting a blog post
 
-You can submit a blog post either by forking this repository and writing it
-locally or by using the GitHub UI. In both cases we ask you to follow the
-instructions provided by the [blog post template](archetypes/blog.md).
+The [OpenTelemetry blog](https://blog.opentelemetry.io/) is used by the project
+to communicate new features, community reports, and any news that might be
+relevant to the OpenTelemetry community. This includes end users and developers.
 
-**Note**: Before writing a blog post, please ask yourself, if your content also
-might be a good addition to the documentation. If the answer is yes, create a
-new issue/PR with your content to get it added to the docs.
-
-### Fork & Write locally
-
-Follow the [setup instructions][contributing.md] then, to create a skeletal blog
-post, run the following command from the repository root:
-
-```sh
-npx hugo new content/en/blog/2023/short-name-for-post.md
-```
-
-If your post will have images or other assets, instead run:
-
-```sh
-npx hugo new content/en/blog/2023/short-name-for-post/index.md
-```
-
-Edit the markdown file at the path you provided in the previous command. The
-file is initialized from the blog-post starter under [archetypes](archetypes).
-
-Put assets, if any, like images into the folder created.
-
-Once your post is ready, submit it through a [pull request][].
-
-### Using the GitHub UI
-
-- Go to the [blog post template](archetypes/blog.md) and click on
-  `Copy raw content` at the top right of the menu.
-- [Create a new file](https://github.com/open-telemetry/opentelemetry.io/new/main).
-- Paste the content from the template.
-- Name your file, e.g.
-  `content/en/blog/2022/short-name-for-your-blog-post/index.md`
-- Start editing the markdown file.
-- Once your post is ready click on `Propose changes` at the bottom.
+Anyone can write a blog post and submit it for review by following our
+[guidelines for blog posts](./CONTRIBUTING-BLOG-POSTS.md).
 
 ## Contributing
 
