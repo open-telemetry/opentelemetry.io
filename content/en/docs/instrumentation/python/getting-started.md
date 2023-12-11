@@ -2,7 +2,7 @@
 title: Getting Started
 description: Get telemetry for your app in less than 5 minutes!
 # prettier-ignore
-cSpell:ignore: debugexporter diceroller distro loglevel maxlen randint rolldice rollspan venv
+cSpell:ignore: debugexporter diceroller distro loglevel maxlen randint rolldice rollspan venv werkzeug
 weight: 10
 ---
 
@@ -36,14 +36,14 @@ To begin, set up an environment in a new directory:
 ```shell
 mkdir otel-getting-started
 cd otel-getting-started
-python3 -m venv .
-source ./bin/activate
+python3 -m venv venv
+source ./venv/bin/activate
 ```
 
 Now install Flask:
 
 ```shell
-pip install 'flask<3'
+pip install 'flask<3' 'werkzeug<3'
 ```
 
 ### Create and launch an HTTP Server
@@ -64,7 +64,7 @@ def roll_dice():
     player = request.args.get('player', default = None, type = str)
     result = str(roll())
     if player:
-        logger.warn("{} is rolling the dice: {}", player, result)
+        logger.warn("%s is rolling the dice: %s", player, result)
     else:
         logger.warn("Anonymous player is rolling the dice: %s", result)
     return result
@@ -302,6 +302,8 @@ create a trace that's a child of the one that's automatically generated:
 ```python
 from random import randint
 from flask import Flask
+
+from opentelemetry import trace
 
 # Acquire a tracer
 tracer = trace.get_tracer("diceroller.tracer")

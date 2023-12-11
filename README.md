@@ -74,11 +74,29 @@ schedule.
 Meeting notes are available as a public [Google doc][]. If you have trouble
 accessing the doc, please get in touch on [Slack][].
 
-Roles:
+Here is a list of community roles with current and previous members:
 
 - Approvers: [@open-telemetry/docs-approvers][]
+
+  - [Fabrizio Ferri-Benedetti](https://github.com/theletterf), Splunk
+  - [Michael Hausenblas](https://github.com/mhausenblas), Amazon
+
 - Maintainers: [@open-telemetry/docs-maintainers][]
-- Blog approvers: [@open-telemetry/blog-approvers][]
+
+  - [Austin Parker](https://github.com/austinlparker), Honeycomb
+  - [Patrice Chalin](https://github.com/chalin), CNCF
+  - [Phillip Carter](https://github.com/cartermp), Honeycomb
+  - [Severin Neumann](https://github.com/svrnm), Cisco
+
+- Emeritus approvers:
+
+  - [Paul Bruce](https://github.com/paulsbruce)
+
+- Emeritus maintainers:
+
+  - [Steve Flanders](https://github.com/flands)
+  - [Morgan McLean](https://github.com/mtwo)
+  - [jparsana](https://github.com/jparsana)
 
 Learn more about roles in the [community repository][]. Thanks to [all who have
 already contributed][contributors]!
@@ -91,8 +109,6 @@ already contributed][contributors]!
 [adding to the registry]: https://opentelemetry.io/ecosystem/registry/adding/
 [let us know]:
   https://github.com/open-telemetry/opentelemetry.io/issues/new/choose
-[@open-telemetry/blog-approvers]:
-  https://github.com/orgs/open-telemetry/teams/blog-approvers
 [@open-telemetry/docs-approvers]:
   https://github.com/orgs/open-telemetry/teams/docs-approvers
 [@open-telemetry/docs-maintainers]:

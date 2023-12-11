@@ -52,7 +52,7 @@ can change the endpoint by setting the `OTEL_EXPORTER_OTLP_ENDPOINT`
 accordingly:
 
 ```sh
-env OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:4318/v1/traces" rails server -p 8080
+env OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:4318" rails server -p 8080
 ```
 
 To try out the OTLP exporter quickly and see your traces visualized at the

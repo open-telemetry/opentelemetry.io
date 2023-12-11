@@ -76,7 +76,16 @@ For small changes to a single file, you can edit directly in GitHub by clicking
 **Edit this file** button. After forking the repository, follow the instructions
 in [Editing files][].
 
-For everything else, follow the
+However, formatting may still be needed, like reducing line lengths in the
+edited file. The options for fixing formatting are:
+
+- Checking out the project and running the CLI scripts mentioned in
+  [Submitting a change](#submitting-a-change).
+- Commenting `/fix:format` on your pull request to trigger an automated script.
+  This requires a unique branch name, which can be edited under _View all
+  branches_ in your fork.
+
+For larger fixes, follow the
 [instructions to setup a development environment](#development) below.
 
 ### PR Guidelines
@@ -212,8 +221,8 @@ The website is built from the following content:
 
 ### Submitting a change
 
-Before submitting a to the repository, run the following command and address any
-reported issues. Also commit any files changed by the `fix` script:
+Before submitting a change to the repository, run the following command and
+address any reported issues. Also commit any files changed by the `fix` script:
 
 ```sh
 npm run test-and-fix
@@ -256,6 +265,39 @@ the production server.
 
 To see deploy logs and more, visit project's [dashboard][] -- Netlify login
 required.
+
+## Approver and Maintainer practices
+
+This last section includes guidelines and some common practices used by
+approvers and maintainers while doing code reviews:
+
+- PRs with changes to documentation co-owned by a SIG (collector, demo,
+  language-specific...) should aim for two approvals: one by a docs approver and
+  one by a SIG approver:
+  - Doc approver label such PRs with `sig:<name>` and tag the SIG `-approvers`
+    group on that PR
+  - If no SIG approval is given within a certain grace period (two weeks in
+    general, but may be less in urgent cases), docs maintainer may use their own
+    judgement to merge that PR
+- If the PR branch is `out-of-date with the base branch`, they do not need to be
+  updated continuously: every update triggers all the PR CI checks to be run!
+  It's often enough to update them before merging.
+- A PR by non-maintainers should **never** update git sub modules. This happens
+  by accident from time to time. Let the PR author know that they should not
+  worry about it, we will fix this before merging, but in the future they should
+  make sure that they work from an up-to-date fork.
+- If the contributor is having trouble signing the CLA or used the wrong email
+  by mistake in one of their commits, ask them to fix the issue or rebase the
+  pull request. Worst case scenario, close and re-open the PR to trigger a new
+  CLA check.
+- Words unknown to cspell should be added to the cspell ignore list per page by
+  PR authors. Only approvers and maintainers will add commonly used terms to the
+  global list.
+- When an approver or maintainer won't be available to contribute for an
+  extended period of time (more than a few days or a week) or won't be available
+  in that period of time, they should communicate this using the
+  [#otel-comms](https://cloud-native.slack.com/archives/C02UN96HZH6) channel and
+  updating the GitHub status.
 
 [.nvmrc]: .nvmrc
 [clone]:
