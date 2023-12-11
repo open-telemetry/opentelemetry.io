@@ -25,3 +25,6 @@ the site.
 | OTel | OTel is the accepted short form of OpenTelemetry. Don't use OTEL. |
 | Collector | When referring to the OpenTelemetry Collector, always capitalize Collector. |
 <!-- prettier-ignore-end -->
+
+See also the [Glossary](/docs/concepts/glossary/) for a list of OpenTelemetry
+terms and their definition.
