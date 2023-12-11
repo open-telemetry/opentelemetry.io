@@ -358,7 +358,7 @@ sdk.start();
 ```
 
 > _View automatic instrumentation samples for other programming languages,
-> [here](https://opentelemetry.io/docs/instrumentation/)._
+> [here](../docs/instrumentation/)._
 
 These few lines of code will automatically start generating trace spans for your
 service.
