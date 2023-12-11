@@ -359,7 +359,7 @@
 - name: Tracetest
   distribution: false
   nativeOTLP: true
-  url: 'https://tracetest.io/'
-  contact: 'https://tracetest.io/contact/'
+  url: 'https://docs.tracetest.io/configuration/connecting-to-data-stores/opentelemetry-collector'
+  contact: 'https://github.com/adnanrahic'
   oss: true
   commercial: true
