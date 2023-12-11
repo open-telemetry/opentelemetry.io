@@ -104,6 +104,11 @@ transverses process, network and security boundaries.
 
 More on Distributed Tracing [here][distributed tracing].
 
+### **Distribution**
+
+A distribution is a wrapper around an upstream OpenTelemetry repository with
+some customizations. See [more][distribution].
+
 ### **Event**
 
 Something that happened where representation depends on the
@@ -338,6 +343,7 @@ on web pages when requested. See [more][zpages].
 [context propagation]: /docs/specs/otel/overview#context-propagation
 [dag]: https://en.wikipedia.org/wiki/Directed_acyclic_graph
 [distributed tracing]: /docs/concepts/signals/traces/
+[distribution]: /docs/concepts/distributions/
 [field]: /docs/specs/otel/logs/data-model#field-kinds
 [http]: https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
 [json]: https://en.wikipedia.org/wiki/JSON
