@@ -103,7 +103,7 @@ Zipkin backend. The following steps are required to be done.
   add the following text
 
   ```html
-  <!doctype html>
+  <!DOCTYPE html>
   <html>
     <head>
       <title>PHP Test Page</title>

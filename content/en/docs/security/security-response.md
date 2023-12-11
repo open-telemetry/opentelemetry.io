@@ -24,7 +24,7 @@ branch at the moment of the release. For instance, if the latest version is
 Security fixes are given priority and might be enough to cause a new version to
 be released. Each repository is entitled to establish their own complementary
 processes. SIG-Security in conjunction with the TC can advise in case
-clarifications are required.  
+clarifications are required.
 
 ## Disclosures
 
@@ -49,9 +49,9 @@ If you know of a publicly disclosed security vulnerability please IMMEDIATELY
 email
 [cncf-opentelemetry-tc@lists.cncf.io](mailto:cncf-opentelemetry-tc@lists.cncf.io)
 to inform the Security Response Committee (SRC) about the vulnerability so they
-may start the patch, release, and communication process. Please include any relevant
-information about current public exploitations of this vulnerability if known to
-help with scoring and priortization.
+may start the patch, release, and communication process. Please include any
+relevant information about current public exploitations of this vulnerability if
+known to help with scoring and prioritization.
 
 The TC should receive the message and re-direct it to the relevant repo
 maintainers for ownership. If possible the repo maintainers will engage and ask
@@ -69,7 +69,8 @@ The Fix Team is made up of the relevant repo maintainers.
 
 ### TC Role
 
-- A member of the TC will need to review the proposed CVSS score and severity from the Fix Team
+- A member of the TC will need to review the proposed CVSS score and severity
+  from the Fix Team
 - Acknowledge when a proposed fix is completed
 
 ### Fix Development Process
@@ -112,8 +113,7 @@ OTel relies on GitHub tooling to notify the affected repositories and publish a
 security advisory. GitHub will publish the CVE to the CVE List, broadcast the
 Security Advisory via the GitHub Advisory Database, and send security alerts to
 all repositories that use the package and have alerts on. The CVE will also be
-added to the [OTel website's CVE
-feed](security/cve/).
+added to the [OTel website's CVE feed](security/cve/).
 
 #### Fix Release Day
 
@@ -122,8 +122,8 @@ notify their communities via Slack.
 
 ## Severity
 
-The Fix Team evaluates vulnerability severity on a case-by-case
-basis, guided by CVSS 3.1 and is subject to TC review.
+The Fix Team evaluates vulnerability severity on a case-by-case basis, guided by
+CVSS 3.1 and is subject to TC review.
 
 ## Retrospective
 

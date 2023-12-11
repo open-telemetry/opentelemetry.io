@@ -70,7 +70,7 @@ const collectorOptions = {
 };
 
 const spanProcessor = new BatchSpanProcessor(
-  new OTLPTraceExporter(collectorOptions),
+  new OTLPTraceExporter(collectorOptions)
 );
 
 provider.addSpanProcessor(spanProcessor);
@@ -255,7 +255,7 @@ const collectorOptions = {
 };
 
 const spanProcessor = new BatchSpanProcessor(
-  new OTLPTraceExporter(collectorOptions),
+  new OTLPTraceExporter(collectorOptions)
 );
 
 provider.addSpanProcessor(spanProcessor);
