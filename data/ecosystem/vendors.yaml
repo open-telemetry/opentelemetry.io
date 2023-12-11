@@ -1,4 +1,4 @@
-# cSpell:ignore Coralogix Cribl ITRS Kloud Logz Crowdstrike Humio Lumigo observ Teletrace Uptrace Greptime KloudMate qryn ClickHouse
+# cSpell:ignore Coralogix Cribl ITRS Kloud Logz Crowdstrike Humio Lumigo observ Teletrace Uptrace Greptime KloudMate qryn ClickHouse Tracetest
 - name: AppDynamics (Cisco)
   distribution: true
   nativeOTLP: true
@@ -354,5 +354,12 @@
   nativeOTLP: true
   url: 'https://github.com/VictoriaMetrics/VictoriaMetrics/tree/master/docs#sending-data-via-opentelemetry'
   contact: 'https://github.com/hagen1778'
+  oss: true
+  commercial: true
+- name: Tracetest
+  distribution: false
+  nativeOTLP: true
+  url: 'https://docs.tracetest.io/configuration/connecting-to-data-stores/opentelemetry-collector'
+  contact: 'https://github.com/adnanrahic'
   oss: true
   commercial: true
