@@ -51,7 +51,7 @@ may start the patch, release, and communication process. Please include any
 relevant information about current public exploitations of this vulnerability if
 known to help with scoring and prioritization.
 
-The TC should receive the message and re-direct it to the relevant repo
+The TC should receive the message and re-direct it to the relevant repository
 maintainers for ownership. If possible the repository maintainers will engage and ask
 the person making the public report if the issue can be handled via a private
 disclosure process. If the reporter denies the request, the repository maintainers
@@ -96,7 +96,7 @@ that the report is accepted as valid.
 #### Incident Mitigation
 
 The incident mitigation timeline depends on the severity of the incident and
-repo release cadence.
+repository release cadence.
 
 - The Fix Team will ping the TC GitHub team to alert them that work on the fix
   branch is complete once there are LGTMs on all commits in the temporary
