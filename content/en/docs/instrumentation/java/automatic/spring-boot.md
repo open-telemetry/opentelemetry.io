@@ -25,7 +25,9 @@ Spring Boot starter, see
 
 ### OpenTelemetry BOM
 
-You have to import the `opentelemetry-bom` BOM before using the OpenTelemetry starter. We also recommend that you import now the `opentelemetry-instrumentation-bom-alpha`.
+You have to import the `opentelemetry-bom` BOM before using the OpenTelemetry
+starter. We also recommend that you import now the
+`opentelemetry-instrumentation-bom-alpha`.
 
 We show below how to import the two BOMs with Maven:
 
@@ -48,9 +50,12 @@ We show below how to import the two BOMs with Maven:
 </dependencyManagement>
 ```
 
-With Gradle and Spring Boot, you have [two ways](https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/htmlsingle/) to import a BOM.
+With Gradle and Spring Boot, you have
+[two ways](https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/htmlsingle/)
+to import a BOM.
 
 You can Gradle’s native bom support:
+
 ```kotlin
 plugins {
   id("java")
@@ -64,7 +69,8 @@ dependencies {
 }
 ```
 
-The other way with Gradle is to use the `io.spring.dependency-management` plugin:
+The other way with Gradle is to use the `io.spring.dependency-management`
+plugin:
 
 ```kotlin
 plugins {
@@ -81,9 +87,8 @@ dependencyManagement {
 }
 ```
 
-{{% alert title="Note" color="info" %}}
-Be careful not to mix up the different ways of configuring things with Gradle.
-{{% /alert %}}
+{{% alert title="Note" color="info" %}} Be careful not to mix up the different
+ways of configuring things with Gradle. {{% /alert %}}
 
 ### OpenTelemetry starter dependency
 
