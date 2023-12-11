@@ -927,6 +927,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-30T11:40:07.696588-04:00"
   },
+  "https://docs.docker.com/compose/profiles/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-12-11T14:53:28.799037+01:00"
+  },
   "https://docs.docker.com/desktop": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T15:47:06.701768-04:00"
@@ -1518,6 +1522,22 @@
   "https://docs.thousandeyes.com/product-documentation/api/opentelemetry": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T11:39:40.231517-04:00"
+  },
+  "https://docs.tracetest.io/cli/cli-installation-reference": {
+    "StatusCode": 206,
+    "LastSeen": "2023-12-11T14:53:29.148485+01:00"
+  },
+  "https://docs.tracetest.io/getting-started/installation#install-the-tracetest-cli": {
+    "StatusCode": 206,
+    "LastSeen": "2023-12-11T14:53:30.523748+01:00"
+  },
+  "https://docs.tracetest.io/getting-started/open#creating-trace-based-tests-programatically": {
+    "StatusCode": 206,
+    "LastSeen": "2023-12-11T14:53:30.908284+01:00"
+  },
+  "https://docs.tracetest.io/live-examples/opentelemetry-store/overview/#get-and-run-the-demo": {
+    "StatusCode": 206,
+    "LastSeen": "2023-12-11T14:53:28.559779+01:00"
   },
   "https://docs.vmware.com/en/vRealize-Log-Insight/8.4/com.vmware.log-insight.agent.admin.doc/GUID-40C13E10-1554-4F1B-B832-69CEBF85E7A0.html": {
     "StatusCode": 206,
@@ -4935,6 +4955,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-09-08T10:56:59.732967-04:00"
   },
+  "https://opentelemetry.io/docs/instrumentation/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-12-11T14:53:31.489877+01:00"
+  },
   "https://opentelemetry.io/docs/instrumentation/java/automatic/spring-boot/": {
     "StatusCode": 206,
     "LastSeen": "2023-12-08T11:19:15.011115+01:00"
@@ -5615,6 +5639,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-09-14T09:36:37.578867-05:00"
   },
+  "https://stackoverflow.blog/2022/10/12/how-observability-driven-development-creates-elite-performers/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-11T14:53:30.159658+01:00"
+  },
   "https://stackoverflow.com/questions/5626193/what-is-monkey-patching": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:45:47.500299-04:00"
@@ -5762,6 +5790,10 @@
   "https://tracetest.io/blog/frontend-overhaul-opentelemetry-demo": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:51:50.19809-04:00"
+  },
+  "https://tracetest.io/blog/the-power-of-traces-learn-by-contributing-to-opentelemetry": {
+    "StatusCode": 206,
+    "LastSeen": "2023-12-11T14:53:28.275386+01:00"
   },
   "https://traefik.io": {
     "StatusCode": 206,
