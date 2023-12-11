@@ -41,8 +41,6 @@ reporting workflow, please reach out to the Technical Committee using
 and we will provide instruction on how to report the vulnerability using an
 encrypted message, if desired.
 
-[gh-organization]: https://github.com/open-telemetry
-
 ### Public Disclosure Processes
 
 If you know of a publicly disclosed security vulnerability please IMMEDIATELY
