@@ -6,7 +6,6 @@ cSpell:ignore:
 slug: style-guide
 ---
 
-<!-- overview -->
 This page gives writing style guidelines for the OpenTelemetry documentation.
 These are guidelines, not rules. Use your best judgment, and feel free to
 propose changes to this document in a pull request.
