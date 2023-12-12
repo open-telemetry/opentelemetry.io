@@ -1,9 +1,9 @@
 ---
 title: Submit a blog post
-linktitle: Submit a blog post
+linkTitle: Submit a blog post
 slug: blogs-case-studies
 weight: 30
-cSpell:ignore:
+cSpell:ignore: open-telemetry
 ---
 
 The [OpenTelemetry blog](/blog/) communicates new features, community reports,
