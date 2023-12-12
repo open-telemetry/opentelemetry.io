@@ -85,7 +85,7 @@ builder.Services.AddOpenTelemetry()
     b
     .AddOtlpExporter(opt =>
     {
-        opt.Endpoint = new Uri("your-endpoint-here");
+        opt.Endpoint = new Uri("your-endpoint-here/v1/traces");
         opt.Protocol = OtlpExportProtocol.HttpProtobuf;
     })
     // The rest of your setup code goes here too
@@ -98,7 +98,7 @@ Otherwise, configure the exporter when creating a tracer provider:
 using var tracerProvider = Sdk.CreateTracerProviderBuilder()
     .AddOtlpExporter(opt =>
     {
-        opt.Endpoint = new Uri("your-endpoint-here");
+        opt.Endpoint = new Uri("your-endpoint-here/v1/traces");
         opt.Protocol = OtlpExportProtocol.HttpProtobuf;
     })
 
