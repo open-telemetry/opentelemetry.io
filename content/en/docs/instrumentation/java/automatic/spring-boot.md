@@ -99,7 +99,7 @@ the `dependencies` part.
 
 Be careful not to mix up the different ways of configuring things with Gradle.
 For example, don't use
-`implementation(platform(SpringBootPlugin.BOM_COORDINATES))` with the
+`implementation(platform("io.opentelemetry:opentelemetry-bom:{{% param vers.otel %}}"))` with the
 `io.spring.dependency-management` plugin.
 
 {{% /alert %}}
