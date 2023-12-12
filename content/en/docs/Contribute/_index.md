@@ -2,7 +2,7 @@
 title: Contribute
 description: Learn how to contribute to the OpenTelemetry documentation.
 weight: 200
-cSpell:ignore: spacewhite prepopulated linktitle open-telemetry repos
+cSpell:ignore: linktitle open-telemetry prepopulated repos spacewhite
 ---
 
 You can open an issue about OpenTelemetry documentation, or contribute a change

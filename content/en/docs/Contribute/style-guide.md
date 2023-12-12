@@ -2,7 +2,6 @@
 title: Documentation style guide
 linkTitle: Style guide
 weight: 40
-cSpell:ignore:
 slug: style-guide open-telemetry
 ---
 
