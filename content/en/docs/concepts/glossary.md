@@ -124,10 +124,11 @@ pull-based.
 
 ### **Field**
 
-A term used specifically by [`Log Records`](#log-record). [`Metadata`](#metadata)
-can be added through defined fields, including [`Attributes`](#attribute) and
-[`Resource`](#resource). Other fields may also be considered metadata, including
-severity and trace information. See the [field spec][field].
+A term used specifically by [`Log Records`](#log-record).
+[`Metadata`](#metadata) can be added through defined fields, including
+[`Attributes`](#attribute) and [`Resource`](#resource). Other fields may also be
+considered metadata, including severity and trace information. See the [field
+spec][field].
 
 ### **gRPC**
 
@@ -259,9 +260,9 @@ See [`Distributed Tracing`](#distributed-tracing).
 
 Captures information about the entity producing telemetry as
 [`Attributes`](#attributes). For example, a process producing telemetry that is
-running in a container on Kubernetes has a process name, a pod name, a namespace,
-and possibly a deployment name. All four of these attributes can be included in
-the `Resource`.
+running in a container on Kubernetes has a process name, a pod name, a
+namespace, and possibly a deployment name. All four of these attributes can be
+included in the `Resource`.
 
 ### **REST**
 
