@@ -2,12 +2,12 @@
 title: Contribute
 description: Learn how to contribute to the OpenTelemetry documentation.
 weight: 200
-cSpell:ignore:
+cSpell:ignore: spacewhite prepopulated linktitle open-telemetry repos
 ---
 
 You can open an issue about OpenTelemetry documentation, or contribute a change
 with a pull request (PR) to the
-[`open-telemetry/opentelemetry.io` GitHub repository](https://github.com/open-telemetry/opentelemetry.io).
+[`opentelemetry.io` GitHub repository](https://github.com/open-telemetry/opentelemetry.io).
 
 OpenTelemetry documentation contributors:
 
@@ -25,8 +25,8 @@ Conduct.
 
 To contribute, you need to be familiar with the following techs and tools:
 
-- [git](https://git-scm.com/)
-- [GitHub](https://lab.github.com/)
+- git
+- GitHub
 - Markdown (CommonMark)
 - YAML
 
@@ -184,10 +184,10 @@ class changes,changes2 white
 
 Figure 2. Working from a local fork to make your changes.
 
-#### Fork the open-telemetry/opentelemetry.io repository
+#### Fork the opentelemetry.io repository
 
 1. Navigate to the
-   [`open-telemetry/opentelemetry.io`](https://github.com/open-telemetry/opentelemetry.io/)
+   [`opentelemetry.io`](https://github.com/open-telemetry/opentelemetry.io/)
    repository.
 1. Select **Fork**.
 
@@ -311,14 +311,13 @@ close the terminal window.
 #### Open a pull request from your fork {#open-a-pr}
 
 Figure 3 shows the steps to open a PR from your fork to the
-[open-telemetry/opentelemetry.io](https://github.com/open-telemetry/opentelemetry.io)
-.
+[opentelemetry.io](https://github.com/open-telemetry/opentelemetry.io) .
 
 ```mermaid
 flowchart LR
 subgraph first[ ]
 direction TB
-1[1. Go to open-telemetry/opentelemetry.io repository] --> 2[2. Select New Pull Request]
+1[1. Go to opentelemetry.io repository] --> 2[2. Select New Pull Request]
 2 --> 3[3. Select compare across forks]
 3 --> 4[4. Select your fork from<br>head repository drop-down menu]
 end
@@ -338,10 +337,10 @@ class first,second white
 ```
 
 Figure 3. Steps to open a PR from your fork to the
-[open-telemetry/opentelemetry.io](https://github.com/open-telemetry/opentelemetry.io).
+[opentelemetry.io](https://github.com/open-telemetry/opentelemetry.io).
 
 1. In a web browser, go to the
-   [`open-telemetry/opentelemetry.io`](https://github.com/open-telemetry/opentelemetry.io)
+   [`opentelemetry.io`](https://github.com/open-telemetry/opentelemetry.io)
    repository.
 1. Select **New Pull Request**.
 1. Select **compare across forks**.
@@ -430,9 +429,8 @@ create a merge conflict. You must resolve all merge conflicts in your PR.
 1. Open each conflicted file and look for the conflict markers: `>>>`, `<<<`,
    and `===`. Resolve the conflict and delete the conflict marker.
 
-   {{< note >}} For more information, see
+   For more information, see
    [How conflicts are presented](https://git-scm.com/docs/git-merge#_how_conflicts_are_presented).
-   {{< /note >}}
 
 1. Add the files to the changeset:
 
@@ -461,9 +459,9 @@ create a merge conflict. You must resolve all merge conflicts in your PR.
 
 ## Contribute to other repos
 
-The [OpenTelemetry project](https://github.com/open-telemetry) contains many
-repositories. Many of these repositories contain documentation: user-facing help
-text, error messages, API references or code comments.
+The OpenTelemetry project contains many repositories. Many of these repositories
+contain documentation: user-facing help text, error messages, API references or
+code comments.
 
 If you see text you'd like to improve, use GitHub to search all repositories in
 the OpenTelemetry organization. This can help you figure out where to submit

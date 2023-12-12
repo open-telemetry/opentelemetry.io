@@ -719,6 +719,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T15:51:20.598962-04:00"
   },
+  "https://developers.google.com/style": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-12T09:04:54.694842+01:00"
+  },
   "https://devstats.cncf.io/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:21:23.471592-04:00"
@@ -1082,6 +1086,10 @@
   "https://docs.konghq.com/hub/kong-inc/opentelemetry/": {
     "StatusCode": 206,
     "LastSeen": "2023-09-15T16:58:35.759747+02:00"
+  },
+  "https://docs.linuxfoundation.org/lfx/easycla/contributors": {
+    "StatusCode": 206,
+    "LastSeen": "2023-12-12T09:05:05.806034+01:00"
   },
   "https://docs.locust.io/en/stable/writing-a-locustfile.html": {
     "StatusCode": 200,
@@ -1922,6 +1930,18 @@
   "https://ghcr.io/open-telemetry/demo": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T16:04:43.002783-04:00"
+  },
+  "https://git-scm.com/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-12T09:04:54.723883+01:00"
+  },
+  "https://git-scm.com/book/en/v2/Getting-Started-Installing-Git": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-12T09:05:05.965228+01:00"
+  },
+  "https://git-scm.com/docs/git-merge#_how_conflicts_are_presented": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-12T09:05:07.954292+01:00"
   },
   "https://github.blog/2021-05-26-why-and-how-github-is-adopting-opentelemetry/": {
     "StatusCode": 200,
@@ -3631,6 +3651,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:48:34.579016-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry.io": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-12T09:04:54.562763+01:00"
+  },
   "https://github.com/open-telemetry/opentelemetry.io#adding-a-project-to-the-opentelemetry-registry": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:46:35.260059-04:00"
@@ -3642,6 +3666,10 @@
   "https://github.com/open-telemetry/opentelemetry.io#submitting-a-blog-post": {
     "StatusCode": 200,
     "LastSeen": "2023-09-08T10:57:01.381266-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-12T09:05:06.564186+01:00"
   },
   "https://github.com/open-telemetry/opentelemetry.io/issues/new": {
     "StatusCode": 200,
@@ -3658,6 +3686,10 @@
   "https://github.com/open-telemetry/opentelemetry.io/pull/3195": {
     "StatusCode": 200,
     "LastSeen": "2023-09-12T11:57:04.702626-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/pulls": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-12T09:05:07.270135+01:00"
   },
   "https://github.com/open-telemetry/otel-arrow": {
     "StatusCode": 200,
@@ -4450,6 +4482,10 @@
   "https://kubernetes.io/docs/concepts/workloads/pods/init-containers/": {
     "StatusCode": 206,
     "LastSeen": "2023-07-28T12:17:39.145108-04:00"
+  },
+  "https://kubernetes.io/docs/contribute/style/style-guide/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-12-12T09:04:54.259484+01:00"
   },
   "https://kubernetes.io/docs/reference/kubectl/": {
     "StatusCode": 206,
@@ -5999,6 +6035,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:48:57.135457-04:00"
   },
+  "https://www.cncf.io/about/contact/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-12-12T09:05:06.564168+01:00"
+  },
   "https://www.cncf.io/blog/2019/05/21/a-brief-history-of-opentelemetry-so-far/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T09:22:37.957195-04:00"
@@ -6358,6 +6398,10 @@
   "https://www.mysql.com/": {
     "StatusCode": 206,
     "LastSeen": "2023-10-16T20:09:59.62173+02:00"
+  },
+  "https://www.netlify.com/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-12-12T09:05:07.468279+01:00"
   },
   "https://www.nomadproject.io": {
     "StatusCode": 206,

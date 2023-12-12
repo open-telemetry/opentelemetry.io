@@ -1,9 +1,9 @@
 ---
 title: Documentation style guide
-linktitle: Style guide
+linkTitle: Style guide
 weight: 40
 cSpell:ignore:
-slug: style-guide
+slug: style-guide open-telemetry
 ---
 
 The OpenTelemetry documentation adheres to the
@@ -21,9 +21,10 @@ the site.
 <!-- prettier-ignore-start -->
 | Term | Usage |
 | --- | --- |
-| OpenTelemetry | OpenTelemetry should always be capitalized. |
+| OpenTelemetry | OpenTelemetry should always be capitalized. Don't use Open-Telemetry. |
 | OTel | OTel is the accepted short form of OpenTelemetry. Don't use OTEL. |
 | Collector | When referring to the OpenTelemetry Collector, always capitalize Collector. |
+| Repository | Code repositories. Don't use repo or repos. |
 <!-- prettier-ignore-end -->
 
 See also the [Glossary](/docs/concepts/glossary/) for a list of OpenTelemetry
