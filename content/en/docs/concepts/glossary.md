@@ -122,11 +122,10 @@ pull-based.
 
 ### **Field**
 
-Term used specifically for [`Log Records`](#log-record).
-[`Metadata`](#metadata) can be added through defined fields, including
-[`Attributes`](#attributes) and [`Resource`](#resource). Other fields may also
-be considered metadata, including severity and trace information. See the
-[field spec][field].
+Term used specifically for [`Log Records`](#log-record). [`Metadata`](#metadata)
+can be added through defined fields, including [`Attributes`](#attributes) and
+[`Resource`](#resource). Other fields may also be considered metadata, including
+severity and trace information. See the [field spec][field].
 
 ### **gRPC**
 
@@ -184,10 +183,10 @@ describes what happened, where it happened, etc. See [more][log record].
 
 ### **Metadata**
 
-A key-value pair, for example `foo="bar"`, added to telemetry data. OpenTelemetry
-calls these pairs [`Attributes`](#attribute). In addition, [`Metrics`](#metric)
-have [`Dimensions`](#dimension) and [`Labels`](#label), while [`Logs`](#log) have
-[`Fields`](#field).
+A key-value pair, for example `foo="bar"`, added to telemetry data.
+OpenTelemetry calls these pairs [`Attributes`](#attribute). In addition,
+[`Metrics`](#metric) have [`Dimensions`](#dimension) and [`Labels`](#label),
+while [`Logs`](#log) have [`Fields`](#field).
 
 ### **Metric**
 
