@@ -123,7 +123,7 @@ pull-based.
 ### **Field**
 
 Term used specifically for [`Log Records`](#log-record). [`Metadata`](#metadata)
-can be added through defined fields, including [`Attributes`](#attributes) and
+can be added through defined fields, including [`Attributes`](#attribute) and
 [`Resource`](#resource). Other fields may also be considered metadata, including
 severity and trace information. See the [field spec][field].
 
