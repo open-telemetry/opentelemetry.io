@@ -28,6 +28,10 @@ Spring Boot starter, see
 Import the `opentelemetry-bom` and `opentelemetry-instrumentation-bom-alpha`
 BOMs before using the OpenTelemetry starter.
 
+The `opentelemetry-bom` BOM will allow you to align the OpenTelemetry versions of the OpenTelemetry starter and Spring Boot 3.
+
+With the `opentelemetry-instrumentation-bom-alpha` BOM, you won't have to declare the dependency versions for additional instrumentations.
+
 The following example shows how to import both BOMs using Maven:
 
 ```xml
