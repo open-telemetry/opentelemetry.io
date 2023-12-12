@@ -98,7 +98,7 @@ ways of configuring things with Gradle. For example, don't use
 
 {{% /alert %}}
 
-### OpenTelemetry starter dependency
+### OpenTelemetry Starter dependency
 
 Add the dependency given below to enable the OpenTelemetry starter.
 
