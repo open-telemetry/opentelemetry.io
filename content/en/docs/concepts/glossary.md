@@ -36,8 +36,9 @@ alerting and tooling for finding the root cause.
 
 ### **Attribute**
 
-See [`Metadata`](#metadata). Used across [`Signals`](#signal) and [`Resources`]
-(#resource). See [attribute spec][attribute].
+OpenTelemetry's word for [`metadata`](#metadata). Adds key-value information to
+the entity producing telemetry. Used across [`Signals`](#signal) and
+[`Resources`](#resource). See [attribute spec][attribute].
 
 ### **Automatic Instrumentation**
 
@@ -92,7 +93,8 @@ See [`Signal`](#signal)
 
 ### **Dimension**
 
-Term used specifically for [`Metrics`](#metric). See [`Attribute`](#attribute).
+A term used specifically by [`Metrics`](#metric). See [`Attribute`](#attribute).
+
 
 ### **Distributed Tracing**
 
@@ -122,7 +124,7 @@ pull-based.
 
 ### **Field**
 
-Term used specifically for [`Log Records`](#log-record). [`Metadata`](#metadata)
+A term used specifically by [`Log Records`](#log-record). [`Metadata`](#metadata)
 can be added through defined fields, including [`Attributes`](#attribute) and
 [`Resource`](#resource). Other fields may also be considered metadata, including
 severity and trace information. See the [field spec][field].
@@ -157,7 +159,7 @@ Short for [JavaScript Object Notation][json].
 
 ### **Label**
 
-Term used specifically for [`Metrics`](#metric). See [`Metadata`](#metadata).
+A term used specifically by [`Metrics`](#metric). See [`Metadata`](#metadata).
 
 ### **Language**
 
@@ -170,7 +172,7 @@ A language-specific collection of behavior invoked by an interface.
 ### **Log**
 
 Sometimes used to refer to a collection of [`Log Records`](#log-record). May be
-ambiguous, since people also sometimes use [`Log`](#log) to refer to a single
+ambiguous since people also sometimes use [`Log`](#log) to refer to a single
 [`Log Record`](#log-record), thus this term should be used carefully and in the
 context where ambiguity is possible additional qualifiers should be used (e.g.
 `Log Record`). See [more][log].
@@ -183,10 +185,10 @@ describes what happened, where it happened, etc. See [more][log record].
 
 ### **Metadata**
 
-A key-value pair, for example `foo="bar"`, added to telemetry data.
-OpenTelemetry calls these pairs [`Attributes`](#attribute). In addition,
-[`Metrics`](#metric) have [`Dimensions`](#dimension) and [`Labels`](#label),
-while [`Logs`](#log) have [`Fields`](#field).
+A key-value pair, for example `foo="bar"`, added to an entity producing
+telemetry. OpenTelemetry calls these pairs [`Attributes`](#attribute). In
+addition, [`Metrics`](#metric) have [`Dimensions`](#dimension) an
+[`Labels`](#label), while [`Logs`](#log) have [`Fields`](#field).
 
 ### **Metric**
 
@@ -229,7 +231,7 @@ Short for [OpenTelemetry Protocol](/docs/specs/otlp/).
 
 ### **Processor**
 
-Operation performed on data between being received and being exported. For
+The operation performed on data between being received and being exported. For
 example, batching. Used by
 ['Instrumentation Libraries'](#instrumentation-library) and the
 [Collector](/docs/collector/configuration/#processors).
@@ -245,7 +247,7 @@ Language independent interface types. See [more][proto].
 
 ### **Receiver**
 
-Term used by the [`Collector`](/docs/collector/configuration/#receivers) to
+The term used by the [`Collector`](/docs/collector/configuration/#receivers) to
 define how telemetry data is received. Receivers can be push- or pull-based. See
 [more][receiver].
 
@@ -255,11 +257,11 @@ See [`Distributed Tracing`](#distributed-tracing).
 
 ### **Resource**
 
-Captures information about the entity for which telemetry is recorded. For
-example, a process producing telemetry that is running in a container on
-Kubernetes has a pod name, it is in a namespace and possibly is part of a
-deployment which also has a name. All three of these attributes can be included
-in the `Resource` and applied to any data source.
+Captures information about the entity producing telemetry as
+[`Attributes`](#attributes). For example, a process producing telemetry that is
+running in a container on Kubernetes has a process name, a pod name, a namespace,
+and possibly a deployment name. All four of these attributes can be included in
+the `Resource`.
 
 ### **REST**
 
