@@ -23,7 +23,7 @@ Spring Boot starter, see
 
 ## Configuration
 
-### OpenTelemetry BOM
+### Bill of Materials
 
 Import the `opentelemetry-bom` and `opentelemetry-instrumentation-bom-alpha`
 BOMs before using the OpenTelemetry starter.
