@@ -27,20 +27,20 @@ server on a bare-metal machine.
 Start from an empty directory. Create a file called `Dockerfile` and copy the
 following content into it:
 
-```Dockerfile
-FROM nginx:1.18
+```dockerfile
+FROM nginx:1.23.1
 RUN apt-get update ; apt-get install unzip
-ADD https://github.com/open-telemetry/opentelemetry-cpp-contrib/releases/download/webserver%2Fv1.0.0/opentelemetry-webserver-sdk-x64-linux.tgz.zip /opt
+ADD https://github.com/open-telemetry/opentelemetry-cpp-contrib/releases/download/webserver%2Fv1.0.3/opentelemetry-webserver-sdk-x64-linux.tgz /opt
 RUN cd /opt ; unzip opentelemetry-webserver-sdk-x64-linux.tgz.zip; tar xvfz opentelemetry-webserver-sdk-x64-linux.tgz
 RUN cd /opt/opentelemetry-webserver-sdk; ./install.sh
 ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/opentelemetry-webserver-sdk/sdk_lib/lib
-RUN echo "load_module /opt/opentelemetry-webserver-sdk/WebServerModule/Nginx/ngx_http_opentelemetry_module.so;\n$(cat /etc/nginx/nginx.conf)" > /etc/nginx/nginx.conf
+RUN echo "load_module /opt/opentelemetry-webserver-sdk/WebServerModule/Nginx/1.23.1/ngx_http_opentelemetry_module.so;\n$(cat /etc/nginx/nginx.conf)" > /etc/nginx/nginx.conf
 COPY opentelemetry_module.conf /etc/nginx/conf.d
 ```
 
 What this `Dockerfile` does:
 
-- Pull a base image with NGINX 1.18 pre-installed
+- Pull a base image with NGINX 1.23.1 pre-installed
 - Install `unzip`
 - Download the [opentelemetry-webserver-sdk-x64-linux] package
 - Unpack the package, put it into `/opt` & run `./install.sh`
@@ -156,8 +156,9 @@ service:
 Before spinning up the containers, update line 3 in `opentelemetry_module.conf`
 to have the right exporter endpoint:
 
-```yaml
-NginxModuleEnabled ON; NginxModuleOtelSpanExporter otlp;
+```nginx
+NginxModuleEnabled ON;
+NginxModuleOtelSpanExporter otlp;
 NginxModuleOtelExporterEndpoint collector:4317;
 ```
 
@@ -307,7 +308,7 @@ main();
 To finalize the frontend service, create an empty `Dockerfile` with the
 following content:
 
-```Dockerfile
+```dockerfile
 FROM node:16
 WORKDIR /app
 RUN npm install @opentelemetry/api @opentelemetry/auto-instrumentations-node @opentelemetry/exporter-trace-otlp-http @opentelemetry/sdk-node express
@@ -320,7 +321,7 @@ For the backend service, you are going to use Tomcat with the OpenTelemetry Java
 agent installed. For this, create a `Dockerfile` like the following in the
 `backend` folder
 
-```Dockerfile
+```dockerfile
 FROM tomcat
 ADD https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar javaagent.jar
 ENV JAVA_OPTS="-javaagent:javaagent.jar"

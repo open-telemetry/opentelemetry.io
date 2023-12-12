@@ -1,7 +1,7 @@
 ---
 title: Ad Service
 linkTitle: Ad
-aliases: [/docs/demo/services/adservice]
+aliases: [adservice]
 ---
 
 This service determines appropriate ads to serve to users based on context keys.
@@ -11,7 +11,7 @@ The ads will be for products available in the store.
 
 ## Auto-instrumentation
 
-This service relies on the OpenTelemetry Java Agent to automatically instrument
+This service relies on the OpenTelemetry Java agent to automatically instrument
 libraries such as gRPC, and to configure the OpenTelemetry SDK. The agent is
 passed into the process using the `-javaagent` command line argument. Command
 line arguments are added through the `JAVA_TOOL_OPTIONS` in the `Dockerfile`,
@@ -119,8 +119,8 @@ The following custom metrics are currently available:
 
 The following auto-instrumented metrics are available for the application:
 
-- [Runtime metrics for the JVM](/docs/specs/otel/metrics/semantic_conventions/runtime-environment-metrics/#jvm-metrics).
-- [Latency metrics for RPCs](/docs/specs/otel/metrics/semantic_conventions/rpc-metrics/#rpc-server)
+- [Runtime metrics for the JVM](/docs/specs/semconv/runtime/jvm-metrics/).
+- [Latency metrics for RPCs](/docs/specs/semconv/rpc/rpc-metrics/#rpc-server)
 
 ## Logs
 

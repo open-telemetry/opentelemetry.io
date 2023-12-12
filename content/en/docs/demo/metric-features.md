@@ -1,7 +1,7 @@
 ---
 title: Metric Feature Coverage by Service
 linkTitle: Metric Feature Coverage
-aliases: [/docs/demo/metric_service_features]
+aliases: [metric_service_features]
 ---
 
 | Service         | Language        | Auto-instrumentation | Manual Instrumentation | Multiple Instruments | Views | Custom Attributes | Resource Detection | Trace Exemplars |

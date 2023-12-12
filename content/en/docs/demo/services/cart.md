@@ -1,7 +1,7 @@
 ---
 title: Cart Service
 linkTitle: Cart
-aliases: [/docs/demo/services/cartservice]
+aliases: [cartservice]
 ---
 
 This service maintains items placed in the shopping cart by users. It interacts
@@ -85,6 +85,7 @@ Action<ResourceBuilder> appResourceBuilder =
 builder.Services.AddOpenTelemetry()
     .ConfigureResource(appResourceBuilder)
     .WithMetrics(meterBuilder => meterBuilder
+        .AddProcessInstrumentation()
         .AddRuntimeInstrumentation()
         .AddAspNetCoreInstrumentation()
         .AddOtlpExporter());

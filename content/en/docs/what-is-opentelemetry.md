@@ -18,53 +18,6 @@ backends, including open source tools like
 OpenTelemetry is a
 [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io) project.
 
-## Major components
-
-OpenTelemetry consists of the following major components:
-
-- A [specification](/docs/specs/otel) for all components
-- A standard [protocol](/docs/specs/otlp/) that defines the shape of telemetry
-  data
-- Semantic conventions that define a standard naming scheme for common telemetry
-  data types
-- APIs that define how to generate telemetry data
-- A [library ecosystem](/ecosystem/registry) that implements instrumentation for
-  common libraries and frameworks
-- Automatic instrumentation components that generate telemetry data without
-  requiring code changes
-- Language SDKs that implement the specification, APIs, and export of telemetry
-  data
-- The [OpenTelemetry Collector](/docs/collector), a proxy that receives,
-  processes, and exports telemetry data
-- Various other tools, such as the
-  [OpenTelemetry Operator for Kubernetes](/docs/kubernetes/operator/),
-  [OpenTelemetry Helm Charts](/docs/kubernetes/helm/), and
-  [community assets for FaaS](/docs/faas/)
-
-OpenTelemetry is compatible with a wide variety of
-[ecosystem integrations](/ecosystem/integrations/).
-
-OpenTelemetry is supported by 40+ [vendors](/ecosystem/vendors/), many of whom
-provide commercial support for OpenTelemetry and contribute to the project
-directly.
-
-## Extensibility
-
-OpenTelemetry is designed to be extensible. Some examples of how it can be
-extended include:
-
-- Adding a receiver to the OpenTelemetry Collector to support telemetry data
-  from a custom source
-- Loading custom instrumentation into an SDK
-- Creating a distribution of an SDK or the Collector tailored to a specific use
-  case
-- Creating a new exporter for a custom backend that doesn't yet support the
-  OpenTelemetry protocol (OTLP)
-- Creating a custom propagator for a nonstandard context propagation format
-
-Although most users will not need to extend OpenTelemetry, the project is
-designed to make it possible at nearly every level.
-
 ## Why OpenTelemetry?
 
 With the rise of cloud computing, microservices architectures, and ever-more
@@ -90,6 +43,57 @@ OpenTelemetry does two important things:
 These two things combined enables teams and organizations the flexibility they
 need in today's modern computing world.
 
+If you want to learn more, take a look at OpenTelemetry's
+[mission, vision and values](/community/mission/).
+
+## Major components
+
+OpenTelemetry consists of the following major components:
+
+- A [specification](/docs/specs/otel) for all components
+- A standard [protocol](/docs/specs/otlp/) that defines the shape of telemetry
+  data
+- [Semantic conventions](/docs/specs/semconv/) that define a standard naming
+  scheme for common telemetry data types
+- APIs that define how to generate telemetry data
+- [Language SDKs](/docs/instrumentation) that implement the specification, APIs,
+  and export of telemetry data
+- A [library ecosystem](/ecosystem/registry) that implements instrumentation for
+  common libraries and frameworks
+- Automatic instrumentation components that generate telemetry data without
+  requiring code changes
+- The [OpenTelemetry Collector](/docs/collector), a proxy that receives,
+  processes, and exports telemetry data
+- Various other tools, such as the
+  [OpenTelemetry Operator for Kubernetes](/docs/kubernetes/operator/),
+  [OpenTelemetry Helm Charts](/docs/kubernetes/helm/), and
+  [community assets for FaaS](/docs/faas/)
+
+OpenTelemetry is used by a wide variety of
+[libraries, services and apps](/ecosystem/integrations/) that have OpenTelemetry
+integrated to provide observability out of the box.
+
+OpenTelemetry is supported by 40+ [vendors](/ecosystem/vendors/), many of whom
+provide commercial support for OpenTelemetry and contribute to the project
+directly.
+
+## Extensibility
+
+OpenTelemetry is designed to be extensible. Some examples of how it can be
+extended include:
+
+- Adding a receiver to the OpenTelemetry Collector to support telemetry data
+  from a custom source
+- Loading custom instrumentation libraries into an SDK
+- Creating a [distribution](/docs/concepts/distributions/) of an SDK or the
+  Collector tailored to a specific use case
+- Creating a new exporter for a custom backend that doesn't yet support the
+  OpenTelemetry protocol (OTLP)
+- Creating a custom propagator for a nonstandard context propagation format
+
+Although most users will not need to extend OpenTelemetry, the project is
+designed to make it possible at nearly every level.
+
 ### History
 
 OpenTelemetry is the result of a merger between two prior projects,
@@ -99,6 +103,9 @@ standard for how to instrument code and send telemetry data to an Observability
 backend. However, neither project was fully able to solve the problem on its
 own, and so the two projects merged to form OpenTelemetry so that they could
 combine their strengths and truly offer a single standard.
+
+If you are currently using OpenTracing or OpenCensus, you can learn how to
+migrate to OpenTelemetry [here](/docs/migration/).
 
 ## What OpenTelemetry is not
 

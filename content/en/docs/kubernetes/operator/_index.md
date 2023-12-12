@@ -9,6 +9,10 @@ aliases:
   - /docs/operator
   - /docs/k8s-operator
   - /docs/kubernetes-operator
+redirects:
+  - { from: /docs/operator/*, to: ':splat' }
+  - { from: /docs/k8s-operator/*, to: ':splat' }
+  - { from: /docs/kubernetes-operator/*, to: ':splat' }
 ---
 
 ## Introduction

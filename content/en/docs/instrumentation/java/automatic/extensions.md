@@ -1,6 +1,6 @@
 ---
 title: Extensions
-aliases: [/docs/instrumentation/java/extensions]
+aliases: [../extensions]
 description: >-
   Extensions add capabilities to the agent without having to create a separate
   distribution.

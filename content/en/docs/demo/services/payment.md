@@ -1,7 +1,7 @@
 ---
 title: Payment Service
 linkTitle: Payment
-aliases: [/docs/demo/services/paymentservice]
+aliases: [paymentservice]
 cSpell:ignore: nanos
 ---
 

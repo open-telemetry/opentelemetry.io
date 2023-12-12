@@ -3,7 +3,7 @@ title: Distributions
 description: >-
   A distribution, not to be confused with a fork, is customized version of an
   OpenTelemetry component.
-weight: 90
+weight: 190
 ---
 
 The OpenTelemetry projects consists of multiple [components](../components) that
@@ -84,7 +84,7 @@ might be a good starting point.
 There are language specific extensibility mechanisms to customize the
 instrumentation libraries:
 
-- [Javaagent](../../instrumentation/java/automatic/extensions)
+- [Java agent](../../instrumentation/java/automatic/extensions)
 
 ## What you should know about distributions
 

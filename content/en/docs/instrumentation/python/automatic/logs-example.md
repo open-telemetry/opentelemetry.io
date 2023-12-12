@@ -39,7 +39,6 @@ Paste the following contents into `example.py`:
 import logging
 
 from opentelemetry import trace
-import logging
 
 tracer = trace.get_tracer_provider().get_tracer(__name__)
 

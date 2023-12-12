@@ -18,7 +18,7 @@ for optimal performance.
 With the addition of the
 [JMX Metric Insight](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jmx-metrics)
 module into the
-[OpenTelemetry Javaagent](https://github.com/open-telemetry/opentelemetry-java-instrumentation),
+[OpenTelemetry Java agent](https://github.com/open-telemetry/opentelemetry-java-instrumentation),
 we don't need to deploy a separate service just to collect JMX metrics for
 monitoring our application. The agent can now natively collect and export
 metrics exposed by application servers through local

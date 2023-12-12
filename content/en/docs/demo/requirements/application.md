@@ -1,7 +1,7 @@
 ---
 title: Application Requirements
 title: Application
-aliases: [/docs/demo/requirements/application_requirements]
+aliases: [application_requirements]
 ---
 
 The following requirements were decided upon to define what OpenTelemetry (OTel)

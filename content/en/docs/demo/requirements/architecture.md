@@ -1,7 +1,7 @@
 ---
 title: Architecture Requirements
 linkTitle: Architecture
-aliases: [/docs/demo/requirements/architecture_requirements]
+aliases: [architecture_requirements]
 cSpell:ignore: dockerstatsreceiver
 ---
 

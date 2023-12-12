@@ -8,8 +8,7 @@ cSpell:ignore: ottrace
 
 ## `OTEL_SERVICE_NAME`
 
-Sets the value of the
-[`service.name`](/docs/specs/otel/resource/semantic_conventions/#service)
+Sets the value of the [`service.name`](/docs/specs/semconv/resource/#service)
 resource attribute.
 
 **Default value:** `"unknown_service"`
@@ -30,7 +29,7 @@ for more details.
 **Default value:** Empty.
 
 See
-[Resource semantic conventions](/docs/specs/otel/resource/semantic_conventions/#semantic-attributes-with-sdk-provided-default-value)
+[Resource semantic conventions](/docs/specs/semconv/resource/#semantic-attributes-with-sdk-provided-default-value)
 for semantic conventions to follow for common resource types.
 
 **Example:**

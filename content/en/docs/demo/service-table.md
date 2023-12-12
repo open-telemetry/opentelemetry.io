@@ -1,6 +1,6 @@
 ---
 title: Service Roles
-aliases: [/docs/demo/service_table]
+aliases: [service_table]
 cSpell:ignore: loadgenerator
 ---
 

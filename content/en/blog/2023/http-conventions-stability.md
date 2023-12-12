@@ -7,9 +7,8 @@ cSpell:ignore: stalnaker trask
 ---
 
 The OpenTelemetry community is beginning the final push to declare HTTP
-[tracing](/docs/specs/otel/trace/semantic_conventions/http/) and
-[metrics](/docs/specs/otel/metrics/semantic_conventions/http-metrics/) semantic
-conventions stable!
+[tracing](/docs/specs/semconv/http/http-spans/) and
+[metrics](/docs/specs/semconv/http/http-metrics/) semantic conventions stable!
 
 Following the recently proposed
 [Semantic Convention Process](https://docs.google.com/document/d/1ghvajKaipiNZso3fDtyNxU7x1zx0_Eyd02OGpMGEpLE),

@@ -1,7 +1,7 @@
 ---
 title: Demo Screenshots
 linkTitle: Screenshots
-aliases: [/docs/demo/demo_screenshots]
+aliases: [demo_screenshots]
 ---
 
 ## Web store

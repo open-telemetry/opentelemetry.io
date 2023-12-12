@@ -1,0 +1,13 @@
+title: OpAMP Agent Extension
+registryType: extension
+isThirdParty: false
+language: collector
+tags:
+  - opamp
+  - extension
+  - collector
+repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/opampextension
+license: Apache 2.0
+description: Collector extension for OpAMP
+authors: OpenTelemetry Authors
+otVersion: latest

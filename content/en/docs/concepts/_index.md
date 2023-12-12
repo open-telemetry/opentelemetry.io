@@ -2,7 +2,7 @@
 title: OpenTelemetry Concepts
 linkTitle: Concepts
 description: Key concepts in OpenTelemetry
-aliases: [/docs/concepts/overview]
+aliases: [concepts/overview]
 weight: 2
 ---
 

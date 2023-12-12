@@ -20,7 +20,7 @@ the Phoenix Web Framework.
 ### Prerequisites
 
 Ensure that you have Erlang, Elixir, PostgreSQL (or the database of your
-choice), and Phoenix installed locally. The phoenix
+choice), and Phoenix installed locally. The Phoenix
 [installation guide](https://hexdocs.pm/phoenix/installation.html) will help you
 get set up with everything you need.
 
@@ -108,7 +108,8 @@ the assets, and create and migrate the database.
 ### Try It Out
 
 We can ensure everything is working by setting the stdout exporter as
-opentelemetry's traces_exporter and then starting the app with `mix phx.server`.
+OpenTelemetry's `traces_exporter` and then starting the app with
+`mix phx.server`.
 
 ```elixir
 # config/dev.exs
@@ -303,7 +304,7 @@ more telemetry backends.
 
 To get started with this guide, create a new project with `rebar3` or `mix`:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
+{{< tabpane text=true >}} {{% tab Erlang %}}
 
 ```erlang
 rebar3 new release otel_getting_started
@@ -321,7 +322,7 @@ Then, in the project you just created, add both `opentelemetry_api` and
 `opentelemetry` as dependencies. We add both because this is a project we will
 run as a Release and export spans from.
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
+{{< tabpane text=true >}} {{% tab Erlang %}}
 
 ```erlang
 {deps, [{opentelemetry_api, "~> {{% param versions.otelApi %}}"},
@@ -345,7 +346,7 @@ In the case of Erlang, the API Application will also need to be added to
 `src/otel_getting_started.app.src` and a `relx` section to `rebar.config`. In an
 Elixir project, a `releases` section needs to be added to `mix.exs`:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
+{{< tabpane text=true >}} {{% tab Erlang %}}
 
 ```erlang
 %% src/otel_getting_started.app.src
@@ -412,7 +413,7 @@ To configure OpenTelemetry to use a particular exporter, in this case
 the `exporter` for the span processor `otel_batch_processor`, a type of span
 processor that batches up multiple spans over a period of time:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
+{{< tabpane text=true >}} {{% tab Erlang %}}
 
 ```erlang
 %% config/sys.config.src
@@ -439,7 +440,7 @@ config :opentelemetry,
 Now that the dependencies and configuration are set up, we can create a module
 with a function `hello/0` that starts some spans:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab Erlang %}}
+{{< tabpane text=true >}} {{% tab Erlang %}}
 
 ```erlang
 %% apps/otel_getting_started/src/otel_getting_started.erl

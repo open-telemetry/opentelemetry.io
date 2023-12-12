@@ -14,3 +14,8 @@ force = true
 from = "https://blog.opentelemetry.io/*"
 to = "https://opentelemetry.io/blog/:splat"
 force = true
+
+[[headers]]
+  for = "/schemas/:version"
+  [headers.values]
+    content-type = "application/yaml"

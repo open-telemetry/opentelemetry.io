@@ -1,7 +1,7 @@
 ---
 title: Product Catalog Service
 linkTitle: Product Catalog
-aliases: [/docs/demo/services/productcatalogservice]
+aliases: [productcatalogservice]
 # prettier-ignore
 cSpell:ignore: fatalf otelcodes otelgrpc otlpmetricgrpc otlptracegrpc sdkmetric sdktrace sprintf
 ---
@@ -57,8 +57,7 @@ as part of the gRPC server creation.
 
 ```go
 srv := grpc.NewServer(
-    grpc.UnaryInterceptor(otelgrpc.UnaryServerInterceptor()),
-    grpc.StreamInterceptor(otelgrpc.StreamServerInterceptor()),
+    grpc.StatsHandler(otelgrpc.NewServerHandler()),
 )
 ```
 
@@ -69,8 +68,7 @@ wrapping the gRPC client with instrumentation.
 func createClient(ctx context.Context, svcAddr string) (*grpc.ClientConn, error) {
     return grpc.DialContext(ctx, svcAddr,
         grpc.WithTransportCredentials(insecure.NewCredentials()),
-        grpc.WithUnaryInterceptor(otelgrpc.UnaryClientInterceptor()),
-        grpc.WithStreamInterceptor(otelgrpc.StreamClientInterceptor()),
+        grpc.WithStatsHandler(otelgrpc.NewClientHandler()),
     )
 }
 ```

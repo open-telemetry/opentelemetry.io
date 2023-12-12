@@ -1,7 +1,7 @@
 ---
 title: Automatic instrumentation
 linkTitle: Automatic
-aliases: [/docs/instrumentation/ruby/configuring_automatic_instrumentation]
+aliases: [configuring_automatic_instrumentation]
 cSpell:ignore: faraday sinatra
 weight: 20
 ---

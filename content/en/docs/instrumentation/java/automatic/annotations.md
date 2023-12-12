@@ -1,9 +1,8 @@
 ---
 title: Annotations
 description: Using instrumentation annotations with a Java agent.
-aliases: [/docs/instrumentation/java/annotations]
+aliases: [../annotations]
 weight: 20
-javaInstrumentationVersion: 1.30.0
 cSpell:ignore: Flowable javac reactivestreams reactivex
 ---
 
@@ -25,7 +24,7 @@ annotation.
   <dependency>
     <groupId>io.opentelemetry.instrumentation</groupId>
     <artifactId>opentelemetry-instrumentation-annotations</artifactId>
-    <version>{{% param javaInstrumentationVersion %}}</version>
+    <version>{{% param vers.instrumentation %}}</version>
   </dependency>
 </dependencies>
 ```
@@ -34,7 +33,7 @@ annotation.
 
 ```groovy
 dependencies {
-    implementation('io.opentelemetry.instrumentation:opentelemetry-instrumentation-annotations:{{% param javaInstrumentationVersion %}}')
+    implementation('io.opentelemetry.instrumentation:opentelemetry-instrumentation-annotations:{{% param vers.instrumentation %}}')
 }
 ```
 

@@ -305,7 +305,7 @@ exporters:
          http_sd_configs:
          - follow_redirects: false
            url: http://collector-with-ta-targetallocator:80/jobs/otel-collector/targets?collector_id=$POD_NAME
- service:
+service:
    pipelines:
      traces:
        exporters:

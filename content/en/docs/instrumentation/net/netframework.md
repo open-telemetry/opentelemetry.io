@@ -19,8 +19,8 @@ Initialization for ASP.NET is a little different than for ASP.NET Core.
 
 First, install the following NuGet packages:
 
-- [OpenTelemetry.Instrumentation.AspNet](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.AspNet/)
-- [OpenTelemetry.Extensions.Hosting](https://www.nuget.org/packages/OpenTelemetry.Extensions.Hosting)
+- [OpenTelemetry.Instrumentation.AspNet](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.AspNet)
+- [OpenTelemetry.Exporter.Console](https://www.nuget.org/packages/OpenTelemetry.Exporter.Console)
 
 Next, modify your `Web.Config` file to add a required HttpModule:
 

@@ -10,7 +10,7 @@ description: >-
 # self-loop with `/ecosystem/registry/index.html`. So we use the following
 # redirect rule to avoid the loop, as suggested by Netlify support
 # (email support ID 159489):
-redirects: [{ from: ./*, to: '?' }]
+redirects: [{ from: /ecosystem/registry*, to: '/ecosystem/registry?' }]
 aliases: [/registry/*]
 type: default
 layout: registry

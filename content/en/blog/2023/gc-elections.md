@@ -3,7 +3,7 @@ title: Announcing the 2023 OpenTelemetry Governance Committee Election
 linkTitle: 2023 GC Election
 date: 2023-09-29
 author: OpenTelemetry Governance Committee
-aliases: [/blog/2023/gc-elections-2023]
+aliases: [gc-elections-2023]
 cSpell:ignore: Bogdan Drutu dyladan mtwo Paxão Shkuro Sigelman trask
 ---
 

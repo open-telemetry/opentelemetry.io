@@ -890,7 +890,7 @@ You’ll also want to configure an appropriate exporter to
 telemetry backends.
 
 [opentelemetry specification]: /docs/specs/otel/
-[trace semantic conventions]: /docs/specs/otel/trace/semantic_conventions/
+[trace semantic conventions]: /docs/specs/semconv/general/trace/
 [instrumentation library]: ../libraries/
 [`go.opentelemetry.io/otel`]: https://pkg.go.dev/go.opentelemetry.io/otel
 [`go.opentelemetry.io/otel/exporters/stdout/stdoutmetric`]:

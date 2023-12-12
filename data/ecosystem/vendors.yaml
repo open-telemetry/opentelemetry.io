@@ -1,4 +1,4 @@
-# cSpell:ignore Coralogix Cribl ITRS Kloud Logz Crowdstrike Humio Lumigo observ Teletrace Uptrace Greptime KloudMate
+# cSpell:ignore Coralogix Cribl ITRS Kloud Logz Crowdstrike Humio Lumigo observ Teletrace Uptrace Greptime KloudMate qryn ClickHouse Tracetest
 - name: AppDynamics (Cisco)
   distribution: true
   nativeOTLP: true
@@ -32,6 +32,13 @@
   nativeOTLP: false
   url: 'https://docs.microsoft.com/azure/azure-monitor/app/opentelemetry-overview'
   contact: ''
+  oss: false
+  commercial: true
+- name: Better Stack
+  distribution: false
+  nativeOTLP: true
+  url: https://betterstack.com/docs/logs/open-telemetry/#2-setup
+  contact: 'hello@betterstack.com'
   oss: false
   commercial: true
 - name: Coralogix
@@ -91,10 +98,10 @@
   oss: false
   commercial: true
 - name: Grafana Labs
-  distribution: false
+  distribution: true
   nativeOTLP: true
   url: 'https://grafana.com/oss/opentelemetry/'
-  contact: ''
+  contact: 'https://github.com/jpkrohling/'
   oss: true
   commercial: true
 - name: Helios
@@ -209,6 +216,13 @@
   contact: ''
   oss: false
   commercial: true
+- name: qryn
+  distribution: true
+  nativeOTLP: true
+  url: 'https://qryn.metrico.in/#/support?id=tempo-api'
+  contact: 'https://github.com/lmangani'
+  oss: true
+  commercial: true
 - name: Sentry
   distribution: true
   nativeOTLP: false
@@ -254,8 +268,8 @@
 - name: Sumo Logic
   distribution: true
   nativeOTLP: true
-  url: 'https://help.sumologic.com/docs/apm/traces/quickstart/'
-  contact: ''
+  url: 'https://help.sumologic.com/docs/send-data/opentelemetry-collector/'
+  contact: 'https://github.com/astencel-sumo'
   oss: false
   commercial: true
 - name: TelemetryHub
@@ -319,5 +333,33 @@
   nativeOTLP: true
   url: https://docs.greptime.com/user-guide/clients/otlp
   contact: 'info@greptime.com'
+  oss: true
+  commercial: true
+- name: ClickHouse
+  distribution: false
+  nativeOTLP: false
+  url: 'https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/clickhouseexporter'
+  contact: 'https://github.com/tbragin'
+  oss: true
+  commercial: true
+- name: TingYun
+  distribution: false
+  nativeOTLP: true
+  url: 'https://wukongdoc.tingyun.com/apm/userguide/deploy_manage/opentelemetry.html'
+  contact: 'otel@tingyun.com'
+  oss: false
+  commercial: true
+- name: VictoriaMetrics
+  distribution: false
+  nativeOTLP: true
+  url: 'https://github.com/VictoriaMetrics/VictoriaMetrics/tree/master/docs#sending-data-via-opentelemetry'
+  contact: 'https://github.com/hagen1778'
+  oss: true
+  commercial: true
+- name: Tracetest
+  distribution: false
+  nativeOTLP: true
+  url: 'https://docs.tracetest.io/configuration/connecting-to-data-stores/opentelemetry-collector'
+  contact: 'https://github.com/adnanrahic'
   oss: true
   commercial: true

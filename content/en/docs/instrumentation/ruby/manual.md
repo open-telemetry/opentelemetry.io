@@ -368,4 +368,4 @@ more telemetry backends.
   https://github.com/open-telemetry/opentelemetry-ruby/tree/main/propagator
 [auto-instrumentation]:
   https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation
-[semconv-spec]: /docs/specs/otel/trace/semantic_conventions/
+[semconv-spec]: /docs/specs/semconv/general/trace/

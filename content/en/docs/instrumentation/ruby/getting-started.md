@@ -1,7 +1,7 @@
 ---
 title: Getting Started
 description: Get telemetry from your app in less than 5 minutes!
-aliases: [/docs/instrumentation/ruby/getting_started]
+aliases: [getting_started]
 # prettier-ignore
 cSpell:ignore: darwin rolldice sinatra struct Tracestate tracestate truffleruby
 weight: 10

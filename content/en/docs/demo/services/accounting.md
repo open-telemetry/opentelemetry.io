@@ -1,7 +1,7 @@
 ---
 title: Accounting Service
 linkTitle: Accounting
-aliases: [/docs/demo/services/accountingservice]
+aliases: [accountingservice]
 cSpell:ignore: otelsarama otlptracegrpc sarama sdktrace
 ---
 

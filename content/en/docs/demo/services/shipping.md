@@ -1,7 +1,7 @@
 ---
 title: Shipping Service
 linkTitle: Shipping
-aliases: [/docs/demo/services/shippingservice]
+aliases: [shippingservice]
 cSpell:ignore: itemct oteldemo reqwest sdktrace semcov shiporder tokio
 ---
 

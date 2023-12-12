@@ -8,8 +8,13 @@ weight: 10
 
 This page will show you how to get started with OpenTelemetry in Node.js.
 
-You will learn how you can instrument a simple application automatically, in
-such a way that [traces][], [metrics][] and [logs][] are emitted to the console.
+You will learn how to instrument both [traces][] and [metrics][] and log them to
+the console.
+
+{{% alert title="Note" color="info" %}} The logging library for OpenTelemetry
+for Node.js is still under development hence an example for it is not provided
+below. Look [here](/docs/instrumentation/js) for more info about the status of
+OpenTelemetry in JavaScript. {{% /alert %}}
 
 ## Prerequisites
 
@@ -47,6 +52,9 @@ npm install typescript \
   @types/node \
   express \
   @types/express
+
+# initialize typescript
+npx tsc --init
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
@@ -62,7 +70,7 @@ npm install express
 Create a file named `app.ts` (or `app.js` if not using TypeScript) and add the
 following code to it:
 
-{{% tabpane text=true langEqualsHeader=true %}} {{% tab TypeScript %}}
+{{% tabpane text=true %}} {{% tab TypeScript %}}
 
 ```ts
 /*app.ts*/
@@ -163,7 +171,7 @@ application code. One tool commonly used for this task is the
 Create a file named `instrumentation.ts` (or `instrumentation.js` if not using
 TypeScript) , which will contain your instrumentation setup code.
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 /*instrumentation.ts*/
@@ -476,7 +484,7 @@ If you'd like to explore a more complex example, take a look at the
 Did something go wrong? You can enable diagnostic logging to validate that
 OpenTelemetry is initialized correctly:
 
-{{< tabpane text=true langEqualsHeader=true >}} {{% tab TypeScript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 /*instrumentation.ts*/
@@ -505,4 +513,3 @@ diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
 
 [traces]: /docs/concepts/signals/traces/
 [metrics]: /docs/concepts/signals/metrics/
-[logs]: /docs/concepts/signals/logs/

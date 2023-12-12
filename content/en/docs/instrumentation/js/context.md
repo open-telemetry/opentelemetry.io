@@ -1,7 +1,7 @@
 ---
 title: Context
 description: OpenTelemetry JavaScript Context API Documentation
-aliases: [/docs/instrumentation/js/api/context]
+aliases: [api/context]
 weight: 60
 ---
 

@@ -15,6 +15,8 @@ provide a first-party plugin that fits into their own extensibility ecosystem.
 
 {{% ecosystem/integrations-table %}}
 
+## How to add your integration {#how-to-add}
+
 To have your library, service, or app listed, submit a PR with an entry added to
 the
 [integrations list](https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/integrations.yaml).

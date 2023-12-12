@@ -68,7 +68,7 @@ Every microservice has a specific goal and can communicate with others by using
 a global gRPC definition. Persistent information is saved into a PostgreSQL
 database and there are outbound services that connect with third-party services
 to trigger events (such as confirmation emails). All of the microservices,
-including the front-end, are connected to the same OpenTelemetry collector
+including the front-end, are connected to the same OpenTelemetry Collector
 instance, which uses Jaeger as one of the data stores for the tracing data.
 
 ![OpenTelemetry Demo System Diagram](diagram.png)

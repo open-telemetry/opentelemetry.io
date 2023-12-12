@@ -1,7 +1,7 @@
 ---
 title: Demo Architecture
 linkTitle: Architecture
-aliases: [/docs/demo/current_architecture]
+aliases: [current_architecture]
 body_class: otel-mermaid-max-width
 # prettier-ignore
 cSpell:ignore: cppsvc dotnetsvc erlangsvc featureflagstore golangsvc javascriptsvc javasvc kotlinsvc loadgenerator phpsvc pythonsvc rubysvc rustsvc tsdb typescriptsvc
