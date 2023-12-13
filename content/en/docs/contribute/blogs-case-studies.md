@@ -11,74 +11,98 @@ and any news that might be relevant to the OpenTelemetry community. This
 includes end users and developers. Anyone can write a blog post and submit it
 for review.
 
-## Submit a post
+## Before submitting a blog post
 
 Blog posts should not be commercial in nature and should consist of original
-content that applies broadly to the OpenTelemetry community. Appropriate blog
-content includes:
+content that applies broadly to the OpenTelemetry community.
+
+Verify that your intended content broadly applies to the OpenTelemetry Community
+. Appropriate content includes:
 
 - New OpenTelemetry capabilities
 - OpenTelemetry projects updates
 - Updates from Special Interest Groups
 - Tutorials and walkthroughs
-- Thought leadership around OpenTelemetry
-- OpenTelemetry Partner OSS integration
+- OpenTelemetry Integrations
 
 Unsuitable content includes:
 
 - Vendor product pitches
-- Partner updates without an integration and customer story
 
-To submit a blog post, follow these steps:
+To submit a blog post,
+[raise an issue](https://github.com/open-telemetry/opentelemetry.io/issues/new?title=New%20Blog%20Post:%20%3Ctitle%3E)
+with the title and a short description of your blog post. If you are not a
+[Member](https://github.com/open-telemetry/community/blob/main/community-membership.md#member),
+you also need to provide a _sponsor_ for your blog post, who is a Member (by
+that definition) and who is willing to provide a first review of your blog post.
 
-1. [Sign the CLA](https://docs.linuxfoundation.org/lfx/easycla/contributors) if
-   you have not yet done so.
+If you do not raise an issue before providing your PR, we may request you to do
+so before providing a review.
 
-1. Have a look at the Markdown format for existing blog posts in the
-   [opentelemetry.io repository](https://github.com/open-telemetry/opentelemetry.io/tree/main/content/en/blog).
+## Submit a blog post
 
-1. Write out your blog post in a text editor of your choice.
+You can submit a blog post either by forking this repository and writing it
+locally or by using the GitHub UI. In both cases we ask you to follow the
+instructions provided by the
+[blog post template](https://github.com/open-telemetry/opentelemetry.io/tree/main/archetypes/blog.md).
 
-1. On the same link from step 2, select **Create new file**. Paste your content
-   into the editor. Name the file to match the proposed title of the blog post,
-   but don’t put the date in the file name. The blog reviewers will work with
-   you on the final file name and the date the blog will be published.
+**Note**: Before writing a blog post, ask yourself if your content also might be
+a good addition to the documentation. If the answer is "yes", create a new issue
+or pull request (PR) with your content to get it added to the docs.
 
-1. When you save the file, GitHub will walk you through the pull request
-   process.
+### Fork and write locally
 
-1. A blog post reviewer will review your submission and work with you on
-   feedback and final details. When the blog post is approved, the blog will be
-   scheduled for publication.
+After you've set up the local fork you can create a blog post using a template.
+Follow these steps to create a post from the template:
 
-## Guidelines and expectations
+1. Run the following command from the repository root:
 
-- Blog posts should not be vendor pitches.
+   ```sh
+   npx hugo new content/en/blog/2023/short-name-for-post.md
+   ```
 
-  - Articles must contain content that applies broadly to the OpenTelemetry
-    community. For example, a submission should focus on upstream OpenTelemetry
-    as opposed to vendor-specific configurations.
-  - Links should primarily be to the official OpenTelemetry documentation. When
-    using external references, links should be diverse - For example a
-    submission shouldn't contain only links back to a single company's blog.
+   If your post has images or other assets, run the following command:
 
-- Blog posts are not published on specific dates.
+   ```sh
+   npx hugo new content/en/blog/2023/short-name-for-post/index.md
+   ```
 
-  - Articles are reviewed by community volunteers. We'll try our best to
-    accommodate specific timing, but we make no guarantees.
-  - Many core parts of the OpenTelemetry projects submit blog posts during
-    release windows, delaying publication times. Consider submitting during a
-    quieter period of the release cycle.
-  - If you are looking for greater coordination on post release dates,
-    coordinating with [CNCF marketing](https://www.cncf.io/about/contact/) is a
-    more appropriate choice than submitting a blog post.
+1. Edit the Markdown file at the path you provided in the previous command. The
+   file is initialized from the blog-post starter under
+   [archetypes](https://github.com/open-telemetry/opentelemetry.io/tree/main/archetypes/).
 
-- Blog posts should be relevant to OpenTelemetry users.
+1. Put assets, like images or other files, into the folder you've created.
 
-  - Topics related to participation in or results of OpenTelemetry SIGs
-    activities are always on topic.
-  - Posts about other CNCF projects may or may not be on topic. We recommend
-    asking the blog team before submitting a draft.
-  - Many CNCF projects have their own blog. These are often a better choice for
-    posts. There are times of major feature or milestone for a CNCF project that
-    users would be interested in reading on the OpenTelemetry blog.
+1. When your post is ready, submit it through a pull request.
+
+### Use the GitHub UI
+
+If you prefer not to create a local fork, you can use the GitHub UI to create a
+new post. Follow these steps to add a post using the UI:
+
+1.  Go to the
+    [blog post template](https://github.com/open-telemetry/opentelemetry.io/tree/main/archetypes/blog.md)
+    and click on **Copy raw content** at the top right of the menu.
+
+1.  Select
+    [Create a new file](https://github.com/open-telemetry/opentelemetry.io/new/main).
+
+1.  Paste the content from the template you copied in the first step.
+
+1.  Name your file, for example
+    `content/en/blog/2022/short-name-for-your-blog-post/index.md`.
+
+1.  Edit the Markdown file in GitHub.
+
+1.  When your post is ready, select **Propose changes** and follow the
+    instructions.
+
+## Publication timelines
+
+The OpenTelemetry blog doesn't follow a strict publication timeline, this means:
+
+- Your blog post will be published when it has all the approvals required.
+- Publication can be postponed if needed, but maintainers can't guarantee
+  publication at or before a certain date.
+- Certain blog posts (major announcements) take precedence and may be published
+  before your blog post.

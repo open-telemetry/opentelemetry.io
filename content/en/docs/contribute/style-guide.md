@@ -2,7 +2,7 @@
 title: Documentation style guide
 linkTitle: Style guide
 weight: 40
-slug: style-guide open-telemetry postgre textlintrc
+cSpell:ignore: style-guide open-telemetry postgre textlintrc
 ---
 
 The OpenTelemetry documentation adheres to the
