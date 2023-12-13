@@ -127,8 +127,8 @@ pull-based.
 A term used specifically by [`Log Records`](#log-record).
 [`Metadata`](#metadata) can be added through defined fields, including
 [`Attributes`](#attribute) and [`Resource`](#resource). Other fields may also be
-considered metadata, including severity and trace information. See the [field
-spec][field].
+considered metadata, including severity and trace information. See the 
+[field spec][field].
 
 ### **gRPC**
 
