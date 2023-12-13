@@ -45,7 +45,7 @@ our p95, 99, and 99.9 histograms. We can also see that there are intermittent
 spikes in the memory utilization of this service.
 
 We know that we're emitting trace data from our application as well, so let's
-think about another way that we'd be able to determine that a problem exist.
+think about another way that we'd be able to determine that a problem exists.
 
 ![Jaeger](jaeger.png)
 
@@ -53,7 +53,7 @@ Jaeger allows us to search for traces and display the end-to-end latency of an
 entire request with visibility into each individual part of the overall request.
 Perhaps we noticed an increase in tail latency on our frontend requests. Jaeger
 allows us to then search and filter our traces to include only those that
-include requests to recommendation service.
+include requests to the recommendation service.
 
 By sorting by latency, we're able to quickly find specific traces that took a
 long time. Clicking on a trace in the right panel, we're able to view the
