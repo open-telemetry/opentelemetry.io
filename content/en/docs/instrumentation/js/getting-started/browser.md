@@ -27,7 +27,7 @@ This is a very simple guide, if you'd like to see more complex examples go to
 Copy the following file into an empty directory and call it `index.html`.
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
