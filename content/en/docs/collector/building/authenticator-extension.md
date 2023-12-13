@@ -1,6 +1,7 @@
 ---
-title: Building a custom authenticator
-weight: 30
+title: Building an authenticator extension
+weight: 40
+aliases: [/docs/collector/custom-auth/]
 cSpell:ignore: configauth oidc
 ---
 
