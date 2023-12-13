@@ -25,9 +25,9 @@ Conduct.
 
 To contribute, you need to be familiar with the following techs and tools:
 
-- git
-- GitHub
-- Markdown (CommonMark)
+- [git](https://git-scm.com/)
+- [GitHub](https://github.com/)
+- Markdown ([CommonMark](https://commonmark.org/))
 - YAML
 
 For technical details concerning how the documentation is built and tested
