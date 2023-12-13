@@ -483,6 +483,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-10-01T12:48:08.791661-04:00"
   },
+  "https://commonmark.org/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-12-13T14:56:57.912039+01:00"
+  },
   "https://community.cncf.io/end-user-community/": {
     "StatusCode": 200,
     "LastSeen": "2023-07-03T17:44:06.5954165Z"
@@ -1986,6 +1990,10 @@
   "https://github.com": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:49:02.328002-04:00"
+  },
+  "https://github.com/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-13T14:56:57.330463+01:00"
   },
   "https://github.com/Aneurysm9": {
     "StatusCode": 200,
