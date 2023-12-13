@@ -36,7 +36,7 @@ alerting and tooling for finding the root cause.
 
 ### **Attribute**
 
-OpenTelemetry's word for [`metadata`](#metadata). Adds key-value information to
+OpenTelemetry's word for [`Metadata`](#metadata). Adds key-value information to
 the entity producing telemetry. Used across [`Signals`](#signal) and
 [`Resources`](#resource). See [attribute spec][attribute].
 
@@ -95,7 +95,6 @@ See [`Signal`](#signal)
 
 A term used specifically by [`Metrics`](#metric). See [`Attribute`](#attribute).
 
-
 ### **Distributed Tracing**
 
 Tracks the progression of a single [`Request`](#request), called a
@@ -127,7 +126,7 @@ pull-based.
 A term used specifically by [`Log Records`](#log-record).
 [`Metadata`](#metadata) can be added through defined fields, including
 [`Attributes`](#attribute) and [`Resource`](#resource). Other fields may also be
-considered metadata, including severity and trace information. See the 
+considered `Metadata`, including severity and trace information. See the 
 [field spec][field].
 
 ### **gRPC**
