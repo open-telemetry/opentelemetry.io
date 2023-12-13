@@ -141,7 +141,7 @@ If a reviewer asks you to make changes:
 1. Make the changes requested.
 1. Commit the changes.
 
-When your review is complete, a reviewer merges your PR and your changes go liv
+When your review is complete, a reviewer merges your PR and your changes goes live
 a few minutes later.
 
 ### Work from a local fork {#fork-the-repo}
