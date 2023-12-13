@@ -148,6 +148,9 @@ If a reviewer asks you to make changes:
 When your review is complete, a reviewer merges your PR and your changes goes
 live a few minutes later.
 
+{{% alert title="Tip" %}} Comment `/fix:format` on your pull request to trigger
+an automated check for formatting issues. {{% /alert %}}
+
 ### Work from a local fork {#fork-the-repo}
 
 If you're more experienced with Git, or if your changes are larger than a few
@@ -297,23 +300,6 @@ When you are ready to submit a pull request, commit your changes.
 
 1. Once the changes are pushed, GitHub lets you know that you can create a PR.
 
-#### Preview your changes locally {#preview-locally}
-
-Preview your changes locally before pushing them or opening a pull request. A
-preview lets you catch build errors or markdown formatting problems.
-
-To build and serve the site locally with Hugo, run the following command:
-
-```shell
-npm run serve
-```
-
-Navigate to `https://localhost:1313` in your web browser to see the local
-preview. Hugo watches the changes and rebuilds the site as needed.
-
-To stop the local Hugo instance, go back to the terminal and type `Ctrl+C`, or
-close the terminal window.
-
 #### Open a pull request from your fork {#open-a-pr}
 
 Figure 3 shows the steps to open a PR from your fork to the
@@ -386,6 +372,67 @@ Other checks might also fail, including:
 - Spelling
 
 GitHub also automatically assigns labels to a PR to help reviewers.
+
+#### Fix content issues automatically
+
+Before submitting a change to the repository, run the following command and
+address any reported issues. Also commit any files changed by the `fix` script:
+
+```sh
+npm run test-and-fix
+```
+
+To separately test and fix issues with your files, run:
+
+```sh
+npm run test # checks but does not update any files
+npm run fix  # may update files
+```
+
+To list available NPM scripts, run `npm run`.
+
+#### Preview your changes locally {#preview-locally}
+
+Preview your changes locally before pushing them or opening a pull request. A
+preview lets you catch build errors or markdown formatting problems.
+
+To build and serve the site locally with Hugo, run the following command:
+
+```shell
+npm run serve
+```
+
+Navigate to `https://localhost:1313` in your web browser to see the local
+preview. Hugo watches the changes and rebuilds the site as needed.
+
+To stop the local Hugo instance, go back to the terminal and type `Ctrl+C`, or
+close the terminal window.
+
+#### Site deploys and PR previews
+
+If you submit a PR, Netlify will create a [deploy preview][] so that you can
+review your changes. Once your PR is merged, Netlify deploys the updated site to
+the production server.
+
+> **Note**: PR previews include _draft pages_, but production builds do not.
+
+To see deploy logs and more, visit project's [dashboard][] -- Netlify login
+required.
+
+#### PR guidelines
+
+Before a PR gets merged, it will sometimes require a few iterations of
+review-and-edit. To help us and yourself make this process as easy as possible,
+we ask that adhere to the following:
+
+- If your PR isn't a quick fix, then **work from a fork**: Click the
+  [Fork](https://github.com/open-telemetry/opentelemetry.io/fork) button at the
+  top of the repository and clone the fork locally. When you are ready, raise a
+  PR with the upstream repository.
+- **Do not work from the `main`** branch of your fork, but create a PR-specific
+  branch.
+- Ensure that maintainers are
+  [allowed to apply changes to your pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork).
 
 #### Changes from reviewers
 
@@ -472,6 +519,23 @@ create a merge conflict. You must resolve all merge conflicts in your PR.
 
    The pull request no longer shows any conflicts.
 
+#### Merge requirements
+
+Pull requests are merged when they comply with the following criteria:
+
+- All reviews by approvers, maintainers, technical committee members, or subject
+  matter experts have the status "Approved"
+- No unresolved conversations
+- Approved by at least one approver
+- No failing PR checks
+- PR branch is up-to-date with the base branch
+
+> **Important**
+>
+> Do not worry too much about failing PR checks! Community members will help you
+> to get them fixed, by either providing you with instructions how to fix them
+> or by fixing them on your behave.
+
 ## Open an issue
 
 If you want to suggest improvements to existing content or notice an error, open
@@ -504,7 +568,7 @@ vulnerabilities.
 
 1. Submit the issue.
 
-## How to file great issues
+### How to file great issues
 
 Keep the following in mind when filing an issue:
 
@@ -548,3 +612,7 @@ the templates with as much detail as possible when you file issues or PRs.
 - Visit the [OpenTelemetry community site](/community/).
 - Add your application to the [Registry](/ecosystem).
 - Submit a [blog post or case study](/docs/contribute/blogs-case-studies/).
+
+[dashboard]: https://app.netlify.com/sites/opentelemetry/overview
+[deploy preview]:
+  https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/
