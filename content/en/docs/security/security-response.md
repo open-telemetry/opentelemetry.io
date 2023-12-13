@@ -123,6 +123,3 @@ notify their communities via Slack.
 The Fix Team evaluates vulnerability severity on a case-by-case basis, guided by
 CVSS 3.1 and is subject to TC review.
 
-## Retrospective
-
-TBD
