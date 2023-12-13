@@ -68,7 +68,7 @@ async function pruneTask() {
     const entriesWith4xxStatus = Object.keys(entries)
       .map((url) => [url, entries[url].LastSeen, entries[url].StatusCode])
       .filter(
-        ([url, date, statusCode]) => 400 <= statusCode && statusCode <= 499
+        ([url, date, statusCode]) => 400 <= statusCode && statusCode <= 499,
       );
 
     var msg = `INFO: ${entriesWith4xxStatus.length} entries with 4XX status.`;
@@ -106,14 +106,14 @@ async function pruneTask() {
         `INFO: ${
           pruneCandidatesByDate__sorted.length
         } entries as prune candidates for before-date ${formattedDate(
-          beforeDate
-        )}.`
+          beforeDate,
+        )}.`,
       );
     }
 
     if (n == 0) {
       console.log(
-        `WARN: num is ${n} so no entries will be pruned by date. Specify number of entries to prune as --num <n>.`
+        `WARN: num is ${n} so no entries will be pruned by date. Specify number of entries to prune as --num <n>.`,
       );
       if (numEntriesWith4xxStatus == 0) return;
     }
