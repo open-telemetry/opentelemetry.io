@@ -119,7 +119,8 @@ Figure 1. Steps for opening a PR using GitHub.
 1. On the page where you see the issue, select the **Edit this page** option in
    the right-hand side navigation panel.
 
-1. If you're not a member of the project, GitHub will offer to create a fork of the repository. Select **Fork this repository**.
+1. If you're not a member of the project, GitHub will offer to create a fork of
+   the repository. Select **Fork this repository**.
 
 1. Make your changes in the GitHub editor.
 
@@ -144,8 +145,8 @@ If a reviewer asks you to make changes:
 1. Make the changes requested. If there's a code suggestion, apply it.
 1. Commit the changes.
 
-When your review is complete, a reviewer merges your PR and your changes goes live
-a few minutes later.
+When your review is complete, a reviewer merges your PR and your changes goes
+live a few minutes later.
 
 ### Work from a local fork {#fork-the-repo}
 
@@ -471,48 +472,37 @@ create a merge conflict. You must resolve all merge conflicts in your PR.
 
    The pull request no longer shows any conflicts.
 
-## Contribute to other repositories
-
-The OpenTelemetry project contains many repositories. Several of these
-repositories contain documentation: user-facing help text, error messages, API
-references or code comments.
-
-If you see text you'd like to improve, use GitHub to search all repositories in
-the OpenTelemetry organization. This can help you figure out where to submit
-your issue or PR.
-
-Each repository has its own processes and procedures. Before you file an issue
-or submit a PR, read that repository's `README.md`, `CONTRIBUTING.md`, and
-`code-of-conduct.md`, if they exist.
-
-Most repositories use issue and PR templates. Have a look through some open
-issues and PRs to get a feel for that team's processes. Make sure to fill out
-the templates with as much detail as possible when you file issues or PRs.
-
 ## Open an issue
 
 If you want to suggest improvements to existing content or notice an error, open
 an issue.
 
-1. Click the **Create documentation issue** link on the right sidebar. This
-   redirects you to a GitHub issue page prepopulated with some headers.
+1. Click the **Create documentation issue** link on any document. This redirects
+   you to a GitHub issue page prepopulated with some headers.
 2. Describe the issue or suggestion for improvement. Provide as many details as
    you can.
 3. Click **Submit new issue**.
 
 After submitting, check in on your issue occasionally or turn on GitHub
-notifications. Reviewers and other community members might ask questions before
-they can take action on your issue.
+notifications. It might take a few days until maintainers and approvers respond.
+Reviewers and other community members might ask questions before they can take
+action on your issue.
 
-### Suggesting new content
+### Suggesting new content or features
 
-If you have an idea for new content, but you aren't sure where it should go, you
-can still file an issue. Either:
+If you have an idea for new content or a feature, but you aren't sure where it
+should go, you can still file an issue. You can also report bugs and security
+vulnerabilities.
 
-- Choose an existing page in the section you think the content belongs in and
-  click **Create documentation issue**.
-- Go to [GitHub](https://github.com/open-telemetry/opentelemetry.io/issues/new/)
-  and file the issue directly.
+1. Go to
+   [GitHub](https://github.com/open-telemetry/opentelemetry.io/issues/new/) and
+   select **New issue** inside the **Issues** tab.
+
+1. Select the type of issue that best applies to your request or doubt.
+
+1. Fill out the template.
+
+1. Submit the issue.
 
 ## How to file great issues
 
@@ -534,6 +524,24 @@ Keep the following in mind when filing an issue:
   [Code of Conduct](https://github.com/open-telemetry/community/blob/main/code-of-conduct.md).
   Respect your fellow contributors. For example, "The docs are terrible" is not
   helpful or polite feedback.
+
+## Contribute to other repositories
+
+The OpenTelemetry project contains many repositories. Several of these
+repositories contain documentation: user-facing help text, error messages, API
+references or code comments.
+
+If you see text you'd like to improve, use GitHub to search all repositories in
+the OpenTelemetry organization. This can help you figure out where to submit
+your issue or PR.
+
+Each repository has its own processes and procedures. Before you file an issue
+or submit a PR, read that repository's `README.md`, `CONTRIBUTING.md`, and
+`code-of-conduct.md`, if they exist.
+
+Most repositories use issue and PR templates. Have a look through some open
+issues and PRs to get a feel for that team's processes. Make sure to fill out
+the templates with as much detail as possible when you file issues or PRs.
 
 ## Other ways to contribute
 
