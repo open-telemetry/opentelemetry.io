@@ -23,16 +23,9 @@ Spring Boot starter, see
 
 ## Configuration
 
-### Bill of Materials
+### Dependencies
 
-Import the `opentelemetry-bom` and `opentelemetry-instrumentation-bom-alpha`
-Bill of Materials ([BOM](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#bill-of-materials-bom-poms)) before using the OpenTelemetry starter.
-
-The `opentelemetry-bom` BOM will allow you to align the OpenTelemetry versions
-of the OpenTelemetry dependencies and transitive dependencies.
-
-With the `opentelemetry-instrumentation-bom-alpha` BOM, you won't have to
-declare the dependency versions for additional instrumentations.
+Importing the `opentelemetry-bom` and `opentelemetry-instrumentation-bom-alpha` BOMs will ensure that the versions of your OpenTelemetry dependencies (and transitive dependencies) are aligned.
 
 The following example shows how to import both BOMs using Maven:
 
