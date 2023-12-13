@@ -6111,6 +6111,14 @@
     "StatusCode": 200,
     "LastSeen": "2023-07-07T17:13:23.688913+02:00"
   },
+  "https://www.first.org/cvss/calculator/3.1": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-13T15:40:04.523841-08:00"
+  },
+  "https://www.first.org/cvss/specification-document": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-13T15:40:03.612009-08:00"
+  },
   "https://www.flipt.io/docs/configuration/observability#tracing": {
     "StatusCode": 206,
     "LastSeen": "2023-10-05T19:46:12.968304+02:00"
