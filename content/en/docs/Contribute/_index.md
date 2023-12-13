@@ -458,9 +458,9 @@ create a merge conflict. You must resolve all merge conflicts in your PR.
 
 ## Contribute to other repositories
 
-The OpenTelemetry project contains many repositories. Many of these repositories
-contain documentation: user-facing help text, error messages, API references or
-code comments.
+The OpenTelemetry project contains many repositories. Several of these
+repositories contain documentation: user-facing help text, error messages, API
+references or code comments.
 
 If you see text you'd like to improve, use GitHub to search all repositories in
 the OpenTelemetry organization. This can help you figure out where to submit
