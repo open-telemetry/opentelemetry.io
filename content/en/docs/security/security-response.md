@@ -7,7 +7,7 @@ Security vulnerabilities should be handled quickly and sometimes privately. The
 primary goal of this process is to reduce the total time users are vulnerable to
 publicly known exploits.
 
-The OpenTelemetry Technical Committee (OTel TC) and relevant repository
+The [OpenTelemetry Technical Committee (OTel TC)](https://github.com/open-telemetry/community/blob/main/tech-committee-charter.md) and relevant repository
 maintainers, supported by tooling provided by the SIG-Security, are responsible
 for responding to the incident organizing the entire response including internal
 communication and external disclosure.
