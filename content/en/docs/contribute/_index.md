@@ -55,9 +55,10 @@ flowchart LR
     subgraph first[How to contribute]
     direction TB
        T[ ] -.-
-       A[Sign the CNCF CLA] --> D[Write docs in markdown<br>and build site with Hugo]
-       D[Write docs in markdown<br>and build site with Hugo] --- E[Push source to GitHub]
-       E --- G[Open a pull request]
+       B[Fork the repo in GitHub] --- C[Write docs in markdown<br>and build site with Hugo]
+       C --- D[Push source to the fork]
+       D --- E[Open a pull request]
+       E --- F[Sign the CNCF CLA]
     end
 
 classDef grey fill:#dddddd,stroke:#ffffff,stroke-width:px,color:#000000, font-size:15px;
@@ -118,6 +119,8 @@ Figure 1. Steps for opening a PR using GitHub.
 1. On the page where you see the issue, select the **Edit this page** option in
    the right-hand side navigation panel.
 
+1. If you're not a member of the project, GitHub will offer to create a fork of the repository. Select **Fork this repository**.
+
 1. Make your changes in the GitHub editor.
 
 1. Below the editor, fill in the **Propose file change** form.
@@ -138,7 +141,7 @@ If a reviewer asks you to make changes:
 
 1. Go to the **Files changed** tab.
 1. Select the pencil (edit) icon on any files changed by the pull request.
-1. Make the changes requested.
+1. Make the changes requested. If there's a code suggestion, apply it.
 1. Commit the changes.
 
 When your review is complete, a reviewer merges your PR and your changes goes live
@@ -231,7 +234,8 @@ Figure 2. Working from a local fork to make your changes.
    ```
 
    This makes sure your local repository is up to date before you start making
-   changes.
+   changes. Push changes from upstream to origin regularly to keep you fork in
+   sync with upstream.
 
 #### Create a branch
 
@@ -289,6 +293,8 @@ When you are ready to submit a pull request, commit your changes.
    ```shell
    git push origin <my_new_branch>
    ```
+
+1. Once the changes are pushed, GitHub lets you know that you can create a PR.
 
 #### Preview your changes locally {#preview-locally}
 
@@ -371,6 +377,13 @@ using [Netlify](https://www.netlify.com/).
   the OpenTelemetry website with your changes applied. This is how reviewers
   check your changes.
 
+Other checks might also fail, including:
+
+- File name checks
+- Links resolution
+- Markdown formatting
+- Spelling
+
 GitHub also automatically assigns labels to a PR to help reviewers.
 
 #### Changes from reviewers
@@ -390,6 +403,8 @@ changes, fetch those commits.
    ```shell
    git push --force-with-lease origin <your-branch-name>
    ```
+
+You can also solve merge conflicts from the GitHub UI.
 
 #### Merge conflicts and rebasing
 
