@@ -25,9 +25,9 @@ Conduct.
 
 To contribute, you need to be familiar with the following techs and tools:
 
-- git
-- GitHub
-- Markdown (CommonMark)
+- [git](https://git-scm.com/)
+- [GitHub](https://github.com/)
+- Markdown ([CommonMark](https://commonmark.org/))
 - YAML
 
 For technical details concerning how the documentation is built and tested
@@ -132,8 +132,7 @@ Figure 1. Steps for opening a PR using GitHub.
 1. Select **Create pull request**.
 
 Before merging a pull request, OpenTelemetry community members review and
-approve it. If you have someone in mind, leave a comment with their GitHub
-username in it.
+approve it.
 
 If a reviewer asks you to make changes:
 
@@ -142,7 +141,7 @@ If a reviewer asks you to make changes:
 1. Make the changes requested.
 1. Commit the changes.
 
-When your review is complete, a reviewer merges your PR and your changes go liv
+When your review is complete, a reviewer merges your PR and your changes goes live
 a few minutes later.
 
 ### Work from a local fork {#fork-the-repo}
