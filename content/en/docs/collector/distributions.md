@@ -19,9 +19,8 @@ the `manifest.yaml` of each distribution.
 For various reasons the existing distributions provided by the OpenTelemetry
 project may not meet your needs. Whether you want a smaller version, or have the
 need to implement custom functionality like
-[custom authenticators](../custom-auth), receivers, processors, or exporters.
-The tool used to build distributions [ocb][] (OpenTelemetry Collector Builder)
-is available to build your own distributions.
-
-[ocb]:
-  https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder
+[authenticator extensions](../building/authenticator-extension),
+[receivers](../building/receiver), processors, exporters or
+[connectors](../building/connector). The tool used to build distributions
+[ocb](../custom-collector) (OpenTelemetry Collector Builder) is available to
+build your own distributions.
