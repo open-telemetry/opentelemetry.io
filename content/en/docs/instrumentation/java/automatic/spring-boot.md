@@ -54,7 +54,7 @@ With Gradle and Spring Boot, you have
 [two ways](https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/htmlsingle/)
 to import a BOM.
 
-You can use the Gradle’s native BOM support:
+You can use the Gradle’s native BOM support by adding dependencies:
 
 ```kotlin
 plugins {
@@ -70,7 +70,7 @@ dependencies {
 ```
 
 The other way with Gradle is to use the `io.spring.dependency-management`
-plugin:
+plugin and to import the BOMs in `idependencyManagement`:
 
 ```kotlin
 plugins {
@@ -86,9 +86,6 @@ dependencyManagement {
   }
 }
 ```
-
-Please note that the `dependencyManagement` is updated with this second way, not
-the `dependencies` part.
 
 {{% alert title="Note" color="info" %}}
 
