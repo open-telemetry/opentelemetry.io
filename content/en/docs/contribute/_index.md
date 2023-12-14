@@ -148,10 +148,10 @@ If a reviewer asks you to make changes:
 When your review is complete, a reviewer merges your PR and your changes goes
 live a few minutes later.
 
-{{% alert title="Tip" %}} 
+{{% alert title="Tip" %}}
 
-Comment `/fix:format` on your pull request to trigger
-an automated check for formatting issues. 
+Comment `/fix:format` on your pull request to trigger an automated check for
+formatting issues.
 
 {{% /alert %}}
 
