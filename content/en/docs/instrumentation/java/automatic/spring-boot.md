@@ -23,7 +23,7 @@ Spring Boot starter, see
 
 ## Configuration
 
-### Bill of Materials
+### Dependency management
 
 A Bill of Material ([BOM](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#bill-of-materials-bom-poms)) allows you to fix the versions of dependencies, including transitive ones.
 
