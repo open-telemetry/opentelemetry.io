@@ -1,5 +1,7 @@
 ---
 title: Building a Connector
+aliases: [/docs/collector/build-connector/]
+weight: 30
 # prettier-ignore
 cSpell:ignore: batchprocessor debugexporter Errorf exampleconnector gomod gord Jaglowski loggingexporter mapstructure mapstructure otlpreceiver pdata pmetric ptrace servicegraph spanmetrics struct uber
 ---
@@ -51,11 +53,11 @@ following links:
 
 ### The Old Architecture:
 
-![Before picture of how processors emitted data directly to another pipelines exporter](../img/otel-collector-before-connector.png)
+![Before picture of how processors emitted data directly to another pipelines exporter](../../img/otel-collector-before-connector.png)
 
 ### New Architecture Using a Connector:
 
-![How the pipeline should work using the connector component](../img/otel-collector-after-connector.png)
+![How the pipeline should work using the connector component](../../img/otel-collector-after-connector.png)
 
 ## Building Example Connector
 
