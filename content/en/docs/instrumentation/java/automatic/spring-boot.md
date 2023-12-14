@@ -27,7 +27,7 @@ Spring Boot starter, see
 
 A Bill of Material ([BOM](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#bill-of-materials-bom-poms)) allows you to fix the versions of dependencies, including transitive ones.
 
-By importing the `opentelemetry-bom` and `opentelemetry-instrumentation-bom-alpha` BOMs before using the OpenTelemetry starter, you will ensure consistent versions for all the OpenTelemetry dependencies.
+Importing the `opentelemetry-bom` and `opentelemetry-instrumentation-bom-alpha` BOMs when using the OpenTelemetry starter is important to ensure version alignment across all OpenTelemetry dependencies.
 
 The following example shows how to import both BOMs using Maven:
 
