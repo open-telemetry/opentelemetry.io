@@ -131,9 +131,11 @@ service:
       level: debug
 ```
 
-> Note: here we use the `insecure` flag in the `otlp` exporter config to
-> simplify the development environment; you should not use this flag when
-> running the Collector in production.
+> Note: here we use the `insecure` flag in the `otlp` exporter config for
+> simplicity; you should use TLS certificates for secure communication or mTLS
+> for mutual authentication when running the Collector in production, by
+> following this
+> [guide](https://opentelemetry.io/docs/collector/configuration/#setting-up-certificates).
 
 In order to verify that the Collector is properly set up, run this command:
 
