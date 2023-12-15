@@ -25,9 +25,13 @@ Spring Boot starter, see
 
 ### Dependency management
 
-A Bill of Material ([BOM](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#bill-of-materials-bom-poms)) ensures that versions of dependencies (including transitive ones) are aligned.
+A Bill of Material
+([BOM](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#bill-of-materials-bom-poms))
+ensures that versions of dependencies (including transitive ones) are aligned.
 
-Importing the `opentelemetry-bom` and `opentelemetry-instrumentation-bom-alpha` BOMs when using the OpenTelemetry starter is important to ensure version alignment across all OpenTelemetry dependencies.
+Importing the `opentelemetry-bom` and `opentelemetry-instrumentation-bom-alpha`
+BOMs when using the OpenTelemetry starter is important to ensure version
+alignment across all OpenTelemetry dependencies.
 
 The following example shows how to import both BOMs using Maven:
 
@@ -69,8 +73,8 @@ dependencies {
 }
 ```
 
-The other way with Gradle is to use the `io.spring.dependency-management`
-plugin and to import the BOMs in `idependencyManagement`:
+The other way with Gradle is to use the `io.spring.dependency-management` plugin
+and to import the BOMs in `dependencyManagement`:
 
 ```kotlin
 plugins {
@@ -91,8 +95,8 @@ dependencyManagement {
 
 Be careful not to mix up the different ways of configuring things with Gradle.
 For example, don't use
-`implementation(platform("io.opentelemetry:opentelemetry-bom:{{% param vers.otel %}}"))` with the
-`io.spring.dependency-management` plugin.
+`implementation(platform("io.opentelemetry:opentelemetry-bom:{{% param vers.otel %}}"))`
+with the `io.spring.dependency-management` plugin.
 
 {{% /alert %}}
 
