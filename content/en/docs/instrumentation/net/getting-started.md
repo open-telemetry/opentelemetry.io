@@ -7,6 +7,9 @@ weight: 10
 
 This page will show you how to get started with OpenTelemetry in .NET.
 
+If you are looking for a way to automatically instrument your application, check
+out [this guide](/docs/instrumentation/net/automatic/getting-started/).
+
 You will learn how you can instrument a simple .NET application, in such a way
 that [traces][], [metrics][] and [logs][] are emitted to the console.
 
@@ -43,6 +46,8 @@ code:
 ```csharp
 using System.Globalization;
 
+using Microsoft.AspNetCore.Mvc;
+
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
@@ -60,6 +65,11 @@ string HandleRollDice([FromServices]ILogger<Program> logger, string? player)
     }
 
     return result.ToString(CultureInfo.InvariantCulture);
+}
+
+int RollDice()
+{
+    return Random.Shared.Next(1, 7);
 }
 
 app.MapGet("/rolldice/{player?}", HandleRollDice);
@@ -111,7 +121,21 @@ that will generate the telemetry, and set them up.
 
 2. Setup the OpenTelemetry code
 
+   In Program.cs, replace the following lines:
+
    ```csharp
+   var builder = WebApplication.CreateBuilder(args);
+   var app = builder.Build();
+   ```
+
+   With:
+
+   ```csharp
+   using OpenTelemetry.Logs;
+   using OpenTelemetry.Metrics;
+   using OpenTelemetry.Resources;
+   using OpenTelemetry.Trace;
+
    var builder = WebApplication.CreateBuilder(args);
 
    const string serviceName = "roll-dice";

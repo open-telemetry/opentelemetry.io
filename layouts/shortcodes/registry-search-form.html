@@ -85,7 +85,7 @@
 <script id="search-result-template" type="text/x-js-template">
   {{ template "registry-entry" $fuseVar }}
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js" integrity="sha384-Xc1CJXitscYgtGvAiyGiYeJGEL6VJ2x6v77/VTd0HoykX00Cc/2F7ai3HuuMtgd+" crossorigin="anonymous"></script>
 {{ partial "script.html" (dict "src" "js/registrySearch.js") -}}
 
 {{- define "registry-entry" -}}

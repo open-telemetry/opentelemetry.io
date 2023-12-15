@@ -16,11 +16,12 @@
 * @open-telemetry/docs-approvers
 
 # content owners
-content-modules/opamp-spec               @open-telemetry/docs-approvers @open-telemetry/opamp-spec-approvers
-content-modules/opentelemetry-proto      @open-telemetry/docs-approvers @open-telemetry/specs-approvers
-content-modules/opentelemetry-specification  @open-telemetry/docs-approvers @open-telemetry/specs-approvers
-content-modules/semantic-conventions     @open-telemetry/docs-approvers @open-telemetry/specs-semconv-approvers
-content/en/blog/                         @open-telemetry/docs-approvers @open-telemetry/blog-approvers
+content-modules/                         @open-telemetry/docs-maintainers
+content-modules/opamp-spec               @open-telemetry/docs-maintainers @open-telemetry/opamp-spec-approvers
+content-modules/opentelemetry-proto      @open-telemetry/docs-maintainers @open-telemetry/specs-approvers
+content-modules/opentelemetry-specification  @open-telemetry/docs-maintainers @open-telemetry/specs-approvers
+content-modules/semantic-conventions     @open-telemetry/docs-maintainers @open-telemetry/specs-semconv-approvers
+content/en/blog/                         @open-telemetry/docs-maintainers
 content/en/community/end-user/           @open-telemetry/docs-approvers @open-telemetry/end-user-wg
 content/en/docs/collector                @open-telemetry/docs-approvers @open-telemetry/collector-approvers
 content/en/docs/demo                     @open-telemetry/docs-approvers @open-telemetry/demo-approvers
@@ -38,4 +39,5 @@ content/en/docs/instrumentation/swift/   @open-telemetry/docs-approvers @open-te
 content/en/docs/kubernetes/operator/     @open-telemetry/docs-approvers @open-telemetry/operator-approvers
 content/en/docs/kubernetes/helm/         @open-telemetry/docs-approvers @open-telemetry/helm-approvers
 content/en/docs/specs/                   @open-telemetry/docs-approvers @open-telemetry/specs-approvers
+content/en/docs/security/                @open-telemetry/docs-approvers @open-telemetry/sig-security-maintainers
 content/en/ecosystem/demo/               @open-telemetry/demo-approvers @open-telemetry/demo-approvers
