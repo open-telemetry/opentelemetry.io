@@ -467,6 +467,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-30T09:14:41.408259-04:00"
   },
+  "https://code.visualstudio.com/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-12-15T20:50:17.619291+08:00"
+  },
   "https://collectd.org/wiki/index.php/Binary_protocol": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:18:57.115479-04:00"
@@ -3974,6 +3978,10 @@
   "https://go.dev/doc/install/gccgo": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T16:08:23.852746-04:00"
+  },
+  "https://go.dev/doc/tutorial/workspaces": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-15T20:50:17.016966+08:00"
   },
   "https://go.dev/ref/mod#go-mod-file-replace": {
     "StatusCode": 200,

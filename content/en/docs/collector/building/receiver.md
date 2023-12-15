@@ -3,7 +3,7 @@ title: Building a receiver
 weight: 20
 aliases: [/docs/collector/trace-receiver/]
 # prettier-ignore
-cSpell:ignore: amzn atmxph backendsystem batchprocessor chicago comcast crand debugexporter devs Errorf gogl Intn ispnetwork loggingexporter loglevel mapstructure mcrsft otelcontribcol otlpexporter otlpreceiver pcommon pdata protogen ptrace Rcvr rquedas sanfrancisco serialnumber slrs stateid struct structs Subchannel tailtracer uber wndws zapgrpc
+cSpell:ignore: amzn atmxph backendsystem batchprocessor chicago comcast crand debugexporter devs Errorf gogl Intn ispnetwork loggingexporter loglevel mapstructure mcrsft otelcontribcol otlpexporter otlpreceiver pcommon pdata protogen ptrace Rcvr rquedas sanfrancisco serialnumber slrs stateid struct structs Subchannel tailtracer uber wndws zapgrpc telemetrygen
 ---
 
 <!-- markdownlint-disable heading-increment no-duplicate-heading -->
