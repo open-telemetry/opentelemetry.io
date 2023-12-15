@@ -18,7 +18,7 @@ angles.
 
 OpenTelemetry currently supports [traces](/docs/concepts/signals/traces),
 [metrics](/docs/concepts/signals/metrics), [logs](/docs/concepts/signals/logs)
-and [baggage](/docs/concepts/signals/baggage). _events_ are a specific type of
+and [baggage](/docs/concepts/signals/baggage). _Events_ are a specific type of
 log, and
 [_profiles_ are being worked on](https://github.com/open-telemetry/oteps/blob/main/text/profiles/0212-profiling-vision.md)
 by the Profiling Working Group.
