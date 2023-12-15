@@ -180,8 +180,8 @@ your components.
 
 Further reading:
 
-- [Building a Trace Receiver](/docs/collector/trace-receiver)
-- [Building a Connector](/docs/collector/trace-receiver)
+- [Building a Trace Receiver](/docs/collector/building/receiver)
+- [Building a Connector](/docs/collector/building/receiver)
 
 [ocb]:
   https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder
