@@ -302,7 +302,7 @@ When a span status is `Error`, then that means some error ocurred. For example,
 this could be due to an HTTP 500 error on a server.
 
 When a span status is `Ok`, then that means the span was explicitly marked as
-error-free, even if an error may have actually occured. For example, an
+error-free, even if an error may have actually occurred. For example, an
 instrumentation library may decide to set a span status to `Error`, but that may
 actually be an incorrect status to assign in your application's specific
 context. In such a case, you can change the status to `Ok`, causing an
