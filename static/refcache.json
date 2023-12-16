@@ -4519,6 +4519,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-12-16T15:01:22.726482149Z"
   },
+  "https://learn.microsoft.com/dotnet/api/system.net.sockets.socketerror": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-16T15:07:48.424957659Z"
+  },
   "https://learn.microsoft.com/en-us/archive/blogs/askcore/windows-performance-monitor-disk-counters-explained#windows-performance-monitor-disk-counters-explained": {
     "StatusCode": 200,
     "LastSeen": "2023-10-16T14:12:52.488179-04:00"
