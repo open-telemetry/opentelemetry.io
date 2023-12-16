@@ -2,6 +2,7 @@
 title: Traces
 weight: 1
 cSpell:ignore: Guten
+description: Understand the full path through your distributed application.
 ---
 
 **Traces** give us the big picture of what happens when a request is made to an
@@ -150,35 +151,9 @@ source or vendor backend of your choice.
 
 Context Propagation is the core concept that enables Distributed Tracing. With
 Context Propagation, Spans can be correlated with each other and assembled into
-a trace, regardless of where Spans are generated. We define Context Propagation
-by two sub-concepts: Context and Propagation.
-
-A **Context** is an object that contains the information for the sending and
-receiving service to correlate one span with another and associate it with the
-trace overall. For example, if Service A calls Service B, then a span from
-Service A whose ID is in context will be used as the parent span for the next
-span created in Service B. The trace ID that is in context will be used for the
-next span created in Service B as well, which signifies that the span is part of
-the same trace as the span from Service A.
-
-**Propagation** is the mechanism that moves context between services and
-processes. It serializes or deserializes the context object and provides the
-relevant Trace information to be propagated from one service to another.
-Propagation is usually handled by instrumentation libraries and is transparent
-to the user, but in the event that you need to manually propagate context, you
-can use Propagation APIs.
-
-OpenTelemetry supports several different context formats. The default format
-used in OpenTelemetry tracing is called
-[W3C TraceContext](https://www.w3.org/TR/trace-context/). Each context object is
-stored in a span. See [Span Context](#span-context) for details on the context
-object and what other information is available..
-
-By combining Context and Propagation, you now can assemble a Trace.
-
-> For more information, see the [traces specification][]
-
-[traces specification]: /docs/specs/otel/overview/#tracing-signal
+a trace, regardless of where Spans are generated. To learn more about this
+topic, see the concept page on
+[Context Propagation](/docs/concepts/context-propagation).
 
 ## Spans
 
@@ -367,3 +342,8 @@ a local job handled by an event listener.
 
 Consumer spans represent the processing of a job created by a producer and may
 start long after the producer span has already ended.
+
+## Specification
+
+For more information, see the
+[traces specification](/docs/specs/otel/overview/#tracing-signal).
