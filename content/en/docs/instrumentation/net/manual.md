@@ -364,13 +364,13 @@ using var anotherActivity =
 
 ### Set Activity status
 
-A [status](/docs/concepts/signals/traces/#span-status) can be set on an
-activity, typically used to specify that an activity has not completed
-successfully - `ActivityStatusCode.Error`. In rare scenarios, you could override
-the `Error` status with `Ok`, but don't set `Ok` on successfully-completed
-spans.
+A [Status](/docs/concepts/signals/traces/#span-status) can be set on a
+[Span](/docs/concepts/signals/traces/#spans), typically used to specify that a
+Span has not completed successfully - `Error`. In rare scenarios, you could
+override the Error status with `Ok`, but don’t set `Ok` on
+successfully-completed spans.
 
-The status can be set at any time before the span is finished:
+The status can be set at any time before the span is finished.
 
 ```csharp
 using var myActivity = MyActivitySource.StartActivity("SayHello");
