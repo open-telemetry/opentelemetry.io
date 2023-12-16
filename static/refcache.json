@@ -3787,6 +3787,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:42:42.642961-04:00"
   },
+  "https://github.com/orgs/open-telemetry/teams/technical-committee": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-16T12:14:31.82439-08:00"
+  },
   "https://github.com/orishoshan": {
     "StatusCode": 200,
     "LastSeen": "2023-11-16T15:02:08.644309-05:00"
