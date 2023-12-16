@@ -90,7 +90,7 @@ that the report is accepted as valid.
 - The Fix Team will create a
   [CVSS](https://www.first.org/cvss/specification-document) Base score using the
   [CVSS Calculator](https://www.first.org/cvss/calculator/3.1) and ping the TC
-  GitHub team for confirmation.
+  GitHub team, `@open-telemetry/technical-committee` for confirmation.
 - The Fix Team will request a CVE from GitHub and follow up with the reporter.
 - The Fix Team publishes the CVE to the GitHub Security Advisory Database for
   user notification.
@@ -100,9 +100,11 @@ that the report is accepted as valid.
 The incident mitigation timeline depends on the severity of the incident and
 repository release cadence.
 
-- The Fix Team will ping [@open-telemetry/technical-committee](https://github.com/orgs/open-telemetry/teams/technical-committee) to alert them that work on the fix
-  branch is complete once there are LGTMs on all commits in the temporary
-  private fork created for the GitHub Security Advisory.
+- The Fix Team will ping
+  [@open-telemetry/technical-committee](https://github.com/orgs/open-telemetry/teams/technical-committee)
+  to alert them that work on the fix branch is complete once there are LGTMs on
+  all commits in the temporary private fork created for the GitHub Security
+  Advisory.
 - The updated version is released with the fix.
 - The incident is published to the GitHub Security Advisory Database and
   affected users are automatically notified using GitHub security alerts.
