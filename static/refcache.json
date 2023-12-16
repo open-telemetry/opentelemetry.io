@@ -551,6 +551,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T16:19:47.798342-04:00"
   },
+  "https://datatracker.ietf.org/doc/html/rfc3986#section-3": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-16T15:16:56.545821944Z"
+  },
   "https://datatracker.ietf.org/doc/html/rfc3986#section-3.2.1": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T11:43:34.517727-04:00"
@@ -6887,9 +6891,21 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-30T08:37:53.898384-04:00"
   },
+  "https://www.w3.org/TR/baggage": {
+    "StatusCode": 206,
+    "LastSeen": "2023-12-16T15:16:52.921552457Z"
+  },
   "https://www.w3.org/TR/baggage/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:41:53.764072-04:00"
+  },
+  "https://www.w3.org/TR/baggage/#header-content": {
+    "StatusCode": 206,
+    "LastSeen": "2023-12-16T15:16:50.350520378Z"
+  },
+  "https://www.w3.org/TR/trace-context": {
+    "StatusCode": 206,
+    "LastSeen": "2023-12-16T15:16:54.299474861Z"
   },
   "https://www.w3.org/TR/trace-context/": {
     "StatusCode": 206,
