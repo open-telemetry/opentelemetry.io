@@ -16,3 +16,5 @@ this site:
 3. [What is OpenTelemetry - Dynatrace](https://www.dynatrace.com/news/blog/what-is-opentelemetry-2/)
 4. [Understanding OpenTracing, OpenCensus, and OpenMetrics - BMC](https://www.bmc.com/blogs/opentracing-opencensus-openmetrics/)
 5. [Ask Miss O11y: Baggage in OTel - Honeycomb](https://www.honeycomb.io/blog/ask-miss-o11y-opentelemetry-baggage/)
+6. [Observability Whitepaper - CNCF Tag Observability](https://github.com/cncf/tag-observability/blob/whitepaper-v1.0.0/whitepaper.md)
+   for content in [Signals](/docs/concepts/signals/)
