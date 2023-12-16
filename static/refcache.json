@@ -431,6 +431,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T13:44:17.243376-04:00"
   },
+  "https://cloud.google.com/pubsub": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-16T15:01:22.242699861Z"
+  },
   "https://cloud.google.com/run/docs/container-contract#jobs-env-vars": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T11:42:44.752156-04:00"
@@ -550,6 +554,14 @@
   "https://datatracker.ietf.org/doc/html/rfc3986#section-3.2.1": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T11:43:34.517727-04:00"
+  },
+  "https://datatracker.ietf.org/doc/html/rfc5246#appendix-A.5": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-16T15:01:19.944428842Z"
+  },
+  "https://datatracker.ietf.org/doc/html/rfc5280#section-4.1.2.6": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-16T15:01:27.664727091Z"
   },
   "https://datatracker.ietf.org/doc/html/rfc6455": {
     "StatusCode": 200,
@@ -862,6 +874,10 @@
   "https://docs.aws.amazon.com/lambda/latest/dg/monitoring-metrics.html": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T15:48:01.663228-04:00"
+  },
+  "https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html": {
+    "StatusCode": 206,
+    "LastSeen": "2023-12-16T15:01:07.235334819Z"
   },
   "https://docs.aws.amazon.com/lambda/latest/dg/welcome.html": {
     "StatusCode": 206,
@@ -4263,6 +4279,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-08-03T17:44:10.601039+02:00"
   },
+  "https://img.shields.io/badge/-deprecated-red": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-16T15:01:13.954765472Z"
+  },
   "https://img.shields.io/badge/-stable-lightgreen": {
     "StatusCode": 200,
     "LastSeen": "2023-11-08T07:21:29.389953-05:00"
@@ -4487,6 +4507,22 @@
     "StatusCode": 200,
     "LastSeen": "2023-08-14T07:27:51.174082501Z"
   },
+  "https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.diagnostics.iexceptionhandler": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-16T15:01:14.346421601Z"
+  },
+  "https://learn.microsoft.com/dotnet/api/system.net.endpoint": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-16T15:01:15.422929001Z"
+  },
+  "https://learn.microsoft.com/dotnet/api/system.net.http.httprequesterror": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-16T15:01:22.726482149Z"
+  },
+  "https://learn.microsoft.com/dotnet/api/system.net.sockets.socketerror": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-16T15:07:48.424957659Z"
+  },
   "https://learn.microsoft.com/en-us/archive/blogs/askcore/windows-performance-monitor-disk-counters-explained#windows-performance-monitor-disk-counters-explained": {
     "StatusCode": 200,
     "LastSeen": "2023-10-16T14:12:52.488179-04:00"
@@ -4506,6 +4542,10 @@
   "https://learn.microsoft.com/en-us/dotnet/core/rid-catalog": {
     "StatusCode": 200,
     "LastSeen": "2023-09-06T15:04:52.02953+02:00"
+  },
+  "https://learn.microsoft.com/en-us/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed#query-the-registry-using-code": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-16T15:01:09.046335374Z"
   },
   "https://learn.microsoft.com/en-us/nuget/resources/check-project-format#check-the-project-format": {
     "StatusCode": 200,
@@ -6163,6 +6203,14 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-30T16:25:24.536216-04:00"
   },
+  "https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-16T15:01:30.066295662Z"
+  },
+  "https://www.iana.org/assignments/tls-parameters/tls-parameters.xhtml#table-tls-parameters-4": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-16T15:01:30.296009757Z"
+  },
   "https://www.ibm.com/docs/api/v1/content/SSYKE2_8.0.0/openj9/api/jdk8/jre/management/extension/com/ibm/lang/management/OperatingSystemMXBean.html": {
     "StatusCode": 206,
     "LastSeen": "2023-06-27T17:17:49.452299-04:00"
@@ -6542,6 +6590,10 @@
   "https://www.openpolicyagent.org/docs/latest/monitoring/#opentelemetry": {
     "StatusCode": 206,
     "LastSeen": "2023-10-16T20:09:53.898397+02:00"
+  },
+  "https://www.openssl.org/docs/man1.1.1/man3/SSL_get_version.html#RETURN-VALUES": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-16T15:01:24.2501831Z"
   },
   "https://www.openssl.org/docs/manmaster/man1/openssl-s_client.html": {
     "StatusCode": 200,
