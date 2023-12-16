@@ -33,7 +33,7 @@ Span span = Span.current();
 ```
 
 Adding attributes to a span is accomplished using `setAttribute` on the span
-object. In the `getAds` function multiples attribute are added to the span.
+object. In the `getAds` function multiple attributes are added to the span.
 
 ```java
 span.setAttribute("app.ads.contextKeys", req.getContextKeysList().toString());
