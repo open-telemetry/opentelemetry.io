@@ -8,7 +8,7 @@ With Context Propagation, [Signals](/docs/concepts/signals) can be correlated
 with each other, regardless of where they are generated. Although not limited to
 tracing, it is what allows [traces](/docs/concepts/signals/traces) to build
 causal information about a system across services that are arbitrarily
-distributed across. process and network boundaries.
+distributed across process and network boundaries.
 
 We define Context Propagation by two sub-concepts: Context and Propagation.
 
