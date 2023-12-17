@@ -12,7 +12,7 @@ repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/mai
 license: Apache 2.0
 description:
   Exports OTel Events (SpanEvent in Tracing added by AddEvent API) as Alerts to
-  [Alertmanager] (https://prometheus.io/docs/alerting/latest/alertmanager/)
+  [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/)
   back-end to notify Errors or Change events.
 authors: OpenTelemetry Authors
 otVersion: latest
