@@ -159,7 +159,7 @@ Collector's distribution.
 
 The folder structure should look like this:
 
-```
+```console
 .
 ├── builder-config.yaml
 ├── ocb

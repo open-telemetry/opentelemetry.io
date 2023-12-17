@@ -3,7 +3,7 @@ title: Building a receiver
 weight: 20
 aliases: [/docs/collector/trace-receiver/]
 # prettier-ignore
-cSpell:ignore: amzn atmxph backendsystem batchprocessor chicago comcast crand debugexporter devs Errorf gogl Intn ispnetwork loggingexporter loglevel mapstructure mcrsft otelcontribcol otlpexporter otlpreceiver pcommon pdata protogen ptrace Rcvr rquedas sanfrancisco serialnumber slrs stateid struct structs Subchannel tailtracer uber wndws zapgrpc telemetrygen
+cSpell:ignore: amzn atmxph backendsystem batchprocessor chicago comcast crand debugexporter devs Errorf gogl Intn ispnetwork loggingexporter loglevel mapstructure mcrsft otelcontribcol otlpexporter otlpreceiver pcommon pdata protogen ptrace Rcvr rquedas sanfrancisco serialnumber slrs stateid struct structs Subchannel tailtracer telemetrygen uber wndws zapgrpc
 ---
 
 <!-- markdownlint-disable heading-increment no-duplicate-heading -->
@@ -57,7 +57,7 @@ copy the `builder-config.yaml` described on
 and run the builder. As an outcome you should now have a folder structure like
 this:
 
-```
+```console
 .
 ├── builder-config.yaml
 ├── ocb
@@ -196,9 +196,9 @@ go mod init github.com/open-telemetry/opentelemetry-tutorials/trace-receiver/tai
 > Note:
 >
 > 1. The module path above is a mock path, which can be your desired private or
->    public path;
-> 2. The initial code is hosted here:
->    https://github.com/rquedas/otel4devs/tree/main/collector/receiver/trace-receiver
+>    public path.
+> 2. The initial code is hosted
+>    [here](https://github.com/rquedas/otel4devs/tree/main/collector/receiver/trace-receiver).
 
 It's recommended to enable Go
 [Workspaces](https://go.dev/doc/tutorial/workspaces) since we're going to manage
@@ -1122,7 +1122,7 @@ you normally debug a Go project. Here is a simple `launch.json` file for
 As a big milestone, let's take a look at how the folder structure looks like as
 of now:
 
-```
+```console
 .
 ├── builder-config.yaml
 ├── config.yaml
