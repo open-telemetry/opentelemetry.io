@@ -289,7 +289,7 @@ another.
 
 ### Span Status
 
-Each span has a status. The three possible kinds are:
+Each span has a status. The three possible values are:
 
 - `Unset`
 - `Error`
