@@ -61,13 +61,11 @@ To begin, install  Oat++ locally using the [source code](https://github.com/oatp
    cd build
    ```
 
-4. Build oatpp:
-
-   Build oatpp using the `make` command. This command will trigger the build process specified in the Makefile included in the oatpp source code.
+4. Build oatpp using the `cmake` and `make` commands. This command will trigger the build process specified in the `CMakeLists.txt` included in the oatpp source code.
 
    ```bash
+   cmake ..
    make
-   ```
 
 5. Install oatpp:
 
