@@ -193,7 +193,7 @@ php myapp.php
 
 ```php
 <?php
-OpenTelemetry\API\Common\Instrumentation\Globals::registerInitializer(function (Configurator $configurator) {
+OpenTelemetry\API\Globals::registerInitializer(function (Configurator $configurator) {
     $propagator = TraceContextPropagator::getInstance();
     $spanProcessor = new BatchSpanProcessor(/*params*/);
     $tracerProvider = (new TracerProviderBuilder())
