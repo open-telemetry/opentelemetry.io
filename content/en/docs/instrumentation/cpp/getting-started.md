@@ -125,7 +125,6 @@ In your `OpenTelemetry-Starter-Project` folder, create a subfolder `roll-dice`, 
 
 Create a file called `CMakeLists.txt` to define the Oat++ library directories, include paths, and link against Oat++ during the compilation process.
 
-Here is what `CMakeLists.txt` might look like:
 
 ```cmake
 cmake_minimum_required(VERSION 3.1)
