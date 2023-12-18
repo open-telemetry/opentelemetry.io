@@ -227,7 +227,6 @@ Then, open <http://localhost:8080/rolldice> in your browser to ensure it is work
 
 ## Instrumentation 
 
-**Integrate OpenTelemetry in your project:**
 
 To add OpenTelemetry to your application, update the `CMakeLists.txt` file with the
 following additional dependencies: 
