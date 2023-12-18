@@ -144,7 +144,11 @@ set(SOURCES
 add_executable(dice-server ${SOURCES})
 
 set(OATPP_ROOT ../oatpp)
-set(OATPP_LIB /path/to/oatpp/lib)
+find_library(OATPP_LIB NAMES liboatpp.a HINTS "${OATPP_ROOT}/build/src/" NO_DEFAULT_PATH)
+
+if (NOT OATPP_LIB)
+	message(SEND_ERROR "Did not find oatpp library ${OATPP_ROOT}/build/src")
+endif()
 
 #set the path to the directory containing "oatpp" package configuration files 
 include_directories(${OATPP_ROOT}/src)
