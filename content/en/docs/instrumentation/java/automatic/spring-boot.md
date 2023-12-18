@@ -3,7 +3,7 @@ title: Spring Boot
 linkTitle: Spring Boot
 weight: 30
 description: Spring instrumentation for OpenTelemetry Java
-cSpell:ignore: autoconfigure datasource logback springboot
+cSpell:ignore: autoconfigure datasource logback springboot springframework
 ---
 
 You can use the [OpenTelemetry Java agent](..) with byte code instrumentation to
@@ -23,6 +23,85 @@ Spring Boot starter, see
 
 ## Configuration
 
+### Dependency management
+
+A Bill of Material
+([BOM](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#bill-of-materials-bom-poms))
+ensures that versions of dependencies (including transitive ones) are aligned.
+
+Importing the `opentelemetry-bom` and `opentelemetry-instrumentation-bom-alpha`
+BOMs when using the OpenTelemetry starter is important to ensure version
+alignment across all OpenTelemetry dependencies.
+
+The following example shows how to import both BOMs using Maven:
+
+```xml
+<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-bom</artifactId>
+            <version>{{% param vers.otel %}}</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>io.opentelemetry.instrumentation</groupId>
+            <artifactId>opentelemetry-instrumentation-bom-alpha</artifactId>
+            <version>{{% param vers.instrumentation %}}-alpha</version>
+            <type>pom</type>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
+```
+
+With Gradle and Spring Boot, you have
+[two ways](https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/htmlsingle/)
+to import a BOM.
+
+You can use the Gradle’s native BOM support by adding dependencies:
+
+```kotlin
+plugins {
+  id("java")
+  id("org.springframework.boot") version "3.2.O"
+}
+
+dependencies {
+  implementation(platform(SpringBootPlugin.BOM_COORDINATES))
+  implementation(platform("io.opentelemetry:opentelemetry-bom:{{% param vers.otel %}}"))
+  implementation(platform("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom-alpha:{{% param vers.instrumentation %}}-alpha"))
+}
+```
+
+The other way with Gradle is to use the `io.spring.dependency-management` plugin
+and to import the BOMs in `dependencyManagement`:
+
+```kotlin
+plugins {
+  id("java")
+  id("org.springframework.boot") version "3.2.O"
+  id("io.spring.dependency-management") version "1.1.0"
+}
+
+dependencyManagement {
+  imports {
+    mavenBom("io.opentelemetry:opentelemetry-bom:{{% param vers.otel %}}")
+    mavenBom("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom-alpha:{{% param vers.instrumentation %}}-alpha")
+  }
+}
+```
+
+{{% alert title="Note" color="info" %}}
+
+Be careful not to mix up the different ways of configuring things with Gradle.
+For example, don't use
+`implementation(platform("io.opentelemetry:opentelemetry-bom:{{% param vers.otel %}}"))`
+with the `io.spring.dependency-management` plugin.
+
+{{% /alert %}}
+
+### OpenTelemetry Starter dependency
+
 Add the dependency given below to enable the OpenTelemetry starter.
 
 The OpenTelemetry starter uses OpenTelemetry Spring Boot [auto-configuration].
@@ -41,16 +120,15 @@ auto-configuration, see the configuration [README].
 	<dependency>
 		<groupId>io.opentelemetry.instrumentation</groupId>
 		<artifactId>opentelemetry-spring-boot-starter</artifactId>
-		<version>{{% param vers.instrumentation %}}-alpha</version>
 	</dependency>
 </dependencies>
 ```
 
 {{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
 
-```groovy
+```kotlin
 dependencies {
-	implementation('io.opentelemetry.instrumentation:opentelemetry-spring-boot-starter:{{% param vers.instrumentation %}}-alpha')
+	implementation("io.opentelemetry.instrumentation:opentelemetry-spring-boot-starter")
 }
 ```
 
@@ -102,16 +180,15 @@ With the datasource configuration, you need to add the following dependency:
 	<dependency>
 		<groupId>io.opentelemetry.instrumentation</groupId>
 		<artifactId>opentelemetry-jdbc</artifactId>
-		<version>{{% param vers.instrumentation %}}-alpha</version>
 	</dependency>
 </dependencies>
 ```
 
 {{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
 
-```groovy
+```kotlin
 dependencies {
-	implementation('io.opentelemetry.instrumentation:opentelemetry-jdbc:{{% param vers.instrumentation %}}-alpha')
+	implementation("io.opentelemetry.instrumentation:opentelemetry-jdbc")
 }
 ```
 
