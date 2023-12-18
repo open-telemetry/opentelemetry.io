@@ -155,18 +155,6 @@ include_directories(${OATPP_ROOT}/src)
 target_link_libraries(myapp PRIVATE ${OATPP_LIB})
 
 ```
-Replace `/path/to/oatpp/lib` with the actual path leading to oatpp library header files within your local installation.
-
-**Note:**
-
-`${OATPP_ROOT}/src` should contain header filies with `.hpp` extensions.
-
-You can manually search for the oatpp library using terminal commands. For Instance, on Unix-based systems, the `find` command could be used:
-```bash
-find / -name 'liboatpp.a' 2>/dev/null
-```   
-
-**Create a simple API for rolling a dice:**
 
 Next, the sample HTTP server source code is needed. It will do the following:
 
