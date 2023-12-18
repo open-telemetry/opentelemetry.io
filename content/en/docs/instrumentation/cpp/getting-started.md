@@ -75,34 +75,6 @@ To begin, install  Oat++ locally using the [source code](https://github.com/oatp
    make install
    ```
 
-oatpp directory structure should look something like this:
-```scss 
-   oatpp/
-   │
-   ├── CMakeLists.txt
-   ├── src/
-   |   ├── oatpp/
-   |   |   ├── network/
-   |   |   |   └── ... (network library headers and source files) 
-   |   |   ├── web/
-   |   |   |   └── ... (web library headers and source files) 
-   |   |   └── ... (other oatpp moduels) 
-   |   |    
-   |   ├── oatpp-test/
-   |   |
-   |   └── CMakeLists.txt (oatpp root CMake configuration file)  
-   ├── build/
-   |   ├── Makefile
-   |   ├── src/
-   |   ├── CMakeFiles/
-   |   |   └── ... (CMake build-related files) 
-   |   └── ... (other build-related files)
-   |   
-   ├── test/
-   ├── cmake/
-   └── ...(other oatpp subdirectories)
-
-``` 
 
 **Next, install and build [OpenTelemetry C++](https://github.com/open-telemetry/opentelemetry-cpp) locally using CMake, following these general steps:**
 
