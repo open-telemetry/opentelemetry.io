@@ -55,11 +55,9 @@ To begin, install  Oat++ locally using the [source code](https://github.com/oatp
    cd oatpp
    ```
 
-3. Navigate to the build subdirectory:
-
-   Access the build subdirectory in your terminal, where your `Makefile` is located.
-
+3. Create a `build` subdirectory and navigate into it:
    ```bash
+   mkdir build
    cd build
    ```
 
