@@ -127,6 +127,7 @@ Create a file called `CMakeLists.txt` to define the Oat++ library directories, i
 
 
 ```cmake
+project(RollDiceServer)
 cmake_minimum_required(VERSION 3.1)
 
 # Set C++ standard (e.g., C++17)
