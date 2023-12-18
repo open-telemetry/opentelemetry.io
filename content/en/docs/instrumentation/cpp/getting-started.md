@@ -116,7 +116,7 @@ Next, install and build [OpenTelemetry C++](https://github.com/open-telemetry/op
    ```
 
 
-**Finally, create a new project directory called `roll-dice`.**
+With Oat++ and OpenTelemetry C++ ready, you can continue with creating the HTTP Server, that we want to instrument eventually.
 
 ## Create and launch an HTTP Server
 
