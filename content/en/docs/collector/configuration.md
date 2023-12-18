@@ -698,15 +698,15 @@ Each authentication extension has two possible usages:
 For a list of known authenticators, see the
 [Registry](/ecosystem/registry/?s=authenticator&component=extension). If you're
 interested in developing a custom authenticator, see
-[Building a custom authenticator](../custom-auth).
+[Building an authenticator extension](../building/authenticator-extension).
 
 To add a server authenticator to a receiver in the Collector, follow these
 steps:
 
 1. Add the authenticator extension and its configuration under `.extensions`.
-1. Add a reference to the authenticator to `.services.extensions`, so that it's
+2. Add a reference to the authenticator to `.services.extensions`, so that it's
    loaded by the Collector.
-1. Add a reference to the authenticator under
+3. Add a reference to the authenticator under
    `.receivers.<your-receiver>.<http-or-grpc-config>.auth`.
 
 The following example uses the OIDC authenticator on the receiver side, making
