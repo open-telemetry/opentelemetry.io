@@ -90,9 +90,7 @@ Next, install and build [OpenTelemetry C++](https://github.com/open-telemetry/op
    cd openTelemetry-cpp
    ```
 
-3. Create a build directory:
-
-   It's a good practice to create a separate directory for the build files to keep your source directory clean.
+3. Create a build directory and navigate into it:
 
    ```bash
    mkdir build
