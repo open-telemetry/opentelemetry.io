@@ -115,39 +115,6 @@ Next, install and build [OpenTelemetry C++](https://github.com/open-telemetry/op
    cmake --build .
    ```
 
-OpenTelemetry C++ SDK directory structure should look something like this:
-```scss 
-   opentelemetry-cpp/
-   │
-   ├── CMakeLists.txt
-   ├── sdk/
-   |   ├── CMakeLists.txt (oatpp root CMake configuration file) 
-   |   ├── src/
-   |   |   └── ... (SDK source files) 
-   |   |    
-   |   ├── include/
-   |   |   └── opentelemetry/
-   |   |       └── sdk/
-   |   |           ├── ... (SDK headers)
-   |   |
-   |   └── ... (other SDK-related files or subsirectories)  
-   |   
-   ├── build/
-   |   ├── Makefile 
-   |   ├── CMakeFiles/
-   |   |   └── ... (CMake-generated files and configuration) 
-   |   └── ... (other build-related files)
-   |   
-   ├── api/
-   |   ├──CMakeLists.txt (CMake configuration file for the API)
-   |   ├── include/
-   |   |   └── opentelemetry/
-   |   |       └── ... (API headers) 
-   |   └── ... (other API-related files or subdirectories)
-   | 
-   └── ...(other opentelemetry-cpp file or subdirectories)
-
-``` 
 
 **Finally, create a new project directory called `roll-dice`.**
 
