@@ -205,7 +205,7 @@ int main() {
 }
 
 ```
-**Build and run your application:**
+Build and run your application:
 
 Build and run the application with the following CMake commands.
 
