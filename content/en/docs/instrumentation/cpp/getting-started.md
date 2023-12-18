@@ -246,7 +246,7 @@ Our application should do the following:
 * Next, create a connection handler, a connection provider, and start the server on <localhost:8000>.
 * Lastly, initialize and run the application within the main function.
 
-In that same folder, create a file called `main.cpp` and add the following code to the file:
+In that `roll-dice` folder, create a file called `main.cpp` and add the following code to the file:
 
 ```cpp
 #include "oatpp/web/server/HttpConnectionHandler.hpp"
