@@ -255,7 +255,7 @@ set(OPENTELEMETRY_ROOT ../opentelemetry-cpp)
 
 #set the path to the directory containing "oatpp" package configuration files 
 include_directories(${OATPP_ROOT}/src)
-target_link_libraries(myapp PRIVATE ${OATPP_LIB}/liboatpp.a)
+target_link_libraries(myapp PRIVATE ${OATPP_LIB})
 
 #set the path to the directory containing "pentelemetry-cpp" package configuration files 
 include_directories(${OPENTELEMETRY_ROOT}/api/include)
