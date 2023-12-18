@@ -49,9 +49,7 @@ To begin, install  Oat++ locally using the [source code](https://github.com/oatp
    git clone https://github.com/oatpp/oatpp.git
    ```
 
-2. Navigate to the oatpp directory:
-
-   Access the oatpp directory in your terminal.
+2. Navigate to the `oatpp` directory:
 
    ```bash 
    cd oatpp
