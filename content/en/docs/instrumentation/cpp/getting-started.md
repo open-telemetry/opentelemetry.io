@@ -219,7 +219,7 @@ cmake --build .
 After successfully building your project, you can run the generated executable.
 
 ```bash
-./myapp
+./dice-server
 ```
 
 Then, open <http://localhost:8080/rolldice> in your browser to ensure it is working.
