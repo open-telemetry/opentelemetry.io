@@ -120,7 +120,6 @@ With Oat++ and OpenTelemetry C++ ready, you can continue with creating the HTTP 
 
 ## Create and launch an HTTP Server
 
-**Integrate oatpp in your project:**
 
 In your `roll-dice` project, utilize the oatpp library by referencing the oatpp headers and linking them when compiling your project.. 
 
