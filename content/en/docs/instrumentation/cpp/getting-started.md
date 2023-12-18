@@ -97,9 +97,7 @@ Next, install and build [OpenTelemetry C++](https://github.com/open-telemetry/op
    cd build 
    ```
 
-4. Configure and generate the build system:
-
-   Run the CMake from the build directory to configure the build.
+4. In the `build` directory run CMake, to configure and generate the build system:
 
    ```bash
    cmake ..
