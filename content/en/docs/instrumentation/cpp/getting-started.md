@@ -141,7 +141,7 @@ set(SOURCES
 )
 
 # Create an executable target
-add_executable(myapp ${SOURCES})
+add_executable(dice-server ${SOURCES})
 
 set(OATPP_ROOT ../oatpp)
 set(OATPP_LIB /path/to/oatpp/lib)
