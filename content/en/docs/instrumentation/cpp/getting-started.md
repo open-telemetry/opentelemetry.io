@@ -76,7 +76,7 @@ To begin, install  Oat++ locally using the [source code](https://github.com/oatp
    ```
 
 
-**Next, install and build [OpenTelemetry C++](https://github.com/open-telemetry/opentelemetry-cpp) locally using CMake, following these general steps:**
+Next, install and build [OpenTelemetry C++](https://github.com/open-telemetry/opentelemetry-cpp) locally using CMake, following these steps:
 
 1. Clone the OpenTelemetry C++ repository:
 
