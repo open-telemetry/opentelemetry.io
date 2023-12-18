@@ -152,7 +152,7 @@ endif()
 
 #set the path to the directory containing "oatpp" package configuration files 
 include_directories(${OATPP_ROOT}/src)
-target_link_libraries(myapp PRIVATE ${OATPP_LIB}/liboatpp.a)
+target_link_libraries(myapp PRIVATE ${OATPP_LIB})
 
 ```
 Replace `/path/to/oatpp/lib` with the actual path leading to oatpp library header files within your local installation.
