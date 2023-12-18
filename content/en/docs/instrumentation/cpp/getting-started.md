@@ -84,9 +84,7 @@ Next, install and build [OpenTelemetry C++](https://github.com/open-telemetry/op
    git clone https://github.com/open-telemetry/opentelemetry-cpp.git
    ```
 
-2. Navigate to the OpenTelemetry C++ SDK directory:
-
-   Change your working directory to the OpenTelemetry C++ SDK directory.
+2. Change your working directory to the OpenTelemetry C++ SDK directory.
 
    ```bash
    cd openTelemetry-cpp
