@@ -123,7 +123,7 @@ With Oat++ and OpenTelemetry C++ ready, you can continue with creating the HTTP 
 
 In your `OpenTelemetry-Starter-Project` folder, create a subfolder `roll-dice`, where the Oat++ library will be used by referencing the oatpp headers and linking them when compiling your project.
 
-Create a file called `CMakeLists.txt` to define the oatpp library directories, include paths, and link against oatpp during the compilation process.
+Create a file called `CMakeLists.txt` to define the Oat++ library directories, include paths, and link against Oat++ during the compilation process.
 
 Here is what `CMakeLists.txt` might look like:
 
