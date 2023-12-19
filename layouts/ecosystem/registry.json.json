@@ -1,5 +1,7 @@
 {{ $entries := slice -}}
 {{ range $entry_name_ignored, $entry := .Site.Data.registry -}}
+  {{ $entry := merge $entry (dict "title" (markdownify $entry.title) ) }}
+  {{ $entry := merge $entry (dict "description" (markdownify $entry.description) ) }}
   {{ $entries = $entries | append $entry -}}
 {{ end -}}
 {{ jsonify (dict "indent" "  ") $entries -}}
