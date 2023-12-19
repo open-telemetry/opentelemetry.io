@@ -486,5 +486,5 @@ Here's how to connect with us:
 
 Be sure to follow OpenTelemetry on
 [Mastodon](https://fosstodon.org/@opentelemetry) and
-[X](https://x.com/opentelemetry), previously known as Twitter,
-and share your stories using the **#OpenTelemetry** hashtag!
+[X](https://x.com/opentelemetry), previously known as Twitter, and share your
+stories using the **#OpenTelemetry** hashtag!
