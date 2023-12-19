@@ -51,7 +51,7 @@ producing the telemetry; in particular the `service.name` attribute.
 ```php
 <?php
 
-use OpenTelemetry\API\Common\Instrumentation\Globals;
+use OpenTelemetry\API\Globals;
 use OpenTelemetry\API\Logs\EventLogger;
 use OpenTelemetry\API\Logs\LogRecord;
 use OpenTelemetry\API\Trace\Propagation\TraceContextPropagator;
