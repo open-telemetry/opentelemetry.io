@@ -5667,6 +5667,14 @@
     "StatusCode": 200,
     "LastSeen": "2023-09-12T12:09:44.031281-04:00"
   },
+  "https://shorturl.at/kAEQX": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-21T18:24:03.809027-05:00"
+  },
+  "https://shorturl.at/osHRX": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-21T18:24:03.320908-05:00"
+  },
   "https://shorturl.at/vLYZ0": {
     "StatusCode": 200,
     "LastSeen": "2023-09-12T12:09:42.592065-04:00"
@@ -6026,6 +6034,10 @@
   "https://www.alibabacloud.com/help/doc-detail/40654.htm": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:39:18.161125-04:00"
+  },
+  "https://www.apmdigest.com/opentelemetry-announces-general-availability": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-21T18:21:53.621159-05:00"
   },
   "https://www.apollographql.com/docs/federation/": {
     "StatusCode": 206,
@@ -7003,6 +7015,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:36:19.001379-04:00"
   },
+  "https://www.youtube.com/embed/coPrhP_7lVU": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-21T18:21:54.553086-05:00"
+  },
   "https://www.youtube.com/embed/zSeKL2-_sVg": {
     "StatusCode": 200,
     "LastSeen": "2023-10-17T18:03:15.47096-04:00"
@@ -7026,6 +7042,10 @@
   "https://youtube.com/@otel-official": {
     "StatusCode": 200,
     "LastSeen": "2023-10-17T18:03:15.882928-04:00"
+  },
+  "https://youtube.com/playlist": {
+    "StatusCode": 404,
+    "LastSeen": "2023-12-21T18:21:54.282099-05:00"
   },
   "https://zipkin.io/": {
     "StatusCode": 206,
