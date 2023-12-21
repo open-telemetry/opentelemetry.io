@@ -40,6 +40,9 @@ You can watch the full recording here:
 
 {{<youtube coPrhP_7lVU>}}
 
+<br/>Thanks to everyone who has contributed to OpenTelemetry to date, and we
+look forward to your contributions in 2024! 🎉
+
 ## Transcript
 
 If reading is more your jam, check out the transcript of our conversations
