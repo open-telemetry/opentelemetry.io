@@ -56,11 +56,16 @@ below.
 
 ### 1- Meet the Humans of OTel
 
-**TYLER YAHN:** I'm Tyler Yahn. I am a maintainer for the [OpenTelemetry Go SIG](https://github.com/open-telemetry/opentelemetry-go).
-We're working on some [auto-instrumentation](https://github.com/open-telemetry/opentelemetry-go-instrumentation/) there, and [specification](https://github.com/open-telemetry/opentelemetry-specification/).
+**TYLER YAHN:** I'm Tyler Yahn. I am a maintainer for the
+[OpenTelemetry Go SIG](https://github.com/open-telemetry/opentelemetry-go).
+We're working on some
+[auto-instrumentation](https://github.com/open-telemetry/opentelemetry-go-instrumentation/)
+there, and
+[specification](https://github.com/open-telemetry/opentelemetry-specification/).
 
 **AMY TOBEY:** I'm Amy Tobey. I am senior principal engineer for digital
-interconnection at Equinix. I maintain a tool called [OTel CLI](https://github.com/equinix-labs/otel-cli).
+interconnection at Equinix. I maintain a tool called
+[OTel CLI](https://github.com/equinix-labs/otel-cli).
 
 **ADRIANA VILLELA:** Oh, you maintain the OTel CLI!
 
@@ -87,13 +92,21 @@ Austin about it.
 
 **CARTER SOCHA:** I'm Carter Socha. I work on a couple different things. I'm one
 of the few product managers floating around, but I helped start the
-[OpenTelemetry Demo](/docs/demo/), which I'm a maintainer of. I also work in the [SIG security](https://github.com/open-telemetry/sig-security),
-which helps the project improve their security response process.
+[OpenTelemetry Demo](/docs/demo/), which I'm a maintainer of. I also work in the
+[SIG security](https://github.com/open-telemetry/sig-security), which helps the
+project improve their security response process.
 
 **BOGDAN DRUTU:** My name is Bogdan. I took a break for parental leave so I'm
 just jumping back. Okay, what were you doing before? I done a lot of things,
-including member of [TC](https://github.com/open-telemetry/community/blob/main/tech-committee-charter.md), member of [GC](https://github.com/open-telemetry/community/blob/main/governance-charter.md), maintainer of [Collector](https://github.com/open-telemetry/opentelemetry-collector). I was a former
-maintainer of [Java](https://github.com/open-telemetry/opentelemetry-java), so I've done a lot.
+including member of
+[TC](https://github.com/open-telemetry/community/blob/main/tech-committee-charter.md),
+member of
+[GC](https://github.com/open-telemetry/community/blob/main/governance-charter.md),
+maintainer of
+[Collector](https://github.com/open-telemetry/opentelemetry-collector). I was a
+former maintainer of
+[Java](https://github.com/open-telemetry/opentelemetry-java), so I've done a
+lot.
 
 **CONSTANCE CARAMANOLIS:** Hi. I'm Constance Caramanolis.
 
@@ -109,26 +122,31 @@ talks...
 
 **JURACI PAIXĀO KRÖHLING:** My name is Juraci. I'm a software engineer and I've
 been working with OpenTelemetry systems or Observability for a few years now. I
-come from a Tracing background, so I was a maintainer on [Jaeger](https://www.jaegertracing.io/). I was part of
-OpenTracing back in the day and I helped choose the name of the project that we
-have. And right now I'm a Collector developer. I help out on some components for
-OpenTelemetry Collector. And I'm also part of the Governing Committee for
-OpenTelemetry.
+come from a Tracing background, so I was a maintainer on
+[Jaeger](https://www.jaegertracing.io/). I was part of OpenTracing back in the
+day and I helped choose the name of the project that we have. And right now I'm
+a Collector developer. I help out on some components for OpenTelemetry
+Collector. And I'm also part of the Governing Committee for OpenTelemetry.
 
-**ADRIANA VILLELA:** And newly re-elected, right? 
+**ADRIANA VILLELA:** And newly re-elected, right?
 
 **JURACI PAIXĀO KRÖHLING:** I was just re-elected, yes.
 
 **JACOB ARONOFF:** My name is Jacob Aronoff. I am a maintainer for the
-[OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator) project.
+[OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator)
+project.
 
 **ALEX BOTEN:** Hi, I'm Alex and I'm a contributor and maintainer in
 OpenTelemetry. I wrote a book about OpenTelemetry. I don't know what else. I do
 stuff with OTel. Cool. I am a contributor and maintainer of the OpenTelemetry
-Collector and the [OpenTelemetry Collector Contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib) repository and I have been
-spending a lot of time in various SIGs and specialty working groups around
-[configuration](https://github.com/open-telemetry/opentelemetry-configuration) and security. And previously I spent a bunch of time maintaining
-and contributing to [Python](https://github.com/open-telemetry/opentelemetry-python).
+Collector and the
+[OpenTelemetry Collector Contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib)
+repository and I have been spending a lot of time in various SIGs and specialty
+working groups around
+[configuration](https://github.com/open-telemetry/opentelemetry-configuration)
+and security. And previously I spent a bunch of time maintaining and
+contributing to
+[Python](https://github.com/open-telemetry/opentelemetry-python).
 
 **PURVI KANAL:** Hey, my name is Purvi. I am a senior software engineer. I
 worked over my career a lot with browsers and JavaScript.
@@ -211,18 +229,18 @@ murder mystery, usually.
 
 **JURACI PAIXĀO KRÖHLING:** That's a good question. I think… not going to be
 strict on a definition, I think what this really means is it is a way for us to
-understand what a problem… we have a problem in our system… we should be able
-to answer or to determine what is going wrong or what's happening. And it
-doesn't matter if it comes from logs or metrics or training, as long as we can
-tell and understand what's going on. I think that's when we can say we have
+understand what a problem… we have a problem in our system… we should be able to
+answer or to determine what is going wrong or what's happening. And it doesn't
+matter if it comes from logs or metrics or training, as long as we can tell and
+understand what's going on. I think that's when we can say we have
 Observability. And it's not a yes or no. It is a spectrum. I don't expect to
 have Observability, perfect Observability from day one, but I am expected to
 have some sort of telemetry that helps me understand what's going on. So I think
 telemetry is like a path to getting perhaps utopic place where we understand
 everything about our systems.
 
-**JACOB ARONOFF:** What does Observability mean to me… I think Observability
-is understanding what's happening inside of your applications. Maybe what's
+**JACOB ARONOFF:** What does Observability mean to me… I think Observability is
+understanding what's happening inside of your applications. Maybe what's
 happening in the code you care about. Yeah.
 
 **ALEX BOTEN:** Oh my goodness. It means everything. Observability is life. I
@@ -337,8 +355,8 @@ gathering the data. The hard part is actually making sense out of it. And so
 they're finally coming together. It's worked out pretty well. in terms of
 collaboration to get metrics, traces, and logs.
 
-**JURACI PAIXĀO KRÖHLING:** Oh, that's a deep question… On a technical side,
-it means OpenTelemetry for me is a set of tools that would help me get telemetry
+**JURACI PAIXĀO KRÖHLING:** Oh, that's a deep question… On a technical side, it
+means OpenTelemetry for me is a set of tools that would help me get telemetry
 data out of my typical application. Sometimes also infra. But OpenTelemetry
 really is the tool that I can use in a vendor neutral way, get data out of my
 application so that I can get into that into that utopic thing. If I had perfect
@@ -405,8 +423,9 @@ just the structures they come with. So, yeah, I'll go traces.
 
 **AMY TOBEY:** Oh, it's traces, of course.
 
-**TED YOUNG:** My favorite signal… Probably be the Bat Signal. If that thing
-could go on every time a system goes down, I would be happy.
+**TED YOUNG:** My favorite signal… Probably be the
+[Bat-Signal](https://en.wikipedia.org/wiki/Bat-Signal). If that thing could go
+on every time a system goes down, I would be happy.
 
 **CARTER SOCHA:** So I think I've heard this reference around… and I truly
 believe it. Traces are just the cooler version of logs. Like, it's like logs
