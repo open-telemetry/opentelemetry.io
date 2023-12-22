@@ -10,7 +10,7 @@ cSpell:ignore: ADIANA ALEX Alex ARONOFF Aronoff BOGDAN Bogdan BOTEN Boten CARAMA
 
 What a year it has been for OpenTelemetry!
 [The OTel Demo turned 1](/blog/2023/demo-birthday/),
-[OpenTelemetry announced General Availability](https://www.apmdigest.com/opentelemetry-announces-general-availability),
+[the OpenTelemetry spec went GA](https://www.apmdigest.com/opentelemetry-announces-general-availability),
 [Trace-Based Testing was added to the OTel Demo](/blog/2023/testing-otel-demo/),
 we saw some [exciting OTel integrations](/blog/2023/otterize-otel/), and let's
 not forget how we had not one, but TWO Observability Days in 2023 - one for
