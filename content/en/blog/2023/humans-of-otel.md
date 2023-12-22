@@ -15,7 +15,7 @@ What a year it has been for OpenTelemetry!
 we saw some [exciting](/blog/2023/tyk-api-gateway/)
 [OTel](/blog/2023/cloud-foundry/) [integrations](/blog/2023/otterize-otel/), and
 let's not forget how we had not one, but TWO Observability Days in 2023 - one
-for [KubeCon Europe in Amsterdam]("https://shorturl.at/osHRX), and one for
+for [KubeCon Europe in Amsterdam](https://shorturl.at/osHRX), and one for
 [KubeCon North America in Chicago](https://shorturl.at/kAEQX). Those are only a
 few of the highlights! Many more were featured past releases of
 [OpenTelemetry in Focus](/blog/2023/otel-in-focus-break/).
