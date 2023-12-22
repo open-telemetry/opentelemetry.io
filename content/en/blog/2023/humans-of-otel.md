@@ -4,8 +4,7 @@ linkTitle: Humans of OTel
 date: 2023-12-21
 author: >-
   [Adriana Villela](https://github.com/avillela) (Lightstep),
-cSpell:ignore:
-  DRUTU PURVI KANAL CARAMANOLIS PAIXĀO uptopic ARONOFF BOTEN ADIANA youtube
+cSpell:ignore: DRUTU PURVI KANAL CARAMANOLIS PAIXĀO uptopic ARONOFF BOTEN ADIANA youtube Dapr
 ---
 
 What a year it has been for OpenTelemetry!
