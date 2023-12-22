@@ -406,7 +406,7 @@ just the structures they come with. So, yeah, I'll go traces.
 **AMY TOBEY:** Oh, it's traces, of course.
 
 **TED YOUNG:** My favorite signal… Probably be the Bat Signal. If that thing
-could go on every time a system goes down, I would be happy./
+could go on every time a system goes down, I would be happy.
 
 **CARTER SOCHA:** So I think I've heard this reference around...and I truly
 believe it. Traces are just the cooler version of logs. Like, it's like logs
