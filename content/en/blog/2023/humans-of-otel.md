@@ -143,7 +143,7 @@ to never have that problem exist. I think that's really what it means to me.
 **AMY TOBEY:** It means being able to look at things coming out of the box and
 tell what's going on inside parts. Very convenient.
 
-**TED YOUNG:** First of all, it's monitoring...But really, Observability is this
+**TED YOUNG:** First of all, it's monitoring… But really, Observability is this
 nebulous term, but it did show up as part of a sort of shift in how we are
 thinking about monitoring our system. And I would say that shift is the way we
 used to do it was you had these different signals, you needed logs, so you had a
