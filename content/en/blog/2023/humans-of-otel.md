@@ -109,7 +109,7 @@ talks...
 
 **JURACI PAIXĀO KRÖHLING:** My name is Juraci. I'm a software engineer and I've
 been working with OpenTelemetry systems or Observability for a few years now. I
-come from a Tracing background, so I was a maintainer on Jaeger. I was part of
+come from a Tracing background, so I was a maintainer on [Jaeger](https://www.jaegertracing.io/). I was part of
 OpenTracing back in the day and I helped choose the name of the project that we
 have. And right now I'm a Collector developer. I help out on some components for
 OpenTelemetry Collector. And I'm also part of the Governing Committee for
