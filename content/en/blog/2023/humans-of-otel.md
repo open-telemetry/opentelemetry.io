@@ -12,11 +12,15 @@ What a year it has been for OpenTelemetry!
 [The OTel Demo turned 1](/blog/2023/demo-birthday/),
 [the OpenTelemetry project announced general availability of the OpenTelemetry specification](https://youtu.be/OEGgmTNfYsU?si=ZdjNwLbGTrWIVs1D&t=288),
 [Trace-Based Testing was added to the OTel Demo](/blog/2023/testing-otel-demo/),
-we saw some [exciting](/blog/2023/tyk-api-gateway/) [OTel](/blog/2023/cloud-foundry/) [integrations](/blog/2023/otterize-otel/), and let's
-not forget how we had not one, but TWO Observability Days in 2023 - one for
-[KubeCon Europe in Amsterdam](https://www.youtube.com/playlist?list=PLj6h78yzYM2ORxwcjTn4RLAOQOYjvQ2A3), and one for
+we saw some [exciting](/blog/2023/tyk-api-gateway/)
+[OTel](/blog/2023/cloud-foundry/) [integrations](/blog/2023/otterize-otel/), and
+let's not forget how we had not one, but TWO Observability Days in 2023 - one
+for
+[KubeCon Europe in Amsterdam](https://www.youtube.com/playlist?list=PLj6h78yzYM2ORxwcjTn4RLAOQOYjvQ2A3),
+and one for
 [KubeCon North America in Chicago](https://www.youtube.com/playlist?list=PLj6h78yzYM2N60fCRNLBL7ymUHg7fFbDZ).
-Those are only a few of the highlights, many more were featured past releases of [OpenTelemetry in Focus](/blog/2023/otel-in-focus-break/).
+Those are only a few of the highlights! Many more were featured past releases of
+[OpenTelemetry in Focus](/blog/2023/otel-in-focus-break/).
 
 None of this would've been possible without the awesome humans behind
 OpenTelemetry. Whether you're a maintainer, contributor, or practitioner, we
@@ -36,8 +40,7 @@ with OTel, both past and present:
 - [Alex Boten](https://github.com/codeboten)
 - [Purvi Kanal](https://github.com/pkanal)
 
-Special thanks to [Reese Lee](https://github.com/reese-lee) for the
-camera work!
+Special thanks to [Reese Lee](https://github.com/reese-lee) for the camera work!
 
 You can watch the full recording here:
 
@@ -302,8 +305,10 @@ into OpenTelemetry.
 **BOGDAN DRUTU:** Yeah.
 
 **PURVI KANAL:** I got involved with OpenTelemetry through working at Honeycomb.
-So I got involved with it, and I have a particular interest in [OpenTelemetry JavaScript](https://github.com/open-telemetry/opentelemetry-js), and especially the browser side of OpenTelemetry JavaScript. It's
-really great to be involved with it.
+So I got involved with it, and I have a particular interest in
+[OpenTelemetry JavaScript](https://github.com/open-telemetry/opentelemetry-js),
+and especially the browser side of OpenTelemetry JavaScript. It's really great
+to be involved with it.
 
 ### 4- What does OTel mean to you?
 
@@ -358,7 +363,8 @@ a few months. How you been? It's catching up.
 **ALEX BOTEN:** Like, I mean, OTel has been amazing. The project itself has been
 wonderful. It's one of the first projects to take a bunch of standards and
 condense them down into less standards. We took OpenCensus, OpenTracing, we
-brought [Prometheus](https://prometheus.io/) to the table. The [Elastic Cache format](/blog/2023/ecs-otel-semconv-convergence/) is there.
+brought [Prometheus](https://prometheus.io/) to the table. The
+[Elastic Cache format](/blog/2023/ecs-otel-semconv-convergence/) is there.
 OpenTelemetry just is a wonderful community, that's all. Trying to make things
 better in the Observability landscape by working across vendor boundaries, which
 has just been something that I've never done in the past. I've never worked in
