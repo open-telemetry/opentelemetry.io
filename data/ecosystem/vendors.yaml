@@ -125,6 +125,13 @@
   contact: ''
   oss: false
   commercial: true
+- name: HyperDX
+  distribution: true
+  nativeOTLP: true
+  url: 'https://www.hyperdx.io/docs/install/opentelemetry'
+  contact: 'support@hyperdx.io'
+  oss: true
+  commercial: true
 - name: Instana
   distribution: false
   nativeOTLP: true
