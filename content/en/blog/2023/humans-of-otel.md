@@ -221,7 +221,7 @@ have some sort of telemetry that helps me understand what's going on. So I think
 telemetry is like a path to getting perhaps utopic place where we understand
 everything about our systems.
 
-**JACOB ARONOFF:** What does Observability mean to me... I think Observability
+**JACOB ARONOFF:** What does Observability mean to me… I think Observability
 is understanding what's happening inside of your applications. Maybe what's
 happening in the code you care about. Yeah.
 
