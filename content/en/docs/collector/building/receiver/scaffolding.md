@@ -12,7 +12,7 @@ That said, if you or your company are willing to own any given component, we abs
 {{% /alert %}}
 
 ```bash
-GITHUB_ORG="MY_GITHUB_ORG"
+export GITHUB_ORG="MY_GITHUB_ORG"
 git remote add personal "git@github.com:$GITHUB_ORG/opentelemetry-collector-contrib.git"
 ```
 
