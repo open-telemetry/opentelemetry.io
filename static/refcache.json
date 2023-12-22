@@ -1639,6 +1639,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T16:10:33.693806-04:00"
   },
+  "https://en.wikipedia.org/wiki/Bat-Signal": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-22T10:12:58.908659-05:00"
+  },
   "https://en.wikipedia.org/wiki/COBOL": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T16:19:31.864503-04:00"
@@ -2019,6 +2023,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:41:45.782241-04:00"
   },
+  "https://github.com/MrAlias/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-22T10:12:55.071939-05:00"
+  },
   "https://github.com/MrAlias/flow": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:36:45.247504-04:00"
@@ -2179,6 +2187,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:22:49.712442-04:00"
   },
+  "https://github.com/ccaraman": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-22T10:12:56.711911-05:00"
+  },
   "https://github.com/census-instrumentation/opencensus-python": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:36:15.230427-04:00"
@@ -2294,6 +2306,10 @@
   "https://github.com/elastic/elasticsearch": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:31:43.320081-04:00"
+  },
+  "https://github.com/equinix-labs/otel-cli": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-22T10:12:58.650448-05:00"
   },
   "https://github.com/etcd-io/etcd": {
     "StatusCode": 200,
@@ -3563,6 +3579,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:41:16.088891-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-22T10:12:58.088255-05:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/#change--contribution-process": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:41:21.481944-04:00"
@@ -3831,6 +3851,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:35:31.186662-04:00"
   },
+  "https://github.com/pkanal": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-22T10:12:57.554103-05:00"
+  },
   "https://github.com/ppatierno": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:29:29.830836-04:00"
@@ -3946,6 +3970,10 @@
   "https://github.com/tigrannajaryan": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:32:29.291416-04:00"
+  },
+  "https://github.com/tobert": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-22T10:12:55.948206-05:00"
   },
   "https://github.com/tokio-rs/tracing-opentelemetry": {
     "StatusCode": 200,
@@ -5667,6 +5695,14 @@
     "StatusCode": 200,
     "LastSeen": "2023-09-12T12:09:44.031281-04:00"
   },
+  "https://shorturl.at/kAEQX": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-22T15:46:29.596006461Z"
+  },
+  "https://shorturl.at/osHRX": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-22T15:46:25.223430264Z"
+  },
   "https://shorturl.at/vLYZ0": {
     "StatusCode": 200,
     "LastSeen": "2023-09-12T12:09:42.592065-04:00"
@@ -7003,6 +7039,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:36:19.001379-04:00"
   },
+  "https://www.youtube.com/embed/coPrhP_7lVU": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-21T18:21:54.553086-05:00"
+  },
   "https://www.youtube.com/embed/zSeKL2-_sVg": {
     "StatusCode": 200,
     "LastSeen": "2023-10-17T18:03:15.47096-04:00"
@@ -7014,6 +7054,10 @@
   "https://youtu.be/9iaGG-YZw5I": {
     "StatusCode": 200,
     "LastSeen": "2023-06-01T17:03:14.742262-04:00"
+  },
+  "https://youtu.be/OEGgmTNfYsU": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-22T10:12:54.130477-05:00"
   },
   "https://youtu.be/dpXhgZL9tzU": {
     "StatusCode": 200,
