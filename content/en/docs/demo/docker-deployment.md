@@ -74,8 +74,9 @@ Once the images are built and containers are started you can access:
 
 ## Changing the demo's primary port number
 
-By default, the demo application will start a proxy for all browser traffic bound to port 8080. To change the port
-number, set the `ENVOY_PORT` environment variable before starting the demo. For example, to use port 8081:
+By default, the demo application will start a proxy for all browser traffic
+bound to port 8080. To change the port number, set the `ENVOY_PORT` environment
+variable before starting the demo. For example, to use port 8081:
 
     {{< tabpane text=true >}} {{% tab Make %}}
 
