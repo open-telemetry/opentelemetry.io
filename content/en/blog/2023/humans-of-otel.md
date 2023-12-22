@@ -56,7 +56,7 @@ below.
 
 ### 1- Meet the Humans of OTel
 
-**TYLER YAHN:** I'm Tyler Yahn. I am a maintainer for the OpenTelemetry Go SIG.
+**TYLER YAHN:** I'm Tyler Yahn. I am a maintainer for the [OpenTelemetry Go SIG](https://github.com/open-telemetry/opentelemetry-go).
 We're working on some auto-instrumentation there, and specification.
 
 **AMY TOBEY:** I'm Amy Tobey. I am senior principal engineer for digital
