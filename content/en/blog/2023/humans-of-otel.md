@@ -421,7 +421,7 @@ and I feel like it changed something in the way how things were done. For
 tracing, I mean, we didn't change too much from other Dapr paper or other
 things, but for metrics, I think we changed.
 
-**CONSTANCE CARAMANOLIS:** I love traces, especially because you could... My
+**CONSTANCE CARAMANOLIS:** I love traces, especially because you could… My
 favorite example is when I used to do...when I was at Lyft and I would get paged
 in the middle of the night... One service, four deep.. everything was going...
 Everything between that and the front was getting paged. You were able to
