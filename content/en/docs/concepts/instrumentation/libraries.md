@@ -136,8 +136,8 @@ considerations to help you decide how to minimize dependency hell:
 ### Getting a tracer
 
 All application configuration is hidden from your library through the Tracer
-API. Libraries may allow applications to pass instances of `TracerProvider`
-to facilitate dependency injection and ease of testing, or obtain it from
+API. Libraries may allow applications to pass instances of `TracerProvider` to
+facilitate dependency injection and ease of testing, or obtain it from
 [global `TracerProvider`](/docs/specs/otel/trace/api/#get-a-tracer).
 OpenTelemetry language implementations may have different preferences for
 passing instances or accessing the global based on what's idiomatic.
