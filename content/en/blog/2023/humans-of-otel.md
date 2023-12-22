@@ -25,16 +25,16 @@ want y'all to know that what you do matters!
 And so, to wrap up 2023, I interviewed some of the folks who have been involved
 with OTel, both past and present:
 
-- [Tyler Yahn](https://www.linkedin.com/in/tyler-yahn/)
-- [Amy Tobey](https://www.linkedin.com/in/amytobey/)
-- [Ted Young](https://www.linkedin.com/in/ted-young/)
-- [Carter Socha](https://www.linkedin.com/in/cartersocha/)
-- [Bogdan Drutu](https://www.linkedin.com/in/bogdan-drutu-7909602a/)
-- [Constance Caramanolis](https://www.linkedin.com/in/ccaramanolis/)
-- [Juraci Paixāo Kröhling](https://www.linkedin.com/in/jpkroehling/)
-- [Jacob Aronoff](https://www.linkedin.com/in/jaronoff97/)
-- [Alex Boten](https://www.linkedin.com/in/codeboten/)
-- [Purvi Kanal](https://www.linkedin.com/in/🚀-purvi-kanal-4a36089a/)
+- [Tyler Yahn](https://github.com/MrAlias/)
+- [Amy Tobey](https://github.com/tobert)
+- [Ted Young](https://github.com/tedsuo)
+- [Carter Socha](https://github.com/cartersocha)
+- [Bogdan Drutu](https://github.com/bogdandrutu)
+- [Constance Caramanolis](https://github.com/ccaraman)
+- [Juraci Paixāo Kröhling](https://github.com/jpkrohling)
+- [Jacob Aronoff](https://github.com/jaronoff97)
+- [Alex Boten](https://github.com/codeboten)
+- [Purvi Kanal](https://github.com/pkanal)
 
 Special thanks to [Reese Lee](https://www.linkedin.com/in/reese-lee/) for the
 camera work!
