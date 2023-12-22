@@ -337,7 +337,7 @@ gathering the data. The hard part is actually making sense out of it. And so
 they're finally coming together. It's worked out pretty well. in terms of
 collaboration to get metrics, traces, and logs.
 
-**JURACI PAIXĀO KRÖHLING:** Oh, that's a deep question... On a technical side,
+**JURACI PAIXĀO KRÖHLING:** Oh, that's a deep question… On a technical side,
 it means OpenTelemetry for me is a set of tools that would help me get telemetry
 data out of my typical application. Sometimes also infra. But OpenTelemetry
 really is the tool that I can use in a vendor neutral way, get data out of my
