@@ -72,6 +72,25 @@ Once the images are built and containers are started you can access:
 - Jaeger UI: <http://localhost:8080/jaeger/ui/>
 - Tracetest UI: <http://localhost:11633/>, only when using `make start-odd`
 
+## Changing the demo's primary port number
+
+By default, the demo application will start a proxy for all browser traffic bound to port 8080. To change the port
+number, set the `ENVOY_PORT` environment variable before starting the demo. For example, to use port 8081:
+
+    {{< tabpane text=true >}} {{% tab Make %}}
+
+```shell
+ENVOY_PORT=8081 make start
+```
+
+    {{% /tab %}} {{% tab Docker %}}
+
+```shell
+ENVOY_PORT=8081 docker compose up --force-recreate --remove-orphans --detach
+```
+
+    {{% /tab %}} {{< /tabpane >}}
+
 ## Bring your own backend
 
 Likely you want to use the web store as a demo application for an observability
