@@ -211,7 +211,7 @@ murder mystery, usually.
 
 **JURACI PAIXĀO KRÖHLING:** That's a good question. I think… not going to be
 strict on a definition, I think what this really means is it is a way for us to
-understand what a problem...we have a problem in our system...we should be able
+understand what a problem… we have a problem in our system… we should be able
 to answer or to determine what is going wrong or what's happening. And it
 doesn't matter if it comes from logs or metrics or training, as long as we can
 tell and understand what's going on. I think that's when we can say we have
