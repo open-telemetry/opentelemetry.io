@@ -4,6 +4,8 @@ linkTitle: Humans of OTel
 date: 2023-12-21
 author: >-
   [Adriana Villela](https://github.com/avillela) (Lightstep),
+cSpell:ignore:
+  DRUTU PURVI KANAL CARAMANOLIS PAIXĀO uptopic ARONOFF BOTEN ADIANA youtube
 ---
 
 What a year it has been for OpenTelemetry!
@@ -115,13 +117,13 @@ OpenTelemetry Operator project.
 **ALEX BOTEN:** Hi, I'm Alex and I'm a contributor and maintainer in
 OpenTelemetry. I Wrote a book about OpenTelemetry. I don't know what else. I do
 stuff with OTel. Cool. I am a contributor and maintainer of the OpenTelemetry
-Collector and the OpenTelemetry Collector Contrib repo and I have been spending
-a lot of time in various SIGs and specialty working groups around configuration
-and security. And previously I spent a bunch of time maintaining and
-contributing to Python.
+Collector and the OpenTelemetry Collector Contrib repository and I have been
+spending a lot of time in various SIGs and specialty working groups around
+configuration and security. And previously I spent a bunch of time maintaining
+and contributing to Python.
 
 **PURVI KANAL:** Hey, my name is Purvi. I am a senior software engineer. I
-worked over my career a lot with browsers and javascript.
+worked over my career a lot with browsers and JavaScript.
 
 ### 2- What does Observability mean to you?
 
@@ -395,7 +397,7 @@ just the structures they come with. So, yeah, I'll go traces.
 **AMY TOBEY:** Oh, it's traces, of course.
 
 **TED YOUNG:** My favorite signal...Probably be the Bat Signal. If that thing
-could go on every timea system goes down, I would be happy./
+could go on every time a system goes down, I would be happy./
 
 **CARTER SOCHA:** So I think I've heard this reference around...and I truly
 believe it. Traces are just the cooler version of logs. Like, it's like logs

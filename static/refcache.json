@@ -7043,10 +7043,6 @@
     "StatusCode": 200,
     "LastSeen": "2023-10-17T18:03:15.882928-04:00"
   },
-  "https://youtube.com/playlist": {
-    "StatusCode": 404,
-    "LastSeen": "2023-12-21T18:21:54.282099-05:00"
-  },
   "https://zipkin.io/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:37:59.535683-04:00"
