@@ -396,7 +396,7 @@ instrumentation of vendors, it can be very limiting.
 ### 5- What's your favorite telemetry signal?
 
 **TYLER YAHN:** That's a good question. I wish I had a good, nuanced answer
-there. Like, I don't know...metrics, I've known for the longest, I guess. But I
+there. Like, I don't know… metrics, I've known for the longest, I guess. But I
 think traces are probably a little closer because you get a lot more depth into
 operational behavior. So, yeah, I think I'd probably go with traces. It's also a
 little bit more automatic for you. You really have to understand what those
