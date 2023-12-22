@@ -408,7 +408,7 @@ just the structures they come with. So, yeah, I'll go traces.
 **TED YOUNG:** My favorite signal… Probably be the Bat Signal. If that thing
 could go on every time a system goes down, I would be happy.
 
-**CARTER SOCHA:** So I think I've heard this reference around...and I truly
+**CARTER SOCHA:** So I think I've heard this reference around… and I truly
 believe it. Traces are just the cooler version of logs. Like, it's like logs
 with a mustache, and maybe a top hat. Because essentially a span is just a log,
 but a trace-correlated log. So I'd probably say traces, but my backup answer is
