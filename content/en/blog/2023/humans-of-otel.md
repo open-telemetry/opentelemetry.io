@@ -128,7 +128,7 @@ stuff with OTel. Cool. I am a contributor and maintainer of the OpenTelemetry
 Collector and the [OpenTelemetry Collector Contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib) repository and I have been
 spending a lot of time in various SIGs and specialty working groups around
 [configuration](https://github.com/open-telemetry/opentelemetry-configuration) and security. And previously I spent a bunch of time maintaining
-and contributing to Python.
+and contributing to [Python](https://github.com/open-telemetry/opentelemetry-python).
 
 **PURVI KANAL:** Hey, my name is Purvi. I am a senior software engineer. I
 worked over my career a lot with browsers and JavaScript.
