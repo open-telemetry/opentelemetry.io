@@ -209,7 +209,7 @@ kind of see things, but you have a lot more questions from it, and then you use
 Observability to actually figure out what's going on. So I like to call it
 murder mystery, usually.
 
-**JURACI PAIXĀO KRÖHLING:** That's a good question. I think... not going to be
+**JURACI PAIXĀO KRÖHLING:** That's a good question. I think… not going to be
 strict on a definition, I think what this really means is it is a way for us to
 understand what a problem...we have a problem in our system...we should be able
 to answer or to determine what is going wrong or what's happening. And it
