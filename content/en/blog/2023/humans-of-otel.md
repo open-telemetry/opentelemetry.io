@@ -5,7 +5,7 @@ date: 2023-12-21
 author: >-
   [Adriana Villela](https://github.com/avillela) (Lightstep),
 cSpell:ignore:
-  DRUTU PURVI KANAL CARAMANOLIS PAIXĀO uptopic ARONOFF BOTEN ADIANA Dapr Purvi Yahn Bogdan Drutu Caramanolis Paixāo Aronoff Boten Kanal youtube YAHN BOGDAN Bogdan Caramanolis
+  TYLER YAHN BOGDAN DRUTU PURVI KANAL CONSTANCE CARAMANOLIS JURACI PAIXĀO KRŌHLING uptopic JACOB ARONOFF ALEX BOTEN ADIANA VILLELA Dapr Purvi Kanal Tyler Yahn Bogdan Drutu Constance Caramanolis Juraci Paixāo Krōhling Jacob Aronoff Alex Boten Kanal youtube
 ---
 
 What a year it has been for OpenTelemetry!
