@@ -57,7 +57,7 @@ below.
 ### 1- Meet the Humans of OTel
 
 **TYLER YAHN:** I'm Tyler Yahn. I am a maintainer for the [OpenTelemetry Go SIG](https://github.com/open-telemetry/opentelemetry-go).
-We're working on some auto-instrumentation there, and specification.
+We're working on some [auto-instrumentation](https://github.com/open-telemetry/opentelemetry-go-instrumentation/) there, and [specification](https://github.com/open-telemetry/opentelemetry-specification/).
 
 **AMY TOBEY:** I'm Amy Tobey. I am senior principal engineer for digital
 interconnection at Equinix. I maintain a tool called [OTel CLI](https://github.com/equinix-labs/otel-cli).
