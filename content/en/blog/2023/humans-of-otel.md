@@ -87,7 +87,7 @@ Austin about it.
 
 **CARTER SOCHA:** I'm Carter Socha. I work on a couple different things. I'm one
 of the few product managers floating around, but I helped start the
-OpenTelemetry Demo, which I'm a maintainer of. I also work in the SIG security,
+[OpenTelemetry Demo](/docs/demo/), which I'm a maintainer of. I also work in the [SIG security](https://github.com/open-telemetry/sig-security),
 which helps the project improve their security response process.
 
 **BOGDAN DRUTU:** My name is Bogdan. I took a break for parental leave so I'm
