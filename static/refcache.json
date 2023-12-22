@@ -5695,14 +5695,6 @@
     "StatusCode": 200,
     "LastSeen": "2023-09-12T12:09:44.031281-04:00"
   },
-  "https://shorturl.at/kAEQX": {
-    "StatusCode": 200,
-    "LastSeen": "2023-12-21T18:24:03.809027-05:00"
-  },
-  "https://shorturl.at/osHRX": {
-    "StatusCode": 200,
-    "LastSeen": "2023-12-21T18:24:03.320908-05:00"
-  },
   "https://shorturl.at/vLYZ0": {
     "StatusCode": 200,
     "LastSeen": "2023-09-12T12:09:42.592065-04:00"
@@ -6062,10 +6054,6 @@
   "https://www.alibabacloud.com/help/doc-detail/40654.htm": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:39:18.161125-04:00"
-  },
-  "https://www.apmdigest.com/opentelemetry-announces-general-availability": {
-    "StatusCode": 200,
-    "LastSeen": "2023-12-21T18:21:53.621159-05:00"
   },
   "https://www.apollographql.com/docs/federation/": {
     "StatusCode": 206,
