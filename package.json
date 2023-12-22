@@ -109,7 +109,8 @@
     "@opentelemetry/resources": "^1.8.0",
     "@opentelemetry/sdk-trace-base": "^1.8.0",
     "@opentelemetry/sdk-trace-web": "^1.8.0",
-    "@opentelemetry/semantic-conventions": "^1.8.0"
+    "@opentelemetry/semantic-conventions": "^1.8.0",
+    "path": "^0.12.7"
   },
   "optionalDependencies": {
     "netlify-cli": "^17.0.1"
