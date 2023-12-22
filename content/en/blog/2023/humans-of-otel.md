@@ -295,7 +295,7 @@ might have. And something we could solve together as a community, and we have.
 
 **BOGDAN DRUTU:** Even pre.
 
-**ADRIANA VILLELA:** Did you start out with Ted in the...pre days?
+**ADRIANA VILLELA:** Did you start out with Ted in the… pre days?
 
 **BOGDAN DRUTU:** No. Actually, there were two competing projects that merged
 into OpenTelemetry.
