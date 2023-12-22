@@ -92,7 +92,7 @@ which helps the project improve their security response process.
 
 **BOGDAN DRUTU:** My name is Bogdan. I took a break for parental leave so I'm
 just jumping back. Okay, what were you doing before? I done a lot of things,
-including member of TC, member of GC, maintainer of Collector. I was a former
+including member of [TC](https://github.com/open-telemetry/community/blob/main/tech-committee-charter.md), member of [GC](https://github.com/open-telemetry/community/blob/main/governance-charter.md), maintainer of [Collector](https://github.com/open-telemetry/opentelemetry-collector). I was a former
 maintainer of Java, so I've done a lot.
 
 **CONSTANCE CARAMANOLIS:** Hi. I'm Constance Caramanolis.
