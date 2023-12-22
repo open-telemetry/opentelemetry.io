@@ -36,7 +36,7 @@ with OTel, both past and present:
 - [Alex Boten](https://github.com/codeboten)
 - [Purvi Kanal](https://github.com/pkanal)
 
-Special thanks to [Reese Lee](https://www.linkedin.com/in/reese-lee/) for the
+Special thanks to [Reese Lee](https://github.com/reese-lee) for the
 camera work!
 
 You can watch the full recording here:
