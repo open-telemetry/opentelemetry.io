@@ -186,7 +186,7 @@ kind of like boutique analysis tool that just does one thing and does it really
 well. That's where I see it all going. And that's what Observability means to
 me.
 
-**CARTER SOCHA:** What does Observability mean to me... It means like, an
+**CARTER SOCHA:** What does Observability mean to me… It means like, an
 application owner can see what's going on in their environment, and answer
 pertinent questions to them about their business and how they can improve their
 service.
