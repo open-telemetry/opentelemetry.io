@@ -414,7 +414,7 @@ with a mustache, and maybe a top hat. Because essentially a span is just a log,
 but a trace-correlated log. So I'd probably say traces, but my backup answer is
 log.
 
-**BOGDAN DRUTU:** Signal? I think the most...I like metrics. I think we did try
+**BOGDAN DRUTU:** Signal? I think the most… I like metrics. I think we did try
 to change the way how metrics were done before, and we may not have been the
 most successful yet, but we are getting there. But it was a necessary change,
 and I feel like it changed something in the way how things were done. For
