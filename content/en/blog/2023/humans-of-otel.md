@@ -120,7 +120,7 @@ OpenTelemetry.
 **JURACI PAIXĀO KRÖHLING:** I was just re-elected, yes.
 
 **JACOB ARONOFF:** My name is Jacob Aronoff. I am a maintainer for the
-OpenTelemetry Operator project.
+[OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator) project.
 
 **ALEX BOTEN:** Hi, I'm Alex and I'm a contributor and maintainer in
 OpenTelemetry. I wrote a book about OpenTelemetry. I don't know what else. I do
