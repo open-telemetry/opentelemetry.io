@@ -391,10 +391,11 @@ has just been something that I've never done in the past. I've never worked in
 an open source project where so many vendors are involved and so many end user
 communities are involved, and it's been great.
 
-ADIANA VILLELA: Yeah. And that's what I like personally about OpenTelemetry,
-because everyone plays nice and I feel like it's a very deliberate, "No, we are
-not going to favor one vendor over another." And if a vendor tried to showboat,
-then it's pretty much shut down, which I think is great.
+**ADRIANA VILLELA**: Yeah. And that's what I like personally about
+OpenTelemetry, because everyone plays nice and I feel like it's a very
+deliberate, "No, we are not going to favor one vendor over another." And if a
+vendor tried to showboat, then it's pretty much shut down, which I think is
+great.
 
 **ALEX BOTEN:** We've just had a lot of really good folks at all the levels of
 the project trying to push everybody in the right direction, which I really
