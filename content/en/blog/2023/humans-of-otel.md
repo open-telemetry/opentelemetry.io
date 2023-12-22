@@ -4,6 +4,7 @@ linkTitle: Humans of OTel
 date: 2023-12-21
 author: >-
   [Adriana Villela](https://github.com/avillela) (Lightstep),
+# prettier-ignore
 cSpell:ignore: TYLER YAHN BOGDAN DRUTU PURVI KANAL CONSTANCE CARAMANOLIS JURACI PAIXĀO KRÖHLING utopic JACOB ARONOFF ALEX BOTEN ADIANA VILLELA Dapr Purvi Kanal Tyler Yahn Bogdan Drutu Constance Caramanolis Juraci Paixāo Kröhling Jacob Aronoff Alex Boten youtube
 ---
 
