@@ -302,8 +302,7 @@ into OpenTelemetry.
 **BOGDAN DRUTU:** Yeah.
 
 **PURVI KANAL:** I got involved with OpenTelemetry through working at Honeycomb.
-So I got involved with it, and I have a particular interest in OpenTelemetry
-JavaScript, and especially the browser side of OpenTelemetry JavaScript. It's
+So I got involved with it, and I have a particular interest in [OpenTelemetry JavaScript](https://github.com/open-telemetry/opentelemetry-js), and especially the browser side of OpenTelemetry JavaScript. It's
 really great to be involved with it.
 
 ### 4- What does OTel mean to you?
