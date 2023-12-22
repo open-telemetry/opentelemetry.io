@@ -54,7 +54,10 @@ There is a bijective mapping between resources and configured receivers.
 Thus, for a given resource, the associated attributes
 
 ## Attributes
-Attributes apply to a given
+Attributes apply to a given signal, and change the shape of a given signal's identity.  Scraping metrics receivers have the most structured application of attributes, as attributes are often specified on a per-metric basis in advance.  In the case of metrics, for a given receiver, you may often assume the metric identity is the composite of (namespace, metric name, resouruce & metric attribute key-value-pairs).
+
+From a customer perspective, thing added to attributes are "identifying information".  You may use the baggage API for non-identifing "carry-on" infomation of any given signal.
+
 ## Signals
 ## [Semantic conventions](https://github.com/open-telemetry/semantic-conventions)
 
