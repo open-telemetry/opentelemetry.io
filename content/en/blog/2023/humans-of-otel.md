@@ -328,7 +328,7 @@ with open source components that I'm using, or proprietary components. And at
 the end of the day, all of the OpenTelemetry flows through to my Observability
 vendor, and I can see traces across all of my products that I use in one space.
 
-**BOGDAN DRUTU:** It is my project...of soul.
+**BOGDAN DRUTU:** It is my project… of soul.
 
 **CONSTANCE CARAMANOLIS:** I think OpenTelemetry gets really biased, but I feel
 like it's a really good combination of a lot of different views finally coming
