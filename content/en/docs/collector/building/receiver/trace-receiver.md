@@ -1,5 +1,5 @@
 ---
-title: Building a receiver
+title: Building a trace receiver
 weight: 20
 aliases: [/docs/collector/trace-receiver/]
 # prettier-ignore
