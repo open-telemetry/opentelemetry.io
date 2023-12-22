@@ -7,8 +7,9 @@ tags:
   - splunkenterprise
   - receiver
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/splunkenterprisereceiver
 license: Apache 2.0
 description:
 authors: OpenTelemetry Authors
 otVersion: latest
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/splunkenterprisereceiver

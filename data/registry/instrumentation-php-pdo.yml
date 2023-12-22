@@ -6,8 +6,9 @@ tags:
   - pdo
   - instrumentation
   - php
-repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/PDO
 license: Apache 2.0
 description: Instrumentation Library for PDO
 authors: OpenTelemetry Authors
 otVersion: latest
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/PDO

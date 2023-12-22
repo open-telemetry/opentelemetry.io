@@ -78,8 +78,13 @@
     "description" "${description}"
     "language" "${language}"
     "registryType" "${registryType}"
-    "repo" "${repo}"
     "title" "${title}"
+    "urls" (dict
+      "docs" "${urls.docs}"
+      "homepage" "${urls.homepage}"
+      "packageRegistry" "${urls.packageRegistry}"
+      "repo" "${urls.repo}"
+    )
   )
 -}}
 <script id="search-result-template" type="text/x-js-template">
@@ -89,25 +94,42 @@
 {{ partial "script.html" (dict "src" "js/registrySearch.js") -}}
 
 {{- define "registry-entry" -}}
-{{ $href := printf "href=%q" .repo | safeHTMLAttr -}}
-<li class="registry-entry" data-registrytype="{{ .registryType }}" data-registrylanguage="{{ .language }}">
-  <div class="registry-entry-body">
-    <div class="h5">
+{{ $href := printf "href=%q" .urls.repo | safeHTMLAttr -}}
+<li class="card my-3 registry-entry" data-registrytype="{{ .registryType }}" data-registrylanguage="{{ .language }}">
+  <div class="card-body container-fluid">
+    <h5 class="card-title">
       <a {{ $href }} target="_blank" rel="noopener">
         {{- .title | markdownify -}}
       </a>
+    </h5>
+    <div class="d-flex flex-row mb-3">
+      <span class="me-auto p-0">
+        {{- .description | markdownify -}}
+      </span>
+      <div class="ms-auto px-2">
+        {{ with .language -}}
+          <span class="badge badge-{{ . }}">{{ . }}</span>
+        {{- end }}
+        {{ with .registryType -}}
+          <span class="badge badge-{{ . }} me-1">{{ . }}</span>
+        {{- end -}}
+        {{ with .license -}}
+          <span class="badge badge-{{ . | anchorize }} me-1">{{ . }}</span>
+        {{- end -}}
+      </div>
     </div>
-    <span class="me-auto">
-      {{- .description | markdownify -}}
-    </span>
-    <div class="float-end">
-      {{ with .language -}}
-        <span class="badge badge-{{ . }}">{{ . }}</span>
-      {{- end }}
-      {{ with .registryType -}}
-        <span class="badge badge-{{ . }} me-1">{{ . }}</span>
-      {{- end -}}
-    </div>
+    {{ with .urls.homepage -}}
+    <a href="{ .urls.homepage }" class="card-link">Homepage</a>
+    {{- end -}}
+    {{ with .urls.docs -}}
+    <a href="{ .urls.docs }" class="card-link">Documentation</a>
+    {{- end -}}
+    {{ with .urls.packageRegistry -}}
+    <a href="{ urls.packageRegistry }" class="card-link">Package Registry</a>
+    {{- end -}}
+    {{ with .urls.repo -}}
+    <a href="{ urls.repo }" class="card-link">Repository</a>
+    {{- end -}}
   </div>
 </li>
 {{- end -}}

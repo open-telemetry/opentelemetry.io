@@ -6,8 +6,9 @@ tags:
   - php
   - slim
   - instrumentation
-repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/Slim
 license: Apache 2.0
 description: Instrumentation Library for the Slim Framework
 authors: OpenTelemetry Authors
 otVersion: latest
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/Slim

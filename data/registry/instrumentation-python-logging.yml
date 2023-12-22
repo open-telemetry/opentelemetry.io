@@ -6,8 +6,9 @@ tags:
   - logging
   - instrumentation
   - python
-repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-logging
 license: Apache 2.0
 description: Installation
 authors: OpenTelemetry Authors
 otVersion: latest
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-logging

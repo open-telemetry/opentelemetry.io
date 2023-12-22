@@ -6,8 +6,9 @@ language: haskell
 tags:
   - haskell
   - instrumentation
-repo: https://github.com/ethercrow/opentelemetry-haskell
 license: Apache-2.0
 description: An unofficial implementation of OpenTelemetry in Haskell.
 authors: ethercrow
 otVersion: latest
+urls:
+  repo: https://github.com/ethercrow/opentelemetry-haskell

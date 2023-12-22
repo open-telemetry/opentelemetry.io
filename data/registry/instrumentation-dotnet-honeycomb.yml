@@ -7,7 +7,8 @@ tags:
   - c#
   - .net
   - instrumentation
-repo: https://github.com/honeycombio/honeycomb-opentelemetry-dotnet
 license: Apache 2.0
 description: Honeycomb's distribution of OpenTelemetry for .NET
 authors: Honeycomb, Hound Technology, Inc
+urls:
+  repo: https://github.com/honeycombio/honeycomb-opentelemetry-dotnet

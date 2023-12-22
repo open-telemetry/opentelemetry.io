@@ -7,8 +7,9 @@ tags:
   - macaron
   - instrumentation
   - go
-repo: https://go.opentelemetry.io/contrib/instrumentation/gopkg.in/macaron.v1/otelmacaron
 license: Apache 2.0
 description: Package otelmacaron instruments gopkg.in/macaron.v1.
 authors: OpenTelemetry Authors
 otVersion: latest
+urls:
+  repo: https://go.opentelemetry.io/contrib/instrumentation/gopkg.in/macaron.v1/otelmacaron

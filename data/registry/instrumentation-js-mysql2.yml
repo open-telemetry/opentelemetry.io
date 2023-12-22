@@ -9,8 +9,9 @@ tags:
   - mysql2
   - mysql
   - database
-repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-mysql2
 license: Apache 2.0
 description: MySQL2 instrumentation for Node.js.
 authors: OpenTelemetry Authors
 otVersion: latest
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-mysql2

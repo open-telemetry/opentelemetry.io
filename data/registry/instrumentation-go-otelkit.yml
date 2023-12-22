@@ -7,8 +7,9 @@ tags:
   - kit
   - instrumentation
   - go
-repo: https://go.opentelemetry.io/contrib/instrumentation/github.com/go-kit/kit/otelkit
 license: Apache 2.0
 description: Package otelkit instruments the github.com/go-kit/kit package.
 authors: OpenTelemetry Authors
 otVersion: latest
+urls:
+  repo: https://go.opentelemetry.io/contrib/instrumentation/github.com/go-kit/kit/otelkit

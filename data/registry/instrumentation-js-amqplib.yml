@@ -8,7 +8,8 @@ tags:
   - instrumentation
   - amqplib
   - RabbitMQ
-repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-amqplib
 license: Apache 2.0
 description: amqplib instrumentation for Node.js.
 authors: OpenTelemetry Authors (donated by Aspecto Authors (amir@aspecto.io))
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-amqplib

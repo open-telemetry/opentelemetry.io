@@ -7,8 +7,9 @@ tags:
   - cpp
   - conan
   - package
-repo: https://conan.io/center/recipes/opentelemetry-cpp
 license: MIT
 description: Conan package for `opentelemetry-cpp`.
 authors:
 otVersion: unknown
+urls:
+  repo: https://conan.io/center/recipes/opentelemetry-cpp

@@ -6,8 +6,9 @@ language: perl
 tags:
   - perl
   - exporter
-repo: https://github.com/jjatria/perl-opentelemetry-exporter-otlp
 license: Artistic-1.0-Perl
 description: An unofficial implementation of the OTLP Exporter in Perl.
 authors: jjatria
 otVersion: latest
+urls:
+  repo: https://github.com/jjatria/perl-opentelemetry-exporter-otlp

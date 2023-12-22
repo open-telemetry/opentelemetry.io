@@ -8,7 +8,8 @@ tags:
   - instrumentation
   - kafkajs
   - kafka
-repo: https://github.com/aspecto-io/opentelemetry-ext-js/tree/master/packages/instrumentation-kafkajs
 license: Apache 2.0
 description: kafkajs instrumentation for Node.js.
 authors: Amir Blum (amir@aspecto.io)
+urls:
+  repo: https://github.com/aspecto-io/opentelemetry-ext-js/tree/master/packages/instrumentation-kafkajs

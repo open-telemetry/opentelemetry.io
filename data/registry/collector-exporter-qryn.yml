@@ -10,10 +10,9 @@ tags:
   - loki
   - prometheus
   - tempo
-repo: https://github.com/metrico/otel-collector
 license: Apache 2.0
-description:
-  This exporter supports sending OpenTelemetry logs, traces and metrics to
-  ClickHouse using the qryn polyglot format.
+description: This exporter supports sending OpenTelemetry logs, traces and metrics to ClickHouse using the qryn polyglot format.
 authors: akvlad@qxip.net, lorenzo@qxip.net
 otVersion: latest
+urls:
+  repo: https://github.com/metrico/otel-collector

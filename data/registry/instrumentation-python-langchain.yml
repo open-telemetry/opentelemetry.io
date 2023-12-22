@@ -7,8 +7,9 @@ tags:
   - python
   - instrumentation
   - langchain
-repo: https://github.com/traceloop/openllmetry/tree/main/packages/opentelemetry-instrumentation-langchain
 license: Apache 2.0
 description: Instrumentation for LangChain Framework
 authors: Traceloop <dev@traceloop.com>
 otVersion: latest
+urls:
+  repo: https://github.com/traceloop/openllmetry/tree/main/packages/opentelemetry-instrumentation-langchain

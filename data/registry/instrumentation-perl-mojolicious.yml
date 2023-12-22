@@ -6,8 +6,9 @@ language: perl
 tags:
   - perl
   - instrumentation
-repo: https://github.com/jjatria/mojolicious-plugin-opentelemetry
 license: Artistic-1.0-Perl
 description: An OpenTelemetry plugin for Perl's Mojolicious.
 authors: jjatria
 otVersion: latest
+urls:
+  repo: https://github.com/jjatria/mojolicious-plugin-opentelemetry

@@ -8,8 +8,9 @@ tags:
   - instrumentation
   - database
   - sql
-repo: https://github.com/XSAM/otelsql
 license: Apache 2.0
 description: Instrumentation for the Golang `database/sql` package.
 authors: Sam Xie (XSAM)
 otVersion: v1.0.0
+urls:
+  repo: https://github.com/XSAM/otelsql

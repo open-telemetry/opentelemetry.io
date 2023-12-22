@@ -7,10 +7,9 @@ tags:
   - beego
   - instrumentation
   - go
-repo: https://go.opentelemetry.io/contrib/instrumentation/github.com/astaxie/beego
 license: Apache 2.0
-description:
-  Package beego provides functions to instrument the github.com/astaxie/beego
-  package.
+description: Package beego provides functions to instrument the github.com/astaxie/beego package.
 authors: OpenTelemetry Authors
 otVersion: latest
+urls:
+  repo: https://go.opentelemetry.io/contrib/instrumentation/github.com/astaxie/beego

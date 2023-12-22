@@ -7,8 +7,9 @@ tags:
   - python
   - instrumentation
   - openai
-repo: https://github.com/traceloop/openllmetry/tree/main/packages/opentelemetry-instrumentation-openai
 license: Apache 2.0
 description: Instrumentation for OpenAI LLMs (prompts logging, tokens, etc.)
 authors: Traceloop <dev@traceloop.com>
 otVersion: latest
+urls:
+  repo: https://github.com/traceloop/openllmetry/tree/main/packages/opentelemetry-instrumentation-openai

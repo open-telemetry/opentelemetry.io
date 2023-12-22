@@ -9,11 +9,9 @@ tags:
   - collector
   - trace2
   - git
-repo: https://github.com/git-ecosystem/trace2receiver
 license: MIT
-description:
-  A receiver for git Trace2 telemetry from local git commands, translates it
-  into an OpenTelemetry format, and forwards it to other OpenTelemetry
-  components.
+description: A receiver for git Trace2 telemetry from local git commands, translates it into an OpenTelemetry format, and forwards it to other OpenTelemetry components.
 authors: Jeff Hostetler
 otVersion: latest
+urls:
+  repo: https://github.com/git-ecosystem/trace2receiver

@@ -7,7 +7,6 @@ tags:
   - scala
   - typelevel
   - cats-effect
-repo: https://github.com/typelevel/otel4s
 license: Apache 2.0
 description: An OpenTelemetry implementation for Scala, based on Cats-Effect
 authors:
@@ -15,3 +14,5 @@ authors:
   - Zach McCoy <zachabbott@gmail.com>
   - Maksym Ochenashko <maxochenashko@gmail.com>
 otVersion: latest
+urls:
+  repo: https://github.com/typelevel/otel4s

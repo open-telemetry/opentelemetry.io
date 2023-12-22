@@ -48,6 +48,28 @@ OpenTelemetry ecosystem.
 
 {{< blocks/section color="white" type="container-lg" >}}
 
+<li class="card my-3 registry-entry" data-registrytype="{{ .registryType }}" data-registrylanguage="{{ .language }}">
+  <div class="card-body container-fluid">
+    <h5 class="card-title">
+      <a href="#asdf" target="_blank" rel="noopener">
+        asdf
+      </a>
+    </h5>
+    <div class="d-flex flex-row mb-3">
+      <span class="me-auto p-0">
+        Exports OTel Events (SpanEvent in Tracing added by AddEvent API)
+  collector exporter
+      </span>
+      <div class="ms-auto px-2">
+          <span class="badge badge-php">php</span>
+          <span class="badge badge-exporter me-1">exporter</span>
+      </div>
+    </div>
+  </div>
+</li>
+
 {{<registry-search-form>}}
+
+
 
 {{< /blocks/section >}}

@@ -7,10 +7,9 @@ tags:
   - auth
   - extension
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/asapauthextension
 license: Apache 2.0
-description:
-  This extension provides Atlassian Service Authentication Protocol (ASAP)
-  client credentials for HTTP or gRPC based exporters.
+description: This extension provides Atlassian Service Authentication Protocol (ASAP) client credentials for HTTP or gRPC based exporters.
 authors: OpenTelemetry Authors
 otVersion: latest
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/asapauthextension

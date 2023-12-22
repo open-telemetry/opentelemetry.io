@@ -6,11 +6,9 @@ tags:
   - http
   - instrumentation
   - go
-repo: https://go.opentelemetry.io/contrib/instrumentation/net/http
 license: Apache 2.0
-description:
-  Package `http` provides a `http.Handler` and functions that are intended to be
-  used to add tracing by wrapping existing handlers (with Handler) and routes
-  WithRouteTag.
+description: Package `http` provides a `http.Handler` and functions that are intended to be used to add tracing by wrapping existing handlers (with Handler) and routes WithRouteTag.
 authors: OpenTelemetry Authors
 otVersion: latest
+urls:
+  repo: https://go.opentelemetry.io/contrib/instrumentation/net/http

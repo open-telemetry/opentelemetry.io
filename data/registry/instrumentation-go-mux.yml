@@ -6,8 +6,9 @@ tags:
   - mux
   - instrumentation
   - go
-repo: https://go.opentelemetry.io/contrib/instrumentation/github.com/gorilla/mux
 license: Apache 2.0
 description: Package mux provides functions to trace the gorilla/mux package
 authors: OpenTelemetry Authors
 otVersion: latest
+urls:
+  repo: https://go.opentelemetry.io/contrib/instrumentation/github.com/gorilla/mux

@@ -6,8 +6,9 @@ tags:
   - aws
   - resource-detector
   - js
-repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node/opentelemetry-resource-detector-aws
 license: Apache 2.0
 description: Resource detector for Amazon Web Services.
 authors: OpenTelemetry Authors
 otVersion: latest
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node/opentelemetry-resource-detector-aws

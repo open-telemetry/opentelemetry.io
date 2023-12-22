@@ -9,8 +9,9 @@ tags:
   - log
   - logging
   - logr
-repo: https://github.com/MrAlias/otlpr
 license: Apache 2.0
 description: Provides a `logr.Logger` that exports messages as OTLP logs.
 authors: MrAlias
 otVersion: latest
+urls:
+  repo: https://github.com/MrAlias/otlpr

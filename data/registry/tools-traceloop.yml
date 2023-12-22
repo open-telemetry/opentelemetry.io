@@ -9,8 +9,9 @@ tags:
   - test-automation
   - e2e-testing
   - api-testing
-repo: https://github.com/traceloop/jest-opentelemetry
 license: Apache 2.0
 description: Generate e2e tests from traces
 authors: Traceloop dev <dev@traceloop.dev>
 otVersion: latest
+urls:
+  repo: https://github.com/traceloop/jest-opentelemetry

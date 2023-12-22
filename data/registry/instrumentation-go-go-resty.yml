@@ -7,8 +7,9 @@ tags:
   - go
   - instrumentation
   - http
-repo: https://github.com/dubonzi/otelresty
 license: Apache 2.0
 description: Custom instrumentation for the `go-resty` HTTP client library.
 authors: dubonzi <eduardobonzi.dev@gmail.com>
 otVersion: latest
+urls:
+  repo: https://github.com/dubonzi/otelresty

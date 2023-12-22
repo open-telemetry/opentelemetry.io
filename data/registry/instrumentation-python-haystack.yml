@@ -6,8 +6,9 @@ tags:
   - python
   - instrumentation
   - haystack
-repo: https://github.com/traceloop/openllmetry/tree/main/packages/opentelemetry-instrumentation-haystack
 license: Apache 2.0
 description: Instrumentation for Haystack LLM framework
 authors: Traceloop <dev@traceloop.com>
 otVersion: latest
+urls:
+  repo: https://github.com/traceloop/openllmetry/tree/main/packages/opentelemetry-instrumentation-haystack

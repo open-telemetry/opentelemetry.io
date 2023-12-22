@@ -33,6 +33,13 @@ $otel-component-colors: (
   'utilities': #2cd3b4,
 );
 
+$otel-registry-license-colors: (
+  'apache-20': #e83e8c,
+  'bsd-2-clause': #8ce83e,
+  'mit': #3e8ce8,
+  'artistic-10-perl': #e8c83e,
+);
+
 $primary: map-get($otel-colors, 'blue');
 $secondary: map-get($otel-colors, 'orange');
 $td-enable-google-fonts: false;

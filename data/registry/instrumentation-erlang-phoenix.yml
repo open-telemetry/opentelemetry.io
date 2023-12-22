@@ -6,9 +6,9 @@ tags:
   - phoenix
   - instrumentation
   - erlang
-repo: https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_phoenix
 license: Apache 2.0
-description:
-  Telemetry handler that creates OpenTelemetry spans from Phoenix events.
+description: Telemetry handler that creates OpenTelemetry spans from Phoenix events.
 authors: OpenTelemetry Authors
 otVersion: latest
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_phoenix
