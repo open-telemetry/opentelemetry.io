@@ -14,8 +14,8 @@ What a year it has been for OpenTelemetry!
 [Trace-Based Testing was added to the OTel Demo](/blog/2023/testing-otel-demo/),
 we saw some [exciting](/blog/2023/tyk-api-gateway/) [OTel](/blog/2023/cloud-foundry/) [integrations](/blog/2023/otterize-otel/), and let's
 not forget how we had not one, but TWO Observability Days in 2023 - one for
-[KubeCon Europe in Amsterdam](https://shorturl.at/osHRX), and one for
-[KubeCon North America in Chicago](https://shorturl.at/kAEQX).
+[KubeCon Europe in Amsterdam](https://www.youtube.com/playlist?list=PLj6h78yzYM2ORxwcjTn4RLAOQOYjvQ2A3), and one for
+[KubeCon North America in Chicago](https://www.youtube.com/playlist?list=PLj6h78yzYM2N60fCRNLBL7ymUHg7fFbDZ).
 Those are only a few of the highlights, many more were featured past releases of [OpenTelemetry in Focus](/blog/2023/otel-in-focus-break/).
 
 None of this would've been possible without the awesome humans behind
