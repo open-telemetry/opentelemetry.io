@@ -115,7 +115,9 @@ have. And right now I'm a Collector developer. I help out on some components for
 OpenTelemetry Collector. And I'm also part of the Governing Committee for
 OpenTelemetry.
 
-**ADRIANA VILLELA:** And newly re-elected, right? I was just re-elected, yes.
+**ADRIANA VILLELA:** And newly re-elected, right? 
+
+**JURACI PAIXĀO KRÖHLING:** I was just re-elected, yes.
 
 **JACOB ARONOFF:** My name is Jacob Aronoff. I am a maintainer for the
 OpenTelemetry Operator project.
