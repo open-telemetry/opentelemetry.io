@@ -83,6 +83,8 @@ Austin about it.
 
 **ADRIANA VILLELA:** Hey, I've got Ted Young with me! Hello!
 
+**TED YOUNG:** Hello!
+
 **CARTER SOCHA:** I'm Carter Socha. I work on a couple different things. I'm one
 of the few product managers floating around, but I helped start the
 OpenTelemetry Demo, which I'm a maintainer of. I also work in the SIG security,
