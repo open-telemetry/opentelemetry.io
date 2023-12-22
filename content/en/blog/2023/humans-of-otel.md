@@ -5,7 +5,7 @@ date: 2023-12-21
 author: >-
   [Adriana Villela](https://github.com/avillela) (Lightstep),
 cSpell:ignore:
-  DRUTU PURVI KANAL CARAMANOLIS PAIXĀO uptopic ARONOFF BOTEN ADIANA youtube Dapr
+  DRUTU PURVI KANAL CARAMANOLIS PAIXĀO uptopic ARONOFF BOTEN ADIANA Dapr Purvi Yahn Bogdan Drutu Caramanolis Paixāo Aronoff Boten Kanal youtube YAHN BOGDAN Bogdan Caramanolis
 ---
 
 What a year it has been for OpenTelemetry!
@@ -18,7 +18,7 @@ not forget how we had not one, but TWO Observability Days in 2023 - one for
 [KubeCon North America in Chicago](https://shorturl.at/kAEQX).
 
 None of this would've been possible without the awesome humans behind
-OpenTelemetry. Whether you're a maintainer, contributor, or practictioner, we
+OpenTelemetry. Whether you're a maintainer, contributor, or practitioner, we
 want y'all to know that what you do matters!
 
 And so, to wrap up 2023, I interviewed some of the folks who have been involved
@@ -182,7 +182,7 @@ proprietary data format, stable data format. You can rely on it.
 
 So it's like okay to build your giant platform on top of this data or build some
 kind of like boutique analysis tool that just does one thing and does it really
-well. That's where I see it all going. And that's what Oobservability means to
+well. That's where I see it all going. And that's what Observability means to
 me.
 
 **CARTER SOCHA:** What does Observability mean to me... It means like, an
