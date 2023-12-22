@@ -202,7 +202,7 @@ service.
 the capability of monitoring and determining when something goes wrong in your
 production environment.
 
-**CONSTANCE CARAMANOLIS:** Observability means...what does it mean to me? I use
+**CONSTANCE CARAMANOLIS:** Observability means… what does it mean to me? I use
 it as a tool to kind of making sure that things are working the way you want.
 It's getting insight into black boxes or even white boxes. I view it more as you
 kind of see things, but you have a lot more questions from it, and then you use
