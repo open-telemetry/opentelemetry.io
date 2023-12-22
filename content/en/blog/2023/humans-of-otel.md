@@ -123,7 +123,7 @@ OpenTelemetry.
 OpenTelemetry Operator project.
 
 **ALEX BOTEN:** Hi, I'm Alex and I'm a contributor and maintainer in
-OpenTelemetry. I Wrote a book about OpenTelemetry. I don't know what else. I do
+OpenTelemetry. I wrote a book about OpenTelemetry. I don't know what else. I do
 stuff with OTel. Cool. I am a contributor and maintainer of the OpenTelemetry
 Collector and the OpenTelemetry Collector Contrib repository and I have been
 spending a lot of time in various SIGs and specialty working groups around
