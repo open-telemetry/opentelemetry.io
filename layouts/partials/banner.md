@@ -3,7 +3,7 @@
 
 <div class="o-banner">
 
-[OpenTelemetry in Focus: Wrapping Up a Successful 2023](/blog/2023/otel-in-focus-break/)
+[Thanks to all the wonderful humans who have contributed to OpenTelemetry to date. We look forward to your contributions in 2024!](/blog/2023/humans-of-otel/)
 
 {{/*
 
