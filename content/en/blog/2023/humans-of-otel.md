@@ -358,7 +358,7 @@ a few months. How you been? It's catching up.
 **ALEX BOTEN:** Like, I mean, OTel has been amazing. The project itself has been
 wonderful. It's one of the first projects to take a bunch of standards and
 condense them down into less standards. We took OpenCensus, OpenTracing, we
-brought Prometheus to the table. The Elastic Cache format is there.
+brought [Prometheus](https://prometheus.io/) to the table. The [Elastic Cache format](/blog/2023/ecs-otel-semconv-convergence/) is there.
 OpenTelemetry just is a wonderful community, that's all. Trying to make things
 better in the Observability landscape by working across vendor boundaries, which
 has just been something that I've never done in the past. I've never worked in
