@@ -60,7 +60,7 @@ below.
 We're working on some auto-instrumentation there, and specification.
 
 **AMY TOBEY:** I'm Amy Tobey. I am senior principal engineer for digital
-interconnection at Equinix. I maintain a tool called OTel CLI.
+interconnection at Equinix. I maintain a tool called [OTel CLI](https://github.com/equinix-labs/otel-cli).
 
 **ADRIANA VILLELA:** Oh, you maintain the OTel CLI!
 
