@@ -129,7 +129,7 @@ worked over my career a lot with browsers and JavaScript.
 ### 2- What does Observability mean to you?
 
 **TYLER YAHN:** Yeah, that's a great question. Personally, I think Observability
-means that when you woke up at 2:00am To go fix a problem, you can fix it. And
+means that when you woke up at 2:00am to go fix a problem, you can fix it. And
 ideally, the next day you're able to look at that code again and find out a way
 to never have that problem exist. I think that's really what it means to me.
 
