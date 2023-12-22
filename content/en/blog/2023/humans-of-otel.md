@@ -6,9 +6,9 @@ author: >-
   [Adriana Villela](https://github.com/avillela) (Lightstep),
 cSpell:ignore:
   TYLER YAHN BOGDAN DRUTU PURVI KANAL CONSTANCE CARAMANOLIS JURACI PAIXĀO
-  KRÖHLING utopic JACOB ARONOFF ALEX BOTEN ADIANA VILLELA Dapr Purvi Kanal
-  Tyler Yahn Bogdan Drutu Constance Caramanolis Juraci Paixāo Kröhling Jacob
-  Aronoff Alex Boten youtube
+  KRÖHLING utopic JACOB ARONOFF ALEX BOTEN ADIANA VILLELA Dapr Purvi Kanal Tyler
+  Yahn Bogdan Drutu Constance Caramanolis Juraci Paixāo Kröhling Jacob Aronoff
+  Alex Boten youtube
 ---
 
 What a year it has been for OpenTelemetry!
@@ -335,15 +335,14 @@ collaboration to get metrics, traces, and logs.
 it means OpenTelemetry for me is a set of tools that would help me get telemetry
 data out of my typical application. Sometimes also infra. But OpenTelemetry
 really is the tool that I can use in a vendor neutral way, get data out of my
-application so that I can get into that into that utopic thing. If I had
-perfect instrumentation, then I can get into a utopic place. But OpenTelemetry
-provides me the tools that I need to gradually get into that. Now, it does stop
-at a very specific place, in a sense, which is as soon as you send data out,
-that's where OpenTelemetry stops. That's where you get to the vendor or to the
-open source tools that provide the database, visualization tools, and so on. But
-a more deeper aspect, OpenTelemetry is where I have my colleagues, people that I
-work on a daily basis for a few years. Yeah. That's what OpenTelemetry is for
-me.
+application so that I can get into that into that utopic thing. If I had perfect
+instrumentation, then I can get into a utopic place. But OpenTelemetry provides
+me the tools that I need to gradually get into that. Now, it does stop at a very
+specific place, in a sense, which is as soon as you send data out, that's where
+OpenTelemetry stops. That's where you get to the vendor or to the open source
+tools that provide the database, visualization tools, and so on. But a more
+deeper aspect, OpenTelemetry is where I have my colleagues, people that I work
+on a daily basis for a few years. Yeah. That's what OpenTelemetry is for me.
 
 **JACOB ARONOFF:** OpenTelemetry is Observability backed by everybody. It's not
 a single vendor. It's letting you do the thing that is agnostic to where you
