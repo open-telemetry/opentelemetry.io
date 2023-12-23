@@ -366,7 +366,6 @@ using var anotherActivity =
 
 {{% docs/instrumentation/span-status-preamble %}}
 
-The status can be set at any time before the span is finished.
 
 ```csharp
 using var myActivity = MyActivitySource.StartActivity("SayHello");
