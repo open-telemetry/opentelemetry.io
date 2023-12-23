@@ -13,3 +13,4 @@ authors: OpenTelemetry Authors
 otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-erlang/tree/main/apps/opentelemetry_zipkin
+createdAt: 2022-03-23

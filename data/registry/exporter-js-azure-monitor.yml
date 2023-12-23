@@ -13,3 +13,4 @@ authors: Microsoft Authors
 otVersion: latest
 urls:
   repo: https://github.com/microsoft/opentelemetry-azure-monitor-js
+createdAt: 2020-04-29

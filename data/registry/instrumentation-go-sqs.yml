@@ -8,8 +8,11 @@ tags:
   - instrumentation
   - sqs
 license: MIT
-description: opentelemetry-trace-sqs propagates OpenTelemetry tracing with SQS messages for the Go language.
+description:
+  opentelemetry-trace-sqs propagates OpenTelemetry tracing with SQS messages for
+  the Go language.
 authors: Everton Marques <everton.marques@gmail.com>
 otVersion: latest
 urls:
   repo: https://github.com/udhos/opentelemetry-trace-sqs
+createdAt: 2023-10-25

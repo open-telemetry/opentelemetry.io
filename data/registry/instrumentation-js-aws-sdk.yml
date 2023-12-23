@@ -12,3 +12,4 @@ description: aws-sdk instrumentation for Node.js.
 authors: Aspecto Authors (amir@aspecto.io)
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-aws-sdk
+createdAt: 2020-06-15

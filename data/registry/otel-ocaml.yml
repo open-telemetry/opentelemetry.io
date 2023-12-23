@@ -7,8 +7,11 @@ tags:
   - OCaml
   - instrumentation
 license: MIT
-description: OCaml instrumentation primitives (scopes, metrics, logs, etc.), along with several exporters to talk to signal collectors
+description:
+  OCaml instrumentation primitives (scopes, metrics, logs, etc.), along with
+  several exporters to talk to signal collectors
 authors: Imandra (https://imandra.ai)
 otVersion: 0.19
 urls:
   repo: https://github.com/imandra-ai/ocaml-opentelemetry/
+createdAt: 2022-10-26

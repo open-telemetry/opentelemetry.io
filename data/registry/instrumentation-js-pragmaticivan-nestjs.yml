@@ -12,3 +12,4 @@ description: OpenTelemetry module for NestJS framework.
 authors: Ivan Santos (os@ivansantos.me)
 urls:
   repo: https://github.com/pragmaticivan/nestjs-otel
+createdAt: 2021-07-09

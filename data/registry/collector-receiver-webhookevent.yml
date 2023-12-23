@@ -8,8 +8,11 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: The Webhook Event receiver is meant to act as a generally available push based receiver for any webhook style data source.
+description:
+  The Webhook Event receiver is meant to act as a generally available push based
+  receiver for any webhook style data source.
 authors: OpenTelemetry Authors
 otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/webhookeventreceiver
+createdAt: 2022-10-25

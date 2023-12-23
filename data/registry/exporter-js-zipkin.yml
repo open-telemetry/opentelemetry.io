@@ -12,4 +12,4 @@ otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-exporter-zipkin
   packageRegistry: https://www.npmjs.com/package/@opentelemetry/exporter-zipkin
-
+createdAt: 2020-02-06

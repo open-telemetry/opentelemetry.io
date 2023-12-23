@@ -11,3 +11,4 @@ authors: OpenTelemetry Authors
 otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-python/tree/main/exporter/opentelemetry-exporter-opencensus
+createdAt: 2020-02-05

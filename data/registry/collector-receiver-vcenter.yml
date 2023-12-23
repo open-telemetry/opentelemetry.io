@@ -7,8 +7,11 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: This receiver fetches metrics from a vCenter or ESXi host running VMware vSphere APIs.
+description:
+  This receiver fetches metrics from a vCenter or ESXi host running VMware
+  vSphere APIs.
 authors: OpenTelemetry Authors
 otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/vcenterreceiver
+createdAt: 2020-11-05

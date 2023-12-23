@@ -10,8 +10,11 @@ tags:
   - instrumentation
   - dotnet
 license: Apache 2.0
-description: The ASP.NET Telemetry HttpModule enables distributed tracing of incoming ASP.NET requests using the OpenTelemetry API.
+description:
+  The ASP.NET Telemetry HttpModule enables distributed tracing of incoming
+  ASP.NET requests using the OpenTelemetry API.
 authors: OpenTelemetry Authors
 otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.AspNet.TelemetryHttpModule
+createdAt: 2022-11-07

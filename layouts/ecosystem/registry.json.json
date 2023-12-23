@@ -1,5 +1,6 @@
 {{ $entries := slice -}}
-{{ range $entry_name_ignored, $entry := .Site.Data.registry -}}
+{{ range $key, $entry := .Site.Data.registry -}}
+  {{ $entry = merge $entry (dict "_key" $key) -}}
   {{ $entries = $entries | append $entry -}}
 {{ end -}}
 {{ jsonify (dict "indent" "  ") $entries -}}

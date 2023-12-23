@@ -13,3 +13,4 @@ authors: Julien Fabre (julien.fabre.33@gmail.com)
 otVersion: latest
 urls:
   repo: https://github.com/jufab/opentelemetry-angular-interceptor
+createdAt: 2020-06-30

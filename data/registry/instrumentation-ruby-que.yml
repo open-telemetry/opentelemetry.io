@@ -12,3 +12,4 @@ authors: OpenTelemetry Authors
 otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/que
+createdAt: 2020-11-09

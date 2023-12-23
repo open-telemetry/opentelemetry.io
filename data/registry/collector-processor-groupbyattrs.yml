@@ -7,8 +7,13 @@ tags:
   - processor
   - collector
 license: Apache 2.0
-description: This processor re-associates spans, log records and metric data points to a Resource that matches with the specified attributes. As a result, all spans, log records or metric data points with the same values for the specified attributes are "grouped" under the same Resource.
+description:
+  This processor re-associates spans, log records and metric data points to a
+  Resource that matches with the specified attributes. As a result, all spans,
+  log records or metric data points with the same values for the specified
+  attributes are "grouped" under the same Resource.
 authors: OpenTelemetry Authors
 otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/groupbyattrsprocessor
+createdAt: 2021-02-24

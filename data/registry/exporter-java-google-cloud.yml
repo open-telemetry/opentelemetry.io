@@ -14,3 +14,4 @@ authors: Google
 otVersion: latest
 urls:
   repo: https://github.com/GoogleCloudPlatform/opentelemetry-operations-java/tree/main/exporters/trace
+createdAt: 2020-08-13

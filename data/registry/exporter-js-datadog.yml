@@ -12,3 +12,4 @@ authors: Datadog, Inc.
 otVersion: latest
 urls:
   repo: https://github.com/DataDog/dd-opentelemetry-exporter-js
+createdAt: 2020-09-02

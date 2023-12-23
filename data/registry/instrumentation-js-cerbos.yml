@@ -7,7 +7,10 @@ tags:
   - cerbos
   - instrumentation
 license: Apache 2.0
-description: OpenTelemetry instrumentation for the [Cerbos JavaScript SDK](https://github.com/cerbos/cerbos-sdk-javascript/)
+description:
+  OpenTelemetry instrumentation for the [Cerbos JavaScript
+  SDK](https://github.com/cerbos/cerbos-sdk-javascript/)
 authors: Cerbos Authors
 urls:
   repo: https://github.com/cerbos/cerbos-sdk-javascript/
+createdAt: 2023-09-13

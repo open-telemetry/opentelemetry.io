@@ -15,3 +15,4 @@ authors: OpenTelemetry Authors
 otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-php/tree/main/src/Extension/Propagator/B3
+createdAt: 2023-11-05

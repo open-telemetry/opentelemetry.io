@@ -8,8 +8,11 @@ tags:
   - instrumentation
   - go
 license: Apache 2.0
-description: Package go-restful provides functions to trace the emicklei/go-restful/v3 package.
+description:
+  Package go-restful provides functions to trace the emicklei/go-restful/v3
+  package.
 authors: OpenTelemetry Authors
 otVersion: latest
 urls:
   repo: https://go.opentelemetry.io/contrib/instrumentation/github.com/emicklei/go-restful
+createdAt: 2022-12-07

@@ -12,3 +12,4 @@ authors: Amazon Web Services
 otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/awsxrayexporter
+createdAt: 2020-06-06

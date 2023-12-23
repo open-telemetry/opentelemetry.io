@@ -13,3 +13,4 @@ authors: OpenTelemetry Authors
 otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/HttpAsyncClient
+createdAt: 2023-05-22

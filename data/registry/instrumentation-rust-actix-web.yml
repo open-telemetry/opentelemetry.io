@@ -12,3 +12,4 @@ authors: Julian Tescher
 otVersion: latest
 urls:
   repo: https://github.com/OutThereLabs/actix-web-opentelemetry
+createdAt: 2020-08-28

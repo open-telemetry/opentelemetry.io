@@ -13,3 +13,4 @@ authors: Microsoft Authors
 otVersion: latest
 urls:
   repo: https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/monitor/monitor-opentelemetry-exporter
+createdAt: 2021-11-01

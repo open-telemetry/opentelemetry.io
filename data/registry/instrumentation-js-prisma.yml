@@ -12,3 +12,4 @@ authors: Prisma (hello@prisma.io)
 otVersion: latest
 urls:
   repo: https://github.com/prisma/prisma/tree/main/packages/instrumentation
+createdAt: 2022-08-25

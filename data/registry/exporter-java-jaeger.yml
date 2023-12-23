@@ -11,3 +11,4 @@ authors: OpenTelemetry Authors
 otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-java/tree/main/exporters/jaeger
+createdAt: 2020-11-05

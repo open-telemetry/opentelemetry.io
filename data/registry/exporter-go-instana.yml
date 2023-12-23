@@ -12,3 +12,4 @@ authors: Instana Authors
 otVersion: v1.9.0
 urls:
   repo: https://github.com/instana/go-otel-exporter
+createdAt: 2022-10-10

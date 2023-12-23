@@ -8,8 +8,11 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: The chrony receiver is a pure go implementation of the command chronyc tracking
+description:
+  The chrony receiver is a pure go implementation of the command chronyc
+  tracking
 authors: OpenTelemetry Authors
 otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/chronyreceiver
+createdAt: 2020-11-05

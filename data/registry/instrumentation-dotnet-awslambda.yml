@@ -8,8 +8,11 @@ tags:
   - instrumentation
   - dotnet
 license: Apache 2.0
-description: This repository contains SDK to instrument Lambda handler to create incoming span.
+description:
+  This repository contains SDK to instrument Lambda handler to create incoming
+  span.
 authors: OpenTelemetry Authors
 otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.AWSLambda
+createdAt: 2022-10-28

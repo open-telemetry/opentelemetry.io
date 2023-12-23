@@ -13,3 +13,4 @@ authors: OpenTelemetry Authors
 otVersion: latest
 urls:
   repo: https://go.opentelemetry.io/contrib/instrumentation/github.com/go-kit/kit/otelkit
+createdAt: 2022-12-07

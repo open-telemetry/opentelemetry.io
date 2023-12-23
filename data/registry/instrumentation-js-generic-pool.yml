@@ -12,3 +12,4 @@ description: generic-pool instrumentation for Node.js.
 authors: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-generic-pool
+createdAt: 2020-11-09

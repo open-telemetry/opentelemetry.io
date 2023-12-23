@@ -12,3 +12,4 @@ authors: Instana Authors
 otVersion: latest
 urls:
   repo: https://github.com/instana/nodejs/tree/main/packages/opentelemetry-exporter
+createdAt: 2022-04-18

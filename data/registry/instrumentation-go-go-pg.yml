@@ -12,3 +12,4 @@ authors: go-pg Authors
 otVersion: latest
 urls:
   repo: https://github.com/go-pg/pg/tree/v10/extra/pgotel
+createdAt: 2021-04-19

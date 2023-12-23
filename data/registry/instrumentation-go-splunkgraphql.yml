@@ -8,8 +8,10 @@ tags:
   - instrumentation
   - graphql
 license: Apache 2.0
-description: Instrumentation for the `github.com/graph-gophers/graphql-go` package.
+description:
+  Instrumentation for the `github.com/graph-gophers/graphql-go` package.
 authors: Splunk Inc.
 otVersion: v1.3.0
 urls:
   repo: https://github.com/signalfx/splunk-otel-go/tree/main/instrumentation/github.com/graph-gophers/graphql-go/splunkgraphql
+createdAt: 2022-01-20

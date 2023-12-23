@@ -10,3 +10,4 @@ authors: OpenTelemetry Authors
 otVersion: unknown
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-cpp
+createdAt: 2020-02-04

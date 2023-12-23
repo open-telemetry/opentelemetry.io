@@ -14,3 +14,4 @@ authors: Vladimir Mihailenco
 otVersion: v1.0.0
 urls:
   repo: https://github.com/uptrace/opentelemetry-go-extra/tree/main/otelzap
+createdAt: 2021-10-25

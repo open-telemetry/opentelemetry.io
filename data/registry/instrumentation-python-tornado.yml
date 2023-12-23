@@ -6,8 +6,11 @@ tags:
   - python
   - instrumentation
 license: Apache 2.0
-description: This library provides Tornado middleware to track requests timing through OpenTelemetry.
+description:
+  This library provides Tornado middleware to track requests timing through
+  OpenTelemetry.
 authors: OpenTelemetry Authors
 otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-tornado
+createdAt: 2020-05-11

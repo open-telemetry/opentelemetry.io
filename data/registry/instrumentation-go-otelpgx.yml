@@ -10,8 +10,10 @@ tags:
   - postgresql
   - tracing
 license: Apache 2.0
-description: Provides OpenTelemetry tracing implementation for the pgx PostgreSQL package.
+description:
+  Provides OpenTelemetry tracing implementation for the pgx PostgreSQL package.
 authors: Exaring AG.
 otVersion: v1.8.0
 urls:
   repo: https://github.com/exaring/otelpgx
+createdAt: 2022-09-27

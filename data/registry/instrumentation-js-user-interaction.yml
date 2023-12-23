@@ -10,3 +10,4 @@ description: User Interaction instrumentation for browsers.
 authors: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/web/opentelemetry-instrumentation-user-interaction
+createdAt: 2020-11-09

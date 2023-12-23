@@ -7,8 +7,11 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: The active_directory_ds receiver scrapes metric relating to an Active Directory domain controller using the Windows Performance Counters.
+description:
+  The active_directory_ds receiver scrapes metric relating to an Active
+  Directory domain controller using the Windows Performance Counters.
 authors: OpenTelemetry Authors
 otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/activedirectorydsreceiver
+createdAt: 2022-10-25

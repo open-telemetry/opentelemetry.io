@@ -6,6 +6,7 @@
 {{ $languageNames.Set "js" "JavaScript" -}}
 {{ $languageNames.Set "php" "PHP" -}}
 
+
 {{ $langs := slice -}}
 {{ range $registry -}}
   {{ $language := .language -}}
@@ -67,40 +68,31 @@
 <div class="mx-auto">
   <ul class="list-unstyled" id="search-results"></ul>
   <ul class="list-unstyled" id="default-body">
-    {{ range $registry -}}
-      {{ template "registry-entry" . }}
+    {{ range $key, $value := $registry -}}
+      {{ $value = merge $value (dict "_key" $key) -}}
+      {{ template "registry-entry" $value }}
     {{ end -}}
   </ul>
 </div>
 
-{{-
-  $fuseVar := (dict
-    "description" "${description}"
-    "language" "${language}"
-    "registryType" "${registryType}"
-    "title" "${title}"
-    "urls" (dict
-      "docs" "${urls.docs}"
-      "homepage" "${urls.homepage}"
-      "packageRegistry" "${urls.packageRegistry}"
-      "repo" "${urls.repo}"
-    )
-  )
--}}
-<script id="search-result-template" type="text/x-js-template">
-  {{ template "registry-entry" $fuseVar }}
-</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.0/fuse.min.js" integrity="sha384-Xc1CJXitscYgtGvAiyGiYeJGEL6VJ2x6v77/VTd0HoykX00Cc/2F7ai3HuuMtgd+" crossorigin="anonymous"></script>
 {{ partial "script.html" (dict "src" "js/registrySearch.js") -}}
 
 {{- define "registry-entry" -}}
-{{ $href := printf "href=%q" .urls.repo | safeHTMLAttr -}}
-<li class="card my-3 registry-entry" data-registrytype="{{ .registryType }}" data-registrylanguage="{{ .language }}">
+{{ $currentTime := (time now) }}
+{{ $repoHref := printf "href=%q" .urls.repo | safeHTMLAttr -}}
+{{ $delta := $currentTime.Sub (time.AsTime .createdAt) -}}
+{{ $isNew := lt $delta.Hours 730 }}
+<li class="card my-3 registry-entry {{ if $isNew -}} border-secondary{{ end -}}" data-registry-id="{{ ._key }}" data-registrytype="{{ .registryType }}" data-registrylanguage="{{ .language }}">
   <div class="card-body container-fluid">
     <h5 class="card-title">
-      <a {{ $href }} target="_blank" rel="noopener">
+      <a {{ $repoHref }} target="_blank" rel="noopener">
         {{- .title | markdownify -}}
       </a>
+      
+      {{ if $isNew -}}
+      <span class="badge mx-1 rounded-pill text-bg-secondary">new!</span>
+      {{ end -}}
     </h5>
     <div class="d-flex flex-row mb-3">
       <span class="me-auto p-0">
@@ -119,16 +111,19 @@
       </div>
     </div>
     {{ with .urls.homepage -}}
-    <a href="{ .urls.homepage }" class="card-link">Homepage</a>
+    {{ $homepageHref := printf "href=%q" . | safeHTMLAttr -}}
+    <a {{ $homepageHref }} class="card-link">Homepage</a>
     {{- end -}}
     {{ with .urls.docs -}}
-    <a href="{ .urls.docs }" class="card-link">Documentation</a>
+    {{ $docsHref := printf "href=%q" . | safeHTMLAttr -}}
+    <a {{ $docsHref }} target="_blank" rel="noopener" class="card-link">Documentation</a>
     {{- end -}}
     {{ with .urls.packageRegistry -}}
-    <a href="{ urls.packageRegistry }" class="card-link">Package Registry</a>
+    {{ $packageRegistryUrl := printf "href=%q" . | safeHTMLAttr -}}
+    <a {{ $packageRegistryUrl }} class="card-link">Package Registry</a>
     {{- end -}}
     {{ with .urls.repo -}}
-    <a href="{ urls.repo }" class="card-link">Repository</a>
+    <a {{ $repoHref }} target="_blank" rel="noopener" class="card-link">Repository</a>
     {{- end -}}
   </div>
 </li>

@@ -12,3 +12,4 @@ authors: OpenTelemetry Authors
 otVersion: latest
 urls:
   repo: https://go.opentelemetry.io/contrib/instrumentation/github.com/aws/aws-sdk-go-v2/otelaws
+createdAt: 2020-06-08

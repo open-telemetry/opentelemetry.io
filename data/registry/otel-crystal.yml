@@ -12,3 +12,4 @@ authors: wyhaines
 otVersion: latest
 urls:
   repo: https://github.com/wyhaines/opentelemetry-api.cr
+createdAt: 2022-12-17

@@ -7,8 +7,12 @@ tags:
   - processor
   - collector
 license: Apache 2.0
-description: The cumulative to delta processor converts monotonic, cumulative sum and histogram metrics to monotonic, delta metrics. Non-monotonic sums and exponential histograms are excluded.
+description:
+  The cumulative to delta processor converts monotonic, cumulative sum and
+  histogram metrics to monotonic, delta metrics. Non-monotonic sums and
+  exponential histograms are excluded.
 authors: OpenTelemetry Authors
 otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/cumulativetodeltaprocessor
+createdAt: 2022-10-26

@@ -15,3 +15,4 @@ authors: Microsoft Authors
 otVersion: 1.0.0
 urls:
   repo: https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/core#open-telemetry
+createdAt: 2021-12-16

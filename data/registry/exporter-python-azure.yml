@@ -13,3 +13,4 @@ authors: Microsoft Authors
 otVersion: latest
 urls:
   repo: https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/monitor/azure-monitor-opentelemetry-exporter
+createdAt: 2020-04-02

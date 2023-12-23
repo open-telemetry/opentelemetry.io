@@ -13,3 +13,4 @@ authors: gofiber authors & contributors
 otVersion: latest
 urls:
   repo: https://github.com/gofiber/contrib/tree/main/otelfiber
+createdAt: 2022-01-14

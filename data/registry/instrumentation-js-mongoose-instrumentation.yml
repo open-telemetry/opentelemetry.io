@@ -12,3 +12,4 @@ description: Mongoose instrumentation for Node.js.
 authors: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-mongoose
+createdAt: 2021-02-17

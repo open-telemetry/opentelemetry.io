@@ -108,56 +108,12 @@ function populateResults(results) {
       snippet += contents.substring(0, summaryInclude * 2);
     }
 
-    // Pull template from hugo template definition
-    let templateDefinition = document.querySelector(
-      '#search-result-template',
-    ).innerHTML;
-
-    // Replace values from template with search results
-    let output = render(templateDefinition, {
-      key: key,
-      title: result.item.title,
-      link: result.item.permalink,
-      tags: result.item.tags,
-      categories: result.item.categories,
-      description: result.item.description,
-      repo: result.item.repo,
-      registryType: result.item.registryType,
-      language: result.item.language,
-      snippet: snippet,
-      otVersion: result.item.otVersion,
-    });
+    // fetch existing entry and copy to search results
+    let output = document.querySelector(
+      `[data-registry-id="${result.item._key}"]`,
+    ).outerHTML;
     document.querySelector('#search-results').innerHTML += output;
   });
-}
-
-// Helper function to generate HTML for a search result
-function render(templateString, data) {
-  let conditionalMatches, conditionalPattern, copy;
-  conditionalPattern = /\$\{\s*isset ([a-zA-Z]*) \s*\}(.*)\$\{\s*end\s*}/g;
-  //since loop below depends on re.lastInxdex, we use a copy to capture any manipulations whilst inside the loop
-  copy = templateString;
-  while (
-    (conditionalMatches = conditionalPattern.exec(templateString)) !== null
-  ) {
-    if (data[conditionalMatches[1]]) {
-      //valid key, remove conditionals, leave contents.
-      copy = copy.replace(conditionalMatches[0], conditionalMatches[2]);
-    } else {
-      //not valid, remove entire section
-      copy = copy.replace(conditionalMatches[0], '');
-    }
-  }
-  templateString = copy;
-
-  //now any conditionals removed we can do simple substitution
-  let key, find, re;
-  for (key in data) {
-    find = '\\$\\{\\s*' + key + '\\s*\\}';
-    re = new RegExp(find, 'g');
-    templateString = templateString.replace(re, data[key]);
-  }
-  return templateString;
 }
 
 if (pathName.includes('registry')) {

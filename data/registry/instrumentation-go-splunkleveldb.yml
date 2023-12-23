@@ -9,8 +9,10 @@ tags:
   - database
   - leveldb
 license: Apache 2.0
-description: Instrumentation for the `github.com/syndtr/goleveldb/leveldb` package.
+description:
+  Instrumentation for the `github.com/syndtr/goleveldb/leveldb` package.
 authors: Splunk Inc.
 otVersion: v1.3.0
 urls:
   repo: https://github.com/signalfx/splunk-otel-go/tree/main/instrumentation/github.com/syndtr/goleveldb/leveldb/splunkleveldb
+createdAt: 2022-01-20

@@ -12,3 +12,4 @@ authors: OpenTelemetry Authors
 otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlpexporter
+createdAt: 2020-11-05

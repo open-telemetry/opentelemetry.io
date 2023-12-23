@@ -9,8 +9,11 @@ tags:
   - instrumentation
   - dotnet
 license: Apache 2.0
-description: Automatically instruments the outgoing database requests from Microsoft.EntityFrameworkCore.
+description:
+  Automatically instruments the outgoing database requests from
+  Microsoft.EntityFrameworkCore.
 authors: OpenTelemetry Authors
 otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.EntityFrameworkCore
+createdAt: 2022-10-28

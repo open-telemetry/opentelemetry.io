@@ -10,3 +10,4 @@ description: Honeycomb's distribution of OpenTelemetry for Java
 authors: Honeycomb, Hound Technology, Inc
 urls:
   repo: https://github.com/honeycombio/honeycomb-opentelemetry-java
+createdAt: 2021-09-24

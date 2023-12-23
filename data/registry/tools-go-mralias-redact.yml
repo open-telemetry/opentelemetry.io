@@ -6,8 +6,11 @@ tags:
   - go
   - utilities
 license: Apache 2.0
-description: Collection of utilities to redact sensitive information from OpenTelemetry tracing data.
+description:
+  Collection of utilities to redact sensitive information from OpenTelemetry
+  tracing data.
 authors: MrAlias
 otVersion: latest
 urls:
   repo: https://github.com/MrAlias/redact
+createdAt: 2022-09-07

@@ -7,8 +7,10 @@ tags:
   - exporter
   - collector
 license: Apache 2.0
-description: This exporter supports sending tracing, metrics, and logging data to InfluxDB
+description:
+  This exporter supports sending tracing, metrics, and logging data to InfluxDB
 authors: OpenTelemetry Authors
 otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/influxdbexporter
+createdAt: 2020-11-05

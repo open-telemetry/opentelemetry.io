@@ -13,3 +13,4 @@ description: Neo4j instrumentation for golang.
 authors: Ruben Mennes (ruben@raito.io)
 urls:
   repo: https://github.com/raito-io/neo4j-tracing
+createdAt: 2023-05-26

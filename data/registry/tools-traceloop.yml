@@ -15,3 +15,4 @@ authors: Traceloop dev <dev@traceloop.dev>
 otVersion: latest
 urls:
   repo: https://github.com/traceloop/jest-opentelemetry
+createdAt: 2023-02-26

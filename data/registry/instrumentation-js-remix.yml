@@ -12,3 +12,4 @@ description: Remix instrumentation for Node.js.
 authors: Justin Smith (justindsmith@gmail.com)
 urls:
   repo: https://github.com/justindsmith/opentelemetry-instrumentations-js/tree/main/packages/instrumentation-remix
+createdAt: 2022-02-10

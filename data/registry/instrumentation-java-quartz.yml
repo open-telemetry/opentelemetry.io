@@ -12,3 +12,4 @@ authors: OpenTelemetry Authors
 otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/quartz-2.0
+createdAt: 2020-11-05

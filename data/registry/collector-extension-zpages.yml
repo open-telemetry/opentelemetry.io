@@ -7,8 +7,12 @@ tags:
   - extension
   - collector
 license: Apache 2.0
-description: The zPages Extension for the OpenTelemetry Collector serves zPages, an HTTP endpoint that provides live data for debugging different components that were properly instrumented for such.
+description:
+  The zPages Extension for the OpenTelemetry Collector serves zPages, an HTTP
+  endpoint that provides live data for debugging different components that were
+  properly instrumented for such.
 authors: OpenTelemetry Authors
 otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector/tree/main/extension/zpagesextension
+createdAt: 2021-02-24

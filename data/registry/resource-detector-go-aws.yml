@@ -16,3 +16,4 @@ authors: OpenTelemetry Authors
 otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/detectors/aws
+createdAt: 2020-06-08

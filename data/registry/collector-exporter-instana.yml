@@ -12,3 +12,4 @@ authors: Instana Authors
 otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/instanaexporter
+createdAt: 2020-06-06

@@ -13,3 +13,4 @@ authors: Microsoft Authors
 otVersion: latest
 urls:
   repo: https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/monitor/Azure.Monitor.OpenTelemetry.Exporter
+createdAt: 2021-11-01

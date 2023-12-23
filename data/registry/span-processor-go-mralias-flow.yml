@@ -7,8 +7,11 @@ tags:
   - processor
   - prometheus
 license: Apache 2.0
-description: An OpenTelemetry-Go SpanProcessor reporting tracing flow as Prometheus metrics.
+description:
+  An OpenTelemetry-Go SpanProcessor reporting tracing flow as Prometheus
+  metrics.
 authors: MrAlias
 otVersion: latest
 urls:
   repo: https://github.com/MrAlias/flow
+createdAt: 2022-03-08

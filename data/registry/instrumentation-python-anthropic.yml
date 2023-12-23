@@ -12,3 +12,4 @@ authors: Traceloop <dev@traceloop.com>
 otVersion: latest
 urls:
   repo: https://github.com/traceloop/openllmetry/tree/main/packages/opentelemetry-instrumentation-anthropic
+createdAt: 2023-10-13

@@ -6,8 +6,11 @@ tags:
   - php
   - instrumentation
 license: Apache 2.0
-description: Extension for OpenTelemetry, to enable auto-instrumentation. It is based on zend_observer and requires PHP8+
+description:
+  Extension for OpenTelemetry, to enable auto-instrumentation. It is based on
+  zend_observer and requires PHP8+
 authors: OpenTelemetry Authors
 otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-php-instrumentation
+createdAt: 2022-12-14

@@ -11,3 +11,4 @@ authors: Google Authors
 otVersion: latest
 urls:
   repo: https://github.com/GoogleCloudPlatform/opentelemetry-operations-go/tree/main/exporter/metric
+createdAt: 2020-04-01

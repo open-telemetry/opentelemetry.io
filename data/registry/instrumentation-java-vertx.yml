@@ -7,8 +7,11 @@ tags:
   - instrumentation
   - vert.x
 license: Apache 2.0
-description: This library provides a Vert.x instrumentation to track requests through OpenTelemetry.
+description:
+  This library provides a Vert.x instrumentation to track requests through
+  OpenTelemetry.
 authors: OpenTelemetry Authors
 otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/vertx
+createdAt: 2020-11-05

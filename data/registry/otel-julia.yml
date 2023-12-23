@@ -11,3 +11,4 @@ authors: oolong.dev (https://github.com/oolong-dev)
 otVersion: latest
 urls:
   repo: https://github.com/oolong-dev/OpenTelemetry.jl
+createdAt: 2022-12-17

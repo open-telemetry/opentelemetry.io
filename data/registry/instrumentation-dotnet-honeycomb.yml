@@ -12,3 +12,4 @@ description: Honeycomb's distribution of OpenTelemetry for .NET
 authors: Honeycomb, Hound Technology, Inc
 urls:
   repo: https://github.com/honeycombio/honeycomb-opentelemetry-dotnet
+createdAt: 2021-09-24

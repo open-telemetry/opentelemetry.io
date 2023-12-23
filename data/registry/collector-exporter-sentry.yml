@@ -12,3 +12,4 @@ authors: Sentry
 otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/sentryexporter
+createdAt: 2020-06-06
