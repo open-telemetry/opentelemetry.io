@@ -1,7 +1,6 @@
 # cSpell:ignore Botocore
 title: Botocore Instrumentation
 registryType: instrumentation
-isThirdParty: true
 language: python
 tags:
   - python
@@ -9,7 +8,6 @@ tags:
 license: Apache 2.0
 description: This library allows tracing requests made by the Botocore library.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-botocore
 createdAt: 2020-05-11

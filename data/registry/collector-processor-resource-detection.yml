@@ -1,6 +1,5 @@
 title: Resource Detection Processor
 registryType: processor
-isThirdParty: false
 language: collector
 tags:
   - go
@@ -13,7 +12,6 @@ description:
   OpenTelemetry resource semantic conventions, and append or override the
   resource value in telemetry data with this information.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor
 createdAt: 2021-02-24

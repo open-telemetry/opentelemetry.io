@@ -1,7 +1,6 @@
 # cSpell:ignore flink jobmanager taskmanager
 title: FlinkMetrics Receiver
 registryType: receiver
-isThirdParty: false
 language: collector
 tags:
   - go
@@ -12,7 +11,6 @@ description:
   This receiver uses Flink's REST API to collect Jobmanager, Taskmanager, Job,
   Task and Operator metrics.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/flinkmetricsreceiver
 createdAt: 2022-10-25

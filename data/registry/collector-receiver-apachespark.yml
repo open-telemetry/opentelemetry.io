@@ -1,6 +1,5 @@
 title: Apache Spark Receiver
 registryType: receiver
-isThirdParty: false
 language: collector
 tags:
   - apache
@@ -12,7 +11,6 @@ description:
   This receiver fetches metrics for an Apache Spark cluster through the Apache
   Spark REST API
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/apachesparkreceiver
 createdAt: 2020-11-05

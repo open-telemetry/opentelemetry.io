@@ -1,7 +1,6 @@
 # cSpell:ignore chrony chronyc
 title: Chrony Receiver
 registryType: receiver
-isThirdParty: false
 language: collector
 tags:
   - go
@@ -12,7 +11,6 @@ description:
   The chrony receiver is a pure go implementation of the command chronyc
   tracking
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/chronyreceiver
 createdAt: 2020-11-05

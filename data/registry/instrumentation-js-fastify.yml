@@ -1,7 +1,6 @@
 # cSpell:ignore fastify
 title: Fastify OpenTelemetry
 registryType: instrumentation
-isThirdParty: false
 language: js
 tags:
   - Node.js
@@ -9,7 +8,6 @@ tags:
 license: Apache 2.0
 description: OpenTelemetry fastify automatic instrumentation package
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-fastify
 createdAt: 2020-08-28

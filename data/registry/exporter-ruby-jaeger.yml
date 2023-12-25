@@ -1,6 +1,5 @@
 title: opentelemetry-exporter-jaeger
 registryType: exporter
-isThirdParty: false
 language: ruby
 tags:
   - jaeger
@@ -11,7 +10,6 @@ description:
   The opentelemetry-exporter-jaeger gem provides a Jaeger exporter for
   OpenTelemetry Ruby
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-ruby/tree/main/exporter/jaeger
 createdAt: 2022-11-07

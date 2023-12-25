@@ -1,6 +1,5 @@
 title: OpenTelemetry NodeCache Instrumentation
 registryType: instrumentation
-isThirdParty: true
 language: js
 tags:
   - Node.js

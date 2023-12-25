@@ -1,6 +1,5 @@
 title: runtimetelemetry
 registryType: instrumentation
-isThirdParty: false
 language: java
 tags:
   - runtimetelemetry
@@ -10,7 +9,6 @@ license: Apache 2.0
 description:
   This package provides an instrumentation library for Runtime Telemetry
 authors: OpenTelemetry Authors
-otVersion: latest
 # cSpell:ignore runtimetelemetry
 
 urls:

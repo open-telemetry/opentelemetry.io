@@ -1,6 +1,5 @@
 title: OpenTelemetry Mongoose Instrumentation
 registryType: instrumentation
-isThirdParty: false
 language: js
 tags:
   - Node.js

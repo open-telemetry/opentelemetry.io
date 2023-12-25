@@ -1,7 +1,6 @@
 # cSpell:ignore httplistener
 title: Prometheus Exporter HttpListener for OpenTelemetry .NET
 registryType: exporter
-isThirdParty: false
 language: dotnet
 tags:
   - prometheus-httplistener
@@ -12,7 +11,6 @@ description:
   An OpenTelemetry Prometheus exporter that configures an HttpListener instance
   for Prometheus to scrape.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/src/OpenTelemetry.Exporter.Prometheus.HttpListener
 createdAt: 2022-11-07

@@ -1,6 +1,5 @@
 title: Performance Profiler Collector Extension
 registryType: extension
-isThirdParty: false
 language: collector
 tags:
   - go
@@ -11,7 +10,6 @@ description:
   The Performance Profiler Extension for the OpenTelemetry Collector can be used
   to collect performance profiles and investigate issues with the service.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/pprofextension
 createdAt: 2021-02-24

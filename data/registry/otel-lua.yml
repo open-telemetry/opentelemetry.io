@@ -1,7 +1,6 @@
 # cSpell:ignore yangxikun
 title: opentelemetry-lua
 registryType: instrumentation
-isThirdParty: true
 language: lua
 tags:
   - lua
@@ -9,7 +8,6 @@ tags:
 license: Apache-2.0
 description: An unofficial implementation of OpenTelemetry in lua.
 authors: yangxikun
-otVersion: latest
 urls:
   repo: https://github.com/yangxikun/opentelemetry-lua
 createdAt: 2022-12-17

@@ -1,6 +1,5 @@
 title: Honeycomb OpenTelemetry Distribution for Go
 registryType: instrumentation
-isThirdParty: true
 language: go
 tags:
   - go

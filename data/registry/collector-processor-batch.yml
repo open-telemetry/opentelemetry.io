@@ -1,6 +1,5 @@
 title: Batch Collector Processor
 registryType: processor
-isThirdParty: false
 language: collector
 tags:
   - go
@@ -11,7 +10,6 @@ description:
   The Batch Processor for the OpenTelemetry Collector accepts spans, metrics, or
   logs and places them into batches.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/batchprocessor
 createdAt: 2021-02-24

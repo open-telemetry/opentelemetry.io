@@ -1,7 +1,6 @@
 # cSpell:ignore Steffan Westcott
 title: clj-otel - Idiomatic Clojure API for OpenTelemetry
 registryType: extension
-isThirdParty: true
 language: java
 tags:
   - clojure
@@ -11,7 +10,6 @@ description:
   An idiomatic Clojure API for adding telemetry to your libraries and
   applications using OpenTelemetry.
 authors: Steffan Westcott
-otVersion: latest
 urls:
   repo: https://github.com/steffan-westcott/clj-otel
 createdAt: 2022-03-04

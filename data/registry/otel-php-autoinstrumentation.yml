@@ -1,6 +1,5 @@
 title: PHP Automatic Instrumentation
 registryType: instrumentation
-isThirdParty: false
 language: php
 tags:
   - php
@@ -10,7 +9,6 @@ description:
   Extension for OpenTelemetry, to enable auto-instrumentation. It is based on
   zend_observer and requires PHP8+
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-php-instrumentation
 createdAt: 2022-12-14

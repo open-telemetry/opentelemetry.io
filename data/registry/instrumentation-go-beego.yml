@@ -1,7 +1,6 @@
 # cSpell:ignore beego astaxie
 title: Beego Instrumentation
 registryType: instrumentation
-isThirdParty: false
 language: go
 tags:
   - beego
@@ -12,7 +11,6 @@ description:
   Package beego provides functions to instrument the github.com/astaxie/beego
   package.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://go.opentelemetry.io/contrib/instrumentation/github.com/astaxie/beego
 createdAt: 2022-12-07

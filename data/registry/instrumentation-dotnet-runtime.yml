@@ -1,6 +1,5 @@
 title: .NET runtime metrics instrumentation
 registryType: instrumentation
-isThirdParty: false
 language: dotnet
 tags:
   - .NET

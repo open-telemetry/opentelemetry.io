@@ -1,7 +1,6 @@
 # cSpell:ignore nestjs
 title: NestJS OpenTelemetry
 registryType: instrumentation
-isThirdParty: false
 language: js
 tags:
   - Node.js

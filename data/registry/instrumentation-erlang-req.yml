@@ -1,6 +1,5 @@
 title: OpentelemetryReq
 registryType: instrumentation
-isThirdParty: false
 language: erlang
 tags:
   - req
@@ -10,7 +9,6 @@ license: Apache 2.0
 description:
   See https://hex.pm/packages/opentelemetry_req for usage instructions.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_req
 createdAt: 2022-03-23

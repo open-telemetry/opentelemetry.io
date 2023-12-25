@@ -12,7 +12,7 @@ let fuseOptions = {
     { name: 'title', weight: 0.8 },
     { name: 'description', weight: 0.5 },
     { name: 'tags', weight: 0.3 },
-    { name: 'categories', weight: 0.3 },
+    { name: 'categories', weight: 0.3 }
   ],
 };
 
@@ -27,6 +27,7 @@ parseUrlParams();
 if (pathName.includes('registry')) {
   // Run search or display default body
   if (searchQuery) {
+    document.title = searchQuery + ' at ' + document.title;
     document.querySelector('#search-query').value = searchQuery;
     document.querySelector('#default-body').style.display = 'none';
     executeSearch(searchQuery);

@@ -1,7 +1,6 @@
 # cSpell:ignore bullmq
 title: BullMQ Instrumentation
 registryType: instrumentation
-isThirdParty: true
 language: js
 tags:
   - js
@@ -10,7 +9,6 @@ tags:
 license: Apache 2.0
 description: Auto instrumentation for the BullMQ message system
 authors: Jennifer Moore (contact@jenniferplusplus.com)
-otVersion: 1.0+
 urls:
   repo: https://github.com/jenniferplusplus/opentelemetry-instrumentation-bullmq
 createdAt: 2023-01-27

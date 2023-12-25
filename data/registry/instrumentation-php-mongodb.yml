@@ -1,6 +1,5 @@
 title: OpenTelemetry MongoDB auto-instrumentation
 registryType: instrumentation
-isThirdParty: false
 language: php
 tags:
   - mongodb
@@ -11,7 +10,6 @@ description:
   Auto-instrumentation hooks are registered via composer, and spans will
   automatically be created for all MongoDB operations.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/MongoDB
 createdAt: 2023-08-08

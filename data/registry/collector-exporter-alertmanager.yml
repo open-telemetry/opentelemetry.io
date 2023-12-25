@@ -1,7 +1,6 @@
 # cSpell:ignore alertmanager
 title: Alertmanager Exporter
 registryType: exporter
-isThirdParty: false
 language: collector
 tags:
   - alertmanager
@@ -14,7 +13,6 @@ description:
   [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/)
   back-end to notify Errors or Change events.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/alertmanagerexporter
 createdAt: 2023-12-05

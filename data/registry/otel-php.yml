@@ -1,13 +1,11 @@
 title: PHP
 registryType: core
-isThirdParty: false
 language: php
 tags:
   - php
 license: Apache 2.0
 description: The OpenTelemetry Core repository for PHP.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-php
 createdAt: 2020-02-04

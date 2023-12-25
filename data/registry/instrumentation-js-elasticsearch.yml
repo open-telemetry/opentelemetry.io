@@ -1,6 +1,5 @@
 title: OpenTelemetry Elasticsearch Instrumentation
 registryType: instrumentation
-isThirdParty: true
 language: js
 tags:
   - Node.js

@@ -1,7 +1,6 @@
 # cSpell:ignore Ladd
 title: NautilusTelemetry
 registryType: instrumentation
-isThirdParty: true
 language: swift
 tags:
   - swift
@@ -18,7 +17,6 @@ description:
   possible. Not all features of OpenTelemetry are supported, and this package
   should be considered experimental.
 authors: Ladd Van Tol, <levantol@ebay.com>
-otVersion: latest
 urls:
   repo: https://github.com/eBay/NautilusTelemetry
 createdAt: 2022-06-17

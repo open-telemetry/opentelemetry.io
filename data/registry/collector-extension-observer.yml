@@ -1,6 +1,5 @@
 title: Host Observer Collector Extension
 registryType: extension
-isThirdParty: false
 language: collector
 tags:
   - go
@@ -12,7 +11,6 @@ description:
   a Kubernetes pod, Docker container, or local listening port. Currently
   available are observers for docker, ecs, ecs_task, host and K8s.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/observer/
 createdAt: 2021-02-24

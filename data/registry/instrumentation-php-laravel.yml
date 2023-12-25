@@ -1,6 +1,5 @@
 title: OpenTelemetry Laravel auto-instrumentation
 registryType: instrumentation
-isThirdParty: false
 language: php
 tags:
   - laravel
@@ -9,7 +8,6 @@ tags:
 license: Apache 2.0
 description: Instrumentation Library for Laravel
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/Laravel
 createdAt: 2023-05-22

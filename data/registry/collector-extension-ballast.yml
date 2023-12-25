@@ -1,6 +1,5 @@
 title: Memory Ballast
 registryType: extension
-isThirdParty: false
 language: collector
 tags:
   - ballast
@@ -11,7 +10,6 @@ description:
   Memory Ballast extension enables applications to configure memory ballast for
   the process.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector/tree/main/extension/ballastextension
 createdAt: 2022-11-07

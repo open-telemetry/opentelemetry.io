@@ -1,7 +1,6 @@
 # cSpell:ignore APISIX
 title: Apache APISIX Instrumentation
 registryType: instrumentation
-isThirdParty: false
 language: lua
 tags:
   - lua
@@ -11,7 +10,6 @@ description:
   The plugin implements Tracing data collection based on OpenTelemetry native
   standard, and sends it to OpenTelemetry Collector through HTTP protocol.
 authors: Apache APISIX Authors
-otVersion: latest
 urls:
   repo: https://github.com/apache/apisix/blob/master/apisix/plugins/opentelemetry.lua
 createdAt: 2022-03-27

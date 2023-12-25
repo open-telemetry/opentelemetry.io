@@ -1,6 +1,5 @@
 title: Encoding extension
 registryType: extension
-isThirdParty: false
 language: collector
 tags:
   - encoding
@@ -11,7 +10,6 @@ description:
   The encoding extension allows for other components to reference ingress/egress
   data formats
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/encoding
 createdAt: 2022-10-25

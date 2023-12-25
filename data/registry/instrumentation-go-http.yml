@@ -1,6 +1,5 @@
 title: Go package `net/http` instrumentation
 registryType: instrumentation
-isThirdParty: false
 language: go
 tags:
   - http
@@ -12,7 +11,6 @@ description:
   used to add tracing by wrapping existing handlers (with Handler) and routes
   WithRouteTag.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://go.opentelemetry.io/contrib/instrumentation/net/http
 createdAt: 2023-12-05

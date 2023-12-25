@@ -1,6 +1,5 @@
 title: Attribute Collector Processor
 registryType: processor
-isThirdParty: false
 language: collector
 tags:
   - go
@@ -11,7 +10,6 @@ description:
   The Attribute Processor for the OpenTelemetry Collector modifies attributes of
   a span.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/attributesprocessor
 createdAt: 2021-02-24

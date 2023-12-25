@@ -1,6 +1,5 @@
 title: OpenTelemetry AWS Lambda Instrumentation for Node.js
 registryType: instrumentation
-isThirdParty: false
 language: js
 tags:
   - Node.js

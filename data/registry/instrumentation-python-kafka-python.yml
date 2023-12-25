@@ -1,6 +1,5 @@
 title: OpenTelemetry kafka-python integration
 registryType: instrumentation
-isThirdParty: false
 language: python
 tags:
   - kafka-python
@@ -9,7 +8,6 @@ tags:
 license: Apache 2.0
 description: Instrumentation library for kafka-python
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-kafka-python
 createdAt: 2022-10-27

@@ -1,7 +1,6 @@
 # cSpell:ignore jjatria Mojolicious
 title: Mojolicious Instrumentation
 registryType: instrumentation
-isThirdParty: true
 language: perl
 tags:
   - perl
@@ -9,7 +8,6 @@ tags:
 license: Artistic-1.0-Perl
 description: An OpenTelemetry plugin for Perl's Mojolicious.
 authors: jjatria
-otVersion: latest
 urls:
   repo: https://github.com/jjatria/mojolicious-plugin-opentelemetry
 createdAt: 2023-12-05

@@ -1,6 +1,5 @@
 title: OpenTelemetry Resource Detector for Instana
 registryType: resource-detector
-isThirdParty: false
 language: js
 tags:
   - instana
@@ -11,7 +10,6 @@ description:
   This resource detector will detect the Instana agent to register the
   OpenTelemetry as a Node.js process
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node/opentelemetry-resource-detector-instana
 createdAt: 2022-12-07

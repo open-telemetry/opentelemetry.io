@@ -1,8 +1,8 @@
 ---
 title: Registry
 description: >-
-  Find libraries, plugins, integrations, and other useful tools for extending
-  OpenTelemetry.
+  Find libraries, plugins, integrations, and other useful tools for using and
+  extending OpenTelemetry.
 # The redirects and aliases implement catch-all rules for old registry entries;
 # we don't publish individual entry pages anymore.
 #
@@ -34,8 +34,8 @@ weight: 20
 ## What do you need?
 
 The OpenTelemetry Registry allows you to search for instrumentation libraries,
-tracer implementations, utilities, and other useful projects in the
-OpenTelemetry ecosystem.
+collector components, utilities, and other useful projects in the OpenTelemetry
+ecosystem.
 
 - Not able to find an exporter for your language? Remember, the
   [OpenTelemetry Collector](/docs/collector) supports exporting to a variety of
@@ -48,32 +48,6 @@ OpenTelemetry ecosystem.
 
 {{< blocks/section color="white" type="container-lg" >}}
 
-<li class="card border-secondary my-3 registry-entry" data-registrytype="{{ .registryType }}" data-registrylanguage="{{ .language }}">
-  <div class="card-body container-fluid">
-  
-    <h4 class="card-title d-inline-block">
-      <a href="#asdf" target="_blank" rel="noopener">
-        asdf
-      </a>
-    </h4>
-    <h6 class="card-subtitle text-body-secondary d-inline-block px-2">(1.2.0) <span class="badge rounded-pill text-bg-secondary">new!</span></h6>
-    <div class="d-flex flex-row mb-3">
-      <div class="me-auto p-0">
-        <p>
-        Exports OTel Events (SpanEvent in Tracing added by AddEvent API)
-  collector exporter
-        </p>
-      </div>
-      <div class="ms-auto px-2">
-          <span class="badge badge-php">php</span>
-          <span class="badge badge-exporter me-1">exporter</span>
-      </div>
-    </div>
-    <a href="#" class="card-link">Package Registry</a>
-    <a href="#" class="card-link">Repository</a>
-  </div>
-</li>
-
-{{<registry-search-form>}}
+{{< ecosystem/registry/search-form >}}
 
 {{< /blocks/section >}}

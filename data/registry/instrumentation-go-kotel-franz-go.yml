@@ -1,7 +1,6 @@
 # cSpell:ignore kotel franz gerassimou
 title: Kotel - Instrumentation plugin for franz-go
 registryType: instrumentation
-isThirdParty: true
 language: go
 tags:
   - go
@@ -15,7 +14,6 @@ description:
   Kotel is an instrumentation plugin for the franz-go Kafka client. It provides
   tracing and metrics options.
 authors: John Gerassimou <john.gerassimou@gmail.com>
-otVersion: latest
 urls:
   repo: https://github.com/twmb/franz-go/tree/master/plugin/kotel
 createdAt: 2023-02-09

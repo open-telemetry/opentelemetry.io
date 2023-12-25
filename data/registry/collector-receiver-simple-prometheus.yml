@@ -1,6 +1,5 @@
 title: Simple Prometheus Collector Receiver
 registryType: receiver
-isThirdParty: true
 language: collector
 tags:
   - go
@@ -12,7 +11,6 @@ description:
   simple configuration interface to configure the prometheus receiver to scrape
   metrics from a single target.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/simpleprometheusreceiver
 createdAt: 2021-02-26

@@ -1,6 +1,5 @@
 title: Ruby Integration for Sentry
 registryType: utilities
-isThirdParty: true
 language: ruby
 tags:
   - ruby
@@ -16,7 +15,6 @@ description:
   configuration details, see [OpenTelemetry
   Support](https://docs.sentry.io/platforms/ruby/performance/instrumentation/opentelemetry/).
 authors: Sentry authors <otel@sentry.io>
-otVersion: latest
 urls:
   repo: https://github.com/getsentry/sentry-ruby/tree/master/sentry-opentelemetry
 createdAt: 2023-01-31

@@ -1,6 +1,5 @@
 title: OTLP HTTP Collector Exporter
 registryType: exporter
-isThirdParty: false
 language: collector
 tags:
   - go
@@ -9,7 +8,6 @@ tags:
 license: Apache 2.0
 description: The OTLP HTTP Exporter for the OpenTelemetry Collector.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter
 createdAt: 2020-11-05

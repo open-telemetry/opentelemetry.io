@@ -1,6 +1,5 @@
 title: OpenSearch Exporter
 registryType: exporter
-isThirdParty: false
 language: collector
 tags:
   - opensearch
@@ -11,7 +10,6 @@ description:
   OpenSearch exporter supports sending OpenTelemetry signals as documents to
   OpenSearch.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/opensearchexporter
 createdAt: 2020-11-05

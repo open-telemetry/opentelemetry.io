@@ -1,7 +1,6 @@
 # cSpell:ignore labstack
 title: Labstack Echo instrumentation
 registryType: instrumentation
-isThirdParty: false
 language: go
 tags:
   - go
@@ -10,7 +9,6 @@ tags:
 license: Apache 2.0
 description: Go contrib plugin for the labstack/echo package.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/instrumentation/github.com/labstack/echo
 createdAt: 2020-06-08

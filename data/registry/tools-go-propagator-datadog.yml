@@ -1,6 +1,5 @@
 title: OpenTelemetry context propagation for Datadog
 registryType: utilities
-isThirdParty: true
 language: go
 tags:
   - go
@@ -13,7 +12,6 @@ description: >
   X-Datadog-* format.
 
 authors: https://github.com/tonglil
-otVersion: latest
 urls:
   repo: https://github.com/tonglil/opentelemetry-go-datadog-propagator
 createdAt: 2022-04-18

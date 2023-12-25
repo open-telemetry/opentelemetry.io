@@ -1,6 +1,5 @@
 title: OTLP Exporter
 registryType: exporter
-isThirdParty: false
 language: php
 tags:
   - php
@@ -11,7 +10,9 @@ description:
   (OTLP) format to the OpenTelemetry Collector and OTLP-compliant
   backends/receivers.
 authors: OpenTelemetry Authors
-otVersion: latest
+package:
+  registry: packagist
+  name: opentelemetry/exporter-otlp
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-php/tree/main/src/Contrib/Otlp
 createdAt: 2022-12-14

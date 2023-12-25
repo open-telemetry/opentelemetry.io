@@ -1,7 +1,6 @@
 # cSpell:ignore: Everton
 title: OpenTelemetry Go Instrumentation for SQS
 registryType: instrumentation
-isThirdParty: true
 language: go
 tags:
   - go
@@ -12,7 +11,6 @@ description:
   opentelemetry-trace-sqs propagates OpenTelemetry tracing with SQS messages for
   the Go language.
 authors: Everton Marques <everton.marques@gmail.com>
-otVersion: latest
 urls:
   repo: https://github.com/udhos/opentelemetry-trace-sqs
 createdAt: 2023-10-25

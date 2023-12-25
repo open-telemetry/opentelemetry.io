@@ -1,7 +1,6 @@
 # cspell:ignore emicklei
 title: Go-restful Instrumentation
 registryType: instrumentation
-isThirdParty: false
 language: go
 tags:
   - restful
@@ -12,7 +11,6 @@ description:
   Package go-restful provides functions to trace the emicklei/go-restful/v3
   package.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://go.opentelemetry.io/contrib/instrumentation/github.com/emicklei/go-restful
 createdAt: 2022-12-07

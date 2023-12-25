@@ -1,7 +1,6 @@
 # cSpell:ignore Mihailenco
 title: SQL instrumentation
 registryType: instrumentation
-isThirdParty: true
 language: go
 tags:
   - go
@@ -13,7 +12,6 @@ description:
   Instrumentation for SQL that records queries (including transactions and
   statements) and reports DBStats metrics.
 authors: Vladimir Mihailenco
-otVersion: v1.0.0
 urls:
   repo: https://github.com/uptrace/opentelemetry-go-extra/tree/main/otelsql
 createdAt: 2021-10-25

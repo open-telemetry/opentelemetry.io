@@ -1,6 +1,5 @@
 title: Google Cloud Exporters
 registryType: exporter
-isThirdParty: true
 language: java
 tags:
   - java
@@ -11,7 +10,6 @@ tags:
 license: Apache 2.0
 description: The OpenTelemetry Google Cloud Monitoring/Trace Exporters for Java.
 authors: Google
-otVersion: latest
 urls:
   repo: https://github.com/GoogleCloudPlatform/opentelemetry-operations-java/tree/main/exporters/trace
 createdAt: 2020-08-13

@@ -1,7 +1,6 @@
 # cSpell:ignore gofiber
 title: Fiber Instrumentation
 registryType: instrumentation
-isThirdParty: true
 language: go
 tags:
   - go
@@ -10,7 +9,6 @@ tags:
 license: MIT
 description: Go contrib plugin for the gofiber/fiber package.
 authors: gofiber authors & contributors
-otVersion: latest
 urls:
   repo: https://github.com/gofiber/contrib/tree/main/otelfiber
 createdAt: 2022-01-14

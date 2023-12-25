@@ -1,6 +1,5 @@
 title: Instrumentation for Tomcat request handlers
 registryType: instrumentation
-isThirdParty: false
 language: java
 tags:
   - tomcat
@@ -9,7 +8,6 @@ tags:
 license: Apache 2.0
 description: This package provides an instrumentation library for Tomcat
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/tomcat
 createdAt: 2022-10-27

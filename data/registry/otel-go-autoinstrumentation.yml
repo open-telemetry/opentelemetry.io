@@ -1,6 +1,5 @@
 title: Go Automatic Instrumentation
 registryType: instrumentation
-isThirdParty: true
 language: go
 tags:
   - go
@@ -8,7 +7,6 @@ tags:
 license: Apache 2.0
 description: OpenTelemetry automatic instrumentation for Go applications.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-go-instrumentation/
 createdAt: 2022-04-28

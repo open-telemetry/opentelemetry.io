@@ -1,7 +1,6 @@
 # cSpell:ignore pillarjs
 title: OpenTelemetry pillarjs/Router Instrumentation for Node.js
 registryType: instrumentation
-isThirdParty: false
 language: js
 tags:
   - Node.js
@@ -14,7 +13,6 @@ description:
   the user to automatically collect trace data and export them to their backend
   of choice.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-restify
 createdAt: 2021-07-08

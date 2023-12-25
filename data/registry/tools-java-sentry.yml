@@ -1,6 +1,5 @@
 title: Java Integration for Sentry
 registryType: utilities
-isThirdParty: true
 language: java
 tags:
   - java
@@ -16,7 +15,6 @@ description:
   configuration details, see [OpenTelemetry
   Support](https://docs.sentry.io/platforms/java/performance/instrumentation/opentelemetry/).
 authors: Sentry authors <otel@sentry.io>
-otVersion: latest
 urls:
   repo: https://github.com/getsentry/sentry-java/tree/main/sentry-opentelemetry
 createdAt: 2023-01-31

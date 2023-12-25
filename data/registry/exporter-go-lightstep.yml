@@ -1,6 +1,5 @@
 title: Lightstep Exporter
 registryType: exporter
-isThirdParty: true
 language: go
 tags:
   - go
@@ -8,7 +7,6 @@ tags:
 license: Apache 2.0
 description: The OpenTelemetry Lightstep Exporter for Go.
 authors: Lightstep Authors
-otVersion: latest
 urls:
   repo: https://github.com/lightstep/opentelemetry-exporter-go
 createdAt: 2020-02-05

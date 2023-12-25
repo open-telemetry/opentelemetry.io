@@ -1,0 +1,125 @@
+{{ $languageNames := .languageNames -}}
+
+{{ with .value -}}
+    {{ 
+        $remoteRegistries := dict
+            "npm" (dict 
+                "urlPattern" "https://npmjs.com/package/%s"
+                "installTemplate" "ecosystem/registry/quickinstall-js-npm.md"
+                "icon" "fab fa-npm")
+            "packagist" (dict
+                "urlPattern" "https://packagist.org/packages/%s"
+                "installTemplate" "ecosystem/registry/quickinstall-php-packagist.md"
+                "icon" "fa-solid fa-box-open")
+            "gems" (dict
+                "urlPattern" "https://rubygems.org/gems/%s"
+                "installTemplate" "ecosystem/registry/quickinstall-ruby-gems.md"
+                "icon" "fa-solid fa-gem")
+    -}}
+
+    {{ $isNativ := and (eq .registryType "instrumentation") (.isNative) }}
+    {{ $currentTime := (time now) -}}
+    {{ $repoHref := printf "href=%q" .urls.repo | safeHTMLAttr -}}
+    {{ $delta := $currentTime.Sub (time.AsTime .createdAt) -}}
+    {{ $isNew := lt $delta.Hours 730 -}}
+    {{ $package := "" -}}
+    {{ if and (.package) (isset $remoteRegistries .package.registry) -}}
+        {{ $package = merge .package (index $remoteRegistries .package.registry) -}}
+    {{ end -}}
+    {{ $highlightStyle := "" -}}
+    {{ if $isNew -}}
+        {{ $highlightStyle = "border-info" -}}
+    {{ end -}}
+    {{ if $isNativ -}}
+        {{ $highlightStyle = "border-success" -}}
+    {{ end -}}
+    <li class="card my-3 registry-entry {{ $highlightStyle }}" data-registry-id="{{ ._key }}" data-registrytype="{{ .registryType }}" data-registrylanguage="{{ .language }}">
+        <div class="card-body container-fluid">
+        <h4 class="card-title mb-0 d-flex flex-row">
+            <a {{ $repoHref }} target="_blank" rel="noopener" class="me-auto">
+            {{- .title | markdownify -}}
+            </a>
+            <div class="ms-auto">
+            {{ if $isNew -}}
+            <span class="badge rounded-pill ranslate-middle text-bg-info"><i class="fa-regular fa-star"></i> new</span>
+            {{ end -}}
+            {{ if $isNativ -}}
+            <span class="badge rounded-pill text-bg-success text-white"><i class="fa-solid fa-puzzle-piece"></i> native</span>
+            {{ end -}}
+            </div>
+        </h4>
+        <p class="card-text">
+            <small class="text-body-secondary">
+            {{ if eq .authors "OpenTelemetry Authors" -}}
+                <span class="badge rounded-pill text-bg-primary">🔭 by {{ .authors }} 🔭</span>
+            {{ else -}}
+                by {{ .authors }}
+            {{ end -}}
+            </small>
+        </p>
+        <div class="d-flex flex-row">
+            <div class="me-auto p-0">
+                <div class="mb-3">
+                    {{- .description | markdownify -}}
+                </div>
+                {{ with $package -}}
+                <h6><i class="fa-solid fa-forward"></i> Quick Install</h6>
+                {{ .name }}
+                <p>{{ (partial .installTemplate .name) | markdownify -}}</p>
+                {{- end -}}
+            </div>
+            <div class="ms-auto px-2">
+            <ul class="list-group list-group-flush">
+            {{ with .language -}}
+            <li class="list-group-item">
+                <div class="ms-2 me-auto">
+                <div class="fw-bold">
+                    {{ $languageNames.Get . | default (humanize .) }}
+                </div>
+                <small>Language</small>
+                </div>      
+            </li>
+            {{- end }}
+            {{ with .registryType -}}
+            <li class="list-group-item">
+                <div class="ms-2 me-auto">
+                <div class="fw-bold">
+                    {{ . | humanize }}
+                </div>
+                <small>Component</small>
+                </div>      
+            </li>
+            {{- end -}}
+            {{ with .license -}}
+            <li class="list-group-item">
+                <div class="ms-2 me-auto">
+                <div class="fw-bold">
+                    {{ . }}
+                </div>
+                <small>License</small>
+                </div>      
+            </li>
+            {{- end -}}
+            </div>
+        </div>
+        <div>
+
+        </div>
+        {{ with .urls.homepage -}}
+        {{ $homepageHref := printf "href=%q" . | safeHTMLAttr -}}
+        <a {{ $homepageHref }} target="_blank" rel="noopener" class="card-link external-link">Homepage</a>
+        {{- end -}}
+        {{ with .urls.docs -}}
+        {{ $docsHref := printf "href=%q" . | safeHTMLAttr -}}
+        <a {{ $docsHref }} target="_blank" rel="noopener" class="card-link"><i class="fas fa-book" aria-hidden="true"></i>&nbsp;Documentation</a>
+        {{- end -}}
+        {{ with $package -}}
+        {{ $packageUrl := printf "href=%q" (printf .urlPattern .name) | safeHTMLAttr -}}
+        <a {{ $packageUrl }} target="_blank" rel="noopener" class="card-link external-link"><i class="{{ .icon }}" aria-hidden="true"></i>&nbspPackage Details ({{ .registry }})</a>
+        {{- end -}}
+        {{ with .urls.repo -}}
+        <a {{ $repoHref }} target="_blank" rel="noopener" class="card-link external-link"><i class="fab fa-git-alt" aria-hidden="true"></i>&nbsp;Repository</a>
+        {{- end -}}
+        </div>
+    </li>
+  {{ end -}}

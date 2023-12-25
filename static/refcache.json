@@ -231,6 +231,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T13:38:37.508148-04:00"
   },
+  "https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.6.2/fuse.min.js": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-23T20:37:24.220193+01:00"
+  },
   "https://cerbos.dev/": {
     "StatusCode": 206,
     "LastSeen": "2023-09-15T16:58:31.234644+02:00"
@@ -4767,6 +4771,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:47:28.212004-04:00"
   },
+  "https://npmjs.com/package/@opentelemetry/exporter-zipkin": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-23T20:37:23.122581+01:00"
+  },
   "https://o11y.news": {
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:50:35.174088-04:00"
@@ -4994,6 +5002,10 @@
   "https://packagist.org/packages/open-telemetry/sdk": {
     "StatusCode": 200,
     "LastSeen": "2023-07-22T15:46:26.9606521Z"
+  },
+  "https://packagist.org/packages/opentelemetry/exporter-otlp": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-23T20:37:23.469598+01:00"
   },
   "https://packagist.org/providers/php-http/async-client-implementation": {
     "StatusCode": 200,

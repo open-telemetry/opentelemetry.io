@@ -1,6 +1,5 @@
 title: OpenTelemetry Yii auto-instrumentation
 registryType: instrumentation
-isThirdParty: false
 language: php
 tags:
   - yii
@@ -8,7 +7,6 @@ tags:
   - php
 description: Instrumentation Library for Yii
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/Yii
 createdAt: 2022-12-14

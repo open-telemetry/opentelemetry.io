@@ -1,7 +1,6 @@
 # cSpell:ignore kubelet
 title: Kubelet Stats Collector Receiver
 registryType: receiver
-isThirdParty: true
 language: collector
 tags:
   - go
@@ -13,7 +12,6 @@ description:
   from the API server on a kubelet and sends it down the metric pipeline for
   further processing.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/kubeletstatsreceiver
 createdAt: 2021-02-26

@@ -1,6 +1,5 @@
 title: Metrics Transform Processor
 registryType: processor
-isThirdParty: false
 language: collector
 tags:
   - go
@@ -12,7 +11,6 @@ description:
   rename metrics, and add, rename or delete label keys and values. It can also
   be used to perform aggregations on metrics across labels or label values.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/metricstransformprocessor
 createdAt: 2021-02-24

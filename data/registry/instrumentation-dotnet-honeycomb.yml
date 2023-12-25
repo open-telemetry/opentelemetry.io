@@ -1,6 +1,5 @@
 title: Honeycomb OpenTelemetry Distribution for .NET
 registryType: instrumentation
-isThirdParty: true
 language: dotnet
 tags:
   - dotnet

@@ -1,6 +1,5 @@
 title: Group by Attributes processor
 registryType: processor
-isThirdParty: false
 language: collector
 tags:
   - go
@@ -13,7 +12,6 @@ description:
   log records or metric data points with the same values for the specified
   attributes are "grouped" under the same Resource.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/groupbyattrsprocessor
 createdAt: 2021-02-24

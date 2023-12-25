@@ -1,6 +1,5 @@
 title: go-redis instrumentation
 registryType: instrumentation
-isThirdParty: true
 language: go
 tags:
   - go
@@ -9,7 +8,6 @@ tags:
 license: BSD 2-Clause
 description: Instrumentation for go-redis Redis client.
 authors: go-redis Authors
-otVersion: latest
 urls:
   repo: https://github.com/redis/go-redis/tree/master/extra/redisotel
 createdAt: 2021-04-19

@@ -1,6 +1,5 @@
 title: Sentry Collector Exporter
 registryType: exporter
-isThirdParty: true
 language: collector
 tags:
   - go
@@ -9,7 +8,6 @@ tags:
 license: Apache 2.0
 description: The Sentry Exporter for the OpenTelemetry Collector.
 authors: Sentry
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/sentryexporter
 createdAt: 2020-06-06

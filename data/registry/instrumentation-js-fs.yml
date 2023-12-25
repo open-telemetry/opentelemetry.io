@@ -1,6 +1,5 @@
 title: OpenTelemetry fs Instrumentation for Node.js
 registryType: instrumentation
-isThirdParty: false
 language: js
 tags:
   - fs
@@ -9,7 +8,6 @@ tags:
 license: Apache 2.0
 description: This module provides an instrumentation library for fs.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-fs
 createdAt: 2021-07-08

@@ -1,7 +1,6 @@
 # cSpell:ignore typeorm
 title: OpenTelemetry TypeORM Instrumentation
 registryType: instrumentation
-isThirdParty: false
 language: js
 tags:
   - Node.js

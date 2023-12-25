@@ -1,6 +1,5 @@
 title: Websocket Processor
 registryType: processor
-isThirdParty: false
 language: collector
 tags:
   - websocket
@@ -13,7 +12,6 @@ description:
   The WebSocket processor, which can be positioned anywhere in a pipeline,
   allows
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/remotetapprocessor
 createdAt: 2020-11-05

@@ -1,6 +1,5 @@
 title: OpenTelemetry Resource Detector for AWS
 registryType: resource-detector
-isThirdParty: false
 language: js
 tags:
   - aws
@@ -9,7 +8,6 @@ tags:
 license: Apache 2.0
 description: Resource detector for Amazon Web Services.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node/opentelemetry-resource-detector-aws
 createdAt: 2022-12-07

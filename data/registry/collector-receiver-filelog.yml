@@ -1,7 +1,6 @@
 # cSpell:ignore filelog
 title: Filelog Collector Receiver
 registryType: receiver
-isThirdParty: false
 language: collector
 tags:
   - go
@@ -12,7 +11,6 @@ description:
   The Filelog Receiver tails and parses logs from files using the
   opentelemetry-log-collection library.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver
 createdAt: 2021-02-26

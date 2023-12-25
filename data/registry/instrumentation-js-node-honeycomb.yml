@@ -1,6 +1,5 @@
 title: Honeycomb OpenTelemetry Distribution for Node.js
 registryType: instrumentation
-isThirdParty: true
 language: js
 tags:
   - js

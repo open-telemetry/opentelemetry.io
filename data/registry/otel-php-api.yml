@@ -1,13 +1,11 @@
 title: PHP API
 registryType: core
-isThirdParty: false
 language: php
 tags:
   - php
 license: Apache 2.0
 description: The OpenTelemetry API for PHP.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-php/tree/main/src/API
 createdAt: 2022-12-14

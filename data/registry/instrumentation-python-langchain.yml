@@ -1,7 +1,6 @@
 # cSpell:ignore langchain
 title: LangChain Instrumentation
 registryType: instrumentation
-isThirdParty: true
 language: python
 tags:
   - python
@@ -10,7 +9,6 @@ tags:
 license: Apache 2.0
 description: Instrumentation for LangChain Framework
 authors: Traceloop <dev@traceloop.com>
-otVersion: latest
 urls:
   repo: https://github.com/traceloop/openllmetry/tree/main/packages/opentelemetry-instrumentation-langchain
 createdAt: 2023-10-13

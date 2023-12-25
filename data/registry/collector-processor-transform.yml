@@ -1,6 +1,5 @@
 title: Transform Processor
 registryType: processor
-isThirdParty: false
 language: collector
 tags:
   - go
@@ -13,7 +12,6 @@ description:
   utilizes a transformation language to define transformations and conditions
   and then applies those transformations to the specified telemetry.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor
 createdAt: 2022-10-11

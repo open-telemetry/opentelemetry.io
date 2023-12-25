@@ -1,6 +1,5 @@
 title: NGINX Collector Receiver
 registryType: receiver
-isThirdParty: true
 language: collector
 tags:
   - go
@@ -11,7 +10,6 @@ description:
   The NGINX Receiver for the OpenTelemetry Collector can fetch stats from a
   NGINX instance using a mod_status endpoint.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/nginxreceiver
 createdAt: 2021-02-26

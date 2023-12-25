@@ -1,6 +1,5 @@
 title: NSX-T Receiver
 registryType: receiver
-isThirdParty: false
 language: collector
 tags:
   - go
@@ -11,7 +10,6 @@ description:
   This receiver fetches metrics important to run virtual networking using NSX-T.
   The receiver ingests metrics via the NSX Rest API
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/nsxtreceiver
 createdAt: 2022-10-25

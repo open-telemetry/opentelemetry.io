@@ -1,6 +1,5 @@
 title: AWS X-Ray Collector Receiver
 registryType: receiver
-isThirdParty: true
 language: collector
 tags:
   - go
@@ -12,7 +11,6 @@ description:
   spans) in the X-Ray Segment format. This enables the collector to receive
   spans emitted by the existing X-Ray SDK.
 authors: Amazon Web Services
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/awsxrayreceiver
 createdAt: 2021-02-26

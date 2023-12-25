@@ -1,6 +1,5 @@
 title: Lightstep Exporter
 registryType: exporter
-isThirdParty: true
 language: python
 tags:
   - python
@@ -8,7 +7,6 @@ tags:
 license: Apache 2.0
 description: The OpenTelemetry Lightstep Exporter for Python.
 authors: Lightstep Authors
-otVersion: latest
 urls:
   repo: https://github.com/lightstep/opentelemetry-exporter-python
 createdAt: 2020-02-05

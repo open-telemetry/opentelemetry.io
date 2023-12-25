@@ -1,6 +1,5 @@
 title: OTelBin
 registryType: utilities
-isThirdParty: true
 language: collector
 tags:
   - collector
@@ -13,7 +12,6 @@ description:
   SaaS editor for OpenTelemetry Collector configurations with visualization,
   validation and sharing support
 authors: Dash0 <hi@dash0.com>
-otVersion: latest
 urls:
   repo: https://github.com/dash0hq/otelbin
 createdAt: 2023-11-16

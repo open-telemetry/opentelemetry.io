@@ -1,7 +1,6 @@
 # cSpell:ignore oidc
 title: OIDC authenticator extension
 registryType: extension
-isThirdParty: false
 language: collector
 tags:
   - go
@@ -13,7 +12,6 @@ description:
   The OIDC authenticator extension allows gRPC and HTTP-based receivers to
   require authentication from remote clients.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/oidcauthextension
 createdAt: 2021-02-24

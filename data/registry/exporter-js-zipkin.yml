@@ -1,6 +1,5 @@
 title: Zipkin Exporter
 registryType: exporter
-isThirdParty: false
 language: js
 tags:
   - Node.js
@@ -8,8 +7,10 @@ tags:
 license: Apache 2.0
 description: The OpenTelemetry Zipkin Exporter for Node.js.
 authors: OpenTelemetry Authors
-otVersion: latest
+package:
+  name: '@opentelemetry/exporter-zipkin'
+  registry: npm
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-exporter-zipkin
-  packageRegistry: https://www.npmjs.com/package/@opentelemetry/exporter-zipkin
+  docs: /docs/instrumentation/js/exporters/#zipkin
 createdAt: 2020-02-06

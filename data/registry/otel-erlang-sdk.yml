@@ -1,6 +1,5 @@
 title: Erlang/Elixir
 registryType: core
-isThirdParty: false
 language: erlang
 tags:
   - erlang
@@ -8,7 +7,6 @@ tags:
 license: Apache 2.0
 description: The OpenTelemetry SDK for Erlang and Elixir.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-erlang
 createdAt: 2020-02-04

@@ -1,7 +1,6 @@
 # cSpell:ignore gomemcache
 title: gomemcache Instrumentation
 registryType: instrumentation
-isThirdParty: false
 language: go
 tags:
   - memcache
@@ -12,7 +11,6 @@ description:
   Package `gomemcache` provides tracing instrumentation for the memcached
   client.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://go.opentelemetry.io/contrib/instrumentation/github.com/bradfitz/gomemcache
 createdAt: 2022-12-07

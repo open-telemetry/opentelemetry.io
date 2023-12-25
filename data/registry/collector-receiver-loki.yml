@@ -1,7 +1,6 @@
 # cSpell:ignore loki
 title: Loki Receiver
 registryType: receiver
-isThirdParty: false
 language: collector
 tags:
   - loki
@@ -10,7 +9,6 @@ tags:
 license: Apache 2.0
 description: The Loki receiver implements the Loki Push API
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/lokireceiver
 createdAt: 2020-11-05

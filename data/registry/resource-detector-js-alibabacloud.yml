@@ -1,7 +1,6 @@
 # cSpell:ignore alibabacloud
 title: OpenTelemetry Resource Detector for Alibaba Cloud
 registryType: resource-detector
-isThirdParty: false
 language: js
 tags:
   - alibabacloud
@@ -10,7 +9,6 @@ tags:
 license: Apache 2.0
 description: Resource detector for Alibaba Cloud
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node/opentelemetry-resource-detector-alibaba-cloud
 createdAt: 2022-12-07

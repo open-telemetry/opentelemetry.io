@@ -1,6 +1,5 @@
 title: Prometheus Exporter
 registryType: exporter
-isThirdParty: false
 language: python
 tags:
   - python
@@ -8,7 +7,6 @@ tags:
 license: Apache 2.0
 description: This library allows to export metrics data to Prometheus.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-python/tree/main/exporter/opentelemetry-exporter-prometheus
 createdAt: 2020-02-05

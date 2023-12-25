@@ -1,7 +1,6 @@
 # cSpell:ignore amqplib
 title: OpenTelemetry amqplib Instrumentation (RabbitMQ)
 registryType: instrumentation
-isThirdParty: false
 language: js
 tags:
   - Node.js

@@ -1,6 +1,5 @@
 title: Slim Framework
 registryType: instrumentation
-isThirdParty: false
 language: php
 tags:
   - php
@@ -9,7 +8,6 @@ tags:
 license: Apache 2.0
 description: Instrumentation Library for the Slim Framework
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/Slim
 createdAt: 2022-12-14

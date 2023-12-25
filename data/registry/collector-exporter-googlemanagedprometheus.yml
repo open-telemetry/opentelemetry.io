@@ -1,6 +1,5 @@
 title: Google Managed Service for Prometheus Exporter
 registryType: exporter
-isThirdParty: true
 language: collector
 tags:
   - go
@@ -11,7 +10,6 @@ description:
   This exporter can be used to send metrics and traces to Google Cloud Managed
   Service for Prometheus.
 authors: Google
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/googlemanagedprometheusexporter
 createdAt: 2022-10-27

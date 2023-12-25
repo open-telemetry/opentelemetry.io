@@ -1,7 +1,6 @@
 # cSpell:ignore skywalking
 title: SkyWalking gRPC Exporter
 registryType: exporter
-isThirdParty: false
 language: collector
 tags:
   - go
@@ -12,7 +11,6 @@ description:
   Exports data via gRPC using skywalking-data-collect-protocol format. By
   default, this exporter requires TLS and offers queued retry capabilities.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/skywalkingexporter
 createdAt: 2022-10-27

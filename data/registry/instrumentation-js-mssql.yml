@@ -1,7 +1,6 @@
 # cSpell:ignore mssql Nadeem
 title: OpenTelemetry MSSQL Instrumentation
 registryType: instrumentation
-isThirdParty: true
 language: js
 tags:
   - Node.js

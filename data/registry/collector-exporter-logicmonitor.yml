@@ -1,7 +1,6 @@
 # cSpell:ignore logicmonitor
 title: LogicMonitor Exporter
 registryType: exporter
-isThirdParty: false
 language: collector
 tags:
   - logicmonitor
@@ -10,7 +9,6 @@ tags:
 license: Apache 2.0
 description: This exporter supports sending logs and traces data to Logicmonitor
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/logicmonitorexporter
 createdAt: 2020-11-05

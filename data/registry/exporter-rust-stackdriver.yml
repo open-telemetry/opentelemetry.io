@@ -1,7 +1,6 @@
 # cSpell:ignore jacobkiesel
 title: Google StackDrive Exporter
 registryType: exporter
-isThirdParty: true
 language: rust
 tags:
   - rust
@@ -9,7 +8,6 @@ tags:
 license: Apache 2.0 OR MIT
 description: A Rust OpenTelemetry exporter for Google StackDriver
 authors: jacobkiesel
-otVersion: 0.5.0
 urls:
   repo: https://github.com/vivint-smarthome/opentelemetry-stackdriver
 createdAt: 2020-08-28

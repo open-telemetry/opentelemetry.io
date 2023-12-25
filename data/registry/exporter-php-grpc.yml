@@ -1,6 +1,5 @@
 title: OTLP/gRPC Exporter
 registryType: exporter
-isThirdParty: false
 language: php
 tags:
   - php
@@ -11,7 +10,6 @@ description:
   This library allows exporting telemetry data in the OpenTelemetry Protocol
   (OTLP) over gRPC.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-php/tree/main/src/Contrib/Grpc
 createdAt: 2022-12-14

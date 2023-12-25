@@ -1,7 +1,6 @@
 # cSpell:ignore redix
 title: Redix Instrumentation
 registryType: instrumentation
-isThirdParty: false
 language: erlang
 tags:
   - redix
@@ -12,7 +11,6 @@ description:
   OpentelemetryRedix uses telemetry handlers to create OpenTelemetry spans from
   Redix command events.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_redix
 createdAt: 2022-03-23

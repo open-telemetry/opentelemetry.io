@@ -1,6 +1,5 @@
 title: Pyramid Instrumentation
 registryType: instrumentation
-isThirdParty: false
 language: python
 tags:
   - python
@@ -8,7 +7,6 @@ tags:
 license: Apache 2.0
 description: Instrumentation for Pyramid.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-pyramid
 createdAt: 2020-02-05

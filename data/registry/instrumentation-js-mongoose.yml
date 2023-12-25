@@ -1,6 +1,5 @@
 title: OpenTelemetry Mongoose Plugin
 registryType: instrumentation
-isThirdParty: false
 language: js
 tags:
   - Node.js
@@ -10,7 +9,6 @@ tags:
 license: MIT
 description: Mongoose Plugin for Node.js.
 authors: Walter Dal Mut (walter.dalmut@gmail.com)
-otVersion: latest
 urls:
   repo: https://github.com/wdalmut/opentelemetry-plugin-mongoose
 createdAt: 2020-04-09

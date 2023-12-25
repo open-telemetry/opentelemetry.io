@@ -1,6 +1,5 @@
 title: EntityFrameworkCore Instrumentation for OpenTelemetry .NET
 registryType: instrumentation
-isThirdParty: false
 language: dotnet
 tags:
   - entity
@@ -13,7 +12,6 @@ description:
   Automatically instruments the outgoing database requests from
   Microsoft.EntityFrameworkCore.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.EntityFrameworkCore
 createdAt: 2022-10-28

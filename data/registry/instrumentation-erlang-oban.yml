@@ -1,7 +1,6 @@
 # cSpell:ignore oban
 title: Oban Instrumentation
 registryType: instrumentation
-isThirdParty: false
 language: erlang
 tags:
   - oban
@@ -12,7 +11,6 @@ description:
   OpentelemetryOban uses telemetry handlers to create OpenTelemetry spans from
   Oban events.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_oban
 createdAt: 2022-03-23

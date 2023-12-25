@@ -1,7 +1,6 @@
 # cSpell:ignore sapm
 title: SAPM Collector Receiver
 registryType: receiver
-isThirdParty: true
 language: collector
 tags:
   - go
@@ -12,7 +11,6 @@ description:
   The SAPM Receiver for the OpenTelemetry Collector receive traces from other
   collectors or the SignalFx Smart Agent.
 authors: Splunk
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/sapmreceiver
 createdAt: 2021-02-26

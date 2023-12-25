@@ -1,6 +1,5 @@
 title: Carbon Collector Receiver
 registryType: receiver
-isThirdParty: true
 language: collector
 tags:
   - go
@@ -11,7 +10,6 @@ description:
   The Carbon Receiver for the OpenTelemetry Collector supports Carbon's
   plaintext protocol.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/carbonreceiver
 createdAt: 2021-02-26

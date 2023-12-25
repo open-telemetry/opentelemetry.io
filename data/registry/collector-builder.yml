@@ -1,6 +1,5 @@
 title: OpenTelemetry Collector Builder
 registryType: core
-isThirdParty: true
 language: collector
 tags:
   - collector
@@ -9,7 +8,6 @@ description:
   A CLI tool that generates OpenTelemetry Collector binaries based on a
   manifest.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder
   docs: /docs/collector/custom-collector/

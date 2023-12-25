@@ -1,7 +1,6 @@
 # cSpell:ignore Starlette
 title: Starlette Instrumentation
 registryType: instrumentation
-isThirdParty: false
 language: python
 tags:
   - python
@@ -12,7 +11,6 @@ description:
   frameworks, instrumenting HTTP requests served by applications utilizing the
   framework.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-starlette
 createdAt: 2020-06-29

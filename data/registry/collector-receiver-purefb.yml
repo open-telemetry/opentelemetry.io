@@ -1,7 +1,6 @@
 # cSpell:ignore purefb
 title: Pure Storage FlashBlade Receiver
 registryType: receiver
-isThirdParty: false
 language: collector
 tags:
   - purefb
@@ -13,7 +12,6 @@ description:
   The Pure Storage FlashBlade receiver, receives metrics from Pure Storage
   FlashBlade via the Pure Storage FlashBlade OpenMetrics Exporter.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/purefbreceiver
 createdAt: 2023-02-01

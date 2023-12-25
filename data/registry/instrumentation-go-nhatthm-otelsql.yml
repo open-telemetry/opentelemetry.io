@@ -1,7 +1,6 @@
 # cSpell:ignore nhatthm otelsql
 title: nhatthm/otelsql -- OpenTelemetry SQL database driver wrapper for Go
 registryType: instrumentation
-isThirdParty: true
 language: go
 tags:
   - go
@@ -13,7 +12,6 @@ description:
   Add a OpenTelemetry wrapper to your existing database code to instrument the
   interactions with the database.
 authors: nhatthm
-otVersion: v1.0.0
 urls:
   repo: https://github.com/nhatthm/otelsql
 createdAt: 2022-01-27

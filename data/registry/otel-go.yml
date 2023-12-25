@@ -1,13 +1,11 @@
 title: Go
 registryType: core
-isThirdParty: false
 language: go
 tags:
   - go
 license: Apache 2.0
 description: The OpenTelemetry API and SDK for Go.
 authors: OpenTelemetry Authors
-otVersion: 0.2.1
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-go
 createdAt: 2020-02-04

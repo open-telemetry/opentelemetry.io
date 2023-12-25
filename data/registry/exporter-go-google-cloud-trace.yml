@@ -1,6 +1,5 @@
 title: Google Cloud Trace Exporter
 registryType: exporter
-isThirdParty: true
 language: go
 tags:
   - go
@@ -8,7 +7,6 @@ tags:
 license: Apache 2.0
 description: The OpenTelemetry Google Cloud Trace Exporter for Go.
 authors: Google Authors
-otVersion: latest
 urls:
   repo: https://github.com/GoogleCloudPlatform/opentelemetry-operations-go/tree/main/exporter/trace
 createdAt: 2020-04-01

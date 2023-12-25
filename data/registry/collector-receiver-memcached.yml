@@ -1,6 +1,5 @@
 title: Memcached Collector Receiver
 registryType: receiver
-isThirdParty: true
 language: collector
 tags:
   - go
@@ -11,7 +10,6 @@ description:
   The Memcached Receiver for the OpenTelemetry Collector can fetch stats from a
   Memcached instance using the stats command.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/memcachedreceiver
 createdAt: 2021-02-26

@@ -1,6 +1,5 @@
 title: MongoDB database instrumentation
 registryType: instrumentation
-isThirdParty: false
 language: go
 tags:
   - go
@@ -13,7 +12,6 @@ description:
   go.mongodb.org/mongo-driver/mongo(https://github.com/mongodb/mongo-go-driver)
   package.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://go.opentelemetry.io/contrib/instrumentation/go.mongodb.org/mongo-driver
 createdAt: 2020-06-08

@@ -1,6 +1,5 @@
 title: Node Integration for Sentry
 registryType: utilities
-isThirdParty: true
 language: js
 tags:
   - javascript
@@ -17,7 +16,6 @@ description:
   configuration details, see [OpenTelemetry
   Support](https://docs.sentry.io/platforms/node/performance/instrumentation/opentelemetry/).
 authors: Sentry authors <otel@sentry.io>
-otVersion: latest
 urls:
   repo: https://github.com/getsentry/sentry-javascript/tree/master/packages/opentelemetry-node
 createdAt: 2023-01-31

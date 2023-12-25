@@ -1,7 +1,6 @@
 # cSpell:ignore honeycombmarker
 title: Honeycomb Marker Exporter
 registryType: exporter
-isThirdParty: false
 language: collector
 tags:
   - honeycombmarker
@@ -12,7 +11,6 @@ description:
   This exporter allows creating markers, via the Honeycomb Markers API, based on
   the look of incoming telemetry.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/honeycombmarkerexporter
 createdAt: 2023-10-17

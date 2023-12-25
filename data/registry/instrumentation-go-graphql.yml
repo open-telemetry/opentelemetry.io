@@ -1,7 +1,6 @@
 # cSpell:ignore ziehms
 title: GraphQL-Go instrumentation
 registryType: instrumentation
-isThirdParty: true
 language: go
 tags:
   - go
@@ -13,7 +12,6 @@ description:
   Instrumentation for graphql-go GraphQL Server that records GraphQL operations
   using OpenTelemetry Tracing API.
 authors: Benjamin Ziehms
-otVersion: v1.0.0
 urls:
   repo: https://github.com/uptrace/opentelemetry-go-extra/tree/main/otelgraphql
 createdAt: 2021-10-25

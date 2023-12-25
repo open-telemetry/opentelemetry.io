@@ -1,6 +1,5 @@
 title: Delta to Rate Processor
 registryType: processor
-isThirdParty: false
 language: collector
 tags:
   - go
@@ -11,7 +10,6 @@ description:
   The delta to rate processor converts delta sum metrics to rate metrics. This
   rate is a gauge.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/deltatorateprocessor
 createdAt: 2022-10-26

@@ -1,6 +1,5 @@
 title: Filter Collector Processor
 registryType: processor
-isThirdParty: false
 language: collector
 tags:
   - go
@@ -11,7 +10,6 @@ description:
   The Filter Processor for the OpenTelemetry Collector can be configured to
   include or exclude metrics.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/filterprocessor
 createdAt: 2021-02-24

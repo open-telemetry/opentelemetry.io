@@ -1,7 +1,6 @@
 # cSpell:ignore typelevel Maksym Ochenashko
 title: otel4s
 registryType: instrumentation
-isThirdParty: true
 language: scala
 tags:
   - scala
@@ -13,7 +12,6 @@ authors:
   - Ross A. Baker <ross@rossabaker.com>
   - Zach McCoy <zachabbott@gmail.com>
   - Maksym Ochenashko <maxochenashko@gmail.com>
-otVersion: latest
 urls:
   repo: https://github.com/typelevel/otel4s
 createdAt: 2023-02-07

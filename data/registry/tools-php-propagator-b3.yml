@@ -1,6 +1,5 @@
 title: OpenTelemetry B3 context propagation
 registryType: extension
-isThirdParty: false
 language: php
 tags:
   - php
@@ -12,7 +11,6 @@ description: >
   This library provides support for propagating trace context in the B3 format.
 
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-php/tree/main/src/Extension/Propagator/B3
 createdAt: 2023-11-05

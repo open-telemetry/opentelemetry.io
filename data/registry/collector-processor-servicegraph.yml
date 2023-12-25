@@ -1,6 +1,5 @@
 title: Service graph processor
 registryType: processor
-isThirdParty: false
 language: collector
 tags:
   - go
@@ -11,7 +10,6 @@ description:
   The service graphs processor is a traces processor that builds a map
   representing the interrelationships between various services in a system.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/servicegraphprocessor
 createdAt: 2022-10-26

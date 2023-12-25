@@ -1,6 +1,5 @@
 title: ASAP Client Authentication Extension
 registryType: extension
-isThirdParty: false
 language: collector
 tags:
   - asap
@@ -12,7 +11,6 @@ description:
   This extension provides Atlassian Service Authentication Protocol (ASAP)
   client credentials for HTTP or gRPC based exporters.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/asapauthextension
 createdAt: 2022-11-07

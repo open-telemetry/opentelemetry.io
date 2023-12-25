@@ -1,6 +1,5 @@
 title: PSR-18 HTTP Clients Instrumentation
 registryType: instrumentation
-isThirdParty: false
 language: php
 tags:
   - php
@@ -10,7 +9,6 @@ tags:
 license: Apache 2.0
 description: Instrumentation Library for PSR-18 HTTP clients
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/Psr18
 createdAt: 2022-12-14

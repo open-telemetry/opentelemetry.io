@@ -1,7 +1,6 @@
 # cSpell:ignore fluentd
 title: Fluentd Exporter
 registryType: exporter
-isThirdParty: true
 language: cpp
 tags:
   - c++
@@ -9,7 +8,6 @@ tags:
 license: Apache 2.0
 description: The OpenTelemetry Fluentd Exporter for C++.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/exporters/fluentd
 createdAt: 2021-11-11

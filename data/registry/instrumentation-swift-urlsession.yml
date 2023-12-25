@@ -1,6 +1,5 @@
 title: URLSession Instrumentation
 registryType: instrumentation
-isThirdParty: false
 language: swift
 tags:
   - swift
@@ -13,7 +12,6 @@ description:
   This library provides a URLSession instrumentation to track requests through
   OpenTelemetry.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-swift/tree/main/Sources/Instrumentation/URLSession
 createdAt: 2021-06-22

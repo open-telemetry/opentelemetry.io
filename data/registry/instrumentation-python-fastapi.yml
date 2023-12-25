@@ -1,6 +1,5 @@
 title: FastAPI Middleware Instrumentation
 registryType: instrumentation
-isThirdParty: false
 language: python
 tags:
   - python
@@ -10,7 +9,6 @@ description:
   This library provides FastAPI middleware to track requests timing through
   OpenTelemetry.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-fastapi
 createdAt: 2020-05-11

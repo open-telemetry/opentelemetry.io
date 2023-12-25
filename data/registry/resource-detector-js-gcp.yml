@@ -1,6 +1,5 @@
 title: OpenTelemetry Resource Detector for GCP
 registryType: resource-detector
-isThirdParty: false
 language: js
 tags:
   - gcp
@@ -9,7 +8,6 @@ tags:
 license: Apache 2.0
 description: Resource detector for Google Cloud Platform.
 authors: OpenTelemetry Authors
-otVersion: latest
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node/opentelemetry-resource-detector-gcp
 createdAt: 2022-12-07
