@@ -229,4 +229,4 @@ telemetry data.
 
 
 ## More examples
-You can find more examples and documents here [php examples](https://github.com/open-telemetry/opentelemetry-php-contrib)
+You can find more examples and documents here [PHP examples](https://github.com/open-telemetry/opentelemetry-php-contrib)
