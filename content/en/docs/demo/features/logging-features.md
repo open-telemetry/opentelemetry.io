@@ -1,6 +1,6 @@
 ---
 title: Log Coverage by Service
-linkTitle: Log Feature Coverage
+linkTitle: Log Coverage
 aliases: [log_service_features]
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: Trace Feature Coverage by Service
-linkTitle: Trace Feature Coverage
+title: Trace Coverage by Service
+linkTitle: Trace Coverage
 aliases: [trace_service_features]
 ---
 
