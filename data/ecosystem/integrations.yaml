@@ -174,3 +174,8 @@
   docsUrl: https://docs.otterize.com/reference/configuration/network-mapper/helm-chart#opentelemetry-exporter-parameters
   components: [Go]
   oss: true
+- name: KafkaFlow
+  url: https://github.com/Farfetch/kafkaflow
+  docsUrl: https://farfetch.github.io/kafkaflow/docs/guides/open-telemetry
+  components: [.NET]
+  oss: true
