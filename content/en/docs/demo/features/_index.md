@@ -49,5 +49,5 @@ aliases: [demo_features]
 - **[Envoy](https://www.envoyproxy.io/)**: Envoy is used as a reverse proxy for
   user-facing web interfaces such as the frontend, load generator, and feature
   flag service.
-- **[Locust](https://locust.io)**: a background job that creates realistic
-  usage patterns on the website using a synthetic load generator.
+- **[Locust](https://locust.io)**: a background job that creates realistic usage
+  patterns on the website using a synthetic load generator.
