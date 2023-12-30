@@ -366,7 +366,6 @@ using var anotherActivity =
 
 {{% docs/instrumentation/span-status-preamble %}}
 
-
 ```csharp
 using var myActivity = MyActivitySource.StartActivity("SayHello");
 
