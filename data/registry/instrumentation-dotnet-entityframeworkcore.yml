@@ -11,7 +11,8 @@ license: Apache 2.0
 description:
   Automatically instruments the outgoing database requests from
   Microsoft.EntityFrameworkCore.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.EntityFrameworkCore
 createdAt: 2022-10-28

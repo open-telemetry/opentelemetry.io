@@ -8,7 +8,9 @@ tags:
   - langchain
 license: Apache 2.0
 description: Instrumentation for LangChain Framework
-authors: Traceloop <dev@traceloop.com>
+authors:
+  - name: Traceloop 
+    email: dev@traceloop.com
 urls:
   repo: https://github.com/traceloop/openllmetry/tree/main/packages/opentelemetry-instrumentation-langchain
 createdAt: 2023-10-13

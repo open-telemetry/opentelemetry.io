@@ -9,7 +9,8 @@ license: Apache 2.0
 description:
   Tesla middleware that creates OpenTelemetry spans and injects tracing headers
   into HTTP requests for Tesla clients.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_tesla
 createdAt: 2022-10-27

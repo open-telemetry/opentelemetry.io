@@ -6,7 +6,8 @@ tags:
   - instrumentation
   - php
 description: Instrumentation Library for Yii
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/Yii
 createdAt: 2022-12-14

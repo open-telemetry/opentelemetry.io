@@ -6,7 +6,8 @@ tags:
   - exporter
 license: Apache 2.0
 description: The OpenTelemetry Prometheus Exporter for Go.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-go/tree/main/exporters/prometheus
 createdAt: 2020-11-05

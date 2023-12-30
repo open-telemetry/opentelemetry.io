@@ -7,7 +7,8 @@ tags:
   - erlang
 license: Apache 2.0
 description: OpentelemetryHTTPoison is an Instrumentation Library for HTTPoison.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 # cSpell:ignore httpoison
 
 urls:

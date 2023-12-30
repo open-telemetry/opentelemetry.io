@@ -8,7 +8,9 @@ tags:
   - bullmq
 license: Apache 2.0
 description: Auto instrumentation for the BullMQ message system
-authors: Jennifer Moore (contact@jenniferplusplus.com)
+authors:
+  - name: Jennifer Moore 
+    email: contact@jenniferplusplus.com
 urls:
   repo: https://github.com/jenniferplusplus/opentelemetry-instrumentation-bullmq
 createdAt: 2023-01-27

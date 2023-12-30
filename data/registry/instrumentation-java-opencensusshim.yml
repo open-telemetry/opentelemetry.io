@@ -8,7 +8,8 @@ tags:
   - java
 license: Apache 2.0
 description: This library provides an instrumentation shim for OpenCensus
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/opencensus-shim
 createdAt: 2020-03-25

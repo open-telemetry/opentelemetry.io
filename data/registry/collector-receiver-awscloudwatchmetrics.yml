@@ -9,7 +9,8 @@ license: Apache 2.0
 description:
   Receives Cloudwatch metrics from AWS Cloudwatch via the AWS SDK for Cloudwatch
   Logs
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 # cSpell:ignore awscloudwatchmetrics
 
 urls:

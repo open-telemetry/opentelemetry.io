@@ -11,7 +11,8 @@ description:
   Package mongo-driver provides functions to trace the
   go.mongodb.org/mongo-driver/mongo(https://github.com/mongodb/mongo-go-driver)
   package.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://go.opentelemetry.io/contrib/instrumentation/go.mongodb.org/mongo-driver
 createdAt: 2020-06-08

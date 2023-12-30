@@ -7,7 +7,8 @@ tags:
   - exporter
 license: Apache 2.0 OR MIT
 description: A Rust OpenTelemetry exporter for Google StackDriver
-authors: jacobkiesel
+authors:
+  - name: jacobkiesel
 urls:
   repo: https://github.com/vivint-smarthome/opentelemetry-stackdriver
 createdAt: 2020-08-28

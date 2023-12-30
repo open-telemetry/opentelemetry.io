@@ -7,7 +7,8 @@ tags:
   - php
 license: Apache 2.0
 description: Instrumentation Library for PHP IO
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/IO
 createdAt: 2023-05-22

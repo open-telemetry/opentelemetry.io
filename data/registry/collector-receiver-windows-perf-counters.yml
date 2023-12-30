@@ -10,7 +10,8 @@ description:
   The Windows Performance Counters Receiver for the OpenTelemetry Collector
   captures the configured system, application, or custom performance counter
   data from the Windows registry using the PDH interface.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/windowsperfcountersreceiver
 createdAt: 2021-02-26

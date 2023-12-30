@@ -10,7 +10,8 @@ description:
   The Redis Receiver for the OpenTelemetry Collector is designed to retrieve
   Redis INFO data from a single Redis instance, build metrics from that data,
   and send them to the next consumer at a configurable interval.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/redisreceiver
 createdAt: 2021-02-26

@@ -5,7 +5,8 @@ tags:
   - php
 license: Apache 2.0
 description: OpenTelemetry Context for PHP.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-php/tree/main/src/Context
 createdAt: 2022-12-14

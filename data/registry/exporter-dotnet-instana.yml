@@ -7,7 +7,8 @@ tags:
   - dotnet
 license: Apache 2.0
 description: The Instana Exporter exports telemetry to Instana backend.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Exporter.Instana
 createdAt: 2022-11-07

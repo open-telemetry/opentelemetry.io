@@ -9,9 +9,12 @@ tags:
 license: Apache 2.0
 description: An OpenTelemetry implementation for Scala, based on Cats-Effect
 authors:
-  - Ross A. Baker <ross@rossabaker.com>
-  - Zach McCoy <zachabbott@gmail.com>
-  - Maksym Ochenashko <maxochenashko@gmail.com>
+  - name: Ross A. Baker
+    email: ross@rossabaker.com
+  - name: Zach McCoy 
+    email: zachabbott@gmail.com
+  - name: Maksym Ochenashko 
+    email: maxochenashko@gmail.com
 urls:
   repo: https://github.com/typelevel/otel4s
 createdAt: 2023-02-07

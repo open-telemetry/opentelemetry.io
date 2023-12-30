@@ -6,7 +6,8 @@ tags:
   - instrumentation
 license: Apache 2.0
 description: React loading automatic instrumentation
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/web/opentelemetry-plugin-react-load
 createdAt: 2020-11-09

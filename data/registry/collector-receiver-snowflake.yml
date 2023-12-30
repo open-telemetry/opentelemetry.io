@@ -9,7 +9,8 @@ license: Apache 2.0
 description:
   This receiver collects metrics from a Snowflake account by connecting to an
   account and running queries at set intervals.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/snowflakereceiver
 createdAt: 2022-10-25

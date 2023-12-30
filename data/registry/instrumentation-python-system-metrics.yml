@@ -6,7 +6,8 @@ tags:
   - instrumentation
 license: Apache 2.0
 description: Instrumentation to collect system performance metrics.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-system-metrics
 createdAt: 2020-05-11

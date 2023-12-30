@@ -7,7 +7,8 @@ tags:
   - collector
 license: Apache 2.0
 description: The AWS CloudWatch EMF Exporter for the OpenTelemetry Collector.
-authors: Amazon Web Services
+authors:
+  - name: Amazon Web Services
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/awsemfexporter
 createdAt: 2020-06-06

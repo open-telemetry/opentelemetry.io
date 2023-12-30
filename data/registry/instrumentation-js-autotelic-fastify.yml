@@ -9,7 +9,9 @@ tags:
 license: MIT
 description:
   Fastify OpenTelemetry API integration, using the Fastify plugin spec.
-authors: Holden Whitehead (holden@autotelic.com)
+authors:
+  - name: Holden Whitehead 
+    email: holden@autotelic.com
 urls:
   repo: https://github.com/autotelic/fastify-opentelemetry
 createdAt: 2020-08-28

@@ -8,7 +8,9 @@ tags:
   - '@elastic/elasticsearch'
 license: Apache 2.0
 description: Elasticsearch instrumentation for Node.js.
-authors: Aspecto Authors (yaniv@aspecto.io)
+authors:
+  - name: Aspecto Authors 
+    email: yaniv@aspecto.io
 urls:
   repo: https://github.com/aspecto-io/opentelemetry-ext-js/tree/master/packages/instrumentation-elasticsearch
 createdAt: 2021-03-05

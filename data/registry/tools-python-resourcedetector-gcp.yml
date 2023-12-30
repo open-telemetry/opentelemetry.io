@@ -11,7 +11,8 @@ license: Apache 2.0
 description: >
   This library provides support for detecting GCP resources like GCE, GKE, etc.
 
-authors: Google
+authors:
+  - name: Google
 urls:
   repo: https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/tree/main/opentelemetry-resourcedetector-gcp
 createdAt: 2020-08-13

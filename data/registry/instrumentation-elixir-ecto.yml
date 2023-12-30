@@ -9,7 +9,8 @@ tags:
   - instrumentation
 license: Apache 2.0
 description: Instrumentation for Elixir database library Ecto.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_ecto
 createdAt: 2022-03-23

@@ -9,7 +9,8 @@ license: Apache 2.0
 description:
   OpentelemetryFinch uses telemetry handlers to create OpenTelemetry spans from
   Finch events.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_finch
 createdAt: 2022-03-23

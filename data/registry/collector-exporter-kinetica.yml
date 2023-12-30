@@ -10,7 +10,8 @@ license: Apache 2.0
 description:
   The schema name `otel` is an example. The user may change this to another name
   but the same name has to be used
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/kineticaexporter
 createdAt: 2023-09-19

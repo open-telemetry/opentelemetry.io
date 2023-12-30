@@ -8,7 +8,8 @@ tags:
   - instrumentation
 license: Apache 2.0
 description: Instrumentation for Erlang HTTP server Elli.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_elli
 createdAt: 2022-03-23

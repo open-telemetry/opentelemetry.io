@@ -1,0 +1,16 @@
+# cSpell:ignore # add words unknown to cspell, remove this line if not required
+title: My OpenTelemetry Integration # the name of your project
+registryType: <exporter/core/instrumentation> # the type of integration; is this an exporter, plugin, API package, or something else?
+language: <js/go/dotnet/etc. or collector for collector plugins>
+tags:
+  - <other useful search terms>
+urls:
+  repo: https://github.com/your-organization/your-repo # (mandatory) projects don't have to be hosted on GitHub, but this should link to the git or other source control repository for your project
+  docs: https://your-organization/your-instructions # (optional) path to a documentation for the specific project.
+license: Apache 2.0 # or whatever your OSS license is (see https://opensource.org/licenses/), properietary or non-OSI approved may be rejected
+description: A friendly description of your integration/plugin
+authors:
+  - name: First author name
+    email: first author email (optional)
+    url: first author URL (github handle, optional)
+createdAt: <date> # Set todays date

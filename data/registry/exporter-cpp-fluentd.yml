@@ -7,7 +7,8 @@ tags:
   - exporter
 license: Apache 2.0
 description: The OpenTelemetry Fluentd Exporter for C++.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/exporters/fluentd
 createdAt: 2021-11-11

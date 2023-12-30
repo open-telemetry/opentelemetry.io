@@ -6,7 +6,8 @@ tags:
   - long task
 license: Apache 2.0
 description: Instrumentation library for net module.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/web/opentelemetry-instrumentation-long-task
 createdAt: 2021-07-08

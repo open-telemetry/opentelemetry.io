@@ -9,7 +9,8 @@ tags:
   - zap
 license: BSD-2-Clause
 description: Instrumentation for Zap logging library.
-authors: Vladimir Mihailenco
+authors:
+  - name: Vladimir Mihailenco
 urls:
   repo: https://github.com/uptrace/opentelemetry-go-extra/tree/main/otelzap
 createdAt: 2021-10-25

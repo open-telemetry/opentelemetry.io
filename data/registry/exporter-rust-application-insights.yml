@@ -7,7 +7,8 @@ tags:
   - exporter
 license: MIT
 description: OpenTelemetry exporter for Azure Application Insights
-authors: Jan Kuehle
+authors:
+  - name: Jan Kuehle
 urls:
   repo: https://github.com/frigus02/opentelemetry-application-insights
 createdAt: 2020-08-28

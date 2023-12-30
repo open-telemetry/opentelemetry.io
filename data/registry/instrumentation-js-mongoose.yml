@@ -8,7 +8,9 @@ tags:
   - MongoDB
 license: MIT
 description: Mongoose Plugin for Node.js.
-authors: Walter Dal Mut (walter.dalmut@gmail.com)
+authors:
+  - name: Walter Dal Mut 
+    email: walter.dalmut@gmail.com
 urls:
   repo: https://github.com/wdalmut/opentelemetry-plugin-mongoose
 createdAt: 2020-04-09

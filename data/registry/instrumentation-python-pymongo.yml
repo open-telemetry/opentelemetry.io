@@ -7,7 +7,8 @@ tags:
   - instrumentation
 license: Apache 2.0
 description: Instrumentation for the pymongo library.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-pymongo
 createdAt: 2020-02-05

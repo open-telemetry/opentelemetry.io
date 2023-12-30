@@ -10,7 +10,8 @@ license: Apache 2.0
 description:
   This receiver uses Flink's REST API to collect Jobmanager, Taskmanager, Job,
   Task and Operator metrics.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/flinkmetricsreceiver
 createdAt: 2022-10-25

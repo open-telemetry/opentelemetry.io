@@ -7,9 +7,10 @@ tags:
   - instrumentation
   - logging
   - logrus
-license: BSD 2-Clause
+license: BSD-2-Clause
 description: Instrumentation for logrus logging library.
-authors: Vladimir Mihailenco
+authors:
+  - name: Vladimir Mihailenco
 urls:
   repo: https://github.com/uptrace/opentelemetry-go-extra/tree/main/otellogrus
 createdAt: 2021-10-25

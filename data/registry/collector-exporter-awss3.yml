@@ -8,7 +8,8 @@ tags:
   - collector
 license: Apache 2.0
 description: This exporter targets to support proto/JSON and proto/binary format
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/awss3exporter
 createdAt: 2020-11-05

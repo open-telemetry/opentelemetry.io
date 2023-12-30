@@ -7,7 +7,8 @@ tags:
   - collector
 license: Apache 2.0
 description: Parses Journald events from systemd journal.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/journaldreceiver
 createdAt: 2020-11-05

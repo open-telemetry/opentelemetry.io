@@ -11,7 +11,8 @@ license: BSD-2-Clause
 description:
   Instrumentation for graphql-go GraphQL Server that records GraphQL operations
   using OpenTelemetry Tracing API.
-authors: Benjamin Ziehms
+authors:
+  - name: Benjamin Ziehms
 urls:
   repo: https://github.com/uptrace/opentelemetry-go-extra/tree/main/otelgraphql
 createdAt: 2021-10-25

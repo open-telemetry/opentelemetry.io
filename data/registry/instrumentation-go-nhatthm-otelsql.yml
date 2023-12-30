@@ -11,7 +11,8 @@ license: Apache 2.0
 description:
   Add a OpenTelemetry wrapper to your existing database code to instrument the
   interactions with the database.
-authors: nhatthm
+authors:
+  - name: nhatthm
 urls:
   repo: https://github.com/nhatthm/otelsql
 createdAt: 2022-01-27

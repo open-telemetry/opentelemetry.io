@@ -10,7 +10,8 @@ license: Apache 2.0
 description:
   The Racecar instrumentation is a community-maintained instrumentation for
   Racecar, a client library for Apache Kafka.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/racecar
 createdAt: 2022-10-27

@@ -10,7 +10,8 @@ description:
   This library provides automatic and manual instrumentation of Starlette web
   frameworks, instrumenting HTTP requests served by applications utilizing the
   framework.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-starlette
 createdAt: 2020-06-29

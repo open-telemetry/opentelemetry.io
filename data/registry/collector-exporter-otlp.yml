@@ -7,7 +7,8 @@ tags:
   - collector
 license: Apache 2.0
 description: The OTLP gRPC Exporter for the OpenTelemetry Collector.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlpexporter
 createdAt: 2020-11-05

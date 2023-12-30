@@ -8,7 +8,8 @@ tags:
   - instrumentation
 license: Apache 2.0
 description: Excon instrumentation for Ruby.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/excon
 createdAt: 2020-11-09

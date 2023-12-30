@@ -11,7 +11,8 @@ description:
   The Sumo Logic processor modifies the metadata on logs, metrics and traces
   sent to Sumo Logic so that the Sumo Logic apps can make full use of the
   ingested data.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/sumologicprocessor
 createdAt: 2023-12-05

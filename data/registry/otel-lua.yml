@@ -5,9 +5,10 @@ language: lua
 tags:
   - lua
   - instrumentation
-license: Apache-2.0
+license: Apache 2.0
 description: An unofficial implementation of OpenTelemetry in lua.
-authors: yangxikun
+authors:
+  - name: yangxikun
 urls:
   repo: https://github.com/yangxikun/opentelemetry-lua
 createdAt: 2022-12-17

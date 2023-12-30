@@ -10,7 +10,8 @@ license: Apache 2.0
 description:
   This library allows export of tracing data to Zipkin using JSON for
   serialization.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-python/tree/main/exporter/opentelemetry-exporter-zipkin-json
 createdAt: 2022-11-07

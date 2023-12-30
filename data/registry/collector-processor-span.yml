@@ -9,7 +9,8 @@ license: Apache 2.0
 description:
   The Span Processor for the OpenTelemetry Collector modifies either the span
   name or attributes of a span based on the span name.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/spanprocessor
 createdAt: 2021-02-24

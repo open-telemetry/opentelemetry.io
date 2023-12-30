@@ -10,7 +10,8 @@ description:
   The HTTP Check Receiver can be used for synthetic checks against HTTP
   endpoints. This receiver will make a request to the specified `endpoint` using
   the
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/httpcheckreceiver
 createdAt: 2022-10-25

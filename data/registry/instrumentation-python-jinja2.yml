@@ -6,7 +6,8 @@ tags:
   - instrumentation
 license: Apache 2.0
 description: Instrumentation for Jinja2.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-jinja2
 createdAt: 2020-02-05

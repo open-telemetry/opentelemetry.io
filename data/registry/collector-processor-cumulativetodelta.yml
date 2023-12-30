@@ -10,7 +10,8 @@ description:
   The cumulative to delta processor converts monotonic, cumulative sum and
   histogram metrics to monotonic, delta metrics. Non-monotonic sums and
   exponential histograms are excluded.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/cumulativetodeltaprocessor
 createdAt: 2022-10-26

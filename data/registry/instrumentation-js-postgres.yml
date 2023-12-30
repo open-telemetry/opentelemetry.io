@@ -9,7 +9,8 @@ tags:
   - database
 license: Apache 2.0
 description: Instrumentation library for pg.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-pg
 createdAt: 2020-11-09

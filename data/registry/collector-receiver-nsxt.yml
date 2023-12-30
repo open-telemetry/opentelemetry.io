@@ -9,7 +9,8 @@ license: Apache 2.0
 description:
   This receiver fetches metrics important to run virtual networking using NSX-T.
   The receiver ingests metrics via the NSX Rest API
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/nsxtreceiver
 createdAt: 2022-10-25

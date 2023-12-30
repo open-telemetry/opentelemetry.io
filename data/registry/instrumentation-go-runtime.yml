@@ -8,7 +8,8 @@ tags:
   - metrics
 license: Apache 2.0
 description: Go contrib plugin for collecting metrics from Go runtime package
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/instrumentation/runtime
 createdAt: 2020-06-08

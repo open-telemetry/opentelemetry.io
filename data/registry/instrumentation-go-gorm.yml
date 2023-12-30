@@ -12,7 +12,8 @@ license: BSD-2-Clause
 description:
   Instrumentation for gorm.io/gorm that records queries and reports DBStats
   metrics.
-authors: Vladimir Mihailenco
+authors:
+  - name: Vladimir Mihailenco
 urls:
   repo: https://github.com/uptrace/opentelemetry-go-extra/tree/main/otelgorm
 createdAt: 2021-10-25

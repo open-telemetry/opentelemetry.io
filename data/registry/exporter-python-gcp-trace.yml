@@ -8,7 +8,8 @@ tags:
   - google
 license: Apache 2.0
 description: The OpenTelemetry Google Cloud Trace Exporters for Python.
-authors: Google
+authors:
+  - name: Google
 urls:
   repo: https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/tree/main/opentelemetry-exporter-gcp-trace
 createdAt: 2020-08-13

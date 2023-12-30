@@ -9,7 +9,8 @@ tags:
   - mysql
 license: Apache 2.0
 description: Instrumentation for the `github.com/go-sql-driver/mysql` package.
-authors: Splunk Inc.
+authors:
+  - name: Splunk Inc.
 urls:
   repo: https://github.com/signalfx/splunk-otel-go/tree/main/instrumentation/github.com/go-sql-driver/mysql/splunkmysql
 createdAt: 2022-01-20

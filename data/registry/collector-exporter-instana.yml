@@ -7,7 +7,8 @@ tags:
   - collector
 license: Apache 2.0
 description: The Instana Exporter for the OpenTelemetry Collector.
-authors: Instana Authors
+authors:
+  - name: Instana Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/instanaexporter
 createdAt: 2020-06-06

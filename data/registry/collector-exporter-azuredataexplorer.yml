@@ -8,7 +8,8 @@ tags:
 license: Apache 2.0
 description:
   This exporter sends metrics, logs and trace data to Azure Data Explorer
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter
 createdAt: 2020-11-05

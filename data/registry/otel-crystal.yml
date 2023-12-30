@@ -5,9 +5,10 @@ language: crystal
 tags:
   - crystal
   - instrumentation
-license: Apache-2.0
+license: Apache 2.0
 description: An unofficial implementation of OpenTelemetry in Crystal.
-authors: wyhaines
+authors:
+  - name: wyhaines
 urls:
   repo: https://github.com/wyhaines/opentelemetry-api.cr
 createdAt: 2022-12-17

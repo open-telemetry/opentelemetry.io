@@ -9,7 +9,8 @@ license: Apache 2.0
 description:
   Memory Ballast extension enables applications to configure memory ballast for
   the process.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector/tree/main/extension/ballastextension
 createdAt: 2022-11-07

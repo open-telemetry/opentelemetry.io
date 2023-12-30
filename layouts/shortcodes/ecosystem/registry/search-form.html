@@ -47,8 +47,7 @@
       <div class="dropdown-menu" id="languageFilter">
         <a value="all" class="dropdown-item">Any Language</a>
         {{ range $langs -}}
-        <a value="{{ . }}" id="language-item-{{ . }}" class="dropdown-item">{{ $languageNames.Get . | default (humanize
-          .) }}</a>
+        <a value="{{ . }}" id="language-item-{{ . }}" class="dropdown-item">{{ $languageNames.Get . | default (humanize .) }}</a>
         {{ end -}}
       </div>
 
@@ -75,5 +74,5 @@
   </ul>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.6.2/fuse.min.js" integrity="sha512-Nqw1tH3mpavka9cQCc5zWWEZNfIPdOYyQFjlV1NvflEtQ0/XI6ZQ+H/D3YgJdqSUJlMLAPRj/oXlaHCFbFCjoQ==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/minisearch@6.3.0/dist/umd/index.min.js"></script>
 {{ partial "script.html" (dict "src" "js/registrySearch.js") -}}

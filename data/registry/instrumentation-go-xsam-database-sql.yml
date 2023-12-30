@@ -9,7 +9,13 @@ tags:
   - sql
 license: Apache 2.0
 description: Instrumentation for the Golang `database/sql` package.
-authors: Sam Xie (XSAM)
+authors:
+  - name: Sam Xie
+    url: https://github.com/XSAM
+package:
+  name: github.com/XSAM/otelsql
+  registry: go
+  version: v0.27.0
 urls:
   repo: https://github.com/XSAM/otelsql
 createdAt: 2021-10-12

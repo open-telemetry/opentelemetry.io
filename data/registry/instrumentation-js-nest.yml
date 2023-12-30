@@ -8,7 +8,9 @@ tags:
   - nestjs
 license: MIT
 description: Instrumentation library for Nest.
-authors: Metin Seylan (metinsyln@gmail.com)
+authors:
+  - name: Metin Seylan 
+    email: metinsyln@gmail.com
 urls:
   repo: https://github.com/MetinSeylan/Nestjs-OpenTelemetry
 createdAt: 2021-07-08

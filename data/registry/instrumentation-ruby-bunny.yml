@@ -7,7 +7,8 @@ tags:
   - bunny
 license: Apache 2.0
 description: Bunny instrumentation for Ruby.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/bunny
 createdAt: 2020-11-09

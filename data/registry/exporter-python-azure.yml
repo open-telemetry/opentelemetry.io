@@ -6,9 +6,10 @@ tags:
   - exporter
   - Azure Monitor
   - Application Insights
-license: MIT License
+license: MIT
 description: The OpenTelemetry Azure Monitor Exporter for Python
-authors: Microsoft Authors
+authors:
+  - name: Microsoft Authors
 urls:
   repo: https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/monitor/azure-monitor-opentelemetry-exporter
 createdAt: 2020-04-02

@@ -10,7 +10,8 @@ license: Apache 2.0
 description:
   Automatically instruments events emitted by the NEST/Elasticsearch.Net client
   library.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.ElasticsearchClient
 createdAt: 2022-10-28

@@ -8,7 +8,8 @@ tags:
   - exporter
 license: Apache 2.0
 description: This library provides a span exporter using the Zipkin protocol.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-erlang/tree/main/apps/opentelemetry_zipkin
 createdAt: 2022-03-23

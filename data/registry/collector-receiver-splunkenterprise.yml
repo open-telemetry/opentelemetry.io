@@ -8,7 +8,8 @@ tags:
   - collector
 license: Apache 2.0
 description:
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/splunkenterprisereceiver
 createdAt: 2020-11-05

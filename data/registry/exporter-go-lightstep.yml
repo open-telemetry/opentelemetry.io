@@ -6,7 +6,8 @@ tags:
   - exporter
 license: Apache 2.0
 description: The OpenTelemetry Lightstep Exporter for Go.
-authors: Lightstep Authors
+authors:
+  - name: Lightstep Authors
 urls:
   repo: https://github.com/lightstep/opentelemetry-exporter-go
 createdAt: 2020-02-05

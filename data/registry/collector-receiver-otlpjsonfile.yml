@@ -8,7 +8,8 @@ tags:
 license: Apache 2.0
 description:
   This receiver will read pipeline data from JSON files. The data is written in
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/otlpjsonfilereceiver
 createdAt: 2020-11-05

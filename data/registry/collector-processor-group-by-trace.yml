@@ -10,7 +10,8 @@ description:
   The Group by Trace Processor for the OpenTelemetry Collector collects all the
   spans from the same trace, waiting a pre-determined amount of time before
   releasing the trace to the next processor.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/groupbytraceprocessor
 createdAt: 2021-02-24

@@ -7,7 +7,8 @@ tags:
   - instrumentation
 license: MIT
 description: An OpenTelemetry middleware for Perl's Plack.
-authors: abh
+authors:
+  - name: abh
 urls:
   repo: https://github.com/abh/Plack-Middleware-OpenTelemetry
 createdAt: 2023-12-05

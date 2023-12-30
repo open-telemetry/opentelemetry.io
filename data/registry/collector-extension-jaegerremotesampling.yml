@@ -10,7 +10,8 @@ license: Apache 2.0
 description:
   This extension allows serving sampling strategies following the Jaeger's
   remote sampling API.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/jaegerremotesampling
 createdAt: 2022-11-07

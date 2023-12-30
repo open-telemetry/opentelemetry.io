@@ -8,7 +8,8 @@ tags:
   - collector
 license: Apache 2.0
 description: The Coralogix Exporter for the OpenTelemetry Collector.
-authors: Coralogix
+authors:
+  - name: Coralogix
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/coralogixexporter
 createdAt: 2020-11-05

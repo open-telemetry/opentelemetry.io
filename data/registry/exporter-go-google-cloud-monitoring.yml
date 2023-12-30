@@ -6,7 +6,8 @@ tags:
   - exporter
 license: Apache 2.0
 description: The OpenTelemetry Google Cloud Monitoring Exporter for Go.
-authors: Google Authors
+authors:
+  - name: Google Authors
 urls:
   repo: https://github.com/GoogleCloudPlatform/opentelemetry-operations-go/tree/main/exporter/metric
 createdAt: 2020-04-01

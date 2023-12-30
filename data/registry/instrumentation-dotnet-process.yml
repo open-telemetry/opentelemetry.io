@@ -9,7 +9,8 @@ license: Apache 2.0
 description:
   This is an Instrumentation Library, which instruments .NET and collect
   telemetry about process behavior.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.Process
 createdAt: 2022-10-28

@@ -8,7 +8,8 @@ tags:
   - java
 license: Apache 2.0
 description: This package provides an instrumentation library for Viburdbcp
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/vibur-dbcp-11.0
 createdAt: 2020-11-05

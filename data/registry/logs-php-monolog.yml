@@ -6,7 +6,8 @@ tags:
   - logs
 license: Apache 2.0
 description: MonoLog Log Appender for PHP.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Logs/Monolog
 createdAt: 2022-12-14

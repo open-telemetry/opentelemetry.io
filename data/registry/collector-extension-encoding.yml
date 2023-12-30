@@ -9,7 +9,8 @@ license: Apache 2.0
 description:
   The encoding extension allows for other components to reference ingress/egress
   data formats
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/encoding
 createdAt: 2022-10-25

@@ -8,7 +8,8 @@ tags:
   - js
 license: Apache 2.0
 description: Resource detector for Alibaba Cloud
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node/opentelemetry-resource-detector-alibaba-cloud
 createdAt: 2022-12-07

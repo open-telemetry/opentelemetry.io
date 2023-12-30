@@ -9,7 +9,8 @@ license: Apache 2.0
 description:
   Instruments WCF clients and/or services using implementations of
   IClientMessageInspector and IDispatchMessageInspector respectively.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.Wcf
 createdAt: 2022-10-28

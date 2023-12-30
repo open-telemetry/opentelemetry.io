@@ -5,9 +5,10 @@ tags:
   - go
   - instrumentation
   - redis
-license: BSD 2-Clause
+license: BSD-2-Clause
 description: Instrumentation for go-redis Redis client.
-authors: go-redis Authors
+authors:
+  - name: go-redis Authors
 urls:
   repo: https://github.com/redis/go-redis/tree/master/extra/redisotel
 createdAt: 2021-04-19

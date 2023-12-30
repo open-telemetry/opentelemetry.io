@@ -7,7 +7,8 @@ tags:
   - collector
 license: Apache 2.0
 description: The OpenTelemetry Collector Exporter for Loki
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/lokiexporter
 createdAt: 2020-10-22

@@ -8,7 +8,8 @@ tags:
   - go
 license: Apache 2.0
 description: Package otelmacaron instruments gopkg.in/macaron.v1.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://go.opentelemetry.io/contrib/instrumentation/gopkg.in/macaron.v1/otelmacaron
 createdAt: 2023-12-05

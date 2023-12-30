@@ -7,7 +7,9 @@ tags:
   - instrumentation
 license: Apache 2.0
 description: OpenTelemetry compliant tracing instrumentation for the Prisma ORM.
-authors: Prisma (hello@prisma.io)
+authors:
+  - name: Prisma 
+    email: hello@prisma.io
 urls:
   repo: https://github.com/prisma/prisma/tree/main/packages/instrumentation
 createdAt: 2022-08-25

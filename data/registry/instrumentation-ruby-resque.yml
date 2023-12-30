@@ -8,7 +8,8 @@ tags:
   - resque
 license: Apache 2.0
 description: Resque instrumentation for Ruby.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/resque
 createdAt: 2020-11-09

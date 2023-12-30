@@ -11,7 +11,8 @@ description:
   transform any fields on traces, metrics, and logs within the collector. It
   utilizes a transformation language to define transformations and conditions
   and then applies those transformations to the specified telemetry.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor
 createdAt: 2022-10-11

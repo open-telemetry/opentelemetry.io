@@ -12,7 +12,8 @@ description: >
   This library provides support for propagating trace context in the Google
   Cloud X-Cloud-Trace-Context format.
 
-authors: Google
+authors:
+  - name: Google
 urls:
   repo: https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/tree/main/opentelemetry-propagator-gcp
 createdAt: 2020-08-13

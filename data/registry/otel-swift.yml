@@ -8,7 +8,8 @@ tags:
   - tvOS
 license: Apache 2.0
 description: The OpenTelemetry API and SDK for Swift.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-swift
 createdAt: 2021-06-22

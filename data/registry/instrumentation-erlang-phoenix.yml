@@ -8,7 +8,8 @@ tags:
 license: Apache 2.0
 description:
   Telemetry handler that creates OpenTelemetry spans from Phoenix events.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_phoenix
 createdAt: 2022-03-23

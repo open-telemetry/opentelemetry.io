@@ -8,7 +8,9 @@ tags:
   - remix-run
 license: Apache 2.0
 description: Remix instrumentation for Node.js.
-authors: Justin Smith (justindsmith@gmail.com)
+authors:
+  - name: Justin Smith 
+    email: justindsmith@gmail.com
 urls:
   repo: https://github.com/justindsmith/opentelemetry-instrumentations-js/tree/main/packages/instrumentation-remix
 createdAt: 2022-02-10

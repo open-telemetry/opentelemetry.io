@@ -14,7 +14,9 @@ description:
   to send data to Sentry and to associate traces/spans to Sentry errors. For
   configuration details, see [OpenTelemetry
   Support](https://docs.sentry.io/platforms/java/performance/instrumentation/opentelemetry/).
-authors: Sentry authors <otel@sentry.io>
+authors:
+  - name: Sentry authors 
+    email: otel@sentry.io
 urls:
   repo: https://github.com/getsentry/sentry-java/tree/main/sentry-opentelemetry
 createdAt: 2023-01-31

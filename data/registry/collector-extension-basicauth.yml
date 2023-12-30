@@ -11,7 +11,8 @@ description:
   This extension implements both configauth.ServerAuthenticator and
   configauth.ClientAuthenticator to authenticate clients and servers using Basic
   Authentication.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/basicauthextension
 createdAt: 2022-11-07

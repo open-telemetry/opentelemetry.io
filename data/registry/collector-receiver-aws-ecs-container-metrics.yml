@@ -11,7 +11,8 @@ description:
   task metadata and docker stats from Amazon ECS Task Metadata Endpoint, and
   generates resource usage metrics (such as CPU, memory, network, and disk) from
   them.
-authors: Amazon Web Services
+authors:
+  - name: Amazon Web Services
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/awsecscontainermetricsreceiver
 createdAt: 2021-02-26

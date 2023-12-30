@@ -8,7 +8,8 @@ tags:
   - dotnet
 license: Apache 2.0
 description: Stackdriver Exporter for OpenTelemetry .NET
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Exporter.Stackdriver
 createdAt: 2022-11-07

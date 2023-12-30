@@ -9,7 +9,8 @@ tags:
   - sql
 license: Apache 2.0
 description: Instrumentation for the Golang `database/sql` package.
-authors: Splunk Inc.
+authors:
+  - name: Splunk Inc.
 urls:
   repo: https://github.com/signalfx/splunk-otel-go/tree/main/instrumentation/database/sql/splunksql
 createdAt: 2021-10-12

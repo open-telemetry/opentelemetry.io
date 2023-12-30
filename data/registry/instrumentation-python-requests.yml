@@ -7,7 +7,8 @@ tags:
 license: Apache 2.0
 description:
   This library allows tracing HTTP requests made by the requests library.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-requests
 createdAt: 2020-05-11

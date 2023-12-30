@@ -10,7 +10,8 @@ description:
   The Receiver Creator Receiver for the OpenTelemetry Collector can instantiate
   other receivers at runtime based on whether observed endpoints match a
   configured rule.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/receivercreator
 createdAt: 2021-02-26

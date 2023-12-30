@@ -11,7 +11,8 @@ description:
   Resource that matches with the specified attributes. As a result, all spans,
   log records or metric data points with the same values for the specified
   attributes are "grouped" under the same Resource.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/groupbyattrsprocessor
 createdAt: 2021-02-24

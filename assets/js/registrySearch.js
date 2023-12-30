@@ -1,20 +1,13 @@
 let summaryInclude = 60;
-let fuseOptions = {
-  shouldSort: true,
-  includeMatches: true,
-  threshold: 0.1,
-  tokenize: true,
-  location: 0,
-  distance: 100,
-  maxPatternLength: 32,
-  minMatchCharLength: 1,
-  keys: [
-    { name: 'title', weight: 0.8 },
-    { name: 'description', weight: 0.5 },
-    { name: 'tags', weight: 0.3 },
-    { name: 'categories', weight: 0.3 }
-  ],
-};
+
+let miniSearchOptions = {
+  fields: ['title', 'description'], // fields to index for full-text search
+  prefix: true,
+  boost: { 
+    title: 2 
+  },
+  fuzzy: 0.2
+}
 
 // Get searchQuery for queryParams
 let pathName = window.location.pathname;
@@ -60,8 +53,10 @@ function executeSearch(searchQuery) {
   fetch('/ecosystem/registry/index.json')
     .then((res) => res.json())
     .then((json) => {
-      let fuse = new Fuse(json, fuseOptions);
-      let results = fuse.search(searchQuery);
+      let miniSearch = new MiniSearch(miniSearchOptions);
+      miniSearch.addAll(json)
+
+      let results = miniSearch.search(searchQuery)
 
       if (results.length > 0) {
         populateResults(results);
@@ -74,44 +69,11 @@ function executeSearch(searchQuery) {
 
 // Populate the search results and render to the page
 function populateResults(results) {
-  results.forEach((result, key) => {
-    let contents = result.item.description;
-    let snippet = '';
-    let snippetHighlights = [];
-
-    if (fuseOptions.tokenize) {
-      snippetHighlights.push(searchQuery);
-    } else {
-      result.matches.forEach((match) => {
-        if (match.key === 'tags' || match.key === 'categories') {
-          snippetHighlights.push(match.value);
-        } else if (match.key === 'description') {
-          start =
-            match.indices[0][0] - summaryInclude > 0
-              ? match.indices[0][0] - summaryInclude
-              : 0;
-          end =
-            match.indices[0][1] + summaryInclude < contents.length
-              ? match.indices[0][1] + summaryInclude
-              : contents.length;
-          snippet += contents.substring(start, end);
-          snippetHighlights.push(
-            match.value.substring(
-              match.indices[0][0],
-              match.indices[0][1] - mvalue.indices[0][0] + 1,
-            ),
-          );
-        }
-      });
-    }
-
-    if (snippet.length < 1 && contents.length > 0) {
-      snippet += contents.substring(0, summaryInclude * 2);
-    }
-
+  results.forEach((result) => {
+    console.log(result)
     // fetch existing entry and copy to search results
     let output = document.querySelector(
-      `[data-registry-id="${result.item._key}"]`,
+      `[data-registry-id="${result._key}"]`,
     ).outerHTML;
     document.querySelector('#search-results').innerHTML += output;
   });

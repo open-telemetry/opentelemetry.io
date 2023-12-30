@@ -10,7 +10,8 @@ license: Apache 2.0
 description:
   The sqlserver receiver grabs metrics about a Microsoft SQL Server instance
   using the Windows Performance Counters.
-authors: OpenTelemetry Authors
+authors:
+  - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/sqlserverreceiver
 createdAt: 2022-10-25
