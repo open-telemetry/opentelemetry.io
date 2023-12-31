@@ -14,3 +14,6 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/awscontainerinsightreceiver
 createdAt: 2022-10-25
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/awscontainerinsightreceiver

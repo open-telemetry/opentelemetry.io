@@ -16,3 +16,6 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor
 createdAt: 2022-10-11
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/processor/transformprocessor

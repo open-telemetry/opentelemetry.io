@@ -14,3 +14,6 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/spanprocessor
 createdAt: 2021-02-24
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/processor/spanprocessor
