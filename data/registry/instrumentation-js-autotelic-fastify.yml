@@ -15,3 +15,6 @@ authors:
 urls:
   repo: https://github.com/autotelic/fastify-opentelemetry
 createdAt: 2020-08-28
+package: 
+  name: "@autotelic/fastify-opentelemetry"
+  registry: npm

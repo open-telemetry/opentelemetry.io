@@ -6,10 +6,7 @@ tags:
   - processor
   - collector
 license: Apache 2.0
-description:
-  The Metrics Transform Processor for the OpenTelemetry Collector can be used to
-  rename metrics, and add, rename or delete label keys and values. It can also
-  be used to perform aggregations on metrics across labels or label values.
+description: The Metrics Transform Processor for the OpenTelemetry Collector can be used to rename metrics, and add, rename or delete label keys and values. It can also be used to perform aggregations on metrics across labels or label values.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -18,3 +15,4 @@ createdAt: 2021-02-24
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/processor/metricstransformprocessor
+  version: v0.91.0

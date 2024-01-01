@@ -6,9 +6,7 @@ tags:
   - extension
   - collector
 license: Apache 2.0
-description:
-  The Health Check Extension for the OpenTelemetry Collector enables an HTTP URL
-  that can be probed to check the status of the OpenTelemetry Collector.
+description: The Health Check Extension for the OpenTelemetry Collector enables an HTTP URL that can be probed to check the status of the OpenTelemetry Collector.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -17,3 +15,4 @@ createdAt: 2021-02-24
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/extension/healthcheckextension
+  version: v0.91.0

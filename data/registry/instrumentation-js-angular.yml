@@ -14,3 +14,6 @@ authors:
 urls:
   repo: https://github.com/jufab/opentelemetry-angular-interceptor
 createdAt: 2020-06-30
+package:
+  name: "@jufab/opentelemetry-angular-interceptor"
+  registry: npm

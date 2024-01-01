@@ -6,10 +6,7 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description:
-  The Receiver Creator Receiver for the OpenTelemetry Collector can instantiate
-  other receivers at runtime based on whether observed endpoints match a
-  configured rule.
+description: The Receiver Creator Receiver for the OpenTelemetry Collector can instantiate other receivers at runtime based on whether observed endpoints match a configured rule.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -18,3 +15,4 @@ createdAt: 2021-02-26
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/receivercreator
+  version: v0.91.0

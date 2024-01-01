@@ -16,3 +16,7 @@ authors:
 urls:
   repo: https://github.com/Farfetch/kafkaflow/tree/master/src/KafkaFlow.OpenTelemetry
 createdAt: 2023-12-07
+isFirstParty: true
+package:
+  name: KafkaFlow.OpenTelemetry
+  registry: nuget

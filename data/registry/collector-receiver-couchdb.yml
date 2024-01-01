@@ -17,3 +17,4 @@ createdAt: 2020-11-05
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/couchdbreceiver
+  version: v0.91.0

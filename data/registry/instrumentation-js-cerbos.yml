@@ -15,3 +15,7 @@ authors:
 urls:
   repo: https://github.com/cerbos/cerbos-sdk-javascript/
 createdAt: 2023-09-13
+package:
+  name: "@cerbos/opentelemetry"
+  registry: npm
+isFirstParty: true

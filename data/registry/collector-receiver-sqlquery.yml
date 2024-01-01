@@ -6,9 +6,7 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description:
-  The SQL Query Receiver uses custom SQL queries to generate metrics from a
-  database connection.
+description: The SQL Query Receiver uses custom SQL queries to generate metrics from a database connection.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -17,3 +15,4 @@ createdAt: 2022-10-25
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/sqlqueryreceiver
+  version: v0.91.0
