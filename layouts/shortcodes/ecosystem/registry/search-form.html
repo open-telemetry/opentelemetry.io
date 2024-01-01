@@ -27,12 +27,20 @@
 {{ end -}}
 {{ $types = $types | uniq | sort -}}
 
+<div class="alert alert-info">
+The OpenTelemetry Registry allows you to search for instrumentation libraries,
+collector components, utilities, and other useful projects in the OpenTelemetry
+ecosystem. If you a project maintainer, you can <a href="/ecosystem/registry/adding/">add your project to the OpenTelemetry Registry</a>
+</div>
+
 <div class="pb-4">
   <form action="/ecosystem/registry" id="searchForm">
     <div class="input-group">
-      <span class="input-group-text" id="basic-addon1" title="{{ len $registry }} entries">Search</span>
-      <input class="form-control w-auto" id="search-query" type="text" name="s"
+      <span class="input-group-text" id="basic-addon1" title="{{ len $registry }} entries">Search {{ len $registry }} entries</span>
+      <input class="form-control w-auto" list="search-suggestions" id="input-s" type="text" name="s" placeholder="Type to search…"
         aria-label="Registry search input field">
+        <datalist id="search-suggestions"></datalist>
+
 
       <input type="hidden" name="component" id="input-component" value="" />
       <input type="hidden" name="language" id="input-language" value="" />
@@ -40,7 +48,7 @@
       <button type="button" class="btn btn-outline-success"
         onclick="document.getElementById('searchForm').submit();">Submit</button>
       <button type="button" class="btn btn-outline-danger"
-        onclick="document.getElementById('search-query').value = ''; document.getElementById('input-language').value = 'all';document.getElementById('input-component').value = 'all';document.getElementById('searchForm').submit();">Reset</button>
+        onclick="document.getElementById('input-s').value = ''; document.getElementById('input-language').value = 'all';document.getElementById('input-component').value = 'all';document.getElementById('searchForm').submit();">Reset</button>
 
       <button class="btn btn-outline-secondary dropdown-toggle" id="languageDropdown" type="button"
         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
@@ -65,6 +73,10 @@
 </div>
 
 <div class="mx-auto">
+  <div class="text-center text-primary" style="display: none" id="search-loading">
+    <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+    <span role="status">Loading results…</span>
+  </div>
   <ul class="list-unstyled" id="search-results"></ul>
   <ul class="list-unstyled" id="default-body">
     {{ range $key, $value := $registry -}}

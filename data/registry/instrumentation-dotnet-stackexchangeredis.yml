@@ -16,3 +16,6 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.StackExchangeRedis
 createdAt: 2022-10-28
+package:
+  registry: nuget
+  name: OpenTelemetry.Instrumentation.StackExchangeRedis

@@ -14,3 +14,5 @@ authors:
     email: first author email (optional)
     url: first author URL (github handle, optional)
 createdAt: <date> # Set todays date
+isNative: false # set this to true only if OpenTelemetry is directly integrated into your software (no plugin, no instrumentation library)
+isFirstParty: false # set this to true if "isNative" is set to false, but the plugin / instrumentation library is from the same vendor/project as the instrumented software

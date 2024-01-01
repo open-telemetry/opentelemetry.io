@@ -39,6 +39,9 @@ get_latest_version() {
             lower_case_package_name=$(echo "$package_name" | tr '[:upper:]' '[:lower:]')
             curl -s "https://api.nuget.org/v3/registration5-gz-semver2/${lower_case_package_name}/index.json" | gunzip | jq -r '.items[0].upper'
             ;;
+        hex)
+            curl -s "https://hex.pm/api/packages/$package_name" | jq -r '.releases | max_by(.inserted_at) | .version'
+            ;;
         *)
             echo "Registry not supported."
             ;;
@@ -57,6 +60,11 @@ fi
 
 # Get latest version
 latest_version=$(get_latest_version "$name" "$registry")
+
+if [ "$latest_version" == "Registry not supported." ]; then
+    echo "Registry not supported.";
+    exit 0
+fi
 
 # If version field is missing, populate it with the latest version
 if [ -z "$current_version" ]; then

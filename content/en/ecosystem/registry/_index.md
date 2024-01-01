@@ -19,7 +19,7 @@ body_class: registry
 weight: 20
 ---
 
-{{% blocks/lead color="white" %}}
+{{% blocks/lead color="dark" %}}
 
 <!-- markdownlint-disable single-h1 -->
 
@@ -28,23 +28,6 @@ weight: 20
 {{% param description %}}
 
 {{% /blocks/lead %}}
-
-{{% blocks/section color="dark" %}}
-
-## What do you need?
-
-The OpenTelemetry Registry allows you to search for instrumentation libraries,
-collector components, utilities, and other useful projects in the OpenTelemetry
-ecosystem.
-
-- Not able to find an exporter for your language? Remember, the
-  [OpenTelemetry Collector](/docs/collector) supports exporting to a variety of
-  systems and works with all OpenTelemetry Core Components!
-- Are you a project maintainer? See,
-  [Adding a project to the OpenTelemetry Registry](adding).
-- Check back regularly, the community and registry are growing!
-
-{{% /blocks/section %}}
 
 {{< blocks/section color="white" type="container-lg" >}}
 

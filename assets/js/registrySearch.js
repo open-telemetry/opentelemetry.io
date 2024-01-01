@@ -1,13 +1,25 @@
-let summaryInclude = 60;
-
-let miniSearchOptions = {
-  fields: ['title', 'description'], // fields to index for full-text search
+const miniSearchOptions = {
+  fields: ['title', 'description', '_key', 'tags', 'package.name', 'license', 'language', 'registryType'], // fields to index for full-text search
+  storeFields: ['title', '_key'], // fields to return with search results
   prefix: true,
   boost: { 
-    title: 2 
+    title: 4,
+    tags: 3,
+    description: 2
   },
-  fuzzy: 0.2
+  fuzzy: 0.2,
+  extractField: (document, fieldName) => {
+    if (Array.isArray(document[fieldName])) {
+      return document[fieldName].join(' ')
+    }
+    return fieldName.split('.').reduce((doc, key) => doc && doc[key], document)
+  }
 }
+
+const originalDocumentTitle = document.title
+
+let fetched = false;
+const miniSearch = new MiniSearch(miniSearchOptions);
 
 // Get searchQuery for queryParams
 let pathName = window.location.pathname;
@@ -20,15 +32,9 @@ parseUrlParams();
 if (pathName.includes('registry')) {
   // Run search or display default body
   if (searchQuery) {
-    document.title = searchQuery + ' at ' + document.title;
-    document.querySelector('#search-query').value = searchQuery;
-    document.querySelector('#default-body').style.display = 'none';
     executeSearch(searchQuery);
   } else {
-    let defaultBody = document.querySelector('#default-body');
-    if (defaultBody.style.display === 'none') {
-      defaultBody.style.display = 'block';
-    }
+    showBody();
   }
 
   if (selectedLanguage !== 'all' || selectedComponent !== 'all') {
@@ -46,41 +52,23 @@ if (pathName.includes('registry')) {
     }
     updateFilters();
   }
-}
 
-// Runs search through Fuse for fuzzy search
-function executeSearch(searchQuery) {
-  fetch('/ecosystem/registry/index.json')
-    .then((res) => res.json())
-    .then((json) => {
-      let miniSearch = new MiniSearch(miniSearchOptions);
-      miniSearch.addAll(json)
-
-      let results = miniSearch.search(searchQuery)
-
-      if (results.length > 0) {
-        populateResults(results);
-      } else {
-        document.querySelector('#search-results').innerHTML +=
-          '<p>No matches found</p>';
-      }
-    });
-}
-
-// Populate the search results and render to the page
-function populateResults(results) {
-  results.forEach((result) => {
-    console.log(result)
-    // fetch existing entry and copy to search results
-    let output = document.querySelector(
-      `[data-registry-id="${result._key}"]`,
-    ).outerHTML;
-    document.querySelector('#search-results').innerHTML += output;
-  });
-}
-
-if (pathName.includes('registry')) {
   document.addEventListener('DOMContentLoaded', (event) => {
+
+    let searchForm = document.getElementById('searchForm')
+    searchForm.addEventListener('submit', function (evt) {
+      evt.preventDefault()
+      let val = document.getElementById('input-s').value;
+      setInput('s', val)
+      parseUrlParams()
+      executeSearch(searchQuery)
+    })
+
+    let searchInput = document.getElementById('input-s')
+    searchInput.addEventListener('keyup', function (evt) {
+      autoSuggest(evt.target.value)
+    })
+
     let languageList = document
       .getElementById('languageFilter')
       .querySelectorAll('.dropdown-item');
@@ -107,6 +95,95 @@ if (pathName.includes('registry')) {
         updateFilters();
       }),
     );
+  });
+}
+
+
+function showBody() {
+  document.title = originalDocumentTitle
+  document.querySelector('#search-results').innerHTML = '';
+  let defaultBody = document.querySelector('#default-body');
+  if (defaultBody.style.display === 'none') {
+    defaultBody.style.display = 'block';
+  }
+}
+
+// Runs search through Fuse for fuzzy search
+function executeSearch(searchQuery) {
+  if(searchQuery === '') {
+    showBody()
+    return
+  }
+
+  document.title = searchQuery + ' at ' + originalDocumentTitle;
+  document.querySelector('#input-s').value = searchQuery;
+  document.querySelector('#default-body').style.display = 'none';
+  document.querySelector('#search-results').innerHTML = '';
+  document.getElementById('search-loading').style.display = 'block';
+
+  const run = function(searchQuery) {
+    // The 0-timeout is here if search is blocking, such that the "search loading" is rendered properly
+    setTimeout(() => {
+      let results = miniSearch.search(searchQuery)
+      document.getElementById('search-loading').style.display = 'none';
+      
+      if (results.length > 0) {
+        populateResults(results);
+      } else {
+        document.querySelector('#search-results').innerHTML +=
+          '<p>No matches found</p>';
+      }
+    }, 0)
+  }
+  
+  if(fetched) {
+    run(searchQuery)
+  } else {
+    fetch('/ecosystem/registry/index.json')
+      .then((res) => res.json())
+      .then((json) => {
+        fetched = true
+        miniSearch.addAll(json)
+        run(searchQuery)
+    });
+  }
+}
+
+function autoSuggest(value) {
+  if(value === '') {
+    return
+  }
+
+  const run = function(value) {
+    const suggestions = miniSearch.autoSuggest(value, {
+      // we only use title, otherwise we get strange suggestions, especially with description
+      fields: ['title']
+    });
+    const list = document.getElementById('search-suggestions');
+    list.innerHTML = suggestions.map(({ suggestion }) => `<option>${suggestion}</option>`).join('');
+  }
+
+  if(fetched) {
+    run(value)
+  } else {
+    fetch('/ecosystem/registry/index.json')
+      .then((res) => res.json())
+      .then((json) => {
+        fetched = true
+        miniSearch.addAll(json)
+        run(value)
+    });
+  }
+}
+
+// Populate the search results and render to the page
+function populateResults(results) {
+  results.forEach((result) => {
+    // fetch existing entry and copy to search results
+    let output = document.querySelector(
+      `[data-registry-id="${result._key}"]`,
+    ).outerHTML;
+    document.querySelector('#search-results').innerHTML += output;
   });
 }
 

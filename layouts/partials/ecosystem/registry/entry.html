@@ -5,39 +5,50 @@
         $remoteRegistries := dict
             "npm" (dict 
                 "urlPattern" "https://npmjs.com/package/%s"
-                "installTemplate" "ecosystem/registry/package-manager-quickinstall.md"
+                "installTemplate" "ecosystem/registry/quickinstall/default.md"
                 "installLine" "npm install %s"
                 "icon" "fab fa-npm")
             "packagist" (dict
                 "urlPattern" "https://packagist.org/packages/%s"
                 "installLine" "composer install %s"
-                "installTemplate" "ecosystem/registry/package-manager-quickinstall.md"
+                "installTemplate" "ecosystem/registry/quickinstall/default.md"
                 "icon" "fa-solid fa-box-open")
             "gems" (dict
                 "urlPattern" "https://rubygems.org/gems/%s"
                 "installLine" "gem install %s"
-                "installTemplate" "ecosystem/registry/package-manager-quickinstall.md"
+                "installTemplate" "ecosystem/registry/quickinstall/default.md"
                 "icon" "fa-solid fa-gem")
             "go" (dict
                 "urlPattern" "https://pkg.go.dev/%s"
                 "installLine" "go get %s"
-                "installTemplate" "ecosystem/registry/package-manager-quickinstall.md"
+                "installTemplate" "ecosystem/registry/quickinstall/default.md"
                 "icon" "fa-brands fa-golang")
             "go-collector" (dict
                 "urlPattern" "https://pkg.go.dev/%s"
-                "installTemplate" "ecosystem/registry/collector-quickinstall.md"
+                "installTemplate" "ecosystem/registry/quickinstall/collector.md"
                 "icon" "fa-solid fa-box-open")
             "nuget" (dict
                 "urlPattern" "https://www.nuget.org/packages/%s"
                 "installLine" "dotnet add package %s"
-                "installTemplate" "ecosystem/registry/package-manager-quickinstall.md"
+                "installTemplate" "ecosystem/registry/quickinstall/default.md"
                 "icon" "fa-solid fa-box-open")
+            "pip" (dict
+                "urlPattern" "https://pypi.org/project/%s"
+                "installLine" "pip install %s"
+                "installTemplate" "ecosystem/registry/quickinstall/default.md"
+                "icon" "fa-brands fa-python")
+            "hex" (dict
+                "urlPattern" "https://hex.pm/packages/%s"
+                "installTemplate" "ecosystem/registry/quickinstall/hex.md"
+                "icon" "fa-brands fa-erlang")
     -}}
 
     {{ $isNativ := and (eq .registryType "instrumentation") (.isNative) }}
+    {{ $isFirstParty := and (eq .registryType "instrumentation") (.isFirstParty) }}
     {{ $currentTime := (time now) -}}
     {{ $delta := $currentTime.Sub (time.AsTime .createdAt) -}}
     {{ $isNew := lt $delta.Hours 730 -}}
+    {{ $usedInDemo := isset .urls "demo" }}
     {{ $package := "" -}}
     {{ if and (.package) (isset $remoteRegistries .package.registry) -}}
         {{ $package = merge .package (index $remoteRegistries .package.registry) -}}
@@ -50,6 +61,12 @@
     {{ if $isNativ -}}
         {{ $highlightStyle = "border-success" -}}
     {{ end -}}
+    {{ if $isFirstParty -}}
+        {{ $highlightStyle = "border-success" -}}
+    {{ end -}}
+    {{ if $usedInDemo -}}
+        {{ $highlightStyle = "border-secondary" -}}
+    {{ end -}}
     {{ $repoHref := printf "href=%q" .urls.repo | safeHTMLAttr -}}
     <li class="card my-3 registry-entry {{ $highlightStyle }}" data-registry-id="{{ ._key }}" data-registrytype="{{ .registryType }}" data-registrylanguage="{{ .language }}">
         <div class="card-body container-fluid">
@@ -59,10 +76,16 @@
             </a>
             <div class="ms-auto">
             {{ if $isNew -}}
-            <span class="badge rounded-pill ranslate-middle text-bg-info"><i class="fa-regular fa-star"></i> new</span>
+            <span class="badge rounded-pill text-bg-info"><i class="fa-regular fa-star"></i> new</span>
             {{ end -}}
             {{ if $isNativ -}}
             <span class="badge rounded-pill text-bg-success text-white"><i class="fa-solid fa-puzzle-piece"></i> native</span>
+            {{ end -}}
+            {{ if $isFirstParty -}}
+            <span class="badge rounded-pill text-bg-success text-white"><i class="fa-solid fa-heart"></i> first party integration</span>
+            {{ end -}}
+            {{ if $usedInDemo -}}
+            <span class="badge rounded-pill text-bg-secondary text-white" title="This package is used in the OpenTelemetry Demo!"><i class="fa-solid fa-shapes"></i> OTel Demo</span>
             {{ end -}}
             </div>
         </h4>
@@ -142,7 +165,7 @@
         </div>
         {{ with .urls.homepage -}}
         {{ $homepageHref := printf "href=%q" . | safeHTMLAttr -}}
-        <a {{ $homepageHref }} target="_blank" rel="noopener" class="card-link external-link">Homepage</a>
+        <a {{ $homepageHref }} target="_blank" rel="noopener" class="card-link">Homepage</a>
         {{- end -}}
         {{ with .urls.docs -}}
         {{ $docsHref := printf "href=%q" . | safeHTMLAttr -}}
@@ -150,11 +173,15 @@
         {{- end -}}
         {{ with $package -}}
         {{ $packageUrl := printf "href=%q" (printf .urlPattern .name) | safeHTMLAttr -}}
-        <a {{ $packageUrl }} target="_blank" rel="noopener" class="card-link external-link"><i class="{{ .icon }}" aria-hidden="true"></i>&nbspPackage Details ({{ .registry }})</a>
+        <a {{ $packageUrl }} target="_blank" rel="noopener" class="card-link"><i class="{{ .icon }}" aria-hidden="true"></i>&nbspPackage Details ({{ .registry }})</a>
         {{- end -}}
         {{ with .urls.repo -}}
         {{ $icon := cond ( hasPrefix . "https://github.com/" ) "fa-brands fa-github" "fab fa-git-alt" -}}
-        <a {{ $repoHref }} target="_blank" rel="noopener" class="card-link external-link"><i class="{{ $icon }}" aria-hidden="true"></i>&nbsp;Repository</a>
+        <a {{ $repoHref }} target="_blank" rel="noopener" class="card-link"><i class="{{ $icon }}" aria-hidden="true"></i>&nbsp;Repository</a>
+        {{- end -}}
+        {{ with .urls.demo -}}
+        {{ $demoUrl := printf "href=%q" (printf .) | safeHTMLAttr -}}
+        <a {{ $demoUrl }} target="_blank" rel="noopener" class="card-link"><i class="fa-solid fa-shapes" aria-hidden="true"></i>&nbsp;Demo Service</a>
         {{- end -}}
         </div>
     </li>

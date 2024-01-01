@@ -16,3 +16,6 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.Runtime
 createdAt: 2022-08-16
+package:
+  registry: nuget
+  name: OpenTelemetry.Instrumentation.Runtime
