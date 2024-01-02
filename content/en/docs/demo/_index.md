@@ -79,6 +79,6 @@ Project reference documentation, like requirements and feature matrices.
 - [Requirements](./requirements/)
 - [Screenshots](screenshots/)
 - [Service Roles Table](service-table/)
-- [Span Attributes Reference](manual-span-attributes/)
+- [Span Attributes Reference](telemetry-features/manual-span-attributes/)
 - [Tests](tests/)
 - [Trace Feature Matrix](telemetry-features/trace-features/)
