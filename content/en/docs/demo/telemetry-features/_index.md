@@ -1,6 +1,6 @@
 ---
-title: Demo Features
-linkTitle: Features
+title: Telemetry Features
+linkTitle: Telemetry Features
 aliases: [demo_features]
 ---
 
