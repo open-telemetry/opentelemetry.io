@@ -656,7 +656,7 @@ For example:
 ```yaml
 spec:
   exporter:
-    endpoint: http://otel-collector-collector.opentelemetry.svc.cluster.local:4317
+    endpoint: http://otel-collector.opentelemetry.svc.cluster.local:4317
 ```
 
 Here, the Collector endpoint is set to
