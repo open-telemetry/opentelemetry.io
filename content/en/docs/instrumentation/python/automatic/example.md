@@ -3,7 +3,7 @@ title: Auto-Instrumentation Example
 linkTitle: Example
 weight: 20
 # prettier-ignore
-cSpell:ignore: distro instrumentor mkdir MSIE Referer Starlette uninstrumented virtualenv
+cSpell:ignore: distro instrumentor mkdir MSIE Referer Starlette uninstrumented venv werkzeug
 ---
 
 This page demonstrates how to use Python auto-instrumentation in OpenTelemetry.
@@ -104,8 +104,8 @@ pip install opentelemetry-distro
 pip install 'flask<3' 'werkzeug<3' requests
 ```
 
-> **Note**: OpenTelemetry Python automatic instrumentation does not support Flask
-> or Werkzeug 3.0+ at this time.
+> **Note**: OpenTelemetry Python automatic instrumentation does not support
+> Flask or Werkzeug 3.0+ at this time.
 
 Run the `opentelemetry-bootstrap` command:
 
