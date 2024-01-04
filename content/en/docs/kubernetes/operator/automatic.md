@@ -538,7 +538,7 @@ Metadata:
 Spec:
 ...
  Exporter:
-   Endpoint:  http://otel-collector-collector.opentelemetry.svc.cluster.local:4318
+   Endpoint:  http://demo-collector.opentelemetry.svc.cluster.local:4318
 ...
  Propagators:
    tracecontext
@@ -656,12 +656,12 @@ For example:
 ```yaml
 spec:
   exporter:
-    endpoint: http://otel-collector.opentelemetry.svc.cluster.local:4317
+    endpoint: http://demo-collector.opentelemetry.svc.cluster.local:4317
 ```
 
 Here, the Collector endpoint is set to
-`http://otel-collector.opentelemetry.svc.cluster.local:4317`, where
-`otel-collector` is the name of the OTel Collector Kubernetes `Service`. In the
+`http://demo-collector.opentelemetry.svc.cluster.local:4317`, where
+`demo-collector` is the name of the OTel Collector Kubernetes `Service`. In the
 above example, the Collector is running in a different namespace from the
 application, which means that `opentelemetry.svc.cluster.local` must be appended
 to the Collector’s service name, where `opentelemetry` is the namespace in which
