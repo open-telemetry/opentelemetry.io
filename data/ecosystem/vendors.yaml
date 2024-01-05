@@ -216,6 +216,13 @@
   contact: ''
   oss: true
   commercial: true
+- name: OpenObserve
+  distribution: false
+  nativeOTLP: true
+  url: 'https://openobserve.ai'
+  contact: ''
+  oss: true
+  commercial: true
 - name: Oracle
   distribution: false
   nativeOTLP: true
