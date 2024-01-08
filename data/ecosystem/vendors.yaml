@@ -216,6 +216,13 @@
   contact: ''
   oss: true
   commercial: true
+- name: OpenObserve
+  distribution: false
+  nativeOTLP: true
+  url: 'https://openobserve.ai/docs/ingestion/logs/otlp/'
+  contact: 'hello@openobserve.ai'
+  oss: true
+  commercial: true
 - name: Oracle
   distribution: false
   nativeOTLP: true
