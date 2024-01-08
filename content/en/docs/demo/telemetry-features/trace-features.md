@@ -1,7 +1,7 @@
 ---
-title: Trace Feature Coverage by Service
-linkTitle: Trace Feature Coverage
-aliases: [trace_service_features]
+title: Trace Coverage by Service
+linkTitle: Trace Coverage
+aliases: [trace_service_features, ../trace_features]
 ---
 
 | Service            | Language        | Instrumentation Libraries | Manual Span Creation | Span Data Enrichment | RPC Context Propagation | Span Links | Baggage | Resource Detection |
