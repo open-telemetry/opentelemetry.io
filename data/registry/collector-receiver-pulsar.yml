@@ -1,3 +1,4 @@
+# cSpell:ignore pulsarreceiver
 title: Pulsar Receiver
 registryType: receiver
 language: collector

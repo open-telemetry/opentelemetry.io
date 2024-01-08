@@ -1,3 +1,4 @@
+# cSpell:ignore kafkaexporter
 title: Kafka Collector Exporter
 registryType: exporter
 language: collector

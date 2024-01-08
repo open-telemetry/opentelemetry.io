@@ -1,3 +1,4 @@
+# cSpell:ignore splunkhecexporter
 title: Splunk HTTP Event Collector (HEC) Exporter
 registryType: exporter
 language: collector

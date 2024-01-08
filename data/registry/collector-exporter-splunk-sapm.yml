@@ -1,4 +1,4 @@
-# cSpell:ignore sapm
+# cSpell:ignore sapm sapmexporter
 title: Splunk SAPM Collector Exporter
 registryType: exporter
 language: collector

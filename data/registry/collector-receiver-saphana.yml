@@ -1,4 +1,4 @@
-# cSpell:ignore hana
+# cSpell:ignore hana saphanareceiver
 title: SAP HANA Receiver
 registryType: receiver
 language: collector

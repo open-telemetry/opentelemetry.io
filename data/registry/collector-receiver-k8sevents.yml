@@ -1,3 +1,4 @@
+# cSpell:ignore k8seventsreceiver
 title: Kubernetes Events Receiver
 registryType: receiver
 language: collector

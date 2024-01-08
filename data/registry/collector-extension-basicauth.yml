@@ -1,4 +1,4 @@
-# cSpell:ignore basicauth configauth
+# cSpell:ignore basicauth configauth basicauthextension
 title: Basic Authenticator
 registryType: extension
 language: collector

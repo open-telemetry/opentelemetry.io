@@ -1,3 +1,4 @@
+# cSpell:ignore tailsamplingprocessor
 title: Tail Sampling Processor
 registryType: processor
 language: collector

@@ -1,3 +1,4 @@
+# cSpell:ignore awsecscontainermetricsreceiver
 title: AWS ECS Container Metrics Collector Receiver
 registryType: receiver
 language: collector

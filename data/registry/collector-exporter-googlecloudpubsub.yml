@@ -1,3 +1,4 @@
+# cSpell:ignore googlecloudpubsubexporter
 title: Google Cloud Pubsub Exporter
 registryType: exporter
 language: collector

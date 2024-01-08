@@ -1,4 +1,4 @@
-# cSpell:ignore k8sobjects
+# cSpell:ignore k8sobjects k8sobjectsreceiver
 title: Kubernetes Objects Receiver
 registryType: receiver
 language: collector

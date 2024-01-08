@@ -1,3 +1,4 @@
+# cSpell:ignore memorylimiterprocessor
 title: Memory Limiter Collector Processor
 registryType: processor
 language: collector

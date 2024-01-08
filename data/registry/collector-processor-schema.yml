@@ -1,3 +1,4 @@
+# cSpell:ignore schemaprocessor
 title: Schema Transformer Processor
 registryType: processor
 language: collector

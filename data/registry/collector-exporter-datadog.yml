@@ -1,3 +1,4 @@
+# cSpell:ignore datadogexporter
 title: Datadog Collector Exporter
 registryType: exporter
 language: collector

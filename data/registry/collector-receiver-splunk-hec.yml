@@ -1,3 +1,4 @@
+# cSpell:ignore splunkhecreceiver
 title: Splunk HEC Collector Receiver
 registryType: receiver
 language: collector

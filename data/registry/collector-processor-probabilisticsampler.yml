@@ -1,3 +1,4 @@
+# cSpell:ignore probabilisticsamplerprocessor
 title: Probabilistic Sampling Collector Processor
 registryType: processor
 language: collector

@@ -1,3 +1,4 @@
+# cSpell:ignore jmxreceiver
 title: JMX Collector Receiver
 registryType: receiver
 language: collector

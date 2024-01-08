@@ -1,3 +1,4 @@
+# cSpell:ignore azureblobreceiver
 title: Azure Blob Receiver
 registryType: receiver
 language: collector

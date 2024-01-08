@@ -1,3 +1,4 @@
+# cSpell:ignore tcplogreceiver
 title: TCP Receiver
 registryType: receiver
 language: collector

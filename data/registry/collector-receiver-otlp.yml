@@ -1,3 +1,4 @@
+# cSpell:ignore otlpreceiver
 title: OTLP Collector Receiver
 registryType: receiver
 language: collector

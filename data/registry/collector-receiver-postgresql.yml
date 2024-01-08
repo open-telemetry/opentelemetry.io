@@ -1,3 +1,4 @@
+# cSpell:ignore postgresqlreceiver
 title: PostgreSQL Receiver
 registryType: receiver
 language: collector

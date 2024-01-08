@@ -1,4 +1,4 @@
-# cSpell:ignore honeycombmarker
+# cSpell:ignore honeycombmarker honeycombmarkerexporter
 title: Honeycomb Marker Exporter
 registryType: exporter
 language: collector

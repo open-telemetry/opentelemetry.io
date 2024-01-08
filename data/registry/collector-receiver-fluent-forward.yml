@@ -1,3 +1,4 @@
+# cSpell:ignore fluentforwardreceiver
 title: Fluent Forward Collector Receiver
 registryType: receiver
 language: collector

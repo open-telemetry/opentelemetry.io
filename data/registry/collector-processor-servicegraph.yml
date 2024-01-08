@@ -1,3 +1,4 @@
+# cSpell:ignore servicegraphprocessor
 title: Service graph processor
 registryType: processor
 language: collector

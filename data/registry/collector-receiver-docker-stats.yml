@@ -1,3 +1,4 @@
+# cSpell:ignore dockerstatsreceiver
 title: Docker Stats Collector Receiver
 registryType: receiver
 language: collector

@@ -1,3 +1,4 @@
+# cSpell:ignore builder
 title: OpenTelemetry Collector Builder
 registryType: core
 language: collector

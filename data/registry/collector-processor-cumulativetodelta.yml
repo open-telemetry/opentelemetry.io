@@ -1,3 +1,4 @@
+# cSpell:ignore cumulativetodeltaprocessor
 title: Cumulative to Delta Processor
 registryType: processor
 language: collector

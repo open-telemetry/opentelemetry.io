@@ -1,3 +1,4 @@
+# cSpell:ignore dynatraceexporter
 title: Dynatrace Collector Exporter
 registryType: exporter
 language: collector

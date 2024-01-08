@@ -1,3 +1,4 @@
+# cSpell:ignore awsxrayreceiver
 title: AWS X-Ray Collector Receiver
 registryType: receiver
 language: collector

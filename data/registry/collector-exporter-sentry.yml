@@ -1,3 +1,4 @@
+# cSpell:ignore sentryexporter
 title: Sentry Collector Exporter
 registryType: exporter
 language: collector

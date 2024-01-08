@@ -1,4 +1,4 @@
-# cSpell:ignore oidc
+# cSpell:ignore oidc oidcauthextension
 title: OIDC authenticator extension
 registryType: extension
 language: collector

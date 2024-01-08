@@ -1,3 +1,4 @@
+# cSpell:ignore lokiexporter
 title: Loki Exporter
 registryType: exporter
 language: collector

@@ -1,4 +1,4 @@
-# cSpell:ignore filestats
+# cSpell:ignore filestats filestatsreceiver
 title: File Stats Receiver
 registryType: receiver
 language: collector

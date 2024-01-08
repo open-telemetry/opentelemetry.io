@@ -1,4 +1,4 @@
-# cSpell:ignore mezmo
+# cSpell:ignore mezmo mezmoexporter
 title: Mezmo Exporter
 registryType: exporter
 language: collector

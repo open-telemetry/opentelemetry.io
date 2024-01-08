@@ -1,3 +1,4 @@
+# cSpell:ignore mongodbatlasreceiver
 title: MongoDB Atlas Receiver
 registryType: receiver
 language: collector

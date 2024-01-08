@@ -1,4 +1,4 @@
-# cSpell:ignore sigv4
+# cSpell:ignore sigv4 sigv4authextension
 title: Authenticator - SigV4
 registryType: extension
 language: collector

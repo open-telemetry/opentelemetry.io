@@ -1,4 +1,4 @@
-# cSpell:ignore logicmonitor
+# cSpell:ignore logicmonitor logicmonitorexporter
 title: LogicMonitor Exporter
 registryType: exporter
 language: collector

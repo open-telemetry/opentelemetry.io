@@ -1,3 +1,4 @@
+# cSpell:ignore elasticsearchexporter
 title: Elasticsearch Exporter
 registryType: exporter
 language: collector

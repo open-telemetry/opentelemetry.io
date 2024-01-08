@@ -1,4 +1,4 @@
-# cSpell:ignore kubelet
+# cSpell:ignore kubelet kubeletstatsreceiver
 title: Kubelet Stats Collector Receiver
 registryType: receiver
 language: collector

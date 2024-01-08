@@ -1,3 +1,4 @@
+# cSpell:ignore googlecloudpubsubreceiver
 title: Google Pubsub Receiver
 registryType: receiver
 language: collector

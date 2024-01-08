@@ -1,3 +1,4 @@
+# cSpell:ignore prometheusremotewriteexporter
 title: Prometheus Remote Write Collector Exporter
 registryType: exporter
 language: collector

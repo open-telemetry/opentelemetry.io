@@ -1,3 +1,4 @@
+# cSpell:ignore instanaexporter
 title: Instana Collector Exporter
 registryType: exporter
 language: collector

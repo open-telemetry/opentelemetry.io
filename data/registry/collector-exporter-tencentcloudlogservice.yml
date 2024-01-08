@@ -1,3 +1,4 @@
+# cSpell:ignore tencentcloudlogserviceexporter
 title: TencentCloud LogService Exporter
 registryType: exporter
 language: collector

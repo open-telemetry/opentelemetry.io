@@ -1,3 +1,4 @@
+# cSpell:ignore clickhouseexporter
 title: ClickHouse Exporter
 registryType: exporter
 language: collector

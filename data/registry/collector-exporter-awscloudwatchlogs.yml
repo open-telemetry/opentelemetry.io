@@ -1,3 +1,4 @@
+# cSpell:ignore awscloudwatchlogsexporter
 title: AWS CloudWatch Logs Exporter
 registryType: exporter
 language: collector

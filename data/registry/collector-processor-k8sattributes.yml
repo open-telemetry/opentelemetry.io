@@ -1,3 +1,4 @@
+# cSpell:ignore k8sattributesprocessor
 title: K8s Attribute Processor
 registryType: processor
 language: collector

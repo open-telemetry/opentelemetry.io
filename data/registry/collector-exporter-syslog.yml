@@ -1,3 +1,4 @@
+# cSpell:ignore syslogexporter
 title: Syslog Exporter
 registryType: exporter
 language: collector

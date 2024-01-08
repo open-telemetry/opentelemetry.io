@@ -1,3 +1,4 @@
+# cSpell:ignore f5cloudexporter
 title: F5 Cloud Exporter
 registryType: exporter
 language: collector

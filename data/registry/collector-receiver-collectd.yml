@@ -1,3 +1,4 @@
+# cSpell:ignore collectdreceiver
 title: CollectD Collector Receiver
 registryType: receiver
 language: collector

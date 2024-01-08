@@ -1,3 +1,4 @@
+# cSpell:ignore bearertokenauthextension
 title: Bearer token authenticator extension
 registryType: extension
 language: collector

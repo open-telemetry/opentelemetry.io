@@ -1,3 +1,4 @@
+# cSpell:ignore jaegerreceiver
 title: Jaeger Collector Receiver
 registryType: receiver
 language: collector

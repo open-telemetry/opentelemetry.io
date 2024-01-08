@@ -1,3 +1,4 @@
+# cSpell:ignore rabbitmqreceiver
 title: RabbitMQ Receiver
 registryType: receiver
 language: collector

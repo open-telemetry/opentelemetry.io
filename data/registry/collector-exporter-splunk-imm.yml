@@ -1,3 +1,4 @@
+# cSpell:ignore signalfxexporter
 title: Splunk Infrastructure Monitoring Exporter
 registryType: exporter
 language: go

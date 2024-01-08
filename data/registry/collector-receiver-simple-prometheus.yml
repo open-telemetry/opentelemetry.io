@@ -1,3 +1,4 @@
+# cSpell:ignore simpleprometheusreceiver
 title: Simple Prometheus Collector Receiver
 registryType: receiver
 language: collector

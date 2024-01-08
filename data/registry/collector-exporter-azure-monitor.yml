@@ -1,3 +1,4 @@
+# cSpell:ignore azuremonitorexporter
 title: Azure Monitor Collector Exporter
 registryType: exporter
 language: collector

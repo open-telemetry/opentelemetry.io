@@ -1,4 +1,4 @@
-# cSpell:ignore sapm
+# cSpell:ignore sapm sapmreceiver
 title: SAPM Collector Receiver
 registryType: receiver
 language: collector

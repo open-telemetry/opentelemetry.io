@@ -1,4 +1,4 @@
-# cSpell:ignore cloudflare
+# cSpell:ignore cloudflare cloudflarereceiver
 title: Cloudflare Receiver
 registryType: receiver
 language: collector

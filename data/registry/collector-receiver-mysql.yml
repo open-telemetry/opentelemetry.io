@@ -1,4 +1,4 @@
-# cSpell:ignore inno
+# cSpell:ignore inno mysqlreceiver
 title: MySQL Receiver
 registryType: receiver
 language: collector

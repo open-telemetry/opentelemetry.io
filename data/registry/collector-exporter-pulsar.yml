@@ -1,3 +1,4 @@
+# cSpell:ignore pulsarexporter
 title: Pulsar Exporter
 registryType: exporter
 language: collector

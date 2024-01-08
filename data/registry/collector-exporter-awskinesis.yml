@@ -1,3 +1,4 @@
+# cSpell:ignore awskinesisexporter
 title: Kinesis Exporter
 registryType: exporter
 language: go

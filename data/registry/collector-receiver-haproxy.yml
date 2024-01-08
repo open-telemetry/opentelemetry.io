@@ -1,3 +1,4 @@
+# cSpell:ignore haproxyreceiver
 title: HAProxy Receiver
 registryType: receiver
 language: collector

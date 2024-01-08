@@ -1,4 +1,4 @@
-# cSpell:ignore loki
+# cSpell:ignore loki lokireceiver
 title: Loki Receiver
 registryType: receiver
 language: collector

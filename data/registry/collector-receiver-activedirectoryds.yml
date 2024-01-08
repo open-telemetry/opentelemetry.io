@@ -1,3 +1,4 @@
+# cSpell:ignore activedirectorydsreceiver
 title: Active Directory Domain Services Receiver
 registryType: receiver
 language: collector

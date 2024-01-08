@@ -1,4 +1,4 @@
-# cSpell:ignore expvar
+# cSpell:ignore expvar expvarreceiver
 title: Expvar Receiver
 registryType: receiver
 language: collector

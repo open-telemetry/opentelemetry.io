@@ -1,3 +1,4 @@
+# cSpell:ignore sumologicexporter
 title: Sumo Logic Exporter
 registryType: exporter
 language: collector

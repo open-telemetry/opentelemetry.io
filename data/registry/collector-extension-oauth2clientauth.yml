@@ -1,3 +1,4 @@
+# cSpell:ignore oauth2clientauthextension
 title: OAuth2 Client Credentials authenticator extension
 registryType: extension
 language: collector

@@ -1,3 +1,4 @@
+# cSpell:ignore datadogreceiver
 title: Datadog APM Receiver
 registryType: receiver
 language: collector

@@ -1,3 +1,4 @@
+# cSpell:ignore nginxreceiver
 title: NGINX Collector Receiver
 registryType: receiver
 language: collector

@@ -1,3 +1,4 @@
+# cSpell:ignore opencensusexporter
 title: OpenCensus Collector Exporter
 registryType: exporter
 language: collector

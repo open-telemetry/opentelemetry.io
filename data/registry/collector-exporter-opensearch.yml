@@ -1,3 +1,4 @@
+# cSpell:ignore opensearchexporter
 title: OpenSearch Exporter
 registryType: exporter
 language: collector

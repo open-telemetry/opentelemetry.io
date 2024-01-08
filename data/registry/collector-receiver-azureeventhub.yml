@@ -1,3 +1,4 @@
+# cSpell:ignore azureeventhubreceiver
 title: Azure Event Hub Receiver
 registryType: receiver
 language: collector

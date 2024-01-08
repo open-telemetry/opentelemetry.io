@@ -1,3 +1,4 @@
+# cSpell:ignore awsxrayexporter
 title: AWS X-Ray Tracing Exporter
 registryType: exporter
 language: collector

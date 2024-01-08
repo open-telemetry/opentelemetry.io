@@ -1,3 +1,4 @@
+# cSpell:ignore influxdbreceiver
 title: InfluxDB Receiver
 registryType: receiver
 language: collector

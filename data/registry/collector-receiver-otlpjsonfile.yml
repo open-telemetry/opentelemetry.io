@@ -1,3 +1,4 @@
+# cSpell:ignore otlpjsonfilereceiver
 title: OTLP JSON File Receiver
 registryType: receiver
 language: collector

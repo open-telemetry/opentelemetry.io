@@ -1,3 +1,4 @@
+# cSpell:ignore datasetexporter
 title: Dataset Collector Exporter
 registryType: exporter
 language: collector

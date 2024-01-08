@@ -1,3 +1,4 @@
+# cSpell:ignore fileexporter
 title: File Collector Exporter
 registryType: exporter
 language: collector

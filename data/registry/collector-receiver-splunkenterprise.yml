@@ -1,4 +1,4 @@
-# cSpell:ignore splunkenterprise
+# cSpell:ignore splunkenterprise splunkenterprisereceiver
 title: splunkenterprise
 registryType: receiver
 language: collector

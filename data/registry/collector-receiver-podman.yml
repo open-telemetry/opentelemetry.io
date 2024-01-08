@@ -1,3 +1,4 @@
+# cSpell:ignore podmanreceiver
 title: Podman Stats Receiver
 registryType: receiver
 language: collector

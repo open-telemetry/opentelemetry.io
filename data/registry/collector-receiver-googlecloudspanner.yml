@@ -1,3 +1,4 @@
+# cSpell:ignore googlecloudspannerreceiver
 title: Google Cloud Spanner Receiver
 registryType: receiver
 language: collector

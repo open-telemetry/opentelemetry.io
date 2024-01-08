@@ -1,3 +1,4 @@
+# cSpell:ignore k8sclusterreceiver
 title: Kubernetes Cluster Collector Receiver
 registryType: receiver
 language: collector

@@ -1,3 +1,4 @@
+# cSpell:ignore memcachedreceiver
 title: Memcached Collector Receiver
 registryType: receiver
 language: collector

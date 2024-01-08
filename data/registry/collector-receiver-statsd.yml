@@ -1,3 +1,4 @@
+# cSpell:ignore statsdreceiver
 title: StatsD Collector Receiver
 registryType: receiver
 language: collector

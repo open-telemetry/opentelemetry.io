@@ -1,3 +1,4 @@
+# cSpell:ignore filterprocessor
 title: Filter Collector Processor
 registryType: processor
 language: collector

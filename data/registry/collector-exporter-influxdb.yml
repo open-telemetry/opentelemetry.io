@@ -1,3 +1,4 @@
+# cSpell:ignore influxdbexporter
 title: InfluxDB Exporter
 registryType: exporter
 language: collector

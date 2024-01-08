@@ -1,4 +1,4 @@
-# cSpell:ignore tanzu
+# cSpell:ignore tanzu tanzuobservabilityexporter
 title: Tanzu Observability Collector Traces Exporter
 registryType: exporter
 language: collector

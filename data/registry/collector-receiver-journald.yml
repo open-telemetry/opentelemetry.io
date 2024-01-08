@@ -1,3 +1,4 @@
+# cSpell:ignore journaldreceiver
 title: Journald Receiver
 registryType: receiver
 language: collector

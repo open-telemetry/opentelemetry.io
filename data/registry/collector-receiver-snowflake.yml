@@ -1,3 +1,4 @@
+# cSpell:ignore snowflakereceiver
 title: Snowflake Receiver
 registryType: receiver
 language: collector

@@ -1,3 +1,4 @@
+# cSpell:ignore kafkareceiver
 title: Kafka Collector Receiver
 registryType: receiver
 language: collector

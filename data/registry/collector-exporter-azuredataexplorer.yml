@@ -1,3 +1,4 @@
+# cSpell:ignore azuredataexplorerexporter
 title: Azure Data Explorer Exporter
 registryType: exporter
 language: collector

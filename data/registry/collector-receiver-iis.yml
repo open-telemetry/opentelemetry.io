@@ -1,3 +1,4 @@
+# cSpell:ignore iisreceiver
 title: Microsoft IIS Receiver
 registryType: receiver
 language: collector

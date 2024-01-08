@@ -1,3 +1,4 @@
+# cSpell:ignore sqlqueryreceiver
 title: SQL Query Receiver (Alpha)
 registryType: receiver
 language: collector

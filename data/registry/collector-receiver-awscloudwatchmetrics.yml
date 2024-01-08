@@ -1,3 +1,4 @@
+# cSpell:ignore awscloudwatchmetricsreceiver
 title: CloudWatch Metrics Receiver
 registryType: receiver
 language: collector

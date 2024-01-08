@@ -1,3 +1,4 @@
+# cSpell:ignore metricsgenerationprocessor
 title: Metrics Generation Processor
 registryType: processor
 language: collector

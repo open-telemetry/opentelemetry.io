@@ -1,3 +1,4 @@
+# cSpell:ignore awscontainerinsightreceiver
 title: AWS Container Insights Receiver
 registryType: receiver
 language: collector

@@ -1,4 +1,4 @@
-# cSpell:ignore flink jobmanager taskmanager
+# cSpell:ignore flink jobmanager taskmanager flinkmetricsreceiver
 title: FlinkMetrics Receiver
 registryType: receiver
 language: collector

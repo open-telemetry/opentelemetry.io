@@ -1,3 +1,4 @@
+# cSpell:ignore otlpexporter
 title: OTLP gRPC Collector Exporter
 registryType: exporter
 language: collector

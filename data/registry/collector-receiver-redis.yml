@@ -1,3 +1,4 @@
+# cSpell:ignore redisreceiver
 title: Redis Collector Receiver
 registryType: receiver
 language: collector

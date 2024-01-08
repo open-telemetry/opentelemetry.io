@@ -1,3 +1,4 @@
+# cSpell:ignore loadbalancingexporter
 title: Trace ID aware load-balancing Collector Exporter
 registryType: exporter
 language: collector

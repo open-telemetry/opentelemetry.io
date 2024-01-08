@@ -1,3 +1,4 @@
+# cSpell:ignore hostmetricsreceiver
 title: Host Metrics Collector Receiver
 registryType: receiver
 language: collector

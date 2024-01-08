@@ -1,3 +1,4 @@
+# cSpell:ignore googlecloudexporter
 title: Google Cloud Operations Collector Exporter
 registryType: exporter
 language: collector

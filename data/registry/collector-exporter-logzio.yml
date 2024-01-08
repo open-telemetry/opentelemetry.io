@@ -1,4 +1,4 @@
-# cSpell:ignore logz
+# cSpell:ignore logz logzioexporter
 title: Logz.io Exporter
 registryType: exporter
 language: collector

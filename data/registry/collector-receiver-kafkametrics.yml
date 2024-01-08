@@ -1,3 +1,4 @@
+# cSpell:ignore kafkametricsreceiver
 title: Kafka Metrics Receiver
 registryType: receiver
 language: collector

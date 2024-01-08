@@ -1,3 +1,4 @@
+# cSpell:ignore awsfirehosereceiver
 title: AWS Kinesis Data Firehose Receiver
 registryType: receiver
 language: collector

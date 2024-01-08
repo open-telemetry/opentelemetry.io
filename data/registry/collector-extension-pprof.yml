@@ -1,3 +1,4 @@
+# cSpell:ignore pprofextension
 title: Performance Profiler Collector Extension
 registryType: extension
 language: collector

@@ -1,3 +1,4 @@
+# cSpell:ignore groupbyattrsprocessor
 title: Group by Attributes processor
 registryType: processor
 language: collector

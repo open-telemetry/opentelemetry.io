@@ -1,4 +1,4 @@
-# cSpell:ignore sqlserver
+# cSpell:ignore sqlserver sqlserverreceiver
 title: Microsoft SQL Server Receiver
 registryType: receiver
 language: collector

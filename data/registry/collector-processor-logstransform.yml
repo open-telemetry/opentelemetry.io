@@ -1,3 +1,4 @@
+# cSpell:ignore logstransformprocessor
 title: Logs Transform Processor
 registryType: processor
 language: collector

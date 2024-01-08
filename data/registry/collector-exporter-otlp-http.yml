@@ -1,3 +1,4 @@
+# cSpell:ignore otlphttpexporter
 title: OTLP HTTP Collector Exporter
 registryType: exporter
 language: collector

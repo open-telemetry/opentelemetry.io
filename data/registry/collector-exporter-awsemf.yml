@@ -1,3 +1,4 @@
+# cSpell:ignore awsemfexporter
 title: AWS CloudWatch EMF Collector Exporter
 registryType: exporter
 language: collector

@@ -1,4 +1,4 @@
-# cSpell:ignore kinetica
+# cSpell:ignore kinetica kineticaexporter
 title: Kinetica OpenTelemetry Collector Exporter Plug-In
 registryType: exporter
 language: collector

@@ -1,3 +1,4 @@
+# cSpell:ignore batchprocessor
 title: Batch Collector Processor
 registryType: processor
 language: collector

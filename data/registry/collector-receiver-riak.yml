@@ -1,4 +1,4 @@
-# cSpell:ignore riak
+# cSpell:ignore riak riakreceiver
 title: Riak Receiver
 registryType: receiver
 language: collector

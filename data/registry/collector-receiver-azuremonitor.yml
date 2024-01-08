@@ -1,3 +1,4 @@
+# cSpell:ignore azuremonitorreceiver
 title: Azure Monitor Receiver
 registryType: receiver
 language: collector

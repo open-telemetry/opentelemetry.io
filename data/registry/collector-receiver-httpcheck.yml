@@ -1,3 +1,4 @@
+# cSpell:ignore httpcheckreceiver
 title: HTTP Check Receiver
 registryType: receiver
 language: collector

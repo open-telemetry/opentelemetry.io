@@ -1,3 +1,4 @@
+# cSpell:ignore googlemanagedprometheusexporter
 title: Google Managed Service for Prometheus Exporter
 registryType: exporter
 language: collector

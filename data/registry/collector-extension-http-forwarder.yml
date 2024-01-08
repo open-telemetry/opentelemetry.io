@@ -1,3 +1,4 @@
+# cSpell:ignore httpforwarder
 title: HTTP Forwarder Collector Extension
 registryType: extension
 language: collector
