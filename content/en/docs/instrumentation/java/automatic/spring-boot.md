@@ -6,24 +6,32 @@ description: Spring instrumentation for OpenTelemetry Java
 cSpell:ignore: autoconfigure datasource logback springboot springframework
 ---
 
-You can use the [OpenTelemetry Java agent](..) with byte code instrumentation to
-automatically instrument a [Spring Boot](https://spring.io/projects/spring-boot)
-application; or you can also use the OpenTelemetry [Spring Boot starter] to
-instrument your application.
+## How to instrument a Spring Boot application
+
+The [OpenTelemetry Java agent](..) with byte code instrumentation should cover
+most of your needs to instrument your [Spring Boot](https://spring.io/projects/spring-boot)
+application.
+
+You can't use the OpenTelemetry Java agent with a Spring Boot Native image applications, but the
+OpenTelemetry [Spring Boot starter] allows you to instrument your code.
 
 [Spring Boot starter]:
-  https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using.build-systems.starters
+https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using.build-systems.starters
 
-The OpenTelemetry starter is compatible with Spring Boot 2.0 and 3.0, and Spring
-native.
+[opentelemetry-java-examples/spring-native](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/spring-native gives an example of a Spring Boot Native image application with the OpenTelemetry
+Spring Boot starter
 
-For an example Spring Boot Native image application that uses the OpenTelemetry
-Spring Boot starter, see
-[opentelemetry-java-examples/spring-native](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/spring-native).
+If your application already uses a Java agent, the OpenTelemetry Java agent may not work. In this case, you can also use the OpenTelemetry starter.
 
-## Configuration
+A third situation in which the OpenTelemetry starter can help you is when the start-up overhead of the OpenTelemetry Java agent is too important for you.
 
-### Dependency management
+The rest of this page documents the OpenTelemetry starter that works with Spring Boot 2.0 and 3.0.
+
+## OpenTelemetry Spring starter
+
+### Configuration
+
+#### Dependency management
 
 A Bill of Material
 ([BOM](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#bill-of-materials-bom-poms))
@@ -100,7 +108,7 @@ with the `io.spring.dependency-management` plugin.
 
 {{% /alert %}}
 
-### OpenTelemetry Starter dependency
+#### OpenTelemetry Starter dependency
 
 Add the dependency given below to enable the OpenTelemetry starter.
 
@@ -134,9 +142,9 @@ dependencies {
 
 {{% /tab %}} {{< /tabpane>}}
 
-## Additional instrumentations
+### Additional instrumentations
 
-### JDBC Instrumentation
+#### JDBC Instrumentation
 
 You have two ways to enable the JDBC instrumentation with the OpenTelemetry
 starter.
@@ -194,7 +202,7 @@ dependencies {
 
 {{% /tab %}} {{< /tabpane>}}
 
-### Logging Instrumentation
+#### Logging Instrumentation
 
 To enable the logging instrumentation for Logback you have to add the
 OpenTelemetry appender in your `logback.xml` or `logback-spring.xml` file:
@@ -243,7 +251,7 @@ and
 [Log4j](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/log4j/log4j-appender-2.17/library/README.md)
 instrumentation libraries.
 
-### Other Instrumentation
+#### Other Instrumentation
 
 You can configure other instrumentations with
 [OpenTelemetry instrumentations libraries](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks).
