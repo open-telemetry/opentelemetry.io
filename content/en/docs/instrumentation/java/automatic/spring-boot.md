@@ -21,7 +21,7 @@ https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using.buil
 [opentelemetry-java-examples/spring-native](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/spring-native gives an example of a Spring Boot Native image application with the OpenTelemetry
 Spring Boot starter.
 
-If your application already uses a Java agent, the OpenTelemetry Java agent may not work. In this case, you can also use the OpenTelemetry starter.
+If your application already uses a Java agent, the OpenTelemetry Java agent may not work, and you can also use the OpenTelemetry starter.
 
 A third situation in which the OpenTelemetry starter can help you is when the start-up overhead of the OpenTelemetry Java agent is too important for you.
 
