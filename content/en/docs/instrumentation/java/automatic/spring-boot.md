@@ -2,28 +2,29 @@
 title: Spring Boot
 linkTitle: Spring Boot
 weight: 30
-description: Spring instrumentation for OpenTelemetry Java
+description: Spring Boot instrumentation for OpenTelemetry Java
 cSpell:ignore: autoconfigure datasource logback springboot springframework
 ---
 
-## How to instrument a Spring Boot application
+The [OpenTelemetry Java agent](..) with byte code instrumentation can cover
+most of your needs when instrumenting [Spring Boot](https://spring.io/projects/spring-boot)
+applications.
 
-The [OpenTelemetry Java agent](..) with byte code instrumentation should cover
-most of your needs to instrument your [Spring Boot](https://spring.io/projects/spring-boot)
-application.
-
-You can't use the OpenTelemetry Java agent with a Spring Boot Native image application, but the
-OpenTelemetry [Spring Boot starter] allows you to instrument your code.
+You can't use the OpenTelemetry Java agent with Spring Boot Native image applications, but you
+still can instrument your code using OpenTelemetry [Spring Boot starter].
 
 [Spring Boot starter]:
 https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using.build-systems.starters
 
-[opentelemetry-java-examples/spring-native](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/spring-native gives an example of a Spring Boot Native image application with the OpenTelemetry
-Spring Boot starter.
+The
+[opentelemetry-java-examples/spring-native](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/spring-native)
+repository contains an example of a Spring Boot Native image application instrumented using
+the OpenTelemetry Spring Boot starter.
 
-If your application already uses a Java agent, the OpenTelemetry Java agent may not work, and you can also use the OpenTelemetry starter.
+If your application already uses a Java agent, the OpenTelemetry Java agent might not work. In this case,
+use the OpenTelemetry starter.
 
-A third situation in which the OpenTelemetry starter can help you is when the start-up overhead of the OpenTelemetry Java agent is too important for you.
+A third situation in which the OpenTelemetry starter can help you is when the startup overhead of the OpenTelemetry Java agent exceeds your requirements.
 
 The rest of this page documents the OpenTelemetry starter that works with Spring Boot 2.0 and 3.0.
 
