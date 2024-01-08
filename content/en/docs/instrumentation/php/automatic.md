@@ -228,5 +228,6 @@ might want to add [manual instrumentation](../manual) to collect custom
 telemetry data.
 
 
-## More examples
-You can find more examples and documents here [PHP examples](https://github.com/open-telemetry/opentelemetry-php-contrib)
+## Examples
+
+You can find more examples in the [opentelemetry-php-contrib](https://github.com/open-telemetry/opentelemetry-php-contrib) repository.
