@@ -1,4 +1,4 @@
-# cSpell:ignore fastify
+# cSpell:ignore fastify autotelic
 title: Fastify OpenTelemetry
 registryType: instrumentation
 language: js
@@ -10,11 +10,11 @@ license: MIT
 description:
   Fastify OpenTelemetry API integration, using the Fastify plugin spec.
 authors:
-  - name: Holden Whitehead 
+  - name: Holden Whitehead
     email: holden@autotelic.com
 urls:
   repo: https://github.com/autotelic/fastify-opentelemetry
 createdAt: 2020-08-28
-package: 
-  name: "@autotelic/fastify-opentelemetry"
+package:
+  name: '@autotelic/fastify-opentelemetry'
   registry: npm

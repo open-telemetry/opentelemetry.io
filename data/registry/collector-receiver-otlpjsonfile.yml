@@ -6,7 +6,8 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: This receiver will read pipeline data from JSON files. The data is written in
+description:
+  This receiver will read pipeline data from JSON files. The data is written in
 authors:
   - name: OpenTelemetry Authors
 urls:

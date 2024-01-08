@@ -9,7 +9,7 @@ tags:
 license: Apache 2.0
 description: Remix instrumentation for Node.js.
 authors:
-  - name: Justin Smith 
+  - name: Justin Smith
     email: justindsmith@gmail.com
 urls:
   repo: https://github.com/justindsmith/opentelemetry-instrumentations-js/tree/main/packages/instrumentation-remix

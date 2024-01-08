@@ -6,7 +6,9 @@ tags:
   - exporter
   - collector
 license: Apache 2.0
-description: The Splunk HTTP Event Collector (HEC) Exporter for the OpenTelemetry Collector.
+description:
+  The Splunk HTTP Event Collector (HEC) Exporter for the OpenTelemetry
+  Collector.
 authors:
   - name: Splunk
 urls:

@@ -6,7 +6,8 @@ tags:
   - exporter
   - collector
 license: Apache 2.0
-description: This exporter supports sending OpenTelemetry log data to LogService.
+description:
+  This exporter supports sending OpenTelemetry log data to LogService.
 authors:
   - name: OpenTelemetry Authors
 urls:

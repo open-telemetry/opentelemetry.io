@@ -6,7 +6,9 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: The HAProxy receiver generates metrics by polling periodically the HAProxy process through a dedicated socket or HTTP URL.
+description:
+  The HAProxy receiver generates metrics by polling periodically the HAProxy
+  process through a dedicated socket or HTTP URL.
 authors:
   - name: OpenTelemetry Authors
 urls:

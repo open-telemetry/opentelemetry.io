@@ -9,7 +9,8 @@ tags:
   - go
 license: Apache 2.0
 description:
-  System component traces record the latency of and relationships between operations in the Kubernetes cluster.
+  System component traces record the latency of and relationships between
+  operations in the Kubernetes cluster.
 authors:
   - name: Kubernetes Authors
 urls:

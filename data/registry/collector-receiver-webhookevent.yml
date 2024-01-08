@@ -1,4 +1,4 @@
-# cSpell:ignore webhookevent
+# cSpell:ignore webhookevent webhookeventreceiver
 title: Webhook Event Receiver
 registryType: receiver
 language: collector
@@ -7,7 +7,9 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: The Webhook Event receiver is meant to act as a generally available push based receiver for any webhook style data source.
+description:
+  The Webhook Event receiver is meant to act as a generally available push based
+  receiver for any webhook style data source.
 authors:
   - name: OpenTelemetry Authors
 urls:

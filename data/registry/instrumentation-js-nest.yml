@@ -9,7 +9,7 @@ tags:
 license: MIT
 description: Instrumentation library for Nest.
 authors:
-  - name: Metin Seylan 
+  - name: Metin Seylan
     email: metinsyln@gmail.com
 urls:
   repo: https://github.com/MetinSeylan/Nestjs-OpenTelemetry

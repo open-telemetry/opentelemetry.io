@@ -1,3 +1,4 @@
+# cSpell:ignore udplogreceiver
 title: UDP Receiver
 registryType: receiver
 language: collector

@@ -17,7 +17,7 @@ description:
   possible. Not all features of OpenTelemetry are supported, and this package
   should be considered experimental.
 authors:
-  - name: Ladd Van Tol, 
+  - name: Ladd Van Tol,
     email: levantol@ebay.com
 urls:
   repo: https://github.com/eBay/NautilusTelemetry

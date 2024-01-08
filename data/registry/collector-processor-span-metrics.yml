@@ -6,7 +6,9 @@ tags:
   - processor
   - collector
 license: Apache 2.0
-description: The Span Metrics Processor for the OpenTelemetry Collector aggregates Request, Error and Duration (R.E.D) metrics from span data.
+description:
+  The Span Metrics Processor for the OpenTelemetry Collector aggregates Request,
+  Error and Duration (R.E.D) metrics from span data.
 authors:
   - name: OpenTelemetry Authors
 urls:

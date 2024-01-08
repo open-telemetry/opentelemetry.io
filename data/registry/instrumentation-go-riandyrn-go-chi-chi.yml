@@ -10,7 +10,7 @@ tags:
 license: Apache 2.0
 description: Instrumentation for the Golang `go-chi/chi` package.
 authors:
-  - name: Riandy R.N 
+  - name: Riandy R.N
     email: riandyrn@gmail.com
 urls:
   repo: https://github.com/riandyrn/otelchi

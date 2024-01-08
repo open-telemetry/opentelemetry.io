@@ -6,7 +6,9 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: The `iis` receiver grabs metrics about an IIS instance using the Windows Performance Counters.
+description:
+  The `iis` receiver grabs metrics about an IIS instance using the Windows
+  Performance Counters.
 authors:
   - name: OpenTelemetry Authors
 urls:

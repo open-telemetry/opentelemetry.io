@@ -7,7 +7,9 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: This receiver fetches metrics for an Apache Spark cluster through the Apache Spark REST API
+description:
+  This receiver fetches metrics for an Apache Spark cluster through the Apache
+  Spark REST API
 authors:
   - name: OpenTelemetry Authors
 urls:

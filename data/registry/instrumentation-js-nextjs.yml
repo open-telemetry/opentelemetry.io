@@ -1,11 +1,11 @@
-# cSpell:ignore nestjs
+# cSpell:ignore nestjs vercel
 title: Instrumentation for Next.js
 registryType: instrumentation
 language: js
 tags:
   - Node.js
   - instrumentation
-  - nextjs
+  - nestjs
 license: MIT
 description: Next.js supports OpenTelemetry instrumentation out of the box.
 authors:

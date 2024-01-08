@@ -9,7 +9,7 @@ tags:
 license: Apache 2.0
 description: MSSQL instrumentation for Node.js.
 authors:
-  - name: Mohammad Nadeem 
+  - name: Mohammad Nadeem
     email: coolmind182006@gmail.com
 urls:
   repo: https://github.com/mnadeem/opentelemetry-instrumentation-mssql

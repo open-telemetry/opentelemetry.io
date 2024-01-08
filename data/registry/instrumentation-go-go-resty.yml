@@ -9,7 +9,7 @@ tags:
 license: Apache 2.0
 description: Custom instrumentation for the `go-resty` HTTP client library.
 authors:
-  - name: dubonzi 
+  - name: dubonzi
     email: eduardobonzi.dev@gmail.com
 urls:
   repo: https://github.com/dubonzi/otelresty

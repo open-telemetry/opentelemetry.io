@@ -10,7 +10,7 @@ description:
   OCaml instrumentation primitives (scopes, metrics, logs, etc.), along with
   several exporters to talk to signal collectors
 authors:
-  - name: Imandra 
+  - name: Imandra
     url: https://imandra.ai
 urls:
   repo: https://github.com/imandra-ai/ocaml-opentelemetry/

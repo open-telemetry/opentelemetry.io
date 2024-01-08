@@ -11,9 +11,9 @@ description: An OpenTelemetry implementation for Scala, based on Cats-Effect
 authors:
   - name: Ross A. Baker
     email: ross@rossabaker.com
-  - name: Zach McCoy 
+  - name: Zach McCoy
     email: zachabbott@gmail.com
-  - name: Maksym Ochenashko 
+  - name: Maksym Ochenashko
     email: maxochenashko@gmail.com
 urls:
   repo: https://github.com/typelevel/otel4s

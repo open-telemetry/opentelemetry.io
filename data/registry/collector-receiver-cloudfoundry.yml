@@ -6,7 +6,9 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: The Cloud Foundry receiver connects to the RLP (Reverse Log Proxy) Gateway of the Cloud Foundry installation
+description:
+  The Cloud Foundry receiver connects to the RLP (Reverse Log Proxy) Gateway of
+  the Cloud Foundry installation
 authors:
   - name: OpenTelemetry Authors
 urls:

@@ -11,7 +11,7 @@ description:
   opentelemetry-trace-sqs propagates OpenTelemetry tracing with SQS messages for
   the Go language.
 authors:
-  - name: Everton Marques 
+  - name: Everton Marques
     email: everton.marques@gmail.com
 urls:
   repo: https://github.com/udhos/opentelemetry-trace-sqs

@@ -6,7 +6,8 @@ tags:
   - processor
   - collector
 license: Apache 2.0
-description: The Datadog Processor can be used to compute Datadog APM Stats pre-sampling.
+description:
+  The Datadog Processor can be used to compute Datadog APM Stats pre-sampling.
 authors:
   - name: OpenTelemetry Authors
 urls:

@@ -10,7 +10,7 @@ tags:
 license: Apache 2.0
 description: Neo4j instrumentation for golang.
 authors:
-  - name: Ruben Mennes 
+  - name: Ruben Mennes
     email: ruben@raito.io
 urls:
   repo: https://github.com/raito-io/neo4j-tracing

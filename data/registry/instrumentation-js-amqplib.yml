@@ -10,9 +10,9 @@ tags:
 license: Apache 2.0
 description: amqplib instrumentation for Node.js.
 authors:
-  - name: OpenTelemetry Authors 
+  - name: OpenTelemetry Authors
 package:
-  name: "@opentelemetry/instrumentation-amqplib"
+  name: '@opentelemetry/instrumentation-amqplib'
   registry: npm
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-amqplib

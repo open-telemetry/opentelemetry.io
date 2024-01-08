@@ -8,7 +8,7 @@ tags:
 license: Apache 2.0
 description: NodeCache instrumentation for Node.js.
 authors:
-  - name: Aspecto Authors 
+  - name: Aspecto Authors
     email: amir@aspecto.io
 urls:
   repo: https://github.com/aspecto-io/opentelemetry-ext-js/tree/master/packages/instrumentation-node-cache

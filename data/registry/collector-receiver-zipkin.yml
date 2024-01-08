@@ -1,3 +1,4 @@
+# cSpell:ignore zipkinreceiver
 title: Zipkin Collector Receiver
 registryType: receiver
 language: collector
@@ -10,13 +11,9 @@ description: The Zipkin Receiver for the OpenTelemetry Collector.
 authors:
   - name: OpenTelemetry Authors
 package:
-  name: github.com/open-telemetry/opentelemetry-collector-contrib
-  registry: go-collector
-  version: 0.91
-urls:
-  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/zipkinreceiver
-createdAt: 2020-11-05
-package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/zipkinreceiver
   version: v0.91.0
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/zipkinreceiver
+createdAt: 2020-11-05

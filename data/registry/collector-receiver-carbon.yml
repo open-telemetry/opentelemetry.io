@@ -6,7 +6,9 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: The Carbon Receiver for the OpenTelemetry Collector supports Carbon's plaintext protocol.
+description:
+  The Carbon Receiver for the OpenTelemetry Collector supports Carbon's
+  plaintext protocol.
 authors:
   - name: OpenTelemetry Authors
 urls:

@@ -6,7 +6,9 @@ tags:
   - processor
   - collector
 license: Apache 2.0
-description: The Probabilistic Sampling Processor for the OpenTelemetry Collector provides probabilistic sampling of traces.
+description:
+  The Probabilistic Sampling Processor for the OpenTelemetry Collector provides
+  probabilistic sampling of traces.
 authors:
   - name: OpenTelemetry Authors
 urls:

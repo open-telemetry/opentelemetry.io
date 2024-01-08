@@ -6,7 +6,8 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: The Azure Event Hub receiver listens to logs emitted by Azure Event hubs.
+description:
+  The Azure Event Hub receiver listens to logs emitted by Azure Event hubs.
 authors:
   - name: OpenTelemetry Authors
 urls:

@@ -1,3 +1,4 @@
+# cSpell:ignore vcenterreceiver
 title: vCenter Receiver
 registryType: receiver
 language: collector
@@ -6,7 +7,9 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: This receiver fetches metrics from a vCenter or ESXi host running VMware vSphere APIs.
+description:
+  This receiver fetches metrics from a vCenter or ESXi host running VMware
+  vSphere APIs.
 authors:
   - name: OpenTelemetry Authors
 urls:

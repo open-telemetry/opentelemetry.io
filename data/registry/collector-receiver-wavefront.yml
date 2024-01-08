@@ -1,3 +1,4 @@
+# cSpell:ignore wavefrontreceiver
 title: Wavefront Collector Receiver
 registryType: receiver
 language: collector

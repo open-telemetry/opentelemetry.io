@@ -10,7 +10,7 @@ tags:
 license: Apache 2.0
 description: kafkajs instrumentation for Node.js.
 authors:
-  - name: Amir Blum 
+  - name: Amir Blum
     email: amir@aspecto.io
 urls:
   repo: https://github.com/aspecto-io/opentelemetry-ext-js/tree/master/packages/instrumentation-kafkajs

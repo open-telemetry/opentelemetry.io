@@ -11,7 +11,7 @@ description: The OpenTelemetry Azure Monitor Exporter for JavaScript (Node.js)
 authors:
   - name: Microsoft Authors
 package:
-  name: "@azure/monitor-opentelemetry-exporter"
+  name: '@azure/monitor-opentelemetry-exporter'
   registry: npm
   version: 1.0.0-beta.18
 urls:

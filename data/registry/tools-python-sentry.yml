@@ -15,7 +15,7 @@ description:
   errors. For configuration details, see [OpenTelemetry
   Support](https://docs.sentry.io/platforms/python/performance/instrumentation/opentelemetry/).
 authors:
-  - name: Sentry authors 
+  - name: Sentry authors
     email: otel@sentry.io
 urls:
   repo: https://github.com/getsentry/sentry-python/tree/master/sentry_sdk/integrations/opentelemetry

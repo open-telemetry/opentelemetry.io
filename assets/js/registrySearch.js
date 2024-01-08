@@ -1,22 +1,31 @@
 const miniSearchOptions = {
-  fields: ['title', 'description', '_key', 'tags', 'package.name', 'license', 'language', 'registryType'], // fields to index for full-text search
+  fields: [
+    'title',
+    'description',
+    '_key',
+    'tags',
+    'package.name',
+    'license',
+    'language',
+    'registryType',
+  ], // fields to index for full-text search
   storeFields: ['title', '_key'], // fields to return with search results
   prefix: true,
-  boost: { 
+  boost: {
     title: 4,
     tags: 3,
-    description: 2
+    description: 2,
   },
   fuzzy: 0.2,
   extractField: (document, fieldName) => {
     if (Array.isArray(document[fieldName])) {
-      return document[fieldName].join(' ')
+      return document[fieldName].join(' ');
     }
-    return fieldName.split('.').reduce((doc, key) => doc && doc[key], document)
-  }
-}
+    return fieldName.split('.').reduce((doc, key) => doc && doc[key], document);
+  },
+};
 
-const originalDocumentTitle = document.title
+const originalDocumentTitle = document.title;
 
 let fetched = false;
 const miniSearch = new MiniSearch(miniSearchOptions);
@@ -54,20 +63,19 @@ if (pathName.includes('registry')) {
   }
 
   document.addEventListener('DOMContentLoaded', (event) => {
-
-    let searchForm = document.getElementById('searchForm')
+    let searchForm = document.getElementById('searchForm');
     searchForm.addEventListener('submit', function (evt) {
-      evt.preventDefault()
+      evt.preventDefault();
       let val = document.getElementById('input-s').value;
-      setInput('s', val)
-      parseUrlParams()
-      executeSearch(searchQuery)
-    })
+      setInput('s', val);
+      parseUrlParams();
+      executeSearch(searchQuery);
+    });
 
-    let searchInput = document.getElementById('input-s')
+    let searchInput = document.getElementById('input-s');
     searchInput.addEventListener('keyup', function (evt) {
-      autoSuggest(evt.target.value)
-    })
+      autoSuggest(evt.target.value);
+    });
 
     let languageList = document
       .getElementById('languageFilter')
@@ -98,9 +106,8 @@ if (pathName.includes('registry')) {
   });
 }
 
-
 function showBody() {
-  document.title = originalDocumentTitle
+  document.title = originalDocumentTitle;
   document.querySelector('#search-results').innerHTML = '';
   let defaultBody = document.querySelector('#default-body');
   if (defaultBody.style.display === 'none') {
@@ -110,9 +117,9 @@ function showBody() {
 
 // Runs search through Fuse for fuzzy search
 function executeSearch(searchQuery) {
-  if(searchQuery === '') {
-    showBody()
-    return
+  if (searchQuery === '') {
+    showBody();
+    return;
   }
 
   document.title = searchQuery + ' at ' + originalDocumentTitle;
@@ -121,58 +128,60 @@ function executeSearch(searchQuery) {
   document.querySelector('#search-results').innerHTML = '';
   document.getElementById('search-loading').style.display = 'block';
 
-  const run = function(searchQuery) {
+  const run = function (searchQuery) {
     // The 0-timeout is here if search is blocking, such that the "search loading" is rendered properly
     setTimeout(() => {
-      let results = miniSearch.search(searchQuery)
+      let results = miniSearch.search(searchQuery);
       document.getElementById('search-loading').style.display = 'none';
-      
+
       if (results.length > 0) {
         populateResults(results);
       } else {
         document.querySelector('#search-results').innerHTML +=
           '<p>No matches found</p>';
       }
-    }, 0)
-  }
-  
-  if(fetched) {
-    run(searchQuery)
+    }, 0);
+  };
+
+  if (fetched) {
+    run(searchQuery);
   } else {
     fetch('/ecosystem/registry/index.json')
       .then((res) => res.json())
       .then((json) => {
-        fetched = true
-        miniSearch.addAll(json)
-        run(searchQuery)
-    });
+        fetched = true;
+        miniSearch.addAll(json);
+        run(searchQuery);
+      });
   }
 }
 
 function autoSuggest(value) {
-  if(value === '') {
-    return
+  if (value === '') {
+    return;
   }
 
-  const run = function(value) {
+  const run = function (value) {
     const suggestions = miniSearch.autoSuggest(value, {
       // we only use title, otherwise we get strange suggestions, especially with description
-      fields: ['title']
+      fields: ['title'],
     });
     const list = document.getElementById('search-suggestions');
-    list.innerHTML = suggestions.map(({ suggestion }) => `<option>${suggestion}</option>`).join('');
-  }
+    list.innerHTML = suggestions
+      .map(({ suggestion }) => `<option>${suggestion}</option>`)
+      .join('');
+  };
 
-  if(fetched) {
-    run(value)
+  if (fetched) {
+    run(value);
   } else {
     fetch('/ecosystem/registry/index.json')
       .then((res) => res.json())
       .then((json) => {
-        fetched = true
-        miniSearch.addAll(json)
-        run(value)
-    });
+        fetched = true;
+        miniSearch.addAll(json);
+        run(value);
+      });
   }
 }
 

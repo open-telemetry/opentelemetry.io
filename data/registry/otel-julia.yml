@@ -7,7 +7,7 @@ tags:
 license: Apache 2.0
 description: An unofficial implementation of OpenTelemetry in Julia.
 authors:
-  - name: oolong.dev 
+  - name: oolong.dev
     url: https://github.com/oolong-dev
 urls:
   repo: https://github.com/oolong-dev/OpenTelemetry.jl

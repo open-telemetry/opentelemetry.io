@@ -6,7 +6,10 @@ tags:
   - processor
   - collector
 license: Apache 2.0
-description: The Group by Trace Processor for the OpenTelemetry Collector collects all the spans from the same trace, waiting a pre-determined amount of time before releasing the trace to the next processor.
+description:
+  The Group by Trace Processor for the OpenTelemetry Collector collects all the
+  spans from the same trace, waiting a pre-determined amount of time before
+  releasing the trace to the next processor.
 authors:
   - name: OpenTelemetry Authors
 urls:

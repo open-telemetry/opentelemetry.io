@@ -6,7 +6,10 @@ tags:
   - extension
   - collector
 license: Apache 2.0
-description: Observers are implemented as an extension to discover networked endpoints like a Kubernetes pod, Docker container, or local listening port. Currently available are observers for docker, ecs, ecs_task, host and K8s.
+description:
+  Observers are implemented as an extension to discover networked endpoints like
+  a Kubernetes pod, Docker container, or local listening port. Currently
+  available are observers for docker, ecs, ecs_task, host and K8s.
 authors:
   - name: OpenTelemetry Authors
 urls:

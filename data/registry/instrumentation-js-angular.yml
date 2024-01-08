@@ -1,3 +1,4 @@
+# cSpell:ignore jufab
 title: OpenTelemetry Angular Interceptor
 registryType: instrumentation
 language: js
@@ -9,11 +10,11 @@ tags:
 license: Apache 2.0
 description: Angular library to deploy OpenTelemetry in Angular application.
 authors:
-  - name: Julien Fabre 
+  - name: Julien Fabre
     email: julien.fabre.33@gmail.com
 urls:
   repo: https://github.com/jufab/opentelemetry-angular-interceptor
 createdAt: 2020-06-30
 package:
-  name: "@jufab/opentelemetry-angular-interceptor"
+  name: '@jufab/opentelemetry-angular-interceptor'
   registry: npm

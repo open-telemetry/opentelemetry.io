@@ -6,7 +6,9 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: Receiver for ingesting AWS Kinesis Data Firehose delivery stream messages and parsing the records received based on the configured record type.
+description:
+  Receiver for ingesting AWS Kinesis Data Firehose delivery stream messages and
+  parsing the records received based on the configured record type.
 authors:
   - name: OpenTelemetry Authors
 urls:

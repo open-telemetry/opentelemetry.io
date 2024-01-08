@@ -6,7 +6,8 @@ tags:
   - processor
   - collector
 license: Apache 2.0
-description: This processor deletes span attributes that don't match a list of allowed span
+description:
+  This processor deletes span attributes that don't match a list of allowed span
 authors:
   - name: OpenTelemetry Authors
 urls:

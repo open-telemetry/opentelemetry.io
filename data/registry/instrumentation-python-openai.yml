@@ -9,7 +9,7 @@ tags:
 license: Apache 2.0
 description: Instrumentation for OpenAI LLMs (prompts logging, tokens, etc.)
 authors:
-  - name: Traceloop 
+  - name: Traceloop
     email: dev@traceloop.com
 urls:
   repo: https://github.com/traceloop/openllmetry/tree/main/packages/opentelemetry-instrumentation-openai

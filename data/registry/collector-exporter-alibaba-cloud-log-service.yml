@@ -1,3 +1,4 @@
+# cspell:ignore alibabacloudlogserviceexporter
 title: Alibaba Cloud Log Service Collector Exporter
 registryType: exporter
 language: collector
@@ -6,7 +7,8 @@ tags:
   - exporter
   - collector
 license: Apache 2.0
-description: The Alibaba Cloud Log Service Exporter for the OpenTelemetry Collector.
+description:
+  The Alibaba Cloud Log Service Exporter for the OpenTelemetry Collector.
 authors:
   - name: Alibaba Cloud
 urls:

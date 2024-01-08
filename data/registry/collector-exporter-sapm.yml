@@ -7,7 +7,9 @@ tags:
   - exporter
   - collector
 license: Apache 2.0
-description: The SAPM exporter builds on the Jaeger proto and adds additional batching on top. This allows
+description:
+  The SAPM exporter builds on the Jaeger proto and adds additional batching on
+  top. This allows
 authors:
   - name: OpenTelemetry Authors
 urls:

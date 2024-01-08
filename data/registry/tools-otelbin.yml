@@ -12,7 +12,7 @@ description:
   SaaS editor for OpenTelemetry Collector configurations with visualization,
   validation and sharing support
 authors:
-  - name: Dash0 
+  - name: Dash0
     email: hi@dash0.com
 urls:
   repo: https://github.com/dash0hq/otelbin

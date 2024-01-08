@@ -9,7 +9,7 @@ tags:
 license: MIT
 description: OpenTelemetry module for NestJS framework.
 authors:
-  - name: Ivan Santos 
+  - name: Ivan Santos
     email: os@ivansantos.me
 urls:
   repo: https://github.com/pragmaticivan/nestjs-otel

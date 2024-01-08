@@ -14,7 +14,7 @@ description:
   Kotel is an instrumentation plugin for the franz-go Kafka client. It provides
   tracing and metrics options.
 authors:
-  - name: John Gerassimou 
+  - name: John Gerassimou
     email: john.gerassimou@gmail.com
 urls:
   repo: https://github.com/twmb/franz-go/tree/master/plugin/kotel

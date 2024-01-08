@@ -8,7 +8,9 @@ tags:
   - processor
   - collector
 license: Apache 2.0
-description: The WebSocket processor, which can be positioned anywhere in a pipeline, allows
+description:
+  The WebSocket processor, which can be positioned anywhere in a pipeline,
+  allows
 authors:
   - name: OpenTelemetry Authors
 urls:

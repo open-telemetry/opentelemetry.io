@@ -6,7 +6,9 @@ tags:
   - extension
   - collector
 license: Apache 2.0
-description: The HTTP Forwarder Extension for the OpenTelemetry Collector accepts HTTP requests, optionally adds headers to them and forwards them.
+description:
+  The HTTP Forwarder Extension for the OpenTelemetry Collector accepts HTTP
+  requests, optionally adds headers to them and forwards them.
 authors:
   - name: OpenTelemetry Authors
 urls:

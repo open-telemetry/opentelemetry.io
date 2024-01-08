@@ -8,7 +8,8 @@ tags:
   - collector
   - apiclarity
 license: Apache 2.0
-description: Exports traces and/or metrics via HTTP to an APIClarity endpoint for analysis.
+description:
+  Exports traces and/or metrics via HTTP to an APIClarity endpoint for analysis.
 authors:
   - name: Cisco Systems
 urls:

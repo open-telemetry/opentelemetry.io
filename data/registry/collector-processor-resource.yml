@@ -6,7 +6,9 @@ tags:
   - processor
   - collector
 license: Apache 2.0
-description: The Resource Processor for the OpenTelemetry Collector can be used to apply changes on resource attributes.
+description:
+  The Resource Processor for the OpenTelemetry Collector can be used to apply
+  changes on resource attributes.
 authors:
   - name: OpenTelemetry Authors
 urls:

@@ -15,7 +15,7 @@ description:
   configuration details, see [OpenTelemetry
   Support](https://docs.sentry.io/platforms/java/performance/instrumentation/opentelemetry/).
 authors:
-  - name: Sentry authors 
+  - name: Sentry authors
     email: otel@sentry.io
 urls:
   repo: https://github.com/getsentry/sentry-java/tree/main/sentry-opentelemetry

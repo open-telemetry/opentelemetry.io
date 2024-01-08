@@ -6,7 +6,8 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: Google Cloud Spanner enable you to investigate issues with your database
+description:
+  Google Cloud Spanner enable you to investigate issues with your database
 authors:
   - name: OpenTelemetry Authors
 urls:

@@ -9,7 +9,7 @@ tags:
 license: Apache 2.0
 description: TypeORM instrumentation for Node.js.
 authors:
-  - name: Aspecto Authors 
+  - name: Aspecto Authors
     email: nir@aspecto.io
 urls:
   repo: https://github.com/aspecto-io/opentelemetry-ext-js/tree/master/packages/instrumentation-typeorm
