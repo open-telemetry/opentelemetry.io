@@ -49,6 +49,7 @@
     {{ $delta := $currentTime.Sub (time.AsTime .createdAt) -}}
     {{ $isNew := lt $delta.Hours 730 -}}
     {{ $usedInDemo := isset .urls "demo" }}
+    {{ $deprecated := isset .deprecated "reason" }}
     {{ $package := "" -}}
     {{ if and (.package) (isset $remoteRegistries .package.registry) -}}
         {{ $package = merge .package (index $remoteRegistries .package.registry) -}}
@@ -66,6 +67,9 @@
     {{ end -}}
     {{ if $usedInDemo -}}
         {{ $highlightStyle = "border-secondary" -}}
+    {{ end -}}
+    {{ if $deprecated -}}
+        {{ $highlightStyle = "border-danger" -}}
     {{ end -}}
     {{ $repoHref := printf "href=%q" .urls.repo | safeHTMLAttr -}}
     <li class="card my-3 registry-entry {{ $highlightStyle }}" data-registry-id="{{ ._key }}" data-registrytype="{{ .registryType }}" data-registrylanguage="{{ .language }}">
@@ -86,6 +90,9 @@
             {{ end -}}
             {{ if $usedInDemo -}}
             <span class="badge rounded-pill text-bg-secondary text-white" title="This package is used in the OpenTelemetry Demo!"><i class="fa-solid fa-shapes"></i> OTel Demo</span>
+            {{ end -}}
+            {{ if $deprecated -}}
+            <span class="badge rounded-pill text-bg-danger text-white" title=""><i class="fa-solid fa-ban"></i> deprecated</span>
             {{ end -}}
             </div>
         </h4>
@@ -108,6 +115,12 @@
         <div class="d-flex flex-row">
             <div class="me-auto p-0 flex-fill">
                 <div class="mb-3">
+                    {{ if $deprecated -}}
+                        <div class="alert alert-danger" role="alert">
+                            <h4 class="alert-heading">Deprecated</h4>
+                            {{ .deprecated.reason | markdownify }}
+                        </div>
+                    {{ end -}}
                     {{- .description | markdownify -}}
                 </div>
                 {{ with $package -}}
