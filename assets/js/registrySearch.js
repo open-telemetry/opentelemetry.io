@@ -10,19 +10,21 @@ const miniSearchOptions = {
     'registryType',
   ], // fields to index for full-text search
   storeFields: ['title', '_key'], // fields to return with search results
-  prefix: true,
-  boost: {
-    title: 4,
-    tags: 3,
-    description: 2,
-  },
-  fuzzy: 0.2,
   extractField: (document, fieldName) => {
     if (Array.isArray(document[fieldName])) {
       return document[fieldName].join(' ');
     }
     return fieldName.split('.').reduce((doc, key) => doc && doc[key], document);
   },
+  searchOptions: {
+    prefix: true,
+    boost: {
+      title: 4,
+      tags: 3,
+      description: 2,
+    },
+    fuzzy: 0.2,
+  }
 };
 
 const originalDocumentTitle = document.title;
