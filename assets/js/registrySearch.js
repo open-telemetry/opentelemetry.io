@@ -24,7 +24,7 @@ const miniSearchOptions = {
       description: 2,
     },
     fuzzy: 0.2,
-  }
+  },
 };
 
 const originalDocumentTitle = document.title;
