@@ -4,7 +4,7 @@ linkTitle: Python Logs Collection
 date: 2023-11-21
 author: '[Michael Hausenblas](https://github.com/mhausenblas) (AWS)'
 # prettier-ignore
-cSpell:ignore: asctime Chehab dataprepper exgru fileconsumer filelog Grogu grogu hossko Houssam levelname logfile otelbin Padawan Prepper svrnm WORKDIR yoda
+cSpell:ignore: asctime Chehab exgru fileconsumer filelog Grogu grogu hossko Houssam levelname logfile otelbin Padawan svrnm WORKDIR yoda
 ---
 
 In the following, we will walk through how to do

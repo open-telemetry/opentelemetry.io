@@ -430,7 +430,7 @@ First, create a `MeterProvider`:
 ```php
 <?php
 
-use OpenTelemetry\Contrib\Otlp\ConsoleMetricExporterFactory;
+use OpenTelemetry\SDK\Metrics\MetricExporter\ConsoleMetricExporterFactory;
 use OpenTelemetry\SDK\Metrics\MeterProvider;
 use OpenTelemetry\SDK\Metrics\MetricReader\ExportingReader;
 
