@@ -31,7 +31,7 @@ Here's an explanation of what each configuration does:
   are being exported to `console` (stdout) and with `otlp`. The `otlp` option
   tells `opentelemetry-instrument` to send the traces to an endpoint that
   accepts OTLP via gRPC. In order to use HTTP instead of gRPC, add
-  `--exporter_otlp_protocol http`. The full list of available options for
+  `--exporter_otlp_protocol http/protobuf`. The full list of available options for
   traces_exporter, see the Python contrib
   [OpenTelemetry Instrumentation](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-instrumentation).
 - `metrics_exporter` specifies which metrics exporter to use. In this case,
