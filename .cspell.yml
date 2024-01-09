@@ -8,6 +8,19 @@ ignorePaths:
 # words here are only listed for their spelling, if there is a certain way
 # to write a word (e.g. OpenTelemetry vs Opentelemetry or cloud native vs
 # cloud-native), edit the text-lint rules in .textlintrc.yml
+patterns:
+  - name: CodeBlock
+    pattern: |
+      /
+          ^(\s*[~`]{3,})   # code-block start
+          (bash|console|cmd|docker|go|log|mermaid|nocode|sh(ell)?|yaml) # languages
+          [\s\S]*?         # content
+          \1               # code-block end
+      /igmx
+languageSettings:
+  - languageId: markdown
+    ignoreRegExpList:
+      - CodeBlock
 words:
   - accountingservice
   - adservice
