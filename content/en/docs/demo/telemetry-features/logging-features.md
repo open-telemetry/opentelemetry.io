@@ -1,7 +1,7 @@
 ---
 title: Log Coverage by Service
-linkTitle: Log Feature Coverage
-aliases: [log_service_features]
+linkTitle: Log Coverage
+aliases: [log_service_features, ../log_features]
 ---
 
 | Service         | Language        | OTLP Logs |

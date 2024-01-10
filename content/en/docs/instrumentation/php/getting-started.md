@@ -228,7 +228,7 @@ Replace `index.php` with the following code:
 ```php
 <?php
 
-use OpenTelemetry\API\Common\Instrumentation\Globals;
+use OpenTelemetry\API\Globals;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
@@ -281,7 +281,7 @@ Replace the `index.php` file with the following code:
 <?php
 
 use Monolog\Logger;
-use OpenTelemetry\API\Common\Instrumentation\Globals;
+use OpenTelemetry\API\Globals;
 use OpenTelemetry\Contrib\Logs\Monolog\Handler;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;

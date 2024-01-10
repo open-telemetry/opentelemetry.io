@@ -51,7 +51,7 @@ producing the telemetry; in particular the `service.name` attribute.
 ```php
 <?php
 
-use OpenTelemetry\API\Common\Instrumentation\Globals;
+use OpenTelemetry\API\Globals;
 use OpenTelemetry\API\Logs\EventLogger;
 use OpenTelemetry\API\Logs\LogRecord;
 use OpenTelemetry\API\Trace\Propagation\TraceContextPropagator;
@@ -432,7 +432,7 @@ First, create a `MeterProvider`:
 ```php
 <?php
 
-use OpenTelemetry\Contrib\Otlp\ConsoleMetricExporterFactory;
+use OpenTelemetry\SDK\Metrics\MetricExporter\ConsoleMetricExporterFactory;
 use OpenTelemetry\SDK\Metrics\MeterProvider;
 use OpenTelemetry\SDK\Metrics\MetricReader\ExportingReader;
 

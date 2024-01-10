@@ -1659,6 +1659,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T16:10:33.693806-04:00"
   },
+  "https://en.wikipedia.org/wiki/Bat-Signal": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-22T10:12:58.908659-05:00"
+  },
   "https://en.wikipedia.org/wiki/COBOL": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T16:19:31.864503-04:00"
@@ -1899,6 +1903,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-11-14T11:45:06.021428+01:00"
   },
+  "https://farfetch.github.io/kafkaflow/docs/guides/open-telemetry": {
+    "StatusCode": 206,
+    "LastSeen": "2023-12-20T20:11:28.620683848Z"
+  },
   "https://fastapi.tiangolo.com": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T09:37:41.317466-04:00"
@@ -2015,6 +2023,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:29:00.782577-04:00"
   },
+  "https://github.com/Farfetch/kafkaflow": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-20T20:11:28.212921105Z"
+  },
   "https://github.com/FriendsOfPHP/pickle": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:48:06.230023-04:00"
@@ -2046,6 +2058,10 @@
   "https://github.com/MovieStoreGuy": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:41:45.782241-04:00"
+  },
+  "https://github.com/MrAlias/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-22T10:12:55.071939-05:00"
   },
   "https://github.com/MrAlias/flow": {
     "StatusCode": 200,
@@ -2207,6 +2223,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:22:49.712442-04:00"
   },
+  "https://github.com/ccaraman": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-22T10:12:56.711911-05:00"
+  },
   "https://github.com/census-instrumentation/opencensus-python": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:36:15.230427-04:00"
@@ -2322,6 +2342,10 @@
   "https://github.com/elastic/elasticsearch": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:31:43.320081-04:00"
+  },
+  "https://github.com/equinix-labs/otel-cli": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-22T10:12:58.650448-05:00"
   },
   "https://github.com/etcd-io/etcd": {
     "StatusCode": 200,
@@ -3591,6 +3615,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:41:16.088891-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-22T10:12:58.088255-05:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/#change--contribution-process": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T08:41:21.481944-04:00"
@@ -3875,6 +3903,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:35:31.186662-04:00"
   },
+  "https://github.com/pkanal": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-22T10:12:57.554103-05:00"
+  },
   "https://github.com/ppatierno": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:29:29.830836-04:00"
@@ -3990,6 +4022,10 @@
   "https://github.com/tigrannajaryan": {
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:32:29.291416-04:00"
+  },
+  "https://github.com/tobert": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-22T10:12:55.948206-05:00"
   },
   "https://github.com/tokio-rs/tracing-opentelemetry": {
     "StatusCode": 200,
@@ -4975,6 +5011,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:37:49.266869-04:00"
   },
+  "https://openobserve.ai/docs/ingestion/logs/otlp/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-01-08T11:23:56.881901528Z"
+  },
   "https://opensearch.org/": {
     "StatusCode": 206,
     "LastSeen": "2023-11-03T10:07:17.047111-04:00"
@@ -5026,6 +5066,10 @@
   "https://opentelemetry-python.readthedocs.io/en/latest/sdk/metrics.html": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:46:14.19804-04:00"
+  },
+  "https://opentelemetry-python.readthedocs.io/en/latest/sdk/trace.export.html#opentelemetry.sdk.trace.export.SpanExporter": {
+    "StatusCode": 200,
+    "LastSeen": "2023-11-08T16:22:53.779771+01:00"
   },
   "https://opentelemetry-python.readthedocs.io/en/latest/sdk/trace.html": {
     "StatusCode": 200,
@@ -5447,6 +5491,18 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-30T11:43:42.332023-04:00"
   },
+  "https://pypi.org/project/opentelemetry-exporter-prometheus/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-08T16:22:52.2717+01:00"
+  },
+  "https://pypi.org/project/opentelemetry-exporter-zipkin-json/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-08T16:22:53.166698+01:00"
+  },
+  "https://pypi.org/project/opentelemetry-exporter-zipkin-proto-http/": {
+    "StatusCode": 206,
+    "LastSeen": "2023-11-08T16:22:52.72657+01:00"
+  },
   "https://qryn.metrico.in/#/support": {
     "StatusCode": 206,
     "LastSeen": "2023-10-17T15:10:07.18892+02:00"
@@ -5698,6 +5754,14 @@
   "https://shorturl.at/hlqtE": {
     "StatusCode": 200,
     "LastSeen": "2023-09-12T12:09:44.031281-04:00"
+  },
+  "https://shorturl.at/kAEQX": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-22T15:46:29.596006461Z"
+  },
+  "https://shorturl.at/osHRX": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-22T15:46:25.223430264Z"
   },
   "https://shorturl.at/vLYZ0": {
     "StatusCode": 200,
@@ -6286,6 +6350,10 @@
   "https://www.honeycomb.io/blog/interview-with-honeycomb-engineer-chris-toshok-dogfooding-opentelemetry/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T16:25:24.536216-04:00"
+  },
+  "https://www.hyperdx.io/docs/install/opentelemetry": {
+    "StatusCode": 206,
+    "LastSeen": "2023-12-18T14:55:25.074987-08:00"
   },
   "https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids": {
     "StatusCode": 200,
@@ -7043,6 +7111,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:36:19.001379-04:00"
   },
+  "https://www.youtube.com/embed/coPrhP_7lVU": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-21T18:21:54.553086-05:00"
+  },
   "https://www.youtube.com/embed/zSeKL2-_sVg": {
     "StatusCode": 200,
     "LastSeen": "2023-10-17T18:03:15.47096-04:00"
@@ -7054,6 +7126,10 @@
   "https://youtu.be/9iaGG-YZw5I": {
     "StatusCode": 200,
     "LastSeen": "2023-06-01T17:03:14.742262-04:00"
+  },
+  "https://youtu.be/OEGgmTNfYsU": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-22T10:12:54.130477-05:00"
   },
   "https://youtu.be/dpXhgZL9tzU": {
     "StatusCode": 200,

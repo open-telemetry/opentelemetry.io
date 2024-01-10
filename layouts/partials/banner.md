@@ -3,8 +3,7 @@
 
 <div class="o-banner">
 
-**Contribfest** at _KubeCon NA 2023_ was a success!
-[Read about it](/blog/2023/contribfest-na/)
+[Thanks to all the wonderful humans who have contributed to OpenTelemetry to date. We look forward to your contributions in 2024!](/blog/2023/humans-of-otel/)
 
 {{/*
 
