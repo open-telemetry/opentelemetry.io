@@ -6,9 +6,7 @@ tags:
   - instrumentation
   - dotnet
 license: Apache 2.0
-description:
-  This is an Instrumentation Library, which instruments Hangfire and collects
-  telemetry about BackgroundJob.
+description: This is an Instrumentation Library, which instruments Hangfire and collects telemetry about BackgroundJob.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -17,3 +15,4 @@ createdAt: 2022-10-28
 package:
   registry: nuget
   name: OpenTelemetry.Instrumentation.Hangfire
+  version: 1.6.0-beta.1

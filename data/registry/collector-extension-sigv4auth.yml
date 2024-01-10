@@ -8,9 +8,7 @@ tags:
   - extension
   - collector
 license: Apache 2.0
-description:
-  This extension provides SigV4 authentication for making requests to AWS
-  services.
+description: This extension provides SigV4 authentication for making requests to AWS services.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -19,4 +17,4 @@ createdAt: 2022-10-25
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/extension/sigv4authextension
-  version: v0.91.0
+  version: v0.92.0

@@ -7,9 +7,7 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description:
-  The Splunk HEC Receiver for the OpenTelemetry Collector accepts metrics,
-  traces, and logs in the Splunk HEC format.
+description: The Splunk HEC Receiver for the OpenTelemetry Collector accepts metrics, traces, and logs in the Splunk HEC format.
 authors:
   - name: Splunk
 urls:
@@ -18,4 +16,4 @@ createdAt: 2021-02-26
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/splunkhecreceiver
-  version: v0.91.0
+  version: v0.92.0

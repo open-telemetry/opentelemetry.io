@@ -7,9 +7,7 @@ tags:
   - processor
   - collector
 license: Apache 2.0
-description:
-  The Tail Sampling Processor for the OpenTelemetry Collector samples traces
-  based on a set of defined policies.
+description: The Tail Sampling Processor for the OpenTelemetry Collector samples traces based on a set of defined policies.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -18,4 +16,4 @@ createdAt: 2021-02-24
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/processor/tailsamplingprocessor
-  version: v0.91.0
+  version: v0.92.0
