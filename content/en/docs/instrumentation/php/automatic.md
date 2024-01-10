@@ -227,7 +227,5 @@ After you have automatic instrumentation configured for your app or service, you
 might want to add [manual instrumentation](../manual) to collect custom
 telemetry data.
 
-
-## Examples
-
-You can find more examples in the [opentelemetry-php-contrib](https://github.com/open-telemetry/opentelemetry-php-contrib) repository.
+For more examples, see
+[opentelemetry-php-contrib/examples](https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/examples).
