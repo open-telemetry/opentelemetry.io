@@ -13,7 +13,7 @@ patterns:
     pattern: |
       /
           ^(\s*[~`]{3,})   # code-block start
-          (bash|console|cmd|docker|go|log|mermaid|nocode|sh(ell)?|yaml) # languages
+          .*               # all languages and options, e.g. shell {hl_lines=[12]}
           [\s\S]*?         # content
           \1               # code-block end
       /igmx
