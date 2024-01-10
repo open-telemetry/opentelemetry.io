@@ -11,9 +11,12 @@ of your needs when instrumenting
 [Spring Boot](https://spring.io/projects/spring-boot) applications.
 
 The OpenTelemetry [Spring Boot starter] can help you in the following cases:
-*  with Spring Boot Native image applications for which the OpenTelemetry Java agent does not work
-*  the startup overhead of the OpenTelemetry Java agent exceeds your requirements
-*  the OpenTelemetry Java agent might not work if your application already uses another Java monitoring agent
+
+- with Spring Boot Native image applications for which the OpenTelemetry Java
+  agent does not work
+- the startup overhead of the OpenTelemetry Java agent exceeds your requirements
+- the OpenTelemetry Java agent might not work if your application already uses
+  another Java monitoring agent
 
 [Spring Boot starter]:
   https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using.build-systems.starters
