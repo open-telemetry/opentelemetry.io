@@ -1,6 +1,6 @@
 ---
 title: Submit a blog post
-linkTitle: Submit a blog post
+description: Learn how to submit a blog post.
 slug: blogs-case-studies
 weight: 30
 cSpell:ignore: open-telemetry
