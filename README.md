@@ -22,13 +22,13 @@ For guidance on how to write and submit a blog post, see
 
 ### Add a project to the OpenTelemetry [Registry]
 
-For details on how to add a project to the OpenTelemetry Registry, see
-[Adding to the registry][].
+For details on how to add a project to the OpenTelemetry Registry, see [Adding
+to the registry][].
 
 ## Contributing
 
 We have curated some issues with the tags [help wanted][] and [good first
-issue][]. This should allow you to quickly find a place to contribute. See 
+issue][]. This should allow you to quickly find a place to contribute. See
 [CONTRIBUTING.md][] for more information.
 
 We, the OTel Comms SIG, meet every two weeks on Monday at 9:00 PT. Check out the
@@ -85,8 +85,6 @@ already contributed][contributors]!
 [hugo]: https://gohugo.io
 [netlify]: https://netlify.com
 [opentelemetry]: https://opentelemetry.io
-[pull request]:
-  https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request
 [registry]: https://opentelemetry.io/ecosystem/registry/
 [opentelemetry community calendar]:
   https://calendar.google.com/calendar/embed?src=google.com_b79e3e90j7bbsa2n2p5an5lf60%40group.calendar.google.com

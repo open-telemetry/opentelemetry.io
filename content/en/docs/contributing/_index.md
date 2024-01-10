@@ -278,7 +278,7 @@ When you are ready to submit a pull request, commit your changes.
    (use "git add <file>..." to update what will be committed)
    (use "git checkout -- <file>..." to discard changes in working directory)
 
-   modified:   content/en/docs/contribute/new-content/contributing-content.md
+   modified:   content/en/docs/file-you-are-editing.md
 
    no changes added to commit (use "git add" and/or "git commit -a")
    ```
@@ -616,7 +616,7 @@ the templates with as much detail as possible when you file issues or PRs.
 
 - Visit the [OpenTelemetry community site](/community/).
 - Add your application to the [Registry](/ecosystem).
-- Submit a [blog post or case study](/docs/contribute/blogs-case-studies/).
+- Submit a [blog post or case study](/docs/contributing/blogs-case-studies/).
 
 [dashboard]: https://app.netlify.com/sites/opentelemetry/overview
 [deploy preview]:
