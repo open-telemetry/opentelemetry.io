@@ -1,6 +1,7 @@
 ---
 title: Contributing
 description: Learn how to contribute to the OpenTelemetry documentation.
+aliases: [/docs/contribution-guidelines]
 weight: 200
 cSpell:ignore: linktitle open-telemetry prepopulated repos spacewhite
 ---
