@@ -269,13 +269,7 @@ link = OpenTelemetry::Trace::Link.new(span_to_link_from.context, attributes: { "
 
 ### Set span status
 
-A [status](/docs/concepts/signals/traces#span-status) can be set on a
-[span](/docs/concepts/signals/traces#spans), typically used to specify that a
-span has not completed successfully - StatusCode.ERROR. In rare scenarios, you
-could override the Error status with StatusCode.OK, but don’t set StatusCode.OK
-on successfully-completed spans.
-
-The status can be set at any time before the span is finished:
+{{% docs/instrumentation/span-status-preamble %}}
 
 ```ruby
 require "opentelemetry/sdk"

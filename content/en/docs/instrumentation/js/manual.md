@@ -1011,11 +1011,7 @@ const someFunction = (spanToLinkFrom) => {
 
 ### Span Status
 
-A [status](/docs/concepts/signals/traces/#span-status) can be set on a span,
-typically used to specify that a span has not completed successfully -
-`SpanStatusCode.ERROR`.
-
-The status can be set at any time before the span is finished:
+{{% docs/instrumentation/span-status-preamble %}}
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
@@ -1060,11 +1056,6 @@ tracer.startActiveSpan('app.doWork', (span) => {
 ```
 
 {{% /tab %}} {{< /tabpane >}}
-
-By default, the status for all spans is `Unset` rather than `Ok`. It is
-typically the job of another component in your telemetry pipeline to interpret
-the `Unset` status of a span, so it's best not to override this unless you're
-explicitly tracking an error.
 
 ### Recording exceptions
 
