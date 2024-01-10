@@ -54,7 +54,7 @@ processors:
       exclude:
         match_type: strict
         services:
-          - development
+          - receivers
 ```
 
 The
