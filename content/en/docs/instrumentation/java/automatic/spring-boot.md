@@ -10,7 +10,6 @@ The [OpenTelemetry Java agent](..) with byte code instrumentation can cover most
 of your needs when instrumenting
 [Spring Boot](https://spring.io/projects/spring-boot) applications.
 
-
 The OpenTelemetry [Spring Boot starter] can help you in the following cases:
 *  with Spring Boot Native image applications for which the OpenTelemetry Java agent does not work
 *  the startup overhead of the OpenTelemetry Java agent exceeds your requirements
