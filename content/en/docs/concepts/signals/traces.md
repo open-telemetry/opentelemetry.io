@@ -289,17 +289,31 @@ another.
 
 ### Span Status
 
-A status will be attached to a span. Typically, you will set a span status when
-there is a known error in the application code, such as an exception. A Span
-Status will be tagged as one of the following values:
+Each span has a status. The three possible values are:
 
 - `Unset`
-- `Ok`
 - `Error`
+- `Ok`
 
-When an exception is handled, a Span status can be set to Error. Otherwise, a
-Span status is in the Unset state. By setting a Span status to Unset, the
-back-end that processes spans can now assign a final status.
+The default value is `Unset`. A span status that is `Unset` means that the
+operation it tracked successfully completed without an error.
+
+When a span status is `Error`, then that means some error ocurred in the
+operation it tracks. For example, this could be due to an HTTP 500 error on a
+server handling a request.
+
+When a span status is `Ok`, then that means the span was explicitly marked as
+error-free by the developer of an application. Although this is unintuitive,
+it's not required to set a span status as `Ok` when a span is known to have
+completed without error, as this is covered by `Unset`. What `Ok` does is
+represent an unambiguous "final call" on the status of a span that has been
+explicitly set by a user. This is helpful in any situation where a developer
+wishes for there to be no other interpretation of a span other than
+"successful".
+
+To reiterate: `Unset` represents a span that completed without an error. `Ok`
+represents when a developer explicitly marks a span as successful. In most
+cases, it is not necessary to explicitly mark a span as `Ok`.
 
 ### Span Kind
 

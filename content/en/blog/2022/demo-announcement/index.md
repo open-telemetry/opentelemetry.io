@@ -24,7 +24,7 @@ some stretching and take a water break in the meantime.
 
 Your command line output should look like this:
 
-![Screenshot of the console output.](otel-webstore-app-output.png 'Screenshot of the console output')
+![Console output](otel-webstore-app-output.png)
 
 - Once the images are built you can access the web store at:
   <http://localhost:8080>
@@ -83,9 +83,7 @@ Otherwise the pre-existing feature set from the GCP demo remains the same:
 
 ### Current Architecture
 
-![Screenshot of the current
-architecture.](current-demo-architecture.png 'Screenshot of the
-current architecture')
+![Current architecture](current-demo-architecture.png)
 
 ### BYOB (Bring Your Own Backend)
 
@@ -142,7 +140,7 @@ ourselves to just the items listed here.
 
 ### Future Architecture
 
-![Screenshot of the future architecture.](future-demo-architecture.png 'Screenshot of the future architecture')
+![Future architecture](future-demo-architecture.png)
 
 ## Going Forward
 
