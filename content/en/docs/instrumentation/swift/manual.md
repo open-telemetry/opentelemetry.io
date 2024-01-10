@@ -168,12 +168,7 @@ span.addEvent(name: "computation complete", attributes: attributes)
 
 ### Setting Span Status
 
-A [status](/docs/concepts/signals/traces/#span-status) can be set on a span,
-typically used to specify that a span has not completed successfully -
-`SpanStatus.Error`. In rare scenarios, you could override the Error status with
-OK, but don’t set OK on successfully-completed spans.
-
-The status can be set at any time before the span is finished:
+{{% docs/instrumentation/span-status-preamble %}}
 
 ```swift
 func myFunction() {
