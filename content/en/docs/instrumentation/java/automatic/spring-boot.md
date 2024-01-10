@@ -22,7 +22,7 @@ The
 repository contains an example of a Spring Boot Native image application
 instrumented using the OpenTelemetry Spring Boot starter.
 
-If your application already uses a Java agent, the OpenTelemetry Java agent
+If your application already uses another Java monitoring agent, the OpenTelemetry Java agent
 might not work. In this case, use the OpenTelemetry starter.
 
 A third situation in which the OpenTelemetry starter can help you is when the
