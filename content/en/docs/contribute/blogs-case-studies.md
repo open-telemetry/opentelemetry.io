@@ -2,7 +2,6 @@
 title: Submit a blog post
 description: Learn how to submit a blog post.
 weight: 30
-cSpell:ignore: open-telemetry
 ---
 
 The [OpenTelemetry blog](/blog/) communicates new features, community reports,
