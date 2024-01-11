@@ -3,7 +3,7 @@ title: Automatic instrumentation
 linkTitle: Automatic
 aliases: [configuring_automatic_instrumentation]
 cSpell:ignore: faraday sinatra
-weight: 20
+weight: 30
 ---
 
 Automatic instrumentation in Ruby is done via instrumentation packages, and most

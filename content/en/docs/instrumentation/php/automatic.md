@@ -1,7 +1,7 @@
 ---
 title: Automatic Instrumentation
 linkTitle: Automatic
-weight: 20
+weight: 30
 # prettier-ignore
 cSpell:ignore: centos configurator democlass epel myapp packagist pecl phar remi unindented userland
 ---

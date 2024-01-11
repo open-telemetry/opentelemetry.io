@@ -1,4 +1,4 @@
-[Manual instrumentation](/docs/concepts/instrumentation/manual/) is the act of
+[Instrumentation](/docs/concepts/instrumentation/) is the act of
 adding observability code to an app yourself.
 
 If you're instrumenting an app, you need to use the OpenTelemetry SDK for your

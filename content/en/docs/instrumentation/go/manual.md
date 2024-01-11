@@ -1,6 +1,6 @@
 ---
-title: Manual Instrumentation
-linkTitle: Manual
+title: Instrumentation
+linkTitle: Instrumentation
 aliases:
   - /docs/instrumentation/go/instrumentation
   - /docs/instrumentation/go/manual_instrumentation

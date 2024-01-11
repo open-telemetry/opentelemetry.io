@@ -1,7 +1,7 @@
 ---
 title: Automatic Instrumentation
 linkTitle: Automatic
-weight: 20
+weight: 30
 cSpell:ignore: devel distro mkdir myapp uninstrumented virtualenv
 ---
 

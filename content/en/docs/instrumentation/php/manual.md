@@ -1,7 +1,7 @@
 ---
-title: Manual Instrumentation
-linkTitle: Manual
-weight: 30
+title: Instrumentation
+linkTitle: Instrumentation
+weight: 20
 description: Manual instrumentation for OpenTelemetry PHP
 cSpell:ignore: guzzlehttp myapp
 ---

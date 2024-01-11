@@ -1,11 +1,11 @@
 ---
-title: Manual Instrumentation
-linkTitle: Manual
+title: Instrumentation
+linkTitle: Instrumentation
 aliases:
   - /docs/java/getting_started
   - /docs/java/manual_instrumentation
   - /docs/instrumentation/java/manual_instrumentation
-weight: 30
+weight: 20
 description: Manual instrumentation for OpenTelemetry Java
 # prettier-ignore
 cSpell:ignore: autoconfigure Autowired classpath customizer logback loggable multivalued rolldice springframework

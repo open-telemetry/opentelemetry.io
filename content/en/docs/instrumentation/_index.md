@@ -1,5 +1,5 @@
 ---
-title: Instrumentation
+title: Language APIs & SDKs
 description: >-
   OpenTelemetry code instrumentation is supported for many popular programming
   languages

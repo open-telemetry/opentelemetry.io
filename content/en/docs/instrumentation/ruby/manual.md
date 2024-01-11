@@ -1,12 +1,12 @@
 ---
-title: Manual Instrumentation
-linkTitle: Manual
+title: Instrumentation
+linkTitle: Instrumentation
 aliases:
   - /docs/instrumentation/ruby/manual_instrumentation
   - /docs/instrumentation/ruby/events
   - /docs/instrumentation/ruby/context-propagation
 weight: 20
-description: Manual instrumentation for OpenTelemetry Ruby
+description: Instrumentation for OpenTelemetry Ruby
 cSpell:ignore: SIGHUP
 ---
 

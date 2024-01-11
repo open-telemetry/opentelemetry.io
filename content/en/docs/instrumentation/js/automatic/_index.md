@@ -3,7 +3,7 @@ title: Automatic Instrumentation
 linkTitle: Automatic
 description:
   Capture telemetry from your application with zero source code modifications
-weight: 20
+weight: 30
 ---
 
 Automatic instrumentation provides a way to instrument any Node.js application

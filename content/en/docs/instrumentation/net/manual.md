@@ -1,8 +1,8 @@
 ---
-title: Manual Instrumentation
-linkTitle: Manual
-weight: 30
-description: Manual instrumentation for OpenTelemetry .NET
+title: Instrumentation
+linkTitle: Instrumentation
+weight: 20
+description: Instrumentation for OpenTelemetry .NET
 ---
 
 {{% docs/instrumentation/manual-intro %}}

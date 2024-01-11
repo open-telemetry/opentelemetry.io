@@ -1,8 +1,8 @@
 ---
-title: Manual Instrumentation
-linkTitle: Manual
+title: Instrumentation
+linkTitle: Instrumentation
 weight: 30
-description: Manual instrumentation for OpenTelemetry Swift
+description: Instrumentation for OpenTelemetry Swift
 ---
 
 {{% docs/instrumentation/manual-intro %}}
