@@ -15,5 +15,5 @@ urls:
 createdAt: 2021-07-08
 package:
   registry: npm
-  name: "@opentelemetry/instrumentation-winston"
+  name: '@opentelemetry/instrumentation-winston'
   version: 0.33.1

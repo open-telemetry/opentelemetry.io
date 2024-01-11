@@ -16,5 +16,5 @@ urls:
 createdAt: 2021-07-08
 package:
   registry: npm
-  name: "@opentelemetry/instrumentation-knex"
+  name: '@opentelemetry/instrumentation-knex'
   version: 0.32.4

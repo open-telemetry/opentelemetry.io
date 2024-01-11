@@ -6,7 +6,9 @@ tags:
   - instrumentation
   - js
 license: Apache 2.0
-description: This module provides an instrumentation library for the injection of trace context to cassandra-driver.
+description:
+  This module provides an instrumentation library for the injection of trace
+  context to cassandra-driver.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -14,5 +16,5 @@ urls:
 createdAt: 2021-07-08
 package:
   registry: npm
-  name: "@opentelemetry/instrumentation-cassandra-driver"
+  name: '@opentelemetry/instrumentation-cassandra-driver'
   version: 0.34.2

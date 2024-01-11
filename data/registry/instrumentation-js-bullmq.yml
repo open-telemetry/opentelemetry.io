@@ -1,4 +1,4 @@
-# cSpell:ignore bullmq
+# cSpell:ignore bullmq jenniferplusplus
 title: BullMQ Instrumentation
 registryType: instrumentation
 language: js
@@ -15,6 +15,6 @@ urls:
   repo: https://github.com/jenniferplusplus/opentelemetry-instrumentation-bullmq
 createdAt: 2023-01-27
 package:
-  name: "@jenniferplusplus/opentelemetry-instrumentation-bullmq"
+  name: '@jenniferplusplus/opentelemetry-instrumentation-bullmq'
   registry: npm
   version: 0.5.0

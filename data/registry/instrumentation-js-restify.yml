@@ -14,5 +14,5 @@ urls:
 createdAt: 2021-07-08
 package:
   registry: npm
-  name: "@opentelemetry/instrumentation-restify"
+  name: '@opentelemetry/instrumentation-restify'
   version: 0.34.3

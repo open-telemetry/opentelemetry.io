@@ -14,5 +14,5 @@ urls:
 createdAt: 2020-08-28
 package:
   registry: npm
-  name: "@opentelemetry/instrumentation-fastify"
+  name: '@opentelemetry/instrumentation-fastify'
   version: 0.32.6

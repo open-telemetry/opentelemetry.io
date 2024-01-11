@@ -1,3 +1,4 @@
+# cSpell:ignore memoizer
 title: OpenTelemetry lru-memorizer Instrumentation for Node.js
 registryType: instrumentation
 language: js
@@ -6,7 +7,8 @@ tags:
   - instrumentation
   - js
 license: Apache 2.0
-description: This module provides an instrumentation library for the lru-memorizer.
+description:
+  This module provides an instrumentation library for the lru-memorizer.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -14,5 +16,5 @@ urls:
 createdAt: 2022-10-27
 package:
   registry: npm
-  name: "@opentelemetry/instrumentation-lru-memoizer"
+  name: '@opentelemetry/instrumentation-lru-memoizer'
   version: 0.33.5

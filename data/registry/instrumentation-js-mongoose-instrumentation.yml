@@ -15,5 +15,5 @@ urls:
 createdAt: 2021-02-17
 package:
   registry: npm
-  name: "@opentelemetry/instrumentation-mongoose"
+  name: '@opentelemetry/instrumentation-mongoose'
   version: 0.34.0

@@ -13,5 +13,5 @@ urls:
 createdAt: 2021-07-08
 package:
   registry: npm
-  name: "@opentelemetry/instrumentation-net"
+  name: '@opentelemetry/instrumentation-net'
   version: 0.32.5

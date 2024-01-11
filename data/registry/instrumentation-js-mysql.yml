@@ -13,5 +13,5 @@ urls:
 createdAt: 2020-11-09
 package:
   registry: npm
-  name: "@opentelemetry/instrumentation-mysql"
+  name: '@opentelemetry/instrumentation-mysql'
   version: 0.34.5

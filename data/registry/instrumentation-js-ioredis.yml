@@ -1,3 +1,4 @@
+# cSpell:ignore ioredis
 title: ioRedis Instrumentation
 registryType: instrumentation
 language: js
@@ -13,5 +14,5 @@ urls:
 createdAt: 2020-11-09
 package:
   registry: npm
-  name: "@opentelemetry/instrumentation-ioredis"
+  name: '@opentelemetry/instrumentation-ioredis'
   version: 0.36.1

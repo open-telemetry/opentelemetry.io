@@ -14,5 +14,5 @@ urls:
 createdAt: 2021-07-08
 package:
   registry: npm
-  name: "@opentelemetry/instrumentation-memcached"
+  name: '@opentelemetry/instrumentation-memcached'
   version: 0.32.5

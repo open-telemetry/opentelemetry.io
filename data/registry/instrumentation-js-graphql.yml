@@ -13,5 +13,5 @@ urls:
 createdAt: 2020-11-09
 package:
   registry: npm
-  name: "@opentelemetry/instrumentation-graphql"
+  name: '@opentelemetry/instrumentation-graphql'
   version: 0.36.1

@@ -14,6 +14,6 @@ urls:
   repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-cassandra
 createdAt: 2021-07-08
 package:
-  name: "@opentelemetry/instrumentation-cassandra-driver"
+  name: '@opentelemetry/instrumentation-cassandra-driver'
   registry: npm
   version: 0.34.2

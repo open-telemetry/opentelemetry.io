@@ -12,6 +12,6 @@ urls:
   repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-connect
 createdAt: 2020-11-09
 package:
-  name: "@opentelemetry/instrumentation-connect"
+  name: '@opentelemetry/instrumentation-connect'
   registry: npm
   version: 0.32.4

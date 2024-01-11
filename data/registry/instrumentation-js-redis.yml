@@ -13,5 +13,5 @@ urls:
 createdAt: 2020-11-09
 package:
   registry: npm
-  name: "@opentelemetry/instrumentation-redis"
+  name: '@opentelemetry/instrumentation-redis'
   version: 0.35.5

@@ -15,5 +15,5 @@ urls:
 createdAt: 2020-11-09
 package:
   registry: npm
-  name: "@opentelemetry/instrumentation-generic-pool"
+  name: '@opentelemetry/instrumentation-generic-pool'
   version: 0.32.5

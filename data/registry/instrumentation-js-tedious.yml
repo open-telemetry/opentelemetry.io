@@ -6,7 +6,8 @@ tags:
   - instrumentation
   - js
 license: Apache 2.0
-description: This module provides automatic instrumentation for the tedious module.
+description:
+  This module provides automatic instrumentation for the tedious module.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -14,5 +15,5 @@ urls:
 createdAt: 2022-10-27
 package:
   registry: npm
-  name: "@opentelemetry/instrumentation-tedious"
+  name: '@opentelemetry/instrumentation-tedious'
   version: 0.6.5
