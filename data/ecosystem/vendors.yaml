@@ -133,7 +133,7 @@
   oss: true
   commercial: true
 - name: Immersive Fusion
-  distribution: true
+  distribution: false
   nativeOTLP: true
   url: 'https://docs.immersivefusion.com/instrument'
   contact: 'support@immersivefusion.com'
