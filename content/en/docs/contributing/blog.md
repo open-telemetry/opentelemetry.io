@@ -1,5 +1,5 @@
 ---
-title: Submit a blog post
+title: Blog
 description: Learn how to submit a blog post.
 weight: 30
 ---

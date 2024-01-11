@@ -5,11 +5,13 @@ weight: 10
 cSpell:ignore: open-telemetry postgre style-guide textlintrc
 ---
 
-The OpenTelemetry documentation adheres to the
-[Kubernetes Style Guide](https://kubernetes.io/docs/contribute/style/style-guide/)
-and the
-[Google Developer Documentation Style Guide](https://developers.google.com/style)
-. The following sections contain guidance that is specific to the OpenTelemetry
+We don't have an official style guide yet, but the current OpenTelemetry
+documentation style is inspired by the following style guides:
+
+- [Google Developer Documentation Style Guide](https://developers.google.com/style)
+- [Kubernetes Style Guide](https://kubernetes.io/docs/contribute/style/style-guide/)
+
+The following sections contain guidance that is specific to the OpenTelemetry
 project.
 
 ## OpenTelemetry.io word list

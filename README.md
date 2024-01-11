@@ -18,7 +18,7 @@ missing [let us know][].
 ### Submit a blog post
 
 For guidance on how to write and submit a blog post, see
-[Submit a blog post](/content/en/docs/contributing/blogs-case-studies).
+[Submit a blog post](/content/en/docs/contributing/blog).
 
 ### Add a project to the OpenTelemetry [Registry]
 

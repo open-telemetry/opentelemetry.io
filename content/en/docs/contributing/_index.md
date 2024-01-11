@@ -616,7 +616,7 @@ the templates with as much detail as possible when you file issues or PRs.
 
 - Visit the [OpenTelemetry community site](/community/).
 - Add your application to the [Registry](/ecosystem).
-- Submit a [blog post or case study](/docs/contributing/blogs-case-studies/).
+- Submit a [blog post or case study](/docs/contributing/blog/).
 
 [dashboard]: https://app.netlify.com/sites/opentelemetry/overview
 [deploy preview]:
