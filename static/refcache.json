@@ -7055,6 +7055,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:41:53.764072-04:00"
   },
+  "https://www.w3.org/TR/baggage/#baggage-string": {
+    "StatusCode": 206,
+    "LastSeen": "2024-01-11T14:01:22.958369+01:00"
+  },
   "https://www.w3.org/TR/baggage/#header-content": {
     "StatusCode": 206,
     "LastSeen": "2023-12-16T15:16:50.350520378Z"
@@ -7122,6 +7126,10 @@
   "https://www.youtube.com/watch": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:43:02.782058-04:00"
+  },
+  "https://yaml.org/spec/1.2.2/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-01-11T14:01:23.459474+01:00"
   },
   "https://youtu.be/9iaGG-YZw5I": {
     "StatusCode": 200,
