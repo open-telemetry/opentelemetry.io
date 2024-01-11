@@ -7057,11 +7057,7 @@
   },
   "https://www.w3.org/TR/baggage/#baggage-string": {
     "StatusCode": 206,
-<<<<<<< HEAD
-    "LastSeen": "2024-01-11T14:01:22.958369+01:00"
-=======
     "LastSeen": "2024-01-11T06:07:13.666570443Z"
->>>>>>> main
   },
   "https://www.w3.org/TR/baggage/#header-content": {
     "StatusCode": 206,
