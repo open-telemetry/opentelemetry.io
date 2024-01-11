@@ -6,10 +6,13 @@ tags:
   - instrumentation
   - js
 license: Apache 2.0
-description:
-  This module provides automatic instrumentation for the socket.io module
+description: This module provides automatic instrumentation for the socket.io module
 authors:
   - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-socket.io
 createdAt: 2022-10-27
+package:
+  registry: npm
+  name: "@opentelemetry/instrumentation-socket.io"
+  version: 0.35.0

@@ -11,3 +11,7 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-mongodb
 createdAt: 2020-11-09
+package:
+  registry: npm
+  name: "@opentelemetry/instrumentation-mongodb"
+  version: 0.38.1

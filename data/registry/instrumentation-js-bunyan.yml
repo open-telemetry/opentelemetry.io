@@ -13,3 +13,7 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-bunyan
 createdAt: 2021-07-08
+package:
+  name: "@opentelemetry/instrumentation-bunyan"
+  registry: npm
+  version: 0.34.1

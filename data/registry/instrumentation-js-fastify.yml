@@ -12,3 +12,7 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-fastify
 createdAt: 2020-08-28
+package:
+  registry: npm
+  name: "@opentelemetry/instrumentation-fastify"
+  version: 0.32.6

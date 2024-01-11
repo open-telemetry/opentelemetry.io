@@ -14,3 +14,7 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-aws-sdk
 createdAt: 2020-06-15
+package:
+  name: "@opentelemetry/instrumentation-aws-sdk"
+  registry: npm
+  version: 0.37.2
