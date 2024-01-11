@@ -113,14 +113,6 @@ while(<>) {
   s|\.\./semantic_conventions/README.md|$semConvRef| if $ARGV =~ /overview/;
   s|\.\./specification/(.*?\))|../otel/$1)|g if $ARGV =~ /otel\/specification/;
 
-  # TODO: drop the following warning once the checks are enabled in the spec repos
-  if (
-    /\((https:\/\/github.com\/open-telemetry\/opentelemetry-specification\/\w+\/.*?\/specification([^\)]*))\)/ &&
-    $ARGV !~ /tmp\/(opamp|otlp\/docs|semconv)|semantic_conventions/
-    ) {
-    printf STDOUT "WARNING: link to spec page encoded as an external URL, but should be a local path, fix this upstream;\n  File: $ARGV \n  Link: $1\n";
-  }
-
   # Match markdown inline links or link definitions to OTel spec pages: "[...](URL)" or "[...]: URL"
   s|(\]:\s+\|\()https://github.com/open-telemetry/opentelemetry-specification/\w+/(main\|v$otelSpecVers)/specification(.*?\)?)|$1$specBasePath/otel$3|;
 
