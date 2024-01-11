@@ -7,7 +7,9 @@ tags:
   - instrumentation
   - dotnet
 license: Apache 2.0
-description: This is an Instrumentation Library, which instruments MySql.Data and collects telemetry about database operations.
+description:
+  This is an Instrumentation Library, which instruments MySql.Data and collects
+  telemetry about database operations.
 authors:
   - name: OpenTelemetry Authors
 urls:

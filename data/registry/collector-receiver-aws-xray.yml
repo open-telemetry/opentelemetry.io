@@ -7,7 +7,10 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: The AWS X-Ray Receiver for the OpenTelemetry Collector accepts segments (i.e. spans) in the X-Ray Segment format. This enables the collector to receive spans emitted by the existing X-Ray SDK.
+description:
+  The AWS X-Ray Receiver for the OpenTelemetry Collector accepts segments (i.e.
+  spans) in the X-Ray Segment format. This enables the collector to receive
+  spans emitted by the existing X-Ray SDK.
 authors:
   - name: Amazon Web Services
 urls:

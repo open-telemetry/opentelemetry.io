@@ -7,7 +7,9 @@ tags:
   - instrumentation
   - dotnet
 license: Apache 2.0
-description: Automatically instruments events emitted by the NEST/Elasticsearch.Net client library.
+description:
+  Automatically instruments events emitted by the NEST/Elasticsearch.Net client
+  library.
 authors:
   - name: OpenTelemetry Authors
 urls:

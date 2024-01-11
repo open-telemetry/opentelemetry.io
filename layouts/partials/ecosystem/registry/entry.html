@@ -73,7 +73,7 @@
     {{ end -}}
     {{ $repoHref := printf "href=%q" .urls.repo | safeHTMLAttr -}}
     <li class="card my-3 registry-entry {{ $highlightStyle }}" data-registry-id="{{ ._key }}" data-registrytype="{{ .registryType }}" data-registrylanguage="{{ .language }}">
-        <div class="card-body container-fluid">
+        <div class="card-body container">
         <h4 class="card-title mb-0 d-flex flex-row">
             <a {{ $repoHref }} target="_blank" rel="noopener" class="me-auto">
             {{- .title | markdownify -}}
@@ -112,8 +112,8 @@
             {{ end -}}
             </small>
         </p>
-        <div class="d-flex flex-row">
-            <div class="me-auto p-0 flex-fill">
+        <div class="row p-2">
+            <div class="col col-md-9 col-lg-10">
                 <div class="mb-3">
                     {{ if $deprecated -}}
                         <div class="alert alert-danger" role="alert">
@@ -129,7 +129,7 @@
                     </p>
                 {{- end -}}
             </div>
-            <div class="ms-auto px-2">
+            <div class="col col-md-3 col-lg-2">
             <ul class="list-group list-group-flush">
             {{ if .package.version -}}
             <li class="list-group-item">

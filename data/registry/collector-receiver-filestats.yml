@@ -7,7 +7,9 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: The File Stats receiver collects metrics from files specified with a glob pattern.
+description:
+  The File Stats receiver collects metrics from files specified with a glob
+  pattern.
 authors:
   - name: OpenTelemetry Authors
 urls:

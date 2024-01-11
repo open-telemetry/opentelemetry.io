@@ -6,7 +6,8 @@ tags:
   - exporter
   - dotnet
 license: Apache 2.0
-description: The InfluxDB exporter converts OpenTelemetry metrics into the InfluxDB model
+description:
+  The InfluxDB exporter converts OpenTelemetry metrics into the InfluxDB model
 authors:
   - name: OpenTelemetry Authors
 urls:

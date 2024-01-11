@@ -6,7 +6,9 @@ tags:
   - instrumentation
   - dotnet
 license: Apache 2.0
-description: This is an Instrumentation Library, which instruments .NET and collect telemetry about process behavior.
+description:
+  This is an Instrumentation Library, which instruments .NET and collect
+  telemetry about process behavior.
 authors:
   - name: OpenTelemetry Authors
 urls:

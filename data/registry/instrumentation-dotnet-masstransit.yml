@@ -7,7 +7,9 @@ tags:
   - instrumentation
   - dotnet
 license: Apache 2.0
-description: Automatically instruments DiagnosticSource events emitted by MassTransit library.
+description:
+  Automatically instruments DiagnosticSource events emitted by MassTransit
+  library.
 authors:
   - name: OpenTelemetry Authors
 urls:
