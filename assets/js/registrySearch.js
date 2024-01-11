@@ -189,13 +189,15 @@ function autoSuggest(value) {
 
 // Populate the search results and render to the page
 function populateResults(results) {
-  results.forEach((result) => {
-    // fetch existing entry and copy to search results
-    let output = document.querySelector(
-      `[data-registry-id="${result._key}"]`,
-    ).outerHTML;
-    document.querySelector('#search-results').innerHTML += output;
-  });
+  document.querySelector('#search-results').innerHTML += results.reduce(
+    (acc, result) => {
+      return (
+        acc +
+        document.querySelector(`[data-registry-id="${result._key}"]`).outerHTML
+      );
+    },
+    '',
+  );
 }
 
 function setInput(key, value) {
