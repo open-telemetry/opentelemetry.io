@@ -48,8 +48,8 @@
     {{ $currentTime := (time now) -}}
     {{ $delta := $currentTime.Sub (time.AsTime .createdAt) -}}
     {{ $isNew := lt $delta.Hours 730 -}}
-    {{ $usedInDemo := isset .urls "demo" }}
-    {{ $deprecated := isset .deprecated "reason" }}
+    {{ $usedInDemo := and (isset . "urls") (isset .urls "demo") }}
+    {{ $deprecated := and (isset . "deprecated") (isset .deprecated "reason") }}
     {{ $package := "" -}}
     {{ if and (.package) (isset $remoteRegistries .package.registry) -}}
         {{ $package = merge .package (index $remoteRegistries .package.registry) -}}
