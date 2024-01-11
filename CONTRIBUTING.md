@@ -16,8 +16,8 @@ of inactivity.
 ### Code of Conduct
 
 All of your interactions in this project are subject to our
-[Code of Conduct](https://github.com/open-telemetry/community/blob/main/code-of-conduct.md)
-. This includes the creation of issues or pull requests, commenting on issues or
+[Code of Conduct](https://github.com/open-telemetry/community/blob/main/code-of-conduct.md).
+This includes the creation of issues or pull requests, commenting on issues or
 pull requests, and extends to all interactions in any real-time space, for
 example Slack, Discord, and so on.
 
