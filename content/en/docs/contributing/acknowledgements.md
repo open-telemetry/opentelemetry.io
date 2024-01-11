@@ -2,7 +2,6 @@
 title: Acknowledgements
 description: Acknowledgements for sources for content on this site
 aliases: [/acknowledgements]
-weight: 200
 cSpell:ignore: Pigram
 ---
 
