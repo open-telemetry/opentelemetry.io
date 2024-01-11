@@ -223,8 +223,7 @@ span.AddEvent("Cancelled wait due to external signal", trace.WithAttributes(attr
 
 ### Set span status
 
-A status can be set on a span, typically used to specify that there was an error
-in the operation a span is tracking - .`Error`.
+{{% docs/instrumentation/span-status-preamble %}}
 
 ```go
 import (
@@ -240,9 +239,6 @@ if err != nil {
 	span.SetStatus(codes.Error, "operationThatCouldFail failed")
 }
 ```
-
-By default, the status for all spans is `Unset`. In rare cases, you may also
-wish to set the status to `Ok`. This should generally not be necessary, though.
 
 ### Record errors
 

@@ -293,9 +293,7 @@ For more details how to read context from remote processes, see
 
 ### Set span status and record exceptions
 
-A [status](/docs/concepts/signals/traces/#span-status) can be set on a
-[span](/docs/concepts/signals/traces/#spans), typically used to specify that a
-span has not completed successfully - `SpanStatus::ERROR`.
+{{% docs/instrumentation/span-status-preamble %}}
 
 It can be a good idea to record exceptions when they happen. It's recommended to
 do this in conjunction with
@@ -432,7 +430,7 @@ First, create a `MeterProvider`:
 ```php
 <?php
 
-use OpenTelemetry\Contrib\Otlp\ConsoleMetricExporterFactory;
+use OpenTelemetry\SDK\Metrics\MetricExporter\ConsoleMetricExporterFactory;
 use OpenTelemetry\SDK\Metrics\MeterProvider;
 use OpenTelemetry\SDK\Metrics\MetricReader\ExportingReader;
 
