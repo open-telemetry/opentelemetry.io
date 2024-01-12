@@ -16,21 +16,21 @@ status of a signal in the specification may not be the same as the signal status
 in a particular language SDK.
 
 For the development status, or maturity level, of a
-[language SDK](/docs/instrumentation/), see the status section of that language:
+[language SDK](/docs/languages/), see the status section of that language:
 
 <div class="l-status-secondary mt-0">
 
-- [C++](/docs/instrumentation/cpp/#status-and-releases)
-- [.NET](/docs/instrumentation/net/#status-and-releases)
-- [Erlang/Elixir](/docs/instrumentation/erlang/#status-and-releases)
-- [Go](/docs/instrumentation/go/#status-and-releases)
-- [Java](/docs/instrumentation/java/#status-and-releases)
-- [JavaScript](/docs/instrumentation/js/#status-and-releases)
-- [PHP](/docs/instrumentation/php/#status-and-releases)
-- [Python](/docs/instrumentation/python/#status-and-releases)
-- [Ruby](/docs/instrumentation/ruby/#status-and-releases)
-- [Rust](/docs/instrumentation/rust/#status-and-releases)
-- [Swift](/docs/instrumentation/swift/#status-and-releases)
+- [C++](/docs/languages/cpp/#status-and-releases)
+- [.NET](/docs/languages/net/#status-and-releases)
+- [Erlang/Elixir](/docs/languages/erlang/#status-and-releases)
+- [Go](/docs/languages/go/#status-and-releases)
+- [Java](/docs/languages/java/#status-and-releases)
+- [JavaScript](/docs/languages/js/#status-and-releases)
+- [PHP](/docs/languages/php/#status-and-releases)
+- [Python](/docs/languages/python/#status-and-releases)
+- [Ruby](/docs/languages/ruby/#status-and-releases)
+- [Rust](/docs/languages/rust/#status-and-releases)
+- [Swift](/docs/languages/swift/#status-and-releases)
 
 </div>
 

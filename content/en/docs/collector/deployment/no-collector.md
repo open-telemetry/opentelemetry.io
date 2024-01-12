@@ -29,4 +29,4 @@ Cons:
 - Strong coupling between the application code and the backend
 - There are limited number of exporters per language implementation
 
-[instrumentation]: /docs/instrumentation/
+[instrumentation]: /docs/languages/

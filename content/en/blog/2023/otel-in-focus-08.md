@@ -62,7 +62,7 @@ There are several user-facing changes, including breaking changes:
 - The `receiver/azuremonitor` has added new attributes to metrics like name,
   type, and resource_group.
 
-##### [Java](/docs/instrumentation/java/)
+##### [Java](/docs/languages/java/)
 
 [Version 1.29](https://github.com/open-telemetry/opentelemetry-java/releases/tag/v1.29.0)
 includes updates to the API and SDK for tracing and metrics. Please note that
@@ -71,12 +71,12 @@ the `zpages` extension has been removed.
 [Java Instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/tag/v1.29.0)
 includes support for Ktor and ElasticSearch Rest Client.
 
-#### [Python](/docs/instrumentation/python/)
+#### [Python](/docs/languages/python/)
 
 [Version 1.20](https://github.com/open-telemetry/opentelemetry-python/releases/tag/v1.20.0)
 modifies the Prometheus exporter to translate non-monotonic Sums into Gauges.
 
-#### [Go](/docs/instrumentation/go/)
+#### [Go](/docs/languages/go/)
 
 [Version 1.17.0](https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.17.0)
 includes updates to the API and SDK. Highlights include adding support for
@@ -84,12 +84,12 @@ exponential histogram aggregations, support for Semantic Conventions 1.21, and
 bug fixes. Please note that the Jaeger exporter has been deprecated in favor of
 the OTLP exporter.
 
-#### [JavaScript](/docs/instrumentation/js/)
+#### [JavaScript](/docs/languages/js/)
 
 [Version 1.15.2](https://github.com/open-telemetry/opentelemetry-js/releases/tag/v1.15.1)
 fixes several bugs.
 
-#### [.NET](/docs/instrumentation/net/)
+#### [.NET](/docs/languages/net/)
 
 [Version 1.6.0-rc.1](https://github.com/open-telemetry/opentelemetry-dotnet/releases/tag/core-1.6.0-rc.1)
 has been released, bringing small changes to metrics, export, and an

@@ -473,7 +473,7 @@ check out the following resources:
 [otel-logs-events]: /docs/specs/otel/logs/event-api/
 [otel-semconv-logs]: /docs/specs/semconv/general/logs/
 [otel-python-repo]: https://github.com/open-telemetry/opentelemetry-python
-[otel-python]: /docs/instrumentation/python/
+[otel-python]: /docs/languages/python/
 [py-docs-logs]:
   https://opentelemetry-python-contrib.readthedocs.io/en/latest/instrumentation/logging/logging.html
 [py-docs-logs-example]:

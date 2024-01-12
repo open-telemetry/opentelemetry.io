@@ -9,8 +9,8 @@ IgnoreDirs:
   - ^blog/(\d+/)?page/\d+
 IgnoreInternalURLs: # list of paths
 IgnoreURLs: # list of regexs of paths or URLs to be ignored
-  - ^/docs/instrumentation/\w+/(api|examples)/$
-  - ^/docs/instrumentation/net/(metrics-api|traces-api)/
+  - ^/docs/languages/\w+/(api|examples)/$
+  - ^/docs/languages/net/(metrics-api|traces-api)/
   - ^/community/end-user/feedback-survey/$
   - ^(/docs/migration/)?opencensus/$
 

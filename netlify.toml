@@ -15,6 +15,11 @@ from = "https://blog.opentelemetry.io/*"
 to = "https://opentelemetry.io/blog/:splat"
 force = true
 
+[[redirects]]
+from = "/docs/instrumentation/*"
+to = "/docs/languages/:splat"
+force = true
+
 [[headers]]
   for = "/schemas/:version"
   [headers.values]
