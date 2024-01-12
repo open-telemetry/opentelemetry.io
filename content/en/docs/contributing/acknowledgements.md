@@ -1,7 +1,7 @@
 ---
 title: Acknowledgements
 description: Acknowledgements for sources for content on this site
-aliases: [/acknowledgements]
+aliases: [/acknowledgements, /docs/acknowledgements]
 cSpell:ignore: Pigram
 ---
 
