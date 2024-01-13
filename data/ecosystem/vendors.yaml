@@ -384,3 +384,10 @@
   contact: 'https://github.com/adnanrahic'
   oss: true
   commercial: true
+- name: Alibaba Cloud
+  distribution: true
+  nativeOTLP: true
+  url: 'https://www.alibabacloud.com/help/en/arms/tracing-analysis/get-started-with-tracing-analysis'
+  contact: ''
+  oss: false
+  commercial: true
