@@ -156,7 +156,8 @@ automatically create spans for each incoming request.
 npm install @opentelemetry/sdk-node \
   @opentelemetry/api \
   @opentelemetry/auto-instrumentations-node \
-  @opentelemetry/sdk-metrics
+  @opentelemetry/sdk-metrics \
+  @opentelemetry/sdk-trace-node
 ```
 
 To find all autoinstrumentation modules, you can look at the

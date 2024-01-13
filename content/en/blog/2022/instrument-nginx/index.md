@@ -3,12 +3,10 @@ title: Learn how to instrument NGINX with OpenTelemetry
 linkTitle: Instrument Nginx
 date: 2022-08-22
 author: >-
-  [Debajit Das](https://github.com/debajitdas),  [Kumar
-  Pratyus](https://github.com/kpratyus),
-
-  [Severin Neumann](https://github.com/svrnm) (Cisco)
-# prettier-ignore
-cSpell:ignore: catalina Debajit Kumar Pratyus realip tracestate webserver WORKDIR xvfz
+  [Debajit Das](https://github.com/debajitdas), [Kumar
+  Pratyus](https://github.com/kpratyus), [Severin
+  Neumann](https://github.com/svrnm) (Cisco)
+cSpell:ignore: Debajit Kumar Pratyus webserver
 ---
 
 Apache HTTP Server and NGINX are the most popular web servers. It's most likely
