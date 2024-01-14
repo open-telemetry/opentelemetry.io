@@ -3,7 +3,7 @@ title: Auto-Instrumentation Example
 linkTitle: Example
 weight: 20
 # prettier-ignore
-cSpell:ignore: distro instrumentor mkdir MSIE Referer Starlette uninstrumented virtualenv
+cSpell:ignore: distro instrumentor mkdir MSIE Referer Starlette uninstrumented venv werkzeug
 ---
 
 This page demonstrates how to use Python auto-instrumentation in OpenTelemetry.
@@ -87,8 +87,9 @@ following commands to prepare for auto-instrumentation:
 
 ```sh
 mkdir auto_instrumentation
-virtualenv auto_instrumentation
-source auto_instrumentation/bin/activate
+cd auto_instrumentation
+python -m venv venv
+source ./venv/bin/activate
 ```
 
 ## Install
@@ -100,9 +101,16 @@ which provides several commands that help automatically instrument a program.
 
 ```sh
 pip install opentelemetry-distro
-pip install opentelemetry-instrumentation-flask
-pip install flask
-pip install requests
+pip install 'flask<3' 'werkzeug<3' requests
+```
+
+> **Note**: OpenTelemetry Python automatic instrumentation does not support
+> Flask or Werkzeug 3.0+ at this time.
+
+Run the `opentelemetry-bootstrap` command:
+
+```shell
+opentelemetry-bootstrap -a install
 ```
 
 The examples that follow send instrumentation results to the console. Learn more
@@ -130,12 +138,12 @@ Execute the server in two separate consoles, one to run each of the scripts that
 make up this example:
 
 ```sh
-source auto_instrumentation/bin/activate
+source ./venv/bin/activate
 python server_manual.py
 ```
 
 ```sh
-source auto_instrumentation/bin/activate
+source ./venv/bin/activate
 python client.py testing
 ```
 
@@ -254,12 +262,12 @@ Execute the server just like you would do for manual instrumentation, in two
 separate consoles, one to run each of the scripts that make up this example:
 
 ```sh
-source auto_instrumentation/bin/activate
+source ./venv/bin/activate
 python server_programmatic.py
 ```
 
 ```sh
-source auto_instrumentation/bin/activate
+source ./venv/bin/activate
 python client.py testing
 ```
 
