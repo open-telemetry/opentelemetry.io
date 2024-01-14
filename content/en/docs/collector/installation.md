@@ -77,7 +77,7 @@ The following command deploys an agent as a daemonset and a single gateway
 instance:
 
 ```sh
-kubectl apply -f https://raw.githubusercontent.com/open-telemetry/opentelemetry-collector/main/examples/k8s/otel-config.yaml
+kubectl apply -f https://raw.githubusercontent.com/open-telemetry/opentelemetry-collector/v{{% param vers %}}/examples/k8s/otel-config.yaml
 ```
 
 The previous example is meant to serve as a starting point, to be extended and
