@@ -169,6 +169,39 @@ processors:
   k8sattributes/default:
 ```
 
+## Set status for span
+
+**Processor**:
+[span processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/spanprocessor)
+
+The
+[span processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/spanprocessor)
+can be used to change span status.
+
+The following setting is required:
+
+- `code:` Represents span status. One of the following values `Unset`, `Error`,
+  `Ok`.
+- `description:` setting is allowed only for code `Error`.
+
+Example:
+
+```yaml
+# Set status allows to set specific status for a given span. Possible values are
+# Ok, Error and Unset as per
+# https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#set-status
+# The description field allows to set a human-readable message for errors.
+span/set_status:
+  status:
+    code: Error
+    description: 'some error description'
+```
+
+The span processor also allows to modify the span name based on its attributes
+or extract span attributes from the span name. Refer to
+[config.yaml](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/spanprocessor/testdata/config.yaml)
+for detailed examples on using the processor.
+
 ## Advanced Transformations
 
 More advanced attribute transformations are also available in the
