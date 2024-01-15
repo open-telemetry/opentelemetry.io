@@ -24,17 +24,17 @@ natively:
 - [How can I add native instrumentation to my library?](/docs/concepts/instrumentation/libraries/)
 
 Next, you can deep dive into the documentations for the
-[language](/docs/instrumentation/) you are using:
+[language](/docs/languages/) you are using:
 
-- [C++](/docs/instrumentation/cpp/)
-- [.NET](/docs/instrumentation/net/)
-- [Erlang / Elixir](/docs/instrumentation/erlang/)
-- [Go](/docs/instrumentation/go/)
-- [Java](/docs/instrumentation/java/)
-- [JavaScript / TypeScript](/docs/instrumentation/js/)
-- [PHP](/docs/instrumentation/php/)
-- [Python](/docs/instrumentation/python/)
-- [Ruby](/docs/instrumentation/ruby/)
-- [Rust](/docs/instrumentation/rust/)
-- [Swift](/docs/instrumentation/swift/)
-- [Other](/docs/instrumentation/other/)
+- [C++](/docs/languages/cpp/)
+- [.NET](/docs/languages/net/)
+- [Erlang / Elixir](/docs/languages/erlang/)
+- [Go](/docs/languages/go/)
+- [Java](/docs/languages/java/)
+- [JavaScript / TypeScript](/docs/languages/js/)
+- [PHP](/docs/languages/php/)
+- [Python](/docs/languages/python/)
+- [Ruby](/docs/languages/ruby/)
+- [Rust](/docs/languages/rust/)
+- [Swift](/docs/languages/swift/)
+- [Other](/docs/languages/other/)

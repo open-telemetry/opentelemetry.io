@@ -101,7 +101,7 @@ See
 [the release notes](https://github.com/open-telemetry/opentelemetry-operator/releases/tag/v0.88.0)
 for more details.
 
-##### [Java](/docs/instrumentation/java/)
+##### [Java](/docs/languages/java/)
 
 [Version 1.31.0](https://github.com/open-telemetry/opentelemetry-java/releases/tag/v1.31.0)
 includes many small changes. Notably, there is a breaking change around the
@@ -112,14 +112,14 @@ with semantic convention versions.
 includes new instrumentation for Apache Pekko, as well as many enhancements and
 bug fixes.
 
-#### [JavaScript](/docs/instrumentation/js/)
+#### [JavaScript](/docs/languages/js/)
 
 [Version 1.17.1](https://github.com/open-telemetry/opentelemetry-js/releases/tag/v1.17.1)
 fixes several bugs in tracing and metrics. Experimental builds include several
 bug fixes and enhancements to the logging exporter, the deprecation of direct
 Jaeger export, and more.
 
-#### [.NET](/docs/instrumentation/net/)
+#### [.NET](/docs/languages/net/)
 
 [Version 1.7.0-alpha](https://github.com/open-telemetry/opentelemetry-dotnet/releases/tag/core-1.7.0-alpha.1)
 includes many bug fixes and updates, including some breaking changes.

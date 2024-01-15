@@ -54,15 +54,15 @@ context.
 The demo’s stack includes multiple microservices in different languages,
 covering each of the following OTel-supported languages:
 
-- [C++](/docs/instrumentation/cpp/)
-- [.NET](/docs/instrumentation/net/)
-- [Erlang/Elixir](/docs/instrumentation/erlang/)
-- [Go](/docs/instrumentation/go/)
-- [Node.js](/docs/instrumentation/js/)
-- [PHP](/docs/instrumentation/php/)
-- [Python](/docs/instrumentation/python/)
-- [Ruby](/docs/instrumentation/ruby/)
-- [Rust](/docs/instrumentation/rust/)
+- [C++](/docs/languages/cpp/)
+- [.NET](/docs/languages/net/)
+- [Erlang/Elixir](/docs/languages/erlang/)
+- [Go](/docs/languages/go/)
+- [Node.js](/docs/languages/js/)
+- [PHP](/docs/languages/php/)
+- [Python](/docs/languages/python/)
+- [Ruby](/docs/languages/ruby/)
+- [Rust](/docs/languages/rust/)
 
 Every microservice has a specific goal and can communicate with others by using
 a global gRPC definition. Persistent information is saved into a PostgreSQL

@@ -19,7 +19,7 @@ SDK.
 ## Language SDKs
 
 For the development status, or maturity level, of a
-[language SDK](/docs/instrumentation/), see the following table:
+[language SDK](/docs/languages/), see the following table:
 
 {{% telemetry-support-table " " %}}
 

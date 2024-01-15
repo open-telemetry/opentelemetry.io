@@ -48,12 +48,12 @@ has been updated with several changes and enhancements. The
 now supports Golang & Apache HTTP server auto-instrumentation in addition to
 Python, Java, Node.js, and .NET.
 
-##### [Go](/docs/instrumentation/go/)
+##### [Go](/docs/languages/go/)
 
 [Version 1.16.0/0.39.0](https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.16.0)
 marks the stable release of the OpenTelemetry Metric API in Go.
 
-##### [Java](/docs/instrumentation/java/)
+##### [Java](/docs/languages/java/)
 
 [Version 1.26](https://github.com/open-telemetry/opentelemetry-java/releases/tag/v1.26.0)
 is the Release Candidate for the Log Bridge. This release enables log appenders
@@ -66,13 +66,13 @@ improvements.
 includes instrumentation support for vertx-sql-client, as well as several bug
 fixes.
 
-#### [JavaScript](/docs/instrumentation/js/)
+#### [JavaScript](/docs/languages/js/)
 
 [Version 1.13](https://github.com/open-telemetry/opentelemetry-js/releases/tag/v1.13.0)
 has been released, adding support for gRPC log export. In addition, a couple
 bugs have been fixed.
 
-#### [Python](/docs/instrumentation/python/)
+#### [Python](/docs/languages/python/)
 
 [Version 1.18](https://github.com/open-telemetry/opentelemetry-python/releases/tag/v1.18.0)
 adds a new feature that allows histogram aggregation to be set using an
@@ -86,7 +86,7 @@ exporting, and suppressing instrumentation.
   `opentelemetry.sdk.metrics.view`
 - Fix headers types mismatch for OTLP Exporters
 
-#### [.NET](/docs/instrumentation/net/)
+#### [.NET](/docs/languages/net/)
 
 [Version 1.5.0-rc1](https://github.com/open-telemetry/opentelemetry-dotnet/releases/tag/core-1.5.0-rc.1)
 includes many bugfixes across a variety of packages.

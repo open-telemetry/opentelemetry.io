@@ -177,7 +177,7 @@ spec:
 #### Learn more {#dotnet-learn-more}
 
 For more details, see
-[.NET Auto Instrumentation docs](/docs/instrumentation/net/automatic/).
+[.NET Auto Instrumentation docs](/docs/languages/net/automatic/).
 
 ### Java
 
@@ -211,7 +211,7 @@ otlpreceiver of the Collector created in the previous step.
 #### Excluding auto-instrumentation {#java-excluding-auto-instrumentation}
 
 By default, the Java auto-instrumentation ships with
-[many instrumentation libraries](/docs/instrumentation/java/automatic/#supported-libraries-frameworks-application-services-and-jvms).
+[many instrumentation libraries](/docs/languages/java/automatic/#supported-libraries-frameworks-application-services-and-jvms).
 This makes instrumentation easy, but could result in too much or unwanted data.
 If there are any libraries you do not want to use you can set the
 `OTEL_INSTRUMENTATION_[NAME]_ENABLED=false` where `[NAME]` is the name of the
@@ -220,7 +220,7 @@ the default libraries by setting
 `OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED=false` and then use
 `OTEL_INSTRUMENTATION_[NAME]_ENABLED=true` where `[NAME]` is the name of the
 library. For more details, see
-[Suppressing specific auto-instrumentation](/docs/instrumentation/java/automatic/agent-config/#suppressing-specific-auto-instrumentation).
+[Suppressing specific auto-instrumentation](/docs/languages/java/automatic/agent-config/#suppressing-specific-auto-instrumentation).
 
 ```yaml
 apiVersion: opentelemetry.io/v1alpha1
@@ -247,7 +247,7 @@ spec:
 #### Learn more {#java-learn-more}
 
 For more details, see
-[Java agent Configuration](/docs/instrumentation/java/automatic/agent-config/).
+[Java agent Configuration](/docs/languages/java/automatic/agent-config/).
 
 ### Node.js
 
@@ -290,7 +290,7 @@ want or use manual instrumentation.
 #### Learn more {#js-learn-more}
 
 For more details, see
-[Node.js auto-instrumentation](/docs/instrumentation/js/libraries/#registration).
+[Node.js auto-instrumentation](/docs/languages/js/libraries/#registration).
 
 ### Python
 
@@ -391,7 +391,7 @@ spec:
 
 #### Learn more {#python-learn-more}
 
-[See the Python agent Configuration docs for more details.](/docs/instrumentation/python/automatic/agent-config/#disabling-specific-instrumentations)
+[See the Python agent Configuration docs for more details.](/docs/languages/python/automatic/agent-config/#disabling-specific-instrumentations)
 
 ### Go
 

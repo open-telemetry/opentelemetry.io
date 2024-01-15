@@ -118,8 +118,7 @@ analysis.
 ### How do you generate traces?
 
 To instrument their code, they configure the
-[Node.js SDK](/docs/instrumentation/js/getting-started/nodejs/) and use a number
-of
+[Node.js SDK](/docs/languages/js/getting-started/nodejs/) and use a number of
 [Node.js auto-instrumentation plug-ins](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node).
 While the team is currently only using
 [auto-instrumentation](/docs/specs/otel/glossary/#automatic-instrumentation) to
