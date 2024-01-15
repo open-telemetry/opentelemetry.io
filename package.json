@@ -32,7 +32,7 @@
     "all": "bash -c 'x=0; for c in \"$@\"; do npm run $c || x=$((x+1)); done; ((!x)) || (echo \"ERROR: some scripts failed!\" && exit 1)' -",
     "build:preview": "set -x && npm run _build -- --minify --baseURL \"${DEPLOY_PRIME_URL:-/}\"",
     "build:production": "hugo --cleanDestinationDir --minify",
-    "build": "npm run _build",
+    "build": "npm run _build --  --baseURL '/'",
     "cd:public": "cd public &&",
     "check:filenames": "test -z \"$(npm run -s _ls-bad-filenames)\" || npm run -s _filename-error",
     "check:format": "npm run _check:format || (echo '[help] Run: npm run fix:format'; exit 1)",
