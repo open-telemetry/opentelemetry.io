@@ -4,6 +4,8 @@ description: >-
   OpenTelemetry code instrumentation is supported for many popular programming
   languages
 weight: 2
+aliases: [/docs/instrumentation]
+redirects: [{ from: /docs/instrumentation/*, to: ':splat' }]
 ---
 
 OpenTelemetry code [instrumentation][] is supported for the languages listed
