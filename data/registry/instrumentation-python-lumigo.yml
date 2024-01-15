@@ -1,0 +1,14 @@
+title: Lumigo Python Distribution
+registryType: instrumentation
+isThirdParty: true
+language: python
+tags:
+  - python
+  - instrumentation
+  - lumigo
+  - distribution
+repo: https://github.com/lumigo-io/opentelemetry-python-distro
+license: Apache 2.0
+description: The lumigo Python OpenTelemetry distribution
+authors: lumigo, lumigo authors
+otVersion: latest
