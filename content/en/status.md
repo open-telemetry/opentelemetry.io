@@ -10,7 +10,7 @@ description: Maturity-level of the main OpenTelemetry components
 ## {{% param title %}}
 
 OpenTelemetry is made up of [several components](/docs/concepts/components/),
-some language-specific and others language-agnostic. When looking for a status,
+some language-specific and others language-agnostic. When looking for a [status](/docs/specs/otel/versioning-and-stability/),
 make sure to look for the status from the right component page. For example, the
 status of a signal in the specification may not be the same as the signal status
 in a particular language SDK.
