@@ -5104,44 +5104,44 @@
     "LastSeen": "2024-01-15T09:43:15.638315+01:00"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-pg": {
-    "StatusCode": 429,
-    "LastSeen": "2024-01-15T09:43:16.344993+01:00"
+    "StatusCode": 200,
+    "LastSeen": "2024-01-15T09:52:51.087224+01:00"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-pino": {
-    "StatusCode": 429,
-    "LastSeen": "2024-01-15T09:43:16.18592+01:00"
+    "StatusCode": 200,
+    "LastSeen": "2024-01-15T09:52:54.593604+01:00"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-redis": {
-    "StatusCode": 429,
-    "LastSeen": "2024-01-15T09:43:16.515396+01:00"
+    "StatusCode": 200,
+    "LastSeen": "2024-01-15T09:52:56.97762+01:00"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-redis-4": {
-    "StatusCode": 429,
-    "LastSeen": "2024-01-15T09:43:16.705277+01:00"
+    "StatusCode": 200,
+    "LastSeen": "2024-01-15T09:52:59.545073+01:00"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-restify": {
-    "StatusCode": 429,
-    "LastSeen": "2024-01-15T09:43:16.876016+01:00"
+    "StatusCode": 200,
+    "LastSeen": "2024-01-15T09:52:52.871638+01:00"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-router": {
-    "StatusCode": 429,
-    "LastSeen": "2024-01-15T09:43:17.058399+01:00"
+    "StatusCode": 200,
+    "LastSeen": "2024-01-15T11:08:26.460933+01:00"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-socket.io": {
-    "StatusCode": 429,
-    "LastSeen": "2024-01-15T09:43:17.247781+01:00"
+    "StatusCode": 200,
+    "LastSeen": "2024-01-15T11:08:28.151807+01:00"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-tedious": {
-    "StatusCode": 429,
-    "LastSeen": "2024-01-15T09:43:17.423209+01:00"
+    "StatusCode": 200,
+    "LastSeen": "2024-01-15T11:08:29.855822+01:00"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-user-interaction": {
-    "StatusCode": 429,
-    "LastSeen": "2024-01-15T09:43:17.585327+01:00"
+    "StatusCode": 200,
+    "LastSeen": "2024-01-15T11:08:31.830172+01:00"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-winston": {
-    "StatusCode": 429,
-    "LastSeen": "2024-01-15T09:43:17.746069+01:00"
+    "StatusCode": 200,
+    "LastSeen": "2024-01-15T11:08:33.674123+01:00"
   },
   "https://o11y.news": {
     "StatusCode": 206,
