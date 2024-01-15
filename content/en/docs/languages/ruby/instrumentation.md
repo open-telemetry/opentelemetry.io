@@ -2,8 +2,8 @@
 title: Instrumentation
 linkTitle: Instrumentation
 aliases:
-  - /docs/languages/ruby/instrumentation_instrumentation
-  - /docs/languages/ruby/instrumentation
+  - manual_instrumentation
+  - manual
   - /docs/languages/ruby/events
   - /docs/languages/ruby/context-propagation
 weight: 20

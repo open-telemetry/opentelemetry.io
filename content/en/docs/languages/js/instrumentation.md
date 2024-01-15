@@ -2,7 +2,7 @@
 title: Instrumentation
 aliases:
   - /docs/languages/js/api/tracing
-  - /docs/languages/js/instrumentation
+  - manual
 weight: 30
 cSpell:ignore: dicelib Millis rolldice
 description: Instrumentation for OpenTelemetry JavaScript

@@ -1,6 +1,6 @@
 ---
 title: Instrumentation
-aliases: [instrumentation]
+aliases: [manual]
 weight: 30
 description: Instrumentation for OpenTelemetry Erlang/Elixir
 ---

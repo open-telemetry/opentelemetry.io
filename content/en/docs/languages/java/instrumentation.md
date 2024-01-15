@@ -4,8 +4,8 @@ linkTitle: Instrumentation
 aliases:
   - /docs/java/getting_started
   - /docs/java/manual_instrumentation
-  - /docs/languages/java/instrumentation
-  - /docs/languages/java/instrumentation_instrumentation
+  - manual
+  - manual_instrumentation
 weight: 20
 description: Manual instrumentation for OpenTelemetry Java
 # prettier-ignore

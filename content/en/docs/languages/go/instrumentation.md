@@ -2,8 +2,8 @@
 title: Instrumentation
 linkTitle: Instrumentation
 aliases:
-  - /docs/languages/go/instrumentation
-  - /docs/languages/go/instrumentation_instrumentation
+  - manual
+  - manual_instrumentation
 weight: 30
 description: Manual instrumentation for OpenTelemetry Go
 cSpell:ignore: fatalf otlptrace sdktrace sighup
