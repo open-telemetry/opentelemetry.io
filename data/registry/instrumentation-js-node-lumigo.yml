@@ -1,0 +1,15 @@
+title: Lumigo Node.js Distribution
+registryType: instrumentation
+isThirdParty: true
+language: js
+tags:
+  - js
+  - Node.js
+  - instrumentation
+  - lumigo
+  - distro
+repo: https://github.com/lumigo-io/opentelemetry-js-distro
+license: Apache 2.0
+description: The lumigo Node.js OpenTelemetry distribution
+authors: lumigo, lumigo authors
+otVersion: latest

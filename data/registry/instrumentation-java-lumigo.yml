@@ -1,0 +1,14 @@
+title: Lumigo Java Distribution
+registryType: instrumentation
+isThirdParty: true
+language: java
+tags:
+  - java
+  - instrumentation
+  - lumigo
+  - distribution
+repo: https://github.com/lumigo-io/opentelemetry-java-distro
+license: Apache 2.0
+description: The lumigo Java OpenTelemetry distribution
+authors: lumigo, lumigo authors
+otVersion: latest
