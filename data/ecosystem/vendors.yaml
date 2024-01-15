@@ -132,6 +132,13 @@
   contact: 'support@hyperdx.io'
   oss: true
   commercial: true
+- name: Immersive Fusion
+  distribution: false
+  nativeOTLP: true
+  url: 'https://docs.immersivefusion.com/instrument'
+  contact: 'support@immersivefusion.com'
+  oss: false
+  commercial: true
 - name: Instana
   distribution: false
   nativeOTLP: true

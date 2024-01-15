@@ -5,10 +5,14 @@ toc_hide: true
 ---
 
 OpenTelemetry is an open source project, and we gladly accept new contributions
-and contributors. Please see the CONTRIBUTING.md file in each SIG repository for
+and contributors. See the CONTRIBUTING.md file in each SIG repository for
 information on getting started.
 
-## Contributing to the OpenTelemetry Documentation
+## Contribute to the OpenTelemetry Documentation
+
+To learn how to contribute fixes and new content to this project, read the
+[Contributor's guide](/docs/contributing), which includes a style guide and
+useful information on the review process.
 
 Individual SIGs may maintain documentation above and beyond what is offered
 here, but we strive for accurate general guidance on using the project from our
