@@ -1,6 +1,5 @@
 ---
 title: Instrumentation
-linkTitle: Instrumentation
 weight: 30
 aliases: [manual]
 description: Instrumentation for OpenTelemetry Swift

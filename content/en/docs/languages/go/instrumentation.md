@@ -1,6 +1,5 @@
 ---
 title: Instrumentation
-linkTitle: Instrumentation
 aliases:
   - manual
   - manual_instrumentation

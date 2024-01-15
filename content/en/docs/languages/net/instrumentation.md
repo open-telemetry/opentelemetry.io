@@ -1,6 +1,5 @@
 ---
 title: Instrumentation
-linkTitle: Instrumentation
 weight: 20
 aliases: [manual]
 description: Instrumentation for OpenTelemetry .NET

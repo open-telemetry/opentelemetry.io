@@ -1,6 +1,5 @@
 ---
 title: Instrumentation
-linkTitle: Instrumentation
 weight: 20
 aliases: [manual]
 description: Manual instrumentation for OpenTelemetry PHP

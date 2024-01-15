@@ -1,6 +1,5 @@
 ---
 title: Instrumentation
-linkTitle: Instrumentation
 aliases: [manual]
 weight: 20
 description: Manual instrumentation for OpenTelemetry Python

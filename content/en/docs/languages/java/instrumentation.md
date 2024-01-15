@@ -1,6 +1,5 @@
 ---
 title: Instrumentation
-linkTitle: Instrumentation
 aliases:
   - /docs/java/getting_started
   - /docs/java/manual_instrumentation
