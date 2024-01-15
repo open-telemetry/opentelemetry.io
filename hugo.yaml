@@ -2,7 +2,7 @@
 baseURL: https://opentelemetry.io
 title: &title OpenTelemetry
 description: &desc The OpenTelemetry Project Site
-disableKinds: [rss, taxonomy]
+disableKinds: [taxonomy]
 theme: [docsy]
 disableAliases: true # We do redirects via Netlify's _redirects file
 enableGitInfo: true
@@ -44,6 +44,7 @@ outputFormats:
 
 outputs:
   home: [HTML, REDIRECTS]
+  section: [HTML]
 
 params:
   copyright: >-
