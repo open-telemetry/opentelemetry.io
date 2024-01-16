@@ -15,15 +15,15 @@ The OpenTelemetry Collector receives [traces](/docs/concepts/signals/traces/),
 a wide variety of observability backends using its components. For a conceptual
 overview of the Collector, see [Collector](/docs/collector).
 
-You are going to learn to do the following in less than five minutes: 
+You are going to learn to do the following in less than five minutes:
 
 - Set up and run the OpenTelemetry Collector.
 - Send telemetry and see it processed by the Collector.
 
 ## Prerequisites
 
-Make sure that your developer environment has the following. This page assumes that
-you're using `bash`. Adapt configuration and commands as necessary for your
+Make sure that your developer environment has the following. This page assumes
+that you're using `bash`. Adapt configuration and commands as necessary for your
 preferred shell.
 
 - [Go](https://go.dev/) 1.20 or higher
