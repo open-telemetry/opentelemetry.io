@@ -76,8 +76,8 @@ preferred shell.
    traces were generated:
 
    ```text
-   2023-10-23T12:58:19.835+0200	INFO	traces/worker.go:88	traces generated	{"worker": 0, "traces": 994418}
-   2023-10-23T12:58:19.835+0200	INFO	traces/traces.go:79	stop the batch span processor
+   2024-01-16T14:33:15.692-0500  INFO  traces/worker.go:99  traces generated  {"worker": 0, "traces": 3}
+   2024-01-16T14:33:15.692-0500  INFO  traces/traces.go:58  stop the batch span processor
    ```
 
    For an easier time seeing relevant output you can filter it:
