@@ -15,19 +15,19 @@ The OpenTelemetry Collector receives [traces](/docs/concepts/signals/traces/),
 a wide variety of observability backends using its components. For a conceptual
 overview of the Collector, see [Collector](/docs/collector).
 
-In this page you'll learn how to do the following in less than five minutes:
+You are going to learn to do the following in less than five minutes: 
 
 - Set up and run the OpenTelemetry Collector.
 - Send telemetry and see it processed by the Collector.
 
 ## Prerequisites
 
-Ensure that your developer environment has the following. This page assumes that
-you're using `bash` -- adapt configuration and commands as necessary for your
+Make sure that your developer environment has the following. This page assumes that
+you're using `bash`. Adapt configuration and commands as necessary for your
 preferred shell.
 
 - [Go](https://go.dev/) 1.20 or higher
-- [`GOBIN` environment variable][gobin] is set; if not initialize it
+- [`GOBIN` environment variable][gobin] is set; if unset, initialize it
   appropriately, for example[^1]:
   ```sh
   export GOBIN=${GOBIN:-$(go env GOPATH)/bin}
@@ -37,7 +37,7 @@ preferred shell.
     For more information, see
     [Your first program](https://go.dev/doc/code#Command).
 
-## Set up
+## Set up the environment
 
 1. Pull in the OpenTelemetry Collector Docker image:
 
@@ -88,7 +88,7 @@ preferred shell.
    ```
 
 5. In the terminal window running the Collector container, you should see trace
-   ingest activity similar to what is shown below:
+   ingest activity similar to what is shown in the following example:
 
    ```console
    $ grep -E '^Span|(ID|Name|Kind|time|Status \w+)\s+:' ./collector-output.txt
@@ -118,7 +118,7 @@ preferred shell.
 6. Open <http://localhost:55679/debug/tracez> and select one of the samples in
    the table to see the traces you've just generated.
 
-7. Once you are done, shutdown the Collector container, for example, using
+7. After you are done, shutdown the Collector container, for example, using
    <kbd>Control-C</kbd>.
 
 ## Next steps
