@@ -5583,6 +5583,14 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-29T18:39:49.775529-04:00"
   },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-all": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-16T17:59:00.831876+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-rails/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-16T17:59:00.198437+01:00"
+  },
   "https://rubyonrails.org/": {
     "StatusCode": 206,
     "LastSeen": "2023-06-30T11:45:10.389335-04:00"

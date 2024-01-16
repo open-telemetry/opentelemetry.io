@@ -183,7 +183,7 @@ a few more features that will allow you gain even deeper insights!
   visualize a request from end-to-end across process and network boundaries.
 - [Span events][] allow you to add a human-readable message on a span that
   represents "something happening" during its lifetime.
-- [Manual instrumentation][manual] will give provide you the ability to enrich
+- [Instrumentation][instrumentation] will give provide you the ability to enrich
   your traces with domain specific data.
 - [The OpenTelemetry Demo](/docs/demo/) includes the Ruby based
   [Email Service](/docs/demo/services/email/).
@@ -191,8 +191,8 @@ a few more features that will allow you gain even deeper insights!
 [traces]: /docs/concepts/signals/traces/
 [instrumentations]:
   https://github.com/open-telemetry/opentelemetry-ruby#instrumentation-libraries
-[config]: ../automatic/#configuring-specific-instrumentation-libraries
+[config]: ../libraries/#configuring-specific-instrumentation-libraries
 [exporters]: ../exporters/
 [context propagation]: ../instrumentation/#context-propagation
-[manual]: ../instrumentation/
+[instrumentation]: ../instrumentation/
 [span events]: ../instrumentation/#add-span-events
