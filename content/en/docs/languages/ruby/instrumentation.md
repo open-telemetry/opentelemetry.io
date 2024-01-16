@@ -33,7 +33,7 @@ from a [`TracerProvider`](/docs/concepts/signals/traces#tracer-provider).
 
 The easiest and most common way to do this is to use the globally-registered
 TracerProvider. If you are using
-[instrumentation libraries](/docs/languages/ruby/automatic), such as in a Rails
+[instrumentation libraries](/docs/languages/ruby/libraries), such as in a Rails
 app, then one will be registered for you.
 
 ```ruby
