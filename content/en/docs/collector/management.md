@@ -11,8 +11,8 @@ deployment at scale.
 To get the most out of this page you should know how to install and configure
 the collector. These topics are covered elsewhere:
 
-- [Quick Start](/docs/collector/quick-start/) to understand how to install
-  the OpenTelemetry Collector.
+- [Quick Start](/docs/collector/quick-start/) to understand how to install the
+  OpenTelemetry Collector.
 - [Configuration][otel-collector-configuration] for how to configure the
   OpenTelemetry Collector, setting up telemetry pipelines.
 
