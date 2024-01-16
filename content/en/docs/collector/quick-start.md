@@ -7,6 +7,8 @@ weight: 1
 cSpell:ignore: gobin
 ---
 
+<!-- markdownlint-disable ol-prefix blanks-around-fences -->
+
 The OpenTelemetry Collector receives [traces](/docs/concepts/signals/traces/),
 [metrics](/docs/concepts/signals/metrics/), and
 [logs](/docs/concepts/signals/logs/), processes the telemetry, and exports it to
@@ -30,10 +32,10 @@ preferred shell.
   ```sh
   export GOBIN=${GOBIN:-$(go env GOPATH)/bin}
   ```
-  [gobin]: https://pkg.go.dev/cmd/go#hdr-Environment_variables
-  [^1]:
-      For more information, see
-      [Your first program](https://go.dev/doc/code#Command).
+
+[^1]:
+    For more information, see
+    [Your first program](https://go.dev/doc/code#Command).
 
 ## Set up
 
@@ -134,6 +136,7 @@ to it. As next steps, consider doing the following:
 - Learn how to
   [build a custom Collector with the OpenTelemetry Collector Builder (OCB)](/docs/collector/custom-collector/).
 
+[gobin]: https://pkg.go.dev/cmd/go#hdr-Environment_variables
 [logs]: /docs/concepts/signals/logs/
 [metrics]: /docs/concepts/signals/metrics/
 [telemetrygen]:
