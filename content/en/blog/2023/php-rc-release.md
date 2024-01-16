@@ -37,7 +37,7 @@ to RC and then GA, based on feedback from the community.
 ## How can you help?
 
 If you are new to OpenTelemetry PHP, the best place to start is with the
-[getting started documentation](/docs/instrumentation/php/getting-started/).
+[getting started documentation](/docs/languages/php/getting-started/).
 
 We are looking for developers to test this instrumentation in their PHP
 codebases. We are happy to triage any issues that might come up — please feel

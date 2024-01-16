@@ -7,9 +7,8 @@ author: >-
 cSpell:ignore: bisutti datasource logback
 ---
 
-The [OpenTelemetry Java agent](/docs/instrumentation/java/automatic) is a
-convenient and well-established way to instrument Java applications. However, as
-of today
+The [OpenTelemetry Java agent](/docs/languages/java/automatic) is a convenient
+and well-established way to instrument Java applications. However, as of today
 [it is not possible to use it with GraalVM Native Images](https://github.com/oracle/graal/issues/1065).
 
 To provide you with an easy and seamless way for Spring Boot Native Image
@@ -38,11 +37,11 @@ Boot 3) out of the box:
 ```
 
 To get even more visibility, the Starter can be combined with
-[instrumentation libraries](/docs/instrumentation/java/libraries/). For this
-purpose, the OpenTelemetry Java contributors have improved the JDBC (database)
-libraries and logging instrumentation libraries. For example, for the Logback
-logging library, they have added GraalVM configuration to make the library work
-in native mode[^1].
+[instrumentation libraries](/docs/languages/java/libraries/). For this purpose,
+the OpenTelemetry Java contributors have improved the JDBC (database) libraries
+and logging instrumentation libraries. For example, for the Logback logging
+library, they have added GraalVM configuration to make the library work in
+native mode[^1].
 
 Furthermore, they have worked to reduce the configuration to set up the logging
 and database instrumentation with the Starter. For example, if your application
@@ -54,8 +53,8 @@ spring.datasource.url=jdbc:otel:h2:mem:db
 spring.datasource.driver-class-name=io.opentelemetry.instrumentation.jdbc.OpenTelemetryDriver
 ```
 
-Read the [documentation](/docs/instrumentation/java/automatic/spring-boot/) of
-the OpenTelemetry Spring Boot Starter to learn more. You can use
+Read the [documentation](/docs/languages/java/automatic/spring-boot/) of the
+OpenTelemetry Spring Boot Starter to learn more. You can use
 [opentelemetry-java-examples/spring-native](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/spring-native)
 to run a Spring Boot Native Image application and look at the generated logs as
 well as HTTP and database telemetry data.

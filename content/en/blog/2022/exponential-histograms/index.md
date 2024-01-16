@@ -302,5 +302,5 @@ _A version of this article was [originally posted][] on the New Relic blog._
 [otlp]: /docs/specs/otlp/
 [opentelemetry-java]: https://github.com/open-telemetry/opentelemetry-java
 [environment variable]: /docs/specs/otel/metrics/sdk_exporters/otlp/
-[instrumentation]: /docs/instrumentation
+[instrumentation]: /docs/languages
 [github.com/open-telemetry]: https://github.com/open-telemetry
