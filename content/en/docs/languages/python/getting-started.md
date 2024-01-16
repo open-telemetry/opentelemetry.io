@@ -640,7 +640,7 @@ emitted to the console, with separate counts for each roll value:
 
 ## Send telemetry to an OpenTelemetry Collector
 
-The [OpenTelemetry Collector](/docs/collector/getting-started/) is a critical
+The [OpenTelemetry Collector](/docs/collector/) is a critical
 component of most production deployments. Some examples of when it's beneficial
 to use a collector:
 

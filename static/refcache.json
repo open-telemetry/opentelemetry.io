@@ -4099,6 +4099,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-09-25T10:17:08.450210292Z"
   },
+  "https://go.dev/doc/code#Command": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-16T09:38:29.715064-05:00"
+  },
   "https://go.dev/doc/install/gccgo": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T16:08:23.852746-04:00"
@@ -5198,6 +5202,10 @@
   "https://pip.pypa.io/en/stable/reference/pip_install/#editable-installs": {
     "StatusCode": 200,
     "LastSeen": "2023-06-29T18:45:36.801594-04:00"
+  },
+  "https://pkg.go.dev/cmd/go#hdr-Environment_variables": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-16T09:38:27.962889-05:00"
   },
   "https://pkg.go.dev/github.com/mitchellh/mapstructure": {
     "StatusCode": 200,
