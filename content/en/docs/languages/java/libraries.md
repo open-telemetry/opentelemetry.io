@@ -41,8 +41,8 @@ Set up an environment in a new directory named `java-simple-http-client`. Inside
 the directory, create a file named `build.gradle.kts` with the following
 content:
 
-{{% alert color="info" %}} Please note that this example is built with Gradle,
-you might need to amend directory structure and pox.xml to run using Maven
+{{% alert title="Note" color="info" %}} The example is built using Gradle. You
+might need to amend the directory structure and `pom.xml` to run using Maven.
 {{% /alert %}}
 
 {{< tabpane text=true >}} {{% tab Gradle %}}
