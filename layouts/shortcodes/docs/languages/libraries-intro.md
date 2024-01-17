@@ -10,12 +10,11 @@ metrics to the third-party libraries and frameworks you use.
 
 Many libraries and frameworks already support OpenTelemetry or are supported
 through OpenTelemetry
-[instrumentations](/docs/concepts/instrumentation/libraries/), so that they can
+[instrumentation](/docs/concepts/instrumentation/libraries/), so that they can
 generate telemetry you can export to an observability back end.
 
-If you are instrumenting an app, you can learn on this page how to make use of
-natively instrumented libraries and Instrumentation Libraries for your
-dependencies.
+If you are instrumenting an application or service that use third-party libraries or
+frameworks, follow these instructions to learn how to use OTel-ready libraries and instrumentation libraries for your dependencies.
 
 ## Use natively instrumented libraries
 
