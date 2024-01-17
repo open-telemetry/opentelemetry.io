@@ -13,8 +13,8 @@ through OpenTelemetry
 [instrumentation](/docs/concepts/instrumentation/libraries/), so that they can
 generate telemetry you can export to an observability back end.
 
-If you are instrumenting an application or service that use third-party libraries or
-frameworks, follow these instructions to learn how to use OTel-ready libraries and instrumentation libraries for your dependencies.
+If you are instrumenting an app or service that use third-party libraries or
+frameworks, follow these instructions to learn how to use natively instrumented libraries and instrumentation libraries for your dependencies.
 
 ## Use natively instrumented libraries
 
