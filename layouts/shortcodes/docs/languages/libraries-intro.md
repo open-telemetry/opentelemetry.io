@@ -23,7 +23,7 @@ traces, metrics, and logs emitted from that library by adding and setting up
 the OpenTelemetry SDK with your app.
 
 The library might require some additional configuration for the instrumentation.
-Go to the documentation of that library to learn more.
+Go to the documentation for that library to learn more.
 
 {{ range first $howMany (sort $integrations "name") -}}
 
