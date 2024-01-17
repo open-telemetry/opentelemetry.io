@@ -190,9 +190,9 @@ agent to the host metrics receiver for infrastructure monitoring.
   maturing in OTel; for example, the Java JAR agent takes care of instrumenting
   [most libraries](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks)
   that are used by applications. Auto-instrumentation is also available for
-  [Python](/docs/instrumentation/python/automatic/),
-  [.NET](/docs/instrumentation/net/automatic/), and
-  [Node.js](/docs/instrumentation/js/automatic).
+  [Python](/docs/languages/python/automatic/),
+  [.NET](/docs/languages/net/automatic/), and
+  [Node.js](/docs/languages/js/automatic).
 - If you’re using Kubernetes, they can use the
   [OTel operator](https://github.com/open-telemetry/opentelemetry-operator),
   which takes care of instrumentations for applications deployed on K8s. The

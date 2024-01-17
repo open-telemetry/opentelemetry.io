@@ -12,12 +12,12 @@ the OpenTelemetry project. From the start, we considered OpenTelemetry
 
 We are excited to announce that OpenTelemetry has reached feature parity with
 OpenCensus in C++, .NET, Go, Java, JavaScript, PHP and Python.
-[Stable releases](/docs/instrumentation/#status-and-releases) of both the
-Tracing and Metrics SDKs are available in most of these languages with Go and
-PHP soon to follow. This means that OpenTelemetry can collect and export
-telemetry data with the same level of functionality as OpenCensus. Beyond that,
-OpenTelemetry offers a [richer ecosystem](/ecosystem/) of instrumentation
-libraries and exporters, and an
+[Stable releases](/docs/languages/#status-and-releases) of both the Tracing and
+Metrics SDKs are available in most of these languages with Go and PHP soon to
+follow. This means that OpenTelemetry can collect and export telemetry data with
+the same level of functionality as OpenCensus. Beyond that, OpenTelemetry offers
+a [richer ecosystem](/ecosystem/) of instrumentation libraries and exporters,
+and an
 [active open source community](https://www.cncf.io/blog/2023/01/11/a-look-at-the-2022-velocity-of-cncf-linux-foundation-and-top-30-open-source-projects/).
 
 As a result, we will be archiving all OpenCensus GitHub repositories (with the

@@ -53,14 +53,14 @@ has been updated to v0.75.0, adding support for feature gates in the operator.
 This release includes several bugfixes and improvements to connectors, along
 with a breaking change to the `confmap` component.
 
-##### [Go](/docs/instrumentation/go/)
+##### [Go](/docs/languages/go/)
 
 [Version v1.15.0](https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.15.0)
 has been released! This marks the official release of OpenTelemetry Metrics v1
 in Go. Please check out the full release notes, as there are several important
 changes and renamings, especially if you're using metrics.
 
-##### [Java](/docs/instrumentation/java/)
+##### [Java](/docs/languages/java/)
 
 [Version 1.25.0](https://github.com/open-telemetry/opentelemetry-java/releases/tag/v1.25.0)
 of the Java SDK has been released, with several bugfixes and improvements.

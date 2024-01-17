@@ -292,12 +292,12 @@ try (Scope unused = span.makeCurrent()) {
 ```
 
 Here're the full
-[examples of context extraction in Java](/docs/instrumentation/java/manual/#context-propagation),
+[examples of context extraction in Java](/docs/languages/java/instrumentation/#context-propagation),
 check out OpenTelemetry documentation in your language.
 
 In the case of a messaging system, you may receive more than one message at
 once. Received messages become
-[_links_](/docs/instrumentation/java/manual/#create-spans-with-links) on the
+[_links_](/docs/languages/java/instrumentation/#create-spans-with-links) on the
 span you create. Refer to
 [messaging conventions](/docs/specs/semconv/messaging/messaging-spans/) for
 details (WARNING: messaging conventions are
@@ -332,7 +332,7 @@ try (Scope unused = span.makeCurrent()) {
 ```
 
 Here's the full
-[example of context injection in Java](/docs/instrumentation/java/manual/#context-propagation).
+[example of context injection in Java](/docs/languages/java/instrumentation/#context-propagation).
 
 There might be some exceptions:
 

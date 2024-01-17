@@ -20,7 +20,7 @@ package that simplify the task of deploying and configuring the collection of
 telemetry. The automatic instrumentation is fully compatible with manual
 instrumentation in case you need to send custom spans or metrics.
 
-To get started, [read the documentation](/docs/instrumentation/net/automatic) or
+To get started, [read the documentation](/docs/languages/net/automatic) or
 browse the
 [examples](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/tree/main/examples)
 for demonstrations of different instrumentation scenarios covered by the

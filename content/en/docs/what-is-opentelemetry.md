@@ -56,8 +56,8 @@ OpenTelemetry consists of the following major components:
 - [Semantic conventions](/docs/specs/semconv/) that define a standard naming
   scheme for common telemetry data types
 - APIs that define how to generate telemetry data
-- [Language SDKs](/docs/instrumentation) that implement the specification, APIs,
-  and export of telemetry data
+- [Language SDKs](/docs/languages) that implement the specification, APIs, and
+  export of telemetry data
 - A [library ecosystem](/ecosystem/registry) that implements instrumentation for
   common libraries and frameworks
 - Automatic instrumentation components that generate telemetry data without
