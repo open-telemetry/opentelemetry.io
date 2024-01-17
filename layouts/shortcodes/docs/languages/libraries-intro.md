@@ -5,12 +5,13 @@
 
 When you develop an app, you might use third-party libraries and frameworks to
 accelerate your work. If you then instrument your app using OpenTelemetry, you
-might want to avoid spending additional time to manually add traces, logs,
-and metrics to the third-party libraries and frameworks you use.
+might want to avoid spending additional time to manually add traces, logs, and
+metrics to the third-party libraries and frameworks you use.
 
 Many libraries and frameworks already support OpenTelemetry or are supported
-through OpenTelemetry [instrumentations](/docs/concepts/instrumentation/libraries/),
-so that they can generate telemetry you can export to an observability back end.
+through OpenTelemetry
+[instrumentations](/docs/concepts/instrumentation/libraries/), so that they can
+generate telemetry you can export to an observability back end.
 
 If you are instrumenting an app, you can learn on this page how to make use of
 natively instrumented libraries and Instrumentation Libraries for your
