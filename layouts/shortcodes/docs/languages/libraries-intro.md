@@ -3,14 +3,14 @@
 {{ $howMany := .Get 1 | default 10 -}}
 {{ $integrations := where (where $.Site.Data.ecosystem.integrations ".components" "intersect" (slice $lang)) ".native" "eq" true -}}
 
-When you develop an app, you make use of third-party libraries and frameworks to
-accelerate your work and to not reinvent the wheel. If you now instrument your
-app with OpenTelemetry, you don't want to spend additional time on manually
-adding traces, logs and metrics to those libraries and frameworks. Fortunately,
-you don't have to reinvent the wheel for those either: libraries might come with
-OpenTelemetry support natively or you can use an
-[Instrumentation Library](/docs/concepts/instrumentation/libraries/) in order to
-generate telemetry data for a library or framework.
+When you develop an app, you might use third-party libraries and frameworks to
+accelerate your work. If you then instrument your app using OpenTelemetry, you
+might want to avoid spending additional time to manually add traces, logs,
+and metrics to the third-party libraries and frameworks you use.
+
+Many libraries and frameworks already support OpenTelemetry or are supported
+through OpenTelemetry [instrumentations](/docs/concepts/instrumentation/libraries/),
+so that they can generate telemetry you can export to an observability back end.
 
 If you are instrumenting an app, you can learn on this page how to make use of
 natively instrumented libraries and Instrumentation Libraries for your
