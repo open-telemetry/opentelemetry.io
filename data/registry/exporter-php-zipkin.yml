@@ -1,13 +1,18 @@
 title: Zipkin Exporter
 registryType: exporter
-isThirdParty: false
 language: php
 tags:
   - php
   - zipkin
   - exporter
-repo: https://github.com/open-telemetry/opentelemetry-php/tree/main/src/Contrib/Zipkin
 license: Apache 2.0
 description: The OpenTelemetry Zipkin Exporter for PHP.
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+package:
+  name: open-telemetry/exporter-zipkin
+  registry: packagist
+  version: 1.0.0
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-php/tree/main/src/Contrib/Zipkin
+createdAt: 2022-12-14

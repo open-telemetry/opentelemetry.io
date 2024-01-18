@@ -1,7 +1,6 @@
 # cSpell:ignore Hostetler
 title: Trace2 Receiver
 registryType: receiver
-isThirdParty: true
 language: collector
 tags:
   - go
@@ -9,11 +8,13 @@ tags:
   - collector
   - trace2
   - git
-repo: https://github.com/git-ecosystem/trace2receiver
 license: MIT
 description:
   A receiver for git Trace2 telemetry from local git commands, translates it
   into an OpenTelemetry format, and forwards it to other OpenTelemetry
   components.
-authors: Jeff Hostetler
-otVersion: latest
+authors:
+  - name: Jeff Hostetler
+urls:
+  repo: https://github.com/git-ecosystem/trace2receiver
+createdAt: 2023-10-17

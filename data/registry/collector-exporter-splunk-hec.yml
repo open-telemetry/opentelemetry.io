@@ -1,15 +1,21 @@
+# cSpell:ignore splunkhecexporter
 title: Splunk HTTP Event Collector (HEC) Exporter
 registryType: exporter
-isThirdParty: true
 language: collector
 tags:
   - go
   - exporter
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/splunkhecexporter
 license: Apache 2.0
 description:
   The Splunk HTTP Event Collector (HEC) Exporter for the OpenTelemetry
   Collector.
-authors: Splunk
-otVersion: latest
+authors:
+  - name: Splunk
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/splunkhecexporter
+createdAt: 2020-06-06
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/splunkhecexporter
+  version: v0.92.0

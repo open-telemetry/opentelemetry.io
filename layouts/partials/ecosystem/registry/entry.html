@@ -1,0 +1,201 @@
+{{ $languageNames := .languageNames -}}
+
+{{ with .value -}}
+    {{ 
+        $remoteRegistries := dict
+            "npm" (dict 
+                "urlPattern" "https://npmjs.com/package/%s"
+                "installTemplate" "ecosystem/registry/quickinstall/default.md"
+                "installLine" "npm install %s"
+                "icon" "fab fa-npm")
+            "packagist" (dict
+                "urlPattern" "https://packagist.org/packages/%s"
+                "installLine" "composer install %s"
+                "installTemplate" "ecosystem/registry/quickinstall/default.md"
+                "icon" "fa-solid fa-box-open")
+            "gems" (dict
+                "urlPattern" "https://rubygems.org/gems/%s"
+                "installLine" "gem install %s"
+                "installTemplate" "ecosystem/registry/quickinstall/default.md"
+                "icon" "fa-solid fa-gem")
+            "go" (dict
+                "urlPattern" "https://pkg.go.dev/%s"
+                "installLine" "go get %s"
+                "installTemplate" "ecosystem/registry/quickinstall/default.md"
+                "icon" "fa-brands fa-golang")
+            "go-collector" (dict
+                "urlPattern" "https://pkg.go.dev/%s"
+                "installTemplate" "ecosystem/registry/quickinstall/collector.md"
+                "icon" "fa-solid fa-box-open")
+            "nuget" (dict
+                "urlPattern" "https://www.nuget.org/packages/%s"
+                "installLine" "dotnet add package %s"
+                "installTemplate" "ecosystem/registry/quickinstall/default.md"
+                "icon" "fa-solid fa-box-open")
+            "pip" (dict
+                "urlPattern" "https://pypi.org/project/%s"
+                "installLine" "pip install %s"
+                "installTemplate" "ecosystem/registry/quickinstall/default.md"
+                "icon" "fa-brands fa-python")
+            "hex" (dict
+                "urlPattern" "https://hex.pm/packages/%s"
+                "installTemplate" "ecosystem/registry/quickinstall/hex.md"
+                "icon" "fa-brands fa-erlang")
+    -}}
+
+    {{ $isNativ := and (eq .registryType "instrumentation") (.isNative) }}
+    {{ $isFirstParty := and (eq .registryType "instrumentation") (.isFirstParty) }}
+    {{ $currentTime := (time now) -}}
+    {{ $delta := $currentTime.Sub (time.AsTime .createdAt) -}}
+    {{ $isNew := lt $delta.Hours 730 -}}
+    {{ $usedInDemo := and (isset . "urls") (isset .urls "demo") }}
+    {{ $deprecated := and (isset . "deprecated") (isset .deprecated "reason") }}
+    {{ $package := "" -}}
+    {{ if and (.package) (isset $remoteRegistries .package.registry) -}}
+        {{ $package = merge .package (index $remoteRegistries .package.registry) -}}
+        {{ $package = merge $package (dict "type" .registryType) -}}
+    {{ end -}}
+    {{ $highlightStyle := "" -}}
+    {{ if $isNew -}}
+        {{ $highlightStyle = "border-info" -}}
+    {{ end -}}
+    {{ if $isNativ -}}
+        {{ $highlightStyle = "border-success" -}}
+    {{ end -}}
+    {{ if $isFirstParty -}}
+        {{ $highlightStyle = "border-success" -}}
+    {{ end -}}
+    {{ if $usedInDemo -}}
+        {{ $highlightStyle = "border-secondary" -}}
+    {{ end -}}
+    {{ if $deprecated -}}
+        {{ $highlightStyle = "border-danger" -}}
+    {{ end -}}
+    {{ $repoHref := printf "href=%q" .urls.repo | safeHTMLAttr -}}
+    <li class="card my-3 registry-entry {{ $highlightStyle }}" data-registry-id="{{ ._key }}" data-registrytype="{{ .registryType }}" data-registrylanguage="{{ .language }}">
+        <div class="card-body container">
+        <h4 class="card-title mb-0 d-flex flex-row">
+            <a {{ $repoHref }} target="_blank" rel="noopener" class="me-auto">
+            {{- .title | markdownify -}}
+            </a>
+            <div class="ms-auto">
+            {{ if $isNew -}}
+            <span class="badge rounded-pill text-bg-info"><i class="fa-regular fa-star"></i> new</span>
+            {{ end -}}
+            {{ if $isNativ -}}
+            <span class="badge rounded-pill text-bg-success text-white"><i class="fa-solid fa-puzzle-piece"></i> native</span>
+            {{ end -}}
+            {{ if $isFirstParty -}}
+            <span class="badge rounded-pill text-bg-success text-white"><i class="fa-solid fa-heart"></i> first party integration</span>
+            {{ end -}}
+            {{ if $usedInDemo -}}
+            <span class="badge rounded-pill text-bg-secondary text-white" title="This package is used in the OpenTelemetry Demo!"><i class="fa-solid fa-shapes"></i> OTel Demo</span>
+            {{ end -}}
+            {{ if $deprecated -}}
+            <span class="badge rounded-pill text-bg-danger text-white" title=""><i class="fa-solid fa-ban"></i> deprecated</span>
+            {{ end -}}
+            </div>
+        </h4>
+        <p class="card-text">
+            <small class="text-body-secondary">
+            by 
+            {{ range $index, $author := .authors -}}
+                {{ if $index }}, {{ end }}
+                {{ if eq $author.name "OpenTelemetry Authors" -}}
+                    <a href="/" class="badge rounded-pill text-bg-primary">🔭 {{ $author.name }} 🔭</a>
+                {{ else if isset $author "url" }}
+                    {{ $href := printf "href=%q" $author.url | safeHTMLAttr -}}
+                    <a {{ $href }} target="_blank" rel="noopener" class="card-link external-link">{{ $author.name }}</a>
+                {{ else -}}
+                    {{ $author.name -}}
+                {{ end -}}
+            {{ end -}}
+            </small>
+        </p>
+        <div class="row p-2">
+            <div class="col col-md-9 col-lg-10">
+                <div class="mb-3">
+                    {{ if $deprecated -}}
+                        <div class="alert alert-danger" role="alert">
+                            <h4 class="alert-heading">Deprecated</h4>
+                            {{ .deprecated.reason | markdownify }}
+                        </div>
+                    {{ end -}}
+                    {{- .description | markdownify -}}
+                </div>
+                {{ with $package -}}
+                    <h6><i class="fa-solid fa-forward"></i> Quick Install</h6>
+                    <p>{{ (partial .installTemplate .) | markdownify -}}
+                    </p>
+                {{- end -}}
+            </div>
+            <div class="col col-md-3 col-lg-2">
+            <ul class="list-group list-group-flush">
+            {{ if .package.version -}}
+            <li class="list-group-item">
+                <div class="ms-2 me-auto">
+                <div class="fw-bold">
+                    {{ .package.version }}
+                </div>
+                <small>Version</small>
+                </div>      
+            </li>
+            {{- end -}}
+            {{ with .language -}}
+            <li class="list-group-item">
+                <div class="ms-2 me-auto">
+                <div class="fw-bold">
+                    {{ $languageNames.Get . | default (humanize .) }}
+                </div>
+                <small>Language</small>
+                </div>      
+            </li>
+            {{- end }}
+            {{ with .registryType -}}
+            <li class="list-group-item">
+                <div class="ms-2 me-auto">
+                <div class="fw-bold">
+                    {{ . | humanize }}
+                </div>
+                <small>Component</small>
+                </div>      
+            </li>
+            {{- end -}}
+            {{ with .license -}}
+            <li class="list-group-item">
+                <div class="ms-2 me-auto">
+                <div class="fw-bold">
+                    {{ . }}
+                </div>
+                <small>License</small>
+                </div>      
+            </li>
+            {{- end -}}
+            </div>
+        </div>
+        <div>
+
+        </div>
+        {{ with .urls.homepage -}}
+        {{ $homepageHref := printf "href=%q" . | safeHTMLAttr -}}
+        <a {{ $homepageHref }} target="_blank" rel="noopener" class="card-link">Homepage</a>
+        {{- end -}}
+        {{ with .urls.docs -}}
+        {{ $docsHref := printf "href=%q" . | safeHTMLAttr -}}
+        <a {{ $docsHref }} target="_blank" rel="noopener" class="card-link"><i class="fas fa-book" aria-hidden="true"></i>&nbsp;Documentation</a>
+        {{- end -}}
+        {{ with $package -}}
+        {{ $packageUrl := printf "href=%q" (printf .urlPattern .name) | safeHTMLAttr -}}
+        <a {{ $packageUrl }} target="_blank" rel="noopener" class="card-link"><i class="{{ .icon }}" aria-hidden="true"></i>&nbspPackage Details ({{ .registry }})</a>
+        {{- end -}}
+        {{ with .urls.repo -}}
+        {{ $icon := cond ( hasPrefix . "https://github.com/" ) "fa-brands fa-github" "fab fa-git-alt" -}}
+        <a {{ $repoHref }} target="_blank" rel="noopener" class="card-link"><i class="{{ $icon }}" aria-hidden="true"></i>&nbsp;Repository</a>
+        {{- end -}}
+        {{ with .urls.demo -}}
+        {{ $demoUrl := printf "href=%q" (printf .) | safeHTMLAttr -}}
+        <a {{ $demoUrl }} target="_blank" rel="noopener" class="card-link"><i class="fa-solid fa-shapes" aria-hidden="true"></i>&nbsp;Demo Service</a>
+        {{- end -}}
+        </div>
+    </li>
+  {{ end -}}

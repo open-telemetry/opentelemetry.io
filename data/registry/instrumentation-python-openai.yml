@@ -1,14 +1,16 @@
 # cSpell:ignore openai
 title: OpenAI Instrumentation
 registryType: instrumentation
-isThirdParty: true
 language: python
 tags:
   - python
   - instrumentation
   - openai
-repo: https://github.com/traceloop/openllmetry/tree/main/packages/opentelemetry-instrumentation-openai
 license: Apache 2.0
 description: Instrumentation for OpenAI LLMs (prompts logging, tokens, etc.)
-authors: Traceloop <dev@traceloop.com>
-otVersion: latest
+authors:
+  - name: Traceloop
+    email: dev@traceloop.com
+urls:
+  repo: https://github.com/traceloop/openllmetry/tree/main/packages/opentelemetry-instrumentation-openai
+createdAt: 2023-10-13

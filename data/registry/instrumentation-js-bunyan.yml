@@ -1,14 +1,19 @@
 # cSpell:ignore bunyan
 title: OpenTelemetry Instrumentation for bunyan
 registryType: instrumentation
-isThirdParty: false
 language: js
 tags:
   - Node.js
   - bunyan
   - logging
-repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-bunyan
 license: Apache 2.0
 description: Instrumentation library for Bunyan.
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-bunyan
+createdAt: 2021-07-08
+package:
+  name: '@opentelemetry/instrumentation-bunyan'
+  registry: npm
+  version: 0.34.1

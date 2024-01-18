@@ -1,12 +1,17 @@
 title: Jaeger Exporter
 registryType: exporter
-isThirdParty: false
 language: js
 tags:
   - Node.js
   - exporter
-repo: https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-exporter-jaeger
 license: Apache 2.0
 description: The OpenTelemetry Jaeger Exporter for Node.js.
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-exporter-jaeger
+createdAt: 2020-02-06
+package:
+  registry: npm
+  name: '@opentelemetry/exporter-jaeger'
+  version: 1.19.0
