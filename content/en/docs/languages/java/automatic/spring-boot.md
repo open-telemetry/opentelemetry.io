@@ -19,7 +19,7 @@ Alternatively, the OpenTelemetry [Spring Boot starter] can help you in the follo
   another Java monitoring agent
 
 [Spring Boot starter]:
-https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using.build-systems.starters
+  https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using.build-systems.starters
 
 The
 [opentelemetry-java-examples/spring-native](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/spring-native)
@@ -117,9 +117,9 @@ For details concerning supported libraries and features of the OpenTelemetry
 auto-configuration, see the configuration [README].
 
 [auto-configuration]:
-https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.auto-configuration
+  https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.auto-configuration
 [README]:
-https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/README.md#features
+  https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/README.md#features
 
 {{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
 
