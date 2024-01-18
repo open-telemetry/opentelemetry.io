@@ -9,5 +9,5 @@ authors:
   - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-php
-  docs: /docs/instrumentation/php/
+  docs: /docs/languages/php/
 createdAt: 2020-02-04

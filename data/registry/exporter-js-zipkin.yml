@@ -14,5 +14,5 @@ package:
   version: 1.19.0
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-exporter-zipkin
-  docs: /docs/instrumentation/js/exporters/#zipkin
+  docs: /docs/languages/js/exporters/#zipkin
 createdAt: 2020-02-06
