@@ -1,14 +1,16 @@
 # cSpell:ignore nestjs metin seylan
 title: OpenTelemetry Instrumentation for Nest
 registryType: instrumentation
-isThirdParty: true
 language: js
 tags:
   - Node.js
   - nest
   - nestjs
-repo: https://github.com/MetinSeylan/Nestjs-OpenTelemetry
 license: MIT
 description: Instrumentation library for Nest.
-authors: Metin Seylan (metinsyln@gmail.com)
-otVersion: latest
+authors:
+  - name: Metin Seylan
+    email: metinsyln@gmail.com
+urls:
+  repo: https://github.com/MetinSeylan/Nestjs-OpenTelemetry
+createdAt: 2021-07-08

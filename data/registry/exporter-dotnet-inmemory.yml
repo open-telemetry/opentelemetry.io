@@ -1,15 +1,20 @@
 # cSpell:ignore inmemory
 title: In-memory Exporter for OpenTelemetry .NET
 registryType: exporter
-isThirdParty: false
 language: dotnet
 tags:
   - inmemory
   - exporter
   - dotnet
-repo: https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/src/OpenTelemetry.Exporter.InMemory
 license: Apache 2.0
 description:
   The in-memory exporter stores data in a user provided memory buffer.
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/src/OpenTelemetry.Exporter.InMemory
+createdAt: 2022-11-07
+package:
+  registry: nuget
+  name: OpenTelemetry.Exporter.InMemory
+  version: 1.7.0

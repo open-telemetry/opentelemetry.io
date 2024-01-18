@@ -1,17 +1,18 @@
 # cSpell:ignore Mihailenco
 title: SQL instrumentation
 registryType: instrumentation
-isThirdParty: true
 language: go
 tags:
   - go
   - instrumentation
   - database
   - sql
-repo: https://github.com/uptrace/opentelemetry-go-extra/tree/main/otelsql
 license: BSD-2-Clause
 description:
   Instrumentation for SQL that records queries (including transactions and
   statements) and reports DBStats metrics.
-authors: Vladimir Mihailenco
-otVersion: v1.0.0
+authors:
+  - name: Vladimir Mihailenco
+urls:
+  repo: https://github.com/uptrace/opentelemetry-go-extra/tree/main/otelsql
+createdAt: 2021-10-25

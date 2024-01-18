@@ -1,11 +1,13 @@
 title: Honeycomb OpenTelemetry Distribution for Go
 registryType: instrumentation
-isThirdParty: true
 language: go
 tags:
   - go
   - instrumentation
-repo: https://github.com/honeycombio/honeycomb-opentelemetry-go
 license: Apache 2.0
 description: Honeycomb's distribution of OpenTelemetry for Go
-authors: Honeycomb, Hound Technology, Inc
+authors:
+  - name: Honeycomb, Hound Technology, Inc
+urls:
+  repo: https://github.com/honeycombio/honeycomb-opentelemetry-go
+createdAt: 2023-02-07

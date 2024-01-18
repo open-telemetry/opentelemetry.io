@@ -1,14 +1,18 @@
 title: Azure Monitor Exporter
 registryType: exporter
-isThirdParty: true
 language: python
 tags:
   - python
   - exporter
   - Azure Monitor
   - Application Insights
-repo: https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/monitor/azure-monitor-opentelemetry-exporter
-license: MIT License
+license: MIT
 description: The OpenTelemetry Azure Monitor Exporter for Python
-authors: Microsoft Authors
-otVersion: latest
+authors:
+  - name: Microsoft Authors
+package:
+  name: azure-monitor-opentelemetry-exporter
+  registry: pip
+urls:
+  repo: https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/monitor/azure-monitor-opentelemetry-exporter
+createdAt: 2020-04-02
