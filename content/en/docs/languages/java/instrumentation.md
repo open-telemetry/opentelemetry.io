@@ -1540,10 +1540,9 @@ example `OTEL_TRACES_EXPORTER=jaeger` configures your application to use the
 Jaeger exporter. The corresponding Jaeger exporter library has to be provided in
 the classpath of the application as well.
 
-If you use `console` (or `logging`) exporter for metrics, consider setting
-`OTEL_METRIC_EXPORT_INTERVAL` as well to a small value like `5000`
-(milliseconds) to test your metrics are properly recorded. Once you confirmed it
-works, you can remove it to default to 60 seconds.
+If you use the `console` or `logging` exporter for metrics, consider temporarily setting
+`OTEL_METRIC_EXPORT_INTERVAL` to a small value like `5000`
+(milliseconds) while testing that your metrics are properly recorded. Remember to remove the setting once you are done testing.
 
 It's also possible to set up the propagators via the `OTEL_PROPAGATORS`
 environment variable, like for example using the `tracecontext` value to use
