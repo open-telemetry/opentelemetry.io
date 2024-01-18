@@ -28,15 +28,13 @@ For more details on the specification compliance per implementation, see the
 
 ## Collector
 
-The collector status is:
-[mixed](http://localhost:1313/docs/specs/otel/document-status/#mixed), since
+The collector status is: [mixed](/docs/specs/otel/document-status/#mixed), since
 core collector components currently have mixed
 [stability levels](https://github.com/open-telemetry/opentelemetry-collector#stability-levels).
 
 **Collector components** differ in their maturity levels. Each component has its
 stability documented in its `README.md`. You can find a list of all available
-collector components in the
-[registry](http://localhost:1313/ecosystem/registry/?language=collector).
+collector components in the [registry](/ecosystem/registry/?language=collector).
 
 ## Specifications
 

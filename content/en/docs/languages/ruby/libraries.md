@@ -1,23 +1,31 @@
 ---
-title: Automatic instrumentation
-linkTitle: Automatic
-aliases: [configuring_automatic_instrumentation]
-cSpell:ignore: faraday sinatra
+title: Using instrumentation libraries
+linkTitle: Libraries
+aliases: [configuring_automatic_instrumentation, automatic]
+cSpell:ignore: faraday metapackage sinatra
 weight: 30
 ---
 
-Automatic instrumentation in Ruby is done via instrumentation packages, and most
-commonly, the `opentelemetry-instrumentation-all` package. These are called
-Instrumentation Libraries.
+{{% docs/languages/libraries-intro Ruby %}}
 
-For example, if you are using Rails and enable instrumentation, your running
-Rails app will automatically generate telemetry data for inbound requests to
-your controllers.
+## Use Instrumentation Libraries
+
+If a library does not come with OpenTelemetry out of the box, you can use
+[instrumentation libraries](/docs/specs/otel/glossary/#instrumentation-library)
+in order to generate telemetry data for a library or framework.
+
+For example, if you are using Rails and enable
+[`opentelemetry-instrumentation-rails`](https://rubygems.org/gems/opentelemetry-instrumentation-rails/),
+your running Rails app will automatically generate telemetry data for inbound
+requests to your controllers.
 
 ### Configuring all instrumentation libraries
 
-The recommended way to use instrumentation libraries is to use the
-`opentelemetry-instrumentation-all` package:
+OpenTelemetry Ruby provides the metapackage
+[`opentelemetry-instrumentation-all`](https://rubygems.org/gems/opentelemetry-instrumentation-all)
+that bundles all ruby-based instrumentation libraries into a single package.
+It’s a convenient way to add telemetry for all your libraries with minimal
+effort:
 
 ```sh
 gem 'opentelemetry-sdk'
@@ -94,6 +102,6 @@ end
 
 Instrumentation libraries are the easiest way to generate lots of useful
 telemetry data about your Ruby apps. But they don't generate data specific to
-your application's logic! To do that, you'll need to enrich the automatic
-instrumentation from instrumentation libraries with
-[manual instrumentation](../instrumentation).
+your application's logic! To do that, you'll need to enrich the instrumentation
+from instrumentation libraries with your own
+[instrumentation code](../instrumentation).
