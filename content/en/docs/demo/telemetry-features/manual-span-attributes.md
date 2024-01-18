@@ -1,11 +1,10 @@
 ---
 title: Manual Span Attributes
-aliases: [manual_span_attributes]
+aliases: [manual_span_attributes, ../manual-span-attributes]
 cSpell:ignore: featureflag
 ---
 
-This document contains the list of manual Span Attributes used throughout the
-demo:
+This page lists the manual Span Attributes used throughout the demo:
 
 ## AdService
 
