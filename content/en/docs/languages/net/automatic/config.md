@@ -3,7 +3,7 @@ title: Configuration and settings
 linkTitle: Configuration
 weight: 20
 # prettier-ignore
-cSpell:ignore: AZUREAPPSERVICE Bitness CLSID CORECLR dylib NETFX UNHANDLEDEXCEPTION
+cSpell:ignore: AZUREAPPSERVICE Bitness CLSID CORECLR dylib NETFX PROCESSRUNTIME UNHANDLEDEXCEPTION
 ---
 
 ## Configuration methods
@@ -95,10 +95,13 @@ for more details.
 
 The following resource detectors are included and enabled by default:
 
-| ID                | Description                | Documentation                                                                                                                                                                                                     | Status                                                    |
-| ----------------- | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
-| `CONTAINER`       | Container detector         | [Container resource detector documentation](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/ResourceDetectors.Container-1.0.0-beta.3/src/OpenTelemetry.ResourceDetectors.Container/README.md) | [Experimental](/docs/specs/otel/versioning-and-stability) |
-| `AZUREAPPSERVICE` | Azure App Service detector | [Azure resource detector documentation](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/ResourceDetectors.Azure-1.0.0-beta.2/src/OpenTelemetry.ResourceDetectors.Azure/README.md)             | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| ID                | Description                | Documentation                                                                                                                                                                                                                      | Status                                                    |
+| ----------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
+| `AZUREAPPSERVICE` | Azure App Service detector | [Azure resource detector documentation](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/ResourceDetectors.Azure-1.0.0-beta.4/src/OpenTelemetry.ResourceDetectors.Azure/README.md)                              | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `CONTAINER`       | Container detector         | [Container resource detector documentation](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/ResourceDetectors.Container-1.0.0-beta.5/src/OpenTelemetry.ResourceDetectors.Container/README.md)                  | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `HOST`            | Host detector              | [Host resource detector documentation](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/ResourceDetectors.Host-0.1.0-alpha.2/src/OpenTelemetry.ResourceDetectors.Host/README.md)                                | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `PROCESS`         | Process detector           | [Process resource detector documentation](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/ResourceDetectors.Process-0.1.0-alpha.2/src/OpenTelemetry.ResourceDetectors.Process/README.md)                       | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `PROCESSRUNTIME`  | Process Runtime detector   | [Process Runtime resource detector documentation](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/ResourceDetectors.ProcessRuntime-0.1.0-alpha.2/src/OpenTelemetry.ResourceDetectors.ProcessRuntime/README.md) | [Experimental](/docs/specs/otel/versioning-and-stability) |
 
 ## Propagators
 
