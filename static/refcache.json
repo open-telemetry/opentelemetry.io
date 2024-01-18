@@ -6663,6 +6663,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-09-06T15:04:25.165623+02:00"
   },
+  "https://www.nuget.org/packages/Confluent.Kafka": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-18T10:45:19.955108939Z"
+  },
   "https://www.nuget.org/packages/Elastic.Clients.Elasticsearch": {
     "StatusCode": 200,
     "LastSeen": "2023-09-06T15:04:24.3457+02:00"
