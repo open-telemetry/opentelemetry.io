@@ -10,7 +10,8 @@ The [OpenTelemetry Java agent](..) with byte code instrumentation can cover most
 of your needs when instrumenting
 [Spring Boot](https://spring.io/projects/spring-boot) applications.
 
-Alternatively, the OpenTelemetry [Spring Boot starter] can help you in the following cases:
+Alternatively, the OpenTelemetry [Spring Boot starter] can help you in the
+following cases:
 
 - with Spring Boot Native image applications for which the OpenTelemetry Java
   agent does not work
@@ -142,52 +143,54 @@ dependencies {
 
 {{% /tab %}} {{< /tabpane>}}
 
-
 ### OTLP Exporter
 
-This package provides auto configurations for [OTLP](https://github.com/open-telemetry/opentelemetry-java/tree/main/exporters/otlp) and [Logging](https://github.com/open-telemetry/opentelemetry-java/tree/main/exporters/logging) Span Exporters.
+This package provides auto configurations for
+[OTLP](https://github.com/open-telemetry/opentelemetry-java/tree/main/exporters/otlp)
+and
+[Logging](https://github.com/open-telemetry/opentelemetry-java/tree/main/exporters/logging)
+Span Exporters.
 
 #### Exporter Properties
 
-
 | Feature       | Property                    | Default Value    |
-|---------------|-----------------------------|------------------|
+| ------------- | --------------------------- | ---------------- |
 | Otlp Exporter | otel.exporter.otlp.endpoint | `localhost:4317` |
 |               | otel.exporter.otlp.protocol | `http/protobuf`  |
 |               | otel.exporter.otlp.headers  |                  |
 |               | otel.exporter.otlp.timeout  | `1s`             |
 
-The `otel.exporter.otlp.headers` property can be specified as a comma-separated list,
-which is compliant with the
+The `otel.exporter.otlp.headers` property can be specified as a comma-separated
+list, which is compliant with the
 [specification](https://opentelemetry.io/docs/concepts/sdk-configuration/otlp-exporter-configuration/#otel_exporter_otlp_headers).
-Similar to the resource attributes, the headers can be specified in `application.properties` or
-`application.yaml`:
+Similar to the resource attributes, the headers can be specified in
+`application.properties` or `application.yaml`:
 
 ```yaml
 otel:
   exporter:
     otlp:
       headers:
-        - key: "header1"
-          value: "value1"
-        - key: "header2"
-          value: "value2"
+        - key: 'header1'
+          value: 'value1'
+        - key: 'header2'
+          value: 'value2'
 ```
 
 #### Enabling/Disabling Exporters
 
 All exporters can be enabled or disabled as in the
 [SDK auto-configuration](https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md#exporters).
-This is the preferred way to enable/disable exporters and takes precedence over the properties below.
+This is the preferred way to enable/disable exporters and takes precedence over
+the properties below.
 
 | Feature               | Property                           | Default Value | ConditionalOnMissingBean                             |
-|-----------------------|------------------------------------|---------------|------------------------------------------------------|
+| --------------------- | ---------------------------------- | ------------- | ---------------------------------------------------- |
 | Otlp Exporter         | otel.exporter.otlp.enabled         | `true`        | -                                                    |
 | Otlp Span Exporter    | otel.exporter.otlp.traces.enabled  | `true`        | OtlpHttpSpanExporter, OtlpGrpcSpanExporter           |
 | Otlp Metrics Exporter | otel.exporter.otlp.metrics.enabled | `true`        | OtlpHttpMetricExporter, OtlpGrpcMetricExporter       |
 | Otlp Logs Exporter    | otel.exporter.otlp.logs.enabled    | `true`        | OtlpHttpLogRecordExporter, OtlpGrpcLogRecordExporter |
 | Logging Exporter      | otel.exporter.logging.enabled      | `false`       | LoggingSpanExporter                                  |
-
 
 ### Tracer Properties
 
@@ -197,13 +200,13 @@ This is the preferred way to enable/disable exporters and takes precedence over 
 
 ### Resource Properties
 
-| Feature  | Property                                                            | Default Value          |
-| -------- |---------------------------------------------------------------------| ---------------------- |
-| Resource | otel.springboot.resource.enabled                                    | `true`                 |
-|          | otel.resource.attributes (old: otel.springboot.resource.attributes) | `empty map`            |
+| Feature  | Property                                                            | Default Value |
+| -------- | ------------------------------------------------------------------- | ------------- |
+| Resource | otel.springboot.resource.enabled                                    | `true`        |
+|          | otel.resource.attributes (old: otel.springboot.resource.attributes) | `empty map`   |
 
-`otel.resource.attributes` supports a pattern-based resource configuration in the
-application.properties like this:
+`otel.resource.attributes` supports a pattern-based resource configuration in
+the application.properties like this:
 
 ```
 otel.resource.attributes.environment=dev
@@ -220,50 +223,54 @@ otel:
       xyz: foo
 ```
 
-Finally, the resource attributes can be specified as a comma-separated list, as described in the
+Finally, the resource attributes can be specified as a comma-separated list, as
+described in the
 [specification](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_resource_attributes):
 
 ```shell
 export OTEL_RESOURCE_ATTRIBUTES="key1=value1,key2=value2"
 ```
 
-The service name is determined by the following precedence, in accordance with the OpenTelemetry
+The service name is determined by the following precedence, in accordance with
+the OpenTelemetry
 [specification](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_service_name):
 
-1. `otel.service.name` spring property or `OTEL_SERVICE_NAME` environment variable (highest
-   precedence)
-2. `service.name` in `otel.resource.attributes` system/spring property or `OTEL_RESOURCE_ATTRIBUTES`
-   environment variable
-3. `service.name` in `otel.springboot.resource.attributes` system/spring property
+1. `otel.service.name` spring property or `OTEL_SERVICE_NAME` environment
+   variable (highest precedence)
+2. `service.name` in `otel.resource.attributes` system/spring property or
+   `OTEL_RESOURCE_ATTRIBUTES` environment variable
+3. `service.name` in `otel.springboot.resource.attributes` system/spring
+   property
 4. `spring.application.name` spring property
 5. the default value `unknown_service:java` (lowest precedence)
 
-
-
 ### Automatic instrumentation with Spring auto configurations
 
-Auto-configures OpenTelemetry instrumentation for [spring-web](#spring-web-auto-configuration)
-, [spring-webmvc](#spring-web-mvc-auto-configuration),
-and [spring-webflux](#spring-webflux-auto-configuration). Leverages Spring Aspect Oriented
-Programming,
-dependency injection, and bean post-processing to trace spring applications.
+Auto-configures OpenTelemetry instrumentation for
+[spring-web](#spring-web-auto-configuration) ,
+[spring-webmvc](#spring-web-mvc-auto-configuration), and
+[spring-webflux](#spring-webflux-auto-configuration). Leverages Spring Aspect
+Oriented Programming, dependency injection, and bean post-processing to trace
+spring applications.
 
-
-| Feature               | Property                                    | Default Value | ConditionalOnClass        |
-|-----------------------|---------------------------------------------|---------------|---------------------------|
-| spring-web            | otel.instrumentation.spring-webmvc.enabled  | `true`        | RestTemplate              |
-| spring-webmvc         | otel.instrumentation.spring-web.enabled     | `true`        | OncePerRequestFilter      |
-| spring-webflux        | otel.instrumentation.spring-webflux.enabled | `true`        | WebClient                 |
-
+| Feature        | Property                                    | Default Value | ConditionalOnClass   |
+| -------------- | ------------------------------------------- | ------------- | -------------------- |
+| spring-web     | otel.instrumentation.spring-webmvc.enabled  | `true`        | RestTemplate         |
+| spring-webmvc  | otel.instrumentation.spring-web.enabled     | `true`        | OncePerRequestFilter |
+| spring-webflux | otel.instrumentation.spring-webflux.enabled | `true`        | WebClient            |
 
 #### Spring Web Auto Configuration
 
-Provides auto-configuration for the OpenTelemetry RestTemplate trace interceptor defined in
+Provides auto-configuration for the OpenTelemetry RestTemplate trace interceptor
+defined in
 [opentelemetry-spring-web-3.1](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-web/spring-web-3.1).
-This auto-configuration instruments all requests sent using Spring RestTemplate beans by applying a RestTemplate bean post processor.
-This feature is supported for spring web versions 3.1+. [Spring Web - RestTemplate Client Span](#example-trace---resttemplate-client-span)
-show cases a sample client span generated by this auto-configuration. Check out [opentelemetry-spring-web-3.1](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-web/spring-web-3.1) to
-learn more about the OpenTelemetry RestTemplateInterceptor.
+This auto-configuration instruments all requests sent using Spring RestTemplate
+beans by applying a RestTemplate bean post processor. This feature is supported
+for spring web versions 3.1+.
+[Spring Web - RestTemplate Client Span](#example-trace---resttemplate-client-span)
+show cases a sample client span generated by this auto-configuration. Check out
+[opentelemetry-spring-web-3.1](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-web/spring-web-3.1)
+to learn more about the OpenTelemetry RestTemplateInterceptor.
 
 ##### Example Trace - RestTemplate Client Span
 
@@ -292,11 +299,13 @@ learn more about the OpenTelemetry RestTemplateInterceptor.
 
 #### Spring Web MVC Auto Configuration
 
-This feature autoconfigures instrumentation for Spring WebMVC controllers by adding
-a [telemetry producing servlet `Filter`](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-webmvc/spring-webmvc-5.3/library/src/main/java/io/opentelemetry/instrumentation/spring/webmvc/v5_3/WebMvcTelemetryProducingFilter.java)
-bean to the application context. This filter decorates the request execution with an OpenTelemetry
-server span, propagating the incoming tracing context if received in the HTTP request. Check
-out [`opentelemetry-spring-webmvc-5.3` instrumentation library](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-webmvc/spring-webmvc-5.3/library)
+This feature autoconfigures instrumentation for Spring WebMVC controllers by
+adding a
+[telemetry producing servlet `Filter`](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-webmvc/spring-webmvc-5.3/library/src/main/java/io/opentelemetry/instrumentation/spring/webmvc/v5_3/WebMvcTelemetryProducingFilter.java)
+bean to the application context. This filter decorates the request execution
+with an OpenTelemetry server span, propagating the incoming tracing context if
+received in the HTTP request. Check out
+[`opentelemetry-spring-webmvc-5.3` instrumentation library](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-webmvc/spring-webmvc-5.3/library)
 to learn more about the OpenTelemetry Spring WebMVC instrumentation.
 
 ##### Example Trace - Server Span
@@ -330,14 +339,16 @@ to learn more about the OpenTelemetry Spring WebMVC instrumentation.
 
 #### Spring WebFlux Auto Configuration
 
-Provides auto-configurations for the OpenTelemetry WebClient ExchangeFilter defined
-in [opentelemetry-spring-webflux-5.3](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-webflux/spring-webflux-5.3). This auto-configuration
-instruments all outgoing http requests sent using Spring's WebClient and WebClient Builder beans by
-applying a bean post processor. This feature is supported for spring webflux versions 5.0+.
-[Spring Web-Flux - WebClient Span](#spring-web-flux---webclient-span) showcases a sample span
-generated by the WebClientFilter. Check
-out [opentelemetry-spring-webflux-5.3](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-webflux/spring-webflux-5.3) to learn more about the
-OpenTelemetry WebClientFilter.
+Provides auto-configurations for the OpenTelemetry WebClient ExchangeFilter
+defined in
+[opentelemetry-spring-webflux-5.3](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-webflux/spring-webflux-5.3).
+This auto-configuration instruments all outgoing http requests sent using
+Spring's WebClient and WebClient Builder beans by applying a bean post
+processor. This feature is supported for spring webflux versions 5.0+.
+[Spring Web-Flux - WebClient Span](#spring-web-flux---webclient-span) showcases
+a sample span generated by the WebClientFilter. Check out
+[opentelemetry-spring-webflux-5.3](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-webflux/spring-webflux-5.3)
+to learn more about the OpenTelemetry WebClientFilter.
 
 ##### Example Trace - WebClient Span
 
@@ -366,12 +377,14 @@ OpenTelemetry WebClientFilter.
 
 ## Other Configurations
 
-Instead of using the OpenTelemetry Spring starter, you can use the OpenTelemetry autoconfiguration features with an annotation or Zipkin exporters.
-
+Instead of using the OpenTelemetry Spring starter, you can use the OpenTelemetry
+autoconfiguration features with an annotation or Zipkin exporters.
 
 ### Spring Autoconfiguration
 
-Auto-configuration is natively supported by Springboot applications. To enable these features in "vanilla" use `@EnableOpenTelemetry` to complete a component scan of this package.
+Auto-configuration is natively supported by Springboot applications. To enable
+these features in "vanilla" use `@EnableOpenTelemetry` to complete a component
+scan of this package.
 
 ```java
 import io.opentelemetry.instrumentation.spring.autoconfigure.EnableOpenTelemetry;
@@ -384,10 +397,21 @@ public class OpenTelemetryConfig {}
 
 ### OpenTelemetry Zipkin Exporter Starter
 
-OpenTelemetry Zipkin Exporter Starter is a starter package that includes the opentelemetry-api, opentelemetry-sdk, opentelemetry-extension-annotations, opentelmetry-logging-exporter, opentelemetry-spring-boot-autoconfigurations and spring framework starters required to setup distributed tracing. It also provides the [opentelemetry-exporters-zipkin](https://github.com/open-telemetry/opentelemetry-java/tree/main/exporters/zipkin) artifact and corresponding exporter auto-configuration. Check out [opentelemetry-spring-boot-autoconfigure](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/README.md#features) for the list of supported libraries and features.
+OpenTelemetry Zipkin Exporter Starter is a starter package that includes the
+opentelemetry-api, opentelemetry-sdk, opentelemetry-extension-annotations,
+opentelmetry-logging-exporter, opentelemetry-spring-boot-autoconfigurations and
+spring framework starters required to setup distributed tracing. It also
+provides the
+[opentelemetry-exporters-zipkin](https://github.com/open-telemetry/opentelemetry-java/tree/main/exporters/zipkin)
+artifact and corresponding exporter auto-configuration. Check out
+[opentelemetry-spring-boot-autoconfigure](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/README.md#features)
+for the list of supported libraries and features.
 
-If an exporter is present in the classpath during runtime and a spring bean of the exporter is missing from the spring application context. An exporter bean is initialized and added to a simple span processor in the active tracer provider. Check out the implementation [here](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/OpenTelemetryAutoConfiguration.java).
-
+If an exporter is present in the classpath during runtime and a spring bean of
+the exporter is missing from the spring application context. An exporter bean is
+initialized and added to a simple span processor in the active tracer provider.
+Check out the implementation
+[here](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/OpenTelemetryAutoConfiguration.java).
 
 {{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
 
@@ -413,11 +437,9 @@ dependencies {
 
 #### Configurations
 
-| Property                      | Default Value                        | ConditionalOnClass |
-|-------------------------------|--------------------------------------|--------------------|
-| otel.exporter.zipkin.enabled  | `true`                               | ZipkinSpanExporter |
-
-
+| Property                     | Default Value | ConditionalOnClass |
+| ---------------------------- | ------------- | ------------------ |
+| otel.exporter.zipkin.enabled | `true`        | ZipkinSpanExporter |
 
 ### JDBC Instrumentation
 
@@ -528,18 +550,18 @@ instrumentation libraries.
 
 ### Instrumentation Annotations
 
-This feature uses spring-aop to wrap methods annotated with `@WithSpan` in a span. The arguments
-to the method can be captured as attributed on the created span by annotating the method
-parameters with `@SpanAttribute`.
+This feature uses spring-aop to wrap methods annotated with `@WithSpan` in a
+span. The arguments to the method can be captured as attributed on the created
+span by annotating the method parameters with `@SpanAttribute`.
 
-Note - This annotation can only be applied to bean methods managed by the spring application
-context. Check out [spring-aop](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#aop)
+Note - This annotation can only be applied to bean methods managed by the spring
+application context. Check out
+[spring-aop](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#aop)
 to learn more about aspect weaving in spring.
 
-
-| Feature               | Property                                    | Default Value | ConditionalOnClass        |
-|-----------------------|---------------------------------------------|---------------|---------------------------|
-| @WithSpan             | otel.instrumentation.annotations.enabled    | `true`        | WithSpan, Aspect          |
+| Feature   | Property                                 | Default Value | ConditionalOnClass |
+| --------- | ---------------------------------------- | ------------- | ------------------ |
+| @WithSpan | otel.instrumentation.annotations.enabled | `true`        | WithSpan, Aspect   |
 
 #### Dependency
 
@@ -671,9 +693,7 @@ public class TracedClass {
 ]
 ```
 
-
 ### Other Instrumentation
 
 You can configure other instrumentations with
 [OpenTelemetry instrumentations libraries](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks).
-
