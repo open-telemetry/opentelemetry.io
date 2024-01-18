@@ -19,10 +19,9 @@ for many common Java frameworks. Most are turned on by default. If you need to
 turn off certain instrumentation libraries, you can
 [suppress them](../automatic/agent-config/#suppressing-specific-auto-instrumentation).
 
-If you use [manual instrumentation](../instrumentation) for your code, you can
-leverage some instrumentation libraries for your dependencies standalone. To
-find out which standalone instrumentation libraries are available, take a look
-at
+If you use [code-based instrumentation](../instrumentation), you can leverage
+some instrumentation libraries for your dependencies standalone. To find out
+which standalone instrumentation libraries are available, take a look at
 [this list](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks).
 Follow the instructions of each instrumentation library to set them up.
 
@@ -32,8 +31,8 @@ The following example instruments an HTTP client application using library
 instrumentation which calls an HTTP server.
 
 You can use the dice example app as HTTP server from
-[Getting Started](/docs/instrumentation/java/getting-started/) or you can create
-your own HTTP server.
+[Getting Started](/docs/languages/java/getting-started/) or you can create your
+own HTTP server.
 
 ### Dependencies
 
@@ -149,8 +148,8 @@ public final class SampleHttpClient {
 
 Set the `EXTERNAL_API_ENDPOINT` environment variable to specify the external API
 endpoint. By default, it points to `http://localhost:8080/rolldice`, where
-[example dice app](/docs/instrumentation/java/getting-started/#example-application)
-is running.
+[example dice app](/docs/languages/java/getting-started/#example-application) is
+running.
 
 To check your code, run the app:
 
@@ -179,15 +178,15 @@ For a full list of instrumentation libraries, see
 ## Next steps
 
 After you've set up instrumentation libraries, you might want to add
-[manual instrumentation](/docs/instrumentation/java/manual) to collect custom
-telemetry data.
+[additional instrumentation](/docs/languages/java/instrumentation) to collect
+custom telemetry data.
 
 You might also want to configure an appropriate exporter to
-[export your telemetry data](/docs/instrumentation/java/exporters) to one or
-more telemetry backends.
+[export your telemetry data](/docs/languages/java/exporters) to one or more
+telemetry backends.
 
 You can also check the
-[automatic instrumentation for Java](/docs/instrumentation/java/automatic) for
+[automatic instrumentation for Java](/docs/languages/java/automatic) for
 existing library instrumentations.
 
 [opentelemetry-java](https://github.com/open-telemetry/opentelemetry-java)
