@@ -388,6 +388,6 @@
   distribution: true
   nativeOTLP: true
   url: 'https://www.alibabacloud.com/help/en/arms/tracing-analysis/get-started-with-tracing-analysis'
-  contact: ''
+  contact: 'opensource@alibaba-inc.com'
   oss: false
   commercial: true
