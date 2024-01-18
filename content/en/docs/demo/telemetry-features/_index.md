@@ -1,7 +1,7 @@
 ---
 title: Telemetry Features
 linkTitle: Telemetry Features
-aliases: [demo_features]
+aliases: [demo_features, features]
 ---
 
 ## OpenTelemetry
@@ -25,8 +25,8 @@ aliases: [demo_features]
   Grafana.
 - **[Jaeger](https://www.jaegertracing.io/)**: all generated traces are being
   sent to Jaeger.
-- **[OpenSearch](https://opensearch.org/)**: all generated logs are sent to
-  DataPrepper. OpenSearch will be used to centralize logging data from services.
+- **[OpenSearch](https://opensearch.org/)**: all generated logs are sent to Data
+  Prepper. OpenSearch will be used to centralize logging data from services.
 - **[Prometheus](https://prometheus.io/)**: all generated metrics and exemplars
   are scraped by Prometheus.
 
