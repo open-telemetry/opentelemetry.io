@@ -413,17 +413,12 @@ env \
 OTEL_SERVICE_NAME=dice-server \
 OTEL_TRACES_EXPORTER=logging \
 OTEL_METRICS_EXPORTER=logging \
-OTEL_METRIC_EXPORT_INTERVAL=5000 \
 OTEL_LOGS_EXPORTER=logging \
 java -jar ./build/libs/java-simple.jar
 ```
 
 This basic setup has no effect on your app yet. You need to add code for
 [traces](#traces), [metrics](#metrics), and/or [logs](#logs).
-
-(`OTEL_METRIC_EXPORT_INTERVAL=5000` instructs the metric exporter to output
-every 5 second. If this gets too verbose, adjust the value or remove it to
-the default of 60 seconds.)
 
 #### Manual Configuration
 
@@ -1544,6 +1539,11 @@ The traces, metrics or logs exporters can be set via the `OTEL_TRACES_EXPORTER`,
 example `OTEL_TRACES_EXPORTER=jaeger` configures your application to use the
 Jaeger exporter. The corresponding Jaeger exporter library has to be provided in
 the classpath of the application as well.
+
+If you use `console` (or `logging`) exporter for metrics, consider setting
+`OTEL_METRIC_EXPORT_INTERVAL` as well to a small value like `5000`
+(milliseconds) to test your metrics are properly recorded. Once you confirmed it
+works, you can remove it to default to 60 seconds.
 
 It's also possible to set up the propagators via the `OTEL_PROPAGATORS`
 environment variable, like for example using the `tracecontext` value to use
