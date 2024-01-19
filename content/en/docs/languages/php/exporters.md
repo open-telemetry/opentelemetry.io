@@ -53,7 +53,7 @@ use OpenTelemetry\SDK\Trace\TracerProvider;
 $transport = (new GrpcTransportFactory())->create('http://jaeger:4317' . OtlpUtil::method(Signals::TRACE));
 $exporter = new SpanExporter($transport);
 
-$tracerProvider =  new TracerProvider(
+$tracerProvider = new TracerProvider(
     new SimpleSpanProcessor($exporter)
 );
 ```
