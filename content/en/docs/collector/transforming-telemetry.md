@@ -191,10 +191,14 @@ Example:
 # Ok, Error and Unset as per
 # https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#set-status
 # The description field allows to set a human-readable message for errors.
-span/set_status:
+#Example below sets status to success only when attribute http.status_code is equal to 400
+span/set_status_ok:
+  include:
+    attributes:
+      - key: http.status_code
+        value: 400
   status:
-    code: Error
-    description: 'some error description'
+    code: 'Ok'
 ```
 
 The span processor also allows to modify the span name based on its attributes
