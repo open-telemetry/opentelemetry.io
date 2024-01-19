@@ -1,4 +1,4 @@
-# cSpell:ignore Coralogix Cribl ITRS Kloud Logz Crowdstrike Humio Lumigo observ Teletrace Uptrace Greptime KloudMate qryn ClickHouse Tracetest
+# cSpell:ignore Coralogix Cribl ITRS Kloud Logz Crowdstrike Humio Lumigo observ Teletrace Uptrace Greptime KloudMate qryn ClickHouse Tracetest opensource
 - name: AppDynamics (Cisco)
   distribution: true
   nativeOTLP: true
@@ -385,7 +385,7 @@
   oss: true
   commercial: true
 - name: Alibaba Cloud
-  distribution: true
+  distribution: false
   nativeOTLP: true
   url: 'https://www.alibabacloud.com/help/en/arms/tracing-analysis/get-started-with-tracing-analysis'
   contact: 'opensource@alibaba-inc.com'
