@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# To update all files in the registry run
+# for i in ../data/registry/*; do ./update-registry-versions.sh "$i"; done
+
 # Check if a file is provided
 if [ "$#" -ne 1 ]; then
     echo "Usage: $0 <yaml_file>"
@@ -54,7 +57,7 @@ registry=$(yq eval '.package.registry' "$yaml_file")
 current_version=$(yq eval '.package.version' "$yaml_file")
 
 if [ -z "$name" ] || [ -z "$registry" ]; then
-    echo "Package name and/or registry are missing in the YAML file."
+    echo "${yaml_file}: Package name and/or registry are missing in the YAML file."
     exit 1
 fi
 
@@ -62,21 +65,21 @@ fi
 latest_version=$(get_latest_version "$name" "$registry")
 
 if [ "$latest_version" == "Registry not supported." ]; then
-    echo "Registry not supported.";
+    echo "${yaml_file}: Registry not supported.";
     exit 0
 fi
 
 # If version field is missing, populate it with the latest version
 if [ -z "$current_version" ]; then
     yq eval -i ".package.version = \"$latest_version\"" $yaml_file
-    echo "Version field was missing. Populated with the latest version: $latest_version"
+    echo "${yaml_file}: Version field was missing. Populated with the latest version: $latest_version"
     exit 0
 fi
 
 # Compare and update if necessary
 if [ "$latest_version" != "$current_version" ]; then
     yq eval -i ".package.version = \"$latest_version\"" "$yaml_file"
-    echo "Updated version from $current_version to $latest_version in $yaml_file"
+    echo "${yaml_file}: Updated version from $current_version to $latest_version in $yaml_file"
 else
-    echo "Version is already up to date."
+    echo "${yaml_file}: Version is already up to date."
 fi

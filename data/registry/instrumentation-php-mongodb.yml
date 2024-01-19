@@ -14,3 +14,7 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/MongoDB
 createdAt: 2023-08-08
+package:
+  registry: packagist
+  name: open-telemetry/opentelemetry-auto-mongodb
+  version: 0.0.4

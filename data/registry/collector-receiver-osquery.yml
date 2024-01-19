@@ -1,0 +1,21 @@
+# cSpell:ignore osqueryreceiver osquery
+title: osquery Receiver
+registryType: receiver
+language: collector
+tags:
+  - osquery
+  - receiver
+  - collector
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/osqueryreceiver
+license: Apache 2.0
+description:
+  The osquery receiver runs queries run on an [osquery](https://osquery.io/)'s
+  daemon on a schedule and converts the output to logs.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-01-19
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/osqueryreceiver
+  version: v0.92.0
