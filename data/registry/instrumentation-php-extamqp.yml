@@ -1,4 +1,4 @@
-# cSpell:ignore ext-amqp
+# cSpell:ignore ext-amqp extamqp
 title: OpenTelemetry ext-amqp auto-instrumentation
 registryType: instrumentation
 language: php
@@ -7,11 +7,11 @@ tags:
   - instrumentation
   - php
 urls:
-  - repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/ExtAmqp
+  repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/ExtAmqp
 license: Apache 2.0
 description: Instrumentation Library for ext-amqp
 authors:
-  - OpenTelemetry Authors
+  - name: OpenTelemetry Authors
 createdAt: 2024-01-19
 package:
   registry: packagist

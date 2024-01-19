@@ -217,11 +217,11 @@ tags:
     - ${registryType}
     - ${language}
 urls:
-    - repo: ${repo}
+    repo: ${repo}
 license: Apache 2.0
 description: ${description}
 authors:
-    - OpenTelemetry Authors
+    - name: OpenTelemetry Authors
 createdAt: ${new Date().toISOString().split('T')[0]}
 `;
 }
