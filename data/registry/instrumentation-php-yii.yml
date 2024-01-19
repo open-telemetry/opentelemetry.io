@@ -11,3 +11,7 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/Yii
 createdAt: 2022-12-14
+package:
+  registry: packagist
+  name: open-telemetry/opentelemetry-auto-yii
+  version: 0.0.1
