@@ -45,6 +45,9 @@ get_latest_version() {
         hex)
             curl -s "https://hex.pm/api/packages/$package_name" | jq -r '.releases | max_by(.inserted_at) | .version'
             ;;
+        crates)
+            curl -s "https://crates.io/api/v1/crates/$package_name" | jq -r '.crate | .newest_version'
+            ;;
         *)
             echo "Registry not supported."
             ;;
