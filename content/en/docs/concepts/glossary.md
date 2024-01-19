@@ -355,7 +355,7 @@ on web pages when requested. See [more][zpages].
 [metric]: /docs/concepts/signals/metrics/
 [opencensus]: https://opencensus.io
 [opentracing]: https://opentracing.io
-[propagators]: /docs/instrumentation/go/manual/#propagators-and-context
+[propagators]: /docs/languages/go/instrumentation/#propagators-and-context
 [proto]: https://github.com/open-telemetry/opentelemetry-proto
 [receiver]: /docs/collector/configuration/#receivers
 [rest]: https://en.wikipedia.org/wiki/Representational_state_transfer

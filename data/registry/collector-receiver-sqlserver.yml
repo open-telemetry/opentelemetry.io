@@ -1,16 +1,21 @@
-# cSpell:ignore sqlserver
+# cSpell:ignore sqlserver sqlserverreceiver
 title: Microsoft SQL Server Receiver
 registryType: receiver
-isThirdParty: false
 language: collector
 tags:
   - go
   - receiver
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/sqlserverreceiver
 license: Apache 2.0
 description:
   The sqlserver receiver grabs metrics about a Microsoft SQL Server instance
   using the Windows Performance Counters.
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/sqlserverreceiver
+createdAt: 2022-10-25
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/sqlserverreceiver
+  version: v0.92.0

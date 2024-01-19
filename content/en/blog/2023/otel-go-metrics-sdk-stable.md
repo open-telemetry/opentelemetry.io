@@ -12,6 +12,5 @@ of OpenTelemetry Go. Project stability guarantees now apply to the
 [go.opentelemetry.io/otel/sdk/metric](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric)
 module.
 
-To learn more check the
-[getting started](/docs/instrumentation/go/getting-started) and
-[manual metrics](/docs/instrumentation/go/manual#metrics) documentation.
+To learn more check the [getting started](/docs/languages/go/getting-started)
+and [manual metrics](/docs/languages/go/instrumentation#metrics) documentation.

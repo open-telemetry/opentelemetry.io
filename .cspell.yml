@@ -46,7 +46,6 @@ words:
   - currencyservice
   - daemonset
   - datadog
-  - dataprepper
   - declarators
   - discoverability
   - dotnet
@@ -108,6 +107,7 @@ words:
   - otep
   - otlp
   - overridable
+  - packagist
   - Paixão
   - parentbased
   - Pavol
@@ -116,7 +116,7 @@ words:
   - postgresql
   - Pranay
   - Prateek
-  - Prepper
+  - prepper
   - Println
   - productcatalogservice
   - prometheus

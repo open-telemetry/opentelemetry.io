@@ -58,6 +58,7 @@
   url: https://nextjs.org/
   docsUrl: https://nextjs.org/docs/app/building-your-application/optimizing/open-telemetry
   components: [JavaScript]
+  native: true # Next.js provides a native integration of the OpenTelemetry API
   oss: true
 - name: ThousandEyes (Cisco)
   url: https://www.thousandeyes.com/
@@ -68,6 +69,7 @@
   url: https://cerbos.dev/
   docsUrl: https://github.com/cerbos/cerbos-sdk-javascript/tree/main/packages/opentelemetry
   components: [JavaScript]
+  native: false # Cerbos provides a first party instrumentation library
   oss: true
 - name: Tyk API Gateway
   url: https://tyk.io

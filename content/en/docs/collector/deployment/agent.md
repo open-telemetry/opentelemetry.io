@@ -123,10 +123,10 @@ Cons:
 - Scalability (human and load-wise)
 - Inflexible
 
-[instrumentation]: /docs/instrumentation/
+[instrumentation]: /docs/languages/
 [otlp]: /docs/specs/otel/protocol/
 [collector]: /docs/collector/
-[instrument-java-metrics]: /docs/instrumentation/java/manual/#metrics
+[instrument-java-metrics]: /docs/languages/java/instrumentation/#metrics
 [otlp-exporter]: /docs/specs/otel/protocol/exporter/
 [java-otlp-example]:
   https://github.com/open-telemetry/opentelemetry-java-docs/tree/main/otlp

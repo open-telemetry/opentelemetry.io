@@ -1,7 +1,6 @@
 # cSpell:ignore Ladd
 title: NautilusTelemetry
 registryType: instrumentation
-isThirdParty: true
 language: swift
 tags:
   - swift
@@ -10,7 +9,6 @@ tags:
   - macOS
   - tvOS
   - watchOS
-repo: https://github.com/eBay/NautilusTelemetry
 license: MIT
 description:
   NautilusTelemetry is an iOS-oriented Swift package to collect OpenTelemetry
@@ -18,6 +16,9 @@ description:
   gRPC is not currently supported in order to keep the package size as small as
   possible. Not all features of OpenTelemetry are supported, and this package
   should be considered experimental.
-
-authors: Ladd Van Tol, <levantol@ebay.com>
-otVersion: latest
+authors:
+  - name: Ladd Van Tol,
+    email: levantol@ebay.com
+urls:
+  repo: https://github.com/eBay/NautilusTelemetry
+createdAt: 2022-06-17

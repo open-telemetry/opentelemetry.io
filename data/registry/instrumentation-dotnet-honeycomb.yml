@@ -1,13 +1,15 @@
 title: Honeycomb OpenTelemetry Distribution for .NET
 registryType: instrumentation
-isThirdParty: true
 language: dotnet
 tags:
   - dotnet
   - c#
   - .net
   - instrumentation
-repo: https://github.com/honeycombio/honeycomb-opentelemetry-dotnet
 license: Apache 2.0
 description: Honeycomb's distribution of OpenTelemetry for .NET
-authors: Honeycomb, Hound Technology, Inc
+authors:
+  - name: Honeycomb, Hound Technology, Inc
+urls:
+  repo: https://github.com/honeycombio/honeycomb-opentelemetry-dotnet
+createdAt: 2021-09-24
