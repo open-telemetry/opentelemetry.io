@@ -298,7 +298,7 @@ Each span has a status. The three possible values are:
 The default value is `Unset`. A span status that is `Unset` means that the
 operation it tracked successfully completed without an error.
 
-When a span status is `Error`, then that means some error ocurred in the
+When a span status is `Error`, then that means some error occurred in the
 operation it tracks. For example, this could be due to an HTTP 500 error on a
 server handling a request.
 
