@@ -1,16 +1,17 @@
 # cspell:ignore otellambda
 title: aws-lambda-go Instrumentation
 registryType: instrumentation
-isThirdParty: false
 language: go
 tags:
   - lambda
   - aws
   - instrumentation
   - go
-repo: https://go.opentelemetry.io/contrib/instrumentation/github.com/aws/aws-lambda-go/otellambda
 license: Apache 2.0
 description:
   Package otellambda instruments the github.com/aws/aws-lambda-go package.
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://go.opentelemetry.io/contrib/instrumentation/github.com/aws/aws-lambda-go/otellambda
+createdAt: 2022-12-07

@@ -80,7 +80,7 @@ go auto-instrumentation version correctly. Components that were updated include
 the OpenTelemetry Collector, OpenTelemetry Contrib, Java auto-instrumentation,
 .NET auto-instrumentation, Node.js, Python, Go, and Apache HTTP Server.
 
-##### [Java](/docs/instrumentation/java/)
+##### [Java](/docs/languages/java/)
 
 [Version 1.27](https://github.com/open-telemetry/opentelemetry-java/releases/tag/v1.27.0)
 has made the Log Bridge API and SDK stable. Important changes include merging
@@ -109,12 +109,12 @@ has been released, requiring some migrations to be performed.
 - Bugfixes related to Logback MDC instrumentation, Kafka metrics reporter, Jetty
   context leak, filtering scalar Mono/Flux instances, and others.
 
-#### [JavaScript](/docs/instrumentation/js/)
+#### [JavaScript](/docs/languages/js/)
 
 [Version 1.14](https://github.com/open-telemetry/opentelemetry-js/releases/tag/v1.14.0)
 includes an optional `forceFlush` method to the `SpanExporter` interface.
 
-#### [.NET](/docs/instrumentation/net/)
+#### [.NET](/docs/languages/net/)
 
 [Version 1.5.1](https://github.com/open-telemetry/opentelemetry-dotnet/releases/tag/core-1.5.1)
 has been released, as well as 1.5.0. 1.5.1 is a fix for issues introduced in

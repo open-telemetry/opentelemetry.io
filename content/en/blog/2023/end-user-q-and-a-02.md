@@ -135,9 +135,9 @@ experience OpenTelemetry in action:
 - Seeing structured logs, being able to correlate traces and logs, and emitting
   metrics.
 - Experiencing the benefits of
-  [context propagation](/docs/instrumentation/js/propagation/) – i.e. spans and
-  traces interacting across different operations to provide an end-to-end view
-  of a service call.
+  [context propagation](/docs/languages/js/propagation/) – i.e. spans and traces
+  interacting across different operations to provide an end-to-end view of a
+  service call.
 
 ### How did you promote OpenTelemetry across the organization?
 

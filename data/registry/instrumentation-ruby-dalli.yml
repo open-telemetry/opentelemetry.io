@@ -1,13 +1,14 @@
 # cSpell:ignore Dalli
 title: Dalli Instrumentation
 registryType: instrumentation
-isThirdParty: false
 language: ruby
 tags:
   - ruby
   - instrumentation
-repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/dalli
 license: Apache 2.0
 description: Dalli instrumentation for Ruby.
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/dalli
+createdAt: 2020-11-09

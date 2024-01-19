@@ -402,7 +402,7 @@ the [#otel-user-research](https://cloud-native.slack.com/archives/C01RT3MSWGZ)
 Slack channel!
 
 She will also be presenting at
-[OTel in Practice on June 8th](https://shorturl.at/bqtxO).
+[OTel in Practice on June 8th](https://www.meetup.com/opentelemetry-in-practice-meetup-group/).
 
 ## Final Thoughts
 

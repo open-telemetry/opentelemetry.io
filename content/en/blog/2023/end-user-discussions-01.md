@@ -159,7 +159,7 @@ find a channel for your language, feel free to start a discussion on the
 [OpenTelemetry CNCF Slack channel](https://cloud-native.slack.com/archives/CJFCJHG4Q),
 or on [GitHub](https://github.com/open-telemetry/community), like with
 [this issue for OTel for Perl](https://github.com/open-telemetry/community/issues/828).
-Please also check out [this page](/docs/instrumentation/other/) for more info.
+Please also check out [this page](/docs/languages/other/) for more info.
 
 #### 2- Python instrumentation
 

@@ -420,9 +420,8 @@ extend Yoda's code to do the following:
    [transform or attributes processors](/docs/collector/transforming-telemetry/).
 1. Add [tracing](/docs/concepts/signals/traces/) support by emitting spans,
    where it makes sense.
-1. Add an Observability backend such as OpenSearch (along with [Data
-   Prepper][dataprepper]) to the setup, allowing to ingest spans and logs in
-   OTLP format.
+1. Add an Observability backend such as OpenSearch (along with [Data Prepper])
+   to the setup, allowing to ingest spans and logs in OTLP format.
 1. Once you have traces and logs ingested in a backend, try to correlate these
    two telemetry signal types in the backend along with a frontend such as
    Grafana.
@@ -466,14 +465,14 @@ check out the following resources:
 [otlp]: /docs/specs/otlp/
 [otelbin-yoda]:
   https://www.otelbin.io/?#config=receivers%3A*N__otlp%3A*N____protocols%3A*N______grpc%3A*Nexporters%3A*N__logging%3A*N____verbosity%3A_detailed*Nservice%3A*N__pipelines%3A*N____logs%3A*N______receivers%3A_%5B_otlp_%5D*N______exporters%3A_%5B_logging_%5D%7E
-[dataprepper]: https://opensearch.org/docs/latest/data-prepper/index/
+[data prepper]: https://opensearch.org/docs/latest/data-prepper/index/
 [svrnm]: https://github.com/svrnm
 [hossko]: https://github.com/hossko
 [otel-logs-spec]: /docs/specs/otel/logs/
 [otel-logs-events]: /docs/specs/otel/logs/event-api/
 [otel-semconv-logs]: /docs/specs/semconv/general/logs/
 [otel-python-repo]: https://github.com/open-telemetry/opentelemetry-python
-[otel-python]: /docs/instrumentation/python/
+[otel-python]: /docs/languages/python/
 [py-docs-logs]:
   https://opentelemetry-python-contrib.readthedocs.io/en/latest/instrumentation/logging/logging.html
 [py-docs-logs-example]:

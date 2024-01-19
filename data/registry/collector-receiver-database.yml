@@ -1,15 +1,17 @@
 # cSpell:ignore ODCD
 title: OTel based Data Collector for Databases (ODCD)
 registryType: utilities
-isThirdParty: true
 language: java
 tags:
   - receiver
   - database
   - instana
-repo: https://github.com/instana/otel-database-dc
 license: MIT
 description:
   A tool or template to generate OpenTelemetry metrics for various databases.
-authors: 'Rui Liu (https://github.com/liurui-1)'
-otVersion: latest
+authors:
+  - name: Rui Liu
+    url: https://github.com/liurui-1
+urls:
+  repo: https://github.com/instana/otel-database-dc
+createdAt: 2023-11-13
