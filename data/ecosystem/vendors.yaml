@@ -1,4 +1,4 @@
-# cSpell:ignore Coralogix Cribl ITRS Kloud Logz Crowdstrike Humio Lumigo observ Teletrace Uptrace Greptime KloudMate qryn ClickHouse Tracetest opensource
+# cSpell:ignore Coralogix Cribl ITRS Kloud Logz Crowdstrike Humio Lumigo observ Uptrace Greptime KloudMate qryn ClickHouse Tracetest opensource
 - name: AppDynamics (Cisco)
   distribution: true
   nativeOTLP: true
@@ -300,13 +300,6 @@
   contact: ''
   oss: false
   commercial: true
-- name: Teletrace
-  distribution: true
-  nativeOTLP: true
-  url: 'https://docs.teletrace.io/'
-  contact: ''
-  oss: true
-  commercial: false
 - name: Traceloop
   distribution: false
   nativeOTLP: true
