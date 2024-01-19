@@ -3223,6 +3223,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-11-01T21:52:02.990981-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-java/": {
+    "StatusCode": 200,
+    "LastSeen": "2023-12-12T15:15:13.158775-08:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-java/discussions": {
     "StatusCode": 200,
     "LastSeen": "2023-12-08T11:19:15.572149+01:00"
@@ -5046,6 +5050,10 @@
   "https://open-telemetry.github.io/opentelemetry-java/benchmarks/": {
     "StatusCode": 206,
     "LastSeen": "2023-11-04T11:32:21.536067-04:00"
+  },
+  "https://open-telemetry.github.io/opentelemetry-java/benchmarks/data.js": {
+    "StatusCode": 206,
+    "LastSeen": "2023-12-12T15:15:13.969193-08:00"
   },
   "https://open-telemetry.github.io/opentelemetry-js": {
     "StatusCode": 206,
