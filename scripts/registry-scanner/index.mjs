@@ -211,17 +211,18 @@ function createYaml(
 ) {
   return `title: ${title}
 registryType: ${registryType}
-isThirdParty: false
 language: ${language}
 tags:
     - ${shortName}
     - ${registryType}
     - ${language}
-repo: ${repo}
+urls:
+    - repo: ${repo}
 license: Apache 2.0
 description: ${description}
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+    - OpenTelemetry Authors
+createdAt: ${new Date().toISOString().split('T')[0]}
 `;
 }
 

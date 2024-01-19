@@ -1,0 +1,18 @@
+title: OpenTelemetry Guzzle auto-instrumentation
+registryType: instrumentation
+language: php
+tags:
+  - guzzle
+  - instrumentation
+  - php
+urls:
+  - repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/Guzzle
+license: Apache 2.0
+description: This is a read-only subtree split of https://github.com/open-telemetry/opentelemetry-php-contrib.
+authors:
+  - OpenTelemetry Authors
+createdAt: 2024-01-19
+package:
+  registry: packagist
+  name: open-telemetry/opentelemetry-auto-guzzle
+  version: 0.0.1

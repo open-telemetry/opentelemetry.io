@@ -1,0 +1,18 @@
+title: OpenTelemetry ext-amqp auto-instrumentation
+registryType: instrumentation
+language: php
+tags:
+  - extamqp
+  - instrumentation
+  - php
+urls:
+  - repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/ExtAmqp
+license: Apache 2.0
+description: This is a read-only subtree split of https://github.com/open-telemetry/opentelemetry-php-contrib.
+authors:
+  - OpenTelemetry Authors
+createdAt: 2024-01-19
+package:
+  registry: packagist
+  name: open-telemetry/opentelemetry-auto-ext-amqp
+  version: 0.0.2

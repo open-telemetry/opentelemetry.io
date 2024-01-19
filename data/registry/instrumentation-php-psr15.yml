@@ -12,3 +12,7 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/Psr15
 createdAt: 2022-12-14
+package:
+  registry: packagist
+  name: open-telemetry/opentelemetry-auto-psr15
+  version: 1.0.3

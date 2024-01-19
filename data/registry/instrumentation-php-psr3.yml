@@ -6,11 +6,13 @@ tags:
   - instrumentation
   - php
 license: Apache 2.0
-description:
-  Auto-instrumentation hooks are registered via composer, and automatically
-  inject trace ID and span ID into log message context of any PSR-3 logger.
+description: Auto-instrumentation hooks are registered via composer, and automatically inject trace ID and span ID into log message context of any PSR-3 logger.
 authors:
   - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/Psr3
 createdAt: 2023-07-10
+package:
+  registry: packagist
+  name: open-telemetry/opentelemetry-auto-psr3
+  version: 0.0.5
