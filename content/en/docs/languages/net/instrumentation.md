@@ -7,6 +7,20 @@ description: Instrumentation for OpenTelemetry .NET
 
 {{% docs/languages/manual-intro %}}
 
+{{% alert title="Note" color="info" %}}
+
+On this page you will learn how you can add traces, metrics and logs to your
+code _manually_. But, you are not limited to only use one kind of
+instrumentation: use [automatic instrumentation](/docs/languages/net/automatic/)
+to get started and then enrich your code with manual instrumentation as needed.
+
+Also, for libraries your code depends on, you don't have to write
+instrumentation code yourself, since they might come with OpenTelemetry built-in
+_natively_ or you can make use of
+[instrumentation libraries](/docs/languages/net/libraries/).
+
+{{% /alert %}}
+
 ## A note on terminology
 
 .NET is different from other languages/runtimes that support OpenTelemetry. The
@@ -21,6 +35,119 @@ are covered here as well as the `System.Diagnostics` API.
 
 If you prefer to use OpenTelemetry APIs instead of `System.Diagnostics` APIs,
 you can refer to the [OpenTelemetry API Shim docs for tracing](../shim).
+
+## Example app preparation {#example-app}
+
+This page uses a modified version of the example app from
+[Getting Started](/docs/languages/net/getting-started/) to help you learn
+about manual instrumentation.
+
+You don't have to use the example app: if you want to instrument your own app or
+library, follow the instructions here to adapt the process to your own code.
+
+### Dependencies {#example-app-dependencies}
+
+// TODO
+
+### Create and launch an HTTP Server
+
+To highlight the difference between instrumenting a _library_ and a standalone
+_app_, split out the dice rolling into a _library file_, which then will be
+imported as a dependency by the _app file_.
+
+Create the _library file_ named `Dice.cs` and add the following code to it:
+
+``````csharp
+/*Dice.cs*/
+namespace otel
+{
+    public class Dice
+    {
+        private int min;
+        private int max;
+
+        public Dice(int min, int max)
+        {
+            this.min = min;
+            this.max = max;
+        }
+
+        public List<int> rollTheDice(int rolls)
+        {
+            List<int> results = new List<int>();
+
+            for (int i = 0; i < rolls; i++)
+            {
+                results.Add(rollOnce());
+            }
+            
+            return results;
+        }
+
+        private int rollOnce()
+        {
+            return Random.Shared.Next(min, max + 1);
+        }
+    }
+}
+``````
+
+Create the _app file_ `DiceController.cs` and add the following code to it:
+
+``````csharp
+using Microsoft.AspNetCore.Mvc;
+using System.Net;
+
+namespace otel
+{
+    public class DiceController : ControllerBase
+    {
+        private ILogger<DiceController> logger;
+
+        public DiceController(ILogger<DiceController> logger)
+        {
+            this.logger = logger;
+        }
+
+        [HttpGet("/rolldice")]
+        public List<int> RollDice(string player, int? rolls)
+        {
+            if(!rolls.HasValue)
+            {
+                logger.LogError("Missing rolls parameter");
+                throw new HttpRequestException("Missing rolls parameter", null, HttpStatusCode.BadRequest);
+            }
+                
+            var result = new Dice(1, 6).rollTheDice(rolls.Value);
+
+            if (string.IsNullOrEmpty(player))
+            {
+                logger.LogInformation("Anonymous player is rolling the dice: {result}", result);
+            }
+            else
+            {
+                logger.LogInformation("{player} is rolling the dice: {result}", player, result);
+            }
+
+            return result;
+        }
+    }
+}
+``````
+
+To ensure that it is working, run the application with the following command and
+open <http://localhost:8080/rolldice?rolls=12> in your web browser:
+
+```sh
+dotnet build
+dotnet run
+```
+
+You should get a list of 12 numbers in your browser window, for example:
+
+```text
+[5,6,5,3,6,1,2,5,4,4,2,4]
+```
 
 ## Traces
 
