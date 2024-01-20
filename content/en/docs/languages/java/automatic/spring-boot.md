@@ -13,8 +13,8 @@ of your needs when instrumenting
 Alternatively, the OpenTelemetry [Spring Boot starter] can help you in the
 following cases:
 
-- Spring Boot Native image applications for which the OpenTelemetry Java
-  agent does not work
+- Spring Boot Native image applications for which the OpenTelemetry Java agent
+  does not work
 - Startup overhead of the OpenTelemetry Java agent exceeds your requirements
 - OpenTelemetry Java agent might not work if your application already uses
   another Java monitoring agent
@@ -154,7 +154,7 @@ Span Exporters.
 #### Exporter Properties
 
 | Feature       | Property                      | Default Value  |
-|---------------|-------------------------------|----------------|
+| ------------- | ----------------------------- | -------------- |
 | OTLP Exporter | `otel.exporter.otlp.endpoint` | localhost:4317 |
 |               | `otel.exporter.otlp.protocol` | http/protobuf  |
 |               | `otel.exporter.otlp.headers`  |                |
@@ -185,7 +185,7 @@ This is the preferred way to enable/disable exporters and takes precedence over
 the properties below.
 
 | Feature               | Property                             | Default Value | ConditionalOnMissingBean                                 |
-|-----------------------|--------------------------------------|---------------|----------------------------------------------------------|
+| --------------------- | ------------------------------------ | ------------- | -------------------------------------------------------- |
 | OTLP Exporter         | `otel.exporter.otlp.enabled`         | true          | -                                                        |
 | OTLP Span Exporter    | `otel.exporter.otlp.traces.enabled`  | true          | `OtlpHttpSpanExporter`, `OtlpGrpcSpanExporter`           |
 | OTLP Metrics Exporter | `otel.exporter.otlp.metrics.enabled` | true          | `OtlpHttpMetricExporter`, `OtlpGrpcMetricExporter`       |
@@ -195,13 +195,13 @@ the properties below.
 ### Tracer Properties
 
 | Feature | Property                          | Default Value |
-|---------|-----------------------------------|---------------|
+| ------- | --------------------------------- | ------------- |
 | Tracer  | `otel.traces.sampler.probability` | 1.0           |
 
 ### Resource Properties
 
 | Feature  | Property                                                                | Default Value |
-|----------|-------------------------------------------------------------------------|---------------|
+| -------- | ----------------------------------------------------------------------- | ------------- |
 | Resource | `otel.springboot.resource.enabled`                                      | true          |
 |          | `otel.resource.attributes` (old: `otel.springboot.resource.attributes`) | empty map     |
 
@@ -231,8 +231,8 @@ described in the
 export OTEL_RESOURCE_ATTRIBUTES="key1=value1,key2=value2"
 ```
 
-The service name is determined by the following precedence rules, in accordance with
-the OpenTelemetry
+The service name is determined by the following precedence rules, in accordance
+with the OpenTelemetry
 [specification](/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_service_name):
 
 1. `otel.service.name` spring property or `OTEL_SERVICE_NAME` environment
@@ -254,7 +254,7 @@ Oriented Programming, dependency injection, and bean post-processing to trace
 spring applications.
 
 | Feature        | Property                                      | Default Value | ConditionalOnClass     |
-|----------------|-----------------------------------------------|---------------|------------------------|
+| -------------- | --------------------------------------------- | ------------- | ---------------------- |
 | spring-web     | `otel.instrumentation.spring-webmvc.enabled`  | true          | `RestTemplate`         |
 | spring-webmvc  | `otel.instrumentation.spring-web.enabled`     | true          | `OncePerRequestFilter` |
 | spring-webflux | `otel.instrumentation.spring-webflux.enabled` | true          | `WebClient`            |
@@ -438,7 +438,7 @@ dependencies {
 ##### Configurations
 
 | Property                       | Default Value | ConditionalOnClass   |
-|--------------------------------|---------------|----------------------|
+| ------------------------------ | ------------- | -------------------- |
 | `otel.exporter.zipkin.enabled` | true          | `ZipkinSpanExporter` |
 
 #### JDBC Instrumentation
@@ -560,7 +560,7 @@ application context. Check out
 to learn more about aspect weaving in spring.
 
 | Feature     | Property                                   | Default Value | ConditionalOnClass |
-|-------------|--------------------------------------------|---------------|--------------------|
+| ----------- | ------------------------------------------ | ------------- | ------------------ |
 | `@WithSpan` | `otel.instrumentation.annotations.enabled` | true          | WithSpan, Aspect   |
 
 ##### Dependency
