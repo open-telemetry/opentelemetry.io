@@ -57,7 +57,7 @@ imported as a dependency by the _app file_.
 
 Create the _library file_ named `Dice.cs` and add the following code to it:
 
-``````csharp
+```csharp
 /*Dice.cs*/
 namespace otel
 {
@@ -90,11 +90,11 @@ namespace otel
         }
     }
 }
-``````
+```
 
 Create the _app file_ `DiceController.cs` and add the following code to it:
 
-``````csharp
+```csharp
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -133,11 +133,11 @@ namespace otel
         }
     }
 }
-``````
+```
 
 Replace the program.cs content with the following code:
 
-``````csharp
+```csharp
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
@@ -147,7 +147,7 @@ var app = builder.Build();
 app.MapControllers();
 
 app.Run();
-``````
+```
 
 To ensure that it is working, run the application with the following command and
 open <http://localhost:8080/rolldice?rolls=12> in your web browser:
@@ -186,7 +186,7 @@ implementations will be provided to any library that acquires a tracer or meter 
 
 To intialize the sdks, replace the program.cs content with the following code: 
 
-``````csharp
+```csharp
 using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
@@ -222,7 +222,7 @@ app.MapControllers();
 
 app.Run();
 
-``````
+```
 
 For debugging and local development purposes, the following example exports
 telemetry to the console. After you have finished setting up manual
