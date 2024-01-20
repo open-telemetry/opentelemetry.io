@@ -12,3 +12,7 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/PDO
 createdAt: 2023-05-22
+package:
+  registry: packagist
+  name: open-telemetry/opentelemetry-auto-pdo
+  version: 0.0.11

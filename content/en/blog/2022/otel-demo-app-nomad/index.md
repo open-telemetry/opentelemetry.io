@@ -38,7 +38,8 @@ Before we move on, I am assuming that you have a basic understanding of:
 
 In order to run the example in this tutorial, you’ll need the following:
 
-- [Docker](https://docker.com) (version 20.10.21 at the time of this writing)
+- [Docker](https://www.docker.com) (version 20.10.21 at the time of this
+  writing)
 - [Vagrant](https://vagrantup.com) (version 2.3.1 at the time of this writing)
 
 ### Tutorial Repositories
