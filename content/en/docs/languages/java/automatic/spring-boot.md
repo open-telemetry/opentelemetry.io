@@ -174,7 +174,7 @@ This is the preferred way to enable/disable exporters and takes precedence over
 the properties below.
 
 | Feature               | Property                             | Default Value | ConditionalOnMissingBean                                 |
-| --------------------- | ------------------------------------ | ------------- | -------------------------------------------------------- |
+|-----------------------|--------------------------------------|---------------|----------------------------------------------------------|
 | OTLP Exporter         | `otel.exporter.otlp.enabled`         | true          | -                                                        |
 | OTLP Span Exporter    | `otel.exporter.otlp.traces.enabled`  | true          | `OtlpHttpSpanExporter`, `OtlpGrpcSpanExporter`           |
 | OTLP Metrics Exporter | `otel.exporter.otlp.metrics.enabled` | true          | `OtlpHttpMetricExporter`, `OtlpGrpcMetricExporter`       |
@@ -184,13 +184,13 @@ the properties below.
 ### Tracer Properties
 
 | Feature | Property                          | Default Value |
-| ------- | --------------------------------- | ------------- |
+|---------|-----------------------------------|---------------|
 | Tracer  | `otel.traces.sampler.probability` | 1.0           |
 
 ### Resource Properties
 
 | Feature  | Property                                                                | Default Value |
-| -------- | ----------------------------------------------------------------------- | ------------- |
+|----------|-------------------------------------------------------------------------|---------------|
 | Resource | `otel.springboot.resource.enabled`                                      | true          |
 |          | `otel.resource.attributes` (old: `otel.springboot.resource.attributes`) | empty map     |
 
@@ -243,7 +243,7 @@ Oriented Programming, dependency injection, and bean post-processing to trace
 spring applications.
 
 | Feature        | Property                                      | Default Value | ConditionalOnClass     |
-| -------------- | --------------------------------------------- | ------------- | ---------------------- |
+|----------------|-----------------------------------------------|---------------|------------------------|
 | spring-web     | `otel.instrumentation.spring-webmvc.enabled`  | true          | `RestTemplate`         |
 | spring-webmvc  | `otel.instrumentation.spring-web.enabled`     | true          | `OncePerRequestFilter` |
 | spring-webflux | `otel.instrumentation.spring-webflux.enabled` | true          | `WebClient`            |
@@ -402,7 +402,7 @@ application context. Check out
 to learn more about aspect weaving in spring.
 
 | Feature     | Property                                   | Default Value | ConditionalOnClass |
-| ----------- | ------------------------------------------ | ------------- | ------------------ |
+|-------------|--------------------------------------------|---------------|--------------------|
 | `@WithSpan` | `otel.instrumentation.annotations.enabled` | true          | WithSpan, Aspect   |
 
 ##### Dependency
@@ -539,5 +539,5 @@ dependencies {
 ##### Configurations
 
 | Property                       | Default Value | ConditionalOnClass   |
-| ------------------------------ | ------------- | -------------------- |
+|--------------------------------|---------------|----------------------|
 | `otel.exporter.zipkin.enabled` | true          | `ZipkinSpanExporter` |
