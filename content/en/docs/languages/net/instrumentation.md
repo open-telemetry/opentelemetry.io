@@ -47,7 +47,7 @@ library, follow the instructions here to adapt the process to your own code.
 
 ### Dependencies {#example-app-dependencies}
 
-// TODO
+- [.NET SDK](https://dotnet.microsoft.com/download/dotnet) 6+
 
 ### Create and launch an HTTP Server
 
@@ -135,6 +135,20 @@ namespace otel
 }
 ``````
 
+Replace the program.cs content with the following code:
+
+``````csharp
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers();
+
+var app = builder.Build();
+
+app.MapControllers();
+
+app.Run();
+``````
+
 To ensure that it is working, run the application with the following command and
 open <http://localhost:8080/rolldice?rolls=12> in your web browser:
 
@@ -148,6 +162,91 @@ You should get a list of 12 numbers in your browser window, for example:
 ```text
 [5,6,5,3,6,1,2,5,4,4,2,4]
 ```
+
+## Manual instrumentation setup
+
+### Dependencies
+
+Install the [OpenTelemetry API and SDK NuGet packages](https://www.nuget.org/profiles/OpenTelemetry):
+
+```sh
+dotnet add package OpenTelemetry
+dotnet add package OpenTelemetry.Exporter.Console
+dotnet add package OpenTelemetry.Extensions.Hosting
+```
+
+### Initialize the SDK
+
+{{% alert title="Note" color="info" %}} If you’re instrumenting a library,
+**skip this step**. {{% /alert %}}
+
+Before any other module in your application is loaded, you must initialize the SDK. 
+If you fail to initialize the SDK or initialize it too late, no-op
+implementations will be provided to any library that acquires a tracer or meter from the API.
+
+To intialize the sdks, replace the program.cs content with the following code: 
+
+``````csharp
+using OpenTelemetry.Logs;
+using OpenTelemetry.Metrics;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
+
+var serviceName = "dice-server";
+var serviceVersion = "1.0.0";
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddOpenTelemetry()
+    .ConfigureResource(resource => resource.AddService(
+        serviceName: serviceName, 
+        serviceVersion: serviceVersion))
+    .WithTracing(tracing => tracing
+        .AddSource(serviceName)
+        .AddConsoleExporter())
+    .WithMetrics(metrics => metrics
+        .AddMeter(serviceName)
+        .AddConsoleExporter());
+
+builder.Logging.AddOpenTelemetry(options => options
+    .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService(
+        serviceName: serviceName,
+        serviceVersion: serviceVersion))
+    .AddConsoleExporter());
+
+builder.Services.AddControllers();
+
+var app = builder.Build();
+
+app.MapControllers();
+
+app.Run();
+
+``````
+
+For debugging and local development purposes, the following example exports
+telemetry to the console. After you have finished setting up manual
+instrumentation, you need to configure an appropriate exporter to
+[export the app's telemetry data](/docs/languages/net/exporters/) to one or more
+telemetry backends.
+
+The example also sets up the mandatory SDK default attribute `service.name`,
+which holds the logical name of the service, and the optional (but highly
+encouraged!) attribute `service.version`, which holds the version of the service
+API or implementation.
+
+Alternative methods exist for setting up resource attributes. For more
+information, see [Resources](/docs/languages/net/resources/).
+
+To verify your code, build and run the app:
+
+```sh
+dotnet build
+dotnet run
+```
+
+This basic setup has no effect on your app yet. You need to add code for
+[traces](#traces), [metrics](#metrics), and/or [logs](#logs).
 
 ## Traces
 
