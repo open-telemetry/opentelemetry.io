@@ -162,9 +162,37 @@ and
 [Logging](https://github.com/open-telemetry/opentelemetry-java/tree/main/exporters/logging)
 Span Exporters.
 
+<<<<<<< HEAD
 As of 2.0.0+ the default protocol is `http/protobuf`. For more details on
 exporter configuration, see
 [OTLP Exporter Configuration](/docs/concepts/sdk-configuration/otlp-exporter-configuration/#otel_exporter_otlp_endpoint).
+=======
+#### Exporter Properties
+
+| Feature       | Property                      | Default Value  |
+| ------------- | ----------------------------- | -------------- |
+| OTLP Exporter | `otel.exporter.otlp.endpoint` | localhost:4317 |
+|               | `otel.exporter.otlp.protocol` | http/protobuf  |
+|               | `otel.exporter.otlp.headers`  |                |
+|               | `otel.exporter.otlp.timeout`  | 1s             |
+
+The `otel.exporter.otlp.headers` property can be specified as a comma-separated
+list, which is compliant with the
+[specification](/docs/concepts/sdk-configuration/otlp-exporter-configuration/#otel_exporter_otlp_headers).
+Similar to the resource attributes, the headers can be specified in
+`application.properties` or `application.yaml`:
+
+```yaml
+otel:
+  exporter:
+    otlp:
+      headers:
+        - key: 'header1'
+          value: 'value1'
+        - key: 'header2'
+          value: 'value2'
+```
+>>>>>>> 3044e93f (Results from /fix:format)
 
 #### Enabling/Disabling Exporters
 
@@ -174,7 +202,7 @@ This is the preferred way to enable/disable exporters and takes precedence over
 the properties below.
 
 | Feature               | Property                             | Default Value | ConditionalOnMissingBean                                 |
-|-----------------------|--------------------------------------|---------------|----------------------------------------------------------|
+| --------------------- | ------------------------------------ | ------------- | -------------------------------------------------------- |
 | OTLP Exporter         | `otel.exporter.otlp.enabled`         | true          | -                                                        |
 | OTLP Span Exporter    | `otel.exporter.otlp.traces.enabled`  | true          | `OtlpHttpSpanExporter`, `OtlpGrpcSpanExporter`           |
 | OTLP Metrics Exporter | `otel.exporter.otlp.metrics.enabled` | true          | `OtlpHttpMetricExporter`, `OtlpGrpcMetricExporter`       |
@@ -184,13 +212,13 @@ the properties below.
 ### Tracer Properties
 
 | Feature | Property                          | Default Value |
-|---------|-----------------------------------|---------------|
+| ------- | --------------------------------- | ------------- |
 | Tracer  | `otel.traces.sampler.probability` | 1.0           |
 
 ### Resource Properties
 
 | Feature  | Property                                                                | Default Value |
-|----------|-------------------------------------------------------------------------|---------------|
+| -------- | ----------------------------------------------------------------------- | ------------- |
 | Resource | `otel.springboot.resource.enabled`                                      | true          |
 |          | `otel.resource.attributes` (old: `otel.springboot.resource.attributes`) | empty map     |
 
@@ -243,7 +271,7 @@ Oriented Programming, dependency injection, and bean post-processing to trace
 spring applications.
 
 | Feature        | Property                                      | Default Value | ConditionalOnClass     |
-|----------------|-----------------------------------------------|---------------|------------------------|
+| -------------- | --------------------------------------------- | ------------- | ---------------------- |
 | spring-web     | `otel.instrumentation.spring-webmvc.enabled`  | true          | `RestTemplate`         |
 | spring-webmvc  | `otel.instrumentation.spring-web.enabled`     | true          | `OncePerRequestFilter` |
 | spring-webflux | `otel.instrumentation.spring-webflux.enabled` | true          | `WebClient`            |
@@ -283,6 +311,73 @@ to learn more about the OpenTelemetry WebClientFilter.
 
 ### Additional Instrumentations
 
+<<<<<<< HEAD
+=======
+Instead of using the OpenTelemetry Spring starter, you can use the OpenTelemetry
+autoconfiguration features with an annotation or Zipkin exporters.
+
+#### Spring Autoconfiguration
+
+Auto-configuration is natively supported by Springboot applications. To enable
+these features in "vanilla" use `@EnableOpenTelemetry` to complete a component
+scan of this package.
+
+```java
+import io.opentelemetry.instrumentation.spring.autoconfigure.EnableOpenTelemetry;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@EnableOpenTelemetry
+public class OpenTelemetryConfig {}
+```
+
+#### OpenTelemetry Zipkin Exporter Starter
+
+OpenTelemetry Zipkin Exporter Starter is a starter package that includes the
+opentelemetry-api, opentelemetry-sdk, opentelemetry-extension-annotations,
+opentelmetry-logging-exporter, opentelemetry-spring-boot-autoconfigurations and
+spring framework starters required to setup distributed tracing. It also
+provides the
+[opentelemetry-exporters-zipkin](https://github.com/open-telemetry/opentelemetry-java/tree/main/exporters/zipkin)
+artifact and corresponding exporter auto-configuration. Check out
+[opentelemetry-spring-boot-autoconfigure](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/README.md#features)
+for the list of supported libraries and features.
+
+If an exporter is present in the classpath during runtime and a spring bean of
+the exporter is missing from the spring application context. An exporter bean is
+initialized and added to a simple span processor in the active tracer provider.
+Check out the implementation
+[here](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/OpenTelemetryAutoConfiguration.java).
+
+{{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
+
+```xml
+<dependencies>
+  <dependency>
+    <groupId>io.opentelemetry</groupId>
+    <artifactId>opentelemetry-exporter-zipkin</artifactId>
+    <version>{{% param vers.otel %}}</version>
+  </dependency>
+</dependencies>
+```
+
+{{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
+
+```kotlin
+dependencies {
+  implementation("io.opentelemetry:opentelemetry-exporter-zipkin:{{% param vers.otel %}}")
+}
+```
+
+{{% /tab %}} {{< /tabpane>}}
+
+##### Configurations
+
+| Property                       | Default Value | ConditionalOnClass   |
+| ------------------------------ | ------------- | -------------------- |
+| `otel.exporter.zipkin.enabled` | true          | `ZipkinSpanExporter` |
+
+>>>>>>> 3044e93f (Results from /fix:format)
 #### JDBC Instrumentation
 
 You have two ways to enable the JDBC instrumentation with the OpenTelemetry
@@ -402,7 +497,7 @@ application context. Check out
 to learn more about aspect weaving in spring.
 
 | Feature     | Property                                   | Default Value | ConditionalOnClass |
-|-------------|--------------------------------------------|---------------|--------------------|
+| ----------- | ------------------------------------------ | ------------- | ------------------ |
 | `@WithSpan` | `otel.instrumentation.annotations.enabled` | true          | WithSpan, Aspect   |
 
 ##### Dependency
