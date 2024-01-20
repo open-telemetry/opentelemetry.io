@@ -145,7 +145,7 @@ and create a span based on it, including the context propagation. The
 [implementation can be found here](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/frontend/utils/telemetry/InstrumentationMiddleware.ts).
 
 The front-end was a little trickier, as the
-[initial rendering is server-side](https://nextjs.org/learn/foundations/how-nextjs-works/rendering).
+[initial rendering is server-side](https://nextjs.org/docs/app/building-your-application/rendering#fundamentals).
 We had to make sure to load the tracer from the browser side when the JavaScript
 code is executed.
 
