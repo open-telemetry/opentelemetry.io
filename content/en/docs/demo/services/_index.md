@@ -6,7 +6,7 @@ cSpell:ignore: loadgenerator
 View [Service Graph](../architecture/) to visualize request flows.
 
 | Service                                   | Language      | Description                                                                                                                                  |
-|-------------------------------------------| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| ----------------------------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | [accountingservice](accounting/)          | Go            | Processes incoming orders and count the sum of all orders (mock/).                                                                           |
 | [adservice](ad/)                          | Java          | Provides text ads based on given context words.                                                                                              |
 | [cartservice](cart/)                      | .NET          | Stores the items in the user's shopping cart in Redis and retrieves it.                                                                      |
