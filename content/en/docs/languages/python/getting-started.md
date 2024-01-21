@@ -21,7 +21,7 @@ Ensure that you have the following installed locally:
 ## Example Application
 
 The following example uses a basic [Flask](https://flask.palletsprojects.com/)
-application. If you are not using Flask, that's OK — you can use OpenTelemetry
+application. If you have not used Flask before or prefer a different framework, that's OK — you can use OpenTelemetry
 Python with other web frameworks as well, such as Django and FastAPI. For a
 complete list of libraries for supported frameworks, see the
 [registry](/ecosystem/registry/?component=instrumentation&language=python).
@@ -118,7 +118,7 @@ opentelemetry-instrument \
 ```
 
 Open <http://localhost:8080/rolldice> in your web browser and reload the page a
-few times. After a while you should see the spans printed in the console, such
+few times. After a while you should see the [spans](/docs/concepts/signals/traces/#spans) printed in the console, such
 as the following:
 
 <details>
@@ -436,7 +436,7 @@ import logging
 
 # Acquire a tracer
 tracer = trace.get_tracer("diceroller.tracer")
-# Acquire a meter.
+# Acquire a meter
 meter = metrics.get_meter("diceroller.meter")
 
 # Now create a counter instrument to make measurements with
@@ -640,14 +640,11 @@ emitted to the console, with separate counts for each roll value:
 
 ## Send telemetry to an OpenTelemetry Collector
 
-The [OpenTelemetry Collector](/docs/collector/getting-started/) is a critical
-component of most production deployments. Some examples of when it's beneficial
-to use a collector:
+The [OpenTelemetry Collector](/docs/collector/getting-started/) is a critical component of most production deployments. Some examples of when it's beneficial to use a collector include:
 
-- A single telemetry sink shared by multiple services, to reduce overhead of
-  switching exporters
+- Creating a single telemetry sink shared by multiple services, to reduce overhead of switching exporters
 - Aggregating traces across multiple services, running on multiple hosts
-- A central place to process traces prior to exporting them to a backend
+- Creating a central place to process traces prior to exporting them to a backend
 
 Unless you have just a single service or are experimenting, you'll want to use a
 collector in production deployments.

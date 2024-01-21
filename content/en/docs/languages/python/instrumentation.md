@@ -139,7 +139,7 @@ current_span.set_attribute("operation.other-stuff", [1, 2, 3])
 ### Add semantic attributes
 
 [Semantic Attributes](/docs/specs/semconv/general/trace/) are pre-defined
-[Attributes](/docs/concepts/signals/traces/#attributes) that are well-known
+[attributes](/docs/concepts/signals/traces/#attributes) that use well-known
 naming conventions for common kinds of data. Using Semantic Attributes lets you
 normalize this kind of information across your systems.
 
@@ -344,9 +344,9 @@ below increments the count by one, using the work item's type as an attribute.
 
 ```python
 def do_work(work_item):
-    # count the work being doing
+    # Count the work being done
     work_counter.add(1, {"work.type": work_item.work_type})
-    print("doing some work...")
+    print("Doing some work...")
 ```
 
 ### Creating and using asynchronous instruments
