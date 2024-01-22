@@ -11,3 +11,7 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-instrumentation-http
 createdAt: 2020-11-09
+package:
+  registry: npm
+  name: '@opentelemetry/instrumentation-http'
+  version: 0.47.0
