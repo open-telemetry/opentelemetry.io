@@ -16,5 +16,10 @@ For example,
 will automatically create [spans](/docs/concepts/signals/traces/#spans) and
 [metrics](/docs/concepts/signals/metrics) based on the inbound HTTP requests.
 
+If your app or one of your dependencies is making use of the create
+[`tracing`](https://crates.io/crates/tracing) you can use
+[`tracing-opentelemetry`](https://crates.io/crates/tracing-opentelemetry) for
+adding OpenTelemetry interoperability.
+
 You can find a list of available instrumentation libraries in the
 [registry](/ecosystem/registry/?language=js&component=instrumentation).
