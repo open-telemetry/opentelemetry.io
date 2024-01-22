@@ -78,7 +78,7 @@ Project reference documentation, like requirements and feature matrices.
 - [Metric Feature Matrix](telemetry-features/metric-coverage/)
 - [Requirements](./requirements/)
 - [Screenshots](screenshots/)
-- [Service Roles Table](service-table/)
+- [Services](services/)
 - [Span Attributes Reference](telemetry-features/manual-span-attributes/)
 - [Tests](tests/)
 - [Trace Feature Matrix](telemetry-features/trace-coverage/)
