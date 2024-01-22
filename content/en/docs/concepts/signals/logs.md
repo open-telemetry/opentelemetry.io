@@ -33,7 +33,7 @@ components that will play a part in instrumenting our code.
 As an application developer, the **Logs Bridge API** should not be called by you
 directly, as it is provided for logging library authors to build log appenders /
 bridges. Instead, you just use your preferred logging library and configure it
-to use an log appender (or log bridge) that is able to emit logs into an
+to use a log appender (or log bridge) that is able to emit logs into an
 OpenTelemetry LogRecordExporter.
 
 OpenTelemetry language SDKs offer this functionality.

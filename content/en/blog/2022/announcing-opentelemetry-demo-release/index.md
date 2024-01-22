@@ -19,7 +19,7 @@ system instrumented with 100% OpenTelemetry Traces and Metrics.
 One of our primary goals of this project has been to create a robust sample
 application for developers to use in learning OpenTelemetry, and we’re proud to
 say that we’ve done just that. Every OpenTelemetry language SDK except Swift is
-[represented](/docs/demo/service-table/) in this release -- yes, even PHP! We’ve
+[represented](/docs/demo/services/) in this release -- yes, even PHP! We’ve
 built complete [tracing flows](/docs/demo/telemetry-features/trace-coverage/)
 that demonstrate a breadth of common instrumentation tasks such as:
 
