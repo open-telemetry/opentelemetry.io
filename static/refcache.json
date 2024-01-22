@@ -6311,10 +6311,6 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:07:18.245489-05:00"
   },
-  "https://rubygems.org/gems/opentelemetry-exporter-datadog": {
-    "StatusCode": 404,
-    "LastSeen": "2024-01-22T17:21:58.119674+01:00"
-  },
   "https://rubygems.org/gems/opentelemetry-exporter-jaeger": {
     "StatusCode": 200,
     "LastSeen": "2024-01-22T15:38:19.199638+01:00"
@@ -6326,10 +6322,6 @@
   "https://rubygems.org/gems/opentelemetry-exporter-otlp-grpc": {
     "StatusCode": 200,
     "LastSeen": "2024-01-22T15:38:20.535782+01:00"
-  },
-  "https://rubygems.org/gems/opentelemetry-exporter-otlp-http": {
-    "StatusCode": 404,
-    "LastSeen": "2024-01-22T15:38:20.835705+01:00"
   },
   "https://rubygems.org/gems/opentelemetry-exporter-zipkin": {
     "StatusCode": 200,
