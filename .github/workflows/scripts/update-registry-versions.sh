@@ -96,9 +96,8 @@ for yaml_file in ${FILES}; do
     fi
 done;
 
-# We use the md5 over all version updates to uniquely identify the PR.
-# md5 should be fine, since this does not have to be cryptographically secure.
-tag=$(echo body | md5)
+# We use the sha1 over all version updates to uniquely identify the PR.
+tag=$(echo body | sha1sum | awk '{print $1;}')
 message="Update registry versions (${tag})"
 
 existing_pr_count=$(gh pr list --state all --search "in:title $message" | wc -l)
