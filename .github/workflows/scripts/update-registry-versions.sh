@@ -84,12 +84,12 @@ for yaml_file in ${FILES}; do
             ${UPDATE_YAML} ".package.version = \"$latest_version\"" $yaml_file
             row="${yaml_file} ($registry): Version field was missing. Populated with the latest version: $latest_version"
             echo "${row}"
-            body="${body}\n${row}"
+            body="${body}\n- ${row}"
         elif [ "$latest_version" != "$current_version" ]; then
             ${UPDATE_YAML} ".package.version = \"$latest_version\"" "$yaml_file"
-            row="${yaml_file} ($registry): Updated version from $current_version to $latest_version in $yaml_file"
-            echo "${row}"
-            body="${body}\n${row}"
+            row="($registry): Updated version from $current_version to $latest_version in $yaml_file"
+            echo "${yaml_file} ${row}"
+            body="${body}\n- ${row}"
         else
             echo "${yaml_file} ($registry): Version is already up to date."
         fi
@@ -114,5 +114,8 @@ $GIT checkout -b "$branch"
 $GIT commit -a -m "$message"
 $GIT push --set-upstream origin "$branch"
 
+body_file=$(mktemp)
+echo -en "${body}" >> "${body_file}"
+
 echo "Submitting auto-update PR '$message'."
-$GH pr create --title "$message" --body "$body"
+$GH pr create --title "$message" --body-file "${body_file}"
