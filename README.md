@@ -31,9 +31,9 @@ We have curated some issues with the tags [help wanted][] and [good first
 issue][]. This should allow you to quickly find a place to contribute. See
 [CONTRIBUTING.md][] for more information.
 
-We, the OTel Communications SIG, meet every two weeks on Monday at 10:00 PT. Check out the
-[OpenTelemetry community calendar][] for the Zoom link and any updates to this
-schedule.
+We, the OTel Communications SIG, meet every two weeks on Monday at 10:00 PT.
+Check out the [OpenTelemetry community calendar][] for the Zoom link and any
+updates to this schedule.
 
 Meeting notes are available as a public [Google doc][]. If you have trouble
 accessing the doc, get in touch on [Slack][].
