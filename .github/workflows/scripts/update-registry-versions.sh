@@ -1,7 +1,10 @@
 #!/bin/bash -e
 
 UPDATE_YAML="yq eval -i"
+GIT=git
+GH=gh
 FILES="${FILES:-./data/registry/*.yml}"
+
 
 if [[ -n "$GITHUB_ACTIONS" ]]; then
   # Ensure that we're starting from a clean state
@@ -11,10 +14,14 @@ elif [[ "$1" != "-f" ]]; then
   # force flag is specified (-f).
   echo "Doing a dry-run when run locally. Use -f as the first argument to force execution."
   UPDATE_YAML="yq eval"
+  GIT="echo > DRY RUN: git "
+  GH="echo > DRY RUN: gh "
 else
   # Local execution with -f flag (force real vs. dry run)
   shift
 fi
+
+body=""
 
 for yaml_file in ${FILES}; do
     echo $yaml_file
@@ -75,12 +82,37 @@ for yaml_file in ${FILES}; do
             echo "${yaml_file} ($registry): Could not get latest version from registry."
         elif [ -z "$current_version" ]; then
             ${UPDATE_YAML} ".package.version = \"$latest_version\"" $yaml_file
-            echo "${yaml_file} ($registry): Version field was missing. Populated with the latest version: $latest_version"
+            row="${yaml_file} ($registry): Version field was missing. Populated with the latest version: $latest_version"
+            echo "${row}"
+            body="${body}\n${row}"
         elif [ "$latest_version" != "$current_version" ]; then
             ${UPDATE_YAML} ".package.version = \"$latest_version\"" "$yaml_file"
-            echo "${yaml_file} ($registry): Updated version from $current_version to $latest_version in $yaml_file"
+            row="${yaml_file} ($registry): Updated version from $current_version to $latest_version in $yaml_file"
+            echo "${row}"
+            body="${body}\n${row}"
         else
             echo "${yaml_file} ($registry): Version is already up to date."
         fi
     fi
 done;
+
+# We use the sha1sum over all version updates to uniquely identify the PR.
+tag=$(echo body | sha1sum)
+message="Update registry versions (${tag})"
+
+existing_pr_count=$(gh pr list --state all --search "in:title $message" | wc -l)
+if [ "$existing_pr_count" -gt 0 ]; then
+    echo "PR(s) already exist for '$message'"
+    gh pr list --state all --search "\"$message\" in:title"
+    echo "So we won't create another. Exiting."
+    exit 0
+fi
+
+branch="opentelemetrybot/auto-update-registry-${tag}"
+${GIT} checkout -b "${branch}"
+${GIT} add .
+${GIT} commit -m "Auto-update registry versions (${tag})"
+${GIT} push
+
+echo "Submitting auto-update PR '$message'."
+$GH pr create --title "$message" --body "$body"
