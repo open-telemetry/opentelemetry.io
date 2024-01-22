@@ -6383,17 +6383,201 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-18T19:07:18.245489-05:00"
   },
+  "https://rubygems.org/gems/opentelemetry-exporter-jaeger": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:19.199638+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-exporter-otlp": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:19.808979+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-exporter-otlp-grpc": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:20.535782+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-exporter-zipkin": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:21.665966+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-exporters-datadog": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T17:25:05.672589+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-action_pack": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:22.124468+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-action_view": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:23.044908+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-active_job": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:24.110202+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-active_model_serializers": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:24.519975+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-active_record": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:25.236577+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-active_support": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:26.264401+01:00"
+  },
   "https://rubygems.org/gems/opentelemetry-instrumentation-all": {
     "StatusCode": 200,
     "LastSeen": "2024-01-16T17:59:00.831876+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-aws_sdk": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:27.079086+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-base": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:27.935489+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-bunny": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:28.828663+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-concurrent_ruby": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:29.757966+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-dalli": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:30.669727+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-delayed_job": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:31.175918+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-ethon": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:31.638432+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-excon": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:32.598391+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-faraday": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:33.519871+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-grape": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:34.473426+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-graphql": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:35.374442+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-gruf": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:36.277084+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-http": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:37.185252+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-http_client": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:38.227949+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-httpx": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:38.718044+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-koala": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:39.333645+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-lmdb": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:40.302893+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-mongo": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:41.314034+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-mysql2": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:42.215871+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-net_http": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:43.411659+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-pg": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:44.265097+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-que": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:44.627706+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-racecar": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:45.206404+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-rack": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:46.049519+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-rails": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:47.15082+01:00"
   },
   "https://rubygems.org/gems/opentelemetry-instrumentation-rails/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-16T17:59:00.198437+01:00"
   },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-rake": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:47.60699+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-rdkafka": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:48.513204+01:00"
+  },
   "https://rubygems.org/gems/opentelemetry-instrumentation-redis": {
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:17:25.018558+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-resque": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:48.852288+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-restclient": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:49.924127+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-rspec": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:50.944112+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-ruby_kafka": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:51.963918+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-sidekiq": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:52.884082+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-sinatra": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:53.703243+01:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-trilogy": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:54.618612+01:00"
+  },
+  "https://rubygems.org/gems/sentry-opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T15:38:55.347099+01:00"
   },
   "https://rubyonrails.org/": {
     "StatusCode": 206,

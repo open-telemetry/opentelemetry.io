@@ -1,3 +1,4 @@
+# cSpell:ignore sinatra
 title: Sinatra Instrumentation
 registryType: instrumentation
 language: ruby
@@ -11,3 +12,7 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/sinatra
 createdAt: 2020-11-09
+package:
+  registry: gems
+  name: opentelemetry-instrumentation-sinatra
+  version: 0.23.2
