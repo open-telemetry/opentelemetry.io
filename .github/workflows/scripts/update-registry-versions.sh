@@ -98,7 +98,9 @@ done;
 
 # We use the sha1 over all version updates to uniquely identify the PR.
 tag=$(echo body | sha1sum | awk '{print $1;}')
-message="Update registry versions (${tag})"
+message="Auto-update registry versions (${tag})"
+branch="opentelemetrybot/auto-update-registry-${tag}"
+
 
 existing_pr_count=$(gh pr list --state all --search "in:title $message" | wc -l)
 if [ "$existing_pr_count" -gt 0 ]; then
@@ -108,11 +110,9 @@ if [ "$existing_pr_count" -gt 0 ]; then
     exit 0
 fi
 
-branch="opentelemetrybot/auto-update-registry-${tag}"
-${GIT} checkout -b "${branch}"
-${GIT} add .
-${GIT} commit -m "Auto-update registry versions (${tag})"
-${GIT} push
+$GIT checkout -b "$branch"
+$GIT commit -a -m "$message"
+$GIT push --set-upstream origin "$branch"
 
 echo "Submitting auto-update PR '$message'."
 $GH pr create --title "$message" --body "$body"
