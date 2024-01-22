@@ -18,4 +18,4 @@ createdAt: 2020-06-30
 package:
   name: '@jufab/opentelemetry-angular-interceptor'
   registry: npm
-  version: 1.7.0
+  version: 1.7.0-1
