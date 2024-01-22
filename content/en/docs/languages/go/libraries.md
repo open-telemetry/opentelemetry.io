@@ -13,11 +13,11 @@ weight: 40
 
 If a library does not come with OpenTelemetry out of the box, you can use
 [instrumentation libraries](/docs/specs/otel/glossary/#instrumentation-library)
-in order to generate telemetry data for a library or framework.
+to generate telemetry data for a library or framework.
 
 For example, the
 [instrumentation library for `net/http`](https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp)
-will automatically create [spans](/docs/concepts/signals/traces/#spans) and
+automatically creates [spans](/docs/concepts/signals/traces/#spans) and
 [metrics](/docs/concepts/signals/metrics/) based on the HTTP requests.
 
 ## Setup
