@@ -48,4 +48,7 @@ A full list of instrumentation libraries available can be found in the
 Instrumentation libraries can do things like generate telemetry data for inbound
 and outbound HTTP requests, but they don't instrument your actual application.
 
-Enrich your telemetry data by integrating [custom instrumentation](../instrumentation/) into your code. This supplements the standard library telemetry, and can offer deeper insights into your running application.
+Enrich your telemetry data by integrating
+[custom instrumentation](../instrumentation/) into your code. This supplements
+the standard library telemetry, and can offer deeper insights into your running
+application.
