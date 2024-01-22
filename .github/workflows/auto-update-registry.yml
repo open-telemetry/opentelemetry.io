@@ -22,7 +22,7 @@ jobs:
 
       - name: Auto-update
         run: |
-          .github/workflows/scripts/scripts/update-registry-versions.sh
+          .github/workflows/scripts/update-registry-versions.sh
         env:
           # change this to secrets.GITHUB_TOKEN when testing against a fork
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
