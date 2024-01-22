@@ -519,6 +519,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-07-06T17:57:36.620937-04:00"
   },
+  "https://crates.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-01-19T16:56:12.042658+01:00"
+  },
   "https://cri-o.io/": {
     "StatusCode": 206,
     "LastSeen": "2023-07-21T16:51:54.102328+02:00"
@@ -730,6 +734,10 @@
   "https://doc.rust-lang.org/cargo/": {
     "StatusCode": 206,
     "LastSeen": "2023-08-03T17:44:09.893503+02:00"
+  },
+  "https://doc.rust-lang.org/std/io/trait.Write.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-01-22T08:13:47.191476+01:00"
   },
   "https://doc.traefik.io/traefik-hub/operations/telemetry/overview/": {
     "StatusCode": 206,
