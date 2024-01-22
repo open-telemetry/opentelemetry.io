@@ -15,7 +15,3 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-ruby/tree/main/exporter/otlp-grpc
 createdAt: 2022-11-07
-package:
-  registry: gems
-  name: opentelemetry-exporter-otlp-grpc
-  version: unknown
