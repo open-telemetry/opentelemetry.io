@@ -25,6 +25,7 @@ rules:
     defaultTerms: false
     skip: []
     terms:
+      - Actix
       - Ajax
       - Apache
       - API
