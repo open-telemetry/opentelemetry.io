@@ -4783,6 +4783,18 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:17:23.493318+01:00"
   },
+  "https://npmjs.com/package/@google-cloud/opentelemetry-cloud-monitoring-exporter": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T14:42:15.520955+01:00"
+  },
+  "https://npmjs.com/package/@google-cloud/opentelemetry-cloud-trace-exporter": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T14:42:17.260387+01:00"
+  },
+  "https://npmjs.com/package/@instana/opentelemetry-exporter": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T14:42:19.212036+01:00"
+  },
   "https://npmjs.com/package/@jenniferplusplus/opentelemetry-instrumentation-bullmq": {
     "StatusCode": 200,
     "LastSeen": "2024-01-11T21:08:41.74881+01:00"
@@ -4794,6 +4806,10 @@
   "https://npmjs.com/package/@opentelemetry/exporter-jaeger": {
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:17:02.210115+01:00"
+  },
+  "https://npmjs.com/package/@opentelemetry/exporter-prometheus": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T14:42:21.290751+01:00"
   },
   "https://npmjs.com/package/@opentelemetry/exporter-zipkin": {
     "StatusCode": 200,
@@ -4847,6 +4863,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-11T21:12:12.888226+01:00"
   },
+  "https://npmjs.com/package/@opentelemetry/instrumentation-fetch": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T14:34:38.514203+01:00"
+  },
   "https://npmjs.com/package/@opentelemetry/instrumentation-fs": {
     "StatusCode": 200,
     "LastSeen": "2024-01-11T21:12:14.640209+01:00"
@@ -4859,9 +4879,17 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-11T21:17:44.227062+01:00"
   },
+  "https://npmjs.com/package/@opentelemetry/instrumentation-grpc": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T14:34:43.208453+01:00"
+  },
   "https://npmjs.com/package/@opentelemetry/instrumentation-hapi": {
     "StatusCode": 200,
     "LastSeen": "2024-01-11T21:17:45.899542+01:00"
+  },
+  "https://npmjs.com/package/@opentelemetry/instrumentation-http": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T14:34:45.372242+01:00"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-ioredis": {
     "StatusCode": 200,
@@ -4950,6 +4978,50 @@
   "https://npmjs.com/package/@opentelemetry/instrumentation-winston": {
     "StatusCode": 200,
     "LastSeen": "2024-01-15T11:08:33.674123+01:00"
+  },
+  "https://npmjs.com/package/@opentelemetry/instrumentation-xml-http-request": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T14:34:54.750136+01:00"
+  },
+  "https://npmjs.com/package/@opentelemetry/plugin-react-load": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T14:34:50.646184+01:00"
+  },
+  "https://npmjs.com/package/@opentelemetry/resource-detector-alibaba-cloud": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T14:42:23.145103+01:00"
+  },
+  "https://npmjs.com/package/@opentelemetry/resource-detector-aws": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T14:42:24.737158+01:00"
+  },
+  "https://npmjs.com/package/@opentelemetry/resource-detector-azure": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T14:42:26.578492+01:00"
+  },
+  "https://npmjs.com/package/@opentelemetry/resource-detector-container": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T14:44:49.657355+01:00"
+  },
+  "https://npmjs.com/package/@opentelemetry/resource-detector-gcp": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T14:44:51.611027+01:00"
+  },
+  "https://npmjs.com/package/@opentelemetry/resource-detector-github": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T14:44:53.473059+01:00"
+  },
+  "https://npmjs.com/package/@opentelemetry/resource-detector-instana": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T14:44:55.070684+01:00"
+  },
+  "https://npmjs.com/package/@prisma/instrumentation": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T14:34:48.66209+01:00"
+  },
+  "https://npmjs.com/package/opentelemetry-instrumentation-remix": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-22T14:34:52.350494+01:00"
   },
   "https://o11y.news": {
     "StatusCode": 206,
