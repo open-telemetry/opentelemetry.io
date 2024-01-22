@@ -4,9 +4,13 @@ linkTitle: Libraries
 weight: 40
 ---
 
-You can use
+{{% docs/languages/libraries-intro ".NET" %}}
+
+## Use Instrumentation Libraries
+
+If a library does not come with OpenTelemetry out of the box, you can use
 [instrumentation libraries](/docs/specs/otel/glossary/#instrumentation-library)
-in order to generate telemetry data for a particular instrumented library.
+in order to generate telemetry data for a library or framework.
 
 For example,
 [the instrumentation library for ASP.NET Core](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.AspNetCore)
@@ -111,9 +115,9 @@ You can also find more instrumentations available in the
 
 ## Next steps
 
-After you have set up instrumentation libraries, you may want to add
-[manual instrumentation](/docs/languages/net/instrumentation) to collect custom
-telemetry data.
+After you have set up instrumentation libraries, you may want to add your own
+[instrumentation](/docs/languages/net/instrumentation) to your code, to collect
+custom telemetry data.
 
 If you are using .NET Framework 4.x instead of modern .NET, refer to the
 [.NET Framework docs](/docs/languages/net/netframework) to configure
