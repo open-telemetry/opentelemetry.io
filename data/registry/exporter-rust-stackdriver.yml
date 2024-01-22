@@ -1,4 +1,4 @@
-# cSpell:ignore jacobkiesel
+# cSpell:ignore jacobkiesel stackdriver
 title: Google StackDrive Exporter
 registryType: exporter
 language: rust

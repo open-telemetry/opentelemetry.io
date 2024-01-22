@@ -5,7 +5,9 @@ tags:
   - rust
   - exporter
 license: Apache 2.0
-description: This crate provides exporters that export to stdout or any implementation of [`std::io::Write`](https://doc.rust-lang.org/std/io/trait.Write.html).
+description:
+  This crate provides exporters that export to stdout or any implementation of
+  [`std::io::Write`](https://doc.rust-lang.org/std/io/trait.Write.html).
 authors:
   - name: OpenTelemetry Authors
 urls:
