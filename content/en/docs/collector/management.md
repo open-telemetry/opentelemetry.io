@@ -174,21 +174,21 @@ $ go run .
 2023/02/08 13:32:54 Enabling own metrics pipeline in the config<F11>
 2023/02/08 13:32:54 Effective config changed.
 2023/02/08 13:32:54 Config is changed. Signal to restart the agent.
-2023/02/08 13:32:54 Agent is not healthy: Get "http://localhost:13133": dial tcp [::1]:13133: connect: connection refused
+2023/02/08 13:32:54 Agent is not healthy: Get "http://0.0.0.0:13133": dial tcp [::1]:13133: connect: connection refused
 2023/02/08 13:32:54 Stopping the agent to apply new config.
 2023/02/08 13:32:54 Stopping agent process, PID=13553
 2023/02/08 13:32:54 Agent process PID=13553 successfully stopped.
 2023/02/08 13:32:54 Starting agent /usr/local/bin/otelcol
 2023/02/08 13:32:54 Agent process started, PID=13554
-2023/02/08 13:32:54 Agent is not healthy: Get "http://localhost:13133": dial tcp [::1]:13133: connect: connection refused
-2023/02/08 13:32:55 Agent is not healthy: health check on http://localhost:13133 returned 503
-2023/02/08 13:32:55 Agent is not healthy: health check on http://localhost:13133 returned 503
-2023/02/08 13:32:56 Agent is not healthy: health check on http://localhost:13133 returned 503
+2023/02/08 13:32:54 Agent is not healthy: Get "http://0.0.0.0:13133": dial tcp [::1]:13133: connect: connection refused
+2023/02/08 13:32:55 Agent is not healthy: health check on http://0.0.0.0:13133 returned 503
+2023/02/08 13:32:55 Agent is not healthy: health check on http://0.0.0.0:13133 returned 503
+2023/02/08 13:32:56 Agent is not healthy: health check on http://0.0.0.0:13133 returned 503
 2023/02/08 13:32:57 Agent is healthy.
 ```
 
 If everything worked out you should now be able to go to
-[http://localhost:4321/](http://localhost:4321/) and access the OpAMP server UI
+[http://0.0.0.0:4321/](http://0.0.0.0:4321/) and access the OpAMP server UI
 where you should see your collector listed, managed by the supervisor:
 
 ![OpAMP example setup](../img/opamp-server-ui.png)
@@ -197,7 +197,7 @@ You can also query the collector for the metrics exported (note the label
 values):
 
 ```console
-$ curl localhost:8888/metrics
+$ curl 0.0.0.0:8888/metrics
 ...
 # HELP otelcol_receiver_accepted_metric_points Number of metric points successfully pushed into the pipeline.
 # TYPE otelcol_receiver_accepted_metric_points counter

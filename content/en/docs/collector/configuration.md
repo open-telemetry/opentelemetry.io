@@ -46,8 +46,9 @@ receivers:
   otlp:
     protocols:
       grpc:
+         endpoint: 0.0.0.0:4317
       http:
-
+         endpoint: 0.0.0.0:4318
 processors:
   batch:
 
@@ -87,7 +88,9 @@ receivers:
   otlp:
     protocols:
       grpc:
+         endpoint: 0.0.0.0:4317
       http:
+         endpoint: 0.0.0.0:4318
   otlp/2:
     protocols:
       grpc:
@@ -137,6 +140,7 @@ receivers:
   otlp:
     protocols:
       grpc:
+         endpoint: 0.0.0.0:4317
 
 exporters: ${file:exporters.yaml}
 
@@ -163,6 +167,7 @@ receivers:
   otlp:
     protocols:
       grpc:
+         endpoint: 0.0.0.0:4317
 
 exporters:
   otlp:
@@ -217,6 +222,7 @@ receivers:
   jaeger:
     protocols:
       grpc:
+         endpoint: 0.0.0.0:4317
       thrift_binary:
       thrift_compact:
       thrift_http:
@@ -232,7 +238,9 @@ receivers:
   otlp:
     protocols:
       grpc:
+         endpoint: 0.0.0.0:4317
       http:
+         endpoint: 0.0.0.0:4318
 
   # Data sources: metrics
   prometheus:
@@ -241,7 +249,7 @@ receivers:
         - job_name: otel-collector
           scrape_interval: 5s
           static_configs:
-            - targets: [localhost:8888]
+            - targets: [0.0.0.0:8888]
 
   # Data sources: traces
   zipkin:
@@ -392,7 +400,7 @@ exporters:
 
   # Data sources: metrics
   prometheus:
-    endpoint: localhost:8889
+    endpoint: 0.0.0.0:8889
     namespace: default
 
   # Data sources: metrics
@@ -716,13 +724,14 @@ Collector acting as agent:
 ```yaml
 extensions:
   oidc:
-    issuer_url: http://localhost:8080/auth/realms/opentelemetry
+    issuer_url: http://0.0.0.0:8080/auth/realms/opentelemetry
     audience: collector
 
 receivers:
   otlp/auth:
     protocols:
       grpc:
+        endpoint: 0.0.0.0:4317
         auth:
           authenticator: oidc
 
@@ -752,13 +761,13 @@ extensions:
   oauth2client:
     client_id: agent
     client_secret: some-secret
-    token_url: http://localhost:8080/auth/realms/opentelemetry/protocol/openid-connect/token
+    token_url: http://0.0.0.0:8080/auth/realms/opentelemetry/protocol/openid-connect/token
 
 receivers:
   otlp:
     protocols:
       grpc:
-        endpoint: localhost:4317
+        endpoint: 0.0.0.0:4317
 
 processors:
 

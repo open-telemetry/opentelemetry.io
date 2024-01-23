@@ -157,6 +157,7 @@ spec:
       otlp:
         protocols:
           grpc:
+            endpoint: 0.0.0.0:4317
     processors:
 
     exporters:
@@ -360,6 +361,7 @@ receivers:
   otlp:
     protocols:
       grpc:
+         endpoint: 0.0.0.0:4317
 
 processors:
 

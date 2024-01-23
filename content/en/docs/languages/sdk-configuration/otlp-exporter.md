@@ -17,8 +17,8 @@ endpoint and want one environment variable to control the endpoint.
 
 **Default value:**
 
-- gRPC: `"http://localhost:4317"`
-- HTTP: `"http://localhost:4318"`
+- gRPC: `"http://0.0.0.0:4317"`
+- HTTP: `"http://0.0.0.0:4318"`
 
 **Example:**
 
@@ -40,8 +40,8 @@ Typically ends with `v1/traces` when using OTLP/HTTP.
 
 **Default value:**
 
-- gRPC: `"http://localhost:4317"`
-- HTTP: `"http://localhost:4318/v1/traces"`
+- gRPC: `"http://0.0.0.0:4317"`
+- HTTP: `"http://0.0.0.0:4318/v1/traces"`
 
 **Example:**
 
@@ -57,8 +57,8 @@ Typically ends with `v1/metrics` when using OTLP/HTTP.
 
 **Default value:**
 
-- gRPC: `"http://localhost:4317"`
-- HTTP: `"http://localhost:4318/v1/metrics"`
+- gRPC: `"http://0.0.0.0:4317"`
+- HTTP: `"http://0.0.0.0:4318/v1/metrics"`
 
 **Example:**
 
@@ -74,8 +74,8 @@ Typically ends with `v1/logs` when using OTLP/HTTP.
 
 **Default value:**
 
-- gRPC: `"http://localhost:4317"`
-- HTTP: `"http://localhost:4318/v1/logs"`
+- gRPC: `"http://0.0.0.0:4317"`
+- HTTP: `"http://0.0.0.0:4318/v1/logs"`
 
 **Example:**
 
