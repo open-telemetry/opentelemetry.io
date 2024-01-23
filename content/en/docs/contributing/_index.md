@@ -602,13 +602,13 @@ information on getting started.
 
 Individual SIGs may maintain documentation above and beyond what is offered
 here, but we strive for accurate general guidance on using the project from our
-main website. 
+main website.
 
-If you see text you'd like to improve, use GitHub to search all
-repositories in the OpenTelemetry organization. This can help you figure out
-where to submit your issue or PR. Each repository has its own processes and
-procedures. Before you file an issue or submit a PR, read that repository's
-`README.md`, `CONTRIBUTING.md`, and `code-of-conduct.md`, if they exist.
+If you see text you'd like to improve, use GitHub to search all repositories in
+the OpenTelemetry organization. This can help you figure out where to submit
+your issue or PR. Each repository has its own processes and procedures. Before
+you file an issue or submit a PR, read that repository's `README.md`,
+`CONTRIBUTING.md`, and `code-of-conduct.md`, if they exist.
 
 Most repositories use issue and PR templates. Have a look through some open
 issues and PRs to get a feel for that team's processes. Make sure to fill out
