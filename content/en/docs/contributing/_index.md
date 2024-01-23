@@ -537,7 +537,7 @@ Pull requests are merged when they comply with the following criteria:
 
 > **Important**
 >
-> Do not worry too much about failing PR checks! Community members will help you
+> Do not worry too much about failing PR checks. Community members will help you
 > to get them fixed, by either providing you with instructions how to fix them
 > or by fixing them on your behave.
 
@@ -596,17 +596,19 @@ Keep the following in mind when filing an issue:
 
 ## Contribute to other repositories
 
-The OpenTelemetry project contains many repositories. Several of these
-repositories contain documentation: user-facing help text, error messages, API
-references or code comments.
+OpenTelemetry is an open source project, and we gladly accept new contributions
+and contributors. See the CONTRIBUTING.md file in each SIG repository for
+information on getting started.
 
-If you see text you'd like to improve, use GitHub to search all repositories in
-the OpenTelemetry organization. This can help you figure out where to submit
-your issue or PR.
+Individual SIGs may maintain documentation above and beyond what is offered
+here, but we strive for accurate general guidance on using the project from our
+main website. 
 
-Each repository has its own processes and procedures. Before you file an issue
-or submit a PR, read that repository's `README.md`, `CONTRIBUTING.md`, and
-`code-of-conduct.md`, if they exist.
+If you see text you'd like to improve, use GitHub to search all
+repositories in the OpenTelemetry organization. This can help you figure out
+where to submit your issue or PR. Each repository has its own processes and
+procedures. Before you file an issue or submit a PR, read that repository's
+`README.md`, `CONTRIBUTING.md`, and `code-of-conduct.md`, if they exist.
 
 Most repositories use issue and PR templates. Have a look through some open
 issues and PRs to get a feel for that team's processes. Make sure to fill out
@@ -621,3 +623,8 @@ the templates with as much detail as possible when you file issues or PRs.
 [dashboard]: https://app.netlify.com/sites/opentelemetry/overview
 [deploy preview]:
   https://www.netlify.com/blog/2016/07/20/introducing-deploy-previews-in-netlify/
+
+## Code of conduct
+
+OpenTelemetry follows the
+[CNCF Community Code of Conduct](https://github.com/cncf/foundation/blob/main/code-of-conduct.md).
