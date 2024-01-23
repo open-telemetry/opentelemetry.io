@@ -153,27 +153,27 @@ subgraph tdf[Telemetry Data Flow]
             oc-proc --> oc-otlp
         end
 
-        oc-prom -->|"http://0.0.0.0:9090/api/v1/otlp"| pr-sc
+        oc-prom -->|"http://localhost:9090/api/v1/otlp"| pr-sc
         oc-otlp -->|gRPC| ja-col
 
         subgraph pr[Prometheus]
             style pr fill:#e75128,color:black;
             pr-sc[/"Prometheus OTLP Write Receiver"/]
             pr-tsdb[(Prometheus TSDB)]
-            pr-http[/"Prometheus HTTP<br/>listening on<br/>http://0.0.0.0:9090"/]
+            pr-http[/"Prometheus HTTP<br/>listening on<br/>http://localhost:9090"/]
 
             pr-sc --> pr-tsdb
             pr-tsdb --> pr-http
         end
 
         pr-b{{"Browser<br/>Prometheus UI"}}
-        pr-http ---->|"http://0.0.0.0:9090/graph"| pr-b
+        pr-http ---->|"http://localhost:9090/graph"| pr-b
 
         subgraph ja[Jaeger]
             style ja fill:#60d0e4,color:black;
             ja-col[/"Jaeger Collector<br/>listening on<br/>grpc://jaeger:4317/"/]
             ja-db[(Jaeger DB)]
-            ja-http[/"Jaeger HTTP<br/>listening on<br/>http://0.0.0.0:16686"/]
+            ja-http[/"Jaeger HTTP<br/>listening on<br/>http://localhost:16686"/]
 
             ja-col --> ja-db
             ja-db --> ja-http
@@ -182,19 +182,19 @@ subgraph tdf[Telemetry Data Flow]
         subgraph gr[Grafana]
             style gr fill:#f8b91e,color:black;
             gr-srv["Grafana Server"]
-            gr-http[/"Grafana HTTP<br/>listening on<br/>http://0.0.0.0:3000"/]
+            gr-http[/"Grafana HTTP<br/>listening on<br/>http://localhost:3000"/]
 
             gr-srv --> gr-http
         end
 
-        pr-http --> |"http://0.0.0.0:9090/api"| gr-srv
+        pr-http --> |"http://localhost:9090/api"| gr-srv
         ja-http --> |"http://localhost:16686/api"| gr-srv
 
         ja-b{{"Browser<br/>Jaeger UI"}}
         ja-http ---->|"http://localhost:16686/search"| ja-b
 
         gr-b{{"Browser<br/>Grafana UI"}}
-        gr-http -->|"http://0.0.0.0:3000/dashboard"| gr-b
+        gr-http -->|"http://localhost:3000/dashboard"| gr-b
     end
 end
 ```

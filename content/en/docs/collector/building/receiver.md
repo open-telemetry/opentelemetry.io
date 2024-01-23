@@ -118,7 +118,7 @@ exporters:
   debug:
     verbosity: detailed
   otlp/jaeger:
-    endpoint: 0.0.0.0:14317
+    endpoint: localhost:14317
     tls:
       insecure: true
 
@@ -1049,7 +1049,7 @@ exporters:
   debug:
     verbosity: detailed
   otlp/jaeger:
-    endpoint: 0.0.0.0:14317
+    endpoint: localhost:14317
     tls:
       insecure: true
 
