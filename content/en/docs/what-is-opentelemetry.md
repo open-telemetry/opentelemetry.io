@@ -23,13 +23,13 @@ data is intentionally left to other tools.
 
 ## What is observability?
 
-Observability is the ability to understand the internal
-state of a system by examining its outputs. In the context of software, this
-means being able to understand the internal state of a system by examining its
-telemetry data, which includes traces, metrics, and logs.
+Observability is the ability to understand the internal state of a system by
+examining its outputs. In the context of software, this means being able to
+understand the internal state of a system by examining its telemetry data, which
+includes traces, metrics, and logs.
 
-To make a system observable, it must be instrumented. That is, the code
-must emit [traces](/docs/concepts/observability-primer/#distributed-traces),
+To make a system observable, it must be instrumented. That is, the code must
+emit [traces](/docs/concepts/observability-primer/#distributed-traces),
 [metrics](/docs/concepts/observability-primer/#reliability--metrics), and
 [logs](/docs/concepts/observability-primer/#logs). The instrumented data must
 then be sent to an observability back end.
@@ -47,8 +47,8 @@ principles:
 1. You own the data that you generate. There's no vendor lock-in.
 2. You only have to learn a single set of APIs and conventions.
 
-Both principles combined grant teams and organizations the flexibility they
-need in today's modern computing world.
+Both principles combined grant teams and organizations the flexibility they need
+in today's modern computing world.
 
 If you want to learn more, take a look at OpenTelemetry's
 [mission, vision, and values](/community/mission/).
