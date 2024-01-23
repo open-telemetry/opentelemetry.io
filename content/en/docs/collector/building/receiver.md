@@ -88,7 +88,7 @@ docker run -d --name jaeger \
 ```
 
 Once the container is up and running, you can access Jaeger UI by:
-<http://0.0.0.0:16686/>
+<http://localhost:16686/>
 
 Now, create a Collector config file named `config.yaml` to set up the
 Collector's components and pipelines.
@@ -178,7 +178,7 @@ telemetrygen traces --otlp-insecure --traces 1
 ```
 
 You should be able to see detailed logs in the console and the traces in Jaeger
-UI through URL: <http://0.0.0.0:16686/>.
+UI through URL: <http://localhost:16686/>.
 
 Press <kbd>Ctrl + C</kbd> to stop the Collector instance in the Collector
 console.

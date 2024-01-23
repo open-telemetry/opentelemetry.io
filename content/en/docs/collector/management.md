@@ -188,7 +188,7 @@ $ go run .
 ```
 
 If everything worked out you should now be able to go to
-[http://0.0.0.0:4321/](http://0.0.0.0:4321/) and access the OpAMP server UI
+[http://localhost:4321/](http://localhost:4321/) and access the OpAMP server UI
 where you should see your collector listed, managed by the supervisor:
 
 ![OpAMP example setup](../img/opamp-server-ui.png)

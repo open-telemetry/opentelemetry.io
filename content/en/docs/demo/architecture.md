@@ -188,10 +188,10 @@ subgraph tdf[Telemetry Data Flow]
         end
 
         pr-http --> |"http://0.0.0.0:9090/api"| gr-srv
-        ja-http --> |"http://0.0.0.0:16686/api"| gr-srv
+        ja-http --> |"http://localhost:16686/api"| gr-srv
 
         ja-b{{"Browser<br/>Jaeger UI"}}
-        ja-http ---->|"http://0.0.0.0:16686/search"| ja-b
+        ja-http ---->|"http://localhost:16686/search"| ja-b
 
         gr-b{{"Browser<br/>Grafana UI"}}
         gr-http -->|"http://0.0.0.0:3000/dashboard"| gr-b
