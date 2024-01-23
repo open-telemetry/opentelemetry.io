@@ -8,6 +8,7 @@ TestFilesConcurrently: true
 IgnoreDirs:
   - ^blog/(\d+/)?page/\d+
 IgnoreInternalURLs: # list of paths
+  - /docs/contribution-guidelines/
 IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^/docs/languages/\w+/(api|examples)/$
   - ^/docs/languages/net/(metrics-api|traces-api)/
