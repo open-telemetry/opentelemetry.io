@@ -43,7 +43,7 @@ receivers:
   otlp: # the OTLP receiver the app is sending traces to
     protocols:
       grpc:
-         endpoint: 0.0.0.0:4317
+        endpoint: 0.0.0.0:4317
 
 processors:
   batch:
@@ -67,7 +67,7 @@ receivers:
   otlp: # the OTLP receiver the app is sending metrics to
     protocols:
       grpc:
-         endpoint: 0.0.0.0:4317
+        endpoint: 0.0.0.0:4317
 
 processors:
   batch:
@@ -91,7 +91,7 @@ receivers:
   otlp: # the OTLP receiver the app is sending logs to
     protocols:
       grpc:
-         endpoint: 0.0.0.0:4317
+        endpoint: 0.0.0.0:4317
 
 processors:
   batch:

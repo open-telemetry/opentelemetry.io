@@ -46,9 +46,9 @@ receivers:
   otlp:
     protocols:
       grpc:
-         endpoint: 0.0.0.0:4317
+        endpoint: 0.0.0.0:4317
       http:
-         endpoint: 0.0.0.0:4318
+        endpoint: 0.0.0.0:4318
 processors:
   batch:
 
@@ -88,9 +88,9 @@ receivers:
   otlp:
     protocols:
       grpc:
-         endpoint: 0.0.0.0:4317
+        endpoint: 0.0.0.0:4317
       http:
-         endpoint: 0.0.0.0:4318
+        endpoint: 0.0.0.0:4318
   otlp/2:
     protocols:
       grpc:
@@ -140,7 +140,7 @@ receivers:
   otlp:
     protocols:
       grpc:
-         endpoint: 0.0.0.0:4317
+        endpoint: 0.0.0.0:4317
 
 exporters: ${file:exporters.yaml}
 
@@ -167,7 +167,7 @@ receivers:
   otlp:
     protocols:
       grpc:
-         endpoint: 0.0.0.0:4317
+        endpoint: 0.0.0.0:4317
 
 exporters:
   otlp:
@@ -222,7 +222,7 @@ receivers:
   jaeger:
     protocols:
       grpc:
-         endpoint: 0.0.0.0:4317
+        endpoint: 0.0.0.0:4317
       thrift_binary:
       thrift_compact:
       thrift_http:
@@ -238,9 +238,9 @@ receivers:
   otlp:
     protocols:
       grpc:
-         endpoint: 0.0.0.0:4317
+        endpoint: 0.0.0.0:4317
       http:
-         endpoint: 0.0.0.0:4318
+        endpoint: 0.0.0.0:4318
 
   # Data sources: metrics
   prometheus:

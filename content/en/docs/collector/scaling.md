@@ -361,7 +361,7 @@ receivers:
   otlp:
     protocols:
       grpc:
-         endpoint: 0.0.0.0:4317
+        endpoint: 0.0.0.0:4317
 
 processors:
 
