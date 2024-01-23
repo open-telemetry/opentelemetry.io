@@ -23,10 +23,11 @@ data is intentionally left to other tools.
 
 ## What is observability?
 
-[Observability](/docs/concepts/observability-primer/#what-is-observability) is the ability to understand the internal state of a system by
-examining its outputs. In the context of software, this means being able to
-understand the internal state of a system by examining its telemetry data, which
-includes traces, metrics, and logs.
+[Observability](/docs/concepts/observability-primer/#what-is-observability) is
+the ability to understand the internal state of a system by examining its
+outputs. In the context of software, this means being able to understand the
+internal state of a system by examining its telemetry data, which includes
+traces, metrics, and logs.
 
 To make a system observable, it must be instrumented. That is, the code must
 emit [traces](/docs/concepts/observability-primer/#distributed-traces),
