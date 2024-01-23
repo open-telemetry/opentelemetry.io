@@ -1,3 +1,4 @@
+# cSpell:ignore prisma
 title: Prisma Tracing Instrumentation
 registryType: instrumentation
 language: js
@@ -13,3 +14,7 @@ authors:
 urls:
   repo: https://github.com/prisma/prisma/tree/main/packages/instrumentation
 createdAt: 2022-08-25
+package:
+  registry: npm
+  name: '@prisma/instrumentation'
+  version: 5.8.1
