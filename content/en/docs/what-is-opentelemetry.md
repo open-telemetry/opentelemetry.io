@@ -1,52 +1,59 @@
 ---
 title: What is OpenTelemetry?
-description: A short explanation of what OpenTelemetry is, and is not.
+description: A short explanation of what OpenTelemetry is and isn't.
 aliases: [/about, /docs/concepts/what-is-opentelemetry, /otel]
 weight: -1
 ---
 
 OpenTelemetry is an
 [Observability](/docs/concepts/observability-primer/#what-is-observability)
-framework and toolkit designed to create and manage _telemetry data_ such as
+framework and toolkit designed to create and manage telemetry data such as
 [traces](/docs/concepts/signals/traces/),
 [metrics](/docs/concepts/signals/metrics/), and
 [logs](/docs/concepts/signals/logs/). Crucially, OpenTelemetry is vendor- and
 tool-agnostic, meaning that it can be used with a broad variety of Observability
-backends, including open source tools like
+back ends, including open source tools like
 [Jaeger](https://www.jaegertracing.io/) and
 [Prometheus](https://prometheus.io/), as well as commercial offerings.
-OpenTelemetry is a
-[Cloud Native Computing Foundation (CNCF)](https://www.cncf.io) project.
 
-## Why OpenTelemetry?
+OpenTelemetry is not an observability back end like Jaeger, Prometheus, or other
+commercial vendors. OpenTelemetry is focused on the generation, collection,
+management, and export of telemetry data. The storage and visualization of that
+data is intentionally left to other tools.
 
-With the rise of cloud computing, microservices architectures, and ever-more
-complex business requirements, the need for
-[Observability](/docs/concepts/observability-primer/#what-is-observability) has
-never been greater. Observability is the ability to understand the internal
+## What is observability?
+
+Observability is the ability to understand the internal
 state of a system by examining its outputs. In the context of software, this
 means being able to understand the internal state of a system by examining its
 telemetry data, which includes traces, metrics, and logs.
 
-In order to make a system observable, it must be instrumented. That is, the code
+To make a system observable, it must be instrumented. That is, the code
 must emit [traces](/docs/concepts/observability-primer/#distributed-traces),
 [metrics](/docs/concepts/observability-primer/#reliability--metrics), and
 [logs](/docs/concepts/observability-primer/#logs). The instrumented data must
-then be sent to an Observability backend.
+then be sent to an observability back end.
 
-OpenTelemetry does two important things:
+## Why OpenTelemetry?
 
-1. Allows **you to own the data that you generate** rather than be stuck with a
-   proprietary data format or tool.
-2. Allows you to learn a single set of APIs and conventions
+With the rise of cloud computing, microservices architectures, and increasingly
+complex business requirements, the need for software and infrastructure
+[observability](/docs/concepts/observability-primer/#what-is-observability) is
+greater than ever.
 
-These two things combined enables teams and organizations the flexibility they
+OpenTelemetry satisfies the need for observability while following two key
+principles:
+
+1. You own the data that you generate. There's no vendor lock-in.
+2. You only have to learn a single set of APIs and conventions.
+
+Both principles combined grant teams and organizations the flexibility they
 need in today's modern computing world.
 
 If you want to learn more, take a look at OpenTelemetry's
-[mission, vision and values](/community/mission/).
+[mission, vision, and values](/community/mission/).
 
-## Major components
+## Main OpenTelemetry components
 
 OpenTelemetry consists of the following major components:
 
@@ -71,10 +78,10 @@ OpenTelemetry consists of the following major components:
 
 OpenTelemetry is used by a wide variety of
 [libraries, services and apps](/ecosystem/integrations/) that have OpenTelemetry
-integrated to provide observability out of the box.
+integrated to provide observability by default.
 
-OpenTelemetry is supported by 40+ [vendors](/ecosystem/vendors/), many of whom
-provide commercial support for OpenTelemetry and contribute to the project
+OpenTelemetry is supported by numerous [vendors](/ecosystem/vendors/), many of
+whom provide commercial support for OpenTelemetry and contribute to the project
 directly.
 
 ## Extensibility
@@ -91,28 +98,23 @@ extended include:
   OpenTelemetry protocol (OTLP)
 - Creating a custom propagator for a nonstandard context propagation format
 
-Although most users will not need to extend OpenTelemetry, the project is
+Although most users might not need to extend OpenTelemetry, the project is
 designed to make it possible at nearly every level.
 
-### History
+## History
 
-OpenTelemetry is the result of a merger between two prior projects,
+OpenTelemetry is a
+[Cloud Native Computing Foundation (CNCF)](https://www.cncf.io) project that is
+the result of a merger between two prior projects,
 [OpenTracing](https://opentracing.io) and [OpenCensus](https://opencensus.io).
 Both of these projects were created to solve the same problem: the lack of a
 standard for how to instrument code and send telemetry data to an Observability
-backend. However, neither project was fully able to solve the problem on its
-own, and so the two projects merged to form OpenTelemetry so that they could
-combine their strengths and truly offer a single standard.
+backend. As neither project was fully able to solve the problem independently,
+they merged to form OpenTelemetry and combine their strengths while offering a
+single solution.
 
 If you are currently using OpenTracing or OpenCensus, you can learn how to
-migrate to OpenTelemetry [here](/docs/migration/).
-
-## What OpenTelemetry is not
-
-OpenTelemetry is not an observability back-end like Jaeger, Prometheus, or
-commercial vendors. OpenTelemetry is focused on the generation, collection,
-management, and export of telemetry data. The storage and visualization of that
-data is intentionally left to other tools.
+migrate to OpenTelemetry in the [Migration guide](/docs/migration/).
 
 ## What next?
 
