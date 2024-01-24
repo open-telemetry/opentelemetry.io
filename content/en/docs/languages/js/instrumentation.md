@@ -1192,15 +1192,20 @@ Node.js or Web SDKs.
 
 ## Metrics
 
-[Spans](https://opentelemetry.io/docs/concepts/signals/traces/#spans) provide detailed information about your application, but produce data that is proportional to the load on the system. In contrast, [metrics](https://opentelemetry.io/docs/concepts/signals/metrics) combine individual measurements into aggregations, and produce data which is constant as a function of system load. The aggregations lack details required to diagnose low level issues, but complement spans by helping to identify trends and providing application runtime telemetry.
+[Metrics](/docs/concepts/signals/metrics) combine individual measurements into
+aggregations, and produce data which is constant as a function of system load.
+The aggregations lack details required to diagnose low level issues, but
+complement spans by helping to identify trends and providing application runtime
+telemetry.
 
-The metrics API defines a variety of instruments. Instruments record measurements, which are aggregated by the metrics SDK and eventually exported out of process. Instruments come in synchronous and asynchronous varieties. Synchronous instruments record measurements as they happen. Asynchronous instrument register a callback, which is invoked once per collection, and which records measurements at that point in time.
+The metrics API defines a variety of instruments. Instruments record
+measurements, which are aggregated by the metrics SDK and eventually exported
+out of process. Instruments come in synchronous and asynchronous varieties.
+Synchronous instruments record measurements as they happen. Asynchronous
+instrument register a callback, which is invoked once per collection, and which
+records measurements at that point in time.
 
 OpenTelemetry JavaScript currently supports the following `Instrument`s:
-
-To start producing [metrics](/docs/concepts/signals/metrics), you'll need to
-have an initialized `MeterProvider` that lets you create a `Meter`. `Meter`s let
-you create `Instrument`s that you can use to create different kinds of metrics.
 
 - Counter, a synchronous instrument that supports non-negative increments
 - Asynchronous Counter, an asynchronous instrument which supports non-negative
@@ -1218,11 +1223,12 @@ For more on synchronous and asynchronous instruments, and which kind is best
 suited for your use case, see
 [Supplementary Guidelines](/docs/specs/otel/metrics/supplementary-guidelines/).
 
-{%% alert title="Note" class="info" %%}
-OpenTelemetry instruments are either synchronous or asynchronous (observable).
+{%% alert title="Note" class="info" %%} OpenTelemetry instruments are either
+synchronous or asynchronous (observable).
 
-If you want to learn more about the difference, and when to use which kind,
-take a look at the section [Synchronous and asynchronous instruments] 
+If you want to learn more about the difference, and when to use which kind, take
+a look at the concept page on
+[synchronous and asynchronous instruments](/docs/concepts/signals/metrics/#synchronous-and-asynchronous-instruments)
 {%% /alert %%}
 
 ### Initialize Metrics
@@ -1399,7 +1405,8 @@ rather than exporting the meter instance to the rest of your app. This helps
 avoid trickier application load issues when other required dependencies are
 involved.
 
-In the case of the [example app](#example-app), there are two places where a tracer may be acquired with an appropriate Instrumentation Scope:
+In the case of the [example app](#example-app), there are two places where a
+tracer may be acquired with an appropriate Instrumentation Scope:
 
 First, in the _application file_ `app.ts` (or `app.js`):
 
@@ -1515,17 +1522,42 @@ module.exports = { rollTheDice };
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Using Counters
+Now that you have [meters](/docs/concepts/signals/metrics/#meter) initialized.
+you can create
+[metric instruments](/docs/concepts/signals/metrics/#metric-instruments).
+
+### Create counters
 
 Counters can be used to measure a non-negative, increasing value.
 
-```js
-const counter = myMeter.createCounter('events.counter');
+In the case of our [example app](#example-app) we can use this to count how
+often the dice has been rolled:
 
-//...
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
-counter.add(1);
+```ts
+/*dice.ts*/
+const counter = meter.createCounter('dice-lib.rolls.counter');
+
+function rollOnce(min: number, max: number) {
+  counter.add(1);
+  return Math.floor(Math.random() * (max - min) + min);
+}
 ```
+
+{{% /tab %}} {{% tab JavaScript %}}
+
+```js
+/*dice.js*/
+const counter = meter.createCounter('dice-lib.rolls.counter');
+
+function rollOnce(min, max) {
+  counter.add(1);
+  return Math.floor(Math.random() * (max - min) + min);
+}
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 ### Using UpDown Counters
 
