@@ -29,11 +29,12 @@ outputs. In the context of software, this means being able to understand the
 internal state of a system by examining its telemetry data, which includes
 traces, metrics, and logs.
 
-To make a system observable, it must be instrumented. That is, the code must
-emit [traces](/docs/concepts/observability-primer/#distributed-traces),
-[metrics](/docs/concepts/observability-primer/#reliability--metrics), and
-[logs](/docs/concepts/observability-primer/#logs). The instrumented data must
-then be sent to an observability back end.
+To make a system observable, it must be
+[instrumented](/docs/concepts/instrumentation). That is, the code must emit
+[traces](/docs/concepts/signals/traces/),
+[metrics](/docs/concepts/signals/metrics/), and
+[logs](/docs/concepts/signals/logs/). The instrumented data must then be sent to
+an observability back end.
 
 ## Why OpenTelemetry?
 
