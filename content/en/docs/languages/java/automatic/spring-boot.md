@@ -143,6 +143,14 @@ dependencies {
 ```
 
 {{% /tab %}} {{< /tabpane>}}
+                                  
+#### Disable data export
+
+You can disable data export, e.g. for testing purposes.
+
+```properties
+otel.sdk.disabled=true
+```
 
 ### Additional instrumentations
 
