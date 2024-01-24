@@ -10,13 +10,13 @@ description: Instrumentation for OpenTelemetry .NET
 {{% alert title="Note" color="info" %}}
 
 On this page you will learn how you can add traces, metrics and logs to your
-code _manually_. But, you are not limited to only use one kind of
-instrumentation: use [automatic instrumentation](/docs/languages/net/automatic/)
+code manually. You are not limited to using one kind of instrumentation:
+you can also use [automatic instrumentation](/docs/languages/net/automatic/)
 to get started and then enrich your code with manual instrumentation as needed.
 
 Also, for libraries your code depends on, you don't have to write
-instrumentation code yourself, since they might come with OpenTelemetry built-in
-_natively_ or you can make use of
+instrumentation code yourself, since they might come with OpenTelemetry
+or you can make use of
 [instrumentation libraries](/docs/languages/net/libraries/).
 
 {{% /alert %}}
@@ -135,7 +135,7 @@ namespace otel
 }
 ```
 
-Replace the program.cs content with the following code:
+Replace the content of the program.cs file with the following code:
 
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
@@ -184,7 +184,8 @@ Before any other module in your application is loaded, you must initialize the S
 If you fail to initialize the SDK or initialize it too late, no-op
 implementations will be provided to any library that acquires a tracer or meter from the API.
 
-To intialize the sdks, replace the program.cs content with the following code: 
+To initialize the SKDs, replace the content of the program.cs file with the
+following code: 
 
 ```csharp
 using OpenTelemetry.Logs;
@@ -228,13 +229,12 @@ For debugging and local development purposes, the following example exports
 telemetry to the console. After you have finished setting up manual
 instrumentation, you need to configure an appropriate exporter to
 [export the app's telemetry data](/docs/languages/net/exporters/) to one or more
-telemetry backends.
+telemetry back ends.
 
 The example also sets up the mandatory SDK default attribute `service.name`,
-which holds the logical name of the service, and the optional (but highly
-encouraged!) attribute `service.version`, which holds the version of the service
+which holds the logical name of the service, and the optional, but highly
+encouraged, attribute `service.version`, which holds the version of the service
 API or implementation.
-
 Alternative methods exist for setting up resource attributes. For more
 information, see [Resources](/docs/languages/net/resources/).
 
