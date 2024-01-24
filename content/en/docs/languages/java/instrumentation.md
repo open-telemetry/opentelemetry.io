@@ -1185,8 +1185,8 @@ meter
 
 ## Logs
 
-Logs are distinct from Metrics and Tracing in that there is no user-facing logs
-API. Instead, there is tooling to bridge logs from existing popular log
+Logs are distinct from Metrics and Tracing in that **there is no user-facing OpenTelemetry logs
+API**. Instead, there is tooling to bridge logs from existing popular log
 frameworks (e.g. SLF4j, JUL, Logback, Log4j) into the OpenTelemetry ecosystem.
 
 The two typical workflows discussed below each cater to different application
