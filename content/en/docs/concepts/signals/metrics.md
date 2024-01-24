@@ -7,7 +7,7 @@ description: A measurement captured at runtime
 A **metric** is a **measurement** of a service captured at runtime. The moment
 of capturing a measurements is known as a **metric event**, which consists not
 only of the measurement itself, but also the time at which it was captured and
-associated metadata.
+associated metadata.d
 
 Application and request metrics are important indicators of availability and
 performance. Custom metrics can provide insights into how availability
@@ -36,8 +36,8 @@ Providers.
 ## Metric Exporter
 
 Metric Exporters send metric data to a consumer. This consumer can be standard
-output for debugging at development-time, the OpenTelemetry Collector, or any
-open source or vendor backend of your choice.
+output for debugging during development, the OpenTelemetry Collector, or any
+open source or vendor back end of your choice.
 
 ## Metric Instruments
 
