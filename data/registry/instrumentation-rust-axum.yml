@@ -1,0 +1,19 @@
+# cSpell:ignore axum
+title: axum Instrumentation
+registryType: instrumentation
+language: rust
+tags:
+  - rust
+  - axum
+  - instrumentation
+license: CC0 1.0
+description: Middlewares to integrate axum + tracing + opentelemetry.
+authors:
+  - name: David Bernard
+urls:
+  repo: https://github.com/davidB/tracing-opentelemetry-instrumentation-sdk/tree/main/axum-tracing-opentelemetry
+createdAt: 2020-08-28
+package:
+  registry: crates
+  name: axum-tracing-opentelemetry
+  version: 0.16.0
