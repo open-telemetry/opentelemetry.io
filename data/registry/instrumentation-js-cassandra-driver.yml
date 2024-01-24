@@ -1,14 +1,19 @@
 title: OpenTelemetry Instrumentation for cassandra-driver
 registryType: instrumentation
-isThirdParty: false
 language: js
 tags:
   - Node.js
   - cassandra
   - cassandra-driver
   - database
-repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-cassandra
 license: Apache 2.0
 description: Instrumentation library for Cassandra driver.
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-cassandra
+createdAt: 2021-07-08
+package:
+  name: '@opentelemetry/instrumentation-cassandra-driver'
+  registry: npm
+  version: 0.34.2

@@ -1,13 +1,18 @@
 title: Trilogy Instrumentation
 registryType: instrumentation
-isThirdParty: false
 language: ruby
 tags:
   - ruby
   - instrumentation
   - trilogy
-repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/trilogy
 license: Apache 2.0
 description: Trilogy instrumentation for Ruby.
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/trilogy
+createdAt: 2020-11-09
+package:
+  registry: gems
+  name: opentelemetry-instrumentation-trilogy
+  version: 0.58.0

@@ -1,40 +1,12 @@
 ---
 title: Using instrumentation libraries
-linkTitle: Library
+linkTitle: Libraries
 aliases: [configuring_automatic_instrumentation, automatic]
 cSpell:ignore: faraday metapackage sinatra
 weight: 30
 ---
 
-When you develop an app, you make use of third-party libraries and frameworks to
-accelerate your work and to not reinvent the wheel. If you now instrument your
-app with OpenTelemetry, you don't want to spend additional time on manually
-adding traces, logs and metrics to those libraries and frameworks. Fortunately,
-you don't have to reinvent the wheel for those either: libraries might come with
-OpenTelemetry support natively or you can use an
-[Instrumentation Library](/docs/concepts/instrumentation/libraries/) in order to
-generate telemetry data for a library or framework.
-
-If you are instrumenting an app, you can learn on this page how to make use of
-natively instrumented libraries and Instrumentation Libraries for your
-dependencies.
-
-## Use natively instrumented libraries
-
-If a library comes with OpenTelemetry out of the box, you get the traces,
-metrics and logs emitted from that library, by adding and setting up the
-OpenTelemetry SDK with your app.
-
-The library may provide some additional configuration for the instrumentation.
-Go to the documentation of that library to learn more.
-
-{{% alert title="Help wanted" color="warning" %}}
-
-As of today, we don't know about any Ruby library that has OpenTelemetry
-natively integrated. If you know about such a library,
-[let us know](https://github.com/open-telemetry/opentelemetry.io/issues/new).
-
-{{% /alert %}}
+{{% docs/languages/libraries-intro Ruby %}}
 
 ## Use Instrumentation Libraries
 

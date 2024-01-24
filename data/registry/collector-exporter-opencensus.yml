@@ -1,13 +1,19 @@
+# cSpell:ignore opencensusexporter
 title: OpenCensus Collector Exporter
 registryType: exporter
-isThirdParty: false
 language: collector
 tags:
   - go
   - exporter
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/opencensusexporter
 license: Apache 2.0
 description: The OpenCensus Exporter for the OpenTelemetry Collector.
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/opencensusexporter
+createdAt: 2020-11-05
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/opencensusexporter
+  version: v0.92.0

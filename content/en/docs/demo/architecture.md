@@ -117,8 +117,8 @@ classDef typescript fill:#e98516,color:black;
 ```
 
 Follow these links for the current state of
-[metric](/docs/demo/telemetry-features/metric-features/) and
-[trace](/docs/demo/telemetry-features/trace-features/) instrumentation of the
+[metric](/docs/demo/telemetry-features/metric-coverage/) and
+[trace](/docs/demo/telemetry-features/trace-coverage/) instrumentation of the
 demo applications.
 
 The collector is configured in

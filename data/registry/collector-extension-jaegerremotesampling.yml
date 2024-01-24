@@ -1,16 +1,22 @@
+# cSpell:ignore jaegerremotesampling
 title: ASAP Client Authentication Extension
 registryType: extension
-isThirdParty: false
 language: collector
 tags:
   - jaeger
   - sampling
   - extension
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/jaegerremotesampling
 license: Apache 2.0
 description:
   This extension allows serving sampling strategies following the Jaeger's
   remote sampling API.
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/jaegerremotesampling
+createdAt: 2022-11-07
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/extension/jaegerremotesampling
+  version: v0.92.0

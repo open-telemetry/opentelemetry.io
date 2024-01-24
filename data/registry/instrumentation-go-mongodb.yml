@@ -1,17 +1,18 @@
 title: MongoDB database instrumentation
 registryType: instrumentation
-isThirdParty: false
 language: go
 tags:
   - go
   - instrumentation
   - mongodb
   - database
-repo: https://go.opentelemetry.io/contrib/instrumentation/go.mongodb.org/mongo-driver
 license: Apache 2.0
 description:
   Package mongo-driver provides functions to trace the
   go.mongodb.org/mongo-driver/mongo(https://github.com/mongodb/mongo-go-driver)
   package.
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://go.opentelemetry.io/contrib/instrumentation/go.mongodb.org/mongo-driver
+createdAt: 2020-06-08
