@@ -115,6 +115,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-06-30T11:43:47.533754-04:00"
   },
+  "https://aws-otel.github.io/docs/getting-started/collector": {
+    "StatusCode": 206,
+    "LastSeen": "2024-01-24T14:54:53.554668+01:00"
+  },
   "https://aws.amazon.com/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:05:27.827135-05:00"
@@ -1483,6 +1487,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-07-26T16:17:33.996008+02:00"
   },
+  "https://docs.splunk.com/observability/en/gdi/opentelemetry/opentelemetry.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-01-24T14:55:09.249826+01:00"
+  },
   "https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/htmlsingle/": {
     "StatusCode": 206,
     "LastSeen": "2023-12-15T18:44:53.694369+01:00"
@@ -1991,6 +1999,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-10-26T12:18:57.59078+02:00"
   },
+  "https://github.com/SumoLogic/sumologic-otel-collector": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-24T14:55:09.736454+01:00"
+  },
   "https://github.com/TykTechnologies/tyk": {
     "StatusCode": 200,
     "LastSeen": "2023-10-26T12:18:58.23681+02:00"
@@ -2082,6 +2094,10 @@
   "https://github.com/avillela/nomad-conversions": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:05:40.87763-05:00"
+  },
+  "https://github.com/aws-observability/aws-otel-collector": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-24T14:54:51.229664+01:00"
   },
   "https://github.com/bhs": {
     "StatusCode": 200,
@@ -2283,6 +2299,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:55:40.84138-05:00"
   },
+  "https://github.com/grafana/agent": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-24T14:54:54.282464+01:00"
+  },
   "https://github.com/grpc/grpc-java": {
     "StatusCode": 200,
     "LastSeen": "2023-09-14T09:36:39.160279-05:00"
@@ -2431,6 +2451,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-06-30T09:42:54.070434-04:00"
   },
+  "https://github.com/liatrio/liatrio-otel-collector": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-24T14:54:58.433558+01:00"
+  },
   "https://github.com/lightstep": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:10:34.800347-05:00"
@@ -2514,6 +2538,10 @@
   "https://github.com/nhatthm/otelsql": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:11:34.796425-05:00"
+  },
+  "https://github.com/observIQ/observiq-otel-collector": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-24T14:55:03.346925+01:00"
   },
   "https://github.com/olha23": {
     "StatusCode": 200,
@@ -3751,6 +3779,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-11-16T15:02:08.644309-05:00"
   },
+  "https://github.com/os-observability/redhat-opentelemetry-collector": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-24T14:55:05.102469+01:00"
+  },
   "https://github.com/otterize": {
     "StatusCode": 200,
     "LastSeen": "2023-11-16T15:02:10.831177-05:00"
@@ -3858,6 +3890,10 @@
   "https://github.com/servian/hashiqube": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:05:35.331847-05:00"
+  },
+  "https://github.com/signalfx/splunk-otel-collector": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-24T14:55:07.887333+01:00"
   },
   "https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-with-GraalVM": {
     "StatusCode": 200,
@@ -4075,6 +4111,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:52:48.944519-05:00"
   },
+  "https://grafana.com/docs/agent/latest/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-24T14:54:56.149229+01:00"
+  },
   "https://grafana.com/oss/opentelemetry/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:52:48.999991-05:00"
@@ -4154,6 +4194,10 @@
   "https://help.sumologic.com/docs/send-data/opentelemetry-collector/": {
     "StatusCode": 206,
     "LastSeen": "2023-10-09T19:36:59.126993+02:00"
+  },
+  "https://help.sumologic.com/docs/send-data/opentelemetry-collector/sumo-logic-opentelemetry-vs-opentelemetry-upstream-relationship/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-01-24T14:55:10.30065+01:00"
   },
   "https://heroku.com": {
     "StatusCode": 206,
