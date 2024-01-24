@@ -1192,10 +1192,15 @@ Node.js or Web SDKs.
 
 ## Metrics
 
+[Spans](https://opentelemetry.io/docs/concepts/signals/traces/#spans) provide detailed information about your application, but produce data that is proportional to the load on the system. In contrast, [metrics](https://opentelemetry.io/docs/concepts/signals/metrics) combine individual measurements into aggregations, and produce data which is constant as a function of system load. The aggregations lack details required to diagnose low level issues, but complement spans by helping to identify trends and providing application runtime telemetry.
+
+The metrics API defines a variety of instruments. Instruments record measurements, which are aggregated by the metrics SDK and eventually exported out of process. Instruments come in synchronous and asynchronous varieties. Synchronous instruments record measurements as they happen. Asynchronous instrument register a callback, which is invoked once per collection, and which records measurements at that point in time.
+
+OpenTelemetry JavaScript currently supports the following `Instrument`s:
+
 To start producing [metrics](/docs/concepts/signals/metrics), you'll need to
 have an initialized `MeterProvider` that lets you create a `Meter`. `Meter`s let
 you create `Instrument`s that you can use to create different kinds of metrics.
-OpenTelemetry JavaScript currently supports the following `Instrument`s:
 
 - Counter, a synchronous instrument that supports non-negative increments
 - Asynchronous Counter, an asynchronous instrument which supports non-negative
@@ -1213,9 +1218,12 @@ For more on synchronous and asynchronous instruments, and which kind is best
 suited for your use case, see
 [Supplementary Guidelines](/docs/specs/otel/metrics/supplementary-guidelines/).
 
-If a `MeterProvider` is not created either by an instrumentation library or
-manually, the OpenTelemetry Metrics API will use a no-op implementation and fail
-to generate data.
+{%% alert title="Note" class="info" %%}
+OpenTelemetry instruments are either synchronous or asynchronous (observable).
+
+If you want to learn more about the difference, and when to use which kind,
+take a look at the section [Synchronous and asynchronous instruments] 
+{%% /alert %%}
 
 ### Initialize Metrics
 
@@ -1275,9 +1283,8 @@ const resource = Resource.default().merge(
 
 const metricReader = new PeriodicExportingMetricReader({
   exporter: new ConsoleMetricExporter(),
-
-  // Default is 60000ms (60 seconds). Set to 3 seconds for demonstrative purposes only.
-  exportIntervalMillis: 3000,
+  // Default is 60000ms (60 seconds). Set to 5 seconds for demonstrative purposes only.
+  exportIntervalMillis: 5000,
 });
 
 const myServiceMeterProvider = new MeterProvider({
@@ -1314,8 +1321,8 @@ const resource = Resource.default().merge(
 const metricReader = new PeriodicExportingMetricReader({
   exporter: new ConsoleMetricExporter(),
 
-  // Default is 60000ms (60 seconds). Set to 3 seconds for demonstrative purposes only.
-  exportIntervalMillis: 3000,
+  // Default is 60000ms (60 seconds). Set to 5 seconds for demonstrative purposes only.
+  exportIntervalMillis: 5000,
 });
 
 const myServiceMeterProvider = new MeterProvider({
@@ -1358,7 +1365,10 @@ call `getMeter` to acquire a meter. For example:
 ```ts
 import opentelemetry from '@opentelemetry/api';
 
-const myMeter = opentelemetry.metrics.getMeter('my-service-meter');
+const myMeter = opentelemetry.metrics.getMeter(
+  'instrumentation-scope-name',
+  'instrumentation-scope-version',
+);
 
 // You can now use a 'meter' to create instruments!
 ```
@@ -1368,46 +1378,142 @@ const myMeter = opentelemetry.metrics.getMeter('my-service-meter');
 ```js
 const opentelemetry = require('@opentelemetry/api');
 
-const myMeter = opentelemetry.metrics.getMeter('my-service-meter');
+const myMeter = opentelemetry.metrics.getMeter(
+  'instrumentation-scope-name',
+  'instrumentation-scope-version',
+);
 
 // You can now use a 'meter' to create instruments!
 ```
 
 {{% /tab %}} {{< /tabpane >}}
 
+The values of `instrumentation-scope-name` and `instrumentation-scope-version`
+should uniquely identify the
+[Instrumentation Scope](/docs/concepts/instrumentation-scope/), such as the
+package, module or class name. While the name is required, the version is still
+recommended despite being optional.
+
 It’s generally recommended to call `getMeter` in your app when you need it
 rather than exporting the meter instance to the rest of your app. This helps
 avoid trickier application load issues when other required dependencies are
 involved.
 
-### Synchronous and asynchronous instruments
+In the case of the [example app](#example-app), there are two places where a tracer may be acquired with an appropriate Instrumentation Scope:
 
-OpenTelemetry instruments are either synchronous or asynchronous (observable).
+First, in the _application file_ `app.ts` (or `app.js`):
 
-Synchronous instruments take a measurement when they are called. The measurement
-is done as another call during program execution, just like any other function
-call. Periodically, the aggregation of these measurements is exported by a
-configured exporter. Because measurements are decoupled from exporting values,
-an export cycle may contain zero or multiple aggregated measurements.
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
-Asynchronous instruments, on the other hand, provide a measurement at the
-request of the SDK. When the SDK exports, a callback that was provided to the
-instrument on creation is invoked. This callback provides the SDK with a
-measurement that is immediately exported. All measurements on asynchronous
-instruments are performed once per export cycle.
+```ts
+/*app.ts*/
+import { metrics, trace } from '@opentelemetry/api';
+import express, { Express } from 'express';
+import { rollTheDice } from './dice';
 
-Asynchronous instruments are useful in several circumstances, such as:
+const tracer = trace.getTracer('dice-server', '0.1.0');
+const meter = metrics.getMeter('dice-server', '0.1.0');
 
-- When updating a counter is not computationally cheap, and you don't want the
-  current executing thread to wait for the measurement
-- Observations need to happen at frequencies unrelated to program execution
-  (i.e., they cannot be accurately measured when tied to a request lifecycle)
-- There is no known timestamp for a measurement value
+const PORT: number = parseInt(process.env.PORT || '8080');
+const app: Express = express();
 
-In cases like these, it's often better to observe a cumulative value directly,
-rather than aggregate a series of deltas in post-processing (the synchronous
-example). Take note of the use of `observe` rather than `add` in the appropriate
-code examples below.
+app.get('/rolldice', (req, res) => {
+  const rolls = req.query.rolls ? parseInt(req.query.rolls.toString()) : NaN;
+  if (isNaN(rolls)) {
+    res
+      .status(400)
+      .send("Request parameter 'rolls' is missing or not a number.");
+    return;
+  }
+  res.send(JSON.stringify(rollTheDice(rolls, 1, 6)));
+});
+
+app.listen(PORT, () => {
+  console.log(`Listening for requests on http://localhost:${PORT}`);
+});
+```
+
+{{% /tab %}} {{% tab JavaScript %}}
+
+```js
+/*app.js*/
+const { trace, metrics } = require('@opentelemetry/api');
+const express = require('express');
+const { rollTheDice } = require('./dice.js');
+
+const tracer = trace.getTracer('dice-server', '0.1.0');
+const meter = metrics.getMeter('dice-server', '0.1.0');
+
+const PORT = parseInt(process.env.PORT || '8080');
+const app = express();
+
+app.get('/rolldice', (req, res) => {
+  const rolls = req.query.rolls ? parseInt(req.query.rolls.toString()) : NaN;
+  if (isNaN(rolls)) {
+    res
+      .status(400)
+      .send("Request parameter 'rolls' is missing or not a number.");
+    return;
+  }
+  res.send(JSON.stringify(rollTheDice(rolls, 1, 6)));
+});
+
+app.listen(PORT, () => {
+  console.log(`Listening for requests on http://localhost:${PORT}`);
+});
+```
+
+{{% /tab %}} {{< /tabpane >}}
+
+And second, in the _library file_ `dice.ts` (or `dice.js`):
+
+{{< tabpane text=true >}} {{% tab TypeScript %}}
+
+```ts
+/*dice.ts*/
+import { trace, metrics } from '@opentelemetry/api';
+
+const tracer = trace.getTracer('dice-lib');
+const meter = metrics.getMeter('dice-lib');
+
+function rollOnce(min: number, max: number) {
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+export function rollTheDice(rolls: number, min: number, max: number) {
+  const result: number[] = [];
+  for (let i = 0; i < rolls; i++) {
+    result.push(rollOnce(min, max));
+  }
+  return result;
+}
+```
+
+{{% /tab %}} {{% tab JavaScript %}}
+
+```js
+/*dice.js*/
+const { trace, metrics } = require('@opentelemetry/api');
+
+const tracer = trace.getTracer('dice-lib');
+const meter = metrics.getMeter('dice-lib');
+
+function rollOnce(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+function rollTheDice(rolls, min, max) {
+  const result = [];
+  for (let i = 0; i < rolls; i++) {
+    result.push(rollOnce(min, max));
+  }
+  return result;
+}
+
+module.exports = { rollTheDice };
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 ### Using Counters
 
