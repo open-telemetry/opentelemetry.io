@@ -1,6 +1,7 @@
 ---
 title: Context
 weight: 55
+cSpell:ignore: Swoole
 ---
 
 In order for OpenTelemetry to work, it must store and propagate important
@@ -136,9 +137,9 @@ $scope = Context::getCurrent()->with($key, 'value')->activate();
 //exit without detaching $scope
 ```
 
-This can be problematic in some situations, particularly in legacy codebases
-where an application might `exit` or `die` - any active spans will not be
-completed and exported, but the `DebugScope` will also complain loudly.
+This can be problematic in some situations, particularly in legacy applications
+which might `exit` or `die` - any active spans will not be completed and
+exported, but the `DebugScope` will also complain loudly.
 
 If you understand why `DebugScope` is complaining and accept the risks, then you
 can disable the feature entirely by setting `OTEL_PHP_DEBUG_SCOPES_DISABLED` to
