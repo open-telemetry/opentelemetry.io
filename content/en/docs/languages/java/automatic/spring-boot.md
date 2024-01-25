@@ -21,7 +21,7 @@ following cases:
   another Java monitoring agent
 
 [Spring Boot starter]:
-https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using.build-systems.starters
+  https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using.build-systems.starters
 
 The
 [opentelemetry-java-examples/spring-native](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/spring-native)
@@ -121,9 +121,9 @@ For details concerning supported libraries and features of the OpenTelemetry
 auto-configuration, see the configuration [README].
 
 [auto-configuration]:
-https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.auto-configuration
+  https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.auto-configuration
 [README]:
-https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/README.md#features
+  https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/README.md#features
 
 {{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
 
@@ -162,37 +162,9 @@ and
 [Logging](https://github.com/open-telemetry/opentelemetry-java/tree/main/exporters/logging)
 Span Exporters.
 
-<<<<<<< HEAD
 As of 2.0.0+ the default protocol is `http/protobuf`. For more details on
 exporter configuration, see
 [OTLP Exporter Configuration](/docs/concepts/sdk-configuration/otlp-exporter-configuration/#otel_exporter_otlp_endpoint).
-=======
-#### Exporter Properties
-
-| Feature       | Property                      | Default Value  |
-| ------------- | ----------------------------- | -------------- |
-| OTLP Exporter | `otel.exporter.otlp.endpoint` | localhost:4317 |
-|               | `otel.exporter.otlp.protocol` | http/protobuf  |
-|               | `otel.exporter.otlp.headers`  |                |
-|               | `otel.exporter.otlp.timeout`  | 1s             |
-
-The `otel.exporter.otlp.headers` property can be specified as a comma-separated
-list, which is compliant with the
-[specification](/docs/concepts/sdk-configuration/otlp-exporter-configuration/#otel_exporter_otlp_headers).
-Similar to the resource attributes, the headers can be specified in
-`application.properties` or `application.yaml`:
-
-```yaml
-otel:
-  exporter:
-    otlp:
-      headers:
-        - key: 'header1'
-          value: 'value1'
-        - key: 'header2'
-          value: 'value2'
-```
->>>>>>> 3044e93f (Results from /fix:format)
 
 #### Enabling/Disabling Exporters
 
@@ -311,73 +283,6 @@ to learn more about the OpenTelemetry WebClientFilter.
 
 ### Additional Instrumentations
 
-<<<<<<< HEAD
-=======
-Instead of using the OpenTelemetry Spring starter, you can use the OpenTelemetry
-autoconfiguration features with an annotation or Zipkin exporters.
-
-#### Spring Autoconfiguration
-
-Auto-configuration is natively supported by Springboot applications. To enable
-these features in "vanilla" use `@EnableOpenTelemetry` to complete a component
-scan of this package.
-
-```java
-import io.opentelemetry.instrumentation.spring.autoconfigure.EnableOpenTelemetry;
-import org.springframework.context.annotation.Configuration;
-
-@Configuration
-@EnableOpenTelemetry
-public class OpenTelemetryConfig {}
-```
-
-#### OpenTelemetry Zipkin Exporter Starter
-
-OpenTelemetry Zipkin Exporter Starter is a starter package that includes the
-opentelemetry-api, opentelemetry-sdk, opentelemetry-extension-annotations,
-opentelmetry-logging-exporter, opentelemetry-spring-boot-autoconfigurations and
-spring framework starters required to setup distributed tracing. It also
-provides the
-[opentelemetry-exporters-zipkin](https://github.com/open-telemetry/opentelemetry-java/tree/main/exporters/zipkin)
-artifact and corresponding exporter auto-configuration. Check out
-[opentelemetry-spring-boot-autoconfigure](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/README.md#features)
-for the list of supported libraries and features.
-
-If an exporter is present in the classpath during runtime and a spring bean of
-the exporter is missing from the spring application context. An exporter bean is
-initialized and added to a simple span processor in the active tracer provider.
-Check out the implementation
-[here](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/OpenTelemetryAutoConfiguration.java).
-
-{{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
-
-```xml
-<dependencies>
-  <dependency>
-    <groupId>io.opentelemetry</groupId>
-    <artifactId>opentelemetry-exporter-zipkin</artifactId>
-    <version>{{% param vers.otel %}}</version>
-  </dependency>
-</dependencies>
-```
-
-{{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
-
-```kotlin
-dependencies {
-  implementation("io.opentelemetry:opentelemetry-exporter-zipkin:{{% param vers.otel %}}")
-}
-```
-
-{{% /tab %}} {{< /tabpane>}}
-
-##### Configurations
-
-| Property                       | Default Value | ConditionalOnClass   |
-| ------------------------------ | ------------- | -------------------- |
-| `otel.exporter.zipkin.enabled` | true          | `ZipkinSpanExporter` |
-
->>>>>>> 3044e93f (Results from /fix:format)
 #### JDBC Instrumentation
 
 You have two ways to enable the JDBC instrumentation with the OpenTelemetry
@@ -571,6 +476,7 @@ public class TracedClass {
 You can configure other instrumentations with
 [OpenTelemetry instrumentations libraries](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks).
 
+
 ### Other configurations
 
 Instead of using the OpenTelemetry Spring starter, you can use the OpenTelemetry
@@ -590,12 +496,11 @@ import org.springframework.context.annotation.Configuration;
 @EnableOpenTelemetry
 public class OpenTelemetryConfig {}
 ```
-
 #### Zipkin starter
 
 OpenTelemetry Zipkin Exporter Starter is a starter package that includes the
 opentelemetry-api, opentelemetry-sdk, opentelemetry-extension-annotations,
-opentelemetry-logging-exporter, opentelemetry-spring-boot-autoconfigurations and
+opentelmetry-logging-exporter, opentelemetry-spring-boot-autoconfigurations and
 spring framework starters required to setup distributed tracing. It also
 provides the
 [opentelemetry-exporters-zipkin](https://github.com/open-telemetry/opentelemetry-java/tree/main/exporters/zipkin)
@@ -604,7 +509,7 @@ artifact and corresponding exporter auto-configuration. Check out
 for the list of supported libraries and features.
 
 If an exporter is present in the classpath during runtime and a spring bean of
-the exporter is missing from the spring application context, an exporter bean is
+the exporter is missing from the spring application context. An exporter bean is
 initialized and added to a simple span processor in the active tracer provider.
 Check out the implementation
 [here](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/OpenTelemetryAutoConfiguration.java).
@@ -634,5 +539,5 @@ dependencies {
 ##### Configurations
 
 | Property                       | Default Value | ConditionalOnClass   |
-|--------------------------------|---------------|----------------------|
+| ------------------------------ | ------------- | -------------------- |
 | `otel.exporter.zipkin.enabled` | true          | `ZipkinSpanExporter` |
