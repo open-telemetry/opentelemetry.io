@@ -13,16 +13,16 @@ cSpell:ignore: guzzlehttp myapp
 ## Example app preparation {#example-app}
 
 These instructions use a modified version of the example app from
-[Getting Started](/docs/languages/php/getting-started/) to help you learn
-how to instrument your PHP code.
+[Getting Started](/docs/languages/php/getting-started/) to help you learn how to
+instrument your PHP code.
 
-If you want to instrument your own app or library, follow the instructions
-to adapt the process to your own code.
+If you want to instrument your own app or library, follow the instructions to
+adapt the process to your own code.
 
 ### Dependencies {#example-app-dependencies}
 
-In an empty directory, initialize a minimal `composer.json` file
-with the following content:
+In an empty directory, initialize a minimal `composer.json` file with the
+following content:
 
 ```shell
 composer init \
@@ -36,8 +36,8 @@ composer update
 ### Create and launch an HTTP Server
 
 To highlight the difference between instrumenting a library and a standalone
-app, split out the dice rolling into a library file, which then will be
-imported as a dependency by the app file.
+app, split out the dice rolling into a library file, which then will be imported
+as a dependency by the app file.
 
 Create the library file named `dice.php` and add the following code to it:
 
@@ -302,9 +302,7 @@ have an initialized
 you create a [`Tracer`](/docs/concepts/signals/traces/#tracer).
 
 If a `TracerProvider` is not created, the OpenTelemetry APIs for tracing will
-use a no-op implementation and fail to generate data. As explained next, modify
-the `instrumentation.ts` (or `instrumentation.js`) file to include all the SDK
-initialization code in Node and the browser.
+use a no-op implementation and fail to generate data.
 
 If you followed the instructions to [initialize the SDK](#initialize-the-sdk)
 above, you have a `TracerProvider` setup for you already. You can continue with
