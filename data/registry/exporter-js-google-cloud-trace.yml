@@ -11,3 +11,7 @@ authors:
 urls:
   repo: https://github.com/GoogleCloudPlatform/opentelemetry-operations-js/tree/main/packages/opentelemetry-cloud-trace-exporter
 createdAt: 2020-04-01
+package:
+  registry: npm
+  name: '@google-cloud/opentelemetry-cloud-trace-exporter'
+  version: 2.1.0
