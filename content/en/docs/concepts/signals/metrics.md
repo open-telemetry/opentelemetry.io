@@ -77,10 +77,11 @@ The instrument kind is one of the following:
 
 Asynchronous instruments are useful in several circumstances, such as:
 
-- When updating a counter is not computationally cheap, and you don't want the
+- When updating a counter is not computationally cheap and you don't want the
   current executing thread to wait for the measurement
 - Observations need to happen at frequencies unrelated to program execution
-  (i.e., they cannot be accurately measured when tied to a request lifecycle)
+  (for example, they can't be accurately measured when tied to a 
+  request lifecycle)
 - There is no known timestamp for a measurement value
 
 In cases like these, it's often better to observe a cumulative value directly,
@@ -92,7 +93,7 @@ Synchronous instruments take a measurement when they are called. The measurement
 is done as another call during program execution, just like any other function
 call. Periodically, the aggregation of these measurements is exported by a
 configured exporter. Because measurements are decoupled from exporting values,
-an export cycle may contain zero or multiple aggregated measurements.
+an export cycle can contain zero or multiple aggregated measurements.
 
 Asynchronous instruments, on the other hand, provide a measurement at the
 request of the SDK. When the SDK exports, a callback that was provided to the

@@ -1226,8 +1226,9 @@ suited for your use case, see
 {%% alert title="Note" class="info" %%} OpenTelemetry instruments are either
 synchronous or asynchronous (observable).
 
-If you want to learn more about the difference, and when to use which kind, take
-a look at the concept page on
+To learn more about the differences between synchronous and
+asynchronous instruments, and when to use each kind, see the
+concept page on
 [synchronous and asynchronous instruments](/docs/concepts/signals/metrics/#synchronous-and-asynchronous-instruments)
 {%% /alert %%}
 
