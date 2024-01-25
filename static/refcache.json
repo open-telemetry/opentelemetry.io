@@ -2199,6 +2199,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:04:59.339712-05:00"
   },
+  "https://github.com/dnwe/otelsarama": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-25T10:54:57.162378745Z"
+  },
   "https://github.com/docker/buildx": {
     "StatusCode": 200,
     "LastSeen": "2023-07-21T16:51:54.909705+02:00"
