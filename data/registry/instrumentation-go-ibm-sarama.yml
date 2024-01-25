@@ -11,6 +11,7 @@ description: Package sarama provides functions to trace the IBM/sarama package.
 authors:
   - name: OpenTelemetry Authors
   - name: Dominic Evans
+    url: https://github.com/dnwe
 urls:
   repo: https://github.com/dnwe/otelsarama
 createdAt: 2024-11-25
