@@ -13,3 +13,7 @@ authors:
 urls:
   repo: https://github.com/tokio-rs/tracing-opentelemetry
 createdAt: 2020-08-28
+package:
+  registry: crates
+  name: tracing-opentelemetry
+  version: 0.22.0

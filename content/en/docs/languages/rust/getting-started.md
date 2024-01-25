@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-cSpell:ignore: Actix eprintln println rolldice tokio
+cSpell:ignore: eprintln println rolldice tokio
 weight: 10
 ---
 
