@@ -249,7 +249,7 @@ receivers:
         - job_name: otel-collector
           scrape_interval: 5s
           static_configs:
-            - targets: [0.0.0.0:8888]
+            - targets: [localhost:8888]
 
   # Data sources: traces
   zipkin:
@@ -724,7 +724,7 @@ Collector acting as agent:
 ```yaml
 extensions:
   oidc:
-    issuer_url: http://0.0.0.0:8080/auth/realms/opentelemetry
+    issuer_url: http://localhost:8080/auth/realms/opentelemetry
     audience: collector
 
 receivers:
@@ -761,7 +761,7 @@ extensions:
   oauth2client:
     client_id: agent
     client_secret: some-secret
-    token_url: http://0.0.0.0:8080/auth/realms/opentelemetry/protocol/openid-connect/token
+    token_url: http://localhost:8080/auth/realms/opentelemetry/protocol/openid-connect/token
 
 receivers:
   otlp:
