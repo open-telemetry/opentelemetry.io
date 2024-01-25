@@ -88,8 +88,9 @@ and JVMs][support].
 
 ## Troubleshooting
 
-You can pass the `-Dotel.javaagent.debug=true` parameter to the agent to see
-debug logs. Note that these are quite verbose.
+{{% config_option name="otel.javaagent.debug" %}}
+Set to `true` to see debug logs. Note that these are quite verbose.
+{{% /config_option %}}
 
 ## Next steps
 

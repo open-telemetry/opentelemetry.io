@@ -243,13 +243,13 @@ You can disable all default auto instrumentation and selectively re-enable
 individual instrumentation. This may be desirable to reduce startup overhead or
 to have more control of which instrumentation is applied.
 
-- Disable all instrumentation in the agent using
-  `-Dotel.instrumentation.common.default-enabled=false` (or using the equivalent
-  environment variable `OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED=false`).
-- Enable each desired instrumentation individually using
-  `-Dotel.instrumentation.[name].enabled=true` (or using the equivalent
-  environment variable `OTEL_INSTRUMENTATION_[NAME]_ENABLED`) where `[name]`
-  (`[NAME]`) is the corresponding instrumentation `name` below.
+{{% config_option name="otel.instrumentation.common.default-enabled" %}}
+Set to `false` to disable all instrumentation in the agent.
+{{% /config_option %}}
+
+{{% config_option name="otel.instrumentation.[name].enabled" %}}
+Set to `true` to enable each desired instrumentation individually.
+{{% /config_option %}}
 
 > **Note**: Some instrumentation relies on other instrumentation to function
 > properly. When selectively enabling instrumentation, be sure to enable the
@@ -264,10 +264,10 @@ instrumentation with `@WithSpan` and normal API interactions by using
 
 ### Suppressing specific agent instrumentation
 
-You can suppress agent instrumentation of specific libraries by using
-`-Dotel.instrumentation.[name].enabled=false` (or using the equivalent
-environment variable `OTEL_INSTRUMENTATION_[NAME]_ENABLED`) where `name`
-(`NAME`) is the corresponding instrumentation `name`:
+{{% config_option name="otel.instrumentation.[name].enabled" %}}
+Set to `false` to suppress agent instrumentation of specific libraries, 
+where [name] is the corresponding instrumentation name:
+{{% /config_option %}}
 
 | Library/Framework                                | Instrumentation name                        |
 | ------------------------------------------------ | ------------------------------------------- |
