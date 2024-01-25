@@ -8,7 +8,8 @@ tags:
   - go
 license: Apache 2.0
 description:
-  Package sarama provides functions to trace the [IBM/sarama](https://github.com/IBM/sarama) package.
+  Package sarama provides functions to trace the
+  [IBM/sarama](https://github.com/IBM/sarama) package.
 authors:
   - name: OpenTelemetry Authors
   - name: Dominic Evans
