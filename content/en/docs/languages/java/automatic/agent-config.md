@@ -231,8 +231,11 @@ span link connecting it to the producer trace.
 
 ### Disabling the agent entirely
 
-You can disable the agent using `-Dotel.javaagent.enabled=false` (or using the
-equivalent environment variable `OTEL_JAVAAGENT_ENABLED=false`).
+{{% config_option name="otel.javaagent.enabled" %}}
+
+Set the value to `false` to disable the agent entirely. 
+
+{{% /config_option %}}
 
 ### Enable only specific instrumentation
 

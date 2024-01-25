@@ -146,11 +146,11 @@ dependencies {
 
 #### Disable data export
 
-You can disable data export, e.g. for testing purposes.
+{{% config_option name="otel.sdk.disabled" %}}
 
-```properties
-otel.sdk.disabled=true
-```
+Set the value to `true` to disable data export, e.g. for testing purposes.
+
+{{% /config_option %}}
 
 ### Additional instrumentations
 
