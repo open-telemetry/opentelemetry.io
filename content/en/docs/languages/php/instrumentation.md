@@ -12,16 +12,17 @@ cSpell:ignore: guzzlehttp myapp
 
 ## Example app preparation {#example-app}
 
-This page uses a modified version of the example app from
-[Getting Started](/docs/languages/php/getting-started/) to help you learn about
-instrumenting your code.
+These instructions use a modified version of the example app from
+[Getting Started](/docs/languages/php/getting-started/) to help you learn
+how to instrument your PHP code.
 
-You don't have to use the example app: if you want to instrument your own app or
-library, follow the instructions here to adapt the process to your own code.
+If you want to instrument your own app or library, follow the instructions
+to adapt the process to your own code.
 
 ### Dependencies {#example-app-dependencies}
 
-In an empty directory initialize a minimal `composer.json` file:
+In an empty directory, initialize a minimal `composer.json` file
+with the following content:
 
 ```shell
 composer init \
@@ -229,7 +230,7 @@ Sdk::builder()
     ->buildAndRegisterGlobal();
 ```
 
-Include this file at the top of your application file `index.php`:
+Include this code at the top of your application file `index.php`:
 
 ```php
 <?php
@@ -429,7 +430,7 @@ public function roll($rolls) {
 }
 ```
 
-Note, that it's required to `end()` the span, otherwise it will not be sent.
+Note, that it's required to `end()` the span, otherwise it will not be exported.
 
 If you followed the instructions using the [example app](#example-app) up to
 this point, you can copy the code above in your library file `dice.php`. You
