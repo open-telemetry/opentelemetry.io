@@ -28,6 +28,8 @@ The entry must include the following:
 
 - Link to the main page of your distribution
 - Link to the documentation that explains how to use the distribution
+- List the components your distribution contains
+- GitHub handle or email address as a point of contact so that we can reach out in case we have questions
 
 {{% alert title="Note" color="info" %}}
 
