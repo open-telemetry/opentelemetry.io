@@ -10,8 +10,12 @@ customizing OpenTelemetry components so that they're easier to deploy and use
 with specific observability back ends.
 
 Any third-party can customize OpenTelemetry components with back-end, vendor, or
-end-user specific changes. The following list contains a sample of OpenTelemetry
-distributions and their type.
+end-user specific changes. You don't have to use a distributions in order to use
+OpenTelemetry components, though distributions might facilitate usage under
+certain circumstances, such as specific vendor requirements.
+
+The following list contains a sample of OpenTelemetry distributions and the
+component they customize.
 
 {{% ecosystem/distributions-table %}}
 
