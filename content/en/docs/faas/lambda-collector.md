@@ -53,6 +53,9 @@ receivers:
   otlp:
     protocols:
       grpc:
+       # Tells the Collector to listen on all interfaces 
+       # and addresses. Make sure to set the most 
+       # appropriate value for your environment.
         endpoint: 'localhost:4317'
       http:
         endpoint: 'localhost:4318'
@@ -105,6 +108,9 @@ receivers:
   otlp:
     protocols:
       grpc:
+       # Tells the Collector to listen on all interfaces 
+       # and addresses. Make sure to set the most 
+       # appropriate value for your environment.
         endpoint: 'localhost:4317'
       http:
         endpoint: 'localhost:4318'

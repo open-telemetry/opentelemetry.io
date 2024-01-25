@@ -46,6 +46,9 @@ receivers:
   otlp:
     protocols:
       grpc:
+       # Tells the Collector to listen on all interfaces 
+       # and addresses. Make sure to set the most 
+       # appropriate value for your environment.
         endpoint: 0.0.0.0:4317
       http:
         endpoint: 0.0.0.0:4318
@@ -88,12 +91,18 @@ receivers:
   otlp:
     protocols:
       grpc:
+       # Tells the Collector to listen on all interfaces 
+       # and addresses. Make sure to set the most 
+       # appropriate value for your environment.
         endpoint: 0.0.0.0:4317
       http:
         endpoint: 0.0.0.0:4318
   otlp/2:
     protocols:
       grpc:
+       # Tells the Collector to listen on all interfaces 
+       # and addresses. Make sure to set the most 
+       # appropriate value for your environment.
         endpoint: 0.0.0.0:55690
 
 processors:
@@ -140,6 +149,9 @@ receivers:
   otlp:
     protocols:
       grpc:
+       # Tells the Collector to listen on all interfaces 
+       # and addresses. Make sure to set the most 
+       # appropriate value for your environment.
         endpoint: 0.0.0.0:4317
 
 exporters: ${file:exporters.yaml}
@@ -167,6 +179,9 @@ receivers:
   otlp:
     protocols:
       grpc:
+       # Tells the Collector to listen on all interfaces 
+       # and addresses. Make sure to set the most 
+       # appropriate value for your environment.
         endpoint: 0.0.0.0:4317
 
 exporters:
@@ -222,6 +237,9 @@ receivers:
   jaeger:
     protocols:
       grpc:
+       # Tells the Collector to listen on all interfaces 
+       # and addresses. Make sure to set the most 
+       # appropriate value for your environment.
         endpoint: 0.0.0.0:4317
       thrift_binary:
       thrift_compact:
@@ -238,6 +256,9 @@ receivers:
   otlp:
     protocols:
       grpc:
+       # Tells the Collector to listen on all interfaces 
+       # and addresses. Make sure to set the most 
+       # appropriate value for your environment.
         endpoint: 0.0.0.0:4317
       http:
         endpoint: 0.0.0.0:4318
@@ -731,6 +752,9 @@ receivers:
   otlp/auth:
     protocols:
       grpc:
+       # Tells the Collector to listen on all interfaces 
+       # and addresses. Make sure to set the most 
+       # appropriate value for your environment.
         endpoint: 0.0.0.0:4317
         auth:
           authenticator: oidc
@@ -767,6 +791,9 @@ receivers:
   otlp:
     protocols:
       grpc:
+       # Tells the Collector to listen on all interfaces 
+       # and addresses. Make sure to set the most 
+       # appropriate value for your environment.
         endpoint: 0.0.0.0:4317
 
 processors:
