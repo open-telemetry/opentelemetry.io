@@ -88,9 +88,8 @@ and JVMs][support].
 
 ## Troubleshooting
 
-{{% config_option name="otel.javaagent.debug" %}}
-Set to `true` to see debug logs. Note that these are quite verbose.
-{{% /config_option %}}
+{{% config_option name="otel.javaagent.debug" %}} Set to `true` to see debug
+logs. Note that these are quite verbose. {{% /config_option %}}
 
 ## Next steps
 

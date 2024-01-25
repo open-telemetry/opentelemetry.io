@@ -233,7 +233,7 @@ span link connecting it to the producer trace.
 
 {{% config_option name="otel.javaagent.enabled" %}}
 
-Set the value to `false` to disable the agent entirely. 
+Set the value to `false` to disable the agent entirely.
 
 {{% /config_option %}}
 
@@ -243,13 +243,11 @@ You can disable all default auto instrumentation and selectively re-enable
 individual instrumentation. This may be desirable to reduce startup overhead or
 to have more control of which instrumentation is applied.
 
-{{% config_option name="otel.instrumentation.common.default-enabled" %}}
-Set to `false` to disable all instrumentation in the agent.
-{{% /config_option %}}
+{{% config_option name="otel.instrumentation.common.default-enabled" %}} Set to
+`false` to disable all instrumentation in the agent. {{% /config_option %}}
 
-{{% config_option name="otel.instrumentation.[name].enabled" %}}
-Set to `true` to enable each desired instrumentation individually.
-{{% /config_option %}}
+{{% config_option name="otel.instrumentation.[name].enabled" %}} Set to `true`
+to enable each desired instrumentation individually. {{% /config_option %}}
 
 > **Note**: Some instrumentation relies on other instrumentation to function
 > properly. When selectively enabling instrumentation, be sure to enable the
@@ -264,10 +262,9 @@ instrumentation with `@WithSpan` and normal API interactions by using
 
 ### Suppressing specific agent instrumentation
 
-{{% config_option name="otel.instrumentation.[name].enabled" %}}
-Set to `false` to suppress agent instrumentation of specific libraries, 
-where [name] is the corresponding instrumentation name:
-{{% /config_option %}}
+{{% config_option name="otel.instrumentation.[name].enabled" %}} Set to `false`
+to suppress agent instrumentation of specific libraries, where [name] is the
+corresponding instrumentation name: {{% /config_option %}}
 
 | Library/Framework                                | Instrumentation name                        |
 | ------------------------------------------------ | ------------------------------------------- |
