@@ -35,11 +35,11 @@ composer update
 
 ### Create and launch an HTTP Server
 
-To highlight the difference between instrumenting a _library_ and a standalone
-_app_, split out the dice rolling into a _library file_, which then will be
-imported as a dependency by the _app file_.
+To highlight the difference between instrumenting a library and a standalone
+app, split out the dice rolling into a library file, which then will be
+imported as a dependency by the app file.
 
-Create the _library file_ named `dice.php` and add the following code to it:
+Create the library file named `dice.php` and add the following code to it:
 
 ```php
 <?php
@@ -65,7 +65,7 @@ class Dice {
 }
 ```
 
-Create the _app file_ named `index.php` and add the following code to it:
+Create the app file named `index.php` and add the following code to it:
 
 ```php
 <?php
@@ -136,7 +136,7 @@ dependencies for `psr/http-client-implementation` and
 composer require guzzlehttp/guzzle
 ```
 
-Now you can install the OpenTelemetry API and
+Now you can install the OpenTelemetry SDK, and OTLP exporter:
 
 ```sh
 composer require \
@@ -256,8 +256,8 @@ to configure an appropriate exporter to
 telemetry backends.
 
 The example also sets up the mandatory SDK default attribute `service.name`,
-which holds the logical name of the service, and the optional (but highly
-encouraged!) attribute `service.version`, which holds the version of the service
+which holds the logical name of the service, and the optional, but highly
+encouraged, attribute `service.version`, which holds the version of the service
 API or implementation.
 
 Alternative methods exist for setting up resource attributes. For more
@@ -415,7 +415,7 @@ class Dice {
 Now that you have [tracers](/docs/concepts/signals/traces/#tracer) initialized,
 you can create [spans](/docs/concepts/signals/traces/#spans).
 
-The code below illustrates how to create an active span.
+The code below illustrates how to create a span.
 
 ```php
 <?php
