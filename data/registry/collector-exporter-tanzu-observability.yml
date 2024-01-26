@@ -1,15 +1,20 @@
-# cSpell:ignore tanzu
+# cSpell:ignore tanzu tanzuobservabilityexporter
 title: Tanzu Observability Collector Traces Exporter
 registryType: exporter
-isThirdParty: true
 language: collector
 tags:
   - go
   - exporter
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/tanzuobservabilityexporter
 license: Apache 2.0
 description:
   The Tanzu Observability (Wavefront) Exporter for the OpenTelemetry Collector.
-authors: Tanzu Observability
-otVersion: latest
+authors:
+  - name: Tanzu Observability
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/tanzuobservabilityexporter
+createdAt: 2021-05-27
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/tanzuobservabilityexporter
+  version: v0.91.0

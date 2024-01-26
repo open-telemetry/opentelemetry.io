@@ -104,7 +104,7 @@ go get "go.opentelemetry.io/otel" \
   "go.opentelemetry.io/otel/sdk/metric" \
   "go.opentelemetry.io/otel/sdk/resource" \
   "go.opentelemetry.io/otel/sdk/trace" \
-  "go.opentelemetry.io/otel/semconv/v1.21.0" \
+  "go.opentelemetry.io/otel/semconv/v1.24.0" \
   "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 ```
 

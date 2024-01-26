@@ -1,13 +1,19 @@
+# cSpell:ignore googlecloudpubsubexporter
 title: Google Cloud Pubsub Exporter
 registryType: exporter
-isThirdParty: false
 language: collector
 tags:
   - go
   - exporter
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/googlecloudpubsubexporter
 license: Apache 2.0
 description: This exporter sends OTLP messages to a Google Cloud Pubsub topic.
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/googlecloudpubsubexporter
+createdAt: 2020-11-05
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/googlecloudpubsubexporter
+  version: v0.92.0

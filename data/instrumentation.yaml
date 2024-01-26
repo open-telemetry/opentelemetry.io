@@ -49,8 +49,8 @@ ruby:
   name: Ruby
   status:
     traces: stable
-    metrics: not yet implemented
-    logs: not yet implemented
+    metrics: in development
+    logs: in development
 js:
   name: JavaScript
   status:

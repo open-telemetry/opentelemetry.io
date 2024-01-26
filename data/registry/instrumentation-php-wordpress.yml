@@ -1,13 +1,18 @@
 title: OpenTelemetry WordPress auto-instrumentation
 registryType: instrumentation
-isThirdParty: false
 language: php
 tags:
   - wordpress
   - instrumentation
   - php
-repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/Wordpress
 license: Apache 2.0
 description: Instrumentation Library for WordPress
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/Wordpress
+createdAt: 2023-05-22
+package:
+  registry: packagist
+  name: open-telemetry/opentelemetry-auto-wordpress
+  version: 0.0.14
