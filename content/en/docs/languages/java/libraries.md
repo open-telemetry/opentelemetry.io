@@ -167,8 +167,8 @@ When you run the app, the instrumentation libraries do the following:
 - Start a new trace.
 - Generate a span that represents the request made to the external API endpoint.
 - If you use an instrumented HTTP server, as in the
-  [dice app](/docs/instrumentation/java/getting-started/#example-application),
-  more trace spans are generated with the same trace ID.
+  [dice app](/docs/languages/java/getting-started/#example-application), more
+  trace spans are generated with the same trace ID.
 
 ## Available instrumentation libraries
 
