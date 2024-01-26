@@ -53,12 +53,14 @@ The following example shows how to import both BOMs using Maven:
             <artifactId>opentelemetry-bom</artifactId>
             <version>{{% param vers.otel %}}</version>
             <type>pom</type>
+            <scope>import</scope>
         </dependency>
         <dependency>
             <groupId>io.opentelemetry.instrumentation</groupId>
             <artifactId>opentelemetry-instrumentation-bom-alpha</artifactId>
             <version>{{% param vers.instrumentation %}}-alpha</version>
             <type>pom</type>
+            <scope>import</scope>
         </dependency>
     </dependencies>
 </dependencyManagement>
