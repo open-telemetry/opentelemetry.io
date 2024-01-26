@@ -16,7 +16,7 @@ console.
 
 Ensure that you have the following installed locally:
 
-- Java JDK
+- Java 17 JDK
 - [Gradle](https://gradle.org/)
 
 ## Example Application
