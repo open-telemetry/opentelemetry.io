@@ -6099,6 +6099,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:07:49.734386-05:00"
   },
+  "https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-19T15:36:28.468246594Z"
+  },
   "https://pkg.go.dev/go.opentelemetry.io/otel": {
     "StatusCode": 200,
     "LastSeen": "2023-09-11T14:33:25.55139188Z"
