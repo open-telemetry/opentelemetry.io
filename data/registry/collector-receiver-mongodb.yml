@@ -7,8 +7,7 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description:
-  This receiver fetches stats from a MongoDB instance using the [golang
+description: This receiver fetches stats from a MongoDB instance using the [golang
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -17,4 +16,4 @@ createdAt: 2020-11-05
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/mongodbreceiver
-  version: v0.92.0
+  version: v0.93.0

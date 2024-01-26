@@ -13,10 +13,8 @@ urls:
   repo: https://github.com/DataDog/dd-opentelemetry-exporter-ruby
 createdAt: 2020-09-02
 deprecated:
-  reason:
-    This exporter has been deprecated. To export your OTLP traces from
-    OpenTelemetry SDK directly to Datadog Agent, please refer to OTLP Ingest in
-    Datadog Agent.
+  reason: This exporter has been deprecated. To export your OTLP traces from OpenTelemetry SDK directly to Datadog Agent, please refer to OTLP Ingest in Datadog Agent.
 package:
   registry: gems
   name: opentelemetry-exporters-datadog
+  version: 0.2.2

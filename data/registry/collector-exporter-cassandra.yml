@@ -7,8 +7,7 @@ tags:
   - exporter
   - collector
 license: Apache 2.0
-description:
-  This exporter supports sending OpenTelemetry logs and traces to Cassandra
+description: This exporter supports sending OpenTelemetry logs and traces to Cassandra
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -17,4 +16,4 @@ createdAt: 2020-11-05
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/cassandraexporter
-  version: v0.92.0
+  version: v0.93.0

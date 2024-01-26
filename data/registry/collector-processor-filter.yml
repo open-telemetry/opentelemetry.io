@@ -7,9 +7,7 @@ tags:
   - processor
   - collector
 license: Apache 2.0
-description:
-  The Filter Processor for the OpenTelemetry Collector can be configured to
-  include or exclude metrics.
+description: The Filter Processor for the OpenTelemetry Collector can be configured to include or exclude metrics.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -18,4 +16,4 @@ createdAt: 2021-02-24
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/processor/filterprocessor
-  version: v0.92.0
+  version: v0.93.0
