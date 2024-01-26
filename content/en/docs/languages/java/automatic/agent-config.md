@@ -262,6 +262,8 @@ instrumentation with `@WithSpan` and normal API interactions by using
 
 ### Suppressing specific agent instrumentation
 
+You can suppress agent instrumentation of specific libraries.
+
 {{% config_option name="otel.instrumentation.[name].enabled" %}} Set to `false`
 to suppress agent instrumentation of specific libraries, where [name] is the
 corresponding instrumentation name: {{% /config_option %}}
