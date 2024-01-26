@@ -1939,6 +1939,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:05:35.043924-05:00"
   },
+  "https://github.com/IBM/sarama": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-25T12:26:11.985357104Z"
+  },
   "https://github.com/MetinSeylan/Nestjs-OpenTelemetry": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:12:29.56313-05:00"
@@ -2202,6 +2206,14 @@
   "https://github.com/dmsolr": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:04:59.339712-05:00"
+  },
+  "https://github.com/dnwe": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-25T12:26:11.391358232Z"
+  },
+  "https://github.com/dnwe/otelsarama": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-25T10:54:57.162378745Z"
   },
   "https://github.com/docker/buildx": {
     "StatusCode": 200,
@@ -5358,6 +5370,10 @@
   "https://pkg.go.dev/github.com/XSAM/otelsql": {
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:17:16.696764+01:00"
+  },
+  "https://pkg.go.dev/github.com/dnwe/otelsarama": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-25T12:26:12.14544959Z"
   },
   "https://pkg.go.dev/github.com/mitchellh/mapstructure": {
     "StatusCode": 200,
