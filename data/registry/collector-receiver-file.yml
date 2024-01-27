@@ -7,7 +7,9 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: The File Receiver reads the output of a File Exporter, converting that output to metrics, and sending the metrics down the pipeline.
+description:
+  The File Receiver reads the output of a File Exporter, converting that output
+  to metrics, and sending the metrics down the pipeline.
 authors:
   - name: OpenTelemetry Authors
 urls:
