@@ -16,4 +16,4 @@ createdAt: 2022-12-14
 package:
   registry: packagist
   name: open-telemetry/opentelemetry-auto-psr18
-  version: 1.0.2
+  version: 1.0.3
