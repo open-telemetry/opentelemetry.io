@@ -146,6 +146,14 @@ dependencies {
 
 {{% /tab %}} {{< /tabpane>}}
 
+#### Disable data export
+
+{{% config_option name="otel.sdk.disabled" %}}
+
+Set the value to `true` to disable data export, e.g. for testing purposes.
+
+{{% /config_option %}}
+
 ### Additional instrumentations
 
 #### JDBC Instrumentation
