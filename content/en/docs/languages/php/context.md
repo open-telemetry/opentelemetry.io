@@ -2,6 +2,7 @@
 title: Context
 weight: 55
 cSpell:ignore: Swoole
+description: Learn how context works in instrumented applications.
 ---
 
 In order for OpenTelemetry to work, it must store and propagate important
