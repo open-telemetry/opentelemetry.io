@@ -5,14 +5,14 @@ cSpell:ignore: Swoole
 description: Learn how context works in instrumented applications.
 ---
 
-In order for OpenTelemetry to work, it must store and propagate important
-telemetry data. For example, when a request is received and a span is started it
-must be available to a component which creates its child span. To solve this
-problem, OpenTelemetry stores the span in the Context.
+OpenTelemetry works by storing and propagating telemetry data. For
+example, when an instrumented application receives a request and a
+span starts, the span must be available to a component which creates
+child spans. To address this need, OpenTelemetry stores the span in
+the context.
 
-More information:
-
-- [Context specification](/docs/specs/otel/context/)
+See the [Context specification](/docs/specs/otel/context/) for more
+information on what the context is and does.
 
 ## Context
 
@@ -24,10 +24,10 @@ store values (for example, a `Span`).
 
 Context uses `Storage` to keep track of values. By default, a generic
 `ContextStorage` is used. OpenTelemetry for PHP supports other context storage
-for more exotic use-cases (eg for asynchronous/concurrent execution with
-`fibers`).
+for less common use cases, like asynchronous or concurrent execution with
+`fibers`.
 
-## Context Keys
+## Context keys
 
 Context entries are key-value pairs. Keys can be created by calling
 `OpenTelemetry\Context\Context::createKey()`.
@@ -41,9 +41,9 @@ $key2 = Context::createKey('My second key');
 
 Context keys are used to store and retrieve values from context.
 
-## Basic Operations
+## Basic operations
 
-### Store and Retrieve values
+### Store and retrieve values
 
 Values are stored in Context by using the `$context->with($key, $value)` method.
 Setting a context entry creates a new context with the new entry in its storage,
@@ -71,13 +71,13 @@ var_dump(Context::getCurrent()->get($key)); // NULL
 If a value is not found in the current context, then each parent is checked
 until either the key is found, or the root context is reached.
 
-## Active Context
+## Active context
 
 The active context is the context which is returned by `Context::getCurrent()`.
 The context object contains entries which allow telemetry components to
-communicate with each other. For example, when a span is created it may be
+communicate with each other. For example, when a span is created it can be
 activated, which creates a new active context and stores the span. Later, when
-another span is created it may use the span from the active context as its
+another span is created it can use the span from the active context as its
 parent span. If no context is active, the root context is returned, which is
 just the empty context object.
 
@@ -106,22 +106,21 @@ assert($ctx2 === Context::getCurrent());
 #### Scope
 
 The return value of `$context->activate()` is a `Scope`. You must `detach()` the
-scope to "de-activate" that context, which will make the previously-active
-context the active context again.
+scope to deactivate that context, which reactivates the previously-active context.
 
-The return value of `$scope->detach()` is an integer. A zero return value means
+The return value of `$scope->detach()` is an integer. A return value of `0` means
 that the scope was successfully detached. A non-zero value means that the call
-was unexpected; either the context associated with the scope was:
+was unexpected and that the context associated with the scope was:
 
-- already detached
-- not a part of the current execution context
-- not the active context
+- Already detached
+- Not a part of the current execution context
+- Not the active context
 
 #### DebugScope
 
 To assist developers in locating issues with context and scope, there is
-`DebugScope`. In development (that is, a PHP runtime with assertions enabled),
-an activated `Context` will be wrapped in a `DebugScope`. The `DebugScope` keeps
+`DebugScope`. In development, with a PHP runtime with assertions enabled,
+an activated `Context` is wrapped in a `DebugScope`. The `DebugScope` keeps
 track of when the scope was activated, and has a destructor which triggers an
 error if the scope was not detached. The error output contains a backtrace of
 which code activated the context.
@@ -139,16 +138,16 @@ $scope = Context::getCurrent()->with($key, 'value')->activate();
 ```
 
 This can be problematic in some situations, particularly in legacy applications
-which might `exit` or `die` - any active spans will not be completed and
-exported, but the `DebugScope` will also complain loudly.
+which might `exit` or `die`. In that case, active spans are not completed and
+exported, and the `DebugScope` complains loudly.
 
 If you understand why `DebugScope` is complaining and accept the risks, then you
 can disable the feature entirely by setting `OTEL_PHP_DEBUG_SCOPES_DISABLED` to
 a truthy value.
 
-### Nested Context
+### Nested context
 
-Active context executions may be nested, and this is how traces can have nested
+Active context executions can be nested. This is how traces can have nested
 spans:
 
 ```php
@@ -170,13 +169,13 @@ var_dump(Context::getCurrent()->get($key)); //NULL
 ### Asynchronous context
 
 For asynchronous PHP programming, for example `Swoole` or the Fiber-based
-`Revolt` event loop, there can be multiple active `Context`s, but still only one
+`Revolt` event loop, there can be multiple active contexts, but still only one
 active context per execution context.
 
-For fiber-based implementations, `Context` will be associated with the active
-fiber, and will fork, switch and be destroyed as appropriate by hooking in to
-PHP's fiber initialization, forking and destruction handlers.
+For fiber-based implementations, `Context` is associated with the active
+fiber, and forks, switches and is destroyed as appropriate by hooking into
+PHP's fiber initialization, forking, and destruction handlers.
 
-For other async implementations, custom context storage may be needed to
+For other async implementations, custom context storage might be needed to
 interoperate correctly. Check the [registry](/ecosystem/registry/?language=php)
 for storage implementations.
