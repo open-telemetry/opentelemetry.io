@@ -15,9 +15,9 @@ on what the context is and does.
 
 ## Context
 
-Context is globally available, and there can only be one
-[active context](#active-context) in the current execution context. Context can
-store values (for example, a `Span`).
+Context is globally available within a single PHP execution context, and there
+can only be one [active context](#active-context) in the current execution
+context. Context can store values (for example, a `Span`).
 
 ### Storage
 
