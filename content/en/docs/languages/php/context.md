@@ -5,14 +5,13 @@ cSpell:ignore: Swoole
 description: Learn how context works in instrumented applications.
 ---
 
-OpenTelemetry works by storing and propagating telemetry data. For
-example, when an instrumented application receives a request and a
-span starts, the span must be available to a component which creates
-child spans. To address this need, OpenTelemetry stores the span in
-the context.
+OpenTelemetry works by storing and propagating telemetry data. For example, when
+an instrumented application receives a request and a span starts, the span must
+be available to a component which creates child spans. To address this need,
+OpenTelemetry stores the span in the context.
 
-See the [Context specification](/docs/specs/otel/context/) for more
-information on what the context is and does.
+See the [Context specification](/docs/specs/otel/context/) for more information
+on what the context is and does.
 
 ## Context
 
@@ -106,11 +105,12 @@ assert($ctx2 === Context::getCurrent());
 #### Scope
 
 The return value of `$context->activate()` is a `Scope`. You must `detach()` the
-scope to deactivate that context, which reactivates the previously-active context.
+scope to deactivate that context, which reactivates the previously-active
+context.
 
-The return value of `$scope->detach()` is an integer. A return value of `0` means
-that the scope was successfully detached. A non-zero value means that the call
-was unexpected and that the context associated with the scope was:
+The return value of `$scope->detach()` is an integer. A return value of `0`
+means that the scope was successfully detached. A non-zero value means that the
+call was unexpected and that the context associated with the scope was:
 
 - Already detached
 - Not a part of the current execution context
@@ -119,11 +119,11 @@ was unexpected and that the context associated with the scope was:
 #### DebugScope
 
 To assist developers in locating issues with context and scope, there is
-`DebugScope`. In development, with a PHP runtime with assertions enabled,
-an activated `Context` is wrapped in a `DebugScope`. The `DebugScope` keeps
-track of when the scope was activated, and has a destructor which triggers an
-error if the scope was not detached. The error output contains a backtrace of
-which code activated the context.
+`DebugScope`. In development, with a PHP runtime with assertions enabled, an
+activated `Context` is wrapped in a `DebugScope`. The `DebugScope` keeps track
+of when the scope was activated, and has a destructor which triggers an error if
+the scope was not detached. The error output contains a backtrace of which code
+activated the context.
 
 The following code would trigger an error, complaining that a scope was not
 detached, and giving a backtrace of where the scope was created:
@@ -172,9 +172,9 @@ For asynchronous PHP programming, for example `Swoole` or the Fiber-based
 `Revolt` event loop, there can be multiple active contexts, but still only one
 active context per execution context.
 
-For fiber-based implementations, `Context` is associated with the active
-fiber, and forks, switches and is destroyed as appropriate by hooking into
-PHP's fiber initialization, forking, and destruction handlers.
+For fiber-based implementations, `Context` is associated with the active fiber,
+and forks, switches and is destroyed as appropriate by hooking into PHP's fiber
+initialization, forking, and destruction handlers.
 
 For other async implementations, custom context storage might be needed to
 interoperate correctly. Check the [registry](/ecosystem/registry/?language=php)
