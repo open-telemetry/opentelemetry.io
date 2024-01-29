@@ -16,7 +16,7 @@ console.
 
 Ensure that you have the following installed locally:
 
-- Java JDK 17+, due to the use of Spring Boot; [Java 8+ otherwise][java-vers]
+- Java JDK 17+, due to the use of Spring Boot 3; [Java 8+ otherwise][java-vers]
 - [Gradle](https://gradle.org/)
 
 ## Example Application
