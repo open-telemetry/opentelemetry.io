@@ -5367,6 +5367,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:07:28.767134-05:00"
   },
+  "https://pkg.go.dev/cmd/go#hdr-Environment_variables": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-16T09:38:27.962889-05:00"
+  },
   "https://pkg.go.dev/github.com/XSAM/otelsql": {
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:17:16.696764+01:00"
@@ -5374,10 +5378,6 @@
   "https://pkg.go.dev/github.com/dnwe/otelsarama": {
     "StatusCode": 200,
     "LastSeen": "2024-01-25T12:26:12.14544959Z"
-  },
-  "https://pkg.go.dev/cmd/go#hdr-Environment_variables": {
-    "StatusCode": 200,
-    "LastSeen": "2024-01-16T09:38:27.962889-05:00"
   },
   "https://pkg.go.dev/github.com/mitchellh/mapstructure": {
     "StatusCode": 200,
