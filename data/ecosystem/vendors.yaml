@@ -251,6 +251,13 @@
   contact: ''
   oss: false
   commercial: true
+- name: Red Hat
+  distribution: true
+  nativeOTLP: true
+  url: 'https://docs.openshift.com/container-platform/4.14/otel/otel-release-notes.html'
+  contact: ''
+  oss: true
+  commercial: true
 - name: Sentry Software
   distribution: true
   nativeOTLP: true
