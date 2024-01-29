@@ -174,11 +174,11 @@ processors:
 **Processor**:
 [span processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/spanprocessor)
 
-The
+You can use the
 [span processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/spanprocessor)
-can be used to change span status.
+to change span status.
 
-The following setting is required:
+The following settings are available:
 
 - `code:` Represents span status. One of the following values `Unset`, `Error`,
   `Ok`.
@@ -189,9 +189,9 @@ Example:
 ```yaml
 # Set status allows to set specific status for a given span. Possible values are
 # Ok, Error and Unset as per
-# https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#set-status
+# https://opentelemetry.io/docs/specs/otel/trace/api/#set-status
 # The description field allows to set a human-readable message for errors.
-#Example below sets status to success only when attribute http.status_code is equal to 400
+# Example below sets status to success only when attribute http.status_code is equal to 400
 span/set_status_ok:
   include:
     attributes:
@@ -201,10 +201,10 @@ span/set_status_ok:
     code: 'Ok'
 ```
 
-The span processor also allows to modify the span name based on its attributes
-or extract span attributes from the span name. Refer to
+You can also use the span processor also to modify the span name based on its
+attributes or extract span attributes from the span name. See the
 [config.yaml](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/spanprocessor/testdata/config.yaml)
-for detailed examples on using the processor.
+file for detailed examples on how to use the span processor.
 
 ## Advanced Transformations
 
