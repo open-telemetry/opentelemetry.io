@@ -362,7 +362,7 @@ spec:
 #### Excluding auto-instrumentation {#python-excluding-auto-instrumentation}
 
 By default, the Python auto-instrumentation ships with
-[many instrumentation libraries]([https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/config.md#instrumentations](https://github.com/open-telemetry/opentelemetry-operator/blob/main/autoinstrumentation/python/requirements.txt)).
+[many instrumentation libraries](https://github.com/open-telemetry/opentelemetry-operator/blob/main/autoinstrumentation/python/requirements.txt).
 This makes instrumentation easy, but can result in too much or unwanted data.
 If there are any packages you do not want to instrument, you can set
 the `OTEL_PYTHON_DISABLED_INSTRUMENTATIONS` environment variable
