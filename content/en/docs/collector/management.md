@@ -11,8 +11,8 @@ deployment at scale.
 To get the most out of this page you should know how to install and configure
 the collector. These topics are covered elsewhere:
 
-- [Getting Started][otel-collector-getting-started] to understand how to install
-  the OpenTelemetry Collector.
+- [Quick Start](/docs/collector/quick-start/) to understand how to install the
+  OpenTelemetry Collector.
 - [Configuration][otel-collector-configuration] for how to configure the
   OpenTelemetry Collector, setting up telemetry pipelines.
 
@@ -217,8 +217,7 @@ otelcol_receiver_refused_metric_points{receiver="prometheus/own_metrics",service
   - [What is OpAMP & What is BindPlane][opamp-bindplane]
 
 [otel-collector]: /docs/collector/
-[otel-collector-getting-started]: /docs/collector/getting-started
-[otel-collector-configuration]: /docs/collector/configuration
+[otel-collector-configuration]: /docs/collector/configuration/
 [opamp-spec]:
   https://github.com/open-telemetry/opamp-spec/blob/main/specification.md
 [opamp-in-otel-collector]:
