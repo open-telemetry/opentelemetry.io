@@ -476,7 +476,6 @@ public class TracedClass {
 You can configure other instrumentations with
 [OpenTelemetry instrumentations libraries](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks).
 
-
 ### Other configurations
 
 Instead of using the OpenTelemetry Spring starter, you can use the OpenTelemetry
@@ -496,6 +495,7 @@ import org.springframework.context.annotation.Configuration;
 @EnableOpenTelemetry
 public class OpenTelemetryConfig {}
 ```
+
 #### Zipkin starter
 
 OpenTelemetry Zipkin Exporter Starter is a starter package that includes the
