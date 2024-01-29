@@ -363,9 +363,9 @@ spec:
 
 By default, the Python auto-instrumentation ships with
 [many instrumentation libraries](https://github.com/open-telemetry/opentelemetry-operator/blob/main/autoinstrumentation/python/requirements.txt).
-This makes instrumentation easy, but can result in too much or unwanted data.
-If there are any packages you do not want to instrument, you can set
-the `OTEL_PYTHON_DISABLED_INSTRUMENTATIONS` environment variable
+This makes instrumentation easy, but can result in too much or unwanted data. If
+there are any packages you do not want to instrument, you can set the
+`OTEL_PYTHON_DISABLED_INSTRUMENTATIONS` environment variable
 
 ```yaml
 apiVersion: opentelemetry.io/v1alpha1
