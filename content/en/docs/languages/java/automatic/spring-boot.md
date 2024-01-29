@@ -164,9 +164,9 @@ Span Exporters.
 #### Exporter Properties
 
 | Feature       | Property                      | Default Value  |
-| ------------- | ----------------------------- | -------------- |
+| ------------- | ----------------------------- |----------------|
 | OTLP Exporter | `otel.exporter.otlp.endpoint` | localhost:4317 |
-|               | `otel.exporter.otlp.protocol` | http/protobuf  |
+|               | `otel.exporter.otlp.protocol` | HTTP/protobuf  |
 |               | `otel.exporter.otlp.headers`  |                |
 |               | `otel.exporter.otlp.timeout`  | 1s             |
 
@@ -352,7 +352,7 @@ to learn more about the OpenTelemetry Spring WebMVC instrumentation.
 Provides auto-configurations for the OpenTelemetry WebClient ExchangeFilter
 defined in
 [opentelemetry-spring-webflux-5.3](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-webflux/spring-webflux-5.3).
-This auto-configuration instruments all outgoing http requests sent using
+This auto-configuration instruments all outgoing HTTP requests sent using
 Spring's WebClient and WebClient Builder beans by applying a bean post
 processor. This feature is supported for spring webflux versions 5.0+.
 [Spring Web-Flux - WebClient Span](#spring-web-flux---webclient-span) showcases
@@ -386,7 +386,6 @@ to learn more about the OpenTelemetry WebClientFilter.
 ```
 
 ### Additional Instrumentations
-
 
 #### JDBC Instrumentation
 
@@ -645,7 +644,6 @@ public class TracedClass {
 You can configure other instrumentations with
 [OpenTelemetry instrumentations libraries](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks).
 
-
 ### Other configurations
 
 Instead of using the OpenTelemetry Spring starter, you can use the OpenTelemetry
@@ -665,6 +663,7 @@ import org.springframework.context.annotation.Configuration;
 @EnableOpenTelemetry
 public class OpenTelemetryConfig {}
 ```
+
 #### Zipkin starter
 
 OpenTelemetry Zipkin Exporter Starter is a starter package that includes the
