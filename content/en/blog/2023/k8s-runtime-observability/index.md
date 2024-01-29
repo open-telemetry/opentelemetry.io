@@ -472,5 +472,5 @@ are available from the Tracetest repository.
 - [Traces For Kubernetes System Components](https://kubernetes.io/docs/concepts/cluster-administration/system-traces/)
 - [Tracing on ContainerD](https://github.com/containerd/containerd/blob/main/docs/tracing.md)
 - [Kubernetes: Tools for Monitoring Resources](https://kubernetes.io/docs/tasks/debug/debug-cluster/resource-usage-monitoring/)
-- [Getting Started with OTel Collector](/docs/collector/getting-started/)
+- [OTel Collector quick start](/docs/collector/quick-start/)
 - [Boosting Kubernetes container runtime observability with OpenTelemetry](https://kubernetes.io/blog/2022/12/01/runtime-observability-opentelemetry/)

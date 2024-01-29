@@ -1,0 +1,17 @@
+# cSpell:ignore alibabadruid
+title: Alibaba Druid Instrumentation
+registryType: instrumentation
+language: java
+tags:
+  - alibabadruid
+  - instrumentation
+  - java
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/alibaba-druid-1.0
+license: Apache 2.0
+description:
+  This library provides an Alibaba Druid instrumentation to track requests
+  through OpenTelemetry.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-01-19

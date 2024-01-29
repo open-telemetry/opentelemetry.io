@@ -12,3 +12,7 @@ authors:
 urls:
   repo: https://github.com/asaaki/opentelemetry-tide
 createdAt: 2020-08-28
+package:
+  registry: crates
+  name: opentelemetry-tide
+  version: 0.12.0
