@@ -26,11 +26,11 @@ not using Oat++, that's OK - you can use OpenTelemetry C++ with any other web fr
 
 ## Setup 
 
-- Create a folder named `Opentelemetry-Starter-Project`.
+- Create a folder named `otel-cpp-starter`.
 - move into the newly created folder. This will serve as your working directory.
-- Directory Structure: 
+- After setting up dependencies, your directory structure should resemble this:
    ```plaintext 
-   Opentelemetry-Starter-Project
+   otel-cpp-starter
    │
    ├── oatpp
    ├── opentelemetry-cpp
@@ -78,7 +78,7 @@ To begin, install  Oat++ locally using the [source code](https://github.com/oatp
 
 Next, install and build [OpenTelemetry C++](https://github.com/open-telemetry/opentelemetry-cpp) locally using CMake, following these steps:
 
-1. In your terminal, navigate back to the `Opentelemetry-Starter-Project` directory. Then, clone the OpenTelemetry C++ GitHub repository to your local machine.
+1. In your terminal, navigate back to the `otel-cpp-starter` directory. Then, clone the OpenTelemetry C++ GitHub repository to your local machine.
 
    ```bash
    git clone https://github.com/open-telemetry/opentelemetry-cpp.git
@@ -102,7 +102,7 @@ Next, install and build [OpenTelemetry C++](https://github.com/open-telemetry/op
    ```bash
    cmake ..
    ```
-   or 
+  Or 
    ```bash
    cmake -DWITH_ABSEIL=ON ..
    ```
@@ -119,7 +119,7 @@ With Oat++ and OpenTelemetry C++ ready, you can continue with creating the HTTP 
 ## Create and launch an HTTP Server
 
 
-In your `OpenTelemetry-Starter-Project` folder, create a subfolder `roll-dice`, where the Oat++ library will be used by referencing the oatpp headers and linking them when compiling your project.
+In your `otel-cpp-starter` folder, create a subfolder `roll-dice`, where the Oat++ library will be used by referencing the oatpp headers and linking them when compiling your project.
 
 Create a file called `CMakeLists.txt` to define the Oat++ library directories, include paths, and link against Oat++ during the compilation process.
 
@@ -188,7 +188,7 @@ void run() {
   auto connectionHandler = oatpp::web::server::HttpConnectionHandler::createShared(router);
   auto connectionProvider = oatpp::network::tcp::server::ConnectionProvider::createShared({"localhost", 8080, oatpp::network::Address::IP_4});
   oatpp::network::Server server(connectionProvider, connectionHandler);
-  OATPP_LOGI("RollDice Server", "Server running on port %s", connectionProvider->getProperty("port").getData());
+  OATPP_LOGI("Dice Server", "Server running on port %s", connectionProvider->getProperty("port").getData());
   server.run();
 }
 
@@ -330,7 +330,7 @@ void run() {
   auto connectionHandler = oatpp::web::server::HttpConnectionHandler::createShared(router);
   auto connectionProvider = oatpp::network::tcp::server::ConnectionProvider::createShared({"localhost", 8000, oatpp::network::Address::IP_4});
   oatpp::network::Server server(connectionProvider, connectionHandler);
-  OATPP_LOGI("RollDice Server", "Server running on port %s", connectionProvider->getProperty("port").getData());
+  OATPP_LOGI("Dice Server", "Server running on port %s", connectionProvider->getProperty("port").getData());
   server.run();
 }
 
