@@ -9,8 +9,8 @@ filters:
   allowlist:
     allow:
       # Don't check registry .yml file fields for language, repo and tags:
-      - '/^(?:language|repo): .*$/m'
-      - /^tags:(\s*-.+$)*/m
+      - '/^\s*(?:language|repo|name|docs): .*$/m'
+      - /^(?:tags):(\s*-.+$)*/m
       # Hugo template syntax:
       - /{{.*?}}/
       - /{{%.*?%}}/
@@ -25,6 +25,7 @@ rules:
     defaultTerms: false
     skip: []
     terms:
+      - Actix
       - Ajax
       - Apache
       - API

@@ -1,14 +1,20 @@
+# cSpell:ignore azuremonitorreceiver
 title: Azure Monitor Receiver
 registryType: receiver
-isThirdParty: false
 language: collector
 tags:
   - azure
   - monitor
   - receiver
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/azuremonitorreceiver
 license: Apache 2.0
 description: This receiver scrapes Azure Monitor API for resources metrics.
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/azuremonitorreceiver
+createdAt: 2020-11-05
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/azuremonitorreceiver
+  version: v0.93.0

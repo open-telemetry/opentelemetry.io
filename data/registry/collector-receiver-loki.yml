@@ -1,14 +1,19 @@
-# cSpell:ignore loki
+# cSpell:ignore loki lokireceiver
 title: Loki Receiver
 registryType: receiver
-isThirdParty: false
 language: collector
 tags:
   - loki
   - receiver
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/lokireceiver
 license: Apache 2.0
 description: The Loki receiver implements the Loki Push API
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/lokireceiver
+createdAt: 2020-11-05
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/lokireceiver
+  version: v0.93.0

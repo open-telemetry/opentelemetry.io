@@ -1,14 +1,19 @@
 # cSpell:ignore stackdriver
 title: Stackdriver Exporter for OpenTelemetry .NET
 registryType: exporter
-isThirdParty: false
 language: dotnet
 tags:
   - stackdriver
   - exporter
   - dotnet
-repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Exporter.Stackdriver
 license: Apache 2.0
 description: Stackdriver Exporter for OpenTelemetry .NET
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Exporter.Stackdriver
+createdAt: 2022-11-07
+package:
+  registry: nuget
+  name: OpenTelemetry.Exporter.Stackdriver
+  version: 1.0.0-beta.4

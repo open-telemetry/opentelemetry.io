@@ -7,12 +7,18 @@ aliases:
 weight: 40
 ---
 
-Go does not support truly automatic instrumentation like other languages today.
-Instead, you'll need to depend on
+{{% docs/languages/libraries-intro Go %}}
+
+## Use instrumentation libraries
+
+If a library does not come with OpenTelemetry out of the box, you can use
 [instrumentation libraries](/docs/specs/otel/glossary/#instrumentation-library)
-that generate telemetry data for a particular instrumented library. For example,
-the instrumentation library for `net/http` will automatically create spans that
-track inbound and outbound requests once you configure it in your code.
+to generate telemetry data for a library or framework.
+
+For example, the
+[instrumentation library for `net/http`](https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp)
+automatically creates [spans](/docs/concepts/signals/traces/#spans) and
+[metrics](/docs/concepts/signals/metrics/) based on the HTTP requests.
 
 ## Setup
 
@@ -29,7 +35,7 @@ go get go.opentelemetry.io/contrib/instrumentation/{import-path}/otel{package-na
 Then configure it in your code based on what the library requires to be
 activated.
 
-[Getting Started](../instrumentation/) provides an example showing how to set up
+[Getting Started](../getting-started/) provides an example showing how to set up
 instrumentation for a `net/http` server.
 
 ## Available packages
@@ -42,6 +48,7 @@ A full list of instrumentation libraries available can be found in the
 Instrumentation libraries can do things like generate telemetry data for inbound
 and outbound HTTP requests, but they don't instrument your actual application.
 
-To get richer telemetry data, use [manual instrumentation](../instrumentation/)
-to enrich your telemetry data from instrumentation libraries with
-instrumentation from your running application.
+Enrich your telemetry data by integrating
+[custom instrumentation](../instrumentation/) into your code. This supplements
+the standard library telemetry, and can offer deeper insights into your running
+application.

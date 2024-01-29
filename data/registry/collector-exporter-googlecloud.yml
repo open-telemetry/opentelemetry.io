@@ -1,14 +1,20 @@
+# cSpell:ignore googlecloudexporter
 title: Google Cloud Operations Collector Exporter
 registryType: exporter
-isThirdParty: true
 language: collector
 tags:
   - go
   - exporter
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/googlecloudexporter
 license: Apache 2.0
 description:
   The Google Cloud Operations Exporter for the OpenTelemetry Collector.
-authors: Google
-otVersion: latest
+authors:
+  - name: Google
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/googlecloudexporter
+createdAt: 2020-06-06
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/googlecloudexporter
+  version: v0.93.0

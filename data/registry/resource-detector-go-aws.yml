@@ -1,6 +1,5 @@
 title: AWS Resource Detectors
 registryType: resource-detector
-isThirdParty: false
 language: go
 tags:
   - aws
@@ -10,8 +9,10 @@ tags:
   - lambda
   - resource-detector
   - go
-repo: https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/detectors/aws
 license: Apache 2.0
 description: AWS resource detectors for go.
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/detectors/aws
+createdAt: 2020-06-08

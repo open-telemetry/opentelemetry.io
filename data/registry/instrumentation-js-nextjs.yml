@@ -1,0 +1,18 @@
+# cSpell:ignore nestjs vercel
+title: Instrumentation for Next.js
+registryType: instrumentation
+language: js
+tags:
+  - Node.js
+  - instrumentation
+  - nestjs
+license: MIT
+description: Next.js supports OpenTelemetry instrumentation out of the box.
+authors:
+  - name: Vercel, Inc.
+    url: https://github.com/vercel/
+urls:
+  repo: https://github.com/vercel/next.js/tree/canary/packages/next/src/server/lib/trace
+  docs: https://nextjs.org/docs/app/building-your-application/optimizing/open-telemetry
+createdAt: 2024-01-01
+isNative: true

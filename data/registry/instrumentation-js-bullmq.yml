@@ -1,14 +1,20 @@
-# cSpell:ignore bullmq
+# cSpell:ignore bullmq jenniferplusplus
 title: BullMQ Instrumentation
 registryType: instrumentation
-isThirdParty: true
 language: js
 tags:
   - js
   - instrumentation
   - bullmq
-repo: https://github.com/jenniferplusplus/opentelemetry-instrumentation-bullmq
 license: Apache 2.0
 description: Auto instrumentation for the BullMQ message system
-authors: Jennifer Moore (contact@jenniferplusplus.com)
-otVersion: 1.0+
+authors:
+  - name: Jennifer Moore
+    email: contact@jenniferplusplus.com
+urls:
+  repo: https://github.com/jenniferplusplus/opentelemetry-instrumentation-bullmq
+createdAt: 2023-01-27
+package:
+  name: '@jenniferplusplus/opentelemetry-instrumentation-bullmq'
+  registry: npm
+  version: 0.5.0

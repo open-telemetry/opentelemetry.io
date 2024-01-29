@@ -1,14 +1,19 @@
 title: Azure Monitor Exporter
 registryType: exporter
-isThirdParty: true
 language: dotnet
 tags:
   - .net
   - exporter
   - Azure Monitor
   - Application Insights
-repo: https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/monitor/Azure.Monitor.OpenTelemetry.Exporter
-license: MIT License
+license: MIT
 description: The OpenTelemetry Azure Monitor Exporter for .NET
-authors: Microsoft Authors
-otVersion: latest
+authors:
+  - name: Microsoft Authors
+package:
+  name: Azure.Monitor.OpenTelemetry.Exporter
+  registry: nuget
+  version: 1.2.0
+urls:
+  repo: https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/monitor/Azure.Monitor.OpenTelemetry.Exporter
+createdAt: 2021-11-01

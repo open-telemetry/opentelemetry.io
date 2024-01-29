@@ -1,7 +1,6 @@
 # cSpell:ignore otelpgx jackc exaring
 title: otelpgx - tracing support for github.com/jackc/pgx
 registryType: instrumentation
-isThirdParty: true
 language: go
 tags:
   - go
@@ -9,9 +8,11 @@ tags:
   - database
   - postgresql
   - tracing
-repo: https://github.com/exaring/otelpgx
 license: Apache 2.0
 description:
   Provides OpenTelemetry tracing implementation for the pgx PostgreSQL package.
-authors: Exaring AG.
-otVersion: v1.8.0
+authors:
+  - name: Exaring AG.
+urls:
+  repo: https://github.com/exaring/otelpgx
+createdAt: 2022-09-27

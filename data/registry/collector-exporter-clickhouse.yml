@@ -1,14 +1,20 @@
+# cSpell:ignore clickhouseexporter
 title: ClickHouse Exporter
 registryType: exporter
-isThirdParty: false
 language: collector
 tags:
   - go
   - exporter
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/clickhouseexporter
 license: Apache 2.0
 description:
   This exporter supports sending OpenTelemetry logs and spans to ClickHouse
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/clickhouseexporter
+createdAt: 2020-11-05
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/clickhouseexporter
+  version: v0.93.0

@@ -1,6 +1,5 @@
 title: OpenTelemetry Collector protobuf over HTTP Exporter
 registryType: exporter
-isThirdParty: false
 language: python
 tags:
   - otlp
@@ -8,10 +7,12 @@ tags:
   - grpc
   - exporter
   - python
-repo: https://github.com/open-telemetry/opentelemetry-python/tree/main/exporter/opentelemetry-exporter-otlp-proto-http
 license: Apache 2.0
 description:
   This library allows to export data to the OpenTelemetry Collector using the
   OpenTelemetry Protocol using protobuf over HTTP.
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-python/tree/main/exporter/opentelemetry-exporter-otlp-proto-http
+createdAt: 2022-11-07
