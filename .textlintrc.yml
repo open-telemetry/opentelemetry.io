@@ -114,6 +114,7 @@ rules:
       #
       - ['3rd[- ]party', third-party]
       - ['back end(s)?', 'backend$1']
+      - ['bugfix', 'bug fix']
       - [cpp, C++]
       - # dotnet|.net -> .NET, but NOT for strings like:
         # - File extension: file.net
