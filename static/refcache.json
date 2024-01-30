@@ -2491,6 +2491,18 @@
     "StatusCode": 200,
     "LastSeen": "2023-11-14T11:45:02.674064+01:00"
   },
+  "https://github.com/lumigo-io/opentelemetry-java-distro": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-30T11:22:17.005081+01:00"
+  },
+  "https://github.com/lumigo-io/opentelemetry-js-distro": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-30T11:22:18.249151+01:00"
+  },
+  "https://github.com/lumigo-io/opentelemetry-python-distro": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-30T11:22:19.954084+01:00"
+  },
   "https://github.com/mahboubii/grpcmetrics": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:55:57.151719-05:00"

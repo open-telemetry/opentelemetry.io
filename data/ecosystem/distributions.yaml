@@ -1,51 +1,41 @@
-# cSpell:ignore Splunk AWS ADOT Grafana observIQ BindPlane RHOSDT RedHat Sumo Liatrio Lumigo
+# cSpell:ignore Splunk AWS ADOT Grafana observIQ BindPlane RHOSDT RedHat Sumo Liatrio Lumigo Distro
 - name: Splunk Distribution of OpenTelemetry Collector
   url: https://github.com/signalfx/splunk-otel-collector
   docsUrl: https://docs.splunk.com/observability/en/gdi/opentelemetry/opentelemetry.html
   components: [Collector]
-  oss: true
 - name: AWS Distro for OpenTelemetry (ADOT)
   url: https://aws.amazon.com/otel/
   docsUrl: https://aws-otel.github.io/docs/getting-started/collector
   components: [Collector]
-  oss: true
 - name: Grafana Agent
   url: https://github.com/grafana/agent
   docsUrl: https://grafana.com/docs/agent/latest/
   components: [Collector]
-  oss: true
 - name: observIQ BindPlane Agent
   url: https://github.com/observIQ/observiq-otel-collector
   docsUrl: https://github.com/observIQ/bindplane-agent/tree/main/docs
   components: [Collector]
-  oss: true
 - name: RedHat RHOSDT OpenTelemetry Collector Distribution
   url: https://github.com/os-observability/redhat-opentelemetry-collector
   docsUrl: https://github.com/os-observability/redhat-opentelemetry-collector
   components: [Collector]
-  oss: true
 - name: Sumo Logic Distribution for OpenTelemetry Collector
   url: https://github.com/SumoLogic/sumologic-otel-collector
   docsUrl: https://help.sumologic.com/docs/send-data/opentelemetry-collector/sumo-logic-opentelemetry-vs-opentelemetry-upstream-relationship/
   components: [Collector]
-  oss: true
 - name: Liatrio Distribution of the OpenTelemetry Collector
   url: https://github.com/liatrio/liatrio-otel-collector
   docsUrl: https://github.com/liatrio/liatrio-otel-collector
   components: [Collector]
-  oss: true
 - name: Lumigo OpenTelemetry Distribution for Java
   url: https://github.com/lumigo-io/opentelemetry-java-distro
   docsUrl: https://github.com/lumigo-io/opentelemetry-java-distro
-  oss: true
   components: [Java]
 - name: Lumigo OpenTelemetry Distribution for Python
   url: https://github.com/lumigo-io/opentelemetry-python-distro
   docsUrl: https://github.com/lumigo-io/opentelemetry-python-distro
-  oss: true
   components: [Python]
 - name: Lumigo OpenTelemetry Distribution for Node.js
   url: https://github.com/lumigo-io/opentelemetry-js-distro
   docsUrl: https://github.com/lumigo-io/opentelemetry-js-distro
-  oss: true
   components: [Node]

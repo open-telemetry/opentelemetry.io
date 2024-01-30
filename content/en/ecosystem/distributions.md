@@ -1,13 +1,12 @@
 ---
 title: Distributions
-description:
-  List of OpenTelemetry distributions maintained by third parties.
+description: List of OpenTelemetry distributions maintained by third parties.
 aliases: [/distributions]
 ---
 
 OpenTelemetry [distributions](/docs/concepts/distributions/) are a way of
 customizing OpenTelemetry components so that they're easier to deploy and use
-with specific observability back ends.
+with specific observability backends.
 
 Any third-party can customize OpenTelemetry components with back-end, vendor, or
 end-user specific changes. You don't have to use a distributions in order to use
@@ -15,7 +14,8 @@ OpenTelemetry components, though distributions might facilitate usage under
 certain circumstances, such as specific vendor requirements.
 
 The following list contains a sample of OpenTelemetry distributions and the
-component they customize. Note that those are third-party projects and are in no way validated or endorsed by the OpenTelemetry community.
+component they customize. Note that those are third-party projects and are in no
+way validated or endorsed by the OpenTelemetry community.
 
 {{% ecosystem/distributions-table %}}
 
