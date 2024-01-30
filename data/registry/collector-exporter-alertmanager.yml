@@ -11,7 +11,7 @@ license: Apache 2.0
 description:
   Exports OTel Events (SpanEvent in Tracing added by AddEvent API) as Alerts to
   [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/)
-  back-end to notify Errors or Change events.
+  backend to notify Errors or Change events.
 authors:
   - name: OpenTelemetry Authors
 package:
