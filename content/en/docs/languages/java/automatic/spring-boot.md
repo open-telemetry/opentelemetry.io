@@ -161,31 +161,7 @@ and
 [Logging](https://github.com/open-telemetry/opentelemetry-java/tree/main/exporters/logging)
 Span Exporters.
 
-#### Exporter Properties
-
-| Feature       | Property                      | Default Value           |
-| ------------- | ----------------------------- |-------------------------|
-| OTLP Exporter | `otel.exporter.otlp.endpoint` | <http://localhost:4318> |
-|               | `otel.exporter.otlp.protocol` | http/protobuf           |
-|               | `otel.exporter.otlp.headers`  |                         |
-|               | `otel.exporter.otlp.timeout`  | 1s                      |
-
-The `otel.exporter.otlp.headers` property can be specified as a comma-separated
-list, which is compliant with the
-[specification](/docs/concepts/sdk-configuration/otlp-exporter-configuration/#otel_exporter_otlp_headers).
-Similar to the resource attributes, the headers can be specified in
-`application.properties` or `application.yaml`:
-
-```yaml
-otel:
-  exporter:
-    otlp:
-      headers:
-        - key: 'header1'
-          value: 'value1'
-        - key: 'header2'
-          value: 'value2'
-```
+As of 2.0.0+ the default protocol is `http/protobuf`. For more details on exporter configuration, see [OTLP Exporter Configuration](/docs/concepts/sdk-configuration/otlp-exporter-configuration/#otel_exporter_otlp_endpoint).
 
 #### Enabling/Disabling Exporters
 
