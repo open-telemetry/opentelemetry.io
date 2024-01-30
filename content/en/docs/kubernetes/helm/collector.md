@@ -53,9 +53,6 @@ receivers:
   jaeger:
     protocols:
       grpc:
-        # Tells the Collector to listen on all interfaces
-        # and addresses. Make sure to set the most
-        # appropriate value for your environment.
         endpoint: ${env:MY_POD_IP}:14250
       thrift_compact:
         endpoint: ${env:MY_POD_IP}:6831
