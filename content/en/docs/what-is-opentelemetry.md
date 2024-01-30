@@ -16,7 +16,7 @@ backends, including open source tools like
 [Jaeger](https://www.jaegertracing.io/) and
 [Prometheus](https://prometheus.io/), as well as commercial offerings.
 
-OpenTelemetry is not an observability back end like Jaeger, Prometheus, or other
+OpenTelemetry is not an observability backend like Jaeger, Prometheus, or other
 commercial vendors. OpenTelemetry is focused on the generation, collection,
 management, and export of telemetry. A major goal of OpenTelemetry is that you
 can easily instrument your applications or systems, no matter their language,
@@ -36,7 +36,7 @@ To make a system observable, it must be
 [traces](/docs/concepts/signals/traces/),
 [metrics](/docs/concepts/signals/metrics/), or
 [logs](/docs/concepts/signals/logs/). The instrumented data must then be sent to
-an observability back end.
+an observability backend.
 
 ## Why OpenTelemetry?
 
