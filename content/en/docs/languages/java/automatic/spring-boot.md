@@ -1,9 +1,11 @@
---- 
+---
 title: Spring Boot
 linkTitle: Spring Boot
 weight: 30
 description: Spring Boot instrumentation for OpenTelemetry Java
-cSpell:ignore: autoconfigure autoconfigures autoconfiguration classpath datasource logback springboot springframework webflux webmvc
+cSpell:ignore:
+  autoconfigure autoconfigures autoconfiguration classpath datasource logback
+  springboot springframework webflux webmvc
 ---
 
 The [OpenTelemetry Java agent](..) with byte code instrumentation can cover most
@@ -161,7 +163,9 @@ and
 [Logging](https://github.com/open-telemetry/opentelemetry-java/tree/main/exporters/logging)
 Span Exporters.
 
-As of 2.0.0+ the default protocol is `http/protobuf`. For more details on exporter configuration, see [OTLP Exporter Configuration](/docs/concepts/sdk-configuration/otlp-exporter-configuration/#otel_exporter_otlp_endpoint).
+As of 2.0.0+ the default protocol is `http/protobuf`. For more details on
+exporter configuration, see
+[OTLP Exporter Configuration](/docs/concepts/sdk-configuration/otlp-exporter-configuration/#otel_exporter_otlp_endpoint).
 
 #### Enabling/Disabling Exporters
 
