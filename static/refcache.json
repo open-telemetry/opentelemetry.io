@@ -7995,10 +7995,6 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:04:54.247319-05:00"
   },
-  "https://www.youtube.com/playlist": {
-    "StatusCode": 404,
-    "LastSeen": "2024-01-30T16:42:42.793849-05:00"
-  },
   "https://www.youtube.com/watch": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:07:39.018978-05:00"
@@ -8022,10 +8018,6 @@
   "https://youtube.com/@otel-official": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:05:09.10431-05:00"
-  },
-  "https://youtube.com/playlist": {
-    "StatusCode": 404,
-    "LastSeen": "2024-01-30T16:40:22.76972-05:00"
   },
   "https://zipkin.io/": {
     "StatusCode": 206,
