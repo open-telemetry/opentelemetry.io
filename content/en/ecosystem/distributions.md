@@ -33,16 +33,16 @@ The entry must include the following:
 - GitHub handle or email address as a point of contact so that we can reach out
   in case we have questions
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Notes" color="info" %}}
 
-If you provide external integration of OpenTelemetry for any kind of library,
-service, or app, then
-[consider adding it to the registry](/ecosystem/registry/adding).
+- If you provide external integration of OpenTelemetry for any kind of library,
+service, or app, then consider
+[adding it to the registry](/ecosystem/registry/adding).
 
-If you adopt OpenTelemetry for Observability as an end user and do not provide
+- If you adopt OpenTelemetry for observability as an end user and do not provide
 any kind of services around OpenTelemetry, see [Adopters](/ecosystem/adopters).
 
-If you provide a solution that consumes OpenTelemetry to offer observability to
+- If you provide a solution that consumes OpenTelemetry to offer observability to
 end users, see [Vendors](/ecosystem/vendors).
 
 {{% /alert %}}
