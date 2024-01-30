@@ -64,9 +64,6 @@ receivers:
   otlp:
     protocols:
       grpc:
-        # Tells the Collector to listen on all interfaces
-        # and addresses. Make sure to set the most
-        # appropriate value for your environment.
         endpoint: ${env:MY_POD_IP}:4317
       http:
         endpoint: ${env:MY_POD_IP}:4318
