@@ -127,7 +127,7 @@ further exploration:
 - [Column data store for OpenTelemetry](https://github.com/open-telemetry/oteps/pull/171)
 - [OpAMP](/blog/2022/opamp/)
 - Your backend vendor’s tail-based sampling strategies
-- [Paper by Uber](https://www.uber.com/en-IN/blog/crisp-critical-path-analysis-for-microservice-architectures/)
+- [Paper by Uber](https://uber.com/blog/crisp-critical-path-analysis-for-microservice-architectures/)
 - [Tail sampling processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/tailsamplingprocessor/README.md)
 
 ### Adoption, Migration, and Implementation
