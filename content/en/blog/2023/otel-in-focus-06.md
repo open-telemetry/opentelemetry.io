@@ -70,7 +70,7 @@ operator.
 0.79.0 of the Operator includes enhancements such as Prometheus metric exporter
 support for Node.js auto-instrumentation and the ability to inject the service
 version into the environment of the instrumented application. There is also a
-bugfix regarding the OpenTelemetry Collector version not displaying properly in
+bug fix regarding the OpenTelemetry Collector version not displaying properly in
 the status field.
 
 0.78.0 includes enhancements such as updating various packages, support for
