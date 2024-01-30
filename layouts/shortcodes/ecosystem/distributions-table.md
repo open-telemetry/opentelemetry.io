@@ -1,5 +1,5 @@
 <!-- cSpell:ignore: cond -->
-{{ $data := sort (sort $.Site.Data.ecosystem.distributions "components") "name" "desc" -}}
+{{ $data := sort (sort $.Site.Data.ecosystem.distributions "name") "components" "asc" -}}
 Name[^1]     | Components |  Learn more
 ------------ | ---------- |  ----------
 {{- range $data }}
