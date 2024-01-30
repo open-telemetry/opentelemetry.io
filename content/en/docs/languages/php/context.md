@@ -2,34 +2,34 @@
 title: Context
 weight: 55
 cSpell:ignore: Swoole
-description: Learn how context works in instrumented applications.
+description: Learn how the context API works in instrumented applications.
 ---
 
 OpenTelemetry works by storing and propagating telemetry data. For example, when
 an instrumented application receives a request and a span starts, the span must
 be available to a component which creates child spans. To address this need,
-OpenTelemetry stores the span in the context.
+OpenTelemetry stores the span in the active context.
 
-See the [Context specification](/docs/specs/otel/context/) for more information
-on what the context is and does.
+## PHP execution context
 
-## Context
-
-Context is globally available within a single PHP execution context, and there
-can only be one [active context](#active-context) in the current execution
-context. Context can store values (for example, a `Span`).
+The context API is globally available within a single PHP execution context, and
+there can only be one [active context](#active-context) in the current execution
+context.
 
 ### Storage
 
-Context uses `Storage` to keep track of values. By default, a generic
-`ContextStorage` is used. OpenTelemetry for PHP supports other context storage
-for less common use cases, like asynchronous or concurrent execution with
-`fibers`.
+Context can store values (for example, a `Span`), and it uses `Storage` to keep
+track of the stored values. By default, a generic `ContextStorage` is used.
+OpenTelemetry for PHP supports other context storage for less common use cases,
+like asynchronous or concurrent execution with `fibers`.
 
 ## Context keys
 
-Context entries are key-value pairs. Keys can be created by calling
-`OpenTelemetry\Context\Context::createKey()`.
+Values as stored in context as key-value pairs. Context keys are used to store
+and retrieve values from context.
+
+Keys can be created by calling `OpenTelemetry\Context\Context::createKey()`, for
+example:
 
 ```php
 use OpenTelemetry\Context\Context;
@@ -37,38 +37,6 @@ use OpenTelemetry\Context\Context;
 $key1 = Context::createKey('My first key');
 $key2 = Context::createKey('My second key');
 ```
-
-Context keys are used to store and retrieve values from context.
-
-## Basic operations
-
-### Store and retrieve values
-
-Values are stored in Context by using the `$context->with($key, $value)` method.
-Setting a context entry creates a new context with the new entry in its storage,
-containing `$value`.
-
-Context is immutable, and setting a context entry does not modify the previous
-context. Once a value is stored in a context, it can be retrieved via
-`$context->get($key)`:
-
-```php
-use OpenTelemetry\Context\Context;
-
-$key = Context::createKey('some key');
-
-// add a new entry
-$ctx2 = Context::getCurrent()->with($key, 'context 2');
-
-// ctx2 contains the new entry
-var_dump($ctx2->get($key)); // "context 2"
-
-// active context is unchanged
-var_dump(Context::getCurrent()->get($key)); // NULL
-```
-
-If a value is not found in the current context, then each parent is checked
-until either the key is found, or the root context is reached.
 
 ## Active context
 
@@ -88,7 +56,35 @@ use OpenTelemetry\Context\Context;
 $context = Context::getCurrent();
 ```
 
-### Set Active Context
+### Set and get context values
+
+Values are stored in Context by using the `$context->with($key, $value)` method.
+Setting a context entry creates a new context with the new entry in its storage,
+containing `$value`.
+
+Context is immutable. Setting a context entry creates a new context with the new
+entry in its storage: `$context->with($key, $value)`. Retrieve values using
+`$context->get($key)`, for example:
+
+```php
+use OpenTelemetry\Context\Context;
+
+$key = Context::createKey('some key');
+
+// add a new entry
+$ctx2 = Context::getCurrent()->with($key, 'context 2');
+
+// ctx2 contains the new entry
+var_dump($ctx2->get($key)); // "context 2"
+
+// active context is unchanged
+var_dump(Context::getCurrent()->get($key)); // NULL
+```
+
+If a value is not found in the current context, then each parent is checked
+until either the key is found, or the root context is reached.
+
+### Activate a context
 
 A context can be made active by calling `$context->activate()`.
 
@@ -110,7 +106,8 @@ context.
 
 The return value of `$scope->detach()` is an integer. A return value of `0`
 means that the scope was successfully detached. A non-zero value means that the
-call was unexpected and that the context associated with the scope was:
+call was unexpected. This could happen if the context associated with the scope
+was:
 
 - Already detached
 - Not a part of the current execution context
@@ -119,11 +116,11 @@ call was unexpected and that the context associated with the scope was:
 #### DebugScope
 
 To assist developers in locating issues with context and scope, there is
-`DebugScope`. In development, with a PHP runtime with assertions enabled, an
-activated `Context` is wrapped in a `DebugScope`. The `DebugScope` keeps track
-of when the scope was activated, and has a destructor which triggers an error if
-the scope was not detached. The error output contains a backtrace of which code
-activated the context.
+`DebugScope`. In a PHP runtime with assertions enabled, an activated `Context`
+is wrapped in a `DebugScope`. The `DebugScope` keeps track of when the scope was
+activated, and has a destructor which triggers an error if the scope was not
+detached. The error output contains a backtrace of which code activated the
+context.
 
 The following code would trigger an error, complaining that a scope was not
 detached, and giving a backtrace of where the scope was created:
@@ -166,7 +163,7 @@ $scope2->detach(); //original context is active
 var_dump(Context::getCurrent()->get($key)); //NULL
 ```
 
-### Asynchronous context
+### Context in asynchronous environments
 
 For asynchronous PHP programming, for example `Swoole` or the Fiber-based
 `Revolt` event loop, there can be multiple active contexts, but still only one
