@@ -18,7 +18,7 @@
   {{ template "community-links-list" . }}
 {{ end }}
 
-{{ T "community_how_to" . }} <a href="/docs/contribution-guidelines/">{{ T "community_guideline" }}</a>.
+{{ T "community_how_to" . }} <a href="/docs/contributing/">{{ T "community_guideline" }}</a>.
 
 {{ define "community-links-list" -}}
 {{ range . }}
