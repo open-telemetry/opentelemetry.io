@@ -20,3 +20,4 @@ deprecated:
 package:
   registry: gems
   name: opentelemetry-exporters-datadog
+  version: 0.2.2

@@ -97,7 +97,7 @@ for yaml_file in ${FILES}; do
 done;
 
 # We use the sha1 over all version updates to uniquely identify the PR.
-tag=$(echo body | sha1sum | awk '{print $1;}')
+tag=$(echo "${body}" | sha1sum | awk '{print $1;}')
 message="Auto-update registry versions (${tag})"
 branch="opentelemetrybot/auto-update-registry-${tag}"
 
