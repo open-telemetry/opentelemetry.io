@@ -23,6 +23,7 @@ languageSettings:
       - CodeBlock
 words:
   - accountingservice
+  - actix
   - adservice
   - alibaba
   - Alloc

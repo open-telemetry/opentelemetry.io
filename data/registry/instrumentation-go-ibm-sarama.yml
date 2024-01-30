@@ -1,0 +1,22 @@
+# cSpell:ignore dnwe otelsarama sarama
+title: IBM/sarama Instrumentation
+registryType: instrumentation
+language: go
+tags:
+  - sarama
+  - instrumentation
+  - go
+license: Apache 2.0
+description:
+  Package sarama provides functions to trace the
+  [IBM/sarama](https://github.com/IBM/sarama) package.
+authors:
+  - name: OpenTelemetry Authors
+  - name: Dominic Evans
+    url: https://github.com/dnwe
+urls:
+  repo: https://github.com/dnwe/otelsarama
+createdAt: 2024-11-25
+package:
+  name: github.com/dnwe/otelsarama
+  registry: go

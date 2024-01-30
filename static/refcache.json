@@ -519,6 +519,10 @@
     "StatusCode": 206,
     "LastSeen": "2023-07-06T17:57:36.620937-04:00"
   },
+  "https://crates.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-01-19T16:56:12.042658+01:00"
+  },
   "https://cri-o.io/": {
     "StatusCode": 206,
     "LastSeen": "2023-07-21T16:51:54.102328+02:00"
@@ -730,6 +734,10 @@
   "https://doc.rust-lang.org/cargo/": {
     "StatusCode": 206,
     "LastSeen": "2023-08-03T17:44:09.893503+02:00"
+  },
+  "https://doc.rust-lang.org/std/io/trait.Write.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-01-22T08:13:47.191476+01:00"
   },
   "https://doc.traefik.io/traefik-hub/operations/telemetry/overview/": {
     "StatusCode": 206,
@@ -1927,6 +1935,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:05:35.043924-05:00"
   },
+  "https://github.com/IBM/sarama": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-25T12:26:11.985357104Z"
+  },
   "https://github.com/MetinSeylan/Nestjs-OpenTelemetry": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:12:29.56313-05:00"
@@ -2190,6 +2202,14 @@
   "https://github.com/dmsolr": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:04:59.339712-05:00"
+  },
+  "https://github.com/dnwe": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-25T12:26:11.391358232Z"
+  },
+  "https://github.com/dnwe/otelsarama": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-25T10:54:57.162378745Z"
   },
   "https://github.com/docker/buildx": {
     "StatusCode": 200,
@@ -3967,6 +3987,10 @@
     "StatusCode": 200,
     "LastSeen": "2023-09-25T10:17:08.450210292Z"
   },
+  "https://go.dev/doc/code#Command": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-16T09:38:29.715064-05:00"
+  },
   "https://go.dev/doc/install/gccgo": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:01:53.277862-05:00"
@@ -5343,9 +5367,17 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:07:28.767134-05:00"
   },
+  "https://pkg.go.dev/cmd/go#hdr-Environment_variables": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-16T09:38:27.962889-05:00"
+  },
   "https://pkg.go.dev/github.com/XSAM/otelsql": {
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:17:16.696764+01:00"
+  },
+  "https://pkg.go.dev/github.com/dnwe/otelsarama": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-25T12:26:12.14544959Z"
   },
   "https://pkg.go.dev/github.com/mitchellh/mapstructure": {
     "StatusCode": 200,
@@ -6086,6 +6118,10 @@
   "https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#ServerAuthenticator": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:07:49.734386-05:00"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-19T15:36:28.468246594Z"
   },
   "https://pkg.go.dev/go.opentelemetry.io/otel": {
     "StatusCode": 200,

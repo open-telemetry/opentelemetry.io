@@ -12,3 +12,7 @@ authors:
 urls:
   repo: https://github.com/OutThereLabs/actix-web-opentelemetry
 createdAt: 2020-08-28
+package:
+  registry: crates
+  name: actix-web-opentelemetry
+  version: 0.16.0

@@ -9,23 +9,21 @@ weight: 10
 This page will show you how to get started with OpenTelemetry in Java.
 
 You will learn how you can instrument a simple Java application automatically,
-in such a way that [traces][], [metrics][] and [logs][] are emitted to the
+in such a way that [traces][], [metrics][], and [logs][] are emitted to the
 console.
 
 ## Prerequisites
 
 Ensure that you have the following installed locally:
 
-- Java JDK
+- Java JDK 17+, due to the use of Spring Boot 3; [Java 8+ otherwise][java-vers]
 - [Gradle](https://gradle.org/)
 
 ## Example Application
 
-The following example uses a basic
-[Spring Boot](https://spring.io/guides/gs/spring-boot/) application. If you are
-not using Spring Boot, that's OK — you can use OpenTelemetry Java with other web
-frameworks as well, such as Apache Wicket and Play. For a complete list of
-libraries for supported frameworks, see the
+The following example uses a basic [Spring Boot] application. You can use
+another web framework, such as Apache Wicket or Play. For a complete list of
+libraries and supported frameworks, consult the
 [registry](/ecosystem/registry/?component=instrumentation&language=java).
 
 For more elaborate examples, see [examples](/docs/languages/java/examples/).
@@ -251,8 +249,11 @@ For more:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md#logging-exporter
 [exporter]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md#exporters
+[java-vers]:
+  https://github.com/open-telemetry/opentelemetry-java/blob/main/VERSIONING.md#language-version-compatibility
 [manual instrumentation]: ../instrumentation
 [opentelemetry-javaagent.jar]:
   https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
 [releases]:
   https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases
+[Spring Boot]: https://spring.io/guides/gs/spring-boot/
