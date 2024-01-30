@@ -1,10 +1,9 @@
-# cSpell:ignore autoconfigures autoconfiguration autoconfigurations classpath webflux webmvc
 --- 
 title: Spring Boot
 linkTitle: Spring Boot
 weight: 30
 description: Spring Boot instrumentation for OpenTelemetry Java
-cSpell:ignore: autoconfigure datasource logback springboot springframework
+cSpell:ignore: autoconfigure autoconfigures autoconfiguration classpath datasource logback springboot springframework webflux webmvc
 ---
 
 The [OpenTelemetry Java agent](..) with byte code instrumentation can cover most
