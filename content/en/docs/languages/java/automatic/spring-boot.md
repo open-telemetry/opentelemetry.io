@@ -1,4 +1,5 @@
----
+# cSpell:ignore autoconfigures autoconfiguration autoconfigurations classpath webflux webmvc
+--- 
 title: Spring Boot
 linkTitle: Spring Boot
 weight: 30
