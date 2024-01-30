@@ -1,7 +1,7 @@
 ---
 title: Distributions
 description:
-  Libraries, services, and apps with first-party support for OpenTelemetry.
+  List of OpenTelemetry distributions maintained by third parties.
 aliases: [/distributions]
 ---
 
