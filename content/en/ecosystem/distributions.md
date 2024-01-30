@@ -1,7 +1,6 @@
 ---
 title: Distributions
 description: List of OpenTelemetry distributions maintained by third parties.
-aliases: [/distributions]
 ---
 
 OpenTelemetry [distributions](/docs/concepts/distributions/) are a way of
