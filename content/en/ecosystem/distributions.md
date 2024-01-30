@@ -22,7 +22,7 @@ way validated or endorsed by the OpenTelemetry community.
 
 ## How to add your distribution {#how-to-add}
 
-To have your library, service, or app listed, submit a PR with an entry added to
+To have your distribution listed, submit a PR with an entry added to
 the
 [distributions list](https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/distributions.yaml).
 The entry must include the following:
