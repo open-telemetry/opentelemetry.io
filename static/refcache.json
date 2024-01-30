@@ -151,6 +151,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:07:46.127111-05:00"
   },
+  "https://aws.amazon.com/otel/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-30T15:19:46.407077+01:00"
+  },
   "https://azure.github.io/azure-sdk/releases/latest/index.html": {
     "StatusCode": 206,
     "LastSeen": "2023-09-06T15:04:23.411053+02:00"
