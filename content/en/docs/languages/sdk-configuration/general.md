@@ -1,8 +1,7 @@
 ---
 title: General SDK Configuration
-description: >-
-  General-purpose environment variables for configuring an OpenTelemetry SDK.
-weight: 1
+linkTitle: General
+aliases: [general-sdk-configuration]
 cSpell:ignore: ottrace
 ---
 

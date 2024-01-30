@@ -76,7 +76,7 @@ If all configuration comes from environment variables (or `php.ini`), you can
 use SDK autoloading to automatically configure and globally register an SDK. The
 only requirement for this is that you set `OTEL_PHP_AUTOLOAD_ENABLED=true`, and
 provide any required/non-standard configuration as set out in
-[sdk-configuration](/docs/concepts/sdk-configuration/).
+[SDK configuration](/docs/languages/sdk-configuration/).
 
 For example:
 
@@ -99,10 +99,10 @@ SDK autoloading happens as part of the composer autoloader.
 
 ## Configuration
 
-The PHP SDK supports most of the
-[available configurations](/docs/concepts/sdk-configuration/). Our conformance
-to the specification is listed in the
-[spec compliance matrix](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md).
+The PHP SDK supports most of the available
+[configuration options](/docs/languages/sdk-configuration/). For conformance
+details, see the
+[compliance matrix](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md).
 
 There are also a number of PHP-specific configurations:
 
