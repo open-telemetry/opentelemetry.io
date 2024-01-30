@@ -151,7 +151,8 @@ exporters:
   loadbalancing:
     protocol:
       otlp:
-        insecure: true
+        tls:
+          insecure: true
     resolver:
       dns:
         hostname: collectors.example.com
@@ -176,7 +177,8 @@ exporters:
     routing_key: service
     protocol:
       otlp:
-        insecure: true
+        tls:
+          insecure: true
     resolver:
       dns:
         hostname: collectors.example.com
