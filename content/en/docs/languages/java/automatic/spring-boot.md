@@ -163,12 +163,12 @@ Span Exporters.
 
 #### Exporter Properties
 
-| Feature       | Property                      | Default Value  |
-| ------------- | ----------------------------- |----------------|
-| OTLP Exporter | `otel.exporter.otlp.endpoint` | localhost:4317 |
-|               | `otel.exporter.otlp.protocol` | HTTP/protobuf  |
-|               | `otel.exporter.otlp.headers`  |                |
-|               | `otel.exporter.otlp.timeout`  | 1s             |
+| Feature       | Property                      | Default Value         |
+| ------------- | ----------------------------- |-----------------------|
+| OTLP Exporter | `otel.exporter.otlp.endpoint` | http://localhost:4318 |
+|               | `otel.exporter.otlp.protocol` | http/protobuf         |
+|               | `otel.exporter.otlp.headers`  |                       |
+|               | `otel.exporter.otlp.timeout`  | 1s                    |
 
 The `otel.exporter.otlp.headers` property can be specified as a comma-separated
 list, which is compliant with the
