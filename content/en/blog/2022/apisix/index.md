@@ -192,7 +192,7 @@ resulting in a call chain consisting of two spans.
 ### Step 1: Deploy OpenTelemetry
 
 The following uses `docker compose` as an example. For other deployments, see
-[Getting Started](/docs/collector/getting-started/).
+[Quick start](/docs/collector/quick-start/).
 
 You can see the following command to deploy[^1]:
 

@@ -15,3 +15,7 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/httpx
 createdAt: 2022-10-27
+package:
+  registry: gems
+  name: opentelemetry-instrumentation-httpx
+  version: 0.1.1

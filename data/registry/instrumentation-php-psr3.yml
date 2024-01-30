@@ -14,3 +14,7 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/Psr3
 createdAt: 2023-07-10
+package:
+  registry: packagist
+  name: open-telemetry/opentelemetry-auto-psr3
+  version: 0.0.6

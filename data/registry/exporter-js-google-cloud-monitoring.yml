@@ -11,3 +11,7 @@ authors:
 urls:
   repo: https://github.com/GoogleCloudPlatform/opentelemetry-operations-js/tree/main/packages/opentelemetry-cloud-monitoring-exporter
 createdAt: 2020-04-01
+package:
+  registry: npm
+  name: '@google-cloud/opentelemetry-cloud-monitoring-exporter'
+  version: 0.17.0

@@ -41,6 +41,11 @@
                 "urlPattern" "https://hex.pm/packages/%s"
                 "installTemplate" "ecosystem/registry/quickinstall/hex.md"
                 "icon" "fa-brands fa-erlang")
+            "crates" (dict
+                "urlPattern" "https://crates.io/crates/%s"
+                "installLine" "cargo add %s"
+                "installTemplate" "ecosystem/registry/quickinstall/default.md"
+                "icon" "fab fa-rust")
     -}}
 
     {{ $isNativ := and (eq .registryType "instrumentation") (.isNative) }}

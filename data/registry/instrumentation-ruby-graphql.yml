@@ -11,3 +11,7 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/graphql
 createdAt: 2020-11-09
+package:
+  registry: gems
+  name: opentelemetry-instrumentation-graphql
+  version: 0.27.0
