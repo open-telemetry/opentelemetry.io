@@ -14,7 +14,7 @@ for instrumenting, generating, collecting, and exporting telemetry data such as
 
 As an industry-standard, OpenTelemetry is
 [supported by more than 40 observability vendors](/ecosystem/vendors/),
-integrated by many [libraries, services and apps](/ecosystem/integrations), and
+integrated by many [libraries, services, and apps](/ecosystem/integrations), and
 adopted by [numerous end users](/ecosystem/adopters).
 
 The following diagram shows the high-level OpenTelemetry architecture:
