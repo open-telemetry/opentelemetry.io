@@ -350,11 +350,8 @@ Before I wrap this up, I do want to give a HUGE shoutout to
 [Luiz Aoqui](https://www.linkedin.com/in/luizaoqui/) of HashiCorp, who helped me
 tweak my Nomad jobspecs, and to
 [Riaan Nolan](https://www.linkedin.com/in/riaannolan/), for his continued work
-on HashiQube. (Aside, both
-[Luiz](https://oncallmemaybe.com/episodes/opentelemetry-nomad-with-luiz-aoqui-of-hashicorp)
-and
-[Riaan](https://oncallmemaybe.com/episodes/adventures-in-open-source-software-with-riaan-nolan-of-servian)
-were my guests on the [On-Call Me Maybe Podcast](https://oncallmemaybe.com)!)
+on HashiQube. (Aside, both [Luiz] and [Riaan] were my guests on the [On-Call Me
+Maybe Podcast]!)
 
 I will now leave you with a picture of Phoebe the rat, peering out of a pink
 basket. Doesn’t she look cute? 🥰
@@ -372,8 +369,12 @@ Have questions about the OTel Demo App on Nomad? Feel free to connect through
 ---
 
 The OpenTelemetry community is always looking for contributions!
-[Join us](https://github.com/open-telemetry/community)! If you're on Mastodon,
-be sure to follow
-[OpenTelemetry on Mastodon](https://fosstodon.org/@opentelemetry)
+[Join us](/community/#special-interest-groups)! If you're on Mastodon, be sure
+to follow [OpenTelemetry on Mastodon](https://fosstodon.org/@opentelemetry)
 
+[Luiz]:
+  https://open.spotify.com/episode/7ww8y3fy49MgEbcyFGvsNV?si=BMvp8u-dRgyPEkTkYxfDAA
 [nomad]: https://www.nomadproject.io
+[On-Call Me Maybe Podcast]: https://open.spotify.com/show/4ZI6pQwChwm4sVULdtHFMe
+[Riaan]:
+  https://open.spotify.com/episode/5YrBEsXoJV3UjrHRrLRqBP?si=BpWISRD0SLytJF-vJ02sSA
