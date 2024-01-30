@@ -33,6 +33,7 @@ words:
   - appender
   - appenders
   - aspecto
+  - autoconfiguration
   - autoload
   - autoloaded
   - autoloader
