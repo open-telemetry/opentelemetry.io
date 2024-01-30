@@ -1,4 +1,4 @@
-# cSpell:ignore Splunk AWS ADOT Grafana observIQ BindPlane RHOSDT RedHat Sumo Liatrio
+# cSpell:ignore Splunk AWS ADOT Grafana observIQ BindPlane RHOSDT RedHat Sumo Liatrio Lumigo
 - name: Splunk Distribution of OpenTelemetry Collector
   url: https://github.com/signalfx/splunk-otel-collector
   docsUrl: https://docs.splunk.com/observability/en/gdi/opentelemetry/opentelemetry.html
@@ -34,3 +34,18 @@
   docsUrl: https://github.com/liatrio/liatrio-otel-collector
   components: [Collector]
   oss: true
+- name: Lumigo OpenTelemetry Distribution for Java
+  url: https://github.com/lumigo-io/opentelemetry-java-distro
+  docsUrl: https://github.com/lumigo-io/opentelemetry-java-distro
+  oss: true
+  components: [Java]
+- name: Lumigo OpenTelemetry Distribution for Python
+  url: https://github.com/lumigo-io/opentelemetry-python-distro
+  docsUrl: https://github.com/lumigo-io/opentelemetry-python-distro
+  oss: true
+  components: [Python]
+- name: Lumigo OpenTelemetry Distribution for Node.js
+  url: https://github.com/lumigo-io/opentelemetry-js-distro
+  docsUrl: https://github.com/lumigo-io/opentelemetry-js-distro
+  oss: true
+  components: [Node]
