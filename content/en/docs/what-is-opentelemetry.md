@@ -12,7 +12,7 @@ framework and toolkit designed to create and manage telemetry data such as
 [metrics](/docs/concepts/signals/metrics/), and
 [logs](/docs/concepts/signals/logs/). Crucially, OpenTelemetry is vendor- and
 tool-agnostic, meaning that it can be used with a broad variety of Observability
-back ends, including open source tools like
+backends, including open source tools like
 [Jaeger](https://www.jaegertracing.io/) and
 [Prometheus](https://prometheus.io/), as well as commercial offerings.
 
