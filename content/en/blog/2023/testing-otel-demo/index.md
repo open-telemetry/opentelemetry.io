@@ -343,7 +343,7 @@ the demo. This will evaluate all services in the OpenTelemetry Demo.
 
 During the development of the tests, we noticed some differences in the test
 results. For example, some minor fixes were made to the Cypress tests, and some
-behaviors were observed in the back-end APIs that can be tested and investigated
+behaviors were observed in the backend APIs that can be tested and investigated
 at a later time. You can find the details in
 [this pull request](https://github.com/open-telemetry/opentelemetry-demo/pull/950)
 and
