@@ -42,7 +42,6 @@ The entry must include the following:
 - If you adopt OpenTelemetry for observability as an end user and do not provide
   any kind of services around OpenTelemetry, see
   [Adopters](/ecosystem/adopters).
-
 - If you provide a solution that consumes OpenTelemetry to offer observability
   to end users, see [Vendors](/ecosystem/vendors).
 
