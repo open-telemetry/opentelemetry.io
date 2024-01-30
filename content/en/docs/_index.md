@@ -17,6 +17,4 @@ As an industry-standard, OpenTelemetry is
 integrated by many [libraries, services, and apps](/ecosystem/integrations), and
 adopted by [numerous end users](/ecosystem/adopters).
 
-The following diagram shows the high-level OpenTelemetry architecture:
-
 ![OpenTelemetry Reference Architecture](/img/otel-diagram.svg)
