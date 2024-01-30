@@ -33,6 +33,9 @@ words:
   - appender
   - appenders
   - aspecto
+  - autoconfiguration
+  - autoconfigurations
+  - autoconfigures
   - autoload
   - autoloaded
   - autoloader
@@ -43,6 +46,7 @@ words:
   - cartservice
   - cassandra
   - checkoutservice
+  - classpath
   - cncf
   - currencyservice
   - daemonset
@@ -162,6 +166,8 @@ words:
   - unshallow
   - upstreamed
   - Villela
+  - webflux
+  - webmvc
   - wordpress
   - WSGI
   - zend
