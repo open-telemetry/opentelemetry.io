@@ -25,10 +25,8 @@ the site.
 | OpenTelemetry | OpenTelemetry should always be capitalized. Don't use Open-Telemetry. |
 | OTel | OTel is the accepted short form of OpenTelemetry. Don't use OTEL. |
 | Collector | When referring to the OpenTelemetry Collector, always capitalize Collector. |
-| Repository | Code repository, lowercase when in the middle of a sentence. Don't use "repo" or "repos". |
 | OTEP | OpenTelemetry Enhancement Proposal. Write "OTEPs" as plural form. Don't write "OTep" or "otep". |
 | OpAMP | Open Agent Management Protocol. Don't write "OPAMP" or "opamp" in descriptions or instructions. |
-| OTLP | OpenTelemetry Protocol. Don't write "OTlP" or "otlp" in descriptions or instructions. |
 <!-- prettier-ignore-end -->
 
 Make sure that proper nouns, such as other CNCF projects or third-party tools,
