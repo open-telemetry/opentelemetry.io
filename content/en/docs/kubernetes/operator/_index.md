@@ -54,6 +54,7 @@ spec:
             # appropriate value for your environment.
             endpoint: 0.0.0.0:4317
           http:
+            endpoint: 0.0.0.0:4318
     processors:
 
     exporters:

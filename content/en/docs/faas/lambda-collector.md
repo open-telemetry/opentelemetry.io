@@ -56,9 +56,9 @@ receivers:
         # Tells the Collector to listen on all interfaces
         # and addresses. Make sure to set the most
         # appropriate value for your environment.
-        endpoint: 'localhost:4317'
+        endpoint: '0.0.0.0:4317'
       http:
-        endpoint: 'localhost:4318'
+        endpoint: '0.0.0.0:4318'
 
 exporters:
   # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
