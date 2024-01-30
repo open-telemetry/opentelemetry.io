@@ -15,7 +15,7 @@ OpenTelemetry components, though distributions might facilitate usage under
 certain circumstances, such as specific vendor requirements.
 
 The following list contains a sample of OpenTelemetry distributions and the
-component they customize.
+component they customize. Note that those are third-party projects and are in no way validated or endorsed by the OpenTelemetry community.
 
 {{% ecosystem/distributions-table %}}
 
