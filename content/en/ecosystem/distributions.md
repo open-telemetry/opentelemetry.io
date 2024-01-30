@@ -15,15 +15,17 @@ OpenTelemetry components, though distributions might facilitate usage under
 certain circumstances, such as specific vendor requirements.
 
 The following list contains a sample of OpenTelemetry distributions and the
-component they customize. Note that those are third-party projects and are in no
-way validated or endorsed by the OpenTelemetry community.
+component they customize.
+
+{{% alert title="Note" color="warning" %}} OpenTelemetry **does not validate or
+endorse** the third-party distributions listed in the following table. The list
+is provided as a convenience for the community. {{% /alert %}}
 
 {{% ecosystem/distributions-table %}}
 
 ## How to add your distribution {#how-to-add}
 
-To have your distribution listed, submit a PR with an entry added to
-the
+To have your distribution listed, submit a PR with an entry added to the
 [distributions list](https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/distributions.yaml).
 The entry must include the following:
 
