@@ -78,9 +78,6 @@ receivers:
   otlp/auth:
     protocols:
       grpc:
-       # Tells the Collector to listen on all interfaces
-       # and addresses. Make sure to set the most
-       # appropriate value for your environment.
          endpoint: 0.0.0.0:4317
         auth:
           authenticator: oidc
@@ -111,9 +108,6 @@ receivers:
   otlp/auth:
     protocols:
       grpc:
-       # Tells the Collector to listen on all interfaces
-       # and addresses. Make sure to set the most
-       # appropriate value for your environment.
          endpoint: 0.0.0.0:4317
         auth:
           authenticator: oidc/some-provider
