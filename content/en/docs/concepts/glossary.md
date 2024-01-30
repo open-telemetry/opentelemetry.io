@@ -116,9 +116,7 @@ Something that happened where representation depends on the
 
 ### **Exporter**
 
-Provides functionality to emit telemetry to consumers. Used by
-[`Instrumentation Libraries`][spec-exporter-lib] and the
-[`Collector`](/docs/collector/configuration#basics). Exporters can be push- or
+Provides functionality to emit telemetry to consumers. Exporters can be push- or
 pull-based.
 
 ### **Field**
@@ -232,8 +230,7 @@ Short for [OpenTelemetry Protocol](/docs/specs/otlp/).
 ### **Processor**
 
 The operation performed on data between being received and being exported. For
-example, batching. Used by
-['Instrumentation Libraries'](#instrumentation-library) and the
+example, batching. Used by the
 [Collector](/docs/collector/configuration/#processors).
 
 ### **Propagators**
