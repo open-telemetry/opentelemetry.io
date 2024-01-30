@@ -19,9 +19,9 @@ backends, including open source tools like
 OpenTelemetry is not an observability back end like Jaeger, Prometheus, or other
 commercial vendors. OpenTelemetry is focused on the generation, collection,
 management, and export of telemetry. A major goal of OpenTelemetry is that you
-can easily instrument your applications or systems, no matter their language, infrastructure,
-or runtime environment. Crucially, the storage and visualization of telemetry is intentionally
-left to other tools.
+can easily instrument your applications or systems, no matter their language,
+infrastructure, or runtime environment. Crucially, the storage and visualization
+of telemetry is intentionally left to other tools.
 
 ## What is observability?
 
