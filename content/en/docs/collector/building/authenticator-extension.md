@@ -78,6 +78,7 @@ receivers:
   otlp/auth:
     protocols:
       grpc:
+         endpoint: 0.0.0.0:4317
         auth:
           authenticator: oidc
 
@@ -107,6 +108,7 @@ receivers:
   otlp/auth:
     protocols:
       grpc:
+         endpoint: 0.0.0.0:4317
         auth:
           authenticator: oidc/some-provider
 

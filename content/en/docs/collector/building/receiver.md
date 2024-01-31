@@ -108,6 +108,7 @@ receivers:
   otlp:
     protocols:
       grpc:
+        endpoint: 0.0.0.0:4317
 
 processors:
   batch:
@@ -1035,6 +1036,7 @@ receivers:
   otlp:
     protocols:
       grpc:
+        endpoint: 0.0.0.0:4317
   tailtracer: # this line represents the ID of your receiver
     interval: 1m
     number_of_traces: 1
