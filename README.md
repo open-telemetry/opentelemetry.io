@@ -7,7 +7,7 @@ is hosted on [Netlify][].
 ## Get involved
 
 To learn how to contribute fixes and new content to this project, read the
-[Contributor's guide](/content/en/docs/contributing), which includes a style
+[Contributor's guide](https://opentelemetry.io/docs/contributing/), which includes a style
 guide and useful information on the review process.
 
 If you are new to OpenTelemetry and just get started with it, you are in a
@@ -18,7 +18,7 @@ missing [let us know][].
 ### Submit a blog post
 
 For guidance on how to write and submit a blog post, see
-[Submit a blog post](/content/en/docs/contributing/blog).
+[Submit a blog post](https://opentelemetry.io/docs/contributing/blog/).
 
 ### Add a project to the OpenTelemetry [Registry]
 
