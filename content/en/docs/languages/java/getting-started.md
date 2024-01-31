@@ -150,12 +150,11 @@ number of ways, the steps below use environment variables.
      OTEL_METRIC_EXPORT_INTERVAL=15000
    ```
 
-   Note that `OTEL_METRIC_EXPORT_INTERVAL=15000` (milliseconds) is a temporary
-   setting to test that your metrics are properly generated. Remember to remove
-   the setting once you are done testing. The default is 60000 milliseconds.
-
-   {{% alert title="Important" color="warning" %}}Replace `PATH/TO` above, with
-   your path to the JAR.{{% /alert %}}
+   {{% alert title="Important" color="warning" %}}
+   
+   - Replace `PATH/TO` above, with your path to the JAR.
+   - Set `OTEL_METRIC_EXPORT_INTERVAL` to a value well below the default, as we illustrate above, **only during testing** to help you more quickly ensure that metrics are properly generated.
+   {{% /alert %}}
 
 3. Run your **application** once again:
 
