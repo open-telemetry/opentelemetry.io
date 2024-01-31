@@ -1,9 +1,12 @@
 ---
 title: SDK Configuration
-weight: 101
+linkTitle: SDK Config
+aliases: [/docs/concepts/sdk-configuration]
+redirects: [{ from: /docs/concepts/sdk-configuration/*, to: ':splat' }]
+weight: 1
 ---
 
 OpenTelemetry SDKs support configuration in each language and with environment
 variables. The following pages describe the environment variables you can use to
 configure your SDK. Values set with environment variables override equivalent
-configuration done in code using SDK APIs.
+configuration in code using SDK APIs.
