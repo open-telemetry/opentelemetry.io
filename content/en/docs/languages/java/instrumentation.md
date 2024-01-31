@@ -413,17 +413,17 @@ env \
 OTEL_SERVICE_NAME=dice-server \
 OTEL_TRACES_EXPORTER=logging \
 OTEL_METRICS_EXPORTER=logging \
-OTEL_METRIC_EXPORT_INTERVAL=5000 \
 OTEL_LOGS_EXPORTER=logging \
+OTEL_METRIC_EXPORT_INTERVAL=15000 \
 java -jar ./build/libs/java-simple.jar
 ```
 
 This basic setup has no effect on your app yet. You need to add code for
 [traces](#traces), [metrics](#metrics), and/or [logs](#logs).
 
-(`OTEL_METRIC_EXPORT_INTERVAL=5000` instructs the metric exporter to output
-every 5 second. If this gets too verbose, adjust the value or remove it to
-the default of 60 seconds.)
+Note that `OTEL_METRIC_EXPORT_INTERVAL=15000` (milliseconds) is a temporary
+setting to test that your metrics are properly generated. Remember to remove
+the setting once you are done testing. The default is 60000 milliseconds.
 
 #### Manual Configuration
 

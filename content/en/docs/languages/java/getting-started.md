@@ -147,11 +147,11 @@ number of ways, the steps below use environment variables.
      OTEL_TRACES_EXPORTER=logging \
      OTEL_METRICS_EXPORTER=logging \
      OTEL_LOGS_EXPORTER=logging \
-     OTEL_METRIC_EXPORT_INTERVAL=5000
+     OTEL_METRIC_EXPORT_INTERVAL=15000
    ```
 
-   Note that `OTEL_METRIC_EXPORT_INTERVAL=5000` (milliseconds) is a temporary
-   setting to test that your metrics are properly recorded. Remember to remove
+   Note that `OTEL_METRIC_EXPORT_INTERVAL=15000` (milliseconds) is a temporary
+   setting to test that your metrics are properly generated. Remember to remove
    the setting once you are done testing. The default is 60000 milliseconds.
 
    {{% alert title="Important" color="warning" %}}Replace `PATH/TO` above, with
