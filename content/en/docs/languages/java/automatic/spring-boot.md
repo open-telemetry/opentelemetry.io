@@ -164,7 +164,7 @@ Span Exporters.
 
 As of 2.0.0+ the default protocol is `http/protobuf`. For more details on
 exporter configuration, see
-[OTLP Exporter Configuration](/docs/concepts/sdk-configuration/otlp-exporter-configuration/#otel_exporter_otlp_endpoint).
+[OTLP Exporter Configuration](/docs/languages/sdk-configuration/otlp-exporter/).
 
 #### Enabling/Disabling Exporters
 
@@ -174,7 +174,7 @@ This is the preferred way to enable/disable exporters and takes precedence over
 the properties below.
 
 | Feature               | Property                             | Default Value | ConditionalOnMissingBean                                 |
-| --------------------- | ------------------------------------ | ------------- | -------------------------------------------------------- |
+|-----------------------|--------------------------------------|---------------|----------------------------------------------------------|
 | OTLP Exporter         | `otel.exporter.otlp.enabled`         | true          | -                                                        |
 | OTLP Span Exporter    | `otel.exporter.otlp.traces.enabled`  | true          | `OtlpHttpSpanExporter`, `OtlpGrpcSpanExporter`           |
 | OTLP Metrics Exporter | `otel.exporter.otlp.metrics.enabled` | true          | `OtlpHttpMetricExporter`, `OtlpGrpcMetricExporter`       |
