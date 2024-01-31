@@ -4,8 +4,8 @@
 
 {{ $name := $data.name -}}
 
-In order to visualize and analyze telemetry data, it needs to be exported to the
-[OpenTelemetry Collector](/docs/collector/) or a backend such as
+To visualize and analyze telemetry, export it to the
+[OpenTelemetry Collector](/docs/collector/), to a backend such as
 [Jaeger](https://jaegertracing.io/), [Zipkin](https://zipkin.io/),
 [Prometheus](https://prometheus.io/), or a
 [vendor-specific](/ecosystem/vendors/) backend.
