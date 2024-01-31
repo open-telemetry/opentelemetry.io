@@ -103,6 +103,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:01:16.20186-05:00"
   },
+  "https://aws-otel.github.io/docs/getting-started/collector": {
+    "StatusCode": 206,
+    "LastSeen": "2024-01-24T14:54:53.554668+01:00"
+  },
   "https://aws.amazon.com/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:05:27.827135-05:00"
@@ -138,6 +142,10 @@
   "https://aws.amazon.com/elasticloadbalancing/features/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:07:46.127111-05:00"
+  },
+  "https://aws.amazon.com/otel/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-30T15:19:46.407077+01:00"
   },
   "https://azure.github.io/azure-sdk/releases/latest/index.html": {
     "StatusCode": 206,
@@ -1055,6 +1063,22 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-18T08:51:48.725386-05:00"
   },
+  "https://docs.honeycomb.io/getting-data-in/java/opentelemetry-distro/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-01-30T12:13:45.965343+01:00"
+  },
+  "https://docs.honeycomb.io/getting-data-in/opentelemetry/dotnet-distro/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-01-30T12:13:43.329855+01:00"
+  },
+  "https://docs.honeycomb.io/getting-data-in/opentelemetry/go-distro/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-01-30T12:13:44.312422+01:00"
+  },
+  "https://docs.honeycomb.io/getting-data-in/opentelemetry/node-distro/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-01-30T12:13:48.382232+01:00"
+  },
   "https://docs.immersivefusion.com/instrument": {
     "StatusCode": 206,
     "LastSeen": "2024-01-11T19:29:56.989250538Z"
@@ -1442,6 +1466,30 @@
   "https://docs.splunk.com/Observability/gdi/opentelemetry/opentelemetry.html": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:06:25.583516-05:00"
+  },
+  "https://docs.splunk.com/observability/en/gdi/get-data-in/application/go/get-started.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-01-30T12:13:58.604707+01:00"
+  },
+  "https://docs.splunk.com/observability/en/gdi/get-data-in/application/java/get-started.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-01-30T12:14:00.650926+01:00"
+  },
+  "https://docs.splunk.com/observability/en/gdi/get-data-in/application/nodejs/get-started.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-01-30T12:14:02.715871+01:00"
+  },
+  "https://docs.splunk.com/observability/en/gdi/get-data-in/application/otel-dotnet/get-started.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-01-30T12:13:53.390713+01:00"
+  },
+  "https://docs.splunk.com/observability/en/gdi/get-data-in/application/python/get-started.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-01-30T12:14:04.541661+01:00"
+  },
+  "https://docs.splunk.com/observability/en/gdi/opentelemetry/opentelemetry.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-01-24T14:55:09.249826+01:00"
   },
   "https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/htmlsingle/": {
     "StatusCode": 206,
@@ -1955,6 +2003,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:04:58.532112-05:00"
   },
+  "https://github.com/SumoLogic/sumologic-otel-collector": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-24T14:55:09.736454+01:00"
+  },
   "https://github.com/TykTechnologies/tyk": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:05:03.674296-05:00"
@@ -2046,6 +2098,10 @@
   "https://github.com/avillela/nomad-conversions": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:05:40.87763-05:00"
+  },
+  "https://github.com/aws-observability/aws-otel-collector": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-24T14:54:51.229664+01:00"
   },
   "https://github.com/bhs": {
     "StatusCode": 200,
@@ -2251,6 +2307,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:55:40.84138-05:00"
   },
+  "https://github.com/grafana/agent": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-24T14:54:54.282464+01:00"
+  },
   "https://github.com/grpc/grpc-java": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T15:25:27.417894-05:00"
@@ -2399,6 +2459,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T05:18:23.866792-05:00"
   },
+  "https://github.com/liatrio/liatrio-otel-collector": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-24T14:54:58.433558+01:00"
+  },
   "https://github.com/lightstep": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:10:34.800347-05:00"
@@ -2422,6 +2486,18 @@
   "https://github.com/lquerel": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:42.384622-05:00"
+  },
+  "https://github.com/lumigo-io/opentelemetry-java-distro": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-30T11:22:17.005081+01:00"
+  },
+  "https://github.com/lumigo-io/opentelemetry-js-distro": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-30T11:22:18.249151+01:00"
+  },
+  "https://github.com/lumigo-io/opentelemetry-python-distro": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-30T11:22:19.954084+01:00"
   },
   "https://github.com/mahboubii/grpcmetrics": {
     "StatusCode": 200,
@@ -2482,6 +2558,10 @@
   "https://github.com/nhatthm/otelsql": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:11:34.796425-05:00"
+  },
+  "https://github.com/observIQ/observiq-otel-collector": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-24T14:55:03.346925+01:00"
   },
   "https://github.com/olha23": {
     "StatusCode": 200,
@@ -3711,6 +3791,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:42.567089-05:00"
   },
+  "https://github.com/os-observability/redhat-opentelemetry-collector": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-24T14:55:05.102469+01:00"
+  },
   "https://github.com/otterize": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:15:09.792383-05:00"
@@ -3818,6 +3902,30 @@
   "https://github.com/servian/hashiqube": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:05:35.331847-05:00"
+  },
+  "https://github.com/signalfx/splunk-otel-collector": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-24T14:55:07.887333+01:00"
+  },
+  "https://github.com/signalfx/splunk-otel-dotnet": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-30T12:13:49.81183+01:00"
+  },
+  "https://github.com/signalfx/splunk-otel-go": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-30T12:13:55.649214+01:00"
+  },
+  "https://github.com/signalfx/splunk-otel-java": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-30T12:13:59.355694+01:00"
+  },
+  "https://github.com/signalfx/splunk-otel-js": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-30T12:14:01.342175+01:00"
+  },
+  "https://github.com/signalfx/splunk-otel-python": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-30T12:14:03.380717+01:00"
   },
   "https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-with-GraalVM": {
     "StatusCode": 200,
@@ -4039,6 +4147,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:52:48.944519-05:00"
   },
+  "https://grafana.com/docs/agent/latest/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-01-24T14:54:56.149229+01:00"
+  },
   "https://grafana.com/oss/opentelemetry/": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:52:48.999991-05:00"
@@ -4114,6 +4226,10 @@
   "https://help.sumologic.com/docs/send-data/opentelemetry-collector/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:04:38.147971-05:00"
+  },
+  "https://help.sumologic.com/docs/send-data/opentelemetry-collector/sumo-logic-opentelemetry-vs-opentelemetry-upstream-relationship/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-01-24T14:55:10.30065+01:00"
   },
   "https://heroku.com": {
     "StatusCode": 206,
