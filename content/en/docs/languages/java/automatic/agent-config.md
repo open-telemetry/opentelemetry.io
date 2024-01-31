@@ -285,6 +285,8 @@ corresponding instrumentation name: {{% /config_option %}}
 | Apache HttpClient                                | `apache-httpclient`                         |
 | Apache Kafka                                     | `kafka`                                     |
 | Apache MyFaces                                   | `jsf-myfaces`                               |
+| Apache Pekko Actor                               | `pekko-actor`                               |
+| Apache Pekko HTTP                                | `pekko-http`                                |
 | Apache Pulsar                                    | `pulsar`                                    |
 | Apache RocketMQ                                  | `rocketmq-client`                           |
 | Apache Struts 2                                  | `struts`                                    |
