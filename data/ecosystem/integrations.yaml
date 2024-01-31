@@ -181,3 +181,8 @@
   docsUrl: https://farfetch.github.io/kafkaflow/docs/guides/open-telemetry
   components: [.NET]
   oss: true
+- name: Dubbo
+  url: https://github.com/apache/dubbo
+  docsUrl: https://cn.dubbo.apache.org/en/blog/2024/01/31/tracing-dubbo-with-opentelemetry/
+  components: [Java]
+  oss: true
