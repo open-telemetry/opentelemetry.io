@@ -157,8 +157,6 @@ spec:
       otlp:
         protocols:
           grpc:
-            # Tells the Collector to listen on all interfaces 
-            # and addresses. Make sure to set the most 
             endpoint: 0.0.0.0:4317
     processors:
 
