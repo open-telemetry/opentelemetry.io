@@ -21,7 +21,7 @@ environments, like [Container](/docs/specs/semconv/resource/container/),
 [Host](/docs/specs/semconv/resource/host/) or
 [Operating System](/docs/specs/semconv/resource/os/). These can be used with or
 without
-[auto-configuration](/docs/languages/java/instrumentation/#automatic-configuration).
+[autoconfiguration](/docs/languages/java/instrumentation/#automatic-configuration).
 
 To use those providers, add the following dependency:
 
