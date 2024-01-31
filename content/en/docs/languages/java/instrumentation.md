@@ -422,8 +422,8 @@ This basic setup has no effect on your app yet. You need to add code for
 [traces](#traces), [metrics](#metrics), and/or [logs](#logs).
 
 Note that `OTEL_METRIC_EXPORT_INTERVAL=15000` (milliseconds) is a temporary
-setting to test that your metrics are properly generated. Remember to remove
-the setting once you are done testing. The default is 60000 milliseconds.
+setting to test that your metrics are properly generated. Remember to remove the
+setting once you are done testing. The default is 60000 milliseconds.
 
 #### Manual Configuration
 
