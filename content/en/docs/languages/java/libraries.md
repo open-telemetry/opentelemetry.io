@@ -2,7 +2,7 @@
 title: Using instrumentation libraries
 linkTitle: Libraries
 weight: 40
-cSpell:ignore: autoconfigure getenv httpclient println
+cSpell:ignore: getenv httpclient println
 ---
 
 When you develop an app, you use third-party libraries and frameworks to
