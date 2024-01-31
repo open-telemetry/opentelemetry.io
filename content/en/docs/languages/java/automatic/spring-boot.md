@@ -21,7 +21,7 @@ following cases:
   another Java monitoring agent
 
 [Spring Boot starter]:
-  https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using.build-systems.starters
+https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using.build-systems.starters
 
 The
 [opentelemetry-java-examples/spring-native](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/spring-native)
@@ -47,22 +47,22 @@ The following example shows how to import both BOMs using Maven:
 
 ```xml
 <dependencyManagement>
-    <dependencies>
-        <dependency>
-            <groupId>io.opentelemetry</groupId>
-            <artifactId>opentelemetry-bom</artifactId>
-            <version>{{% param vers.otel %}}</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.opentelemetry.instrumentation</groupId>
-            <artifactId>opentelemetry-instrumentation-bom-alpha</artifactId>
-            <version>{{% param vers.instrumentation %}}-alpha</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
-    </dependencies>
+  <dependencies>
+    <dependency>
+      <groupId>io.opentelemetry</groupId>
+      <artifactId>opentelemetry-bom</artifactId>
+      <version>{{% param vers.otel %}}</version>
+      <type>pom</type>
+      <scope>import</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.opentelemetry.instrumentation</groupId>
+      <artifactId>opentelemetry-instrumentation-bom-alpha</artifactId>
+      <version>{{% param vers.instrumentation %}}-alpha</version>
+      <type>pom</type>
+      <scope>import</scope>
+    </dependency>
+  </dependencies>
 </dependencyManagement>
 ```
 
@@ -121,18 +121,18 @@ For details concerning supported libraries and features of the OpenTelemetry
 auto-configuration, see the configuration [README].
 
 [auto-configuration]:
-  https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.auto-configuration
+https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.auto-configuration
 [README]:
-  https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/README.md#features
+https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/README.md#features
 
 {{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
 
 ```xml
 <dependencies>
-	<dependency>
-		<groupId>io.opentelemetry.instrumentation</groupId>
-		<artifactId>opentelemetry-spring-boot-starter</artifactId>
-	</dependency>
+  <dependency>
+    <groupId>io.opentelemetry.instrumentation</groupId>
+    <artifactId>opentelemetry-spring-boot-starter</artifactId>
+  </dependency>
 </dependencies>
 ```
 
