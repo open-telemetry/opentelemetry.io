@@ -38,9 +38,8 @@ which provide capabilities that can be added to the Collector, such as
 diagnostic tools. Extensions don't require direct access to telemetry data and
 are enabled through the [service](#service) section.
 
-<a id="endpoint-0.0.0.0-warning"></a> The following is an example of
-Collector configuration with a receiver, a processor, an exporter, and three
-extensions.
+<a id="endpoint-0.0.0.0-warning"></a> The following is an example of Collector
+configuration with a receiver, a processor, an exporter, and three extensions.
 
 {{% alert title="Important" color="warning" %}}
 
