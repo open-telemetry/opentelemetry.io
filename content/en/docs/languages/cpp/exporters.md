@@ -1,7 +1,6 @@
 ---
 title: Exporters
 weight: 50
-cSpell:ignore: chrono millis ostream
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
