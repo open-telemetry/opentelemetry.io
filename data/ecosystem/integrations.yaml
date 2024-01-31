@@ -40,7 +40,7 @@
   components: [Go, PHP]
   oss: true
 - name: Kong API Gateway
-  url: http://www.konghq.com/
+  url: https://www.konghq.com/
   docsUrl: https://docs.konghq.com/hub/kong-inc/opentelemetry/
   components: []
   oss: false

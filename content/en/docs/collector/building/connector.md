@@ -3,7 +3,7 @@ title: Building a Connector
 aliases: [/docs/collector/build-connector/]
 weight: 30
 # prettier-ignore
-cSpell:ignore: batchprocessor debugexporter Errorf exampleconnector gomod gord Jaglowski loggingexporter mapstructure mapstructure otlpreceiver pdata pmetric ptrace servicegraph spanmetrics struct uber
+cSpell:ignore: batchprocessor debugexporter Errorf exampleconnector gomod gord Jaglowski loggingexporter mapstructure otlpreceiver pdata pmetric ptrace servicegraph spanmetrics struct uber
 ---
 
 ## Connectors in OpenTelemetry
