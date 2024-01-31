@@ -33,6 +33,13 @@ _natively_ or you can make use of
 
 {{% /alert %}}
 
+## Prerequisites {#prerequisites}
+
+Ensure that you have the following installed locally:
+
+- Java JDK 17+, due to the use of Spring Boot 3; [Java 8+ otherwise][java-vers]
+- [Gradle](https://gradle.org/) or [Maven](https://maven.apache.org/)
+
 ## Example app preparation {#example-app}
 
 This page uses a modified version of the example app from
