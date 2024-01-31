@@ -2,10 +2,9 @@
 title: The Humans of OpenTelemetry
 linkTitle: Humans of OTel
 date: 2023-12-22
-author: >-
-  [Adriana Villela](https://github.com/avillela) (Lightstep),
+author: '[Adriana Villela](https://github.com/avillela) (Lightstep)'
 # prettier-ignore
-cSpell:ignore: ADIANA ALEX Alex ARONOFF Aronoff BOGDAN Bogdan BOTEN Boten CARAMANOLIS Caramanolis CONSTANCE Constance Dapr DRUTU Drutu JACOB Jacob JURACI KANAL Kanal KRÖHLING PAIXĀO Paixāo PURVI Purvi TYLER Tyler utopic VILLELA YAHN Yahn youtube
+cSpell:ignore: adiana alex aronoff bogdan boten caramanolis constance dapr drutu jacob juraci kanal kröhling paixāo purvi tyler utopic villela yahn youtube
 ---
 
 What a year it has been for OpenTelemetry!

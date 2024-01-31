@@ -48,10 +48,10 @@ Distributions would broadly fall into the following categories:
 ## Who would create a distribution?
 
 Anyone could create a distribution. Today, several
-[vendors](/ecosystem/vendors/) offer distributions. In addition, end-users may
-consider creating a distribution if they wish to use components in the
-[Registry](/ecosystem/registry/) that are not upstreamed to the OpenTelemetry
-project.
+[vendors](/ecosystem/vendors/) offer [distributions](/ecosystem/distributions/).
+In addition, end-users can consider creating a distribution if they wish to use
+components in the [Registry](/ecosystem/registry/) that are not upstreamed to
+the OpenTelemetry project.
 
 ## Contribution or distribution?
 
