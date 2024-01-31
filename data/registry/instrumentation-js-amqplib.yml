@@ -1,14 +1,20 @@
 # cSpell:ignore amqplib
 title: OpenTelemetry amqplib Instrumentation (RabbitMQ)
 registryType: instrumentation
-isThirdParty: false
 language: js
 tags:
   - Node.js
   - instrumentation
   - amqplib
   - RabbitMQ
-repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-amqplib
 license: Apache 2.0
 description: amqplib instrumentation for Node.js.
-authors: OpenTelemetry Authors (donated by Aspecto Authors (amir@aspecto.io))
+authors:
+  - name: OpenTelemetry Authors
+package:
+  name: '@opentelemetry/instrumentation-amqplib'
+  registry: npm
+  version: 0.34.0
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-amqplib
+createdAt: 2020-06-15

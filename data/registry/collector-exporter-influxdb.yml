@@ -1,14 +1,20 @@
+# cSpell:ignore influxdbexporter
 title: InfluxDB Exporter
 registryType: exporter
-isThirdParty: false
 language: collector
 tags:
   - go
   - exporter
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/influxdbexporter
 license: Apache 2.0
 description:
   This exporter supports sending tracing, metrics, and logging data to InfluxDB
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/influxdbexporter
+createdAt: 2020-11-05
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/influxdbexporter
+  version: v0.93.0

@@ -115,8 +115,9 @@ params:
         url: https://cloud-native.slack.com/archives/CJFCJHG4Q
         icon: fab fa-slack
         desc: >-
-          Chat with other project developers. Sign up via https://slack.cncf.io.
-          Other channels start with with #otel- prefix
+          Chat with other project developers. Sign up via
+          [slack.cncf.io](https://slack.cncf.io). Also see other channels
+          starting with a `#otel-` prefix.
       - name: CNCF DevStats
         url: https://opentelemetry.devstats.cncf.io/d/8/dashboards?orgId=1&refresh=15m
         icon: fas fa-chart-area
@@ -124,9 +125,7 @@ params:
       - name: Privacy Policy
         url: https://www.linuxfoundation.org/legal/privacy-policy
         icon: fa fa-book
-        desc: >-
-          CNCF works in close association with Linux Foundation. Read the
-          privacy policy here
+        desc: CNCF and Linux Foundation privacy policy.
       - name: Trademark Usage
         url: https://www.linuxfoundation.org/legal/trademark-usage
         icon: fa-solid fa-trademark

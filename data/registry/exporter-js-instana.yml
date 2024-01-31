@@ -1,13 +1,18 @@
 title: Instana Node.js Exporter
 registryType: exporter
-isThirdParty: true
 language: js
 tags:
   - Node.js
   - exporter
   - Instana
-repo: https://github.com/instana/nodejs/tree/main/packages/opentelemetry-exporter
 license: MIT
 description: The Instana Node.js OpenTelemetry Exporter.
-authors: Instana Authors
-otVersion: latest
+authors:
+  - name: Instana Authors
+urls:
+  repo: https://github.com/instana/nodejs/tree/main/packages/opentelemetry-exporter
+createdAt: 2022-04-18
+package:
+  registry: npm
+  name: '@instana/opentelemetry-exporter'
+  version: 3.1.2

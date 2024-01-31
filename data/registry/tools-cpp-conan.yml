@@ -1,14 +1,15 @@
 # cSpell:ignore conan
 title: Conan Package for OpenTelemetry C++
 registryType: core
-isThirdParty: true
 language: cpp
 tags:
   - cpp
   - conan
   - package
-repo: https://conan.io/center/recipes/opentelemetry-cpp
 license: MIT
 description: Conan package for `opentelemetry-cpp`.
 authors:
-otVersion: unknown
+  - name:
+urls:
+  repo: https://conan.io/center/recipes/opentelemetry-cpp
+createdAt: 2023-02-13

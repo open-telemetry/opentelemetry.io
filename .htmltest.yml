@@ -24,15 +24,18 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   # OpAMP spec:
   - ^https://pdf.sciencedirectassets.com/280203/1-s2.0-S1877050919X0006X/1-s2.0-S1877050919303576/main.pdf\?
 
-  # Sites that deny access, always yielding 403 Forbidden (unless mentioned otherwise)
+  # Sites that deny access, always yielding 401, 403 Forbidden, 406, or other:
   - ^https://(www\.)?linkedin\.com\b # 999 Request Denied
   - ^https://(www\.)?mvnrepository\.com
+  - ^https://(www\.|eng\.)?uber\.com/(blog|flipr)/ # 406
   - ^https://twitter.com
-  - ^https://x.com
   - ^https://www.chathamhouse.org
   - ^https://www.zocdoc.com
+  - ^https://x.com
+  # OTel Google calendar - curl returns 200, but the link checker gets a 401:
+  - ^https://calendar.google.com/calendar/embed\?src=google.com_b79e3e90j7bbsa2n2p5an5lf60%40group.calendar.google.com
 
-  # Ignore Docsy-generated GitHub links:
+  # Ignore Docsy-generated GitHub links for now
   - ^https?://github\.com/.*?/.*?/(new|edit)/ # view-page, edit-source etc
   # TODO: drop after fix to https://github.com/google/docsy/issues/1432
   - ^https://github.com/open-telemetry/opentelemetry.io/commit/ # last mod
@@ -50,3 +53,9 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^https://micrometer\.io/docs
   # TODO: ensure .json isn't set as an alternate in ecosystem/registry/index.html and then drop:
   - ^https://opentelemetry.io/ecosystem/registry/index.json
+  # TODO: drop after fix to https://github.com/open-telemetry/semantic-conventions/pull/645 lands in this repo
+  - ^http://docs.couchdb.org/en/stable/api/document/common.html#get--db-docid
+  # TODO drop after fix to https://github.com/open-telemetry/opentelemetry.io/issues/3818
+  - ^https://oncallmemaybe.com
+  # TODO drop after https://github.com/open-telemetry/opentelemetry-specification/pull/3834 is merged
+  - ^https://wikipedia\.org/wiki/Monotonic_function

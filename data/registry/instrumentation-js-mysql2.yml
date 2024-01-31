@@ -1,6 +1,5 @@
 title: OpenTelemetry Instrumentation for MySQL2
 registryType: instrumentation
-isThirdParty: false
 language: js
 tags:
   - Node.js
@@ -9,8 +8,14 @@ tags:
   - mysql2
   - mysql
   - database
-repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-mysql2
 license: Apache 2.0
 description: MySQL2 instrumentation for Node.js.
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-mysql2
+createdAt: 2021-07-08
+package:
+  registry: npm
+  name: '@opentelemetry/instrumentation-mysql2'
+  version: 0.35.0

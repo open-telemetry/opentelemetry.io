@@ -1,7 +1,6 @@
 # cSpell:ignore qryn loki
 title: qryn exporter
 registryType: exporter
-isThirdParty: true
 language: collector
 tags:
   - go
@@ -10,10 +9,15 @@ tags:
   - loki
   - prometheus
   - tempo
-repo: https://github.com/metrico/otel-collector
 license: Apache 2.0
 description:
   This exporter supports sending OpenTelemetry logs, traces and metrics to
   ClickHouse using the qryn polyglot format.
-authors: akvlad@qxip.net, lorenzo@qxip.net
-otVersion: latest
+authors:
+  - name: lorenzo@qxip.net
+    email: lorenzo@qxip.net
+  - name: akvlad@qxip.net
+    email: akvlad@qxip.net
+urls:
+  repo: https://github.com/metrico/otel-collector
+createdAt: 2023-10-17

@@ -1,13 +1,14 @@
 # cSpell:ignore abh
 title: Plack Instrumentation
 registryType: instrumentation
-isThirdParty: true
 language: perl
 tags:
   - perl
   - instrumentation
-repo: https://github.com/abh/Plack-Middleware-OpenTelemetry
 license: MIT
 description: An OpenTelemetry middleware for Perl's Plack.
-authors: abh
-otVersion: latest
+authors:
+  - name: abh
+urls:
+  repo: https://github.com/abh/Plack-Middleware-OpenTelemetry
+createdAt: 2023-12-05

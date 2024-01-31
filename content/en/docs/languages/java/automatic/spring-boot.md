@@ -53,12 +53,14 @@ The following example shows how to import both BOMs using Maven:
             <artifactId>opentelemetry-bom</artifactId>
             <version>{{% param vers.otel %}}</version>
             <type>pom</type>
+            <scope>import</scope>
         </dependency>
         <dependency>
             <groupId>io.opentelemetry.instrumentation</groupId>
             <artifactId>opentelemetry-instrumentation-bom-alpha</artifactId>
             <version>{{% param vers.instrumentation %}}-alpha</version>
             <type>pom</type>
+            <scope>import</scope>
         </dependency>
     </dependencies>
 </dependencyManagement>
@@ -114,11 +116,11 @@ with the `io.spring.dependency-management` plugin.
 
 Add the dependency given below to enable the OpenTelemetry starter.
 
-The OpenTelemetry starter uses OpenTelemetry Spring Boot [auto-configuration].
+The OpenTelemetry starter uses OpenTelemetry Spring Boot [autoconfiguration].
 For details concerning supported libraries and features of the OpenTelemetry
-auto-configuration, see the configuration [README].
+autoconfiguration, see the configuration [README].
 
-[auto-configuration]:
+[autoconfiguration]:
   https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.auto-configuration
 [README]:
   https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/README.md#features
@@ -143,6 +145,14 @@ dependencies {
 ```
 
 {{% /tab %}} {{< /tabpane>}}
+
+#### Disable data export
+
+{{% config_option name="otel.sdk.disabled" %}}
+
+Set the value to `true` to disable data export, e.g. for testing purposes.
+
+{{% /config_option %}}
 
 ### Additional instrumentations
 

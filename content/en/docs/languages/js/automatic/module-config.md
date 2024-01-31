@@ -14,7 +14,7 @@ and more.
 ## SDK and exporter configuration
 
 SDK and exporter configuration can be set using environment variables. More
-information can be found [here](/docs/concepts/sdk-configuration/).
+information can be found [here](/docs/languages/sdk-configuration/).
 
 ## SDK resource detector configuration
 

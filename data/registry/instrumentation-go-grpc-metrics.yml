@@ -1,17 +1,18 @@
 # cSpell:ignore mahboubi
 title: Go gRPC metric instrumentation
 registryType: instrumentation
-isThirdParty: true
 language: go
 tags:
   - go
   - instrumentation
   - grpc
   - metrics
-repo: https://github.com/mahboubii/grpcmetrics
 license: Apache 2.0
 description:
   Go metric instrumentation for gRPC servers and clients based on gRPC Stats
   Handler interface.
-authors: Amin Mahboubi
-otVersion: latest
+authors:
+  - name: Amin Mahboubi
+urls:
+  repo: https://github.com/mahboubii/grpcmetrics
+createdAt: 2023-04-06
