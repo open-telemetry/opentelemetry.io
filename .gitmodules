@@ -1,7 +1,7 @@
 [submodule "themes/docsy"]
 	path = themes/docsy
 	url = https://github.com/cncf/docsy.git
-	docsy-pin = v0.8.0-11-gce52bb0
+	docsy-pin = v0.8.0-17-g91efe35
 [submodule "content-modules/opentelemetry-specification"]
 	path = content-modules/opentelemetry-specification
 	url = https://github.com/open-telemetry/opentelemetry-specification.git
