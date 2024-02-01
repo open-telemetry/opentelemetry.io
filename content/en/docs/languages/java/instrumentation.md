@@ -8,7 +8,7 @@ aliases:
 weight: 20
 description: Manual instrumentation for OpenTelemetry Java
 # prettier-ignore
-cSpell:ignore: autoconfigure Autowired classpath customizer logback loggable multivalued rolldice springframework
+cSpell:ignore: Autowired customizer logback loggable multivalued rolldice springframework
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
