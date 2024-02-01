@@ -12,9 +12,10 @@ urls:
   docs: https://github.com/baronfel/otel-startup-hook/blob/main/README.md
 license: MIT
 description:
-  A ready-to-use .NET CLR Startup Hook for applications that are instrumented with
-  System.Diagnostic.Activity tracing that sends traces to an OpenTelemetry Collector
-  via the OTLP Exporter without adding direct references to the OpenTelemetry SDK.
+  A ready-to-use .NET CLR Startup Hook for applications that are instrumented
+  with System.Diagnostic.Activity tracing that sends traces to an OpenTelemetry
+  Collector via the OTLP Exporter without adding direct references to the
+  OpenTelemetry SDK.
 authors:
   - name: Chet Husk
     url: https://github.com/baronfel
