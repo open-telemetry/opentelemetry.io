@@ -1,5 +1,5 @@
 # cSpell:ignore OLTP oltp Chet
-title: OLTP Exporter for .NET via Startup Hooks
+title: OTLP Exporter for .NET via Startup Hooks
 registryType: exporter
 language: dotnet
 tags:
@@ -14,7 +14,7 @@ license: MIT
 description:
   A ready-to-use .NET CLR Startup Hook for applications that are instrumented with
   System.Diagnostic.Activity tracing that sends traces to an OpenTelemetry Collector
-  via the OLTP Exporter without adding direct references to the OpenTelemetry SDK.
+  via the OTLP Exporter without adding direct references to the OpenTelemetry SDK.
 authors:
   - name: Chet Husk
     url: https://github.com/baronfel
