@@ -102,7 +102,7 @@ Next, install and build [OpenTelemetry C++](https://github.com/open-telemetry/op
    ```bash
    cmake ..
    ```
-  Or 
+  Or, if the `cmake --build` fails, you can also try:
    ```bash
    cmake -DWITH_ABSEIL=ON ..
    ```
