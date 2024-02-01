@@ -1,7 +1,7 @@
 ---
 title: Exporters
 weight: 50
-cSpell:ignore: autoconfigure classpath okhttp springframework
+cSpell:ignore: okhttp
 ---
 
 {{% docs/languages/exporters-intro java %}}
