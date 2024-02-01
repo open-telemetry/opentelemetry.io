@@ -72,6 +72,7 @@
     "serve:hugo": "npm run _serve:hugo",
     "serve:netlify": "npm run _serve:netlify",
     "serve": "npm run serve:hugo",
+    "sync": "./scripts/sync-submodules.pl",
     "test-and-fix": "npm run seq -- check fix:dict fix:filenames",
     "test": "npm run check",
     "update:pkg:docsy-dep": "npm install --save-dev autoprefixer@latest postcss-cli@latest",
@@ -83,10 +84,10 @@
     "update:submodule": "set -x && git submodule update --remote ${DEPTH:- --depth 1}"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.16",
+    "autoprefixer": "^10.4.17",
     "cspell": "^8.0.0",
     "gulp": "^4.0.2",
-    "hugo-extended": "0.121.2",
+    "hugo-extended": "0.122.0",
     "markdown-link-check": "^3.11.2",
     "markdownlint": "^0.33.0",
     "postcss-cli": "^11.0.0",
