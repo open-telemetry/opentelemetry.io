@@ -4,7 +4,7 @@ linkTitle: Spring Boot
 weight: 30
 description: Spring Boot instrumentation for OpenTelemetry Java
 # prettier-ignore
-cSpell:ignore: autoconfigurations autoconfigures Autoconfigures datasource logback springboot webflux webmvc
+cSpell:ignore: autoconfigurations autoconfigures datasource logback springboot webflux webmvc
 ---
 
 The [OpenTelemetry Java agent](..) with byte code instrumentation can cover most
