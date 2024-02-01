@@ -154,7 +154,7 @@ target_link_libraries(dice-server PRIVATE ${OATPP_LIB})
 Next, the sample HTTP server source code is needed. It will do the following:
 
 * Initialize an HTTP router and set up a request handler to generate a random number as the response when a GET request is made to the `/rolldice` endpoint. 
-* Next, create a connection handler, a connection provider, and start the server on <localhost:8000>.
+* Next, create a connection handler, a connection provider, and start the server on <localhost:8080>.
 * Lastly, initialize and run the application within the main function.
 
 In that `roll-dice` folder, create a file called `main.cpp` and add the following code to the file.
