@@ -33,7 +33,7 @@ _natively_ or you can make use of
 
 {{% /alert %}}
 
-## Prerequisites {#prerequisites}
+## Prerequisites
 
 Ensure that you have the following installed locally:
 
