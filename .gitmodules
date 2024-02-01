@@ -9,7 +9,7 @@
 [submodule "content-modules/community"]
 	path = content-modules/community
 	url = https://github.com/open-telemetry/community
-	community-pin = 0cb6dca
+	community-pin = 4e0d748
 [submodule "content-modules/opentelemetry-proto"]
 	path = content-modules/opentelemetry-proto
 	url = https://github.com/open-telemetry/opentelemetry-proto
