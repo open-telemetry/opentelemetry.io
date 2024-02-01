@@ -328,7 +328,7 @@ void run() {
   auto router = oatpp::web::server::HttpRouter::createShared();
   router->route("GET", "/rolldice", std::make_shared<Handler>());
   auto connectionHandler = oatpp::web::server::HttpConnectionHandler::createShared(router);
-  auto connectionProvider = oatpp::network::tcp::server::ConnectionProvider::createShared({"localhost", 8000, oatpp::network::Address::IP_4});
+  auto connectionProvider = oatpp::network::tcp::server::ConnectionProvider::createShared({"localhost", 8080, oatpp::network::Address::IP_4});
   oatpp::network::Server server(connectionProvider, connectionHandler);
   OATPP_LOGI("Dice Server", "Server running on port %s", connectionProvider->getProperty("port").getData());
   server.run();
