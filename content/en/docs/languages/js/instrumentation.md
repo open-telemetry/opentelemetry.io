@@ -1193,8 +1193,8 @@ Node.js or Web SDKs.
 ## Metrics
 
 [Metrics](/docs/concepts/signals/metrics) combine individual measurements into
-aggregations, and produce data which is constant as a function of system load.
-The aggregations lack details required to diagnose low level issues, but
+aggregates, and produce data which is constant as a function of system load.
+Aggregates lack details required to diagnose low level issues, but
 complement spans by helping to identify trends and providing application runtime
 telemetry.
 
@@ -1202,8 +1202,8 @@ The metrics API defines a variety of instruments. Instruments record
 measurements, which are aggregated by the metrics SDK and eventually exported
 out of process. Instruments come in synchronous and asynchronous varieties.
 Synchronous instruments record measurements as they happen. Asynchronous
-instrument register a callback, which is invoked once per collection, and which
-records measurements at that point in time.
+instruments register a callback that is invoked once per collection, and which
+record measurements at that point in time.
 
 OpenTelemetry JavaScript currently supports the following `Instrument`s:
 
@@ -1223,14 +1223,14 @@ For more on synchronous and asynchronous instruments, and which kind is best
 suited for your use case, see
 [Supplementary Guidelines](/docs/specs/otel/metrics/supplementary-guidelines/).
 
-{%% alert title="Note" class="info" %%} OpenTelemetry instruments are either
+{{% alert title="Note" class="info" %}} OpenTelemetry instruments are either
 synchronous or asynchronous (observable).
 
 To learn more about the differences between synchronous and
 asynchronous instruments, and when to use each kind, see the
 concept page on
 [synchronous and asynchronous instruments](/docs/concepts/signals/metrics/#synchronous-and-asynchronous-instruments)
-{%% /alert %%}
+{{% /alert %}}
 
 ### Initialize Metrics
 
