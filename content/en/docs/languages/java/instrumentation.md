@@ -33,13 +33,6 @@ _natively_ or you can make use of
 
 {{% /alert %}}
 
-## Prerequisites
-
-Ensure that you have the following installed locally:
-
-- Java JDK 17+, due to the use of Spring Boot 3; [Java 8+ otherwise][java-vers]
-- [Gradle](https://gradle.org/) or [Maven](https://maven.apache.org/)
-
 ## Example app preparation {#example-app}
 
 This page uses a modified version of the example app from
@@ -48,6 +41,13 @@ manual instrumentation.
 
 You don't have to use the example app: if you want to instrument your own app or
 library, follow the instructions here to adapt the process to your own code.
+
+### Prerequisites
+
+Ensure that you have the following installed locally:
+
+- Java JDK 17+, due to the use of Spring Boot 3; [Java 8+ otherwise][java-vers]
+- [Gradle](https://gradle.org/) or [Maven](https://maven.apache.org/)
 
 ### Dependencies {#example-app-dependencies}
 
@@ -1829,6 +1829,8 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
   https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk/trace/src/main/java/io/opentelemetry/sdk/trace/samplers/AlwaysOnSampler.java
 [httpexchange]:
   https://docs.oracle.com/javase/8/docs/jre/api/net/httpserver/spec/com/sun/net/httpserver/HttpExchange.html
+[java-vers]:
+  https://github.com/open-telemetry/opentelemetry-java/blob/main/VERSIONING.md#language-version-compatibility
 [instrumentation library]: /docs/specs/otel/glossary/#instrumentation-library
 [instrumented library]: /docs/specs/otel/glossary/#instrumented-library
 [logs bridge API]: /docs/specs/otel/logs/bridge-api
