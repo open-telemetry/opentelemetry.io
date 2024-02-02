@@ -1194,9 +1194,8 @@ Node.js or Web SDKs.
 
 [Metrics](/docs/concepts/signals/metrics) combine individual measurements into
 aggregates, and produce data which is constant as a function of system load.
-Aggregates lack details required to diagnose low level issues, but
-complement spans by helping to identify trends and providing application runtime
-telemetry.
+Aggregates lack details required to diagnose low level issues, but complement
+spans by helping to identify trends and providing application runtime telemetry.
 
 ### Initialize Metrics
 
