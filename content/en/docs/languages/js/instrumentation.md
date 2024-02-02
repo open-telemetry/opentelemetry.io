@@ -1198,40 +1198,6 @@ Aggregates lack details required to diagnose low level issues, but
 complement spans by helping to identify trends and providing application runtime
 telemetry.
 
-The metrics API defines a variety of instruments. Instruments record
-measurements, which are aggregated by the metrics SDK and eventually exported
-out of process. Instruments come in synchronous and asynchronous varieties.
-Synchronous instruments record measurements as they happen. Asynchronous
-instruments register a callback that is invoked once per collection, and which
-record measurements at that point in time.
-
-OpenTelemetry JavaScript currently supports the following `Instrument`s:
-
-- Counter, a synchronous instrument that supports non-negative increments
-- Asynchronous Counter, an asynchronous instrument which supports non-negative
-  increments
-- Histogram, a synchronous instrument that supports arbitrary values that are
-  statistically meaningful, such as histograms, summaries, or percentile
-- Asynchronous Gauge, an asynchronous instrument that supports non-additive
-  values, such as room temperature
-- UpDownCounter, a synchronous instrument that supports increments and
-  decrements, such as the number of active requests
-- Asynchronous UpDownCounter, an asynchronous instrument that supports
-  increments and decrements
-
-For more on synchronous and asynchronous instruments, and which kind is best
-suited for your use case, see
-[Supplementary Guidelines](/docs/specs/otel/metrics/supplementary-guidelines/).
-
-{{% alert title="Note" class="info" %}} OpenTelemetry instruments are either
-synchronous or asynchronous (observable).
-
-To learn more about the differences between synchronous and
-asynchronous instruments, and when to use each kind, see the
-concept page on
-[synchronous and asynchronous instruments](/docs/concepts/signals/metrics/#synchronous-and-asynchronous-instruments)
-{{% /alert %}}
-
 ### Initialize Metrics
 
 {{% alert color="info" %}} If you’re instrumenting a library, skip this step.
@@ -1290,8 +1256,8 @@ const resource = Resource.default().merge(
 
 const metricReader = new PeriodicExportingMetricReader({
   exporter: new ConsoleMetricExporter(),
-  // Default is 60000ms (60 seconds). Set to 5 seconds for demonstrative purposes only.
-  exportIntervalMillis: 5000,
+  // Default is 60000ms (60 seconds). Set to 10 seconds for demonstrative purposes only.
+  exportIntervalMillis: 10000,
 });
 
 const myServiceMeterProvider = new MeterProvider({
@@ -1328,8 +1294,8 @@ const resource = Resource.default().merge(
 const metricReader = new PeriodicExportingMetricReader({
   exporter: new ConsoleMetricExporter(),
 
-  // Default is 60000ms (60 seconds). Set to 5 seconds for demonstrative purposes only.
-  exportIntervalMillis: 5000,
+  // Default is 60000ms (60 seconds). Set to 10 seconds for demonstrative purposes only.
+  exportIntervalMillis: 10000,
 });
 
 const myServiceMeterProvider = new MeterProvider({

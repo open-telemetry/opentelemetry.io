@@ -73,33 +73,9 @@ The instrument kind is one of the following:
   A histogram is a good choice if you are interested in value statistics. For
   example: How many requests take fewer than 1s?
 
-### Synchronous and asynchronous instruments
-
-Asynchronous instruments are useful in several circumstances, such as:
-
-- When updating a counter is not computationally cheap and you don't want the
-  current executing thread to wait for the measurement
-- Observations need to happen at frequencies unrelated to program execution
-  (for example, they can't be accurately measured when tied to a 
-  request lifecycle)
-- There is no known timestamp for a measurement value
-
-In cases like these, it's often better to observe a cumulative value directly,
-rather than aggregate a series of deltas in post-processing (the synchronous
-example). Take note of the use of `observe` rather than `add` in the appropriate
-code examples below.
-
-Synchronous instruments take a measurement when they are called. The measurement
-is done as another call during program execution, just like any other function
-call. Periodically, the aggregation of these measurements is exported by a
-configured exporter. Because measurements are decoupled from exporting values,
-an export cycle can contain zero or multiple aggregated measurements.
-
-Asynchronous instruments, on the other hand, provide a measurement at the
-request of the SDK. When the SDK exports, a callback that was provided to the
-instrument on creation is invoked. This callback provides the SDK with a
-measurement that is immediately exported. All measurements on asynchronous
-instruments are performed once per export cycle.
+For more on synchronous and asynchronous instruments, and which kind is best
+suited for your use case, see
+[Supplementary Guidelines](/docs/specs/otel/metrics/supplementary-guidelines/).
 
 ## Aggregation
 
