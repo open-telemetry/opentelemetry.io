@@ -4,7 +4,7 @@ linkTitle: Registry
 description:
   Instrumentation libraries, exporters and other useful components for
   OpenTelemetry Python
-redirect: https://opentelemetry.io/ecosystem/registry/?language=python
+redirect: /ecosystem/registry/?language=python
 manualLinkTarget: _blank
 _build: { render: link }
 weight: 300
