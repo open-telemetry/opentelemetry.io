@@ -716,7 +716,7 @@ are useful for aggregating, filtering, and grouping metrics. Attributes can be
 added at instrument creation, or at any other time during the lifecycle of an
 instrument.
 
-Generally speaking, it is advisable to add attributes during instrumentation
+Generally speaking, it is advisable to add attributes during instrument creation
 if you can. There is memory overhead when adding them after creation, and in
 some scenarios this can degrade performance.
 
