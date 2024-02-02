@@ -20,6 +20,9 @@ while (<>) {
 
   if (@words && ($ARGV ne $last_file || eof)) {
     @words = grep { !/^\s*(cSpell:ignore|spelling):?\s*$/ && !$dictionary{$_} } @words;
+    # Ensure all words are unique.
+    my %duplicates;
+    @words = grep { !$duplicates{$_}++ } @words;
     if (@words) {
       my $words = join(' ', sort {lc($a) cmp lc($b)} @words);
       my $line = "cSpell:ignore: $words\n";

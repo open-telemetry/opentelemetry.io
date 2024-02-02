@@ -27,7 +27,7 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   # Sites that deny access, always yielding 401, 403 Forbidden, 406, or other:
   - ^https://(www\.)?linkedin\.com\b # 999 Request Denied
   - ^https://(www\.)?mvnrepository\.com
-  - ^https://eng.uber.com/flipr/ # 406
+  - ^https://(www\.|eng\.)?uber\.com/(blog|flipr)/ # 406
   - ^https://twitter.com
   - ^https://www.chathamhouse.org
   - ^https://www.zocdoc.com
@@ -59,3 +59,11 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^https://oncallmemaybe.com
   # TODO drop after https://github.com/open-telemetry/opentelemetry-specification/pull/3834 is merged
   - ^https://wikipedia\.org/wiki/Monotonic_function
+  # TODO drop after https://github.com/open-telemetry/opamp-spec/pull/179 is merged into this repo
+  - ^http://www.watersprings.org/
+  # TODO move into content/en/blog/2023/humans-of-otel.md once https://github.com/open-telemetry/opentelemetry.io/issues/3889 is implemented
+  - ^https://shorturl.at/osHRX$
+  # TODO drop after https://github.com/open-telemetry/semantic-conventions/pull/678 is merged:
+  - ^https://wikipedia.org/wiki/(S.M.A.R.T|Hop_)
+  # TODO move into content/en/blog/2023/contributing-to-otel/index.md once https://github.com/open-telemetry/opentelemetry.io/issues/3889 is implemented
+  - ^https://shorturl.at/vLYZ0$

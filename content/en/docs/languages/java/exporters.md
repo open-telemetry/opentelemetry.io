@@ -1,7 +1,7 @@
 ---
 title: Exporters
 weight: 50
-cSpell:ignore: autoconfigure classpath okhttp springframework
+cSpell:ignore: okhttp
 ---
 
 {{% docs/languages/exporters-intro java %}}
@@ -139,7 +139,7 @@ implementations are described in detail below:
 Next, configure the exporter to point at an OTLP endpoint.
 
 If you use
-[SDK auto-configuration](/docs/languages/java/instrumentation/#automatic-configuration)
+[SDK autoconfiguration](/docs/languages/java/instrumentation/#automatic-configuration)
 all you need to do is update your environment variables:
 
 ```shell
@@ -234,7 +234,7 @@ The `LoggingSpanExporter`, the `LoggingMetricExporter` and the
 `opentelemetry-exporter-logging` artifact.
 
 If you use
-[SDK auto-configuration](/docs/languages/java/instrumentation/#automatic-configuration)
+[SDK autoconfiguration](/docs/languages/java/instrumentation/#automatic-configuration)
 all you need to do is update your environment variables:
 
 ```shell

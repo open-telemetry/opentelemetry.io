@@ -1,9 +1,7 @@
 ---
 title: Propagation
 description: Context propagation for the JS SDK
-aliases: [api/propagation]
 weight: 65
-cSpell:ignore: tracestate
 ---
 
 Propagation is the mechanism that moves data between services and processes.

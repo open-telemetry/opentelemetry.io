@@ -38,16 +38,31 @@ which provide capabilities that can be added to the Collector, such as
 diagnostic tools. Extensions don't require direct access to telemetry data and
 are enabled through the [service](#service) section.
 
-The following is an example of Collector configuration with a receiver, a
-processor, an exporter, and three extensions:
+<a id="endpoint-0.0.0.0-warning"></a> The following is an example of Collector
+configuration with a receiver, a processor, an exporter, and three extensions.
+
+{{% alert title="Important" color="warning" %}}
+
+While it is generally preferable to bind endpoints to `localhost` when all
+clients are local, our example configurations use the "unspecified" address
+`0.0.0.0` as a convenience. The Collector currently defaults to `0.0.0.0`, but
+the default will be changed to `localhost` in the near future. For details
+concerning either of these choices as endpoint configuration value, see
+[Safeguards against denial of service attacks].
+
+[Safeguards against denial of service attacks]:
+  https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md#safeguards-against-denial-of-service-attacks
+
+{{% /alert %}}
 
 ```yaml
 receivers:
   otlp:
     protocols:
       grpc:
+        endpoint: 0.0.0.0:4317
       http:
-
+        endpoint: 0.0.0.0:4318
 processors:
   batch:
 
@@ -87,7 +102,9 @@ receivers:
   otlp:
     protocols:
       grpc:
+        endpoint: 0.0.0.0:4317
       http:
+        endpoint: 0.0.0.0:4318
   otlp/2:
     protocols:
       grpc:
@@ -137,6 +154,7 @@ receivers:
   otlp:
     protocols:
       grpc:
+        endpoint: 0.0.0.0:4317
 
 exporters: ${file:exporters.yaml}
 
@@ -163,6 +181,7 @@ receivers:
   otlp:
     protocols:
       grpc:
+        endpoint: 0.0.0.0:4317
 
 exporters:
   otlp:
@@ -217,6 +236,7 @@ receivers:
   jaeger:
     protocols:
       grpc:
+        endpoint: 0.0.0.0:4317
       thrift_binary:
       thrift_compact:
       thrift_http:
@@ -232,7 +252,9 @@ receivers:
   otlp:
     protocols:
       grpc:
+        endpoint: 0.0.0.0:4317
       http:
+        endpoint: 0.0.0.0:4318
 
   # Data sources: metrics
   prometheus:
@@ -392,7 +414,7 @@ exporters:
 
   # Data sources: metrics
   prometheus:
-    endpoint: localhost:8889
+    endpoint: 0.0.0.0:8889
     namespace: default
 
   # Data sources: metrics
@@ -723,6 +745,7 @@ receivers:
   otlp/auth:
     protocols:
       grpc:
+        endpoint: 0.0.0.0:4317
         auth:
           authenticator: oidc
 
@@ -758,7 +781,7 @@ receivers:
   otlp:
     protocols:
       grpc:
-        endpoint: localhost:4317
+        endpoint: 0.0.0.0:4317
 
 processors:
 

@@ -17,7 +17,6 @@ my $opAmpSpecRepoUrl = 'https://github.com/open-telemetry/opamp-spec';
 my $semconvSpecRepoUrl = 'https://github.com/open-telemetry/semantic-conventions';
 my $semConvRef = "$otelSpecRepoUrl/blob/main/semantic_conventions/README.md";
 my $specBasePath = '/docs/specs';
-my $path_base_for_github_subdir = "content/en$specBasePath";
 my %versions = qw(
   spec: 1.29.0
   otlp: 1.1.0
@@ -52,12 +51,22 @@ sub printTitleAndFrontMatter() {
   # TODO: add to front matter of OTel spec file and drop next line:
   $linkTitle = 'Design Goals' if $title eq 'Design Goals for OpenTelemetry Wire Protocol';
 
+  # TODO: remove once all submodules have been updated in the context of https://github.com/open-telemetry/opentelemetry.io/issues/3922
+  $frontMatterFromFile =~ s|: content/en/docs/specs/otel/|: tmp/otel/specification|g;
+  $frontMatterFromFile =~ s|: content/en/docs/specs/opamp/|: tmp/opamp/|g;
+  $frontMatterFromFile =~ s|: content/en/docs/specs/semconv/|: tmp/semconv/docs/|g;
+  $frontMatterFromFile =~ s|path_base_for_github_subdir:\n  from: content/en/docs/specs/otlp/_index.md\n  to: specification.md\n||;
+  $frontMatterFromFile =~ s|github_subdir: docs\n  path_base_for_github_subdir: content/en/docs/specs/otlp/|path_base_for_github_subdir: tmp/otlp/|g;
+
+  $frontMatterFromFile =~ s|github_subdir: ''\npath_base_for_github_subdir:\n  from: content/en/community/mission\\.md\n  to: mission-vision-values.md|path_base_for_github_subdir: tmp/community|;
+  $frontMatterFromFile =~ s|github_subdir: ''\npath_base_for_github_subdir: content/en/community/|path_base_for_github_subdir: tmp/community|;
+
   # printf STDOUT "> $title -> $linkTitle\n";
   print "linkTitle: $linkTitle\n" if $linkTitle and $frontMatterFromFile !~ /linkTitle: /;
   print "$frontMatterFromFile" if $frontMatterFromFile;
   if ($ARGV =~ /otel\/specification\/(.*?)_index.md$/) {
     print "path_base_for_github_subdir:\n";
-    print "  from: $path_base_for_github_subdir/otel/$1_index.md\n";
+    print "  from: tmp/otel/specification/$1_index.md\n";
     print "  to: $1README.md\n";
   }
   print "---\n";
