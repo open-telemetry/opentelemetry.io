@@ -169,18 +169,39 @@ are useful for aggregating, filtering, and grouping traces. Attributes can be
 added at span creation, or at any other time during the lifecycle of a span
 before it has completed.
 
+Generally speaking, you should try to set attributes during span creation.
+This will incur less overhead compared to setting attributes after
+span creation.
+
+The following example adds attributes at creation:
+
 ```go
 // setting attributes at creation...
-ctx, span = tracer.Start(ctx, "attributesAtCreation", trace.WithAttributes(attribute.String("hello", "world")))
-// ... and after creation
-span.SetAttributes(attribute.Bool("isTrue", true), attribute.String("stringAttr", "hi!"))
+ctx, span = tracer.Start(ctx, "attributesAtCreation",
+	trace.WithAttributes(attribute.String("hello", "world"))
+)
 ```
 
-Attribute keys can be precomputed, as well:
+If you need to set an attribute after creation, such as adding
+a value that isn't known until after the span is started, the
+following example shows how:
+
+```go
+span.SetAttributes(
+	attribute.Bool("isTrue", true),
+	attribute.String("stringAttr", "hi!"))
+```
+
+Additionally, attribute keys can be precomputed:
 
 ```go
 var myKey = attribute.Key("myCoolAttribute")
-span.SetAttributes(myKey.String("a value"))
+
+// ... somewhere later in code
+
+ctx, span = tracer.Start(ctx, "app.myspan",
+	trace.WithAttributes(myKey.String("a value"))
+)
 ```
 
 #### Semantic Attributes
@@ -690,11 +711,36 @@ func init() {
 
 ### Adding attributes
 
+Attributes are keys and values that are applied as metadata to your metrics and
+are useful for aggregating, filtering, and grouping metrics. Attributes can be
+added at instrument creation, or at any other time during the lifecycle of an
+instrument.
+
+Generally speaking, it is advisable to add attributes during instrumentation
+if you can. There is memory overhead when adding them after creation, and in
+some scenarios this can degrade performance.
+
 You can add Attributes by using the
 [`WithAttributeSet`](https://pkg.go.dev/go.opentelemetry.io/otel/metric#WithAttributeSet)
 or
 [`WithAttributes`](https://pkg.go.dev/go.opentelemetry.io/otel/metric#WithAttributes)
 options.
+
+For example, here's how you could add descriptive attributes during creation:
+
+```go
+counter, err := meter.Int64UpDownCounter(
+	"app.my-counter",
+	metric.WithDescription("My fancy counter."),
+	metric.WithAttributes(
+		attribute.String("my-important-key", "my-important-value"),
+		attribute.String("my-other-key", "my-other-value"),
+	),
+)
+```
+
+However, there are some cases where you can't add attribute data up front.
+Here's an example of adding this data after creation:
 
 ```go
 import (
