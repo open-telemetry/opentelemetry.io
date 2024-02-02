@@ -1,0 +1,30 @@
+name: Auto-update registry versions
+
+on:
+  workflow_dispatch:
+  schedule:
+    # At 04:31, every day
+    - cron: 31 4 * * *
+
+jobs:
+  auto-update-versions:
+    name: Auto-update registry versions
+    runs-on: ubuntu-20.04
+    # Remove the if statement below when testing againt a fork
+    if: github.repository == 'open-telemetry/opentelemetry.io'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use CLA approved github bot
+        run: |
+          git config user.name opentelemetrybot
+          git config user.email 107717825+opentelemetrybot@users.noreply.github.com
+
+      - name: Auto-update
+        run: |
+          .github/workflows/scripts/update-registry-versions.sh
+        env:
+          # change this to secrets.GITHUB_TOKEN when testing against a fork
+          # GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}

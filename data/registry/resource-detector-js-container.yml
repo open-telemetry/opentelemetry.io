@@ -14,3 +14,7 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node/opentelemetry-resource-detector-container
 createdAt: 2022-12-07
+package:
+  registry: npm
+  name: '@opentelemetry/resource-detector-container'
+  version: 0.3.6

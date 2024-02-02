@@ -1,7 +1,7 @@
 ---
 title: OTLP Exporter Configuration
-description: Environment variables for configuring your OTLP Exporter.
-weight: 2
+linkTitle: OTLP Exporter
+aliases: [otlp-exporter-configuration]
 ---
 
 ## Endpoint Configuration

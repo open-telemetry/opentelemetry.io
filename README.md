@@ -7,8 +7,8 @@ is hosted on [Netlify][].
 ## Get involved
 
 To learn how to contribute fixes and new content to this project, read the
-[Contributor's guide](/content/en/docs/contributing), which includes a style
-guide and useful information on the review process.
+[Contributor's guide](https://opentelemetry.io/docs/contributing/), which
+includes a style guide and useful information on the review process.
 
 If you are new to OpenTelemetry and just get started with it, you are in a
 perfect position to help us get better: the website and documentation is the
@@ -18,7 +18,7 @@ missing [let us know][].
 ### Submit a blog post
 
 For guidance on how to write and submit a blog post, see
-[Submit a blog post](/content/en/docs/contributing/blog).
+[Submit a blog post](https://opentelemetry.io/docs/contributing/blog/).
 
 ### Add a project to the OpenTelemetry [Registry]
 
@@ -31,9 +31,9 @@ We have curated some issues with the tags [help wanted][] and [good first
 issue][]. This should allow you to quickly find a place to contribute. See
 [CONTRIBUTING.md][] for more information.
 
-We, the OTel Comms SIG, meet every two weeks on Monday at 9:00 PT. Check out the
-[OpenTelemetry community calendar][] for the Zoom link and any updates to this
-schedule.
+We, the OTel Communications SIG, meet every two weeks on Monday at 10:00 PT.
+Check out the [OpenTelemetry community calendar][] for the Zoom link and any
+updates to this schedule.
 
 Meeting notes are available as a public [Google doc][]. If you have trouble
 accessing the doc, get in touch on [Slack][].

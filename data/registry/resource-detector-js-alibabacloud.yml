@@ -13,3 +13,7 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node/opentelemetry-resource-detector-alibaba-cloud
 createdAt: 2022-12-07
+package:
+  registry: npm
+  name: '@opentelemetry/resource-detector-alibaba-cloud'
+  version: 0.28.6

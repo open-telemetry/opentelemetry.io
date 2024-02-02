@@ -23,6 +23,7 @@ languageSettings:
       - CodeBlock
 words:
   - accountingservice
+  - actix
   - adservice
   - alibaba
   - Alloc
@@ -32,6 +33,8 @@ words:
   - appender
   - appenders
   - aspecto
+  - autoconfigure
+  - autoconfiguration
   - autoload
   - autoloaded
   - autoloader
@@ -42,6 +45,7 @@ words:
   - cartservice
   - cassandra
   - checkoutservice
+  - classpath
   - cncf
   - currencyservice
   - daemonset
