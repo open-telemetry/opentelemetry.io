@@ -1235,6 +1235,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-18T08:52:59.602661-05:00"
   },
+  "https://docs.openshift.com/container-platform/4.14/otel/otel-release-notes.html": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-02T12:42:05.756504535Z"
+  },
   "https://docs.oracle.com/cd/E12058_01/doc/doc.1014/e12030/cron_expressions.htm": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:53:51.013538-05:00"
