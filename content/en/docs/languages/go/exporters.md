@@ -6,7 +6,7 @@ weight: 50
 cSpell:ignore: otlpmetric otlpmetricgrpc otlpmetrichttp otlptrace otlptracegrpc otlptracehttp promhttp stdouttrace
 ---
 
-{{% docs/languages/exporters-intro go %}}
+{{% docs/languages/exporters/intro go %}}
 
 ## Console
 
