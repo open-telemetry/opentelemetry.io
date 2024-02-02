@@ -2,8 +2,8 @@
 title: Registry
 description:
   Instrumentation libraries, exporters and other useful components for
-  OpenTelemetry PHP
-redirect: /ecosystem/registry/?language=php
+  OpenTelemetry Ruby
+redirect: /ecosystem/registry/?language=ruby
 _build: { render: link }
 weight: 300
 ---
