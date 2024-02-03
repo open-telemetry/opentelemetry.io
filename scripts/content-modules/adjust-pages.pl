@@ -58,9 +58,6 @@ sub printTitleAndFrontMatter() {
   $frontMatterFromFile =~ s|path_base_for_github_subdir:\n  from: content/en/docs/specs/otlp/_index.md\n  to: specification.md\n||;
   $frontMatterFromFile =~ s|github_subdir: docs\n  path_base_for_github_subdir: content/en/docs/specs/otlp/|path_base_for_github_subdir: tmp/otlp/|g;
 
-  $frontMatterFromFile =~ s|github_subdir: ''\npath_base_for_github_subdir:\n  from: content/en/community/mission\\.md\n  to: mission-vision-values.md|path_base_for_github_subdir: tmp/community|;
-  $frontMatterFromFile =~ s|github_subdir: ''\npath_base_for_github_subdir: content/en/community/|path_base_for_github_subdir: tmp/community|;
-
   # printf STDOUT "> $title -> $linkTitle\n";
   print "linkTitle: $linkTitle\n" if $linkTitle and $frontMatterFromFile !~ /linkTitle: /;
   print "$frontMatterFromFile" if $frontMatterFromFile;
