@@ -169,42 +169,39 @@ processors:
   k8sattributes/default:
 ```
 
-## Set status for span
+## Setting a span status
 
 **Processor**:
 [span processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/spanprocessor)
 
-You can use the
-[span processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/spanprocessor)
-to change span status.
+Use the span processor to set a span's status. The following settings are
+available:
 
-The following settings are available:
+- `code`: represents span status, one of:
+  - `Ok`
+  - `Unset`
+  - `Error`
+- `description`: status-change description, only allowed when `code` is `Error`
 
-- `code:` Represents span status. One of the following values `Unset`, `Error`,
-  `Ok`.
-- `description:` setting is allowed only for code `Error`.
-
-Example:
+The following example sets the span status to `Ok` when the `http.status_code`
+attribute is 400:
 
 ```yaml
-# Set status allows to set specific status for a given span. Possible values are
-# Ok, Error and Unset as per
-# https://opentelemetry.io/docs/specs/otel/trace/api/#set-status
 # The description field allows to set a human-readable message for errors.
-# Example below sets status to success only when attribute http.status_code is equal to 400
 span/set_status_ok:
   include:
     attributes:
       - key: http.status_code
         value: 400
   status:
-    code: 'Ok'
+    code: Ok
 ```
 
-You can also use the span processor also to modify the span name based on its
-attributes or extract span attributes from the span name. See the
+You can also use the span processor to modify the span name based on its
+attributes or extract span attributes from the span name. For examples, see
+`spanprocessor` test data
 [config.yaml](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/spanprocessor/testdata/config.yaml)
-file for detailed examples on how to use the span processor.
+file.
 
 ## Advanced Transformations
 
