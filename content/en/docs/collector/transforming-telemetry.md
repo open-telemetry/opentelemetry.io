@@ -199,7 +199,7 @@ span/set_status_ok:
 
 You can also use the span processor to modify the span name based on its
 attributes or extract span attributes from the span name. For examples, see
-`spanprocessor` test data
+`span processor` test data
 [config.yaml](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/spanprocessor/testdata/config.yaml)
 file.
 
