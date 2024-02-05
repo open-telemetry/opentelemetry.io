@@ -16,7 +16,7 @@ the following content:
   the OpenTelemetry Collector.
 - [Security guidance](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md)
 
-## Location of the configuration {#location}
+## Location {#location}
 
 By default, the Collector configuration is located in
 `/etc/otelcol/config.yaml`.
