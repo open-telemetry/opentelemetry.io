@@ -1215,6 +1215,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T08:54:12.741496-05:00"
   },
+  "https://docs.middleware.io/open-telemetry": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-05T20:30:08.23208333Z"
+  },
   "https://docs.mongodb.com/manual/reference/command/#database-operations": {
     "StatusCode": 206,
     "LastSeen": "2024-01-18T08:53:24.275059-05:00"
