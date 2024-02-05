@@ -7,8 +7,7 @@ tags:
   - instrumentation
   - erlang
 license: Apache 2.0
-description:
-  Telemetry handler that creates OpenTelemetry spans from Ecto query events.
+description: Telemetry handler that creates OpenTelemetry spans from Ecto query events.
 authors:
   - name: OpenTelemetry Authors
 urls:
@@ -17,4 +16,4 @@ createdAt: 2022-03-23
 package:
   registry: hex
   name: opentelemetry_ecto
-  version: 1.1.1
+  version: 1.1.2
