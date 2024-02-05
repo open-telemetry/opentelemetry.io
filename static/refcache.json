@@ -5331,6 +5331,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-19T13:15:36.494434+01:00"
   },
+  "https://packagist.org/packages/open-telemetry/opentelemetry-auto-openai-php": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-05T17:24:31.062504+01:00"
+  },
   "https://packagist.org/packages/open-telemetry/opentelemetry-auto-pdo": {
     "StatusCode": 200,
     "LastSeen": "2024-01-19T13:15:36.643467+01:00"
@@ -5378,6 +5382,10 @@
   "https://packagist.org/packages/open-telemetry/sdk": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:06:02.615456-05:00"
+  },
+  "https://packagist.org/packages/openai-php/client": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-05T17:24:30.23375+01:00"
   },
   "https://packagist.org/providers/php-http/async-client-implementation": {
     "StatusCode": 200,
@@ -5559,6 +5567,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:15:46.902637+01:00"
   },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/exporter/otelarrowexporter": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-05T17:24:23.49557+01:00"
+  },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/exporter/prometheusexporter": {
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:15:47.271108+01:00"
@@ -5667,6 +5679,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:15:58.781435+01:00"
   },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/extension/solarwindsapmsettingsextension": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-05T17:24:24.214319+01:00"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/extension/sumologicextension": {
+    "StatusCode": 404,
+    "LastSeen": "2024-02-05T17:24:25.059391+01:00"
+  },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/attributesprocessor": {
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:15:59.158+01:00"
@@ -5678,6 +5698,10 @@
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/datadogprocessor": {
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:16:00.083615+01:00"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/deltatocumulativeprocessor": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-05T17:24:25.808954+01:00"
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/deltatorateprocessor": {
     "StatusCode": 200,
@@ -5694,6 +5718,10 @@
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/groupbytraceprocessor": {
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:16:01.685466+01:00"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/intervalprocessor": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-05T17:24:26.847627+01:00"
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/k8sattributesprocessor": {
     "StatusCode": 200,
