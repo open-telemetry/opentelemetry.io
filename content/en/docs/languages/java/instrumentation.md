@@ -13,7 +13,7 @@ cSpell:ignore: Autowired customizer logback loggable multivalued rolldice spring
 
 <!-- markdownlint-disable no-duplicate-heading -->
 
-{{% docs/languages/manual-intro %}}
+{{% docs/languages/instrumentation-intro %}}
 
 {{% alert title="Note" color="info" %}}
 
