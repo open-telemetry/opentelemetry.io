@@ -21,10 +21,25 @@ the following content:
 By default, the Collector configuration is located in
 `/etc/otelcol/config.yaml`.
 
-To use a different configuration file, use the `--config` option. For example:
+You can provide one or more configurations using the `--config` option. For
+example:
 
 ```shell
-$ otelcol --config=customconfig.yaml
+otelcol --config=customconfig.yaml
+```
+
+You can also provide configurations using environment variables, YAML paths, or
+HTTP URIs. For example:
+
+```shell
+otelcol --config=env:MY_CONFIG_IN_AN_ENVVAR` --config=https://server/config.yaml
+otelcol --config="yaml:exporters::debug::verbosity: normal"`
+```
+
+To validate a configuration file, use the `validate` command. For example:
+
+```shell
+otelcol validate --config=customconfig.yaml
 ```
 
 ## Configuration structure {#basics}
@@ -854,3 +869,34 @@ This creates two certificates:
   with the associated key in `cert-key.pem`.
 
 [dcc]: /docs/concepts/components/#collector
+
+## Override settings
+
+You can override Collector settings using the `--set` option. The settings you
+define with this method are merged into the final configuration after all
+`--config` sources are resolved and merged.
+
+The following example shows how to override a setting using different syntax:
+
+```shell
+# Translates to
+# key: value
+otelcol --set key=value
+# Translates to
+# outer:
+#   inner: value
+otelcol --set outer.inner=value
+# Translates to
+# key:
+#   - a
+#   - b
+#   - c
+otelcol --set "key=[a, b, c]"
+# Translates to
+# key:
+#   a: c
+otelcol --set "key={a: c}
+```
+
+Note tha the `--set` option doesn't support setting a key that contains a dot or
+an equal sign.
