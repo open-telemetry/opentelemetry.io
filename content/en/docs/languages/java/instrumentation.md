@@ -190,15 +190,6 @@ You should get a list of 12 numbers in your browser window, for example:
 For both library and app instrumentation, the first step is to install the
 dependencies for the OpenTelemetry API.
 
-{{< tabpane text=true >}} {{% tab Gradle %}}
-
-```kotlin { hl_lines=3 }
-dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-web");
-    implementation("io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}");
-}
-```
-
 Throughout this documentation you will add dependencies. For a full list of
 artifact coordinates, see [releases]. For semantic convention releases, see
 [semantic-conventions-java].
@@ -206,6 +197,40 @@ artifact coordinates, see [releases]. For semantic convention releases, see
 [releases]: https://github.com/open-telemetry/opentelemetry-java#releases
 [semantic-conventions-java]:
   https://github.com/open-telemetry/semantic-conventions-java/releases
+
+### Dependency management
+
+A Bill of Material
+([BOM](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#bill-of-materials-bom-poms))
+ensures that versions of dependencies (including transitive ones) are aligned.
+Importing the `opentelemetry-bom` BOM is important to ensure version alignment
+across all OpenTelemetry dependencies.
+
+{{< tabpane text=true >}} {{% tab Gradle %}}
+
+```kotlin { hl_lines=["1-5",9] }
+dependencyManagement {
+  imports {
+    mavenBom("io.opentelemetry:opentelemetry-bom:{{% param vers.otel %}}")
+  }
+}
+
+dependencies {
+    implementation("org.springframework.boot:spring-boot-starter-web");
+    implementation("io.opentelemetry:opentelemetry-api");
+}
+```
+
+If you are not using Spring and its `io.spring.dependency-management` dependency
+management plugin, install the OpenTelemetry BOM and API using Gradle
+dependencies only.
+
+```kotlin
+dependencies {
+    implementation(platform("io.opentelemetry:opentelemetry-bom:{{% param vers.otel %}}"));
+    implementation("io.opentelemetry:opentelemetry-api");
+}
+```
 
 {{% /tab %}} {{% tab Maven %}}
 
@@ -238,19 +263,20 @@ artifact coordinates, see [releases]. For semantic convention releases, see
 {{% alert title="Note" color="info" %}} If you’re instrumenting a library,
 **skip this step**. {{% /alert %}}
 
-If you instrument a Java app, install the dependencies for the OpenTelemetry
-SDK.
+The OpenTelemetry API provides a set of interfaces for collecting telemetry, but
+the data is dropped without an implementation. The OpenTelemetry SDK is the
+implementation of the OpenTelemetry API provided by OpenTelemetry. To use it if
+you instrument a Java app, begin by installing dependencies:
 
 {{< tabpane text=true >}} {{% tab Gradle %}}
 
-```kotlin { hl_lines="4-8" }
+```kotlin { hl_lines="4-6" }
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web");
-    implementation("io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}");
-    implementation("io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}");
-    implementation("io.opentelemetry:opentelemetry-sdk-metrics:{{% param vers.otel %}}");
-    implementation("io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}");
-    implementation("io.opentelemetry:opentelemetry-semconv:{{% param vers.otel %}}-alpha");
+    implementation("io.opentelemetry:opentelemetry-api");
+    implementation("io.opentelemetry:opentelemetry-sdk");
+    implementation("io.opentelemetry:opentelemetry-exporter-logging");
+    implementation("io.opentelemetry.semconv:opentelemetry-semconv:{{% param vers.semconv %}}-alpha");
 }
 ```
 
@@ -258,29 +284,10 @@ dependencies {
 
 ```xml
 <project>
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>io.opentelemetry</groupId>
-                <artifactId>opentelemetry-bom</artifactId>
-                <version>{{% param vers.otel %}}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>io.opentelemetry</groupId>
-            <artifactId>opentelemetry-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.opentelemetry</groupId>
             <artifactId>opentelemetry-sdk</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.opentelemetry</groupId>
-            <artifactId>opentelemetry-sdk-metrics</artifactId>
         </dependency>
         <dependency>
             <groupId>io.opentelemetry</groupId>
@@ -312,16 +319,14 @@ To use autoconfiguration add the following dependency to your application:
 
 {{< tabpane text=true >}} {{% tab Gradle %}}
 
-```kotlin { hl_lines="9-10" }
+```kotlin { hl_lines="7" }
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web");
-    implementation("io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}");
-    implementation("io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}");
-    implementation("io.opentelemetry:opentelemetry-sdk-metrics:{{% param vers.otel %}}");
-    implementation("io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}");
-    implementation("io.opentelemetry.semconv:opentelemetry-semconv:{{% param vers.semconv %}}-alpha")
-    implementation("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure:{{% param vers.otel %}}");
-    implementation("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi:{{% param vers.otel %}}");
+    implementation("io.opentelemetry:opentelemetry-api");
+    implementation("io.opentelemetry:opentelemetry-sdk");
+    implementation("io.opentelemetry:opentelemetry-exporter-logging");
+    implementation("io.opentelemetry.semconv:opentelemetry-semconv:{{% param vers.semconv %}}-alpha");
+    implementation("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure");
 }
 ```
 
