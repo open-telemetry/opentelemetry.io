@@ -232,7 +232,7 @@ with the OpenTelemetry
 
 Autoconfigures OpenTelemetry instrumentation for
 [spring-web](#spring-web-autoconfiguration) ,
-[spring-webmvc](#spring-web-mvc-autoconfiguration), and
+[spring-webmvc](#spring-web-mvc-autoconfiguration) and
 [spring-webflux](#spring-webflux-autoconfiguration). Leverages Spring Aspect
 Oriented Programming, dependency injection, and bean post-processing to trace
 spring applications.
@@ -476,7 +476,7 @@ autoconfiguration features with an annotation or the Zipkin starter.
 
 ### Spring support
 
-Autoconfiguration is natively supported by Springboot applications. To enable
+Autoconfiguration is natively supported by Spring Boot applications. To enable
 these features in "vanilla" use `@EnableOpenTelemetry` to complete a component
 scan of this package.
 
