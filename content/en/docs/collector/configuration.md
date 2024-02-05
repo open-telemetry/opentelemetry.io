@@ -8,13 +8,24 @@ cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca l
 
 <!-- markdownlint-disable link-fragments -->
 
-You can configure the Collector to suit your observability needs. Before you
-learn how Collector configuration works, familiarize yourself with the following
-content:
+You can configure the OpenTelemetry Collector to suit your observability needs.
+Before you learn how Collector configuration works, familiarize yourself with
+the following content:
 
-- [Data collection concepts][dcc] in order to understand the repositories
-  applicable to the OpenTelemetry Collector.
+- [Data collection concepts][dcc], to understand the repositories applicable to
+  the OpenTelemetry Collector.
 - [Security guidance](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md)
+
+## Location of the configuration {#location}
+
+By default, the Collector configuration is located in
+`/etc/otelcol/config.yaml`.
+
+To use a different configuration file, use the `--config` option. For example:
+
+```shell
+$ otelcol --config=customconfig.yaml
+```
 
 ## Configuration structure {#basics}
 
