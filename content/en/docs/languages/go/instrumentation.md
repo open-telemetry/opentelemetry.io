@@ -164,15 +164,14 @@ Once a span has completed, it is immutable and can no longer be modified.
 
 ### Span Attributes
 
-Attributes are keys and values that are applied as metadata to your spans and
+[Attributes] are keys and values that are applied as metadata to your spans and
 are useful for aggregating, filtering, and grouping traces. Attributes can be
 added at span creation, or at any other time during the lifecycle of a span
 before it has completed.
 
-Generally speaking, you should try to set attributes during span creation.
-This will incur less overhead compared to setting attributes after
-span creation, and also allow these attributes to factor into SDK sampling
-decisions.
+Generally speaking, you should try to set attributes during span creation. This
+will incur less overhead compared to setting attributes after span creation, and
+also allow these attributes to factor into SDK sampling decisions.
 
 The following example adds attributes at creation:
 
@@ -183,9 +182,8 @@ ctx, span = tracer.Start(ctx, "attributesAtCreation",
 )
 ```
 
-If you need to set an attribute after creation, such as adding
-a value that isn't known until after the span is started, the
-following example shows how:
+If you need to set an attribute after creation, such as adding a value that
+isn't known until after the span is started, the following example shows how:
 
 ```go
 span.SetAttributes(
@@ -923,3 +921,4 @@ telemetry backends.
   https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric
 [`go.opentelemetry.io/otel/sdk/resource`]:
   https://pkg.go.dev/go.opentelemetry.io/otel/sdk/resource
+[Attributes]: /docs/concepts/signals/traces/#attributes
