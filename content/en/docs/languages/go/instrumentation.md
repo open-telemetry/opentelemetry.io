@@ -713,9 +713,7 @@ func init() {
 ### Adding attributes
 
 Attributes are keys and values that are applied as metadata to your metrics and
-are useful for aggregating, filtering, and grouping metrics. Attributes can be
-added at instrument creation, or at any other time during the lifecycle of an
-instrument.
+are useful for aggregating, filtering, and grouping metrics.
 
 You can add Attributes by using the
 [`WithAttributeSet`](https://pkg.go.dev/go.opentelemetry.io/otel/metric#WithAttributeSet)
