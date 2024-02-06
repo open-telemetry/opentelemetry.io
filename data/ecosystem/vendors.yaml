@@ -202,6 +202,13 @@
   contact: ''
   oss: false
   commercial: true
+- name: Middleware
+  distribution: true
+  nativeOTLP: true
+  url: 'https://docs.middleware.io/open-telemetry'
+  contact: 'hello@middleware.io'
+  oss: false
+  commercial: true
 - name: New Relic
   distribution: false
   nativeOTLP: true
@@ -250,6 +257,13 @@
   url: 'https://sentry.io/for/opentelemetry/'
   contact: ''
   oss: false
+  commercial: true
+- name: Red Hat
+  distribution: true
+  nativeOTLP: true
+  url: 'https://docs.openshift.com/container-platform/4.14/otel/otel-release-notes.html'
+  contact: 'ploffay@redhat.com'
+  oss: true
   commercial: true
 - name: Sentry Software
   distribution: true
