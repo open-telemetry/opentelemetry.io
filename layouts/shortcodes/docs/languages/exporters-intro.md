@@ -17,11 +17,18 @@ them up.
 
 The registry contains the [list of exporters for {{ $name }}][reg].
 
-Among exporters, [OpenTelemetry Protocol (OTLP)][OTLP] exporters provide an
-optimal experience since they are lossless and support all [signals]. To learn
-more about the OTLP protocol, see [OTLP Specification][OTLP].
+Among exporters, [OpenTelemetry Protocol (OTLP)][OTLP] exporters are designed
+with the OpenTelemetry data model in mind, emitting OTel data without any loss
+of information. Furthermore, many tools that operate on telemetry data support
+OTLP (such as [Prometheus], [Jaeger], and most [vendors]), providing you with a
+high degree of flexibility when you need it. To learn more about OTLP, see [OTLP
+Specification][OTLP].
 
+[Jaeger]: /blog/2022/jaeger-native-otlp/
 [OTLP]: /docs/specs/otlp/
+[Prometheus]:
+  https://prometheus.io/docs/prometheus/latest/feature_flags/#otlp-receiver
 [signals]: /docs/concepts/signals/
+[vendors]: /ecosystem/vendors/
 
 [reg]: /ecosystem/registry/?component=exporter&language={{ $lang }}
