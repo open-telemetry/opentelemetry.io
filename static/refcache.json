@@ -5687,10 +5687,6 @@
     "StatusCode": 200,
     "LastSeen": "2024-02-05T17:24:24.214319+01:00"
   },
-  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/extension/sumologicextension": {
-    "StatusCode": 404,
-    "LastSeen": "2024-02-05T17:24:25.059391+01:00"
-  },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/attributesprocessor": {
     "StatusCode": 200,
     "LastSeen": "2024-01-08T12:15:59.158+01:00"
