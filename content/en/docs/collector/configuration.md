@@ -19,7 +19,9 @@ the following content:
 ## Location {#location}
 
 By default, the Collector configuration is located in
-`/etc/otelcol/config.yaml`.
+`/etc/<otel-directory>/config.yaml`, where `<otel-directory>` can be `otelcol`,
+`otelcol-contrib`, or another value, depending on the Collector version or the
+Collector distribution you're using.
 
 You can provide one or more configurations using the `--config` option. For
 example:
@@ -876,26 +878,15 @@ You can override Collector settings using the `--set` option. The settings you
 define with this method are merged into the final configuration after all
 `--config` sources are resolved and merged.
 
-The following example shows how to override a setting using different syntax:
+The following examples show how to override settings inside nested sections:
 
 ```shell
-# Translates to
-# key: value
-otelcol --set key=value
-# Translates to
-# outer:
-#   inner: value
-otelcol --set outer.inner=value
-# Translates to
-# key:
-#   - a
-#   - b
-#   - c
-otelcol --set "key=[a, b, c]"
-# Translates to
-# key:
-#   a: c
-otelcol --set "key={a: c}
+# The following example sets the verbosity
+# level of the debug exporter to 'detailed'
+otelcol --set "exporters::debug::verbosity=detailed"
+# The following example overrides gRPC
+# settings for the OTLP receiver
+otelcol --set "receivers::otlp::protocols::grpc={endpoint:localhost:4317, compression: gzip}"
 ```
 
 Note tha the `--set` option doesn't support setting a key that contains a dot or
