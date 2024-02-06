@@ -232,7 +232,7 @@ with the OpenTelemetry
 
 Autoconfigures OpenTelemetry instrumentation for
 [spring-web](#spring-web-autoconfiguration),
-[spring-webmvc](#spring-web-mvc-autoconfiguration) and
+[spring-webmvc](#spring-web-mvc-autoconfiguration), and
 [spring-webflux](#spring-webflux-autoconfiguration). Leverages Spring Aspect
 Oriented Programming, dependency injection, and bean post-processing to trace
 spring applications.
