@@ -171,7 +171,8 @@ before it has completed.
 
 Generally speaking, you should try to set attributes during span creation.
 This will incur less overhead compared to setting attributes after
-span creation.
+span creation, and also allow these attributes to factor into SDK sampling
+decisions.
 
 The following example adds attributes at creation:
 
@@ -716,31 +717,13 @@ are useful for aggregating, filtering, and grouping metrics. Attributes can be
 added at instrument creation, or at any other time during the lifecycle of an
 instrument.
 
-Generally speaking, it is advisable to add attributes during instrument creation
-if you can. There is memory overhead when adding them after creation, and in
-some scenarios this can degrade performance.
-
 You can add Attributes by using the
 [`WithAttributeSet`](https://pkg.go.dev/go.opentelemetry.io/otel/metric#WithAttributeSet)
 or
 [`WithAttributes`](https://pkg.go.dev/go.opentelemetry.io/otel/metric#WithAttributes)
 options.
 
-For example, here's how you could add descriptive attributes during creation:
-
-```go
-counter, err := meter.Int64UpDownCounter(
-	"app.my-counter",
-	metric.WithDescription("My fancy counter."),
-	metric.WithAttributes(
-		attribute.String("my-important-key", "my-important-value"),
-		attribute.String("my-other-key", "my-other-value"),
-	),
-)
-```
-
-However, there are some cases where you can't add attribute data up front.
-Here's an example of adding this data after creation:
+Here's an example of adding attributes to a measurement:
 
 ```go
 import (
