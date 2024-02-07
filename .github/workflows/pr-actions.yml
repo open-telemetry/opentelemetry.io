@@ -31,9 +31,10 @@ jobs:
         run: |
           PR_ACTION=$(echo $COMMENT | grep -oP '/fix:\K\w+')
           echo "Action is $PR_ACTION"
-          # Check if action is either format, submodules or refcache
-          if [[ $PR_ACTION != "format" && $PR_ACTION != "submodules" && $PR_ACTION != "refcache" && $PR_ACTION != "all" ]]; then
+          ACTION_NAMES="format|submodules|refcache|all"
+          if [[ ! "$PR_ACTION" =~ ^($ACTION_NAMES)$ ]]; then
             echo "Invalid action name: $PR_ACTION"
+            echo "Action name should be one of: $ACTION_NAMES"
             exit 1
           fi
           echo "PR_ACTION=$PR_ACTION" >> "$GITHUB_ENV"
