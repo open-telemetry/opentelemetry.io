@@ -10,7 +10,7 @@ cSpell:ignore: chrono millis ostream
 
 To send trace data to a OTLP endpoint (like the [collector](/docs/collector) or
 Jaeger) you'll want to use an exporter crate, such as
-[`opentelemetry-otlp`](https://crates.io/crates/opentelemetry-otlp):
+[opentelemetry-otlp](https://crates.io/crates/opentelemetry-otlp):
 
 ```toml
 [dependencies]
