@@ -1,26 +1,47 @@
-<!-- cSpell:ignore isset cond -->
-
-{{ $lang := .Get 0 -}} {{ $data := index $.Site.Data.instrumentation $lang -}}
-{{ $name := cond (isset $.Site.Data.instrumentation $lang) (printf "OpenTelemetry %s" $data.name) "the language specific implementations" -}}
-
-In order to visualize and analyze your telemetry, you will need to export your
-data to an [OpenTelemetry Collector](/docs/collector/) or a backend such as
+To visualize and analyze telemetry, export it to the
+[OpenTelemetry Collector](/docs/collector/), to a backend such as
 [Jaeger](https://jaegertracing.io/), [Zipkin](https://zipkin.io/),
-[Prometheus](https://prometheus.io/) or a [vendor-specific](/ecosystem/vendors/)
-one.
+[Prometheus](https://prometheus.io/), or a
+[vendor-specific](/ecosystem/vendors/) backend.
 
-As part of {{ $name }} you will find many exporters being available. Among them,
-the OpenTelemetry Protocol (OTLP) exporters provide the best experience for you
-as an end-user, since it is a general-purpose telemetry data delivery protocol
-designed in the scope of the OpenTelemetry project.
+{{ $lang := .Get 0 | default "" -}}
 
-To learn more about the OTLP protocol, you can read the
-[OTLP Specification](/docs/specs/otlp/).
+{{ $name := "" -}}
 
-{{ if (isset $.Site.Data.instrumentation $lang) -}}
+{{ if $lang -}}
 
-Below you will find some introductions on how to set up exporters for OTLP and
-other common protocols in your code.
+{{ $name = (index $.Site.Data.instrumentation $lang).name -}}
+
+## Available exporters
+
+The registry contains a [list of exporters for {{ $name }}][reg].
+
+{{ else -}}
+
+The registry contains the [list of language specific exporters][reg].
+
+{{ end -}}
+
+Among exporters, [OpenTelemetry Protocol (OTLP)][OTLP] exporters are designed
+with the OpenTelemetry data model in mind, emitting OTel data without any loss
+of information. Furthermore, many tools that operate on telemetry data support
+OTLP (such as [Prometheus], [Jaeger], and most [vendors]), providing you with a
+high degree of flexibility when you need it. To learn more about OTLP, see [OTLP
+Specification][OTLP].
+
+[Jaeger]: /blog/2022/jaeger-native-otlp/
+[OTLP]: /docs/specs/otlp/
+[Prometheus]:
+  https://prometheus.io/docs/prometheus/latest/feature_flags/#otlp-receiver
+[signals]: /docs/concepts/signals/
+[vendors]: /ecosystem/vendors/
+
+[reg]: /ecosystem/registry/?component=exporter&language={{ $lang }}
+
+{{ if $name -}}
+
+This page covers the main OpenTelemetry {{ $name }} exporters and how to set
+them up.
 
 {{ end -}}
 
@@ -34,11 +55,13 @@ Guide](/docs/languages/{{ $lang }}/automatic/configuration/).
 
 </div>
 
-{{ end }}
+{{ end -}}
 
 {{/*
  below list needs to grow until all languages are updated to a consistent structure.
- */}} {{ if in (slice "python" "js" "java") $lang -}}
+ */ -}}
+
+{{ if in (slice "python" "js" "java") $lang -}}
 
 ## OTLP
 
