@@ -29,10 +29,10 @@ jobs:
       - name: Extract action name
         id: extract_action_name
         run: |
-          PR_ACTION=$(echo $COMMENT | grep -oP '/fix:\K\w+' > action_name)
+          PR_ACTION=$(echo $COMMENT | grep -oP '/fix:\K\w+')
           echo "Action is $PR_ACTION"
           # Check if action is either format, submodules or refcache
-          if [[ $PR_ACTION != "format" && $PR_ACTION != "submodules" && $PR_ACTION != "refcache" ]]; then
+          if [[ $PR_ACTION != "format" && $PR_ACTION != "submodules" && $PR_ACTION != "refcache" && PR_ACTION != "all" ]]; then
             echo "Invalid action name: $PR_ACTION"
             exit 1
           fi
@@ -66,10 +66,6 @@ jobs:
           cache: npm
           cache-dependency-path: tmp/package-ci.json
 
-      - name: Install dependencies (skip if action is format)
-        if: ${{ steps.extract_action_name.outputs.PR_ACTION != 'format' }}
-        run: npm install --omit=optional
-
       - run: |
           case $PR_ACTION in
             format)
@@ -79,6 +75,13 @@ jobs:
               npm run sync
               ;;
             refcache)
+              npm install --omit=optional
+              npm run check:links
+              ;;
+            all)
+              npm install --omit=optional
+              npm run sync
+              npm run format
               npm run check:links
               ;;
           esac
@@ -99,7 +102,7 @@ jobs:
             echo remote_repo=$remote_repo
             remote_branch=$(git config --get branch.${current_branch}.merge)
             echo remote_branch=$remote_branch
-            git commit -m 'Results from /fix:${PR_ACTION}'
+            git commit -m "Results from /fix:${PR_ACTION}"
             git push ${remote_repo} HEAD:${remote_branch}
           else
             echo "No changes to commit"
@@ -113,4 +116,3 @@ jobs:
           gh pr comment $PR_NUM -b "fix:${PR_ACTION} run failed, please check $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID for details"
         env:
           GH_TOKEN: ${{ github.token }}
-g
