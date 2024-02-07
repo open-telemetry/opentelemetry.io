@@ -7,7 +7,8 @@ tags:
   - fastify
   - fastify-plugin
 license: MIT
-description: Fastify OpenTelemetry API integration, using the Fastify plugin spec.
+description:
+  Fastify OpenTelemetry API integration, using the Fastify plugin spec.
 authors:
   - name: Holden Whitehead
     email: holden@autotelic.com
