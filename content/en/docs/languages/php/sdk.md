@@ -102,11 +102,11 @@ SDK autoloading happens as part of the composer autoloader.
 
 You can disable SDK autoloading if the request URL matches a regular expression.
 Matching an excluded URL prevents any telemetry from being generated or
-exported. You can use this feature in a shared-nothing PHP runtime like Apache or
-NGINX, for requests such as health checks.
+exported. You can use this feature in a shared-nothing PHP runtime like Apache
+or NGINX, for requests such as health checks.
 
-For example, the following configuration turns off telemetry for requests
-such as `https://site/client/123/info` and `https://site/xyz/healthcheck`:
+For example, the following configuration turns off telemetry for requests such
+as `https://site/client/123/info` and `https://site/xyz/healthcheck`:
 
 ```shell
 OTEL_PHP_EXCLUDED_URLS="client/.*/info,healthcheck"
@@ -121,15 +121,15 @@ details, see the
 
 There are also a number of PHP-specific configurations:
 
-| Name                                 | Default value | Values                                                                                | Example                      | Description                                                                        |
-| ------------------------------------ | ------------- | ------------------------------------------------------------------------------------- | ---------------------------- | ---------------------------------------------------------------------------------- |
-| `OTEL_PHP_TRACES_PROCESSOR`          | `batch`       | `batch`, `simple`                                                                     | `simple`                     | Span processor selection                                                           |
-| `OTEL_PHP_DETECTORS`                 | `all`         | `env`, `host`, `os`, `process`, `process_runtime`, `sdk`, `sdk_provided`, `container` | `env,os,process`             | Resource detector selection                                                        |
-| `OTEL_PHP_AUTOLOAD_ENABLED`          | `false`       | `true`, `false`                                                                       | `true`                       | Enable/disable SDK autoloading                                                     |
-| `OTEL_PHP_LOG_DESTINATION`           | `default`     | `error_log`, `stderr`, `stdout`, `psr3`, `none`                                       | `stderr`                     | Where internal errors and warnings will be sent                                    |
+| Name                                 | Default value | Values                                                                                | Example                      | Description                                                                                  |
+| ------------------------------------ | ------------- | ------------------------------------------------------------------------------------- | ---------------------------- | -------------------------------------------------------------------------------------------- |
+| `OTEL_PHP_TRACES_PROCESSOR`          | `batch`       | `batch`, `simple`                                                                     | `simple`                     | Span processor selection                                                                     |
+| `OTEL_PHP_DETECTORS`                 | `all`         | `env`, `host`, `os`, `process`, `process_runtime`, `sdk`, `sdk_provided`, `container` | `env,os,process`             | Resource detector selection                                                                  |
+| `OTEL_PHP_AUTOLOAD_ENABLED`          | `false`       | `true`, `false`                                                                       | `true`                       | Enable/disable SDK autoloading                                                               |
+| `OTEL_PHP_LOG_DESTINATION`           | `default`     | `error_log`, `stderr`, `stdout`, `psr3`, `none`                                       | `stderr`                     | Where internal errors and warnings will be sent                                              |
 | `OTEL_PHP_INTERNAL_METRICS_ENABLED`  | `false`       | `true`, `false`                                                                       | `true`                       | Whether the SDK should emit metrics about its internal state (for example, batch processors) |
-| `OTEL_PHP_DISABLED_INSTRUMENTATIONS` | `[]`          | Instrumentation names, or `all`                                                     | `psr15,psr18`                | Disable one or more installed auto-instrumentations                                |
-| `OTEL_PHP_EXCLUDED_URLS`             | ``            | Comma-delimited regular expression patterns                                           | `client/.*/info,healthcheck` | Do not load the SDK if request URL matches one of the supplied regular expressions |
+| `OTEL_PHP_DISABLED_INSTRUMENTATIONS` | `[]`          | Instrumentation names, or `all`                                                       | `psr15,psr18`                | Disable one or more installed auto-instrumentations                                          |
+| `OTEL_PHP_EXCLUDED_URLS`             | ``            | Comma-delimited regular expression patterns                                           | `client/.*/info,healthcheck` | Do not load the SDK if request URL matches one of the supplied regular expressions           |
 
 Configurations can be provided as environment variables, or via `php.ini` (or a
 file included by `php.ini`)
