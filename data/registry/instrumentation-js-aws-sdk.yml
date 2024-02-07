@@ -17,4 +17,4 @@ createdAt: 2020-06-15
 package:
   name: '@opentelemetry/instrumentation-aws-sdk'
   registry: npm
-  version: 0.38.0
+  version: 0.38.1
