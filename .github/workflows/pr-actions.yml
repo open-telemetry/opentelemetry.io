@@ -29,7 +29,7 @@ jobs:
       - name: Extract action name
         id: extract_action_name
         run: |
-          $PR_ACTION=$(echo $COMMENT | grep -oP '/fix:\K\w+' > action_name)
+          PR_ACTION=$(echo $COMMENT | grep -oP '/fix:\K\w+' > action_name)
           echo "Action is $PR_ACTION"
           # Check if action is either format, submodules or refcache
           if [[ $PR_ACTION != "format" && $PR_ACTION != "submodules" && $PR_ACTION != "refcache" ]]; then
@@ -113,3 +113,4 @@ jobs:
           gh pr comment $PR_NUM -b "fix:${PR_ACTION} run failed, please check $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID for details"
         env:
           GH_TOKEN: ${{ github.token }}
+g
