@@ -103,11 +103,14 @@ Listening on 127.0.0.1:8080
 ## Instrumentation
 
 To add OpenTelemetry to your application, update the `Cargo.toml` with the
-following additional dependencies:
+dependencies for the OpenTelemetry Rust SDK
+[`opentelemetry`](https://crates.io/crates/opentelemetry) and the OpenTelemetry
+Stdout Exporter
+[`opentelemetry-stdout`](https://crates.io/crates/opentelemetry-stdout):
 
 ```toml
-opentelemetry = { version = "0.20", features = ["trace"] }
-opentelemetry-stdout = { version = "0.1", features = ["trace"] }
+opentelemetry = { version = "{{% version-from-registry otel-rust %}}", features = ["trace"] }
+opentelemetry-stdout = { version = "{{% version-from-registry exporter-rust-stdout %}}", features = ["trace"] }
 ```
 
 Update the `dice_server.rs` file with code to initialize a tracer and to emit

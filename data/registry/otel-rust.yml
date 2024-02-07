@@ -10,3 +10,7 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-rust
 createdAt: 2020-02-04
+package:
+  registry: crates
+  name: opentelemetry
+  version: 0.21.0
