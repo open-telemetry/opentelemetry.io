@@ -23,7 +23,9 @@ following cases:
 [Spring Boot starter]:
   https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using.build-systems.starters
 
-You can use the Spring Boot configuration files (`application.properties`, `application.yml`) to configure the OpenTelemetry Spring Boot starter. You can't do this with the OpenTelemetry Java agent.
+You can use the Spring Boot configuration files (`application.properties`,
+`application.yml`) to configure the OpenTelemetry Spring Boot starter. You can't
+do this with the OpenTelemetry Java agent.
 
 The
 [opentelemetry-java-examples/spring-native](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/spring-native)
