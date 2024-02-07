@@ -32,7 +32,7 @@ jobs:
           PR_ACTION=$(echo $COMMENT | grep -oP '/fix:\K\w+')
           echo "Action is $PR_ACTION"
           # Check if action is either format, submodules or refcache
-          if [[ $PR_ACTION != "format" && $PR_ACTION != "submodules" && $PR_ACTION != "refcache" && PR_ACTION != "all" ]]; then
+          if [[ $PR_ACTION != "format" && $PR_ACTION != "submodules" && $PR_ACTION != "refcache" && $PR_ACTION != "all" ]]; then
             echo "Invalid action name: $PR_ACTION"
             exit 1
           fi
