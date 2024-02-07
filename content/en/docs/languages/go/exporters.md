@@ -173,8 +173,3 @@ func newExporter(ctx context.Context) (metric.Reader, error) {
 
 To learn more on how to use the Prometheus exporter, try the
 [prometheus example](https://github.com/open-telemetry/opentelemetry-go/tree/main/example/prometheus)
-
-## Available packages
-
-You can find a full list of available exporters in the
-[OpenTelemetry registry](/ecosystem/registry/?language=go&component=exporter).

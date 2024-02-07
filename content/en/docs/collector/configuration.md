@@ -8,13 +8,41 @@ cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca l
 
 <!-- markdownlint-disable link-fragments -->
 
-You can configure the Collector to suit your observability needs. Before you
-learn how Collector configuration works, familiarize yourself with the following
-content:
+You can configure the OpenTelemetry Collector to suit your observability needs.
+Before you learn how Collector configuration works, familiarize yourself with
+the following content:
 
-- [Data collection concepts][dcc] in order to understand the repositories
-  applicable to the OpenTelemetry Collector.
+- [Data collection concepts][dcc], to understand the repositories applicable to
+  the OpenTelemetry Collector.
 - [Security guidance](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md)
+
+## Location {#location}
+
+By default, the Collector configuration is located in
+`/etc/<otel-directory>/config.yaml`, where `<otel-directory>` can be `otelcol`,
+`otelcol-contrib`, or another value, depending on the Collector version or the
+Collector distribution you're using.
+
+You can provide one or more configurations using the `--config` option. For
+example:
+
+```shell
+otelcol --config=customconfig.yaml
+```
+
+You can also provide configurations using environment variables, YAML paths, or
+HTTP URIs. For example:
+
+```shell
+otelcol --config=env:MY_CONFIG_IN_AN_ENVVAR` --config=https://server/config.yaml
+otelcol --config="yaml:exporters::debug::verbosity: normal"`
+```
+
+To validate a configuration file, use the `validate` command. For example:
+
+```shell
+otelcol validate --config=customconfig.yaml
+```
 
 ## Configuration structure {#basics}
 
@@ -843,3 +871,23 @@ This creates two certificates:
   with the associated key in `cert-key.pem`.
 
 [dcc]: /docs/concepts/components/#collector
+
+## Override settings
+
+You can override Collector settings using the `--set` option. The settings you
+define with this method are merged into the final configuration after all
+`--config` sources are resolved and merged.
+
+The following examples show how to override settings inside nested sections:
+
+```shell
+# The following example sets the verbosity
+# level of the debug exporter to 'detailed'
+otelcol --set "exporters::debug::verbosity=detailed"
+# The following example overrides gRPC
+# settings for the OTLP receiver
+otelcol --set "receivers::otlp::protocols::grpc={endpoint:localhost:4317, compression: gzip}"
+```
+
+Note tha the `--set` option doesn't support setting a key that contains a dot or
+an equal sign.
