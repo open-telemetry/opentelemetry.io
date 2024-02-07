@@ -19,3 +19,4 @@ createdAt: 2024-02-05
 package:
   registry: packagist
   name: open-telemetry/opentelemetry-auto-openai-php
+  version: 0.0.1

@@ -2,6 +2,7 @@
 title: Agent Configuration
 linkTitle: Configuration
 weight: 10
+aliases: [agent-config]
 # prettier-ignore
 cSpell:ignore: distro healthcheck mkdir myapp Starlette uninstrumented urllib virtualenv
 ---
