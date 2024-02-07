@@ -1,0 +1,24 @@
+# cSpell:ignore otelarrowexporter
+title: OpenTelemetry Protocol with Apache Arrow Exporter
+registryType: exporter
+language: collector
+tags:
+  - apache
+  - arrow
+  - exporter
+  - collector
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/otelarrowexporter
+license: Apache 2.0
+description:
+  Exports telemetry data using [OpenTelemetry Protocol with Apache
+  Arrow](https://github.com/open-telemetry/otel-arrow) components with support
+  for both OpenTelemetry Protocol with Apache Arrow and standard OpenTelemetry
+  Protocol (OTLP) protocol via gRPC.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-02-05
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/otelarrowexporter
+  version: v0.93.0

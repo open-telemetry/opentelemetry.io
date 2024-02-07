@@ -9,7 +9,7 @@ cSpell:ignore: decltype labelkv nostd nullptr
 
 <!-- markdownlint-disable no-duplicate-heading -->
 
-{{% docs/languages/manual-intro %}}
+{{% docs/languages/instrumentation-intro %}}
 
 ## Setup
 
