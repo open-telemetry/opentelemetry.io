@@ -71,6 +71,8 @@ to import a BOM.
 You can use the Gradle’s native BOM support by adding `dependencies`:
 
 ```kotlin
+import org.springframework.boot.gradle.plugin.SpringBootPlugin
+
 plugins {
   id("java")
   id("org.springframework.boot") version "3.2.O"
