@@ -51,11 +51,11 @@ library, follow the instructions here to adapt the process to your own code.
 
 ### Create and launch an HTTP Server
 
-To highlight the difference between instrumenting a _library_ and a standalone
-_app_, split out the dice rolling into a _library file_, which then will be
-imported as a dependency by the _app file_.
+To highlight the difference between instrumenting a library and a standalone
+app, split out the dice rolling into a library file, which then will be
+imported as a dependency by the app file.
 
-Create the _library file_ named `Dice.cs` and add the following code to it:
+Create the library file named `Dice.cs` and add the following code to it:
 
 ```csharp
 /*Dice.cs*/
@@ -92,9 +92,10 @@ namespace otel
 }
 ```
 
-Create the _app file_ `DiceController.cs` and add the following code to it:
+Create the app file `DiceController.cs` and add the following code to it:
 
 ```csharp
+/*DiceController.cs*/
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -167,25 +168,36 @@ You should get a list of 12 numbers in your browser window, for example:
 
 ### Dependencies
 
-Install the [OpenTelemetry API and SDK NuGet packages](https://www.nuget.org/profiles/OpenTelemetry):
+Install the following OpenTelemetry NuGet packages:
+
+[OpenTelemetry.Exporter.Console](https://www.nuget.org/packages/OpenTelemetry.Exporter.Console)
+
+[OpenTelemetry.Extensions.Hosting](https://www.nuget.org/packages/OpenTelemetry.Extensions.Hosting)
+
 
 ```sh
-dotnet add package OpenTelemetry
 dotnet add package OpenTelemetry.Exporter.Console
 dotnet add package OpenTelemetry.Extensions.Hosting
 ```
+
+For ASP.NET Core-based applications, also install the AspNetCore instrumentation package
+
+[OpenTelemetry.Instrumentation.AspNetCore](https://www.nuget.org/packages/OpenTelemetry.Instrumentation.AspNetCore)
+
+```sh
+dotnet add package OpenTelemetry.Instrumentation.AspNetCore
+```
+
 
 ### Initialize the SDK
 
 {{% alert title="Note" color="info" %}} If you’re instrumenting a library,
 **skip this step**. {{% /alert %}}
 
-Before any other module in your application is loaded, you must initialize the SDK. 
-If you fail to initialize the SDK or initialize it too late, no-op
-implementations will be provided to any library that acquires a tracer or meter from the API.
+It is important to configure an instance of the OpenTelemetry SDK as early as possible in your application.
 
-To initialize the SKDs, replace the content of the program.cs file with the
-following code: 
+To initialize the OpenTelemetry SDK for an ASP.NET Core app like in the case of the example app, 
+replace the content of the program.cs file with the following code: 
 
 ```csharp
 using OpenTelemetry.Logs;
@@ -193,7 +205,8 @@ using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
-var serviceName = "dice-server";
+// Ideally, you will want this name to come from a config file, constants file, etc.
+var serviceName = "Dice.*";
 var serviceVersion = "1.0.0";
 
 var builder = WebApplication.CreateBuilder(args);
@@ -225,11 +238,41 @@ app.Run();
 
 ```
 
-For debugging and local development purposes, the following example exports
+If initializing the OpenTelemetry SDK for a console app,
+add the following code at the beginning of your program, during any important startup operations.
+
+```csharp
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
+
+//...
+
+var serviceName = "MyServiceName";
+var serviceVersion = "1.0.0";
+
+var tracerProvider = Sdk.CreateTracerProviderBuilder()
+    .AddSource(serviceName)
+    .ConfigureResource(resource =>
+        resource.AddService(
+          serviceName: serviceName,
+          serviceVersion: serviceVersion))
+    .AddConsoleExporter()
+    .Build();
+
+var meterProvider = Sdk.CreateMeterProviderBuilder()
+    .AddMeter(serviceName)
+    .AddConsoleExporter()
+    .Build();
+
+//...
+
+```
+
+For debugging and local development purposes, the example exports
 telemetry to the console. After you have finished setting up manual
 instrumentation, you need to configure an appropriate exporter to
 [export the app's telemetry data](/docs/languages/net/exporters/) to one or more
-telemetry back ends.
+telemetry backends.
 
 The example also sets up the mandatory SDK default attribute `service.name`,
 which holds the logical name of the service, and the optional, but highly
@@ -245,184 +288,202 @@ dotnet build
 dotnet run
 ```
 
-This basic setup has no effect on your app yet. You need to add code for
-[traces](#traces), [metrics](#metrics), and/or [logs](#logs).
 
 ## Traces
 
-### Initializing tracing
+### Initialize Tracing
 
-There are two main ways to initialize [tracing](/docs/concepts/signals/traces/),
-depending on whether you're using a console app or something that's ASP.NET
-Core-based.
+{{% alert title="Note" color="info" %}} If you’re instrumenting a library,
+**skip this step**. {{% /alert %}}
 
-#### Console app
+To enable [tracing](/docs/concepts/signals/traces/) in your app, you'll need to
+have an initialized
+[`TracerProvider`](/docs/concepts/signals/traces/#tracer-provider) that will let
+you create a [`Tracer`](/docs/concepts/signals/traces/#tracer).
 
-To start tracing in a console app, you need to create a tracer provider.
+If a `TracerProvider` is not created, the OpenTelemetry APIs for tracing will
+use a no-op implementation and fail to generate data.
 
-First, ensure that you have the right packages:
+If you followed the instructions to [initialize the SDK](#initialize-the-sdk)
+above, you have a `TracerProvider` setup for you already. You can continue with
+[acquiring a tracer](#acquiring-a-tracer).
 
-```sh
-dotnet add package OpenTelemetry
-dotnet add package OpenTelemetry.Exporter.Console
-```
-
-And then use code like this at the beginning of your program, during any
-important startup operations.
-
-```csharp
-using OpenTelemetry;
-using OpenTelemetry.Resources;
-using OpenTelemetry.Trace;
-
-// ...
-
-var serviceName = "MyServiceName";
-var serviceVersion = "1.0.0";
-
-using var tracerProvider = Sdk.CreateTracerProviderBuilder()
-    .AddSource(serviceName)
-    .ConfigureResource(resource =>
-        resource.AddService(
-          serviceName: serviceName,
-          serviceVersion: serviceVersion))
-    .AddConsoleExporter()
-    .Build();
-
-// ...
-```
-
-This is also where you can configure instrumentation libraries.
-
-Note that this sample uses the Console Exporter. If you are exporting to another
-endpoint, you'll have to use a different exporter.
-
-#### ASP.NET Core
-
-To start tracing in an ASP.NET Core-based app, use the OpenTelemetry extensions
-for ASP.NET Core setup.
-
-First, ensure that you have the right packages:
-
-```sh
-dotnet add package OpenTelemetry
-dotnet add package OpenTelemetry.Extensions.Hosting
-dotnet add package OpenTelemetry.Exporter.Console
-```
-
-Then you can install the Instrumentation package
-
-```sh
-dotnet add package OpenTelemetry.Instrumentation.AspNetCore --prerelease
-```
-
-Note that the `--prerelease` flag is required for all instrumentation packages
-because they are all dependent on naming conventions for attributes/labels
-(Semantic Conventions) that aren't yet classed as stable.
-
-Next, configure it in your ASP.NET Core startup routine where you have access to
-an `IServiceCollection`.
-
-```csharp
-using OpenTelemetry;
-using OpenTelemetry.Resources;
-using OpenTelemetry.Trace;
-
-// Define some important constants and the activity source.
-// These can come from a config file, constants file, etc.
-var serviceName = "MyCompany.MyProduct.MyService";
-var serviceVersion = "1.0.0";
-
-var builder = WebApplication.CreateBuilder(args);
-
-// Configure important OpenTelemetry settings, the console exporter
-builder.Services.AddOpenTelemetry()
-  .WithTracing(b =>
-  {
-      b
-      .AddSource(serviceName)
-      .ConfigureResource(resource =>
-          resource.AddService(
-            serviceName: serviceName,
-            serviceVersion: serviceVersion))
-      .AddAspNetCoreInstrumentation()
-      .AddConsoleExporter();
-  });
-```
-
-This is also where you can configure instrumentation libraries.
-
-Note that this sample uses the Console Exporter. If you are exporting to another
-endpoint, you'll have to use a different exporter.
 
 ### Setting up an ActivitySource
 
-Once tracing is initialized, you can configure an
+Anywhere in your application where you write manual tracing code should configure an
 [`ActivitySource`](/docs/concepts/signals/traces/#tracer), which will be how you
 trace operations with [`Activity`](/docs/concepts/signals/traces/#spans)
 elements.
 
-Typically, an `ActivitySource` is instantiated once per app/service that is
-being instrumented, so it's a good idea to instantiate it once in a shared
-location. It is also typically named the same as the Service Name.
+For example:
 
 ```csharp
-using System.Diagnostics;
 
 public static class Telemetry
 {
     //...
 
-    // Name it after the service name for your app.
-    // It can come from a config file, constants file, etc.
-    public static readonly ActivitySource MyActivitySource = new(TelemetryConstants.ServiceName);
+    public static readonly ActivitySource MyActivitySource = new("name", "version");
 
     //...
 }
 ```
+The values of name and version should uniquely identify the Instrumentation Scope, such as the package, module or class name. While the name is required, the version is still recommended despite being optional.
 
-You can instantiate several `ActivitySource`s if that suits your scenario,
-although it is generally sufficient to just have one defined per service.
+It’s generally recommended to define `ActivitySource` once per app/service that is been instrumented, but you can instantiate several `ActivitySource`s if that suits your scenario
 
-### Creating Activities
+In the case of the example app, there are two places where the `ActivitySource` will be instantiated with an appropriate Instrumentation Scope:
 
-To create an [`Activity`](/docs/concepts/signals/traces/#spans), give it a name
-and create it from your
-[`ActivitySource`](/docs/concepts/signals/traces/#tracer).
+First, in the application file `DiceController.cs`:
 
 ```csharp
-using var myActivity = MyActivitySource.StartActivity("SayHello");
+using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
+using System.Net;
 
-// do work that 'myActivity' will now track
+namespace otel
+{
+    public class DiceController : ControllerBase
+    {
+        private ILogger<DiceController> logger;
+        
+        public static readonly ActivitySource MyActivitySource = new("Dice.Server", "1.0.0");
+
+        public DiceController(ILogger<DiceController> logger)
+        {
+            this.logger = logger;
+        }
+
+        //...
+    }
+}
+
 ```
 
-### Creating nested Activities
-
-If you have a distinct sub-operation you'd like to track as a part of another
-one, you can create activities to represent the relationship.
+And second, in the library file `Dice.cs`:
 
 ```csharp
-public static void ParentOperation()
+
+using System.Diagnostics;
+
+namespace otel
 {
-    using var parentActivity = MyActivitySource.StartActivity("ParentActivity");
+    public class Dice
+    {
+        public static readonly ActivitySource MyActivitySource = new("Dice.Lib", "1.0.0");
+        
+        private int min;
+        private int max;
 
-    // Do some work tracked by parentActivity
+        public Dice(int min, int max)
+        {
+            this.min = min;
+            this.max = max;
+        }
 
-    ChildOperation();
-
-    // Finish up work tracked by parentActivity again
+        //...
+    }
 }
 
-public static void ChildOperation()
-{
-    using var childActivity = MyActivitySource.StartActivity("ChildActivity");
-
-    // Track work in ChildOperation with childActivity
-}
 ```
 
-When you view spans in a trace visualization tool, `ChildActivity` will be
-tracked as a nested operation under `ParentActivity`.
+### Create Activities
+
+Now that you have [activitySources](/docs/concepts/signals/traces/#tracer) initialized, you can create [activities](/docs/concepts/signals/traces/#spans).
+
+The code below illustrates how to create an activity.
+
+```csharp
+public List<int> rollTheDice(int rolls)
+{
+    var activity = MyActivitySource.StartActivity("rollTheDice");
+    List<int> results = new List<int>();
+
+    for (int i = 0; i < rolls; i++)
+    {
+        results.Add(rollOnce());
+    }
+
+    activity?.Stop();
+    return results;
+}
+
+```
+Note, that it’s required to `Stop()` the activity, otherwise it will not be exported.
+
+If you followed the instructions using the [example app](#example-app) up to
+this point, you can copy the code above in your library file `Dice.cs`. You
+should now be able to see activities/spans emitted from your app.
+
+Start your app as follows, and then send it requests by visiting http://localhost:8080/rolldice?rolls=12 with your browser or curl.
+
+```sh
+dotnet run
+```
+
+After a while, you should see the spans printed in the console by the
+`ConsoleExporter`, something like this:
+
+```json
+service.name: Dice.*
+service.version: 1.0.0
+service.instance.id: 17a824ba-9734-413d-951e-c44414b6b93b
+telemetry.sdk.name: opentelemetry
+telemetry.sdk.language: dotnet
+telemetry.sdk.version: 1.7.0
+
+Resource associated with Metric:
+    service.name: Dice.*
+    service.version: 1.0.0
+    service.instance.id: 17a824ba-9734-413d-951e-c44414b6b93b
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.7.0
+Activity.TraceId:            b322c0ce4bf1941cd6a476a454d78434
+Activity.SpanId:             7bbfc1522b5595bb
+Activity.TraceFlags:         Recorded
+Activity.ParentSpanId:       c761f5e5ca3886bf
+Activity.ActivitySourceName: Dice.Lib
+Activity.DisplayName:        rollTheDice
+Activity.Kind:               Internal
+Activity.StartTime:          2024-02-08T08:10:47.5310248Z
+Activity.Duration:           00:00:00.0002703
+Resource associated with Activity:
+    service.name: Dice.*
+    service.version: 1.0.0
+    service.instance.id: 17a824ba-9734-413d-951e-c44414b6b93b
+    telemetry.sdk.name: opentelemetry
+    telemetry.sdk.language: dotnet
+    telemetry.sdk.version: 1.7.0
+
+```
+
+### Create nested Activities
+Nested [spans](/docs/concepts/signals/traces/#spans) let you track work that's
+nested in nature. For example, the `rollOnce()` function below represents a
+nested operation. The following sample creates a nested span that tracks
+`rollOnce()`:
+
+```csharp
+private int rollOnce()
+{
+    var childActivity = MyActivitySource.StartActivity("rollOnce");
+    
+    try
+    {
+        return Random.Shared.Next(min, max + 1);
+    }
+    finally
+    {
+        childActivity?.Stop();
+    }
+}
+
+```
+
+When you view the spans in a trace visualization tool, `rollOnce` childActivity will be
+tracked as a nested operation under `rollTheDice` activity.
 
 ### Nested Activities in the same scope
 
