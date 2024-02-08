@@ -30,6 +30,11 @@ OpenTelemetry Java consists of the following repositories:
   Provides helpful libraries and standalone OpenTelemetry-based utilities that
   don't fit the express scope of the OpenTelemetry Java or Java Instrumentation
   projects. For example, JMX metric gathering.
+- [semantic-conventions-java](https://github.com/open-telemetry/semantic-conventions-java):
+  Auto-generated code for the [OpenTelemetry Semantic Conventions](https://github.com/open-telemetry/semantic-conventions).
+  For example, `ResourceAttributes.SERVICE_NAME`.
+- [opentelemetry-proto-java](https://github.com/open-telemetry/opentelemetry-proto-java):
+  Auto-generated Java bindings for the OpenTelemetry Protocol (OTLP). 
 
 ### Components
 
