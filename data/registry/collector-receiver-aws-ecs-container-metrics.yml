@@ -7,11 +7,7 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description:
-  The AWS ECS Container Metrics Receiver for the OpenTelemetry Collector reads
-  task metadata and docker stats from Amazon ECS Task Metadata Endpoint, and
-  generates resource usage metrics (such as CPU, memory, network, and disk) from
-  them.
+description: The AWS ECS Container Metrics Receiver for the OpenTelemetry Collector reads task metadata and docker stats from Amazon ECS Task Metadata Endpoint, and generates resource usage metrics (such as CPU, memory, network, and disk) from them.
 authors:
   - name: Amazon Web Services
 urls:
@@ -20,4 +16,4 @@ createdAt: 2021-02-26
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/awsecscontainermetricsreceiver
-  version: v0.93.0
+  version: v0.94.0
