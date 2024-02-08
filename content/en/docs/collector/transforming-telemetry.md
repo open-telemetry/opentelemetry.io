@@ -174,7 +174,7 @@ processors:
 **Processor**:
 [transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor)
 
-Use the span processor to set a span's status. The following settings are
+Use the transform processor to set a span's status. The following settings are
 available:
 
 - `code`: represents span status, one of:
