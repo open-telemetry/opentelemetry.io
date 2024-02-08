@@ -174,17 +174,8 @@ processors:
 **Processor**:
 [transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor)
 
-Use the transform processor to set a span's status. The following settings are
-available:
-
-- `code`: represents span status, one of:
-  - `Ok`
-  - `Unset`
-  - `Error`
-- `description`: status-change description, only allowed when `code` is `Error`
-
-The following example sets the span status to `Ok` when the `http.status_code`
-attribute is 400:
+Use the transform processor to set a span's status. The following example sets
+the span status to `Ok` when the `http.status_code` attribute is 400:
 
 ```yaml
 # The description field allows to set a human-readable message for errors.
@@ -193,7 +184,8 @@ transform:
   trace_statements:
     - context: span
       statements:
-        - set(status.code, STATUS_CODE_OK) where attributes["http.request.status_code"] == 400
+        - set(status.code, STATUS_CODE_OK) where
+          attributes["http.request.status_code"] == 400
 ```
 
 You can also use the transform processor to modify the span name based on its
