@@ -261,5 +261,5 @@ COPY opentelemetry_module.conf /etc/nginx/conf.d
 [v1.0.1 release of the otel-webserver-module]:
   https://github.com/open-telemetry/opentelemetry-cpp-contrib/releases/tag/webserver%2Fv1.0.1
 [java]:
-  /docs/languages/java/automatic/agent-config/#capturing-http-request-and-response-headers
+  /docs/languages/java/automatic/configuration/#capturing-http-request-and-response-headers
 [python]: /docs/languages/python/automatic/

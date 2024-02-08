@@ -71,6 +71,8 @@ to import a BOM.
 You can use the Gradle’s native BOM support by adding `dependencies`:
 
 ```kotlin
+import org.springframework.boot.gradle.plugin.SpringBootPlugin
+
 plugins {
   id("java")
   id("org.springframework.boot") version "3.2.O"
@@ -231,7 +233,7 @@ with the OpenTelemetry
 ## Automatic instrumentation
 
 Autoconfigures OpenTelemetry instrumentation for
-[spring-web](#spring-web-autoconfiguration) ,
+[spring-web](#spring-web-autoconfiguration),
 [spring-webmvc](#spring-web-mvc-autoconfiguration), and
 [spring-webflux](#spring-webflux-autoconfiguration). Leverages Spring Aspect
 Oriented Programming, dependency injection, and bean post-processing to trace
@@ -476,7 +478,7 @@ autoconfiguration features with an annotation or the Zipkin starter.
 
 ### Spring support
 
-Autoconfiguration is natively supported by Springboot applications. To enable
+Autoconfiguration is natively supported by Spring Boot applications. To enable
 these features in "vanilla" use `@EnableOpenTelemetry` to complete a component
 scan of this package.
 

@@ -10,7 +10,7 @@ Resources should be assigned to a tracer provider at its initialization, and are
 created much like attributes:
 
 ```go
-resources := resource.NewWithAttributes(
+res := resource.NewWithAttributes(
     semconv.SchemaURL,
     semconv.ServiceNameKey.String("myService"),
     semconv.ServiceVersionKey.String("1.0.0"),
@@ -19,7 +19,7 @@ resources := resource.NewWithAttributes(
 
 provider := sdktrace.NewTracerProvider(
     ...
-    sdktrace.WithResource(resources),
+    sdktrace.WithResource(res),
 )
 ```
 
@@ -36,13 +36,17 @@ hosting that operating system instance, or any number of other resource
 attributes.
 
 ```go
-resources := resource.New(context.Background(),
-    resource.WithFromEnv(), // pull attributes from OTEL_RESOURCE_ATTRIBUTES and OTEL_SERVICE_NAME environment variables
-    resource.WithProcess(), // This option configures a set of Detectors that discover process information
-    resource.WithOS(), // This option configures a set of Detectors that discover OS information
-    resource.WithContainer(), // This option configures a set of Detectors that discover container information
-    resource.WithHost(), // This option configures a set of Detectors that discover host information
-    resource.WithDetectors(thirdparty.Detector{}), // Bring your own external Detector implementation
-    resource.WithAttributes(attribute.String("foo", "bar")), // Or specify resource attributes directly
+res, err := resource.New(context.Background(),
+	resource.WithFromEnv(),      // Pull attributes from OTEL_RESOURCE_ATTRIBUTES and OTEL_SERVICE_NAME environment variables.
+	resource.WithTelemetrySDK(), // Provide information about the OpenTelemetry SDK used.
+	resource.WithProcess(),      // Discover and provide process information.
+	resource.WithOS(),           // Discover and provide OS information.
+	resource.WithContainer(),    // Discover and provide container information.
+	resource.WithHost(),         // Discover and provide information.
+	resource.WithAttributes(attribute.String("foo", "bar")), // Add custom resource attributes.
+	// resource.WithDetectors(thirdparty.Detector{}), // Bring your own external Detector implementation.
 )
+if err != nil {
+	log.Println(err) // Log issues during resource creation. Note that resource.New still returns a resource.
+}
 ```
