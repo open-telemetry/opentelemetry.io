@@ -14,17 +14,15 @@ Feedback that is shared and collected in these sessions will be routed back to
 the relevant project maintainers to help drive prioritization of improvements
 and changes to the project.
 
-## New for 2023
+## About
 
-- Sessions are now available for all regions!
-- You can now find summaries of past discussions every month! Search the blog
-  for "End-User Discussions".
+- Sessions are available for all regions!
+- Search the blog for "End-User Discussions" to find summaries of past
+  discussions.
 - A project maintainer and/or a Governance Committee member will be in
   attendance at each session to provide additional context, insight, and plans
   to user questions and feedback.
-- The Chatham House Rule will no longer be applied, and **sessions will be
-  recorded**. This will help make the feedback more discoverable by the
-  community.
+- Sessions are recorded.
 
 ## Upcoming sessions
 
@@ -33,19 +31,19 @@ Here are upcoming sessions, or you can view them on the
 
 - **EMEA (Europe, Middle East, and Africa)**: every third Tuesday of the month
   at 11AM GMT ([Zoom link](https://us06web.zoom.us/j/85691064809?pwd=c0VCejh))
-  - August 15
-  - September 19
-  - October 17
+  - February 20
+  - March 19
+  - April 16
 - **APAC (Asia Pacific)**: every third Wednesday of the month at 11AM India ST
   (GMT +5.5), [register](https://lu.ma/1w129wgu) to get the Zoom link
-  - August 16
-  - September 20
-  - October 18
-- **AMER (Americas)**: every third Thursday of the month at 9AM PST (GMT -8),
+  - February 21
+  - March 20
+  - April 17
+- **AMER (Americas)**: every third Thursday of the month at 9AM PT (GMT -8),
   ([Zoom link](https://us06web.zoom.us/j/87037874951?pwd=WGo3eUZpeWFZTlhJQXhJeXZhQmwvUT09))
-  - August 17
-  - September 21
-  - October 19
+  - February 15
+  - March 21
+  - April 18
 
 Past topics/questions have included:
 
