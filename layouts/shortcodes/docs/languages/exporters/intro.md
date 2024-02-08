@@ -1,9 +1,8 @@
-To ensure that your telemetry is exporting correctly, send
-it to the [OpenTelemetry Collector](/docs/collector/). It is also considered a
-best practice to use the Collector in production. To visualize your
-telemetry, export it to a backend such as
-[Jaeger](https://jaegertracing.io/), [Zipkin](https://zipkin.io/),
-[Prometheus](https://prometheus.io/), or a
+To ensure that your telemetry is exporting correctly, send it to the
+[OpenTelemetry Collector](/docs/collector/). It is also considered a best
+practice to use the Collector in production. To visualize your telemetry, export
+it to a backend such as [Jaeger](https://jaegertracing.io/),
+[Zipkin](https://zipkin.io/), [Prometheus](https://prometheus.io/), or a
 [vendor-specific](/ecosystem/vendors/) backend.
 
 {{ $lang := .Get 0 | default "" -}}
