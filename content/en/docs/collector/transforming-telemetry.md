@@ -188,13 +188,12 @@ attribute is 400:
 
 ```yaml
 # The description field allows to set a human-readable message for errors.
-span/set_status_ok:
-  include:
-    attributes:
-      - key: http.status_code
-        value: 400
-  status:
-    code: Ok
+transform:
+  error_mode: ignore
+  trace_statements:
+    - context: span
+      statements:
+        - set(status.code, STATUS_CODE_OK) where attributes["http.request.status_code"] == 400
 ```
 
 You can also use the span processor to modify the span name based on its
