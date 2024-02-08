@@ -198,7 +198,7 @@ transform:
 
 You can also use the transform processor to modify the span name based on its
 attributes or extract span attributes from the span name. For examples, see
-`span processor` test data
+`transform processor` test data
 [config.yaml](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/transformprocessor/testdata/config.yaml)
 file.
 
