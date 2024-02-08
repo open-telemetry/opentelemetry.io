@@ -172,7 +172,7 @@ processors:
 ## Setting a span status
 
 **Processor**:
-[span processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/spanprocessor)
+[transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor)
 
 Use the span processor to set a span's status. The following settings are
 available:
