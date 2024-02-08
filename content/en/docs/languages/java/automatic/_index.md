@@ -78,7 +78,8 @@ java -javaagent:path/to/opentelemetry-javaagent.jar \
      -jar myapp.jar
 ```
 
-To see the full range of configuration options, see [Agent Configuration][].
+To see the full range of configuration options, see
+[Agent Configuration](configuration).
 
 ## Supported libraries, frameworks, application services, and JVMs
 
@@ -97,7 +98,6 @@ After you have automatic instrumentation configured for your app or service, you
 might want to [annotate](annotations) selected methods or add
 [manual instrumentation](../instrumentation) to collect custom telemetry data.
 
-[agent configuration]: agent-config
 [opentelemetry-javaagent.jar]:
   https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
 [releases]:
