@@ -7,7 +7,9 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: Kafka metrics receiver collects Kafka metrics (brokers, topics, partitions, consumer groups) from Kafka server,
+description:
+  Kafka metrics receiver collects Kafka metrics (brokers, topics, partitions,
+  consumer groups) from Kafka server,
 authors:
   - name: OpenTelemetry Authors
 urls:
