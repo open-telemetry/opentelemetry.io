@@ -17,11 +17,12 @@ and changes to the project.
 ## About
 
 - Sessions are available for all regions!
-- Search the blog for "End-User Discussions" to find summaries of past discussions.
+- Search the blog for "End-User Discussions" to find summaries of past
+  discussions.
 - A project maintainer and/or a Governance Committee member will be in
   attendance at each session to provide additional context, insight, and plans
   to user questions and feedback.
-- Sessions are recorded. 
+- Sessions are recorded.
 
 ## Upcoming sessions
 
