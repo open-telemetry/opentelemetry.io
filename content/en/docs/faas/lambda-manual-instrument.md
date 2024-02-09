@@ -18,7 +18,7 @@ first.
 
 ### Instrument the Lambda with OTel
 
-Review the [language instrumentation guidance](/docs/instrumentation/) on how to
+Review the [language instrumentation guidance](/docs/languages/) on how to
 manually instrument your application.
 
 ### Publish your Lambda

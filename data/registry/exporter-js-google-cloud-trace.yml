@@ -1,12 +1,17 @@
 title: Google Cloud Trace Exporter
 registryType: exporter
-isThirdParty: true
 language: js
 tags:
   - Node.js
   - exporter
-repo: https://github.com/GoogleCloudPlatform/opentelemetry-operations-js/tree/main/packages/opentelemetry-cloud-trace-exporter
 license: Apache 2.0
 description: The OpenTelemetry Google Cloud Trace Exporter for Node.js.
-authors: Google Authors
-otVersion: latest
+authors:
+  - name: Google Authors
+urls:
+  repo: https://github.com/GoogleCloudPlatform/opentelemetry-operations-js/tree/main/packages/opentelemetry-cloud-trace-exporter
+createdAt: 2020-04-01
+package:
+  registry: npm
+  name: '@google-cloud/opentelemetry-cloud-trace-exporter'
+  version: 2.1.0

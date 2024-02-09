@@ -73,7 +73,7 @@ For more information, see
 
 ### Exporters
 
-{{% docs/instrumentation/exporters-intro all %}}
+{{% docs/languages/exporters/intro %}}
 
 ### Automatic Instrumentation
 

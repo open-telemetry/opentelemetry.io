@@ -136,16 +136,11 @@ considerations to help you decide how to minimize dependency hell:
 ### Getting a tracer
 
 All application configuration is hidden from your library through the Tracer
-API. Libraries should obtain tracer from
-[global `TracerProvider`](/docs/specs/otel/trace/api/#get-a-tracer) by default.
-
-```java
-private static final Tracer tracer = GlobalOpenTelemetry.getTracer("demo-db-client", "0.1.0-beta1");
-```
-
-It's useful for libraries to have an API that allows applications to pass
-instances of `TracerProvider` explicitly which enables better dependency
-injection and simplifies testing.
+API. Libraries may allow applications to pass instances of `TracerProvider` to
+facilitate dependency injection and ease of testing, or obtain it from
+[global `TracerProvider`](/docs/specs/otel/trace/api/#get-a-tracer).
+OpenTelemetry language implementations may have different preferences for
+passing instances or accessing the global based on what's idiomatic.
 
 When obtaining the tracer, provide your library (or tracing plugin) name and
 version - they show up on the telemetry and help users process and filter
@@ -167,7 +162,15 @@ and outcome of library calls. Which calls to trace:
 **Instrumentation example:**
 
 ```java
-private static final Tracer tracer = GlobalOpenTelemetry.getTracer("demo-db-client", "0.1.0-beta1");
+private static Tracer tracer =  getTracer(TracerProvider.noop());
+
+public static void setTracerProvider(TracerProvider tracerProvider) {
+    tracer = getTracer(tracerProvider);
+}
+
+private static Tracer getTracer(TracerProvider tracerProvider) {
+    return tracerProvider.getTracer("demo-db-client", "0.1.0-beta1");
+}
 
 private Response selectWithTracing(Query query) {
     // check out conventions for guidance on span names and attributes
@@ -289,12 +292,12 @@ try (Scope unused = span.makeCurrent()) {
 ```
 
 Here're the full
-[examples of context extraction in Java](/docs/instrumentation/java/manual/#context-propagation),
+[examples of context extraction in Java](/docs/languages/java/instrumentation/#context-propagation),
 check out OpenTelemetry documentation in your language.
 
 In the case of a messaging system, you may receive more than one message at
 once. Received messages become
-[_links_](/docs/instrumentation/java/manual/#create-spans-with-links) on the
+[_links_](/docs/languages/java/instrumentation/#create-spans-with-links) on the
 span you create. Refer to
 [messaging conventions](/docs/specs/semconv/messaging/messaging-spans/) for
 details (WARNING: messaging conventions are
@@ -329,7 +332,7 @@ try (Scope unused = span.makeCurrent()) {
 ```
 
 Here's the full
-[example of context injection in Java](/docs/instrumentation/java/manual/#context-propagation).
+[example of context injection in Java](/docs/languages/java/instrumentation/#context-propagation).
 
 There might be some exceptions:
 

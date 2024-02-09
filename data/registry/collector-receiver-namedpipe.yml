@@ -1,0 +1,21 @@
+# cSpell:ignore namedpipereceiver namedpipe
+title: Named Pipe Receiver
+registryType: receiver
+language: collector
+tags:
+  - namedpipe
+  - receiver
+  - collector
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/namedpipereceiver
+license: Apache 2.0
+description:
+  This receiver supports opening a Unix Named Pipe (aka FIFO), and reading logs
+  from it.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-01-19
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/namedpipereceiver
+  version: v0.94.0

@@ -29,7 +29,7 @@ first.
 
 The Lambda layer supports the Java 8, 11, and 17 (Corretto) Lambda runtimes. For
 more information about supported Java versions, see the
-[OpenTelemetry Java documentation](/docs/instrumentation/java/).
+[OpenTelemetry Java documentation](/docs/languages/java/).
 
 **Note:** The Java Auto-instrumentation agent is in the Lambda layer - Automatic
 instrumentation has a notable impact on startup time on AWS Lambda and you will
@@ -56,7 +56,7 @@ variables:
   instrumentations, see [Suppressing specific agent instrumentation][1].
 
   [1]:
-    /docs/instrumentation/java/automatic/agent-config/#suppressing-specific-agent-instrumentation
+    /docs/languages/java/automatic/configuration/#suppressing-specific-agent-instrumentation
 
 For example, to only enable auto-instrumentation for Lambda and the AWS SDK, you
 would set the following environment variables:

@@ -3,7 +3,7 @@ title: Building a receiver
 weight: 20
 aliases: [/docs/collector/trace-receiver/]
 # prettier-ignore
-cSpell:ignore: amzn atmxph backendsystem batchprocessor chicago comcast crand debugexporter devs Errorf gogl Intn ispnetwork loggingexporter loglevel mapstructure mcrsft otelcontribcol otlpexporter otlpreceiver pcommon pdata protogen ptrace Rcvr rquedas sanfrancisco serialnumber slrs stateid struct structs Subchannel tailtracer telemetrygen uber wndws zapgrpc
+cSpell:ignore: backendsystem crand debugexporter loggingexporter mapstructure pcommon pdata protogen ptrace rcvr struct structs tailtracer telemetrygen uber
 ---
 
 <!-- markdownlint-disable heading-increment no-duplicate-heading -->
@@ -57,7 +57,7 @@ copy the `builder-config.yaml` described on
 and run the builder. As an outcome you should now have a folder structure like
 this:
 
-```console
+```text
 .
 ├── builder-config.yaml
 ├── ocb
@@ -108,6 +108,7 @@ receivers:
   otlp:
     protocols:
       grpc:
+        endpoint: 0.0.0.0:4317
 
 processors:
   batch:
@@ -1035,6 +1036,7 @@ receivers:
   otlp:
     protocols:
       grpc:
+        endpoint: 0.0.0.0:4317
   tailtracer: # this line represents the ID of your receiver
     interval: 1m
     number_of_traces: 1

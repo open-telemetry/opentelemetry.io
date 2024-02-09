@@ -1,14 +1,19 @@
 title: InfluxDB Exporter for OpenTelemetry .NET
 registryType: exporter
-isThirdParty: false
 language: dotnet
 tags:
   - influxdb
   - exporter
   - dotnet
-repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Exporter.InfluxDB
 license: Apache 2.0
 description:
   The InfluxDB exporter converts OpenTelemetry metrics into the InfluxDB model
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Exporter.InfluxDB
+createdAt: 2022-11-07
+package:
+  registry: nuget
+  name: OpenTelemetry.Exporter.InfluxDB
+  version: 1.0.0-alpha.3

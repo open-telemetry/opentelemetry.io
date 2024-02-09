@@ -1,16 +1,21 @@
-# cSpell:ignore honeycombmarker
+# cSpell:ignore honeycombmarker honeycombmarkerexporter
 title: Honeycomb Marker Exporter
 registryType: exporter
-isThirdParty: false
 language: collector
 tags:
   - honeycombmarker
   - exporter
   - collector
-repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/honeycombmarkerexporter
 license: Apache 2.0
 description:
   This exporter allows creating markers, via the Honeycomb Markers API, based on
   the look of incoming telemetry.
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/honeycombmarkerexporter
+createdAt: 2023-10-17
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/honeycombmarkerexporter
+  version: v0.94.0

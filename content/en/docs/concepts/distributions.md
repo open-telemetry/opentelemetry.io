@@ -22,8 +22,8 @@ OpenTelemetry component. A distribution is a wrapper around an upstream
 OpenTelemetry repository with some customizations. Customizations in a
 distribution may include:
 
-- Scripts to ease use or customize use for a specific back-end or vendor
-- Changes to default settings required for a back-end, vendor, or end-user
+- Scripts to ease use or customize use for a specific backend or vendor
+- Changes to default settings required for a backend, vendor, or end-user
 - Additional packaging options that may be vendor or end-user specific
 - Test, performance, and security coverage beyond what OpenTelemetry provides
 - Additional capabilities beyond what OpenTelemetry provides
@@ -33,7 +33,7 @@ Distributions would broadly fall into the following categories:
 
 - **"Pure":** These distributions provide the same functionality as upstream and
   are 100% compatible. Customizations would typically be to ease of use or
-  packaging. These customizations may be back-end, vendor, or end-user specific.
+  packaging. These customizations may be backend, vendor, or end-user specific.
 - **"Plus":** These distributions provide the same functionality as upstream
   plus more. Customizations beyond those found in pure distributions would be
   the inclusion of additional components. Examples of this would include
@@ -48,10 +48,10 @@ Distributions would broadly fall into the following categories:
 ## Who would create a distribution?
 
 Anyone could create a distribution. Today, several
-[vendors](/ecosystem/vendors/) offer distributions. In addition, end-users may
-consider creating a distribution if they wish to use components in the
-[Registry](/ecosystem/registry/) that are not upstreamed to the OpenTelemetry
-project.
+[vendors](/ecosystem/vendors/) offer [distributions](/ecosystem/distributions/).
+In addition, end-users can consider creating a distribution if they wish to use
+components in the [Registry](/ecosystem/registry/) that are not upstreamed to
+the OpenTelemetry project.
 
 ## Contribution or distribution?
 
@@ -84,7 +84,7 @@ might be a good starting point.
 There are language specific extensibility mechanisms to customize the
 instrumentation libraries:
 
-- [Java agent](../../instrumentation/java/automatic/extensions)
+- [Java agent](../../languages/java/automatic/extensions)
 
 ## What you should know about distributions
 

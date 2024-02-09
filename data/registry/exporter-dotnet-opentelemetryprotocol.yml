@@ -1,17 +1,22 @@
 title: OTLP Exporter
 registryType: exporter
-isThirdParty: false
 language: dotnet
 tags:
   - .NET
   - C#
   - dotnet
   - exporter
-repo: https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/src/OpenTelemetry.Exporter.OpenTelemetryProtocol
 license: Apache 2.0
 description:
   This library allows exporting telemetry data in the OpenTelemetry Protocol
   (OTLP) format to the OpenTelemetry Collector and OTLP-compliant
   backends/receivers.
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/src/OpenTelemetry.Exporter.OpenTelemetryProtocol
+createdAt: 2020-02-05
+package:
+  registry: nuget
+  name: OpenTelemetry.Exporter.OpenTelemetryProtocol
+  version: 1.7.0

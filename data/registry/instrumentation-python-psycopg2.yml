@@ -1,13 +1,14 @@
 # cSpell:ignore psycopg
 title: Psycopg Instrumentation
 registryType: instrumentation
-isThirdParty: false
 language: python
 tags:
   - python
   - instrumentation
-repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-psycopg2
 license: Apache 2.0
 description: This library provides tracing for PostgreSQL via psycopg2.
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-psycopg2
+createdAt: 2020-05-11

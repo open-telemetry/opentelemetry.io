@@ -1,15 +1,20 @@
 title: OpenTelemetry Resource Detector for Container
 registryType: resource-detector
-isThirdParty: false
 language: js
 tags:
   - container
   - resource-detector
   - js
-repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node/opentelemetry-resource-detector-container
 license: Apache 2.0
 description:
   Resource detector for container ID. Compatible with OpenTelemetry JS API and
   SDK 1.0+.
-authors: OpenTelemetry Authors
-otVersion: latest
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node/opentelemetry-resource-detector-container
+createdAt: 2022-12-07
+package:
+  registry: npm
+  name: '@opentelemetry/resource-detector-container'
+  version: 0.3.6

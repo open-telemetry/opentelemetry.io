@@ -46,7 +46,7 @@ version as well. Highlights include:
 - A new receiver for CloudFlare logs has been added.
 - Many bugfixes and enhancements.
 
-##### [Go](/docs/instrumentation/go/)
+##### [Go](/docs/languages/go/)
 
 [Version v1.15.0-rc.2](https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.15.0-rc.2)
 has been released. Version 1.15 will ship with Metrics v1 support, and its
@@ -57,7 +57,7 @@ include:
 - Exemplar support added for metric data.
 - Several optimizations, bugfixes, and removals/deprecations.
 
-##### [Java](/docs/instrumentation/java/)
+##### [Java](/docs/languages/java/)
 
 [Version 1.24.0](https://github.com/open-telemetry/opentelemetry-java/releases/tag/v1.24.0)
 of the Java SDK has been released, featuring several optimizations and bugfixes
@@ -74,7 +74,7 @@ and fixes:
 - Improvements to the RxJava2, Cassandra, Spring Boot, and other instrumentation
   packages.
 
-##### [Python](/docs/instrumentation/python/)
+##### [Python](/docs/languages/python/)
 
 [Version 1.17](https://github.com/open-telemetry/opentelemetry-python/releases/tag/v1.17.0)
 has been released with a handful of fixes and improvements, most notably support

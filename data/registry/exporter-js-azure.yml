@@ -1,14 +1,19 @@
 title: Azure Monitor Exporter
 registryType: exporter
-isThirdParty: true
 language: js
 tags:
   - Node.js
   - exporter
   - Azure Monitor
   - Application Insights
-repo: https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/monitor/monitor-opentelemetry-exporter
-license: MIT License
+license: MIT
 description: The OpenTelemetry Azure Monitor Exporter for JavaScript (Node.js)
-authors: Microsoft Authors
-otVersion: latest
+authors:
+  - name: Microsoft Authors
+package:
+  name: '@azure/monitor-opentelemetry-exporter'
+  registry: npm
+  version: 1.0.0-beta.19
+urls:
+  repo: https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/monitor/monitor-opentelemetry-exporter
+createdAt: 2021-11-01

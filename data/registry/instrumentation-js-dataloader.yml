@@ -1,14 +1,18 @@
 title: OpenTelemetry instrumentation for dataloader
 registryType: instrumentation
-isThirdParty: false
 language: js
 tags:
   - dataloader
   - instrumentation
   - js
-repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-dataloader
 license: Apache 2.0
 description:
   This module provides an instrumentation library for the injection of trace
   context to dataloader
-otVersion: latest
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-dataloader
+createdAt: 2022-10-27
+package:
+  registry: npm
+  name: '@opentelemetry/instrumentation-dataloader'
+  version: 0.6.0

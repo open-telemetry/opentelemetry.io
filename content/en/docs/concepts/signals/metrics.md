@@ -36,7 +36,7 @@ Providers.
 ## Metric Exporter
 
 Metric Exporters send metric data to a consumer. This consumer can be standard
-output for debugging and development-time, the OpenTelemetry Collector, or any
+output for debugging during development, the OpenTelemetry Collector, or any
 open source or vendor backend of your choice.
 
 ## Metric Instruments
