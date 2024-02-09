@@ -14,6 +14,11 @@
   components: [Collector, Python]
   reference: ''
   contact: ''
+- name: Dropbox DocSend
+  url: https://www.docsend.com/
+  components: [Ruby]
+  reference: ''
+  contact: ''
 - name: eBay
   url: https://www.ebay.com
   components: [Collector, Java, JavaScript, Go]
@@ -32,6 +37,22 @@
   reference: /blog/2023/end-user-q-and-a-03/
   referenceTitle: blog post
   contact: ''
+- name: Fulcrum
+  url: https://www.fulcrumapp.com/
+  components: [Ruby]
+  reference: ''
+  contact: ''
+- name: GitHub
+  url: https://github.com
+  components: [Ruby]
+  reference: 'https://github.blog/2021-05-26-why-and-how-github-is-adopting-opentelemetry/'
+  referenceTitle: blog post
+  contact: ''
+- name: Heroku
+  url: https://heroku.com
+  components: [Ruby]
+  reference: ''
+  contact: ''
 - name: OrderMyGear
   url: https://www.ordermygear.com/
   components: []
@@ -40,6 +61,11 @@
 - name: PITS Globale Datenrettungsdienste
   url: https://www.pitsdatenrettung.de/
   components: [Python]
+  reference: ''
+  contact: ''
+- name: Puppet
+  url: https://puppet.com/
+  components: [Ruby]
   reference: ''
   contact: ''
 - name: Shopify
@@ -53,6 +79,11 @@
   reference: https://www.infoq.com/presentations/opentelemetry-observability/
   referenceTitle: presentation
   contact: https://github.com/danielgblanco/
+- name: TableCheck
+  url: https://www.tablecheck.com/
+  components: [Ruby]
+  reference: ''
+  contact: ''
 - name: Transit
   url: https://transitapp.com/
   components: []
@@ -72,36 +103,5 @@
 - name: Zocdoc
   url: https://www.zocdoc.com/
   components: []
-  reference: ''
-  contact: ''
-- name: Heroku
-  url: https://heroku.com
-  components: [Ruby]
-  reference: ''
-  contact: ''
-- name: GitHub
-  url: https://github.com
-  components: [Ruby]
-  reference: 'https://github.blog/2021-05-26-why-and-how-github-is-adopting-opentelemetry/'
-  referenceTitle: blog post
-  contact: ''
-- name: Fulcrum
-  url: https://www.fulcrumapp.com/
-  components: [Ruby]
-  reference: ''
-  contact: ''
-- name: Puppet
-  url: https://puppet.com/
-  components: [Ruby]
-  reference: ''
-  contact: ''
-- name: TableCheck
-  url: https://www.tablecheck.com/
-  components: [Ruby]
-  reference: ''
-  contact: ''
-- name: Dropbox DocSend
-  url: https://www.docsend.com/
-  components: [Ruby]
   reference: ''
   contact: ''
