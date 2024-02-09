@@ -71,7 +71,6 @@ To begin, install Oat++ locally using the
    ```bash
    cmake ..
    make
-
    ```
 
 5. Install oatpp.
@@ -361,7 +360,6 @@ int main() {
   CleanupTracer();
   return 0;
 }
-
 ```
 
 Build your project again.
