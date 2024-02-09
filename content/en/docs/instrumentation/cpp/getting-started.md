@@ -69,12 +69,16 @@ To begin, install  Oat++ locally using the [source code](https://github.com/oatp
 
 5. Install oatpp.
 
-   This command will install the built oatpp library and headers on your system, making it accessible for development in your project. 
+  This command will install the built oatpp library and headers on your system, making it accessible for development in your project. 
 
    ```bash
    sudo make install
    ```
 
+  To uninstall the built oatpp library and headers from your system.
+  ```bash
+  sudo make uninstall
+  ```
 
 Next, install and build [OpenTelemetry C++](https://github.com/open-telemetry/opentelemetry-cpp) locally using CMake, following these steps:
 
@@ -174,7 +178,6 @@ public:
   shared_ptr<OutgoingResponse> handle(const shared_ptr<IncomingRequest>& request) override {
     int low = 1;
     int high = 7;
-    srand((int)time(0));
     int random = rand() % (high - low) + low;
     // Convert a std::string to oatpp::String
     const string response = to_string(random); 
@@ -194,6 +197,7 @@ void run() {
 
 int main() {
   oatpp::base::Environment::init();
+  srand((int)time(0));
   run();
   oatpp::base::Environment::destroy();
   return 0;
@@ -315,12 +319,11 @@ public:
     auto span = tracer->StartSpan("RollDiceServer");
     int low = 1;
     int high = 7;
-    srand((int)time(0));
     int random = rand() % (high - low) + low;
     // Convert a std::string to oatpp::String
     const string response = to_string(random); 
-    return ResponseFactory::createResponse(Status::CODE_200, response.c_str());
     span->End();
+    return ResponseFactory::createResponse(Status::CODE_200, response.c_str());
   }
 };
 
@@ -337,6 +340,7 @@ void run() {
 int main() {
   oatpp::base::Environment::init();
   InitTracer();
+  srand((int)time(0));
   run();
   oatpp::base::Environment::destroy();
   CleanupTracer();
