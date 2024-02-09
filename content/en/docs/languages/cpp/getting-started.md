@@ -7,82 +7,94 @@ weight: 10
 
 This page will show you how to get started with OpenTelemetry in C++.
 
-You will learn how to instrument a simple C++ application automatically,
-such that [traces](/docs/concepts/signals/traces/), [metrics](/docs/concepts/signals/metrics/) and [logs](/docs/concepts/signals/logs/) are emitted to the terminal.
+You will learn how to instrument a simple C++ application, such that
+[traces](/docs/concepts/signals/traces/) are emitted to the terminal.
 
-## Prerequisites 
+## Prerequisites
 
 Ensure that you have the following installed locally:
 
 - Git
 - C++ compiler supporting C++ version >= 14
-- Make 
+- Make
 - CMake version >= 3.20
 
-## Example Application 
+## Example Application
 
-The following example uses a basic [Oat++](https://oatpp.io/) application. If you are 
-not using Oat++, that's OK - you can use OpenTelemetry C++ with any other web framework as well.
+The following example uses a basic [Oat++](https://oatpp.io/) application. If
+you are not using Oat++, that's OK - you can use OpenTelemetry C++ with any
+other web framework as well.
 
-## Setup 
+## Setup
 
 - Create a folder named `otel-cpp-starter`.
 - move into the newly created folder. This will serve as your working directory.
 - After setting up dependencies, your directory structure should resemble this:
-   ```plaintext 
-   otel-cpp-starter
-   │
-   ├── oatpp
-   ├── opentelemetry-cpp
-   └── roll-dice
 
-   ```
-  
+  ```plaintext
+  otel-cpp-starter
+  │
+  ├── oatpp
+  ├── opentelemetry-cpp
+  └── roll-dice
+  ```
 
-## Dependencies 
+## Dependencies
 
-To begin, install  Oat++ locally using the [source code](https://github.com/oatpp) and `make`, following these steps:
+To begin, install Oat++ locally using the
+[source code](https://github.com/oatpp) and `make`, following these steps:
 
-1. Obtain the Oat++ source code by cloning from the [oatpp/oatpp](https://github.com/oatpp/oatpp) GitHub repository.
+1. Obtain the Oat++ source code by cloning from the
+   [oatpp/oatpp](https://github.com/oatpp/oatpp) GitHub repository.
 
-   ```bash 
+   ```bash
    git clone https://github.com/oatpp/oatpp.git
    ```
 
 2. Navigate to the `oatpp` directory.
 
-   ```bash 
+   ```bash
    cd oatpp
    ```
 
 3. Create a `build` subdirectory and navigate into it.
+
    ```bash
    mkdir build
    cd build
    ```
 
-4. Build oatpp using the `cmake` and `make` commands. This command will trigger the build process specified in the `CMakeLists.txt` included in the oatpp source code.
+4. Build oatpp using the `cmake` and `make` commands. This command will trigger
+   the build process specified in the `CMakeLists.txt` included in the oatpp
+   source code.
 
    ```bash
    cmake ..
    make
 
-5. Install oatpp.
-
-  This command will install the built oatpp library and headers on your system, making it accessible for development in your project. 
-
-   ```bash
-   sudo make install
    ```
 
-  To uninstall the built oatpp library and headers from your system.
-  ```bash
-  sudo make uninstall
-  ```
+5. Install oatpp.
 
-Next, install and build [OpenTelemetry C++](https://github.com/open-telemetry/opentelemetry-cpp) locally using CMake, following these steps:
+This command will install the built oatpp library and headers on your system,
+making it accessible for development in your project.
 
-1. In your terminal, navigate back to the `otel-cpp-starter` directory. Then, clone the OpenTelemetry C++ GitHub repository to your local machine.
+```bash
+sudo make install
+```
+
+To uninstall the built oatpp library and headers from your system.
+
+```bash
+sudo make uninstall
+```
+
+Next, install and build
+[OpenTelemetry C++](https://github.com/open-telemetry/opentelemetry-cpp) locally
+using CMake, following these steps:
+
+1. In your terminal, navigate back to the `otel-cpp-starter` directory. Then,
+   clone the OpenTelemetry C++ GitHub repository to your local machine.
 
    ```bash
    git clone https://github.com/open-telemetry/opentelemetry-cpp.git
@@ -98,15 +110,18 @@ Next, install and build [OpenTelemetry C++](https://github.com/open-telemetry/op
 
    ```bash
    mkdir build
-   cd build 
+   cd build
    ```
 
-4. In the `build` directory run CMake, to configure and generate the build system.
+4. In the `build` directory run CMake, to configure and generate the build
+   system.
 
    ```bash
    cmake ..
    ```
-  Or, if the `cmake --build` fails, you can also try:
+
+   Or, if the `cmake --build` fails, you can also try:
+
    ```bash
    cmake -DWITH_ABSEIL=ON ..
    ```
@@ -117,16 +132,17 @@ Next, install and build [OpenTelemetry C++](https://github.com/open-telemetry/op
    cmake --build .
    ```
 
-
-With Oat++ and OpenTelemetry C++ ready, you can continue with creating the HTTP Server, that we want to instrument eventually.
+With Oat++ and OpenTelemetry C++ ready, you can continue with creating the HTTP
+Server, that we want to instrument eventually.
 
 ## Create and launch an HTTP Server
 
+In your `otel-cpp-starter` folder, create a subfolder `roll-dice`, where the
+Oat++ library will be used by referencing the oatpp headers and linking them
+when compiling your project.
 
-In your `otel-cpp-starter` folder, create a subfolder `roll-dice`, where the Oat++ library will be used by referencing the oatpp headers and linking them when compiling your project.
-
-Create a file called `CMakeLists.txt` to define the Oat++ library directories, include paths, and link against Oat++ during the compilation process.
-
+Create a file called `CMakeLists.txt` to define the Oat++ library directories,
+include paths, and link against Oat++ during the compilation process.
 
 ```cmake
 project(RollDiceServer)
@@ -147,21 +163,23 @@ set(OATPP_ROOT ../oatpp)
 find_library(OATPP_LIB NAMES liboatpp.a HINTS "${OATPP_ROOT}/build/src/" NO_DEFAULT_PATH)
 
 if (NOT OATPP_LIB)
-	message(SEND_ERROR "Did not find oatpp library ${OATPP_ROOT}/build/src")
+  message(SEND_ERROR "Did not find oatpp library ${OATPP_ROOT}/build/src")
 endif()
-#set the path to the directory containing "oatpp" package configuration files 
+#set the path to the directory containing "oatpp" package configuration files
 include_directories(${OATPP_ROOT}/src)
 target_link_libraries(dice-server PRIVATE ${OATPP_LIB})
-
 ```
 
 Next, the sample HTTP server source code is needed. It will do the following:
 
-* Initialize an HTTP router and set up a request handler to generate a random number as the response when a GET request is made to the `/rolldice` endpoint. 
-* Next, create a connection handler, a connection provider, and start the server on <localhost:8080>.
-* Lastly, initialize and run the application within the main function.
+- Initialize an HTTP router and set up a request handler to generate a random
+  number as the response when a GET request is made to the `/rolldice` endpoint.
+- Next, create a connection handler, a connection provider, and start the server
+  on <localhost:8080>.
+- Lastly, initialize and run the application within the main function.
 
-In that `roll-dice` folder, create a file called `main.cpp` and add the following code to the file.
+In that `roll-dice` folder, create a file called `main.cpp` and add the
+following code to the file.
 
 ```cpp
 #include "oatpp/web/server/HttpConnectionHandler.hpp"
@@ -180,7 +198,7 @@ public:
     int high = 7;
     int random = rand() % (high - low) + low;
     // Convert a std::string to oatpp::String
-    const string response = to_string(random); 
+    const string response = to_string(random);
     return ResponseFactory::createResponse(Status::CODE_200, response.c_str());
   }
 };
@@ -202,14 +220,13 @@ int main() {
   oatpp::base::Environment::destroy();
   return 0;
 }
-
 ```
 
 Build and run the application with the following CMake commands.
 
 ```bash
 mkdir build
-cd build 
+cd build
 cmake ..
 cmake --build .
 ```
@@ -220,14 +237,13 @@ After successfully building your project, you can run the generated executable.
 ./dice-server
 ```
 
-Then, open <http://localhost:8080/rolldice> in your browser to ensure it is working.
+Then, open <http://localhost:8080/rolldice> in your browser to ensure it is
+working.
 
+## Instrumentation
 
-## Instrumentation 
-
-
-To add OpenTelemetry to your application, update the `CMakeLists.txt` file with the
-following additional dependencies. 
+To add OpenTelemetry to your application, update the `CMakeLists.txt` file with
+the following additional dependencies.
 
 ```cmake
 project(RollDiceServer)
@@ -247,7 +263,7 @@ set(OATPP_ROOT ../oatpp)
 set(OPENTELEMETRY_ROOT ../opentelemetry-cpp)
 find_library(OATPP_LIB NAMES liboatpp.a HINTS "${OATPP_ROOT}/build/src/" NO_DEFAULT_PATH)
 if (NOT OATPP_LIB)
-	message(SEND_ERROR "Did not find oatpp library ${OATPP_ROOT}/build/src")
+  message(SEND_ERROR "Did not find oatpp library ${OATPP_ROOT}/build/src")
 endif()
 # set the path to the directory containing "oatpp" package configuration files
 include_directories(${OATPP_ROOT}/src)
@@ -263,17 +279,16 @@ find_library(OPENTELEMETRY_EXPORTER_LIB NAMES libopentelemetry_exporter_ostream_
 find_library(OPENTELEMETRY_RESOURCE_LIB NAMES libopentelemetry_resources.a HINTS "${OPENTELEMETRY_ROOT}/build/sdk/src/resource" NO_DEFAULT_PATH)
 
 if(OPENTELEMETRY_COMMON_LIB AND OPENTELEMETRY_TRACE_LIB AND OPENTELEMETRY_EXPORTER_LIB AND OPENTELEMETRY_RESOURCE_LIB)
-	message(STATUS "Found opentelemetry libraries")
+  message(STATUS "Found opentelemetry libraries")
 else()
-	message(SEND_ERROR "Did not find opentelemetry libraries")
+  message(SEND_ERROR "Did not find opentelemetry libraries")
 endif()
 
 target_link_libraries(dice-server PRIVATE ${OATPP_LIB} ${OPENTELEMETRY_COMMON_LIB} ${OPENTELEMETRY_TRACE_LIB} ${OPENTELEMETRY_EXPORTER_LIB} ${OPENTELEMETRY_RESOURCE_LIB})
 ```
 
-**OpenTelemetry tracing configuration:**
-
-Update the `main.cpp` file with the following code to initialize a tracer and to emit spans when the `/rolldice` request handler is called.
+Update the `main.cpp` file with the following code to initialize a tracer and to
+emit spans when the `/rolldice` request handler is called.
 
 ```cpp
 #include "oatpp/web/server/HttpConnectionHandler.hpp"
@@ -302,15 +317,15 @@ namespace {
     auto processor = trace_sdk::SimpleSpanProcessorFactory::Create(std::move(exporter));
     std::shared_ptr<opentelemetry::trace::TracerProvider> provider =
       trace_sdk::TracerProviderFactory::Create(std::move(processor));
-    //set the global trace provider 
-    trace_api::Provider::SetTracerProvider(provider);  
+    //set the global trace provider
+    trace_api::Provider::SetTracerProvider(provider);
   }
   void CleanupTracer() {
     std::shared_ptr<opentelemetry::trace::TracerProvider> none;
     trace_api::Provider::SetTracerProvider(none);
   }
-  
-} 
+
+}
 
 class Handler : public oatpp::web::server::HttpRequestHandler {
 public:
@@ -321,7 +336,7 @@ public:
     int high = 7;
     int random = rand() % (high - low) + low;
     // Convert a std::string to oatpp::String
-    const string response = to_string(random); 
+    const string response = to_string(random);
     span->End();
     return ResponseFactory::createResponse(Status::CODE_200, response.c_str());
   }
@@ -352,7 +367,7 @@ int main() {
 Build your project again.
 
 ```bash
-cd build 
+cd build
 cmake ..
 cmake --build .
 ```
@@ -363,7 +378,8 @@ After successfully building your project, you can run the generated executable.
 ./dice-server
 ```
 
-When you send a request to the server at <http://localhost:8080/rolldice>, you will see a span being emitted to the terminal.
+When you send a request to the server at <http://localhost:8080/rolldice>, you
+will see a span being emitted to the terminal.
 
 ```json
 {
@@ -386,6 +402,9 @@ When you send a request to the server at <http://localhost:8080/rolldice>, you w
 
 ## Next Steps
 
-For more information about instrumenting your code, refer the [instrumentation](/docs/instrumentation/cpp/manual) documentation.
+For more information about instrumenting your code, refer the
+[instrumentation](/docs/instrumentation/cpp/manual) documentation.
 
-You’ll also want to configure an appropriate exporter to [export your telemetry data](/docs/languages/cpp/exporters/) to one or more telemetry backends.
+You’ll also want to configure an appropriate exporter to
+[export your telemetry data](/docs/languages/cpp/exporters/) to one or more
+telemetry backends.
