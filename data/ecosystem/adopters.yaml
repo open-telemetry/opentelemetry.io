@@ -47,6 +47,12 @@
   components: [Collector, Go, Ruby]
   reference: ''
   contact: ''
+- name: Skyscanner
+  url: https://www.skyscanner.net/
+  components: [Collector, Go, Java, Javascript, Python]
+  reference: https://www.infoq.com/presentations/opentelemetry-observability/
+  referenceTitle: presentation
+  contact: https://github.com/danielgblanco/
 - name: Transit
   url: https://transitapp.com/
   components: []
