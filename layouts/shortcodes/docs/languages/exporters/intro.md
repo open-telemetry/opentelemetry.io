@@ -1,8 +1,8 @@
-Send telemetry to the [OpenTelemetry Collector](/docs/collector/) to
-make sure it's exported correctly. Using the Collector in production
-environments is a best practice. To visualize your telemetry, export
-it to a backend such as [Jaeger](https://jaegertracing.io/),
-[Zipkin](https://zipkin.io/), [Prometheus](https://prometheus.io/), or a
+Send telemetry to the [OpenTelemetry Collector](/docs/collector/) to make sure
+it's exported correctly. Using the Collector in production environments is a
+best practice. To visualize your telemetry, export it to a backend such as
+[Jaeger](https://jaegertracing.io/), [Zipkin](https://zipkin.io/),
+[Prometheus](https://prometheus.io/), or a
 [vendor-specific](/ecosystem/vendors/) backend.
 
 {{ $lang := .Get 0 | default "" -}}
