@@ -19,13 +19,11 @@ following cases:
 - Startup overhead of the OpenTelemetry Java agent exceeds your requirements
 - OpenTelemetry Java agent might not work if your application already uses
   another Java monitoring agent
+- You can use the Spring Boot configuration files (`application.properties`,
+`application.yml`) to configure the OpenTelemetry Spring Boot starter which doesn't work with the OpenTelemetry Java agent
 
 [Spring Boot starter]:
   https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using.build-systems.starters
-
-You can use the Spring Boot configuration files (`application.properties`,
-`application.yml`) to configure the OpenTelemetry Spring Boot starter. You can't
-do this with the OpenTelemetry Java agent.
 
 The
 [opentelemetry-java-examples/spring-native](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/spring-native)
