@@ -2587,6 +2587,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:11:34.796425-05:00"
   },
+  "https://github.com/oatpp": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-09T11:48:44.797303+01:00"
+  },
+  "https://github.com/oatpp/oatpp": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-09T11:48:45.252429+01:00"
+  },
   "https://github.com/observIQ/observiq-otel-collector": {
     "StatusCode": 200,
     "LastSeen": "2024-01-24T14:55:03.346925+01:00"
@@ -5106,6 +5114,10 @@
   "https://o11y.news/2023-03-13/#opentelemetry-connectors": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T05:18:29.229033-05:00"
+  },
+  "https://oatpp.io/": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-09T11:48:44.205582+01:00"
   },
   "https://observiq.com/blog/what-are-connectors-in-opentelemetry/": {
     "StatusCode": 206,
