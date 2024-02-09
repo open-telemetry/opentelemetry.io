@@ -6407,6 +6407,14 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:01:19.327156-05:00"
   },
+  "https://pypi.org/project/opentelemetry-exporter-otlp-proto-grpc/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-09T09:38:04.090207581Z"
+  },
+  "https://pypi.org/project/opentelemetry-exporter-otlp-proto-http/": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-09T09:38:03.842968558Z"
+  },
   "https://pypi.org/project/opentelemetry-exporter-prometheus/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:14:35.878589-05:00"
