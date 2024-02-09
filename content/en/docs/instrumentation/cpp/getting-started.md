@@ -17,7 +17,7 @@ Ensure that you have the following installed locally:
 - Git
 - C++ compiler supporting C++ version >= 14
 - Make 
-- CMake version >= 3.1
+- CMake version >= 3.20
 
 ## Example Application 
 
