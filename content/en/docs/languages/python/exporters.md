@@ -16,8 +16,8 @@ If you want to send telemetry data to an OTLP endpoint (like the
 [Prometheus](#prometheus)), you can choose between two different protocols to
 transport your data:
 
-- [HTTP/protobuf](https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-proto)
-- [gRPC](https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-grpc)
+- [HTTP/protobuf](https://pypi.org/project/opentelemetry-exporter-otlp-proto-http/)
+- [gRPC](https://pypi.org/project/opentelemetry-exporter-otlp-proto-grpc/)
 
 Start by installing the respective exporter packages as a dependency for your
 project:
