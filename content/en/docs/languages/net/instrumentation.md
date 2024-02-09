@@ -468,16 +468,19 @@ nested operation. The following sample creates a nested span that tracks
 ```csharp
 private int rollOnce()
 {
+    int result;
     var childActivity = MyActivitySource.StartActivity("rollOnce");
     
     try
     {
-        return Random.Shared.Next(min, max + 1);
+        result = Random.Shared.Next(min, max + 1);
     }
     finally
     {
         childActivity?.Stop();
     }
+
+    return result;
 }
 
 ```
@@ -485,185 +488,131 @@ private int rollOnce()
 When you view the spans in a trace visualization tool, `rollOnce` childActivity will be
 tracked as a nested operation under `rollTheDice` activity.
 
-### Nested Activities in the same scope
-
-You may wish to create a parent-child relationship in the same scope. Although
-possible, this is generally not recommended because you need to be careful to
-end any nested `Activity` when you expect it to end.
-
-```csharp
-public static void DoWork()
-{
-    using var parentActivity = MyActivitySource.StartActivity("ParentActivity");
-
-    // Do some work tracked by parentActivity
-
-    using (var childActivity = MyActivitySource.StartActivity("ChildActivity"))
-    {
-        // Do some "child" work in the same function
-    }
-
-    // Finish up work tracked by parentActivity again
-}
-```
-
-In the preceding example, `childActivity` is ended because the scope of the
-`using` block is explicitly defined, rather than scoped to `DoWork` itself like
-`parentActivity`.
-
-### Creating independent Activities
-
-The previous examples showed how to create Activities that follow a nested
-hierarchy. In some cases, you'll want to create independent Activities that are
-siblings of the same root rather than being nested.
-
-```csharp
-public static void DoWork()
-{
-    using var parent = MyActivitySource.StartActivity("parent");
-
-    using (var child1 = DemoSource.StartActivity("child1"))
-    {
-        // Do some work that 'child1' tracks
-    }
-
-    using (var child2 = DemoSource.StartActivity("child2"))
-    {
-        // Do some work that 'child2' tracks
-    }
-
-    // 'child1' and 'child2' both share 'parent' as a parent, but are independent
-    // from one another
-}
-```
-
-### Creating new root Activities
-
-If you wish to create a new root Activity, you'll need to "de-parent" from the
-current activity.
-
-```csharp
-public static void DoWork()
-{
-    var previous = Activity.Current;
-    Activity.Current = null;
-
-    var newRoot = MyActivitySource.StartActivity("NewRoot");
-
-    // Re-set the previous Current Activity so the trace isn't messed up
-    Activity.Current = previous;
-}
-```
-
 ### Get the current Activity
 
-Sometimes it's helpful to access whatever the current `Activity` is at a point
-in time so you can enrich it with more information.
+Sometimes it’s helpful to do something with the current/active span at a particular point in program execution.
 
 ```csharp
 var activity = Activity.Current;
-// may be null if there is none
 ```
 
-Note that `using` is not used in the prior example. Doing so will end current
-`Activity`, which is not likely to be desired.
+### Activity Tags
 
-### Add tags to an Activity
-
-Tags (the equivalent of
-[`Attributes`](/docs/concepts/signals/traces/#attributes) in OpenTelemetry) let
-you attach key/value pairs to an `Activity` so it carries more information about
-the current operation that it's tracking.
+Tags (the equivalent of [Attributes](/docs/concepts/signals/traces/#attributes)) let you attach key/value
+pairs to an [`Activity`](/docs/concepts/signals/traces/#spans) so it carries more
+information about the current operation that it's tracking.
 
 ```csharp
-using var myActivity = MyActivitySource.StartActivity("SayHello");
-
-activity?.SetTag("operation.value", 1);
-activity?.SetTag("operation.name", "Saying hello!");
-activity?.SetTag("operation.other-stuff", new int[] { 1, 2, 3 });
-```
-
-We recommend that all Tag names are defined in constants rather than defined
-inline as this provides both consistency and also discoverability.
-
-### Adding events
-
-An [event](/docs/concepts/signals/traces/#span-events) is a human-readable
-message on an `Activity` that represents "something happening" during its
-lifetime.
-
-```csharp
-using var myActivity = MyActivitySource.StartActivity("SayHello");
-
-// ...
-
-myActivity?.AddEvent(new("Gonna try it!"));
-
-// ...
-
-myActivity?.AddEvent(new("Did it!"));
-```
-
-Events can also be created with a timestamp and a collection of Tags.
-
-```csharp
-using var myActivity = MyActivitySource.StartActivity("SayHello");
-
-// ...
-
-myActivity?.AddEvent(new("Gonna try it!", DateTimeOffset.Now));
-
-// ...
-
-var eventTags = new Dictionary<string, object?>
+private int rollOnce()
 {
-    { "foo", 1 },
-    { "bar", "Hello, World!" },
-    { "baz", new int[] { 1, 2, 3 } }
+    int result;
+    var childActivity = MyActivitySource.StartActivity("rollOnce");
+    
+    try
+    {
+        result = Random.Shared.Next(min, max + 1);
+        childActivity?.SetTag("dicelib.rolled", result);
+    }
+    finally
+    {
+        childActivity?.Stop();
+    }
+
+    return result;
+}
+```
+
+### Create Activities with events
+
+[Spans](/docs/concepts/signals/traces/#spans) can be annotated with named events
+(called [Span Events](/docs/concepts/signals/traces/#span-events)) that can
+carry zero or more [Span Attributes](#span-attributes), each of which itself is
+a key:value map paired automatically with a timestamp.
+
+```csharp
+myActivity?.AddEvent(new("Init"));
+...
+myActivity?.AddEvent(new("End"));
+```
+
+```csharp
+var eventTags = new ActivityTagsCollection
+{
+    { "operation", "calculate-pi" },
+    { "result", 3.14159 }
 };
 
-myActivity?.AddEvent(new("Gonna try it!", DateTimeOffset.Now, new(eventTags)));
+activity?.AddEvent(new("End Computation", DateTimeOffset.Now, eventTags));
 ```
 
-### Adding links
+### Create Spans with links
 
-An `Activity` can be created with zero or more
-[`ActivityLink`s](/docs/concepts/signals/traces/#span-links) that are causally
-related.
+A [Span](/docs/concepts/signals/traces/#spans) may be linked to zero or more
+other Spans that are causally related via a
+[Span Link](/docs/concepts/signals/traces/#span-links). Links can be used to
+represent batched operations where a Span was initiated by multiple initiating
+Spans, each representing a single incoming item being processed in the batch.
+
 
 ```csharp
-// Get a context from somewhere, perhaps it's passed in as a parameter
-var activityContext = Activity.Current!.Context;
 
 var links = new List<ActivityLink>
 {
-    new ActivityLink(activityContext)
+    new ActivityLink(activityContext1),
+    new ActivityLink(activityContext2),
+    new ActivityLink(activityContext3)
 };
 
-using var anotherActivity =
-    MyActivitySource.StartActivity(
-        ActivityKind.Internal,
-        name: "anotherActivity",
-        links: links);
-
-// do some work
+var activity = MyActivitySource.StartActivity(
+    ActivityKind.Internal,
+    name: "activity-with-links",
+    links: links);
 ```
+
+For more details how to read context from remote processes, see
+[Context Propagation](#context-propagation).
+
 
 ### Set Activity status
 
 {{% docs/languages/span-status-preamble %}}
 
-```csharp
-using var myActivity = MyActivitySource.StartActivity("SayHello");
+A [status](/docs/concepts/signals/traces/#span-status) can be set on a
+[span](/docs/concepts/signals/traces/#spans), typically used to specify that a
+span has not completed successfully - `SpanStatus.Error`. 
 
-try
+By default, all spans are `Unset`, which means a span completed without error. The `Ok` status is reserved for when you need to explicitly mark a span as successful rather than stick with the default of Unset (i.e., “without error”).
+
+The status can be set at any time before the span is finished.
+
+It can be a good idea to record exceptions when they happen. It's recommended to
+do this in conjunction with
+[setting span status](/docs/specs/otel/trace/api/#set-status).
+
+```csharp
+private int rollOnce()
 {
-	// do something
+    int result;
+    var childActivity = MyActivitySource.StartActivity("rollOnce");
+
+    try
+    {
+        result = Random.Shared.Next(min, max + 1);
+    }
+    catch (Exception ex)
+    {
+        childActivity?.SetStatus(ActivityStatusCode.Error, ex.Message);
+        childActivity?.RecordException(ex);
+        throw;
+    }
+    finally
+    {
+        childActivity?.Stop();
+    }
+
+    return result;
 }
-catch (Exception ex)
-{
-    myActivity.SetStatus(ActivityStatusCode.Error, "Something bad happened!");
-}
+
 ```
 
 ## Metrics
