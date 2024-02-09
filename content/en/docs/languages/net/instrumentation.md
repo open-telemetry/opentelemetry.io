@@ -191,8 +191,7 @@ dotnet add package OpenTelemetry.Instrumentation.AspNetCore
 
 ### Initialize the SDK
 
-{{% alert title="Note" color="info" %}} If you’re instrumenting a library,
-**skip this step**. {{% /alert %}}
+{{% alert title="Note" color="info" %}} If you’re instrumenting a library,  you dont need to initialize the sdk. {{% /alert %}}
 
 It is important to configure an instance of the OpenTelemetry SDK as early as possible in your application.
 
@@ -293,8 +292,7 @@ dotnet run
 
 ### Initialize Tracing
 
-{{% alert title="Note" color="info" %}} If you’re instrumenting a library,
-**skip this step**. {{% /alert %}}
+{{% alert title="Note" color="info" %}} If you’re instrumenting a library, you dont need to initialize a TraceProvider. {{% /alert %}}
 
 To enable [tracing](/docs/concepts/signals/traces/) in your app, you'll need to
 have an initialized
@@ -545,7 +543,7 @@ var eventTags = new ActivityTagsCollection
 activity?.AddEvent(new("End Computation", DateTimeOffset.Now, eventTags));
 ```
 
-### Create Spans with links
+### Create Activities with links
 
 A [Span](/docs/concepts/signals/traces/#spans) may be linked to zero or more
 other Spans that are causally related via a
