@@ -1,4 +1,4 @@
-# cSpell:ignore Farfetch Globale Datenrettungsdienste Uplight Wandera Zocdoc
+# cSpell:ignore Farfetch Globale Datenrettungsdienste Uplight Wandera Zocdoc Skyscanner
 - name: AppDirect
   url: https://www.appdirect.com/
   components: [Collector]
