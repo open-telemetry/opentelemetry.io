@@ -199,10 +199,6 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T06:06:13.672811-05:00"
   },
-  "https://cdn.jsdelivr.net/npm/mermaid@9.3.0/dist/mermaid.min.js": {
-    "StatusCode": 206,
-    "LastSeen": "2024-01-18T19:55:45.920342-05:00"
-  },
   "https://cdn.jsdelivr.net/npm/minisearch@6.3.0/dist/umd/index.min.js": {
     "StatusCode": 206,
     "LastSeen": "2024-01-08T12:17:27.412252+01:00"
@@ -506,6 +502,10 @@
   "https://crates.io/": {
     "StatusCode": 206,
     "LastSeen": "2024-01-22T11:00:04.617082+01:00"
+  },
+  "https://creativecommons.org/licenses/by/4.0": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-08T18:57:44.500266-05:00"
   },
   "https://cri-o.io/": {
     "StatusCode": 206,
