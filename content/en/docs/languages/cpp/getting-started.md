@@ -401,7 +401,7 @@ will see a span being emitted to the terminal.
 ## Next Steps
 
 For more information about instrumenting your code, refer the
-[instrumentation](/docs/instrumentation/cpp/manual) documentation.
+[instrumentation](/docs/languages/cpp/manual) documentation.
 
 You’ll also want to configure an appropriate exporter to
 [export your telemetry data](/docs/languages/cpp/exporters/) to one or more
