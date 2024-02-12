@@ -37,7 +37,7 @@ to complete the automatic instrumentation of the Spring Boot starter.
 
 ## OpenTelemetry starter Spring Boot starter
 
-### Spring Boot application type
+### Compatibility
 
 The OpenTelemetry Spring Boot starter works with Spring Boot 2.0 and 3.0,
 and Spring Boot native image applications. The
