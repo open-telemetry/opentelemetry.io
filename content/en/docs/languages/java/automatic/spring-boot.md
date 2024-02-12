@@ -485,7 +485,7 @@ public class TracedClass {
 You can configure other instrumentations with
 [OpenTelemetry instrumentations libraries](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks).
 
-## Other Spring autoconfiguration-based instrumentation solutions
+## Other solutions
 
 Instead of using the OpenTelemetry Spring starter, you can use the OpenTelemetry
 autoconfiguration features with an annotation or the Zipkin starter.
