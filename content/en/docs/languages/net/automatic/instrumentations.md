@@ -4,7 +4,7 @@ linkTitle: Instrumentations
 description: OpenTelemetry .NET Automatic Instrumentation supported libraries.
 weight: 10
 # prettier-ignore
-cSpell:ignore: ASPNET ASPNETCORE Bootstrapper ELASTICTRANSPORT ENTITYFRAMEWORKCORE GRCPNETCLIENT GRPCNETCLIENT HOSTINGSTARTUPASSEMBLIES HTTPCLIENT ILOGGER MASSTRANSIT MYSQLCONNECTOR MYSQLDATA NETRUNTIME NPGSQL Npgsql NSERVICEBUS SQLCLIENT STACKEXCHANGEREDIS WCFCLIENT WCFSERVICE
+cSpell:ignore: ASPNET ASPNETCORE Bootstrapper DBSTATEMENT ELASTICTRANSPORT ENTITYFRAMEWORKCORE GRCPNETCLIENT GRPCNETCLIENT HOSTINGSTARTUPASSEMBLIES HTTPCLIENT ILOGGER MASSTRANSIT MYSQLCONNECTOR MYSQLDATA NETRUNTIME NPGSQL Npgsql NSERVICEBUS SQLCLIENT STACKEXCHANGEREDIS WCFCLIENT WCFSERVICE
 ---
 
 The OpenTelemetry .NET Automatic Instrumentation supports a wide variety of
@@ -112,6 +112,8 @@ enabled without using the .NET CLR Profiler by setting the
 
 ### Instrumentation options
 
-| Environment variable                    | Description                                                                                                                                                        | Default value | Status                                                    |
-| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------- | --------------------------------------------------------- |
-| `OTEL_DOTNET_AUTO_GRAPHQL_SET_DOCUMENT` | Whether GraphQL instrumentation can pass raw queries as `graphql.document` attribute. This may contain sensitive information and therefore is disabled by default. | `false`       | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| Environment variable                                            | Description                                                                                                                                                                                                                                                                                          | Default value | Status                                                    |
+| --------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | --------------------------------------------------------- |
+| `OTEL_DOTNET_AUTO_ENTITYFRAMEWORKCORE_SET_DBSTATEMENT_FOR_TEXT` | Whether the Entity Framework Core instrumentation can pass SQL statements through the `db.statement` attribute. Queries might contain sensitive information. If set to `false`, `db.statement` is recorded only for executing stored procedures.                                                     | `false`       | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_DOTNET_AUTO_GRAPHQL_SET_DOCUMENT`                         | Whether the GraphQL instrumentation can pass raw queries through the `graphql.document` attribute. Queries might contain sensitive information.                                                                                                                                                      | `false`       | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_DOTNET_AUTO_SQLCLIENT_SET_DBSTATEMENT_FOR_TEXT`           | Whether the SQL Client instrumentation can pass SQL statements through the `db.statement` attribute. Queries might contain sensitive information. If set to `false`, `db.statement` is recorded only for executing stored procedures. **Not supported on .NET Framework for System.Data.SqlClient.** | `false`       | [Experimental](/docs/specs/otel/versioning-and-stability) |
