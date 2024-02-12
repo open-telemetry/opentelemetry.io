@@ -7,7 +7,7 @@ description: Spring Boot instrumentation for OpenTelemetry Java
 cSpell:ignore: autoconfigurations autoconfigures datasource logback springboot webflux webmvc
 ---
 
-## How to instrument Spring Boot with OpenTelemetry?
+## How to instrument Spring Boot with OpenTelemetry
 
 The [OpenTelemetry Java agent](..) with byte code instrumentation can cover most
 of your needs when instrumenting
