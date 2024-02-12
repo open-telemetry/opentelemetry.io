@@ -28,16 +28,19 @@ following cases:
 [Spring Boot starter]:
   https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using.build-systems.starters
 
-The OpenTelemetry Java agent has more automatic instrumentation features than the OpenTelemetry starter.
+The OpenTelemetry Java agent has more automatic instrumentation features than
+the OpenTelemetry starter.
 
-You can use [OpenTelemetry instrumentations libraries](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks) to complete the automatic instrumentation of the Spring Boot starter.
+You can use
+[OpenTelemetry instrumentations libraries](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks)
+to complete the automatic instrumentation of the Spring Boot starter.
 
 ## OpenTelemetry starter Spring Boot starter
 
-### Spring Boot application type 
+### Spring Boot application type
 
-The OpenTelemetry Spring Boot starter that works with Spring
-Boot 2.0 and 3.0, and Spring Boot native image applications. The
+The OpenTelemetry Spring Boot starter that works with Spring Boot 2.0 and 3.0,
+and Spring Boot native image applications. The
 [opentelemetry-java-examples/spring-native](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/spring-native)
 repository contains an example of a Spring Boot Native image application
 instrumented using the OpenTelemetry Spring Boot starter.
