@@ -39,7 +39,7 @@ to complete the automatic instrumentation of the Spring Boot starter.
 
 ### Spring Boot application type
 
-The OpenTelemetry Spring Boot starter that works with Spring Boot 2.0 and 3.0,
+The OpenTelemetry Spring Boot starter works with Spring Boot 2.0 and 3.0,
 and Spring Boot native image applications. The
 [opentelemetry-java-examples/spring-native](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/spring-native)
 repository contains an example of a Spring Boot Native image application
