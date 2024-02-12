@@ -3487,6 +3487,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:01.211191-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-proto-java": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-12T10:07:03.426176991Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-proto/#maturity-level": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:37:06.679199-05:00"
@@ -3762,6 +3766,10 @@
   "https://github.com/open-telemetry/semantic-conventions": {
     "StatusCode": 200,
     "LastSeen": "2024-01-30T06:01:12.185293-05:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions-java": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-12T10:07:03.116391658Z"
   },
   "https://github.com/open-telemetry/semantic-conventions-java/releases": {
     "StatusCode": 200,
