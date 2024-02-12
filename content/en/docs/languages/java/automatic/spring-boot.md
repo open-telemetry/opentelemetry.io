@@ -1,11 +1,13 @@
 ---
-title: Spring Boot Starter
+title: Spring Boot
 linkTitle: Spring Boot
 weight: 30
 description: Spring Boot instrumentation for OpenTelemetry Java
 # prettier-ignore
 cSpell:ignore: autoconfigurations autoconfigures datasource logback springboot webflux webmvc
 ---
+
+## How to instrument Spring Boot with OpenTelemetry?
 
 The [OpenTelemetry Java agent](..) with byte code instrumentation can cover most
 of your needs when instrumenting
@@ -26,15 +28,21 @@ following cases:
 [Spring Boot starter]:
   https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using.build-systems.starters
 
-The
+The OpenTelemetry Java agent has more automatic instrumentation features than the OpenTelemetry starter.
+
+You can use [OpenTelemetry instrumentations libraries](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks) to complete the automatic instrumentation of the Spring Boot starter.
+
+## OpenTelemetry starter Spring Boot starter
+
+### Spring Boot application type 
+
+The OpenTelemetry Spring Boot starter that works with Spring
+Boot 2.0 and 3.0, and Spring Boot native image applications. The
 [opentelemetry-java-examples/spring-native](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/spring-native)
 repository contains an example of a Spring Boot Native image application
 instrumented using the OpenTelemetry Spring Boot starter.
 
-The rest of this page documents the OpenTelemetry starter that works with Spring
-Boot 2.0 and 3.0.
-
-## Dependency management
+### Dependency management
 
 A Bill of Material
 ([BOM](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#bill-of-materials-bom-poms))
@@ -115,7 +123,7 @@ with the `io.spring.dependency-management` plugin.
 
 {{% /alert %}}
 
-### OpenTelemetry Starter dependency
+#### OpenTelemetry Starter dependency
 
 Add the dependency given below to enable the OpenTelemetry starter.
 
@@ -146,7 +154,7 @@ dependencies {
 
 {{% /tab %}} {{< /tabpane>}}
 
-### Disable data export
+#### Disable data export
 
 {{% config_option name="otel.sdk.disabled" %}}
 
@@ -154,7 +162,7 @@ Set the value to `true` to disable data export, e.g. for testing purposes.
 
 {{% /config_option %}}
 
-## OTLP Exporter
+### OTLP Exporter
 
 This package provides autoconfiguration for the
 [OTLP](https://github.com/open-telemetry/opentelemetry-java/tree/main/exporters/otlp)
@@ -166,7 +174,7 @@ As of 2.0.0+ the default protocol is `http/protobuf`. For more details on
 exporter configuration, see
 [OTLP Exporter Configuration](/docs/languages/sdk-configuration/otlp-exporter/).
 
-### Enabling/Disabling Exporters
+#### Enabling/Disabling Exporters
 
 All exporters can be enabled or disabled as in the
 [SDK autoconfiguration](https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md#exporters).
@@ -181,13 +189,13 @@ the properties below.
 | OTLP Logs Exporter    | `otel.exporter.otlp.logs.enabled`    | true          | `OtlpHttpLogRecordExporter`, `OtlpGrpcLogRecordExporter` |
 | Logging Exporter      | `otel.exporter.logging.enabled`      | false         | `LoggingSpanExporter`                                    |
 
-## Tracer Properties
+### Tracer Properties
 
 | Feature | Property                          | Default Value |
 | ------- | --------------------------------- | ------------- |
 | Tracer  | `otel.traces.sampler.probability` | 1.0           |
 
-## Resource Properties
+### Resource Properties
 
 | Feature  | Property                                                                | Default Value |
 | -------- | ----------------------------------------------------------------------- | ------------- |
@@ -233,7 +241,7 @@ with the OpenTelemetry
 4. `spring.application.name` spring property
 5. The default value is `unknown_service:java` (lowest precedence)
 
-## Automatic instrumentation
+### Automatic instrumentation
 
 Autoconfigures OpenTelemetry instrumentation for
 [spring-web](#spring-web-autoconfiguration),
@@ -248,7 +256,7 @@ spring applications.
 | spring-webmvc  | `otel.instrumentation.spring-web.enabled`     | true          | `OncePerRequestFilter` |
 | spring-webflux | `otel.instrumentation.spring-webflux.enabled` | true          | `WebClient`            |
 
-### Spring Web Autoconfiguration
+#### Spring Web Autoconfiguration
 
 Provides autoconfiguration for the `RestTemplate` trace interceptor defined in
 [opentelemetry-spring-web-3.1](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-web/spring-web-3.1/library).
@@ -258,7 +266,7 @@ supported for spring web versions 3.1+. To learn more about the OpenTelemetry
 `RestTemplate` interceptor, see
 [opentelemetry-spring-web-3.1](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-web/spring-web-3.1/library).
 
-### Spring Web MVC Autoconfiguration
+#### Spring Web MVC Autoconfiguration
 
 This feature autoconfigures instrumentation for Spring WebMVC controllers by
 adding a
@@ -269,7 +277,7 @@ request. To learn more about the OpenTelemetry Spring WebMVC instrumentation,
 see the
 [opentelemetry-spring-webmvc-5.3 instrumentation library](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-webmvc/spring-webmvc-5.3/library).
 
-### Spring WebFlux Autoconfiguration
+#### Spring WebFlux Autoconfiguration
 
 Provides autoconfigurations for the OpenTelemetry WebClient ExchangeFilter
 defined in
@@ -280,9 +288,9 @@ processor. This feature is supported for spring webflux versions 5.0+. For
 details, see
 [opentelemetry-spring-webflux-5.3](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-webflux/spring-webflux-5.3/library).
 
-## Additional Instrumentations
+### Additional Instrumentations
 
-### JDBC Instrumentation
+#### JDBC Instrumentation
 
 You have two ways to enable the JDBC instrumentation with the OpenTelemetry
 starter.
@@ -340,7 +348,7 @@ dependencies {
 
 {{% /tab %}} {{< /tabpane>}}
 
-### Logging Instrumentation
+#### Logging Instrumentation
 
 To enable the logging instrumentation for Logback you have to add the
 OpenTelemetry appender in your `logback.xml` or `logback-spring.xml` file:
@@ -389,7 +397,7 @@ and
 [Log4j](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/log4j/log4j-appender-2.17/library/README.md)
 instrumentation libraries.
 
-### Instrumentation Annotations
+#### Instrumentation Annotations
 
 This feature uses spring-aop to wrap methods annotated with `@WithSpan` in a
 span. The arguments to the method can be captured as attributed on the created
@@ -403,7 +411,7 @@ span by annotating the method parameters with `@SpanAttribute`.
 | ----------- | ------------------------------------------ | ------------- | ------------------ |
 | `@WithSpan` | `otel.instrumentation.annotations.enabled` | true          | WithSpan, Aspect   |
 
-#### Dependency
+##### Dependency
 
 {{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
 
@@ -433,7 +441,7 @@ dependencies {
 
 {{% /tab %}} {{< /tabpane>}}
 
-#### Usage
+##### Usage
 
 ```java
 import org.springframework.stereotype.Component;
@@ -469,12 +477,12 @@ public class TracedClass {
 }
 ```
 
-### OpenTelemetry instrumentations libraries
+#### OpenTelemetry instrumentations libraries
 
 You can configure other instrumentations with
 [OpenTelemetry instrumentations libraries](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks).
 
-## Other configurations
+## Other Spring autoconfiguration-based instrumentation solutions
 
 Instead of using the OpenTelemetry Spring starter, you can use the OpenTelemetry
 autoconfiguration features with an annotation or the Zipkin starter.
