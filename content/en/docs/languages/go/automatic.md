@@ -10,7 +10,7 @@ code.
 ## Setup
 
 ```sh
-go install github.com/nikolaydubina/go-instrument
+go install github.com/nikolaydubina/go-instrument@latest
 ```
 
 ## Invocation
