@@ -1515,6 +1515,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-30T16:14:53.797365-05:00"
   },
+  "https://docs.spring.io/spring-security/reference/servlet/authorization/architecture.html#authz-authorities": {
+    "StatusCode": 206,
+    "LastSeen": "2024-02-12T22:02:33.483262-05:00"
+  },
   "https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#aop": {
     "StatusCode": 206,
     "LastSeen": "2024-01-30T20:32:51.933581-05:00"
