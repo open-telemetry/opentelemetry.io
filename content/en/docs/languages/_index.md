@@ -27,6 +27,12 @@ follows:
 
 {{% telemetry-support-table " " %}}
 
+{{% alert title="Note" color="warning" %}} Even though the API/SDK status
+is stable, changes to underlying [semantic convensions][SemConv] can interrupt
+your data flow. If the status of a Semantic Convension that your SDK/API
+depends on is `Experimental`, it may be subject to future breaking changes.
+
 [auto]: /docs/kubernetes/operator/automatic/
 [instrumentation]: /docs/concepts/instrumentation/
 [otel-op]: /docs/kubernetes/operator/
+[SemConv]: /docs/concepts/semantic-conventions/
