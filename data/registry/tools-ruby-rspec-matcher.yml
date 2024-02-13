@@ -9,7 +9,7 @@ description:
   The RSpec matchers tool provides a set of matchers to make it easier to write
   unit tests checking the presence of telemetry data.
 authors:
-  - name: Damien MATHIEU
+  - name: Damien MATHIEU # cspell:disable-line
     email: 42@dmathieu.com
 urls:
   repo: https://github.com/dmathieu/rspec-otel
