@@ -4,7 +4,8 @@ linkTitle: Automatic
 weight: 30
 ---
 
-Automatic instrumentation in Go is possible by automatically modifying source code.
+Automatic instrumentation in Go is possible by automatically modifying source
+code.
 
 ## Setup
 
@@ -44,8 +45,8 @@ func (s Cat) Name(ctx context.Context) (name string, err error) {
 
 ## Customization
 
-It is possible to exclude or include specific function names with compiler directives anywhere in the file.
-For example,
+It is possible to exclude or include specific function names with compiler
+directives anywhere in the file. For example,
 
 ```go
 //instrument:exclude SomeFunc|SomeOtherfunc|privateFunc
