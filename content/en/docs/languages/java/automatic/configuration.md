@@ -232,8 +232,14 @@ span link connecting it to the producer trace.
 
 You can configure the agent to capture
 [general identity attributes](/docs/specs/semconv/general/attributes/#general-identity-attributes)
-(`enduser.id`, `enduser.role`, `enduser.scope`). This functionality is disabled
-by default, with the ability to enable for individual attributes.
+(`enduser.id`, `enduser.role`, `enduser.scope`) from instrumentation libraries
+like
+[JavaEE/JakartaEE Servlet](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/servlet)
+and
+[Spring Security](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-security-config-6.0).
+
+This functionality is disabled by default, with the ability to enable for
+individual attributes.
 
 {{% config_option
 name="otel.instrumentation.common.enduser.enabled"
@@ -254,6 +260,26 @@ default=false
 name="otel.instrumentation.common.enduser.scope.enabled"
 default=false
 %}} Determines whether to capture `enduser.scope` semantic attribute. {{% /config_option %}}
+
+#### Spring Security
+
+For users of Spring Security who use custom
+[granted authority prefixes](https://docs.spring.io/spring-security/reference/servlet/authorization/architecture.html#authz-authorities),
+you can use the following properties to strip those prefixes from the
+`enduser.*` attribute values to better represent the actual role and scope
+names:
+
+{{% config_option
+name="otel.instrumentation.spring-security.enduser.role.granted-authority-prefix"
+default=ROLE_
+%}} Prefix of granted authorities identifying roles to capture in the `enduser.role`
+semantic attribute. {{% /config_option %}}
+
+{{% config_option
+name="otel.instrumentation.spring-security.enduser.scope.granted-authority-prefix"
+default=SCOPE_
+%}} Prefix of granted authorities identifying scopes to capture in the `enduser.scopes`
+semantic attribute. {{% /config_option %}}
 
 ## Suppressing specific auto-instrumentation
 
