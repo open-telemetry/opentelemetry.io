@@ -178,7 +178,6 @@ Use the transform processor to set a span's status. The following example sets
 the span status to `Ok` when the `http.status_code` attribute is 400:
 
 ```yaml
-# The description field allows to set a human-readable message for errors.
 transform:
   error_mode: ignore
   trace_statements:
