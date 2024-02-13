@@ -12,14 +12,27 @@ from the system's components must emit [traces](/docs/concepts/signals/traces/),
 [metrics](/docs/concepts/signals/metrics/), and
 [logs](/docs/concepts/signals/logs/).
 
-Without being required to modify the source code you can collect telemetry from
-an application using [automatic instrumentation](automatic/). If you previously
-used an APM agent to extract telemetry from your application, Automatic
-Instrumentation will give you a similar out of the box experience.
+OpenTelemetry provides APIs and SDKs for eleven languages to facilitate the process
+of instrumenting your code:
 
-To facilitate the instrumentation of applications even more, you can
-[manually instrument](manual/) your applications by coding against the
-OpenTelemetry APIs.
+- 
+
+
+
+You can accomplish this by either coding against the OpenTelemetry APIs, or by
+leveraging a language-specific zero-code solution that will add instrumentation
+to your code automatically. Depending on your [role](https://opentelemetry.io/docs/getting-started/)
+you may prefer the one way of instrumentation over the other: if you are writing
+the code of an application or library, you may prefer code-based instrumentation,
+and if you run an application you don't created yourself, the zero-code approach
+is for you.
+
+Note, that for most languages it is possible to use both approaches at the same time,
+so you can start with an automatic approach to gain insights quickly and then update
+your code with embedded more granular observability.
+
+
+
 
 For that you don't need to instrument all the dependencies used in your
 application:
