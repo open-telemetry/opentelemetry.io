@@ -1,0 +1,13 @@
+title: Go Automatic Instrumentation by Code Modification
+registryType: instrumentation
+language: go
+tags:
+  - go
+  - instrumentation
+license: MIT
+description: Automatic instrumentation by code modification.
+authors:
+  - name: nikolaydubina
+urls:
+  repo: https://github.com/nikolaydubina/go-instrument
+createdAt: 2024-02-13
