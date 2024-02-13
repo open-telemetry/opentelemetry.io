@@ -31,6 +31,7 @@ follows:
 is stable, changes to underlying [semantic conventions][SemConv] can interrupt
 your data flow. If the status of a Semantic Convention that your instrumentation
 depends on is `Experimental`, it may be subject to future breaking changes.
+{{% /alert %}}
 
 [auto]: /docs/kubernetes/operator/automatic/
 [instrumentation]: /docs/concepts/instrumentation/
