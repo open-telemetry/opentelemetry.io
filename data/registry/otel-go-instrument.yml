@@ -5,7 +5,7 @@ tags:
   - go
   - instrumentation
 license: MIT
-description: Automatic instrumentation by code modification.
+description: This tool uses standard Go library to modify AST with instrumentation. It supports errors in spans, functions filtering, and more customizations.
 authors:
   - name: nikolaydubina
 urls:
