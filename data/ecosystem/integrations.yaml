@@ -42,8 +42,8 @@
 - name: Kong API Gateway
   url: https://www.konghq.com/
   docsUrl: https://docs.konghq.com/hub/kong-inc/opentelemetry/
-  components: []
-  oss: false
+  components: [Lua]
+  oss: true
 - name: NGINX Web Server
   url: https://nginx.org/
   docsUrl: https://github.com/nginxinc/nginx-otel
