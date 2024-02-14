@@ -1,7 +1,7 @@
 ---
 title: Instrumentation
 description: >-
-  How OpenTelemetry facilitates automatic and manual instrumentation of
+  How OpenTelemetry facilitates the instrumentation of libraries and
   applications.
 aliases: [instrumenting]
 weight: 15
@@ -12,45 +12,41 @@ from the system's components must emit [traces](/docs/concepts/signals/traces/),
 [metrics](/docs/concepts/signals/metrics/), and
 [logs](/docs/concepts/signals/logs/).
 
-OpenTelemetry provides APIs and SDKs for eleven languages to facilitate the process
-of instrumenting your code:
+OpenTelemetry provides [APIs and SDKs for eleven languages](/docs/languages) to
+facilitate the process of instrumenting your code. Among others it provides the
+following benefits:
 
-- 
+- Each language-specific implementation of the API and SDK follows the
+  requirements and expectations of the
+  [OpenTelemetry specification](/docs/specs/otel/)
+- Libraries can leverage the OpenTelemetry API as a dependency, which will have
+  no impact on applications using that library, unless the OpenTelemetry SDK is
+  imported.
+- For each [signal](/docs/concepts/signals) (traces, metrics, logs) you will
+  find methods to create them, process them and export them.
+- With [context propagation](/docs/concepts/context-propagation) being built
+  into the implementations, you can correlate signals, regardless of where they
+  are generated
+- [Resources](/docs/concepts/resources) and
+  [Instrumentation Scopes](/docs/concepts/instrumentation-scope) allow grouping
+  of signals, by different entities.
+- [Semantic Conventions](/docs/concepts/semantic-conventions) provide a common
+  naming schema that can be used for standardization across code bases and
+  platforms.
 
+As a [developer](/docs/getting-started/dev/) you are able to code against the
+OpenTelemetry API, to enrich your application (or library) with granular
+observability. For that, you only need to instrument your code, as your
+dependencies will either integrate OpenTelemetry themselves directly, or you can
+leverage
+[Instrumentation Libraries](/docs/specs/otel/overview/#instrumentation-libraries)
+for those without such an integration.
 
+As [ops](/docs/getting-started/ops/) you will find
+[zero-code](/docs/concepts/instrumentation/zero-code) solutions for many
+languages, that will add instrumentation to an application without you knowing
+about the inner workings of that application.
 
-You can accomplish this by either coding against the OpenTelemetry APIs, or by
-leveraging a language-specific zero-code solution that will add instrumentation
-to your code automatically. Depending on your [role](https://opentelemetry.io/docs/getting-started/)
-you may prefer the one way of instrumentation over the other: if you are writing
-the code of an application or library, you may prefer code-based instrumentation,
-and if you run an application you don't created yourself, the zero-code approach
-is for you.
-
-Note, that for most languages it is possible to use both approaches at the same time,
-so you can start with an automatic approach to gain insights quickly and then update
+For most languages it is possible to use both approaches at the same time, so
+you can start with a zero-code approach to gain insights quickly and then update
 your code with embedded more granular observability.
-
-
-
-
-For that you don't need to instrument all the dependencies used in your
-application:
-
-- some of your libraries will be observable out of the box by calling the
-  OpenTelemetry API themselves directly. Those libraries are sometimes called
-  **natively instrumented**.
-- for libraries without such an integration the OpenTelemetry projects provide
-  language specific [Instrumentation Libraries][]
-
-Note, that for most languages it is possible to use both manual and automatic
-instrumentation at the same time: Automatic Instrumentation will allow you to
-gain insights into your application quickly and manual instrumentation will
-enable you to embed granular observability into your code.
-
-The exact installation mechanism for [manual](manual/) and
-[automatic](automatic/) instrumentation varies based on the language you’re
-developing in, but there are some similarities covered in the sections below.
-
-[instrumentation libraries]:
-  /docs/specs/otel/overview/#instrumentation-libraries
