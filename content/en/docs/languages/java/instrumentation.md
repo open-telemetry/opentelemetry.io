@@ -674,7 +674,7 @@ automatically set by the OpenTelemetry SDK.
 
 The code below illustrates how to create a span:
 
-```java { hl_lines=["1-2","8-11","19-21"] }
+```java { hl_lines=["1-2","8-11","25-30"] }
 import io.opentelemetry.api.trace.Span;
 import io.opentelemetry.context.Scope;
 
