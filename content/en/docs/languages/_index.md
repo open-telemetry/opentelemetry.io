@@ -27,9 +27,9 @@ follows:
 
 {{% telemetry-support-table " " %}}
 
-{{% alert title="Note" color="warning" %}} Even though the API/SDK status
-is stable, changes to underlying [semantic conventions][SemConv] can interrupt
-your data flow. If the status of a Semantic Convention that your instrumentation
+{{% alert title="Note" color="warning" %}} Even though the API/SDK status is
+stable, changes to underlying [semantic conventions][SemConv] can interrupt your
+data flow. If the status of a Semantic Convention that your instrumentation
 depends on is `Experimental`, it may be subject to future breaking changes.
 {{% /alert %}}
 
