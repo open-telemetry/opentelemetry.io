@@ -1,6 +1,7 @@
 ---
 title: Exporters
 weight: 50
+cSpell:ignore: DWITH
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
@@ -17,8 +18,8 @@ transport your data:
 - HTTP/protobuf
 - gRPC
 
-Make sure that you have set the right cmake build variables while [building OpenTelemetry
-C++ from source](https://github.com/open-telemetry/opentelemetry-cpp/blob/main/INSTALL.md):
+Make sure that you have set the right cmake build variables while
+[building OpenTelemetry C++ from source](https://github.com/open-telemetry/opentelemetry-cpp/blob/main/INSTALL.md):
 
 - `-DWITH_OTLP_GRPC=ON`: To enable building OTLP gRPC exporter.
 - `-DWITH_OTLP_HTTP=ON`: To enable building OTLP HTTP exporter.
@@ -201,7 +202,8 @@ void InitLogger()
 To debug your instrumentation or see the values locally in development, you can
 use exporters writing telemetry data to the console (stdout).
 
-While [building OpenTelemetry C++ from source](https://github.com/open-telemetry/opentelemetry-cpp/blob/main/INSTALL.md) 
+While
+[building OpenTelemetry C++ from source](https://github.com/open-telemetry/opentelemetry-cpp/blob/main/INSTALL.md)
 the `OStreamSpanExporter` is included in the build by default.
 
 ```cpp
@@ -269,14 +271,16 @@ void InitLogger()
 
 ### Dependencies {#prometheus-dependencies}
 
-To send your trace data to [Prometheus](https://prometheus.io/), make sure that you have set the right cmake build variables while [building OpenTelemetry
-C++ from source](https://github.com/open-telemetry/opentelemetry-cpp/blob/main/INSTALL.md):
+To send your trace data to [Prometheus](https://prometheus.io/), make sure that
+you have set the right cmake build variables while
+[building OpenTelemetry C++ from source](https://github.com/open-telemetry/opentelemetry-cpp/blob/main/INSTALL.md):
 
 ```shell
 cmake -DWITH_PROMETHEUS=ON ...
 ```
 
-Update your OpenTelemetry configuration to use the [Prometheus Exporter](https://github.com/open-telemetry/opentelemetry-cpp/tree/main/exporters/prometheus):
+Update your OpenTelemetry configuration to use the
+[Prometheus Exporter](https://github.com/open-telemetry/opentelemetry-cpp/tree/main/exporters/prometheus):
 
 ```cpp
 #include "opentelemetry/exporters/prometheus/exporter_factory.h"
@@ -310,15 +314,17 @@ the metrics from this endpoint.
 
 ### Dependencies {#zipkin-dependencies}
 
-To send your trace data to [Zipkin](https://zipkin.io/), make sure that you have set the right cmake build variables while [building OpenTelemetry
-C++ from source](https://github.com/open-telemetry/opentelemetry-cpp/blob/main/INSTALL.md):
+To send your trace data to [Zipkin](https://zipkin.io/), make sure that you have
+set the right cmake build variables while
+[building OpenTelemetry C++ from source](https://github.com/open-telemetry/opentelemetry-cpp/blob/main/INSTALL.md):
 
 ```shell
 cmake -DWITH_ZIPKIN=ON ...
 ```
 
-Update your OpenTelemetry configuration to use the [Zipkin Exporter](https://github.com/open-telemetry/opentelemetry-cpp/tree/main/exporters/zipkin) and to send data to
-your Zipkin backend:
+Update your OpenTelemetry configuration to use the
+[Zipkin Exporter](https://github.com/open-telemetry/opentelemetry-cpp/tree/main/exporters/zipkin)
+and to send data to your Zipkin backend:
 
 ```cpp
 #include "opentelemetry/exporters/zipkin/zipkin_exporter_factory.h"
@@ -347,10 +353,10 @@ void InitTracer()
 }
 ```
 
-
 {{% docs/languages/exporters/outro python "https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/classopentelemetry_1_1sdk_1_1trace_1_1SpanExporter.html" %}}
 
 {{< tabpane text=true >}} {{% tab Batch %}}
+
 ```cpp
 #include "opentelemetry/exporters/otlp/otlp_http_exporter_factory.h"
 #include "opentelemetry/exporters/otlp/otlp_http_exporter_options.h"

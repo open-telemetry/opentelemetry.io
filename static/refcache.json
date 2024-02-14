@@ -5223,6 +5223,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-01-30T16:14:58.880711-05:00"
   },
+  "https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/classopentelemetry_1_1sdk_1_1trace_1_1SpanExporter.html": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-14T16:43:04.418679+01:00"
+  },
   "https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/namespace_opentelemetry__metrics.html": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T19:10:51.712509-05:00"
