@@ -2,8 +2,9 @@
 title: Agent Configuration
 linkTitle: Configuration
 weight: 10
+aliases: [agent-config]
 # prettier-ignore
-cSpell:ignore: akka armeria classloaders couchbase Customizer datasource dbcp Dotel dropwizard dubbo finatra hikari hikaricp HSET httpasyncclient httpclient hystrix jaxrs jaxws jedis jodd kotlinx logback logmanager mojarra myfaces okhttp oshi rabbitmq ratpack rediscala redisson restlet rocketmq serverlessapis spymemcached twilio vaadin vertx vibur webflux webmvc
+cSpell:ignore: akka armeria classloaders couchbase Customizer datasource dbcp Dotel dropwizard dubbo finatra hikari hikaricp HSET httpasyncclient httpclient hystrix jaxrs jaxws jedis jodd kotlinx logback logmanager mojarra myfaces okhttp oshi pekko rabbitmq ratpack rediscala redisson restlet rocketmq serverlessapis spymemcached twilio vaadin vertx vibur webflux webmvc
 ---
 
 ## SDK Autoconfiguration
@@ -285,6 +286,8 @@ corresponding instrumentation name: {{% /config_option %}}
 | Apache HttpClient                                | `apache-httpclient`                         |
 | Apache Kafka                                     | `kafka`                                     |
 | Apache MyFaces                                   | `jsf-myfaces`                               |
+| Apache Pekko Actor                               | `pekko-actor`                               |
+| Apache Pekko HTTP                                | `pekko-http`                                |
 | Apache Pulsar                                    | `pulsar`                                    |
 | Apache RocketMQ                                  | `rocketmq-client`                           |
 | Apache Struts 2                                  | `struts`                                    |

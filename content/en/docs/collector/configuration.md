@@ -8,13 +8,41 @@ cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca l
 
 <!-- markdownlint-disable link-fragments -->
 
-You can configure the Collector to suit your observability needs. Before you
-learn how Collector configuration works, familiarize yourself with the following
-content:
+You can configure the OpenTelemetry Collector to suit your observability needs.
+Before you learn how Collector configuration works, familiarize yourself with
+the following content:
 
-- [Data collection concepts][dcc] in order to understand the repositories
-  applicable to the OpenTelemetry Collector.
+- [Data collection concepts][dcc], to understand the repositories applicable to
+  the OpenTelemetry Collector.
 - [Security guidance](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md)
+
+## Location {#location}
+
+By default, the Collector configuration is located in
+`/etc/<otel-directory>/config.yaml`, where `<otel-directory>` can be `otelcol`,
+`otelcol-contrib`, or another value, depending on the Collector version or the
+Collector distribution you're using.
+
+You can provide one or more configurations using the `--config` option. For
+example:
+
+```shell
+otelcol --config=customconfig.yaml
+```
+
+You can also provide configurations using environment variables, YAML paths, or
+HTTP URIs. For example:
+
+```shell
+otelcol --config=env:MY_CONFIG_IN_AN_ENVVAR` --config=https://server/config.yaml
+otelcol --config="yaml:exporters::debug::verbosity: normal"`
+```
+
+To validate a configuration file, use the `validate` command. For example:
+
+```shell
+otelcol validate --config=customconfig.yaml
+```
 
 ## Configuration structure {#basics}
 
@@ -38,16 +66,31 @@ which provide capabilities that can be added to the Collector, such as
 diagnostic tools. Extensions don't require direct access to telemetry data and
 are enabled through the [service](#service) section.
 
-The following is an example of Collector configuration with a receiver, a
-processor, an exporter, and three extensions:
+<a id="endpoint-0.0.0.0-warning"></a> The following is an example of Collector
+configuration with a receiver, a processor, an exporter, and three extensions.
+
+{{% alert title="Important" color="warning" %}}
+
+While it is generally preferable to bind endpoints to `localhost` when all
+clients are local, our example configurations use the "unspecified" address
+`0.0.0.0` as a convenience. The Collector currently defaults to `0.0.0.0`, but
+the default will be changed to `localhost` in the near future. For details
+concerning either of these choices as endpoint configuration value, see
+[Safeguards against denial of service attacks].
+
+[Safeguards against denial of service attacks]:
+  https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md#safeguards-against-denial-of-service-attacks
+
+{{% /alert %}}
 
 ```yaml
 receivers:
   otlp:
     protocols:
       grpc:
+        endpoint: 0.0.0.0:4317
       http:
-
+        endpoint: 0.0.0.0:4318
 processors:
   batch:
 
@@ -87,7 +130,9 @@ receivers:
   otlp:
     protocols:
       grpc:
+        endpoint: 0.0.0.0:4317
       http:
+        endpoint: 0.0.0.0:4318
   otlp/2:
     protocols:
       grpc:
@@ -137,6 +182,7 @@ receivers:
   otlp:
     protocols:
       grpc:
+        endpoint: 0.0.0.0:4317
 
 exporters: ${file:exporters.yaml}
 
@@ -163,6 +209,7 @@ receivers:
   otlp:
     protocols:
       grpc:
+        endpoint: 0.0.0.0:4317
 
 exporters:
   otlp:
@@ -217,6 +264,7 @@ receivers:
   jaeger:
     protocols:
       grpc:
+        endpoint: 0.0.0.0:4317
       thrift_binary:
       thrift_compact:
       thrift_http:
@@ -232,7 +280,9 @@ receivers:
   otlp:
     protocols:
       grpc:
+        endpoint: 0.0.0.0:4317
       http:
+        endpoint: 0.0.0.0:4318
 
   # Data sources: metrics
   prometheus:
@@ -392,7 +442,7 @@ exporters:
 
   # Data sources: metrics
   prometheus:
-    endpoint: localhost:8889
+    endpoint: 0.0.0.0:8889
     namespace: default
 
   # Data sources: metrics
@@ -723,6 +773,7 @@ receivers:
   otlp/auth:
     protocols:
       grpc:
+        endpoint: 0.0.0.0:4317
         auth:
           authenticator: oidc
 
@@ -758,7 +809,7 @@ receivers:
   otlp:
     protocols:
       grpc:
-        endpoint: localhost:4317
+        endpoint: 0.0.0.0:4317
 
 processors:
 
@@ -820,3 +871,23 @@ This creates two certificates:
   with the associated key in `cert-key.pem`.
 
 [dcc]: /docs/concepts/components/#collector
+
+## Override settings
+
+You can override Collector settings using the `--set` option. The settings you
+define with this method are merged into the final configuration after all
+`--config` sources are resolved and merged.
+
+The following examples show how to override settings inside nested sections:
+
+```shell
+# The following example sets the verbosity
+# level of the debug exporter to 'detailed'
+otelcol --set "exporters::debug::verbosity=detailed"
+# The following example overrides gRPC
+# settings for the OTLP receiver
+otelcol --set "receivers::otlp::protocols::grpc={endpoint:localhost:4317, compression: gzip}"
+```
+
+Note tha the `--set` option doesn't support setting a key that contains a dot or
+an equal sign.

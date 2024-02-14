@@ -72,6 +72,7 @@
     "serve:hugo": "npm run _serve:hugo",
     "serve:netlify": "npm run _serve:netlify",
     "serve": "npm run serve:hugo",
+    "sync": "./scripts/sync-submodules.pl",
     "test-and-fix": "npm run seq -- check fix:dict fix:filenames",
     "test": "npm run check",
     "update:pkg:docsy-dep": "npm install --save-dev autoprefixer@latest postcss-cli@latest",
@@ -83,16 +84,16 @@
     "update:submodule": "set -x && git submodule update --remote ${DEPTH:- --depth 1}"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.16",
+    "autoprefixer": "^10.4.17",
     "cspell": "^8.0.0",
     "gulp": "^4.0.2",
-    "hugo-extended": "0.121.2",
+    "hugo-extended": "0.122.0",
     "markdown-link-check": "^3.11.2",
     "markdownlint": "^0.33.0",
     "postcss-cli": "^11.0.0",
     "prettier": "^3.0.3",
     "require-dir": "^1.2.0",
-    "textlint": "^13.3.3",
+    "textlint": "^14.0.1",
     "textlint-filter-rule-allowlist": "^4.0.0",
     "textlint-filter-rule-comments": "^1.2.2",
     "textlint-rule-terminology": "^4.0.1",
@@ -113,7 +114,7 @@
     "path": "^0.12.7"
   },
   "optionalDependencies": {
-    "netlify-cli": "^17.0.1"
+    "netlify-cli": "^17.16.1"
   },
   "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
   "engines": {

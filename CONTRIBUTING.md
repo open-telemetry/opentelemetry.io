@@ -233,6 +233,7 @@ approvers and maintainers while doing code reviews:
 [hugo]: https://gohugo.io
 [localhost:1313]: http://localhost:1313
 [localhost:8888]: http://localhost:8888
+[netlify]: https://netlify.com
 [new-issue]:
   https://github.com/open-telemetry/opentelemetry.io/issues/new/choose
 [nodejs-rel]: https://nodejs.org/en/about/previous-releases

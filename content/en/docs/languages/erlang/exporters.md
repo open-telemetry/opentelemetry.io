@@ -4,7 +4,7 @@ weight: 50
 cSpell:ignore: chrono millis ostream rebar relx
 ---
 
-{{% docs/languages/exporters-intro erlang %}}
+{{% docs/languages/exporters/intro erlang %}}
 
 ## Exporting to the OpenTelemetry Collector
 

@@ -1,8 +1,6 @@
 ---
 title: Getting Started
 description: Get telemetry for your app in less than 5 minutes!
-# prettier-ignore
-cSpell:ignore: aarch autoconfigure autoreconfigure darwin helloworld Nanos rolldice springframework webmvc
 weight: 10
 ---
 

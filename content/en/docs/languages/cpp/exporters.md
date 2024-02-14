@@ -1,12 +1,11 @@
 ---
 title: Exporters
 weight: 50
-cSpell:ignore: chrono millis ostream
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
 
-{{% docs/languages/exporters-intro cpp %}}
+{{% docs/languages/exporters/intro cpp %}}
 
 ## Trace exporters
 

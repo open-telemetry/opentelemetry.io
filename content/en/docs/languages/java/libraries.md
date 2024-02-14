@@ -2,7 +2,7 @@
 title: Using instrumentation libraries
 linkTitle: Libraries
 weight: 40
-cSpell:ignore: autoconfigure getenv httpclient println
+cSpell:ignore: getenv httpclient println
 ---
 
 When you develop an app, you use third-party libraries and frameworks to
@@ -17,7 +17,7 @@ telemetry data for a library or framework.
 The Java agent for automatic instrumentation includes instrumentation libraries
 for many common Java frameworks. Most are turned on by default. If you need to
 turn off certain instrumentation libraries, you can
-[suppress them](../automatic/agent-config/#suppressing-specific-auto-instrumentation).
+[suppress them](../automatic/configuration/#suppressing-specific-auto-instrumentation).
 
 If you use [code-based instrumentation](../instrumentation), you can leverage
 some instrumentation libraries for your dependencies standalone. To find out

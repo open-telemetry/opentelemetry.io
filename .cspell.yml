@@ -33,6 +33,7 @@ words:
   - appender
   - appenders
   - aspecto
+  - autoconfigure
   - autoconfiguration
   - autoload
   - autoloaded
@@ -44,6 +45,7 @@ words:
   - cartservice
   - cassandra
   - checkoutservice
+  - classpath
   - cncf
   - currencyservice
   - daemonset
@@ -109,6 +111,7 @@ words:
   - otep
   - otlp
   - overridable
+  - outro
   - packagist
   - Paixão
   - parentbased

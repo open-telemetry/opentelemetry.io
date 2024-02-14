@@ -68,7 +68,9 @@ spec:
       otlp:
         protocols:
           grpc:
+            endpoint: 0.0.0.0:4317
           http:
+            endpoint: 0.0.0.0:4318
     processors:
       memory_limiter:
         check_interval: 1s
@@ -220,7 +222,7 @@ the default libraries by setting
 `OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED=false` and then use
 `OTEL_INSTRUMENTATION_[NAME]_ENABLED=true` where `[NAME]` is the name of the
 library. For more details, see
-[Suppressing specific auto-instrumentation](/docs/languages/java/automatic/agent-config/#suppressing-specific-auto-instrumentation).
+[Suppressing specific auto-instrumentation](/docs/languages/java/automatic/configuration/#suppressing-specific-auto-instrumentation).
 
 ```yaml
 apiVersion: opentelemetry.io/v1alpha1
@@ -247,7 +249,7 @@ spec:
 #### Learn more {#java-learn-more}
 
 For more details, see
-[Java agent Configuration](/docs/languages/java/automatic/agent-config/).
+[Java agent Configuration](/docs/languages/java/automatic/configuration/).
 
 ### Node.js
 
@@ -391,7 +393,7 @@ spec:
 
 #### Learn more {#python-learn-more}
 
-[See the Python agent Configuration docs for more details.](/docs/languages/python/automatic/agent-config/#disabling-specific-instrumentations)
+[See the Python agent Configuration docs for more details.](/docs/languages/python/automatic/configuration/#disabling-specific-instrumentations)
 
 ### Go
 

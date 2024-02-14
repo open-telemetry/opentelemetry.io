@@ -56,7 +56,7 @@ variables:
   instrumentations, see [Suppressing specific agent instrumentation][1].
 
   [1]:
-    /docs/languages/java/automatic/agent-config/#suppressing-specific-agent-instrumentation
+    /docs/languages/java/automatic/configuration/#suppressing-specific-agent-instrumentation
 
 For example, to only enable auto-instrumentation for Lambda and the AWS SDK, you
 would set the following environment variables:
