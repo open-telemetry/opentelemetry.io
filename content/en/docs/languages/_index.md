@@ -36,4 +36,4 @@ depends on is `Experimental`, it may be subject to future breaking changes.
 [auto]: /docs/kubernetes/operator/automatic/
 [instrumentation]: /docs/concepts/instrumentation/
 [otel-op]: /docs/kubernetes/operator/
-[SemConv]: /docs/concepts/semantic-conventions/
+[sem-conv]: /docs/concepts/semantic-conventions/
