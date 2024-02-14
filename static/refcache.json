@@ -2247,6 +2247,14 @@
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:05:04.809604-05:00"
   },
+  "https://github.com/dmathieu": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-14T08:44:43.625674121Z"
+  },
+  "https://github.com/dmathieu/rspec-otel": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-14T08:44:42.583247623Z"
+  },
   "https://github.com/dmsolr": {
     "StatusCode": 200,
     "LastSeen": "2024-01-18T20:04:59.339712-05:00"
@@ -6710,6 +6718,10 @@
   "https://rubygems.org/gems/opentelemetry-instrumentation-trilogy": {
     "StatusCode": 200,
     "LastSeen": "2024-01-22T15:38:54.618612+01:00"
+  },
+  "https://rubygems.org/gems/rspec-otel": {
+    "StatusCode": 200,
+    "LastSeen": "2024-02-14T08:44:44.34346372Z"
   },
   "https://rubygems.org/gems/sentry-opentelemetry": {
     "StatusCode": 200,
