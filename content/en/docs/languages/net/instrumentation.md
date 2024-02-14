@@ -240,6 +240,7 @@ add the following code at the beginning of your program, during any important st
 ```csharp
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
+using OpenTelemetry.Logs;
 
 //...
 
@@ -259,6 +260,14 @@ var meterProvider = Sdk.CreateMeterProviderBuilder()
     .AddMeter(serviceName)
     .AddConsoleExporter()
     .Build();
+
+var loggerFactory = LoggerFactory.Create(builder =>
+{
+    builder.AddOpenTelemetry(logging =>
+    {
+        logging.AddConsoleExporter();
+    });
+});
 
 //...
 
@@ -591,7 +600,7 @@ private int rollOnce()
     }
     catch (Exception ex)
     {
-        childActivity?.SetStatus(ActivityStatusCode.Error, ex.Message);
+        childActivity?.SetStatus(ActivityStatusCode.Error, "Something bad happened!");
         childActivity?.RecordException(ex);
         throw;
     }
