@@ -8,7 +8,7 @@ description: Manual instrumentation for OpenTelemetry Go
 cSpell:ignore: fatalf otlptrace sdktrace sighup
 ---
 
-{{% docs/languages/manual-intro %}}
+{{% docs/languages/instrumentation-intro %}}
 
 ## Setup
 

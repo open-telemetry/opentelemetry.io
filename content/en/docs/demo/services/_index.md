@@ -1,9 +1,10 @@
 ---
 title: Services
+aliases: [service_table, service-table]
 cSpell:ignore: loadgenerator
 ---
 
-View [Service Graph](../architecture/) to visualize request flows.
+To visualize request flows, see the [Service Diagram](../architecture/).
 
 | Service                                   | Language      | Description                                                                                                                                  |
 | ----------------------------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |

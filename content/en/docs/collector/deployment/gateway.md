@@ -118,6 +118,7 @@ receivers:
   otlp:
     protocols:
       grpc:
+        endpoint: 0.0.0.0:4317
 
 exporters:
   loadbalancing:
@@ -146,12 +147,14 @@ receivers:
   otlp:
     protocols:
       grpc:
+        endpoint: 0.0.0.0:4317
 
 exporters:
   loadbalancing:
     protocol:
       otlp:
-        insecure: true
+        tls:
+          insecure: true
     resolver:
       dns:
         hostname: collectors.example.com
@@ -170,13 +173,15 @@ receivers:
   otlp:
     protocols:
       grpc:
+        endpoint: 0.0.0.0:4317
 
 exporters:
   loadbalancing:
     routing_key: service
     protocol:
       otlp:
-        insecure: true
+        tls:
+          insecure: true
     resolver:
       dns:
         hostname: collectors.example.com

@@ -9,7 +9,7 @@ cSpell:ignore: getenv myhost SIGINT uuidgen WORKDIR
 If you use the Java agent for
 [automatic instrumentation](/docs/languages/java/automatic) you can learn how to
 setup resource detection following the
-[Agent Configuration Guide](/docs/languages/java/automatic/agent-config).
+[Agent Configuration Guide](/docs/languages/java/automatic/configuration).
 
 For manual instrumentation, you will find some introductions on how to set up
 resource detection below.
@@ -21,7 +21,7 @@ environments, like [Container](/docs/specs/semconv/resource/container/),
 [Host](/docs/specs/semconv/resource/host/) or
 [Operating System](/docs/specs/semconv/resource/os/). These can be used with or
 without
-[auto-configuration](/docs/languages/java/instrumentation/#automatic-configuration).
+[autoconfiguration](/docs/languages/java/instrumentation/#automatic-configuration).
 
 To use those providers, add the following dependency:
 

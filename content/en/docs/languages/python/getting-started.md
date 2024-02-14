@@ -640,9 +640,9 @@ emitted to the console, with separate counts for each roll value:
 
 ## Send telemetry to an OpenTelemetry Collector
 
-The [OpenTelemetry Collector](/docs/collector/getting-started/) is a critical
-component of most production deployments. Some examples of when it's beneficial
-to use a collector:
+The [OpenTelemetry Collector](/docs/collector/) is a critical component of most
+production deployments. Some examples of when it's beneficial to use a
+collector:
 
 - A single telemetry sink shared by multiple services, to reduce overhead of
   switching exporters
@@ -663,6 +663,9 @@ receivers:
   otlp:
     protocols:
       grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
 exporters:
   # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
   debug:

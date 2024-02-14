@@ -8,7 +8,7 @@ A non-exhaustive list of organizations offering solutions that consume
 OpenTelemetry natively via [OTLP](/docs/specs/otlp/), such as observability
 backends and observability pipelines.
 
-Some organizations provide a [distribution](/docs/concepts/distributions/) (of
+Some organizations provide a [distribution](/ecosystem/distributions/) (of
 customized OpenTelemetry components), that provides additional capabilities or
 for improved ease of use.
 

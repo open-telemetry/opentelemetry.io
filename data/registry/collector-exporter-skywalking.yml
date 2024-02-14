@@ -18,4 +18,4 @@ createdAt: 2022-10-27
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/skywalkingexporter
-  version: v0.92.0
+  version: v0.94.0

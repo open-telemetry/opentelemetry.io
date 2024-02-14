@@ -2,10 +2,9 @@
 title: The Humans of OpenTelemetry
 linkTitle: Humans of OTel
 date: 2023-12-22
-author: >-
-  [Adriana Villela](https://github.com/avillela) (Lightstep),
+author: '[Adriana Villela](https://github.com/avillela) (Lightstep)'
 # prettier-ignore
-cSpell:ignore: ADIANA ALEX Alex ARONOFF Aronoff BOGDAN Bogdan BOTEN Boten CARAMANOLIS Caramanolis CONSTANCE Constance Dapr DRUTU Drutu JACOB Jacob JURACI KANAL Kanal KRÖHLING PAIXĀO Paixāo PURVI Purvi TYLER Tyler utopic VILLELA YAHN Yahn youtube
+cSpell:ignore: adiana alex aronoff bogdan boten caramanolis constance dapr drutu jacob juraci kanal kröhling paixāo purvi tyler utopic villela yahn youtube
 ---
 
 What a year it has been for OpenTelemetry!
@@ -181,7 +180,7 @@ together.
 
 And in order to use all of these tools together, you need to have the data
 coming in, the telemetry actually be integrated, so you can't have three
-separate streams of telemetry. And then on the back-end, be like, I want to
+separate streams of telemetry. And then on the backend, be like, I want to
 cross-reference. All of that telemetry has to be organized into an actual graph.
 You need a graphical data structure that all these individual signals are a part
 of. For me, that is what modern Observability is all about.

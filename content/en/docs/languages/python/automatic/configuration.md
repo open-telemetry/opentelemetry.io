@@ -2,6 +2,7 @@
 title: Agent Configuration
 linkTitle: Configuration
 weight: 10
+aliases: [agent-config]
 # prettier-ignore
 cSpell:ignore: distro healthcheck mkdir myapp Starlette uninstrumented urllib virtualenv
 ---
@@ -44,13 +45,13 @@ Here's an explanation of what each configuration does:
   omitted, the default [Collector](/docs/collector/) endpoint will be used,
   which is `0.0.0.0:4317` for gRPC and `0.0.0.0:4318` for HTTP.
 - `exporter_otlp_headers` is required depending on your chosen Observability
-  backend. More info exporter OTLP headers be found
-  [here](/docs/concepts/sdk-configuration/otlp-exporter-configuration/#otel_exporter_otlp_headers).
+  backend. For more information on OTLP exporter headers, see
+  [OTEL_EXPORTER_OTLP_HEADERS](/docs/languages/sdk-configuration/otlp-exporter/#otel_exporter_otlp_headers).
 
 ## Environment Variables
 
 In some cases, configuring via
-[environment variables](/docs/concepts/sdk-configuration/) is more preferred.
+[environment variables](/docs/languages/sdk-configuration/) is more preferred.
 Any setting configurable with a command-line argument can also be configured
 with an Environment Variable.
 
