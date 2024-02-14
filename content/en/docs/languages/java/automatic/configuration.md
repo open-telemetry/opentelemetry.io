@@ -238,8 +238,10 @@ like
 and
 [Spring Security](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-security-config-6.0).
 
-This functionality is disabled by default, with the ability to enable for
-individual attributes.
+> **Note**: Given the sensitive nature of the data involved, this feature is
+> turned off by default while allowing selective activation for particular
+> attributes. Users are urged to thoroughly evaluate each attribute's privacy
+> implications before enabling the collection of the data.
 
 {{% config_option
 name="otel.instrumentation.common.enduser.enabled"
