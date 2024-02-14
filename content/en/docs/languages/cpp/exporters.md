@@ -7,198 +7,375 @@ weight: 50
 
 {{% docs/languages/exporters/intro cpp %}}
 
-## Trace exporters
+### Dependencies {#otlp-dependencies}
 
-### OStream exporter
+If you want to send telemetry data to an OTLP endpoint (like the
+[OpenTelemetry Collector](#collector-setup), [Jaeger](#jaeger) or
+[Prometheus](#prometheus)), you can choose between two different protocols to
+transport your data:
 
-The OStream exporter is useful for development and debugging tasks, and is the
-simplest to set up.
+- HTTP/protobuf
+- gRPC
 
-```cpp
-#include "opentelemetry/exporters/ostream/span_exporter_factory.h"
+Make sure that you have set the right cmake build variables while [building OpenTelemetry
+C++ from source](https://github.com/open-telemetry/opentelemetry-cpp/blob/main/INSTALL.md):
 
-namespace trace_exporter = opentelemetry::exporter::trace;
+- `-DWITH_OTLP_GRPC=ON`: To enable building OTLP gRPC exporter.
+- `-DWITH_OTLP_HTTP=ON`: To enable building OTLP HTTP exporter.
 
-auto exporter = trace_exporter::OStreamSpanExporterFactory::Create();
-```
+### Usage
 
-### OTLP endpoint
+Next, configure the exporter to point at an OTLP endpoint in your code.
 
-To send trace data to an OTLP endpoint (like the [collector](/docs/collector) or
-Jaeger) you'll want to configure an OTLP exporter that sends to your endpoint.
-
-#### OTLP HTTP Exporter
+{{< tabpane text=true >}} {{% tab "HTTP/Proto" %}}
 
 ```cpp
 #include "opentelemetry/exporters/otlp/otlp_http_exporter_factory.h"
 #include "opentelemetry/exporters/otlp/otlp_http_exporter_options.h"
-
-namespace otlp = opentelemetry::exporter::otlp;
-
-otlp::OtlpHttpExporterOptions opts;
-opts.url = "http://localhost:4318/v1/traces";
-
-auto exporter = otlp::OtlpHttpExporterFactory::Create(opts);
-```
-
-#### OTLP gRPC Exporter
-
-```cpp
-#include "opentelemetry/exporters/otlp/otlp_grpc_exporter_factory.h"
-#include "opentelemetry/exporters/otlp/otlp_grpc_exporter_options.h"
-
-namespace otlp = opentelemetry::exporter::otlp;
-
-otlp::OtlpGrpcExporterOptions opts;
-opts.endpoint = "localhost:4317";
-opts.use_ssl_credentials = true;
-opts.ssl_credentials_cacert_as_string = "ssl-certificate";
-
-auto exporter = otlp::OtlpGrpcExporterFactory::Create(opts);
-```
-
-You can find an example of how to use the OTLP exporter
-[here](https://github.com/open-telemetry/opentelemetry-cpp/blob/main/examples/otlp/README.md).
-
-#### Jaeger
-
-To try out the OTLP exporter, you can run
-[Jaeger](https://www.jaegertracing.io/) as an OTLP endpoint and for trace
-visualization in a docker container:
-
-```shell
-docker run -d --name jaeger \
-  -e COLLECTOR_ZIPKIN_HOST_PORT=:9411 \
-  -e COLLECTOR_OTLP_ENABLED=true \
-  -p 6831:6831/udp \
-  -p 6832:6832/udp \
-  -p 5778:5778 \
-  -p 16686:16686 \
-  -p 4317:4317 \
-  -p 4318:4318 \
-  -p 14250:14250 \
-  -p 14268:14268 \
-  -p 14269:14269 \
-  -p 9411:9411 \
-  jaegertracing/all-in-one:latest
-```
-
-### Zipkin
-
-To send trace data to a Zipkin endpoint you'll want to configure a Zipkin
-exporter that sends to your endpoint.
-
-```cpp
-#include "opentelemetry/exporters/zipkin/zipkin_exporter_factory.h"
-#include "opentelemetry/exporters/zipkin/zipkin_exporter_options.h"
-
-namespace zipkin = opentelemetry::exporter::zipkin;
-
-zipkin::ZipkinExporterOptions opts;
-opts.endpoint = "http://localhost:9411/api/v2/spans" ; // or export OTEL_EXPORTER_ZIPKIN_ENDPOINT="..."
-opts.service_name = "default_service" ;
-
-auto exporter = zipkin::ZipkinExporterFactory::Create(opts);
-```
-
-## Trace processors
-
-### Simple span processor
-
-A simple processor will send spans one by one to an exporter.
-
-```cpp
-#include "opentelemetry/sdk/trace/simple_processor_factory.h"
-
-namespace trace_sdk = opentelemetry::sdk::trace;
-
-auto processor = trace_sdk::SimpleSpanProcessorFactory::Create(std::move(exporter));
-```
-
-### Batch span processor
-
-A batch span processor will group several spans together, before sending them to
-an exporter.
-
-```cpp
+#include "opentelemetry/sdk/trace/processor.h"
 #include "opentelemetry/sdk/trace/batch_span_processor_factory.h"
 #include "opentelemetry/sdk/trace/batch_span_processor_options.h"
-
-namespace trace_sdk = opentelemetry::sdk::trace;
-
-trace_sdk::BatchSpanProcessorOptions opts;
-opts.max_queue_size = 2048;
-opts.max_export_batch_size = 512;
-
-auto processor = trace_sdk::BatchSpanProcessorFactory::Create(std::move(exporter), opts);
-```
-
-## Tracer provider
-
-```cpp
 #include "opentelemetry/sdk/trace/tracer_provider_factory.h"
+#include "opentelemetry/trace/provider.h"
+#include "opentelemetry/sdk/trace/tracer_provider.h"
+
+#include "opentelemetry/exporters/otlp/otlp_http_metric_exporter_factory.h"
+#include "opentelemetry/exporters/otlp/otlp_http_metric_exporter_options.h"
+#include "opentelemetry/metrics/provider.h"
+#include "opentelemetry/sdk/metrics/aggregation/default_aggregation.h"
+#include "opentelemetry/sdk/metrics/export/periodic_exporting_metric_reader.h"
+#include "opentelemetry/sdk/metrics/export/periodic_exporting_metric_reader_factory.h"
+#include "opentelemetry/sdk/metrics/meter_context_factory.h"
+#include "opentelemetry/sdk/metrics/meter_provider.h"
+#include "opentelemetry/sdk/metrics/meter_provider_factory.h"
+
+#include "opentelemetry/exporters/otlp/otlp_http_log_record_exporter_factory.h"
+#include "opentelemetry/exporters/otlp/otlp_http_log_record_exporter_options.h"
+#include "opentelemetry/logs/provider.h"
+#include "opentelemetry/sdk/logs/logger_provider_factory.h"
+#include "opentelemetry/sdk/logs/processor.h"
+#include "opentelemetry/sdk/logs/simple_log_record_processor_factory.h"
 
 namespace trace_api = opentelemetry::trace;
 namespace trace_sdk = opentelemetry::sdk::trace;
 
-auto provider = trace_sdk::TracerProviderFactory::Create(std::move(processor));
+namespace metric_sdk = opentelemetry::sdk::metrics;
+namespace metrics_api = opentelemetry::metrics;
 
-trace_api::Provider::SetTracerProvider(provider);
+namespace otlp = opentelemetry::exporter::otlp;
+
+namespace logs_api = opentelemetry::logs;
+namespace logs_sdk = opentelemetry::sdk::logs;
+
+
+void InitTracer()
+{
+  trace_sdk::BatchSpanProcessorOptions bspOpts{};
+  otlp::OtlpHttpExporterOptions opts;
+  opts.url = "http://localhost:4318/v1/traces";
+  auto exporter  = otlp::OtlpHttpExporterFactory::Create(opts);
+  auto processor = trace_sdk::BatchSpanProcessorFactory::Create(std::move(exporter), bspOpts);
+  std::shared_ptr<trace_api::TracerProvider> provider = trace_sdk::TracerProviderFactory::Create(std::move(processor));
+  trace_api::Provider::SetTracerProvider(provider);
+}
+
+void InitMetrics()
+{
+  otlp::OtlpHttpMetricExporterOptions opts;
+  opts.url = "http://localhost:4318/v1/metrics";
+  auto exporter = otlp::OtlpHttpMetricExporterFactory::Create(opts);
+  metric_sdk::PeriodicExportingMetricReaderOptions reader_options;
+  reader_options.export_interval_millis = std::chrono::milliseconds(1000);
+  reader_options.export_timeout_millis  = std::chrono::milliseconds(500);
+  auto reader = metric_sdk::PeriodicExportingMetricReaderFactory::Create(std::move(exporter), reader_options);
+  auto context = metric_sdk::MeterContextFactory::Create();
+  context->AddMetricReader(std::move(reader));
+  auto u_provider = metric_sdk::MeterProviderFactory::Create(std::move(context));
+  std::shared_ptr<metrics_api::MeterProvider> provider(std::move(u_provider));
+  metrics_api::Provider::SetMeterProvider(provider);
+}
+
+void InitLogger()
+{
+  otlp::OtlpHttpLogRecordExporterOptions opts;
+  opts.url = "http://localhost:4318/v1/logs";
+  auto exporter  = otlp::OtlpHttpLogRecordExporterFactory::Create(opts);
+  auto processor = logs_sdk::SimpleLogRecordProcessorFactory::Create(std::move(exporter));
+  std::shared_ptr<logs_api::LoggerProvider> provider =
+      logs_sdk::LoggerProviderFactory::Create(std::move(processor));
+  logs_api::Provider::SetLoggerProvider(provider);
+}
 ```
 
-## Metrics exporters
-
-### OTLP HTTP Exporter
+{{% /tab %}} {{% tab gRPC %}}
 
 ```cpp
-opentelemetry::exporter::otlp::OtlpHttpExporterOptions otlpOptions;
-otlpOptions.url = "http://localhost:4318/v1/metrics"; // or "http://localhost:4318/
-otlpOptions.aggregation_temporality = opentelemetry::sdk::metrics::AggregationTemporality::kCumulative; // or kDelta
-auto exporter = opentelemetry::exporter::otlp::OtlpHttpMetricExporterFactory::Create(otlpOptions);
-// Initialize and set the periodic metrics reader
-opentelemetry::sdk::metrics::PeriodicExportingMetricReaderOptions options;
-options.export_interval_millis = std::chrono::milliseconds(1000);
-options.export_timeout_millis  = std::chrono::milliseconds(500);
-std::unique_ptr<opentelemetry::sdk::metrics::MetricReader> reader{
-    new opentelemetry::sdk::metrics::PeriodicExportingMetricReader(std::move(exporter), options)};
+#include "opentelemetry/exporters/otlp/otlp_grpc_exporter_factory.h"
+#include "opentelemetry/exporters/otlp/otlp_grpc_exporter_options.h"
+#include "opentelemetry/sdk/trace/processor.h"
+#include "opentelemetry/sdk/trace/batch_span_processor_factory.h"
+#include "opentelemetry/sdk/trace/batch_span_processor_options.h"
+#include "opentelemetry/sdk/trace/tracer_provider_factory.h"
+#include "opentelemetry/trace/provider.h"
+#include "opentelemetry/sdk/trace/tracer_provider.h"
+
+#include "opentelemetry/exporters/otlp/otlp_grpc_metric_exporter_factory.h"
+#include "opentelemetry/exporters/otlp/otlp_grpc_metric_exporter_options.h"
+#include "opentelemetry/metrics/provider.h"
+#include "opentelemetry/sdk/metrics/aggregation/default_aggregation.h"
+#include "opentelemetry/sdk/metrics/export/periodic_exporting_metric_reader.h"
+#include "opentelemetry/sdk/metrics/export/periodic_exporting_metric_reader_factory.h"
+#include "opentelemetry/sdk/metrics/meter_context_factory.h"
+#include "opentelemetry/sdk/metrics/meter_provider.h"
+#include "opentelemetry/sdk/metrics/meter_provider_factory.h"
+
+#include "opentelemetry/exporters/otlp/otlp_grpc_log_record_exporter_factory.h"
+#include "opentelemetry/exporters/otlp/otlp_grpc_log_record_exporter_options.h"
+#include "opentelemetry/logs/provider.h"
+#include "opentelemetry/sdk/logs/logger_provider_factory.h"
+#include "opentelemetry/sdk/logs/processor.h"
+#include "opentelemetry/sdk/logs/simple_log_record_processor_factory.h"
+
+namespace trace_api = opentelemetry::trace;
+namespace trace_sdk = opentelemetry::sdk::trace;
+
+namespace metric_sdk = opentelemetry::sdk::metrics;
+namespace metrics_api = opentelemetry::metrics;
+
+namespace otlp = opentelemetry::exporter::otlp;
+
+namespace logs_api = opentelemetry::logs;
+namespace logs_sdk = opentelemetry::sdk::logs;
+
+void InitTracer()
+{
+  trace_sdk::BatchSpanProcessorOptions bspOpts{};
+  opentelemetry::exporter::otlp::OtlpGrpcExporterOptions opts;
+  opts.endpoint = "localhost:4317";
+  opts.use_ssl_credentials = true;
+  opts.ssl_credentials_cacert_as_string = "ssl-certificate";
+  auto exporter  = otlp::OtlpGrpcExporterFactory::Create(opts);
+  auto processor = trace_sdk::BatchSpanProcessorFactory::Create(std::move(exporter), bspOpts);
+  std::shared_ptr<opentelemetry::trace_api::TracerProvider> provider =
+      trace_sdk::TracerProviderFactory::Create(std::move(processor));
+  // Set the global trace provider
+  trace_api::Provider::SetTracerProvider(provider);
+}
+
+void InitMetrics()
+{
+  otlp::OtlpGrpcMetricExporterOptions opts;
+  opts.endpoint = "localhost:4317";
+  opts.use_ssl_credentials = true;
+  opts.ssl_credentials_cacert_as_string = "ssl-certificate";
+  auto exporter = otlp::OtlpGrpcMetricExporterFactory::Create(opts);
+  metric_sdk::PeriodicExportingMetricReaderOptions reader_options;
+  reader_options.export_interval_millis = std::chrono::milliseconds(1000);
+  reader_options.export_timeout_millis  = std::chrono::milliseconds(500);
+  auto reader = metric_sdk::PeriodicExportingMetricReaderFactory::Create(std::move(exporter), reader_options);
+  auto context = metric_sdk::MeterContextFactory::Create();
+  context->AddMetricReader(std::move(reader));
+  auto u_provider = metric_sdk::MeterProviderFactory::Create(std::move(context));
+  std::shared_ptr<opentelemetry::metrics::MeterProvider> provider(std::move(u_provider));
+  metrics_api::Provider::SetMeterProvider(provider);
+}
+
+void InitLogger()
+{
+  otlp::OtlpGrpcLogRecordExporterOptions opts;
+  opts.endpoint = "localhost:4317";
+  opts.use_ssl_credentials = true;
+  opts.ssl_credentials_cacert_as_string = "ssl-certificate";
+  auto exporter  = otlp::OtlpGrpcLogRecordExporterFactory::Create(opts);
+  auto processor = logs_sdk::SimpleLogRecordProcessorFactory::Create(std::move(exporter));
+  nostd::shared_ptr<logs_api::LoggerProvider> provider(
+      logs_sdk::LoggerProviderFactory::Create(std::move(processor)));
+  logs_api::Provider::SetLoggerProvider(provider);
+}
 ```
 
-### OTLP gRPC Exporter
+{{% /tab %}} {{< /tabpane >}}
+
+### Console
+
+To debug your instrumentation or see the values locally in development, you can
+use exporters writing telemetry data to the console (stdout).
+
+While [building OpenTelemetry C++ from source](https://github.com/open-telemetry/opentelemetry-cpp/blob/main/INSTALL.md) 
+the `OStreamSpanExporter` is included in the build by default.
 
 ```cpp
-opentelemetry::exporter::otlp::OtlpGrpcMetricExporterOptions otlpOptions;
-otlpOptions.endpoint = "localhost:4317/v1/metrics";  // or "localhost:4317
-otlpOptions.aggregation_temporality = opentelemetry::sdk::metrics::AggregationTemporality::kDelta; // or kCumulative
-auto exporter = opentelemetry::exporter::otlp::OtlpGrpcMetricExporterFactory::Create(otlpOptions);
-// Initialize and set the periodic metrics reader
-opentelemetry::sdk::metrics::PeriodicExportingMetricReaderOptions options;
-options.export_interval_millis = std::chrono::milliseconds(1000);
-options.export_timeout_millis  = std::chrono::milliseconds(500);
-std::unique_ptr<opentelemetry::sdk::metrics::MetricReader> reader{
-    new opentelemetry::sdk::metrics::PeriodicExportingMetricReader(std::move(exporter), options)};
+#include "opentelemetry/exporters/ostream/span_exporter_factory.h"
+#include "opentelemetry/sdk/trace/exporter.h"
+#include "opentelemetry/sdk/trace/processor.h"
+#include "opentelemetry/sdk/trace/simple_processor_factory.h"
+#include "opentelemetry/sdk/trace/tracer_provider_factory.h"
+#include "opentelemetry/trace/provider.h"
+
+#include "opentelemetry/exporters/ostream/metrics_exporter_factory.h"
+#include "opentelemetry/sdk/metrics/meter_provider.h"
+#include "opentelemetry/sdk/metrics/meter_provider_factory.h"
+#include "opentelemetry/metrics/provider.h"
+
+#include "opentelemetry/exporters/ostream/log_record_exporter_factory.h"
+#include "opentelemetry/logs/provider.h"
+#include "opentelemetry/sdk/logs/logger_provider_factory.h"
+#include "opentelemetry/sdk/logs/processor.h"
+#include "opentelemetry/sdk/logs/simple_log_record_processor_factory.h"
+
+namespace trace_api      = opentelemetry::trace;
+namespace trace_sdk      = opentelemetry::sdk::trace;
+namespace trace_exporter = opentelemetry::exporter::trace;
+
+namespace metrics_sdk      = opentelemetry::sdk::metrics;
+namespace metrics_api      = opentelemetry::metrics;
+namespace metrics_exporter = opentelemetry::exporter::metrics;
+
+namespace logs_api = opentelemetry::logs;
+namespace logs_sdk = opentelemetry::sdk::logs;
+namespace logs_exporter = opentelemetry::exporter::logs;
+
+void InitTracer()
+{
+  auto exporter  = trace_exporter::OStreamSpanExporterFactory::Create();
+  auto processor = trace_sdk::SimpleSpanProcessorFactory::Create(std::move(exporter));
+  std::shared_ptr<opentelemetry::trace::TracerProvider> provider = trace_sdk::TracerProviderFactory::Create(std::move(processor));
+  trace_api::Provider::SetTracerProvider(provider);
+}
+
+void InitMetrics()
+{
+    auto exporter = metrics_exporter::OStreamMetricExporterFactory::Create();
+    auto u_provider = metrics_sdk::MeterProviderFactory::Create();
+    std::shared_ptr<opentelemetry::metrics::MeterProvider> provider(std::move(u_provider));
+    auto *p = static_cast<metrics_sdk::MeterProvider *>(u_provider.get());
+    p->AddMetricReader(std::move(exporter));
+    metrics_api::Provider::SetMeterProvider(provider);
+}
+
+void InitLogger()
+{
+  auto exporter = logs_exporter::OStreamLogRecordExporterFactory::Create();
+  auto processor = logs_sdk::SimpleLogRecordProcessorFactory::Create(std::move(exporter));
+  nostd::shared_ptr<logs_api::LoggerProvider> provider(
+      logs_sdk::LoggerProviderFactory::Create(std::move(processor)));
+  logs_api::Provider::SetLoggerProvider(provider);
+}
 ```
 
-### Prometheus
+{{% docs/languages/exporters/jaeger %}}
 
-To send metrics to a Prometheus endpoint you'll want to configure a prometheus
-exporter
+{{% docs/languages/exporters/prometheus-setup %}}
+
+### Dependencies {#prometheus-dependencies}
+
+To send your trace data to [Prometheus](https://prometheus.io/), make sure that you have set the right cmake build variables while [building OpenTelemetry
+C++ from source](https://github.com/open-telemetry/opentelemetry-cpp/blob/main/INSTALL.md):
+
+```shell
+cmake -DWITH_PROMETHEUS=ON ...
+```
+
+Update your OpenTelemetry configuration to use the [Prometheus Exporter](https://github.com/open-telemetry/opentelemetry-cpp/tree/main/exporters/prometheus):
 
 ```cpp
-opentelemetry::sdk::metrics::PeriodicExportingMetricReaderOptions options;
-options.export_interval_millis = std::chrono::milliseconds(1000); //optional, to override default values
-options.export_timeout_millis  = std::chrono::milliseconds(500); // optional, to override default values
-opentelemetry::exporter::metrics::PrometheusExporterOptions prometheusOptions;
-prometheusOptions.url = "localhost:8080";
-std::unique_ptr<opentelemetry::sdk::metrics::MetricExporter> exporter{new opentelemetry::exporter::metrics::PrometheusExporter(prometheusOptions)};
-std::unique_ptr<opentelemetry::sdk::metrics::MetricReader> reader{
-    new opentelemetry::sdk::metrics::PeriodicExportingMetricReader(std::move(exporter), options)};
+#include "opentelemetry/exporters/prometheus/exporter_factory.h"
+#include "opentelemetry/exporters/prometheus/exporter_options.h"
+#include "opentelemetry/metrics/provider.h"
+#include "opentelemetry/sdk/metrics/meter_provider.h"
+#include "opentelemetry/sdk/metrics/meter_provider_factory.h"
+
+namespace metrics_sdk      = opentelemetry::sdk::metrics;
+namespace metrics_api      = opentelemetry::metrics;
+namespace metrics_exporter = opentelemetry::exporter::metrics;
+
+void InitMetrics()
+{
+    metrics_exporter::PrometheusExporterOptions opts;
+    opts.url = "localhost:9464";
+    auto prometheus_exporter = metrics_exporter::PrometheusExporterFactory::Create(opts);
+    auto u_provider = metrics_sdk::MeterProviderFactory::Create();
+    auto *p = static_cast<metrics_sdk::MeterProvider *>(u_provider.get());
+    p->AddMetricReader(std::move(prometheus_exporter));
+    std::shared_ptr<metrics_api::MeterProvider> provider(std::move(u_provider));
+    metrics_api::Provider::SetMeterProvider(provider);
+}
 ```
 
-To learn more on how to use the Prometheus exporter, try out the
-[prometheus example](https://github.com/open-telemetry/opentelemetry-cpp/tree/main/examples/prometheus)
+With the above you can access your metrics at <http://localhost:9464/metrics>.
+Prometheus or an OpenTelemetry Collector with the Prometheus receiver can scrape
+the metrics from this endpoint.
 
-## Next steps
+{{% docs/languages/exporters/zipkin-setup %}}
 
-Enriching your codebase with
-[manual instrumentation](/docs/languages/cpp/instrumentation) gives you
-customized observability data.
+### Dependencies {#zipkin-dependencies}
+
+To send your trace data to [Zipkin](https://zipkin.io/), make sure that you have set the right cmake build variables while [building OpenTelemetry
+C++ from source](https://github.com/open-telemetry/opentelemetry-cpp/blob/main/INSTALL.md):
+
+```shell
+cmake -DWITH_ZIPKIN=ON ...
+```
+
+Update your OpenTelemetry configuration to use the [Zipkin Exporter](https://github.com/open-telemetry/opentelemetry-cpp/tree/main/exporters/zipkin) and to send data to
+your Zipkin backend:
+
+```cpp
+#include "opentelemetry/exporters/zipkin/zipkin_exporter_factory.h"
+#include "opentelemetry/sdk/resource/resource.h"
+#include "opentelemetry/sdk/trace/processor.h"
+#include "opentelemetry/sdk/trace/simple_processor_factory.h"
+#include "opentelemetry/sdk/trace/tracer_provider_factory.h"
+#include "opentelemetry/trace/provider.h"
+
+namespace trace     = opentelemetry::trace;
+namespace trace_sdk = opentelemetry::sdk::trace;
+namespace zipkin    = opentelemetry::exporter::zipkin;
+namespace resource  = opentelemetry::sdk::resource;
+
+void InitTracer()
+{
+  zipkin::ZipkinExporterOptions opts;
+  resource::ResourceAttributes attributes = {{"service.name", "zipkin_demo_service"}};
+  auto resource                           = resource::Resource::Create(attributes);
+  auto exporter                           = zipkin::ZipkinExporterFactory::Create(opts);
+  auto processor = trace_sdk::SimpleSpanProcessorFactory::Create(std::move(exporter));
+  std::shared_ptr<opentelemetry::trace::TracerProvider> provider =
+      trace_sdk::TracerProviderFactory::Create(std::move(processor), resource);
+  // Set the global trace provider
+  trace::Provider::SetTracerProvider(provider);
+}
+```
+
+
+{{% docs/languages/exporters/outro python "https://opentelemetry-cpp.readthedocs.io/en/latest/otel_docs/classopentelemetry_1_1sdk_1_1trace_1_1SpanExporter.html" %}}
+
+{{< tabpane text=true >}} {{% tab Batch %}}
+```cpp
+#include "opentelemetry/exporters/otlp/otlp_http_exporter_factory.h"
+#include "opentelemetry/exporters/otlp/otlp_http_exporter_options.h"
+#include "opentelemetry/sdk/trace/processor.h"
+#include "opentelemetry/sdk/trace/batch_span_processor_factory.h"
+#include "opentelemetry/sdk/trace/batch_span_processor_options.h"
+
+opentelemetry::sdk::trace::BatchSpanProcessorOptions options{};
+
+auto exporter  = opentelemetry::exporter::otlp::OtlpHttpExporterFactory::Create(opts);
+auto processor = opentelemetry::sdk::trace::BatchSpanProcessorFactory::Create(std::move(exporter), options);
+```
+
+{{% /tab %}} {{% tab Simple %}}
+
+```cpp
+#include "opentelemetry/exporters/otlp/otlp_http_exporter_factory.h"
+#include "opentelemetry/exporters/otlp/otlp_http_exporter_options.h"
+#include "opentelemetry/sdk/trace/processor.h"
+#include "opentelemetry/sdk/trace/simple_processor_factory.h"
+
+auto exporter  = opentelemetry::exporter::otlp::OtlpHttpExporterFactory::Create(opts);
+auto processor = opentelemetry::sdk::trace::SimpleSpanProcessorFactory::Create(std::move(exporter));
+```
+
+{{< /tab >}} {{< /tabpane>}}
+
+{{% /docs/languages/exporters/outro %}}
