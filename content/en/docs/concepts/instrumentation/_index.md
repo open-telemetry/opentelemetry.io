@@ -13,8 +13,7 @@ from the system's components must emit [traces](/docs/concepts/signals/traces/),
 [logs](/docs/concepts/signals/logs/).
 
 OpenTelemetry provides [APIs and SDKs for eleven languages](/docs/languages) to
-facilitate the process of instrumenting your code. Among others it provides the
-following benefits:
+facilitate instrumenting your code. Among others it provides the following benefits:
 
 - Each language-specific implementation of the API and SDK follows the
   requirements and expectations of the
@@ -22,11 +21,11 @@ following benefits:
 - Libraries can leverage the OpenTelemetry API as a dependency, which will have
   no impact on applications using that library, unless the OpenTelemetry SDK is
   imported.
-- For each [signal](/docs/concepts/signals) (traces, metrics, logs) you will
-  find methods to create them, process them and export them.
-- With [context propagation](/docs/concepts/context-propagation) being built
-  into the implementations, you can correlate signals, regardless of where they
-  are generated
+- For each [signal](/docs/concepts/signals) (traces, metrics, logs) you have
+  several methods at your disposals to create, process, and export them.
+- With [context propagation](/docs/concepts/context-propagation) built into
+   the implementations, you can correlate signals regardless of where they
+   are generated.
 - [Resources](/docs/concepts/resources) and
   [Instrumentation Scopes](/docs/concepts/instrumentation-scope) allow grouping
   of signals, by different entities.
@@ -44,9 +43,9 @@ for those without such an integration.
 
 As [ops](/docs/getting-started/ops/) you will find
 [zero-code](/docs/concepts/instrumentation/zero-code) solutions for many
-languages, that will add instrumentation to an application without you knowing
-about the inner workings of that application.
+languages that add instrumentation to an application without having to know
+about the inner workings of that application or service.
 
-For most languages it is possible to use both approaches at the same time, so
+For most languages, you can use both approaches at the same time, so that
 you can start with a zero-code approach to gain insights quickly and then update
-your code with embedded more granular observability.
+your code with embedded, more granular observability you add manually.

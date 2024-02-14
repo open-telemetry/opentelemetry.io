@@ -1,33 +1,37 @@
 ---
 title: Zero-Code
 description: >-
-  Learn how to add observability to an application without the need to touch the
+  Learn how to add observability to an application without the need to write more
   code
 weight: 10
 aliases: [automatic]
 ---
 
-As [ops](/docs/getting-started/ops/) you may want to add observability to an
-application (or to many applications!) without being able to add instrumentation
-to the code base. Or, you may be looking for a way to quickly gain some basic
-observability for an application, before diving into learning how to use the
-OpenTelemetry API & SDK for
+As [ops](/docs/getting-started/ops/) you might want to add observability to one
+or more applications without having to edit the source, probably because you can't
+or you're not allowed to. In other cases, you might be looking for a way to quickly
+gain some OTel observability for a service before diving into learning how to use
+the OpenTelemetry API & SDK for
 [code-based instrumentation](/docs/concepts/instrumentation/code-based).
 
-In those cases you will be able to leverage language specific zero-code
-solutions, that use mechanisms like byte-code instrumentation, monkey patching
-or eBPF, to inject calls to the OpenTelemetry API & SDK into your application.
+In all the previous cases, you can leverage language specific zero-code
+solutions, which use mechanisms like bytecode instrumentation, monkey patching,
+or eBPF to inject calls to the OpenTelemetry API and SDK into your application.
 
-While the underlying mechanism depends on the language, at a minimum this will
-add the OpenTelemetry API and SDK capabilities to your application. Additionally
-they may add a set of
+While the underlying mechanism depends on the language, zero-code
+instrumentation adds the OpenTelemetry API and SDK capabilities to your
+application with almost no effort. In addition, you can use the same process
+to add a set of
 [Instrumentation Libraries](/docs/concepts/instrumentation/libraries) and
 [exporter](/docs/concepts/components/#exporters) dependencies.
 
-Configuration is available via environment variables and possibly language
-specific means such as system properties in Java. At a minimum, a service name
-must be configured to identify the service being instrumented. A variety of
-other configuration options are available and may include:
+You can configure zero-code instrumentation through environment variables
+and other language-specific mechanisms, such as system properties or
+arguments passed to initialization methods. To get started, you only need
+a service name configured so that you can identify the service in the
+observability backend of your choice.
+
+Other configuration options are available, including:
 
 - Data source specific configuration
 - Exporter configuration
