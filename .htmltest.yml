@@ -8,6 +8,7 @@ TestFilesConcurrently: true
 IgnoreDirs:
   - ^blog/(\d+/)?page/\d+
 IgnoreInternalURLs: # list of paths
+  - /schemas/latest
 IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^/docs/languages/\w+/(api|examples|registry)/$
   - ^/docs/collector/registry/$

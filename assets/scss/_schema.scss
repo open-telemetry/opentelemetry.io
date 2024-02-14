@@ -1,0 +1,22 @@
+.ot-schema-list,
+.ot-schemas-404 {
+  // Hide the sidebar. Add the sidebar's number of col to `main`
+  main {
+    @extend .col-md-10;
+  }
+
+  .td-sidebar {
+    display: none;
+  }
+
+  main td code {
+    background-color: inherit;
+  }
+
+  // Fixes https://github.com/open-telemetry/opentelemetry.io/issues/1102
+  // TODO: upstream
+  .td-sidebar-toc {
+    margin-top: 4rem;
+    top: 0;
+  }
+}
