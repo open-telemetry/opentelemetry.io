@@ -1188,7 +1188,7 @@ meter
 Logs are distinct from metrics and traces in that **there is no user-facing
 OpenTelemetry logs API**. Instead, there is tooling to bridge logs from existing
 popular log frameworks (e.g. SLF4j, JUL, Logback, Log4j) into the OpenTelemetry
-ecosystem.
+ecosystem. For rationale behind this design decision, see [Logging specification](https://github.com/docs/specs/otel/logs/).
 
 The two typical workflows discussed below each cater to different application
 requirements.
