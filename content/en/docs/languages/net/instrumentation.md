@@ -15,9 +15,8 @@ you can also use [automatic instrumentation](/docs/languages/net/automatic/)
 to get started and then enrich your code with manual instrumentation as needed.
 
 Also, for libraries your code depends on, you don't have to write
-instrumentation code yourself, since they might come with OpenTelemetry
-or you can make use of
-[instrumentation libraries](/docs/languages/net/libraries/).
+instrumentation code yourself, since they might be already instrumented or there are 
+[instrumentation libraries](/docs/languages/net/libraries/) for them.
 
 {{% /alert %}}
 
@@ -59,37 +58,36 @@ Create the library file named `Dice.cs` and add the following code to it:
 
 ```csharp
 /*Dice.cs*/
-namespace otel
+
+public class Dice
 {
-    public class Dice
+    private int min;
+    private int max;
+
+    public Dice(int min, int max)
     {
-        private int min;
-        private int max;
+        this.min = min;
+        this.max = max;
+    }
 
-        public Dice(int min, int max)
+    public List<int> rollTheDice(int rolls)
+    {
+        List<int> results = new List<int>();
+
+        for (int i = 0; i < rolls; i++)
         {
-            this.min = min;
-            this.max = max;
+            results.Add(rollOnce());
         }
+        
+        return results;
+    }
 
-        public List<int> rollTheDice(int rolls)
-        {
-            List<int> results = new List<int>();
-
-            for (int i = 0; i < rolls; i++)
-            {
-                results.Add(rollOnce());
-            }
-            
-            return results;
-        }
-
-        private int rollOnce()
-        {
-            return Random.Shared.Next(min, max + 1);
-        }
+    private int rollOnce()
+    {
+        return Random.Shared.Next(min, max + 1);
     }
 }
+
 ```
 
 Create the app file `DiceController.cs` and add the following code to it:
@@ -99,44 +97,43 @@ Create the app file `DiceController.cs` and add the following code to it:
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
-namespace otel
+
+public class DiceController : ControllerBase
 {
-    public class DiceController : ControllerBase
+    private ILogger<DiceController> logger;
+
+    public DiceController(ILogger<DiceController> logger)
     {
-        private ILogger<DiceController> logger;
+        this.logger = logger;
+    }
 
-        public DiceController(ILogger<DiceController> logger)
+    [HttpGet("/rolldice")]
+    public List<int> RollDice(string player, int? rolls)
+    {
+        if(!rolls.HasValue)
         {
-            this.logger = logger;
+            logger.LogError("Missing rolls parameter");
+            throw new HttpRequestException("Missing rolls parameter", null, HttpStatusCode.BadRequest);
+        }
+            
+        var result = new Dice(1, 6).rollTheDice(rolls.Value);
+
+        if (string.IsNullOrEmpty(player))
+        {
+            logger.LogInformation("Anonymous player is rolling the dice: {result}", result);
+        }
+        else
+        {
+            logger.LogInformation("{player} is rolling the dice: {result}", player, result);
         }
 
-        [HttpGet("/rolldice")]
-        public List<int> RollDice(string player, int? rolls)
-        {
-            if(!rolls.HasValue)
-            {
-                logger.LogError("Missing rolls parameter");
-                throw new HttpRequestException("Missing rolls parameter", null, HttpStatusCode.BadRequest);
-            }
-                
-            var result = new Dice(1, 6).rollTheDice(rolls.Value);
-
-            if (string.IsNullOrEmpty(player))
-            {
-                logger.LogInformation("Anonymous player is rolling the dice: {result}", result);
-            }
-            else
-            {
-                logger.LogInformation("{player} is rolling the dice: {result}", player, result);
-            }
-
-            return result;
-        }
+        return result;
     }
 }
+
 ```
 
-Replace the content of the program.cs file with the following code:
+Replace the content of the Program.cs file with the following code:
 
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
@@ -154,7 +151,6 @@ To ensure that it is working, run the application with the following command and
 open <http://localhost:8080/rolldice?rolls=12> in your web browser:
 
 ```sh
-dotnet build
 dotnet run
 ```
 
@@ -191,7 +187,7 @@ dotnet add package OpenTelemetry.Instrumentation.AspNetCore
 
 ### Initialize the SDK
 
-{{% alert title="Note" color="info" %}} If you’re instrumenting a library,  you dont need to initialize the sdk. {{% /alert %}}
+{{% alert title="Note" color="info" %}} If you’re instrumenting a library,  you dont need to initialize the SDK. {{% /alert %}}
 
 It is important to configure an instance of the OpenTelemetry SDK as early as possible in your application.
 
@@ -212,10 +208,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenTelemetry()
     .ConfigureResource(resource => resource.AddService(
-        serviceName: serviceName, 
+        serviceName: serviceName,
         serviceVersion: serviceVersion))
     .WithTracing(tracing => tracing
         .AddSource(serviceName)
+        .AddAspNetCoreInstrumentation()
         .AddConsoleExporter())
     .WithMetrics(metrics => metrics
         .AddMeter(serviceName)
@@ -340,22 +337,20 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Net;
 
-namespace otel
+public class DiceController : ControllerBase
 {
-    public class DiceController : ControllerBase
+    private ILogger<DiceController> logger;
+    
+    public static readonly ActivitySource MyActivitySource = new("Dice.Server", "1.0.0");
+
+    public DiceController(ILogger<DiceController> logger)
     {
-        private ILogger<DiceController> logger;
-        
-        public static readonly ActivitySource MyActivitySource = new("Dice.Server", "1.0.0");
-
-        public DiceController(ILogger<DiceController> logger)
-        {
-            this.logger = logger;
-        }
-
-        //...
+        this.logger = logger;
     }
+
+    //...
 }
+
 
 ```
 
@@ -365,23 +360,20 @@ And second, in the library file `Dice.cs`:
 
 using System.Diagnostics;
 
-namespace otel
+public class Dice
 {
-    public class Dice
+    public static readonly ActivitySource MyActivitySource = new("Dice.Lib", "1.0.0");
+    
+    private int min;
+    private int max;
+
+    public Dice(int min, int max)
     {
-        public static readonly ActivitySource MyActivitySource = new("Dice.Lib", "1.0.0");
-        
-        private int min;
-        private int max;
-
-        public Dice(int min, int max)
-        {
-            this.min = min;
-            this.max = max;
-        }
-
-        //...
+        this.min = min;
+        this.max = max;
     }
+
+    //...
 }
 
 ```
