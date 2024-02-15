@@ -44,7 +44,7 @@ library, follow the instructions here to adapt the process to your own code.
 
 ### Prerequisites
 
-Ensure that you have the following installed locally:
+For running the example application, ensure that you have the following installed locally:
 
 - Java JDK 17+, due to the use of Spring Boot 3; [Java 8+ otherwise][java-vers]
 - [Gradle](https://gradle.org/) or [Maven](https://maven.apache.org/)
