@@ -369,14 +369,8 @@ using [Netlify](https://www.netlify.com/).
   the OpenTelemetry website with your changes applied. This is how reviewers
   check your changes.
 
-Other checks might also fail, including:
-
-- File name checks
-- Links resolution
-- Markdown formatting
-- Spelling
-
-GitHub also automatically assigns labels to a PR to help reviewers.
+Other checks might also fail, please see the
+[list of all PR checks](/docs/contributing/pr-checks).
 
 #### Fix content issues automatically
 
