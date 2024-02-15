@@ -30,8 +30,8 @@ sure that you pull those changes locally.
 
 ## Easy CLA
 
-This check will fail, if you didn't
-[sign the CLA](/docs/contributing/#sign-the-cla).
+This check fails if you haven't
+[signed the CLA](/docs/contributing/#sign-the-cla).
 
 ## Netlify deployment
 
