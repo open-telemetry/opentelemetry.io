@@ -42,11 +42,10 @@ more information.
 
 To make sure that contributions follow our
 [style guide](/docs/contributing/style-guide) we have implemented a set of
-checks that verify style guide rules and fail l if they
-find any issues.
+checks that verify style guide rules and fail l if they find any issues.
 
-The following list describes current checks and what you can do to fix
-related errors:
+The following list describes current checks and what you can do to fix related
+errors:
 
 - `TEXT linter`: This check verifies that
   [OpenTelemetry-specific terms and words are used consistently across the site](/docs/contributing/style-guide#opentelemetryio-word-list).
@@ -73,8 +72,8 @@ related errors:
   new commit.
 - `BUILD and CHECK LINKS` / `REFCACHE updates?`: This check verifies that all
   links that your commits are introducing are functional. Run
-  `npm run check:links` to check them locally. This also updates the reference cache,
-  or `REFCACHE`. Push any changes to the `REFCACHE` in a new commit.
+  `npm run check:links` to check them locally. This also updates the reference
+  cache, or `REFCACHE`. Push any changes to the `REFCACHE` in a new commit.
 - `WARNINGS in build log?`: If this check fails, review the build log for any
   other potential issues. Ask maintainers for help, if you are unsure how to
   recover.

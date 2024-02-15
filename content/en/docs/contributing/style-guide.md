@@ -82,8 +82,8 @@ title: registryEntryTitle
 
 {{% alert title="Note" color="warning" %}}
 
-If you have multiple words in the cSpell ignore list, run
-`npm run fix:dict` to make sure that those words are in alphabetical order.
+If you have multiple words in the cSpell ignore list, run `npm run fix:dict` to
+make sure that those words are in alphabetical order.
 
 {{% /alert %}}
 
