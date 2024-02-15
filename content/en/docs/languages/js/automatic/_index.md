@@ -51,7 +51,7 @@ used. You can use the environment variable `OTEL_NODE_RESOURCE_DETECTORS` to
 enable only certain detectors, or to completely disable them.
 
 To see the full range of configuration options, see
-[Module Configuration](module-config).
+[Module Configuration](configuration).
 
 ## Supported libraries and frameworks
 

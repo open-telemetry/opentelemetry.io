@@ -61,7 +61,7 @@ opentelemetry-instrument \
 ```
 
 To see the full range of configuration options, see
-[Agent Configuration](agent-config).
+[Agent Configuration](configuration).
 
 ## Supported libraries and frameworks
 

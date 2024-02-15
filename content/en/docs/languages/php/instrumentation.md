@@ -8,7 +8,7 @@ cSpell:ignore: guzzlehttp myapp
 
 <!-- markdownlint-disable no-duplicate-heading -->
 
-{{% docs/languages/manual-intro %}}
+{{% docs/languages/instrumentation-intro %}}
 
 ## Example app preparation {#example-app}
 

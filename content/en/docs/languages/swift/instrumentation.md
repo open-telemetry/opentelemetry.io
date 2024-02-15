@@ -5,7 +5,7 @@ aliases: [manual]
 description: Instrumentation for OpenTelemetry Swift
 ---
 
-{{% docs/languages/manual-intro %}}
+{{% docs/languages/instrumentation-intro %}}
 
 ## Setup
 

@@ -8,7 +8,7 @@ cSpell:ignore: dicelib Millis rolldice
 description: Instrumentation for OpenTelemetry JavaScript
 ---
 
-{{% docs/languages/manual-intro %}}
+{{% docs/languages/instrumentation-intro %}}
 
 {{% alert title="Note" color="info" %}}
 
