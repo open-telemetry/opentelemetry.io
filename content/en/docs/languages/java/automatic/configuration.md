@@ -228,7 +228,7 @@ span link connecting it to the producer trace.
 > **Note**: The property/environment variable names listed in the table are
 > still experimental, and thus are subject to change.
 
-### Capturing Enduser Attributes
+### Capturing enduser attributes
 
 You can configure the agent to capture
 [general identity attributes](/docs/specs/semconv/general/attributes/#general-identity-attributes)
@@ -240,8 +240,8 @@ and
 
 > **Note**: Given the sensitive nature of the data involved, this feature is
 > turned off by default while allowing selective activation for particular
-> attributes. Users are urged to thoroughly evaluate each attribute's privacy
-> implications before enabling the collection of the data.
+> attributes. You must carefully evaluate each attribute's privacy implications
+> before enabling the collection of the data.
 
 {{% config_option
 name="otel.instrumentation.common.enduser.enabled"
