@@ -369,7 +369,7 @@ using [Netlify](https://www.netlify.com/).
   the OpenTelemetry website with your changes applied. This is how reviewers
   check your changes.
 
-Other checks might also fail, please see the
+Other checks might also fail, see the
 [list of all PR checks](/docs/contributing/pr-checks).
 
 #### Fix content issues automatically

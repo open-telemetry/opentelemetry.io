@@ -52,7 +52,7 @@ file.
 
 Run `npm run check:markdown` to verify that all files follow the standard.
 
-Run `npm run fix:format` to fix markdown related formatting issues.
+Run `npm run fix:format` to fix Markdown related formatting issues.
 
 ## Spell checking
 
@@ -65,7 +65,7 @@ file.
 Run `npm run check:spelling` to verify that all your words are spelled
 correctly. If `cspell` indicates an `Unknown word` error, verify if you wrote
 that word correctly. If so, add this word to the `cSpell:ignore` section at the
-top of your file. If no such section exists, you can add it to the frontmatter
+top of your file. If no such section exists, you can add it to the front matter
 of a Markdown file or as a comment at the top of any other file:
 
 ```markdown
@@ -82,7 +82,7 @@ title: registryEntryTitle
 
 {{% alert title="Note" color="warning" %}}
 
-If you have multiple words in the cSpell ignore list, please run
+If you have multiple words in the cSpell ignore list, run
 `npm run fix:dict` to make sure that those words are in alphabetical order.
 
 {{% /alert %}}
@@ -95,6 +95,6 @@ submitting a PR, or run it afterwards and push an additional commit.
 
 ## File names
 
-All file names should should be in
+All file names should be in
 [kebab case](https://en.wikipedia.org/wiki/Letter_case#Kebab_case). Run
 `npm fix:filenames` to automatically rename your files.
