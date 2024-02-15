@@ -6,9 +6,7 @@ tags:
   - ruby
   - rspec
 license: MIT
-description:
-  The RSpec matchers tool provides a set of matchers to make it easier to write
-  unit tests checking the presence of telemetry data.
+description: The RSpec matchers tool provides a set of matchers to make it easier to write unit tests checking the presence of telemetry data.
 authors:
   - name: Damien Mathieu
     url: https://github.com/dmathieu
@@ -18,4 +16,4 @@ createdAt: 2024-02-13
 package:
   registry: gems
   name: rspec-otel
-  version: 0.0.1
+  version: 0.0.2
