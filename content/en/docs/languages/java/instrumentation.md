@@ -419,11 +419,16 @@ OTEL_SERVICE_NAME=dice-server \
 OTEL_TRACES_EXPORTER=logging \
 OTEL_METRICS_EXPORTER=logging \
 OTEL_LOGS_EXPORTER=logging \
+OTEL_METRIC_EXPORT_INTERVAL=15000 \
 java -jar ./build/libs/java-simple.jar
 ```
 
 This basic setup has no effect on your app yet. You need to add code for
 [traces](#traces), [metrics](#metrics), and/or [logs](#logs).
+
+Note that `OTEL_METRIC_EXPORT_INTERVAL=15000` (milliseconds) is a temporary
+setting to test that your metrics are properly generated. Remember to remove the
+setting once you are done testing. The default is 60000 milliseconds.
 
 #### Manual Configuration
 
@@ -1190,9 +1195,11 @@ meter
 
 ## Logs
 
-Logs are distinct from Metrics and Tracing in that there is no user-facing logs
-API. Instead, there is tooling to bridge logs from existing popular log
-frameworks (e.g. SLF4j, JUL, Logback, Log4j) into the OpenTelemetry ecosystem.
+Logs are distinct from metrics and traces in that **there is no user-facing
+OpenTelemetry logs API**. Instead, there is tooling to bridge logs from existing
+popular log frameworks (e.g. SLF4j, JUL, Logback, Log4j) into the OpenTelemetry
+ecosystem. For rationale behind this design decision, see
+[Logging specification](/docs/specs/otel/logs/).
 
 The two typical workflows discussed below each cater to different application
 requirements.
@@ -1544,6 +1551,11 @@ The traces, metrics or logs exporters can be set via the `OTEL_TRACES_EXPORTER`,
 example `OTEL_TRACES_EXPORTER=jaeger` configures your application to use the
 Jaeger exporter. The corresponding Jaeger exporter library has to be provided in
 the classpath of the application as well.
+
+If you use the `console` or `logging` exporter for metrics, consider temporarily
+setting `OTEL_METRIC_EXPORT_INTERVAL` to a small value like `15000`
+(milliseconds) while testing that your metrics are properly recorded. Remember
+to remove the setting once you are done testing.
 
 It's also possible to set up the propagators via the `OTEL_PROPAGATORS`
 environment variable, like for example using the `tracecontext` value to use
