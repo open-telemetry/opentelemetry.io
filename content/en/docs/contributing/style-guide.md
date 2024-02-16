@@ -52,7 +52,7 @@ file.
 
 Run `npm run check:markdown` to verify that all files follow the standard.
 
-Run `npm run fix:format` to fix Markdown related formatting issues.
+Run `npm run fix:markdown` to fix Markdown related formatting issues.
 
 ## Spell checking
 
