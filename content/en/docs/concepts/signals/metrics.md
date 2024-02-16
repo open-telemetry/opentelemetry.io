@@ -73,6 +73,10 @@ The instrument kind is one of the following:
   A histogram is a good choice if you are interested in value statistics. For
   example: How many requests take fewer than 1s?
 
+For more on synchronous and asynchronous instruments, and which kind is best
+suited for your use case, see
+[Supplementary Guidelines](/docs/specs/otel/metrics/supplementary-guidelines/).
+
 ## Aggregation
 
 In addition to the metric instruments, the concept of **aggregations** is an
