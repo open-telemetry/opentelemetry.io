@@ -34,7 +34,6 @@ Specification][OTLP].
 [OTLP]: /docs/specs/otlp/
 [Prometheus]:
   https://prometheus.io/docs/prometheus/latest/feature_flags/#otlp-receiver
-[signals]: /docs/concepts/signals/
 [vendors]: /ecosystem/vendors/
 
 [reg]: /ecosystem/registry/?component=exporter&language={{ $lang }}
@@ -47,12 +46,13 @@ them up.
 {{ end -}}
 
 {{ with $.Page.GetPage "automatic/configuration" }}
+{{ $l := cond (eq $lang "dotnet") "net" $lang }}
 
 <div class="alert alert-info" role="alert"><h4 class="alert-heading">Note</h4>
 
-If you use [automatic instrumentation](/docs/languages/{{ $lang }}/automatic)
-you can learn how to setup exporters following the [Configuration
-Guide](/docs/languages/{{ $lang }}/automatic/configuration/).
+If you use [automatic instrumentation](/docs/languages/{{ $l }}/automatic) you
+can learn how to setup exporters following the [Configuration
+Guide](/docs/languages/{{ $l }}/automatic/configuration/).
 
 </div>
 
@@ -62,7 +62,7 @@ Guide](/docs/languages/{{ $lang }}/automatic/configuration/).
  below list needs to grow until all languages are updated to a consistent structure.
  */ -}}
 
-{{ if in (slice "python" "js" "java" "cpp") $lang -}}
+{{ if in (slice "python" "js" "java" "cpp" "dotnet") $lang -}}
 
 ## OTLP
 
