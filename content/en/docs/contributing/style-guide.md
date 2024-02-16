@@ -81,12 +81,7 @@ For any other file, add `cSpell:ignore <word>` in a comment line appropriate for
 title: registryEntryTitle
 ```
 
-{{% alert title="Note" color="warning" %}}
-
-If you have multiple words in the cSpell ignore list, run `npm run fix:dict` to
-make sure that those words are in alphabetical order.
-
-{{% /alert %}}
+Website tooling normalizes page-specific dictionaries (that is, the `cSpell:ignore` word lists), by removing duplicate words, deleting words in the global word list, and sorting words. To normalize page-specific dictionaries, run `npm run fix:dict`.
 
 ## File format
 
