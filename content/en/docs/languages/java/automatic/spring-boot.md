@@ -157,15 +157,7 @@ dependencies {
 
 {{% /tab %}} {{< /tabpane>}}
 
-#### Disable data export
-
-{{% config_option name="otel.sdk.disabled" %}}
-
-Set the value to `true` to disable data export, e.g. for testing purposes.
-
-{{% /config_option %}}
-
-### OTLP Exporter
+### OpenTelemetry Data Exporters
 
 This package provides autoconfiguration for the
 [OTLP](https://github.com/open-telemetry/opentelemetry-java/tree/main/exporters/otlp)
@@ -177,20 +169,7 @@ As of 2.0.0+ the default protocol is `http/protobuf`. For more details on
 exporter configuration, see
 [OTLP Exporter Configuration](/docs/languages/sdk-configuration/otlp-exporter/).
 
-#### Enabling/Disabling Exporters
-
-All exporters can be enabled or disabled as in the
-[SDK autoconfiguration](https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md#exporters).
-This is the preferred way to enable/disable exporters and takes precedence over
-the properties below.
-
-| Feature               | Property                             | Default Value | ConditionalOnMissingBean                                 |
-| --------------------- | ------------------------------------ | ------------- | -------------------------------------------------------- |
-| OTLP Exporter         | `otel.exporter.otlp.enabled`         | true          | -                                                        |
-| OTLP Span Exporter    | `otel.exporter.otlp.traces.enabled`  | true          | `OtlpHttpSpanExporter`, `OtlpGrpcSpanExporter`           |
-| OTLP Metrics Exporter | `otel.exporter.otlp.metrics.enabled` | true          | `OtlpHttpMetricExporter`, `OtlpGrpcMetricExporter`       |
-| OTLP Logs Exporter    | `otel.exporter.otlp.logs.enabled`    | true          | `OtlpHttpLogRecordExporter`, `OtlpGrpcLogRecordExporter` |
-| Logging Exporter      | `otel.exporter.logging.enabled`      | false         | `LoggingSpanExporter`                                    |
+you can use the default options, including `otel.sdk.disabled`
 
 ### Tracer Properties
 
@@ -203,7 +182,7 @@ the properties below.
 | Feature  | Property                                                                | Default Value |
 | -------- | ----------------------------------------------------------------------- | ------------- |
 | Resource | `otel.springboot.resource.enabled`                                      | true          |
-|          | `otel.resource.attributes` (old: `otel.springboot.resource.attributes`) | empty map     |
+|          | `otel.resource.attributes` | empty map     |
 
 `otel.resource.attributes` supports a pattern-based resource configuration in
 the application.properties like this:
@@ -239,10 +218,8 @@ with the OpenTelemetry
    variable (highest precedence)
 2. `service.name` in `otel.resource.attributes` system/spring property or
    `OTEL_RESOURCE_ATTRIBUTES` environment variable
-3. `service.name` in `otel.springboot.resource.attributes` system/spring
-   property
-4. `spring.application.name` spring property
-5. The default value is `unknown_service:java` (lowest precedence)
+3. `spring.application.name` spring property
+4. The default value is `unknown_service:java` (lowest precedence)
 
 ### Automatic instrumentation
 
@@ -427,7 +404,7 @@ span by annotating the method parameters with `@SpanAttribute`.
   </dependency>
   <dependency>
     <groupId>io.opentelemetry</groupId>
-    <artifactId>opentelemetry-extension-annotations</artifactId>
+    <artifactId>opentelemetry-extension-annotations</artifactId> replace with new 
     <version>{{% param vers.otel %}}</version>
   </dependency>
 </dependencies>
