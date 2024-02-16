@@ -41,7 +41,8 @@ terms and their definition.
 Run `npm run check:text` to verify that all terms and words are written
 properly.
 
-Run `npm run check:text -- --fix` to fix terms and words that are not written properly.
+Run `npm run check:text -- --fix` to fix terms and words that are not written
+properly.
 
 ## Markdown standards
 
@@ -76,14 +77,20 @@ title: PageTitle
 cSpell:ignore: <word>
 ---
 ```
-For any other file, add `cSpell:ignore <word>` in a comment line appropriate for the file's context. For a [registry](/ecosystem/registry/) entry YAML file file, it might look like this:
+
+For any other file, add `cSpell:ignore <word>` in a comment line appropriate for
+the file's context. For a [registry](/ecosystem/registry/) entry YAML file file,
+it might look like this:
 
 ```yaml
 # cSpell:ignore <word>
 title: registryEntryTitle
 ```
 
-Website tooling normalizes page-specific dictionaries (that is, the `cSpell:ignore` word lists), by removing duplicate words, deleting words in the global word list, and sorting words. To normalize page-specific dictionaries, run `npm run fix:dict`.
+Website tooling normalizes page-specific dictionaries (that is, the
+`cSpell:ignore` word lists), by removing duplicate words, deleting words in the
+global word list, and sorting words. To normalize page-specific dictionaries,
+run `npm run fix:dict`.
 
 ## File format
 

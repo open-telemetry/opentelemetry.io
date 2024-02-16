@@ -51,8 +51,8 @@ errors:
   [OpenTelemetry-specific terms and words are used consistently across the site](/docs/contributing/style-guide#opentelemetryio-word-list).
   If any issues are found, annotations are added to your files in the
   `files changed` view of your PR. Fix those to turn the check green. As an
-  alternative, you can run `npm run check:text -- --fix` locally to fix most issues.
-  Run `npm run check:text` again and manually fix the remaining issues.
+  alternative, you can run `npm run check:text -- --fix` locally to fix most
+  issues. Run `npm run check:text` again and manually fix the remaining issues.
 - `MARKDOWN linter`: This check verifies that
   [standards and consistency for Markdown files are enforced](/docs/contributing/style-guide#markdown-standards).
   If any issues are found, run `npm:run format` to fix most issues. For more
