@@ -58,7 +58,7 @@ Run `npm run fix:markdown` to fix Markdown related formatting issues.
 
 Use [CSpell](https://github.com/streetsidesoftware/cspell) to make sure that all
 your text is spelled correctly. For a list of words that are specific to the
-OpenTelemetry website, check the
+OpenTelemetry website, see the
 [`.cspell.yml`](https://github.com/open-telemetry/opentelemetry.io/blob/main/.cspell.yml)
 file.
 
@@ -66,7 +66,7 @@ Run `npm run check:spelling` to verify that all your words are spelled
 correctly. If `cspell` indicates an `Unknown word` error, verify if you wrote
 that word correctly. If so, add this word to the `cSpell:ignore` section at the
 top of your file. If no such section exists, you can add it to the front matter
-of a Markdown file or as a comment at the top of any other file:
+of a Markdown file:
 
 ```markdown
 ---
@@ -74,6 +74,7 @@ title: PageTitle
 cSpell:ignore: <word>
 ---
 ```
+For any other file, add `cSpell:ignore <word>` in a comment line appropriate for the file's context. For a [registry](/ecosystem/registry/) entry YAML file file, it might look like this:
 
 ```yaml
 # cSpell:ignore <word>
