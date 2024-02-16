@@ -12,4 +12,5 @@ authors:
   - name: OpenTelemetry Authors
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-cpp/tree/main/exporters/otlp
+  docs: /docs/languages/cpp/exporters/#otlp
 createdAt: 2020-02-05

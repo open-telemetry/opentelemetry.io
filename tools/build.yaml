@@ -1,0 +1,12 @@
+targets:
+  $default:
+    sources:
+      include:
+        - examples/**
+        # The following are included to avoid "required resources" tool warnings:
+        - $package$
+        - lib/$lib$
+      # exclude: ['**/.*/**']
+    builders:
+      code_excerpter|code_excerpter:
+        enabled: true

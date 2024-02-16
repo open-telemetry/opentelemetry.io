@@ -18,7 +18,7 @@ my $semconvSpecRepoUrl = 'https://github.com/open-telemetry/semantic-conventions
 my $semConvRef = "$otelSpecRepoUrl/blob/main/semantic_conventions/README.md";
 my $specBasePath = '/docs/specs';
 my %versions = qw(
-  spec: 1.29.0
+  spec: 1.30.0
   otlp: 1.1.0
   semconv: 1.24.0
 );
@@ -52,7 +52,6 @@ sub printTitleAndFrontMatter() {
   $linkTitle = 'Design Goals' if $title eq 'Design Goals for OpenTelemetry Wire Protocol';
 
   # TODO: remove once all submodules have been updated in the context of https://github.com/open-telemetry/opentelemetry.io/issues/3922
-  $frontMatterFromFile =~ s|: content/en/docs/specs/otel/|: tmp/otel/specification|g;
   $frontMatterFromFile =~ s|: content/en/docs/specs/opamp/|: tmp/opamp/|g;
   $frontMatterFromFile =~ s|: content/en/docs/specs/semconv/|: tmp/semconv/docs/|g;
   $frontMatterFromFile =~ s|path_base_for_github_subdir:\n  from: content/en/docs/specs/otlp/_index.md\n  to: specification.md\n||;
@@ -61,11 +60,6 @@ sub printTitleAndFrontMatter() {
   # printf STDOUT "> $title -> $linkTitle\n";
   print "linkTitle: $linkTitle\n" if $linkTitle and $frontMatterFromFile !~ /linkTitle: /;
   print "$frontMatterFromFile" if $frontMatterFromFile;
-  if ($ARGV =~ /otel\/specification\/(.*?)_index.md$/) {
-    print "path_base_for_github_subdir:\n";
-    print "  from: tmp/otel/specification/$1_index.md\n";
-    print "  to: $1README.md\n";
-  }
   print "---\n";
 }
 

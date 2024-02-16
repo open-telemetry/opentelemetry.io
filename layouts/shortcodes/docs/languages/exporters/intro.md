@@ -62,7 +62,7 @@ Guide](/docs/languages/{{ $lang }}/automatic/configuration/).
  below list needs to grow until all languages are updated to a consistent structure.
  */ -}}
 
-{{ if in (slice "python" "js" "java") $lang -}}
+{{ if in (slice "python" "js" "java" "cpp") $lang -}}
 
 ## OTLP
 
