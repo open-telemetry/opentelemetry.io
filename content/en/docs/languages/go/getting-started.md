@@ -5,6 +5,9 @@ weight: 10
 cSpell:ignore: chan fatalln funcs intn itoa khtml otelhttp rolldice stdouttrace strconv
 ---
 
+<!-- markdownlint-disable blanks-around-fences -->
+<?code-excerpt path-base="examples/go/dice"?>
+
 This page will show you how to get started with OpenTelemetry in Go.
 
 You will learn how you can instrument a simple application manually, in such a
@@ -121,6 +124,8 @@ application that exports telemetry.
 
 Create `otel.go` with OpenTelemetry SDK bootstrapping code:
 
+<!-- prettier-ignore-start -->
+<?code-excerpt "otel.go" from="package main"?>
 ```go
 package main
 
@@ -220,6 +225,7 @@ func newMeterProvider() (*metric.MeterProvider, error) {
 	return meterProvider, nil
 }
 ```
+<!-- prettier-ignore-end -->
 
 If you're only using tracing or metrics, you can omit the code the corresponding
 TracerProvider or MeterProvider initialization code.
@@ -232,6 +238,8 @@ server.
 Modify `main.go` to include code that sets up OpenTelemetry SDK and instruments
 the HTTP server using the `otelhttp` instrumentation library:
 
+<!-- prettier-ignore-start -->
+<?code-excerpt "main.go" from="package main"?>
 ```go
 package main
 
@@ -317,6 +325,7 @@ func newHTTPHandler() http.Handler {
 	return handler
 }
 ```
+<!-- prettier-ignore-end -->
 
 ### Add Custom Instrumentation
 
@@ -327,6 +336,8 @@ your application. For that you'll need to write some custom
 
 Modify `rolldice.go` to include custom instrumentation using OpenTelemetry API:
 
+<!-- prettier-ignore-start -->
+<?code-excerpt "rolldice.go" from="package main"?>
 ```go
 package main
 
@@ -364,7 +375,6 @@ func rolldice(w http.ResponseWriter, r *http.Request) {
 
 	roll := 1 + rand.Intn(6)
 
-	// Add the custom attribute to the span and counter.
 	rollValueAttr := attribute.Int("roll.value", roll)
 	span.SetAttributes(rollValueAttr)
 	rollCnt.Add(ctx, 1, metric.WithAttributes(rollValueAttr))
@@ -375,6 +385,7 @@ func rolldice(w http.ResponseWriter, r *http.Request) {
 	}
 }
 ```
+<!-- prettier-ignore-end -->
 
 Note that if you're only using tracing or metrics, you can omit the
 corresponding code that instruments the other telemetry type.
