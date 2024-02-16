@@ -241,7 +241,7 @@
   distribution: true
   nativeOTLP: true
   url: 'https://docs.microfocus.com/doc/OBS/SaaS/ConfigureOTELCollector'
-  contact: ''
+  contact: 'skotagiri@opentext.com'
   oss: false
   commercial: true
 - name: Oracle
