@@ -41,6 +41,8 @@ terms and their definition.
 Run `npm run check:text` to verify that all terms and words are written
 properly.
 
+Run `npm run check:text -- --fix` to fix terms and words that are not written properly.
+
 ## Markdown standards
 
 To enforce standards and consistency for Markdown files, all files should follow
