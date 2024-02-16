@@ -223,18 +223,58 @@ with the OpenTelemetry
 
 ### Automatic instrumentation
 
-Autoconfigures OpenTelemetry instrumentation for
-[spring-web](#spring-web-autoconfiguration),
-[spring-webmvc](#spring-web-mvc-autoconfiguration), and
-[spring-webflux](#spring-webflux-autoconfiguration). Leverages Spring Aspect
-Oriented Programming, dependency injection, and bean post-processing to trace
-spring applications.
+Automatic instrumentation is available for several frameworks:
 
-| Feature        | Property                                      | Default Value | ConditionalOnClass     |
-| -------------- | --------------------------------------------- | ------------- | ---------------------- |
-| spring-web     | `otel.instrumentation.spring-webmvc.enabled`  | true          | `RestTemplate`         |
-| spring-webmvc  | `otel.instrumentation.spring-web.enabled`     | true          | `OncePerRequestFilter` |
-| spring-webflux | `otel.instrumentation.spring-webflux.enabled` | true          | `WebClient`            |
+| Feature        | Property                                       | Default Value |
+| -------------- | ---------------------------------------------- | --------------|
+| Logback        | `otel.instrumentation.logback-appender.enabled`| true          |
+| Spring Web     | `otel.instrumentation.spring-web.enabled`      | true          |
+| Spring Web MVC | `otel.instrumentation.spring-webmvc.enabled`   | true          |
+| Spring WebFlux | `otel.instrumentation.spring-webflux.enabled`  | true          |
+
+#### Logback
+
+You can enable experimental features with system properties to capure attributes :
+
+| System property                                                                        | Type    | Default | Description                                                                                   |
+|----------------------------------------------------------------------------------------|---------|---------|-----------------------------------------------------------------------------------------------|
+| `otel.instrumentation.logback-appender.experimental-log-attributes`                    | Boolean | `false` | Enable the capture of experimental log attributes `thread.name` and `thread.id`.              |                                                |
+| `otel.instrumentation.logback-appender.experimental.capture-code-attributes`           | Boolean | `false` | Enable the capture of [source code attributes]. Note that capturing source code attributes at logging sites might add a performance overhead. |
+| `otel.instrumentation.logback-appender.experimental.capture-marker-attribute`          | Boolean | `false` | Enable the capture of Logback markers as attributes.                                          |
+| `otel.instrumentation.logback-appender.experimental.capture-key-value-pair-attributes` | Boolean | `false` | Enable the capture of Logback key value pairs as attributes.                                  |
+| `otel.instrumentation.logback-appender.experimental.capture-logger-context-attributes` | Boolean | `false` | Enable the capture of Logback logger context properties as attributes.                        |
+| `otel.instrumentation.logback-appender.experimental.capture-mdc-attributes`            | String  |         | Comma separated list of MDC attributes to capture. Use the wildcard character `*` to capture all attributes.|
+
+[source code attributes]:
+  https://github.com/open-telemetry/semantic-conventions/blob/main/docs/general/attributes.md#source-code-attributes
+
+Alternatively, you can enable these features by adding the OpenTelemetry Logbackappender in your `logback.xml` or `logback-spring.xml` file:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>
+				%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	<appender name="OpenTelemetry"
+		class="io.opentelemetry.instrumentation.logback.appender.v1_0.OpenTelemetryAppender ">
+    <captureExperimentalAttributes>false</captureExperimentalAttributes>
+    <captureCodeAttributes>true</captureCodeAttributes>
+    <captureMarkerAttribute>true</captureMarkerAttribute>
+    <captureKeyValuePairAttributes>true</captureKeyValuePairAttributes>
+    <captureLoggerContext>true</captureLoggerContext>
+    <captureMdcAttributes>*</captureMdcAttributes>
+	</appender>
+	<root level="INFO">
+		<appender-ref ref="console"/>
+		<appender-ref ref="OpenTelemetry"/>
+	</root>
+</configuration>
+```
 
 #### Spring Web Autoconfiguration
 
@@ -328,32 +368,9 @@ dependencies {
 
 {{% /tab %}} {{< /tabpane>}}
 
-#### Logging Instrumentation
+#### Log4j2 Instrumentation
 
-To enable the logging instrumentation for Logback you have to add the
-OpenTelemetry appender in your `logback.xml` or `logback-spring.xml` file:
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<configuration>
-	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
-		<encoder>
-			<pattern>
-				%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
-			</pattern>
-		</encoder>
-	</appender>
-	<appender name="OpenTelemetry"
-		class="io.opentelemetry.instrumentation.logback.appender.v1_0.OpenTelemetryAppender">
-	</appender>
-	<root level="INFO">
-		<appender-ref ref="console"/>
-		<appender-ref ref="OpenTelemetry"/>
-	</root>
-</configuration>
-```
-
-For Log4j 2, you have to add the OpenTelemetry appender to your `log4j2.xml`
+You have to add the OpenTelemetry appender to your `log4j2.xml`
 file:
 
 ```xml
@@ -370,12 +387,7 @@ file:
 </Configuration>
 ```
 
-You can find more configuration options for the OpenTelemetry appender in the
-documentation of the
-[Logback](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/logback/logback-appender-1.0/library/README.md)
-and
-[Log4j](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/log4j/log4j-appender-2.17/library/README.md)
-instrumentation libraries.
+You can find more configuration options for the OpenTelemetry appender in the [Log4j](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/log4j/log4j-appender-2.17/library/README.md) instrumentation librarie.
 
 #### Instrumentation Annotations
 
