@@ -262,12 +262,12 @@ Alternatively, you can enable these features by adding the OpenTelemetry Logback
 	</appender>
 	<appender name="OpenTelemetry"
 		class="io.opentelemetry.instrumentation.logback.appender.v1_0.OpenTelemetryAppender ">
-    <captureExperimentalAttributes>false</captureExperimentalAttributes>
-    <captureCodeAttributes>true</captureCodeAttributes>
-    <captureMarkerAttribute>true</captureMarkerAttribute>
-    <captureKeyValuePairAttributes>true</captureKeyValuePairAttributes>
-    <captureLoggerContext>true</captureLoggerContext>
-    <captureMdcAttributes>*</captureMdcAttributes>
+		<captureExperimentalAttributes>false</captureExperimentalAttributes>
+		<captureCodeAttributes>true</captureCodeAttributes>
+		<captureMarkerAttribute>true</captureMarkerAttribute>
+		<captureKeyValuePairAttributes>true</captureKeyValuePairAttributes>
+		<captureLoggerContext>true</captureLoggerContext>
+		<captureMdcAttributes>*</captureMdcAttributes>
 	</appender>
 	<root level="INFO">
 		<appender-ref ref="console"/>
